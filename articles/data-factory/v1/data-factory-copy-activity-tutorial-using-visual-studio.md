@@ -3,17 +3,18 @@ title: 'Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe von Vis
 description: In diesem Tutorial erstellen Sie mithilfe von Visual Studio eine Azure Data Factory-Pipeline mit Kopieraktivität.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.custom: vs-azure, devx-track-azurepowershell
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 82025728f354b5522517e210071aeb4c7528d7cf
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5bd8bef3b45ef634577de90656c9452c44399386
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677716"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629519"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe von Visual Studio
 > [!div class="op_single_selector"]
@@ -78,11 +79,11 @@ Hier sind die Schritte angegeben, die Sie im Rahmen dieses Tutorials ausführen:
 
 2. Wählen Sie im Dialogfeld **Neues Projekt** die Vorlage **DataFactory** aus, und klicken Sie auf **Leeres Data Factory-Projekt**.  
 
-    ![Dialogfeld "Neues Projekt"](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-project-dialog.png)
+    :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/new-project-dialog.png" alt-text="Dialogfeld &quot;Neues Projekt&quot;":::
 
 3. Geben Sie den Namen des Projekts, den Speicherort für die Projektmappe und den Namen der Projektmappe an. Klicken Sie dann auf **OK**.
 
-    ![Projektmappen-Explorer](./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png)    
+    :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png" alt-text="Projektmappen-Explorer":::    
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 
@@ -102,11 +103,11 @@ Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure
 
 2. Wählen Sie im Dialogfeld **Neues Element hinzufügen** die Option **Mit Azure-Speicher verknüpfter Dienst** aus der Liste aus, und klicken Sie auf **Hinzufügen**. 
 
-    ![Neuer verknüpfter Dienst](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-linked-service-dialog.png)
+    :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/new-linked-service-dialog.png" alt-text="Neuer verknüpfter Dienst":::
 
 3. Ersetzen Sie `<accountname>` und `<accountkey>`* durch den Namen Ihres Azure-Speicherkontos bzw. durch den dazugehörigen Schlüssel. 
 
-    ![Mit Azure-Speicher verknüpfter Dienst](./media/data-factory-copy-activity-tutorial-using-visual-studio/azure-storage-linked-service.png)
+    :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/azure-storage-linked-service.png" alt-text="Mit Azure-Speicher verknüpfter Dienst":::
 
 4. Speichern Sie die Datei **AzureStorageLinkedService1.json** .
 
@@ -308,7 +309,7 @@ In diesem Schritt veröffentlichen Sie zuvor erstellte Data Factory-Entitäten (
 2. Wenn das Dialogfeld **Melden Sie sich bei Ihrem Microsoft-Konto an** angezeigt wird, geben Sie Ihre Anmeldeinformationen für das Konto mit dem Azure-Abonnement ein, und klicken Sie auf **Anmelden**.
 3. Das folgende Dialogfeld sollte angezeigt werden:
    
-   ![Dialogfeld „Veröffentlichen“](./media/data-factory-copy-activity-tutorial-using-visual-studio/publish.png)
+   :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/publish.png" alt-text="Dialogfeld „Veröffentlichen“":::
 4. Führen Sie auf der Seite zum Konfigurieren der Data Factory die folgenden Schritte aus: 
    
    1. Wählen Sie die Option **Neue Data Factory erstellen** .
@@ -328,16 +329,16 @@ In diesem Schritt veröffentlichen Sie zuvor erstellte Data Factory-Entitäten (
    5. Wählen Sie die **Region** für die Data Factory aus. In der Dropdownliste werden nur Regionen angezeigt, die vom Data Factory-Dienst unterstützt werden.
    6. Klicken Sie auf **Weiter**, um zur Seite **Publish Items** zu wechseln.
       
-       ![Seite zum Konfigurieren der Data Factory](media/data-factory-copy-activity-tutorial-using-visual-studio/configure-data-factory-page.png)   
+       :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/configure-data-factory-page.png" alt-text="Seite zum Konfigurieren der Data Factory":::   
 5. Stellen Sie auf der Seite **Publish Items** sicher, dass alle Data Factory-Entitäten ausgewählt sind, und klicken Sie auf **Weiter**, um zur Seite **Zusammenfassung** zu wechseln.
    
-   ![Seite zum Veröffentlichen von Elementen](media/data-factory-copy-activity-tutorial-using-visual-studio/publish-items-page.png)     
+   :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/publish-items-page.png" alt-text="Seite zum Veröffentlichen von Elementen":::     
 6. Prüfen Sie die Zusammenfassung, und klicken Sie auf **Weiter**, um den Bereitstellungsprozess zu starten und den **Bereitstellungsstatus** anzuzeigen.
    
-   ![Seite mit der Veröffentlichungszusammenfassung](media/data-factory-copy-activity-tutorial-using-visual-studio/publish-summary-page.png)
+   :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/publish-summary-page.png" alt-text="Seite mit der Veröffentlichungszusammenfassung":::
 7. Auf der Seite **Bereitstellungsstatus** sollte der Status des Bereitstellungsprozesses angezeigt werden. Klicken Sie auf „Fertig stellen“, nachdem die Bereitstellung abgeschlossen ist.
  
-   ![Seite mit dem Bereitstellungsstatus](media/data-factory-copy-activity-tutorial-using-visual-studio/deployment-status.png)
+   :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/deployment-status.png" alt-text="Seite mit dem Bereitstellungsstatus":::
 
 Beachten Sie folgende Punkte: 
 
@@ -365,13 +366,13 @@ Navigieren Sie zur Startseite Ihrer Data Factory:
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **Weitere Dienste** und dann auf **Data Factorys**.
 
-  ![Durchsuchen von Data Factorys](media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png)
+  :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png" alt-text="Durchsuchen von Data Factorys":::
 3. Beginnen Sie mit der Eingabe der Data Factory.
 
-  ![Name der Data Factory](media/data-factory-copy-activity-tutorial-using-visual-studio/enter-data-factory-name.png) 
+  :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/enter-data-factory-name.png" alt-text="Name der Data Factory"::: 
 4. Klicken Sie in der Liste der Ergebnisse auf Ihre Data Factory, um die Startseite für Ihre Data Factory anzuzeigen.
 
-  ![Data Factory-Startseite](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
+  :::image type="content" source="media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png" alt-text="Data Factory-Startseite":::
 5. Befolgen Sie die Anweisungen unter [Überwachen von Datasets und Pipelines](data-factory-monitor-manage-pipelines.md), um die in diesem Tutorial erstellte Pipeline und die erstellten Datasets zu überwachen. Visual Studio unterstützt derzeit keine Überwachung von Data Factory-Pipelines. 
 
 ## <a name="summary"></a>Zusammenfassung
@@ -394,13 +395,13 @@ In diesem Abschnitt wird beschrieben, wie mithilfe des Server-Explorers in Visua
 1. Klicken Sie in **Visual Studio** im Menü auf **Ansicht** und dann auf **Server-Explorer**.
 2. Erweitern Sie im Server-Explorer-Fenster erst die Option **Azure** und dann **Data Factory**. Wenn **Bei Visual Studio anmelden** angezeigt wird, geben Sie das mit Ihrem Azure-Abonnement verknüpfte **Konto** ein, und klicken Sie auf **Weiter**. Geben Sie Ihr **Kennwort** ein, und klicken Sie auf **Anmelden**. Visual Studio versucht, Informationen zu allen Azure Data Factorys abzurufen, die in Ihrem Abonnement enthalten sind. Der Status dieses Vorgangs wird im Fenster **Data Factory-Aufgabenliste** angezeigt.
 
-    ![Server-Explorer](./media/data-factory-copy-activity-tutorial-using-visual-studio/server-explorer.png)
+    :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/server-explorer.png" alt-text="Server-Explorer":::
 
 ## <a name="create-a-visual-studio-project-for-an-existing-data-factory"></a>Erstellen eines Visual Studio-Projekts für eine vorhandene Data Factory
 
 - Klicken Sie mit der rechten Maustaste auf eine Data Factory im Server-Explorer, und wählen Sie **Data Factory in neues Projekt exportieren** aus, um anhand einer vorhandenen Data Factory ein Visual Studio-Projekt zu erstellen.
 
-  ![Exportieren einer Data Factory in ein Visual Studio-Projekt](./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png)  
+  :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png" alt-text="Exportieren einer Data Factory in ein Visual Studio-Projekt":::  
 
 ## <a name="update-data-factory-tools-for-visual-studio"></a>Aktualisieren von Data Factory-Tools für Visual Studio
 Führen Sie die folgenden Schritte aus, um die Azure Data Factory-Tools für Visual Studio zu aktualisieren:
@@ -433,7 +434,7 @@ Führen Sie die folgenden Schritte aus, um eine Konfigurationsdatei für jede Um
 1. Klicken Sie mit der rechten Maustaste auf das Data Factory-Projekt in Ihrer Visual Studio-Projektmappe, zeigen Sie auf **Hinzufügen**, und klicken Sie auf **Neuer Eintrag**.
 2. Wählen Sie links in der Liste mit den installierten Vorlagen die Option **Config** aus, klicken Sie auf **Konfigurationsdatei**, geben Sie einen **Namen** für die Konfigurationsdatei ein, und klicken Sie auf **Hinzufügen**.
 
-    ![Konfigurationsdatei hinzufügen](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png" alt-text="Konfigurationsdatei hinzufügen":::
 3. Fügen Sie Konfigurationsparameter und deren Werte im folgenden Format hinzu:
 
   ```json
@@ -511,7 +512,7 @@ Gehen Sie wie folgt vor, um Entitäten in einem Azure Data Factory-Projekt mit d
 2. Wählen Sie eine vorhandene Data Factory aus, oder geben Sie Werte zum Erstellen einer Data Factory auf der Seite **Data Factory konfigurieren** an, und klicken Sie auf **Weiter**.   
 3. Auf der Seite **Elemente veröffentlichen** wird eine Dropdownliste mit verfügbaren Konfigurationen für das Feld **Bereitstellungskonfiguration auswählen** angezeigt.
 
-    ![Konfigurationsdatei auswählen](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png" alt-text="Konfigurationsdatei auswählen":::
 4. Wählen Sie die **Konfigurationsdatei** aus, die Sie verwenden möchten, und klicken Sie auf **Weiter**.
 5. Vergewissern Sie sich, dass der Name der JSON-Datei auf der Seite **Zusammenfassung** angezeigt wird, und klicken Sie auf **Weiter**.
 6. Klicken Sie auf **Fertig stellen** , wenn der Bereitstellungsvorgang abgeschlossen ist.

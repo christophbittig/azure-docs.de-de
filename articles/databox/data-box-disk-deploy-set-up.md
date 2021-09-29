@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 77c09385c69e4a2922fa3b2249143e6e969bfc5a
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: b58fd8ba86febba41715aba4340838a0f494e6ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759903"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591652"
 ---
 ::: zone target="docs"
 
@@ -222,24 +222,26 @@ Wenn beim Entsperren der Datenträger Probleme auftreten, finden Sie unter [Beha
 
 6. Führen Sie das Tool zum Entsperren von Data Box Disk aus. Geben Sie den Hauptschlüssel aus dem Azure-Portal ein, den Sie in [Herstellen der Verbindung mit Datenträgern und Abrufen des Hauptschlüssels](#connect-to-disks-and-get-the-passkey) abgerufen haben. Geben Sie optional eine Liste mit BitLocker verschlüsselten Volumes an, die entsperrt werden sollen. Die Hauptschlüssel und die Volumeliste müssen in einfachen Anführungszeichen angegeben werden. 
 
-    Geben Sie folgenden Befehl ein.
+   Geben Sie folgenden Befehl ein.
  
-    `sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'          
+   ```bash
+   sudo ./DataBoxDiskUnlock_x86_64 /PassKey:'<Your passkey from Azure portal>'
+   ```
 
-    Die Beispielausgabe wird unten gezeigt. 
+   Die Beispielausgabe wird unten gezeigt. 
  
-    ```
-    [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:'qwerqwerqwer'  
-    
-    START: Mon Aug 13 14:25:49 2018 
-    Volumes: /dev/sdbl 
-    Passkey: qwerqwerqwer 
-    
-    Volumes for data copy : 
-    /dev/sdbl: /mnt/DataBoxDisk/mountVoll/ 
-    END: Mon Aug 13 14:26:02 2018
-    ```
-    Der Bereitstellungspunkt für das Volume, auf das Sie Ihre Daten kopieren können, wird angezeigt.
+   ```output
+   [user@localhost Downloads]$ sudo ./DataBoxDiskUnlock_x86_64 /Passkey:'qwerqwerqwer'  
+   
+   START: Mon Aug 13 14:25:49 2018 
+   Volumes: /dev/sdbl 
+   Passkey: qwerqwerqwer 
+   
+   Volumes for data copy : 
+   /dev/sdbl: /mnt/DataBoxDisk/mountVoll/ 
+   END: Mon Aug 13 14:26:02 2018
+   ```
+   Der Bereitstellungspunkt für das Volume, auf das Sie Ihre Daten kopieren können, wird angezeigt.
 
 7. Wiederholen Sie die Schritte zum Entsperren bei jedem erneuten Anschließen des Datenträgers. Verwenden Sie den Befehl `help`, falls Sie Hilfe zum Tool zum Entsperren von Data Box Disk benötigen. 
     

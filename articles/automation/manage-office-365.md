@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Azure Automation zum Verwal
 services: automation
 ms.date: 11/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 70c8892969a3b13175c60a4e20e0cf9086112abe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f61149fd9c35cc55a3ed55fa83e6031d895fb073
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93398044"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737734"
 ---
 # <a name="manage-office-365-services"></a>Verwalten von Office 365-Diensten
 
@@ -33,7 +33,7 @@ Die Verwendung von Office 365 in Azure Automation erfordert Microsoft Azure Act
 
 ## <a name="create-an-azure-automation-account"></a>Erstellen eines Azure Automation-Kontos
 
-Für die Durchführung der in diesem Artikel aufgeführten Schritte benötigen Sie ein Konto in Azure Automation. Siehe [Erstellen eines Azure Automation-Kontos](automation-quickstart-create-account.md).
+Für die Durchführung der in diesem Artikel aufgeführten Schritte benötigen Sie ein Konto in Azure Automation. Siehe [Erstellen eines Azure Automation-Kontos](./quickstarts/create-account-portal.md).
  
 ## <a name="add-msonline-and-msonlineext-as-assets"></a>Hinzufügen von MSOnline und MSOnlineExt als Objekte
 
@@ -94,7 +94,7 @@ Send-MailMessage -Credential $credObject -From $emailFromAddress -To $emailToAdd
 
 Sie können Ihr Skript in einem Azure Automation-Runbook verwenden. Zu Demonstrationszwecken verwenden wir den PowerShell-Runbooktyp.
 
-1. Erstellen Sie ein neues PowerShell-Runbook. Informationen finden Sie und [Erstellen eines Azure Automation-Runbooks](./automation-quickstart-create-runbook.md).
+1. Erstellen Sie ein neues PowerShell-Runbook. Informationen finden Sie und [Erstellen eines Azure Automation-Runbooks](./learn/powershell-runbook-managed-identity.md).
 2. Wählen Sie in Ihrem Automation-Konto unter **Prozessautomatisierung** die Option **Runbooks** aus.
 3. Wählen Sie das neue Runbook aus, und klicken Sie auf **Bearbeiten**.
 4. Kopieren Sie Ihr Skript, und fügen Sie es in den Text-Editor für das Runbook ein.

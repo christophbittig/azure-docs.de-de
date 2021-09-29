@@ -8,17 +8,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/24/2021
-ms.openlocfilehash: 88765f756e5473243cb22719c00d1e497fbd6ea6
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: a95bfe8ed978a0d67381d0be1f15038c847ab36b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822193"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061217"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Quelltransformation in einem Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 Mit einer Quelltransformation wird die Datenquelle für den Datenfluss konfiguriert. Beim Entwerfen von Datenflüssen besteht der erste Schritt stets in der Konfiguration einer Quelltransformation. Um eine Quelle hinzuzufügen, wählen Sie auf der Datenflusscanvas das Feld **Quelle hinzufügen** aus.
 
@@ -36,7 +38,7 @@ Inline-Datasets werden empfohlen, wenn flexible Schemas, einmalige Quellinstanze
 
 Um ein Inline-Dataset zu verwenden, wählen Sie das gewünschte Format im Selektor **Quelltyp** aus. Anstatt ein Quelldataset auszuwählen, wählen Sie den verknüpften Dienst aus, mit dem Sie eine Verbindung herstellen möchten.
 
-![Screenshot mit hervorgehobener Auswahl von „Inline“.](media/data-flow/inline-selector.png "Screenshot mit hervorgehobener Auswahl von „Inline“")
+:::image type="content" source="media/data-flow/inline-selector.png" alt-text="Screenshot mit hervorgehobener Auswahl von „Inline“.":::
 
 ## <a name="workspace-db-synapse-workspaces-only"></a>Workspace DB (nur Synapse-Arbeitsbereiche)
 
@@ -45,7 +47,7 @@ In Azure Synapse-Arbeitsbereichen gibt es in Quelltransformationen von Datenflü
 > [!NOTE]
 > Der Workspace DB-Connector von Azure Synapse befindet sich zurzeit in der öffentlichen Vorschau und funktioniert nur bei Spark Lake-Datenbanken.
 
-![Screenshot mit hervorgehobener Auswahl „workspacedb“](media/data-flow/syms-source.png "Screenshot mit hervorgehobener Auswahl von „workspace DB“")
+:::image type="content" source="media/data-flow/syms-source.png" alt-text="Screenshot mit hervorgehobener Auswahl „workspacedb“":::
 
 ##  <a name="supported-source-types"></a><a name="supported-sources"></a> Unterstützte Quelltypen
 
@@ -76,7 +78,7 @@ Nachdem Sie eine Quelle hinzugefügt haben, konfigurieren Sie sie auf der Regist
 
 Entwicklungswerte für Datasetparameter können in [Debugeinstellungen](concepts-data-flow-debug-mode.md) konfiguriert werden. (Der Debugmodus muss aktiviert sein.)
 
-![Screenshot: Registerkarte „Quelleinstellungen“](media/data-flow/source1.png "Screenshot: Registerkarte „Quelleinstellungen“")
+:::image type="content" source="media/data-flow/source1.png" alt-text="Screenshot: Registerkarte „Quelleinstellungen“":::
 
 **Name des Ausgabedatenstroms:** Der Name der Quelltransformation.
 
@@ -109,7 +111,7 @@ Die Registerkarte **Quelloptionen** enthält Einstellungen, die spezifisch für 
 
 Wie Schemas in Datasets definiert die Projektion in einer Quelle die Datenspalten, Datentypen und Datenformate aus den Quelldaten. Bei den meisten Datasettypen, z. B. SQL und Parquet, wird die Projektion in einer Quelle so festgelegt, dass sie das in einem Dataset definierte Schema widerspiegelt. Wenn Ihre Quelldateien nicht stark typisiert sind (z. B. flache CSV-Dateien im Gegensatz zu Parquet-Dateien), können Sie in der Quelltransformation die Datentypen für jedes Feld definieren.
 
-![Screenshot der Einstellungen auf der Registerkarte „Projektion“.](media/data-flow/source3.png "Screenshot der Einstellungen auf der Registerkarte „Projektion“.")
+:::image type="content" source="media/data-flow/source3.png" alt-text="Screenshot der Einstellungen auf der Registerkarte „Projektion“.":::
 
 Wenn in Ihrer Textdatei kein Schema definiert wurde, wählen Sie **Datentyp erkennen** aus, damit der Dienst Stichproben erstellt und die Datentypen ableitet. Wählen Sie **Standarddatenformat** aus, um die Standarddatenformate automatisch zu ermitteln.
 
@@ -129,7 +131,7 @@ Die Registerkarte **Optimieren** ermöglicht die Bearbeitung von Partitionsinfor
 
 Wenn Sie Daten aus einer Azure SQL-Datenbank-Quelle lesen, liest die benutzerdefinierte **Quellpartition** die Daten wahrscheinlich am schnellsten. Der Dienst liest große Abfragen, indem er Verbindungen mit Ihrer Datenbank parallel herstellt. Diese Quellpartitionierung kann für eine Spalte oder über eine Abfrage erfolgen.
 
-![Screenshot der Einstellungen für die Quellpartition](media/data-flow/sourcepart3.png "Screenshot der Einstellungen der Quellpartition.")
+:::image type="content" source="media/data-flow/sourcepart3.png" alt-text="Screenshot der Einstellungen für die Quellpartition":::
 
 Weitere Informationen zur Optimierung in Mapping Data Flow finden Sie auf der [Registerkarte „Optimieren“](concepts-data-flow-overview.md#optimize).
 

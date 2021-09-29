@@ -2,14 +2,14 @@
 title: 'Erstellen eines Event Hubs, für den Capture aktiviert ist: Azure Event Hubs | Microsoft-Dokumentation'
 description: Erstellen eines Azure Event Hubs-Namespace mit einem Event Hub und Aktivieren der von Capture über eine Azure Resource Manager-Vorlage
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 09/28/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9f249e4faa23b70a18ac2f1c8f3dd8ad523ee76b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 72cd56ef7d2fce836afb5963639983249204cf6c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112296135"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218601"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Erstellen eines Namespace mit Event Hub und Aktivieren von Capture mithilfe einer Vorlage
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/16/2021
 ms.author: phanir
 ms.reviewer: jrasnick
-ms.openlocfilehash: a13231ea890476e5fc52cf563c250ef0124f940b
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 6ad246eefb86c31291d2a9745c6f77e276701744
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539693"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214083"
 ---
 # <a name="move-an-azure-synapse-analytics-workspace-from-one-region-to-another"></a>Verschieben eines Azure Synapse Analytics-Arbeitsbereichs aus einer Region in eine andere
 
@@ -364,7 +364,7 @@ Sie können serverlose SQL-Pooldatenbanken und Spark-Pools nicht sichern und wie
 
 ## <a name="step-6-deploy-artifacts-and-pipelines-by-using-cicd"></a>Schritt 6: Bereitstellen von Artefakten und Pipelines mithilfe von CI/CD 
 
- Um zu erfahren, wie Sie einen Azure Synapse-Arbeitsbereich in Azure DevOps oder GitHub integrieren und die Artefakte in einem Arbeitsbereich der Zielregion bereitstellen, führen Sie die Schritte unter [Continuous Integration und Continuous Delivery (CI/CD) für einen Azure Synapse-Arbeitsbereich](cicd/continuous-integration-deployment.md) aus. 
+ Um zu erfahren, wie Sie einen Azure Synapse-Arbeitsbereich in Azure DevOps oder GitHub integrieren und die Artefakte in einem Arbeitsbereich der Zielregion bereitstellen, führen Sie die Schritte unter [Continuous Integration und Continuous Delivery (CI/CD) für einen Azure Synapse-Arbeitsbereich](cicd/continuous-integration-delivery.md) aus. 
 
 Nachdem der Arbeitsbereich in Azure DevOps integriert wurde, gibt es einen Branch mit dem Namen „workspace_publish“. Dieser Branch enthält die Arbeitsbereichsvorlage, die Definitionen für die Artefakte wie Notebooks, SQL-Skripts, Datasets, verknüpfte Dienste, Pipelines, Trigger und Spark-Auftragsdefinitionen enthält.
 

@@ -14,12 +14,12 @@ ms.date: 07/26/2021
 ms.author: baselden
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99bdfeff59f26f59c9d64bcca9226d9b1f70ec1d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: afb94b9589171a5715b1e7bdf9a80ceb0a8b7f45
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340185"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771173"
 ---
 # <a name="plan-a-privileged-identity-management-deployment"></a>Planen einer Bereitstellung von Privileged Identity Management
 
@@ -152,7 +152,7 @@ Führen Sie diese Aufgaben aus, um PIM für die Verwaltung von Azure AD-Rollen 
 
 Erstellen Sie eine Liste der Benutzer mit privilegierten Rollen in Ihrer Organisation. Überprüfen Sie die zugewiesenen Benutzer, identifizieren Sie Administratoren, die die Rolle nicht mehr benötigen, und entfernen Sie sie aus ihren Zuweisungen. 
 
-Sie können [Zugriffsüberprüfungen für Azure AD-Rollen](pim-how-to-start-security-review.md) verwenden, um die Ermittlung, Überprüfung und Genehmigung oder Entfernung von Zuweisungen zu automatisieren.
+Sie können [Zugriffsüberprüfungen für Azure AD-Rollen](./pim-create-azure-ad-roles-and-resource-roles-review.md) verwenden, um die Ermittlung, Überprüfung und Genehmigung oder Entfernung von Zuweisungen zu automatisieren.
 
 ### <a name="determine-roles-to-be-managed-by-pim"></a>Bestimmen von Rollen, die von PIM verwaltet werden sollen
 
@@ -183,7 +183,7 @@ Folgen Sie den Anweisungen unter den nachstehenden Links:
 
 2. [Zulassen, dass berechtigte Benutzer für ihre Azure AD-Rolle eine Just-In-Time-Aktivierung durchführen](pim-how-to-activate-role.md)
 
-Wenn sich der Ablaufzeitpunkt der Rolle nähert, verwenden Sie [PIM, um die Rollen zu verlängern oder zu erneuern](pim-resource-roles-renew-extend.md). Diese beiden vom Benutzer initiierten Aktionen erfordern eine Genehmigung von einem globalen Administrator oder einem Administrator für privilegierte Rollen.  Diese beiden vom Benutzer initiierten Aktionen erfordern eine Genehmigung von einem globalen Administrator oder einem Administrator für privilegierte Rollen. 
+Wenn sich der Ablaufzeitpunkt der Rolle nähert, verwenden Sie [PIM, um die Rollen zu verlängern oder zu erneuern](pim-resource-roles-renew-extend.md). Diese beiden vom Benutzer initiierten Aktionen erfordern eine Genehmigung von einem globalen Administrator oder einem Administrator für privilegierte Rollen.
 
 Wenn diese wichtigen Ereignisse bei Azure AD-Rollen auftreten, werden von PIM, je nach Rollen-, Ereignis- und Benachrichtigungseinstellungen, [E-Mail-Benachrichtigungen und wöchentliche Digest-E-Mails](pim-email-notifications.md) an Berechtigungen verwaltende Administratoren gesendet. Diese E-Mail-Benachrichtigungen können auch Links zu relevanten Aufgaben, z.B. Aktivieren oder Erneuern einer Rolle, enthalten. 
 
@@ -214,7 +214,7 @@ Minimieren Sie Zuweisungen der Rollen „Besitzer“ und „Benutzerzugriffsadmi
 
 Als globaler Administrator können Sie den [Zugriff erhöhen, um alle Azure-Abonnements zu verwalten](../../role-based-access-control/elevate-access-global-admin.md). Anschließend können Sie die Besitzer der einzelnen Abonnements ermitteln und in Zusammenarbeit mit ihnen unnötige Zuweisungen innerhalb ihrer Abonnements entfernen.
 
-Verwenden Sie [Zugriffsüberprüfungen für Azure-Ressourcen](pim-resource-roles-start-access-review.md), um unnötige Rollenzuweisungen zu überwachen und zu entfernen. 
+Verwenden Sie [Zugriffsüberprüfungen für Azure-Ressourcen](./pim-create-azure-ad-roles-and-resource-roles-review.md), um unnötige Rollenzuweisungen zu überwachen und zu entfernen. 
 
 ### <a name="determine-roles-to-be-managed-by-pim"></a>Bestimmen von Rollen, die von PIM verwaltet werden sollen
 
@@ -318,6 +318,4 @@ Konfigurieren Sie Mitglieder und Besitzer von Gruppen mit privilegiertem Zugriff
 * Wenn PIM-bezogene Probleme vorhanden sind, finden Sie weitere Informationen unter [Problembehandlung bei PIM](pim-troubleshoot.md).
 
 * [Bereitstellen anderer Identitätsfeatures](../fundamentals/active-directory-deployment-plans.md)
-
- 
 

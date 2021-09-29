@@ -7,12 +7,12 @@ ms.date: 06/05/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: aae1f58eb9fc5e006254f6fdfd620c057e6d6fc3
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 3426ff64bbaf1d3d4801a8fcc069cb1767091181
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762518"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804105"
 ---
 # <a name="azure-virtual-desktop-powershell"></a>Azure Virtual Desktop PowerShell
 
@@ -81,5 +81,5 @@ New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e4
 - Informationen zur Behebung von Problemen bei Azure Virtual Desktop-Clientverbindungen finden Sie unter [Azure Virtual Desktop – Clientverbindungen](troubleshoot-service-connection.md).
 - Informationen zur Behebung von Problemen bei Remotedesktop-Clients finden Sie unter [Problembehandlung für den Remotedesktop-Client](troubleshoot-client.md).
 - Weitere Informationen zum Dienst finden Sie unter [Azure Virtual Desktop-Umgebung](environment-setup.md).
-- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/management/view-activity-logs.md).
+- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-monitor/essentials/activity-log.md).
 - Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../azure-resource-manager/templates/deployment-history.md).

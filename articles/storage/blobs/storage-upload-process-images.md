@@ -9,12 +9,12 @@ ms.date: 06/24/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9aa776b52d3303d7721d900476f606c3ab38d7a5
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 3ba616f2edead3bdd3b3353405e3b9ce6b40ccaa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378707"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599143"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Tutorial: Hochladen von Bilddaten in die Cloud mit Azure Storage
 
@@ -34,12 +34,12 @@ Im ersten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
 
-> * Speicherkonto erstellen
-> * Erstellen eines Containers und Festlegen von Berechtigungen
-> * Abrufen eines Zugriffsschlüssels
-> * Bereitstellen einer Web-App in Azure
-> * Konfigurieren von App-Einstellungen
-> * Interagieren mit der Web-App
+> - Speicherkonto erstellen
+> - Erstellen eines Containers und Festlegen von Berechtigungen
+> - Abrufen eines Zugriffsschlüssels
+> - Bereitstellen einer Web-App in Azure
+> - Konfigurieren von App-Einstellungen
+> - Interagieren mit der Web-App
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,7 +47,7 @@ Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -55,7 +55,7 @@ Im folgenden Beispiel wird eine Ressourcengruppe namens `myResourceGroup` erstel
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Erstellen Sie mit dem Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie mit dem Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location southeastasia
@@ -63,7 +63,7 @@ New-AzResourceGroup -Name myResourceGroup -Location southeastasia
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
 ```azurecli
 az group create --name myResourceGroup --location southeastasia
@@ -140,7 +140,7 @@ az storage container create --name thumbnails \
 
 ---
 
-Notieren Sie sich den Namen und Schlüssel des Blob Storage-Kontos. Die Beispiel-App verwendet diese Einstellungen zum Herstellen der Verbindung mit dem Speicherkonto zum Hochladen der Bilder. 
+Notieren Sie sich den Namen und Schlüssel des Blob Storage-Kontos. Die Beispiel-App verwendet diese Einstellungen zum Herstellen der Verbindung mit dem Speicherkonto zum Hochladen der Bilder.
 
 ## <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 
@@ -170,11 +170,11 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 Die Web-App umfasst einen Hostingort für den Code der Beispiel-App, der aus dem GitHub-Beispielrepository bereitgestellt wird.
 
-Ersetzen Sie im folgenden Befehl `<web_app>` durch einen eindeutigen Namen. Gültige Zeichen sind `a-z`, `0-9` und `-`. Wenn `<web_app>` nicht eindeutig ist, wird die folgende Fehlermeldung angezeigt: *Eine Website mit dem angegebenen Namen `<web_app>` ist bereits vorhanden.* Die Standard-URL der Web-App lautet `https://<web_app>.azurewebsites.net`.  
+Ersetzen Sie im folgenden Befehl `<web_app>` durch einen eindeutigen Namen. Gültige Zeichen sind `a-z`, `0-9` und `-`. Wenn `<web_app>` nicht eindeutig ist, wird die folgende Fehlermeldung angezeigt: *Eine Website mit dem angegebenen Namen `<web_app>` ist bereits vorhanden.* Die Standard-URL der Web-App lautet `https://<web_app>.azurewebsites.net`.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Erstellen Sie mit dem Befehl [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) eine [Web-App](../../app-service/overview.md) im App Service-Plan `myAppServicePlan`.  
+Erstellen Sie mit dem Befehl [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) eine [Web-App](../../app-service/overview.md) im App Service-Plan `myAppServicePlan`.
 
 ```powershell
 $webapp="<web_app>"
@@ -184,7 +184,7 @@ New-AzWebApp -ResourceGroupName myResourceGroup -Name $webapp -AppServicePlan my
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Erstellen Sie eine [Web-App](../../app-service/overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp).  
+Erstellen Sie eine [Web-App](../../app-service/overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp).
 
 ```azurecli
 webapp="<web_app>"

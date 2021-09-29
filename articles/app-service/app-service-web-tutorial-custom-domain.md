@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
-ms.openlocfilehash: 6977bbe8d9854a771e31d2dcc0d49353ff29c4bf
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 35d2a35475c6a22608c28f3ffdf3dc1abc3065a1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591578"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657403"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -163,8 +163,8 @@ Erstellen Sie für eine Unterdomäne wie `www` in `www.contoso.com` zwei Einträ
 
     |Eintragstyp|Host|Wert|
     |--- |--- |--- |
-    |Ein|<subdomain> (z. B. „www“)|IP-Adresse aus dem Schritt Kopieren der IP-Adresse der App|
-    |TXT|asuid.<subdomain> (z. B. „asuid.www“)|Die zuvor abgerufene Verifizierungs-ID|
+    |Ein|\<subdomain\> (z. B. „www“)|IP-Adresse aus dem Schritt Kopieren der IP-Adresse der App|
+    |TXT|asuid.\<subdomain\> (z. B. „asuid.www“)|Die zuvor abgerufene Verifizierungs-ID|
     
 # <a name="wildcard-cname"></a>[Platzhalter (CNAME)](#tab/wildcard)
 

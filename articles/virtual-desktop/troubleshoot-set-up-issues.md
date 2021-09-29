@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 6eb6dd71ae95b3af4ee913e1ac88d9988d2b23a9
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 7e2c4c6a68bb8db4434a233e7b7c658074ed015a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762530"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804121"
 ---
 # <a name="host-pool-creation"></a>Hostpoolerstellung
 
@@ -71,7 +71,7 @@ Wenn Sie den Ressourcenanbieter erneut registrieren, erhalten Sie keine Rückmel
 Führen Sie die folgenden Schritte aus, um eine Problembehandlung bei nicht erfolgreichen Bereitstellungen von Azure Resource Manager-Vorlagen und PowerShell DSC durchzuführen.
 
 1. Suchen Sie mithilfe der Informationen im Artikel [Anzeigen von Bereitstellungsvorgängen mit Azure Resource Manager](../azure-resource-manager/templates/deployment-history.md) nach möglichen Fehlern in der Bereitstellung.
-2. Wenn keine Fehler in der Bereitstellung vorliegen, sehen Sie sich das Aktivitätsprotokoll an. Nutzen Sie dazu die Informationen unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/management/view-activity-logs.md).
+2. Wenn keine Fehler in der Bereitstellung vorliegen, sehen Sie sich das Aktivitätsprotokoll an. Nutzen Sie dazu die Informationen unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-monitor/essentials/activity-log.md).
 3. Sobald der Fehler identifiziert ist, nutzen Sie die Informationen zur Fehlermeldung und zu den Ressourcen im Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md), um den Fehler zu beheben.
 4. Löschen Sie alle Ressourcen, die während der vorherigen Bereitstellung erstellt wurden, und versuchen Sie erneut, die Vorlage bereitzustellen.
 
@@ -288,5 +288,5 @@ the VM.\\\"
 - Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Azure Virtual Desktop finden Sie unter [Azure Virtual Desktop – PowerShell](troubleshoot-powershell.md).
 - Weitere Informationen zum Dienst finden Sie unter [Azure Virtual Desktop-Umgebung](environment-setup.md).
 - Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
-- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/management/view-activity-logs.md).
+- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-monitor/essentials/activity-log.md).
 - Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../azure-resource-manager/templates/deployment-history.md).

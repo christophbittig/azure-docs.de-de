@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: fefaac3d969695bd85264a82ce76f1524c3c56f0
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: c847c87a24dedc994da39a37f37def3caeef4db1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113758801"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818625"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-azure-virtual-desktop"></a>Problembehandlung von Übersicht, Feedback und Support für Azure Virtual Desktop
 
@@ -59,5 +59,5 @@ Orientieren Sie sich an der folgenden Tabelle, um Probleme zu identifizieren und
 - Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Azure Virtual Desktop finden Sie unter [Azure Virtual Desktop – PowerShell](troubleshoot-powershell.md).
 - Weitere Informationen zum Dienst finden Sie unter [Azure Virtual Desktop-Umgebung](environment-setup.md).
 - Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
-- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/management/view-activity-logs.md).
+- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-monitor/essentials/activity-log.md).
 - Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen](../azure-resource-manager/templates/deployment-history.md).

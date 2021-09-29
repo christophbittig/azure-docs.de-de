@@ -2,13 +2,13 @@
 title: Service Bus-Warteschlangen und -Themen als Ereignishandler für Azure Event Grid-Ereignisse
 description: Hier wird beschrieben, wie Sie Service Bus-Warteschlangen und -Themen als Ereignishandler für Azure Event Grid-Ereignisse verwenden können.
 ms.topic: conceptual
-ms.date: 09/03/2020
-ms.openlocfilehash: 6f3aa7fedc8daa15f9de239e47f8b6a0c2fc0454
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 09/28/2021
+ms.openlocfilehash: 5ea44f33bffa0f7158c8e3d1ae4e1cf0776f294e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091288"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214957"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus-Warteschlangen und -Themen als Ereignishandler für Azure Event Grid-Ereignisse
 Ein Ereignishandler ist der Ort, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Mehrere Azure-Dienste werden automatisch für die Behandlung von Ereignissen konfiguriert. **Azure Service Bus** ist einer dieser Dienste. 
@@ -54,7 +54,7 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/topics/topic1
 ```
 
-[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
+[!INCLUDE [event-grid-message-headers](./includes/event-grid-message-headers.md)]
 
 Beim Senden eines Ereignisses an eine Service Bus-Warteschlange oder ein Service Bus-Thema als im Broker gespeicherte Nachricht ist `messageid` dieser Nachricht eine interne System-ID.
 

@@ -9,12 +9,12 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: 3e9fbda18c786f934790c9aa70cd0f27d045fa64
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 1df5b2ba2aa44102975bfd68330466fccd0c6bb0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901311"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593171"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Tutorial: Azure Data Lake Storage Gen2, Azure Databricks und Spark
 
@@ -23,23 +23,23 @@ In diesem Tutorial erfahren Sie, wie Sie Ihren Azure Databricks-Cluster mit Dat
 In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines Databricks-Clusters
-> * Erfassen von unstrukturierten Daten in einem Speicherkonto
-> * Ausführen von Analysen für Ihre Daten in Blob Storage
+> - Erstellen eines Databricks-Clusters
+> - Erfassen von unstrukturierten Daten in einem Speicherkonto
+> - Ausführen von Analysen für Ihre Daten in Blob Storage
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Erstellen Sie ein Azure Data Lake Storage Gen2-Konto.
+- Erstellen Sie ein Azure Data Lake Storage Gen2-Konto.
 
   Lesen Sie die Informationen unter [Erstellen eines Speicherkontos für die Verwendung mit Azure Data Lake Storage Gen2](create-data-lake-storage-account.md).
 
-* Vergewissern Sie sich, dass Ihrem Benutzerkonto die Rolle [Mitwirkender an Storage-Blobdaten](assign-azure-role-data-access.md) zugewiesen ist.
+- Vergewissern Sie sich, dass Ihrem Benutzerkonto die Rolle [Mitwirkender an Storage-Blobdaten](assign-azure-role-data-access.md) zugewiesen ist.
 
-* Installieren Sie AzCopy v10. Weitere Informationen finden Sie unter [Übertragen von Daten mit AzCopy v10 (Vorschau)](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+- Installieren Sie AzCopy v10. Weitere Informationen finden Sie unter [Übertragen von Daten mit AzCopy v10 (Vorschau)](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-* Erstellen eines Dienstprinzipals Unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
+- Erstellen eines Dienstprinzipals Unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   Bei den Schritten in diesem Artikel müssen einige bestimmte Aktionen ausgeführt werden.
 
@@ -58,7 +58,7 @@ In diesem Tutorial werden Flugdaten des Bureau of Transportation Statistics verw
 
 2. Aktivieren Sie das Kontrollkästchen **Prezipped file** (ZIP-Datei), um alle Datenfelder auszuwählen.
 
-3. Wählen Sie die Downloadschaltfläche aus, und speichern Sie die Ergebnisse auf Ihrem Computer **.** 
+3. Wählen Sie die Downloadschaltfläche aus, und speichern Sie die Ergebnisse auf Ihrem Computer **.**
 
 4. Entzippen Sie den Inhalt der ZIP-Datei, und notieren Sie sich den Namen und den Pfad der Datei. Diese Informationen werden in einem späteren Schritt benötigt.
 
@@ -101,7 +101,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Dienst über das Azure-
     Geben Sie Werte für die folgenden Felder an, und übernehmen Sie bei den anderen Feldern die Standardwerte:
 
     - Geben Sie einen Namen für den Cluster ein.
-     
+
     - Aktivieren Sie das Kontrollkästchen **Terminate after 120 minutes of inactivity** (Nach 120 Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
 
 4. Klicken Sie auf **Cluster erstellen**. Wenn der Cluster ausgeführt wird, können Sie Notebooks an den Cluster anfügen und Spark-Aufträge ausführen.
@@ -126,11 +126,11 @@ Kopieren Sie mithilfe von AzCopy Daten aus Ihrer *CSV*-Datei in Ihr Data Lake St
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * Ersetzen Sie den Platzhalterwert `<csv-folder-path>` durch den Pfad zu der *CSV*-Datei.
+   - Ersetzen Sie den Platzhalterwert `<csv-folder-path>` durch den Pfad zu der *CSV*-Datei.
 
-   * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
+   - Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
-   * Ersetzen Sie den Platzhalter `<container-name>` durch den Namen eines Containers in Ihrem Speicherkonto.
+   - Ersetzen Sie den Platzhalter `<container-name>` durch den Namen eines Containers in Ihrem Speicherkonto.
 
 ## <a name="create-a-container-and-mount-it"></a>Erstellen und Einbinden eines Containers
 
@@ -148,7 +148,7 @@ In diesem Abschnitt erstellen Sie einen Container und einen Ordner in Ihrem Spei
 
 5. Kopieren Sie den folgenden Codeblock, und fügen Sie ihn in die erste Zelle ein, führen Sie den Code jedoch noch nicht aus.
 
-    ```Python
+    ```python
     configs = {"fs.azure.account.auth.type": "OAuth",
            "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
            "fs.azure.account.oauth2.client.id": "<appId>",
@@ -170,7 +170,7 @@ In diesem Abschnitt erstellen Sie einen Container und einen Ordner in Ihrem Spei
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Verwenden des Databricks-Notebooks zum Konvertieren von CSV in Parquet
 
-Fügen Sie dem zuvor erstellten Notebook eine neue Zelle hinzu, und fügen Sie in diese Zelle den folgenden Code ein. 
+Fügen Sie dem zuvor erstellten Notebook eine neue Zelle hinzu, und fügen Sie in diese Zelle den folgenden Code ein.
 
 ```python
 # Use the previously established DBFS mount point to read the data.
@@ -210,7 +210,7 @@ Als Nächstes können Sie damit beginnen, die Daten abzufragen, die Sie in Ihr S
 
 Führen Sie das folgende Skript aus, um Dataframes für Ihre Datenquellen zu erstellen:
 
-* Ersetzen Sie den Platzhalterwert `<csv-folder-path>` durch den Pfad zu der *CSV*-Datei.
+- Ersetzen Sie den Platzhalterwert `<csv-folder-path>` durch den Pfad zu der *CSV*-Datei.
 
 ```python
 # Copy this into a Cmd cell in your notebook.
@@ -277,5 +277,5 @@ Löschen Sie die Ressourcengruppe und alle dazugehörigen Ressourcen, wenn Sie s
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Extrahieren, Transformieren und Laden von Daten mithilfe von Apache Hive in Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)

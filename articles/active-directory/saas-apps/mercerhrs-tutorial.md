@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fc60b838219e73b008f82271353ca75d0d24d2e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d1d06f255a913530861222fa0d11f5ceeebb1c1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92517190"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124795695"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>Tutorial: Azure Active Directory-Integration mit Mercer BenefitsCentral (MBC)
 
@@ -185,7 +185,7 @@ In diesem Abschnitt erstellen Sie in Mercer BenefitsCentral (MBC) einen Benutzer
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Mercer BenefitsCentral (MBC)“ klicken, sollten Sie automatisch bei Ihrer Mercer BenefitsCentral (MBC)-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Mercer BenefitsCentral (MBC)“ klicken, sollten Sie automatisch bei Ihrer Mercer BenefitsCentral (MBC)-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

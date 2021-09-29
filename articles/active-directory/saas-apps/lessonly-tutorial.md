@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/20/2021
 ms.author: jeedes
-ms.openlocfilehash: fdaa5112b867d1a3940dc91b0b646a180516c8f0
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 6d809e2a93ad482e003afd7d9cbb6b3d372323d9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892812"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768323"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Lesson.ly
 
@@ -154,7 +154,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Lesson.ly-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Lesson.ly“ klicken, werden Sie zur Anmelde-URL für Lesson.ly weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Lesson.ly“ klicken, werden Sie zur Anmelde-URL für Lesson.ly weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

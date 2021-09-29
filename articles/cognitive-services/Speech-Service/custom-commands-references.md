@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 1040c05b081c6edb181d349d00468d1ba0aac3a7
-ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
+ms.openlocfilehash: 85c51be3b8434aadd254b0274e22b756c667832f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122455917"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750772"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>Konzepte und Definitionen für benutzerdefinierte Befehle
 
@@ -66,7 +66,7 @@ Von benutzerdefinierten Befehlen werden folgende Parametertypen unterstützt:
 * Temperatur
 * url
 
-Jedes Gebietsschema unterstützt den Parametertyp „String“, aber die Verfügbarkeit aller anderen Typen unterscheidet sich je nach Gebietsschema. „Benutzerdefinierte Befehle“ verwendet die vordefinierte Entitätsauflösung von LUIS, sodass die Verfügbarkeit eines Parametertyps in einem Gebietsschema von der vordefinierten Entitätsauflösung von LUIS in diesem Gebietsschema abhängt. Weitere Informationen zur Unterstützung der vordefinierten Entitäten von LUIS pro Gebietsschema finden Sie [hier](/azure/cognitive-services/luis/luis-reference-prebuilt-entities).
+Jedes Gebietsschema unterstützt den Parametertyp „String“, aber die Verfügbarkeit aller anderen Typen unterscheidet sich je nach Gebietsschema. „Benutzerdefinierte Befehle“ verwendet die vordefinierte Entitätsauflösung von LUIS, sodass die Verfügbarkeit eines Parametertyps in einem Gebietsschema von der vordefinierten Entitätsauflösung von LUIS in diesem Gebietsschema abhängt. Weitere Informationen zur Unterstützung der vordefinierten Entitäten von LUIS pro Gebietsschema finden Sie [hier](../luis/luis-reference-prebuilt-entities.md).
 
 Einige Parametertypen wie Number, String und DateTime unterstützen die Konfiguration von Standardwerten, die Sie über das Portal konfigurieren können.
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: daf339a1ba79212f82a853a209068c97c13b29f8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 7c3e4441289b2b17cf772df73f3c53caa465813e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965999"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732586"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Fünf Schritte zum Integrieren Ihrer gesamten Apps in Azure AD
 
@@ -74,7 +74,7 @@ Ein guter Ausgangspunkt ist die Auswertung Ihrer Nutzung von AD FS (Active Dire
 
 ![Im Diagramm sind lokale Apps, Branchenanwendungen, SaaS-Apps und Office 365-Apps (über Azure AD) dargestellt, die durch gepunktete Linien jeweils mit Active Directory und AD FS verbunden sind.](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 
-Sie können diese Konfiguration aktualisieren, indem Sie [AD FS durch Azure AD als Mittelpunkt Ihrer Lösung für die Identitätsverwaltung ersetzen](../manage-apps/migrate-adfs-apps-to-azure.md). Dies ermöglicht die Anmeldung für alle Apps, auf die Ihre Mitarbeiter zugreifen möchten. Die Mitarbeiter können alle Geschäftsanwendungen, die sie benötigen, über das [MyApps-Portal](../user-help/my-apps-portal-end-user-access.md) leicht finden und kommen darüber hinaus in den Genuss der oben beschriebenen weiteren Vorteile.
+Sie können diese Konfiguration aktualisieren, indem Sie [AD FS durch Azure AD als Mittelpunkt Ihrer Lösung für die Identitätsverwaltung ersetzen](../manage-apps/migrate-adfs-apps-to-azure.md). Dies ermöglicht die Anmeldung für alle Apps, auf die Ihre Mitarbeiter zugreifen möchten. Die Mitarbeiter können alle Geschäftsanwendungen, die sie benötigen, über das [MyApps-Portal](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510) leicht finden und kommen darüber hinaus in den Genuss der oben beschriebenen weiteren Vorteile.
 
 ![Im Diagramm sind lokale Apps (über Active Directory und AD FS), Branchenanwendungen, SaaS-Apps und Office 365-Apps dargestellt, die durch gepunktete Linien jeweils mit Azure Active Directory verbunden sind.](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-2.png)
 

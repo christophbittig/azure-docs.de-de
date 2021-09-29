@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d7e471ea01a7b0244080a0df9738aa3b8f70268d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8efe40fd4a60da7fa77e642d8ad95b3495d9771e
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590948"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094593"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>Aktualisieren der Network Watcher-Erweiterung auf die neueste Version
 
@@ -181,7 +181,7 @@ Führen Sie die folgenden Befehle aus:
 Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux"
 
 #Windows command
-Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "NetworkWatcherAgentWindows" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -ForceRerun "True"
+Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name " AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -ForceRerun "True"
 
 ```
 

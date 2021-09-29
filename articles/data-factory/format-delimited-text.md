@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 64ef52e542d5e014ab3e79d98f730f691fa28a50
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 4b21aa5d63f371749081d7bc71577c7d0f5a2d49
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257370"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787677"
 ---
 # <a name="delimited-text-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Das Textformat mit Trennzeichen in Azure Data Factory and Azure Synapse Analytics
 
@@ -28,7 +28,7 @@ Das Textformat mit Trennzeichen wird für die folgenden Connectors unterstützt:
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste mit Eigenschaften, die vom DelimitedText-Dataset unterstützt werden.
 
-| Eigenschaft         | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft         | Beschreibung                                                  | Erforderlich |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Die type-Eigenschaft des Datasets muss auf **DelimitedText** festgelegt werden. | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften.  | Ja      |
@@ -78,7 +78,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt.
 
-| Eigenschaft       | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft       | Beschreibung                                                  | Erforderlich |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **DelimitedTextSource** festgelegt werden. | Ja      |
 | formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen zu **Leseeinstellungen für durch Trennzeichen getrennten Text** finden Sie in der Tabelle unten. |  Nein       |
@@ -86,7 +86,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktiv
 
 Unterstützte **Leseeinstellungen für durch Trennzeichen getrennten Text** finden Sie unter `formatSettings`:
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Der Typ von „formatSettings“ muss auf **DelimitedTextReadSettings** festgelegt werden. | Ja      |
 | skipLineCount | Gibt an, wie viele **nicht leere** Zeilen beim Lesen von Daten aus Eingabedateien übersprungen werden sollen. <br>Wenn „skipLineCount“ und „firstRowAsHeader“ gleichzeitig angegeben sind, werden die Zeilen zuerst übersprungen, und anschließend werden die Kopfzeileninformationen aus der Eingabedatei gelesen. | Nein       |
@@ -126,7 +126,7 @@ Unterstützte **Leseeinstellungen für durch Trennzeichen getrennten Text** find
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivität unterstützt:
 
-| Eigenschaft       | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft       | Beschreibung                                                  | Erforderlich |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **DelimitedTextSink** festgelegt werden. | Ja      |
 | formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen zu **Schreibeinstellungen für durch Trennzeichen getrennten Text** finden Sie in der Tabelle unten. |    Nein      |
@@ -134,7 +134,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivit
 
 Unterstützte **Schreibeinstellungen für durch Trennzeichen getrennten Text** finden Sie unter `formatSettings`:
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich                                              |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | Der Typ von „formatSettings“ muss auf **DelimitedTextWriteSettings** festgelegt werden. | Ja                                                   |
 | fileExtension | Die Dateierweiterung, mit der die Ausgabedateien benannt werden, z. B. `.csv`, `.txt`. Es muss angegeben werden, wenn `fileName` nicht in der Ausgabe des DelimitedText-Datasets angegeben ist. Wenn der Dateiname im Ausgabedataset konfiguriert wurde, wird er als Name für die Senkendatei verwendet, und die Dateierweiterungseinstellung wird ignoriert.  | Ja, wenn kein Dateiname im Ausgabedataset angegeben ist |
@@ -149,7 +149,7 @@ Bei Zuordnungsdatenflüssen können Sie in den folgenden Datenspeichern das Text
 
 In der folgenden Tabelle sind die von einer DelimitedText-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Platzhalterpfade | Alle Dateien, die dem Platzhalterpfad entsprechen, werden verarbeitet. Überschreibt den Ordner und den Dateipfad, die im Dataset festgelegt sind. | nein | String[] | wildcardPaths |
 | Partitionsstammpfad | Für partitionierte Dateidaten können Sie einen Partitionsstammpfad eingeben, um partitionierte Ordner als Spalten zu lesen. | nein | String | partitionRootPath |
@@ -167,7 +167,7 @@ In der folgenden Tabelle sind die von einer DelimitedText-Quelle unterstützten 
 
 Das folgende Bild ist ein Beispiel für eine DelimitedText-Quellkonfiguration bei Zuordnungsdatenflüssen.
 
-![DelimitedText-Quelle](media/data-flow/delimited-text-source.png)
+:::image type="content" source="media/data-flow/delimited-text-source.png" alt-text="DelimitedText-Quelle":::
 
 Das zugehörige Datenflussskript ist:
 
@@ -186,7 +186,7 @@ source(
 
 In der folgenden Tabelle sind die von einer DelimitedText-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Ordner löschen | Wenn der Zielordner vor dem Schreiben gelöscht wird. | nein | `true` oder `false` | truncate |
 | Dateinamenoption | Das Namensformat der geschriebenen Daten. Standardmäßig eine Datei pro Partition im Format `part-#####-tid-<guid>`. | nein | Muster: String <br> Pro Partition: String[] <br> Dateiname aus Spaltendaten: String <br> Ausgabe in eine einzelne Datei: `['<fileName>']` <br> Ordnername aus Spaltendaten: String | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames <br> rowFolderUrlColumn |
@@ -197,7 +197,7 @@ In der folgenden Tabelle sind die von einer DelimitedText-Senke unterstützten E
 
 Das folgende Bild ist ein Beispiel für eine DelimitedText-Senkenkonfiguration bei Zuordnungsdatenflüssen.
 
-![DelimitedText-Senke](media/data-flow/delimited-text-sink.png)
+:::image type="content" source="media/data-flow/delimited-text-sink.png" alt-text="DelimitedText-Senke":::
 
 Das zugehörige Datenflussskript ist:
 

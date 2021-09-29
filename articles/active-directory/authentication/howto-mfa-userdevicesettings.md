@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc0be7e50c5cce511fafd7d8b407626bd57659bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abd69e65f5c280eaac8acb41138cf265be0af113
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98183131"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763023"
 ---
 # <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>Verwalten von Benutzerauthentifizierungsmethoden für Azure AD Multi-Factor Authentication
 
@@ -118,4 +118,4 @@ Um die App-Kennwörter eines Benutzers zu löschen, führen Sie die folgenden Sc
 
 In diesem Artikel lernten Sie, wie Sie die Konfiguration individueller Benutzereinstellungen unterstützen. Informationen zum Konfigurieren der Azure AD Multi-Factor Authentication-Diensteinstellungen insgesamt finden Sie unter [Konfigurieren von Azure AD Multi-Factor Authentication-Einstellungen](howto-mfa-mfasettings.md).
 
-Wenn Ihre Benutzer Hilfe benötigen, finden Sie weitere Informationen im [Benutzerhandbuch für Azure AD Multi-Factor Authentication](../user-help/multi-factor-authentication-end-user-first-time.md).
+Wenn Ihre Benutzer Hilfe benötigen, finden Sie weitere Informationen im [Benutzerhandbuch für Azure AD Multi-Factor Authentication](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc).

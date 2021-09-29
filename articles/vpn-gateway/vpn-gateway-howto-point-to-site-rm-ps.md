@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/03/2021
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0d6281f0767938b8ffd00f1790a629adcb8252d6
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 62765ceb53d7a66d591b0fa62397b50c7fc04b9a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114722407"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774042"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-azure-certificate-authentication-powershell"></a>Konfigurieren einer Point-to-Site-VPN-Verbindung mit einem VNET unter Verwendung der Azure-Zertifikatauthentifizierung: PowerShell
 
@@ -386,6 +386,6 @@ Weitere Informationen zu P2S finden Sie in den [häufig gestellten Fragen zu VPN
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](../index.yml) . Weitere Informationen zu Netzwerken und virtuellen Computern finden Sie unter [Azure- und Linux-VM-Netzwerke (Übersicht)](../virtual-machines/network-overview.md).
+Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](../index.yml) . Weitere Informationen zu Netzwerken und virtuellen Computern finden Sie unter [Azure- und Linux-VM-Netzwerke (Übersicht)](../virtual-network/network-overview.md).
 
 Informationen zur P2S-Problembehandlung finden Sie unter [Problembehandlung: Azure Punkt-zu-Standort-Verbindungsprobleme](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).

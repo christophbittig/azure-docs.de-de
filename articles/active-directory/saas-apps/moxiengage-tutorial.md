@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b61590fd001264d5cc9201fe1678396201e14cc8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a61bdf4f417a9084af9364377aebede511e42c7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92507889"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742228"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>Tutorial: Azure Active Directory-Integration mit Moxi Engage
 
@@ -183,7 +183,7 @@ In diesem Abschnitt erstellen Sie in Moxi Engage eine Benutzerin namens Britta S
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Moxi Engage“ klicken, sollten Sie automatisch bei der Moxi Engage-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Moxi Engage“ klicken, sollten Sie automatisch bei der Moxi Engage-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

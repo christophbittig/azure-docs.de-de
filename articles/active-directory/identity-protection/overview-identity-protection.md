@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7c48b156b8f25d40f88be74287c9955a4012107
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b849d6b208208e42700037179b60b286658bc1fd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739969"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779405"
 ---
 # <a name="what-is-identity-protection"></a>Was ist Identity Protection?
 
@@ -25,7 +25,7 @@ Identity Protection ist ein Tool, mit dem Organisationen drei wichtige Aufgaben 
 
 - [Automatisieren der Erkennung und Behandlung identitätsbasierter Risiken](howto-identity-protection-configure-risk-policies.md)
 - [Untersuchen von Risiken](howto-identity-protection-investigate-risk.md) unter Verwendung von Daten im Portal
-- [Exportieren von Risikoerkennungsdaten in Ihre SIEM-Lösung](../../sentinel/connect-azure-ad-identity-protection.md)
+- [Exportieren von Risikoerkennungsdaten in Ihre SIEM-Lösung](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)
 
 Identity Protection nutzt die Erkenntnisse, die Microsoft dank seiner Position in Organisationen (Azure AD), im Verbraucherbereich (Microsoft-Konten) und im Spielebereich (Xbox) gewonnen hat, um Ihre Benutzer zu schützen. Microsoft analysiert 6,5 Billionen Signale pro Tag, um Bedrohungen zu erkennen und Kunden vor Bedrohungen zu schützen.
 
@@ -79,7 +79,7 @@ Microsoft macht zwar keine spezifischen Angaben zur Berechnung von Risiken, mit 
 
 Daten aus Identity Protection können zur Archivierung sowie für weitere Untersuchungen und Korrelationsschritte in andere Tools exportiert werden. Dank der Microsoft Graph-basierten APIs können Organisationen diese Daten zur weiteren Verarbeitung in einem Tool (beispielsweise SIEM) sammeln. Der Zugriff auf die Identity Protection-API wird im Artikel [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](howto-identity-protection-graph-api.md) erläutert.
 
-Informationen zur Integration von Identity Protection-Informationen in Azure Sentinel finden Sie im Artikel [Verknüpfen von Daten aus Azure AD Identity Protection](../../sentinel/connect-azure-ad-identity-protection.md).
+Informationen zur Integration von Identity Protection-Informationen in Azure Sentinel finden Sie im Artikel [Verknüpfen von Daten aus Azure AD Identity Protection](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection).
 
 ## <a name="permissions"></a>Berechtigungen
 

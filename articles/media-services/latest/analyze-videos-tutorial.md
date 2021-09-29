@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 38586e2cc60186c929b5ca43990019e768a1ed13
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 8f857ff3c1a17e0f17d396b8d97d9d0e27b4fa18
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720477"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646078"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Tutorial: Analysieren von Videos mit Media Services v3
 
@@ -34,7 +34,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, Datenschutz und Sicherheit
  
-Wichtiger Hinweis: Wir möchten Sie daran erinnern, dass Sie bei der Verwendung des Azure Video Analyzer for Media (früher Video Indexer) alle geltenden Gesetze einhalten müssen. Sie dürfen weder den Azure Video Analyzer for Media noch einen anderen Azure-Dienst auf eine Weise verwenden, die die Rechte Dritter verletzt. Bevor Sie Videos, einschließlich biometrischer Daten, zur Verarbeitung und Speicherung in den Azure Video Analyzer for Media-Dienst hochladen, müssen Sie über alle erforderlichen Rechte, einschließlich aller entsprechenden Zustimmungen der Personen im Video, verfügen. Weitere Informationen zu Compliance, Datenschutz und Sicherheit in Zusammenhang mit dem Azure Video Analyzer for Media finden Sie in den [Azure Cognitive Services-Bestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Bestimmungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Bestimmungen für Onlinedienste und [hier](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md). Wenn Sie den Azure Video Analyzer for Media verwenden, akzeptieren Sie die Cognitive Services-Bedingungen, die OST, die DPA und die Datenschutzbestimmungen.
+Wichtiger Hinweis: Wir möchten Sie daran erinnern, dass Sie bei der Verwendung des Azure Video Analyzer for Media (früher Video Indexer) alle geltenden Gesetze einhalten müssen. Sie dürfen weder den Azure Video Analyzer for Media noch einen anderen Azure-Dienst auf eine Weise verwenden, die die Rechte Dritter verletzt. Bevor Sie Videos, einschließlich biometrischer Daten, zur Verarbeitung und Speicherung in den Azure Video Analyzer for Media-Dienst hochladen, müssen Sie über alle erforderlichen Rechte, einschließlich aller entsprechenden Zustimmungen der Personen im Video, verfügen. Weitere Informationen zu Compliance, Datenschutz und Sicherheit in Zusammenhang mit dem Azure Video Analyzer for Media finden Sie in den [Azure Cognitive Services-Bestimmungen](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Bestimmungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Bestimmungen für Onlinedienste und [hier](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.yml). Wenn Sie den Azure Video Analyzer for Media verwenden, akzeptieren Sie die Cognitive Services-Bedingungen, die OST, die DPA und die Datenschutzbestimmungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -78,7 +78,7 @@ Im Code, den Sie am Anfang des Artikels geklont haben, wird mit der Funktion `Ge
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#GetCredentialsAsync)]
 
-Bei der interaktiven Authentifizierung wird durch die Funktion `GetCredentialsInteractiveAuthAsync` das Objekt `ServiceClientCredentials` erstellt, und zwar basierend auf einer interaktiven Authentifizierung und den Verbindungsparametern, die in der lokalen Konfigurationsdatei (*appsettings.json*) oder über die Umgebungsvariablendatei ( *.env*) im Stammverzeichnis des Repositorys angegeben sind. In diesem Fall sind AADCLIENTID und AADSECRET in der Konfigurations- oder Umgebungsvariablendatei nicht erforderlich.
+Bei der interaktiven Authentifizierung wird durch die Funktion `GetCredentialsInteractiveAuthAsync` das Objekt `ServiceClientCredentials` erstellt, und zwar basierend auf einer interaktiven Authentifizierung und den Verbindungsparametern, die in der lokalen Konfigurationsdatei (*appsettings.json*) oder über die Umgebungsvariablendatei ( *.env*) im Stammverzeichnis des Repositorys angegeben sind. In diesem Fall sind „AADCLIENTID“ und „AADSECRET“ in der Konfigurations- oder Umgebungsvariablendatei nicht erforderlich.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/Common_Utils/Authentication.cs#GetCredentialsInteractiveAuthAsync)]
 

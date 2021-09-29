@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: b95286169df2960d8e7297a493354b8f01e2f667
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 1bde9622dd649d24de26f38a282d075a46bbaee2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029691"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773757"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-ad-multi-factor-authentication"></a>Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure AD Multi-Factor Authentication
 
@@ -51,14 +51,14 @@ Wenn Fehler in der NPS-Erweiterung für Azure AD Multi-Factor Authentication au
 | Fehlercode | Fehlermeldung | Schritte zur Problembehandlung |
 | ---------- | ------------- | --------------------- |
 | **AccessDenied** | Der Mandant des Aufrufers verfügt nicht über Zugriffsberechtigungen zur Authentifizierung des Benutzers. | Überprüfen Sie, ob die Mandantendomäne und die Domäne des Benutzerprinzipalnamens (UPN) identisch sind. Stellen Sie beispielsweise sicher, dass user@contoso.com versucht, sich beim Contoso-Mandanten zu authentifizieren. Der UPN stellt einen gültigen Benutzer für den Mandanten in Azure dar. |
-| **AuthenticationMethodNotConfigured** | Die angegebene Authentifizierungsmethode wurde für den Benutzer nicht konfiguriert. | Fordern Sie den Benutzer auf, die Überprüfungsmethoden gemäß der Anleitung in [Verwalten der Einstellungen für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-manage-settings.md) hinzuzufügen oder zu überprüfen. |
+| **AuthenticationMethodNotConfigured** | Die angegebene Authentifizierungsmethode wurde für den Benutzer nicht konfiguriert. | Fordern Sie den Benutzer auf, die Überprüfungsmethoden gemäß der Anleitung in [Verwalten der Einstellungen für die zweistufige Überprüfung](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7) hinzuzufügen oder zu überprüfen. |
 | **AuthenticationMethodNotSupported** | Die angegebene Authentifizierungsmethode wird nicht unterstützt. | Erfassen Sie alle Protokolle, die diesen Fehler enthalten, und [wenden Sie sich an den Support](#contact-microsoft-support). Wenn Sie sich an den Support wenden, geben Sie den Benutzernamen und die sekundäre Überprüfungsmethode an, die den Fehler ausgelöst hat. |
-| **BecAccessDenied** | Der MSODS BEC-Aufruf hat „Zugriff verweigert“ zurückgegeben, wahrscheinlich ist der Benutzername im Mandanten nicht definiert. | Der Benutzer ist in der lokalen Active Directory-Instanz vorhanden, wird aber nicht mit AD Connect in Azure AD synchronisiert. Oder der Benutzer fehlt für den Mandanten. Fügen Sie den Benutzer zu Azure AD hinzu, und fordern Sie ihn auf, die Überprüfungsmethoden gemäß der Anleitung in [Verwalten der Einstellungen für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-manage-settings.md) hinzuzufügen oder zu überprüfen. |
+| **BecAccessDenied** | Der MSODS BEC-Aufruf hat „Zugriff verweigert“ zurückgegeben, wahrscheinlich ist der Benutzername im Mandanten nicht definiert. | Der Benutzer ist in der lokalen Active Directory-Instanz vorhanden, wird aber nicht mit AD Connect in Azure AD synchronisiert. Oder der Benutzer fehlt für den Mandanten. Fügen Sie den Benutzer zu Azure AD hinzu, und fordern Sie ihn auf, die Überprüfungsmethoden gemäß der Anleitung in [Verwalten der Einstellungen für die zweistufige Überprüfung](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7) hinzuzufügen oder zu überprüfen. |
 | **InvalidFormat** oder **StrongAuthenticationServiceInvalidParameter** | Die Telefonnummer hat ein nicht erkennbares Format. | Bitten Sie die Benutzer, ihre Telefonnummern für die Überprüfung zu korrigieren. |
 | **InvalidSession** | Die angegebene Sitzung ist ungültig oder möglicherweise abgelaufen | Der Abschluss der Sitzung hat mehr als drei Minuten in Anspruch genommen. Stellen Sie sicher, dass der Benutzer innerhalb von drei Minuten nach Initiierung der Authentifizierungsanforderung den Überprüfungscode eingibt oder auf die App-Benachrichtigung antwortet. Wenn das Problem dadurch nicht behoben wird, stellen Sie sicher, dass keine Netzwerklatenzen zwischen Client, NAS-Server, NPS-Server und Azure AD MFA-Endpunkt vorhanden sind.  |
-| **NoDefaultAuthenticationMethodIsConfigured** | Für den Benutzer wurde keine Standardauthentifizierungsmethode konfiguriert. | Fordern Sie den Benutzer auf, die Überprüfungsmethoden gemäß der Anleitung in [Verwalten der Einstellungen für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-manage-settings.md) hinzuzufügen oder zu überprüfen. Stellen Sie sicher, dass der Benutzer eine Standardauthentifizierungsmethode ausgewählt und diese Methode für sein Konto konfiguriert hat. |
+| **NoDefaultAuthenticationMethodIsConfigured** | Für den Benutzer wurde keine Standardauthentifizierungsmethode konfiguriert. | Fordern Sie den Benutzer auf, die Überprüfungsmethoden gemäß der Anleitung in [Verwalten der Einstellungen für die zweistufige Überprüfung](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7) hinzuzufügen oder zu überprüfen. Stellen Sie sicher, dass der Benutzer eine Standardauthentifizierungsmethode ausgewählt und diese Methode für sein Konto konfiguriert hat. |
 | **OathCodePinIncorrect** | Falscher Code und falsche Pin eingegeben. | Dieser Fehler sollte in der NPS-Erweiterung nicht auftreten. Wenn bei Ihrem Benutzer der Fehler auftritt, [wenden Sie sich an den Support](#contact-microsoft-support), um Hilfe bei der Problembehandlung zu erhalten. |
-| **ProofDataNotFound** | Nachweisdaten wurden für die angegebene Authentifizierungsmethode nicht konfiguriert. | Fordern Sie den Benutzer auf, eine andere Überprüfungsmethode auszuprobieren oder eine neue Überprüfungsmethode gemäß der Anleitung in [Verwalten der Einstellungen für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-manage-settings.md) hinzuzufügen. Wenn dieser Fehler weiterhin angezeigt wird, nachdem Sie sichergestellt haben, dass die Überprüfungsmethode ordnungsgemäß eingerichtet ist, [wenden Sie sich an den Support](#contact-microsoft-support). |
+| **ProofDataNotFound** | Nachweisdaten wurden für die angegebene Authentifizierungsmethode nicht konfiguriert. | Fordern Sie den Benutzer auf, eine andere Überprüfungsmethode auszuprobieren oder eine neue Überprüfungsmethode gemäß der Anleitung in [Verwalten der Einstellungen für die zweistufige Überprüfung](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7) hinzuzufügen. Wenn dieser Fehler weiterhin angezeigt wird, nachdem Sie sichergestellt haben, dass die Überprüfungsmethode ordnungsgemäß eingerichtet ist, [wenden Sie sich an den Support](#contact-microsoft-support). |
 | **SMSAuthFailedWrongCodePinEntered** | Falscher Code und falsche Pin eingegeben. (OneWaySMS) | Dieser Fehler sollte in der NPS-Erweiterung nicht auftreten. Wenn bei Ihrem Benutzer der Fehler auftritt, [wenden Sie sich an den Support](#contact-microsoft-support), um Hilfe bei der Problembehandlung zu erhalten. |
 | **TenantIsBlocked** | Der Mandant wird blockiert. | [Wenden Sie sich an den Support](#contact-microsoft-support), und geben Sie die *Mandanten-ID* von der Azure AD-Eigenschaftenseite im Azure-Portal an. |
 | **UserNotFound** | Der angegebene Benutzer wurde nicht gefunden. | Der Mandant wird in Azure AD nicht mehr als aktiv angezeigt. Überprüfen Sie, ob Ihr Abonnement aktiv ist und Sie über die erforderlichen Erstanbieter-Apps verfügen. Stellen Sie außerdem sicher, dass der Mandant im Zertifikatantragsteller den erwarteten Wert aufweist und dass das Zertifikat noch gültig und unter dem Dienstprinzipal registriert ist. |
@@ -95,7 +95,7 @@ Wenn einer dieser Fehler auftritt, sollten Sie sich [an den Support wenden](#con
 
 ### <a name="troubleshoot-user-accounts"></a>Problembehandlung bei Benutzerkonten
 
-Wenn Ihre Benutzer [Probleme mit der zweistufigen Überprüfung haben](../user-help/multi-factor-authentication-end-user-troubleshoot.md), unterstützen Sie sie beim Diagnostizieren der Probleme.
+Wenn Ihre Benutzer [Probleme mit der zweistufigen Überprüfung haben](https://support.microsoft.com/account-billing/common-problems-with-two-step-verification-for-a-work-or-school-account-63acbb9b-16a1-47b9-8619-6a865e8071a5), unterstützen Sie sie beim Diagnostizieren der Probleme.
 
 ### <a name="health-check-script"></a>Skript zur Integritätsprüfung
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: adc52df3a393abb5579a7e03015548808722b197
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 081295e77da4a8bdf3929a08f405fe0230967579
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697114"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754630"
 ---
 # <a name="hc-series"></a>HC-Serie
 
@@ -47,7 +47,7 @@ Weitere Informationen:
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Andere Größen
+## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
 
 - [Allgemeiner Zweck](sizes-general.md)
 - [Arbeitsspeicheroptimiert](sizes-memory.md)
@@ -55,6 +55,11 @@ Weitere Informationen:
 - [GPU-optimiert](sizes-gpu.md)
 - [High Performance Computing](sizes-hpc.md)
 - [Vorherige Generationen](sizes-previous-gen.md)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
+
+Weitere Informationen zu Datenträgertypen finden Sie unter [Welche Datenträgertypen stehen in Azure zur Verfügung?](disks-types.md)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

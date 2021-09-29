@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 04/02/2021
 ms.author: victorh
-ms.openlocfilehash: 4514717274cfb66fbfc0eee25b09aa9e1234ffad
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 504ed485115f48b252027431a5b69e2a6b5f33f3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280325"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763574"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-Protokolle und -Metriken
 
@@ -138,7 +138,7 @@ Sie haben drei Möglichkeiten, um Ihre Protokolle zu speichern:
 
    Aktivitätsprotokolleinträge werden standardmäßig gesammelt und können im Azure-Portal angezeigt werden.
 
-   Mit [Azure-Aktivitätsprotokollen](../azure-resource-manager/management/view-activity-logs.md) (ehemals Betriebs- und Überwachungsprotokolle) können Sie alle an Ihr Azure-Abonnement übermittelten Vorgänge anzeigen.
+   Mit [Azure-Aktivitätsprotokollen](../azure-monitor/essentials/activity-log.md) (ehemals Betriebs- und Überwachungsprotokolle) können Sie alle an Ihr Azure-Abonnement übermittelten Vorgänge anzeigen.
 
 ## <a name="metrics"></a>Metriken
 

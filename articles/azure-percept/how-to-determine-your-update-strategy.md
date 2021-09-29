@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 08/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: c26de68bc30e8ebfa6de92c8e142e6ca69088b26
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: d5b3f793f6fdf7fe1182c700da8635df9b2ef9a0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223343"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820536"
 ---
 # <a name="determine-your-update-strategy-for-azure-percept-dk"></a>Bestimmen Ihrer Updatestrategie für Azure Percept DK
 
@@ -20,7 +20,7 @@ Um Ihre Azure Percept DK Software auf dem neuesten Stand zu halten, bietet Micro
 
 Das Update über USB-Kabel führt eine Neuinstallation des Dev-Kits durch. Vorhandene Konfigurationen und alle Benutzerdaten in jeder Partition werden nach der Bereitstellung des neuen Images gelöscht. Verbinden Sie dazu das Dev-Kit über ein Typ-C-USB-Kabel mit einem Hostsystem. Bei dem Host-System kann es sich um einen Windows/Linux Computer handeln.  Sie können diese Aktualisierungsmethode auch als Zurücksetzen auf Factoryeinstellungen verwenden. Dazu wird die exakt gleiche Version auf das Dev-Kit neu übertragen. Siehe [Update der Azure Percept DK über eine USB-C-Kabelverbindung](./how-to-update-via-usb.md) für Details über das USB-Kabel-Update.
 
-Das OTA-Update basiert auf dem Azure-Dienst [Device Update for IoT Hub](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-resources). Verbinden Sie das Dev-Kit mit Azure loT Hub, um diese Art von Update durchzuführen. Konfigurationen und Benutzerdaten bleiben nach dem OTA-Update erhalten. Siehe [Aktualisieren Ihres Azure Percept DK-Geräts per Funk (Over-the-Air-Update)](./how-to-update-over-the-air.md) für Details zur Durchführung des OTA-Updates.
+Das OTA-Update basiert auf dem Azure-Dienst [Device Update for IoT Hub](../iot-hub-device-update/device-update-resources.md). Verbinden Sie das Dev-Kit mit Azure loT Hub, um diese Art von Update durchzuführen. Konfigurationen und Benutzerdaten bleiben nach dem OTA-Update erhalten. Siehe [Aktualisieren Ihres Azure Percept DK-Geräts per Funk (Over-the-Air-Update)](./how-to-update-over-the-air.md) für Details zur Durchführung des OTA-Updates.
 
 Prüfen Sie die Vor- und Nachteile des USB-Kabel-Updates und des OTA-Updates und folgen Sie dann den Empfehlungen von Microsoft für die verschiedenen Szenarien.
 

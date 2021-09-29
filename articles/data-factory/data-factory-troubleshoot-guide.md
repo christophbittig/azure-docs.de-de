@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: troubleshooting
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: abnarain
-ms.openlocfilehash: bab07b19efc1978836d1f14463392f8de2bd6e92
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: c9e6c4c0475842d9eb8c674464ebcf997d98b548
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864551"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749446"
 ---
 # <a name="troubleshoot-azure-data-factory-and-synapse-pipelines"></a>Problembehandlung in Azure Data Factory- und Synapse-Pipelines
 
@@ -566,7 +566,7 @@ Die folgende Tabelle gilt für Azure Batch.
 
 - **Empfehlung**: Korrigieren Sie die Anmeldeinformation, und stellen Sie den verknüpften Dienst erneut bereit. Überprüfen Sie zunächst, ob die Anmeldeinformationen in HDInsight funktionieren. Öffnen Sie dazu den Cluster-URI in einem beliebigen Browser, und versuchen Sie, sich anzumelden. Wenn die Anmeldeinformationen nicht funktionieren, können Sie sie im Azure-Portal zurücksetzen.
 
-   Setzen Sie das Kennwort beim ESP-Cluster über die [Self-Service-Kennwortzurücksetzung](../active-directory/user-help/active-directory-passwords-update-your-own-password.md) zurück.
+   Setzen Sie das Kennwort beim ESP-Cluster über die [Self-Service-Kennwortzurücksetzung](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e) zurück.
 
  </br>
 
@@ -953,7 +953,7 @@ Die folgende Tabelle gilt für Azure Batch.
 
 - **Lösung:** Navigieren Sie zum Pfad **Microsoft Integration Runtime\4.0\Shared\ODBC Drivers\Microsoft Hive ODBC Driver\lib**, und öffnen Sie „DriverConfiguration64.exe“, um die Einstellung zu ändern.
 
-    ![Deaktivieren von „Systemvertrauensspeicher verwenden“](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+    :::image type="content" source="./media/connector-troubleshoot-guide/system-trust-store-setting.png" alt-text="Deaktivieren von „Systemvertrauensspeicher verwenden“":::
 
 ## <a name="web-activity"></a>Webaktivität
 
@@ -982,7 +982,7 @@ Verwenden Sie **Fiddler** zum Erstellen einer HTTP-Sitzung der überwachten Weba
 
    1. Wählen Sie auf der Registerkarte „HTTPS“ **Capture HTTPS CONNECTs** (HTTPS CONNECTs erfassen) und **Decrypt HTTPS Traffic** (HTTPS-Datenverkehr entschlüsseln) aus.
 
-      ![Fiddler-Optionen](media/data-factory-troubleshoot-guide/fiddler-options.png)
+      :::image type="content" source="media/data-factory-troubleshoot-guide/fiddler-options.png" alt-text="Fiddler-Optionen":::
 
 1. Wenn in der Anwendung TLS/SSL-Zertifikate verwendet werden, fügen Sie das Fiddler-Zertifikat Ihrem Gerät hinzu.
 

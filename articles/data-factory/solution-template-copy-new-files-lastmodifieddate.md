@@ -9,12 +9,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: 77ff6024605c56f0ef74dd51936aed19efdb8a75
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 601dcaa3ea402f8f6b8b8c0664b8a47cfb5f4359
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346714"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743518"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Kopieren neuer und geänderter Dateien nach „LastModifiedDate“ mit Azure Data Factory
 
@@ -41,19 +41,19 @@ Die Vorlage definiert sechs Parameter:
 
 1. Navigieren Sie zur Vorlage **Copy new files only by LastModifiedDate** (Neue Dateien nur nach LastModifiedDate kopieren). Erstellen Sie eine **neue Verbindung** mit Ihrem Quellspeicher. Aus dem Quellspeicher sollen die Dateien kopiert werden.
 
-    ![Erstellen einer neuen Verbindung mit der Quelle](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png" alt-text="Erstellen einer neuen Verbindung mit der Quelle":::
     
 2. Erstellen Sie eine **neue Verbindung** mit Ihrem Zielspeicher. Die Dateien sollen in den Zielspeicher kopiert werden. 
 
-    ![Erstellen einer neuen Verbindung mit dem Ziel](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png" alt-text="Erstellen einer neuen Verbindung mit dem Ziel":::
 
 3. Klicken Sie auf **Diese Vorlage verwenden**.
 
-    ![„Diese Vorlage verwenden“](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png" alt-text="„Diese Vorlage verwenden“":::
     
 4. Die im Bereich verfügbare Pipeline wird angezeigt, wie im folgenden Beispiel dargestellt:
 
-    ![Pipeline anzeigen](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png" alt-text="Pipeline anzeigen":::
 
 5. Klicken Sie auf **Debuggen**, geben Sie den Wert für die **Parameter** ein, und klicken Sie auf **Fertig stellen**.  Auf der Abbildung wurden die Parameter folgendermaßen festgelegt:
    - **FolderPath_Source** = Quellordner
@@ -65,21 +65,21 @@ Die Vorlage definiert sechs Parameter:
     
     Im Beispiel werden die Dateien, die zwischen **2019-02-01T00:00:00Z** und **2019-03-01T00:00:00Z** geändert wurden, vom Quellpfad **sourcefolder/subfolder** in den Zielpfad **destinationfolder/subfolder** kopiert.  Sie können für diese Parameter eigene Werte eingeben.
 
-    ![Führen Sie die Pipeline aus.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate6.png" alt-text="Führen Sie die Pipeline aus.":::
 
 6. Überprüfen Sie das Ergebnis. Nur die Dateien werden angezeigt, die innerhalb des festgelegten Zeitraums geändert und in den Zielspeicher kopiert wurden.
 
-    ![Überprüfen des Ergebnisses](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png" alt-text="Überprüfen des Ergebnisses":::
     
 7. Nun können Sie einen Auslöser für rollierende Fenster hinzufügen, um diese Pipeline zu automatisieren. Dadurch kann die Pipeline neue und geänderte Dateien nur anhand von „LastModifiedDate“ regelmäßig kopieren.  Klicken Sie auf **Trigger hinzufügen**, und wählen Sie **Neu/Bearbeiten** aus.
 
-    ![Screenshot mit hervorgehobener Menüoption „Neu/Bearbeiten“, die bei Auswahl von „Trigger hinzufügen“ angezeigt wird](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png" alt-text="Screenshot mit hervorgehobener Menüoption „Neu/Bearbeiten“, die bei Auswahl von „Trigger hinzufügen“ angezeigt wird":::
     
 8. Wählen Sie im Fenster **Add Triggers** (Trigger hinzufügen) die Option **+ Neu** aus.
 
 9. Wählen Sie **Rollierendes Fenster** als Auslösertyp aus, und legen Sie die Häufigkeit auf **Alle 15 Minuten** fest (Sie können das Intervall jederzeit ändern). Wählen Sie für das Feld „Aktiviert“ die Option **Ja** aus, und wählen Sie dann **OK** aus.
 
-    ![Trigger erstellen](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png" alt-text="Trigger erstellen"::: 
     
 10. Legen Sie den Wert für die **Triggerausführungsparameter** wie im Folgenden veranschaulicht fest, und wählen Sie **Fertig stellen** aus.
     - **FolderPath_Source** = **Quellordner**.  Sie können diesen Wert durch Ihren Ordner im Quelldatenspeicher ersetzen.
@@ -89,11 +89,11 @@ Die Vorlage definiert sechs Parameter:
     - **LastModified_From** =   **\@trigger().outputs.windowStartTime**.  Hierbei handelt es sich um eine Systemvariable des Auslösers, die den Zeitpunkt bestimmt, zu dem die Pipeline zuletzt ausgelöst wurde.
     - **LastModified_To** =  **\@trigger().outputs.windowEndTime**.  Hierbei handelt es sich um eine Systemvariable des Auslösers, die den Zeitpunkt bestimmt, zu dem die Pipeline dieses Mal ausgelöst wird.
     
-    ![Eingabeparameter](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png" alt-text="Eingabeparameter":::
     
 11. Wählen Sie **Alle veröffentlichen**.
     
-    ![Alle veröffentlichen](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate12.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate12.png" alt-text="Alle veröffentlichen":::
 
 12. Erstellen Sie neue Dateien im Quellordner des Quelldatenspeichers.  Warten Sie nun, bis die Pipeline automatisch ausgelöst wird. Sie werden feststellen, dass nur die neuen Dateien in den Zielspeicher kopiert werden.
 
@@ -101,7 +101,7 @@ Die Vorlage definiert sechs Parameter:
 
 14. Überprüfen Sie das Ergebnis. Sie werden sehen, dass Ihre Pipeline automatisch alle 15 Minuten ausgelöst wird und dass bei jeder Ausführung der Pipeline nur die neuen oder geänderten Dateien aus dem Quellspeicher in den Zielspeicher kopiert werden.
 
-    ![Screenshot der Ergebnisse, die bei Auslösen der Pipeline zurückgegeben werden](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
+    :::image type="content" source="media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png" alt-text="Screenshot der Ergebnisse, die bei Auslösen der Pipeline zurückgegeben werden":::
     
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,14 +3,14 @@ title: Netzwerksicherheit für Azure Event Grid-Ressourcen
 description: In diesem Artikel wird beschrieben, wie Sie Diensttags für ausgehenden Datenverkehr, IP-Firewallregeln für eingehenden Datenverkehr und private Endpunkte für eingehenden Datenverkehr mit Azure Event Grid verwenden.
 author: VidyaKukke
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/28/2021
 ms.author: vkukke
-ms.openlocfilehash: d58e8b5ce9fb444fa501f897cca722613d9c51fe
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 041c09a23b25b2ffe487b6d13171c51f2d96e6e1
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967573"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212758"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netzwerksicherheit für Azure Event Grid-Ressourcen
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Event Grid verwenden: 
@@ -57,7 +57,7 @@ Wenn Sie einen privaten Endpunkt erstellen, wird der DNS-CNAME-Eintrag für die 
 
 Wenn Sie die Endpunkt-URL des Themas oder der Domäne außerhalb des VNET mit dem privaten Endpunkt auflösen, wird diese in den öffentlichen Endpunkt des Diensts aufgelöst. Die DNS-Ressourceneinträge für „topicA“ lauten nach dem Auflösen **außerhalb des VNET**, das den privaten Endpunkt hostet, wie folgt:
 
-| Name                                          | type      | Wert                                         |
+| Name                                          | Type      | Wert                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure traffic manager profile\>
@@ -66,7 +66,7 @@ Sie können den Zugriff für Clients außerhalb des VNET über den öffentlichen
 
 Bei Auflösung aus dem VNET, das den privaten Endpunkt hostet, wird die Endpunkt-URL des Themas oder der Domäne in die IP-Adresse des privaten Endpunkts aufgelöst. Die DNS-Ressourceneinträge für das Thema „topicA“ lauten nach dem Auflösen **innerhalb des VNET**, das den privaten Endpunkt hostet, wie folgt:
 
-| Name                                          | type      | Wert                                         |
+| Name                                          | Type      | Wert                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | Ein         | 10.0.0.5

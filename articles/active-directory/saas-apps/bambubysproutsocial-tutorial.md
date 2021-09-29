@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: bff69752b0b9bd2a1ded4605b874458cb0ae0cb9
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: f42f393c9191a082231a4d0c16912d0ac1e2ead8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271218"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814365"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>Tutorial: Azure Active Directory-Integration mit Bambu by Sprout Social
 
@@ -122,7 +122,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Bambu by Sprout Social-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Bambu by Sprout Social“ klicken, sollten Sie automatisch bei Ihrer Bambu by Sprout Social-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Bambu by Sprout Social“ klicken, sollten Sie automatisch bei Ihrer Bambu by Sprout Social-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: a32fdd1da872c45c0e2402cdddd0685ef4296c7a
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: e33dba0f48f59f9be02e9cbab8346efd078cb893
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691213"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803920"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4- und Dsv4-Serie
 
@@ -85,3 +85,22 @@ Die Größen der Dsv4-Serie laufen auf dem Intel&reg; Xeon&reg; Platinum 8272CL 
 
 <sup>1</sup> VMs der Dsv4-Serie können mit einem [Burst](./disk-bursting.md) ihre Datenträgerleistung für jeweils bis zu 30 Minuten auf das maximale Bursting verbessern.<br>
 <sup>2</sup> Beschleunigter Netzwerkbetrieb kann nur auf eine einzelne NIC angewendet werden. 
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
+
+- [Allgemeiner Zweck](sizes-general.md)
+- [Arbeitsspeicheroptimiert](sizes-memory.md)
+- [Speicheroptimiert](sizes-storage.md)
+- [GPU-optimiert](sizes-gpu.md)
+- [High Performance Computing](sizes-hpc.md)
+- [Vorherige Generationen](sizes-previous-gen.md)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
+
+Weitere Informationen zu Datenträgertypen finden Sie unter [Welche Datenträgertypen stehen in Azure zur Verfügung?](disks-types.md)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.

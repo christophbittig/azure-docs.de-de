@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 3fc16a869c176074467a0b21880937d7753602b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b2e6ae3e7f5f3aa45be9aae219f14ed4ecfd228
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92515524"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124738211"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Tutorial: Azure Active Directory-Integration mit Perception United States (Non-UltiPro)
 
@@ -221,7 +221,7 @@ In diesem Abschnitt erstellen Sie in Perception United States (Non-UltiPro) eine
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Perception United States (Non-UltiPro)“ klicken, sollten Sie automatisch bei Ihrer Perception United States (Non-UltiPro)-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Perception United States (Non-UltiPro)“ klicken, sollten Sie automatisch bei Ihrer Perception United States (Non-UltiPro)-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

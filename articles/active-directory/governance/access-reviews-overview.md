@@ -17,12 +17,12 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 7e02cb82895940fca43a53c671aecd46e19ef497
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: c391f6cbc588e55b0c78306bcb00f7b8ec5c068d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786625"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748494"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
@@ -44,7 +44,7 @@ Mit Azure AD können Sie mit internen Benutzern Ihrer Organisation und mit exter
 
 ## <a name="when-should-you-use-access-reviews"></a>Wann sollten Sie Zugriffsüberprüfungen verwenden?
 
-- **Zu viele Benutzer in privilegierten Rollen:** Sie sollten überprüfen, wie viele Benutzer über Administratorzugriff verfügen, wie viele dieser Benutzer globale Administratoren sind und ob es eingeladene Gäste oder Partner gibt, die nicht entfernt wurden, nachdem ihnen eine administrative Aufgabe zugewiesen wurde. Sie können die Rollenzuweisung für Benutzer in [Azure AD-Rollen](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) wie globale Administratoren oder in [Azure-Ressourcenrollen](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) wie Benutzerzugriffsadministratoren in [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) erneut bestätigen.
+- **Zu viele Benutzer in privilegierten Rollen:** Sie sollten überprüfen, wie viele Benutzer über Administratorzugriff verfügen, wie viele dieser Benutzer globale Administratoren sind und ob es eingeladene Gäste oder Partner gibt, die nicht entfernt wurden, nachdem ihnen eine administrative Aufgabe zugewiesen wurde. Sie können die Rollenzuweisung für Benutzer in [Azure AD-Rollen](../privileged-identity-management/pim-perform-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) wie globale Administratoren oder in [Azure-Ressourcenrollen](../privileged-identity-management/pim-perform-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) wie Benutzerzugriffsadministratoren in [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) erneut bestätigen.
 - **Falls die Automatisierung nicht möglich ist:** Sie können Regeln für dynamische Mitgliedschaften für Sicherheits- oder Microsoft 365-Gruppen erstellen. Was geschieht aber, wenn die Personaldaten nicht in Azure AD gespeichert sind oder die Benutzer nach dem Verlassen der Gruppe weiterhin Zugriff benötigen, um ihre Nachfolger einzuarbeiten? Dann können Sie eine Überprüfung für diese Gruppe erstellen, um sicherzustellen, dass die Benutzer, die weiterhin Zugriff benötigen, auch weiterhin Zugriff haben.
 - **Wenn eine Gruppe zu einem neuen Zweck verwendet wird:** Wenn Sie über eine Gruppe verfügen, die mit Azure AD synchronisiert wird, oder wenn Sie die Salesforce-Anwendung für alle Benutzer in der Gruppe „Vertriebsteam“ aktivieren möchten, wäre es sinnvoll, den Besitzer der Gruppe zu bitten, die Gruppenmitgliedschaft zu überprüfen, bevor die Gruppe in einem anderen Risikokontext verwendet wird.
 - **Zugriff auf unternehmenskritische Daten:** Bei bestimmten Ressourcen kann es zu Überwachungszwecken erforderlich sein, die Mitarbeiter außerhalb der IT-Abteilung zu bitten, sich regelmäßig abzumelden und zu begründen, warum sie Zugriff benötigen.
@@ -63,8 +63,8 @@ Je nachdem, was Sie überprüfen möchten, erstellen Sie Ihre Zugriffsüberprüf
 | --- | --- | --- | --- |
 | Mitglieder von Sicherheitsgruppen</br>Mitglieder von Office-Gruppen | Angegebene Prüfer</br>Gruppenbesitzer</br>Selbstüberprüfung | Azure AD-Zugriffsüberprüfungen</br>Azure AD-Gruppen | Zugriffsbereich |
 | Einer verbundenen App zugewiesen | Angegebene Prüfer</br>Selbstüberprüfung | Azure AD-Zugriffsüberprüfungen</br>Azure AD-Unternehmens-Apps (in der Vorschauversion) | Zugriffsbereich |
-| Azure AD-Rolle | Angegebene Prüfer</br>Selbstüberprüfung | [Azure AD PIM](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure-Portal |
-| Azure-Ressourcenrolle | Angegebene Prüfer</br>Selbstüberprüfung | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure-Portal |
+| Azure AD-Rolle | Angegebene Prüfer</br>Selbstüberprüfung | [Azure AD PIM](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure-Portal |
+| Azure-Ressourcenrolle | Angegebene Prüfer</br>Selbstüberprüfung | [Azure AD PIM](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure-Portal |
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 
@@ -110,6 +110,6 @@ Anhand der folgenden Beispielszenarien für Lizenzen können Sie die Anzahl der 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md)
-- [Erstellen einer Zugriffsüberprüfung von Benutzern in der Azure AD-Administratorrolle](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)
+- [Erstellen einer Zugriffsüberprüfung von Benutzern in der Azure AD-Administratorrolle](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)
 - [Überprüfen des Zugriffs auf Gruppen oder Anwendungen](perform-access-review.md)
 - [Abschließen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](complete-access-review.md)

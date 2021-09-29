@@ -13,12 +13,12 @@ ms.date: 07/16/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 866eb949d124e8d705785c6552672730fe67ece1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2ee33ec1ff87a73e31e55f06fe70672314384a6e
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464163"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059471"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity Platform und OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
 
@@ -35,7 +35,7 @@ Die Microsoft Identity Platform unterstützt die [Gewährung für OAuth 2.0-Kenn
 > * Konten ohne Kennwörter können sich nicht mit ROPC anmelden. Dies bedeutet, dass Features wie SMS-Anmeldung, FIDO und die Authenticator-App bei diesem Flow nicht funktionieren. Verwenden Sie einen anderen Flow als ROPC, wenn diese Features für Ihre App oder Benutzer erforderlich sind.
 > * Wenn Benutzer die [mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)](../authentication/concept-mfa-howitworks.md) verwenden müssen, um sich bei der Anwendung anzumelden, werden Sie stattdessen blockiert.
 > * ROPC wird in Szenarien mit [Hybrididentitätsverbund](../hybrid/whatis-fed.md) (also beispielsweise bei Verwendung von Azure AD und AD FS für die Authentifizierung lokaler Konten) nicht unterstützt. Wenn Benutzer vollständig auf eine Seite eines lokalen Identitätsanbieters weitergeleitet werden, kann Azure AD den Benutzernamen und das Kennwort nicht anhand dieses Identitätsanbieters testen. Die [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.md) wird mit ROPC allerdings unterstützt.
-> * Eine Ausnahme für ein Szenario mit Hybrididentitätsverbund wäre: Durch Festlegen von „AllowCloudPasswordValidation“ auf „TRUE“ für die Richtlinie zur Startbereichsermittlung kann der ROPC-Flow für Verbundbenutzer verwendet werden, wenn das lokale Kennwort mit der Cloud synchronisiert wird. Weitere Informationen finden Sie unter [Aktivieren der direkten ROPC-Authentifizierung von Verbundbenutzern für Legacyanwendungen](../manage-apps/configure-authentication-for-federated-users-portal.md#enable-direct-ropc-authentication-of-federated-users-for-legacy-applications).
+> * Eine Ausnahme für ein Szenario mit Hybrididentitätsverbund wäre: Durch Festlegen von „AllowCloudPasswordValidation“ auf „TRUE“ für die Richtlinie zur Startbereichsermittlung kann der ROPC-Flow für Verbundbenutzer verwendet werden, wenn das lokale Kennwort mit der Cloud synchronisiert wird. Weitere Informationen finden Sie unter [Aktivieren der direkten ROPC-Authentifizierung von Verbundbenutzern für Legacyanwendungen](../manage-apps/home-realm-discovery-policy.md#enable-direct-ropc-authentication-of-federated-users-for-legacy-applications).
 
 [!INCLUDE [try-in-postman-link](includes/try-in-postman-link.md)]
 
@@ -63,7 +63,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| Parameter | Bedingung | BESCHREIBUNG |
+| Parameter | Bedingung | Beschreibung |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, bei dem Sie den Benutzer anmelden möchten. Kann als GUID oder als Anzeigename bereitgestellt werden. Dieser Parameter kann nicht auf `common` oder `consumers`, sondern nur auf `organizations` festgelegt werden. |
 | `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |

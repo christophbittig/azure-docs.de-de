@@ -5,12 +5,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 08/19/2021
 ms.custom: MVC
-ms.openlocfilehash: 74e9af6f1f9dd30b391c17f03a0d8d5e9a41a10d
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 66bd4e5f24423ef022f8930b618b3cee9b5c9631
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122447018"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777334"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms---preview"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs – Vorschau
 
@@ -39,7 +39,7 @@ Die Replikation von VMware zu Azure umfasst die folgenden Verfahren:
 - Navigieren Sie für die ersten Schritte zum [Azure-Vorschauportal](https://aka.ms/rcmcanary). Führen Sie dann die in den folgenden Abschnitten beschriebenen Schritte aus.
 - Vorbereiten des Azure-Kontos
 - Infrastruktur vorbereiten
-- [Erstellen eines Recovery Services-Tresor](/azure/site-recovery/quickstart-create-vault-template?tabs=CLI)
+- [Erstellen eines Recovery Services-Tresor](./quickstart-create-vault-template.md?tabs=CLI)
 - [Bereitstellen einer Azure Site Recovery-Replikationsappliance](deploy-vmware-azure-replication-appliance-preview.md)
 - Aktivieren der Replikation
 
@@ -123,7 +123,7 @@ Gehen Sie folgendermaßen vor, um die Replikation zu aktivieren:
       Standardmäßig wird von Azure Site Recovery ein neues Speicherkonto vom Typ „LRS v1“ für den ersten aktivierten Replikationsvorgang in einem Tresor erstellt. Für die nächsten Vorgänge wird dasselbe Cachespeicherkonto wiederverwendet.
     -  Verwaltete Datenträger
 
-       Standardmäßig werden verwaltete HDD Standard-Datenträger in Azure erstellt. Sie können den Typ der verwalteten Datenträger anpassen, indem Sie **Anpassen** auswählen. Wählen Sie den Datenträgertyp basierend auf den geschäftlichen Anforderungen aus. Stellen Sie sicher, dass basierend auf den IOPS der Datenträger des Quellcomputers ein [geeigneter Datenträgertyp ausgewählt](/azure/virtual-machines/disks-types#disk-comparison) wird. Preisinformationen finden Sie [hier](https://azure.microsoft.com/pricing/details/managed-disks/) in der Preisübersicht für verwaltete Datenträger.
+       Standardmäßig werden verwaltete HDD Standard-Datenträger in Azure erstellt. Sie können den Typ der verwalteten Datenträger anpassen, indem Sie **Anpassen** auswählen. Wählen Sie den Datenträgertyp basierend auf den geschäftlichen Anforderungen aus. Stellen Sie sicher, dass basierend auf den IOPS der Datenträger des Quellcomputers ein [geeigneter Datenträgertyp ausgewählt](../virtual-machines/disks-types.md#disk-comparison) wird. Preisinformationen finden Sie [hier](https://azure.microsoft.com/pricing/details/managed-disks/) in der Preisübersicht für verwaltete Datenträger.
 
        >[!NOTE]
        > Wenn der Mobilitätsdienst vor dem Aktivieren der Replikation manuell installiert wird, können Sie den Typ des verwalteten Datenträgers auf Datenträgerebene ändern. Andernfalls kann standardmäßig ein verwalteter Datenträgertyp auf Computerebene ausgewählt werden.

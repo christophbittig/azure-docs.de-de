@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: b5e60883f4af77eabcd3a59334bbf31b63d5cc49
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: e4d77aa3d4456154149c5ad38b9fdc769953f8ad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123316569"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764049"
 ---
 # <a name="copy-data-from-an-sap-table-using-azure-data-factory-or-azure-synapse-analytics"></a>Kopieren von Daten aus einer SAP-Tabelle mit Azure Data Factory oder Azure Synapse Analytics
 
@@ -53,7 +53,7 @@ Die Version 7.01 oder höher verweist auf die SAP NetWeaver-Version statt auf d
 1. Stellen Sie per SAP GUI eine Verbindung mit dem SAP-System her. 
 2. Wechseln Sie zu **System** -> **Status**. 
 3. Überprüfen Sie die Version von SAP_BASIS, und stellen Sie sicher, dass sie mindestens 701 ist.  
-      ![Überprüfen von SAP_BASIS](./media/connector-sap-table/sap-basis.png)
+      :::image type="content" source="./media/connector-sap-table/sap-basis.png" alt-text="Überprüfen von SAP_BASIS":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,7 +63,7 @@ Zum Verwenden dieses SAP-Tabellenconnectors müssen Sie folgende Schritte ausfü
 
 - Laden Sie den [SAP Connector für Microsoft .NET 3.0](https://support.sap.com/en/product/connectors/msnet.html) (64 Bit) von der SAP-Website herunter, und installieren Sie ihn auf dem Computer mit der selbstgehosteten Integration Runtime. Während der Installation müssen Sie im Fenster **Optionale Einrichtungsschritte** die Option **Assemblys in GAC installieren** auswählen.
 
-  ![Installieren des SAP-Connectors für .NET](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+  :::image type="content" source="./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png" alt-text="Installieren des SAP-Connectors für .NET":::
 
 - Der SAP-Benutzer, der im SAP-Tabellenconnector verwendet wird, muss über die folgenden Berechtigungen verfügen:
 
@@ -82,7 +82,7 @@ Führen Sie die folgenden Schritte aus, um über die Benutzeroberfläche des Azu
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mithilfe der Azure Data Factory-Benutzeroberfläche":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -104,7 +104,7 @@ In den folgenden Abschnitten finden Sie Details zu den Eigenschaften, die zum De
 
 Folgende Eigenschaften werden für den mit SAP BW Open Hub verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | `type` | Die `type`-Eigenschaft muss auf `SapTable` festgelegt werden. | Ja |
 | `server` | Der Name des Servers, auf dem sich die SAP-Instanz befindet.<br/>Verwenden Sie sie zum Herstellen einer Verbindung mit einem SAP-Anwendungsserver. | Nein |
@@ -212,7 +212,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Dat
 
 Wenn Sie Daten aus oder in den verknüpften SAP BW Open Hub-Dienst kopieren möchten, werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | `type` | Die `type`-Eigenschaft muss auf `SapTableResource` festgelegt werden. | Ja |
 | `tableName` | Der Name der SAP-Tabelle, aus der Daten kopiert werden sollen. | Ja |
@@ -244,7 +244,7 @@ Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Akt
 
 Beim Kopieren von Daten aus einer SAP-Tabelle werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft                         | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft                         | Beschreibung                                                  | Erforderlich |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | Die `type`-Eigenschaft muss auf `SapTableSource` festgelegt werden.         | Ja      |
 | `rowCount`                         | Die Anzahl der Zeilen, die abgerufen werden sollen.                              | Nein       |
@@ -331,7 +331,7 @@ Der SAP-Tabellenconnector unterstützt derzeit nur eine einzige Tabelle mit dem 
 
 Unten ist ein Beispiel aufgeführt:
 
-![SAP-Tabellenverknüpfung](./media/connector-sap-table/sap-table-join.png) 
+:::image type="content" source="./media/connector-sap-table/sap-table-join.png" alt-text="SAP-Tabellenverknüpfung"::: 
 
 >[!TIP]
 >Sie können die verknüpften Daten auch in der Sicht aggregieren. Dies wird vom SAP-Tabellenconnector unterstützt.
@@ -345,13 +345,13 @@ Im Folgenden finden Sie einen kurzen Leitfaden mit den Anforderungen für die er
 
 - Definition:
 
-    ![Definition](./media/connector-sap-table/custom-function-module-definition.png) 
+    :::image type="content" source="./media/connector-sap-table/custom-function-module-definition.png" alt-text="Definition"::: 
 
 - Exportieren Sie die Daten in eine der folgenden Tabellen:
 
-    ![Exporttabelle 1](./media/connector-sap-table/export-table-1.png) 
+    :::image type="content" source="./media/connector-sap-table/export-table-1.png" alt-text="Exporttabelle 1"::: 
 
-    ![Exporttabelle 2](./media/connector-sap-table/export-table-2.png)
+    :::image type="content" source="./media/connector-sap-table/export-table-2.png" alt-text="Exporttabelle 2":::
  
 Im Folgenden finden Sie Abbildungen der Funktionsweise des SAP-Tabellenconnectors mit dem benutzerdefinierten Funktionsmodul:
 
@@ -367,11 +367,11 @@ Im Folgenden finden Sie Abbildungen der Funktionsweise des SAP-Tabellenconnector
 
     1. Analysieren Sie den Wert in der Tabelle „Fields“ (Felder), um die Schemas abzurufen.
 
-        ![Analysieren von Werten in Feldern](./media/connector-sap-table/parse-values.png)
+        :::image type="content" source="./media/connector-sap-table/parse-values.png" alt-text="Analysieren von Werten in Feldern":::
 
     1. Rufen Sie die Werte der Ausgabetabelle ab, um festzustellen, welche Tabelle diese Werte enthält.
 
-        ![Abrufen von Werten aus der Ausgabetabelle](./media/connector-sap-table/get-values.png)
+        :::image type="content" source="./media/connector-sap-table/get-values.png" alt-text="Abrufen von Werten aus der Ausgabetabelle":::
 
     1. Rufen Sie die Werte aus „OUT_TABLE“ ab, analysieren Sie die Daten, und schreiben Sie sie dann in die Senke.
 

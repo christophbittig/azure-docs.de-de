@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 12337e9c6d42ee140367c26cd160fd0a5fd595d3
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 98cd9fd4a54796827184da9dc549637331892083
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902301"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590478"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Tutorial: Implementieren des Data Lake-Erfassungsmusters zum Aktualisieren einer Databricks Delta-Tabelle
 
@@ -25,21 +25,21 @@ Sie erstellen eine kleine Lösung, mit der ein Benutzer eine Databricks Delta-Ta
 In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen Sie ein Event Grid-Abonnement, das eine Azure-Funktion aufruft.
-> * Erstellen Sie eine Azure-Funktion, die eine Benachrichtigung von einem Ereignis empfängt und den Auftrag dann in Azure Databricks ausführt.
-> * Erstellen Sie einen Databricks-Auftrag, mit dem eine Kundenbestellung in eine Databricks Delta-Tabelle eingefügt wird, die unter dem Speicherkonto vorhanden ist.
+> - Erstellen Sie ein Event Grid-Abonnement, das eine Azure-Funktion aufruft.
+> - Erstellen Sie eine Azure-Funktion, die eine Benachrichtigung von einem Ereignis empfängt und den Auftrag dann in Azure Databricks ausführt.
+> - Erstellen Sie einen Databricks-Auftrag, mit dem eine Kundenbestellung in eine Databricks Delta-Tabelle eingefügt wird, die unter dem Speicherkonto vorhanden ist.
 
 Wir erstellen diese Lösung in umgekehrter Reihenfolge, indem wir mit dem Azure Databricks-Arbeitsbereich beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-* Erstellen Sie ein Speicherkonto mit einem hierarchischen Namespace (Azure Data Lake Storage Gen2). In diesem Tutorial wird ein Speicherkonto mit dem Namen `contosoorders` verwendet. Vergewissern Sie sich, dass Ihrem Benutzerkonto die Rolle [Mitwirkender an Storage-Blobdaten](assign-azure-role-data-access.md) zugewiesen ist.
+- Erstellen Sie ein Speicherkonto mit einem hierarchischen Namespace (Azure Data Lake Storage Gen2). In diesem Tutorial wird ein Speicherkonto mit dem Namen `contosoorders` verwendet. Vergewissern Sie sich, dass Ihrem Benutzerkonto die Rolle [Mitwirkender an Storage-Blobdaten](assign-azure-role-data-access.md) zugewiesen ist.
 
    Lesen Sie die Informationen unter [Erstellen eines Speicherkontos für die Verwendung mit Azure Data Lake Storage Gen2](create-data-lake-storage-account.md).
 
-* Erstellen eines Dienstprinzipals Unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
+- Erstellen eines Dienstprinzipals Unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   Bei den Schritten in diesem Artikel müssen einige bestimmte Aktionen ausgeführt werden.
 
@@ -71,17 +71,17 @@ Erstellen Sie zuerst eine CSV-Datei, mit der ein Verkaufsauftrag beschrieben wir
 
 4. Speichern Sie diese Datei auf Ihrem lokalen Computer, und geben Sie ihr den Namen **data.csv**.
 
-5. Laden Sie diese Datei in Storage-Explorer in den Ordner **input** hoch.  
+5. Laden Sie diese Datei in Storage-Explorer in den Ordner **input** hoch.
 
 ## <a name="create-a-job-in-azure-databricks"></a>Erstellen eines Auftrags in Azure Databricks
 
 In diesem Abschnitt führen Sie die folgenden Aufgaben aus:
 
-* Erstellen eines Azure Databricks-Arbeitsbereichs
-* Erstellen Sie ein Notebook.
-* Erstellen und Auffüllen einer Databricks Delta-Tabelle
-* Hinzufügen von Code, mit dem Zeilen in die Databricks Delta-Tabelle eingefügt werden
-* Erstellen eines Auftrags
+- Erstellen eines Azure Databricks-Arbeitsbereichs
+- Erstellen Sie ein Notebook.
+- Erstellen und Auffüllen einer Databricks Delta-Tabelle
+- Hinzufügen von Code, mit dem Zeilen in die Databricks Delta-Tabelle eingefügt werden
+- Erstellen eines Auftrags
 
 ### <a name="create-an-azure-databricks-workspace"></a>Erstellen eines Azure Databricks-Arbeitsbereichs
 
@@ -111,8 +111,8 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
     Übernehmen Sie alle anderen Standardwerte bis auf Folgendes:
 
-    * Geben Sie einen Namen für den Cluster ein.
-    * Aktivieren Sie das Kontrollkästchen **Terminate after 120 minutes of inactivity** (Nach 120 Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
+    - Geben Sie einen Namen für den Cluster ein.
+    - Aktivieren Sie das Kontrollkästchen **Terminate after 120 minutes of inactivity** (Nach 120 Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
 
 4. Klicken Sie auf **Cluster erstellen**. Sobald der Cluster ausgeführt wird, können Sie Notizbücher an den Cluster anfügen und Spark-Aufträge ausführen.
 
@@ -132,11 +132,11 @@ Weitere Informationen zum Erstellen von Clustern in Azure Databricks finden Sie 
 
 ### <a name="create-and-populate-a-databricks-delta-table"></a>Erstellen und Auffüllen einer Databricks Delta-Tabelle
 
-1. Kopieren Sie im erstellten Notebook den folgenden Codeblock, und fügen Sie ihn in die erste Zelle ein, aber führen Sie den Code noch nicht aus.  
+1. Kopieren Sie im erstellten Notebook den folgenden Codeblock, und fügen Sie ihn in die erste Zelle ein, aber führen Sie den Code noch nicht aus.
 
    Ersetzen Sie die Platzhalterwerte `appId`, `password` und `tenant` durch die Werte, die Sie bei der Vorbereitung dieses Tutorials gesammelt haben.
 
-    ```Python
+    ```python
     dbutils.widgets.text('source_file', "", "Source File")
 
     spark.conf.set("fs.azure.account.auth.type", "OAuth")
@@ -159,9 +159,8 @@ Weitere Informationen zum Erstellen von Clustern in Azure Databricks finden Sie 
 
 3. Kopieren Sie den folgenden Codeblock, und fügen Sie ihn in eine andere Zelle ein. Drücken Sie anschließend **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
 
-   ```Python
+   ```python
    from pyspark.sql.types import StructType, StructField, DoubleType, IntegerType, StringType
-
 
    inputSchema = StructType([
    StructField("InvoiceNo", IntegerType(), True),
@@ -194,7 +193,7 @@ Weitere Informationen zum Erstellen von Clustern in Azure Databricks finden Sie 
 
 1. Kopieren Sie den folgenden Codeblock, und fügen Sie ihn in eine andere Zelle ein, aber führen Sie diese Zelle nicht aus.
 
-   ```Python
+   ```python
    upsertDataDF = (spark
      .read
      .option("header", "true")
@@ -257,7 +256,7 @@ Erstellen Sie eine Azure-Funktion, die den Auftrag ausführt.
 2. Klicken Sie auf die Schaltfläche **Neues Token generieren** und dann auf die Schaltfläche **Generieren**.
 
    Kopieren Sie das Token an einen sicheren Speicherort. Ihre Azure-Funktion benötigt dieses Token für die Authentifizierung mit Databricks, damit der Auftrag ausgeführt werden kann.
-  
+
 3. Wählen Sie in der linken oberen Ecke des Azure-Portals die Schaltfläche **Ressource erstellen** und dann **Compute > Funktions-App**.
 
    ![Erstellen einer Azure-Funktion](./media/data-lake-storage-events/function-app-create-flow.png "Azure-Funktion erstellen")

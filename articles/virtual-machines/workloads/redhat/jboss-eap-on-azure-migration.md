@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: 9cef8babd11ea6a0ed4ffc965ed52164c9abe43d
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 1671b0c4ba57faa6dc631c50cc273678c72b379b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866985"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730138"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>Migrieren von Java-Anwendungen zu JBoss EAP in Azure-VMs und -VM-Skalierungsgruppen
 
@@ -159,7 +159,7 @@ Verwendet Ihre Anwendung Datenbanken, müssen Sie die folgenden Informationen er
 * Wie ist der Verbindungspool konfiguriert?
 * Wo finde ich die JAR-Datei des JDBC-Treibers (Java Database Connectivity)?
 
-Weitere Informationen finden Sie in der JBoss EAP-Dokumentation unter [Informationen zu JBoss EAP-Datenquellen](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3html/configuration_guide/datasource_management).
+Weitere Informationen finden Sie in der JBoss EAP-Dokumentation unter [Informationen zu JBoss EAP-Datenquellen](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.4/html/configuration_guide/datasource_management).
 
 ### <a name="determine-whether-and-how-the-file-system-is-used"></a>Ermitteln, ob und wie das Dateisystem verwendet wird
 

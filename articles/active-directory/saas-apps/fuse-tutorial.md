@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 3fd01ff08a54fe5e69398284486e343721f2fcca
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 7f2750d8fcd2a75c32f1bfbfefaad30521e616af
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569522"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124834294"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuse"></a>Tutorial: Azure Active Directory-Integration mit Fuse
 
@@ -131,7 +131,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Navigieren Sie direkt zur Anmelde-URL von Fuse und initiieren Sie von dort aus den Anmeldeablauf.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Fuse“ klicken, werden Sie zur Anmelde-URL für Fuse weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Fuse“ klicken, werden Sie zur Anmelde-URL für Fuse weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

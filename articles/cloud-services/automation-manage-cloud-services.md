@@ -8,12 +8,12 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: cc352a35308cbc77dc544c780ea7045cff561b02
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 6dd814f2c834428d321747a989af8beb76890bd0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824515"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799166"
 ---
 # <a name="managing-azure-cloud-services-classic-using-azure-automation"></a>Verwalten von Azure Cloud Services (klassisch) mithilfe von Azure Automation
 
@@ -40,4 +40,4 @@ Beispiele für die Verwendung von Azure Automation für die Verwaltung von Azure
 Nachdem Sie sich nun mit den Grundlagen von Azure Automation und dessen Verwendung zum Verwalten von Azure Cloud Services vertraut gemacht haben, können Sie diese Links verwenden, um weitere Informationen zu Azure Automation zu erhalten.
 
 * [Übersicht über Azure Automation](../automation/automation-intro.md)
-* [Mein erstes Runbook](../automation/learn/automation-tutorial-runbook-graphical.md)
+* [Mein erstes Runbook](../automation/learn/powershell-runbook-managed-identity.md)

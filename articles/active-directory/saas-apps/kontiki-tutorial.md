@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9e0b438e0cfa729300099463086248780c69484c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01e068c55d6ab2c11e0ac745c2347b52c374741d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95019839"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813433"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Tutorial: Azure Active Directory-Integration mit Kontiki
 
@@ -180,7 +180,7 @@ Für das Konfigurieren der Benutzerbereitstellung in Kontiki steht kein Aktionse
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Portals „Meine Apps“.
 
-Nachdem Sie einmaliges Anmelden eingerichtet haben, werden Sie bei Auswahl von **Kontiki** im Portal „Meine Apps“ automatisch bei Kontiki angemeldet. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+Nachdem Sie einmaliges Anmelden eingerichtet haben, werden Sie bei Auswahl von **Kontiki** im Portal „Meine Apps“ automatisch bei Kontiki angemeldet. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

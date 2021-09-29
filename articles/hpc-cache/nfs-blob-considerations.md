@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: v-erkel
-ms.openlocfilehash: 70b1dc3e2de6c70a6b59aa739a9bed254295a4f9
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 090003e25c2d8ca13be27bf94bc12b4941cda798
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293437"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814652"
 ---
 # <a name="use-nfs-mounted-blob-storage-with-azure-hpc-cache"></a>Verwenden von in NFS eingebundenem Blobspeicher mit Azure HPC Cache
 
@@ -38,7 +38,7 @@ Diese Einstellung bleibt für die Lebensdauer des Containers erhalten, auch wenn
 ## <a name="pre-load-data-with-nfs-protocol"></a>Im Voraus Laden von Daten mit dem NFS-Protokoll
 <!-- cross-referenced from hpc-cache-ingest.md and here -->
 
-In einem NFS-fähigen Blobcontainer kann *eine Datei nur von dem Protokoll bearbeitet werden, das beim Erstellen verwendet wurde*. Wenn Sie also die Azure REST-API zum Auffüllen eines Containers verwenden, können Sie NFS nicht verwenden, um diese Dateien zu aktualisieren. Es können keine Dateien bearbeitet werden, die mit der Azure REST-API erstellt wurden, da Azure HPC Cache nur NFS verwendet. (Weitere Informationen finden Sie unter [Bekannte Probleme bei Blob-Storage-APIs](../storage/blobs/network-file-system-protocol-known-issues.md#blob-storage-apis))
+In einem NFS-fähigen Blobcontainer kann *eine Datei nur von dem Protokoll bearbeitet werden, das beim Erstellen verwendet wurde*. Wenn Sie also die Azure REST-API zum Auffüllen eines Containers verwenden, können Sie NFS nicht verwenden, um diese Dateien zu aktualisieren. Es können keine Dateien bearbeitet werden, die mit der Azure REST-API erstellt wurden, da Azure HPC Cache nur NFS verwendet. (Weitere Informationen finden Sie unter [Bekannte Probleme bei Blob-Storage-APIs](../storage/blobs/data-lake-storage-known-issues.md#blob-storage-apis))
 
 Es ist kein Problem für den Cache, wenn Ihr Container leer ist, oder wenn die Dateien mithilfe von NFS erstellt wurden.
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d476be7a417cfc31cca76d3409074aaaa281a56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d9c22974ec3452df9597999eb62569a08eb85dc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724609"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754399"
 ---
 # <a name="build-resilience-with-device-states"></a>Erzielen von Resilienz mithilfe des Gerätestatus
 
@@ -42,7 +42,7 @@ Wenn ein primäres Aktualisierungstoken verwendet wird, um den Zugriff auf eine 
 
 * Legen Sie als Standard für den Browserzugriff für die Benutzer die Verwendung von [Microsoft Edge](/deployedge/microsoft-edge-security-identity) oder Google Chrome mit [unterstützten](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) [Erweiterungen](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) fest, bei denen das nahtlose einmalige Anmelden bei Webanwendungen mit dem primären Aktualisierungstoken (PRT) aktiviert ist.
 
-* Stellen Sie für private oder unternehmenseigene iOS- und Android-Geräte die [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md) bereit. Neben der mehrstufigen Authentifizierung (MFA) und den kennwortlosen Anmeldefunktionen ermöglicht die Microsoft Authenticator-App durch die [Brokerauthentifizierung](../develop/msal-android-single-sign-on.md) (mit weniger Authentifizierungsaufforderungen für den Endbenutzer) das einmalige Anmelden, und zwar anwendungsübergreifend für native Anwendungen.
+* Stellen Sie für private oder unternehmenseigene iOS- und Android-Geräte die [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc) bereit. Neben der mehrstufigen Authentifizierung (MFA) und den kennwortlosen Anmeldefunktionen ermöglicht die Microsoft Authenticator-App durch die [Brokerauthentifizierung](../develop/msal-android-single-sign-on.md) (mit weniger Authentifizierungsaufforderungen für den Endbenutzer) das einmalige Anmelden, und zwar anwendungsübergreifend für native Anwendungen.
 
 * Verwenden Sie bei privaten oder unternehmenseigenen iOS- und Android-Geräten die [mobile Anwendungsverwaltung](/mem/intune/apps/app-management) für den sicheren Zugriff auf Unternehmensressourcen mit weniger Authentifizierungsanforderungen. 
 

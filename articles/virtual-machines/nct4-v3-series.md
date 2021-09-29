@@ -7,12 +7,12 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 55799d15ef0ebe8af0f4a79b583143394540f48b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 62108e46b748552fc22a8dc1e86ea78b3cc5e4e5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697966"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774156"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3-Serie 
 
@@ -42,7 +42,7 @@ Nvidia NVLink Interconnect: Nicht unterstützt<br>
 | Standard_NC64as_T4_v3 |64 |440 |2880 | 4 | 64 | 32 | 8 / 32.000  |
 
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
 
 ## <a name="supported-operating-systems-and-drivers"></a>Unterstützte Betriebssysteme und Treiber
 
@@ -52,7 +52,9 @@ Wenn Sie Nvidia-GPU-Treiber manuell installieren möchten, finden Sie Informatio
 
 Die Azure-Nvidia-GPU-Treibererweiterung stellt CUDA-Treiber auf den VMs der NCasT4_v3-Serie bereit. Für Grafik- und Visualisierungsworkloads müssen Sie die von Azure unterstützten GRID-Treiber manuell installieren.
 
-## <a name="other-sizes"></a>Andere Größen
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
 
 - [Allgemeiner Zweck](sizes-general.md)
 - [Arbeitsspeicheroptimiert](sizes-memory.md)
@@ -60,6 +62,10 @@ Die Azure-Nvidia-GPU-Treibererweiterung stellt CUDA-Treiber auf den VMs der NCas
 - [GPU-optimiert](sizes-gpu.md)
 - [High Performance Computing](sizes-hpc.md)
 - [Vorherige Generationen](sizes-previous-gen.md)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
+
+Weitere Informationen zu Datenträgertypen finden Sie unter [Welche Datenträgertypen stehen in Azure zur Verfügung?](disks-types.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

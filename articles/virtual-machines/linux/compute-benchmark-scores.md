@@ -2,17 +2,17 @@
 title: Compute-Benchmarkergebnisse für virtuelle Azure Linux-Computer
 description: Vergleichen von CoreMark-Compute-Benchmarkergebnissen für virtuelle Azure-Computer unter Linux.
 ms.service: virtual-machines
-ms.subservice: benchmark
+ms.subservice: sizes
 ms.collection: linux
 ms.topic: conceptual
 ms.date: 04/08/2021
 ms.reviewer: davberg
-ms.openlocfilehash: 698cebdcc6918e673d3914e00517f9c612876434
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3847250ee3c5a080740aef51541fdf47e5c11882
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128564921"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216523"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Compute-Benchmarkergebnisse für virtuelle Linux-Computer
 

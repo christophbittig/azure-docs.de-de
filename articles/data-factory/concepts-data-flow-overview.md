@@ -8,12 +8,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 08/26/2021
-ms.openlocfilehash: 1d4e8ad4fd7d0b5690f506e9db7f1043c8f21045
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 2c61431f3556a83482306c76c7246df5ba2c0139
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039086"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828389"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Zuordnungsdatenflüsse in Azure Data Factory
 
@@ -29,7 +29,7 @@ Zuordnungsdatenflüsse bieten eine vollständig visuelle Darstellung, ohne Code 
 
 Datenflüsse werden über den Bereich mit Factory-Ressourcen wie Pipelines und Datasets erstellt. Wählen Sie zum Erstellen eines Datenflusses das Pluszeichen neben **Factory-Ressourcen** und dann die Option **Datenfluss** aus. 
 
-![Neuer Datenfluss](media/data-flow/new-data-flow.png)
+:::image type="content" source="media/data-flow/new-data-flow.png" alt-text="Neuer Datenfluss":::
 
 Mit dieser Aktion gelangen Sie zur Datenflusscanvas, auf der Sie Ihre Transformationslogik erstellen können. Wählen Sie **Quelle hinzufügen** aus, um mit der Konfiguration Ihrer Quelltransformation zu beginnen. Weitere Informationen finden Sie im Artikel zur [Quelltransformation](data-flow-source.md).
 
@@ -37,13 +37,13 @@ Mit dieser Aktion gelangen Sie zur Datenflusscanvas, auf der Sie Ihre Transforma
 
 Ein Zuordnungsdatenfluss verfügt über einen einzigartigen Erstellungsbereich für das vereinfachte Erstellen von Transformationslogik. Die Datenflusscanvas ist in drei Bereiche unterteilt: die obere Leiste, das Diagramm und den Konfigurationsbereich. 
 
-![Screenshot: Datenflusscanvas mit Beschriftungen für obere Leiste, Graph und Konfigurationsbereich](media/data-flow/canvas-1.png "Canvas")
+:::image type="content" source="media/data-flow/canvas-1.png" alt-text="Screenshot: Datenflusscanvas mit Beschriftungen für obere Leiste, Graph und Konfigurationsbereich":::
 
 ### <a name="graph"></a>Graph
 
 Das Diagramm zeigt den Transformationsdatenstrom. Es zeigt die Herkunft der Quelldaten beim Fließen in eine oder mehrere Senken. Wählen Sie die Option **Quelle hinzufügen** aus, um eine neue Quelle hinzuzufügen. Wählen Sie zum Hinzufügen einer neuen Transformation unten rechts in einer vorhandenen Transformation das Pluszeichen aus. Informieren Sie sich über das [Verwalten des Datenflussdiagramms](concepts-data-flow-manage-graph.md).
 
-![Screenshot: Graphbereich der Canvas mit einem Suchtextfeld](media/data-flow/canvas-2.png)
+:::image type="content" source="media/data-flow/canvas-2.png" alt-text="Screenshot: Graphbereich der Canvas mit einem Suchtextfeld":::
 
 ### <a name="configuration-panel"></a>Konfigurationsbereich
 
@@ -55,19 +55,19 @@ Jede Transformation enthält mindestens vier Registerkarten für die Konfigurati
 
 Die erste Registerkarte im Konfigurationsbereich jeder Transformation enthält die Einstellungen, die für diese Transformation spezifisch sind. Weitere Informationen finden Sie auf der Dokumentationsseite für diese Transformation.
 
-![Registerkarte „Quelleinstellungen“](media/data-flow/source1.png "Registerkarte „Quelleinstellungen“")
+:::image type="content" source="media/data-flow/source1.png" alt-text="Registerkarte „Quelleinstellungen“":::
 
 #### <a name="optimize"></a>Optimieren
 
 Die Registerkarte **Optimieren** enthält Einstellungen zum Konfigurieren von Partitionierungsschemas. Weitere Informationen zum Optimieren Ihrer Datenflüsse finden Sie in der [Anleitung zur Leistung des Zuordnungsdatenflusses](concepts-data-flow-performance.md).
 
-![Screenshot der Registerkarte „Optimieren“ mit der Option „Partition“, dem Partitionstyp und der Anzahl von Partitionen](media/data-flow/optimize.png)
+:::image type="content" source="media/data-flow/optimize.png" alt-text="Screenshot der Registerkarte „Optimieren“ mit der Option „Partition“, dem Partitionstyp und der Anzahl von Partitionen":::
 
-#### <a name="inspect&quot;></a>Überprüfen
+#### <a name="inspect"></a>Überprüfen
 
 Die Registerkarte **Überprüfen** bietet einen Einblick in die Metadaten des Datenstroms, den Sie transformieren. Sie können die Spaltenanzahl, geänderte Spalten, hinzugefügte Spalten, Datentypen, die Spaltensortierung und Spaltenverweise sehen. **Überprüfen** ist eine schreibgeschützte Ansicht Ihrer Metadaten. Der Debugmodus muss nicht aktiviert sein, um die Metadaten im Bereich **Überprüfen** anzeigen zu können.
 
-![Überprüfen](media/data-flow/inspect1.png &quot;Überprüfen")
+:::image type="content" source="media/data-flow/inspect1.png" alt-text="Überprüfen":::
 
 Wenn Sie die Form Ihrer Daten durch Transformationen ändern, wird der Fluss der Metadatenänderungen im Bereich **Überprüfen** angezeigt. Falls in Ihrer Quelltransformation kein definiertes Schema vorhanden ist, werden im Bereich **Überprüfen** keine Metadaten angezeigt. Fehlende Metadaten kommen in Schemaabweichungsszenarien häufiger vor.
 

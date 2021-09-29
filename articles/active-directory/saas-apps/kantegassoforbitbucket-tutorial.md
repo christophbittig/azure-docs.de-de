@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 52879eb7cb7a9d90113971aa66c590b99b2d5e88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cbb01efeb08619f36c682fa1026ff810723c720e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459283"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124822508"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>Tutorial: Azure Active Directory-Integration mit Kantega SSO for Bitbucket
 
@@ -305,7 +305,7 @@ Damit sich Azure AD-Benutzer bei Bitbucket anmelden können, müssen sie in Bitb
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Kantega SSO for Bitbucket“ klicken, sollten Sie automatisch bei Ihrer Kantega SSO for Bitbucket-Anwendung angemeldet werden, für die Sie SSO eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „Kantega SSO for Bitbucket“ klicken, sollten Sie automatisch bei Ihrer Kantega SSO for Bitbucket-Anwendung angemeldet werden, für die Sie SSO eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

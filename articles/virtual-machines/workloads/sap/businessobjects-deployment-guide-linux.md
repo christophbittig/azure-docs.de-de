@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: bf1ca9de6d7ee8ac6c7e87bd444cbd1d98b56f51
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 0d7d68f9452f5f551361a48580e223b0dd614a09
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112463403"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818134"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Bereitstellungsleitfaden für die SAP BusinessObjects BI-Plattform für Linux in Azure
 
@@ -70,19 +70,15 @@ Azure NetApp Files ist in verschiedenen [Azure-Regionen](https://azure.microsoft
 
 Verwenden Sie [Verfügbarkeit von Azure NetApp Files nach Azure-Region](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all), um die Verfügbarkeit von Azure NetApp Files nach Region zu prüfen.
 
-Bevor Sie Azure NetApp Files bereitstellen, lesen Sie die Anweisungen in [Registrieren für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-register.md).
-
 ### <a name="deploy-azure-netapp-files-resources"></a>Bereitstellen von Azure NetApp Files-Ressourcen
 
 In den folgenden Anweisungen wird davon ausgegangen, dass Sie bereits [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md) bereitgestellt haben. Die Azure NetApp Files-Ressourcen und die virtuellen Computer, auf denen die Azure NetApp Files-Ressourcen eingebunden werden, müssen im gleichen virtuellen Azure-Netzwerk oder in mittels Peering verknüpften virtuellen Azure-Netzwerken bereitgestellt werden.
 
-1. Wenn Sie die Ressourcen noch nicht bereitgestellt haben, [registrieren Sie sich für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-register.md).
+1. [Erstellen Sie ein Azure NetApp Files-Konto](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md) in Ihrer ausgewählten Azure-Region.
 
-2. [Erstellen Sie ein Azure NetApp Files-Konto](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md) in Ihrer ausgewählten Azure-Region.
+2. [Richten Sie einen Azure NetApp Files-Kapazitätspool ein](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md). Die in diesem Artikel vorgestellte Architektur der SAP BI-Plattform verwendet einen einzigen Azure NetApp Files-Kapazitätspool auf der Dienstebene „Premium“. Für SAP BI File Repository Server in Azure wird die Verwendung einer Azure NetApp Files-[Dienstebene](../../../azure-netapp-files/azure-netapp-files-service-levels.md) vom Typ „Premium“ oder „Ultra“ empfohlen.
 
-3. [Richten Sie einen Azure NetApp Files-Kapazitätspool ein](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md). Die in diesem Artikel vorgestellte Architektur der SAP BI-Plattform verwendet einen einzigen Azure NetApp Files-Kapazitätspool auf der Dienstebene „Premium“. Für SAP BI File Repository Server in Azure wird die Verwendung einer Azure NetApp Files-[Dienstebene](../../../azure-netapp-files/azure-netapp-files-service-levels.md) vom Typ „Premium“ oder „Ultra“ empfohlen.
-
-4. [Delegieren Sie ein Subnetz an Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md).
+3. [Delegieren Sie ein Subnetz an Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md).
 
 5. Stellen Sie Azure NetApp Files-Volumes entsprechend den Anweisungen in [Erstellen eines NFS-Volumes für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md) bereit.
 

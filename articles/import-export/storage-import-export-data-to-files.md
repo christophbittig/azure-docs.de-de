@@ -9,12 +9,12 @@ ms.date: 09/03/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 6c11815e787ad273db1506bd78e27bfd61f942e4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 344d513f823c3eb04e869c66ca79bfb611c3eb6a
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128628183"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079749"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Files
 
@@ -46,7 +46,7 @@ Dieser Schritt generiert eine Journaldatei. In der Journaldatei werden grundlege
 
 Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
 
-1. Stellen Sie die Verbindung unserer Laufwerke mit dem Windows-System über SATA-Anschlüsse her.
+1. Stellen Sie die Verbindung Ihrer Laufwerke mit dem Windows-System über SATA-Anschlüsse her.
 2. Erstellen Sie ein einzelnes NTFS-Volume auf jedem Laufwerk. Weisen Sie dem Volume einen Laufwerkbuchstaben zu. Verwenden Sie keine Bereitstellungspunkte.
 3. Ändern Sie die Datei *dataset.csv* im Stammverzeichnis, in dem sich das Tool befindet. Je nachdem, ob Sie eine Datei, einen Ordner oder beides importieren möchten, fügen Sie der *dataset.csv*-Datei Einträge wie in den folgenden Beispielen hinzu.
 

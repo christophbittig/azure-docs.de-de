@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 09/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7e358c44986c2de76ae753e66d3461a7160c170
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 45ba7a7cc96790b2022692286bdfdac230c25984
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128619892"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079540"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Bedingter Zugriff: Vorschreiben der MFA für Administratoren
 
@@ -24,17 +24,20 @@ Konten, denen Administratorrechte zugewiesen sind, werden von Angreifern ins Vis
 
 Microsoft empfiehlt, dass Sie MFA mindestens für die folgenden Rollen erfordern:
 
-* Authentifizierungsadministrator
-* Rechnungsadministrator
-* Administrator für den bedingten Zugriff
-* Exchange-Administrator
-* Globaler Administrator
-* Helpdesk-Administrator
-* Kennwortadministrator
-* Administrator für privilegierte Rollen
-* Sicherheitsadministrator
-* SharePoint-Administrator
-* Benutzeradministrator
+- Globaler Administrator
+- Anwendungsadministrator
+- Authentifizierungsadministrator
+- Rechnungsadministrator
+- Cloudanwendungsadministrator
+- Administrator für den bedingten Zugriff
+- Exchange-Administrator
+- Helpdesk-Administrator
+- Kennwortadministrator
+- Privilegierter Authentifizierungsadministrator
+- Administrator für privilegierte Rollen
+- Sicherheitsadministrator
+- SharePoint-Administrator
+- Benutzeradministrator
 
 Unternehmen können Rollen nach eigenem Ermessen ein- oder ausschließen.
 
@@ -42,10 +45,10 @@ Unternehmen können Rollen nach eigenem Ermessen ein- oder ausschließen.
 
 Richtlinien für bedingten Zugriff sind leistungsstarke Tools, daher wird empfohlen, die folgenden Konten von Ihrer Richtlinie auszuschließen:
 
-* **Notfallzugriffs**- oder **Break-Glass**-Konten, um eine mandantenweite Kontosperrung zu vermeiden. In dem unwahrscheinlichen Fall, dass alle Administratoren aus dem Mandanten ausgeschlossen sind, können Sie sich mit Ihrem Administratorkonto für den Notfallzugriff beim Mandanten anmelden und Maßnahmen ergreifen, um den Zugriff wiederherzustellen.
-   * Weitere Informationen finden Sie im Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD](../roles/security-emergency-access.md).
-* **Dienstkonten** und **Dienstprinzipale**, z. B. das Konto für die Azure AD Connect-Synchronisierung. Dienstkonten sind nicht interaktive Konten, die an keinen bestimmten Benutzer gebunden sind. Sie werden normalerweise von Back-End-Diensten verwendet, die den programmgesteuerten Zugriff auf Anwendungen ermöglichen, können aber auch zu Verwaltungszwecken für die Anmeldung bei Systemen verwendet werden. Derartige Dienstkonten sollten ausgeschlossen werden, weil die MFA nicht programmgesteuert abgeschlossen werden kann. Aufrufe von Dienstprinzipalen werden durch den bedingten Zugriff nicht blockiert.
-   * Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie in Betracht ziehen, diese durch [verwaltete Identitäten](../managed-identities-azure-resources/overview.md) zu ersetzen. Als vorübergehende Problemumgehung können Sie diese spezifischen Konten aus der Basisrichtlinie ausschließen.
+- **Notfallzugriffs**- oder **Break-Glass**-Konten, um eine mandantenweite Kontosperrung zu vermeiden. In dem unwahrscheinlichen Fall, dass alle Administratoren aus dem Mandanten ausgeschlossen sind, können Sie sich mit Ihrem Administratorkonto für den Notfallzugriff beim Mandanten anmelden und Maßnahmen ergreifen, um den Zugriff wiederherzustellen.
+   - Weitere Informationen finden Sie im Artikel [Verwalten von Konten für den Notfallzugriff in Azure AD](../roles/security-emergency-access.md).
+- **Dienstkonten** und **Dienstprinzipale**, z. B. das Konto für die Azure AD Connect-Synchronisierung. Dienstkonten sind nicht interaktive Konten, die an keinen bestimmten Benutzer gebunden sind. Sie werden normalerweise von Back-End-Diensten verwendet, die den programmgesteuerten Zugriff auf Anwendungen ermöglichen, können aber auch zu Verwaltungszwecken für die Anmeldung bei Systemen verwendet werden. Derartige Dienstkonten sollten ausgeschlossen werden, weil die MFA nicht programmgesteuert abgeschlossen werden kann. Aufrufe von Dienstprinzipalen werden durch den bedingten Zugriff nicht blockiert.
+   - Wenn Ihre Organisation diese Konten in Skripts oder Code verwendet, sollten Sie in Betracht ziehen, diese durch [verwaltete Identitäten](../managed-identities-azure-resources/overview.md) zu ersetzen. Als vorübergehende Problemumgehung können Sie diese spezifischen Konten aus der Basisrichtlinie ausschließen.
 
 ## <a name="create-a-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
 
@@ -57,16 +60,20 @@ Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten
 1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
 1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
    1. Wählen Sie unter **Einschließen** die Option **Verzeichnisrollen** aus, und wählen Sie dann integrierte Rollen wie die folgenden aus:
-      * Authentifizierungsadministrator
-      * Rechnungsadministrator
-      * Administrator für den bedingten Zugriff
-      * Exchange-Administrator
-      * Globaler Administrator
-      * Helpdesk-Administrator
-      * Kennwortadministrator
-      * Sicherheitsadministrator
-      * SharePoint-Administrator
-      * Benutzeradministrator
+      - Globaler Administrator
+      - Anwendungsadministrator
+      - Authentifizierungsadministrator
+      - Rechnungsadministrator
+      - Cloudanwendungsadministrator
+      - Administrator für den bedingten Zugriff
+      - Exchange-Administrator
+      - Helpdesk-Administrator
+      - Kennwortadministrator
+      - Privilegierter Authentifizierungsadministrator
+      - Administrator für privilegierte Rollen
+      - Sicherheitsadministrator
+      - SharePoint-Administrator
+      - Benutzeradministrator
    
       > [!WARNING]
       > Richtlinien für bedingten Zugriff unterstützen integrierte Rollen. Richtlinien für bedingten Zugriff werden nicht für andere Rollentypen erzwungen, einschließlich [Rollen einer administrativen Einheit](../roles/admin-units-assign-roles.md) oder [benutzerdefinierten Rollen](../roles/custom-create.md).

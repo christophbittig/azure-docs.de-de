@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6755aae60f09fad14f773c3976ae4f3d7e073744
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 6fbffc3b9a8c45aca7fa61b45dd6f34b300864e6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186459"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773966"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML-SSO (Single Sign-On, einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy
 
@@ -81,7 +81,7 @@ Bevor Sie SSO für lokale Anwendungen bereitstellen können, müssen Sie den Anw
    * Stellen Sie bei einem SP-initiierten Datenfluss sicher, dass in der Back-End-Anwendung die richtige **Antwort-URL** oder Assertionsverbraucherdienst-URL für den Empfang des Authentifizierungstokens angegeben ist.
 
     > [!NOTE]
-    > Wenn die Back-End-Anwendung erwartet, dass es sich bei der **Antwort-URL** um die interne URL handelt, müssen Sie entweder [benutzerdefinierte Domänen](application-proxy-configure-custom-domain.md) verwenden, um übereinstimmende interne und externe URLs zu erhalten, oder Sie müssen auf den Geräten der Benutzer die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ installieren. Diese Erweiterung leitet automatisch zum geeigneten Anwendungsproxydienst weiter. Informationen zur Installation der Erweiterung finden Sie unter [Download and install the My Apps Secure Sign-in Extension (Herunterladen und Installieren der Erweiterung zur sicheren Anmeldung bei „Meine Apps“)](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension).
+    > Wenn die Back-End-Anwendung erwartet, dass es sich bei der **Antwort-URL** um die interne URL handelt, müssen Sie entweder [benutzerdefinierte Domänen](application-proxy-configure-custom-domain.md) verwenden, um übereinstimmende interne und externe URLs zu erhalten, oder Sie müssen auf den Geräten der Benutzer die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ installieren. Diese Erweiterung leitet automatisch zum geeigneten Anwendungsproxydienst weiter. Informationen zur Installation der Erweiterung finden Sie unter [Download and install the My Apps Secure Sign-in Extension (Herunterladen und Installieren der Erweiterung zur sicheren Anmeldung bei „Meine Apps“)](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510#download-and-install-the-my-apps-secure-sign-in-extension).
     
 ## <a name="test-your-app"></a>Testen Ihrer App
 

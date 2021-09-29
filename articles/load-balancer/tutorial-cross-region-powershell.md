@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f6ee0323768287ee860becc5d02c85efb32e3fe
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 3718cbacedf6f8770d0b7d1c83eb4035cb5676b0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110704738"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784848"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-powershell"></a>Tutorial: Erstellen einer regionsübergreifenden Azure Load Balancer-Instanz mit Azure PowerShell
 
@@ -233,4 +233,4 @@ In diesem Tutorial führen Sie Folgendes durch:
 
 Fahren Sie mit dem nächsten Artikel fort, und lernen Sie das...
 > [!div class="nextstepaction"]
-> [Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer](./quickstart-load-balancer-standard-public-portal.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 02ba974aa430bd75848c3fcf2b762453d99e27fe
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 1462b45ede121cfbbe72b1f06d0f64b167c9246f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183605"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124808653"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Tutorial: Integrieren von Oracle Cloud Infrastructure Console in Azure Active Directory
 
@@ -197,7 +197,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-Wenn Sie im Zugriffsbereich die Kachel „Oracle Cloud Infrastructure Console“ auswählen, werden Sie zur Anmeldeseite für Oracle Cloud Infrastructure Console weitergeleitet. Wählen Sie im Dropdownmenü die Option **IDENTITY PROVIDER** (IDENTITÄTSANBIETER) aus, und klicken Sie wie weiter unten gezeigt auf **Continue** (Weiter), um sich anzumelden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich die Kachel „Oracle Cloud Infrastructure Console“ auswählen, werden Sie zur Anmeldeseite für Oracle Cloud Infrastructure Console weitergeleitet. Wählen Sie im Dropdownmenü die Option **IDENTITY PROVIDER** (IDENTITÄTSANBIETER) aus, und klicken Sie wie weiter unten gezeigt auf **Continue** (Weiter), um sich anzumelden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ![Konfiguration](./media/oracle-cloud-tutorial/config10.png)
 

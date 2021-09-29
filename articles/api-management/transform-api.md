@@ -1,18 +1,18 @@
 ---
 title: 'Tutorial: Transformieren und Schützen Ihrer API in Azure API Management | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie Ihre API in API Management mit Richtlinien für Transformation und Drosselung (Einschränkung der Aufrufhäufigkeit) schützen.
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/28/2020
-ms.author: apimpm
-ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: be58732e3279b7bfaccee76a8d5bc9d09ea664ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010230"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656396"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Tutorial: Transformieren und Schützen Ihrer API
 

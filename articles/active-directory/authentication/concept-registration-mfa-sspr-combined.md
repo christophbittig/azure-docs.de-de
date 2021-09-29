@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04f7b5a7757d402035e36aaf085de9033d046ba2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 52e50aa4097dbb405b0c37a96426440fdf002810
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345820"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763137"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Übersicht über die kombinierte Registrierung von Sicherheitsinformationen in Azure Active Directory
 
@@ -32,7 +32,7 @@ In diesem Artikel wird beschrieben, was die kombinierte Registrierung von Sicher
 
 ![„Mein Konto“ mit registrierten Sicherheitsinformationen für einen Benutzer](media/concept-registration-mfa-sspr-combined/combined-security-info-defaults-registered.png)
 
-Lesen Sie vor dem Aktivieren der neuen Funktion diese an Administratoren gerichtete Dokumentation und die benutzerorientierte Dokumentation, um sich mit der Funktionalität und den Auswirkungen dieser Funktion vertraut zu machen. Ziehen Sie für Ihre Schulungen die [Benutzerdokumentation](../user-help/security-info-setup-signin.md) heran, um Ihre Benutzer auf die neue Oberfläche vorzubereiten und so einen erfolgreichen Rollout sicherzustellen.
+Lesen Sie vor dem Aktivieren der neuen Funktion diese an Administratoren gerichtete Dokumentation und die benutzerorientierte Dokumentation, um sich mit der Funktionalität und den Auswirkungen dieser Funktion vertraut zu machen. Ziehen Sie für Ihre Schulungen die [Benutzerdokumentation](https://support.microsoft.com/account-billing/set-up-your-security-info-from-a-sign-in-prompt-28180870-c256-4ebf-8bd7-5335571bf9a8) heran, um Ihre Benutzer auf die neue Oberfläche vorzubereiten und so einen erfolgreichen Rollout sicherzustellen.
 
 Die kombinierte Registrierung von Azure AD-Sicherheitsinformationen ist für Azure US Government, nicht aber für Azure Deutschland oder Azure China 21Vianet verfügbar.
 

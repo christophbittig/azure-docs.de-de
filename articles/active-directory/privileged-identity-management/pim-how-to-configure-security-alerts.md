@@ -14,12 +14,12 @@ ms.date: 06/30/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88854bb08b9f1cffec7d6f2fde535f73a3241e18
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 761995f33d5688e5864640a0e6e2f864f5aa44a3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340183"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766044"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Konfigurieren von Sicherheitswarnungen für Azure AD-Rollen in Privileged Identity Management
 
@@ -43,7 +43,7 @@ Schweregrad: **Niedrig**
 | --- | --- |
 | **Warum erhalte ich diese Warnung?** | Benutzer, denen nicht benötigte privilegierte Rollen zugewiesen wurden, erhöhen die Möglichkeit eines Angriffs. Es ist auch einfacher für Angreifer, auf Konten, die nicht aktiv genutzt werden, unbemerkt zu bleiben. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Benutzer in der Liste, und entfernen Sie die Zuweisung zu privilegierten Rollen, die sie nicht benötigen. |
-| **Prävention** | Weisen Sie privilegierte Rollen nur Benutzern zu, die eine geschäftliche Begründung angegeben haben. </br>Planen Sie regelmäßige [Zugriffsüberprüfungen](pim-how-to-start-security-review.md), um sicherzustellen, dass die Benutzer ihren Zugriff weiterhin benötigen. |
+| **Prävention** | Weisen Sie privilegierte Rollen nur Benutzern zu, die eine geschäftliche Begründung angegeben haben. </br>Planen Sie regelmäßige [Zugriffsüberprüfungen](./pim-create-azure-ad-roles-and-resource-roles-review.md), um sicherzustellen, dass die Benutzer ihren Zugriff weiterhin benötigen. |
 | **Aktionen zur Risikominderung im Portal** | Entfernt das Konto aus der privilegierte Rolle. |
 | **Trigger** | Wird ausgelöst, wenn ein Benutzer eine angegebene Anzahl von Tagen keine Rolle aktiviert hat. |
 | **Anzahl von Tagen** | Diese Einstellung gibt die maximale Anzahl von Tagen (von 0 bis 100) an, in denen ein Benutzer keine Rolle aktivieren muss.|
@@ -76,7 +76,7 @@ Schweregrad: **Mittel**
 | --- | --- |
 | **Warum erhalte ich diese Warnung?** | Für Konten in einer privilegierten Rolle wurde das Kennwort in den letzten 90 Tagen nicht geändert. Diese Konten können Dienst- oder gemeinsam genutzte Konten sein, die nicht verwaltet werden und anfällig für Angriffe sind. |
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Konten in der Liste. Wenn kein Zugriff darauf mehr erforderlich ist, entfernen sie aus ihren privilegierten Rollen. |
-| **Prävention** | Stellen Sie sicher, dass die starken Kennwörter für freigegebenen Konten rotiert werden, wenn sich die Benutzer ändern, die das Kennwort kennen. </br>Überprüfen Sie Konten mit privilegierten Rollen regelmäßig mithilfe von [Zugriffsüberprüfungen](pim-how-to-start-security-review.md), und entfernen Sie nicht mehr benötigte Rollenzuweisungen. |
+| **Prävention** | Stellen Sie sicher, dass die starken Kennwörter für freigegebenen Konten rotiert werden, wenn sich die Benutzer ändern, die das Kennwort kennen. </br>Überprüfen Sie Konten mit privilegierten Rollen regelmäßig mithilfe von [Zugriffsüberprüfungen](./pim-create-azure-ad-roles-and-resource-roles-review.md), und entfernen Sie nicht mehr benötigte Rollenzuweisungen. |
 | **Aktionen zur Risikominderung im Portal** | Entfernt das Konto aus der privilegierte Rolle. |
 | **bewährten Methoden** | Für freigegebene Konten sowie Dienst- und Notfallzugriffskonten, die ein Kennwort zur Authentifizierung verwenden und administrativen Rollen mit hohen Berechtigungen (z. B. der Rolle „Globaler Administrator“ oder „Sicherheitsadministrator“) zugewiesen sind, ist für die folgenden Fälle eine Kennwortrotation erforderlich:<ul><li>Nach einem Sicherheitsvorfall, bei dem administrative Zugriffsrechte missbraucht oder kompromittiert wurden</li><li>Nachdem die Berechtigungen eines Benutzers geändert wurden, sodass er kein Administrator mehr ist (beispielsweise nachdem ein Mitarbeiter, der ein Administrator war, die IT-Abteilung oder Organisation verlassen hat)</li><li>In regelmäßigen Abständen (z. B. vierteljährlich oder jährlich), auch wenn keine Sicherheitsverletzung bekannt ist oder kein Wechsel im IT-Personal stattgefunden hat</li></ul>Da mehrere Personen Zugriff auf die Anmeldeinformationen dieser Konten haben, sollte durch eine Rotation der Anmeldeinformationen sichergestellt werden, dass Personen, die ihre Rollen nicht mehr innehaben, keinen Zugriff auf die Konten mehr haben. [Erfahren Sie mehr über das Sichern von Konten.](../roles/security-planning.md) |
 

@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/22/2021
 ms.author: jianleishen
-ms.openlocfilehash: 4f619266d225e4dd36bb68ca9ebcaaae366891cb
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 24b303cc93940ee7884a4766ce542aa543ea285e
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821887"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083978"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory-or-azure-synapse-analytics"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory und Azure Synapse Analytics
 
@@ -66,6 +66,7 @@ Beachten Sie Folgendes:
 
 | Connector/Metadaten | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
+| [Amazon RDS für SQL Server](connector-amazon-rds-for-sql-server.md) | √ | √ | √ |
 | [Azure SQL-Datenbank](connector-azure-sql-database.md) | √ | √ | √ |
 | [Verwaltete Azure SQL-Datenbank-Instanz](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) | √ | √ | √ |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
@@ -168,7 +169,7 @@ Sie können die folgenden Metadatentypen in der Feldliste der Aktivität „Meta
 
 Die Aktivität „Metadaten abrufen“ kann zurzeit die folgenden Arten von Metadateninformationen zurückgeben:
 
-Eigenschaft | BESCHREIBUNG | Erforderlich
+Eigenschaft | Beschreibung | Erforderlich
 -------- | ----------- | --------
 fieldList | Die erforderlichen Arten von Metadateninformationen. Ausführliche Informationen zu unterstützten Metadaten finden Sie im Abschnitt [Metadatenoptionen](#metadata-options) dieses Artikels. | Ja 
 dataset | Das Referenzdataset, dessen Metadaten von der Aktivität „Metadaten abrufen“ abgerufen werden sollen. Weitere Informationen zu unterstützten Connectors finden Sie im Abschnitt [Funktionen](#supported-capabilities). Ausführliche Informationen zur Syntax von Datasets finden Sie in den jeweiligen Connectorthemen. | Ja

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 03/07/2021
 ms.author: bagol
-ms.openlocfilehash: e2da161d98a7f4bcae0f8da55a1cf7129c7633f9
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 76800b0f7a90dacd1447b87fdc1f1d23300873ec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350740"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784392"
 ---
 # <a name="commonly-used-azure-sentinel-workbooks"></a>Häufig verwendete Azure Sentinel-Arbeitsmappen
 
@@ -48,7 +48,7 @@ Greifen Sie in Azure Sentinel auf der linken Seite unter **Bedrohungsmanagement*
 |**Identität & Zugriff**     |   Mit dieser Arbeitsmappe gewinnen Sie über Sicherheitsprotokolle, die Überwachungs- und Anmeldeprotokolle enthalten, Erkenntnisse über Identitäts- und Zugriffsvorgänge bei der Nutzung von Microsoft-Produkten.     |
 |**Übersicht über Incidents**     |   Diese Arbeitsmappe dient der Unterstützung bei der Selektierung und Untersuchungen, indem sie umfassende Informationen über einen Incident bereitstellt. Dazu zählen allgemeine Informationen, Entitätsdaten, Selektierungszeit, Entschärfungszeit sowie Kommentare. <br><br>Weitere Informationen finden Sie im Artikel zum [Toolkit für datengesteuerte SOCs](https://techcommunity.microsoft.com/t5/azure-sentinel/the-toolkit-for-data-driven-socs/ba-p/2143152).      |
 |<a name="investigation-insights"></a>**Untersuchungserkenntnisse**     | Mit dieser Arbeitsmappe gewinnen Analysten Erkenntnisse über Incident-, Textmarken- und Entitätsdaten. Allgemeine Abfragen und ausführliche Visualisierungen können Analysten bei der Untersuchung verdächtiger Aktivitäten unterstützen.     |
-|**Microsoft Cloud App Security – Ermittlungsprotokolle**     |   Diese Arbeitsmappe stellt ausführliche Informationen zu den Cloud-Apps bereit, die in Ihrer Organisation verwendet werden. Mit ihr gewinnen Sie zudem Erkenntnisse über Nutzungstrends und erhalten Detailinformationen zu bestimmten Benutzern und Anwendungen.  <br><br>Weitere Informationen finden Sie unter [Verknüpfen von Microsoft Cloud App Security-Daten](connect-cloud-app-security.md).|
+|**Microsoft Cloud App Security – Ermittlungsprotokolle**     |   Diese Arbeitsmappe stellt ausführliche Informationen zu den Cloud-Apps bereit, die in Ihrer Organisation verwendet werden. Mit ihr gewinnen Sie zudem Erkenntnisse über Nutzungstrends und erhalten Detailinformationen zu bestimmten Benutzern und Anwendungen.  <br><br>Weitere Informationen finden Sie unter [Verknüpfen von Microsoft Cloud App Security-Daten](./data-connectors-reference.md#microsoft-cloud-app-security-mcas).|
 |**MITRE ATT&CK-Arbeitsmappe**     |   Diese Arbeitsmappe stellt Details zur MITRE ATT&CK-Abdeckung für Azure Sentinel bereit.      |
 |**Office 365**     | Mit dieser Arbeitsmappe gewinnen Sie Erkenntnisse über Office 365, indem alle Vorgänge und Aktivitäten nachverfolgt und analysiert werden. Zeigen Sie Detailinformationen zu SharePoint-, OneDrive-, Teams- und Exchange-Daten an.       |
 |**Sicherheitswarnungen**     |  Diese Arbeitsmappe stellt ein Dashboard für Sicherheitswarnungen in Ihrer Azure Sentinel-Umgebung bereit. <br><br>Weitere Informationen finden Sie unter [Automatisches Erstellen von Incidents aus Microsoft-Sicherheitswarnungen](create-incidents-from-alerts.md).      |

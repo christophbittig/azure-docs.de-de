@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 046b25164df92c609196a701d35f989aa397253b
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: af22c23184da4163deb07b2b9d5fa470bd35042d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122825091"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760478"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema- und Datentypzuordnung in Kopieraktivität
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -45,7 +45,7 @@ Weitere Informationen:
 
 Sie können die Zuordnung über die Benutzeroberfläche für die Erstellung unter „Kopieraktivität“ > Registerkarte „Zuordnung“ konfigurieren oder die Zuordnung in der Kopieraktivität mithilfe der Eigenschaft `translator` programmgesteuert angeben. Die folgenden Eigenschaften werden im Array `translator` -> `mappings` > Objekte > `source` und `sink` unterstützt, das auf die jeweilige Spalte bzw. das jeweilige Feld zum Zuordnen von Daten zeigt.
 
-| Eigenschaft | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft | Beschreibung                                                  | Erforderlich |
 | -------- | ------------------------------------------------------------ | -------- |
 | name     | Name der Quell- oder Senkenspalte bzw. des Quell- oder Senkenfelds. Für tabellarische Quelle und Senke anwenden. | Ja      |
 | ordinal  | Spaltenindex. Bei 1 beginnen. <br>Anwenden und erforderlich, wenn Text mit Trennzeichen und ohne Kopfzeile verwendet wird. | Nein       |
@@ -56,7 +56,7 @@ Sie können die Zuordnung über die Benutzeroberfläche für die Erstellung unte
 
 Die folgenden Eigenschaften werden unter `translator` und unter `mappings` unterstützt:
 
-| Eigenschaft            | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft            | Beschreibung                                                  | Erforderlich |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | Beim Kopieren aus einer hierarchischen Quelle wie etwa aus einem Cosmos DB-, MongoDB- oder REST-Connector anwenden.<br>Wenn Sie Daten durchlaufen und Objekte **innerhalb eines Arrayfelds** mit demselben Muster extrahieren, und wenn Sie möchten, dass jedes Objekt in einer neuen Zeile steht, geben Sie den JSON-Pfad dieses Arrays für die übergreifende Anwendung an. | Nein       |
 
@@ -68,7 +68,7 @@ Beispielsweise zum Kopieren von Daten aus Salesforce in Azure SQL-Datenbank und 
 
 2. Ordnen Sie die erforderlichen Felder zu, und schließen Sie die restlichen Felder aus bzw. löschen Sie sie.
 
-![Zuordnung von tabellarisch zu tabellarisch](media/copy-activity-schema-and-type-mapping/map-tabular-to-tabular.png)
+:::image type="content" source="media/copy-activity-schema-and-type-mapping/map-tabular-to-tabular.png" alt-text="Zuordnung von tabellarisch zu tabellarisch":::
 
 Dieselbe Zuordnung kann als folgende Nutzlast der Kopieraktivität konfiguriert werden (siehe `translator`):
 
@@ -187,11 +187,11 @@ Sie können eine Zuordnung dieser Art über die Data Factory-Benutzeroberfläche
 > [!NOTE]
 > Wenn bei einem Datensatz das als Sammlungsverweis markierte Array leer und das Kontrollkästchen aktiviert ist, wird der gesamte Datensatz übersprungen.
 
-![Zuordnung von hierarchisch zu tabellarisch mithilfe der Benutzeroberfläche](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
+:::image type="content" source="media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png" alt-text="Zuordnung von hierarchisch zu tabellarisch mithilfe der Benutzeroberfläche":::
 
 Sie können auch zum **erweiterten Editor** wechseln. Dann können Sie die JSON-Pfade der Felder direkt anzeigen und bearbeiten. Wenn Sie neue Zuordnungen in dieser Ansicht hinzufügen möchten, geben Sie den JSON-Pfad an.
 
-![Zuordnung von hierarchisch zu tabellarisch mithilfe des erweiterten Editors](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png)
+:::image type="content" source="media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png" alt-text="Zuordnung von hierarchisch zu tabellarisch mithilfe des erweiterten Editors":::
 
 Dieselbe Zuordnung kann als folgende Nutzlast der Kopieraktivität konfiguriert werden (siehe `translator`):
 
@@ -308,7 +308,7 @@ Die folgenden Datentypkonvertierungen werden unter den Zwischendatentypen von Qu
 
 Die folgenden Eigenschaften werden in der Kopieraktivität für die Datentypkonvertierung unterstützt (im Abschnitt `translator` für die programmatische Erstellung):
 
-| Eigenschaft                         | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft                         | Beschreibung                                                  | Erforderlich |
 | -------------------------------- | ------------------------------------------------------------ | -------- |
 | typeConversion                   | Aktiviert den neuen Workflow für die Datentypkonvertierung. <br>Der Standardwert lautet aufgrund der Abwärtskompatibilität FALSE.<br><br>Bei neuen Kopieraktivitäten, die seit Ende Juni 2020 über die Data Factory-Benutzeroberfläche für die Erstellung erstellt wurden, ist diese Datentypkonvertierung für eine optimale Nutzung standardmäßig aktiviert. Zudem werden in der Kopieraktivität auf der Registerkarte „Zuordnung“ die folgenden Datentypkonvertierungseinstellungen für entsprechende Szenarios angezeigt. <br>Wenn Sie Pipelines programmgesteuert erstellen möchten, müssen Sie die Eigenschaft `typeConversion` explizit auf TRUE festlegen, um sie zu aktivieren.<br>Bei vorhandenen Kopieraktivitäten, die vor der Einführung dieses Features erstellt wurden, werden in der Benutzeroberfläche für die Erstellung aus Gründen der Abwärtskompatibilität keine Optionen für die Datentypkonvertierung angezeigt. | Nein       |
 | typeConversionSettings           | Eine Gruppe von Datentypkonvertierungseinstellungen. Wird angewendet, wenn `typeConversion` auf `true` festgelegt ist. Die folgenden Eigenschaften befinden sich in dieser Gruppe. | Nein       |
@@ -453,7 +453,7 @@ Wenn Sie zum Angeben der Spaltenzuordnung die Syntax `"columnMappings": "UserId:
 
 Sie können die Kopieraktivität > `translator` -> `schemaMapping` angeben, um hierarchisch und tabellarisch strukturierte Daten zuzuordnen, z. B. Kopieren aus MongoDB/REST in eine Textdatei oder aus Oracle in die Azure Cosmos DB-API für MongoDB. Folgende Eigenschaften werden im Abschnitt `translator` der Kopieraktivität unterstützt:
 
-| Eigenschaft            | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft            | Beschreibung                                                  | Erforderlich |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | type                | Die type-Eigenschaft der Kopieraktivität „translator“ muss auf Folgendes festgelegt werden: **TabularTranslator** | Ja      |
 | schemaMapping       | Eine Sammlung von Schlüssel-Wert-Paaren, die die Zuordnungsbeziehung **von der Quelle zur Senke** darstellt.<br/>- **Schlüssel:** stellt die Quelle dar. Für eine **tabellarische Quelle** legen Sie den Spaltennamen wie in der Datasetstruktur definiert fest. Für eine **hierarchische Quelle** legen Sie den Ausdruck des JSON-Pfads für jedes zu extrahierende und zuzuordnende Feld fest.<br>- **Wert:** stellt die Senke dar. Für eine **tabellarische Senke** legen Sie den Spaltennamen wie in der Datasetstruktur definiert fest. Für eine **hierarchische Senke** legen Sie den Ausdruck des JSON-Pfads für jedes zu extrahierende und zuzuordnende Feld fest. <br>Bei hierarchischen Daten beginnt der JSON-Pfad für Felder unter der Stammobjekt mit dem Stamm „$“. Für Felder innerhalb des von der `collectionReference`-Eigenschaften ausgewählten Arrays beginnt der JSON-Pfad mit dem Array-Element. | Ja      |

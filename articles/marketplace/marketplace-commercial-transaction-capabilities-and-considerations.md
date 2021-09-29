@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/06/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: f75d3872d0125e210edcd33ca85978901468bfe8
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 77ec7a7dad4b215ae22bf3766172f1e92e932593
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356589"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736193"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
@@ -75,7 +75,7 @@ Im Allgemeinen sind SaaS-Angebote gut geeignet, wenn Ihre Kunden Ihren Dienst ei
 Die Angebote für virtuelle Computer und Azure-Anwendungen eignen sich gut, wenn Sie möchten, dass Kunden Ihre App-Paket oder Ihren Dienst (als VM-Image und/oder andere Azure-Dienste in der ARM-Vorlage) in ihrer eigenen Cloudinfrastruktur bereitstellen, verwalten und ausführen.
 
 [![Flussdiagramm zum Bestimmen von Angebotstyp und Tarif](media/commercial-marketplace-plans/offer-type-and-pricing-plan-flowchart.png)](media/commercial-marketplace-plans/offer-type-and-pricing-plan-flowchart.png#lightbox)
-&nbsp;&nbsp;&nbsp;<sup>(1)</sup> Wenden Sie sich an [Microsoft Office Hours](https://microsoftcloudpartner.eventbuilder.com/MarketplaceDeveloperOfficeHours) oder den [Support](/azure/marketplace/support).<br>
+&nbsp;&nbsp;&nbsp;<sup>(1)</sup> Wenden Sie sich an [Microsoft Office Hours](https://microsoftcloudpartner.eventbuilder.com/MarketplaceDeveloperOfficeHours) oder den [Support](./support.md).<br>
 &nbsp;&nbsp;&nbsp;<sup>(2)</sup> Images von VM-Angeboten können in das Azure App-Angebot einbezogen werden, um die Preisflexibilität zu erhöhen.<br>
 &nbsp;&nbsp;&nbsp;<sup>(3)</sup> Der Kunde zahlt die Infrastrukturkosten, da Azure-Dienste auf dem Mandanten des Kunden für VM- und Azure-App-Angebote bereitgestellt werden.
 
@@ -207,4 +207,4 @@ Private Pläne ermöglichen die Verwendung höherer oder niedrigerer Preise für
 
 - Entnehmen Sie den Veröffentlichungsmustern der Onlineshops Beispiele für die Zuordnung Ihrer Lösung zu einem Angebotstyp und einer Konfiguration.
 - [Leitfaden zur Veröffentlichung nach Angebotstyp](publisher-guide-by-offer-type.md)
-- [Pläne und Preise für Angebote im kommerziellen Marketplace](/azure/marketplace/plans-pricing)
+- [Pläne und Preise für Angebote im kommerziellen Marketplace](./plans-pricing.md)

@@ -12,12 +12,12 @@ ms.date: 11/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: cc55eff7c5ed3a4773a016bcd73bbd33708d9595
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a5066eece8950d4e9dffabedb2e0cca4c527353f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355472"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124822998"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>Sicherer Hybridzugriff mit dem F5 BIG-IP Access Policy Manager und dessen Integration in Azure Active Directory
 
@@ -30,7 +30,7 @@ Der sichere Hybridzugriff (SHA) wurde für diesen wunden Punkt konzipiert und bi
 
 Die Vorabauthentifizierung des Zugriffs auf veröffentlichte BIG-IP-Dienste durch Azure AD bietet viele Vorteile:
 
-- Kennwortlose Authentifizierung durch [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview), [MS Authenticator](../user-help/user-help-auth-app-download-install.md), [Fast Identity Online (FIDO)-Schlüssel](../authentication/howto-authentication-passwordless-security-key.md) und [zertifikatbasierte Authentifizierung](../authentication/active-directory-certificate-based-authentication-get-started.md)
+- Kennwortlose Authentifizierung durch [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview), [MS Authenticator](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a), [Fast Identity Online (FIDO)-Schlüssel](../authentication/howto-authentication-passwordless-security-key.md) und [zertifikatbasierte Authentifizierung](../authentication/active-directory-certificate-based-authentication-get-started.md)
 
 - [Bedingter Zugriff](../conditional-access/overview.md) und [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) als Maßnahmen im Vorfeld
 
@@ -81,7 +81,7 @@ Die Schritte 1-4 im Diagramm veranschaulichen den Front-End-Austausch zur Voraba
 
 Die meisten Benutzer (direkter Mitarbeiter, Partner, Consumer o.ä.) sind bereits mit der Anmeldeumgebung von Office 365 vertraut, sodass der Zugriff auf die BIG-IP-Dienste über den sicheren Hybridzugriff (SHA) größtenteils bekannt ist.
 
-Benutzer finden jetzt, unabhängig vom Gerätetyp oder Standort, ihre veröffentlichten BIG-IP-Dienste zusammen mit Self-Service-Funktionen für eine größere Anzahl von Diensten unter [MyApps](../user-help/my-apps-portal-end-user-access.md) oder [O365-Launchpads](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf). Benutzer können bei Bedarf sogar weiterhin direkt über das proprietäre Webtop-Portal von BIG-IP auf veröffentlichte Dienste zugreifen. Der sichere Hybridzugriff (SHA) stellt bei der Abmeldung sicher, dass die Sitzung des Benutzers an beiden Endpunkten (BIG-IP und Azure AD) beendet wird, und sorgt so dafür, dass die Dienste vollständig vor unbefugtem Zugriff geschützt bleiben.  
+Benutzer finden jetzt, unabhängig vom Gerätetyp oder Standort, ihre veröffentlichten BIG-IP-Dienste zusammen mit Self-Service-Funktionen für eine größere Anzahl von Diensten unter [MyApps](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510) oder [O365-Launchpads](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf). Benutzer können bei Bedarf sogar weiterhin direkt über das proprietäre Webtop-Portal von BIG-IP auf veröffentlichte Dienste zugreifen. Der sichere Hybridzugriff (SHA) stellt bei der Abmeldung sicher, dass die Sitzung des Benutzers an beiden Endpunkten (BIG-IP und Azure AD) beendet wird, und sorgt so dafür, dass die Dienste vollständig vor unbefugtem Zugriff geschützt bleiben.  
 
 Die gezeigten Screenshots stammen aus dem App-Portal von Azure AD, auf das Benutzer auf sichere Weise zugreifen können, um nach ihren veröffentlichten BIG-IP-Diensten zu suchen und ihre Kontoeigenschaften zu verwalten.  
 

@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: 68c3ba369af177d2b673dc06d5f7ccafe09c4cf6
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 43fcc70bf88b7e037167a936ebd655b8877b394d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598380"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820370"
 ---
 #  <a name="azure-web-pubsub-trigger-and-bindings-for-azure-functions"></a>Azure Web PubSub-Trigger und -Bindungen für Azure Functions
 
@@ -28,7 +28,7 @@ Web PubSub ist ein von Azure verwalteter Dienst, der Entwicklern die einfache Er
 [Quellcode](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/webpubsub/) |
 [Paket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.WebPubSub) |
 [API-Referenzdokumentation](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/webpubsub/Microsoft.Azure.WebJobs.Extensions.WebPubSub/api/Microsoft.Azure.WebJobs.Extensions.WebPubSub.netstandard2.0.cs) |
-[Produktdokumentation](https://aka.ms/awps/doc) |
+[Produktdokumentation](./index.yml) |
 [Beispiele][samples_ref]
 
 ## <a name="add-to-your-functions-app"></a>Hinzufügen zu Ihrer Funktions-App
@@ -48,9 +48,9 @@ func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub -
 ```
 
 [NuGet-Paket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.WebPubSub
-[Explizites Installieren von Erweiterungen]: /azure/azure-functions/functions-bindings-register#explicitly-install-extensions 
+[Explizites Installieren von Erweiterungen]: ../azure-functions/functions-bindings-register.md#explicitly-install-extensions 
 [Azure-Tools-Erweiterung]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
-[Aktualisieren Ihrer Erweiterungen]: /azure/azure-functions/functions-bindings-register
+[Aktualisieren Ihrer Erweiterungen]: ../azure-functions/functions-bindings-register.md
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
 
@@ -66,7 +66,7 @@ func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub -
 
 Verwenden Sie den Funktionstrigger, um Anforderungen vom Azure Web PubSub-Dienst zu verarbeiten. 
 
-`WebPubSubTrigger` wird verwendet, wenn Sie dienstseitige Anforderungen verarbeiten müssen. Das Muster des Triggerendpunkts, das im Web PubSub-Dienst festgelegt werden sollte, würde wie folgt aussehen (Portal: Settings -> Event Handler -> URL Template (Einstellungen -> Ereignishandler -> URL-Vorlage)). Im Endpunktmuster ist der Abfrageteil `code=<API_KEY>` aus [Sicherheitsgründen](/azure/azure-functions/security-concepts#system-key) **ERFORDERLICH**, wenn Sie eine Azure-Funktions-App verwenden. Den Schlüssel finden Sie im **Azure-Portal**. Suchen Sie nach dem Bereitstellen der Funktions-App in Azure nach Ihrer Funktions-App-Ressource, und navigieren Sie zu **Functions** -> **App-Schlüssel** -> **Systemschlüssel** -> **webpubsub_extension**. Wenn Sie mit lokalen Funktionen arbeiten, wird dieser Schlüssel jedoch nicht benötigt.
+`WebPubSubTrigger` wird verwendet, wenn Sie dienstseitige Anforderungen verarbeiten müssen. Das Muster des Triggerendpunkts, das im Web PubSub-Dienst festgelegt werden sollte, würde wie folgt aussehen (Portal: Settings -> Event Handler -> URL Template (Einstellungen -> Ereignishandler -> URL-Vorlage)). Im Endpunktmuster ist der Abfrageteil `code=<API_KEY>` aus [Sicherheitsgründen](../azure-functions/security-concepts.md#system-key) **ERFORDERLICH**, wenn Sie eine Azure-Funktions-App verwenden. Den Schlüssel finden Sie im **Azure-Portal**. Suchen Sie nach dem Bereitstellen der Funktions-App in Azure nach Ihrer Funktions-App-Ressource, und navigieren Sie zu **Functions** -> **App-Schlüssel** -> **Systemschlüssel** -> **webpubsub_extension**. Wenn Sie mit lokalen Funktionen arbeiten, wird dieser Schlüssel jedoch nicht benötigt.
 
 ```
 <Function_App_Url>/runtime/webhooks/webpubsub?code=<API_KEY>
@@ -155,7 +155,7 @@ module.exports = async function (context) {
 
 ### <a name="attributes-and-annotations"></a>Attribute und Anmerkungen
 
-Verwenden Sie in [C#-Klassenbibliotheken](/azure/azure-functions/functions-dotnet-class-library) das Attribut `WebPubSubTrigger`.
+Verwenden Sie in [C#-Klassenbibliotheken](../azure-functions/functions-dotnet-class-library.md) das Attribut `WebPubSubTrigger`.
 
 Dies ist ein `WebPubSubTrigger`-Attribut in einer Methodensignatur:
 

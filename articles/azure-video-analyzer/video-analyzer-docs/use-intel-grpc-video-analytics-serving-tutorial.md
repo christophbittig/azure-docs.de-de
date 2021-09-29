@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie die Edge-KI-Erweiterung �
 ms.topic: tutorial
 ms.service: azure-video-analyzer
 ms.date: 06/01/2021
-ms.openlocfilehash: f666ac772d85fb1501c54001511e25cd941ee7c3
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: a55b4a970f1a6aeb0e257ae6404eae349f356a01
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604775"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058564"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>Tutorial: Analysieren von Livevideos mit der Edge-KI-Erweiterung „Intel OpenVINO™ DL Streamer“ 
 
@@ -55,7 +55,7 @@ Das Edge AI Extension-Modul „OpenVINO™ DL Streamer“ ist ein Microservice, 
 
 Zur Erstellung komplexer Hochleistungslösungen für die Videoanalyse empfiehlt es sich, das Azure Video Analyzer-Modul mit einer leistungsfähigen Rückschluss-Engine zu kombinieren, die das Skalierungspotential im Edgebereich nutzen kann. In diesem Tutorial werden Rückschlussanforderungen an die Edge-KI-Erweiterung „Intel OpenVINO™ DL Streamer“ gesendet. Dabei handelt es sich um ein Edge-Modul, das für die Zusammenarbeit mit Azure Video Analyzer konzipiert ist.
 
-Das erste Release dieses Rückschlussservers bietet Zugriff auf folgende [Modelle](https://aka.ms/intel-dlstreamer-docs):
+Das erste Release dieses Rückschlussservers bietet Zugriff auf folgende [Modelle](https://github.com/intel/video-analytics-serving/tree/master/samples/ava_ai_extension#edge-ai-extension-module-options):
 
 - „object_detection“ für „person_vehicle_bike_detection“ ![Objekterkennung für Fahrzeuge](./media/use-intel-openvino-tutorial/object-detection.png)
 

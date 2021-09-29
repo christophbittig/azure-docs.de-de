@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 290d70e4dc83a4db0b1c0c31e9d60a32d124dc75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec670a90a3193fd1f4ed1781ac6d4160ae4fd737
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459321"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124833127"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-josa"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit JOSA
 
@@ -138,7 +138,7 @@ In diesem Abschnitt wird in JOSA ein Benutzer namens B. Simon erstellt. Wenden 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „JOSA“ klicken, sollten Sie automatisch bei der JOSA-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „JOSA“ klicken, sollten Sie automatisch bei der JOSA-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

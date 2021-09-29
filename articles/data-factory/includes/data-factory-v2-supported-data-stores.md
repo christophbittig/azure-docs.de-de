@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 12/18/2020
+ms.date: 09/22/2021
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: c9aa909c262caf2e5019fe45317988b98d859759
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 75a08a3aee9a337e422611fd238fece98b9d09e5
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255960"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129096000"
 ---
 | Category | Datenspeicher | Als Quelle unterstützt | Als Senke unterstützt | Von [Azure-Integrationslaufzeit](../concepts-integration-runtime.md#azure-integration-runtime) unterstützt | Von [selbstgehosteter IR](../concepts-integration-runtime.md#self-hosted-integration-runtime) unterstützt |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -33,7 +33,9 @@ ms.locfileid: "123255960"
 | &nbsp; |[Verwaltete Azure SQL-Datenbank-Instanz](../../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Synapse Analytics](../connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Table Storage](../connector-azure-table-storage.md) |✓ |✓ |✓ |✓  |
-| **Datenbank** |[Amazon Redshift](../connector-amazon-redshift.md) |✓ | |✓ |✓  |
+| **Datenbank** |[Amazon RDS für Oracle](../connector-amazon-rds-for-oracle.md) |✓ | |✓ |✓  |
+| &nbsp; |[Amazon RDS für SQL Server](../connector-amazon-rds-for-sql-server.md) |✓ | |✓ |✓  |
+| &nbsp; |[Amazon Redshift](../connector-amazon-redshift.md) |✓ | |✓ |✓  |
 | &nbsp; |[DB2](../connector-db2.md) |✓ | |✓ |✓  |
 | &nbsp; |[Drill](../connector-drill.md) |✓ | |✓ |✓  |
 | &nbsp; |[Google BigQuery](../connector-google-bigquery.md) |✓ | |✓ |✓  |

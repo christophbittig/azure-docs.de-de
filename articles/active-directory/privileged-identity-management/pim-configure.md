@@ -14,12 +14,12 @@ ms.date: 06/25/2021
 ms.author: curtand
 ms.custom: pim,azuread-video-2020,contperf-fy21q3-portal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 697dd72ba72924a14501a1410255a817f50f6789
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d24f4806274889be1743e19b6b10c909b4a0057d
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738703"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707603"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
@@ -149,7 +149,7 @@ Einige Beispiele für Situationen, in denen Sie möglicherweise Gäste in Ihre O
 
 Wenn Sie B2B Collaboration verwenden, können Sie einen externen Benutzer als Gast in Ihre Organisation einladen. Der Gast kann als Benutzer in Ihrer Organisation verwaltet werden, aber ein Gast muss in seiner eigenen Organisation authentifiziert sein, und nicht in Ihrer Azure AD-Organisation. Dies bedeutet, dass ein Gast, der keinen Zugriff mehr auf seine eigene Organisation hat, auch den Zugriff auf Ihre Organisation verlieren wird. Wenn der Gast beispielsweise seine Organisation verlässt, verliert er automatisch den Zugriff auf alle Ressourcen, die Sie in Azure AD für ihn freigegeben haben, ohne dass Sie etwas tun müssen. Weitere Informationen zur B2B-Zusammenarbeit finden Sie unter [Was ist der Gastbenutzerzugriff in Azure Active Directory-B2B?](../external-identities/what-is-b2b.md).
 
-![Diagramm, das zeigt, wie ein Gastbenutzer in seinem eigenen Heimatverzeichnis authentifiziert wird](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![Diagramm, das zeigt, wie ein Gastbenutzer in seinem eigenen Heimatverzeichnis authentifiziert wird](./media/pim-configure/b2b-external-user.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

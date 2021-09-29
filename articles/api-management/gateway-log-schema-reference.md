@@ -7,13 +7,13 @@ ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
-ms.author: apimpm
-ms.openlocfilehash: df0018e323bc0c5725c9752b25b77612f035c196
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 0da1a897f9abe55e846006136c040d3602882b5a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100582497"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676502"
 ---
 # <a name="reference-api-management-resource-log-schema"></a>Referenz: API Management-Ressourcenprotokollschema
 
@@ -25,7 +25,7 @@ Informationen zum Aktivieren der Sammlung des Ressourcenprotokolls in API Manag
 
 Die folgenden Eigenschaften werden für jede API-Anforderung protokolliert:
 
-| Eigenschaft  | type | BESCHREIBUNG |
+| Eigenschaft  | Type | BESCHREIBUNG |
 | ------------- | ------------- | ------------- |
 | method | Zeichenfolge | HTTP-Methode der eingehenden Anforderung |
 | url | Zeichenfolge | URL der eingehenden Anforderung |

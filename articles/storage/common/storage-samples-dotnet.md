@@ -1,18 +1,18 @@
 ---
 title: Azure Storage-Beispiele mit .NET | Microsoft Docs
 description: Sie können Beispielcode und -anwendungen für Azure Storage anzeigen, herunterladen und ausführen. Entdecken Sie Beispiele für erste Schritte mit Blobs, Warteschlangen, Tabellen und Dateien, indem Sie die Speicherclientbibliotheken für .NET verwenden.
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: c140234ce93ff9146ef3b1a5a135258ad707c807
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 947afa47c3ad5903e22cdd114a8020956861aa45
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275701"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633733"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Azure Storage-Beispiele mit .NET-Clientbibliotheken (v12)
 
@@ -86,6 +86,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 :::row-end:::
 
 ### <a name="troubleshooting"></a>Problembehandlung
+
 :::row:::
    :::column span="2":::
       [Auslösen eines behebbaren Fehlers mithilfe eines Containerclients](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L166)
@@ -114,6 +115,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 :::row-end:::
 
 ### <a name="file-system"></a>Dateisystem
+
 :::row:::
    :::column span="":::
       [Erstellen einer Datei mithilfe eines Dateisystemclients](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L22)
@@ -148,6 +150,7 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 :::row-end:::
 
 ### <a name="file"></a>Datei
+
 :::row:::
    :::column span="":::
       [Hochladen einer Datei](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L126)
@@ -270,7 +273,8 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>Problembehandlung 
+### <a name="troubleshooting"></a>Problembehandlung
+
 :::row:::
    :::column span="2":::
       [Auslösen eines behebbaren Fehlers mithilfe eines Warteschlangenclients](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L188)
@@ -313,10 +317,10 @@ Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und
 
 Die gesamten Bibliotheken mit .NET-Beispielen finden Sie hier:
 
-* [Azure-Blobcodebeispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
-* [Azure Data Lake-Codebeispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
-* [Azure Files-Codebeispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples)
-* [Azure Queue-Codebeispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
+- [Azure-Blobcodebeispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+- [Azure Data Lake-Codebeispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
+- [Azure Files-Codebeispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples)
+- [Azure Queue-Codebeispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
 
 Sie können die einzelnen Bibliotheken im GitHub-Repository suchen und klonen.
 
@@ -324,17 +328,17 @@ Sie können die einzelnen Bibliotheken im GitHub-Repository suchen und klonen.
 
 Lesen Sie den folgenden Leitfäden, um Anleitungen zum Installieren und zu den ersten Schritten mit den Azure Storage-Clientbibliotheken zu erhalten.
 
-* [Erste Schritte mit dem Azure Blob-Dienst in .NET](../blobs/storage-quickstart-blobs-dotnet.md)
-* [Erste Schritte mit dem Azure-Warteschlangendienst in .NET](../queues/storage-quickstart-queues-dotnet.md)
-* [Erste Schritte mit dem Azure-Tabellenspeicherdienst in .NET](../../cosmos-db/tutorial-develop-table-dotnet.md)
-* [Erste Schritte mit dem Azure-Dateidienst in .NET](../files/storage-dotnet-how-to-use-files.md)
+- [Erste Schritte mit dem Azure Blob-Dienst in .NET](../blobs/storage-quickstart-blobs-dotnet.md)
+- [Erste Schritte mit dem Azure-Warteschlangendienst in .NET](../queues/storage-quickstart-queues-dotnet.md)
+- [Erste Schritte mit dem Azure-Tabellenspeicherdienst in .NET](../../cosmos-db/tutorial-develop-table-dotnet.md)
+- [Erste Schritte mit dem Azure-Dateidienst in .NET](../files/storage-dotnet-how-to-use-files.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Beispielen für andere Sprachen:
 
-* Java: [Azure Storage-Beispiele mit Java](storage-samples-java.md)
-* Python: [Azure Storage-Beispiele mit Python](storage-samples-python.md)
-* JavaScript/Node.js: [Azure Storage-Beispiele mit JavaScript](storage-samples-javascript.md)
-* C++: [Azure Storage-Beispiele mit C++](storage-samples-c-plus-plus.md)
-* Alle anderen Sprachen: [Beispiele für Azure Storage](storage-samples.md)
+- Java: [Azure Storage-Beispiele mit Java](storage-samples-java.md)
+- Python: [Azure Storage-Beispiele mit Python](storage-samples-python.md)
+- JavaScript/Node.js: [Azure Storage-Beispiele mit JavaScript](storage-samples-javascript.md)
+- C++: [Azure Storage-Beispiele mit C++](storage-samples-c-plus-plus.md)
+- Alle anderen Sprachen: [Beispiele für Azure Storage](storage-samples.md)

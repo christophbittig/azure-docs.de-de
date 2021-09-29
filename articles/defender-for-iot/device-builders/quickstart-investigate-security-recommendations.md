@@ -3,15 +3,14 @@ title: Untersuchen von Sicherheitsempfehlungen
 description: Hier finden Sie eine Beschreibung der Untersuchung von Sicherheitsempfehlungen mit dem Sicherheitsdienst „Defender für IoT“.
 ms.topic: quickstart
 ms.date: 05/26/2021
-ms.openlocfilehash: dde8e585991f014149be0b1f610be1a4cf3b973b
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 29da5747afb36eea9e30d7179d06d69e60556e32
+ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011140"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129062059"
 ---
 # <a name="quickstart-investigate-security-recommendations"></a>Schnellstart: Untersuchen von Sicherheitsempfehlungen
-
 
 Die rechtzeitige Analyse und Entschärfung in Bezug auf die Empfehlungen von Defender für IoT ist die beste Vorgehensweise, um den Sicherheitsstatus zu verbessern und die Angriffsfläche für Ihre IoT-Lösung zu verkleinern.
 
@@ -23,32 +22,29 @@ Los geht’s!
 
 In der Liste mit den IoT Hub-Empfehlungen werden alle aggregierten Sicherheitsempfehlungen für Ihre IoT Hub-Instanz angezeigt.
 
-1.  Öffnen Sie im Azure-Portal die **IoT Hub**-Instanz, die Sie auf neue Empfehlungen untersuchen möchten.
+1. Öffnen Sie im Azure-Portal die **IoT Hub**-Instanz, die Sie auf neue Empfehlungen untersuchen möchten.
 
-1.  Wählen Sie im Menü **Sicherheit** die Option **Empfehlungen** aus. Alle Sicherheitsempfehlungen für die IoT Hub-Instanz werden angezeigt. Die Empfehlungen mit dem Flag **Neu** sind die Empfehlungen der letzten 24 Stunden. 
+1. Wählen Sie im Menü **Sicherheit** die Option **Empfehlungen** aus. Alle Sicherheitsempfehlungen für die IoT Hub-Instanz werden angezeigt. Die Empfehlungen mit dem Flag **Neu** sind die Empfehlungen der letzten 24 Stunden.
 
-    :::image type="content" source="media/quickstart/investigate-security-recommendations-expanded.png#lightbox" alt-text="Untersuchen von Sicherheitsempfehlungen mit ASC für IoT](media/quickstart/investigate-security-recommendations-inline.png)":::
-
-
-1.  Wählen Sie in der Liste eine beliebige Empfehlung aus, und öffnen Sie sie, um die Details dazu anzuzeigen und einen Drilldown auszuführen.
+1. Wählen Sie in der Liste eine beliebige Empfehlung aus, und öffnen Sie sie, um die Details dazu anzuzeigen und einen Drilldown auszuführen.
 
 ## <a name="security-recommendation-details"></a>Details von Sicherheitsempfehlungen
 
 Öffnen Sie die einzelnen aggregierten Empfehlungen, um dazu jeweils die ausführliche Beschreibung, die Problembehandlungsschritte und die Geräte-ID für jedes Gerät anzuzeigen, von dem eine Empfehlung ausgelöst wurde. Darüber hinaus werden der Schweregrad der Empfehlung und die Zugriffsoption zur direkten Untersuchung mit Log Analytics angezeigt.
 
-1.  Wählen Sie in der Liste unter **IoT Hub** > **Sicherheit** > **Empfehlungen** eine beliebige Sicherheitsempfehlung aus, und öffnen Sie sie.
+1. Wählen Sie in der Liste unter **IoT Hub** > **Sicherheit** > **Empfehlungen** eine beliebige Sicherheitsempfehlung aus, und öffnen Sie sie.
 
-1.  Sehen Sie sich für jede Empfehlung die **Beschreibung**, den **Schweregrad** und die **Gerätedetails** aller Geräte an, von denen diese Empfehlung während des Aggregationszeitraums ausgegeben wurde. 
+1. Sehen Sie sich für jede Empfehlung die **Beschreibung**, den **Schweregrad** und die **Gerätedetails** aller Geräte an, von denen diese Empfehlung während des Aggregationszeitraums ausgegeben wurde.
 
-1.  Verwenden Sie nach dem Überprüfen der Empfehlungsdetails die Anleitung im **Schritt zur manuellen Behebung**, um das Problem zu behandeln bzw. zu beheben, das zur Empfehlung geführt hat. 
+1. Verwenden Sie nach dem Überprüfen der Empfehlungsdetails die Anleitung im **Schritt zur manuellen Behebung**, um das Problem zu behandeln bzw. zu beheben, das zur Empfehlung geführt hat.
 
     :::image type="content" source="media/quickstart/remediate-security-recommendations-inline.png" alt-text="Beheben von Sicherheitsempfehlungen mit ASC für IoT" lightbox="media/quickstart/remediate-security-recommendations-expanded.png":::
 
-1.  Untersuchen Sie die Empfehlungsdetails für ein bestimmtes Gerät, indem Sie das gewünschte Gerät auf der Drilldownseite auswählen.
+1. Untersuchen Sie die Empfehlungsdetails für ein bestimmtes Gerät, indem Sie das gewünschte Gerät auf der Drilldownseite auswählen.
 
     :::image type="content" source="media/quickstart/explore-security-recommendation-detail-inline.png" alt-text="Untersuchen von bestimmten Sicherheitsempfehlungen für ein Gerät mit ASC für IoT" lightbox="media/quickstart/explore-security-recommendation-detail-expanded.png":::
 
-1.  Falls eine weitere Untersuchung erforderlich ist, können Sie den Link verwenden, um die **Empfehlung in Log Analytics zu untersuchen**. 
+1. Falls eine weitere Untersuchung erforderlich ist, können Sie den Link verwenden, um die **Empfehlung in Log Analytics zu untersuchen**. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

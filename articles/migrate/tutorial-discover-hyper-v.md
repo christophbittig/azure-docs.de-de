@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 7bdc0008baa1ee03c11aeeba03485fd7cd09e6f9
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 8ee94cf4c02c5535a85b75eec5a60522143a16ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969814"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748712"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln von Servern in Hyper-V mit der Ermittlung und Bewertung von Azure Migrate
 
@@ -139,7 +139,7 @@ Von Azure Migrate wird eine einfache Azure Migrate-Appliance verwendet. Die App
 
 > [!NOTE]
 > Wenn Sie die Appliance aus irgendeinem Grund nicht mithilfe der Vorlage einrichten können, können Sie für die Einrichtung ein PowerShell-Skript auf einem vorhandenen Windows Server 2016-Server verwenden. [Weitere Informationen](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)<br/>
-> Die Option zum Bereitstellen einer Appliance mithilfe einer Vorlage wird in Azure Government Cloud nicht unterstützt. [Erfahren Sie mehr](/azure/migrate/deploy-appliance-script-government) über das Bereitstellen einer Appliance für Azure Government Cloud.
+> Die Option zum Bereitstellen einer Appliance mithilfe einer Vorlage wird in Azure Government Cloud nicht unterstützt. [Erfahren Sie mehr](./deploy-appliance-script-government.md) über das Bereitstellen einer Appliance für Azure Government Cloud.
 
 In diesem Tutorial wird die Appliance wie folgt auf einem Server in einer Hyper-V-Umgebung eingerichtet:
 

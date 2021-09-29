@@ -8,12 +8,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 06/04/2021
-ms.openlocfilehash: dff3972bfc9da83312a1fdf4fc7c6169f932c410
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 246b1988a7a632e9c3b332f7adbdf908f1084457
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639886"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798254"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>Transformieren von Daten in einem Delta-Lake mithilfe von Zuordnungsdatenflüssen
 
@@ -56,24 +56,24 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Datenflussaktivität.
 
 1. Wählen Sie auf der Startseite die Option **Orchestrieren** aus.
 
-   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Screenshot, der die ADF-Startseite zeigt.":::
 
 1. Geben Sie auf der Registerkarte **Allgemein** der Pipeline als **Namen** der Pipeline **DeltaLake** ein.
 1. Erweitern Sie im Bereich **Aktivitäten** das Accordion-Element **Verschieben und transformieren**. Ziehen Sie die **Datenfluss**-Aktivität per Drag & Drop aus dem Bereich auf die Pipelinecanvas.
 
-    ![Screenshot der Pipelinecanvas, auf der die Datenflussaktivität abgelegt werden kann](media/tutorial-data-flow/activity1.png)
+    :::image type="content" source="media/tutorial-data-flow/activity1.png" alt-text="Screenshot der Pipelinecanvas, auf der die Datenflussaktivität abgelegt werden kann":::
 1. Wählen Sie im Popupfenster **Datenfluss hinzufügen** die Option **Neuen Datenfluss erstellen** aus, und geben Sie dem Datenfluss den Namen **DeltaLake**. Klicken Sie anschließend auf „Fertig stellen“.
 
-    ![Screenshot des Fensters, in dem beim Erstellen eines neuen Datenflusses der Name eingegeben wird](media/tutorial-data-flow/activity2.png)
+    :::image type="content" source="media/tutorial-data-flow/activity2.png" alt-text="Screenshot des Fensters, in dem beim Erstellen eines neuen Datenflusses der Name eingegeben wird":::
 1. Setzen Sie den Schieberegler **Datenfluss debuggen** in der oberen Pipeline-Canvas-Leiste auf „ein“. Der Debugmodus ermöglicht das interaktive Testen von Transformationslogik mit einem aktiven Spark-Cluster. Die Aufwärmphase von Datenflussclustern dauert 5 bis 7 Minuten. Den Benutzern wird empfohlen, zuerst den Debugmodus zu aktivieren, wenn sie die Entwicklung eines Datenflusses planen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
 
-    ![Screenshot: Position des Schiebereglers „Datenflüsse debuggen“.](media/tutorial-data-flow/dataflow1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow1.png" alt-text="Screenshot: Position des Schiebereglers „Datenflüsse debuggen“.":::
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>Erstellen von Transformationslogik auf der Datenflusscanvas
+## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Erstellen von Transformationslogik auf der Datenflusscanvas
 
 In diesem Tutorial generieren Sie zwei Datenflüsse. Der erste Datenfluss verläuft einfach von der Quelle zur Senke, um aus der obigen CSV-Datei mit Filmen einen neuen Delta-Lake zu generieren. Abschließend erstellen Sie den Datenflussentwurf unten, um Daten im Delta-Lake zu aktualisieren.
 
-![Abschließender Flow](media/data-flow/data-flow-tutorial-6.png &quot;Abschließender Flow")
+:::image type="content" source="media/data-flow/data-flow-tutorial-6.png" alt-text="Abschließender Flow":::
 
 ### <a name="tutorial-objectives"></a>Ziele des Tutorials
 
@@ -95,7 +95,7 @@ In diesem Tutorial generieren Sie zwei Datenflüsse. Der erste Datenfluss verlä
 1. Fügen Sie eine Senkentransformation hinzu.
 1. „Delta“ ist ein Inlinetyp für Datasets. Sie müssen auf Ihr ADLS Gen2-Speicherkonto verweisen.
    
-   ![Inlinedataset](media/data-flow/data-flow-tutorial-5.png "Inline-Dataset")
+   :::image type="content" source="media/data-flow/data-flow-tutorial-5.png" alt-text="Inlinedataset":::
 
 1. Wählen Sie einen Ordnernamen in Ihrem Speichercontainer aus, in dem ADF den Delta-Lake erstellen soll.
 1. Wechseln Sie zurück zum Pipeline-Designer, und klicken Sie auf „Debuggen“, um die Pipeline im Debugmodus mit nur dieser Datenflussaktivität auf der Canvas auszuführen. Dadurch wird Ihr neuer Delta-Lake in ADLS Gen2 generiert.
@@ -107,16 +107,16 @@ In diesem Tutorial generieren Sie zwei Datenflüsse. Der erste Datenfluss verlä
 1. Erstellen Sie in derselben abgeleiteten Spalte Filme für das Jahr 2021, indem Sie ein vorhandenes Jahr in das Jahr 2021 ändern. Wählen Sie 1960 aus.
 1. So sehen die drei abgeleiteten Spalten aus:
 
-   ![Abgeleitete Spalte](media/data-flow/data-flow-tutorial-2.png "Abgeleitete Spalte")
+   :::image type="content" source="media/data-flow/data-flow-tutorial-2.png" alt-text="Abgeleitete Spalte":::
    
 1. Die Richtlinien ```Update, insert, delete, and upsert``` werden in der Transformation zum Ändern von Zeilen erstellt. Fügen Sie nach der abgeleiteten Spalte eine Transformation zum Ändern von Zeilen hinzu.
 1. Die Richtlinien für Zeilenänderungen sollten wie folgt aussehen:
 
-   ![Zeilenänderung](media/data-flow/data-flow-tutorial-3.png "Ändern einer Zeile")
+   :::image type="content" source="media/data-flow/data-flow-tutorial-3.png" alt-text="Zeilenänderung":::
    
 1. Nachdem Sie die richtige Richtlinie für jeden Zeilenänderungstyp festgelegt haben, überprüfen Sie, ob die richtigen Aktualisierungsregeln für die Senkentransformation festgelegt wurden.
 
-   ![Senke](media/data-flow/data-flow-tutorial-4.png "Senke")
+   :::image type="content" source="media/data-flow/data-flow-tutorial-4.png" alt-text="Senke":::
    
 1. Hier verwenden Sie den Delta-Lake als Senke für Ihren ADLS Gen2-Data Lake und erlauben Einfügungen, Aktualisierungen und Löschungen. 
 1. Beachten Sie, dass es sich bei den Schlüsselspalten um einen zusammengesetzten Schlüssel handelt, der sich aus der Primärschlüsselspalte „movie“ und der Spalte „year“ zusammensetzt. Dies liegt daran, dass Sie „gefälschte“ Filme für das Jahr 2021 erstellt haben, indem Sie die Zeilen für das Jahr 1960 dupliziert haben. Dadurch werden Konflikte beim Suchen vorhandener Zeilen vermieden, da die Eindeutigkeit sichergestellt ist.

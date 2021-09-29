@@ -9,12 +9,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bb5a6ac082ebaf978023321f15341ec7f35779a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a7dd571e0d2fc27238293ff5776bda6bdc64185
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96184218"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583215"
 ---
 # <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Clustering
 
@@ -26,7 +26,7 @@ In diesem Szenario erfahren Sie, wie Sie einen 6 GB-Azure Cache for Redis mit Pr
 
 [!code-azurecli[main](../../../cli_scripts/redis-cache/create-premium-cache-cluster/create-premium-cache-cluster.sh "Azure Cache for Redis")]
 
-[!INCLUDE [cli-script-clean-up](../../../includes/redis-cli-script-clean-up.md)]
+[!INCLUDE [cli-script-clean-up](../includes/redis-cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 

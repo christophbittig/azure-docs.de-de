@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Apps aus Containerimages in Azure Batch ausf�
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: e8effa7daf0c30edaef9924cbefe35cdad1b20e1
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: c6922c48aedc3394d164367806bece43d5fb8a49
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445773"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744216"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Ausführen von Containeranwendungen in Azure Batch
 
@@ -75,7 +75,7 @@ Diese Images werden nur für die Verwendung in Azure Batch-Pools unterstützt un
 
 Sie können auch benutzerdefinierte Images über VMs erstellen, die Docker unter einer der Linux-Distributionen ausführen, die mit Batch kompatibel sind. Wenn Sie ein eigenes benutzerdefiniertes Linux-Image bereitstellen möchten, finden Sie Anleitungen dazu unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
 
-Für Docker-Unterstützung für ein benutzerdefiniertes Image installieren Sie [Docker Community Edition (CE)](https://www.docker.com/community-edition) oder [Docker Enterprise Edition (EE)](https://www.docker.com/enterprise-edition).
+Für Docker-Unterstützung für ein benutzerdefiniertes Image installieren Sie [Docker Community Edition (CE)](https://www.docker.com/community-edition) oder [Docker Enterprise Edition (EE)](https://www.docker.com/blog/docker-enterprise-edition/).
 
 Weitere Überlegungen zum Verwenden eines benutzerdefinierten Linux-Images:
 

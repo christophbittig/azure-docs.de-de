@@ -3,14 +3,14 @@ title: 'Schnellstart: Verwenden der Azure-Befehlszeilenschnittstelle zum Erstell
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mit der Azure CLI einen Service Bus-Namespace und darin dann eine Warteschlange erstellen.
 author: spelluru
 ms.topic: quickstart
-ms.date: 08/12/2020
+ms.date: 09/28/2021
 ms.author: spelluru
-ms.openlocfilehash: 73457e6b2e210bd7db91165e97ce73591d921be4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 381d4d32d87391c0914d55690a0f4119b95a3488
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479021"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211827"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>Verwenden der Azure CLI zum Erstellen eines Service Bus-Namespace und einer Warteschlange
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie mit der Azure CLI einen Service Bus-Namespace und eine Warteschlange erstellen. Darüber hinaus wird beschrieben, wie Sie Anmeldeinformationen für die Autorisierung abrufen, die von einer Clientanwendung zum Senden bzw. Empfangen von Nachrichten für eine Warteschlange genutzt werden können. 

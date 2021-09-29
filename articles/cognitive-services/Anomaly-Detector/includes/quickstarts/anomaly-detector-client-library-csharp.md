@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
-ms.openlocfilehash: f526038a37e6f4e4a5d03c516446653a95c08be4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 13245ac2e9569ee9d984ae0978dca2a93ca735da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110164795"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909031"
 ---
 Erfahren Sie etwas über die ersten Schritte mit der Clientbibliothek für Anomalieerkennung für C#. Führen Sie diese Schritte aus, um das Paket zu installieren und mit der Verwendung der vom Dienst zur Verfügung gestellten Algorithmen zu beginnen. Mit dem Anomalieerkennungsdienst können Sie Anomalien in Zeitreihendaten ermitteln, da unabhängig von der Branche, dem Szenario oder der Datenmenge automatisch die am besten geeigneten Modelle für Ihre Daten angewandt werden.
 
@@ -23,7 +23,7 @@ Mit der Clientbibliothek für Anomalieerkennung für C# ist Folgendes möglich:
 * Erkennen des Anomaliestatus des letzten Datenpunkts in Ihrer Zeitreihe
 * Erkennen von Trendänderungspunkten in Ihrem Dataset
 
-[Bibliotheksreferenzdokumentation](https://aka.ms/anomaly-detector-dotnet-ref) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.2) | [Den Code finden Sie auf GitHub.](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
+[Bibliotheksreferenzdokumentation](https://aka.ms/anomaly-detector-dotnet-ref) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/anomalydetector) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.2) | [Den Code finden Sie auf GitHub.](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

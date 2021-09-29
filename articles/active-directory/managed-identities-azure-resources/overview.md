@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 08/26/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f79fc66b44de89ba93137b244e22890348ab1c4
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 91728bfee6b8e303de2e7199e703a8acaa5139d8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967201"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773586"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Was sind verwaltete Identitäten für Azure-Ressourcen?
 
@@ -75,7 +75,7 @@ Ressourcen, die systemseitig zugewiesene verwaltete Identitäten unterstützen, 
 
 - Aktivieren oder Deaktivieren verwalteter Identitäten auf Ressourcenebene
 - [Erteilen von Berechtigungen](howto-assign-access-portal.md) mithilfe von RBAC-Rollen
-- Anzeigen von Vorgängen zum Erstellen, Lesen, Aktualisieren und Löschen (CRUD-Vorgänge) in [Azure-Aktivitätsprotokollen](../../azure-resource-manager/management/view-activity-logs.md)
+- Anzeigen von Vorgängen zum Erstellen, Lesen, Aktualisieren und Löschen (CRUD-Vorgänge) in [Azure-Aktivitätsprotokollen](../../azure-monitor/essentials/activity-log.md)
 - Anzeigen von Anmeldeaktivitäten in Azure AD-[Anmeldeprotokollen](../reports-monitoring/concept-sign-ins.md)
 
 Falls Sie stattdessen eine benutzerseitig zugewiesene verwaltete Identität verwenden möchten:
@@ -83,7 +83,7 @@ Falls Sie stattdessen eine benutzerseitig zugewiesene verwaltete Identität verw
 - Sie können die Identitäten [erstellen, lesen, aktualisieren und löschen](how-to-manage-ua-identity-portal.md).
 - Sie können RBAC-Rollenzuweisungen zum [Erteilen von Berechtigungen](howto-assign-access-portal.md) verwenden.
 - Benutzerseitig zugewiesene verwaltete Identitäten können für mehrere Ressourcen verwendet werden.
-- CRUD-Vorgänge können in [Azure-Aktivitätsprotokollen](../../azure-resource-manager/management/view-activity-logs.md) überprüft werden.
+- CRUD-Vorgänge können in [Azure-Aktivitätsprotokollen](../../azure-monitor/essentials/activity-log.md) überprüft werden.
 - Zeigen Sie Anmeldeaktivitäten in Azure AD-[Anmeldeprotokollen](../reports-monitoring/concept-sign-ins.md) an.
 
 Vorgänge für verwaltete Identitäten können mithilfe einer ARM-Vorlage (Azure Resource Manager), über das Azure-Portal, die Azure CLI, PowerShell und REST-APIs ausgeführt werden.

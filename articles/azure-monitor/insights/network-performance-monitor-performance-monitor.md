@@ -2,15 +2,15 @@
 title: Systemmonitor in Netzwerkleistungsmonitor
 description: Die Systemmonitorfunktion im Netzwerkleistungsmonitor unterstützt Sie bei der Überwachung der Netzwerkkonnektivität an verschiedenen Punkten in Ihrem Netzwerk. Sie können Cloudbereitstellungen und lokale Standorte, mehrere Rechenzentren und Zweigstellen sowie unternehmenswichtige Microservices/Anwendungen mit mehreren Ebenen überwachen.
 ms.topic: conceptual
-author: abshamsft
-ms.author: absha
+author: KumudD
+ms.author: kumud
 ms.date: 02/20/2018
-ms.openlocfilehash: 505584abbe573c94056888b07406437650b09611
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae9b17a90bcef6a4cd7caeed87efe363583ce774
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101728619"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794270"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Netzwerkleistungsmonitor-Lösung: Leistungsüberwachung
 

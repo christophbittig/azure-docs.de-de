@@ -10,19 +10,19 @@ ms.author: peterlu
 author: peterclu
 ms.date: 08/03/2021
 ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: c6bb9eefd7545a014faf10ad20afa655f7f4cd48
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 3a38717cec9aed40e3aff96376a9d956eb82a53d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122356439"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792218"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Was ist der Azure Machine Learning-Designer? 
 
 Azure Machine Learning-Designer ist eine Drag & Drop-Schnittstelle, die zum Trainieren und Bereitstellen von Modellen in Azure Machine Learning verwendet wird. In diesem Artikel werden die Aufgaben beschrieben, die Sie im Designer ausführen können.
 
  - Informationen zu den ersten Schritten mit dem Designer finden Sie unter [Tutorial: Trainieren eines Regressionsmodells ohne Code](tutorial-designer-automobile-price-train-score.md). 
- - Informationen zu den im Designer verfügbaren Komponenten finden Sie in der [Referenz zu Algorithmen und Komponenten](/azure/machine-learning/algorithm-module-reference/module-reference).
+ - Informationen zu den im Designer verfügbaren Komponenten finden Sie in der [Referenz zu Algorithmen und Komponenten](./algorithm-module-reference/module-reference.md).
 
 ![Azure Machine Learning-Designer: Beispiel](./media/concept-designer/designer-drag-and-drop.gif)
 

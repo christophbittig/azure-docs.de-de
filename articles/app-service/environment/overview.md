@@ -4,15 +4,15 @@ description: Übersicht über die Azure App Service-Umgebung
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 08/05/2021
+ms.date: 09/07/2021
 ms.author: ccompy
 ms.custom: references_regions
-ms.openlocfilehash: 848b7ce830c91cffaaaa39ed2102255f0adc3b7f
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: e422f6316cce204a4b6ea152ff9be4489bb3e331
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445681"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767905"
 ---
 # <a name="app-service-environment-overview"></a>Übersicht über die App Service-Umgebung 
 > [!NOTE]
@@ -108,22 +108,27 @@ Die ASEv3 ist in den folgenden Regionen verfügbar.
 |USA (Mitte) |USA (Ost) 2|
 |Asien, Osten  | Frankreich, Mitte|
 |East US    | Deutschland, Westen-Mitte|
-|USA (Ost) 2| Nordeuropa|
-|Frankreich, Mitte | USA Süd Mitte|
-|Deutschland, Westen-Mitte   |   Asien, Südosten|
+|USA (Ost) 2| Japan, Osten|
+|Frankreich, Mitte | Nordeuropa|
+|Deutschland, Westen-Mitte   |   USA Süd Mitte|
+|Japan, Osten | Asien, Südosten|
 |Korea, Mitte  | UK, Süden|
-|Nordeuropa   | Europa, Westen|
-|Norwegen, Osten    | USA, Westen 2 |
+|USA Nord Mitte   | Europa, Westen|
+|Nordeuropa   | USA, Westen 2|
+|Norwegen, Osten    | |
+|Südafrika, Norden | |
 |USA Süd Mitte   | |
 |Asien, Südosten| |
 |Schweiz, Norden  | | 
+|Vereinigte Arabische Emirate, Norden| |   
 |UK, Süden| |    
 |UK, Westen| |
 |USA, Westen-Mitte    | | 
 |Europa, Westen    | |
 |USA (Westen)    | | 
 |USA, Westen 2| |
+|USA, Westen 3| |
 
 <!--Links-->
-[reservedinstances]: https://docs.microsoft.com/azure/cost-management-billing/reservations/reservation-discount-app-service#how-reservation-discounts-apply-to-isolated-v2-instances
+[reservedinstances]: ../../cost-management-billing/reservations/reservation-discount-app-service.md
 [pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/

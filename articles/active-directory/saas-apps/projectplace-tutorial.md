@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 508a3ca02ec6c0475e78d16691f6597e1a389f97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2d8c81ddf3a2446131cf698fe8d4e86d1013c7a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92511850"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776251"
 ---
 # <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>Tutorial: Integrieren von Projectplace in Azure Active Directory
 
@@ -160,7 +160,7 @@ Damit sich Azure AD-Benutzer an Projectplace anmelden können, müssen Sie diese
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-Wenn Sie im Zugriffsbereich die Kachel „Projectplace“ auswählen, sollten Sie automatisch bei der Projectplace-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Wenn Sie im Zugriffsbereich die Kachel „Projectplace“ auswählen, sollten Sie automatisch bei der Projectplace-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
