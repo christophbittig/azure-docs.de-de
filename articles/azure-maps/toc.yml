@@ -202,6 +202,8 @@
               href: map-add-drawing-toolbar.md
             - name: Abrufen von Formdaten
               href: map-get-shape-data.md
+            - name: Hinzufügen eines Rasters zum Andocken
+              href: map-add-snap-grid.md
             - name: Reagieren auf Zeichnungsereignisse
               href: drawing-tools-events.md
             - name: Interaktionstypen und Tastenkombinationen
@@ -394,10 +396,8 @@
           href: /microsoft-iot-central/
         - name: IoT Edge
           href: ../iot-edge/index.yml
-        - name: IoT Solution Accelerators
-          href: ../iot-accelerators/index.yml
         - name: "IoT\_Plug\_&\_Play"
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ./index.yml
         - name: Time Series Insights

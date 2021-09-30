@@ -12,8 +12,6 @@
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: Cheat Sheet
       href: cheat-sheet.md
-    - name: Bewährte Methoden
-      href: ../sql/best-practices-dedicated-sql-pool.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json
     - name: Kapazitätsgrenzen
       href: sql-data-warehouse-service-capacity-limits.md
     - name: Häufig gestellte Fragen
@@ -145,7 +143,7 @@
         - name: Übersicht
           href: sql-data-warehouse-overview-develop.md
         - name: Bewährte Methoden
-          href: sql-data-warehouse-best-practices-development.md
+          href: ../sql/best-practices-dedicated-sql-pool.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json
         - name: JSON
           items:
             - name: JSON

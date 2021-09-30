@@ -442,8 +442,6 @@
       items:
         - name: Übersicht über Filter
           href: search-filters.md
-        - name: Facettenfilter
-          href: search-filters-facets.md
         - name: Hinzufügen der Facettennavigation
           href: search-faceted-navigation.md
         - name: Problembehandlung für Sammlungsfilter
@@ -482,7 +480,7 @@
           href: search-traffic-analytics.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search

@@ -177,8 +177,6 @@
           href: configure-language-ruby.md
         - name: Konfigurieren eines benutzerdefinierten Containers
           href: configure-custom-container.md
-        - name: Verbindungsherstellung mit lokalen Ressourcen
-          href: web-sites-integrate-with-vnet.md
         - name: Azure Storage (Container) konfigurieren
           href: configure-connect-to-azure-storage.md
     - name: Bereitstellen in Azure

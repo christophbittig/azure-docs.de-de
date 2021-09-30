@@ -275,8 +275,6 @@
           href: ../iot-dps/index.yml
         - name: IoT Edge
           href: ../iot-edge/index.yml
-        - name: IoT Solution Accelerators
-          href: ../iot-accelerators/index.yml
         - name: "IoT\_Plug\_&\_Play"
           href: ../iot-develop/index.yml
         - name: Azure Maps

@@ -57,7 +57,7 @@ items:
               - name: Azure-Portal
                 href: quickstart-create-workspace.md
                 displayName: quickstart
-              - name: Azure-Befehlszeilenschnittstelle
+              - name: Azure CLI
                 href: quickstart-create-workspace-cli.md
                 displayName: quickstart
               - name: Azure PowerShell
@@ -105,7 +105,7 @@ items:
           - name: Quellcodeverwaltung
             href: ./cicd/source-control.md
           - name: Continuous Integration und Continuous Delivery
-            href: ./cicd/continuous-integration-deployment.md
+            href: ./cicd/continuous-integration-delivery.md
           - name: Sicherheit
             items:
               - name: Sicherheitsbaseline
@@ -766,7 +766,18 @@ items:
               - name: Datenflussüberwachung
                 href: ../data-factory/concepts-data-flow-monitoring.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Datenflussleistung
-                href: ../data-factory/concepts-data-flow-performance.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                items:
+                  - name: Überblick
+                    href: ../data-factory/concepts-data-flow-performance.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                    displayName: 'merge, timeout'
+                  - name: Optimieren von Quellen
+                    href: ../data-factory/concepts-data-flow-performance-sources.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                  - name: Optimieren von Senken
+                    href: ../data-factory/concepts-data-flow-performance-sinks.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                  - name: Optimieren von Transformationen
+                    href: ../data-factory/concepts-data-flow-performance-transformations.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                  - name: Verwenden von Datenflüssen in Pipelines
+                    href: ../data-factory/concepts-data-flow-performance-pipelines.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Leistung der Integration Runtime
                 href: ../data-factory/concepts-integration-runtime-performance.md?context=/azure/synapse-analytics/context/context
               - name: Verwalten eines Graphen

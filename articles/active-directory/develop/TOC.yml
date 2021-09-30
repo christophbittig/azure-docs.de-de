@@ -263,9 +263,9 @@
                   href: scenario-desktop-acquire-token-interactive.md
                 - name: Interaktiv mit WAM
                   href: scenario-desktop-acquire-token-wam.md
-                - name: In Windows-Authentifizierung integriert
+                - name: Integrierte Windows-Authentifizierung
                   href: scenario-desktop-acquire-token-integrated-windows-authentication.md
-                - name: Benutzernamenkennwort (Username Password)
+                - name: Benutzername und Kennwort
                   href: scenario-desktop-acquire-token-username-password.md
                 - name: Gerätecodefluss
                   href: scenario-desktop-acquire-token-device-code-flow.md
