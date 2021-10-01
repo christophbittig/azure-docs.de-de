@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/30/2020
+ms.date: 09/08/2021
 ms.author: duau
-ms.openlocfilehash: 15cdcefe628a392704e650b560243e2f6a134ec2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed47d310f418936b84c505fcf254947a67f0eb6d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629987"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824415"
 ---
 # <a name="troubleshooting-common-routing-problems"></a>Behandeln von häufigen Routingproblemen
 
@@ -29,19 +29,27 @@ In diesem Artikel wird beschrieben, wie Sie häufige Routingprobleme in Ihrer Az
 
 * Reguläre Anforderungen, die ohne Azure Front Door an das Back-End gesendet werden, sind erfolgreich. Das Durchlaufen von Azure Front Door führt zu 503-Fehlermeldungen.
 * Der Fehler von Azure Front Door wird in der Regel nach ungefähr 30 Sekunden angezeigt.
+* Zeitweilige 503-Fehler mit dem Protokoll `ErrorInfo: OriginInvalidResponse`.
 
 ### <a name="cause"></a>Ursache
 
-Für dieses Problem gibt es zwei mögliche Ursachen:
+Für dieses Problem gibt es drei mögliche Ursachen:
  
 * Ihr Back-End benötigt länger als das konfigurierte Timeout (Standardwert: 30 Sekunden), um die Anforderung von Azure Front Door zu erhalten.
-* Die zum Beantworten der Anforderung von Azure Front Door erforderliche Zeit überschreitet den Timeoutwert. 
+* Die zum Beantworten der Anforderung von Azure Front Door erforderliche Zeit überschreitet den Timeoutwert.
+* Der Client hat eine Bytebereichsanforderung mit `Accept-Encoding header` (Komprimierung aktiviert) gesendet.
 
 ### <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 
 * Senden Sie die Anforderung direkt an Ihr Back-End (ohne Azure Front Door). Beobachten Sie, wie lange es normalerweise dauert, bis Ihr Back-End antwortet.
 * Senden Sie die Anforderung über Azure Front Door, und prüfen Sie, ob Sie Antworten des Typs 503 erhalten. Falls nicht, ist das Timeout möglicherweise nicht das Problem. Wenden Sie sich an den Support.
-* Wenn bei der Verwendung von Azure Front Door ein Antwortcode mit Fehlern des Typs 503 zurückgegeben wird, konfigurieren Sie das `sendReceiveTimeout`-Feld für Azure Front Door. Sie können das Standardtimeout auf bis zu vier Minuten (240 Sekunden) verlängern. Die Einstellung befindet sich unter `backendPoolSettings` und heißt `sendRecvTimeoutSeconds`. 
+* Wenn Anforderungen, die Azure Front Door durchlaufen, zu einem 503-Fehlerantwortcode führt, konfigurieren Sie die Einstellung **Timeout für Senden/Empfangen (in Sekunden)** für Azure Front Door. Sie können das Standardtimeout auf bis zu 4 Minuten (240 Sekunden) verlängern. Die Einstellung kann im *Front Door-Designer* über den Menüpunkt **Einstellungen** konfiguriert werden.
+
+    :::image type="content" source=".\media\troubleshoot-route-issues\send-receive-timeout.png" alt-text="Screenshot des Felds „Timeout für Senden/Empfangen“ im Front Door-Designer.":::
+
+* Wenn das Timeout das Problem nicht löst, verwenden Sie ein Tool wie Fiddler oder das Entwicklertool Ihres Browsers, um zu überprüfen, ob der Client Bytebereichsanforderungen mit Accept-Encoding-Headern sendet, was dazu führt, dass das Ursprungsobjekt mit unterschiedlichen Inhaltslängen antwortet. Wenn ja, können Sie entweder die Komprimierung für das Ursprungsobjekt bzw. Azure Front Door deaktivieren oder eine Regelsatzregel erstellen, um `accept-encoding` aus der Anforderung für Bytebereichsanforderungen zu entfernen.
+
+    :::image type="content" source=".\media\troubleshoot-route-issues\remove-encoding-rule.png" alt-text="Screenshot der Accept-Encoding-Regel im Regelmodul.":::
 
 ## <a name="requests-sent-to-the-custom-domain-return-a-400-status-code"></a>Für an die benutzerdefinierte Domäne gesendete Anforderungen wird der Statuscode 400 zurückgegeben
 

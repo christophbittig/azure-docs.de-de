@@ -107,7 +107,7 @@
         - name: Erstellen von Auflistungen in „Meine Apps“
           href: access-panel-collections.md
         - name: Aktivieren des Self-Service-App-Zugriffs
-          href: access-panel-manage-self-service-access.md
+          href: manage-self-service-access.md
         - name: Ausblenden einer App
           href: hide-application-from-user-portal.md
         - name: Deaktivieren der Benutzeranmeldung
@@ -180,7 +180,7 @@
       href: application-types.md
     - name: Gründe für die Zuweisung von Benutzern zu einer App
       href: ways-users-get-assigned-to-applications.md
-    - name: Entfernen des Benutzerzugriffs
+    - name: Methoden zum Entfernen des Benutzerzugriffs auf eine App
       href: methods-for-removing-user-access.md
 - name: Ressourcen
   items:

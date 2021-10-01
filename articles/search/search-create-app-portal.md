@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 08/24/2021
-ms.openlocfilehash: f9ce6f3c7898a492400f6a8cec62e65ab8777e15
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 129c0af62663fcc37621db0d2f37e5fdee55d05c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770863"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209640"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Schnellstart: Erstellen einer Demo-App im Portal (Azure Cognitive Search)
 
@@ -133,7 +133,7 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Demo-App eignet sich für das Erstellen von Prototypen, da Sie eine Endbenutzerumgebung simulieren können, ohne JavaScript- oder Front-End-Code schreiben zu müssen. Wenn Sie weitere Informationen zu Front-End-Funktionen benötigen, beginnen Sie mit der Facettennavigation:
+Die Demo-App ist nützlich für die Prototyperstellung, da Sie eine Endbenutzererfahrung simulieren können, ohne JavaScript- oder Front-End-Code schreiben zu müssen. Wenn Sie sich jedoch dem Proof of Concept für Ihr eigenes Projekt nähern, sehen Sie sich eines der End-to-End-Codebeispiele an, das einer echten App näher kommt:
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Facettenfilters in der kognitiven Azure-Suche](search-filters-facets.md)
+> [Hinzufügen von Suchfunktionen zu Web-Apps](tutorial-csharp-overview.md)

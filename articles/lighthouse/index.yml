@@ -1,125 +1,131 @@
 ### YamlMime:Landing
 title: Azure Lighthouse-Dokumentation
-summary: 'Azure Lighthouse ermöglicht die mandantenübergreifende Verwaltung sowie die Verwaltung mehrerer Mandanten mit stärkerer Automatisierung, besserer Skalierbarkeit und verbesserter Governance für alle Ressourcen und Mandanten.'
+summary: Azure Lighthouse ermöglicht die mandantenübergreifende Verwaltung sowie die Verwaltung mehrerer Mandanten mit stärkerer Automatisierung, besserer Skalierbarkeit und verbesserter Governance für alle Ressourcen und Mandanten.
 metadata:
   title: Azure Lighthouse-Dokumentation
-  description: 'Azure Lighthouse ermöglicht Dienstanbietern die Verwaltung von Azure-Ressourcen für alle ihre Kunden mit höherer Automatisierung, Skalierbarkeit und verbesserter Governance.'
+  description: Azure Lighthouse ermöglicht Dienstanbietern die Verwaltung von Azure-Ressourcen für alle ihre Kunden mit höherer Automatisierung, Skalierbarkeit und verbesserter Governance.
   ms.service: lighthouse
   ms.topic: landing-page
   ms.collection: collection
   author: JnHs
   ms.author: jenhayes
-  ms.date: 07/07/2021
+  ms.date: 09/28/2021
+  ms.openlocfilehash: 382c085eadaf421b50420bec1aed8ac9ba68ec50
+  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129207310"
 landingContent:
-  - title: Informationen zu Azure Lighthouse
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Was ist Azure Lighthouse?
-            url: ./overview.md
-      - linkListType: concept
-        links:
-          - text: Aufbau
-            url: ./concepts/architecture.md
-          - text: Mandantenübergreifende Verwaltungsmöglichkeiten
-            url: ./concepts/cross-tenant-management-experience.md
-  - title: Erste Schritte
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Onboarding eines Kunden in Azure Lighthouse durchführen
-            url: ./how-to/onboard-customer.md
-          - text: Just-In-Time-Rollen (Vorschau)
-            url: ./how-to/create-eligible-authorizations.md
-          - text: Kunden anzeigen und verwalten
-            url: ./how-to/view-manage-customers.md
-          - text: Verknüpfen Ihrer Partner-ID
-            url: ./how-to/partner-earned-credit.md
-      - linkListType: concept
-        links:
-          - text: Empfohlene Sicherheitsmaßnahmen
-            url: ./concepts/recommended-security-practices.md
-          - text: 'Mandanten, Rollen und Benutzer'
-            url: ./concepts/tenants-users-roles.md
-          - text: Überlegungen zum Cloud Solution Provider-Programm
-            url: ./concepts/cloud-solution-provider.md
-          - text: Unternehmensszenarien
-            url: ./concepts/enterprise.md
-          - text: ISV-Szenarien
-            url: ./concepts/isv-scenarios.md
-  - title: Marketplace-Angebote
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Veröffentlichen von Angeboten für verwaltete Dienste
-            url: ./how-to/publish-managed-services-offers.md
-      - linkListType: concept
-        links:
-          - text: Angebote für verwaltete Dienste in Azure Marketplace
-            url: ./concepts/managed-services-offers.md
-  - title: Kundenerfahrungen
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Dienstanbieter anzeigen und verwalten
-            url: ./how-to/view-manage-service-providers.md
-          - text: Überwachen von Aktivitäten des verwaltenden Mandanten
-            url: ./how-to/view-service-provider-activity.md
-  - title: Beispiele und Vorlagen
-    linkLists:
-      - linkListType: deploy
-        links:
-          - text: Repository mit Azure Lighthouse-Beispielen (GitHub)
-            url: 'https://github.com/Azure/Azure-Lighthouse-samples/'
-          - text: Index der Azure Lighthouse-Beispiele
-            url: ./samples/index.md
-  - title: Arbeiten mit Azure-Diensten im großen Stil
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Verwalten von Azure Sentinel-Arbeitsbereichen
-            url: ./how-to/manage-sentinel-workspaces.md
-          - text: Verwenden von Azure Monitor-Protokollen
-            url: ./how-to/monitor-at-scale.md
-          - text: Bereitstellen von Azure Policy
-            url: ./how-to/policy-at-scale.md
-          - text: Verwalten von Hybridcomputern mit Azure Arc
-            url: ./how-to/manage-hybrid-infrastructure-arc.md
-          - text: "Verwalten von Azure\_Migrate-Projekten"
-            url: ./how-to/migration-at-scale.md
-  - title: 'Referenz: SDKs'
-    linkLists:
-      - linkListType: reference
-        links:
-          - text: Azure PowerShell
-            url: /powershell/module/az.managedservices/
-          - text: Azure CLI
-            url: /cli/azure/managedservices
-          - text: REST
-            url: /rest/api/managedservices/
-          - text: .NET
-            url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
-          - text: Python
-            url: /python/api/azure-mgmt-managedservices
-          - text: Terraform
-            url: 'https://www.terraform.io/docs/providers/azurerm/r/lighthouse_assignment.html'
-          - text: Ansible
-            url: 'https://docs.ansible.com/ansible/latest/collections/azure/azcollection/index.html#plugins-in-azure-azcollection'
-  - title: 'Referenz: Downloads'
-    linkLists:
-      - linkListType: download
-        links:
-          - text: 'OpenAPI: 2019-06-01'
-            url: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01'
-          - text: SDK für .NET (NuGet)
-            url: 'https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/'
-          - text: 'SDK für Python: PyPi'
-            url: 'https://pypi.org/project/azure-mgmt-managedservices/'
-  - title: Beteiligen
-    linkLists:
-      - linkListType: get-started
-        links:
-          - text: Microsoft Q&A (Fragen und Antworten) für Azure Lighthouse
-            url: /answers/topics/azure-lighthouse.html
-          - text: Anfordern von Produktfeatures
-            url: 'https://feedback.azure.com/forums/922753'
+- title: Informationen zu Azure Lighthouse
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Lighthouse?
+      url: ./overview.md
+  - linkListType: concept
+    links:
+    - text: Aufbau
+      url: ./concepts/architecture.md
+    - text: Mandantenübergreifende Verwaltungsmöglichkeiten
+      url: ./concepts/cross-tenant-management-experience.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Onboarding eines Kunden in Azure Lighthouse durchführen
+      url: ./how-to/onboard-customer.md
+    - text: Just-In-Time-Rollen (Vorschau)
+      url: ./how-to/create-eligible-authorizations.md
+    - text: Kunden anzeigen und verwalten
+      url: ./how-to/view-manage-customers.md
+    - text: Verknüpfen Ihrer Partner-ID
+      url: ./how-to/partner-earned-credit.md
+  - linkListType: concept
+    links:
+    - text: Empfohlene Sicherheitsmaßnahmen
+      url: ./concepts/recommended-security-practices.md
+    - text: Mandanten, Rollen und Benutzer
+      url: ./concepts/tenants-users-roles.md
+    - text: Überlegungen zum Cloud Solution Provider-Programm
+      url: ./concepts/cloud-solution-provider.md
+    - text: Unternehmensszenarien
+      url: ./concepts/enterprise.md
+    - text: ISV-Szenarien
+      url: ./concepts/isv-scenarios.md
+- title: Marketplace-Angebote
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Veröffentlichen von Angeboten für verwaltete Dienste
+      url: ./how-to/publish-managed-services-offers.md
+  - linkListType: concept
+    links:
+    - text: Angebote für verwaltete Dienste in Azure Marketplace
+      url: ./concepts/managed-services-offers.md
+- title: Kundenerfahrungen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Dienstanbieter anzeigen und verwalten
+      url: ./how-to/view-manage-service-providers.md
+    - text: Überwachen von Aktivitäten des verwaltenden Mandanten
+      url: ./how-to/view-service-provider-activity.md
+- title: Beispiele und Vorlagen
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Repository mit Azure Lighthouse-Beispielen (GitHub)
+      url: https://github.com/Azure/Azure-Lighthouse-samples/
+    - text: Index der Azure Lighthouse-Beispiele
+      url: ./samples/index.md
+- title: Arbeiten mit Azure-Diensten im großen Stil
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwalten von Azure Sentinel-Arbeitsbereichen
+      url: ./how-to/manage-sentinel-workspaces.md
+    - text: Verwenden von Azure Monitor-Protokollen
+      url: ./how-to/monitor-at-scale.md
+    - text: Bereitstellen von Azure Policy
+      url: ./how-to/policy-at-scale.md
+    - text: Verwalten von Hybridcomputern mit Azure Arc
+      url: ./how-to/manage-hybrid-infrastructure-arc.md
+    - text: Verwalten von Azure Migrate-Projekten
+      url: ./how-to/migration-at-scale.md
+- title: 'Referenz: SDKs'
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.managedservices/
+    - text: Azure CLI
+      url: /cli/azure/managedservices
+    - text: REST
+      url: /rest/api/managedservices/
+    - text: .NET
+      url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
+    - text: Python
+      url: /python/api/azure-mgmt-managedservices
+    - text: Terraform
+      url: https://www.terraform.io/docs/providers/azurerm/r/lighthouse_assignment.html
+    - text: Ansible
+      url: https://docs.ansible.com/ansible/latest/collections/azure/azcollection/index.html#plugins-in-azure-azcollection
+- title: 'Referenz: Downloads'
+  linkLists:
+  - linkListType: download
+    links:
+    - text: 'OpenAPI: 2019-09-01'
+      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-09-01
+    - text: SDK für .NET (NuGet)
+      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
+    - text: 'SDK für Python: PyPi'
+      url: https://pypi.org/project/azure-mgmt-managedservices/
+- title: Beteiligen
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Microsoft Q&A (Fragen und Antworten) für Azure Lighthouse
+      url: /answers/topics/azure-lighthouse.html
+    - text: Anfordern von Produktfeatures
+      url: https://feedback.azure.com/forums/922753

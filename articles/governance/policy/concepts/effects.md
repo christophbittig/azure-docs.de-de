@@ -1,14 +1,14 @@
 ---
 title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 22838cd661e64d4a85debfb4c5ce556a142dc2c2
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: bca5d7535cbbcbf2fc7b6f54e853872c788c723d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351524"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792275"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -107,14 +107,39 @@ Die Auswirkung „audit“ wird verwendet, um ein Warnungsereignis im Aktivität
 
 Bei Verwendung eines Resource Manager-Modus verfügt die Auswirkung „audit“ über keine zusätzlichen Eigenschaften für die Verwendung in der Bedingung **then** der Richtliniendefinition.
 
-Bei Verwendung des Ressourcenanbietermodus `Microsoft.Kubernetes.Data` verfügt die Auswirkung „audit“ über folgende zusätzliche Untereigenschaften von **details**:
+Bei Verwendung des Ressourcenanbietermodus `Microsoft.Kubernetes.Data` verfügt die Auswirkung „audit“ über folgende zusätzliche Untereigenschaften von **details**: Die Verwendung von `templateInfo` ist für neue oder aktualisierte Richtliniendefinitionen erforderlich, da `constraintTemplate` veraltet ist.
 
-- **constraintTemplate** (erforderlich)
-  - Die Einschränkungsvorlage CustomResourceDefinition (CRD), die neue Einschränkungen definiert. Die Vorlage definiert die Rego-Logik, das Einschränkungsschema und die Einschränkungsparameter, die über **values** von Azure Policy übergeben werden.
-- **constraint** (erforderlich)
+- **templateInfo** (erforderlich)
+  - Kann nicht mit "`constraintTemplate`" verwendet werden.
+  - **sourceType** (erforderlich)
+    - Definiert den Typ der Quelle für die Einschränkungsvorlage. Zulässige Werte: _PublicURL_ oder _Base64Encoded_.
+    - Wenn _PublicURL_, gepaart mit der Eigenschaft `url` zur Angabe des Speicherorts der Einschränkungsvorlage verwendet wird. Auf den Speicherort muss öffentlich zugegriffen werden können.
+
+      > [!WARNING]
+      > Verwenden Sie keine SAS-URIs oder Token in `url` oder andere Elemente, die ein Geheimnis offenlegen könnten.
+
+    - Wenn _Base64Encoded_, gepaart mit der Eigenschaft `content` zur Angabe der Base64-codierten Einschränkungsvorlage verwendet wird. Unter [Erstellen einer Richtliniendefinition aus einer Einschränkungsvorlage](../how-to/extension-for-vscode.md) erfahren Sie, wie Sie eine benutzerdefinierte Definition aus einer vorhandenen [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3-[Einschränkungsvorlage](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates) erstellen.
+- **constraint** (optional)
+  - Kann nicht mit "`templateInfo`" verwendet werden.
   - Die CRD-Implementierung der Einschränkungsvorlage. Verwendet Parameter, die über **values** als `{{ .Values.<valuename> }}`übergeben werden. In „Beispiel 2“ weiter unten lauten diese Werte `{{ .Values.excludedNamespaces }}` und `{{ .Values.allowedContainerImagesRegex }}`.
+- **namespaces** (optional)
+  - Ein _Array_ von [Kubernetes-Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), auf das die Richtlinienauswertung beschränkt werden soll.
+  - Ein leerer oder fehlender Wert bewirkt, dass die Richtlinienauswertung alle Namespaces einschließt, mit Ausnahme der in _excludedNamespaces_ definierten Namespaces.
+- **excludedNamespaces** (erforderlich)
+  - Ein _Array_ von [Kubernetes-Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), die von der Richtlinienauswertung ausgeschlossen werden sollen.
+- **labelSelector** (erforderlich)
+  - Ein _Objekt_, das die Eigenschaften _matchLabels_ (Objekt) und _matchExpression_ (Array) umfasst, um festlegen zu können, welche Kubernetes-Ressourcen in die Richtlinienauswertung einbezogen werden sollen, die den angegebenen [Bezeichnungen und Selektoren](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) entsprechen.
+  - Ein leerer oder fehlender Wert bewirkt, dass die Richtlinienauswertung alle Bezeichnungen und Selektoren einschließt, mit Ausnahme der in _excludedNamespaces_ definierten Namespaces.
+- **apiGroups** (erforderlich bei Verwendung von _templateInfo_)
+  - Ein _Array_, der die [API-Gruppen](https://kubernetes.io/docs/reference/using-api/#api-groups) enthält, die übereinstimmen müssen. Ein leeres Array (`[""]`) ist die API-Kerngruppe, während `["*"]` alle API-Gruppen einbezieht.
+- **kinds** (erforderlich bei Verwendung von _templateInfo_)
+  - Ein _Array_, das die [Art](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields) von Kubernetes-Objekten festlegt, auf die die Auswertung beschränkt werden soll.
 - **values** (optional)
   - Definiert Parameter und Werte, die an die Einschränkung übergeben werden. Jeder Wert muss in der CRD der Einschränkungsvorlage vorhanden sein.
+- **constraintTemplate** (veraltet)
+  - Kann nicht mit "`templateInfo`" verwendet werden.
+  - Muss beim Erstellen oder Aktualisieren einer Richtliniendefinition durch `templateInfo` ersetzt werden.
+  - Die Einschränkungsvorlage CustomResourceDefinition (CRD), die neue Einschränkungen definiert. Die Vorlage definiert die Rego-Logik, das Einschränkungsschema und die Einschränkungsparameter, die über **values** von Azure Policy übergeben werden.
 
 ### <a name="audit-example"></a>Beispiel für „audit“
 
@@ -126,18 +151,21 @@ Beispiel 1: Verwenden der Auswirkung „audit“ für Resource Manager-Modi:
 }
 ```
 
-Beispiel 2: Verwenden der Auswirkung „audit“ für den Ressourcenanbietermodus `Microsoft.Kubernetes.Data`. Durch die zusätzlichen Informationen in **details** werden die Einschränkungsvorlage und die CRD definiert, die in Kubernetes verwendet werden, um die zulässigen Containerimages einzuschränken.
+Beispiel 2: Verwenden der Auswirkung „audit“ für den Ressourcenanbietermodus `Microsoft.Kubernetes.Data`. Durch die zusätzlichen Informationen in **details.templateInfo** werden die Verwendung von _PublicURL_ deklariert und `url` auf den Speicherort der Einschränkungsvorlage festgelegt, die in Kubernetes verwendet werden soll, um die zulässigen Containerimages einzuschränken.
 
 ```json
 "then": {
     "effect": "audit",
     "details": {
-        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
-        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "templateInfo": {
+            "sourceType": "PublicURL",
+            "url": "https://store.policy.core.windows.net/kubernetes/container-allowed-images/v1/template.yaml",
+        },
         "values": {
-            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
-            "excludedNamespaces": "[parameters('excludedNamespaces')]"
-        }
+            "imageRegex": "[parameters('allowedContainerImagesRegex')]"
+        },
+        "apiGroups": [""],
+        "kinds": ["Pod"]
     }
 }
 ```
@@ -174,7 +202,7 @@ Die **details**-Eigenschaft der Auswirkung „AuditIfNotExists“ umfasst die fo
   - Die Standardeinstellung ist _ResourceGroup_.
 - **EvaluationDelay** (optional)
   - Hiermit wird angegeben, wann die Existenz der zugehörigen Ressourcen ausgewertet werden soll. Die Verzögerung wird nur bei Auswertungen verwendet, die das Ergebnis einer Erstell- oder Aktualisierungsanforderung für die Ressource sind.
-  - Zu den zulässigen Werten zählen `AfterProvisioning`, `AfterProvisioningSuccess` und `AfterProvisioningFailure` sowie eine Dauer gemäß ISO 8601 zwischen 10 und 360 Minuten.
+  - Zu den zulässigen Werten zählen `AfterProvisioning`, `AfterProvisioningSuccess` und `AfterProvisioningFailure` sowie eine Dauer gemäß ISO 8601 zwischen 0 und 360 Minuten.
   - Die _AfterProvisioning_-Werte untersuchen die Bereitstellungsergebnisse der Ressource, die in der IF-Bedingung der Richtlinienregel ausgewertet wurde. `AfterProvisioning` wird unabhängig vom Ergebnis nach der Bereitstellung ausgeführt. Wenn für die Bereitstellung mehr als sechs Stunden benötigt werden, wird diese bei Festlegung von _AfterProvisioning_-Auswertungsverzögerungen als Fehler behandelt.
   - Der Standardwert ist `PT10M` (zehn Minuten).
   - Das Festlegen einer langen Auswertungsverzögerung kann dazu führen, dass der aufgezeichnete Compliancestatus der Ressource bis zur nächsten [Auswertungsauslösung](../how-to/get-compliance-data.md#evaluation-triggers) nicht aktualisiert wird.
@@ -229,14 +257,39 @@ Während der Auswertung vorhandener Ressourcen werden Ressourcen, die einer „d
 
 Bei Verwendung eines Resource Manager-Modus verfügt die Auswirkung „deny“ über keine zusätzlichen Eigenschaften für die Verwendung in der Bedingung **then** der Richtliniendefinition.
 
-Bei Verwendung des Ressourcenanbietermodus `Microsoft.Kubernetes.Data` verfügt die Auswirkung „deny“ über folgende zusätzliche Untereigenschaften von **details**:
+Bei Verwendung des Ressourcenanbietermodus `Microsoft.Kubernetes.Data` verfügt die Auswirkung „deny“ über folgende zusätzliche Untereigenschaften von **details**: Die Verwendung von `templateInfo` ist für neue oder aktualisierte Richtliniendefinitionen erforderlich, da `constraintTemplate` veraltet ist.
 
-- **constraintTemplate** (erforderlich)
-  - Die Einschränkungsvorlage CustomResourceDefinition (CRD), die neue Einschränkungen definiert. Die Vorlage definiert die Rego-Logik, das Einschränkungsschema und die Einschränkungsparameter, die über **values** von Azure Policy übergeben werden.
-- **constraint** (erforderlich)
+- **templateInfo** (erforderlich)
+  - Kann nicht mit "`constraintTemplate`" verwendet werden.
+  - **sourceType** (erforderlich)
+    - Definiert den Typ der Quelle für die Einschränkungsvorlage. Zulässige Werte: _PublicURL_ oder _Base64Encoded_.
+    - Wenn _PublicURL_, gepaart mit der Eigenschaft `url` zur Angabe des Speicherorts der Einschränkungsvorlage verwendet wird. Auf den Speicherort muss öffentlich zugegriffen werden können.
+
+      > [!WARNING]
+      > Verwenden Sie keine SAS-URIs oder Token in `url` oder andere Elemente, die ein Geheimnis offenlegen könnten.
+
+    - Wenn _Base64Encoded_, gepaart mit der Eigenschaft `content` zur Angabe der Base64-codierten Einschränkungsvorlage verwendet wird. Unter [Erstellen einer Richtliniendefinition aus einer Einschränkungsvorlage](../how-to/extension-for-vscode.md) erfahren Sie, wie Sie eine benutzerdefinierte Definition aus einer vorhandenen [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) GateKeeper v3-[Einschränkungsvorlage](https://open-policy-agent.github.io/gatekeeper/website/docs/howto/#constraint-templates) erstellen.
+- **constraint** (optional)
+  - Kann nicht mit "`templateInfo`" verwendet werden.
   - Die CRD-Implementierung der Einschränkungsvorlage. Verwendet Parameter, die über **values** als `{{ .Values.<valuename> }}`übergeben werden. In „Beispiel 2“ weiter unten lauten diese Werte `{{ .Values.excludedNamespaces }}` und `{{ .Values.allowedContainerImagesRegex }}`.
+- **namespaces** (optional)
+  - Ein _Array_ von [Kubernetes-Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), auf das die Richtlinienauswertung beschränkt werden soll.
+  - Ein leerer oder fehlender Wert bewirkt, dass die Richtlinienauswertung alle Namespaces einschließt, mit Ausnahme der in _excludedNamespaces_ definierten Namespaces.
+- **excludedNamespaces** (erforderlich)
+  - Ein _Array_ von [Kubernetes-Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), die von der Richtlinienauswertung ausgeschlossen werden sollen.
+- **labelSelector** (erforderlich)
+  - Ein _Objekt_, das die Eigenschaften _matchLabels_ (Objekt) und _matchExpression_ (Array) umfasst, um festlegen zu können, welche Kubernetes-Ressourcen in die Richtlinienauswertung einbezogen werden sollen, die den angegebenen [Bezeichnungen und Selektoren](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) entsprechen.
+  - Ein leerer oder fehlender Wert bewirkt, dass die Richtlinienauswertung alle Bezeichnungen und Selektoren einschließt, mit Ausnahme der in _excludedNamespaces_ definierten Namespaces.
+- **apiGroups** (erforderlich bei Verwendung von _templateInfo_)
+  - Ein _Array_, der die [API-Gruppen](https://kubernetes.io/docs/reference/using-api/#api-groups) enthält, die übereinstimmen müssen. Ein leeres Array (`[""]`) ist die API-Kerngruppe, während `["*"]` alle API-Gruppen einbezieht.
+- **kinds** (erforderlich bei Verwendung von _templateInfo_)
+  - Ein _Array_, das die [Art](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields) von Kubernetes-Objekten festlegt, auf die die Auswertung beschränkt werden soll.
 - **values** (optional)
   - Definiert Parameter und Werte, die an die Einschränkung übergeben werden. Jeder Wert muss in der CRD der Einschränkungsvorlage vorhanden sein.
+- **constraintTemplate** (veraltet)
+  - Kann nicht mit "`templateInfo`" verwendet werden.
+  - Muss beim Erstellen oder Aktualisieren einer Richtliniendefinition durch `templateInfo` ersetzt werden.
+  - Die Einschränkungsvorlage CustomResourceDefinition (CRD), die neue Einschränkungen definiert. Die Vorlage definiert die Rego-Logik, das Einschränkungsschema und die Einschränkungsparameter, die über **values** von Azure Policy übergeben werden. Es wird empfohlen, das neuere `templateInfo` zu verwenden, um `constraintTemplate` zu ersetzen.
 
 ### <a name="deny-example"></a>Beispiel für „deny“
 
@@ -248,18 +301,21 @@ Beispiel 1: Verwenden der Auswirkung „deny“ für Resource Manager-Modi:
 }
 ```
 
-Beispiel 2: Verwenden der Auswirkung „deny“ für den Ressourcenanbietermodus `Microsoft.Kubernetes.Data`. Durch die zusätzlichen Informationen in **details** werden die Einschränkungsvorlage und die CRD definiert, die in Kubernetes verwendet werden, um die zulässigen Containerimages einzuschränken.
+Beispiel 2: Verwenden der Auswirkung „deny“ für den Ressourcenanbietermodus `Microsoft.Kubernetes.Data`. Durch die zusätzlichen Informationen in **details.templateInfo** werden die Verwendung von _PublicURL_ deklariert und `url` auf den Speicherort der Einschränkungsvorlage festgelegt, die in Kubernetes verwendet werden soll, um die zulässigen Containerimages einzuschränken.
 
 ```json
 "then": {
     "effect": "deny",
     "details": {
-        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml",
-        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/constraint.yaml",
+        "templateInfo": {
+            "sourceType": "PublicURL",
+            "url": "https://store.policy.core.windows.net/kubernetes/container-allowed-images/v1/template.yaml",
+        },
         "values": {
-            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]",
-            "excludedNamespaces": "[parameters('excludedNamespaces')]"
-        }
+            "imageRegex": "[parameters('allowedContainerImagesRegex')]"
+        },
+        "apiGroups": [""],
+        "kinds": ["Pod"]
     }
 }
 ```

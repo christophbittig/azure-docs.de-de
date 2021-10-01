@@ -7,21 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: 627ec77af4e492b4f22404972729cecdb1c40f06
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/08/2021
+ms.openlocfilehash: 6511764697adcd6c8743efe41d276ccef3ff1bb0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801603"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823895"
 ---
-# <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Erstellen eines Index für mehrere Sprachen in der kognitiven Azure-Suche
+# <a name="create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Erstellen eines Index für mehrere Sprachen in Azure Cognitive Search
 
 In einer mehrsprachigen Suchanwendung ist es wichtig, nach Ergebnissen in der Sprache des Benutzers suchen und entsprechende Ergebnisse abrufen zu können. In Azure Cognitive Search besteht eine Möglichkeit zum Erfüllen der Sprachanforderungen einer mehrsprachigen App beispielsweise darin, dedizierte Felder für das Speichern von Zeichenfolgen in einer bestimmten Sprache zu erstellen und dann bei der Abfrage die Volltextsuche auf eben diese Felder zu beschränken.
 
-+ Legen Sie für Felddefinitionen ein Sprachanalysetool fest, mit dem die linguistischen Regeln der Zielsprache abgerufen werden. Die vollständige Liste der unterstützten Analysetools finden Sie unter [Hinzufügen von Sprachanalysetools zu Zeichenfolgenfeldern in einem Azure Cognitive Search-Index](index-add-language-analyzers.md).
++ Legen Sie für Felddefinitionen ein [Sprachanalysetool](index-add-language-analyzers.md) fest, mit dem die linguistischen Regeln der Zielsprache abgerufen werden. 
 
-+ Legen Sie für die Abfrageanforderung Parameter fest, um die Volltextsuche auf bestimmte Felder zu beschränken. Kürzen Sie dann die Ergebnisse aller Felder, die keinen Inhalt bereitstellen, der mit der Suchfunktion kompatibel ist, die Sie bereitstellen möchten.
++ Legen Sie in der Abfrageanforderung den `searchFields`-Parameter so fest, dass die Volltextsuche auf bestimmte Felder festgelegt ist, und verwenden Sie dann `select`, um nur die Felder mit kompatiblem Inhalt zurückzugeben.
 
 Der Erfolg dieser Methode hängt von der Integrität der Feldinhalte ab. Azure Cognitive Search übersetzt keine Zeichenfolgen und führt keine Spracherkennung als Teil der Abfrageausführung durch. Sie müssen selbst dafür sorgen, dass die Felder die erwarteten Zeichenfolgen enthalten.
 
@@ -141,7 +141,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ [Sprachanalysen](index-add-language-analyzers.md)
++ [Hinzufügen eines Sprachanalysetools](index-add-language-analyzers.md)
 + [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)
 + [Search Documents (Azure Search Service REST API)](/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
 + [Einführung in die KI in Azure Cognitive Search](cognitive-search-concept-intro.md)

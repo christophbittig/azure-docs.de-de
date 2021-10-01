@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 09/14/2021
 ms.author: memildin
-ms.openlocfilehash: e11d455238f4a4e8c128a6cda83a145adaf149e9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fa7076882370b404ea7b1e04cb5c364f22c35fae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347025"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648466"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>Schützen von Kubernetes-Clustern mit Azure Arc-Unterstützung, die in lokalen und Multicloud-Umgebungen ausgeführt werden
 
@@ -29,7 +29,7 @@ Die Erweiterung kann auch Kubernetes-Cluster bei anderen Cloudanbietern schütze
 |--------|---------|
 | Releasestatus | **Vorschau**<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
 | Erforderliche Rollen und Berechtigungen | Der [Sicherheitsadministrator](../role-based-access-control/built-in-roles.md#security-admin) kann Warnungen verwerfen.<br>Der [Sicherheitsleseberechtigte](../role-based-access-control/built-in-roles.md#security-reader) kann Ergebnisse anzeigen. |
-| Preise | [Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md) erforderlich |
+| Preise | Während der Vorschau kostenlos |
 | Unterstützte Kubernetes-Distributionen | [Azure Kubernetes Service in Azure Stack HCI](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS-Engine](https://github.com/Azure/aks-engine)<br> [Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/) (Version 4.6 oder höher)<br> [VMware Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid)<br> [Rancher Kubernetes Engine](https://rancher.com/docs/rke/latest/en/) |
 | Einschränkungen | Managed Kubernetes-Angebote wie Google Kubernetes Engine und Elastic Kubernetes Service werden von Kubernetes mit Azure Arc-Unterstützung und der Azure Defender-Erweiterung **nicht unterstützt**. [Azure Defender ist für Azure Kubernetes Service (AKS) nativ verfügbar](defender-for-kubernetes-introduction.md). Eine Verbindung des Clusters mit Azure Arc ist nicht erforderlich. |
 | Umgebungen und Regionen | Die Verfügbarkeit dieser Erweiterung stimmt mit der von [Kubernetes mit Azure Arc-Unterstützung](../azure-arc/kubernetes/overview.md) überein.|
@@ -46,9 +46,18 @@ Dieses Diagramm zeigt die Interaktion zwischen Azure Defender für Kubernetes un
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure Defender für Kubernetes ist für [Ihr Abonnement aktiviert](enable-azure-defender.md).
-- Ihr Kubernetes-Cluster ist [mit Azure Arc verbunden](../azure-arc/kubernetes/quickstart-connect-cluster.md).
-- Vergewissern Sie sich, dass die in der [Dokumentation zu generischen Clustererweiterungen](../azure-arc/kubernetes/extensions.md#prerequisites) aufgeführten Voraussetzungen erfüllt sind.
+Stellen Sie vor der Bereitstellung der Erweiterung Folgendes sicher:
+- [Die Kubernetes-Cluster sind mit Azure Arc verbunden.](../azure-arc/kubernetes/quickstart-connect-cluster.md)
+- Vergewissern Sie sich, [dass die in der Dokumentation zu generischen Clustererweiterungen aufgeführten Voraussetzungen erfüllt sind](../azure-arc/kubernetes/extensions.md#prerequisites).
+- Konfigurieren Sie **Port 443** auf den folgenden Endpunkten für ausgehenden Zugriff:
+    - Für Cluster in Azure Government Cloud:
+        - *.ods.opinsights.azure.us
+        - *.oms.opinsights.azure.us
+        - :::no-loc text="login.microsoftonline.us":::
+    - Für Cluster in anderen Azure-Cloudbereitstellungen:
+        - *.ods.opinsights.azure.com
+        - *.oms.opinsights.azure.com
+        - :::no-loc text="login.microsoftonline.com":::
 
 ## <a name="deploy-the-azure-defender-extension"></a>Bereitstellen der Azure Defender-Erweiterung
 
@@ -103,7 +112,7 @@ Eine dedizierte Empfehlung in Azure Security Center bietet Folgendes:
 
     Im Folgenden werden alle unterstützten Konfigurationseinstellungen für den Azure Defender-Erweiterungstyp beschrieben:
 
-    | Eigenschaft | BESCHREIBUNG |
+    | Eigenschaft | Beschreibung |
     |----------|-------------|
     | logAnalyticsWorkspaceResourceID | **Optional:** Vollständige Ressourcen-ID Ihres eigenen Log Analytics-Arbeitsbereichs.<br>Wenn keine Angabe vorliegt, wird der Standardarbeitsbereich der Region verwendet.<br><br>Um die vollständige Ressourcen-ID zu erhalten, zeigen Sie die Liste der Arbeitsbereiche in Ihren Abonnements im JSON-Standardformat an, indem Sie den folgenden Befehl ausführen:<br>```az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json```<br><br>Die Ressourcen-ID des Log Analytics Arbeitsbereichs weist folgende Syntax auf:<br>/subscriptions/{Ihre-Abonnement-ID}/resourceGroups/{Ihre-Ressourcengruppe}/providers/Microsoft.OperationalInsights/workspaces/{Ihr-Arbeitsbereichsname}. <br>Weitere Informationen finden Sie unter [Log Analytics-Arbeitsbereiche](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces). |
     | auditLogPath |**Optional:** Der vollständige Pfad zu den Überwachungsprotokolldateien.<br>Wenn nicht angegeben, wird der Standardpfad ``/var/log/kube-apiserver/audit.log`` verwendet.<br>Für die AKS-Engine lautet der Standardpfad ``/var/log/kubeaudit/audit.log``. |
@@ -150,7 +159,7 @@ Um die REST-API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, b
 
     Zur **Authentifizierung** muss Ihr Header (wie bei anderen Azure-APIs) über ein Bearertoken verfügen. Um ein Bearertoken zu erhalten, führen Sie den folgenden Befehl aus:
 
-    ```az account get-access-token --subscription <your-subscription-id>``` Verwenden Sie die folgende Struktur für den Nachrichtentext:
+    `az account get-access-token --subscription <your-subscription-id>` Verwenden Sie die folgende Struktur für den Nachrichtentext:
     ```json
     { 
     "properties": { 

@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure NetApp Files-Dokumentation
-summary: Erfahren Sie, wie Sie mithilfe von Azure NetApp Files NetApp-Konten, Kapazitätspools und Volumes erstellen und verwalten, die Exportrichtlinie konfigurieren, ein Volume für einen virtuellen Computer bereitstellen und Momentaufnahmen verwalten.
+summary: Erfahren Sie, wie Sie mit Azure NetApp Files NetApp Konten, Kapazitätspools und Volumes erstellen und die Datensicherung verwalten können.
 metadata:
   title: Azure NetApp Files-Dokumentation
   description: Informationen zum Einrichten, Zugreifen auf und Verwalten von Volumes mit dem Azure NetApp Files-Dienst
@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: b-juche
   ms.author: b-juche
-  ms.date: 08/25/2020
-  ms.openlocfilehash: f44cd7bc6269a7efbaaaaf2788f660363bafcbac
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 09/27/2021
+  ms.openlocfilehash: 479f3bf51e45b03ea9026cb0b37eb01d91991dbd
+  ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91567841"
+  ms.lasthandoff: 09/28/2021
+  ms.locfileid: "129154221"
 landingContent:
 - title: Informationen zu Azure NetApp Files
   linkLists:
@@ -42,8 +42,12 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Übermitteln einer Wartelistenanforderung
-      url: azure-netapp-files-register.md#waitlist
+    - text: Registrieren für NetApp-Ressourcenanbieter
+      url: azure-netapp-files-register.md
+    - text: Erstellen eines NetApp-Kontos
+      url: azure-netapp-files-create-netapp-account.md
+    - text: Delegieren eines Subnetzes an Azure NetApp Files
+      url: azure-netapp-files-delegate-subnet.md
   - linkListType: quickstart
     links:
     - text: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes
@@ -52,21 +56,23 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Erstellen eines NetApp-Kontos
-      url: azure-netapp-files-create-netapp-account.md
+    - text: Erstellen von Active Directory-Verbindungen
+      url: create-active-directory-connections.md
     - text: Einrichten eines Kapazitätspools
       url: azure-netapp-files-set-up-capacity-pool.md
-    - text: Delegieren eines Subnetzes an Azure NetApp Files
-      url: azure-netapp-files-delegate-subnet.md
-    - text: Erstellen eines SMB-Volumes für Azure NetApp Files
-      url: azure-netapp-files-create-volumes-smb.md
-    - text: Erstellen eines NFS-Volumes für Azure NetApp Files
+    - text: Erstellen eines NFS-Volumes
       url: azure-netapp-files-create-volumes.md
+    - text: Erstellen eines SMB-Volumes
+      url: azure-netapp-files-create-volumes-smb.md
+    - text: Erstellen eines Dual-Protokoll-Volumes
+      url: create-volumes-dual-protocol.md
 - title: Entwickeln
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: REST-API
       url: azure-netapp-files-develop-with-rest-api.md
+    - text: REST-API mit PowerShell
+      url: develop-rest-api-powershell.md
     - text: Azure NetApp Files SDKs und CLI-Tools
       url: azure-netapp-files-sdk-cli.md

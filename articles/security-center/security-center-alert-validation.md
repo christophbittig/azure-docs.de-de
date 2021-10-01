@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: dc42882a15b70d7d656decebf8c7b2346c516c6d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 48a695f4217c7300c4d7db6edc23452ad4eaa55f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355279"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631702"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Warnungsüberprüfung in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie überprüfen, ob Ihr System ordnungsgemäß für Azure Security Center-Warnungen konfiguriert ist.
@@ -67,22 +67,22 @@ Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie 
 ## <a name="simulate-alerts-on-your-azure-vms-linux"></a>Simulieren von Warnungen auf Ihren Azure-VMs (Linux) <a name="validate-linux"></a>
 
 Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie auf dem Computer, auf dem sich die angegriffene Ressource für die Warnung befinden soll, die folgenden Schritte aus:
-1. Kopieren Sie eine ausführbare Datei an einem geeigneten Speicherort, und benennen Sie sie in **./asc_alerttest_662jfi039n** um. Beispiel:
 
-    ```cp /bin/echo ./asc_alerttest_662jfi039n```
+1. Kopieren Sie eine ausführbare Datei an einen geeigneten Speicherort, und benennen Sie sie in `./asc_alerttest_662jfi039n` um. Beispiel:
+
+    `cp /bin/echo ./asc_alerttest_662jfi039n`
 
 1. Öffnen Sie die Eingabeaufforderung, und führen Sie diese Datei aus:
 
-    ```./asc_alerttest_662jfi039n testing eicar pipe```
+    `./asc_alerttest_662jfi039n testing eicar pipe`
 
 1. Warten Sie fünf bis zehn Minuten, und öffnen Sie die Security Center-Warnungen. Eine Warnung sollte angezeigt werden.
-
 
 ## <a name="simulate-alerts-on-kubernetes"></a>Simulieren von Warnung in Kubernetes <a name="validate-kubernetes"></a>
 
 Wenn Sie Azure Kubernetes Service in Security Center integriert haben, testen Sie mit dem folgenden kubectl-Befehl, ob Ihre Warnungen funktionieren:
 
-```kubectl get pods --namespace=asc-alerttest-662jfi039n```
+`kubectl get pods --namespace=asc-alerttest-662jfi039n`
 
 Weitere Informationen zum Schützen Ihrer Kubernetes-Knoten und -Cluster finden Sie unter [Einführung in Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md).
 

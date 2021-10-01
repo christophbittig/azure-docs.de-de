@@ -66,71 +66,12 @@
           href: tutorial-x509-test-certificate.md
 - name: Konzepte
   items:
-    - name: TLS-Unterstützung
-      href: iot-hub-tls-support.md
-    - name: VNET-Unterstützung
-      href: virtual-network-support.md
-    - name: 'Nachrichtenergänzungen: Übersicht'
-      href: iot-hub-message-enrichments-overview.md
-    - name: Geräteverwaltung – Übersicht
-      href: iot-hub-device-management-overview.md
-    - name: Vergleichen von IoT Hub und Event Hubs
-      href: iot-hub-compare-event-hubs.md
-    - name: Wählen des passenden Tarifs
-      href: iot-hub-scaling.md
-    - name: Hochverfügbarkeit und Notfallwiederherstellung
-      href: iot-hub-ha-dr.md
-    - name: Klonen einer IoT Hub-Instanz in einer anderen Region
-      href: iot-hub-how-to-clone.md
-    - name: Grundlegendes zur IP-Adresse des IoT-Hubs
-      href: iot-hub-understand-ip-address.md
-    - name: Unterstützung zusätzlicher Protokolle
-      href: iot-hub-protocol-gateway.md
-    - name: Vergleichen von Nachrichten- und Ereignisrouting
-      href: iot-hub-event-grid-routing-comparison.md
-    - name: Bewährte Methoden für die Gerätekonfiguration
-      href: iot-hub-configuration-best-practices.md
-    - name: Übersicht über IoT Hub-Gerätestreams (Vorschau)
-      href: iot-hub-device-streams-overview.md
-    - name: Entwicklerhandbuch
-      href: iot-hub-devguide.md
+    - name: Entwickeln
       items:
         - name: D2C-Featureleitfaden
           href: iot-hub-devguide-d2c-guidance.md
         - name: C2D-Featureleitfaden
           href: iot-hub-devguide-c2d-guidance.md
-        - name: Senden und Empfangen von Nachrichten
-          href: iot-hub-devguide-messaging.md
-          items:
-            - name: Erstellen und Lesen von IoT Hub-Nachrichten
-              href: iot-hub-devguide-messages-construct.md
-            - name: Auswählen eines Protokolls für die Gerätekommunikation
-              href: iot-hub-devguide-protocols.md
-            - name: 'Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt'
-              href: iot-hub-devguide-messages-read-builtin.md
-            - name: Verwenden der Nachrichtenweiterleitung zum Senden von D2C-Nachrichten
-              href: iot-hub-devguide-messages-d2c.md
-              items:
-                - name: Verwenden von benutzerdefinierten Endpunkten und Routingregeln für D2C-Nachrichten
-                  href: iot-hub-devguide-messages-read-custom.md
-                - name: Hinzufügen von Abfragen zu Nachrichtenrouten
-                  href: iot-hub-devguide-routing-query-syntax.md
-            - name: Senden von C2D-Nachrichten von IoT Hub
-              href: iot-hub-devguide-messages-c2d.md
-        - name: Reagieren auf IoT Hub-Ereignisse mit Event Grid
-          href: iot-hub-event-grid.md
-        - name: Hochladen von Dateien von einem Gerät
-          href: iot-hub-devguide-file-upload.md
-        - name: Verwalten von Geräteidentitäten
-          href: iot-hub-devguide-identity-registry.md
-        - name: Verwalten des Zugriffs auf IoT Hub
-          items:
-            - name: Übersicht
-              href: iot-hub-devguide-security.md
-            - name: "Steuern des Zugriffs mit Azure\_AD"
-              href: iot-hub-dev-guide-azure-ad-rbac.md
-            - name: Steuern des Zugriffs mit SAS
-              href: iot-hub-dev-guide-sas.md
         - name: Grundlegendes zu Gerätezwillingen
           href: iot-hub-devguide-device-twins.md
         - name: Grundlegendes zu Modulzwillingen
@@ -145,16 +86,80 @@
           href: iot-hub-devguide-query-language.md
         - name: Kontingente und Drosselung
           href: iot-hub-devguide-quotas-throttling.md
+        - name: Vergleichen von IoT Hub und Event Hubs
+          href: iot-hub-compare-event-hubs.md
+        - name: Reagieren auf IoT Hub-Ereignisse mit Event Grid
+          href: iot-hub-event-grid.md
+        - name: Hochladen von Dateien von einem Gerät
+          href: iot-hub-devguide-file-upload.md
+        - name: Übersicht über IoT Hub-Gerätestreams (Vorschau)
+          href: iot-hub-device-streams-overview.md
+    - name: Verwalten
+      items:
+        - name: Wählen des richtigen IoT Hub-Tarifs
+          href: iot-hub-scaling.md
         - name: Preisbeispiele
           href: iot-hub-devguide-pricing.md
-        - name: IoT Hub-SDKs
-          items:
-            - name: SDK-Übersicht
-              href: iot-hub-devguide-sdks.md
-            - name: Entwickeln ohne SDK
-              href: iot-hub-devguide-no-sdk.md
-            - name: Verwalten von Konnektivität und zuverlässigem Messaging
-              href: iot-hub-reliability-features-in-sdks.md
+    - name: Nachrichten
+      items:
+        - name: Senden und Empfangen von Nachrichten
+          href: iot-hub-devguide-messaging.md
+        - name: Erstellen und Lesen von IoT Hub-Nachrichten
+          href: iot-hub-devguide-messages-construct.md
+        - name: Auswählen eines Protokolls für die Gerätekommunikation
+          href: iot-hub-devguide-protocols.md
+        - name: 'Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt'
+          href: iot-hub-devguide-messages-read-builtin.md
+        - name: 'Nachrichtenergänzungen: Übersicht'
+          href: iot-hub-message-enrichments-overview.md
+    - name: Nachrichtenweiterleitung
+      items:
+        - name: Verwenden der Nachrichtenweiterleitung zum Senden von D2C-Nachrichten
+          href: iot-hub-devguide-messages-d2c.md
+        - name: Verwenden von benutzerdefinierten Endpunkten und Routingregeln für D2C-Nachrichten
+          href: iot-hub-devguide-messages-read-custom.md
+        - name: Hinzufügen von Abfragen zu Nachrichtenrouten
+          href: iot-hub-devguide-routing-query-syntax.md
+        - name: Senden von C2D-Nachrichten von IoT Hub
+          href: iot-hub-devguide-messages-c2d.md
+        - name: Vergleichen von Nachrichten- und Ereignisrouting
+          href: iot-hub-event-grid-routing-comparison.md
+    - name: Geräteverwaltung
+      items:
+        - name: Geräteverwaltung – Übersicht
+          href: iot-hub-device-management-overview.md
+        - name: Verwalten von Geräteidentitäten
+          href: iot-hub-devguide-identity-registry.md
+        - name: Bewährte Methoden für die Gerätekonfiguration
+          href: iot-hub-configuration-best-practices.md
+    - name: Konnektivität
+      items:
+        - name: Grundlegendes zur IP-Adresse des IoT-Hubs
+          href: iot-hub-understand-ip-address.md
+    - name: Skalierung und Verfügbarkeit
+      items:
+        - name: Hochverfügbarkeit und Notfallwiederherstellung
+          href: iot-hub-ha-dr.md
+        - name: Klonen einer IoT Hub-Instanz in einer anderen Region
+          href: iot-hub-how-to-clone.md
+    - name: Verwalten des Zugriffs auf IoT Hub
+      items:
+        - name: Übersicht
+          href: iot-hub-devguide-security.md
+        - name: "Steuern des Zugriffs mit Azure\_AD"
+          href: iot-hub-dev-guide-azure-ad-rbac.md
+        - name: Steuern des Zugriffs mit SAS
+          href: iot-hub-dev-guide-sas.md
+    - name: IoT Hub-SDKs
+      items:
+        - name: SDK-Übersicht
+          href: iot-hub-devguide-sdks.md
+        - name: Entwickeln ohne SDK
+          href: iot-hub-devguide-no-sdk.md
+        - name: Verwalten von Konnektivität und zuverlässigem Messaging
+          href: iot-hub-reliability-features-in-sdks.md
+    - name: Protokollunterstützung
+      items:
         - name: MQTT-Unterstützung
           href: iot-hub-mqtt-support.md
         - name: "MQTT\_5-Unterstützung (Vorschau)"
@@ -165,8 +170,14 @@
               href: iot-hub-mqtt-5-reference.md
         - name: AMQP-Unterstützung
           href: iot-hub-amqp-support.md
+        - name: Unterstützung zusätzlicher Protokolle
+          href: iot-hub-protocol-gateway.md
     - name: Sicherheit
       items:
+        - name: TLS-Unterstützung
+          href: iot-hub-tls-support.md
+        - name: VNET-Unterstützung
+          href: virtual-network-support.md
         - name: Sicherheitsbaseline
           href: /security/benchmark/azure/baselines/iot-hub-security-baseline?toc=/azure/iot-hub/TOC.json
         - name: Empfehlungen
@@ -182,12 +193,12 @@
         - name: Sicherheitskontrollen von Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
-    - name: Schützen mit X.509-Zertifikaten einer Stammzertifizierungsstelle
-      items:
-        - name: Sicherheit durch X.509-Zertifikate einer Stammzertifizierungsstelle – Übersicht
-          href: iot-hub-x509ca-overview.md
-        - name: Sicherheit durch X.509-Zertifikate einer Stammzertifizierungsstelle – Konzepte
-          href: iot-hub-x509ca-concept.md
+        - name: Schützen mit X.509-Zertifikaten einer Stammzertifizierungsstelle
+          items:
+            - name: Sicherheit durch X.509-Zertifikate einer Stammzertifizierungsstelle – Übersicht
+              href: iot-hub-x509ca-overview.md
+            - name: Sicherheit durch X.509-Zertifikate einer Stammzertifizierungsstelle – Konzepte
+              href: iot-hub-x509ca-concept.md
 - name: Anleitungen
   items:
     - name: Entwickeln
@@ -480,8 +491,6 @@
           href: ../iot-edge/index.yml
         - name: "IoT\_Plug\_&\_Play"
           href: ../iot-develop/index.yml
-        - name: IoT Solution Accelerators
-          href: ../iot-accelerators/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: Time Series Insights

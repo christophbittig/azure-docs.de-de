@@ -149,6 +149,8 @@
           href: azure-app-marketing.md
         - name: Getaktete Abrechnung
           href: marketplace-metering-service-apis.md
+        - name: Konfigurieren von Preisen für die nutzungsbasierte monatliche Abrechnung
+          href: azure-vm-pricing.md
         - name: Verarbeiten von Prüfungsfeedback
           href: azure-app-review-feedback.md
         - name: Anwendungs-APIs

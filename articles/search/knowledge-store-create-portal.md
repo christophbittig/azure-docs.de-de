@@ -8,23 +8,21 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/02/2021
-ms.openlocfilehash: 4e23862e78fb6b3de9dd360ee54bb229c76bc8b4
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: f80a4a5961c0506f423da4d4f1578b8cf8999b51
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537971"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755228"
 ---
 # <a name="quickstart-create-a-knowledge-store-in-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Wissensspeichers im Azure-Portal
 
-Der Wissensspeicher ist ein Feature von Azure Cognitive Search, das Ausgaben aus einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) zur nachfolgenden Analyse oder nachgelagerten Verarbeitung an Azure Storage sendet.
+Der [Wissensspeicher](knowledge-store-concept-intro.md) ist ein Feature von Azure Cognitive Search, das Ausgaben aus einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) an Azure Storage sendet. Von der Pipeline erstellte Anreicherungen – z. B. übersetzter Text, OCR-Text, erkannte Entitäten und andere Anreicherungen – werden in Tabellen oder Blobs projiziert, wo von allen Apps oder Workloads, die eine Verbindung mit Azure Storage herstellen, darauf zugegriffen werden kann.
 
-Eine Anreicherungspipeline akzeptiert unstrukturierte Text- und Bildinhalte, wendet über Cognitive Services eine KI-gestützte Verarbeitung an und gibt neue Strukturen und Informationen aus, die zuvor nicht vorhanden waren. Eine der physischen Datenstrukturen, die von einer Pipeline erstellt werden, ist ein [Wissensspeicher](knowledge-store-concept-intro.md), auf den Sie über alle Tools, Apps oder Prozesse zugreifen können, die sich mit Azure Storage verbinden.
-
-In diesem Schnellstart richten Sie Ihre Daten ein und führen dann den **Datenimport-Assistenten** aus, um eine Anreicherungspipeline zu erstellen, die auch einen Wissensspeicher generiert. Der Wissensspeicher enthält originalen Textinhalt, der aus der Quelle stammt, sowie mittels KI generierte Inhalte, die eine Stimmungsbezeichnung, Schlüsselbegriffsextraktion und Textübersetzung nicht englischsprachiger Kundenkommentare enthalten.
+In diesem Schnellstart richten Sie Ihre Daten ein und führen dann den **Datenimport-Assistenten** aus, um eine Anreicherungspipeline zu erstellen, die auch einen Wissensspeicher generiert. Der Wissensspeicher enthält originalen Textinhalt, der aus der Quelle (Kundenbewertungen eines Hotels) stammt, sowie mittels KI generierte Inhalte, die eine Stimmungsbezeichnung, Schlüsselbegriffsextraktion und Textübersetzung nicht englischsprachiger Kundenkommentare enthalten.
 
 > [!NOTE]
-> Dieser Schnellstart ist der schnellste Weg zu einem fertigen Wissensspeicher in Azure Storage. Ausführlichere Informationen finden Sie unter [Erstellen eines Wissensspeichers in REST](knowledge-store-create-rest.md).
+> Dieser Schnellstart zeigt Ihnen den schnellsten Weg zu einem fertigen Wissensspeicher in Azure Storage. Ausführlichere Erläuterungen zu jedem Schritt finden Sie hingegen unter [Erstellen eines Wissensspeichers in REST](knowledge-store-create-rest.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -161,27 +159,19 @@ In diesem Schritt des Assistenten konfigurieren Sie einen Indexer, der die Daten
 
 Wechseln Sie im Azure-Portal zu Ihrem Azure Storage-Konto, und zeigen Sie in **Storage-Explorer** die neuen Tabellen an. Sie sollten drei Tabellen sehen, und zwar eine für jede Projektion, die im Abschnitt „Anreicherungen speichern“ auf der Seite „Anreicherungen hinzufügen“ angeboten wurde.
 
-+ Die Dokumenttabelle enthält alle Knoten der ersten Ebene der Anreicherungsstruktur eines Dokuments.
++ `hotelReviewssDocument` enthält alle Knoten der ersten Ebene der Anreicherungsstruktur eines Dokuments, die keine Sammlungen sind.
 
-+ Eine Seitentabelle (oder Satztabelle) wird erstellt, wenn Sie die Granularitätsstufe „Seiten“ oder „Sätze“ angeben. Für Qualifikationen, die auf Seiten- oder Satzebene ausgeführt werden, wird die Ausgabe in diese Tabelle projiziert.
++ `hotelReviewssPages` enthält angereicherte Felder, die auf jeder Seite erstellt wurden, die vom Dokument getrennt wurde. Anreicherungen auf Seitenebene bestehen aus einer Stimmungsbezeichnung und übersetztem Text. Eine Seitentabelle (oder eine Sätzetabelle, wenn Sie diese spezielle Granularitätsstufe angeben) wird erstellt, wenn Sie die Granularität „Seiten“ in der Skillsetdefinition auswählen. Für Qualifikationen, die auf Seiten- oder Satzebene ausgeführt werden, wird die Ausgabe in diese Tabelle projiziert.
 
-+ Qualifikationen, die Sammlungen (Arrays) ausgeben, z. B. Schlüsselbegriffe und Entitäten, werden in einer eigenständigen Tabelle ausgegeben.
++ `hotelReviewssKeyPhrases` enthält eine lange Liste mit nur den Schlüsselbegriffen, die aus allen Bewertungen extrahiert wurden. Qualifikationen, die Sammlungen (Arrays) ausgeben, z. B. Schlüsselbegriffe und Entitäten, erzeugen Ausgaben, die an eine eigenständige Tabelle gesendet werden.
 
-Alle Tabellen in derselben Projektionsgruppe enthalten Querverweisinformationen zur Unterstützung von Tabellenbeziehungen in anderen Tools und Apps.
+Alle diese Tabellen enthalten ID-Spalten, um Tabellenbeziehungen in anderen Tools und Apps zu unterstützen. Scrollen Sie beim Öffnen einer Tabelle über diese Felder, um die von der Pipeline hinzugefügten Inhaltsfelder anzuzeigen.
 
 In diesem Schnellstart sollte Ihre Tabelle in etwa wie im folgenden Screenshot aussehen:
 
    :::image type="content" source="media/knowledge-store-create-portal/azure-table-hotel-reviews.png" alt-text="Screenshot der generierten Tabellen in Storage-Explorer" border="true":::
 
-Jede Tabelle wird mit den IDs generiert, die für die Kreuzverknüpfung der Tabellen in Abfragen erforderlich sind. Scrollen Sie beim Öffnen einer Tabelle über diese Felder, um die von der Pipeline hinzugefügten Inhaltsfelder anzuzeigen.
-
-| Tabelle | BESCHREIBUNG |
-|-------|-------------|
-| hotelReviewssDocument | Enthält Felder, die der CSV-Datei entnommen werden, z. B. reviews_date und reviews_text. |
-| hotelReviewssPages | Enthält angereicherte Felder, die vom Skillset erstellt wurden, z. B. Stimmungsbezeichnung und übersetzter Text. |
-| hotelReviewssKeyPhrases | Enthält eine lange Liste nur der Schlüsselbegriffe. |
-
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie am Ende eines Projekts prüfen, ob Sie die Ressourcen, die Sie erstellt haben, noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 

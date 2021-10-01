@@ -8,46 +8,58 @@ metadata:
   ms.topic: landing-page
   author: robinsh
   ms.author: robinsh
-  manager: eliotgra
-  ms.date: 03/23/2020
-  ms.custom: amqp
-  ms.openlocfilehash: 5c4b17d0e725200250b6a01212edb374d3e21ff9
-  ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+  ms.date: 08/11/2021
+  ms.openlocfilehash: 09cd4751e19d9fff925b8cfbe0749180538cf3cd
+  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/28/2021
-  ms.locfileid: "114731760"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129215185"
 landingContent:
+- title: Informationen zu IoT Hub
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist IoT Hub?
+      url: about-iot-hub.md
+    - text: Schlüsselkonzepte in IoT
+      url: iot-concepts.md
 - title: Erste Schritte
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Erstellen eines Hubs über das Azure-Portal
+    - text: Erstellen eines neuen Hubs
       url: iot-hub-create-through-portal.md
-    - text: Senden von Telemetriedaten von einem Gerät an einen Hub mithilfe der CLI
+    - text: Senden von Telemetriedaten an Ihren Hub
       url: quickstart-send-telemetry-cli.md
-    - text: Steuern eines mit Hub-Instanz verbundenen Geräts
+    - text: Steuern Ihrer Geräte
       url: quickstart-control-device.md
   - linkListType: get-started
     links:
-    - text: Geräteverwaltung
-      url: iot-hub-node-node-device-management-get-started.md
-    - text: Konfigurieren von Geräten
-      url: iot-hub-configuration-best-practices.md
-- title: Synchronisieren von Gerätestatus
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Arbeiten mit Gerätezwillingen mithilfe von Node.js
-      url: iot-hub-node-node-twin-getstarted.md
-- title: Skalieren Ihrer Lösung
+    - text: Weiterleiten von Telemetriedaten
+      url: tutorial-routing.md
+- title: Kompilieren der Projektmappe
   linkLists:
   - linkListType: concept
     links:
-    - text: Auswählen der richtigen Ebene
-      url: iot-hub-scaling.md
-    - text: Grundlegendes zu Kontingenten und Drosselung
-      url: iot-hub-devguide-quotas-throttling.md
+    - text: Konfigurieren von Geräten mithilfe der Geräte-SDKs
+      url: ../iot-develop/about-iot-sdks.md
+    - text: Erstellen mithilfe der Dienst-SDKs
+      url: iot-hub-devguide-sdks.md
+    - text: Lokales Verarbeiten von Gerätedaten mit IoT Edge
+      url: ../iot-edge/about-iot-edge.md
+    - text: Modellieren Ihrer Umgebung mit Azure Digital Twins
+      url: ../digital-twins/overview.md
+    - text: Automatische Gerätebereitstellung mit Azure IoT Hub Device Provisioning Service
+      url: ../iot-dps/about-iot-dps.md
+    - text: Verwalten von Geräten im großen Stil mithilfe der IoT-Geräteverwaltung
+      url: iot-hub-automatic-device-management.md
+    - text: Aktualisieren von Geräten mit Device Update for IoT Hub
+      url: ../iot-hub-device-update/understand-device-update.md
+    - text: Interagieren mit Ihrem Gerät über Azure IoT Explorer
+      url: ../iot-fundamentals/howto-use-iot-explorer.md
+    - text: Entwickeln mithilfe von Azure IoT Tools für VS Code
+      url: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools
 - title: Auswählen Ihres Protokolls
   linkLists:
   - linkListType: concept
@@ -78,101 +90,15 @@ landingContent:
       url: tutorial-routing-config-message-routing-rm-template.md
     - text: Ausführen und Anzeigen von Routingergebnissen
       url: tutorial-routing-view-message-routing-results.md
-- title: Device Update for IoT Hub (Vorschau)
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Übersicht über Device Update for IoT Hub
-      url: ../iot-hub-device-update/understand-device-update.md
-  - linkListType: how-to-guide
-    links:
-    - text: Importieren eines Updates
-      url: ../iot-hub-device-update/import-update.md
-  - linkListType: how-to-guide
-    links:
-    - text: Erstellen einer Updategruppe
-      url: ../iot-hub-device-update/create-update-group.md
-  - linkListType: how-to-guide
-    links:
-    - text: Bereitstellen eines Updates
-      url: ../iot-hub-device-update/deploy-update.md
-- title: IoT Hub in Azure Stack Hub (Vorschau)
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Übersicht für Operatoren
-      url: /azure-stack/operator/iot-hub-rp-overview
-    - text: Übersicht für Benutzer
-      url: /azure-stack/user/iot-hub-overview
-  - linkListType: how-to-guide
-    links:
-    - text: Voraussetzungen für die Installation
-      url: /azure-stack/operator/iot-hub-rp-prerequisites
-    - text: Installation von IoT Hub in Azure Stack Hub
-      url: /azure-stack/operator/iot-hub-rp-install
-- title: Verwenden von IoT Hub-Tools
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Verwenden von IoT-Tools für VS Code
-      url: iot-hub-create-use-iot-toolkit.md
-    - text: IoT-Explorer
-      url: ../iot-fundamentals/howto-use-iot-explorer.md
-- title: 'IoT Hub: Überwachen und Behandeln von Problemen'
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Überwachen von IoT Hub
-      url: monitor-iot-hub.md
-    - text: Referenz zu IoT Hub-Überwachungsdaten
-      url: monitor-iot-hub-reference.md
-    - text: Überwachen, Diagnostizieren und Behandeln von Problemen bei der Trennung von Verbindungen mit IoT Hub
-      url: iot-hub-troubleshoot-connectivity.md
-    - text: Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB
-      url: iot-hub-how-to-order-connection-state-events.md
-- title: Verwenden von IoT-Sicherheitszertifikaten
+- title: Leistung und Skalierbarkeit
   linkLists:
   - linkListType: concept
     links:
-    - text: Verwalten des Zugriffs auf IoT Hub
-      url: iot-hub-devguide-security.md
-    - text: Geräteauthentifizierung mit Zertifikaten von X.509-Zertifizierungsstellen
-      url: iot-hub-x509ca-overview.md
-    - text: X. 509-Sicherheit bei IoT Hub
-      url: ./tutorial-x509-scripts.md
-    - text: Sicherheitskonzepte bei Zertifikaten von X.509-Zertifizierungsstellen
-      url: iot-hub-x509ca-concept.md
-- title: Verwenden der Azure CLI für IoT-Hub
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Erstellen eines IoT Hubs
-      url: iot-hub-create-using-cli.md
-    - text: Verwalten von IoT-Geräten
-      url: iot-hub-device-management-iot-extension-azure-cli-2-0.md
-    - text: Konfigurieren der Nachrichtenweiterleitung
-      url: tutorial-routing-config-message-routing-cli.md
-    - text: Konfigurieren des Dateiuploads
-      url: iot-hub-configure-file-upload-cli.md
-    - text: Senden von Telemetriedaten und Überwachen
-      url: quickstart-send-telemetry-cli.md
-  - linkListType: reference
-    links:
-    - text: CLI-Referenzen für IoT
-      url: /cli/azure/azure-cli-reference-for-IoT
-- title: Verwenden von PowerShell für IoT Hub
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: Erstellen eines IoT Hubs
-      url: iot-hub-create-using-powershell.md
-    - text: Erstellen einer IoT Hub-Instanz mit einer Resource Manager-Vorlage
-      url: iot-hub-rm-template-powershell.md
-    - text: Konfigurieren der Nachrichtenweiterleitung
-      url: tutorial-routing-config-message-routing-powershell.md
-    - text: Konfigurieren des Dateiuploads
-      url: iot-hub-configure-file-upload-powershell.md
-  - linkListType: reference
-    links:
-    - text: PowerShell-Referenzen für IoT
-      url: /powershell/module/az.iothub#iothub
+    - text: Auswählen der richtigen Ebene
+      url: iot-hub-scaling.md
+    - text: Grundlegendes zu Kontingenten und Drosselung
+      url: iot-hub-devguide-quotas-throttling.md
+    - text: Preisbeispiele
+      url: iot-hub-devguide-pricing.md
+    - text: Hochverfügbarkeit und Notfallwiederherstellung
+      url: iot-hub-ha-dr.md

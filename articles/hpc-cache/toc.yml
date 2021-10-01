@@ -43,7 +43,7 @@ items:
                     href: hpc-cache-ingest-manual.md
           - name: Bearbeiten von Speicherzielen
             href: hpc-cache-edit-storage.md
-          - name: Verwalten von Speicherzielen
+          - name: Anzeigen und Verwalten von Speicherzielen
             href: manage-storage-targets.md
       - name: Herstellen einer Verbindung mit dem Cache
         href: hpc-cache-mount.md

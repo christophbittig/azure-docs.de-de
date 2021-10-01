@@ -1,15 +1,16 @@
 ---
-title: 'Azure CLI-Skriptbeispiel: Hinzufügen einer Anwendung in Batch'
-description: Dieses Beispielskript veranschaulicht das Hinzufügen einer Anwendung für die Verwendung mit einem Azure Batch-Pool oder einer Aufgabe.
+title: 'Azure CLI-Skriptbeispiel: Hinzufügen einer Anwendung in Batch | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie mithilfe der Azure CLI eine Anwendung für die Verwendung mit einem Azure Batch-Pool oder einer Azure Batch-Aufgabe hinzufügen.
 ms.topic: sample
-ms.date: 01/29/2018
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 06afb59a76e763c25e943c3be1531372a6bd2aa1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 09/17/2021
+ms.custom: devx-track-azurecli, seo-azure-cli
+keywords: Batch, Azure CLI-Beispiele, Azure CLI-Codebeispiele, Azure CLI-Skriptbeispiele
+ms.openlocfilehash: 1c20adef86e30df79a5de2d6229ca099875c98f0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765263"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595197"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI-Beispiel: Hinzufügen einer Anwendung zu einem Azure Batch-Konto
 

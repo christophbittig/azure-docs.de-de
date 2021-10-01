@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: sharrai
 ms.date: 05/27/2021
-ms.openlocfilehash: b8264221db1fcfee8d47ac0d8f159d6b7a6140fe
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: d766903d6de975a10dfd29bdf367ac2831321e50
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577085"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777429"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Installieren eines Linux-Masterzielservers für Failbacks
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -195,7 +195,12 @@ Wenn Ihr Masterziel über eine Internetverbindung verfügt, können Sie die folg
 
 #### <a name="download-the-master-target-installation-packages"></a>Herunterladen der Pakete für die Installation des Masterziels
 
-[Laden Sie die neuesten Linux-Masterziel-Installationsbits herunter](https://aka.ms/latestlinuxmobsvc).
+[Laden Sie die neuesten Linux-Masterziel-Installationsbits für Ubuntu 20.04 herunter](https://aka.ms/latestlinuxmobsvc).
+
+[Laden Sie die ältesten Linux-Masterziel-Installationsbits für Ubuntu 16.04 herunter](https://aka.ms/oldlinuxmobsvc).
+
+> [!NOTE]
+> Es wird empfohlen, die neueste Ubuntu-Betriebssystemversion zum Einrichten des Masterzielservers zu verwenden.
 
 Geben Sie zum Herunterladen mit Linux Folgendes ein:
 

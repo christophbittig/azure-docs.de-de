@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 21012848ba3624df6110eaea182beccc4646d234
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b9ca2a4ba836adacb81a82ad59a11c21ffd6c3fb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609274"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216876"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Abfragen in Azure Cognitive Search
 
@@ -89,7 +89,7 @@ Möglicherweise benötigen Sie auch Filter, um ein spezielles Abfrageformular au
 |-----------------|-------------|
 | Bereichsfilter | In der kognitiven Azure-Suche werden Bereichsabfragen anhand des Filterparameters erstellt. Weitere Informationen und Beispiele finden Sie unter [Beispiel: Bereichsfilter](search-query-simple-examples.md#example-5-range-filters). |
 | Suche nach einem geografischen Standort | Wenn ein durchsuchbares Feld den [Typ „Edm.GeographyPoint“](/rest/api/searchservice/supported-data-types) aufweist, können Sie einen Filterausdruck für „Standorte in meiner Nähe suchen“ oder kartenbasierte Suchsteuerelemente erstellen. Felder, die eine geografische Suche unterstützen, enthalten Koordinaten. Weitere Informationen und ein Beispiel finden Sie unter [Beispiel: Geografische Suche](search-query-simple-examples.md#example-6-geo-search). |
-| Facettennavigation | Eine facettenbasierte Navigationsstruktur ist ein wichtiges Instrument in der benutzergesteuerten Navigation, wenn als Antwort auf ein `onclick`-Ereignis in einer Facette ein Filter aufgerufen wird. Aus diesem Grund gehen Facetten und Filter Hand in Hand. Wenn Sie eine Facettennavigation hinzufügen, benötigen Sie Filter, um die Funktionalität vollständig bereitzustellen. Weitere Informationen finden Sie unter [Erstellen eines Facettenfilters](search-filters-facets.md). |
+| Facettennavigation | In der Struktur [Facettennavigation](search-faceted-navigation.md) können Benutzer Facetten auswählen und die Ergebnisse bei jedem Klick eingrenzen. Jede Facette wird durch einen Filter unterstützt, der Dokumente ausschließt, die nicht mehr den Kriterien entsprechen. |
 
 > [!NOTE]
 > In einem Filterausdruck verwendeter Text wird während der Abfrageverarbeitung nicht analysiert. Hierbei wird davon ausgegangen, dass es sich bei der Texteingabe um ein wortgetreues Zeichenmuster mit Beachtung der Groß- und Kleinschreibung handelt, das entweder erfolgreich oder nicht erfolgreich mit der Abfrage abgeglichen wird. Filterausdrücke werden mithilfe der [OData-Syntax](query-odata-filter-orderby-syntax.md) erstellt und in einem **`filter`** -Parameter an alle *filterbaren* Felder in Ihrem Index übergeben. Weitere Informationen finden Sie unter [Filter in Azure Cognitive Search](search-filters.md).

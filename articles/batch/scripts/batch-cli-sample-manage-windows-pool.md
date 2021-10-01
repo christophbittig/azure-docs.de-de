@@ -1,15 +1,16 @@
 ---
-title: 'Azure CLI-Skriptbeispiel: Windows-Pool in Batch'
-description: In diesem Skript werden einige der verfügbaren Azure CLI-Tools zum Erstellen und Verwalten eines Pools mit Windows-Computeknoten in Azure Batch präsentiert.
+title: 'Azure CLI-Skriptbeispiel: Windows-Pool in Batch | Microsoft-Dokumentation'
+description: Hier lernen Sie einige der verfügbaren Azure CLI-Befehle zum Erstellen und Verwalten eines Pools mit Windows-Computeknoten in Azure Batch kennen.
 ms.topic: sample
-ms.date: 12/12/2019
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 773699dde9342a4b230a08471a289a56fca7e308
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 09/17/2021
+ms.custom: devx-track-azurecli, seo-azure-cli
+keywords: Windows-Pool, Azure CLI-Beispiele, Azure CLI-Codebeispiele, Azure CLI-Skriptbeispiele
+ms.openlocfilehash: 6c98d5ece314f6aa8603db73a0a5c0c9a420efde
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768195"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595159"
 ---
 # <a name="cli-example-create-and-manage-a-windows-pool-in-azure-batch"></a>CLI-Beispiel: Erstellen und Verwalten eines Windows-Pools in Azure Batch
 

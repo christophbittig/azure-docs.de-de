@@ -2,13 +2,13 @@
 title: Hochverfügbarkeit und Notfallwiederherstellung
 description: Enthält Informationen zum Entwerfen Ihrer Batch-Anwendung für einen regionalen Ausfall.
 ms.topic: how-to
-ms.date: 12/30/2020
-ms.openlocfilehash: eb3d0cb218e607e38b7478b7cc7956963e450f46
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/08/2021
+ms.openlocfilehash: 5ba56d769344b930cdc3c6500d42456214b32a71
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339235"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799147"
 ---
 # <a name="design-your-batch-application-for-high-availability"></a>Entwerfen Ihrer Batch-Anwendung für Hochverfügbarkeit
 
@@ -35,6 +35,7 @@ Beim Entwerfen einer Failoverlösung sollten Sie folgende Punkte berücksichtige
 - Verwenden Sie Vorlagen und/oder Skripte zum Automatisieren der Bereitstellung der Anwendung in einer Region.
 - Halten Sie Binärdateien und Verweisdaten der Anwendung in allen Regionen auf dem neuesten Stand. Wenn die Region auf dem neuesten Stand bleibt, ist sichergestellt, dass sie ohne Warten auf das Hochladen und die Bereitstellung von Dateien schnell online geschaltet werden kann. Wird beispielsweise eine benutzerdefinierte Anwendung, die auf Poolknoten installiert werden soll, mit Batch-Anwendungspaketen gespeichert und referenziert, sollte sie, wenn eine neue Version der Anwendung erstellt wird, auf jedes Batch-Konto hochgeladen und von der Poolkonfiguration referenziert werden (oder machen Sie die neue Version zur Standardversion).
 - Vereinfachen Sie den Wechsel von Clients oder das Laden in andere Regionen in der Anwendung, die Azure Batch, den Speicher und andere Dienste aufruft.
+- Erwägen Sie ggf. die [Erstellung von Pools für Verfügbarkeitszonen](create-pool-availability-zones.md).
 - Ziehen Sie häufige Wechsel zu einer alternativen Region für den normalen Betrieb in Erwägung. Wechseln Sie beispielsweise mit zwei Bereitstellungen in separaten Regionen jeden Monat zur alternativen Region.
 
 ## <a name="next-steps"></a>Nächste Schritte

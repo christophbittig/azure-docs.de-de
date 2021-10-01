@@ -129,7 +129,11 @@ items:
       - name: Konzepte
         items:
           - name: Speicherkonten
-            href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            items:
+              - name: Überblick
+                href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              - name: Leistungsstufen
+                href: storage-blob-performance-tiers.md
           - name: Authorization
             items:
               - name: Autorisieren von Datenvorgängen
@@ -202,14 +206,12 @@ items:
                 href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: Kundenseitig verwaltetes Failover für die Notfallwiederherstellung
                 href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: Zugriffsebenen und Leistungsstufen
+          - name: Blobzugriffsebenen und Lebenszyklusverwaltung
             items:
-              - name: Zugriffsebenen
-                href: storage-blob-storage-tiers.md
-              - name: Aktivieren von Daten aus der Archivebene
+              - name: Überblick
+                href: access-tiers-overview.md
+              - name: Blobreaktivierung auf der Archivebene
                 href: archive-rehydrate-overview.md
-              - name: Leistungsstufen
-                href: storage-blob-performance-tiers.md
               - name: Richtlinien für die Lebenszyklusverwaltung
                 href: lifecycle-management-overview.md
           - name: Objektreplikation
@@ -738,8 +740,6 @@ items:
             href: data-lake-storage-integrate-with-services-tutorials.md
       - name: Konzepte
         items:
-          - name: Verarbeitung großer Datenmengen
-            href: data-lake-storage-data-scenarios.md
           - name: Bewährte Methoden
             href: data-lake-storage-best-practices.md
           - name: Abfragebeschleunigung
@@ -876,8 +876,6 @@ items:
                 href: data-lake-storage-use-hdfs-data-lake-storage.md
           - name: Verwenden mit Azure-Diensten
             href: data-lake-storage-integrate-with-services-tutorials.md
-          - name: Optimieren der Leistung
-            href: data-lake-storage-performance-tuning-guidance.md
       - name: Verweis
         items:
           - name: .NET

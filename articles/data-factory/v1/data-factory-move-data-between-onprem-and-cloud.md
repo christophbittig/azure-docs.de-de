@@ -4,15 +4,16 @@ description: Richten Sie ein Datengateway ein, um Daten zwischen dem lokalen Spe
 author: nabhishek
 ms.author: abnarain
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
-ms.openlocfilehash: 53fce1744ccbf4289b2415e926e084c90d708a13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb3e020f1ac22daa6d0432ad0abaf1aa215d1048
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380286"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580694"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
 > [!NOTE]
@@ -50,10 +51,10 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie auf **Ressource erstellen**, dann auf **Intelligence + Analyse** und schließlich auf **Data Factory**.
 
-   ![Neu -> Data Factory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
+   :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png" alt-text="Neu -> Data Factory":::  
 3. Geben Sie auf der Seite **Neue Data Factory** unter „Name“ die Zeichenfolge **ADFTutorialOnPremDF** ein.
 
-    ![Zum Startmenü hinzufügen](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png" alt-text="Zum Startmenü hinzufügen":::
 
    > [!IMPORTANT]
    > Der Name der Azure Data Factory muss global eindeutig sein. Bei Anzeige der Fehlermeldung **Der Data Factory-Name „ADFTutorialOnPremDF“ ist nicht verfügbar** ändern Sie den Namen der Data Factory (z. B.in „IhrNameADFTutorialOnPremDF“), und wiederholen den Vorgang. Verwenden Sie diesen Namen beim Ausführen der restlichen Schritte in diesem Lernprogramm anstelle von "ADFTutorialOnPremDF".
@@ -71,18 +72,18 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
    >
 7. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt:
 
-   ![Data Factory-Startseite](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDataFactoryHomePage.png)
+   :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremDataFactoryHomePage.png" alt-text="Data Factory-Startseite":::
 
 ## <a name="create-gateway"></a>Erstellen des Gateways
 1. Klicken Sie auf der Seite **Data Factory** auf die Kachel **Erstellen und bereitstellen**, um den **Editor** für die Data Factory zu starten.
 
-    ![Kachel „Erstellen und bereitstellen“](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png" alt-text="Kachel „Erstellen und bereitstellen“":::
 2. Klicken Sie im Data Factory-Editor auf der Symbolleiste auf **... Mehr** und dann auf **Neues Datengateway**. Sie können auch in der Strukturansicht mit der rechten Maustaste auf **Datengateways** und dann auf **Neues Datengateway** klicken.
 
-   !["Neues Daten-Gateway" auf der Symbolleiste](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
+   :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png" alt-text="&quot;Neues Daten-Gateway&quot; auf der Symbolleiste":::
 3. Geben Sie auf der Seite **Erstellen** den Namen **adftutorialgateway** unter **Name** ein, und klicken Sie auf **OK**.     
 
-    ![Seite „Gateway erstellen“](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png" alt-text="Seite „Gateway erstellen“":::
 
     > [!NOTE]
     > In dieser exemplarischen Vorgehensweise erstellen Sie ein logisches Gateway mit nur einem Knoten (lokaler Windows-Computer). Sie können ein Datenverwaltungsgateway aufskalieren, indem Sie ihm mehrere lokale Computer zuordnen. Sie können hochskalieren, indem Sie die Anzahl von Datenverschiebungsaufträgen erhöhen, die auf einem Knoten gleichzeitig ausgeführt werden können. Diese Funktion ist auch für ein logisches Gateway mit einem einzelnen Knoten verfügbar. Ausführliche Informationen hierzu finden Sie im Artikel [Data Management Gateway – high availability and scalability (Preview)](data-factory-data-management-gateway-high-availability-scalability.md) (Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit (Vorschauversion)).  
@@ -97,7 +98,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
    >
    >
 
-    ![Seite „Gateway konfigurieren“](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png" alt-text="Seite „Gateway konfigurieren“":::
 
     Dies ist die einfachste Möglichkeit (One-Click) zum Herunterladen, Installieren, Konfigurieren und Registrieren des Gateways in einem einzigen Schritt. Sie können sehen, dass die Anwendung **Microsoft Datenverwaltungsgateway – Konfigurations-Manager** auf Ihrem Computer installiert ist. Im folgenden Ordner ist auch die ausführbare Datei **ConfigManager.exe** enthalten: **C:\Programme\Microsoft Data Management Gateway\2.0\Shared**.
 
@@ -111,10 +112,10 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
    >
 5. Warten Sie einige Minuten, oder warten Sie, bis die folgende Benachrichtigung angezeigt wird:
 
-    ![Gatewayinstallation erfolgreich](./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/gateway-install-success.png" alt-text="Gatewayinstallation erfolgreich":::
 6. Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** auf Ihrem Computer. Geben Sie im Fenster **Suchen** den Begriff **Datenverwaltungsgateway** ein, um auf dieses Hilfsprogramm zuzugreifen. Im folgenden Ordner ist auch die ausführbare Datei **ConfigManager.exe** enthalten: **C:\Programme\Microsoft Data Management Gateway\2.0\Shared**.
 
-    ![Gatewaykonfigurations-Manager](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png" alt-text="Gatewaykonfigurations-Manager":::
 7. Vergewissern Sie sich, dass die Meldung `adftutorialgateway is connected to the cloud service` angezeigt wird. Die Statusleiste im unteren Bereich zeigt **Verbunden mit Clouddienst** sowie ein **grünes Häkchen** an.
 
     Auf der Registerkarte **Start** sind die folgenden Vorgänge möglich:
@@ -126,7 +127,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
    * Angeben des Zeitpunkts, an dem ein Update für das Gateway installiert werden kann
 8. Wechseln Sie zur Registerkarte **Einstellungen**. Das Zertifikat im Abschnitt **Zertifikat** dient zum Verschlüsseln/Entschlüsseln von Anmeldeinformationen für den lokalen Datenspeicher, den Sie im Portal angeben. (optional) Klicken Sie auf **Ändern** , um stattdessen Ihr eigenes Zertifikat zu verwenden. Standardmäßig verwendet das Gateway das Zertifikat, das vom Data Factory-Dienst automatisch generiert wird.
 
-    ![Konfiguration des Gatewayzertifikats](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png" alt-text="Konfiguration des Gatewayzertifikats":::
 
     Auf der Registerkarte **Einstellungen** können Sie zudem die folgenden Aktionen ausführen:
 
@@ -135,7 +136,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zum Erstellen einer Azure Data 
    * Festlegen eines HTTP-Proxys, der vom Gateway verwendet werden soll     
 9. (Optional) Wechseln Sie zur Registerkarte **Diagnose**, und aktivieren Sie die Option **Ausführliche Protokollierung aktivieren**, wenn Sie die ausführliche Protokollierung aktivieren möchten, um Probleme mit dem Gateway behandeln zu können. Die Protokollinformationen finden Sie in der **Ereignisanzeige** unter **Anwendungs- und Dienstprotokolle** -> Knoten **Datenverwaltungsgateway**.
 
-    ![Registerkarte „Diagnose“](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png" alt-text="Registerkarte „Diagnose“":::
 
     Sie können auch wie folgt auf der Registerkarte **Diagnose** vorgehen:
 
@@ -152,7 +153,7 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
 #### <a name="add-a-linked-service-to-a-sql-server-database"></a>Hinzufügen eines verknüpften Diensts zu einer SQL Server-Datenbank
 1. Klicken Sie in **Data Factory Editor** auf der Symbolleiste auf **Neuer Datenspeicher**, und wählen Sie **SQL Server**.
 
-   ![Neuer mit SQL Server verknüpfter Dienst](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
+   :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png" alt-text="Neuer mit SQL Server verknüpfter Dienst":::
 2. Gehen Sie rechts im **JSON-Editor** folgendermaßen vor:
 
    1. Geben Sie unter **gatewayName** den Namen **adftutorialgateway** an.    
@@ -162,14 +163,14 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
       2. Geben Sie für **Datenbankname** den Namen der Datenbank ein.
       3. Klicken Sie auf der Symbolleiste auf die Schaltfläche **Verschlüsseln**. Jetzt sehen Sie die Anwendung „Anmeldeinformations-Manager“
 
-         ![Anwendung „Anmeldeinformations-Manager“](./media/data-factory-move-data-between-onprem-and-cloud/credentials-manager-application.png)
+         :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/credentials-manager-application.png" alt-text="Anwendung „Anmeldeinformations-Manager“":::
       4. Geben Sie im Dialogfeld **Anmeldeinformationen festlegen** den Authentifizierungstyp, den Benutzernamen und das Kennwort an, und klicken Sie auf **OK**. Wenn die Verbindung erfolgreich hergestellt wurde, werden die verschlüsselten Anmeldeinformationen im JSON-Editor gespeichert, und das Dialogfeld wird geschlossen.
       5. Schließen Sie die leere Browserregisterkarte, über die das Dialogfeld gestartet wurde, wenn sie nicht automatisch geschlossen wird, und wechseln Sie wieder zur Registerkarte mit dem Azure-Portal.
 
          Auf dem Gatewaycomputer werden die Anmeldeinformationen mithilfe eines Zertifikats, das der Data Factory-Dienst besitzt, **verschlüsselt**. Wenn Sie stattdessen das Zertifikat verwenden möchten, das dem Datenverwaltungsgateway zugeordnet ist, lesen Sie „Sicheres Festlegen von Anmeldeinformationen“.    
    3. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um den verknüpften SQL Server-Dienst bereitzustellen. Der verknüpfte Dienst sollte in der Strukturansicht angezeigt werden.
 
-      ![Mit SQL Server verknüpfter Dienst in der Strukturansicht](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
+      :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png" alt-text="Mit SQL Server verknüpfter Dienst in der Strukturansicht":::    
 
 #### <a name="add-a-linked-service-for-an-azure-storage-account"></a>Hinzufügen eines verknüpften Diensts für Azure-Speicherkonten
 1. Klicken Sie im **Data Factory-Editor** auf der Befehlsleiste auf **Neuer Datenspeicher** und dann auf **Azure-Speicher**.
@@ -371,10 +372,10 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>Anzeigen einer Diagrammansicht der Data Factory
 1. Klicken Sie im **Azure-Portal** auf der Startseite für die Data Factory **ADFTutorialOnPremDF** auf die Kachel **Diagramm**: :
 
-    ![Link „Diagramm“](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png" alt-text="Link „Diagramm“":::
 2. Ein Diagramm wie in der folgenden Abbildung wird angezeigt:
 
-    ![Diagrammansicht](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramView.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramView.png" alt-text="Diagrammansicht":::
 
     Sie können die Ansicht vergrößern, verkleinern, auf 100 % anpassen, an die Fenstergröße anpassen, Pipelines und Datasets automatisch positionieren und Informationen zur Datenherkunft anzeigen (d.h. vor- und nachgelagerte Elemente ausgewählter Elemente hervorheben).  Sie können auf ein Objekt (im Ein-/Ausgabedataset oder in der Pipeline) doppelklicken, um seine Eigenschaften anzuzeigen.
 
@@ -383,19 +384,19 @@ In diesem Schritt verwenden Sie das Azure-Portal zur Überwachung der Aktivität
 
 1. Doppelklicken Sie im Diagramm auf **EmpOnPremSQLTable**.  
 
-    ![EmpOnPremSQLTable-Slices](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png" alt-text="EmpOnPremSQLTable-Slices":::
 2. Beachten Sie, dass alle Datenslices den Status **Bereit** aufweisen, da die Dauer der Pipeline (Startzeit bis Endzeit) in der Vergangenheit liegt. Das liegt auch daran, dass Sie die Daten in die SQL Server-Datenbank eingefügt haben und sie dort immer vorhanden sind. Überprüfen Sie, ob keine Slices im Abschnitt **Problemslices** am unteren Rand angezeigt werden. Um alle Slices anzuzeigen, klicken Sie unten in der Liste der Slices auf **Weitere anzeigen**.
 3. Klicken Sie jetzt auf der Seite **Datasets** auf **OutputBlobTable**.
 
-    ![OutputBlobTable-Slices](./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png" alt-text="OutputBlobTable-Slices":::
 4. Klicken Sie in der Liste auf einen beliebigen Datenslice. Die Seite **Datenslice** wird angezeigt. Die Aktivitätsausführungen für den Slice werden angezeigt. Normalerweise wird nur eine ausgeführte Aktivität angezeigt.  
 
-    ![Blatt "Datenslice"](./media/data-factory-move-data-between-onprem-and-cloud/DataSlice.png)
+    :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/DataSlice.png" alt-text="Blatt &quot;Datenslice&quot;":::
 
     Wenn der Slice nicht den Status **Bereit** hat, sehen Sie die vorgelagerten Slices, die nicht bereit sind und das Ausführen des aktuellen Slices blockieren, in der Liste **Vorgelagerte Slices, die nicht bereit sind**.
 5. Klicken Sie in der Liste unten auf die **Aktivitätsausführung**, um **Aktivitätsausführung – Details** anzuzeigen.
 
-   ![Detailseite „Aktivitätsausführung“](./media/data-factory-move-data-between-onprem-and-cloud/ActivityRunDetailsBlade.png)
+   :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/ActivityRunDetailsBlade.png" alt-text="Detailseite „Aktivitätsausführung“":::
 
    Hier werden Informationen wie z.B. der Durchsatz, die Dauer und das Gateway, über das die Daten übertragen werden, angezeigt.
 6. Klicken Sie auf **X** , um alle Seiten zu schließen, bis wieder
@@ -403,7 +404,7 @@ In diesem Schritt verwenden Sie das Azure-Portal zur Überwachung der Aktivität
 8. Optional: Klicken Sie auf **Pipelines**, dann auf **ADFTutorialOnPremDF**, und zeigen Sie Details zu den Eingabetabellen (**Genutzt**) oder Ausgabedatasets (**Erstellt**) an.
 9. Verwenden Sie Tools wie z.B. den [Microsoft Storage-Explorer](https://storageexplorer.com/), um zu überprüfen, ob ein Blob oder eine Datei für jede Stunde erstellt wird.
 
-   ![Azure Storage-Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
+   :::image type="content" source="./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png" alt-text="Azure Storage-Explorer":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie alle Informationen zum Datenverwaltungsgateway.
