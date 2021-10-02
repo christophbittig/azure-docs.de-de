@@ -11,6 +11,8 @@
       href: quick-demo-map-app.md
     - name: Erstellen einer Android-App
       href: quick-android-map.md
+    - name: Erstellen einer iOS-App
+      href: quick-ios-app.md
 - name: Tutorials
   items:
     - name: Tutorials für das Web-SDK

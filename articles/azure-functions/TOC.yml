@@ -194,6 +194,8 @@
           href: event-driven-scaling.md
         - name: Zuverlässige Ereignisverarbeitung
           href: functions-reliable-event-processing.md
+        - name: Parallelität
+          href: functions-concurrency.md
         - name: Entwerfen für identische Eingaben
           href: functions-idempotent.md
     - name: Trigger und Bindungen

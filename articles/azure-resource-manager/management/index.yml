@@ -10,12 +10,12 @@ metadata:
   author: tfitzmac
   ms.author: tomfitz
   ms.date: 01/02/2020
-  ms.openlocfilehash: 61731369cabc387cb9d11efaf50901b791d30546
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: a0240c255bb43afd91098245bb24995d2b92993c
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124760553"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129361983"
 landingContent:
 - title: Informationen zum Azure Resource Manager
   linkLists:
@@ -67,12 +67,12 @@ landingContent:
     links:
     - text: Azure PowerShell
       url: /powershell/module/az.resources
-    - text: Azure-Befehlszeilenschnittstelle
+    - text: Azure CLI
       url: /cli/azure/resource
     - text: .NET
       url: /dotnet/api/microsoft.azure.management.resourcemanager
     - text: Java
-      url: /java/api/com.microsoft.azure.management.resources
+      url: /java/api/com.azure.resourcemanager.resources
     - text: Python
       url: /python/api/overview/azure/resources
 - title: Vorgänge nachverfolgen
