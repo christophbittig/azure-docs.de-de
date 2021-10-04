@@ -1,28 +1,28 @@
 ---
-title: Kopieren von Daten aus einer Webtabelle mithilfe von Azure Data Factory
+title: Kopieren von Daten aus einer Webtabelle
+description: Erfahren Sie mehr über den Webtabellenconnector, mit dem Sie Daten aus einer Webtabelle in Datenspeicher kopieren können, die von Azure Data Factory und Synapse Analytics als Senken unterstützt werden.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie mehr über den Webtabellenconnector von Azure Data Factory, mit dem Sie Daten aus einer Webtabelle als Senken in von Data Factory unterstützte Datenspeicher kopieren können.
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 680ea9139a17f20038b78f0399fe849ca0990532
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: af6423b58cb2eba4fca0d902270afee03a733637
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123311151"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782682"
 ---
-# <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopieren von Daten aus einer Webtabelle mithilfe von Azure Data Factory
+# <a name="copy-data-from-web-table-by-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus einer Webtabelle mithilfe von Azure Data Factory oder Synapse Analytics
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-web-table-connector.md)
 > * [Aktuelle Version](connector-web-table.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Webtabellendatenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität in Azure Data Factory- oder Azure Synapse Analytics-Pipelines verwenden, um Daten aus einer Webtabellendatenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 Die Unterschiede zwischen diesem Webtabellenconnector, dem [REST-Connector](connector-rest.md) und dem [HTTP-Connector](connector-http.md) sind die folgenden:
 
@@ -57,7 +57,7 @@ Verwenden Sie die folgenden Schritte, um einen mit Web Table verknüpften Dienst
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory Benutzeroberfläche.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory-Benutzeroberfläche.":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -80,7 +80,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit einer Webtabelle verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Web** |Ja |
 | url | URL der Webquelle |Ja |
@@ -112,7 +112,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus einer Webtabelle die „type“-Eigenschaft des Datasets auf **WebTable** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **WebTable** | Ja |
 | path |Eine relative URL zu der Ressource, die die Tabelle enthält. |Nein. Wenn der Pfad nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. |
@@ -184,24 +184,24 @@ Den Index einer Tabelle, die Sie in den [Dataseteigenschaften](#dataset-properti
 1. Starten Sie **Excel 2016**, und wechseln Sie zur Registerkarte **Daten**.
 2. Klicken Sie auf der Symbolleiste auf **Neue Abfrage**, zeigen Sie auf **Aus anderen Quellen**, und klicken Sie auf **Aus dem Web**.
 
-    ![Power Query-Menü](./media/copy-data-from-web-table/PowerQuery-Menu.png)
+    :::image type="content" source="./media/copy-data-from-web-table/PowerQuery-Menu.png" alt-text="Power Query-Menü":::
 3. Geben Sie im Dialogfeld **Aus dem Web** die **URL**, die Sie im JSON-Code für den verknüpften Dienst verwenden möchten (Beispiel: https://en.wikipedia.org/wiki/) ), sowie den Pfad ein, den Sie für das Dataset angeben möchten (Beispiel: AFI%27s_100_Years...100_Movies), und klicken Sie anschließend auf **OK**.
 
-    ![Aus dem Web (Dialogfeld)](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
+    :::image type="content" source="./media/copy-data-from-web-table/FromWeb-DialogBox.png" alt-text="Aus dem Web (Dialogfeld)":::
 
     Die in diesem Beispiel verwendete URL lautet wie folgt: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
 4. Falls das Dialogfeld **Auf Webinhalt zugreifen** angezeigt wird, wählen Sie die richtige **URL** und **Authentifizierung** aus, und klicken Sie auf **Verbinden**.
 
-   ![Webinhalt aufrufen (Dialogfeld)](./media/copy-data-from-web-table/AccessWebContentDialog.png)
+   :::image type="content" source="./media/copy-data-from-web-table/AccessWebContentDialog.png" alt-text="Webinhalt aufrufen (Dialogfeld)":::
 5. Klicken Sie in der Strukturansicht auf ein **Tabellenelement** um Inhalte aus der Tabelle anzuzeigen, und klicken Sie dann am unteren Rand auf **Bearbeiten**.  
 
-   ![Navigator (Dialogfeld)](./media/copy-data-from-web-table/Navigator-DialogBox.png)
+   :::image type="content" source="./media/copy-data-from-web-table/Navigator-DialogBox.png" alt-text="Navigator (Dialogfeld)":::
 6. Klicken Sie im Fenster **Abfrage-Editor** auf der Symbolleiste auf die Schaltfläche **Erweiterter Editor**.
 
-    ![Erweiterter Editor (Schaltfläche)](./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png)
+    :::image type="content" source="./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png" alt-text="Erweiterter Editor (Schaltfläche)":::
 7. Im Dialogfeld „Erweiterter Editor“ ist die Zahl neben „Quelle“ der Index.
 
-    ![Erweiterter Editor – Index](./media/copy-data-from-web-table/AdvancedEditor-Index.png)
+    :::image type="content" source="./media/copy-data-from-web-table/AdvancedEditor-Index.png" alt-text="Erweiterter Editor – Index":::
 
 Rufen Sie den Index bei Verwendung von Excel 2013 mit [Microsoft Power Query für Excel](https://www.microsoft.com/download/details.aspx?id=39379) ab. Ausführlichere Informationen finden Sie im Artikel [Connect to a web page](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) (Verbinden mit einer Webseite). Bei Verwendung von [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)werden ähnliche Schritte verwendet.
 
@@ -211,4 +211,4 @@ Rufen Sie den Index bei Verwendung von Excel 2013 mit [Microsoft Power Query fü
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quelles und Senken für die Kopieraktivität unterstützt werden, finden Sie in der Dokumentation für [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

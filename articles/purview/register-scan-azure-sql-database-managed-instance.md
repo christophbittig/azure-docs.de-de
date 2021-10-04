@@ -1,18 +1,18 @@
 ---
 title: Registrieren und Überprüfen einer verwalteten Azure SQL-Datenbank-Instanz
-description: In diesem Tutorial wird beschrieben, wie Sie eine verwaltete Azure SQL-Datenbank-Instanz überprüfen.
+description: In diesem Tutorial wird beschrieben, wie Sie eine verwaltete Azure SQL-Datenbank-Instanz in Azure Purview überprüfen.
 author: hophanms
 ms.author: hophan
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
 ms.date: 05/08/2021
-ms.openlocfilehash: 06f3ee8b820d732c0f605adc3201cff57fa70b42
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c633d95c615298876a8bedd76ecbd9c96a4f54da
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739082"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209686"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Registrieren und Überprüfen einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -31,8 +31,9 @@ Die Datenquelle vom Typ „Verwaltete Azure SQL-Datenbank-Instanz“ unterstütz
 - Erstellen Sie ein neues Purview-Konto, wenn Sie noch keines besitzen.
 
 - [Konfigurieren des öffentlichen Endpunkts in der verwalteten Azure SQL-Instanz](../azure-sql/managed-instance/public-endpoint-configure.md)
+
     > [!Note]
-    > Ihre Organisation muss in der Lage sein, einen öffentlichen Endpunkt zuzulassen, da von Purview **private Endpunkte noch nicht unterstützt werden**. Wenn Sie einen privaten Endpunkt verwenden, ist die Überprüfung nicht erfolgreich.
+    > Wir unterstützen jetzt die Überprüfung von verwalteten Azure SQL-Datenbank-Instanzen, die mit privaten Endpunkten konfiguriert sind, mithilfe von privaten Azure Purview-Erfassungsendpunkte und einer selbstgehosteten Integration Runtime-VM. Weitere Informationen zu den Voraussetzungen finden Sie unter [Privates und sicheres Herstellen einer Verbindung mit Azure Purview und Überprüfen von Datenquellen](./catalog-private-link-end-to-end.md).
 
 ### <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
 

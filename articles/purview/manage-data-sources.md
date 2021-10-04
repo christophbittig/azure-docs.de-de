@@ -1,36 +1,36 @@
 ---
-title: Verwalten von Datenquellen in Azure Purview (Vorschau)
-description: Erfahren Sie, wie Sie neue Datenquellen registrieren, Sammlungen von Datenquellen verwalten und Quellen in Azure Purview (Vorschau) anzeigen können.
+title: Verwalten von Datenquellen mehrerer Clouds
+description: Erfahren Sie, wie Sie neue Datenquellen registrieren, Sammlungen von Datenquellen verwalten und Quellen in Azure Purview anzeigen können.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 11/25/2020
-ms.openlocfilehash: c1e60ae792921ef4e218918f093001ee9947975d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: c7ef1849859dca48f5d2489f2ac8668c3cd0fc31
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345852"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215130"
 ---
-# <a name="manage-data-sources-in-azure-purview-preview"></a>Verwalten von Datenquellen in Azure Purview (Vorschau)
+# <a name="manage-data-sources-in-azure-purview"></a>Verwalten von Datenquellen in Azure Purview
 
-In diesem Artikel erfahren Sie, wie Sie neue Datenquellen registrieren, Sammlungen von Datenquellen verwalten und Quellen in Azure Purview (Vorschau) anzeigen können.
+In diesem Artikel erfahren Sie, wie Sie neue Datenquellen registrieren, Sammlungen von Datenquellen verwalten und Quellen in Azure Purview anzeigen können.
 
 ## <a name="register-a-new-source"></a>Registrieren einer neuen Quelle
 
 Verwenden Sie die folgenden Schritte, um eine neue Quelle zu registrieren.
 
-1. Öffnen Sie Purview Studio, und wählen Sie die Kachel **Quellen registrieren** aus.
+1. Öffnen Sie [Purview Studio](https://web.purview.azure.com/resource/), navigieren Sie zu **Data Map**, **Quellen**, und wählen Sie **Registrieren** aus.
 
    :::image type="content" source="media/manage-data-sources/purview-studio.png" alt-text="Azure Purview Studio":::
 
-1. Wählen Sie **Registrieren** und dann einen Quelltyp aus. In diesem Beispiel wird Azure Blob Storage verwendet. Wählen Sie **Weiter**.
+1. Wählen Sie einen Quellentyp aus. In diesem Beispiel wird Azure Blob Storage verwendet. Wählen Sie **Weiter**.
 
    :::image type="content" source="media/manage-data-sources/select-source-type.png" alt-text="Auswählen eines Datenquellentyps auf der Seite „Quellen registrieren“":::
 
-2. Füllen Sie das Formular auf der Seite **Quellen registrieren** aus. Wählen Sie einen Namen für Ihre Quelle aus, und geben Sie die entsprechenden Informationen ein. Wenn Sie **Aus Azure-Abonnement** als Kontoauswahlmethode ausgewählt haben, werden die Quellen in Ihrem Abonnement in einer Dropdownliste angezeigt. 
+2. Füllen Sie das Formular auf der Seite **Quellen registrieren** aus. Wählen Sie einen Namen für Ihre Quelle aus, und geben Sie die entsprechenden Informationen ein. Wenn Sie **Aus Azure-Abonnement** als Kontoauswahlmethode ausgewählt haben, werden die Quellen in Ihrem Abonnement in einer Dropdownliste angezeigt.
 
    :::image type="content" source="media/manage-data-sources/register-sources-form.png" alt-text="Formular für Datenquelleninformationen":::
 
@@ -46,9 +46,9 @@ In der Kartenansicht werden alle Ihre Quellen und Sammlungen angezeigt. In der f
 
 :::image type="content" source="media/manage-data-sources/map-view.png" alt-text="Kartenansicht der Azure Purview-Datenquelle":::
 
-### <a name="list-view"></a>Listenansicht
+### <a name="table-view"></a>Tabellenansicht
 
-In der Listenansicht wird eine sortierbare Liste der Quellen angezeigt. Bewegen Sie den Mauszeiger über die Quelle, um Optionen zum Bearbeiten, Löschen einer Überprüfung oder zum Starten einer neuen Überprüfung anzuzeigen.
+In der Tabellenansicht wird eine sortierbare Liste der Quellen angezeigt. Bewegen Sie den Mauszeiger über die Quelle, um Optionen zum Bearbeiten, Löschen einer Überprüfung oder zum Starten einer neuen Überprüfung anzuzeigen.
 
 :::image type="content" source="media/manage-data-sources/list-view.png" alt-text="Listenansicht der Azure Purview-Datenquelle":::
 
@@ -58,7 +58,7 @@ Sie können Ihre Datenquellen in Sammlungen gruppieren. Um eine neue Sammlung zu
 
 Um Quellen zu einer Sammlung hinzuzufügen, wählen Sie den Stift zum **Bearbeiten** für die Quelle und dann eine Sammlung aus dem Dropdownmenü **Sammlung auswählen** aus.
 
-Weisen Sie zum Erstellen einer Hierarchie von Sammlungen entsprechende Sammlungen auf höherer Ebene als übergeordnete Sammlungen zu untergeordneten Sammlungen zu. In der folgenden Abbildung ist *Fabrikam* ein übergeordnetes Element der Sammlung *Finance* (Finanzen), die eine Azure Blob Storage-Datenquelle enthält. Sie können Sammlungen erweitern oder reduzieren, indem Sie auf den Kreis klicken, der dem Pfeil zwischen den Ebenen angefügt ist.
+Weisen Sie zum Erstellen einer Hierarchie von Sammlungen entsprechende Sammlungen auf höherer Ebene als übergeordnete Sammlungen zu untergeordneten Sammlungen zu. In der folgenden Abbildung ist *Fabrikam* ein übergeordnetes Element der Sammlung *Finance* (Finanzen), die eine Azure Blob Storage-Datenquelle enthält. Sie können Sammlungen erweitern oder reduzieren, indem Sie den Kreis auswählen, der sich am Pfeil zwischen den Ebenen befindet.
 
 :::image type="content" source="media/manage-data-sources/collections.png" alt-text="Eine Hierarchie von Sammlungen in Azure Purview Studio":::
 

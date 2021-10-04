@@ -2,14 +2,14 @@
 title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 08/23/2021
+ms.date: 09/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 9244b7c5a62be57b1f8ec9ea0f27918c7aa62457
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 17cd2ca7d4b42e79d1b5012fa36e09a509fa28fe
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770977"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129090968"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -43,7 +43,7 @@ Sicherung von verwalteten Datenträgern nach Aktivierung einer Ressourcengruppen
 Ändern der Sicherungsrichtlinie für einen virtuellen Computer | Unterstützt.<br/><br/> Der virtuelle Computer wird unter Verwendung der Zeitplan- und Aufbewahrungseinstellungen der neuen Richtlinie gesichert. Wenn die Aufbewahrungseinstellungen erweitert werden, werden vorhandene Wiederherstellungspunkte markiert und beibehalten. Wenn die Einstellungen reduziert werden, werden vorhandene Wiederherstellungspunkte im nächsten Bereinigungsauftrag gelöscht und schließlich endgültig entfernt.
 Abbrechen eines Sicherungsauftrags| Wird während des Prozesses der Momentaufnahme unterstützt.<br/><br/> Wird nicht unterstützt, wenn die Momentaufnahme in den Tresor übertragen wird.
 Sicherung des virtuellen Computers in einer anderen Region oder einem anderen Abonnement |Wird nicht unterstützt.<br><br>Damit die Sicherung erfolgreich ausgeführt werden kann, müssen sich die virtuellen Computer im gleichen Abonnement wie der Tresor für die Sicherung befinden.
-Sicherungen pro Tag (über die Azure-VM-Erweiterung) | Eine geplante Sicherung pro Tag<br/><br/>Der Azure Backup-Dienst unterstützt bis zu drei bedarfsabhängige Sicherungen pro Tag und eine zusätzliche geplante Sicherung.
+Sicherungen pro Tag (über die Azure-VM-Erweiterung) | Vier Sicherungen pro Tag: eine geplante Sicherung gemäß der Sicherungsrichtlinie und drei bedarfsorientierte Sicherungen.    <br><br>    Um jedoch Wiederholungen von Benutzern bei fehlgeschlagenen Versuchen zuzulassen, wird die harte Grenze für bedarfsorientierte Sicherungen auf neun Versuche festgelegt.
 Sicherungen pro Tag (über den MARS-Agent) | Drei geplante Sicherungen pro Tag
 Sicherungen pro Tag (über DPM/MABS) | Zwei geplante Sicherungen pro Tag
 Monatliche oder jährliche Sicherung| Wird bei der Sicherung mit der Azure-VM-Erweiterung nicht unterstützt. Lediglich tägliche und wöchentliche Sicherungen werden unterstützt.<br/><br/> Sie können die Richtlinie so einrichten, dass tägliche oder wöchentliche Sicherungen in einem monatlichen oder jährlichen Aufbewahrungszeitraum beibehalten werden.
@@ -83,6 +83,15 @@ Für Sicherungen von virtuellen Linux-Azure-Computern unterstützt Azure Backup 
 - Andere Bring-Your-Own-Linux-Distributionen sollten funktionieren, sofern der [Azure-VM-Agent für Linux](../virtual-machines/extensions/agent-linux.md) auf der VM verfügbar ist und Python unterstützt wird.
 - Azure Backup unterstützt keine über Proxy konfigurierte Linux-VM, wenn darauf nicht die Python-Version 2.7 installiert ist.
 - Azure Backup unterstützt keine Sicherung von NFS-Dateien, die aus dem Speicher oder von einem anderen NFS-Server in Linux- oder Windows-Computer eingebunden werden. Es werden nur Datenträger gesichert, die lokal an die VM angefügt sind.
+
+## <a name="support-matrix-for-managed-pre-post-scripts-for-linux-databases"></a>Unterstützungsmatrix für verwaltete Pre-/Post-Skripts für Linux-Datenbanken
+
+Azure Backup bietet Kunden Unterstützung beim Erstellen eigener Pre-/Post-Skripts.
+
+|Unterstützte Datenbank  |Betriebssystemversion  |Datenbankversion  |
+|---------|---------|---------|
+|Oracle auf virtuellen Azure-Computern     |   [Oracle Linux](../virtual-machines/linux/endorsed-distros.md)      |    Oracle 12.x oder höher     |
+
 
 ## <a name="backup-frequency-and-retention"></a>Sicherungshäufigkeit und -aufbewahrung
 

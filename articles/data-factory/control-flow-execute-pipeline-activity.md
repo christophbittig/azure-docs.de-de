@@ -1,7 +1,7 @@
 ---
-title: Aktivität „Pipeline ausführen“ in Azure Data Factory
+title: Aktivität „Pipeline ausführen“
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Sie die Aktivität „Pipeline ausführen“ verwenden können, um eine Data Factory-Pipeline über eine andere Data Factory-Pipeline aufzurufen.
+description: Erfahren Sie, wie Sie die Execute Pipeline-Aktivität verwenden können, um eine Pipeline in einer anderen Pipeline in Azure Data Factory oder Synapse Analytics aufzurufen.
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
@@ -9,21 +9,19 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: b46fbddb2a6446eaa711a8ba2c548fff634eee48
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 047548a39c16c5f6b6ee3f7d359a8664c87e7062
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640873"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128566594"
 ---
-# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Aktivität „Pipeline ausführen“ in Azure Data Factory
+# <a name="execute-pipeline-activity-in-azure-data-factory-and-synapse-analytics"></a>Execute Pipeline-Aktivität in Azure Data Factory und Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Mit der Aktivität „Pipeline ausführen“ kann eine Data Factory-Pipeline eine andere Pipeline aufrufen.
-
-
+Mithilfe der Execute Pipeline-Aktivität kann eine Data Factory- oder Synapse-Pipeline eine andere Pipeline aufrufen.
 
 ## <a name="syntax"></a>Syntax
 
@@ -69,7 +67,7 @@ name | Name der Aktivität „Pipeline ausführen“. | String | Ja
 type | Muss auf **ExecutePipeline** festgelegt werden. | String | Ja
 pipeline | Pipelineverweis auf die abhängige Pipeline, die diese Pipeline aufruft. Ein Pipelineverweisobjekt verfügt über zwei Eigenschaften: **referenceName** und **type**. Die Eigenschaft „referenceName“ gibt den Namen des Pipelineverweises an. Die Eigenschaft „type“ muss auf „PipelineReference“ festgelegt werden. | PipelineReference | Ja
 parameters | Parameter, die an die aufgerufene Pipeline übergeben werden sollen | Ein JSON-Objekt, das Parameternamen Argumentwerten zuordnet | Nein
-waitOnCompletion | Definiert, ob die Aktivitätsausführung wartet, bis die Ausführung der abhängigen Pipeline abgeschlossen ist. Der Standardwert ist "false". | Boolesch | Nein
+waitOnCompletion | Definiert, ob die Aktivitätsausführung wartet, bis die Ausführung der abhängigen Pipeline abgeschlossen ist. Der Standardwert ist "True". | Boolesch | Nein
 
 ## <a name="sample"></a>Beispiel
 In diesem Szenario gibt es zwei Pipelines:
@@ -256,7 +254,7 @@ Die Masterpipeline leitet diese Werte an die aufgerufene Pipeline weiter, wie im
 
 ```
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
+Informationen zu weiteren unterstützten Ablaufsteuerungsaktivitäten: 
 
 - [ForEach-Aktivität](control-flow-for-each-activity.md)
 - [Aktivität „Metadaten abrufen“](control-flow-get-metadata-activity.md)

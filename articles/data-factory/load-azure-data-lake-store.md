@@ -8,12 +8,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/05/2021
-ms.openlocfilehash: 0d2bdda7cacc07b84c8136eb63d282d55a4a0806
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5a82f60bfbf97ebc0de6f1ff9f8214c995775bf2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640766"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819940"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Laden von Daten in Azure Data Lake Storage Gen1 mit Azure Data Factory
 
@@ -45,11 +45,11 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 1. Klicken Sie im Menü auf der linken Seite auf **Ressource erstellen** > **Analytics** > **Data Factory**:
    
-   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png" alt-text="Auswahl von Data Factory im Bereich &quot;Neu&quot;":::
 
 2. Geben Sie auf der Seite **Neue Data Factory** die in der folgenden Abbildung gezeigten Werte für die Felder an: 
       
-   ![Seite „Neue Data Factory“](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
+   :::image type="content" source="./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png" alt-text="Seite „Neue Data Factory“":::
  
     * **Name**: Geben Sie einen global eindeutigen Namen für die Azure Data Factory ein. Wenn die Fehlermeldung „Data Factory mit dem Namen \"LoadADLSG1Demo\" ist nicht verfügbar“ angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Sie können beispielsweise den Namen _**IhrName**_**ADFTutorialDataFactory** verwenden. Versuchen Sie erneut, die Data Factory zu erstellen. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
     * **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus, in dem die Data Factory erstellt werden soll. 
@@ -68,40 +68,40 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 1. Wählen Sie auf der Homepage die Kachel **Erfassen** aus, um das Tool zum Kopieren von Daten zu starten: 
 
-   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Screenshot, der die ADF-Startseite zeigt.":::
 2. Geben Sie auf der Seite **Eigenschaften** im Feld **Aufgabenname** den Namen **CopyFromAmazonS3ToADLS** ein, und klicken Sie dann auf **Weiter**:
 
-    ![Eigenschaftenseite](./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png" alt-text="Seite „Eigenschaften“":::
 3. Klicken Sie auf der Seite **Quelldatenspeicher** auf **+ Neue Verbindung erstellen**:
 
-    ![Seite „Quelldatenspeicher“](./media/load-data-into-azure-data-lake-store/source-data-store-page.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/source-data-store-page.png" alt-text="Seite „Quelldatenspeicher“":::
     
     Wählen Sie **Amazon S3** und dann **Weiter** aus.
     
-    ![Seite „Quelldatenspeicher“ für S3](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png" alt-text="Seite „Quelldatenspeicher“ für S3":::
     
 4. Führen Sie auf der Seite **Amazon S3-Verbindung angeben** die folgenden Schritte aus: 
    1. Geben Sie den Wert für die **Zugriffsschlüssel-ID** an.
    2. Geben Sie den Wert für den **geheimen Zugriffsschlüssel** an.
    3. Wählen Sie **Fertig stellen** aus.
    
-      ![Screenshot des Bereichs „Neuer verknüpfter Dienst“ zum Eingeben von Werten](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+      :::image type="content" source="./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png" alt-text="Screenshot des Bereichs „Neuer verknüpfter Dienst“ zum Eingeben von Werten":::
    
    4. Es wird eine neue Verbindung angezeigt. Wählen Sie **Weiter** aus.
    
-   ![Screenshot der neuen Verbindung](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
+   :::image type="content" source="./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png" alt-text="Screenshot der neuen Verbindung":::
    
 5. Navigieren Sie auf der Seite **Eingabedatei oder -ordner auswählen** zu dem Ordner und der Datei, die Sie kopieren möchten. Wählen Sie den Ordner/die Datei aus, klicken Sie auf **Auswählen**, und klicken Sie dann auf **Weiter**:
 
-    ![Auswählen der Eingabedatei bzw. des Eingabeordners](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/choose-input-folder.png" alt-text="Auswählen der Eingabedatei bzw. des Eingabeordners":::
 
 6. Wählen Sie das Kopierverhalten aus, indem Sie die Optionen **Dateien rekursiv kopieren** und **Binärkopie** (unverändertes Kopieren von Dateien) aktivieren. Klicken Sie auf **Weiter**:
 
-    ![Screenshot der Seite „Eingabedatei oder -ordner auswählen“ mit den Optionen „Dateien rekursiv kopieren“ und „Binärkopie“](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/specify-binary-copy.png" alt-text="Screenshot der Seite „Eingabedatei oder -ordner auswählen“ mit den Optionen „Dateien rekursiv kopieren“ und „Binärkopie“":::
     
 7. Klicken Sie auf der Seite **Zieldatenspeicher** auf **+ Neue Verbindung erstellen**, und wählen Sie anschließend **Azure Data Lake Storage Gen1** und dann **Weiter** aus:
 
-    ![Seite „Zieldatenspeicher“](./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png" alt-text="Seite „Zieldatenspeicher“":::
 
 8. Führen Sie auf der Seite **Neuer verknüpfter Dienst (Azure Data Lake Storage Gen1)** die folgenden Schritte aus: 
 
@@ -112,34 +112,34 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
    > [!IMPORTANT]
    > In dieser exemplarischen Vorgehensweise verwenden Sie eine verwaltete Identität für Azure-Ressourcen, um Ihr Data Lake Storage Gen1-Konto zu authentifizieren. Achten Sie darauf, dass Sie der verwalteten Dienstidentität (Managed Service Identity, MSI) die entsprechenden Berechtigungen in Data Lake Storage Gen1 erteilen. Befolgen Sie dazu [diese Anweisungen](connector-azure-data-lake-store.md#managed-identity).
    
-   ![Angeben des Data Lake Storage Gen1-Kontos](./media/load-data-into-azure-data-lake-store/specify-adls.png)
+   :::image type="content" source="./media/load-data-into-azure-data-lake-store/specify-adls.png" alt-text="Angeben des Data Lake Storage Gen1-Kontos":::
 9. Geben Sie auf der Seite **Ausgabedatei oder -ordner auswählen** die Zeichenfolge **copyfroms3** als Name für den Ausgabeordner ein, und klicken Sie dann auf **Weiter**: 
 
-    ![Screenshot des eingegebenen Ordnerpfads](./media/load-data-into-azure-data-lake-store/specify-adls-path.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/specify-adls-path.png" alt-text="Screenshot des eingegebenen Ordnerpfads":::
 
 10. Klicken Sie auf der Seite **Einstellungen** auf **Weiter**:
 
-    ![Seite "Einstellungen"](./media/load-data-into-azure-data-lake-store/copy-settings.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/copy-settings.png" alt-text="Einstellungsseite":::
 11. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und klicken Sie dann auf **Weiter**:
 
-    ![Seite „Zusammenfassung“](./media/load-data-into-azure-data-lake-store/copy-summary.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/copy-summary.png" alt-text="Seite „Zusammenfassung“":::
 12. Klicken Sie auf der Seite **Bereitstellung** auf **Überwachen**, um die Pipeline (Task) zu überwachen:
 
-    ![Bereitstellungsseite](./media/load-data-into-azure-data-lake-store/deployment-page.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/deployment-page.png" alt-text="Bereitstellungsseite":::
 13. Beachten Sie, dass die Registerkarte **Überwachen** auf der linken Seite automatisch ausgewählt ist. In der Spalte **Aktionen** werden Links zum Anzeigen von Aktivitätsausführungsdetails und zum erneuten Ausführen der Pipeline angezeigt:
 
-    ![Überwachen der Pipelineausführungen](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png" alt-text="Überwachen der Pipelineausführungen":::
 14. Klicken Sie in der Spalte **Aktionen** auf den Link **Aktivitätsausführungen anzeigen**, um mit der Pipelineausführung verknüpfte Aktivitätsausführungen anzuzeigen. Da die Pipeline nur eine Aktivität (Copy-Aktivität) enthält, wird nur ein Eintrag angezeigt. Klicken Sie oben auf den Link **Pipelines**, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. 
 
-    ![Überwachung der Aktivitätsausführungen](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png" alt-text="Überwachung der Aktivitätsausführungen":::
 
 15. Zum Überwachen der Ausführungsdetails jeder Kopieraktivität wählen Sie in der Aktivitätsüberwachungsansicht unter **Aktionen** den Link **Details** aus. Sie können Details wie die Menge der Daten, die aus der Quelle in die Senke kopiert wurden, den Datendurchsatz, die Ausführungsschritte mit entsprechender Dauer sowie die verwendeten Konfigurationen überwachen:
 
-    ![Überwachen der Details zur Aktivitätsausführung](./media/load-data-into-azure-data-lake-store/monitor-activity-run-details.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/monitor-activity-run-details.png" alt-text="Überwachen der Details zur Aktivitätsausführung":::
 
 16. Stellen Sie sicher, dass die Daten in Ihr Data Lake Storage Gen1-Konto kopiert werden: 
 
-    ![Überprüfen der Data Lake Storage Gen1-Ausgabe](./media/load-data-into-azure-data-lake-store/adls-copy-result.png)
+    :::image type="content" source="./media/load-data-into-azure-data-lake-store/adls-copy-result.png" alt-text="Überprüfen der Data Lake Storage Gen1-Ausgabe":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

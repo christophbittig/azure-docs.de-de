@@ -3,13 +3,13 @@ title: Wiederherstellen von VMs über das Azure-Portal
 description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wiederherstellungspunkts über das Azure-Portal, einschließlich des Features zur regionsübergreifenden Wiederherstellung
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 08/06/2021
-ms.openlocfilehash: 75320c54c9496b1c978fdabb8a0a7560087f777c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: cbe511388755e31a2d295a4cf8ed58e78c9afdc2
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339608"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079521"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -85,7 +85,10 @@ Als eine der [Wiederherstellungsoptionen](#restore-options) können Sie von eine
 1. Wählen Sie unter **Virtuellen Computer wiederherstellen** > **Neu erstellen** > **Wiederherstellungstyp** die Option **Virtuellen Computer erstellen** aus.
 1. Geben Sie unter **Name des virtuellen Computers** einen virtuellen Computer an, der nicht im Abonnement vorhanden ist.
 1. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe für den neuen virtuellen Computer aus, oder erstellen Sie eine neue Ressourcengruppe mit einem global eindeutigen Namen. Wenn Sie einen Namen zuweisen, der bereits vorhanden ist, weist Azure der Gruppe denselben Namen wie der VM zu.
-1. Wählen Sie unter **Virtuelles Netzwerk** das virtuelle Netzwerk aus, in das der virtuelle Computer platziert wird. Alle dem Abonnement zugeordneten VNETs werden angezeigt. Wählen Sie das Subnetz aus. Das erste Subnetz wird standardmäßig ausgewählt.
+1. Wählen Sie unter **Virtuelles Netzwerk** das virtuelle Netzwerk aus, in das der virtuelle Computer platziert wird. Alle VNets, die dem Abonnement am gleichen Speicherort wie der Tresor zugeordnet sind, die aktiv sind und mit keiner Affinitätsgruppe verbunden sind, werden angezeigt. Wählen Sie das Subnetz aus.
+
+   Das erste Subnetz wird standardmäßig ausgewählt.
+
 1. Geben Sie unter **Stagingspeicherort** das Speicherkonto für die VM an. [Weitere Informationen](#storage-accounts)
 
     ![Assistent für die Wiederherstellungskonfiguration – Wiederherstellungsoptionen auswählen](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)

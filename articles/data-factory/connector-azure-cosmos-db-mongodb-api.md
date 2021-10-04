@@ -1,26 +1,26 @@
 ---
 title: Kopieren von Daten aus der Azure Cosmos DB-API für MongoDB
+description: Erfahren Sie, wie Sie mithilfe von Azure Data Factory- oder Synapse Analytics-Pipelines Daten aus unterstützten Quelldatenspeichern in die oder aus der Azure Cosmos DB-API für MongoDB in unterstützte Senkendatenspeicher kopieren können.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Sie mithilfe von Data Factory Daten aus unterstützten Quelldatenspeichern in die oder aus der Azure Cosmos DB-API für MongoDB in unterstützte Senkenspeicher kopieren können.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 0147782482308ac8b625926e51c59315f084237d
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 6720bcfdd4e0ce804bfd15803e1ed186d94e5181
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304658"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762083"
 ---
-# <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopieren von Daten in die oder aus der Azure Cosmos DB-API für MongoDB mithilfe von Azure Data Factory
+# <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten in die oder aus der Azure Cosmos DB-API für MongoDB mithilfe von Azure Data Factory oder Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus der und in die Azure Cosmos DB-API für MongoDB zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität in Azure Data Factory- und Synapse Analytics-Pipelines verwenden, um Daten aus der und in die Azure Cosmos DB-API für MongoDB zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 >[!NOTE]
 >Dieser Connector unterstützt lediglich das Kopieren von Daten in die bzw. aus der Azure Cosmos DB-API für MongoDB. Informationen zur SQL-API finden Sie unter [SQL-API-Connector von Cosmos DB](connector-azure-cosmos-db.md). Andere API-Typen werden derzeit nicht unterstützt.
@@ -47,7 +47,7 @@ Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst für die Mong
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory Benutzeroberfläche":::.
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory-Benutzeroberfläche.":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -69,7 +69,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die Sie zum Definie
 
 Folgende Eigenschaften werden für den mit Azure Cosmos DB-API für MongoDB verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **CosmosDbMongoDbApi** festgelegt werden. | Ja |
 | connectionString |Geben Sie die Verbindungszeichenfolge für Ihre Azure Cosmos DB-API für MongoDB an. Diese ist im Azure-Portal auf dem Blatt für Ihre Cosmos DB-Instanz unter der primären oder sekundären Verbindungszeichenfolge aufgeführt. <br/>Für die Serverversion 3.2 lautet das Zeichenfolgenmuster `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.documents.azure.com:10255/?ssl=true&replicaSet=globaldb`. <br/>Für die Serverversionen 3.6 und höher lautet das Zeichenfolgenmuster `mongodb://<cosmosdb-name>:<password>@<cosmosdb-name>.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@<cosmosdb-name>@`.<br/><br />Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).|Ja |
@@ -101,7 +101,7 @@ Folgende Eigenschaften werden für den mit Azure Cosmos DB-API für MongoDB verk
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie unter [Datasets und verknüpfte Dienste](concepts-datasets-linked-services.md). Folgende Eigenschaften werden für den Azure Cosmos DB-API für MongoDB-Dataset unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft des Datasets muss auf **CosmosDbMongoDbApiCollection** festgelegt werden. |Ja |
 | collectionName |Der Name der Azure Cosmos DB-Sammlung. |Ja |
@@ -135,7 +135,7 @@ Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum 
 
 Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **CosmosDbMongoDbApiSource** festgelegt werden. |Ja |
 | filter | Gibt den Auswahlfilter mit Abfrageoperatoren an. Um alle Dokumente in einer Sammlung zurückzugeben, lassen Sie diesen Parameter aus oder übergeben Sie ein leeres Dokument ({}). | Nein |
@@ -190,10 +190,10 @@ Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität 
 
 Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **CosmosDbMongoDbApiSink** festgelegt werden. |Ja |
-| writeBehavior |Beschreibt, wie Daten in Azure Cosmos DB geschrieben werden. Zulässige Werte: **insert** und **upsert**.<br/><br/>Das Verhalten von **upsert** besteht darin, das Dokument zu ersetzen, wenn ein Dokument mit dem gleichen `_id`-Typ bereits vorhanden ist. Andernfalls wird das Dokument eingefügt.<br /><br />**Hinweis**: Data Factory generiert automatisch einen `_id`-Typ für ein Dokument, wenn ein `_id`-Typ weder im Originaldokument noch durch Spaltenzuordnung angegeben wird. Dies bedeutet, dass Sie sicherstellen müssen, dass Ihr Dokument eine ID besitzt, damit **upsert** wie erwartet funktioniert. |Nein<br />(der Standardwert ist **insert**) |
+| writeBehavior |Beschreibt, wie Daten in Azure Cosmos DB geschrieben werden. Zulässige Werte: **insert** und **upsert**.<br/><br/>Das Verhalten von **upsert** besteht darin, das Dokument zu ersetzen, wenn ein Dokument mit dem gleichen `_id`-Typ bereits vorhanden ist. Andernfalls wird das Dokument eingefügt.<br /><br />**Hinweis**: Der Dienst generiert automatisch eine `_id` für ein Dokument, wenn eine `_id` weder im Originaldokument noch durch eine Spaltenzuordnung angegeben wird. Dies bedeutet, dass Sie sicherstellen müssen, dass Ihr Dokument eine ID besitzt, damit **upsert** wie erwartet funktioniert. |Nein<br />(der Standardwert ist **insert**) |
 | writeBatchSize | Die **writeBatchSize**-Eigenschaft steuert die Größe der in jeden Batch zu schreibenden Dokumente. Sie können versuchen, den Wert für **writeBatchSize** zu erhöhen, um die Leistung zu verbessern, oder den Wert verringern, falls Ihre Dokumente groß sind. |Nein<br />(der Standardwert ist **10.000**) |
 | writeBatchTimeout | Die Wartezeit, bis der Batch-Einfügevorgang beendet ist, bevor er eine Zeitüberschreitung verursacht. Der zulässige Wert ist timespan. | Nein<br/>(der Standardwert ist **00:30:00** – 30 Minuten) |
 
@@ -237,7 +237,7 @@ Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität un
 Sie können diesen Azure Cosmos DB-Connector verwenden, um die folgenden Aufgaben auf einfache Weise zu erledigen:
 
 * Kopieren von Dokumenten in ihrem jeweiligen Zustand zwischen zwei Azure Cosmos DB-Sammlungen.
-* Importieren von JSON-Dokumenten aus verschiedenen Quellen in Azure Cosmos DB, z. B. aus MongoDB, Azure Blob Storage, Azure Data Lake Storage und anderen dateibasierten Speichern, die von Azure Data Factory unterstützt werden.
+* Importieren von JSON-Dokumenten aus verschiedenen Quellen in Azure Cosmos DB, z. B. aus MongoDB, Azure Blob Storage, Azure Data Lake Storage und anderen dateibasierten Speichern, die von dem Dienst unterstützt werden.
 * Exportieren von JSON-Dokumenten aus einer Azure Cosmos DB-Sammlung in verschiedene dateibasierte Speicher.
 
 So erhalten Sie eine vom Schema unabhängige Kopie:
@@ -251,16 +251,16 @@ Informationen zum Kopieren von Daten aus der Azure Cosmos DB-API für MongoDB in
 
 Insbesondere beim Schreiben in Cosmos DB müssen Sie sicherstellen, dass Sie Cosmos DB mit der richtigen Objekt-ID aus den Quelldaten füllen. Wenn Sie beispielsweise eine Spalte „id“ in der SQL-Datenbanktabelle haben und diesen Wert als Dokument-ID in MongoDB für Insert/Upsert-Vorgänge verwenden möchten, müssen Sie die richtige Schemazuordnung gemäß der Strict-Modusdefinition von MongoDB (`_id.$oid`) wie folgt festlegen:
 
-![Zuordnungs-ID in der MongoDB-Senke](./media/connector-azure-cosmos-db-mongodb-api/map-id-in-mongodb-sink.png)
+:::image type="content" source="./media/connector-azure-cosmos-db-mongodb-api/map-id-in-mongodb-sink.png" alt-text="Zuordnungs-ID in der MongoDB-Senke":::
 
 Nach Ausführen der Kopieraktivität wird die nachstehende BSON-ObjectId in der Senke generiert:
 
 ```json
 {
-    "_id&quot;: ObjectId(&quot;592e07800000000000000000")
+    "_id": ObjectId("592e07800000000000000000")
 }
 ``` 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Liste der Datenspeicher, die von der Kopieraktivität als Quellen und Senken in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die diese Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

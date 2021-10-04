@@ -1,23 +1,22 @@
 ---
 title: Registrieren und Überprüfen einer Azure MySQL-Datenbank
-description: In diesem Tutorial wird beschrieben, wie eine Azure MySQL-Datenbank überprüft wird
+description: In diesem Tutorial wird beschrieben, wie Sie eine Azure MySQL-Datenbank in Azure Purview registrieren und überprüfen.
 author: evwhite
 ms.author: evwhite
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
-ms.date: 06/30/2021
-ms.openlocfilehash: ed3a0abc6bdd99e5c86e67a410d7c9ecadf7a718
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8f4a5480b76e03a57ff810c88a0a1660ae561071
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737645"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209856"
 ---
 # <a name="register-and-scan-an-azure-mysql-database"></a>Registrieren und Überprüfen einer Azure Database for MySQL
 
 In diesem Artikel wird beschrieben, wie Sie eine Azure MySQL-Datenbank registrieren und überprüfen.
-
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 - **Vollständige und inkrementelle Überprüfungen** zum Erfassen von Metadaten und Klassifizierungen in Azure MySQL-Datenbanken.
@@ -73,7 +72,7 @@ Gehen Sie auf dem Bildschirm **Quellen registrieren (Azure Database for MySQL)*
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+1. Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
 
 1. Wählen Sie die Azure Database for MySQL Quelle, die Sie registriert haben aus.
 

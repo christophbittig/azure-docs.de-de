@@ -5,15 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2d2f29553d831d80923f569211bc15855b96f591
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 9310b08a41932e92ab57728c2c55476c67f086b1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665928"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601632"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell
 > [!div class="op_single_selector"]
@@ -46,39 +47,39 @@ In diesem Abschnitt wird auch beschrieben, wie ein Slice eines Datasets von eine
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im Menü auf der linken Seite auf **Data Factorys**. Wenn die Option nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und anschließend unter der Kategorie **INTELLIGENCE + ANALYSE** auf **Data Factorys**.
 
-   ![Alle durchsuchen > Data Factorys](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png" alt-text="Alle durchsuchen > Data Factorys":::
 3. Wählen Sie auf dem Blatt **Data Factorys** die gewünschte Data Factory aus.
 
-    ![Data Factory auswählen](./media/data-factory-monitor-manage-pipelines/select-data-factory.png)
+    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/select-data-factory.png" alt-text="Data Factory auswählen":::
 
    Die Startseite für die Data Factory wird angezeigt.
 
-   ![Blatt "Data Factory"](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/data-factory-blade.png" alt-text="Blatt &quot;Data Factory&quot;":::
 
 #### <a name="diagram-view-of-your-data-factory"></a>Diagrammansicht Ihrer Data Factory
 Die Ansicht **Diagramm** einer Data Factory bietet eine zentrale Konsole zum Überwachen und Verwalten der Data Factory und ihrer Ressourcen. Klicken Sie auf der Data Factory-Startseite auf **Diagramm**, um die Ansicht **Diagramm** Ihrer Data Factory anzuzeigen.
 
-![Diagrammansicht](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/diagram-view.png" alt-text="Diagrammansicht":::
 
 Sie können die Optionen „Vergrößern“, „Verkleinern“, „Mit Zoom anpassen“, „Auf 100 % vergrößern“ verwenden und das Layout des Diagramms sperren sowie Pipelines und Datasets automatisch positionieren. Außerdem können Sie die Informationen zur Datenherkunft anzeigen (also vor- und nachgeschaltete Elemente von ausgewählten Elementen).
 
 ### <a name="activities-inside-a-pipeline"></a>Aktivitäten innerhalb einer Pipeline
 1. Klicken Sie mit der rechten Maustaste auf die Pipeline, und klicken Sie dann auf **Pipeline öffnen**, um alle Aktivitäten in der Pipeline sowie Ein- und Ausgabedatasets für die Aktivitäten anzuzeigen. Diese Funktion ist hilfreich, wenn Ihre Pipeline mehr als eine Aktivität enthält und Sie die operative Herkunft einer einzelnen Pipeline verstehen möchten.
 
-    ![Menü "Pipeline öffnen"](./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png)     
+    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png" alt-text="Menü &quot;Pipeline öffnen&quot;":::     
 2. Im folgenden Beispiel befindet sich eine Kopieraktivität mit einer Eingabe und einer Ausgabe in der Pipeline. 
 
-    ![Aktivitäten innerhalb einer Pipeline](./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png)
+    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/activities-inside-pipeline.png" alt-text="Aktivitäten innerhalb einer Pipeline":::
 3. Sie können zurück zur Data Factory-Startseite navigieren, indem Sie in der Brotkrümelnavigation links oben auf den Link **Data Factory** klicken.
 
-    ![Zurück zur Data Factory navigieren](./media/data-factory-monitor-manage-pipelines/navigate-back-to-data-factory.png)
+    :::image type="content" source="./media/data-factory-monitor-manage-pipelines/navigate-back-to-data-factory.png" alt-text="Zurück zur Data Factory navigieren":::
 
 ### <a name="view-the-state-of-each-activity-inside-a-pipeline"></a>Anzeigen des Status jeder Aktivität innerhalb einer Pipeline
 Sie können den aktuellen Status einer Aktivität anzeigen, indem Sie sich den Status eines der Datasets ansehen, das von der Aktivität erzeugt wird.
 
 Durch Doppelklicken auf **OutputBlobTable** in der Ansicht **Diagramm** werden alle Slices angezeigt, die innerhalb einer Pipeline von verschiedenen Aktivitätsausführungen erzeugt wurden. Sie stellen fest, dass die Kopieraktivität in den letzten acht Stunden erfolgreich ausgeführt wurde und Slices mit dem Status **Bereit** erzeugt hat.  
 
-![Status der Pipeline](./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/state-of-pipeline.png" alt-text="Status der Pipeline":::
 
 Die Datasetslices in der Data Factory können einen der folgenden Status haben:
 
@@ -143,20 +144,20 @@ Die Datasetslices in der Data Factory können einen der folgenden Status haben:
 
 Sie können die Details zu einem Slice anzeigen, indem Sie auf dem Blatt **Zuletzt aktualisierte Slices** auf den Eintrag eines Slice klicken.
 
-![Slicedetails](./media/data-factory-monitor-manage-pipelines/slice-details.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/slice-details.png" alt-text="Slicedetails":::
 
 Wenn der Slice mehrere Male ausgeführt wurde, enthält die Liste **Aktivitätsausführungen** mehrere Zeilen. Sie können Details zu einer Aktivitätsausführung anzeigen, indem Sie in der Liste **Aktivitätsausführungen** auf einen Ausführungseintrag klicken. In der Liste werden alle Protokolldateien zusammen mit einer Fehlermeldung, falls vorhanden, angezeigt. Diese Funktion ist nützlich zum Anzeigen und Debuggen von Protokollen, ohne dass Sie Ihre Data Factory verlassen müssen.
 
-![Aktivitätsausführung – Details](./media/data-factory-monitor-manage-pipelines/activity-run-details.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/activity-run-details.png" alt-text="Aktivitätsausführung – Details":::
 
 Wenn der Slice nicht den Status **Bereit** hat, sehen Sie die vorgelagerten Slices, die nicht bereit sind und das Ausführen des aktuellen Slice blockieren, in der Liste **Vorgelagerte Slices, die nicht bereit sind**. Diese Funktion ist nützlich, wenn der Slice den Status **Warten** hat und Sie die vorgelagerten Abhängigkeiten verstehen möchten, auf die der Slice wartet.
 
-![Vorgelagerte Slices, die nicht bereit sind](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png" alt-text="Vorgelagerte Slices, die nicht bereit sind":::
 
 ### <a name="dataset-state-diagram"></a>Statusdiagramm für Datasets
 Nachdem Sie eine Data Factory bereitgestellt haben und die Pipelines einen gültigen aktiven Zeitraum aufweisen, gehen die Datasetslices von einem Status in einen anderen über. Derzeit werden die Status von Slices im folgenden Statusdiagramm abgebildet:
 
-![Statusdiagramm](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/state-diagram.png" alt-text="Statusdiagramm":::
 
 In Data Factory gibt es die folgenden Übergänge beim Status von Datasets: Warten > In Bearbeitung/In Bearbeitung (Überprüfung) > Bereit/Fehler.
 
@@ -204,13 +205,13 @@ Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat da
 #### <a name="use-the-azure-portal-to-debug-an-error"></a>Verwenden des Azure-Portals zum Debuggen eines Fehlers
 1. Klicken Sie auf dem Blatt **Tabelle** auf den Problemslice, für den **Status** auf **Fehler** festgelegt ist.
 
-   ![Blatt "Tabelle" mit Problemslice](./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png)
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/table-blade-with-error.png" alt-text="Blatt &quot;Tabelle&quot; mit Problemslice":::
 2. Klicken Sie auf dem Blatt **Datenslice** auf die fehlerhafte Aktivitätsausführung.
 
-   ![Datenslice mit einem Fehler](./media/data-factory-monitor-manage-pipelines/dataslice-with-error.png)
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/dataslice-with-error.png" alt-text="Datenslice mit einem Fehler":::
 3. Auf dem Blatt **Aktivitätsausführung – Details** können Sie die mit der Verarbeitung von HDInsight verknüpften Dateien herunterladen. Klicken Sie für „Status/stderr“ auf **Download**, um die Fehlerprotokolldatei herunterzuladen, die Einzelheiten zum Fehler enthält.
 
-   ![Blatt "Aktivitätsausführung – Details" mit Fehler](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
+   :::image type="content" source="./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png" alt-text="Blatt &quot;Aktivitätsausführung – Details&quot; mit Fehler":::     
 
 #### <a name="use-powershell-to-debug-an-error"></a>Verwenden von PowerShell zum Debuggen eines Fehlers
 1. Starten Sie **PowerShell**.
@@ -278,11 +279,11 @@ Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat da
 ### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 Nachdem Sie eine Problembehandlung und das Debuggen für Fehler in einer Pipeline ausgeführt haben, können Sie Fehler wiederholen, indem Sie zum fehlerhaften Slice navigieren und dann in der Befehlsleiste auf die Schaltfläche **Ausführen** klicken.
 
-![Wiederholen eines fehlerhaften Slices](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/rerun-slice.png" alt-text="Wiederholen eines fehlerhaften Slices":::
 
 Für den Fall, dass der Slice die Überprüfung aufgrund eines Richtlinienfehlers (z.B. Daten nicht verfügbar) nicht besteht, können Sie den Fehler korrigieren und die Überprüfung erneut ausführen, indem Sie auf der Befehlsleiste auf **Überprüfen** klicken.
 
-![Beheben von Fehlern und Überprüfen](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png" alt-text="Beheben von Fehlern und Überprüfen":::
 
 ### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
 Sie können Ausführungen, bei denen Fehler aufgetreten sind, mit dem **Set-AzDataFactorySliceStatus**-Cmdlet wiederholen. Im Thema [Set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-azdatafactoryslicestatus) finden Sie die Syntax und ausführliche Informationen zum Cmdlet.
@@ -300,37 +301,37 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
 1.  Melden Sie sich beim Azure-Portal an, und wählen Sie **Überwachen -> Warnungen** aus, um die Seite „Warnungen“ zu öffnen.
 
-    ![Öffnen Sie die Seite „Warnungen“.](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image1.png" alt-text="Öffnen Sie die Seite „Warnungen“.":::
 
 2.  Wählen Sie **+ Neue Warnungsregel** aus, um eine neue Warnung zu erstellen.
 
-    ![Erstellen einer neuen Warnung](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image2.png" alt-text="Erstellen einer neuen Warnung":::
 
 3.  Definieren Sie die **Warnungsbedingung**. (Achten Sie darauf, im Feld **Nach Ressourcentyp filtern** die Option **Data Factorys** auszuwählen.) Sie können auch Werte für **Dimensionen** angeben.
 
-    ![Warnungsbedingung definieren – Ziel auswählen](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image3.png" alt-text="Warnungsbedingung definieren – Ziel auswählen":::
 
-    ![Warnungsbedingung definieren – Warnungskriterien hinzufügen](media/data-factory-monitor-manage-pipelines/v1alerts-image4.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image4.png" alt-text="Warnungsbedingung definieren – Warnungskriterien hinzufügen":::
 
-    ![Warnungsbedingung definieren – Warnungslogik hinzufügen](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image5.png" alt-text="Warnungsbedingung definieren – Warnungslogik hinzufügen":::
 
 4.  Definieren Sie die **Warnungsdetails**.
 
-    ![Definieren der Warnungsdetails](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image6.png" alt-text="Definieren der Warnungsdetails":::
 
 5.  Definieren Sie die **Aktionsgruppe**.
 
-    ![Definieren der Aktionsgruppe – neue Aktionsgruppe erstellen](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image7.png" alt-text="Definieren der Aktionsgruppe – neue Aktionsgruppe erstellen":::
 
-    ![Definieren der Aktionsgruppe – Eigenschaften festlegen](media/data-factory-monitor-manage-pipelines/v1alerts-image8.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image8.png" alt-text="Definieren der Aktionsgruppe – Eigenschaften festlegen":::
 
-    ![Definieren der Aktionsgruppe – neue Aktionsgruppe erstellt](media/data-factory-monitor-manage-pipelines/v1alerts-image9.png)
+    :::image type="content" source="media/data-factory-monitor-manage-pipelines/v1alerts-image9.png" alt-text="Definieren der Aktionsgruppe – neue Aktionsgruppe erstellt":::
 
 ## <a name="move-a-data-factory-to-a-different-resource-group-or-subscription"></a>Verschieben einer Data Factory in eine andere Ressourcengruppe oder ein anderes Abonnement
 Sie können eine Data Factory mithilfe der Schaltfläche **Verschieben** in der Befehlsleiste auf der Homepage Ihrer Data Factory in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben.
 
-![Data Factory verschieben](./media/data-factory-monitor-manage-pipelines/MoveDataFactory.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/MoveDataFactory.png" alt-text="Data Factory verschieben":::
 
 Sie können auch alle zugehörigen Ressourcen (z.B. mit der Data Factory verknüpfte Warnungen) zusammen mit der Data Factory verschieben.
 
-![Dialogfeld „Ressourcen verschieben“](./media/data-factory-monitor-manage-pipelines/MoveResources.png)
+:::image type="content" source="./media/data-factory-monitor-manage-pipelines/MoveResources.png" alt-text="Dialogfeld „Ressourcen verschieben“":::

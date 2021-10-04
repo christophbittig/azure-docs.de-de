@@ -1,37 +1,37 @@
 ---
 title: Erstellen einer Triggerabhängigkeit für ein rollierendes Fenster
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie in Azure Data Factory eine Abhängigkeit von einem Trigger für ein rollierendes Fenster erstellt wird.
+description: Erfahren Sie, wie in Azure Data Factory und Synapse Analytics eine Abhängigkeit von einem Trigger für ein rollierendes Fenster erstellt wird.
 ms.author: chez
 author: chez-charlie
 ms.service: data-factory
 ms.subservice: orchestration
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/03/2020
-ms.openlocfilehash: 26e9be55b094212cc3e4e5139bf65934b7ff0d6d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 89a6db7fcfd78ec2e1115256cc162a91cc9180da
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639919"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805937"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Erstellen einer Triggerabhängigkeit für ein rollierendes Fenster
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Dieser Artikel enthält die Schritte zum Erstellen einer Abhängigkeit von einem Trigger für ein rollierendes Fenster. Allgemeine Informationen zu Triggern für rollierende Fenster finden Sie unter [Erstellen eines Triggers für ein rollierendes Fenster](how-to-create-tumbling-window-trigger.md).
 
-Verwenden Sie diese erweiterte Funktion zum Erstellen einer Abhängigkeit für das rollierende Fenster, um eine Abhängigkeitskette zu erstellen und sicherzustellen, dass ein Trigger erst nach der erfolgreichen Ausführung eines anderen Triggers in der Data Factory ausgeführt wird.
+Verwenden Sie diese erweiterte Funktion zum Erstellen einer Abhängigkeit für das rollierende Fenster, um eine Abhängigkeitskette zu erstellen und sicherzustellen, dass ein Trigger erst nach der erfolgreichen Ausführung eines anderen Triggers im Dienst ausgeführt wird.
 
-Das folgende Video zeigt die Erstellung abhängiger Pipelines in Ihrer Azure Data Factory-Instanz mit einem Trigger für ein rollierendes Fenster:
+Das folgende Video veranschaulicht die Erstellung abhängiger Pipelines mit einem Trigger für ein rollierendes Fenster:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
-## <a name="create-a-dependency-in-the-data-factory-ui"></a>Erstellen einer Abhängigkeit mithilfe der Data Factory-Benutzeroberfläche
+## <a name="create-a-dependency-in-the-ui"></a>Erstellen einer Abhängigkeit in der Benutzeroberfläche
 
-Wählen Sie zum Erstellen einer Abhängigkeit von einem Trigger die Optionen **Trigger > Erweitert > Neu** aus, und wählen Sie dann den gewünschten Trigger mit dem entsprechenden Offset und der entsprechenden Größe aus. Wählen Sie **Fertig stellen** aus, und veröffentlichen Sie die Data Factory-Änderungen, damit die Abhängigkeiten wirksam werden.
+Wählen Sie zum Erstellen einer Abhängigkeit von einem Trigger die Optionen **Trigger > Erweitert > Neu** aus, und wählen Sie dann den gewünschten Trigger mit dem entsprechenden Offset und der entsprechenden Größe aus. Wählen Sie **Fertig stellen** aus, und veröffentlichen Sie die Änderungen, damit die Abhängigkeiten wirksam werden.
 
-![Abhängigkeitserstellung](media/tumbling-window-trigger-dependency/tumbling-window-dependency-01.png "Abhängigkeitserstellung")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-01.png" alt-text="Abhängigkeitserstellung":::
 
 ## <a name="tumbling-window-dependency-properties"></a>Eigenschaften der Abhängigkeit für ein rollierendes Fenster
 
@@ -131,37 +131,37 @@ Nachfolgend finden Sie Abbildungen der Verwendungsszenarien für Eigenschaften d
 
 ### <a name="dependency-offset"></a>Offset der Abhängigkeit
 
-![Beispiel für Offset](media/tumbling-window-trigger-dependency/tumbling-window-dependency-02.png "Beispiel für Offset")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-02.png" alt-text="Beispiel für Offset":::
 
 ### <a name="dependency-size"></a>Größe der Abhängigkeit
 
-![Beispiel für Größe](media/tumbling-window-trigger-dependency/tumbling-window-dependency-03.png "Beispiel für Größe")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-03.png" alt-text="Beispiel für Größe":::
 
 ### <a name="self-dependency"></a>Selbstabhängigkeit
 
-![Selbstabhängigkeit](media/tumbling-window-trigger-dependency/tumbling-window-dependency-04.png "Selbstabhängigkeit")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-04.png" alt-text="Selbstabhängigkeit":::
 
 ### <a name="dependency-on-another-tumbling-window-trigger"></a>Abhängigkeit von einem anderen Trigger für ein rollierendes Fenster
 
 Ein täglicher Auftrag zur Verarbeitung von Telemetriedaten, der von einem anderen täglichen Auftrag abhängig ist, der die Ausgabe der letzten sieben Tage aggregiert und Datenströme von sieben Tagen des rollierenden Fensters generiert:
 
-![Beispiel für Abhängigkeit](media/tumbling-window-trigger-dependency/tumbling-window-dependency-05.png "Beispiel für Abhängigkeit")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-05.png" alt-text="Beispiel für Abhängigkeit":::
 
 ### <a name="dependency-on-itself"></a>Abhängigkeit von sich selbst
 
 Ein täglicher Auftrag ohne Lücken in den Ausgabedatenströmen des Auftrags:
 
-![Beispiel für Selbstabhängigkeit](media/tumbling-window-trigger-dependency/tumbling-window-dependency-06.png "Beispiel für Selbstabhängigkeit")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-06.png" alt-text="Beispiel für Selbstabhängigkeit":::
 
 ## <a name="monitor-dependencies"></a>Überwachen von Abhängigkeiten
 
 Sie können die Abhängigkeitskette und die entsprechenden Fenster auf der Seite für die Überwachung von Triggerausführungen überwachen. Navigieren Sie zu **Überwachung > Triggerausführungen**. Wenn ein Trigger des Typs „Rollierendes Fenster“ Abhängigkeiten aufweist, enthält „Triggername“ einen Link zur Ansicht für die Überwachung auf Abhängigkeiten.  
 
-![Überwachen von Triggerausführungen](media/tumbling-window-trigger-dependency/tumbling-window-dependency-07.png "Überwachen von Triggerausführungen: Ansicht der Abhängigkeiten für rollierendes Fenster")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-07.png" alt-text="Überwachen von Triggerausführungen":::
 
 Klicken Sie sich durch bis zum Namen des Triggers, um die Triggerabhängigkeiten anzuzeigen. Im rechten Bereich werden ausführliche Informationen zur Triggerausführung angezeigt, z. B. RunID, Fensterzeit, Status usw.
 
-![Listenansicht zum Überwachen von Abhängigkeiten](media/tumbling-window-trigger-dependency/tumbling-window-dependency-08.png "Listenansicht zum Überwachen von Abhängigkeiten")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-08.png" alt-text="Listenansicht zum Überwachen von Abhängigkeiten":::
 
 Sie können den Status der Abhängigkeiten und Fenster für jeden abhängigen Trigger sehen. Wenn einer der Abhängigkeitstrigger fehlschlägt, müssen Sie ihn erneut erfolgreich ausführen, damit der abhängige Trigger ausgeführt werden kann.
 
@@ -169,7 +169,7 @@ Ein Trigger für ein rollierendes Fenster wartet _sieben Tage_ auf Abhängigkeit
 
 Wählen Sie die Gantt-Ansicht aus, um eine visuelle Darstellung des Zeitplans für Triggerabhängigkeiten anzuzeigen.
 
-![Gantt-Diagramm zum Überwachen von Abhängigkeiten](media/tumbling-window-trigger-dependency/tumbling-window-dependency-09.png "Gantt-Diagramm zum Überwachen von Abhängigkeiten")
+:::image type="content" source="media/tumbling-window-trigger-dependency/tumbling-window-dependency-09.png" alt-text="Gantt-Diagramm zum Überwachen von Abhängigkeiten":::
 
 Transparente Kästchen zeigen die Abhängigkeitsfenster für jeden nachgeordneten abhängigen Trigger, während die einfarbigen Kästchen oben die einzelnen Fensterausführungen zeigen. Es folgen einige Tipps zum Interpretieren der Gantt-Diagrammansicht:
 

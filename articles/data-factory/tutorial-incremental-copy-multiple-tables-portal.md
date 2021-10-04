@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: 75ddd0ebf1a4d796cf59f087399ea94957916349
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a961b008406c487b1543ee827fe1c33d3e435645
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638411"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767449"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus mehreren Tabellen in SQL Server in eine Datenbank in Azure SQL-Datenbank über das Azure-Portal
 
@@ -58,7 +58,7 @@ Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt:
 
     Allgemeines Lösungsdiagramm: 
 
-    ![Lädt Daten inkrementell](media/tutorial-incremental-copy-multiple-tables-portal/high-level-solution-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-multiple-tables-portal/high-level-solution-diagram.png" alt-text="Lädt Daten inkrementell":::
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -234,7 +234,7 @@ END
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 2. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Integration** > **Data Factory** aus: 
    
-   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="Auswahl von Data Factory im Bereich &quot;Neu&quot;":::
 
 3. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFMultiIncCopyTutorialDF** ein. 
  
@@ -262,11 +262,11 @@ Wenn Sie Daten aus einem Datenspeicher in einem privaten Netzwerk (lokal) in ein
 
 1. Wählen Sie auf der Homepage der Azure Data Factory-Benutzeroberfläche im Bereich ganz links die [Registerkarte Verwalten](./author-management-hub.md) aus.
 
-   ![Schaltfläche „Verwalten“ auf der Startseite](media/doc-common-process/get-started-page-manage-button.png)
+   :::image type="content" source="media/doc-common-process/get-started-page-manage-button.png" alt-text="Schaltfläche „Verwalten“ auf der Startseite":::
 
 1. Wählen Sie im linken Bereich **Integration Runtime** und dann **+Neu** aus.
 
-   ![Erstellen einer Integration Runtime](media/doc-common-process/manage-new-integration-runtime.png)
+   :::image type="content" source="media/doc-common-process/manage-new-integration-runtime.png" alt-text="Erstellen einer Integration Runtime":::
 
 1. Wählen Sie im Fenster **Integration Runtime Setup** (Integration Runtime-Setup) die Option **Perform data movement and dispatch activities to external computes** (Datenverschiebung und -verteilung an externe Computeressourcen ausführen), und klicken Sie auf **Weiter**. 
 
@@ -275,10 +275,10 @@ Wenn Sie Daten aus einem Datenspeicher in einem privaten Netzwerk (lokal) in ein
 
 1. Klicken Sie auf **Klicken Sie hier, um das Express-Setup für diesen Computer zu starten** im Abschnitt **Option 1: Express-Setup**. 
 
-   ![Klicken auf den Link für das Express-Setup](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png" alt-text="Klicken auf den Link für das Express-Setup":::
 1. Klicken Sie im Fenster **Express-Setup von Integration Runtime (selbstgehostet)** auf **Schließen**. 
 
-   ![Integration Runtime-Setup erfolgreich](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtime-setup-successful.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtime-setup-successful.png" alt-text="Integration Runtime-Setup erfolgreich":::
 1. Klicken Sie im Webbrowser im Fenster **Integration Runtime Setup** (Integration Runtime-Setup) auf **Fertig stellen**. 
 
  
@@ -324,7 +324,7 @@ Im letzten Schritt erstellen Sie einen verknüpften Dienst, um Ihre SQL Server-Q
 
 1. Vergewissern Sie sich, dass in der Liste zwei verknüpfte Dienste angezeigt werden. 
    
-    ![Zwei verknüpfte Dienste](./media/tutorial-incremental-copy-multiple-tables-portal/two-linked-services.png) 
+    :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/two-linked-services.png" alt-text="Zwei verknüpfte Dienste"::: 
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
 In diesem Schritt erstellen Sie Datasets zur Darstellung der Datenquelle, des Datenziels und des Speicherorts des Grenzwerts.
@@ -339,7 +339,7 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung der Datenquelle, des Da
 
 1. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Verbindung**, und wählen Sie unter **Verknüpfter Dienst** die Option **SqlServerLinkedService**. Hier wählen Sie keine Tabelle aus. Für die Copy-Aktivität in der Pipeline wird eine SQL-Abfrage zum Laden der Daten anstelle der gesamten Tabelle verwendet.
 
-   ![Quelldataset – Verbindung](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-connection.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-connection.png" alt-text="Quelldataset – Verbindung":::
 
 
 ### <a name="create-a-sink-dataset"></a>Erstellen Sie ein Senkendataset
@@ -354,14 +354,14 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung der Datenquelle, des Da
     1. Klicken Sie im Abschnitt **Parameter erstellen/aktualisieren** die Option **Neu**. 
     1. Geben Sie **SinkTableName** als **Namen** und **Zeichenfolge** als **Typ** ein. Für dieses Dataset wird **SinkTableName** als Parameter verwendet. Der Parameter SinkTableName wird von der Pipeline zur Laufzeit dynamisch festgelegt. Die ForEach-Aktivität in der Pipeline durchläuft eine Liste mit Tabellennamen und übergibt den Tabellennamen bei jedem Durchlauf an dieses Dataset.
    
-        ![Senkendataset – Eigenschaften](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png" alt-text="Senkendataset – Eigenschaften":::
 1. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Verbindung**, und wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService** aus. Klicken Sie für die **Table**-Eigenschaft auf **Dynamischen Inhalt hinzufügen**.   
     
 1. Wählen Sie im Fenster **Dynamischen Inhalt hinzufügen** im Abschnitt **Parameter** die Option **SinkTableName** aus. 
  
 1. Nachdem Sie auf **Fertig stellen** geklickt haben, wird „@dataset().SinkTableName“ als Tabellenname angezeigt.
 
-   ![Senkendataset – Verbindung](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png" alt-text="Senkendataset – Verbindung":::
 
 ### <a name="create-a-dataset-for-a-watermark"></a>Erstellen eines Datasets für einen Grenzwert
 In diesem Schritt erstellen Sie ein Dataset zum Speichern eines hohen Grenzwerts. 
@@ -376,7 +376,7 @@ In diesem Schritt erstellen Sie ein Dataset zum Speichern eines hohen Grenzwerts
     1. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService**.
     1. Wählen Sie unter **Tabelle** die Option **[dbo].[watermarktable]** .
 
-        ![Grenzwertdataset – Verbindung](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png" alt-text="Grenzwertdataset – Verbindung":::
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
 Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEach-Aktivität durchläuft die Liste mit den Tabellennamen und führt die folgenden Vorgänge aus: 
@@ -405,7 +405,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 
 1. Wechseln Sie zur Registerkarte **Einstellungen**, und geben Sie unter **Elemente** die Zeichenfolge `@pipeline().parameters.tableList` ein. Die ForEach-Aktivität durchläuft eine Liste mit Tabellen und führt den inkrementellen Kopiervorgang durch. 
 
-    ![ForEach-Aktivität – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png" alt-text="ForEach-Aktivität – Einstellungen":::
 
 1. Wählen Sie die **ForEach**-Aktivität in der Pipeline, falls sie nicht bereits ausgewählt wurde. Klicken Sie auf die Schaltfläche **Bearbeiten** (Stiftsymbol).
 
@@ -421,7 +421,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
         select * from watermarktable where TableName  =  '@{item().TABLE_NAME}'
         ```
 
-        ![Erste Lookup-Aktivität – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-settings.png" alt-text="Erste Lookup-Aktivität – Einstellungen":::
 1. Ziehen Sie die **Lookup**-Aktivität aus der Toolbox **Aktivitäten**, und geben Sie unter **Name** den Namen **LookupNewWaterMarkActivity** ein.
         
 1. Wechseln Sie zur Registerkarte **Einstellungen**.
@@ -434,12 +434,12 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
         select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
         ```
     
-        ![Zweite Lookup-Aktivität – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png" alt-text="Zweite Lookup-Aktivität – Einstellungen":::
 1. Ziehen Sie die **Copy**-Aktivität aus der Toolbox **Aktivitäten**, und geben Sie unter **Name** den Namen **IncrementalCopyActivity** ein. 
 
 1. Verbinden Sie die einzelnen **Lookup**-Aktivitäten jeweils mit der **Copy**-Aktivität. Ziehen Sie das **grüne** Feld, das an die **Lookup**-Aktivität angefügt ist, auf die **Copy**-Aktivität, um die Verbindung herzustellen. Lassen Sie die Maustaste los, wenn sich die Rahmenfarbe der Copy-Aktivität in **Blau** ändert.
 
-    ![Verbinden von Lookup- und Copy-Aktivitäten](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png" alt-text="Verbinden von Lookup- und Copy-Aktivitäten":::
 1. Wählen Sie die **Copy**-Aktivität in der Pipeline aus. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Quelle**. 
 
     1. Wählen Sie unter **Source Dataset** (Quelldataset) die Option **SourceDataset**. 
@@ -450,7 +450,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
         select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
         ```
 
-        ![Copy-Aktivität – Quelleinstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png" alt-text="Copy-Aktivität – Quelleinstellungen":::
 1. Wechseln Sie zur Registerkarte **Senke**, und wählen Sie unter **Sink Dataset** (Senkendataset) die Option **SinkDataset**. 
         
 1. Führen Sie die folgenden Schritte aus:
@@ -460,26 +460,26 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
     1. Geben Sie für die Eigenschaft **Tabellentyp** die Zeichenfolge `@{item().TableType}` ein.
     1. Geben Sie unter **Table type parameter name** (Parametername des Tabellentyps) die Zeichenfolge `@{item().TABLE_NAME}` ein.
 
-        ![Copy-Aktivität – Parameter](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png" alt-text="Copy-Aktivität – Parameter":::
 1. Ziehen Sie die **Stored Procedure**-Aktivität aus der Toolbox **Aktivitäten** in die Oberfläche des Pipeline-Designers. Verbinden Sie die **Copy**-Aktivität mit der **Stored Procedure**-Aktivität. 
 
 1. Wählen Sie die **Stored Procedure**-Aktivität in der Pipeline aus, und geben Sie im **Eigenschaftenfenster** auf der Registerkarte **Allgemein** unter **Name** den Namen **StoredProceduretoWriteWatermarkActivity** ein. 
 
 1. Wechseln Sie zur Registerkarte **SQL-Konto**, und wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService**.
 
-    ![Stored Procedure-Aktivität – SQL-Konto](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png" alt-text="Stored Procedure-Aktivität – SQL-Konto":::
 1. Wechseln Sie zur Registerkarte **Gespeicherte Prozedur**, und führen Sie die folgenden Schritte aus:
 
     1. Wählen Sie unter **Name der gespeicherten Prozedur** den Namen `[dbo].[usp_write_watermark]` aus. 
     1. Wählen Sie die Option **Import parameter** (Importparameter). 
     1. Geben Sie die folgenden Werte für die Parameter an: 
 
-        | Name | Typ | Wert | 
+        | Name | Type | Wert | 
         | ---- | ---- | ----- |
         | LastModifiedtime | Datetime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
-        ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png" alt-text="Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren":::
 1. Wählen Sie zum Veröffentlichen der erstellten Entitäten im Data Factory-Dienst **Alle veröffentlichen** aus. 
 
 1. Warten Sie, bis die Meldung **Erfolgreich veröffentlicht** angezeigt wird. Klicken Sie zum Anzeigen der Benachrichtigungen auf den Link **Benachrichtigungen anzeigen**. Schließen Sie das Benachrichtigungsfenster, indem Sie auf das **X** klicken.
@@ -508,7 +508,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
     ]
     ```
 
-    ![Argumente der Pipelineausführung](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-run-arguments.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-run-arguments.png" alt-text="Argumente der Pipelineausführung":::
 
 ## <a name="monitor-the-pipeline"></a>Überwachen der Pipeline
 

@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 07/06/2021
-ms.openlocfilehash: 89414731ca230a2753a2c3e426e453a647d2de8d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 30b7bdc80de2b6623d7eb2c285c477cc35bc7b5a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638335"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737050"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Massenkopieren mehrerer Tabellen mithilfe von Azure Data Factory im Azure-Portal
 
@@ -39,7 +39,7 @@ In diesem Tutorial wird das Azure-Portal verwendet. Informationen zur Verwendung
 ## <a name="end-to-end-workflow"></a>Kompletter Workflow
 In diesem Szenario verfügen Sie über mehrere Tabellen aus der Azure SQL-Datenbank-Instanz, die Sie in Azure Synapse Analytics kopieren möchten. Nachfolgend ist der logische Ablauf eines Workflows dargestellt, der in Pipelines ausgeführt wird:
 
-![Workflow](media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png)
+:::image type="content" source="media/tutorial-bulk-copy-portal/tutorial-copy-multiple-tables.png" alt-text="Workflow":::
 
 * Die erste Pipeline ruft die Liste mit den Tabellen ab, die in die Senkendatenspeicher kopiert werden sollen.  Sie können stattdessen auch eine Metadatentabelle mit den Tabellen verwalten, die in die Senkendatenspeicher kopiert werden sollen. Die Pipeline löst anschließend eine weitere Pipeline aus, die wiederum jede Tabelle in der Datenbank durchläuft und den Datenkopiervorgang ausführt.
 * Die zweite Pipeline führt den eigentlichen Kopiervorgang aus. Dazu wird die Liste mit den Tabellen als Parameter verwendet. Kopieren Sie für jede Tabelle in der Liste die jeweilige Tabelle aus Azure SQL-Datenbank in die entsprechende Tabelle in Azure Synapse Analytics. Verwenden Sie für eine optimale Leistung das [gestaffelte Kopieren über Blob Storage und PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics). In diesem Beispiel wird die Liste mit den Tabellen von der ersten Pipeline als Wert für den Parameter übergeben. 
@@ -63,7 +63,7 @@ Wenn Sie diese Einstellung überprüfen und aktivieren möchten, navigieren Sie 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
 1. Wählen Sie links im Azure-Portalmenü die Option **Ressource erstellen** > **Integration** > **Data Factory** aus. 
 
-   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="Auswahl von Data Factory im Bereich &quot;Neu&quot;":::
 1. Geben Sie auf der Seite **Neue Data Factory** unter **Name** die Zeichenfolge **ADFTutorialBulkCopyDF** ein. 
  
    Der Name der Azure Data Factory muss **global eindeutig** sein. Sollte der unten angegebene Fehler für das Feld „Name“ auftreten, ändern Sie den Namen der Data Factory (beispielsweise in „<IhrName>ADFTutorialBulkCopyDF“). Benennungsregeln für Data Factory-Artefakte finden Sie im Artikel [Azure Data Factory – Benennungsregeln](naming-rules.md).
@@ -164,7 +164,7 @@ In diesem Tutorial sind die SQL-Quell- und -Zieltabellen in den Datasetdefinitio
 
 1. Wählen Sie im linken Bereich **+** (plus) und dann **Dataset** aus. 
 
-    ![Menü „Neues Dataset“](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/new-dataset-menu.png" alt-text="Menü „Neues Dataset“":::
 1. Wählen Sie im Fenster **Neues Dataset** die Option **Azure SQL-Datenbank** aus, und klicken Sie dann auf **Weiter**. 
     
 1. Geben Sie im Fenster **Eigenschaften festlegen** unter **Name** den Namen **AzureSqlDatabaseDataset** ein. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService** aus. Klicken Sie dann auf **OK**.
@@ -182,7 +182,7 @@ In diesem Tutorial sind die SQL-Quell- und -Zieltabellen in den Datasetdefinitio
 
     1. Aktivieren Sie für **Tabelle** die Option **Bearbeiten**. Wählen Sie das erste Eingabefeld aus, und klicken Sie unten auf den Link **Dynamischen Inhalt hinzufügen**. Klicken Sie auf der Seite **Dynamischen Inhalt hinzufügen** unter **Parameter** auf **DWSchema**. Dadurch wird das oberste Textfeld `@dataset().DWSchema` für Ausdrücke automatisch gefüllt. Klicken Sie dann auf **Fertig stellen**.  
     
-        ![Tabellenname für die Datasetverbindung](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
+        :::image type="content" source="./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png" alt-text="Tabellenname für die Datasetverbindung":::
 
     1. Wählen Sie das zweite Eingabefeld aus, und klicken Sie unten auf den Link **Dynamischen Inhalt hinzufügen**. Klicken Sie auf der Seite **Dynamischen Inhalt hinzufügen** unter **Parameter** auf **DWTableName**. Dadurch wird das oberste Textfeld `@dataset().DWTableName` für Ausdrücke automatisch gefüllt. Klicken Sie dann auf **Fertig stellen**. 
     
@@ -203,7 +203,7 @@ Die Pipeline **IterateAndCopySQLTables** akzeptiert eine Liste von Tabellen als 
 
 1. Klicken Sie im linken Bereich auf **+** (Pluszeichen) und dann auf **Pipeline**.
 
-    ![Menü für neue Pipeline](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/new-pipeline-menu.png" alt-text="Menü für neue Pipeline":::
  
 1. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **IterateAndCopySQLTables** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.
 
@@ -223,15 +223,15 @@ Die Pipeline **IterateAndCopySQLTables** akzeptiert eine Liste von Tabellen als 
 
     c. Reduzieren Sie auf der Seite **Dynamischen Inhalt hinzufügen** die Abschnitte **Systemvariablen** und **Funktionen**, und klicken Sie unter **Parameter** auf **tableList**. Das oberste Textfeld für Ausdrücke wird automatisch mit `@pipeline().parameter.tableList` gefüllt. Klicken Sie auf **Fertig stellen**. 
 
-    ![Foreach-Parameter-Generator](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png" alt-text="Foreach-Parameter-Generator":::
     
     d. Wechseln Sie zur Registerkarte **Aktivitäten**, und klicken Sie auf das **Stiftsymbol**, um der Aktivität **ForEach** eine untergeordnete Aktivität hinzuzufügen.
     
-    ![Generator für ForEach-Aktivität](./media/tutorial-bulk-copy-portal/for-each-activity-builder.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/for-each-activity-builder.png" alt-text="Generator für ForEach-Aktivität":::
 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Move & Transfer** (Verschieben und übertragen), und ziehen Sie die **Copy Data**-Aktivität auf die Oberfläche des Pipeline-Designers. Beachten Sie das Breadcrumb-Menü im oberen Bereich. **IterateAndCopySQLTable** ist der Pipelinename, und **IterateSQLTables** ist der Name der ForEach-Aktivität. Der Designer ist Teil des Aktivitätsbereichs. Sie können im Breadcrumb-Menü auf den Link klicken, um vom ForEach-Editor zurück zum Pipeline-Editor zu wechseln. 
 
-    ![Kopieren in ForEach](./media/tutorial-bulk-copy-portal/copy-in-for-each.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/copy-in-for-each.png" alt-text="Kopieren in ForEach":::
 
 1. Wechseln Sie zur Registerkarte **Quelle**, und führen Sie die folgenden Schritte aus:
 
@@ -257,7 +257,7 @@ Die Pipeline **IterateAndCopySQLTables** akzeptiert eine Liste von Tabellen als 
         IF EXISTS (SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]) TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ```
 
-        ![Einstellungen für die Kopiersenke](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
+        :::image type="content" source="./media/tutorial-bulk-copy-portal/copy-sink-settings.png" alt-text="Einstellungen für die Kopiersenke":::
 
 1. Wechseln Sie zur Registerkarte **Einstellungen**, und führen Sie die folgenden Schritte aus: 
 
@@ -294,12 +294,12 @@ Dies sind die Schritte zum Erstellen der Pipeline:
         ```
     1. Deaktivieren Sie das Kontrollkästchen für das Feld **First row only** (Nur erste Zeile).
 
-        ![Lookup-Aktivität – Seite „Einstellungen“](./media/tutorial-bulk-copy-portal/lookup-settings-page.png)
+        :::image type="content" source="./media/tutorial-bulk-copy-portal/lookup-settings-page.png" alt-text="Lookup-Aktivität – Seite „Einstellungen“":::
 1. Ziehen Sie die **Execute Pipeline**-Aktivität aus der Toolbox „Aktivitäten“ auf die Oberfläche des Pipeline-Designers, und legen Sie den Namen auf **TriggerCopy** fest.
 
 1. **Verbinden** Sie die **Lookup**-Aktivität mit der **Execute Pipeline**-Aktivität, indem Sie das **grüne Feld**, das der Lookup-Aktivität zugeordnet ist, in den Bereich links von der Execute Pipeline-Aktivität ziehen.
 
-    ![Verbinden von Lookup- und Execute Pipeline-Aktivitäten](./media/tutorial-bulk-copy-portal/connect-lookup-execute-pipeline.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/connect-lookup-execute-pipeline.png" alt-text="Verbinden von Lookup- und Execute Pipeline-Aktivitäten":::
 
 1. Wechseln Sie zur Registerkarte **Einstellungen** der Aktivität **Execute Pipeline** (Pipeline ausführen), und führen Sie die folgenden Schritte aus: 
 
@@ -307,7 +307,7 @@ Dies sind die Schritte zum Erstellen der Pipeline:
     1. Deaktivieren Sie das Kontrollkästchen für **Wait on completion** (Auf Abschluss warten).
     1. Klicken Sie im Abschnitt **Parameter** auf das Eingabefeld unter VALUE (Wert), wählen Sie unten die Option **Dynamischen Inhalt hinzufügen** aus, geben Sie `@activity('LookupTableList').output.value` als Wert für den Tabellennamen ein, und wählen Sie **Fertigstellen** aus. Sie legen die Ergebnisliste der Lookup-Aktivität als Eingabe für die zweite Pipeline fest. Die Ergebnisliste enthält die Liste mit den Tabellen, deren Daten auf das Ziel kopiert werden müssen. 
 
-        ![Execute Pipeline-Aktivität – Seite „Einstellungen“](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
+        :::image type="content" source="./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png" alt-text="Execute Pipeline-Aktivität – Seite „Einstellungen“":::
 
 1. Klicken Sie zum Überprüfen der Pipeline in der Symbolleiste auf **Überprüfen**. Vergewissern Sie sich, dass keine Validierungsfehler vorliegen. Klicken Sie zum Schließen des **Pipeline Validation Report** (Pipelineüberprüfungsbericht) auf **>>** .
 
@@ -324,7 +324,7 @@ Dies sind die Schritte zum Erstellen der Pipeline:
 1. Wechseln Sie zur Registerkarte **Überwachen**. Klicken Sie auf **Aktualisieren**, bis Ausführungen für beide Pipelines Ihrer Lösung angezeigt werden. Fahren Sie mit dem Aktualisieren der Liste fort, bis der Status **Erfolgreich** angezeigt wird. 
 
 1. Klicken Sie unter dem Link „Pipelinename“ für diese Pipeline, um die Aktivitätsausführungen anzuzeigen, die der Pipeline **GetTableListAndTriggerCopyData** zugeordnet sind. Es sollten zwei Aktivitätsausführungen für diese Pipelineausführung angezeigt werden. 
-    ![Überwachen der Pipelineausführung](./media/tutorial-bulk-copy-portal/monitor-pipeline.png)
+    :::image type="content" source="./media/tutorial-bulk-copy-portal/monitor-pipeline.png" alt-text="Überwachen der Pipelineausführung":::
 1. Wenn Sie die Ausgabe der Aktivität **Lookup** (Suche) anzeigen möchten, klicken Sie auf den Link **Output** (Ausgabe) neben der Aktivität in der Spalte **ACTIVITY NAME** (AKTIVITÄTSNAME). Sie können das Fenster **Ausgabe** maximieren und wiederherstellen. Klicken Sie auf **X**, nachdem Sie die Prüfung durchgeführt haben, um das Fenster **Ausgabe** zu schließen.
 
     ```json

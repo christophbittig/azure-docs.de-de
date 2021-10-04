@@ -1,22 +1,22 @@
 ---
 title: Kopieren von Daten aus Amazon Simple Storage Service (S3)
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Hier erfahren Sie, wie Sie mithilfe von Azure Data Factory Daten aus Amazon Simple Storage Service (S3) in unterstützte Senkendatenspeicher kopieren.
+description: Erfahren Sie, wie Daten aus Amazon Simple Storage Service (S3) mithilfe von Azure Data Factory- oder Synapse Analytics-Pipelines in unterstützte Senkendatenspeicher kopiert werden.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 16b157e9a26a1a512d4d0ef94db1816210f8cf16
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: baaf601ce6ab21a524cbabc7188de24231002ffd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304634"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762078"
 ---
-# <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Simple Storage Service mithilfe von Azure Data Factory
+# <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus Amazon Simple Storage Service mithilfe von Azure Data Factory oder Synapse Analytics
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 >
 > * [Version 1](v1/data-factory-amazon-simple-storage-service-connector.md)
@@ -24,10 +24,10 @@ ms.locfileid: "123304634"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Daten aus Amazon Simple Storage Service (Amazon S3) kopiert werden. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+In diesem Artikel wird beschrieben, wie Daten aus Amazon Simple Storage Service (Amazon S3) kopiert werden. Weitere Informationen finden Sie in den Einführungsartikeln zu [Azure Data Factory](introduction.md) und [Synapse Analytics](../synapse-analytics/overview-what-is.md).
 
 >[!TIP]
->Weitere Informationen über das Szenario für die Datenmigration von Amazon S3 zu Azure Storage finden Sie unter [Verwenden von Azure Data Factory zum Migrieren von Daten von Amazon S3 zu Azure Storage](data-migration-guidance-s3-azure-storage.md).
+>Weitere Informationen über das Szenario für die Datenmigration von Amazon S3 zu Azure Storage finden Sie unter [Migrieren von Daten von Amazon S3 zu Azure Storage](data-migration-guidance-s3-azure-storage.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -63,7 +63,7 @@ Verwenden Sie die folgenden Schritte, um einen mit Amazon S3 verknüpften Servic
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -90,8 +90,8 @@ Folgende Eigenschaften werden für einen mit Amazon S3 verknüpften Dienst unter
 | type | Die **type**-Eigenschaft muss auf **AmazonS3** festgelegt werden. | Ja |
 | authenticationType | Geben Sie den Authentifizierungstyp an, der für die Verbindung mit Amazon S3 verwendet wird. Sie können Zugriffsschlüssel für ein AWS-IAM-Konto (Identity & Access Management) oder [temporäre Sicherheitsanmeldeinformationen](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) verwenden.<br>Zulässige Werte sind `AccessKey` (Standard) und `TemporarySecurityCredentials`. |Nein  |
 | accessKeyId | ID des geheimen Zugriffsschlüssels. |Ja |
-| secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
-| sessionToken | Trifft zu, wenn für die Authentifizierung [temporäre Sicherheitsanmeldeinformationen](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) verwendet werden. Erfahren Sie, wie Sie [temporäre Sicherheitsanmeldeinformationen](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken) von AWS anfordern.<br>Beachten Sie, dass die temporären AWS-Anmeldeinformationen je nach Einstellung nach 15 Minuten bis 36 Stunden ablaufen. Stellen Sie sicher, dass Ihre Anmeldeinformationen während der Aktivitätsausführung gültig sind. Dies gilt insbesondere für operationalisierte Workloads. Sie können sie z. B. regelmäßig aktualisieren und in Azure Key Vault speichern.<br>Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Nein |
+| secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als **SecureString**, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
+| sessionToken | Trifft zu, wenn für die Authentifizierung [temporäre Sicherheitsanmeldeinformationen](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) verwendet werden. Erfahren Sie, wie Sie [temporäre Sicherheitsanmeldeinformationen](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken) von AWS anfordern.<br>Beachten Sie, dass die temporären AWS-Anmeldeinformationen je nach Einstellung nach 15 Minuten bis 36 Stunden ablaufen. Stellen Sie sicher, dass Ihre Anmeldeinformationen während der Aktivitätsausführung gültig sind. Dies gilt insbesondere für operationalisierte Workloads. Sie können sie z. B. regelmäßig aktualisieren und in Azure Key Vault speichern.<br>Markieren Sie dieses Feld als **SecureString**, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Nein |
 | serviceUrl | Geben Sie den benutzerdefinierten S3-Endpunkt `https://<service url>` an. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. |Nein |
 
@@ -274,7 +274,7 @@ In diesem Abschnitt wird das resultierende Verhalten beschrieben, wenn ein Datei
 
 Angenommen, Sie haben die folgende Quellordnerstruktur und möchten die Dateien kopieren, deren Namen fett formatiert sind:
 
-| Beispielquellstruktur                                      | Inhalt in „FileListToCopy.txt“                             | Konfiguration der Data Factory                                            |
+| Beispielquellstruktur                                      | Inhalt in „FileListToCopy.txt“                             | Konfiguration |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | bucket<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadaten<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | Datei1.csv<br>Unterordner1/Datei3.csv<br>Unterordner1/Datei5.csv | **Im Dataset:**<br>– Bucket: `bucket`<br>– Ordnerpfad: `FolderA`<br><br>**In der Quelle der Kopieraktivität:**<br>– Dateilistenpfad: `bucket/Metadata/FileListToCopy.txt` <br><br>Der Dateilistenpfad verweist auf eine Textdatei im selben Datenspeicher, der eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Diese enthält den relativen Pfad zu dem im Dataset konfigurierten Pfad. |
 
@@ -297,7 +297,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 ## <a name="legacy-models"></a>Legacy-Modelle
 
 >[!NOTE]
->Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird empfohlen, das oben erwähnte neue Modell zu verwenden. Die Data Factory-Benutzeroberfläche für die Erstellung ist zum Generieren des neuen Modells gewechselt.
+>Die folgenden Modelle werden aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird empfohlen, das oben erwähnte neue Modell zu verwenden. Die Erstellungsbenutzeroberfläche für die Erstellung ist zum Generieren des neuen Modells gewechselt.
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
@@ -420,4 +420,4 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die von der Kopieraktivität in Azure Data Factory als Quellen und Senken unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die diese Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

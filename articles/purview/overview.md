@@ -1,29 +1,25 @@
 ---
-title: Einführung in Azure Purview (Vorschau)
+title: Einführung in Azure Purview
 description: Dieser Artikel enthält eine Übersicht über Azure Purview, einschließlich der Features des Diensts und der Probleme, die er beheben soll. Azure Purview ermöglicht Benutzern das Registrieren, Ermitteln, Verstehen und Nutzen von Datenquellen.
 author: hophanms
 ms.author: hophan
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: a4ca7c318dc1ac9d135c43c6d063a0f8a45276fe
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: ff8acfc01999a25079da5928f6e0642b6c5793c3
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729758"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218696"
 ---
 # <a name="what-is-azure-purview"></a>Was ist Azure Purview?
-
-> [!IMPORTANT]
-> Azure Purview ist derzeit als VORSCHAUVERSION verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
 Azure Purview ist ein einheitlicher Datengovernancedienst, der Sie bei der Verwaltung und Steuerung von lokalen Daten, von Daten in mehreren Clouds sowie von SaaS-Daten (Software-as-a-Service) unterstützt. Erstellen Sie mühelos eine ganzheitliche, aktuelle Übersicht über Ihre Datenlandschaft – mit automatisierter Datenermittlung, Klassifizierung vertraulicher Daten und End-to-End-Datenherkunft. Unterstützen Sie Datenconsumer bei der Suche nach nützlichen, verlässlichen Daten.
 
 Azure Purview Data Map bildet die Grundlage für die Datenermittlung und eine effektive Datengovernance. Purview Data Map ist ein cloudnativer PaaS-Dienst, der Metadaten zu Unternehmensdaten in Analyse- und Betriebssystemen erfasst – sowohl lokal als auch in der Cloud. Durch das integrierte automatisierte Überprüfungs- und Klassifizierungssystem wird Purview Data Map automatisch auf dem neuesten Stand gehalten. Geschäftsbenutzer können Purview Data Map über eine intuitive Benutzeroberfläche konfigurieren und verwenden, und Entwickler können mithilfe Open-Source-basierter Apache Atlas 2.0-APIs programmgesteuert mit Data Map interagieren.
 
-Azure Purview Data Map bildet die Grundlage für Purview Data Catalog und Purview-Datenerkenntnisse als einheitliche Umgebungen innerhalb von Purview Studio.
+Azure Purview Data Map bildet die Grundlage für Purview Data Catalog und Purview-Datenerkenntnisse als einheitliche Umgebungen innerhalb von [Purview Studio](https://web.purview.azure.com/resource/).
  
 Mit Purview Data Catalog können sowohl Geschäftsbenutzer als auch technische Benutzer schnell und einfach relevante Daten finden. Hierzu steht ihnen eine Suchfunktion mit Filtern zur Verfügung, die auf verschiedenen Eingrenzungsoptionen wie Glossarbegriffen, Klassifizierungen, Vertraulichkeitsbezeichnungen und Ähnlichem basieren. Für fachliche Ansprechpartner, Data Stewards und Datenverantwortliche bietet Purview Data Catalog Datenkuratierungsfeatures wie etwa die Verwaltung von Unternehmensglossaren und die Möglichkeit, die Markierung von Datenassets mit Glossarbegriffen zu automatisieren. Datenconsumer und Datenproduzenten können zudem die Herkunft von Datenassets visuell nachverfolgen – von den lokalen Betriebssystemen über Bewegungen, Transformationen und Anreicherungen mit verschiedenen cloudbasierten Systemen zur Datenspeicherung und -verarbeitung bis hin zur Nutzung in einem Analysesystem wie Power BI.
 

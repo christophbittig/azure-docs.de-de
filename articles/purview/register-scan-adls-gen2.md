@@ -4,15 +4,15 @@ description: In diesem Tutorial wird beschrieben, wie Sie Azure Data Lake Storag
 author: shsandeep123
 ms.author: sandeepshah
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 02bdb1812556d08b00885a68fb50443e97d6977c
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 0d2da12eed5bdfe393cb20c489df2591356b9012
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214047"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214862"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Registrieren und Überprüfen von Azure Data Lake Storage Gen2
 
@@ -119,7 +119,7 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 Gehen Sie wie folgt vor, um in Ihrem Datenkatalog ein neues ADLS Gen2-Konto zu registrieren:
 
 1. Navigieren Sie zu Ihrem Purview-Konto.
-2. Klicken Sie im linken Navigationsbereich auf **Data Map**.
+2. Wählen Sie im linken Navigationsbereich **Data Map** aus.
 3. Wählen Sie **Registrieren** aus.
 4. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Data Lake Storage Gen2** aus.
 5. Wählen Sie **Weiter**.
@@ -138,7 +138,7 @@ Führen Sie auf dem Bildschirm **Register sources (Azure Data Lake Storage Gen2)
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+1. Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
 
 1. Wählen Sie die Azure Data Lake Storage Gen2-Quelle aus, die Sie registriert haben.
 

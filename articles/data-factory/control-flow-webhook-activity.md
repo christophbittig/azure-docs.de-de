@@ -1,7 +1,7 @@
 ---
-title: Webhook-Aktivität in Azure Data Factory
+title: Webhook-Aktivität
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Die Webhook-Aktivität setzt die Ausführung der Pipeline erst fort, nachdem sie das angefügte Dataset mit bestimmten vom Benutzer angegebenen Kriterien überprüft hat.
+description: Die Webhook-Aktivität für Azure Data Factory und Synapse Analytics steuert die Ausführung von Pipelines über benutzerdefinierten Code.
 author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
@@ -9,19 +9,19 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.openlocfilehash: 3c2194aff9296230333c433b65f3be303768f9fb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 8b0443cd44dffeec1ea9a70e460ca0f72e05b24d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640606"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798824"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-Aktivität in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Eine Webhook-Aktivität kann die Ausführung von Pipelines über Ihren benutzerdefinierten Code steuern. Mithilfe der Webhook-Aktivität kann Kundencode einen Endpunkt aufrufen und ihm eine Rückruf-URL übergeben. Die Pipelineausführung wartet, bis der Rückruf aufgerufen wurde, bevor sie mit der nächsten Aktivität fortfährt.
+Eine Webhook-Aktivität kann die Ausführung von Pipelines über benutzerdefinierten Code steuern. Mithilfe der Webhook-Aktivität kann Code einen Endpunkt aufrufen und eine Rückruf-URL an ihn übergeben. Die Pipelineausführung wartet, bis der Rückruf aufgerufen wurde, bevor sie mit der nächsten Aktivität fortfährt.
 
 > [!IMPORTANT]
 > Mit der Webhook-Aktivität können Sie nun Fehlerstatus- und benutzerdefinierte Meldungen an die Aktivität und die Pipeline zurückgeben. Legen Sie _reportStatusOnCallBack_ auf „true“ fest, und geben Sie _StatusCode_ und _Error_ in der Rückrufnutzlast an. Weitere Informationen finden Sie unter [Weitere Hinweise](#additional-notes).
@@ -102,7 +102,7 @@ Geben Sie die Base64-codierten Inhalte einer PFX-Datei und ein Kennwort an.
 
 ### <a name="managed-identity"></a>Verwaltete Identität
 
-Geben Sie den Ressourcen-URI, für den das Zugriffstoken angefordert wird, mithilfe der verwalteten Identität der Data Factory an. Verwenden Sie zum Aufrufen der Azure-Ressourcenverwaltungs-API `https://management.azure.com/`. Weitere Informationen zur Funktion verwalteter Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
+Verwenden Sie die verwaltete Identität für den Data Factory- oder Synapse-Arbeitsbereich, um den Ressourcen-URI anzugeben, für den das Zugriffstoken angefordert wird. Verwenden Sie zum Aufrufen der Azure-Ressourcenverwaltungs-API `https://management.azure.com/`. Weitere Informationen zur Funktion verwalteter Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
 
 ```json
 "authentication": {
@@ -112,11 +112,11 @@ Geben Sie den Ressourcen-URI, für den das Zugriffstoken angefordert wird, mithi
 ```
 
 > [!NOTE]
-> Wenn Ihre Data Factory mit einem Git-Repository konfiguriert ist, müssen Sie Ihre Anmeldeinformationen in Azure Key Vault speichern, um die Standardauthentifizierung oder die Clientzertifikatauthentifizierung zu verwenden. Azure Data Factory speichert keine Kennwörter in Git.
+> Wenn der Dienst mit einem Git-Repository konfiguriert ist, müssen Sie Ihre Anmeldeinformationen in Azure Key Vault speichern, um die Standardauthentifizierung oder die Clientzertifikatauthentifizierung zu verwenden. Der Dienst speichert keine Kennwörter in Git.
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
 
-Data Factory übergibt die zusätzliche Eigenschaft **callBackUri** dem an den URL-Endpunkt gesendeten Textkörper. Data Factory erwartet, dass dieser URI vor dem angegebenen Timeoutwert aufgerufen wird. Wenn der URI nicht aufgerufen wird, tritt bei der Aktivität mit dem Status „TimedOut“ ein Fehler auf.
+Der Dienst übergibt die zusätzliche Eigenschaft **callBackUri** in dem an den URL-Endpunkt gesendeten Text. Der Dienst erwartet, dass dieser URI vor dem angegebenen Timeoutwert aufgerufen wird. Wenn der URI nicht aufgerufen wird, tritt bei der Aktivität mit dem Status „TimedOut“ ein Fehler auf.
 
 Bei der Webhook-Aktivität tritt ein Fehler auf, wenn beim Aufruf des benutzerdefinierten Endpunkts ein Fehler auftritt. Im Textkörper des Rückrufs kann jede beliebige Fehlermeldung hinzugefügt und in einer späteren Aktivität verwendet werden.
 
@@ -145,7 +145,7 @@ Wenn Sie die Eigenschaft **Status bei Rückruf melden** verwenden, müssen Sie d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über die folgenden von Data Factory unterstützten Ablaufsteuerungsaktivitäten:
+Weitere Informationen finden Sie in den folgenden unterstützten Ablaufsteuerungsaktivitäten:
 
 - [Aktivität „If Condition“](control-flow-if-condition-activity.md)
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)

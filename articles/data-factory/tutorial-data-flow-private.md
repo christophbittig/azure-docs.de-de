@@ -9,12 +9,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/04/2021
-ms.openlocfilehash: e73b2a96d2b051dbb208bb9614569c423f99d8f0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fb7dfc93048d888eb83088ca2a3f458219fdc393
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349496"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128617885"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Sicheres Transformieren von Daten mithilfe von Zuordnungsdatenflüssen
 
@@ -71,15 +71,15 @@ In diesem Schritt erstellen Sie eine Azure Integration Runtime-Instanz und aktiv
 
 1. Navigieren Sie im Data Factory-Portal zu **Verwalten**, und wählen Sie **Neu** aus, um eine neue Azure Integration Runtime-Instanz zu erstellen.
 
-   ![Screenshot, der das Erstellen einer neuen Azure Integration Runtime-Instanz zeigt.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/create-new-azure-ir.png" alt-text="Screenshot, der das Erstellen einer neuen Azure Integration Runtime-Instanz zeigt.":::
 1. Wählen Sie auf der Seite **Integration Runtime-Setup** basierend auf den erforderlichen Funktionen die Integration Runtime aus, die erstellt werden soll. Wählen Sie für dieses Tutorial **Azure, selbstgehostet** aus, und klicken Sie dann auf **Fortsetzen**. 
 1. Wählen Sie **Azure** aus, und klicken Sie dann auf **Fortsetzen**, um eine Azure Integration Runtime zu erstellen.
 
-   ![Screenshot der neuen Azure Integration Runtime-Instanz.](./media/tutorial-copy-data-portal-private/azure-ir.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/azure-ir.png" alt-text="Screenshot der neuen Azure Integration Runtime-Instanz.":::
 
 1. Wählen Sie unter **Konfiguration des virtuellen Netzwerks (Vorschau)** die Option **Aktivieren** aus.
 
-   ![Screenshot der Aktivierung der neuen Azure Integration Runtime-Instanz.](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/enable-managed-vnet.png" alt-text="Screenshot der Aktivierung der neuen Azure Integration Runtime-Instanz.":::
 
 1. Klicken Sie auf **Erstellen**.
 
@@ -87,21 +87,21 @@ In diesem Schritt erstellen Sie eine Azure Integration Runtime-Instanz und aktiv
 
 In diesem Schritt erstellen Sie eine Pipeline mit einer Datenflussaktivität.
 
-1. Klicken Sie auf der Startseite von Azure Data Factory auf **Orchestrate** (Orchestrieren).
+1. Klicken Sie auf der Homepage von Azure Data Factory auf **Orchestrate** (Orchestrieren).
 
-   ![Screenshot, der das Erstellen einer Pipeline zeigt.](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Screenshot, der das Erstellen einer Pipeline zeigt.":::
 
 1. Geben Sie im Bereich „Eigenschaften“ der Pipeline als ihren Namen **TransformMovies** ein.
 1. Klappen Sie im Bereich **Aktivitäten** das Element **Verschieben und transformieren** auf. Ziehen Sie die Aktivität **Datenfluss** per Drag & Drop aus dem Bereich auf die Canvas der Pipeline.
 
 1. Wählen Sie im Popupfenster **Datenfluss hinzufügen** die Option **Neuen Datenfluss erstellen** und dann **Zuordnungsdatenfluss** aus. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-    ![Screenshot mit dem Zuordnungsdatenfluss.](media/tutorial-data-flow-private/mapping-dataflow.png)
+    :::image type="content" source="media/tutorial-data-flow-private/mapping-dataflow.png" alt-text="Screenshot mit dem Zuordnungsdatenfluss.":::
 
 1. Geben Sie Ihrem Datenfluss im Bereich „Eigenschaften“ den Namen **TransformMovies**.
 1. Setzen Sie den Schieberegler **Datenfluss debuggen** in der oberen Pipeline-Canvas-Leiste auf „ein“. Der Debugmodus ermöglicht das interaktive Testen von Transformationslogik mit einem aktiven Spark-Cluster. Die Aufwärmphase von Datenflussclustern dauert 5 bis 7 Minuten. Den Benutzern wird empfohlen, zuerst den Debugmodus zu aktivieren, wenn sie die Entwicklung eines Datenflusses planen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
 
-    ![Screenshot, der den Schieberegler für „Datenfluss debuggen“ zeigt.](media/tutorial-data-flow-private/dataflow-debug.png)
+    :::image type="content" source="media/tutorial-data-flow-private/dataflow-debug.png" alt-text="Screenshot, der den Schieberegler für „Datenfluss debuggen“ zeigt.":::
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Erstellen von Transformationslogik auf der Datenflusscanvas
 
@@ -125,7 +125,7 @@ In diesem Schritt richten Sie Data Lake Storage Gen2 als Quelle ein.
 
 1. Aktivieren Sie unbedingt **Interaktive Erstellung**. Die Aktivierung kann ungefähr 1 Minute dauern.
 
-    ![Screenshot, der eine interaktive Erstellung zeigt.](./media/tutorial-data-flow-private/interactive-authoring.png)
+    :::image type="content" source="./media/tutorial-data-flow-private/interactive-authoring.png" alt-text="Screenshot, der eine interaktive Erstellung zeigt.":::
 
 1. Klicken Sie auf **Verbindung testen**. Es sollte ein Verbindungsfehler auftreten, weil  ohne Erstellung und Genehmigung eines privaten Endpunkts nicht auf das Speicherkonto zugegriffen werden kann. In der Fehlermeldung sollte ein Link zum Erstellen eines privaten Endpunkts angezeigt werden, dem Sie folgen können, um einen verwalteten privaten Endpunkt zu erstellen. Alternativ dazu können Sie direkt zur Registerkarte **Verwalten** navigieren und die Anweisungen in diesem [Abschnitt](#create-a-managed-private-endpoint) befolgen, um einen verwalteten privaten Endpunkt zu erstellen.
 
@@ -137,11 +137,11 @@ In diesem Schritt richten Sie Data Lake Storage Gen2 als Quelle ein.
 
 1. Geben Sie auf dem Bildschirm zum Erstellen von Datasets unter dem Feld **Dateipfad** den Speicherort Ihrer Datei ein. In diesem Tutorial befindet sich die Datei „moviesDB.csv“ im Container **sample-data**. Da die Datei Kopfzeilen enthält, aktivieren Sie das Kontrollkästchen **Erste Zeile als Kopfzeile**. Wählen Sie **Aus Verbindung/Speicher** aus, um das Headerschema direkt aus der Datei in den Speicher zu importieren. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-    ![Screenshot, der den Quellpfad zeigt.](media/tutorial-data-flow-private/source-file-path.png)
+    :::image type="content" source="media/tutorial-data-flow-private/source-file-path.png" alt-text="Screenshot, der den Quellpfad zeigt.":::
 
 1. Nachdem Ihr Debugcluster gestartet wurde, wechseln Sie zur Registerkarte **Datenvorschau** der Quelltransformation, und wählen Sie **Aktualisieren** aus, um eine Momentaufnahme der Daten zu erhalten. Mithilfe der Datenvorschau können Sie überprüfen, ob die Transformation ordnungsgemäß konfiguriert ist.
 
-    ![Screenshot, der die Registerkarte „Datenvorschau“ zeigt.](media/tutorial-data-flow-private/data-preview.png)
+    :::image type="content" source="media/tutorial-data-flow-private/data-preview.png" alt-text="Screenshot, der die Registerkarte „Datenvorschau“ zeigt.":::
 
 #### <a name="create-a-managed-private-endpoint"></a>Erstellen eines verwalteten privaten Endpunkts
 
@@ -155,7 +155,7 @@ Wenn Sie beim Testen der vorhergehenden Verbindung nicht den Link ausgewählt ha
 1. Navigieren Sie zum Abschnitt **Verwaltete private Endpunkte**.
 1. Wählen Sie unter **Verwaltete private Endpunkte** die Option **+ Neu** aus.
 
-    ![Screenshot, der die Schaltfläche „Verwaltete private Endpunkte -> Neu“ zeigt.](./media/tutorial-data-flow-private/new-managed-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-data-flow-private/new-managed-private-endpoint.png" alt-text="Screenshot, der die Schaltfläche „Verwaltete private Endpunkte -&gt; Neu“ zeigt."::: 
 
 1. Wählen Sie in der Liste die Kachel **Azure Data Lake Storage Gen2** und dann **Weiter** aus.
 1. Geben Sie den Namen des von Ihnen erstellten Speicherkontos ein.
@@ -163,7 +163,7 @@ Wenn Sie beim Testen der vorhergehenden Verbindung nicht den Link ausgewählt ha
 1. Nach einigen Sekunden sollten Sie sehen, dass für die erstellte Private Link-Instanz eine Genehmigung erforderlich ist.
 1. Wählen Sie den zuvor erstellten privaten Endpunkt aus. Ein Link wird angezeigt, über den Sie den privaten Endpunkt auf Speicherkontoebene genehmigen können.
 
-    ![Screenshot, der den Bereich „Verwalteter privater Endpunkt“ zeigt.](./media/tutorial-data-flow-private/manage-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-data-flow-private/manage-private-endpoint.png" alt-text="Screenshot, der den Bereich „Verwalteter privater Endpunkt“ zeigt."::: 
 
 #### <a name="approval-of-a-private-link-in-a-storage-account"></a>Genehmigung einer Private Link-Instanz in einem Speicherkonto
 
@@ -171,7 +171,7 @@ Wenn Sie beim Testen der vorhergehenden Verbindung nicht den Link ausgewählt ha
 
 1. Aktivieren Sie das Kontrollkästchen für den privaten Endpunkt, den Sie oben erstellt haben, und wählen Sie **Genehmigen** aus.
 
-    ![Screenshot, der die Schaltfläche „Genehmigen“ für den privaten Endpunkt zeigt.](./media/tutorial-data-flow-private/approve-private-endpoint.png)
+    :::image type="content" source="./media/tutorial-data-flow-private/approve-private-endpoint.png" alt-text="Screenshot, der die Schaltfläche „Genehmigen“ für den privaten Endpunkt zeigt.":::
 
 1. Fügen Sie eine Beschreibung hinzu, und wählen Sie **Ja** aus.
 1. Gehen Sie in Data Factory auf der Registerkarte **Verwalten** zurück zum Abschnitt **Verwaltete private Endpunkte**.
@@ -181,65 +181,65 @@ Wenn Sie beim Testen der vorhergehenden Verbindung nicht den Link ausgewählt ha
 
 1. Wählen Sie auf der Datenflusscanvas neben dem Quellknoten das Pluszeichen aus, um eine neue Transformation hinzuzufügen. Als erste Transformation fügen Sie einen **Filter** hinzu.
 
-    ![Screenshot, der das Hinzufügen eines Filters zeigt.](media/tutorial-data-flow-private/add-filter.png)
+    :::image type="content" source="media/tutorial-data-flow-private/add-filter.png" alt-text="Screenshot, der das Hinzufügen eines Filters zeigt.":::
 1. Geben Sie der Filtertransformation den Namen **FilterYears**. Wählen Sie auf das Ausdrucksfeld neben **Filtern nach** aus, um den Ausdrucks-Generator zu öffnen. Hier geben Sie dann die Filterbedingung an.
 
-    ![Screenshot, der FilterYears zeigt.](media/tutorial-data-flow-private/filter-years.png)
+    :::image type="content" source="media/tutorial-data-flow-private/filter-years.png" alt-text="Screenshot, der FilterYears zeigt.":::
 1. Mit dem Datenfluss-Ausdrucks-Generator können Sie Ausdrücke interaktiv erstellen, die dann in verschiedenen Transformationen verwendet werden können. Ausdrücke können integrierte Funktionen, Spalten aus dem Eingabeschema und benutzerdefinierte Parameter enthalten. Weitere Informationen zum Erstellen von Ausdrücken finden Sie unter [Erstellen von Ausdrücken im Zuordnungsdatenfluss](./concepts-data-flow-expression-builder.md).
 
-    * In diesem Tutorial möchten Sie Filme des Genres „Komödie“ filtern, die von 1910 bis 2000 entstanden sind. Da die Jahresangabe derzeit eine Zeichenfolge ist, müssen Sie sie mithilfe der Funktion ```toInteger()``` in eine ganze Zahl konvertieren. Verwenden Sie die Operatoren „Größer oder gleich (>=)“ und „Kleiner oder gleich (<=)“ für einen Vergleich mit den Literalwerten für die Jahre 1910 und 2000. Verbinden Sie diese Ausdrücke mit dem Und-Operator (&&). Der Ausdruck sieht wie folgt aus:
+    * In diesem Tutorial möchten Sie Filme des Genres „Komödie“ filtern, die von 1910 bis 2000 entstanden sind. Da die Jahresangabe derzeit eine Zeichenfolge ist, müssen Sie sie mithilfe der Funktion `toInteger()` in eine ganze Zahl konvertieren. Verwenden Sie die Operatoren „Größer oder gleich (>=)“ und „Kleiner oder gleich (<=)“ für einen Vergleich mit den Literalwerten für die Jahre 1910 und 2000. Verbinden Sie diese Ausdrücke mit dem Und-Operator (&&). Der Ausdruck sieht wie folgt aus:
 
-        ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
+        `toInteger(year) >= 1910 && toInteger(year) <= 2000`
 
-    * Um zu ermitteln, welche Filme Komödien sind, können Sie mithilfe der Funktion ```rlike()``` in der Spalte „genres“ nach dem Muster „Comedy“ suchen. Verbinden Sie den rlike-Ausdruck mit dem Jahresvergleich, um Folgendes zu erhalten:
+    * Um zu ermitteln, welche Filme Komödien sind, können Sie mithilfe der Funktion `rlike()` in der Spalte „genres“ nach dem Muster „Comedy“ suchen. Verbinden Sie den `rlike`-Ausdruck mit dem Jahresvergleich, um Folgendes zu erhalten:
 
-        ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
+        `toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')`
 
     * Wenn ein Debugcluster aktiv ist, können Sie die Logik überprüfen. Wählen Sie dazu **Aktualisieren** aus, um die Ausdrucksausgabe im Vergleich zu den verwendeten Eingaben anzuzeigen. Es gibt mehrere Möglichkeiten, wie Sie diese Logik mithilfe der Ausdruckssprache für Datenflüsse erzielen können.
 
-        ![Screenshot, der den Filterausdruck zeigt.](media/tutorial-data-flow-private/filter-expression.png)
+        :::image type="content" source="media/tutorial-data-flow-private/filter-expression.png" alt-text="Screenshot, der den Filterausdruck zeigt.":::
 
     * Wählen Sie **Speichern und beenden** aus, nachdem Sie den Ausdruck fertig gestellt haben.
 
 1. Rufen Sie eine **Datenvorschau** ab, um zu überprüfen, ob der Filter ordnungsgemäß funktioniert.
 
-    ![Screenshot, der die gefilterte Datenvorschau zeigt.](media/tutorial-data-flow-private/filter-data.png)
+    :::image type="content" source="media/tutorial-data-flow-private/filter-data.png" alt-text="Screenshot, der die gefilterte Datenvorschau zeigt.":::
 
 ### <a name="add-the-aggregate-transformation"></a>Hinzufügen der Transformation für das Aggregieren
 
 1. Als nächste Transformation fügen Sie eine **Aggregat**-Transformation unter **Schemamodifizierer** hinzu.
 
-    ![Screenshot, der das Hinzufügen des Aggregats zeigt.](media/tutorial-data-flow-private/add-aggregate.png)
+    :::image type="content" source="media/tutorial-data-flow-private/add-aggregate.png" alt-text="Screenshot, der das Hinzufügen des Aggregats zeigt.":::
 1. Geben Sie der Aggregattransformation den Namen **AggregateComedyRating**. Wählen Sie auf der Registerkarte **Gruppieren nach** in der Dropdownliste **year** aus, um die Aggregationen nach dem Jahr zu gruppieren, in dem der Film in die Kinos kam.
 
-    ![Screenshot, der die Aggregatgruppe zeigt.](media/tutorial-data-flow-private/group-by-year.png)
+    :::image type="content" source="media/tutorial-data-flow-private/group-by-year.png" alt-text="Screenshot, der die Aggregatgruppe zeigt.":::
 1. Wechseln Sie zur Registerkarte **Aggregate**. Geben Sie im linken Textfeld der Aggregatspalte den Namen **AverageComedyRating**. Wählen Sie das rechte Ausdrucksfeld aus, um den Aggregatausdruck über den Ausdrucks-Generator einzugeben.
 
-    ![Screenshot, der den Namen der Aggregatspalte zeigt.](media/tutorial-data-flow-private/name-column.png)
+    :::image type="content" source="media/tutorial-data-flow-private/name-column.png" alt-text="Screenshot, der den Namen der Aggregatspalte zeigt.":::
 1. Verwenden Sie die Aggregatfunktion ```avg()```, um den Durchschnitt der Spalte **Rating** zu erhalten. Da **Rating** eine Zeichenfolge ist und ```avg()``` eine numerische Eingabe benötigt, muss der Wert über die Funktion ```toInteger()``` in eine Zahl konvertiert werden. Dieser Ausdruck sieht wie folgt aus:
 
-    ```avg(toInteger(Rating))```
+    `avg(toInteger(Rating))`
 
 1. Wählen Sie **Speichern und beenden** aus, wenn Sie fertig sind.
 
-    ![Screenshot, der das Speichern des Aggregats zeigt.](media/tutorial-data-flow-private/save-aggregate.png)
+    :::image type="content" source="media/tutorial-data-flow-private/save-aggregate.png" alt-text="Screenshot, der das Speichern des Aggregats zeigt.":::
 1. Wechseln Sie zur Registerkarte **Datenvorschau**, um die Transformationsausgabe anzuzeigen. Es sind nur zwei Spalten vorhanden: **year** und **AverageComedyRating**.
 
 ### <a name="add-the-sink-transformation"></a>Hinzufügen der Senkentransformation
 
 1. Als Nächstes fügen Sie eine Transformation vom Typ **Senke** unter **Ziel** hinzu.
 
-    ![Screenshot, der das Hinzufügen einer Senke zeigt.](media/tutorial-data-flow-private/add-sink.png)
+    :::image type="content" source="media/tutorial-data-flow-private/add-sink.png" alt-text="Screenshot, der das Hinzufügen einer Senke zeigt.":::
 1. Geben Sie der Senke den Namen **Sink**. Wählen Sie **Neu** aus, um das Senkendataset zu erstellen.
 
-    ![Screenshot, der das Erstellen einer Senke zeigt.](media/tutorial-data-flow-private/create-sink.png)
+    :::image type="content" source="media/tutorial-data-flow-private/create-sink.png" alt-text="Screenshot, der das Erstellen einer Senke zeigt.":::
 1. Wählen Sie auf der Seite **Neues Dataset** die Option **Azure Data Lake Storage Gen2** und dann **Weiter** aus.
 
 1. Wählen Sie auf der Seite **Format auswählen** die Option **DelimitedText** und dann **Weiter** aus.
 
 1. Geben Sie dem Senkendataset den Namen **MoviesSink**. Wählen Sie als verknüpften Dienst denselben verknüpften Dienst **ADLSGen2** aus, den Sie für die Quelltransformation erstellt haben. Geben Sie einen Ausgabeordner ein, in den die Daten geschrieben werden sollen. In diesem Tutorial werden Daten in den Ordner **output** im Container **sample-data** geschrieben. Der Ordner muss nicht vorab vorhanden sein und kann dynamisch erstellt werden. Aktivieren Sie das Kontrollkästchen **Erste Zeile als Kopfzeile**, und wählen Sie **Kein** für **Schema importieren** aus. Klicken Sie auf **OK**.
 
-    ![Screenshot, der den Pfad der Senke zeigt.](media/tutorial-data-flow-private/sink-file-path.png)
+    :::image type="content" source="media/tutorial-data-flow-private/sink-file-path.png" alt-text="Screenshot, der den Pfad der Senke zeigt.":::
 
 Sie haben nun die Erstellung des Datenflusses beendet. Jetzt können Sie ihn in ihrer Pipeline ausführen.
 
@@ -253,7 +253,7 @@ Sie können eine Pipeline vor der Veröffentlichung debuggen. In diesem Schritt 
 
 1. Auf der Detailseite werden die Anzahl der Zeilen und Dauer der einzelnen Transformationsschritte angezeigt.
 
-    ![Screenshot, der eine Überwachungsausführung zeigt.](media/tutorial-data-flow-private/run-details.png)
+    :::image type="content" source="media/tutorial-data-flow-private/run-details.png" alt-text="Screenshot, der eine Überwachungsausführung zeigt.":::
 1. Wählen Sie eine Transformation aus, um ausführliche Informationen über die Spalten und Partitionierung der Daten zu erhalten.
 
 Wenn Sie dieses Tutorial richtig durchgeführt haben, sollten 83 Zeilen und 2 Spalten in den Senkenordner geschrieben worden sein. Sie können sich von der Richtigkeit der Daten überzeugen, indem Sie den Blobspeicher überprüfen.

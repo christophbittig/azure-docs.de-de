@@ -10,83 +10,86 @@ metadata:
   ms.author: wiassaf
   ms.reviewer: mathoma
   ms.custom: 
-  ms.date: 03/23/2021
-  ms.openlocfilehash: 48d46ca71d76d46cb43fbed8fee8dcbe67e4ce3d
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.date: 09/15/2021
+  ms.openlocfilehash: ba903b2ed34877a05b5993095b65d537416486ca
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121739682"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128677718"
 title: Wartungsfenster – Häufig gestellte Fragen
 summary: In diesem Artikel werden häufig gestellte Fragen zum Wartungsfenster für [Azure SQL-Datenbank](sql-database-paas-overview.md) und [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) beantwortet.
 sections:
 - name: Allgemein
   questions:
-  - question: What is the maintenance window feature?
+  - question: Worum handelt es sich beim Wartungsfensterfeature?
     answer: >
-      The maintenance window feature provides you with the ability to onboard Azure SQL resource to prescheduled time blocks outside of business hours. See [Maintenance window schedules](maintenance-window.md#gain-more-predictability-with-maintenance-window) for more information.
-  - question: What is the default maintenance policy if I do not choose any specific window?
-    answer: "Maintenance events will occur during the default window 5PM to 8AM local time, Monday - Sunday. \n"
-  - question: Users work in a different time zone than the Azure data center. Which time zone is local?
+      Das Wartungsfenster bietet Ihnen die Möglichkeit, eine Azure SQL-Ressource in vorab geplante Zeitblöcke außerhalb der Geschäftszeiten zu integrieren. Weitere Informationen finden Sie unter [Mehr Vorhersehbarkeit bei Wartungsfenstern](maintenance-window.md#gain-more-predictability-with-maintenance-window).
+  - question: Wie lautet die Standardwartungsrichtlinie, wenn ich kein bestimmtes Fenster auswähle?
+    answer: "Wartungsereignisse treten während des Standardfensters von 17:00 bis 8:00 Uhr Ortszeit von Montag bis Sonntag auf. \n"
+  - question: Benutzer befinden sich in einer anderen Zeitzone als das Azure-Rechenzentrum. Wie lautet die Zeitzone vor Ort?
     answer: >
-      Local time is determined by the location of Azure region that hosts the resource and may observe daylight saving time in accordance with local time zone definition. It is not determined by the time zone configured on SQL database (always UTC) or managed instance.
-  - question: Can I choose a specific time/day for the maintenance window?
-    answer: "No, you can choose between pre-scheduled weekday or weekend windows. The maintenance can happen any time or day within the window.  \n"
-  - question: What happens once I choose a maintenance window?
+      Die Ortszeit wird durch die Azure-Region bestimmt, in der die Ressource gehostet wird, und die Sommerzeit kann gemäß der Definition der lokalen Zeitzone berücksichtigt werden. Sie wird nicht durch die Zeitzone bestimmt, die für SQL-Datenbank (immer UTC) oder die verwaltete Instanz konfiguriert ist.
+  - question: Kann ich eine bestimmte Uhrzeit/einen bestimmten Tag für das Wartungsfenster auswählen?
+    answer: "Nein, Sie können zwischen vorab geplanten Fenstern an Wochentagen oder Wochenenden wählen. Die Wartung kann zu einer beliebigen Uhrzeit oder an einem beliebigen Tag innerhalb des Fensters erfolgen.  \n"
+  - question: Was geschieht, nachdem ich ein Wartungsfenster ausgewählt habe?
     answer: >
-      Configuring maintenance window is a long running asynchronous operation, similar to changing the service tier of your Azure SQL resource. The resource is available during the process, except a short reconfiguration that happens at the end of the operation and typically lasts up to 8 seconds even in case of interrupted long-running transactions. To minimize the impact of the reconfiguration you should perform the operation outside of the peak hours. In case of managed instance, IP address of the instance will change.
-  - question: What types of updates are typically performed during a maintenance window?
+      Das Konfigurieren des Wartungsfensters ist ein zeitintensiver, asynchroner Vorgang. Er ähnelt dem Ändern der Dienstebene der Azure SQL-Ressource. Die Ressource bleibt während des Prozesses verfügbar – mit Ausnahme einer kurzen Neukonfiguration, die am Ende des Vorgangs erfolgt und normalerweise etwa acht Sekunden dauert (auch bei unterbrochenen zeitintensiven Transaktionen). Wenn Sie die Auswirkungen der Neukonfiguration minimieren möchten, sollten Sie den Vorgang außerhalb der Spitzenzeiten durchführen. Bei einer verwalteten Instanz ändert sich die IP-Adresse der Instanz.
+  - question: Welche Arten von Updates werden während eines Wartungsfensters in der Regel ausgeführt?
     answer: >
-      The maintenance event may contain updates for hardware, firmware, operating system, satelite software components, and SQL engine. They are typically combined into a single batch to minimize the incidence of maintenance events.
-  - question: What can I expect during a maintenance event?
+      Das Wartungsereignis kann Updates für Hardware, Firmware, Betriebssystem, zugehörige Softwarekomponenten und SQL Engine enthalten. Sie werden in der Regel zu einem einzelnen Batch kombiniert, um die Häufung von Wartungsereignissen zu minimieren.
+  - question: Was kann ich während eines Wartungsereignisses erwarten?
     answer: >
-      During a maintenance update, databases are fully available and accessible but some of the maintenance updates require a reconfiguration as Azure takes SQL Databases offline for a short time to apply the maintenance updates (generally a few seconds in duration). Planned maintenance updates occur once every 35 days on average, which means customer can expect approximately one planned maintenance event per month per Azure SQL Database and managed instance, and only during the maintenance window slots selected by the customer.
-  - question: Are there any prerequisites for configuring maintenance window?
+      Während eines Wartungsupdates sind die Datenbanken in vollem Umfang verfügbar und zugänglich, doch ist bei einigen Wartungsupdates eine Neukonfiguration erforderlich, da Azure zum Anwenden der Wartungsupdates SQL-Datenbank-Instanzen für kurze Zeit offline schaltet (im Allgemeinen einige Sekunden).Geplante Wartungsupdates erfolgen im Schnitt alle 35 Tage. Dies bedeutet, dass der Kunde mit etwa einem geplanten Wartungsereignis pro Monat für jede Azure SQL-Datenbank-Instanz oder verwaltete Instanz rechnen kann, das nur in dem vom Kunden ausgewählten Wartungszeitfenster erfolgt.
+  - question: Gibt es Voraussetzungen für die Konfiguration des Wartungsfensters?
     answer: >
-      In case of managed instance [additional IP addresses](../managed-instance/vnet-subnet-determine-size.md#update-scenarios) are needed temporarily, as in scaling vCores scenario for corresponding service tier.
-  - question: In which regions is choosing a maintenance window available?
+      Im Fall einer verwalteten Instanz werden vorübergehend [zusätzliche IP-Adressen](../managed-instance/vnet-subnet-determine-size.md#update-scenarios) benötigt – wie im Szenario „Skalieren von virtuellen Kernen“ für die entsprechende Dienstebene.
+  - question: In welchen Regionen kann ein Wartungsfenster ausgewählt werden?
     answer: >
-      For a list of available regions, see [Maintenance window availability](maintenance-window.md#availability).
-  - question: I don’t see my region in the available regions list, what can I do?
-    answer: "Contact [azsqlcmfeedback@microsoft.com](mailto:azsqlcmfeedback@microsoft.com) to share the feedback and check the plans for your region. \n"
-  - question: What is the pricing for maintenance window?
+      Eine Liste der verfügbaren Regionen finden Sie unter [Verfügbarkeit](maintenance-window.md#availability).
+  - question: Ich sehe meine Region in der Liste der verfügbaren Regionen nicht. Was kann ich tun?
+    answer: "Senden Sie eine E-Mail an [azsqlcmfeedback@microsoft.com](mailto:azsqlcmfeedback@microsoft.com), um Feedback zu geben und Informationen zu den Plänen für Ihre Region zu erhalten. \n"
+  - question: Welche Preise gelten für das Wartungsfenster?
     answer: >
-      Configuring and using maintenance window is free of charge to all eligible Azure subscription types, see [Maintenance window cost](maintenance-window.md#cost-and-eligibility).
-  - question: Would I receive a notification of the maintenance window?
+      Das Konfigurieren und Verwenden des Wartungsfensters ist für alle berechtigten Azure-Abonnementtypen kostenlos. Weitere Informationen finden Sie unter [Kosten und Berechtigungen](maintenance-window.md#cost-and-eligibility).
+  - question: Erhalte ich eine Benachrichtigung über das Wartungsfenster?
     answer: >
-      You can opt in to receive notification 24 hours prior to the maintenance event, immediately before maintenance starts, and when the maintenance window is completed. The Resource health center can be checked for more information. To receive emails, advance notification must be configured, for more information see [Advance notifications](advance-notifications.md).
-  - question: In which service level objectives (SLOs) can I choose a maintenance window?
+      Sie können sich dafür entscheiden, Benachrichtigungen 24 Stunden vor dem Wartungsereignis, unmittelbar vor Beginn der Wartung und nach Abschluss der Wartung zu erhalten. Weitere Informationen finden Sie in Resource Health Center. Um E-Mails zu empfangen, muss eine Vorabbenachrichtigung konfiguriert werden. Weitere Informationen finden Sie unter [Vorabbenachrichtigungen für geplante Wartungsereignisse (Vorschau)](advance-notifications.md).
+  - question: In welchen Servicelevelzielen (Service-Level Objectives, SLOs) kann ich ein Wartungsfenster auswählen?
     answer: >
-      Choosing a maintenance window is available in most SLOs with some exceptions, see [maintenance window supported service level objectives](maintenance-window.md#supported-service-level-objectives).
-  - question: If I have selected a maintenance window for a resource, and I downscale to a service level objective (SLO) where choosing a maintenance window is not supported, what happens to my database?
+      Mit einigen Ausnahmen kann in den meisten SLOs ein Wartungsfenster ausgewählt werden. Weitere Informationen finden Sie unter [Unterstützte Servicelevelziele](maintenance-window.md#supported-service-level-objectives).
+  - question: Was geschieht mit meiner Datenbank, wenn ich ein Wartungsfenster für eine Ressource ausgewählt habe und zentral auf ein Servicelevelziel (Service Level Objective, SLO) herunterskaliere, bei dem die Auswahl eines Wartungsfensters nicht unterstützt wird?
     answer: >
-      In this case, the maintenance window would revert to the default option which is 5PM to 8AM local time.
-  - question: Can I cancel or postpone a planned maintenance event based on the received notification?
+      In diesem Fall wird das Wartungsfenster auf die Standardoption von 17:00 bis 8:00 Uhr Ortszeit zurückgesetzt.
+  - question: Kann ich ein geplantes Wartungsereignis basierend auf der empfangenen Benachrichtigung abbrechen oder verschieben?
     answer: >
-      No. Cancelling or postponing an upcoming maintenance event is not supported. Notifications help you to prepare for the event.
-  - question: How long does it take to process a maintenance window schedule change?
-    answer: "You can choose a different maintenance window at any time, but changes may take up to 24 hours to take effect. \n"
-  - question: What happens when a maintenance event fails?
-    answer: "Although rare, failures or interruptions during a maintenance event can occur.  In the event of a failure, changes are rolled back and the maintenance will be rescheduled to another time.    \n"
-  - question: How do I validate that my databases are set up for maintenance window?
+      Nein. Das Abbrechen oder Verschieben eines bevorstehenden Wartungsereignisses wird nicht unterstützt. Benachrichtigungen helfen Ihnen bei der Vorbereitung auf das Ereignis.
+  - question: Wie lange dauert die Verarbeitung einer Änderung des Wartungsfensterzeitplans?
+    answer: "Sie können jederzeit ein anderes Wartungsfenster auswählen. Es kann jedoch bis zu 24 Stunden dauern, bis die Änderungen wirksam werden. \n"
+  - question: Was geschieht, wenn bei einem Wartungsereignis ein Fehler auftritt?
+    answer: "Fehler oder Unterbrechungen können während eines Wartungsereignisses auftreten, die ist jedoch selten der Fall.  Bei einem Fehler wird ein Rollback der Änderungen ausgeführt, und die Wartung wird für einen anderen Zeitpunkt geplant.    \n"
+  - question: Wie überprüfe ich, ob meine Datenbanken für das Wartungsfenster eingerichtet sind?
     answer: >
-      Under settings of the Azure resource, the maintenance tab allows you to review and change the current maintenance plan schedule. You can also review and set the maintenance window schedules for multiple resources via PowerShell, CLI, or Azure API.
-  - question: Can I configure a different maintenance window for each Azure SQL database in an elastic pool?
+      In den Einstellungen der Azure-Ressource können Sie auf der Registerkarte „Wartung“ den aktuellen Wartungszeitplan überprüfen und ändern. Sie können die Wartungsfensterzeitpläne für mehrere Ressourcen auch über PowerShell, die CLI oder die Azure-API überprüfen und festlegen.
+  - question: Kann ich für jede Azure SQL-Datenbank in einem Pool für elastische Datenbanken ein anderes Wartungsfenster konfigurieren?
     answer: >
-      If the database is part of an elastic pool, the maintenance window configuration of the elastic pool will be applied. Single databases outside of an elastic pool can have their own maintenance window configuration.
-  - question: What are supported options to configure a maintenance window for an existing Azure SQL Database or SQL managed instance?
+      Wenn die Datenbank Teil eines Pools für elastische Datenbanken ist, wird die Konfiguration des Wartungsfensters dieses Pools angewendet. Singletons außerhalb eines Pools für elastische Datenbanken können über eine eigene Konfiguration für das Wartungsfenster verfügen.
+  - question: Welche Optionen werden unterstützt, um ein Wartungsfenster für eine vorhandene Azure SQL-Datenbank-Instanz oder verwaltete SQL-Instanz zu konfigurieren?
     answer: >
-      Azure Portal, PowerShell, Azure CLI, and REST API.
-  - question: Can I configure a maintenance window during database restore, recovery, copy, import, or GeoDR scenarios?
+      Azure-Portal, PowerShell, Azure CLI und REST-API.
+  - question: Kann ich in Szenarien zum Wiederherstellen, Kopieren oder Importieren von Datenbanken bzw. in GeoDR-Szenarien ein Wartungsfenster konfigurieren?
     answer: >
-      Not at this moment. The maintenance window can be configured once database is created.
+      Derzeit nicht. Das Wartungsfenster kann konfiguriert werden, nachdem die Datenbank erstellt wurde.
+  - question: Ich habe das Standardwartungsfenster ausgewählt. Kann ich Vorabbenachrichtigungen für diese Wartung aktivieren?
+    answer: >
+      Nein, für das Standardwartungsfenster können keine Vorabbenachrichtigungen konfiguriert werden. Wenn Sie ein Wartungsfenster auswählen, müssen Sie eine andere Option als **Systemstandard** auswählen, um Vorabbenachrichtigungen zu konfigurieren und zu aktivieren.
 additionalContent: >-
-  ## See Also
+  ## <a name="see-also"></a>Weitere Informationen
 
-  - [Maintenance window](maintenance-window.md)
+  - [Wartungsfenster](maintenance-window.md)
 
-  - [Configure maintenance window](maintenance-window-configure.md)
+  - [Konfigurieren von Wartungsfenstern](maintenance-window-configure.md)
 
-  - [Configure maintenance window notifications](advance-notifications.md)
+  - [Vorabbenachrichtigungen für geplante Wartungsereignisse (Vorschau)](advance-notifications.md)
 
-  - [Plan for Azure maintenance events in Azure SQL Database and Azure SQL Managed Instance](planned-maintenance.md)
+  - [Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank und Azure SQL Managed Instance](planned-maintenance.md)

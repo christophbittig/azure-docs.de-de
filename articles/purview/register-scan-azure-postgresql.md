@@ -1,18 +1,18 @@
 ---
 title: Registrieren und Überprüfen einer Azure Database for PostgreSQL-Datenbank
-description: In diesem Tutorial wird beschrieben, wie Sie eine Azure Database for PostgreSQL-Datenbank überprüfen.
+description: In diesem Tutorial wird beschrieben, wie Sie eine Azure Database for PostgreSQL-Datenbank in Azure Purview überprüfen.
 author: evwhite
 ms.author: evwhite
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
 ms.date: 06/30/2021
-ms.openlocfilehash: 622e89392dc10f12fe81ed1c1085e5b9cc524999
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: abc676fbff551781f720db5937a9c35c7c8f81ea
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181297"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209799"
 ---
 # <a name="register-and-scan-an-azure-database-for-postgresql"></a>Registrieren und Überprüfen einer Azure Database for PostgreSQL-Datenbank
 
@@ -73,7 +73,7 @@ Gehen Sie auf dem Bildschirm **Register sources (Azure Database for PostgreSQL)*
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+1. Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
 
 1. Wählen Sie die Azure Database for PostgreSQL-Quelle aus, die Sie registriert haben.
 

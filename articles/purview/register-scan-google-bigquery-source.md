@@ -4,15 +4,15 @@ description: In diesem Artikel erfahren Sie, wie Sie ein Google BigQuery-Projekt
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 7/15/2021
-ms.openlocfilehash: d88df617e994f4a609b12dff0419fd673f8207d1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: caaf78e14669d67f525e5756efd8e2fd301f9b38
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721934"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218533"
 ---
 # <a name="register-and-scan-google-bigquery-source-preview"></a>Registrieren und Überprüfen der Google BigQuery-Quelle (Vorschau)
 
@@ -56,14 +56,14 @@ Gehen Sie auf dem Bildschirm „Quellen registrieren“ (Google BigQuery) wie fo
 
 3.  Optional: Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung.
 
-4.  Klicken Sie auf **Registrieren**.
+4.  Wählen Sie **Registrieren**.
     :::image type="content" source="media/register-scan-google-bigquery-source/configure-sources.png" alt-text="Konfigurieren der BigQuery-Quelle" border="true":::
 
 ## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1.  Klicken Sie im Verwaltungscenter auf Integration Runtimes. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
+1.  Wählen Sie im Verwaltungscenter „Integration Runtimes“ aus. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
 
 2.  Navigieren Sie zu **Quellen**.
 
@@ -83,7 +83,7 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
     - Geben Sie im Feld Benutzername die E-Mail-ID des Dienstkontos an. Beispiel: xyz\@developer.gserviceaccount.com
     - Speichern Sie die Datei mit dem privaten Schlüssel des Dienstkontos im JSON-Format im Geheimnis des Schlüsseltresors
 
-    Klicken Sie zum Erstellen eines neuen privaten Schlüssels auf der Google-Cloudplattform im Navigationsmenü auf IAM & Admin – \> Dienstkonten – \> Projekt auswählen – \>Klicken Sie auf die E-Mail-Adresse des Dienstkontos, für das Sie einen Schlüssel erstellen möchten – \> Klicken Sie auf die Registerkarte –  **Schlüssel** – \> Klicken Sie auf das Dropdownmenü **Schlüssel hinzufügen** und wählen Sie dann Neuen Schlüssel erstellen aus. Wählen Sie jetzt das JSON-Format aus.
+    Wählen Sie zum Erstellen eines neuen privaten Schlüssels auf der Google-Cloudplattform im Navigationsmenü „IAM & Admin –\> Dienstkonten –\> Projekt auswählen“ aus. –\> Wählen Sie die E-Mail-Adresse des Dienstkontos aus, für das Sie einen Schlüssel erstellen möchten. –\> Wählen Sie die Registerkarte **Schlüssel** aus. –\> Wählen Sie das Dropdownmenü **Schlüssel hinzufügen** und dann „Neuen Schlüssel erstellen“ aus. Wählen Sie jetzt das JSON-Format aus.
 
       > [!Note]
       > Der Inhalt des privaten Schlüssels wird in einer temporären Datei auf dem virtuellen Computer gespeichert, wenn Überprüfungsprozesse ausgeführt werden. Diese temporäre Datei wird gelöscht, nachdem die Überprüfungen erfolgreich abgeschlossen wurden. Im Falle eines Überprüfungsfehlers, wird das System den Vorgang bis zum Erfolg fortsetzen. Stellen Sie sicher, dass der Zugriff auf dem virtuellen Computer, auf dem SHIR ausgeführt wird, entsprechend eingeschränkt ist.**
@@ -107,13 +107,13 @@ Die Verwendung von „NOT“ oder Sonderzeichen ist nicht zulässig.
     f.  **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Dies ist abhängig von der Größe des zu überprüfenden Google BigQuery-Projekts.
         :::image type="content" source="media/register-scan-google-bigquery-source/scan.png" alt-text="Überprüfen der BigQuery-Quelle" border="true":::
 
-6.  Klicken Sie auf **Verbindung testen**.
+6.  Wählen Sie **Verbindung testen** aus.
 
-7.  Klicken Sie auf **Continue** (Weiter).
+7.  Wählen Sie **Weiter**.
 
 8.  Wählen Sie den **Auslöser für die Überprüfung**. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
 
-9.  Sehen Sie sich Ihre Überprüfung noch einmal an, und klicken Sie dann auf **Speichern und ausführen**.
+9.  Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>Anzeigen Ihrer Überprüfungen und Überprüfungsausführungen
 

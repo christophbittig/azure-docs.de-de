@@ -1,7 +1,7 @@
 ---
-title: Aktivität „Variable anfügen“ in Azure Data Factory
+title: Aktivität „Variable anfügen“
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Sie die Aktivität „Variable anfügen“ so festlegen, dass ein Wert einer vorhandenen Arrayvariablen hinzugefügt wird, die in einer Data Factory-Pipeline definiert ist.
+description: Erfahren Sie, wie Sie die Append Variable-Aktivität so festlegen, dass ein Wert einer vorhandenen Arrayvariablen hinzugefügt wird, die in einer Data Factory- oder Synapse Analytics-Pipeline definiert ist.
 ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
@@ -9,17 +9,17 @@ ms.topic: conceptual
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
-ms.date: 10/09/2018
-ms.openlocfilehash: 4157ad2fc1cf3619b1fa4c55709f8828415f0dca
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 9d2a081535f571b139a5cb15cdb85b37e2c3af97
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640634"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811702"
 ---
-# <a name="append-variable-activity-in-azure-data-factory"></a>Aktivität „Variable anfügen“ in Azure Data Factory
+# <a name="append-variable-activity-in-azure-data-factory-and-synapse-analytics"></a>Append Variable-Aktivität in Azure Data Factory und Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-Verwenden Sie die Aktivität „Variable anfügen“ zum Hinzufügen eines Werts zu einer vorhandenen Arrayvariablen, die in einer Data Factory-Pipeline definiert ist.
+Verwenden Sie die Append Variable-Aktivität, um einen Wert zu einer vorhandenen Arrayvariablen hinzuzufügen, die in einer Data Factory- oder Synapse Analytics-Pipeline definiert ist.
 
 ## <a name="type-properties"></a>Typeigenschaften
 
@@ -32,6 +32,6 @@ value | Ein Zeichenfolgenliteral- oder Ausdrucksobjektwert, der zum Anfügen an 
 variableName | Der Name der Variablen, die von der Aktivität geändert wird. Die Variable muss vom Typ „Array“ sein. | ja
 
 ## <a name="next-steps"></a>Nächste Schritte
-Machen Sie sich mit einer verwandten Ablaufsteuerungsaktivität vertraut, die von Data Factory unterstützt wird: 
+Erfahren Sie mehr über eine verwandte Ablaufsteuerungsaktivität: 
 
 - [Aktivität „Variable festlegen“](control-flow-set-variable-activity.md)

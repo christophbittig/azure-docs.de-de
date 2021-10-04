@@ -1,7 +1,7 @@
 ---
 title: Transformation zum Sortieren in einem Zuordnungsdatenfluss
+description: Hier erfahren Sie mehr über die Transformation zum Sortieren von Zuordnungsdaten in Azure Data Factory- und Synapse Analytics-Pipelines.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 'Azure Data Factory Mapping-Daten: Transformation zum Sortieren'
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 04/14/2020
-ms.openlocfilehash: 88253393820892f20544f5cbf6a83b21e24e8ec8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 8781836be58403dfef130f55fa698b281360e641
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122641022"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059881"
 ---
 # <a name="sort-transformation-in-mapping-data-flow"></a>Transformation zum Sortieren in einem Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 Mit der Transformation zum Sortieren können Sie die eingehenden Zeilen im aktuellen Datenstrom sortieren. Sie können einzelne Spalten auswählen und in aufsteigender oder absteigender Reihenfolge sortieren.
 
@@ -28,7 +30,7 @@ Mit der Transformation zum Sortieren können Sie die eingehenden Zeilen im aktue
 
 ## <a name="configuration"></a>Konfiguration
 
-![Sortiereinstellungen](media/data-flow/sort.png "Sortieren")
+:::image type="content" source="media/data-flow/sort.png" alt-text="Sortiereinstellungen":::
 
 **Keine Beachtung von Groß-/Kleinschreibung**: Legen Sie fest, ob die Groß-/Kleinschreibung beim Sortieren von Zeichenfolgen- oder Textfeldern ignoriert werden soll.
 
@@ -55,7 +57,7 @@ Um einen Spaltenwert vor der Sortierung zu ändern oder zu extrahieren, zeigen S
 
 ### <a name="example"></a>Beispiel
 
-![Sortiereinstellungen](media/data-flow/sort.png "Sortieren")
+:::image type="content" source="media/data-flow/sort.png" alt-text="Sortiereinstellungen":::
 
 Der nachfolgende Codeausschnitt zeigt das Datenflussskript für die obige Konfiguration der Sortierung.
 

@@ -1,22 +1,25 @@
 ---
-title: Ressourcenerkenntnisse über Ihre Daten in Azure Purview (Vorschau)
+title: Ressourcenerkenntnisse über Ihre Daten in Azure Purview
 description: In dieser Schrittanleitung wird beschrieben, wie Sie die Ressourcenberichterstellung mit Purview-Erkenntnissen für Ihre Daten anzeigen und verwenden können.
 author: SunetraVirdi
 ms.author: suvirdi
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-insights
 ms.topic: how-to
-ms.date: 11/20/2020
-ms.openlocfilehash: b9a207ffa14a18a5f4421fd21cebed28290b5ea6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8879edc7d1858cff5871c5339da4857d81f5c2d8
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183079"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217019"
 ---
 # <a name="asset-insights-on-your-data-in-azure-purview"></a>Ressourcenerkenntnisse über Ihre Daten in Azure Purview
 
 In dieser Schrittanleitung wird beschrieben, wie Sie auf Purview-Ressourcen-Erkenntnisberichte für Ihre Daten zugreifen, sie anzeigen und filtern können.
+
+> [!IMPORTANT]
+> Azure Purview-Erkenntnisse befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
 In dieser Schrittanleitung lernen Sie Folgendes:
 
@@ -33,7 +36,7 @@ Stellen Sie vor dem Beginn mit Purview-Erkenntnissen sicher, dass Sie die folgen
 
 * Einrichten und Ausführen eines Scans für den Quelltyp.
 
-Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview (Vorschau)](manage-data-sources.md).
+Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview](manage-data-sources.md).
 
 ## <a name="use-purview-asset-insights"></a>Verwenden von Purview-Ressourcenerkenntnissen
 
@@ -48,11 +51,11 @@ Sie können in Azure Purview Quelltypen registrieren und überprüfen. Nachdem d
 
    :::image type="content" source="./media/asset-insights/portal-access.png" alt-text="Starten von Purview im Azure-Portal":::
 
-1. Wählen Sie auf der **Startseite** von Purview die Kachel **Erkenntnisse anzeigen** aus, um auf Ihren Bereich **Erkenntnisse** (:::image type="icon" source="media/asset-insights/ico-insights.png" border="false":::) zuzugreifen.
+1. Klicken Sie auf der Purview-Seite **Start** im linken Menü auf **Erkenntnisse**.
 
    :::image type="content" source="./media/asset-insights/view-insights.png" alt-text="Anzeigen Ihrer Erkenntnisse im Azure-Portal":::
 
-1. Wählen Sie im Bereich **Erkenntnisse** :::image type="icon" source="media/asset-insights/ico-insights.png" border="false"::: die Option **Ressourcen** aus, um den Purview-Bericht mit **Ressourcenerkenntnissen** anzuzeigen.
+1. Wählen Sie im Bereich **Erkenntnisse** die Option **Ressourcen** aus, um den Purview-Bericht mit **Ressourcenerkenntnissen** anzuzeigen.
 
 ### <a name="view-asset-insights"></a>Anzeigen von Ressourcenerkenntnissen
 
@@ -90,7 +93,7 @@ Die nächsten Diagramme in „Ressourcenerkenntnisse“ zeigen eine Verteilung d
    > [!NOTE]
    > Wenn die Überprüfung in den letzten 30 Tagen nur einmal ausgeführt wurde oder eine Katalogänderung wie das Hinzufügen/Entfernen der Klassifizierung nur einmal innerhalb von 30 Tagen stattgefunden hat, werden die oben aufgeführten Änderungsinformationen nicht angezeigt.
 
-1. Wenn Sie auf den Quelltyp klicken, werden die Ordner mit den gravierendsten Änderungen der Ressourcenanzahl angezeigt.
+1. Wenn Sie den Quelltyp auswählen, werden die Ordner mit den gravierendsten Änderungen der Ressourcenanzahl angezeigt.
 
 1. Wählen Sie den Pfad aus, um die Liste der Ressourcen anzuzeigen.
 

@@ -1,26 +1,26 @@
 ---
-title: Until-Aktivität in Azure Data Factory
+title: Until-Aktivität
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Die Until-Aktivität führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird oder ein Timeout auftritt.
+description: Die Until-Aktivität in Azure Data Factory- und Synapse Analytics-Pipelines führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird oder ein Timeout auftritt.
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: 2191dd75f2dbf24a59dbb7c43f8ef9ec62705aee
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d31e6c5b5a21f3064abf16779bd0a44e877b2737
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640621"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814989"
 ---
-# <a name="until-activity-in-azure-data-factory"></a>Until-Aktivität in Azure Data Factory
+# <a name="until-activity-in-azure-data-factory-and-synapse-analytics"></a>Until-Aktivität in Azure Data Factory und Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Die Until-Aktivität erfüllt die gleiche Funktion wie eine do-until-Schleifenstruktur in Programmiersprachen. Sie führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird. In Data Factory können Sie einen Timeoutwert für die Until-Aktivität angeben. 
+Die Until-Aktivität erfüllt die gleiche Funktion wie eine do-until-Schleifenstruktur in Programmiersprachen. Sie führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird. Sie können einen Timeoutwert für die Until-Aktivität angeben. 
 
 ## <a name="syntax"></a>Syntax
 
@@ -58,15 +58,15 @@ name | Der Name der `Until`-Aktivität. | String | Ja
 type | Muss auf **Until** festgelegt werden. | String | Ja
 expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck  | Ja
 timeout | Für die do-until-Schleife tritt nach der hier angegebenen Zeit ein Timeout auf. | Eine Zeichenfolge. `d.hh:mm:ss` oder `hh:mm:ss`. Standardwert: sieben Tage. Maximalwert: 90 Tage. | Nein
-Aktivitäten | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck als `true` ausgewertet wird. | Array von Aktivitäten |  Ja
+activities | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck als `true` ausgewertet wird. | Array von Aktivitäten |  Ja
 
 ## <a name="example-1"></a>Beispiel 1
 
 > [!NOTE]
-> Dieser Abschnitt enthält die JSON-Definitionen und PowerShell-Beispielbefehle zum Ausführen der Pipeline. Eine exemplarische Vorgehensweise mit einer ausführlichen Anleitung zum Erstellen einer Data Factory-Pipeline mithilfe von Azure PowerShell und JSON-Definitionen finden Sie unter [Erstellen einer Data Factory und Pipeline mithilfe von PowerShell](quickstart-create-data-factory-powershell.md).
+> Dieser Abschnitt enthält die JSON-Definitionen und PowerShell-Beispielbefehle zum Ausführen der Pipeline. Eine exemplarische Vorgehensweise mit einer ausführlichen Anleitung zum Erstellen einer Pipeline mithilfe von Azure PowerShell und JSON-Definitionen finden Sie im [Tutorial zum Erstellen einer Data Factory mithilfe von Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-until-activity"></a>Pipeline mit Until-Aktivität
-In diesem Beispiel besitzt die Pipeline zwei Aktivitäten: **Until** und **Wait**. Die Wait-Aktivität führt nach der angegebenen Wartezeit die Web-Aktivität in der Schleife aus. Weitere Informationen zu Ausdrücken und Funktionen in Data Factory finden Sie unter [Ausdrücke und Funktionen in Azure Data Factory](control-flow-expression-language-functions.md). 
+In diesem Beispiel besitzt die Pipeline zwei Aktivitäten: **Until** und **Wait**. Die Wait-Aktivität führt nach der angegebenen Wartezeit die Web-Aktivität in der Schleife aus. Weitere Informationen zu Ausdrücken und Funktionen finden Sie unter [Ausdruckssprache und Funktionen](control-flow-expression-language-functions.md). 
 
 ```json
 {
@@ -287,7 +287,7 @@ while ($True) {
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
+Informationen zu weiteren unterstützten Ablaufsteuerungsaktivitäten: 
 
 - [Aktivität „If Condition“](control-flow-if-condition-activity.md)
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)

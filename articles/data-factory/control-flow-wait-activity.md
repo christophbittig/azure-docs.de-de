@@ -1,22 +1,22 @@
 ---
-title: Warteaktivität in Azure Data Factory
+title: Warteaktivität
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Die Warteaktivität hält die Ausführung der Pipeline für den angegebenen Zeitraum an.
+description: Die Wait-Aktivität in Azure Data Factory und Synapse Analytics hält die Ausführung einer Pipeline für einen angegebenen Zeitraum an.
 author: chez-charlie
 ms.author: chez
 ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/12/2018
-ms.openlocfilehash: b5f4835be17a28fabe9b8d553226baebef76a6d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: dfc74e9ada7715f9c954123892a93611df7eca9d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640609"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798919"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>Ausführen der Warteaktivität in Azure Data Factory
+# <a name="execute-wait-activity-in-azure-data-factory-and-synapse-analytics"></a>Ausführen der Wait-Aktivität in Azure Data Factory und Synapse Analytics
 Wenn Sie eine Warteaktivität in einer Pipeline verwenden, wartet die Pipeline den angegebenen Zeitraum, bevor Sie die Ausführung nachfolgender Aktivitäten fortsetzt. 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -46,7 +46,7 @@ waitTimeInSeconds | Die Anzahl von Sekunden, die die Pipeline wartet, bevor sie 
 ## <a name="example"></a>Beispiel
 
 > [!NOTE]
-> Dieser Abschnitt enthält die JSON-Definitionen und PowerShell-Beispielbefehle zum Ausführen der Pipeline. Eine exemplarische Vorgehensweise mit einer ausführlichen Anleitung zum Erstellen einer Data Factory-Pipeline mithilfe von Azure PowerShell und JSON-Definitionen finden Sie unter [Erstellen einer Data Factory und Pipeline mithilfe von PowerShell](quickstart-create-data-factory-powershell.md).
+> Dieser Abschnitt enthält die JSON-Definitionen und PowerShell-Beispielbefehle zum Ausführen der Pipeline. Eine exemplarische Vorgehensweise mit einer ausführlichen Anleitung zum Erstellen einer Pipeline mithilfe von Azure PowerShell und JSON-Definitionen finden Sie im [Tutorial zum Erstellen einer Data Factory mithilfe von Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-wait-activity"></a>Pipeline mit Warteaktivität
 In diesem Beispiel besitzt die Pipeline zwei Aktivitäten: **Until** und **Wait**. Für die Warteaktivität ist eine Wartezeit von einer Sekunde konfiguriert. Die Pipeline führt die Webaktivität in einer Schleife mit einer Sekunde Wartezeit zwischen jeder Ausführung aus. 
@@ -100,7 +100,7 @@ In diesem Beispiel besitzt die Pipeline zwei Aktivitäten: **Until** und **Wait*
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
+Informationen zu weiteren unterstützten Ablaufsteuerungsaktivitäten: 
 
 - [Aktivität „If Condition“](control-flow-if-condition-activity.md)
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)

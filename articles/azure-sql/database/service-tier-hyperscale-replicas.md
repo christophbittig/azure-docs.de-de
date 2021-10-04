@@ -8,13 +8,13 @@ ms.topic: overview
 author: yorek
 ms.author: damauri
 ms.reviewer: ''
-ms.date: 7/27/2021
-ms.openlocfilehash: 9fa0a964033439a4b1c5276bf4310528dd345ff8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 9/24/2021
+ms.openlocfilehash: e2785f965cdbb94af081e937f0b2290578c04796
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722897"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059528"
 ---
 # <a name="hyperscale-secondary-replicas"></a>Sekundäre Hyperscale-Replikate
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -22,13 +22,13 @@ ms.locfileid: "121722897"
 Wie unter [Hyperscale-Dienstebene](service-tier-hyperscale.md) beschrieben bietet die Hyperscale-Dienstebene in Azure SQL-Datenbank zwei verschiedene Arten von Computeknoten, die auch als „Replikate“ bezeichnet werden:
 
 - Primär: Dieser Knoten wird für Lese- und Schreibvorgänge verwendet.
-- Sekundär: Dieser Knoten bietet horizontale Leseskalierung, Hochverfügbarkeit und Georeplikation.
+- Sekundär: Dieser Knoten bietet [horizontale Leseskalierung](read-scale-out.md), [Hochverfügbarkeit](high-availability-sla.md) und [Georeplikation](active-geo-replication-overview.md).
 
 Sekundäre Replikate sind immer schreibgeschützt. Es gibt drei verschiedene Arten:
 
 - Hochverfügbarkeitsreplikat
-- Benanntes Replikat (Vorschauversion)
-- Georeplikation (Vorschauversion)
+- Benanntes Replikat ([Vorschauversion](https://azure.microsoft.com/support/legal/preview-supplemental-terms/))
+- Georeplikation ([Vorschauversion](https://azure.microsoft.com/support/legal/preview-supplemental-terms/))
 
 Jeder Typ verfügt über eine unterschiedliche Architektur und über verschiedene Features, Zwecke und Kosten. Je nach Features, die Sie benötigen, können Sie nur einen oder alle drei Typen zusammen verwenden.
 
@@ -63,7 +63,7 @@ Benannte Replikate unterscheiden sich in den folgenden Punkten von Hochverfügba
 - Es werden bis zu 30 benannte Replikate unterstützt (pro primärem Replikat).
 - Es werden verschiedene Authentifizierungslösungen für jedes benannte Replikat unterstützt, indem verschiedene Anmeldungen für logische Server erstellt werden, die benannte Replikate hosten.
 
-Das Hauptziel benannter Replikate besteht darin, umfangreiche OLTP-Szenarien mit horizontaler Leseskalierung zu ermöglichen und HTAP-Workloads (Hybrid Transactional and Analytical Processing, hybride Transaktions- und Analyseverarbeitung) zu optimieren. Beispiele für das Erstellen solcher Lösungen finden Sie hier:
+Das Hauptziel benannter Replikate besteht darin, umfangreiche OLTP-Szenarien mit [horizontaler Leseskalierung](read-scale-out.md) zu ermöglichen und HTAP-Workloads (Hybrid Transactional and Analytical Processing, hybride Transaktions- und Analyseverarbeitung) zu optimieren. Beispiele für das Erstellen solcher Lösungen finden Sie hier:
 
 - [OLTP: Beispiel für horizontale Skalierung](https://github.com/Azure-Samples/azure-sql-db-named-replica-oltp-scaleout)
 - [HTAP: Beispiel für horizontale Skalierung](https://github.com/Azure-Samples/azure-sql-db-named-replica-htap)

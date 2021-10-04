@@ -4,40 +4,35 @@ description: Erstellen Sie ein Azure Purview-Konto mithilfe von Python.
 author: nayenama
 ms.author: nayenama
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 04/02/2021
-ms.openlocfilehash: ec1f8890d9626ca1ed96f538bd464da7c30caf17
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.date: 09/27/2021
+ms.openlocfilehash: 7a6d13da2ee3138e6dfc5eca4a5b75f454f90457
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983786"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212480"
 ---
 # <a name="quickstart-create-a-purview-account-using-python"></a>Schnellstart: Erstellen eines Purview-Kontos mithilfe von Python
 
-In dieser Schnellstartanleitung erstellen Sie ein mithilfe von Python Purview-Konto. 
+In dieser Schnellstartanleitung erstellen Sie programmgesteuert mithilfe von Python ein Purview-Konto. Die [Python-Referenz für Purview](/python/api/azure-mgmt-purview/) ist verfügbar, in diesem Artikel werden aber alle Schritte erläutert, die zum Erstellen eines Kontos mit Python erforderlich sind.
 
-## <a name="prerequisites"></a>Voraussetzungen
+Azure Purview ist ein Data Governance-Dienst, der Sie bei der Verwaltung Ihrer Datenlandschaft unterstützt. Durch Herstellen einer Verbindung zu Daten in Ihren lokalen Quellen, mehreren Clouds und SaaS-Quellen (Software-as-a-Service) erstellt Purview eine aktuelle Zuordnung Ihrer Informationen. Purview identifiziert und klassifiziert sensible Daten und gewährleistet eine End-to-End-Herkunft. Datenconsumer können Daten in Ihrer Organisation auffinden, und Datenadministratoren können Ihre Daten überwachen, schützen und die richtige Verwendung ihrer Daten sicherstellen.
 
-* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Weitere Informationen zu Purview [finden Sie auf unserer Übersichtsseite](overview.md). Weitere Informationen zum Bereitstellen von Purview in Ihrer Organisation [finden Sie in unseren bewährten Methoden für die Bereitstellung](deployment-best-practices.md).
 
-* Ihr eigener [Azure Active Directory-Mandant](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
-
-* Ihr Konto muss zum Erstellen von Ressourcen im Abonnement berechtigt sein.
-
-* Wenn durch **Azure Policy** alle Anwendungen an der Erstellung eines **Speicherkontos** und eines **EventHub-Namespace** gehindert werden, benötigen Sie eine Richtlinienausnahme mit einem Tag, das im Rahmen der Erstellung eines Purview-Kontos eingegeben werden kann. Das liegt in erster Linie daran, dass für ein Purview-Konto jeweils eine verwaltete Ressourcengruppe mit einem darin enthaltenen Speicherkonto und einem EventHub-Namespace erstellt werden muss. Weitere Informationen finden Sie unter [Erstellen eines Katalogportals](create-catalog-portal.md).
-
+[!INCLUDE [purview-quickstart-prerequisites](includes/purview-quickstart-prerequisites.md)]
 
 ## <a name="install-the-python-package"></a>Installieren des Python-Pakets
 
-1. Öffnen Sie ein Terminal oder eine Eingabeaufforderung mit Administratorberechtigungen. 
+1. Öffnen Sie ein Terminal oder eine Eingabeaufforderung mit Administratorberechtigungen.
 2. Installieren Sie zunächst das Python-Paket für Azure-Verwaltungsressourcen:
 
     ```python
     pip install azure-mgmt-resource
     ```
+
 3. Führen Sie zum Installieren des Python-Pakets für Purview den folgenden Befehl aus:
 
     ```python
@@ -51,9 +46,10 @@ In dieser Schnellstartanleitung erstellen Sie ein mithilfe von Python Purview-Ko
     ```python
     pip install azure-identity
     ```
-    > [!NOTE] 
-    > Das Paket „azure-identity“ steht bei einigen gemeinsamen Abhängigkeiten unter Umständen in Konflikt mit „azure-cli“. Wenn ein Authentifizierungsproblem auftritt, entfernen Sie „azure-cli“ und die zugehörigen Abhängigkeiten, oder verwenden Sie einen neu installierten Computer ohne Installation des Pakets „azure-cli“, damit der Vorgang erfolgreich ist.
-    
+
+    > [!NOTE]
+    > Das Paket „azure-identity“ steht bei einigen gemeinsamen Abhängigkeiten unter Umständen in Konflikt mit „azure-cli“. Wenn ein Authentifizierungsproblem auftritt, entfernen Sie „azure-cli“ und die zugehörigen Abhängigkeiten, oder verwenden Sie einen neu installierten Computer ohne Installation des Pakets „azure-cli“.
+
 ## <a name="create-a-purview-client"></a>Erstellen eines Purview-Clients
 
 1. Erstellen Sie eine Datei mit dem Namen **purview.py**. Fügen Sie die folgenden Anweisungen ein, um Verweise auf Namespaces hinzuzufügen.
@@ -68,7 +64,7 @@ In dieser Schnellstartanleitung erstellen Sie ein mithilfe von Python Purview-Ko
     ```
 
 2. Fügen Sie zur Methode **Main** den folgenden Code hinzu, mit dem eine Instanz der DataFactoryManagementClient-Klasse erstellt wird. Sie verwenden dieses Objekt, um ein Purview-Konto zu erstellen oder zu löschen, um die Verfügbarkeit eines Namens zu prüfen und um andere Vorgänge des Ressourcenanbieters durchzuführen.
- 
+
     ```python
     def main():
     
@@ -184,10 +180,7 @@ main()
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
-Erstellen und starten Sie die Anwendung, und überprüfen Sie dann die Pipelineausführung.
-
-Die Konsole druckt den Status der Erstellung der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung aus. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesenen/geschriebenen Daten sehen. Verwenden Sie dann Tools wie z.B. [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), um zu überprüfen, ob die Blobs wie von Ihnen in den Variablen angegeben von „inputBlobPath“ nach „outputBlobPath“ kopiert werden.
-
+Erstellen und starten Sie die Anwendung. Die Konsole gibt den Fortschritt der Purview-Kontoerstellung aus. Warten Sie, bis der Vorgang abgeschlossen ist.
 Hier ist die Beispielausgabe:
 
 ```console
@@ -199,11 +192,11 @@ Succeeded
 
 ## <a name="verify-the-output"></a>Überprüfen der Ausgabe
 
-Wechseln Sie im Azure-Portal zur Seite mit den **Purview-Konten**, und überprüfen Sie das mit dem obigen Code erstellte Konto. 
+Wechseln Sie im Azure-Portal zur Seite mit den **Purview-Konten**, und überprüfen Sie das mit dem obigen Code erstellte Konto.
 
 ## <a name="delete-purview-account"></a>Löschen eines Purview-Kontos
 
-Um ein Purview-Konto zu löschen, fügen Sie den folgenden Code in das Programm ein:
+Um ein Purview-Konto zu löschen, fügen Sie den folgenden Code in das Programm ein, und führen Sie dann das Programm aus:
 
 ```python
 pa = purview_client.accounts.begin_delete(rg_name, purview_name).result()
@@ -213,7 +206,8 @@ pa = purview_client.accounts.begin_delete(rg_name, purview_name).result()
 
 Mit dem Code in diesem Tutorial wird zuerst ein Purview-Konto erstellt und dann ein Purview-Konto gelöscht. Sie können jetzt das Python SDK herunterladen und sich über andere Aktionen des Ressourcenanbieters informieren, die Sie für ein Purview-Konto ausführen können.
 
-Im nächsten Artikel erfahren Sie, wie Sie Benutzern Zugriff auf Ihr Azure Purview-Konto gewähren. 
+Lesen Sie diese nächsten Artikel, um zu erfahren, wie Sie in Purview Studio navigieren, eine Sammlung erstellen und Zugriff auf Purview gewähren.
 
-> [!div class="nextstepaction"]
-> [Rollenbasierte Zugriffssteuerung auf der Datenebene von Azure Purview](catalog-permissions.md)
+* [Verwenden von Purview Studio](use-purview-studio.md)
+* [Erstellen einer Sammlung](quickstart-create-collection.md)
+* [Rollenbasierte Zugriffssteuerung auf der Datenebene von Azure Purview](catalog-permissions.md)

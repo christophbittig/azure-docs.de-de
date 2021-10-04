@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
 ms.date: 02/18/2021
-ms.openlocfilehash: bc6c64c7ce8f3a836e1a2fc002e423536f55e48c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: be4aa228ff5882f0068bb0a7ffb436359e62f80a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638874"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771610"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung und PowerShell
 
@@ -57,13 +57,13 @@ In diesem Tutorial erstellen Sie zwei Pipelines, mit denen die folgenden beiden 
 
 1. **Erstes Laden:** : Sie erstellen eine Pipeline mit einer Kopieraktivität, bei der die gesamten Daten aus dem Quelldatenspeicher (Azure SQL-Datenbank) in den Zieldatenspeicher (Azure Blob Storage) kopiert werden.
 
-    ![Vollständiges Laden von Daten](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-load-flow-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/full-load-flow-diagram.png" alt-text="Vollständiges Laden von Daten":::
 1.  **Inkrementell laden:** Sie erstellen eine Pipeline mit den folgenden Aktivitäten und führen sie regelmäßig aus.
     1. Erstellen Sie **zwei Lookup-Aktivitäten**, um die alte und neue SYS_CHANGE_VERSION aus Azure SQL-Datenbank abzurufen und an die Kopieraktivität zu übergeben.
     2. Erstellen Sie **eine Kopieraktivität**, um die eingefügten/aktualisierten/gelöschten Daten zwischen den beiden SYS_CHANGE_VERSION-Werten aus Azure SQL-Datenbank nach Azure Blob Storage zu kopieren.
     3. Erstellen Sie **eine Aktivität „Gespeicherte Prozedur“** , um den Wert von SYS_CHANGE_VERSION für die nächste Pipelineausführung zu aktualisieren.
 
-    ![Flussdiagramm für inkrementelles Laden](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-load-flow-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-load-flow-diagram.png" alt-text="Flussdiagramm für inkrementelles Laden":::
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -441,26 +441,26 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Alle Dienste**, führen Sie eine Suche mit dem Schlüsselwort `data factories` durch, und wählen Sie **Data Factorys** aus.
 
-    ![Menü „Data Factorys“](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-data-factories-menu-1.png" alt-text="Menü „Data Factorys“":::
 3. Suchen Sie in der Liste mit den Data Factorys nach **Ihrer Data Factory**, und wählen Sie sie aus, um die Seite „Data Factory“ anzuzeigen.
 
-    ![Suchen nach Ihrer Data Factory](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-search-data-factory-2.png" alt-text="Suchen nach Ihrer Data Factory":::
 4. Klicken Sie auf der Seite für die Data Factory auf die Kachel **Überwachung und Verwaltung**.
 
-    ![Kachel „Überwachung und Verwaltung“](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png" alt-text="Kachel „Überwachung und Verwaltung“":::    
 5. Die **Anwendung für die Datenintegration** wird in einer separaten Registerkarte gestartet. Alle **Pipelineausführungen** mit dem dazugehörigen Status werden angezeigt. Beachten Sie, dass der Status der Pipelineausführung im folgenden Beispiel **Erfolgreich** lautet. Sie können die an die Pipeline übergebenen Parameter überprüfen, indem Sie in der Spalte **Parameter** auf den Link klicken. Wenn ein Fehler auftritt, wird in der Spalte **Fehler** ein Link angezeigt. Klicken Sie in der Spalte **Aktionen** auf den Link.
 
-    ![Screenshot: Pipelineausführungen für eine Data Factory](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png" alt-text="Screenshot: Pipelineausführungen für eine Data Factory":::    
 6. Wenn Sie in der Spalte **Aktionen** auf den Link klicken, wird die folgende Seite mit allen **Aktivitätsausführungen** der Pipeline angezeigt.
 
-    ![Screenshot: Aktivitätsausführungen für eine Data Factory mit hervorgehobenem Link „Pipelines“](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png" alt-text="Screenshot: Aktivitätsausführungen für eine Data Factory mit hervorgehobenem Link „Pipelines“":::
 7. Klicken Sie wie in der Abbildung dargestellt auf **Pipelines**, um zurück zur Ansicht **Pipelineausführungen** zu wechseln.
 
 
 ### <a name="review-the-results"></a>Überprüfen der Ergebnisse
 Im Ordner `incchgtracking` des Containers `adftutorial` wird eine Datei mit dem Namen `incremental-<GUID>.txt` angezeigt.
 
-![Ausgabedatei des vollständigen Kopiervorgangs](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-copy-output-file.png)
+:::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/full-copy-output-file.png" alt-text="Ausgabedatei des vollständigen Kopiervorgangs":::
 
 Die Datei sollte die Daten aus Ihrer Datenbank enthalten:
 
@@ -626,16 +626,16 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 ### <a name="monitor-the-incremental-copy-pipeline"></a>Überwachen der inkrementellen Kopierpipeline
 1. Aktualisieren Sie in der **Anwendung für die Datenintegration** die Ansicht **Pipelineausführungen**. Vergewissern Sie sich, dass „IncrementalCopyPipeline“ in der Liste enthalten ist. Klicken Sie in der Spalte **Aktionen** auf den Link.  
 
-    ![Screenshot: Pipelineausführungen für eine Data Factory einschließlich Ihrer Pipeline](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png" alt-text="Screenshot: Pipelineausführungen für eine Data Factory einschließlich Ihrer Pipeline":::    
 2. Wenn Sie in der Spalte **Aktionen** auf den Link klicken, wird die folgende Seite mit allen **Aktivitätsausführungen** der Pipeline angezeigt.
 
-    ![Screenshot: Pipelineausführungen für eine Data Factory, von denen mehrere als erfolgreich gekennzeichnet sind](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
+    :::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png" alt-text="Screenshot: Pipelineausführungen für eine Data Factory, von denen mehrere als erfolgreich gekennzeichnet sind":::
 3. Klicken Sie wie in der Abbildung dargestellt auf **Pipelines**, um zurück zur Ansicht **Pipelineausführungen** zu wechseln.
 
 ### <a name="review-the-results"></a>Überprüfen der Ergebnisse
 Die zweite Datei ist im Ordner `incchgtracking` des Containers `adftutorial` enthalten.
 
-![Ausgabedatei des inkrementellen Kopiervorgangs](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-copy-output-file.png)
+:::image type="content" source="media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-copy-output-file.png" alt-text="Ausgabedatei des inkrementellen Kopiervorgangs":::
 
 Die Datei sollte nur die Deltadaten aus Ihrer Datenbank enthalten. Der Datensatz mit der Kennzeichnung `U` ist die aktualisierte Zeile in der Datenbank, und mit `I` wird die hinzugefügte Zeile angegeben.
 

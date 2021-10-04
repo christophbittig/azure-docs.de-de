@@ -1,22 +1,22 @@
 ---
-title: XML-Format in Azure Data Factory
+title: XML-Format
 titleSuffix: Azure Data Factory & Azure Synapse
-description: In diesem Thema wird der Umgang mit dem XML-Format in Azure Data Factory beschrieben.
+description: In diesem Thema wird der Umgang mit dem XML-Format in Azure Data Factory- und Synapse Analytics-Pipelines beschrieben.
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 04/29/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 9ee58b4afc33109ad8c205606e52fd1d76695d30
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 202c2ea7014ea0295fb342b1fc7fabd70d87ac29
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257314"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743558"
 ---
-# <a name="xml-format-in-azure-data-factory"></a>XML-Format in Azure Data Factory
+# <a name="xml-format-in-azure-data-factory-and-synapse-analytics-pipelines"></a>Das XML-Format in Azure Data Factory- und Synapse Analytics-Pipelines
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -28,7 +28,7 @@ Das XML-Format wird für die folgenden Connectors unterstützt: [Amazon S3](con
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom XML-Dataset unterstützt werden.
 
-| Eigenschaft         | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft         | Beschreibung                                                  | Erforderlich |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | Typ             | Die type-Eigenschaft des Datasets muss auf **Xml** festgelegt werden. | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften. **Informationen hierzu finden Sie im Abschnitt „Dataset-Eigenschaften“ des Artikels über Connectors**. | Ja      |
@@ -73,7 +73,7 @@ Erfahren Sie, wie Sie XML-Daten und Senkendatenspeicher sowie das zugehörige Fo
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt. Weitere Informationen finden Sie unter [Verhalten des XML-Connectors](#xml-connector-behavior).
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | Typ          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **XmlSource** festgelegt sein. | Ja      |
 | formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen finden Sie in der Tabelle der **XML-Leseeinstellungen** weiter unten. | Nein       |
@@ -81,7 +81,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktiv
 
 Unterstützte **XML-Leseeinstellungen** unter `formatSettings`:
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | Typ          | Der Typ von formatSettings muss auf **XmlReadSettings** festgelegt werden. | Ja      |
 | validationMode | Gibt an, ob das XML-Schema validiert werden soll.<br>Zulässige Werte sind **none** (Standard, keine Validierung), **xsd** (Validierung mithilfe von XSD) und **dtd** (Validierung mithilfe von DTD). | Nein |
@@ -89,8 +89,8 @@ Unterstützte **XML-Leseeinstellungen** unter `formatSettings`:
 | namespacePrefixes | Namespace-URI für die Präfixzuordnung, die zum Benennen von Feldern beim Auswerten der XML-Datei verwendet wird.<br/>Wenn eine XML-Datei einen Namespace aufweist und der Namespace aktiviert ist, entspricht der Feldname standardmäßig dem im XML-Dokument.<br>Wenn ein Element für den Namespace-URI in dieser Zuordnung definiert ist, lautet der Feldname `prefix:fieldName`. | Nein |
 | detectDataType | Gibt an, ob die Datentypen „integer“, „double“ und „boolesch“ erkannt werden sollen. Zulässige Werte sind **true** (Standard) oder **false**| Nein |
 | compressionProperties | Eine Gruppe von Eigenschaften zur Festlegung, wie Daten bei einem bestimmten Komprimierungscodec dekomprimiert werden können. | Nein       |
-| preserveZipFileNameAsFolder<br>(*unter `compressionProperties`->`type` als `ZipDeflateReadSettings`* )  | Diese Eigenschaft gilt, wenn das Eingabedataset mit der **ZipDeflate**-Komprimierung konfiguriert wurde. Sie gibt an, ob der Name der ZIP-Quelldatei während Kopiervorgängen als Ordnerstruktur beibehalten werden soll.<br>– Lautet der Wert **true** (Standard), schreibt Data Factory entzippte Dateien in `<path specified in dataset>/<folder named as source zip file>/`.<br>– Lautet der Wert **false**, schreibt Data Factory entzippte Dateien direkt in `<path specified in dataset>`. Stellen Sie sicher, dass es in unterschiedlichen ZIP-Quelldateien keine doppelten Dateinamen gibt, um Racebedingungen oder unerwartetes Verhalten zu vermeiden.  | Nein |
-| preserveCompressionFileNameAsFolder<br>(*unter `compressionProperties`->`type`: `TarGZipReadSettings` oder `TarReadSettings`* ) | Gilt, wenn das Eingabedataset mit der Komprimierung **TarGzip**/**Tar** konfiguriert wurde. Gibt an, ob der Name der komprimierten Quelldatei während Kopiervorgängen als Ordnerstruktur beibehalten werden soll.<br>– Lautet der Wert **true** (Standardwert), schreibt Data Factory dekomprimierte Dateien in `<path specified in dataset>/<folder named as source compressed file>/`. <br>– Lautet der Wert **false**, schreibt Data Factory dekomprimierte Dateien direkt in `<path specified in dataset>`. Stellen Sie sicher, dass es in unterschiedlichen Quelldateien keine doppelten Dateinamen gibt, um Racebedingungen oder unerwartetes Verhalten zu vermeiden. | Nein |
+| preserveZipFileNameAsFolder<br>(*unter `compressionProperties`->`type` als `ZipDeflateReadSettings`* )  | Diese Eigenschaft gilt, wenn das Eingabedataset mit der **ZipDeflate**-Komprimierung konfiguriert wurde. Sie gibt an, ob der Name der ZIP-Quelldatei während Kopiervorgängen als Ordnerstruktur beibehalten werden soll.<br>– Lautet der Wert **true (Standard)** , schreibt der Dienst die entpackten Dateien in `<path specified in dataset>/<folder named as source zip file>/`.<br>– Lautet der Wert **false**, schreibt der Dienst die entpackten Dateien direkt in `<path specified in dataset>`. Stellen Sie sicher, dass es in unterschiedlichen ZIP-Quelldateien keine doppelten Dateinamen gibt, um Racebedingungen oder unerwartetes Verhalten zu vermeiden.  | Nein |
+| preserveCompressionFileNameAsFolder<br>(*unter `compressionProperties`->`type`: `TarGZipReadSettings` oder `TarReadSettings`* ) | Gilt, wenn das Eingabedataset mit der Komprimierung **TarGzip**/**Tar** konfiguriert wurde. Gibt an, ob der Name der komprimierten Quelldatei während Kopiervorgängen als Ordnerstruktur beibehalten werden soll.<br>– Lautet der Wert **true (Standard)** , schreibt der Dienst die dekomprimierten Dateien in `<path specified in dataset>/<folder named as source compressed file>/`. <br>– Lautet der Wert **false**, schreibt der Dienst die dekomprimierten Dateien direkt in `<path specified in dataset>`. Stellen Sie sicher, dass es in unterschiedlichen Quelldateien keine doppelten Dateinamen gibt, um Racebedingungen oder unerwartetes Verhalten zu vermeiden. | Nein |
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 
@@ -100,7 +100,7 @@ In Zordnungsdatenflüssen können Sie das XML-Format in den folgenden Datenspeic
 
 In der folgenden Tabelle sind die von einer XML-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten. Weitere Informationen finden Sie unter [Verhalten des XML-Connectors](#xml-connector-behavior). Bei Verwendung eines Inlinedatasets werden zusätzliche Dateieinstellungen angezeigt. Diese entsprechen den Eigenschaften, die im Abschnitt zu den [Dataseteigenschaften](#dataset-properties) beschrieben sind. 
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Platzhalterpfade | Alle Dateien, die dem Platzhalterpfad entsprechen, werden verarbeitet. Überschreibt den Ordner und den Dateipfad, die im Dataset festgelegt sind. | Nein | String[] | wildcardPaths |
 | Partitionsstammpfad | Für partitionierte Dateidaten können Sie einen Partitionsstammpfad eingeben, um partitionierte Ordner als Spalten zu lesen. | Nein | String | partitionRootPath |

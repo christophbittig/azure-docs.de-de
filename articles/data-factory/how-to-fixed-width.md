@@ -7,12 +7,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 689a9d34dc796516aa281964552e11d70c74c1de
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 58bd77eb815a510328c49ca7c614b0bc680a4b94
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640925"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571426"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Verarbeiten von Textdateien mit fester Länge mithilfe von Data Factory Mapping Data Flows
 
@@ -26,13 +26,13 @@ Mithilfe von Mapping Data Flows in Microsoft Azure Data Factory können Sie Date
 
 2. Fügen Sie eine Datenflussaktivität für die Verarbeitung von Dateien mit fester Breite hinzu:
 
-    ![Pipeline mit fester Breite](media/data-flow/fwpipe.png)
+    :::image type="content" source="media/data-flow/fwpipe.png" alt-text="Pipeline mit fester Breite":::
 
 3. Wählen Sie in der Datenflussaktivität die Option für eine **neue Mapping Data Flow-Instanz** aus.
 
 4. Fügen Sie eine Transformation für Quelle, abgeleitete Spalte, Auswahl und Senke hinzu:
 
-    ![Datenfluss mit fester Breite](media/data-flow/fw2.png)
+    :::image type="content" source="media/data-flow/fw2.png" alt-text="Datenfluss mit fester Breite":::
 
 5. Konfigurieren Sie die Quellentransformation so, dass ein neues Dataset vom Typ „Durch Trennzeichen getrennter Text“ verwendet wird.
 
@@ -64,27 +64,27 @@ Mithilfe von Mapping Data Flows in Microsoft Azure Data Factory können Sie Date
 
 10. Geben Sie im Ausdrucks-Generator Folgendes ein:
 
-    ```substring(Column_1,1,4)```
+    `substring(Column_1,1,4)`
 
-    ![Abgeleitete Spalte](media/data-flow/fwderivedcol1.png)
+    :::image type="content" source="media/data-flow/fwderivedcol1.png" alt-text="Abgeleitete Spalte":::
 
 11. Wiederholen Sie Schritt 10 für alle zu analysierenden Spalten.
 
 12. Wählen Sie die Registerkarte **Untersuchen** aus, um die neuen Spalten anzuzeigen, die generiert werden:
 
-    ![Untersuchen](media/data-flow/fwinspect.png)
+    :::image type="content" source="media/data-flow/fwinspect.png" alt-text="Überprüfen":::
 
 13. Verwenden Sie die Auswahltransformation, um alle Spalten zu entfernen, die Sie nicht für die Transformation benötigen:
 
-    ![Auswahltransformation](media/data-flow/fwselect.png)
+    :::image type="content" source="media/data-flow/fwselect.png" alt-text="Auswahltransformation":::
 
 14. Verwenden Sie „Senke“, um die Daten in einen Ordner auszugeben:
 
-    ![Senke mit fester Breite](media/data-flow/fwsink.png)
+    :::image type="content" source="media/data-flow/fwsink.png" alt-text="Senke mit fester Breite":::
 
     Die Ausgabe sieht wie folgt aus:
 
-    ![Ausgabe mit fester Breite](media/data-flow/fxdoutput.png)
+    :::image type="content" source="media/data-flow/fxdoutput.png" alt-text="Ausgabe mit fester Breite":::
 
   Die Daten mit fester Breite sind nun in jeweils vier Zeichen unterteilt und „Col1“, „Col2“, „Col3“, „Col4“ usw. zugeordnet. Basierend auf dem vorherigen Beispiel werden die Daten auf vier Spalten aufgeteilt.
 

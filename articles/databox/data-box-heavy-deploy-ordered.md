@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 09/08/2021
 ms.author: alkohli
 ms.localizationpriority: high
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: d5334314626d29dc9e3047bc382d41fcfa318a1d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 0bf9eb2eab829e22e72f19fc4da4575166ea2755
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469516"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743342"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>Tutorial: Bestellen von Azure Data Box Heavy
 
@@ -62,6 +62,8 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 ## <a name="order-data-box-heavy"></a>Bestellen von Data Box Heavy
 
 [!INCLUDE [order-data-box-via-portal](../../includes/data-box-order-portal.md)]
+
+Das Data Box-Team nimmt Kontakt zu Ihnen auf, um weitere Informationen zu Ihren Anforderungen zu erhalten, um feststellen zu können, ob der Data Box Heavy-Dienst am gewünschten Standort verfügbar ist. Die Bestellung verbleibt im Status **Bestellt**, solange die Bestellung überprüft wird. Sie werden benachrichtigt, wenn Ihre Bestellung aus irgendeinem Grund nicht erfüllt werden kann.
 
 ## <a name="track-the-order"></a>Nachverfolgen der Bestellung
 

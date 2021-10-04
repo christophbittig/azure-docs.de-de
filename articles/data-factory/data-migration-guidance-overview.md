@@ -8,12 +8,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
-ms.openlocfilehash: 41c2a1fd7bccb6a43a9b5f3a8ad979fca90e8749
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6175447ddb249e04a939219caa722c55dae65749
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355449"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749089"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure
 
@@ -49,7 +49,8 @@ Bei der Entscheidung zwischen Online- und Offlinemigration gibt es drei wichtige
 
 Ein Beispiel: Angenommen, Sie möchten Ihre Datenmigration mithilfe von Azure Data Factory innerhalb von zwei Wochen (Ihr *Migrationszeitfenster*) abwickeln. Beachten Sie die rosafarbene/blaue Markierung in der folgenden Tabelle. Die unterste rosafarbene Zelle einer Spalte gibt jeweils die Kombination aus Datengröße/Netzwerkbandbreite an, deren Migrationszeitfenster den zwei Wochen am nächsten kommt, ohne es zu übersteigen. (Bei den blau eingefärbten Kombinationen aus Größe/Bandbreite wird das zweiwöchige Zeitfenster für die Onlinemigration jeweils überschritten.) 
 
-![Online oder offline](media/data-migration-guidance-overview/online-offline.png) Anhand dieser Tabelle können Sie auf der Grundlage der Größe Ihrer Daten und Ihrer verfügbaren Netzwerkbandbreite ermitteln, ob Sie Ihr gewünschtes Migrationszeitfenster bei einer Onlinemigration (Azure Data Factory) einhalten können. Beträgt das Zeitfenster für die Onlinemigration mehr als zwei Wochen, empfiehlt sich eine Offlinemigration.
+:::image type="content" source="media/data-migration-guidance-overview/online-offline.png" alt-text="Online im Vergleich zu offline":::
+Anhand dieser Tabelle können Sie auf der Grundlage der Größe Ihrer Daten und Ihrer verfügbaren Netzwerkbandbreite ermitteln, ob Sie Ihr gewünschtes Migrationszeitfenster bei einer Onlinemigration (Azure Data Factory) einhalten können. Beträgt das Zeitfenster für die Onlinemigration mehr als zwei Wochen, empfiehlt sich eine Offlinemigration.
 
 > [!NOTE]
 > Bei der Onlinemigration können Sie mithilfe eines einzigen Tools im Rahmen eines End-to-End-Vorgangs sowohl historische Daten laden als auch inkrementelle Feeds nutzen.  Dadurch bleiben Ihre Daten während des gesamten Migrationszeitfensters zwischen dem vorhandenen Speicher und dem neuen Speicher synchronisiert. Somit können Sie Ihre ETL-Logik im neuen Speicher mit aktualisierten Daten neu erstellen.

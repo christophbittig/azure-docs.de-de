@@ -4,15 +4,15 @@ description: In diesem Artikel werden die Schritte zum Durchführen der Problemb
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 06/04/2021
-ms.openlocfilehash: 95e1dd0a75ce233ed531b331783738d72c661c40
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/27/2021
+ms.openlocfilehash: cfcac68bfc09a4c3b6d4794469734d0634b3ad0c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594799"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213456"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Problembehandlung für Ihre Verbindungen in Azure Purview
 
@@ -76,7 +76,7 @@ Darüber hinaus müssen Sie Ihre Anmeldeinformationen auf Ihrer Azure Key Vault-
 1. Navigieren Sie zu Ihrer Key Vault-Instanz.
 1. Wählen Sie **Settings** > **Secrets** (Einstellungen > Geheimnisse) aus.
 1. Wählen Sie das Geheimnis aus, das Sie für die Authentifizierung bei Ihrer Datenquelle für Überprüfungen verwenden.
-1. Wählen Sie die gewünschte Version aus, und überprüfen Sie die Richtigkeit des Kennworts bzw. des Kontoschlüssels, indem Sie auf **Geheimniswert anzeigen** klicken. 
+1. Wählen Sie die gewünschte Version aus, und überprüfen Sie die Richtigkeit des Kennworts bzw. des Kontoschlüssels, indem Sie **Geheimniswert anzeigen** auswählen. 
 
 ## <a name="verify-permissions-for-the-purview-managed-identity-on-your-azure-key-vault"></a>Überprüfen der Berechtigungen für die verwaltete Purview-Identität auf Ihrer Azure Key Vault-Instanz
 

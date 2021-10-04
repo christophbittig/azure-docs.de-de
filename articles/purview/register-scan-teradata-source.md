@@ -1,18 +1,18 @@
 ---
-title: Registrieren einer Teradata-Quelle und Einrichten von Überprüfungen in Azure Purview
+title: Registrieren einer Teradata-Quelle und Einrichten von Überprüfungen
 description: In diesem Artikel erfahren Sie, wie Sie eine Teradata-Quelle in Azure Purview registrieren und eine Überprüfung einrichten.
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 2/25/2021
-ms.openlocfilehash: 3d6f30e3d50fa79ac394460f9b13e1127cf16168
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 5ba69e4b20edc74dfd9de43f19b2ba582b196353
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740272"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211302"
 ---
 # <a name="register-and-scan-teradata-source"></a>Registrieren und Überprüfen einer Teradata-Quelle
 
@@ -70,9 +70,9 @@ Gehen Sie auf dem Bildschirm **Register sources (Teradata)** (Quellen registrier
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1.  Klicken Sie im Verwaltungscenter auf **Integration Runtimes**. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
+1.  Wählen Sie im Verwaltungscenter **Integration Runtimes** aus. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
 
-2.  Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+2.  Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
 
 3.  Wählen Sie die registrierte Teradata-Quelle aus.
 
@@ -111,11 +111,11 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
     :::image type="content" source="media/register-scan-teradata-source/setup-scan.png" alt-text="Einrichten der Überprüfung" border="true":::
 
-6.  Klicken Sie auf **Continue** (Weiter).
+6.  Wählen Sie **Weiter**.
 
 7.  Wählen Sie den **Auslöser für die Überprüfung**. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
 
-8.  Sehen Sie sich Ihre Überprüfung noch einmal an, und klicken Sie dann auf **Speichern und ausführen**.
+8.  Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>Anzeigen Ihrer Überprüfungen und Überprüfungsausführungen
 

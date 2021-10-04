@@ -1,29 +1,29 @@
 ---
-title: Kopieren von Daten aus OData-Quellen mithilfe von Azure Data Factory
+title: Kopieren von Daten aus OData-Quellen
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Daten aus OData-Quellen mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
+description: Erfahren Sie, wie Daten aus OData-Quellen mithilfe einer Copy-Aktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: b08493b8b055cc013fa073dbbc7c58c5c936f22a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 938693353505a7fb3d37c85234da429ed2367ad4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123317430"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787886"
 ---
-# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopieren von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
+# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus einer OData-Quelle mithilfe von Azure Data Factory oder Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-odata-connector.md)
 > * [Aktuelle Version](connector-odata.md)
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten von einer OData-Quelle zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität in Azure Data Factory- oder Azure Synapse Analytics-Pipelines verwenden, um Daten aus einer OData-Quelle zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -55,7 +55,7 @@ Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst mit einem ODa
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -77,22 +77,22 @@ In den folgenden Abschnitten finden Sie Details zu Eigenschaften, mit denen Sie 
 
 Folgende Eigenschaften werden für einen mit OData verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **OData** festgelegt werden. |Ja |
 | url | Die Stamm-URL des OData-Diensts. |Ja |
 | authenticationType | Der Typ der Authentifizierung für die Verbindung mit der OData-Quelle. Zulässige Werte: **Anonymous**, **Basic**, **Windows** und **AadServicePrincipal**. OAuth auf Benutzerbasis wird nicht unterstützt. Außerdem können Sie Authentifizierungsheader in der `authHeader`-Eigenschaft konfigurieren.| Ja |
 | authHeaders | Zusätzliche HTTP-Anforderungsheader für die Authentifizierung.<br/> Wenn Sie beispielsweise die Authentifizierung mit einem API-Schlüssel verwenden möchten, können Sie als Authentifizierungstyp „Anonym“ auswählen und im Header den API-Schlüssel angeben. | Nein |
 | userName | Geben Sie **userName** an, wenn Sie die Standard- oder die Windows-Authentifizierung verwenden. | Nein |
-| password | Geben Sie das **password** für das Benutzerkonto an, das Sie für **userName** angegeben haben. Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Nein |
+| password | Geben Sie das **password** für das Benutzerkonto an, das Sie für **userName** angegeben haben. Markieren Sie dieses Feld als Typ **SecureString**, um es sicher zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Nein |
 | servicePrincipalId | Geben Sie die Client-ID der Azure Active Directory-Anwendung an. | Nein |
 | aadServicePrincipalCredentialType | Geben Sie die Art der Anmeldeinformationen für die Dienstprinzipalauthentifizierung an. Zulässiger Wert: `ServicePrincipalKey` oder `ServicePrincipalCert`. | Nein |
-| servicePrincipalKey | Geben Sie den Schlüssel der Azure Active Directory-Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
-| servicePrincipalEmbeddedCert | Geben Sie das in Azure Active Directory registrierte, base64-codierte Zertifikat Ihrer Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
-| servicePrincipalEmbeddedCertPassword | Geben Sie das Kennwort Ihres Zertifikats an, falls Ihr Zertifikat mit einem Kennwort geschützt ist. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md).  | Nein|
+| servicePrincipalKey | Geben Sie den Schlüssel der Azure Active Directory-Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
+| servicePrincipalEmbeddedCert | Geben Sie das in Azure Active Directory registrierte, base64-codierte Zertifikat Ihrer Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
+| servicePrincipalEmbeddedCertPassword | Geben Sie das Kennwort Ihres Zertifikats an, falls Ihr Zertifikat mit einem Kennwort geschützt ist. Markieren Sie dieses Feld als **SecureString**, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md).  | Nein|
 | tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. | Nein |
 | aadResourceId | Geben Sie die AAD-Ressource an, für die Sie eine Autorisierung anfordern.| Nein |
-| azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre AAD-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic**, **AzureChina**, **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung der Data Factory verwendet. | Nein |
+| azureCloudType | Geben Sie für die Dienstprinzipalauthentifizierung die Art der Azure-Cloudumgebung an, bei der Ihre AAD-Anwendung registriert ist. <br/> Zulässige Werte sind **AzurePublic**, **AzureChina**, **AzureUsGovernment** und **AzureGermany**. Standardmäßig wird die Cloudumgebung des Diensts verwendet. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 **Beispiel 1: Verwenden der anonymen Authentifizierung**
@@ -253,7 +253,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus OData die **type**-Eigenschaft des Datasets auf **ODataResource** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft des Datasets muss auf **ODataResource** festgelegt werden. | Ja |
 | path | Der Pfad zur OData-Ressource. | Ja |
@@ -289,7 +289,7 @@ Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum 
 
 Beim Kopieren von Daten aus OData werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **ODataSource** festgelegt werden. | Ja |
 | Abfrage | OData-Abfrageoptionen zum Filtern von Daten. Beispiel: `"$select=Name,Description&$top=5"`.<br/><br/>**Hinweis**: Der OData-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`. Weitere Informationen finden Sie unter [Komponenten der OData-URL](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nein |
@@ -331,9 +331,9 @@ Wenn Sie eine Quelle vom Typ `RelationalSource` verwenden, wird sie weiterhin un
 
 ## <a name="data-type-mapping-for-odata"></a>Datentypzuordnung für OData
 
-Beim Kopieren von Daten aus OData werden die folgenden Zuordnungen zwischen OData-Datentypen und Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie die Kopieraktivität das Quellschema und den Datentyp der Senke zuordnet.
+Beim Kopieren von Daten aus OData werden die folgenden Zuordnungen zwischen OData-Datentypen und den vom Dienst intern verwendeten Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie die Kopieraktivität das Quellschema und den Datentyp der Senke zuordnet.
 
-| OData-Datentyp | Data Factory-Zwischendatentyp |
+| OData-Datentyp | Zwischendatentyp des Diensts |
 |:--- |:--- |
 | Edm.Binary | Byte[] |
 | Edm.Boolean | Bool |
@@ -377,7 +377,7 @@ Zum Kopieren von Daten aus Project Online können Sie den OData-Connector und ei
    1. Sie werden aufgefordert, sich mit Ihrem Benutzernamen und Kennwort anzumelden.
    1. Nachdem Sie Ihr Zugriffstoken erhalten haben, kopieren Sie es, und speichern Sie es für den nächsten Schritt.
    
-    Verwenden Sie [Postman![, um das Zugriffstoken zu erhalten](./media/connector-odata/odata-project-online-postman-access-token-inline.png)](./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox)
+    [:::image type="content" source="./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox" alt-text="Verwenden von Postman zum Abrufen des Zugriffstokens](./media/connector-odata/odata-project-online-postman-access-token-inline.png)":::
 
 1. Erstellen Sie den verknüpften OData-Dienst:
     - **Dienst-URL**: Eingeben`https://<your tenant name>.sharepoint.com/sites/pwa/_api/Projectdata` . Ersetzen Sie `<your tenant name>` durch Ihren eigenen Tenant-Namen. 
@@ -387,13 +387,13 @@ Zum Kopieren von Daten aus Project Online können Sie den OData-Connector und ei
         - **Wert:** Geben Sie `Bearer <access token from step 1>` ein.
     - Testen des verknüpften Dienstes
 
-    ![Erstellen Sie den verknüpften OData-Dienst:](./media/connector-odata/odata-project-online-linked-service.png)
+    :::image type="content" source="./media/connector-odata/odata-project-online-linked-service.png" alt-text="Erstellen Sie den verknüpften OData-Dienst:":::
 
 1. Erstellen Sie das OData-Dataset:
     1. Erstellen Sie das Dataset t mit dem verknüpften OData-Dienst, den Sie in Schritt 2 erstellt haben.
     1. Datenvorschau
  
-    ![Datenvorschau](./media/connector-odata/odata-project-online-preview-data.png)
+    :::image type="content" source="./media/connector-odata/odata-project-online-preview-data.png" alt-text="Datenvorschau":::
  
 
 
@@ -403,4 +403,4 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Liste der Datenspeicher, die von der Kopieraktivität als Quellen und Senken in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die die Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).

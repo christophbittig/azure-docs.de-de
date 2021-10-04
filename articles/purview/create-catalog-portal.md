@@ -1,40 +1,35 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal'
+title: 'Schnellstart: Erstellen eines Purview-Kontos im Azure-Portal'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Azure Purview-Konto erstellen und Berechtigungen für dessen Verwendung konfigurieren.
 author: nayenama
 ms.author: nayenama
-ms.date: 08/18/2021
+ms.date: 09/27/2021
 ms.topic: quickstart
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 4f0ef5010a0862b1fa5514d83f6570eefa2c4e10
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: c1a8b47df487cb3159ee1ac7492cf5eb04c1dec6
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123102531"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217427"
 ---
-# <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal.
+# <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal
 
-Azure Purview ist ein einheitliches Data Governance-Tool, das Ihnen bei der Verwaltung Ihrer Datenlandschaft hilft. In dieser Schnellstartanleitung werden die Schritte zum Erstellen eines Azure Purview-Kontos im Azure-Portal und zum Einstieg in das Klassifizieren, Sichern und Entdecken Ihrer Daten in Purview beschrieben.
+In dieser Schnellstartanleitung werden die Schritte zum Erstellen eines Azure Purview-Kontos im Azure-Portal und zum Einstieg in das Klassifizieren, Sichern und Entdecken Ihrer Daten in Purview beschrieben.
 
-## <a name="prerequisites"></a>Voraussetzungen
+Azure Purview ist ein Data Governance-Dienst, der Sie bei der Verwaltung Ihrer Datenlandschaft unterstützt. Durch Herstellen einer Verbindung zu Daten in Ihren lokalen Quellen, mehreren Clouds und SaaS-Quellen (Software-as-a-Service) erstellt Purview eine aktuelle Zuordnung Ihrer Informationen. Purview identifiziert und klassifiziert sensible Daten und gewährleistet eine End-to-End-Herkunft. Datenconsumer können Daten in Ihrer Organisation auffinden, und Datenadministratoren können Ihre Daten überwachen, schützen und die richtige Verwendung ihrer Daten sicherstellen.
 
-* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Weitere Informationen zu Purview [finden Sie auf unserer Übersichtsseite](overview.md). Weitere Informationen zum Bereitstellen von Purview in Ihrer Organisation [finden Sie in unseren bewährten Methoden für die Bereitstellung](deployment-best-practices.md).
 
-* Das Benutzerkonto, mit dem Sie sich bei Azure anmelden, muss „Mitwirkender“, „Besitzer“ oder ein „Administrator“ des Azure-Abonnements sein.
-
-* Sie verfügen über einen eigenen [Azure Active Directory-Mandanten](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
-
-* Keine [Azure-Richtlinien](../governance/policy/overview.md), die das Erstellen von **Speicherkonten** oder **Event Hub-Namespaces** verhindern. Purview stellt bei seiner Erstellung ein verwaltetes Speicherkonto und einen Event Hub bereit. Wenn eine blockierende Richtlinie vorhanden ist und bestehen bleiben muss, befolgen Sie unsere [Anleitung zum Purview-Ausnahmetag](create-purview-portal-faq.md), um Ihre Umgebung vorzubereiten.
+[!INCLUDE [purview-quickstart-prerequisites](includes/purview-quickstart-prerequisites.md)]
 
 ## <a name="create-an-azure-purview-account"></a>Erstellen eines Azure Purview-Kontos
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Seite **Purview accounts** (Purview-Konten).
 
-    :::image type="content" source="media/create-catalog-portal/purview-accounts-page.png" alt-text="Screenshot der Seite „Purview accounts“ (Purview-Konten) im Azure-Portal.":::
+    :::image type="content" source="media/create-catalog-portal/purview-accounts-page.png" alt-text="Screenshot der Seite „Purview accounts“ (Purview-Konten) im Azure-Portal":::
 
 1. Wählen Sie **Erstellen** aus, um ein neues Azure Purview-Konto zu erstellen.
 

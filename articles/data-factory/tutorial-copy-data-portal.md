@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: ed91fcaf566e31df2a1c9b57178c2e60d9206ad5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dd7a38070b13cb762bc22e954c47703ef5366b84
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637715"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805485"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage in eine Datenbank in Azure SQL-Datenbank mithilfe von Azure Data Factory
 
@@ -111,13 +111,13 @@ In diesem Tutorial beginnen Sie mit dem Erstellen der Pipeline. Verknüpfte Dien
 
 1. Wählen Sie auf der Startseite die Option **Orchestrieren** aus.
 
-   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Screenshot, der die ADF-Startseite zeigt.":::
 
 1. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **CopyPipeline** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.
 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Kategorie **Move and Transform** (Verschieben und transformieren), und verschieben Sie die Aktivität **Daten kopieren** aus der Toolbox auf die Oberfläche des Pipeline-Designers. Geben Sie unter **Name** den Namen **CopyFromBlobToSql** ein.
 
-    ![Copy-Aktivität](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal/drag-drop-copy-activity.png" alt-text="Kopieraktivität":::
 
 ### <a name="configure-source"></a>Konfigurieren der Quelle
 
@@ -141,7 +141,7 @@ In diesem Tutorial beginnen Sie mit dem Erstellen der Pipeline. Verknüpfte Dien
 
 1. Klicken Sie auf **OK**. Die Pipelineseite wird automatisch aufgerufen. Vergewissern Sie sich, dass auf der Registerkarte **Quelle** die Option **SourceBlobDataset** ausgewählt ist. Wenn Sie auf dieser Seite eine Vorschau der Daten anzeigen möchten, klicken Sie auf **Datenvorschau**.
 
-    ![Quelldataset](./media/tutorial-copy-data-portal/source-dataset-selected.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal/source-dataset-selected.png" alt-text="Quelldataset":::
 
 ### <a name="configure-sink"></a>Konfigurieren der Senke
 >[!TIP]
@@ -170,13 +170,13 @@ In diesem Tutorial beginnen Sie mit dem Erstellen der Pipeline. Verknüpfte Dien
 
     g. Wählen Sie **Erstellen** aus, um den verknüpften Dienst bereitzustellen.
 
-    ![Speichern des neuen verknüpften Diensts](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png" alt-text="Speichern des neuen verknüpften Diensts":::
 
 1. Das Dialogfeld **Eigenschaften festlegen** wird automatisch geöffnet. Wählen Sie unter **Tabelle** die Option **[dbo].[emp]** aus. Klicken Sie anschließend auf **OK**.
 
 1. Wechseln Sie zur Registerkarte mit der Pipeline, und überprüfen Sie, ob für **Senkendataset** die Option **OutputSqlDataset** ausgewählt ist.
 
-    ![Pipelineregisterkarte](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
+    :::image type="content" source="./media/tutorial-copy-data-portal/pipeline-tab-2.png" alt-text="Pipelineregisterkarte":::       
 
 Optional können Sie das Schema der Quelle dem entsprechenden Zielschema zuordnen. Befolgen Sie dazu die Anweisungen unter [Schemazuordnung in Kopieraktivität](copy-activity-schema-and-type-mapping.md).
 
@@ -201,11 +201,11 @@ In diesem Schritt lösen Sie die im vorherigen Schritt veröffentlichte Pipeline
 
 1. Wechseln Sie links zur Registerkarte **Überwachen**. Sie sehen eine Pipelineausführung, die von einem manuellen Trigger ausgelöst wird. Über die Links unter der Spalte **PIPELINENAME** können Sie Aktivitätsdetails anzeigen und die Pipeline erneut ausführen.
 
-    [![Überwachen der Pipelineausführungen](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox)
+    [:::image type="content" source="./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox" alt-text="Überwachen von Pipelineausführungen](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)":::
 
 1. Um die der Pipelineausführung zugeordneten Aktivitätsausführungen anzuzeigen, wählen Sie unter der Spalte **PIPELINENAME** den Link **CopyPipeline** aus. Da in diesem Beispiel nur eine Aktivität vorhanden ist, wird in der Liste nur ein Eintrag angezeigt. Wenn Sie Details zum Kopiervorgang anzeigen möchten, wählen Sie in der Spalte **ACTIVTIY NAME** (AKTIVITÄTSNAME) den Link **Details** (das Brillensymbol) aus. Wählen Sie oben **Alle Pipelineausführungen** aus, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln. Klicken Sie zum Aktualisieren der Ansicht auf **Aktualisieren**.
 
-    [![Überwachen der Aktivitätsausführungen](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
+    [:::image type="content" source="./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox" alt-text="Überwachen von Aktivitätsausführungen](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)":::
 
 1. Stellen Sie sicher, dass zwei weitere Zeilen zur Tabelle **emp** in der Datenbank hinzugefügt werden.
 
@@ -243,7 +243,7 @@ In diesem Zeitplan erstellen Sie einen Zeitplantrigger für die Pipeline. Der Tr
 
 1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**, um die ausgelösten Pipelineausführungen anzuzeigen.
 
-    [![Ausgelöste Pipelineausführungen](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox)
+    [:::image type="content" source="./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox" alt-text="Ausgelöste Pipelineausführungen](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)":::
 
 1. Um von der Ansicht **Pipelineausführungen** zur Ansicht **Triggerausführungen** zu wechseln, klicken Sie auf der linken Seite des Fensters auf **Triggerausführungen**.
 

@@ -1,26 +1,26 @@
 ---
 title: Kopieren und Transformieren von Daten in Azure Database for MySQL
+description: Hier erfahren Sie, wie Sie Daten in Azure Database for MySQL mithilfe von Azure Data Factory- oder Synapse Analytics-Pipelines kopieren und transformieren.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Hier erfahren Sie, wie Sie Daten in Azure Database for MySQL mithilfe von Azure Data Factory kopieren und transformieren.
-ms.author: susabat
-author: ssabat
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 5495feb3e4cfe8080b9be4ee1ec0bc3804232089
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: b9f5f5046e3c03ec0ee7057553b49ca26f18061c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314316"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761872"
 ---
-# <a name="copy-and-transform-data-in-azure-database-for-mysql-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Database for MySQL mit Azure Data Factory
+# <a name="copy-and-transform-data-in-azure-database-for-mysql-using-azure-data-factory-or-synapse-analytics"></a>Kopieren und Transformieren von Daten in Azure Database for MySQL mithilfe von Azure Data Factory oder Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Daten mithilfe der Copy-Aktivität in Azure Data Factory aus und in Azure Database for MySQL kopieren sowie Daten mit einem Datenfluss in Azure Database for MySQL transformieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+In diesem Artikel wird beschrieben, wie Sie Daten mithilfe der Copy-Aktivität in Azure Data Factory- oder Synapse Analytics-Pipelines aus und in Azure Database for MySQL kopieren sowie Daten mit einem Datenfluss in Azure Database for MySQL transformieren. Weitere Informationen finden Sie in den Einführungsartikeln zu [Azure Data Factory](introduction.md) und [Synapse Analytics](../synapse-analytics/overview-what-is.md).
 
 Dieser Connector ist speziell auf den [Dienst „Azure Database for MySQL“](../mysql/overview.md) ausgelegt. Verwenden Sie [MySQL-Connector](connector-mysql.md), um Daten aus der generischen MySQL-Datenbank zu kopieren, die lokal oder in der Cloud angeordnet ist.
 
@@ -44,7 +44,7 @@ Führen Sie die folgenden Schritte aus, um einen mit Azure Database for MySQL ve
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst über die Azure Data Factory Benutzeroberfläche.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory-Benutzeroberfläche.":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -203,7 +203,7 @@ Beim Kopieren von Daten aus Azure Database for MySQL werden die folgenden Eigens
 
 Beim Kopieren von Daten nach Azure Database for MySQL werden die folgenden Eigenschaften im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt sein: **AzureMySqlSink** | Ja |
 | preCopyScript | Geben Sie eine SQL-Abfrage für die Kopieraktivität an, die ausgeführt werden soll, bevor bei jeder Ausführung Daten in Azure Database for MySQL geschrieben werden. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. | Nein |
@@ -274,7 +274,7 @@ source(allowSchemaDrift: true,
 
 In der folgenden Tabelle werden die Eigenschaften aufgeführt, die von der Azure Database for MySQL-Senke unterstützt werden. Sie können diese Eigenschaften auf der Registerkarte **Senkenoptionen** bearbeiten.
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Updatemethode | Geben Sie an, welche Vorgänge für das Datenbankziel zulässig sind. Standardmäßig sind lediglich Einfügevorgänge zulässig.<br>Um Aktualisierungs-, Upsert- oder Löschaktionen auf Zeilen anzuwenden, muss eine [Zeilenänderungstransformation](data-flow-alter-row.md) zum Kennzeichnen von Zeilen für diese Aktionen erfolgen. | Ja | `true` oder `false` | deletable <br/>insertable <br/>updateable <br/>upsertable |
 | Schlüsselspalten | Für Update-, Upsert- und Löschvorgänge müssen Schlüsselspalten festgelegt werden, um die Zeile zu bestimmen, die geändert werden soll.<br>Der Spaltenname, den Sie als Schlüssel auswählen, wird als Teil der nachfolgenden Update-, Upsert- und Löschvorgänge verwendet. Daher müssen Sie eine Spalte auswählen, die in der Senkenzuordnung vorhanden ist. | Nein | Array | keys |
@@ -306,9 +306,9 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivi
 
 ## <a name="data-type-mapping-for-azure-database-for-mysql"></a>Datentypzuordnung für Azure Database for MySQL
 
-Beim Kopieren von Daten aus Azure Database for MySQL werden die folgenden Zuordnungen von MySQL-Datentypen zu Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
+Beim Kopieren von Daten aus Azure Database for MySQL werden die folgenden Zuordnungen von MySQL-Datentypen zu den vom Dienst intern verwendeten Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
 
-| Azure Database for MySQL-Datentyp | Data Factory-Zwischendatentyp |
+| Azure Database for MySQL-Datentyp | Zwischendatentyp des Diensts |
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
@@ -352,4 +352,4 @@ Beim Kopieren von Daten aus Azure Database for MySQL werden die folgenden Zuordn
 | `year` |`Int32` |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quelles und Senken für die Kopieraktivität unterstützt werden, finden Sie in der Dokumentation für [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

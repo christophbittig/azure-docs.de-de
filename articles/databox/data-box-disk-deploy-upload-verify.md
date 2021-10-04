@@ -1,7 +1,6 @@
 ---
-title: Tutorial zum Überprüfen des Datenuploads aus Azure Data Box Disk in ein Speicherkonto | Microsoft-Dokumentation
+title: Tutorial zum Überprüfen des Datenuploads aus Azure Data Box Disk in ein Speicherkonto
 description: In diesem Tutorial erfahren Sie, wie Sie die Daten überprüfen, die aus Azure Data Box Disk in ein Azure-Speicherkonto hochgeladen wurden.
-services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.localizationpriority: high
 ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: abe09cf10e241ec95ceed767e7038cde07667fc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 53e2db3728d92a862fce64ba1fc379a2ae2205ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322732"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591632"
 ---
 ::: zone target="docs"
 
@@ -85,9 +84,9 @@ Nachdem die Daten in Azure hochgeladen wurden, überprüfen Sie, ob sich Ihre Da
 
 - In Ihren Azure Storage-Konten. Wenn Sie die Daten in Data Box kopieren, werden die Daten abhängig vom Typ in einen der folgenden Pfade in Ihrem Azure Storage-Konto hochgeladen:
 
-    - **Für Blockblobs und Seitenblobs**: https://<Speicherkontoname>.blob.core.windows.net/<containername>/files/a.txt
+    - **Blockblobs und Seitenblobs**: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
 
-    - **Für Azure Files**: https://<Speicherkontoname>.file.core.windows.net/<sharename>/files/a.txt
+    - **Azure Files**: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
 - In Ihren Ressourcengruppen für verwaltete Datenträger. Beim Erstellen von verwalteten Datenträgern werden die VHDs als Seitenblobs hochgeladen und dann in verwaltete Datenträger konvertiert. Die verwalteten Datenträger werden an die Ressourcengruppen angefügt, die zum Zeitpunkt der Auftragserstellung angegeben waren.
 

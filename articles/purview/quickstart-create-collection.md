@@ -1,28 +1,28 @@
 ---
 title: 'Schnellstart: Erstellen einer Sammlung'
-description: In diesem Artikel erfahren Sie, wie Sie in Azure Purview eine Sammlung erstellen und Berechtigungen und Quellen hinzufügen.
+description: Sammlungen werden für die Zugriffssteuerung und die Ressourcenorganisation in Azure Purview verwendet. In diesem Artikel wird beschrieben, wie Sie eine Sammlung erstellen und Berechtigungen hinzufügen, Quellen registrieren und Ressourcen für Sammlungen registrieren.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: quickstart
-ms.date: 08/18/2021
+ms.date: 09/27/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: a1a62bb6253aa2788d8dad41d506ca898a049283
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 47db60e99048d5be58eb1aae6707caa6ae9c4d6e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475690"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218779"
 ---
 # <a name="quickstart-create-a-collection-and-assign-permissions-in-purview"></a>Schnellstart: Erstellen einer Sammlung und Zuweisen von Berechtigungen in Purview
 
 > [!NOTE]
-> Derzeit gilt diese Schnellstartanleitung nur für Purview-Instanzen, die am oder nach dem 18. August 2021 erstellt wurden. Vor dem 18. August erstellte Instanzen können Sammlungen erstellen, aber keine Berechtigungen über diese Sammlungen verwalten. Informationen zum Erstellen einer Sammlung für eine Purview-Instanz, die vor dem 18. August erstellt wurde, finden Sie im [**Leitfaden zu Legacysammlungen**](#legacy-collection-guide) am Ende dieses Artikels.
+> Derzeit gilt diese Schnellstartanleitung nur für Azure Purview-Instanzen, die am oder nach dem 18. August 2021 erstellt wurden. Vor dem 18. August erstellte Instanzen können Sammlungen erstellen, aber keine Berechtigungen über diese Sammlungen verwalten. Informationen zum Erstellen einer Sammlung für eine Purview-Instanz, die vor dem 18. August erstellt wurde, finden Sie im [**Leitfaden zu Legacysammlungen**](#legacy-collection-guide) am Ende dieses Artikels.
 > 
 > Alle Legacykonten erhalten in den kommenden Wochen automatisch ein Upgrade. Sie erhalten eine E-Mail-Benachrichtigung, wenn Ihr Purview-Konto aktualisiert wird. Informationen darüber, was sich bei einem Upgrade Ihres Kontos ändert, finden Sie in unserem Leitfaden zum [Upgrade von Konten](concept-account-upgrade.md).
 
-Sammlungen sind das Tool von Purview zum Verwalten des Besitzes und der Zugriffssteuerung für Ressourcen, Quellen und Informationen. Darüber hinaus werden damit Ihre Quellen und Ressourcen in benutzerdefinierten Kategorien strukturiert, um Ihre Verwaltungsoberfläche auf Ihre Daten abzustimmen. In diesem Leitfaden erfahren Sie, wie Sie Ihre erste Sammlung und einen Sammlungsadministrator einrichten, um die Purview-Umgebung für Ihre Organisation vorzubereiten.
+Sammlungen sind das Tool von Azure Purview zum Verwalten des Besitzes und der Zugriffssteuerung für Ressourcen, Quellen und Informationen. Darüber hinaus werden damit Ihre Quellen und Ressourcen in benutzerdefinierten Kategorien strukturiert, um Ihre Verwaltungsoberfläche auf Ihre Daten abzustimmen. In diesem Leitfaden erfahren Sie, wie Sie Ihre erste Sammlung und einen Sammlungsadministrator einrichten, um die Purview-Umgebung für Ihre Organisation vorzubereiten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +38,7 @@ Zum Erstellen und Verwalten von Sammlungen in Purview muss Ihnen innerhalb von P
 
 1. Wählen Sie im linken Bereich „Data Map“ > „Sammlungen“ aus, um die Seite für die Sammlungsverwaltung zu öffnen.
 
-    :::image type="content" source="./media/quickstart-create-collection/find-collections.png" alt-text="Screenshot: Purview Studio mit geöffneter Option „Data Map“ und ausgewählter Registerkarte „Sammlungen“" border="true":::
+    :::image type="content" source="./media/quickstart-create-collection/find-collections.png" alt-text="Screenshot: Purview Studio mit geöffneter Option „Data Map“ und ausgewählter Registerkarte „Sammlungen“." border="true":::
 
 1. Wählen Sie Ihre Stammsammlung aus. Dies ist die oberste Sammlung in Ihrer Sammlungsliste, die den gleichen Namen aufweist wie Ihre Purview-Ressource. In diesem Beispiel lautet der Name der Stammsammlung „Contoso Purview“.
 
@@ -58,9 +58,12 @@ Sie beginnen mit dem Erstellen der Sammlung in [Purview Studio](use-purview-stud
 
 1. Wählen Sie im linken Bereich „Data Map“ > „Sammlungen“ aus, um die Seite für die Sammlungsverwaltung zu öffnen.
 
-    :::image type="content" source="./media/quickstart-create-collection/find-collections.png" alt-text="Screenshot: Purview Studio mit geöffneter Option „Data Map“ und ausgewählter Registerkarte „Sammlungen“" border="true":::
+    :::image type="content" source="./media/quickstart-create-collection/find-collections-2.png" alt-text="Screenshot: Purview Studio mit geöffneter Option „Data Map“ und ausgewählter Registerkarte „Sammlungen“" border="true":::
 
 1. Wählen Sie **+ Sammlung hinzufügen** aus.
+
+    :::image type="content" source="./media/quickstart-create-collection/select-add-collection.png" alt-text="Screenshot: Purview Studio mit geöffneter Option „Data Map“, ausgewählter Registerkarte „Sammlungen“ und Hervorhebung von „Sammlung hinzufügen“." border="true":::
+
 1. Geben Sie im rechten Bereich den Sammlungsnamen und eine Beschreibung ein, und suchen Sie nach Benutzern, um sie als Sammlungsadministratoren hinzuzufügen.
 
     :::image type="content" source="./media/quickstart-create-collection/create-collection.png" alt-text="Screenshot: Purview Studio mit dem Fenster „Neue Sammlung“, mit ausgewähltem Anzeigenamen und Sammlungsadministrator und hervorgehobener Schaltfläche „Erstellen“" border="true":::

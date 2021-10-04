@@ -1,7 +1,7 @@
 ---
-title: Aktivität „Prüfung“ in Azure Data Factory
+title: Aktivität „Prüfung“
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Die Aktivität „Prüfung“ setzt die Ausführung der Pipeline erst fort, nachdem sie das angefügte Dataset mit bestimmten vom Benutzer angegebenen Kriterien überprüft hat.
+description: Die Validation-Aktivität in Azure Data Factory und Synapse Analytics verzögert die Ausführung der Pipeline, bis ein Dataset anhand benutzerdefinierter Kriterien validiert wird.
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.openlocfilehash: 9b4c2802808defd5a252a21f17fde9a769a08fad
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: fa98ef27b5dbcc7949f37bf548c414d015224e4c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640610"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750615"
 ---
-# <a name="validation-activity-in-azure-data-factory"></a>Aktivität „Prüfung“ in Azure Data Factory
+# <a name="validation-activity-in-azure-data-factory-and-synapse-analytics-pipelines"></a>Validation-Aktivität in Azure Data Factory- und Synapse Analytics-Pipelines
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Sie können mithilfe einer Prüfung in einer Pipeline sicherstellen, dass diese die Ausführung nur fortsetzt, nachdem sie überprüft hat, ob der angefügte Datasetverweis vorhanden ist und die angegebenen Kriterien erfüllt oder ob das Timeout erreicht wurde.
@@ -71,7 +71,7 @@ minimumSize | Mindestgröße einer Datei in Bytes. Wenn kein Wert angegeben wird
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden:
+Informationen zu weiteren unterstützten Ablaufsteuerungsaktivitäten:
 
 - [Aktivität „If Condition“](control-flow-if-condition-activity.md)
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: quickstart
 ms.date: 07/05/2021
-ms.openlocfilehash: c4b7d5f0e60d526976734a5878cf7dd0800ad322
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2bde0d03c901808e277044db035dc738bb555bb0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749866"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750358"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Schnellstart: Kopieren von Daten mithilfe des Tools zum Kopieren von Daten
 
@@ -35,13 +35,13 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
 1. Wählen Sie im Azure-Portal im Menü die Option **Ressource erstellen** > **Integration** > **Data Factory** aus:
 
-    ![Erstellen einer neuen Data Factory](./media/doc-common-process/new-azure-data-factory-menu.png)
+    :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="Erstellen einer neuen Data Factory":::
 
 1. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein. 
  
    Der Name der Azure Data Factory-Instanz muss *global eindeutig* sein. Sollte der folgende Fehler auftreten, ändern Sie den Namen der Data Factory (beispielsweise in **&lt;IhrName&gt;ADFTutorialDataFactory**), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Artikel [Azure Data Factory – Benennungsregeln](naming-rules.md).
   
-   ![Fehler, wenn ein Name nicht verfügbar ist](./media/doc-common-process/name-not-available-error.png)
+   :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Fehler, wenn ein Name nicht verfügbar ist":::
 1. Wählen Sie unter **Abonnement** Ihr Azure-Abonnement aus, in dem die Data Factory erstellt werden soll. 
 1. Führen Sie unter **Ressourcengruppe** einen der folgenden Schritte aus:
      
@@ -64,11 +64,11 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 
 1. Wählen Sie auf der Homepage von Azure Data Factory die Kachel **Erfassung** aus, um das Tool Daten kopieren zu starten.
 
-   ![Screenshot der Azure Data Factory-Homepage](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Screenshot der Azure Data Factory-Homepage":::
 
 1. Wählen Sie auf der Seite **Eigenschaften** des Tools zum Kopieren von Daten unter **Aufgabentyp** den Typ **Integrierte Kopieraufgabe** aus, und wählen Sie dann **Weiter** aus.
 
-   ![Eigenschaftenseite](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png" alt-text="Seite &quot;Eigenschaften&quot;":::
 
 1. Führen Sie auf der Seite **Quelldatenspeicher** die folgenden Schritte aus:
 
@@ -76,11 +76,11 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 
     1. Wählen Sie den Typ des verknüpften Diensts aus, den Sie für die Quellverbindung erstellen möchten. In diesem Tutorial verwenden wir **Azure Blob Storage**. Wählen Sie diese Option im Katalog und dann **Weiter** aus.
     
-       ![Blob auswählen](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
+       :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png" alt-text="Blob auswählen":::
 
     1. Geben Sie auf der Seite **Neue Verbindung (Azure Blob Storage)** einen Namen für Ihre Verbindung ein. Wählen Sie aus der Liste **Azure-Abonnement** Ihr Azure-Abonnement und aus der Liste **Speicherkontoname** Ihr Speicherkonto aus, testen Sie die Verbindung, und wählen Sie dann **Erstellen** aus. 
 
-       ![Konfigurieren des Azure Blob Storage-Kontos](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
+       :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png" alt-text="Konfigurieren des Azure Blob Storage-Kontos":::
 
     1. Wählen Sie im Block **Verbindung** die neu erstellte Verbindung aus.
     1. Wählen Sie im Abschnitt **Datei oder Ordner** die Option **Durchsuchen** aus, um zum Ordner **adftutorial/input** zu navigieren, wählen Sie die Datei **emp.txt** aus, und klicken Sie dann auf **OK**.
@@ -105,11 +105,11 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 
 1. Klicken Sie auf der Seite **Deployment complete** (Bereitstellung abgeschlossen) auf **Überwachen**, um die erstellte Pipeline zu überwachen. 
 
-    ![Seite „Deployment complete“ (Bereitstellung abgeschlossen)](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png" alt-text="Seite &quot;Bereitstellung abgeschlossen&quot;":::
 
 1. Die Anwendung wechselt zur Registerkarte **Überwachen**. Der Status der Pipeline wird auf dieser Registerkarte angezeigt. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. Klicken Sie auf den Link unter **Pipelinename**, um Details zur Aktivitätsausführung anzuzeigen oder die Pipeline erneut auszuführen. 
    
-    ![Aktualisieren der Pipeline](./media/quickstart-create-data-factory-copy-data-tool/refresh-pipeline.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/refresh-pipeline.png" alt-text="Aktualisieren der Pipeline":::
 
 1. Wählen Sie auf der Seite „Aktivitätsausführungen“ unter der Spalte **Aktivitätsname** den Link **Details** (Brillensymbol) aus, um weitere Details zum Kopiervorgang anzuzeigen. Einzelheiten zu den Eigenschaften finden Sie unter [Kopieraktivität in Azure Data Factory](copy-activity-overview.md). 
 
@@ -119,7 +119,7 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 
 1. Wechseln Sie im linken Bereich zur Registerkarte **Ersteller** über der Registerkarte **Überwachen**, um verknüpfte Dienste, Datasets und Pipelines zu bearbeiten. Informationen zum Bearbeiten dieser Elemente über die Data Factory-Benutzeroberfläche finden Sie unter [Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche](quickstart-create-data-factory-portal.md).
 
-    ![Auswählen der Registerkarte „Autor“](./media/quickstart-create-data-factory-copy-data-tool/select-author.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/select-author.png" alt-text="Auswählen der Registerkarte „Autor“":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 Die Pipeline in diesem Beispiel kopiert Daten in Azure Blob Storage von einem Speicherort in einen anderen. Arbeiten Sie die [Tutorials](tutorial-copy-data-portal.md) durch, um zu erfahren, wie Sie Data Factory in anderen Szenarien verwenden können. 

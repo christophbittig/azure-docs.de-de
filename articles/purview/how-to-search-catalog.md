@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.openlocfilehash: 178604335968c3664bde51c144759c1c040c359d
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.date: 09/27/2021
+ms.openlocfilehash: 5581a19f001b4caee8ef0e0d93908bd6d98471a0
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564912"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213598"
 ---
 # <a name="search-the-azure-purview-data-catalog"></a>Suchen im Azure Purview-Datenkatalog
 
@@ -26,11 +26,11 @@ In Azure Purview befindet sich die Suchleiste oben in der Purview Studio-Benutze
 
 :::image type="content" source="./media/how-to-search-catalog/purview-search-bar.png" alt-text="Screenshot der Position der Suchleiste in Azure Purview" border="true":::
 
-Wenn Sie in die Suchleiste klicken, werden der aktuelle Suchverlauf und die zuletzt verwendeten Ressourcen angezeigt. Klicken Sie auf „Alle anzeigen“, um alle zuletzt angezeigten Ressourcen anzuzeigen.
+Wenn Sie in die Suchleiste klicken, werden der aktuelle Suchverlauf und die zuletzt verwendeten Ressourcen angezeigt. Klicken Sie auf **Alle anzeigen**, um alle zuletzt angezeigten Ressourcen anzuzeigen.
 
 :::image type="content" source="./media/how-to-search-catalog/search-no-keywords.png" alt-text="Screenshot der Suchleiste vor Eingabe eines Schlüsselworts" border="true":::
 
-Geben Sie in die Suchleiste Schlüsselwörter zur Identifikation der gewünschten Ressource ein, wie z. B. Name, Datentyp, Klassifizierung und Glossarbegriffe. Während der Eingabe von Schlüsselwörtern zur gesuchten Ressource zeigt Azure Purview Vorschläge zu Suchbegriffen sowie mögliche Ressourcenübereinstimmungen an. Klicken Sie zum Ausführen der Suche auf „Suchergebnisse anzeigen“, oder drücken Sie die EINGABETASTE.
+Geben Sie in die Suchleiste Schlüsselwörter zur Identifikation der gewünschten Ressource ein, wie z. B. Name, Datentyp, Klassifizierung und Glossarbegriffe. Während der Eingabe von Schlüsselwörtern zur gesuchten Ressource zeigt Azure Purview Vorschläge zu Suchbegriffen sowie mögliche Ressourcenübereinstimmungen an. Klicken Sie zum Starten der Suche auf **Suchergebnisse anzeigen**, oder drücken Sie die EINGABETASTE.
 
 :::image type="content" source="./media/how-to-search-catalog/search-keywords.png" alt-text="Screenshot der Suchleiste während der Eingabe von Schlüsselwörtern durch den Benutzer" border="true":::
 
@@ -38,7 +38,7 @@ Auf der Seite der Suchergebnisse wird in der Reihenfolge ihrer Relevanz eine Lis
 
 :::image type="content" source="./media/how-to-search-catalog/search-results.png" alt-text="Screenshot der Suchergebnisse" border="true":::
 
- Klicken Sie auf die gewünschte Ressource, um die Seite mit den Ressourcendetails wie z. B. Schema, Herkunft und Ressourcenbesitzer anzuzeigen.
+ Klicken Sie auf die gewünschte Ressource, um die Seite mit den Ressourcendetails anzuzeigen, darunter z. B. Eigenschaften wie Schema, Herkunft und Ressourcenbesitzer.
 
 :::image type="content" source="./media/how-to-search-catalog/search-view-asset.png" alt-text="Screenshot der Seite mit den Ressourcendetails" border="true":::
 

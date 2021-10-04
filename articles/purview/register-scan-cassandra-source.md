@@ -1,20 +1,20 @@
 ---
-title: Registrieren von Cassandra als Quelle und Einrichten von Überprüfungen in Azure Purview
+title: Registrieren von Cassandra als Quelle und Einrichten von Überprüfungen
 description: In diesem Artikel erfahren Sie, wie Sie einen Cassandra-Server in Azure Purview registrieren und eine Überprüfung einrichten.
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 8/06/2021
-ms.openlocfilehash: 8e2136cdb4cca53d81412335f7f5878fd8d70b86
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: dcc0ef65654d8100a1c96cdb0c84a6ac758587a2
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785283"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212727"
 ---
-# <a name="register-and-scan-a-cassandra-source"></a>Registrieren und Überprüfen einer Cassandra-Quelle 
+# <a name="register-and-scan-a-cassandra-source-preview"></a>Registrieren und Überprüfen einer Cassandra-Quelle (Vorschau)
 
 In diesem Artikel erfahren Sie, wie Sie einen Cassandra-Server in Purview registrieren und eine Überprüfung einrichten.
 
@@ -52,14 +52,14 @@ Gehen Sie auf dem Bildschirm „Quellen registrieren“ (Cassandra) wie folgt vo
 3. Geben Sie den vom Cassandra-Server verwendeten Port in das Feld **Port** ein.
 4. Optional: Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung.
 
-5.  Klicken Sie auf **Registrieren**.
+5.  Wählen Sie **Registrieren**.
     :::image type="content" source="media/register-scan-cassandra-source/configure-sources.png" alt-text="Konfigurieren der Cassandra-Quelle" border="true":::
 
 ## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1.  Klicken Sie im Verwaltungscenter auf Integration Runtimes. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
+1.  Wählen Sie im Verwaltungscenter „Integration Runtimes“ aus. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
 
 2.  Navigieren Sie zu **Quellen**.
 
@@ -96,13 +96,13 @@ Die Verwendung von „NOT“ oder Sonderzeichen ist nicht zulässig.
     g. **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Dies hängt von der Größe der zu überprüfenden Cassandra-Servers ab.
         :::image type="content" source="media/register-scan-cassandra-source/scan.png" alt-text="Überprüfen der Cassandra-Quelle" border="true":::
 
-6.  Klicken Sie auf **Testverbindung**.
+6.  Wählen Sie **Verbindung testen** aus.
 
-7.  Klicken Sie auf **Continue** (Weiter).
+7.  Wählen Sie **Weiter**.
 
 8.  Wählen Sie den **Auslöser für die Überprüfung**. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
 
-9.  Sehen Sie sich Ihre Überprüfung noch einmal an, und klicken Sie dann auf **Speichern und ausführen**.
+9.  Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>Anzeigen Ihrer Überprüfungen und Überprüfungsausführungen
 

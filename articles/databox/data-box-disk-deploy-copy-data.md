@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 09/14/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9186c742f34f1c060b57ffdfbf1bf688607b4c03
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1dc4c63d5d19b688a695702a5eb94365ff762a97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125336"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591803"
 ---
 ::: zone target="docs"
 
@@ -283,7 +283,7 @@ Falls Sie das Aufteilen/Kopieren-Tool nicht zum Kopieren der Daten verwendet hab
 
     > [!TIP]
     > - Setzen Sie das Tool zwischen zwei Ausführungen zurück.
-    > - Verwenden Sie Option 1, wenn Sie ein großes Dataset mit kleinen Dateien (KB-Bereich) verwenden. Mit dieser Option werden die Dateien nur überprüft, da die Generierung der Prüfsumme ggf. sehr lange dauern und die Leistung deutlich verlangsamt sein kann.
+    > - Der Prüfsummenprozess kann länger dauern, wenn Sie über ein großes Dataset mit kleinen Dateien (KB-Größenordnung) verfügen.  Wenn Sie Option 1 verwenden und die Erstellung von Prüfsummen überspringen, müssen Sie die Datenintegrität der hochgeladenen Daten in Azure unabhängig überprüfen, vorzugsweise über Prüfsummen, bevor Sie Kopien der Daten in Ihrem Besitz löschen.
 
 3. Führen Sie den Befehl für jeden Datenträger einzeln aus, wenn Sie mehrere Datenträger verwenden möchten.
 

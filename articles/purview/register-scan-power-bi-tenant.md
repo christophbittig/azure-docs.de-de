@@ -1,20 +1,20 @@
 ---
-title: Registrieren und Überprüfen eines Power BI-Mandanten (Vorschau)
+title: Registrieren und Überprüfen eines Power BI-Mandanten
 description: Erfahren Sie, wie Sie über das Azure Purview-Portal einen Power BI-Mandanten registrieren und überprüfen können.
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 07/28/2021
-ms.openlocfilehash: c29070f85fe0024113b6d5d4857733b23b522615
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/27/2021
+ms.openlocfilehash: 8290c4c31cca383692a4ce5908d56e1b686c4213
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343459"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211478"
 ---
-# <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrieren und Überprüfen eines Power BI-Mandanten (Vorschau)
+# <a name="register-and-scan-a-power-bi-tenant"></a>Registrieren und Überprüfen eines Power BI-Mandanten
 
 In diesem Artikel wird gezeigt, wie Sie das Azure Purview-Portal zum Registrieren und Überprüfen eines Power BI-Mandanten verwenden.
 
@@ -60,13 +60,16 @@ Erstellen Sie zum Einrichten der Authentifizierung eine Sicherheitsgruppe, und f
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Abbildung: Dienstprinzipale erhalten schreibgeschützte Power BI-Administrator-API-Berechtigungen":::
 
-1. Wählen Sie **Admin API settings** (Admin-API-Einstellungen) > **Enhance admin APIs responses with detailed metadata** (Admin-API-Antworten mit Metadatendetails) verbessern aus. Aktivieren Sie dann den Schalter, damit Purview Data Map automatisch die Metadatendetails von Power BI-Datensätzen als Teil seiner Scans erkennt.
+1. Wählen Sie **Admin-API-Einstellungen** > **Admin-API-Antworten mit Metadatendetails erweitern** aus. Aktivieren Sie dann den Schalter, damit Purview Data Map automatisch die Metadatendetails von Power BI-Datensätzen als Teil seiner Scans erkennt.
+
+    > [!IMPORTANT]
+    > Warten Sie nach dem Aktualisieren der Admin-API-Einstellungen in Ihrem Power BI-Mandanten etwa 15 Minuten, bevor Sie eine Überprüfung registrieren und die Verbindung testen.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-sub-artifacts.png" alt-text="Abbildung: Konfiguration des Power BI-Verwaltungsportals zum Aktivieren der Überprüfung untergeordneter Artefakte":::
 
     > [!Caution]
     > Wenn Sie der von Ihnen erstellten Sicherheitsgruppe (die Ihre verwaltete Purview-Identität als Mitglied hat) gestatten, schreibgeschützte Power BI-Administrator-APIs zu verwenden, gestatten Sie ihr auch, auf die Metadaten (z. B. Dashboard- und Berichtsnamen, Besitzer, Beschreibungen usw.) für sämtliche Ihrer Power BI-Artefakte in diesem Mandanten zugreifen zu können. Sobald die Metadaten in Azure Purview eingelesen wurden, wird anhand der Pruview-Berechtigungen, nicht anhand der Power BI-Berechtigungen, festgelegt, wer diese Metadaten anzeigen kann.
-
+  
     > [!Note]
     > Sie können die Sicherheitsgruppe aus Ihren Entwicklereinstellungen entfernen, die zuvor extrahierten Metadaten werden jedoch nicht aus dem Purview-Konto entfernt. Bei Bedarf können Sie sie separat löschen.
 
@@ -126,7 +129,7 @@ Verwenden Sie diese Anleitung, wenn sich der Azure AD-Mandant, in dem sich der P
 
 1. Laden Sie die [PowerShell-Module für die verwaltete Überprüfung](https://github.com/Azure/Purview-Samples/blob/master/Cross-Tenant-Scan-PowerBI/ManagedScanningPowerShell.zip) herunter, und extrahieren Sie den Inhalt an einem Speicherort Ihrer Wahl.
 
-2. Geben Sie auf Ihrem Computer **PowerShell** in das Suchfeld auf der Windows-Taskleiste ein. Klicken Sie in der Suchliste mit der rechten Maustaste auf **Windows PowerShell**, und wählen Sie **Als Administrator ausführen** aus.
+2. Geben Sie auf Ihrem Computer **PowerShell** in das Suchfeld auf der Windows-Taskleiste ein. Klicken Sie in der Suchliste auf **Windows PowerShell** und halten Sie die Maustaste gedrückt (oder klicken Sie mit der rechten Maustaste darauf), und wählen Sie **Als Administrator ausführen** aus.
 
 
 3. Installieren und importieren Sie das Modul auf Ihrem Computer, wenn es noch nicht installiert wurde.
@@ -181,7 +184,7 @@ Verwenden Sie diese Anleitung, wenn sich der Azure AD-Mandant, in dem sich der P
    
    4. Erstellen Sie eine mandantenspezifische Anmelde-URL für Ihren Dienstprinzipal, indem Sie die folgende URL in Ihrem Webbrowser ausführen:
    
-     https://login.microsoftonline.com/<purview_tenant_id>/oauth2/v2.0/authorize?client_id=<client_id_to_delegate_the_pbi_admin>&scope=openid&response_type=id_token&response_mode=fragment&state=1234&nonece=67890
+     https://login.microsoftonline.com/<purview_tenant_id>/oauth2/v2.0/authorize?client_id=<client_id_to_delegate_the_pbi_admin>&scope=openid&response_type=id_token&response_mode=fragment&state=1234&nonce=67890
     
     Ersetzen Sie die Parameter durch die richtigen Informationen: <purview_tenant_id> ist die Azure Active Directory-Mandanten-ID (GUID), in der das Azure Purview-Konto bereitgestellt wird.
     <client_id_to_delegate_the_pbi_admin> ist die Anwendungs-ID, die Ihrem Dienstprinzipal entspricht.
@@ -224,6 +227,7 @@ Verwenden Sie diese Anleitung, wenn sich der Azure AD-Mandant, in dem sich der P
 
 -   Für mandantenübergreifende Szenarios ist derzeit keine Benutzerumgebung zum Registrieren und Überprüfen von mandantenübergreifenden Power BI-Mandanten verfügbar.
 -   Durch Bearbeiten des übergreifenden Power BI-Mandanten, der mithilfe von Purview Studio bei PowerShell registriert wurde, wird die Datenquellenregistrierung durch inkonsistentes Scanverhalten verfälscht.
+-   Informieren Sie sich über die [Einschränkungen bei der Überprüfung von Power BI-Metadaten](/power-bi/admin/service-admin-metadata-scanning).
 
         
 ## <a name="next-steps"></a>Nächste Schritte

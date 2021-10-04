@@ -2,14 +2,14 @@
 title: Erstellen und Verwenden privater Endpunkte für Azure Backup
 description: Erfahren Sie mehr über den Prozess zum Erstellen privater Endpunkte für Azure Backup, wo private Endpunkte dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 ms.topic: conceptual
-ms.date: 08/19/2021
+ms.date: 09/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: df65aad1247f21c4deda3f7ee71f657a3b288168
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: cf26b87d0232b05cd7860981faa58a9b315f3979
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444237"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708261"
 ---
 # <a name="create-and-use-private-endpoints-for-azure-backup"></a>Erstellen und Verwenden privater Endpunkte für Azure Backup
 
@@ -126,6 +126,8 @@ Wenn Sie Ihren privaten Endpunkt in private DNS-Zonen integrieren möchten, füg
 
 ![DNS-Konfiguration in der privaten Azure DNS-Zone](./media/private-endpoints/dns-configuration.png)
 
+>[!Note]
+>Wenn Sie Proxyserver verwenden, können Sie den Proxyserver umgehen oder Ihre Sicherungen über den Proxyserver ausführen. Fahren Sie mit den folgenden Abschnitten fort, um einen Proxyserver zu umgehen. Informationen zur Verwendung des Proxyservers zum Ausführen Ihrer Sicherungen finden Sie unter [Details zum Proxyserversetup für den Recovery Services-Tresor](#set-up-proxy-server-for-recovery-services-vault-with-private-endpoint).
 #### <a name="validate-virtual-network-links-in-private-dns-zones"></a>Validieren virtueller Netzwerkverbindungen in privaten DNS-Zonen
 
 Führen Sie für jede oben aufgeführte **private DNS**-Zone (für Sicherungen, Blobs und Warteschlangen) folgende Schritte aus:
@@ -158,6 +160,7 @@ Wenn Sie Ihre eigenen DNS-Server verwenden, müssen Sie die erforderlichen DNS-Z
     > - [China](/azure/china/resources-developer-guide#check-endpoints-in-azure)
     > - [Deutschland](../germany/germany-developer-guide.md#endpoint-mapping)
     > - [US Gov](../azure-government/documentation-government-developer-guide.md)
+    > - [Geocodeliste – Beispiel-XML](scripts/geo-code-list.md)
 
 1. Als Nächstes fügen Sie die erforderlichen DNS-Einträge hinzu. Zum Anzeigen der Datensätze, die der Azure Backup-DNZ-Zone hinzugefügt werden müssen, navigieren Sie zu dem oben erstellten privaten Endpunkt und dann in der linken Navigationsleiste zur Option **DNS-Konfiguration**.
 
@@ -522,7 +525,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 Führen Sie die folgenden Schritte aus, um einen Proxyserver für einen virtuellen Azure-Computer oder einen lokalen Computer zu konfigurieren:
 
-1. Fügen Sie in der Ausnahme die folgenden Domänen hinzu, und umgehen Sie den Proxyserver.
+1. Fügen Sie die folgenden Domänen hinzu, auf die vom Proxyserver aus zugegriffen werden muss.
    
    | Dienst | Domänennamen | Port |
    | ------- | ------ | ---- |
@@ -532,7 +535,16 @@ Führen Sie die folgenden Schritte aus, um einen Proxyserver für einen virtuell
 
 1. Erlauben Sie den Zugriff auf diese Domänen auf dem Proxyserver, und verknüpfen Sie die private DNS-Zone (`*.privatelink.<geo>.backup.windowsazure.com`, `*.privatelink.blob.core.windows.net`, `*.privatelink.queue.core.windows.net`) mit dem virtuellen Netzwerk, in dem der Proxyserver erstellt wird, oder verwenden Sie einen benutzerdefinierten DNS-Server mit den entsprechenden DNS-Einträgen. <br><br> Das virtuelle Netzwerk, in dem der Proxyserver ausgeführt wird, und das virtuelle Netzwerk, in dem die private Endpunkt-NIC erstellt wird, sollten per Peering verbunden werden, sodass der Proxyserver die Anforderungen an die private IP-Adresse umleiten kann. 
 
-Das folgende Diagramm zeigt ein Setup mit einem Proxyserver, dessen virtuelles Netzwerk mit einer privaten DNS-Zone mit erforderlichen DNS-Einträgen verknüpft ist. Der Proxyserver kann auch über einen eigenen benutzerdefinierten DNS-Server verfügen, und die oben genannten Domänen können bedingt an 169.63.129.16 weitergeleitet werden.
+   >[!NOTE]
+   >Im oben stehenden Text bezieht sich `<geo>` auf den Regionscode (z. B. *eus* und *ne* für „USA, Osten“ bzw. „Europa, Norden“). In den folgenden Listen finden Sie die Regionscodes:
+   >
+   >- [Alle öffentlichen Clouds](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
+   >- [China](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+   >- [Deutschland](../germany/germany-developer-guide.md#endpoint-mapping)
+   >- [US Gov](../azure-government/documentation-government-developer-guide.md)
+   >- [Geocodeliste – Beispiel-XML](scripts/geo-code-list.md)
+
+Das folgende Diagramm zeigt ein Setup (bei Verwendung der privaten Azure-DNS-Zonen) mit einem Proxyserver, dessen virtuelles Netzwerk mit einer privaten DNS-Zone mit erforderlichen DNS-Einträgen verknüpft ist. Der Proxyserver kann auch über einen eigenen benutzerdefinierten DNS-Server verfügen, und die oben genannten Domänen können bedingt an 169.63.129.16 weitergeleitet werden. Wenn Sie eine benutzerdefinierte DNS-Server-/-Hostdatei für die DNS-Auflösung verwenden, lesen Sie die Abschnitte zum [Verwalten von DNS-Einträgen](/azure/backup/private-endpoints#manage-dns-records) und [Konfigurieren des Schutzes](/azure/backup/private-endpoints#configure-backup).
 
 :::image type="content" source="./media/private-endpoints/setup-with-proxy-server-inline.png" alt-text="Diagramm eines Setups mit einem Proxyserver." lightbox="./media/private-endpoints/setup-with-proxy-server-expanded.png":::
 

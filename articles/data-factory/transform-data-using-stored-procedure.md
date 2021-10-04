@@ -1,32 +1,32 @@
 ---
 title: Transformieren von Daten mit der Aktivität „Gespeicherte Prozedur“
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Informationen, wie Sie die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline zum Aufrufen einer gespeicherten Prozedur in einer Azure SQL-Datenbank-Instanz oder Azure SQL Data Warehouse-Instanz verwenden können.
+description: Informationen, wie Sie die SQL Server Stored Procedure-Aktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline zum Aufrufen einer gespeicherten Prozedur in einer Azure SQL-Datenbank-/Data Warehouse-Instanz verwenden können.
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
-ms.date: 11/27/2018
-ms.openlocfilehash: c3815bfca83d6dcf789a780a2d82ff1d4bb62285
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: d2dacc3379d1587352c7593c3766294613229fad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351219"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798349"
 ---
-# <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformieren von Daten mit der SQL Server-Aktivität „Gespeicherte Prozedur“ in Azure Data Factory | Microsoft-Dokumentation
+# <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory-or-synapse-analytics"></a>Transformieren von Daten mit der SQL Server Stored Procedure-Aktivität in Azure Data Factory oder Synapse Analytics
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-stored-proc-activity.md)
 > * [Aktuelle Version](transform-data-using-stored-procedure.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Sie verwenden Transformationsaktivitäten in einer Data Factory-[Pipeline](concepts-pipelines-activities.md), um Rohdaten in Vorhersagen und Erkenntnisse umzuwandeln und zu verarbeiten. Die Aktivität der „Gespeicherte Prozedur“ ist eine der Transformationsaktivitäten, die Data Factory unterstützt. Dieser Artikel baut auf dem Artikel [Transformieren von Daten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten in Data Factory bietet.
+Sie verwenden Transformationsaktivitäten in einer Data Factory- oder Synapse-[Pipeline](concepts-pipelines-activities.md), um Rohdaten in Vorhersagen und Erkenntnisse zu transformieren und zu verarbeiten. Die Stored Procedure-Aktivität ist eine der Transformationsaktivitäten, die Pipelines unterstützen. Dieser Artikel baut auf dem Artikel [Transformieren von Daten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
 
 > [!NOTE]
-> Wenn Sie noch nicht mit Azure Data Factory vertraut sind, sollten Sie zunächst den Artikel [Einführung in Azure Data Factory](introduction.md) lesen und anschließend das Tutorial zum Thema [Tutorial: Transformieren von Daten](tutorial-transform-data-spark-powershell.md) durcharbeiten. 
+> Wenn Sie noch nicht mit Azure Data Factory vertraut sind, sollten Sie zunächst den Artikel [Einführung in Azure Data Factory](introduction.md) lesen und anschließend das Tutorial zum Thema [Tutorial: Transformieren von Daten](tutorial-transform-data-spark-powershell.md) durcharbeiten.  Weitere Informationen zu Synapse Analytics finden Sie unter [Was ist Azure Synapse Analytics](../synapse-analytics/overview-what-is.md).
 
 Sie können die Aktivität „Gespeicherte Prozedur“ verwenden, um eine gespeicherte Prozedur in einem der folgenden Datenspeicher in Ihrem Unternehmen oder auf einem virtuellen Azure-Computer (VM) aufzurufen: 
 
@@ -66,7 +66,7 @@ So sieht das JSON-Format zum Definieren der Aktivität „Gespeicherte Prozedur�
 
 In der folgenden Tabelle werden diese JSON-Eigenschaften beschrieben:
 
-| Eigenschaft                  | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft                  | Beschreibung                              | Erforderlich |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | Der Name der Aktivität                     | Ja      |
 | description               | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | Nein       |
@@ -76,7 +76,7 @@ In der folgenden Tabelle werden diese JSON-Eigenschaften beschrieben:
 | storedProcedureParameters | Geben Sie die Werte für Parameter der gespeicherten Prozedur an. Verwenden Sie `"param1": { "value": "param1Value","type":"param1Type" }` zum Übergeben von Parameterwerten und deren Typ, der von der Datenquelle unterstützt wird. Wenn Sie für einen Parameter „null“ übergeben müssen, verwenden Sie die folgende Syntax: `"param1": { "value": null }` (nur Kleinbuchstaben). | Nein       |
 
 ## <a name="parameter-data-type-mapping"></a>Zuordnen des Parameterdatentyps
-Der Datentyp, den Sie für den Parameter angeben, ist der Azure Data Factory-Typ, der dem Datentyp in der verwendeten Datenquelle zugeordnet ist. Sie finden die Datentypzuordnungen für Ihre Datenquelle in der Dokumentation zu Connectors. Zum Beispiel:
+Der Datentyp, den Sie für den Parameter angeben, ist der interne Diensttyp, der dem Datentyp in der verwendeten Datenquelle zugeordnet ist. Sie finden die Datentypzuordnungen für Ihre Datenquelle in der Dokumentation zu Connectors. Zum Beispiel:
 
 - [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#data-type-mapping-for-azure-synapse-analytics)
 - [Zuordnung von Azure SQL-Datenbank-Datentypen](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)

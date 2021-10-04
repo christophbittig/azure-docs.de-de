@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2021
-ms.openlocfilehash: 79405511c7b2b563dd47db6d4d5f08a6e552d385
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f2fe1e854027cb6fd15b6d0e2e659cc62528a2e2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640577"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757855"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer Dateien basierend auf dem zeitpartitionierten Dateinamen und mithilfe des Tools „Daten kopieren“
 
@@ -42,7 +42,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
 1. Erstellen Sie einen Container mit dem Namen **source** (Quelle).  Erstellen Sie in Ihrem Container den Ordnerpfad **2021/07/15/06**. Erstellen Sie eine leere Textdatei, und nennen Sie sie **file1.txt**. Laden Sie die Datei „file1.txt“ in den Ordnerpfad **source/2021/07/15/06** in Ihrem Speicherkonto hoch.  Sie können für diese Aufgaben verschiedene Tools verwenden, etwa [Azure Storage-Explorer](https://storageexplorer.com/).
 
-    ![Hochladen von Dateien](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png" alt-text="Hochladen von Dateien":::
 
     > [!NOTE]
     > Passen Sie den Ordnernamen an Ihre UTC-Zeit an.  Wenn die aktuelle UTC-Zeit beispielsweise „15. Juli 2021, 06:10 Uhr“ lautet, können Sie gemäß dem Format **source/{Jahr}/{Monat}/{Tag}/{Stunde}/** den Ordnerpfad **source/2021/07/15/06/** erstellen.
@@ -53,7 +53,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
 1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Integration** > **Data Factory** aus:
 
-   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="Auswahl von Data Factory im Bereich &quot;Neu&quot;":::
 
 2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein.
 
@@ -61,7 +61,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="Fehlermeldung zu neuer Data Factory für doppelten Namen":::
 
-   Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Verwenden Sie beispielsweise den Namen _**IhrName**_**ADFTutorialDataFactory**. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
+   Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Verwenden Sie beispielsweise den Namen _**IhrName**_ **ADFTutorialDataFactory**. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
 3. Wählen Sie das **Azure-Abonnement** aus, in dem die neue Data Factory erstellt werden soll.
 4. Führen Sie unter **Ressourcengruppe** einen der folgenden Schritte aus:
 
@@ -83,7 +83,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
 1. Wählen Sie auf der Azure Data Factory-Homepage den Titel **Erfassen**, um das Tool zum Kopieren der Daten zu starten.
 
-   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Screenshot, der die ADF-Startseite zeigt.":::
 
 2. Gehen Sie auf der Seite **Properties** (Eigenschaften) wie folgt vor:
     1. Wählen Sie unter **Task type** (Aufgabentyp) **Built-in copy task** (Integrierte Kopieraufgabe) aus.
@@ -94,7 +94,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
     1. Wählen Sie **Weiter** aus.
 
-    ![Eigenschaftenseite](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/copy-data-tool-properties-page.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/copy-data-tool-properties-page.png" alt-text="Seite „Eigenschaften“":::
 3. Führen Sie auf der Seite **Quelldatenspeicher** die folgenden Schritte aus:
 
     a. Wählen Sie **+ New connection** (Neue Verbindung) aus, um eine Verbindung hinzuzufügen.
@@ -103,7 +103,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
     
     c. Geben Sie auf der Seite **New connection (Azure Blob Storage)** (Neue Verbindung [Azure Blob Storage]) einen Namen für die Verbindung ein. Wählen Sie Ihr Azure-Abonnement und anschließend in der Liste **Speicherkontoname** Ihr Speicherkonto aus. Testen Sie die Verbindung, und wählen Sie **Fertig stellen** aus.
 
-    ![Seite „Quelldatenspeicher“](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-connection.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/source-data-store-page-connection.png" alt-text="Seite „Quelldatenspeicher“":::
 
     d. Wählen Sie auf der Seite **Source data store** (Quelldatenspeicher) die neu erstellte Verbindung in dem Abschnitt **Verbindung** aus.
 
@@ -135,21 +135,21 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
 6. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und klicken Sie anschließend auf **Weiter**.
 
-    ![Seite „Zusammenfassung“](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/summary-page.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/summary-page.png" alt-text="Seite „Zusammenfassung“":::
 
 7. Wählen Sie auf der Seite **Bereitstellung** die Option **Überwachen** aus, um die Pipeline (Aufgabe) zu überwachen.
-    ![Bereitstellungsseite](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png" alt-text="Bereitstellungsseite":::
 
 8. Beachten Sie, dass die Registerkarte **Überwachen** auf der linken Seite automatisch ausgewählt ist.  Sie müssen auf die Ausführung der Pipeline warten, wenn sie (etwa nach einer Stunde) automatisch ausgelöst wird. Wählen Sie während der Ausführung den Link auf dem Pipelinenamen **DeltaCopyFromBlobPipeline**, um Details zur Aktivitätsausführung aufzurufen oder die Pipeline erneut auszuführen. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**.
 
-    ![Screenshot des Bereichs „Pipelineausführungen“](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs-1.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs-1.png" alt-text="Screenshot des Bereichs „Pipelineausführungen“":::
 9. Da die Pipeline nur eine Aktivität (Copy-Aktivität) enthält, wird nur ein Eintrag angezeigt. Passen Sie die Breite der Spalten **Quelle** und **Ziel** bei Bedarf an, um weitere Details anzuzeigen. Ihnen wird angezeigt, dass die Quelldatei (file1.txt) mit demselben Dateinamen von *source/2021/07/15/06/* nach *destination/2021/07/15/06/* kopiert wurde. 
 
-    ![Screenshot der Details zur Pipelineausführung](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png" alt-text="Screenshot der Details zur Pipelineausführung":::
 
     Sie können dies auch bestätigen, indem Sie den Azure Storage-Explorer (https://storageexplorer.com/) ) verwenden, um die Dateien zu überprüfen.
 
-    ![Screenshot der Details zur Pipelineausführung für das Ziel](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png" alt-text="Screenshot der Details zur Pipelineausführung für das Ziel":::
 
 10. Erstellen Sie eine weitere leere Textdatei, und nennen Sie sie **file2.txt**. Laden Sie die Datei „file2.txt“ in den Ordnerpfad **source/2021/07/15/07** in Ihrem Speicherkonto hoch. Sie können für diese Aufgaben verschiedene Tools verwenden, etwa [Azure Storage-Explorer](https://storageexplorer.com/).
 
@@ -158,7 +158,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
 11. Wählen Sie **All Pipelines runs** (Alle Pipelineausführungen) aus, und warten Sie, bis die gleiche Pipeline nach einer Stunde wiederholt automatisch ausgelöst wird, um zur Ansicht **Pipeline Runs** (Pipelineausführungen) zurückzukehren.  
 
-    ![Screenshot des Links „Alle Pipelineausführungen“ für die Rückkehr zu dieser Seite](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png" alt-text="Screenshot des Links „Alle Pipelineausführungen“ für die Rückkehr zu dieser Seite":::
 
 12. Klicken Sie für die zweite Pipelineausführung auf den neuen Link **DeltaCopyFromBlobPipeline**, wenn es soweit ist, und tun Sie dasselbe, um Details anzuzeigen. Ihnen wird angezeigt, dass die Quelldatei (file2.txt) mit demselben Dateinamen von **source/2021/07/15/07/** nach **destination/2021/07/15/07/** kopiert wurde. Sie können dies auch überprüfen, indem Sie den Azure Storage-Explorer (https://storageexplorer.com/) ) verwenden, um die Dateien im Container **destination** zu überprüfen.
 

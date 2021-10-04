@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: e884869b77398ab32987363bb85367d46a958380
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 738c60663f80fd036f50c7bd354ca0e3b1d9284e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638387"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757818"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage über das Azure-Portal
 
@@ -40,7 +40,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 ## <a name="overview"></a>Übersicht
 Allgemeines Lösungsdiagramm:
 
-![Lädt Daten inkrementell](media/tutorial-Incremental-copy-portal/incrementally-load.png)
+:::image type="content" source="media/tutorial-Incremental-copy-portal/incrementally-load.png" alt-text="Lädt Daten inkrementell":::
 
 Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt:
 
@@ -151,7 +151,7 @@ END
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 2. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Integration** > **Data Factory** aus:
 
-   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="Auswahl von Data Factory im Bereich &quot;Neu&quot;":::
 
 3. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFIncCopyTutorialDF** ein.
 
@@ -179,12 +179,12 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 
 1. Klicken Sie auf der Startseite der Data Factory Benutzeroberfläche auf die Kachel **Orchestrieren.**
 
-   ![Ein Screenshot, die Homepage der Azure Data Factory-Benutzeroberfläche zeigt.](./media/doc-common-process/get-started-page.png)    
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Ein Screenshot, die Homepage der Azure Data Factory-Benutzeroberfläche zeigt.":::    
 3. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **IncrementalCopyPipeline** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.
 
 4. Wir fügen die erste Lookup-Aktivität hinzu, um den alten Grenzwert abzurufen. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie die **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers. Ändern Sie den Namen der Aktivität in **LookupOldWaterMarkActivity**.
 
-   ![Erste Lookup-Aktivität – Name](./media/tutorial-incremental-copy-portal/first-lookup-name.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-portal/first-lookup-name.png" alt-text="Erste Lookup-Aktivität – Name":::
 5. Wechseln Sie zur Registerkarte **Einstellungen**, und klicken Sie unter **Source Dataset** (Quelldataset) auf **+ Neu**. In diesem Schritt erstellen Sie ein Dataset für Daten in der Tabelle **watermarktable**. Diese Tabelle enthält den alten Grenzwert, der für den vorherigen Kopiervorgang verwendet wurde.
 
 6. Wählen Sie im Fenster **Neues Dataset** die Option **Azure SQL-Datenbank** aus, und klicken Sie auf **Weiter**. Daraufhin wird ein neues Fenster für das Dataset geöffnet.
@@ -201,11 +201,11 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     6. Klicken Sie auf **Fertig stellen**.
     7. Vergewissern Sie sich, dass unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService** ausgewählt ist.
 
-        ![Fenster für neuen verknüpften Dienst](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png" alt-text="Fenster für neuen verknüpften Dienst":::
     8. Wählen Sie **Fertig stellen** aus.
 9. Wählen Sie auf der Registerkarte **Verbindung** unter **Tabelle** die Option **[dbo].[watermarktable]** aus. Klicken Sie auf **Datenvorschau**, wenn Sie für die Daten der Tabelle eine Vorschau anzeigen möchten.
 
-    ![Grenzwertdataset – Verbindungseinstellungen](./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png" alt-text="Grenzwertdataset – Verbindungseinstellungen":::
 10. Wechseln Sie zum Pipeline-Editor, indem Sie oben auf die Registerkarte „Pipeline“ oder in der Strukturansicht auf der linken Seite auf den Namen der Pipeline klicken. Vergewissern Sie sich im Eigenschaftenfenster für die **Lookup**-Aktivität, dass im Feld **Source Dataset** (Quelldataset) die Option **WatermarkDataset** ausgewählt ist.
 
 11. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie eine weitere **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers. Legen Sie den Namen im Eigenschaftenfenster auf der Registerkarte **Allgemein** auf **LookupNewWaterMarkActivity** fest. Mit dieser Lookup-Aktivität wird der neue Grenzwert aus der Tabelle mit den Quelldaten auf das Ziel kopiert.
@@ -223,12 +223,12 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table
     ```
 
-    ![Zweite Lookup-Aktivität – Abfrage](./media/tutorial-incremental-copy-portal/query-for-new-watermark.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-portal/query-for-new-watermark.png" alt-text="Zweite Lookup-Aktivität – Abfrage":::
 19. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Move & Transform** (Verschieben und transformieren), ziehen Sie die **Copy**-Aktivität aus der Toolbox „Aktivitäten“, und legen Sie den Namen auf **IncrementalCopyActivity** fest.
 
 20. **Verbinden Sie beide Lookup-Aktivitäten mit der Copy-Aktivität**, indem Sie die **grüne Schaltfläche**, die den Lookup-Aktivitäten zugeordnet ist, auf die Copy-Aktivität ziehen. Lassen Sie die Maustaste los, wenn Sie sehen, dass sich die Rahmenfarbe der Copy-Aktivität in Blau ändert.
 
-    ![Verbinden von Lookup- und Copy-Aktivitäten](./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png" alt-text="Verbinden von Lookup- und Copy-Aktivitäten":::
 21. Wählen Sie die **Copy-Aktivität** aus, und vergewissern Sie sich, dass die Eigenschaften für die Aktivität im **Eigenschaftenfenster** angezeigt werden.
 
 22. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Quelle**, und führen Sie die folgenden Schritte aus:
@@ -241,7 +241,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
         select * from data_source_table where LastModifytime > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and LastModifytime <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'
         ```
 
-        ![Copy-Aktivität – Quelle](./media/tutorial-incremental-copy-portal/copy-activity-source.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-portal/copy-activity-source.png" alt-text="Copy-Aktivität – Quelle":::
 23. Wechseln Sie zur Registerkarte **Senke**, und klicken Sie für das Feld **Sink Dataset** auf **+ Neu**.
 
 24. In diesem Tutorial hat der Datenspeicher den Typ „Azure Blob Storage“. Wählen Sie daher die Option **Azure Blob Storage** aus, und klicken Sie im Fenster **Neues Dataset** auf **Weiter**.
@@ -270,12 +270,12 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     1. Wählen Sie unter **Name der gespeicherten Prozedur** die Option **usp_write_watermark**.
     2. Klicken Sie zum Angeben von Werten für die Parameter der gespeicherten Prozedur auf **Import parameter** (Importparameter), und geben Sie die folgenden Werte für die Parameter ein:
 
-        | Name | Typ | Wert |
+        | Name | Type | Wert |
         | ---- | ---- | ----- |
         | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
-        ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png" alt-text="Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren":::
 27. Klicken Sie zum Überprüfen der Pipelineeinstellungen in der Symbolleiste auf **Überprüfen**. Vergewissern Sie sich, dass keine Validierungsfehler vorliegen. Schließen Sie das Fenster **Pipeline Validation Report** (Pipelineüberprüfungsbericht), indem Sie auf >> klicken.   
 
 28. Veröffentlichen Sie Entitäten (verknüpfte Dienste, Datasets und Pipelines) für den Azure Data Factory-Dienst, indem Sie die Schaltfläche **Alle veröffentlichen** wählen. Warten Sie, bis eine Meldung angezeigt wird, dass die Veröffentlichung erfolgreich war.
@@ -296,7 +296,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 ## <a name="review-the-results"></a>Überprüfen der Ergebnisse
 1. Stellen Sie eine Verbindung mit Ihrem Azure Storage-Konto her, indem Sie Tools wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden. Vergewissern Sie sich, dass im Ordner **incrementalcopy** des Containers **adftutorial** eine Ausgabedatei erstellt wird.
 
-    ![Erste Ausgabedatei](./media/tutorial-incremental-copy-portal/first-output-file.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-portal/first-output-file.png" alt-text="Erste Ausgabedatei":::
 2. Wenn Sie die Ausgabedatei öffnen, können Sie sehen, dass alle Daten aus **data_source_table** in die Blobdatei kopiert werden.
 
     ```

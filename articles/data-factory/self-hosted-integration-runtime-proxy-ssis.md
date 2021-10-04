@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 07/19/2021
-ms.openlocfilehash: d015c5182b51c655d45365a2f45a9f9d08db582b
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.date: 09/17/2021
+ms.openlocfilehash: d98d51158981c6b3aa04a0d8ea8b42b16d768d26
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835628"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665490"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurieren einer selbstgehosteten IR als Proxy für eine Azure-SSIS IR in Azure Data Factory
 
@@ -73,7 +73,7 @@ Erstellen Sie einen mit Azure Blob Storage verknüpften Dienst in der gleichen D
 >[!TIP]
 >Wenn Sie die Methode **Dienstprinzipal** auswählen, gewähren Sie dem Dienstprinzipal mindestens die Rolle *Mitwirkender an Storage-Blobdaten*. Weitere Informationen finden Sie unter [Eigenschaften des verknüpften Diensts](connector-azure-blob-storage.md#linked-service-properties). Wenn Sie die Methode **Verwaltete Identität**/**Benutzerseitig zugewiesene verwaltete Identität** auswählen, gewähren Sie der angegebenen systemseitig/benutzerseitig zugewiesenen verwalteten Identität für Ihre ADF eine geeignete Rolle für den Zugriff auf Azure Blob Storage. Weitere Informationen finden Sie unter [Access Azure Blob Storage using Azure Active Directory (Azure AD) authentication with the specified system/user-assigned managed identity for your ADF](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication) (Zugreifen auf Azure Blob Storage mithilfe von Azure Active Directory (Azure AD)-Authentifizierung mit der angegebenen systemseitig/benutzerseitig zugewiesenen verwalteten Identität für Ihre ADF).
 
-![Vorbereiten des mit Azure Blob Storage verknüpften Diensts für das Staging](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
+:::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png" alt-text="Vorbereiten des mit Azure Blob Storage verknüpften Diensts für das Staging":::
 
 ## <a name="configure-an-azure-ssis-ir-with-your-self-hosted-ir-as-a-proxy"></a>Konfigurieren einer Azure-SSIS IR mit Ihrer selbstgehosteten IR als Proxy
 
@@ -93,7 +93,7 @@ Nachdem Sie Ihre selbstgehostete IR und den mit Azure Blob Storage verknüpften 
 
    1. Wählen Sie die Schaltfläche **Weiter**.
 
-   ![Erweiterte Einstellungen bei einer selbstgehosteten IR](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png" alt-text="Erweiterte Einstellungen bei einer selbstgehosteten IR":::
 
 Sie können auch Ihre neue oder vorhandene Azure-SSIS IR mit der selbstgehosteten IR als Proxy mithilfe von PowerShell konfigurieren.
 
@@ -139,30 +139,30 @@ Wenn Sie neue Pakete entwerfen, die Datenflusstasks mit Komponenten enthalten, d
 
 Wenn Sie neue Pakete entwerfen, die lokal ausgeführte „SQL ausführen/verarbeiten“-Tasks enthalten, können Sie die `ExecuteOnProxy`-Eigenschaft aktivieren, indem Sie sie im Bereich **Eigenschaften** der entsprechenden Tasks selbst auf *True* festlegen.
 
-![Aktivieren der ConnectByProxy/ExecuteOnProxy-Eigenschaft](media/self-hosted-integration-runtime-proxy-ssis/shir-proxy-properties.png)
+:::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-proxy-properties.png" alt-text="Aktivieren der ConnectByProxy/ExecuteOnProxy-Eigenschaft":::
 
 Sie können die Eigenschaften `ConnectByProxy`/`ExecuteOnProxy` auch aktivieren, wenn Sie vorhandene Pakete ausführen, ohne sie manuell einzeln ändern zu müssen. Es gibt zwei Optionen:
 - **Option A**: Öffnen, Neuerstellen und erneutes Bereitstellen des Projekts, das diese Pakete enthält, mit den neuesten SSDT, die in Ihrer Azure-SSIS IR ausgeführt werden sollen. Anschließend können Sie die `ConnectByProxy`-Eigenschaft aktivieren, indem Sie sie für die entsprechenden Verbindungs-Manager auf *True* festlegen, die auf der Registerkarte **Verbindungs-Manager** des Popupfensters **Paket ausführen** angezeigt werden, wenn Sie Pakete aus SSMS ausführen.
 
-  ![Aktivieren der ConnectByProxy/ExecuteOnProxy-Eigenschaft2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png" alt-text="Aktivieren der ConnectByProxy/ExecuteOnProxy-Eigenschaft2":::
 
   Sie können die `ConnectByProxy`-Eigenschaft auch aktivieren, indem Sie sie für die entsprechenden Verbindungs-Manager auf *True* festlegen, die auf der Registerkarte **Verbindungs-Manager** der Aktivität [SSIS-Paket ausführen](./how-to-invoke-ssis-package-ssis-activity.md) angezeigt werden, wenn Sie Pakete in Data Factory-Pipelines ausführen.
   
-  ![Aktivieren der ConnectByProxy/ExecuteOnProxy-Eigenschaft3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png" alt-text="Aktivieren der ConnectByProxy/ExecuteOnProxy-Eigenschaft3":::
 
 - **Option B:** Erneutes Bereitstellen des Projekts, das diese Pakete enthält, für die Ausführung in Ihrer SSIS IR. Sie können dann die Eigenschaften `ConnectByProxy`/`ExecuteOnProxy` aktivieren, indem Sie deren Eigenschaftspfade (`\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`/`\Package\YourExecuteSQLTaskName.Properties[ExecuteOnProxy]`/`\Package\YourExecuteProcessTaskName.Properties[ExecuteOnProxy]`) angeben und sie als *True* für Eigenschaftsüberschreibungen auf der Registerkarte **Erweitert** des Popupfensters **Paket ausführen** festlegen, wenn Sie Pakete aus SSMS ausführen.
 
-  ![Aktivieren der ConnectByProxy/ExecuteOnProxy-Eigenschaft4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png" alt-text="Aktivieren der ConnectByProxy/ExecuteOnProxy-Eigenschaft4":::
 
   Sie können die Eigenschaften `ConnectByProxy`/`ExecuteOnProxy` auch aktivieren, indem Sie deren Eigenschaftspfade (`\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`/`\Package\YourExecuteSQLTaskName.Properties[ExecuteOnProxy]`/`\Package\YourExecuteProcessTaskName.Properties[ExecuteOnProxy]`) angeben und sie als *True* für Eigenschaftsüberschreibungen auf der Registerkarte **Eigenschaftenüberschreibungen** der [Aktivität „SSIS-Paket ausführen“](./how-to-invoke-ssis-package-ssis-activity.md) festlegen, wenn Sie Pakete in Data Factory-Pipelines ausführen.
   
-  ![Aktivieren der ConnectByProxy/ExecuteOnProxy-Eigenschaft5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png" alt-text="Aktivieren der ConnectByProxy/ExecuteOnProxy-Eigenschaft5":::
 
 ## <a name="debug-the-on-premises-tasks-and-cloud-staging-tasks"></a>Debuggen der lokalen Tasks und Cloudstagingtasks
 
-In Ihrer selbstgehosteten IR finden Sie die Laufzeitprotokolle im Ordner *C:\ProgramData\SSISTelemetry* und die Ausführungsprotokolle der lokalen Stagingtasks und „SQL ausführen/verarbeiten“-Tasks im Ordner *C:\ProgramData\SSISTelemetry\ExecutionLog*. Die Ausführungsprotokolle von Cloudstagingtasks finden Sie in Ihrer SSISDB, an den angegebenen Protokollierungsdateipfaden oder in Azure Monitor. Dies ist unter anderem abhängig davon, ob Sie Ihre Pakete in SSISDB speichern oder die [Azure Monitor-Integration](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor) aktivieren. Die eindeutigen IDs der lokalen Stagingtasks finden Sie auch in den Ausführungsprotokollen der Cloudstagingtasks. 
+In Ihrer selbstgehosteten IR finden Sie die Laufzeitprotokolle im Ordner *C:\ProgramData\SSISTelemetry* und die Ausführungsprotokolle der lokalen Stagingtasks und „SQL ausführen/verarbeiten“-Tasks im Ordner *C:\ProgramData\SSISTelemetry\ExecutionLog*. Die Ausführungsprotokolle von Cloudstagingtasks finden Sie in Ihrer SSISDB, an den angegebenen Protokollierungsdateipfaden oder in Azure Monitor. Dies ist unter anderem abhängig davon, ob Sie Ihre Pakete in SSISDB speichern oder die [Azure Monitor-Integration](./monitor-ssis.md) aktivieren. Die eindeutigen IDs der lokalen Stagingtasks finden Sie auch in den Ausführungsprotokollen der Cloudstagingtasks. 
 
-![Eindeutige ID des ersten Stagingtasks](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
+:::image type="content" source="media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png" alt-text="Eindeutige ID des ersten Stagingtasks":::
 
 Wenn Sie Kundensupporttickets erstellt haben, können Sie auf der Registerkarte **Diagnose** des **Konfigurations-Managers für Microsoft Integration Runtime**, der in Ihrer selbstgehosteten Integration Runtime installiert ist, die Schaltfläche **Protokolle senden** auswählen, um uns aktuelle Vorgangs-/Ausführungsprotokolle zur Untersuchung zukommen zu lassen.
 
@@ -194,7 +194,7 @@ Im Folgenden finden Sie Beispiele von unseren Partnern [Theobald Software](https
 
 ## <a name="enforce-tls-12"></a>Erzwingen von TLS 1.2
 
-Wenn Sie starke Kryptografie/ein sichereres Netzwerkprotokoll (TLS 1.2) verwenden und gleichzeitig ältere SSL-/TLS-Versionen auf Ihrer selbstgehosteten IR deaktivieren müssen, können Sie das Skript *main.cmd* aus dem Ordner *CustomSetupScript/UserScenarios/TLS 1.2* unseres Blobcontainers in der öffentlichen Vorschau herunterladen und ausführen. Wenn Sie [Azure Storage-Explorer](https://storageexplorer.com/) verwenden, können Sie eine Verbindung mit unserem Blobcontainer in der öffentlichen Vorschau herstellen, indem Sie den folgenden SAS-URI eingeben:
+Wenn Sie auf Datenspeicher zugreifen müssen, die nur für die Verwendung der stärksten Kryptografie bzw. des sichersten Netzwerkprotokolls (TLS 1.2) konfiguriert wurden, z. B. Ihre Azure Blob Storage für Staging, müssen Sie in Ihrer selbstgehosteten IR ausschließlich TLS 1.2 aktivieren und gleichzeitig ältere SSL/TLS-Versionen deaktivieren. Dazu können Sie das Skript *main.cmd* herunterladen und ausführen, das wir im Ordner *CustomSetupScript/UserScenarios/TLS 1.2* unseres Blobcontainers in der öffentlichen Vorschau bereitstellen. Wenn Sie [Azure Storage-Explorer](https://storageexplorer.com/) verwenden, können Sie eine Verbindung mit unserem Blobcontainer in der öffentlichen Vorschau herstellen, indem Sie den folgenden SAS-URI eingeben:
 
 `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
 

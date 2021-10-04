@@ -13,12 +13,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/05/2021
-ms.openlocfilehash: 453f1db3e0f80a63c058c7e0ea21ab9282295de6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2da56452a8674940b3d81ffd06c722886fd07ed7
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355301"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217999"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>Konfigurieren von Azure-SSIS Integration Runtime für Business Continuity & Disaster Recovery (BCDR) 
 
@@ -62,25 +62,13 @@ Führen Sie die folgenden Schritte durch, um ein Azure-SSIS IR-Paar (Dual Standb
 
 1. Mithilfe des Azure-Portals bzw. der ADF-Benutzeroberfläche können Sie eine neue Azure-SSIS IR-Instanz mit Ihrem primären Azure SQL Managed Instance-Server erstellen, um SSISDB in der primären Region zu hosten. Wenn Sie bereits über eine Azure-SSIS IR-Instanz verfügen, die bereits auf Ihrem primären Azure SQL Azure SQL Managed Instance-Datenbank-Server an SSISDB angefügt ist und weiterhin ausgeführt wird, müssen Sie diese zunächst beenden, um sie neu zu konfigurieren. Dabei handelt es sich um Ihre primäre Azure-SSIS IR-Instanz.
 
-   Wenn Sie auf der Seite **Bereitstellungseinstellungen** des Bereichs **Integration Runtime-Setup** die [Verwendung von SSISDB aktivieren](./create-azure-ssis-integration-runtime.md#creating-ssisdb), müssen Sie auch das Kontrollkästchen **Azure-SSIS Integration Runtime-Paar (Dual Standby) mit SSISDB-Failover verwenden** aktivieren. Geben Sie unter **Name des Dual Standby-Paars** einen Namen ein, an dem Sie Ihr Paar primärer und sekundärer Azure-SSIS IR-Instanzen identifizieren können. Wenn Sie mit der Erstellung Ihrer primären Azure-SSIS IR-Instanz fertig sind, wird diese gestartet und an eine primäre SSISDB-Instanz angefügt, die für Sie mit Lese- und Schreibzugriff erstellt wird. Wenn Sie die Instanz gerade neu konfiguriert haben, müssen Sie sie neu starten. Außerdem können Sie auf der Seite **Übersicht** Ihrer sekundären Azure SQL Managed Instance-Instanz überprüfen, ob die primäre SSISDB-Instanz in einer sekundären Instanz mit schreibgeschütztem Zugriff repliziert wurde.
+   Wenn Sie auf der Seite **Bereitstellungseinstellungen** des Bereichs **Integration Runtime-Setup** die [Verwendung von SSISDB aktivieren](./create-azure-ssis-integration-runtime-portal.md#creating-ssisdb), müssen Sie auch das Kontrollkästchen **Azure-SSIS Integration Runtime-Paar (Dual Standby) mit SSISDB-Failover verwenden** aktivieren. Geben Sie unter **Name des Dual Standby-Paars** einen Namen ein, an dem Sie Ihr Paar primärer und sekundärer Azure-SSIS IR-Instanzen identifizieren können. Wenn Sie mit der Erstellung Ihrer primären Azure-SSIS IR-Instanz fertig sind, wird diese gestartet und an eine primäre SSISDB-Instanz angefügt, die für Sie mit Lese- und Schreibzugriff erstellt wird. Wenn Sie die Instanz gerade neu konfiguriert haben, müssen Sie sie neu starten. Außerdem können Sie auf der Seite **Übersicht** Ihrer sekundären Azure SQL Managed Instance-Instanz überprüfen, ob die primäre SSISDB-Instanz in einer sekundären Instanz mit schreibgeschütztem Zugriff repliziert wurde.
 
 1. Mithilfe des Azure-Portals bzw. der ADF-Benutzeroberfläche können Sie eine weitere Azure-SSIS IR-Instanz mit Ihrem sekundären Azure SQL Managed Instance-Server erstellen, um SSISDB in der sekundären Region zu hosten. Dabei handelt es sich um Ihre sekundäre Azure-SSIS IR-Instanz. Stellen Sie für eine vollständige BCDR-Lösung sicher, dass alle Ressourcen ebenfalls in der sekundären Region erstellt werden, von der eine Abhängigkeit besteht, z. B.Azure Storage zum Speichern benutzerdefinierter Setupskripts/-dateien, ADF für die Orchestrierung/Planung von Paketausführungen und mehr.
 
-   Wenn Sie auf der Seite **Bereitstellungseinstellungen** des Bereichs **Integration Runtime-Setup** die [Verwendung von SSISDB aktivieren](./create-azure-ssis-integration-runtime.md#creating-ssisdb), müssen Sie auch das Kontrollkästchen **Azure-SSIS Integration Runtime-Paar (Dual Standby) mit SSISDB-Failover verwenden** aktivieren. Geben Sie unter **Name des Dual Standby-Paars** denselben Namen ein, den Sie Ihrem Paar primärer und sekundärer Azure-SSIS IR-Instanzen gegeben haben. Wenn Sie die Erstellung Ihrer sekundären Azure-SSIS IR-Instanz abschließen, wird diese gestartet und an die sekundäre SSISDB-Instanz angefügt.
+   Wenn Sie auf der Seite **Bereitstellungseinstellungen** des Bereichs **Integration Runtime-Setup** die [Verwendung von SSISDB aktivieren](./create-azure-ssis-integration-runtime-portal.md#creating-ssisdb), müssen Sie auch das Kontrollkästchen **Azure-SSIS Integration Runtime-Paar (Dual Standby) mit SSISDB-Failover verwenden** aktivieren. Geben Sie unter **Name des Dual Standby-Paars** denselben Namen ein, den Sie Ihrem Paar primärer und sekundärer Azure-SSIS IR-Instanzen gegeben haben. Wenn Sie die Erstellung Ihrer sekundären Azure-SSIS IR-Instanz abschließen, wird diese gestartet und an die sekundäre SSISDB-Instanz angefügt.
 
-1. Azure SQL Managed Instance kann vertrauliche Daten in Datenbanken wie SSISDB schützen, indem diese mithilfe eines Datenbank-Hauptschlüssels (DMK, Database Master Key) verschlüsselt werden. Der DMK selbst wird standardmäßig mithilfe eines Diensthauptschlüssels (SMK, Service Master Key) verschlüsselt. Zum Zeitpunkt der Artikelerstellung repliziert die Azure SQL Managed Instance-Failerovergruppe den SMK nicht aus der primären Azure SQL Managed Instance-Instanz, sodass der DMK und darum auch die SSISDB-Instanz nach einem Failover in der sekundären Instanz von Azure SQL Managed Instance nicht entschlüsselt werden können. Sie können eine Kennwortverschlüsselung für den zu entschlüsselnden DMK zur sekundären Azure SQL Managed Instance-Instanz hinzufügen, um dieses Problem zu umgehen. Führen Sie die folgenden Schritte mit SSMS aus.
-
-   1. Führen Sie den folgenden Befehl für SSISDB in Ihrer primären Instanz von Azure SQL Managed Instance aus, um ein Kennwort für die Verschlüsselung des DMKs hinzuzufügen.
-
-      ```sql
-      ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'YourPassword'
-      ```
-   
-   1. Führen Sie den folgenden Befehl für SSISDB in Ihrer primären und Ihrer sekundären Instanz von Azure SQL Managed Instance aus, um das neue Kennwort zum Entschlüsseln des DMKs hinzuzufügen.
-
-      ```sql
-      EXEC sp_control_dbmasterkey_password @db_name = N'SSISDB', @password = N'YourPassword', @action = N'add'
-      ```
+1. Azure SQL Managed Instance kann vertrauliche Daten in Datenbanken wie SSISDB schützen, indem diese mithilfe eines Datenbank-Hauptschlüssels (DMK, Database Master Key) verschlüsselt werden. Der DMK selbst wird standardmäßig mithilfe eines Diensthauptschlüssels (SMK, Service Master Key) verschlüsselt. Seit September 2021 wird SMK bei der Erstellung der Failovergruppe von Ihrer primären Azure SQL Managed Instance-Instanz zur sekundären Instanz repliziert. Wenn Ihre Failovergruppe zuvor erstellt wurde, löschen Sie alle Benutzerdatenbanken, einschließlich SSISDB, aus Ihrer sekundären Azure SQL Managed Instance-Instanz und erstellen Sie ihre Failovergruppe neu.
 
 1. Wenn Sie nahezu keine Downtime beim SSISDB-Failover erzielen möchten, sollten Sie die Ausführung beider Azure-SSIS IR-Instanzen beibehalten. Nur Ihre primäre Azure-SSIS IR-Instanz kann auf die primäre SSISDB-Instanz zugreifen, um Pakete abzurufen und auszuführen oder Paketausführungsprotokolle zu schreiben, während Ihre sekundäre Azure-SSIS IR-Instanz dieselben Aktionen nur für dieselben Pakete ausführen kann, die an einem anderen Ort bereitgestellt wurden, z. B. in Azure Files.
 
@@ -90,7 +78,7 @@ Führen Sie die folgenden Schritte durch, um ein Azure-SSIS IR-Paar (Dual Standb
 
    1. Rechtsklicken Sie auf jeden SSIS-Auftrag, und wählen Sie dann die Menüelemente **Script Job as** (Skript für Auftrag als), **CREATE in** und **Neues Abfrage-Editor-Fenster** aus, um das Skript zu generieren.
 
-      ![Generieren des SSIS-Auftragsskripts](media/configure-bcdr-azure-ssis-integration-runtime/generate-ssis-job-script.png)
+      :::image type="content" source="media/configure-bcdr-azure-ssis-integration-runtime/generate-ssis-job-script.png" alt-text="Generieren des SSIS-Auftragsskripts":::
 
    1. Suchen Sie für jedes generierte SSIS-Auftragsskript nach dem Befehl zum Ausführen der gespeicherten Prozedur `sp_add_job`, und ändern/entfernen Sie bei Bedarf die Wertzuweisung des Arguments `@owner_login_name`.
 
@@ -127,13 +115,13 @@ Wenn ein Notfall eintritt, der sich auf Ihre vorhandene Azure-SSIS IR-Instanz, a
    EXEC [catalog].[failover_integration_runtime] @data_factory_name = 'YourNewADF', @integration_runtime_name = 'YourNewAzureSSISIR'
    ```
 
-1. Verwenden Sie das [Azure-Portal, die ADF-Benutzeroberfläche](./create-azure-ssis-integration-runtime.md#use-the-azure-portal-to-create-an-integration-runtime) oder [Azure PowerShell](./create-azure-ssis-integration-runtime.md#use-azure-powershell-to-create-an-integration-runtime), um Ihre neue ADF-/Azure-SSIS IR-Instanz jeweils mit den Namen *YourNewADF*/*YourNewAzureSSISIR* in einer anderen Region zu erstellen. Wenn Sie das Azure-Portal oder die ADF-Benutzeroberfläche verwenden, können Sie den Testverbindungsfehler auf der Seite **Bereitstellungseinstellungen** des Bereichs **Integration Runtime-Setup** ignorieren.
+1. Verwenden Sie das [Azure-Portal, die ADF-Benutzeroberfläche](./create-azure-ssis-integration-runtime-portal.md) oder [Azure PowerShell](./create-azure-ssis-integration-runtime-powershell.md), um Ihre neue ADF-/Azure-SSIS IR-Instanz jeweils mit den Namen *YourNewADF*/*YourNewAzureSSISIR* in einer anderen Region zu erstellen. Wenn Sie das Azure-Portal oder die ADF-Benutzeroberfläche verwenden, können Sie den Testverbindungsfehler auf der Seite **Bereitstellungseinstellungen** des Bereichs **Integration Runtime-Setup** ignorieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie können die folgenden anderen Konfigurationsoptionen für Ihre Azure-SSIS IR-Instanz in Betracht ziehen:
 
-- [Konfigurieren von Paketspeichern für Ihre Azure-SSIS IR-Instanz](./create-azure-ssis-integration-runtime.md#creating-azure-ssis-ir-package-stores)
+- [Konfigurieren von Paketspeichern für Ihre Azure-SSIS IR-Instanz](./create-azure-ssis-integration-runtime-portal.md#creating-azure-ssis-ir-package-stores)
 
 - [Konfigurieren benutzerdefinierter Setups für Ihre Azure-SSIS IR-Instanz](./how-to-configure-azure-ssis-ir-custom-setup.md)
 

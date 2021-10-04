@@ -1,26 +1,26 @@
 ---
 title: Kopieren von Daten aus Salesforce Marketing Cloud
+description: Erfahren Sie, wie Daten aus Salesforce Marketing Cloud mithilfe einer Copy-Aktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Daten aus Salesforce Marketing Cloud mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 448ef9ebc2147fa23716bda6441a0196c0c003b3
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 7a9a8daa8e5464af3d58ba46544b28f5fec39520
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307926"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782796"
 ---
-# <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Kopieren von Daten aus Salesforce Marketing Cloud mithilfe von Azure Data Factory
+# <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus Salesforce Marketing Cloud mithilfe von Azure Data Factory oder Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Salesforce Marketing Cloud-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität in Azure Data Factory- oder Synapse Analytics-Pipelines verwenden, um Daten aus Salesforce Marketing Cloud zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -48,7 +48,7 @@ Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst mit Salesforc
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory Benutzeroberfläche.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory-Benutzeroberfläche.":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -71,7 +71,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit Salesforce Marketing Cloud verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SalesforceMarketingCloud** | Ja |
 | connectionProperties | Eine Gruppe von Eigenschaften, die definieren, wie eine Verbindung mit Salesforce Marketing Cloud hergestellt werden soll. | Ja |
@@ -79,7 +79,7 @@ Folgende Eigenschaften werden für den mit Salesforce Marketing Cloud verknüpft
 | authenticationType | Gibt die zu verwendende Authentifizierungsmethode an. Zulässige Werte: `Enhanced sts OAuth 2.0` und `OAuth_2.0`.<br><br>Das ältere Salesforce Marketing Cloud-Paket unterstützt nur `OAuth_2.0`, während das erweiterte Paket `Enhanced sts OAuth 2.0` erfordert. <br>Seit dem 1. August 2019 wird die Möglichkeit zum Erstellen älterer Pakete von Salesforce Marketing Cloud nicht mehr unterstützt. Alle neuen Pakete sind erweiterte Pakete. | Ja |
 | host | Bei einem erweiterten Paket sollte der Host Ihrer [Unterdomäne](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm) entsprechen, die durch eine 28-stellige Zeichenfolge dargestellt wird und mit den Buchstaben „mc“ beginnt, beispielsweise `mc563885gzs27c5t9-63k636ttgm`. <br>Geben Sie für ein älteres Paket `www.exacttargetapis.com` an. | Ja |
 | clientId | Die Client-ID, die der Salesforce Marketing Cloud-Anwendung zugeordnet ist.  | Ja |
-| clientSecret | Der geheime Clientschlüssel, der der Salesforce Marketing Cloud-Anwendung zugeordnet ist. Sie können dieses Feld optional als „SecureString“ kennzeichnen, um es sicher in ADF zu speichern, oder das Geheimnis in Azure Key Vault speichern und von dort von der ADF-Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Ja |
+| clientSecret | Der geheime Clientschlüssel, der der Salesforce Marketing Cloud-Anwendung zugeordnet ist. Sie können dieses Feld optional als SecureString markieren, um es sicher im Dienst zu speichern, oder das Geheimnis in Azure Key Vault speichern und von dort von der Copy-Aktivität des Diensts abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
 | usePeerVerification | Gibt an, ob die Identität des Servers überprüft werden soll, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
@@ -164,7 +164,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus Salesforce Marketing Cloud die type-Eigenschaft des Datasets auf **SalesforceMarketingCloudObject** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **SalesforceMarketingCloudObject** | Ja |
 | tableName | Der Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
@@ -194,7 +194,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus Salesforce Marketing Cloud den Quelltyp in der Kopieraktivität auf **SalesforceMarketingCloudSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SalesforceMarketingCloudSource** | Ja |
 | Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
@@ -236,4 +236,4 @@ Legen Sie zum Kopieren von Daten aus Salesforce Marketing Cloud den Quelltyp in 
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quelles und Senken für die Kopieraktivität unterstützt werden, finden Sie in der Dokumentation für [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

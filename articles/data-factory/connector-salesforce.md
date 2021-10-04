@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: c95643e3853c1034e550ca9fad053171a5db0f67
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/03/2021
+ms.openlocfilehash: 0a7bca44ccee4e836fd5aa8e0ef44412e1fc6985
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307995"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836214"
 ---
 # <a name="copy-data-from-and-to-salesforce-using-azure-data-factory-or-azure-synapse-analytics"></a>Kopieren von Daten aus und nach Salesforce mit Azure Data Factory oder Azure Synapse Analytics
 
@@ -40,7 +40,7 @@ Dieser Salesforce-Connector unterstützt insbesondere Folgendes:
 - Salesforce Developer, Professional, Enterprise oder Unlimited Edition.
 - Datenkopiervorgänge aus der und in die Produktionsumgebung, den Sandkasten und die benutzerdefinierte Domäne von Salesforce.
 
-Der Salesforce-Connector baut auf der Salesforce REST/Bulk-API auf. Beim Kopieren von Daten aus Salesforce verwendet der Connector standardmäßig [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) und wählt basierend auf der Datengröße automatisch zwischen REST-API und Bulk-API. Bei einem umfangreichen Resultset wird die Bulk-API verwendet, um eine bessere Leistung zu erzielen. Beim Schreiben von Daten in Salesforce verwendet der Connector [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) der Bulk-API. Sie können die zum Lesen/Schreiben von Daten verwendete API-Version auch explizit über die Eigenschaft [`apiVersion` ](#linked-service-properties) im verknüpften Dienst festlegen.
+Der Salesforce-Connector baut auf der Salesforce REST/Bulk-API auf. Beim Kopieren von Daten aus Salesforce wählt der Connector basierend auf dem Datenumfang automatisch die REST-API oder die Bulk-API aus. Bei einem großen Resultset wird die Bulk-API verwendet, um eine bessere Leistung zu erzielen. Beim Lesen/Schreiben von Daten können Sie die verwendete API-Version über die [`apiVersion`-Eigenschaft](#linked-service-properties) im verknüpften Dienst explizit festlegen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -67,7 +67,7 @@ Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst mit Salesforc
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt":::.
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -96,7 +96,7 @@ Folgende Eigenschaften werden für den mit Salesforce verknüpften Dienst unters
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an.<br/><br/>Markieren Sie dieses Feld als einen „SecureString“, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
 | securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. <br/><br/>Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API). Das Sicherheits Token kann nur übersprungen werden, wenn Sie die IP-Adresse der Integration Runtime zur Liste [vertrauenswürdige IP-Adressen](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) in Salesforce hinzufügen. Weitere Informationen zur Verwendung von Azure Integration Runtime (Azure IR) finden Sie unter [IP-Adressen von Azure Integration Runtime](azure-integration-runtime-ip-addresses.md).<br/><br/>Anleitungen zum Abrufen und Zurücksetzen eines Sicherheitstokens finden Sie unter [Get a security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) (Abrufen eines Sicherheitstokens). Markieren Sie dieses Feld als einen „SecureString“, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Nein |
-| apiVersion | Geben Sie die zu verwendende Salesforce REST/Bulk-API-Version an, z. B. `48.0`. Standardmäßig verwendet der Connector [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) zum Kopieren von Daten aus Salesforce und [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) zum Kopieren von Daten in Salesforce. | Nein |
+| apiVersion | Geben Sie die zu verwendende Salesforce REST/Bulk-API-Version an, z. B. `52.0`. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein |
 
 **Beispiel: Speichern von Anmeldeinformationen**
@@ -173,7 +173,7 @@ Legen Sie zum Kopieren von Daten aus und nach Salesforce die type-Eigenschaft de
 > [!IMPORTANT]
 > Der Teil „__c“ von **API Name** wird für benutzerdefinierte Objekte benötigt.
 
-![der API-Name für die Salesforce-Verbindung](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
+:::image type="content" source="media/copy-data-from-salesforce/data-factory-salesforce-api-name.png" alt-text="der API-Name für die Salesforce-Verbindung":::
 
 **Beispiel:**
 
@@ -219,7 +219,7 @@ Legen Sie zum Kopieren von Daten aus Salesforce den Quelltyp in der Kopieraktivi
 > [!IMPORTANT]
 > Der Teil „__c“ von **API Name** wird für benutzerdefinierte Objekte benötigt.
 
-![Eine Liste der API-Namen für die Salesforce-Verbindung](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
+:::image type="content" source="media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png" alt-text="Eine Liste der API-Namen für die Salesforce-Verbindung":::
 
 **Beispiel:**
 
