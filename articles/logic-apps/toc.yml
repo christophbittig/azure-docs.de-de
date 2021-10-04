@@ -211,12 +211,8 @@
           items:
             - name: Austauschen von EDIFACT-Nachrichten
               href: logic-apps-enterprise-integration-edifact.md
-            - name: EDIFACT-Codierung
-              href: logic-apps-enterprise-integration-edifact-encode.md
-            - name: EDIFACT-Decodierung
-              href: logic-apps-enterprise-integration-edifact-decode.md
-            - name: Verarbeiten von EDIFACT-Dateien mit UNH2.5-Segmenten
-              href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
+            - name: EDIFACT-Nachrichteneinstellungen
+              href: logic-apps-enterprise-integration-edifact-message-settings.md
             - name: 'EDIFACT CONTRL: Bestätigungen und Fehlercodes'
               href: logic-apps-enterprise-integration-edifact-contrl-acknowledgment.md
         - name: RosettaNet-Messaging
