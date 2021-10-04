@@ -466,6 +466,8 @@
           href: flexible-server/concepts-supported-versions.md
         - name: Compute und Speicher
           href: flexible-server/concepts-compute-storage.md
+        - name: Vorauszahlen für eine reservierte Kapazität
+          href: concept-reserved-pricing.md
         - name: Netzwerk
           href: flexible-server/concepts-networking.md
           displayName: 'virtual networks, vnet, IP address, public access'
