@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/23/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c53686338ae45971519735edce0ac62a0544ac2e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bbb43768aee85d5c3cde83563645fa649a4cbcc4
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744774"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092184"
 ---
 # <a name="use-the-headpose-attribute"></a>Verwenden des HeadPose-Attributs
 
@@ -25,7 +25,7 @@ In dieser Anleitung erfahren Sie, wie Sie das HeadPose-Attribut eines erkannten 
 
 Das Gesichtsrechteck, das bei jedem erkannten Gesicht zurückgegeben wird, markiert die Position und Größe des Gesichts im Bild. Standardmäßig ist das Rechteck immer mit dem Bild ausgerichtet (seine Seiten sind vertikal und horizontal). Dies kann für das Umrahmen von abgewinkelten bzw. geneigten Gesichtern ineffizient sein. In Situationen, in denen Sie programmgesteuert Gesichter in einem Bild zuschneiden möchten, ist es besser, das Rechteck für den Zuschnitt drehen zu können.
 
-Die Beispiel-App [Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) verwendet das HeadPose-Attribut, um die Rechtecke der erkannten Gesichter zu drehen.
+Die Beispiel-App [Cognitive Services Face WPF (Windows Presentation Foundation)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) verwendet das HeadPose-Attribut, um die Rechtecke der erkannten Gesichter zu drehen.
 
 ### <a name="explore-the-sample-code"></a>Untersuchen des Beispielcodes
 

@@ -8,17 +8,17 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 08/26/2021
+ms.date: 09/21/2021
 ms.subservice: hybrid
-ms.author: billmath
+ms.author: rodejo
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3336ead4259c12b2eb6f7f87d5e21fe39765e817
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 2238916ec3ea13abd342ca0156271c1e87f5ed9c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968793"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659094"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -34,7 +34,7 @@ Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates e
 
 
 >[!IMPORTANT]
-> **Am 31. August 2022 werden alle 1.x-Versionen von Azure Active Directory (Azure AD) Connect eingestellt, weil sie SQL Server 2012-Komponenten enthalten, die nicht mehr unterstützt werden.** Führen Sie bis zu diesem Datum ein Upgrade auf die neueste Version von Azure AD Connect (2.x-Version) durch, oder [testen und wechseln Sie zur Azure AD-Cloudsynchronisierung](https://docs.microsoft.com/azure/active-directory/cloud-sync/what-is-cloud-sync).
+> **Am 31. August 2022 werden alle 1.x-Versionen von Azure Active Directory (Azure AD) Connect eingestellt, weil sie SQL Server 2012-Komponenten enthalten, die nicht mehr unterstützt werden.** Führen Sie bis zu diesem Datum ein Upgrade auf die neueste Version von Azure AD Connect (2.x-Version) durch, oder [testen und wechseln Sie zur Azure AD-Cloudsynchronisierung](../cloud-sync/what-is-cloud-sync.md).
 > 
 > Sie müssen sicherstellen, dass Sie eine aktuelle Version von Azure AD Connect ausführen, um einen optimalen Support zu erhalten. 
 > 
@@ -57,16 +57,65 @@ Wenn Sie jedoch alle neuesten Features und Updates wünschen, überprüfen Sie a
 
 
 ## <a name="download-links"></a>Downloadlinks
-Wenn Sie Windows Server 2016 oder neuer verwenden, sollten Sie Azure AD Connect V2.0 verwenden. Sie können die neueste Version von Azure AD Connect 2.0 über [diesen Link](https://www.microsoft.com/en-us/download/details.aspx?id=47594) herunterladen.
-Wenn Sie noch eine ältere Version von Windows Server einsetzen, sollten Sie Azure AD Connect V1.6 verwenden. Sie können die neueste Version von Azure AD Connect 1.6 über [diesen Link](https://www.microsoft.com/download/details.aspx?id=103336) herunterladen.
+ - Wenn Sie Windows Server 2016 oder neuer verwenden, sollten Sie Azure AD Connect V2.0 verwenden. Sie können die neueste Version von Azure AD Connect 2.0 über [diesen Link](https://www.microsoft.com/en-us/download/details.aspx?id=47594) herunterladen.
+ - Wenn Sie noch eine ältere Version von Windows Server einsetzen, sollten Sie Azure AD Connect V1.6 verwenden. Sie können die neueste Version von Azure AD Connect 1.6 über [diesen Link](https://www.microsoft.com/download/details.aspx?id=103336) herunterladen. 
+ - Wir wenden in Zukunft nur noch wichtige Änderungen an den V1-Versionen an, und möglicherweise finden Sie einige der Features und Fehlerbehebungen für V2 in den V1-Releases nicht mehr. Daher sollten Sie so schnell wie möglich ein Upgrade auf die V2-Version durchführen.
+
+## <a name="16142"></a>1.6.14.2
+>[!NOTE] 
+>Dies ist ein Hotfix-Updaterelease von Azure AD Connect. Diese Version soll von Kunden verwendet werden, die eine ältere Windows Server-Version ausführen und ihren Server zurzeit nicht auf Windows Server 2016 oder höher aktualisieren können. Sie können mit dieser Version keinen Azure AD Connect V2.0-Server aktualisieren.
+>Wir beginnen mit dem automatischen Upgrade berechtigter Mandanten, wenn diese Version zum Download verfügbar ist. Das automatische Upgrade dauert einige Wochen.
+
+### <a name="release-status"></a>Releasestatus
+21.09.2021: Als Download bereitgestellt und automatisches Upgrade durchgeführt.
+
+### <a name="functional-changes"></a>Funktionale Änderungen
+ - Wir haben die neuesten Versionen von MIM Connectors (1.1.1610.0) hinzugefügt. Weitere Informationen finden Sie auf der Seite [Versionsgeschichte der MiM-Connectors](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#1116100-september-2021)
+ - Wir haben eine Konfigurationsoption hinzugefügt, um das Feature „Soft Matching“ in Azure AD Connect zu deaktivieren. Wir empfehlen Kunden, das Soft Matching zu deaktivieren, es sei denn, sie benötigen es, um reine Cloudkonten zu übernehmen. In diesem [Artikel](https://docs.microsoft.com/powershell/module/msonline/set-msoldirsyncfeature?view=azureadps-1.0#example-2--block-soft-matching-for-the-tenant) wird gezeigt, wie Sie das Soft Matching deaktivieren.
+
+### <a name="bug-fixes"></a>Behebung von Programmfehlern
+ - Es wurde ein Fehler behoben, bei dem die DesktopSSO-Einstellungen nach dem Upgrade von einer früheren Version nicht beibehalten wurden.
+ - Es wurde ein Fehler behoben, der dazu führte, dass die Cmdlets "Set-ADSync\*Permission“ versagten.
+
+## <a name="20251"></a>2.0.25.1
+
+>[!NOTE] 
+> Dies ist ein Hotfix-Updaterelease von Azure AD Connect. Diese Version erfordert Windows Server 2016 oder höher und behebt ein Sicherheitsproblem, das in Version 2.0 von Azure AD Connect vorhanden ist, sowie einige andere Fehlerbehebungen.
+
+### <a name="release-status"></a>Releasestatus
+14.09.2021: Nur zum Download freigegeben, nicht für die Auto-Aktualisierung verfügbar.
+
+### <a name="bug-fixes"></a>Behebung von Programmfehlern
+
+ - Es wurde ein Sicherheitsproblem behoben, bei dem ein Pfad ohne Anquote verwendet wurde, um auf den Azure AD Connect-Dienst zu verweisen. Dieser Pfad ist jetzt ein Pfad in Anführungszeichen.
+ - Beheben eines Importkonfigurationsproblems, bei dem das Rückschreiben aktiviert ist, wenn das vorhandene AD Connector-Konto verwendet wird.
+ - Wir haben ein Problem in Set-ADSyncExchangeHybridPermissions und anderen verwandten Cmdlets behoben, die aufgrund eines ungültigen Vererbungstyps von 1.6 an fehlerhaft waren.
+ - Das Cmdlet, das wir in einer früheren Version veröffentlicht haben, um die TLS-Version festzulegen, hatte ein Problem, bei dem es die Schlüssel überschreibt und alle darin enthaltenen Werte zerstörte. Wir haben dies behoben, indem nur dann ein neuer Schlüssel erstellt wird, wenn noch keiner vorhanden ist. Außerdem wird eine Warnung hinzugefügt, um Benutzer darüber zu informieren, dass Änderungen an der TLS-Registrierung nicht ausschließlich für Azure AD Connect gelten und sich auch auf andere Anwendungen auf demselben Server auswirken können.
+ - Wir haben eine Überprüfung hinzugefügt, um ein automatisches Upgrade für V2.0 zu erzwingen, damit Windows Server 2016 oder höher erforderlich ist.
+ - Im Cmdlet „Set-ADSyncBasicReadPermissions“ wurde die Berechtigung „Replicating Directory Changes“ (Verzeichnisänderungen replizieren) hinzugefügt.
+ - Wir haben eine Änderung vorgenommen, um zu verhindern, dass UseExistingDatabase und die Importkonfiguration zusammen verwendet werden, da diese möglicherweise in Konflikt stehende Konfigurationseinstellungen enthalten.
+ - Wir haben eine Änderung vorgenommen, damit ein Benutzer mit der Rolle Anwendungsadministrator die Konfiguration des App-Proxydiensts ändern kann.
+ - Wir haben das Etikett „(Preview)“ aus den Etiketten der Import/Export-Einstellungen entfernt. Diese Funktion ist seit einiger Zeit allgemein verfügbar.
+ - Wir haben einige Etikettem geändert, die immer noch auf „Unternehmensadministrator“ verwiesen. Wir verwenden jetzt den Rollennamen "Globaler Administrator".
+ - Wir haben die neuen AAD Kerberos PowerShell-Cmdlets „\*-AADKerberosServer“ erstellt, um dem AAD-Dienstprinzipal eine Anspruchstransformationsregel hinzuzufügen.
+
+### <a name="functional-changes"></a>Funktionale Änderungen
+ - Wir haben die neuesten Versionen von MIM Connectors (1.1.1610.0) hinzugefügt. Weitere Informationen finden Sie auf der Seite [Versionsgeschichte der MiM-Connectors](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#1116100-september-2021)
+ - Wir haben eine Konfigurationsoption hinzugefügt, um das Feature „Soft Matching“ in Azure AD Connect zu deaktivieren. Wir empfehlen Kunden, das Soft Matching zu deaktivieren, es sei denn, sie benötigen es, um reine Cloudkonten zu übernehmen. In diesem [Artikel](https://docs.microsoft.com/powershell/module/msonline/set-msoldirsyncfeature?view=azureadps-1.0#example-2--block-soft-matching-for-the-tenant) wird gezeigt, wie Sie das Soft Matching deaktivieren.
 
 ## <a name="20100"></a>2.0.10.0
+
+### <a name="release-status"></a>Releasestatus
+19.08.2021: Nur zum Download freigegeben, nicht für die Auto-Aktualisierung verfügbar.
 
 >[!NOTE] 
 >Dies ist ein Hotfix-Updaterelease von Azure AD Connect. Für dieses Release ist Windows Server 2016 oder höher erforderlich. Dieser Hotfix behebt ein Problem, das es sowohl in Version 2.0 als auch in Azure AD Connect, Version  1.6, gibt. Wenn Sie Azure AD Connect auf einer älteren Windows Server-Version ausführen, sollten Sie stattdessen Build [1.6.13.0](#16130) installieren.
 
 ### <a name="release-status"></a>Releasestatus
 19.08.2021: Nur zum Download freigegeben, nicht für die Auto-Aktualisierung verfügbar.
+
+### <a name="known-issues"></a>Bekannte Probleme
+ - Unter bestimmten Umständen zeigt das Installationsprogramm für diese Version einen Fehler an, der darauf hinweist, dass TLS 1.2 nicht aktiviert ist, und beendet die Installation. Dies ist auf einen Fehler im Code zurückzuführen, der die Registrierungseinstellung für TLS 1.2 überprüft. Diesen Feher werden wir in einem zukünftigen Release beheben. Kunden, denen dieses Problem angezeigt wird, sollten die Anweisungen zum Aktivieren von TLS 1.2 befolgen, die sie im Artikel „[Erzwingung von TLS 1.2 für Azure AD Connect](reference-connect-tls-enforcement.md)“ finden.
 
 ### <a name="bug-fixes"></a>Behebung von Programmfehlern
 

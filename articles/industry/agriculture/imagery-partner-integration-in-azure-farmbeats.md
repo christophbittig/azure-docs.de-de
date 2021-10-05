@@ -5,13 +5,12 @@ author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
-ms.custom: ''
-ms.openlocfilehash: c4a4b0fa982945b20616d576af4b3e8039d828c0
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 85dff004bdaf61297d9f88766e4cadc97f7d6b88
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397818"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624252"
 ---
 # <a name="imagery-partner-integration"></a>Integration eines Partnerunternehmens für Bilder
 
@@ -91,8 +90,8 @@ Hier sind die gängigsten Anforderungsheader aufgeführt, die bei einem für den
 
 **Kopfzeile** | **Beschreibung und Beispiel**
 --- | ---
-Content-Type  | Das Anforderungsformat (Content-Type: application/<format>). Für FarmBeats-Datenhub-APIs wird das Format „JSON“ verwendet. Content-Type: application/json
-Authorization | Gibt das Zugriffstoken an, das zum Ausführen eines API-Aufrufs erforderlich ist. Autorisierung: Bearer <Access-Token>
+Content-Type  | Das Anforderungsformat (Content-Type: application/\<format\>). Für FarmBeats-Datenhub-APIs wird das Format „JSON“ verwendet. Content-Type: application/json
+Authorization | Gibt das Zugriffstoken an, das zum Ausführen eines API-Aufrufs erforderlich ist. Autorisierung: Bearer \<Access-Token\>
 Akzeptieren  | Das Antwortformat. Für FarmBeats-Datenhub-APIs wird das Format „JSON“ verwendet. Accept: application/json
 
 
@@ -112,7 +111,7 @@ Die folgende Beispielanforderung dient zum Abrufen der Liste mit den Geräten:
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>”
+"Authorization: Bearer <Access-Token>"
 ```
 
 Für die meisten GET-, POST- und PUT-Aufrufe ist ein JSON-Anforderungstext erforderlich.
@@ -136,20 +135,22 @@ JSON ist ein gängiges sprachunabhängiges Datenformat, bei dem eine einfache Te
 
 Wenn das Partnerunternehmen die Anmeldeinformationen für die Verbindungsherstellung mit dem FarmBeats-Datenhub erhalten hat, führt es in der Translator-Komponente die folgenden Schritte aus.
 
-1.  Erstellen eines neuen erweiterten Typs für die folgenden Felder (gemäß dem Typ der hochzuladenden Bilder):
+1. Erstellen eines neuen erweiterten Typs für die folgenden Felder (gemäß dem Typ der hochzuladenden Bilder):
 
-    - **Scene Source** (Szenenquelle): Beispiel: „drone_partner_name“ (Drohnenpartnername)
-    - **Scene Type** (Szenentyp): Beispiel: „drone“ (Drohne)
-    - **Scene File Type** (Szenendateityp): Beispiel: „chlorophyll index“ (Chlorophyll-Index)
-    - **Scene File Content Type** (Szenendatei-Inhaltstyp): Beispiel: „image/tiff“
+   - **Scene Source** (Szenenquelle): Beispiel: „drone_partner_name“ (Drohnenpartnername)
+   - **Scene Type** (Szenentyp): Beispiel: „drone“ (Drohne)
+   - **Scene File Type** (Szenendateityp): Beispiel: „chlorophyll index“ (Chlorophyll-Index)
+   - **Scene File Content Type** (Szenendatei-Inhaltstyp): Beispiel: „image/tiff“
 
-2.  Aufrufen der /Farms-API zum Abrufen der Liste mit den landwirtschaftlichen Betrieben aus dem Azure FarmBeats-System.
-3.  Bereitstellen einer Option für den Kunden, mit der in der Liste mit den landwirtschaftlichen Betrieben ein einzelner Betrieb ausgewählt werden kann.
+2. Aufrufen der /Farms-API zum Abrufen der Liste mit den landwirtschaftlichen Betrieben aus dem Azure FarmBeats-System.
 
-    Im Partnersystem muss der landwirtschaftliche Betrieb in der Partnersoftware angezeigt werden, damit die Pfadplanung und der Drohnenflug sowie die Bilderfassung durchgeführt werden können.
+3. Bereitstellen einer Option für den Kunden, mit der in der Liste mit den landwirtschaftlichen Betrieben ein einzelner Betrieb ausgewählt werden kann.
 
-4.  Aufrufen der /Scene-API und Angeben der erforderlichen Details für die Erstellung einer neuen Szene mit eindeutiger Szenen-ID.
-5.  Empfangen einer Blob-SAS-URL für den Upload der erforderlichen Bilder in den FarmBeats-Datenhub (im Kontext des ausgewählten landwirtschaftlichen Betriebs) des FarmBeats-Systems.
+   Im Partnersystem muss der landwirtschaftliche Betrieb in der Partnersoftware angezeigt werden, damit die Pfadplanung und der Drohnenflug sowie die Bilderfassung durchgeführt werden können.
+
+4. Aufrufen der /Scene-API und Angeben der erforderlichen Details für die Erstellung einer neuen Szene mit eindeutiger Szenen-ID.
+
+5. Empfangen einer Blob-SAS-URL für den Upload der erforderlichen Bilder in den FarmBeats-Datenhub (im Kontext des ausgewählten landwirtschaftlichen Betriebs) des FarmBeats-Systems.
 
 Unten ist ein detaillierter Ablauf der API-Aufrufe angegeben.
 
@@ -341,7 +342,7 @@ Dies sind die vom System definierten Werte:
 
 Dieser Schritt umfasst ein einmaliges Setup. Der Bereich dieses neuen Szenentyps ist auf das Abonnement beschränkt, in dem Azure FarmBeats installiert ist.
 
-Ein Beispiel hierfür ist das Hinzufügen von „SceneSource“: „SlantRange“: Sie führen einen PUT-Vorgang für die ID der /ExtendedType-API durch, indem Sie die entsprechende „SceneSource“-Eingabenutzlast verwenden.
+Um beispielsweise SceneSource: „SlantRange“ hinzuzufügen, führen Sie einen PUT-Vorgang für die ID der /ExtendedType-API durch, indem Sie die entsprechende „SceneSource“-Eingabenutzlast verwenden.
 
 ```json
 {

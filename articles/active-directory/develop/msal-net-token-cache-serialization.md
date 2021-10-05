@@ -13,12 +13,12 @@ ms.date: 08/28/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 7ccf02c1e8cd6fb15c641ff551cfaf72ae67a85a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 216fd3f132464b9866bc1f3b1b61b143de117019
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626397"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083465"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisierung des Tokencaches in MSAL.NET
 
@@ -593,6 +593,21 @@ namespace CommonCacheMsalV3
 ```
 
 ---
+
+## <a name="plain-text-fallback-mode"></a>Nur-Text-Fallbackmodus
+
+MIT MSAL können Sie unverschlüsselte Token in Klartext speichern. Dies ist nur für die Verwendung in Entwicklungsumgebungen zu Debugzwecken vorgesehen. Sie können den Nur-Text-Fallbackmodus mit dem folgenden Codemuster verwenden.
+
+```csharp
+storageProperties =
+    new StorageCreationPropertiesBuilder(
+        Config.CacheFileName + ".plaintext",
+        Config.CacheDir)
+    .WithUnprotectedFile()
+    .Build();
+
+var cacheHelper = await MsalCacheHelper.CreateAsync(storageProperties).ConfigureAwait(false);
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,20 +1,19 @@
 ---
 title: Verwalten von Berechtigungen und Sicherheit für Rollen in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) verwenden, um eine präzise Zugriffsverwaltung für Azure-Ressourcen zu erzielen.
-keywords: Automation RBAC, rollenbasierte Zugriffssteuerung, Azure RBAC
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 08/26/2021
-ms.topic: conceptual
+ms.date: 09/10/2021
+ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 30bc4a306eecf8be3177fb045f9904d775cab9bd
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 67f7076852ffe810e213fcc7d8cb6188d6db405d
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215002"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057850"
 ---
-# <a name="manage-role-permissions-and-security"></a>Verwalten von Berechtigungen und Sicherheit für Rollen
+# <a name="manage-role-permissions-and-security-in-automation"></a>Verwalten von Berechtigungen und Sicherheit für Rollen in Automation
 
 Die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Ressourcen. Mithilfe der [rollenbasierten Zugriffssteuerung von Azure](../role-based-access-control/overview.md) können Sie Aufgaben innerhalb Ihres Teams verteilen sowie Benutzern, Gruppen und Anwendungen nur den Zugriff gewähren, den diese zur Ausführung ihrer Aufgaben benötigen. Sie können Benutzern über das Azure-Portal, über Azure-Befehlszeilentools oder über Azure-Verwaltungs-APIs rollenbasierten Zugriff gewähren.
 
@@ -80,6 +79,12 @@ Ein Mitwirkender für Automatisierung kann alle Ressourcen im Automation-Konto m
 |Microsoft.Resources/deployments/*|Erstellen und Verwalten von Ressourcengruppenbereitstellungen|
 |Microsoft.Resources/subscriptions/resourceGroups/read|Lesen von Ressourcengruppenbereitstellungen|
 |Microsoft.Support/*|Erstellen und Verwalten von Supporttickets|
+|Microsoft.Insights/ActionGroups/*|Lesen/Schreiben/Löschen einer Aktionsgruppe|
+|Microsoft.Insights/ActivityLogAlerts/*|Lesen/Schreiben/Löschen von Aktivitätsprotokollwarnungen|
+|Microsoft.Insights/diagnosticSettings/*|Lesen/Schreiben/Löschen von Diagnoseeinstellungen.|
+|Microsoft.Insights/MetricAlerts/*|Lesen/Schreiben/Löschen von Metrikwarnungen (nahezu in Echtzeit).|
+|Microsoft.Insights/ScheduledQueryRules/*|Protokollwarnungen für Lesen, Schreiben und Löschen in Azure Monitor.|
+|Microsoft.OperationalInsights/workspaces/sharedKeys/action|Auflisten der Schlüssel für einen Log Analytics-Arbeitsbereich|
 
 > [!NOTE]
 > Die Rolle „Mitwirkender für Automatisierung“ kann verwendet werden, um mithilfe der verwalteten Identität, sofern entsprechende Berechtigungen für die Zielressource festgelegt sind, oder mithilfe eines ausführenden Kontos auf eine beliebige Ressource zuzugreifen. Ein ausführendes Automation-Konto ist standardmäßig mit den Rechten von Mitwirkenden für das Abonnement konfiguriert. Befolgen Sie das Prinzip der geringsten Berechtigung, und weisen Sie sorgfältig nur die Berechtigungen zu, die für die Ausführung Ihres Runbooks erforderlich sind. Beispiel: Wenn das Automatisierungskonto nur zum Starten oder Stoppen einer Azure-VM erforderlich ist, dann müssen die dem ausführenden Konto oder der verwalteten Identität zugewiesenen Berechtigungen nur zum Starten oder Beenden der VM dienen. Weisen Sie ebenso Lesezugriffsberechtigungen zu, wenn ein Runbook aus Blobspeicher liest.
@@ -290,15 +295,15 @@ Führen Sie die folgenden Schritte aus, um die benutzerdefinierte Azure Automati
 
    ```json
    {
-    "properties": {
-        "roleName": "Automation Account Contributor (Custom)",
-        "description": "Allows access to manage Azure Automation and its resources",
-        "assignableScopes": [
+    "properties": {
+        "roleName": "Automation Account Contributor (Custom)",
+        "description": "Allows access to manage Azure Automation and its resources",
+        "assignableScopes": [
             "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
         ],
-        "permissions": [
+        "permissions": [
             {
-                "actions": [
+                "actions": [
                     "Microsoft.Authorization/*/read",
                     "Microsoft.Insights/alertRules/*",
                     "Microsoft.Insights/metrics/read",
@@ -308,9 +313,9 @@ Führen Sie die folgenden Schritte aus, um die benutzerdefinierte Azure Automati
                     "Microsoft.Automation/automationAccounts/*",
                     "Microsoft.Support/*"
                 ],
-                "notActions": [],
-                "dataActions": [],
-                "notDataActions": []
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
             }
         ]
       }
@@ -330,28 +335,28 @@ Führen Sie die folgenden Schritte aus, um die benutzerdefinierte Azure Automati
 
 1. Kopieren Sie die folgende JSON-Syntax, und fügen Sie sie in eine Datei ein: Speichern Sie die Datei auf Ihrem lokalen Computer oder in einem Azure-Speicherkonto. Ersetzen Sie in der JSON-Datei den Wert für die **AssignableScopes**-Eigenschaft durch die Abonnement-GUID.
 
-    ```json
-    { 
-        "Name": "Automation account Contributor (custom)",
-        "Id": "",
-        "IsCustom": true,
-        "Description": "Allows access to manage Azure Automation and its resources",
-        "Actions": [
-            "Microsoft.Authorization/*/read",
-            "Microsoft.Insights/alertRules/*",
-            "Microsoft.Insights/metrics/read",
-            "Microsoft.Insights/diagnosticSettings/*",
-            "Microsoft.Resources/deployments/*",
-            "Microsoft.Resources/subscriptions/resourceGroups/read",
-            "Microsoft.Automation/automationAccounts/*",
-            "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "AssignableScopes": [
-            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
-        ] 
-    } 
-    ```
+   ```json
+   { 
+       "Name": "Automation account Contributor (custom)",
+       "Id": "",
+       "IsCustom": true,
+       "Description": "Allows access to manage Azure Automation and its resources",
+       "Actions": [
+           "Microsoft.Authorization/*/read",
+           "Microsoft.Insights/alertRules/*",
+           "Microsoft.Insights/metrics/read",
+           "Microsoft.Insights/diagnosticSettings/*",
+           "Microsoft.Resources/deployments/*",
+           "Microsoft.Resources/subscriptions/resourceGroups/read",
+           "Microsoft.Automation/automationAccounts/*",
+           "Microsoft.Support/*"
+       ],
+       "NotActions": [],
+       "AssignableScopes": [
+           "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+       ] 
+   } 
+   ```
 
 1. Führen Sie die restlichen Schritte wie unter [Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen mithilfe von Azure PowerShell](./../role-based-access-control/custom-roles-powershell.md#create-a-custom-role-with-json-template) beschrieben aus. Es kann einige Minuten dauern, bis Ihre benutzerdefinierte Rolle überall angezeigt wird.
 

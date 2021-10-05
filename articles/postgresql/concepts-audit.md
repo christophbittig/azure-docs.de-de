@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: d20f504e4c35bcb314e599b3111a3c66805568e7
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: f15ffe95f002ac74553363485fe90d16f8864347
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112676315"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552521"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Überwachungsprotokollierung in Azure Database for PostgreSQL (Einzelserver)
 
@@ -45,9 +45,15 @@ Verwenden des [Azure-Portals](https://portal.azure.com):
    2. Wählen Sie auf der Seitenleiste **Serverparameter** aus.
    3. Suchen Sie nach dem Parameter `shared_preload_libraries`.
    4. Wählen Sie **pgaudit** aus.
+     :::image type="content" source="./media/concepts-audit/share-preload-parameter.png" alt-text="Screenshot: Azure Database for PostgreSQL : Aktivieren von shared_preload_libraries für pgaudit ":::
    5. Starten Sie den Server neu, um die Änderung zu übernehmen.
+   6. Sie können überprüfen, ob **pgaudit** in shared_preload_libraries geladen wird, indem Sie die folgende Abfrage in psql ausführen:
+        ```SQL
+      show shared_preload_libraries;
+      ```
+      Im Abfrageergebnis, das die shared_preload_libraries wiedergibt, sollte **pgaudit** angezeigt werden.
 
-   6. Verbinden Ihres Servers mithilfe eines Clients (wie psql) und Aktivieren der pgAudit-Erweiterung
+   7. Verbinden Ihres Servers mithilfe eines Clients (wie psql) und Aktivieren der pgAudit-Erweiterung
       ```SQL
       CREATE EXTENSION pgaudit;
       ```
@@ -62,7 +68,18 @@ pgAudit ermöglicht es Ihnen, die Sitzungs- oder Objektüberwachungsprotokollier
 > [!NOTE]
 > Die Einstellungen von pgAudit werden global angegeben, nicht auf Datenbank- oder Rollenebene.
 
-Nachdem Sie [pgAudit installiert haben](#installing-pgaudit), können Sie die zugehörigen Parameter so konfigurieren, dass die Protokollierung gestartet wird. Die [pgAudit-Dokumentation](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) stellt die Definition der einzelnen Parameter bereit. Testen Sie zuerst die Parameter, und vergewissern Sie sich, dass Sie das erwartete Verhalten aufweisen.
+Nachdem Sie [pgAudit installiert haben](#installing-pgaudit), können Sie die zugehörigen Parameter so konfigurieren, dass die Protokollierung gestartet wird. Zum Konfigurieren von pgAudit können Sie die folgenden Anweisungen befolgen. Verwenden des [Azure-Portals](https://portal.azure.com):
+
+   1. Wählen Sie Ihre Azure Database for PostgreSQL-Server aus.
+   2. Wählen Sie auf der Seitenleiste **Serverparameter** aus.
+   3. Suchen Sie nach den `pg_audit`-Parametern.
+   4. Wählen Sie den entsprechenden Einstellungsparameter aus, der bearbeitet werden soll. Legen Sie beipielsweise um mit der Protokollierung zu beginnen `pgaudit.log` auf `WRITE` fest. :::image type="content" source="./media/concepts-audit/pgaudit-config.png" alt-text="Screenshot: Azure Database for PostgreSQL – Protokollierung mit pgaudit konfigurieren":::
+   5. Klicken Sie auf die Schaltfläche **Speichern**, um die Änderungen zu speichern.
+
+
+
+Die [pgAudit-Dokumentation](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) stellt die Definition der einzelnen Parameter bereit. Testen Sie zuerst die Parameter, und vergewissern Sie sich, dass Sie das erwartete Verhalten aufweisen.
+
 
 > [!NOTE]
 > Wenn `pgaudit.log_client` auf „ON“ festgelegt wird, werden Protokolle an einen Clientprozess (z.B. psql) umgeleitet, anstatt in eine Datei geschrieben zu werden. Diese Einstellung sollte in der Regel deaktiviert bleiben. <br> <br>

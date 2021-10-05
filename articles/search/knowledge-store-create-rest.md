@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/02/2021
-ms.openlocfilehash: acad54727ecb441cce64021ecba395d41820659a
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a19fd4aad4ee8e5bac7dc7cde2a5be4609a346fc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535261"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796569"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Erstellen eines Wissensspeichers mithilfe von REST und Postman
 
@@ -380,7 +380,7 @@ Jede Tabelle wird mit den IDs generiert, die für die Kreuzverknüpfung der Tabe
 
    :::image type="content" source="media/knowledge-store-create-rest/knowledge-store-tables.png" alt-text="Screenshot der Wissensspeichertabellen in Storage-Explorer" border="true":::
 
-In dieser exemplarischen Vorgehensweise besteht der Wissensspeicher aus einer Reihe von Tabellen, die verschiedene Möglichkeiten zur Gestaltung und Strukturierung einer Tabelle aufzeigen. Die erste Gruppe mit drei Tabellen zeigt, wie die Ausgabe eines Skills für Shaper die Spalten und Zeilen festlegt. Die zweite Gruppe veranschaulicht Inlinegestaltungsbefehle, die in die Projektion selbst eingebettet sind. Bei beiden Ansätzen erzielen Sie das gleiche Ergebnis.
+In dieser exemplarischen Vorgehensweise besteht der Wissensspeicher aus einer Reihe von Tabellen, die verschiedene Möglichkeiten zur Gestaltung und Strukturierung einer Tabelle aufzeigen. Die erste Gruppe mit drei Tabellen zeigt, wie die Ausgabe eines Skills für Shaper die Spalten und Zeilen festlegt. Die Tabellen 4 bis 6 werden aus Anweisungen zur Inline-Gestaltung erstellt, die in die Projektion selbst eingebettet sind. Bei beiden Ansätzen erzielen Sie das gleiche Ergebnis.
 
 | Tabelle | BESCHREIBUNG |
 |-------|-------------|

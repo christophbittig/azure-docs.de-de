@@ -11,17 +11,17 @@ ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Gesichtserkennung, Gesichtserkennungssoftware, Gesichtsanalyse, Gesichtsabgleich, Gesichtserkennungs-App, Gesichtserkennungssuche nach Bild, Gesichtserkennungssuche
-ms.openlocfilehash: 15d8043beb32d8f3c7fa1b237e1ba25310983b86
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 9375b8b482076da9e308c9309c4f264118cccfa0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822286"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663324"
 ---
 # <a name="what-is-the-azure-face-service"></a>Was ist der Azure-Gesichtserkennungsdienst?
 
 > [!WARNING]
-> Am 11. Juni 2020 kündigte Microsoft an, dass keine Technologie zur Gesichtserkennung mehr an die Polizeibehörden in den USA verkauft wird, bis es eine strenge, auf den Menschenrechten basierende Regelung gibt. Daher dürfen Kunden keine Gesichtserkennungsfeatures oder in Azure-Diensten enthaltenen Funktionen (wie Gesichtserkennung oder Video Indexer) verwenden, wenn es sich bei dem Kunden um eine Polizeibehörde in den USA handelt oder wenn der Kunde die Nutzung derartiger Dienste durch oder für eine Polizeibehörde zulässt. Wenn Sie eine neue Gesichtserkennungsressource erstellen, müssen Sie im Azure-Portal bestätigen und sich damit einverstanden erklären, dass Sie den Dienst nicht über oder für eine Polizeibehörde in den USA verwenden, und dass Sie die [RAI-Dokumentation (Responsible AI)](https://go.microsoft.com/fwlink/?linkid=2164191) gelesen haben und diesen Dienst entsprechend verwenden.
+> Am 11. Juni 2020 kündigte Microsoft an, dass keine Technologie zur Gesichtserkennung mehr an die Polizeibehörden in den USA verkauft wird, bis es eine strenge, auf den Menschenrechten basierende Regelung gibt. Daher dürfen Kunden keine Gesichtserkennungsfeatures oder in Azure-Diensten enthaltenen Funktionen (wie Gesichtserkennung oder Video Indexer) verwenden, wenn es sich bei dem Kunden um eine Polizeibehörde in den USA handelt oder wenn der Kunde die Nutzung derartiger Dienste durch oder für eine Polizeibehörde zulässt. Wenn Sie eine neue Gesichtserkennungsressource erstellen, müssen Sie im Azure-Portal bestätigen und sich damit einverstanden erklären, dass Sie den Dienst nicht über oder für eine Polizeibehörde in den USA verwenden, und dass Sie die [RAI-Dokumentation (Responsible AI)](../cognitive-services-apis-create-account-cli.md#prerequisites) gelesen haben und diesen Dienst entsprechend verwenden.
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
@@ -57,7 +57,7 @@ Moderne Unternehmen und Apps können mit den Gesichtsidentifikations- und Gesich
 
 ### <a name="identification"></a>Identifikation
 
-Die Gesichtsidentifikation kann als „1:n“-Abgleich bezeichnet werden. Übereinstimmungskandidaten werden basierend auf der Genauigkeit der Übereinstimmung ihrer Gesichtsdaten mit dem Abfragegesicht zurückgegeben. Dieses Szenario wird verwendet, um einer bestimmten Gruppe von Personen Zugang zu einem Gebäude zu gewähren oder den Benutzer eines Geräts zu überprüfen.
+Die Gesichtserkennung kann den „1:n“-Abgleich eines Gesichts in einem Bild mit einer Gruppe von Gesichtern in einem sicheren Repository adressieren. Übereinstimmungskandidaten werden basierend auf der Genauigkeit der Übereinstimmung ihrer Gesichtsdaten mit dem Abfragegesicht zurückgegeben. Dieses Szenario wird verwendet, um einer bestimmten Gruppe von Personen Zugang zu einem Gebäude zu gewähren oder den Benutzer eines Geräts zu überprüfen.
 
 Die folgende Abbildung enthält ein Beispiel für eine Datenbank mit dem Namen `"myfriends"`. Jede Gruppe kann bis zu 1 Million unterschiedliche Personenobjekte enthalten. Für jedes Personenobjekt können bis zu 248 Gesichter registriert sein.
 
@@ -67,7 +67,11 @@ Nachdem Sie eine Gruppe erstellt und trainiert haben, können Sie die Identifizi
 
 ### <a name="verification"></a>Überprüfung
 
-Der Überprüfungsvorgang beantwortet die Frage „Gehören diese beiden Gesichter zu derselben Person?“. Die Überprüfung wird auch als „1:1“-Abgleich bezeichnet, da die Testgesichtsdaten mit nur einem registrierten Gesicht verglichen werden. Die Überprüfung wird im Identifikationsszenario verwendet, um zu überprüfen, ob eine bestimmte Übereinstimmung korrekt ist. 
+Der Überprüfungsvorgang beantwortet die Frage „Gehören diese beiden Gesichter zu derselben Person?“. 
+
+Die Überprüfung ist auch ein 1:1-Abgleich eines Gesichts in einem Bild mit einem Gesicht in einem sicheren Repository oder Foto.
+
+Die Überprüfung kann in Identitätsüberprüfungs- oder Zugriffssteuerungsszenarien verwendet werden, um zu überprüfen, ob ein Bild mit einem zuvor aufgenommenen Bild übereinstimmt (z. B. ein Foto von einem von einer Behörde ausgegebenen Ausweis).
 
 Weitere Informationen zur Überprüfung der Identifikation finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)- und [Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)-API.
 

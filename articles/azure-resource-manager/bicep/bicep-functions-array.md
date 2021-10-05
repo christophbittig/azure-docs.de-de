@@ -4,34 +4,17 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei f�
 author: mumian
 ms.topic: conceptual
 ms.author: jgao
-ms.date: 06/01/2021
-ms.openlocfilehash: e782ec0d77930651346cc0fc97e52d5c473b9245
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: 69a937a68e2f73eaf911f2cb80cf09bab7d78eed
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026376"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794099"
 ---
 # <a name="array-functions-for-bicep"></a>Arrayfunktionen für Bicep
 
-Resource Manager stellt mehrere Funktionen zum Arbeiten mit Arrays in Bicep bereit:
-
-* [array](#array)
-* [concat](#concat)
-* [contains](#contains)
-* [empty](#empty)
-* [first](#first)
-* [intersection](#intersection)
-* [last](#last)
-* [length](#length)
-* [max](#max)
-* [min](#min)
-* [range](#range)
-* [skip](#skip)
-* [take](#take)
-* [union](#union)
-
-Informationen zu einem Array mit Zeichenfolgenwerten, die durch einen Wert getrennt sind, finden Sie unter [split](./bicep-functions-string.md#split).
+In diesem Artikel werden die Bicep-Funktionen für die Arbeit mit Arrays beschrieben.
 
 ## <a name="array"></a>array
 
@@ -85,7 +68,7 @@ Kombiniert mehrere Arrays und gibt das verkettete Array zurück.
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |array |Das erste Array für die Verkettung. |
-| zusätzliche Argumente |Nein |array |Weitere Arrays in sequenzieller Reihenfolge für die Verkettung. |
+| Mehr Argumente |Nein |array |Mehr Arrays in sequenzieller Reihenfolge für die Verkettung. |
 
 Diese Funktion akzeptiert eine beliebige Anzahl von Arrays und kombiniert sie.
 
@@ -181,7 +164,7 @@ Bestimmt, ob ein Array, Objekt oder eine Zeichenfolge leer ist.
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Ja |Array, Objekt oder Zeichenfolge |Der Wert, für den geprüft werden soll, ob er leer ist. |
+| itemToTest |Ja |Array, Objekt oder Zeichenfolge |Der Wert, für den überprüft werden soll, ob er leer ist. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -259,11 +242,11 @@ Gibt ein einzelnes Array oder ein Objekt mit den gemeinsamen Elementen aus den P
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Objekt |Der erste Wert für die Suche nach gemeinsamen Elementen. |
 | arg2 |Ja |Array oder Objekt |Der zweite Wert für die Suche nach gemeinsamen Elementen. |
-| zusätzliche Argumente |Nein |Array oder Objekt |Weitere Werte für die Suche nach gemeinsamen Elementen. |
+| Mehr Argumente |Nein |Array oder Objekt |Mehr Werte für die Suche nach gemeinsamen Elementen. |
 
 ### <a name="return-value"></a>Rückgabewert
 
-Ein Array oder Objekt mit den gemeinsamen Elementen.
+Ein Array oder Objekt mit den gemeinsamen Elementen. Die Reihenfolge der Elemente wird durch den ersten Arrayparameter bestimmt.
 
 ### <a name="example"></a>Beispiel
 
@@ -303,6 +286,40 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
+
+Der erste Arrayparameter bestimmt die Reihenfolge der Schnittmengenelemente. Das folgende Beispiel zeigt, wie die Reihenfolge der zurückgegebenen Elemente darauf basiert, welches Array das erste ist.
+
+```bicep
+var array1 = [
+  1
+  2
+  3
+  4
+]
+
+var array2 = [
+  3
+  2
+  1
+]
+
+var array3 = [
+  4
+  1
+  3
+  2
+]
+
+output commonUp array = intersection(array1, array2, array3)
+output commonDown array = intersection(array2, array3, array1)
+```
+
+Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
+
+| Name | Typ | Wert |
+| ---- | ---- | ----- |
+| commonUp | array | [1, 2, 3] |
+| commonDown | array | [3, 2, 1] |
 
 ## <a name="last"></a>last
 
@@ -476,7 +493,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 `range(startIndex, count)`
 
-Erstellt ein Array mit ganzen Zahlen, das mit einer ganzen Zahl beginnt und eine bestimmte Zahl von Elementen enthält.
+Erstellt ein Array aus ganzen Zahlen, das mit einer ganzen Zahl beginnt und die Anzahl der Elemente enthält.
 
 ### <a name="parameters"></a>Parameter
 
@@ -517,7 +534,7 @@ Gibt ein Array mit allen Elementen gemäß der angegebenen Anzahl im Array bzw. 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |Array oder Zeichenfolge |Array oder Zeichenfolge, wo Elemente übersprungen werden sollen. |
-| numberToSkip |Ja |INT |Die Anzahl der zu überspringenden Elemente bzw. Zeichen. Wenn dieser Wert 0 (null) oder kleiner ist, werden alle Elemente oder Zeichen in dem Wert zurückgegeben. Ist der Wert größer als die Länge des Arrays bzw. der Zeichenfolge, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. |
+| numberToSkip |Ja |INT |Die Anzahl der zu überspringenden Elemente bzw. Zeichen. Wenn dieser Wert 0 (null) oder kleiner ist, werden alle Elemente oder Zeichen in dem Wert zurückgegeben. Ist er größer als die Länge des Arrays bzw. der Zeichenfolge, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -559,7 +576,7 @@ Gibt ein Array mit der angegebenen Anzahl von Elementen ab dem Anfang des Arrays
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |Array oder Zeichenfolge |Das Array bzw. die Zeichenfolge, wo die Elemente entnommen werden sollen. |
-| numberToTake |Ja |INT |Die Anzahl der zu entnehmenden Elemente bzw. Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. Ist der Wert größer als die Länge des entsprechenden Arrays bzw. der Zeichenfolge, werden alle Elemente des Arrays bzw. der Zeichenfolge zurückgegeben. |
+| numberToTake |Ja |INT |Die Anzahl der zu entnehmenden Elemente bzw. Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. Ist er größer als die Länge des entsprechenden Arrays bzw. der Zeichenfolge, werden alle Elemente des Arrays bzw. der Zeichenfolge zurückgegeben. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -602,7 +619,7 @@ Gibt ein einzelnes Array oder Objekt mit allen Elementen aus den Parametern zur�
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Objekt |Der erste zum Verknüpfen von Elementen zu verwendende Wert. |
 | arg2 |Ja |Array oder Objekt |Der zweite zum Verknüpfen von Elementen zu verwendende Wert. |
-| zusätzliche Argumente |Nein |Array oder Objekt |Weitere zum Verknüpfen von Elementen zu verwendende Werte. |
+| Mehr Argumente |Nein |Array oder Objekt |Mehr zum Verknüpfen von Elementen zu verwendende Werte. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -649,4 +666,4 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer Bicep-Datei finden Sie unter [Grundlegendes zur Struktur und Syntax von Bicep-Dateien](./file.md).
+* Informationen zu einem Array mit Zeichenfolgenwerten, die durch einen Wert getrennt sind, finden Sie unter [split](./bicep-functions-string.md#split).

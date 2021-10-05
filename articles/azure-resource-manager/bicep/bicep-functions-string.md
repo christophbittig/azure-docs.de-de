@@ -4,51 +4,17 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei f�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 879ea209fd0d645ba0f5045002ee32cc288acd18
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: d94f2b97a9ff78b715682052a647f02af6286af3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026222"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794080"
 ---
 # <a name="string-functions-for-bicep"></a>Zeichenfolgenfunktionen f체r Bicep
 
-Resource Manager stellt die folgenden Funktionen f체r das Arbeiten mit Zeichenfolgen in Ihrer Bicep-Datei bereit:
-
-* [base64](#base64)
-* [base64ToJson](#base64tojson)
-* [base64ToString](#base64tostring)
-* [concat](#concat)
-* [contains](#contains)
-* [dataUri](#datauri)
-* [dataUriToString](#datauritostring)
-* [empty](#empty)
-* [endsWith](#endswith)
-* [first](#first)
-* [format](#format)
-* [guid](#guid)
-* [indexOf](#indexof)
-* [json](#json)
-* [last](#last)
-* [lastIndexOf](#lastindexof)
-* [length](#length)
-* [newGuid](#newguid)
-* [padLeft](#padleft)
-* [replace](#replace)
-* [skip](#skip)
-* [split](#split)
-* [startsWith](#startswith)
-* [string](#string)
-* [substring](#substring)
-* [take](#take)
-* [toLower](#tolower)
-* [toUpper](#toupper)
-* [trim](#trim)
-* [uniqueString](#uniquestring)
-* [uri](#uri)
-* [uriComponent](#uricomponent)
-* [uriComponentToString](#uricomponenttostring)
+In diesem Artikel werden die Bicep-Funktionen f체r die Arbeit mit Zeichenfolgen beschrieben.
 
 ## <a name="base64"></a>base64
 
@@ -197,7 +163,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | Container |Ja |Array, Objekt oder Zeichenfolge |Der Wert, der den zu suchenden Wert enth채lt. |
 | itemToFind |Ja |Zeichenfolge oder ganze Zahl |Der zu suchende Wert. |
@@ -600,7 +566,7 @@ output stringOutput string = last('One Two Three')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -613,7 +579,7 @@ Gibt die letzte Position eines Werts innerhalb einer Zeichenfolge zur체ck. Bei d
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enth채lt. |
 | stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
@@ -636,7 +602,7 @@ output notFound int = indexOf('abcdef', 'z')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | firstT | Int | 0 |
 | lastT | Int | 3 |
@@ -652,7 +618,7 @@ Gibt die Anzahl von Zeichen in einer Zeichenfolge, Elementen in einem Array oder
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array, Zeichenfolge oder Objekt |Das Array, von dem die Anzahl der Elemente ermittelt werden soll, die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll, oder das Objekt, von dem die Anzahl der Eigenschaften auf Stammebene ermittelt werden soll. |
 
@@ -688,7 +654,7 @@ output objectLength int = length(objectToTest)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | arraylength | Int | 3 |
 | stringLength | Int | 13 |

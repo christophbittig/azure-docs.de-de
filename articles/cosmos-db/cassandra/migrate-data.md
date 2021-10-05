@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7cf1a8f329ff735e9c82ca6361bedbcb8e25f4ac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 937a42d6ebdf3d2ccb87451a2db07df199655005
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121784128"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586777"
 ---
 # <a name="tutorial-migrate-your-data-to-a-cassandra-api-account"></a>Tutorial: Migrieren Ihrer Daten zu einem Cassandra-API-Konto
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -77,7 +77,13 @@ Mithilfe der folgenden Optionen können Sie Daten mit dem Befehl `cqlsh`, `COPY`
 
 Der [Befehl CQL COPY](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html#cqlshrc) wird verwendet, um lokale Daten in das Cassandra-API-Konto in Azure Cosmos DB zu kopieren.
 
-1. Rufen Sie die Informationen zur Verbindungszeichenfolge für das Cassandra-API-Konto ab:
+1. Um sicher zu sein, dass Ihre CSV-Datei die richtige Dateistruktur enthält, verwenden Sie den Befehl `COPY TO`, um Daten direkt aus Ihrer Cassandra-Quelltabelle in eine CSV-Datei zu exportieren (stellen Sie sicher, dass cqlsh mit den entsprechenden Anmeldeinformationen mit der Quelltabelle verbunden ist):
+
+   ```bash
+   COPY exampleks.tablename TO 'data.csv' WITH HEADER = TRUE;   
+   ```
+
+1. Rufen Sie dann die Informationen zur Verbindungszeichenfolge für das Cassandra-API-Konto ab:
 
    * Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wechseln Sie zu Ihrem Azure Cosmos DB-Konto.
 
@@ -85,11 +91,13 @@ Der [Befehl CQL COPY](https://cassandra.apache.org/doc/latest/cassandra/tools/cq
 
 1. Melden Sie sich mit den Verbindungsinformationen aus dem Portal bei `cqlsh` an.
 
-1. Kopieren Sie mit dem Befehl `CQL` `COPY` lokale Daten zum Cassandra API-Konto.
+1. Verwenden Sie den `CQL` `COPY FROM` Befehl zum Kopieren `data.csv` (befindet sich weiterhin im Stammverzeichnis des Benutzers, in dem `cqlsh` installiert ist):
 
    ```bash
-   COPY exampleks.tablename FROM filefolderx/*.csv 
+   COPY exampleks.tablename FROM 'data.csv' WITH HEADER = TRUE;
    ```
+
+
 
 ### <a name="migrate-data-by-using-spark"></a>Migrieren von Daten mithilfe von Spark 
 

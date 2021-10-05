@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: c14af3698826405244b65bc8fef6f241f7f0032f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d1f276723b6ea48aeed474c1893fb5cfe3ad881
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181346"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124808221"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tribeloo"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Tribeloo
 
@@ -37,7 +37,8 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Tribeloo unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Tribeloo unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Clebex unterstützt [automatisierte Benutzerbereitstellung](tribeloo-provisioning-tutorial.md).
 
 ## <a name="adding-tribeloo-from-the-gallery"></a>Hinzufügen von Tribeloo aus dem Katalog
 
@@ -49,7 +50,6 @@ Zum Konfigurieren der Integration von Tribeloo in Azure AD müssen Sie Tribeloo 
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Tribeloo** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich den Eintrag **Tribeloo** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-tribeloo"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Tribeloo
 
@@ -70,7 +70,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Tribeloo** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -85,6 +85,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Kopieren Sie im Abschnitt **Tribeloo einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
@@ -117,6 +118,8 @@ Zum Konfigurieren des einmaligen Anmeldens auf **Tribeloo**-Seite müssen Sie da
 
 In diesem Abschnitt erstellen Sie in Tribeloo eine Benutzerin namens Britta Simon. Wenden Sie sich an das [Tribeloo-Supportteam](mailto:support@tribeloo.com), um die Benutzer auf der Tribeloo-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
+Außerdem unterstützt Clebex automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./tribeloo-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -125,8 +128,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Tribeloo-Anmelde-URL auf, und initiieren Sie den Anmeldeablauf.
 
-* Sie können Microsoft Meine Apps verwenden. Wenn Sie in „Meine Apps“auf die „Tribeloo“-Kachel klicken, werden Sie zur Anmelde-URL für Tribeloo weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
-
+* Sie können Microsoft Meine Apps verwenden. Wenn Sie in „Meine Apps“auf die „Tribeloo“-Kachel klicken, werden Sie zur Anmelde-URL für Tribeloo weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

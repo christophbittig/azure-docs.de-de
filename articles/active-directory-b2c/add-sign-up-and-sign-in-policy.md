@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 08/24/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0c1871921160b0b5862e7655a3826949406ac111
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 9774eef558b02bef4ef9ec9ecacd6e5a132fd244
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777801"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570308"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Einrichten eines Registrierungs- und Anmeldeflows in Azure Active Directory B2C
 
@@ -35,6 +35,10 @@ Eine Registrierungs- und Anmelderichtlinie ermöglicht Benutzern Folgendes:
 
 ![Profilbearbeitungsflow](./media/add-sign-up-and-sign-in-policy/add-sign-up-and-sign-in-flow.png)
 
+Sehen Sie sich dieses Video an, um zu erfahren, wie die Benutzeranmelde- und Anmelderichtlinie funktioniert. 
+
+>[!Video https://www.youtube.com/embed/c8rN1ZaR7wk]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn dies noch nicht erfolgt ist, [registrieren Sie eine Webanwendung in Azure Active Directory B2C](tutorial-register-applications.md).
@@ -46,7 +50,7 @@ Wenn dies noch nicht erfolgt ist, [registrieren Sie eine Webanwendung in Azure A
 Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberflächen für die Registrierung und Anmeldung in ein und derselben Konfiguration. Die Benutzer Ihrer Anwendung werden je nach Kontext auf den entsprechenden Pfad geleitet.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse + Abonnements** aus.
 1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows** und dann **Neuer Benutzerflow** aus.

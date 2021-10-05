@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/26/2021
+ms.date: 09/13/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: devx-track-js
-ms.openlocfilehash: 27b051a54fc17b0d7d65fff4d7f02e806baa3fd0
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 8e609268258142875ebbe924f3cfbdebc94911f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033313"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601716"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -23,11 +23,9 @@ Die Azure Cosmos DB-API für MongoDB nutzt die Kernfunktionen für automatische
 
 ## <a name="indexing-for-mongodb-server-version-36-and-higher"></a>Indizierung für MongoDB-Serverversion 3.6 und höher
 
-Die Azure Cosmos DB-API für die MongoDB-Serverversion 3.6 und höher indiziert automatisch das Feld `_id`, das nicht gelöscht werden kann. Sie erzwingt automatisch die Eindeutigkeit des Felds `_id` durch einen Shardschlüssel. In der Azure Cosmos DB-API für MongoDB sind horizontale Partitionierung und Indizierung separate Konzepte. Sie müssen Ihren Shardschlüssel nicht indizieren. Wie bei jeder anderen Eigenschaft in Ihrem Dokument gilt jedoch: Wenn diese Eigenschaft ein allgemeiner Filter in Ihren Abfragen ist, empfiehlt es sich, den Shardschlüssel zu indizieren.
+Azure Cosmos DB-API für MongoDB Server Version 3.6 und höher indiziert automatisch das Feld `_id` und den Shard-Schlüssel (nur in Shard-Sammlungen). Die API erzwingt automatisch die Eindeutigkeit des Felds `_id` durch einen Shardschlüssel. 
 
-Um zusätzliche Felder zu indizieren, verwenden Sie die MongoDB-Indexverwaltungsbefehle. Wie bei MongoDB indiziert die Azure Cosmos DB-API für MongoDB automatisch auch nur das Feld `_id`. Diese Standardindizierungsrichtlinie unterscheidet sich von der Azure Cosmos DB-SQL-API, die standardmäßig alle Felder indiziert.
-
-Um eine Abfrage zu sortieren, müssen Sie einen Index für die Felder erstellen, die beim Sortiervorgang verwendet werden.
+Die API für MongoDB verhält sich anders als die Azure Cosmos DB-SQL-API, die standardmäßig alle Felder indiziert.
 
 ### <a name="editing-indexing-policy"></a>Bearbeiten der Indizierungsrichtlinie
 
@@ -54,8 +52,10 @@ Sie können denselben Einzelfeldindex für `name` im Azure-Portal erstellen:
 Bei einer Abfrage werden mehrere Einzelfeldindizes verwendet, soweit verfügbar. Sie können pro Container bis zu 500 Einzelfeldindizes erstellen.
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>Zusammengesetzte Indizes (MongoDB-Serverversion 3.6 und höher)
+In der API für MongoDB sind zusammengesetzte Indizes **erforderlich**, wenn Ihre Abfrage mehrere Felder gleichzeitig sortieren kann. Für Abfragen mit mehreren Filtern, die nicht sortiert werden müssen, sollten Sie anstelle eines einzelnen zusammengesetzten Indexes mehrere Einzelfeldindizes erstellen. 
 
-Die Azure Cosmos DB-API für MongoDB unterstützt zusammengesetzte Indizes für Konten, die das Wire-Protokoll der Version 3.6 und 4.0 verwenden. Sie können bis zu acht Felder in einen zusammengesetzten Index einschließen. Anders als in MongoDB sollten Sie nur dann einen zusammengesetzten Index erstellen, wenn die Abfrage über mehrere Felder gleichzeitig effizient sortiert werden muss. Für Abfragen mit mehreren Filtern, die nicht sortiert werden müssen, sollten Sie anstelle eines einzelnen zusammengesetzten Indexes mehrere Einzelfeldindizes erstellen. 
+Ein zusammengesetzter Index oder ein einzelner Feldindex für jedes Feld im zusammengesetzten Index führt zu der gleichen Leistung beim Filtern in Abfragen.
+
 
 > [!NOTE]
 > Für geschachtelte Eigenschaften oder Arrays können Sie keine zusammengesetzten Indizes erstellen.

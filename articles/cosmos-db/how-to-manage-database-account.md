@@ -5,44 +5,32 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 09/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: 124c5fba529d39a675f92642413d4305c58debda
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: d6cf0b9ba4fe856a153abf004a81c250c59b2aa1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123101453"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618588"
 ---
-# <a name="manage-an-azure-cosmos-account"></a>Verwalten eines Azure Cosmos-Kontos
+# <a name="manage-an-azure-cosmos-account-using-the-azure-portal"></a>Erstellen eines Azure Cosmos DB-Kontos über das Azure-Portal
+
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Dieser Artikel beschreibt die Verwaltung verschiedener Aufgaben für ein Azure Cosmos-Konto mithilfe von Azure-Portal, Azure PowerShell, der Azure-Befehlszeilenschnittstelle und Azure Resource Manager-Vorlagen.
+In diesem Artikel wird beschrieben, wie mit dem Azure-Portal verschiedene Aufgaben in einem Azure Cosmos-Konto verwaltet werden. 
+
+> [!TIP]
+> Azure Cosmos DB kann auch mit anderen Azure-Verwaltungsclients verwaltet werden, einschließlich [Azure PowerShell](manage-with-powershell.md), [Azure CLI](sql/manage-with-cli.md), [Azure Resource Manager-Vorlagen](./manage-with-templates.md)und [Bicep](sql/manage-with-bicep.md).
 
 ## <a name="create-an-account"></a>Erstellen eines Kontos
 
-### <a name="azure-portal"></a><a id="create-database-account-via-portal"></a>Azure-Portal
-
 [!INCLUDE [cosmos-db-create-dbaccount](includes/cosmos-db-create-dbaccount.md)]
-
-### <a name="azure-cli"></a><a id="create-database-account-via-cli"></a>Azure-Befehlszeilenschnittstelle
-
-Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Kontos mit der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#create-an-azure-cosmos-db-account).
-
-### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure PowerShell
-
-Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Kontos mit PowerShell](manage-with-powershell.md#create-account).
-
-### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager-Vorlage
-
-Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Kontos mit Azure Resource Manager-Vorlagen](./manage-with-templates.md).
 
 ## <a name="addremove-regions-from-your-database-account"></a>Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto
 
 > [!TIP]
-> Wenn eine neue Region hinzugefügt wird, müssen alle Daten vollständig repliziert und in die neue Region committet werden, bevor die Region als verfügbar markiert wird. Wie lange dieser Vorgang dauert, hängt davon ab, wie viele Daten in dem Konto gespeichert sind.
-
-### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure-Portal
+> Wenn eine neue Region hinzugefügt wird, müssen alle Daten vollständig repliziert und in die neue Region committet werden, bevor die Region als verfügbar markiert wird. Wie lange dieser Vorgang dauert, hängt davon ab, wie viele Daten in dem Konto gespeichert werden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
@@ -60,95 +48,15 @@ Im Schreibmodus mit einer einzelnen Region kann die Schreibregion nicht entfernt
 
 Im Schreibmodus mit mehreren Regionen können Sie beliebige Regionen hinzufügen oder entfernen, solange noch mindestens eine Region vorhanden ist.
 
-### <a name="azure-cli"></a><a id="add-remove-regions-via-cli"></a>Azure-Befehlszeilenschnittstelle
-
-Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Regionen mit der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#add-or-remove-regions).
-
-### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure PowerShell
-
-Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Regionen mit PowerShell](manage-with-powershell.md#update-account).
-
 ## <a name="configure-multiple-write-regions"></a><a id="configure-multiple-write-regions"></a>Konfigurieren mehrerer Schreibregionen
-
-### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Azure-Portal
 
 Öffnen Sie die Registerkarte **Daten global replizieren**, und wählen Sie **Aktivieren** aus, um Schreibvorgänge für mehrere Regionen zu aktivieren. Nachdem Sie Schreibvorgänge für mehrere Regionen aktiviert haben, werden alle Leseregionen, die aktuell in Ihrem Konto konfiguriert sind, zu Lese- und Schreibregionen.
 
 :::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Screenshot eines Azure Cosmos-Kontos mit Schreibvorgängen in mehreren Regionen":::
 
-### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure-Befehlszeilenschnittstelle
-
-Weitere Informationen finden Sie unter [Aktivieren mehrerer Schreibregionen mit der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#enable-multiple-write-regions).
-
-### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
-
-Weitere Informationen finden Sie unter [Aktivieren mehrerer Schreibregionen mit PowerShell](manage-with-powershell.md#multi-region-writes).
-
-### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager-Vorlage
-
-Die Migration von einer einzelnen Schreibregion zu mehreren Schreibregionen kann für ein Konto durch Bereitstellen der Resource Manager-Vorlage, die zum Erstellen des Kontos verwendet wurde, und Festlegen von `enableMultipleWriteLocations: true` durchgeführt werden. Die folgende Azure Resource Manager-Vorlage ist eine absolut minimale Vorlage, die ein Azure Cosmos-Konto für die SQL-API mit zwei Region und mehreren aktivierten Schreibstandorten bereitstellt.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "name": {
-            "type": "String"
-        },
-        "location": {
-            "type": "String",
-            "defaultValue": "[resourceGroup().location]"
-        },
-        "primaryRegion":{
-            "type":"string",
-            "metadata": {
-                "description": "The primary replica region for the Cosmos DB account."
-            }
-        },
-        "secondaryRegion":{
-            "type":"string",
-            "metadata": {
-              "description": "The secondary replica region for the Cosmos DB account."
-          }
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.DocumentDb/databaseAccounts",
-            "kind": "GlobalDocumentDB",
-            "name": "[parameters('name')]",
-            "apiVersion": "2021-03-15",
-            "location": "[parameters('location')]",
-            "tags": {},
-            "properties": {
-                "databaseAccountOfferType": "Standard",
-                "consistencyPolicy": { "defaultConsistencyLevel": "Session" },
-                "locations":
-                [
-                    {
-                        "locationName": "[parameters('primaryRegion')]",
-                        "failoverPriority": 0,
-                        "isZoneRedundant": false
-                    },
-                    {
-                        "locationName": "[parameters('secondaryRegion')]",
-                        "failoverPriority": 1,
-                        "isZoneRedundant": false
-                    }
-                ],
-                "enableMultipleWriteLocations": true
-            }
-        }
-    ]
-}
-```
-
 ## <a name="enable-automatic-failover-for-your-azure-cosmos-account"></a><a id="automatic-failover"></a>Aktivieren des automatischen Failovers für Ihr Azure Cosmos-Konto
 
 Die Option für automatisches Failover ermöglicht Azure Cosmos DB das Failover auf die Region mit der höchsten Failoverpriorität ohne Benutzereingriff, sollte bei einer Region die Nichtverfügbarkeit eintreten. Wenn automatisches Failover aktiviert ist, kann die Regionspriorität geändert werden. Das Konto muss über zwei oder mehr Regionen verfügen, um automatisches Failover zu aktivieren.
-
-### <a name="azure-portal"></a><a id="enable-automatic-failover-via-portal"></a>Azure-Portal
 
 1. Öffnen Sie in Ihrem Azure Cosmos-Konto den Bereich **Daten global replizieren**.
 
@@ -162,22 +70,12 @@ Die Option für automatisches Failover ermöglicht Azure Cosmos DB das Failover 
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Portalmenü für automatisches Failover":::
 
-### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure-Befehlszeilenschnittstelle
-
-Weitere Informationen finden Sie unter [Aktivieren automatischer Failover mit der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#enable-automatic-failover).
-
-### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
-
-Weitere Informationen finden Sie unter [Aktivieren des automatischen Failovers mit PowerShell](manage-with-powershell.md#enable-automatic-failover).
-
 ## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Festlegen von Failoverprioritäten für Ihr Azure Cosmos-Konto
 
 Nachdem ein Cosmos-Konto für automatisches Failover konfiguriert wurde, kann die Failoverpriorität für Regionen geändert werden.
 
 > [!IMPORTANT]
 > Die Schreibregion (Failoverpriorität null) kann nicht geändert werden, wenn das Konto für automatisches Failover konfiguriert ist. Um die Schreibregion zu ändern, müssen Sie das automatische Failover deaktivieren und ein manuelles Failover ausführen.
-
-### <a name="azure-portal"></a><a id="set-failover-priorities-via-portal"></a>Azure-Portal
 
 1. Öffnen Sie in Ihrem Azure Cosmos-Konto den Bereich **Daten global replizieren**.
 
@@ -193,25 +91,10 @@ Nachdem ein Cosmos-Konto für automatisches Failover konfiguriert wurde, kann di
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Portalmenü für automatisches Failover":::
 
-### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure-Befehlszeilenschnittstelle
-
-Weitere Informationen finden Sie unter [Festlegen der Failoverpriorität mit der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#set-failover-priority).
-
-### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure PowerShell
-
-Weitere Informationen finden Sie unter [Festlegen der Failoverpriorität mit PowerShell](manage-with-powershell.md#modify-failover-priority).
-
 ## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Ausführen eines manuellen Failovers für ein Azure Cosmos-Konto
 
 > [!IMPORTANT]
 > Damit dieser Vorgang erfolgreich ausgeführt wird, muss das Azure Cosmos-Konto für manuelles Failover konfiguriert sein.
-
-Der Prozess zum Ausführen eines manuellen Failovers beinhaltet das Ändern der Schreibregion des Kontos (Failoverpriorität = 0) in eine andere für das Konto konfigurierte Region.
-
-> [!NOTE]
-> Für Konten mit mehreren Schreibregionen kann kein manuelles Failover ausgeführt werden. Bei Anwendungen, die das Azure Cosmos-SDK verwenden, erkennt das SDK die eingetretene Nichtverfügbarkeit einer Region und leitet dann automatisch zur nächstgelegenen Region um.
-
-### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure-Portal
 
 1. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie das Menü **Daten global replizieren**.
 
@@ -225,17 +108,11 @@ Der Prozess zum Ausführen eines manuellen Failovers beinhaltet das Ändern der 
 
    :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Portalmenü für manuelles Failover":::
 
-### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure-Befehlszeilenschnittstelle
-
-Weitere Informationen finden Sie unter [Auslösen eines manuellen Failovers mit der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md#trigger-manual-failover).
-
-### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure PowerShell
-
-Weitere Informationen finden Sie unter [Auslösen eines manuellen Failovers mit PowerShell](manage-with-powershell.md#trigger-manual-failover).
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen und Beispiele zum Verwalten von Azure-Cosmos-Konto sowie Datenbank und Containern finden Sie in den folgenden Artikeln:
 
 * [Verwalten von Azure Cosmos DB mithilfe von Azure PowerShell](manage-with-powershell.md)
 * [Verwalten von Azure Cosmos DB mithilfe der Azure-Befehlszeilenschnittstelle](sql/manage-with-cli.md)
+* [Erstellen und Verwalten von Azure Cosmos DB mithilfe von Azure Resource Manager-Vorlagen](./manage-with-templates.md)
+* [Verwalten von Azure Cosmos DB mithilfe von Bicep](sql/manage-with-bicep.md)

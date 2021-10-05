@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.author: esarroyo
 author: StefArroyo
-ms.date: 04/09/2020
-ms.openlocfilehash: 35968a21f0d3143b089cb8418f614e2c776da8cb
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.date: 09/16/2021
+ms.openlocfilehash: 8e592e40b8885158c0b6700b0014a5982fe2d352
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113359639"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548274"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>Überwachen der Nutzung des Durchsatzes oder der Anforderungseinheiten für einen Vorgang in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,11 +43,11 @@ Falls Sie merken, dass für bestimmte Abfragen mehr Anforderungseinheiten verbra
 
 1. Klicken Sie im Bereich **Metriken** auf **Ressource auswählen**. Wählen Sie dann das erforderliche **Abonnement** und die **Ressourcengruppe** aus. Wählen Sie unter **Ressourcentyp** die Option **Azure Cosmos DB-Konten** aus. Wählen Sie dann eins der vorhandenen Azure Cosmos-Konten und anschließend **Anwenden** aus.
 
-   :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Auswählen des Azure Cosmos DB-Kontos zum Anzeigen von Metriken":::
+   :::image type="content" source="./media/monitor-account-key-updates/select-account-scope.png" alt-text="Auswählen des Kontobereichs zum Anzeigen von Metriken" border="true":::
 
 1. Wählen Sie als Nächstes in der Liste mit den verfügbaren Metriken die Metrik **Anforderungseinheiten gesamt** aus. Ausführliche Informationen zu allen verfügbaren Metriken in dieser Liste finden Sie im Artikel [Metriken nach Kategorie](monitor-cosmos-db-reference.md). In diesem Beispiel wählen Sie **Anforderungseinheiten gesamt** und als Aggregationswert **Mittelw.** aus. Zusätzlich zu diesen Angaben können Sie auch **Zeitbereich** und **Zeitgranularität** für die Metriken auswählen. Sie können Metriken maximal für die letzten 30 Tage anzeigen.  Nach Anwendung des Filters wird ein darauf basierendes Diagramm angezeigt. Sie sehen die durchschnittliche Anzahl der pro Minute verbrauchten Anforderungseinheiten für den ausgewählten Zeitraum.  
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="Auswählen einer Metrik über das Azure-Portal":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-metric.png" alt-text="Auswählen einer Metrik über das Azure-Portal" border="true":::
 
 ## <a name="filters-for-request-unit-usage"></a>Filter für die Nutzung von Anforderungseinheiten
 
@@ -59,7 +59,7 @@ Wählen Sie zum Abrufen der Nutzung von Anforderungseinheiten für die einzelnen
 
 Wenn Sie die Nutzung der Anforderungseinheiten nach Sammlung anzeigen möchten, wählen Sie die Option **Teilung anwenden** und den Namen der Sammlung als Filter aus. Im Dashboard werden ein Chat und einige Sammlungen angezeigt (siehe Abbildung unten). Sie können dann den Namen einer Sammlung auswählen, um weitere Details dazu anzuzeigen:
 
-   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Cosmos DB-Anforderungseinheiten für alle Vorgänge nach Sammlung in Azure Monitor":::
+   :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Cosmos DB-Anforderungseinheiten für alle Vorgänge nach Sammlung in Azure Monitor" border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

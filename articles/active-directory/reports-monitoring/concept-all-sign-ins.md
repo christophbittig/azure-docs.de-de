@@ -17,12 +17,12 @@ ms.date: 06/23/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbd65204534e978446109c99ca7286c0af00d68
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 9455883bea37602e572a538862eaf5de9c17bbbc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580384"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669415"
 ---
 # <a name="sign-in-logs-in-azure-active-directory---preview"></a>Anmeldeprotokolle in Azure Active Directory: Vorschau
 
@@ -177,7 +177,7 @@ Nicht interaktive Benutzeranmeldungen sind Anmeldungen, die von einer Client-App
 
 - Ein Client verwendet einen OAuth 2.0-Autorisierungscode zum Abrufen eines Zugriffstokens und Aktualisierungstokens.
 
-- Ein Benutzer führt einmaliges Anmelden (Single Sign-On, SSO) für eine Web- oder Windows-App auf einem in Azure AD eingebundenen PC aus.
+- Ein Benutzer führt einmaliges Anmelden (Single Sign-On, SSO) bei einer Web- oder Windows-App auf einem in Azure AD beigetretenen PC aus (ohne dass ein Authentifizierungsfaktor bereitgestellt oder mit einer Azure AD-Eingabeaufforderung interagiert wird).
 
 - Ein Benutzer meldet sich bei einer zweiten Microsoft Office-App an, während er auf einem mobilen Gerät mit FOCI (Family of Client IDs) an einer Sitzung teilnimmt.
 

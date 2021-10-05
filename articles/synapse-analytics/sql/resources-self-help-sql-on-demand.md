@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 8/31/2021
+ms.date: 9/23/2021
 ms.author: stefanazaric
-ms.reviewer: jrasnick
-ms.openlocfilehash: 906f6a7a8e64c255c8b87219ef0549a553821783
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.reviewer: jrasnick, wiassaf
+ms.openlocfilehash: 35803ad7d63e107f71e71c6ce8292c5608740eec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536479"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555252"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Selbsthilfe für serverlose SQL-Pools
 
@@ -53,7 +53,7 @@ Anstatt die Rolle „Mitwirkender an Storage-Blobdaten“ zu gewähren, können 
 
 > [!NOTE]
 > Die Ausführungsberechtigung auf der Containerebene muss innerhalb von Azure Data Lake Gen2 festgelegt werden.
-> Berechtigungen für den Ordner können in Synapse festgelegt werden. 
+> Die Berechtigungen für den Ordner können in Azure Synapse festgelegt werden. 
 
 
 Wenn Sie in diesem Beispiel „data2.csv“ abfragen möchten, werden die folgenden Berechtigungen benötigt: 
@@ -63,7 +63,7 @@ Wenn Sie in diesem Beispiel „data2.csv“ abfragen möchten, werden die folgen
 
 ![Zeichnung mit Berechtigungsstruktur für Data Lake](./media/resources-self-help-sql-on-demand/folder-structure-data-lake.png)
 
-* Melden Sie sich bei Synapse als Administratorbenutzer an, der über die vollständigen Berechtigungen für die Daten verfügt, auf die Sie zugreifen möchten.
+* Melden Sie sich bei Azure Synapse mit einem Admin-Benutzer an, der volle Berechtigungen für die Daten hat, auf die Sie zugreifen möchten.
 
 * Klicken Sie im Datenbereich mit der rechten Maustaste auf die Datei, und wählen Sie „ZUGRIFF VERWALTEN“ aus.
 
@@ -75,7 +75,7 @@ Wenn Sie in diesem Beispiel „data2.csv“ abfragen möchten, werden die folgen
 ![Screenshot: Benutzeroberfläche zum Erteilen von Leseberechtigungen](./media/resources-self-help-sql-on-demand/grant-permission.png)
 
 > [!NOTE]
-> Für Gastbenutzer muss hierfür direkt der Azure Data Lake-Dienst verwendet werden, da die direkte Nutzung von Synapse nicht möglich ist. 
+> Bei Gastbenutzern muss dies direkt mit dem Azure Data Lake Dienst erfolgen, da dies nicht direkt über Azure Synapse möglich ist. 
 
 ### <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>Abfrage nicht erfolgreich, da sie aufgrund von aktuellen Ressourceneinschränkungen nicht ausgeführt werden kann 
 
@@ -100,7 +100,7 @@ Wenden Sie die gleichen Abhilfemaßnahmen und bewährten Methoden an, bevor Sie 
 Das Auftreten einer Fehlermeldung der Art „Fehler beim Verarbeiten einer externen Datei: Maximale Fehleranzahl erreicht“ bedeutet, dass ein Konflikt in Bezug auf einen angegebenen Spaltentyp und die zu ladenden Daten besteht. Um weitere Informationen zum Fehler und zu den relevanten Zeilen und Spalten zu erhalten, sollten Sie die Parserversion von „2.0“ in „1.0“ ändern. 
 
 #### <a name="example"></a>Beispiel
-Wenn Sie die Datei „names.csv“ mit dieser Abfrage 1 abfragen möchten, wird von Synapse SQL (serverlos) dieser Fehler zurückgegeben. 
+Wenn Sie die Datei „names.csv“ mit dieser Abfrage 1 abfragen möchten, wird Azure Synapse SQL serverlos einen solchen Fehler zurückgegeben. 
 
 names.csv
 ```csv
@@ -133,11 +133,11 @@ FROM
 ```
 Ursachen:
 
-```Error handling external file: ‘Max error count reached’. File/External table name: [filepath].```
+`Error handling external file: ‘Max error count reached’. File/External table name: [filepath].`
 
 Nachdem die Parserversion von Version 2.0 in Version 1.0 geändert wurde, dienen die Fehlermeldungen als Hilfe beim Identifizieren des Problems. Die neue Fehlermeldung lautet jetzt wie folgt: 
 
-```Bulk load data conversion error (truncation) for row 1, column 2 (Text) in data file [filepath]```
+`Bulk load data conversion error (truncation) for row 1, column 2 (Text) in data file [filepath]`
 
 Die Kürzung ist ein Hinweis darauf, dass der Spaltentyp zu klein für unsere Daten ist. Der längste Vorname in der Datei „names.csv“ hat sieben Zeichen. Aus diesem Grund sollte mindestens „VARCHAR(7)“ als Datentyp verwendet werden. Der Fehler wird durch diese Codezeile verursacht: 
 
@@ -171,7 +171,7 @@ Eine Fehlermeldung der Art „Datenkonvertierungsfehler (Typkonflikte oder ungü
 Falls Sie beispielsweise erwarten, dass Ihre Daten nur ganze Zahlen (Integer) enthalten, während Zeile „n“ aber ggf. eine Zeichenfolge enthält, erhalten Sie die folgende Fehlermeldung. Untersuchen Sie die Datei und die entsprechenden Datentypen, die Sie ausgewählt haben, um dieses Problem zu beheben. Überprüfen Sie auch, ob Ihre Einstellungen für Zeilentrennzeichen und Feldabschlusszeichen korrekt sind. Das folgende Beispiel zeigt, wie Sie die Überprüfung mit „VARCHAR“ als Spaltentyp durchführen können. Weitere Informationen zu Feldabschlusszeichen und Zeilentrennzeichen und zum Versehen von Anführungszeichen mit Escapezeichen finden Sie [hier](query-single-csv-file.md). 
 
 #### <a name="example"></a>Beispiel 
-Wenn Sie die Datei „names.csv“ mit dieser Abfrage 1 abfragen möchten, wird von Synapse SQL (serverlos) dieser Fehler zurückgegeben. 
+Wenn Sie die Datei „names.csv“ mit dieser Abfrage 1 abfragen möchten, wird Azure Synapse SQL serverlos einen solchen Fehler zurückgegeben. 
 
 names.csv
 ```csv
@@ -203,7 +203,7 @@ FROM
     AS [result]
 ```
 
-Verursacht den folgenden Fehler: ```Bulk load data conversion error (type mismatch or invalid character for the specified codepage) for row 6, column 1 (ID) in data file [filepath]```
+Verursacht den folgenden Fehler: `Bulk load data conversion error (type mismatch or invalid character for the specified codepage) for row 6, column 1 (ID) in data file [filepath]`
 
 Für die Behandlung dieses Problems ist es erforderlich, die Daten zu durchsuchen und eine fundierte Entscheidung zu treffen. Damit die Daten, die dieses Problem verursachen, untersucht werden können, muss zunächst der Datentyp geändert werden. Anstatt die Spalte „ID“ mit dem Datentyp „SMALLINT“ abzufragen, wird nun „VARCHAR(100)“ verwendet, um dieses Problem zu analysieren. Mit der geringfügig geänderten Abfrage 2 können die Daten jetzt verarbeitet werden, und die Liste mit den Namen wird angezeigt. 
 
@@ -247,7 +247,7 @@ Es sieht so aus, als ob die Daten unerwartete Werte für „ID“ in der fünfte
 Wenn für Ihre Abfrage kein Fehler auftritt, Sie aber feststellen, dass die Ergebnistabelle nicht wie erwartet geladen wird, besteht die Ursache wahrscheinlich darin, dass das Zeilentrennzeichen oder Feldabschlusszeichen falsch ausgewählt wurde. Um dieses Problem zu beheben, müssen Sie sich die Daten noch einmal ansehen und die entsprechenden Einstellungen ändern. Da eine Ergebnistabelle angezeigt wird, ist das Debuggen dieser Abfrage einfach (siehe Beispiel unten). 
 
 #### <a name="example"></a>Beispiel
-Wenn Sie die Datei „names.csv“ mit dieser Abfrage 1 abfragen möchten, wird von Synapse SQL (serverlos) eine Ergebnistabelle zurückgegeben, die ungewöhnlich aussieht. 
+Wenn Sie die Datei „names.csv“ mit dieser Abfrage 1 abfragen möchten, wird Azure Synapse SQL serverlos eine Ergebnistabelle zurückgegeben, die ungewöhnlich aussieht. 
 
 names.csv
 ```csv
@@ -340,7 +340,7 @@ Wenn für Ihre Abfrage eine Fehlermeldung vom Typ „Spalte [Spaltenname] vom Ty
 Untersuchen Sie die Datei und die entsprechenden Datentypen, die Sie ausgewählt haben, um dieses Problem zu beheben. Als Hilfe beim Auswählen eines SQL-Datentyps kann Ihnen [diese Zuordnungstabelle](develop-openrowset.md#type-mapping-for-parquet) als Hilfe dienen. Hinweis zur bewährten Methode: Geben Sie die Zuordnung nur für Spalten an, für die andernfalls die Auflösung in den Datentyp „VARCHAR“ erfolgen würde. Sie können die Leistung von Abfragen verbessern, indem Sie die Verwendung von „VARCHAR“ nach Möglichkeit vermeiden. 
 
 #### <a name="example"></a>Beispiel
-Wenn Sie die Datei „taxi-data.parquet“ mit dieser Abfrage 1 abfragen möchten, wird von Synapse SQL (serverlos) dieser Fehler zurückgegeben.
+Wenn Sie die Datei „taxi-data.parquet“ mit dieser Abfrage 1 abfragen möchten, wird Azure Synapse SQL serverlos einen solchen Fehler zurückgegeben.
 
 taxi-data.parquet:
 
@@ -369,9 +369,10 @@ FROM
 
     AS [result]
 ```
+
 Verursacht den folgenden Fehler: 
 
-```Column 'SumTripDistance' of type 'INT' is not compatible with external data type 'Parquet physical type: DOUBLE', please try with 'FLOAT'. File/External table name: '<filepath>taxi-data.parquet'.```
+`Column 'SumTripDistance' of type 'INT' is not compatible with external data type 'Parquet physical type: DOUBLE', please try with 'FLOAT'. File/External table name: '<filepath>taxi-data.parquet'.`
 
 Diese Fehlermeldung ist ein Hinweis darauf, dass Datentypen nicht kompatibel sind, und sie enthält bereits den Vorschlag, FLOAT anstelle von INT zu verwenden. Der Fehler wird daher durch diese Codezeile verursacht: 
 
@@ -480,7 +481,7 @@ Die [Sortierung Latin1_General_100_BIN2_UTF8](best-practices-serverless-sql-pool
 
 ### <a name="query-returns-null-values"></a>Abfrage gibt `NULL`-Werte zurück
 
-Synapse SQL gibt in den folgenden Fällen `NULL` anstelle der Werte zurück, die im Transaktionsspeicher angezeigt werden:
+Azure Synapse SQL gibt `NULL` anstelle der Werte zurück, die im Transaktionsspeicher angezeigt werden, in den folgenden Fällen:
 - Zwischen dem Transaktions- und Analysespeicher kommt es zu einer Synchronisierungsverzögerung. Der Wert, den Sie in den Cosmos DB-Transaktionsspeicher eingegeben haben, wird unter Umständen erst nach zwei bis drei Minuten im Analysespeicher angezeigt.
 - Möglicherweise falscher Spaltenname oder Pfadausdruck in der `WITH`-Klausel. Der Spaltenname (oder Pfadausdruck nach dem Spaltentyp) in der `WITH`-Klausel muss mit den Eigenschaftennamen in der Cosmos DB-Sammlung übereinstimmen. Beim Vergleich wird die Groß-/Kleinschreibung beachtet (z. B. sind `productCode` und `ProductCode` unterschiedliche Eigenschaften). Stellen Sie sicher, dass Ihre Spaltennamen genau mit den Cosmos DB-Eigenschaftennamen übereinstimmen.
 - Die Eigenschaft wird unter Umständen nicht in den Analysespeicher verschoben, da sie gegen einige [Schemaeinschränkungen](../../cosmos-db/analytical-store-introduction.md#schema-constraints) verstößt, z. B. aufgrund von mehr als 1.000 Eigenschaften oder mehr als 127 Schachtelungsebenen.
@@ -505,14 +506,12 @@ Die Delta Lake-Unterstützung befindet sich für serverlose SQL-Pools derzeit in
 - Stellen Sie sicher, dass Sie auf den Delta Lake-Stammordner in der [OPENROWSET](./develop-openrowset.md)-Funktion oder an einem externen Tabellenspeicherort verweisen.
   - Der Stammordner muss über einen Unterordner mit dem Namen `_delta_log` verfügen. Für die Abfrage tritt ein Fehler auf, wenn der Ordner `_delta_log` nicht vorhanden ist. Falls dieser Ordner nicht angezeigt wird, verweisen Sie auf einfache Parquet-Dateien, die über Apache Spark-Pools [für Delta Lake konvertiert](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#convert-parquet-to-delta) werden müssen.
   - Geben Sie keine Platzhalter an, um das Partitionsschema zu beschreiben. Die Delta Lake-Partitionen werden von der Delta Lake-Abfrage automatisch identifiziert. 
-- Delta Lake-Tabellen, die in den Apache Spark-Pools erstellt wurden, sind im serverlosen SQL-Pool nicht automatisch verfügbar. Um solche Delta Lake-Tabellen mit T-SQL Sprache abzufragen, führen Sie die Anweisung [CREATE EXTERNAL TABLE](https://docs.microsoft.com/azure/synapse-analytics/sql/create-use-external-tables#delta-lake-external-table) aus, und geben Sie als Format „Delta“ an.
+- Delta Lake-Tabellen, die in den Apache Spark-Pools erstellt wurden, sind im serverlosen SQL-Pool nicht automatisch verfügbar. Um solche Delta Lake-Tabellen mit T-SQL Sprache abzufragen, führen Sie die Anweisung [CREATE EXTERNAL TABLE](./create-use-external-tables.md#delta-lake-external-table) aus, und geben Sie als Format „Delta“ an.
 - Externe Tabellen unterstützen keine Partitionierung. Verwenden Sie [partitionierte Sichten](create-use-views.md#delta-lake-partitioned-views) im Delta Lake-Ordner, um die Partitionsentfernung zu nutzen. Weiter unten finden Sie bekannte Probleme und Problemumgehungen.
 - Serverlose SQL-Pools unterstützen keine Zeitreiseabfragen. Sie können auf der [Azure-Feedbackwebsite](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake) für dieses Feature abstimmen. Verwenden Sie Apache Spark-Pools in Azure Synapse Analytics, um [Verlaufsdaten zu lesen](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel).
 - Serverlose SQL-Pools unterstützen keine Aktualisierung von Delta Lake-Dateien. Sie können einen serverlosen SQL-Pool verwenden, um die neueste Version von Delta Lake abzufragen. Verwenden Sie Apache Spark-Pools in Azure Synapse Analytics, um [Delta Lake zu aktualisieren](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data).
-- Serverlose SQL-Pools in Synapse Analytics unterstützen keine Datasets mit dem [BLOOM-Filter](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters).
+- Serverlose SQL-Pools in Azure Synapse Analytics unterstützen keine Datasets mit dem [BLOOM-Filter](/azure/databricks/delta/optimizations/bloom-filters).
 - Delta Lake-Unterstützung ist in dedizierten SQL-Pools nicht verfügbar. Stellen Sie sicher, dass Sie serverlose Pools verwenden, um Delta Lake-Dateien abzufragen.
-
-Auf der [Azure Synapse-Website für Feedback](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=171048) können Sie Vorschläge für Ideen und Verbesserungen einreichen.
 
 ### <a name="content-of-directory-on-path-cannot-be-listed"></a>Inhalt eines Verzeichnisses im Pfad kann nicht aufgelistet werden
 
@@ -605,7 +604,7 @@ Msg 16513, Level 16, State 0, Line 1
 Error reading external metadata.
 ```
 Stellen Sie zunächst sicher, dass Ihr Delta Lake-DataSet nicht beschädigt ist.
-- Überprüfen Sie, ob Sie den Inhalt des Delta Lake-Ordners mithilfe des Apache Spark-Pools im Synapse- oder Databricks-Cluster lesen können. Auf diese Weise stellen Sie sicher, dass die `_delta_log` Datei nicht beschädigt ist.
+- Überprüfen Sie, ob Sie den Inhalt des Delta Lake-Ordners mit dem Apache Spark-Pool in Azure Synapse oder dem Databricks-Cluster lesen können. Auf diese Weise stellen Sie sicher, dass die `_delta_log` Datei nicht beschädigt ist.
 - Stellen Sie sicher, dass Sie den Inhalt von Datendateien lesen können, indem Sie am Ende des URI-Pfads `FORMAT='PARQUET'` angeben und einen rekursiven Platzhalter `/**` verwenden. Wenn Sie alle Parquet-Dateien lesen können, liegt das Problem im `_delta_log` Transaktionsprotokollordner.
 
 Einige häufige Fehler und Problemumgehungen:
@@ -632,11 +631,42 @@ Das Azure-Team überprüft den Inhalt der `delta_log` Datei und stellt weitere I
 ### <a name="resolving-delta-log-on-path--failed-with-error-cannot-parse-json-object-from-log-file"></a>Fehler beim Auflösen der Deltaprotokolle im Pfad ...: Das JSON-Objekt aus der Protokolldatei kann nicht analysiert werden.
 
 Dieser Fehler kann aufgrund der folgenden Ursachen/nicht unterstützten Features auftreten:
-- [BLOOM-Filter](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters) im Delta Lake-Dataset. Serverlose SQL-Pools in Synapse Analytics unterstützen keine Datasets mit dem [BLOOM-Filter](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters).
+- [BLOOM-Filter](/azure/databricks/delta/optimizations/bloom-filters) im Delta Lake-Dataset. Serverlose SQL-Pools in Azure Synapse Analytics unterstützen keine Datasets mit dem [BLOOM-Filter](/azure/databricks/delta/optimizations/bloom-filters).
 - Spalte „float“ im Delta Lake-Dataset mit Statistiken.
 - An einer „float“-Spalte partitioniertes Dataset.
 
-**Problemumgehung**: [Entfernen Sie den BLOOM-Filter](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters#drop-a-bloom-filter-index), wenn Sie den Delta Lake-Ordner mithilfe des serverlosen SQL-Pools lesen möchten. Wenn Sie über `float`-Spalten verfügen, die das Problem verursachen, müssten Sie das Dataset neu partitionieren oder die Statistiken entfernen.
+**Problemumgehung**: [Entfernen Sie den BLOOM-Filter](/azure/databricks/delta/optimizations/bloom-filters#drop-a-bloom-filter-index), wenn Sie den Delta Lake-Ordner mithilfe des serverlosen SQL-Pools lesen möchten. Wenn Sie über `float`-Spalten verfügen, die das Problem verursachen, müssten Sie das Dataset neu partitionieren oder die Statistiken entfernen.
+
+## <a name="performance"></a>Leistung
+
+Der serverlose SQL-Pool weist den Abfragen die Ressourcen auf der Grundlage der Größe des Datensatzes und der Komplexität der Abfrage zu. Es ist nicht möglich, die für die Abfragen bereitgestellten Ressourcen zu beeinflussen oder zu begrenzen. Es gibt einige Fälle, in denen Sie unerwartete Leistungseinbußen bei Abfragen feststellen und die Ursachen dafür identifizieren können.
+
+### <a name="query-duration-is-very-long"></a>Die Abfragezeit ist sehr lang 
+
+Wenn Sie Synapse Studio verwenden, versuchen Sie, einen Desktop-Client wie SQL Server Management Studio oder Azure Data Studio zu verwenden. Synapse Studio ist ein Web-Client, der über das HTTP-Protokoll mit dem serverlosen Pool verbunden ist, was im Allgemeinen langsamer ist als die nativen SQL-Verbindungen, die in SQL Server Management Studio oder Azure Data Studio verwendet werden.
+Wenn Sie Abfragen mit einer Abfragedauer von mehr als 30 Minuten haben, bedeutet dies, dass die Rückgabe der Ergebnisse an den Client langsam ist. Der serverlose SQL-Pool hat ein Ausführungslimit von 30 Minuten, und jede zusätzliche Zeit wird für das Ergebnis-Streaming verwendet.
+-   Stellen Sie sicher, dass die Client-Anwendungen mit dem Endpunkt des serverlosen SQL-Pools verbunden sind. Die Ausführung einer Abfrage über die Region hinweg kann zusätzliche Wartezeit und langsames Streaming der Ergebnismenge verursachen.
+-   Stellen Sie sicher, dass Sie keine Netzprobleme haben, die ein langsames Streaming der Ergebnismenge verursachen können 
+-   Vergewissern Sie sich, dass die Client-Anwendung über genügend Ressourcen verfügt (z. B. keine 100%ige CPU-Auslastung). Siehe die bewährten Praktiken für die [Zusammenfassung von Ressourcen](best-practices-serverless-sql-pool.md#client-applications-and-network-connections).
+
+### <a name="high-variations-in-query-durations"></a>Starke Schwankungen in der Abfragedauer
+
+Wenn Sie dieselbe Abfrage ausführen und Schwankungen in der Abfragedauer beobachten, kann dies mehrere Ursachen haben:  
+- Prüfen Sie, ob es sich um die erste Ausführung einer Abfrage handelt. Bei der ersten Ausführung einer Abfrage werden die für die Erstellung eines Plans erforderlichen Statistiken gesammelt. Die Statistiken werden durch das Scannen der zugrunde liegenden Dateien gesammelt und können die Abfragedauer erhöhen. In Synapse Studio sehen Sie in der Liste der SQL-Anforderungen zusätzliche Abfragen zur „Erstellung globaler Statistiken“, die vor Ihrer Abfrage ausgeführt werden.
+- Die Statistiken können nach einiger Zeit ablaufen, so dass Sie in regelmäßigen Abständen eine Beeinträchtigung der Leistung feststellen können, da der serverlose Pool die Statistiken scannen und neu erstellen muss. Vielleicht bemerken Sie zusätzliche Abfragen zur „Erstellung globaler Statistiken" in der Liste der SQL-Anforderungen, die vor Ihrer Abfrage ausgeführt werden.
+- Prüfen Sie, ob es eine zusätzliche Arbeitslast gibt, die auf demselben Endpunkt ausgeführt wird, wenn Sie die Abfrage mit der längeren Dauer ausführen. Der serverlose SQL-Endpunkt verteilt die Ressourcen gleichmäßig auf alle parallel ausgeführten Abfragen, und die Abfrage wird möglicherweise verzögert.
+
+## <a name="connections"></a>Verbindungen
+
+### <a name="sql-on-demand-is-currently-unavailable"></a>SQL On-Demand ist derzeit nicht verfügbar
+
+Der serverlose SQL-Pool Endpunkt wird automatisch deaktiviert, wenn er nicht benutzt wird. Der Endpunkt wird automatisch aktiviert, wenn die nächste SQL Anforderung von einem Clienten empfangen wird. In einigen Fällen kann es vorkommen, dass der Endpunkt bei der Ausführung der ersten Abfrage nicht richtig startet. In den meisten Fällen handelt es sich dabei um einen vorübergehenden Fehler. Wenn Sie die Abfrage erneut versuchen, wird die Instanz aktiviert.
+
+Wenn Sie diese Meldung über einen längeren Zeitraum sehen, reichen Sie ein Supportticket über das Azure-Portal ein.
+
+### <a name="cannot-connect-from-synapse-studio"></a>Es ist nicht möglich, eine Verbindung von Synapse Studio herzustellen
+
+Siehe den [Abschnitt Synapse Studio](#synapse-studio).
 
 ## <a name="security"></a>Sicherheit
 
@@ -645,7 +675,7 @@ Wenn Sie eine Rollenzuweisung für den Dienstprinzipalbezeichner/die AAD-App mit
 ```
 Login error: Login failed for user '<token-identified principal>'.
 ```
-Für Dienstprinzipale sollte die Anmeldung mit der Anwendungs-ID als SID (nicht mit der Objekt-ID) erstellt werden. Es gibt eine bekannte Einschränkung für Dienstprinzipale, die verhindert, dass der Synapse-Dienst die Anwendungs-ID beim Erstellen einer Rollenzuweisung für einen anderen SPI oder eine andere App aus Azure AD Graph abruft.  
+Für Dienstprinzipale sollte die Anmeldung mit der Anwendungs-ID als SID (nicht mit der Objekt-ID) erstellt werden. Es gibt eine bekannte Einschränkung für Dienstprinzipals, die verhindert, dass der Azure Synapse-Dienst die Anwendungs-ID aus dem Azure AD Graph abruft, wenn er eine Rollenzuweisung für eine andere SPI/App erstellt.  
 
 #### <a name="solution-1"></a>Lösung 1
 Navigieren Sie zum „Azure-Portal > Synapse Studio > Verwalten > Zugriffssteuerung“, und fügen Sie „Synapse-Administrator“ oder „Synapse SQL-Administrator“ für den gewünschten Dienstprinzipal manuell hinzu.

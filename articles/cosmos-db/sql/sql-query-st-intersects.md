@@ -5,15 +5,15 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 09/21/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8529eae920fdef90c5dd36fc39f0e99635478adf
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: ac3ba6ec00dc617d434026a6693c6c4554421140
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122356303"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647758"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -57,6 +57,9 @@ WHERE ST_INTERSECTS(a.location, {
 ## <a name="remarks"></a>Bemerkungen
 
 Diese Systemfunktion profitiert von einem [räumlichen Index](../index-policy.md#spatial-indexes) (außer bei Abfragen mit Aggregaten).
+
+> [!NOTE]
+> Die GeoJSON-Spezifikation erfordert, dass die Punkte innerhalb eines Polygons gegen den Uhrzeigersinn angegeben werden. Ein Polygon, das im Uhrzeigersinn angegeben wird, stellt die Umkehrung der darin enthaltenen Region dar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

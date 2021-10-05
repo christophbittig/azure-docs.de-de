@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ea9f57364d6b7cca884f87c36623a73bbcb37ae6
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 5b70d59f83280eda416736e9fd02a2ff417dcc34
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186873"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128556344"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Importieren von Updates in Device Update für IoT Hub – Schema und weitere Informationen
 Wenn Sie ein Update in Device Update für IoT Hub importieren möchten, müssen Sie zuerst die [Konzepte](import-concepts.md) und die [Schrittanleitung](import-update.md) lesen. Wenn Sie an den Details des Schemas interessiert sind, das beim Erstellen eines Importmanifests verwendet wird, sowie mehr zu verknüpften Objekten erfahren möchten, informieren Sie sich weiter unten.
@@ -41,7 +41,7 @@ Wenn Sie ein Update in Device Update für IoT Hub importieren möchten, müssen 
 | Name | type | BESCHREIBUNG | Beschränkungen |
 | --------- | --------- | --------- | --------- |
 | Dateiname | Zeichenfolge | Name der Datei | Darf nicht mehr als 255 Zeichen umfassen. Muss innerhalb eines Updates eindeutig sein |
-| SizeInBytes | Int64 | Größe der Datei in Bytes. | Maximal 800 MB pro einzelner Datei oder 800 MB zusammen pro Update |
+| SizeInBytes | Int64 | Größe der Datei in Bytes. | Maximal 2 MB pro einzelner Datei oder 2 MB zusammen pro Update |
 | Hashes | `Hashes`-Objekt | JSON-Objekt mit Hash(es) der Datei |
 
 ## <a name="compatibilityinfo-object"></a>CompatibilityInfo-Objekt

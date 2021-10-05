@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: d84bc4977593a379fda817db67aaccd71793a787
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 235fa649245e973e934e0930b4490f4e4701c94b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752313"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571500"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Erstellen Ihrer ersten dauerhaften Funktion in Python
 
@@ -144,7 +144,7 @@ Abschließend fügen Sie noch eine per HTTP ausgelöste Funktion hinzu, durch di
     | Prompt | Wert | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | „Select a template for your function“ (Wählen Sie eine Vorlage für Ihre Funktion aus.) | HTTP-Starter für Durable Functions | Erstellen Sie eine HTTP-Startfunktion. |
-    | Angeben eines Funktionsnamens | DurableFunctionsHttpStart | Der Name Ihrer Aktivitätsfunktion. |
+    | Angeben eines Funktionsnamens | DurableFunctionsHttpStart | Name Ihrer Clientfunktion |
     | Autorisierungsstufe | Anonym | Lassen Sie zu Demonstrationszwecken das Aufrufen der Funktion ohne Authentifizierung zu. |
 
 Sie haben eine per HTTP ausgelöste Funktion hinzugefügt, durch die eine Orchestrierung gestartet wird. Öffnen Sie *DurableFunctionsHttpStart/\_\_init__.py*, um zu sehen, dass `client.start_new` zum Starten einer neuen Orchestrierung verwendet wird. Anschließend wird `client.create_check_status_response` verwendet, um eine HTTP-Antwort mit URLs zurückzugeben, die zum Überwachen und Verwalten der neuen Orchestrierung verwendet werden können.

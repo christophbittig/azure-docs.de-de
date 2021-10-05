@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e0df727c93e5307e9b66ad5755c8218954a7ff7b
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: e65dc85dff7692f82118871ab93c628efe6cecf8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113552548"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661676"
 ---
 # <a name="device-update-agent-provisioning"></a>Bereitstellen des Geräte-Update-Agents
 
@@ -185,7 +185,7 @@ Der Agent für die Geräteaktualisierung kann auch ohne den IOT-Identitätsdiens
        
     1. Es sollte sich ein Fenster öffnen, in dem sich ein Text befindet. Löschen Sie die gesamte Zeichenfolge nach „connection_String =“, wenn Sie den Geräte Update-Agent zum ersten Mal auf dem IOT-Gerät bereitstellen. Es ist nur ein Platzhaltertext.
     
-    1. Ersetzen Sie im Terminal <Ihre-Verbindungszeichenfolge> durch die Verbindungszeichenfolge des Geräts für Ihre Instanz des Geräte-Update-Agents. Drücken Sie die EINGABETASTE, und wählen Sie dann **Speichern** aus. Es sollte wie im folgenden Beispiel aussehen:
+    1. Ersetzen Sie im Terminal \<your-connection-string\> durch die Verbindungszeichenfolge des Geräts für Ihre Instanz des Device Update-Agents. Drücken Sie die EINGABETASTE, und wählen Sie dann **Speichern** aus. Es sollte wie im folgenden Beispiel aussehen:
     
         ```text
         connection_string=<ADD CONNECTION STRING HERE>

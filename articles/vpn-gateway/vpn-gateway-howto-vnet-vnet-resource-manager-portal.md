@@ -6,22 +6,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/21/2021
+ms.date: 09/23/2021
 ms.author: cherylmc
-ms.openlocfilehash: 3e8c2846b58499e5aabdec80f8fcd75cab3e6eb5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 92ec3349f5e2e2f06fdbe7f56468a7145452276d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346132"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667063"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal
 
-In diesem Artikel erfahren Sie, wie Sie zwischen virtuellen Netzwerken (VNETs) eine VNET-zu-VNET-Verbindung herstellen. Virtuelle Netzwerke können sich in verschiedenen Regionen befinden und zu verschiedenen Abonnements gehören. Beim Verbinden von VNETs aus unterschiedlichen Abonnements müssen die Abonnements nicht demselben Active Directory-Mandanten zugeordnet sein. 
+In diesem Artikel erfahren Sie, wie Sie zwischen virtuellen Netzwerken (VNETs) eine VNET-zu-VNET-Verbindung mit Azure-Portal herstellen. Virtuelle Netzwerke können sich in verschiedenen Regionen befinden und zu verschiedenen Abonnements gehören. Beim Verbinden von VNETs aus unterschiedlichen Abonnements müssen die Abonnements nicht demselben Active Directory-Mandanten zugeordnet sein. Diese Art von Konfiguration erstellt eine Verbindung zwischen zwei Gateways für virtuelle Netzwerke. Dieser Artikel gilt nicht für VNet-Peering. Informationen zum VNet-Peering finden Sie unter [Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md). 
 
 :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet-vnet-diagram.png" alt-text="VNET-zu-VNET-Diagramm":::
 
-Die Schritte in diesem Artikel gelten für das Azure [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md) und verwenden das Azure-Portal. Sie können diese Konfiguration mit einem anderen Bereitstellungstool oder Modell erstellen, indem Sie Optionen verwenden, die in den folgenden Artikeln beschrieben werden:
+Sie können diese Konfiguration mithilfe verschiedener Tools erstellen, je nach Bereitstellungsmodell Ihres VNet. Die Schritte in diesem Artikel gelten für das Azure [Resource Manager-Bereitstellungsmodell](../azure-resource-manager/management/deployment-models.md) und verwenden das Azure-Portal. Verwenden Sie die Dropdownliste, um zu einem anderen Bereitstellungsmodell oder einer anderen Bereitstellungsmethode zu wechseln. 
 
 > [!div class="op_single_selector"]
 > * [Azure portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -41,7 +41,9 @@ In den folgenden Abschnitten werden die unterschiedlichen Verbindungsmethoden f�
 
 Durch Konfigurieren einer VNET-zu-VNet-Verbindung können Sie sehr einfach eine Verbindung zwischen VNets herstellen. Wenn Sie eine VNET-zu-VNET-Verbindung (VNET2VNET) zwischen zwei virtuellen Netzwerken herstellen, ist dies vergleichbar mit dem Herstellen einer Site-to-Site-IPsec-Verbindung mit einem lokalen Standort. Bei beiden Verbindungstypen wird ein VPN-Gateway verwendet, um per IPsec/IKE einen sicheren Tunnel zu erstellen, und auch die Kommunikation läuft jeweils gleich ab. Jedoch unterscheiden sie sich in der Art, in der das lokale Netzwerkgateway konfiguriert wird. 
 
-Beim Herstellen einer VNET-zu-VNET-Verbindung wird der Adressraum des lokalen Netzwerkgateways automatisch erstellt und gefüllt. Wenn Sie den Adressraum für ein VNET aktualisieren, leitet das andere VNET den Datenverkehr automatisch an den aktualisierten Adressraum weiter. Es ist in der Regel schneller und einfacher, eine VNET-zu-VNET-Verbindung herzustellen, als eine Site-to-Site-Verbindung.
+Beim Herstellen einer VNET-zu-VNET-Verbindung wird der Adressraum des lokalen Netzwerkgateways automatisch erstellt und gefüllt. Wenn Sie den Adressraum für ein VNET aktualisieren, leitet das andere VNET den Datenverkehr automatisch an den aktualisierten Adressraum weiter. Es ist in der Regel schneller und einfacher, eine VNET-zu-VNET-Verbindung herzustellen, als eine Site-to-Site-Verbindung. Das Gateway des lokalen Netzwerks ist in dieser Konfiguration jedoch nicht sichtbar. 
+* Wenn Sie wissen, dass Sie zusätzliche Adressräume für das lokale Netzwerkgateway angeben möchten oder später weitere Verbindungen hinzufügen möchten und das Gateway des lokalen Netzwerks anpassen müssen, sollten Sie die Konfiguration mithilfe der Site-to-Site-Schritte erstellen. 
+* Die VNET-to-VNET-Verbindung enthält keinen Adressraum des Point-to-Site-Clientpools. Wenn Sie transitives Routing für Point-to-Site-Clients benötigen, erstellen Sie eine Site-to-Site-Verbindung zwischen den Gateways des virtuellen Netzwerks, oder verwenden Sie VNET-Peering.
 
 ### <a name="site-to-site-ipsec"></a>Site-to-Site (IPsec)
 
@@ -49,7 +51,10 @@ Wenn Sie mit einer komplizierten Netzwerkkonfiguration arbeiten, empfiehlt es si
 
 ### <a name="vnet-peering"></a>VNet-Peering
 
-Sie können Ihre VNETs auch per VNET-Peering verbinden. Beim VNET-Peering wird kein VPN-Gateway verwendet, und es gelten andere Einschränkungen. Außerdem werden die [Preise für VNet-Peering](https://azure.microsoft.com/pricing/details/virtual-network) anders berechnet als die [Preise für VPN Gateway (VNet-zu-VNet)](https://azure.microsoft.com/pricing/details/vpn-gateway). Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md).
+Sie können Ihre VNETs auch per VNET-Peering verbinden.
+* Beim VNET-Peering wird kein VPN-Gateway verwendet, und es gelten andere Einschränkungen.
+* Die [Preise](https://azure.microsoft.com/pricing/details/virtual-network) für VNET-Peering werden anders berechnet als die [Preise](https://azure.microsoft.com/pricing/details/vpn-gateway) für VPN Gateway (VNET-zu-VNET).
+* Weitere Informationen zum VNET-Peering finden Sie unter [Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md).
 
 ## <a name="why-create-a-vnet-to-vnet-connection"></a>Gründe für das Herstellen einer VNET-zu-VNET-Verbindung
 

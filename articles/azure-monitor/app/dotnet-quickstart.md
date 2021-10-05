@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/11/2021
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 90d4fd76350d03bd876d97a7191011079b11845e
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 03506bd066ee81eb61c2d44f0d31f1336bd44f05
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300910"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081109"
 ---
 # <a name="quickstart-monitor-an-aspnet-core-app-with-azure-monitor-application-insights"></a>Schnellstart: Überwachen einer ASP.NET Core-App mit Azure Monitor Application Insights
 
@@ -100,7 +100,7 @@ Es dauert einige Minuten, bis Telemetriedaten für die Analyse in Application In
 
 1. Führen Sie die Web-App mit `dotnet run` oder in Ihrer IDE aus.
 1. Wählen Sie im Azure-Portal beim Anzeigen Ihrer Application Insights-Ressource unter **Untersuchen** die Option **Livemetriken** aus.
-1. Wählen Sie in Ihrer App wiederholt die Links **Home** (Startseite) und **Privacy** (Datenschutz) aus.
+1. Wählen Sie in Ihrer App (`http://localhost:5000`) wiederholt die Links **Home** (Startseite) und **Privacy** (Datenschutz) aus.
 1. Beobachten Sie die Aktivität in den **Livemetriken**, die angezeigt werden, wenn in der App Anforderungen ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

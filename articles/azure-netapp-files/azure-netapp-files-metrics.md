@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/16/2021
+ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 13a63da9abf37f57842b34f32c3ff442f4214062
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: b4ea507087bbed2ee3ac49f3c58d81bbac24c90b
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114402773"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094270"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriken für Azure NetApp Files
 
@@ -122,6 +122,22 @@ Sie finden Metriken für einen Kapazitätspool oder ein Volume, indem Sie den **
 * *Sonstiger Durchsatz*   
     Sonstiger Durchsatz (ohne Lese- oder Schreibvorgang) in Bytes pro Sekunde.
 
+## <a name="volume-backup-metrics"></a>Volumesicherungsmetriken  
+
+* *Volumesicherung aktiviert?*    
+    Zeigt an, ob die Sicherung für das Volume aktiviert ist. `1` aktiviert ist. `0` gibt an, dass sie deaktiviert werden.
+
+* *Vorgang der Volumesicherung abgeschlossen?*    
+    Zeigt an, ob der letzte Volumesicherungs- oder -wiederherstellungsvorgang erfolgreich abgeschlossen wurde.  `1` bedeutet erfolgreich. `0` bedeutet nicht erfolgreich.
+
+* *Volumesicherung ausgesetzt?*    
+    Zeigt an, ob die Sicherungsrichtlinie für das Volume ausgesetzt ist.  `1` bedeutet nicht ausgesetzt. `0` bedeutet ausgesetzt.
+
+* *Bytes in Volumesicherung*   
+    Die Gesamtzahl der für dieses Volume gesicherten Bytes.
+
+* *Für Volumensicherung zuletzt übertragene Bytes*   
+    Die Gesamtzahl der für den letzten Sicherungs-/Wiederherstellungsvorgang übertragenen Bytes.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -2,13 +2,13 @@
 title: Verwalten und Überwachen von Azure-VM-Sicherungen
 description: Erfahren Sie mehr über das Verwalten und Überwachen von Azure-VM-Sicherungen mit dem Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 07/27/2021
-ms.openlocfilehash: 015ce2a16359f3a99fcd71c8ea7f97142c2d54e6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/17/2021
+ms.openlocfilehash: d1040c1261c3edff3010403a63c856ff1c0200fa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346099"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605618"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Verwalten von Azure-VM-Sicherungen mit dem Azure Backup-Dienst
 
@@ -97,7 +97,7 @@ Sie können eine On-Demand-Sicherung eines virtuellen Computers ausführen, nach
 * Die Aufbewahrungsdauer für eine On-Demand Sicherung ist der Aufbewahrungswert, den Sie beim Auslösen des Sicherungsvorgangs festlegen.
 
 > [!NOTE]
-> Der Azure Backup-Dienst unterstützt bis zu drei bedarfsabhängige Sicherungen pro Tag und eine zusätzliche geplante Sicherung.
+> Azure Backup empfiehlt vier Sicherungen pro Tag für eine VM: eine geplante Sicherung gemäß der Sicherungsrichtlinie und drei bedarfsorientierte Sicherungen. Um jedoch Wiederholungen von Benutzern bei fehlgeschlagenen Versuchen zuzulassen, wird die harte Grenze für bedarfsorientierte Sicherungen auf neun Versuche festgelegt.
 
 So lösen Sie eine On-Demand-Sicherung aus:
 

@@ -5,12 +5,12 @@ ms.date: 02/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6737e2500b96d1c1872432c39761f8578de0ba02
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 9450a140d6c2fec93ccd836309690e15337b588b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319735"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638803"
 ---
 # <a name="tutorial-deploy-a-local-arm-template"></a>Tutorial: Bereitstellen einer lokalen ARM-Vorlage
 
@@ -44,7 +44,7 @@ Die Vorlage stellt ein Speicherkonto, einen App Service-Plan und eine Web-App b
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 
 > [!IMPORTANT]
-> Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Der Name muss eindeutig sein. In der Vorlage ist der Name des Speicherkontos der Projektname, an den **store** angefügt wird. Der Projektname muss zwischen 3 und 11 Zeichen lang sein. Daher muss der Projektname die Anforderungen des Speicherkontonamens erfüllen und weniger als 11 Zeichen enthalten.
+> Speicherkontonamen müssen eindeutig und zwischen 3 und 24 Zeichen lang sein, und sie dürfen nur **Zahlen** und **Kleinbuchstaben** enthalten. Die Variable `storageAccountName` der Beispielvorlage kombiniert das Maximum des Parameters `projectName` von 11 Zeichen mit einem [uniqueString](./template-functions-string.md#uniquestring)-Wert von 13 Zeichen.
 
 Speichern Sie eine Kopie der Vorlage mit der Erweiterung _JSON_ auf dem lokalen Computer, z. B. _azurebereitstellung.json_. Diese Vorlage können Sie später im Tutorial bereitstellen.
 

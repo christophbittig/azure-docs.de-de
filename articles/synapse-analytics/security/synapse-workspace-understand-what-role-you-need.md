@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 56337e349cf2cfad792cecbec11503a4fd866095
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 88597690ca4b3bf9cfd51b6e56eb9395df8ee1ba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351123"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583670"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Grundlegendes zu den erforderlichen Rollen zum Ausführen allgemeiner Aufgaben in Synapse
 
@@ -27,7 +27,7 @@ Dieser Artikel soll Ihnen helfen, zu verstehen, welche Synapse RBAC- (rollenbasi
 
 ### <a name="resource-management"></a>Ressourcenverwaltung
 
-- Sie können SQL-Pools, Apache Spark-Pools und Integration Runtimes erstellen, wenn Sie für den Arbeitsbereich eine der Rollen „Azure-Besitzer“ oder „Mitwirkender“ haben.
+- Sie können SQL-Pools, Apache Spark-Pools und Integration Runtimes erstellen, wenn Sie für den Arbeitsbereich eine der Rollen „Azure-Besitzer“ oder „Mitwirkender“ haben. Wenn Sie ARM-Vorlagen für die automatisierte Bereitstellung verwenden, müssen Sie azure-Mitwirkender für die Ressourcengruppe sein.
 - Für das Anhalten oder Skalieren eines dedizierten SQL-Pools oder das Konfigurieren eines Spark-Pools oder einer Integration Runtime benötigen Sie eine der Rollen „Azure-Besitzer“ oder „Mitwirkender“ für den Arbeitsbereich oder diese Ressource.
 
 ### <a name="viewing-and-editing-code-artifacts"></a>Anzeigen und Bearbeiten von Codeartefakten
@@ -76,7 +76,7 @@ Verwalten (Anhalten, Skalieren oder Löschen) eines dedizierten SQL-Pools|Azure-
 Erstellen eines SQL-Skripts</br>|Synapse-Benutzer oder </br>Azure-Besitzer oder Mitwirkender im Arbeitsbereich. </br>*Zum Ausführen eines SQL-Skripts und zum Veröffentlichen oder Committen von Änderungen sind zusätzliche SQL-Berechtigungen erforderlich.*|
 Auflisten und Öffnen veröffentlichter SQL-Skripts| Benutzer von Synapse-Artefakten, Herausgeber von Synapse-Artefakten, Synapse-Mitwirkender|artifacts/read
 Ausführen eines SQL-Skripts in einem serverlosen SQL-Pool|SQL-Berechtigungen für den Pool (werden Synapse-Administratoren automatisch gewährt)|Keine
-Ausführen eines SQL-Skripts in einem dedizierten SQL-Pool|SQL-Berechtigungen für den Pool|none
+Ausführen eines SQL-Skripts in einem dedizierten SQL-Pool|SQL-Berechtigungen für den Pool (werden Synapse-Administratoren automatisch gewährt)|Keine
 Veröffentlichen neuer, aktualisierter oder gelöschter SQL-Skripts|Herausgeber von Synapse-Artefakten, Synapse-Mitwirkender|sqlScripts/write, delete
 Committen von Änderungen an einem SQL-Skript im Git-Repository|Erfordert Git-Berechtigungen für das Repository|
 Zuweisen eines Active Directory-Administrators für den Arbeitsbereich (über die Arbeitsbereichseigenschaften im Azure-Portal)|Azure-Besitzer oder Mitwirkender im Arbeitsbereich |

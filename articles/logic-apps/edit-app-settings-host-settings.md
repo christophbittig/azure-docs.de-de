@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 08/18/2021
-ms.openlocfilehash: 731fe8f29fc4e67e2d74d46702768e642928ae09
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 228e0ac6243ae25463a81967c6d5cbcd903ad2ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514568"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824163"
 ---
 # <a name="edit-host-and-app-settings-for-logic-apps-in-single-tenant-azure-logic-apps"></a>Bearbeiten von Einstellungen für Hosts und Apps für Logik-Apps in Azure Logic Apps-Instanzen mit einem einzelnen Mandanten
 
@@ -234,7 +235,8 @@ Diese Einstellungen wirken sich auf den Durchsatz und die Kapazität für Azure 
 | Einstellung | Standardwert | Beschreibung |
 |---------|---------------|-------------|
 | `Runtime.Backend.DefaultAppendArrayItemsLimit` | `100000` <br>(100.000 Arrayelemente) | Hiermit wird die maximale Anzahl der Elemente in einer Variablen mit dem Array-Typ festgelegt. |
-| `Runtime.Backend.VariableOperation.MaximumVariableSize` | Zustandsbehafteter Workflow: `104857600` Zeichen <p><p>Zustandsloser Workflow: `1024` Zeichen | Hiermit wird die maximale Größe an Zeichen für die Inhalte festgelegt, die eine Variable speichern kann. |
+| `Runtime.Backend.VariableOperation.MaximumVariableSize` | Zustandsbehafteter Workflow: `104857600` Zeichen | Hiermit wird die maximale Größe an Zeichen für die Inhalte festgelegt, die eine Variable speichern kann, wenn sie in einem zustandsbehafteten Workflow verwendet wird. |
+| `Runtime.Backend.VariableOperation.MaximumStatelessVariableSize` | Zustandsloser Workflow: `1024` Zeichen | Hiermit wird die maximale Größe an Zeichen für die Inhalte festgelegt, die eine Variable speichern kann, wenn sie in einem zustandslosen Workflow verwendet wird. |
 ||||
 
 <a name="http-webhook"></a>

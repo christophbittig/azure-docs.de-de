@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/26/2021
-ms.openlocfilehash: 17ec535c03cd007a44fdd0b9633667f0e4343181
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.date: 09/23/2021
+ms.openlocfilehash: 80cc94941331a024a183e19c383ee20b900251ea
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123034533"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707634"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -25,7 +25,7 @@ Nach der Erstellung eines Azure Cosmos-Kontos unter Ihrem Abonnement können Sie
 
 ### <a name="provisioned-throughput"></a>Bereitgestellter Durchsatz
 
-Sie können Durchsatz auf einer Container- oder Datenbankebene in Form von [Anforderungseinheiten (Request Units, RU/s oder RUs)](request-units.md) bereitstellen. Die folgende Tabelle enthält die Grenzwerte für Speicher und Durchsatz pro Container/Datenbank.
+Sie können Durchsatz auf einer Container- oder Datenbankebene in Form von [Anforderungseinheiten (Request Units, RU/s oder RUs)](request-units.md) bereitstellen. Die folgende Tabelle enthält die Grenzwerte für Speicher und Durchsatz pro Container/Datenbank. Storage bezieht sich auf die kombinierte Datenmenge und den Indexspeicher.
 
 | Resource | Standardlimit |
 | --- | --- |
@@ -116,16 +116,16 @@ Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen Ihrer Da
 
 | Resource | Standardlimit |
 | --- | --- |
-| Maximale Anzahl von Datenbanken | Unbegrenzt |
+| Maximale Anzahl von Datenbanken | 500 |
 | Maximale Anzahl von Containern pro Datenbank mit freigegebenem Durchsatz |25 |
-| Maximale Anzahl von Containern pro Datenbank oder Konto mit dediziertem Durchsatz  |Unbegrenzt |
+| Maximale Anzahl von Containern pro Datenbank oder Konto mit dediziertem Durchsatz  | 500 |
 | Maximale Anzahl von Regionen | Keine Einschränkung (alle Azure-Regionen) |
 
 ### <a name="serverless"></a>Serverlos
 
 | Resource | Begrenzung |
 | --- | --- |
-| Maximale Anzahl von Datenbanken | Unbegrenzt |
+| Maximale Anzahl von Datenbanken | 500 |
 | Maximale Anzahl von Containern pro Konto  | 100 |
 | Maximale Anzahl von Regionen | 1 (beliebige Azure-Region) |
 
@@ -286,7 +286,7 @@ Erste Schritte mit Azure Cosmos DB mit einem unserer Schnellstarts:
 * [Erste Schritte mit der Tabellen-API von Azure Cosmos DB](table/create-table-dotnet.md)
 * Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
     * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
-    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/)

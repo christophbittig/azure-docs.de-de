@@ -3,14 +3,14 @@ title: Bereitstellungsplan der Azure Automation-Updateverwaltung
 description: In diesem Artikel werden die Überlegungen und Entscheidungen beschrieben, die bei der Vorbereitung der Bereitstellung der Azure Automation-Updateverwaltung zu treffen sind.
 services: automation
 ms.subservice: update-management
-ms.date: 06/07/2021
+ms.date: 09/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4c29ff09b6d353072cb8486e17ffa605ceff9aea
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: bac463aa01a997122d86e32e140b135938d589da
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769354"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093286"
 ---
 # <a name="plan-your-update-management-deployment"></a>Planen Ihrer Bereitstellung der Updateverwaltung
 
@@ -56,7 +56,7 @@ Wenn Computer im Netzwerk aufgrund von IT-Sicherheitsrichtlinien keine Internetv
 
 Zum Erstellen und Verwalten von Updatebereitstellungen benötigen Sie bestimmte Berechtigungen. Weitere Informationen zu diesen Berechtigungen finden Sie unter [Rollenbasierter Zugriff: Updateverwaltung](../automation-role-based-access-control.md#update-management-permissions).
 
-## <a name="step-7---windows-update-client"></a>Schritt 7: Windows Update-Client
+## <a name="step-7---windows-update-agent"></a>Schritt 7: Windows Update-Client
 
 Die Azure Automation-Updateverwaltung verwendet den Windows Update-Client, um Windows-Updates herunterzuladen und zu installieren. Vom Windows Update Agent (WUA) werden bestimmte Gruppenrichtlinieneinstellungen auf Computern verwendet, um eine Verbindung mit Windows Server Update Services (WSUS) oder Microsoft Update herzustellen. Diese Gruppenrichtlinieneinstellungen dienen auch dazu, die Softwareupdatekompatibilität zu prüfen und die Softwareupdates automatisch zu aktualisieren. Informationen zu unseren Empfehlungen finden Sie unter [Konfigurieren von Windows Update-Einstellungen für die Azure Automation-Updateverwaltung](configure-wuagent.md).
 

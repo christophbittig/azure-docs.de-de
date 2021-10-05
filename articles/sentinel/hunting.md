@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2021
+ms.date: 08/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 78662bf6dbc6d4be4f0ea0890993530f772d2114
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ecb8559af1d2aaf70bee0031930a748ff534f1c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355765"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622529"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Suchen nach Bedrohungen mit Azure Sentinel
 
@@ -111,9 +111,51 @@ Weitere Informationen zu Lesezeichen finden Sie unter [Behalten des Überblicks 
 
 ## <a name="use-notebooks-to-power-investigations"></a>Verwenden von Notebooks für Untersuchungen
 
-Notebooks bieten eine Art virtuelle Sandbox mit eigenem Kernel. Sie können Notebooks verwenden, um Ihre Bedrohungssuche und Untersuchungen durch maschinelles Lernen, Visualisierung und Datenanalyse zu verbessern. Sie können eine vollständige Untersuchung in einem Notebook durchführen, die Rohdaten, den Code, den Sie darauf ausführen, die Ergebnisse und ihre Visualisierungen kapseln und das Ganze speichern, damit es für andere Benutzer in Ihrer Organisation freigegeben und wiederverwendet werden kann.
+Wenn Ihre Suche und Nachforschungen komplexer werden, verwenden Sie Azure Sentinel Notebooks, um Ihre Aktivitäten mit maschinellem Lernen, Visualisierungen und Datenanalysen zu erweitern.
 
-Weitere Informationen finden Sie unter [Aufspüren von Sicherheitsrisiken mit Jupyter Notebook](notebooks.md).
+Notebooks stellen eine Art virtuelle Sandbox bereit, komplett mit eigenem Kernel, in dem Sie eine vollständige Nachforschung durchführen können. Ihr Notebook kann die Rohdaten, den Code, den Sie auf diesen Daten ausführen, die Ergebnisse und ihre Visualisierungen umfassen. Speichern Sie Ihre Notebooks, damit Sie sie für andere freigeben und in Ihrem Unternehmen weiterverwenden können.
+
+Notebooks können hilfreich sein, wenn Ihre Suche und Nachforschungen zu umfangreich werden, um sich die Details zu merken, oder wenn Sie Abfragen und Ergebnisse speichern müssen. Um Ihnen das Erstellen und Freigeben von Notebooks zu erleichtern, stellt Azure Sentinel [Jupyter Notebooks](https://jupyter.org) bereit: eine Open-Source-Umgebung zur interaktiven Entwicklung und Datenmanipulation, die direkt in die Seite von Azure Sentinel **Notebooks** integriert ist.
+
+Weitere Informationen finden Sie unter
+
+- [Aufspüren von Sicherheitsrisiken mit Jupyter Notebook](notebooks.md)
+- [Die Jupyter-Projektdokumentation](https://jupyter.org/documentation)
+- [Jupyter-Einführungsdokumentation](https://jupyter.readthedocs.io/en/latest/tryjupyter.html).
+- [Das Buch Infosec Jupyter](https://infosecjupyterbook.com)
+- [Real Python Tutorials](https://realpython.com)
+
+Die folgende Tabelle beschreibt einige Methoden zur Verwendung von Jupyter-Notebooks zur Unterstützung Ihrer Prozesse in Azure Sentinel:
+
+|Methode  |Beschreibung  |
+|---------|---------|
+|**Datenpersistenz, Wiederholbarkeit und Rückverfolgung**     |  Wenn Sie mit vielen Abfragen und Resultsets arbeiten, haben Sie wahrscheinlich einige Sackgassen. Sie müssen entscheiden, welche Abfragen und Ergebnisse beibehalten werden sollen und wie die nützlichen Ergebnisse in einem einzelnen Bericht gesammelt werden sollen. <br><br> Verwenden Sie Jupyter Notebooks, um Abfragen und Daten während der Arbeit zu speichern, verwenden Sie Variablen, um Abfragen mit anderen Werten oder Daten erneut auszuführen, oder speichern Sie Ihre Abfragen, um sie bei zukünftigen Untersuchungen erneut auszuführen.       |
+|**Skripts und Programmierung**     |    Mit Jupyter Notebooks können Sie Ihre Abfragen durch Programmierung ergänzen, einschließlich: <br><br>- *Deklarative* Sprachen wie [Kusto Query Language (KQL)](/azure/kusto/query/) oder SQL, um Ihre Logik in einer einzigen, möglicherweise komplexen, Anweisung zu kodieren.<br>- *Prozedurale* Programmiersprachen, um die Logik in einer Reihe von Schritten auszuführen. <br><br>Die Aufteilung Ihrer Logik in Schritte kann Ihnen helfen, Zwischenergebnisse zu sehen und zu debuggen, Funktionen hinzuzufügen, die in der Abfragesprache möglicherweise nicht verfügbar sind, und Teilergebnisse in späteren Verarbeitungsschritten wiederzuverwenden.     |
+|**Links zu externen Daten**     | Während Azure Sentinel-Tabellen die meisten Telemetrie- und Ereignisdaten enthalten, können Jupyter Notebooks mit allen Daten verknüpft werden, die über Ihr Netz oder aus einer Datei zugänglich sind. Mit Jupyter Notebooks können Sie unter anderem folgende Daten einschließen: <br><br>– Daten in externen Diensten, die nicht in Ihrem Besitz sind, wie z. B. Geolokalisierungsdaten oder Threat Intelligence-Datenquellen<br>Sensible Daten, die nur innerhalb Ihres Unternehmens gespeichert sind, wie z. B. Personaldatenbanken oder Listen mit wertvollen Objekten<br>– Daten, die Sie noch nicht in die Cloud migriert haben.        |
+|**Spezialisierte Tools für Datenverarbeitung, maschinelles Lernen und Visualisierung**     | Jupyter Notebooks stellt zusätzliche Visualisierungen, Bibliotheken für maschinelles Lernen sowie Datenverarbeitungs- und -transformationsfunktionen bereit. <br><br>Verwenden Sie zum Beispiel Jupyter Notebooks mit den folgenden [Python](https://python.org) Funktionen:<br>- [pandas](https://pandas.pydata.org/) für Datenverarbeitung, Bereinigung und Engineering<br>- [Matplotlib](https://matplotlib.org), [HoloViews](https://holoviews.org), und [Plotly](https://plot.ly) für die Visualisierung<br>- [NumPyS](https://www.numpy.org) und [SciPy](https://www.scipy.org) für erweiterte numerische und wissenschaftliche Verarbeitung<br>- [Sscikit-learn](https://scikit-learn.org/stable/index.html) für maschinelles Lernen<br>- [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org), und [Keras](https://keras.io/) für Deep Learning<br><br>**Tipp**: Jupyter Notebooks unterstützt mehrere Programmiersprachenkernel. Verwenden Sie *magics*, um Programmiersprachen innerhalb desselben Notebooks zu mischen, indem Sie die Ausführung einzelner Zellen in einer anderen Programmiersprache erlauben. So können Sie beispielsweise Daten mit einer PowerShell-Skript-Zelle abrufen, die Daten in Python verarbeiten und JavaScript zum Rendern einer Visualisierung verwenden.        |
+|     |         |
+
+### <a name="mstic-jupyter-and-python-security-tools"></a>MSTIC-, Jupyter- und Python-Sicherheitstools
+
+Das [Microsoft Threat Intelligence Center (MSTIC)](https://msrc-blog.microsoft.com/tag/mstic/) ist ein Team von Microsoft-Sicherheitsanalysten und -ingenieuren, die Sicherheitserkennungen für verschiedene Microsoft-Plattformen erstellen und an der Identifizierung und Untersuchung von Bedrohungen arbeiten.
+
+MSTIC hat [MSTICPy](https://github.com/Microsoft/msticpy) entwickelt, eine Bibliothek für die Suche und Nachforschungen zur Informationssicherheit in Jupyter Notebooks. MSTICPy stellt wiederverwendbare Funktionen bereit, um die Erstellung von Notebooks zu beschleunigen und den Benutzern das Lesen von Notebooks in Azure Sentinel zu erleichtern.
+
+Zum Beispiel kann MSTICPy:
+
+- Protokolldaten aus mehreren Quellen abfragen.
+- Die Daten mit Bedrohungsdaten, Geolokalisierungen und Azure-Ressourcendaten anreichern.
+- Aktivitätsindikatoren (Indicators of Activity, loA) aus Protokollen extrahieren und verschlüsselte Daten entschlüsseln.
+- Differenzierte Analysen durchführen, z. B. Erkennung von ungewöhnlichen Sitzungen und Zeitreihenanalyse.
+- Daten mit interaktiven Zeitleisten, Prozessbäumen und multidimensionalen Morph Charts visuell darstellen.
+
+MSTICPy kann auch einige zeitsparende Notebook-Tools umfassen, wie z. B. Widgets, die Abfragezeitgrenzen setzen, Elemente aus Listen auswählen und anzeigen und die Notebook-Umgebung konfigurieren.
+
+Weitere Informationen finden Sie unter
+
+- [MSTICPy-Dokumentation](https://msticpy.readthedocs.io/en/latest/)
+- [Tutorial: Erste Schritte mit Jupyter-Notebooks und MSTICPy in Azure Sentinel](notebook-get-started.md)
+- [Erweiterte Konfigurationen für Jupyter Notebooks und MSTICPy in Azure Sentinel](notebooks-msticpy-advanced.md)
 
 
 ## <a name="useful-operators-and-functions"></a>Praktische Operatoren und Funktionen

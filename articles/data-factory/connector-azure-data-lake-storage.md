@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: e568c2c8056c0d33be5fe1f748092ae2639be360
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: abd839bdc15430b3b4936fe1d2b65826ae792da8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314704"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592544"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory-or-azure-synapse-analytics"></a>Kopieren und Transformieren von Daten in Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory oder Azure Synapse Analytics
 
@@ -59,7 +59,7 @@ Verwenden Sie die folgenden Schritte, um einen verknüpften Azure Data Lake Stor
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory-Benutzeroberfläche zeigt.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -94,7 +94,7 @@ Der Azure Data Lake Storage Gen2-Connector unterstützt die folgenden Authentifi
 
 Für die Verwendung der Authentifizierung mit dem Speicherkontoschlüssel werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **AzureBlobFS** festgelegt sein. |Ja |
 | url | Endpunkt für Data Lake Storage Gen2 im Format `https://<accountname>.dfs.core.windows.net`. | Ja |
@@ -146,7 +146,7 @@ Zum Verwenden der Dienstprinzipalauthentifizierung führen Sie die folgenden Sch
 
 Diese Eigenschaften werden im verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **AzureBlobFS** festgelegt sein. |Ja |
 | url | Endpunkt für Data Lake Storage Gen2 im Format `https://<accountname>.dfs.core.windows.net`. | Ja |
@@ -267,7 +267,7 @@ Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer benut
 
 Diese Eigenschaften werden im verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **AzureBlobFS** festgelegt sein. |Ja |
 | url | Endpunkt für Data Lake Storage Gen2 im Format `https://<accountname>.dfs.core.windows.net`. | Ja |
@@ -310,7 +310,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
-| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft   | Beschreibung                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die „type“-Eigenschaft unter `location` im Dataset muss auf **AzureBlobFSLocation** festgelegt werden. | Ja      |
 | fileSystem | Der Name des Data Lake Storage Gen2-Dateisystems.                              | Nein       |
@@ -544,7 +544,7 @@ Formatspezifische Einstellungen finden Sie in der Dokumentation für das jeweili
 
 Bei der Quellentransformation können Sie Daten in Azure Data Lake Storage Gen2 aus einem Container, einem Ordner oder einer einzelnen Datei auslesen. Über die Registerkarte **Quellenoptionen** können Sie verwalten, wie die Dateien gelesen werden. 
 
-![Quelloptionen](media/data-flow/sourceOptions1.png "Quelloptionen")
+:::image type="content" source="media/data-flow/sourceOptions1.png" alt-text="Quelloptionen":::
 
 **Platzhalterpfad**: Mithilfe eines Platzhaltermusters wird ADF angewiesen, die einzelnen übereinstimmenden Ordner und Dateien in einer einzigen Quelltransformation zu durchlaufen. Dies ist eine effektive Methode zur Verarbeitung von mehreren Dateien in einem einzigen Datenfluss. Mit dem Pluszeichen (+), das angezeigt wird, wenn Sie mit dem Cursor auf Ihr vorhandenes Platzhaltermuster zeigen, können Sie weitere Platzhaltermuster hinzufügen.
 
@@ -566,11 +566,11 @@ Beispiele für Platzhalter:
 
 Legen Sie zunächst einen Platzhalter fest, um darin alle Pfade, die die partitionierten Ordner sind, sowie die zu lesenden Blattdateien einzuschließen.
 
-![Einstellungen für die Partitionsquelldatei](media/data-flow/partfile2.png "Einstellung der Partitionsdatei")
+:::image type="content" source="media/data-flow/partfile2.png" alt-text="Einstellungen für die Partitionsquelldatei":::
 
 Verwenden Sie die Einstellung „Partitionsstammpfad“, um zu definieren, was die oberste Ebene der Ordnerstruktur ist. Wenn Sie die Inhalte Ihrer Daten über die Datenvorschau anzeigen, sehen Sie, dass ADF die aufgelösten Partitionen hinzufügen wird, die auf den einzelnen Ordnerebenen gefunden werden.
 
-![Partitionsstammpfad](media/data-flow/partfile1.png "Vorschau des Partitionsstammpfads")
+:::image type="content" source="media/data-flow/partfile1.png" alt-text="Partitionsstammpfad":::
 
 **Liste der Dateien**: Dies ist eine Dateigruppe. Erstellen Sie eine Textdatei mit einer Liste der relativen Pfade der zu verarbeitenden Dateien. Verweisen Sie auf diese Textdatei.
 
@@ -582,15 +582,15 @@ Um Quelldateien an einen anderen Speicherort nach der Verarbeitung zu verschiebe
 
 Wenn Sie über einen Quellpfad mit Platzhalter verfügen, sieht Ihre Syntax ähnlich wie hier aus:
 
-```/data/sales/20??/**/*.csv```
+`/data/sales/20??/**/*.csv`
 
 Geben Sie „from“ beispielsweise wie folgt an:
 
-```/data/sales```
+`/data/sales`
 
 Und „to“ können Sie wie folgt angeben:
 
-```/backup/priorSales```
+`/backup/priorSales`
 
 In diesem Fall werden alle Dateien, die aus „/Data/Sales“ erstellt wurden, in „/Backup/priorSales“ verschoben.
 
@@ -603,7 +603,7 @@ In diesem Fall werden alle Dateien, die aus „/Data/Sales“ erstellt wurden, i
 
 In der Senkentransformation können Sie in Azure Data Lake Storage Gen2 in einen Container oder Ordner schreiben. Über die Registerkarte **Einstellungen** können Sie verwalten, wie die Dateien geschrieben werden.
 
-![Senkenoptionen](media/data-flow/file-sink-settings.png "Senkenoptionen")
+:::image type="content" source="media/data-flow/file-sink-settings.png" alt-text="Senkenoptionen":::
 
 **Ordner löschen:** Bestimmt, ob der Zielordner vor dem Schreiben der Daten gelöscht wird.
 
@@ -615,6 +615,34 @@ In der Senkentransformation können Sie in Azure Data Lake Storage Gen2 in einen
    * **Ausgabe in eine einzelne Datei:** Mit dieser Option werden die partitionierten Ausgabedateien in einer einzelnen Datei kombiniert. Der Pfad ist relativ zum Datasetordner. Bedenken Sie, dass der Zusammenführungsvorgang je nach Knotengröße zu Fehlern führen kann. Diese Option wird für große Datasets nicht empfohlen.
 
 **Alle in Anführungszeichen:** Bestimmt, ob alle Werte in Anführungszeichen eingeschlossen werden sollen.
+    
+### ```umask```
+
+Optional können Sie ```umask``` für Dateien festlegen, indem Sie POSIX-Flags für Lesen, Schreiben und Ausführungen bei Besitzern, Benutzern und Gruppen verwenden.
+    
+### <a name="pre-processing-and-post-processing-commands"></a>Vorab und nachträglich verarbeitete Skripts
+    
+Optional können Sie Hadoop-Dateisystembefehle vor oder nach dem Schreiben in eine ADLS Gen2-Senke ausführen. Die folgenden Befehle werden unterstützt:
+    
+* ```cp```
+* ```mv```
+* ```rm```
+* ```mkdir```
+
+Beispiele:
+
+* ```mkdir /folder1```
+* ```mkdir -p folder1```
+* ```mv /folder1/*.* /folder2/```
+* ```cp /folder1/file1.txt /folder2```
+* ```rm -r /folder1```
+
+Parameter werden auch über den Ausdrucks-Generator unterstützt, z. B.:
+
+`mkdir -p {$tempPath}/commands/c1/c2`
+`mv {$tempPath}/commands/*.* {$tempPath}/commands/c1/c2`
+
+Standardmäßig werden Ordner als Benutzer/Stamm erstellt. Verweisen Sie auf den Container der obersten Ebene mit „/“.
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 
@@ -635,7 +663,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft des Datasets muss auf **AzureBlobFSFile** festgelegt sein. |Ja |
 | folderPath | Pfad zum Ordner in Data Lake Storage Gen2. Wenn keine Angabe vorhanden ist, wird auf das Stammverzeichnis verwiesen. <br/><br/>Der Platzhalterfilter wird unterstützt. Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Ordnername einen Platzhalter oder dieses Escapezeichen enthält. <br/><br/>Beispiele: „Dateisystem/Ordner/“. Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). |Nein |
@@ -643,7 +671,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 | modifiedDatetimeStart | Dateifilterung basierend auf dem Attribut „Letzte Änderung“. Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br/><br/> Die generelle Leistung der Datenverschiebung wird beeinträchtigt, wenn Sie diese Einstellung aktivieren und eine Dateifilterung für eine große Zahl von Dateien vornehmen möchten. <br/><br/> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird. Wenn `modifiedDatetimeStart` einen datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist. Wenn `modifiedDatetimeEnd` einen datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.| Nein |
 | modifiedDatetimeEnd | Dateifilterung basierend auf dem Attribut „Letzte Änderung“. Die Dateien werden ausgewählt, wenn der Zeitpunkt der letzten Änderung innerhalb des Zeitbereichs zwischen `modifiedDatetimeStart` und `modifiedDatetimeEnd` liegt. Die Zeit wird auf die UTC-Zeitzone im Format „2018-12-01T05:00:00Z“ angewandt. <br/><br/> Die generelle Leistung der Datenverschiebung wird beeinträchtigt, wenn Sie diese Einstellung aktivieren und eine Dateifilterung für eine große Zahl von Dateien vornehmen möchten. <br/><br/> Die Eigenschaften können NULL sein, was bedeutet, dass kein Dateiattributfilter auf das Dataset angewandt wird. Wenn `modifiedDatetimeStart` einen datetime-Wert aufweist, aber `modifiedDatetimeEnd` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung größer oder gleich dem datetime-Wert ist. Wenn `modifiedDatetimeEnd` einen datetime-Wert aufweist, aber `modifiedDatetimeStart` NULL ist, bedeutet dies, dass die Dateien ausgewählt werden, deren Attribut für die letzte Änderung kleiner als der datetime-Wert ist.| Nein |
 | format | Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), überspringen Sie den Formatabschnitt in den Definitionen der Eingabe- und Ausgabedatasets.<br/><br/>Für das Analysieren oder Generieren von Dateien mit einem bestimmten Format werden die folgenden Dateiformattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type**-Eigenschaft unter **format** auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-Format](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro-Format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [ORC-Format](supported-file-formats-and-compression-codecs-legacy.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs-legacy.md#parquet-format). |Nein (nur für Szenarien mit Binärkopien) |
-| compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Unterstützte Typen sind **GZip**, **Deflate**, **BZIP2** und **ZipDeflate**.<br/>Unterstützte Grade sind **Optimal** und **Schnellste**. |Nein |
+| compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Folgende Typen werden unterstützt: ```**GZip**, **Deflate**, **BZip2**, and **ZipDeflate**```.<br/>Unterstützte Grade sind **Optimal** und **Schnellste**. |Nein |
 
 >[!TIP]
 >Wenn Sie alle Dateien eines Ordners kopieren möchten, geben Sie nur **folderPath** an.<br>Wenn Sie eine einzelne Datei mit einem bestimmten Namen kopieren möchten, geben Sie **folderPath** mit einem Ordner und **fileName** mit einem Dateinamen an.<br>Wenn Sie eine Teilmenge der Dateien eines Ordners kopieren möchten, geben Sie **folderPath** mit einem Ordner und **fileName** mit einem Platzhalterfilter an. 
@@ -760,4 +788,4 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quelles und Senken für die Kopieraktivität unterstützt werden, finden Sie in [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

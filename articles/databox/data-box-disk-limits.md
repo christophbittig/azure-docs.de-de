@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 08/02/2021
+ms.date: 09/28/2021
 ms.author: alkohli
-ms.openlocfilehash: a176b971d830fcabf3eba1767b9ac198a4418f0b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab759cf81ce95ca7cf61a3777092fd92040baf6c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356051"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208474"
 ---
 # <a name="azure-data-box-disk-limits"></a>Begrenzungen für Azure Data Box Disk
 
@@ -47,7 +47,8 @@ Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährt
 - Kopieren Sie Daten nicht direkt auf die Datenträger. Kopieren Sie Daten in die zuvor erstellten Ordner *BlockBlob*, *PageBlob* und *AzureFile*.
 - Ein Ordner unter *BlockBlob* und *PageBlob* ist ein Container. Container werden beispielsweise als *BlockBlob/container* und *PageBlob/container* erstellt.
 - Wenn ein Ordner denselben Namen wie ein vorhandener Container hat, wird der Inhalt des Ordners mit dem Inhalt des Containers zusammengeführt. Dateien oder Blobs, die sich noch nicht in der Cloud befinden, werden dem Container hinzugefügt. Wenn eine Datei oder ein Blob denselben Namen wie eine Datei oder ein Blob hat, die bzw. das sich bereits im Container befindet, wird die vorhandene Datei oder das Blob überschrieben.
-- Jede Datei, die in die Freigaben *BlockBlob* und *PageBlob* geschrieben wird, wird als Blockblob bzw. Seitenblob hochgeladen.
+- Jede Datei, die in die Freigaben *BlockBlob* und *PageBlob* geschrieben wird, wird als Blockblob bzw. Seitenblob hochgeladen. 
+- Die Hierarchie der Dateien wird beim Hochladen in die Cloud sowohl für Blobs als auch für Azure Files beibehalten. Beispiel: Sie haben eine Datei in diesen Pfad kopiert: `<container folder>\A\B\C.txt`. Dann wird diese Datei wird in den gleichen virtuellen Pfad in der Cloud hochgeladen.
 - Eine unter den Ordnern *BlockBlob* und *PageBlob* erstellte leere Verzeichnishierarchie (ohne jegliche Dateien) wird nicht hochgeladen.
 - Zur Leistungsverbesserung während Datenuploads empfehlen wir, dass Sie [große Dateifreigaben für das Speicherkonto aktivieren und die Freigabekapazität auf 100 TiB erhöhen](../../articles/storage/files/storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account). Große Dateifreigaben werden nur bei Speicherkonten mit lokal redundantem Speicher (LRS) unterstützt.
 - Wenn beim Hochladen von Daten in Azure Fehler auftreten, wird im Zielspeicherkonto ein Fehlerprotokoll erstellt. Der Pfad zu diesem Fehlerprotokoll ist im Portal verfügbar, wenn der Upload abgeschlossen ist, und Sie können das Protokoll überprüfen, um Korrekturmaßnahmen zu ergreifen. Löschen Sie keine Daten aus der Quelle, ohne die hochgeladenen Daten zu überprüfen.

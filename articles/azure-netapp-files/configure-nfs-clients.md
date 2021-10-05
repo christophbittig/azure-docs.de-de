@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/17/2021
+ms.date: 09/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 44a1dd3e5d95e8ab31c9a7716f5026ceb429e084
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 2d0e323271cbc465f2f46c4904f01d5c1654426d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112287891"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576760"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Konfigurieren eines NFS-Clients für Azure NetApp Files
 
@@ -157,6 +157,15 @@ Die folgenden Schritte sind optional. Sie müssen die Schritte nur durchführen,
     `krb5_realm = CONTOSO.COM (domain name in caps)`   
     `krb5_kpasswd = winad2016.contoso.com (same as AD address which is added in /etc/hosts)`   
     `use_fully_qualified_names = false`   
+    
+    In der Konfiguration `[domain/contoso-ldap]` oben:
+    * `id_provider` ist auf `ldap` und nicht auf `ad` festgelegt.
+    * Die Konfiguration hat Suchbasen und Benutzer- und Gruppenklassen für Suchvorgänge angegeben.
+    * `ldap_sasl_authid` ist der Computerkontoname aus `klist -kte`.
+    * `use_fully_qualified_names` ist auf `false` festgelegt.  Diese Einstellung bedeutet, dass diese Konfiguration verwendet wird, wenn ein Kurzname verwendet wird.
+    * `ldap_id_mapping` ist NICHT angegeben und standardmäßig auf `false` festgelegt.
+
+    Die Konfiguration `realm join` wird vom Client generiert und sieht wie folgt aus:
  
     `[domain/contoso.com]  (Do not edit or remove any of the following information. This information is automatically generated during the realm join process.)`   
     `ad_domain = contoso.com`   
@@ -170,6 +179,11 @@ Die folgenden Schritte sind optional. Sie müssen die Schritte nur durchführen,
     `use_fully_qualified_names = True`   
     `fallback_homedir = /home/%u@%d`   
     `access_provider = ad`   
+    
+    In der Konfiguration `[domain/contoso.com]` oben:
+    * Für `id_provider` ist `ad` festgelegt.
+    * Für `ldap_id_mapping` ist `true` festgelegt. Es werden die von SSSD generierten IDs verwendet. Alternativ können Sie diesen Wert auf `false` festlegen, wenn Sie POSIX-UIDs für ALLE Benutzernamenstile verwenden möchten. Sie können den Wert basierend auf Ihrer Clientkonfiguration bestimmen. 
+    * `use_fully_qualified_names` ist `true` Diese Einstellung bedeutet, dass `user@CONTOSO.COM` diese Konfiguration verwendet wird.
 
 4. Stellen Sie sicher, dass Ihre `/etc/nsswitch.conf` den Eintrag `sss` enthält:   
 

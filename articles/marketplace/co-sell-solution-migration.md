@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 07/13/2021
-ms.openlocfilehash: 6ca8c75e5cf6f5290736cf01a20db63a8fb2d077
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.date: 09/27/2021
+ms.openlocfilehash: d80063eeb46938d3f8006f777a3209bc34d7cfcb
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114389081"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083189"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>Migrieren von Co-Selling-Lösungen von OCP GTM zum kommerziellen Marketplace
 
@@ -67,11 +67,11 @@ Führen Sie die folgenden Schritte aus, bevor Sie Ihre Lösungen aus OCP GTM imp
 ## <a name="begin-the-migration-of-your-solutions-from-ocp-gtm"></a>Beginn der Migration Ihrer Lösungen von OCP GTM
 
 1. Beginnen Sie [hier](https://go.microsoft.com/fwlink/?linkid=2165807) mit der Migration.
-2. Wählen Sie die Seite **Übersicht** aus, und klicken Sie dann auf **Klicken Sie hier, um zu beginnen**.
+1. Wählen Sie die Seite **Übersicht** aus, und klicken Sie dann auf **Klicken Sie hier, um zu beginnen**.
 
     :::image type="content" source="media/co-sell-migrate/welcome-overveiw.png" alt-text="Anzeige der Übersichtsseite":::
 
-3. Um mit der Migration zu beginnen, wählen Sie die Registerkarte **Lösungen** aus, auf der alle mit Ihren MPN-IDs verknüpften Lösungen angezeigt werden.
+1. Um mit der Migration zu beginnen, wählen Sie die Registerkarte **Lösungen** aus, auf der alle mit Ihren MPN-IDs verknüpften Lösungen angezeigt werden.
 
     :::image type="content" source="media/co-sell-migrate/solutions-tab.png" alt-text="Seite „Übersicht“ im Partner Center, Registerkarte „Lösungen“":::
 
@@ -80,7 +80,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie Ihre Lösungen aus OCP GTM imp
 
     Weitere Informationen zum Lösungsstatus finden Sie in den QuickInfos. Alle Lösungen, für die eine Aktion aussteht, werden unter **Aktion** aufgeführt.<a name="beginmigration"></a>
 
-4. Wählen Sie für die Lösung, die migriert werden soll, **Migration starten** aus (siehe Abbildung oben), und wählen Sie dann eine der folgenden Optionen aus:
+1. Wählen Sie für die Lösung, die migriert werden soll, **Migration starten** aus (siehe Abbildung oben), und wählen Sie dann eine der folgenden Optionen aus:
 
     :::image type="content" source="media/co-sell-migrate/migration-options.png" alt-text="Drei Optionen für die Migration":::
 
@@ -93,6 +93,52 @@ Welchen Nutzen hat die Zusammenführung Ihrer OCP GTM-Lösung mit einem vorhande
 Wenn Sie über eine Lösung in OCP GTM verfügen, die Sie zu Partner Center migrieren möchten, stehen Ihnen zwei Szenarien zur Auswahl. Am Ende dieses Zusammenführungsprozesses behält Ihr Angebot die Empfehlungspipeline, Begleitmaterialien, den Co-Selling-Status und Incentives bei.
 
 #### <a name="step-1-similar-offer-does-not-exist-in-commercial-marketplace-please-follow-these-steps"></a>Szenario 1: Auszuführende Schritte, wenn kein ähnliches Angebot im kommerziellen Marketplace vorhanden ist
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+Wenn im kommerziellen Marketplace noch kein Angebot vorhanden ist, mit dem eine Lösung in OCP GTM zusammengeführt werden kann, müssen Sie zunächst ein Angebot im kommerziellen Marketplace erstellen UND VERÖFFENTLICHEN (dieses behält den Co-Selling-Status, Incentives und die Empfehlungspipeline bei).
+
+1. Erstellen Sie einen Angebotsentwurf im kommerziellen Marketplace.
+
+   1. Wählen Sie auf der Seite Übersicht des kommerziellen Marketplace die Option **+ Neues Angebot** und dann den Angebotstyp aus, den Sie wünschen.
+
+        [ ![Screenshot der Schaltfläche "Neues Angebot" auf der Seite "Marketplace-Angebote](media/co-sell-migrate/new-offer-workspaces.png) ](media/co-sell-migrate/new-offer-workspaces.png#lightbox)
+
+   2. Geben Sie die erforderlichen Informationen auf den einzelnen Registerkarten an.
+      - Über die Links für **Weitere Informationen** und QuickInfos erfahren Sie mehr über die Anforderungen und Details.
+      - Bearbeiten Sie optional die Seite **Verkauf über CSPs** (im linken Navigationsmenü unten), um Angebote über das CSP-Programm (Cloud Solution Provider) zu verkaufen.
+
+        [ ![Anzeige der Seite „Angebotseinrichtung“ mit hervorgehobenen Übersichtsoptionen](media/co-sell-migrate/offer-setup-nav-workspaces.png) ](media/co-sell-migrate/offer-setup-nav-workspaces.png#lightbox)
+
+   3. Wähen Sie **Entwurf speichern** aus.
+        - Ausführliche Anweisungen zu den Informationen, die Sie angeben müssen, bevor das Angebot veröffentlicht werden kann, finden Sie im entsprechenden [Leitfaden zur Veröffentlichung](./publisher-guide-by-offer-type.md).
+        - Berücksichtigen Sie im entsprechenden Artikel für Ihren Angebotstyp die Berechtigungsvoraussetzungen, um die Auswahl und Konfiguration Ihres Angebots abzuschließen.
+        - Entnehmen Sie den Veröffentlichungsmustern der einzelnen Onlineshops Beispiele für die Zuordnung Ihrer Lösung zu einem Angebotstyp und einer Konfiguration.
+        - [Bewährte Methoden für Angebotslistung – kommerzieller Microsoft-Marketplace | Microsoft-Dokumentation](./gtm-offer-listing-best-practices.md)
+
+    > [!TIP]
+    > Es wird empfohlen, die Daten auf der Registerkarte **Co-Selling mit Microsoft** *nicht auszufüllen*. Um Ihnen Zeit zu sparen, werden wir diese Daten während des Zusammenführungsprozesses mit Ihren vorhandenen Begleitmaterialien in OCP GTM auffüllen.
+
+    Nach Abschluss der Zusammenführung können Sie zur Registerkarte „Co-Selling mit Microsoft“ zurückkehren und bei Bedarf Aktualisierungen vornehmen. Weitere Informationen finden Sie unter [Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace](./co-sell-configure.md).
+1. Wählen Sie **Überprüfen und veröffentlichen** aus, wenn Sie fertig sind.
+
+    [ ![Seite „Co-Selling mit Microsoft“ mit hervorgehobenen Optionen](media/co-sell-migrate/co-sell-with-ms-workspaces.png) ](media/co-sell-migrate/co-sell-with-ms-workspaces.png#lightbox)
+
+1. Nachdem Sie alle übermittelten Informationen überprüft haben, wählen Sie **Veröffentlichen** aus, um Ihren Angebotsentwurf für die Zertifizierungsüberprüfung zu übermitteln. [Erfahren Sie mehr über die Zertifizierungsphase](./review-publish-offer.md).
+
+    [ ![Anzeige der Seite Überprüfen und veröffentlichen](media/co-sell-migrate/review-and-publish-workspaces.png) ](media/co-sell-migrate/review-and-publish-workspaces.png#lightbox)
+
+1. Verfolgen Sie den Status Ihrer Übermittlung auf der Registerkarte Übersicht.
+
+    [ ![Veranschaulicht den Veröffentlichungsstatus für ein Angebot in Partner Center. Die Schaltfläche Live wechseln wird angezeigt. Der Link Überprüfungsbericht anzeigen wird auch unter Automatisierte Validierung angezeigt.](./media/review-publish-offer/publish-status-saas.png) ](./media/review-publish-offer/publish-status-saas.png#lightbox)
+
+1. Sie werden benachrichtigt, wenn unsere Zertifizierungsüberprüfung abgeschlossen ist. Wenn Sie handlungsrelevantes Feedback von uns erhalten, sollten Sie es umsetzen und dann **Veröffentlichen** auswählen, um eine erneute Zertifizierung zu starten.
+
+1. Sobald Ihr Angebot erfolgreich zertifiziert wurde, nutzen Sie den bereitgestellten Link, um das Angebot in der Vorschau anzuzeigen und abschließende Anpassungen vorzunehmen. Wenn Sie fertig sind, wählen Sie **Live schalten** aus (siehe Schaltfläche oben), um Ihr Angebot in relevanten Storefronts des kommerziellen Marketplace zu veröffentlichen.
+
+1. **Fahren Sie mit Szenario 2 unten fort, um den Zusammenführungsvorgang abzuschließen.**
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
 
 Wenn im kommerziellen Marketplace noch kein Angebot vorhanden ist, mit dem eine Lösung in OCP GTM zusammengeführt werden kann, müssen Sie zunächst ein Angebot im kommerziellen Marketplace erstellen UND VERÖFFENTLICHEN (dieses behält den Co-Selling-Status, Incentives und die Empfehlungspipeline bei).
 
@@ -128,6 +174,8 @@ Wenn im kommerziellen Marketplace noch kein Angebot vorhanden ist, mit dem eine 
 1. Sobald Ihr Angebot erfolgreich zertifiziert wurde, nutzen Sie den bereitgestellten Link, um das Angebot in der Vorschau anzuzeigen und abschließende Anpassungen vorzunehmen. Wenn Sie fertig sind, wählen Sie **Live schalten** aus (siehe Schaltfläche oben), um Ihr Angebot in relevanten Storefronts des kommerziellen Marketplace zu veröffentlichen.
 
 1. **Fahren Sie mit Szenario 2 unten fort, um den Zusammenführungsvorgang abzuschließen.**
+
+---
 
 #### <a name="scenario-2-similar-offer-exists-in-commercial-marketplace-please-follow-these-steps"></a>Szenario 2: Auszuführende Schritte, wenn bereits ein ähnliches Angebot im kommerziellen Marketplace vorhanden ist
 

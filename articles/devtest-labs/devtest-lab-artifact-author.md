@@ -1,14 +1,14 @@
 ---
-title: Erstellen von benutzerdefinierten Artefakten für Ihren virtuellen DevTest Labs-Computer | Microsoft-Dokumentation
+title: Erstellen benutzerdefinierter Artefakte für Ihren virtuellen DevTest Labs-Computer
 description: Hier erfahren Sie, wie Sie Artefakte erstellen, die mit Azure DevTest Labs zum Bereitstellen und Einrichten von Anwendungen nach der Bereitstellung eines virtuellen Computers verwendet werden.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e19cd5002c150346661654930c22943d5cbc2523
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88270681"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662944"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Erstellen benutzerdefinierter Artefakte für Ihren virtuellen DevTest Labs-Computer
 

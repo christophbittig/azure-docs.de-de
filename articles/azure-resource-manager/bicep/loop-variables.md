@@ -5,18 +5,22 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 08/30/2021
-ms.openlocfilehash: bf182379c9cc10db11e451f908df552a16520b45
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 14721057379217ae9d14b97c94483435dde08203
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225193"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831992"
 ---
 # <a name="variable-iteration-in-bicep"></a>Variableniteration in Bicep
 
 Dieser Artikel erklärt, wie Sie mehr als einen Wert für eine Variable in Ihrer Bicep-Datei erstellen. Sie können der Deklaration `variables` eine Schleife hinzufügen und die Anzahl der Elemente für eine Variable dynamisch festlegen. So vermeiden Sie auch das Wiederholen einer Syntax in Ihrer Bicep-Datei.
 
 Sie können „copy“ auch mit [Modulen](loop-modules.md), [Ressourcen](loop-resources.md), [Eigenschaften in einer Ressource](loop-properties.md) und [Ausgaben](loop-outputs.md) verwenden.
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen und praktische Anleitungen zu Schleifen finden Sie in **Microsoft Learn** unter [Erstellen flexibler Bicep-Vorlagen mithilfe von Bedingungen und Schleifen](/learn/modules/build-flexible-bicep-templates-conditions-loops/).
 
 ## <a name="syntax"></a>Syntax
 
@@ -43,7 +47,7 @@ Mit Schleifen können mehrere Variablen folgendermaßen deklariert werden:
 
   Weitere Informationen finden Sie unter [Schleifenarray](#loop-array).
 
-- Iterieren über ein Array und einen Index.
+- Durchlaufen eines Arrays und eines Indexes
 
   ```bicep
   var <variable-name> = [for <item>, <index> in <collection>: {

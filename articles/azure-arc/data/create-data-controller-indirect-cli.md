@@ -9,12 +9,12 @@ ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: c2d67cd8e62a0b74ed5959cebfe691ffb044d975
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 195325ff9bad726ed62c5955b393d31e4c457f2e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346551"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836775"
 ---
 # <a name="create-azure-arc-data-controller-using-the-cli"></a>Erstellen eines Azure Arc-Datencontrollers mithilfe der Befehlszeilenschnittstelle
 
@@ -117,10 +117,7 @@ Nachdem Sie den Befehl ausgeführt haben, fahren Sie mit [Überwachen des Erstel
 
 #### <a name="configure-storage-azure-stack-hci-with-aks-hci"></a>Konfigurieren des Speichers (Azure Stack HCI mit AKS-HCI)
 
-Wenn Sie Azure Stack HCI mit AKS-HCI verwenden, führen Sie abhängig von Ihrer Version von Azure Stack HCA mit AKS-HCI einen der folgenden Schritte aus:
-
-- Erstellen Sie für Version 1.20 und höher eine benutzerdefinierte Speicherklasse mit `fsGroupPolicy:File` (Einzelheiten finden Sie unter https://kubernetes-csi.github.io/docs/support-fsgroup.html). 
-- Verwenden Sie für Version 1.19 Folgendes: 
+Wenn Sie Azure Stack HCI mit AKS-HCI verwenden, erstellen Sie mit `fsType` eine benutzerdefinierte Speicherklasse.
 
    ```json
    fsType: ext4
@@ -232,7 +229,7 @@ Das kubeadm-Bereitstellungsprofil nutzt standardmäßig eine Speicherklasse mit 
 Wenn Sie Ihr Bereitstellungsprofil anpassen möchten, um eine bestimmte Speicherklasse und/oder einen bestimmten Diensttyp anzugeben, erstellen Sie zunächst eine neue benutzerdefinierte Bereitstellungsprofildatei auf Grundlage des kubeadm-Bereitstellungsprofils, indem Sie den folgenden Befehl ausführen. Mit diesem Befehl werden das Verzeichnis `custom` im aktuellen Arbeitsverzeichnis und die benutzerdefinierte Bereitstellungsprofildatei `control.json` in diesem Verzeichnis erstellt.
 
 ```azurecli
-az arcdata dc config init --source azure-arc-kubeadm --path ./custom --k8s-namespace <namespace> --use-k8s
+az arcdata dc config init --source azure-arc-kubeadm --path ./custom 
 ```
 
 Sie können die verfügbaren Speicherklassen mithilfe des folgenden Befehls ermitteln.

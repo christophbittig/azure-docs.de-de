@@ -5,18 +5,22 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 08/27/2021
-ms.openlocfilehash: 44e5a4356cac0f252b344a7acf8b68a2f51d1ef1
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: f8893fa6716d1b106e54f7eb76002622ce5a4bc3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215238"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793434"
 ---
 # <a name="module-iteration-in-bicep"></a>Moduliteration in Bicep
 
 In diesem Artikel erfahren Sie, wie Sie in Ihrer Bicep-Datei mehr als eine Instanz von einem [Modul](modules.md) bereitstellen können. Sie können einer `module`-Deklaration eine Schleife hinzufügen und dynamisch festlegen, wie oft dieses Modul bereitgestellt werden soll. So vermeiden Sie auch das Wiederholen einer Syntax in Ihrer Bicep-Datei.
 
 Eine Schleife kann auch mit [Ressourcen](loop-resources.md), [Eigenschaften](loop-properties.md), [Variablen](loop-variables.md), and [Ausgaben](loop-outputs.md) verwendet werden.
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen und praktische Anleitungen zu Schleifen finden Sie in **Microsoft Learn** unter [Erstellen flexibler Bicep-Vorlagen mithilfe von Bedingungen und Schleifen](/learn/modules/build-flexible-bicep-templates-conditions-loops/).
 
 ## <a name="syntax"></a>Syntax
 
@@ -30,7 +34,7 @@ Mit Schleifen können mehrere Module folgendermaßen deklariert werden:
   }]
   ```
 
-  Weitere Informationen finden Sie unter [Schleifen-Index](#loop-index).
+  Weitere Informationen finden Sie unter [Schleifenindex](#loop-index).
 
 - Durchlaufen eines Arrays
 
@@ -125,9 +129,9 @@ Filter werden durch [Ressource-Schleifen](loop-resources.md) unterstützt.
 
 ## <a name="deploy-in-batches"></a>In Batches bereitstellen
 
-Resource Manager erstellt die Ressourcen standardmäßig gleichzeitig. Wenn Sie eine Schleife verwenden, um mehrere Instanzen eines Ressourcentyps zu erstellen, werden alle diese Instanzen gleichzeitig bereitgestellt. Die Reihenfolge, in der sie erstellt werden, ist nicht garantiert. Es gibt keine Beschränkung für die Anzahl der parallel bereitgestellten Ressourcen, mit Ausnahme der Begrenzung der Gesamtanzahl auf 800 Ressourcen in der Bicep-Datei.
+Resource Manager erstellt die Ressourcen standardmäßig gleichzeitig. Wenn Sie eine Schleife verwenden, um mehrere Instanzen eines Ressourcentyps zu erstellen, werden alle diese Instanzen gleichzeitig bereitgestellt. Die Reihenfolge, in der sie erstellt werden, ist nicht garantiert. Es gibt keine Beschränkung für die Anzahl der parallel bereitgestellten Ressourcen, mit Ausnahme der Begrenzung der Gesamtanzahl auf 800 Ressourcen in der Bicep-Datei.
 
-Möglicherweise möchten Sie nicht alle Instanzen eines Ressourcentyps gleichzeitig aktualisieren. Wenn Sie z.B. eine Produktionsumgebung aktualisieren, möchten Sie die Updates möglicherweise staffeln, sodass nur eine bestimmte Anzahl von Ressourcen gleichzeitig aktualisiert wird. Sie können angeben, dass eine Teilmenge der Instanzen gleichzeitig in einem Batch zusammengefasst und bereitgestellt wird. Die anderen Instanzen warten auf den Abschluss dieses Batches.
+Es wird empfohlen, nicht alle Instanzen eines Ressourcentyps gleichzeitig zu aktualisieren. Wenn Sie z.B. eine Produktionsumgebung aktualisieren, möchten Sie die Updates möglicherweise staffeln, sodass nur eine bestimmte Anzahl von Ressourcen gleichzeitig aktualisiert wird. Sie können angeben, dass eine Teilmenge der Instanzen gleichzeitig in einem Batch zusammengefasst und bereitgestellt wird. Die anderen Instanzen warten auf den Abschluss dieses Batches.
 
 Fügen Sie zum seriellen Bereitstellen von Instanzen eines Moduls den [BatchSize-Decorator](./file.md#resource-and-module-decorators) hinzu. Legen Sie dessen Wert auf die Anzahl der Instanzen fest, die gleichzeitig bereitgestellt werden sollen. Eine Abhängigkeit von früheren Instanzen wird in der Schleife erstellt, sodass ein Batch erst dann gestartet wird, wenn der vorherige Batch abgeschlossen wurde.
 

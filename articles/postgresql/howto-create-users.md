@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: c2d0cfc15457d45701f129ae329295064d773a09
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a91b334b5494d8db44c86352c95fd7b4d1ea2c14
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604106"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604073"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Erstellen von Benutzern auf einem Azure Database for PostgreSQL-Einzelserver
 
@@ -75,6 +75,14 @@ Mit dem Konto des Serveradministratorbenutzers können zusätzliche Benutzer ers
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;
    ```
+
+   Erstellt ein Benutzer eine Tabelle „Rolle“, gehört die Tabelle zu diesem Benutzer. Wenn ein anderer Benutzer Zugriff auf die Tabelle benötigt, müssen Sie dem anderen Benutzer Berechtigungen auf Tabellenebene gewähren.
+
+   Beispiel: 
+
+    ```sql
+    GRANT SELECT ON ALL TABLES IN SCHEMA <schema_name> TO <db_user>;
+    ```
 
 5. Melden Sie sich beim Server an, und geben Sie unter Verwendung des neuen Benutzernamens und des Kennworts die gewünschte Datenbank an. In diesem Beispiel wird die psql-Befehlszeile gezeigt. Bei diesem Befehl werden Sie zum Eingeben des Kennworts für den Benutzernamen aufgefordert. Fügen Sie Ihren eigenen Servernamen, Datenbanknamen und Benutzernamen ein.
 

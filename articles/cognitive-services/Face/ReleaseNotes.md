@@ -1,30 +1,30 @@
 ---
-title: Neuerungen im Dienst „Gesichtserkennung“
+title: Neuerungen in Azure Gesichtserkennung
 titleSuffix: Azure Cognitive Services
-description: Die Versionshinweise des Gesichtserkennungsdiensts umfassen einen Verlauf der Releaseänderungen verschiedener Versionen.
+description: Bleiben Sie über aktuelle Releases und Updates des Azure-Gesichtserkennungsdiensts auf dem laufenden.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 04/26/2021
+ms.date: 09/08/2021
 ms.author: pafarley
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: fc61f94969311fedaa3fadb8c26e710537198f45
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.custom: contperf-fy21q3, contperf-fy22q1
+ms.openlocfilehash: d68ff884063f81eccccbd2dcd4d3bd05485f5ef9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018599"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750855"
 ---
-# <a name="whats-new-in-face-service"></a>Neuerungen im Dienst „Gesichtserkennung“
+# <a name="whats-new-in-azure-face-service"></a>Neuerungen in Azure Gesichtserkennung
 
 Der Azure-Dienst „Gesichtserkennung“ wird fortlaufend aktualisiert. In diesem Artikel finden Sie aktuelle Informationen zu Featureverbesserungen, Fixes und Dokumentationsaktualisierungen.
 
 ## <a name="april-2021"></a>April 2021
 
-### <a name="persondirectory"></a>PersonDirectory
+### <a name="persondirectory-data-structure"></a>PersonDirectory-Datenstruktur
 
 * Um Gesichtserkennungsvorgänge wie „Identifizieren“ und „Ähnliches suchen“ durchzuführen, müssen Kunden der Gesichtserkennungs-API eine gemischte Liste mit Objekten vom Typ **Person** erstellen. Das neue **PersonDirectory**-Element ist eine Datenstruktur, die eindeutige IDs, optionale Namenszeichenfolgen und optionale Benutzermetadaten-Zeichenfolgen für jede **Person**-Identität enthält, die dem Verzeichnis hinzugefügt wird. Derzeit bietet die Gesichtserkennungs-API die **LargePersonGroup**-Struktur, die über ähnliche Funktionen verfügt, aber auf 1 Mio. Identitäten beschränkt ist. Die **PersonDirectory**-Struktur kann auf bis zu 75 Milo. Identitäten hochskaliert werden. Ein weiterer wichtiger Unterschied zwischen **PersonDirectory** und vorherigen Datenstrukturen besteht darin, dass Sie nach dem Hinzufügen von Gesichtern zu einem **Person**-Objekt keine Train-Aufrufe mehr tätigen müssen – der Aktualisierungsprozess erfolgt automatisch. Weitere Informationen finden Sie unter [Verwenden der PersonDirectory-Struktur](Face-API-How-to-Topics/use-persondirectory.md).
 

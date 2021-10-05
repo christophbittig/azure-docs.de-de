@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5685f7932b49f8af57faf159a51a8cb634128337
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: e7d2621aab6d49c8bd6f4b6083c35d5e7299bf50
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217483"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630507"
 ---
 # <a name="os-backup-and-restore"></a>Betriebssystemsicherung und -wiederherstellung
 
@@ -117,12 +117,12 @@ In den nachstehenden Informationen werden die Schritte zum Durchführen einer Be
 
 ### <a name="take-a-manual-backup"></a>Erstellen einer manuellen Sicherung
 
-Holen Sie sich die neuesten Microsoft-Momentaufnahmetools für SAP HANA, wie in einer Reihe von Artikeln erklärt, beginnend mit [Tool für konsistente Momentaufnahmen in Azure-Anwendungen?](../../../azure-netapp-files/azacsnap-introduction.md), und konfigurieren und testen Sie sie wie in diesen Artikeln beschrieben:
+Holen Sie sich die neuesten Microsoft-Momentaufnahmetools für SAP HANA, wie in einer Reihe von Artikeln erklärt, beginnend mit [Was ist das Tool für konsistente Momentaufnahmen in Azure-Anwendungen?](../../../azure-netapp-files/azacsnap-introduction.md) Konfigurieren und testen Sie sie wie in diesen Artikeln beschrieben:
 
 - [Konfigurieren des Tools für anwendungskonsistente Momentaufnahmen in Azure](../../../azure-netapp-files/azacsnap-cmd-ref-configure.md)
 - [Testen des Tools für konsistente Momentaufnahmen in Azure-Anwendungen](../../../azure-netapp-files/azacsnap-cmd-ref-test.md) 
 
-Für eine regelmäßige Ausführung über `crontab`, wie unter [Sichern mithilfe des Tools für konsistente Momentaufnahmen in Azure-Anwendungen](../../../azure-netapp-files/azacsnap-cmd-ref-backup.md) beschrieben. 
+Dieser Review bereitet Sie auf eine regelmäßige Ausführung von Sicherungen über `crontab` vor, wie unter [Sichern mithilfe des Tools für konsistente Momentaufnahmen in Azure-Anwendungen](../../../azure-netapp-files/azacsnap-cmd-ref-backup.md) beschrieben. 
 
 Weitere Informationen finden Sie in den folgenden Referenzen:
 

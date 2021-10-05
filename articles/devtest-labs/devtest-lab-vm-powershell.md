@@ -1,15 +1,15 @@
 ---
 title: Erstellen einer VM in DevTest Labs mit Azure PowerShell
 description: Erfahren Sie, wie Sie in Azure DevTest Labs mithilfe von Azure PowerShell VMs erstellen und verwalten.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f5be9c6e11bb5037c3dbecfa256ba6a6b8058805
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 128962ae54ef5dbbcc9578cb5dbff9d1531336ea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110703718"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600587"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Erstellen einer VM in DevTest Labs mithilfe von Azure PowerShell
 In diesem Artikel wird das Erstellen einer VM in Azure DevTest Labs mithilfe von Azure PowerShell erläutert. Sie können PowerShell-Skripts verwenden, um die Erstellung von VMs in einem Lab in Azure DevTest Labs zu automatisieren. 

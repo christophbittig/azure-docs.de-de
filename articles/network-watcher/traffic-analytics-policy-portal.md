@@ -3,21 +3,18 @@ title: Bereitstellen und Verwalten von Traffic Analytics mithilfe von Azure Poli
 titleSuffix: Azure Network Watcher
 description: In diesem Artikel wird erläutert, wie die integrierten Richtlinien zum Verwalten der Bereitstellung von Traffic Analytics verwendet werden.
 services: network-watcher
-documentationcenter: na
 author: moagra
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2021
 ms.author: moagra
-ms.openlocfilehash: 3be6d5b30d270c9687b7100c07ee675268cee5c0
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 9d916122714b1dddab7d1d9b6d13e6fd58d14d46
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609148"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619361"
 ---
 # <a name="deploy-and-manage-traffic-analytics-using-azure-policy"></a>Bereitstellen und Verwalten von Traffic Analytics mithilfe von Azure Policy 
 
@@ -112,7 +109,7 @@ Dies entspricht der obigen Richtlinie, außer dass während der Wartung keine Da
 - Speicher-ID: Hierbei handelt es sich um die vollständige Ressourcen-ID des Speicherkontos. Das Speicherkonto sollte sich in derselben Region wie die NSG befinden.
 - Network Watcher-Ressourcengruppe: Der Name der Ressourcengruppe, die Ihre Network Watcher-Ressource enthält. Wenn Sie diese nicht umbenannt haben, können Sie die Standardeinstellung „NetworkWatcherRG“ eingeben.
 - Network Watcher-Name: Der Name des regionalen Network Watcher-Diensts. Format: NetworkWatcher_RegionName. Beispiel: NetworkWatcher_centralus.
-- Ressourcen-ID des Arbeitsbereichs: Ressourcen-ID des Arbeitsbereichs, in dem Traffic Analytics aktiviert werden muss. Das Format ist „/subscriptions/<SubscriptionID>/resourceGroups/<ResouceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>“.
+- Ressourcen-ID des Arbeitsbereichs: Ressourcen-ID des Arbeitsbereichs, in dem Traffic Analytics aktiviert werden muss. Das Format lautet `/subscriptions/<SubscriptionID>/resourceGroups/<ResouceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>`.
 - WorkspaceID: Arbeitsbereichs-GUID
 - WorkspaceRegion: Region des Arbeitsbereichs (beachten Sie, dass sie nicht mit der Region der NSG identisch sein muss)
 - TimeInterval: Häufigkeit, mit der verarbeitete Protokolle per Push in den Arbeitsbereich übertragen werden. Derzeit sind 60 Minuten und 10 Minuten zulässig. Der Standardwert sind 60 Minuten.
@@ -137,7 +134,7 @@ Wenn Ihre Richtlinie ausgeführt wurde, sollte ein Screenshot angezeigt werden, 
 
 ![DINE-Richtlinie: Ergebnisse in Traffic Analytics](./media/traffic-analytics/policy-two-results.png)  
 
-### <a name="remediation"></a>Wiederherstellung
+### <a name="remediation"></a>Behebung
 
 Wählen Sie zur manuellen Wartung die Option *Wartungstask erstellen* auf der oben gezeigten Konformitätsregisterkarte auf.
 

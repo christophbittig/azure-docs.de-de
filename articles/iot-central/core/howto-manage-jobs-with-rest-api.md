@@ -3,16 +3,16 @@ title: Verwenden der REST-API zum Verwalten von Aufträgen in Azure IoT Central
 description: Verwenden der IoT Central-REST-API zum Erstellen und Verwalten von Aufträgen in einer Anwendung
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/21/2020
+ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9eeb3619697e1b602053cac77fc42ae13663c388
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: 47548b3c7e1fa7503e3f30c155755d6fe4f29031
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113516181"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667044"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-create-and-manage-jobs"></a>Verwenden der IoT Central-REST-API zum Erstellen und Verwalten von Aufträgen
 
@@ -30,6 +30,11 @@ In diesem Artikel wird beschrieben, wie Sie die Auftrags-API (`/jobs/{job_id}`) 
 Jeder IoT Central-REST-API-Aufruf erfordert einen Autorisierungsheader. Weitere Informationen finden Sie unter [Authentifizieren und Autorisieren von IoT Central-REST-API-Aufrufen](howto-authorize-rest-api.md).
 
 Die Referenzdokumentation für die IoT Central-REST-API finden Sie unter [Azure IoT Central: Referenz zur REST-API](/rest/api/iotcentral/).
+
+> [!TIP]
+> Die [Vorschau-API](/rest/api/iotcentral/1.1-previewdataplane/jobs) enthält Unterstützung für das neue [Organisationsfeature](howto-create-organizations.md).
+
+Informationen zum Erstellen und Verwalten von Aufträgen in der Benutzeroberfläche finden Sie unter [Verwalten von Geräten per Massenvorgang in Ihrer Azure IoT Central-Anwendung](howto-manage-devices-in-bulk.md).
 
 ## <a name="job-payloads"></a>Auftragsnutzlasten
 

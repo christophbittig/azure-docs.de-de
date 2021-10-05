@@ -1,18 +1,18 @@
 ---
 title: Netzwerkfeatures
 description: Erfahren Sie mehr über die Netzwerkfeatures in Azure App Service und darüber, welche Features Sie für Sicherheit oder andere Funktionalitäten benötigen.
-author: ccompy
+author: madsd
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 03/26/2021
-ms.author: ccompy
+ms.date: 09/20/2021
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 85409230565c9311621faa18b5c8834c57c33c99
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: aa54c96864476cfd42d1d91e61ce293e919f9069
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112459908"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592696"
 ---
 # <a name="app-service-networking-features"></a>App Service-Netzwerkfunktionen
 
@@ -51,7 +51,7 @@ Für jeden vorliegenden Anwendungsfall kann es einige Möglichkeiten geben, das 
 | Unterstützung für IP-basiertes SSL für Ihre App benötigt | Von der App zugewiesene Adresse |
 | Unterstützung einer nicht freigegebenen, dedizierten eingehenden Adresse für Ihre App | Von der App zugewiesene Adresse |
 | Beschränken des Zugriffs auf Ihre App aus einem Satz klar definierter Adressen | Zugriffsbeschränkungen |
-| Beschränken des Zugriffs auf Ihre App von Ressourcen in einem virtuellen Netzwerk | Dienstendpunkte </br> ILB ASE </br> Private Endpunkte |
+| Beschränken des Zugriffs auf Ihre App von Ressourcen in einem virtuellen Netzwerk | Dienstendpunkte </br> Interner Load Balancer (ILB) ASE </br> Private Endpunkte |
 | Verfügbarmachen Ihrer App unter einer privaten IP-Adresse in Ihrem virtuellen Netzwerk | ILB ASE </br> Private Endpunkte </br> Private IP-Adresse für eingehenden Datenverkehr an einer Application Gateway-Instanz mit Dienstendpunkten |
 | Schützen Ihrer App mit einer Web Application Firewall (WAF) | Application Gateway und ILB-ASE </br> Application Gateway mit privaten Endpunkten </br> Application Gateway mit Dienstendpunkten </br> Azure Front Door mit Zugriffsbeschränkungen |
 | Lastenausgleich für Datenverkehr zu Ihren Apps in verschiedenen Regionen | Azure Front Door mit Zugriffsbeschränkungen | 
@@ -62,7 +62,7 @@ Anhand der folgenden Anwendungsfälle für ausgehenden Datenverkehr wird vorgesc
 | Ausgehender Anwendungsfall | Funktion |
 |---------------------|-------------------|
 | Zugreifen auf Ressourcen in einem virtuellen Azure-Netzwerk in derselben Region | VNET-Integration </br> ASE |
-| Zugreifen auf Ressourcen in einem virtuellen Azure-Netzwerk in einer anderen Region | Von einem Gateway abhängige VNet-Integration </br> ASE und Peering virtueller Netzwerke |
+| Zugreifen auf Ressourcen in einem virtuellen Azure-Netzwerk in einer anderen Region | VNET-Integration und Peering virtueller Netzwerke </br> Von einem Gateway abhängige VNet-Integration </br> ASE und Peering virtueller Netzwerke |
 | Zugreifen auf Ressourcen, die mit Dienstendpunkten geschützt sind | VNET-Integration </br> ASE |
 | Zugreifen auf Ressourcen in einem privaten Netzwerk, das nicht mit Azure verbunden ist | Hybridverbindungen |
 | Zugreifen auf Ressourcen über Azure ExpressRoute-Verbindungen | VNET-Integration </br> ASE | 
@@ -103,7 +103,7 @@ Informationen, wie Sie eine Adresse für Ihre App festlegen, finden Sie unter [H
 
 Mithilfe von Zugriffsbeschränkungen können Sie *eingehende* Anforderungen filtern. Die Filteraktion wird mit den Front-End-Rollen ausgeführt, die den Workerrollen vorgelagert sind, mit denen Ihre Apps ausgeführt werden. Da die Front-End-Rollen den Workern vorgelagert sind, können Sie Zugriffsbeschränkungen als Schutz auf Netzwerkebene für Ihre Apps angesehen werden. 
 
-Diese Funktion ermöglicht Ihnen, eine Liste von zulässigen und abgelehnten Regeln zu erstellen, die in der Reihenfolge ihrer Priorität ausgewertet werden. Sie ähnelt der Netzwerksicherheitsgruppen-Funktion (NSG), die in Azure-Netzwerken vorhanden ist. Sie können diese Funktion in einer ASE oder im mehrinstanzenfähigen Dienst verwenden. Bei Verwendung mit einer ILB-ASE oder einem privaten Endpunkt können Sie den Zugriff von privaten Adressblöcken beschränken.
+Diese Funktion ermöglicht Ihnen, eine Liste von zulässigen und abgelehnten Regeln zu erstellen, die in der Reihenfolge ihrer Priorität ausgewertet werden. Sie ähnelt der Netzwerksicherheitsgruppen-Funktion (NSG), die in Azure-Netzwerken vorhanden ist. Sie können diese Funktion in einer ASE oder im mehrinstanzenfähigen Dienst verwenden. Bei Verwendung mit einer ILB ASE können Sie den Zugriff von privaten Adressblöcken beschränken.
 > [!NOTE]
 > Pro App können bis zu 512 Regeln zur Zugriffseinschränkung konfiguriert werden. 
 
@@ -122,7 +122,10 @@ Informationen, wie Sie diese Funktion aktivieren, finden Sie unter [Konfiguriere
 
 #### <a name="access-restriction-rules-based-on-service-endpoints"></a>Auf Dienstendpunkten basierende Zugriffseinschränkungsregeln 
 
-Mit Dienstendpunkten können Sie *eingehenden* Zugriff auf Ihre App so sperren, dass die Quelladresse aus einem Satz von Subnetzen stammen muss, die Sie auswählen. Diese Funktion funktioniert zusammen mit IP-Zugriffseinschränkungen. Dienstendpunkte sind mit Remotedebugging nicht kompatibel. Wenn Sie Remotedebuggen mit Ihrer App verwenden möchten, darf sich Ihr Client nicht in einem Subnetz mit aktivierten Dienstendpunkten befinden. Der Vorgang zum Festlegen von Dienstendpunkten ähnelt dem Verfahren zum Festlegen von IP-Zugriffseinschränkungen. Sie können eine Zulassungs-/Verweigerungsliste mit Zugriffsregeln erstellen, die öffentliche Adressen und Subnetze in Ihren virtuellen Netzwerken umfasst. 
+Mit Dienstendpunkten können Sie *eingehenden* Zugriff auf Ihre App so sperren, dass die Quelladresse aus einem Satz von Subnetzen stammen muss, die Sie auswählen. Diese Funktion funktioniert zusammen mit IP-Zugriffseinschränkungen. Dienstendpunkte sind mit Remotedebugging nicht kompatibel. Wenn Sie Remotedebuggen mit Ihrer App verwenden möchten, darf sich Ihr Client nicht in einem Subnetz mit aktivierten Dienstendpunkten befinden. Der Vorgang zum Festlegen von Dienstendpunkten ähnelt dem Verfahren zum Festlegen von IP-Zugriffseinschränkungen. Sie können eine Zulassungs-/Verweigerungsliste mit Zugriffsregeln erstellen, die öffentliche Adressen und Subnetze in Ihren virtuellen Netzwerken umfasst.
+
+> [!NOTE]
+> Regeln für Zugriffseinschränkungen, die auf Dienstendpunkten basieren, werden nicht für Apps unterstützt, die IP-basiertes SSL verwenden [App-zugewiesene Adresse](#app-assigned-address).
 
 Einige Anwendungsfälle für diese Funktion:
 
@@ -196,23 +199,25 @@ Die von einem Gateway abhängige VNet-Integration in App Service ermöglicht, da
 
 Mit dieser Funktion wird das Problem des Zugriffs auf Ressourcen in anderen virtuellen Netzwerken gelöst. Sie kann sogar verwendet werden, um eine Verbindung über ein virtuelles Netzwerk mit anderen virtuellen Netzwerken oder lokal herzustellen. Die Funktion kann nicht mit virtuellen Netzwerken, die über ExpressRoute verbunden sind, kann aber mit Netzwerken verwendet werden, die über ein Site-to-Site-VPN verbunden sind. Es ist normalerweise nicht sinnvoll, diese Funktion aus einer App in einer App Service-Umgebung (ASE) zu verwenden, da sich die ASE bereits in Ihrem virtuellen Netzwerk befindet. Anwendungsfälle für diese Funktion:
 
-* Zugreifen auf Ressourcen über private IP-Adressen in Ihren virtuellen Azure-Netzwerken. 
-* Zugreifen auf lokale Ressourcen, wenn ein Site-to-Site-VPN vorhanden ist. 
-* Zugreifen auf Ressourcen in virtuellen Netzwerken mit Peering. 
+* Zugreifen auf Ressourcen über private IP-Adressen in Ihren virtuellen Azure-Netzwerken.
+* Zugreifen auf lokale Ressourcen, wenn ein Site-to-Site-VPN vorhanden ist.
+* Greifen Sie auf Ressourcen in regionenübergreifenden VNETs zu, die nicht mit einem VNET in der Region verbunden sind. 
 
 Wenn diese Funktion aktiviert ist, wird in Ihrer App der DNS-Server verwenden, mit dem das virtuelle Zielnetzwerk konfiguriert ist. Weitere Informationen zu dieser Funktion finden Sie unter [App Service-VNet-Integration][vnetintegrationp2s]. 
 
-### <a name="vnet-integration"></a>VNET-Integration
+### <a name="regional-vnet-integration"></a>Regionale VNET-Integration
 
 Die von einem Gateway abhängige VNet-Integration ist nützlich, löst aber nicht das Problem des Zugreifens auf Ressourcen über ExpressRoute. Zusätzlich zur Notwendigkeit der Erreichbarkeit über ExpressRoute-Verbindungen ist es für Apps erforderlich, dass sie Aufrufe an Dienste senden können, die durch Dienstendpunkte geschützt sind. Eine andere VNet-Integrationsfunktion kann diese Anforderungen erfüllen. 
 
 Die neue VNet-Integrationsfunktion ermöglicht es Ihnen, das Back-End Ihrer App in einem Subnetz in einem virtuellen Resource Manager-Netzwerk in derselben Region wie Ihre App zu platzieren. Diese Funktion ist nicht aus einer App Service-Umgebung verfügbar, die sich bereits in einem virtuellen Netzwerk befindet. Anwendungsfälle für diese Funktion:
 
 * Zugreifen auf Ressourcen in virtuellen Resource Manager-Netzwerken in derselben Region.
+* Greifen Sie auf Ressourcen in virtuellen Netzwerken mit Peering zu, einschließlich regionenübergreifender Verbindungen.
 * Zugreifen auf Ressourcen, die mit Dienstendpunkten geschützt sind. 
 * Zugreifen auf Ressourcen, auf die über ExpressRoute- oder VPN-Verbindungen zugegriffen werden kann.
-* Hilfe beim Sichern des gesamten ausgehenden Datenverkehrs. 
-* Erzwingen von Tunnelung für den gesamten ausgehenden Datenverkehr. 
+* Greifen Sie auf Ressourcen in privaten Netzwerken zu, ohne dass ein Virtual Network benötigt wird.
+* Hilfe beim Sichern des gesamten ausgehenden Datenverkehrs.
+* Erzwingen von Tunnelung für den gesamten ausgehenden Datenverkehr.
 
 ![Diagramm, das VNet-Integration veranschaulicht.](media/networking-features/vnet-integration.png)
 
@@ -226,20 +231,18 @@ Eine App Service-Umgebung (ASE) ist eine Bereitstellung von Azure App Service f�
 * Zugriff auf Ressourcen über ExpressRoute.
 * Verfügbarmachen Ihrer Apps mit einer privaten Adresse in Ihrem virtuellen Netzwerk. 
 * Zugriff auf Ressourcen über Dienstendpunkte. 
+* Zugriff auf Ressourcen über private Endpunkte. 
 
-Mit einer ASE müssen Sie keine Funktionen wie „VNet-Integration“ oder „Dienstendpunkte“ verwenden, da sich die ASE bereits in Ihrem virtuellen Netzwerk befindet. Wenn Sie über Dienstendpunkte auf Ressourcen wie SQL oder Azure Storage zugreifen möchten, aktivieren Sie Dienstendpunkte im ASE-Subnetz. Wenn Sie auf Ressourcen im virtuellen Netzwerk zugreifen möchten, ist keine zusätzliche Konfiguration erforderlich. Wenn Sie über ExpressRoute auf Ressourcen zugreifen möchten, befinden Sie sich bereits im virtuellen Netzwerk und müssen nichts an der ASE oder den in ihr enthaltenen Apps konfigurieren. 
+Mit einer ASE müssen Sie keine Funktionen wie „VNet-Integration“ oder „Dienstendpunkte“ verwenden, da sich die ASE bereits in Ihrem virtuellen Netzwerk befindet. Wenn Sie über Dienstendpunkte auf Ressourcen wie SQL oder Azure Storage zugreifen möchten, aktivieren Sie Dienstendpunkte im ASE-Subnetz. Wenn Sie auf Ressourcen im virtuellen Netzwerk oder in privaten Endpunkten zugreifen möchten, ist keine zusätzliche Konfiguration erforderlich. Wenn Sie über ExpressRoute auf Ressourcen zugreifen möchten, befinden Sie sich bereits im virtuellen Netzwerk und müssen nichts an der ASE oder den in ihr enthaltenen Apps konfigurieren. 
 
 Da die Apps in einer ILB ASE über eine private IP-Adresse verfügbar gemacht werden können, können Sie einfach Web Application Firewall-Geräte hinzufügen, um nur die gewünschten Apps für das Internet verfügbar zu machen und die restlichen Apps geschützt zu belassen. Diese Funktion kann dazu beitragen, die Entwicklung von Anwendungen mit mehreren Ebenen zu vereinfachen. 
 
 Einige Dinge sind zurzeit aus dem mehrinstanzenfähigen Dienst nicht möglich, können aber aus einer ASE ausgeführt werden. Hier einige Beispiele:
 
-* Verfügbarmachen Ihrer Apps unter einer privaten IP-Adresse.
-* Hilfe beim Schützen des gesamten ausgehenden Datenverkehrs mit Netzwerksteuerelementen, die nicht Bestandteil Ihrer App sind.
 * Hosten Ihrer Apps in einem Dienst für einen einzelnen Mandanten. 
 * Hochskalieren auf sehr viel mehr Instanzen als im mehrinstanzenfähigen Dienst möglich sind. 
 * Laden von privaten Zertifizierungsstellen-Clientzertifikaten zur Verwendung durch Ihre Apps mit privaten Endpunkten, die über eine Zertifizierungsstelle geschützt sind.
 * Erzwingen von TLS 1.1 für alle Apps, die im System gehostet werden, ohne irgendeine Möglichkeit, dies auf App-Ebene zu deaktivieren. 
-* Bereitstellen einer dedizierten ausgehenden Adresse für alle Apps in Ihrer ASE, die für keinen Kunden freigegeben sind. 
 
 ![Diagramm, das eine ASE in einem virtuellen Netzwerk veranschaulicht.](media/networking-features/app-service-environment.png)
 
@@ -308,7 +311,7 @@ Wenn Sie App Service überprüfen, finden Sie mehrere Ports, die für eingehende
 |----------|-------------|
 |  HTTP/HTTPS  | 80, 443 |
 |  Verwaltung | 454, 455 |
-|  FTP/FTPS    | 21, 990, 10001-10020 |
+|  FTP/FTPS    | 21, 990, 10001-10300 |
 |  Remotedebuggen in Visual Studio  |  4020, 4022, 4024 |
 |  Web Deploy-Dienst | 8172 |
 |  Infrastrukturverwendung | 7654, 1221 |

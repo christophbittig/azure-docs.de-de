@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 718648be0f4a5ec9dd3520127552138b8471d57c
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 31a65c31558940ba7e39e21c8b6e33ffa8e7c9b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114710475"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633655"
 ---
 # <a name="troubleshoot-common-azure-virtual-desktop-agent-issues"></a>Behandeln häufiger Probleme mit dem Azure Virtual Desktop-Agent
 
@@ -113,7 +113,7 @@ Um dieses Problem zu lösen, überprüfen Sie, ob BrokerURI und BrokerURIGlobal 
 Wechseln Sie zu **Ereignisanzeige** > **Windows-Protokolle** > **Anwendung**. Wenn Sie ein Ereignis mit der ID 3703 und der Meldung „RD-Gateway-URL ist nicht zugänglich“ in der Beschreibung feststellen, kann der Agent die Gateway-URLs nicht erreichen. Um erfolgreich eine Verbindung mit Ihrem Sitzungshost herzustellen und zuzulassen, dass Netzwerkdatenverkehr zu diesen Endpunkten Einschränkungen umgeht, müssen Sie die Blockierung der URLs in der [Liste der erforderlichen URLs](safe-url-list.md) aufheben. Stellen Sie auch sicher, dass Ihre Firewall- oder Proxyeinstellungen diese URLs nicht blockieren. Damit Azure Virtual Desktop verwendet werden kann, muss die Blockierung dieser URLs aufgehoben werden.
 
 Um dieses Problem zu lösen, vergewissern Sie sich, dass Ihre Firewall- und/oder DNS-Einstellungen diese URLs nicht blockieren:
-1. [Verwenden von Azure Firewall zum Schutz von Azure Virtual Desktop-Bereitstellungen](../firewall/protect-windows-virtual-desktop.md)
+1. [Verwenden von Azure Firewall zum Schutz von Azure Virtual Desktop-Bereitstellungen](../firewall/protect-azure-virtual-desktop.md)
 2. Konfigurieren Sie die [DNS-Einstellungen für Azure Firewall](../firewall/dns-settings.md).
 
 ## <a name="error-3019"></a>Fehler: 3019
@@ -243,7 +243,7 @@ Um dieses Problem zu beheben, installieren Sie den parallelen Stapel neu:
 3. Wechseln Sie zu **Systemsteuerung** > **Programme** > **Programme und Funktionen**.
 4. Deinstallieren Sie die aktuelle Version von **Remote Desktop Services SxS Network Stack** oder die in **HKEY_LOCAL_MACHINE** > **SYSTEM** > **CurrentControlSet** > **Control** > **Terminal Server** > **WinStations** unter **ReverseConnectListener** aufgelistete Version.
 5. Öffnen Sie ein Konsolenfenster als Administrator, und wechseln Sie zu **Programme** > **Microsoft RDInfra**.
-6. Wählen Sie die Komponente **SxSStack**, oder führen Sie den Befehl **msiexec /i SxsStack-<version>.msi** aus, um die MSI-Datei zu installieren.
+6. Wählen Sie die Komponente **SxSStack**, oder führen Sie den Befehl **`msiexec /i SxsStack-<version>.msi`** aus, um die MSI-Datei zu installieren.
 8. Starten Sie den virtuellen Computer neu.
 9. Kehren Sie zur Eingabeaufforderung zurück, und führen Sie den Befehl **qwinsta** aus.
 10. Überprüfen Sie, ob neben der in Schritt 6 installierten Stapelkomponente **Lauschen** angezeigt wird.
@@ -381,5 +381,5 @@ Falls Ihr Problem weiterhin besteht, erstellen Sie eine Supportanfrage, und gebe
 - Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Azure Virtual Desktop finden Sie unter [Azure Virtual Desktop – PowerShell](troubleshoot-powershell.md).
 - Weitere Informationen zum Dienst finden Sie unter [Azure Virtual Desktop-Umgebung](environment-setup.md).
 - Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
-- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/management/view-activity-logs.md).
+- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-monitor/essentials/activity-log.md).
 - Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../azure-resource-manager/templates/deployment-history.md).

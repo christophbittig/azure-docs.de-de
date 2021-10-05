@@ -1,16 +1,16 @@
 ---
-title: Erstellen einer Service Fabric-Clusterumgebung in Azure DevTest Labs
+title: Erstellen eines Service Fabric-Clusters in Azure
 description: Erfahren Sie, wie Sie eine Umgebung mit einem eigenständigen Service Fabric-Cluster erstellen und den Cluster mithilfe von Zeitplänen starten und beenden.
 author: EMaher
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: e85e4dd34a63500b569b75bb953a4c6061aefe5e
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 42a8c3b11f2da5910ff3aed1a1eface827100289
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586003"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593836"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Erstellen einer Umgebung mit einem eigenständigen Service Fabric-Cluster in Azure DevTest Labs
 Dieser Artikel enthält Informationen zum Erstellen einer Umgebung mit einem eigenständigen Service Fabric-Cluster in Azure DevTest Labs. 

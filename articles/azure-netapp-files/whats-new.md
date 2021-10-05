@@ -12,18 +12,28 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/18/2021
+ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 0bf972cd5b597d4cf0fb608eee8481cb72080425
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: cae4e16f42d9031040060a33bb8a5795f7695f56
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769339"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092127"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Neues in Azure NetApp Files
 
 Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Übersicht über die neuesten Features und Verbesserungen. 
+
+## <a name="september-2021"></a>September 2021
+
+* [Sicherung bei Azure NetApp Files](backup-introduction.md) (Vorschau)
+
+    Azure NetApp Files Onlinemomentaufnahmen werden jetzt durch die Sicherung von Momentaufnahmen erweitert. Mit dieser neuen Sicherungsfunktion können Sie Ihre Azure NetApp Files-Momentaufnahmen schnell und kostengünstig in einen kostengünstigen und ZRS-fähigen Azure-Speicher tresor und so Ihre Daten vor versehentlichem Löschen schützen. Azure NetApp Files Backup erweitert die integrierte Momentaufnahmetechnologie von ONTAP. Wenn Momentaufnahmen im Tresor in Azure Storage gespeichert werden, werden nur geänderte Blöcke relativ zu zuvor tresorgespeicherten Momentaufnahmen in einem effizienten Format kopiert und gespeichert. Tresormomentaufnahmen werden jedoch weiterhin vollständig dargestellt und können einzeln und direkt auf einem neuen Volume wiederhergestellt werden, sodass kein iterativer, vollständig inkrementeller Wiederherstellungsprozess mehr benötigt wird. Diese erweiterte Technologie minimiert die Menge an Daten, die zum Speichern in und Abrufen aus Azure Storage erforderlich sind, und spart so Datenübertragungs- und Speicherkosten. Auch die Replikationszeit verkürzt sich dadurch, sodass Sie ein kürzeres Restore Point Objective (RPO) erreichen können. Sie können jetzt eine Mindestanzahl von Momentaufnahmen online im Azure NetApp Files-Dienst für die unmittelbarsten, nahezu sofortigen Datenwiederherstellungsanforderungen speichern und einen längeren Verlauf von Momentaufnahmen zu geringeren Kosten für die langfristige Aufbewahrung im Azure NetApp Files-Sicherungstresor erstellen. Weitere Informationen finden Sie unter [Funktionsweise von Azure NetApp Files-Momentaufnahmen](snapshots-introduction.md).
+
+* Option [**Administratoren"** ](create-active-directory-connections.md#create-an-active-directory-connection) in Active Directory-Verbindungen (Vorschau)
+
+    Die Seite Active Directory-Verbindungen enthält jetzt das Feld **Administratoren.** Sie können Benutzer oder Gruppen angeben, denen Administratorrechte auf dem Volume erteilt werden sollen.
 
 ## <a name="august-2021"></a>August 2021
 
@@ -31,7 +41,7 @@ Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Ü
 
     Sie können das SMB-Feature „Fortlaufende Verfügbarkeit“ (Continuous Availability, CA) bereits aktivieren, wenn Sie [ein neues SMB-Volume erstellen](azure-netapp-files-create-volumes-smb.md#continuous-availability). Sie können jetzt auch die SMB-Zertifizierungsstelle auf einem vorhandenen SMB-Volume aktivieren. Siehe [Aktivieren der fortlaufenden Verfügbarkeit auf den vorhandenen SMB-Volumes](enable-continuous-availability-existing-SMB.md).
 
-* [Momentaufnahmerichtlinie](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) ab sofort allgemein verfügbar.  
+* [Momentaufnahmerichtlinie](snapshots-manage-policy.md) ab sofort allgemein verfügbar.  
 
     Das Feature „Momentaufnahmerichtlinie“ ist jetzt allgemein verfügbar. Sie müssen die Funktionen nicht mehr registrieren, bevor Sie sie verwenden.
 
@@ -148,7 +158,7 @@ Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Ü
 
 ## <a name="november-2020"></a>November 2020
 
-* [Momentaufnahme wiederherstellen](azure-netapp-files-manage-snapshots.md#revert-a-volume-using-snapshot-revert)
+* [Momentaufnahme wiederherstellen](snapshots-revert-volume.md)
 
     Mit der Funktion zum Wiederherstellen von Momentaufnahmen können Sie schnell ein Volume wieder in den Zustand versetzen, in dem es sich befand, als eine bestimmte Momentaufnahme erstellt wurde. In den meisten Fällen ist das Wiederherstellen eines Volumes wesentlich schneller als das Wiederherstellen einzelner Dateien aus einer Momentaufnahme in das aktive Dateisystem. Im Vergleich zur Wiederherstellung einer Momentaufnahme auf einem neuen Volume ist es auch wesentliche effizienter hinsichtlich des Speicherplatzes.
 
@@ -192,15 +202,15 @@ Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Ü
 
     Die Cloud verspricht Flexibilität bei den IT-Ausgaben. Sie können den Servicelevel eines vorhandenen Azure NetApp Files-Volumes jetzt ändern, indem Sie das Volume in einen anderen Kapazitätspool verschieben, der den von Ihnen für das Volume gewünschten Servicelevel verwendet. Diese direkte Änderung des Servicelevels für das Volume erfordert keine Migration von Daten. Auch der Zugriff auf das Volume auf Datenebene wird hiervon nicht beeinträchtigt. Sie können ein vorhandenes Volume so ändern, dass es einen höheren Servicelevel verwendet, um die Leistung zu verbessern, oder so dass es einen niedrigeren Servicelevel verwendet, um die Kosten zu optimieren. Diese Funktion ist kostenlos (die normalen [Azure NetApp Files-Speicherkosten](https://azure.microsoft.com/pricing/details/netapp/) fallen weiterhin an). Sie befindet sich derzeit in der Vorschauphase. Sie können sich für die Featurevorschau registrieren, indem Sie der [Dokumentation zur dynamischen Änderung des Servicelevels](dynamic-change-volume-service-level.md) folgen.
 
-* [Volumemomentaufnahme-Richtlinie](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) (Vorschau) 
+* [Volumemomentaufnahme-Richtlinie](snapshots-manage-policy.md) (Vorschau) 
 
-    Mit Azure NetApp Files können Sie Zeitpunktmomentaufnahmen Ihrer Volumes erstellen. Sie können jetzt eine Momentaufnahmerichtlinie erstellen, damit Azure NetApp Files automatisch Volumemomentaufnahmen mit einer Häufigkeit Ihrer Wahl erstellt. Sie können die Erstellung der Momentaufnahmen in stündlichen, täglichen, wöchentlichen oder monatlichen Zyklen planen. Außerdem können Sie als Bestandteil der Momentaufnahmerichtlinie die maximale Anzahl aufzubewahrender Momentaufnahmen angeben. Diese Funktion ist kostenlos (die normalen [Azure NetApp Files-Speicherkosten](https://azure.microsoft.com/pricing/details/netapp/) fallen weiterhin an) und befindet sich derzeit in der Vorschauphase. Sie können sich für die Featurevorschau registrieren, indem Sie der [Dokumentation für Volumemomentaufnahme-Richtlinien](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) folgen.
+    Mit Azure NetApp Files können Sie Zeitpunktmomentaufnahmen Ihrer Volumes erstellen. Sie können jetzt eine Momentaufnahmerichtlinie erstellen, damit Azure NetApp Files automatisch Volumemomentaufnahmen mit einer Häufigkeit Ihrer Wahl erstellt. Sie können die Erstellung der Momentaufnahmen in stündlichen, täglichen, wöchentlichen oder monatlichen Zyklen planen. Außerdem können Sie als Bestandteil der Momentaufnahmerichtlinie die maximale Anzahl aufzubewahrender Momentaufnahmen angeben. Diese Funktion ist kostenlos (die normalen [Azure NetApp Files-Speicherkosten](https://azure.microsoft.com/pricing/details/netapp/) fallen weiterhin an) und befindet sich derzeit in der Vorschauphase. Sie können sich für die Featurevorschau registrieren, indem Sie der [Dokumentation für Volumemomentaufnahme-Richtlinien](snapshots-manage-policy.md) folgen.
 
 * [Exportrichtlinie mit NFS-Stammzugriff](azure-netapp-files-configure-export-policy.md)
 
     Sie können in Azure NetApp Files jetzt angeben, ob das Stammkonto auf das Volume zugreifen kann. 
 
-* [Momentaufnahmepfad ausblenden](azure-netapp-files-manage-snapshots.md#restore-a-file-from-a-snapshot-using-a-client)
+* [Momentaufnahmepfad ausblenden](snapshots-edit-hide-path.md)
 
     Sie können in Azure NetApp Files jetzt angeben, ob ein Benutzer das Verzeichnis `.snapshot` (NFS-Clients) oder den Ordner `~snapshot` (SMB-Clients) auf einem eingebundenen Volume anzeigen und darauf zugreifen kann.
 

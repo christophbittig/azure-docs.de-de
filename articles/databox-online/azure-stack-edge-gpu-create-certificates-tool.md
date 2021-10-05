@@ -1,19 +1,18 @@
 ---
 title: Erstellen von Zertifikaten für Azure Stack Edge Pro GPU mit dem Azure Stack Hub Readiness Checker-Tool
 description: In diesem Artikel wird beschrieben, wie Sie Zertifikatsanforderungen erstellen und dann mithilfe des Azure Stack Hub Readiness Checker-Tools Zertifikate auf Ihrem Azure Stack Edge Pro-GPU-Gerät erhalten und installieren.
-services: Azure Stack Edge Pro
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 7b167efdc0b1edaa1f09b0b85a1abbf86ef77037
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 08201fafa3f69803e15a02c1535159101a1ecfea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113353915"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128660992"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-gpu-using-azure-stack-hub-readiness-checker-tool"></a>Erstellen von Zertifikaten für Azure Stack Edge Pro GPU mit dem Azure Stack Hub Readiness Checker-Tool 
 
@@ -118,7 +117,7 @@ Führen Sie die folgenden Schritte aus, um die Azure Stack Edge Pro-Gerätezerti
     |Seit      |Blob Storage-Zertifikatanforderung. Sie enthält einen Platzhalter, da sie alle Speicherkonten abdeckt, die Sie möglicherweise auf dem Gerät erstellen.          |
     |Seit      |VPN-Client-Zertifikatanforderung.         |
 
-    Außerdem wird ein INF-Ordner angezeigt. Dieser enthält eine management.<Name des Edge-Geräts>-Informationsdatei in Klartext, in der die Zertifikatdetails erläutert werden.  
+    Außerdem wird ein INF-Ordner angezeigt. Dies enthält eine Management.\<edge-devicename\> -Informationsdatei in Klartext, in der die Zertifikatdetails erläutert werden.  
 
 
 6. Übermitteln Sie diese Dateien an Ihre Zertifizierungsstelle (intern oder öffentlich). Stellen Sie sicher, dass Ihre Zertifizierungsstelle mithilfe Ihrer generierten Anforderung Zertifikate generiert, die den Anforderungen an Azure Stack Edge Pro-Zertifikate für [Knotenzertifikate](azure-stack-edge-gpu-certificates-overview.md#node-certificates), [Endpunktzertifikate](azure-stack-edge-gpu-certificates-overview.md#endpoint-certificates) und [Zertifikate für die lokale Benutzeroberfläche](azure-stack-edge-gpu-certificates-overview.md#local-ui-certificates) entsprechen.

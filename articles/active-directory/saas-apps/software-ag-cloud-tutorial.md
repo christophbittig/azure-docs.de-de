@@ -1,7 +1,6 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Software AG Cloud | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Software AG Cloud'
 description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Software AG Cloud konfigurieren.
-services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.reviewer: CelesteDG
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c2a2446da0e1ccf1b3dab88fe898b179291ddaba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 900cb7892331db3e78314a5de6bfb432f40990c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98726114"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558479"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Software AG Cloud
 
@@ -151,7 +150,7 @@ In diesem Abschnitt wird in Software AG Cloud ein Benutzer mit dem Namen Britta 
 
 In diesem Abschnitt testen Sie die Konfiguration des einmaligen Anmeldens von Azure AD mit der folgenden Option. 
 
-Wenn Microsoft Azure in Software AG Cloud als Anbieter konfiguriert ist, können Sie zu `www.softwareag.cloud` navigieren, auf die Anmeldeschaltfläche klicken und den Umgebungsnamen eingeben. Klicken Sie auf dem nächsten Bildschirm auf den Link „Mit <IDP NAME> anmelden“, und geben Sie die Anmeldeinformationen ein. Nachdem Sie sich authentifiziert haben, werden Sie angemeldet, und die Homepage von Software AG Cloud wird angezeigt.
+Wenn Microsoft Azure in Software AG Cloud als Anbieter konfiguriert ist, können Sie zu `www.softwareag.cloud` navigieren, auf die Anmeldeschaltfläche klicken und den Umgebungsnamen eingeben. Klicken Sie auf dem nächsten Bildschirm auf den Link „Mit \<IDP NAME\> anmelden“, und geben Sie die Anmeldeinformationen ein. Nachdem Sie sich authentifiziert haben, werden Sie angemeldet, und die Homepage von Software AG Cloud wird angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 168ea35d32a02d512ef088ace098d2938a57c022
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 30287957ca9d44c27f0d46efb6ae358db7d6ab44
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889758"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662265"
 ---
 # <a name="achieve-nist-authenticator-assurance-level-2-with-azure-active-directory"></a>Realisieren von NIST Authenticator Assurance Level 2 mit Azure Active Directory
 
@@ -43,8 +43,10 @@ Die folgende Tabelle enthält Details zu den Authentifikatortypen, die für AAL2
 | Kennwort + Telefon (SMS) | Gespeichertes Geheimnis + Out-of-Band |
 | Kennwort + Microsoft Authenticator-App (OTP)<br>Kennwort + SF OTP | Gespeichertes Geheimnis +  ‎Single-Factor-Einmalkennwort |
 | Kennwort + in Azure AD eingebettetes Gerät mit Software-TPM <br>Kennwort + konformes mobiles Gerät<br>Kennwort + in Azure AD Hybrid eingebettetes Gerät mit Software-TPM <br>Kennwort + Microsoft Authenticator-App (Benachrichtigung) | Gespeichertes Geheimnis + ‎Single-Factor-Kryptografiesoftware |
-| Kennwort + in Azure AD eingebettetes Gerät mit Hardware-TPM <br>Kennwort + in Azure AD Hybrid eingebettetes Gerät mit Hardware-TPM | Gespeichertes Geheimnis + ‎Single-Factor-Kryptografiehardware |
+| Kennwort + in Azure AD eingebettetes Gerät mit Hardware-TPM <br>Kennwort + in Azure AD Hybrid eingebettetes Gerät mit Hardware-TPM | Gespeichertes Geheimnis + Single-Factor-Kryptografiehardware |
 
+> [!NOTE]
+> Wenn Sie in einer Richtlinie für bedingten Zugriff fordern, dass ein Gerät entweder als konform oder hybrid Azure AD verbunden ist, fungiert Authenticator als Identitätswechsel-Widerstand bei der Verifizierer.
 
 ### <a name="our-recommendations"></a>Empfehlungen
 
@@ -111,8 +113,8 @@ Alle Azure AD-Authentifizierungsmethoden nach AAL2 verwenden entweder Nonce oder
 
 [NIST-Authentifikatortypen](nist-authenticator-types.md)
 
-[Realisieren von NIST AAL1 mit Azure AD](nist-authenticator-assurance-level-1.md)
+[Erzielen der NIST-Authentifikator-Sicherheitsstufe 1 mit Azure Active Directory](nist-authenticator-assurance-level-1.md)
 
-[Realisieren von NIST AAL2 mit Azure AD](nist-authenticator-assurance-level-2.md)
+[Realisieren von NIST AAL2 mit Azure AD](nist-authenticator-assurance-level-2.md)
 
-[Realisieren von NIST AAL3 mit Azure AD](nist-authenticator-assurance-level-3.md)
+[Realisieren von NIST AAL3 mit Azure AD](nist-authenticator-assurance-level-3.md)

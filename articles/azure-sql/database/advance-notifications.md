@@ -9,24 +9,26 @@ ms.devlang: ''
 ms.topic: how-to
 author: scott-kim-sql
 ms.author: scottkim
-ms.reviewer: mathoma
-ms.date: 03/02/2021
-ms.openlocfilehash: 1b79d9f88c61ca4bc11895e26f8ffc4fd69b8a35
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.reviewer: mathoma, wiassaf
+ms.date: 09/14/2021
+ms.openlocfilehash: 89a3f86995d054573897202d2269e4f1f38821e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706563"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631189"
 ---
 # <a name="advance-notifications-for-planned-maintenance-events-preview"></a>Vorabbenachrichtigungen für geplante Wartungsereignisse (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Vorabbenachrichtigungen (Vorschau) sind für Datenbanken verfügbar, für die das [Wartungsfenster (Vorschau)](maintenance-window.md) konfiguriert ist. Vorabbenachrichtigungen bieten dem Kunden die Möglichkeit, Benachrichtigungen so zu konfigurieren, dass sie bis zu 24 Stunden vor einem geplanten Ereignis gesendet werden.
+Vorabbenachrichtigungen (Vorschau) sind für Datenbanken verfügbar, für die ein nicht standardmäßiges [Wartungsfenster (Vorschau)](maintenance-window.md) konfiguriert ist. Vorabbenachrichtigungen bieten dem Kunden die Möglichkeit, Benachrichtigungen so zu konfigurieren, dass sie bis zu 24 Stunden vor einem geplanten Ereignis gesendet werden.
 
 Durch Konfiguration der Benachrichtigungen können Sie Text, E-Mails, Azure-Pushbenachrichtigungen oder Voicemails erhalten, wenn die geplante Wartung in den nächsten 24 Stunden beginnen soll. Weitere Benachrichtigungen werden bei Beginn und am Ende der Wartung gesendet.
 
-> [!Note]
-> Für verwaltete Azure SQL-Instanzen ist zwar die Option zum Auswählen eines Wartungsfensters verfügbar, Vorabbenachrichtigungen derzeit aber nicht.
+Für das **Systemstandard**-Wartungsfenster können keine Vorabbenachrichtigungen konfiguriert werden. Wenn Sie ein Wartungsfenster auswählen, müssen Sie eine andere Option als **Systemstandard** auswählen, um Vorabbenachrichtigungen zu konfigurieren und zu aktivieren.
+
+> [!NOTE]
+> Für verwaltete Azure SQL-Instanzen ist zwar die Option zum Auswählen eines Wartungsfensters verfügbar, Vorabbenachrichtigungen derzeit aber nicht. 
 
 ## <a name="create-an-advance-notification"></a>Erstellen einer Vorabbenachrichtigung
 

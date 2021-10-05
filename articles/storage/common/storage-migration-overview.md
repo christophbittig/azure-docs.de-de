@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 1d0459e8ac0002f69ac0e4d33a921bd64fc385d5
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2d02399daf6a7ea56c41f936544697f9df91a62c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350259"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601271"
 ---
 # <a name="azure-storage-migration-overview"></a>Übersicht über die Azure Storage-Migration
 
@@ -53,8 +53,7 @@ Die Bewertungsphase ist wichtig, um die verfügbaren Optionen für die Migration
 |--------------------------------------------|----------------------------------------------------------------------------------|
 | **Auswählen eines Zielspeicherdienstes**            | - Azure BLOB Storage und Data Lake Storage<br>- Azure Files<br>- Azure NetApp Files<br>- ISV-Lösungen |
 | **Auswählen einer Migrationsmethode**                  | - Online<br>- Offline<br> - Kombination beider Optionen                                  |
-| **Auswählen des besten Migrationstools für den Auftrag** | - Kommerzielle Tools (Azure und ISV)<br> - Open Source                             
-
+| **Auswählen des besten Migrationstools für den Auftrag** | - Kommerzielle Tools (Azure und ISV)<br> - Open Source
 
 Es gibt mehrere kommerzielle Tools (ISV), die Sie bei der Bewertungsphase unterstützen können. Sehen Sie sich die [Vergleichsmatrix an](../solution-integration/validated-partners/data-management/migration-tools-comparison.md).
 
@@ -116,7 +115,9 @@ Die Dauer der Migration für unstrukturierte Daten hängt von mehreren Aspekten 
 
 Die Migration von blockbasierten Geräten erfolgt in der Regel im Rahmen der Migration virtueller Computer oder physischer Hosts. Es ist ein gängiges Missverständnis, Entscheidungen zu Blockspeichern bis nach der Migration zu verzögern. Wenn Sie diese Entscheidungen im Voraus treffen und dabei die Anforderungen an die Workload berücksichtigen, führt dies zu einer reibungsloseren Migration in die Cloud.
 
-Informationen zu den zu migrierenden Workloads und deren Übernahme finden Sie in der [Azure Disk Storage-Dokumentation](../../virtual-machines/disks-types.md)und auf der [Disk Storage Produktseite](https://azure.microsoft.com/services/storage/disks/#resources). Sie erfahren hier, welche Datenträger Ihren Anforderungen entsprechen, und lernen die neuesten Funktionen, wie das [Datenträgerbursting](../../virtual-machines/disk-bursting.md) kennen. Informationen dazu, wie Sie die virtuellen Computer mit den zugrunde liegenden blockbasierten Geräten migrieren, finden Sie in der Dokumentation zu [Azure Migrate](../../migrate/index.yml).
+Informationen zu den zu migrierenden Workloads und deren Übernahme finden Sie in der [Azure Disk Storage-Dokumentation](../../virtual-machines/disks-types.md)und auf der [Disk Storage Produktseite](https://azure.microsoft.com/services/storage/disks/#resources). Sie erfahren hier, welche Datenträger Ihren Anforderungen entsprechen, und lernen die neuesten Funktionen, wie das [Datenträgerbursting](../../virtual-machines/disk-bursting.md) kennen. Die Migration blockbasierter Geräte kann auf zwei Arten erfolgen:
+- Informationen dazu, wie Sie die virtuellen Computer mit den zugrunde liegenden blockbasierten Geräten migrieren, finden Sie in der Dokumentation zu [Azure Migrate](../../migrate/index.yml).
+- Verwenden Sie für die Migration von blockbasierten Geräten und komplexeren Anwendungsfällen [Cirrus Migrate Cloud](../solution-integration/validated-partners/data-management/cirrus-data-migration-guide.md).
 
 ## <a name="see-also"></a>Siehe auch
 

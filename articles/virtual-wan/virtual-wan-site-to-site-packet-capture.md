@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: wellee
 Customer intent: As someone with a networking background using Virtual WAN, I want to perform a packet capture on my Site-to-site VPN Gateway.
-ms.openlocfilehash: 765285a8b7c2434c64d1513e510f1cf06b513291
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 8970a275e295a54581876f13a2d4b0112c0116d9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598060"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128581983"
 ---
 # <a name="perform-packet-capture-on-the-azure-virtual-wan-site-to-site-vpn-gateway"></a>Durchführen einer Paketerfassung im Site-to-Site-VPN-Gateway von Azure Virtual WAN 
 
@@ -78,7 +78,16 @@ Start-AzVpnGatewayPacketCapture -ResourceGroupName $rg -Name "<name of the Gatew
 > Beachten Sie, dass eine Paketerfassung nur für fünf VPN-Verbindungen gleichzeitig durchgeführt werden kann.
 
 
-Führen Sie die folgenden Befehle aus. Den Namen der Site-to-Site-VPN-Verbindungen finden Sie, indem Sie zu Ihrem virtuellen Hub navigieren und unter „Konnektivität“ auf „VPN (Site-to-Site)“ klicken. Navigieren Sie anschließend zu dem VPN-Standort, für den Sie die Paketerfassung durchführen möchten, und klicken Sie auf der rechten Seite auf die drei Punkte. Klicken Sie im daraufhin angezeigten Menü auf **VPN-Verbindung bearbeiten**.
+Verwenden Sie den folgenden PowerShell-Befehl, um den Namen Ihrer VPN-Standortverbindung zu ermitteln.
+
+   ```azurepowershell-interactive
+$connections = Get-AzVpnConnection -ResourceGroupName $rg -ParentResourceName "<name of the Gateway"
+$connections
+$connections.name
+   ```
+Im obigen PowerShell-Block enthalten die lokalen *Variablenverbindungen* ein Array aller VPN-Standorte, die mit dem Site-to-Site-VPN Gateway verbunden sind. Suchen Sie den Eintrag, der dem VPN-Standort entspricht, an dem Sie eine Paketerfassung durchführen möchten. Kopieren Sie das Feld *name* und verwenden Sie es im folgenden Start-AzVpnConnectionPacketCapture Befehl als Parameter *-Name*. Alternativ können Sie die Namen aller Verbindungen anzeigen, indem Sie auf \*connections.name* zugreifen. 
+
+Führen Sie die folgenden Schritte aus, um den Namen der Links zu finden. Navigieren Sie zu Ihrem virtuellen Hub, und klicken Sie unter Konnektivität auf VPN (Site-to-Site). Navigieren Sie anschließend zu dem VPN-Standort, für den Sie die Paketerfassung durchführen möchten, und klicken Sie auf der rechten Seite auf die drei Punkte. Klicken Sie im daraufhin angezeigten Menü auf **VPN-Verbindung bearbeiten**.
 
 :::image type="content" source="./media/virtual-wan-pcap-screenshots/sample-connection.png" alt-text="Abbildung: Ermitteln der Namen der VPN-Verbindungen" lightbox="./media/virtual-wan-pcap-screenshots/sample-connection.png":::
 

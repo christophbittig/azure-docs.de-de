@@ -11,12 +11,12 @@ ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: b460c906806cc9c9beb9c9e037d1096feea098a3
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: cfa6865ee7facdc00303f725de78a3e523ff301d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114404400"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595991"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
@@ -30,7 +30,7 @@ Das Nachrichtenrouting ermöglicht es Ihnen, Nachrichten automatisiert, skalierb
 
 IoT Hub benötigt Schreibzugriff auf diese Dienstendpunkte, damit das Nachrichtenrouting funktioniert. Wenn Sie Ihre Endpunkte über das Azure-Portal konfigurieren, werden die erforderlichen Berechtigungen für Sie hinzugefügt. Stellen Sie sicher, dass Sie Ihre Dienste zur Unterstützung des erwarteten Durchsatzes konfigurieren. Wenn Sie z. B. Event Hubs als benutzerdefinierten Endpunkt verwenden, müssen Sie die **Durchsatzeinheiten** für den Event Hub so konfigurieren, dass er den Eingang von Ereignissen behandeln kann, die über IoT Hub-Nachrichtenrouting gesendet werden sollen. Wenn Sie eine Service Bus-Warteschlange als Endpunkt verwenden, müssen Sie auch die **maximale Größe** konfigurieren, damit die Warteschlange alle eingegangenen Daten aufnehmen kann, bis sie aus Consumern ausgehen. Nach der Erstkonfiguration Ihrer IoT-Lösung müssen Sie möglicherweise Ihre zusätzlichen Endpunkte überwachen und ggf. Anpassungen an die tatsächliche Last vornehmen.
 
-Der IoT Hub definiert ein [gemeinsames Format](iot-hub-devguide-messages-construct.md) für alle Gerät-zu-Cloud-Nachrichten, um Interoperabilität zwischen Protokollen zu ermöglichen. Wenn eine Nachricht mehreren Routen entspricht, die auf den gleichen Endpunkt verweisen, übermittelt IoT Hub die Nachricht nur einmal an diesen Endpunkt. Aus diesem Grund müssen Sie keine Deduplizierung für Ihre Service Bus-Warteschlange oder Ihr Service Bus-Thema konfigurieren. In partitionierten Warteschlangen garantiert die Partitionsaffinität die Nachrichtensortierung. In diesem Tutorial lernen Sie, wie Sie das [Nachrichtenrouting konfigurieren](tutorial-routing.md).
+Der IoT Hub definiert ein [gemeinsames Format](iot-hub-devguide-messages-construct.md) für alle Gerät-zu-Cloud-Nachrichten, um Interoperabilität zwischen Protokollen zu ermöglichen. Wenn eine Nachricht mehreren Routen entspricht, die auf den gleichen Endpunkt verweisen, übermittelt IoT Hub die Nachricht nur einmal an diesen Endpunkt. Aus diesem Grund müssen Sie keine Deduplizierung für Ihre Service Bus-Warteschlange oder Ihr Service Bus-Thema konfigurieren. In diesem Tutorial lernen Sie, wie Sie das [Nachrichtenrouting konfigurieren](tutorial-routing.md).
 
 ## <a name="routing-endpoints"></a>Routingendpunkte
 
@@ -142,12 +142,6 @@ Wenn die Geräteverbindung flackert, d. h., wenn das Gerät eine Verbindung hä
 ## <a name="testing-routes"></a>Testen von Routen
 
 Wenn Sie eine neue Route erstellen oder eine vorhandene Route bearbeiten, sollten Sie die Routenabfrage mit einer Beispielnachricht testen. Sie können einzelne Routen oder alle Routen gleichzeitig testen. Während des Tests werden keine Nachrichten an die Endpunkte weitergeleitet. Zum Testen können Sie das Azure-Portal, Azure Resource Manager, Azure PowerShell oder die Azure CLI verwenden. Anhand der Ausgaben können Sie herausfinden, ob die Beispielnachricht der Abfrage entspricht oder nicht oder ob der Test nicht ausgeführt werden konnte, weil Beispielnachricht oder Abfragesyntax falsch sind. Weitere Informationen finden Sie unter [Testen einer Route](/rest/api/iothub/iothubresource/testroute) und [Testen aller Routen](/rest/api/iothub/iothubresource/testallroutes).
-
-## <a name="ordering-guarantees-with-at-least-once-delivery"></a>Reihenfolgengarantien mit mindestens einer Übermittlung
-
-Das IoT Hub-Nachrichtenrouting garantiert eine geordnete und mindestens einmal erfolgende Übermittlung von Nachrichten an die Endpunkte. Dies bedeutet, dass es doppelte Nachrichten geben und eine Reihe von Nachrichten erneut übertragen werden kann, wobei die ursprüngliche Nachrichtensortierung berücksichtigt wird. Wenn die ursprüngliche Reihenfolge der Nachrichten z.B. „[1,2,3,4]“ ist, könnten Sie eine Nachrichtensequenz wie „[1,2,1,2,3,1,2,3,4]“ erhalten. Die Reihenfolgengarantie legt fest, dass auf die von Ihnen empfangene Nachricht „[1]“ immer „[2,3,4]“ folgen.
-
-Zum Verarbeiten von Nachrichtenduplikaten empfiehlt es sich, einen eindeutigen Bezeichner in den Anwendungseigenschaften der Nachricht am Ursprung zu stempeln, bei dem es sich normalerweise um ein Gerät oder ein Modul handelt. Der Dienst zur Verarbeitung der Nachrichten kann mithilfe dieses Bezeichners doppelte Nachrichten verarbeiten.
 
 ## <a name="latency"></a>Latency
 

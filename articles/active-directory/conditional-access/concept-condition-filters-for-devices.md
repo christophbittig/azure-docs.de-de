@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 06/03/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e760cbca23aba21ad2d8c85e21a8014590419e9
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 835c102cffa7fb956d284792fd144cccadfa94b4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438322"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582988"
 ---
 # <a name="conditional-access-filters-for-devices-preview"></a>Bedingter Zugriff: Filter für Geräte (Vorschau)
 
@@ -141,6 +141,9 @@ Die Bedingung „Filter für Geräte“ (Vorschau) für den bedingten Zugriff we
 | Include-/Exclude-Modus mit negativen Operatoren (NotEquals, NotStartsWith, NotEndsWith, NotContains, NotIn) und Verwendung beliebiger Attribute mit Ausnahme von extensionAttributes1-15 | Registriertes Gerät | Ja, wenn die Kriterien erfüllt sind |
 | Include-/Exclude-Modus mit negativen Operatoren (NotEquals, NotStartsWith, NotEndsWith, NotContains, NotIn) und Verwendung beliebiger Attribute einschließlich extensionAttributes1-15 | Registriertes Gerät, das von Intune verwaltet wird | Ja, wenn die Kriterien erfüllt sind |
 | Include-/Exclude-Modus mit negativen Operatoren (NotEquals, NotStartsWith, NotEndsWith, NotContains, NotIn) und Verwendung beliebiger Attribute einschließlich extensionAttributes1-15 | Registriertes Gerät, das nicht von Intune verwaltet wird | Ja, wenn die Kriterien erfüllt sind und das Gerät kompatibel oder hybrid in Azure AD eingebunden ist |
+
+> [!IMPORTANT]
+> Bei nicht registrierten Geräten werden nur das Betriebssystem, die Betriebssystemversion und der Browser übergeben.  Dies bedeutet, dass für nicht registrierte Geräte und Richtlinien für bedingten Zugriff, die negative Operatoren für Filter für das Gerät verwenden, jeder Wert außerhalb dieser Werte mit einem leeren Wert ausgewertet wird.  Beispielsweise, wenn ein nicht registriertes Gerät mit folgendem Wert ausgewertet wurde: **device.displayName -notContains *Beispiel**. Da das nicht registrierte Gerät einen leeren Anzeigenamen übergibt, der nicht den Wert *Beispiel* hat, ist die resultierende Bedingung wahr.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

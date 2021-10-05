@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 07/01/2021
 ms.author: allensu
-ms.openlocfilehash: 78412ba9e71465761d68899e0d48e95864f444f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e17bc129268f8bc93d107492912c868e8efebae1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346294"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671144"
 ---
 # <a name="using-source-network-address-translation-snat-for-outbound-connections"></a>Verwendung von SNAT (Source Network Address Translation) für ausgehende Verbindungen
 
-Bestimmte Szenarien erfordern, dass virtuelle Computer oder Compute-Instanzen über ausgehende Verbindungen mit dem Internet verfügen. Mithilfe der Front-End-IP-Adressen einer öffentlichen Azure Load Balancer-Instanz können ausgehende Verbindungen mit dem Internet für Back-End-Instanzen bereitgestellt werden. Bei dieser Konfiguration wird die **Quell-Netzwerkadressenübersetzung (Source Network Address Translation, SNAT)** verwendet, da die private IP-Adresse der **Quelle** oder des virtuellen Computers in eine öffentliche IP-Adresse übersetzt wird. Die IP-Adresse des Back-Ends wird von SNAT auf die öffentliche IP-Adresse Ihrer Load Balancer-Instanz abgebildet. SNAT verhindert, dass externe Quellen eine direkte Adresse für die Back-End-Instanzen abrufen können.  
+Bestimmte Szenarien erfordern, dass virtuelle Computer oder Compute-Instanzen über ausgehende Verbindungen mit dem Internet verfügen. Mithilfe der Front-End-IP-Adressen einer öffentlichen Azure Load Balancer-Instanz können ausgehende Verbindungen mit dem Internet für Back-End-Instanzen bereitgestellt werden. Bei dieser Konfiguration wird die **Quell-Netzwerkadressenübersetzung (Source Network Address Translation, SNAT)** verwendet, um die private IP-Adresse des virtuellen Computers in die öffentliche IP-Adresse des Load Balancers zu übersetzen. Die IP-Adresse des Back-Ends wird von SNAT auf die öffentliche IP-Adresse Ihrer Load Balancer-Instanz abgebildet. SNAT verhindert, dass externe Quellen eine direkte Adresse für die Back-End-Instanzen abrufen können.  
 
 ## <a name="azures-outbound-connectivity-methods"></a><a name="scenarios"></a>Methoden für ausgehende Verbindungen in Azure
 
@@ -41,7 +41,7 @@ Mit dieser Konfiguration können Sie die öffentliche(n) IP-Adresse(n) Ihres Las
 Diese Konfiguration ermöglicht Folgendes:
 
 - IP-Maskierung
-- Vereinfachen ihrer Positivlisten.
+- Vereinfachen ihrer Positivlisten
 - Verringert die Anzahl öffentlicher IP-Ressourcen für die Bereitstellung.
 
 Mit Ausgangsregeln besitzen Sie vollständige deklarative Kontrolle über ausgehende Internetkonnektivität. Ausgangsregeln ermöglichen Ihnen das Skalieren und Optimieren dieser Fähigkeit gemäß Ihren speziellen Anforderungen.
@@ -98,7 +98,7 @@ Erstellt ausgehende Verbindungen über Standard-SNAT. Dies wird als ausgehender 
 
 Ports werden verwendet, um eindeutige Bezeichner zu generieren, mit denen unterschiedliche Datenflüsse verwaltet werden. Das Internet verwendet ein 5-Tupel, um diesen Unterschied zu gewährleisten.
 
-Wenn ein Port für eingehende Verbindungen verwendet wird, verfügt er über einen **Listener** für eingehende Verbindungsanforderungen an diesem Port. Dieser Port kann nicht für ausgehende Verbindungen verwendet werden. Um eine ausgehende Verbindung herzustellen, wird ein **kurzlebiger Port** verwendet, um dem Ziel einen Port bereitzustellen, über den ein eindeutiger Datenverkehrsfluss kommuniziert und verwaltet werden kann. Wenn diese kurzlebigen Ports für SNAT verwendet werden, bezeichnet man sie als **SNAT-Ports**. 
+Wenn ein Port für eingehende Verbindungen verwendet wird, verfügt er über einen **Listener** für eingehende Verbindungsanforderungen an diesem Port. Dieser Port kann nicht für ausgehende Verbindungen verwendet werden. Um eine ausgehende Verbindung herzustellen, wird ein **kurzlebiger Port** verwendet, um dem Ziel einen Port bereitzustellen, über den ein eindeutiger Datenverkehrsfluss kommuniziert und verwaltet werden kann. Wenn diese kurzlebigen Ports für SNAT verwendet werden, bezeichnet man sie als **SNAT-Ports**.
 
 Per Definition umfasst jede IP-Adresse 65.535 Ports. Jeder Port kann entweder für eingehende oder ausgehende Verbindungen für TCP (Transmission Control Protocol) und UDP (User Datagram Protocol) verwendet werden. Wenn einem Lastenausgleich eine öffentliche IP-Adresse als Front-End-IP-Adresse hinzugefügt wird, sind 64.000 Ports für SNAT berechtigt.
 
@@ -175,6 +175,14 @@ In der folgenden <a name="snatporttable"></a>-Tabelle werden die SNAT-Port-Vorab
 | 201-400 | 128 |
 | 401-800 | 64 |
 | 801-1.000 | 32 | 
+
+## <a name="manual-port-allocation"></a><a name="preallocatedports"></a> Manuelle Portzuordnung
+
+Durch manuelles Zuordnen des SNAT-Ports basierend auf der Größe des Back-End-Pools und der Anzahl der frontendIPConfigurations kann eine SNAT-Vergrößerung vermieden werden. 
+
+Sie können SNAT-Ports manuell entweder nach „Ports pro Instanz“ oder „maximale Anzahl von Back-End-Instanzen“ zuordnen. Wenn Sie Virtual Machines im Back-End haben, wird empfohlen, Ports nach „Ports pro Instanz“ zuzuordnen, um die maximale SNAT-Portnutzung zu erhalten. Ports pro Instanz sollten wie folgt berechnet werden: Anzahl der Front-End IPs * 64.000 / Anzahl der Back-End-Instanzen. Andernfalls empfiehlt es sich, Ports nach der „maximalen Anzahl von Back-End-Instanzen“ zuzuordnen, wenn Sie Virtual Machine Scale Sets im Back-End haben. 
+
+Wenn dem Back-End jedoch mehr VMs hinzugefügt werden als die verbleibenden zulässigen SNAT-Ports, ist es möglich, dass die VMSS-Skalierung blockiert wird oder dass die neuen VMs nicht genügend SNAT-Ports erhalten. 
 
 ## <a name="constraints"></a>Einschränkungen
 

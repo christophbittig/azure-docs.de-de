@@ -6,13 +6,13 @@ ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: b222e4ff519fbe2fbb4fa58b39555ac9fead0917
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 09/15/2021
+ms.openlocfilehash: 99f3687fc3b43461abb48b85c48cfb15286b262f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352914"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557755"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Data Explorer
 
@@ -35,7 +35,7 @@ Reservierungsrabatte werden auf Stundenbasis auf den Azure Data Explorer-Aufsc
 ## <a name="examples"></a>Beispiele
 
 Die folgenden Beispiele veranschaulichen, wie der Rabatt für reservierte Azure Data Explorer-Kapazität angewendet wird – abhängig davon, wie viele Aufschlagseinheiten Sie erworben haben und wann sie ausgeführt werden.
-Bei einem Engine-Cluster mit **zwei virtuellen Computern vom Typ „D11_v2“** werden Ihnen beispielsweise pro Stunde On-Demand-Gebühren für vier Einheiten der Verbrauchseinheit vom Typ Azure Data Explorer-Aufschlag in Rechnung gestellt.
+Bei der Enginecluster-Größe **2 D11_v2 VMs** werden Ihnen beispielsweise pro Stunde On-Demand-Gebühren für vier Einheiten der Verbrauchseinheit vom Typ Azure Data Explorer-Aufschlag in Rechnung gestellt.
 
 **Szenario 1**
 

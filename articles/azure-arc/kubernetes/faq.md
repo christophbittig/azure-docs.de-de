@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zum Azure Arc-fähigen Kubernetes
+title: Häufig gestellte Fragen zu Azure Arc-fähigem Kubernetes
 services: azure-arc
 ms.service: azure-arc
 ms.date: 02/19/2021
@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Dieser Artikel enthält eine Liste mit häufig gestellten Fragen zu Azure Arc-fähigem Kubernetes.
 keywords: Kubernetes, Arc, Azure, Container, Konfiguration, GitOps, FAQ, Häufig gestellte Fragen
-ms.openlocfilehash: f678bd23bc4e9e40f718d72ccde8069c36673ac6
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 750b783d3234bb5ea61ed12dc4cf0471b7b231e4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272923"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215052"
 ---
 # <a name="frequently-asked-questions---azure-arc-enabled-kubernetes"></a>Häufig gestellte Fragen: Azure Arc-fähiges Kubernetes
 
@@ -27,19 +27,19 @@ Azure Arc-fähiges Kubernetes ermöglicht es Ihnen, die Verwaltungsfunktionen vo
 
 ## <a name="do-i-need-to-connect-my-aks-clusters-running-on-azure-to-azure-arc"></a>Muss ich meine AKS-Cluster, die in Azure ausgeführt werden, mit Azure Arc verbinden?
 
-Das Verbinden eines Azure Kubernetes Service-Clusters (AKS) mit Azure Arc ist nur erforderlich, um Arc-fähige Dienste wie App Services und Data Services auf dem Cluster ausführen zu können. Dies kann mithilfe des Features für [benutzerdefinierte Standorte](custom-locations.md) von Kubernetes mit Arc-Aktivierung erfolgen. Dies ist vorerst eine zeitliche Einschränkung, bis Clustererweiterungen und benutzerdefinierte Standorte nativ auf AKS-Clustern eingeführt werden.
+Das Verbinden eines Azure Kubernetes Service-Clusters (AKS) mit Azure Arc ist nur erforderlich, um Azure Arc-fähige Dienste wie App Services und Data Services auf dem Cluster ausführen zu können. Dies kann mithilfe des Features für [benutzerdefinierte Standorte](custom-locations.md) von Kubernetes mit Azure Arc-Unterstützung erfolgen. Dies ist vorerst eine zeitliche Einschränkung, bis Clustererweiterungen und benutzerdefinierte Standorte nativ auf AKS-Clustern eingeführt werden.
 
 Wenn Sie keine benutzerdefinierten Standorte verwenden und lediglich Verwaltungsfeatures wie Azure Monitor und Azure Policy (Gatekeeper) verwenden möchten, sind diese nativ in AKS verfügbar, und in solchen Fällen ist keine Verbindung mit Azure Arc erforderlich.
     
-## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-hub-and-azure-stack-edge-to-azure-arc"></a>Sollte ich meinen AKS-HCI-Cluster und meine Kubernetes-Cluster auf Azure Stack Hub und Azure Stack Edge mit Azure Arc verbinden?
+## <a name="should-i-connect-my-aks-hci-cluster-and-kubernetes-clusters-on-azure-stack-edge-to-azure-arc"></a>Sollte ich meinen AKS-HCI-Cluster und meine Kubernetes-Cluster auf Azure Stack Edge mit Azure Arc verbinden?
 
-Ja, wenn Sie Ihren AKS-HCI-Cluster oder Ihre Kubernetes-Cluster auf Azure Stack Edge oder Azure Stack Hub mit Azure Arc verbinden, wird Clustern die Ressourcendarstellung in Azure Resource Manager bereitgestellt. Diese Ressourcendarstellung erweitert Funktionen wie Clusterkonfiguration, Azure Monitor und Azure Policy (Gatekeeper) auf die verbundenen Kubernetes-Cluster.
+Ja, wenn Sie Ihren AKS-HCI-Cluster oder Ihre Kubernetes-Cluster auf Azure Stack Edge mit Azure Arc verbinden, wird Clustern die Ressourcendarstellung in Azure Resource Manager bereitgestellt. Diese Ressourcendarstellung erweitert Funktionen wie Clusterkonfiguration, Azure Monitor und Azure Policy (Gatekeeper) auf die verbundenen Kubernetes-Cluster.
 
 Wenn sich der Kubernetes-Cluster mit Azure Arc-Aktivierung unter Azure Stack Edge, AKS unter Azure Stack HCI (>= Update von April 2021) oder AKS unter Windows Server 2019 Datacenter (>= Update von April 2021) befindet, dann ist die Kubernetes-Konfiguration kostenlos enthalten.
 
 ## <a name="how-to-address-expired-azure-arc-enabled-kubernetes-resources"></a>Wie geht man mit abgelaufenen Azure Arc-fähigen Kubernetes-Ressourcen um?
 
-Die systemseitig zugewiesene verwaltete Identität, die Ihrem Kubernetes-Cluster mit Azure Arc-Unterstützung zugeordnet ist, wird nur von den Arc-Agents für die Kommunikation mit den Azure Arc-Diensten verwendet. Das Zertifikat, das dieser systemseitig zugewiesenen verwalteten Identität zugeordnet ist, hat ein Ablauffenster von 90 Tagen, und die Agents versuchen weiterhin, dieses Zertifikat zwischen Tag 46 und Tag 90 zu erneuern. Sobald dieses Zertifikat abläuft, wird die Ressource als `Expired` (abgelaufen) betrachtet, und alle Features (z.  B. Konfiguration, Überwachung und Richtlinie) funktionieren in diesem Cluster nicht mehr, und Sie müssen dann Cluster löschen und erneut mit Azure Arc verbinden. Daher ist es ratsam, den Cluster mindestens einmal innerhalb des Zeitfensters von Tag 46 bis Tag 90 online zu bringen, um die Erneuerung des Zertifikats der verwalteten Identität sicherzustellen.
+Die systemseitig zugewiesene verwaltete Identität, die Ihrem Kubernetes-Cluster mit Azure Arc-Unterstützung zugeordnet ist, wird nur von den Azure Arc-Agents für die Kommunikation mit den Azure Arc-Diensten verwendet. Das Zertifikat, das dieser systemseitig zugewiesenen verwalteten Identität zugeordnet ist, hat ein Ablauffenster von 90 Tagen, und die Agents versuchen weiterhin, dieses Zertifikat zwischen Tag 46 und Tag 90 zu erneuern. Sobald dieses Zertifikat abläuft, wird die Ressource als `Expired` (abgelaufen) betrachtet, und alle Features (z.  B. Konfiguration, Überwachung und Richtlinie) funktionieren in diesem Cluster nicht mehr, und Sie müssen dann Cluster löschen und erneut mit Azure Arc verbinden. Daher ist es ratsam, den Cluster mindestens einmal innerhalb des Zeitfensters von Tag 46 bis Tag 90 online zu bringen, um die Erneuerung des Zertifikats der verwalteten Identität sicherzustellen.
 
 Führen Sie den folgenden Befehl aus, um zu überprüfen, wann das Zertifikat für einen bestimmten Cluster abläuft:
 
@@ -82,8 +82,12 @@ Da Azure Resource Manager Ihre Konfigurationen für Kubernetes mit Azure Arc-Akt
 
 Dieses Feature wendet Baselinekonfigurationen (wie Netzwerkrichtlinien, Rollenbindungen und Podsicherheitsrichtlinien) auf den gesamten Bestand der Kubernetes-Cluster an, um Compliance- und Governanceanforderungen zu entsprechen.
 
+## <a name="does-azure-arc-enabled-kubernetes-store-any-customer-data-outside-of-the-clusters-region"></a>Speichert Kubernetes mit Azure Arc-Unterstützung Kundendaten außerhalb der Region des Clusters?
+
+Das Feature zum Aktivieren der Speicherung von Kundendaten in einer einzelnen Region ist derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ und in der Region „Brasilien, Süden“ (São Paulo, Bundesstaat) des geografischen Raums „Brasilien“ verfügbar. Bei allen anderen Regionen werden Kundendaten unter „Geografien“ gespeichert. Weitere Informationen finden Sie unter [Trust Center](https://azure.microsoft.com/global-infrastructure/data-residency/).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Führen Sie den Schnellstart zum [Verbinden eines Kubernetes-Clusters mit Azure Arc](./quickstart-connect-cluster.md) durch.
-* Sie haben bereits einen Kubernetes-Cluster, der mit Azure Arc verbunden ist? [Erstellen Sie Konfigurationen in Ihrem Arc-fähigen Kubernetes-Cluster](./tutorial-use-gitops-connected-cluster.md).
+* Sie haben bereits einen Kubernetes-Cluster, der mit Azure Arc verbunden ist? [Erstellen Sie Konfigurationen](./tutorial-use-gitops-connected-cluster.md) in Ihrem Kubernetes-Cluster mit Azure Arc-Unterstützung.
 * Erfahren Sie, wie Sie [Azure Policy zum Anwenden von Konfigurationen im großen Stil verwenden](./use-azure-policy.md).

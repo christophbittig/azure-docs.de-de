@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 08/26/2021
-ms.openlocfilehash: 7e8e1db98ac79c2be6dbb399a14368ce3e2f898c
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.date: 09/21/2021
+ms.openlocfilehash: b2216754cbdb6081a82f71392aee6e5f8ce2d3ba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033495"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648409"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>Upgrade einer PostgreSQL-Datenbank durch Sichern und Wiederherstellen
 
@@ -96,10 +96,10 @@ Rollen (Benutzer) sind globale Objekte und müssen vor dem Wiederherstellen der 
 Beim Sichern aller Rollen des Quellservers
 
 ```azurecli-interactive
-pg_dumpall -r --host=mySourceServer --port=5432 --username=myUser -- dbname=mySourceDB > roles.sql
+pg_dumpall -r --host=mySourceServer --port=5432 --username=myUser --database=mySourceDB > roles.sql
 ```
 
-und dessen Wiederherstellung mit psql auf dem Zielserver:
+Bearbeiten Sie `roles.sql` und entfernen Sie Verweise von `NOSUPERUSER` und `NOBYPASSRLS`, bevor Sie den Inhalt mit psql auf dem Zielserver wiederherstellen:
 
 ```azurecli-interactive
 psql -f roles.sql --host=myTargetServer --port=5432 --username=myUser
@@ -198,6 +198,14 @@ Diese Methode eignet sich, wenn die Datenbank nur wenige größere Tabellen enth
 
 > [!TIP]
 > Der in diesem Dokument erwähnte Prozess kann auch zum Einsatz kommen, um Ihre Instanz von Azure Database for PostgreSQL – Flexibler Server (in der Vorschau) zu aktualisieren. Der Hauptunterschied besteht darin, dass die Verbindungszeichenfolge für das Ziel auf dem flexiblen Server `@dbName` nicht enthält.  Wenn der Benutzername beispielsweise `pg` ist, lautet der Benutzername des einzelnen Servers in der Verbindungszeichenfolge `pg@pg-95`, während Sie bei einem flexiblen Server einfach `pg` verwenden können.
+
+## <a name="post-upgrademigrate"></a>Nach dem Upgrade/Migrieren
+Nach Abschluss des Upgrades der Hauptversion wird empfohlen, den Befehl `ANALYZE` in jeder Datenbank auszuführen, um die Tabelle `pg_statistic` zu aktualisieren. Andernfalls können Leistungsprobleme auftreten.
+
+```SQL
+postgres=> analyze;
+ANALYZE
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

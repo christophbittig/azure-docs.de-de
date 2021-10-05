@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 555bc5c14a769c6e2ec309347fd40e4e9aa9e1e3
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 301181b291521b8a8b19a7d7266e90fa2c542e49
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681407"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562929"
 ---
 #  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>Bereitstellen der kontinuierlichen Bedrohungsüberwachung in SAP (öffentliche Vorschau)
 
@@ -171,26 +171,29 @@ In diesem Tutorial wird eine neu erstellte oder dedizierte [Azure Key Vault](../
       --resource-group $kvgp
     ```
 
-1. Weisen Sie der verwalteten Identität der VM eine Zugriffsrichtlinie zu, einschließlich GET-, LIST- und SET-Berechtigungen.
+1. Weisen Sie der verwalteten Identität der VM eine Zugriffsrichtlinie zu, einschließlich GET-, LIST- und SET-Berechtigungen, unter Verwendung einer der folgenden Methoden:
 
-    Wählen Sie in Azure Key Vault die Optionen **Zugriffsrichtlinien** > **Zugriffsrichtlinie hinzufügen – Geheimnisberechtigungen: Abrufen, Auflisten und Festlegen** > **Prinzipal auswählen**. Geben Sie den [Namen Ihrer VM](#deploy-a-linux-vm-for-your-sap-data-connector) ein, und wählen Sie dann **Hinzufügen** > **Speichern** aus.
+    - **Über das Azure-Portal**:
 
-    Weitere Informationen finden Sie in der [Key Vault](../key-vault/general/assign-access-policy-portal.md)-Dokumentation.
+        Wählen Sie in Azure Key Vault die Optionen **Zugriffsrichtlinien** > **Zugriffsrichtlinie hinzufügen – Geheimnisberechtigungen: Abrufen, Auflisten und Festlegen** > **Prinzipal auswählen**. Geben Sie den [Namen Ihrer VM](#deploy-a-linux-vm-for-your-sap-data-connector) ein, und wählen Sie dann **Hinzufügen** > **Speichern** aus.
 
-1. Führen Sie den folgenden Befehl aus, um die [Prinzipal-ID der VM](#deploy-a-linux-vm-for-your-sap-data-connector) abzurufen, und geben Sie den Namen Ihrer Azure-Ressourcengruppe ein:
+        Weitere Informationen finden Sie in der [Key Vault](../key-vault/general/assign-access-policy-portal.md)-Dokumentation.
 
-    ```azurecli
-    VMPrincipalID=$(az vm show -g [resource group] -n [Virtual Machine] --query identity.principalId -o tsv)
-    ```
+    - **Über die Azure CLI**:
 
-    Ihre Prinzipal-ID wird angezeigt, damit Sie sie im folgenden Schritt verwenden können.
+        1. Führen Sie den folgenden Befehl aus, um die [Prinzipal-ID der VM](#deploy-a-linux-vm-for-your-sap-data-connector) abzurufen, und geben Sie den Namen Ihrer Azure-Ressourcengruppe ein:
 
-1. Führen Sie den folgenden Befehl aus, um der Key Vault-Instanz die Zugriffsberechtigungen der VM zuzuweisen. Geben Sie dazu den Namen Ihrer Ressourcengruppe und den Wert für die Prinzipal-ID ein, der im vorherigen Schritt zurückgegeben wurde.
+            ```azurecli
+            VMPrincipalID=$(az vm show -g [resource group] -n [Virtual Machine] --query identity.principalId -o tsv)
+            ```
 
-    ```azurecli
-    az keyvault set-policy -n [key vault] -g [resource group] --object-id $VMPrincipalID --secret-permissions get list set
-    ```
+            Ihre Prinzipal-ID wird angezeigt, damit Sie sie im folgenden Schritt verwenden können.
 
+        1. Führen Sie den folgenden Befehl aus, um der Key Vault-Instanz die Zugriffsberechtigungen der VM zuzuweisen. Geben Sie dazu den Namen Ihrer Ressourcengruppe und den Wert für die Prinzipal-ID ein, der im vorherigen Schritt zurückgegeben wurde.
+
+            ```azurecli
+            az keyvault set-policy -n [key vault] -g [resource group] --object-id $VMPrincipalID --secret-permissions get list set
+            ```
 ## <a name="deploy-your-sap-data-connector"></a>Bereitstellen Ihres SAP-Datenconnectors
 
 Das Bereitstellungsskript für den SAP-Datenconnector von Azure Sentinel installiert die [erforderliche Software](#automatically-installed-software) und dann den Connector auf Ihrer [neu erstellten VM](#deploy-a-linux-vm-for-your-sap-data-connector). Dabei werden Anmeldeinformationen in Ihrem [dedizierten Schlüsseltresor](#create-key-vault-for-your-sap-credentials) gespeichert.

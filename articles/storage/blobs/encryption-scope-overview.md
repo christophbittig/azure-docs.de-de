@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9c73d8865b2cd019e940a753425d13b67567b39b
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 7cb5d96c7651713f02d606be1038f55cd430162f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471196"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599238"
 ---
 # <a name="encryption-scopes-for-blob-storage"></a>Verschlüsselungsbereiche für Blobspeicher
 
@@ -36,7 +36,7 @@ Wenn Sie einen Verschlüsselungsbereich mit einem kundenseitig verwalteten Schl�
 
 Azure Policy bietet eine integrierte Richtlinie, die es erfordert, dass Verschlüsselungsbereiche kundenseitig verwaltete Schlüssel verwenden. Weitere Informationen finden Sie in [Integrierte Azure Policy-Richtliniendefinitionen](../../governance/policy/samples/built-in-policies.md#storage) im Abschnitt **Speicher**.
 
-Ein Speicherkonto kann bis zu 10 000 Verschlüsselungsbereiche aufweisen, die mit kundenseitig verwalteten Schlüsseln geschützt sind, für die die Schlüsselversion automatisch aktualisiert wird. Wenn Ihr Speicherkonto bereits über 10 000 Verschlüsselungsbereiche verfügt, die mit kundenseitig verwalteten Schlüsseln geschützt sind, die automatisch aktualisiert werden, muss die Schlüsselversion für alle zusätzlichen Verschlüsselungsbereiche, die mit kundenseitig verwalteten Schlüsseln geschützt sind, manuell aktualisiert werden.  
+Ein Speicherkonto kann bis zu 10 000 Verschlüsselungsbereiche aufweisen, die mit kundenseitig verwalteten Schlüsseln geschützt sind, für die die Schlüsselversion automatisch aktualisiert wird. Wenn Ihr Speicherkonto bereits über 10 000 Verschlüsselungsbereiche verfügt, die mit kundenseitig verwalteten Schlüsseln geschützt sind, die automatisch aktualisiert werden, muss die Schlüsselversion für alle zusätzlichen Verschlüsselungsbereiche, die mit kundenseitig verwalteten Schlüsseln geschützt sind, manuell aktualisiert werden.
 
 ### <a name="infrastructure-encryption"></a>Infrastrukturverschlüsselung
 
@@ -82,11 +82,11 @@ Beachten Sie, dass kundenseitig verwaltete Schlüssel gegen vorläufiges und end
 
 ## <a name="feature-support"></a>Featureunterstützung
 
-In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat. 
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
 
-| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) | 
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) |
 | Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.

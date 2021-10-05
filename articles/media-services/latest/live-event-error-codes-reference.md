@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 09859a953b0127733cbf1b0876c1d2ffa6082096
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: bd8a980d6f8cf7f71dbbfb5f099a12ca966be9ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279475"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661638"
 ---
 # <a name="media-services-live-event-error-codes"></a>Azure Media Services-Fehlercodes für Liveereignisse
 
@@ -48,7 +48,7 @@ Wenn Sie die [Event Grid](../../event-grid/index.yml)-Ereignisse für ein Liveer
 >| BESCHREIBUNG |Die Medienbeschreibungsinformationen wurden nicht empfangen, bevor die eigentlichen Mediendaten übermittelt wurden. |
 >| Vorgeschlagene Lösung|Das LiveEvent erhält die Datenstrombeschreibung (Header oder FLV-Tag) nicht vom Encoder. Dies ist ein Protokollverstoß. Wenden Sie sich an den Anbieter des Encoders. |
 >|**MPE_INGEST_MEDIA_QUALITIES_EXCEEDED** ||
->| BESCHREIBUNG|Die Anzahl von Qualitätsangaben für Audio und Video hat die maximal zulässige Anzahl überschritten. |
+>| BESCHREIBUNG| Die Anzahl von Qualitätsangaben für Audio und Video hat die maximal zulässige Anzahl überschritten. Qualitätsstufen, die den Grenzwert überschreiten, wurden vom Dienst ignoriert.|
 >| Vorgeschlagene Lösung|Wenn der Modus „Liveereignis“ auf „Live Encoding“ festgelegt ist, sollte der Encoder eine Einzelbitrate für Video und Audio pushen.  Beachten Sie, dass ein redundanter Pushvorgang mit derselben Bitrate zulässig ist. Überprüfen Sie die Voreinstellung des Encoders oder die Ausgabeeinstellungen, um sicherzustellen, dass er einen Datenstrom mit einer Einzelbitrate ausgibt. |
 >|**MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED** ||
 >| BESCHREIBUNG|Die Gesamtbitrate (eingehend) in einem Liveereignis oder Kanaldienst hat den maximal zulässigen Wert überschritten. |

@@ -1,14 +1,14 @@
 ---
 title: Hochladen von VHD-Dateien nach Azure DevTest Labs mit AzCopy | Microsoft Docs
 description: Dieser Artikel bietet eine exemplarische Vorgehensweise zum Hochladen einer VHD-Datei in das Speicherkonto eines Labs in Azure DevTest Labs mithilfe des Befehlszeilenhilfsprogramms AzCopy.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 1d8ede0f78726b04ac862a00b559b8d42c3ed1cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39dcac5dffdd4aa041437ccb541b528ee8612881
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88650773"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658315"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>Hochladen von VHD-Dateien in das Lab-Speicherkonto mit AzCopy
 

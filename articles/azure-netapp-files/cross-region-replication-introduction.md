@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/16/2021
+ms.date: 09/27/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: 625df6ed5147b77a9829b6e7b3396f4855068d62
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: f97e4ec774dc9ed703a41cdd75fb88747fb627e5
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351139"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129090911"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Regionsübergreifende Replikation von Azure NetApp Files-Volumes
 
@@ -35,30 +35,36 @@ Die Azure NetApp Files-Volumereplikation wird zwischen verschiedenen [Azure-Regi
 
 ### <a name="azure-regional-pairs"></a>Azure-Regionspaare
 
-* „USA, Osten“ und „USA, Westen“
-* „USA, Osten 2“ und „USA, Mitte“
-* Australien, Osten und Australien, Südosten
-* Kanada, Mitte und Kanada, Osten
-* „Indien, Süden“ und „Indien, Mitte“ 
-* „Deutschland, Westen-Mitte“ und „Deutschland, Norden“
-* Japan, Osten und Japan, Westen
-* Europa, Norden und Europa, Westen
-* Vereinigtes Königreich, Süden und Vereinigtes Königreich, Westen
-* „VAE, Norden“ und „VAE, Mitte“
-* „Norwegen, Osten“ und „Norwegen, Westen“
+| Gebiet | Regionspaar A | Regionspaar B  |
+|:--- |:--- |:--- |
+| Australien | Australien (Osten) | Australien, Südosten |
+| Canada | Kanada, Mitte | Kanada, Osten |
+| Europa | Nordeuropa | Europa, Westen |
+| Deutschland | Deutschland, Westen-Mitte | Deutschland, Norden |
+| Indien | Indien, Mitte |Indien (Süden) |
+| Japan | Japan, Osten | Japan, Westen |
+| Nordamerika | East US | USA (Westen) |
+| Nordamerika | USA (Ost) 2 | USA (Mitte) |
+| Nordamerika | USA Nord Mitte | USA Süd Mitte|
+| Norwegen | Norwegen, Osten | Norwegen, Westen |
+| UK | UK, Süden | UK, Westen |
+| Vereinigte Arabische Emirate | Vereinigte Arabische Emirate, Norden | VAE, Mitte |
+| US Government | US Government, Virginia | US Gov Texas |
 
 ### <a name="azure-regional-non-standard-pairs"></a>Nicht dem Standard entsprechende Azure-Regionspaare
 
-*   „USA, Westen 2“ und „USA, Osten“
-*   „USA, Süden-Mitte“ und „USA, Mitte“
-*   „USA, Süden-Mitte“ und „USA, Osten“
-*   „USA, Süden-Mitte“ und „USA, Osten 2“
-*   „USA, Osten“ und „USA, Osten 2“
-*   „USA, Osten 2“ und „USA, Westen 2“
-*   „Australien, Osten“ und „Asien, Südosten“ 
-*   „Deutschland, Westen-Mitte“ und „Vereinigtes Königreich, Süden“
-*   „Deutschland, Westen-Mitte“ und „Europa, Westen“
-*   „Deutschland, Westen-Mitte“ und „Frankreich, Mitte“
+| Gebiet | Regionspaar A | Regionspaar B  |
+|:--- |:--- |:--- |
+| Australien/Asien, Südosten | Australien (Osten) | Asien, Südosten |
+| Deutschland/Vereinigtes Königreich | Deutschland, Westen-Mitte | UK, Süden |
+| Deutschland/Europa | Deutschland, Westen-Mitte | Europa, Westen | 
+| Deutschland/Frankreich | Deutschland, Westen-Mitte | Frankreich, Mitte |
+| Nordamerika | East US | USA (Ost) 2 |
+| Nordamerika | USA (Ost) 2| USA, Westen 2 |
+| Nordamerika | USA Süd Mitte | East US |
+| Nordamerika | USA Süd Mitte | USA (Ost) 2 |
+| Nordamerika | USA Süd Mitte | USA (Mitte) |
+| Nordamerika | USA, Westen 2 | East US |
 
 ## <a name="service-level-objectives"></a>Servicelevel-Zielpunkte (SLO)
 

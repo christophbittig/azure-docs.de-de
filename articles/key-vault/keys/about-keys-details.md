@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 7dc8d113b8d47ea75938cc7fcd7c24c8a132a3b4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3f3db4b694dd825b15cf80be247bf43780e1d381
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114471751"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562999"
 ---
 # <a name="key-types-algorithms-and-operations"></a>Schlüsseltypen, Algorithmen und Vorgänge
 
@@ -75,7 +75,7 @@ Die folgende Tabelle fasst die Schlüsseltypen und unterstützten Algorithmen zu
 
 ##  <a name="key-operations"></a>Schlüsselvorgänge
 
-Verwaltete HSMs unterstützen die folgenden Vorgänge für Schlüsselobjekte:  
+Key Vault, einschließlich verwalteter HSM, unterstützt die folgenden Vorgänge für Schlüsselobjekte:  
 
 -   **Erstellen**: Ermöglicht einem Client, einen Schlüssel in Key Vault zu erstellen. Der Wert des Schlüssels wird von Key Vault generiert und gespeichert und nicht für den Client freigegeben. In Key Vault können asymmetrische Schlüssel erstellt werden.  
 -   **Import**: Ermöglicht einem Client, einen vorhandenen Schlüssel in Key Vault zu importieren. Asymmetrische Schlüssel können mithilfe einer Reihe unterschiedlicher Paketerstellungsmethoden in einem JWK-Konstrukt in Key Vault importiert werden. 

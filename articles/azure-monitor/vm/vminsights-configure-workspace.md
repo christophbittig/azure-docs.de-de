@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
-ms.openlocfilehash: 0a4b6e1f90e24b3289b453e849b4ad979b10e202
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: a5a65f99fec0bb0db245450ead9747776e194b46
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319915"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614427"
 ---
 # <a name="configure-log-analytics-workspace-for-vm-insights"></a>Konfigurieren des Log Analytics-Arbeitsbereichs für VM Insights
 VM Insights erfasst die Daten von mindestens einem Log Analytics-Arbeitsbereich in Azure Monitor. Vor dem Integrieren von Agents müssen Sie einen Arbeitsbereich erstellen und konfigurieren. In diesem Artikel werden die Anforderungen für den Arbeitsbereich und dessen Konfiguration für VM Insights beschrieben.
@@ -38,15 +38,13 @@ Sie können einen neuen Log Analytics-Arbeitsbereich mit einer der folgenden Met
 
 
 * [Azure portal](../logs/quick-create-workspace.md)
-* [Azure-Befehlszeilenschnittstelle](../logs/quick-create-workspace-cli.md)
+* [Azure-Befehlszeilenschnittstelle](../logs/resource-manager-workspace.md)
 * [PowerShell](../logs/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../logs/resource-manager-workspace.md)
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
-VM Insights unterstützt Log Analytics-Arbeitsbereiche in jeder der [von Log Analytics unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all), mit Ausnahme der folgenden:
+VM Insights unterstützt Log Analytics-Arbeitsbereiche in jeder der [von Log Analytics unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all).
 
-- Deutschland, Westen-Mitte
-- Korea, Mitte
 
 >[!NOTE]
 >Sie können Azure-VMs in jeder Region überwachen. Die VMs selbst sind nicht auf die vom Log Analytics-Arbeitsbereich unterstützten Bereiche beschränkt.

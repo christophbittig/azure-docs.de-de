@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 0f800d2d42d0d8815021f1582b04750d87aa5abc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be90f5bdbd34201672cd2b39c7bbbe53e4de38cf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651420"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572052"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Salesforce
 
@@ -177,6 +177,14 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Konfigurieren des einmaligen Anmeldens: Benutzerbereitstellung aktiviert](./media/salesforce-tutorial/salesforcexml.png)
 
+    > [!NOTE]
+    > Wenn Sie SAML JIT konfiguriert haben, müssen Sie einen zusätzlichen Schritt im Abschnitt **[Konfigurieren von Azure AD SSO](#configure-azure-ad-sso)** ausführen. Die Salesforce-Anwendung erwartet bestimmte SAML-Assertionen. Daher müssen Sie über bestimmte Attribute in ihrer Konfiguration der SAML-Tokenattribute verfügen. Der folgende Screenshot zeigt die Liste der Standardattribute von Salesforce:
+    
+    ![Screenshot: Bereich „Erforderliche JIT-Attribute“](./media/salesforce-tutorial/just-in-time-attributes-required.png)
+    
+    Wenn weiterhin Probleme beim Bereitstellen von Benutzern mit SAML JIT auftreten, finden Sie weitere Informationen unter [Just-in-Time-Bereitstellungsanforderungen und SAML-Assertionsfelder](https://help.salesforce.com/s/articleView?id=sf.sso_jit_requirements.htm&type=5). Im Allgemeinen wird bei einem JIT-Fehler möglicherweise ein Fehler wie `We can't log you in because of an issue with single sign-on. Contact your Salesforce admin for help.` angezeigt.
+
+
 1. Klicken Sie in Salesforce im linken Navigationsbereich auf **Company Settings** (Unternehmenseinstellungen), um den zugehörigen Abschnitt zu erweitern, und klicken Sie dann auf **My Domain** (Meine Domäne).
 
     ![Konfigurieren des einmaligen Anmeldens: My Domain (Meine Domäne)](./media/salesforce-tutorial/sf-my-domain.png)
@@ -204,11 +212,11 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Salesforce-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Salesforce“ klicken, sollten Sie automatisch bei der Salesforce-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Salesforce“ klicken, sollten Sie automatisch bei der Salesforce-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="test-sso-for-salesforce-mobile"></a>Testen des einmaligen Anmeldens für Salesforce (mobil)
 
-1. Öffnen Sie die mobile Salesforce-Anwendung. Klicken Sie auf der Anmeldeseite auf **Use Custom Domain** (Benutzerdefinierte Domäne verwenden).
+1. Öffnen Sie die mobile Salesforce-Anwendung. Klicken Sie auf der Anmeldeseite auf **Benutzerdefinierte Domäne verwenden**.
 
     ![Mobile Salesforce-App: Use Custom Domain (Benutzerdefinierte Domäne verwenden)](media/salesforce-tutorial/mobile-app1.png)
 
@@ -216,7 +224,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
     ![Mobile Salesforce-App: Custom Domain (Benutzerdefinierte Domäne)](media/salesforce-tutorial/mobile-app2.png)
 
-1. Geben Sie Ihre Azure AD-Anmeldeinformationen ein, um sich bei der Salesforce-Anwendung anzumelden, und klicken Sie auf **Next** (Weiter).
+1. Geben Sie Ihre Azure AD-Anmeldeinformationen ein, um sich bei der Salesforce-Anwendung anzumelden, und klicken Sie auf **Weiter**.
 
     ![Mobile Salesforce-App: Azure AD-Anmeldeinformationen](media/salesforce-tutorial/mobile-app3.png)
 

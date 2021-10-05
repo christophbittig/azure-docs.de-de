@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/30/2021
+ms.date: 09/21/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: c91d4f98928f2d446a15b123a4155b971377159a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 6d345dcb2344c4f39eed7ce4da6b24cc9f717358
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223825"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569962"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 
@@ -38,7 +38,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 ## <a name="list-of-functions"></a>Liste der Funktionen
 
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateDiff](#datediff) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [AppRoleAssignmentsComplex](#approleassignmentscomplex) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [CDate](#cdate) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateAdd](#dateadd) &nbsp;&nbsp;&nbsp;&nbsp; [DateDiff](#datediff) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [IgnoreFlowIfNullOrEmpty](#ignoreflowifnullorempty) &nbsp;&nbsp;&nbsp;&nbsp;[IIF](#iif) &nbsp;&nbsp;&nbsp;&nbsp;[InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) &nbsp;&nbsp; &nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Now](#now) &nbsp;&nbsp;&nbsp;&nbsp; [NumFromDate](#numfromdate) &nbsp;&nbsp;&nbsp;&nbsp; [PCase](#pcase) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Anfügen
@@ -613,24 +613,24 @@ Gibt „Joh“ zurück.
 
 | Zeichen mit diakritischem Zeichen  | Normalisiertes Zeichen | Zeichen mit diakritischem Zeichen  | Normalisiertes Zeichen | 
 | --- | --- | --- | --- | 
-| ä, à, â, ã, å, á, ą, ă | a | Ä, À, Â, Ã, Å, Á, Ą, Ă | Ein | 
-| æ | ae | Æ | AE | 
-| ç, č, ć | c | Ç, Č, Ć | C | 
-| ď | T | Ď | D | 
-| ë, è, é, ê, ę, ě, ė | e | Ë, È, É, Ê, Ę, Ě, Ė | E | 
-| ğ | g | Ğ | G | 
-| Ï, Î, Ì, Í, İ | I | ï, î, ì, í, ı | i | 
-| ľ, ł | l |  Ł, Ľ | L | 
-| ñ, ń, ň | n |  Ñ, Ń, Ň | N | 
-| ö, ò, ő, õ, ô, ó | o |  Ö, Ò, Ő, Õ, Ô, Ó | O | 
-| ø | oe |  Ø | OE | 
-| ř | r |  Ř | R | 
+| ä, à, â, ã, å, á, ą, ă, ā, ā́, ā̀, ā̂, ā̃, ǟ, ā̈, ǡ, a̱, å̄ | a | Ä, À, Â, Ã, Å, Á, Ą, Ă, Ā, Ā́, Ā̀, Ā̂, Ā̃, Ǟ, Ā̈, Ǡ, A̱, Å̄ | Ein | 
+| æ, ǣ | ae | Æ, Ǣ | AE | 
+| ç, č, ć, c̄, c̱ | c | Ç, Č, Ć, C̄, C̱ | C | 
+| ď, d̄, ḏ | T | Ď, D̄, Ḏ | D | 
+| ë, è, é, ê, ę, ě, ė, ē, ḗ, ḕ, ē̂, ē̃, ê̄, e̱, ë̄, e̊̄ | e | Ë, È, É, Ê, Ę, Ě, Ė, Ē, Ḗ, Ḕ, Ē̂, Ē̃, Ê̄, E̱, Ë̄, E̊̄ | E | 
+| ğ, ḡ, g̱ | g | Ğ, Ḡ, G̱ | G | 
+| ï, î, ì, í, ı, ī, ī́, ī̀, ī̂, ī̃, i̱ | i | Ï, Î, Ì, Í, İ, Ī, Ī́, Ī̀, Ī̂, Ī̃, I̱ | I |  
+| ľ, ł, l̄, ḹ, ḻ | l |  Ł, Ľ, L̄, Ḹ, Ḻ | L | 
+| ñ, ń, ň, n̄, ṉ | n |  Ñ, Ń, Ň, N̄, Ṉ | N | 
+| ö, ò, ő, õ, ô, ó, ō, ṓ, ṑ, ō̂, ō̃, ȫ, ō̈, ǭ, ȭ, ȱ, o̱ | o |  Ö, Ò, Ő, Õ, Ô, Ó, Ō, Ṓ, Ṑ, Ō̂, Ō̃, Ȫ, Ō̈, Ǭ, Ȭ, Ȱ, O̱ | O | 
+| ø, ø̄, œ̄  | oe |  Ø, Ø̄, Œ̄ | OE | 
+| ř, r̄, ṟ, ṝ | r |  Ř, R̄, Ṟ, Ṝ | R | 
 | ß | ss | | | 
-| š, ś, ș, ş | s |  Š, Ś, Ș, Ş | E | 
-| ť, ț | t | Ť, Ț | T | 
-| ü, ù, û, ú, ů, ű | u |  Ü, Ù, Û, Ú, Ů, Ű | U | 
-| ÿ, ý | j | Ÿ, Ý | J | 
-| ź, ž, ż | z | Ź, Ž, Ż | Z | 
+| š, ś, ș, ş, s̄, s̱ | s |  Š, Ś, Ș, Ş, S̄, S̱ | E | 
+| ť, ț, t̄, ṯ | t | Ť, Ț, T̄, Ṯ | T | 
+| ü, ù, û, ú, ů, ű, ū, ū́, ū̀, ū̂, ū̃, u̇̄, ǖ, ṻ, ṳ̄, u̱ | u |  Ü, Ù, Û, Ú, Ů, Ű, Ū, Ū́, Ū̀, Ū̂, Ū̃, U̇̄, Ǖ, Ṻ, Ṳ̄, U̱ | U | 
+| ÿ, ý, ȳ, ȳ́, ȳ̀, ȳ̃, y̱ | j | Ÿ, Ý, Ȳ, Ȳ́, Ȳ̀, Ȳ̃, Y̱ | J | 
+| ź, ž, ż, z̄, ẕ | z | Ź, Ž, Ż, Z̄, Ẕ | Z | 
 
 
 #### <a name="remove-diacritics-from-a-string"></a>Entfernen diakritischer Zeichen aus einer Zeichenfolge
@@ -688,6 +688,49 @@ Zurückgegebener Beispielwert: *7/2/2021 3:33:38 PM*
 
 
 ---
+### <a name="pcase"></a>PCase
+**Funktion:** PCase(Quelle, wordSeparators)
+
+**Beschreibung:** Die PCase-Funktion konvertiert das erste Zeichen jedes Worts in einer Zeichenfolge in einen Großbuchstaben und alle anderen Zeichen in Kleinbuchstaben.
+
+**Parameter:** 
+
+| Name | Erforderlich/Optional | type | Notizen |
+| --- | --- | --- | --- |
+| **Quelle** |Erforderlich |String |**Quell**-Wert zum Konvertieren in gemischte Groß-/Kleinschreibung. |
+| **wordSeparators** |Optional |String |Angeben eines Satzes an Zeichen, die als Worttrennzeichen verwendet werden (Beispiel: " ,-'") |
+
+**Hinweise:**
+
+* Wenn der Parameter *wordSeparators* nicht angegeben wird, ruft PCase intern die .NET-Funktion [ToTitleCase](https://docs.microsoft.com/dotnet/api/system.globalization.textinfo.totitlecase?view=net-5.0) auf, um die *Quell*-Zeichenfolge in die richtige Groß-/Kleinschreibung zu konvertieren. Die .NET-Funktion *ToTitleCase* unterstützt einen umfassenden Satz an [Unicode-Zeichenkategorien](https://www.unicode.org/reports/tr44/#General_Category_Values) als Worttrennzeichen. 
+  * Leerzeichen
+  * Neue-Zeile-Zeichen
+  * *Steuerzeichen* wie Strg
+  * Steuerzeichen für die *Formatierung*
+  * *Verbindungszeichen* wie Unterstrich
+  * *Bindestrichzeichen* wie Gedankenstrich und Bindestrich (einschließlich Zeichen wie Halbgeviertstrich, Geviertstrich, Doppelbindestrich usw.)
+  * *Öffnende Satzzeichen* und *Schließende Satzzeichen*, die in Paaren wie Klammern, geschweiften Klammern, spitzen Klammern usw. vorkommen. 
+  * *Öffnende Anführungszeichen* und *Schließende Anführungszeichen* wie einfache Anführungszeichen, doppelte Anführungszeichen und eckige Anführungszeichen. 
+  * *Andere Satzzeichen* wie Ausrufezeichen, Nummernzeichen, Prozentzeichen, Kaufmännisches Und-Zeichen, Sternchen, Komma, Punkt, Doppelpunkt, Semikolon usw. 
+  * *Mathematische Zeichen* wie Pluszeichen, Kleiner als-Zeichen und Größer als-Zeichen, vertikale Linie, Tilde, Gleichheitszeichen usw.
+  * *Währungssymbole* wie Dollarzeichen, Centzeichen, Pfundzeichen, Eurozeichen usw. 
+  * *Modifikationszeichen* wie Makron, Akzente, Maßpfeile usw. 
+  * *Sonstige Symbolzeichen* wie Copyrightzeichen, Gradzeichen, Zeichen für registriertes Warenzeichen usw. 
+* Wenn der Parameter *wordSeparators* angegeben wird, verwendet PCase nur die als Worttrennzeichen angegebenen Zeichen. 
+
+**Beispiel:**
+
+Angenommen, Sie beziehen die Attribute *firstName* und *lastName* von SAP SuccessFactors, und in der Personalverwaltung stehen beide Attribute in Großbuchstaben. Mithilfe der PCase-Funktion können Sie den Namen wie unten gezeigt in die richtige Groß-/Kleinschreibung konvertieren. 
+
+| Ausdruck | Eingabe | Ausgabe | Hinweise |
+| --- | --- | --- | --- |
+| `PCase([firstName])` | *firstName* = "PABLO GONSALVES (SECOND)" | "Pablo Gonsalves (Second)" | Da der Parameter *wordSeparators* nicht angegeben wird, verwendet die Funktion *PCase* den Standardzeichensatz als Worttrennzeichen. |
+| `PCase([lastName]," '-")` | *lastName* = "PINTO-DE'SILVA" | "Pinto-De'Silva" | Die Funktion *PCase* verwendet Zeichen im Parameter *wordSeparators*, um Wörter zu erkennen und sie in die richtige Groß-/Kleinschreibung zu transformieren. |
+| `PCase(Join(" ",[firstName],[lastName]))` | *firstName* = GREGORY, *lastName* = "JAMES" | "Gregory James" | Sie können die Join-Funktion in PCase schachteln. Da der Parameter *wordSeparators* nicht angegeben wird, verwendet die Funktion *PCase* den Standardzeichensatz als Worttrennzeichen.  |
+
+
+---
+
 ### <a name="removeduplicates"></a>RemoveDuplicates
 **Funktion:** RemoveDuplicates(attribute)
 

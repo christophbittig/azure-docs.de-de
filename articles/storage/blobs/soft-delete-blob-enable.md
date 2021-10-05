@@ -10,12 +10,12 @@ ms.date: 06/29/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 790afdb013d2721bc90238cfe0caf7aa4534c632
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5d5dbb4b3be5eec500a7a0845a9dbc568a113ca3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289498"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599105"
 ---
 # <a name="enable-soft-delete-for-blobs"></a>Aktivieren von „Vorläufiges Löschen“ für Blobs
 
@@ -24,7 +24,7 @@ Vorläufiges Löschen von Blobs schützt ein einzelnes Blob sowie seine Versione
 Das vorläufige Löschen von Blobs ist Teil einer umfassenden Datenschutzstrategie für Blobdaten. Weitere Informationen zu den Datenschutzempfehlungen von Microsoft finden Sie in der [Übersicht zum Datenschutz](data-protection-overview.md).
 
 > [!NOTE]
-> Mit dem vorläufigen Löschen von Blobs lassen sich auch Blobs und Verzeichnisse in Konten schützen, für die die hierarchische Namespacefunktion aktiviert ist. Das vorläufige Löschen von Blobs für Konten, für die die hierarchische Namespacefunktion aktiviert ist, befindet sich derzeit in der öffentlichen Vorschauphase und ist global in allen Azure-Regionen verfügbar. 
+> Mit dem vorläufigen Löschen von Blobs lassen sich auch Blobs und Verzeichnisse in Konten schützen, für die die hierarchische Namespacefunktion aktiviert ist. Das vorläufige Löschen von Blobs für Konten, für die die hierarchische Namespacefunktion aktiviert ist, befindet sich derzeit in der öffentlichen Vorschauphase und ist global in allen Azure-Regionen verfügbar.
 
 Das vorläufige Löschen von Blobs ist für neue Speicherkonten standardmäßig deaktiviert. Vorläufiges Löschen kann für ein Speicherkonto jederzeit über das Azure-Portal, mithilfe von PowerShell oder über die Azure CLI aktiviert oder deaktiviert werden.
 
@@ -87,7 +87,7 @@ az storage account blob-service-properties show --account-name <storage-account>
 
 ## <a name="enable-blob-soft-delete-hierarchical-namespace"></a>Aktivieren des vorläufigen Löschens für Blobs (hierarchischer Namespace)
 
-Mit dem vorläufigen Löschen von Blobs lassen sich auch Blobs und Verzeichnisse in Konten schützen, für die die hierarchische Namespacefunktion aktiviert ist. 
+Mit dem vorläufigen Löschen von Blobs lassen sich auch Blobs und Verzeichnisse in Konten schützen, für die die hierarchische Namespacefunktion aktiviert ist.
 
 > [!IMPORTANT]
 > Das vorläufige Löschen in Konten, für die die hierarchische Namespacefunktion aktiviert ist, befindet sich derzeit in der VORSCHAUPHASE und ist global in allen Azure-Regionen verfügbar.
@@ -116,17 +116,18 @@ Mit dem vorläufigen Löschen von Blobs lassen sich auch Blobs und Verzeichnisse
 1. Installieren Sie das neueste Modul **PowershellGet**. Schließen Sie die PowerShell-Konsole, und öffnen Sie sie dann erneut.
 
     ```powershell
-    install-Module PowerShellGet –Repository PSGallery –Force 
+    install-Module PowerShellGet -Repository PSGallery -Force
     ```
 
-2.  Installieren Sie das Vorschaumodul **Az.Storage**.
+2. Installieren Sie das Vorschaumodul **Az.Storage**.
 
     ```powershell
     Install-Module Az.Storage -Repository PsGallery -RequiredVersion 3.7.1-preview -AllowClobber -AllowPrerelease -Force
     ```
+
     Weitere Informationen zum Installieren von PowerShell-Modulen finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
 
-3. Abrufen der Speicherkontoautorisierung mithilfe eines Speicherkontoschlüssels, einer Verbindungszeichenfolge oder mit Azure Active Directory (Azure AD). Siehe [Herstellen einer Verbindung mit dem Konto](data-lake-storage-directory-file-acl-powershell.md#connect-to-the-account).
+3. Abrufen der Speicherkontoautorisierung mithilfe eines Speicherkontoschlüssels, einer Verbindungszeichenfolge oder mit Azure Active Directory (Azure AD). Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit dem Konto](data-lake-storage-directory-file-acl-powershell.md#connect-to-the-account).
 
    Im folgenden Beispiel wird die Autorisierung mithilfe eines Speicherkontoschlüssels abgerufen.
 
@@ -136,11 +137,12 @@ Mit dem vorläufigen Löschen von Blobs lassen sich auch Blobs und Verzeichnisse
 
 4. Wenn Sie das vorläufige Löschen von Blobs mithilfe von PowerShell aktivieren möchten, verwenden Sie den Befehl [Enable-AzStorageDeleteRetentionPolicy](/powershell/module/az.storage/enable-azstoragedeleteretentionpolicy), und geben Sie dabei den Aufbewahrungszeitraum in Tagen an.
 
-   Im folgenden Beispiel wird das vorläufige Löschen für ein Konto aktiviert und der Aufbewahrungszeitraum auf 4 Tage festgelegt. 
+   Im folgenden Beispiel wird das vorläufige Löschen für ein Konto aktiviert und der Aufbewahrungszeitraum auf 4 Tage festgelegt.
 
    ```powershell
    Enable-AzStorageDeleteRetentionPolicy -RetentionDays 4  -Context $ctx
    ```
+
 5. Um die aktuellen Einstellungen für das vorläufige Löschen von Blobs zu überprüfen, verwenden Sie den Befehl `Get-AzStorageServiceProperty`:
 
    ```powershell
@@ -156,14 +158,15 @@ Mit dem vorläufigen Löschen von Blobs lassen sich auch Blobs und Verzeichnisse
    ```azurecli
    az extension add -n storage-preview
    ```
-3. Stellen Sie eine Verbindung mit Ihrem Speicherkonto her. Siehe [Herstellen einer Verbindung mit dem Konto](data-lake-storage-directory-file-acl-cli.md#connect-to-the-account).
+
+3. Stellen Sie eine Verbindung mit Ihrem Speicherkonto her. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit dem Konto](data-lake-storage-directory-file-acl-cli.md#connect-to-the-account).
 
    > [!NOTE]
    > Das in diesem Artikel dargestellte Beispiel zeigt die Azure AD-Autorisierung (Azure AD). Weitere Informationen zu Autorisierungsmethoden finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure CLI](./authorize-data-operations-cli.md).
- 
+
 4. Wenn Sie das vorläufige Löschen mithilfe der Azure CLI aktivieren möchten, rufen Sie den Befehl `az storage fs service-properties update` auf, und geben Sie dabei den Aufbewahrungszeitraum in Tagen an.
 
-   Im folgenden Beispiel wird das vorläufige Löschen von Blobs und Verzeichnissen aktiviert und der Aufbewahrungszeitraum auf 5 Tage festgelegt. 
+   Im folgenden Beispiel wird das vorläufige Löschen von Blobs und Verzeichnissen aktiviert und der Aufbewahrungszeitraum auf 5 Tage festgelegt.
 
    ```azurecli
    az storage fs service-properties update --delete-retention --delete-retention-period 5 --auth-mode login

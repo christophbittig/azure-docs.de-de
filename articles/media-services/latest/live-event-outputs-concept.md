@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5269be27a0e31e9626cd26960092356bce0d8ff4
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: fb80374976752961b5c199fc06a8acba572c4d89
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635029"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129054469"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Liveereignisse und Liveausgaben in Media Services
 
@@ -221,9 +221,11 @@ Weitere Informationen finden Sie unter [Zeitintensive Vorgänge](media-services-
 
 ## <a name="live-outputs"></a>Liveausgaben
 
-Sobald der Stream an das Liveereignis übertragen wird, können Sie das Streamingereignis starten, indem Sie ein [Medienobjekt](/rest/api/media/assets), eine [Liveausgabe](/rest/api/media/liveoutputs) und einen [Streaminglocator](/rest/api/media/streaminglocators) erstellen. Die Liveausgabe archiviert den Stream und macht ihn über den [Streamingendpunkt](/rest/api/media/streamingendpoints) für Zuschauer verfügbar.  
+Sobald der Stream an das Liveereignis übertragen wird, können Sie das Streamingereignis starten, indem Sie ein [Medienobjekt](/rest/api/media/assets), eine [Liveausgabe](/rest/api/media/liveoutputs) und einen [Streaminglocator](/rest/api/media/streaminglocators) erstellen. Durch die Liveausgabe wird der Datenstrom archiviert und über den [Streamingendpunkt](/rest/api/media/streamingendpoints) für die Zuschauer verfügbar gemacht. 
+
+Die Standardzuordnung von AMS beträgt 5 Liveereignisse pro Media Services Konto. Wenn Sie diesen Grenzwert erhöhen möchten, erstellen Sie im Azure-Portal ein Supportticket. AMS kann Ihr Limit für Liveereignisse abhängig von Ihrer Streamingsituation und den verfügbarkeiten regionaler Rechenzentren erhöhen.
 
 Ausführliche Informationen zu Liveausgaben finden Sie unter [Verwenden von Timeshift und Liveausgaben zum Erstellen der bedarfsgesteuerten Videowiedergabe](live-event-cloud-dvr-time-how-to.md).
 ## <a name="live-event-output-questions"></a>Fragen zu Liveereignisausgaben
 
-Weitere Informationen dazu finden Sie unter den [häufig gestellten Fragen zu Liveereignissen](frequently-asked-questions.yml).
+Weitere Informationen dazu finden Sie unter den [häufig gestellten Fragen zu Liveereignissen](frequently-asked-questions.yml). Informationen zu Liveereigniskontingenten finden Sie unter [Kontingente und Grenzwerte](limits-quotas-constraints-reference.md).

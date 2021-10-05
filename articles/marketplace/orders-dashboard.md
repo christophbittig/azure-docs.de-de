@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 08/06/2021
-ms.openlocfilehash: 1cc7e76833ac710ae4bdd511efa3033f8cf8fed7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 95d0ced24ee4f7426cac96ff2e550f2be88d8d02
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345856"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083358"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 
@@ -36,17 +36,45 @@ Im [Dashboard „Aufträge“](https://go.microsoft.com/fwlink/?linkid=2165914) 
 > [!NOTE]
 > Die maximale Latenz zwischen der Kundengewinnung und der Berichterstattung im Partner Center beträgt 48 Stunden.
 
+## <a name="access-the-orders-dashboard"></a>Zugriff auf das Dashboard „Bestellungen“
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie auf der Startseite die Kachel **Insights** aus.
+
+    [ ![Veranschaulichung der Kachel „Insights“ auf der Startseite in Partner Center](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. Wählen Sie im linken Menü die Option **Aufträge** aus.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Klicken Sie im linken Navigationsbereich auf **Kommerzieller Marketplace** > **Analysieren** > **Aufträge**.
+
+---
+
 ## <a name="elements-of-the-orders-dashboard"></a>Elemente des Dashboards „Aufträge“
 
 In den folgenden Abschnitten wird beschrieben, wie das Dashboard „Aufträge“ verwendet und wie die Daten gelesen werden.
 
-Um auf das Dashboard „Aufträge“ in Partner Center zuzugreifen, wählen Sie unter **Kommerzieller Marketplace** die Option **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Aufträge** aus.
-
 ### <a name="month-range"></a>Monatsbereich
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+Oben rechts auf jeder Seite finden Sie eine Monatsbereichsauswahl. Passen Sie die Ausgabe der Diagramme auf der Seite **Aufträge** an, indem Sie einen Monatsbereich basierend auf den letzten 6 oder 12 Monaten oder einen benutzerdefinierten Monatsbereich mit einer maximalen Dauer von 12 Monaten auswählen. Der standardmäßige Monatsbereich (Berechnungszeitraum) beträgt sechs Monate.
+
+[ ![Veranschaulicht die Monatsfilter im Dashboard „Aufträge“](./media/orders-dashboard/order-workspace-filters.png) ](./media/orders-dashboard/order-workspace-filters.png#lightbox)
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
 
 Oben rechts auf jeder Seite finden Sie eine Monatsbereichsauswahl. Passen Sie die Ausgabe der Diagramme auf der Seite **Aufträge** an, indem Sie einen Monatsbereich basierend auf den letzten 6 oder 12 Monaten oder einen benutzerdefinierten Monatsbereich mit einer maximalen Dauer von 12 Monaten auswählen. Der standardmäßige Monatsbereich (Berechnungszeitraum) beträgt sechs Monate.
 
 :::image type="content" source="./media/orders-dashboard/month-filters.png" alt-text="Veranschaulicht die Monatsfilter im Dashboard „Aufträge“":::
+
+---
 
 > [!NOTE]
 > Alle Metriken in den Visualisierungswidgets und Exportberichten berücksichtigen den vom Benutzer ausgewählten Berechnungszeitraum.

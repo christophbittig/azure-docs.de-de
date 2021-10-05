@@ -5,18 +5,22 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 08/30/2021
-ms.openlocfilehash: 67c4a99dbdb370202e4bbf080f32c626b71093b1
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 28aa16d5f65891df063db7b43211e466855dfeec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123213835"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832046"
 ---
 # <a name="output-iteration-in-bicep"></a>Ausgabeiteration in Bicep
 
 In diesem Artikel wird gezeigt, wie Sie mehr als einen Wert für eine Ausgabe in Ihrer Bicep-Datei erstellen. Sie können dem Abschnitt `output` der Datei eine Schleife hinzufügen und während der Bereitstellung dynamisch mehrere Elemente zurückgeben.
 
 Sie können auch eine Schleife mit [Modulen](loop-modules.md), [Ressourcen](loop-resources.md), [Eigenschaften in einer Ressource](loop-properties.md) und [Variablen](loop-variables.md) verwenden.
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen und praktische Anleitungen zu Schleifen finden Sie in **Microsoft Learn** unter [Erstellen flexibler Bicep-Vorlagen mithilfe von Bedingungen und Schleifen](/learn/modules/build-flexible-bicep-templates-conditions-loops/).
 
 ## <a name="syntax"></a>Syntax
 
@@ -30,7 +34,7 @@ Mit Schleifen können Sie Elemente während der Bereitstellung zurückgeben durc
   }]
   ```
 
-  Weitere Informationen finden Sie unter [Schleifen-Index](#loop-index).
+  Weitere Informationen finden Sie unter [Schleifenindex](#loop-index).
 
 - Durchlaufen eines Arrays
 
@@ -49,7 +53,7 @@ Mit Schleifen können Sie Elemente während der Bereitstellung zurückgeben durc
   }]
   ```
 
-  Weitere Informationen finden Sie unter [Schleifen-Array und -Index](#loop-array-and-index).
+  Weitere Informationen finden Sie unter [Schleifenarray und -index](#loop-array-and-index).
 
 ## <a name="loop-limits"></a>Schleifengrenzwerte
 

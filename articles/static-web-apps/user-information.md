@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 14f44504e48279d0a8bd8f8e95e98113a4647023
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 10b622a707747e69beba1e2be5f989ee2bcd4804
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515252"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804550"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps"></a>Zugreifen auf Benutzerinformationen in Azure Static Web Apps
 
@@ -152,6 +152,8 @@ public static class StaticWebAppsAuth
 ```
 
 ---
+
+Wenn ein Benutzer angemeldet ist, wird der Header `x-ms-client-principal` den Anforderungen für Benutzerinformationen über die Static Web Apps Edgeknoten hinzugefügt.
 
 <sup>1</sup> Die [fetch](https://caniuse.com/#feat=fetch)-API und der Operator [await](https://caniuse.com/#feat=mdn-javascript_operators_await) werden in Internet Explorer nicht unterstützt.
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 65f4963f23d97ca2e3af34febb0d5dbea652fc12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c579f87cd9fc8bc071b0abf8acc8ffe5f7d538b0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646978"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801066"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Shopify Plus
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Shopify Plus unterstützt **SP- und IdP-initiiertes** einmaliges Anmelden.
+* Shopify Plus unterstützt [Automatisierte Benutzerbereitstellung](shopify-plus-provisioning-tutorial.md).
 
 ## <a name="add-shopify-plus-from-the-gallery"></a>Hinzufügen von Shopify Plus aus dem Katalog
 
@@ -133,6 +134,9 @@ Kopieren Sie zum Konfigurieren des einmaligen Anmeldens aufseiten von **Shopify 
 
 In diesem Abschnitt erstellen Sie in Shopify Plus einen Benutzer namens B. Simon. Kehren Sie zum Abschnitt **Users** (Benutzer) zurück, und fügen Sie einen Benutzer hinzu, indem Sie dessen E-Mail-Adresse und Berechtigungen eingeben. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
+> [!NOTE]
+> Außerdem unterstützt Shopify Plus automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./shopify-plus-provisioning-tutorial.md).
+
 ### <a name="enforce-saml-authentication"></a>Erzwingen der SAML-Authentifizierung
 
 > [!NOTE]
@@ -165,7 +169,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Shopify Plus-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Shopify Plus“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Shopify Plus-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Shopify Plus“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Shopify Plus-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

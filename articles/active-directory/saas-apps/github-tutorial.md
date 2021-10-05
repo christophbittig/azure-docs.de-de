@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit einer GitHub Enterprise Cloud-Organisation | Microsoft-Dokumentation'
+title: Azure Active Directory-Integration mit einer GitHub Enterprise Cloud-Organisation | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und einer GitHub Enterprise Cloud-Organisation konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/24/2020
+ms.date: 09/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 12d80ee98ceef33221b7713703e8106bada6470c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fdd62a5acdc0c470b8b675d650b88839093dcbf4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750428"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124834185"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-a-github-enterprise-cloud-organization"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit einer GitHub Enterprise Cloud-Organisation
+# <a name="tutorial-azure-ad-sso-integration-with-a-github-enterprise-cloud-organization"></a>Azure Active Directory-Integration mit einer GitHub Enterprise Cloud-Organisation | Microsoft-Dokumentation
 
 In diesem Tutorial erfahren Sie, wie Sie eine GitHub Enterprise Cloud-**Organisation** in Azure Active Directory (Azure AD) integrieren. Die Integration einer GitHub Enterprise Cloud-Organisation mit Azure AD ermöglicht Folgendes:
 
@@ -27,19 +27,18 @@ In diesem Tutorial erfahren Sie, wie Sie eine GitHub Enterprise Cloud-**Organisa
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit einer GitHub Enterprise Cloud-Organisation konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Eine in [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) erstellte GitHub-Organisation (erfordert den [Abrechnungsplan für GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* GitHub unterstützt **SP-initiiertes** einmaliges Anmelden.
+* GitHub unterstützt **SP**-initiiertes einmaliges Anmelden.
 
 * GitHub unterstützt die [**automatisierte** Benutzerbereitstellung (Organisationseinladungen)](github-provisioning-tutorial.md).
-
 
 ## <a name="adding-github-from-the-gallery"></a>Hinzufügen von GitHub aus dem Katalog
 
@@ -83,9 +82,8 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://github.com/orgs/<Organization ID>/sso`.
 
-
     > [!NOTE]
-    > Hinweis: Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL ersetzen. Hier empfehlen wir Ihnen, den eindeutigen Wert der Zeichenfolge im Bezeichner zu verwenden. Navigieren Sie zum Abschnitt „GitHub Admin“ (GitHub-Verwaltung), um diese Werte abzurufen.
+    > Hinweis: Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Antwort- und Abmelde-URL ersetzen. Hier empfehlen wir Ihnen, den eindeutigen Wert der Zeichenfolge im Bezeichner zu verwenden. Navigieren Sie zum Abschnitt „GitHub Admin“ (GitHub-Verwaltung), um diese Werte abzurufen.
 
 5. Die GitHub-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute, wobei **Eindeutiger Benutzerbezeichner (Namens-ID)** hier **user.userprincipalname** zugeordnet wird. Die GitHub-Anwendung erwartet, dass **Eindeutiger Benutzerbezeichner (Namens-ID)** der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher bearbeiten, indem Sie auf das Symbol **Bearbeiten** klicken und die Zuordnung entsprechend ändern.
 
@@ -98,7 +96,6 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 7. Kopieren Sie im Abschnitt **GitHub einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -137,7 +134,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 3. Aktivieren Sie das Kontrollkästchen **Enable SAML authentication** (SAML-Authentifizierung aktivieren), um die Felder für die Konfiguration des einmaligen Anmeldens anzuzeigen, und führen Sie die folgenden Schritte aus:
 
-    ![Screenshot: Abschnitt „SAML Single Sign-On“ (Einmalige SAML-Anmeldung) mit aktiviertem Kontrollkästchen „Enable SAML authentication“ (SAML-Authentifizierung aktivieren) und hervorgehobenen URL-Textfeldern](./media/github-tutorial/saml-sso.png)
+    ![Screenshot: Abschnitt „SAML Single Sign-On“ (Einmalige SAML-Anmeldung) mit aktiviertem Kontrollkästchen „Enable SAML authentication“ (SAML-Authentifizierung aktivieren) und hervorgehobenen URL-Textfeldern](./media/github-tutorial/authentication.png)
 
     a. Kopieren Sie den Wert für **URL für einmaliges Anmelden**, und fügen Sie ihn im Azure-Portal unter **Grundlegende SAML-Konfiguration** im Textfeld **Anmelde-URL** ein.
     
@@ -157,11 +154,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     
     e. Aktualisieren Sie die standardmäßige **Assertionsverbraucherdienst-URL (Antwort-URL)** , sodass die URL auf GitHub mit der URL in der Azure-App-Registrierung übereinstimmt.
 
-    ![image](./media/github-tutorial/tutorial_github_sha.png)
+    ![Screenshot des Bildes.](./media/github-tutorial/certificate.png)
 
 5. Klicken Sie auf **Test SAML configuration** (SAML-Konfiguration testen), um sich zu vergewissern, dass beim einmaligen Anmelden keine Validierungsfehler oder anderen Fehler auftreten.
 
-    ![Einstellungen](./media/github-tutorial/test.png)
+    ![Screenshot, der die Einstellungen zeigt.](./media/github-tutorial/test.png)
 
 6. Klicken Sie unten auf der Seite auf **Speichern**.
 
@@ -182,13 +179,13 @@ In diesem Abschnitt wird in GitHub eine Benutzerin namens Britta Simon erstellt.
 
 3. Klicken Sie auf **Invite member** (Mitglied einladen).
 
-    ![Invite Users (Benutzer einladen)](./media/github-tutorial/invite-member.png "Invite Users")
+    ![Screenshot: Benutzer einladen](./media/github-tutorial/invite-member.png "Invite Users")
 
 4. Führen Sie auf der Dialogfeldseite **Invite member** (Mitglied einladen) die folgenden Schritte aus:
 
     a. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse des Kontos von Britta Simon ein.
 
-    ![Invite People (Personen einladen)](./media/github-tutorial/email-box.png "Invite People")
+    ![Screenshot: Personen einladen](./media/github-tutorial/email-box.png "Invite People")
 
     b. Klicken Sie auf **Einladung senden**.
 
@@ -205,7 +202,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die GitHub-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „GitHub“ klicken, werden Sie zur Anmelde-URL für GitHub weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „GitHub“ klicken, werden Sie zur Anmelde-URL für GitHub weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

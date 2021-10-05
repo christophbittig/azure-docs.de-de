@@ -10,12 +10,12 @@ ms.date: 09/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5a0ca85ff28e56e7e9a47df1e56861d5c6552b97
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 8ba9a24e050307b029e4026a7e8e519a1b4043dc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468094"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607043"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objektreplikation für Blockblobs
 
@@ -97,7 +97,7 @@ Beim Erstellen einer Replikationsregel werden standardmäßig nur neue Blockblob
 
 Sie können ferner einen oder mehrere Filter als Teil einer Replikationsregel angeben, um Blockblobs anhand eines Präfixes zu filtern. Wenn Sie ein Präfix angeben, werden nur Blobs in den Zielcontainer kopiert, die mit diesem Präfix im Quellcontainer übereinstimmen.
 
-Die Quell- und Zielcontainer müssen beide vorhanden sein, bevor Sie sie in einer Regel angeben können. Wenn Sie die Replikationsrichtlinie erstellt haben, sind Schreibvorgänge im Zielcontainer nicht zulässig. Alle Versuche, in den Zielcontainer zu schreiben, schlagen mit dem Fehlercode 409 (Konflikt) fehl. Wenn Sie in einen Zielcontainer schreiben möchten, für den eine Replikationsregel konfiguriert ist, müssen Sie entweder die für diesen Container konfigurierte Regel löschen oder die Replikationsrichtlinie entfernen. Lese- und Löschvorgänge im Zielcontainer sind zulässig, wenn die Replikationsrichtlinie aktiv ist.
+Die Quell- und Zielcontainer müssen beide vorhanden sein, bevor Sie sie in einer Regel angeben können. Nachdem Sie die Replikationsrichtlinie erstellt haben, sind Schreibvorgänge im Zielcontainer nicht zulässig. Alle Versuche, in den Zielcontainer zu schreiben, schlagen mit dem Fehlercode 409 (Konflikt) fehl. Wenn Sie in einen Zielcontainer schreiben möchten, für den eine Replikationsregel konfiguriert ist, müssen Sie entweder die für diesen Container konfigurierte Regel löschen oder die Replikationsrichtlinie entfernen. Lese- und Löschvorgänge im Zielcontainer sind zulässig, wenn die Replikationsrichtlinie aktiv ist.
 
 Sie können den Vorgang [Blobebene festlegen](/rest/api/storageservices/set-blob-tier) für einen Blob im Zielcontainer aufrufen, um ihn auf die Archivebene zu verschieben. Weitere Informationen zur Archivebene finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md#archive-access-tier).
 
@@ -166,7 +166,7 @@ In der folgenden Tabelle sind die Werte zusammengefasst, die in den einzelnen Sz
 
 Ein Azure Active Directory-Mandant (Azure AD) ist eine dedizierte Azure AD-Instanz, die eine Organisation zum Zweck der Identitäts- und Zugriffsverwaltung darstellt. Jedes Azure-Abonnement weist eine Vertrauensstellung mit einem einzigen Azure AD-Mandanten auf. Alle Ressourcen in einem Abonnement, einschließlich Speicherkonten, sind demselben Azure AD-Mandanten zugeordnet. Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md).
 
-Standardmäßig kann ein Benutzer mit entsprechenden Berechtigungen die Objektreplikation mit einem Quellspeicherkonto konfigurieren, das sich in einem Azure AD-Mandanten befindet, und einem Zielkonto, das sich in einem anderen Mandanten befindet. Wenn Ihre Sicherheitsrichtlinien erfordern, dass Sie die Objektreplikation auf Speicherkonten innerhalb desselben Mandanten beschränken, können Sie die mandantenübergreifende Replikation verhindern, indem Sie die Sicherheitseigenschaft **AllowCrossTenantReplication** (Vorschau) festlegen. Wenn Sie die mandantenübergreifende Objektreplikation für ein Speicherkonto deaktivieren, erfordert Azure Storage für jede Objektreplikationsrichtlinie, die mit diesem Speicherkonto als Quell- oder Zielkonto konfiguriert ist, dass sich sowohl das Quell- als auch das Zielkonto in demselben Azure AD-Mandanten befinden.  Weitere Informationen zum Verhindern der mandantenübergreifenden Objektreplikation finden Sie unter [Verhindern der Objektreplikation zwischen Azure Active Directory-Mandanten](object-replication-prevent-cross-tenant-policies.md).
+Standardmäßig kann ein Benutzer mit entsprechenden Berechtigungen die Objektreplikation mit einem Quellspeicherkonto konfigurieren, das sich in einem Azure AD-Mandanten befindet, und einem Zielkonto, das sich in einem anderen Mandanten befindet. Wenn Ihre Sicherheitsrichtlinien erfordern, dass Sie die Objektreplikation auf Speicherkonten innerhalb desselben Mandanten beschränken, können Sie die mandantenübergreifende Replikation verhindern, indem Sie die Sicherheitseigenschaft **AllowCrossTenantReplication** (Vorschau) festlegen. Wenn Sie die mandantenübergreifende Objektreplikation für ein Speicherkonto deaktivieren, erfordert Azure Storage für jede Objektreplikationsrichtlinie, die mit diesem Speicherkonto als Quell- oder Zielkonto konfiguriert ist, dass sich sowohl das Quell- als auch das Zielkonto in demselben Azure AD-Mandanten befinden. Weitere Informationen zum Verhindern der mandantenübergreifenden Objektreplikation finden Sie unter [Verhindern der Objektreplikation zwischen Azure Active Directory-Mandanten](object-replication-prevent-cross-tenant-policies.md).
 
 Um die mandantenübergreifende Objektreplikation für ein Speicherkonto zu verhindern, legen Sie die Eigenschaft **AllowCrossTenantReplication** auf *false* fest. Wenn für das Speicherkonto derzeit keine Richtlinien für die mandantenübergreifende Objektreplikation gelten, verhindert das Festlegen der Eigenschaft **AllowCrossTenantReplication** auf *false* die zukünftige Konfiguration von Richtlinien für die mandantenübergreifende Objektreplikation, bei denen dieses Speicherkonto als Quelle oder Ziel verwendet wird.
 
@@ -188,12 +188,12 @@ Wenn der Replikationsstatus für ein Blob im Quellkonto auf einen Fehler hinweis
 
 ## <a name="feature-support"></a>Featureunterstützung
 
-In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat. 
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
 
-| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) | 
-| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) | 
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) |
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
 

@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 08/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5c8918870274cb0ea443dd1f4c93f39c301c6287
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: d91b14057937275338ee1c96ee4025d66af6251d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446501"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794596"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services"></a>Versionshinweise: Azure Arc-fähige Datendienste
 
@@ -188,7 +188,7 @@ Ersetzen Sie `azdata arc sql mi...` durch `az sql mi-arc...`, um Ihre Skripts f�
 
 Ersetzen Sie für PostgreSQL Hyperscale mit Azure Arc-Unterstützung `azdata arc sql postgres...` durch `az postgres arc-server...`.
 
-Zusätzlich zu den bereits vorhandenen Parametern für `azdata`-Befehle verfügen dieselben Befehle in der Erweiterung `arcdata` für die Azure-Befehlszeilenschnittstelle über einige neue Parameter wie `--k8s-namespace` und `--use-k8s`, die nun erforderlich sind. Mit dem Parameter `--use-k8s` wird unterschieden, wann der Befehl an die Kubernetes-API oder an die ARM-API gesendet werden soll. Derzeit zielen alle Befehle an der Azure-Befehlszeilenschnittstelle für Arc-fähige Datendienste nur auf die Kubernetes-API ab.
+Zusätzlich zu den bereits vorhandenen Parametern für `azdata`-Befehle verfügen dieselben Befehle in der Erweiterung `arcdata` für die Azure-Befehlszeilenschnittstelle über einige neue Parameter wie `--k8s-namespace` und `--use-k8s`, die nun erforderlich sind. Mit dem Parameter `--use-k8s` wird unterschieden, wann der Befehl an die Kubernetes-API oder an die ARM-API gesendet werden soll. Derzeit zielen alle Befehle an der Azure-Befehlszeilenschnittstelle für Azure Arc-fähige Datendienste nur auf die Kubernetes-API ab.
 
 Einige der Kurzformen der Parameternamen (z. B. `-cl` für `--core-limit`) wurden entfernt oder geändert. Verwenden Sie die neuen Kurznamen der Parameter oder den langen Namen.
 
@@ -204,7 +204,7 @@ Das OpenDistro-Sicherheitspaket wurde entfernt. Die Anmeldung bei Kibana erfolgt
 
 #### <a name="crd-version-bump-to-v1beta1"></a>Aktualisierung der CRD-Version auf `v1beta1`
 
-Für alle CRDs wurde die Version für dieses Release von `v1alpha1` auf `v1beta1` aktualisiert. Achten Sie darauf, alle CRDs im Rahmen des Deinstallationsprozesses zu löschen, wenn Sie vor dem Release vom Juni 2021 eine Version von Arc-fähigen Datendiensten bereitgestellt haben. Die neuen CRDs, die mit dem Release vom Juni 2021 bereitgestellt werden, weisen die Version „v1beta1“ auf.
+Für alle CRDs wurde die Version für dieses Release von `v1alpha1` auf `v1beta1` aktualisiert. Achten Sie darauf, alle CRDs im Rahmen des Deinstallationsprozesses zu löschen, wenn Sie vor dem Release vom Juni 2021 eine Version von Azure Arc-fähigen Datendiensten bereitgestellt haben. Die neuen CRDs, die mit dem Release vom Juni 2021 bereitgestellt werden, weisen die Version „v1beta1“ auf.
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>SQL Managed Instance mit Azure Arc-Unterstützung
 
@@ -218,13 +218,13 @@ Mit diesem Release werden Erweiterungen für die `az`-Befehlszeilenschnittstelle
 
 #### <a name="data-controller"></a>Datencontroller
 
-- Die Benutzerfunktionen für die Bereitstellung eines Datencontrollers im direkten Verbindungsmodus über das Azure-Portal wurden optimiert. Nachdem einem Kubernetes-Cluster Arc-Unterstützung hinzugefügt wurde, können Sie den Datencontroller vollständig über das Portal mit dem Assistenten zum Erstellen von Arc-Datencontrollern in einem Vorgang bereitstellen. Bei dieser Bereitstellung werden auch der benutzerdefinierte Standort und die Arc-fähige Datendiensterweiterung (Bootstrapper) erstellt. Sie können den benutzerdefinierten Standort oder die Erweiterung auch vorab erstellen und die Datencontrollerbereitstellung für deren Verwendung konfigurieren.
+- Die Benutzerfunktionen für die Bereitstellung eines Datencontrollers im direkten Verbindungsmodus über das Azure-Portal wurden optimiert. Nachdem einem Kubernetes-Cluster Azure Arc-Unterstützung hinzugefügt wurde, können Sie den Datencontroller vollständig über das Portal mit dem Assistenten zum Erstellen von Arc-Datencontrollern in einem Vorgang bereitstellen. Bei dieser Bereitstellung werden auch der benutzerdefinierte Standort und die Azure Arc-fähige Datendiensterweiterung (Bootstrapper) erstellt. Sie können den benutzerdefinierten Standort oder die Erweiterung auch vorab erstellen und die Datencontrollerbereitstellung für deren Verwendung konfigurieren.
 - Die neue `Infrastructure`-Eigenschaft ist eine erforderliche Eigenschaft für die Bereitstellung eines Arc-Datencontrollers. Diese Eigenschaft ist für Abrechnungszwecke erforderlich. Weitere Informationen werden bei allgemeiner Verfügbarkeit bereitgestellt.
 - Verschiedene Verbesserungen an der Benutzerfreundlichkeit des Datencontrollers im Azure-Portal, einschließlich der Möglichkeit, den Bereitstellungsstatus von Ressourcen im Kubernetes-Cluster besser anzuzeigen.
 - Der Datencontroller lädt automatisch Protokolle (optional) und jetzt auch Metriken im direkten Verbindungsmodus in Azure hoch.
 - Der Überwachungsstapel (Metriken und Protokolldatenbanken/Dashboards) wurde jetzt in eine eigene benutzerdefinierte Ressourcendefinition (CRD) gepackt: `monitors.arcdata.microsoft.com`. Beim Erstellen dieser benutzerdefinierten Ressource werden die Überwachungsstapelpods erstellt. Beim Löschen werden auch die Überwachungsstapelpods gelöscht. Beim Erstellen des Datencontrollers wird automatisch die benutzerdefinierte Überwachungsressource erstellt.
 - Der direkte Verbindungsmodus (Vorschau) wird nun in weiteren Regionen unterstützt: „USA, Osten 2“, „USA, Westen 2“, „USA, Süden-Mitte“, „Vereinigtes Königreich, Süden“, „Frankreich, Mitte“, „Asien, Südosten“, „Australien, Osten“.
-- Das Diagramm der benutzerdefinierten Standortressource auf dem Blatt „Übersicht“ enthält jetzt Arc-fähige Datendienstressourcen, die dort bereitgestellt wurden.
+- Das Diagramm der benutzerdefinierten Standortressource auf dem Blatt „Übersicht“ enthält jetzt Azure Arc-fähige Datendienstressourcen, die dort bereitgestellt wurden.
 - Im Azure-Portal wurden Diagnosen und Lösungen für den Datencontroller hinzugefügt.
 - Die neue `Observed Generation`-Eigenschaft wurde allen Arc-bezogenen benutzerdefinierten Ressourcen hinzugefügt.
 - Der Dienst für die Anmeldeinformationsverwaltung ist jetzt enthalten und übernimmt die automatisierte Verteilung von Zertifikaten an alle Dienste, die vom Datencontroller verwaltet werden.
@@ -273,7 +273,7 @@ Als Previewfunktion unterliegt die in diesem Artikel vorgestellte Technologie de
 
 - Erstellen und Löschen von Servergruppen für Datencontroller, verwaltete SQL-Instanzen und PostgreSQL Hyperscale auf dem Azure-Portal.
 - Validieren Sie Portalaktionen beim Löschen von Azure Arc-Datendiensten. Das Portal warnt beispielsweise, wenn Sie versuchen, den Datencontroller zu löschen, wenn mit ihm SQL Managed Instances bereitgestellt werden.
-- Erstellen Sie benutzerdefinierte Konfigurationsprofile, um benutzerdefinierte Einstellungen zu unterstützen, wenn Sie Arc-fähige Datencontroller mithilfe des Azure-Portals bereitstellen.
+- Erstellen Sie benutzerdefinierte Konfigurationsprofile, um benutzerdefinierte Einstellungen zu unterstützen, wenn Sie Azure Arc-fähige Datencontroller mithilfe des Azure-Portals bereitstellen.
 - Optional können Sie Ihre Protokolle im direkt verbundenen Modus automatisch in den Azure Log Analytics-Arbeitsbereich hochladen.
 
 #### <a name="azure-arc-enabled-postgresql-hyperscale"></a>PostgreSQL Hyperscale mit Azure Arc-Unterstützung
@@ -484,7 +484,7 @@ Dieses Release enthält folgende Breaking Changes:
 
 ## <a name="september-2020"></a>September 2020
 
-Azure Arc-fähige Datendienste sind für die öffentliche Vorschau freigegeben. Mit Arc-fähigen Datendiensten können Sie Datendienste an jedem Ort verwalten.
+Azure Arc-fähige Datendienste sind für die öffentliche Vorschau freigegeben. Mit Azure Arc-fähigen Datendiensten können Sie Datendienste an jedem Ort verwalten.
 
 - Verwaltete SQL-Instanz
 - PostgreSQL Hyperscale

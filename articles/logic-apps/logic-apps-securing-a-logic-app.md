@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, azla
 ms.topic: how-to
-ms.date: 07/29/2021
-ms.openlocfilehash: 296a743924de2093ff9418333bdf8ef7e2f6f0f1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/13/2021
+ms.openlocfilehash: ed101e95a8580274661fd19d752a478677359641
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355104"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647193"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -144,6 +144,9 @@ Schließen Sie in den Textkörper die `KeyType`-Eigenschaft als `Primary` oder a
 Für eingehende Aufrufe an einen Endpunkt, der von einem anforderungsbasierten Trigger erstellt wurde, können Sie [Azure AD OAuth](../active-directory/develop/index.yml) aktivieren, indem Sie eine Autorisierungsrichtlinie für Ihre Logik-App definieren oder dieser hinzufügen. Auf diese Weise verwenden eingehende Aufrufe OAuth-[Zugriffstoken](../active-directory/develop/access-tokens.md) für die Autorisierung.
 
 Wenn Ihre Logik-App eine eingehende Anforderung mit einem OAuth-Zugriffstoken empfängt, vergleicht der Azure Logic Apps-Dienst die Ansprüche des Tokens mit den in den einzelnen Autorisierungsrichtlinien angegebenen Ansprüchen. Wenn eine Übereinstimmung zwischen den Ansprüchen des Tokens und allen Ansprüchen in mindestens einer Richtlinie vorliegt, ist die Autorisierung für die eingehende Anforderung erfolgreich. Das Token kann mehr Ansprüche als von der Autorisierungsrichtlinie angegeben aufweisen.
+
+> [!NOTE]
+> Für den Ressourcentyp **Logik-App (Standard)** in Azure Logic Apps mit nur einem Mandanten ist Azure AD OAuth derzeit nicht für eingehende Aufrufe anforderungsbasierter Trigger verfügbar, z. B. anforderungsbasierter Trigger und HTTP-Webhooktrigger.
 
 #### <a name="considerations-before-you-enable-azure-ad-oauth"></a>Überlegungen vor dem Aktivieren von Azure AD OAuth
 
@@ -476,13 +479,17 @@ Dieses Beispiel zeigt die Ressourcendefinition für eine geschachtelte Logik-App
 
 ## <a name="access-to-logic-app-operations"></a>Zugriff auf Logik-App-Vorgänge
 
-Sie können nur bestimmten Benutzern oder Gruppen erlauben, bestimmte Aufgaben auszuführen, wie z. B. das Verwalten, Bearbeiten und Anzeigen von Logik-Apps. Um die jeweiligen Berechtigungen zu steuern, verwenden Sie die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md), damit Sie den Mitgliedern in Ihrem Azure-Abonnement benutzerdefinierte oder integrierte Rollen zuweisen können:
+Sie können nur bestimmten Benutzern oder Gruppen erlauben, bestimmte Aufgaben auszuführen, wie z. B. das Verwalten, Bearbeiten und Anzeigen von Logik-Apps. Verwenden Sie die [rollenbasierte Azure-Zugriffssteuerung (Azure RBAC)](../role-based-access-control/role-assignments-portal.md), um ihre Berechtigungen zu steuern. Sie können Mitgliedern, die Zugriff auf Ihr Azure-Abonnement haben, integrierte oder angepasste Rollen zuweisen. Azure Logic Apps verfügt über diese spezifischen Rollen:
 
 * [Logik-App-Mitwirkender:](../role-based-access-control/built-in-roles.md#logic-app-contributor) Ermöglicht Ihnen die Verwaltung von Logik-Apps, aber nicht die Änderung des App-Zugriffs.
 
 * [Logik-App-Operator:](../role-based-access-control/built-in-roles.md#logic-app-operator) Ermöglicht Ihnen das Lesen, Aktivieren und Deaktivieren von Logik-Apps, die Sie aber nicht bearbeiten oder aktualisieren können.
 
-Um zu verhindern, dass andere Personen Ihre Logik-App ändern oder löschen, können Sie [Azure-Ressourcensperren](../azure-resource-manager/management/lock-resources.md) verwenden. Diese Funktion verhindert, dass andere Personen Produktionsressourcen ändern oder löschen.
+* [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor): Hiermit wird Vollzugriff zum Verwalten aller Ressourcen gewährt, allerdings nicht zum Zuweisen von Rollen in Azure RBAC, zum Verwalten von Zuweisungen in Azure Blueprints oder zum Teilen von Imagekatalogen.
+
+  Angenommen, Sie müssen mit einer Logik-App arbeiten, die Sie nicht erstellt und keine Verbindungen authentifiziert haben, die vom Workflow dieser Logik-App verwendet werden. Für Ihr Azure-Abonnement ist die Berechtigung „Mitwirkender“ für die Ressourcengruppe erforderlich, die diese Logik-App-Ressource enthält. Wenn Sie eine Logik-App-Ressource erstellen, haben Sie automatisch Zugriff als Mitwirkender.
+
+Um zu verhindern, dass andere Personen Ihre Logik-App ändern oder löschen, können Sie [Azure-Ressourcensperren](../azure-resource-manager/management/lock-resources.md) verwenden. Diese Funktion verhindert, dass andere Personen Produktionsressourcen ändern oder löschen. Weitere Informationen zur Verbindungssicherheit finden Sie unter [Verbindungskonfiguration in Azure Logic Apps](../connectors/apis-list.md#connection-configuration) und [Verbindungssicherheit und Verschlüsselung](../connectors/apis-list.md#connection-security-encyrption).
 
 <a name="secure-run-history"></a>
 
@@ -1135,7 +1142,11 @@ Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertr
 
 #### <a name="managed-identity-authentication"></a>Authentifizierung der verwalteten Identität
 
-Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für einen [Trigger oder eine Aktion verfügbar ist, der oder die die Authentifizierung der verwalteten Identitäten unterstützt,](#add-authentication-outbound) kann Ihre Logik-App die systemseitig zugewiesene Identität oder eine *einzelne* manuell erstellte, benutzerseitig zugewiesene Identität verwenden, um den Zugriff auf Azure-Ressourcen, die von Azure Active Directory (Azure AD) und nicht durch Anmeldeinformationen, Geheimnisse oder Azure AD-Token geschützt werden, ohne Anmeldung zu authentifizieren. Azure verwaltet diese Identität für Sie und erleichtert den Schutz Ihrer Anmeldeinformationen, da Sie weder Geheimnisse verwalten noch Azure AD-Token direkt verwenden müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für einen [Trigger oder eine Aktion verfügbar ist, der oder die die Authentifizierung der verwalteten Identitäten unterstützt](#add-authentication-outbound), kann Ihre Logik-App die systemseitig zugewiesene Identität oder eine einzelne manuell erstellte, benutzerseitig zugewiesene Identität verwenden, um den Zugriff auf Azure-Ressourcen, die von Azure Active Directory (Azure AD) und nicht durch Anmeldeinformationen, Geheimnisse oder Azure AD-Token geschützt werden, ohne Anmeldung zu authentifizieren. Azure verwaltet diese Identität für Sie und erleichtert den Schutz Ihrer Anmeldeinformationen, da Sie weder Geheimnisse verwalten noch Azure AD-Token direkt verwenden müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+
+* Der Ressourcentyp **Logik-App (Verbrauch)** unterstützt die Verwendung der systemseitig zugewiesenen Identität oder einer benutzerseitig zugewiesenen *einzelnen* Identität.
+
+* Der Ressourcentyp **Logik-App (Standard)** unterstützt nur die systemseitig zugewiesene Identität, die automatisch aktiviert wird. Die vom Benutzer zugewiesene Identität ist derzeit nicht verfügbar.
 
 1. Bevor Ihre Logik-App eine verwaltete Identität verwenden kann, führen Sie die Schritte in [Authentifizieren und Zugreifen auf Ressourcen mit verwalteten Identitäten in Azure Logic Apps](../logic-apps/create-managed-service-identity.md) aus. Diese Schritte aktivieren die verwaltete Identität in Ihrer Logik-App und richten den Zugriff dieser Identität auf die Zielressource in Azure ein.
 
@@ -1177,7 +1188,6 @@ Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-a
    | **Verbindungsname** | Ja | <*connection-name*> ||
    | **Verwaltete Identität** | Yes | **Systemseitig zugewiesene verwaltete Identität** <br>oder <br> <*user-assigned-managed-identity-name*> | Der zu verwendende Authentifizierungstyp |
    |||||
-
 
 <a name="block-connections"></a>
 

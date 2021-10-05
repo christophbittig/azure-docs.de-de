@@ -5,15 +5,15 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.author: banders
-ms.reviewer: yashar
+ms.reviewer: primittal
 ms.topic: troubleshooting
-ms.date: 10/27/2020
-ms.openlocfilehash: 8575d9d86d8e720122a295cf92fa571ef33d5b4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 09/20/2021
+ms.openlocfilehash: 51d30767c3e084ade041d22bac8a246aa5d1f502
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92798189"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631132"
 ---
 # <a name="troubleshoot-reservation-type-not-available"></a>Problembehandlung bei nicht verfügbaren Reservierungstypen
 
@@ -51,7 +51,7 @@ Ihr Abonnement verfügt über eine Kontingentbeschränkung. Abonnements sind im 
 
 Die Prüfung, die es Ihnen ermöglicht, ein bestimmtes Produkt in Ihren Warenkorb aufzunehmen und eine Reservierung zu erwerben, ist einfach. Azure wertet die Gesamtzahl der CPU-Kerne aus, die für Ihr Abonnement verfügbar sind, und überprüft, ob die Anzahl größer als die Anzahl der Kerne für den ausgewählten Artikel ist.
 
-Das Kontingent für reservierte Instanzen im Bereich **Shared** wird von Azure nicht überprüft. Der Vorteil von reservierten Instanzen im Bereich „Shared“ gilt für alle Abonnements in der Registrierung. Azure kann nicht feststellen, ob Sie in allen Ihren Abonnements über genügend freie Kerne verfügen, um die Ressource bereitzustellen. Unabhängig vom Kontingent können Sie mit Azure immer eine VM-Größe auswählen, wenn der ausgewählte Bereich „Shared“ lautet.
+Das Kontingent für reservierte Instanzen im Bereich **Shared** oder **Verwaltungsgruppe** wird von Azure nicht überprüft. Der Vorteil von reservierten Instanzen im Bereich „Shared“ gilt für alle Abonnements in der Registrierung. Der Vorteil für reservierte Instanzen für den Verwaltungsgruppenbereich gilt für alle Abonnements, die sowohl Teil der Verwaltungsgruppe als auch des Abrechnungsbereichs sind. Azure kann nicht feststellen, ob Sie in allen Ihren Abonnements über genügend freie Kerne verfügen, um die Ressource bereitzustellen. Unabhängig vom Kontingent können Sie mit Azure immer eine VM-Größe auswählen, wenn der ausgewählte Bereich „Shared“ oder „Verwaltungsgruppe“ lautet.
 
 Darüber hinaus führt Azure für **empfohlene** Käufe keine Kontingentprüfung durch. Empfehlungen basieren auf der aktiven Nutzung. Azure geht davon aus, dass Sie über genügend Kerne zur Ausführung einer bestimmten VM-Größe verfügen, da Sie bereits die zum Erstellen der Empfehlung erforderliche Nutzung generiert haben.
 
@@ -65,7 +65,7 @@ Wenn die Meldung _Produkt nicht verfügbar_ angezeigt wird, wählen Sie in der F
 
 ### <a name="solution-2"></a>Lösung 2
 
-Wenn die Meldung angezeigt wird, dass das _Kernkontingent nicht ausreicht_ , können Sie den Bereich in **Shared** ändern. Sie können den Reservierungsbereich nach dem Kauf der Reservierung von **Shared** in **Single** ändern.
+Wenn die Meldung angezeigt wird, dass das _Kernkontingent nicht ausreicht_, können Sie den Bereich in **Shared** ändern. Sie können den Reservierungsbereich nach dem Kauf der Reservierung von **Shared** in **Single** ändern.
 
 Alternativ können Sie in der Fehlermeldung den Link **Kontingenterhöhung anfordern** auswählen, um ein zusätzliches Kontingent von CPU-Kernen für Ihr Abonnement anzufordern.
 

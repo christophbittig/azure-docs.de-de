@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: references_regions
-ms.openlocfilehash: ff6e928c5f50c2f0a15936b190f0191da67b81c3
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: c5d548105b5fd749865132ae0629eaac17462da2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419445"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818061"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Standorte von Virtual WAN-Partnern und -Hubs
 
@@ -61,7 +61,7 @@ Diese Partner verfügen über Angebote für **verwaltete Anwendungen**, die jetz
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Bereitstellungshandbuch für Barracuda CloudGen WAN](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
 |[Cisco Cloud Service Router (CSR) vWAN](https://aka.ms/ciscoMarketPlaceOffer)| Die Integration der Cisco SD-WAN-Lösung in Azure Virtual WAN erweitert Cloud OnRamp für Multicloudbereitstellungen und ermöglicht die Konfiguration von Cisco Catalyst 8000V Edge Software (Cisco Catalyst 8000V) als virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) in Azure Virtual WAN-Hubs. Sehen Sie sich den [Konfigurationsleitfaden für Cisco SD-WAN Cloud OnRamp, Cisco IOS XE Release 17.x](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) an. 
-|[VMware SD-WAN im Virtual WAN-Hub](https://sdwan.vmware.com/partners/microsoft) | Während der Public Preview von VMware SD-WAN im VWAN-Hub muss sich der Kunde bei VMware registrieren, indem er eine E-Mail an vhubsupport@vmware.com sendet. [Bereitstellungshandbuch für VMware SD-WAN im Virtual WAN-Hub](https://kb.vmware.com/s/article/82746)|
+|[VMware SD-WAN im Virtual WAN-Hub](https://sdwan.vmware.com/partners/microsoft) | Anweisungen zur Wiedergabe der VMware SD-WAN-Appliance im Virtual WAN-Hub finden Sie im [Bereitstellungshandbuch für VMware SD-WAN](https://kb.vmware.com/s/article/82746). Um die Bereitstellung zu erstellen, greifen Sie [hier](https://azuremarketplace.microsoft.com/marketplace/apps/velocloud.vmware_sdwan_in_vwan) auf die verwaltete Anwendung zu.|
 
 Es ist vorgesehen, dass die folgenden Partner in naher Zukunft Angebote für NVAs im virtuellen Hub bereitstellen: Aviatrix, Citrix und Versa Networks.
 

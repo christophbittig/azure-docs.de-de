@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 9/01/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 894d16e1a72243bee9aff1fff2778ec75c2af6ec
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 0e1193dea6826e4188a7d8f933d2c0a2637a72c1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227137"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650152"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>Automatische Registrierung von VMs mit der SQL-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -94,13 +94,17 @@ Gehen Sie dazu folgendermaßen vor:
 1. Speichern Sie [dieses Skript](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/EnableBySubscription.ps1).
 1. Navigieren Sie in einem administrativen Eingabeaufforderungs- oder PowerShell-Fenster zu dem Speicherort, in dem Sie das Skript gespeichert haben. 
 1. Stellen Sie eine Verbindung mit Azure her `az login`.
-1. Führen Sie das Skript aus, wobei Sie die Abonnement-IDs (SubscriptionIds) wie folgt als Parameter übergeben:   
-   `.\EnableBySubscription.ps1 -SubscriptionList SubscriptionId1,SubscriptionId2`
+1. Führen Sie das Skript aus, wobei Sie die Abonnement-IDs (SubscriptionIds) als Parameter übergeben. Wenn keine Abonnements angegeben werden, aktiviert das Skript die automatische Registrierung für alle Abonnements im Benutzerkonto.    
 
-   Beispiel: 
+   Der folgende Befehl aktiviert die automatische Registrierung für zwei Abonnements: 
 
    ```console
    .\EnableBySubscription.ps1 -SubscriptionList a1a1a-aa11-11aa-a1a1-a11a111a1,b2b2b2-bb22-22bb-b2b2-b2b2b2bb
+   ```
+   Der folgende Befehl aktiviert die automatische Registrierung für alle Abonnements: 
+
+   ```console
+   .\EnableBySubscription.ps1
    ```
 
 Fehler bei der Registrierung werden in der Datei `RegistrationErrors.csv` gespeichert, die sich in dem Verzeichnis befindet, in dem Sie das `.ps1`-Skript gespeichert und ausgeführt haben. 

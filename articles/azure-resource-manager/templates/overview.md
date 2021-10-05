@@ -3,12 +3,12 @@ title: Übersicht über Vorlagen
 description: Beschreibung der Vorteile der Verwendung von Azure Resource Manager-Vorlagen (ARM-Vorlagen) für die Bereitstellung von Ressourcen
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 6c576b7e18d60a858f5f29bde0e674160610223b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 02731a2f37fda2758c9b9e9980b56a5017ed3506
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346011"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637573"
 ---
 # <a name="what-are-arm-templates"></a>Was sind ARM-Vorlagen?
 

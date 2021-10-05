@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2021
+ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: bae0f764df3951150d438c790c326429b5adb5a2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4a97b89957a4f451aaa9c7305535f87980234db2
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128614161"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094289"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Ressourcenlimits für Azure NetApp Files
 
@@ -51,6 +51,10 @@ In der folgenden Tabelle werden die Ressourcengrenzwerte für Azure NetApp Files
 |  Minimaler zugewiesener Durchsatz für ein Volume für manuelle QoS     |    1 MiB/s   |    Nein    |    
 |  Maximaler zugewiesener Durchsatz für ein Volume für manuelle QoS     |    4\.500 MiB/s    |    Nein    |    
 |  Anzahl der regionsübergreifenden Datenschutzvolumes für die regionsübergreifende Replikation (Zielvolumes)     |    10    |    Ja    |     
+|  Maximale Anzahl der richtlinienbasierten (geplanten) Sicherungen pro Volume  | <ul><li> Tägliche Aufbewahrungsanzahl: 1 (Minimum) bis 1019 (Maximum) </li> <li> Wöchentliche Aufbewahrungsanzahl: 1 (Minimum) bis 1019 (Maximum) </li> <li> Monatliche Aufbewahrungsanzahl: 1 (Minimum) bis 1019 (Maximum) </ol></li> <br> Die maximale Anzahl der täglichen, wöchentlichen und monatlichen Sicherungsaufbewahrungen beträgt *zusammen* 1019.  |  N  |
+|  Maximale Größe des geschützten Volumes  |  ca. 100 TiB  |  N  |
+|  Maximale Anzahl von Volumes, die pro Abonnement gesichert werden können   |  5  |  J  |
+|  Maximale Anzahl manueller Sicherungen pro Volume und Tag |  5  |  J  |
 
 Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Kapazitätsverwaltung](azure-netapp-files-faqs.md#capacity-management-faqs).
 

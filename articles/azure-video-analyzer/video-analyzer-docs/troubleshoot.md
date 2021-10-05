@@ -3,12 +3,12 @@ title: Fehlerbehebung bei Azure Video Analyzer - Azure
 description: Dieser Artikel beschreibt Schritte zur Fehlerbehebung für den Azure Video Analyzer.
 ms.topic: troubleshooting
 ms.date: 07/15/2021
-ms.openlocfilehash: 0d3a089fee6d374dd8109f2430cfdb9fec19bc30
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: be8bbe61bd9d33557184b11c722141cfbc880fed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429350"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563617"
 ---
 # <a name="troubleshoot-azure-video-analyzer"></a>Fehlerbehebung beim Azure Video Analyzer
 
@@ -155,6 +155,17 @@ Zum Sammeln der relevanten Protokolle, die dem Ticket hinzugefügt werden sollen
 1. [Konfigurieren Sie das Live Azure Video Analyzer-Moduls zum Sammeln ausführlicher Protokolle](#configure-video-analyzer-module-to-collect-verbose-logs)
 1. [Aktivieren Sie Debugprotokolle](#video-analyzer-debug-logs).
 1. Reproduzieren Sie das Problem.
+1. Starten Sie das Video Analyzer-Edgemodul neu. 
+    > [!NOTE]
+    > Dieser Schritt ist erforderlich, um das Edgemodul ordnungsgemäß zu beenden und alle Protokolldateien in einem verwendbaren Format abzurufen, ohne Ereignisse zu löschen.   
+    
+    Verwenden Sie auf dem IoT Edge-Gerät den folgenden Befehl, nachdem Sie `<avaedge>` durch den Namen Ihres Video Analyzer-Edgemoduls ersetzt haben:
+    
+    ```cmd
+    sudo iotedge restart <avaedge>
+    ```
+
+   Sie können Module auch remote über das Azure-Portal neu starten. Weitere Informationen finden Sie unter [Überwachen und Beheben von Problemen bei IoT Edge-Geräten über das Azure-Portal](../../iot-edge/troubleshoot-in-portal.md).
 1. Stellen Sie im Portal auf der Seite **IoT Hub** eine Verbindung mit dem virtuellen Computer her.
 
    1. Zippen Sie alle Dateien im Ordner _debugLogs_.

@@ -4,14 +4,14 @@ description: Übersicht über den Azure Monitor-Agent zum Sammeln von Überwach
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/22/2021
+ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: ccd194df39f0fff4bdabe4ae91e911dd030673e6
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 46c3aca1c2f983d857be59d2d69b0cadfb433303
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662171"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655978"
 ---
 # <a name="azure-monitor-agent-overview"></a>Übersicht über den Azure Monitor-Agent
 Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Azure-Computer und übermittelt sie an Azure Monitor. Dieser Artikel bietet eine Übersicht über den Azure Monitor-Agent und enthält Informationen zu dessen Installation und zur Konfiguration der Datensammlung.
@@ -78,13 +78,14 @@ In der folgenden Tabelle erhalten Sie Informationen zur aktuellen Unterstützung
 | Azure-Dienst | Aktuelle Unterstützung | Weitere Informationen |
 |:---|:---|:---|
 | [Azure Security Center](../../security-center/security-center-introduction.md) | Private Vorschau | [Link zur Registrierung](https://aka.ms/AMAgent) |
-| [Azure Sentinel](../../sentinel/overview.md) | Private Vorschau | [Link zur Registrierung](https://aka.ms/AMAgent) |
+| [Azure Sentinel](../../sentinel/overview.md) | <ul><li>Windows Ereignisweiterleitung (WEF): Private Vorschau</li><li>Windows-Sicherheitsereignisse: [Öffentliche Vorschau](../../sentinel/connect-windows-security-events.md?tabs=AMA)</li></ul>  | <ul><li>[Link zur Registrierung](https://aka.ms/AMAgent) </li><li>Es ist keine Registrierung erforderlich!</li></ul> |
 
 In der folgenden Tabelle erhalten Sie Informationen zur aktuellen Unterstützung für den Azure Monitor-Agent mit Azure Monitor-Features.
 
 | Azure Monitor-Feature | Aktuelle Unterstützung | Weitere Informationen |
 |:---|:---|:---|
-| [VM Insights](../vm/vminsights-overview.md) | Private Vorschau  | [Link zur Registrierung](https://forms.office.com/r/jmyE821tTy) |
+| [VM Insights](../vm/vminsights-overview.md) | Private Vorschau  | [Link zur Registrierung](https://aka.ms/amadcr-privatepreviews) |
+| [Verbinden mit privaten Links oder AMPLS](../logs/private-link-security.md) | Private Vorschau für AMA | [Link zur Registrierung](https://aka.ms/amadcr-privatepreviews) |
 | [Gastintegrität von VM Insights](../vm/vminsights-health-overview.md) | Public Preview | Nur im neuen Agent verfügbar |
 | [Erkenntnisse zu SQL](../insights/sql-insights-overview.md) | Public Preview | Nur im neuen Agent verfügbar |
 
@@ -110,13 +111,13 @@ Die folgende Tabelle gibt Aufschluss darüber, welche Datentypen Sie aktuell mit
 
 Der Azure Monitor-Agent sendet Daten an Azure Monitor-Metriken oder an einen Log Analytics-Arbeitsbereich, der Azure Monitor-Protokolle unterstützt.
 
-| Datenquelle | Destinations | BESCHREIBUNG |
+| Datenquellen- | Destinations | BESCHREIBUNG |
 |:---|:---|:---|
-| Leistung        | Azure Monitor-Metriken<sup>1</sup><br>Log Analytics-Arbeitsbereich | Numerische Werte zum Messen der Leistung verschiedener Betriebssystem- und Workloadaspekte |
+| Leistung        | Monitor – Metriken (Vorschauversion)<sup>1</sup><br>Log Analytics-Arbeitsbereich | Numerische Werte zum Messen der Leistung verschiedener Betriebssystem- und Workloadaspekte |
 | Windows-Ereignisprotokolle | Log Analytics-Arbeitsbereich | An das Windows-System für die Ereignisprotokollierung gesendete Informationen |
 | syslog             | Log Analytics-Arbeitsbereich | Informationen, die an das Linux-System für die Ereignisprotokollierung gesendet werden |
 
-<sup>1</sup> Aktuell gibt es eine Beschränkung für den Azure Monitor-Agent für Linux. Die Nutzung von Azure Monitor-Metriken als *einziges* Ziel wird nicht unterstützt. Die Verwendung zusammen mit Azure Monitor-Protokollen funktioniert hingegen problemlos. Diese Einschränkung wird im nächsten Erweiterungsupdate behoben.
+<sup>1</sup> [Klicken Sie hier,](../essentials/metrics-custom-overview.md#quotas-and-limits) um weitere Einschränkungen bei der Verwendung von Azure Monitor Metrics zu überprüfen. Unter Linux wird die Verwendung von Azure Monitor-Metriken als einziges Ziel in v.1.10.9.0 oder höher unterstützt. 
 
 ## <a name="security"></a>Sicherheit
 Der Azure Monitor-Agent benötigt zwar keine Schlüssel, dafür aber eine [systemseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity). Für die Agent-Bereitstellung muss auf dem jeweiligen virtuellen Computer eine systemseitig zugewiesene verwaltete Identität aktiviert sein.
@@ -127,6 +128,9 @@ Der Azure Monitor-Agent unterstützt Azure-Diensttags. Die beiden Tags „AzureM
 ### <a name="proxy-configuration"></a>Proxykonfiguration
 
 Die Windows- und Linux-Erweiterungen für den Azure Monitor-Agent können mithilfe des HTTPS-Protokolls entweder über einen Proxyserver oder ein Log Analytics-Gateway mit Azure Monitor kommunizieren. Sie können dieses für virtuelle Azure-Computer, Azure-VM-Skalierungsgruppen und Azure Arc für Server verwenden. Nutzen Sie die Erweiterungseinstellungen wie in den folgenden Schritten beschrieben für die Konfiguration. Sowohl die anonyme Authentifizierung als auch die Standardauthentifizierung mithilfe eines Benutzernamens und eines Kennworts wird unterstützt.
+
+> [!IMPORTANT]
+> Die Proxykonfiguration wird für [Azure Monitor Metriken (Vorschau)](../essentials/metrics-custom-overview.md) als Ziel nicht unterstützt. Wenn Sie also Metriken an dieses Ziel senden, wird das öffentliche Internet ohne Proxy verwendet.
 
 1. Verwenden Sie dieses Flussdiagramm, um zunächst die Werte der Parameter *setting* und *protectedSetting* zu bestimmen.
 

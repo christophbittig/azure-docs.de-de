@@ -5,12 +5,12 @@ author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
-ms.openlocfilehash: 6bce47e07d2f9c2a9a8ac2043488739d2d2421c6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 99b87fd0066d67d09979965bab3a67d1b549afd4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773825"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599504"
 ---
 # <a name="sensor-partner-integration"></a>Integration von Partnern für Sensordaten
 
@@ -95,13 +95,13 @@ Hier sind die gängigsten Anforderungsheader aufgeführt, die bei einem für den
 
 **Kopfzeile** | **Beschreibung und Beispiel**
 --- | ---
-Content-Type | Das Anforderungsformat (Content-Type: application/<format>). Für FarmBeats-Datenhub-APIs wird das Format „JSON“ verwendet. Content-Type: application/json
-Authorization | Gibt das Zugriffstoken an, das zum Ausführen eines API-Aufrufs erforderlich ist. Autorisierung: Bearer <Access-Token>
+Content-Type | Das Anforderungsformat (Inhaltstyp: `application/<format>`). Für FarmBeats-Datenhub-APIs wird das Format „JSON“ verwendet. Content-Type: application/json
+Authorization | Gibt das Zugriffstoken an, das zum Ausführen eines API-Aufrufs erforderlich ist. Autorisierung: Bearer \<Access-Token\>
 Akzeptieren | Das Antwortformat. Für FarmBeats-Datenhub-APIs wird das Format „JSON“ verwendet. Accept: application/json
 
 **API-Anforderungen**
 
-Um eine REST-API-Anforderung auszuführen, kombinieren Sie die HTTP (GET, POST oder PUT)-Methode, die URL für den API-Dienst, den URI (Uniform Resource Identifier) für eine Ressource, die abgefragt, aktualisiert oder gelöscht bzw. an die Daten übermittelt werden sollen, und mindestens einen HTTP-Anforderungsheader. Die URL für den API-Dienst entspricht dem von Ihnen bereitgestellten API-Endpunkt. Hier ist ein Beispiel: https://\<yourdatahub-website-name>.azurewebsites.net
+Um eine REST-API-Anforderung auszuführen, kombinieren Sie die HTTP (GET, POST oder PUT)-Methode, die URL für den API-Dienst, den URI (Uniform Resource Identifier) für eine Ressource, die abgefragt, aktualisiert oder gelöscht bzw. an die Daten übermittelt werden sollen, und mindestens einen HTTP-Anforderungsheader. Die URL für den API-Dienst entspricht dem von Ihnen bereitgestellten API-Endpunkt. Hier ein Beispiel: `https://\<yourdatahub-website-name>.azurewebsites.net`
 
 Optional können Sie Abfrageparameter in GET-Aufrufe einfügen, um Daten in den Antworten zu filtern, zu sortieren und deren Größe zu beschränken.
 

@@ -3,13 +3,13 @@ title: Anfordern des Hostkontingents für Azure VMware Solution
 description: Erfahren Sie, wie Sie das Hostkontingent bzw. die Hostkapazität für Azure VMware Solution anfordern. Sie können auch weitere Hosts in einer vorhandenen privaten Azure VMware Solution-Cloud anfordern.
 ms.topic: how-to
 ms.custom: contperf-fy21q3
-ms.date: 08/06/2021
-ms.openlocfilehash: 92ebc79193525802c1e7c7ede9287e3300799a10
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.date: 09/27/2021
+ms.openlocfilehash: 2b3e2291726f37f3c802d1db24429381e7a2b7d1
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356594"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083237"
 ---
 # <a name="request-host-quota-for-azure-vmware-solution"></a>Anfordern des Hostkontingents für Azure VMware Solution
 
@@ -26,7 +26,7 @@ Sie benötigen ein Azure-Konto in einem Azure-Abonnement, das einem der folgende
 
 - Abonnement unter einem [Azure Konzernvertrag (Enterprise Agreement, EA)](../cost-management-billing/manage/ea-portal-agreements.md) mit Microsoft
 - Von einem Cloudlösungsanbieter (Cloud Solution Provider, CSP) verwaltetes Abonnement unter einem CSP-Angebotsvertrag in Azure oder einem Azure-Plan
-- Eine [Vereinbarung zu „Modern Commerce“](../cost-management-billing/understand/mca-overview.md) mit Microsoft.
+- [Eine Microsoft-Kundenvereinbarung](../cost-management-billing/understand/mca-overview.md) mit Microsoft
 
 ## <a name="request-host-quota-for-ea-customers"></a>Anfordern des Hostkontingents für EA-Kunden
 

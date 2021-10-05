@@ -9,24 +9,24 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: ba864aa1aa2462f21e05ab5e779c8e715d6bb973
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25ee9ba5983bdcd59962d99384fbb7232860b825
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653693"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555487"
 ---
 # <a name="use-python-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von Python zum Verwalten von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe von Python die Zugriffssteuerungslisten von Verzeichnissen und Dateien abrufen, festlegen und aktualisieren. 
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Python die Zugriffssteuerungslisten von Verzeichnissen und Dateien abrufen, festlegen und aktualisieren.
 
-Die Vererbung von Zugriffssteuerungslisten (ACLs) ist für neue untergeordnete Elemente, die unter einem übergeordneten Verzeichnis erstellt werden, bereits verfügbar. Sie können Zugriffssteuerungslisten aber auch rekursiv für die vorhandenen untergeordneten Elemente eines übergeordneten Verzeichnisses hinzufügen, aktualisieren und entfernen, ohne diese Änderungen für jedes untergeordnete Element einzeln vornehmen zu müssen. 
+Die Vererbung von Zugriffssteuerungslisten (ACLs) ist für neue untergeordnete Elemente, die unter einem übergeordneten Verzeichnis erstellt werden, bereits verfügbar. Sie können Zugriffssteuerungslisten aber auch rekursiv für die vorhandenen untergeordneten Elemente eines übergeordneten Verzeichnisses hinzufügen, aktualisieren und entfernen, ohne diese Änderungen für jedes untergeordnete Element einzeln vornehmen zu müssen.
 
 [Paket (Python-Paketindex)](https://pypi.org/project/azure-storage-file-datalake/) | [Beispiel](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [Rekursive ACL-Beispiele](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py) | [API-Referenz](/python/api/azure-storage-file-datalake/azure.storage.filedatalake) | [Zuordnung von Gen1 zu Gen2](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [Feedback geben](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+- Ein Azure-Abonnement. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 - Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](create-data-lake-storage-account.md) für die Erstellung.
 
@@ -34,10 +34,10 @@ Die Vererbung von Zugriffssteuerungslisten (ACLs) ist für neue untergeordnete E
 
 - Eine der folgenden Sicherheitsberechtigungen:
 
-  - Ein bereitgestellter [Sicherheitsprinzipal](../../role-based-access-control/overview.md#security-principal) für Azure Active Directory (AD), dem die Rolle [Speicherblob-Datenbesitzer](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) im Bereich des Zielcontainers, der übergeordneten Ressourcengruppe oder des Abonnements zugewiesen wurde  
+  - Ein bereitgestellter [Sicherheitsprinzipal](../../role-based-access-control/overview.md#security-principal) für Azure Active Directory (AD), dem die Rolle [Speicherblob-Datenbesitzer](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) im Bereich des Zielcontainers, der übergeordneten Ressourcengruppe oder des Abonnements zugewiesen wurde
 
   - Der Benutzer muss Besitzer des Zielcontainers oder -verzeichnisses sein, in dem Sie die ACL-Einstellungen anwenden möchten. Beim rekursiven Festlegen von ACLs schließt dies alle untergeordneten Elemente im Zielcontainer oder -verzeichnis ein.
-  
+
   - Speicherkontoschlüssel
 
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
@@ -59,7 +59,7 @@ from azure.storage.filedatalake._models import ContentSettings
 
 ## <a name="connect-to-the-account"></a>Herstellen einer Verbindung mit dem Konto
 
-Wenn Sie die Codeausschnitte in diesem Artikel verwenden möchten, müssen Sie eine **DataLakeServiceClient**-Instanz erstellen, die das Speicherkonto darstellt. 
+Wenn Sie die Codeausschnitte in diesem Artikel verwenden möchten, müssen Sie eine **DataLakeServiceClient**-Instanz erstellen, die das Speicherkonto darstellt.
 
 ### <a name="connect-by-using-azure-active-directory-ad"></a>Herstellen einer Verbindung mit Azure Active Directory (AD)
 
@@ -68,7 +68,7 @@ Wenn Sie die Codeausschnitte in diesem Artikel verwenden möchten, müssen Sie e
 
 Sie können die [Azure-Identitätsclientbibliothek für Python](https://pypi.org/project/azure-identity/) verwenden, um Ihre Anwendung bei Azure AD zu authentifizieren.
 
-Rufen Sie die Client-ID, ein Clientgeheimnis und die Mandanten-ID ab. Informationen zur Vorgehensweise finden Sie unter [Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung](../common/storage-auth-aad-app.md). Im Rahmen dieses Prozesses müssen Sie dem Sicherheitsprinzipal eine der folgenden [Azure RBAC-Rollen](../../role-based-access-control/overview.md) (Azure Role-Based Access Control) zuweisen. 
+Rufen Sie die Client-ID, ein Clientgeheimnis und die Mandanten-ID ab. Informationen zur Vorgehensweise finden Sie unter [Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung](../common/storage-auth-aad-app.md). Im Rahmen dieses Prozesses müssen Sie dem Sicherheitsprinzipal eine der folgenden [Azure RBAC-Rollen](../../role-based-access-control/overview.md) (Azure Role-Based Access Control) zuweisen.
 
 |Role|ACL-Einstellungsfunktion|
 |--|--|
@@ -89,14 +89,14 @@ Dies ist die einfachste Möglichkeit, eine Verbindung mit einem Konto herzustell
 In diesem Beispiel wird eine **DataLakeServiceClient**-Instanz mithilfe eines Kontoschlüssels erstellt.
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_AuthorizeWithKey":::
- 
+
 - Ersetzen Sie den Platzhalterwert `storage_account_name` durch den Namen Ihres Speicherkontos.
 
 - Ersetzen Sie den Platzhalterwert `storage_account_key` durch den Zugriffsschlüssel Ihres Speicherkontos.
 
 ## <a name="set-acls"></a>Festlegen von ACLs
 
-Wenn Sie eine Zugriffssteuerungsliste *festlegen*, **ersetzen** Sie die gesamte Zugriffssteuerungsliste einschließlich aller Einträge. Wenn Sie die Berechtigungsebene eines Sicherheitsprinzipals ändern oder der Zugriffssteuerungsliste einen neuen Sicherheitsprinzipal hinzufügen möchten, ohne dass sich dies auf bereits vorhandene Einträge auswirkt, sollten Sie die Zugriffssteuerungsliste stattdessen *aktualisieren*. Informationen dazu, wie eine Zugriffssteuerungsliste aktualisiert statt ersetzt wird, finden Sie im Abschnitt [Aktualisieren von ACLs](#update-acls-recursively) in diesem Artikel.  
+Wenn Sie eine Zugriffssteuerungsliste *festlegen*, **ersetzen** Sie die gesamte Zugriffssteuerungsliste einschließlich aller Einträge. Wenn Sie die Berechtigungsebene eines Sicherheitsprinzipals ändern oder der Zugriffssteuerungsliste einen neuen Sicherheitsprinzipal hinzufügen möchten, ohne dass sich dies auf bereits vorhandene Einträge auswirkt, sollten Sie die Zugriffssteuerungsliste stattdessen *aktualisieren*. Informationen dazu, wie eine Zugriffssteuerungsliste aktualisiert statt ersetzt wird, finden Sie im Abschnitt [Aktualisieren von ACLs](#update-acls-recursively) in diesem Artikel.
 
 In diesem Abschnitt erfahren Sie Folgendes:
 
@@ -141,13 +141,13 @@ Ein Beispiel, das Zugriffssteuerungslisten durch Angabe einer Batchgröße rekur
 
 ## <a name="update-acls-recursively"></a>Rekursives Aktualisieren von Zugriffssteuerungslisten
 
-Wenn Sie eine Zugriffssteuerungsliste *aktualisieren*, ändern Sie die Zugriffssteuerungsliste, anstatt sie zu ersetzen. Beispielsweise können Sie der Zugriffssteuerungsliste einen neuen Sicherheitsprinzipal hinzufügen, ohne dass sich dies auf andere Sicherheitsprinzipale auswirkt, die in der Zugriffssteuerungsliste aufgelistet sind.  Informationen dazu, wie eine Zugriffssteuerungsliste ersetzt statt aktualisiert wird, finden Sie im Abschnitt [Festlegen von Zugriffssteuerungslisten](#set-acls) in diesem Artikel.
+Wenn Sie eine Zugriffssteuerungsliste *aktualisieren*, ändern Sie die Zugriffssteuerungsliste, anstatt sie zu ersetzen. Beispielsweise können Sie der Zugriffssteuerungsliste einen neuen Sicherheitsprinzipal hinzufügen, ohne dass sich dies auf andere Sicherheitsprinzipale auswirkt, die in der Zugriffssteuerungsliste aufgelistet sind. Informationen dazu, wie eine Zugriffssteuerungsliste ersetzt statt aktualisiert wird, finden Sie im Abschnitt [Festlegen von Zugriffssteuerungslisten](#set-acls) in diesem Artikel.
 
 Um eine Zugriffssteuerungsliste rekursiv zu aktualisieren, erstellen Sie ein neues ACL-Objekt mit dem ACL-Eintrag, den Sie aktualisieren möchten, und verwenden Sie dieses Objekt dann im Aktualisierungsvorgang der Zugriffssteuerungsliste. Rufen Sie nicht die vorhandene Zugriffssteuerungsliste ab, stellen Sie lediglich die zu aktualisierenden Zugriffssteuerungslisteneinträge bereit. Sie aktualisieren eine Zugriffssteuerungsliste rekursiv, indem Sie die **DataLakeDirectoryClient.update_access_control_recursive**-Methode aufrufen. Wenn Sie einen **standardmäßigen** ACL-Eintrag aktualisieren möchten, fügen Sie die Zeichenfolge `default:` an den Anfang jeder ACL-Eintragszeichenfolge an.
 
 Dieses Beispiel aktualisiert einen ACL-Eintrag mit Schreibberechtigung.
 
-In diesem Beispiel wird die ACL des Verzeichnisses `my-parent-directory` festgelegt. Diese Methode akzeptiert einen booleschen Parameter namens `is_default_scope`, der angibt, ob die Standard-ACL aktualisiert werden soll. Wenn dieser Parameter `True` ist, wird dem aktualisierten ACL-Eintrag die Zeichenfolge `default:` vorangestellt.  
+In diesem Beispiel wird die ACL des Verzeichnisses `my-parent-directory` festgelegt. Diese Methode akzeptiert einen booleschen Parameter namens `is_default_scope`, der angibt, ob die Standard-ACL aktualisiert werden soll. Wenn dieser Parameter `True` ist, wird dem aktualisierten ACL-Eintrag die Zeichenfolge `default:` vorangestellt.
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_UpdateACLsRecursively":::
 
@@ -155,20 +155,20 @@ Ein Beispiel, das Zugriffssteuerungslisten durch Angabe einer Batchgröße rekur
 
 ## <a name="remove-acl-entries-recursively"></a>Rekursives Entfernen von ACL-Einträgen
 
-Sie können einen oder mehrere ACL-Einträge entfernen. Um ACL-Einträge rekursiv zu entfernen, erstellen Sie ein neues ACL-Objekt für den zu entfernenden ACL-Eintrag, und verwenden Sie dieses Objekt dann im Entfernungsvorgang der ACL. Rufen Sie nicht die vorhandene ACL ab, stellen Sie lediglich die zu entfernenden ACL-Einträge bereit. 
+Sie können einen oder mehrere ACL-Einträge entfernen. Um ACL-Einträge rekursiv zu entfernen, erstellen Sie ein neues ACL-Objekt für den zu entfernenden ACL-Eintrag, und verwenden Sie dieses Objekt dann im Entfernungsvorgang der ACL. Rufen Sie nicht die vorhandene ACL ab, stellen Sie lediglich die zu entfernenden ACL-Einträge bereit.
 
-Sie entfernen ACL-Einträge, indem Sie die **DataLakeDirectoryClient.remove_access_control_recursive**-Methode aufrufen. Wenn Sie einen **standardmäßigen** ACL-Eintrag entfernen möchten, fügen Sie die Zeichenfolge `default:` an den Anfang der ACL-Eintragszeichenfolge an. 
+Sie entfernen ACL-Einträge, indem Sie die **DataLakeDirectoryClient.remove_access_control_recursive**-Methode aufrufen. Wenn Sie einen **standardmäßigen** ACL-Eintrag entfernen möchten, fügen Sie die Zeichenfolge `default:` an den Anfang der ACL-Eintragszeichenfolge an.
 
-In diesem Beispiel wird ein ACL-Eintrag aus der Zugriffssteuerungsliste des Verzeichnisses `my-parent-directory` entfernt. Diese Methode akzeptiert einen booleschen Parameter namens `is_default_scope`, der angibt, ob der Eintrag aus der Standard-ACL entfernt werden soll. Wenn dieser Parameter `True` ist, wird dem aktualisierten ACL-Eintrag die Zeichenfolge `default:` vorangestellt. 
+In diesem Beispiel wird ein ACL-Eintrag aus der Zugriffssteuerungsliste des Verzeichnisses `my-parent-directory` entfernt. Diese Methode akzeptiert einen booleschen Parameter namens `is_default_scope`, der angibt, ob der Eintrag aus der Standard-ACL entfernt werden soll. Wenn dieser Parameter `True` ist, wird dem aktualisierten ACL-Eintrag die Zeichenfolge `default:` vorangestellt.
 
 ```python
 def remove_permission_recursively(is_default_scope):
-    
+
     try:
         file_system_client = service_client.get_file_system_client(file_system="my-container")
 
         directory_client = file_system_client.get_directory_client("my-parent-directory")
-              
+
         acl = 'user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
         if is_default_scope:
@@ -186,7 +186,7 @@ Ein Beispiel, das Zugriffssteuerungslisten durch Angabe einer Batchgröße rekur
 
 Es können Laufzeit- oder Berechtigungsfehler auftreten. Starten Sie den Prozess bei Laufzeitfehlern vom Anfang neu. Berechtigungsfehler können auftreten, wenn der Sicherheitsprinzipal nicht über ausreichende Berechtigungen verfügt, um die Zugriffssteuerungsliste eines Verzeichnisses oder einer Datei zu ändern, die sich in der geänderten Verzeichnishierarchie befindet. Beheben Sie das Berechtigungsproblem, und setzen Sie dann den Prozess ab dem Zeitpunkt des Fehlers mithilfe eines Fortsetzungstokens fort, oder starten Sie den Prozess vom Anfang neu. Sie müssen das Fortsetzungstoken nicht verwenden, wenn Sie vom Anfang neu starten. Sie können ACL-Einträge ohne negative Auswirkung erneut anwenden.
 
-In diesem Beispiel wird im Fall eines Fehlers ein Fortsetzungstoken zurückgegeben. Die Anwendung kann diese Beispielmethode erneut aufrufen, nachdem der Fehler behoben wurde, und das Fortsetzungstoken übergeben. Wenn diese Beispielmethode zum ersten Mal aufgerufen wird, kann die Anwendung den Wert ``None`` für den Fortsetzungstokenparameter übergeben.
+In diesem Beispiel wird im Fall eines Fehlers ein Fortsetzungstoken zurückgegeben. Die Anwendung kann diese Beispielmethode erneut aufrufen, nachdem der Fehler behoben wurde, und das Fortsetzungstoken übergeben. Wenn diese Beispielmethode zum ersten Mal aufgerufen wird, kann die Anwendung den Wert `None` für den Fortsetzungstokenparameter übergeben.
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/ACL_datalake.py" id="Snippet_ResumeContinuationToken":::
 

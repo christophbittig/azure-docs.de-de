@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eb6608e03debb7811497a1347c718bb2845cf87c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: c7bc61691f0035c9f1aa0361ae3439cfb1e1485e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110688197"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604396"
 ---
 # <a name="link-a-partner-id-to-your-power-apps-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Power Apps-Konten
 
@@ -39,7 +39,7 @@ Wenn Sie Zugriff auf die Ressourcen des Kunden haben, können Sie Ihre Microsoft
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wechseln Sie im Azure-Portal zu [Mit einer Partner-ID verknüpfen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade).
-1. Geben Sie die [Microsoft Partner Network](https://partner.microsoft.com/)-ID für Ihre Organisation ein. Verwenden Sie die in Ihrem Partnerprofil angezeigte **zugeordnete MPN-ID**.  
+1. Geben Sie die [Microsoft Partner Network](https://partner.microsoft.com/)-ID für Ihre Organisation ein. Verwenden Sie die in Ihrem Partnerprofil angezeigte **zugeordnete MPN-ID**. Dies wird in der Regel als [MPN-ID ihres Partnerstandortkontos](/partner-center/account-structure) bezeichnet.  
     :::image type="content" source="./media/link-partner-id-power-apps-accounts/link-partner-id.png" alt-text="Screenshot: Fenster „Mit einer Partner-ID verknüpfen“" lightbox="./media/link-partner-id-power-apps-accounts/link-partner-id.png" :::
 1. Wenn Sie die Partner-ID mit einem anderen Kunden verknüpfen möchten, wechseln Sie das Verzeichnis. Wählen Sie unter **Verzeichnis wechseln** das entsprechende Verzeichnis aus.  
     :::image type="content" source="./media/link-partner-id-power-apps-accounts/switch-directory.png" alt-text="Screenshot: Fenster „Verzeichnis + Abonnement“, in dem Sie das Verzeichnis wechseln können" lightbox="./media/link-partner-id-power-apps-accounts/switch-directory.png" :::

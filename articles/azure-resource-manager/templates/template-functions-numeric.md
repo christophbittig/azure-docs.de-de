@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – numerisch
 description: Informationen zu den Funktionen, die in einer ARM-Vorlage (Azure Resource Manager) zum Arbeiten mit Zahlen verwendet werden können.
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: 9f9959c07f936fc800fac836553fb0f37f4f4e83
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/09/2021
+ms.openlocfilehash: ccfed6794b81b7910310cc5a9fd02dcf0cdb0e0f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959653"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820418"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>Numerische Funktionen für ARM-Vorlagen
 
@@ -35,7 +35,7 @@ Die `add`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen d
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 |operand1 |Ja |INT |Erste zu addierende Zahl. |
 |operand2 |Ja |INT |Zweite zu addierende Zahl. |
@@ -46,38 +46,9 @@ Eine ganze Zahl, die die Summe der Parameter enthält.
 
 ### <a name="example"></a>Beispiel
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) werden zwei Parameter hinzugefügt.
+Im folgenden Beispiel werden zwei Parameter hinzugefügt.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "first": {
-      "type": "int",
-      "defaultValue": 5,
-      "metadata": {
-        "description": "First integer to add"
-      }
-    },
-    "second": {
-      "type": "int",
-      "defaultValue": 3,
-      "metadata": {
-        "description": "Second integer to add"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "addResult": {
-      "type": "int",
-      "value": "[add(parameters('first'), parameters('second'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/add.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -115,36 +86,7 @@ Weitere Informationen zur Verwendung von Kopiervorgängen finden Sie unter:
 
 Das folgende Beispiel enthält eine Kopierschleife und den Indexwert im Namen.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageCount": {
-      "type": "int",
-      "defaultValue": 2
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
-      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {},
-      "copy": {
-        "name": "storagecopy",
-        "count": "[parameters('storageCount')]"
-      }
-    }
-  ],
-  "outputs": {}
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/copyindex.json":::
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -160,7 +102,7 @@ Die `div`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen d
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |INT |Die zu teilende Zahl (Dividend). |
 | operand2 |Ja |INT |Die Zahl, durch die geteilt wird (Divisor). Darf nicht null (0) sein. |
@@ -171,38 +113,9 @@ Eine ganze Zahl, die die Division darstellt.
 
 ### <a name="example"></a>Beispiel
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) wird ein Parameter durch einen anderen Parameter dividiert.
+Im folgenden Beispiel wird ein Parameter durch einen anderen Parameter dividiert.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "first": {
-      "type": "int",
-      "defaultValue": 8,
-      "metadata": {
-        "description": "Integer being divided"
-      }
-    },
-    "second": {
-      "type": "int",
-      "defaultValue": 3,
-      "metadata": {
-        "description": "Integer used to divide"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "divResult": {
-      "type": "int",
-      "value": "[div(parameters('first'), parameters('second'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/div.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -232,19 +145,7 @@ Eine Gleitkommazahl.
 
 Das folgende Beispiel zeigt, wie „float“ zum Übergeben von Parametern an eine Logik-App verwendet wird:
 
-```json
-{
-  "type": "Microsoft.Logic/workflows",
-  "properties": {
-    ...
-    "parameters": {
-      "custom1": {
-        "value": "[float('3.0')]"
-      },
-      "custom2": {
-        "value": "[float(3)]"
-      },
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/float.json":::
 
 ## <a name="int"></a>INT
 
@@ -264,28 +165,9 @@ Eine ganze Zahl des konvertierten Werts.
 
 ### <a name="example"></a>Beispiel
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) wird der vom Benutzer angegebene Parameterwert in eine ganze Zahl konvertiert.
+In der folgenden Beispielvorlage wird der vom Benutzer angegebene Parameterwert in eine ganze Zahl konvertiert.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToConvert": {
-      "type": "string",
-      "defaultValue": "4"
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "intResult": {
-      "type": "int",
-      "value": "[int(parameters('stringToConvert'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/int.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -311,31 +193,9 @@ Eine ganze Zahl, die den größten Wert aus der Auflistung darstellt.
 
 ### <a name="example"></a>Beispiel
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) wird gezeigt, wie „max“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird:
+Im folgenden Beispiel wird gezeigt, wie „max“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ 0, 3, 2, 5, 4 ]
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "int",
-      "value": "[max(parameters('arrayToTest'))]"
-    },
-    "intOutput": {
-      "type": "int",
-      "value": "[max(0,3,2,5,4)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/max.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -362,31 +222,9 @@ Eine ganze Zahl, die den kleinsten Wert aus der Auflistung darstellt.
 
 ### <a name="example"></a>Beispiel
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) wird gezeigt, wie „min“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird:
+Im folgenden Beispiel wird gezeigt, wie „min“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ 0, 3, 2, 5, 4 ]
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "int",
-      "value": "[min(parameters('arrayToTest'))]"
-    },
-    "intOutput": {
-      "type": "int",
-      "value": "[min(0,3,2,5,4)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/min.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -405,7 +243,7 @@ Die `mod`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen d
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |INT |Die zu teilende Zahl (Dividend). |
 | operand2 |Ja |INT |Die Zahl, durch die dividiert wird (Divisor), darf nicht null (0) sein. |
@@ -416,38 +254,9 @@ Eine ganze Zahl, die den Rest darstellt.
 
 ### <a name="example"></a>Beispiel
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) wird der Restbetrag der Division eines Parameters durch einen anderen Parameter zurückgegeben.
+Im folgenden Beispiel wird der Restbetrag der Division von einem Parameter durch einen anderen Parameter zurückgegeben.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "first": {
-      "type": "int",
-      "defaultValue": 7,
-      "metadata": {
-        "description": "Integer being divided"
-      }
-    },
-    "second": {
-      "type": "int",
-      "defaultValue": 3,
-      "metadata": {
-        "description": "Integer used to divide"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "modResult": {
-      "type": "int",
-      "value": "[mod(parameters('first'), parameters('second'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/mod.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -465,7 +274,7 @@ Die `mul`-Funktion wird in Bicep nicht unterstützt. Verwenden Sie stattdessen d
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |INT |Erste zu multiplizierende Zahl. |
 | operand2 |Ja |INT |Zweite zu multiplizierende Zahl. |
@@ -476,38 +285,9 @@ Eine ganze Zahl, die die Multiplikation darstellt.
 
 ### <a name="example"></a>Beispiel
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) wird ein Parameter mit einem anderen Parameter multipliziert.
+Im folgenden Beispiel wird ein Parameter mit einem anderen Parameter multipliziert.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "first": {
-      "type": "int",
-      "defaultValue": 5,
-      "metadata": {
-        "description": "First integer to multiply"
-      }
-    },
-    "second": {
-      "type": "int",
-      "defaultValue": 3,
-      "metadata": {
-        "description": "Second integer to multiply"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "mulResult": {
-      "type": "int",
-      "value": "[mul(parameters('first'), parameters('second'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/mul.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -523,7 +303,7 @@ Gibt die Differenz der beiden angegebenen ganzen Zahlen zurück.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |INT |Zahl, von der subtrahiert wird. |
 | operand2 |Ja |INT |Zahl, die subtrahiert wird. |
@@ -534,38 +314,9 @@ Eine ganze Zahl, die die Subtraktion darstellt.
 
 ### <a name="example"></a>Beispiel
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) wird ein Parameter von einem anderen Parameter subtrahiert.
+Im folgenden Beispiel wird ein Parameter von einem anderen Parameter subtrahiert.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "first": {
-      "type": "int",
-      "defaultValue": 7,
-      "metadata": {
-        "description": "Integer subtracted from"
-      }
-    },
-    "second": {
-      "type": "int",
-      "defaultValue": 3,
-      "metadata": {
-        "description": "Integer to subtract"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "subResult": {
-      "type": "int",
-      "value": "[sub(parameters('first'), parameters('second'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/sub.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 

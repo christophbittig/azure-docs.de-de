@@ -2,13 +2,13 @@
 title: 'Tutorial: Fortlaufende Videoaufzeichnung und -wiedergabe – Azure Video Analyzer'
 description: In diesem Tutorial wird beschrieben, wie Sie Azure Video Analyzer zum fortlaufenden Aufzeichnen von Videos in der Cloud und Wiedergeben dieser Aufzeichnungen verwenden.
 ms.topic: tutorial
-ms.date: 06/01/2021
-ms.openlocfilehash: 2f3fc2421a2341974aa7ea7bdafeaf0123ea983e
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 09/14/2021
+ms.openlocfilehash: 1ecba5892c3112ae12916c8b831eee994d4b5766
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602931"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644142"
 ---
 # <a name="tutorial-continuous-video-recording-and-playback"></a>Tutorial: Fortlaufende Videoaufzeichnung und -wiedergabe
 
@@ -69,8 +69,46 @@ In diesem Lernprogramm lernen Sie Folgendes:
 1. Bereinigen der Ressourcen
 
 ## <a name="set-up-your-development-environment"></a>Einrichten der Entwicklungsumgebung
-[!INCLUDE [setup development environment](./includes/set-up-dev-environment/csharp/csharp-set-up-dev-env.md)]
-  
+
+
+### <a name="get-the-sample-code"></a>Beispielcode herunterladen
+
+1. Klonen Sie das [Repository mit AVA-C#-Beispielen](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp).
+1. Starten Sie Visual Studio Code, und öffnen Sie den Ordner, in den das Repository heruntergeladen wurde.
+1. Navigieren Sie in Visual Studio Code zum Ordner „src/cloud-to-device-console-app“, und erstellen Sie eine Datei namens **appsettings.json**. Diese Datei enthält die Einstellungen, die zum Ausführen des Programms erforderlich sind.
+1. Navigieren Sie im Speicherkonto, das Sie im obigen Setupschritt erstellt haben, zur Dateifreigabe, und suchen Sie unter der Dateifreigabe „deployment-output“ nach der Datei **appsettings.json**. Klicken Sie auf die Datei und dann auf die Schaltfläche „Herunterladen“. Der Inhalt sollte auf einer neuen Browserregisterkarte geöffnet werden und etwa wie folgt aussehen:
+
+   ```
+   {
+       "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",
+       "deviceId" : "avasample-iot-edge-device",
+       "moduleId" : "avaedge"
+   }
+   ```
+
+   Die IoT Hub-Verbindungszeichenfolge ermöglicht die Verwendung von Visual Studio Code, um Befehle über Azure IoT Hub an die Edge-Module zu senden. Kopieren Sie den obigen JSON-Code in die Datei **src/cloud-to-device-console-app/appsettings.json**.
+
+### <a name="connect-to-the-iot-hub"></a>Herstellen der Verbindung mit dem IoT Hub
+
+1. Legen Sie in Visual Studio Code die IoT Hub-Verbindungszeichenfolge fest, indem Sie im Bereich **AZURE IOT HUB** in der unteren linken Ecke das Symbol **Weitere Aktionen** auswählen. Kopieren Sie die Zeichenfolge aus der Datei „src/cloud-to-device-console-app/appsettings.json“.
+
+    <!-- commenting out the image for now ![Set IoT Hub connection string]()./media/quickstarts/set-iotconnection-string.png-->
+    [!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
+1. Aktualisieren Sie nach ungefähr 30 Sekunden Azure IoT Hub im unteren linken Bereich. Es sollte das Edgegerät `avasample-iot-edge-device` angezeigt werden, auf dem die folgenden Module bereitgestellt sind:
+    - Edge-Hub (Modulname **edgeHub**)
+    - Edge-Agent (Modulname **edgeAgent**)
+    - Video Analyzer (Modulname **avaedge**)
+    - RTSP-Simulator (Modulname **rtspsim**)
+
+### <a name="prepare-to-monitor-the-modules"></a>Vorbereiten der Überwachung der Module
+
+Wenn Sie diese Schnellstartanleitung oder dieses Tutorial verwenden, werden Ereignisse an IoT Hub gesendet. Führen Sie zum Anzeigen dieser Ereignisse die folgenden Schritte aus:
+
+1. Öffnen Sie in Visual Studio Code den Explorer-Bereich, und suchen Sie links unten nach **Azure IoT Hub**.
+1. Erweitern Sie den Knoten **Geräte**.
+1. Klicken Sie mit der rechten Maustaste auf `avasample-iot-edge-device`, und wählen Sie die Option **Überwachung des integrierten Ereignisendpunkts starten** aus.
+
+    [!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
 
 ## <a name="examine-the-sample-files"></a>Untersuchen der Beispieldateien
 
@@ -95,7 +133,7 @@ Navigieren Sie in Visual Studio Code zum Ordner „src/cloud-to-device-console-a
     `"topologyName" : "CVRToVideoSink"`  
 1. Öffnen Sie die [Pipelinetopologie](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-video-sink/topology.json) in einem Browser, und sehen Sie sich die Einstellung von „videoName“ an. Sie ist hartcodiert und auf `sample-cvr-video` festgelegt. Für ein Tutorial ist dies akzeptabel. In der Produktion sollten Sie sicherstellen, dass die Aufzeichnung für jede RTSP-Kamera über eine Videoressource mit einem eindeutigen Namen erfolgt.
 1. Starten Sie eine Debugsitzung, indem Sie F5 drücken. Daraufhin werden im **Terminalfenster** einige Nachrichten ausgegeben.
-1. Von der Datei operations.json werden zuerst `pipelineTopologyList` und `livePipelineList` aufgerufen. Falls Sie nach Abschluss vorheriger Schnellstartanleitungen oder Tutorials eine Ressourcenbereinigung durchgeführt haben, gibt diese Aktion leere Listen zurück, und die Ausführung wird angehalten, bis Sie die **EINGABETASTE** drücken, wie hier zu sehen:
+1. Von der Datei operations.json werden zuerst `pipelineTopologyList` und `livePipelineList` aufgerufen. Falls Sie nach Abschluss vorheriger Schnellstartanleitungen oder Tutorials eine Ressourcenbereinigung durchgeführt haben, gibt diese Aktion leere Listen zurück, wie hier zu sehen:
 
     ```
     --------------------------------------------------------------------------
@@ -109,11 +147,10 @@ Navigieren Sie in Visual Studio Code zum Ordner „src/cloud-to-device-console-a
       "value": []
     }
     --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
+
     ```
 
-1. Nachdem Sie im **Terminalfenster** die **EINGABETASTE** gedrückt haben, werden die nächsten Aufrufe direkter Methoden durchgeführt:
+1. Danach wird der nächste Satz direkter Methodenaufrufe vollzogen:
    * Ein Aufruf von `pipelineTopologySet` mit der vorherigen `topologyUrl`
    * Ein Aufruf von `livePipelineSet` mit dem folgenden Text
      
@@ -141,21 +178,18 @@ Navigieren Sie in Visual Studio Code zum Ordner „src/cloud-to-device-console-a
        }
      }
      ```
-   * Ein Aufruf von `livePipelineActivate`, um die Livepipeline und den Videodatenfluss zu starten
-   * Ein zweiter Aufruf von `livePipelineList`, um anzuzeigen, dass sich die Livepipeline im ausgeführten Zustand befindet 
+   * Ein Aufruf von `livePipelineActivate`, um die Livepipeline zu starten und den Videofluss zu starten, und hält dann an, damit Sie **Eingabe** im **Terminalfenster** auswählen können.
 1. Die Ausgabe im **Terminalfenster** wird angehalten, und Sie werden zum **Drücken der EINGABETASTE** aufgefordert, um den Vorgang fortzusetzen. Drücken Sie noch nicht die **EINGABETASTE**. Scrollen Sie nach oben, um die JSON-Antwortnutzlasten für die aufgerufenen direkten Methoden anzuzeigen.
-1. Wenn Sie nun zum **Ausgabefenster** in Visual Studio Code wechseln, werden die Nachrichten angezeigt, die vom Video Analyzer-Edgemodul an IoT Hub gesendet werden.
-
-
-   Diese Nachrichten werden im folgenden Abschnitt beschrieben.
+1. Wenn Sie nun zum **Ausgabefenster** in Visual Studio Code wechseln, werden die Nachrichten angezeigt, die vom Video Analyzer-Edgemodul an IoT Hub gesendet werden. Diese Nachrichten werden im folgenden Abschnitt beschrieben.
 1. Die Livepipeline wird weiterhin ausgeführt, und das Video wird aufgezeichnet. Der RTSP-Simulator führt das Quellvideo als Schleife aus. Kehren Sie zum Beenden der Aufzeichnung zum **Terminalfenster** zurück, und drücken Sie die **EINGABETASTE**. Die nächsten Aufrufe erfolgen, um die Ressourcen zu bereinigen und verwenden dazu:
 
    * Mit dem Aufruf von `livePipelineDeactivate` wird die Livepipeline deaktiviert.
    * Mit dem Aufruf von `livePipelineDelete` wird die Livepipeline gelöscht.
+   * Ein zweiter Aufruf von `livePipelineList`, um anzuzeigen, dass sich die Livepipeline im ausgeführten Zustand befindet
    * Mit dem Aufruf von `pipelineTopologyDelete` wird die Topologie gelöscht.
    * Mit dem abschließenden Aufruf von `pipelineTopologyList` wird angezeigt, dass die Liste nun leer ist.
 
-## <a name="interpret-the-results"></a>Interpretieren der Ergebnisse 
+## <a name="interpret-the-results"></a>Interpretieren der Ergebnisse
 
 Wenn Sie die Livepipeline ausführen, werden vom Video Analyzer-Edgemodul bestimmte Diagnose- und Betriebsereignisse an den IoT Edge-Hub gesendet. Diese Ereignisse sind die Meldungen, die im **Ausgabefenster** von Visual Studio Code angezeigt werden. Sie enthalten jeweils die Abschnitte `body` und `applicationProperties`. Informationen zu diesen Abschnitten finden Sie unter [Erstellen und Lesen von IoT Hub-Nachrichten](../../iot-hub/iot-hub-devguide-messages-construct.md).
 

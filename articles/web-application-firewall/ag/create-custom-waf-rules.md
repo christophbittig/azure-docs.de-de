@@ -9,12 +9,12 @@ ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8c6bc1d7d8fb98541a25c7e91f0e023e2941e559
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a1710b293278e3b36fdabdf70bd698d8408e946d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668490"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680070"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Erstellen und Verwenden von benutzerdefinierten Regeln für Web Application Firewall v2 auf Application Gateway
 
@@ -131,7 +131,7 @@ Entsprechender JSON-Code:
 
 ## <a name="example-2"></a>Beispiel 2
 
-Sie möchten den Datenverkehr aus den USA mit dem GeoMatch-Operator zulassen:
+Sie möchten Datenverkehr nur aus den USA zulassen, indem Sie den GeoMatch-Operator verwenden, dabei sollen aber weiterhin die verwalteten Regeln gelten:
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -142,14 +142,14 @@ $condition = New-AzApplicationGatewayFirewallCondition `
    -Operator GeoMatch `
    -MatchValue "US" `
    -Transform Lowercase `
-   -NegationCondition $False
+   -NegationCondition $True
 
 $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Name "allowUS" `
    -Priority 2 `
    -RuleType MatchRule `
    -MatchCondition $condition `
-   -Action Allow
+   -Action Block
 ```
 
 Entsprechender JSON-Code:
@@ -161,11 +161,12 @@ Entsprechender JSON-Code:
         "name": "allowUS",
         "ruleType": "MatchRule",
         "priority": 2,
-        "action": "Allow",
+        "action": "Block",
         "matchConditions": [
           {
             "matchVariable": "RemoteAddr",
             "operator": "GeoMatch",
+            "NegationConditon": false,
             "matchValues": [
               "US"
             ]

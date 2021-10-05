@@ -1,0 +1,211 @@
+---
+title: Bereitstellen von Open Service Mesh
+description: Bereitstellen von Open Service Mesh in Azure Kubernetes Service (AKS) mittels Azure CLI
+services: container-service
+ms.topic: article
+ms.date: 8/26/2021
+ms.custom: mvc, devx-track-azurecli
+ms.author: pgibson
+ms.openlocfilehash: f5680d21abe1f4dffb163b6e0b16fd836e6a3fc2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128700429"
+---
+# <a name="deploy-the-open-service-mesh-aks-add-on-using-azure-cli"></a>Bereitstellen des Open Service Mesh AKS-Add-Ons mittels Azure CLI
+
+In diesem Artikel wird erläutert, wie Sie das OSM-Add-On in AKS bereitstellen.
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Azure CLI, Version 2.20.0 oder höher
+- Erweiterung `aks-preview`, Version 0.5.5 oder höher
+- OSM-Version v0.9.1 oder höher
+
+## <a name="install-the-aks-preview-extension"></a>Installieren der Erweiterung aks-preview
+
+Sie benötigen mindestens Version 0.5.24 der Azure CLI-Erweiterung _aks-preview_. Installieren Sie die Erweiterung _aks-preview_ der Azure-Befehlszeilenschnittstelle mithilfe des Befehls [az extension add][az-extension-add]. Alternativ können Sie verfügbare Updates mithilfe des Befehls [az extension update][az-extension-update] installieren.
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+## <a name="register-the-aks-openservicemesh-preview-feature"></a>Registrieren der Previewfunktion `AKS-OpenServiceMesh`
+
+Um einen AKS-Cluster zu erstellen, der das Open Service Mesh-Add-on verwenden kann, müssen Sie das `AKS-OpenServiceMesh` Feature-Flag in Ihrem Abonnement aktivieren.
+
+Registrieren Sie das Featureflag `AKS-OpenServiceMesh` mithilfe des Befehls [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "AKS-OpenServiceMesh"
+```
+
+Es dauert einige Minuten, bis der Status _Registered (Registriert)_ angezeigt wird. Überprüfen Sie den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list]:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-OpenServiceMesh')].{Name:name,State:properties.state}"
+```
+
+Wenn der Vorgang abgeschlossen ist, können Sie die Registrierung des _Microsoft.ContainerService_-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register] aktualisieren:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+## <a name="install-open-service-mesh-osm-azure-kubernetes-service-aks-add-on-for-a-new-aks-cluster"></a>Installieren von Open Service Mesh (OSM) Azure Kubernetes Service (AKS) Add-on für einen neuen AKS-Cluster
+
+Für ein neues AKS-Cluster-Bereitstellungsszenario beginnen Sie mit einer brandneuen Bereitstellung eines AKS-Clusters und aktivieren das OSM-Add-on beim Erstellen des Clusters.
+
+### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+
+In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Das folgende Beispiel wird verwendet, um eine Ressourcengruppe an einem angegebenen Standort (Region) zu erstellen:
+
+```azurecli-interactive
+az group create --name <my-osm-aks-cluster-rg> --location <azure-region>
+```
+
+### <a name="deploy-an-aks-cluster-with-the-osm-add-on-enabled"></a>Bereitstellen eines AKS-Clusters mit aktiviertem OSM-Add-on
+
+Sie werden nun einen neuen AKS-Cluster mit aktiviertem OSM-Add-on bereitstellen.
+
+> [!NOTE]
+> Bitte beachten Sie, dass der folgende AKS-Bereitstellungsbefehl ephemere Festplatten des Betriebssystems verwendet. Weitere Informationen zu [Kurzlebige Betriebssystemdatenträger für AKS](./cluster-configuration.md#ephemeral-os)finden Sie unter
+
+```azurecli-interactive
+az aks create -n <my-osm-aks-cluster-name> -g <my-osm-aks-cluster-rg> --node-osdisk-type Ephemeral --node-osdisk-size 30 --network-plugin azure --enable-managed-identity -a open-service-mesh
+```
+
+#### <a name="get-aks-cluster-access-credentials"></a>AKS-Cluster-Zugangsberechtigungen abrufen
+
+Holen Sie sich die Zugangsdaten für den neuen Managed Kubernetes-Cluster.
+
+```azurecli-interactive
+az aks get-credentials -n <my-osm-aks-cluster-name> -g <my-osm-aks-cluster-rg>
+```
+
+## <a name="enable-open-service-mesh-osm-azure-kubernetes-service-aks-add-on-for-an-existing-aks-cluster"></a>Aktivieren von Open Service Mesh (OSM) Azure Kubernetes Service (AKS) Add-on für einen bestehenden AKS-Cluster
+
+Für ein bestehendes AKS-Cluster-Szenario aktivieren Sie das OSM-Add-on für einen bestehenden AKS-Cluster, der bereits eingesetzt wurde.
+
+### <a name="enable-the-osm-add-on-to-existing-aks-cluster"></a>Aktivieren des OSM-Add-on für einen vorhandenen AKS-Cluster
+
+Um das AKS-OSM-Add-on zu aktivieren, müssen Sie den `az aks enable-addons --addons` Befehl ausführen, der den Parameter übergibt. `open-service-mesh`
+
+```azurecli-interactive
+az aks enable-addons --addons open-service-mesh -g <my-osm-aks-cluster-rg> -n <my-osm-aks-cluster-name>
+```
+
+Es sollte eine Ausgabe ähnlich der unten gezeigten Ausgabe angezeigt werden, um zu bestätigen, dass das AKS-OSM-Add-on installiert wurde.
+
+```json
+{- Finished ..
+  "aadProfile": null,
+  "addonProfiles": {
+    "KubeDashboard": {
+      "config": null,
+      "enabled": false,
+      "identity": null
+    },
+    "openServiceMesh": {
+      "config": {},
+      "enabled": true,
+      "identity": {
+...
+```
+
+## <a name="validate-the-aks-osm-add-on-installation"></a>Überprüfen der AKS-OSM-Add-on-Installation
+
+Es gibt mehrere Befehle, die ausgeführt werden müssen, um zu überprüfen, ob alle Komponenten des AKS-OSM-Add-Ins aktiviert sind und ausgeführt werden:
+
+Zuerst können wir die Add-on-Profile des Clusters-Abfragen, um den aktivierten Status der installierten Add-ons zu überprüfen. Der folgende Befehl sollte „true“ zurückgeben.
+
+```azurecli-interactive
+az aks list -g <my-osm-aks-cluster-rg> -o json | jq -r '.[].addonProfiles.openServiceMesh.enabled'
+```
+
+Die folgenden `kubectl` Befehle melden den Status des OSM-Controllers.
+
+```azurecli-interactive
+kubectl get deployments -n kube-system --selector app=osm-controller
+kubectl get pods -n kube-system --selector app=osm-controller
+kubectl get services -n kube-system --selector app=osm-controller
+```
+
+## <a name="accessing-the-aks-osm-add-on-configuration"></a>Zugreifen auf die Konfiguration des AKS-OSM-Add-Ons
+
+Zurzeit können Sie über die OSM-MeshConfig-Ressource auf die OSM-Controllerkonfiguration zugreifen und diese konfigurieren. Um die Konfigurationseinstellungen des OSM-Controllers über die Befehlszeilenschnittstelle anzuzeigen, verwenden Sie den Get-Befehl **kubectl**, wie unten dargestellt.
+
+```azurecli-interactive
+kubectl get meshconfig osm-mesh-config -n kube-system -o yaml
+```
+
+Die Ausgabe der MeshConfig sollte in etwa wie folgt aussehen:
+
+```
+apiVersion: config.openservicemesh.io/v1alpha1
+kind: MeshConfig
+metadata:
+  creationTimestamp: "0000-00-00A00:00:00A"
+  generation: 1
+  name: osm-mesh-config
+  namespace: kube-system
+  resourceVersion: "2494"
+  uid: 6c4d67f3-c241-4aeb-bf4f-b029b08faa31
+spec:
+  certificate:
+    serviceCertValidityDuration: 24h
+  featureFlags:
+    enableEgressPolicy: true
+    enableMulticlusterMode: false
+    enableWASMStats: true
+  observability:
+    enableDebugServer: true
+    osmLogLevel: info
+    tracing:
+      address: jaeger.osm-system.svc.cluster.local
+      enable: false
+      endpoint: /api/v2/spans
+      port: 9411
+  sidecar:
+    configResyncInterval: 0s
+    enablePrivilegedInitContainer: false
+    envoyImage: mcr.microsoft.com/oss/envoyproxy/envoy:v1.18.3
+    initContainerImage: mcr.microsoft.com/oss/openservicemesh/init:v0.9.1
+    logLevel: error
+    maxDataPlaneConnections: 0
+    resources: {}
+  traffic:
+    enableEgress: true
+    enablePermissiveTrafficPolicyMode: true
+    inboundExternalAuthorization:
+      enable: false
+      failureModeAllow: false
+      statPrefix: inboundExtAuthz
+      timeout: 1s
+    useHTTPSIngress: false
+```
+
+Beachten Sie, dass **enablePermissiveTrafficPolicyMode** auf **true** festgelegt ist. Der Modus „Permissive traffic policy“ in OSM ist ein Modus, in dem die Durchsetzung der [SMI](https://smi-spec.io/)-Verkehrsrichtlinie umgangen wird. In diesem Modus erkennt OSM automatisch Dienste, die Teil des Dienstnetzes sind, und programmiert Regeln für Datenverkehrsrichtlinien auf jedem Envoy-Proxy-Sidecar, um mit diesen Diensten kommunizieren zu können.
+
+> [!WARNING]
+> Bevor Sie fortfahren, vergewissern Sie sich bitte, dass der Modus „Permissive Traffic Policy“ auf **true** eingestellt ist; falls nicht, ändern Sie ihn bitte mit dem folgenden Befehl auf
+
+```OSM Permissive Mode to True
+kubectl patch meshconfig osm-mesh-config -n kube-system -p '{"spec":{"traffic":{"enablePermissiveTrafficPolicyMode":true}}}' --type=merge
+```
+
+<!-- Links -->
+<!-- Internal -->
+
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update

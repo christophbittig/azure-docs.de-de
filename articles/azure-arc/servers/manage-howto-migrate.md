@@ -3,12 +3,12 @@ title: Regionsübergreifendes Migrieren von Azure Arc-fähigen Servern
 description: Hier erfahren Sie, wie Sie einen Azure Arc-fähigen Server aus einer Region in eine andere verschieben.
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: d0e909b789e3e0dcee4d39e22067de26daace548
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: ea44fbf060588ca3859e7f0d51b7d7449dc318fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609648"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807404"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>Regionsübergreifendes Migrieren von Azure Arc-fähigen Servern
 
@@ -28,9 +28,9 @@ Sie müssen die VM-Erweiterungen deinstallieren, die Ressource in Azure löschen
 
 2. Verwenden Sie das **azcmagent**-Tool mit dem Parameter [Disconnect](manage-agent.md#disconnect), um den Computer von Azure Arc zu trennen und die Computerressource aus Azure zu löschen. Wenn Sie den Computer von Azure Arc-fähigen Servern trennen, wird der Connected Machine-Agent nicht entfernt, und Sie müssen den Agent nicht als Teil dieses Prozesses entfernen. Sie können dies manuell ausführen, während Sie interaktiv angemeldet sind, oder Sie können mithilfe desselben Dienstprinzipals automatisieren, den Sie für das Onboarding mehrerer Agents verwendet haben, oder mithilfe eines [Zugriffstokens](../../active-directory/develop/access-tokens.md) der Microsoft Identity-Plattform. Wenn Sie keinen Dienstprinzipal zum Registrieren des Computers bei Azure Arc-fähigen Servern verwendet haben, finden Sie im folgenden [Artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) Informationen zum Erstellen eines Dienstprinzipals.
 
-3. Registrieren Sie den Connected Machine-Agent bei Arc-fähigen Servern in der anderen Region erneut. Führen Sie das `azcmagent`-Tool mit dem Parameter [Connect](manage-agent.md#connect) aus, um diesen Schritt abzuschließen.
+3. Registrieren Sie den Connected Machine-Agent bei Azure Arc-fähigen Servern in der anderen Region erneut. Führen Sie das `azcmagent`-Tool mit dem Parameter [Connect](manage-agent.md#connect) aus, um diesen Schritt abzuschließen.
 
-4. Stellen Sie die VM-Erweiterungen, die ursprünglich für den Computer bereitgestellt wurden, von Arc-fähigen Servern aus erneut bereit. Wenn Sie den Azure Monitor für VMs-Agent (Insights) oder den Log Analytics-Agent mithilfe einer Azure Policy-Definition bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) erneut bereitgestellt.
+4. Stellen Sie die VM-Erweiterungen, die ursprünglich für den Computer bereitgestellt wurden, von Azure Arc-fähigen Servern aus erneut bereit. Wenn Sie den Azure Monitor für VMs-Agent (Insights) oder den Log Analytics-Agent mithilfe einer Azure Policy-Definition bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) erneut bereitgestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d95bfadd23e1a8e0d2db70952c81667d24dc4230
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: e8821d2c3390ddfd07c7230b20e27b46330e6229
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771022"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816143"
 ---
 # <a name="achieve-nist-authenticator-assurance-level-3-by-using-azure-active-directory"></a>Realisieren von NIST Authenticator Assurance Level 3 mit Azure Active Directory
 
@@ -38,7 +38,7 @@ Microsoft bietet Authentifizierungsmethoden, mit denen Sie die erforderlichen NI
 | FIDO2-Sicherheitsschlüssel<br>oder<br> Smartcard (Active Directory-Verbunddienste [AD FS])<br>oder<br>Windows Hello for Business mit Hardware-TPM| Multi-Factor-Kryptografiehardware |
 | **Weitere Methoden**|   |
 | Kennwort<br> und<br>(In Azure AD Hybrid eingebunden mit Hardware-TPM <br>oder <br> In Azure AD eingebunden mit Hardware-TPM)| Gespeichertes Geheimnis<br>und<br> Single-Factor-Kryptografiehardware |
-| Kennwort <br>und<br>Single-Factor-Einmalkennwort-Hardware (von einem OTP-Hersteller) <br>oder<br>In Azure AD Hybrid eingebunden mit Software TPM <br>oder <br> In Azure AD eingebunden mit Software TPM <br>oder<br> Kompatibles verwaltetes Gerät)| Gespeichertes Geheimnis <br>und<br>Single-Factor-Einmalkennwort-Hardware<br> und<br>Single-Factor-Kryptografiesoftware |
+| Kennwort <br>und<br>Single-Factor-Einmalkennwort-Hardware (von einem OTP-Hersteller) <br>und<br>In Azure AD Hybrid eingebunden mit Software TPM <br>oder <br> In Azure AD eingebunden mit Software TPM <br>oder<br> Kompatibles verwaltetes Gerät)| Gespeichertes Geheimnis <br>und<br>Single-Factor-Einmalkennwort-Hardware<br> und<br>Single-Factor-Kryptografiesoftware |
 
 ### <a name="our-recommendations"></a>Empfehlungen 
 

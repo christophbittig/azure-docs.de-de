@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 91873a2d6a498712773bfe721653e64c3364666f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89730779485b4dd74297e2e1137b8e1217f4ef5a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92674820"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671486"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Erste Schritte mit dem Oracle-Datenbankconnector
 
@@ -34,14 +34,14 @@ In diesem Artikel erfahren Sie, wie Sie den Oracle-Datenbankconnector in einer L
 
 * Unterstützte Oracle-Versionen: 
     * Oracle 9 und höher
-    * Oracle-Clientsoftware 8.1.7 und höher
+    * Oracle Data Access Client (ODAC) 11.2 und höher
 
 * Installieren Sie den lokalen Datengateway. Unter [Herstellen einer Verbindung mit lokalen Daten für Logik-Apps](../logic-apps/logic-apps-gateway-connection.md) werden die Schritte aufgeführt. Das Gateway ist erforderlich, um eine Verbindung zu einer lokalen Oracle-Datenbank oder einer Azure-VM mit installierter Oracle-Datenbank herzustellen. 
 
     > [!NOTE]
     > Das lokale Datengateway fungiert als Brücke und ermöglicht eine sichere Datenübertragung zwischen lokalen (nicht in der Cloud enthaltenen) Datenquellen und Ihren Logik-Apps. Dasselbe Gateway kann mit mehreren Diensten und mehreren Datenquellen verwendet werden.  Daher müssen Sie das Gateway möglicherweise nur einmal installieren.
 
-* Installieren Sie den Oracle-Client auf dem Computer, auf dem das lokale Datengateway installiert ist.  Achten Sie darauf, dass Sie den 64-Bit-Oracle-Datenanbieter für .NET von Oracle installieren:  
+* Installieren Sie den Oracle-Client auf dem Computer, auf dem das lokale Datengateway installiert ist. Stellen Sie sicher, dass Sie den 64-Bit-Oracle-Datenanbieter für .NET von Oracle installieren und die Windows-Installationsprogrammversion auswählen, da die `xcopy`-Version nicht mit dem lokalen Datengateway funktioniert:  
 
   [64-Bit-ODAC 12c Release 4 (12.1.0.2.4) für Windows x64](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 

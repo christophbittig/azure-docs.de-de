@@ -7,12 +7,12 @@ ms.date: 06/29/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 4ec7c3640a242212010de68a9f08c4d6e3e27300
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 6e58548365be63ed13a8ac20c42cca81b66bc407
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694319"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593038"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Senken der Kosten durch Azure-Datenträgerreservierung
 
@@ -69,9 +69,9 @@ Gehen Sie folgendermaßen vor, um reservierte Kapazität zu erwerben:
 
 1. Geben Sie die Pflichtwerte wie in der folgenden Tabelle beschrieben an:
 
-   |Element  |BESCHREIBUNG  |
+   |Element  |Beschreibung  |
    |---------|---------|
-   |**Umfang**   |  Die Anzahl der Abonnements, die die mit der Reservierung verbundenen Abrechnungsvorteile nutzen können. Dieser Wert gibt auch an, wie die Reservierung auf bestimmte Abonnements angewandt wird. <br/><br/> Wenn Sie **Gemeinsam** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität in jedem Abonnement innerhalb des Abrechnungskontexts. Der Abrechnungskontext basiert darauf, wie Sie sich für Azure registriert haben. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Bezahlung umfasst der freigegebene Umfang alle Abonnements mit Preisen für nutzungsbasierte Bezahlung, die vom Kontoadministrator erstellt wurden.  <br/><br/>  Wenn Sie **Einzelabonnement** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität im ausgewählten Abonnement. <br/><br/> Wenn Sie die Option **Einzelne Ressourcengruppe** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität im ausgewählten Abonnement und in der ausgewählten Ressourcengruppe innerhalb dieses Abonnements. <br/><br/> Sie können den Reservierungsumfang nach dem Erwerb der Reservierung ändern.  |
+   |**Umfang**   |  Die Anzahl der Abonnements, die die mit der Reservierung verbundenen Abrechnungsvorteile nutzen können. Dieser Wert gibt auch an, wie die Reservierung auf bestimmte Abonnements angewandt wird. <br/><br/> Wenn Sie **Gemeinsam** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität in jedem Abonnement innerhalb des Abrechnungskontexts. Der Abrechnungskontext basiert darauf, wie Sie sich für Azure registriert haben. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Bezahlung umfasst der freigegebene Umfang alle Abonnements mit Preisen für nutzungsbasierte Bezahlung, die vom Kontoadministrator erstellt wurden. </br></br>Wenn Sie **Verwaltungsgruppe** auswählen, wird der Reservierungsrabatt auf Azure Storage Kapazität in jedem Abonnement angewendet, das Teil der Verwaltungsgruppe und des Abrechnungsbereichs ist. <br/><br/>  Wenn Sie **Einzelabonnement** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität im ausgewählten Abonnement. <br/><br/> Wenn Sie die Option **Einzelne Ressourcengruppe** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität im ausgewählten Abonnement und in der ausgewählten Ressourcengruppe innerhalb dieses Abonnements. <br/><br/> Sie können den Reservierungsumfang nach dem Erwerb der Reservierung ändern.  |
    |**Abonnement**  | Das Abonnement, das für die Bezahlung der Azure Storage-Reservierung verwendet wird. Die Zahlungsmethode für das ausgewählte Abonnement wird für das Inrechnungstellen der Kosten verwendet. Es muss einer der folgenden Abonnementtypen vorliegen:<br/><ul><li> Enterprise Agreement (Angebotsnummern MS-AZR-0017P und MS-AZR-0148P). Bei einem Enterprise-Abonnement werden die Gebühren vom Saldo der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) der Reservierung abgezogen oder als Überschreitung belastet.</li><br/><li>Ein einzelnes Abonnement mit Raten für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P und MS-AZR-0023P). Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Bezahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung berechnet.</li></ul>    |
    | **Datenträger** | Die SKU, die Sie erstellen möchten. |
    | **Region** | Die Region, in der die Reservierung wirksam ist. |

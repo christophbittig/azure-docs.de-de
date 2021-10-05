@@ -3,16 +3,16 @@ title: Häufig gestellte Fragen (FAQ) zu Azure Files | Microsoft-Dokumentation
 description: Hier erhalten Sie Antworten auf häufig zu Azure Files gestellte Fragen. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux oder macOS einbinden.
 author: roygara
 ms.service: storage
-ms.date: 02/23/2020
+ms.date: 09/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 3a19493657e368bf65921f4be7bdd5c9154b77a4
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: f3ce223174bc92fefd9f31c53709665749eca112
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536777"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627898"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -165,7 +165,7 @@ Die Erstsynchronisierung wird normalerweise durch die anfängliche Uploadrate vo
   **Warum werden für meine Tieringdateien keine Miniatur- oder Vorschauansichten in Windows-Explorer angezeigt?**  
     Für Tieringdateien sind Miniatur- und Vorschauansichten auf dem Serverendpunkt nicht sichtbar. Dieses Verhalten ist zu erwarten, da das Feature zur Zwischenspeicherung von Miniaturansichten in Windows absichtlich das Lesen von Dateien mit dem Attribut „Offline“ überspringt. Wenn Cloudtiering aktiviert ist, würde das Lesen der Tieringdateien dazu führen, dass diese heruntergeladen (abgerufen) werden.
 
-    Dieses Verhalten ist nicht spezifisch für die Azure-Dateisynchronisierung. In Windows-Explorer wird für alle Dateien, die das Attribut „Offline“ aufweisen, ein graues „X“ angezeigt. Dieses „X“ wird beim Zugriff auf Dateien über SMB angezeigt. Eine ausführliche Erläuterung des Verhaltens finden Sie unter [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105).
+    Dieses Verhalten ist nicht spezifisch für die Azure-Dateisynchronisierung. In Windows-Explorer wird für alle Dateien, die das Attribut „Offline“ aufweisen, ein graues „X“ angezeigt. Dieses „X“ wird beim Zugriff auf Dateien über SMB angezeigt. Eine ausführliche Erläuterung dieses Verhaltens finden Sie unter [Warum werden keine Miniaturansichten für Dateien angezeigt, die als offline markiert sind?](https://devblogs.microsoft.com/oldnewthing/20170503-00/?p=96105)
 
     Fragen zum Verwalten von ausgelagerten Dateien finden Sie unter [Verwalten von mehrstufigen Dateien](../file-sync/file-sync-how-to-manage-tiered-files.md).
 

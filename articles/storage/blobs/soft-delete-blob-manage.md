@@ -10,12 +10,12 @@ ms.date: 07/23/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3125852edd149f6daf7589248be54bafcc1ca2d
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 9c66b970a99ad6dd69b9336d1638b2c156868324
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688203"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627936"
 ---
 # <a name="manage-and-restore-soft-deleted-blobs"></a>Verwalten und Wiederherstellen vorläufig gelöschter Blobs
 
@@ -57,7 +57,7 @@ Um eine vorläufig gelöschte Momentaufnahme zum Basisblob hochzustufen, müssen
 
 #### <a name="restore-soft-deleted-blobs-when-versioning-is-enabled"></a>Wiederherstellen vorläufig gelöschter Objekte bei aktivierter Versionsverwaltung
 
-Um ein vorläufig gelöschtes Blob im Azure-Portal wiederherzustellen, wenn die Versionsverwaltung aktiviert ist, zeigen Sie zunächst die Eigenschaften des vorläufig gelöschten Blobs an und wählen dann die Registerkarte **Versionen** aus. Wählen Sie die Version aus, die Sie zur aktuellen Version hochstufen möchten, und klicken Sie dann auf **Als aktuelle Version festlegen**.  
+Um ein vorläufig gelöschtes Blob im Azure-Portal wiederherzustellen, wenn die Versionsverwaltung aktiviert ist, zeigen Sie zunächst die Eigenschaften des vorläufig gelöschten Blobs an und wählen dann die Registerkarte **Versionen** aus. Wählen Sie die Version aus, die Sie zur aktuellen Version hochstufen möchten, und klicken Sie dann auf **Als aktuelle Version festlegen**.
 
 :::image type="content" source="media/soft-delete-blob-manage/soft-deleted-blob-promote-version-portal.png" alt-text="Screenshot: Vorgehensweise zum Höherstufen einer Version zum Wiederherstellen eines Blobs im Azure-Portal":::
 
@@ -112,13 +112,13 @@ IEnumerable<IListBlobItem> allBlobSnapshots = container.ListBlobs(
 CloudBlockBlob copySource = allBlobSnapshots.First(snapshot => ((CloudBlockBlob)version).IsSnapshot &&
     ((CloudBlockBlob)snapshot).Name == blockBlob.Name) as CloudBlockBlob;
 blockBlob.StartCopy(copySource);
-```  
+```
 
 ---
 
 #### <a name="restore-soft-deleted-blobs-when-versioning-is-enabled"></a>Wiederherstellen vorläufig gelöschter Objekte bei aktivierter Versionsverwaltung
 
-Um ein vorläufig gelöschtes Blob bei aktivierter Versionsverwaltung wiederherzustellen, kopieren Sie mithilfe des Vorgangs [Copy Blob](/rest/api/storageservices/copy-blob) oder [Copy Blob From URL](/rest/api/storageservices/copy-blob-from-url) eine vorherige Version über das Basisblob.  
+Um ein vorläufig gelöschtes Blob bei aktivierter Versionsverwaltung wiederherzustellen, kopieren Sie mithilfe des Vorgangs [Copy Blob](/rest/api/storageservices/copy-blob) oder [Copy Blob From URL](/rest/api/storageservices/copy-blob-from-url) eine vorherige Version über das Basisblob.
 
 ##### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
@@ -132,7 +132,7 @@ Nicht zutreffend Die Blobversionsverwaltung wird nur in den Azure Storage-Client
 
 ## <a name="manage-soft-deleted-blobs-and-directories-hierarchical-namespace"></a>Verwalten von vorläufig gelöschten Blobs und Verzeichnissen (hierarchischer Namespace)
 
-Sie können vorläufig gelöschte Blobs und Verzeichnisse in Konten wiederherstellen, die über einen hierarchischen Namespace verfügen. 
+Sie können vorläufig gelöschte Blobs und Verzeichnisse in Konten wiederherstellen, die über einen hierarchischen Namespace verfügen.
 
 > [!IMPORTANT]
 > Das vorläufige Löschen in Konten, für die die hierarchische Namespacefunktion aktiviert ist, befindet sich derzeit in der VORSCHAUPHASE und ist global in allen Azure-Regionen verfügbar.
@@ -150,31 +150,31 @@ Im Azure-Portal können Sie vorläufig gelöschte Blobs und Verzeichnisse anzeig
 Wenn Blobs oder Verzeichnisse vorläufig gelöscht werden, sind sie im Azure-Portal standardmäßig nicht sichtbar. Um vorläufig gelöschte Blobs und Verzeichnisse anzuzeigen, navigieren Sie zur Seite **Übersicht** für den Container, und aktivieren Sie die Einstellung **Gelöschte Blobs anzeigen**. Vorläufig gelöschte Blobs und Verzeichnisse werden mit dem Status **Gelöscht** angezeigt. Die folgende Abbildung zeigt ein vorläufig gelöschtes Verzeichnis.
 
 > [!div class="mx-imgBorder"]
-> ![Screenshot zum Auflisten vorläufig gelöschter Blobs im Azure-Portal (Konten mit aktiviertem hierarchischem Namespace)](media/soft-delete-blob-manage/soft-deleted-blobs-list-portal-hns.png)
+> ![Screenshot zum Auflisten vorläufig gelöschter Blobs im Azure-Portal (Konten mit aktiviertem hierarchischem Namespace).](media/soft-delete-blob-manage/soft-deleted-blobs-list-portal-hns.png)
 
 > [!NOTE]
-> Wenn Sie ein Verzeichnis umbenennen, das vorläufig gelöschte Elemente (Unterverzeichnisse und Blobs) enthält, werden diese vorläufig gelöschten Elemente vom Verzeichnis getrennt, sodass sie im Azure-Portal nicht angezeigt werden, wenn Sie die Einstellung **Gelöschte Blobs anzeigen** umschalten. Wenn Sie sie im Azure-Portal anzeigen möchten, müssen Sie den Namen des Verzeichnisses wieder auf seinen ursprünglichen Namen zurücksetzen oder ein separates Verzeichnis mit dem ursprünglichen Verzeichnisnamen erstellen. 
+> Wenn Sie ein Verzeichnis umbenennen, das vorläufig gelöschte Elemente (Unterverzeichnisse und Blobs) enthält, werden diese vorläufig gelöschten Elemente vom Verzeichnis getrennt, sodass sie im Azure-Portal nicht angezeigt werden, wenn Sie die Einstellung **Gelöschte Blobs anzeigen** umschalten. Wenn Sie sie im Azure-Portal anzeigen möchten, müssen Sie den Namen des Verzeichnisses wieder auf seinen ursprünglichen Namen zurücksetzen oder ein separates Verzeichnis mit dem ursprünglichen Verzeichnisnamen erstellen.
 
 Wählen Sie als Nächstes das gelöschte Verzeichnis oder Blob in der Liste aus, um seine Eigenschaften anzuzeigen. Beachten Sie, dass auf der Registerkarte **Übersicht** der Status auf **Gelöscht** festgelegt ist. Das Portal zeigt außerdem an, in wie viel Tagen das Blob endgültig gelöscht wird.
 
 > [!div class="mx-imgBorder"]
-> ![Screenshot der Eigenschaften vorläufig gelöschter Blobs im Azure-Portal (Konten mit aktiviertem hierarchischem Namespace)](media/soft-delete-blob-manage/soft-deleted-blob-properties-portal-hns.png)
+> ![Screenshot der Eigenschaften vorläufig gelöschter Blobs im Azure-Portal (Konten mit aktiviertem hierarchischem Namespace).](media/soft-delete-blob-manage/soft-deleted-blob-properties-portal-hns.png)
 
 #### <a name="restore-soft-delete-blobs-and-directories"></a>Wiederherstellen von vorläufig gelöschten Blobs und Verzeichnissen
 
 Um ein vorläufig gelöschtes Blob oder Verzeichnis im Azure-Portal wiederherzustellen, zeigen Sie zunächst die Eigenschaften des Blobs oder Verzeichnisses an, und wählen Sie dann auf der Registerkarte **Übersicht** die Schaltfläche **Wiederherstellen** aus. Die folgende Abbildung zeigt die Schaltfläche „Wiederherstellen“ für ein vorläufig gelöschtes Verzeichnis.
 
 > [!div class="mx-imgBorder"]
-> ![Screenshot zum Wiederherstellen eines vorläufig gelöschten Blobs im Azure-Portal (Konten mit aktiviertem hierarchischem Namespace)](media/soft-delete-blob-manage/undelete-soft-deleted-blob-portal-hns.png)
+> ![Screenshot zum Wiederherstellen eines vorläufig gelöschten Blobs im Azure-Portal (Konten mit aktiviertem hierarchischem Namespace).](media/soft-delete-blob-manage/undelete-soft-deleted-blob-portal-hns.png)
 
 ### <a name="restore-soft-deleted-blobs-and-directories-by-using-powershell"></a>Wiederherstellen vorläufig gelöschter Blobs und Verzeichnisse mithilfe von PowerShell
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Dieser Abschnitt gilt nur für Konten mit einem hierarchischen Namespace.
 
-1. Stellen Sie sicher, dass das Vorschaumodul **Az.Storage** installiert ist. Weitere Informationen finden Sie unter [Aktivieren des vorläufigen Löschens von Blobs mithilfe von PowerShell](soft-delete-blob-enable.md?tabs=azure-powershell#enable-blob-soft-delete-hierarchical-namespace).
+1. Stellen Sie sicher, dass das Vorschaumodul **Az.Storage** installiert ist. Weitere Informationen finden Sie unter [Aktivieren des vorläufigen Blob-Löschens über PowerShell](soft-delete-blob-enable.md?tabs=azure-powershell#enable-blob-soft-delete-hierarchical-namespace).
 
-2. Abrufen der Speicherkontoautorisierung mithilfe eines Speicherkontoschlüssels, einer Verbindungszeichenfolge oder mit Azure Active Directory (Azure AD). Siehe [Herstellen einer Verbindung mit dem Konto](data-lake-storage-directory-file-acl-powershell.md#connect-to-the-account).
+2. Abrufen der Speicherkontoautorisierung mithilfe eines Speicherkontoschlüssels, einer Verbindungszeichenfolge oder mit Azure Active Directory (Azure AD). Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit dem Konto](data-lake-storage-directory-file-acl-powershell.md#connect-to-the-account).
 
    Im folgenden Beispiel wird die Autorisierung mithilfe eines Speicherkontoschlüssels abgerufen.
 
@@ -195,10 +195,10 @@ Um ein vorläufig gelöschtes Blob oder Verzeichnis im Azure-Portal wiederherzus
 
 ### <a name="restore-soft-deleted-blobs-and-directories-by-using-azure-cli"></a>Wiederherstellen vorläufig gelöschter Blobs und Verzeichnisse mithilfe der Azure-Befehlszeilenschnittstelle
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Dieser Abschnitt gilt nur für Konten mit einem hierarchischen Namespace.
 
-1. Stellen Sie sicher, dass die Erweiterung `storage-preview` installiert ist. Weitere Informationen finden Sie unter [Aktivieren des vorläufigen Löschens von Blobs mithilfe von PowerShell](soft-delete-blob-enable.md?tabs=azure-CLI#enable-blob-soft-delete-hierarchical-namespace).
+1. Stellen Sie sicher, dass die Erweiterung `storage-preview` installiert ist. Weitere Informationen finden Sie unter [Aktivieren des vorläufigen Blob-Löschens über PowerShell](soft-delete-blob-enable.md?tabs=azure-CLI#enable-blob-soft-delete-hierarchical-namespace).
 
 2. Rufen Sie die Liste der gelöschten Elemente ab.
 
@@ -211,14 +211,14 @@ Um ein vorläufig gelöschtes Blob oder Verzeichnis im Azure-Portal wiederherzus
 
    ```azurecli
    $dirName="my-directory"
-   az storage fs undelete-path -f $filesystemName --deleted-path-name $dirName —deletion-id "<deletionId>" --auth-mode login
+   az storage fs undelete-path -f $filesystemName --deleted-path-name $dirName -deletion-id "<deletionId>" --auth-mode login
    ```
 
    Wenn Sie das Verzeichnis umbenennen, das die vorläufig gelöschten Elemente enthält, werden diese Elemente vom Verzeichnis getrennt. Wenn Sie diese Elemente wiederherstellen möchten, müssen Sie den Namen des Verzeichnisses wieder auf seinen ursprünglichen Namen zurücksetzen oder ein separates Verzeichnis mit dem ursprünglichen Verzeichnisnamen erstellen. Andernfalls erhalten Sie einen Fehler, wenn Sie versuchen, diese vorläufig gelöschten Elemente wiederherzustellen.
 
 ### <a name="restore-soft-deleted-blobs-and-directories-by-using-net"></a>Wiederherstellen vorläufig gelöschter Blobs und Verzeichnisse mithilfe von .NET
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Dieser Abschnitt gilt nur für Konten mit einem hierarchischen Namespace.
 
 1. Öffnen Sie eine Eingabeaufforderung, und wechseln Sie mit dem Befehl `cd` in Ihren Projektordner. Beispiel:
@@ -227,7 +227,7 @@ Um ein vorläufig gelöschtes Blob oder Verzeichnis im Azure-Portal wiederherzus
    cd myProject
    ```
 
-2. Installieren Sie Version `Azure.Storage.Files.DataLake -v 12.7.0` des NuGet-Pakets [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) mit dem Befehl `dotnet add package`. 
+2. Installieren Sie Version `Azure.Storage.Files.DataLake -v 12.7.0` des NuGet-Pakets [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) mit dem Befehl `dotnet add package`.
 
    ```console
    dotnet add package Azure.Storage.Files.DataLake -v -v 12.7.0 -s https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json
@@ -253,26 +253,26 @@ Um ein vorläufig gelöschtes Blob oder Verzeichnis im Azure-Portal wiederherzus
    ```csharp
       public void RestoreDirectory(DataLakeServiceClient serviceClient)
       {
-          DataLakeFileSystemClient fileSystemClient = 
+          DataLakeFileSystemClient fileSystemClient =
              serviceClient.GetFileSystemClient("my-container");
 
-          DataLakeDirectoryClient directory = 
+          DataLakeDirectoryClient directory =
               fileSystem.GetDirectoryClient("my-directory");
 
           // Delete the Directory
           await directory.DeleteAsync();
- 
+
           // List Deleted Paths
           List<PathHierarchyDeletedItem> deletedItems = new List<PathHierarchyDeletedItem>();
           await foreach (PathHierarchyDeletedItem deletedItem in fileSystemClient.GetDeletedPathsAsync())
           {
             deletedItems.Add(deletedItem);
           }
- 
+
           Assert.AreEqual(1, deletedItems.Count);
           Assert.AreEqual("my-directory", deletedItems[0].Path.Name);
           Assert.IsTrue(deletedItems[0].IsPath);
- 
+
           // Restore deleted directory.
           Response<DataLakePathClient> restoreResponse = await fileSystemClient.RestorePathAsync(
           deletedItems[0].Path.Name,
@@ -286,7 +286,7 @@ Um ein vorläufig gelöschtes Blob oder Verzeichnis im Azure-Portal wiederherzus
 
 ### <a name="restore-soft-deleted-blobs-and-directories-by-using-java"></a>Wiederherstellen vorläufig gelöschter Blobs und Verzeichnisse mithilfe von Java
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Dieser Abschnitt gilt nur für Konten mit einem hierarchischen Namespace.
 
 1. Öffnen Sie zunächst die Datei *pom.xml* in Ihrem Text-Editor. Fügen Sie der Gruppe „dependencies“ das folgende Abhängigkeitselement hinzu.
@@ -305,7 +305,7 @@ Um ein vorläufig gelöschtes Blob oder Verzeichnis im Azure-Portal wiederherzus
    Put imports here
    ```
 
-3. Mit dem folgenden Codeausschnitt wird eine vorläufig gelöschte Datei mit dem Namen `my-file` wiederhergestellt. 
+3. Mit dem folgenden Codeausschnitt wird eine vorläufig gelöschte Datei mit dem Namen `my-file` wiederhergestellt.
 
    Bei dieser Methode wird davon ausgegangen, dass Sie eine **DataLakeServiceClient**-Instanz erstellt haben. Informationen zum Erstellen einer **DataLakeServiceClient**-Instanz finden Sie unter [Herstellen einer Verbindung mit dem Konto](data-lake-storage-directory-file-acl-java.md#connect-to-the-account).
 
@@ -313,16 +313,16 @@ Um ein vorläufig gelöschtes Blob oder Verzeichnis im Azure-Portal wiederherzus
 
    public void RestoreFile(DataLakeServiceClient serviceClient){
 
-       DataLakeFileSystemClient fileSystemClient = 
+       DataLakeFileSystemClient fileSystemClient =
            serviceClient.getFileSystemClient("my-container");
-       
-       DataLakeFileClient fileClient = 
+
+       DataLakeFileClient fileClient =
            fileSystemClient.getFileClient("my-file");
 
        String deletionId = null;
 
        for (PathDeletedItem item : fileSystemClient.listDeletedPaths()) {
-    
+
            if (item.getName().equals(fileClient.getFilePath())) {
               deletionId = item.getDeletionId();
            }
@@ -337,7 +337,7 @@ Um ein vorläufig gelöschtes Blob oder Verzeichnis im Azure-Portal wiederherzus
 
 ### <a name="restore-soft-deleted-blobs-and-directories-by-using-python"></a>Wiederherstellen vorläufig gelöschter Blobs und Verzeichnisse mithilfe von Python
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Dieser Abschnitt gilt nur für Konten mit einem hierarchischen Namespace.
 
 1. Installieren Sie Version `12.4.0` oder höher der Azure Data Lake Storage-Clientbibliothek für Python mithilfe von [pip](https://pypi.org/project/pip/). Mit diesem Befehl wird die neueste Version der Azure Data Lake Storage-Clientbibliothek für Python installiert.
@@ -369,12 +369,12 @@ Um ein vorläufig gelöschtes Blob oder Verzeichnis im Azure-Portal wiederherzus
             directory_path = 'my-directory'
             directory_client = file_system_client.create_directory(directory_path)
             resp = directory_client.delete_directory()
-        
+
             restored_directory_client = file_system_client.undelete_path(directory_client, resp['deletion_id'])
             props = restored_directory_client.get_directory_properties()
-        
+
             print(props)
-   
+
         except Exception as e:
             print(e)
 

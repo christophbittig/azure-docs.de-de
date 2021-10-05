@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/09/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7a213198421597e444a55c53d85cdb6e427425a3
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: f3296d1c2d04111985bada09486315d72997b88d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350248"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571867"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für eine bestimmte Azure Active Directory-Organisation in Azure Active Directory B2C
 
@@ -37,19 +37,20 @@ In diesem Artikel erfahren Sie, wie Sie die Anmeldung für Benutzer einer bestim
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ### <a name="verify-the-applications-publisher-domain"></a>Überprüfen der Herausgeberdomäne einer Anwendung
-Ab November 2020 werden neue Anwendungsregistrierungen in der Benutzer-Zustimmungsaufforderung als nicht überprüft angezeigt, es sei denn, [die Herausgeberdomäne der Anwendung wurde überprüft](../active-directory/develop/howto-configure-publisher-domain.md) ***und*** die Identität des Unternehmens wurde durch das Microsoft Partner Network überprüft und der Anwendung zugeordnet. ([Erfahren Sie mehr](../active-directory/develop/publisher-verification-overview.md) über diese Änderung.) Beachten Sie, dass für Azure AD B2C Benutzerflows die Domäne des Herausgebers nur angezeigt wird, wenn ein Microsoft-Konto oder ein anderer [Azure AD](../active-directory-b2c/identity-provider-microsoft-account.md)-Mandant als Identitätsanbieter verwendet wird. Gehen Sie wie folgt vor, um diese neuen Anforderungen zu erfüllen:
+Ab November 2020 werden neue Anwendungsregistrierungen in der Benutzer-Zustimmungsaufforderung als nicht überprüft angezeigt, es sei denn, [die Herausgeberdomäne der Anwendung wurde überprüft](../active-directory/develop/howto-configure-publisher-domain.md) ***und*** die Identität des Unternehmens wurde durch das Microsoft Partner Network überprüft und der Anwendung zugeordnet. ([Erfahren Sie mehr](../active-directory/develop/publisher-verification-overview.md) über diese Änderung.) Beachten Sie, dass für Azure AD B2C-Benutzerflows die Domäne des Herausgebers nur angezeigt wird, wenn ein Microsoft-Konto oder ein anderer [Azure AD](../active-directory-b2c/identity-provider-microsoft-account.md)-Mandant als Identitätsanbieter verwendet wird. Gehen Sie wie folgt vor, um diese neuen Anforderungen zu erfüllen:
 
-1. [Überprüfen Sie Ihre Unternehmensidentität mit ihrem Microsoft Partner Network -Konto (MPN)](/partner-center/verification-responses). Bei diesem Prozess werden Informationen zu Ihrem Unternehmen und zum primären Kontakt Ihres Unternehmens überprüft.
-1. Schließen Sie die Herausgeberüberprüfung ab, um mithilfe einer der folgenden Optionen Ihr MPN-Konto Ihrer App-Registrierung zuzuordnen:
-   - Wenn die App-Registrierung für den Microsoft-Konto-Identitätsanbieter in einem Azure AD-Mandanten ist, [überprüfen Sie Ihre App im App-Registrierungsportal.](../active-directory/develop/mark-app-as-publisher-verified.md)
-   - Wenn sich Ihre App-Registrierung für den Microsoft-Konto-Identitätsanbieter in einem Azure AD B2C-Mandanten befindet, [markieren Sie Ihre App mithilfe von Microsoft Graph-APIs als vom Herausgeber verifiziert](../active-directory/develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls) (z. B. mithilfe von Graph Explorer). Die Benutzeroberfläche zum Festlegen des verifizierten Herausgebers einer App ist derzeit für Azure AD B2C-Mandanten deaktiviert.
+1. [Überprüfen Sie Ihre Unternehmensidentität mit Ihrem Microsoft Partner Network-Konto (MPN-Konto)](/partner-center/verification-responses). Bei diesem Prozess werden Informationen zu Ihrem Unternehmen und zum primären Kontakt Ihres Unternehmens überprüft.
+1. Schließen Sie mithilfe einer der folgenden Optionen die Herausgeberüberprüfung ab, um Ihr MPN-Konto Ihrer App-Registrierung zuzuordnen:
+   - Wenn sich die App-Registrierung für den Identitätsanbieter „Microsoft-Konto“ in einem Azure AD-Mandanten befindet, [überprüfen Sie Ihre App im App-Registrierungsportal](../active-directory/develop/mark-app-as-publisher-verified.md).
+   - Wenn sich Ihre App-Registrierung für den Identitätsanbieter „Microsoft-Konto“ in einem Azure AD B2C-Mandanten befindet, [markieren Sie Ihre App mithilfe einer Microsoft Graph-API als vom Herausgeber verifiziert](../active-directory/develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls) (z. B. mithilfe von Graph Explorer). Die Benutzeroberfläche zum Festlegen des verifizierten Herausgebers einer App ist derzeit für Azure AD B2C-Mandanten deaktiviert.
 
 ## <a name="register-an-azure-ad-app"></a>Registrieren einer Azure AD-App
 
 Wenn Sie die Anmeldung für Benutzer mit einem Azure AD-Konto einer bestimmten Azure AD-Organisation in Azure Active Directory B2C (Azure AD B2C) aktivieren möchten, müssen Sie im [Azure-Portal](https://portal.azure.com) eine Anwendung erstellen. Weitere Informationen finden Sie unter [Registrieren einer Anwendung bei Microsoft Identity Platform](../active-directory/develop/quickstart-register-app.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Organisationsmandanten (z. B. „contoso.com“) enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Organisationsmandanten (z. B. „contoso.com“) enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
 1. Wählen Sie **Neue Registrierung** aus.
 1. Geben Sie einen **Namen** für Ihre Anwendung ein. Beispiel: `Azure AD B2C App`.
@@ -89,7 +90,8 @@ Anhand der [Herausgeberüberprüfung](../active-directory/develop/publisher-veri
 
 ## <a name="configure-azure-ad-as-an-identity-provider"></a>Konfigurieren von Azure AD als Identitätsanbieter
 
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das den Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter** aus, und wählen Sie das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das den Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 1. Wählen Sie **Identitätsanbieter** und dann **Neuer OpenID Connect-Anbieter** aus.
 1. Geben Sie einen **Namen** ein. Geben Sie beispielsweise *Contoso Azure AD* ein.
@@ -113,7 +115,7 @@ Anhand der [Herausgeberüberprüfung](../active-directory/develop/publisher-veri
     - **Anzeigename**: *name*
     - **Vorname**: *given_name*
     - **Nachname**: *family_name*
-    - **E-Mail**: *preferred_username*
+    - **E-Mail**: *email*
 
 1. Wählen Sie **Speichern** aus.
 
@@ -140,7 +142,8 @@ Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://
 
 Sie müssen den von Ihnen erstellten Anwendungsschlüssel in Ihrem Azure AD B2C-Mandanten speichern.
 
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 1. Wählen Sie unter **Richtlinien** die Option **Identity Experience Framework** aus.
 1. Wählen Sie **Richtlinienschlüssel** und dann **Hinzufügen** aus.

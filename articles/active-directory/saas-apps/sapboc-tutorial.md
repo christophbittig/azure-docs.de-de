@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 19bdb6d2a586dcb279687673c7fa4e302dc4928b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da2bd04dceb158d2fbd5b73530ff0e6083c52e9a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101652639"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813213"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Tutorial: Integrieren von SAP Analytics Cloud in Azure Active Directory
 
@@ -38,6 +38,8 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * SAP Analytics Cloud unterstützt **SP**-initiiertes einmaliges Anmelden.
+
+* SAP Analytics Cloud unterstützt [automatisierte Benutzerbereitstellung](sap-analytics-cloud-provisioning-tutorial.md). 
 
 ## <a name="add-sap-analytics-cloud-from-the-gallery"></a>Hinzufügen von SAP Analytics Cloud aus dem Katalog
 
@@ -75,18 +77,22 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL in einem der folgenden Formate ein:
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL in einem der folgenden Formate ein:
 
-    - `https://<sub-domain>.sapanalytics.cloud/`
-    - `https://<sub-domain>.sapbusinessobjects.cloud/`
+    | **Bezeichner-URL** |
+    |----|
+    | `<sub-domain>.sapbusinessobjects.cloud` |
+    | `<sub-domain>.sapanalytics.cloud` |
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL in einem der folgenden Formate ein:
-
-    - `<sub-domain>.sapbusinessobjects.cloud`
-    - `<sub-domain>.sapanalytics.cloud`
+    b. Geben Sie im Textfeld **Anmelde-URL** eine URL in einem der folgenden Formate ein:
+    
+    | **Anmelde-URL** |
+    |------|
+    | `https://<sub-domain>.sapanalytics.cloud/` |
+    | `https://<sub-domain>.sapbusinessobjects.cloud/` |
 
     > [!NOTE] 
-    > Die Werte in diesen URLs dienen nur Demonstrationszwecken. Aktualisieren Sie die Werte mit der tatsächlichen Anmelde-URL und der Bezeichner-URL. Die Anmelde-URL erhalten Sie vom [Supportteam für den SAP Analytics Cloud-Client](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/). Sie können die Bezeichner-URL abrufen, indem Sie die SAP Analytics Cloud-Metadaten aus der Verwaltungskonsole herunterladen. Dies wird weiter unten im Tutorial erläutert.
+    > Die Werte in diesen URLs dienen nur Demonstrationszwecken. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Die Anmelde-URL erhalten Sie vom [Supportteam für den SAP Analytics Cloud-Client](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/). Sie können die Bezeichner-URL abrufen, indem Sie die SAP Analytics Cloud-Metadaten aus der Verwaltungskonsole herunterladen. Dies wird weiter unten im Tutorial erläutert.
 
 4. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -190,6 +196,9 @@ So stellen Sie ein Benutzerkonto bereit:
 
     1. Wählen Sie das Symbol **Speichern** aus.
 
+> [!NOTE]
+> Außerdem unterstützt SAP Analytics Cloud automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./sap-analytics-cloud-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -198,7 +207,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die SAP Analytics Cloud-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „SAP Analytics Cloud“ klicken, werden Sie zur Anmelde-URL für SAP Analytics Cloud umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „SAP Analytics Cloud“ klicken, werden Sie zur Anmelde-URL für SAP Analytics Cloud umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,12 +3,12 @@ title: Verbessern des optimalen Betriebs mit Advisor
 description: Verwenden Sie Azure Advisor, um den optimalen Betrieb für Ihre Azure-Abonnements zu verbessern und weiterzuentwickeln.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 0b938a0c7a42182bb8d2a50b48d65a0844d952a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 151edab6c389e32abaaa73fec3012fa3bdcdf75a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579952"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650418"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Sicherstellen des optimalen Betriebs mit Azure Advisor
 
@@ -69,6 +69,8 @@ Azure Advisor erkennt, dass bei Ihnen für zu viele Hostpools eine Überprüfung
 ## <a name="enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources"></a>Aktivieren von Traffic Analytics zum Anzeigen von Erkenntnissen zu Datenverkehrsmustern für Azure-Ressourcen
 Traffic Analytics ist eine cloudbasierte Lösung, die Einblick in Benutzer- und Anwendungsaktivitäten in Azure bietet. Traffic Analytics analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss zu ermöglichen. Mit Traffic Analytics können Sie „Top Talkers“ für Azure-Bereitstellungen und andere Bereitstellungen anzeigen, geöffnete Ports, Protokolle und schädliche Datenflüsse in Ihrer Umgebung untersuchen und Ihre Netzwerkbereitstellung in Bezug auf die Leistung optimieren. Sie können Datenflussprotokolle mit Verarbeitungsintervallen von 10 und 60 Minuten verarbeiten, um schnellere Analyseergebnisse für Ihren Datenverkehr zu erhalten. Es empfiehlt sich, Traffic Analytics für Ihre Azure-Ressourcen zu aktivieren. 
 
+## <a name="increase-vcpu-limits-for-your-deployments-for-pay-as-you-go-subscription-preview"></a>Erhöhen der vCPU-Grenzwerte für Ihre Bereitstellungen für ein Abonnement mit nutzungsbasierter Bezahlung (Vorschau)
+Diese Erfahrung wurde erstellt, um eine einfache Möglichkeit zum Erhöhen des Kontingents zu bieten, um Sie bei ihren wachsenden Anforderungen zu unterstützen und Bereitstellungsprobleme aufgrund von Kontingenteinschränkungen zu vermeiden. Wir haben die Option „schnelle Problembehebung“ für eingeschränkte Abonnements aktiviert, um eine einfache 1-Klick-Option zum Erhöhen des Kontingents für die vCPUs von 10 auf 20 bereitzustellen. Dieser vereinfachte Ansatz ruft die [Kontingent-Rest-API](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670) im Namen des Benutzers auf, um das Kontingent zu erhöhen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

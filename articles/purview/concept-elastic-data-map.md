@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 08/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 80706316490cde805ef19b0f1c90f2870dc195ab
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 00b6429e14dcb04a76abbc1a8d49a29b220c7c06
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445790"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607069"
 ---
 # <a name="elastic-data-map-in-azure-purview"></a>Elastische Data Map in Azure Purview
 
@@ -21,7 +21,7 @@ Azure Purview Data Map bildet die Grundlage für die Datenermittlung und Datengo
 
 ## <a name="elastic-data-map"></a>Elastische Data Map
 
-Alle Azure Purview-Konten verfügen über eine Data Map, die ab einer Kapazitätseinheit elastisch wachsen kann. Sie skalieren basierend auf der Anforderungslast innerhalb des Elastizitätsfensters hoch und herunter ([überprüfen Sie aktuelle Einschränkungen](how-to-manage-quotas.md)). Wenn Sie mit sehr großen Datasets oder einer großen Umgebung arbeiten und eine höhere Kapazität benötigen, können Sie eine größere Kapazität des Elastizitätsfensters anfordern, indem Sie die [Umfrage hier](https://aka.ms/PurviewProdSurvey) abschließen.
+Alle Azure Purview-Konten verfügen über eine Data Map, die ab einer Kapazitätseinheit elastisch wachsen kann. Sie skalieren basierend auf der Anforderungslast innerhalb des Elastizitätsfensters hoch und herunter ([überprüfen Sie aktuelle Einschränkungen](how-to-manage-quotas.md)). Diese Grenzwerte sollten die meisten Datenlandschaften abdecken. Wenn Sie jedoch eine höhere Kapazität benötigen, [können Sie ein Supportticket erstellen](#request-capacity).
 
 ## <a name="data-map-capacity-unit"></a>Data Map-Kapazitätseinheit
 
@@ -47,8 +47,6 @@ Zu den technischen Metadaten gehören Schema, Datentyp, Spalten usw., die bei de
 - **Elastische Data Map mit automatischer Skalierung** – Sie beginnen mit einer Data Map, die nicht größer als eine Kapazitätseinheit ist und nach Auslastung automatisch skalieren kann. Für die meisten Organisationen führt dieses Feature zu vermehrten Einsparungen und zu einem niedrigeren Preispunkt für den Start von Datengovernanceprojekten. Dieses Feature wirkt sich auf den Preis aus.
 
 - **Erweiterte Überprüfung & Erfassung** – Sie können die Auffüllung der Datenobjekte sowie die Klassifizierung und Herkunft während des gesamten Erfassungs- und Überprüfungsprozesses nachverfolgen und steuern. Dieses Feature wirkt sich auf den Preis aus.
-
-- **Erweiterter Ressourcensatz** – Sie können die Größe der Data Map verringern, indem Sie partitionierte Dateien in einem Data Lake verarbeiten, so dass die Verarbeitung als einzelnes Datenobjekt, genannt [Resource Set](concept-resource-sets.md) (Ressourcensatz), erfolgt. Dies ist ein optionales Feature, das sich auf den Preis auswirkt.
 
 ## <a name="scenario"></a>Szenario
 
@@ -109,6 +107,16 @@ Basierend auf dem Verbrauch der Operationen pro Sekunde und des Metadatenspeiche
 
 >[!Important]
 >Purview Data Map kann innerhalb des Elastizitätsfensters automatisch hoch- und herunterskalieren ([überprüfen Sie aktuelle Einschränkungen](how-to-manage-quotas.md)). Um die nächste Elastizitätsfensterebene zu erhalten, muss ein Supportticket erstellt werden.
+
+## <a name="request-capacity"></a>Kapazität anfordern
+
+Wenn Sie mit sehr großen Datasets oder einer großen Umgebung arbeiten und eine höhere Kapazität benötigen, können Sie eine größere Kapazität des Elastizitätsfensters anfordern, indem Sie [ein Supportticket erstellen](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+
+Wählen Sie **Grenzwerte für Dienste und Abonnements (Kontingent)** aus, und befolgen Sie die Anweisungen auf dem Bildschirm, indem Sie das Purview-Konto auswählen, für das Sie eine größere Kapazität anfordern möchten.
+
+:::image type="content" source="./media/concept-elastic-data-map/increase-limit.png" alt-text="Bildschirm, der die Erstellung des Supportfalles mit aktivierten Optionen für die Erhöhung des Grenzwerts zeigt.":::
+
+Geben Sie in der Beschreibung so viele relevante Informationen wie möglich über Ihre Umgebung und die zusätzliche Kapazität an, die Sie anfordern möchten.
 
 ## <a name="summary"></a>Zusammenfassung
 

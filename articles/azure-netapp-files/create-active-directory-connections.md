@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 09/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 30b00320e9273ecb010239d66a3c056d3f95f332
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: aa47a6b9caaba4b23202390b0cb45a2392b985ea
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397693"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764399"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Erstellen und Verwalten von Active Directory-Verbindungen für Azure NetApp Files
 
@@ -120,6 +120,7 @@ Weitere Überlegungen zu Azure NetApp Files im Hinblick auf AADDS:
 * Azure NetApp Files unterstützt die Typen `user` und `resource forest`.
 * Für den Synchronisierungstyp können Sie `All` oder `Scoped` auswählen.   
     Wenn Sie `Scoped` auswählen, stellen Sie sicher, dass die richtige Azure AD-Gruppe für den Zugriff auf SMB-Freigaben ausgewählt ist.  Wenn Sie unsicher sind, können Sie den Synchronisierungstyp `All` verwenden.
+* Wenn Sie AADDS mit einem Dual-Protokoll-Volume verwenden, müssen Sie sich in einer benutzerdefinierten Organisationseinheit befinden, um POSIX-Attribute anwenden zu können. Details finden Sie unter [Verwalten von LDAP-POSIX-Attributen](create-volumes-dual-protocol.md#manage-ldap-posix-attributes).
 
 Beachten Sie beim Erstellen einer Active Directory-Verbindung die folgenden Besonderheiten für AADDS:
 
@@ -251,6 +252,29 @@ Diese Einstellung wird in **Active Directory-Verbindungen** unter **NetApp-Konto
         ```
         
         Sie können auch die [Azure CLI-Befehle](/cli/azure/feature) `az feature register` und `az feature show` verwenden, um das Feature zu registrieren und den Registrierungsstatus anzuzeigen.  
+
+    * **Administratoren** 
+
+        Sie können Benutzer oder Gruppen angeben, denen Administratorrechte auf dem Volume erteilt werden sollen. 
+
+        ![Screenshot des Felds „Administratoren“ im Fenster „Active Directory-Verbindungen“.](../media/azure-netapp-files/active-directory-administrators.png) 
+        
+        Das Feature **Administratoren** befindet sich derzeit in der Vorschauphase. Wenn Sie dieses Feature zum ersten Mal verwenden, registrieren Sie es vor der Verwendung: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAdAdministrators
+        ```
+
+        Überprüfen Sie den Status der Funktionsregistrierung: 
+
+        > [!NOTE]
+        > Der **RegistrationState** kann für bis zu 60 Minuten den Status `Registering` aufweisen, bevor der Wechsel in `Registered` erfolgt. Warten Sie, bis der Status `Registered` lautet, bevor Sie fortfahren.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAdAdministrators
+        ```
+        
+        Sie können auch die [Azure CLI-Befehle](/cli/azure/feature) `az feature register` und `az feature show` verwenden, um das Feature zu registrieren und den Registrierungsstatus anzuzeigen. 
 
     * Anmeldeinformationen, einschließlich **Benutzername** und **Kennwort**
 

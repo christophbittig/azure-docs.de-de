@@ -6,12 +6,12 @@ ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: a456db938d1607565525aea7ab2e9b43bc368aeb
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: d7c73473952bfec537cc26c9f50092a198afc1d5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343147"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614465"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 
@@ -187,7 +187,7 @@ Nachdem benutzerdefinierte Metriken an Azure Monitor übermittelt wurden, könne
 > Weitere Informationen zum Anzeigen von Metriken im Azure-Portal finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](./metrics-getting-started.md).
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
-Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Metriken zu veröffentlichen, nur in einigen Azure-Regionen verfügbar. Das bedeutet, dass Metriken nur für Ressourcen in einer der unterstützten Regionen veröffentlicht werden können. Weitere Informationen zu Azure-Regionen finden Sie unter [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/). Der Azure-Regionscode, der in den folgenden Endpunkten verwendet wird, ist nur der Name der Region mit entfernten Leerzeichen. In der folgenden Tabelle sind die unterstützten Azure-Regionen für benutzerdefinierte Metriken aufgeführt. Außerdem werden die zugehörigen Endpunkte aufgeführt, an denen Metriken für Ressourcen in diesen Regionen veröffentlicht werden sollten:
+Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Metriken zu veröffentlichen, nur in einigen Azure-Regionen verfügbar. Das bedeutet, dass Metriken nur für Ressourcen in einer der unterstützten Regionen veröffentlicht werden können. Weitere Informationen zu Azure-Regionen finden Sie unter [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/). Der Azure-Regionscode, der in den folgenden Endpunkten verwendet wird, ist nur der Name der Region mit entfernten Leerzeichen. Die folgende Tabelle enthält die unterstützten Azure-Regionen für benutzerdefinierte Metriken. Außerdem werden die zugehörigen Endpunkte aufgeführt, an denen Metriken für Ressourcen in diesen Regionen veröffentlicht werden sollten:
 
 |Azure-Region |Präfix des regionalen Endpunkts|
 |---|---|

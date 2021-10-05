@@ -4,27 +4,17 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei zu
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/16/2021
-ms.openlocfilehash: a83c0f442e88bc2fe0320fe8affe5b114a28a897
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/10/2021
+ms.openlocfilehash: 23d205f44b23b71f476f86d8d589f5d99a417a85
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314324"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827543"
 ---
 # <a name="resource-functions-for-bicep"></a>Ressourcenfunktionen für Bicep
 
-Resource Manager stellt die folgenden Funktionen zum Abrufen von Ressourcenwerten in Ihrer Bicep-Datei bereit:
-
-* [extensionResourceId](#extensionresourceid)
-* [getSecret](#getsecret)
-* [list*](#list)
-* [pickZones](#pickzones)
-* [providers (veraltet)](#providers)
-* [Referenz](#reference)
-* [Ressourcen-ID](#resourceid)
-* [subscriptionResourceId](#subscriptionresourceid)
-* [tenantResourceId](#tenantresourceid)
+In diesem Artikel werden die Bicep-Funktionen zum Abrufen von Ressourcenwerten beschrieben.
 
 Informationen zum Abrufen von Werten aus der aktuellen Bereitstellung finden Sie unter [Funktionen für Bereitstellungswerte](./bicep-functions-deployment.md).
 
@@ -122,7 +112,7 @@ Für den Schlüsseltresor muss `enabledForTemplateDeployment` auf `true` gesetzt
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | secretName | Ja | Zeichenfolge | Der Name des Geheimnisses, das in einem Schlüsseltresor gespeichert ist. |
 
@@ -182,11 +172,11 @@ Sie können eine Listenfunktion für jeden Ressourcentyp mit einem Vorgang aufru
 
 Die Syntax für diese Funktion variiert je nach dem Namen des Auflistungsvorgangs. Die zurückgegebenen Werte variieren auch je nach Vorgang. Bicep unterstützt derzeit keine Vervollständigungen und Validierungen für `list*`-Funktionen.
 
-**Ab Bicep-Version 0.4.412** rufen Sie die Listenfunktion mit dem [Accessor-Operator](operators-access.md#function-accessor) auf. Beispielsweise `stg.listKeys()`. 
+**Ab Bicep-Version 0.4.412** rufen Sie die Listenfunktion mit dem [Accessor-Operator](operators-access.md#function-accessor) auf. Beispiel: `stg.listKeys()`. 
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | apiVersion |Nein |Zeichenfolge |Wenn Sie diesen Parameter nicht angeben, wird die API-Version für die Ressource verwendet. Stellen Sie nur dann eine benutzerdefinierte API-Version bereit, wenn Sie die Funktion mit einer bestimmten Version ausführen müssen. Verwenden Sie das Format **jjjj-mm-tt**. |
 | functionValues |Nein |Objekt (object) | Ein Objekt, das über Werte für die Funktion verfügt. Geben Sie dieses Objekt nur für Funktionen an, die den Empfang eines Objekts mit Parameterwerten unterstützen – z.B. **listAccountSas** für ein Speicherkonto. Ein Beispiel für die Übergabe von Funktionswerten wird in diesem Artikel gezeigt. |
@@ -423,7 +413,7 @@ Bestimmt, ob ein Ressourcentyp Zonen für eine Region unterstützt.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | Ja | Zeichenfolge | Der Ressourcenanbieternamespace für den Ressourcentyp, der auf Zonenunterstützung überprüft werden soll. |
 | resourceType | Ja | Zeichenfolge | Der Ressourcentyp, der auf Zonenunterstützung überprüft werden soll. |
@@ -470,7 +460,7 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 Die Ausgabe aus den vorherigen Beispielen gibt drei Arrays zurück.
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | Unterstützt | array | [ "1" ] |
 | notSupportedRegion | array | [] |
@@ -666,6 +656,5 @@ resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-0
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer Bicep-Datei finden Sie unter [Grundlegendes zur Struktur und Syntax von Bicep-Dateien](./file.md).
+* Informationen zum Abrufen von Werten aus der aktuellen Bereitstellung finden Sie unter [Funktionen für Bereitstellungswerte](./bicep-functions-deployment.md).
 * Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Bereitstellen mehrerer Instanzen von Ressourcen in Bicep](./loop-resources.md).
-* Informationen zum Bereitstellen der von Ihnen erstellten Bicep-Datei finden Sie unter [Bereitstellen von Ressourcen mit Bicep und Azure PowerShell](./deploy-powershell.md).

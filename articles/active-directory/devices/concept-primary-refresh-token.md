@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 09/13/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29b000ee3231361ccdca4c2909e093cdaef6bc04
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: cf76e5ffc7b3eabae7366805ed1a87d262854992
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866517"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630108"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Was ist ein primäres Aktualisierungstoken (Primary Refresh Token, PRT)?
 
@@ -69,14 +69,14 @@ In Szenarien für in Azure AD registrierte Geräte ist das Azure AD-WAM-Plug-I
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>Welche Lebensdauer hat ein PRT?
 
-Nach der Ausstellung ist ein PRT 14 Tage lang gültig und wird fortlaufend verlängert, solange das Gerät vom Benutzer aktiv genutzt wird.  
+Nach der Ausstellung ist ein PRT 90 Tage lang gültig und wird fortlaufend verlängert, solange das Gerät vom Benutzer aktiv genutzt wird.  
 
 ## <a name="how-is-a-prt-used"></a>Wie wird ein PRT verwendet?
 
 Ein PRT wird in Windows von zwei wichtigen Komponenten verwendet:
 
 * **Azure AD-CloudAP-Plug-In**: Während der Windows-Anmeldung fordert das Azure AD-CloudAP-Plug-In ein PRT von Azure AD an, indem die vom Benutzer bereitgestellten Anmeldeinformationen verwendet werden. Darüber hinaus wird das PRT hierbei zwischengespeichert, um die Nutzung der zwischengespeicherten Anmeldung zu ermöglichen, wenn der Benutzer keinen Zugriff auf eine Internetverbindung hat.
-* **Azure AD-WAM-Plug-In**: Wenn Benutzer versuchen, auf Anwendungen zuzugreifen, wird das PRT vom Azure AD-WAM-Plug-In genutzt, um SSO unter Windows 10 zu ermöglichen. Das Azure AD-WAM-Plug-In nutzt das PRT, um Aktualisierungs- und Zugriffstoken für Anwendungen anzufordern, für die WAM für Tokenanforderungen verwendet wird. Außerdem wird hiermit SSO in Browsern ermöglicht, indem das PRT in Browseranforderungen eingefügt wird. SSO für Browser unter Windows 10 wird für Microsoft Edge (nativ), Chrome (über die [Windows 10-Konten](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) oder die [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en)-Erweiterungen) und Mozilla Firefox ab Version 91 (über [Windows-SSO-Einstellungen](https://support.mozilla.org/en-US/kb/windows-sso)) unterstützt.
+* **Azure AD-WAM-Plug-In**: Wenn Benutzer versuchen, auf Anwendungen zuzugreifen, wird das PRT vom Azure AD-WAM-Plug-In genutzt, um SSO unter Windows 10 zu ermöglichen. Das Azure AD-WAM-Plug-In nutzt das PRT, um Aktualisierungs- und Zugriffstoken für Anwendungen anzufordern, für die WAM für Tokenanforderungen verwendet wird. Außerdem wird hiermit SSO in Browsern ermöglicht, indem das PRT in Browseranforderungen eingefügt wird. SSO für Browser unter Windows 10 wird für Microsoft Edge (nativ), Chrome (über die [Windows 10-Konten](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) oder die [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en)-Erweiterungen) und Mozilla Firefox ab Version 91 (Firefox [Windows-SSO-Einstellungen](https://support.mozilla.org/kb/windows-sso)) unterstützt
 
 ## <a name="how-is-a-prt-renewed"></a>Wie wird ein PRT verlängert?
 

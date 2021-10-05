@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 03/11/2021
-ms.openlocfilehash: e4dd54ef01cf93ffa0bb47d4bbdccb1d14695934
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 787a0e4990988f35ca8e2c98eab1d9c77bea9c1b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434949"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576333"
 ---
 # <a name="tutorial-create-a-serverless-real-time-chat-app-with-azure-functions-and-azure-web-pubsub-service"></a>Tutorial: Erstellen einer serverlosen Echtzeit-Chat-App mit Azure Functions und dem Azure Web PubSub-Dienst
 
@@ -151,7 +151,7 @@ In diesem Tutorial lernen Sie Folgendes:
     func new -n negotiate -t HttpTrigger
     ```
     > [!NOTE]
-    > In diesem Beispiel wird der [AAD](/azure/app-service/configure-authentication-user-identities)-Header der Benutzeridentität `x-ms-client-principal-name` zum Abrufen von `userId` verwendet. Dies funktioniert in einer lokalen Funktion nicht. Sie können ihn leer lassen oder auf andere Weise ändern, um `userId` abzurufen oder zu generieren, wenn Sie lokal agieren. Lassen Sie den Client z. B. einen Benutzernamen eingeben und ihn in einer Abfrage wie `?user={$username}` übergeben, wenn Sie die `negotiate`-Funktion aufrufen, um die URL für die Verbindung mit dem Dienst zu erhalten. Legen Sie in der `negotiate`-Funktion `userId` auf den Wert `{query.user}` fest.
+    > In diesem Beispiel wird der [AAD](../app-service/configure-authentication-user-identities.md)-Header der Benutzeridentität `x-ms-client-principal-name` zum Abrufen von `userId` verwendet. Dies funktioniert in einer lokalen Funktion nicht. Sie können ihn leer lassen oder auf andere Weise ändern, um `userId` abzurufen oder zu generieren, wenn Sie lokal agieren. Lassen Sie den Client z. B. einen Benutzernamen eingeben und ihn in einer Abfrage wie `?user={$username}` übergeben, wenn Sie die `negotiate`-Funktion aufrufen, um die URL für die Verbindung mit dem Dienst zu erhalten. Legen Sie in der `negotiate`-Funktion `userId` auf den Wert `{query.user}` fest.
     
     # <a name="javascript"></a>[JavaScript](#tab/javascript)
    - Aktualisieren Sie `negotiate/function.json` und kopieren Sie den folgenden JSON-Code.
@@ -374,14 +374,14 @@ Use the following commands to create these items.
 
 1. Stellen Sie das Funktionsprojekts in Azure bereit:
 
-    Nachdem Sie Ihre Funktions-App in Azure erfolgreich erstellt haben, können Sie nun Ihr lokales Funktionsprojekt bereitstellen, indem Sie den Befehl [func azure functionapp publish](/azure-functions/functions-run-local) verwenden.
+    Nachdem Sie Ihre Funktions-App in Azure erfolgreich erstellt haben, können Sie nun Ihr lokales Funktionsprojekt bereitstellen, indem Sie den Befehl [func azure functionapp publish](./../azure-functions/functions-run-local.md) verwenden.
 
     ```bash
-    func azure functionapp publish <FUNCIONAPP_NAME> --publish-local-settings
+    func azure functionapp publish <FUNCIONAPP_NAME>
     ```
+1. Konfigurieren Sie `WebPubSubConnectionString` für die Funktions-App:
 
-    > [!NOTE]
-    > Hier werden die lokalen Einstellungen von `local.settings.json` zusammen mit dem Befehlsparameter `--publish-local-settings` bereitgestellt. Wenn Sie den Microsoft Azure-Speicheremulator verwenden, können Sie `no` für die folgende Eingabeaufforderung eingeben, damit dieser Wert in Azure nicht überschrieben wird: `App setting AzureWebJobsStorage is different between azure and local.settings.json, Would you like to overwrite value in azure? [yes/no/show]`. Darüber hinaus können Sie die Einstellungen für die Funktions-App in **Azure-Portal** ->  **Einstellungen** -> **Aktualisieren** aktualisieren.
+   Suchen Sie zuerst Ihre Web PubSub-Ressource im **Azure-Portal**, und kopieren Sie die Verbindungszeichenfolge unter **Schlüssel**. Darüber hinaus können Sie die Einstellungen für die Funktions-App in **Azure-Portal** -> **Einstellungen** -> **Aktualisieren** aktualisieren. Fügen Sie unter **Anwendungseinstellungen** ein neues Element mit dem Namen und dem Wert `WebPubSubConnectionString` ihrer Web PubSub-Ressourcenverbindungszeichenfolge hinzu.
 
 ## <a name="configure-the-web-pubsub-service-event-handler"></a>Konfigurieren des Web PubSub-Diensts `Event Handler`
 
@@ -409,10 +409,10 @@ Wechseln Sie zum **Azure-Portal**. Wählen Sie Ihre Funktions-App-Ressource und 
 
 Hier wählen wir `Microsoft` als Bezeichner des Anbieters, der `x-ms-client-principal-name` als `userId` in der `negotiate`-Funktion verwendet. Sie können auch andere Identitätsanbieter konfigurieren, indem Sie den unten stehenden Links folgen. Vergessen Sie nicht, den Wert `userId` in der `negotiate`-Funktion entsprechend zu aktualisieren.
 
-* [Microsoft (Azure AD)](/azure/app-service/configure-authentication-provider-aad)
-* [Facebook](/azure/app-service/configure-authentication-provider-facebook)
-* [Google](/azure/app-service/configure-authentication-provider-google)
-* [Twitter](/azure/app-service/configure-authentication-provider-twitter)
+* [Microsoft (Azure AD)](../app-service/configure-authentication-provider-aad.md)
+* [Facebook](../app-service/configure-authentication-provider-facebook.md)
+* [Google](../app-service/configure-authentication-provider-google.md)
+* [Twitter](../app-service/configure-authentication-provider-twitter.md)
 
 ## <a name="try-the-application"></a>Testen der Anwendung
 

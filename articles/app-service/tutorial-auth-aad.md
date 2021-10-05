@@ -4,15 +4,15 @@ description: Hier wird beschrieben, wie Sie mit App Service-Authentifizierung u
 keywords: App Service, Azure App Service, AuthN, AuthZ, sicher, Sicherheit, mehrstufig, Azure Active Directory, Azure AD
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/26/2021
+ms.date: 09/23/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4b5244766769255a74becaa7c8893db45532dc4f
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 0c07d17269911043c71fc0d89a5a290f053e39a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227125"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639734"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -260,13 +260,7 @@ Sie verwenden Azure Active Directory als Identitätsanbieter. Weitere Informatio
 
 1. Wählen Sie auf der Seite **Identitäts Anbieter hinzufügen die Option** **Microsoft** als **Identitäts Anbieter** aus, um Microsoft-und Azure AD Identitäten anzumelden.
 
-1. Wählen Sie für **App** Registration App Registration  >  **Type** die Option **Create New App Registration** aus.
-
-1. Wählen Sie für die **App-Registrierung**  >  **unterstützte Konto Typen** die Option **Aktueller Mandant-einzelner** Mandant aus.
-
-1. Belassen Sie im Abschnitt "Einstellungen für die **App Service Authentifizierung** " die **Einstellung Authentifizierung** **erforderlich**, und **nicht authentifizierte Anforderungen** auf **HTTP 302-Umleitung finden: empfohlen für Websites**.
-
-1. Klicken Sie am unteren Rand der Seite **Identitäts Anbieter hinzufügen** auf **Hinzufügen**, um die Authentifizierung für Ihre Web-App zu aktivieren.
+1. Übernehmen Sie die Standardeinstellungen, und wählen Sie **OK** aus:
 
     :::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="Screenshot: linkes Menü der Back-End-App mit der ausgewählten Option „Authentifizierung/Autorisierung“ und im rechten Menü ausgewählten Einstellungen":::
 
@@ -278,7 +272,7 @@ Wenn Sie den Vorgang hier abbrechen, verfügen Sie über eine eigenständige App
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>Aktivieren der Authentifizierung und Autorisierung für die Front-End-App
 
-Führen Sie die gleichen Schritte für die Front-End-App aus, aber lassen Sie den letzten Schritt weg. Für die Front-End-App ist die Client-ID nicht erforderlich.
+Führen Sie die gleichen Schritte für die Front-End-App aus, aber lassen Sie den letzten Schritt weg. Für die Front-End-App ist die Client-ID nicht erforderlich. Bleiben Sie jedoch auf der Seite **Authentifizierung** für die Front-End-App, da Sie sie im nächsten Schritt verwenden werden.
 
 Wenn Sie möchten, können Sie zu `http://<front-end-app-name>.azurewebsites.net` navigieren. Sie sollten auf eine sichere Anmeldeseite geleitet werden. Nachdem Sie sich angemeldet haben, *können Sie über die Back-End-App immer noch nicht auf die Daten zugreifen*, da für die Back-End-App nun die Azure Active Directory-Anmeldung über die Front-End-App erforderlich ist. Sie müssen drei Schritte ausführen:
 
@@ -293,13 +287,9 @@ Wenn Sie möchten, können Sie zu `http://<front-end-app-name>.azurewebsites.net
 
 Nachdem Sie die Authentifizierung und Autorisierung für beide Apps aktiviert haben, verfügen beide über Unterstützung durch eine AD-Anwendung. In diesem Schritt gewähren Sie für die Front-End-App Berechtigungen zum Zugreifen auf das Back-End im Namen des Benutzers. (In technischer Hinsicht erteilen Sie der _AD-Anwendung_ des Front-Ends die Berechtigungen zum Zugreifen auf die _AD-Anwendung_ des Back-Ends im Namen des Benutzers.)
 
-1. Wählen Sie im Menü [Azure-Portal](https://portal.azure.com) die Option **Azure Active Directory** aus. Sie können auch auf einer beliebigen Seite *Azure Active Directory* suchen und auswählen.
+1. Wählen Sie auf der Seite **Authentifizierung** für die Front-End-App unter **Identitätsanbieter** den Namen Ihrer Front-End-App aus. Diese App-Registrierung wurde automatisch für Sie generiert. Wählen Sie im linken Menü **API-Berechtigungen** aus.
 
-1. Wählen Sie **App-Registrierungen** > **Anwendungen mit Besitzer** > **Alle Anwendungen im Verzeichnis anzeigen** aus. Wählen Sie den Namen Ihrer Front-End-App aus und dann **API-Berechtigungen** aus.
-
-    :::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="Screenshot: Fenster „Microsoft – App-Registrierungen“ mit den ausgewählten Optionen „Anwendungen mit Besitzer“ und „API-Berechtigungen“ sowie dem ausgewählten Namen der Front-End-App":::
-
-1. Wählen Sie **Berechtigung hinzufügen** und anschließend **Von meiner Organisation verwendete APIs** >  **\<back-end-app-name>** aus.
+1. Wählen Sie die Option **Berechtigung hinzufügen** und dann **Meine APIs** >  **\<back-end-app-name>** .
 
 1. Wählen Sie auf der Seite **API-Berechtigungen anfordern** für die Back-End-App **Delegierte Berechtigungen** und **user_impersonation** und anschließend **Berechtigungen hinzufügen** aus.
 
@@ -315,18 +305,35 @@ Die Front-End-App verfügt jetzt über die erforderlichen Berechtigungen für de
 
     :::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="Screenshot: Schaltflächen „Schreibgeschützt“ und „Lesen/Schreiben“ oben auf der Seite des Azure-Ressourcen-Explorers mit der ausgewählten Schaltfläche „Lesen/Schreiben“":::
 
-1. Führen Sie im Browser links einen Drilldown für **config** > **authsettings** aus.
+1. Führen Sie im Browser links einen Drilldown für **config** > **authsettingsV2** aus.
 
-1. Klicken Sie in der Ansicht **authsettings** auf **Bearbeiten**. Legen Sie `additionalLoginParams` auf die folgende JSON-Zeichenfolge fest, indem Sie die kopierte Client-ID verwenden. 
+1. Klicken Sie in der Ansicht **authsettingsV2** auf **Bearbeiten**. Gehen Sie zu `properties.identityProviders.azureActiveDirectory.login` und fügen Sie `loginParameters` mit der folgenden JSON-Zeichenfolge hinzu, indem Sie die kopierte Client-ID verwenden. 
 
     ```json
-    "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
+    "loginParameters": ["response_type=code id_token","scope=openid api://<back-end-client-id>/user_impersonation"],
     ```
 
-    :::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="Screenshot: Codebeispiel in der Ansicht „authsettings“ mit der Zeichenfolge „additionalLoginParams“ und einem Beispiel einer Client-ID":::
+    :::image type="content" source="./media/tutorial-auth-aad/add-loginparameters.png" alt-text="Screenshot: Codebeispiel in der Ansicht „authsettingsV2“ mit der Zeichenfolge „additionalLoginParams“ und einem Beispiel einer Client-ID":::
+
+    > [!TIP]
+    > Der Bereich `api://<back-end-client-id>/user_impersonation` wird standardmäßig der App-Registrierung für die Back-End-App hinzugefügt. Um es im Azure-Portal anzuzeigen, wechseln Sie zur Seite **Authentifizierung** für die Back-End-App, klicken Sie auf den Link unter **Identitätsanbieter**, und klicken Sie dann im linken Menü auf **API verfügbar machen**.
+    >
+    > Beachten Sie, dass für den Bereich die Zustimmung des Administrators oder Benutzers erforderlich ist. Diese Anforderung bewirkt, dass die Zustimmungsanforderungsseite angezeigt wird, wenn sich ein Benutzer bei der Front-End-App im Browser anknappt. Um diese Zustimmungsseite zu vermeiden, fügen Sie die App-Registrierung des Front-End als autorisierte Clientanwendung auf der Seite **API verfügbar machen** hinzu, indem Sie auf **Clientanwendung** hinzufügen klicken und die Client-ID der App-Registrierung des Front-Ends übergeben.
 
 1. Speichern Sie Ihre Einstellungen, indem Sie auf **PUT** klicken.
 
+    ::: zone pivot="platform-linux"
+    
+    > [!NOTE]
+    > Für Linux-Apps ist es vorübergehend erforderlich, eine Einstellung für die Versionseinstellungen für die Back-End-App-Registrierung zu konfigurieren. Konfigurieren Sie Cloud Shell mit den folgenden Befehlen. Achten Sie darauf, dass *\<back-end-client-id>* Sie durch die Client-ID Ihres Back-End ersetzen.
+    >
+    > ```azurecli-interactive
+    > id=$(az ad app show --id <back-end-client-id> --query objectId --output tsv)
+    > az rest --method PATCH --url https://graph.microsoft.com/v1.0/applications/$id --body "{'api':{'requestedAccessTokenVersion':2}}" 
+    > ```    
+
+    ::: zone-end
+    
     Ihre Apps sind nun konfiguriert. Das Front-End kann jetzt mit einem geeigneten Zugriffstoken auf das Back-End zugreifen.
 
 Informationen dazu, wie Sie das Zugriffstoken für andere Anbieter konfigurieren, finden Sie unter [Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service](configure-authentication-oauth-tokens.md#refresh-auth-tokens).

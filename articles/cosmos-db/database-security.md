@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Azure Cosmos DB Datenbankschutz und Datensicherhe
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/16/2021
 ms.author: mjbrown
-ms.openlocfilehash: 53e6ef24ba7f9df42ce15d62d11cf4f455825caa
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 818c380d1ec2b3d7095eccec94b8e6f324cb45d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439432"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615003"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Sicherheit bei Azure Cosmos DB – Übersicht
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -99,7 +99,7 @@ Primäre/sekundäre Schlüssel sind in zwei Versionen verfügbar: mit Lese-/Schr
 
 ### <a name="key-rotation-and-regeneration"></a><a id="key-rotation"></a> Schlüsselrotation und Neugenerierung
 
-Der Prozess der Schlüsselrotation und -neugenerierung ist einfach. Stellen Sie zunächst sicher, dass **Ihre Anwendung konsistent entweder den Primärschlüssel oder den Sekundärschlüssel** verwendet, um auf Ihr Azure Cosmos DB-Konto zuzugreifen. Führen Sie dann die unten beschriebenen Schritte aus.
+Der Prozess der Schlüsselrotation und -neugenerierung ist einfach. Stellen Sie zunächst sicher, dass **Ihre Anwendung konsistent entweder den Primärschlüssel oder den Sekundärschlüssel** verwendet, um auf Ihr Azure Cosmos DB-Konto zuzugreifen. Führen Sie dann die unten beschriebenen Schritte aus. Informationen zum Überwachen Ihres Kontos auf wichtige Updates und zur Neugenerierung von Schlüsseln finden Sie im Artikel [Überwachen von Schlüsselupdates mit Metriken und Warnungen](monitor-account-key-updates.md).
 
 # <a name="sql-api"></a>[SQL-API](#tab/sql-api)
 
@@ -272,6 +272,21 @@ Der Prozess der Schlüsselrotation und -neugenerierung ist einfach. Stellen Sie 
     :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="Ein Screenshot, der zeigt, wie der Sekundärschlüssel im Azure-Portal neu generiert wird" border="true":::
 
 ---
+
+## <a name="track-the-status-of-key-regeneration"></a>Nachverfolgen des Status der Schlüsselerneuerung
+
+Nachdem Sie einen Schlüssel rotiert oder neu generiert haben, können Sie den Status des Schlüssels über das Aktivitätsprotokoll nachverfolgen. Gehen Sie folgendermaßen vor, um den Status nachzuverfolgen:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrem Azure Cosmos DB-Konto.
+
+1. Öffnen Sie den Bereich **Aktivitätsprotokoll** und legen Sie die folgenden Filter fest:
+
+   * Wählen Sie als **Ressourcentyp** die Option **Azure Cosmos DB-Konten** aus.
+   * Legen Sie **Operation** auf **Schlüssel rotieren** fest.
+
+   :::image type="content" source="./media/database-security/track-key-regeneration-status.png" alt-text="Status der Schlüsselerneuerung aus dem Aktivitätsprotokoll" border="true":::
+
+1. Sie sollten die wichtigsten Ereignisse für die neu Gewinnung zusammen mit ihrem Status, dem Zeitpunkt, zu dem der Vorgang ausgegeben wurde, sowie Details des Benutzers sehen, der die Schlüsselerneuerung initiiert hat. Der Schlüsselgenerierungsvorgang wird mit dem Status **Akzeptiert** initiiert und ändert sich erst in **Gestartet** und dann in **Erfolgreich** , wenn der Vorgang abgeschlossen ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,15 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2568fc2ea133a0cdd49e0a2577ce1e580056a74c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8dc93266244c6dd806d7ab7457893d6d2c89ce13
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783131"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637646"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
@@ -60,7 +61,7 @@ Sie können auch benutzerdefinierte.NET-Aktivitäten erstellen, um Daten mit Ihr
 
 Das Diagramm veranschaulicht, wie Data Factory die Datenverschiebung und -verarbeitung orchestriert. Es zeigt auch, wie Batch die Daten parallel verarbeitet. Laden Sie zum einfachen Nachschlagen das Diagramm herunter, und drucken Sie es (im A3-Format) aus. Informationen zum Zugriff auf das Diagramm und zu seinem Ausdruck finden Sie unter [HPC und Datenorchestrierung mit Batch und Data Factory](https://go.microsoft.com/fwlink/?LinkId=717686).
 
-[![Diagramm der Verarbeitung großer Datenmengen](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
+[:::image type="content" alt-text="Diagramm der Verarbeitung großer Datenmengen." source="./media/data-factory-data-processing-using-batch/large-scale-data-processing-diagram.png":::
 
 Die folgende Liste enthält die grundlegenden Schritte des Prozesses. Die Lösung enthält Code und Erklärungen zum Erstellen der End-to-End-Lösung.
 
@@ -125,7 +126,7 @@ Sie verwenden [Azure Storage-Explorer 6](https://azurestorageexplorer.codeplex.c
 
 1. Wenn Sie CloudXplorer verwenden, erstellen Sie Ordner und Unterordner mit der folgenden Struktur:
 
-   ![Ordner- und Unterordnerstruktur](./media/data-factory-data-processing-using-batch/image3.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image3.png" alt-text="Ordner- und Unterordnerstruktur":::
 
    `Inputfolder`und `outputfolder` sind in `mycontainer` Ordner der obersten Ebene. Der Ordner `inputfolder` enthält Unterordner mit Datums-/Uhrzeitstempeln (JJJJ-MM-TT-HH).
 
@@ -135,7 +136,7 @@ Sie verwenden [Azure Storage-Explorer 6](https://azurestorageexplorer.codeplex.c
 
 1. Laden Sie die Datei in die folgenden Eingangsordner in Blob Storage hoch:
 
-   ![Eingabeordner](./media/data-factory-data-processing-using-batch/image4.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image4.png" alt-text="Eingabeordner":::
 
    Wenn Sie Storage-Explorer verwenden, laden Sie die Datei **file.txt** in **mycontainer** hoch. Klicken Sie auf der Symbolleiste auf **Kopieren**, um eine Kopie des Blobs zu erstellen. Ändern Sie im Dialogfeld **Blob kopieren** den **Namen des Zielblobs** in `inputfolder/2015-11-16-00/file.txt`. Wiederholen Sie diesen Schritt zum Erstellen von `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt` usw. Mit dieser Aktion werden die Ordner automatisch erstellt.
 
@@ -397,7 +398,7 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen:
 
 1. Erstellen Sie die ZIP-Datei **MyDotNetActivity.zip**, die alle Binärdateien im Ordner **\\bin\\Debug** enthält. Sie möchten ggf. die Datei „MyDotNetActivity.**pdb**“ einbeziehen, damit Sie zusätzliche Details wie z.B. die Zeilennummer im Quellcode erhalten, der das Problem bei einem Fehler verursacht hat.
 
-   ![Die Ordnerliste „bin\Debug“](./media/data-factory-data-processing-using-batch/image5.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image5.png" alt-text="Die Ordnerliste „bin\Debug“":::
 
 1. Laden Sie **MyDotNetActivity.zip** als Blob in den Blobcontainer `customactivitycontainer` in den Blob Storage hoch, den der verknüpfte Dienst „StorageLinkedService“ in „ADFTutorialDataFactory“ verwendet. Erstellen Sie den Blobcontainer `customactivitycontainer`, falls noch nicht vorhanden.
 
@@ -541,7 +542,7 @@ Die folgende exemplarische Vorgehensweise enthält weitere Details.
 
 1. Nachdem die Data Factory erfolgreich erstellt wurde, wird die Seite **Data Factory** mit dem Inhalt der Data Factory angezeigt.
 
-   ![Seite „Data Factory“](./media/data-factory-data-processing-using-batch/image6.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image6.png" alt-text="Seite „Data Factory“":::
 
 #### <a name="step-2-create-linked-services"></a>Schritt 2: Erstellen von verknüpften Diensten
 Verknüpfte Dienste verknüpfen Datenspeicher oder Computedienste mit einer Data Factory. In diesem Schritt verknüpfen Sie Ihr Speicherkonto und Batch-Konto mit Ihrer Data Factory.
@@ -551,13 +552,13 @@ Verknüpfte Dienste verknüpfen Datenspeicher oder Computedienste mit einer Data
 
 1. Klicken Sie auf der Befehlsleiste auf **Neuer Datenspeicher**, und wählen Sie **Azure Storage**. Das JSON-Skript, mit dem Sie einen mit Azure Storage verknüpften Dienst im Editor erstellen, wird angezeigt.
 
-   ![Neuer Datenspeicher](./media/data-factory-data-processing-using-batch/image7.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image7.png" alt-text="Neuer Datenspeicher":::
 
 1. Ersetzen Sie **account name** durch den Namen Ihres Speicherkontos. Ersetzen Sie **account key** durch den Zugriffsschlüssel Ihres Speicherkontos. Weitere Informationen zum Abrufen der Speicherzugriffsschlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../../storage/common/storage-account-keys-manage.md).
 
 1. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen.
 
-   ![Bereitstellen](./media/data-factory-data-processing-using-batch/image8.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image8.png" alt-text="Bereitstellen":::
 
 #### <a name="create-an-azure-batch-linked-service"></a>Verwenden eines mit Azure Batch verknüpften Diensts
 In diesem Schritt erstellen Sie für Ihr Batch-Konto einen verknüpften Dienst, der zum Ausführen der benutzerdefinierten Data Factory-Aktivität verwendet wird.
@@ -577,7 +578,7 @@ In diesem Schritt erstellen Sie für Ihr Batch-Konto einen verknüpften Dienst, 
       > [!IMPORTANT]
       > Die URL auf dem Blatt **Batch-Konto** hat das folgende Format: `<accountname>.<region>.batch.azure.com`. Für die `batchUri`-Eigenschaft im JSON-Skript müssen Sie `<accountname>.` aus der URL entfernen. z. B. `"batchUri": "https://eastus.batch.azure.com"`.
 
-      ![Blatt „Batch-Konto“](./media/data-factory-data-processing-using-batch/image9.png)
+      :::image type="content" source="./media/data-factory-data-processing-using-batch/image9.png" alt-text="Blatt „Batch-Konto“":::
 
       Für die **poolName**-Eigenschaft können Sie auch die ID des Pools anstelle des Namens des Pools angeben.
 
@@ -805,27 +806,27 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 
 1. Klicken Sie im Azure-Portal auf dem Blatt **Data Factory** auf **Diagramm**.
 
-   ![Diagramm](./media/data-factory-data-processing-using-batch/image10.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image10.png" alt-text="Diagramm":::
 
 1. Doppelklicken Sie in der Ansicht **Diagramm** auf das Eingabedataset **inputDataset**.
 
-   ![InputDataset](./media/data-factory-data-processing-using-batch/image11.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image11.png" alt-text="InputDataset":::
 
 1. Das Blatt **InputDataset** mit allen fünf bereiten Slices. Beachten Sie die **SLICE STARTZEIT** und **SLICE-ENDZEIT** für jeden Slice.
 
-   ![Start- und Endzeiten für Eingabeslices](./media/data-factory-data-processing-using-batch/image12.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image12.png" alt-text="Start- und Endzeiten für Eingabeslices":::
 
 1. Klicken Sie in der Ansicht **Diagramm** auf **OutputDataset**.
 
 1. Die fünf Ausgabeslices werden mit dem Status **Bereit** angezeigt, wenn sie erstellt wurden.
 
-   ![Start- und Endzeiten für Ausgabeslices](./media/data-factory-data-processing-using-batch/image13.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image13.png" alt-text="Start- und Endzeiten für Ausgabeslices":::
 
 1. Verwenden Sie das Portal, um die den Slices zugeordneten Tasks anzuzeigen und zu ermitteln, auf welchem virtuellen Computer die Slices jeweils ausgeführt wurden. Ausführliche Informationen finden Sie im Abschnitt [Integration von Data Factory und Batch](#data-factory-and-batch-integration).
 
 1. Die Ausgabedateien werden unter `mycontainer` in `outputfolder` in Ihrem Blob Storage angezeigt.
 
-   ![Ausgabedateien in Azure Storage](./media/data-factory-data-processing-using-batch/image15.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image15.png" alt-text="Ausgabedateien in Azure Storage":::
 
    Fünf Ausgabedateien (eine für jeden Eingabeslice) werden angezeigt. Jede Ausgabedatei weist ähnlichen Inhalt wie die folgende Ausgabe auf:
 
@@ -834,7 +835,7 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
     ```
    Das folgende Diagramm veranschaulicht, wie die Data Factory-Slices den Tasks in Batch zugeordnet werden. In diesem Beispiel wird ein Slice nur einmal ausgeführt.
 
-   ![Diagramm der Slicezuordnung](./media/data-factory-data-processing-using-batch/image16.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image16.png" alt-text="Diagramm der Slicezuordnung":::
 
 1. Testen Sie nun mehrere Dateien in einem Ordner. Erstellen Sie die Dateien **file2.txt**, **file3.txt**, **file4.txt** und **file5.txt** mit dem gleichen Inhalt wie „file.txt“ im Ordner **2015-11-06-01**.
 
@@ -842,7 +843,7 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 
 1. Klicken Sie auf dem Blatt **OutputDataset** mit der rechten Maustaste auf den Slice, für den die **SLICE-STARTZEIT** auf **11/16/2015 01:00:00 Uhr** festgelegt ist. Klicken Sie auf **Ausführen**, um den Slice erneut auszuführen/zu verarbeiten. Der Slice verfügt jetzt über fünf Dateien statt einer.
 
-    ![Ausführen](./media/data-factory-data-processing-using-batch/image17.png)
+    :::image type="content" source="./media/data-factory-data-processing-using-batch/image17.png" alt-text="Run":::
 
 1. Wenn der Slice ausgeführt wird und der Status **Bereit** lautet, überprüfen Sie den Inhalt der Ausgabedatei für diesen Slice (**2015-11-16-01.txt**). Die Ausgabedatei wird unter `mycontainer` in `outputfolder` in Ihrem Blob Storage angezeigt. Für jede Datei des Slice sollte eine Zeile vorhanden sein.
 
@@ -862,7 +863,7 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 #### <a name="data-factory-and-batch-integration"></a>Integration von Data Factory und Batch
 Der Data Factory-Dienst erstellt in Batch einen Auftrag mit dem Namen `adf-poolname:job-xxx`.
 
-![Batch-Aufträge](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
+:::image type="content" source="media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png" alt-text="Batch-Aufträge":::
 
 Bei jeder Aktivitätsausführung eines Slices wird eine Aufgabe im Auftrag erstellt. Wenn zehn Slices zur Verarbeitung bereitstehen, werden zehn Tasks im Auftrag erstellt. Sie können mehrere Slices parallel ausführen, wenn Sie über mehrere Compute-Knoten im Pool verfügen. Wenn die maximale Anzahl der Tasks pro Computeknoten auf mehr als 1 festgelegt ist, können mehrere Slices auf dem gleichen Computeknoten ausgeführt werden.
 
@@ -870,14 +871,14 @@ Dieses Beispiel umfasst fünf Slices, also fünf Tasks in Batch. Wenn die **conc
 
 Verwenden Sie das Portal, um den Batch-Auftrag und die den Slices zugeordneten Tasks anzuzeigen und zu ermitteln, auf welchem virtuellen Computer die Slices jeweils ausgeführt wurden.
 
-![Tasks im Batch-Auftrag](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
+:::image type="content" source="media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png" alt-text="Tasks im Batch-Auftrag":::
 
 ### <a name="debug-the-pipeline"></a>Debuggen der Pipeline
 Das Debuggen umfasst einige grundlegende Verfahren.
 
 1. Wenn der Eingabeslice nicht auf **Bereit** festgelegt ist, stellen Sie sicher, dass die Struktur des Eingabeordners ordnungsgemäß und die Datei „file.txt“ im Eingabeordner vorhanden ist.
 
-   ![Eingabeordnerstruktur](./media/data-factory-data-processing-using-batch/image3.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image3.png" alt-text="Eingabeordnerstruktur":::
 
 1. Verwenden Sie in der **Execute-Method** e der benutzerdefinierten Aktivität das **IActivityLogger-Objekt**, um Informationen zu protokollieren, die beim Behandeln von Problemen hilfreich sind. Die protokollierten Nachrichten werden in der Datei \_user_0.log angezeigt.
 
@@ -885,11 +886,11 @@ Das Debuggen umfasst einige grundlegende Verfahren.
 
    Wenn Sie auf die Aktivitätsausführung klicken, wird das Blatt **Aktivitätsausführung – Details** mit einer Protokolldateienliste angezeigt. Protokollierte Nachrichten werden in der Datei „user\_0.log“ angezeigt. Tritt ein Fehler auf, werden drei Aktivitätsausführungen angezeigt, da die Anzahl von Wiederholungsversuchen in der Pipeline oder Aktivitäts-JSON auf „3“ festgelegt ist. Wenn Sie die Aktivitätsausführung auswählen, werden die Protokolldateien angezeigt, die Sie zum Behandeln von Fehlern überprüfen können.
 
-   ![Blätter „OutputDataset“ und „Datenslice“](./media/data-factory-data-processing-using-batch/image18.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image18.png" alt-text="Blätter „OutputDataset“ und „Datenslice“":::
 
    Wählen Sie in der Liste der Protokolldateien **user-0.log** aus. Im rechten Bereich werden die Ergebnisse der Verwendung der **IActivityLogger.Write** -Methode angezeigt.
 
-   ![Blatt „Aktivitätsausführung – Details“](./media/data-factory-data-processing-using-batch/image19.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image19.png" alt-text="Blatt „Aktivitätsausführung – Details“":::
 
    Prüfen Sie die Datei „system-0.log“ auf Systemfehlermeldungen und -ausnahmen.
 
@@ -906,13 +907,13 @@ Das Debuggen umfasst einige grundlegende Verfahren.
 
 1. Alle Dateien in der ZIP-Datei für die benutzerdefinierte Aktivität müssen sich auf der obersten Ebene befinden und dürfen keine Unterordner haben.
 
-   ![Liste der ZIP-Dateien der benutzerdefinierten Aktivität](./media/data-factory-data-processing-using-batch/image20.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image20.png" alt-text="Liste der ZIP-Dateien der benutzerdefinierten Aktivität":::
 
 1. Stellen Sie sicher, dass **assemblyName** (MyDotNetActivity.dll), **entryPoint**(MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity.zip) und **packageLinkedService** (muss auf den Blob Storage verweisen, der die ZIP-Datei enthält) auf die richtigen Werte festgelegt sind.
 
 1. Wenn Sie einen Fehler behoben haben und den Slice erneut verarbeiten möchten, klicken Sie auf dem Blatt **OutputDataset** mit der rechten Maustaste auf den Slice, und klicken Sie anschließend auf **Ausführen**.
 
-   ![Blatt „OutputDataset“, Option „Ausführen“](./media/data-factory-data-processing-using-batch/image21.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image21.png" alt-text="Blatt „OutputDataset“, Option „Ausführen“":::
 
    > [!NOTE]
    > In Ihrem Blob Storage finden Sie einen Container mit dem Namen `adfjobs`. Dieser Container wird nicht automatisch gelöscht. Sie können ihn jedoch nach dem Testen der Lösung problemlos löschen. Ebenso erstellt die Data Factory-Lösung einen Batch-Auftrag mit dem Namen `adf-\<pool ID/name\>:job-0000000001`. Sie können diesen Auftrag bei Belieben löschen, nachdem Sie die Lösung getestet haben.

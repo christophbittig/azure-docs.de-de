@@ -10,12 +10,12 @@ ms.date: 05/06/2021
 ms.author: santoshc
 ms.reviewer: jiacfan
 ms.subservice: common
-ms.openlocfilehash: 895f53ca3e8e1c68fa01ef44ffc47d88604bbea5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 46be6327052aa280b9d23bc05764550a05739c5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070856"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627917"
 ---
 # <a name="security-considerations-for-azure-role-assignment-conditions-in-azure-storage-preview"></a>Sicherheitsüberlegungen für Azure-Rollenzuweisungsbedingungen in Azure Storage (Vorschau)
 
@@ -28,7 +28,7 @@ Wenn Sie Ressourcen mithilfe der [attributbasierten Zugriffssteuerung von Azure 
 
 In diesem Artikel werden Sicherheitsüberlegungen beschrieben, die Sie in Ihren Bedingungen für Rollenzuweisungen berücksichtigen sollten.
 
-## <a name="use-of-other-authorization-mechanisms"></a>Verwendung von anderen Autorisierungsmechanismen 
+## <a name="use-of-other-authorization-mechanisms"></a>Verwendung von anderen Autorisierungsmechanismen
 
 Rollenzuweisungsbedingungen werden nur ausgewertet, wenn Azure RBAC zur Autorisierung verwendet wird. Diese Bedingungen können umgangen werden, wenn Sie den Zugriff mithilfe alternativer Autorisierungsmethoden zulassen:
 - Autorisierung mit [gemeinsam verwendetem Schlüssel](/rest/api/storageservices/authorize-with-shared-key)
@@ -116,4 +116,3 @@ Bedingungen gelten nicht für den Zugriff auf das Blob, das durch den URI-Parame
 - [Autorisieren des Zugriffs auf Blobs mithilfe von Bedingungen für die Azure-Rollenzuweisung (Vorschau)](storage-auth-abac.md)
 - [Aktionen und Attribute für Azure-Rollenzuweisungsbedingungen in Azure Storage (Vorschau)](storage-auth-abac-attributes.md)
 - [Was ist die attributbasierte Zugriffssteuerung in Azure (Azure Attribute-Based Access Control, Azure ABAC)? (Vorschau)](../../role-based-access-control/conditions-overview.md)
-

@@ -4,12 +4,12 @@ description: Datenresidenz und Informationen zu Azure Arc-fähigen Servern.
 ms.topic: reference
 ms.date: 08/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: 05dbea8ce3d91e46bbb566f9d9989dec648c9853
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 36aa97dc55879e61caf2b7c19aac21cae4091433
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770968"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832184"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>Azure Arc-fähige Server: Datenresidenz
 

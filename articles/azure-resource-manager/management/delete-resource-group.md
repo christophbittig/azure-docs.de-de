@@ -2,14 +2,14 @@
 title: Löschen von Ressourcengruppen und Ressourcen
 description: Beschreibt, wie Ressourcengruppen und Ressourcen gelöscht werden. Es wird beschrieben, in welcher Reihenfolge Azure Resource Manager das Löschen von Ressourcen beim Löschen einer Ressourcengruppe ausführt. Sie erhalten Informationen zu den Antwortcodes und dazu, wie Resource Manager anhand der Codes bestimmt, ob die Löschung erfolgreich war.
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 09/28/2021
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: ccf5a9b1fac50dbf96d648acbf625b360bafb249
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 7995539ededec882b0b69e5ba3d1c5ef42adbcdc
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315235"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211231"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Löschen von Ressourcengruppen und Ressourcen mit Azure Resource Manager
 
@@ -119,13 +119,13 @@ az resource delete \
 
 ---
 
-## <a name="required-access"></a>Erforderlicher Zugriff
+## <a name="required-access-and-deletion-failures"></a>„Erforderlicher Zugriff“- und Löschfehler
 
 Zum Löschen einer Ressourcengruppe benötigen Sie Zugriff auf die Löschaktion für die Ressource **Microsoft.Resources/subscriptions/resourceGroups**. Außerdem benötigen Sie das Löschen für alle Ressourcen in der Ressourcengruppe.
 
 Eine Liste der Vorgänge finden Sie unter [Vorgänge für Azure-Ressourcenanbieter](../../role-based-access-control/resource-provider-operations.md). Eine Liste mit allen integrierten Rollen finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
 
-Wenn Sie über den erforderlichen Zugriff verfügen, die Löschanforderung jedoch fehlschlägt, kann dies daran liegen, dass die Ressourcengruppe [gesperrt](lock-resources.md) ist.
+Wenn Sie über den erforderlichen Zugriff verfügen, die Löschanforderung jedoch fehlschlägt, kann dies daran liegen, dass [die Ressourcen oder die Ressourcengruppe gesperrt](lock-resources.md) sind/ist. Auch wenn Sie eine Ressourcengruppe nicht manuell gesperrt haben, wurde sie möglicherweise [automatisch von einem zugehörigen Dienst gesperrt](lock-resources.md#managed-applications-and-locks). Oder der Löschvorgang kann fehlschlagen, wenn die Ressourcen mit Ressourcen in anderen Ressourcengruppen verbunden sind, die nicht gelöscht werden. Beispielsweise können Sie kein virtuelles Netzwerk mit Subnetzen löschen, die noch von einem virtuellen Computer verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,19 +1,20 @@
 ---
-title: Reine Azure Active Directory-Authentifizierung mit Azure SQL
+title: Azure Active Directory – Authentifizierung
 description: Dieser Artikel enthält Informationen zur reinen Azure AD-Authentifizierung (Azure Active Directory) mit Azure SQL-Datenbank und Azure SQL Managed Instance.
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 ms.service: sql-db-mi
 ms.subservice: security
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 06/30/2021
-ms.openlocfilehash: eaf4228dead01e970e25f7c8dc533bfbc06db802
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.date: 08/31/2021
+ms.openlocfilehash: 95a3d04ce8af0e83072e214e2b3fac72c78b28c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128514"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669586"
 ---
 # <a name="azure-ad-only-authentication-with-azure-sql"></a>Reine Azure AD-Authentifizierung mit Azure SQL
 
@@ -33,7 +34,9 @@ Weitere Informationen zur Azure SQL-Authentifizierung finden Sie unter [Authent
 
 ## <a name="feature-description"></a>Featurebeschreibung
 
-Wenn Sie die reine Azure AD-Authentifizierung aktivieren, wird die [SQL-Authentifizierung](logins-create-manage.md#authentication-and-authorization) auf Serverebene deaktiviert und jegliche Authentifizierung verhindert, die auf Anmeldeinformationen für die SQL-Authentifizierung basiert. Benutzer mit SQL-Authentifizierung können keine Verbindung mit dem logischen Azure SQL-Server mehr herstellen – auch nicht mit dessen Datenbanken. Trotz deaktivierter SQL-Authentifizierung können über Azure AD-Konten mit entsprechenden Berechtigungen weiterhin neue Anmeldenamen und Benutzer für die SQL-Authentifizierung erstellt werden. Neu erstellte SQL-Authentifizierungskonten sind nicht berechtigt, eine Verbindung mit dem Server herzustellen. Durch Aktivieren der reinen Azure AD-Authentifizierung werden keine vorhandenen Anmeldenamen und Benutzerkonten für die SQL-Authentifizierung entfernt. Durch das Feature wird lediglich verhindert, dass von diesen Konten eine Verbindung mit dem Server oder einer für diesen Server erstellten Datenbank hergestellt wird.
+Wenn Sie die reine Azure AD-Authentifizierung aktivieren, wird die [SQL-Authentifizierung](logins-create-manage.md#authentication-and-authorization) auf Serverebene deaktiviert und jegliche Authentifizierung verhindert, die auf Anmeldeinformationen für die SQL-Authentifizierung basiert. Benutzer mit SQL-Authentifizierung können keine Verbindung mit dem [logischenServer](logical-servers.md)für Azure SQL Database mehr herstellen – auch nicht mit dessen Datenbanken. Trotz deaktivierter SQL-Authentifizierung können über Azure AD-Konten mit entsprechenden Berechtigungen weiterhin neue Anmeldenamen und Benutzer für die SQL-Authentifizierung erstellt werden. Neu erstellte SQL-Authentifizierungskonten sind nicht berechtigt, eine Verbindung mit dem Server herzustellen. Durch Aktivieren der reinen Azure AD-Authentifizierung werden keine vorhandenen Anmeldenamen und Benutzerkonten für die SQL-Authentifizierung entfernt. Durch das Feature wird lediglich verhindert, dass von diesen Konten eine Verbindung mit dem Server oder einer für diesen Server erstellten Datenbank hergestellt wird.
+
+Sie können auch erzwingen, dass Server mit aktivierter Azure AD Authentifizierung erstellt werden, indem Sie Azure Policy verwenden. Weitere Informationen zu diesem Feature finden Sie unter [Azure Policy für reine Azure AD-Authentifizierung](authentication-azure-ad-only-authentication-policy.md).
 
 ## <a name="permissions"></a>Berechtigungen
 

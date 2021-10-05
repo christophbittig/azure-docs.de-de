@@ -1,15 +1,15 @@
 ---
-title: Automatisieren des Hinzufügens eines Lab-Benutzers in Azure DevTest Labs | Microsoft-Dokumentation
+title: Automatisieren des Hinzufügens von Labbenutzern
 description: In diesem Artikel erfahren Sie, wie Sie das Hinzufügen eines Benutzers zu einem Lab in Azure DevTest Labs mithilfe von Azure Resource Manager-Vorlagen, PowerShell und Befehlszeilenschnittstelle automatisieren.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 70f8e2740a53c7bb855d3796efa438e9c9ff0ffa
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8582c6cf807a9a96f2cc7da78c93de988d14792b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965224"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592259"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatisieren des Hinzufügens eines Lab-Benutzers zu einem Lab in Azure DevTest Labs
 Mit Azure DevTest Labs können Sie über das Azure-Portal schnell Self-Service-DevTest-Umgebungen erstellen. Wenn Sie jedoch über mehrere Teams und mehrere DevTest Labs-Instanzen verfügen, kann die Automatisierung des Erstellungsprozesses Zeit sparen. [Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-devtestlab/tree/master/Environments) ermöglichen Ihnen das Erstellen von Labs, Lab-VMs, benutzerdefinierten Images, Formeln sowie das Hinzufügen von Benutzern auf automatisierte Weise. Dieser Artikel befasst sich insbesondere mit dem Hinzufügen von Benutzern zu einer DevTest Labs-Instanz.
@@ -160,7 +160,8 @@ Verwenden Sie dann das PowerShell-Cmdlet [New-AzureRmResourceGroupDeployment](/p
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
 ```
 
-Es ist wichtig zu beachten, dass der Name der Gruppenbereitstellung und die GUID für die Rollenzuweisung eindeutig sein müssen. Wenn Sie versuchen, eine Ressourcenzuordnung mit einer nicht eindeutigen GUID bereitzustellen, erhalten Sie einen `RoleAssignmentUpdateNotPermitted`-Fehler.
+> [!NOTE] 
+> Der Gruppenbereitstellungsname und die Rollenzuweisungs-GUID müssen eindeutig sein. Wenn Sie versuchen, eine Ressourcenzuordnung mit einer nicht eindeutigen GUID bereitzustellen, erhalten Sie einen `RoleAssignmentUpdateNotPermitted`-Fehler.
 
 Wenn Sie planen, die Vorlage mehrmals zu verwenden, um mehrere Active Directory-Objekte der Rolle „DevTest Labs-Benutzer“ für Ihr Lab hinzuzufügen, sollten Sie die Verwendung dynamischer Objekte in Ihrem PowerShell-Befehl in Betracht ziehen. Das folgende Beispiel verwendet das Cmdlet [New-Guid](/powershell/module/Microsoft.PowerShell.Utility/New-Guid), um den Namen des Ressourcengruppenbereitstellung und die GUID der Rollenzuweisung dynamisch anzugeben.
 

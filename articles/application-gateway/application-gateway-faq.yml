@@ -9,12 +9,12 @@ metadata:
   ms.date: 06/08/2021
   ms.author: victorh
   ms.custom: references_regions
-  ms.openlocfilehash: 87780dbc3a7d492f0fd0fec8839ef26bb092b2eb
-  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+  ms.openlocfilehash: a0d8c83209f5d96d10cacd95d85fc45f2d09b44b
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/24/2021
-  ms.locfileid: "122777552"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128669073"
 title: Häufig gestellte Fragen zu Application Gateway
 summary: >
   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -60,7 +60,11 @@ sections:
 
       Öffnen Sie für die v2-SKU die öffentliche IP-Adresse, und klicken Sie auf **Konfiguration**. Das Feld **DNS-Namenbezeichnung (optional)** steht zum Konfigurieren des DNS-Namens zur Verfügung.
   - question: Welche Einstellungen werden für das Keep-Alive-Timeout und das TCP-Leerlauftimeout verwendet?
-    answer: "*Keep-Alive-Timeout* steuert, wie lange das Application Gateway wartet, bis ein Client eine andere HTTP-Anforderung über eine persistente Verbindung sendet, bevor diese wiederverwendet oder geschlossen wird. *TCP-Leerlauftimeout* steuert, wie lange eine TCP-Verbindung bei fehlender Aktivität offengehalten wird. \n\nDer *Keep-Alive-Timeout* in der Application Gateway v1-SKU beträgt 120 Sekunden und in der v2-SKU 75 Sekunden. Der *TCP-Leerlauftimeout* beträgt standardmäßig 4 Minuten für die virtuelle IP (VIP) des Front-Ends von Application Gateway sowohl für die v1- als auch die v2-SKU. Sie können den Wert für das TCP-Leerlauftimeout für v1- und v2-Anwendungsgateways zwischen 4 Minuten und 30 Minuten festlegen. Für v1- und v2-Anwendungsgateways müssen Sie zur öffentlichen IP-Adresse des Anwendungsgateways navigieren und das TCP-Leerlauftimeout auf dem Blatt „Konfiguration“ der öffentlichen IP-Adresse im Portal ändern. Sie können den Wert für das TCP-Leerlauftimeout der öffentlichen IP-Adresse über PowerShell festlegen, indem Sie folgende Befehle ausführen: \n\n```azurepowershell-interactive\n$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup\n$publicIP.IdleTimeoutInMinutes = \"15\"\nSet-AzPublicIpAddress -PublicIpAddress $publicIP\n```\n"
+    answer: "*Keep-Alive-Timeout* steuert, wie lange das Application Gateway wartet, bis ein Client eine andere HTTP-Anforderung über eine persistente Verbindung sendet, bevor diese wiederverwendet oder geschlossen wird. *TCP-Leerlauftimeout* steuert, wie lange eine TCP-Verbindung bei fehlender Aktivität offengehalten wird. \n\nDer *Keep-Alive-Timeout* in der Application Gateway v1-SKU beträgt 120 Sekunden und in der v2-SKU 75 Sekunden. Der *TCP-Leerlauftimeout* beträgt standardmäßig 4 Minuten für die virtuelle IP (VIP) des Front-Ends von Application Gateway sowohl für die v1- als auch die v2-SKU. Sie können den Wert für das TCP-Leerlauftimeout für v1- und v2-Anwendungsgateways zwischen 4 Minuten und 30 Minuten festlegen. Für v1- und v2-Anwendungsgateways müssen Sie zur öffentlichen IP-Adresse des Anwendungsgateways navigieren und das TCP-Leerlauftimeout auf dem Blatt „Konfiguration“ der öffentlichen IP-Adresse im Portal ändern. Das Ändern des Werts der privaten IP-Adresse wird nicht unterstützt. Sie können den Wert für das TCP-Leerlauftimeout der öffentlichen IP-Adresse über PowerShell festlegen, indem Sie folgende Befehle ausführen: \n\n```azurepowershell-interactive\n$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup\n$publicIP.IdleTimeoutInMinutes = \"15\"\nSet-AzPublicIpAddress -PublicIpAddress $publicIP\n```\n"
+  - question: Kann ich meine Application Gateway-Ressource umbenennen?
+    answer: Nein. Es gibt keine Möglichkeit zum Umbenennen einer Application Gateway-Ressource. Sie müssen eine neue Ressource mit einem anderen Namen erstellen.
+  - question: Gibt es eine Möglichkeit zum Wiederherstellen eines Application Gateways und seiner öffentlichen IP-Adresse, wenn es gelöscht wurde?
+    answer: Nein. Es gibt keine Möglichkeit zum Wiederherstellen einer Application Gateway-Ressource oder ihrer öffentlichen IP-Adresse nach dem Löschen. Sie müssen eine neue Ressource erstellen.
   - question: Ändert sich die IP-Adresse oder der DNS-Name während der Lebensdauer des Anwendungsgateways?
     answer: In der Application Gateway V1-SKU kann sich die VIP ändern, wenn Sie das Anwendungsgateway beenden und dann erneut starten. Der zugeordnete DNS-Name des Anwendungsgateways ändert sich während der Lebensdauer des Gateways nicht. Daher wird empfohlen, einen CNAME-Alias zu verwenden und damit auf die DNS-Adresse des Anwendungsgateways zu verweisen. In der Application Gateway V2-SKU können Sie die IP-Adresse als statisch festlegen, sodass sich die IP-Adresse und der DNS-Name während der Lebensdauer des Anwendungsgateways nicht ändern.
   - question: Unterstützt Application Gateway statische IP-Adressen?
@@ -96,6 +100,8 @@ sections:
     answer: Nein. Application Gateway V2 unterstützt keine Proxyanforderungen mit NTLM-Authentifizierung.
   - question: Unterstützt das Affinitätscookie von Application Gateway das SameSite-Attribut?
     answer: "Das [v80-Update](https://chromiumdash.appspot.com/schedule) des [Chromium-Browsers](https://www.chromium.org/Home) enthielt erstmals ein Mandat, bei dem HTTP-Cookies ohne SameSite-Attribut als „SameSite=Lax“ behandelt werden. Das bedeutet, dass das Affinitätscookie von Application Gateway nicht vom Browser in einem Drittanbieterkontext gesendet wird. \n\nZur Unterstützung dieses Szenarios fügt Application Gateway zusätzlich zum vorhandenen Cookie *ApplicationGatewayAffinity* ein weiteres Cookie namens *ApplicationGatewayAffinityCORS* ein.  Diese Cookies sind ähnlich, aber dem Cookie *ApplicationGatewayAffinityCORS* wurden zwei weitere Attribute hinzugefügt: *SameSite=None; Secure*. Diese Attribute behalten persistente Sitzungen selbst bei quellenübergreifenden Anforderungen bei. Weitere Informationen finden Sie im [Abschnitt zur cookiebasierten Affinität](configuration-http-settings.md#cookie-based-affinity).\n"
+  - question: Was wird als aktiver Listener gegenüber einem inaktiven Listener betrachtet?
+    answer: "Ein aktiver Listener ist ein Listener, der einer Regel zugeordnet ist **und** Datenverkehr an einen Back-End-Pool sendet. Jeder Listener, der Datenverkehr **nur** umleitet, ist kein aktiver Listener. Listener, die Umleitungsregeln zugeordnet sind, werden nicht als aktiv betrachtet. Wenn es sich bei den Umleitungsregeln um eine pfadbasierte Regel handelt, müssen alle Pfade in dieser Umleitungsregel Datenverkehr umleiten, andernfalls gilt der Listener als aktiv. Informationen zu Grenzwertdetails für einzelne Komponenten finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits). \n"
 - name: Leistung
   questions:
   - question: Wie unterstützt Application Gateway Hochverfügbarkeit und Skalierbarkeit?

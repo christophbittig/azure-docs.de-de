@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Azure Communication Service
 ms.topic: conceptual
 ms.date: 06/11/2021
 ms.author: mikben
-ms.openlocfilehash: e6e4245d9f38c00ec337d689a11d185299d71891
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b6bef963fe4f326bf0737ede96f62bfc9ffa9267
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340173"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635316"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Ereignisbehandlung in Azure Communication Services
 
@@ -51,6 +51,10 @@ Von Azure Communication Services werden folgende Ereignistypen ausgegeben:
 | Microsoft.Communication.ChatMessageEditedInThread | Wird veröffentlicht, wenn eine Nachricht in einem Chatthread bearbeitet wird. |  
 | Microsoft.Communication.ChatMessageDeletedInThread | Wird veröffentlicht, wenn eine Nachricht in einem Chatthread gelöscht wird.  |  
 | Microsoft.Communication.RecordingFileStatusUpdated | Veröffentlicht, wenn die Aufzeichnungsdatei verfügbar ist |
+| Microsoft.Communication.UserDisconnected (Preview) | Wird veröffentlicht, nachdem ein Benutzer der Communication Services als von den Communication Services getrennt festgelegt wurde |
+
+> [!NOTE]
+> Das Ereignis Microsoft.Communication.UserDisconnected befindet sich in Public Preview. Während dieser Vorschauzeit können die Protokolle, die dem Zustand „Vom Benutzer getrennt“ zugeordnet sind, global repliziert werden. Sie können den getrennten Zustand abrufen, indem Sie dieses Ereignis über Event Grid abonnieren.
 
 Sie können das Azure-Portal oder die Azure CLI verwenden, um Ereignisse zu abonnieren, die von Ihrer Communication Services-Ressource ausgegeben werden. Informationen zu den ersten Schritten für die Behandlung von Ereignissen finden Sie unter [Behandeln von SMS-Ereignissen in Communication Services](../communication-services/quickstarts/telephony-sms/handle-sms-events.md).
 
@@ -122,7 +126,7 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
     "MessageId": "Incoming_20200918002745d29ebbea-3341-4466-9690-0a03af35228e",
     "From": "15555555555",
     "To": "15555555555",
-    "Message": "Great to connect with ACS events ",
+    "Message": "Great to connect with ACS events",
     "ReceivedTimestamp": "2020-09-18T00:27:45.32Z"
   },
   "eventType": "Microsoft.Communication.SMSReceived",
@@ -862,6 +866,30 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
   "dataVersion": "1.0",
   "metadataVersion": "1",
   "eventTime": "2021-07-27T15:20:34.2199328Z"
+ }
+]
+```
+
+### <a name="microsoftcommunicationuserdisconnectedpreview"></a>Microsoft.Communication.UserDisconnected (Preview)
+
+```json
+[
+ {
+  "id": "8f60490d-0719-4d9d-a1a6-835362fb752e",
+  "topic": "/subscriptions/{subscription-id}/resourcegroups/}{group-name}/providers/microsoft.communication/communicationservices/{communication-services-resource-name}",
+  "subject": "user/{rawId}",
+  "data": {
+    "userCommunicationIdentifier": {
+      "rawId": "8:acs:3d703c91-9657-4b3f-b19c-ef9d53f99710_0000000b-d198-0d50-84f5-084822008d40",
+      "communicationUser": {
+        "id": "8:acs:3d703c91-9657-4b3f-b19c-ef9d53f99710_0000000b-d198-0d50-84f5-084822008d40"
+      }
+    }
+  },
+  "eventType": "Microsoft.Communication.UserDisconnected",
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "eventTime": "2021-08-10T20:25:38Z"
  }
 ]
 ```

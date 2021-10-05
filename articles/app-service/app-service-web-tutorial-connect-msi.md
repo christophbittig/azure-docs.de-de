@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 7b415b161dd719dabd02ccde4bf0a57da6485c09
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 690991f637c33ec4b66fd2bc591deb5474900d57
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730725"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657346"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbank-Verbindung von App Service mittels einer verwalteten Identität
 
@@ -141,7 +141,7 @@ Die Schritte für Ihr Projekt hängen davon ab, ob es sich um ein ASP.NET-Projek
 > [!NOTE]
 > Die Verwendung von **Microsoft.Azure.Services.AppAuthentication** wird für das neue Azure SDK nicht mehr empfohlen. Sie wird durch die neue **Azure-Identitätsclientbibliothek** ersetzt, die für .NET, Java, TypeScript und Python verfügbar ist und für alle Neuentwicklungen verwendet werden sollte. Informationen zur Migration zu `Azure Identity` finden Sie im [Leitfaden für die Migration von AppAuthentication zu Azure.Identity](/dotnet/api/overview/azure/app-auth-migration).
 
-1. Öffnen Sie in Visual Studio die Paket-Manager-Konsole, und fügen Sie das NuGet-Paket [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) hinzu:
+1. Öffnen Sie in Visual Studio die Paket-Manager-Konsole, und fügen Sie das NuGet-Paket [Azure.Identity](https://www.nuget.org/packages/Azure.Identity) hinzu:
 
     ```powershell
     Install-Package Microsoft.Data.SqlClient -Version 2.1.2

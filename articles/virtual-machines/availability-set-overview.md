@@ -6,12 +6,12 @@ ms.author: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: f1580c69a4fc1671d4dbe86ede05392b32534db6
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: ac6995a2653ea9f88a25e75f6c1b98e2446a4788
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693678"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622434"
 ---
 # <a name="availability-sets-overview"></a>Übersicht über Verfügbarkeitsgruppen
 

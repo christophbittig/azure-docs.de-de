@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/25/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29e9341427b74c2395288ac85ee98d8ff44bd02e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: e0376e13c0519920a30229eafdc8fc66fb7c242f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968199"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585556"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen SAML-Identitätsanbieter in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -156,7 +156,7 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| PartnerEntity | Ja | URL zu den Metadaten des SAML-Identitätsanbieters. Kopieren Sie die Metadaten des Identitätsanbieters, und fügen Sie diese in das CDATA-Element `<![CDATA[Your IDP metadata]]>` ein. |
+| PartnerEntity | Ja | URL zu den Metadaten des SAML-Identitätsanbieters. Kopieren Sie die Metadaten des Identitätsanbieters, und fügen Sie diese in das CDATA-Element `<![CDATA[Your IDP metadata]]>` ein. Das Einbetten der Metadaten des Identitätsanbieters wird nicht empfohlen. Der Identitätsanbieter kann die Einstellungen ändern oder das Zertifikat aktualisieren. Wenn die Metadaten des Identitätsanbieters geändert wurden, beschaffen Sie sich die neuen Metadaten, und aktualisieren Sie Ihre Richtlinie mit diesen. |
 | WantsSignedRequests | Nein | Gibt an, ob das technische Profil verlangt, dass alle ausgehenden Authentifizierungsanforderungen signiert werden. Mögliche Werte: `true` oder `false`. Standardwert: `true`. Wenn der Wert auf `true` festgelegt ist, muss der kryptografische **SamlMessageSigning**-Schlüssel angegeben sein, und alle ausgehenden Authentifizierungsanforderungen werden signiert. Wenn der Wert auf `false` festgelegt ist, werden die Parameter **SigAlg** und **Signature** (Abfragezeichenfolgen- oder POST-Paramater) in der Anforderung ausgelassen. Diese Metadaten steuern auch das Metadatenattribut **AuthnRequestsSigned**, das in den Metadaten des technischen Azure AD B2C-Profils ausgegeben wird, das für den Identitätsanbieter freigegeben wird. Azure AD B2C signiert die Anforderung nicht, wenn der Wert von **WantsSignedRequests** in den Metadaten des technischen Profils auf `false` und in den Metadaten des Identitätsanbieters **WantAuthnRequestsSigned** auf `false` festgelegt ist oder nicht angegeben wurde. |
 | XmlSignatureAlgorithm | Nein | Die Methode, die Azure AD B2C zur Signierung der SAML-Anforderung verwendet. Diese Metadaten steuern den Wert des **SigAlg**-Parameters (Abfragezeichenfolgen- oder POST-Parameter) in der SAML-Anforderung. Mögliche Werte: `Sha256`, `Sha384`, `Sha512` oder `Sha1` (Standardwert). Vergewissern Sie sich, dass Sie den Signaturalgorithmus auf beiden Seiten mit demselben Wert konfigurieren. Verwenden Sie nur den Algorithmus, den Ihr Zertifikat unterstützt. |
 | WantsSignedAssertions | Nein | Gibt an, ob das technische Profil verlangt, dass alle eingehenden Assertionsanweisungen signiert werden. Mögliche Werte: `true` oder `false`. Standardwert: `true`. Wenn der Wert auf `true` festgelegt ist, müssen alle Assertionsbereiche für `saml:Assertion` signiert werden, die vom Identitätsanbieter an Azure AD B2C gesendet werden. Wenn der Wert auf `false` festgelegt ist, sollte der Identitätsanbieter die Assertionsanweisungen nicht signieren. Wenn er dies allerdings doch tut, überprüft Azure AD B2C die Signatur nicht. Diese Metadaten steuern außerdem das Metadatenflag **WantsAssertionsSigned**, das in den Metadaten des technischen Azure AD B2C-Profils ausgegeben wird, das für den Identitätsanbieter freigegeben wird. Wenn Sie die Assertionsvalidierung deaktivieren, sollten Sie auch die Validierung der Antwortsignatur deaktivieren (weitere Informationen finden Sie unter **ResponsesSigned**). |

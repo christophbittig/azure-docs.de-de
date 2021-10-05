@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/08/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 71a2ad9d9a9b3c4f8c2be23859782cdb7a38e13f
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 946aa1a6a177dd89c851e977ac783806e8a9dcc5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112464879"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652223"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zenya"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Zenya
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Zenya unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Zenya unterstützt die [automatisierte Benutzerbereitstellung](iprova-provisioning-tutorial.md).
 
 ## <a name="add-zenya-from-the-gallery"></a>Hinzufügen von Zenya aus dem Katalog
 
@@ -166,7 +167,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 13. Nach Abschluss des Downloadvorgangs wird die Bestätigungsmeldung **Gültige Verbunddatendatei heruntergeladen** angezeigt.
 
-14. Klicken Sie auf **Weiter**.
+14. Wählen Sie **Weiter** aus.
 
 15. Überspringen Sie vorerst die Option **Anmeldung testen**, und wählen Sie **Weiter** aus.
 
@@ -198,6 +199,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 10. Scrollen Sie zum Seitenende, und wählen Sie **Fertig stellen** aus.
 
+> [!NOTE]
+> Außerdem unterstützt Zenya die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./iprova-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -206,7 +210,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Navigieren Sie direkt zur Anmelde-URL für Zenya, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Zenya“ klicken, werden Sie zur Anmelde-URL für Zenya weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Zenya“ klicken, werden Sie zur Anmelde-URL für Zenya weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

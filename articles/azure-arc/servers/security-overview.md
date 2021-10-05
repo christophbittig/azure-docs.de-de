@@ -3,12 +3,12 @@ title: Sicherheitsübersicht
 description: Sicherheitsinformationen zu Azure Arc-fähigen Servern.
 ms.topic: conceptual
 ms.date: 08/30/2021
-ms.openlocfilehash: 84f3b7cae576f1bedc6de57f94623936cbb0a51c
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 0f3e093dc07c1fddb4598138078003425456c8d1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214254"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832218"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>Sicherheitsübersicht über Azure Arc für Server
 
@@ -22,9 +22,9 @@ Jeder Azure Arc-fähige Server verfügt über eine verwaltete Identität, die Te
 
 Benutzer und Anwendungen, denen Zugriff der Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) oder „Administrator“ auf die Ressource gewährt wurde, können Änderungen an der Ressource vornehmen, einschließlich der Bereitstellung oder des Löschens von [Erweiterungen](manage-vm-extensions.md) auf dem Computer. Erweiterungen können beliebige Skripts enthalten, die in einem privilegierten Kontext ausgeführt werden. Daher sollten alle Mitwirkenden an der Azure-Ressource als indirekter Administrator des Servers angesehen werden.
 
-Die Rolle **Onboarding für Azure Connected Machine** ist für das Onboarding im großen Stil verfügbar und kann nur neue Arc-fähige Server in Azure lesen oder erstellen. Sie kann nicht zum Löschen von Servern verwendet werden, die bereits registriert sind, oder zum Verwalten von Erweiterungen. Als bewährte Methode empfehlen wir, diese Rolle nur dem Azure Active Directory-Dienstprinzipal (Azure AD) zuzuweisen, der zum Onboarding von Computern im großen Stil verwendet wird.
+Die Rolle **Onboarding für Azure Connected Machine** ist für das Onboarding im großen Stil verfügbar und kann nur neue Azure Arc-fähige Server in Azure lesen oder erstellen. Sie kann nicht zum Löschen von Servern verwendet werden, die bereits registriert sind, oder zum Verwalten von Erweiterungen. Als bewährte Methode empfehlen wir, diese Rolle nur dem Azure Active Directory-Dienstprinzipal (Azure AD) zuzuweisen, der zum Onboarding von Computern im großen Stil verwendet wird.
 
-Benutzer als Mitglied der Rolle **Ressourcenadministrator für Azure Connected Machine** können Computer lesen, ändern, erneuten integrieren und löschen. Diese Rolle ist für die Unterstützung der Verwaltung von Arc-fähigen Servern konzipiert, jedoch für keine anderen Ressourcen in der Ressourcengruppe oder im Abonnement.
+Benutzer als Mitglied der Rolle **Ressourcenadministrator für Azure Connected Machine** können Computer lesen, ändern, erneuten integrieren und löschen. Diese Rolle ist für die Unterstützung der Verwaltung von Azure Arc-fähigen Servern konzipiert, jedoch für keine anderen Ressourcen in der Ressourcengruppe oder im Abonnement.
 
 ## <a name="agent-security-and-permissions"></a>Agent-Sicherheit und -Berechtigungen
 
@@ -40,9 +40,9 @@ Der Azure Connected Machine-Agent besteht aus drei Diensten, die auf Ihrem Comp
 
 Die Gastkonfigurations- und Erweiterungsdienste werden unter Windows als „Lokales System“ und unter Linux als „root“ ausgeführt.
 
-## <a name="using-a-managed-identity-with-arc-enabled-servers"></a>Verwenden einer verwalteten Identität mit Arc-fähigen Servern
+## <a name="using-a-managed-identity-with-azure-arc-enabled-servers"></a>Verwenden einer verwalteten Identität mit Azure Arc-fähigen Servern
 
-Standardmäßig kann die von Arc verwendete systemseitig zugewiesene Azure Active Directory-Identität nur zum Aktualisieren des Status des Arc-fähigen Servers in Azure verwendet werden. Beispielsweise der *zuletzt angezeigte* Heartbeat-Status. Sie können der Identität optional weitere Rollen zuweisen, wenn eine Anwendung auf Ihrem Server die systemseitig zugewiesene Identität verwendet, um auf andere Azure-Dienste zuzugreifen. Weitere Informationen zur Konfiguration einer systemseitig zugewiesenen verwalteten Identität für den Zugriff auf Azure-Ressourcen finden Sie unter [Authentifizieren bei Azure-Ressourcen mit Arc-fähigen Servern](managed-identity-authentication.md). 
+Standardmäßig kann die von Arc verwendete systemseitig zugewiesene Azure Active Directory-Identität nur zum Aktualisieren des Status des Azure Arc-fähigen Servers in Azure verwendet werden. Beispielsweise der *zuletzt angezeigte* Heartbeat-Status. Sie können der Identität optional weitere Rollen zuweisen, wenn eine Anwendung auf Ihrem Server die systemseitig zugewiesene Identität verwendet, um auf andere Azure-Dienste zuzugreifen. Weitere Informationen zur Konfiguration einer systemseitig zugewiesenen verwalteten Identität für den Zugriff auf Azure-Ressourcen finden Sie unter [Authentifizieren bei Azure-Ressourcen mit Azure Arc-fähigen Servern](managed-identity-authentication.md). 
 
 Während jede Anwendung, die auf dem Computer ausgeführt wird, auf den Hybrid Instance Metadata Service zugreifen kann, können nur autorisierte Anwendungen ein Azure AD-Token für die systemseitig zugewiesene Identität anfordern. Beim ersten Zugriffsversuch auf den Token-URI generiert der Dienst ein zufällig generiertes kryptografisches Blob an einem Speicherort im Dateisystem, das nur vertrauenswürdige Aufrufer lesen können. Der Aufrufer muss dann die Datei lesen (die beweist, dass sie über die entsprechenden Berechtigungen verfügt) und die Anforderung mit dem Dateiinhalt im Autorisierungsheader wiederholen, um erfolgreich ein Azure AD-Token abzurufen.
 
@@ -60,6 +60,6 @@ Der Azure Connected Machine-Agent verwendet die Authentifizierung mit öffentli
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Bevor Sie Server mit Arc-Unterstützung auf mehreren Hybridcomputern auswerten oder aktivieren, lesen Sie [Übersicht über den Connected Machine-Agent](agent-overview.md), um die Anforderungen und technischen Details zum Agent und Bereitstellungsmethoden zu verstehen.
+* Bevor Sie Server mit Azure Arc-Unterstützung auf mehreren Hybridcomputern auswerten oder aktivieren, lesen Sie [Übersicht über den Connected Machine-Agent](agent-overview.md), um die Anforderungen und technischen Details zum Agent und Bereitstellungsmethoden zu verstehen.
 
 * Lesen Sie den [Planungs- und Bereitstellungsleitfaden](plan-at-scale-deployment.md), um die Bereitstellung von Servern mit Azure Arc-Unterstützung in beliebiger Größenordnung zu planen und eine zentrale Verwaltung und Überwachung zu implementieren.

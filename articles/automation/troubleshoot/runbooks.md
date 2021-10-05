@@ -2,15 +2,15 @@
 title: Behandeln von Problemen mit Azure Automation-Runbooks
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit Azure Automation-Runbooks beheben.
 services: automation
-ms.date: 07/27/2021
+ms.date: 09/16/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref, devx-track-azurepowershell
-ms.openlocfilehash: a7711d30a71cc5b637a1fc755609d3f5c48683d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 436282ad8a2816e3307d2ad270209980b2fa0427
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339622"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058435"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Beheben von Runbookproblemen
 
@@ -62,7 +62,7 @@ Azure Firewall ist für Azure Storage aktiviert.
 
 ### <a name="resolution"></a>Lösung
 
-Durch das Aktivieren von Azure Firewall für [Azure Storage](../../storage/common/storage-network-security.md), [Azure Key Vault](../../key-vault/general/network-security.md) oder [Azure SQL](../../azure-sql/database/firewall-configure.md) wird der Zugriff von Azure Automation-Runbooks für diese Dienste blockiert. Der Zugriff wird auch dann blockiert, wenn die Firewallausnahme zum Zulassen vertrauenswürdiger Microsoft-Dienste aktiviert ist, da Automation nicht in der Liste der vertrauenswürdigen Dienste enthalten ist. Bei aktivierter Firewall kann der Zugriff nur mithilfe eines Hybrid Runbook Workers und eines [VNet-Dienstendpunkts](../../virtual-network/virtual-network-service-endpoints-overview.md) erfolgen.
+Durch das Aktivieren von Azure Firewall für [Azure Storage](../../storage/common/storage-network-security.md), [Azure Key Vault](../../key-vault/general/network-security.md) oder [Azure SQL](../../azure-sql/database/firewall-configure.md) wird der Zugriff von Azure Automation-Runbooks für diese Dienste blockiert. Der Zugriff wird auch dann blockiert, wenn die Firewallausnahme zum Zulassen vertrauenswürdiger Microsoft-Dienste aktiviert ist, da Automation nicht zur Liste der vertrauenswürdigen Dienste gehört. Bei aktivierter Firewall kann der Zugriff nur mithilfe eines Hybrid Runbook Workers und eines [VNet-Dienstendpunkts](../../virtual-network/virtual-network-service-endpoints-overview.md) erfolgen.
 
 ## <a name="scenario-runbook-fails-with-a-no-permission-or-forbidden-403-error"></a><a name="runbook-fails-no-permission"></a>Szenario: Fehler beim Runbook. Fehler „Keine Berechtigung“ oder „Unzulässig 403“ wird angezeigt.
 
@@ -210,26 +210,11 @@ Dieser Fehler kann in den folgenden Fällen auftreten:
 * Der Abonnementname ist ungültig.
 * Der Azure AD-Benutzer, der die Abonnementdetails abrufen möchte, ist nicht als Administrator des Abonnements konfiguriert.
 * Das Cmdlet ist nicht verfügbar.
+* Kontextwechsel aufgetreten.
 
 ### <a name="resolution"></a>Lösung
 
-Führen Sie die folgenden Schritte aus, um zu ermitteln, ob die Authentifizierung in Azure erfolgt ist und Sie auf das gewünschte Abonnement zugreifen können:
-
-1. Testen Sie Ihr Skript außerhalb von Azure Automation, um sicherzustellen, dass es eigenständig verwendet werden kann.
-1. Stellen Sie sicher, dass Ihr Skript das Cmdlet [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) vor dem Cmdlet `Select-*` ausführt.
-1. Fügen Sie am Anfang Ihres Runbooks `Disable-AzContextAutosave -Scope Process` hinzu. Dieses Cmdlet stellt sicher, dass alle Anmeldeinformationen nur für die Ausführung des aktuellen Runbooks gelten.
-1. Wenn die Fehlermeldung weiterhin angezeigt wird, ändern Sie Ihren Code, indem Sie den Parameter `AzContext` für `Connect-AzAccount` hinzufügen und dann den Code ausführen.
-
-   ```powershell
-   Disable-AzContextAutosave -Scope Process
-
-   $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
-
-   $context = Get-AzContext
-
-   Get-AzVM -ResourceGroupName myResourceGroup -AzContext $context
-    ```
+Informationen zum Kontextwechsel finden Sie unter [Kontextwechsel in Azure Automation](../context-switching.md).
 
 ## <a name="scenario-runbooks-fail-when-dealing-with-multiple-subscriptions"></a><a name="runbook-auth-failure"></a>Szenario: Fehler bei Runbooks, wenn mehrere Abonnements verwendet werden
 
@@ -251,33 +236,19 @@ Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automat
    ID : <AGuidRepresentingTheOperation> At line:51 char:7 + $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $UNBV... +
 ```
 
+oder wie der folgende:
+
+```error
+Get-AzureRmResource : Resource group "SomeResourceGroupName" could not be found.
+... resources = Get-AzResource -ResourceGroupName $group.ResourceGro ...
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Get-AzResource], CloudException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.GetAzureResourceCmdlet
+```
+
 ### <a name="resolution"></a>Lösung
 
-Der Abonnementkontext geht möglicherweise verloren, wenn ein Runbook mehrere Runbooks aufruft. Befolgen Sie die Anweisungen unten, um zu vermeiden, dass Sie versehentlich versuchen, auf das falsche Abonnement zuzugreifen.
-
-* Um zu vermeiden, dass auf das falsche Abonnement verwiesen wird, deaktivieren Sie das Speichern von Kontext in ihren Automation-Runbooks, indem Sie den folgenden Code am Anfang jedes Runbooks verwenden.
-
-   ```azurepowershell-interactive
-   Disable-AzContextAutosave -Scope Process
-   ```
-
-* Die Azure PowerShell-Cmdlets unterstützen den `-DefaultProfile`-Parameter. Dieser wurde allen Az- und AzureRm-Cmdlets hinzugefügt, um die Ausführung mehrerer PowerShell-Skripts im selben Prozess zu unterstützen, sodass Sie den Kontext und das Abonnement angeben können, das für das jeweilige Cmdlet verwendet werden soll. Bei Ihren Runbooks sollten Sie das Kontextobjekt in Ihrem Runbook speichern, wenn das Runbook erstellt wird (d. h. wenn sich ein Konto anmeldet), und jedes Mal, wenn es geändert wird. Ferner sollten Sie auf den Kontext verweisen, wenn Sie ein Az-Cmdlet angeben.
-
-   > [!NOTE]
-   > Sie sollten ein Kontextobjekt als Eingabe übergeben, auch wenn Sie den Kontext direkt mithilfe von Cmdlets wie [Set-AzContext](/powershell/module/az.accounts/Set-AzContext) oder [Select-AzSubscription](/powershell/module/servicemanagement/azure.service/set-azuresubscription) manipulieren.
-
-   ```azurepowershell-interactive
-   $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName 
-   $context = Add-AzAccount `
-             -ServicePrincipal `
-             -TenantId $servicePrincipalConnection.TenantId `
-             -ApplicationId $servicePrincipalConnection.ApplicationId `
-             -Subscription 'cd4dxxxx-xxxx-xxxx-xxxx-xxxxxxxx9749' `
-             -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
-   $context = Set-AzContext -SubscriptionName $subscription `
-       -DefaultProfile $context
-   Get-AzVm -DefaultProfile $context
-   ```
+Informationen zur Vermeidung versehentlicher Zugriffsversuche auf das falsche Abonnement finden Sie unter [Kontextwechsel in Azure Automation](../context-switching.md).
   
 ## <a name="scenario-authentication-to-azure-fails-because-multifactor-authentication-is-enabled"></a><a name="auth-failed-mfa"></a>Szenario: Fehler beim Authentifizieren bei Azure, da die mehrstufige Authentifizierung aktiviert ist
 
@@ -693,7 +664,7 @@ Mögliche Ursachen für dieses Problem:
 
 #### <a name="not-using-a-run-as-account"></a>Fehlende Verwendung eines ausführenden Kontos
 
-Führen Sie [Schritt 5: Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen](../learn/automation-tutorial-runbook-textual-powershell.md#step-5---add-authentication-to-manage-azure-resources) aus, um sicherzustellen, dass Sie ein ausführendes Konto für den Zugriff auf Key Vault verwenden.
+Führen Sie [Schritt 5: Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen](../learn/powershell-runbook-managed-identity.md#assign-permissions-to-managed-identities) aus, um sicherzustellen, dass Sie ein ausführendes Konto für den Zugriff auf Key Vault verwenden.
 
 #### <a name="insufficient-permissions"></a>Unzureichende Berechtigungen
 

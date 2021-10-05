@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fe6c04cf29a4c45436948eaea6fc8d0276ec16f
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ff1b95ac26be1697e5211c024bc148222823e36d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111895782"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622092"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Beheben von Fehlern während der Synchronisierung
 Fehler können auftreten, wenn Identitätsdaten aus Windows Server Active Directory (AD DS) mit Azure Active Directory (Azure AD) synchronisiert werden. Dieser Artikel bietet einen Überblick über verschiedene Fehlertypen, die während der Synchronisierung auftreten können, einige der möglichen Szenarios, die solche Fehler verursachen, und Möglichkeiten, diese Fehler zu beheben. In diesem Artikel werden die häufigsten Fehlertypen behandelt, daher sind eventuell nicht alle möglichen Fehler enthalten.
@@ -180,6 +180,15 @@ a. Stellen Sie sicher, dass das Attribut „UserPrincipalName“ nur unterstütz
 
 #### <a name="related-articles"></a>Verwandte Artikel
 * [Vorbereiten von Benutzern auf die Bereitstellung in Microsoft 365 über die Verzeichnissynchronisierung](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
+
+## <a name="deletion-access-violation-and-password-access-violation-errors"></a>Fehler bei Löschzugriffsverletzung und Kennwortzugriffsverletzung
+
+Azure Active Directory schützt nur Cloudobjekte vor der Aktualisierung über Azure AD Connect. Obwohl es nicht möglich ist, diese Objekte über Azure AD Connect zu aktualisieren, können Aufrufe direkt an das cloudseitige Back-End von AADConnect erfolgen, um zu versuchen, nur Cloudobjekte zu ändern. Dabei können die folgenden Fehler zurückgegeben werden:
+
+* Dieser Synchronisierungsvorgang, Löschen, ist ungültig. Wenden Sie sich an den technischen Support.
+* Dieses Update kann nicht verarbeitet werden, da mindestens eine Aktualisierung der Anmeldeinformationen von Cloudbenutzern in der aktuellen Anforderung enthalten ist.
+* Das Löschen eines reinen Cloudobjekts wird nicht unterstützt. Wenden Sie sich an den Microsoft-Kundensupport.
+* Die Anforderung zur Kennwortänderung kann nicht ausgeführt werden, da sie Änderungen an einem oder mehreren cloudbasierten Benutzerobjekten enthält, die nicht unterstützt werden. Wenden Sie sich an den Microsoft-Kundensupport.
 
 ## <a name="largeobject"></a>LargeObject (Großes Objekt)
 ### <a name="description"></a>BESCHREIBUNG

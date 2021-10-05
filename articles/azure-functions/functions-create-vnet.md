@@ -3,12 +3,12 @@ title: Verwenden privater Endpunkte zum Integrieren von Azure Functions in ein 
 description: In diesem Tutorial wird erläutert, wie Sie eine Funktion mit einem virtuellen Azure-Netzwerk verbinden und mithilfe privater Endpunkte sperren.
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: a410d6717a73df2c7e947fd15c6c89040f08846c
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 8007fde1d4aaf52a98bf924f607450462a993c1d
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204739"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708432"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Tutorial: Integrieren von Azure Functions in ein virtuelles Azure-Netzwerk mithilfe privater Endpunkte
 
@@ -36,7 +36,7 @@ Sie erstellen eine .NET-Funktions-App im Premium-Plan, da in diesem Tutorial C# 
 
 1. Verwenden Sie auf der Seite **Grundlagen** die folgende Tabelle, um die Einstellungen der Funktions-App zu konfigurieren.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
     | ------------ | ---------------- | ----------- |
     | **Abonnement** | Ihr Abonnement | Abonnement, unter dem diese neue Funktions-App erstellt wird. |
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Name der neuen Ressourcengruppe, in der Sie Ihre Funktions-App erstellen. |
@@ -82,7 +82,7 @@ Ihre virtuellen Netzwerke benötigen ein Speicherkonto, das von dem Konto getren
 
 1. Verwenden Sie auf der Seite **Grundlagen** die folgende Tabelle, um die Einstellungen für das Speicherkonto zu konfigurieren. Für alle anderen Einstellungen können Sie die Standardwerte beibehalten.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
@@ -166,7 +166,7 @@ Erstellen Sie mithilfe Ihres Speicherkontos die privaten Endpunkte für Azure Fi
 
 1. Verwenden Sie auf der Registerkarte **Ressource** die in der folgenden Tabelle aufgeführten Einstellungen für den privaten Endpunkt.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **Ressourcentyp**  | Microsoft.Storage/storageAccounts | Der Ressourcentyp für Speicherkonten. |
@@ -211,7 +211,7 @@ Erstellen Sie den privaten Endpunkt, um die Service Bus-Instanz zu sperren:
 
 1. Verwenden Sie auf der Registerkarte **Grundlagen** die in der folgenden Tabelle aufgeführten Einstellungen für den privaten Endpunkt.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
@@ -220,7 +220,7 @@ Erstellen Sie den privaten Endpunkt, um die Service Bus-Instanz zu sperren:
 
 1. Verwenden Sie auf der Registerkarte **Ressource** die in der folgenden Tabelle aufgeführten Einstellungen für den privaten Endpunkt.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **Ressourcentyp**  | Microsoft.ServiceBus/namespaces | Der Ressourcentyp für die Service Bus-Instanz |
@@ -303,6 +303,8 @@ Wenn Sie Ihre Funktions-App mit virtuellen Netzwerken verwenden möchten, müsse
 1. Unter **Virtuelles Netzwerk** wählen Sie das zuvor erstellte virtuelle Netzwerk aus.
 
 1. Wählen Sie das zuvor erstellte **Funktions**-Subnetz aus. Klicken Sie auf **OK**.  Ihre Funktions-App ist jetzt in Ihr virtuelles Netzwerk integriert.
+
+    Wenn sich das virtuelle Netzwerk und die Funktions-App in unterschiedlichen Abonnements befinden, müssen Sie zunächst **Mitwirkender**-Zugriff für den Dienstprinzipal **Microsoft Azure App Service** im virtuellen Netzwerk gewähren.
 
     :::image type="content" source="./media/functions-create-vnet/9-connect-app-subnet.png" alt-text="Screenshot: Verbinden einer Funktions-App mit einem Subnetz":::
 

@@ -1,15 +1,15 @@
 ---
-title: Starten von Computern mit Automation-Runbooks in Azure DevTest Labs
+title: Starten von Computern mit Automation-Runbooks
 description: Es wird beschrieben, wie Sie virtuelle Computer in einem Lab in Azure DevTest Labs starten, indem Sie Azure Automation-Runbooks verwenden.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 84e784c0c5b9845c03cc28591a9ed8d4240fdc6b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: ee3054c5b5434cba526c2025d5649fed0b44d391
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110702910"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604763"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Starten von virtuellen Computern in einem Lab nach einer bestimmten Reihenfolge mit Azure Automation-Runbooks
 Mit dem Feature [Autostart](devtest-lab-set-lab-policy.md#set-autostart) von DevTest Labs können Sie virtuelle Computer so konfigurieren, dass sie zu einem bestimmten Zeitpunkt automatisch gestartet werden. Bei diesem Feature wird das Starten von Computern in einer bestimmten Reihenfolge aber nicht unterstützt. Es gibt mehrere Szenarien, in denen diese Art von Automatisierung sinnvoll ist.  Ein Beispiel ist das Szenario, in dem eine Jumpbox-VM in einem Lab vor den anderen VMs zuerst gestartet werden muss, da die Jumpbox als Zugriffspunkt für die anderen VMs verwendet wird.  In diesem Artikel wird veranschaulicht, wie Sie ein Azure Automation-Konto mit einem PowerShell-Runbook einrichten, über das ein Skript ausgeführt wird. Im Skript werden Tags auf VMs im Lab genutzt, damit Sie die Startreihenfolge steuern können, ohne das Skript ändern zu müssen.
@@ -21,7 +21,7 @@ In diesem Beispiel muss den VMs im Lab das Tag **StartupOrder** mit dem entsprec
 Erstellen Sie ein Azure Automation-Konto, indem Sie die Anleitung in [diesem Artikel](../automation/automation-create-standalone-account.md) befolgen. Wählen Sie beim Erstellen des Kontos die Option **Ausführende Konten**. Öffnen Sie nach dem Erstellen des Automation-Kontos die Seite **Module**, und wählen Sie in der Menüleiste die Option **Azure-Module aktualisieren**. Die Standardmodule sind mehrere Versionen alt, und ohne das Update funktioniert das Skript ggf. nicht.
 
 ## <a name="add-a-runbook"></a>Hinzufügen eines Runbooks
-Wählen Sie nun im Menü auf der linken Seite die Option **Runbooks**, um dem Automation-Konto ein Runbook hinzuzufügen. Wählen Sie im Menü die Option **Runbook hinzufügen**, und befolgen Sie die Anleitung zum [Erstellen eines PowerShell-Runbooks](../automation/learn/automation-tutorial-runbook-textual-powershell.md).
+Wählen Sie nun im Menü auf der linken Seite die Option **Runbooks**, um dem Automation-Konto ein Runbook hinzuzufügen. Wählen Sie im Menü die Option **Runbook hinzufügen**, und befolgen Sie die Anleitung zum [Erstellen eines PowerShell-Runbooks](../automation/learn/powershell-runbook-managed-identity.md).
 
 ## <a name="powershell-script"></a>PowerShell-Skript
 Im folgenden Skript werden der Abonnementname und der Lab-Name als Parameter verwendet. Das Skript läuft so ab, dass alle VMs im Lab abgerufen und anschließend die Taginformationen analysiert werden, um eine Liste mit den VM-Namen und der Startreihenfolge zu erstellen. Das Skript geht die VMs der Reihenfolge nach durch und startet die VMs. Wenn mehrere virtuelle Computer in einer bestimmten Reihenfolge vorhanden sind, werden sie über PowerShell-Aufträge asynchron gestartet. Legen Sie den Startwert für die VMs ohne Tag auf den letzten Wert (10) fest, damit sie standardmäßig zuletzt gestartet werden.  Wenn der virtuelle Computer für das Lab nicht automatisch gestartet werden soll, können Sie den Tagwert auf 11 festlegen, damit er ignoriert wird.

@@ -3,20 +3,23 @@ title: Migrieren einer V2-Azure IoT Central-Anwendung zu V3 | Microsoft-Dokument
 description: Erfahren Sie, wie Sie Ihre V2-Azure IoT Central-Anwendung zu V3 migrieren.
 author: troyhopwood
 ms.author: troyhop
-ms.date: 01/18/2021
+ms.date: 09/17/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 8d85f5f18ad21b5a27a7fdb48e9ee14ab751f5d5
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: 6a7a0d8f6fe2b057baf1fa568700b4139ec31398
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113757898"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128660897"
 ---
 # <a name="migrate-your-v2-iot-central-application-to-v3"></a>Migrieren Ihrer V2-IoT Central-Anwendung zu V3
 
 Wenn Sie zurzeit eine neue IoT Central-Anwendung erstellen, ist dies eine V3-Anwendung. Wenn Sie früher eine Anwendung erstellt haben, ist sie – je nach dem Zeitpunkt ihrer Erstellung – möglicherweise V2. In diesem Artikel wird beschrieben, wie Sie eine V2- zu einer V3-Anwendung migrieren, um sicherzustellen, dass Sie die neuesten IoT Central-Features verwenden.
+
+Weitere Informationen finden Sie in der [Ankündigung zur Außerbetriebnahme](/answers/questions/529295/retirement-announcement-upgrade-to-iot-central-v3.html).
 
 Wenn Sie erfahren möchten, wie Sie die Version einer IoT Central-Anwendung identifizieren können, lesen Sie [Wie kann ich Informationen zu meiner Anwendung erhalten?](howto-faq.yml#how-do-i-get-information-about-my-application-).
 
@@ -28,9 +31,7 @@ Führen Sie zum Migrieren einer Anwendung von V2 zu V3 folgende Schritte aus:
 
 ## <a name="create-a-new-v3-application"></a>Erstellen einer neuen V3-Anwendung
 
-Mithilfe des Migrations-Assistenten können Sie eine neue V3-Anwendung erstellen.
-
-IoT Central unterstützt nicht die Migration zu einer vorhandenen V3-Anwendung. Wenn vorhandene Geräte automatisch verschoben werden sollen, verwenden Sie den Migrations-Assistenten zum Erstellen Ihrer V3-Anwendung.
+IoT Central unterstützt nicht die Migration zu einer vorhandenen V3-Anwendung. Um vorhandene Geräte von einer V2- in eine V3-Anwendung zu verschieben, verwenden Sie den Migrationsassistenten, um Ihre V3-Anwendung zu erstellen.
 
 Der Migrations-Assistent führt folgende Aktionen aus:
 
@@ -68,7 +69,7 @@ Zum Migrieren einer Anwendung zu V3 müssen Sie ein Administrator sein.
 Nachdem Ihre neue V3-Anwendung erstellt wurde, nehmen Sie alle Konfigurationsänderungen vor, bevor Sie Ihre Geräte aus der V2-Anwendung in die V3-Anwendung verschieben.
 
 > [!TIP]
-> Nehmen Sie sich einen Moment Zeit, um [sich mit V3 vertraut zu machen](overview-iot-central-tour.md#navigate-your-application), da es hier einige Unterschiede zur vorherigen Version gibt.
+> Nehmen Sie sich einen Moment Zeit, um [sich mit V3 vertraut zu machen](overview-iot-central-tour.md#navigate-your-application), da es hier einige Unterschiede zur vorherigen Version V2 gibt.
 
 Hier sind einige empfohlene Konfigurationsschritte, die zu beachten sind:
 

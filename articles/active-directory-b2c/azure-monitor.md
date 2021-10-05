@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
-ms.date: 07/19/2021
-ms.openlocfilehash: 4a7fdf12ecf123c1fb741dcbd2706f7ca9a1d5c2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/15/2021
+ms.openlocfilehash: ce9de190c5754102b9ac66602818b25e960ae8dd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339320"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570253"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Überwachen von Azure AD B2C mit Azure Monitor
 
@@ -34,6 +34,10 @@ In diesem Artikel erfahren Sie, wie Sie Protokolle in einen Azure Log Analytics-
 
 > [!IMPORTANT]
 > Wenn Sie Azure AD B2C-Protokolle in andere Überwachungslösungen oder in ein Repository übertragen möchten, berücksichtigen Sie Folgendes: Azure AD B2C-Protokolle enthalten personenbezogene Daten. Diese Daten müssen mithilfe geeigneter technischer oder organisatorischer Maßnahmen so verarbeitet werden, dass die Sicherheit der personenbezogenen Daten gewährleistet ist – einschließlich Schutz vor nicht autorisierter oder gesetzeswidriger Verarbeitung.
+
+Sehen Sie sich dieses Video an, um zu erfahren, wie Sie die Überwachung für Azure AD B2C mithilfe von Azure Monitor konfigurieren.  
+
+>[!Video https://www.youtube.com/embed/tF2JS6TGc3g]
 
 ## <a name="deployment-overview"></a>Übersicht über die Bereitstellung
 
@@ -60,7 +64,8 @@ Zusammenfassend lässt sich sagen, dass Sie Azure Lighthouse einsetzen, um einem
 Erstellen Sie zuerst eine Ressourcengruppe (oder wählen Sie eine Ressourcengruppe aus), die den Log Analytics-Zielarbeitsbereich enthält, der Daten von Azure AD B2C empfangen soll. Den Namen der Ressourcengruppe geben Sie beim Bereitstellen der Azure Resource Manager-Vorlage an.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im Portal auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren **Azure AD-Mandanten** enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. [Erstellen Sie eine Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups), oder wählen Sie eine vorhandene Ressourcengruppe aus. In diesem Beispiel wird eine Ressourcengruppe namens _azure-ad-b2c-monitor_ verwendet.
 
 ## <a name="2-create-a-log-analytics-workspace"></a>2. Erstellen eines Log Analytics-Arbeitsbereichs
@@ -68,7 +73,8 @@ Erstellen Sie zuerst eine Ressourcengruppe (oder wählen Sie eine Ressourcengrup
 Ein **Log Analytics-Arbeitsbereich** ist eine spezielle Umgebung für Azure Monitor-Protokolldaten. In diesem Log Analytics-Arbeitsbereich sammeln Sie Daten aus Azure AD B2C-[Überwachungsprotokollen](view-audit-logs.md), um sie anschließend mit Abfragen und Arbeitsmappen zu visualisieren oder Warnungen zu erstellen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im Portal auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren **Azure AD-Mandanten** enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/logs/quick-create-workspace.md) In diesem Beispiel wird in der Ressourcengruppe namens _azure-ad-b2c-monitor_ ein Log Analytics Arbeitsbereich namens _AzureAdB2C_ verwendet.
 
 ## <a name="3-delegate-resource-management"></a>3. Delegieren der Ressourcenverwaltung
@@ -80,7 +86,8 @@ In diesem Schritt wählen Sie Ihren Azure AD B2C-Mandanten als **Dienstanbiete
 Rufen Sie zuerst die **Mandanten-ID** (auch Verzeichnis-ID genannt) Ihres Azure AD B2C-Verzeichnisses ab.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Wählen Sie im Portal auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren **Azure AD B2C**-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie **Azure Active Directory** und dann **Übersicht** aus.
 1. Notieren Sie sich die **Mandanten-ID**.
 
@@ -101,12 +108,13 @@ Um die Verwaltung zu vereinfachen, empfiehlt es sich, für jede Rolle Azure AD-_
 Zum Einrichten der benutzerdefinierten Autorisierung und Delegierung in Azure Lighthouse erstellen Sie eine Azure Resource Manager-Vorlage, die Azure AD B2C Zugriff auf die Azure AD-Ressourcengruppe gewährt, die Sie zuvor erstellt haben (z. B. _azure-ad-b2c-monitor_). Stellen Sie die Vorlage aus dem GitHub-Beispiel bereit, indem Sie die Schaltfläche **In Azure bereitstellen** verwenden. Dadurch wird das Azure-Portal geöffnet, und Sie können die Vorlage direkt im Portal konfigurieren und bereitstellen. Stellen Sie bei diesen Schritten sicher, dass Sie bei Ihrem Azure AD-Mandanten (nicht dem Azure AD B2C-Mandanten) angemeldet sind.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im Portal auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren **Azure AD**-Mandanten enthält.
-3. Verwenden Sie die Schaltfläche **In Azure bereitstellen**, um das Azure-Portal zu öffnen und die Vorlage direkt im Portal bereitzustellen. Weitere Informationen finden Sie unter [Erstellen einer Azure Resource Manager-Vorlage](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template).
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Verwenden Sie die Schaltfläche **In Azure bereitstellen**, um das Azure-Portal zu öffnen und die Vorlage direkt im Portal bereitzustellen. Weitere Informationen finden Sie unter [Erstellen einer Azure Resource Manager-Vorlage](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template).
 
    [![In Azure bereitstellen](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-ad-b2c%2Fsiem%2Fmaster%2Ftemplates%2FrgDelegatedResourceManagement.json)
 
-4. Geben Sie auf der Seite **Benutzerdefinierte Bereitstellung** die folgenden Informationen ein:
+1. Geben Sie auf der Seite **Benutzerdefinierte Bereitstellung** die folgenden Informationen ein:
 
    | Feld                 | Definition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
    | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -137,15 +145,10 @@ Nach der Bereitstellung der Vorlage kann es einige Minuten (in der Regel nicht l
 Nachdem Sie die Vorlage bereitgestellt und einige Minuten auf den Abschluss der Ressourcenprojektion gewartet haben, können Sie mit den folgenden Schritten Ihr Abonnement Ihrem Azure AD B2C-Verzeichnis zuordnen.
 
 1. Melden Sie sich vom Azure-Portal ab, wenn Sie aktuell angemeldet sind. (So können im nächsten Schritt Ihre Sitzungsanmeldeinformationen aktualisiert werden.)
-2. Melden Sie sich mit Ihrem **Azure AD B2C**-Administratorkonto beim [Azure-Portal](https://portal.azure.com) an. Dieses Konto muss ein Mitglied der Sicherheitsgruppe sein, die Sie im Schritt [Delegieren der Ressourcenverwaltung](#3-delegate-resource-management) angegeben haben.
-3. Wählen Sie auf der Symbolleiste im Portal das Symbol **Verzeichnis + Abonnement** aus.
-4. Wählen Sie das Azure AD-Verzeichnis aus, welches das Azure-Abonnement und die erstellte Ressourcengruppe _azure-ad-b2c-monitor_ enthält.
-
-   ![Wechseln des Verzeichnisses](./media/azure-monitor/azure-monitor-portal-03-select-subscription.png)
-
-5. Vergewissern Sie sich, dass Sie das richtige Verzeichnis und Abonnement ausgewählt haben. In diesem Beispiel werden alle Verzeichnisse und Abonnements ausgewählt.
-
-   ![Auswahl aller Verzeichnisse im Verzeichnis- und Abonnementfilter](./media/azure-monitor/azure-monitor-portal-04-subscriptions-selected.png)
+1. Melden Sie sich mit Ihrem **Azure AD B2C**-Administratorkonto beim [Azure-Portal](https://portal.azure.com) an. Dieses Konto muss ein Mitglied der Sicherheitsgruppe sein, die Sie im Schritt [Delegieren der Ressourcenverwaltung](#3-delegate-resource-management) angegeben haben.
+1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen | Verzeichnisse und Abonnements** in der Liste **Verzeichnisname** Ihr Azure AD-Verzeichnis, das das Azure-Abonnement und die von Ihnen erstellte Ressourcengruppe _azure-ad-b2c-monitor_ enthält, und wählen Sie **Wechseln**.
+1. Vergewissern Sie sich, dass Sie das richtige Verzeichnis und Abonnement ausgewählt haben.
 
 ## <a name="5-configure-diagnostic-settings"></a>5. Konfigurieren von Diagnoseeinstellungen
 
@@ -164,7 +167,8 @@ Jetzt können Sie im Azure-Portal [Diagnoseeinstellungen erstellen](../active-di
 Konfigurieren Sie die Überwachungseinstellungen für Azure AD B2C-Aktivitätsprotokolle wie folgt:
 
 1. Melden Sie sich mit Ihrem Azure AD B2C-Administratorkonto beim [Azure-Portal](https://portal.azure.com/) an. Dieses Konto muss ein Mitglied der Sicherheitsgruppe sein, die Sie im Schritt [Auswählen einer Sicherheitsgruppe](#32-select-a-security-group) angegeben haben.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie **Azure Active Directory** aus.
 1. Wählen Sie unter **Überwachung** die Option **Diagnoseeinstellungen** aus.
 1. Wenn Einstellungen für die Ressource vorhanden sind, wird eine Liste der bereits konfigurierten Einstellungen angezeigt. Wählen Sie entweder **Diagnoseeinstellung hinzufügen** aus, um eine neue Einstellung hinzuzufügen, oder wählen Sie **Bearbeiten** aus, um eine vorhandene Einstellung zu bearbeiten. Jede Einstellung kann höchstens einen der Zieltypen aufweisen.

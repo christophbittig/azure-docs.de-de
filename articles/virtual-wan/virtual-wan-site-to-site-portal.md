@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 544275ce4c9ab31fa65fe17351eed495895569e2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ece8300ee9d44699dfcce8fd89b1e07b94d99df9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432160"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823274"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN
 
@@ -53,25 +53,25 @@ Ein Hub ist ein virtuelles Netzwerk, das Gateways für Verbindungen vom Typ „S
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-## <a name="create-site-to-site-vpn-gateway"></a><a name="gateway"></a>Erstellen eines Site-to-Site-VPN-Gateways
+## <a name="configure-a-site-to-site-gateway"></a><a name="gateway"></a>Konfigurieren eines Site-to-Site-Gateways
 
-In diesem Abschnitt konfigurieren Sie Site-to-Site-Konnektivitätseinstellungen und erstellen dann den Hub und das S2S-VPN-Gateway. Das Erstellen eines Hubs und Gateways kann etwa 30 Minuten dauern.
+In diesem Abschnitt konfigurieren Sie Site-to-Site-Konnektivitätseinstellungen und erstellen dann den Hub und das Site-to-Site-VPN-Gateway. Das Erstellen eines Hubs und Gateways kann etwa 30 Minuten dauern.
 
 [!INCLUDE [Create a gateway](../../includes/virtual-wan-tutorial-s2s-gateway-include.md)]
 
-## <a name="create-site"></a><a name="site"></a>Erstellen einer Site
+## <a name="create-a-site"></a><a name="site"></a>Erstellen einer Site
 
 In diesem Abschnitt wird eine Site erstellt. Sites entsprechen Ihren physischen Standorten. Sie können beliebig viele davon erstellen. Erstellen Sie beispielsweise drei separate Sites, wenn Sie jeweils über eine Filiale in New York, London und Los Angeles verfügen. Diese Sites enthalten Ihre lokalen VPN-Geräteendpunkte. In einem virtuellen WAN können bis zu 1.000 Sites pro virtuellem Hub erstellt werden. Bei mehreren Hubs ist die Erstellung von 1.000 Sites pro Hub möglich. Falls Sie über ein CPE-Gerät eines Virtual WAN-Partners verfügen, können Sie sich bei dem Partner über die Automatisierungsmöglichkeiten in Azure informieren. Automatisierung impliziert in der Regel einen einfachen Klickvorgang, um umfassende Branchinformationen nach Azure zu exportieren und die Konnektivität vom CPE zum Azure Virtual WAN-VPN-Gateway einzurichten. Weitere Informationen finden Sie unter [Virtual WAN-Partner](virtual-wan-configure-automation-providers.md).
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-## <a name="connect-vpn-site-to-hub"></a><a name="connectsites"></a>Herstellen einer Verbindung zwischen einer VPN-Site und einem Hub
+## <a name="connect-the-vpn-site-to-a-hub"></a><a name="connectsites"></a>Herstellen einer Verbindung von der VPN-Site mit dem Hub
 
 In diesem Abschnitt stellen Sie für Ihre VPN-Site eine Verbindung mit dem Hub her.
 
 [!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-## <a name="connect-vnet-to-hub"></a><a name="vnet"></a>Verbinden eines VNET mit einem Hub
+## <a name="connect-a-vnet-to-the-hub"></a><a name="vnet"></a>Verbinden eines VNet mit dem Hub
 
 In diesem Abschnitt erstellen Sie eine Verbindung zwischen dem Hub und Ihrem VNet.
 

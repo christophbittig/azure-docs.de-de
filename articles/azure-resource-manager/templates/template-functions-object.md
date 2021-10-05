@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Objekte
 description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Arbeiten mit Objekten verwendet werden können.
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: aa52cee2236ac3eab5090b1caad27b6cbf516c7a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/09/2021
+ms.openlocfilehash: 3e6069744b1879e97ef3977916acbfc8aa6a9bd2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959610"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820452"
 ---
 # <a name="object-functions-for-arm-templates"></a>Objektfunktionen für ARM-Vorlagen
 
@@ -31,7 +31,7 @@ Resource Manager stellt mehrere Funktionen für das Arbeiten mit Objekten in Ihr
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | Container |Ja |Array, Objekt oder Zeichenfolge |Der Wert, der den zu suchenden Wert enthält. |
 | itemToFind |Ja |Zeichenfolge oder ganze Zahl |Der zu suchende Wert. |
@@ -42,60 +42,9 @@ Resource Manager stellt mehrere Funktionen für das Arbeiten mit Objekten in Ihr
 
 ### <a name="example"></a>Beispiel
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json) zeigt die Verwendung von „contains“ mit unterschiedlichen Typen:
+Das folgende Beispiel zeigt die Verwendung von „contains“ mit unterschiedlichen Typen:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "OneTwoThree"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "stringTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'e')]"
-    },
-    "stringFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'z')]"
-    },
-    "objectTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'one')]"
-    },
-    "objectFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'a')]"
-    },
-    "arrayTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'three')]"
-    },
-    "arrayFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'four')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/contains.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -122,8 +71,8 @@ Die `createObject`-Funktion wird von Bicep nicht unterstützt.  Erstellen Sie ei
 |:--- |:--- |:--- |:--- |
 | key1 |Nein |Zeichenfolge |Der Name des Schlüssels. |
 | value1 |Nein |int, boolean, string, object oder array |Der Wert für den Schlüssel. |
-| zusätzliche Schlüssel |Nein |Zeichenfolge |Zusätzliche Namen der Schlüssel. |
-| zusätzliche Werte |Nein |int, boolean, string, object oder array |Zusätzliche Werte für die Schlüssel. |
+| Mehr Schlüssel |Nein |Zeichenfolge |Mehr Namen der Schlüssel. |
+| Mehr Werte |Nein |int, boolean, string, object oder array |Mehr Werte für die Schlüssel. |
 
 Die Funktion akzeptiert nur eine gerade Anzahl von Parametern. Jeder Schlüssel muss über einen entsprechenden Wert verfügen.
 
@@ -135,20 +84,7 @@ Ein Objekt mit jedem Schlüssel-Wert-Paar.
 
 Im folgenden Beispiel wird ein Objekt aus verschiedenen Werttypen erstellt.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-  ],
-  "outputs": {
-    "newObject": {
-      "type": "object",
-      "value": "[createObject('intProp', 1, 'stringProp', 'abc', 'boolProp', true(), 'arrayProp', createArray('a', 'b', 'c'), 'objectProp', createObject('key1', 'value1'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/object/createobject.json":::
 
 Die Ausgabe des vorherigen Beispiels mit den Standardwerten ist ein Objekt namens `newObject` mit folgendem Wert:
 
@@ -180,44 +116,9 @@ Gibt **True** zurück, wenn der Werte leer ist. Andernfalls wird **False** zurü
 
 ### <a name="example"></a>Beispiel
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json) überprüft, ob ein Array, ein Objekt und eine Zeichenfolge leer sind.
+Im folgenden Beispiel wird überprüft, ob ein Array, Objekt und eine Zeichenfolge leer sind.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": []
-    },
-    "testObject": {
-      "type": "object",
-      "defaultValue": {}
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": ""
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testArray'))]"
-    },
-    "objectEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testObject'))]"
-    },
-    "stringEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/empty.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -239,7 +140,7 @@ Gibt ein einzelnes Array oder ein Objekt mit den gemeinsamen Elementen aus den P
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Objekt |Der erste Wert für die Suche nach gemeinsamen Elementen. |
 | arg2 |Ja |Array oder Objekt |Der zweite Wert für die Suche nach gemeinsamen Elementen. |
-| zusätzliche Argumente |Nein |Array oder Objekt |Weitere Werte für die Suche nach gemeinsamen Elementen. |
+| Mehr Argumente |Nein |Array oder Objekt |Mehr Werte für die Suche nach gemeinsamen Elementen. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -247,52 +148,9 @@ Ein Array oder Objekt mit den gemeinsamen Elementen.
 
 ### <a name="example"></a>Beispiel
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/intersection.json) wird die Verwendung von „intersection“ mit Arrays und Objekten gezeigt:
+Im folgenden Beispiel wird die Verwendung von „intersection“ mit Arrays und Objekten gezeigt.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstObject": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "secondObject": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "z",
-        "three": "c"
-      }
-    },
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [ "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "objectOutput": {
-      "type": "object",
-      "value": "[intersection(parameters('firstObject'), parameters('secondObject'))]"
-    },
-    "arrayOutput": {
-      "type": "array",
-      "value": "[intersection(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/intersection.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -327,76 +185,9 @@ Sie können auch [null()](#null) verwenden, um einen NULL-Wert zu erhalten.
 
 ### <a name="example"></a>Beispiel
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) zeigt die Verwendung der JSON-Funktion. Beachten Sie, dass Sie **NULL** für ein leeres-Objekt übergeben können.
+Das folgende Beispiel zeigt die Verwendung der Funktion `json`. Beachten Sie, dass Sie `null` für ein leeres Objekt übergeben können.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "jsonEmptyObject": {
-      "type": "string",
-      "defaultValue": "null"
-    },
-    "jsonObject": {
-      "type": "string",
-      "defaultValue": "{\"a\": \"b\"}"
-    },
-    "jsonString": {
-      "type": "string",
-      "defaultValue": "\"test\""
-    },
-    "jsonBoolean": {
-      "type": "string",
-      "defaultValue": "true"
-    },
-    "jsonInt": {
-      "type": "string",
-      "defaultValue": "3"
-    },
-    "jsonArray": {
-      "type": "string",
-      "defaultValue": "[[1,2,3 ]"
-    },
-    "concatValue": {
-      "type": "string",
-      "defaultValue": "demo value"
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "emptyObjectOutput": {
-      "type": "bool",
-      "value": "[empty(json(parameters('jsonEmptyObject')))]"
-    },
-    "objectOutput": {
-      "type": "object",
-      "value": "[json(parameters('jsonObject'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[json(parameters('jsonString'))]"
-    },
-    "booleanOutput": {
-      "type": "bool",
-      "value": "[json(parameters('jsonBoolean'))]"
-    },
-    "intOutput": {
-      "type": "int",
-      "value": "[json(parameters('jsonInt'))]"
-    },
-    "arrayOutput": {
-      "type": "array",
-      "value": "[json(parameters('jsonArray'))]"
-    },
-    "concatObjectOutput": {
-      "type": "object",
-      "value": "[json(concat('{\"a\": \"', parameters('concatValue'), '\"}'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/object/json.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -428,55 +219,9 @@ Eine ganze Zahl.
 
 ### <a name="example"></a>Beispiel
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json) zeigt die Verwendung von „length“ mit einem Array und einer Zeichenfolge:
+Im folgenden Beispiel wird die Verwendung von „length“ mit einem Array und einer Zeichenfolge gezeigt:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "propA": "one",
-        "propB": "two",
-        "propC": "three",
-        "propD": {
-          "propD-1": "sub",
-          "propD-2": "sub"
-        }
-      }
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayLength": {
-      "type": "int",
-      "value": "[length(parameters('arrayToTest'))]"
-    },
-    "stringLength": {
-      "type": "int",
-      "value": "[length(parameters('stringToTest'))]"
-    },
-    "objectLength": {
-      "type": "int",
-      "value": "[length(parameters('objectToTest'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/length.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -506,19 +251,7 @@ Ein Wert, der immer „NULL“ lautet.
 
 Das folgende Beispiel verwendet die „null“-Funktion.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "emptyOutput": {
-      "type": "bool",
-      "value": "[empty(null())]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/object/null.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
@@ -538,7 +271,7 @@ Gibt ein einzelnes Array oder Objekt mit allen Elementen aus den Parametern zur�
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Objekt |Der erste zum Verknüpfen von Elementen zu verwendende Wert. |
 | arg2 |Ja |Array oder Objekt |Der zweite zum Verknüpfen von Elementen zu verwendende Wert. |
-| zusätzliche Argumente |Nein |Array oder Objekt |Weitere zum Verknüpfen von Elementen zu verwendende Werte. |
+| Mehr Argumente |Nein |Array oder Objekt |Mehr zum Verknüpfen von Elementen zu verwendende Werte. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -546,52 +279,9 @@ Ein Array oder Objekt.
 
 ### <a name="example"></a>Beispiel
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/union.json) wird die Verwendung von „union“ mit Arrays und Objekten gezeigt:
+Im folgenden Beispiel wird die Verwendung von „union“ mit Arrays und Objekten gezeigt:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstObject": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c1"
-      }
-    },
-    "secondObject": {
-      "type": "object",
-      "defaultValue": {
-        "three": "c2",
-        "four": "d",
-        "five": "e"
-      }
-    },
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [ "three", "four" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "objectOutput": {
-      "type": "object",
-      "value": "[union(parameters('firstObject'), parameters('secondObject'))]"
-    },
-    "arrayOutput": {
-      "type": "array",
-      "value": "[union(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/union.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 

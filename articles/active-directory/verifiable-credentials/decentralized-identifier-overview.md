@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 6f124c6bb0dccb2fb1f8d808932ac9f8775f7f7e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1203562d088efeafd20a0b6c58698fcfe10b79e6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466284"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816191"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Einführung in Nachweise für Azure Active Directory (Vorschauphase)
 
@@ -26,7 +26,7 @@ ms.locfileid: "110466284"
 
 Unser digitales und körperliches Leben wird immer häufiger mit Apps, Diensten und Geräten verknüpft, über die wir auf einen umfangreichen Erfahrungsschatz zugreifen können. Diese digitale Transformation ermöglicht es uns, mit Hunderten von Unternehmen und Tausenden anderer Benutzer auf eine Weise zu interagieren, die bisher nicht vorstellbar war.
 
-Jedoch wurden bei Sicherheitsverletzungen zu oft Identitätsdaten offengelegt. Diese Sicherheitsverletzungen wirken sich auf das Leben von Menschen aus und haben Einfluss auf unser die sozialen, beruflichen und finanziellen Aspekte unseres Lebens. Microsoft ist der Überzeugung, dass es eine bessere Möglichkeit gibt. Jede Person hat das Recht auf eine Identität, die sie besitzt und kontrolliert, eine Identität, die die Elemente Ihrer digitalen Identität sicher speichert und den Datenschutz gewährleistet. Dieser Leitfaden erläutert, wie wir mit einer vielfältigen Community zusammenkommen, um eine offene, vertrauenswürdige, interoperable und auf Standards basierende dezentralisierte Identitätslösung (DID) für Einzelpersonen und Organisationen zu entwickeln.
+Jedoch wurden bei Sicherheitsverletzungen zu oft Identitätsdaten offengelegt. Diese Sicherheitsverletzungen beeinträchtigen unser soziales, berufliches und finanzielles Dasein. Microsoft ist der Überzeugung, dass es eine bessere Möglichkeit gibt. Jede Person hat das Recht auf eine Identität, die sie besitzt und kontrolliert, eine Identität, die die Elemente Ihrer digitalen Identität sicher speichert und den Datenschutz gewährleistet. Dieser Leitfaden erläutert, wie wir mit einer vielfältigen Community zusammenkommen, um eine offene, vertrauenswürdige, interoperable und auf Standards basierende dezentralisierte Identitätslösung (DID) für Einzelpersonen und Organisationen zu entwickeln.
 
 ## <a name="why-we-need-decentralized-identity"></a>Weshalb wir eine dezentralisierte Identität benötigen
 
@@ -56,10 +56,11 @@ Um DIDs zu verstehen, ist es hilfreich, sie mit aktuellen Identitätssystemen zu
 
 Dezentralisierte IDs (DIDs) unterscheiden sich davon. DIDs sind vom Benutzer generierte, eigenverantwortliche und global eindeutige Bezeichner, die auf dezentralisierten Systemen wie z. B. „Ion“ basieren. Sie verfügen über einzigartige Merkmale, wie z. B. eine bessere Sicherstellung der Unveränderlichkeit sowie Schutz vor Zensur und Manipulationen. Diese Attribute sind für jedes ID-System wichtig, das Eigenverantwortlichkeit und Benutzerkontrolle sicherstellen soll. 
 
-Die Microsoft-Lösung für überprüfbare Anmeldeinformationen setzt für das kryptografische Signieren dezentralisierte Anmeldeinformationen (DIDs) als Nachweis dafür ein, dass von einer vertrauenden Seite (Überprüfer) Informationen bestätigt werden, die nachweisen, dass sie Inhaber dieser überprüfbaren Anmeldeinformationen sind. Daher wird für alle, die eine Lösung für überprüfbare Anmeldeinformationen auf der Grundlage des Microsoft-Angebots erstellen, ein grundlegendes Verständnis von dezentralisierten IDs empfohlen.
+Die Microsoft-Lösung für überprüfbare Anmeldeinformationen setzt für das kryptografische Signieren dezentralisierte Anmeldeinformationen (DIDs) als Nachweis dafür ein, dass von einer vertrauenden Seite (Überprüfer) Informationen bestätigt werden, die nachweisen, dass sie Inhaber dieser überprüfbaren Anmeldeinformationen sind. Für alle, die eine Lösung für überprüfbare Anmeldeinformationen auf der Grundlage des Microsoft-Angebots erstellen, wird ein grundlegendes Verständnis von dezentralisierten IDs empfohlen.
+
 ## <a name="what-are-verifiable-credentials"></a>Was sind Nachweise?
 
- Wir verwenden IDs in unserem täglichen Leben. Wir besitzen einen Führerschein als Beleg dafür, dass wir Auto fahren können. Universitäten stellen Diplome aus, die nachweisen, dass wir eine bestimmte Bildungsstufe erreicht haben. Wir verwenden die Reisepässe, um gegenüber den Behörden im Reiseland nachzuweisen, wer wir sind. Das Datenmodell beschreibt, wie wir bei der Arbeit über das Internet mit Szenarien dieser Art ausschließlich auf eine sichere Weise umgehen können, die den Schutz der Benutzerdaten gewährleistet. Weitere Informationen finden Sie im [Datenmodell für Nachweise 1.0](https://www.w3.org/TR/vc-data-model/)
+Wir verwenden IDs in unserem täglichen Leben. Wir besitzen einen Führerschein als Beleg dafür, dass wir Auto fahren können. Universitäten stellen Diplome aus, die nachweisen, dass wir eine bestimmte Bildungsstufe erreicht haben. Wir verwenden die Reisepässe, um gegenüber den Behörden im Reiseland nachzuweisen, wer wir sind. Das Datenmodell beschreibt, wie wir bei der Arbeit über das Internet mit Szenarien dieser Art ausschließlich auf eine sichere Weise umgehen können, die den Schutz der Benutzerdaten gewährleistet. Weitere Informationen finden Sie im [Datenmodell für Nachweise 1.0](https://www.w3.org/TR/vc-data-model/).
 
 Kurz gesagt: Nachweise sind Datenobjekte, die aus der Zusicherung der ausstellenden Stelle bestehen, dass die Informationen über eine Person richtig sind. Diese Zusicherungen werden anhand eines Schemas identifiziert und enthalten die DID, den Aussteller und die betroffene Person. Aus den DID des Ausstellers wird eine digitale Signatur als Nachweis dafür erstellt, dass er diese Informationen bestätigt.
 

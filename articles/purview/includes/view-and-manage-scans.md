@@ -5,18 +5,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
 ms.date: 6/04/2021
-ms.openlocfilehash: abcb95cc3646addacc2bd0e123a59b285d6059f4
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: e8f049349491b4716a485996ba2c5dd4a4d86c47
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111559618"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208642"
 ---
 ## <a name="viewing-your-scans-and-scan-runs"></a>Anzeigen Ihrer Überprüfungen und Überprüfungsausführungen
 
 Gehen Sie zum Anzeigen vorhandener Überprüfungen wie folgt vor:
 
-1. Wechseln Sie zu Purview Studio. Wählen Sie im linken Bereich die Registerkarte **Data Map** aus.
+1. Wechseln Sie zu [Purview Studio](https://web.purview.azure.com/resource/). Wählen Sie im linken Bereich die Registerkarte **Data Map** aus.
 
 1. Wählen Sie die gewünschte Datenquelle aus. Daraufhin wird unter **Letzte Überprüfungen** eine Liste mit vorhandenen Überprüfungen für diese Datenquelle angezeigt. Alternativ dazu können Sie alle Überprüfungen auf der Registerkarte **Überprüfungen** anzeigen.
 
@@ -28,7 +28,7 @@ Gehen Sie zum Anzeigen vorhandener Überprüfungen wie folgt vor:
 
 Gehen Sie zum Verwalten oder Löschen einer Überprüfung wie folgt vor:
 
-1. Wechseln Sie zu Purview Studio. Wählen Sie im linken Bereich die Registerkarte **Data Map** aus.
+1. Wechseln Sie zu [Purview Studio](https://web.purview.azure.com/resource/). Wählen Sie im linken Bereich die Registerkarte **Data Map** aus.
 
 1. Wählen Sie die gewünschte Datenquelle aus. Daraufhin wird unter **Letzte Überprüfungen** eine Liste mit vorhandenen Überprüfungen für diese Datenquelle angezeigt. Alternativ dazu können Sie alle Überprüfungen auf der Registerkarte **Überprüfungen** anzeigen.
 

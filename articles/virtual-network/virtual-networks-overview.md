@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: 927ff80a544ef8fbff348aeb8781f8a55c84e109
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 57d719f5ea56123c4b237e48f07f1e82fd885b3b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061892"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624802"
 ---
 # <a name="what-is-azure-virtual-network"></a>Was ist Azure Virtual Network?
 
@@ -74,6 +74,9 @@ Sie können Azure-Dienste mit den folgenden Optionen in Ihr virtuelles Netzwerk 
 ## <a name="azure-vnet-limits"></a>Einschränkungen von Azure VNET
 
 Es gibt bestimmte Grenzwerte für die Anzahl der Azure-Ressourcen, die Sie bereitstellen können. Die meisten Grenzwerte für Azure-Netzwerke sind auf die Maximalwerte festgelegt. Sie können jedoch [bestimmte Grenzwerte für Netzwerke erhöhen](../azure-portal/supportability/networking-quota-requests.md), wie unter [Grenzwerte für Netzwerke](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) angegeben. 
+
+## <a name="virtual-networks-and-availability-zones"></a>Virtuelle Netzwerke und Verfügbarkeitszonen
+Virtuelle Netzwerke und Subnetze umfassen alle Verfügbarkeitszonen in einer Region. Sie müssen sie nicht durch Verfügbarkeitszonen unterteilen, um zonale Ressourcen aufnehmen zu können. Wenn Sie beispielsweise eine zonale VM konfigurieren, müssen Sie das virtuelle Netzwerk bei der Auswahl der Verfügbarkeitszone für den virtuellen Computer nicht berücksichtigen. Dasselbe gilt für andere zonale Ressourcen.
 
 ## <a name="pricing"></a>Preise
 

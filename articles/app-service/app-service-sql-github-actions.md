@@ -6,14 +6,14 @@ ms.topic: tutorial
 ms.date: 04/22/2021
 ms.author: jukullam
 ms.custom: github-actions-azure
-ms.openlocfilehash: f8048dab26451fea85b52caa3ffdc27d7e0a677a
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 24001d71721f2e3ee243248705ed8d4b64571c83
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111894144"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675400"
 ---
-# <a name="tutorial-use-github-actions-to-deploy-to-app-service-for-containers-and-connect-to-a-database"></a>Tutorial: Verwenden von GitHub Actions zum Bereitstellen in App Service für Container und Herstellen einer Datenbankverbindung
+# <a name="tutorial-use-github-actions-to-deploy-to-an-app-service-custom-container-and-connect-to-a-database"></a>Tutorial: Verwenden von GitHub Actions zum Bereitstellen in App Service für Container und Herstellen einer Datenbankverbindung
 
 Dieses Tutorial führt Sie durch die Einrichtung eines GitHub Actions-Workflows zum Bereitstellen einer containerisierten ASP.NET Core-Anwendung mit einem [Azure SQL-Datenbank](../azure-sql/database/sql-database-paas-overview.md)-Back-End. Nach Abschluss verfügen Sie über eine ASP.NET-App, die in Azure ausgeführt wird und mit SQL-Datenbank verbunden ist. Zunächst erstellen Sie Azure-Ressourcen mit einem auf einer [ARM-Vorlage](../azure-resource-manager/templates/overview.md) beruhenden GitHub Actions-Workflow.
 
