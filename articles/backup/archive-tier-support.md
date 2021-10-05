@@ -2,14 +2,14 @@
 title: Unterstützung für Archivspeicherebene
 description: Informationen zur Unterstützung der Zugriffsebene „Archiv“ für Azure Backup
 ms.topic: conceptual
-ms.date: 08/31/2021
+ms.date: 09/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 228ab85a0cde5ed37156a5821ad3ac2acd6a7209
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 0468e463caa6d589b22596d2fe845014e96e10b8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260775"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632460"
 ---
 # <a name="archive-tier-support"></a>Unterstützung für Archivspeicherebene
 
@@ -76,7 +76,7 @@ Unterstützte Clients:
 
     - Gehen Sie bei SQL Server auf virtuellen Azure-Computern wie folgt vor:
 
-        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<dbName>' -and $_.ContainerName -match '<vmName>'}`
+        `$bckItm = $BackupItemList | Where-Object {$_.FriendlyName -eq '<dbName>' -and $_.ContainerName -match '<vmName>'}`
 
 1. Fügen Sie den Datumsbereich hinzu, für den Sie die Wiederherstellungspunkte anzeigen möchten. Wenn Sie beispielsweise die Wiederherstellungspunkte der letzten 124 Tage bis zu den letzten 95 Tagen anzeigen möchten, verwenden Sie den folgenden Befehl:
 
@@ -88,6 +88,16 @@ Unterstützte Clients:
     >[!NOTE]
     >Um Wiederherstellungspunkte für einen anderen Zeitraum anzuzeigen, ändern Sie Start- und Enddatum entsprechend.
 ## <a name="use-powershell"></a>Verwenden von PowerShell
+
+### <a name="check-the-archivable-status-of-all-the-recovery-points"></a>Überprüfen des Archivierungsstatus aller Wiederherstellungspunkte
+
+Sie können nun den Archivierungsstatus aller Wiederherstellungspunkte eines Sicherungselements mit dem folgenden Cmdlet überprüfen:
+
+```azurepowershell
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() 
+
+$rp | select RecoveryPointId, @{ Label="IsArchivable";Expression={$_.RecoveryPointMoveReadinessInfo["ArchivedRP"].IsReadyForMove}}, @{ Label="ArchivableInfo";Expression={$_.RecoveryPointMoveReadinessInfo["ArchivedRP"].AdditionalInfo}}
+```
 
 ### <a name="check-archivable-recovery-points"></a>Überprüfen von archivierbaren Wiederherstellungspunkten
 
@@ -149,7 +159,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm
 
 Für Wiederherstellungspunkte im Archiv stellt Azure Backup eine integrierte Wiederherstellungsmethode bereit.
 
-Bei der integrierten Wiederherstellung handelt es sich um einen zweistufigen Vorgang. Zuerst werden die im Archiv gespeicherten Wiederherstellungspunkte aktiviert und temporär für einen Zeitraum von 10 bis 30 Tagen (auch als Aktivierungsdauer bezeichnet) auf der Tresorstandardebene gespeichert. Der Standardwert beträgt 15 Tage. Bei der Aktivierung gibt es zwei unterschiedliche Prioritäten: Standardpriorität und hohe Priorität. Weitere Informationen hierzu finden Sie unter [Aktivierungspriorität](../storage/blobs/storage-blob-rehydration.md#rehydrate-an-archived-blob-to-an-online-tier).
+Bei der integrierten Wiederherstellung handelt es sich um einen zweistufigen Vorgang. Zuerst werden die im Archiv gespeicherten Wiederherstellungspunkte aktiviert und temporär für einen Zeitraum von 10 bis 30 Tagen (auch als Aktivierungsdauer bezeichnet) auf der Tresorstandardebene gespeichert. Der Standardwert beträgt 15 Tage. Bei der Aktivierung gibt es zwei unterschiedliche Prioritäten: Standardpriorität und hohe Priorität. Weitere Informationen hierzu finden Sie unter [Aktivierungspriorität](../storage/blobs/archive-rehydrate-overview.md#rehydration-priority).
 
 >[!NOTE]
 >
@@ -171,6 +181,17 @@ Verwenden Sie das folgende PowerShell-Cmdlet, um die Verschiebungs- und Wiederhe
 ```azurepowershell
 Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 ```
+
+### <a name="move-recovery-points-to-archive-tier-at-scale"></a>Verschieben großer Mengen von Wiederherstellungspunkten in die Archivebene
+
+Sie können jetzt Beispielskripts verwenden, um Vorgänge in großem Maßstab auszuführen. [Erfahren Sie mehr](https://github.com/hiaga/Az.RecoveryServices/blob/master/README.md) über das Ausführen von Beispielskripts. Sie können die Skripts [hier](https://github.com/hiaga/Az.RecoveryServices) herunterladen.
+
+Sie können die folgenden Vorgänge mithilfe der von Azure Backup bereitgestellten Beispielskripts ausführen:
+
+- Verschieben aller in Frage kommenden Wiederherstellungspunkte für eine bestimmte Datenbank/alle Datenbanken eines SQL-Servers auf dem virtuellen Azure-Computer auf die Archivebene.
+- Verschieben aller empfohlenen Wiederherstellungspunkte für einen bestimmten virtuellen Azure-Computer auf die Archivebene.
+ 
+Sie können auch ein Skript gemäß Ihren Anforderungen schreiben oder die obigen Beispielskripts ändern, um die erforderlichen Sicherungselemente abzurufen.
 
 ## <a name="use-the-portal"></a>Verwenden des Portals
 
@@ -211,7 +232,7 @@ Durch das Beenden des Schutzes und das Löschen der Daten werden alle Wiederhers
 
 | Arbeitsauslastungen | Vorschau | Allgemein verfügbar |
 | --- | --- | --- |
-| SQL Server auf Azure-VM | „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Europa, Westen“ | „Australien, Osten“, „Indien, Mitte“, „Europa, Norden“, „Asien, Südosten“, „Australien, Südosten“, „Kanada, Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Indien, Süden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „USA, Mitte“, „USA, Osten 2“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“ |
+| SQL Server auf Azure-VM | „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Europa, Westen“ | „Australien, Osten“, „Indien, Mitte“, „Europa, Norden“, „Asien, Südosten“, „Australien, Südosten“, „Kanada, Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Indien, Süden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „USA, Mitte“, „USA, Osten 2“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Osten“ |
 | Azure-VMs | „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Norden-Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Kanada, Mitte“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Osten“, „Japan, Osten“, „Indien, Süden“, „Asien, Südosten“, „Australien, Osten“, „Indien, Mitte“, „Europa, Mitte“, „Australien, Südosten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“ | Keine |
 
 ## <a name="error-codes-and-troubleshooting-steps"></a>Fehlercodes und Schritte zur Problembehandlung

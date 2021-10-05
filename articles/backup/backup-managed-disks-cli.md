@@ -2,13 +2,13 @@
 title: Sichern von verwalteten Azure-Datenträgern mithilfe der Azure CLI
 description: Hier erfahren Sie, wie Sie verwaltete Azure-Datenträger mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) sichern.
 ms.topic: conceptual
-ms.date: 06/18/2021
-ms.openlocfilehash: 42bbc54a545cdddf049163b3040d9701f4304a52
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.date: 09/17/2021
+ms.openlocfilehash: ce1e4b3f88e844165581c95f74955de04686855b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112381207"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659692"
 ---
 # <a name="back-up-azure-managed-disks-using-azure-cli"></a>Sichern von verwalteten Azure-Datenträgern mithilfe der Azure CLI
 
@@ -283,7 +283,7 @@ az dataprotection backup-vault update -g testBkpVaultRG --vault-name TestBkpVaul
 
 ### <a name="assign-permissions"></a>Zuweisen von Berechtigungen
 
-Sie müssen dem Tresor (dargestellt durch die Tresor-MSI) und dem relevanten Datenträger und/oder der Datenträgerressourcengruppe über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) einige Berechtigungen zuweisen. Dazu können Sie das Azure-Portal oder die Befehlszeilenschnittstelle verwenden. Alle zugehörigen Berechtigungen werden in den drei Punkten unter [Konfigurieren der Sicherung](backup-managed-disks.md#configure-backup) ausführlich erläutert.
+Sie müssen dem Tresor (dargestellt durch die Tresor-MSI) und dem relevanten Datenträger und/oder der Datenträgerressourcengruppe über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) einige Berechtigungen zuweisen. Dazu können Sie das Azure-Portal oder die Befehlszeilenschnittstelle verwenden. Informationen zum Zuweisen verwandter Berechtigungen finden Sie unter [Voraussetzungen zum Konfigurieren der Sicherung verwalteter Datenträger](backup-managed-disks-ps.md#assign-permissions).
 
 ### <a name="prepare-the-request"></a>Vorbereiten der Anforderung
 

@@ -141,7 +141,7 @@ items:
       - name: Regionsübergreifendes Verschieben
         items:
           - name: Öffentliche IP-Adressen
-            href: /resource-mover/tutorial-move-region-virtual-machines?toc=/azure/virtual-network/toc.json
+            href: /azure/resource-mover/tutorial-move-region-virtual-machines?toc=/azure/virtual-network/ip-services/toc.json
   - name: Verweis
     items:
       - name: Azure CLI

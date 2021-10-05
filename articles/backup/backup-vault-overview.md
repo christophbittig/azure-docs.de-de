@@ -2,13 +2,14 @@
 title: Übersicht über Sicherungstresore
 description: Übersicht über Sicherungstresore
 ms.topic: conceptual
-ms.date: 04/19/2021
-ms.openlocfilehash: 6748121bd85fe6dc26a09c038ab305bcf06e3902
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.date: 09/08/2021
+ms.custom: references_regions
+ms.openlocfilehash: 8d617dd2d2b1fa61a797d14c709ce285dc28b9bf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565954"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799487"
 ---
 # <a name="backup-vaults-overview"></a>Übersicht über Sicherungstresore
 
@@ -121,6 +122,129 @@ Die Kachel **Aufträge** bietet eine zusammenfassende Ansicht aller Sicherungs- 
 Die Kachel **Sicherungsinstanzen** bietet eine zusammenfassende Ansicht aller Sicherungsinstanzen im Sicherungstresor. Durch Auswählen einer der Zahlen auf dieser Kachel können Sie weitere Informationen zu Sicherungsinstanzen für einen bestimmten Datenquellentyp und Schutzstatus anzeigen.
 
 ![Sicherungsaufträge](./media/backup-vault-overview/backup-jobs.png)
+
+## <a name="move-a-backup-vault-across-azure-subscriptionsresource-groups-public-preview"></a>Verschieben eines Azure Backup-Tresors zwischen Azure-Abonnements/-Ressourcengruppen (öffentliche Vorschauversion)
+
+In diesem Abschnitt wird erläutert, wie Sie einen (für Azure Backup konfigurierten) Sicherungstresor über Azure-Abonnements und -Ressourcengruppen hinweg mithilfe des Azure-Portals verschieben.
+
+>[!Note]
+>Sie können Azure Backup-Tresore auch mithilfe von [PowerShell](/powershell/module/az.resources/move-azresource?view=azps-6.3.0&preserve-view=true) und [CLI](/cli/azure/resource?view=azure-cli-latest&preserve-view=true#az_resource_move) in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben.
+
+### <a name="supported-regions"></a>Unterstützte Regionen
+
+Das Verschieben des Tresors zwischen Abonnements und Ressourcengruppen wird derzeit in den folgenden Regionen unterstützt: „USA, Westen“, „USA, Süden-Mitte“, „Asien, Osten“, „Schweiz, Norden“, „Südafrika, Norden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Westen“, „VAE, Norden“, „Vereinigtes Königreich, Westen“, „Australien, Südosten“, „Japan, Westen“, „Kanada, Osten“, „Südkorea, Mitte“, „Australien, Mitte“, „USA, Westen-Mitte“, „Indien, Mitte“, „Indien, Westen“, „Indien, Süden“, VAE, Mitte“, „USA, Westen-Mitte“, „Norwegen, Westen“, „Schweiz, Westen“
+
+### <a name="use-azure-portal-to-move-backup-vault-to-a-different-resource-group"></a>Verwenden des Azure-Portals zum Verschieben eines Azure Backup-Tresors in eine andere Ressourcengruppe
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+1. Öffnen Sie die Liste mit den Azure Backup-Tresoren, und wählen Sie den Tresor aus, den Sie verschieben möchten.
+
+   Im Tresordashboard werden die Tresordetails angezeigt.
+
+   :::image type="content" source="./media/backup-vault-overview/vault-dashboard-to-move-to-resource-group-inline.png" alt-text="Screenshot: Dashboard des Tresors, der in eine andere Ressourcengruppe verschoben werden soll." lightbox="./media/backup-vault-overview/vault-dashboard-to-move-to-resource-group-expanded.png"::: 
+
+1. Klicken Sie im Menü **Overview** des Tresors auf **Verschieben**, und wählen Sie dann **In eine andere Ressourcengruppe verschieben** aus.
+
+   :::image type="content" source="./media/backup-vault-overview/select-move-to-another-resource-group-inline.png" alt-text="Screenshot: Option zum Verschieben des Azure Backup-Tresors in eine andere Ressourcengruppe." lightbox="./media/backup-vault-overview/select-move-to-another-resource-group-expanded.png":::
+   >[!Note]
+   >Nur das Administratorabonnement verfügt über die erforderlichen Berechtigungen zum Verschieben eines Tresors.
+
+1. Wählen Sie in der Dropdownliste **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, um eine neue Ressourcengruppe zu erstellen.
+
+   Das Abonnement bleibt unverändert und wird automatisch aufgefüllt.
+
+   :::image type="content" source="./media/backup-vault-overview/select-existing-or-create-resource-group-inline.png" alt-text="Screenshot: Auswahl einer vorhandenen Ressourcengruppe oder Erstellung einer neuen Ressourcengruppe." lightbox="./media/backup-vault-overview/select-existing-or-create-resource-group-expanded.png":::
+
+1. Auf der Registerkarte **Zu verschiebende Ressourcen** wird der Azure Backup-Tresor, der verschoben werden muss, einer Überprüfung unterzogen. Dieser Vorgang kann einige Minuten in Anspruch nehmen. Warten Sie, bis die Überprüfung abgeschlossen ist.
+
+   :::image type="content" source="./media/backup-vault-overview/move-validation-process-to-move-to-resource-group-inline.png" alt-text="Screenshot: Überprüfungsstatus des Azure Backup-Tresors." lightbox="./media/backup-vault-overview/move-validation-process-to-move-to-resource-group-expanded.png"::: 
+
+1. Aktivieren Sie zur Bestätigung das Kontrollkästchen _Mir ist bewusst, dass Tools und Skripts, die den verschobenen Ressourcen zugeordnet sind, erst funktionieren, wenn ich sie auf die Verwendung neuer Ressourcen-IDs aktualisiere_, und wählen Sie dann **Verschieben** aus.
+ 
+   >[!Note]
+   >Der Ressourcenpfad ändert sich nach dem Verschieben des Tresors zwischen Ressourcengruppen oder Abonnements. Stellen Sie sicher, dass Sie die Tools und Skripts nach Abschluss des Verschiebens mit dem neuen Ressourcenpfad aktualisieren.
+
+Warten Sie, bis die Verschiebung abgeschlossen ist, und führen Sie erst danach weitere Vorgänge für den Tresor durch. Alle für den Azure Backup-Tresor während der Verschiebung ausgeführten Vorgänge schlagen fehl. Nach Abschluss des Vorgangs sollte der Azure Backup-Tresor in der Zielressourcengruppe angezeigt werden.
+
+>[!Important]
+>Wenn beim Verschieben des Tresors ein Fehler auftritt, lesen Sie den Abschnitt [Fehlercodes und Problembehandlung](#error-codes-and-troubleshooting).  
+
+### <a name="use-azure-portal-to-move-backup-vault-to-a-different-subscription"></a>Verwenden des Azure-Portals zum Verschieben eines Azure Backup-Tresors in ein anderes Abonnement
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+1. Öffnen Sie die Liste mit den Azure Backup-Tresoren, und wählen Sie den Tresor aus, den Sie verschieben möchten.
+   
+   Im Tresordashboard werden die Tresordetails angezeigt.
+
+   :::image type="content" source="./media/backup-vault-overview/vault-dashboard-to-move-to-another-subscription-inline.png" alt-text="Screenshot: Dashboard des Tresors, der in ein anderes Abonnement verschoben werden soll." lightbox="./media/backup-vault-overview/vault-dashboard-to-move-to-another-subscription-expanded.png"::: 
+
+1. Klicken Sie im Menü **Übersicht** des Tresors auf **Verschieben**, und wählen Sie dann **In ein anderes Abonnement verschieben** aus.
+
+   :::image type="content" source="./media/backup-vault-overview/select-move-to-another-subscription-inline.png" alt-text="Screenshot: Option zum Verschieben des Azure Backup-Tresors in ein anderes Azure-Abonnement." lightbox="./media/backup-vault-overview/select-move-to-another-subscription-expanded.png"::: 
+   >[!Note]
+   >Nur das Administratorabonnement verfügt über die erforderlichen Berechtigungen zum Verschieben eines Tresors.
+
+1. Wählen Sie in der Dropdownliste **Abonnement** ein vorhandenes Abonnement aus.
+
+   Beim Verschieben von Tresoren zwischen Abonnements muss sich das Zielabonnement im selben Mandanten wie das Quellabonnement befinden. Informationen zum Verschieben eines Tresors in einen anderen Mandanten finden Sie unter [Übertragen eines Abonnements in ein anderes Verzeichnis](/azure/role-based-access-control/transfer-subscription).
+
+1. Wählen Sie in der Dropdownliste **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, um eine neue Ressourcengruppe zu erstellen.
+
+   :::image type="content" source="./media/backup-vault-overview/select-existing-or-create-resource-group-to-move-to-other-subscription-inline.png" alt-text="Screenshot: Auswahl einer vorhandenen Ressourcengruppe oder Erstellung einer neuen Ressourcengruppe in einem anderen Abonnement." lightbox="./media/backup-vault-overview/select-existing-or-create-resource-group-to-move-to-other-subscription-expanded.png":::
+
+1. Auf der Registerkarte **Zu verschiebende Ressourcen** wird der Azure Backup-Tresor, der verschoben werden muss, einer Überprüfung unterzogen. Dieser Vorgang kann einige Minuten in Anspruch nehmen. Warten Sie, bis die Überprüfung abgeschlossen ist.
+
+   :::image type="content" source="./media/backup-vault-overview/move-validation-process-to-move-to-another-subscription-inline.png" alt-text="Screenshot: Überprüfungsstatus des Azure Backup-Tresors, der in ein anderes Azure-Abonnement verschoben werden soll." lightbox="./media/backup-vault-overview/move-validation-process-to-move-to-another-subscription-expanded.png"::: 
+
+1. Aktivieren Sie zur Bestätigung das Kontrollkästchen _Mir ist bewusst, dass Tools und Skripts, die den verschobenen Ressourcen zugeordnet sind, erst funktionieren, wenn ich sie auf die Verwendung neuer Ressourcen-IDs aktualisiere_, und wählen Sie dann **Verschieben** aus.
+ 
+   >[!Note]
+   >Der Ressourcenpfad ändert sich nach dem Verschieben des Tresors zwischen Ressourcengruppen oder Abonnements. Stellen Sie sicher, dass Sie die Tools und Skripts nach Abschluss des Verschiebens mit dem neuen Ressourcenpfad aktualisieren.
+
+Warten Sie, bis die Verschiebung abgeschlossen ist, und führen Sie erst danach weitere Vorgänge für den Tresor durch. Alle für den Azure Backup-Tresor während der Verschiebung ausgeführten Vorgänge schlagen fehl. Nach Abschluss des Vorgangs sollte der Azure Backup-Tresor im Zielabonnement und in der Zielressourcengruppe angezeigt werden.
+
+>[!Important]
+>Wenn beim Verschieben des Tresors ein Fehler auftritt, lesen Sie den Abschnitt [Fehlercodes und Problembehandlung](#error-codes-and-troubleshooting).
+
+### <a name="error-codes-and-troubleshooting"></a>Fehlercodes und Problembehandlung
+
+Behandeln Sie die folgenden allgemeinen Probleme, die beim Verschieben des Azure Backup-Tresors auftreten können:
+
+#### <a name="backupvaultmoveresourcespartiallysucceeded"></a>BackupVaultMoveResourcesPartiallySucceeded   
+
+**Ursache**: Dieser Fehler tritt möglicherweise auf, wenn das Verschieben des Azure Backup-Tresors nur teilweise erfolgreich ist.
+
+**Empfehlung**: Das Problem sollte innerhalb von 36 Stunden automatisch behoben werden. Wenn das Problem weiterhin auftritt, wenden Sie sich an den Microsoft-Support.
+
+#### <a name="backupvaultmoveresourcescriticalfailure"></a>BackupVaultMoveResourcesCriticalFailure 
+
+**Ursache**: Dieser Fehler tritt möglicherweise auf, wenn das Verschieben des Azure Backup-Tresors mit einem kritischen Fehler fehlschlägt. 
+
+**Empfehlung**: Das Problem sollte innerhalb von 36 Stunden automatisch behoben werden. Wenn das Problem weiterhin auftritt, wenden Sie sich an den Microsoft-Support. 
+
+#### <a name="usererrorbackupvaultresourcemoveinprogress"></a>UserErrorBackupVaultResourceMoveInProgress 
+
+**Ursache**: Dieser Fehler tritt möglicherweise auf, wenn Sie versuchen, Vorgänge für den Azure Backup-Tresor durchzuführen, während er verschoben wird. 
+
+**Empfehlung**: Warten Sie, bis die Verschiebung abgeschlossen ist, und wiederholen Sie dann den Vorgang. 
+#### <a name="usererrorbackupvaultresourcemovenotallowedformultipleresources"></a>UserErrorBackupVaultResourceMoveNotAllowedForMultipleResources
+
+**Ursache**: Dieser Fehler tritt möglicherweise auf, wenn Sie versuchen, mehrere Azure Backup-Tresore in einem einzigen Schritt zu verschieben. 
+
+**Empfehlung**: Stellen Sie sicher, dass für jeden Verschiebungsvorgang nur ein Azure Backup-Tresor ausgewählt ist. 
+#### <a name="usererrorbackupvaultresourcemovenotalloweduntilresourceprovisioned"></a>UserErrorBackupVaultResourceMoveNotAllowedUntilResourceProvisioned
+
+**Ursache**: Dieser Fehler tritt möglicherweise auf, wenn der Tresor noch nicht bereitgestellt wurde. 
+
+**Empfehlung**: Wiederholen Sie den Vorgang nach einiger Zeit.
+
+#### <a name="backupvaultresourcemoveisnotenabled"></a>BackupVaultResourceMoveIsNotEnabled 
+
+**Ursache**: Das Verschieben von Ressourcen für den Azure Backup-Tresor wird in der ausgewählten Azure-Region derzeit nicht unterstützt.
+
+**Empfehlung**: Stellen Sie sicher, dass Sie eine der Regionen ausgewählt haben, die das Verschieben von Azure Backup-Tresoren unterstützt. Siehe [Unterstützte Regionen](#supported-regions).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

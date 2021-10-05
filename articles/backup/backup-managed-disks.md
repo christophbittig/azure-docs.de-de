@@ -2,13 +2,13 @@
 title: Sichern von Azure Managed Disks
 description: Erfahren Sie, wie Sie Azure Managed Disks über das Azure-Portal sichern können.
 ms.topic: conceptual
-ms.date: 05/27/2021
-ms.openlocfilehash: 9bbb29aa4741f71448876a0af947964f728b0fb0
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.date: 09/17/2021
+ms.openlocfilehash: 4561ff53588c6662759b0e86529f20e7cf837bbe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113300734"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668136"
 ---
 # <a name="back-up-azure-managed-disks"></a>Sichern von Azure Managed Disks
 
@@ -81,124 +81,128 @@ Ein Sicherungstresor ist eine Speicherentität in Azure, die Sicherungsdaten fü
 
 ## <a name="configure-backup"></a>Konfigurieren der Sicherung
 
-- Azure Disk Backup unterstützt nur das Sichern der Betriebsebene. Das Kopieren von Sicherungen auf die Tresorspeicherebene ist derzeit nicht verfügbar. Die Speicherredundanzeinstellung des Sicherungstresors (LRS/GRS) gilt nicht für Sicherungen, die auf der Betriebsebene gespeichert sind.
-Inkrementelle Momentaufnahmen werden im Standard-HDD- Speicher gespeichert, unabhängig vom Speichertyp des Quelldatenträgers. Für höhere Zuverlässigkeit werden inkrementelle Momentaufnahmen standardmäßig in [zonenredundantem Speicher](../storage/common/storage-redundancy.md) (ZRS) gespeichert, wenn die entsprechende Region ZRS unterstützt.
+- Azure Disk Backup unterstützt nur die Sicherung auf Betriebsebene. Das Kopieren von Sicherungen auf die Tresorspeicherebene wird derzeit nicht unterstützt. Die Speicherredundanzeinstellung des Azure Backup-Tresors (LRS/GRS) gilt nicht für die auf der Betriebsebene gespeicherten Sicherungen. 
+  Inkrementelle Momentaufnahmen werden in einem HDD Standard-Speicher gespeichert, unabhängig vom ausgewählten Speichertyp des Quelldatenträgers. Für höhere Zuverlässigkeit werden inkrementelle Momentaufnahmen standardmäßig in [zonenredundantem Speicher](/azure/storage/common/storage-redundancy) (ZRS) gespeichert, wenn die entsprechende Region ZRS unterstützt.
 
-- Azure Disk Backup unterstützt abonnementübergreifende Sicherungen und Wiederherstellungen, bei denen sich der Sicherungstresor und der Quelldatenträger in unterschiedlichen Abonnements befinden. Die regionsübergreifende Sicherung und Wiederherstellung wird hingegen nicht unterstützt. Der Sicherungstresor und die zu sichernden Datenträger können sich also im selben oder in unterschiedlichen Abonnements befinden. Allerdings müssen sich der Sicherungstresor und die zu sichernden Datenträger in derselben Region befinden.
+- Azure Disk Backup unterstützt abonnementübergreifende Sicherungen und Wiederherstellungen, bei denen sich der Sicherungstresor und der Quelldatenträger in unterschiedlichen Abonnements befinden. Daher werden die regionsübergreifenden Sicherungen und Wiederherstellungen nicht unterstützt. Dadurch können der Azure Backup-Tresor und der Datenträger in denselben oder verschiedenen Abonnements gesichert werden. Allerdings müssen sich der Sicherungstresor und der zu sichernde Datenträger in derselben Region befinden.
 
-- Beim Konfigurieren der Datenträgersicherung können Sie die Momentaufnahme-Ressourcengruppe, die einer Sicherungsinstanz zugewiesen ist, nicht ändern. 
+- Beim Konfigurieren der Datenträgersicherung können Sie die Ressourcengruppe für Momentaufnahmen, die einer Sicherungsinstanz zugewiesen ist, nicht ändern.
 
-Der Sicherungstresor verwendet die verwaltete Identität für den Zugriff auf andere Azure-Ressourcen. Zum Konfigurieren der Sicherung verwalteter Datenträger benötigt die verwaltete Identität des Sicherungstresors einen Satz von Berechtigungen für die Quelldatenträger und Ressourcengruppen, in denen Momentaufnahmen erstellt und verwaltet werden.
+Gehen Sie zum Konfigurieren einer Datenträgersicherung wie folgt vor:
 
-Eine systemseitig zugewiesene verwaltete Identität ist auf eine Ressource beschränkt und an den Lebenszyklus dieser Ressource gebunden. Sie können der verwalteten Identität mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) Berechtigungen erteilen. Eine verwaltete Identität ist ein spezieller Dienstprinzipal, der nur zusammen mit Azure-Ressourcen verwendet werden kann. Informieren Sie sich ausführlicher über [verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md).
+1. Wechseln Sie zu **Backup Center** -> **Übersicht**, und klicken Sie auf **+ Sicherung**, um mit dem Konfigurieren der Sicherung des Datenträgers zu beginnen.
 
-Die folgenden Voraussetzungen müssen erfüllt sein, um das Sichern von verwalteten Datenträgern zu konfigurieren:
+   :::image type="content" source="./media/backup-managed-disks/start-configuring-backup-of-disk-inline.png" alt-text="Screenshot: Option zum Starten von Azure Disk Backup." lightbox="./media/backup-managed-disks/start-configuring-backup-of-disk-expanded.png":::
 
-1. Weisen Sie der verwalteten Identität des Sicherungstresors auf dem zu sichernden Quelldatenträger die Rolle **Datenträgersicherungsleser** zu.
+1. Wählen Sie in der Dropdownliste **Datenquellentyp** die Option **Azure Disks** aus, und klicken Sie dann auf **Weiter**.
 
-   1. Wechseln Sie zu dem Datenträger, der gesichert werden muss.
+   :::image type="content" source="./media/backup-managed-disks/select-azure-disks-as-datasource-type-inline.png" alt-text="Screenshot: Prozess zum Auswählen von Azure-Datenträgern als Datenschutztyp." lightbox="./media/backup-managed-disks/select-azure-disks-as-datasource-type-expanded.png":::
 
-   1. Wechseln Sie zur **Zugriffssteuerung (IAM)** , und wählen Sie anschließend **Rollenzuweisung hinzufügen** aus.
+1. Wählen Sie einen Azure Backup-Tresor aus, und klicken Sie auf **Weiter**, um fortzufahren.
 
-   1. Wählen Sie im rechten Kontextbereich in der Dropdownliste **Rolle** die Option **Datenträgersicherungsleser** aus. Wählen Sie die verwaltete Identität des Sicherungstresors und dann **Speichern** aus.
+   >[!Note]
+   >- Stellen Sie sicher, dass sich der Sicherungstresor und der zu sichernde Datenträger am gleichen Speicherort befinden.
+   >- Azure Backup verwendet [_inkrementelle Momentaufnahmen_](/azure/virtual-machines/disks-incremental-snapshots#restrictions) von verwalteten Datenträgern, auf denen nur die Deltaänderungen auf dem Datenträger seit der letzten Momentaufnahme im HDD Standard-Speicher gespeichert werden. Dies ist unabhängig vom Speichertyp des übergeordneten Datenträgers. Für höhere Zuverlässigkeit werden inkrementelle Momentaufnahmen standardmäßig in „zonenredundantem Speicher (ZRS) gespeichert, wenn die entsprechende Region ZRS unterstützt. Derzeit unterstützt Azure Disk Backup operative Sicherungen von verwalteten Datenträgern, die Sicherungen nicht in den Speicher des Azure Backup-Tresors kopieren. Die Redundanzeinstellung für den Sicherungsspeicher des Azure Backup-Tresors gilt daher nicht für die Wiederherstellungspunkte.
 
-   >[!TIP]
-   >Geben Sie den Namen des Sicherungstresors ein, um die verwaltete Identität des Tresors auszuwählen.
-
-   ![Rolle „Datenträgersicherungsleser“ hinzufügen](./media/backup-managed-disks/disk-backup-reader-role.png)
-
-1. Weisen Sie der verwalteten Identität des Sicherungstresors in der Ressourcengruppe, in der Sicherungen vom Azure Backup-Dienst erstellt und verwaltet werden, die Rolle **Mitwirkender für die Datenträgermomentaufnahme** zu. Die Datenträgermomentaufnahmen werden in einer Ressourcengruppe innerhalb Ihres Abonnements gespeichert. Damit der Azure Backup-Dienst Momentaufnahmen erstellen, speichern und verwalten kann, müssen Sie Berechtigungen für den Sicherungstresor bereitstellen.
-
-   **Auswählen der Ressourcengruppe zum Speichern und Verwalten von Momentaufnahmen:**
-
-   - Wählen Sie nicht dieselbe Ressourcengruppe wie die des Quelldatenträgers aus.
-
-   - Als Richtlinie wird empfohlen, eine dedizierte Ressourcengruppe als Momentaufnahmen-Datenspeicher zu erstellen, der vom Azure Backup-Dienst verwendet werden soll. Mit einer dedizierten Ressourcengruppe lassen sich die Zugriffsrechte auf die Ressourcengruppe beschränken, was Sicherheit gewährleistet und eine einfache Verwaltung der Sicherungsdaten ermöglicht.
-
-   - Sie können diese Ressourcengruppe zum Speichern von Momentaufnahmen auf mehreren Datenträgern verwenden, die gesichert werden (oder deren Sicherung geplant ist).  
-
-   - Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen. Wählen Sie daher eine Ressourcengruppe im selben Abonnement wie der zu sichernde Datenträger aus. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) für verwaltete Datenträger.
-
-   - Beim Konfigurieren der Datenträgersicherung können Sie die Momentaufnahme-Ressourcengruppe, die einer Sicherungsinstanz zugewiesen ist, nicht ändern.
-
-   - Azure Backup erstellt während eines Sicherungsvorgangs ein Speicherkonto in der Ressourcengruppe für Momentaufnahmen. Pro Momentaufnahme-Ressourcengruppe wird nur ein Speicherkonto erstellt. Das Konto wird auf mehreren Datenträger-Sicherungsinstanzen wiederverwendet, die dieselbe Ressourcengruppe wie die Momentaufnahme-Ressourcengruppe verwenden.
-     
-     - Momentaufnahmen werden nicht im Speicherkonto gespeichert. Inkrementelle Momentaufnahmen von verwalteten Datenträgern sind ARM-Ressourcen, die in der Ressourcengruppe und nicht in einem Speicherkonto erstellt werden. 
-     
-     - Das Speicherkonto wird verwendet, um Metadaten für jeden Wiederherstellungspunkt zu speichern. Azure Backup Dienst erstellt einen Blobcontainer pro Datenträgersicherungsinstanz. Für jeden Wiederherstellungspunkt wird ein Blockblob erstellt, um Metadaten zu speichern, die den Wiederherstellungspunkt beschreiben (z. B. Abonnement, Datenträger-ID, Datenträgerattribute usw.) und kaum Speicherplatz (wenige KiBs) belegen.
-     
-     - Das Speicherkonto wird als RA-GZRS erstellt, wenn die Region Zonenredundanz unterstützt. Wenn die Region keine Zonenredundanz unterstützt, wird das Speicherkonto als RA-GRS erstellt.<br>Wenn eine vorhandene Richtlinie die Erstellung eines Speicherkontos mit GRS-Redundanz für das Abonnement oder die Ressourcengruppe verhindert, wird das Speicherkonto als LRS erstellt. Das erstellte Speicherkonto ist **Universell v2**, wobei Blockblobs auf der heißen Ebene im Blobcontainer gespeichert werden. 
-     
-     - Die Anzahl der Wiederherstellungspunkte wird durch die Sicherungsrichtlinie bestimmt, die zum Konfigurieren der Sicherung der Datenträgersicherungsinstanz verwendet wird. Ältere Blockblobs werden gemäß dem Garbage Collection-Prozess gelöscht, wenn die entsprechenden älteren Wiederherstellungspunkte gelöscht werden.
-   
-   - Wenden Sie keine Ressourcensperren oder -richtlinien auf vom Azure Backup-Dienst erstellte Momentaufnahme-Ressourcengruppen oder Speicherkonten an. Der Dienst erstellt und verwaltet Ressourcen in dieser Momentaufnahme-Ressourcengruppe, die einer Sicherungsinstanz zugewiesen ist, wenn Sie die Sicherung eines Datenträgers konfigurieren. Das Speicherkonto und die darin gespeicherten Ressourcen werden vom Dienst erstellt und sollten nicht gelöscht oder verschoben werden.
-
-     >[!NOTE]
-     >Wenn ein Speicherkonto gelöscht wird, schlagen Sicherungen fehl, und die Wiederherstellung aller vorhandenen Wiederherstellungspunkte schlägt fehl.
-
-Gehen Sie wie folgt vor, um eine Rolle zuzuweisen:
-
-   1. Wechseln Sie zur Ressourcengruppe. Sie Ressourcengruppe ist z. B. *SnapshotRG* und befindet sich im selben Abonnement wie der zu sichernde Datenträger.
-
-   1. Wechseln Sie zur **Zugriffssteuerung (IAM)** , und wählen Sie anschließend **Rollenzuweisung hinzufügen** aus.
-
-   1. Wählen Sie im rechten Kontextbereich in der Dropdownliste **Rolle** die Option **Mitwirkender für die Datenträgermomentaufnahme** aus. Wählen Sie die verwaltete Identität des Sicherungstresors und dann **Speichern** aus.
-
-   >[!TIP]
-   >Geben Sie den Namen des Sicherungstresors ein, um die verwaltete Identität des Tresors auszuwählen.
-
-   ![Rolle „Mitwirkender für die Datenträgermomentaufnahme“ hinzufügen](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
-
-1. Vergewissern Sie sich, dass die verwaltete Identität des Sicherungstresors über den richtigen Satz an Rollenzuweisungen für den Quelldatenträger und die Ressourcengruppe, die als Momentaufnahmen-Datenspeicher verfügt, fungiert.
-
-   1. Wechseln Sie zu **Sicherungstresor > Identität**, und wählen Sie **Azure-Rollenzuweisungen**.
-
-      ![Azure-Rollenzuweisungen auswählen](./media/backup-managed-disks/azure-role-assignments.png)
-
-   1. Überprüfen Sie, ob Rolle, Ressourcenname und Ressourcentyp ordnungsgemäß angezeigt werden.
-
-      ![Rolle, Ressourcennamen und Ressourcentyp überprüfen](./media/backup-managed-disks/verify-role.png)
-
-   >[!NOTE]
-   >Während die Rollenzuweisungen im Portal richtig widergegeben werden, kann es ungefähr 15 Minuten dauern, bis die Berechtigung auf die verwaltete Identität des Sicherungstresors angewendet wird.
-
-1. Nachdem die Voraussetzungen erfüllt sind, wechseln Sie zu **Sicherungstresor > Übersicht**, und wählen Sie **Sicherung** aus, um mit der Konfiguration der Datenträgersicherung zu beginnen.
-
-   ![Sicherung auswählen](./media/backup-managed-disks/select-backup.png)
-
-1. Wählen Sie auf der Registerkarte **Grundlagen** die Option **Azure-Datenträger** als DataSource-Typ aus.
-
-   ![Azure-Datenträger auswählen](./media/backup-managed-disks/select-azure-disk.png)
-
-   >[!NOTE]
-   >Azure Backup verwendet [inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) von verwalteten Datenträgern, auf denen nur die Deltaänderungen auf dem Datenträger seit der letzten Momentaufnahme im HDD Standard-Speicher gespeichert werden. Dies ist auch unabhängig vom Speichertyp des übergeordneten Datenträgers. Für höhere Zuverlässigkeit werden inkrementelle Momentaufnahmen standardmäßig in zonenredundantem Speicher (ZRS) in Regionen gespeichert, die ZRS unterstützen. Derzeit unterstützt Azure Disk Backup operative Sicherungen von verwalteten Datenträgern, die die Sicherungen nicht in den Speicher des Sicherungstresors kopieren. Die Redundanzeinstellung für den Sicherungsspeicher des Sicherungstresors gilt daher nicht für die Wiederherstellungspunkte.
+   :::image type="content" source="./media/backup-managed-disks/select-backup-vault-inline.png" alt-text="Screenshot: Prozess zum Auswählen eines Azure Backup-Tresors." lightbox="./media/backup-managed-disks/select-backup-vault-expanded.png":::
 
 1. Wählen Sie auf der Registerkarte **Sicherungsrichtlinie** eine Sicherungsrichtlinie aus.
 
-   ![Auswählen der Sicherungsrichtlinie](./media/backup-managed-disks/choose-backup-policy.png)
+   :::image type="content" source="./media/backup-managed-disks/choose-backup-policy-inline.png" alt-text="Screenshot: Prozess zum Auswählen einer Sicherungsrichtlinie." lightbox="./media/backup-managed-disks/choose-backup-policy-expanded.png":::
 
-1. Wählen Sie auf der Registerkarte **Ressourcen** die Option **Azure-Datenträger auswählen**. Wählen Sie im rechten Kontextbereich die zu sichernden Datenträger aus.
+1. Klicken Sie auf der Registerkarte **Datenquellen** auf **+ Hinzufügen/Bearbeiten**, um eine oder mehrere verwaltete Azure-Datenträger auszuwählen, für die Sie die Sicherung konfigurieren möchten.
 
-   ![Zu sichernde Datenträger auswählen](./media/backup-managed-disks/select-disks-to-backup.png)
+   :::image type="content" source="./media/backup-managed-disks/choose-azure-managed-disks-inline.png" alt-text="Screenshot: Prozess zum Auswählen von verwalteten Azure-Datenträgern." lightbox="./media/backup-managed-disks/choose-azure-managed-disks-expanded.png":::
 
-   >[!NOTE]
+   >[!Note]
    >Im Portal können Sie zwar mehrere Datenträger auswählen und die Sicherung konfigurieren, jeder Datenträger ist jedoch eine einzelne Sicherungsinstanz. Derzeit unterstützt Azure Disk Backup nur die Sicherung einzelner Datenträger. Zeitpunktsicherungen von mehreren an einen virtuellen Computer angefügten Datenträgern werden nicht unterstützt.
    >
-   >Bei der Verwendung des Portals sind Sie auf die Auswahl der Datenträger innerhalb eines Abonnements beschränkt. Wenn Sie mehrere Datenträger sichern müssen oder die Datenträger auf verschiedene Abonnements verteilt sind, können Sie Skripts zur Automatisierung verwenden.
+   >Im Azure-Portal können Sie nur Datenträger innerhalb desselben Abonnements auswählen. Wenn mehrere Datenträger gesichert werden sollen oder sich die Datenträger in verschiedenen Abonnements befinden, können Sie Skripts ([PowerShell](/azure/backup/backup-managed-disks-ps)/[CLI](/azure/backup/backup-managed-disks-cli)) zur Automatisierung verwenden. 
    >
-   >Weitere Informationen zur regionalen Verfügbarkeit von Azure Disk Backup, zu unterstützten Szenarien und zu Einschränkungen finden Sie in der [Supportmatrix](disk-backup-support-matrix.md).
+   >In der [Unterstützungsmatrix](/azure/backup/disk-backup-support-matrix) finden Sie weitere Informationen zur regionalen Verfügbarkeit von Azure Disk Backup, zu unterstützten Szenarien und zu Einschränkungen.
 
-1. Wählen Sie eine **Momentaufnahme-Ressourcengruppe** und dann **Überprüfen** aus. Dies ist die Ressourcengruppe, in der der Azure Backup-Dienst die inkrementellen Momentaufnahmen für den Sicherungstresor erstellt und verwaltet. Die verwaltete Identität wird mit den erforderlichen Rollenberechtigungen als Teil der Voraussetzungen zugewiesen.
+1. Wählen Sie die **Ressourcengruppe „Momentaufnahme“** aus, und klicken Sie auf **Überprüfen**, um Voraussetzungsprüfungen zu initiieren.
 
-   ![Momentaufnahme-Ressourcengruppe auswählen](./media/backup-managed-disks/select-snapshot-resource-group.png)
+   Auswählen der Ressourcengruppe zum Speichern und Verwalten von Momentaufnahmen:
 
-   >[!NOTE]
-   >Die Überprüfung kann einige Minuten dauern, bevor Sie die Konfiguration des Sicherungsworkflows abschließen können. Die Überprüfung kann fehlschlagen, wenn:
+   - Wählen Sie nicht dieselbe Ressourcengruppe wie die des Quelldatenträgers aus.
+   
+   - Als Richtlinie wird empfohlen, eine dedizierte Ressourcengruppe als Momentaufnahmen-Datenspeicher zu erstellen, der vom Azure Backup-Dienst verwendet werden soll. Mit einer dedizierten Ressourcengruppe lassen sich die Zugriffsrechte auf die Ressourcengruppe beschränken, was Sicherheit gewährleistet und eine einfache Verwaltung der Sicherungsdaten ermöglicht.
+
+   - Sie können diese Ressourcengruppe zum Speichern von Momentaufnahmen auf mehreren Datenträgern verwenden, die gesichert werden (oder deren Sicherung geplant ist).
+
+   - Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen. Wählen Sie daher eine Ressourcengruppe im selben Abonnement wie der zu sichernde Datenträger aus. [Erfahren Sie mehr](/azure/virtual-machines/disks-incremental-snapshots#restrictions) über inkrementelle Momentaufnahmen für verwaltete Datenträger.
+
+   - Beim Konfigurieren der Sicherung eines Datenträgers können Sie die Ressourcengruppe für Momentaufnahmen, die einer Sicherungsinstanz zugewiesen ist, nicht ändern.
+
+   - Azure Backup erstellt während eines Sicherungsvorgangs ein Speicherkonto in der Ressourcengruppe „Momentaufnahme“. Pro Ressourcengruppe für Momentaufnahmen wird nur ein Speicherkonto erstellt. Das Konto wird auf mehreren Datenträgersicherungsinstanzen wiederverwendet, die dieselbe Ressourcengruppe wie die Ressourcengruppe für Momentaufnahmen verwenden.
+
+     - Im Speicherkonto werden die Momentaufnahmen nicht gespeichert. Die inkrementellen Momentaufnahmen des verwalteten Datenträgers sind ARM-Ressourcen, die in der Ressourcengruppe und nicht in einem Speicherkonto erstellt werden.
+     - Das Speicherkonto speichert die Metadaten für jeden Wiederherstellungspunkt. Azure Backup Dienst erstellt einen Blobcontainer pro Datenträgersicherungsinstanz. Für jeden Wiederherstellungspunkt wird ein Blockblob erstellt, um Metadaten zu speichern, die den Wiederherstellungspunkt beschreiben (z. B. Abonnement, Datenträger-ID, Datenträgerattribute usw.) und kaum Speicherplatz (wenige KiBs) belegen.
+     - Das Speicherkonto wird als RA-GZRS erstellt, wenn die Region Zonenredundanz unterstützt. Unterstützt die Region keine Zonenredundanz, wird das Speicherkonto als RA-GRS erstellt.
+       Wenn eine vorhandene Richtlinie die Erstellung eines Speicherkontos mit GRS-Redundanz für das Abonnement oder die Ressourcengruppe verhindert, wird das Speicherkonto als LRS erstellt. Das erstellte Speicherkonto ist **Universell v2**, wobei Blockblobs auf der heißen Ebene im Blobcontainer gespeichert werden.
+     - Die Anzahl der Wiederherstellungspunkte wird durch die Sicherungsrichtlinie bestimmt, die zum Konfigurieren der Sicherung der Datenträgersicherungsinstanz verwendet wird. Gemäß dem Garbage Collection-Prozess werden sie älteren Blockblobs gelöscht, wenn die entsprechenden älteren Wiederherstellungspunkte gelöscht werden.
+
+   - Wenden Sie keine Ressourcensperren, Richtlinien oder Firewall auf vom Azure Backup-Dienst erstellte Ressourcengruppen für Momentaufnahmen oder Speicherkonten an. Der Dienst erstellt und verwaltet Ressourcen in dieser Ressourcengruppe „Momentaufnahme“, die einer Sicherungsinstanz zugewiesen ist, wenn Sie eine Datenträgersicherung konfigurieren. Der Dienst erstellt das Speicherkonto und seine Ressourcen, und diese sollten nicht gelöscht oder verschoben werden.
+
+     >[!Note]
+     >Wenn ein Speicherkonto gelöscht wird, schlagen Sicherungen fehl, und die Wiederherstellung aller vorhandenen Wiederherstellungspunkte schlägt fehl.
+
+   :::image type="content" source="./media/backup-managed-disks/validate-snapshot-resource-group-inline.png" alt-text="Screenshot: Prozess zum Initiieren von Voraussetzungsprüfungen." lightbox="./media/backup-managed-disks/validate-snapshot-resource-group-expanded.png":::
+
+1. Überprüfen Sie nach Abschluss der Überprüfung, ob in der Spalte „Sicherungsbereitschaft“ Fehler gemeldet werden.
+
+   >[!Note]
+   >Die Überprüfung kann einige Minuten in Anspruch nehmen. Die Überprüfung kann fehlschlagen, wenn:
    >
-   > - Ein Datenträger nicht unterstützt wird. Informationen zu nicht unterstützten Szenarien finden Sie in der [Supportmatrix](disk-backup-support-matrix.md).
-   > - Die verwaltete Identität des Sicherungstresors auf dem **Datenträger**, der gesichert werden soll, oder in der **Momentaufnahme-Ressourcengruppe**, in die inkrementellen Momentaufnahmen gespeichert werden, keine gültigen Rollenzuweisungen aufweist.
+   >- Ein Datenträger wird nicht unterstützt. Informationen zu nicht unterstützten Szenarien finden Sie in der [Unterstützungsmatrix](/azure/backup/disk-backup-support-matrix).
+   >- Die verwaltete Identität des Azure Backup-Tresors auf dem _Datenträger_, der gesichert werden soll, oder in der _Ressourcengruppe für Momentaufnahmen_, in die inkrementellen Momentaufnahmen gespeichert werden, keine gültigen Rollenzuweisungen aufweist.
 
-1. Wählen Sie nach erfolgreicher Überprüfung **Überprüfen und konfigurieren** aus, um die Sicherung der ausgewählten Datenträger zu konfigurieren.
+   Wenn in der Spalte **Sicherungsbereitschaft** die Fehlermeldung _Rollenzuweisung nicht durchgeführt_ angezeigt wird, benötigt die verwaltete Identität des Azure Backup-Tresors Rollenberechtigungen für die ausgewählten Datenträger und/oder für die Ressourcengruppe „Momentaufnahme“. 
+
+   :::image type="content" source="./media/backup-managed-disks/role-assignment-not-done-error-inline.png" alt-text="Screenshot: Fehlermeldung „Rollenzuweisung nicht durchgeführt“." lightbox="./media/backup-managed-disks/role-assignment-not-done-error-expanded.png":::
+
+   Die folgenden Voraussetzungen müssen erfüllt sein, um das Sichern von verwalteten Datenträgern zu konfigurieren:
+
+   >[!Note]
+   >Der Sicherungstresor verwendet die verwaltete Identität für den Zugriff auf andere Azure-Ressourcen. Zum Konfigurieren einer Sicherung verwalteter Datenträger benötigt die verwaltete Identität des Azure Backup-Tresors einen Satz von Berechtigungen für die Quelldatenträger und Ressourcengruppen, in denen Momentaufnahmen erstellt und verwaltet werden.
+
+   Eine systemseitig zugewiesene verwaltete Identität ist auf eine Ressource beschränkt und an den Lebenszyklus dieser Ressource gebunden. Um der verwalteten Identität Berechtigungen zu erteilen, verwenden Sie die rollenbasierten Zugriffssteuerung von Azure (Azure RBAC). Eine verwaltete Identität ist ein spezieller Dienstprinzipal, der nur zusammen mit Azure-Ressourcen verwendet werden kann. Informieren Sie sich ausführlicher über [verwaltete Identitäten](/azure/active-directory/managed-identities-azure-resources/overview).
+
+   - Weisen Sie der verwalteten Identität des Azure Backup-Tresors auf dem Quelldatenträger, der gesichert werden muss, die Rolle **Leser für die Datenträgersicherung** zu.
+   - Weisen Sie der verwalteten Identität des Sicherungstresors in der Ressourcengruppe, in der Sicherungen vom Azure Backup-Dienst erstellt und verwaltet werden, die Rolle Mitwirkender für die Datenträgermomentaufnahme zu. Die Datenträgermomentaufnahmen werden in einer Ressourcengruppe innerhalb Ihres Abonnements gespeichert. Damit der Azure Backup-Dienst Momentaufnahmen erstellen, speichern und verwalten kann, müssen Sie Berechtigungen für den Sicherungstresor bereitstellen.
+
+   >[!Note]
+   >Der Flow „Sicherung konfigurieren“ im Azure-Portal hilft Ihnen beim Erteilen der erforderlichen Rollenberechtigungen für die oben genannten Ressourcen. 
+
+1. Aktivieren Sie das Kontrollkästchen neben jeder Zeile mit dem Fehlermeldungstatus _Rollenzuweisung nicht durchgeführt_ in der Spalte „Sicherungsbereitschaft“, und klicken Sie auf **Fehlende Rollen hinzufügen**, um automatisch die erforderlichen Rollenberechtigungen für die verwaltete Identität des Azure Backup-Tresors für ausgewählte Ressourcen zu erteilen.
+
+   :::image type="content" source="./media/backup-managed-disks/add-missing-roles-inline.png" alt-text="Screenshot: Prozess zum Hinzufügen fehlender Rollen." lightbox="./media/backup-managed-disks/add-missing-roles-expanded.png":::
+
+1. Klicken Sie auf **Bestätigen**, um ihre Zustimmung zu erteilen. Azure Backup gibt Änderungen an Rollenzuweisungen automatisch in Ihrem Namen weiter und versucht, diese erneut zu validieren.
+
+   Wenn Sie die Berechtigung für die verwaltete Identität des Azure Backup-Tresors für die ausgewählten Datenträger und die Momentaufnahme-Ressourcengruppen erteilen möchten, wählen Sie in der Dropdownliste **Bereich** die Option **Ressource** aus. 
+
+   :::image type="content" source="./media/backup-managed-disks/confirm-role-propagation-inline.png" alt-text="Screenshot: Option zum Erteilen der Zustimmung für die automatische Rollenzuweisung an Azure Backup." lightbox="./media/backup-managed-disks/confirm-role-propagation-expanded.png":::
+
+   >[!Tip]
+   >Wenn Sie planen, in Zukunft die Sicherung für andere Datenträger in der gleichen Ressourcengruppe bzw. demselben Abonnement zu konfigurieren, können Sie die Berechtigung auf der Ebene der Ressourcengruppe oder des Abonnements erteilen.
+
+   :::image type="content" source="./media/backup-managed-disks/permission-deployment-in-progress-inline.png" alt-text="Screenshot: Bereitstellung der Berechtigung." lightbox="./media/backup-managed-disks/permission-deployment-in-progress-expanded.png":::
+
+   :::image type="content" source="./media/backup-managed-disks/permission-waiting-to-propagate-inline.png" alt-text="Screenshot: Berechtigung, die auf die Weitergabe an die Ressourcengruppe wartet." lightbox="./media/backup-managed-disks/permission-waiting-to-propagate-expanded.png":::
+
+   :::image type="content" source="./media/backup-managed-disks/revalidating-permission-propagation-inline.png" alt-text="Screenshot: Versuche, die Berechtigungsweitergabe bei fehlgeschlagenen Szenarien erneut zu validieren." lightbox="./media/backup-managed-disks/revalidating-permission-propagation-expanded.png":::
+
+   >[!Note]
+   >- In einigen Fällen kann es bis zu 30 Minuten dauern, bis die Rollenzuweisungen weitergegeben werden, was zu einem Fehler bei der erneuten Validierung führt. Wiederholen Sie in diesem Szenario den Vorgang nach einiger Zeit.
+   >- Wenn die Aktion **Fehlende Rollen hinzufügen** keine Berechtigungen zuweisen kann und in der Spalte „Sicherungsbereitschaft“ der Fehler „Unzureichende Berechtigung für die Rollenzuweisung“ angezeigt wird, bedeutet dies, dass Sie nicht über die Berechtigung zum Zuweisen von Rollenberechtigungen verfügen. Wählen Sie „Rollenzuweisungsvorlage herunterladen“ aus, um Rollenzuweisungen als Skripts herunterzuladen, und wenden Sie sich an Ihren IT-Administrator, um die Skripts auszuführen, um die Voraussetzungen zu erfüllen. 
+
+   :::image type="content" source="./media/backup-managed-disks/permission-propagation-taking-long-time-inline.png" alt-text="Screenshot: Berechtigungsweitergabe-Instanzen dauert länger (bis zu 30 Sekunden)." lightbox="./media/backup-managed-disks/permission-propagation-taking-long-time-expanded.png":::
+
+1. Klicken Sie nach erfolgreicher Überprüfung auf **Weiter**, um zur Registerkarte **Überprüfen und konfigurieren** zu gelangen, und klicken Sie dann auf **Sicherung konfigurieren**, um die Sicherung der ausgewählten Datenträger zu konfigurieren.
+
+   :::image type="content" source="./media/backup-managed-disks/configure-backup-of-selected-disks-inline.png" alt-text="Screenshot: Prozess zum Konfigurieren der Sicherung ausgewählter Datenträger." lightbox="./media/backup-managed-disks/configure-backup-of-selected-disks-expanded.png":::
 
 ## <a name="run-an-on-demand-backup"></a>Ausführen einer On-Demand-Sicherung
 
