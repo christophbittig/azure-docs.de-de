@@ -78,6 +78,8 @@
           href: howto-conditional-access-policy-compliant-device.md
         - name: Zugriff blockieren
           href: howto-conditional-access-policy-block-access.md
+    - name: Konfigurieren von Resilienzstandardwerten
+      href: resilience-defaults.md
     - name: Blockieren älterer Authentifizierungsmethoden
       href: block-legacy-authentication.md
     - name: Konfigurieren des reinen Berichtsmodus

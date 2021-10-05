@@ -1,14 +1,14 @@
 ---
-title: Integration von Azure DevTest Labs und DevOps | Microsoft-Dokumentation
+title: Integration von Azure DevTest Labs und Azure DevOps
 description: Erfahren Sie, wie Sie Labs von Azure DevTest Labs in CI/CD-Pipelines (Continuous Integration/Continuous Delivery) in einer Unternehmensumgebung verwenden.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c18df3c651dc3f11bbaaec4e71aea38644dffe1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481067"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595083"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Integration von Azure DevTest Labs und Azure DevOps
 DevOps ist eine Softwareentwicklungsmethodik, bei der Softwareentwicklung (Dev) und Betrieb (Ops) für ein System zusammengefasst werden. Dieses System kann neue Features, Updates und Fehlerbehebungen in Einklang mit den Geschäftszielen bereitstellen. Bei dieser Methodik wird alles vom Entwerfen neuer Features anhand von Zielen, Nutzungsmustern und Kundenfeedback bis zum Beheben von Fehlern, dem Wiederherstellen und dem Härten des Systems zusammengefasst. Eine leicht identifizierbare Komponente dieser Methodik ist die CI/CD-Pipeline (Continuous Integration/Continuous Delivery). Eine CI/CD-Pipeline verwendet Informationen, Code und Ressourcen eines Commits in einer Reihe von Schritten, die das Erstellen, Testen und Bereitstellen einschließen, mit denen das System erstellt wird. In diesem Artikel liegt der Schwerpunkt auf der effektiven Nutzung von Labs in einer Pipeline in einer Unternehmensumgebung. 
@@ -37,10 +37,10 @@ Schwerpunkt der Buildpipeline ist das Erstellen eines Pakets von Komponenten, di
 
 Für Build-Agents erhöht die Möglichkeit von Labs, den Zugriff einzuschränken, die Sicherheit und reduziert die Wahrscheinlichkeit versehentlicher Beschädigungen.  
 
-### <a name="test"></a>Test 
+### <a name="test"></a>Testen 
 DevTest Labs ermöglicht die automatisierte Erstellung einer Azure-Ressource (virtuelle Computer, Umgebungen) durch eine CI/CD-Pipeline. Diese Ressource kann dann für automatisierte und manuelle Tests verwendet werden. Die virtuellen Computer werden mit Artefakten oder Formeln erstellt, die auf Informationen aus dem Buildvorgang beruhen. So ist es möglich, verschiedene benutzerdefinierte Konfigurationen zu erstellen, die für die Testzwecke erforderlich sind.   
 
-### <a name="release"></a>Release 
+### <a name="release"></a>Freigabe 
 DevTest Labs wird häufig für die Überprüfung während der Veröffentlichung verwendet, bevor der Code bereitgestellt wird. Der Ablauf ähnelt dem beim Testen im Abschnitt „Entwickeln“. Produktionsressourcen sollten nicht in DevTest Labs bereitgestellt werden. 
 
 ### <a name="customization"></a>Anpassung 

@@ -1,29 +1,29 @@
 ---
 title: Kopieren von Daten in oder aus Azure Data Explorer
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Daten mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline in oder aus Azure Data Explorer kopiert werden.
-ms.author: susabat
-author: ssabat
+description: Erfahren Sie, wie Daten mithilfe einer Copy-Aktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline in oder aus Azure Data Explorer kopiert werden.
+ms.author: orspodek
+author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 4f3718699e7438b3b45c84eebebbbbf75126d793
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 511e1d58e3abf3c44025a02059c5d6aa947809c0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304532"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771895"
 ---
-# <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
+# <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory oder Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in oder aus [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität in Azure Data Factory- und Synapse Analytics-Pipelines verwenden, um Daten in oder aus [Azure Data Explorer](/azure/data-explorer/data-explorer-overview) zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 >[!TIP]
->Weitere Informationen zur Integration von Azure Data Factory und Azure Data Explorer im Allgemeinen finden Sie unter [Integration von Azure Data Explorer und Azure Data Factory](/azure/data-explorer/data-factory-integration).
+>Weitere allgemeine Informationen zur Integration von Azure Data Explorer mit dem Dienst finden Sie unter [Integrieren von Azure Data Explorer](/azure/data-explorer/data-factory-integration).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -46,7 +46,7 @@ Mit dem Azure Data Explorer-Connector ist Folgendes möglich:
 ## <a name="getting-started"></a>Erste Schritte
 
 >[!TIP]
->Eine exemplarische Vorgehensweise zur Verwendung des Azure Data Explorer-Connectors finden Sie unter [Kopieren von Daten in Azure Data Explorer mithilfe von Azure Data Factory](/azure/data-explorer/data-factory-load-data) und [Massenkopieren aus einer Datenbank zu Azure Data Explorer](/azure/data-explorer/data-factory-template).
+>Eine exemplarische Vorgehensweise zur Verwendung des Azure Data Explorer-Connectors finden Sie unter [Kopieren von Daten in/aus Azure Data Explorer](/azure/data-explorer/data-factory-load-data) und [Massenkopieren aus einer Datenbank zu Azure Data Explorer](/azure/data-explorer/data-factory-template).
 
 [!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
@@ -58,7 +58,7 @@ Führen Sie die folgenden Schritte aus, um einen verknüpften Dienst für Azure 
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -100,18 +100,18 @@ Zur Verwendung der Dienstprinzipalauthentifizierung führen Sie die folgenden Sc
     - Weisen Sie der Datenbank **als Senke** mindestens die Rolle **Database ingestor** (Datenbankerfasser) zu.
 
 >[!NOTE]
->Wenn Sie die Data Factory-Benutzeroberfläche für die Erstellung verwenden, wird standardmäßig Ihr Anmeldebenutzerkonto verwendet, um Azure Data Explorer-Cluster, -Datenbanken und -Tabellen aufzulisten. Sie können die Objekte mithilfe des Dienstprinzipals auflisten, indem Sie auf das Dropdownfeld neben der Aktualisierungsschaltfläche klicken, oder den Namen manuell eingeben, wenn Sie für diese Vorgänge nicht berechtigt sind.
+>Wenn Sie die Benutzeroberfläche für die Erstellung verwenden, wird standardmäßig Ihr Anmeldebenutzerkonto verwendet, um Azure Data Explorer-Cluster, -Datenbanken und -Tabellen aufzulisten. Sie können die Objekte mithilfe des Dienstprinzipals auflisten, indem Sie auf das Dropdownfeld neben der Aktualisierungsschaltfläche klicken, oder den Namen manuell eingeben, wenn Sie für diese Vorgänge nicht berechtigt sind.
 
 Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureDataExplorer** festgelegt werden. | Ja |
 | endpoint | Endpunkt-URL des Azure Data Explorer-Clusters im Format `https://<clusterName>.<regionName>.kusto.windows.net` | Ja |
 | database | Name der Datenbank | Ja |
 | tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Dies wird in der [Kusto-Verbindungszeichenfolge](/azure/kusto/api/connection-strings/kusto#application-authentication-properties) als „Autoritäts-ID“ bezeichnet. Sie können ab abrufen, indem Sie im Azure-Portal mit dem Mauszeiger auf den Bereich oben rechts zeigen. | Ja |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. Dies wird in der [Kusto-Verbindungszeichenfolge](/azure/kusto/api/connection-strings/kusto#application-authentication-properties) als „AAD-Anwendungsclient-ID“ bezeichnet. | Ja |
-| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Dies wird in der [Kusto-Verbindungszeichenfolge](/azure/kusto/api/connection-strings/kusto#application-authentication-properties) als „AAD-Anwendungsschlüssel“ bezeichnet. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf in Azure Key Vault gespeicherte sichere Daten](store-credentials-in-key-vault.md). | Ja |
+| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Dies wird in der [Kusto-Verbindungszeichenfolge](/azure/kusto/api/connection-strings/kusto#application-authentication-properties) als „AAD-Anwendungsschlüssel“ bezeichnet. Markieren Sie dieses Feld als **SecureString**, um es sicher zu speichern, oder [verweisen Sie auf sicher in Azure Key Vault gespeicherte Daten](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn kein Wert angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 **Beispiel: Verwenden der Dienstprinzipal-Schlüsselauthentifizierung**
@@ -141,7 +141,7 @@ Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden S
 
 Führen Sie die folgenden Schritte zum Gewähren von Berechtigungen aus, um die Authentifizierung mit einer systemseitig zugewiesenen verwalteten Identität zu verwenden:
 
-1. [Rufen Sie die Informationen zur verwalteten Data Factory-Identität ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert von **Objekt-ID der verwalteten Identität** kopieren, der zusammen mit Ihrer Factory generiert wurde.
+1. [Rufen Sie die Informationen zur verwalteten Identität ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert der **Objekt-ID der verwalteten Identität** kopieren, der zusammen mit Ihrer Factory oder Ihrem Synapse-Arbeitsbereich generiert wurde.
 
 2. Erteilen Sie der verwalteten Identität die geeigneten Berechtigungen in Azure Data Explorer. Unter [Verwalten der Berechtigungen für Datenbanken in Azure Data Explorer](/azure/data-explorer/manage-database-permissions) finden Sie ausführliche Informationen zu Rollen und Berechtigungen sowie zur Verwaltung von Berechtigungen. Gehen Sie wie folgt vor:
 
@@ -149,11 +149,11 @@ Führen Sie die folgenden Schritte zum Gewähren von Berechtigungen aus, um die 
     - Weisen Sie der Datenbank **als Senke** mindestens die Rolle **Database ingestor** (Datenbankerfasser) zu.
 
 >[!NOTE]
->Wenn Sie die Data Factory-Benutzeroberfläche für die Erstellung verwenden, wird Ihr Anmeldebenutzerkonto verwendet, um Azure Data Explorer-Cluster, -Datenbanken und -Tabellen aufzulisten. Geben Sie den Namen manuell ein, wenn Sie keine Berechtigung für diese Vorgänge besitzen.
+>Wenn Sie die Benutzeroberfläche für die Erstellung verwenden, wird Ihr Anmeldebenutzerkonto verwendet, um Azure Data Explorer-Cluster, -Datenbanken und -Tabellen aufzulisten. Geben Sie den Namen manuell ein, wenn Sie keine Berechtigung für diese Vorgänge besitzen.
 
 Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureDataExplorer** festgelegt werden. | Ja |
 | endpoint | Endpunkt-URL des Azure Data Explorer-Clusters im Format `https://<clusterName>.<regionName>.kusto.windows.net` | Ja |
@@ -185,11 +185,11 @@ Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer benut
     - Weisen Sie der Datenbank **als Quelle** mindestens die Rolle **Database viewer** (Anzeigender Datenbankbenutzer) zu.
     - Weisen Sie der Datenbank **als Senke** mindestens die Rolle **Database ingestor** (Datenbankerfasser) zu.
      
-2. Weisen Sie Ihrer Data Factory eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten zu, und [erstellen Sie Anmeldeinformationen](data-factory-service-identity.md#credentials) für jede benutzerseitig zugewiesene verwaltete Identität.
+2. Weisen Sie Ihrer Data Factory oder Ihrem Synapse-Arbeitsbereich eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten zu, und [erstellen Sie Anmeldeinformationen](data-factory-service-identity.md#credentials) für jede benutzerseitig zugewiesene verwaltete Identität.
 
 Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureDataExplorer** festgelegt werden. | Ja |
 | endpoint | Endpunkt-URL des Azure Data Explorer-Clusters im Format `https://<clusterName>.<regionName>.kusto.windows.net` | Ja |
@@ -217,13 +217,13 @@ Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dien
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
-Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie unter [Datasets in Azure Data Factory](concepts-datasets-linked-services.md). Dieser Abschnitt enthält die Eigenschaften, die mit dem Azure Data Explorer-Dataset unterstützt werden.
+Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält die Eigenschaften, die mit dem Azure Data Explorer-Dataset unterstützt werden.
 
 Legen Sie zum Kopieren von Daten in Azure Data Explorer die type-Eigenschaft des Datasets auf **AzureDataExplorerTable** fest.
 
 Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureDataExplorerTable** festgelegt werden. | Ja |
 | table | Der Name der Tabelle, auf die der verknüpfte Dienst verweist. | Quelle: Ja, Senke: Nein |
@@ -249,13 +249,13 @@ Folgende Eigenschaften werden unterstützt:
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 
-Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die mit Azure Data Explorer-Quellen und -Senken unterstützt werden.
+Eine vollständige Liste der verfügbaren Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie unter [Pipelines und Aktivitäten](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die mit Azure Data Explorer-Quellen und -Senken unterstützt werden.
 
 ### <a name="azure-data-explorer-as-source"></a>Azure Data Explorer als Quelle
 
 Legen Sie zum Kopieren von Daten aus Azure Data Explorer die **type**-Eigenschaft in der Quelle der Kopieraktivität auf **AzureDataExplorerSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureDataExplorerSource** | Ja |
 | Abfrage | Eine in einem [KQL-Format](/azure/kusto/query/) angegebene schreibgeschützte Anforderung. Verwenden Sie die benutzerdefinierte KQL-Abfrage als Verweis. | Ja |
@@ -302,7 +302,7 @@ Legen Sie zum Kopieren von Daten aus Azure Data Explorer die **type**-Eigenschaf
 
 Legen Sie zum Kopieren von Daten in Azure Data Explorer die type-Eigenschaft in der Senke der Kopieraktivität auf **AzureDataExplorerSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureDataExplorerSink**. | Ja |
 | ingestionMappingName | Der Name einer vorab erstellten [Zuordnung](/azure/kusto/management/mappings#csv-mapping) für eine Kusto-Tabelle. Zum Zuordnen der Spalten aus der Quelle zu Azure Data Explorer (gilt für [alle unterstützten Quellspeicher und -formate](copy-activity-overview.md#supported-data-stores-and-formats), einschließlich der Formate CSV, JSON und Avro) können Sie die Kopieraktivität [Spaltenzuordnung](copy-activity-schema-and-type-mapping.md) (implizit anhand des Namens oder explizit wie konfiguriert) und/oder Azure Data Explorer-Zuordnungen verwenden. | Nein |
@@ -347,6 +347,6 @@ Weitere Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Liste der Datenspeicher, die von der Kopieraktivität in Azure Data Factory als Quellen und Senken unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+* Eine Liste der Datenspeicher, die die Copy-Aktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-* Weitere Informationen finden Sie unter [Kopieren von Daten in Azure Data Explorer mithilfe von Azure Data Factory](/azure/data-explorer/data-factory-load-data).
+* Weitere Informationen finden Sie unter [Kopieren von Daten in Azure Data Explorer mithilfe von Azure Data Factory und Synapse Analytics](/azure/data-explorer/data-factory-load-data).

@@ -1,14 +1,14 @@
 ---
-title: Posten einer Ankündigung in einem Lab in Azure DevTest Labs | Microsoft-Dokumentation
+title: Posten einer Ankündigung in einem Lab
 description: Hier erfahren Sie, wie Sie eine benutzerdefinierte Ankündigung in einem vorhandenen Lab posten, um Benutzer über kürzlich vorgenommene Änderungen oder Hinzufügungen zum Lab in Azure DevTest Labs zu benachrichtigen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 72c6ed7ab691ece094673ff5a158ffa769a9f7a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d9db6aa78a358307c8132956c166d0c722a237a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88270766"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665300"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Posten einer Ankündigung in einem Lab in Azure DevTest Labs
 

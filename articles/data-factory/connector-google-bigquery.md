@@ -1,25 +1,25 @@
 ---
-title: Kopieren von Daten aus Google BigQuery mithilfe von Azure Data Factory
+title: Kopieren von Daten aus Google BigQuery
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Daten aus Google BigQuery mithilfe einer Kopieraktivität in eine Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
+description: Erfahren Sie, wie Daten aus Google BigQuery mithilfe einer Copy-Aktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 368427d087f5ae609c50ec2c2de27e0af690e20c
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: aa59787675870483941f271778bbf5b907467668
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312733"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815151"
 ---
-# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopieren von Daten aus Google BigQuery mithilfe von Azure Data Factory
+# <a name="copy-data-from-google-bigquery-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus Google BigQuery mithilfe von Azure Data Factory oder Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Google BigQuery zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität in Azure Data Factory- und Synapse Analytics-Pipelines verwenden, um Daten aus Google BigQuery zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -30,7 +30,7 @@ Dieser Google BigQuery-Connector wird für die folgenden Aktivitäten unterstüt
 
 Sie können Daten aus Google BigQuery in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Data Factory bietet zum Herstellen von Konnektivität einen integrierten Treiber. Aus diesem Grund müssen Sie Treiber für die Verwendung dieses Connectors nicht manuell installieren.
+Der Dienst enthält einen integrierten Treiber zum Herstellen der Konnektivität. Aus diesem Grund müssen Sie Treiber für die Verwendung dieses Connectors nicht manuell installieren.
 
 >[!NOTE]
 >Dieses Google BigQuery-Connector wird basierend auf den BigQuery-APIs erstellt. Beachten Sie, dass BigQuery die maximale Rate eingehender Anforderung begrenzt und entsprechende Kontingente projektbezogen durchsetzt, siehe [Kontingente & Limits – API-Anfragen](https://cloud.google.com/bigquery/quotas#api_requests). Stellen Sie sicher, dass Sie nicht zu viele gleichzeitige Anforderungen für das Konto auslösen.
@@ -47,7 +47,7 @@ Gehen Sie wie folgt vor, um einen verknüpften Dienst mit Google BigQuery in der
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot der Erstellung eines neuen verknüpften Dienstes mit der Benutzeroberfläche von Azure Data Factory.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -69,7 +69,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zur Definition 
 
 Folgende Eigenschaften werden für den mit Google BigQuery verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **GoogleBigQuery** festgelegt werden. | Ja |
 | project | Das Projekt-ID des BigQuery-Standardprojekts, das abgefragt werden soll.  | Ja |
@@ -81,11 +81,11 @@ Folgende Eigenschaften werden für den mit Google BigQuery verknüpften Dienst u
 
 Legen Sie die Eigenschaft „authenticationType“ auf **UserAuthentication** fest, und geben Sie zusammen mit den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | clientId | Die ID der Anwendung, die verwendet wird, um das Aktualisierungstoken zu generieren. | Nein |
-| clientSecret | Das Geheimnis der Anwendung, das verwendet wird, um das Aktualisierungstoken zu generieren. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
-| refreshToken | Das Aktualisierungstoken, das von Google für die Autorisierung des Zugriffs auf BigQuery abgerufen wird. Informationen dazu, wie Sie ein Token erhalten, finden Sie unter [Abrufen von OAuth 2.0-Zugriffstoken](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) und in [diesem Communityblog](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
+| clientSecret | Das Geheimnis der Anwendung, das verwendet wird, um das Aktualisierungstoken zu generieren. Markieren Sie dieses Feld als einen „SecureString“, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
+| refreshToken | Das Aktualisierungstoken, das von Google für die Autorisierung des Zugriffs auf BigQuery abgerufen wird. Informationen dazu, wie Sie ein Token erhalten, finden Sie unter [Abrufen von OAuth 2.0-Zugriffstoken](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) und in [diesem Communityblog](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Markieren Sie dieses Feld als einen „SecureString“, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
 
 **Beispiel:**
 
@@ -117,7 +117,7 @@ Legen Sie die Eigenschaft „authenticationType“ auf **UserAuthentication** fe
 
 Legen Sie die Eigenschaft „authenticationType“ auf **ServiceAuthentication** fest, und geben Sie zusammen mit den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an. Dieser Authentifizierungstyp kann nur für eine selbstgehostete Integration Runtime verwendet werden.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | email | Die E-Mail-ID des Dienstkontos, die für „ServiceAuthentication“ verwendet wird. Diese kann nur für die selbstgehostete Integration Runtime verwendet werden.  | Nein |
 | keyFilePath | Der vollständige Pfad zur P12-Schlüsseldatei, die zur Authentifizierung der E-Mail-Adresse des Dienstkontos verwendet wird. | Nein |
@@ -152,7 +152,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus Google BigQuery die „type“-Eigenschaft des Datasets auf **GoogleBigQueryObject** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **GoogleBigQueryObject** | Ja |
 | dataset | Name des Google BigQuery-Datasets. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
@@ -184,7 +184,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus Google BigQuery den Quelltyp in der Kopieraktivität auf **GoogleBigQuerySource** fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **GoogleBigQuerySource** festgelegt werden. | Ja |
 | Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. z. B. `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
@@ -226,4 +226,4 @@ Legen Sie zum Kopieren von Daten aus Google BigQuery den Quelltyp in der Kopiera
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quelles und Senken für die Kopieraktivität unterstützt werden, finden Sie in [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

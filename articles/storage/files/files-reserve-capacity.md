@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 216ebdeb843f2faa76751f333e838c3cc32a6664
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 7fc4bb71327b2621d60a525ab277305ef13f40c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112539266"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673234"
 ---
 # <a name="optimize-costs-for-azure-files-with-reserved-capacity"></a>Optimieren der Kosten für Azure Files mit reservierter Kapazität
 Sie können Sie Geld bei den Speicherkosten für Azure-Dateifreigaben mit reservierter Kapazität sparen. Die reservierte Kapazität von Azure Files bietet Ihnen einen Rabatt auf die Speicherkosten, wenn Sie sich zu einer Reservierung für ein Jahr oder drei Jahre verpflichten. Eine Reservierung stellt eine feste Speicherkapazität für den Zeitraum der Reservierung zur Verfügung.
@@ -37,7 +37,7 @@ In den folgenden Abschnitten werden die Bedingungen einer Azure Files-Reservieru
 Sie können reservierte Azure Files-Kapazität in Einheiten von 10 TiB und 100 TiB pro Monat für eine Laufzeit von einem Jahr oder drei Jahren erwerben.
 
 ### <a name="reservation-scope"></a>Reservierungsumfang
-Reservierte Azure Files-Kapazität ist für ein einzelnes Abonnement oder für mehrere Abonnements (freigegebener Bereich) verfügbar. Bei Zuordnung zu einem einzelnen Abonnement wird der Reservierungsrabatt nur auf das ausgewählte Abonnement angewendet. Bei Zuordnung zu mehreren Abonnements wird der Reservierungsrabatt auf diese Abonnements innerhalb des Abrechnungskontexts des Kunden aufgeteilt. Die Reservierung gilt für Ihre Nutzung im erworbenen Umfang. Die Reservierung kann nicht auf ein bestimmtes Speicherkonto, einen bestimmten Container oder ein bestimmtes Objekt innerhalb des Abonnements beschränkt werden.
+Reservierte Azure Files-Kapazität ist für ein einzelnes Abonnement, für mehrere Abonnements (freigegebener Bereich) sowie für Verwaltungsgruppen verfügbar. Bei Zuordnung zu einem einzelnen Abonnement wird der Reservierungsrabatt nur auf das ausgewählte Abonnement angewendet. Bei Zuordnung zu mehreren Abonnements wird der Reservierungsrabatt auf diese Abonnements innerhalb des Abrechnungskontexts des Kunden aufgeteilt. Wenn eine Verwaltungsgruppe den Geltungsbereich bildet, wird der Reservierungsrabatt auf Abonnements angewandt, die sowohl Teil der Verwaltungsgruppe als auch des Abrechnungsbereichs sind. Die Reservierung gilt für Ihre Nutzung im erworbenen Umfang. Die Reservierung kann nicht auf ein bestimmtes Speicherkonto, einen bestimmten Container oder ein bestimmtes Objekt innerhalb des Abonnements beschränkt werden.
 
 Eine Azure Files-Kapazitätsreservierung deckt nur die Menge der Daten ab, die in einem Abonnement oder einer freigegebenen Ressourcengruppe gespeichert werden. Gebühren für Transaktionen, Bandbreite und Datenübertragung sind nicht in der Reservierung enthalten. Sobald Sie eine Reservierung erworben haben, werden die Kapazitätsgebühren für die jeweiligen Reservierungsattribute rabattiert und nicht mehr als nutzungsbasierte Bezahlung abgerechnet. Weitere Informationen zu Azure-Reservierungen finden Sie unter [Was sind Azure-Reservierungen?](../../cost-management-billing/reservations/save-compute-costs-reservations.md).
 

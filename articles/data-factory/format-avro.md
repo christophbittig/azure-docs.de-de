@@ -1,26 +1,26 @@
 ---
-title: Avro-Format in Azure Data Factory
+title: Avro-Format
 titleSuffix: Azure Data Factory & Azure Synapse
-description: In diesem Thema wird der Umgang mit dem Avro-Format in Azure Data Factory beschrieben.
+description: In diesem Thema wird der Umgang mit dem Avro-Format in Azure Data Factory und Synapse Analytics beschrieben.
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 6a4e3f033583f70250e12702b948fcd30875fb65
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 45c96b1e0777dd42bd1a7175a057e5a48f691ff4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123250700"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779671"
 ---
-# <a name="avro-format-in-azure-data-factory"></a>Avro-Format in Azure Data Factory
+# <a name="avro-format-in-azure-data-factory-and-synapse-analytics"></a>Das Avro-Format in Azure Data Factory und Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Nutzen Sie diesen Artikel, wenn Sie die **Avro-Dateien analysieren oder Daten im Avro-Format schreiben** möchten. 
+Nutzen Sie diesen Artikel, wenn Sie **Avro-Dateien analysieren oder Daten im Avro-Format schreiben** möchten. 
 
 Das Avro-Format wird für die folgenden Connectors unterstützt: [Amazon S3](connector-amazon-simple-storage-service.md), [Amazon S3-kompatibler Speicher](connector-amazon-s3-compatible-storage.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure Files](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [Hadoop Distributed File System](connector-hdfs.md), [HTTP](connector-http.md), [Oracle Cloud Storage](connector-oracle-cloud-storage.md) und [SFTP](connector-sftp.md).
 
@@ -28,11 +28,11 @@ Das Avro-Format wird für die folgenden Connectors unterstützt: [Amazon S3](co
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Avro-Dataset unterstützt werden.
 
-| Eigenschaft         | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft         | Beschreibung                                                  | Erforderlich |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Die type-Eigenschaft des Datasets muss auf **Avro** festgelegt werden. | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften. **Informationen hierzu finden Sie im Abschnitt „Dataset-Eigenschaften“ des Artikels über Connectors**. | Ja      |
-| avroCompressionCodec | Der Komprimierungscodec, der beim Schreiben in Avro-Dateien verwendet werden soll. Beim Lesen von Daten aus Avro-Dateien bestimmt Data Factory den Codec für die Komprimierung automatisch anhand der Dateimetadaten.<br>Unterstützte Typen sind **none** (Standard), **deflate** und **snappy**. Hinweis: „Snappy“ wird derzeit von der Kopieraktivität für das Lesen/Schreiben von Avro-Dateien nicht unterstützt. | Nein       |
+| avroCompressionCodec | Der Komprimierungscodec, der beim Schreiben in Avro-Dateien verwendet werden soll. Beim Lesen von Daten aus Avro-Dateien bestimmt der Dienst den Codec für die Komprimierung automatisch anhand der Dateimetadaten.<br>Unterstützte Typen sind **none** (Standard), **deflate** und **snappy**. Hinweis: „Snappy“ wird derzeit von der Kopieraktivität für das Lesen/Schreiben von Avro-Dateien nicht unterstützt. | Nein       |
 
 > [!NOTE]
 > Leerzeichen im Spaltennamen werden bei Avro-Dateien nicht unterstützt.
@@ -69,7 +69,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt.
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AvroSource** festgelegt werden. | Ja      |
 | storeSettings | Eine Gruppe von Eigenschaften für das Lesen von Daten aus einem Datenspeicher. Jeder dateibasierte Connector verfügt unter `storeSettings` über eigene unterstützte Leseeinstellungen. **Informationen hierzu finden Sie im Abschnitt über die Eigenschaften der Kopieraktivität im Artikel über Connectors**. | Nein       |
@@ -78,7 +78,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktiv
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivität unterstützt:
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AvroSink** festgelegt werden. | Ja      |
 | formatSettings          | Eine Gruppe von Eigenschaften. Weitere Informationen zu **Avro-Schreibeinstellungen** finden Sie in der Tabelle unten.| Nein      |
@@ -86,7 +86,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivit
 
 Unterstützte **Avro-Schreibeinstellungen** unter `formatSettings`:
 
-| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich                                              |
+| Eigenschaft      | Beschreibung                                                  | Erforderlich                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | Typ          | Der Typ von „formatSettings“ muss auf **AvroWriteSettings** festgelegt werden. | Ja                                                   |
 | maxRowsPerFile | Wenn Sie Daten in einen Ordner schreiben, können Sie in mehrere Dateien zu schreiben und die maximale Anzahl von Zeilen pro Datei angeben.  | Nein |
@@ -100,7 +100,7 @@ Bei Zuordnungsdatenflüssen können Sie in den folgenden Datenspeichern das Avro
 
 In der folgenden Tabelle sind die von einer Avro-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Platzhalterpfade | Alle Dateien, die dem Platzhalterpfad entsprechen, werden verarbeitet. Überschreibt den Ordner und den Dateipfad, die im Dataset festgelegt sind. | nein | String[] | wildcardPaths |
 | Partitionsstammpfad | Für partitionierte Dateidaten können Sie einen Partitionsstammpfad eingeben, um partitionierte Ordner als Spalten zu lesen. | nein | String | partitionRootPath |
@@ -114,7 +114,7 @@ In der folgenden Tabelle sind die von einer Avro-Quelle unterstützten Eigenscha
 
 In der folgenden Tabelle sind die von einer Avro-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
 
-| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Ordner löschen | Wenn der Zielordner vor dem Schreiben gelöscht wird. | nein | `true` oder `false` | truncate |
 | Dateinamenoption | Das Namensformat der geschriebenen Daten. Standardmäßig eine Datei pro Partition im Format `part-#####-tid-<guid>`. | nein | Muster: String <br> Pro Partition: String[] <br> Wie Daten in Spalte: String <br> Ausgabe in eine einzelne Datei: `['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

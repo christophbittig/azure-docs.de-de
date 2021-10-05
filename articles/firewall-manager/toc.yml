@@ -64,6 +64,8 @@
       href: multiple-public-ip-powershell.md
     - name: Definieren einer Regelhierarchie
       href: rule-hierarchy.md
+    - name: Konfigurieren eines DDoS-Schutzplans
+      href: configure-ddos.md
 - name: Verweis
   items:
     - name: Azure CLI

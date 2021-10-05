@@ -6,20 +6,23 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/18/2021
-ms.openlocfilehash: 26b98ad9c4c042c1e6bf60889625a4d23090f6f5
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.date: 09/27/2021
+ms.openlocfilehash: 0da3f53c41296f3cb467c00bb13649288ebd53c6
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515923"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213831"
 ---
 # <a name="connect-privately-and-securely-to-your-purview-account"></a>Privates und sicheres Herstellen einer Verbindung mit Ihrem Purview-Konto
-In diesem Leitfaden erfahren Sie, wie Sie private Endpunkte für Ihr Purview-Konto bereitstellen, sodass Sie nur über VNets und private Netzwerke eine Verbindung mit Ihrem Azure Purview-Konto herstellen können. Hierfür müssen Sie einen privaten _Kontoendpunkt_, einen privaten _Portalendpunkt_ und einen privaten _Erfassungsendpunkt_ für Ihr Azure Purview-Konto bereitstellen.
+In diesem Leitfaden erfahren Sie, wie Sie private Endpunkte für Ihr Purview-Konto bereitstellen, sodass Sie nur über VNets und private Netzwerke eine Verbindung mit Ihrem Azure Purview-Konto herstellen können. Hierfür müssen Sie die privaten Endpunkte _Konto_ und _Portal_ für Ihr Azure Purview-Konto bereitstellen.
 
 Mit dem privaten Azure Purview-Endpunkt _Konto_ wird eine zusätzliche Sicherheitsschicht hinzugefügt, indem Szenarios ermöglicht werden, bei denen nur Clientaufrufe aus dem virtuellen Netzwerk für den Zugriff auf das Azure Purview-Konto zulässig sind. Dieser private Endpunkt ist auch eine Voraussetzung für den privaten Endpunkt „Portal“.
 
-Der privaten Azure Purview-Endpunkt _Portal_ ist erforderlich, um die Verbindung zu Azure Purview Studio über ein privates Netzwerk zu ermöglichen.
+Der privaten Azure Purview-Endpunkt _Portal_ ist erforderlich, um die Verbindung mit [Azure Purview Studio](https://web.purview.azure.com/resource/) über ein privates Netzwerk zu ermöglichen.
+
+> [!NOTE]
+> Wenn Sie nur die privaten Endpunkte _Konto_ und _Portal_ erstellen, können Sie keine Überprüfungen durchführen. Um die Überprüfung in einem privaten Netzwerk zu aktivieren, müssen Sie [auch einen privaten Erfassungsendpunkt erstellen](catalog-private-link-end-to-end.md).
 
    :::image type="content" source="media/catalog-private-link/purview-private-link-account-portal.png" alt-text="Abbildung der Azure Purview- und Private Link-Architektur.":::
 
@@ -29,7 +32,7 @@ Weitere Informationen zum Dienst Azure Private Link finden Sie unter [Was ist ei
 Mithilfe einer der in diesem Leitfaden erläuterten Bereitstellungsoptionen können Sie ein neues Azure Purview-Konto mit den privaten Endpunkten für das _Konto_ und das _Portal_ bereitstellen. Alternativ können Sie diese privaten Endpunkte für ein bereits vorhandenes Azure Purview-Konto bereitstellen:
 
 1. Wählen Sie ein geeignetes virtuelles Azure-Netzwerk und ein Subnetz aus, um private Endpunkte für Azure Purview bereitzustellen. Wählen Sie eine der folgenden Optionen aus:
-   - Erstellen Sie in Ihrem Azure-Abonnement ein [neues virtuelles Netzwerk](../virtual-network/quick-create-portal.md).
+   - Stellen Sie ein [neues virtuelles Netzwerk](../virtual-network/quick-create-portal.md) in Ihrem Azure-Abonnement bereit.
    - Suchen Sie ein vorhandenes virtuelles Azure-Netzwerk und ein Subnetz in Ihrem Azure-Abonnement.
   
 2. Definieren Sie eine geeignete [DNS-Namensauflösungsmethode](./catalog-private-link-name-resolution.md#deployment-options), damit über private IP-Adressen auf das Azure Purview-Konto und das Webportal zugegriffen werden kann. Sie können auch eine der folgenden Optionen verwenden:
@@ -43,36 +46,38 @@ Mithilfe einer der in diesem Leitfaden erläuterten Bereitstellungsoptionen kön
 
 ## <a name="option-1---deploy-a-new-azure-purview-account-with-_account_-and-_portal_-private-endpoints"></a>Option 1: Bereitstellen eines neuen Azure Purview-Kontos mit privaten Endpunkten für das _Konto_ und das _Portal_
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com) und dann zu der Seite **Purview-Konto**. Klicken Sie auf **+ Erstellen**, um ein neues Azure Purview-Konto zu erstellen.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com) und dann zu der Seite **Purview-Konto**. Wählen Sie **+ Erstellen** aus, um ein neues Azure Purview-Konto zu erstellen.
 
 2. Geben Sie die grundlegenden Informationen ein, und legen Sie auf der Registerkarte **Netzwerk** als Konnektivitätsmethode **Privater Endpunkt** fest. Legen Sie die Option „Privaten Endpunkt aktivieren für“ auf **Nur Konto und Portal** fest.
 
 3. Navigieren Sie zu **Konto und Portal** und wählen Sie **+ Hinzufügen** aus, um Ihrem Azure Purview-Konto einen privaten Endpunkt hinzuzufügen.
 
-   :::image type="content" source="media/catalog-private-link/purview-pe-scenario-1-1.png" alt-text="Screenshot: Optionen auf der Seite zum Erstellen eines privaten Endpunkts für Konto und Portal":::
+   :::image type="content" source="media/catalog-private-link/purview-pe-deploy-account-portal.png" alt-text="Screenshot: Optionen auf der Seite zum Erstellen eines privaten Endpunkts für Konto und Portal":::
 
 4. Wählen Sie auf der Seite für **Purview-Unterressource** die Option **Einen Privaten Endpunkt erstellen** aus. Wählen Sie dann Ihren Standort aus, geben Sie einen Namen für den privaten Endpunkt des _Kontos_ an und klicken Sie dann auf **Konto**. Wählen Sie unter **Netzwerk** Ihr virtuelles Netzwerk und das Subnetz aus. Wählen Sie dann optional **Integration in eine private DNS-Zone** aus, um eine neue Azure Private DNS-Zone zu erstellen. 
    
-   :::image type="content" source="media/catalog-private-link/purview-pe-scenario-1-2.png" alt-text="Screenshot: Seite zum Erstellen eines privaten Endpunkts für ein Konto":::
+   :::image type="content" source="media/catalog-private-link/purview-pe-deploy-account.png" alt-text="Screenshot: Seite zum Erstellen eines privaten Endpunkts für ein Konto":::
 
-
-   > [!NOTE]
-   > Sie können auch Ihre vorhandenen Azure Private DNS-Zonen verwenden oder später manuell die DNS-Einträge in Ihren DNS-Servern erstellen. Weitere Informationen finden Sie unter [Konfigurieren privater Endpunkte für die DNS-Namensauflösung](./catalog-private-link-name-resolution.md)
+      > [!NOTE]
+      > Sie können auch Ihre vorhandenen Azure Private DNS-Zonen verwenden oder später manuell die DNS-Einträge in Ihren DNS-Servern erstellen. Weitere Informationen finden Sie unter [Konfigurieren privater Endpunkte für die DNS-Namensauflösung](./catalog-private-link-name-resolution.md)
 
 5. Klicken Sie auf **OK**.
    
 6. Klicken Sie im Assistenten zum **Erstellen eines Purview-Kontos** noch mal auf **+ Hinzufügen**, um einen privaten Endpunkt für das _Portal_ hinzuzufügen.
      
 7. Wählen Sie auf der Seite für **Purview-Unterressource** die Option **Einen Privaten Endpunkt erstellen** aus. Wählen Sie dann Ihren Standort aus, geben Sie einen Namen für den privaten Endpunkt des _Portals_ an und klicken Sie dann auf **Portal**. Wählen Sie unter **Netzwerk** Ihr virtuelles Netzwerk und das Subnetz aus. Wählen Sie dann optional **Integration in eine private DNS-Zone** aus, um eine neue Azure Private DNS-Zone zu erstellen. 
+
+   :::image type="content" source="media/catalog-private-link/purview-pe-deploy-portal.png" alt-text="Screenshot der Seite zum Erstellen des privaten Endpunkts „Portal“":::
    
    > [!NOTE]
-   > Sie können auch Ihre vorhandenen Azure Private DNS-Zonen verwenden oder später manuell die DNS-Einträge in Ihren DNS-Servern erstellen. Weitere Informationen finden Sie unter [Konfigurieren privater Endpunkte für die DNS-Namensauflösung](./catalog-private-link-name-resolution.md)
+   > Sie können auch Ihre vorhandenen privaten DNS-Zonen von Azure verwenden oder die DNS-Einträge später manuell in Ihren DNS-Servern erstellen. Weitere Informationen finden Sie unter [Konfigurieren privater Endpunkte für die DNS-Namensauflösung](./catalog-private-link-name-resolution.md)
 
 8.  Klicken Sie auf **OK**.
    
-   :::image type="content" source="media/catalog-private-link/purview-pe-scenario-1-3.png" alt-text="Screenshot: Überprüfungsseite bei der Erstellung eines privaten Endpunkts":::
+9.  Klicken Sie auf **Überprüfen + erstellen**. Auf der Seite **Überprüfen + Erstellen** überprüft Azure Ihre Konfiguration.
+      
+      :::image type="content" source="media/catalog-private-link/purview-pe-deploy-account-portal-2.png" alt-text="Screenshot: Überprüfungsseite bei der Erstellung eines privaten Endpunkts":::
 
-9.  Klicken Sie auf **Überprüfen + erstellen**. Auf der Seite **Überprüfen + erstellen** überprüft Azure Ihre Konfiguration.
 
 10. Wenn die Meldung „Überprüfung erfolgreich“ angezeigt wird, wählen Sie **Erstellen** aus.
 
@@ -85,9 +90,9 @@ Es gibt zwei Möglichkeiten, einem bestehenden Azure Purview-Konto private Azure
 
 ### <a name="use-the-azure-portal-azure-purview-account"></a>Verwenden des Azure-Portals (Azure Purview-Konto)
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Klicken Sie auf Ihr Azure Purview-Konto und wählen Sie unter **Einstellungen** **Netzwerk** die Option **Private Endpunktverbindungen** aus.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie Ihr Azure Purview-Konto, anschließend unter **Einstellungen** die Option **Netzwerk** und dann **Private Endpunktverbindungen** aus.
 
-    :::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="Screenshot: Erstellen eines privaten Endpunkts für ein Konto.":::
+    :::image type="content" source="media/catalog-private-link/purview-pe-add-to-existing.png" alt-text="Screenshot: Erstellen eines privaten Endpunkts für ein Konto.":::
 
 2. Wählen Sie **+ Privater Endpunkt** aus, um einen neuen privaten Endpunkt zu erstellen.
 

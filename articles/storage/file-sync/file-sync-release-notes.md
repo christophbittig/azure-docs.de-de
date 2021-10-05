@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 8/24/2021
+ms.date: 9/13/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: fbd02fb70a16250d427afc2f60343ad6758ea8dc
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 0662431d950e0b65cce749697597e5ef9e9e8f3f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258666"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589224"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -67,8 +67,8 @@ Die folgenden Versionshinweise gelten für Version 13.0.0.0 des Azure-Dateisync
 - Unterstützung für Serverumbenennung  
     - Wenn ein registrierter Server umbenannt wird, zeigt die Azure-Dateisynchronisierung jetzt den neuen Servername im Portal an. Wenn der Server vor dem Release v13 umbenannt wurde, wird der Servername im Portal jetzt aktualisiert, damit der richtige Servernamen angezeigt wird.
 
-- Unterstützung für Windows Server 2022 Preview  
-    - Der Azure-Dateisynchronisierungs-Agent wird jetzt im Windows Server 2022 Preview-Build 20348 oder höher unterstützt.
+- Unterstützung für Windows Server 2022  
+    - Der Azure-Dateisynchronisierungs-Agent wird jetzt unter Windows Server 2022 unterstützt.
 
     > [!Note]  
     > Windows Server 2022 fügt Unterstützung für TLS 1.3 hinzu, das derzeit von der Azure-Dateisynchronisierung nicht unterstützt wird. Wenn die [TLS-Einstellungen](/windows-server/security/tls/tls-ssl-schannel-ssp-overview) über eine Gruppenrichtlinie verwaltet werden, muss der Server für die Unterstützung von TLS 1.2 konfiguriert werden. 
@@ -90,7 +90,7 @@ Weitere Informationen zum Installieren und Konfigurieren des Azure File Sync-Age
 - Ein Neustart ist für Server erforderlich, auf denen die Installation eines Azure-Dateisynchronisierungs-Agents vorhanden ist, wenn die Agent-Version niedriger als Version 12.0 ist.
 - Das Agent-Installationspaket muss mit erhöhten Berechtigungen (Administratorberechtigungen) installiert werden.
 - Der Agent wird für die Bereitstellungsoption „Nano Server“ nicht unterstützt.
-- Der Agent wird nur unter Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 und Windows Server 2022 Preview unterstützt.
+- Der Agent wird nur unter Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 und Windows Server 2022 unterstützt.
 - Der Agent benötigt mindestens 2 GiB Arbeitsspeicher. Wenn der Server auf einem virtuellen Computer ausgeführt wird, für den dynamischer Arbeitsspeicher aktiviert ist, muss der virtuelle Computer mit mindestens 2.048 MiB Arbeitsspeicher konfiguriert werden. Weitere Informationen finden Sie unter [Empfohlenen Systemressourcen](file-sync-planning.md#recommended-system-resources).
 - Der Dienst „Storage-Synchronisierungs-Agent“ (FileSyncSvc) unterstützt keine Serverendpunkte, die sich auf einem Volume befinden, für das das Verzeichnis „System Volume Information“ (SVI) komprimiert ist. Diese Konfiguration führt zu unerwarteten Ergebnissen.
 

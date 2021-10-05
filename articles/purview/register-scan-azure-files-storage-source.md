@@ -1,18 +1,18 @@
 ---
-title: Durchführen einer Überprüfung für Azure Files
-description: In diesem Leitfaden wird beschrieben, wie Sie eine Überprüfung für Azure Files durchführen.
+title: Registrieren und Überprüfen von Azure Files
+description: In diesem Leitfaden wird beschrieben, wie Sie eine Überprüfung für Azure Files in Azure Purview durchführen.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 06/22/2021
-ms.openlocfilehash: dbb29fea5253bbd00e66f0ed3d123ddc38533b8e
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 2db2b5343b8a55e29881bf0908fded0a48b90b78
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256452"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209906"
 ---
 # <a name="register-and-scan-azure-files"></a>Registrieren und Überprüfen von Azure Files
 
@@ -77,7 +77,7 @@ Führen Sie auf dem Bildschirm **Register sources (Azure Files)** (Quellen regis
 
 Gehen Sie wie folgt vor, um eine neue Überprüfung zu erstellen und auszuführen:
 
-1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+1. Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
 
 1. Wählen Sie die von Ihnen registrierte Azure Files-Quelle aus.
 

@@ -1,6 +1,6 @@
 ---
 title: Einhaltung gesetzlicher Bestimmungen in Media Services
-description: Azure Media Services ist konform mit Azure Government.
+description: Azure Media Services hilft der Azure Government-Kundschaft, ihre Complianceverpflichtungen zu erfüllen.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -9,36 +9,42 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/11/2021
 ms.author: inhenkel
-ms.openlocfilehash: 978af4754e6e083e8bf5375ade84891019abccca
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 6e2276fcf06909d46808ebd7971096831dc4d094
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068478"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641319"
 ---
 # <a name="media-services-regulatory-compliance"></a>Einhaltung gesetzlicher Bestimmungen in Media Services
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Media Services erfüllt die anspruchsvollen Vorgaben des Federal Risk and Authorization Management Program der USA (FedRAMP) sowie die des US-Verteidigungsministeriums nach Impact Level 2 bis 5. Durch die Bereitstellung geschützter Dienste, einschließlich Azure Government, Office 365 U.S. Bei Government und Dynamics 365 Government können Bundes- und Verteidigungsbehörden eine Vielzahl von konformen Diensten nutzen.
+Media Services erfüllt die anspruchsvollen Vorgaben des Federal Risk and Authorization Management Program der USA (FedRAMP) sowie die von Impact Level (IL) 2, 4 und 5 des Leitfadens für Sicherheitsanforderungen für Cloud Computing des US-Verteidigungsministeriums (Department of Defense (DoD)). Durch die Bereitstellung autorisierter Dienste in Azure Government, Office 365 GCC High und DoD und Dynamics 365 US Government können Regierungs- und Verteidigungsbehörden eine Vielzahl von Clouddiensten nutzen und gleichzeitig ihre Complianceverpflichtungen erfüllen.
 
-## <a name="fedramp-and-us-department-of-defense-compliance"></a>Konformität mit FedRAMP und US-Verteidigungsministerium
+## <a name="fedramp-and-dod-compliance"></a>FedRAMP- und DoD-Compliance
 
-Die öffentlichen Media Services-Dienste sind mit dem Cloud Computing Security Requirements Guide 2 des US-Verteidigungsministeriums (DoD CC SRG IL 2) und mit FedRAMP High konform.
+Media Services in Azure Public bietet Folgendes:
 
-Media Services Government-Dienste sind mit DoD CC SRG IL 2, DoD CC SRG IL 4, DoD CC SRG IL 5 und FedRAMP High konform.
+- FedRAMP High Provisional Authorization to Operate (P-ATO)
+- DoD IL2 Provisional Authorization (PA)
 
-Eine Überprüfung von Media Services durch 3PAO und JAB ist für 2020 nicht geplant.
+Media Services in Azure Government bietet Folgendes:
 
-Weitere Informationen zur Konformität von Azure-Diensten finden Sie im Artikel [Azure-Dienste nach FedRAMP- und DoD CC SRG-Prüfumfang](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
+- FedRAMP High P-ATO
+- DoD IL2 PA
+- DoD IL4 PA
+- DoD IL5 PA
+
+Weitere Informationen zur Azure-Complianceabdeckung für US-Behörden finden Sie in der Dokumentation zu Azure [FedRAMP High](/azure/compliance/offerings/offering-fedramp), [DoD IL2](/azure/compliance/offerings/offering-dod-il2), [DoD IL4](/azure/compliance/offerings/offering-dod-il4) und [DoD IL5](/azure/compliance/offerings/offering-dod-il5). Informationen zum FedRAMP- und DoD-Überwachungsbereich finden Sie unter [Clouddienste nach Überwachungsbereich](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md).
 
 ## <a name="azure-compliance-documentation"></a>Dokumentation zur Azure-Compliance
 
-Wenn Ihre Organisation gesetzliche oder behördliche Standards für die Bereiche global, US-Regierung, regional, Finanzdienstleistungen, Gesundheit, Medien und Fertigung einhalten muss, beginnen Sie mit der [Azure-Konformitätsdokumentation](../../compliance/index.yml).
+Um Sie bei der Erfüllung Ihrer Complianceverpflichtungen in regulierten Branchen und auf Märkten weltweit zu unterstützen, verfügt Azure über das größte Complianceportfolio der Branche – sowohl in Bezug auf die Breite (Gesamtanzahl von [Complianceangeboten](/azure/compliance/offerings/)) als auch auf die Tiefe (Anzahl von [kundenorientierten Diensten](https://azure.microsoft.com/services/) im Rahmen des Bewertungsbereichs). Informationen zur Dienstverfügbarkeit finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/).
 
-Dort finden Sie auch weitere Konformitätsressourcen wie z. B. Überwachungsberichte, eine Prüfliste für Datenschutz und die Datenschutz-Grundverordnung (DSGVO), Konformitätsblaupausen, Richtlinien für Länder und Regionen, Implementierungen und Zuordnungen sowie Whitepaper und Analystenberichte.
+Azure-Complianceangebote sind in vier Segmente unterteilt: globale Relevanz, US Government, branchenspezifisch und regions-/landesspezifisch.  Complianceangebote basieren auf unterschiedlichen Arten von Zusicherungen, z.B. formale Zertifizierungen, Nachweise, Validierungen, Autorisierungen und Bewertungen, die von unabhängigen externen Prüfungsgesellschaften erstellt wurden, sowie Vertragsänderungen, Selbstbewertungen und Kundenleitfäden, die von Microsoft erstellt wurden. Weitere Informationen finden Sie in der [Dokumentation zur Compliance in Azure](../../compliance/index.yml). Dort finden Sie auch weitere Konformitätsressourcen wie z. B. Überwachungsberichte, eine Prüfliste für Datenschutz und die Datenschutz-Grundverordnung (DSGVO), Konformitätsblaupausen, Richtlinien für Länder und Regionen, Implementierungen und Zuordnungen sowie Whitepaper und Analystenberichte.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

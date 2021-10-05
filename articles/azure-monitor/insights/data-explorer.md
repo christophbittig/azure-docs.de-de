@@ -1,170 +1,186 @@
 ---
 title: Azure Data Explorer Insights (ADX Insights) | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen zu Azure Data Explorer Insights (ADX Insights).
+description: Dieser Artikel beschreibt die Verwendung von Azure Data Explorer Insights.
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 872c1e29b6c85f24c4e9841dca359a9429b92321
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b522e510968b97d80917bc6fa4123d33e4480cbf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114458115"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662208"
 ---
 # <a name="azure-data-explorer-insights"></a>Azure Data Explorer Insights
 
 Azure Data Explorer Insights ermöglicht die umfassende Überwachung Ihrer Cluster mithilfe einer einheitlichen Ansicht der Leistung, Vorgänge, Nutzung und Fehler Ihres Clusters.
+
+Es bietet:
+
+-    **Maßstabgerechte Perspektive**. Eine Momentaufnahme der primären Metriken Ihrer Cluster hilft Ihnen, die Leistung von Abfragen, Erfassungs- und Exportvorgängen zu verfolgen.
+-   **Detailinformationen zur Analyse**. Sie können Drilldown in einen bestimmten Azure Data Explorer-Cluster ausführen, um eine detaillierte Analyse durchzuführen.
+-    **Anpassung**. Sie können ändern, welche Metriken Sie sehen möchten, Schwellenwerte ändern oder festlegen, die mit Ihren Grenzwerten übereinstimmen, und Ihre eigenen benutzerdefinierten Arbeitsmappen speichern. Diagramme in einer Arbeitsmappe können an Azure Dashboards angeheftet werden.
+
 Dieser Artikel enthält Informationen zum Onboarding und zur Verwendung von Azure Data Explorer Insights.
 
-## <a name="introduction-to-azure-data-explorer-insights"></a>Einführung in Azure Data Explorer Insights
+## <a name="view-from-azure-monitor-at-scale-perspective"></a>Ansicht von Azure Monitor (maßstabgerechte Perspektive)
 
-Bevor Sie sich mit der Umgebung befassen, sollten Sie sich mit der Darstellung und Visualisierung von Informationen vertraut machen.
--    Eine **Übersichtsperspektive** zeigt eine Momentaufnahme der primären Metriken Ihres Clusters, sodass Sie die Leistung von Abfragen sowie von Erfassungs- und Exportvorgängen ganz einfach nachverfolgen können.
--   Anhand von **Detailinformationen** zu einem bestimmten Azure Data Explorer-Cluster können Sie detaillierte Analysen durchführen.
--    Die Ansichten sind **anpassbar**: Sie können zwischen verschiedenen Metriken wechseln, auf Ihre Grenzwerte abgestimmte Schwellenwerte festlegen und eigene benutzerdefinierte Arbeitsmappen speichern. Diagramme in der Arbeitsmappe können an Azure-Dashboards angeheftet werden.
+Über Azure Monitor können Sie die wichtigsten Leistungsmetriken für den Cluster anzeigen. Diese Metriken umfassen Informationen zu Abfragen, Erfassungs- und Exportvorgängen aus mehreren Clustern in Ihrem Abonnement. Sie können Ihnen helfen, Leistungsprobleme zu identifizieren.
 
-## <a name="view-from-azure-monitor-at-scale-perspective"></a>Ansicht von Azure Monitor (Übersichtsperspektive)
-
-In Azure Monitor können Sie die wichtigsten Leistungsmetriken für den Cluster anzeigen, beispielsweise Metriken für Abfragen sowie Erfassungs- und Exportvorgänge aus verschiedenen Clustern in Ihrem Abonnement, und Leistungsprobleme identifizieren.
-
-Führen Sie die folgenden Schritte aus, um die Leistung Ihrer Cluster in all Ihren Abonnements anzuzeigen:
+Um die Leistung Ihrer Cluster für alle Ihre Abonnements anzuzeigen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie im linken Bereich des Azure-Portals **Monitor** und im Abschnitt „Insights-Hub“ die Option **Azure Data Explorer-Cluster** aus.
+2. Wählen Sie im linken Bereich **Monitor** aus. Wählen Sie im Abschnitt **Insights Hub** die Option **Azure Data Explorer Clusters** aus.
 
-![Screenshot: Übersicht mit mehreren Diagrammen](./media/data-explorer/insights-hub.png)
+![Screenshot der Auswahlmöglichkeiten für die Anzeige der Leistung von Azure Data Explorer-Clustern.](./media/data-explorer/insights-hub.png)
 
 ### <a name="overview-tab"></a>Registerkarte „Übersicht“
 
-Auf der Registerkarte **Übersicht** für das ausgewählte Abonnement zeigt die Tabelle interaktive Metriken für die Azure Data Explorer-Cluster, die im Abonnement gruppiert sind. Ergebnisse können auf der Grundlage der Optionen gefiltert werden, die Sie in den folgenden Dropdownlisten auswählen:
+Auf der Registerkarte **Übersicht** für das ausgewählte Abonnement zeigt die Tabelle interaktive Metriken für die Azure Data Explorer-Cluster, die im Abonnement gruppiert sind. Sie können die Ergebnisse anhand der Optionen filtern, die Sie in den folgenden Dropdown-Listen auswählen:
 
-* Abonnements: Es werden nur Abonnements aufgelistet, in denen Azure Data Explorer-Cluster vorhanden sind.
+* **Subscriptions**: Es werden nur Abonnements aufgelistet, die Azure Data Explorer-Cluster haben.
 
-* Azure Data Explorer-Cluster: Standardmäßig sind bis zu fünf Cluster vorab ausgewählt. Wenn Sie in der Bereichsauswahl mehrere oder alle Cluster auswählen, werden bis zu 200 Cluster zurückgegeben.
+* **Azure Data Explorer-Cluster**: Standardmäßig sind bis zu fünf Cluster vorab ausgewählt. Wenn Sie in der Bereichsauswahl mehrere oder alle Cluster auswählen, werden bis zu 200 Cluster zurückgegeben.
 
-* Zeitbereich: Standardmäßig werden die Informationen der letzten 24 Stunden basierend auf der entsprechenden Auswahl angezeigt.
+* **Time Range**: Standardmäßig zeigt die Tabelle die Informationen der letzten 24 Stunden auf der Grundlage der getroffenen korrespondierenden Auswahlen an.
 
-Die Zählerkachel unter der Dropdownliste gibt Aufschluss über die Gesamtanzahl von Azure Data Explorer-Clustern in den ausgewählten Abonnements sowie über die Anzahl ausgewählter Cluster. Es gibt bedingte Farbcodierungen für die Spalten: Keepalive, Auslastung der Erfassung und Cacheauslastung. Orange hinterlegte Zellen weisen Werte auf, die für den Cluster nicht nachhaltig sind. 
+Die Zählerkachel unter der Dropdown-Liste gibt die Gesamtzahl der Azure Data Explorer-Cluster in den ausgewählten Abonnements an und zeigt, wie viele ausgewählt sind. Es gibt bedingte Farbcodierungen für die Spalten: **Keep-Alive,** **CPU,** **Erfassungsauslastung** und **Cacheauslastung.** Orange hinterlegte Zellen weisen Werte auf, die für den Cluster nicht nachhaltig sind. 
 
 Informationen zum besseren Verständnis der einzelnen Metriken finden Sie in der Dokumentation zu [Azure Data Explorer-Metriken](/azure/data-explorer/using-metrics#cluster-metrics).
 
 ### <a name="query-performance-tab"></a>Registerkarte „Abfrageleistung“
 
-Diese Registerkarte zeigt die Abfragedauer, die Gesamtanzahl von gleichzeitigen Abfrage und die Gesamtanzahl von gedrosselten Abfragen.
+Die Registerkarte **Abfrageleistung** zeigt die Abfragedauer, die Gesamtzahl der gleichzeitigen Abfragen und die Gesamtzahl der gedrosselten Abfragen an.
 
-![Screenshot der Registerkarte „Abfrageleistung“](./media/data-explorer/query-performance.png)
+![Screenshot der Registerkarte "Abfrageleistung".](./media/data-explorer/query-performance.png)
 
 ### <a name="ingestion-performance-tab"></a>Registerkarte „Erfassungsleistung“
 
-Diese Registerkarte zeigt die Latenz bei Datenerfassungen, erfolgreiche Erfassungsergebnisse, fehlerhafte Erfassungsergebnisse, den Erfassungsumfang sowie für Event Hubs und IoT Hubs verarbeitete Ereignisse.
+Die Registerkarte **Ingestion Performance** zeigt die Latenz bei der Erfassung, erfolgreiche Erfassungsergebnisse, fehlgeschlagene Erfassungsergebnisse, Erfassungsvolumen und verarbeitete Ereignisse für Event-Hubs und IoT-Hubs.
 
-[![Screenshot der Registerkarte „Erfassungsleistung“](./media/data-explorer/ingestion-performance.png)](./media/data-explorer/ingestion-performance.png#lightbox)
+[![Screenshot der Registerkarte „Erfassungsleistung“.](./media/data-explorer/ingestion-performance.png)](./media/data-explorer/ingestion-performance.png#lightbox)
 
 ### <a name="streaming-ingest-performance-tab"></a>Registerkarte „Leistung der Streamingerfassung“
 
-Diese Registerkarte bietet Informationen zur durchschnittlichen Datenrate zur durchschnittlichen Dauer und zur Anforderungsrate.
+Die Registerkarte **Leistung der Streamingerfassung** enthält Informationen über die durchschnittliche Datenrate, die durchschnittliche Dauer und die Rate der Anforderungen.
 
 ### <a name="export-performance-tab"></a>Registerkarte „Exportleistung“
 
-Diese Registerkarte bietet Informationen zu exportierten Datensätzen, Verzögerungen, ausstehenden Datensätzen sowie den Prozentsatz der Auslastung für fortlaufende Exportvorgänge.
+Die Registerkarte **Exportleistung** enthält Informationen zu exportierten Datensätzen, Verspätungen, der Anzahl ausstehender Daten und dem Nutzungsprozentsatz für fortlaufende Exportvorgänge.
 
-## <a name="view-from-an-azure-data-explorer-cluster-resource-drill-down-analysis"></a>Ansicht aus einer Azure Data Explorer-Clusterressource (Detailinformationen)
+## <a name="view-from-an-azure-data-explorer-cluster-resource-drill-down-analysis"></a>Ansicht von einer Azure Data Explorer Cluster-Ressource (Drilldown-Analyse)
 
-So greifen Sie direkt von einem Azure Data Explorer-Cluster aus auf Azure Data Explorer Insights zu:
+Um auf Azure Data Explorer Erkenntnisse direkt von einem Azure Data Explorer Cluster zuzugreifen:
 
 1. Wählen Sie im Azure-Portal **Azure Data Explorer-Cluster** aus.
 
-2. Wählen Sie einen Azure Data Explorer-Cluster aus der Liste aus. Wählen Sie im Abschnitt „Überwachung“ die Option **Insights** aus.
+2. Wählen Sie aus der Liste einen Azure Data Explorer-Cluster aus. Wählen Sie im Abschnitt Überwachung **Insights** aus.
 
-Sie können auch auf diese Ansichten zugreifen, indem Sie in der Insights-Ansicht von Azure Monitor den Ressourcennamen eines Azure Data Explorer-Clusters auswählen.
+Sie können auch auf diese Ansichten zugreifen, indem Sie den Ressourcennamen eines Azure Data Explorer-Clusters in der Azure Monitor Ansicht Insights auswählen.
 
-Azure Data Explorer Insights kombiniert Protokolle und Metriken, um eine globale Überwachungslösung bereitzustellen. Um protokollbasierte Visualisierungen einzuschließen, müssen Benutzer die [Diagnoseprotokollierung ihres Azure Data Explorer-Clusters aktivieren und die Protokolle an einem Log Analytics-Arbeitsbereich senden](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs). Folgende Diagnoseprotokolle sollten aktiviert werden: **Command**, **Query**, **TableDetails** und **TableUsageStatistics**.
+> [!NOTE]
+> Azure Data Explorer Insights kombiniert Protokolle und Metriken, um eine globale Überwachungslösung bereitzustellen. Für die Einbeziehung von protokollbasierten Visualisierungen müssen Benutzer [ die Diagnoseprotokollierung ihres Azure Data Explorer-Clusters aktivieren und sie an einen Log Analytics-Arbeitsbereich ](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) senden. Die Diagnoseprotokolle, die aktiviert werden sollten, sind **Befehl**,  **Abfrage**: **Succeededlngestion0**, **Failedlngestion**, **lngesfionBatching**, **TableDetails** und **TableUsageStatistics**. (Das Aktivieren von **Succeeded!ngestion**-Protokollen kann kostspielig sein. Aktivieren Sie sie nur, wenn Sie erfolgreiche Erfassungen überwachen müssen.)
 
-![Screenshot der blauen Schaltfläche mit dem Text „Protokolle für die Überwachung konfigurieren“](./media/data-explorer/enable-logs.png)
+![Screenshot der Schaltfläche zum Konfigurieren von Protokollen für die Überwachung.](./media/data-explorer/enable-logs.png)
 
+### <a name="overview-tab"></a>Registerkarte „Übersicht“
 
- Die Registerkarte **Übersicht** zeigt Folgendes:
+Die Registerkarte **Übersicht** zeigt Folgendes:
 
-- Metrikkacheln mit Verfügbarkeit und Gesamtstatus des Clusters, sodass Sie schnell auf Informationen zur Integrität zugreifen können.
+- Metrikkacheln, die die Verfügbarkeit und den Gesamtstatus des Clusters für eine schnelle Integritätsbewertung hervorheben.
 
-- Eine Zusammenfassung aktiver [Advisor-Empfehlungen](/azure/data-explorer/azure-advisor) und des Status der [Ressourcenintegrität](/azure/data-explorer/monitor-with-resource-health).
+- Eine Zusammenfassung der aktiven [Azure Advisor-Empfehlungen](/azure/data-explorer/azure-advisor) und des Status der [Ressourcen-Integrität](/azure/data-explorer/monitor-with-resource-health).
 
-- Diagramme der wichtigsten CPU- und Arbeitsspeicherconsumer und die Anzahl eindeutiger Benutzer im Lauf der Zeit.
+- Diagramme, die die größten CPU- und Speicherverbraucher sowie die Anzahl der einzelnen Benutzer im zeitlichen Verlauf anzeigen.
 
+[![Screenshot der Ansicht von einer Azure Data Explorer-Cluster-Ressource.](./media/data-explorer/overview.png)](./media/data-explorer/overview.png#lightbox)
 
-[![Screenshot der Ansicht aus einer Azure Data Explorer-Clusterressource](./media/data-explorer/overview.png)](./media/data-explorer/overview.png#lightbox)
+### <a name="key-metrics-tab"></a>Registerkarte Schlüsselmetriken
 
-Die Registerkarte **Schlüsselmetrik** zeigt eine einheitliche Ansicht einiger Metriken des Clusters, gruppiert nach folgenden Kategorien: allgemeine Metriken, abfragebezogenen Metriken, erfassungsbezogene Metriken sowie Metriken in Bezug auf die Streamingerfassung.
+Auf der **Registerkarte Schlüsselmetriken** wird eine einheitliche Ansicht einiger Metriken des Clusters angezeigt. Sie werden in allgemeine Metriken, abfragebezogene Metriken, erfassungsbezogene Metriken und Metriken im Zusammenhang mit der Streaming-Erfassung gruppiert.
 
-[![Screenshot: Fehleransicht](./media/data-explorer/key-metrics.png)](./media/data-explorer/key-metrics.png#lightbox)
+[![Screenshot von Diagramme auf der Registerkarte Schlüsselmetriken.](./media/data-explorer/key-metrics.png)](./media/data-explorer/key-metrics.png#lightbox)
 
-Auf der Registerkarte **Verbrauch** können Benutzer Details zur Leistung der Befehle und Abfragen des Clusters anzeigen. Auf dieser Seite haben Sie folgende Möglichkeiten:
+### <a name="usage-tab"></a>Registerkarte „Verwendung“
+
+Auf der Registerkarte **Verbrauch** können Benutzer Details zur Leistung der Befehle und Abfragen des Clusters anzeigen. Auf dieser Registerkarte können Sie folgende Aktionen ausführen:
  
- - Sie können ermitteln, welche Arbeitsauslastungsgruppen, Benutzer und Anwendungen die meisten Abfragen senden oder die meisten CPU- und Arbeitsspeicherressourcen verbrauchen. So können Sie herausfinden, welche Arbeitsauslastungen die ressourcenintensivsten Abfragen zur Verarbeitung durch den Cluster senden.
- - Sie können die wichtigsten Arbeitsauslastungsgruppen, Benutzer und Anwendungen in Bezug auf fehlerhafte Abfragen identifizieren.
- - Sie können aktuelle Änderungen an der Anzahl von Abfragen im Vergleich zum bisherigen Tagesdurchschnitt (der letzten 16 Tage) identifizieren (nach Arbeitsauslastungsgruppe, Benutzer oder Anwendung).
- - Sie können Trends und Spitzenwerte bei der Anzahl von Abfragen sowie beim Arbeitsspeicher- und CPU-Verbrauch nach Arbeitsauslastungsgruppe, Benutzer, Anwendung und Befehlstyp identifizieren.
+- Sehen Sie, welche Workloadgruppen, Benutzer und Anwendungen die meisten Abfragen senden oder die meiste CPU und den meisten Speicher verbrauchen. Sie können dann verstehen, welche Workloads die umfangreichsten Abfragen stellen, die der Cluster zu verarbeiten hat.
+- Identifizieren Sie die wichtigsten Workloadgruppen, Benutzer und Anwendungen anhand von fehlgeschlagenen Abfragen.
+- Identifizieren Sie die jüngsten Änderungen in der Anzahl der Abfragen im Vergleich zum historischen Tagesdurchschnitt (über die letzten 16 Tage), aufgeschlüsselt nach Workloadgruppen, Benutzern und Anwendungen.
+- Identifizieren Sie Trends und Spitzen bei der Anzahl der Abfragen, dem Speicher- und CPU-Verbrauch nach Workloadgruppe, Benutzer, Anwendung und Befehlstyp.
 
-[![Screenshot der Vorgangsansicht mit Ringdiagrammen der wichtigsten Anwendungen nach Anzahl von Befehlen und Abfragen, der wichtigsten Prinzipale nach Anzahl von Befehlen und Abfragen und der wichtigsten Befehle nach Befehlstyp](./media/data-explorer/usage.png)](./media/data-explorer/usage.png#lightbox)
+[![Screenshot der Betriebsansicht mit Ringdiagrammen in Bezug zu Befehlen und Abfragen.](./media/data-explorer/usage.png)](./media/data-explorer/usage.png#lightbox)
 
-[![Screenshot der Vorgangsansicht mit Liniendiagrammen der Abfrageanzahl nach Anwendung, des Arbeitsspeicherverbrauchs insgesamt nach Anwendung und des CPU-Verbrauchs insgesamt nach Anwendung](./media/data-explorer/usage-2.png)](./media/data-explorer/usage-2.png#lightbox)
+[![Screenshot der Betriebsansicht mit Liniendiagrammen in Bezug zu Abfragen und Speicher.](./media/data-explorer/usage-2.png)](./media/data-explorer/usage-2.png#lightbox)
 
-Die Registerkarte **Tabellen** zeigt die neuesten und bisherigen Eigenschaften von Tabellen im Cluster. Sie können feststellen, welche Tabellen den meisten Platz beanspruchen und den Wachstumsverlauf anhand von Tabellengröße, heißen Daten und der Anzahl von Zeilen im Lauf der Zeit nachverfolgen.
+### <a name="tables-tab"></a>Registerkarte Tabellen
 
-Auf der Registerkarte **Cache** können Benutzer die Muster im Rückblickfenster ihrer tatsächlichen Abfragen analysieren und mit der konfigurierten Cacherichtlinie vergleichen (für jede Tabelle). Sie können sowohl Tabellen identifizieren, die von sehr vielen Abfragen verwendet werden, als auch Tabellen, die gar nicht abgefragt werden. Dann können Sie die Cacherichtlinie entsprechend anpassen. Sie können in Azure Advisor bestimmte Empfehlungen zu Cacherichtlinien für bestimmte Tabellen abrufen (derzeit sind Cacheempfehlungen nur auf dem [Hauptdashboard von Azure Advisor](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) verfügbar). Die Empfehlungen basieren auf dem Rückblickfenster der tatsächlichen Abfragen in den letzten 30 Tagen und einer nicht optimierten Cacherichtlinie für mindestens 95 % der Abfragen. Die Empfehlungen von Azure Advisor zur Cachereduzierung sind für Cluster verfügbar, die „datengebunden“ sind (das bedeutet, dass der Cluster eine geringe CPU- und Erfassungsauslastung aufweist, aufgrund einer hohen Datenkapazität jedoch nicht ab- oder herunterskaliert werden konnte).
+Die Registerkarte **Tabellen** zeigt die aktuellen und historischen Eigenschaften der Tabellen im Cluster. Sie können sehen, welche Tabellen den meisten Platz verbrauchen. Sie können auch den Wachstumsverlauf nach Tabellengröße, heißen Daten und der Anzahl der Zeilen im zeitlichen Verlauf verfolgen.
 
-[![Screenshot von Cachedetails](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
+### <a name="cache-tab"></a>Registerkarte Cache
 
-Auf der Registerkarte **Clustergrenzen** werden die Clustergrenzen basierend auf Ihrer Nutzung angezeigt. Auf dieser Registerkarte können Sie die CPU-, Erfassungs- und Cacheauslastung untersuchen. Die zugehörigen Metriken werden als „Niedrig“, „Mittel“ oder „Hoch“ bewertet. Diese Metriken und Bewertungen sind wichtig bei der Wahl der optimalen SKU und Instanzenanzahl für Ihren Cluster und werden in den SKU-/Größenempfehlung von Azure Advisor berücksichtigt. Auf dieser Registerkarte können Sie eine Metrikkachel auswählen und ausführliche Informationen zum zugehörigen Trend und zur Bewertung anzeigen. Außerdem können Sie die SKU-/Größenempfehlung von Azure Advisor für Ihren Cluster anzeigen. In der folgenden Abbildung sehen Sie beispielsweise, dass alle Metriken als „Niedrig“ bewertet werden. Dadurch erhält der Cluster eine Kostenempfehlung, die es ermöglicht, den Cluster ab- bzw. herunterzuskalieren, um Kosten zu sparen.
+Die Registerkarte **Cache** ermöglicht es den Benutzern, die Muster der tatsächlichen Abfragen im Rückblickfenster zu analysieren und sie mit der konfigurierten Cache-Richtlinie (für jede Tabelle) zu vergleichen. Sie können sowohl Tabellen identifizieren, die von sehr vielen Abfragen verwendet werden, als auch Tabellen, die gar nicht abgefragt werden. Dann können Sie die Cacherichtlinie entsprechend anpassen. 
+
+Möglicherweise erhalten Sie Cacherichtlinienempfehlungen für bestimmte Tabellen in Azure Advisor. Derzeit sind Cacheempfehlungen nur über das [Hauptdashboard Azure Advisor](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) verfügbar. Sie basieren auf dem tatsächlichen Abfrage-Rückblickfenster der letzten 30 Tage und einer nicht optimierten Cacherichtlinie für mindestens 95 Prozent der Abfragen. 
+
+Empfehlungen zur Cacheverringerung in Azure Advisor sind für Cluster verfügbar, die „durch Daten gebunden“ sind. Dies bedeutet, dass der Cluster über eine niedrige CPU- und Erfassungsauslastung verfügt, aber aufgrund einer hohen Datenkapazität kann der Cluster nicht zentral herunterskaliert oder herunterskaliert werden.
+
+[![Screenshot von Cachedetails.](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
+
+### <a name="cluster-boundaries-tab"></a>Registerkarte Clustergrenzen
+
+Die Registerkarte **Clustergrenzen** zeigt die Clustergrenzen basierend auf Ihrer Nutzung an. Auf dieser Registerkarte können Sie die CPU-, Erfassungs- und Cacheauslastung überprüfen. Die Metriken werden als **Niedrig**, **Mittel** oder **Hoch** bewertet. Diese Metriken und Bewertungen sind wichtig, wenn Sie über die optimale SKU und Anzahl der Instanzen für Ihren Cluster entscheiden. Sie werden in den Azure Advisor SKU/Größenempfehlungen berücksichtigt. 
+
+Auf dieser Registerkarte können Sie eine metrische Kachel auswählen und weiter in die Tiefe gehen, um ihren Trend zu verstehen und zu erfahren, wie ihre Bewertung ermittelt wird. Außerdem können Sie die SKU-/Größenempfehlung von Azure Advisor für Ihren Cluster anzeigen. In der folgenden Abbildung sehen Sie zum Beispiel, dass alle Metriken als **Low** bewertet werden. Der Cluster erhält eine Kostenempfehlung, die es möglich macht, ihn zu vergrößern/verkleinern und Kosten zu sparen.
 
 > [!div class="mx-imgBorder"]
 > [![Screenshot: Clustergrenzen](./media/data-explorer/cluster-boundaries.png)](./media/data-explorer/cluster-boundaries.png#lightbox)
 
-## <a name="pin-to-azure-dashboard"></a>Anheften an Azure-Dashboard
+## <a name="pin-to-an-azure-dashboard"></a>Anheften an ein Azure Dashboard
 
-Sie können einen beliebigen Metrikabschnitt (aus der Übersichtsperspektive) an ein Azure-Dashboard anheften, indem Sie rechts oben im Abschnitt das Stecknadelsymbol auswählen.
+Sie können jeden der Metrikabschnitte (der "maßstabgerechten"-Perspektive) an ein Azure-Dashboard anheften, indem Sie das Pushpin-Symbol oben rechts im Abschnitt auswählen.
 
-![Screenshot: Ausgewähltes Stecknadelsymbol](./media/data-explorer/pin.png)
+![Screenshot des ausgewählten Pushpin-Symbols.](./media/data-explorer/pin.png)
 
 ## <a name="customize-azure-data-explorer-insights"></a>Anpassen von Azure Data Explorer Insights
 
-In diesem Abschnitt werden gängige Szenarien für die Bearbeitung der Arbeitsmappe erläutert, um sie zur Unterstützung Ihrer Datenanalyseanforderungen anzupassen:
-* Festlegen des Gültigkeitsbereichs der Arbeitsmappe, sodass immer ein bestimmtes Abonnement oder mindestens ein bestimmter Azure Data Explorer-Cluster ausgewählt ist
-* Ändern von Metriken im Raster
-* Ändern von Schwellenwerten oder farbliche Darstellung/Codierung
+Sie können die Arbeitsmappe bearbeiten, um sie an Ihre Datenanalyseanforderungen anzupassen:
+* Legen Sie die Arbeitsmappe so fest, dass immer ein bestimmtes Abonnement oder Azure Data Explorer-Cluster ausgewählt wird.
+* Ändern von Metriken im Raster.
+* Ändern von Schwellenwerten oder farbliches Rendering/Codierung.
 
-Aktivieren Sie zum Vornehmen von Anpassungen zunächst den Bearbeitungsmodus, indem Sie auf der oberen Symbolleiste die Schaltfläche **Anpassen** auswählen.
+Sie können mit den Anpassungen beginnen, indem Sie auf der oberen Symbolleiste die Schaltfläche **Anpassen** auswählen.
 
-![Screenshot: Schaltfläche „Anpassen“](./media/data-explorer/customize.png)
+![Screenshot: Schaltfläche Anpassen.](./media/data-explorer/customize.png)
 
-Anpassungen werden in einer benutzerdefinierten Arbeitsmappe gespeichert, um zu verhindern, dass die Standardkonfiguration in unserer veröffentlichten Arbeitsmappe überschrieben wird. Arbeitsmappen werden in einer Ressourcengruppe gespeichert, und zwar entweder in Ihrem privaten Bereich „Meine Berichte“ oder im Bereich „Freigegebene Berichte“, der für alle Benutzer mit Zugriff auf die Ressourcengruppe zugänglich ist. Nachdem Sie die benutzerdefinierte Arbeitsmappe gespeichert haben, müssen Sie zum Arbeitsmappenkatalog wechseln, um die Mappe zu starten.
+Anpassungen werden in einer benutzerdefinierten Arbeitsmappe gespeichert, um zu verhindern, dass die Standardkonfiguration in einer veröffentlichten Arbeitsmappe überschrieben wird. Arbeitsmappen werden in einer Ressourcengruppe gespeichert, und zwar entweder im für Sie privaten Abschnitt **Meine Berichte** oder im Abschnitt **Freigegebene Berichte**, der für alle Benutzer mit Zugriff auf die Ressourcengruppe zugänglich ist. Nachdem Sie die benutzerdefinierte Arbeitsmappe gespeichert haben, können Sie sie in dem Arbeitsmappenkatalog öffnen.
 
-![Screenshot: Arbeitsmappenkatalog](./media/data-explorer/gallery.png)
+![Screenshot des Arbeitsmappenkatalogs.](./media/data-explorer/gallery.png)
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Allgemeine Anleitungen zur Problembehandlung finden Sie im Artikel zur [Problembehandlung für arbeitsmappenbasierte Erkenntnisse](troubleshoot-workbooks.md).
+Eine allgemeine Anleitung zur Problembehandlung finden Sie im Artikel [ Problembehandlung bei arbeitsmappenbasierten Erkenntnissen](troubleshoot-workbooks.md).
 
-Dieser Abschnitt unterstützt Sie bei der Diagnose und Behandlung einiger bekannter Probleme, die bei der Verwendung von Azure Data Explorer Insights auftreten können. In der Liste unten finden Sie die für Ihre spezifische Fragestellung relevanten Informationen.
+Die folgenden Abschnitte helfen Ihnen bei der Diagnose und Problembehandlung einiger der häufigsten Probleme, die bei der Verwendung von Azure Data Explorer Insights auftreten können.
 
 ### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>Warum werden in der Abonnementauswahl nicht alle meine Abonnements angezeigt?
 
-Es werden nur Abonnements angezeigt, die Azure Data Explorer-Cluster enthalten (aus dem gewählten Abonnementfilter). Die Auswahl erfolgt im Header des Azure-Portals unter „Verzeichnis + Abonnement“.
+Azure Data Explorer Insights zeigt nur Abonnements an, die Azure Data Explorer-Cluster enthalten, die aus dem ausgewählten Abonnementfilter ausgewählt wurden. Sie wählen einen Abonnementfilter unter **Verzeichnis + Abonnement** im Azure-Portal aus.
 
-![Screenshot: Abonnementfilter](./media/key-vaults-insights-overview/Subscriptions.png)
+![Screenshot der Auswahl eines Abonnementfilters.](./media/key-vaults-insights-overview/Subscriptions.png)
 
-### <a name="why-do-i-not-see-any-data-for-my-azure-data-explorer-cluster-under-the-usage-tables-or-cache-sections"></a>Warum werden mir in den Abschnitten „Verbrauch“, „Tabellen“ oder „Cache“ keine Daten für meinen Azure Data Explorer-Cluster angezeigt?
+### <a name="why-dont-i-see-any-data-for-my-azure-data-explorer-cluster-under-the-usage-tables-or-cache-section"></a>Warum sehe ich keine Daten für meinen Azure Data Explorer-Cluster unter dem Abschnitt Nutzung, Tabellen oder Cache?
 
-Zum Anzeigen Ihrer protokollbasierten Daten müssen Sie [Diagnoseprotokolle aktivieren](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs), und zwar für jeden Azure Data Explorer-Cluster, den Sie überwachen möchten. Dies kann in den Diagnoseeinstellungen für den jeweiligen Cluster konfiguriert werden. Sie müssen Ihre Daten an einen Log Analytics-Arbeitsbereich senden. Folgende Diagnoseprotokolle sollten aktiviert werden: Command, Query, TableDetails und TableUsageStatistics.
+Um Ihre protokollbasierten Daten anzuzeigen, müssen Sie die [ Diagnoseprotokolle akitivieren](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) für jeden Azure Data Explorer-Cluster, den Sie überwachen möchten. Sie können dies unter den Diagnoseeinstellungen für jeden Cluster tun. Sie müssen Ihre Daten an einen Log Analytics-Arbeitsbereich senden. Die Diagnoseprotokolle, die aktiviert werden sollten, sind **Befehl**,  **Abfrage**, **TableDetails** und **TableUsageStatistics**.
 
-### <a name="i-have-already-enabled-logs-for-my-azure-data-explorer-cluster-why-am-i-still-unable-to-see-my-data-under-commands-and-queries"></a>Ich habe bereits Protokolle für meinen Azure Data Explorer-Cluster aktiviert. Warum kann ich meine Daten unter „Befehle und Abfragen“ immer noch nicht sehen?
+### <a name="ive-already-enabled-logs-for-my-azure-data-explorer-cluster-why-am-i-still-unable-to-see-my-data-under-commands-and-queries"></a>Ich habe bereits Protokolle für meinen Azure Data Explorer-Cluster aktiviert. Warum kann ich meine Daten immer noch nicht unter Befehle und Abfragen sehen?
 
-Diagnoseprotokolle werden derzeit nicht rückwirkend angezeigt. Daten werden also erst angezeigt, nachdem Aktionen für Ihre Azure Data Explorer-Cluster ausgeführt wurden. Dies kann eine Weile dauern (einige Stunden, möglicherweise sogar einen Tag), je nachdem, wie aktiv Ihr Azure Data Explorer-Cluster ist.
-
+Derzeit funktionieren Diagnoseprotokolle nicht rückwirkend. Die Daten werden erst angezeigt, nachdem Aktionen in Azure Data Explorer durchgeführt wurden. Das kann einige Zeit dauern, von Stunden bis zu einem Tag, je nachdem, wie aktiv Ihr Azure Data Explorer-Cluster ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../visualize/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
+Lernen Sie die Szenarien, für die Arbeitsmappen entwickelt wurden, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können und vieles mehr, indem Sie [Erstellen von interaktiven Berichten mit Azure Monitor Arbeitsmappen](../visualize/workbooks-overview.md)lesen.

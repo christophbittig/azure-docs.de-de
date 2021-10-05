@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: subject-monitoring
-ms.openlocfilehash: 8f3cf8303a0667d3479500d6c3956be3b21959c0
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 9489d325f7a67e4a8258933ce3601d4a29b3e98f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592248"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587649"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Überwachen von Daten in Azure Blob Storage – Referenz
 
@@ -22,7 +22,7 @@ Ausführliche Informationen über das Erfassen und Analysieren von Überwachungs
 
 ## <a name="metrics"></a>Metriken
 
-In den nachstehenden Tabellen sind die für Azure Storage erfassten Plattformmetriken aufgelistet. 
+In den nachstehenden Tabellen sind die für Azure Storage erfassten Plattformmetriken aufgelistet.
 
 ### <a name="capacity-metrics"></a>Kapazitätsmetriken
 
@@ -74,7 +74,7 @@ Bei Metriken mit Dimensionsunterstützung muss der Dimensionswert angegeben werd
 ## <a name="resource-logs-preview"></a>Ressourcenprotokolle (Vorschau)
 
 > [!NOTE]
-> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen öffentlichen Cloudregionen für Vorschautests zur Verfügung. Diese Vorschauversion ermöglicht Protokolle für Blobs (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen, Tabellen, Universell V1-Premium-Speicherkonten und Universell V2-Speicherkonten. Klassische Speicherkonten werden nicht unterstützt.
+> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen der öffentlichen und der US Government-Cloud für Vorschautests zur Verfügung. Diese Vorschauversion ermöglicht Protokolle für Blobs (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen, Tabellen, Universell V1-Premium-Speicherkonten und Universell V2-Speicherkonten. Klassische Speicherkonten werden nicht unterstützt.
 
 In der nachstehenden Tabelle sind die Eigenschaften für Azure Storage-Ressourcenprotokolle aufgelistet, wenn diese in Azure Monitor-Protokollen oder Azure Storage gesammelt werden. Diese Eigenschaften beschreiben den Vorgang, den Dienst und den Autorisierungstyp, der zum Ausführen des Vorgangs verwendet wurde.
 

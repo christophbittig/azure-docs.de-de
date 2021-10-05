@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 9b8699598a9bac4781346ff939736b2bd6ee72f2
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: d38c2518b3504b79f70c58aff1e6cf832d05c8a5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113429942"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633905"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Compute- und Speicheroptionen in Azure Database for MySQL: Flexible Server (Vorschau)
 
@@ -40,7 +40,7 @@ Um eine Computeebene auszuwählen, verwenden Sie die folgende Tabelle als Ausgan
 | Universell | Geeignet für die meisten Unternehmensworkloads mit gängigen Compute- und Arbeitsspeicheranforderungen und skalierbarem E/A-Durchsatz. Hierzu zählen beispielsweise zum Hosten von Web- und mobilen Apps verwendete Server und andere Unternehmensanwendungen.|
 | Arbeitsspeicheroptimiert | Geeignet für Hochleistungs-Datenbankworkloads, für die In-Memory-Leistung erforderlich ist, um eine schnellere Transaktionsverarbeitung und höhere Parallelität zu erzielen. Hierzu zählen beispielsweise Server für die Verarbeitung von Echtzeitdaten und leistungsstarke Transaktions- oder Analyse-Apps.|
 
-Nachdem Sie einen Server erstellt haben, haben sich die Computeebene, die Computegröße und die Speichergröße geändert. Die Computeskalierung erfordert einen Neustart und dauert zwischen 60-120 Sekunden, während die Speicherskalierung keinen Neustart erfordert. Sie können den Aufbewahrungszeitraum für Sicherungen auch unabhängig nach oben oder unten anpassen. Weitere Informationen finden Sie im Abschnitt [Skalieren von Ressourcen](#scale-resources).
+Nachdem Sie einen Server erstellt haben, können die Computeebene, die Computegröße und die Speichergröße geändert werden. Die Computeskalierung erfordert einen Neustart und dauert zwischen 60-120 Sekunden, während die Speicherskalierung keinen Neustart erfordert. Sie können den Aufbewahrungszeitraum für Sicherungen auch unabhängig nach oben oder unten anpassen. Weitere Informationen finden Sie im Abschnitt [Skalieren von Ressourcen](#scale-resources).
 
 ## <a name="compute-tiers-size-and-server-types"></a>Computeebenen, -größe und -servertypen
 

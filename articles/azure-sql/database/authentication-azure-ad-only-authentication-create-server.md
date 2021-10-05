@@ -1,19 +1,20 @@
 ---
-title: Erstellen eines Servers mit aktivierter reiner Azure Active Directory-Authentifizierung in Azure SQL
+title: Erstellen eines Servers mit aktivierter reiner Azure Active Directory-Authentifizierung
 description: In diesem Artikel wird Schritt für Schritt die Erstellung eines logischen Azure SQL-Servers bzw. einer verwalteten Instanz mit aktivierter reiner Azure AD-Authentifizierung (Azure Active Directory) beschrieben. Die Herstellung der Konnektivität per SQL-Authentifizierung ist hierbei also deaktiviert.
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 ms.service: sql-db-mi
 ms.subservice: security
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/19/2021
-ms.openlocfilehash: 7b12e8cfac76f1b397e3dd1209afe584616ef340
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 08/31/2021
+ms.openlocfilehash: 1519573670b3c97e1c47404ed457bf68c488108e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114458400"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643192"
 ---
 # <a name="create-server-with-azure-ad-only-authentication-enabled-in-azure-sql"></a>Erstellen eines Servers mit aktivierter reiner Azure AD-Authentifizierung in Azure SQL
 
@@ -22,7 +23,7 @@ ms.locfileid: "114458400"
 > [!NOTE]
 > Die in diesem Artikel behandelte **reine Azure AD-Authentifizierung** befindet sich in der **Public Preview-Phase**. Ausführliche Informationen zu diesem Feature finden Sie unter [Reine Azure AD-Authentifizierung mit Azure SQL](authentication-azure-ad-only-authentication.md). Die reine Azure AD-Authentifizierung ist für Azure Synapse Analytics derzeit nicht verfügbar.
 
-In dieser Schrittanleitung sind die Schritte zum Erstellen eines [logischen Azure SQL-Servers](logical-servers.md) oder einer [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) mit aktivierter [reiner Azure AD-Authentifizierung](authentication-azure-ad-only-authentication.md) während der Bereitstellung beschrieben. Mit dem Feature für die reine Azure AD-Authentifizierung wird verhindert, dass Benutzer eine Verbindung mit dem Server oder der verwalteten Instanz per SQL-Authentifizierung herstellen. Die Verbindung kann also nur über die Azure AD-Authentifizierung hergestellt werden.
+In dieser Schrittanleitung sind die Schritte zum Erstellen eines [logischen Servers](logical-servers.md) für Azure SQL-Datenbank oder einer [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) mit aktivierter [reiner Azure AD-Authentifizierung](authentication-azure-ad-only-authentication.md) während der Bereitstellung beschrieben. Mit dem Feature für die reine Azure AD-Authentifizierung wird verhindert, dass Benutzer eine Verbindung mit dem Server oder der verwalteten Instanz per SQL-Authentifizierung herstellen. Die Verbindung kann also nur über die Azure AD-Authentifizierung hergestellt werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,13 +33,13 @@ In dieser Schrittanleitung sind die Schritte zum Erstellen eines [logischen Azur
 
 ## <a name="permissions"></a>Berechtigungen
 
-Um einen logischen Azure SQL-Server oder eine verwaltete Instanz bereitstellen zu können, benötigen Sie die entsprechenden Berechtigungen zum Erstellen dieser Ressourcen. Azure-Benutzer mit höherem Berechtigungsgrad, z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner), [Mitwirkende](../../role-based-access-control/built-in-roles.md#contributor), [Dienstadministratoren](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles) und [Co-Admins](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles) von Abonnements, sind zum Erstellen eines SQL-Servers oder einer verwalteten Instanz berechtigt. Verwenden Sie zum Erstellen dieser Ressourcen mit der Azure RBAC-Rolle mit den geringstmöglichen Rechten die Rolle [Mitwirkender von SQL Server](../../role-based-access-control/built-in-roles.md#sql-server-contributor) für SQL-Datenbank und [Mitwirkender für verwaltete SQL-Instanzen](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) für eine verwaltete Instanz.
+Um einen logischen Server oder eine verwaltete Instanz bereitstellen zu können, benötigen Sie die entsprechenden Berechtigungen zum Erstellen dieser Ressourcen. Azure-Benutzer mit höherem Berechtigungsgrad, z. B. [Besitzer](../../role-based-access-control/built-in-roles.md#owner), [Mitwirkende](../../role-based-access-control/built-in-roles.md#contributor), [Dienstadministratoren](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles) und [Co-Admins](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles) von Abonnements, sind zum Erstellen eines SQL-Servers oder einer verwalteten Instanz berechtigt. Verwenden Sie zum Erstellen dieser Ressourcen mit der Azure RBAC-Rolle mit den geringstmöglichen Rechten die Rolle [Mitwirkender von SQL Server](../../role-based-access-control/built-in-roles.md#sql-server-contributor) für SQL-Datenbank und [Mitwirkender für verwaltete SQL-Instanzen](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) für eine verwaltete Instanz.
 
 Die Azure RBAC-Rolle [SQL-Sicherheits-Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) verfügt nicht über einen ausreichend hohen Berechtigungsgrad für die Erstellung eines Servers oder einer Instanz mit aktivierter reiner Azure AD-Authentifizierung. Die Rolle [SQL-Sicherheits-Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) ist erforderlich, um das Feature für die reine Azure AD-Authentifizierung nach der Erstellung des Servers bzw. der Instanz verwalten zu können.
 
 ## <a name="provision-with-azure-ad-only-authentication-enabled"></a>Durchführen der Bereitstellung mit aktivierter reiner Azure AD-Authentifizierung
 
-Der folgende Abschnitt enthält Beispiele und Skripts zur Erstellung eines logischen SQL-Servers oder einer verwalteten Instanz, wobei ein Azure AD-Administrator für den Server bzw. die Instanz festgelegt ist und während der Servererstellung die reine Azure AD-Authentifizierung aktiviert ist. Weitere Informationen zu diesem Feature finden Sie unter [Reine Azure AD-Authentifizierung](authentication-azure-ad-only-authentication.md).
+Der folgende Abschnitt enthält Beispiele und Skripts zur Erstellung eines logischen Servers oder einer verwalteten Instanz, wobei ein Azure AD-Administrator für den Server bzw. die Instanz festgelegt ist und während der Servererstellung die reine Azure AD-Authentifizierung aktiviert wird. Weitere Informationen zu diesem Feature finden Sie unter [Reine Azure AD-Authentifizierung](authentication-azure-ad-only-authentication.md).
 
 In unseren Beispielen aktivieren wir die reine Azure AD-Authentifizierung während der Erstellung eines Servers oder einer verwalteten Instanz mit einem systemseitig zugewiesenen Serveradministrator und Kennwort. Hierdurch wird der Zugriff des Serveradministrators verhindert, wenn die reine Azure AD-Authentifizierung aktiviert ist, sodass nur der Azure AD-Administrator auf die Ressource zugreifen kann. Optional können Sie den APIs Parameter hinzufügen, um während der Servererstellung Ihren eigenen Serveradministrator und Ihr Kennwort einzubeziehen. Das Kennwort kann aber erst zurückgesetzt werden, nachdem Sie die reine Azure AD-Authentifizierung deaktiviert haben.
 
@@ -51,7 +52,7 @@ Sie sollten andere verfügbare APIs verwenden, um die vorhandenen Eigenschaften 
 
 # <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
-Der Azure CLI-Befehl `az sql server create` wird verwendet, um einen neuen logischen Azure SQL-Server bereitzustellen. Mit dem unten angegebenen Befehl wird ein neuer Server bereitgestellt, für den die reine Azure AD-Authentifizierung aktiviert ist.
+Der Azure CLI-Befehl `az sql server create` wird verwendet, um einen neuen logischen Server bereitzustellen. Mit dem unten angegebenen Befehl wird ein neuer Server bereitgestellt, für den die reine Azure AD-Authentifizierung aktiviert ist.
 
 Die SQL-Administratoranmeldung für den Server wird automatisch erstellt, und das Kennwort wird nach dem Zufallsprinzip festgelegt. Da die Herstellung der Konnektivität für die SQL-Authentifizierung bei dieser Servererstellung deaktiviert ist, wird die SQL-Administratoranmeldung nicht verwendet.
 
@@ -61,8 +62,8 @@ Ersetzen Sie im Beispiel die folgenden Werte:
 
 - `<AzureADAccount>`: Kann ein Azure AD-Benutzer bzw. eine -Gruppe sein. Beispiel: `DummyLogin`
 - `<AzureADAccountSID>`: Die Azure AD-Objekt-ID für den Benutzer.
-- `<ResourceGroupName>`: Name der Ressourcengruppe für Ihren logischen Azure SQL-Server.
-- `<ServerName>`: Verwenden Sie einen eindeutigen Namen für den logischen Azure SQL-Server.
+- `<ResourceGroupName>`: Name der Ressourcengruppe für Ihren logischen Server
+- `<ServerName>`: Verwenden Sie einen eindeutigen Namen für den Server.
 
 ```azurecli
 az sql server create --enable-ad-only-auth --external-admin-principal-type User --external-admin-name <AzureADAccount> --external-admin-sid <AzureADAccountSID> -g <ResourceGroupName> -n <ServerName>
@@ -86,9 +87,9 @@ Der Azure AD-Administrator für den Server ist das Konto, das Sie für `<AzureA
 
 Ersetzen Sie im Beispiel die folgenden Werte:
 
-- `<ResourceGroupName>`: Name der Ressourcengruppe für Ihren logischen Azure SQL-Server.
+- `<ResourceGroupName>`: Name der Ressourcengruppe für Ihren logischen Server
 - `<Location>`: Standort des Servers, z. B. `West US` oder `Central US`.
-- `<ServerName>`: Verwenden Sie einen eindeutigen Namen für den logischen Azure SQL-Server.
+- `<ServerName>`: Verwenden Sie einen eindeutigen Namen für den Server.
 - `<AzureADAccount>`: Kann ein Azure AD-Benutzer bzw. eine -Gruppe sein. Beispiel: `DummyLogin`
 
 ```powershell
@@ -99,9 +100,9 @@ Weitere Informationen finden Sie unter [New-AzSqlServer](/powershell/module/az.s
 
 # <a name="rest-api"></a>[REST-API](#tab/rest-api)
 
-Die REST-API zum [Erstellen oder Aktualisieren von Servern (Servers – Create Or Update)](/rest/api/sql/2020-11-01-preview/servers/create-or-update) kann für die Erstellung eines logischen Azure SQL-Servers verwendet werden, wobei während der Bereitstellung die reine Azure AD-Authentifizierung aktiviert ist. 
+Die REST-API zum [Erstellen oder Aktualisieren von Servern (Servers: Create Or Update)](/rest/api/sql/2020-11-01-preview/servers/create-or-update) kann für die Erstellung eines logischen Servers verwendet werden, wobei während der Bereitstellung die reine Azure AD-Authentifizierung aktiviert wird. 
 
-Mit dem unten angegebenen Skript wird ein logischer Azure SQL-Server bereitgestellt, der Azure AD-Administrator als `<AzureADAccount>` festgelegt und die reine Azure AD-Authentifizierung aktiviert. Die SQL-Administratoranmeldung für den Server wird ebenfalls automatisch erstellt, und das Kennwort wird nach dem Zufallsprinzip festgelegt. Da die Herstellung der Konnektivität für die SQL-Authentifizierung bei dieser Bereitstellung deaktiviert ist, wird die SQL-Administratoranmeldung nicht verwendet.
+Mit dem unten angegebenen Skript wird ein logischer Server bereitgestellt, der Azure AD-Administrator als `<AzureADAccount>` festgelegt und die reine Azure AD-Authentifizierung aktiviert. Die SQL-Administratoranmeldung für den Server wird ebenfalls automatisch erstellt, und das Kennwort wird nach dem Zufallsprinzip festgelegt. Da die Herstellung der Konnektivität für die SQL-Authentifizierung bei dieser Bereitstellung deaktiviert ist, wird die SQL-Administratoranmeldung nicht verwendet.
 
 Der Azure AD-Administrator `<AzureADAccount>` kann nach Abschluss der Bereitstellung zum Verwalten des Servers verwendet werden.
 
@@ -109,8 +110,8 @@ Ersetzen Sie im Beispiel die folgenden Werte:
 
 - `<tenantId>`: Kann ermittelt werden, indem Sie zum [Azure-Portal](https://portal.azure.com) und dann zu Ihrer **Azure Active Directory**-Ressource navigieren. Im Bereich **Übersicht** sollte Ihre **Mandanten-ID** angezeigt werden.
 - `<subscriptionId>`: Ihre Abonnement-ID können Sie über das Azure-Portal ermitteln.
-- `<ServerName>`: Verwenden Sie einen eindeutigen Namen für den logischen Azure SQL-Server.
-- `<ResourceGroupName>`: Name der Ressourcengruppe für Ihren logischen Azure SQL-Server.
+- `<ServerName>`: Verwenden Sie einen eindeutigen Namen für den Server.
+- `<ResourceGroupName>`: Name der Ressourcengruppe für Ihren logischen Server
 - `<AzureADAccount>`: Kann ein Azure AD-Benutzer bzw. eine -Gruppe sein. Beispiel: `DummyLogin`
 - `<Location>`: Standort des Servers, z. B. `westus2` oder `centralus`.
 - `<objectId>`: Kann ermittelt werden, indem Sie zum [Azure-Portal](https://portal.azure.com) und dann zu Ihrer **Azure Active Directory**-Ressource navigieren. Suchen Sie im Bereich **Benutzer** nach dem Azure AD-Benutzer und der zugehörigen **Objekt-ID**.
@@ -175,7 +176,7 @@ $responce.content
 
 Weitere Informationen und ARM-Vorlagen finden Sie unter [Azure Resource Manager-Vorlagen für Azure SQL-Datenbank und verwaltete SQL-Instanzen](arm-templates-content-guide.md).
 
-Informationen zum Bereitstellen eines logischen SQL-Servers, für den ein Azure AD-Administrator festgelegt und die reine Azure AD-Authentifizierung aktiviert ist, mithilfe einer ARM-Vorlage finden Sie in unserer Schnellstartvorlage vom Typ [Logischer Azure SQL-Server mit reiner Azure AD-Authentifizierung](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sql/sql-logical-server-aad-only-auth).
+Informationen zum Bereitstellen eines logischen Servers, für den ein Azure AD-Administrator festgelegt und die reine Azure AD-Authentifizierung aktiviert ist, mithilfe einer ARM-Vorlage finden Sie in unserer Schnellstartvorlage für [logische Azure SQL-Server mit reiner Azure AD-Authentifizierung](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sql/sql-logical-server-aad-only-auth).
 
 Sie können auch die folgende Vorlage verwenden. Verwenden Sie eine [benutzerdefinierte Bereitstellung im Azure-Portal](https://portal.azure.com/#create/Microsoft.Template), und **erstellen Sie im Editor Ihre eigene Vorlage**. **Speichern** Sie als Nächstes die Konfiguration, nachdem Sie das Beispiel eingefügt haben.
 
@@ -188,7 +189,7 @@ Sie können auch die folgende Vorlage verwenden. Verwenden Sie eine [benutzerdef
             "type": "string",
             "defaultValue": "[uniqueString('sql', resourceGroup().id)]",
             "metadata": {
-                "description": "The name of the SQL logical server."
+                "description": "The name of the logical server."
             }
         },
         "location": {
@@ -322,7 +323,7 @@ Ersetzen Sie im Beispiel die folgenden Werte:
 - `<tenantId>`: Kann ermittelt werden, indem Sie zum [Azure-Portal](https://portal.azure.com) und dann zu Ihrer **Azure Active Directory**-Ressource navigieren. Im Bereich **Übersicht** sollte Ihre **Mandanten-ID** angezeigt werden.
 - `<subscriptionId>`: Ihre Abonnement-ID können Sie über das Azure-Portal ermitteln.
 - `<instanceName>`: Verwenden Sie einen eindeutigen Namen für die verwaltete Instanz.
-- `<ResourceGroupName>`: Name der Ressourcengruppe für Ihren logischen Azure SQL-Server.
+- `<ResourceGroupName>`: Name der Ressourcengruppe für Ihren logischen Server
 - `<AzureADAccount>`: Kann ein Azure AD-Benutzer bzw. eine -Gruppe sein. Beispiel: `DummyLogin`
 - `<Location>`: Standort des Servers, z. B. `westus2` oder `centralus`.
 - `<objectId>`: Kann ermittelt werden, indem Sie zum [Azure-Portal](https://portal.azure.com) und dann zu Ihrer **Azure Active Directory**-Ressource navigieren. Suchen Sie im Bereich **Benutzer** nach dem Azure AD-Benutzer und der zugehörigen **Objekt-ID**.
@@ -673,3 +674,4 @@ Nachdem die Bereitstellung für Ihre verwaltete Instanz abgeschlossen ist, bemer
 
 - Falls Sie bereits über einen SQL-Server oder eine verwaltete Instanz verfügen und nur die reine Azure AD-Authentifizierung aktivieren möchten, helfen Ihnen die Informationen unter [Tutorial: Aktivieren der reinen Azure Active Directory-Authentifizierung mit Azure SQL](authentication-azure-ad-only-authentication-tutorial.md) weiter.
 - Weitere Informationen zum Feature für die reine Azure AD-Authentifizierung finden Sie unter [Reine Azure AD-Authentifizierung mit Azure SQL](authentication-azure-ad-only-authentication.md).
+- Wenn Sie die Servererstellung mit aktivierter reiner Azure AD-Authentifizierung erzwingen möchten, lesen Sie unter [Azure Policy für die reine Azure Active Directory-Authentifizierung mit Azure SQL](authentication-azure-ad-only-authentication-policy.md) nach.

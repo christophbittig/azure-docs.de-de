@@ -1,21 +1,18 @@
 ---
-title: Bereitstellen eines selbstgehosteten Gateways für Azure Kubernetes Service | Microsoft-Dokumentation
+title: Bereitstellen eines selbstgehosteten Gateways für Azure Kubernetes Service
 description: Erfahren Sie, wie Sie eine selbstgehostete Gatewaykomponente von Azure API Management für Azure Kubernetes Service bereitstellen.
-services: api-management
-documentationcenter: ''
-author: miaojiang
+author: dlepow
 manager: gwallace
-editor: ''
 ms.service: api-management
 ms.topic: article
 ms.date: 06/11/2021
-ms.author: apimpm
-ms.openlocfilehash: c43f31be807d6a649cdd750ee15841a0ecbd7631
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.author: danlep
+ms.openlocfilehash: a5faca1d91596021e236e2bcb459679085ee99aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300757"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620861"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Bereitstellen für Azure Kubernetes Service
 
@@ -37,7 +34,7 @@ In diesem Artikel werden die Schritte für die Bereitstellung einer selbstgehost
 3. Wählen Sie **Bereitstellung** aus.
 4. Im Textfeld **Token** wurde automatisch ein neues Token mit den Standardwerten **Ablauf** und **Geheimer Schlüssel** generiert. Passen Sie einen Wert oder beide Werte an, und wählen Sie **Generieren** aus, um ein neues Token zu erstellen.
 5. Stellen Sie sicher, dass **Kubernetes** unter **Bereitstellungsskripts** ausgewählt ist.
-6. Wählen Sie den **<Gatewayname>.yml**-Dateilink neben **Bereitstellung** aus, um die Datei herunterzuladen.
+6. Wählen Sie den **\<gateway-name\>.yml**-Dateilink neben **Bereitstellung** aus, um die Datei herunterzuladen.
 7. Passen Sie `config.service.endpoint`, die Portzuordnungen und den Containernamen in der YML-Datei nach Bedarf an.
 8. Abhängig von Ihrem Szenario müssen Sie möglicherweise den [Diensttyp](../aks/concepts-network.md#services) ändern. 
     * Der Standardwert lautet `LoadBalancer`. Hierbei handelt es sich um den externen Lastenausgleich. 
@@ -45,18 +42,22 @@ In diesem Artikel werden die Schritte für die Bereitstellung einer selbstgehost
     * Im folgenden Beispiel wird `NodePort` verwendet.
 1. Wählen Sie das Symbol **Kopieren** rechts neben dem Textfeld **Bereitstellen** aus, um den `kubectl`-Befehl in der Zwischenablage zu speichern.
 1. Fügen Sie den Befehl in das Terminalfenster (oder Befehlsfenster) ein. Bei diesem Befehl wird erwartet, dass die heruntergeladene Umgebungsdatei im aktuellen Verzeichnis vorhanden ist.
-    ```console
-        kubectl apply -f <gateway-name>.yaml
-    ```
+
+   ```console
+   kubectl apply -f <gateway-name>.yaml
+   ```
+   
 1. Führen Sie den Befehl aus. Mit dem Befehl wird der Cluster angewiesen, folgende Aktionen auszuführen:
     * Ausführen des Containers mit dem aus der Microsoft Container Registry heruntergeladenen Image des selbstgehosteten Gateways 
     * Konfigurieren des Containers, sodass die Ports HTTP 8080 und HTTPS 443 verfügbar sind.
 1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob der Gatewaypod ausgeführt wird. Ihr Podname lautet anders.
-    ```console
-    kubectl get pods
-    NAME                                   READY     STATUS    RESTARTS   AGE
-    contoso-apim-gateway-59f5fb94c-s9stz   1/1       Running   0          1m
-    ```
+
+   ```console
+   kubectl get pods
+   NAME                                   READY     STATUS    RESTARTS   AGE
+   contoso-apim-gateway-59f5fb94c-s9stz   1/1       Running   0          1m
+   ```
+
 1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob der Gatewaydienst ausgeführt wird. Ihr Dienstname und die IP-Adressen lauten anders.
     ```console
     kubectl get services
@@ -66,7 +67,7 @@ In diesem Artikel werden die Schritte für die Bereitstellung einer selbstgehost
 1. Kehren Sie zurück zum Azure-Portal, und vergewissern Sie sich, dass der bereitgestellte Gatewayknoten einen fehlerfreien Status meldet.
 
 > [!TIP]
-> Verwenden Sie den Befehl <code>kubectl logs <gateway-pod-name></code>, um eine Momentaufnahme des Protokolls des selbstgehosteten Gateways anzuzeigen.
+> Verwenden Sie den Befehl `kubectl logs <gateway-pod-name>`, um eine Momentaufnahme des Protokolls des selbstgehosteten Gateways anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

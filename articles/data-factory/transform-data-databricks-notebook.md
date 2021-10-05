@@ -1,25 +1,25 @@
 ---
 title: Transformieren von Daten mit einem Databricks-Notebook
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Sie Daten verarbeiten oder transformieren, indem Sie ein Databricks-Notebook in Azure Data Factory ausführen.
+description: Erfahren Sie, wie Sie Daten verarbeiten oder transformieren, indem Sie ein Databricks-Notebook in Azure Data Factory- oder Synapse Analytics-Pipelines ausführen.
 ms.service: data-factory
 ms.subservice: tutorials
 ms.custom: synapse
 author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
-ms.date: 03/15/2018
-ms.openlocfilehash: d4db58e70c31724bac3678eb0f692e13d26211c6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 9f82c1f2e39261ba4ba1072f5da9f807f23a180e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639906"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798463"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformieren von Daten durch Ausführen eines Databricks-Notebooks
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Die Azure Databricks-Notebook-Aktivität in einer [Data Factory-Pipeline](concepts-pipelines-activities.md) führt ein Databricks-Notebook in Ihrem Azure Databricks-Arbeitsbereich aus. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.  Azure Databricks ist eine verwaltete Plattform für die Ausführung von Apache Spark.
+Die Azure Databricks-Notebook-Aktivität in einer [Pipeline](concepts-pipelines-activities.md) führt ein Databricks-Notebook in Ihrem Azure Databricks-Arbeitsbereich aus. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.  Azure Databricks ist eine verwaltete Plattform für die Ausführung von Apache Spark.
 
 ## <a name="databricks-notebook-activity-definition"></a>Definition der Databricks-Notebook-Aktivität
 
@@ -55,7 +55,7 @@ Dies ist die JSON-Beispieldefinition der Databricks-Notebook-Aktivität:
 
 Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definition verwendet werden:
 
-|Eigenschaft|BESCHREIBUNG|Erforderlich|
+|Eigenschaft|Beschreibung|Erforderlich|
 |---|---|---|
 |name|Der Name der Aktivität in der Pipeline.|Ja|
 |description|Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.|Nein|
@@ -109,15 +109,15 @@ In der oben genannten Definition der Databricks-Aktivität geben Sie die folgend
 
 Weitere Informationen zu Bibliothekstypen finden Sie in der [Databricks-Dokumentation](/azure/databricks/dev-tools/api/latest/libraries#managedlibrarieslibrary).
 
-## <a name="passing-parameters-between-notebooks-and-data-factory"></a>Übergeben von Parametern zwischen Notebooks und Data Factory
+## <a name="passing-parameters-between-notebooks-and-pipelines"></a>Übergeben von Parametern zwischen Notebooks und Pipelines
 
-Mithilfe der Eigenschaft *baseParameters* in der Databricks-Aktivität können Sie Data Factory-Parameter an Notebooks übergeben.
+Mithilfe der *baseParameters*-Eigenschaft in der Databricks-Aktivität können Sie Parameter an Notebooks übergeben.
 
-In bestimmten Fällen müssen Sie möglicherweise bestimmte Werte aus dem Notebook an Data Factory zurückgeben, die für die Ablaufsteuerung (Bedingungsüberprüfungen) in Data Factory verwendet oder von Downstreamaktivitäten (Größenbeschränkung ist 2 MB) genutzt werden können.
+In bestimmten Fällen müssen Sie möglicherweise bestimmte Werte aus dem Notebook an den Dienst zurückgeben, die für die Ablaufsteuerung (Bedingungsüberprüfungen) im Dienst oder von Downstreamaktivitäten (Größenbeschränkung ist 2 MB) genutzt werden können.
 
-1. Sie können in Ihrem Notebook [dbutils.notebook.exit("returnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit) aufrufen, und der entsprechende Rückgabewert (returnValue) wird an Data Factory zurückgeben.
+1. Sie können in Ihrem Notebook [dbutils.notebook.exit("returnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit) aufrufen, um den entsprechenden Rückgabewert (returnValue) an den Dienst zurückzugeben.
 
-2. Mit einem Ausdruck wie `@{activity('databricks notebook activity name').output.runOutput}` können Sie die Ausgabe in Data Factory verwenden. 
+2. Mit einem Ausdruck wie `@{activity('databricks notebook activity name').output.runOutput}` können Sie die Ausgabe im Dienst verwenden. 
 
    > [!IMPORTANT]
    > Wenn Sie ein JSON-Objekt übergeben, können Sie Werte abrufen, indem Sie Eigenschaftsnamen anhängen. Beispiel: `@{activity('databricks notebook activity name').output.runOutput.PropertyName}`

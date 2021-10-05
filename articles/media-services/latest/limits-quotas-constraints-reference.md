@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 4c0cb8241f6eb284acecfcb5921db616af336da8
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: a269f2d93730b6219a2d29d797d94c101b5fdc57
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866931"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129052821"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services-Kontingente und -Grenzwerte
@@ -74,7 +74,7 @@ Alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, werden aut
 | Live-Ausgaben pro Liveereignis |3 <sup>(5)</sup> |
 | Max. Dauer für Liveausgabe | [Größe des DVR-Fensters](live-event-cloud-dvr-time-how-to.md) |
 
-<sup>4</sup> Ausführliche Informationen zu den Limits bei Liveereignissen finden Sie unter [Liveereignistypen – Vergleich und Limits](live-event-types-comparison-reference.md).
+<sup>4</sup> Ausführliche Informationen zu den Limits bei Liveereignissen finden Sie unter [Liveereignistypen – Vergleich und Limits](live-event-types-comparison-reference.md). Abhängig von Ihrem Streaming-Anwendungsfall und dem ausgewählten regionalen Rechenzentrum kann AMS mehr als 5 Liveereignisse pro Media Services Konto unterstützen. Stellen Sie eine Supportanfrage, um das Kontingent für Ihr Konto zu erhöhen.
 
 <sup>5</sup> Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet.
 

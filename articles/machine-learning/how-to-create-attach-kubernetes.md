@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 04/08/2021
-ms.openlocfilehash: 62e7f1b770db05f4dcd5d84cdc5f6a769566a4bd
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 09/16/2021
+ms.openlocfilehash: 7a0b2f24b10ace50d1e994284cb48b50799dfd57
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867588"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618189"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Erstellen und Anfügen eines Azure Kubernetes Service-Clusters
 
@@ -44,7 +44,7 @@ Mit Azure Machine Learning kann ein trainiertes Machine Learning-Modell im Azure
 
     Autorisierte IP-Adressbereiche funktionieren nur mit Load Balancer Standard.
 
-- > Um einen AKS-Cluster aus einem __anderen Azure-Abonnement__ anfügen zu können, muss Ihnen (Ihrem Azure AD-Konto) die Rolle **Mitwirkender** im AKS-Cluster erteilt werden. Überprüfen Sie Ihren Zugriff im [Azure-Portal](https://ms.portal.azure.com/).
+- Um einen AKS-Cluster aus einem __anderen Azure-Abonnement__ anfügen zu können, muss Ihnen (Ihrem Azure AD-Konto) die Rolle **Mitwirkender** im AKS-Cluster erteilt werden. Überprüfen Sie Ihren Zugriff im [Azure-Portal](https://ms.portal.azure.com/).
 
 - Wenn Sie einen privaten AKS-Cluster (mit Azure Private Link) verwenden möchten, müssen Sie zuerst den Cluster erstellen und diesen dann **an den Arbeitsbereich anfügen**. Weitere Informationen finden Sie unter [Erstellen eines privaten Azure Kubernetes Service-Clusters](../aks/private-clusters.md).
 
@@ -57,9 +57,7 @@ Mit Azure Machine Learning kann ein trainiertes Machine Learning-Modell im Azure
     > [!IMPORTANT]
     > Ein __Dev/Test__-Cluster ist nicht für Produktionsdatenverkehr geeignet und kann Rückschlusszeiten erhöhen. Entwicklungs- und Testcluster garantieren auch keine Fehlertoleranz.
 
-- Wenn ein Cluster beim Erstellen oder Anfügen des Clusters für die __Produktion__ verwendet wird, muss er mindestens 12 __virtuelle CPUs__ enthalten. Die Anzahl der virtuellen CPUs kann berechnet werden, indem die __Anzahl der Knoten__ im Cluster mit der __Anzahl der Kerne__, die von der ausgewählten VM-Größe bereitgestellt werden, multipliziert wird. Wenn Sie beispielsweise die VM-Größe „Standard_D3_v2“ verwenden, die 4 virtuelle CPUs hat, müssen Sie für die Anzahl der Knoten einen Wert von mindestens 3 wählen.
-
-    Für ein __Dev/Test__-Cluster werden mindestens 2 virtuelle CPUs empfohlen.
+- Wenn ein Cluster erstellt oder angehängt wird, muss er mindestens __3 Knoten__ enthalten, wenn er für die __Produktion__ verwendet werden soll. Für einen __Dev/Test__ Cluster muss er mindestens einen Knoten enthalten.
 
 - Das Azure Machine Learning-SDK bietet keine Unterstützung zur Skalierung eines AKS-Clusters. Die Knoten in Ihrem Cluster können Sie über die Benutzeroberfläche Ihres AKS-Clusters in Azure Machine Learning Studio skalieren. Sie können nur die Knotenanzahl ändern, nicht die VM-Größe des Clusters. Weitere Informationen zum Skalieren der Knoten in einem AKS-Cluster finden Sie in den folgenden Artikeln:
 

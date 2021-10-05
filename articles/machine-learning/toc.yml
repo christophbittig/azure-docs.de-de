@@ -363,12 +363,17 @@
       items:
         - name: Bezeichnen von Daten
           items:
-            - name: Bezeichnen von Daten
-              displayName: 'data, dataset, labeling'
-              href: how-to-create-labeling-projects.md
+            - name: Einrichten der Bildbeschriftung
+              displayName: 'data, dataset'
+              href: how-to-create-image-labeling-projects.md
+            - name: Einrichten der Textbeschriftung
+              displayName: 'data, dataset'
+              href: how-to-create-text-labeling-projects.md
             - name: Beschriften von Bildern und Text
               displayName: 'data, dataset, labeling'
               href: how-to-label-data.md
+            - name: Auslagern von Beschriftungsaufgaben
+              href: how-to-outsource-data-labeling.md
             - name: Erstellen von Datasets mit Bezeichnungen
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md

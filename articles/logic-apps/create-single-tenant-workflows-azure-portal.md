@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: 2178b3d4ea9c1cc650685b90fa5dc2cdf6551191
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.date: 09/25/2021
+ms.openlocfilehash: 82d08db8a5686e6e13eaff5d18c6ba3afd254b2a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112116600"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584465"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-the-azure-portal"></a>Erstellen eines Integrationsworkflows mit der Azure Logic Apps-Einzelmandanteninstanz (Standard) im Azure-Portal
 
@@ -65,16 +65,15 @@ Im Weiteren führen Sie diese allgemeinen Aufgaben aus:
 
    ![Screenshot, der das Suchfeld des Azure-Portals mit dem Suchtext „Logik-Apps“ und der ausgewählten Ressource „Logik-App (Standard)“ zeigt.](./media/create-single-tenant-workflows-azure-portal/find-logic-app-resource-template.png)
 
-1. Wählen Sie auf der Seite **Logik-Apps** die Option **Hinzufügen** > **Standard** aus.
-
-   In diesem Schritt wird eine Logik-App-Ressource erstellt, die in der Azure Logic Apps-Umgebung mit einzelnem Mandanten ausgeführt wird und das [Preismodell für einzelne Mandanten](logic-apps-pricing.md#standard-pricing) verwendet.
+1. Wählen Sie auf der Seite **Logic Apps** die Option **Hinzufügen** aus.
 
 1. Geben Sie auf der Seite **Logik-App erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen zu Ihrer Logik-App-Ressource ein.
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | Beschreibung |
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Das für Ihre Logik-App zu verwendende Azure-Abonnement. |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Die Azure-Ressourcengruppe, in der Sie Ihre Logik-App und zugehörige Ressourcen erstellen. Dieser Ressourcenname muss regionsübergreifend eindeutig sein und darf nur Buchstaben, Ziffern, Bindestriche ( **-** ), Unterstriche ( **_** ), Klammern ( **()** ) und Punkte ( **.** ) enthalten. <p><p>In diesem Beispiel wird eine Ressourcengruppe namens `Fabrikam-Workflows-RG` erstellt. |
+   | **Typ** | Ja | **Standard** | Dieser Typ von Logik-App-Ressource wird in der Azure Logic Apps-Umgebung mit einem einzelnen Mandanten ausgeführt und verwendet das [Nutzungs-, Abrechnungs- und Preismodell „Standard“](logic-apps-pricing.md#standard-pricing). |
    | **Name der Logik-App** | Ja | <*logic-app-name*> | Der für Ihre Logik-App zu verwendende Name. Dieser Ressourcenname muss regionsübergreifend eindeutig sein und darf nur Buchstaben, Ziffern, Bindestriche ( **-** ), Unterstriche ( **_** ), Klammern ( **()** ) und Punkte ( **.** ) enthalten. <p><p>In diesem Beispiel wird eine Logik-App namens `Fabrikam-Workflows` erstellt. <p><p>**Hinweis**: Der Name Ihrer Logik-App erhält automatisch das Suffix `.azurewebsites.net`, da die **Logik-App (Standard)** -Ressource von Azure Functions unterstützt wird, wo dieselbe App-Benennungskonvention verwendet wird. |
    | **Veröffentlichen** | Ja | <*deployment-environment*> | Das Bereitstellungsziel für Ihre Logik-App. Standardmäßig ist **Workflow** für die Bereitstellung in einzelinstanzenfähigen Azure Logic Apps ausgewählt. Azure erstellt eine leere Logik-App-Ressource, in der Sie Ihren ersten Workflow hinzufügen müssen. <p><p>**Hinweis**: Derzeit erfordert die Option **Docker-Container** einen [*benutzerdefinierten Standort*](../azure-arc/kubernetes/conceptual-custom-locations.md) in einem Kubernetes-Cluster mit Azure Arc-Unterstützung, den Sie mit [Azure Arc-fähigen Logik-Apps (Preview)](azure-arc-enabled-logic-apps-overview.md) verwenden können. Die Ressourcenstandorte für Ihre Logik-App, der benutzerdefinierte Standort und der Cluster müssen alle identisch sein. |
    | **Region** | Ja | <*Azure-Region*> | Der Standort, der für die Erstellung Ihrer Ressourcengruppe und Ressourcen verwendet werden soll. Wenn Sie **Docker Container** ausgewählt haben, wählen Sie Ihren benutzerdefinierten Standort aus. <p><p>In diesem Beispiel wird die Beispiel-Logik-App in Azure bereitgestellt, und es wird **USA, Westen** verwendet. |
@@ -86,7 +85,7 @@ Im Weiteren führen Sie diese allgemeinen Aufgaben aus:
 
 1. Geben Sie die folgenden Informationen über die Speicherlösung und den Hostingplan, die für Ihre Logik-App verwendet werden sollen, auf der Registerkarte **Hosting** an.
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | Beschreibung |
    |----------|----------|-------|-------------|
    | **Speicherkonto** | Ja | <*Azure-storage-account-name*> | Das [Azure Storage-Konto](../storage/common/storage-account-overview.md), das für Speichertransaktionen verwendet werden soll. <p><p>Dieser Ressourcenname muss regionsübergreifend eindeutig sein und 3-24 Zeichen enthalten (nur Ziffern und Kleinbuchstaben). Wählen Sie entweder ein vorhandenes Konto aus, oder erstellen Sie ein neues Konto. <p><p>In diesem Beispiel wird ein Speicherkonto namens `fabrikamstorageacct` erstellt. |
    | **Plantyp** | Ja | <*hosting-plan*> | Der Hostingplan, der für die Bereitstellung Ihrer Logik-App verwendet werden soll. <p><p>Weitere Informationen finden Sie unter [Hostingpläne und Tarife](logic-apps-pricing.md#standard-pricing). |
@@ -100,14 +99,12 @@ Im Weiteren führen Sie diese allgemeinen Aufgaben aus:
 
    1. Wählen Sie für die Einstellung **Application Insights** entweder eine vorhandene Application Insights-Instanz aus, oder **Neue erstellen**, wenn Sie eine neue Instanz erstellen möchten, und geben Sie den gewünschten Namen an.
 
-1. Nachdem Azure die Einstellungen ihrer Logik-App überprüft hat, wählen Sie auf der Registerkarte **Überprüfen + Erstellen** die Option **Erstellen** aus.
-
-   Beispiel:
+1. Nachdem Azure die Einstellungen Ihrer Logik-App überprüft hat, wählen Sie auf der Registerkarte **Überprüfen + Erstellen** die Option **Erstellen** aus. Beispiel:
 
    ![Screenshot, der das Azure-Portal und die Einstellungen der neuen Logik-App-Ressource zeigt.](./media/create-single-tenant-workflows-azure-portal/check-logic-app-resource-settings.png)
 
    > [!TIP]
-   > Wenn ein Validierungsfehler auftritt, nachdem Sie auf **Erstellen** geklickt haben, öffnen und überprüfen Sie die Fehlerdetails. Wenn für Ihre ausgewählte Region beispielsweise ein Kontingent für Ressourcen erreicht wird, die Sie erstellen möchten, müssen Sie möglicherweise eine andere Region verwenden.
+   > Wenn nach diesem Schritt ein Validierungsfehler auftritt, öffnen und überprüfen Sie die Fehlerdetails. Wenn für Ihre ausgewählte Region beispielsweise ein Kontingent für Ressourcen erreicht wird, die Sie erstellen möchten, müssen Sie möglicherweise eine andere Region verwenden.
 
    Nachdem Azure die Bereitstellung abgeschlossen hat, ist Ihre Logik-App automatisch live und wird ausgeführt, erledigt aber noch keine Aufgaben, da die Ressource leer ist und Sie noch keine Workflows hinzugefügt haben.
 

@@ -1,26 +1,33 @@
 ---
-title: Senden und Empfangen von AS2-Nachrichten für B2B
-description: Austauschen von AS2-Nachrichten für Szenarien der B2B-Unternehmensintegration mithilfe von Azure Logic Apps mit Enterprise Integration Pack
+title: Austauschen von AS2-Nachrichten in B2B-Workflows
+description: Tauschen Sie AS2-Nachrichten zwischen Handelspartnern aus, indem Sie Workflows mithilfe von Azure Logic Apps und dem Enterprise Integration Pack erstellen.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: article
-ms.date: 10/08/2020
-ms.openlocfilehash: 699bc3b15c47e1dc80dbb8a4defd27adad298ba0
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.date: 09/27/2021
+ms.openlocfilehash: 8b42987055ca2e2b6533ae2f9d45b4bb62fbe016
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514684"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082463"
 ---
-# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von AS2-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
+# <a name="exchange-as2-messages-using-workflows-in-azure-logic-apps"></a>Austauschen von AS2-Nachrichten mithilfe von Workflows in Azure Logic Apps
 
-> [!IMPORTANT]
-> Der ursprüngliche AS2-Connector wird als veraltet markiert, verwenden Sie stattdessen den **AS2 (v2)** -Connector, es sei denn, Sie benötigen Nachverfolgungsfunktionen. Mit Ausnahme der Nachverfolgung bietet der v2-Connector eine bessere Leistung, die gleichen Funktionen wie die ursprüngliche Version, ist in der Azure Logic Apps-Runtime nativ und sorgt für erhebliche Leistungsverbesserungen in Bezug auf Nachrichtengröße, -durchsatz und -wartezeit. Außerdem erfordert der v2-Connector keine Verbindung mit Ihrem Integrationskonto. Stellen Sie stattdessen sicher, dass Sie, wie in den Voraussetzungen beschrieben, Ihr Integrationskonto mit der Logik-App verbinden, in der Sie den Connector verwenden möchten.
+Wenn Sie AS2-Nachrichten in Workflows, die Sie mit Azure Logic Apps erstellen, senden und empfangen möchten, können Sie den **AS2**-Connector verwenden. Dieser stellt Trigger und Aktionen bereit, die die AS2-Kommunikation (Version 1.2) unterstützen und verwalten.
 
-Wenn Sie mit AS2-Nachrichten in Azure Logic Apps arbeiten möchten, können Sie den AS2-Connector verwenden, der Auslöser und Aktionen bereitstellt, die die AS2-Kommunikation (Version 1.2) unterstützen und verwalten. Um z. B. Sicherheit und Zuverlässigkeit bei der Übertragung von Nachrichten zu gewährleisten, können Sie die folgenden Aktionen verwenden:
+* Wenn Sie mit dem Ressourcentyp **Logik-App (Verbrauch)** arbeiten und keine Nachverfolgungsfunktionen benötigen, verwenden Sie den Connector **AS2 (v2)** anstelle des ursprünglichen **AS2**-Connectors, der veraltet ist.
+
+  Mit Ausnahme der Nachverfolgung bietet der Connector **AS2 (v2)** eine bessere Leistung, die gleichen Funktionen wie die ursprüngliche Version, ist in der Azure Logic Apps-Runtime nativ und sorgt für erhebliche Leistungsverbesserungen in Bezug auf Nachrichtengröße, -durchsatz und -wartezeit. Außerdem erfordert der v2-Connector keine Verbindung mit Ihrem Integrationskonto. Stellen Sie stattdessen sicher, dass Sie, wie in den Voraussetzungen beschrieben, Ihr Integrationskonto mit der Logik-App-Ressource verbinden, in der Sie den Connector verwenden möchten.
+
+* Wenn Sie mit dem Ressourcentyp **Logik-App (Standard)** arbeiten, ist derzeit nur der ursprüngliche **AS2**-Connector verfügbar. Weitere Informationen zu dieser Version finden Sie auf der [Referenzseite des Connectors](/connectors/as2/), auf der die Trigger, Aktionen und Grenzwerte wie in der Swagger-Datei des Connectors dokumentiert beschrieben werden.
+
+### <a name="consumption"></a>[Verbrauch](#tab/consumption)
+
+In den folgenden Listen werden Aktionen beschrieben, die der Connector **AS2 (v2)** für das Einrichten der Sicherheit und Zuverlässigkeit beim Übertragen von Nachrichten bereitstellt:
 
 * [Aktion **AS2-Nachricht codieren**](#encode) zum Bereitstellen von Verschlüsselung, einer digitalen Signatur und Bestätigungen durch Benachrichtigungen über den Nachrichtenstatus (Message Disposition Notifications, MDNs), die beim Unterstützen der Nichtabstreitbarkeit helfen. Diese Aktion wendet z. B. AS2/HTTP-Header an und führt die folgenden Aufgaben aus, wenn sie konfiguriert sind:
 
@@ -47,83 +54,181 @@ Wenn Sie mit AS2-Nachrichten in Azure Logic Apps arbeiten möchten, können Sie 
   * Dekomprimieren der Nachrichten
   * Suchen nach und Unterbinden von doppelten Nachrichten-IDs
 
-In diesem Artikel wird gezeigt, wie Sie die AS2-Aktionen für die Codierung und Decodierung zu einer bestehenden Logik-App hinzufügen können.
+### <a name="standard"></a>[Standard](#tab/standard)
+
+Weitere Informationen zu den Triggern, Aktionen und Grenzwerten des ursprünglichen **AS2**-Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/as2/) gemäß der Dokumentation in der Swagger-Datei des Connectors.
+
+---
+
+In diesem Artikel wird gezeigt, wie Sie einem bestehenden Logik-App-Workflow die AS2-Aktionen für die Codierung und Decodierung hinzufügen. Sie können zwar einen beliebigen Trigger verwenden, um Ihren Workflow zu starten, in den Beispielen wird jedoch der [Anforderungstrigger](../connectors/connectors-native-reqres.md) verwendet.
+
+## <a name="limits"></a>Grenzwerte
+
+Informationen zu den Grenzwerten des AS2-Connectors für Workflows, die in [mehrinstanzenfähigen Azure Logic Apps-Instanzen, einzelinstanzfähigen Azure Logic Apps-Instanzen oder der Integrationsdienstumgebung (Integration Service Environment, ISE)](logic-apps-overview.md#resource-environment-differences) ausgeführt werden, finden Sie unter [B2B-Protokollgrenzwerte für Nachrichtengrößen](logic-apps-limits-and-config.md#b2b-protocol-limits).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, [melden Sie sich für ein kostenloses Azure-Konto an](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Sollten Sie noch kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Die Logik-App, von der aus Sie auf den AS2-Connector zugreifen möchten, und einen Trigger, der den Workflow Ihre Logik-App startet. Der AS2-Connector stellt nur Aktionen und keine Trigger bereit. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Eine [Integrationskontoressource](logic-apps-enterprise-integration-create-integration-account.md), in der Sie Artefakte wie Handelspartner, Vereinbarungen, Zertifikate usw. für die Verwendung in Ihrer Unternehmensintegration und in B2B-Workflows definieren und speichern. Diese Ressource muss die folgenden Anforderungen erfüllen:
 
-* Ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), das Ihrem Azure-Abonnement zugeordnet und mit der Logik-App verknüpft ist, in der Sie den AS2-Connector verwenden möchten. Sowohl Ihre Logik-App als auch Ihr Integrationskonto müssen an demselben Standort oder in derselben Azure-Region vorhanden sein.
+  * Sie muss demselben Azure-Abonnement zugeordnet sein wie Ihre Logik-App-Ressource.
 
-* Mindestens zwei [Parteien](../logic-apps/logic-apps-enterprise-integration-partners.md), die Sie bereits in Ihrem Integrationskonto unter Verwendung des AS2-Identitätsqualifizierers definiert haben.
+  * Sie muss sich am selben Standort oder in derselben Azure-Region wie Ihre Logik-App-Ressource befinden.
 
-* Bevor Sie den AS2-Connector verwenden können, müssen Sie eine AS2-[Vereinbarung](../logic-apps/logic-apps-enterprise-integration-agreements.md) zwischen den Parteien erstellen und diese Vereinbarung in Ihrem Integrationskonto speichern.
+  * Wenn Sie den [Ressourcentyp **Logik-App (Verbrauch)**](logic-apps-overview.md#resource-environment-differences) und die **AS2 (v2)-Vorgänge** verwenden, benötigt Ihre Logik-App-Ressource keine Verbindung mit Ihrem Integrationskonto. Sie benötigen dieses Konto jedoch weiterhin, um Artefakte wie Partner, Vereinbarungen und Zertifikate zusammen mit den AS2-, [X12](logic-apps-enterprise-integration-x12.md)- oder [EDIFACT](logic-apps-enterprise-integration-edifact.md)-Vorgängen zu speichern. Ihr Integrationskonto muss darüber hinaus weitere Anforderungen erfüllen. So muss es z. B. dasselbe Azure-Abonnement und denselben Standort wie Ihre Logik-App-Ressource verwenden.
+
+  * Wenn Sie den [Ressourcentyp **Logik-App (Standard)**](logic-apps-overview.md#resource-environment-differences) und die ursprünglichen **AS2**-Vorgänge verwenden, benötigt Ihr Workflow eine Verbindung mit Ihrem Integrationskonto. Diese erstellen Sie direkt aus Ihrem Workflow heraus, wenn Sie den AS2-Vorgang hinzufügen.
+
+* Mindestens zwei [Parteien](logic-apps-enterprise-integration-partners.md) (Handelspartner) in Ihrem Integrationskonto. Die Definitionen für beide Partner müssen denselben Qualifizierer für die *Geschäftsidentität* verwenden, der für dieses Szenario **AS2Identity** lautet.
+
+* Eine [AS2-Vereinbarung](logic-apps-enterprise-integration-agreements.md) in Ihrem Integrationskonto zwischen den Parteien, die an Ihrem Workflow teilnehmen. Jede Vereinbarung erfordert sowohl einen Host- als auch einen Gastpartner.
+
+* Die Logik-App-Ressource und der Workflow, in der bzw. dem Sie die AS2-Vorgänge verwenden möchten.
+
+  > [!NOTE]
+  > Der Connector **AS2 (v2)** stellt nur Aktionen, aber keine Trigger bereit. In diesem Artikel wird in den Beispielen für diesen Connector der [Anforderungstrigger](../connectors/connectors-native-reqres.md) verwendet. Der ursprüngliche **AS2**-Connector umfasst Trigger und Aktionen. Weitere Informationen zu den Triggern, Aktionen und Grenzwerten des ursprünglichen **AS2**-Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/as2/) gemäß der Dokumentation in der Swagger-Datei des Connectors.
+
+  Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](quickstart-create-first-logic-app-workflow.md).
 
 * Wenn Sie [Azure Key Vault](../key-vault/general/overview.md) für die Zertifikatsverwaltung verwenden, überprüfen Sie, ob Ihre Tresorschlüssel die Vorgänge **Verschlüsseln** und **Entschlüsseln** zulassen. Andernfalls treten beim Codieren und Decodieren Fehler auf.
 
-  Wechseln Sie im Azure-Portal zu dem Schlüssel in Ihrem Schlüsseltresor, prüfen Sie die **Zulässigen Vorgänge** für Ihren Schlüssel, und bestätigen Sie, dass die Vorgänge **Verschlüsseln** und **Entschlüsseln** ausgewählt sind, z. B.:
+  1. Öffnen Sie im Azure-Portal Ihren Schlüsseltresor. Wählen Sie im Schlüsseltresormenü unter **Einstellungen** die Option **Schlüssel** aus.
 
-  ![Überprüfen der Tresorschlüsselvorgänge](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
+  1. Wählen Sie im Bereich **Schlüssel** Ihren Schlüssel aus. Wählen Sie im Bereich **Versionen** die verwendete Schlüsselversion aus.
+
+  1. Vergewissern Sie sich im Bereich **Schlüsselversion** unter **Zulässige Vorgänge**, dass die Vorgänge **Verschlüsseln** und **Entschlüsseln** ausgewählt sind, z. B.:
+
+     ![Screenshot des Azure-Portals mit geöffneten Bereichen „Schlüsseltresor“, „Schlüssel“ und „Schlüsselversion“ und den ausgewählten Vorgängen „Verschlüsseln“ und „Entschlüsseln“](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
 ## <a name="encode-as2-messages"></a>Codieren von AS2-Nachrichten
 
-1. Öffnen Sie, falls noch nicht geschehen, Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Designer für Logik-Apps.
+### <a name="consumption"></a>[Verbrauch](#tab/consumption)
 
-1. Fügen Sie im Designer eine neue Aktion zu Ihrer Logik-App hinzu.
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre Logik-App-Ressource und den Workflow im Designer.
 
-1. Wählen Sie unterhalb von **Aktion auswählen** und unterhalb des Suchfelds die Option **Alle** aus. Geben Sie im Suchfeld „AS2-Codierung“ ein, und wählen Sie die AS2 (v2)-Aktion aus: **AS2-Codierung**
+1. Wählen Sie im Designer unter dem Trigger oder der Aktion, dem bzw. der Sie die AS2-Aktion hinzufügen möchten, die Option **Neuer Schritt** aus.
 
-   ![Auswählen von „AS2-Codierung“](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
+1. Wählen Sie unter dem Suchfeld **Vorgang auswählen** die Option **Alle** aus. Geben Sie im Suchfeld `as2 encode`ein. Wählen Sie die Aktion **AS2-Codierung** aus.
 
-1. Geben Sie jetzt Informationen zu diesen Eigenschaften an:
+   ![Screenshot von Azure-Portal, Workflow-Designer und ausgewählter Aktion „AS2-Codierung“](./media/logic-apps-enterprise-integration-as2/select-as2-encode.png)
 
-   | Eigenschaft | BESCHREIBUNG |
-   |----------|-------------|
-   | **Zu codierende Nachricht** | Die Nachrichtennutzlast. |
-   | **AS2-Absender** | Der Bezeichner für den Absender der Nachricht, wie in Ihrer AS2-Vereinbarung angegeben. |
-   | **AS2-Empfänger** | Der Bezeichner für den Empfänger der Nachricht, wie in Ihrer AS2-Vereinbarung angegeben. |
-   |||
+1. Wenn der AS2-Vorgang im Designer angezeigt wird, geben Sie Informationen für die folgenden Eigenschaften an:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Zu codierende Nachricht** | Ja | Die Nachrichtennutzlast. |
+   | **AS2-Absender** | Ja | Der Geschäftsbezeichner für den Absender der Nachricht, wie in Ihrer AS2-Vereinbarung angegeben |
+   | **AS2-Empfänger** | Ja | Der Geschäftsbezeichner für den Empfänger der Nachricht, wie in Ihrer AS2-Vereinbarung angegeben |
+   ||||
+
+   Die Nachrichtennutzdaten sind beispielsweise der **Textteil** der Inhaltsausgabe vom Anforderungstrigger:
+
+   ![Screenshot der Aktion „AS2-Codierung“ mit den Nachrichtencodierungseigenschaften](./media/logic-apps-enterprise-integration-as2/as2-message-encode-details.png)
+
+   > [!TIP]
+   > Wenn beim Senden von signierten oder verschlüsselten Nachrichten Probleme auftreten, sollten Sie andere SHA256-Algorithmusformate ausprobieren. Die AS2-Spezifikation stellt keine Informationen zu SHA256-Formaten bereit, sodass jeder Anbieter seine eigene Implementierung bzw. sein eigenes Format verwendet.
+
+### <a name="standard"></a>[Standard](#tab/standard)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre Logik-App-Ressource und den Workflow im Designer.
+
+1. Wählen Sie im Designer unter dem Trigger oder der Aktion, dem bzw. der Sie die AS2-Aktion hinzufügen möchten, die Option **Neuen Schritt einfügen** (das Pluszeichen) und dann **Aktion hinzufügen** aus.
+
+1. Wählen Sie unter dem Suchfeld **Vorgang auswählen** die Option **Azure** aus. Geben Sie im Suchfeld `as2 encode`ein. Wählen Sie die Aktion **In AS2-Nachricht codieren** aus.
+
+   ![Screenshot von Azure-Portal, Workflow-Designer und ausgewähltem Vorgang „In AS2-Nachricht codieren“](./media/logic-apps-enterprise-integration-as2/select-encode-as2-message.png)
+
+1. Wenn Sie aufgefordert werden, eine Verbindung mit Ihrem Integrationskonto herzustellen, geben Sie die folgenden Informationen an:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Verbindungsname** | Ja | Ein Name für die Verbindung |
+   | **Integrationskonto** | Ja | Wählen Sie in der Liste der verfügbaren Integrationskonten das Konto aus, das Sie nutzen möchten. |
+   ||||
 
    Beispiel:
 
-   ![Eigenschaften für die Nachrichtencodierung](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
+   ![Screenshot des Verbindungsbereichs „In AS2-Nachricht codieren“](./media/logic-apps-enterprise-integration-as2/create-as2-encode-connection-standard.png)
 
-> [!TIP]
-> Wenn beim Senden von signierten oder verschlüsselten Nachrichten Probleme auftreten, sollten Sie andere SHA256-Algorithmusformate ausprobieren. Die AS2-Spezifikation stellt keine Informationen zu SHA256-Formaten bereit, sodass jeder Anbieter seine eigene Implementierung bzw. sein eigenes Format verwendet.
+1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
+
+1. Wenn der AS2-Detailbereich im Designer angezeigt wird, geben Sie Informationen für die folgenden Eigenschaften an:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Zu codierende Nachricht** | Ja | Die Nachrichtennutzlast. |
+   | **AS2-Absender** | Ja | Der Geschäftsbezeichner für den Absender der Nachricht, wie in Ihrer AS2-Vereinbarung angegeben |
+   | **AS2-Empfänger** | Ja | Der Geschäftsbezeichner für den Empfänger der Nachricht, wie in Ihrer AS2-Vereinbarung angegeben |
+   ||||
+
+   Die Nachrichtennutzdaten sind beispielsweise der **Textteil** der Inhaltsausgabe vom Anforderungstrigger:
+
+   ![Screenshot des Vorgangs „AS2-Codierung“ mit den Nachrichtencodierungseigenschaften](./media/logic-apps-enterprise-integration-as2/encode-as2-message-details.png)
+
+   > [!TIP]
+   > Wenn beim Senden von signierten oder verschlüsselten Nachrichten Probleme auftreten, sollten Sie andere SHA256-Algorithmusformate ausprobieren. Die AS2-Spezifikation stellt keine Informationen zu SHA256-Formaten bereit, sodass jeder Anbieter seine eigene Implementierung bzw. sein eigenes Format verwendet.
+
+---
 
 <a name="decode"></a>
 
 ## <a name="decode-as2-messages"></a>Decodieren von AS2-Nachrichten
 
-1. Öffnen Sie, falls noch nicht geschehen, Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Designer für Logik-Apps.
+### <a name="consumption"></a>[Verbrauch](#tab/consumption)
 
-1. Fügen Sie im Designer eine neue Aktion zu Ihrer Logik-App hinzu.
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre Logik-App-Ressource und den Workflow im Designer.
 
-1. Wählen Sie unterhalb von **Aktion auswählen** und unterhalb des Suchfelds die Option **Alle** aus. Geben Sie im Suchfeld „AS2-Decodierung“ ein, und wählen Sie die AS2 (v2)-Aktion aus: **AS2-Decodierung**
+1. Wählen Sie im Designer unter dem Trigger oder der Aktion, dem bzw. der Sie die AS2-Aktion hinzufügen möchten, die Option **Neuer Schritt** aus. In diesem Beispiel wird der [Anforderungstrigger](../connectors/connectors-native-reqres.md) verwendet.
 
-   ![Auswählen von „AS2-Decodierung“](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
+1. Wählen Sie unter dem Suchfeld **Vorgang auswählen** die Option **Alle** aus. Geben Sie im Suchfeld `as2 decode`ein. Wählen Sie die Aktion **AS2-Decodierung** aus.
 
-1. Wählen Sie für die Eigenschaften **Zu codierende Nachricht** und **Nachrichtenheader** diese Werte aus vorherigen Trigger- oder Aktionsausgaben aus.
+   ![Screenshot von Azure-Portal, Workflow-Designer und ausgewählter Aktion „AS2-Decodierung“](media/logic-apps-enterprise-integration-as2/select-as2-decode.png)
 
-   Angenommen, Ihre Logik-App empfängt Nachrichten über einen Anforderungstrigger. Sie können die Ausgaben von diesem Trigger auswählen.
+1. Wählen Sie in der Form des AS2-Vorgangs für die Eigenschaften **Zu codierende Nachricht** und **Nachrichtenheader** die Werte aus den vorherigen Trigger- oder Aktionsausgaben aus.
 
-   ![Wählen Sie bei den Ausgaben der Anforderung den Text und die Header aus.](media/logic-apps-enterprise-integration-as2/as2-message-decoding-details.png)
+   In diesem Beispiel können Sie die Ausgaben des Anforderungstriggers auswählen.
+
+   ![Screenshot von Azure-Portal, Workflow-Designer und dem Vorgang „AS2-Decodierung“ mit ausgewählter Ausgabe „Body“ und „Header“ aus dem Anforderungstrigger](media/logic-apps-enterprise-integration-as2/as2-message-decode-details.png)
+
+### <a name="standard"></a>[Standard](#tab/standard)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre Logik-App-Ressource und den Workflow im Designer.
+
+1. Wählen Sie im Designer unter dem Trigger oder der Aktion, dem bzw. der Sie die AS2-Aktion hinzufügen möchten, die Option **Neuen Schritt einfügen** (das Pluszeichen) und dann **Aktion hinzufügen** aus.
+
+1. Wählen Sie unter dem Suchfeld **Vorgang auswählen** die Option **Azure** aus. Geben Sie im Suchfeld `as2 decode`ein. Wählen Sie die Aktion **AS2-Nachricht decodieren** aus.
+
+   ![Screenshot von Azure-Portal, Workflow-Designer und ausgewähltem Vorgang „AS2-Nachricht decodieren“](./media/logic-apps-enterprise-integration-as2/select-decode-as2-message.png)
+
+1. Wenn Sie aufgefordert werden, eine Verbindung mit Ihrem Integrationskonto herzustellen, geben Sie die folgenden Informationen an:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Verbindungsname** | Ja | Ein Name für die Verbindung |
+   | **Integrationskonto** | Ja | Wählen Sie in der Liste der verfügbaren Integrationskonten das Konto aus, das Sie nutzen möchten. |
+   ||||
+
+   Beispiel:
+
+   ![Screenshot des Verbindungsbereichs „AS2-Nachricht decodieren“](./media/logic-apps-enterprise-integration-as2/create-as2-decode-connection-standard.png)
+
+1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
+
+1. Wählen Sie im AS2-Detailbereich für die Eigenschaften **Zu codierende Nachricht** und **Nachrichtenheader** die Werte aus den vorherigen Trigger- oder Aktionsausgaben aus.
+
+   In diesem Beispiel können Sie die Ausgaben des Anforderungstriggers auswählen.
+
+   ![Screenshot von Azure-Portal, Workflow-Designer und dem Vorgang „AS2-Nachricht decodieren“ mit ausgewählter Ausgabe „Body“ und „Header“ aus dem Anforderungstrigger](media/logic-apps-enterprise-integration-as2/decode-as2-message-details.png)
+
+---
 
 ## <a name="sample"></a>Beispiel
 
-Wenn Sie eine uneingeschränkt funktionsfähige Logik-App und ein AS2-Beispielszenario bereitstellen möchten, sehen Sie sich [Azure Logic Apps - AS2 Send Receive](https://azure.microsoft.com/resources/templates/logic-app-as2-send-receive/) (Azure Logic Apps – AS2: Senden/Empfangen) an.
-
-## <a name="connector-reference"></a>Connector-Referenz
-
-Weitere technische Details zu diesem Connector, z. B. Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/as2/). 
-
-> [!NOTE]
-> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors die [B2B-Nachrichtengrenzwerte für ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).
+Wenn Sie eine uneingeschränkt funktionsfähige Logik-App und ein AS2 (v2)-Beispielszenario bereitstellen möchten, sehen Sie sich die Vorlage und das Szenario unter [Azure Logic Apps - AS2 Send Receive](https://azure.microsoft.com/resources/templates/logic-app-as2-send-receive/) (Azure Logic Apps – AS2: Senden/Empfangen) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+* Erfahren Sie mehr über andere [Connectors für Azure Logic Apps](../connectors/apis-list.md).

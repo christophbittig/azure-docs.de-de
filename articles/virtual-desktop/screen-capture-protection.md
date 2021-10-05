@@ -7,14 +7,17 @@ ms.topic: conceptual
 ms.date: 08/30/2021
 ms.author: denisgun
 ms.service: virtual-desktop
-ms.openlocfilehash: ddf70a56d3a787387d1364c88f26cd0faa5df6b3
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: ec7efa35e6b6f036935e6a81f01348f3633f83be
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219900"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627844"
 ---
 # <a name="screen-capture-protection"></a>Schutz von Bildschirmaufnahmen
+
+>[!IMPORTANT]
+>Der Schutz von Bildschirmaufnahmen wird für Microsoft 365 Government-Umgebungen (GCC), GCC-High- und Microsoft 365 DoD-Umgebungen noch nicht unterstützt.
 
 Mit der Funktion für den Bildschirmaufnahmeschutz wird verhindert, dass vertrauliche Informationen auf Clientendpunkten aufgezeichnet werden. Wenn Sie diese Funktion aktivieren, werden Remoteinhalte in Screenshots und Bildschirmfreigaben automatisch blockiert oder ausgeblendet. Außerdem schützt der Remotedesktop-Client Inhalte vor Schadsoftware, die möglicherweise am Bildschirm angezeigt werden.
 

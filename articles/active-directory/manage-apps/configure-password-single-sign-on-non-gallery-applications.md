@@ -1,90 +1,72 @@
 ---
-title: Grundlegendes zum kennwortbasierten einmaligen Anmelden (Single Sign-On, SSO) für Apps bei Azure Active Directory
-description: Grundlegendes zum kennwortbasierten einmaligen Anmelden (Single Sign-On, SSO) für Apps bei Azure Active Directory
+title: Hinzufügen des kennwortbasierten einmaligen Anmeldens zu einer Anwendung
+description: Fügen Sie das kennwortbasierte einmalige Anmelden einer Anwendung in Azure Active Directory hinzu.
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.workload: identity
+ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: 40c2e4ae14e2b50a26ed3ff25846d15b129e2916
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6ed7241e62b037a2d0ebd5303bd18e3c859d93f0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355474"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639658"
 ---
-# <a name="understand-password-based-single-sign-on"></a>Grundlegendes zum kennwortbasierten einmaligen Anmelden
+# <a name="add-password-based-single-sign-on-to-an-application-in-azure-active-directory"></a>Hinzufügen des kennwortbasierten einmaligen Anmeldens zu einer Anwendung in Azure Active Directory
 
-In der [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung haben Sie gelernt, wie Sie Azure AD als Identitätsanbieter (Identity Provider, IdP) für eine Anwendung verwenden. Im Schnellstartleitfaden konfigurieren Sie SAML-basiertes oder OIDC-basiertes einmaliges Anmelden. Eine weitere Option ist das kennwortbasierte einmalige Anmelden. Dieser Artikel beschäftigt sich ausführlicher mit dem kennwortbasierten einmaligen Anmelden.
+In diesem Artikel wird beschrieben, wie Sie das kennwortbasierte einmalige Anmelden (SSO) in Azure Active Directory (Azure AD) einrichten. Beim kennwortbasierten einmaligen Anmelden melden Sie sich beim erstmaligen Zugriff auf eine Anwendung mit einem Benutzernamen und einem Kennwort bei dieser an. Nach der ersten Anmeldung sendet Azure AD den Benutzernamen und das Kennwort an die Anwendung. 
 
-Diese Option ist für alle Websites mit einer HTML-Anmeldeseite verfügbar. Das kennwortbasierte einmalige Anmelden wird auch als „Password Vaulting“ oder „Kennworttresore“ bezeichnet. Das kennwortbasierte einmalige Anmelden bietet Ihnen die Möglichkeit, den Benutzerzugriff und die Kennwörter für Webanwendungen zu verwalten, die keinen Identitätsverbund unterstützen. Das Feature ist auch nützlich, wenn mehrere Benutzer ein Konto gemeinsam verwenden müssen (z. B. die Konten für Social Media-Apps in Ihrer Organisation).
+Beim kennwortbasierten einmaligen Anmelden wird der vorhandene Authentifizierungsvorgang der Anwendung verwendet. Wenn Sie das kennwortbasierte einmalige Anmelden für eine Anwendung aktivieren, werden Benutzernamen und Kennwörter für die Anwendung in Azure AD gesammelt und sicher gespeichert. Anmeldeinformationen des Benutzers werden in einem verschlüsselten Zustand im Verzeichnis gespeichert. Das kennwortbasierte einmalige Anmelden wird für jede cloudbasierte Anwendung unterstützt, die über eine HTML-basierte Anmeldeseite verfügt.
 
-Einmaliges Anmelden per Kennwort eignet sich hervorragend, um Anwendungen schnell in Azure AD zu integrieren, und ermöglicht Ihnen Folgendes:
+Wählen Sie kennwortbasiertes einmaliges Anmelden in folgenden Fällen aus:
+- Eine Anwendung unterstützt das SAML SSO-Protokoll nicht.
+- Eine Anwendung authentifiziert sich mit Benutzername und Kennwort anstelle von Zugriffstoken und Headern.
 
-- Aktivieren Sie das einmalige Anmelden für Ihre Benutzer, indem Sie Benutzernamen und Kennwörter sicher speichern und wiedergeben.
+Die Konfigurationsseite für das kennwortbasierte einmalige Anmelden ist einfach. Sie enthält nur die URL der Anmeldeseite, die von der Anwendung verwendet wird. Bei dieser Zeichenfolge muss es sich um die Seite handeln, die das Eingabefeld für den Benutzernamen enthält.
 
-- Unterstützen Sie Anwendungen, die mehrere Anmeldefelder erfordern, für Anwendungen, die zum Anmelden mehr als Benutzername und Kennwort erfordern.
+## <a name="prerequisites"></a>Voraussetzungen
 
-- Passen Sie die Bezeichnungen der Felder für Benutzernamen und Kennwort an, die Ihren Benutzern beim Eingeben ihrer Anmeldeinformationen in [Meine Apps](../user-help/my-apps-portal-end-user-access.md) angezeigt werden.
+Zum Konfigurieren des kennwortbasierten einmaligen Anmeldens in Ihrem Azure AD-Mandanten benötigen Sie Folgendes:
+-   Ein Azure-Konto mit einem aktiven Abonnement. [Kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+-   Eine der folgenden Rollen: Globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals.
+-   Eine Anwendung, die kennwortbasiertes einmaliges Anmelden unterstützt
 
-- Ermöglichen Sie Ihren Benutzern, eigene Benutzernamen und Kennwörter für vorhandene Anwendungskonten bereitzustellen und manuell einzugeben.
+## <a name="configure-password-based-single-sign-on"></a>Konfigurieren des kennwortbasierten einmaligen Anmeldens
 
-- Ermöglichen Sie es einem Mitglied der Gruppe „Business“, mithilfe des Features [Self-Service-Anwendungszugriff](./manage-self-service-access.md) die Benutzernamen und Kennwörter festzulegen, die einem Benutzer zugewiesen werden.
+1.  Melden Sie sich mit der entsprechenden Rolle beim [Azure-Portal](https://portal.azure.com) an.
+1.  Wählen Sie in „Azure-Dienste“ **Azure Active Directory** und dann **Unternehmensanwendungen** aus.
+1.  Suchen die Anwendung, der das kennwortbasierte einmalige Anmelden hinzugefügt werden soll, und wählen Sie sie aus.
+1.  Wählen Sie **Einmaliges Anmelden** und dann **Kennwortbasiert** aus.
+1.  Geben Sie die URL für die Anmeldeseite der Anwendung ein.
+1.  Wählen Sie **Speichern** aus. 
 
-- Ermöglichen Sie es einem Administrator, Benutzernamen und Kennwort festzulegen, die beim Anmelden bei der Anwendung mit dem Feature „„Anmeldeinformationen aktualisieren“ von Einzelpersonen oder Gruppen verwendet werden sollen.
+Azure AD analysiert den HTML-Code der Anmeldeseite für die Eingabefelder „Benutzername“ und „Kennwort“. Wenn der Versuch erfolgreich ist, sind Sie fertig. Der nächste Schritt ist das [Zuweisen von Benutzern oder Gruppen](add-application-portal-assign-users.md) zur Anwendung. 
 
-## <a name="before-you-begin"></a>Voraussetzungen
+Nachdem Sie Benutzer und Gruppen zugewiesen haben, können Sie die Anmeldeinformationen angeben, die für einen Benutzer verwendet werden sollen, wenn sich dieser bei der Anwendung anmeldet. 
 
-Die Verwendung von Azure AD als Identitätsanbieter und das Konfigurieren des einmaligen Anmeldens (Single Sign-on, SSO) kann je nach verwendeter Anwendung einfach oder komplex sein. Einige Anwendungen können mit nur wenigen Aktionen konfiguriert werden. Andere erfordern eine umfassende Konfiguration. Führen Sie die [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung durch, um Ihre Kenntnisse zügig zu vertiefen. Wenn die hinzugefügte Anwendung einfach ist, müssen Sie diesen Artikel wahrscheinlich nicht lesen. Wenn die hinzugefügte Anwendung eine benutzerdefinierte Konfiguration erfordert und Sie das kennwortbasierte einmalige Anmelden verwenden müssen, ist dieser Artikel für Sie geeignet.
-
-> [!IMPORTANT]
-> Es gibt einige Szenarien, in denen in der Navigation für eine Anwendung unter **Unternehmensanwendungen** die Option **Einmaliges Anmelden** nicht vorhanden ist.
->
-> Wenn die Anwendung mit **App-Registrierungen** registriert wurde, wird die Funktion zum einmaligen Anmelden so konfiguriert, dass standardmäßig OIDC OAuth verwendet wird. In diesem Fall wird die Option **Einmaliges Anmelden** in der Navigation unter **Unternehmensanwendungen** nicht angezeigt. Wenn Sie **App-Registrierungen** zum Hinzufügen Ihrer benutzerdefinierten App verwenden, konfigurieren Sie die Optionen in der Manifestdatei. Weitere Informationen zur Manifestdatei finden Sie unter [Azure Active Directory-App-Manifest](../develop/reference-app-manifest.md). Weitere Informationen zu SSO-Standards finden Sie unter [Authentifizierung und Autorisierung mit der Microsoft Identity Platform](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-the-microsoft-identity-platform).
->
-> Zu den Szenarien, in denen ebenfalls **Einmaliges Anmelden** in der Navigation fehlt, zählen auch folgende Beispiele: Eine Anwendung wird in einem anderen Mandanten gehostet. Ihr Konto verfügt nicht über die erforderlichen Berechtigungen (globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals). Berechtigungen können auch zu einem Szenario führen, in dem Sie die Option **Einmaliges Anmelden**  zwar öffnen, aber nicht speichern können. Weitere Informationen zu administrativen Rollen in Azure AD finden Sie unter https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).
-
-## <a name="basic-configuration"></a>Basiskonfiguration
-
-In der [Schnellstartserie](view-applications-portal.md) haben Sie erfahren, wie Sie eine App zu Ihrem Mandanten hinzufügen, sodass Azure AD weiß, dass es als Identitätsanbieter für die App verwendet wird. Einige Apps sind bereits vorkonfiguriert und werden im Azure AD-Katalog angezeigt. Andere Apps befinden sich nicht im Katalog, und Sie müssen eine generische App erstellen und manuell konfigurieren. Je nach App ist die Option für das kennwortbasierte einmalige Anmelden möglicherweise nicht verfügbar. Wenn die Option für das kennwortbasierte einmalige Anmelden auf der SSO-Seite für die App nicht aufgeführt ist, ist sie nicht verfügbar.
-
-> [!IMPORTANT]
-> Für kennwortbasiertes SSO ist die Browsererweiterung „Meine Apps“ erforderlich. Weitere Informationen finden Sie unter [Planen einer Bereitstellung von „Meine Apps“](my-apps-deployment-plan.md).
-
-Die Konfigurationsseite für das kennwortbasierte einmalige Anmelden ist einfach. Sie enthält nur die URL der Anmeldeseite, die von der App verwendet wird. Bei dieser Zeichenfolge muss es sich um die Seite handeln, die das Eingabefeld für den Benutzernamen enthält.
-
-Geben Sie die URL ein, und wählen Sie **Speichern** aus. Azure AD analysiert den HTML-Code der Anmeldeseite für die Eingabefelder „Benutzername“ und „Kennwort“. Wenn der Versuch erfolgreich ist, sind Sie fertig.
-Der nächste Schritt ist das [Zuweisen von Benutzern oder Gruppen zur Anwendung](./assign-user-or-group-access-portal.md). Nachdem Sie Benutzer und Gruppen zugewiesen haben, können Sie die Anmeldeinformationen angeben, die für einen Benutzer verwendet werden sollen, wenn sich dieser bei der Anwendung anmeldet. Wählen Sie **Benutzer und Gruppen** aus, aktivieren Sie das Kontrollkästchen neben der Zeile für den Benutzer bzw. die Gruppe, und wählen Sie anschließend **Anmeldeinformationen aktualisieren** aus. Geben Sie abschließend den Benutzernamen und das Kennwort ein, die für den Benutzer oder die Gruppe verwendet werden sollen. Wenn Sie das nicht tun, werden die Benutzer beim Start aufgefordert, die Anmeldeinformationen selbst einzugeben.
+1. Wählen Sie **Benutzer und Gruppen** aus, aktivieren Sie das Kontrollkästchen neben der Zeile für den Benutzer bzw. die Gruppe, und wählen Sie anschließend **Anmeldeinformationen aktualisieren** aus. 
+1. Geben Sie den Benutzernamen und das Kennwort ein, die für den Benutzer oder die Gruppe verwendet werden sollen. Wenn Sie das nicht tun, werden die Benutzer beim Start aufgefordert, die Anmeldeinformationen selbst einzugeben.
 
 ## <a name="manual-configuration"></a>Manuelle Konfiguration
 
 Falls der Analyseversuch von Azure AD nicht erfolgreich ist, können Sie die Anmeldung manuell konfigurieren.
 
-1. Wählen Sie unter **\<application name>-Konfiguration** die Option **\<application name>-Einstellungen für einmaliges Anmelden über ein Kennwort konfigurieren**, um die Seite **Anmeldung konfigurieren** anzuzeigen.
-
-2. Wählen Sie **Anmeldefelder manuell erkennen** aus. Es werden weitere Anweisungen angezeigt, die die manuelle Erkennung von Anmeldefeldern beschreiben.
-
-   ![Manuelle Konfiguration des kennwortbasierten einmaligen Anmeldens](./media/configure-password-single-sign-on/password-configure-sign-on.png)
-3. Wählen Sie **Anmeldefelder erfassen** aus. Auf einer neuen Registerkarte wird eine Seite mit dem Erfassungsstatus geöffnet, auf der die Meldung **Die Metadatenerfassung wird aktuell ausgeführt.** angezeigt wird.
-
-4. Wenn auf einer neuen Registerkarte das Feld **Erweiterung für „Meine Apps“ erforderlich** angezeigt wird, klicken Sie auf **Jetzt installieren**, um die Browsererweiterung **Erweiterung zur sicheren Anmeldung bei „Meine Apps“** zu installieren. (Die Browsererweiterung erfordert Microsoft Edge, Chrome oder Firefox.) Installieren, starten und aktivieren Sie die Erweiterung, und aktualisieren Sie die Seite mit dem Erfassungsstatus.
-
-   Die Browsererweiterung wird in einer anderen Registerkarte geöffnet, die die eingegebene URL anzeigt.
-5. Führen Sie auf der Registerkarte mit der eingegebenen URL den Anmeldevorgang durch. Füllen Sie die Felder für Benutzername und Kennwort aus, und versuchen Sie, sich anzumelden. (Sie müssen nicht das richtige Kennwort angeben.)
-
-   Sie werden aufgefordert, die erfassten Anmeldefelder zu speichern.
-6. Klicken Sie auf **OK**. Die Browsererweiterung aktualisiert die Seite mit dem Erfassungsstatus mit der Meldung **Die Metadaten für die Anwendung wurden aktualisiert**. Die Registerkarte des Browsers wird geschlossen.
-
-7. Wählen Sie auf der Azure AD-Seite **Anmeldung konfigurieren** die Option **OK, ich konnte mich erfolgreich bei der App anmelden** aus.
-
-8. Klicken Sie auf **OK**.
+1. Wählen Sie **{Anwendungsname}-Einstellungen für einmaliges Anmelden über ein Kennwort konfigurieren** aus, um die Seite **Anmeldung konfigurieren** anzuzeigen.
+1. Wählen Sie **Anmeldefelder manuell erkennen** aus. Weitere Anweisungen zur manuellen Erkennung von Anmeldefeldern werden angezeigt.
+1. Wählen Sie **Anmeldefelder erfassen** aus. Auf einer neuen Registerkarte wird eine Seite mit dem Erfassungsstatus geöffnet, auf der die Meldung Die Metadatenerfassung wird aktuell ausgeführt. angezeigt wird.
+1. Wenn auf einer neuen Registerkarte das Feld **Erweiterung für „Meine Apps“ erforderlich** angezeigt wird, klicken Sie auf **Jetzt installieren**, um die Browsererweiterung Erweiterung zur sicheren Anmeldung bei „Meine Apps“ zu installieren. (Die Browsererweiterung erfordert Microsoft Edge, Chrome oder Firefox.) Installieren, starten und aktivieren Sie die Erweiterung, und aktualisieren Sie die Seite mit dem Erfassungsstatus. Die Browsererweiterung wird in einer anderen Registerkarte geöffnet, die die eingegebene URL anzeigt.
+1. Führen Sie auf der Registerkarte mit der eingegebenen URL den Anmeldevorgang durch. Füllen Sie die Felder für Benutzername und Kennwort aus, und versuchen Sie, sich anzumelden. (Sie müssen nicht das richtige Kennwort angeben.) Sie werden aufgefordert, die erfassten Anmeldefelder zu speichern.
+1. Klicken Sie auf **OK**. Die Browsererweiterung aktualisiert die Seite mit dem Erfassungsstatus mit der Meldung **Die Metadaten für die Anwendung wurden aktualisiert**. Die Registerkarte des Browsers wird geschlossen.
+1. Wählen Sie auf der Azure AD-Seite Anmeldung konfigurieren die Option **OK, ich konnte mich erfolgreich bei der App anmelden** aus.
+1. Klicken Sie auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](./assign-user-or-group-access-portal.md)
-- [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+- [Verwalten des Zugriffs auf Apps](what-is-access-management.md)

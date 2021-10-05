@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 45489d25256d049467dd946922d30606c53f9bed
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: a754656db58b1cc3c1414eb36601c873d8ecc785
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750949"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671102"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Installieren des Log Analytics-Agents auf Linux-Computern
 Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Analytics-Agents auf Linux-Computern mithilfe der folgenden Methoden:
@@ -75,10 +75,11 @@ Der OMS-Agent verfügt über eingeschränkte Anpassungsunterstützung und Härtu
 
 Folgendes wird derzeit unterstützt: 
 - FIPs
+- SELINUX (Marketplace-Images für CENTOS und RHEL mit ihren Standardeinstellungen)
 
 Folgende Tabellen werden nicht unterstützt:
 - CIS
-- SELINUX
+- SELINUX (benutzerdefinierte Härtung wie ein MLS)
 
 Die Unterstützung der CIS- und SPLATUX-Härtung ist für den [Azure Monitoring Agent](./azure-monitor-agent-overview.md) geplant. Andere Härtungs- und Anpassungsmethoden werden für den OMS-Agent weder unterstützt noch geplant.  
 

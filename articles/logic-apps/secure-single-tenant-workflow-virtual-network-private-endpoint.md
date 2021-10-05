@@ -4,14 +4,14 @@ description: Schützen des Datenverkehr zwischen virtuellen Netzwerken, Speicher
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
-ms.topic: conceptual
-ms.date: 07/25/2021
-ms.openlocfilehash: 4726df91efb18b2d9beec77606db449bd4aee3fa
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.topic: how-to
+ms.date: 08/31/2021
+ms.openlocfilehash: 658d8c8c43bd2795a6a25730ff85ffb6bbd3a63c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652646"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598173"
 ---
 # <a name="secure-traffic-between-virtual-networks-and-single-tenant-workflows-in-azure-logic-apps-using-private-endpoints"></a>Schützen des Datenverkehrs zwischen virtuellen Netzwerken und Workflows mit nur einem Mandanten in Azure Logic Apps mithilfe privater Endpunkte
 
@@ -112,7 +112,7 @@ Weitere Informationen finden Sie unter [Erstellen von Logik-App-Workflows mit nu
 
 - Bei Zugriffen von außerhalb Ihres virtuellen Netzwerks kann die Überwachungsansicht nicht auf die Eingaben und Ausgaben von Triggern und Aktionen zugreifen.
 
-- Die Bereitstellung über Visual Studio Code oder die Azure CLI funktioniert nur innerhalb des virtuellen Netzwerks. Sie können das Bereitstellungscenter verwenden, um Ihre Logik-App mit einem GitHub-Repository zu verknüpfen. Sie können dann die Azure-Infrastruktur verwenden, um Ihren Code zu erstellen und bereitzustellen. 
+- Die Bereitstellung über Visual Studio Code oder die Azure CLI funktioniert nur innerhalb des virtuellen Netzwerks. Sie können das Bereitstellungscenter verwenden, um Ihre Logik-App mit einem GitHub-Repository zu verknüpfen. Sie können dann die Azure-Infrastruktur verwenden, um Ihren Code zu erstellen und bereitzustellen.
 
   Damit die GitHub-Integration funktioniert, entfernen Sie die `WEBSITE_RUN_FROM_PACKAGE`-Einstellung aus Ihrer Logik-App, oder legen Sie den Wert auf `0` fest.
 
@@ -122,50 +122,57 @@ Weitere Informationen finden Sie unter [Erstellen von Logik-App-Workflows mit nu
 
 ## <a name="set-up-outbound-traffic-through-private-endpoints"></a>Einrichten von ausgehendem Datenverkehr über private Endpunkte
 
-Um ausgehenden Datenverkehr aus Ihrer Logik-App zu schützen, können Sie Ihre Logik-App in ein virtuelles Netzwerk integrieren. Standardmäßig wird ausgehender Datenverkehr aus Ihrer Logik-App nur von Netzwerksicherheitsgruppen und benutzerdefinierten Routen (User-Defined Routes, UDRs) beeinflusst, wenn er an eine private Adresse wie `10.0.0.0/8`, `172.16.0.0/12` oder `192.168.0.0/16` geleitet wird. Wenn Sie jedoch den gesamten ausgehenden Datenverkehr über Ihr eigenes virtuelles Netzwerk weiterleiten, können Sie den gesamten ausgehenden Datenverkehr Netzwerksicherheitsgruppen, Routen und Firewalls unterwerfen. Um sicherzustellen, dass der gesamte ausgehende Datenverkehr von den Netzwerksicherheitsgruppen und benutzerdefinierten Routen in Ihrem Integrationssubnetz betroffen ist, legen Sie die Logik-App-Einstellung `WEBSITE_VNET_ROUTE_ALL` auf `1` fest.
+Um ausgehenden Datenverkehr aus Ihrer Logik-App zu schützen, können Sie Ihre Logik-App in ein virtuelles Netzwerk integrieren. Standardmäßig wird ausgehender Datenverkehr aus Ihrer Logik-App nur von Netzwerksicherheitsgruppen und benutzerdefinierten Routen (User-Defined Routes, UDRs) beeinflusst, wenn er an eine private Adresse wie `10.0.0.0/8`, `172.16.0.0/12` oder `192.168.0.0/16` geleitet wird.
+
+Wenn Sie Ihren eigenen Domänennamenserver (DNS) mit Ihrem virtuellen Netzwerk verwenden, legen Sie die App-Einstellung `WEBSITE_DNS_SERVER` Ihrer Logik-App-Ressource auf die IP-Adresse Ihres DNS fest. Wenn Sie über ein sekundäres DNS verfügen, fügen Sie eine weitere App-Einstellung mit dem Namen `WEBSITE_DNS_ALT_SERVER` hinzu, und legen Sie ihren Wert ebenfalls auf die IP-Adresse Ihres DNS fest. Aktualisieren Sie außerdem Ihre DNS-Einträge, um auf Ihre privaten Endpunkte unter Ihrer internen IP-Adresse zu verweisen. Bei privaten Endpunkten wird die DNS-Suche an die private Adresse und nicht an die öffentliche Adresse für die jeweilige Ressource gesendet. Weitere Informationen finden Sie unter [Private Endpunkte: Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md#private-endpoints).
 
 > [!IMPORTANT]
-> Damit die Logic Apps-Runtime funktioniert, benötigen Sie eine ununterbrochene Verbindung mit dem Back-End-Speicher. Damit von Azure gehostete verwaltete Connectors funktionieren, benötigen Sie eine ununterbrochene Verbindung mit dem verwalteten API-Dienst.
-
-Um sicherzustellen, dass Ihre Logik-App private DNS-Zonen (Domain Name Server) in Ihrem virtuellen Netzwerk verwendet, legen Sie WEBSITE_DNS_SERVER auf „168.63.129.16“ fest.
+> Damit die Azure Logic Apps-Runtime funktioniert, benötigen Sie eine ununterbrochene Verbindung mit dem Back-End-Speicher. Damit von Azure gehostete verwaltete Connectors funktionieren, benötigen Sie eine ununterbrochene Verbindung mit dem verwalteten API-Dienst.
 
 ### <a name="considerations-for-outbound-traffic-through-private-endpoints"></a>Überlegungen zum ausgehenden Datenverkehr über private Endpunkte
 
-Das Einrichten der Integration virtueller Netzwerke wirkt sich nicht auf eingehenden Datenverkehr aus, der weiterhin den freigegebenen App Service-Endpunkt verwendet. Informationen zum Schützen des eingehenden Datenverkehrs finden Sie unter [Einrichten von eingehendem Datenverkehr über private Endpunkte](#set-up-inbound).
+Das Einrichten der Integration virtueller Netzwerke wirkt sich nur auf ausgehenden Datenverkehr aus. Informationen zum Schützen des eingehenden Datenverkehrs, der weiterhin den freigegebenen App Service-Endpunkt verwendet, finden Sie unter [Einrichten von eingehendem Datenverkehr über private Endpunkte](#set-up-inbound).
 
 Weitere Informationen finden Sie in der folgenden Dokumentation:
 
 - [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md)
+
 - [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md)
+
 - [Routing von Datenverkehr für virtuelle Netzwerke](../virtual-network/virtual-networks-udr-overview.md)
 
 ## <a name="connect-to-storage-account-with-private-endpoints"></a>Verbinden des Speicherkontos mit privaten Endpunkten
 
-Sie können den Speicherkontozugriff einschränken, sodass nur Ressourcen in einem virtuellen Netzwerk eine Verbindung herstellen können. Azure Storage unterstützt das Hinzufügen privater Endpunkte zu Ihrem Speicherkonto. Logik-App-Workflows können diese Endpunkte dann für die Kommunikation mit dem Speicherkonto verwenden.
+Sie können den Speicherkontozugriff einschränken, sodass nur Ressourcen in einem virtuellen Netzwerk eine Verbindung herstellen können. Azure Storage unterstützt das Hinzufügen privater Endpunkte zu Ihrem Speicherkonto. Ihre Logik-App-Workflows können diese Endpunkte dann für die Kommunikation mit dem Speicherkonto verwenden. Weitere Informationen finden Sie unter [Verwenden privater Endpunkte für Azure Storage](../storage/common/storage-private-endpoints.md).
 
-Legen Sie in ihren Logik-App-Einstellungen `AzureWebJobsStorage` auf die Verbindungszeichenfolge für das Speicherkonto fest, das über die privaten Endpunkte verfügt, indem Sie eine der folgenden Optionen auswählen:
+> [!NOTE]
+> Für die folgenden Schritte muss vorübergehend der öffentliche Zugriff auf Ihr Speicherkonto aktiviert werden. Wenn Sie den öffentlichen Zugriff aufgrund der Richtlinien Ihrer Organisation nicht aktivieren können, können Sie Ihre Logik-App trotzdem mit einem privaten Speicherkonto bereitstellen. Sie müssen dann allerdings eine Azure Resource Manager-Vorlage (ARM-Vorlage) für die Bereitstellung verwenden. Eine ARM-Beispielvorlage finden Sie unter [Deploy logic app using secured storage account with private endpoints](https://github.com/VeeraMS/LogicApp-deployment-with-Secure-Storage) (Bereitstellen von Logik-Apps mit einem geschützten Speicherkonto und privaten Endpunkten).
 
-- **Azure-Portal**: Wählen Sie in Ihrem Logik-App-Menü die Option **Konfiguration** aus. Aktualisieren Sie die Einstellung `AzureWebJobsStorage` mit der Verbindungszeichenfolge für das Speicherkonto.
+1. Erstellen Sie für jeden Tabellen-, Warteschlangen-, Blob- und Dateispeicherdienst unterschiedliche private Endpunkte.
 
-- **Visual Studio Code**: Aktualisieren Sie in der Datei **local.settings.js** auf Stammebene Ihres Projekts die Einstellung `AzureWebJobsStorage` mit der Verbindungszeichenfolge für das Speicherkonto.
+1. Aktivieren Sie den temporären öffentlichen Zugriff auf Ihr Speicherkonto, wenn Sie Ihre Logik-App bereitstellen.
 
- Weitere Informationen finden Sie in der [Dokumentation „Verwenden privater Endpunkte für Azure Storage“](../storage/common/storage-private-endpoints.md).
+   1. Öffnen Sie Ihre Speicherkontoressource im [Azure-Portal](https://portal.azure.com).
 
-### <a name="considerations-for-private-endpoints-on-storage-accounts"></a>Überlegungen zu privaten Endpunkten in Speicherkonten
+   1. Wählen Sie im Menü der Speicherkontoressource unter **Sicherheit + Netzwerkbetrieb** die Option **Netzwerk** aus.
 
-- Erstellen Sie für jeden Tabellen-, Warteschlangen-, Blob- und Dateispeicherdienst unterschiedliche private Endpunkte.
+   1. Wählen Sie im Bereich **Netzwerk** auf der Registerkarte **Firewalls und virtuelle Netzwerke** unter **Zugriff zulassen von** die Option **Alle Netzwerke** aus.
 
-- Leiten Sie den gesamten ausgehenden Datenverkehr über Ihr virtuelles Netzwerk, indem Sie diese Einstellung verwenden:
+1. Stellen Sie Ihre Logik-App-Ressource über das Azure-Portal oder in Visual Studio Code bereit.
 
-  `"WEBSITE_VNET_ROUTE_ALL": "1"`
+1. Aktivieren Sie nach Abschluss der Bereitstellung die Integration zwischen Ihrer Logik-App und den privaten Endpunkten in dem virtuellen Netzwerk oder Subnetz, das mit Ihrem Speicherkonto verbunden ist.
 
-- Damit Ihre Logik-App private DNS-Zonen (Domain Name Server) in Ihrem virtuellen Netzwerk verwendet, legen Sie die Einstellung `WEBSITE_DNS_SERVER` der Logik-App auf `168.63.129.16` fest.
+   1. Öffnen Sie Ihre Logik-App-Ressource im [Azure-Portal](https://portal.azure.com).
 
-- Sie benötigen ein gesondertes, öffentlich zugängliches Speicherkonto, wenn Sie Ihre Logik-App bereitstellen. Stellen Sie sicher, dass Sie die Einstellung `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` auf die Verbindungszeichenfolge für dieses Speicherkonto festlegen.
+   1. Wählen Sie im Menü Ihrer Logik-App-Ressource unter **Einstellungen** die Option **Netzwerk** aus.
 
-- Wenn Ihre Logik-App private Endpunkte verwendet, führen Sie die Bereitstellung mithilfe von [GitHub-Integrationen](https://docs.github.com/en/github/customizing-your-github-workflow/about-integrations) durch.
+   1. Richten Sie die erforderlichen Verbindungen zwischen Ihrer Logik-App und den IP-Adressen für die privaten Endpunkte ein.
 
-  Wenn Ihre Logik-App keine privaten Endpunkte verwendet, können Sie die Bereitstellung über Visual Studio Code vornehmen und die Einstellung `WEBSITE_RUN_FROM_PACKAGE` auf `1` festlegen. 
+   1. Legen Sie für den Zugriff auf die Daten Ihres Logik-App-Workflows über das virtuelle Netzwerk in den Ressourceneinstellungen Ihrer Logik-App die Einstellung `WEBSITE_CONTENTOVERVNET` auf `1` fest.
+
+   Wenn Sie Ihren eigenen Domänennamenserver (DNS) mit Ihrem virtuellen Netzwerk verwenden, legen Sie die App-Einstellung `WEBSITE_DNS_SERVER` Ihrer Logik-App-Ressource auf die IP-Adresse Ihres DNS fest. Wenn Sie über ein sekundäres DNS verfügen, fügen Sie eine weitere App-Einstellung mit dem Namen `WEBSITE_DNS_ALT_SERVER` hinzu, und legen Sie ihren Wert ebenfalls auf die IP-Adresse Ihres DNS fest. Aktualisieren Sie außerdem Ihre DNS-Einträge, um auf Ihre privaten Endpunkte unter Ihrer internen IP-Adresse zu verweisen. Bei privaten Endpunkten wird die DNS-Suche an die private Adresse und nicht an die öffentliche Adresse für die jeweilige Ressource gesendet. Weitere Informationen finden Sie unter [Private Endpunkte: Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md#private-endpoints).
+
+1. Nachdem Sie diese App-Einstellungen angewandt haben, können Sie den öffentlichen Zugriff von Ihrem Speicherkonto entfernen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

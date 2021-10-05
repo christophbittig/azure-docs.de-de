@@ -1,29 +1,29 @@
 ---
 title: Kopieren von Daten aus/in SAP Cloud for Customer
+description: Erfahren Sie, wie Sie mithilfe von Azure Data Factory- oder Synapse Analytics-Pipelines Daten aus SAP Cloud for Customer in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern in SAP Cloud for Customer kopieren.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Sie mithilfe von Data Factory Daten aus SAP Cloud for Customer in unterstützte Senkendatenspeicher (oder) aus unterstützten Quelldatenspeichern in SAP Cloud for Customer kopieren können.
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 9e35ae73304fa6eb06bc1d4a363c8009e870a861
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: e3a09400b3ebf8fb0f49a46677f7d0dc815d4937
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307891"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836034"
 ---
-# <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopieren von Daten aus SAP Cloud for Customer (C4C) mithilfe von Azure Data Factory
+# <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus SAP Cloud for Customer (C4C) mithilfe von Azure Data Factory oder Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus und in SAP Cloud for Customer (C4C) kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität in Azure Data Factory- oder Azure Synapse Analytics-Pipelines verwenden, um Daten in oder aus SAP Cloud for Customer (C4C) zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 >[!TIP]
->Informationen zur allgemeinen Unterstützung des SAP-Datenintegrationsszenarios durch ADF finden Sie im [Whitepaper zur SAP-Datenintegration mit Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf). Dort finden Sie auch eine detaillierte Einführung in jeden SAP-Connector, einen Vergleich und Anleitungen.
+>Informationen zur allgemeinen Unterstützung des SAP-Datenintegrationsszenarios durch den Dienst finden Sie im [Whitepaper zur SAP-Datenintegration mit Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf). Dort finden Sie auch eine detaillierte Einführung in jeden SAP-Connector, einen Vergleich und Leitfäden.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -34,7 +34,7 @@ Dieser SAP Cloud for Customer-Connector wird für die folgenden Aktivitäten unt
 
 Sie können Daten aus SAP Cloud for Customer in jeden unterstützten Senkendatenspeicher bzw. Daten aus jedem unterstützten Quelldatenspeicher in SAP Cloud for Customer kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Dieser Connector ermöglicht insbesondere, dass Azure Data Factory Daten aus/in SAP Cloud for Customer kopieren kann, einschließlich der Lösungen SAP Cloud for Sales, SAP Cloud for Service und SAP Cloud for Social Engagement.
+Dieser Connector ermöglicht insbesondere, dass der Dienst Daten aus und in SAP Cloud for Customer kopieren kann, einschließlich der Lösungen SAP Cloud for Sales, SAP Cloud for Service und SAP Cloud for Social Engagement.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -48,7 +48,7 @@ Führen Sie die folgenden Schritte aus, um einen mit SAP Cloud for Customer verk
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst über die Azure Data Factory Benutzeroberfläche.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory-Benutzeroberfläche.":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -71,12 +71,12 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit SAP Cloud for Customer verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapCloudForCustomer**. | Ja |
 | url | Die URL des SAP C4C OData-Diensts. | Ja |
 | username | Geben Sie den Benutzernamen für die Verbindung mit dem SAP C4C-Server an. | Ja |
-| password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Markieren Sie dieses Feld als einen „SecureString“, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein |
 
 **Beispiel:**
@@ -108,7 +108,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Um Daten aus SAP Cloud for Customer zu kopieren, legen Sie die „type“-Eigenschaft des Datasets auf **SapCloudForCustomerResource** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **SapCloudForCustomerResource** |Ja |
 | path | Geben Sie den Pfad der Entität „SAP C4C OData“ an. |Ja |
@@ -140,7 +140,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus SAP Cloud for Customer den Quelltyp in der Kopieraktivität auf **SapCloudForCustomerSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapCloudForCustomerSource**  | Ja |
 | Abfrage | Geben Sie die benutzerdefinierte OData-Abfrage zum Lesen von Daten an. | Nein |
@@ -184,7 +184,7 @@ Beispielabfrage zum Abrufen von Daten für einen bestimmten Tag: `"query": "$fil
 
 Legen Sie zum Kopieren von Daten in SAP Cloud for Customer den Senkentyp in der Kopieraktivität auf **SapCloudForCustomerSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapCloudForCustomerSink**  | Ja |
 | writeBehavior | Das Schreibverhalten des Vorgangs. Optionen: „Insert“, „Update“. | Nein. Standard: „Insert“. |
@@ -232,9 +232,9 @@ Legen Sie zum Kopieren von Daten in SAP Cloud for Customer den Senkentyp in der 
 
 ## <a name="data-type-mapping-for-sap-cloud-for-customer"></a>Datentypzuordnung für SAP Cloud for Customer
 
-Beim Kopieren von Daten aus SAP Cloud for Customer werden die folgenden Zuordnungen von SAP Cloud for Customer-Datentypen zu Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
+Beim Kopieren von Daten aus SAP Cloud for Customer werden die folgenden Zuordnungen von SAP Cloud for Customer-Datentypen zu den internen Zwischendatentypen des Diensts verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
 
-| SAP C4C OData-Datentyp | Data Factory-Zwischendatentyp |
+| SAP C4C OData-Datentyp | Zwischendatentyp des Diensts |
 |:--- |:--- |
 | Edm.Binary | Byte[] |
 | Edm.Boolean | Bool |
@@ -258,4 +258,4 @@ Beim Kopieren von Daten aus SAP Cloud for Customer werden die folgenden Zuordnun
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quelles und Senken für die Kopieraktivität unterstützt werden, finden Sie in der Dokumentation für [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 116b1e2afded3ceee0d249e326e721ca420dcf17
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7940d48edb94bfa89ccc3310172a09519ffc729a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640586"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831357"
 ---
 # <a name="dedupe-rows-and-find-nulls-by-using-data-flow-snippets"></a>Deduplizieren von Zeilen und Suchen nach NULL-Werten mit Datenfluss-Codeausschnitten
 
@@ -30,7 +30,7 @@ Mithilfe von Codeausschnitten in Zuordnungsdatenflüssen können Sie häufige Au
 
 1. Wählen Sie die Registerkarte **Quelleinstellungen** aus, fügen Sie eine Quelltransformation hinzu, und verbinden Sie diese dann mit einem Ihrer Datasets.
 
-    ![Screenshot des Bereichs „Quelleinstellungen“ zum Hinzufügen eines Quelltyps](media/data-flow/snippet-adf-2.png)
+    :::image type="content" source="media/data-flow/snippet-adf-2.png" alt-text="Screenshot des Bereichs &quot;Quelleinstellungen&quot; zum Hinzufügen eines Quelltyps":::
 
     In den Codeausschnitten für das Deduplizieren und das Prüfen auf NULL-Werte werden generische Muster verwendet, die die Datendrift des Datenflussschemas nutzen. Sie können die Codeausschnitte mit jedem beliebigen Schema aus Ihrem Dataset und sogar mit Datasets verwenden, die nicht über ein vordefiniertes Schema verfügen.
 
@@ -38,7 +38,7 @@ Mithilfe von Codeausschnitten in Zuordnungsdatenflüssen können Sie häufige Au
 
 1. [Navigieren Sie zur entsprechenden Seite in der Datenflussskript-Dokumentation, und kopieren Sie den Codeausschnitt für „Distinct Rows“](./data-flow-script.md#distinct-row-using-all-columns).
 
-    ![Screenshot eines Quellcodeausschnitts](media/data-flow/snippet-adf-3.png)
+    :::image type="content" source="media/data-flow/snippet-adf-3.png" alt-text="Screenshot eines Quellcodeausschnitts":::
 
 1. Drücken Sie nach der Definition für `source1` in Ihrem Skript die EINGABETASTE, und fügen Sie den Codeausschnitt ein.
 
@@ -48,7 +48,7 @@ Mithilfe von Codeausschnitten in Zuordnungsdatenflüssen können Sie häufige Au
 
    * Alternativ können Sie für die neue Transformation im Designer eine Verbindung herstellen, indem Sie über den neuen Transformationsknoten im Graphen den eingehenden Datenstrom auswählen.
 
-     ![Screenshot des Einstellungsbereichs „Bedingtes Teilen“](media/data-flow/snippet-adf-4.png)
+     :::image type="content" source="media/data-flow/snippet-adf-4.png" alt-text="Screenshot des Einstellungsbereichs &quot;Bedingtes Teilen&quot;":::
 
    In Ihrem Datenfluss werden nun doppelte Zeilen mithilfe der Aggregattransformation aus Ihrer Quelle entfernt. Damit wird nach allen Zeilen gruppiert, indem übergreifend für alle Spaltenwerte ein allgemeiner Hash genutzt wird.
     
@@ -60,7 +60,7 @@ Mithilfe von Codeausschnitten in Zuordnungsdatenflüssen können Sie häufige Au
 
    Ihr Datenflussgraph sollte jetzt in etwa wie folgt aussehen:
 
-    ![Screenshot des Datenflussgraphen](media/data-flow/snippet-adf-1.png)
+    :::image type="content" source="media/data-flow/snippet-adf-1.png" alt-text="Screenshot des Datenflussgraphen":::
 
   Sie haben damit einen funktionierenden Datenfluss mit generischer Deduplizierung und einer Überprüfung auf NULL-Werte erstellt, indem Sie vorhandene Codeausschnitte aus der Datenflussskript-Bibliothek in Ihren vorhandenen Entwurf eingefügt haben.
 

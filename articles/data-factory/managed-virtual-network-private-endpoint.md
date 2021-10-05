@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions, devx-track-azurepowershell
-ms.date: 07/20/2021
-ms.openlocfilehash: 29bd9cf165ef8247a4185b17d479b01c4e14fa87
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/15/2021
+ms.openlocfilehash: 845860e8aaebf7d74f294135f8eec92a8146bd3c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639925"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627613"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory (Vorschauversion)
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In diesem Artikel werden das verwaltete virtuelle Netzwerk und verwaltete private Endpunkte in Azure Data Factory erläutert.
 
@@ -83,6 +83,9 @@ Interaktive Erstellungsfunktionen werden beispielsweise für Testverbindungen, d
 Die Warteschlangenzeit der Azure Integration Runtime ist im verwalteten VNet länger als in der öffentlichen Azure Integration Runtime. Der Grund dafür ist, dass nicht ein Serverknoten pro Data Factory reserviert wird und somit vor dem Starten jeder Aktivität eine Aufwärmphase erfolgt. Dies geschieht hauptsächlich beim Beitritt zu einem VNet und nicht in der Azure IR. Für Aktivitäten, die keine Copy-Aktivitäten sind, einschließlich Pipelineaktivitäten und externen Aktivitäten, beträgt die Gültigkeitsdauer (Time To Live, TTL) beim ersten Auslösen 60 Minuten. Innerhalb der TTL ist die Warteschlangenzeit kürzer, da der Knoten bereits aufgewärmt ist. 
 > [!NOTE]
 > Die Copy-Aktivität bietet noch keine TTL-Unterstützung.
+
+> [!NOTE]
+> 2 DIU für die Copy-Aktivität werden in einem verwalteten virtuellen Netzwerk nicht unterstützt.
 
 ## <a name="create-managed-virtual-network-via-azure-powershell"></a>Erstellen eines verwalteten virtuellen Netzwerks über Azure PowerShell
 ```powershell

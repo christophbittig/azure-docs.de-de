@@ -7,20 +7,20 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jingwang
-ms.openlocfilehash: 8d765a5150180303f55cc669da3ddb84deea68da
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: e68cb1e537fcf89a947a06ac11ff08f3ca6bec9d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312839"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815229"
 ---
 # <a name="use-github-to-read-common-data-model-entity-references"></a>Verwenden von GitHub zum Lesen von Common Data Model-Entitätsverweisen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Der GitHub-Connector in Azure Data Factory wird nur zum Empfangen des Entitätsverweisschemas für das [Common Data Model](format-common-data-model.md)-Format im Zuordnungsdatenfluss verwendet.
+Der GitHub-Connector in Azure Data Factory- und Synapse Analytics-Pipelines wird nur zum Empfangen des Entitätsverweisschemas für das [Common Data Model](format-common-data-model.md)-Format im Zuordnungsdatenfluss verwendet.
 
 ## <a name="create-a-linked-service-to-github-using-ui"></a>Erstellen eines verknüpften Diensts für GitHub über die Benutzeroberfläche
 
@@ -30,7 +30,7 @@ Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst zu erstellen,
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -50,7 +50,7 @@ Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst zu erstellen,
 
 Folgende Eigenschaften werden für den mit GitHub verknüpften Dienst unterstützt.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **GitHub** festgelegt werden. | ja
 | userName | GitHub-Benutzername | ja |

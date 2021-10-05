@@ -8,12 +8,12 @@ ms.date: 07/13/2021
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d6d173188c147e04a688ff7c373a1a253393ee87
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 390ddb50c7a1ec13f654ae78fa022dcd8b1944da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204514"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633885"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Migrieren von Azure Data Lake Storage von Gen1 zu Gen2
 
@@ -21,7 +21,7 @@ Sie können Ihre Daten, Workloads und Anwendungen von Data Lake Storage Gen1 zu 
 
 Am **29. Februar 2024** wird Azure Data Lake Storage Gen1 eingestellt. Weitere Informationen finden Sie in der [offiziellen Ankündigung](https://azure.microsoft.com/updates/action-required-switch-to-azure-data-lake-storage-gen2-by-29-february-2024/). Wenn Sie Azure Data Lake Storage Gen1 verwenden, stellen Sie sicher, dass Sie vor diesem Datum zu Azure Data Lake Storage Gen2 migrieren. In diesem Artikel erfahren Sie, wie Sie dabei vorgehen.
 
-‎Azure Data Lake Storage Gen2 setzt auf [Azure Blob Storage](storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für Big Data-Analysen. [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) verbindet Features von [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) wie Dateisystemsemantik, Sicherheit auf Verzeichnis- und Dateiebene und Skalierbarkeit mit den kostengünstigen, mehrstufigen Speicherlösungen sowie Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen von [Azure Blob Storage](storage-blobs-introduction.md).
+Azure Data Lake Storage Gen2 setzt auf [Azure Blob Storage](storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für Big Data-Analysen. [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) verbindet Features von [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) wie Dateisystemsemantik, Sicherheit auf Verzeichnis- und Dateiebene und Skalierbarkeit mit den kostengünstigen, mehrstufigen Speicherlösungen sowie Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen von [Azure Blob Storage](storage-blobs-introduction.md).
 
 > [!NOTE]
 > Zur besseren Lesbarkeit wird in diesem Artikel mit dem Begriff *Gen1* auf Azure Data Lake Storage Gen1 verwiesen und mit dem Begriff *Gen2* auf Azure Data Lake Storage Gen2.
@@ -39,17 +39,17 @@ Für die Migration zu Gen2 empfehlen wir die folgende Vorgehensweise.
 :heavy_check_mark: Schritt 4: Umstellung von Gen1 auf Gen2
 
 > [!NOTE]
-> Gen1 und Gen2 sind verschiedene Dienste, es gibt keine direkte Upgrademethode, und die Migration muss ausdrücklich stattfinden. 
+> Gen1 und Gen2 sind verschiedene Dienste, es gibt keine direkte Upgrademethode, und die Migration muss ausdrücklich stattfinden.
 
 ### <a name="step-1-assess-readiness"></a>Schritt 1: Bewerten der Bereitschaft
 
-1. Erfahren Sie etwas über das [Data Lake Storage Gen2-Angebot](https://azure.microsoft.com/services/storage/data-lake-storage/) mit den verbundenen Vorteilen, Kosten und der allgemeinen Architektur. 
+1. Erfahren Sie etwas über das [Data Lake Storage Gen2-Angebot](https://azure.microsoft.com/services/storage/data-lake-storage/) mit den verbundenen Vorteilen, Kosten und der allgemeinen Architektur.
 
-2. [Vergleichen Sie die Funktionen](#gen1-gen2-feature-comparison) von Gen1 mit denen von Gen2. 
+2. [Vergleichen Sie die Funktionen](#gen1-gen2-feature-comparison) von Gen1 mit denen von Gen2.
 
 3. Überprüfen Sie die Liste der [bekannten Probleme](data-lake-storage-known-issues.md), um etwaige Lücken in der Funktionalität zu bewerten.
 
-4. Gen2 unterstützt Blob Storage-Features wie [Diagnoseprotokollierung](../common/storage-analytics-logging.md), [Zugriffsebenen](storage-blob-storage-tiers.md) und [Richtlinien für die Blob Storage-Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md). Wenn Sie eines dieser Features verwenden möchten, erkundigen Sie sich über die [aktuelle Unterstützung](./data-lake-storage-supported-blob-storage-features.md).
+4. Gen2 unterstützt Blob Storage-Features wie [Diagnoseprotokollierung](../common/storage-analytics-logging.md), [Zugriffsebenen](storage-blob-storage-tiers.md) und [Richtlinien für die Blob Storage-Lebenszyklusverwaltung](./lifecycle-management-overview.md). Wenn Sie eines dieser Features verwenden möchten, erkundigen Sie sich über die [aktuelle Unterstützung](./storage-feature-support-in-storage-accounts.md).
 
 5. Erkundigen Sie sich über den aktuellen Status der [Unterstützung im Azure-Ökosystem](./data-lake-storage-multi-protocol-access.md), um sicherzustellen, dass Gen2 die Dienste unterstützt, von denen Ihre Lösungen abhängig sind.
 
@@ -58,12 +58,12 @@ Für die Migration zu Gen2 empfehlen wir die folgende Vorgehensweise.
 1. Identifizieren Sie die Datasets, die Sie migrieren möchten.
 
    Nutzen Sie diese Gelegenheit, um Datasets zu bereinigen, die Sie nicht mehr verwenden. Wenn Sie nicht alle Daten gleichzeitig migrieren möchten, nutzen Sie die Zeit, um logische Datengruppen zu finden, die Sie in Phasen migrieren können.
-   
+
 2. Ermitteln Sie, welche Auswirkungen eine Migration auf Ihr Unternehmen hat.
 
    Bedenken Sie beispielsweise, ob Sie sich Ausfallzeiten während der Migration leisten können. Diese Überlegungen können Ihnen helfen, ein geeignetes Migrationsmuster zu ermitteln und die am besten geeigneten Tools auszuwählen.
 
-3. Erstellen Sie einen Migrationsplan. 
+3. Erstellen Sie einen Migrationsplan.
 
    Wir empfehlen diese [Migrationsmuster](#migration-patterns). Sie können eines dieser Muster auswählen, sie miteinander kombinieren oder ein eigenes Muster entwerfen.
 
@@ -71,12 +71,12 @@ Für die Migration zu Gen2 empfehlen wir die folgende Vorgehensweise.
 
 Migrieren Sie Daten, Workloads und Anwendungen mithilfe Ihres bevorzugten Musters. Wir empfehlen, Szenarien inkrementell zu validieren.
 
-1. [Erstellen Sie ein Speicherkonto](create-data-lake-storage-account.md), und aktivieren Sie das Feature für hierarchische Namespaces. 
+1. [Erstellen Sie ein Speicherkonto](create-data-lake-storage-account.md), und aktivieren Sie das Feature für hierarchische Namespaces.
 
-2. Migrieren Sie Ihre Daten. 
+2. Migrieren Sie Ihre Daten.
 
-3. Konfigurieren Sie [Dienste in Ihren Workloads](./data-lake-storage-supported-azure-services.md), sodass sie auf Ihren Gen2-Endpunkt verweisen. 
-   
+3. Konfigurieren Sie [Dienste in Ihren Workloads](./data-lake-storage-supported-azure-services.md), sodass sie auf Ihren Gen2-Endpunkt verweisen.
+
 4. Aktualisieren Sie Anwendungen für die Verwendung von Gen2-APIs. Weitere Informationen finden Sie in diesen Leitfäden:
 
 | Environment | Artikel |
@@ -87,16 +87,16 @@ Migrieren Sie Daten, Workloads und Anwendungen mithilfe Ihres bevorzugten Muster
 |Python|[Verwenden von Python zum Verwalten von Verzeichnissen und Dateien in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
 |JavaScript (Node.js)|[Verwenden des JavaScript-SDK in Node.js zum Verwalten von Verzeichnissen und Dateien in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-javascript.md)|
 |REST-API |[Azure Data Lake Store-REST-API](/rest/api/storageservices/data-lake-storage-gen2)|
-   
+
 5. Aktualisieren Sie Skripts für die Verwendung der [PowerShell-Cmdlets](data-lake-storage-directory-file-acl-powershell.md) und [Azure CLI-Befehle](data-lake-storage-directory-file-acl-cli.md) für Data Lake Storage Gen2.
-   
-6. Suchen Sie nach URI-Verweisen, die die Zeichenfolge `adl://` in Codedateien oder in Databricks-Notebooks, Apache Hive-HQL-Dateien oder anderen Dateien in Ihren Workloads enthalten. Ersetzen Sie diese Verweise durch den [für Gen2 formatierten URI](data-lake-storage-introduction-abfs-uri.md) Ihres neuen Speicherkontos. Beispiel: Der Gen1-URI `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` könnte in `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` geändert werden. 
+
+6. Suchen Sie nach URI-Verweisen, die die Zeichenfolge `adl://` in Codedateien oder in Databricks-Notebooks, Apache Hive-HQL-Dateien oder anderen Dateien in Ihren Workloads enthalten. Ersetzen Sie diese Verweise durch den [für Gen2 formatierten URI](data-lake-storage-introduction-abfs-uri.md) Ihres neuen Speicherkontos. Beispiel: Der Gen1-URI `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` könnte in `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` geändert werden.
 
 7. Konfigurieren Sie die Sicherheit Ihres Kontos so, dass [Azure-Rollen](assign-azure-role-data-access.md), [Sicherheit auf Datei- und Ordnerebene](data-lake-storage-access-control.md) und [Firewalls und virtuelle Netzwerke von Azure Storage](../common/storage-network-security.md) enthalten sind.
 
 ### <a name="step-4-cutover-from-gen1-to-gen2"></a>Schritt 4: Umstellung von Gen1 auf Gen2
 
-Nachdem Sie sicher sind, dass Ihre Anwendungen und Workloads in Gen2 stabil ausgeführt werden, können Sie mit der Verwendung von Gen2 entsprechend Ihren geschäftlichen Szenarien beginnen. Deaktivieren Sie alle verbleibenden Pipelines, die mit Gen1 ausgeführt werden, und nehmen Sie Ihr Gen1-Konto außer Betrieb. 
+Nachdem Sie sicher sind, dass Ihre Anwendungen und Workloads in Gen2 stabil ausgeführt werden, können Sie mit der Verwendung von Gen2 entsprechend Ihren geschäftlichen Szenarien beginnen. Deaktivieren Sie alle verbleibenden Pipelines, die mit Gen1 ausgeführt werden, und nehmen Sie Ihr Gen1-Konto außer Betrieb.
 
 <a id="gen1-gen2-feature-comparison"></a>
 
@@ -110,10 +110,10 @@ In dieser Tabelle werden die Funktionen von Gen1 mit denen von Gen2 verglichen.
 |Georedundanz| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
 |Authentifizierung|[Verwaltete AAD-Identität](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Dienstprinzipale](../../active-directory/develop/app-objects-and-service-principals.md)|[Verwaltete AAD-Identität](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Dienstprinzipale](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Schlüssel für den gemeinsamen Zugriff](/rest/api/storageservices/authorize-with-shared-key)|
 |Authorization|Verwaltung: [Azure RBAC](../../role-based-access-control/overview.md)<br>Daten: [ACLs](data-lake-storage-access-control.md)|Verwaltung: [Azure RBAC](../../role-based-access-control/overview.md)<br>Daten: [ACLs](data-lake-storage-access-control.md), [Azure RBAC](../../role-based-access-control/overview.md) |
-|Verschlüsselung: ruhende Daten|Serverseitig: mit [von Microsoft verwalteten](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) oder [vom Kunden verwalteten](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) Schlüsseln|Serverseitig: mit [von Microsoft verwalteten](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) oder [vom Kunden verwalteten](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) Schlüsseln|
+|Verschlüsselung: ruhende Daten|Serverseitig: mit [von Microsoft verwalteten](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) oder [kundenseitig verwalteten](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) Schlüsseln|Serverseitig: mit [von Microsoft verwalteten](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) oder [kundenseitig verwalteten](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) Schlüsseln|
 |VNET-Unterstützung|[VNET-Integration](../../data-lake-store/data-lake-store-network-security.md)|[Dienstendpunkte](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [private Endpunkte](../common/storage-private-endpoints.md)|
 |Entwicklerumgebung|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [Python](../../data-lake-store/data-lake-store-data-operations-python.md), [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure-Befehlszeilenschnittstelle](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|Allgemein verfügbar: [REST](/rest/api/storageservices/data-lake-storage-gen2), [.NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md)<br>Public Preview: [JavaScript](data-lake-storage-directory-file-acl-javascript.md), [PowerShell](data-lake-storage-directory-file-acl-powershell.md), [Azure-Befehlszeilenschnittstelle](data-lake-storage-directory-file-acl-cli.md)|
-|Ressourcenprotokolle|Klassische Protokolle<br>[Azure Monitor (integriert)](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klassische Protokolle:](../common/storage-analytics-logging.md) allgemein verfügbar<br>[Azure Monitor (integriert)](monitor-blob-storage.md) – Vorschau|
+|Ressourcenprotokolle|Klassische Protokolle<br>[Azure Monitor (integriert)](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klassische Protokolle:](../common/storage-analytics-logging.md) allgemein verfügbar<br>[Azure Monitor (integriert)](monitor-blob-storage.md) – Vorschau|
 |Ökosystem|[HDInsight (3.6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (ab 3.1)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3.6, 4.0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (ab 5.1)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [Azure Synapse Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns"></a>
@@ -130,10 +130,10 @@ Wählen Sie ein Migrationsmuster aus, und ändern Sie dieses Muster nach Bedarf.
 |**Bidirektionale Synchronisierung**|Vergleichbar mit dem *Muster mit zwei Pipelines*, aber mit einer feiner abgestuften Herangehensweise, die für kompliziertere Pipelines geeignet ist.|
 
 Diese Muster sollen nun genauer untersucht werden.
- 
+
 ### <a name="lift-and-shift-pattern"></a>Lift & Shift-Muster
 
-Dies ist das einfachste Muster. 
+Dies ist das einfachste Muster.
 
 1. Beenden Sie alle Schreibvorgänge in Gen1.
 
@@ -170,7 +170,6 @@ Sehen Sie sich den Beispielcode für das Lift & Shift-Muster im [Lift & Shif
 4. Setzen Sie Gen1 außer Betrieb.
 
 Sehen Sie sich den Beispielcode für das Muster mit inkrementellem Kopieren in unserem [Beispiel für die Migration mit inkrementellem Kopieren](https://github.com/rukmani-msft/adlsgen1togen2migrationsamples/blob/master/src/Incremental/README.md) an.
-
 
 > [!div class="mx-imgBorder"]
 > ![Muster mit inkrementellem Kopieren](./media/data-lake-storage-migrate-gen1-to-gen2/incremental-copy.png)
@@ -221,7 +220,7 @@ Sehen Sie sich den Beispielcode für das Muster mit bidirektionaler Synchronisie
 
 #### <a name="considerations-for-using-the-bi-directional-sync-pattern"></a>Überlegungen zur Verwendung des Musters mit bidirektionaler Synchronisierung:
 
-:heavy_check_mark: Ideal für komplexe Szenarien mit einer großen Anzahl von Pipelines und Abhängigkeiten, in denen ein Verfahren in mehreren Stufen möglicherweise sinnvoller ist.  
+:heavy_check_mark: Ideal für komplexe Szenarien mit einer großen Anzahl von Pipelines und Abhängigkeiten, in denen ein Verfahren in mehreren Stufen möglicherweise sinnvoller ist.
 
 :heavy_check_mark: Der Migrationsaufwand ist hoch, das Muster bietet aber eine gleichzeitige Unterstützung für Gen1 und Gen2.
 

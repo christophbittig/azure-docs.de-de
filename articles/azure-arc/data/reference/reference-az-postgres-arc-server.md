@@ -9,22 +9,22 @@ ms.date: 07/30/2021
 ms.topic: reference
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.openlocfilehash: c58819707eb5987bddeb0d8983c29e7519b69818
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 12252e0bfa9d52da1b70de15b42a0b7014183202
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355466"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794574"
 ---
 # <a name="az-postgres-arc-server"></a>az postgres arc-server
 ## <a name="commands"></a>Befehle
 | Befehl | BESCHREIBUNG|
 | --- | --- |
-[az postgres arc-server create](#az-postgres-arc-server-create) | Erstellen Sie eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung.
-[az postgres arc-server edit](#az-postgres-arc-server-edit) | Bearbeiten Sie die Konfiguration einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung.
-[az postgres arc-server delete](#az-postgres-arc-server-delete) | Löscht eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
-[az postgres arc-server show](#az-postgres-arc-server-show) | Zeigt Details einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung an
-[az postgres arc-server list](#az-postgres-arc-server-list) | Listet die Servergruppen mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung auf
+[az postgres arc-server create](#az-postgres-arc-server-create) | Erstellen einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+[az postgres arc-server edit](#az-postgres-arc-server-edit) | Bearbeiten der Konfiguration einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+[az postgres arc-server delete](#az-postgres-arc-server-delete) | Löschen einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+[az postgres arc-server show](#az-postgres-arc-server-show) | Anzeigen von Details einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+[az postgres arc-server list](#az-postgres-arc-server-list) | Auflisten der Servergruppen mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 [az postgres arc-server endpoint](reference-az-postgres-arc-server-endpoint.md) | Verwalten der Endpunkte einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ## <a name="az-postgres-arc-server-create"></a>az postgres arc-server create
 Legen Sie die Umgebungsvariable „AZDATA_PASSWORD“ fest, um das Kennwort für die Servergruppe festzulegen.
@@ -77,7 +77,7 @@ az postgres arc-server create --name -n
 [--use-k8s]
 ```
 ### <a name="examples"></a>Beispiele
-Erstellen Sie eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung.
+Erstellen Sie eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ```bash
 az postgres arc-server create -n pg1 --k8s-namespace namespace --use-k8s
 ```
@@ -96,20 +96,20 @@ az postgres arc-server create -n pg1 --memory-limit "coordinator=2Gi,w=1Gi" --wo
 ```
 ### <a name="required-parameters"></a>Erforderliche Parameter
 #### `--name -n`
-Name der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung.
+Name der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ### <a name="optional-parameters"></a>Optionale Parameter
 #### `--path`
-Der Pfad zur JSON-Quelldatei für die Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung. Diese Eingabe ist optional.
+Der Pfad zur JSON-Quelldatei für die Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung Diese Eingabe ist optional.
 #### `--k8s-namespace -k`
-Der Kubernetes-Namespace, in dem die PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung bereitgestellt wird. Wenn kein Namespace angegeben ist, wird der in kubeconfig definierte Namespace verwendet.
+Der Kubernetes-Namespace, in dem die Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung bereitgestellt wird. Wenn kein Namespace angegeben ist, wird der in kubeconfig definierte Namespace verwendet.
 #### `--cores-limit`
-Die maximale Anzahl von CPU-Kernen, die pro Knoten in einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung verwendet werden kann. Teilkerne werden unterstützt. Optional kann eine durch Komma getrennte Liste von Rollen mit Werten im Format <role>= angegeben werden.<value>. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
+Die maximale Anzahl von CPU-Kernen, die pro Knoten in einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung verwendet werden kann. Teilkerne werden unterstützt. Optional kann eine durch Trennzeichen getrennte Liste von Rollen mit Werten im Format \<role\>=\<value\> angegeben werden. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
 #### `--cores-request`
-Dies ist die Mindestanzahl von CPU-Kernen, die pro Knoten verfügbar sein müssen, um den Dienst zu planen. Teilkerne werden unterstützt. Optional kann eine durch Komma getrennte Liste von Rollen mit Werten im Format <role>= angegeben werden.<value>. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
+Dies ist die Mindestanzahl von CPU-Kernen, die pro Knoten verfügbar sein müssen, um den Dienst zu planen. Teilkerne werden unterstützt. Optional kann eine durch Trennzeichen getrennte Liste von Rollen mit Werten im Format \<role\>=\<value\> angegeben werden. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
 #### `--memory-limit`
-Der Arbeitsspeichergrenzwert für eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung als Zahl, gefolgt von Ki (Kilobyte), Mi (Megabyte) oder Gi (Gigabyte). Optional kann eine durch Komma getrennte Liste von Rollen mit Werten im Format <role>= angegeben werden.<value>. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
+Der Arbeitsspeichergrenzwert für eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung als Zahl, gefolgt von Ki (Kilobyte), Mi (Megabyte) oder Gi (Gigabyte). Optional kann eine durch Trennzeichen getrennte Liste von Rollen mit Werten im Format \<role\>=\<value\> angegeben werden. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
 #### `--memory-request`
-Die Arbeitsspeicheranforderung für eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung als Zahl, gefolgt von Ki (Kilobyte), Mi (Megabyte) oder Gi (Gigabyte). Optional kann eine durch Komma getrennte Liste von Rollen mit Werten im Format <role>= angegeben werden.<value>. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
+Die Arbeitsspeicheranforderung für eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung als Zahl, gefolgt von Ki (Kilobyte), Mi (Megabyte) oder Gi (Gigabyte). Optional kann eine durch Trennzeichen getrennte Liste von Rollen mit Werten im Format \<role\>=\<value\> angegeben werden. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
 #### `--storage-class-data`
 Dies ist die für persistente Datenvolumes zu verwendende Speicherklasse.
 #### `--storage-class-logs`
@@ -117,7 +117,7 @@ Dies ist die für persistente Protokollvolumes zu verwendende Speicherklasse.
 #### `--storage-class-backups`
 Dies ist die für persistente Sicherungsvolumes zu verwendende Speicherklasse.
 #### `--volume-claim-mounts`
-Eine durch Trennzeichen getrennte Liste mit Volumeanspruchseinbindungen. Bei einer Volumeanspruchseinbindung handelt es sich um ein durch einen Doppelpunkt getrenntes Paar, das aus einem Anspruch auf ein vorhandenes persistentes Volume im selben Namespace und dem Volumetyp (sowie je nach Volumetyp optionalen Metadaten) besteht. Das persistente Volume wird in jedem Pod für die PostgreSQL-Servergruppe eingebunden. Der Einbindungspfad hängt möglicherweise vom Volumetyp ab.
+Eine durch Trennzeichen getrennte Liste mit Volumeanspruchseinbindungen. Bei einer Volumeanspruchseinbindung handelt es sich um ein durch einen Doppelpunkt getrenntes Paar, das aus einem Anspruch auf ein vorhandenes persistentes Volume (Persistent Volume Claim, PVC) im selben Namespace und dem Volumetyp (sowie je nach Volumetyp optionalen Metadaten) besteht. Das persistente Volume wird in jedem Pod für die PostgreSQL-Servergruppe eingebunden. Der Einbindungspfad hängt möglicherweise vom Volumetyp ab.
 #### `--extensions`
 Dies ist eine durch Trennzeichen getrennte Liste der Postgres-Erweiterungen, die beim Start geladen werden sollen. Unterstützte Werte finden Sie in der Postgres-Dokumentation.
 #### `--volume-size-data`
@@ -138,11 +138,11 @@ Dies ist optional.
 #### `--no-wait`
 Wenn dieser Wert vorhanden ist, wartet der Befehl nicht darauf, dass die Instanz bereit ist, bis eine Rückgabe erfolgt.
 #### `--engine-settings`
-Dies ist eine durch Kommas getrennte Liste der Postgres-Engine-Einstellungen im Format „key1=val1, key2=val2“.
+Dies ist eine durch Trennzeichen getrennte Liste der Postgres-Engine-Einstellungen im Format „Schlüssel1=Wert1, Schlüssel2=Wert2“.
 #### `--coordinator-settings`
-Eine durch Komma getrennte Liste von Postgres-Engine-Einstellungen im Format „key1=val1, key2=val2“, die auf die Knotenrolle „coordinator“ angewendet werden soll. Wenn für die Knotenrolle spezifische Einstellungen angegeben werden, werden die Standardeinstellungen ignoriert und mit den hier angegebenen Einstellungen überschrieben.
+Eine durch Trennzeichen getrennte Liste von Postgres-Engine-Einstellungen im Format „Schlüssel1=Wert1, Schlüssel2=Wert2“, die auf die Knotenrolle „coordinator“ angewandt werden soll. Wenn für die Knotenrolle spezifische Einstellungen angegeben wurden, werden die Standardeinstellungen ignoriert und mit den hier angegebenen Einstellungen überschrieben.
 #### `--worker-settings`
-Eine durch Komma getrennte Liste von Postgres-Engine-Einstellungen im Format „key1=val1, key2=val2“, die auf die Knotenrolle „worker“ angewendet werden soll. Wenn für die Knotenrolle spezifische Einstellungen angegeben werden, werden die Standardeinstellungen ignoriert und mit den hier angegebenen Einstellungen überschrieben.
+Eine durch Trennzeichen getrennte Liste von Postgres-Engine-Einstellungen im Format „Schlüssel1=Wert1, Schlüssel2=Wert2“, die auf die Knotenrolle „worker“ angewandt werden soll. Wenn für die Knotenrolle spezifische Einstellungen angegeben wurden, werden die Standardeinstellungen ignoriert und mit den hier angegebenen Einstellungen überschrieben.
 #### `--use-k8s`
 Verwenden Sie lokale Kubernetes-APIs, um diese Aktion auszuführen.
 ### <a name="global-arguments"></a>Globale Argumente
@@ -159,7 +159,7 @@ Der Name oder die ID des Abonnements. Sie können das standardmäßig verwendete
 #### `--verbose`
 Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden.
 ## <a name="az-postgres-arc-server-edit"></a>az postgres arc-server edit
-Bearbeitet die Konfiguration einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+Bearbeiten der Konfiguration einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ```bash
 az postgres arc-server edit --name -n 
                             [--k8s-namespace -k]  
@@ -195,15 +195,15 @@ az postgres arc-server edit --name -n
 [--use-k8s]
 ```
 ### <a name="examples"></a>Beispiele
-Bearbeiten Sie die Konfiguration einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung.
+Bearbeiten der Konfiguration einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ```bash
 az postgres arc-server edit --path ./spec.json -n pg1 --k8s-namespace namespace --use-k8s
 ```
-Hier wird eine PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung mit Engine-Einstellungen für den Koordinatorknoten bearbeitet.
+Hier wird eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung mit Engine-Einstellungen für den Koordinatorknoten bearbeitet.
 ```bash
 az postgres arc-server edit -n pg1 --coordinator-settings "key2=val2" --k8s-namespace namespace
 ```
-Hiermit wird Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung bearbeitet, und vorhandene Engine-Einstellungen werden durch die neue Einstellung „key1=val1“ ersetzt.
+Hiermit wird eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung bearbeitet, und vorhandene Engine-Einstellungen werden durch die neue Einstellung „Schlüssel1=Wert1“ ersetzt.
 ```bash
 az postgres arc-server edit -n pg1 --engine-settings "key1=val1" --replace-settings --k8s-namespace namespace
 ```
@@ -212,19 +212,19 @@ az postgres arc-server edit -n pg1 --engine-settings "key1=val1" --replace-setti
 Name der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung, die bearbeitet wird. Der Name, unter dem Ihre Instanz bereitgestellt wird, kann nicht geändert werden.
 ### <a name="optional-parameters"></a>Optionale Parameter
 #### `--k8s-namespace -k`
-Der Kubernetes-Namespace, in dem die PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung bereitgestellt wird. Wenn kein Namespace angegeben ist, wird der in kubeconfig definierte Namespace verwendet.
+Der Kubernetes-Namespace, in dem die Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung bereitgestellt wird. Wenn kein Namespace angegeben ist, wird der in kubeconfig definierte Namespace verwendet.
 #### `--path`
-Der Pfad zur JSON-Quelldatei für die Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung. Diese Eingabe ist optional.
+Der Pfad zur JSON-Quelldatei für die Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung Diese Eingabe ist optional.
 #### `--workers -w`
 Die Anzahl der Workerknoten, die in einer Servergruppe bereitgestellt werden sollen. In der Vorschau wird das Reduzieren der Anzahl von Workerknoten nicht unterstützt. Weitere Informationen finden Sie in der Dokumentation.
 #### `--cores-limit`
-Die maximale Anzahl von CPU-Kernen, die pro Knoten in einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung verwendet werden kann (Teilkerne werden unterstützt). Geben Sie den entsprechenden Wert als leere Zeichenfolge an, um cores_limit zu entfernen. Optional kann eine durch Komma getrennte Liste von Rollen mit Werten im Format <role>= angegeben werden.<value>. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
+Die maximale Anzahl von CPU-Kernen, die pro Knoten in einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung verwendet werden kann (Teilkerne werden unterstützt). Geben Sie den entsprechenden Wert als leere Zeichenfolge an, um cores_limit zu entfernen. Optional kann eine durch Trennzeichen getrennte Liste von Rollen mit Werten im Format \<role\>=\<value\> angegeben werden. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
 #### `--cores-request`
-Dies ist die Mindestanzahl von CPU-Kernen, die pro Knoten verfügbar sein müssen, um den Dienst zu planen. Teilkerne werden unterstützt. Geben Sie den entsprechenden Wert als leere Zeichenfolge an, um cores_request zu entfernen. Optional kann eine durch Komma getrennte Liste von Rollen mit Werten im Format <role>= angegeben werden.<value>. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
+Dies ist die Mindestanzahl von CPU-Kernen, die pro Knoten verfügbar sein müssen, um den Dienst zu planen. Teilkerne werden unterstützt. Geben Sie den entsprechenden Wert als leere Zeichenfolge an, um cores_request zu entfernen. Optional kann eine durch Trennzeichen getrennte Liste von Rollen mit Werten im Format \<role\>=\<value\> angegeben werden. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
 #### `--memory-limit`
-Der Arbeitsspeichergrenzwert der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung als Zahl, gefolgt von Ki (Kilobyte), Mi (Megabyte) oder Gi (Gigabyte). Geben Sie den entsprechenden Wert als leere Zeichenfolge an, um memory_limit zu entfernen. Optional kann eine durch Komma getrennte Liste von Rollen mit Werten im Format <role>= angegeben werden.<value>. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
+Der Arbeitsspeichergrenzwert der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung als Zahl, gefolgt von Ki (Kilobyte), Mi (Megabyte) oder Gi (Gigabyte). Geben Sie den entsprechenden Wert als leere Zeichenfolge an, um memory_limit zu entfernen. Optional kann eine durch Trennzeichen getrennte Liste von Rollen mit Werten im Format \<role\>=\<value\> angegeben werden. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
 #### `--memory-request`
-Die Arbeitsspeicheranforderung der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung als Zahl, gefolgt von Ki (Kilobyte), Mi (Megabyte) oder Gi (Gigabyte). Geben Sie den entsprechenden Wert als leere Zeichenfolge an, um memory_request zu entfernen. Optional kann eine durch Komma getrennte Liste von Rollen mit Werten im Format <role>= angegeben werden.<value>. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
+Die Arbeitsspeicheranforderung der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung als Zahl, gefolgt von Ki (Kilobyte), Mi (Megabyte) oder Gi (Gigabyte). Geben Sie den entsprechenden Wert als leere Zeichenfolge an, um memory_request zu entfernen. Optional kann eine durch Trennzeichen getrennte Liste von Rollen mit Werten im Format \<role\>=\<value\> angegeben werden. Gültige Rollen sind „coordinator“ oder „c“, „worker“ oder „w“. Wenn keine Rollen angegeben werden, gelten die Einstellungen für alle Knoten der PostgreSQL Hyperscale-Servergruppe.
 #### `--extensions`
 Dies ist eine durch Trennzeichen getrennte Liste der Postgres-Erweiterungen, die beim Start geladen werden sollen. Unterstützte Werte finden Sie in der Postgres-Dokumentation.
 #### `--port`
@@ -232,13 +232,13 @@ Dies ist optional.
 #### `--no-wait`
 Wenn dieser Wert vorhanden ist, wartet der Befehl nicht darauf, dass die Instanz bereit ist, bis eine Rückgabe erfolgt.
 #### `--engine-settings`
-Dies ist eine durch Kommas getrennte Liste der Postgres-Engine-Einstellungen im Format „key1=val1, key2=val2“. Die angegebenen Einstellungen werden mit den vorhandenen Einstellungen zusammengeführt. Geben Sie einen leeren Wert wie „removedKey=“ an, um eine Einstellung zu entfernen. Wenn Sie eine Engine-Einstellung ändern, die einen Neustart erfordert, wird der Dienst neu gestartet, um die Einstellung sofort anzuwenden.
+Dies ist eine durch Trennzeichen getrennte Liste der Postgres-Engine-Einstellungen im Format „Schlüssel1=Wert1, Schlüssel2=Wert2“. Die angegebenen Einstellungen werden mit den vorhandenen Einstellungen zusammengeführt. Geben Sie einen leeren Wert wie „removedKey=“ an, um eine Einstellung zu entfernen. Wenn Sie eine Engine-Einstellung ändern, die einen Neustart erfordert, wird der Dienst neu gestartet, um die Einstellung sofort anzuwenden.
 #### `--replace-settings`
 Bei einer Angabe mit --engine-settings werden alle vorhandenen benutzerdefinierten Engine-Einstellungen durch neue Einstellungen und Werte ersetzt.
 #### `--coordinator-settings`
-Eine durch Komma getrennte Liste von Postgres-Engine-Einstellungen im Format „key1=val1, key2=val2“, die auf die Knotenrolle „coordinator“ angewendet werden soll. Wenn für die Knotenrolle spezifische Einstellungen angegeben werden, werden die Standardeinstellungen ignoriert und mit den hier angegebenen Einstellungen überschrieben.
+Eine durch Trennzeichen getrennte Liste von Postgres-Engine-Einstellungen im Format „Schlüssel1=Wert1, Schlüssel2=Wert2“, die auf die Knotenrolle „coordinator“ angewandt werden soll. Wenn für die Knotenrolle spezifische Einstellungen angegeben wurden, werden die Standardeinstellungen ignoriert und mit den hier angegebenen Einstellungen überschrieben.
 #### `--worker-settings`
-Eine durch Komma getrennte Liste von Postgres-Engine-Einstellungen im Format „key1=val1, key2=val2“, die auf die Knotenrolle „worker“ angewendet werden soll. Wenn für die Knotenrolle spezifische Einstellungen angegeben werden, werden die Standardeinstellungen ignoriert und mit den hier angegebenen Einstellungen überschrieben.
+Eine durch Trennzeichen getrennte Liste von Postgres-Engine-Einstellungen im Format „Schlüssel1=Wert1, Schlüssel2=Wert2“, die auf die Knotenrolle „worker“ angewandt werden soll. Wenn für die Knotenrolle spezifische Einstellungen angegeben wurden, werden die Standardeinstellungen ignoriert und mit den hier angegebenen Einstellungen überschrieben.
 #### `--admin-password`
 Bei angegebenem Wert wird das Administratorkennwort der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung auf den Wert der Umgebungsvariable AZDATA_PASSWORD (falls vorhanden) bzw. einen angeforderten Wert festgelegt.
 #### `--use-k8s`
@@ -257,7 +257,7 @@ Der Name oder die ID des Abonnements. Sie können das standardmäßig verwendete
 #### `--verbose`
 Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden.
 ## <a name="az-postgres-arc-server-delete"></a>az postgres arc-server delete
-Löscht eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+Löschen einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ```bash
 az postgres arc-server delete --name -n 
                               [--k8s-namespace -k]  
@@ -267,16 +267,16 @@ az postgres arc-server delete --name -n
 [--use-k8s]
 ```
 ### <a name="examples"></a>Beispiele
-Löscht eine Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
+Löschen einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ```bash
 az postgres arc-server delete -n pg1 --k8s-namespace namespace --use-k8s
 ```
 ### <a name="required-parameters"></a>Erforderliche Parameter
 #### `--name -n`
-Name der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung.
+Name der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ### <a name="optional-parameters"></a>Optionale Parameter
 #### `--k8s-namespace -k`
-Der Kubernetes-Namespace, in dem die PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung bereitgestellt wird. Wenn kein Namespace angegeben ist, wird der in kubeconfig definierte Namespace verwendet.
+Der Kubernetes-Namespace, in dem die Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung bereitgestellt wird. Wenn kein Namespace angegeben ist, wird der in kubeconfig definierte Namespace verwendet.
 #### `--force -f`
 Erzwingen Sie das Löschen der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung ohne Bestätigung.
 #### `--use-k8s`
@@ -295,7 +295,7 @@ Der Name oder die ID des Abonnements. Sie können das standardmäßig verwendete
 #### `--verbose`
 Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden.
 ## <a name="az-postgres-arc-server-show"></a>az postgres arc-server show
-Zeigt Details einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung an
+Anzeigen von Details einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ```bash
 az postgres arc-server show --name -n 
                             [--k8s-namespace -k]  
@@ -305,16 +305,16 @@ az postgres arc-server show --name -n
 [--use-k8s]
 ```
 ### <a name="examples"></a>Beispiele
-Zeigt Details einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung an
+Anzeigen von Details einer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ```bash
 az postgres arc-server show -n pg1 --k8s-namespace namespace --use-k8s
 ```
 ### <a name="required-parameters"></a>Erforderliche Parameter
 #### `--name -n`
-Name der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung.
+Name der Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ### <a name="optional-parameters"></a>Optionale Parameter
 #### `--k8s-namespace -k`
-Der Kubernetes-Namespace, in dem die PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung bereitgestellt wird. Wenn kein Namespace angegeben ist, wird der in kubeconfig definierte Namespace verwendet.
+Der Kubernetes-Namespace, in dem die Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung bereitgestellt wird. Wenn kein Namespace angegeben ist, wird der in kubeconfig definierte Namespace verwendet.
 #### `--path`
 Dies ist ein Pfad, unter dem die vollständige Spezifikation für die Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung geschrieben werden sollen. Wenn keine Angabe erfolgt, wird die Spezifikation in die Standardausgabe geschrieben.
 #### `--use-k8s`
@@ -333,19 +333,19 @@ Der Name oder die ID des Abonnements. Sie können das standardmäßig verwendete
 #### `--verbose`
 Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden.
 ## <a name="az-postgres-arc-server-list"></a>az postgres arc-server list
-Listet die Servergruppen mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung auf
+Auflisten der Servergruppen mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ```bash
 az postgres arc-server list [--k8s-namespace -k] 
                             [--use-k8s]
 ```
 ### <a name="examples"></a>Beispiele
-Listet die Servergruppen mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung auf
+Auflisten der Servergruppen mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 ```bash
 az postgres arc-server list --k8s-namespace namespace --use-k8s
 ```
 ### <a name="optional-parameters"></a>Optionale Parameter
 #### `--k8s-namespace -k`
-Der Kubernetes-Namespace, in dem die PostgreSQL Hyperscale-Servergruppen mit Azure Arc-Unterstützung bereitgestellt werden. Wenn kein Namespace angegeben ist, wird der in kubeconfig definierte Namespace verwendet.
+Der Kubernetes-Namespace, in dem die Servergruppen mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung bereitgestellt werden. Wenn kein Namespace angegeben ist, wird der in kubeconfig definierte Namespace verwendet.
 #### `--use-k8s`
 Verwenden Sie lokale Kubernetes-APIs, um diese Aktion auszuführen.
 ### <a name="global-arguments"></a>Globale Argumente

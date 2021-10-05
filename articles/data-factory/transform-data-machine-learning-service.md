@@ -1,26 +1,26 @@
 ---
 title: Ausführen von Azure Machine Learning-Pipelines
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Hier erfahren Sie, wie Sie Ihre Azure Machine Learning-Pipelines in Ihren Azure Data Factory-Pipelines ausführen.
+description: Erfahren Sie, wie Sie Ihre Azure Machine Learning-Pipelines in Ihren Azure Data Factory- und Synapse Analytics-Pipelines ausführen.
 ms.service: data-factory
 ms.subservice: tutorials
 ms.custom: synapse
 ms.topic: conceptual
 ms.author: abnarain
 author: nabhishek
-ms.date: 07/16/2020
-ms.openlocfilehash: 19456f33e13a9a472b5c42afc0a3cb3c5041efd2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 0d7fe523b7300634df6c876525b1ffe47a49c205
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640737"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806336"
 ---
-# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Ausführen von Azure Machine Learning-Pipelines in Azure Data Factory-Pipelines
+# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory-and-synapse-analytics"></a>Ausführen von Azure Machine Learning-Pipelines in Azure Data Factory und Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Führen Sie Ihre Azure Machine Learning-Pipelines als Schritt in Ihren Azure Data Factory-Pipelines aus. Die Machine Learning-Pipelineausführungsaktivität ermöglicht Batchvorhersageszenarien wie etwa die Ermittlung möglicher Kreditausfälle, die Ermittlung der Stimmung oder die Analyse von Kundenverhaltensmustern.
+Führen Sie Ihre Azure Machine Learning-Pipelines als Schritt in Ihren Azure Data Factory- und Synapse Analytics-Pipelines aus. Die Machine Learning-Pipelineausführungsaktivität ermöglicht Batchvorhersageszenarien wie etwa die Ermittlung möglicher Kreditausfälle, die Ermittlung der Stimmung oder die Analyse von Kundenverhaltensmustern.
 
 Das folgende Video enthält eine sechsminütige Einführung und Demonstration dieses Features.
 
@@ -62,7 +62,7 @@ dataPathAssignments | Wörterbuch, das zum Ändern von Datenpfaden in Azure Mach
 continueOnStepFailure | Gibt an, ob die Ausführung weiterer Schritte in der Machine Learning-Pipelineausführung fortgesetzt werden soll, wenn ein Schritt nicht erfolgreich war. | boolean | Nein
 
 > [!NOTE]
-> Zum Auffüllen der Dropdownelemente im Namen und der ID der Machine Learning-Pipeline muss der Benutzer berechtigt sein, ML-Pipelines aufzulisten. ADF UX ruft AzureMLService-APIs mithilfe der Anmeldeinformationen des angemeldeten Benutzers direkt auf.  
+> Zum Auffüllen der Dropdownelemente im Namen und der ID der Machine Learning-Pipeline muss der Benutzer berechtigt sein, ML-Pipelines aufzulisten. Die Benutzeroberfläche ruft AzureMLService-APIs mithilfe der Anmeldeinformationen des angemeldeten Benutzers direkt auf.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformiert werden:

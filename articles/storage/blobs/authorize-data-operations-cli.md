@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 07/12/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d02d18bec76578ec93d238d6dba284a8447428e9
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: b8dd3f6a81317abff79dce906c4a9c8ef6ea6484
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901649"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680241"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>Auswählen der Autorisierung des Zugriffs auf Blobdaten mit der Azure CLI
 
@@ -52,11 +52,11 @@ Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugrif
 
 Die Azure Storage-Erweiterungen werden für Vorgänge mit Blobdaten unterstützt. Welche Vorgänge Sie aufrufen können, hängt von den Berechtigungen des Azure AD-Sicherheitsprinzipals ab, mit dem Sie sich bei der Azure-Befehlszeilenschnittstelle anmelden. Die Berechtigungen für Azure Storage-Container werden über Azure RBAC zugewiesen. Wenn Sie beispielsweise die Rolle **Storage-Blobdatenleser** zugewiesen haben, können Sie Skriptbefehle ausführen, die Daten aus einem Container lesen. Haben Sie die Rolle **Mitwirkender an Storage-Blobdaten** zugewiesen, können Sie Skriptbefehle ausführen, die einen Container oder die darin enthaltenen Daten lesen, schreiben oder löschen.
 
-Einzelheiten zu den Berechtigungen, die für die einzelnen Azure Storage-Vorgänge in einem Container erforderlich sind, finden Sie unter [Aufrufen von Speichervorgängen mit OAuth-Token](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
+Einzelheiten zu den Berechtigungen, die für die einzelnen Azure Storage-Vorgänge in einem Container erforderlich sind, finden Sie unter [Aufrufen von Speichervorgängen mit OAuth-Token](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).
 
 ### <a name="example-authorize-an-operation-to-create-a-container-with-azure-ad-credentials"></a>Beispiel: Autorisieren eines Vorgangs zum Erstellen eines Containers mit Azure AD-Anmeldeinformationen
 
-Im folgenden Beispiel sehen Sie, wie mithilfe Ihrer Azure AD-Anmeldeinformationen über die Azure CLI ein Container erstellt wird. Damit Sie den Container erstellen können, müssen Sie sich bei der Azure CLI anmelden, und Sie benötigen eine Ressourcengruppe und ein Speicherkonto. Informationen zum Erstellen dieser Ressourcen finden Sie unter [Schnellstart: Erstellen, Herunterladen und Auflisten von Blobs mit der Azure-Befehlszeilenschnittstelle](../blobs/storage-quickstart-blobs-cli.md).
+Im folgenden Beispiel sehen Sie, wie mithilfe Ihrer Azure AD-Anmeldeinformationen über die Azure CLI ein Container erstellt wird. Damit Sie den Container erstellen können, müssen Sie sich bei der Azure-Befehlszeilenschnittstelle anmelden. Außerdem benötigen Sie eine Ressourcengruppe und ein Speicherkonto. Informationen zum Erstellen dieser Ressourcen finden Sie unter [Schnellstart: Erstellen, Herunterladen und Auflisten von Blobs mit der Azure-Befehlszeilenschnittstelle](../blobs/storage-quickstart-blobs-cli.md).
 
 1. Weisen Sie sich vor der Erstellung des Containers selbst die Rolle [Mitwirkender an Storage-Blobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) zu. Obwohl Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können. Weitere Informationen zum Zuweisen von Azure-Rollen finden Sie unter [Zuweisen einer RBAC-Rolle für den Zugriff auf Blobdaten](assign-azure-role-data-access.md).
 
@@ -114,5 +114,5 @@ Sie können Autorisierungsparameter in Umgebungsvariablen angeben, um zu vermeid
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](assign-azure-role-data-access.md).
+- [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](assign-azure-role-data-access.md)
 - [Autorisieren des Zugriffs auf Blob- und Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen](../common/storage-auth-aad-msi.md)

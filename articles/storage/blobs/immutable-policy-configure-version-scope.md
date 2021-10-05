@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 09/10/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 04e05f67787b285dd1286e0c6b7a6b251262ed0f
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 7a7ded3df993034963f06b81a0908e68821688cb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272239"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584292"
 ---
 # <a name="configure-immutability-policies-for-blob-versions-preview"></a>Konfigurieren von Unveränderlichkeitsrichtlinien für Blobversionen (Vorschau)
 
@@ -159,7 +159,7 @@ Wenn der Container keine zeitbasierte Aufbewahrungsrichtlinie besitzt, wenn Sie 
 if ($migrationOperation.JobStateInfo.State -eq "Failed") {
 Write-Host $migrationOperation.Error
 }
-The container <container-name> must have an immutability policy set as a default policy 
+The container <container-name> must have an immutability policy set as a default policy
 before initiating container migration to support object level immutability with versioning.
 ```
 
@@ -284,7 +284,7 @@ Weitere Informationen zur Blobversionsverwaltung finden Sie unter [Blobversionsv
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Im Azure-Portal wird eine Liste von Blobs angezeigt, wenn Sie zu einem Container navigieren. Jedes angezeigte Blob stellt die aktuelle Version des Blobs dar. Sie können auf eine Liste früherer Versionen zugreifen, indem Sie die Schaltfläche **Mehr** für ein Blob und dann **Vorherige Versionen anzeigen** auswählen.  
+Im Azure-Portal wird eine Liste von Blobs angezeigt, wenn Sie zu einem Container navigieren. Jedes angezeigte Blob stellt die aktuelle Version des Blobs dar. Sie können auf eine Liste früherer Versionen zugreifen, indem Sie die Schaltfläche **Mehr** für ein Blob und dann **Vorherige Versionen anzeigen** auswählen.
 
 ### <a name="configure-a-retention-policy-on-the-current-version-of-a-blob"></a>Konfigurieren einer Aufbewahrungsrichtlinie für die aktuelle Version eines Blobs
 
@@ -321,6 +321,8 @@ Führen Sie die folgenden Schritte aus, um eine zeitbasierte Aufbewahrungsrichtl
 
 Um eine zeitbasierte Aufbewahrungsrichtlinie für eine Blobversion mit PowerShell zu konfigurieren, rufen Sie den Befehl **Set-AzStorageBlobImmutabilityPolicy** auf.
 
+Das folgende Beispiel zeigt, wie Sie eine nicht gesperrte Richtlinie für die aktuelle Version eines Blobs konfigurieren. Denken Sie daran, Platzhalter in spitzen Klammern durch Ihre eigenen Werte zu ersetzen:
+
 ```azurepowershell
 # Get the storage account context
 $ctx = (Get-AzStorageAccount `
@@ -336,7 +338,25 @@ Set-AzStorageBlobImmutabilityPolicy -Container <container> `
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-–
+Um mithilfe der Azure-Befehlszeilenschnittstelle eine zeitbasierte Aufbewahrungsrichtlinie für eine Blobversion zu konfigurieren, müssen Sie zunächst mindestens Version 0.6.1 der Erweiterung *storage-blob-preview* installieren.
+
+```azurecli
+az extension add --name storage-blob-preview
+```
+
+Weitere Informationen zum Installieren von Erweiterungen für die Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren und Verwalten von Azure CLI-Erweiterungen](/cli/azure/azure-cli-extensions-overview).
+
+Rufen Sie als Nächstes den Befehl **az storage blob immutability-policy set** auf, um die zeitbasierte Aufbewahrungsrichtlinie zu konfigurieren. Das folgende Beispiel zeigt, wie Sie eine nicht gesperrte Richtlinie für die aktuelle Version eines Blobs konfigurieren. Denken Sie daran, Platzhalter in spitzen Klammern durch Ihre eigenen Werte zu ersetzen:
+
+```azurecli
+az storage blob immutability-policy set \
+    --expiry-time 2021-09-20T08:00:00Z \
+    --policy-mode Unlocked \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <storage-account> \
+    --auth-mode login
+```
 
 ---
 
@@ -375,7 +395,7 @@ Um die entsperrte Richtlinie zu löschen, wählen Sie **Löschen** im Menü **Me
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Um eine entsperrte zeitbasierte Aufbewahrungsrichtlinie mit PowerShell zu ändern, rufen Sie den Befehl **Set-AzStorageBlobImmutabilityPolicy** für die Blobversion mit dem neuen Datum und der neuen Uhrzeit für den Ablauf der Richtlinien auf.
+Um eine entsperrte zeitbasierte Aufbewahrungsrichtlinie mit PowerShell zu ändern, rufen Sie den Befehl **Set-AzStorageBlobImmutabilityPolicy** für die Blobversion mit dem neuen Datum und der neuen Uhrzeit für den Ablauf der Richtlinien auf. Denken Sie daran, Platzhalter in spitzen Klammern durch Ihre eigenen Werte zu ersetzen:
 
 ```azurepowershell
 $containerName = "<container>"
@@ -388,7 +408,7 @@ $blobVersion = Get-AzStorageBlob -Container $containerName `
     -Context $ctx
 
 # Extend the retention interval by five days.
-$blobVersion = $blobVersion | 
+$blobVersion = $blobVersion |
     Set-AzStorageBlobImmutabilityPolicy -ExpiresOn (Get-Date).AddDays(5) `
 
 # View the new policy parameters.
@@ -403,7 +423,27 @@ $blobVersion = $blobVersion | Remove-AzStorageBlobImmutabilityPolicy
 
 #### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-–
+Um eine nicht gesperrte zeitbasierte Aufbewahrungsrichtlinie mit PowerShell zu ändern, rufen Sie den Befehl **az storage blob immutability-policy set** für die Blobversion mit dem neuen Datum und der neuen Uhrzeit für den Richtlinienablauf auf. Denken Sie daran, Platzhalter in spitzen Klammern durch Ihre eigenen Werte zu ersetzen:
+
+```azurecli
+az storage blob immutability-policy set \
+    --expiry-time 2021-10-0T18:00:00Z \
+    --policy-mode Unlocked \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <storage-account> \
+    --auth-mode login
+```
+
+Um eine nicht gesperrte Aufbewahrungsrichtlinie zu löschen, rufen Sie den Befehl **az storage blob immutability-policy delete** auf.
+
+```azurecli
+az storage blob immutability-policy delete \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <storage-account> \
+    --auth-mode login
+```
 
 ---
 
@@ -436,7 +476,7 @@ $blobVersion = Get-AzStorageBlob -Container $containerName `
     -VersionId "2021-08-31T00:26:41.2273852Z" `
     -Context $ctx
 
-$blobVersion = $blobVersion | 
+$blobVersion = $blobVersion |
     Set-AzStorageBlobImmutabilityPolicy `
         -ExpiresOn $blobVersion.BlobProperties.ImmutabilityPolicy.ExpiresOn `
         -PolicyMode Locked
@@ -444,7 +484,17 @@ $blobVersion = $blobVersion |
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-–
+Um eine Richtlinie mit PowerShell zu sperren, rufen Sie den Befehl **az storage blob immutability-policy set** auf und legen den `--policy-mode`-Parameter auf *Locked* (Gesperrt) fest. Sie können den Ablauftermin auch zum Zeitpunkt der Sperre der Richtlinie ändern.
+
+```azurecli
+az storage blob immutability-policy set \
+    --expiry-time 2021-10-0T18:00:00Z \
+    --policy-mode Locked \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <storage-account> \
+    --auth-mode login
+```
 
 ---
 
@@ -486,7 +536,25 @@ Set-AzStorageBlobLegalHold -Container <container> `
 
 #### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-–
+Rufen Sie den Befehl **az storage blob set-legal-hold** auf, um mithilfe der Azure-Befehlszeilenschnittstelle eine Sperrfrist für eine Blobversion zu konfigurieren oder aufzuheben.
+
+```azurecli
+# Set a legal hold
+az storage blob set-legal-hold \
+    --legal-hold \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <account-name> \
+    --auth-mode login
+
+# Clear a legal hold
+az storage blob set-legal-hold \
+    --legal-hold false \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <account-name> \
+    --auth-mode login
+```
 
 ---
 

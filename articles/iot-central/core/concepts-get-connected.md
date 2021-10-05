@@ -3,7 +3,7 @@ title: Gerätekonnektivität in Azure IoT Central | Microsoft-Dokumentation
 description: In diesem Artikel werden die wichtigsten Konzepte in Bezug auf die Gerätekonnektivität in Azure IoT Central vorgestellt.
 author: dominicbetts
 ms.author: dobett
-ms.date: 1/15/2020
+ms.date: 09/07/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: aebee9b2511e3616a9170d5ed84be3acf391b6ad
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: bf35868d67dab2cb48aee5c85b964f86abd912e3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340540"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653776"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -65,7 +65,6 @@ Weitere Informationen finden Sie unter [Informationen zum Verbinden von Geräten
 Mit den folgenden Hilfsprogrammen können Sie ausschließlich zu Testzwecken Stamm-, Zwischen- und Gerätezertifikate generieren:
 
 - [Tools for the Azure IoT Device Provisioning Device SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md) (Tools für das Azure IoT Device Provisioning-Geräte-SDK): Sammlung von Node.js-Tools, mit denen Sie X.509-Zertifikate und -Schlüssel generieren und überprüfen können.
-- Wenn Sie ein DevKit-Gerät verwenden, generiert dieses [Befehlszeilentool](https://aka.ms/iotcentral-docs-dicetool) ein Zertifizierungsstellenzertifikat, das Sie Ihrer IoT Central-Anwendung zum Überprüfen der Zertifikate hinzufügen können.
 - [Managing test CA certificates for samples and tutorials](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) (Verwalten von Test-Zertifizierungsstellenzertifikaten für Beispiele und Tutorials): Sammlung von PowerShell- und Bash-Skripts für folgende Zwecke:
   - Erstellen einer Zertifikatkette.
   - Speichern Sie die Zertifikate als CER-Dateien zum Hochladen in Ihre IoT Central-Anwendung.
@@ -190,6 +189,16 @@ Sie können das [Thermostatmodell](https://github.com/Azure/iot-plugandplay-mode
 ```json
 "@id": "dtmi:com:example:Thermostat;1"
 ```
+
+Verwenden Sie die folgenden DPS-Nutzdaten, um das Gerät einer Gerätevorlage zuzuordnen:
+
+```json
+{
+  "modelId":"dtmi:com:example:TemperatureController;2"
+}
+```
+
+Weitere Informationen zu DPS-Nutzdaten finden Sie im Beispielcode unter [Tutorial: Erstellen und Verbinden einer Clientanwendung mit Ihrer Azure IoT Central-Anwendung](tutorial-connect-device.md).
 
 ## <a name="device-status-values"></a>Werte für den Gerätestatus
 

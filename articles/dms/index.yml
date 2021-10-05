@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: seo-azure-migrate
-  ms.openlocfilehash: 2c154a084f91a988231dd46d22ca51611dabcec9
-  ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+  ms.openlocfilehash: 4793cc6e8dba6e8091b6039e1f7085d7024319d8
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/31/2021
-  ms.locfileid: "123305366"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129363881"
 landingContent:
 - title: Informationen zu Azure Database Migration Service
   linkLists:
@@ -61,10 +61,10 @@ landingContent:
     links:
     - text: Migrieren zu Azure SQL-Datenbank
       url: tutorial-sql-server-to-azure-sql.md
-    - text: Migrieren zu Azure SQL Managed Instance (online)
-      url: tutorial-sql-server-managed-instance-online.md
-    - text: Migrieren zu SQL Managed Instance (offline)
-      url: tutorial-sql-server-to-managed-instance.md
+    - text: Migrieren zu Azure SQL Managed Instance (online) mithilfe von Azure Data Studio
+      url: tutorial-sql-server-managed-instance-online-ads.md
+    - text: Migrieren zu SQL Managed Instance (offline) mithilfe von Azure Data Studio
+      url: tutorial-sql-server-managed-instance-offline-ads.md
   - linkListType: reference
     links:
     - text: 'Bekannte Probleme: Onlinemigration zu SQL Managed Instance'

@@ -1,14 +1,14 @@
 ---
-title: Verwenden von von Azure verwalteten Identitäten zum Erstellen von Umgebungen in DevTest Labs | Microsoft-Dokumentation
+title: Verwenden von verwalteten Azure-Identitäten zum Erstellen von Umgebungen
 description: Erfahren Sie, wie Sie verwaltete Identitäten in Azure verwenden, um Umgebungen in einem Lab in Azure DevTest Labs bereitzustellen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 4a8afd74014cb940be17d9a84168e8bfe7daff67
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 29ebda2920dc6fce5596d9b8b535ef014fd2240e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854682"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595964"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Verwenden von verwalteten Azure-Identitäten zum Bereitstellen von Umgebungen in einem Lab 
 

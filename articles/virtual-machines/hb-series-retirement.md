@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 08/02/2021
 ms.author: amverma
-ms.openlocfilehash: 8a718f315324638f834316eb6dae46a9497ec48e
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 2d14b9b3adb9905cc87408db33018746e1479a1b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515970"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680089"
 ---
 # <a name="migrate-your-hb-series-virtual-machines-by-august-31-2024"></a>Migrieren Sie Ihre virtuellen Computer der HB-Serie bis zum 31. August 2024
 Da Microsoft Azure virtuelle Computer der HBv2- und HBv3-Serie für High Performance Computing (HPC) eingeführt haben, empfehlen wir die Migration von Workloads von ursprünglichen virtuellen Computern der HB-Serie zu unseren neueren Angeboten.  
@@ -46,15 +46,15 @@ VMs der [HB-Serie](hb-series.md) laufen erst im September 2024 aus. Daher stelle
 
 
 ### <a name="migration-steps"></a>Schritte bei der Migration 
-1. Wählen Sie eine Serie und eine Größe für die Migration aus. 
+1. Wählen Sie eine Reihe und eine Größe für die Migration aus. 
 2. Erhalten Sie das Kontingent für die Ziel-VM-Serie 
 3. Ändern Sie die aktuelle Größe der VM der HB-Serie auf die Zielgröße 
 
 
 ### <a name="get-quota-for-the-target-vm-family"></a>Erhalten Sie das Kontingent für die Ziel-VM-Familie 
 
-Folgen Sie der Anleitung zum [Anfordern einer Erhöhung des vCPU-Kontingents mittels VM-Familie](../azure-portal/supportability/per-vm-quota-requests.md).
+Befolgen Sie die Anleitung zum [Anfordern einer Erhöhung des vCPU-Kontingents nach VM-Familie](../azure-portal/supportability/per-vm-quota-requests.md).
 
 
-### <a name="resize-the-current-virtual-machine"></a>Ändern Sie die Größe der aktuellen VM
-Sie können [die Größe des VM ändern mithilfe von PowerShell](./windows/resize-vm.md), [Azure CLI](./linux/change-vm-size.md) oder über das Azure-Portal.
+### <a name="resize-the-current-virtual-machine"></a>Ändern Sie die Größe des aktuellen VM.
+Sie können [die Größe des Virtuellen Computers ändern](resize-vm.md).

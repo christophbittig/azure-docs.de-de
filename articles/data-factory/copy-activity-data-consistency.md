@@ -1,26 +1,26 @@
 ---
 title: Datenkonsistenzprüfung in der Kopieraktivität
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Hier erfahren Sie, wie Sie die Datenkonsistenzprüfung in der Kopieraktivität in Azure Data Factory aktivieren.
+description: Erfahren Sie, wie Sie die Datenkonsistenzprüfung in einer Copy-Aktivität in Azure Data Factory- und Synapse Analytics-Pipelines aktivieren.
 author: dearandyxu
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 3/27/2020
+ms.date: 09/09/2021
 ms.author: yexu
-ms.openlocfilehash: 3e2bcf4e267a93c9504dfc22e1308f0a4dba890d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a79ec65dd9826db51042a8dfde74de6b563355be
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640602"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798786"
 ---
 #  <a name="data-consistency-verification-in-copy-activity"></a>Datenkonsistenzprüfung in der Kopieraktivität
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Wenn Sie Daten aus dem Quell- in den Zielspeicher verschieben, bietet die Azure Data Factory-Kopieraktivität eine Option, mit der Sie eine zusätzliche Datenkonsistenzprüfung durchführen können. Damit stellen Sie sicher, dass die Daten nicht nur erfolgreich aus dem Quell- in den Zielspeicher kopiert werden, sondern auch dass überprüft wird, ob sie zwischen Quell- und Zielspeicher konsistent sind. Wenn während der Datenverschiebung inkonsistente Dateien gefunden werden, können Sie entweder die Kopieraktivität abbrechen oder auch noch die restlichen Dateien kopieren. Hierzu aktivieren Sie die Einstellung für Fehlertoleranz, damit inkonsistente Daten übersprungen werden. Die Namen der übersprungenen Dateien können Sie durch Aktivieren der Einstellung für das Sitzungsprotokoll in der Kopieraktivität abrufen. Weitere Informationen finden Sie im [Sitzungsprotokoll in der Kopieraktivität](copy-activity-log.md).
+Wenn Sie Daten aus dem Quell- in den Zielspeicher verschieben, bietet die Copy-Aktivität eine Option, mit der Sie eine zusätzliche Datenkonsistenzprüfung durchführen können. Damit stellen Sie sicher, dass die Daten nicht nur erfolgreich aus dem Quell- in den Zielspeicher kopiert werden, sondern auch, dass überprüft wird, ob sie zwischen Quell- und Zielspeicher konsistent sind. Wenn während der Datenverschiebung inkonsistente Dateien gefunden werden, können Sie entweder die Kopieraktivität abbrechen oder auch noch die restlichen Dateien kopieren. Hierzu aktivieren Sie die Einstellung für Fehlertoleranz, damit inkonsistente Daten übersprungen werden. Die Namen der übersprungenen Dateien können Sie durch Aktivieren der Einstellung für das Sitzungsprotokoll in der Kopieraktivität abrufen. Weitere Informationen finden Sie im [Sitzungsprotokoll in der Kopieraktivität](copy-activity-log.md).
 
 ## <a name="supported-data-stores-and-scenarios"></a>Unterstützte Datenspeicher und Szenarien
 
@@ -79,8 +79,8 @@ linkedServiceName | Der verknüpfte Dienst von [Azure Blob Storage](connector-az
 path | Der Pfad der Protokolldateien. | Geben Sie den Pfad an, in dem die Protokolldateien gespeichert werden sollen. Wenn Sie keinen Pfad angeben, erstellt der Dienst automatisch einen Container. | Nein
 
 >[!NOTE]
->- Beim Kopieren von Binärdateien aus oder in Azure-Blobs oder Azure Data Lake Storage Gen2 überprüft ADF unter Verwendung der [Azure-Blob-API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) und der [Azure Data Lake Storage Gen2-API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) die MD5-Prüfsumme auf Blockebene. Wenn ContentMD5 in Dateien im Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenquelle vorhanden ist, führt ADF nach dem Lesen der Dateien auch eine Überprüfung der MD5-Prüfsumme auf Dateiebene durch. Nach dem Kopieren von Dateien in das Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenziel schreibt ADF ContentMD5 in das Ziel. Dies kann in Downstreamanwendungen zur Überprüfung der Datenkonsistenz weiterverwendet werden.
->- Beim Kopieren von Binärdateien zwischen Speichern führt ADF eine Überprüfung der Dateigröße durch.
+>- Beim Kopieren von Binärdateien aus oder in Azure-Blobs oder Azure Data Lake Storage Gen2 überprüft der Dienst unter Verwendung der [Azure-Blob-API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) und der [Azure Data Lake Storage Gen2-API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) die MD5-Prüfsumme auf Blockebene. Wenn ContentMD5 in Dateien im Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenquelle vorhanden ist, führt der Dienst nach dem Lesen der Dateien auch eine Überprüfung der MD5-Prüfsumme auf Dateiebene durch. Nach dem Kopieren von Dateien in das Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenziel schreibt der Dienst ContentMD5 in das Ziel. Diese Information kann in Downstreamanwendungen zur Überprüfung der Datenkonsistenz weiterverwendet werden.
+>- Beim Kopieren von Binärdateien zwischen Speichern führt der Dienst eine Überprüfung der Dateigröße durch.
 
 ## <a name="monitoring"></a>Überwachung
 
@@ -112,9 +112,9 @@ Wert von **VerificationResult**:
 -   **Nicht unterstützt**: Ihre kopierten Daten wurden nicht auf Konsistenz überprüft, weil die Datenkonsistenzprüfung bei diesem bestimmten Kopierpaar nicht unterstützt wird. 
 
 Wert von **InconsistentData**: 
--   **Gefunden**: Die ADF-Kopieraktivität hat inkonsistente Daten gefunden. 
--   **Übersprungen**: Die ADF-Kopieraktivität hat inkonsistente Daten gefunden und übersprungen. 
--   **Keine:** Die ADF-Kopieraktivität hat keine inkonsistenten Daten gefunden. Der Grund: Bei der Überprüfung wurde festgestellt, dass Ihre Daten zwischen Quell- und Zielspeicher konsistent sind, oder Sie haben „validateDataConsistency“ in der Kopieraktivität deaktiviert. 
+-   **Found** (Gefunden): Die Copy-Aktivität hat inkonsistente Daten gefunden. 
+-   **Skipped** (Übersprungen): Die Copy-Aktivität hat inkonsistente Daten gefunden und übersprungen. 
+-   **None** (Keine): Die Copy-Aktivität hat keine inkonsistenten Daten gefunden. Der Grund: Bei der Überprüfung wurde festgestellt, dass Ihre Daten zwischen Quell- und Zielspeicher konsistent sind, oder Sie haben „validateDataConsistency“ in der Kopieraktivität deaktiviert. 
 
 ### <a name="session-log-from-copy-activity"></a>Sitzungsprotokoll aus der Kopieraktivität
 
@@ -124,9 +124,9 @@ Das Schema einer Protokolldatei lautet wie folgt:
 
 Column | BESCHREIBUNG 
 -------- | -----------  
-Timestamp | Der Zeitstempel, der angibt, wann ADF die inkonsistenten Dateien überspringt.
+Timestamp | Der Zeitstempel, der angibt, wann der Dienst die inkonsistenten Dateien überspringt.
 Ebene | Die Protokollstufe dieses Elements. Sie lautet bei dem Element, mit dem das Überspringen der Datei angezeigt wird, „Warning“ (Warnung).
-Vorgangsname | Das Vorgangsverhalten der ADF-Kopieraktivität für jede Datei. Es lautet „FileSkip“ zur Angabe der Datei, die übersprungen werden soll.
+Vorgangsname | Das Vorgangsverhalten der Copy-Aktivität für jede Datei. Es lautet „FileSkip“ zur Angabe der Datei, die übersprungen werden soll.
 OperationItem | Der Name der zu überspringenden Datei.
 `Message` | Weitere Informationen zu den Ursachen für das Überspringen von Dateien.
 
@@ -135,7 +135,7 @@ Das Beispiel für eine Protokolldatei lautet wie folgt:
 Timestamp, Level, OperationName, OperationItem, Message
 2020-02-26 06:22:56.3190846, Warning, FileSkip, "sample1.csv", "File is skipped after read 548000000 bytes: ErrorCode=DataConsistencySourceDataChanged,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Source file 'sample1.csv' is changed by other clients during the copy activity run.,Source=,'." 
 ```
-In der vorstehenden Protokolldatei können Sie sehen, dass die Datei „sample1.csv“ übersprungen wurde, weil die Konsistenz zwischen Quell- und Zielspeicher nicht überprüft werden konnte. Weitere Details zu dem Grund, aus dem „sample1.csv“ inkonsistent wird: Die Datei wurde von anderen Anwendungen bei gleichzeitiger Ausführung der ADF-Kopieraktivität geändert. 
+In der vorstehenden Protokolldatei können Sie sehen, dass die Datei „sample1.csv“ übersprungen wurde, weil die Konsistenz zwischen Quell- und Zielspeicher nicht überprüft werden konnte. Weitere Details zu dem Grund, aus dem „sample1.csv“ inkonsistent wird: Die Datei wurde von anderen Anwendungen bei gleichzeitiger Ausführung der Copy-Aktivität geändert. 
 
 
 

@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie Container Insights aktu
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1921a0cc0aa15a5e877d64cbe2c7ad094f9e144f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cff5933db1d74e9853120a07444e399005b2e498
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347106"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620823"
 ---
 # <a name="how-to-update-container-insights-to-enable-metrics"></a>Aktualisieren von Container Insights zum Aktivieren von Metriken
 
@@ -77,6 +77,7 @@ Führen Sie die folgenden Schritte aus, um einen bestimmten Cluster in Ihrem Abo
 
 1. Führen Sie den folgenden Befehl mithilfe der Azure CLI aus. Bearbeiten Sie die Werte für **subscriptionId**, **resourceGroupName** und **clusterName**, indem Sie die Werte auf der Seite mit der **AKS-Übersicht** für den AKS-Cluster verwenden.  Der Wert von **clientIdOfSPN** wird zurückgegeben, wenn Sie den Befehl `az aks show` wie im Beispiel unten ausführen.
 
+
     ```azurecli
     az login
     az account set --subscription "<subscriptionName>"
@@ -84,7 +85,9 @@ Führen Sie die folgenden Schritte aus, um einen bestimmten Cluster in Ihrem Abo
     az role assignment create --assignee <clientIdOfSPN> --scope <clusterResourceId> --role "Monitoring Metrics Publisher" 
     ```
 
+
     Zum Abrufen des Werts für **clientIdOfSPNOrMsi** können Sie den Befehl `az aks show` wie im Beispiel unten ausführen. Wenn das **servicePrincipalProfile**-Objekt über einen gültigen *clientid*-Wert verfügt, können Sie diesen verwenden. Ist dieser auf *msi* festgelegt, müssen Sie die Client-ID aus `addonProfiles.omsagent.identity.clientId` übergeben.
+
 
     ```azurecli
     az login
@@ -92,6 +95,11 @@ Führen Sie die folgenden Schritte aus, um einen bestimmten Cluster in Ihrem Abo
     az aks show -g <resourceGroupName> -n <clusterName> 
     az role assignment create --assignee <clientIdOfSPNOrMsi> --scope <clusterResourceId> --role "Monitoring Metrics Publisher"
     ```
+
+
+
+>[!NOTE]
+>Falls Sie Ihr Benutzerkonto verwenden und die Rollenzuweisung durchführen möchten, verwenden Sie den Parameter „--assignee“, wie im folgenden Beispiel gezeigt. Falls Sie sich mit SPN anmelden und die Rollenzuweisung durchführen möchten, verwenden Sie anstelle des Parameters „ --assignee“ die Parameter „--assignee-object-id“ und „--assignee-principal-type“.
 
 ## <a name="upgrade-all-clusters-using-azure-powershell"></a>Aktualisieren aller Cluster per Azure PowerShell
 

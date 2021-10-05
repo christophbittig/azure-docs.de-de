@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/17/2021
 ms.author: tisande
-ms.openlocfilehash: 8c253abdfc8ded8ab5507d482640d78e6d4469c8
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 74a3bb89b10a48d5485df29797e891f80839047f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226601"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614843"
 ---
 # <a name="azure-cosmos-db-dedicated-gateway---overview-preview"></a>Dediziertes Azure Cosmos DB-Gateway – Übersicht (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -98,8 +98,9 @@ Wie Knoten innerhalb eines Clusters sind regionsübergreifende dedizierte Gatewa
 Für das dedizierte Gateway gelten während der öffentlichen Vorschau die folgenden Einschränkungen:
 
 - Dedizierte Gateways werden nur für SQL-API-Konten unterstützt.
-- Sie können ein dediziertes Gateway nicht in Azure Cosmos DB-Konten mit [IP-Firewalls](how-to-configure-firewall.md) oder [konfigurierten](how-to-configure-private-endpoints.md) Private Link-Verbindungen bereitstellen.
-- Sie können ein dediziertes Gateway nicht in Azure Cosmos DB-Konten mit aktivierten [Verfügbarkeitszonen](high-availability.md#availability-zone-support) bereitstellen.
+- Sie können keine Verbindung mit einem dedizierten Gateway zu Azure Cosmos DB-Konten mit [IP-Firewalls](how-to-configure-firewall.md) oder konfigurierten [Private Link](how-to-configure-private-endpoints.md)-Verbindungen herstellen.
+- Sie können keine Verbindung mit einem dedizierten Gateway zu einem Azure Cosmos DB-Konto mit einem [Virtuellen Netzwerk VNET](how-to-configure-vnet-service-endpoint.md) herstellen
+- Sie können keine Verbindung zu einem dedizierten Gateway zu Azure Cosmos DB-Konten über aktivierte [Verfügbarkeitszonen](high-availability.md#availability-zone-support) herstellen.
 - Sie können die [rollenbasierte Zugriffssteuerung (RBAC)](how-to-setup-rbac.md) nicht verwenden, um Datenebenenanforderungen zu authentifizieren, die über das dedizierte Gateway weitergeleitet werden.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen

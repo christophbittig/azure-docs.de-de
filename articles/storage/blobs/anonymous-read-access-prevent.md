@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cc06556c72a992efd9f0ebd48a1a2c8585b172c7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 884f70367c7e7edaf546b65b4e0e2825dacf0a07
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664964"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577933"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Verhindern von anonymem öffentlichem Lesezugriff auf Container und Blobs
 
@@ -55,7 +55,7 @@ Gehen Sie wie folgt vor, um eine Metrik zur Nachverfolgung anonymer Anforderunge
 1. Geben Sie im Dialogfeld **Filter** die folgenden Werte an:
     1. Legen Sie **Eigenschaft** auf *Authentifizierung* fest.
     1. Legen Sie das Feld **Operator** auf das Gleichheitszeichen (=) fest.
-    1. Legen Sie das Feld **Werte** auf *Anonym* fest.
+    1. Legen Sie das Feld **Werte** auf *Anonym* fest, indem Sie die Option in der Dropdownliste auswählen oder eingeben.
 1. Wählen Sie rechts oben das gewünschte Zeitintervall für die Metrik aus. Sie können auch angeben, wie präzise die Aggregation von Anforderungen sein soll. Hierzu können Intervalle zwischen einer Minute und einem Monat angegeben werden.
 
 Nachdem Sie die Metrik konfiguriert haben, werden nach und nach anonyme Anforderungen im Diagramm angezeigt. Die folgende Abbildung zeigt aggregierte anonyme Anforderungen der letzten 30 Minuten:

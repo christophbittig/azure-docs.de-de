@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 04/23/2021
-ms.openlocfilehash: 14b3487a158062e3186b485a8bcbd4584a0f09d2
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: fff316c328ac61f48693e635745ca42a9c773c4d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113665347"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646623"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
@@ -127,7 +127,7 @@ Zum Erstellen von Logik-Apps für B2B-Unternehmensintegrationsszenarien (Busines
 
 1. Öffnen Sie in Visual Studio das Azure Resource Group-Projekt, das Ihre Logik-App enthält.
 
-1. Öffnen Sie im Projektmappen-Explorer das Kontextmenü der Datei **<logik-app-name>.json**, und wählen Sie **Mit Logik-App-Designer öffnen** aus. (Tastatur: STRG + L)
+1. Öffnen Sie im Projektmappen-Explorer das Kontextmenü der Datei **\<logic-app-name\>.json**, und wählen Sie **Mit Logik-App-Designer öffnen** aus. (Tastatur: STRG + L)
 
    ![Öffnen der JSON-Datei der Logik-App mit dem Logik-App-Designer](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 

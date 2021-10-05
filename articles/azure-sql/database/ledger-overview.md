@@ -1,27 +1,26 @@
 ---
 title: Azure SQL-Datenbank-Ledger – Übersicht
 description: Machen Sie sich mit den Grundlagen des Features Azure SQL-Datenbank Ledgers.
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
 author: JasonMAnderson
 ms.author: janders
-ms.openlocfilehash: 6b8ca057d896cc7fa353e8b09b1d1667b87cc273
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5651981c663ba5d119a5ae4089ab3f693dad1552
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339095"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646454"
 ---
 # <a name="azure-sql-database-ledger"></a>Azure SQL-Datenbank-Ledger
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
+> Der Azure SQL-Datenbank-Ledger ist zurzeit als Public Preview (Öffentliche Vorschau) verfügbar.
 
 Das Einrichten einer Vertrauensstellung rund um die Integrität von in Datenbanksystemen gespeicherten Daten ist ein seit langem bestehendes Problem bei allen Organisationen, die Finanzdaten, Patientendaten oder andere vertrauliche Daten verwalten. Das Ledgerfeature von [Azure SQL-Datenbank](sql-database-paas-overview.md) bietet Manipulationsbeweisfunktionen in Ihrer Datenbank. Sie können kryptografisch gegenüber Dritten, (z. B. Prüfern oder anderen Geschäftspartnern) nachweisen, dass Ihre Daten nicht manipuliert wurden.
 

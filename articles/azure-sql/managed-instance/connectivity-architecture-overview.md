@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova
 ms.date: 04/29/2021
-ms.openlocfilehash: d9958d30fff09ba0d6c66b71143ea68468dd0363
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0a9775691780a855824569f77a0bf4a1d3bf295b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349648"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657764"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Konnektivitätsarchitektur für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -105,6 +105,11 @@ Stellen Sie SQL Managed Instance in einem dedizierten Subnetz im virtuellen Netz
 - **Netzwerksicherheitsgruppe (NSG)** : Eine NSG muss dem Subnetz von SQL Managed Instance zugeordnet werden. Sie können eine NSG verwenden, um den Zugriff auf den Datenendpunkt von SQL Managed Instance zu steuern, indem Sie Datenverkehr an Port 1433 und die Ports 11000 bis 11999 filtern, wenn SQL Managed Instance für Verbindungsumleitungen konfiguriert ist. Der Dienst stellt automatisch die [Regeln](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) zur Verfügung, die erforderlich sind, um einen ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu ermöglichen, und hält sie auf dem neuesten Stand.
 - **Benutzerdefinierte Routingtabelle (User Defined Route, UDR):** Eine UDR-Tabelle muss dem Subnetz von SQL Managed Instance zugeordnet werden. Sie können der Routingtabelle Einträge hinzufügen, um Datenverkehr mit lokalen privaten IP-Bereichen als Ziel über das virtuelle Netzwerkgateway oder das virtuelle Netzwerkgerät (Network Appliance, NVA) zu leiten. Der Dienst stellt automatisch die [Einträge](#mandatory-user-defined-routes-with-service-aided-subnet-configuration) zur Verfügung, die erforderlich sind, um einen ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu ermöglichen, und hält sie auf dem neuesten Stand.
 - **Ausreichende IP-Adressen**: Das Subnetz von SQL Managed Instance muss mindestens 32 IP-Adressen umfassen. Weitere Informationen finden Sie unter [Ermitteln der Größe des Subnetzes für SQL Managed Instance](vnet-subnet-determine-size.md). Sie können verwaltete Instanzen im [vorhandenen Netzwerk](vnet-existing-add-subnet.md) bereitstellen, nachdem Sie dieses entsprechend den [Netzwerkanforderungen für SQL Managed Instance](#network-requirements) konfiguriert haben. Erstellen Sie andernfalls ein [neues Netzwerk und Subnetz](virtual-network-subnet-create-arm-template.md).
+- **Entsperrte Ressourcen:** Das virtuelle Netzwerk, das das an SQL Managed Instance delegierte Subnetz enthält, darf keine [Schreib- oder Löschsperren](../../azure-resource-manager/management/lock-resources.md) für die virtuelle Netzwerkressource, ihre übergeordnete Ressourcengruppe oder das Abonnement aufweisen. Das Sperren des virtuellen Netzwerks oder der übergeordneten Ressourcen kann verhindern, dass SQL Managed Instance die regelmäßige Wartung abschließt. Außerdem kann es die Leistung beeinträchtigen, Fehlerkorrekturen verzögern, die Einhaltung gesetzlicher Bestimmungen verhindern, zur Durchführung von Vorgängen außerhalb von SLOs führen und die Instanz unbrauchbar machen.
+- **Zulässig durch Azure-Richtlinien:** Wenn Sie [Azure Policy](../../governance/policy/overview.md) nutzen, um das Erstellen, Ändern und Löschen von Ressourcen über Verweigerungen in dem Geltungsbereich zu steuern, der das virtuelle Netzwerk mit dem an SQL Managed Instance delegierten Subnetz einschließt, müssen Sie Maßnahmen ergreifen, um sicherzustellen, dass solche Richtlinien nicht die Bereitstellung oder regelmäßige Wartung von SQL Managed Instance verhindern. Wenn SQL Managed Instance Ressourcen dieser Ressourcentypen nicht erstellen oder verwalten kann, können sie nach einem Wartungsvorgang möglicherweise nicht bereitgestellt oder nicht mehr verwendet werden. Folgende Ressourcentypen müssen von Verweigerungen ausgeschlossen werden:  
+  - Microsoft.Network/serviceEndpointPolicies
+  - Microsoft.Network/networkIntentPolicies
+  - Microsoft.Network/virtualNetworks/subnets/contextualServiceEndpointPolicies
 
 > [!IMPORTANT]
 > Wenn Sie eine verwaltete Instanz erstellen, wird eine Netzwerkzielrichtlinie auf das Subnetz angewendet, um nicht konforme Änderungen am Netzwerksetup zu verhindern. Nachdem die letzte Instanz aus dem Subnetz entfernt wurde, wird auch die Netzwerkzielrichtlinie entfernt. Die folgenden Regeln dienen nur zu Informationszwecken und sollten nicht mit ARM-Vorlagen, PowerShell oder der Befehlszeilenschnittstelle bereitgestellt werden. Wenn Sie die neueste offizielle Vorlage verwenden möchten, können Sie diese jederzeit [aus dem Portal abrufen](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).

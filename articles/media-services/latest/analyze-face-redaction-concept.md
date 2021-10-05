@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/25/2021
 ms.author: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 977dcbed29f74e97de3e61842b1b559a05ad8fdb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 2c434720863a7ecff4192720874547f6f8c2e8ed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955459"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621412"
 ---
 # <a name="find-and-redact-blur-faces-with-the-face-detector-preset"></a>Suchen und bearbeiten (verwischen) Sie Gesichter mit der Gesichtserkennungs-Voreinstellung
 
@@ -31,7 +31,7 @@ Dieser Artikel enthält Details zum zur **Gesichtserkennungsvoreinstellung** und
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, Datenschutz und Sicherheit
 
-Eine wichtige Erinnerung: Sie müssen bei der Verwendung von Analysen in Azure Media Services alle geltenden Gesetze einhalten. Sie dürfen Azure Media Services oder einen anderen Azure-Dienst nicht in einer Weise nutzen, welche die Rechte anderer verletzt. Bevor Sie Videos, einschließlich biometrischer Daten, zur Verarbeitung und Speicherung in den Azure Media Services-Dienst hochladen, müssen Sie über alle erforderlichen Rechte, einschließlich aller entsprechenden Zustimmungen der Personen im Video, verfügen. IUm mehr über Compliance, Datenschutz und Sicherheit in Azure Media Services zu erfahren, lesen Sie die rechtlichen Begriffe zum [Azure Erkennungsdienst](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Bestimmungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Bestimmungen für Onlinedienste und [hier](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md). Durch die Nutzung von Azure Media Services erklären Sie sich mit den Bedingungen für Cognitive Services, den OST, DPA und der Datenschutzerklärung einverstanden
+Eine wichtige Erinnerung: Sie müssen bei der Verwendung von Analysen in Azure Media Services alle geltenden Gesetze einhalten. Sie dürfen Azure Media Services oder einen anderen Azure-Dienst nicht in einer Weise nutzen, welche die Rechte anderer verletzt. Bevor Sie Videos, einschließlich biometrischer Daten, zur Verarbeitung und Speicherung in den Azure Media Services-Dienst hochladen, müssen Sie über alle erforderlichen Rechte, einschließlich aller entsprechenden Zustimmungen der Personen im Video, verfügen. IUm mehr über Compliance, Datenschutz und Sicherheit in Azure Media Services zu erfahren, lesen Sie die rechtlichen Begriffe zum [Azure Erkennungsdienst](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Bestimmungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Weitere Datenschutzinformationen (unter anderem zu Datenaufbewahrung und Datenlöschung/-vernichtung) finden Sie in den Bestimmungen für Onlinedienste und [hier](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.yml). Durch die Nutzung von Azure Media Services erklären Sie sich mit den Bedingungen für Cognitive Services, den OST, DPA und der Datenschutzerklärung einverstanden
 
 ## <a name="face-redaction-modes"></a>Modi der Gesichtsbearbeitung
 
@@ -54,12 +54,13 @@ Dadurch wird in einem einzigen Durchgang eine bearbeitete MP4-Videodatei erzeugt
 ### <a name="analyze-mode"></a>Analysemodus
 
 Im **Analyze**-Durchlauf des zweistufigen Workflows wird eine Videoeingabe verwendet, und es werden eine JSON-Datei mit Gesichtspositionen und JPG-Bilder für jedes erkannte Gesicht erstellt.
+Beachten Sie, dass die Gesichtserkennungs-IDs bei nachfolgenden Durchläufen der Analyse nicht unbedingt identisch sind.
 
 | Phase | Dateiname | Notizen |
 | --- | --- | --- |
 | Eingabeasset |"ignite-sample.mp4" |Video im WMV-, MPV- oder MP4-Format |
 | Voreinstellungen |Gesichtserkennungs-Einstellungen |**Modus**: FaceRedactorMode.Analyze, **resolution**: AnalysisResolution.SourceResolution|
-| Ausgabeasset |ignite-sample_annotations.json |Anmerkungsdaten von Gesichtspositionen im JSON-Format. Können vom Benutzer bearbeitet werden, um die Begrenzungsrahmen für die unscharfen Bereiche zu ändern. Siehe Beispiel unten. |
+| Ausgabeasset |ignite-sample_annotations.json |Anmerkungsdaten von Gesichtspositionen im JSON-Format. Die Gesichtserkennungs-IDs sind bei nachfolgenden Durchläufen der Analyse nicht unbedingt identisch. Können vom Benutzer bearbeitet werden, um die Begrenzungsrahmen für die unscharfen Bereiche zu ändern. Siehe Beispiel unten. |
 | Ausgabeasset |foo_thumb%06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Zugeschnittenes JPG-Bild jedes erkannten Gesichts mit Nummer für die „labelId“ des Gesichts |
 
 #### <a name="output-example"></a>Ausgabebeispiel
@@ -132,6 +133,7 @@ In der Ausgabe des Analysedurchlaufs ist das Originalvideo nicht enthalten. Das 
 #### <a name="example-output"></a>Beispielausgabe
 
 Dies ist die Ausgabe von IDList mit einer ausgewählten ID.
+Die Gesichtserkennungs-IDs sind bei nachfolgenden Durchläufen der Analyse nicht unbedingt identisch.
 
 Beispiel: „foo_IDList.txt“
 

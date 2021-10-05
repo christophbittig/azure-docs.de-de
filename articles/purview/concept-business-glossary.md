@@ -1,18 +1,18 @@
 ---
-title: Grundlegendes zu Unternehmensglossarfunktionen in Azure Purview (Vorschau)
+title: Grundlegendes zu Unternehmensglossarfunktionen in Azure Purview
 description: In diesem Artikel wird das Unternehmensglossar in Azure Purview erläutert.
 author: nayenama
 ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/13/2020
-ms.openlocfilehash: 8b391438d8d6605e7ef493a6552af634db840ad5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: b332a00f511ea747c2978dafbf60ce20abca36a8
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96550991"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214406"
 ---
 # <a name="understand-business-glossary-features-in-azure-purview"></a>Grundlegendes zu Unternehmensglossarfunktionen in Azure Purview
 
@@ -21,7 +21,6 @@ Dieser Artikel bietet eine Übersicht über die Unternehmensglossarfunktion in A
 ## <a name="business-glossary"></a>Unternehmensglossar
 
 Ein Glossar enthält ein Vokabular für Geschäftsbenutzer.  Es besteht aus geschäftlichen Begriffen, die miteinander verknüpft werden können, und ermöglicht deren Kategorisierung, sodass sie in verschiedenen Kontexten verstanden werden können. Diese Begriffe können dann Ressourcen wie Datenbanken, Tabellen, Spalten usw. zugeordnet werden. Dies hilft bei der Abstraktion des technischen Jargons, der den Datenrepositorys zugeordnet ist, und ermöglicht Geschäftsbenutzern, Daten in dem Vokabular, das ihnen vertrauter ist, zu ermitteln und mit ihnen zu arbeiten.
-
 
 Ein Unternehmensglossar ist eine Sammlung von Begriffen. Jeder Begriff repräsentiert ein Objekt in einer Organisation, und es ist sehr wahrscheinlich, dass mehrere Begriffe das gleiche Objekt darstellen. Ein Kunde kann auch als „Client“ oder „Käufer“ bezeichnet werden. Diese verschiedenen Begriffe haben eine Beziehung zueinander. Dabei könnte es sich um eine der folgenden Beziehungen handeln:
 
@@ -65,7 +64,7 @@ Klassifizierungen sind Anmerkungen, die Entitäten zugewiesen werden können. Di
 - Grundlegendes zur Art der in den Datenressourcen gespeicherten Daten
 - Definieren von Zugriffssteuerungsrichtlinien
 
-Purview hat heute mehr als 100 Systemklassifizierer, und Sie können Ihre eigenen Klassifizierer im Katalog definieren. Im Rahmen des Scanvorgangs erkennen wir diese Klassifizierungen automatisch und wenden sie auf Datenressourcen und Schemas an. Sie können sie jedoch jederzeit überschreiben. Die menschlichen Überschreibungen werden nie durch automatisierte Scans ersetzt.
+Purview hat derzeit mehr als 200 Systemklassifizierer, und Sie können Ihre eigenen Klassifizierer im Katalog definieren. Im Rahmen des Scanvorgangs erkennen wir diese Klassifizierungen automatisch und wenden sie auf Datenressourcen und Schemas an. Sie können sie jedoch jederzeit überschreiben. Die menschlichen Überschreibungen werden nie durch automatisierte Scans ersetzt.
 
 ### <a name="sensitivity-labels"></a>Vertraulichkeitsbezeichnungen
 

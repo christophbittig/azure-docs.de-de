@@ -8,12 +8,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: 046d94202769845f58c7f528bddb37e29e0c312a
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: dcad59c6434f6751cba8633868a9dc9969ffc0ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514426"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610534"
 ---
 # <a name="create-a-custom-event-trigger-to-run-a-pipeline-in-azure-data-factory"></a>Erstellen eines benutzerdefinierten Ereignisauslösers zum Ausführen einer Pipeline in Azure Data Factory
 
@@ -96,7 +96,7 @@ Data Factory erwartet, dass die Ereignisse dem [Event Grid-Ereignisschema](../ev
 
 ## <a name="advanced-filtering"></a>Erweiterte Filterung
 
-Benutzerdefinierte Ereignisauslöser unterstützen erweiterte Filterfunktionen, ähnlich wie [Event Grid: Erweiterte Filterung](../event-grid/event-filtering.md#advanced-filtering). Mit diesen bedingten Filtern können Pipelines basierend auf den _Werten_ der Ereignisnutzdaten ausgelöst werden. Sie können z. B. ein Feld namens „_Department“ in den Ereignisnutzdaten verwenden, und die Pipeline sollte nur ausgelöst werden, wenn _Department_ (Abteilung) gleich _Finance_ (Finanzen) ist. Sie können auch eine komplexe Logik angeben. Beispiel: _date_ field in list [1, 2, 3, 4, 5] (Feld „Datum“ in Liste [1, 2, 3, 4, 5]), _month_ field __not__ in list [11, 12] (Feld „Monat“ nicht in Liste [11, 12]), _tag_ field contains any of ['Fiscal Year 2021', 'FiscalYear2021', 'FY2021'] (Feld „Tag“ enthält eine der folgenden Angaben ['Geschäftsjahr 2021', 'GeschäftsJahr2021', 'GJ2021']).
+Benutzerdefinierte Ereignisauslöser unterstützen erweiterte Filterfunktionen, ähnlich wie [Event Grid: Erweiterte Filterung](../event-grid/event-filtering.md#advanced-filtering). Mit diesen bedingten Filtern können Pipelines basierend auf den _Werten_ der Ereignisnutzdaten ausgelöst werden. Sie können z. B. ein Feld namens _Department_ in den Ereignisnutzdaten verwenden, und die Pipeline sollte nur ausgelöst werden, wenn _Department_ (Abteilung) gleich _Finance_ (Finanzen) ist. Sie können auch eine komplexe Logik angeben. Beispiel: _date_ field in list [1, 2, 3, 4, 5] (Feld „Datum“ in Liste [1, 2, 3, 4, 5]), _month_ field __not__ in list [11, 12] (Feld „Monat“ nicht in Liste [11, 12]), _tag_ field contains any of ['Fiscal Year 2021', 'FiscalYear2021', 'FY2021'] (Feld „Tag“ enthält eine der folgenden Angaben ['Geschäftsjahr 2021', 'GeschäftsJahr2021', 'GJ2021']).
 
  :::image type="content" source="media/how-to-create-custom-event-trigger/custom-event-5-advanced-filters.png" alt-text="Screenshot: Festlegen erweiterter Filter für benutzerdefinierte Ereignisauslöser":::
 

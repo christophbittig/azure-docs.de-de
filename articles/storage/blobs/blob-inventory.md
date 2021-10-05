@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 771a2f6ba2206394162f767e9ad8d139fdb9cdd4
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 9cf53cdf35435030b9aa16b8336d80d887e6efbd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351179"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584202"
 ---
 # <a name="azure-storage-blob-inventory"></a>Azure Storage-Blobbestand
 
@@ -31,7 +31,7 @@ Die folgende Liste beschreibt Features und Funktionen, die im aktuellen Release 
 
 - **Benutzerdefiniertes Schema**
 
-  Sie können auswählen, welche Felder im Bericht enthalten sind. Wählen Sie diese aus einer Liste unterstützter Felder aus. Die Liste finden Sie weiter unten in diesem Artikel. 
+  Sie können auswählen, welche Felder im Bericht enthalten sind. Wählen Sie diese aus einer Liste unterstützter Felder aus. Die Liste finden Sie weiter unten in diesem Artikel.
 
 - **CSV- und Apache Parquet-Ausgabeformat**
 
@@ -45,7 +45,7 @@ Die folgende Liste beschreibt Features und Funktionen, die im aktuellen Release 
 
 Sie aktivieren Blobinventurberichte, indem Sie Ihrem Speicherkonto eine Richtlinie mit mindestens einer Regel hinzufügen. Weitere Anweisungen dazu finden Sie unter [Aktivieren von Azure Storage-Blobinventurberichten](blob-inventory-how-to.md).
 
-## <a name="upgrading-an-inventory-policy"></a>Aktualisieren einer Inventurrichtlinie 
+## <a name="upgrading-an-inventory-policy"></a>Aktualisieren einer Inventurrichtlinie
 
 Wenn Sie die Azure Storage-Blobinventur bereits nutzen und sie vor Juni 2021 konfiguriert haben, müssen Sie für die Nutzung der neuen Features nur die Richtlinie laden und sie wieder abspeichern, nachdem Sie die Änderungen vorgenommen haben. Wenn Sie die Richtlinie dann erneut laden, werden die neuen Felder in der Richtlinie mit den Standardwerten ausgefüllt. Sie können diese Werte bei Bedarf ändern. Darüber hinaus sind die beiden folgenden Features verfügbar.
 
@@ -59,20 +59,20 @@ Eine Inventurrichtlinie ist eine Sammlung von Regeln in einem JSON-Dokument.
 
 ```json
 {
+  "enabled": true,
+  "rules": [
+  {
     "enabled": true,
-    "rules": [
-    {
-        "enabled": true,
-        "name": "inventoryrule1",
-        "destination": "inventory-destination-container",
-        "definition": {. . .}
-    },
-    {
-        "enabled": true,
-        "name": "inventoryrule2",
-        "destination": "inventory-destination-container",
-        "definition": {. . .}
-    }]
+    "name": "inventoryrule1",
+    "destination": "inventory-destination-container",
+    "definition": {. . .}
+  },
+  {
+    "enabled": true,
+    "name": "inventoryrule2",
+    "destination": "inventory-destination-container",
+    "definition": {. . .}
+  }]
 }
 ```
 
@@ -123,43 +123,42 @@ Sie zeigen den JSON-Code für Inventurrichtlinien an, indem Sie im Azure-Portal 
 
 ```json
 {
-    "destination": "inventory-destination-container",
+  "destination": "inventory-destination-container",
+  "enabled": true,
+  "rules": [
+  {
+    "definition": {
+      "filters": {
+        "blobTypes": ["blockBlob", "appendBlob", "pageBlob"],
+        "prefixMatch": ["inventorytestcontainer1", "inventorytestcontainer2/abcd", "etc"],
+        "includeSnapshots": false,
+        "includeBlobVersions": true,
+      },
+      "format": "csv",
+      "objectType": "blob",
+      "schedule": "daily",
+      "schemaFields": ["Name", "Creation-Time"]
+    },
     "enabled": true,
-    "rules": [
-                             {
-            "definition": {
-                "filters": {
-                    "blobTypes": ["blockBlob", "appendBlob", "pageBlob"],
-                    "prefixMatch": ["inventorytestcontainer1", "inventorytestcontainer2/abcd", "etc"],
-                    "includeSnapshots": false,
-                    "includeBlobVersions": true,
-                },
-                "format": "csv",
-                "objectType": "blob",
-                "schedule": "daily",
-                "schemaFields": ["Name", "Creation-Time"]
-            }
-            "enabled": true,
-            "name": "blobinventorytest",
-            "destination": "inventorydestinationContainer"
-        },
-                             {
-            "definition": {
-                "filters": {
-                    "prefixMatch": ["inventorytestcontainer1", "inventorytestcontainer2/abcd", "etc"]
-                },
-                "format": "csv",
-                "objectType": "container",
-                "schedule": "weekly",
-                "schemaFields": ["Name", "HasImmutabilityPolicy", "HasLegalHold"]
-            }
-            "enabled": true,
-            "name": "containerinventorytest",
-            "destination": "inventorydestinationContainer"
-        }
-    ]
+    "name": "blobinventorytest",
+    "destination": "inventorydestinationContainer"
+  },
+  {
+    "definition": {
+      "filters": {
+        "prefixMatch": ["inventorytestcontainer1", "inventorytestcontainer2/abcd", "etc"]
+      },
+      "format": "csv",
+      "objectType": "container",
+      "schedule": "weekly",
+      "schemaFields": ["Name", "HasImmutabilityPolicy", "HasLegalHold"]
+    },
+    "enabled": true,
+    "name": "containerinventorytest",
+    "destination": "inventorydestinationContainer"
+    }
+  ]
 }
-
 ```
 
 ### <a name="custom-schema-fields-supported-for-blob-inventory"></a>Benutzerdefinierte Schemafelder, die für die Blobinventur unterstützt werden
@@ -183,8 +182,6 @@ Sie zeigen den JSON-Code für Inventurrichtlinien an, indem Sie im Azure-Portal 
 - IsCurrentVersion (verfügbar und erforderlich, wenn Sie Blobversionen in Ihren Bericht integrieren möchten)
 - Metadaten
 - LastAccessTime
-
-
 
 ### <a name="custom-schema-fields-supported-for-container-inventory"></a>Benutzerdefinierte Schemafelder, die für die Containerinventur unterstützt werden
 
@@ -212,24 +209,24 @@ Bestandsrichtlinien werden vollständig gelesen oder geschrieben. Teilaktualisie
 Das `BlobInventoryPolicyCompleted`-Ereignis wird erstellt, sobald die Inventur für eine Regel abgeschlossen wurde. Dieses Ereignis tritt auch ein, wenn vor dem Start der Inventur ein Benutzerfehler auftritt. Beispielsweise wird dieses Ereignis durch eine ungültige Richtlinie oder durch einen Fehler aufgrund eines fehlenden Zielcontainers ausgelöst. Die folgende JSON zeigt ein `BlobInventoryPolicyCompleted`-Ereignis als Beispiel:
 
 ```json
-{ 
-  "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/BlobInventory/providers/Microsoft.EventGrid/topics/BlobInventoryTopic", 
-  "subject": "BlobDataManagement/BlobInventory", 
-  "eventType": "Microsoft.Storage.BlobInventoryPolicyCompleted", 
-  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
-  "data": { 
-    "scheduleDateTime": "2021-05-28T03:50:27Z", 
-    "accountName": "testaccount", 
-    "ruleName": "Rule_1", 
-    "policyRunStatus": "Succeeded", 
-    "policyRunStatusMessage": "Inventory run succeeded, refer manifest file for inventory details.", 
+{
+  "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/BlobInventory/providers/Microsoft.EventGrid/topics/BlobInventoryTopic",
+  "subject": "BlobDataManagement/BlobInventory",
+  "eventType": "Microsoft.Storage.BlobInventoryPolicyCompleted",
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "data": {
+    "scheduleDateTime": "2021-05-28T03:50:27Z",
+    "accountName": "testaccount",
+    "ruleName": "Rule_1",
+    "policyRunStatus": "Succeeded",
+    "policyRunStatusMessage": "Inventory run succeeded, refer manifest file for inventory details.",
     "policyRunId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "manifestBlobUrl": "https://testaccount.blob.core.windows.net/inventory-destination-container/2021/05/26/13-25-36/Rule_1/Rule_1.csv" 
-  }, 
-  "dataVersion": "1.0", 
-  "metadataVersion": "1", 
-  "eventTime": "2021-05-28T15:03:18Z" 
-} 
+    "manifestBlobUrl": "https://testaccount.blob.core.windows.net/inventory-destination-container/2021/05/26/13-25-36/Rule_1/Rule_1.csv"
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "eventTime": "2021-05-28T15:03:18Z"
+}
 ```
 
 In folgender Tabelle wird das Schema des `BlobInventoryPolicyCompleted`-Ereignisses beschrieben.
@@ -257,60 +254,59 @@ Jede Inventurregel generiert Dateien im angegebenen Inventur-Zielcontainer für 
 
 Bei jeder Inventur für eine Regel werden die folgenden Dateien generiert:
 
-- **Inventurdatei**: Eine Inventurausführung für eine Regel generiert mindestens eine Datei im CSV- oder Apache Parquet-Format. Wenn die Anzahl der übereinstimmenden Objekte sehr hoch ist, werden mehrere Dateien erstellt. Jede dieser Dateien enthält die übereinstimmenden Objekte und ihre Metadaten. Die erste Zeile in jeder CSV-Datei enthält immer das Schema. Die folgende Abbildung zeigt eine in Microsoft Excel geöffnete CSV-Bestandsdatei.
+- **Inventurdatei:** Eine Inventurausführung für eine Regel generiert mindestens eine Datei im CSV- oder Apache Parquet-Format. Wenn die Anzahl der übereinstimmenden Objekte sehr hoch ist, werden mehrere Dateien erstellt. Jede dieser Dateien enthält die übereinstimmenden Objekte und ihre Metadaten. Die erste Zeile in jeder CSV-Datei enthält immer das Schema. Die folgende Abbildung zeigt eine in Microsoft Excel geöffnete CSV-Bestandsdatei.
 
   :::image type="content" source="./media/blob-inventory/csv-file-excel.png" alt-text="Screenshot einer in Microsoft Excel geöffneten CSV-Bestandsdatei":::
 
-  > [!NOTE] 
+  > [!NOTE]
   > In Berichten Apache Parquet-Format werden Daten im folgenden Format dargestellt: `timestamp_millis [number of milliseconds since 1970-01-01 00:00:00 UTC`.
 
+- **Prüfsummendatei:** Eine Prüfsummendatei enthält die MD5-Prüfsumme des Inhalts der Datei „manifest.json“. Der Name der Prüfsummendatei lautet `<ruleName>-manifest.checksum`. Die Generierung der Prüfsummendatei markiert das Ende der Inventur für eine Regel.
 
-- **Prüfsummendatei**: Eine Prüfsummendatei enthält die MD5-Prüfsumme des Inhalts der Datei „manifest.json“. Der Name der Prüfsummendatei lautet `<ruleName>-manifest.checksum`. Die Generierung der Prüfsummendatei markiert das Ende der Inventur für eine Regel.
+- **Manifestdatei:** Eine Datei „manifest.json“ enthält Details zu den Inventurdateien, die für die jeweilige Regel generiert wurden. Der Name der Datei lautet `<ruleName>-manifest.json`. Diese Datei enthält auch die vom Benutzer angegebene Regeldefinition und den Pfad zum Bestand zu dieser Regel. Die folgende JSON zeigt den Inhalt einer manifest.json-Datei als Beispiel.
 
-- **Manifestdatei**: Eine Datei „manifest.json“ enthält Details zu der/den Inventurdatei(en), die für die jeweilige Regel generiert wurden. Der Name der Datei lautet `<ruleName>-manifest.json`. Diese Datei enthält auch die vom Benutzer angegebene Regeldefinition und den Pfad zum Bestand zu dieser Regel. Die folgende JSON zeigt den Inhalt einer manifest.json-Datei als Beispiel.
-
-  ```json 
-  { 
-  "destinationContainer" : "inventory-destination-container", 
-  "endpoint" : "https://testaccount.blob.core.windows.net", 
-  "files" : [ 
-        { 
-            "blob" : "2021/05/26/13-25-36/Rule_1/Rule_1.csv", 
-            "size" : 12710092 
-        } 
-    ], 
-    "inventoryCompletionTime" : "2021-05-26T13:35:56Z", 
-    "inventoryStartTime" : "2021-05-26T13:25:36Z", 
-    "ruleDefinition" : { 
-        "filters" : { 
-            "blobTypes" : [ "blockBlob" ], 
-            "includeBlobVersions" : false, 
-            "includeSnapshots" : false, 
-            "prefixMatch" : [ "penner-test-container-100003" ] 
-        }, 
-        "format" : "csv", 
-        "objectType" : "blob", 
-        "schedule" : "daily", 
-        "schemaFields" : [ 
-            "Name", 
-            "Creation-Time", 
-            "BlobType", 
-            "Content-Length", 
-            "LastAccessTime", 
-            "Last-Modified", 
-            "Metadata", 
-            "AccessTier" 
-        ] 
-    }, 
-    "ruleName" : "Rule_1", 
-    "status" : "Succeeded", 
-    "summary" : { 
-        "objectCount" : 110000, 
-        "totalObjectSize" : 23789775 
-    }, 
-    "version" : "1.0" 
-    } 
-   ```
+  ```json
+  {
+  "destinationContainer" : "inventory-destination-container",
+  "endpoint" : "https://testaccount.blob.core.windows.net",
+  "files" : [
+    {
+      "blob" : "2021/05/26/13-25-36/Rule_1/Rule_1.csv",
+      "size" : 12710092
+    }
+  ],
+  "inventoryCompletionTime" : "2021-05-26T13:35:56Z",
+  "inventoryStartTime" : "2021-05-26T13:25:36Z",
+  "ruleDefinition" : {
+    "filters" : {
+      "blobTypes" : [ "blockBlob" ],
+      "includeBlobVersions" : false,
+      "includeSnapshots" : false,
+      "prefixMatch" : [ "penner-test-container-100003" ]
+    },
+    "format" : "csv",
+    "objectType" : "blob",
+    "schedule" : "daily",
+    "schemaFields" : [
+      "Name",
+      "Creation-Time",
+      "BlobType",
+      "Content-Length",
+      "LastAccessTime",
+      "Last-Modified",
+      "Metadata",
+      "AccessTier"
+    ]
+  },
+  "ruleName" : "Rule_1",
+  "status" : "Succeeded",
+  "summary" : {
+    "objectCount" : 110000,
+    "totalObjectSize" : 23789775
+  },
+  "version" : "1.0"
+  }
+  ```
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
@@ -325,6 +321,19 @@ Wenn eine Regel ein Präfix enthält, das mit dem Präfix einer anderen Regel ü
 Momentaufnahmen und Blobversionen werden ebenfalls abgerechnet, auch wenn Sie die Filter `includeSnapshots` und `includeVersions` auf `false` festgelegt haben. Diese Filterwerte haben keinen Einfluss auf die Abrechnung. Sie können sie nur verwenden, um zu filtern, welche Elemente im Bericht erscheinen.
 
 Weitere Informationen zu den Preisen für die Azure Storage-Blobinventur finden Sie auf der Seite [Preise für Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
+
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
+
+| Speicherkontotyp | Blob Storage (Standardunterstützung) | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup>              | ![Ja](../media/icons/yes-icon.png) <sup>2</sup> |
+| Premium-Blockblobs | ![Ja](../media/icons/yes-icon.png)| ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+<sup>1</sup> Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) erfordern beide ein Speicherkonto mit einem aktivierten hierarchischen Namespace.
+
+<sup>2</sup> Die Funktion wird auf der Vorschauebene unterstützt.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -342,4 +351,4 @@ Der Inventurauftrag wird möglicherweise durch eine Objektreplikationsrichtlinie
 
 - [Aktivieren von Azure Storage-Blobinventurberichten](blob-inventory-how-to.md)
 - [Berechnen der Anzahl und Gesamtgröße von Blobs pro Container](calculate-blob-count-size.md)
-- [Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)
+- [Verwalten des Azure Blob Storage-Lebenszyklus](./lifecycle-management-overview.md)

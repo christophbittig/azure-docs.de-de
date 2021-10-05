@@ -17,12 +17,12 @@ ms.date: 04/30/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7ccca25bf140a51755c229f8c438e053a7ac7de
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 73ccb2ddb9e229faea69ae3f67ed8285b0256808
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319256"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128581264"
 ---
 # <a name="audit-logs-in-azure-active-directory"></a>Überwachungsprotokolle in Azure Active Directory 
 
@@ -227,6 +227,9 @@ Sie können die gefilterten Daten (bis zu 250.000 Datensätze) auch herunterlade
 Sie können Microsoft 365-Aktivitätsprotokolle im [Microsoft 365 Admin Center](/office365/admin/admin-overview/about-the-admin-center) anzeigen. Obwohl Microsoft 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, bietet nur das Microsoft 365 Admin Center eine vollständige Ansicht der Microsoft 365-Aktivitätsprotokolle. 
 
 Mithilfe der [Office 365-Verwaltungs-APIs](/office/office-365-management-api/office-365-management-apis-overview) können Sie auch programmgesteuert auf die Microsoft 365-Aktivitätsprotokolle zugreifen.
+
+> [!NOTE]
+> Die meisten eigenständigen oder kombinierten Microsoft 365-Abonnements weisen Back-End-Abhängigkeiten von einigen Subsystemen innerhalb der Microsoft 365-Rechenzentrumsgrenze auf. Aufgrund dieser Abhängigkeiten ist das Rückschreiben einiger Informationen erforderlich, um die Verzeichnisse synchron zu halten und ein problemloses Onboarding in einem Abonnement-Opt-In für Exchange Online zu ermöglichen. Für dieses Rückschreiben werden in Überwachungsprotokolleinträgen Aktionen angezeigt, die von „Microsoft Substrate Management“ durchgeführt wurden. Diese Überwachungsprotokolleinträge beziehen sich auf Vorgänge zum Erstellen/Aktualisieren/Löschen, die von Exchange Online für Azure AD ausgeführt wurden. Die Einträge dienen lediglich zur Information und erfordern keine Aktion.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

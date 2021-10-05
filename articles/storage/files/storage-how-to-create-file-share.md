@@ -9,12 +9,12 @@ ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions, devx-track-azurepowershell
-ms.openlocfilehash: f1eae19bda4fae0744483a647eed47104e366e52
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: ac4d4ba50b9da33040fc1da27775d72c0156cba2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867048"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547765"
 ---
 # <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 Um eine Azure-Dateifreigabe zu erstellen, müssen Sie drei Fragen zur Verwendung beantworten:
@@ -211,9 +211,9 @@ Standarddateifreigaben können in einer der Standardebenen bereitgestellt werden
 
 Die **quota**-Eigenschaft unterscheidet sich leicht zwischen Premium- und Standarddateifreigaben:
 
-- Bei Standard-Dateifreigaben ist dies eine Obergrenze für die Azure-Dateifreigabe, die von Endbenutzern nicht überschritten werden darf. Wenn kein Kontingent angegeben wird, kann eine Standarddateifreigabe eine Größe von bis zu 100 TiB haben (bzw. 5 TiB, wenn die Eigenschaft für große Dateifreigaben für ein Speicherkonto nicht festgelegt wurde). Wenn Sie Ihr Speicherkonto nicht mit aktivierten großen Dateifreigaben erstellt haben, finden Sie unter [Aktivieren großer Dateifreigaben für ein vorhandenes Konto](#enable-large-files-shares-on-an-existing-account) Informationen zur Aktivierung von Dateifreigaben mit 100 TiB. Die Leistung (IOPs/MBit/s), die Sie erhalten, hängt vom festgelegten Kontingent ab.
+- Bei Standard-Dateifreigaben ist dies eine Obergrenze für die Azure-Dateifreigabe, die von Endbenutzern nicht überschritten werden darf. Wenn kein Kontingent angegeben wird, kann eine Standarddateifreigabe eine Größe von bis zu 100 TiB haben (bzw. 5 TiB, wenn die Eigenschaft für große Dateifreigaben für ein Speicherkonto nicht festgelegt wurde). Wenn Sie Ihr Speicherkonto nicht mit aktivierten großen Dateifreigaben erstellt haben, finden Sie unter [Aktivieren großer Dateifreigaben für ein vorhandenes Konto](#enable-large-files-shares-on-an-existing-account) Informationen zur Aktivierung von Dateifreigaben mit 100 TiB. 
 
-- Für Premium-Dateifreigaben ist mit dem Kontingent die **bereitgestellte Größe** gemeint. Die bereitgestellte Größe ist die Menge, die Ihnen unabhängig von der tatsächlichen Nutzung berechnet wird. Weitere Informationen zur Planung einer Premium-Dateifreigabe finden Sie im Abschnitt zum [Bereitstellen von Premium-Dateifreigaben](understanding-billing.md#provisioned-model).
+- Für Premium-Dateifreigaben ist mit dem Kontingent die **bereitgestellte Größe** gemeint. Die bereitgestellte Größe ist die Menge, die Ihnen unabhängig von der tatsächlichen Nutzung berechnet wird. Die IOPS und der Durchsatz, die für eine Premium-Dateifreigabe verfügbar sind, basieren auf der bereitgestellten Größe. Weitere Informationen zur Planung einer Premium-Dateifreigabe finden Sie im Abschnitt zum [Bereitstellen von Premium-Dateifreigaben](understanding-billing.md#provisioned-model).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Wenn Sie Ihr Speicherkonto gerade erstellt haben, können Sie vom Bereitstellungsbildschirm dorthin navigieren, indem Sie **Zu Ressource wechseln** auswählen. Wählen Sie im Speicherkonto den Eintrag **Dateifreigabe** aus dem Inhaltsverzeichnis aus.

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
-ms.openlocfilehash: b67003db0953a8246a49ec8551d6e0fab4dc8251
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: cb38f70c20ad8a45ed1cb91d93e7a6f09a7d51df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362953"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644370"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Versand, Empfang und Batchverarbeitung von Nachrichten in Azure Logic Apps
 
@@ -153,9 +153,9 @@ Erstellen Sie nun eine oder mehrere Logik-Apps für den Batchversand, die Nachri
       > [!IMPORTANT]
       > Wenn Sie Visual Studio verwenden und keine Batchempfänger-Logik-Apps zur Auswahl angezeigt werden, vergewissern Sie sich, dass Sie Ihren Batchempfänger zuvor erstellt und in Azure bereitgestellt haben. Ist dies nicht der Fall, lesen Sie die Informationen zum [Bereitstellen Ihrer Batchempfänger-Logik-App in Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure).
 
-   1. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Batch_messages – <*Name-Ihrer-Logik-App*>**
+   1. Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Batch_messages – \<*your-logic-app-name*\>** .
 
-      ![Wählen Sie diese Aktion aus: „Batch_messages – <Ihre Logik-App>“](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
+      ![Auswählen der Aktion „Batch_messages – \<Ihre Logik-App\>“](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
 1. Legen Sie die Eigenschaften für den Batchversand fest.
 

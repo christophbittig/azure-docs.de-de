@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 09/13/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e39a6bbde587e543afcb10cb910a675bf4c69fc
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 61b5bb4a8cdfa8dddcbdb08283245a6e8d7c93cd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867561"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601195"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -31,7 +31,7 @@ Wenn Sie für Cloud-Apps die Verwendung verwalteter Geräte vorschreiben, wird d
 - **[Bedingter Zugriff in Azure Active Directory:](./overview.md)** Dieser Artikel enthält eine konzeptionelle Übersicht über den bedingten Zugriff und die entsprechende Terminologie.
 - **[Einführung in die Geräteverwaltung in Azure Active Directory:](../devices/overview.md)** Dieser Artikel enthält eine Übersicht über die verschiedenen Optionen, mit denen Sie Geräte unter die Kontrolle der Organisation bringen können. 
 - Installieren Sie die [Erweiterung für Windows 10-Konten](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji), damit Chrome ab **Windows 10 Creators Update (Version 1703)** unterstützt wird. Diese Erweiterung ist erforderlich, wenn eine Richtlinie für bedingten Zugriff gerätespezifische Details erfordert.
-- Wenn Sie Firefox-Unterstützung erhalten möchten, müssen Sie ab **Firefox-Version 91** unter **Windows 10 (Version 1809 oder höher)** die Funktion [Windows SSO](https://support.mozilla.org/en-US/kb/windows-sso) konfigurieren.
+- Wenn Sie Firefox-Unterstützung erhalten möchten, müssen Sie ab der **Firefox-Version 91** unter **Windows 10 (Version 1809 oder höher)** die Funktion [Windows SSO](https://support.mozilla.org/kb/windows-sso) konfigurieren.
 
 >[!NOTE] 
 > Wir empfehlen die Verwendung einer auf einem Azure AD-Gerät basierenden Richtlinie für bedingten Zugriff, um nach der ersten Geräteauthentifizierung die beste Erzwingung zu erzielen. Dies schließt das Schließen von Sitzungen ein, wenn das Gerät nicht mehr kompatibel und nicht mehr Teil des Gerätecodeflows ist.

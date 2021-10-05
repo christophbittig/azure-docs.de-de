@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake
-ms.date: 07/14/2021
+ms.date: 09/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3e80c1153737514575017685310b6e5306a47167
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: a92dd67011d7ef7d5ad162983de51b98839c4a84
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730825"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621980"
 ---
 # <a name="vcore-purchase-model-overview---azure-sql-database"></a>Azure SQL-Datenbank: Übersicht über das Kaufmodell für virtuelle Kerne 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,11 +39,14 @@ Als Optionen für die Dienstebene stehen im V-Kern-Kaufmodell „Universell“, 
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Bietet budgetorientierte, ausgewogene und skalierbare Compute- und Speicheroptionen. |Bietet Geschäftsanwendungen die höchste Resilienz gegenüber Fehlern durch die Verwendung mehrerer isolierter Replikate sowie die höchste E/A-Leistung pro Datenbankreplikat.|Die meisten geschäftlichen Workloads mit hohen Anforderungen an skalierbaren Speicher und Leseskalierung.  Bietet eine höhere Ausfallsicherheit, da mehrere isolierte Datenbankreplikate konfiguriert werden können. |
 |Storage|Verwendet Remotespeicher.<br/>**Bereitgestelltes SQL-Datenbank-Computing:**<br/>5 GB – 4 TB<br/>**Serverloses Computing**:<br/>5 GB bis 3 TB|Verwendet lokalen SSD-Speicher.<br/>**Bereitgestelltes SQL-Datenbank-Computing:**<br/>5 GB – 4 TB|Flexible automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher. Verwendet lokalen SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Verwendet Azure-Remotespeicher als endgültigen langfristigen Datenspeicher. |
 |IOPS und Durchsatz (ungefähr)|**SQL-Datenbank:** Weitere Informationen finden Sie in den Ressourcenlimits für [Einzeldatenbanken](resource-limits-vcore-single-databases.md) und [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md).|Weitere Informationen finden Sie in den Ressourcenlimits für [Einzeldatenbanken](resource-limits-vcore-single-databases.md) und [Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md).|Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen Werte für IOPS und Durchsatz hängen vom Workload ab.|
-|Verfügbarkeit|Einzelnes Replikat, keine Replikate mit Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](read-scale-out.md),<br/>zonenredundante Hochverfügbarkeit (High Availability, HA)|Einzelnes Replikat mit Lese-/Schreibzugriff sowie bis zu vier [Replikate mit Leseskalierung](read-scale-out.md)|
-|Backups|[Georedundanter Speicher mit Lesezugriff (RA-GRS)](../../storage/common/geo-redundant-design.md), 1–35 Tage (standardmäßig 7 Tage)|[RA-GRS](../..//storage/common/geo-redundant-design.md), 1–35 Tage (standardmäßig 7 Tage)|Auf Momentaufnahmen basierende Sicherungen in Azure-Remotespeicher. Bei Wiederherstellungen werden diese Momentaufnahmen zur schnellen Wiederherstellung verwendet. Sicherungen werden sofort ausgeführt und haben keine Auswirkungen auf die E/A-Computeleistung. Wiederherstellungen sind schnell und nicht datenintensiv (dauern also nicht Stunden oder Tage, sondern nur Minuten).|
+|Verfügbarkeit|1 Replikat, keine Replikate mit Leseskalierung, <br/>zonenredundante Hochverfügbarkeit (High Availability, HA) (Vorschau)|3 Replikate, 1 [Replikat, Leseskalierung](read-scale-out.md),<br/>zonenredundante Hochverfügbarkeit (High Availability, HA)|Einzelnes Replikat mit Lese-/Schreibzugriff sowie bis zu vier [Replikate mit Leseskalierung](read-scale-out.md)|
+|Backups|Eine Auswahl aus georedundantem, zonenredundantem\* oder lokal redundantem\* Sicherungsspeicher mit einer Aufbewahrungsdauer von 1 bis 35 Tagen (Standardeinstellung: 7 Tage)|Eine Auswahl aus georedundantem, zonenredundantem\* oder lokal redundantem\* Sicherungsspeicher mit einer Aufbewahrungsdauer von 1 bis 35 Tagen (Standardeinstellung: 7 Tage)|Eine Auswahl aus georedundantem, zonenredundantem\*\* oder lokal redundantem\*\* Sicherungsspeicher, Aufbewahrungsdauer: 7 Tage<p>Auf Momentaufnahmen basierende Sicherungen in Azure-Remotespeicher. Bei Wiederherstellungen werden zur schnellen Wiederherstellung Momentaufnahmen verwendet. Sicherungen werden sofort ausgeführt und haben keine Auswirkungen auf die E/A-Computeleistung. Wiederherstellungen sind schnell und nicht datenintensiv (dauern also nicht Stunden, sondern nur Minuten).|
 |In-Memory|Nicht unterstützt|Unterstützt|Teilweise unterstützt. Speicheroptimierte Tabellentypen, Tabellenvariablen und nativ kompilierte Module werden unterstützt.|
 |||
 
+\* In der Vorschau
+
+\*\* In der Vorschau; nur für neue Hyperscale-Datenbanken
 
 ### <a name="choosing-a-service-tier"></a>Auswählen einer Dienstebene
 

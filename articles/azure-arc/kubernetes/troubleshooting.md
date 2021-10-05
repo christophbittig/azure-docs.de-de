@@ -1,21 +1,21 @@
 ---
-title: Problembehandlung bei allgemeinen Problemen mit Kubernetes mit Arc-Aktivierung
+title: Problembehandlung bei allgemeinen Problemen mit Kubernetes mit Azure Arc-Unterstützung
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/21/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: Problembehandlung bei häufigen Problemen mit Arc-fähigen Kubernetes-Clustern
+description: Problembehandlung bei häufigen Problemen mit Azure Arc-fähigen Kubernetes-Clustern
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: e1a04e95924f4a217cdceca383637bcee7ea368a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f6f29b30f3a62653c032b7aae40cac5afdcf96b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355657"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546507"
 ---
-# <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>Problembehandlung bei Kubernetes mit Azure Arc-Aktivierung
+# <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>Problembehandlung bei Kubernetes mit Azure Arc-Unterstützung
 
 Dieses Dokument enthält Anleitungen zur Problembehandlung bei Problemen mit der Konnektivität, den Berechtigungen und den Agents.
 
@@ -32,7 +32,7 @@ az account show
 
 ### <a name="azure-arc-agents"></a>Azure Arc-Agents
 
-Alle Agents für Azure Arc-fähiges Kubernetes werden als Pods im `azure-arc`-Namespace bereitgestellt. Alle Pods sollten ausgeführt werden und ihre Integritätsprüfungen bestehen.
+Alle Agents für Kubernetes mit Azure Arc-Unterstützung werden als Pods im `azure-arc`-Namespace bereitgestellt. Alle Pods sollten ausgeführt werden und ihre Integritätsprüfungen bestehen.
 
 Überprüfen Sie zunächst die Azure Arc-Helm-Version:
 
@@ -77,6 +77,19 @@ Alle Pods sollten `STATUS` als `Running` mit `3/3` oder `2/2` unter der Spalte `
 
 Das Herstellen einer Verbindung von Clustern mit Azure erfordert Zugriff auf ein Azure-Abonnement und `cluster-admin`-Zugriff auf einen Zielcluster. Wenn Sie den Cluster nicht erreichen können oder Sie nicht über ausreichende Berechtigungen verfügen, tritt beim Herstellen einer Verbindung zwischen Cluster und Azure Arc ein Fehler auf.
 
+### <a name="azure-cli-is-unable-to-download-helm-chart-for-azure-arc-agents"></a>Die Azure-Befehlszeilenschnittstelle kann kein Helm-Chart für Azure Arc-Agents herunterladen.
+
+Wenn Sie eine Helm-Version ab 3.7.0 verwenden, tritt der folgende Fehler auf, wenn `az connectedk8s connect` ausgeführt wird, um den Cluster mit Azure Arc zu verbinden:
+
+```console
+$ az connectedk8s connect -n AzureArcTest -g AzureArcTest
+
+Unable to pull helm chart from the registry 'mcr.microsoft.com/azurearck8s/batch1/stable/azure-arc-k8sagents:1.4.0': Error: unknown command "chart" for "helm"
+Run 'helm --help' for usage.
+```
+
+In diesem Fall müssen Sie eine frühere Version von [Helm 3](https://helm.sh/docs/intro/install/) &lt; Version 3.7.0 installieren. Führen Sie anschließend den Befehl `az connectedk8s connect` erneut aus, um den Cluster mit Azure Arc zu verbinden.
+
 ### <a name="insufficient-cluster-permissions"></a>Unzureichende Clusterberechtigungen
 
 Wenn die bereitgestellte kubeconfig-Datei nicht über ausreichende Berechtigungen zum Installieren von Azure Arc-Agents verfügt, gibt der Azure CLI-Befehl einen Fehler zurück.
@@ -106,7 +119,7 @@ Wenn beim Verbinden eines OpenShift-Clusters mit Azure Arc ein Timeout für `az 
 
 ### <a name="installation-timeouts"></a>Timeouts bei der Installation
 
-Das Herstellen einer Verbindung zwischen einem Kubernetes-Cluster und Kubernetes mit Azure Arc-Aktivierung erfordert die Installation von Azure Arc-Agents auf dem Cluster. Wenn der Cluster über eine langsame Internetverbindung ausgeführt wird, kann das Pullen des Containerimages für Agents länger dauern, als die Azure CLI-Timeouts erlauben.
+Das Herstellen einer Verbindung zwischen einem Kubernetes-Cluster und Kubernetes mit Azure Arc-Unterstützung erfordert die Installation von Azure Arc-Agents im Cluster. Wenn der Cluster über eine langsame Internetverbindung ausgeführt wird, kann das Pullen des Containerimages für Agents länger dauern, als die Azure CLI-Timeouts erlauben.
 
 ```azurecli
 $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
@@ -119,7 +132,7 @@ This operation might take a while...
 Die Helm-Version `v3.3.0-rc.1` hat ein [Problem](https://github.com/helm/helm/pull/8527). Nach der Helm-Installation bzw. dem Helm-Upgrade (von der CLI-Erweiterung `connectedk8s` verwendet) wird durch das Ausführen von allen Hooks der folgende Fehler erzeugt:
 
 ```console
-$ az connectedk8s connect -n shasbakstest -g shasbakstest
+$ az connectedk8s connect -n AzureArcTest -g AzureArcTest
 Ensure that you have the latest helm version installed before proceeding.
 This operation might take a while...
 
@@ -129,7 +142,7 @@ ValidationError: Unable to install helm release: Error: customresourcedefinition
 
 Befolgen Sie diese Schritte, um das Problem zu beheben:
 
-1. Löschen Sie die Kubernetes-Ressource mit Azure Arc-Aktivierung im Azure-Portal.
+1. Löschen Sie die Kubernetes-Ressource mit Azure Arc-Unterstützung im Azure-Portal.
 2. Führen Sie die folgenden Befehle auf dem Computer aus:
     
     ```console
@@ -153,7 +166,7 @@ az k8s-configuration create <parameters> --debug
 
 ### <a name="create-configurations"></a>Erstellen von Konfigurationen
 
-Schreibberechtigungen auf der Kubernetes-Ressource mit Azure Arc-Aktivierung (`Microsoft.Kubernetes/connectedClusters/Write`) sind notwendig und ausreichend, um Konfigurationen auf diesem Cluster zu erstellen.
+Schreibberechtigungen auf der Kubernetes-Ressource mit Azure Arc-Unterstützung (`Microsoft.Kubernetes/connectedClusters/Write`) sind notwendig und ausreichend, um Konfigurationen in diesem Cluster zu erstellen.
 
 ### <a name="configuration-remains-pending"></a>Konfiguration hat unverändert den Status `Pending`
 
@@ -198,6 +211,7 @@ metadata:
   resourceVersion: ""
   selfLink: ""
 ```
+
 ## <a name="monitoring"></a>Überwachung
 
 Azure Monitor für Container erfordert die Ausführung des DaemonSet im privilegierten Modus. Führen Sie den folgenden Befehl aus, um einen Canonical Charmed Kubernetes-Cluster für die Überwachung einzurichten:
@@ -229,7 +243,7 @@ Die obige Warnung tritt auf, wenn Sie für die Anmeldung bei Azure einen Dienstp
         az connectedk8s connect -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId>   
         ```
 
-    - Wenn Sie das Feature „Benutzerdefinierte Speicherorte“ in einem vorhandenen, für Arc aktivierten Kubernetes-Cluster aktivieren, führen Sie den folgenden Befehl aus:
+    - Wenn Sie das Feature „Benutzerdefinierte Speicherorte“ in einem vorhandenen Azure Arc-fähigen Kubernetes-Cluster aktivieren, führen Sie den folgenden Befehl aus:
 
         ```console
         az connectedk8s enable-features -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId> --features cluster-connect custom-locations
@@ -237,7 +251,7 @@ Die obige Warnung tritt auf, wenn Sie für die Anmeldung bei Azure einen Dienstp
 
 Nachdem die obigen Berechtigungen gewährt wurden, können Sie mit dem [Aktivieren des Features für benutzerdefinierte Standorte](custom-locations.md#enable-custom-locations-on-cluster) im Cluster fortfahren.
 
-## <a name="arc-enabled-open-service-mesh"></a>Für Arc aktiviertes Open Service Mesh
+## <a name="azure-arc-enabled-open-service-mesh"></a>Open Service Mesh mit Azure Arc-Unterstützung
 
 Die folgenden Schritte zur Problembehandlung bieten eine Anleitung zum Überprüfen der Bereitstellung aller Open Service Mesh-Erweiterungskomponenten in Ihrem Cluster.
 

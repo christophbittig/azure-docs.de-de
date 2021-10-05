@@ -91,6 +91,8 @@
 - name: Verweis
   expanded: true
   items:
+    - name: Bezeichner mit grundlegenden Informationen im Anmeldeprotokoll
+      href: reference-basic-info-identifiers.md
     - name: Azure AD PowerShell-Cmdlets für die Berichterstellung
       href: reference-powershell-reporting.md
     - name: API-Referenz zu Überwachungsprotokollen

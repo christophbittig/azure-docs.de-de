@@ -1,14 +1,14 @@
 ---
-title: Anfügen oder Trennen eines Datenträgers an einen oder von einem virtuellen Computer in Azure DevTest Labs
+title: Anfügen oder Trennen eines VM-Datenträgers
 description: Erfahren Sie, wie Sie einen Datenträger an einen virtuellen Computer in Azure DevTest Labs anfügen oder von diesem trennen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 8eebfbda421233bcec780d441a4020acce740618
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ff9508e065814f5a548d6468ae959af519469e8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91328512"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128634784"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Anfügen oder Trennen eines Datenträgers an einen oder von einem virtuellen Computer in Azure DevTest Labs
 [Azure Managed Disks](../virtual-machines/managed-disks-overview.md) verwaltet die Speicherkonten, die VM-Datenträgern zugeordnet sind. Ein Benutzer muss lediglich einen neuen Datenträger an eine VM anfügen sowie Typ und Größe, die er benötigt, angeben – der Datenträger wird dann automatisch von Azure erstellt und verwaltet. Anschließend kann der Datenträger von der VM getrennt und später wieder an dieselbe VM oder an eine andere VM, die diesem Benutzer gehört, angefügt werden.

@@ -1,14 +1,14 @@
 ---
-title: Herstellen einer Verbindung mit Ihren Windows-VMs in Azure DevTest Labs
+title: Herstellen einer Verbindung mit Windows-VMs
 description: Hier erfahren Sie, wie Sie in einem Lab (Azure DevTest Labs) eine Verbindung mit Ihrer Windows-VM herstellen.
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.openlocfilehash: e1e786daa396548030976159d1b150caa4b24396
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fe7b93ce7aa2cf5521bd53393b086e221e84d2c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86540600"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588008"
 ---
 # <a name="connect-to-a-windows-vm-in-your-lab-azure-devtest-labs"></a>Herstellen einer Verbindung mit einer Windows-VM im Lab (Azure DevTest Labs)
 In diesem Artikel erfahren Sie, wie Sie in Ihrem Lab eine Verbindung mit einer Windows-VM herstellen. 

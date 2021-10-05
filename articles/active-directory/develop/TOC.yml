@@ -320,6 +320,12 @@
               href: scenario-mobile-call-api.md
             - name: Überführen in die Produktion
               href: scenario-mobile-production.md
+    - name: Testen und Bereitstellen Ihrer App
+      items:
+        - name: Einrichten einer Testumgebung
+          href: test-setup-environment.md
+        - name: Drosselung und Diensteinschränkungen
+          href: test-throttle-service-limits.md
     - name: Arbeiten mit der Microsoft-Authentifizierungsbibliothek
       displayName: MSAL
       items:

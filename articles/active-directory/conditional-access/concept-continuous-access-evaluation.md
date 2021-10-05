@@ -5,27 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 09/13/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7889bca19bc24b8f0c0f83b9c7e3b8bf310cf3d1
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: a5e3804ae4fd386668f4c34d11172e7f3dd1ae62
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418957"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595395"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
-Tokenablauf und -aktualisierung sind Standardmechanismen der Branche. Wenn eine Clientanwendung wie Outlook eine Verbindung mit einem Dienst wie Exchange Online herstellt, werden die API-Anforderungen mithilfe von OAuth 2.0-Zugriffstoken autorisiert. Standardmäßig sind diese Zugriffstoken eine Stunde lang gültig. Nach Ablauf dieser Zeit wird der Client zurück an Azure AD geleitet, und die Token werden aktualisiert. Die Aktualisierung bietet eine Möglichkeit, Richtlinien für den Benutzerzugriff neu auszuwerten. Möglicherweise soll das Token nicht aktualisiert werden, zum Beispiel aufgrund einer Richtlinie für bedingten Zugriff oder da der Benutzer im Verzeichnis deaktiviert wurde. 
+Tokenablauf und -aktualisierung sind standardmäßige Mechanismen der Branche. Wenn eine Clientanwendung wie Outlook eine Verbindung mit einem Dienst wie Exchange Online herstellt, werden die API-Anforderungen mithilfe von OAuth 2.0-Zugriffstoken autorisiert. Standardmäßig sind diese Zugriffstoken eine Stunde lang gültig. Nach Ablauf dieser Zeit wird der Client zur Aktualisierung zurück an Azure AD geleitet. Die Aktualisierung bietet eine Möglichkeit, Richtlinien für den Benutzerzugriff neu auszuwerten. Möglicherweise soll das Token nicht aktualisiert werden, zum Beispiel aufgrund einer Richtlinie für bedingten Zugriff oder da der Benutzer im Verzeichnis deaktiviert wurde. 
 
-Kunden haben Bedenken wegen der Verzögerung geäußert, die zwischen der Änderung der Bedingungen für Benutzer (z. B. Netzwerkadresse oder Diebstahl von Anmeldeinformationen) und dem Erzwingen von Richtlinien im Zusammenhang mit dieser Änderung auftritt. Wir haben mit dem als „Blunt Object“ (stumpfer Gegenstand) bezeichneten Ansatz mit reduzierten Tokenlebensdauer experimentiert, dabei aber festgestellt, dass die Benutzerfreundlichkeit und Zuverlässigkeit beeinträchtigt wurden, ohne die Risiken auszuschließen.
+Kunden haben Bedenken ausgedrückt hinsichtlich der Verzögerung zwischen der Änderung der Bedingungen für einen Benutzer und der Durchsetzung von Richtlinienänderungen. Azure AD hat mit dem "stumpfen Objekt"-Ansatz verkürzter Token-Lebensdauern experimentiert, aber festgestellt, dass sie die Benutzererfahrung und Zuverlässigkeit beeinträchtigen können, ohne Risiken zu beseitigen.
 
-Die rechtzeitige Reaktion auf Richtlinienverstöße oder Sicherheitsprobleme erfordert einen echten Austausch zwischen dem Tokenaussteller (z. B. Azure AD) und der vertrauenden Seite (z. B. Exchange Online). Dieser bidirektionale Austausch bietet zwei wichtige Funktionen. Die vertrauende Seite kann sehen, wann Änderungen vorgenommen wurden, z. B. wenn sich ein Client an einem neuen Standort befindet, und den Aussteller des Tokens informieren. Außerdem ermöglicht dies dem Tokenaussteller, der vertrauenden Seite mitzuteilen, keine Token für einen bestimmten Benutzer anzunehmen, da dessen Konto kompromittiert oder deaktiviert wurde oder da andere Bedenken bestehen. Der Mechanismus für diesen Austausch ist die fortlaufende Zugriffsevaluierung (Continuous Access Evaluation, CAE). Ziel ist es, dass die Reaktion nahezu in Echtzeit erfolgt, aber in einigen Fällen kann durch die Ereignispropagierungszeit eine Latenzzeit von bis zu 15 Minuten beobachtet werden.
+Eine rechtzeitige Reaktion auf Richtlinienverletzungen oder Sicherheitsprobleme erfordert eine "Konversation" zwischen dem Token-Aussteller (Azure AD) und der vertrauenden Seite (aufgeklärte Anwendung). Dieser bidirektionale Austausch bietet zwei wichtige Funktionen. Die vertrauende Partei kann sehen, wenn sich Eigenschaften ändern, wie z.B. der Standort im Netz, und dies dem Token-Aussteller mitteilen. Außerdem kann der Tokenaussteller der vertrauenden Seite veranlassen aufzuhören, die Token für einen bestimmten Benutzer zu respektieren, weil das Konto kompromittiert oder deaktiviert wurde oder andere Bedenken bestehen. Der Mechanismus für diesen Austausch ist die fortlaufende Zugriffsevaluierung (Continuous Access Evaluation, CAE). Ziel ist es, nahezu in Echtzeit zu reagieren, aber aufgrund der Ausbreitungszeit von Ereignissen kann eine Wartezeit von bis zu 15 Minuten beobachtet werden.
 
 Die anfängliche Implementierung der fortlaufenden Zugriffsevaluierung konzentriert sich auf Exchange, Teams und SharePoint Online.
 
@@ -43,7 +43,7 @@ Zwei Szenarien ermöglichen die fortlaufende Zugriffsevaluierung: die Auswertung
 
 ### <a name="critical-event-evaluation"></a>Auswertung kritischer Ereignisse
 
-Die fortlaufende Zugriffsevaluierung wird implementiert, indem für Dienste wie Exchange Online, SharePoint Online und Teams die Möglichkeit besteht, kritische Ereignisse in Azure AD zu abonnieren, sodass diese Ereignisse nahezu in Echtzeit ausgewertet und erzwungen werden können. Die Auswertung kritischer Ereignisse beruht nicht auf Richtlinien für den bedingten Zugriff, sodass sie in jedem Mandanten verfügbar ist. Derzeit werden folgende Ereignisse ausgewertet:
+Eine fortlaufende Zugriffsbewertung wird implementiert, indem Dienste wie Exchange Online, SharePoint Online und Teams in die Lage versetzt werden, kritische Azure AD-Ereignisse zu abonnieren. Diese Ereignisse können dann ausgewertet und nahezu in Echtzeit durchgesetzt werden. Die Auswertung kritischer Ereignisse ist nicht auf Richtlinien für bedingten Zugriff angewiesen und kann daher in jedem Mandanten genutzt werden. Derzeit werden folgende Ereignisse ausgewertet:
 
 - Benutzerkonto wird gelöscht oder deaktiviert
 - Kennwort für einen Benutzer wird geändert oder zurückgesetzt
@@ -58,7 +58,7 @@ Durch diesen Prozess wird ein Szenario ermöglicht, bei dem Benutzer innerhalb v
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>Auswertung von Richtlinien für bedingten Zugriff (Vorschau)
 
-In Exchange Online, SharePoint Online, Teams und Microsoft Graph können wichtige Richtlinien für bedingten Zugriff synchronisiert werden, sodass sie im Dienst selbst ausgewertet werden können.
+Exchange Online, SharePoint Online, Teams und MS Graph können wichtige Richtlinien für den bedingten Zugriff zur Bewertung innerhalb des Dienstes selbst synchronisieren.
 
 Dies ermöglicht ein Szenario, bei dem Benutzer unmittelbar nach Änderungen der Netzwerkadresse den Zugriff auf Dateien, E-Mails, Kalender oder Aufgaben der Organisation aus Microsoft 365-Client-Apps oder SharePoint Online verlieren.
 
@@ -85,9 +85,11 @@ Dies ermöglicht ein Szenario, bei dem Benutzer unmittelbar nach Änderungen der
 | **SharePoint Online** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
 | **Exchange Online** | Unterstützt | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
 
+## <a name="client-capabilities"></a>Clientfunktionen
+
 ### <a name="client-side-claim-challenge"></a>Clientseitige Anspruchsaufforderung
 
-Vor der fortlaufenden Zugriffsevaluierung versuchten Clients immer, das Zugriffstoken aus dem Cache wiederzugeben, solange es nicht abgelaufen war. Mit der fortlaufenden Zugriffsevaluierung wird ein neuer Fall eingeführt. Ein Ressourcenanbieter kann ein Token ablehnen, auch wenn es nicht abgelaufen ist. Um Clients zu informieren, den Cache zu umgehen, auch wenn die zwischengespeicherten Token nicht abgelaufen sind, führen wir einen Mechanismus mit dem Namen **Anspruchsaufforderung** ein, um anzugeben, dass das Token abgelehnt wurde und ein neues Zugriffstoken in Azure AD ausgegeben werden muss. Für die fortlaufende Zugriffsevaluierung ist ein Client-Update erforderlich, damit der Client die Anspruchsaufforderung verstehen kann. Die aktuelle Version der folgenden Anwendungen unterstützt die Anspruchsaufforderung:
+Vor der fortlaufenden Zugriffsevaluierung haben die Clients das Zugriffstoken aus ihrem Cache wiedergegeben, solange es noch nicht abgelaufen war. Mit CAE führen wir einen neuen Fall ein, in dem ein Ressourcenanbieter ein Token zurückweisen kann, wenn es noch nicht abgelaufen ist. Um Clients darüber zu informieren, dass sie ihren Cache umgehen sollen, obwohl die zwischengespeicherten Token noch nicht abgelaufen sind, führen wir einen Mechanismus namens **Anspruchsüberprüfung** ein, um anzuzeigen, dass das Token abgelehnt wurde und ein neues Zugriffstoken von Azure AD ausgestellt werden muss. Für die fortlaufende Zugriffsevaluierung ist ein Client-Update erforderlich, damit der Client die Anspruchsaufforderung verstehen kann. Die aktuelle Version der folgenden Anwendungen unterstützt die Anspruchsaufforderung:
 
 | | Web | Win32 | iOS | Android | Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
@@ -98,26 +100,26 @@ Vor der fortlaufenden Zugriffsevaluierung versuchten Clients immer, das Zugriffs
 
 ### <a name="token-lifetime"></a>Lebensdauer von Token
 
-Da Risiken und Richtlinien in Echtzeit ausgewertet werden, verlassen sich Clients, die Sitzungen mit fortlaufender Zugriffsevaluierung (CAE) aushandeln, auf CAE und nicht auf die vorhandenen statischen Richtlinien zur Gültigkeitsdauer von Zugriffstoken. Das bedeutet, dass konfigurierbare Richtlinien zur Tokengültigkeitsdauer von CAE-fähigen Clients, die Sitzungen mit CAE-Unterstützung aushandeln, nicht mehr berücksichtigt werden.
+Weil Risiko und Richtlinie in Echtzeit bewertet werden, sind Clients, die Sitzungen mit kontinuierlicher Zugriffsevaluierung aushandeln, nicht mehr auf statische Richtlinien zur Token-Lebensdauer angewiesen. Diese Änderung bedeutet, dass die konfigurierbare Richtlinie für die Gültigkeitsdauer von Token für Clients, die CAE-Sitzungen aushandeln, nicht beachtet wird.
 
-Die Tokengültigkeitsdauer wird erhöht, sodass sie in CAE-Sitzungen bei bis zu 28 Stunden liegt. Sperrungen werden durch kritische Ereignisse und Richtlinienauswertung, nicht einfach durch einen willkürlichen Zeitraum gesteuert. Diese Änderung erhöht die Stabilität von Anwendungen, ohne den Sicherheitsstatus zu beeinträchtigen. 
+Die Gültigkeitsdauer von Token wird in CAE-Sitzungen auf bis zu 28 Stunden erhöht. Sperrungen werden durch kritische Ereignisse und Richtlinienauswertung, nicht einfach durch einen willkürlichen Zeitraum gesteuert. Diese Änderung erhöht die Stabilität von Anwendungen, ohne den Sicherheitsstatus zu beeinträchtigen. 
 
-Wenn Sie keine CAE-fähigen Clients verwenden, beträgt die Standardgültigkeitsdauer für das Zugriffstoken 1 Stunde, es sei denn, Sie haben die Gültigkeitsdauer des Zugriffstokens mit der Previewfunktion [Konfigurierbare Tokengültigkeitsdauer (Configurable Token Lifetime, CTL)](../develop/active-directory-configurable-token-lifetimes.md) konfiguriert.
+Wenn Sie keine CAE-fähigen Clients verwenden, bleibt die standardmäßige Gültigkeitsdauer des Zugriffstokens bei 1 Stunde. Die standardmäßige Gültigkeitsdauer ändert sich nur, wenn Sie die Gültigkeitsdauer Ihrer Zugriffstoken mit der Previewfunktion [Konfigurierbare Tokengültigkeitsdauer (CTL)](../develop/active-directory-configurable-token-lifetimes.md) konfiguriert haben.
 
-## <a name="example-flows"></a>Beispielabläufe
+## <a name="example-flow-diagrams"></a>Beispiele von Flowdiagrammen
 
-### <a name="user-revocation-event-flow"></a>Ablauf bei Benutzersperrereignis:
+### <a name="user-revocation-event-flow"></a>Ablauf bei Benutzersperrereignis
 
 ![Ablauf bei Benutzersperrereignis](./media/concept-continuous-access-evaluation/user-revocation-event-flow.png)
 
 1. Ein CAE-fähiger Client stellt Anmeldeinformationen oder ein Aktualisierungstoken für Azure AD bereit und fordert ein Zugriffstoken für eine Ressource an.
 1. Ein Zugriffstoken wird zusammen mit anderen Artefakten an den Client zurückgegeben.
 1. Ein Administrator [sperrt explizit alle Aktualisierungstoken für den Benutzer](/powershell/module/azuread/revoke-azureaduserallrefreshtoken). Von Azure AD wird ein Sperrereignis an den Ressourcenanbieter gesendet.
-1. Dem Ressourcenanbieter wird ein Zugriffstoken präsentiert. Der Ressourcenanbieter wertet die Gültigkeit des Tokens aus und überprüft, ob für den Benutzer ein Sperrereignis vorliegt. Der Ressourcenanbieter verwendet diese Informationen, um den Zugriff auf die Ressource zu gewähren oder zu untersagen.
+1. Dem Ressourcenanbieter wird ein Zugriffstoken präsentiert. Der Ressourcenanbieter wertet die Gültigkeit des Tokens aus und überprüft, ob für den Benutzer ein Sperrungsereignis vorliegt. Der Ressourcenanbieter verwendet diese Informationen, um den Zugriff auf die Ressource zu gewähren oder zu untersagen.
 1. In diesem Fall verweigert der Ressourcenanbieter den Zugriff und sendet die Anspruchsaufforderung „401+“ an den Client zurück.
 1. Der CAE-fähige Client versteht die Anspruchsaufforderung „401+“. Er umgeht die Caches, geht zurück zu Schritt 1 und sendet das Aktualisierungstoken zusammen mit der Anspruchsaufforderung zurück an Azure AD. Azure AD wertet dann alle Bedingungen erneut aus und fordert in diesem Fall den Benutzer auf, sich erneut zu authentifizieren.
 
-### <a name="user-condition-change-flow-preview"></a>Ablauf bei Änderungen von Benutzerbedingungen (Vorschau):
+### <a name="user-condition-change-flow-preview"></a>Ablauf der Benutzerkonditionsänderung (Vorschauversion)
 
 Im folgenden Beispiel hat ein Administrator für den bedingten Zugriff eine standortbasierte Richtlinie für bedingten Zugriff so konfiguriert, dass der Zugriff nur über bestimmte IP-Adressbereiche zulässig ist:
 
@@ -129,7 +131,7 @@ Im folgenden Beispiel hat ein Administrator für den bedingten Zugriff eine stan
 1. Der Benutzer wechselt zu einer IP-Adresse außerhalb eines zulässigen IP-Adressbereichs.
 1. Der Client stellt ein Zugriffstoken für den Ressourcenanbieter außerhalb eines zulässigen IP-Adressbereichs bereit.
 1. Der Ressourcenanbieter wertet die Gültigkeit des Tokens aus und überprüft die über Azure AD synchronisierte Standortrichtlinie.
-1. In diesem Fall verweigert der Ressourcenanbieter den Zugriff und sendet eine Anspruchsaufforderung ab 401 an den Client zurück, da das Token nicht aus einem zulässigen IP-Adressbereich stammt.
+1. In diesem Fall verweigert der Ressourcenanbieter den Zugriff und sendet die Anspruchsaufforderung „401+“ an den Client zurück. Der Client wird herausgefordert, da er nicht aus einem zulässigen IP-Adressbereich stammt.
 1. Der CAE-fähige Client versteht die Anspruchsaufforderung „401+“. Er umgeht die Caches, geht zurück zu Schritt 1 und sendet das Aktualisierungstoken zusammen mit der Anspruchsaufforderung zurück an Azure AD. Azure AD wertet alle Bedingungen erneut aus, und der Zugriff wird in diesem Fall verweigert.
 
 ## <a name="enable-or-disable-cae-preview"></a>Aktivieren oder Deaktivieren der fortlaufenden Zugriffsevaluierung (Vorschau)
@@ -141,57 +143,81 @@ Im folgenden Beispiel hat ein Administrator für den bedingten Zugriff eine stan
 
 Auf dieser Seite können Sie optional die Benutzer und Gruppen für die Vorschau einschränken.
 
-> [!WARNING]
-> Um die fortlaufende Zugriffsauswertung zu deaktivieren, wählen Sie **Vorschau aktivieren** und dann **Vorschau deaktivieren** und **Speichern** aus.
-
 > [!NOTE]
->Sie können Microsoft Graph über [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&tabs=http#request-body) abfragen, um die CAE-Konfiguration in Ihrem Mandanten zu überprüfen. Eine HTTP 200-Antwort und der zugehörige Antworttext geben an, ob CAE in Ihrem Mandanten aktiviert oder deaktiviert ist. CAE ist nicht konfiguriert, wenn Microsoft Graph eine HTTP 404-Antwort zurückgibt.
+> Sie können Microsoft Graph über [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&tabs=http#request-body) abfragen, um die CAE-Konfiguration in Ihrem Mandanten zu überprüfen. Eine HTTP 200-Antwort und der zugehörige Antworttext geben an, ob CAE in Ihrem Mandanten aktiviert oder deaktiviert ist. CAE ist nicht konfiguriert, wenn Microsoft Graph eine HTTP 404-Antwort zurückgibt.
 
 ![Aktivieren der Vorschau der fortlaufenden Zugriffsevaluierung im Azure-Portal](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
 
-## <a name="troubleshooting"></a>Problembehandlung
+### <a name="available-options"></a>Verfügbare Optionen
 
-### <a name="supported-location-policies"></a>Unterstützte Standortrichtlinien
+Organisationen haben Optionen, wenn es um die Aktivierung von CAE geht.
 
-Für die fortlaufende Zugriffsevaluierung sind nur Erkenntnisse zu benannten Standorten auf der Basis der IP-Adresse möglich. Erkenntnisse zu anderen Standorteinstellungen, z. B. [durch MFA bestätigte IP-Adressen](../authentication/howto-mfa-mfasettings.md#trusted-ips), oder in länderbasierte Standorte sind dagegen nicht möglich. Wenn der Benutzer von einer durch MFA bestätigten IP-Adresse, von vertrauenswürdigen Standorten, die durch MFA bestätigte IP-Adressen enthalten, oder von einem länderbasierten Standort stammt, wird die fortlaufende Zugriffsevaluierung erst nach dem Wechsel des Benutzers zu einem anderen Standort erzwungen. In diesen Fällen wird ein 1-stündiges CAE-Token ohne sofortige erzwungene Überprüfung der IP-Adresse ausgegeben.
+1. Wenn Sie die standardmäßige Einstellung **Automatische Aktivierung nach allgemeiner Verfügbarkeit** beibehalten, wird die Funktionalität aktiviert, sobald CAE allgemein verfügbar ist.
+1. Kunden, die **Vorschau aktivieren** wählen, profitieren sofort von der neuen Funktionalität und müssen bei allgemeiner Verfügbarkeit keine Änderungen vornehmen. 
+1. Kunden, die **Vorschau deaktivieren** wählen, haben Zeit, CAE nach ihrem eigenen Zeitplan zu übernehmen. Diese Einstellung wird bei der allgemeinen Verfügbarkeit als **Deaktiviert** beibehalten.
 
-> [!IMPORTANT]
-> Verwenden Sie bei der Konfiguration von Standorten für die fortlaufende Zugriffsevaluierung nur die [Standortbedingung für den auf IP-Adressen basierenden bedingten Zugriff](../conditional-access/location-condition.md), und konfigurieren Sie alle IP-Adressen, **einschließlich IPv4- und IPv6-Adressbereichen**, die vom Identitätsanbieter und Ressourcenanbieter angezeigt werden können. Verwenden Sie keine länderspezifischen Standortbedingungen und auch nicht die Funktion für vertrauenswürdige IP-Adressen, die auf der Seite der Diensteinstellungen für Azure AD Multi-Factor Authentication verfügbar ist.
+## <a name="limitations"></a>Einschränkungen
 
-### <a name="ip-address-configuration"></a>IP-Adresskonfiguration
+### <a name="group-membership-and-policy-update-effective-time"></a>Zeitraum bis zur Wirksamkeit einer Aktualisierung von Gruppenmitgliedschaft und Richtlinien
 
-Im Identitäts- und Ressourcenanbieter werden möglicherweise andere IP-Adressen angezeigt. Diese Diskrepanz kann aufgrund von Implementierungen des Netzwerkproxys in Ihrer Organisation oder von falschen IPv4/IPv6-Konfigurationen zwischen dem Identitäts- und Ressourcenanbieter auftreten. Beispiel:
+Es kann bis zu einem Tag dauern, bis von Administratoren vorgenommene Änderungen an Richtlinien für bedingten Zugriff und Gruppenmitgliedschaften wirksam werden. Die Verzögerung ist auf die Replikation zwischen Azure AD und Ressourcenanbietern wie Exchange Online und SharePoint Online zurückzuführen. Es wurden einige Optimierungen für Richtlinienaktualisierungen vorgenommen, die die Verzögerung auf zwei Stunden reduzieren. Allerdings sind damit noch nicht alle Szenarien abgedeckt.  
+
+Wenn Änderungen an der Richtlinie für bedingten Zugriff oder der Gruppenmitgliedschaft sofort auf bestimmte Benutzer angewendet werden müssen, haben Sie zwei Möglichkeiten. 
+
+- Führen Sie den [PowerShell-Befehl revoke-azureaduserallrefreshtoken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) aus, um alle Aktualisierungs-Tokens eines bestimmten Benutzers zu widerrufen.
+- Wählen Sie "Sitzung widerrufen" auf der Benutzerprofilseite imr Azure-Portal aus, um die Sitzung des Benutzers zu widerrufen, um sicherzustellen, dass die aktualisierten Richtlinien sofort angewendet werden.
+
+### <a name="ip-address-variation"></a>Variation der IP-Adresse
+
+Im Identitäts- und Ressourcenanbieter werden möglicherweise andere IP-Adressen angezeigt. Dieser Konflikt kann aus folgenden Gründen auftreten:
+
+- Netz-Proxy-Implementierungen in Ihrer Organisation
+- Falsche IPv4/IPv6-Konfigurationen zwischen Ihrem Identitätsanbieter und Ihrem Ressourcenanbieter
+ 
+Beispiele:
 
 - Im Identitätsanbieter wird eine IP-Adresse vom Client angezeigt.
 - Im Ressourcenanbieter wird nach der Weiterleitung über einen Proxy eine andere IP-Adresse vom Client angezeigt.
-- Die IP-Adresse für den Identitätsanbieter ist Teil eines in der Richtlinie zulässigen IP-Adressbereichs, die IP-Adresse des Ressourcenanbieters dagegen nicht.
+- Die IP-Adresse, die Ihr Identitätsanbieter sieht, gehört zu einem in der Richtlinie erlaubten IP-Bereich, die IP-Adresse des Ressourcenanbieters jedoch nicht.
 
-Wenn dieses Szenario in Ihrer Umgebung besteht, um Endlosschleifen zu vermeiden, wird in Azure AD ein einstündiges CAE-Token ausgegeben und keine Änderung des Clientstandorts erzwungen. Selbst in diesem Fall ist die Sicherheit im Vergleich zu herkömmlichen einstündigen Token verbessert, da neben den Ereignissen der Änderung des Clientstandorts die [anderen Ereignisse](#critical-event-evaluation) weiterhin ausgewertet werden.
+Um Endlosschleifen aufgrund dieser Szenarien zu vermeiden, gibt Azure AD ein einstündiges CAE-Token aus und wird keine Änderung des Clientorts durchsetzen. In diesem Fall wird die Sicherheit im Vergleich zu traditionellen einstündigen Token verbessert, da wir neben den Ereignissen zur Änderung des Clientorts auch [andere-Ereignisse](#critical-event-evaluation) auswerten.
+
+### <a name="supported-location-policies"></a>Unterstützte Standortrichtlinien
+
+CAE hat nur Erkenntnis von [DlP-basiert benannten Orten](../conditional-access/location-condition.md#ip-address-ranges). CAE hat keine Erkenntnis von anderen Ortsbedingungen wie [MFA vertrauenswürdige IPs](../authentication/howto-mfa-mfasettings.md#trusted-ips) oder länderbasierte Orte. Wenn ein Benutzer von einer MFA-vertrauenswürdigen IP, einem vertrauenswürdigen Ort, der MFA-vertrauenswürdige IPs enthält, oder einem länderbasierten Ort kommt, wird CAE nicht durchgesetzt, wenn der Benutzer an einen anderen Ort wechselt. In diesen Fällen wird Azure AD ein einstündiges Zugriffstoken ohne sofortige IP-Durchsetzungsprüfung ausstellen. 
+
+> [!IMPORTANT]
+> Verwenden Sie bei der Konfiguration von Standorten für die fortlaufende Zugriffsevaluierung nur die [Standortbedingung für den auf IP-Adressen basierenden bedingten Zugriff](../conditional-access/location-condition.md), und konfigurieren Sie alle IP-Adressen, **einschließlich IPv4- und IPv6-Adressbereichen**, die vom Identitätsanbieter und Ressourcenanbieter angezeigt werden können. Verwenden Sie keine länderspezifischen Standortbedingungen und auch nicht die Funktion für vertrauenswürdige IP-Adressen, die auf der Seite der Diensteinstellungen für Azure AD Multi-Factor Authentication verfügbar ist.
 
 ### <a name="office-and-web-account-manager-settings"></a>Einstellungen für Office und Web Account Manager
 
 | Office-Updatekanal | DisableADALatopWAMOverride | DisableAADWAM |
 | --- | --- | --- |
-| Halbjährlicher Enterprise-Kanal | Wenn diese Einstellung auf „aktiviert“ oder „1“ festgelegt ist, wird die fortlaufende Zugriffsevaluierung nicht unterstützt. | Wenn diese Einstellung auf „aktiviert“ oder „1“ festgelegt ist, wird die fortlaufende Zugriffsevaluierung nicht unterstützt. |
-| Aktueller Kanal <br> oder <br> Monatlicher Enterprise-Kanal | Die fortlaufende Zugriffsevaluierung wird unabhängig von der Einstellung unterstützt. | Die fortlaufende Zugriffsevaluierung wird unabhängig von der Einstellung unterstützt. |
+| Halbjährlicher Enterprise-Kanal | Wenn auf aktiviert oder 1 gesetzt, wird CAE nicht unterstützt. | Wenn auf aktiviert oder 1 gesetzt, wird CAE nicht unterstützt. |
+| Aktueller Kanal <br> oder <br> Monatlicher Enterprise-Kanal | CAE wird unabhängig von der Einstellung unterstützt | CAE wird unabhängig von der Einstellung unterstützt |
 
-Eine Erläuterung der Office-Updatekanäle finden Sie unter [Übersicht über die Updatekanäle von Microsoft 365 Apps](/deployoffice/overview-update-channels). Es wird Organisationen empfohlen, Web Account Manager (WAM) nicht zu deaktivieren.
-
-### <a name="group-membership-and-policy-update-effective-time"></a>Zeitraum bis zur Wirksamkeit einer Aktualisierung von Gruppenmitgliedschaft und Richtlinien
-
-Bis die von Administratoren vorgenommene Aktualisierung von Gruppenmitgliedschaft und Richtlinien wirksam wird, kann bis zu einem Tag vergehen. Für Richtlinienaktualisierungen wurde eine Optimierung vorgenommen, die die Verzögerung auf zwei Stunden reduziert. Allerdings werden noch nicht alle Szenarien abgedeckt. 
-
-Wenn Sie die Richtlinienaktualisierung oder die Änderung der Gruppenmitgliedschaft in einer Notfallsituation für bestimmte Benutzer sofort angewendet werden muss, sollten Sie diesen [PowerShell-Befehl](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) oder „Revoke Session“ (Sitzung sperren) auf der Benutzerprofilseite verwenden, um die Benutzersitzung zu sperren. Dadurch wird sichergestellt, dass die aktualisierten Richtlinien sofort angewendet werden.
+Eine Erläuterung der Office-Updatekanäle finden Sie unter [Übersicht über die Updatekanäle von Microsoft 365 Apps](/deployoffice/overview-update-channels). Es wird empfohlen, dass Organisationen den Web Account Manager (WAM) nicht deaktivieren.
 
 ### <a name="coauthoring-in-office-apps"></a>Gemeinsame Dokumenterstellung in Office-Apps
 
-Wenn mehrere Benutzer gleichzeitig am selben Dokument arbeiten, wird der Zugriff des Benutzers auf das Dokument basierend auf Benutzersperr- oder Richtlinienänderungsereignissen möglicherweise nicht sofort durch die fortlaufende Zugriffsevaluierung gesperrt. In diesem Fall verliert der Benutzer den Zugriff vollständig nach dem Schließen des Dokuments, dem Schließen von Word, Excel oder PowerPoint oder nach einem Zeitraum von 10 Stunden.
+Wenn mehrere Benutzer gleichzeitig an einem Dokument zusammenarbeiten, wird ihr Zugriff auf das Dokument möglicherweise nicht sofort von CAE aufgrund von Benutzersperrung oder Richtlinienänderungsereignissen entzogen widerrufen. In diesem Fall verliert der Benutzer den Zugriff vollständig nach: 
 
-Um diesen Zeitraum zu verkürzen, kann ein SharePoint-Administrator durch [Konfigurieren einer Netzwerkadressenrichtlinie in SharePoint Online](/sharepoint/control-access-based-on-network-location) die maximale Lebensdauer von Sitzungen zur gemeinsamen Dokumenterstellung für in SharePoint Online und OneDrive for Business gespeicherten Dokumenten optional verringern. Nachdem diese Konfiguration geändert wurde, wird die maximale Lebensdauer von Sitzungen zur gemeinsamen Dokumenterstellung auf 15 Minuten verringert und kann über den SharePoint Online-PowerShell-Befehl „Set-SPOTenant –IPAddressWACTokenLifetime“ weiter angepasst werden.
+- Schließen des Dokuments
+- Schließen der Office-App
+- Nach einem Zeitraum von 10 Stunden
+
+Um diese Zeit zu verkürzen, kann ein SharePoint-Administrator die maximale Gültigkeitsdauer von Co-Authoring-Sitzungen für Dokumente, die in SharePoint Online und OneDrive for Business gespeichert sind, durch [Konfiguration einer Netzstandortrichtlinie in SharePoint Online](/sharepoint/control-access-based-on-network-location) reduzieren. Wenn diese Konfiguration geändert ist, wird die maximale Gültigkeitsdauer von Koautorensitzungen auf 15 Minuten reduziert und kann mit dem SharePoint Online PowerShell-Befehl „[Set-SPOTenant-IPAddressWACTokenLifetime](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)“ weiter angepasst werden.
 
 ### <a name="enable-after-a-user-is-disabled"></a>Aktivieren eines Benutzers nach seiner Deaktivierung
 
-Wenn Sie einen Benutzer direkt nach seiner Deaktivierung aktivieren, kann das Konto erst nach einer gewissen Latenzzeit aktiviert werden. SPO und Teams weisen eine Verzögerung von 15 Minuten auf. Bei EXO beträgt die Verzögerung 35–40 Minuten.
+Wenn Sie einen Benutzer direkt nach der Deaktivierung aktivieren, gibt es eine gewisse Wartezeit, bevor das Konto in den nachgelagerten Microsoft-Diensten als aktiviert erkannt wird.
+
+- SharePoint Online und Teams haben in der Regel eine 15-minütige Verzögerung. 
+- Exchange Online hat in der Regel eine Verzögerung von 35-40 Minuten. 
+
+### <a name="push-notifications"></a>Pushbenachrichtigungen
+
+Eine IP-Adressrichtlinie wird nicht ausgewertet, bevor Pushbenachrichtigungen freigegeben werden. Dieses Szenario besteht, weil Pushbenachrichtigungen nach auswärts erfolgen und keine zugehörige IP-Adresse haben, gegen die sie ausgewertet werden können. Wenn ein Benutzer auf die Push-Benachrichtigung klickt, z.B. auf eine E-Mail in Outlook, werden die IP-Adressrichtlinien des CAE immer noch durchgesetzt, bevor die E-Mail angezeigt werden kann. Pushbenachrichtigungen zeigen eine Nachrichtenvorschau an, die nicht durch eine IP-Adressrichtlinie geschützt ist. Alle anderen CAE-Prüfungen werden durchgeführt, bevor die Pushbenachrichtigung gesendet wird. Wenn einem Benutzer oder Gerät der Zugriff entzogen wird, erfolgt die Durchsetzung innerhalb des dokumentierten Zeitraums. 
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
@@ -201,6 +227,6 @@ Die Anmeldehäufigkeit wird mit oder ohne CAE berücksichtigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Ankündigung der fortlaufenden Zugriffsevaluierung](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)
 - [Verwenden von CAE-fähigen APIs in Ihren Anwendungen](../develop/app-resilience-continuous-access-evaluation.md)
 - [Anspruchsherausforderungen, Anspruchsanforderungen und Clientfunktionen](../develop/claims-challenge.md)
+- [Überwachung und Problembehandlung von fortlaufender Zugriffsevaluierung](howto-continuous-access-evaluation-troubleshoot.md)

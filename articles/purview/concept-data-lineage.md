@@ -1,18 +1,17 @@
 ---
-title: Datenherkunft in Azure Purview (Vorschau)
+title: Datenherkunft in Azure Purview
 description: Beschreibt die Konzepte für die Datenherkunft.
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/30/2020
-ms.openlocfilehash: da2f34014f3c789762cc2743b971aa76ad1049a9
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.date: 09/27/2021
+ms.openlocfilehash: 37cffe89fc0e0cb10aaadbb8d63f9aa12d0589eb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112574432"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207448"
 ---
 # <a name="data-lineage-in-azure-purview-data-catalog-client"></a>Datenherkunft in Azure Purview Data Catalog-Client
 
@@ -67,4 +66,4 @@ Herkunft ist ein wichtiges Feature des Purview Data Catalog, um Qualitäts-, Ver
 
 * [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md)
 * [Schnellstart: Erstellen eines Azure Purview-Kontos unter Verwendung von Azure PowerShell/Azure CLI](create-catalog-powershell.md)
-* [Schnellstart: Verwenden von Purview Studio](use-purview-studio.md)
+* [Verwenden von Purview Studio](use-purview-studio.md)

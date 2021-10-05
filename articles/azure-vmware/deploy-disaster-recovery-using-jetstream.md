@@ -1,263 +1,342 @@
 ---
-title: Bereitstellen der Notfallwiederherstellung mithilfe von JetStream
-description: Hier erfahren Sie, wie Sie die JetStream-Notfallwiederherstellung (Disaster Recovery, DR) für Ihre private Azure VMware Solution-Cloud und lokale VMware-Workloads bereitstellen.
+title: Bereitstellen der Notfallwiederherstellung mithilfe von JetStream DR (Preview)
+description: Lernen Sie, wie Sie JetStream DR für Ihre Azure VMware Solution Private Cloud und lokale VMware-Workloads implementieren.
 ms.topic: how-to
-ms.date: 08/31/2021
-ms.openlocfilehash: a26cbaa4f8c37f3148a86005a637b006572685dc
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/15/2021
+ms.custom: references_regions
+ms.openlocfilehash: 75bb77ad575f96e7605fe6a19e12d7129c28dac6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123315122"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554437"
 ---
-# <a name="deploy-disaster-recovery-using-jetstream"></a>Bereitstellen der Notfallwiederherstellung mithilfe von JetStream
+# <a name="deploy-disaster-recovery-using-jetstream-dr-preview"></a>Bereitstellen der Notfallwiederherstellung mithilfe von JetStream DR (Preview)
 
-[JetStream Disaster Recovery (DR)](https://www.jetstreamsoft.com/product-portfolio/jetstream-dr/) wird in einer VMware vSphere-Umgebung installiert und über eine vCenter-Plug-In-Appliance verwaltet. Es bietet cloudnativen fortlaufenden Datenschutz (Continuous Data Protection, CDP), der E/A-Vorgänge virtueller Computer (Virtual Machines, VMs) ständig repliziert. Statt Momentaufnahmen in regelmäßigen Abständen zu erfassen, werden Daten kontinuierlich erfasst und repliziert, während sie in den primären Speicher geschrieben werden – mit minimalen Auswirkungen auf gerade ausgeführte Anwendungen.  Infolgedessen können Sie VMs mit deren Daten schnell wiederherstellen und so ein niedrigeres RPO (Recovery Point Objective) erreichen.  
+>[!IMPORTANT]
+>JetStream DR auf Azure VMware Solution (Preview) befindet sich derzeit in der öffentlichen Vorschau.
+>Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+>Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Mit Azure VMware Solution können Sie Daten direkt in einem Wiederherstellungscluster in vSAN oder einem angefügten Dateisystem wie Azure NetApp Files speichern. Die Daten werden über E/A-Filter erfasst, die in vSphere ausgeführt werden. Der zugrunde liegende Datenspeicher kann VMFS, VSAN, vVol oder eine beliebige HCI-Plattform sein. 
+[JetStream DR](https://www.jetstreamsoft.com/product-portfolio/jetstream-dr/) ist eine cloudnative Lösung für die Notfallwiederherstellung, mit der die Ausfallzeiten virtueller Computer (VMs) im Falle einer Katastrophe minimiert werden. Instanzen von JetStream DR werden sowohl an den geschützten als auch an den Wiederherstellungsstandorten bereitgestellt. 
 
-:::image type="content" source="media/jetstream-disaster-recovery/jetstream-disaster-recovery-diagram.png" alt-text="Diagramm der Integration von JetStream DR und Azure VMware Solution." border="false":::
+JetStream basiert auf der Grundlage von Continuous Data Protection (CDP) unter Verwendung des [VMware VAIO-Frameworks](https://core.vmware.com/resource/vmware-vsphere-apis-io-filtering-vaio), das minimalen oder nahezu keinen Datenverlust ermöglicht. JetStream DR bietet das gewünschte Maß an Schutz für geschäfts- und unternehmenskritische Anwendungen. Darüber hinaus ermöglicht es eine kosteneffiziente DR durch den Einsatz minimaler Ressourcen am DR-Standort und die Verwendung kostengünstiger Cloud-Speicher wie [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/).
 
-JetStream DR-Software besteht aus drei Hauptkomponenten: 
+In diesem Artikel implementieren Sie JetStream DR für Ihre Azure VMware Solution Private Cloud und lokale VMware-Workloads.
 
-- Management Server Virtual Appliance (MSA) wird vor dem DR-Schutz installiert und konfiguriert. 
+Um mehr über JetStream DR zu lernen, siehe:
 
-- DR Virtual Appliance (DRVA) ist ein ISO-Image, das vom JetStream DR-MSA automatisch bereitgestellt wird.
+- [JetStream-Lösungskurzbeschreibung](https://www.jetstreamsoft.com/2020/09/28/solution-brief-disaster-recovery-for-avs/)
 
-- Hostkomponenten (E/A-Filterpakete) 
+- [JetStream DR auf Azure Marketplace](https://ms.portal.azure.com/#create/jetstreamsoftware1596597632545.jsdravs-093020)
 
-Die MSA wird zum Installieren und Konfigurieren von Hostkomponenten auf dem Computecluster und danach zum Verwalten von JetStream DR-Software verwendet. Das DRVA führt die DR-Komponenten für den Datenpfad aus. Zur Verbesserung der Skalierbarkeit können mehrere DRVAs gleichzeitig ausgeführt werden. Jedes DRVA hat eine oder mehrere dedizierte Partitionen, die als iSCSI-LUN oder latenzarmer VDISK angefügt sind. Die Partitionen werden zum Verwalten von Replikationsprotokollen und Repositorys für persistente Metadaten verwendet.
-
-In diesem Artikel werden Sie JetStream DR in Ihrer privaten Azure VMware Solution-Cloud und lokalen VMware-Workloads bereitstellen und erfahren, wie Sie sie verwenden.
+- [JetStream-Wissensbasisartikel](https://www.jetstreamsoft.com/resources/knowledge-base/)
 
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarios
-Je nach den erforderlichen Schutzdiensten und dem Typ der geschützten privaten Cloud können Sie JetStream DR auf zwei Arten bereitstellen:
+## <a name="core-components-of-the-jetstream-dr-solution"></a>Kernkomponenten der JetStream DR-Lösung
 
-- Lokal zu Cloud
+| Elemente | Beschreibung |
+| --- | --- |
+| **JetStream Verwaltungsserver virtuelles Gerät (MSA)**  | MSA ermöglicht sowohl die Tag-0- als auch die Tag-2-Konfiguration, z.B. primäre Standorte, Schutzdomänen und die Wiederherstellung von VMs.  MSA wird vom Cloud-Administrator auf einem vSphere-Knoten installiert. Die MSA implementiert ein vCenter-Plugin, mit dem Sie JetStream DR nativ über vCenter verwalten können. Die MSA verwaltet keine Replikationsdaten geschützter VMs.  | 
+| **JetStream DR virtuelles Gerät (DRVA)**  | Die Linux-basierte VM Appliance empfängt die Replikationsdaten geschützter VMs vom Quell-ESXi-Host. Sie ist für die Speicherung der Replikationsdaten am DR-Standort verantwortlich, normalerweise in einem Objektspeicher wie Azure Blob Storage. Abhängig von der Anzahl der geschützten VMs und der zu replizierenden Speichermenge kann der Administrator der privaten Cloud eine oder mehrere DRVA-Instanzen erstellen.  | 
+| **JetStream ESXi-Hostkomponenten (E/A-Filterpakete)**  | JetStream-Software, die auf jedem ESXi-Host installiert ist, der für JetStream DR konfiguriert ist. Der Hosttreiber fängt eine vSphere-VMs-E/A ab und sendet die Replikationsdaten an das DRVA.   | 
+| **JetStream-Schutzdomäne**  | Logische Gruppe von VMs, die zusammen mit den gleichen Richtlinien und Ausführungsvorschriften geschützt werden. Die Daten für alle VMs in einer Schutzdomäne werden in derselben Azure Blob-Containerinstanz gespeichert. Dieselbe DRVA-Instanz verarbeitet die Replikation zu Remote-DR-Speicherung für alle VMs in einer Schutzdomäne.   | 
+| **Azure Blob Storage-Container**  | Die replizierten Daten der geschützten VMs werden in Azure-Blobs gespeichert. JetStream-Software erstellt eine Azure Blob-Containerinstanz für jede JetStream-Schutzdomäne.    | 
 
-- Cloud zu Cloud
 
-### <a name="on-premises-to-cloud-deployment"></a>Lokal-zu-Cloud-Bereitstellung
-VMs, die im VMware-basierten Rechenzentrum einer Organisation ausgeführt werden, werden kontinuierlich in Microsoft Azure repliziert. Daher können VMs den Betrieb in Azure VMware Solution fortsetzen, wenn es im lokalen Rechenzentrum zu einem Vorfall kommt. Während die VMs in der Wiederherstellungsumgebung ausgeführt werden, replizieren sie weiterhin Daten, um den Schutz fortzusetzen. Nachdem das lokale Rechenzentrum wiederhergestellt wurde, können die VMs und deren Daten (einschließlich aller neuen Daten, die von den VMs in der Wiederherstellungsumgebung generiert werden) ohne Unterbrechung in ihr ursprüngliches Rechenzentrum zurückkehren.
 
-:::image type="content" source="media/jetstream-disaster-recovery/jetstream-on-premises-to-cloud-diagram.png" alt-text="Diagramm der JetStream-Bereitstellung von lokal zur privaten Azure VMware Solution-Cloud." border="false":::
+## <a name="jetstream-scenarios-on-azure-vmware-solution"></a>JetStream-Szenarien auf Azure VMware Solution
+Sie können JetStream DR mit  der Azure VMware Solution für die folgenden zwei Szenarien benutzen:  
 
-### <a name="cloud-to-cloud-deployment"></a>Cloud-zu-Cloud-Bereitstellung
+- Lokale VMware zur Azure VMware Solution Notfallwiederherstellung
 
-Bei dieser Konfiguration hostet Azure VMware Solution Ihre primäre Umgebung in einem einzigen Rechenzentrum. Es schützt die VMs und die Daten, indem sie kontinuierlich in eine andere private Cloud in einem anderen seiner Rechenzentren repliziert werden. Bei einem Vorfall werden VMs und Daten im zweiten Rechenzentrum wiederhergestellt. Dieser Schutz kann bidirektional sein, wobei Rechenzentrum „A“ Rechenzentrum „B“ schützt und umgekehrt.
+- Azure VMware Solution zur Azure VMware Solution DR
 
-:::image type="content" source="media/jetstream-disaster-recovery/jetstream-cloud-to-cloud-diagram.png" alt-text="Diagramm der JetStream-Bereitstellung von privater Azure VMware Solution-Cloud zu einer anderen privaten Cloud." border="false":::
+### <a name="scenario-1-on-premises-vmware-to-azure-vmware-solution-dr"></a>Szenario 1: Lokale VMware zur Azure VMware Solution Notfallwiederherstellung
+
+In diesem Szenario ist der primäre Standort Ihre lokale VMware-Umgebung, und der DR-Standort ist eine Azure VMware Solution private Cloud.
+
+:::image type="content" source="media/jetstream-disaster-recovery/jetstream-on-premises-to-cloud-diagram.png" alt-text="Diagramm der JetStream-Bereitstellung von lokal zur privaten Azure VMware Solution-Cloud." border="false" lightbox="media/jetstream-disaster-recovery/jetstream-on-premises-to-cloud-diagram.png":::
+
+### <a name="scenario-2-azure-vmware-solution-to-azure-vmware-solution-dr"></a>Szenario 2:Azure VMware Solution zur Azure VMware Solution DR
+
+In diesem Szenario ist der primäre Standort eine Azure VMware Solution private Cloud. Der Standort für die Notfallwiederherstellung eine private Cloud einer Azure VMware Solution in einer anderen Azure-Region ist. 
+
+:::image type="content" source="media/jetstream-disaster-recovery/jetstream-cloud-to-cloud-diagram.png" alt-text="Diagramm der JetStream-Bereitstellung von privater Azure VMware Solution-Cloud zu einer anderen privaten Cloud." border="false" lightbox="media/jetstream-disaster-recovery/jetstream-cloud-to-cloud-diagram.png":::
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Eine private Azure VMware Solution-Cloud, die als sekundäre Region bereitgestellt wird. 
 
-- Eine Ubuntu Linux-Jumpbox mit einer ExpressRoute-Verbindung zu Ihrer privaten Azure VMware Solution-Cloud. 
+### <a name="scenario-1-on-premises-vmware-to-azure-vmware-solution-dr"></a>Szenario 1: Lokale VMware zur Azure VMware Solution Notfallwiederherstellung 
 
-- Neueste PowerShell auf der Linux-Jumpbox installiert.
-
-- Neuestes Drittanbietermodul aus dem PowerShell-Katalog installiert.
-
-### <a name="protected-site"></a>Geschützter Standort
-
-Der geschützte Standort hostet einen **Dienstcluster** für Verwaltungsdienste (z. B. vCenter, DNS, Active Directory) und **Computercluster**, in denen geschützte Branchenanwendungen ausgeführt werden. Der geschützte Standort kann lokal sein oder in Azure VMware Solution gehostet werden.
-
-Jeder der folgenden Typen kann verwendet werden:
-
-- Azure Blob Storage
-
-- Azure VMware Solution vSAN
-
-- Ein an Azure VMware Solution angefügtes Dateisystem, z. B. Azure NetApp Files
+- Eeine private Cloud einer Azure VMware Solution, die mit mindestens drei Knoten in der Zielregion für die DR bereitgestellt wird.  
 
 
-| **Element**  | **Beschreibung**  |  
-| --- | --- |  
-| **vCenter Server**  | <ul><li>Unterstützte Version: 6.7</li><li>HTTPS-Port: Bei Verwendung einer Firewall muss HTTPS-Port 443 geöffnet sein.</li><li>Konnektivität: Der JetStream DR Management Server-Appliance-FQDN muss von vCenter aus erreichbar sein. Andernfalls schlägt die Plug-In-Installation fehl.</li><li>Zeit: Die MSA-Uhren von vCenter und JetStream DR müssen synchronisiert werden.</li></ul>  |
-| **Distributed Resource Scheduler (DRS)**  | Er wird auf dem Computecluster für den Ressourcenausgleich empfohlen.  |
-| **Cluster**  | vSphere-Hosts: VMs, die durch JetStream DR geschützt werden sollen, müssen Teil eines Clusters sein.  |
-| **vSphere-Host**  | <ul><li>Unterstützte Version: 6.7U1 (Build #10302608) oder höher</li><li>Konnektivität: vCenter Server-FQDN muss vom Host aus erreichbar sein. Andernfalls schlägt die Hostkonfiguration fehl.</li><li>Zeit: Die MSA-Uhren von vSphere-Hosts und JetStream DR müssen synchronisiert werden.</li><li>CIM-Dienst: Der CIM-Server muss aktiviert sein. Dies ist die Standardeinstellung.</li></ul>  |
-| **JetStream DR-MSA**  | <ul><li>CPU: 64 Bit, 4 vCPUs</li><li>Memory: 4 GB</li><li>Speicherplatz: 60 GB</li><li>Netzwerk: Statische oder dynamisch zugewiesene IP-Adressen (DHCP) können verwendet werden. Der FQDN muss bei DNS registriert werden.</li><li>DNS: DNS-Namensauflösung für vSphere-Hosts und vCenter Server</li></ul>  |
-| **JetStream DRVA**  | <ul><li>CPU: 4 Kerne</li><li>Memory: 8 GB</li><li>Netzwerk: Statische oder dynamisch zugewiesene IP-Adressen (DHCP) können verwendet werden.</li></ul>  |
-| **Replikationsprotokollspeicher**  | Der geschützte Standort sollte ein latenzarmes Flashspeichergerät verfügbar machen, das die Hosts im Cluster gemeinsam nutzen, um eine optimale Leistung zu erzielen. Dieses Gerät kann durch die JetStream DR-Software gesteuert oder von einem Drittanbieter bereitgestellt werden. Es wird als Repository für das Replikationsprotokoll genutzt. Das DRVA und der/die ESXi-Host(s) müssen über iSCSI direkten Zugriff auf diesen Speicher haben.  |
-| **Ports**  | Wenn JetStream DR-Software installiert wurde, wird ein Bereich von Ports auf den ESXi-Quellhosts automatisch geöffnet. Deshalb ist bei den meisten Benutzern keine weitere Aktion erforderlich. Wenn aber das lokale/Quell-Setup spezielle Firewallregeln enthält, die diese Ports blockieren, müssen Sie die Ports manuell öffnen.<br /><br />Portbereich: 32873-32878  |
+   :::image type="content" source="media/jetstream-disaster-recovery/disaster-recovery-scenario-prerequisite.png" alt-text="Diagramm, das die erste Voraussetzung für die Notfallwiederherstellungslösung auf Azure VMware Solution zeigt." lightbox="media/jetstream-disaster-recovery/disaster-recovery-scenario-prerequisite.png":::
+
+
+- Zwischen den JetStream-Geräten des primären Standorts und der Azure Storage Blobinstanz konfigurierte Netzwerkkonnektivität. 
+
+- [Richten Sie JetStream DR](https://ms.portal.azure.com/#create/jetstreamsoftware1596597632545.jsdravs-093020) aus dem Azure Marketplace ein, und abonnieren Sie sie, um die JetStream DR-Software herunterzuladen.
+
+- [Azure Blob Storage Konto,](../storage/common/storage-account-create.md) das entweder mit der Standard- oder Premium Performance-Ebene erstellt wurde. [Wählen Sie unter Zugriffsebene die Option **Heiß** aus.](../storage/blobs/storage-blob-storage-tiers.md) 
+
+   >[!NOTE]
+   >Die Option **Hierarchischen Namespace aktivieren** für das Blob wird nicht unterstützt.   
+
+- Ein NSX-T-Netzwerksegment, das für Azure VMware Solution private Cloud konfiguriert ist und optional DHCP für das Segment für die virtuellen JetStream-Geräte aktiviert.  
+
+- Ein DNS-Server, der zum Auflösen der IP-Adressen von Azure VMware Solution vCenter, Azure VMware Solution ESXi-Hosts, Azure Storage-Konto und des JetStream Marketplace-Diensts für die virtuellen JetStream-Geräte konfiguriert ist. 
 
 
 
-### <a name="recovery-site"></a>Wiederherstellungsstandort
+### <a name="scenario-2-azure-vmware-solution-to-azure-vmware-solution-dr"></a>Szenario 2:Azure VMware Solution zur Azure VMware Solution DR
 
-Für die Failoverwiederherstellung wird ein Azure VMware Solution-Cluster des Typs _pilot light_ eingerichtet. Obwohl der Wiederherstellungsstandort im Rahmen des Installationsvorgangs erstellt wird, wird der Wiederherstellungsstandortcluster während des normalen Betriebs nicht vollständig aufgefüllt oder genutzt. Computecluster, für die ein Failover ausgeführt wurde, werden dem Wiederherstellungsstandort bei Bedarf als Reaktion auf ein Notfallereignis hinzugefügt.
+- Azure VMware Solution private Cloud, die mit mindestens drei Knoten in der primären und sekundären Region bereitgestellt ist.  
+ 
+- Zwischen den JetStream-Geräten des primären Standorts und der Azure Storage Blobinstanz konfigurierte Netzwerkkonnektivität. 
 
-### <a name="network"></a>Netzwerk
+- [Richten Sie JetStream DR](https://ms.portal.azure.com/#create/jetstreamsoftware1596597632545.jsdravs-093020) aus dem Azure Marketplace ein, und abonnieren Sie sie, um die JetStream DR-Software herunterzuladen.
 
-Zwischen dem geschützten Standort und dem Wiederherstellungsstandort muss ein Netzwerk mit den folgenden Merkmalen eingerichtet werden.
+- [Azure Blob Storage Konto,](../storage/common/storage-account-create.md) das entweder mit der Standard- oder Premium Performance-Ebene erstellt wurde. [Wählen Sie unter Zugriffsebene die Option **Heiß** aus.](../storage/blobs/storage-blob-storage-tiers.md) 
 
-| **Elemente** | **Beschreibung** |
-| --- | --- |
-| **JetStream DR-MSA**  | Für das MSA ist ein Verwaltungsnetzwerk erforderlich. Dieses Netzwerk wird für den Zugriff auf die JetStream DR RESTful-APIs und für andere Datenpfadaufrufe genutzt. Wenn ein privates Netzwerk zum Herstellen einer Verbindung mit dem Objektspeicher zur Verfügung steht, sollte es der MSA-VM als separates Netzwerk hinzugefügt werden. Wenn kein privates Netzwerk zur Verfügung steht, stellen Sie sicher, dass das Verwaltungsnetzwerk zum Herstellen einer Verbindung mit dem Objektspeicher genutzt werden kann. <br /><br />Ein dediziertes externes Netzwerk kann für den Objektspeicherzugriff genutzt werden. Andernfalls wird der Datenverkehr über das Verwaltungsnetzwerk gesendet.  | 
-| **JetStream DRVA**  | Wenn das einzige genutzte Netzwerk das Verwaltungsnetzwerk ist, stellen Sie sicher, dass es Zugriff auf E/A-Filter und den Objektspeicher hat. Wenn innerhalb des Clusters mehrere Netzwerke vorhanden sind, müssen alle an die DRVA-VMs angefügt werden.  | 
-| **Wiederherstellung von einem virtuellen Objekt-Cloudgerät (Recovery from Object Cloud Virtual Appliance, RocVA)**  | Wenn das einzige genutzte Netzwerk das Verwaltungsnetzwerk ist, stellen Sie sicher, dass es Zugriff auf den/die ESXi-Host(s) und den Objektspeicher hat. Wenn innerhalb des Clusters mehrere Netzwerke vorhanden sind, müssen alle an die RocVA-VMs angefügt werden. Die RocVA ist eine temporäre VM, die bei Bedarf für die VM-Wiederherstellung automatisch erstellt und entfernt wird, wenn sie nicht mehr benötigt wird.  | 
-| **Objektspeicher/Blobspeicher**  | Der Objektspeicher/Blobspeicher sollte sowohl für den geschützten Standort als auch den Wiederherstellungsstandort zugänglich sein.  | 
-| **Replikationsprotokollspeicher**  | DRVAs und ESXi-Host(s) müssen über iSCSI direkten Zugriff auf diesen Speicher haben.  | 
+   >[!NOTE]
+   >Die Option **Hierarchischen Namespace aktivieren** für das Blob wird nicht unterstützt.   
 
+- Ein NSX-T-Netzwerksegment, das für Azure VMware Solution private Cloud konfiguriert ist und optional DHCP für das Segment für die virtuellen JetStream-Geräte aktiviert.  
 
-## <a name="install-jetstream-dr"></a>Installieren von JetStream DR
-
-Die Installation der JetStream DR steht über die Funktion „Skriptausführung“ im Azure VMware Solution-Portal zur Verfügung. Sie führen die Installation in drei Schritten aus.
-
-:::image type="content" source="media/run-command/run-command-overview-jetstream.png" alt-text="Screenshot: Zugriff auf die verfügbaren JetStream-Skriptausführungen." lightbox="media/run-command/run-command-overview-jetstream.png":::
+- Ein DNS-Server, der sowohl am primären als auch am DR-Standort konfiguriert ist, um die IP-Adressen von Azure VMware Solution vCenter, Azure VMware Solution ESXi-Hosts, Azure Storage-Konto und den JetStream Marketplace-Dienst für die virtuellen JetStream-Geräte aufzulösen. 
 
 
->[!NOTE]
->Skriptausführungen erfolgen nacheinander in der übermittelten Reihenfolge.
+Weitere lokale JetStream-DR-Voraussetzungen finden Sie in der [Führungslinie zur JetStream-Vorinstallation.](https://www.jetstreamsoft.com/portal/jetstream-knowledge-base/pre-installation-guidelines/)
 
-### <a name="check-the-current-state-of-the-system"></a>Überprüfen des aktuellen Systemstatus
 
-Sie führen das Cmdlet `Invoke-PreflightJetDRSystemCheck` aus, um den Status Ihres Systems zu überprüfen und zu ermitteln, ob die Mindestanforderungen für das Skript erfüllt werden. Außerdem wird damit die erforderliche vCenter-Konfiguration zum Ausführen anderer Cmdlets überprüft.  
 
-Das Cmdlet überprüft Folgendes:
 
-- PowerShell
-- vCenter-FQDN
-- CloudAdmin-Rolle
-- VMware-Module
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+## <a name="install-jetstream-dr-on-azure-vmware-solution"></a>Installieren von JetStream DR auf Azure VMware Solution  
+ 
+Sie können diese Schritte für beide unterstützten Szenarien ausführen. 
+ 
+1. Installieren Sie JetStream DR in Ihrem lokalen Rechenzentrum gemäß der [JetStream-Dokumentation.](https://www.jetstreamsoft.com/portal/jetstream-knowledge-base/installing-jetstream-dr-software/)  
 
-1. Wählen Sie **Skriptausführung** > **Pakete** > **Invoke-PreflightJetDRSystemCheck** aus.
+1. Installieren Sie JetStream DR in Ihrer privaten Azure VMware Solution Cloud mit einem Befehl zur Ausführung. Wählen Sie [im Azure-Portal](https://portal.azure.com)**Befehl zur Ausführung** > **Pakete** > **JSDR.Konfiguration** aus.  
+
+   :::image type="content" source="media/run-command/run-command-overview-jetstream.png" alt-text="Screenshot: Zugriff auf die verfügbaren JetStream-Skriptausführungen." lightbox="media/run-command/run-command-overview-jetstream.png":::
+ 
+   >[!NOTE]
+   >Der standardmäßige CloudAdmin-Benutzer in Azure VMware Solution verfügt nicht über ausreichende Berechtigungen, um JetStream DR zu installieren.  Azure VMware Solution ermöglicht eine vereinfachte und automatisierte Installation von JetStream DR, indem der Befehl Azure VMware Solution Run für JetStream DR aufgerufen wird.  
+ 
+
+1. Führen Sie das Cmdlet **Invoke-PreflightJetDRInstall** aus, das überprüft, ob die Voraussetzungen für die Installation von JetStream DR erfüllt sind. Beispielsweise überprüft.es die erforderliche Anzahl von Hosts, Clusternamen und eindeutigen VM-Namen. 
 
 1. Geben Sie die erforderlichen Werte an, oder ändern Sie die Standardwerte, und wählen Sie **Ausführen** aus.
 
    | **Feld** | **Wert** |
    | --- | --- |
-   | **Beibehalten bis**  | Aufbewahrungszeitraum der Cmdlet-Ausgabe. Der Standardwert beträgt ist 60.  |
-   | **Name für Ausführung angeben**  | Alphanumerischer Name, z. B. **checkDRsystem**.  |
+   | **Network**  | Name des NSX-T-Netzwerksegments, in dem Sie den jetStream MSA bereitstellen müssen.  |
+   | **Datenspeicher**  | Name des Datenspeichers, in dem Sie den MSA bereitstellen.  |
+   | **ProtectedCluster** | Der Name des zu schützenden Azure VMware Solution privaten Cloudclusters, z.B. **Cluster-1**.  Sie können nur einen Clusternamen angeben. |
+   | **Cluster** | Name des Azure VMware Solution privaten Clusters, in dem der JetStream-MSA bereitgestellt wird, z.B. **Cluster-1**. |
+   | **VMName** | Name des JetStream-MSA-WMs, z.B. **jetstreamServer.** |
+   | **Name für Ausführung angeben**  | Alphanumerischer Name der Ausführung, z. B. **Invoke-PreflightJetDRInstall-Exec1**. Er wird verwendet, um zu überprüfen, ob das Cmdlet erfolgreich ausgeführt wurde. |
    | **Timeout**  | Der Zeitraum, nach dem ein Cmdlet beendet wird, wenn der Abschluss zu lange dauert.  |
 
-1. Überprüfen Sie **Benachrichtigungen**, um den Fortschritt anzuzeigen. 
+1. [Zeigen Sie den Status der Ausführung an.](concepts-run-command.md#view-the-status-of-an-execution)
+   
+
+## <a name="install-the-jetstream-dr-msa"></a>Installieren des JetStream DR MSA
+
+Azure VMware Solution unterstützt die Installation von JetStream mit statischen IP-Adressen oder DHCP-basierten IP-Adressen.  
+
+### <a name="static-ip-address"></a>Statische IP-Adresse
+
+1. Wählen Sie **Befehl zur Ausführung** > **Pakete** > **Install-JetDRWithStaticIP** aus.
+
+1. Geben Sie die erforderlichen Werte an, oder ändern Sie die Standardwerte, und wählen Sie **Ausführen** aus.
 
 
+   | **Feld** | **Wert** |
+   | --- | --- |
+   | **ProtectedCluster** | Der Name des zu schützenden Azure VMware Solution privaten Cloudclusters, z. B. **Cluster-1**.  Sie können während der Installation nur einen Clusternamen angeben. |
+   | **Datenspeicher**  | Der Name des Datenspeichers, in dem Sie den JetStream-MSA bereitstellen.  |
+   | **VMName** | Name des JetStream-MSA-WMs, z. B. **jetstreamServer**. |
+   | **Cluster** | Name des Azure VMware Solution privaten Clusters, in dem der JetStream-MSA bereitgestellt wird, z. B. **Cluster-1**. |
+   | **Netzmaske** | Netzmaske des bereitzustellenden MSA, z. B. **22** oder **24**. |
+   | **MSIp** | IP-Adresse des JetStream MSA VM.   |
+   | **Dns** | DNS-IP, die der JetStream-MSA-VM verwenden soll.   |
+   | **Gateway** | IP-Adresse des Netzwerkgateways für den virtuellen JetStream-MSA-VM.  |
+   | **Credential**  |  Anmeldeinformationen des Stammbenutzers des JetStream MSA VM.   |
+   | **HostName** | Hostname (FQDN) des JetStream-MSA-VM.  |
+   | **Network**  | Name des NSX-T-Netzwerksegments, in dem Sie den jetStream MSA bereitstellen müssen. |
+   | **Name für Ausführung angeben**  | Alphanumerischer Name der Ausführung, z.B. **Install-JetDRWithStaticIP-Exec1**.   Er wird verwendet, um zu überprüfen, ob das Cmdlet erfolgreich ausgeführt wurde.  |
 
-### <a name="check-cluster-configuration"></a>Überprüfen der Clusterkonfiguration
 
-Sie führen das Cmdlet `Invoke-PreflightJetDRInstall` aus, um die folgende Clusterkonfiguration zu überprüfen:
-
-- Ob die Clusterdetails korrekt sind 
-- Ob es mindestens vier Hosts (Minimum) gibt
-- Ob eine VM mit demselben Namen vorhanden ist, der für die Installation von MSA angegeben wurde
-- Ob es in vCenter ein **jetdr**-Plug-In gibt
+1. [Zeigen Sie den Status der Ausführung an](concepts-run-command.md#view-the-status-of-an-execution).
 
 
-1. Wählen Sie **Skriptausführung** > **Pakete** > **Invoke-PreflightJetDRInstall** aus.
+### <a name="dhcp-based-ip-address"></a>DHCP-basierte IP-Adresse
+
+In diesem Schritt wird auch das JetStream vSphere Installation Bundle (VIB) auf den Clustern installiert, die DR-Schutz benötigen. 
+
+1. WÄhlen Sie **Befehl zur Ausführung** > **Pakete** > **Install-JetDRWithDHCP** aus.
 
 1. Geben Sie die erforderlichen Werte an, oder ändern Sie die Standardwerte, und wählen Sie **Ausführen** aus.
 
    | **Feld** | **Wert** |
    | --- | --- |
-   | **VMName** | Name der MSA-VM. Beispiel: **jetstreamServer**. |
-   | **Cluster** | Name des Clusters, in dem MSA bereitgestellt wird. Beispiel: **Cluster-1**. |
-   | **ProtectedCluster** | Der zu schützende Cluster. Beispiel: **Cluster-1**. |
-   | **Beibehalten bis**  | Aufbewahrungszeitraum der Cmdlet-Ausgabe. Der Standardwert beträgt ist 60.  |
-   | **Name für Ausführung angeben**  | Alphanumerischer Name, z. B. **check_jetserverdetails**.  |
-   | **Timeout**  | Der Zeitraum, nach dem ein Cmdlet beendet wird, wenn der Abschluss zu lange dauert.  |
-
-1. Überprüfen Sie **Benachrichtigungen**, um den Fortschritt anzuzeigen.  
-
-1. Wenn Fehler gemeldet werden, können Sie zum nächsten Schritt wechseln, um JetDR-MSA bereitzustellen.
-
-
-### <a name="deploy-jetdr-msa"></a>Bereitstellen von JetDR-MSA
-
-Sie führen das Cmdlet `Install-JetDR` zum Bereitstellen des JetDR-MSA, Registrieren von vCenter beim JetDR-MSA und Konfigurieren von Clustern aus. Die Bereitstellung lädt das JetDR-Paket von Microsoft Server Media (MMS) herunter und erstellt einen neuen Benutzer mit zugewiesenen erhöhten Rechten. 
-
-1. Wählen Sie **Skriptausführung** > **Pakete** > **Install-JetDR** aus.
-
-1. Geben Sie die erforderlichen Werte an, oder ändern Sie die Standardwerte, und wählen Sie **Ausführen** aus.
-
-   | **Feld** | **Wert** |
-   | --- | --- |
-   | **Network** | Netzwerkzuordnung für das bereitzustellende MSA. Beispiel: **VM-Netzwerk**.  |
-   | **HostName** | Hostname (FQDN) des bereitzustellenden MSA.  |
-   | **Credential** | Anmeldeinformationen des Stammbenutzers des bereitzustellenden MSA.   |
-   | **Gateway** | Gateway des bereitzustellenden MSA. Lassen Sie das Feld für DHCP leer.  |
-   | **Dns** | DNS-IP, die MSA verwenden sollte. Lassen Sie das Feld für DHCP leer.  |
-   | **MSIp** | IP-Adresse der bereitzustellenden MSA. Lassen Sie das Feld für DHCP leer.  |
-   | **Netzmaske** | Netzmaske des bereitzustellenden MSA. Lassen Sie das Feld für DHCP leer.  |
-   | **Cluster** | Name des Clusters, in dem MSA bereitgestellt wird. Beispiel: **Cluster-1**. |
-   | **VMName** | Name der MSA-VM. Beispiel: **jetstreamServer**. |
-   | **Datenspeicher** | Datenspeicher, in dem MSA bereitgestellt wird.  |
-   | **ProtectedCluster** | Der zu schützende Cluster. Beispiel: **Cluster-1**. |
-   | **RegisterWithIp** | Registrieren Sie MSA mit „Ip“ statt des Hostnamens. <ul><li>„True“, wenn der Hostname des MSA im DNS nicht registriert ist.</li><li>„False“, wenn der Hostname des MSA im DNS registriert ist. </li></ul> |
-   | **Beibehalten bis**  | Aufbewahrungszeitraum der Cmdlet-Ausgabe. Der Standardwert beträgt ist 60.  |
-   | **Name für Ausführung angeben**  | Alphanumerischer Name, z. B. **check_jetserverdetails**.  |
-   | **Timeout**  |  Der Zeitraum, nach dem ein Cmdlet beendet wird, wenn der Abschluss zu lange dauert.  |
-
-1. Überprüfen Sie **Benachrichtigungen**, um den Fortschritt anzuzeigen.  
+   | **ProtectedCluster** | Der Name des zu schützenden Azure VMware Solution privaten Cloudclusters, z. B. **Cluster-1**.  Sie können während der Installation nur einen Clusternamen angeben. |
+   | **Datenspeicher**  | Der Name des Datenspeichers, in dem Sie den JetStream-MSA bereitstellen.  |
+   | **VMName** | Name des JetStream-MSA-WMs, z. B. **jetstreamServer**. |
+   | **Cluster** | Name des Azure VMware Solution privaten Clusters, in dem der JetStream-MSA bereitgestellt wird, z. B. **Cluster-1**. |
+   | **Credential**  |  Anmeldeinformationen des Stammbenutzers des JetStream MSA VM.   |
+   | **HostName** | Hostname (FQDN) des JetStream-MSA-VM.  |
+   | **Network**  | Name des NSX-T-Netzwerksegments, in dem Sie den jetStream MSA bereitstellen müssen. |
+   | **Name für Ausführung angeben**  | Alphanumerischer Name der Ausführung, z. B. **Install-JetDRWithDHCP-Exec1**.   Er wird verwendet, um zu überprüfen, ob das Cmdlet erfolgreich ausgeführt wurde.  |
+ 
+ 
+1. [Zeigen Sie den Status der Ausführung an](concepts-run-command.md#view-the-status-of-an-execution).
+ 
+ 
+## <a name="add-jetstream-dr-to-new-azure-vmware-solution-clusters"></a>Hinzufügen von JetStream DR zu neuen Azure VMware Solution Clustern  
 
 
-## <a name="uninstall-jetstream-dr"></a>Deinstallieren von JetStream DR
-
-Sie deinstallieren JetStream DR in zwei Schritten. 
-
-
-### <a name="check-current-state-of-the-jetstream-appliance"></a>Überprüfen des aktuellen Status der JetStream-Appliance
-
-Sie führen das Cmdlet `Invoke-PreflightJetDRUninstall` aus, um die vorhandene MSA-VM- und Clusterkonfiguration zu diagnostizieren. Es überprüft den aktuellen Status der JetStream DR-Appliance und ob die minimalen Anforderungen für das Skript erfüllt werden:
-
-- Ob die Clusterdetails korrekt sind 
-- Ob es mindestens vier Hosts (Minimum) gibt
-- Ob vCenter beim MSA registriert wurde
-
-1. Wählen Sie **Skriptausführung** > **Pakete** > **Invoke-PreflightJetDRUninstall** aus.
+1. Wählen Sie **Befehl zur Ausführung** > **Pakete** > **Enable-JetDRForCluster** aus.
 
 1. Geben Sie die erforderlichen Werte an, oder ändern Sie die Standardwerte, und wählen Sie **Ausführen** aus.
 
    | **Feld** | **Wert** |
    | --- | --- |
-   | **MSIp** | IP-Adresse der MSA-VM.  |
-   | **Credential** | Anmeldeinformationen des Stammbenutzers der MSA-VM. Sie müssen zum Zeitpunkt der Installation identisch sein.  |
-   | **ProtectedCluster** | Name des geschützten Clusters, z. B. **Cluster-1**.  Dies muss der Cluster sein, der zum Zeitpunkt der Installation bereitgestellt wurde. |
-   | **Beibehalten bis**  | Aufbewahrungszeitraum der Cmdlet-Ausgabe. Der Standardwert beträgt ist 60.  |
-   | **Name für Ausführung angeben**  | Alphanumerischer Name, z. B. **uninstallcheck_jetserverdetails**.  |
-   | **Timeout**  |  Der Zeitraum, nach dem ein Cmdlet beendet wird, wenn der Abschluss zu lange dauert.  |
+   | **ProtectedCluster** | Der Name des zu schützenden Azure VMware Solution privaten Cloudclusters, z. B. **Cluster-1**.  Sie können während der Installation nur einen Clusternamen angeben. |
+   | **Credential**  |  Anmeldeinformationen des Stammbenutzers des JetStream MSA VM.   |
+   | **MSIp** | IP-Adresse des JetStream MSA VM.   |
+   | **Name für Ausführung angeben**  | Alphanumerischer Name der Ausführung, z. B. **Enable-JetDRForCluster-Exec1**.   Er wird verwendet, um zu überprüfen, ob das Cmdlet erfolgreich ausgeführt wurde.  |
+  
+1. [Zeigen Sie den Status der Ausführung an](concepts-run-command.md#view-the-status-of-an-execution).
+ 
+ 
+ 
 
-1. Überprüfen Sie **Benachrichtigungen**, um den Fortschritt anzuzeigen.  
+## <a name="configure-jetstream-dr"></a>Konfigurieren von JetStream DR 
+ 
+In diesem Abschnitt wird nur eine Übersicht der Schritte gegeben, die zum Konfigurieren der JetStream-Notfallwiederherstellung erforderlich sind.  Ausführliche Beschreibungen und Schritte finden Sie in der Dokumentation [Konfigurieren von JetStream-DR](https://www.jetstreamsoft.com/portal/jetstream-knowledge-base/configuring-jetstream-dr/). 
+ 
+Sobald JetStream DR MSA und JetStream VIB auf den Azure VMware Solution Clustern installiert sind, verwenden Sie das JetStream-Portal, um die verbleibenden Konfigurationsschritte auszuführen. 
 
 
 
+1. Greifen Sie über die vCenter-Appliance auf das JetStream-Portal zu.
 
-### <a name="uninstall-jetdr"></a>Deinstallieren von JetDR
+1. [Fügen Sie eine externe Speichersite hinzu.](https://www.jetstreamsoft.com/portal/jetstream-knowledge-base/add-a-storage-site/)  
 
-Sie führen das Cmdlet `Uninstall-JetDR` aus, um JetStream DR und die zugehörigen Komponenten zu deinstallieren.  Die Konfiguration des Clusters wird aufgehoben, die Registrierung von vCenter beim MSA wird aufgehoben, und dann wird der Benutzer entfernt.
+1. [Stellen Sie eine JetStream DRVA-Appliance bereit.](https://www.jetstreamsoft.com/portal/jetstream-knowledge-base/deploy-a-dr-virtual-appliance/) 
 
-1. Wählen Sie **Skriptausführung** > **Pakete** > **Uninstall-JetDR** aus.
+1. [Erstellen Sie ein JetStream-Replikationsprotokollspeichervolumen](https://www.jetstreamsoft.com/portal/jetstream-knowledge-base/create-a-replication-log-store-volume/) mithilfe eines der Datenspeicher, die für den Azure VMware Solution Cluster verfügbar sind. 
+
+   >[!TIP]
+   >Für das Replikationsprotokoll wird ein schneller lokaler Speicher bevorzugt, z.B. ein vSAN-Datenspeicher. 
+ 
+1. [Erstellen Sie eine mit JetStream geschützte Domäne.](https://www.jetstreamsoft.com/portal/jetstream-knowledge-base/create-a-protected-domain/) Sie stellen den Azure Blob Storage-Standort, die JetStream-DRVA-Instanz und das Replikationsprotokoll bereit, die in den vorherigen Schritten erstellt wurden. 
+
+1. [Wählen Sie die VMs aus](https://www.jetstreamsoft.com/portal/jetstream-knowledge-base/select-vms-for-protection/), die Sie schützen möchten, und starten Sie dann den [VM-Schutz](https://www.jetstreamsoft.com/portal/jetstream-knowledge-base/start-vm-protection/).
+
+ 
+Weitere Konfigurationsschritte für JetStream DR, z.B. das Erstellen eines Failover-Runbooks, das Aufrufen eines Failovers zum DR-Standort und das Aufrufen des Failbacks zum primären Standort, finden Sie in der Dokumentation zum [JetStream-Administrator-Führungsliniendokumentation](https://www.jetstreamsoft.com/portal/jetstream-article-categories/product-manual/).  
+ 
+## <a name="disable-jetstream-dr-on-an-azure-vmware-solution-cluster"></a>Deaktivieren von JetStream DR in einem Azure VMware Solution-Cluster  
+ 
+Dieses Cmdlet deaktiviert JetStream DR nur in einem der Cluster und deinstalliert JetStream DR nicht vollständig. 
+
+1. Wählen Sie **Befehl zur Ausführung** > **Pakete**  > **Disable-JetDRForCluster** aus.
 
 1. Geben Sie die erforderlichen Werte an, oder ändern Sie die Standardwerte, und wählen Sie **Ausführen** aus.
 
    | **Feld** | **Wert** |
    | --- | --- |
-   | **MSIp** | IP-Adresse der MSA-VM.  |
-   | **Credential** | Anmeldeinformationen des Stammbenutzers der MSA-VM. Sie müssen zum Zeitpunkt der Installation identisch sein.   |
-   | **ProtectedCluster** | Name des geschützten Clusters, z. B. **Cluster-1**.  Dies muss der Cluster sein, der zum Zeitpunkt der Installation bereitgestellt wurde. |
-   | **Beibehalten bis**  | Aufbewahrungszeitraum der Cmdlet-Ausgabe. Der Standardwert beträgt ist 60.  |
-   | **Name für Ausführung angeben**  | Alphanumerischer Name, z. B. **uninstallcheck_jetserverdetails**.  |
-   | **Timeout**  |  Der Zeitraum, nach dem ein Cmdlet beendet wird, wenn der Abschluss zu lange dauert.  |
+   | **ProtectedCluster** | Der Name des zu schützenden Azure VMware Solution privaten Cloudclusters, z. B. **Cluster-1**.  Sie können während der Installation nur einen Clusternamen angeben. |
+   | **Credential**  |  Anmeldeinformationen des Stammbenutzers des JetStream MSA VM.   |
+   | **MSIp** | IP-Adresse des JetStream MSA VM.   |
+   | **Name für Ausführung angeben**  | Alphanumerischer Name der Ausführung, **z.B. Disable-JetDRForCluster-Exec1.**   Er wird verwendet, um zu überprüfen, ob das Cmdlet erfolgreich ausgeführt wurde.  |
 
-1. Überprüfen Sie **Benachrichtigungen**, um den Fortschritt anzuzeigen.  
+1. [Zeigen Sie den Status der Ausführung an](concepts-run-command.md#view-the-status-of-an-execution).
+
+
+ 
+## <a name="uninstall-jetstream-dr"></a>Deinstallieren von JetStream DR  
+
+1. Wählen Sie **Skriptausführung** > **Pakete** > **Invoke-PreflightJetDRUninstall** aus. Dieses Cmdlet überprüft, ob der Cluster über mindestens vier Hosts verfügt (mindestens erforderlich). 
+
+1. Geben Sie die erforderlichen Werte an, oder ändern Sie die Standardwerte, und wählen Sie **Ausführen** aus.
+
+   | **Feld** | **Wert** |
+   | --- | --- |
+   | **ProtectedCluster** | Der Name des zu schützenden Azure VMware Solution privaten Cloudclusters, z. B. **Cluster-1**.  Sie können während der Installation nur einen Clusternamen angeben. |
+   | **Credential**  |  Anmeldeinformationen des Stammbenutzers des JetStream MSA VM.   |
+   | **MSIp** | IP-Adresse des JetStream MSA VM.   |
+   | **Name für Ausführung angeben**  | Alphanumerischer Name der Ausführung, z.B. **Invoke-PreflightJetDRUninstall-Exec1.**   Er wird verwendet, um zu überprüfen, ob das Cmdlet erfolgreich ausgeführt wurde.  |
+
+1. [Zeigen Sie den Status der Ausführung an](concepts-run-command.md#view-the-status-of-an-execution).
+
+1. Wählen Sie nach erfolgreichem Abschluss des Cmdlets "Preflight" **JetDR Deinstallieren**, geben Sie die erforderlichen Werte ein oder ändern Sie die standardmäßigen Werte, und wählen Sie **Ausführen**.
+
+   | **Feld** | **Wert** |
+   | --- | --- |
+   | **ProtectedCluster** | Der Name des zu schützenden Azure VMware Solution privaten Cloudclusters, z. B. **Cluster-1**.  Sie können während der Installation nur einen Clusternamen angeben. |
+   | **Credential**  |  Anmeldeinformationen des Stammbenutzers des JetStream MSA VM.   |
+   | **MSIp** | IP-Adresse des JetStream MSA VM.   |
+   | **Name für Ausführung angeben**  | Alphanumerischer Name der Ausführung, z. B.**Uninstall-JetDR-Exec1**.   Er wird verwendet, um zu überprüfen, ob das Cmdlet erfolgreich ausgeführt wurde.  |
+
+ 1. [Zeigen Sie den Status der Ausführung an](concepts-run-command.md#view-the-status-of-an-execution).
+
+
+## <a name="region-availability"></a>Regionale Verfügbarkeit
+
+JetStream DR for Azure VMware Solution ist in den folgenden Regionen verfügbar: 
+
+- East US 
+
+- Nordeuropa 
+
+- USA (Süden) 
+
+- Europa, Westen 
+
+- USA (Mitte) 
+
+- USA (Westen) 
+
+- Asien, Osten 
+
+- Japan, Osten 
+
+- Brasilien Süd 
+
+- Kanada, Osten 
+
+- UK, Westen 
+
+
+ 
+## <a name="support"></a>Support  
+ 
+JetStream DR ist eine Lösung, die [JetStream Software](https://www.jetstreamsoft.com/) unterstützt. Wenden Sie sich bei Produkt- oder Supportproblemen mit JetStream an support-avs@jetstreamsoft.com.  
+ 
+Azure VMware Solution verwendet den Befehl zum Ausführen (Vorschau), um die Installation und Deinstallation von JetStream DR zu automatisieren. Wenden Sie sich bei jedem Problem mit den Befehlen zur Ausführungs an den Microsoft-Support. Wenden Sie sich zum Support bei Problemen mit der Installation und Deinstallation von JetStream-Cmdlets an JetStream. 
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [JetStream DR für Azure VMware Solution – Vollständige Demo](https://vimeo.com/475620858/2ce9413248)
+- [Infrastruktureinrichtung: JetStream DR für Azure VMware Solution](https://vimeo.com/480574312/b5386a871c) 
+
+- [JetStream DR für Azure VMware Solution (Vollständige Demo)](https://vimeo.com/475620858/2ce9413248)
    
    - [Erste Schritte mit JetStream DR für Azure VMware Solution](https://vimeo.com/491880696/ec509ff8e3)
 
-   - [Konfiguration und Schutz von VMs](https://vimeo.com/491881616/d887590fb2)
+   - [Konfigurieren und Schützen von VMs](https://vimeo.com/491881616/d887590fb2)
 
    - [Failover zu Azure VMware Solution](https://vimeo.com/491883564/ca9fc57092)
 
    - [Failback zu lokal](https://vimeo.com/491884402/65ee817b60)
 
-- [Infrastruktureinrichtung für JetStream DR für Azure VMware Solution](https://vimeo.com/480574312/b5386a871c) (*technische Details, keine Sprachspur*)

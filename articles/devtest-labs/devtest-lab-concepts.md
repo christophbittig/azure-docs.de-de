@@ -1,14 +1,14 @@
 ---
-title: DevTest Labs-Konzepte | Microsoft Docs
+title: Azure DevTest Labs-Konzepte
 description: Lernen Sie die grundlegenden Konzepte von DevTest Labs kennen, und erfahren Sie, wie Sie virtuelle Azure-Computer damit einfach erstellen, verwalten und überwachen können.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/13/2021
-ms.openlocfilehash: e505ecb8ce4dc070b4ed79cd55514c4ef8ba0ead
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 0363eaec2d9485b34cc8dee10f50373363d43d51
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954107"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637235"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-Konzepte
 ## <a name="overview"></a>Übersicht

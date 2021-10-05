@@ -1,20 +1,15 @@
 ---
 title: Erkennung von Audioeffekten
-titleSuffix: Azure Video Analyzer
 description: Die Erkennung von Audioeffekten ist eine der KI-Funktionen von Azure Video Analyzer for Media. Sie erkennt verschiedene akustische Ereignisse und klassifiziert sie in verschiedene Akustikkategorien (z. B. Schüsse, Schreie und Reaktionen einer Menschenmenge).
-author: Juliako
-manager: femila
-ms.service: azure-video-analyzer
-ms.subservice: azure-video-analyzer-media
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/12/2021
 ms.author: juliako
-ms.openlocfilehash: d576408cc0d65cc908a24b27ae2a6a50ed7aa9ee
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 689abf9c61c0b1a462cfafe02c461906626e516b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112121553"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632536"
 ---
 #  <a name="audio-effects-detection-preview"></a>Erkennung von Audioeffekten (Vorschau)
 
@@ -35,7 +30,7 @@ Die **Erkennung von Audioeffekten** kann acht verschiedene Kategorien erkennen u
 
 |Indizierungstyp |Standardindizierung| Erweiterte Indizierung|
 |---|---|---|
-|**Name der Voreinstellung** |**„Nur Audio“** <br/>**„Video + Audio“** |**„Erweitertes Audio“**<br/> **„Erweitertes Video + Audio“**|
+|**Name der Voreinstellung** |**„Nur Audio“** <br/>**„Video + Audio“** |**„Erweitertes Audio“**<br/> **„Erweitertes Video + Audio“**|
 |**Im Erkenntnisbereich angezeigt**|| V|
 |Reaktion einer Menschenmenge |V| V|
 | Stille| V| V|
@@ -109,7 +104,7 @@ Wenn Audioeffekte in den Untertiteldateien abgerufen werden, werden sie in der f
 |---|---|
 |SRT |00:00:00,000  00:00:03,671<br/>[Schuss]|
 |VTT |00:00:00.000  00:00:03.671<br/>[Schuss]|
-|TTML|Vertrauen: 0.9047 <br/> <p begin="00:00:00.000" end="00:00:03.671">[Schuss]</p>|
+|TTML|Vertrauen: 0.9047 <br/> `<p begin="00:00:00.000" end="00:00:03.671">[Gunshot]</p>`|
 |TXT |[Schuss]|
 |CSV |0.9047,00:00:00.000,00:00:03.671, [Schuss]|
 

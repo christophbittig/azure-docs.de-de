@@ -3,14 +3,14 @@ title: Planen und Bereitstellen von Servern mit Azure Arc-Unterstützung
 description: Erfahren Sie, wie Sie eine große Anzahl von Computern für Server mit Azure Arc-Unterstützung aktivieren, um die Konfiguration wichtiger Sicherheits-, Verwaltungs- und Überwachungsfunktionen in Azure zu vereinfachen.
 ms.date: 08/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a31a886d4eb687c92d73c39617a6993e4b3f835
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: a7494bb45eeed9392a44aef400483cd9cfcfb091
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123104918"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788931"
 ---
-# <a name="plan-and-deploy-arc-enabled-servers"></a>Planen und Bereitstellen von Servern mit Arc-Unterstützung
+# <a name="plan-and-deploy-azure-arc-enabled-servers"></a>Planen und Bereitstellen von Servern mit Azure Arc-Unterstützung
 
 Die Bereitstellung eines IT-Infrastrukturdiensts oder einer Geschäftsanwendung ist für jedes Unternehmen eine Herausforderung. Damit dies erfolgreich umgesetzt werden kann und dabei keine unangenehmen Überraschungen und unerwartete Kosten auftreten, müssen Sie gründlich planen, sodass Sie bestmöglich vorbereitet sind. Um die Bereitstellung von Servern mit Azure Arc-Unterstützung jeder Größenordnung zu planen, sollten Sie die Entwurfs- und Bereitstellungskriterien abdecken, die erfüllt sein müssen, damit die Aufgaben erfolgreich abgeschlossen werden können.
 
@@ -35,7 +35,7 @@ Weitere Informationen zu unseren Empfehlungen für die Bereitstellung in großem
 
 * Auf Ihren Computern wird ein [unterstütztes Betriebssystem](agent-overview.md#supported-operating-systems) für den Connected Machine-Agent ausgeführt.
 * Ihre Computer sind von Ihrem lokalen Netzwerk oder einer anderen Cloudumgebung aus entweder direkt oder über einen Proxyserver mit Ressourcen in Azure verbunden.
-* Zum Installieren und Konfigurieren des Connected Machine-Agents der Server mit Arc-Unterstützung ist ein Konto mit erhöhten Rechten (d. h. Administrator oder Root-Benutzer) auf den Computern vorhanden.
+* Zum Installieren und Konfigurieren des Connected Machine-Agents der Server mit Azure Arc-Unterstützung ist ein Konto mit erhöhten Rechten (d. h. Administrator oder Root-Benutzer) auf den Computern vorhanden.
 * Zum Durchführen des Onboardings von Computern müssen Sie der Rolle **Onboarding verbundener Azure-Computer** angehören.
 * Zum Lesen, Ändern oder Löschen eines Computers müssen Sie der Rolle **Ressourcenadministrator für Azure Connected Machine** angehören.
 
@@ -56,22 +56,22 @@ Richten Sie einen formalen Plan ein, der den Umfang und die Details der Pilotpha
 
 ## <a name="phase-1-build-a-foundation"></a>Phase 1: Erstellen eines Fundaments
 
-In dieser Phase aktivieren System Engineers oder Administratoren die Kernfunktionen in den Azure-Abonnements ihrer Organisationen, um die Grundlage zu schaffen, bevor sie ihre Computer für die Verwaltung durch Server mit Arc-Unterstützung und andere Azure-Dienste aktivieren.
+In dieser Phase aktivieren System Engineers oder Administratoren die Kernfunktionen in den Azure-Abonnements ihrer Organisationen, um die Grundlage zu schaffen, bevor sie ihre Computer für die Verwaltung durch Server mit Azure Arc-Unterstützung und andere Azure-Dienste aktivieren.
 
 |Aufgabe |Detail |Duration |
 |-----|-------|---------|
-| [Erstellen einer Ressourcengruppe](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | Eine dedizierte Ressourcengruppe, um nur Server mit Arc-Unterstützung einzubeziehen und die Verwaltung und Überwachung dieser Ressourcen zu zentralisieren. | Eine Stunde |
-| Anwenden von [Tags](../../azure-resource-manager/management/tag-resources.md) zur Unterstützung der Organisation von Computern. | Bewerten und Entwickeln einer IT-ausgerichteten [Markierungsstrategie](/azure/cloud-adoption-framework/decision-guides/resource-tagging/), mit der die Komplexität der Verwaltung Ihrer Server mit Arc-Unterstützung reduziert und Verwaltungsentscheidungen vereinfacht werden können. | Ein Tag |
+| [Erstellen einer Ressourcengruppe](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | Eine dedizierte Ressourcengruppe, um nur Server mit Azure Arc-Unterstützung einzubeziehen und die Verwaltung und Überwachung dieser Ressourcen zu zentralisieren. | Eine Stunde |
+| Anwenden von [Tags](../../azure-resource-manager/management/tag-resources.md) zur Unterstützung der Organisation von Computern. | Bewerten und Entwickeln einer auf die IT ausgerichteten [Markierungsstrategie](/azure/cloud-adoption-framework/decision-guides/resource-tagging/), mit der die Komplexität der Verwaltung Ihrer Server mit Azure Arc-Unterstützung reduziert und Verwaltungsentscheidungen vereinfacht werden können. | Ein Tag |
 | Entwerfen und Bereitstellen von [Azure Monitor-Protokollen](../../azure-monitor/logs/data-platform-logs.md) | Bewerten von [Entwurfs- und Bereitstellungsüberlegungen](../../azure-monitor/logs/design-logs-deployment.md), um zu bestimmen, ob Ihre Organisation einen vorhandenen Log Analytics-Arbeitsbereich verwenden oder einen anderen implementieren sollte, um gesammelte Protokolldaten von Hybridservern und -computern zu speichern.<sup>1</sup> | Ein Tag |
 | [Entwickeln eines Azure Policy](../../governance/policy/overview.md)-Governanceplans | Bestimmen Sie, wie Sie die Governance von Hybridservern und -computern im Abonnement- oder Ressourcengruppenumfang mit Azure Policy implementieren. | Ein Tag |
-| Konfigurieren der [rollenbasierten Zugriffssteuerung](../../role-based-access-control/overview.md) (Role Based Access Control, RBAC) | Entwickeln Sie einen Zugriffsplan, um zu steuern, wer Zugriff auf die Verwaltung von Servern mit Arc-Unterstützung hat, und wer Daten aus anderen Azure-Diensten und -Lösungen anzeigen kann. | Ein Tag |
+| Konfigurieren der [rollenbasierten Zugriffssteuerung](../../role-based-access-control/overview.md) (Role Based Access Control, RBAC) | Entwickeln Sie einen Zugriffsplan, um zu steuern, wer Zugriff auf die Verwaltung von Servern mit Azure Arc-Unterstützung hat und wer Daten aus anderen Azure-Diensten und -Lösungen anzeigen kann. | Ein Tag |
 | Identifizieren von Computern mit bereits installiertem Log Analytics-Agent | Führen Sie die folgende Protokollabfrage in [Log Analytics](../../azure-monitor/logs/log-analytics-overview.md) durch, um die Konvertierung vorhandener Log Analytics-Agent-Bereitstellungen in einem von der Erweiterung verwalteten Agent zu unterstützen:<br> Heartbeat <br> &#124;, wobei TimeGenerated > ago(30d) <br> &#124;, wobei ResourceType == "machines" und (ComputerEnvironment == "Non-Azure") <br> &#124; zusammenfassen nach Computer, ResourceProvider, ResourceType, Computer Environment | Eine Stunde |
 
 <sup>1</sup> Ein wichtiger Aspekt bei der Bewertung des Entwurfs Ihres Log Analytics-Arbeitsbereichs ist die Integration in Azure Automation zur Unterstützung der Funktionen „Updateverwaltung“ und „Änderungsnachverfolgung und Bestand“ sowie Azure Security Center und Azure Sentinel. Wenn Ihre Organisation bereits über ein Automation-Konto verfügt und dessen Verwaltungsfeatures aktiviert hat, die mit einem Log Analytics-Arbeitsbereich verknüpft sind, bewerten Sie, ob Sie Verwaltungsvorgänge zentralisieren und optimieren und die Kosten minimieren können, indem Sie diese vorhandenen Ressourcen nutzen, um zum Vergleich ein doppeltes Konto, einen doppelten Arbeitsbereich usw. zu erstellen.
 
-## <a name="phase-2-deploy-arc-enabled-servers"></a>Phase 2: Bereitstellen von Servern mit Arc-Unterstützung
+## <a name="phase-2-deploy-azure-arc-enabled-servers"></a>Phase 2: Bereitstellen von Servern mit Azure Arc-Unterstützung
 
-Als Nächstes ergänzen wir die in Phase 1 gelegte Grundlage, indem wir den Connected Computer-Agent für die Server mit Arc-Unterstützung vorbereiten und bereitstellen.
+Als Nächstes ergänzen Sie die in Phase 1 gelegte Grundlage, indem Sie den Connected Computer-Agent für die Server mit Azure Arc-Unterstützung vorbereiten und bereitstellen.
 
 |Aufgabe |Detail |Duration |
 |-----|-------|---------|
@@ -88,7 +88,7 @@ In Phase 3 aktivieren Administratoren oder System Engineers die Automatisierung 
 |Erstellen einer Resource Health-Warnung |Wenn ein Server länger als 15 Minuten keine Heartbeats an Azure sendet, kann dies bedeuten, dass er offline ist, die Netzwerkverbindung blockiert wurde oder der Agent nicht ausgeführt wird. Entwickeln Sie einen Plan, wie Sie auf diese Vorfälle reagieren und sie untersuchen, und verwenden Sie [Resource Health-Warnungen](../..//service-health/resource-health-alert-monitor-guide.md), um benachrichtigt zu werden, wenn sie beginnen.<br><br> Geben Sie Folgendes an, wenn Sie die Warnung konfigurieren:<br> **Ressourcentyp** = **Server mit Azure Arc-Unterstützung**<br> **Aktueller Ressourcenstatus** = **Nicht verfügbar**<br> **Vorheriger Ressourcenstatus** = **Verfügbar** | Eine Stunde |
 |Erstellen einer Azure Advisor-Warnung | Für einen optimalen Betrieb und um sicherzustellen, dass die aktuellsten Sicherheits- und Fehlerfixes wirksam sind, sollten Sie den Agent der Server mit Azure Arc-Unterstützung stets auf dem neuesten Stand zu halten. Veraltete Agents werden mit einer [Azure Advisor-Warnung](../../advisor/advisor-alerts-portal.md) identifiziert.<br><br> Geben Sie Folgendes an, wenn Sie die Warnung konfigurieren:<br> **Empfehlungstyp** = **Upgrade auf die aktuelle Version des Azure Connected Machine-Agents** | Eine Stunde |
 |[Weisen Sie Azure-Richtlinien](../../governance/policy/assign-policy-portal.md) Ihrem Abonnement- oder Ressourcengruppenbereich zu. |Weisen Sie dem Abonnement- oder Ressourcengruppenbereich die [Richtlinie](../../azure-monitor/vm/vminsights-enable-policy.md) **Azure Monitor für VMs aktivieren** zu (und andere, die Ihren Anforderungen entsprechen). Mit Azure Policy können Sie Richtliniendefinitionen zuweisen, die die erforderlichen Agents für VM-Erkenntnisse in Ihrer gesamten Umgebung installieren.| Varies |
-|[Aktivieren der Updateverwaltung für Ihre Server mit Arc-Unterstützung](../../automation/update-management/enable-from-automation-account.md) |Konfigurieren Sie die Updateverwaltung in Azure Automation zur Verwaltung von Betriebssystemupdates für Ihre Windows- und Linux-VMs, die bei Servern mit Arc-Unterstützung registriert sind. | 15 Minuten |
+|[Aktivieren der Updateverwaltung für Ihre Server mit Azure Arc-Unterstützung](../../automation/update-management/enable-from-automation-account.md) |Konfigurieren Sie die Updateverwaltung in Azure Automation zur Verwaltung von Betriebssystemupdates für Ihre Windows- und Linux-VMs, die bei Servern mit Azure Arc-Unterstützung registriert sind. | 15 Minuten |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

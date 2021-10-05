@@ -4,15 +4,14 @@ description: Dieser Artikel enthält bewährte Methoden für die Bereitstellung 
 author: shsandeep123
 ms.author: sandeepshah
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: 4aa2a22f6e7bfef4a04eb65ac6063c81077b6153
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d357a85449a6ae734b3311f2649180b36646d4f4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355497"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214330"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Bewährte Methoden zur Bereitstellung von Azure Purview
 
@@ -53,7 +52,7 @@ Im allgemeinen Ansatz werden diese übergeordneten Ziele in verschiedene Kategor
 |---------|---------|
 |Ermittlung|Administratorbenutzer sollten in der Lage sein, Azure- und Nicht-Azure-Datenquellen (einschließlich lokaler Quellen) zu scannen, um automatisch Informationen zu den Datenressourcen zu erfassen.|
 |Klassifizierung|Die Plattform sollte Daten auf Basis einer Stichprobe der Daten automatisch klassifizieren und eine manuelle Außerkraftsetzung mithilfe benutzerdefinierter Klassifizierungen ermöglichen.|
-|Verbrauch|Die geschäftlichen Benutzer sollten in der Lage sein, Informationen zu den einzelnen Ressourcen sowohl für geschäftliche als auch für technische Metadaten zu finden.|
+|Nutzung|Die geschäftlichen Benutzer sollten in der Lage sein, Informationen zu den einzelnen Ressourcen sowohl für geschäftliche als auch für technische Metadaten zu finden.|
 |Herkunft|Jede Ressource muss eine grafische Ansicht der zugrunde liegenden Datasets anzeigen, damit die Benutzer die ursprünglichen Quellen und die vorgenommenen Änderungen verstehen.|
 |Zusammenarbeit|Die Plattform muss Benutzern die Zusammenarbeit ermöglichen, indem zusätzliche Informationen zu den einzelnen Datenressourcen bereitgestellt werden.|
 |Berichterstellung|Die Benutzer müssen in der Lage sein, die Berichte über die Datenumgebung einschließlich vertraulicher Daten und Daten, die eine zusätzliche Anreicherung benötigen, anzuzeigen.|
@@ -168,7 +167,6 @@ In dieser Phase muss Purview für eine sehr kleine Gruppe von Benutzern erstellt
 |Aufgabe|Detail|Duration|
 |---------|---------|---------|
 |Erfassen und Akzeptieren von Anforderungen|Diskussion mit allen Projektbeteiligten, um einen vollständigen Satz von Anforderungen zu erfassen. Verschiedene Rollen müssen teilnehmen, um einer Teilmenge von Anforderungen zuzustimmen, damit die einzelnen Phasen des Projekts abgeschlossen werden können.|1 Woche|
-|Einrichten des Starter Kits|Navigieren Sie durch [Purview-Schnellstart](create-catalog-portal.md), und richten Sie das [Purview Starter Kit](tutorial-scan-data.md) ein, um allen Projektbeteiligten eine Purview-Demo zu zeigen.|1 Tag|
 |Navigieren in Purview|Erfahren Sie von der Startseite aus, wie Purview verwendet wird.|1 Tag|
 |Konfigurieren von ADF für Datenherkunft|Identifizieren Sie wichtige Pipelines und Datenressourcen. Sammeln Sie alle Informationen, die für das Herstellen der Verbindung mit einem internen ADF-Konto erforderlich sind.|1 Tag|
 |Überprüfen einer Datenquelle wie Azure Data Lake Storage|Fügen Sie die Datenquelle hinzu, und richten Sie einen Scan ein. Stellen Sie sicher, dass der Scan alle Ressourcen erfolgreich erkennt.|2 Tage|
@@ -267,5 +265,5 @@ Weitere Maßnahmen zur Härtung können ausgeführt werden:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Scannen von Daten mit Azure Purview (Vorschau)](tutorial-scan-data.md)
-- [Tutorial: Navigieren zur Azure Purview-Startseite (Vorschau) und Suchen nach einer Ressource](tutorial-asset-search.md)
+- [Bewährte Methoden für Sammlungen](concept-best-practices-collections.md)
+- [Tutorial: Navigieren auf der Startseite von Azure Purview (Vorschau) und Suchen nach einer Ressource](tutorial-asset-search.md)

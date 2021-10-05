@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 659f62cb8e42a4e2aba2e51dfcfee9826a614923
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: c8460d6df9710e5a8752a0edd50c6b83276725ad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588326"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128668583"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Einschränkungen in Azure Database for MySQL – Flexible Server (Vorschau)
 
@@ -20,7 +20,7 @@ ms.locfileid: "113588326"
 > [!IMPORTANT]
 > Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
-Dieser Artikel beschreibt Einschränkungen im Azure Database for MySQL Flexible Server-Dienst. [Allgemeine Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html) in der MySQL-Datenbank-Engine sind ebenfalls anwendbar. Informationen zu den Tarifen für Ressourcen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Compute und Speicher](concepts-compute-storage.md).
+Dieser Artikel beschreibt Einschränkungen im Azure Database for MySQL Flexible Server-Dienst. [Allgemeine Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html) in der MySQL-Datenbank-Engine sind ebenfalls anwendbar. Weitere Informationen zu Ressourcenbeschränkungen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Compute und Speicher](concepts-compute-storage.md).
 
 ## <a name="server-parameters"></a>Serverparameter
 
@@ -29,11 +29,9 @@ Dieser Artikel beschreibt Einschränkungen im Azure Database for MySQL Flexible 
 
 Azure Database für MySQL unterstützt das Anpassen einiger Serverparameter. Die Minimal- und Maximalwerte einiger Parameter (z. B. `max_connections`, `join_buffer_size`, `query_cache_size`) wird durch die Computeebene und die Computegröße des Servers bestimmt. Im Artikel [Serverparameter](./concepts-server-parameters.md) finden Sie weitere Informationen zu diesen Grenzwerten.
 
-Kennwort-Plug-ins wie „validate_password“ und „caching_sha2_password“ werden vom Dienst nicht unterstützt.
-
 ## <a name="storage-engines"></a>Speicher-Engines
 
-MySQL unterstützt viele Speicher-Engines. Für Azure Database for MySQL Flexible Server werden die folgenden Speicher-Engines unterstützt und nicht unterstützt:
+MySQL unterstützt viele Speicher-Engines. Für Azure Database for MySQL Flexible Server enthält die folgende Liste die unterstützten und nicht unterstützten Speicher-Engines:
 
 ### <a name="supported"></a>Unterstützt
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
@@ -46,8 +44,6 @@ MySQL unterstützt viele Speicher-Engines. Für Azure Database for MySQL Flexibl
 - [FEDERATED](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
 ## <a name="privileges--data-manipulation-support"></a>Berechtigungen und Unterstützung der Datenbearbeitung
-
-Viele Serverparameter und -einstellungen können unbeabsichtigterweise die Serverleistung beeinträchtigen oder ACID-Eigenschaften des MySQL-Servers verschlechtern. Um die Dienstintegrität und die SLA auf Produktebene aufrechtzuerhalten, macht dieser Dienst nicht mehrere Rollen verfügbar. 
 
 Der MySQL-Dienst gestattet keinen direkten Zugriff auf das zugrunde liegende Dateisystem. Einige Befehle zur Datenbearbeitung werden nicht unterstützt. 
 
@@ -71,8 +67,6 @@ Folgendes wird nicht unterstützt:
 
 ### <a name="networking"></a>Netzwerk
 - Die Konnektivitätsmethode kann nicht geändert werden, nachdem der Server erstellt wurde. Wenn der Server mit *Privater Zugriff (VNet-Integration)* erstellt wurde, kann er nach der Erstellung nicht in *Öffentlicher Zugriff (zugelassene IP-Adressen)* geändert werden und umgekehrt.
-- TLS/SSL ist standardmäßig aktiviert und kann nicht deaktiviert werden.
-- Die auf dem Server unterstützte TLS-Mindestversion ist TLS1.2. Weitere Informationen finden Sie unter [Herstellen einer Verbindung per TLS/SSL](./how-to-connect-tls-ssl.md).
 
 ### <a name="stopstart-operation"></a>Vorgang „Anhalten/Starten“
 - Nicht unterstützt bei zonenredundanten HA-Konfigurationen (sowohl primär als auch Standby).

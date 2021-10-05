@@ -16,7 +16,7 @@
           href: getting-started.md
         - name: Azure-Portal
           href: get-started-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: get-started-cli.md
 - name: Konzepte
   items:
@@ -106,9 +106,11 @@
       href: publish-devops.md
     - name: Veröffentlichen mit einer ARM-Vorlage
       href: publish-azure-resource-manager.md
+    - name: Hinzufügen von Azure Front Door
+      href: front-door-manual.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/staticwebapp
 - name: Ressourcen
   items:

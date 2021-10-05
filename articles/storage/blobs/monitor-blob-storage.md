@@ -1,5 +1,5 @@
 ---
-title: Überwachen von Azure Blob Storage | Microsoft-Dokumentation
+title: Überwachen von Azure Blob Storage
 description: Erfahren Sie, wie Sie die Leistung und Verfügbarkeit von Azure Blob Storage überwachen können. Überwachen Sie Azure Blob Storage-Daten, erfahren Sie mehr über die Konfiguration, und analysieren Sie Metrik- und Protokolldaten.
 author: normesta
 services: storage
@@ -9,26 +9,27 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f38149e2259dbb6724a81e8139f46bd65a0edff0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bcfd37ff8c030136e37b4289bc37006012891412
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349428"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128617543"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Überwachen von Azure Blob Storage
 
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen basieren, sollten Sie diese Ressourcen auf Verfügbarkeit, Leistung und Betrieb überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure Blob Storage generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor verwenden können, um Warnungen für diese Daten zu analysieren.
 
 > [!NOTE]
-> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Diese Vorschau unterstützt Protokolle für Blobdateien (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Dieses Feature ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie in der [Speicherkontoübersicht](../common/storage-account-overview.md).
+> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen der öffentlichen und der US Government-Cloud für Vorschautests zur Verfügung. Diese Vorschau unterstützt Protokolle für Blobs (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Dieses Feature ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie unter [Speicherkontoübersicht](../common/storage-account-overview.md).
 
 ## <a name="monitor-overview"></a>Azure Monitor: Übersicht
 
 Im Azure-Portal enthält die Seite **Übersicht** für jede Blobspeicherressource eine kurze Übersicht über die Ressourcennutzung, beispielsweise Anforderungen und stündliche Abrechnung. Dies sind nützliche Informationen, die aber nur einen kleinen Teil der verfügbaren Überwachungsdaten ausmachen. Einige dieser Daten werden automatisch erfasst und sind für die Analyse verfügbar, sobald Sie die Ressource erstellen. Mit einigen Konfigurationsschritten können Sie zusätzliche Typen von Datensammlungen aktivieren.
 
 ## <a name="what-is-azure-monitor"></a>Was ist Azure Monitor?
-Azure Blob Storage protokolliert Überwachungsdaten mit [Azure Monitor](../../azure-monitor/overview.md), einem Azure-Dienst zur vollständigen Stapelüberwachung. Azure Monitor bietet einen vollständigen Satz von Funktionen zum Überwachen Ihrer Azure-Ressourcen, von Ressourcen in anderen Clouds sowie von lokalen Ressourcen. 
+
+Azure Blob Storage protokolliert Überwachungsdaten mit [Azure Monitor](../../azure-monitor/overview.md), einem Azure-Dienst zur vollständigen Stapelüberwachung. Azure Monitor bietet einen vollständigen Satz von Funktionen zum Überwachen Ihrer Azure-Ressourcen, von Ressourcen in anderen Clouds sowie von lokalen Ressourcen.
 
 Beginnen Sie mit dem Artikel [Überwachen von Azure-Ressourcen mit Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md), in dem die folgenden Punkte beschrieben werden:
 
@@ -42,7 +43,7 @@ Die folgenden Abschnitte basieren auf diesem Artikel. Darin werden die spezifisc
 
 ## <a name="monitoring-data"></a>Überwachungsdaten
 
-Azure Blob Storage erfasst dieselben Arten von Überwachungsdaten wie andere Azure-Ressourcen, die unter [Überwachungsdaten von Azure-Ressourcen](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data) beschrieben sind. 
+Azure Blob Storage erfasst dieselben Arten von Überwachungsdaten wie andere Azure-Ressourcen, die unter [Überwachungsdaten von Azure-Ressourcen](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data) beschrieben sind.
 
 Ausführliche Informationen zu den Metriken und Protokollen, die von Azure Blob Storage erstellt werden, finden Sie in der [Überwachungsdatenreferenz zu Azure Blob Storage](monitor-blob-storage-reference.md).
 
@@ -52,9 +53,9 @@ Wenn Sie möchten, können Sie klassische Metriken und Protokolle auch weiterhin
 
 ## <a name="collection-and-routing"></a>Sammlung und Routing
 
-Plattformmetriken und das Aktivitätsprotokoll werden automatisch erfasst, können jedoch mithilfe einer Diagnoseeinstellung an andere Speicherorte weitergeleitet werden. 
+Plattformmetriken und das Aktivitätsprotokoll werden automatisch erfasst, können jedoch mithilfe einer Diagnoseeinstellung an andere Speicherorte weitergeleitet werden.
 
-Damit Sie Ressourcenprotokolle erfassen können, müssen Sie eine Diagnoseeinstellung erstellen. Wählen Sie beim Erstellen dieser Einstellung **Blob** als den Speichertyp aus, für den Sie Protokolle aktivieren möchten. Geben Sie dann eine der folgenden Kategorien von Vorgängen an, für die Protokolle erfasst werden sollen. 
+Damit Sie Ressourcenprotokolle erfassen können, müssen Sie eine Diagnoseeinstellung erstellen. Wählen Sie beim Erstellen dieser Einstellung **Blob** als den Speichertyp aus, für den Sie Protokolle aktivieren möchten. Geben Sie dann eine der folgenden Kategorien von Vorgängen an, für die Protokolle erfasst werden sollen.
 
 | Kategorie | BESCHREIBUNG |
 |:---|:---|
@@ -63,16 +64,16 @@ Damit Sie Ressourcenprotokolle erfassen können, müssen Sie eine Diagnoseeinste
 | StorageDelete | Löschvorgänge für Objekte. |
 
 > [!NOTE]
-> Data Lake Storage Gen2 wird nicht als Speichertyp angezeigt. Dies liegt daran, dass es sich bei Data Lake Storage Gen2 um eine Reihe von in Blob Storage verfügbaren Funktionen handelt. 
+> Data Lake Storage Gen2 wird nicht als Speichertyp angezeigt. Dies liegt daran, dass es sich bei Data Lake Storage Gen2 um eine Reihe von in Blob Storage verfügbaren Funktionen handelt.
 
 ## <a name="creating-a-diagnostic-setting"></a>Erstellen einer Diagnoseeinstellung
 
-Sie können eine Diagnoseeinstellung über das Azure-Portal, PowerShell, die Azure CLI, eine Azure Resource Manager-Vorlage oder Azure Policy erstellen. 
+Sie können eine Diagnoseeinstellung über das Azure-Portal, PowerShell, die Azure CLI, eine Azure Resource Manager-Vorlage oder Azure Policy erstellen.
 
 Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../../azure-monitor/essentials/diagnostic-settings.md).
 
 > [!NOTE]
-> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Diese Vorschau unterstützt Protokolle für Blobdateien (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Dieses Feature ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie in der [Speicherkontoübersicht](../common/storage-account-overview.md).
+> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen der öffentlichen und der US Government-Cloud für Vorschautests zur Verfügung. Diese Vorschau unterstützt Protokolle für Blobs (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Dieses Feature ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie unter [Speicherkontoübersicht](../common/storage-account-overview.md).
 
 ### <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
 
@@ -83,7 +84,7 @@ Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung 
 3. Klicken Sie im Abschnitt **Überwachung** auf **Diagnoseeinstellungen (Vorschau)** .
 
    > [!div class="mx-imgBorder"]
-   > ![Portal – Diagnoseprotokolle](media/monitor-blob-storage/diagnostic-logs-settings-pane.png)   
+   > ![Portal – Diagnoseprotokolle](media/monitor-blob-storage/diagnostic-logs-settings-pane.png)
 
 4. Wählen Sie **Blob** als den Speichertyp aus, für den Sie Protokolle aktivieren möchten.
 
@@ -101,14 +102,14 @@ Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung 
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archivieren von Protokollen in einem Speicherkonto
 
-Wenn Sie auswählen, dass Ihre Protokolle in einem Speicherkonto archiviert werden sollen, bezahlen Sie für die Menge an Protokolldaten, die an das Speicherkonto gesendet werden. Die genauen Preise finden Sie auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) im Abschnitt **Plattformprotokolle**.
+Wenn Sie auswählen, dass Ihre Protokolle in einem Speicherkonto archiviert werden sollen, bezahlen Sie für die Menge an Protokolldaten, die an das Speicherkonto gesendet werden. Die genauen Preise finden Sie im Abschnitt **Plattformprotokolle** auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs).
 
-1. Aktivieren Sie das Kontrollkästchen **In ein Speicherkonto archivieren**, und klicken Sie dann auf die Schaltfläche **Konfigurieren**.
+1. Aktivieren Sie das Kontrollkästchen bei **In ein Speicherkonto archivieren**, und wählen Sie dann die Schaltfläche **Konfigurieren** aus.
 
-   > [!div class="mx-imgBorder"]   
+   > [!div class="mx-imgBorder"]
    > ![Seite „Diagnoseeinstellungen“: „In ein Speicherkonto archivieren“](media/monitor-blob-storage/diagnostic-logs-settings-pane-archive-storage.png)
 
-2. Wählen Sie in der Dropdownliste **Speicherkonto** das Speicherkonto aus, in dem Sie Ihre Protokolle archivieren möchten. Klicken Sie auf die Schaltfläche **OK** und dann auf die Schaltfläche **Speichern**.
+2. Wählen Sie in der Dropdownliste für **Speicherkonto** das Speicherkonto aus, in dem Ihre Protokolle archiviert werden sollen. Klicken Sie auf die Schaltfläche **OK** und dann auf die Schaltfläche **Speichern**.
 
    [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
@@ -117,11 +118,11 @@ Wenn Sie auswählen, dass Ihre Protokolle in einem Speicherkonto archiviert werd
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Streamen von Protokollen an Azure Event Hubs
 
-Wenn Sie auswählen, dass Ihre Protokolle an einen Event Hub gestreamt werden sollen, bezahlen Sie für die Menge an Protokolldaten, die an den Event Hub gesendet werden. Die genauen Preise finden Sie auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) im Abschnitt **Plattformprotokolle**.
+Wenn Sie auswählen, dass Ihre Protokolle an einen Event Hub gestreamt werden sollen, bezahlen Sie für die Menge an Protokolldaten, die an den Event Hub gesendet werden. Die genauen Preise finden Sie im Abschnitt **Plattformprotokolle** auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs).
 
-1. Aktivieren Sie das Kontrollkästchen **An einen Event Hub streamen**, und klicken Sie dann auf die Schaltfläche **Konfigurieren**.
+1. Aktivieren Sie das Kontrollkästchen bei **An einen Event Hub streamen**, und wählen Sie dann die Schaltfläche **Konfigurieren** aus.
 
-2. Wählen Sie im Bereich **Event Hub auswählen** den Namespace, den Namen und den Richtliniennamen der Event Hub-Instanz aus, an die Sie Ihre Protokolle streamen möchten. 
+2. Wählen Sie im Bereich **Event Hub auswählen** den Namespace, den Namen und den Richtliniennamen der Event Hub-Instanz aus, an die Sie Ihre Protokolle streamen möchten.
 
    > [!div class="mx-imgBorder"]
    > ![Seite „Diagnoseeinstellungen“ mit Event Hub](media/monitor-blob-storage/diagnostic-logs-settings-pane-event-hub.png)
@@ -130,9 +131,9 @@ Wenn Sie auswählen, dass Ihre Protokolle an einen Event Hub gestreamt werden so
 
 #### <a name="send-logs-to-azure-log-analytics"></a>Senden von Protokollen an Azure Log Analytics
 
-1. Aktivieren Sie das Kontrollkästchen bei **An Log Analytics senden**. Wählen Sie einen Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf die Schaltfläche **Speichern**.
+1. Aktivieren Sie das Kontrollkästchen bei **An Log Analytics senden**. Wählen Sie einen Log Analytics-Arbeitsbereich und dann die Schaltfläche **Speichern** aus.
 
-   > [!div class="mx-imgBorder"]   
+   > [!div class="mx-imgBorder"]
    > ![Seite „Diagnoseeinstellungen“ für Log Analytics](media/monitor-blob-storage/diagnostic-logs-settings-pane-log-analytics.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -271,13 +272,13 @@ Eine Azure Resource Manager-Vorlage zum Erstellen einer Diagnoseeinstellung find
 
 ### <a name="azure-policy"></a>[Azure Policy](#tab/policy)
 
-Sie können eine Diagnoseeinstellung mithilfe einer Richtliniendefinition erstellen. Auf diese Weise können Sie sicherstellen, dass für jedes erstellte oder aktualisierte Konto eine Diagnoseeinstellung erstellt wird. Siehe hierzu [Integrierte Azure Policy-Definitionen für Azure Storage](../common/policy-reference.md).
+Sie können eine Diagnoseeinstellung mithilfe einer Richtliniendefinition erstellen. Auf diese Weise können Sie sicherstellen, dass für jedes erstellte oder aktualisierte Konto eine Diagnoseeinstellung erstellt wird. Weitere Informationen finden Sie unter [Integrierte Azure Policy-Definitionen für Azure Storage](../common/policy-reference.md).
 
 ---
 
 ## <a name="analyzing-metrics"></a>Analysieren von Metriken
 
-Mit dem Metrik-Explorer können Sie Metriken für Azure Storage mit Metriken aus anderen Azure-Diensten analysieren. Öffnen Sie den Metrik-Explorer, indem Sie im Menü **Azure Monitor** die Option **Metriken** auswählen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/essentials/metrics-getting-started.md). 
+Mit dem Metrik-Explorer können Sie Metriken für Azure Storage mit Metriken aus anderen Azure-Diensten analysieren. Öffnen Sie den Metrik-Explorer, indem Sie im Menü **Azure Monitor** die Option **Metriken** auswählen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/essentials/metrics-getting-started.md).
 
 Dieses Beispiel zeigt, wie Sie **Transaktionen** auf der Kontoebene anzeigen.
 
@@ -289,13 +290,12 @@ Bei Metriken mit Dimensionsunterstützung können Sie die Metrik nach dem gewün
 
 Eine vollständige Liste der von Azure Storage unterstützten Dimensionen finden Sie unter [Metrikdimensionen](monitor-blob-storage-reference.md#metrics-dimensions).
 
-Metriken für Azure Blob Storage befinden sich in diesen Namespaces: 
+Metriken für Azure Blob Storage befinden sich in diesen Namespaces:
 
 - Microsoft.Storage/storageAccounts
 - Microsoft.Storage/storageAccounts/blobServices
 
 Eine Liste aller von Azure Monitor unterstützten Metriken (einschließlich Azure Blob Storage) finden Sie unter [Unterstützte Metriken von Azure Monitor](../../azure-monitor/essentials/metrics-supported.md).
-
 
 ### <a name="accessing-metrics"></a>Zugreifen auf Metriken
 
@@ -305,10 +305,10 @@ Eine Liste aller von Azure Monitor unterstützten Metriken (einschließlich Azur
 ### <a name="net-sdk"></a>[.NET SDK](#tab/azure-portal)
 
 Azure Monitor bietet das [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) zum Lesen von Metrikdefinition und -werten. Die [Beispielcode](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) zeigt, wie das SDK mit unterschiedlichen Parametern verwendet wird. Sie benötigen `0.18.0-preview` oder eine höhere Version für Speichermetriken.
- 
+
 Ersetzen Sie in diesen Beispielen den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder des Blobspeicherdiensts. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Endpunkte** Ihres Speicherkontos.
 
-Ersetzen Sie die Variable `<subscription-ID>` durch die ID Ihres Abonnements. Eine Anleitung zum Abrufen von Werten für `<tenant-ID>`, `<application-ID>`, und `<AccessKey>` finden Sie unter [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md). 
+Ersetzen Sie die Variable `<subscription-ID>` durch die ID Ihres Abonnements. Eine Anleitung zum Abrufen von Werten für `<tenant-ID>`, `<application-ID>`, und `<AccessKey>` finden Sie unter [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 #### <a name="list-the-account-level-metric-definition"></a>Auflisten der Metrikdefinition auf Kontoebene
 
@@ -322,7 +322,6 @@ Das folgende Beispiel zeigt, wie Sie die Metrikdefinition auf der Kontoebene auf
         var tenantId = "<tenant-ID>";
         var applicationId = "<application-ID>";
         var accessKey = "<AccessKey>";
-
 
         MonitorManagementClient readOnlyClient = AuthenticateWithReadOnlyClient(tenantId, applicationId, accessKey, subscriptionId).Result;
         IEnumerable<MetricDefinition> metricDefinitions = await readOnlyClient.MetricDefinitions.ListAsync(resourceUri: resourceId, cancellationToken: new CancellationToken());
@@ -448,7 +447,7 @@ Im folgenden Beispiel wird gezeigt, wie Metrikdaten bei Metriken mit Unterstütz
 
 Sie können die Metrikdefinition Ihres Speicherkontos oder des Blobspeicherdiensts auflisten. Verwenden Sie das Cmdlet [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition).
 
-Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder die Ressourcen-ID des Blobspeicherdiensts.  Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Endpunkte** Ihres Speicherkontos.
+Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder die Ressourcen-ID des Blobspeicherdiensts. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Endpunkte** Ihres Speicherkontos.
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -469,7 +468,7 @@ Sie können die Metrikwerte auf der Kontoebene Ihres Speicherkontos oder des Blo
 #### <a name="list-the-account-level-metric-definition"></a>Auflisten der Metrikdefinition auf Kontoebene
 
 Sie können die Metrikdefinition Ihres Speicherkontos oder des Blobspeicherdiensts auflisten. Verwenden Sie den Befehl [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az_monitor_metrics_list_definitions).
- 
+
 Ersetzen Sie in diesem Beispiel den Platzhalter `<resource-ID>` durch die Ressourcen-ID des gesamten Speicherkontos oder die Ressourcen-ID des Blobspeicherdiensts. Sie finden diese Ressourcen-IDs im Azure-Portal auf der jeweiligen Seite **Endpunkte** Ihres Speicherkontos.
 
 ```azurecli-interactive
@@ -483,6 +482,7 @@ Sie können die Metrikwerte Ihres Speicherkontos oder des Blobspeicherdiensts le
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
 ```
+
 ### <a name="template"></a>[Vorlage](#tab/template)
 
 N/V.
@@ -500,7 +500,7 @@ Sie können auf Ressourcenprotokolle entweder als Blob in einem Speicherkonto, a
 Eine ausführliche Referenz zu den in diesen Protokollen angezeigten Feldern finden Sie in der [Überwachungsdatenreferenz zu Azure Blob Storage](monitor-blob-storage-reference.md).
 
 > [!NOTE]
-> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Diese Vorschauversion ermöglicht Protokolle für Blobs (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen, Tabellen, Universell V1-Premium-Speicherkonten und Universell V2-Speicherkonten. Klassische Speicherkonten werden nicht unterstützt.
+> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen der öffentlichen und der US Government-Cloud für Vorschautests zur Verfügung. Diese Vorschauversion ermöglicht Protokolle für Blobs (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen, Tabellen, Universell V1-Premium-Speicherkonten und Universell V2-Speicherkonten. Klassische Speicherkonten werden nicht unterstützt.
 
 Protokolleinträge werden nur erstellt, wenn Anforderungen für den Dienstendpunkt gestellt wurden. Wenn beispielsweise ein Speicherkonto Aktivität im Blob-Endpunkt, jedoch nicht im Tabellen- oder Warteschlangenendpunkt aufweist, werden nur Protokolle für den Blobdienst erstellt. Azure Storage-Protokolle enthalten ausführliche Informationen über erfolgreiche und fehlgeschlagene Anforderungen an einen Speicherdienst. Anhand dieser Informationen können einzelne Anforderungen überwacht und Probleme mit einem Speicherdienst untersucht werden. Anforderungen werden auf Grundlage der besten Leistung protokolliert.
 
@@ -538,7 +538,7 @@ Hier sehen Sie ein Beispiel:
 
 ### <a name="accessing-logs-in-an-event-hub"></a>Zugreifen auf Protokolle in einem Event Hub
 
-An einen Event Hub gesendete Protokolle werden nicht als Datei gespeichert. Sie können jedoch überprüfen, ob der Event Hub die Protokollinformationen empfangen hat. Wechseln Sie im Azure-Portal zu Ihrem Event Hub, und vergewissern Sie sich, dass die Anzahl **eingehender Nachrichten** größer als Null ist. 
+An einen Event Hub gesendete Protokolle werden nicht als Datei gespeichert. Sie können jedoch überprüfen, ob der Event Hub die Protokollinformationen empfangen hat. Wechseln Sie im Azure-Portal zu Ihrem Event Hub, und vergewissern Sie sich, dass die Anzahl **eingehender Nachrichten** größer als Null ist.
 
 ![Überwachungsprotokolle](media/monitor-blob-storage/event-hub-log.png)
 
@@ -550,7 +550,7 @@ Mithilfe von Azure Monitor-Protokollabfragen können Sie auf Protokolle zugreife
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../../azure-monitor/logs/log-analytics-tutorial.md).
 
-Die Daten werden in der **StorageBlobLog**-Tabelle gespeichert. Protokolle für Data Lake Storage Gen2 werden nicht in einer dedizierten Tabelle angezeigt. Dies liegt daran, dass Data Lake Storage Gen2 kein Dienst ist. Es handelt sich dabei um eine Reihe von Funktionen, die Sie in Ihrem Speicherkonto aktivieren können. Wenn Sie diese Funktionen aktiviert haben, werden die entsprechenden Protokolle weiterhin in der Tabelle StorageBlobLogs angezeigt. 
+Die Daten werden in der **StorageBlobLog**-Tabelle gespeichert. Protokolle für Data Lake Storage Gen2 werden nicht in einer dedizierten Tabelle angezeigt. Dies liegt daran, dass Data Lake Storage Gen2 kein Dienst ist. Es handelt sich dabei um eine Reihe von Funktionen, die Sie in Ihrem Speicherkonto aktivieren können. Wenn Sie diese Funktionen aktiviert haben, werden die entsprechenden Protokolle weiterhin in der Tabelle StorageBlobLogs angezeigt.
 
 #### <a name="sample-kusto-queries"></a>Kusto-Beispielabfragen
 
@@ -561,52 +561,81 @@ Im Folgenden finden Sie einige Abfragen, die Sie in die **Protokollsuchleiste** 
 
 Verwenden Sie diese Abfragen, um Ihre Azure Storage-Konten zu überwachen:
 
-* Abfrage zum Auflisten der 10 häufigsten Fehler in den letzten 3 Tagen.
+- Abfrage zum Auflisten der 10 häufigsten Fehler in den letzten 3 Tagen.
 
-    ```Kusto
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and StatusText !contains "Success"
     | summarize count() by StatusText
     | top 10 by count_ desc
     ```
-* Abfrage zum Auflisten der 10 häufigsten Vorgänge, die in den letzten 3 Tagen die meisten Fehler verursacht haben.
 
-    ```Kusto
+- Abfrage zum Auflisten der 10 häufigsten Vorgänge, die in den letzten 3 Tagen die meisten Fehler verursacht haben.
+
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and StatusText !contains "Success"
     | summarize count() by OperationName
     | top 10 by count_ desc
     ```
-* Abfrage zum Auflisten der 10 häufigsten Vorgänge mit der längsten End-to-End-Latenz in den letzten 3 Tagen.
 
-    ```Kusto
+- Abfrage zum Auflisten der 10 häufigsten Vorgänge mit der längsten End-to-End-Latenz in den letzten 3 Tagen.
+
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d)
     | top 10 by DurationMs desc
     | project TimeGenerated, OperationName, DurationMs, ServerLatencyMs, ClientLatencyMs = DurationMs - ServerLatencyMs
     ```
-* Abfrage zum Auflisten aller Vorgänge, die in den letzten 3 Tagen serverseitige Drosselungsfehler verursacht haben.
 
-    ```Kusto
+- Abfrage zum Auflisten aller Vorgänge, die in den letzten 3 Tagen serverseitige Drosselungsfehler verursacht haben.
+
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and StatusText contains "ServerBusy"
     | project TimeGenerated, OperationName, StatusCode, StatusText
     ```
-* Abfrage zum Auflisten aller Anforderungen mit anonymem Zugriff in den letzten 3 Tagen.
 
-    ```Kusto
+- Abfrage zum Auflisten aller Anforderungen mit anonymem Zugriff in den letzten 3 Tagen.
+
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and AuthenticationType == "Anonymous"
     | project TimeGenerated, OperationName, AuthenticationType, Uri
     ```
-* Abfrage zum Erstellen eines Kreisdiagramms der in den letzten 3 Tagen verwendeten Vorgänge.
-    ```Kusto
+
+- Abfrage zum Erstellen eines Kreisdiagramms der in den letzten 3 Tagen verwendeten Vorgänge.
+
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d)
     | summarize count() by OperationName
-    | sort by count_ desc 
+    | sort by count_ desc
     | render piechart
     ```
+
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
+
+### <a name="logs-in-azure-monitor"></a>Protokolle in Azure Monitor
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> |![Ja](../media/icons/yes-icon.png)  <sup>2</sup>              | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> |
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup>|![Ja](../media/icons/yes-icon.png)  <sup>2</sup> | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+### <a name="metrics-in-azure-monitor"></a>Metriken in Azure Monitor
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) |
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)  <sup>2</sup> | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> |
+
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
+
+<sup>2</sup>    Die Funktion wird auf der Vorschauebene unterstützt.
+
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 **Unterstützt Azure Storage Metriken für verwaltete oder nicht verwaltete Datenträger?**

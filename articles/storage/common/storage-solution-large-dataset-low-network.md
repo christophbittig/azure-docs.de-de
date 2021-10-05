@@ -8,15 +8,15 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 9b83ba106b35a0a3abd035e85f60c4c39bbadd3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 326b5393e8db24e175282af9bf7670e32047de9e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704639"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582231"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Datenübertragung für große Datasets mit geringer oder keiner Netzwerkbandbreite
- 
+
 Dieser Artikel bietet einen Überblick über die Datenübertragungslösungen, wenn Sie in Ihrer Umgebung nur eingeschränkte oder gar keine Netzwerkbandbreite nutzen können und planen, große Datasets zu übertragen. Der Artikel beschreibt auch die empfohlenen Datenübertragungsoptionen sowie die jeweilige Schlüsselfunktionsmatrix für dieses Szenario.
 
 Eine Übersicht über alle verfügbaren Datenübertragungsoptionen finden Sie unter [Auswählen einer Azure-Datenübertragungslösung](storage-choose-data-transfer-solution.md).
@@ -30,7 +30,7 @@ Große Datasets bedeuten, dass Sie Daten in einer Größenordnung von wenigen TB
 
 Verwenden Sie in allen oben genannten Fällen ein physisches Gerät, um eine einmalige Massendatenübertragung auszuführen. Wählen Sie zwischen Data Box Disk-, Data Box- und Data Box Heavy-Geräten, die von Microsoft zur Verfügung gestellt werden, und Import/Export mit Ihren eigenen Datenträgern.
 
-Um zu überprüfen, ob ein physisches Gerät die richtige Option ist, verwenden Sie die folgende Tabelle. Sie zeigt die voraussichtliche Zeit für die Übertragung von Daten über das Netzwerk für verschiedene verfügbare Bandbreiten (bei einer Auslastung von 90 %). Wenn Netzwerkübertragung als zu langsam eingestuft wird, sollten Sie ein physisches Gerät verwenden.  
+Um zu überprüfen, ob ein physisches Gerät die richtige Option ist, verwenden Sie die folgende Tabelle. Sie zeigt die voraussichtliche Zeit für die Übertragung von Daten über das Netzwerk für verschiedene verfügbare Bandbreiten (bei einer Auslastung von 90 %). Wenn Netzwerkübertragung als zu langsam eingestuft wird, sollten Sie ein physisches Gerät verwenden.
 
 ![Netzwerkübertragung oder Offlineübertragung](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
 
@@ -38,7 +38,7 @@ Um zu überprüfen, ob ein physisches Gerät die richtige Option ist, verwenden 
 
 Die in diesem Szenario verfügbaren Optionen sind Geräte für Azure Data Box-Offlineübertragung oder Azure Import/Export.
 
-- **Azure Data Box-Produktfamilie für Offlineübertragungen**: Verwenden Sie von Microsoft bereitgestellte Data Box-Geräte, um große Datenmengen in Azure zu übertragen, wenn Sie aufgrund von Zeit, Netzwerkverfügbarkeit oder Kosten eingeschränkt sind. Kopieren Sie lokale Daten mithilfe von Tools wie Robocopy. Abhängig von der für die Übertragung vorgesehenen Datengröße können Sie zwischen Data Box Disk, Data Box oder Data Box Heavy wählen.
+- **Azure Data Box-Produktfamilie für Offlineübertragungen:** Verwenden Sie von Microsoft bereitgestellte Data Box-Geräte, um große Datenmengen an Azure zu übertragen, wenn Sie aufgrund von Zeit, Netzwerkverfügbarkeit oder Kosten eingeschränkt sind. Kopieren Sie lokale Daten mithilfe von Tools wie Robocopy. Abhängig von der für die Übertragung vorgesehenen Datengröße können Sie zwischen Data Box Disk, Data Box oder Data Box Heavy wählen.
 - **Azure Import/Export**: Verwenden Sie den Azure Import/Export-Dienst, indem Sie Ihre eigenen Festplattenlaufwerke versenden, um große Datenmengen sicher in Azure Blob Storage und Azure Files zu importieren. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage auf Festplattenlaufwerke und zum Versand an lokale Standorte nutzen.
 
 ## <a name="comparison-of-key-capabilities"></a>Vergleich der Schlüsselfunktionen
@@ -61,11 +61,10 @@ In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusamm
 | **Verwendung bei Datenbewegungen**     |Innerhalb einer kommerziellen Grenze|Innerhalb einer kommerziellen Grenze|Innerhalb einer kommerziellen Grenze|Über geografische Grenzen hinweg, z.B. aus den USA in die EU|
 |    **Preise**                      |    [Preise](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Preise](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Preise](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Preise](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum
 
-    - [Übertragen von Daten mit Data Box Disk](../../databox/data-box-disk-quickstart-portal.md).
-    - [Übertragen von Daten mit Data Box](../../databox/data-box-quickstart-portal.md).
-    - [Übertragen von Daten mit Import/Export](../../import-export/storage-import-export-data-to-blobs.md).
+  - [Übertragen von Daten mit Data Box Disk](../../databox/data-box-disk-quickstart-portal.md).
+  - [Übertragen von Daten mit Data Box](../../databox/data-box-quickstart-portal.md).
+  - [Übertragen von Daten mit Import/Export](../../import-export/storage-import-export-data-to-blobs.md).

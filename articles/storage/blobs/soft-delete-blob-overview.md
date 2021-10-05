@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/23/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 39dd221210b558a3b6ce59200aebaa4aa2278fb5
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 1c645e50a49a268d762b1195e91484783a73367c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688154"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562548"
 ---
 # <a name="soft-delete-for-blobs"></a>Vorläufiges Löschen für Blobs
 
@@ -26,7 +26,6 @@ Das Feature für das vorläufige Löschen von Blobs schützt einzelne Blobs, Mom
 >
 >
 > Wie Sie sich für die Vorschau registrieren, erfahren Sie in [diesem Formular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pUOVRVOUpDRUtHVUtDUUtMVTZUR0tUMjZWNy4u).
-
 
 ## <a name="recommended-data-protection-configuration"></a>Empfohlene Datenschutzkonfiguration
 
@@ -69,13 +68,13 @@ Ein Blob mit Momentaufnahmen kann nicht gelöscht werden, es sei denn, die Momen
 
 Sie können auch eine oder mehrere aktive Momentaufnahmen löschen, ohne das Basisblob zu löschen. In diesem Fall wird die Momentaufnahme vorläufig gelöscht.
 
-Wenn ein Verzeichnis in einem Konto gelöscht wird, für das ein hierarchischer Namespace aktiviert ist, werden das Verzeichnis und sein gesamter Inhalt als vorläufig gelöscht markiert. 
+Wenn ein Verzeichnis in einem Konto gelöscht wird, für das ein hierarchischer Namespace aktiviert ist, werden das Verzeichnis und sein gesamter Inhalt als vorläufig gelöscht markiert.
 
 Vorläufig gelöschte Objekte sind nicht sichtbar, es sei denn, sie werden explizit angezeigt oder aufgelistet. Weitere Informationen zum Auflisten vorläufig gelöschter Objekte finden Sie unter [Verwalten und Wiederherstellen vorläufig gelöschter Blobs](soft-delete-blob-manage.md).
 
 ### <a name="how-overwrites-are-handled-when-soft-delete-is-enabled"></a>Behandlung von Überschreibungen bei aktiviertem vorläufigen Löschen
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Dieser Abschnitt gilt nicht für Konten mit einem hierarchischen Namespace.
 
 Durch das Aufrufen eines Vorgangs, wie z. B. [Put Blob](/rest/api/storageservices/put-blob), [Put Block List](/rest/api/storageservices/put-block-list) oder [Copy Blob](/rest/api/storageservices/copy-blob), werden die Daten in einem Blob überschrieben. Wenn das vorläufige Löschen von Blobs aktiviert ist, wird durch das Überschreiben eines Blobs automatisch eine vorläufig gelöschte Momentaufnahme des Blobzustands vor dem Schreibvorgang erstellt. Wenn der Aufbewahrungszeitraum abläuft, wird die vorläufig gelöschte Momentaufnahme dauerhaft gelöscht.
@@ -106,7 +105,7 @@ Weitere Informationen zum Wiederherstellen vorläufig gelöschter Objekte finden
 
 ## <a name="blob-soft-delete-and-versioning"></a>Vorläufiges Löschen von Blobs und Blobversionsverwaltung
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Für Konten mit einem hierarchischen Namespace wird keine Versionsverwaltung unterstützt.
 
 Wenn die Blobversionsverwaltung und das vorläufige Löschen von Blobs für ein Speicherkonto aktiviert sind, wird durch das Überschreiben eines Blobs automatisch eine neue Version erstellt. Die neue Version wird nicht vorläufig gelöscht und nicht entfernt, wenn die Beibehaltungsdauer für vorläufiges Löschen abläuft. Es werden keine vorläufig gelöschten Momentaufnahmen erstellt. Wenn Sie ein Blob löschen, wird die aktuelle Version des Blobs zu einer vorherigen Version, und es gibt keine aktuelle Version mehr. Es werden keine neue Version und auch keine vorläufig gelöschten Momentaufnahmen erstellt.
@@ -122,7 +121,7 @@ Microsoft empfiehlt, sowohl die Versionsverwaltung als auch das vorläufige Lös
 
 ## <a name="blob-soft-delete-protection-by-operation"></a>Schutz durch vorläufiges Löschen von Blobs nach Vorgang
 
-In der folgenden Tabelle wird das erwartete Verhalten für Lösch- und Schreibvorgänge mit und ohne Blobversionsverwaltung beschrieben, wenn das vorläufige Löschen von Blobs aktiviert ist. 
+In der folgenden Tabelle wird das erwartete Verhalten für Lösch- und Schreibvorgänge mit und ohne Blobversionsverwaltung beschrieben, wenn das vorläufige Löschen von Blobs aktiviert ist.
 
 ### <a name="storage-account-no-hierarchical-namespace"></a>Speicherkonto (kein hierarchischer Namespace)
 
@@ -148,6 +147,21 @@ In der folgenden Tabelle wird das erwartete Verhalten für Lösch- und Schreibvo
 |[Delete Blob](/rest/api/storageservices/delete-blob)|Ein vorläufig gelöschtes Objekt wird erstellt. Das vorläufig gelöschte Objekt wird nach dem Aufbewahrungszeitraum gelöscht. Das vorläufige Löschen wird für Blobs mit Momentaufnahmen und für Momentaufnahmen nicht unterstützt.|
 |[Pfad: Erstellen](/rest/api/storageservices/datalakestoragegen2/path/create) für das Umbenennen eines Blobs oder Verzeichnisses | Das vorhandene Zielblob oder leere Verzeichnis wird vorläufig gelöscht und durch die Quelle ersetzt. Das vorläufig gelöschte Objekt wird nach dem Aufbewahrungszeitraum gelöscht.|
 
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png) <sup>2</sup> <sup>3</sup>            | ![Nein](../media/icons/no-icon.png) |
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png) <sup>2</sup> <sup>3</sup>            | ![Nein](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
+
+<sup>2</sup>    Die Funktion wird auf der Vorschauebene unterstützt.
+
+<sup>3</sup> Weitere Informationen finden Sie unter [Bekannte Probleme mit Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md). Diese Probleme gelten für alle Konten, für die das Feature für hierarchische Namespaces aktiviert ist.
+
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
 Alle vorläufig gelöschten Daten werden mit dem gleichen Tarif wie aktive Daten in Rechnung gestellt. Für Daten, die nach Ablauf der Beibehaltungsdauer dauerhaft gelöscht werden, fallen keine Kosten an.
@@ -160,7 +174,7 @@ Transaktionen im Zusammenhang mit dem automatischen Generieren von Momentaufnahm
 
 Weitere Informationen zu den Preisen für Blob Storage finden Sie in der [Preisübersicht für Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="blob-soft-delete-and-virtual-machine-disks"></a>Vorläufiges Löschen von Blobs und VM-Datenträgern  
+## <a name="blob-soft-delete-and-virtual-machine-disks"></a>Vorläufiges Löschen von Blobs und VM-Datenträgern
 
 Das Feature für vorläufiges Löschen ist sowohl für Premium-Datenträger als auch für nicht verwaltete Standard-Datenträger verfügbar, bei denen es sich im Grunde um Seitenblobs handelt. Über das vorläufige Löschen können Sie Daten wiederherstellen, die mit den Vorgängen [Delete Blob](/rest/api/storageservices/delete-blob), [Put Blob](/rest/api/storageservices/put-blob), [Put Block List](/rest/api/storageservices/put-block-list) und [Copy Blob](/rest/api/storageservices/copy-blob) gelöscht oder überschrieben wurden.
 

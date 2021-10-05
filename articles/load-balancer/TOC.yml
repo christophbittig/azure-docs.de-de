@@ -170,6 +170,32 @@
       href: howto-load-balancer-imds.md
     - name: Lastenausgleichskonfiguration (nur ausgehender Datenverkehr)
       href: egress-only.md
+    - name: IPv6
+      items:
+        - name: Standard (öffentlich)
+          items:
+            - name: 'Öffentliche Instanz von Load Balancer Standard mit IPv6: PowerShell'
+              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+            - name: "Öffentliche Instanz von Load Balancer Standard mit IPv6: Azure\_CLI"
+              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+            - name: 'Öffentliche Instanz von Load Balancer Standard mit IPv6: ARM-Vorlage'
+              href: ipv6-configure-standard-load-balancer-template-json.md
+        - name: Standard (intern)
+          items:
+            - name: 'Interne Instanz von Load Balancer Standard mit IPv6: PowerShell'
+              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
+        - name: Basic (öffentlich)
+          items:
+            - name: Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Basic-Load Balancer – PowerShell
+              href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
+            - name: 'Bereitstellen einer IPv6-Anwendung mit dualem Stapel mithilfe von Load Balancer Basic: Azure CLI'
+              href: virtual-network-ipv4-ipv6-dual-stack-cli.md
+            - name: 'Bereitstellen einer IPv6-Anwendung mit dualem Stapel mithilfe von Load Balancer Basic: ARM-Vorlage'
+              href: ipv6-configure-template-json.md
+        - name: 'Hinzufügen von IPv6 zu einer IPv4-Anwendung: PowerShell'
+          href: ipv6-add-to-existing-vnet-powershell.md
+        - name: 'Hinzufügen von IPv6 zu einer IPv4-Anwendung: Azure CLI'
+          href: ipv6-add-to-existing-vnet-cli.md
     - name: Problembehandlung
       items:
         - name: Beheben von Problemen mit Azure Load Balancer

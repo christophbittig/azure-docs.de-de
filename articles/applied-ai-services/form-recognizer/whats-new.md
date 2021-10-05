@@ -9,18 +9,26 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/01/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2efc4d2c546cff172164b9416cbe5a0772167631
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d575af739fa299cc32576bd2798eeb8165fe37c2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356669"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590029"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
 # <a name="whats-new-in-azure-form-recognizer"></a>Neuerungen in der Azure-Formularerkennung
 
 Der Formularerkennungsdienst wird fortlaufend aktualisiert. Speichern Sie ein Lesezeichen für diese Seite, um zu Versionshinweisen, Featureerweiterungen und Dokumentationsupdates auf dem neuesten Stand zu bleiben.
+
+## <a name="september-2021"></a>September 2021
+
+„Behebung der ungenauen Namensextraktion in vordefinierten IDs (Führerschein), wenn der Name ein Suffix oder einen Punkt enthält.“
+
+[Erweiterte Funktionen des Azure-Metrik-Explorers](/azure/azure-monitor/essentials/metrics-charts) in Ihrer Ressourcenübersicht der Formularerkennung im Azure-Portal verfügbar. 
+
+:::image type="content" source="media/portal-metrics.png" alt-text="Screenshot: Metrikdiagramme im Azure-Portal.":::
 
 ## <a name="july-2021"></a>Juli 2021
 
@@ -405,7 +413,7 @@ pip-Paketversion 3.1.0b4
 * **Qualitätsverbesserungen** – Extraktionsverbesserungen, einschließlich Verbesserungen der einstelligen Extraktion.
 * **Neues Feature „try-it-out“ im Tool für die Beschriftung von Beispielen für die Formularerkennung** – Möglichkeit zum Ausprobieren von vordefinierten Modellen für Rechnungen, Belege und Visitenkarten sowie der Layout-API mithilfe dieses Tools. Sehen Sie sich an, wie Ihre Daten extrahiert werden, ohne Code schreiben zu müssen.
 
-  [**Probieren Sie das Formularerkennungstool für die Beschriftung von Beispielen aus.** ](https://fott-2-1.azurewebsites.net)
+  [**Probieren Sie das Formularerkennungstool für die Beschriftung von Beispielen aus.**](https://fott-2-1.azurewebsites.net)
 
   ![Screenshot: Verwenden des Tools für die Beschriftung von Beispielen](./media/ui-preview.jpg)
 
