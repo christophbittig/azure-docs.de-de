@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: e2d903f781e86670139347930289599bec6ee7e7
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 8a462809ca7be524e0e5149808bdcbe28f49dd77
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350072"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649036"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen
 
@@ -35,6 +35,7 @@ Wählen Sie die Protokollkategorie und die Metrikkategorie aus, die Sie überwac
 |----|----|
 | **ApplicationConsole** | Konsolenprotokoll aller Kundenanwendungen. |
 | **SystemLogs** | Zurzeit befinden sich nur [Spring Cloud-Konfigurationsserver](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) in dieser Kategorie. |
+| **IngressLogs** | [Eingangsprotokolle](#show-ingress-log-entries-containing-a-specific-host) aller Anwendungen des Kunden, nur Zugriffsprotokolle. |
 
 ## <a name="metrics"></a>Metriken
 
@@ -179,13 +180,37 @@ AppPlatformLogsforSpring
 | render piechart
 ```
 
+### <a name="show-ingress-log-entries-containing-a-specific-host"></a>Anzeigen von Eingangsprotokolleinträgen, die einen bestimmten Host enthalten
+
+Führen Sie die folgende Abfrage aus, um Protokolleinträge zu überprüfen, die von einem bestimmten Host generiert werden:
+
+```sql
+AppPlatformIngressLogs
+| where TimeGenerated > ago(1h) and Host == "ingress-asc.test.azuremicroservices.io" 
+| project TimeGenerated, RemoteIP, Host, Request, Status, BodyBytesSent, RequestTime, ReqId, RequestHeaders
+| sort by TimeGenerated
+```
+
+Verwenden Sie diese Abfrage, um `Status`-, `RequestTime`- und andere Antworteigenschaften der Eingangsprotokolle dieses bestimmten Hosts zu ermitteln. 
+
+### <a name="show-ingress-log-entries-for-a-specific-requestid"></a>Anzeigen von Eingangsprotokolleinträgen für eine bestimmte requestId
+
+Zum Überprüfen von Protokolleinträgen für einen bestimmten `requestId`-Wert *\<request_ID>* führen Sie die folgende Abfrage aus:
+
+```sql
+AppPlatformIngressLogs
+| where TimeGenerated > ago(1h) and ReqId == "<request_ID>" 
+| project TimeGenerated, RemoteIP, Host, Request, Status, BodyBytesSent, RequestTime, ReqId, RequestHeaders
+| sort by TimeGenerated
+```
+
 ### <a name="learn-more-about-querying-application-logs"></a>Weitere Informationen zum Abfragen von Anwendungsprotokollen
 
 Azure Monitor bietet umfassende Unterstützung für das Abfragen von Anwendungsprotokollen mithilfe von Log Analytics. Weitere Informationen zu diesem Dienst finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/logs/get-started-queries.md). Weitere Informationen zum Erstellen von Abfragen zur Analyse Ihrer Anwendungsprotokolle finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
-### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>Wie können mehrzeilige Java-Stapelüberwachungen in eine einzelne Zeile konvertiert werden?
+### <a name="how-do-i-convert-multi-line-java-stack-traces-into-a-single-line"></a>Wie können mehrzeilige Java-Stapelüberwachungen in eine einzelne Zeile konvertiert werden?
 
 Es gibt eine Möglichkeit, Ihre mehrzeiligen Stapelüberwachungen in eine einzelne Zeile zu konvertieren. Sie können die Java-Protokollausgabe ändern, um Stapelüberwachungsnachrichten neu zu formatieren, sodass Zeilenvorschubzeichen durch ein Token ersetzt werden. Bei Verwendung der Java-Logback-Bibliothek können Sie Stapelüberwachungsnachrichten durch Hinzufügen von `%replace(%ex){'[\r\n]+', '\\n'}%nopex` neu formatieren:
 
@@ -204,7 +229,7 @@ Es gibt eine Möglichkeit, Ihre mehrzeiligen Stapelüberwachungen in eine einzel
 </configuration>
 ```
 
-In Log Analytics können Sie das Token dann wieder durch Zeilenvorschubzeichen ersetzen, wie hier zu sehen:
+In Log Analytics können Sie das Token anschließend durch Zeilenvorschubzeichen ersetzen, wie hier gezeigt:
 
 ```sql
 AppPlatformLogsforSpring

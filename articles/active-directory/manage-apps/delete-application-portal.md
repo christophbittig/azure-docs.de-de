@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Löschen einer Anwendung aus Ihrem Mandanten'
+title: 'Schnellstart: Löschen einer Unternehmensanwendung'
+description: Löschen einer Unternehmensanwendung in Azure Active Directory.
 titleSuffix: Azure AD
-description: In dieser Schnellstartanleitung wird das Azure-Portal verwendet, um eine Anwendung von Ihrem Azure AD-Mandanten (Azure Active Directory) zu löschen.
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -9,59 +9,47 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/23/2021
+ms.date: 09/22/2021
 ms.author: davidmu
-ms.reviewer: alamaral
-ms.openlocfilehash: a29ac9aa0cecaefb3d9ada87b60d2bebb8c5269b
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.reviewer: ergleenl
+ms.openlocfilehash: 16bc055ed2b47ee5c212fa26387599a8d4ada7a8
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123112419"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058196"
 ---
-# <a name="quickstart-delete-an-application-from-your-tenant"></a>Schnellstart: Löschen einer Anwendung aus Ihrem Mandanten
+# <a name="quickstart-delete-an-enterprise-application-in-azure-active-directory"></a>Schnellstart: Löschen einer Unternehmensanwendung in Azure Active Directory
 
-In dieser Schnellstartanleitung wird das Azure-Portal verwendet, um eine Anwendung zu löschen, die Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten) hinzugefügt wurde.
+In diesem Schnellstart verwenden Sie Azure Active Directory Admin Center, um eine Unternehmensanwendung zu löschen, die Ihrem Azure Active Directory-Mandanten (Azure AD) hinzugefügt wurde.
 
-Weitere Informationen zum einmaligen Anmelden und Azure finden Sie unter [Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?](what-is-single-sign-on.md).
+Es wird empfohlen, zum Testen der Schritte in diesem Schnellstart keine Produktionsumgebung zu verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Löschen einer Anwendung von Ihrem Azure AD-Mandanten benötigen Sie Folgendes:
+Sie benötigen Folgendes, um eine Unternehmensanwendung zu löschen:
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Eine der folgenden Rollen: Globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals.
-- Optional: Gehen Sie den Schnellstart [Anzeigen Ihrer Apps](view-applications-portal.md) durch.
-- Optional: Gehen Sie den Schnellstart [Hinzufügen einer App](add-application-portal.md) durch.
-- Optional: Gehen Sie den Schnellstart [Konfigurieren einer App](add-application-portal-configure.md) durch.
-- Optional: Arbeiten Sie den Artikel [Zuweisen von Benutzern zu einer App](add-application-portal-assign-users.md) durch.
-- Optional: Gehen Sie den Schnellstart [Einrichten des einmaligen Anmeldens](add-application-portal-setup-sso.md) durch.
+- Ausführen der Schritte unter [Schnellstart: Hinzufügen einer Unternehmensanwendung](add-application-portal.md).
 
->[!IMPORTANT]
->Verwenden Sie zum Testen der in dieser Schnellstartanleitung aufgeführten Schritte keine Produktionsumgebung.
+## <a name="delete-an-enterprise-application"></a>Löschen einer Unternehmensanwendung
 
-> [!NOTE]
->Um eine Anwendung aus Azure AD löschen zu können, muss dem Benutzer eine der folgenden Rollen zugewiesen werden: Globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals.
+So löschen Sie eine Unternehmensanwendung:
 
-## <a name="delete-an-application-from-your-azure-ad-tenant"></a>Löschen einer Anwendung von Ihrem Azure AD-Mandanten
+1. Navigieren Sie zu [Azure Active Directory Admin Center](https://aad.portal.azure.com), und melden Sie sich mit einer der in den Voraussetzungen aufgeführten Rollen an.
+1. Wählen Sie im Menü auf der linken Seite die Option **Unternehmensanwendungen** aus. Der Bereich **Alle Anwendungen** wird geöffnet und zeigt eine Liste von Anwendungen in Ihrem Azure AD-Mandanten an. Suchen Sie nach der Anwendung, die Sie löschen möchten, und wählen Sie diese aus. Beispiel: **Azure AD SAML Toolkit 1**.
+1. Wählen Sie im Menü auf der linken Seite im Abschnitt **Verwalten** die Option **Eigenschaften** aus.
+1. Wählen Sie oben im Bereich **Eigenschaften** die Option **Löschen** aus, und wählen Sie dann **Ja** aus, um zu bestätigen, dass die Anwendung aus Ihrem Azure AD-Mandanten gelöscht werden soll.
 
-Löschen Sie eine Anwendung wie folgt von Ihrem Azure AD-Mandanten:
-
-1. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** aus. Suchen Sie dann nach der zu löschenden Anwendung, und wählen Sie diese aus. In diesem Fall löschen Sie **360 Online**.
-1. Wählen Sie im linken Bereich im Abschnitt **Verwalten** die Option **Eigenschaften** aus.
-1. Wählen Sie **Löschen** aus, und wählen Sie dann **Ja** aus, um zu bestätigen, dass die App aus Ihrem Azure AD-Mandanten gelöscht werden soll.
-
-:::image type="content" source="media/add-application-portal/delete-application.png" alt-text="Screenshot des Bildschirms „Eigenschaften“, in dem zu sehen ist, wie das Logo geändert wird":::
-
-> [!TIP]
-> Sie können die App-Verwaltung mithilfe der Graph-API automatisieren. Informationen hierzu finden Sie unter [Automatisieren einer SAML-basierten SSO-App-Konfiguration mit Microsoft Graph-API](/graph/application-saml-sso-configure-api).
+    :::image type="content" source="media/delete-application-portal/delete-application.png" alt-text="Löschen einer Unternehmensanwendung.":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie diese Schnellstartserie abgeschlossen haben, sollten Sie die App löschen, um Ihren Testmandanten zu bereinigen. Das Löschen der App wurde in dieser Schnellstartanleitung behandelt.
+Wenn Sie diese Schnellstartserie abgeschlossen haben, sollten Sie die Anwendung löschen, um Ihren Testmandanten zu bereinigen. Das Löschen der Anwendung wurde in diesem Schnellstart behandelt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben die Schnellstartserie abgeschlossen. Informieren Sie sich als Nächstes über [einmaliges Anmelden (Single Sign-On, SSO)](what-is-single-sign-on.md). Alternativ können Sie sich über die bewährten Methoden bei der App-Verwaltung informieren.
+Erfahren Sie mehr über die Planung einer Bereitstellung für einmaliges Anmelden.
 > [!div class="nextstepaction"]
-> [Bewährte Methoden für die Anwendungsverwaltung](application-management-fundamentals.md)
+> [Planen der Bereitstellung des einmaligen Anmeldens](plan-sso-deployment.md)

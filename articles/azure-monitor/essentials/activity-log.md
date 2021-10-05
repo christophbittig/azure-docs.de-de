@@ -4,22 +4,31 @@ description: In diesem Artikel wird erläutert, wie Sie das Azure-Aktivitätspro
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 09/09/2021
 ms.author: bwren
-ms.openlocfilehash: d9628c9d10818b2b7a8a731b14537e4b533af74e
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 61640d3abc371a92d5588c8b14308ba74152a442
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349964"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799755"
 ---
 # <a name="azure-activity-log"></a>Azure-Aktivitätsprotokoll
-Das Aktivitätsprotokoll ist ein [Plattformprotokoll](./platform-logs-overview.md) in Azure, das einen Einblick in Ereignisse auf Abonnementebene ermöglicht. Dies sind beispielsweise Informationen wie das Ändern einer Ressource oder das Starten eines virtuellen Computers. Sie können das Aktivitätsprotokoll im Azure-Portal anzeigen oder Einträge mit PowerShell und der CLI abrufen. Um zusätzliche Funktionen zu erhalten, sollten Sie eine Diagnoseeinstellung erstellen, mit der das Aktivitätsprotokoll an [Azure Monitor-Protokolle](../logs/data-platform-logs.md) gesendet wird, an Azure Event Hubs außerhalb von Azure weitergeleitet oder für die Archivierung an Azure Storage gesendet wird. In diesem Artikel wird ausführlich beschrieben, wie das Aktivitätsprotokoll angezeigt und an verschiedene Ziele gesendet wird.
+Das Aktivitätsprotokoll ist ein [Plattformprotokoll](./platform-logs-overview.md) in Azure, das einen Einblick in Ereignisse auf Abonnementebene ermöglicht. Dies sind beispielsweise Informationen wie das Ändern einer Ressource oder das Starten eines virtuellen Computers. Sie können das Aktivitätsprotokoll im Azure-Portal anzeigen oder Einträge mit PowerShell und der CLI abrufen.   In diesem Artikel wird ausführlich beschrieben, wie das Aktivitätsprotokoll angezeigt und an verschiedene Ziele gesendet wird.
+
+Für zusätzliche Funktionen sollten Sie eine Diagnoseeinstellung erstellen, um das Aktivitätsprotokoll aus den folgenden Gründen an mindestens einen dieser Speicherorte zu senden: 
+-   An [Azure Monitor-Protokolle](../logs/data-platform-logs.md), um komplexere Abfragen und Warnungen auszuführen und eine längere Aufbewahrungsdauer (bis zu 2 Jahre) zu nutzen. 
+-   An Azure Event Hubs, um eine Weiterleitung außerhalb von Azure zu ermöglichen.
+-   An Azure Storage für kostengünstigere, langfristige Archivierung.
 
 Einzelheiten zum Erstellen einer Diagnoseeinstellung finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Ressourcenprotokollen und -metriken in Azure](./diagnostic-settings.md).
 
 > [!NOTE]
 > Einträge im Aktivitätsprotokoll werden vom System generiert und können nicht geändert oder gelöscht werden.
+
+## <a name="retention-period"></a>Bindungsdauer 
+
+Aktivitätsprotokollereignisse werden in Azure **90** Tage lang aufbewahrt und dann gelöscht. Für Einträge fallen während dieser Zeit werden unabhängig vom Volumen keine Gebühren an. Um zusätzliche Funktionen wie eine längere Aufbewahrungsdauer zu erhalten, sollten Sie eine Diagnoseeinstellung erstellen und die gesamte Daten basierend auf Ihren Anforderungen an einen anderen Speicherort weiterleiten. Weitere Informationen finden Sie im Abschnitt weiter oben in diesem Artikel. 
 
 ## <a name="view-the-activity-log"></a>Anzeigen des Aktivitätsprotokolls
 Auf das Aktivitätsprotokoll können Sie über die meisten Menüs im Azure-Portal zugreifen. Das Menü, in dem Sie es öffnen, bestimmt seinen anfänglichen Filter. Wenn Sie es über das Menü **Überwachen** öffnen, wird nur der Filter für das Abonnement verwendet. Wenn Sie es über das Menü einer Ressource öffnen, wird der Filter auf die betreffende Ressource festgelegt. Sie können den Filter jedoch jederzeit ändern, um alle anderen Einträge anzuzeigen. Klicken Sie auf **Filter hinzufügen**, um dem Filter weitere Eigenschaften hinzuzufügen.
@@ -59,9 +68,9 @@ Sie können auch mithilfe der folgenden Methoden auf Aktivitätsprotokollereigni
 - Konsolidieren von Protokolleinträgen mehrerer Azure-Abonnements und -Mandanten an einem einzigen Ort zur gemeinsamen Analyse
 - Verwenden von Protokollabfragen zum Ausführen komplexer Analysen und Erhalten tiefer Einblicke in Aktivitätsprotokolleinträge
 - Verwenden von Protokollwarnungen mit Aktivitätseinträgen, die eine komplexere Warnungslogik ermöglichen
-- Speichern von Aktivitätsprotokolleinträgen für mehr als 90 Tage
+- Speichern von Aktivitätsprotokolleinträgen für einen längeren Zeitraum als den Aufbewahrungszeitraum des Aktivitätsprotokolls.
 - Keine Datenerfassungsgebühren für die Aktivitätsprotokolldaten, die in einem Log Analytics-Arbeitsbereich gespeichert sind
-- Keine Gebühren für die Aufbewahrung von Aktivitätsprotokolldaten in einem Log Analytics-Arbeitsbereich bis zum Ablauf von 90 Tagen
+- Es fallen keine Gebühren für Datenaufbewahrung an, bis der Aufbewahrungszeitraum des Aktivitätsprotokolls für die jeweiligen Einträge abläuft.
 
 [Erstellen Sie eine Diagnoseeinstellung](./diagnostic-settings.md), um das Aktivitätsprotokoll an einen Log Analytics-Arbeitsbereich zu senden. Sie können das Aktivitätsprotokoll von einem einzelnen Abonnement an bis zu fünf Arbeitsbereiche senden. 
 
@@ -144,8 +153,8 @@ Es folgt ein Beispiel für eine Datenausgabe aus Event Hubs für ein Aktivitäts
 ```
 
 
-## <a name="send-to--azure-storage"></a>Senden an Azure Storage
-Senden Sie das Aktivitätsprotokoll an ein Azure Storage Konto, wenn Sie die Protokolldaten für Überwachung, statische Analyse oder Sicherungszwecke länger als 90 Tage aufbewahren möchten. Falls Sie Ihre Ereignisse nur maximal 90 Tage lang aufbewahren möchten, müssen Sie keine Archivierung in einem Speicherkonto einrichten, da Aktivitätsprotokollereignisse in der Azure-Plattform 90 Tage lang aufbewahrt werden.
+## <a name="send-to-azure-storage"></a>Senden an Azure Storage
+Senden Sie das Aktivitätsprotokoll an ein Azure Storage-Konto für die Überprüfung, statische Analysen oder Sicherung, wenn Sie Ihre Protokolldaten länger als den Aufbewahrungszeitraum des Aktivitätsprotokolls aufbewahren möchten. Azure Storage muss nur eingerichtet werden, wenn Sie die Einträge aus einem dieser Gründe beibehalten müssen.  
 
 Wenn sie das Aktivitätsprotokoll an Azure senden, wird bei Auftreten eines Ereignisses ein Speichercontainer im Speicherkonto erstellt. Für die Blobs im Container gilt die folgende Benennungskonvention:
 

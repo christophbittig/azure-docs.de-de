@@ -11,12 +11,12 @@ author: MarkusVi
 manager: mtillman
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad33236812329014851a7397488025a4df558cd
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 267c7ae20f9d424d03897e0ee31b7ad990ed261d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528716"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754100"
 ---
 # <a name="quickstart-access-azure-ad-logs-with-the-microsoft-graph-api"></a>Schnellstart: Zugreifen auf Azure AD-Protokolle mit der Microsoft Graph-API 
 
@@ -47,7 +47,7 @@ Das Ziel dieses Schritts besteht darin, im Azure AD-Anmeldeprotokoll einen Eint
 
 Dieser Abschnitt enthält die Schritte zum Abrufen von Informationen zu Ihrer Anmeldung mithilfe der Graph-API.
 
- ![Abfrage im Graph-Tester](./media/quickstart-access-log-with-graph-api/graph-explorer-query.png)   
+ ![Microsoft Graph-Tester-Abfrage](./media/quickstart-access-log-with-graph-api/graph-explorer-query.png)   
 
 **Führen Sie folgende Schritte aus, um die fehlgeschlagene Anmeldung zu überprüfen:**
 

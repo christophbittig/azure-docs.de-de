@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 42d25619ef8f704e49e9001969b2b76dd921e9fb
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: a823506f47e5faa49ae736883df8aeabb122e248
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112463799"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758680"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-readcube-papers"></a>Tutorial: Integration des einmaligen Anmeldens (SSO) von Azure Active Directory mit ReadCube Papers
 
@@ -78,9 +78,12 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** den folgenden Schritt aus:
+    1. Geben Sie im Textfeld **Antwort-URL (ACS-URL)** die folgende URL ein: `https://connect.liblynx.com/saml/module.php/saml/sp/saml2-acs.php/dsrsi`.
+    2. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://app.readcube.com`.
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://app.readcube.com`.
+        ![Screenshot: Beispieleinstellungen im Bereich „SAML-Konfiguration“.](./media/readcube-papers-tutorial/configure-saml.png)
 
+         
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
@@ -115,7 +118,7 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **ReadCube Papers** mü
 
 ### <a name="create-readcube-papers-test-user"></a>Erstellen eines ReadCube Papers-Testbenutzers
 
-In diesem Abschnitt wird in ReadCube Papers ein Benutzer namens Britta Simon erstellt. ReadCube Papers unterstützt die Just-In-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in ReadCube Papers vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+In diesem Abschnitt wird in ReadCube Papers ein Benutzer namens B. Simon erstellt. ReadCube Papers unterstützt die Just-In-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in ReadCube Papers vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
@@ -128,8 +131,8 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Anmelde-URL für ReadCube Papers auf, und initiieren Sie den Anmeldeablauf.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „ReadCube Papers“ klicken, werden Sie zur Anmelde-URL für ReadCube Papers weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie im Portal „Meine Apps“auf die Kachel „ReadCube Papers“ klicken, werden Sie zur Anmelde-URL für ReadCube Papers weitergeleitet. Weitere Informationen zum Portal „Meine Apps“ finden Sie in dieser [Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von ReadCube Papers können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von ReadCube Papers können Sie Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

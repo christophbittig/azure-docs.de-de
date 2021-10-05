@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: c0eea1c7f041899d5c00062de2cbf35f83b9d53b
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: eb5766214fff67bf7e45998c9f89c640433bbe99
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662086"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652451"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
@@ -51,33 +51,41 @@ Für das Datenexportfeature fallen zurzeit keine zusätzlichen Gebühren an. Die
 
 ## <a name="export-destinations"></a>Exportziele
 
-### <a name="storage-account"></a>Speicherkonto
-Daten werden an Speicherkonten gesendet, wenn sie Azure Monitor erreichen, und in stündlichen Anfügeblobs gespeichert. Die Datenexportkonfiguration erstellt für jede Tabelle im Speicherkonto einen Container mit dem Namen *am-* , gefolgt vom Namen der Tabelle. Beispielsweise würde die Tabelle *SecurityEvent* an einen Container mit dem Namen *am-SecurityEvent* gesendet.
+Das Datenexportziel muss erstellt werden, bevor die Exportregel in Ihrem Arbeitsbereich erstellt wird. Das Ziel muss sich nicht in demselben Abonnement wie Ihr Arbeitsbereich befinden. Bei Verwendung von Azure Lighthouse ist es auch möglich, Daten an ein Ziel in einem anderen Azure Active Directory-Mandanten zu senden.
 
-Der Blobpfad im Speicherkonto lautet *WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json*. Da Anfügeblobs auf 50.000 Schreibvorgänge im Speicher beschränkt sind, kann sich die Anzahl der exportierten Blobs erhöhen, wenn die Anzahl der Anfügevorgänge hoch ist. Das Benennungsmuster für Blobs ist in diesem Fall „PT1H_#.json“, wobei # die inkrementelle Blobanzahl ist.
+### <a name="storage-account"></a>Speicherkonto
+
+Sie müssen über Schreibberechtigungen für den Arbeitsbereich und das Ziel verfügen, um eine Datenexportregel konfigurieren zu können. Sie sollten kein vorhandenes Speicherkonto verwenden, in dem andere, nicht überwachungsrelevante Daten gespeichert sind, um den Zugriff auf die Daten besser steuern zu können und ein Erreichen des Grenzwerts der Speichererfassungsrate und Drosselung zu verhindern. 
+
+Legen Sie die unveränderliche Richtlinie für das Speicherkonto wie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](../../storage/blobs/immutable-policy-configure-version-scope.md) beschrieben fest, um Daten an unveränderlichen Speicher zu senden. Sie müssen alle Schritte in diesem Artikel ausführen, einschließlich der Aktivierung von Schreibvorgängen in geschützten Anfügeblobs.
+
+Das Speicherkonto muss StorageV1 oder höher sein und sich in derselben Region wie Ihr Arbeitsbereich befinden. Wenn Sie Ihre Daten in andere Speicherkonten in anderen Regionen replizieren müssen, können Sie eine der [Azure Storage-Redundanzoptionen](../../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) verwenden, einschließlich GRS (georedundanter Speicher) und GZRS (geozonenredundanter Speicher).
+
+Daten werden an Speicherkonten gesendet, wenn sie Azure Monitor erreichen, und in stündlichen Anfügeblobs gespeichert. Die Exportregeleinstellung erstellt für jede Tabelle im Speicherkonto einen Container mit dem Namen *am-* , gefolgt vom Namen der Tabelle. Beispielsweise würde die Tabelle *SecurityEvent* an einen Container mit dem Namen *am-SecurityEvent* gesendet.
+
+Ab dem 15. Oktober 2021 werden Blobs in 5-Minuten-Ordnern in der folgenden Pfadstruktur gespeichert: *WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=\<two-digit 60-minute clock minute\>/PT05M.json*. Da Anfügeblobs auf 50.000 Schreibvorgänge im Speicher beschränkt sind, kann sich die Anzahl der exportierten Blobs erhöhen, wenn die Anzahl der Anfügevorgänge hoch ist. Das Benennungsmuster für Blobs ist in diesem Fall „PT05M_#.json“, wobei # die inkrementelle Blobanzahl ist.
 
 Das Speicherkonto-Datenformat ist [JSON Lines](../essentials/resource-logs-blob-format.md). Dies bedeutet, dass die einzelnen Datensätze jeweils durch einen Zeilenumbruch getrennt sind und dass kein externes Datensatzarray und keine Kommas zwischen JSON-Datensätzen verwendet werden. 
 
 [![Speicherbeispieldaten](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
-Durch den Log Analytics-Datenexport können Anfügeblobs in unveränderliche Speicherkonten geschrieben werden, wenn bei zeitbasierten Aufbewahrungsrichtlinien die Einstellung *allowProtectedAppendWrites* aktiviert ist. Dadurch wird das Schreiben neuer Blöcke in ein Anfügeblob ermöglicht, wobei gleichzeitig der Unveränderlichkeitsschutz und die Konformität aufrechterhalten bleiben. Weitere Informationen finden Sie unter [Zulassen von Schreibvorgängen in geschützten Anfügeblobs](../../storage/blobs/immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes).
-
 ### <a name="event-hub"></a>Event Hub
-Daten werden, sobald sie Azure Monitor erreichen, nahezu in Echtzeit an Event Hub gesendet. Für jeden Datentyp, den Sie exportieren, wird ein Event Hub mit dem Namen *am-* erstellt, gefolgt vom Namen der Tabelle. Beispielsweise würde die Tabelle *SecurityEvent* an einen Event Hub mit dem Namen *am-SecurityEvent* gesendet. Wenn für die exportierten Daten ein bestimmter Event Hub als Ziel verwendet werden soll oder Sie eine Tabelle mit einem Namen haben, der den Grenzwert von 47 Zeichen überschreitet, können Sie den Namen Ihrer eigenen Event Hub-Instanz angeben und alle Daten für definierte Tabelle in diese exportieren.
+
+Sie müssen über Schreibberechtigungen für den Arbeitsbereich und das Ziel verfügen, um eine Datenexportregel konfigurieren zu können. Die SAS-Richtlinie für den Event Hub-Namespace definiert die Berechtigungen für den Streamingmechanismus. Für das Streaming an Event Hubs werden Berechtigungen zum Verwalten, Senden und Lauschen benötigt. Um die Exportregel zu aktualisieren, müssen Sie über die ListKey-Berechtigung für diese Event Hubs-Autorisierungsregel verfügen.
+
+Der Event Hub-Namespace muss sich in derselben Region befinden wie Ihr Arbeitsbereich.
+
+Daten werden, sobald sie Azure Monitor erreichen, an Event Hub gesendet. Für jeden Datentyp, den Sie exportieren, wird ein Event Hub mit dem Namen *am-* erstellt, gefolgt vom Namen der Tabelle. Beispielsweise würde die Tabelle *SecurityEvent* an einen Event Hub mit dem Namen *am-SecurityEvent* gesendet. Wenn für die exportierten Daten ein bestimmter Event Hub als Ziel verwendet werden soll oder Sie eine Tabelle mit einem Namen haben, der den Grenzwert von 47 Zeichen überschreitet, können Sie den Namen Ihrer eigenen Event Hub-Instanz angeben und alle Daten für definierte Tabelle in diese exportieren.
 
 > [!IMPORTANT]
 > Die [Anzahl der unterstützten Event Hubs pro 'Basic'- und 'Standard'-Namensraumstufe beträgt 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers). Wenn Sie mehr als 10 Tabellen exportieren, teilen Sie die Tabellen entweder auf mehrere Exportregeln zu verschiedenen Event-Hub-Namensräumen auf oder geben Sie den Event-Hub-Namen in der Exportregel an und exportieren alle Tabellen zu diesem Event-Hub.
 
-Überlegungen:
-1. Die Event Hub-SKU „Basic“ unterstützt einen niedrigeren [Grenzwert](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-vs-premium-vs-dedicated-tiers) für die Ereignisgröße. Einige Protokolle in Ihrem Arbeitsbereich können diesen überschreiten und werden möglicherweise gelöscht. Es wird empfohlen, einen Event Hub der SKU „Standard“ oder „Dedicated“ als Exportziel zu verwenden.
+Überlegungen zum Event Hub-Namespace:
+1. Die Event Hub-SKU „Basic“ unterstützt einen niedrigeren [Grenzwert](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-vs-premium-vs-dedicated-tiers) für die Ereignisgröße. Einige Protokolle in Ihrem Arbeitsbereich können diesen möglicherweise überschreiten und werden gelöscht. Es wird empfohlen, einen Event Hub der SKU „Standard“ oder „Dedicated“ als Exportziel zu verwenden.
 2. Die Menge der exportierten Daten nimmt häufig im Laufe der Zeit zu, und die Event Hub-Skalierung muss erhöht werden, um größere Übertragungsraten zu bewältigen und Drosselungsszenarien und Datenlatenz zu vermeiden. Verwenden Sie das Feature „Automatische Vergrößerung“ von Event Hubs, um die Anzahl von Durchsatzeinheiten automatisch hochzuskalieren und so den Nutzungsanforderungen gerecht zu werden. Weitere Informationen finden Sie unter [Automatisches Hochskalieren von Azure Event Hubs-Durchsatzeinheiten](../../event-hubs/event-hubs-auto-inflate.md).
 
-## <a name="prerequisites"></a>Voraussetzungen
-Vor der Konfiguration des Log Analytics-Datenexports müssen folgende Voraussetzungen erfüllt sein:
-
-- Die Ziele müssen vor der Konfiguration der Exportregel erstellt werden und sollten sich in demselben Bereich befinden wie Ihr Log Analytics-Arbeitsbereich. Wenn Sie Ihre Daten in andere Speicherkonten replizieren müssen, können Sie eine der [Azure Storage Redundanzoptionen](../../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) verwenden, einschließlich georedundantem Speicher (GRS) und geozonenredundantem Speicher (GZRS).
-- Beim Speicherkonto muss es sich um StorageV1 oder höher handeln. Klassischer Speicher wird nicht unterstützt.
-- Wenn Sie Ihr Speicherkonto so konfiguriert haben, dass der Zugriff von ausgewählten Netzwerken aus möglich ist, müssen Sie eine Ausnahme in den Einstellungen Ihres Speicherkontos hinzufügen, damit Azure Monitor in den Speicher schreiben darf.
+> [!NOTE]
+> Der Azure Monitor-Datenexport kann nicht auf Event Hub-Ressourcen zugreifen, wenn virtuelle Netzwerke aktiviert sind. Wenn Sie die Einstellung „Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben“ in Event Hubs aktivieren, wird dem Azure Monitor-Datenexport der Zugriff auf Ihre Event Hubs-Ressourcen gewährt. 
 
 ## <a name="enable-data-export"></a>Aktivieren des Datenexports
 Die folgenden Schritte müssen ausgeführt werden, um den Log Analytics-Datenexport zu aktivieren. Ausführliche Informationen finden Sie in den entsprechenden Abschnitten weiter unten.
@@ -538,7 +546,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>Nicht unterstützte Tabellen
 Wenn die Datenexportregel eine nicht unterstützte Tabelle umfasst, wird die Konfiguration erfolgreich ausgeführt, es werden jedoch für diese Tabelle keine Daten exportiert. Wenn die Tabelle zu einem späteren Zeitpunkt unterstützt wird, werden die entsprechenden Daten dann exportiert.
 
-Wenn die Datenexportregel eine nicht vorhandene Tabelle umfasst, tritt der Fehler „Tabelle <tableName> ist im Arbeitsbereich nicht vorhanden“ auf.
+Wenn die Datenexportregel eine nicht vorhandene Tabelle umfasst, tritt der Fehler „Tabelle \<tableName\> ist im Arbeitsbereich nicht vorhanden“ auf.
 
 
 ## <a name="supported-tables"></a>Unterstützte Tabellen

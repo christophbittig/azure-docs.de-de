@@ -1,14 +1,14 @@
 ---
-title: Hinzufügen einer VM über ein freigegebenes Image in Azure DevTest Labs | Microsoft-Dokumentation
+title: Hinzufügen einer VM mit einem freigegebenen Image
 description: Erfahren Sie, wie Sie einen virtuellen Computer (VM) mithilfe eines Images aus dem angefügten Katalog mit freigegebenen Images in Azure DevTest Labs hinzufügen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 9421a1e21be9446b0e59328bd9a3730b57655274
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7107fd22142f00e422e0f302520962537d65b10e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85483855"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621809"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>Hinzufügen einer VM mit einem Image aus dem angefügten Katalog mit freigegebenen Images
 Mit Azure DevTest Labs können Sie einen Katalog mit freigegebenen Images an Ihr Lab anfügen und dann Images im Katalog als Basis für Ihre im Lab erstellten VMs verwenden. Informationen zum Anfügen eines Katalogs mit freigegebenen Images an Ihr Lab finden Sie unter [Konfigurieren eines Katalogs mit freigegebenen Images](configure-shared-image-gallery.md). In diesem Artikel wird gezeigt, wie Sie Ihrem Lab mithilfe eines Images aus dem angefügten Katalog mit freigegebenen Images als Basis einen virtuellen Computer hinzufügen. 

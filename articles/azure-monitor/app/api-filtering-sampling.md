@@ -4,12 +4,12 @@ description: Schreiben Sie Telemetrieprozessoren und Telemetrieinitialisierer f�
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3fac7a4f02a67def7f5089e3e793e61c510ad074
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 5fe23d6cae1b363cdb0c70cba561953368412361
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112289367"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645130"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Filtern und Vorverarbeiten von Telemetriedaten im Application Insights-SDK
 
@@ -312,42 +312,21 @@ Bei Apps, die mit [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) o
 ### <a name="javascript-telemetry-initializers"></a>JavaScript-Telemetrieinitialisierer
 *JavaScript*
 
-Fügen Sie einen Telemetrieinitialisierer unmittelbar nach dem Initialisierungscode ein, den Sie vom Portal abgerufen haben:
+Fügen Sie einen Telemetrieinitialisierer mithilfe des Codeausschnitts für den onInit-Rückruf ein:
 
-```JS
+```html
 <script type="text/javascript">
-    // ... initialization code
-    ...({
-        instrumentationKey: "your instrumentation key"
-    });
-    window.appInsights = appInsights;
-
-
-    // Adding telemetry initializer.
-    // This is called whenever a new telemetry item
-    // is created.
-
-    appInsights.addTelemetryInitializer(function (envelope) {
-        var telemetryItem = envelope.data.baseData;
-
-        // To check the telemetry items type - for example PageView:
-        if (envelope.name == Microsoft.ApplicationInsights.Telemetry.PageView.envelopeType) {
-            // this statement removes url from all page view documents
-            telemetryItem.url = "URL CENSORED";
-        }
-
-        // To set custom properties:
-        telemetryItem.properties = telemetryItem.properties || {};
-        telemetryItem.properties["globalProperty"] = "boo";
-        
-        // To set cloud role name / instance
-        envelope.tags["ai.cloud.role"] = "your role name";
-        envelope.tags["ai.cloud.roleInstance"] = "your role instance";
-    });
-
-    // End of inserted code.
-
-    appInsights.trackPageView();
+!function(T,l,y){<!-- Removed the Snippet code for brevity -->}(window,document,{
+src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js",
+crossOrigin: "anonymous",
+onInit: function (sdk) {
+  sdk.addTelemetryInitializer(function (envelope) {
+    envelope.data.someField = 'This item passed through my telemetry initializer';
+  });
+}, // Once the application insights instance has loaded and initialized this method will be called
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY"
+}});
 </script>
 ```
 

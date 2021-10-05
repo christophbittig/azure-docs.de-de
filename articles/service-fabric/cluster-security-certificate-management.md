@@ -4,12 +4,12 @@ description: Erfahren Sie mehr zum Verwalten von Zertifikaten in einem Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 2674e0e01432fdd45ae01632c69ada66222247f6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 580831c402c8d07eead9f3b90215faa106640bfc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293261"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601974"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Zertifikatverwaltung in Service Fabric-Clustern
 
@@ -449,7 +449,7 @@ In beiden Fällen schlägt der Transport fehl und der Cluster kann ausfallen. Di
 
 Um derartige Vorfälle zu vermeiden, empfehlen wir Folgendes:
   - Mischen Sie nicht die SANs verschiedener Tresorzertifikate. Die einzelnen Tresorzertifikate sollten einen bestimmten Zweck erfüllen, und ihr Antragsteller und SAN sollten diesen spezifisch widerspiegeln.
-  - Fügen Sie den allgemeinen Namen des Antragstellers der SAN-Liste hinzu (wörtlich als „CN=<subject common name>“).  
+  - Fügen Sie den allgemeinen Namen des Antragstellers der SAN-Liste hinzu (wörtlich als „`CN=<subject common name>`“).  
   - Wenn Sie unsicher sind, deaktivieren Sie die Verknüpfung bei Verlängerung für Zertifikate, die mit der Key Vault-VM-Erweiterung bereitgestellt werden. 
 
 #### <a name="why-use-a-user-assigned-managed-identity-what-are-the-implications-of-using-it"></a>Warum sollte eine vom Benutzer zugewiesene, verwaltete Identität verwendet werden? Welche Auswirkungen hat diese Verwendung?

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/18/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 9d7c018319003ef9671d9403c2e17642ec70a5d4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: bd6b11956ffe32a2ae59cd6d6ab262ab3013832f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476417"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753079"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Tutorial: Azure Active Directory-Integration mit Reward Gateway
 
@@ -38,6 +38,8 @@ Um die Azure AD-Integration mit Reward Gateway konfigurieren zu können, benöti
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Reward Gateway unterstützt **IDP-initiiertes** einmaliges Anmelden.
+
+* Reward Gateway unterstützt [automatisierte Benutzerbereitstellung](reward-gateway-provisioning-tutorial.md).
 
 ## <a name="add-reward-gateway-from-the-gallery"></a>Hinzufügen von Reward Gateway aus dem Katalog
 
@@ -138,13 +140,15 @@ Wenn Sie einmaliges Anmelden in **Reward Gateway** konfigurieren möchten, richt
 
 In diesem Abschnitt erstellen Sie in Reward Gateway einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Supportteam von Reward Gateway](mailto:clientsupport@rewardgateway.com), um die Benutzer auf der Reward Gateway-Plattform hinzufügen zu lassen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
+Außerdem unterstützt Reward Gateway automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./reward-gateway-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
 * Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Reward Gateway-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Reward Gateway“ klicken, sollten Sie automatisch bei der Reward Gateway-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Reward Gateway“ klicken, sollten Sie automatisch bei der Reward Gateway-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

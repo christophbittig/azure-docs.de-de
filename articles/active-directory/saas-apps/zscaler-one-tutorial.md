@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/13/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 0223b78ac34d2cfffa6a307f220c4d207c7f8b15
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 450eca8a589f6184bcac5e5d986fc7a5f4d49128
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068460"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124745133"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>Tutorial: Azure Active Directory-Integration in Zscaler One
 
@@ -40,6 +40,8 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Zscaler One unterstützt **SP-initiiertes** einmaliges Anmelden.
 
 * Zscaler One unterstützt die **Just-In-Time**-Benutzerbereitstellung.
+
+* Zscaler One unterstützt [automatisierte Benutzerbereitstellung](zscaler-one-provisioning-tutorial.md).
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
@@ -186,7 +188,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
    ![Screenshot des Dialogfelds „Benutzerauthentifizierung konfigurieren“ mit ausgewählter Option „Aktivieren“](./media/zscaler-one-tutorial/authentication.png)
 
-   a. Zeigen Sie unten links mit der Maus auf das Menü **Aktivierung**.
+   a. Bewegen Sie den Mauszeiger links unten auf das Menü **Aktivierung**.
 
    b. Klicken Sie auf **Aktivieren**.
 
@@ -229,6 +231,9 @@ In diesem Abschnitt wird in Zscaler One ein Benutzer namens Britta Simon erstel
 > [!Note]
 > Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supportteam von Zscaler One](https://www.zscaler.com/company/contact).
 
+> [!NOTE]
+> Außerdem unterstützt Zscaler One automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./zscaler-one-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -237,7 +242,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Zscaler One-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Zscaler One“ klicken, werden Sie zur Anmelde-URL für Zscaler One umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Zscaler One“ klicken, werden Sie zur Anmelde-URL für Zscaler One umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

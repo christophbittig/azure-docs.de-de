@@ -1,14 +1,14 @@
 ---
-title: Einrichten von Aufbewahrungsrichtlinien in Azure DevTest Labs | Microsoft-Dokumentation
+title: Einrichten einer Aufbewahrungsrichtlinie
 description: Erfahren Sie, wie Sie eine Aufbewahrungsrichtlinie konfigurieren, die Factory bereinigen und alte Images von DevTest Labs ausmustern.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 4e642d7dc0733e55caa4ed62e3382ef4422030f9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 91baf275a1ff85cadd0e1226ceb2f1ff529189c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727534"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642869"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Einrichten von Aufbewahrungsrichtlinien in Azure DevTest Labs
 In diesem Artikel wird das Festlegen einer Aufbewahrungsrichtlinie, das Bereinigen der Factory und das Ausmustern alter Images aus allen anderen DevTest Labs in der Organisation behandelt. 
@@ -67,4 +67,3 @@ Das Hinzufügen eines neuen Image zu Ihrer Factory ist ebenfalls einfach. Wenn S
 1. [Planen Sie für Ihren Build/Ihr Release](/azure/devops/pipelines/build/triggers?tabs=designer) die regelmäßige Ausführung der Image Factory. Dadurch werden die von Ihrer Factory generierten Images regelmäßig aktualisiert.
 2. Erstellen Sie weitere Golden Images für Ihre Factory. Sie können auch in Betracht ziehen, [Artefakte](devtest-lab-artifact-author.md) zu erstellen, um zusätzliche Teile Ihrer VM-Einrichtungsaufgaben in ein Skript einzubinden und die Artefakte in Ihre Factory-Images aufzunehmen.
 4. Erstellen Sie einen [separaten Build bzw. ein separates Release](/azure/devops/pipelines/overview), um das Skript **DistributeImages** getrennt auszuführen. Sie können dieses Skript ausführen, wenn Sie Änderungen an „Labs.json“ vornehmen und Images in Ziellabs kopieren lassen, ohne alle Images erneut erstellen zu müssen.
-

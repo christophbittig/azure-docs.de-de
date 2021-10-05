@@ -6,12 +6,12 @@ ms.date: 03/22/2021
 author: trask
 ms.custom: devx-track-java
 ms.author: trstalna
-ms.openlocfilehash: 7602392b78f53e5b896e92058836fca60de39d64
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: c0f6c1b0fce97bc835cb63a47d8827d7fab8ed56
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448881"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599827"
 ---
 # <a name="sampling-overrides-preview---azure-monitor-application-insights-for-java"></a>Stichprobenüberschreibungen (Vorschau): Azure Monitor Application Insights für Java
 
@@ -185,17 +185,18 @@ In diesem Abschnitt sind einige gängige span-Attribute aufgeführt, die bei Sti
 
 ### <a name="http-spans"></a>HTTP-span-Elemente
 
-| attribute  | Typ | BESCHREIBUNG | 
+| attribute  | type | BESCHREIBUNG | 
 |---|---|---|
 | `http.method` | Zeichenfolge | HTTP-Anforderungsmethode.|
 | `http.url` | Zeichenfolge | Vollständige Anforderungs-URL in HTTP in Form von `scheme://host[:port]/path?query[#fragment]`. Das Fragment wird üblicherweise nicht über HTTP übertragen. Wenn das Fragment jedoch bekannt ist, sollte es eingeschlossen werden.|
-| `http.status_code` | number | [HTTP-Antwortstatuscode](https://tools.ietf.org/html/rfc7231#section-6).|
 | `http.flavor` | Zeichenfolge | Der Typ des HTTP-Protokolls. |
 | `http.user_agent` | Zeichenfolge | Der Wert des vom Client gesendeten [HTTP User-Agent](https://tools.ietf.org/html/rfc7231#section-5.5.3)-Headers. |
 
+Beachten Sie, dass `http.status_code` nicht für Stichprobenentscheidungen verwendet werden kann, da das Element zu Beginn der Spanne nicht verfügbar ist.
+
 ### <a name="jdbc-spans"></a>JDBC-span-Elemente
 
-| attribute  | Typ | BESCHREIBUNG  |
+| attribute  | type | Beschreibung  |
 |---|---|---|
 | `db.system` | Zeichenfolge | Der Bezeichner für das verwendete DBMS-Produkt (Datenbank-Managementsystem). |
 | `db.connection_string` | Zeichenfolge | Verbindungszeichenfolge, mit der die Verbindung zur Datenbank hergestellt wird. Es empfiehlt sich, eingebettete Anmeldeinformationen zu entfernen.|

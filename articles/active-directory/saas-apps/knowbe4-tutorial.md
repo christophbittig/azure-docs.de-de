@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit KnowBe4 Security Awareness Training | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration in KnowBe4 Security Awareness Training'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und KnowBe4 Security Awareness Training konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,30 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/22/2020
+ms.date: 09/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 77d810fc8327e3777102f2a09f0ca32835aad4b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b4ffdc24a4a1e41d0db0c5e816b67909b125dc4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180760"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676668"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>Tutorial: Azure Active Directory-Integration mit KnowBe4 Security Awareness Training
+# <a name="tutorial-azure-ad-sso-integration-with-knowbe4-security-awareness-training"></a>Tutorial: Azure AD-SSO-Integration in KnowBe4 Security Awareness Training
 
-In diesem Tutorial erfahren Sie, wie Sie KnowBe4 Security Awareness Training in Azure Active Directory (Azure AD) integrieren.
-Die Integration von KnowBe4 Security Awareness Training in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie KnowBe4 Security Awareness Training in Azure Active Directory (Azure AD) integrieren. Die Integration von KnowBe4 Security Awareness Training in Azure AD ermöglicht Ihnen:
 
-* Sie können in Azure AD steuern, wer Zugriff auf KnowBe4 Security Awareness Training hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei KnowBe4 Security Awareness Training anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Steuern in Azure AD, wer Zugriff auf KnowBe4 Security Awareness Training besitzt.
+* Benutzer können sich mit ihren Azure AD-Konten automatisch bei KnowBe4 Security Awareness Training anmelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für das Konfigurieren der Azure AD-Integration mit KnowBe4 Security Awareness Training benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Ein KnowBe4 Security Awareness Training-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein KnowBe4 Security Awareness Training-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -40,12 +39,12 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * KnowBe4 Security Awareness Training unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-* KnowBe4 Security Awareness Training unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* KnowBe4 Security Awareness Training unterstützt **Just-in-Time**-Benutzerbereitstellung.
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
-## <a name="adding-knowbe4-from-the-gallery"></a>Hinzufügen von KnowBe4 aus dem Katalog
+## <a name="add-knowbe4-from-the-gallery"></a>Hinzufügen von KnowBe4 aus dem Katalog
 
 Zum Konfigurieren der Integration von KnowBe4 in Azure AD müssen Sie KnowBe4 aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -56,7 +55,7 @@ Zum Konfigurieren der Integration von KnowBe4 in Azure AD müssen Sie KnowBe4 au
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **KnowBe4** im Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **KnowBe4** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-and-test-azure-ad-sso-for-knowbe4-security-awareness-training"></a>Konfigurieren und Testen von Azure AD-SSO für KnowBe4 Security Awareness Training
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit KnowBe4 anhand einer Testbenutzerin mit dem Namen **Britta Simon**.
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in KnowBe4 eingerichtet werden.
@@ -64,23 +63,23 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 Führen Sie zum Konfigurieren des einmaligen Anmeldens in Azure AD mit KnowBe4 die folgenden Schritte aus:
 
 1. **[Konfigurieren Sie das einmalige Anmelden von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer Britta Simon zu testen
-    * **[Weisen Sie den Azure AD-Testbenutzer zu](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer Britta Simon zu testen
+    1. **[Weisen Sie den Azure AD-Testbenutzer zu](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 2. **[Konfigurieren Sie das einmalige Anmelden für KnowBe4 Security Awareness Training](#configure-knowbe4-security-awareness-training-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-    * **[Erstellen eines KnowBe4 Security Awareness Training-Testbenutzers](#create-knowbe4-security-awareness-training-test-user)**, um ein Pendant von Britta Simon in KnowBe4 Security Awareness Training zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+    1. **[Erstellen eines KnowBe4 Security Awareness Training-Testbenutzers](#create-knowbe4-security-awareness-training-test-user)**, um ein Pendant von Britta Simon in KnowBe4 Security Awareness Training zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
 3. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **KnowBe4** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** den folgenden Schritt aus:
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.KnowBe4.com/auth/saml/<instancename>`.
 
@@ -127,16 +126,16 @@ Zum Konfigurieren des einmaligen Anmeldens auf der **KnowBe4 Security Awareness 
 
 In diesem Abschnitt wird eine Benutzerin mit dem Namen Britta Simon in KnowBe4 erstellt. KnowBe4 unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in KnowBe4 vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für KnowBe4 weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für KnowBe4 Security Awareness Training weitergeleitet. Dort können Sie den Anmeldeflow initiieren. 
 
-2. Rufen Sie direkt die KnowBe4-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie die KnowBe4 Security Awareness Training-Anmelde-URL direkt auf, und initiieren Sie den Anmeldeflow.
 
-3. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „KnowBe4“ klicken, werden Sie zur Anmelde-URL für KnowBe4 umgeleitet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „KnowBe4 Security Awareness Training“ werden Sie zur Anmelde-URL für KnowBe4 Security Awareness Training weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von KnowBe4 können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von KnowBe4 Security Awareness Training können Sie Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

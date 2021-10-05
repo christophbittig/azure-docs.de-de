@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit HubSpot | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration in HubSpot'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und HubSpot konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 09/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 91dfdcef01a121c8282b8fad2e75f67989b75dc3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4e91ab02e02da602010cb06ff0b9e3f88d31c64
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98733241"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670059"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Tutorial: Azure Active Directory-Integration in HubSpot
+# <a name="tutorial-azure-ad-sso-integration-with-hubspot"></a>Tutorial: Azure AD-SSO-Integration in HubSpot
 
 In diesem Tutorial erfahren Sie, wie Sie HubSpot in Azure Active Directory (Azure AD) integrieren. Die Integration von HubSpot in Azure AD ermöglicht Folgendes:
 
@@ -42,7 +42,7 @@ HubSpot unterstützt die folgenden Features:
 * **SP-initiiertes einmaliges Anmelden**
 * **IDP-initiiertes einmaliges Anmelden**
 
-## <a name="adding-hubspot-from-the-gallery"></a>Hinzufügen von HubSpot aus dem Katalog
+## <a name="add-hubspot-from-the-gallery"></a>Hinzufügen von HubSpot aus dem Katalog
 
 Zum Konfigurieren der Integration von HubSpot in Azure AD müssen Sie HubSpot über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -55,20 +55,18 @@ Zum Konfigurieren der Integration von HubSpot in Azure AD müssen Sie HubSpot ü
 
 ## <a name="configure-and-test-azure-ad-sso-for-hubspot"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für HubSpot
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit HubSpot mithilfe eines Testbenutzers namens **Britta Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in HubSpot eingerichtet werden.
+Konfigurieren und testen Sie Azure AD-SSO mit HubSpot mithilfe einer Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in HubSpot eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit HubSpot müssen Sie die folgenden Schritte ausführen:
+Führen Sie zum Konfigurieren und Testen von Azure AD-SSO mit HubSpot die folgenden Schritte aus:
 
-| Aufgabe | BESCHREIBUNG |
-| --- | --- |
-| **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** | Ermöglicht Ihren Benutzern die Verwendung dieses Features. |
-| **[Konfigurieren des einmaligen Anmeldens für HubSpot](#configure-hubspot-single-sign-on)** | Konfiguriert die Einstellungen für einmaliges Anmelden in der Anwendung. |
-| **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** | Testet das einmalige Anmelden von Azure AD für einen Benutzer namens Britta Simon. |
-| **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** | Ermöglicht Britta Simon die Verwendung des einmaligen Anmeldens von Azure AD. |
-| **[Erstellen eines HubSpot-Testbenutzers](#create-a-hubspot-test-user)** | Erstellt ein Pendant zu Britta Simon in HubSpot, das mit ihrer Darstellung in Azure AD verknüpft ist. |
-| **[Testen des einmaligen Anmeldens](#test-single-sign-on)** | Überprüft, ob die Konfiguration funktioniert. |
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren von SSO für HubSpot](#configure-hubspot-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines HubSpot-Testbenutzers](#create-hubspot-test-user)** , um eine Entsprechung von B. Simon in HubSpot zu erhalten, die mit der Darstellung in Azure AD verknüpft ist.
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **HubSpot** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
@@ -76,13 +74,11 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit HubSpot m
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Zum Konfigurieren des *IDP-initiierten Modus* führen Sie im Bereich **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+1. Zum Konfigurieren des **IDP-initiierten Modus** führen Sie im Bereich **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
     1. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<CUSTOMER ID\>.
 
     1. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein: https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<CUSTOMER ID\>.
-
-    ![SSO-Informationen zur Domäne und zu den URLs für HubSpot](common/idp-intiated.png)
 
     > [!NOTE]
     > Sie können sich zum Formatieren der URLs auch die Muster im Bereich **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -93,51 +89,13 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit HubSpot m
 
     1. Geben Sie im Feld **Anmelde-URL** die URL **https:\//app.hubspot.com/login** ein.
 
-    ![Option „Zusätzliche URLs festlegen“](common/metadata-upload-additional-signon.png)
-
 1. Wählen Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die Option **Herunterladen** neben **Zertifikat (Base64)** aus. Wählen Sie eine Option zum Herunterladen entsprechend Ihren Anforderungen aus. Speichern Sie das Zertifikat auf Ihrem Computer.
 
     ![Option zum Herunterladen des Zertifikats (Base64)](common/certificatebase64.png)
 
 1. Kopieren Sie im Abschnitt **HubSpot einrichten** die folgenden URLs entsprechend Ihren Anforderungen:
 
-    * Anmelde-URL
-    * Azure AD-Bezeichner
-    * Abmelde-URL
-
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-
-### <a name="configure-hubspot-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für HubSpot
-
-1. Öffnen Sie eine neue Registerkarte in Ihrem Browser, und melden Sie sich bei Ihrem HubSpot-Administratorkonto an.
-
-1. Wählen Sie oben rechts auf der Seite das Symbol für die **Einstellungen** aus.
-
-    ![Symbol „Settings“ (Einstellungen) in HubSpot](./media/hubspot-tutorial/config1.png)
-
-1. Wählen Sie **Account Defaults** (Kontostandardwerte) aus.
-
-    ![Option „Account Defaults“ (Kontostandardwerte) in HubSpot](./media/hubspot-tutorial/config2.png)
-
-1. Scrollen Sie nach unten zum Abschnitt **Security** (Sicherheit), und wählen Sie **Set up** (Einrichten) aus.
-
-    ![Option „Set up“ (Einrichten) in HubSpot](./media/hubspot-tutorial/config3.png)
-
-1. Führen Sie im Abschnitt **Set up single sign-on** (Einmaliges Anmelden einrichten) die folgenden Schritte aus:
-
-    1. Wählen Sie im Feld **Audience URL (Service Provider Entity ID)** (Zielgruppen-URL (ID der Dienstanbieterentität)) die Option **Copy** (Kopieren) aus, um den Wert zu kopieren. Fügen Sie im Azure-Portal im Bereich **Grundlegende SAML-Konfiguration** den Wert in das Feld **Bezeichner** ein.
-
-    1. Wählen Sie im Feld **Sign on URL, ACS, Recipient, or Redirect** (Anmelde-URL, ACS, Empfänger oder Umleitung) die Option **Copy** (Kopieren) aus, um den Wert zu kopieren. Fügen Sie im Azure-Portal im Bereich **Grundlegende SAML-Konfiguration** den Wert in das Feld **Antwort-URL** ein.
-
-    1. Fügen Sie in HubSpot im Feld **Identity Provider Identifier or Issuer URL** (Identitätsanbieterbezeichner oder Aussteller-URL) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    1. Fügen Sie in HubSpot im Feld **Identity Provider Single Sign-On URL** (URL für einmaliges Anmelden des Identitätsanbieters) den Wert für **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    1. Öffnen Sie im Windows-Editor das heruntergeladene Zertifikat (Base64). Kopieren Sie den Inhalt der Datei. Fügen Sie ihn anschließend in HubSpot in das Feld **X.509 Certificate** (X.509-Zertifikat) ein.
-
-    1. Wählen Sie **Überprüfen** aus.
-
-        ![Abschnitt „Set up single sign-on“ (Einmaliges Anmelden einrichten) in HubSpot](./media/hubspot-tutorial/config4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -163,7 +121,39 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-a-hubspot-test-user"></a>Erstellen eines HubSpot-Testbenutzers
+## <a name="configure-hubspot-sso"></a>Konfigurieren von SSO für HubSpot
+
+1. Öffnen Sie eine neue Registerkarte in Ihrem Browser, und melden Sie sich bei Ihrem HubSpot-Administratorkonto an.
+
+1. Wählen Sie oben rechts auf der Seite das Symbol für die **Einstellungen** aus.
+
+    ![Symbol „Settings“ (Einstellungen) in HubSpot](./media/hubspot-tutorial/icon.png)
+
+1. Wählen Sie **Account Defaults** (Kontostandardwerte) aus.
+
+    ![Option „Account Defaults“ (Kontostandardwerte) in HubSpot](./media/hubspot-tutorial/account.png)
+
+1. Scrollen Sie nach unten zum Abschnitt **Security** (Sicherheit), und wählen Sie **Set up** (Einrichten) aus.
+
+    ![Option „Set up“ (Einrichten) in HubSpot](./media/hubspot-tutorial/security.png)
+
+1. Führen Sie im Abschnitt **Einmaliges Anmelden einrichten** die folgenden Schritte aus:
+
+    1. Wählen Sie im Feld **Audience URL (Service Provider Entity ID)** (Zielgruppen-URL (ID der Dienstanbieterentität)) die Option **Copy** (Kopieren) aus, um den Wert zu kopieren. Fügen Sie im Azure-Portal im Bereich **Grundlegende SAML-Konfiguration** den Wert in das Feld **Bezeichner** ein.
+
+    1. Wählen Sie im Feld **Sign on URL, ACS, Recipient, or Redirect** (Anmelde-URL, ACS, Empfänger oder Umleitung) die Option **Copy** (Kopieren) aus, um den Wert zu kopieren. Fügen Sie im Azure-Portal im Bereich **Grundlegende SAML-Konfiguration** den Wert in das Feld **Antwort-URL** ein.
+
+    1. Fügen Sie in HubSpot im Feld **Identity Provider Identifier or Issuer URL** (Identitätsanbieterbezeichner oder Aussteller-URL) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    1. Fügen Sie in HubSpot im Feld **Identity Provider Single Sign-On URL** (URL für einmaliges Anmelden des Identitätsanbieters) den Wert für **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    1. Öffnen Sie im Windows-Editor die heruntergeladene Datei **Certificate(Base64)** . Kopieren Sie den Inhalt der Datei. Fügen Sie ihn anschließend in HubSpot in das Feld **X.509 Certificate** (X.509-Zertifikat) ein.
+
+    1. Wählen Sie **Überprüfen** aus.
+
+        ![Abschnitt „Set up single sign-on“ (Einmaliges Anmelden einrichten) in HubSpot](./media/hubspot-tutorial/certificate.png)
+
+### <a name="create-hubspot-test-user"></a>Erstellen eines HubSpot-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei HubSpot anmelden können, müssen sie in HubSpot bereitgestellt werden. Im Fall von HubSpot ist die Bereitstellung eine manuelle Aufgabe.
 
@@ -173,32 +163,32 @@ So stellen Sie in HubSpot ein Benutzerkonto bereit:
 
 1. Wählen Sie oben rechts auf der Seite das Symbol für die **Einstellungen** aus.
 
-    ![Symbol „Settings“ (Einstellungen) in HubSpot](./media/hubspot-tutorial/config1.png)
+    ![Symbol „Settings“ (Einstellungen) in HubSpot](./media/hubspot-tutorial/icon.png)
 
 1. Wählen Sie **Users & Teams** (Benutzer und Teams) aus.
 
-    ![Option „Users & Teams“ (Benutzer und Teams) in HubSpot](./media/hubspot-tutorial/user1.png)
+    ![Option „Users & Teams“ (Benutzer und Teams) in HubSpot](./media/hubspot-tutorial/users.png)
 
 1. Wählen Sie **Create User** (Benutzer erstellen) aus.
 
-    ![Option „Create user“ (Benutzer erstellen) in HubSpot](./media/hubspot-tutorial/user2.png)
+    ![Option „Create user“ (Benutzer erstellen) in HubSpot](./media/hubspot-tutorial/teams.png)
 
 1. Geben Sie im Feld **Add email addess(es)** (E-Mail-Adresse(n) hinzufügen) die E-Mail-Adresse des Benutzers im Format „brittasimon\@contoso.com“ ein, und wählen Sie **Next** (Weiter) aus.
 
-    ![Das Feld „Add email address(es)“ (E-Mail-Adresse(n) hinzufügen) im Abschnitt „Create users“ (Benutzer erstellen) in HubSpot](./media/hubspot-tutorial/user3.png)
+    ![Das Feld „Add email address(es)“ (E-Mail-Adresse(n) hinzufügen) im Abschnitt „Create users“ (Benutzer erstellen) in HubSpot](./media/hubspot-tutorial/add-user.png)
 
 1. Wählen Sie im Abschnitt **Create users** (Benutzer erstellen) jede Registerkarte aus. Legen Sie auf jeder Registerkarte die relevanten Optionen und Berechtigungen für den Benutzer fest. Klicken Sie anschließend auf **Weiter**.
 
-    ![Registerkarten im Abschnitt „Create users“ (Benutzer erstellen) in HubSpot](./media/hubspot-tutorial/user4.png)
+    ![Registerkarten im Abschnitt „Create users“ (Benutzer erstellen) in HubSpot](./media/hubspot-tutorial/create-user.png)
 
 1. Wählen Sie **Send** (Senden) aus, um die Einladung an den Benutzer zu senden.
 
-    ![Option „Send“ (Senden) in HubSpot](./media/hubspot-tutorial/user5.png)
+    ![Option „Send“ (Senden) in HubSpot](./media/hubspot-tutorial/invitation.png)
 
     > [!NOTE]
     > Der Benutzer wird aktiviert, nachdem der Benutzer die Einladung angenommen hat.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
@@ -212,8 +202,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der HubSpot-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „HubSpot“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der HubSpot-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
-
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „HubSpot“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der HubSpot-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

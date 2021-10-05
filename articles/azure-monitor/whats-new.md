@@ -2,17 +2,91 @@
 title: Neues in der Azure Monitor-Dokumentation
 description: Neues in der Azure Monitor-Dokumentation
 ms.topic: conceptual
-ms.date: 08/15/2021
-ms.openlocfilehash: 1db9662322c6e4d8ba16eb29b13689a44ad1278b
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.date: 09/07/2021
+ms.openlocfilehash: ff893ade0664df13c8e849957cb7d7877d91a910
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356470"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788418"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 
 In diesem Artikel werden wichtige Änderungen der Azure Monitor-Dokumentation aufgeführt.
+
+## <a name="august-2021"></a>August 2021
+
+### <a name="agents"></a>Agents
+
+**Aktualisierte Artikel**
+
+- [Migrieren von Log Analytics-Agents](agents/azure-monitor-agent-migration.md)
+- [Übersicht über den Azure Monitor-Agent](agents/azure-monitor-agent-overview.md)
+
+### <a name="alerts"></a>Alerts
+
+**Aktualisierte Artikel**
+
+- [Behandeln von Problemen mit Azure Monitor-Metrikwarnungen](alerts/alerts-troubleshoot-metric.md)
+- [Erstellen von Metrikwarnungsmonitoren in Azure CLI](azure-cli-metrics-alert-sample.md)
+- [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](alerts/alerts-activity-log.md)
+
+
+### <a name="application-insights"></a>Application Insights
+
+**Aktualisierte Artikel**
+
+- [Überwachen von Azure Functions mit Azure Monitor Application Insights](app/monitor-functions.md)
+- [Anwendungsüberwachung für Azure App Service](app/azure-web-apps.md)
+- [Konfigurieren von Application Insights für Ihre ASP.NET-Website](app/asp-net.md)
+- [Application Insights-Verfügbarkeitstests](app/availability-overview.md)
+- [Application Insights-Protokollierung mit .NET](app/ilogger.md)
+- [Geolocation und Verarbeitung von IP-Adressen](app/ip-collection.md)
+- [Überwachen der Verfügbarkeit mit URL-Pingtests](app/monitor-web-app-availability.md)
+
+### <a name="essentials"></a>Essentials
+
+**Aktualisierte Artikel**
+
+- [Unterstützte Metriken von Azure Monitor](essentials/metrics-supported.md)
+- [Unterstützte Kategorien für Azure-Ressourcenprotokolle](essentials/resource-logs-categories.md)
+- [Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent](essentials/collect-custom-metrics-linux-telegraf.md)
+
+### <a name="insights"></a>Einblicke
+
+**Aktualisierte Artikel**
+
+- [Azure Monitor-Netzwerkerkenntnisse](insights/network-insights-overview.md)
+
+### <a name="logs"></a>Protokolle
+
+**Neue Artikel**
+
+- [Azure AD-Authentifizierung für Protokolle](logs/azure-ad-authentication-logs.md)
+- [Verschieben eines Log Analytics-Arbeitsbereichs in eine andere Region über das Azure-Portal](logs/move-workspace-region.md)
+- [Verfügbarkeitszonen in Azure Monitor](logs/availability-zones.md)
+- [Verwalten von Azure Monitor-Protokollen in Azure CLI](logs/azure-cli-log-analytics-workspace-sample.md)
+
+**Aktualisierte Artikel**
+
+- [Entwerfen Ihres Private Link-Setups](logs/private-link-design.md)
+- [Dedizierte Azure Monitor-Protokollcluster](logs/logs-dedicated-clusters.md)
+- [Verschieben eines Log Analytics-Arbeitsbereichs in eine andere Region über das Azure-Portal](logs/move-workspace-region.md)
+- [Konfigurieren von Private Link](logs/private-link-configure.md)
+- [Verwenden von Azure Private Link zum Verbinden von Netzwerken mit Azure Monitor](logs/private-link-security.md)
+- [Standardspalten in Azure Monitor-Protokollen](logs/log-standard-columns.md)
+- [Kundenseitig verwaltete Schlüssel in Azure Monitor](logs/customer-managed-keys.md)
+- [Datensicherheit in Azure Monitor Logs](logs/data-security.md)
+- [Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Vorschau)](logs/data-collector-api.md)
+- [Erste Schritte mit Protokollabfragen in Azure Monitor](logs/get-started-queries.md)
+- [Übersicht über Azure Monitor-Protokolle](logs/data-platform-logs.md)
+- [Log Analytics-Tutorial](logs/log-analytics-tutorial.md)
+
+### <a name="virtual-machines"></a>Virtual Machines
+
+**Aktualisierte Artikel**
+
+- [Überwachen von VMs mit Azure Monitor: Warnungen](vm/monitor-virtual-machine-alerts.md)
 
 ## <a name="july-2021"></a>Juli 2021
 

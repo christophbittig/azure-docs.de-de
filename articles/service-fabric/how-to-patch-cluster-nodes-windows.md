@@ -3,12 +3,12 @@ title: Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 description: Erfahren Sie, wie Sie automatische Upgrades für Betriebssystemimages aktivieren, um Service Fabric-Clusterknoten mit Windows zu patchen.
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 187217a0d8195917d1dfe7d726b987efbb07f8f8
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 5a3b2c78f0a7a3103c2fc56fe518739ac648ad31
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109739046"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796493"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -24,6 +24,8 @@ Das Durchführen [automatischer Upgrades von Betriebssystemimages in Ihrer Virtu
 Stellen Sie sicher, dass die Dauerhaftigkeitseinstellungen im Service Fabric-Cluster und für die Service Fabric-Erweiterung nicht in Konflikt stehen, weil dies zu Upgradefehlern führt. Dauerhaftigkeitsstufen können mit den Richtlinien geändert werden, die auf [dieser Seite](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels) beschrieben sind.
 
 Beim Dauerhaftigkeitsgrad „Bronze“ sind keine automatischen Betriebssystemupgrades verfügbar. Während die [Anwendung zur Patchorchestrierung](service-fabric-patch-orchestration-application.md) (nur für nicht in Azure gehostete Cluster) für den Dauerhaftigkeitsgrad Silber oder höher *nicht empfohlen* wird, stellt diese die einzige Möglichkeit dar, Windows-Updates unter Einbeziehung von Service Fabric-Upgradedomänen zu automatisieren.
+
+Wenn Sie von einer Patchorchestrierungsanwendung auf ein automatisches Betriebssystem-Imageupgrade umstellen möchten, müssen Sie zunächst die Verwendung der Patchorchestrierungsanwendung einstellen.
 
 ## <a name="enable-auto-os-upgrades-and-disable-windows-update"></a>Aktivieren automatischer Betriebssystemupgrades und Deaktivieren von Windows Update
 

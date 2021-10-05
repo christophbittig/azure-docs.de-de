@@ -9,12 +9,12 @@ ms.author: hirshah
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: ef2d8b68d6fb56f5d9b3508d550303aa9d9526d1
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 1542a8dd6c36c2a623f11179c0871a9fef2e3619
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349840"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665509"
 ---
 # <a name="migrate-azure-cloud-services-classic-to-azure-cloud-services-extended-support"></a>Migrieren von Azure Cloud Services (klassisch) zu Azure Cloud Services (erweiterter Support)
 
@@ -63,7 +63,7 @@ Ein neuer Cloud Service (erweiterter Support) kann mit den folgenden Clienttools
 Die plattformgestützte Migration bietet die folgenden wesentlichen Vorteile:
 
 - Ermöglicht für die meisten Szenarien eine nahtlose, durch die Plattform orchestrierte Migration ohne Ausfallzeiten. Erfahren Sie mehr über [unterstützte Szenarien](in-place-migration-technical-details.md).  
-- Migriert vorhandene Clouddienste in drei einfachen Schritten: überprüfen, vorbereiten, committen (oder abbrechen). Weitere Informationen zur [Funktionsweise des Migrationstools]in-place-migration-overview.md#migration-steps).
+- Migriert vorhandene Clouddienste in drei einfachen Schritten: überprüfen, vorbereiten, committen (oder abbrechen). Erfahren Sie mehr über die [Funktionsweise des Migrationstools](in-place-migration-overview.md#migration-steps).
 - Ermöglicht das Testen migrierter Bereitstellungen nach erfolgreicher Vorbereitung. Committet die Migration und schließt sie ab, während durch den Abbruch ein Rollback der Migration durchgeführt wird.
 
 Das Migrationstool verwendet dieselben APIs und bietet dieselbe Funktionalität wie die [Migration von Virtual Machines (klassisch)](../virtual-machines/migration-classic-resource-manager-overview.md). 

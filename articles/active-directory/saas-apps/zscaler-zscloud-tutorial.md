@@ -9,37 +9,39 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 74c65a28688906b4c9cfecf786f5862e31143ead
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: ac32f01849054017394d420668d1361e7c597dfb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804338"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124751497"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Tutorial: Azure Active Directory-Integration mit Zscaler ZSCloud
 
 In diesem Tutorial erfahren Sie, wie Sie Zscaler ZSCloud in Azure Active Directory (Azure AD) integrieren. Die Integration von Zscaler ZSCloud in Azure AD ermöglicht Folgendes:
 
-- Steuern Sie in Azure AD, wer Zugriff auf Zscaler ZSCloud hat.
-- Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Zscaler ZSCloud anzumelden.
-- Verwalten Sie Ihre Konten zentral im Azure-Portal.
+* Steuern Sie in Azure AD, wer Zugriff auf Zscaler ZSCloud hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Zscaler ZSCloud anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration in ZScaler ZSCloud konfigurieren zu können, ist Folgendes erforderlich:
 
-- Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
-- Zscaler ZSCloud-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
+* Zscaler ZSCloud-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-- Zscaler ZSCloud unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Zscaler ZSCloud unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-- Zscaler ZSCloud unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* Zscaler ZSCloud unterstützt **Just-in-Time**-Benutzerbereitstellung.
+
+* Zscaler ZSCloud unterstützt [automatisierte Benutzerbereitstellung](zscaler-zscloud-provisioning-tutorial.md).
 
 ## <a name="adding-zscaler-zscloud-from-the-gallery"></a>Hinzufügen von Zscaler ZSCloud über den Katalog
 
@@ -141,15 +143,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste die Benutzerin **Britta Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 
-   ![Screenshot des Dialogfelds „Benutzer und Gruppen“ zum Auswählen eines Benutzers](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_users.png)
+   ![Screenshot des Dialogfelds „Benutzer und Gruppen“ zum Auswählen eines Benutzers](./media/zscaler-zscloud-tutorial/users.png)
 
 6. Wählen Sie im Dialogfeld **Rolle auswählen** die geeignete Rolle in der Liste aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 
-   ![Screenshot des Dialogfelds „Rolle auswählen“ zum Auswählen einer Benutzerrolle](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_roles.png)
+   ![Screenshot des Dialogfelds „Rolle auswählen“ zum Auswählen einer Benutzerrolle](./media/zscaler-zscloud-tutorial/roles.png)
 
 7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
 
-   ![Screenshot des Dialogfelds „Zuweisung hinzufügen“ zum Auswählen der Schaltfläche „Zuweisen“](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_assign.png)
+   ![Screenshot des Dialogfelds „Zuweisung hinzufügen“ zum Auswählen der Schaltfläche „Zuweisen“](./media/zscaler-zscloud-tutorial/assignment.png)
 
    > [!NOTE]
    > Die Standardzugriffsrolle wird nicht unterstützt, da dadurch die Bereitstellung unterbrochen wird. Beim Zuweisen eines Benutzers kann daher nicht die Standardrolle ausgewählt werden.
@@ -168,7 +170,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 4. Navigieren Sie zu **Verwaltung > Authentifizierung > Authentifizierungseinstellungen**, und führen Sie die folgenden Schritte aus:
 
-   ![Screenshot der Zscaler-Website mit den beschriebenen Schritten](./media/zscaler-zscloud-tutorial/ic800206.png "Verwaltung")
+   ![Screenshot der Zscaler-Website mit den beschriebenen Schritten](./media/zscaler-zscloud-tutorial/setting.png "Verwaltung")
 
    a. Wählen Sie **SAML** als Authentifizierungstyp aus.
 
@@ -176,7 +178,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 5. Führen Sie im Fenster **Edit SAML** (SAML bearbeiten) die folgenden Schritte aus, und klicken Sie auf „Speichern“.  
 
-   ![Benutzer & Authentifizierung verwalten](./media/zscaler-zscloud-tutorial/ic800208.png "Benutzer & Authentifizierung verwalten")
+   ![Benutzer & Authentifizierung verwalten](./media/zscaler-zscloud-tutorial/attributes.png "Benutzer & Authentifizierung verwalten")
 
    a. Fügen Sie in das Textfeld **SAML Portal URL** (SAML-Portal-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
@@ -196,7 +198,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 6. Führen Sie auf der Dialogseite **Benutzerauthentifizierung konfigurieren** die folgenden Schritte aus:
 
-   ![Screenshot des Dialogfelds „Benutzerauthentifizierung konfigurieren“ mit ausgewählter Option „Aktivieren“](./media/zscaler-zscloud-tutorial/ic800207.png)
+   ![Screenshot des Dialogfelds „Benutzerauthentifizierung konfigurieren“ mit ausgewählter Option „Aktivieren“](./media/zscaler-zscloud-tutorial/active.png)
 
    a. Bewegen Sie den Mauszeiger unten links auf das Menü **Aktivierung**.
 
@@ -210,17 +212,17 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie im Menü **Extras** die Option **Internetoptionen**, um das Dialogfeld **Internetoptionen** zu öffnen.
 
-   ![Internetoptionen](./media/zscaler-zscloud-tutorial/ic769492.png &quot;Internetoptionen")
+   ![Internetoptionen](./media/zscaler-zscloud-tutorial/network.png &quot;Internetoptionen")
 
 3. Klicken Sie auf die Registerkarte **Verbindungen** .
 
-   ![Verbindungen](./media/zscaler-zscloud-tutorial/ic769493.png "Verbindungen")
+   ![Verbindungen](./media/zscaler-zscloud-tutorial/server.png "Verbindungen")
 
 4. Klicken Sie zum Öffnen des Dialogfelds **LAN-Einstellungen** auf **LAN-Einstellungen**.
 
 5. Führen Sie im Abschnitt "Proxyserver" die folgenden Schritte aus:
 
-   ![Proxyserver](./media/zscaler-zscloud-tutorial/ic769494.png "Proxyserver")
+   ![Proxyserver](./media/zscaler-zscloud-tutorial/internet-options.png "Proxyserver")
 
    a. Wählen Sie **Proxyserver für LAN verwenden** aus.
 
@@ -241,15 +243,18 @@ In diesem Abschnitt wird in Zscaler ZSCloud ein Benutzer mit dem Namen Britta S
 > [!Note]
 > Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das [Supportteam von Zscaler ZSCloud](https://help.zscaler.com/).
 
+> [!NOTE]
+> Außerdem unterstützt Zscaler ZSCloud automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./zscaler-zscloud-provisioning-tutorial.md).
+
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-- Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Zscaler ZSCloud weitergeleitet, wo Sie den Anmeldeflow initiieren können.
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Zscaler ZSCloud weitergeleitet, wo Sie den Anmeldeflow initiieren können.
 
-- Rufen Sie direkt die Zscaler ZSCloud-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die Zscaler ZSCloud-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-- Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Zscaler ZSCloud“ klicken, werden Sie zur Anmelde-URL für Zscaler ZSCloud umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Zscaler ZSCloud“ klicken, werden Sie zur Anmelde-URL für Zscaler ZSCloud umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/21/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: b524827585cdf652cbdda8b329754a0ed995ef24
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: c2363088479c591c97ccc17be0966dca125d38c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602966"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611062"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>Tutorial: Azure Active Directory-Integration mit Fuze
 
@@ -40,6 +40,8 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Fuze unterstützt **SP-initiiertes** einmaliges Anmelden.
 
 * Fuze unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+
+* Fuze unterstützt [automatisierte Benutzerbereitstellung](fuze-provisioning-tutorial.md).
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
@@ -122,7 +124,9 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Fuze** müssen Sie di
 
 In diesem Abschnitt wird in Fuze ein Benutzer namens B. Simon erstellt. Fuze unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Fuze vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+Außerdem unterstützt Fuze automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./fuze-provisioning-tutorial.md).
+
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
@@ -130,7 +134,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Fuze-Anmelde-URL auf, und initiieren Sie den Anmeldeablauf.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Fuze“ klicken, werden Sie zur Anmelde-URL für Fuze weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Fuze“ klicken, werden Sie zur Anmelde-URL für Fuze weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

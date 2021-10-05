@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2021
 ms.author: thwimmer
-ms.openlocfilehash: 3f3b6fa4a1dcd87371fe2c75de2dc89b60d92eb1
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5648c84fceb0c6d17375b712a4f3a86561296d4d
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544653"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128709040"
 ---
 # <a name="tutorial-configure-schoolstream-asa-for-automatic-user-provisioning-in-schoolstream-asa"></a>Tutorial: Konfigurieren von SchoolStream ASA für die automatische Benutzerbereitstellung in SchoolStream ASA
 
@@ -28,7 +28,8 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in SchoolStre
 > [!div class="checklist"]
 > * Erstellen von Benutzern in SchoolStream ASA 
 > * Entfernen von Benutzern aus SchoolStream ASA, wenn diese keinen Zugriff mehr benötigen
-> * Synchronisieren von Benutzerattributen zwischen Azure AD und SchoolStream ASA
+> * Synchronisieren von Benutzerattributen zwischen Azure AD und SchoolStream ASA.
+> * Bereitstellen von Gruppen und Gruppenmitgliedschaften in SchoolStream ASA.
 > * [Einmaliges Anmelden](../manage-apps/add-application-portal-setup-oidc-sso.md) bei SchoolStream ASA (empfohlen)
 
 
@@ -56,11 +57,11 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 Um mit der Verwaltung der Bereitstellung für SchoolStream ASA in Ihrer Azure AD-Instanz beginnen zu können, müssen Sie SchoolStream ASA aus dem Azure AD-Anwendungskatalog hinzufügen. 
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
-2. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-3. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
-4. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-5. Geben Sie im Abschnitt **Azure AD-Katalog durchsuchen** den Suchbegriff **SchoolStream ASA** in das Suchfeld ein.
-6. Wählen Sie im Ergebnisbereich **SchoolStream ASA** aus, und **registrieren Sie sich für die App**. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Azure AD-Katalog durchsuchen** den Suchbegriff **SchoolStream ASA** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **SchoolStream ASA** aus, und **registrieren Sie sich für die App**. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 
 Wenn Sie SchoolStream ASA zuvor für einmaliges Anmelden eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
@@ -144,7 +145,19 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
    |externalId|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String| 
 
-13. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen. Sie können zur Registerkarte **Anwendung** zurückkehren und **Bereitstellung bearbeiten** auswählen, um den Vorgang fortzusetzen.
+
+1. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit UNIFI synchronisieren** aus.
+
+1. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit UNIFI synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in UNIFI bei Aktualisierungsvorgängen verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+
+      |attribute|type|Unterstützung für das Filtern|
+      |---|---|---|
+      |displayName|String|&check;
+      |members|Verweis|
+      |externalId|String|      
+
+
+1. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen. Sie können zur Registerkarte **Anwendung** zurückkehren und **Bereitstellung bearbeiten** auswählen, um den Vorgang fortzusetzen.
 
 1. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -168,6 +181,10 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 * Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
 * Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
 * Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Änderungsprotokoll
+
+* 24.09.2020: Die Gruppenbereitstellung wurde aktiviert.
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 

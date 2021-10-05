@@ -2,13 +2,13 @@
 title: 'Azure Monitor-Ressourcenprotokolle: unterstützte Dienste und Kategorien'
 description: 'Referenz zu Azure Monitor: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.'
 ms.topic: reference
-ms.date: 08/04/2021
-ms.openlocfilehash: 2cbe701f3fbedacf29124c823743966be1f7ba32
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 09/10/2021
+ms.openlocfilehash: c92f20d4a757ef69d334345619bdc2d585648d5d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122343083"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211250"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Unterstützte Kategorien für Azure-Ressourcenprotokolle
 
@@ -19,7 +19,7 @@ ms.locfileid: "122343083"
 
 Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet. Der Name wurde im Oktober 2019 geändert, da die Typen der von Azure Monitor gesammelten Protokolle nicht mehr nur die Azure-Ressource umfassen.
 
-Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und dem `category`-Element eindeutig identifiziert. Es gibt ein allgemeines Schema für alle Ressourcenprotokolle mit dienstspezifischen Feldern, die dann für verschiedene Protokollkategorien hinzugefügt werden. Weitere Informationen finden Sie unter [Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle]().
+Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und dem `category`-Element eindeutig identifiziert. Es gibt ein allgemeines Schema für alle Ressourcenprotokolle mit dienstspezifischen Feldern, die dann für verschiedene Protokollkategorien hinzugefügt werden. Weitere Informationen finden Sie unter [Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle](/azure/azure-monitor/essentials/resource-logs-schema).
 
 ## <a name="costs"></a>Kosten
 
@@ -58,6 +58,18 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Signin|Signin|Ja|
 
 
+## <a name="microsoftagfoodplatformfarmbeats"></a>Microsoft.AgFoodPlatform/farmBeats
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ApplicationAuditLogs|Anwendungsüberwachungsprotokolle|Ja|
+|FarmManagementLogs|Farmverwaltungsprotokolle|Ja|
+|FarmOperationLogs|Farmbetriebsprotokolle|Ja|
+|ProviderAuthLogs|Anbieterauthentifizierungsprotokolle|Ja|
+|SatelliteLogs|Satellitenprotokolle|Ja|
+|WeatherLogs|Wetterprotokolle|Ja|
+
+
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
 |Category|Anzeigename der Kategorie|Exportkosten|
@@ -71,6 +83,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |GatewayLogs|Protokolle im Zusammenhang mit dem ApiManagement-Gateway|Nein|
+|WebSocketConnectionLogs|Protokolle im Zusammenhang mit Websocketverbindungen|Ja|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
@@ -86,6 +99,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |ApplicationConsole|Anwendungskonsole|Nein|
+|IngressLogs|Eingangsprotokolle|Ja|
 |SystemLogs|Systemprotokolle|Nein|
 
 
@@ -103,9 +117,10 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
-|DscNodeStatus|DSC-Knotenstatus|Nein|
-|JobLogs|Auftragsprotokolle|Nein|
-|JobStreams|Auftragsdatenströme|Nein|
+|AuditEvent|AuditEvent|Ja|
+|DscNodeStatus|DscNodeStatus|Nein|
+|JobLogs|JobLogs|Nein|
+|JobStreams|JobStreams|Nein|
 
 
 ## <a name="microsoftautonomousdevelopmentplatformaccounts"></a>Microsoft.AutonomousDevelopmentPlatform/accounts
@@ -117,11 +132,26 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Anforderung|Anforderung|Ja|
 
 
+## <a name="microsoftavsprivateclouds"></a>microsoft.avs/privateClouds
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|vmwaresyslog|VMware vCenter Syslog|Ja|
+
+
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |ServiceLog|Dienstprotokolle|Nein|
+
+
+## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|BaiClusterEvent|BaiClusterEvent|Nein|
+|BaiClusterNodeEvent|BaiClusterNodeEvent|Nein|
+|BaiJobEvent|BaiJobEvent|Nein|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
@@ -146,6 +176,13 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |BotRequest|Anforderungen von den Kanälen an den Bot|Nein|
+
+
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ConnectedClientList|Liste verbundener Clients|Ja|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
@@ -396,6 +433,13 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Verwaltung|Verwaltung|Nein|
 
 
+## <a name="microsoftdesktopvirtualizationscalingplans"></a>Microsoft.DesktopVirtualization/scalingplans
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Automatische Skalierung|Protokolle für automatische Skalierung|Ja|
+
+
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft.DesktopVirtualization/workspaces
 
 |Category|Anzeigename der Kategorie|Exportkosten|
@@ -535,7 +579,16 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
+|ExPCompute|ExPCompute|Ja|
 |Anforderung|Anforderung|Nein|
+
+
+## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AuditLogs|Überwachungsprotokolle|Nein|
+|DiagnosticLogs|Diagnoseprotokolle|Ja|
 
 
 ## <a name="microsofthealthcareapisworkspacesdicomservices"></a>Microsoft.HealthcareApis/workspaces/dicomservices
@@ -598,6 +651,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Befehl|Befehl|Nein|
 |FailedIngestion|Fehlgeschlagene Erfassungsvorgänge|Nein|
 |IngestionBatching|Batchverarbeitung der Datenerfassung|Nein|
+|Journal|Journal|Ja|
 |Abfrage|Abfrage|Nein|
 |SucceededIngestion|Erfolgreiche Erfassungsvorgänge|Nein|
 |TableDetails|Tabellendetails|Nein|
@@ -656,6 +710,14 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |---|---|---|
 |KeyDeliveryRequests|Schlüsselübermittlungsanforderungen|Nein|
 |MediaAccount|Integritätsstatus des Medienkontos|Ja|
+
+
+## <a name="microsoftmediavideoanalyzers"></a>Microsoft.Media/videoanalyzers
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|PipelineDiagnostics|Pipelinediagnoseprotokolle|Ja|
+|PipelineOperational|Pipelinebetriebsprotokolle|Ja|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationgateways
@@ -768,6 +830,13 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |TunnelDiagnosticLog|Tunneldiagnoseprotokolle|Nein|
 
 
+## <a name="microsoftnetworkfunctionazuretrafficcollectors"></a>Microsoft.NetworkFunction/azureTrafficCollectors
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ExpressRouteCircuitIpfix|IPFIX-Flowdatensätze für ExpressRoute-Verbindung|Ja|
+
+
 ## <a name="microsoftnotificationhubsnamespaces"></a>Microsoft.NotificationHubs/namespaces
 
 |Category|Anzeigename der Kategorie|Exportkosten|
@@ -787,6 +856,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |Engine|Engine|Nein|
+
 
 ## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft.PowerBI/tenants/workspaces
 
@@ -808,6 +878,7 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |---|---|---|
 |DataSensitivityLogEvent|DataSensitivity|Ja|
 |ScanStatusLogEvent|ScanStatus|Nein|
+|Sicherheit|PurviewAccountAuditEvents|Ja|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/Vaults
@@ -845,6 +916,14 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 |OperationLogs|Vorgangsprotokolle|Nein|
 
 
+## <a name="microsoftsecurityinsightssettings"></a>microsoft.securityinsights/settings
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Analyse|Analyse|Ja|
+|DataConnectors|Datensammlung – Connectors|Ja|
+
+
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
 |Category|Anzeigename der Kategorie|Exportkosten|
@@ -863,7 +942,9 @@ Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Ar
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
-|AllLogs|Azure Web PubSub-Dienstprotokolle|Ja|
+|ConnectivityLogs|Konnektivitätsprotokolle für den Azure Web PubSub-Dienst.|Ja|
+|HttpRequestLogs|HTTP-Anforderungsprotokolle für den Azure Web PubSub-Dienst.|Ja|
+|MessagingLogs|Messagingprotokolle für den Azure Web PubSub-Dienst.|Ja|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances

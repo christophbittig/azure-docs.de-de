@@ -1,144 +1,207 @@
 ---
 title: Bewährte Methoden für Azure Functions
-description: Enthält Beschreibungen der bewährten Methoden und Muster für Azure Functions.
+description: Erfahren Sie mehr über bewährte Methoden zum Entwerfen, Bereitstellen und Verwalten von effizientem Funktionscode, der in Azure ausgeführt wird.
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5783f8092a6435b43ab8720df18cc5200e390d46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/30/2021
+ms.openlocfilehash: f2efa490a9788f0e52b4dfb19b4359f247a671e9
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100378246"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057717"
 ---
-# <a name="best-practices-for-performance-and-reliability-of-azure-functions"></a>Bewährte Methoden für Leistung und Zuverlässigkeit von Azure Functions
+# <a name="best-practices-for-reliable-azure-functions"></a>Bewährte Methoden für zuverlässigen Azure Functions-Code
 
-Dieser Artikel enthält Informationen zur Verbesserung der Leistung und Zuverlässigkeit Ihrer [serverlosen](https://azure.microsoft.com/solutions/serverless/) Funktionen-Apps.  
+Azure Functions ist eine ereignisgesteuerte Compute-on-Demand-Umgebung, die die vorhandene Azure App Service-Anwendungsplattform um Funktionen zur Implementierung von Code erweitert, der durch Ereignisse ausgelöst wird, die in Azure, in Diensten von Drittanbietern und in lokalen Systemen auftreten. Mit Functions können Sie Lösungen erstellen, indem Sie eine Verbindung mit Datenquellen oder Messaginglösungen herstellen, wodurch die Verarbeitung und Reaktion auf Ereignisse vereinfacht wird. Functions wird in Azure-Rechenzentren ausgeführt, die mit vielen integrierten Komponenten komplex sind. In einer gehosteten Cloudumgebung wird erwartet, dass VMs gelegentlich neu gestartet oder verschoben werden können und Systemupgrades durchgeführt werden. Ihre Funktions-Apps sind wahrscheinlich auch von externen APIs, Azure-Diensten und anderen Datenbanken abhängig, die ebenfalls anfällig für regelmäßige Unzuverlässigkeiten sind. 
 
-Nachfolgend finden Sie bewährte Methoden zum Entwickeln und Erstellen serverloser Lösungen mit Azure Functions.
+In diesem Artikel werden einige bewährte Methoden zum Entwerfen und Bereitstellen effizienter Funktions-Apps beschrieben, die fehlerfrei bleiben und in einer cloudbasierten Umgebung gut funktionieren.
 
-## <a name="avoid-long-running-functions"></a>Vermeiden von Funktionen mit langer Ausführungsdauer
+## <a name="choose-the-correct-hosting-plan"></a>Auswählen des richtigen Hostingplans 
 
-Umfangreiche Funktionen mit langer Ausführungsdauer können zu unerwarteten Zeitüberschreitungsfehlern führen. Weitere Informationen zu Timeouts für einen bestimmten Hostingplan finden Sie unter [Optimieren der Leistung und Zuverlässigkeit von Azure Functions](functions-scale.md#timeout).
+Wenn Sie eine Funktions-App in Azure erstellen, müssen Sie einen Hostingplan für die App auswählen. Der von Ihnen ausgewählten Plan wirkt sich auf Leistung, Zuverlässigkeit und Kosten aus. Für Functions sind drei grundlegende Hostingpläne verfügbar: 
 
-Eine Funktion kann umfangreich werden, wenn sie über viele Node.js-Abhängigkeiten verfügt. Zudem kann das Importieren von Abhängigkeiten zu längeren Ladezeiten und somit zu unerwarteten Timeouts führen. Abhängigkeiten werden sowohl explizit als auch implizit geladen. Ein einzelnes Modul, das über Ihren Code geladen wird, kann eigene zusätzliche Module laden.
++ [Verbrauchstarif](consumption-plan.md)
++ [Premium-Plan](functions-premium-plan.md)
++ [Dedizierter (App Service-) Plan](dedicated-plan.md)
 
-Nach Möglichkeit sollten Sie umfangreiche Funktionen durch Refactoring immer in kleinere Funktionssätze unterteilen, die zusammenarbeiten und schnelle Reaktionen ermöglichen. Für einen Webhook oder eine HTTP-Triggerfunktion ist unter Umständen eine Bestätigungsantwort innerhalb eines bestimmten Zeitraums erforderlich. Bei Webhooks ist üblicherweise eine unmittelbare Antwort notwendig. Sie können die HTTP-Triggernutzlast an eine Warteschlange übergeben, damit sie von einer Funktion des Warteschlangentriggers verarbeitet wird. Dieser Ansatz ermöglicht es Ihnen, die eigentliche Arbeit zurückzustellen und sofort eine Antwort zurückzugeben.
+Alle Hostingpläne sind allgemein verfügbar (GA), wenn Sie Linux oder Windows ausführen.
 
-## <a name="cross-function-communication"></a>Funktionsübergreifende Kommunikation
+Im Kontext der App Service-Plattform ist der Premium-Plan, der zum dynamischen Hosten Ihrer Funktionen verwendet wird, der Elastic Premium Plan (EP). Es gibt andere dedizierte Pläne (App Service), die als Premium bezeichnet werden. Weitere Informationen finden Sie im Artikel [Premium-Plan](functions-premium-plan.md).
 
-[Durable Functions](durable/durable-functions-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-overview.md) dienen zum Verwalten der Statusübergänge und der Kommunikation zwischen mehreren Funktionen.
+Der von Ihnen ausgewählte Hostingplan bestimmt folgendes Verhalten:
 
-Wenn weder Durable Functions noch Logic Apps zum Integrieren mit mehreren Funktionen verwendet werden, haben sich Speicherwarteschlangen für die funktionsübergreifende Kommunikation bewährt. Der Hauptgrund ist, dass Speicherwarteschlangen kostengünstiger und deutlich einfacher als andere Speicheroptionen bereitzustellen sind.
++   Wie Ihre Funktions-App bedarfsbasiert skaliert und die Instanzzuordnung verwaltet wird.
++   Die für jede Instanz der Funktions-App verfügbaren Ressourcen.
++   Die Unterstützung für erweiterte Funktionen wie Azure Virtual Network-Konnektivität
 
-Einzelne Nachrichten in einer Speicherwarteschlange sind auf eine Größe von 64 KB beschränkt. Wenn Sie größere Nachrichten zwischen Funktionen übergeben müssen, kann eine Azure Service Bus-Warteschlange verwendet werden, um Nachrichtengrößen von bis zu 256 KB im Standard-Tarif und bis zu 1 MB im Premium-Tarif zu unterstützen.
+Weitere Informationen zur Auswahl des richtigen Hostingplans sowie einen detaillierten Vergleich der Pläne finden Sie unter [Azure Functions-Hostingoptionen](functions-scale.md).
 
-Service Bus-Themen sind nützlich, wenn die Nachrichten vor der Verarbeitung gefiltert werden sollen.
+Es ist wichtig, den richtigen Plan auszuwählen, wenn Sie Ihre Funktions-App erstellen. Functions bietet eine eingeschränkte Möglichkeit, Ihren Hostingplan zu wechseln, in erster Linie zwischen Verbrauchs- und Elastic Premium-Plänen. Weitere Informationen finden Sie unter [Planmigration](functions-how-to-use-azure-function-app-settings.md?tabs=portal#plan-migration). 
 
-Event Hubs sind hilfreich, um die Kommunikation mit hohen Volumina zu unterstützen.
+## <a name="configure-storage-correctly"></a>Richtiges Konfigurieren des Speichers
 
-## <a name="write-functions-to-be-stateless"></a>Schreiben von zustandslosen Funktionen
+Functions erfordert, dass Ihrer Funktions-App ein Speicherkonto zugeordnet ist. Die Speicherkontoverbindung wird vom Functions-Host für Vorgänge wie das Verwalten von Triggern und das Protokollieren von Funktionsausführungen verwendet. Sie wird auch beim dynamischen Skalieren von Funktions-Apps verwendet. Weitere Informationen finden Sie unter [Speicherüberlegungen für Azure Functions](storage-considerations.md).
 
-Funktionen sollten nach Möglichkeit zustandslos und idempotent sein. Ordnen Sie Ihren Daten alle erforderlichen Zustandsinformationen zu. Einer Bestellung, die verarbeitet wird, ist beispielsweise meist ein `state`-Member zugeordnet. Eine Funktion kann eine Bestellung basierend auf diesem Zustand verarbeiten, während die Funktion selbst zustandslos bleibt.
+Ein falsch konfiguriertes Dateisystem oder Speicherkonto in Ihrer Funktions-App kann sich auf die Leistung und Verfügbarkeit Ihrer Funktionen auswirken. Hilfe bei der Problembehandlung eines falsch konfigurierten Speicherkontos finden Sie im Artikel zur [Problembehandlung für Speicher](functions-recover-storage-account.md). 
 
-Idempotente Funktionen sind besonders bei Triggern mit Timer zu empfehlen. Wenn bei Ihnen beispielsweise eine bestimmte Komponente immer ein Mal am Tag ausgeführt werden muss, sollten Sie sie so schreiben, dass sie zu einer beliebigen Tageszeit ausgeführt werden kann und immer die gleichen Ergebnisse liefert. Die Funktion kann beendet werden, wenn für einen bestimmten Tag keine Arbeit vorhanden ist. Falls die letzte Ausführung nicht abgeschlossen werden konnte, sollte die nächste Ausführung am entsprechenden Punkt fortgesetzt werden.
+### <a name="storage-connection-settings"></a>Speicherverbindungseinstellungen
 
-## <a name="write-defensive-functions"></a>Schreiben von defensiven Funktionen
+Funktions-Apps, die dynamisch skaliert werden, können entweder über einen Azure Files-Endpunkt in Ihrem Speicherkonto oder von den Dateiservern ausgeführt werden, die Ihren skalierten Instanzen zugeordnet sind. Dieses Verhalten wird durch die folgenden Anwendungseinstellungen gesteuert:
 
-Gehen Sie davon aus, dass es für Ihre Funktion jederzeit zu einer Ausnahme kommen kann. Entwerfen Sie Ihre Funktionen so, dass bei der nächsten Ausführung an einem vorherigen Fehlerpunkt angeknüpft werden kann. Stellen Sie sich ein Szenario mit den folgenden Aktionen vor:
++ [WEBSITE_CONTENTAZUREFILECONNECTIONSTRING](functions-app-settings.md#website_contentazurefileconnectionstring)
++ [WEBSITE_CONTENTSHARE](functions-app-settings.md#website_contentshare)
 
-1. Abfrage von 10.000 Zeilen in einer Datenbank.
-2. Erstellen Sie eine Warteschlangennachricht für jede Zeile, um die spätere Verarbeitung zu ermöglichen.
+Diese Einstellungen werden nur unterstützt, wenn die Ausführung in einem Premium-Plan oder in einem Verbrauchsplan unter Windows erfolgt.
 
-Je nach Komplexität Ihres Systems verfügen Sie ggf. über Folgendes: fehlerhaftes Verhalten von nachgelagerten Diensten, Netzwerkausfälle, Erreichung von Kontingentgrenzen usw. Alle diese Faktoren können sich jederzeit auf Ihre Funktion auswirken. Sie müssen Ihre Funktionen entsprechend entwerfen, um darauf vorbereitet zu sein.
+Wenn Sie Ihre Funktions-App entweder im Azure-Portal oder mit der Azure CLI oder Azure PowerShell erstellen, werden diese Einstellungen bei Bedarf für Ihre Funktions-App erstellt. Wenn Sie Ihre Ressourcen aus einer Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen, müssen Sie auch `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` in die Vorlage einschließen. 
 
-Wie reagiert Ihr Code, wenn nach dem Einfügen von 5.000 dieser Elemente in eine Warteschlange zur Verarbeitung ein Fehler auftritt? Verfolgen Sie, welche Elemente eines Satzes bereits abgeschlossen sind. Andernfalls kann es ein, dass Sie sie beim nächsten Mal erneut einfügen. Diese doppelte Einfügung kann ernsthafte Auswirkung auf Ihren Workflow haben, sodass Sie [idempotente](functions-idempotent.md) Funktionen verwenden sollten. 
+Schließen Sie in Ihrer ersten Bereitstellung mithilfe einer ARM-Vorlage das `WEBSITE_CONTENTSHARE`-Element nicht ein, das für Sie generiert wird.   
 
-Wenn ein Warteschlangenelement bereits verarbeitet wurde, sollte es möglich sein, dass die Funktion eine No-Op-Funktion ist.
+Sie können die folgenden ARM-Vorlagenbeispiele verwenden, um diese Einstellungen richtig zu konfigurieren:
 
-Nutzen Sie Verteidigungsmaßnahmen, die für auf der Azure Functions-Plattform verwendete Komponenten bereits bereitgestellt wurden. Informationen hierzu finden Sie beispielsweise in der [Dokumentation zu Azure Storage-Warteschlangentriggern und -bindungen](functions-bindings-storage-queue-trigger.md#poison-messages) unter **Behandeln von Nachrichten in der Warteschlange für nicht verarbeitbare Nachrichten**.
++ [Verbrauchstarif](https://azure.microsoft.com/resources/templates/function-app-create-dynamic/)
++ [Dedizierter Plan](https://azure.microsoft.com/resources/templates/function-app-create-dedicated/)
++ [Premium-Plan mit VNet-Integration](https://azure.microsoft.com/resources/templates/function-premium-vnet-integration/)
++ [Verbrauchstarif mit einem Bereitstellungsslot](https://azure.microsoft.com/resources/templates/function-app-create-dynamic-slot/)
 
-## <a name="function-organization-best-practices"></a>Bewährte Methoden für die Funktionsorganisation
+### <a name="storage-account-configuration"></a>Speicherkontokonfiguration
 
-Sie entwickeln und veröffentlichen im Rahmen Ihrer Lösung möglicherweise mehrere Funktionen. Diese Funktionen werden häufig in einer einzelnen Funktions-App zusammengefasst, können aber auch in separaten Funktions-Apps ausgeführt werden. In den Hostingplänen Premium und Dedicated (App Service) können auch mehrere Funktions-Apps dieselben Ressourcen gemeinsam nutzen, indem sie im selben Plan ausgeführt werden. Wie Sie Ihre Funktionen und Funktions-Apps gruppieren, hat Einfluss auf die Leistung, Skalierung, Konfiguration, Bereitstellung und Sicherheit Ihrer gesamten Lösung. Es gibt keine Regeln, die für alle Szenarien gelten. Berücksichtigen Sie daher beim Planen und Entwickeln Ihrer Funktionen die Informationen in diesem Abschnitt.
+Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Warteschlangen- und Tabellenspeicher unterstützt. Functions basiert für Vorgänge wie das Verwalten von Triggern und das Ausführen von Protokollierfunktionen auf Azure Storage. Die Verbindungszeichenfolge des Speicherkontos für Ihre Funktions-App finden Sie in den Anwendungseinstellungen `AzureWebJobsStorage` und `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`.
 
-### <a name="organize-functions-for-performance-and-scaling"></a>Organisieren von Funktionen im Hinblick auf Leistung und Skalierung
+Beachten Sie beim Erstellen dieses Speicherkontos die folgenden Überlegungen: 
 
-Jede Funktion, die Sie erstellen, hat einen Speicherbedarf. Auch wenn dieser Speicherbedarf in der Regel gering ist, kann eine zu große Anzahl von Funktionen in einer Funktions-App dazu führen, dass die App auf neuen Instanzen langsamer gestartet wird. Dies bedeutet auch, dass die Gesamtspeicherauslastung Ihrer Funktions-App höher sein könnte. Es gibt keinen Richtwert, wie viele Funktionen sich in einer einzelnen App befinden sollten, da dies von Ihrer jeweiligen Workload abhängig ist. Wenn Ihre Funktion viele Daten im Arbeitsspeicher speichert, sollten Sie jedoch weniger Funktionen in einer einzelnen App einplanen.
++ Erstellen Sie das Speicherkonto in derselben Region wie die Funktions-App, um die Latenz zu reduzieren.
 
-Wenn Sie mehrere Funktions-Apps in einem einzelnen Premium-Plan oder Dedicated-Plan (App Service) ausführen, werden diese Apps alle gemeinsam skaliert. Falls eine Funktions-App viel mehr Arbeitsspeicher benötigt als die anderen, wird in jeder Instanz, auf der die App bereitgestellt wird, eine unverhältnismäßig große Menge an Speicherressourcen beansprucht. Da dadurch weniger Arbeitsspeicher für die anderen Apps auf jeder Instanz verfügbar ist, sollten Sie eine Funktions-App mit solch einem hohen Arbeitsspeicherbedarf in einem separaten Hostingplan ausführen.
++ Um die Leistung in der Produktion zu verbessern, verwenden Sie ein separates Speicherkonto für jede Funktions-App. Dies gilt insbesondere für Durable Functions und durch Event Hub ausgelöste Funktionen. 
 
-> [!NOTE]
-> Im [Verbrauchstarif](./functions-scale.md) empfiehlt es sich, jede App immer in einem eigenen Plan anzuordnen, da Apps in jedem Fall unabhängig voneinander skaliert werden.
++ Verwenden Sie für durch Event Hub ausgelöste Funktionen kein Konto mit [aktivierter Data Lake Storage-Funktion](https://github.com/Azure/azure-functions-eventhubs-extension/issues/81).
 
-Überlegen Sie auch, ob Sie Funktionen mit unterschiedlichen Auslastungsprofilen gruppieren möchten. Wenn Sie z. B. über eine Funktion verfügen, die viele Tausende Warteschlangennachrichten verarbeitet, und eine andere, die nur gelegentlich aufgerufen wird, aber hohe Anforderungen an den Arbeitsspeicher stellt, können Sie beide in separaten Funktions-Apps bereitstellen. Auf diese Weise erhalten sie eigene Ressourcensätze und werden unabhängig voneinander skaliert.
+### <a name="handling-large-data-sets"></a>Verwalten von großen Datasets
 
-### <a name="organize-functions-for-configuration-and-deployment"></a>Organisieren von Funktionen für die Konfiguration und Bereitstellung
+Wenn die Ausführung unter Linux erfolgt, können Sie zusätzlichen Speicher hinzufügen, indem Sie eine Dateifreigabe einbinden. Das Einbinden einer Freigabe ist eine praktische Möglichkeit für eine Funktion, ein großes vorhandenes Dataset zu verarbeiten. Weitere Informationen finden Sie unter [Einbinden von Dateifreigaben](storage-considerations.md#mount-file-shares).
 
-Funktions-Apps verfügen über eine Datei `host.json`, mit der das erweiterte Verhalten von Funktionstriggern und der Azure Functions-Runtime konfiguriert wird. Änderungen an der Datei `host.json` gelten für alle Funktionen in der App. Wenn Sie über einzelne Funktionen verfügen, die angepasste Konfigurationen erfordern, sollten Sie in Erwägung ziehen, diese in eigene Funktions-Apps zu verschieben.
+## <a name="organize-your-functions"></a>Organisieren Ihrer Funktionen 
 
-Alle Funktionen in Ihrem lokalen Projekt werden zusammen als Gruppe von Dateien in Ihrer Funktions-App in Azure bereitgestellt. Möglicherweise müssen Sie einige Funktionen separat bereitstellen oder Features wie [Bereitstellungsslots](./functions-deployment-slots.md) nur für einzelne Funktionen verwenden. In solchen Fällen sollten Sie diese Funktionen (aus separaten Codeprojekten) in verschiedenen Funktions-Apps bereitstellen.
+Sie entwickeln und veröffentlichen im Rahmen Ihrer Lösung wahrscheinlich mehrere Funktionen. Diese Funktionen werden häufig in einer einzelnen Funktions-App zusammengefasst, können aber auch in separaten Funktions-Apps ausgeführt werden. In den Hostingplänen Premium und Dedicated (App Service) können auch mehrere Funktions-Apps dieselben Ressourcen gemeinsam nutzen, indem sie im selben Plan ausgeführt werden. Wie Sie Ihre Funktionen und Funktions-Apps gruppieren, hat Einfluss auf die Leistung, Skalierung, Konfiguration, Bereitstellung und Sicherheit Ihrer gesamten Lösung. 
 
-### <a name="organize-functions-by-privilege"></a>Organisieren von Funktionen nach Berechtigungen
+Für den Verbrauchstarif und den Premium-Plan werden alle Funktionen in einer Funktions-App dynamisch gemeinsam skaliert.
 
-Verbindungszeichenfolgen und andere in den Anwendungseinstellungen gespeicherte Anmeldeinformationen erteilen allen Funktionen in der Funktions-App die gleichen Berechtigungen in der zugehörigen Ressource. Erwägen Sie, die Anzahl der Funktionen mit Zugriff auf bestimmte Anmeldeinformationen zu minimieren, indem Sie Funktionen, die diese Anmeldeinformationen nicht nutzen, in eine separate Funktions-App verlagern. Sie können stets Techniken wie [Funktionsverkettung](/learn/modules/chain-azure-functions-data-using-bindings/) nutzen, um Daten in verschiedenen Funktions-Apps zwischen Funktionen zu übergeben.  
+Weitere Informationen zum Organisieren Ihrer Funktionen finden Sie unter [Bewährte Methoden für die Funktionsorganisation](performance-reliability.md#function-organization-best-practices).
 
-## <a name="scalability-best-practices"></a>Skalierbarkeit: Bewährte Methoden
+## <a name="optimize-deployments"></a>Optimieren von Bereitstellungen
 
-Zahlreiche Faktoren beeinflussen die Skalierung von Instanzen Ihrer Funktions-App. Ausführliche Informationen finden Sie in der Dokumentation zum [Skalieren von Funktionen-Apps](functions-scale.md).  Hier finden Sie bewährten Methoden, um die optimale Skalierbarkeit einer Funktionen-App sicherzustellen.
+Beim Bereitstellen einer Funktions-App ist es wichtig zu beachten, dass die Bereitstellungseinheit für Funktionen in Azure die Funktions-App ist. Alle Funktionen in einer Funktions-App werden zur gleichen Zeit bereitgestellt, in der Regel aus demselben Bereitstellungspaket.  
 
-### <a name="share-and-manage-connections"></a>Freigeben und Verwalten von Verbindungen
+Berücksichtigen Sie diese Optionen für eine erfolgreiche Bereitstellung:
 
-Verwenden Sie Verbindungen mit externen Ressourcen nach Möglichkeit wieder. Weitere Informationen finden Sie unter [Verwalten von Verbindungen in Azure Functions](./manage-connections.md).
++  Planen Sie die Ausführung Ihrer Funktionen aus dem Bereitstellungspaket. Dieser Ansatz [Ausführung aus dem Paket](run-functions-from-deployment-package.md) bietet die folgenden Vorteile:
 
-### <a name="avoid-sharing-storage-accounts"></a>Vermeiden der Freigabe von Speicherkonten
+    + Reduziert das Risiko von Sperrungen beim Kopieren von Dateien. 
+    + Kann direkt in einer Produktions-App bereitgestellt werden, wodurch ein Neustart ausgelöst wird. 
+    + Sie wissen, dass alle Dateien im Paket für Ihre App verfügbar sind. 
+    + Verbessert die Leistung von ARM-Vorlagenbereitstellungen.
+    + Kann Kaltstartzeiten verringern, insbesondere für JavaScript-Funktionen mit großen npm-Paketstrukturen.
 
-Wenn Sie eine Funktions-App erstellen, müssen Sie sie einem Speicherkonto zuordnen. Die Speicherkontoverbindung wird in der Anwendungseinstellung [AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage) verwaltet.
++ Erwägen Sie die Verwendung von [Continuous Deployment](functions-continuous-deployment.md), um Bereitstellungen mit Ihrer Quellcodeverwaltungslösung zu verbinden. Mit Continuous Deployments können Sie die Ausführung ebenfalls aus dem Bereitstellungspaket vornehmen.
 
-[!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
++ Für [Hosting im Premium-Plan](functions-premium-plan.md) sollten Sie einen Aufwärmtrigger hinzufügen, um die Latenz zu verringern, wenn neue Instanzen hinzugefügt werden. Weitere Informationen finden Sie unter [Azure Functions-Aufwärmtrigger](functions-bindings-warmup.md). 
 
-### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Vermeiden Sie es, Test- und Produktionscodes in der derselben Funktionen-App zu mischen.
+## <a name="write-robust-functions"></a>Schreiben robuster Funktionen
 
-Für Funktionen innerhalb einer Funktionen-App werden Ressourcen gemeinsam genutzt. Dies gilt beispielsweise für den Arbeitsspeicher. Wenn Sie eine Funktionen-App in der Produktion verwenden, sollten Sie ihr keine testbezogenen Funktionen und Ressourcen hinzufügen. Bei der Ausführung des Produktionscodes kann dies zu unerwartetem Mehraufwand führen.
+Es gibt mehrere Entwurfsprinzipien, die Sie befolgen können, wenn Sie Ihren Funktionscode schreiben, um die allgemeine Leistung und Verfügbarkeit Ihrer Funktionen zu verbessern. Zu diesen Prinzipien gehören:
+ 
++ [Vermeiden von zeitintensiven Funktionen.](performance-reliability.md#avoid-long-running-functions) 
++ [Planen funktionsübergreifender Kommunikation.](performance-reliability.md#cross-function-communication) 
++ [Schreiben von zustandslosen Funktionen.](performance-reliability.md#write-functions-to-be-stateless)
++ [Schreiben von defensiven Funktionen.](performance-reliability.md#write-defensive-functions)
 
-Überlegen Sie sich gut, was Sie in Ihre Funktionen-Apps für die Produktion laden. Der Arbeitsspeicher wird gleichmäßig auf die einzelnen Funktionen der App verteilt.
+Da vorübergehende Fehler bei Cloud Computing häufig vorkommen, sollten Sie beim Zugriff auf cloudbasierte Ressourcen ein [Wiederholungsmuster](/azure/architecture/patterns/retry) verwenden. Viele Trigger und Bindungen implementieren bereits Wiederholungsversuche. 
 
-Wenn Sie eine gemeinsame Assembly nutzen, auf die in mehreren .NET-Funktionen verwiesen wird, sollten Sie sie in einem freigegebenen Ordner einfügen. Andernfalls ist es leicht möglich, dass Sie versehentlich mehrere Versionen der gleichen Binärdatei bereitstellen, die sich für die einzelnen Funktionen unterschiedlich verhalten.
+## <a name="design-for-security"></a>Sicherheitsorientiertes Design
 
-Verwenden Sie im Produktionscode keine ausführliche Protokollierung, da sich dies negativ auf die Leistung auswirkt.
+Sicherheit wird am besten während der Planungsphase und nicht erst berücksichtigt, nachdem Ihre Funktionen einsatzbereit sind. Informationen zum sicheren Entwickeln und Bereitstellen von Funktionen finden Sie unter [Sichern von Azure Functions](security-concepts.md).  
 
-### <a name="use-async-code-but-avoid-blocking-calls"></a>Verwenden von asynchronem Code bei Vermeidung von blockierenden Aufrufen
+## <a name="consider-concurrency"></a>Inbetrachtziehen von Parallelität
 
-Die asynchrone Programmierung ist eine empfohlene bewährte Vorgehensweise, insbesondere dann, wenn blockierende E/A-Vorgänge beteiligt sind.
+Wenn der Bedarf für Ihre Funktions-App aufgrund eingehender Ereignisse zunimmt, werden Funktions-Apps, die im Verbrauchstarif und Premium-Plan ausgeführt werden, aufskaliert. Es ist wichtig zu verstehen, wie Ihre Funktions-App auf Last reagiert und wie die Trigger konfiguriert werden können, um eingehende Ereignisse zu verarbeiten. Eine allgemeine Übersicht finden Sie unter [Ereignisgesteuerte Skalierung in Azure Functions](event-driven-scaling.md).
 
-Vermeiden Sie in C# stets Verweise auf die `Result`-Eigenschaft oder Aufrufe der `Wait`-Methode für eine `Task`-Instanz. Dieser Ansatz kann zur Threadauslastung führen.
+Dedizierte Pläne (App Service) erfordern, dass Sie die Aufskalierung Ihrer Funktions-Apps vorsehen. 
 
-[!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+### <a name="worker-process-count"></a>Anzahl von Workerprozessen
 
-### <a name="use-multiple-worker-processes"></a>Verwenden mehrerer Workerprozesse
+In einigen Fällen ist es effizienter, die Last zu bewältigen, indem mehrere Prozesse (so genannte Sprachworkerprozesse) in der Instanz vor der horizontalen Skalierung erstellt werden. Die maximal zulässige Anzahl von Sprachworkerprozessen wird durch die [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count)-Einstellung gesteuert. Der Standardwert für diese Einstellung ist `1`. Dies bedeutet, dass nicht mehrere Prozesse verwendet werden. Nachdem die maximale Anzahl von Prozessen erreicht wurde, wird die Funktions-App auf mehr Instanzen aufskaliert, um die Last zu verarbeiten. Diese Einstellung gilt nicht für [Funktionen der C#-Klassenbibliothek](functions-dotnet-class-library.md), die im Hostprozess ausgeführt werden.
 
-Standardmäßig verwendet jede Hostinstanz für Functions einen einzelnen Workerprozess. Um die Leistung zu verbessern, insbesondere bei Single Thread-Runtimes wie Python, verwenden Sie [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count), um die Anzahl von Workerprozessen pro Host zu erhöhen (bis zu 10). Azure Functions versucht dann, gleichzeitige Funktionsaufrufe gleichmäßig auf diese Worker zu verteilen.
+Wenn Sie `FUNCTIONS_WORKER_PROCESS_COUNT` für einen Premium-Plan oder einen dedizierten Plan (App Service) verwenden, beachten Sie die Anzahl der Kerne, die von Ihrem Plan bereitgestellt werden. Beispielsweise bietet der Premium-Plan `EP2` zwei Kerne, daher sollten Sie mit dem Wert `2` beginnen und bei Bedarf um zwei bis zum Höchstwert erhöhen.
 
-Die FUNCTIONS_WORKER_PROCESS_COUNT gilt für jeden Host, der von Functions erstellt wird, wenn Ihre Anwendung horizontal skaliert wird, um die Anforderungen zu erfüllen.
+### <a name="trigger-configuration"></a>Triggerkonfiguration
 
-### <a name="receive-messages-in-batch-whenever-possible"></a>Empfangen von Nachrichten in Batches (sofern möglich)
+Bei der Planung von Durchsatz und Skalierung ist es wichtig zu verstehen, wie die verschiedenen Triggertypen Ereignisse verarbeiten. Mit einigen Triggern können Sie das Batchverarbeitungsverhalten steuern und Parallelität verwalten. Eine häufige Anpassung der Werte in diesen Optionen kann die Skalierung der Instanz an die Anforderungen der aufgerufenen Funktionen vereinfachen. Diese Konfigurationsoptionen werden auf alle Trigger in einer Funktions-App angewendet und in der Datei „host.json“ für die App verwaltet. Details zu den Einstellungen finden Sie im Abschnitt zur Konfiguration der jeweiligen Triggerreferenz.
 
-Einige Trigger wie Event Hub ermöglichen das Erhalten von mehreren Nachrichten in einem einzigen Aufruf.  Die Batchverarbeitung von Nachrichten ermöglicht eine viel bessere Leistung.  Sie können die maximale Batchgröße in der Datei `host.json` wie in der [Dokumentation zur host.json-Referenz](functions-host-json.md) konfigurieren.
+Weitere Informationen zur Verarbeitung von Nachrichtenstreams durch Functions finden Sie unter [Zuverlässige Azure Functions-Ereignisverarbeitung](functions-reliable-event-processing.md).
 
-Bei C#-Funktionen können Sie den Typ in ein stark typisiertes Array ändern.  Beispielsweise könnte die Methodensignatur `EventData sensorEvent` statt `EventData[] sensorEvent` lauten.  Bei anderen Sprachen müssen Sie die Kardinalitätseigenschaft explizit in Ihrer `function.json` auf `many` festlegen, um die Batchverarbeitung [wie hier gezeigt](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10) zu aktivieren.
+### <a name="plan-for-connections"></a>Planen von Verbindungen
 
-### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurieren des Host-Verhaltens zum besseren Verwalten der Parallelität
+Funktions-Apps, die im [Verbrauchstarif](consumption-plan.md) ausgeführt werden, unterliegen Verbindungsgrenzwerten. Diese Grenzwerte werden pro Instanz erzwungen. Aufgrund dieser Grenzwerte und als allgemeine bewährte Methode sollten Sie Ihre ausgehenden Verbindungen aus Ihrem Funktionscode optimieren. Weitere Informationen finden Sie unter [Verwalten von Verbindungen in Azure Functions](manage-connections.md). 
 
-Die Datei `host.json` in der Funktionen-App ermöglicht die Konfiguration der Host-Laufzeit und des Triggerverhaltens.  Zusätzlich zur Batchverarbeitung von Verhalten können Sie die Parallelität für mehrere Trigger verwalten. Eine häufige Anpassung der Werte in diesen Optionen kann die Skalierung der Instanz an die Anforderungen der aufgerufenen Funktionen vereinfachen.
+### <a name="language-specific-considerations"></a>Sprachspezifische Erwägungen
 
-Die Einstellungen in der Datei „host.json“ gelten für alle Funktionen innerhalb der App in einer *Einzelinstanz* der Funktion. Wenn Sie eine Funktionen-App mit zwei HTTP-Funktionen und [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings)-Anforderungen auf 25 festlegen, zählt eine Anforderung für einen der HTTP-Trigger zu den 25 gemeinsamen parallelen Anforderungen.  Beim Skalieren dieser Funktions-App auf 10 Instanzen erlauben die zehn Funktionen effektiv 250 parallele Anforderungen (10 Instanzen × 25 gleichzeitige Anforderungen pro Instanz). 
+Beachten Sie für die Sprache Ihrer Wahl die folgenden Überlegungen:
 
-Weitere Hostkonfigurationsoptionen finden Sie [im Artikel zur host.json-Konfiguration](functions-host-json.md).
+# <a name="c"></a>[C#](#tab/csharp)
+
++ [Verwenden Sie asynchronem Code bei Vermeidung von blockierenden Aufrufen](performance-reliability.md#use-async-code-but-avoid-blocking-calls).
+
++ [Verwenden Sie Abbruchtoken](functions-dotnet-class-library.md?#cancellation-tokens) (nur prozessintern).
+
+# <a name="java"></a>[Java](#tab/java)
+
++ Erwägen Sie für Anwendungen, die eine Mischung aus CPU-gebundenen und E/A-gebundenen Vorgängen sind, die Verwendung [weiterer Workerprozesse](functions-app-settings.md#functions_worker_process_count).
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
++ [Verwenden Sie `async` und `await`](functions-reference-node.md#use-async-and-await).
+
++ [Verwenden Sie mehrere Workerprozesse für CPU-gebundene Anwendungen](functions-reference-node.md?tabs=v2#scaling-and-concurrency).
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
++ [Überprüfen Sie die Parallelitätsüberlegungen](functions-reference-powershell.md#concurrency).
+
+# <a name="python"></a>[Python](#tab/python)
+
++ [Verbessern der Durchsatzleistung von Python-Apps in Azure Functions](python-scale-performance-reference.md)
+
+---
+
+## <a name="maximize-availability"></a>Maximieren der Verfügbarkeit
+
+Kaltstart ist ein wichtiger Aspekt bei serverlosen Architekturen. Weitere Informationen finden Sie unter [Kaltstarts](event-driven-scaling.md#cold-start). Wenn Kaltstart ein Thema in Ihrem Szenario ist, finden Sie ausführlichere Informationen im Beitrag [Grundlegendes zu serverlosem Kaltstart](https://azure.microsoft.com/blog/understanding-serverless-cold-start/). 
+
+Der Premium-Plan ist der empfohlene Plan zum Reduzieren von Kaltstarts bei gleichzeitiger Beibehaltung dynamischer Skalierung. Mithilfe der folgenden Anleitung können Sie Kaltstarts reduzieren und die Verfügbarkeit in allen drei Hostingplänen verbessern. 
+
+| Planen | Leitfaden |
+| --- | --- | 
+| **Premium-Plan** | • [Implementieren eines Aufwärmtriggers in Ihrer Funktions-App](functions-bindings-warmup.md)<br/>• [Festlegen der Werte für Always-Ready-Instanzen und des Grenzwerts für maximalen Burst](functions-premium-plan.md#plan-and-sku-settings)<br/>• [Verwenden der Triggerunterstützung für virtuelle Netzwerke bei Verwendung von Nicht-HTTP-Triggern für ein virtuelles Netzwerk](functions-networking-options.md#premium-plan-with-virtual-network-triggers)|
+| **Dedizierte Pläne** | • [Ausführung in mindestens zwei Instanzen mit aktivierter Azure App Service-Integritätsprüfung](../app-service/monitor-instances-health-check.md)<br/>• [Implementieren automatischer Skalierung](/azure/architecture/best-practices/auto-scaling)|
+| **Verbrauchstarif** | • Überprüfen Sie die Verwendung von Singletonmustern und die Parallelitätseinstellungen für Bindungen und Trigger, um zu vermeiden, dass künstliche Einschränkungen für die Skalierung Ihrer Funktions-App gelten.<br/>• [Überprüfen Sie die `functionAppScaleLimit`-Einstellung, die horizontale Skalierung einschränken kann](event-driven-scaling.md#limit-scale-out)<br/>• Überprüfen Sie während der Entwicklung und beim Testen, ob ein Grenzwert für das tägliche Nutzungskontingent (GB-Sek.) festgelegt wurde. Erwägen Sie, diesen Grenzwert in Produktionsumgebungen zu entfernen. |
+
+## <a name="monitor-effectively"></a>Effektive Überwachung
+
+Azure Functions bietet eingebaute Integration in Azure Application Insights zur Überwachung der Funktionsausführung und der von Ihrem Code geschriebenen Ablaufverfolgungen. Weitere Informationen finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md). Azure Monitor bietet auch Funktionen zum Überwachen der Integrität der Funktions-App selbst. Weitere Informationen finden Sie unter [Verwenden von Azure Monitor-Metriken mit Azure Functions](monitor-metrics.md).
+
+Bei der Verwendung der Application Insights-Integration zur Überwachung Ihrer Funktionen sollten Sie die folgenden Punkte beachten:
+
++ Stellen Sie sicher, dass die Anwendungseinstellung [AzureWebJobsDashboard](functions-app-settings.md#azurewebjobsdashboard) entfernt wird. Diese Einstellung wurde in einer älteren Version von Functions unterstützt. Wenn sie vorhanden ist, verbessert das Entfernen von `AzureWebJobsDashboard` die Leistung Ihrer Funktionen. 
+
++  Überprüfen Sie die [Application Insights-Protokolle](analyze-telemetry-data.md). Wenn Daten fehlen, die Sie erwarten, sollten Sie die Einstellungen für Stichprobenentnahmen anpassen, um Ihr Überwachungsszenario besser zu erfassen. Sie können die `excludedTypes`-Einstellung verwenden, um bestimmte Typen von der Stichprobenentnahme auszuschließen, z. B. `Request` oder `Exception`. Weitere Informationen finden Sie unter [Konfigurieren des Samplings](configure-monitoring.md?tabs=v2#configure-sampling).
+
+Azure Functions ermöglicht es Ihnen auch, [vom System generierte und benutzergenerierte Protokolle an Azure Monitor-Protokolle](functions-monitor-log-analytics.md) zu senden. Die Integration in Azure Monitor-Protokolle befindet sich derzeit in der Vorschau. 
+
+## <a name="build-in-redundancy"></a>Integrierte Redundanz
+
+Ihre geschäftlichen Anforderungen erfordern möglicherweise, dass Ihre Funktionen immer verfügbar sind, auch während eines Rechenzentrumsausfalls. Informationen dazu, wie Sie einen Ansatz mit mehreren Regionen verwenden, um ihre kritischen Funktionen immer auszuführen, finden Sie unter [Georedundante Azure Functions-Notfallwiederherstellung und -Hochverfügbarkeit](functions-geo-disaster-recovery.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie in den folgenden Ressourcen:
-
-* [Verwalten von Verbindungen in Azure Functions](manage-connections.md)
-* [Azure App Service – bewährte Methoden](../app-service/app-service-best-practices.md)
+[Verwalten Ihrer Funktions-App](functions-how-to-use-azure-function-app-settings.md)

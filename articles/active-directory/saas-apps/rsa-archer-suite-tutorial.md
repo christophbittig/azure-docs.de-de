@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit RSA Archer Suite | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration in RSA Archer Suite'
 description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und RSA Archer Suite konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/02/2021
+ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: d96f1e0413dac8477e2fc40bf84e88318abf3f9d
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 38694ff8bdbe041d582af3b8bfb9d0c9fffe9e62
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284962"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656586"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit RSA Archer Suite
+# <a name="tutorial-azure-ad-sso-integration-with-rsa-archer-suite"></a>Tutorial: Azure AD-SSO-Integration in RSA Archer Suite
 
 In diesem Tutorial erfahren Sie, wie Sie RSA Archer Suite in Azure Active Directory (Azure AD) integrieren. Die Integration von RSA Archer Suite in Azure AD ermöglicht Folgendes:
 
@@ -77,11 +77,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<BASE_URL>/default.aspx?IDP=<REALM_NAME>`.
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** den folgenden Wert ein: `RSAArcherSuite_TENANT_STRING`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** den folgenden Wert ein: `RSAArcherSuite_TENANT_STRING`.
+    b. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<BASE_URL>/default.aspx?IDP=<REALM_NAME>`.
 
     > [!NOTE]
     > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der tatsächlichen Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den RSA Archer Suite-Client](mailto:archersupport@rsa.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -140,7 +140,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Führen Sie auf der folgenden Seite die folgenden Schritte aus:
 
-    ![Konfigurieren des einmaligen Anmeldens für RSA Archer Suite](./media/rsa-archer-suite-tutorial/configuration.png)
+    ![Konfigurieren des einmaligen Anmeldens für RSA Archer Suite.](./media/rsa-archer-suite-tutorial/configuration.png)
 
     a. Navigieren Sie zur Registerkarte **Single Sign-On** (Einmaliges Anmelden), und wählen Sie im Dropdownmenü **Single Sign-On Mode** (SSO-Modus) die Option **SAML** aus.
 
@@ -162,12 +162,12 @@ In diesem Abschnitt wird in RSA Archer Suite ein Benutzer namens B. Simon erste
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für RSA Archer Suite weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für RSA Archer Suite weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-2. Rufen Sie direkt die RSA Archer Suite-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die RSA Archer Suite-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-3. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „RSA Archer Suite“ klicken, sollten Sie automatisch bei der RSA Archer Suite-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „RSA Archer Suite“ klicken, werden Sie zur Anmelde-URL für RSA Archer Suite weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
- Nach dem Konfigurieren von RSA Archer Suite können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von RSA Archer Suite können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

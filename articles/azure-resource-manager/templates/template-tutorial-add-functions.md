@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 1006f29544bf2708277c6b5a975836a31bcdeff9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6f8812e4894a9ba0daa4423fae77b43bcdb758d6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959294"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643990"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Tutorial: Hinzufügen von Vorlagenfunktionen zu Ihrer ARM-Vorlage
 
@@ -29,11 +29,11 @@ Am Ende des vorherigen Tutorials enthielt Ihre Vorlage den folgenden JSON-Code:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
-Der Standort des Speicherkontos ist auf **USA, Osten** hartcodiert. Möglicherweise müssen Sie das Speicherkonto jedoch in anderen Regionen bereitstellen. Auch hier erweist sich die mangelnde Flexibilität Ihrer Vorlage als Problem. Sie könnten einen Parameter für den Standort hinzufügen, es wäre aber von Vorteil, wenn sein Standardwert nicht nur ein hartcodierter Wert wäre.
+Der Standort des Speicherkontos ist auf **eastus** hartcodiert. Möglicherweise müssen Sie das Speicherkonto jedoch in anderen Regionen bereitstellen. Auch hier erweist sich die mangelnde Flexibilität Ihrer Vorlage als Problem. Sie könnten einen Parameter für den Standort hinzufügen, es wäre aber von Vorteil, wenn sein Standardwert nicht nur ein hartcodierter Wert wäre.
 
 ## <a name="use-function"></a>Verwenden einer Funktion
 
-Wenn Sie das vorherige Tutorial dieser Reihe durchgeführt haben, haben Sie bereits eine Funktion verwendet. Beim Hinzufügen von `"[parameters('storageName')]"` haben Sie die [parameters](template-functions-deployment.md#parameters)-Funktion verwendet. Die Klammern geben an, dass es sich bei der Syntax innerhalb der Klammern um einen [Vorlagenausdruck](template-expressions.md) handelt. Resource Manager löst die Syntax auf, anstatt sie als Literalwert zu behandeln.
+Wenn Sie das [Parametertutorial](./template-tutorial-add-parameters.md#make-template-reusable) abgeschlossen haben, haben Sie eine Funktion verwendet. Beim Hinzufügen von `"[parameters('storageName')]"` haben Sie die [parameters](template-functions-deployment.md#parameters)-Funktion verwendet. Die Klammern geben an, dass es sich bei der Syntax innerhalb der Klammern um einen [Vorlagenausdruck](template-expressions.md) handelt. Resource Manager löst die Syntax auf, anstatt sie als Literalwert zu behandeln.
 
 Funktionen rufen während der Bereitstellung dynamisch Werte ab und erhöhen dadurch die Flexibilität Ihrer Vorlage. In diesem Tutorial verwenden Sie eine Funktion, um den Standort der Ressourcengruppe abzurufen, die Sie für die Bereitstellung verwenden.
 

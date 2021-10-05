@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit SAP Cloud Platform | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration in SAP Cloud Platform'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und SAP Cloud Platform konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 09/08/2021
 ms.author: jeedes
-ms.openlocfilehash: b15c5a9f9f1e4e144caa2ddaa36d42a2a225b31b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 939bc772a46a35a1d702bf972d42467be8c86dee
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97964047"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547203"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Tutorial: Azure Active Directory-Integration mit SAP Cloud Platform
+# <a name="tutorial-azure-ad-sso-integration-with-sap-cloud-platform"></a>Tutorial: Azure AD-SSO-Integration in SAP Cloud Platform
 
 In diesem Tutorial erfahren Sie, wie Sie SAP Cloud Platform in Azure Active Directory (Azure AD) integrieren. Die Integration von SAP Cloud Platform in Azure AD ermöglicht Folgendes:
 
@@ -28,12 +28,10 @@ In diesem Tutorial erfahren Sie, wie Sie SAP Cloud Platform in Azure Active Dire
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Konfigurieren der Azure AD-Integration mit SAP Cloud Platform benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* SAP Cloud Platform-Abonnement, für das einmaliges Anmelden aktiviert ist
-
-Nach Abschluss dieses Tutorials können sich die SAP Cloud Platform zugewiesenen Azure AD-Benutzer wie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md) beschrieben mittels einmaliger Anmeldung bei der Anwendung anmelden.
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* SAP Cloud Platform-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist.
 
 >[!IMPORTANT]
 >Sie müssen eine eigene Anwendung bereitstellen oder eine Anwendung unter Ihrem SAP Cloud Platform-Konto abonnieren, um das einmalige Anmelden testen zu können. In diesem Tutorial wird eine Anwendung auf dem Konto bereitgestellt.
@@ -45,7 +43,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * SAP Cloud Platform unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-sap-cloud-platform-from-the-gallery"></a>Hinzufügen von SAP Cloud Platform über den Katalog
+## <a name="add-sap-cloud-platform-from-the-gallery"></a>Hinzufügen von SAP Cloud Platform aus dem Katalog
 
 Zum Konfigurieren der Integration von SAP Cloud Platform in Azure AD müssen Sie SAP Cloud Platform aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
@@ -69,7 +67,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Erstellen eines SAP Cloud Platform-Testbenutzers](#create-sap-cloud-platform-test-user)** , um ein Pendant von Britta Simon in SAP Cloud Platform zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
@@ -81,36 +79,40 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für SAP Cloud Platform](common/sp-identifier-reply.png)
+    a. Geben Sie im Textfeld **Bezeichner** die URL von SAP Cloud Platform in einem der folgenden Formate an: 
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von den Benutzern zur Anmeldung bei der **SAP Cloud Platform**-Anwendung verwendet wird. Dies ist die kontospezifische URL einer geschützten Ressource in der SAP Cloud Platform-Anwendung. Die URL basiert auf dem folgenden Muster: `https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
+    | **Identifier** |
+    |-----------|
+    | `https://hanatrial.ondemand.com/<instancename>` |
+    | `https://hana.ondemand.com/<instancename>` |
+    | `https://us1.hana.ondemand.com/<instancename>` |
+    | `https://ap1.hana.ondemand.com/<instancename>` |
+
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein:
+
+    | **Antwort-URL** |
+    |----------|
+    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
+    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
+    | `https://<subdomain>.us1.hana.ondemand.com/<instancename>` |
+    | `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>` |
+    | `https://<subdomain>.ap1.hana.ondemand.com/<instancename>` |
+    | `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>` |
+    | `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>` |
+
+    c. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die von den Benutzern zur Anmeldung bei der **SAP Cloud Platform**-Anwendung verwendet wird. Dies ist die kontospezifische URL einer geschützten Ressource in der SAP Cloud Platform-Anwendung. Die URL basiert auf dem folgenden Muster: `https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
     >[!NOTE]
     >Dies ist die URL in Ihrer SAP Cloud Platform-Anwendung, die die Authentifizierung des Benutzers erfordert.
     > 
 
-    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
-    - `https://<subdomain>.hana.ondemand.com/<instancename>`
-
-    b. Geben Sie im Textfeld **Bezeichner** die URL von SAP Cloud Platform in einem der folgenden Formate an: 
-
-    - `https://hanatrial.ondemand.com/<instancename>`
-    - `https://hana.ondemand.com/<instancename>`
-    - `https://us1.hana.ondemand.com/<instancename>`
-    - `https://ap1.hana.ondemand.com/<instancename>`
-
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: 
-
-    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
-    - `https://<subdomain>.hana.ondemand.com/<instancename>`
-    - `https://<subdomain>.us1.hana.ondemand.com/<instancename>`
-    - `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>`
-    - `https://<subdomain>.ap1.hana.ondemand.com/<instancename>`
-    - `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>`
-    - `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>`
+    | **Anmelde-URL** |
+    |------|
+    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
+    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Anmelde-URL und Bezeichner erhalten Sie vom [Supportteam für den SAP Cloud Plattform-Client](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html). Die Antwort-URL finden Sie im Abschnitt für die Verwaltung der Vertrauensstellung. Dies wird weiter unten im Tutorial erläutert.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und Anmelde-URL aktualisieren. Anmelde-URL und Bezeichner erhalten Sie vom [Supportteam für den SAP Cloud Plattform-Client](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html). Die Antwort-URL finden Sie im Abschnitt für die Verwaltung der Vertrauensstellung. Dies wird weiter unten im Tutorial erläutert.
     > 
 4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -146,11 +148,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
 
 2. Klicken Sie auf die Registerkarte **Vertrauen** .
    
-    ![Trust (Vertrauen)](./media/sap-hana-cloud-platform-tutorial/ic790800.png "Vertrauen")
+    ![Trust (Vertrauen)](./media/sap-hana-cloud-platform-tutorial/account.png "Vertrauen")
 
 3. Führen Sie im Abschnitt für die Verwaltung der Vertrauensstellung unter **Local Service Provider** (Lokaler Dienstanbieter) die folgenden Schritte aus:
 
-    ![Screenshot: Abschnitt für die Verwaltung der Vertrauensstellung, in dem die Registerkarte „Local Service Provider“ (Lokaler Dienstanbieter) ausgewählt ist und alle Textfelder hervorgehoben sind](./media/sap-hana-cloud-platform-tutorial/ic793931.png "Verwaltung von Vertrauensstellungen")
+    ![Screenshot: Abschnitt für die Verwaltung der Vertrauensstellung, in dem die Registerkarte „Local Service Provider“ (Lokaler Dienstanbieter) ausgewählt ist und alle Textfelder hervorgehoben sind](./media/sap-hana-cloud-platform-tutorial/service.png "Verwaltung von Vertrauensstellungen")
    
     a. Klicken Sie auf **Bearbeiten**.
 
@@ -168,7 +170,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
 
 4. Führen Sie nach dem Speichern der Einstellungen für **Local Service Provider** (Lokaler Dienstanbieter) die folgenden Schritte aus, um die Antwort-URL zu erhalten:
    
-    ![Abrufen von Metadaten](./media/sap-hana-cloud-platform-tutorial/ic793930.png "Metadaten abrufen")
+    ![Abrufen von Metadaten](./media/sap-hana-cloud-platform-tutorial/certificate.png "Metadaten abrufen")
 
     a. Klicken Sie zum Herunterladen der SAP Cloud Platform-Metadatendatei auf **Metadaten abrufen**.
 
@@ -178,7 +180,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
 
 5. Klicken Sie auf die Registerkarte **Vertrauenswürdiger Identitätsanbieter**, und klicken Sie dann auf **Vertrauenswürdigen Identitätsanbieter hinzufügen**.
    
-    ![Screenshot: Seite für die Verwaltung der Vertrauensstellung, auf der die Registerkarte „Trusted Identity Provider“ (Vertrauenswürdiger Identitätsanbieter) ausgewählt ist](./media/sap-hana-cloud-platform-tutorial/ic790802.png "Verwaltung von Vertrauensstellungen")
+    ![Screenshot: Seite für die Verwaltung der Vertrauensstellung, auf der die Registerkarte „Trusted Identity Provider“ (Vertrauenswürdiger Identitätsanbieter) ausgewählt ist](./media/sap-hana-cloud-platform-tutorial/add-service.png "Verwaltung von Vertrauensstellungen")
    
     >[!NOTE]
     >Um die Liste der vertrauenswürdigen Identitätsanbieter verwalten zu können, müssen Sie den Konfigurationstyp „Benutzerdefinierte“ im Abschnitt „Lokale Dienstanbieter“ ausgewählt haben. Beim Standard-Konfigurationstyp haben Sie ein nicht-bearbeitbares und implizites Vertrauen gegenüber dem SAP ID-Dienst. Bei der Option „Keine“ haben Sie keine Vertrauenseinstellungen.
@@ -187,7 +189,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
 
 6. Klicken Sie auf die Registerkarte **Allgemein** und dann auf **Durchsuchen**, um die heruntergeladene Metadatendatei hochzuladen.
     
-    ![Verwaltung von Vertrauensstellungen](./media/sap-hana-cloud-platform-tutorial/ic793932.png "Verwaltung von Vertrauensstellungen")
+    ![Verwaltung von Vertrauensstellungen](./media/sap-hana-cloud-platform-tutorial/general.png "Verwaltung von Vertrauensstellungen")
     
     >[!NOTE]
     >Nach dem Hochladen der Metadatendatei werden die Werte für **URL für einmaliges Anmelden**, **URL für einmaliges Abmelden** und **Signaturzertifikat** automatisch ausgefüllt.
@@ -197,7 +199,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
 
 8. Führen Sie auf der Registerkarte **Attribute** die folgenden Schritte aus:
     
-    ![Attribute](./media/sap-hana-cloud-platform-tutorial/ic790804.png "Attributes") 
+    ![Attribute](./media/sap-hana-cloud-platform-tutorial/principal-attribute.png "Attributes") 
 
     a. Klicken Sie auf **Assertion-Attribut hinzufügen**, und für Sie dann die folgenden Assertion-basierten Attribute hinzu:
        
@@ -207,9 +209,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |lastname |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |email |
    
-     >[!NOTE]
-     >Die Konfiguration der Attribute hängt davon ab, wie die Anwendung(en) für SPC entwickelt wurden – also welche Attribute sie in der SAML-Antwort erwarten und unter welchem Namen (Prinzipal-Attribut) sie auf dieses Attribut im Code zugreifen.
-     > 
+    >[!NOTE]
+    >Die Konfiguration der Attribute hängt davon ab, wie die Anwendung(en) für SPC entwickelt wurden – also welche Attribute sie in der SAML-Antwort erwarten und unter welchem Namen (Prinzipal-Attribut) sie auf dieses Attribut im Code zugreifen.
+    > 
     
     b. Das **Standard-Attribut** im Screenshot dient nur der Veranschaulichung. Es ist nicht erforderlich, damit das Szenario funktioniert.  
  
@@ -235,7 +237,7 @@ Um Azure AD-Benutzern die Anmeldung bei SAP Cloud Platform zu ermöglichen, müs
 
 2. Führen Sie Folgendes aus:
    
-    ![Autorisierungen](./media/sap-hana-cloud-platform-tutorial/ic790805.png "Authorizations")
+    ![Autorisierungen](./media/sap-hana-cloud-platform-tutorial/roles.png "Authorizations")
    
     a. Klicken Sie auf **Autorisierung**.
 
@@ -255,7 +257,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die SAP Cloud Platform-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „SAP Cloud Platform“ klicken, sollten Sie automatisch bei der SAP Cloud Platform-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „SAP Cloud Platform“ klicken, sollten Sie automatisch bei der SAP Cloud Platform-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

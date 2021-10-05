@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 05/28/2021
 ms.author: dukek
-ms.openlocfilehash: ff6d911b85558e5efe9cc8302b9cb857cb7a9706
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: cc5d5aa589b56fb6e6fda1845e50606ff492fbdd
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830657"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217881"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor-, Service Health- und Azure Advisor-Warnungen verwenden Aktionsgruppen, um Benutzer über das Auslösen einer Warnung zu informieren. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. 
@@ -24,6 +24,8 @@ Jede Aktion besteht aus den folgenden Eigenschaften:
 * **Details**: Die entsprechenden Details. Diese können je nach *Typ* variieren.
 
 Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konfigurierung von Aktionsgruppen finden Sie unter [Aktionsgruppen-Resource Manager-Vorlagen](./action-groups-create-resource-manager-template.md).
+
+Die Aktionsgruppe ist ein **globaler** Dienst, der daher keine Abhängigkeit von einer bestimmten Azure-Region aufweist. Anforderungen vom Client können vom Aktionsgruppendienst in einer beliebigen Region verarbeitet werden. Dies bedeutet, dass der Datenverkehr automatisch von anderen Regionen geroutet und verarbeitet wird, wenn eine Region nicht verfügbar ist. Da es sich um einen *globalen Dienst* handelt, muss sich der Client nicht um die **Notfallwiederherstellung** kümmern. 
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Erstellen einer Aktionsgruppe mit dem Azure-Portal
 

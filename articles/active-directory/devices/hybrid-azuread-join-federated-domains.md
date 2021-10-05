@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ea75273694eb5c13b5cd8c4812aa58508fa9f62
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c6a9b193983d58bb8e9cc2964e3ae45160056c4c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130678"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592848"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen
 
@@ -191,7 +191,9 @@ Im Folgenden finden Sie drei Möglichkeiten, den Gerätezustand zu finden und zu
 1. Öffnen Sie Windows PowerShell.
 2. Geben Sie `dsregcmd /status` ein.
 3. Überprüfen Sie, ob sowohl **AzureAdJoined-** als auch **DomainJoined** auf **YES** festgelegt sind.
-4. Sie können die **DeviceId** verwenden und den Status des Diensts entweder ium Azure-Portal oder mithilfe der PowerShell vergleichen.
+4. Sie können die **DeviceId** verwenden und den Status des Diensts entweder im Azure-Portal oder mithilfe von PowerShell vergleichen.
+
+Informationen zu kompatiblen Geräten finden Sie im Artikel [Beheben von Problemen mit kompatiblen Geräten mit Hybrid-Azure Active Directory-Einbindung](troubleshoot-hybrid-join-windows-legacy.md#step-1-retrieve-the-registration-status).
 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 

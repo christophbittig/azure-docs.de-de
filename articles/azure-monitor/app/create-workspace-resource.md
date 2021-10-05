@@ -1,15 +1,15 @@
 ---
-title: Erstellen einer neuen arbeitsbereichsbasierten Application Insights-Ressource in Azure Monitor | Microsoft-Dokumentation
+title: Erstellen einer neuen arbeitsbereichsbasierten Application Insights-Ressource in Azure Monitor
 description: Erfahren Sie mehr über die erforderlichen Schritte zum Aktivieren der neuen arbeitsbereichsbasierte Application Insights-Ressourcen in Azure Monitor.
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 21cf89c7d89e310f98fea4421076d298405b6fc3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 42025ec3e2c509e2fcf7aa4874d9d5363f134a97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464458"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604491"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Arbeitsbereichsbasierte Application Insights-Ressourcen
 
@@ -208,8 +208,7 @@ Wählen Sie im Bereich der Application Insights-Ressource die Optionen **Eigensc
 Die Legacyfunktion für den fortlaufenden Export wird für arbeitsbereichsbasierte Ressourcen nicht unterstützt. Wählen Sie stattdessen in Ihre Application Insights-Ressource die Optionen **Diagnoseeinstellungen** > **Diagnoseeinstellung hinzufügen**. Sie können alle Tabellen oder eine Teilmenge der Tabellen auswählen, die Sie in einem Speicherkonto archivieren oder an Azure Event Hub streamen möchten.
 
 > [!NOTE]
-> Für den Export von Streamingdaten fallen zurzeit keine zusätzlichen Gebühren an. Die Preisinformationen für dieses Feature finden Sie auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).  Zu Beginn des Abrechnungszeitraums erhalten Sie eine entsprechende Benachrichtigung. Falls Sie sich dafür entscheiden, <feature name> über den Benachrichtigungszeitraum hinaus zu verwenden, wird Ihnen der entsprechende Tarif in Rechnung gestellt. 
- 
+> Für den Export von Streamingdaten fallen zurzeit keine zusätzlichen Gebühren an. Die Preisinformationen für dieses Feature finden Sie auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).  Zu Beginn des Abrechnungszeitraums erhalten Sie eine entsprechende Benachrichtigung. Falls Sie sich dafür entscheiden, den Telemetrieexport über den Benachrichtigungszeitraum hinaus zu verwenden, wird dies Ihnen mit dem entsprechenden Tarif in Rechnung gestellt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

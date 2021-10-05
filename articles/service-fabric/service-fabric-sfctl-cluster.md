@@ -5,19 +5,19 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 05132e4c7e644e681e2e4cfdedaa2b04a066ebeb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed4dfc315ae953c99db2ebe2eaa009f9ef072a7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86259963"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620272"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Ermöglicht es, Service Fabric-Cluster auszuwählen, zu verwalten und zu betreiben.
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Befehl|BESCHREIBUNG|
 | --- | --- |
 | code-versions | Ruft eine Liste der Fabric-Codeversionen ab, die in einem Service Fabric-Cluster bereitgestellt werden. |
 | config-versions | Ruft eine Liste der Fabric-Konfigurationsversionen ab, die in einem Service Fabric-Cluster bereitgestellt werden. |
@@ -259,7 +259,7 @@ Wird eine Verbindung mit einem sicheren Cluster hergestellt, geben Sie einen abs
 | --aad | Die Authentifizierung erfolgt über Azure Active Directory. |
 | --ca | Absoluter Pfad zu dem Verzeichnis mit Zertifikaten einer Zertifizierungsstelle, das als gültige Bundledatei oder Bundledatei einer Zertifizierungsstelle behandelt werden soll. Wenn ein Verzeichnis mit Zertifizierungsstellenzertifikaten verwendet wird, muss `c_rehash <directory>` von OpenSSL zuerst ausgeführt werden, um die Zertifikathashes zu berechnen und die entsprechenden symbolischen Links zu erstellen. Auf diese Weise wird überprüft, ob das vom Cluster zurückgegebene Zertifikat gültig ist. |
 | --cert | Absoluter Pfad zu einer Clientzertifikatdatei. |
-| --endpoint | Clusterendpunkt-URL einschließlich Port und HTTP- oder HTTPS-Präfix. In der Regel sieht der Endpunkt in etwa so aus wie „https\://<Ihre-URL>\:19080“. Wenn kein Endpunkt angegeben ist, wird er standardmäßig auf „http\://localhost\:19080“ festgelegt.  Standardwert\: http\://localhost\:19080. |
+| --endpoint | Clusterendpunkt-URL einschließlich Port und HTTP- oder HTTPS-Präfix. Der Endpunkt sieht in etwa wie `https\://<your-url>\:19080` aus. Wenn kein Endpunkt angegeben ist, wird standardmäßig `http\://localhost\:19080` verwendet. |
 | --key | Absoluter Pfad zu einer Schlüsseldatei eines Clientzertifikats. |
 | --no-verify | Die Überprüfung auf Zertifikate wird deaktiviert, wenn HTTPS verwendet wird. Hinweis\: Da dies eine unsichere Option ist, sollte sie nicht für Produktionsumgebungen verwendet werden. |
 | --pem | Absoluter Pfad zu einem Clientzertifikat, das als PEM-Datei angegeben ist. |

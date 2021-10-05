@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 75e5100c12940083626d94367bb70b280a49711b
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c537e9a9dd733d84161e59999ff17b8b0251f623
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665157"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061179"
 ---
 # <a name="enable-key-vault-logging"></a>Aktivieren der Protokollierung in Key Vault
 
@@ -229,12 +229,9 @@ Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
 
 ## <a name="use-azure-monitor-logs"></a>Verwenden von Azure Monitor-Protokollen
 
-Sie können die Key Vault-Lösung in Azure Monitor verwenden, um `AuditEvent`-Protokolle von Key Vault zu überprüfen. In Azure Monitor-Protokollen verwenden Sie Protokollabfragen, um Daten zu analysieren und die benötigten Informationen zu erhalten.
-
-Weitere Informationen, z. B. zur Einrichtung, finden Sie im Artikel zu [Azure Key Vault in Azure Monitor](../../azure-monitor/insights/key-vault-insights-overview.md).
+Sie können die Key Vault-Lösung in Azure Monitor verwenden, um `AuditEvent`-Protokolle von Key Vault zu überprüfen. In Azure Monitor-Protokollen verwenden Sie Protokollabfragen, um Daten zu analysieren und die benötigten Informationen zu erhalten.  Weitere Informationen finden Sie unter [Überwachen einer Key Vault-Instanz](monitor-key-vault.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Konzeptionelle Informationen auch zur Interpretation von Protokollen in Key Vault finden Sie unter [Key Vault-Protokollierung](logging.md).
-- Ein Tutorial zur Verwendung von Azure Key Vault in einer .NET-Webanwendung finden Sie unter [Verwenden von Azure Key Vault aus einer Webanwendung](tutorial-net-create-vault-azure-web-app.md).
-- Eine Programmierreferenz finden Sie im [Entwicklerhandbuch für Azure Key Vault](developers-guide.md).
+- Weitere Informationen zur Verwendung von Azure Monitor in Ihrem Schlüsseltresor finden Sie unter [Überwachen einer Key Vault-Instanz](monitor-key-vault.md).

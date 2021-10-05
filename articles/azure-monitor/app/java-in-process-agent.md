@@ -6,14 +6,14 @@ ms.date: 06/24/2021
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 83cccb8e586973cf575cf1fcd3c70a3166aeb905
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 900430b1b1897479b4551c9e12e28ad87eaf0ad9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112913723"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642375"
 ---
-# <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java-Anwendungsüberwachung ohne Code mit Azure Monitor Application Insights
+# <a name="java-codeless-application-monitoring-with-azure-monitor-application-insights"></a>Java-Anwendungsüberwachung ohne Code mit Azure Monitor Application Insights
 
 > [!NOTE]
 > Die alte 2.x-Dokumentation finden Sie [hier](./java-2x-get-started.md).

@@ -1,14 +1,14 @@
 ---
-title: Erneute Bereitstellung eines virtuellen Computers in einem Lab in Azure DevTest Labs | Microsoft-Dokumentation
+title: Erneutes Bereitstellen einer VM in einem Lab
 description: Erfahren Sie, wie Sie einen virtuellen Computer in Azure DevTest Labs erneut bereitstellen (von einem Azure-Knoten auf einen anderen verschieben).
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: a38b112165b893d877733b967c21bb62b20ca2f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 375b70d3058a8fb0e23e65f4b96b4601aad12723
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90530317"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591575"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>Erneute Bereitstellung eines virtuellen Computers in einem Lab in Azure DevTest Labs
 Wenn Sie keine Verbindung zu einem virtuellen Computer (VM) in einem Lab über eine Remotedesktopverbindung herstellen können, stellen Sie die VM erneut bereit, und versuchen Sie nochmals, eine Verbindung herzustellen. Wenn Sie eine VM erneut bereitstellen, verschiebt DevTest Labs die VM von dem Knoten, auf dem sie ausgeführt wird, auf einen neuen Knoten innerhalb der Azure-Infrastruktur. Dann wird die VM gestartet, wobei alle Konfigurationsoptionen und zugehörigen Ressourcen beibehalten werden. Mit diesem Feature sparen Sie die Zeit, die Sie sonst für die Fehlerbehebung bei Ihrer Remotedesktopverbindung oder beim Anwendungszugriff auf Windows-basierte VMs im Lab benötigen. 
@@ -30,5 +30,3 @@ Führen Sie die folgenden Schritte aus, um eine VM in einem Lab in Azure DevTest
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Ändern der Größe einer VM in Azure DevTest Labs finden Sie unter [Resize a VM (Ändern der Größe einer VM)](devtest-lab-resize-vm.md).
-
-

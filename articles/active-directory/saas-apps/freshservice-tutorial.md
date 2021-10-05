@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: fb8b12cdb8fd9ed37ac4086d213183e800d6febc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c45c00354d0bc60b5a9656c24dd998e324294b2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651750"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128581589"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Freshservice
 
@@ -41,6 +41,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Freshservice unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Freshservice unterstützt [automatisierte Benutzerbereitstellung](freshservice-provisioning-tutorial.md).
 
 ## <a name="add-freshservice-from-the-gallery"></a>Hinzufügen von Freshservice aus dem Katalog
 
@@ -187,6 +188,9 @@ Damit sich Azure AD-Benutzer bei Freshservice anmelden können, müssen sie in F
 
     > [!NOTE]
     > Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von FreshService-Benutzerkonten oder mit den APIs von FreshService bereitstellen.
+   
+> [!NOTE]
+>Außerdem unterstützt Freshservice automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./freshservice-provisioning-tutorial.md).
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
@@ -196,7 +200,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Freshservice-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Freshservice“ klicken, sollten Sie automatisch bei der Freshservice-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Freshservice“ klicken, sollten Sie automatisch bei der Freshservice-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

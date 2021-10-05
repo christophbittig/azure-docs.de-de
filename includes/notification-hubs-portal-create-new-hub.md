@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: notification-hubs
-author: jwargo
+author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 01/17/2019
-ms.author: jowargo
+ms.date: 09/07/2021
+ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 2ec602f056b339a1b1dcb78d6b8d7583aeaf0434
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d33df05e54d9cdeb97631ca479dd8ac9869343c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009104"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126056671"
 ---
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -21,19 +21,19 @@ ms.locfileid: "96009104"
 
       ![Azure-Portal – Auswählen von Notification Hubs](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
 
-1. Wählen Sie auf der Seite **Notification Hubs** in der Symbolleiste die Option **Hinzufügen**.
+1. Wählen Sie auf der Seite **Notification Hubs** in der Symbolleiste die Option **Erstellen** aus.
 
-      ![Notification Hubs – Symbolleistenschaltfläche „Hinzufügen“](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
+      ![Notification Hubs – Symbolleistenschaltfläche „Hinzufügen“](./media/notification-hubs-portal-create-new-hub/create-toolbar-button.png)
 
-1. Führen Sie auf der Seite **Notification Hub** die folgenden Schritte aus:
+1. Führen Sie auf der Registerkarte **Grundlagen** der Seite **Notification Hub** die folgenden Schritte aus:
 
-    1. Geben Sie ins Feld **Notification Hub** einen Namen ein.  
+    1. Wählen Sie unter **Abonnement** den Namen des Azure-Abonnements aus, das Sie verwenden möchten, und wählen Sie dann eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe.  
 
-    1. Geben Sie ins Feld **Neuen Namespace erstellen** einen Namen ein. Ein Namespace enthält mindestens einen Hub.
+    1. Geben Sie unter **Namespacedetails** einen eindeutigen Namen für den neuen Namespace ein. 
+    
+    1. Ein Namespace enthält mindestens einen Notification Hub. Geben Sie daher unter **Notification Hub-Details** einen Namen für den Hub ein. Alternativ können Sie in der Dropdownliste einen vorhandenen Namespace auswählen.
 
     1. Wählen Sie im Dropdown-Listenfeld **Standort** einen Wert aus. Dieser Wert gibt den Standort an, an dem der Hub erstellt werden soll.
-
-    1. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie einen Namen für eine neue Ressourcengruppe.
 
     1. Klicken Sie auf **Erstellen**.
 

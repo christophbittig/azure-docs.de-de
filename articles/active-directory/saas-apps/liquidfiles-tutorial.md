@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in LiquidFiles| Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration in LiquidFiles'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und LiquidFiles konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/02/2021
+ms.date: 09/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 482d47c69da61ce932127d1e450f106ee02b4172
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 2c20c03e61d7fa7055d1044d69cacc8b234ad8f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111571622"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636646"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>Tutorial: Azure Active Directory-Integration in LiquidFiles
+# <a name="tutorial-azure-ad-sso-integration-with-liquidfiles"></a>Tutorial: Azure AD-SSO-Integration in LiquidFiles
 
 In diesem Tutorial erfahren Sie, wie Sie LiquidFiles in Azure Active Directory (Azure AD) integrieren. Die Integration von LiquidFiles in Azure AD ermöglicht Folgendes:
 
@@ -32,6 +32,9 @@ Um die Azure AD-Integration in LiquidFiles konfigurieren zu können, benötigen 
 
 * Ein Azure AD-Abonnement Sollten Sie nicht über eine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
 * Ein LiquidFiles-Abonnement, für das einmaliges Anmelden aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 

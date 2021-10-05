@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: thwimmer
-ms.openlocfilehash: 1dd3f9d7462dc8594cf8b6e37db6df725196b899
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 9e8385faadc4c3c9d34471741cc238e964ed67a2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113760071"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589165"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von RingCentral für die automatische Benutzerbereitstellung
 
@@ -47,6 +47,10 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von RingCentral für die Unterstützung der Bereitstellung mit Azure AD
 
 Ein [RingCentral](https://www.ringcentral.com/office/plansandpricing.html)-Administratorkonto ist in Schritt 5 im Abschnitt „Administratoranmeldeinformationen“ zum Autorisieren erforderlich.
+
+Legen Sie im RingCentral-Verwaltungsportal unter „Kontoeinstellungen > Verzeichnisintegrationen“ die Einstellung *Verzeichnisanbieter* auf *SCIM*
+![Image](https://user-images.githubusercontent.com/49566142/134523440-20320d8e-3c25-4358-9ace-d4888ce8e4ea.png) fest.
+
 
 > [!NOTE]
 > Informationen zum Zuweisen von Lizenzen zu Benutzern erhalten Sie in diesem [Video](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language).
@@ -90,7 +94,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
    ![AAD](./media/ringcentral-provisioning-tutorial/admincredentials.png)
 
-   ![Access](./media/ringcentral-provisioning-tutorial/authorize.png)
+   ![Zugriff](./media/ringcentral-provisioning-tutorial/authorize.png)
 
    ![Authorize](./media/ringcentral-provisioning-tutorial/accessrequest.png)
 
@@ -104,7 +108,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit RingCentral synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in RingCentral für Updatevorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die RingCentral-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|
+   |attribute|type|
    |---|---|
    |userName|String|
    |externalId|String|

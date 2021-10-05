@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Pega Systems | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration in Pega Systems'
 description: In diesem Tutorial erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Pega Systems konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/25/2021
+ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 802bd61d499f64a128a4d1c0585363cb1962f8a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0c88213583105a1076f6606f7265025ec445560
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650002"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610026"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Tutorial: Azure Active Directory-Integration mit Pega Systems
+# <a name="tutorial-azure-ad-sso-integration-with-pega-systems"></a>Tutorial: Azure AD-SSO-Integration in Pega Systems
 
 In diesem Tutorial erfahren Sie, wie Sie Pega Systems in Azure Active Directory (Azure AD) integrieren. Die Integration von Pega Systems in Azure AD ermöglicht Folgendes:
 
@@ -63,7 +63,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Erstellen eines Pega Systems-Testbenutzers](#create-pega-systems-test-user)** , um ein Pendant von B. Simon in Pega Systems zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
@@ -73,21 +73,17 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-4. Führen Sie im Dialogfeld **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im IDP-initiierten Modus konfigurieren möchten.
-
-    ![Dialogfeld „Grundlegende SAML-Konfiguration“](common/idp-intiated.png)
+4. Führen Sie im Dialogfeld **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im IdP-initiierten Modus konfigurieren möchten.
 
     1. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein:
 
        `https://<customername>.pegacloud.io:443/prweb/sp/<instanceID>`
 
-    1. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein:
+    1. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein: 
 
        `https://<customername>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
 
 5. Wenn Sie die Anwendung im SP-initiierten Modus konfigurieren möchten, klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie die folgenden Schritte aus.
-
-    ![SSO-Informationen zur Domäne und zu den URLs für Pega Systems](common/both-advanced-urls.png)
 
     1. Geben Sie im Feld **Anmelde-URL** den Wert der Anmelde-URL ein.
 
@@ -101,7 +97,6 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     ![Benutzerattribute](common/edit-attribute.png)
 
 7. Zusätzlich zu den im vorherigen Screenshot gezeigten Attributen erfordert die Pega Systems-Anwendung einige weitere Attribute, die in der SAML-Antwort zurückgegeben werden müssen. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um diese SAML-Tokenattribute hinzuzufügen:
-
     
    - `uid`
    - `cn`
@@ -166,17 +161,17 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="configure-pega-systems-sso"></a>Konfigurieren des einmaligen Anmeldens für Pega Systems
+## <a name="configure-pega-systems-sso"></a>Konfigurieren des einmaligen Anmeldens für Pega Systems
 
 1. Zum Konfigurieren des einmaligen Anmeldens auf **Pega Systems**-Seite melden Sie sich in einem anderen Browserfenster mit einem Administratorkonto beim Pega-Portal an.
 
-2. Wählen Sie **Create** (Erstellen) > **SysAdmin** (Systemadministrator) > **Authentication Service** (Authentifizierungsdienst) aus:
+1. Wählen Sie **Create** (Erstellen) > **SysAdmin** (Systemadministrator) > **Authentication Service** (Authentifizierungsdienst) aus:
 
     ![Authentifizierungsdienst auswählen](./media/pegasystems-tutorial/admin.png)
     
-3. Führen Sie im Bildschirm **Create Authentication Service** (Authentifizierungsdienst erstellen) die folgenden Schritte aus.
+1. Führen Sie im Bildschirm **Create Authentication Service** (Authentifizierungsdienst erstellen) die folgenden Schritte aus.
 
-    ![Bildschirm zum Erstellen des Authentifizierungsdiensts](./media/pegasystems-tutorial/admin1.png)
+    ![Bildschirm zum Erstellen des Authentifizierungsdiensts](./media/pegasystems-tutorial/service.png)
 
     1. Wählen Sie in der Liste **Type** (Typ) den Eintrag **SAML 2.0** aus.
 
@@ -186,17 +181,17 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     1. Wählen Sie **Create and open** (Erstellen und öffnen) aus.
     
-4. Wählen Sie im Abschnitt **Identity Provider (IdP) information** (Informationen zum Identitätsanbieter) die Option **Import IdP metadata** (IDP-Metadaten importieren) aus, und navigieren Sie zu der Metadatendatei, die Sie aus dem Azure-Portal heruntergeladen haben. Klicken Sie auf **Submit** (Senden), um die Metadaten zu laden:
+1. Wählen Sie im Abschnitt **Identity Provider (IdP) information** (Informationen zum Identitätsanbieter) die Option **Import IdP metadata** (IDP-Metadaten importieren) aus, und navigieren Sie zu der Metadatendatei, die Sie aus dem Azure-Portal heruntergeladen haben. Klicken Sie auf **Submit** (Senden), um die Metadaten zu laden:
 
-    ![Abschnitt mit Informationen zum Identitätsanbieter](./media/pegasystems-tutorial/admin2.png)
+    ![Abschnitt mit Informationen zum Identitätsanbieter](./media/pegasystems-tutorial/metadata.png)
     
     Durch den Importvorgang werden die IDP-Daten wie hier gezeigt eingetragen:
 
-    ![Importierte IDP-Daten](./media/pegasystems-tutorial/idp.png)
+    ![Importierte IDP-Daten](./media/pegasystems-tutorial/data.png)
     
-6. Führen Sie im Abschnitt **Service Provider (SP) settings** (Einstellungen für den Dienstanbieter) die folgenden Schritte aus.
+1. Führen Sie im Abschnitt **Service Provider (SP) settings** (Einstellungen für den Dienstanbieter) die folgenden Schritte aus.
 
-    ![Einstellungen für den Dienstanbieter](./media/pegasystems-tutorial/sp.png)
+    ![Einstellungen für den Dienstanbieter](./media/pegasystems-tutorial/settings.png)
 
     1. Kopieren Sie den Wert im Feld **Entity Identification** (Entitätsidentifizierung), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Feld **Bezeichner** ein.
 
@@ -204,13 +199,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     1. Aktivieren Sie **Disable request signing**.
 
-7. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
 ### <a name="create-pega-systems-test-user"></a>Erstellen eines Pega Systems-Testbenutzers
 
 Als Nächstes müssen Sie in Pega Systems einen Benutzer mit dem Namen Britta Simon erstellen. Wenden Sie sich an das [Supportteam von Pega Systems](https://www.pega.com/contact-us), um Benutzer zu erstellen.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
@@ -224,8 +219,8 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Pega Systems-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Pega Systems“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Pega Systems-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Pega Systems“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Pega Systems-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Pega Systems können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Pega Systems können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

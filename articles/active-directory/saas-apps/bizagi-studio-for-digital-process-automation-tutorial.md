@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/15/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 390f5c60ec016ab87ae62cfbc8373fc1b485adc8
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 61990018951fa9dfb65ba374bac2f05363f8ce14
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112199500"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629843"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bizagi-for-digital-process-automation"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Bizagi for Digital Process Automation
 
@@ -40,6 +40,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einem Bizagi-Projekt mithilfe von Automation-Diensten oder -Servern.
 
 * Bizagi for Digital Process Automation unterstützt das **SP**-initiierte einmalige Anmelden.
+* Bizagi for Digital Process Automation unterstützt [automatisierte Benutzerbereitstellung](bizagi-studio-for-digital-process-automation-provisioning-tutorial.md).
 
 ## <a name="add-bizagi-for-digital-process-automation-from-the-gallery"></a>Hinzufügen von Bizagi for Digital Process Automation aus dem Katalog
 
@@ -126,6 +127,8 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Bizagi for Digital Pr
 
 In diesem Abschnitt erstellen Sie in Bizagi for Digital Process Automation eine Benutzerin namens Britta Simon. Wenden Sie sich an das [Supportteam von Bizagi for Digital Process Automation](mailto:jarvein.rivera@bizagi.com), um die Benutzer auf der Bizagi for Digital Process Automation-Plattform hinzufügen zu lassen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
+Außerdem unterstützt Bizagi for Digital Process Automation automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./bizagi-studio-for-digital-process-automation-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -134,7 +137,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Navigieren Sie direkt zur Anmelde-URL für Bizagi for Digital Process Automation, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Bizagi for Digital Process Automation“ klicken, erfolgt eine Weiterleitung zur Anmelde-URL von Bizagi for Digital Process Automation. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Bizagi for Digital Process Automation“ klicken, erfolgt eine Weiterleitung zur Anmelde-URL von Bizagi for Digital Process Automation. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

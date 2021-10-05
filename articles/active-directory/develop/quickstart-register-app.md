@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/14/2021
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2, contperf-fy21q4
-ms.openlocfilehash: 340e7f1b026605a06799dcc79f9fe99e2ad080cf
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: c608856e6238844638e63c3a719b3d534b98d33b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112578953"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615318"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -43,7 +43,7 @@ Beim Registrieren Ihrer Anwendung wird eine Vertrauensstellung zwischen Ihrer Ap
 Führen Sie die folgenden Schritte aus, um die App-Registrierung zu erstellen:
 
 1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
-1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, in dem Sie eine Anwendung registrieren möchten.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, in dem Sie die Anwendung registrieren möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
 1. Geben Sie einen **Anzeigenamen** für Ihre Anwendung ein. Benutzer Ihrer Anwendung können den Anzeigenamen sehen, wenn sie die App verwenden, z. B. während der Anmeldung.
@@ -65,7 +65,7 @@ Führen Sie die folgenden Schritte aus, um die App-Registrierung zu erstellen:
 Nach Abschluss der Registrierung wird im Azure-Portal die **Übersicht** für die App-Registrierung angezeigt. Hier finden Sie auch die **Anwendungs-ID (Client-ID)** . Dieser Wert wird auch als _Client-ID_ bezeichnet und ermöglicht die eindeutige Identifizierung Ihrer Anwendung in Microsoft Identity Platform.
 
 > [!IMPORTANT]
-> Neue App-Registrierungen werden für Benutzer standardmäßig ausgeblendet. Wenn die App Benutzern auf der [Seite „Meine Apps“](../user-help/my-apps-portal-end-user-access.md) angezeigt werden soll, können Sie sie aktivieren. Navigieren Sie zum Aktivieren der App im Azure-Portal zu **Azure Active Directory** > **Unternehmensanwendungen**, und wählen Sie die App aus. Legen Sie anschließend auf der Seite **Eigenschaften** die Option **Für Benutzer sichtbar?** auf „Ja“ fest.
+> Neue App-Registrierungen werden für Benutzer standardmäßig ausgeblendet. Wenn die App Benutzern auf der [Seite „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510) angezeigt werden soll, können Sie sie aktivieren. Navigieren Sie zum Aktivieren der App im Azure-Portal zu **Azure Active Directory** > **Unternehmensanwendungen**, und wählen Sie die App aus. Legen Sie anschließend auf der Seite **Eigenschaften** die Option **Für Benutzer sichtbar?** auf „Ja“ fest.
 
 Die Client-ID wird auch vom Code Ihrer Anwendung (bzw. üblicherweise von einer in Ihrer Anwendung verwendeten Authentifizierungsbibliothek) genutzt. Sie wird bei der Überprüfung der von Identity Platform empfangenen Sicherheitstoken herangezogen.
 

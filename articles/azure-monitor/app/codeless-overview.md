@@ -4,34 +4,33 @@ description: Übersicht über die automatische Instrumentierung für Azure Monit
 ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
-ms.date: 05/17/2021
-ms.reviewer: mbullwin
-ms.openlocfilehash: 1c9d3e10ebf02016a0188617567cb2e4e2eeb036
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 08/31/2021
+ms.openlocfilehash: 3f6af0beb887f66f4696707dcc0e0f408004509a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092708"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827611"
 ---
-# <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Was ist automatische Instrumentierung oder Anfügung ohne Code – Azure Monitor Application Insights?
+# <a name="what-is-auto-instrumentation-for-azure-monitor-application-insights"></a>Was ist automatische Instrumentierung für Azure Monitor Application Insights?
 
-Mit der automatischen Instrumentierung oder dem Anfügen ohne Code können Sie die Anwendungsüberwachung mit Application Insights aktivieren, ohne Ihren Code zu ändern.  
+Mit der automatischen Instrumentierung können Sie die Anwendungsüberwachung mit Application Insights aktivieren, ohne Ihren Code zu ändern.  
 
-Application Insights ist mit verschiedenen Ressourcenanbietern integriert und funktioniert in unterschiedlichen Umgebungen. Im Wesentlichen müssen Sie lediglich den Agent aktivieren und in einigen Fällen konfigurieren, der automatisch die Telemetrie erfasst. In kürzester Zeit werden die Metriken, Daten und Abhängigkeiten in Ihrer Application Insights-Ressource angezeigt, sodass Sie die Quelle potenzieller Probleme vor ihrem Auftreten erkennen und die Grundursache mit der End-to-End-Transaktionsansicht analysieren können.
+Application Insights ist mit verschiedenen Ressourcenanbietern integriert und funktioniert in unterschiedlichen Umgebungen. Im Wesentlichen müssen Sie lediglich den Agent aktivieren und in einigen Fällen konfigurieren, der automatisch die Telemetrie erfasst. In kürzester Zeit werden die Metriken, Anforderungen und Abhängigkeiten in Ihrer Application Insights-Ressource angezeigt, sodass Sie die Quelle potenzieller Probleme vor ihrem Auftreten erkennen und die Grundursache mit der End-to-End-Transaktionsansicht analysieren können.
 
 ## <a name="supported-environments-languages-and-resource-providers"></a>Unterstützte Umgebungen, Sprachen und Ressourcenanbieter
 
-Da ständig weitere Integrationen hinzugefügt werden, wird die Funktionsmatrix für die automatische Instrumentierung zunehmend komplex. Die nachstehende Tabelle zeigt den aktuellen Status der Unterstützung verschiedener Ressourcenanbieter, Sprachen und Umgebungen.
+Da ständig neue Integrationen hinzugefügt werden, wird die Funktionsmatrix für die automatische Instrumentierung zunehmend komplex. Die nachstehende Tabelle zeigt den aktuellen Status der Unterstützung verschiedener Ressourcenanbieter, Sprachen und Umgebungen.
 
 |Umgebung/Ressourcenanbieter          | .NET            | .NET Core       | Java            | Node.js         | Python          |
 |---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 |Azure App Service unter Windows           | GA, st. akt.*       | GA, Anmeldung      | Öffentliche Vorschau  | Öffentliche Vorschau  | Nicht unterstützt   |
-|Azure App Service unter Linux             | –             | Nicht unterstützt   | Öffentliche Vorschau  | Öffentliche Vorschau  | Nicht unterstützt   |
+|Azure App Service unter Linux             | –             | Nicht unterstützt   | Allgemein verfügbar              | Allgemein verfügbar              | Nicht unterstützt   |
 |Azure Functions: grundlegend                | GA, st. akt.*       | GA, st. akt.*       | GA, st. akt.*       | GA, st. akt.*       | GA, st. akt.*       |
-|Azure Functions Windows – Abhängigkeiten | Nicht unterstützt   | Nicht unterstützt   | Öffentliche Vorschau  | Nicht unterstützt   | Nicht unterstützt   |
+|Azure Functions: Abhängigkeiten         | Nicht unterstützt   | Nicht unterstützt   | Öffentliche Vorschau  | Nicht unterstützt   | Durch [Erweiterung](monitor-functions.md#distributed-tracing-for-python-function-apps)   |
 |Azure Spring Cloud                     | Nicht unterstützt   | Nicht unterstützt   | Öffentliche Vorschau  | Nicht unterstützt   | Nicht unterstützt   |
-|Azure Kubernetes Service               | –             | Im Entwurf       | Über den-Agent   | Im Entwurf       | Nicht unterstützt   |
-|Azure-VMs unter Windows                      | Öffentliche Vorschau  | Nicht unterstützt   | Über den-Agent | Nicht unterstützt   | Nicht unterstützt   |
+|Azure Kubernetes Service               | –             | Nicht unterstützt   | Über den-Agent   | Nicht unterstützt   | Nicht unterstützt   |
+|Azure-VMs unter Windows                      | Öffentliche Vorschau  | Nicht unterstützt   | Über den-Agent   | Nicht unterstützt   | Nicht unterstützt   |
 |Lokale VMs unter Windows                | GA, Anmeldung      | Nicht unterstützt   | Über den-Agent   | Nicht unterstützt   | Nicht unterstützt   |
 |Eigenständiger Agent: alle Umg.            | Nicht unterstützt   | Nicht unterstützt   | Allgemein verfügbar              | Nicht unterstützt   | Nicht unterstützt   |
 
@@ -41,15 +40,15 @@ Da ständig weitere Integrationen hinzugefügt werden, wird die Funktionsmatrix 
 
 ### <a name="windows"></a>Windows
 
-Die Anwendungsüberwachung für Azure App Service unter Windows ist für Anwendungen in **[.NET](./azure-web-apps.md?tabs=net)** (standardmäßig aktiviert), **[.NET Core](./azure-web-apps.md?tabs=netcore)** , **[Java](./azure-web-apps.md?tabs=java)** (in der öffentlichen Vorschau) und **[Node.js](./azure-web-apps.md?tabs=nodejs)** verfügbar. Zum Überwachen einer Python-App fügen Sie das [SDK](./opencensus-python.md) zum Code hinzu.
+Die Anwendungsüberwachung für Azure App Service unter Windows ist für Anwendungen in **[ASP.NET](./azure-web-apps-net.md)** (standardmäßig aktiviert), **[ASP.NET Core](./azure-web-apps-net-core.md)** , **[Java](./azure-web-apps-java.md)** (in der öffentlichen Vorschau) und **[Node.js](./azure-web-apps-nodejs.md)** verfügbar. Zum Überwachen einer Python-App fügen Sie das [SDK](./opencensus-python.md) zum Code hinzu.
 
 > [!NOTE]
-> Die Anwendungsüberwachung ist derzeit für codebasierte Windows-Anwendungen in App Service verfügbar. Die Überwachung von Apps in Windows-Containern in App Service wird noch nicht durch die Integration in Application Insights unterstützt.
+> Für Windows ist Anwendungsüberwachung derzeit für codebasierte bzw. verwaltete Dienste für App Service verfügbar. Die Überwachung von Apps in Windows-Containern in App Service wird noch nicht durch die Integration in Application Insights unterstützt.
 
 ### <a name="linux"></a>Linux
-Sie können die Überwachung für **[Java](./azure-web-apps.md?tabs=java)** - und **[Node.js](./azure-web-apps.md?tabs=nodejs)** -Apps, die unter Linux in App Service ausgeführt werden, über das Portal aktivieren. Die Umgebung für beide Sprachen befindet sich in der öffentlichen Vorschau und ist in allen Regionen verfügbar. 
+Sie können die Überwachung für **[Java](./azure-web-apps-java.md?)** -Apps, **[Node.js](./azure-web-apps-nodejs.md?tabs=linux)** -Apps und **[ASP.NET Core](./azure-web-apps-net-core.md?tabs=linux)-Apps(Vorschau)** , die unter Linux in App Service ausgeführt werden, über das Portal aktivieren. 
 
-Verwenden Sie für andere Sprachen, [.NET Core](./asp-net-core.md) und [Python](./opencensus-python.md), das SDK.
+Verwenden Sie für [Python](./opencensus-python.md) das SDK.
 
 ## <a name="azure-functions"></a>Azure-Funktionen
 
@@ -66,7 +65,7 @@ Die Instrumentierung von Azure Kubernetes Service ohne Code ist zurzeit für Jav
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Azure-Windows-VMs und VM-Skalierungsgruppen
 
-Die automatische Instrumentierung für Azure-VMs und VM-Skalierungsgruppen ist für [.NET](./azure-vm-vmss-apps.md) und [Java](./java-in-process-agent.md) verfügbar.  
+Die automatische Instrumentierung für Azure-VMs und VM-Skalierungsgruppen ist für [.NET](./azure-vm-vmss-apps.md) und [Java](./java-in-process-agent.md) verfügbar. Diese Benutzeroberfläche ist nicht in das Portal integriert. Die Überwachung wird durch wenige Schritte mit einer eigenständigen Lösung aktiviert und erfordert keine Codeänderungen.  
 
 ## <a name="on-premises-servers"></a>Lokale Server
 Sie können die Überwachung für Ihre [lokalen Windows-Server für .NET-Anwendungen](./status-monitor-v2-overview.md) und für [Java-Apps](./java-in-process-agent.md) ganz einfach aktivieren.

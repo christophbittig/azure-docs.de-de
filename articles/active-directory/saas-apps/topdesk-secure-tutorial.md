@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit TOPdesk - Secure | Microsoft Docs'
+title: 'Tutorial: Azure AD-SSO-Integration in TOPdesk - Secure'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und TOPdesk - Secure konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 5ed23889d8648c65ea0887d2f0f3406b50291f12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3784c7b022a807c86805187fbdffb61167970443
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654295"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679053"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Tutorial: Azure Active Directory-Integration mit TOPdesk - Secure
+# <a name="tutorial-azure-ad-sso-integration-with-topdesk---secure"></a>Tutorial: Azure AD-SSO-Integration in TOPdesk - Secure
 
 In diesem Tutorial erfahren Sie, wie Sie TOPdesk - Secure in Azure Active Directory (Azure AD) integrieren. Die Integration von TOPdesk - Secure in Azure AD ermöglicht Folgendes:
 
@@ -37,7 +37,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* TOPdesk – Secure unterstützt **SP**-initiiertes einmaliges Anmelden.
+* TOPdesk - Secure unterstützt **SP**-initiiertes einmaliges Anmelden.
 
 ## <a name="add-topdesk---secure-from-the-gallery"></a>Hinzufügen von TOPdesk - Secure aus dem Katalog
 
@@ -64,7 +64,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit TOPdesk 
     1. **[Erstellen eines TOPdesk – Secure-Testbenutzers](#create-topdesk---secure-test-user)**, um eine Entsprechung von Britta Simon in TOPdesk – Secure zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
@@ -80,14 +80,14 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei TOPdesk 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.topdesk.net`
+    a. Geben Sie im Feld **Identifier URL** (Bezeichner-URL) die TOPdesk-Metadaten-URL ein, die Sie aus der TOPdesk-Konfiguration abrufen können. Verwenden Sie das folgende Format: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`.
 
-    b. Geben Sie im Feld **Identifier URL** (Bezeichner-URL) die TOPdesk-Metadaten-URL ein, die Sie aus der TOPdesk-Konfiguration abrufen können. Verwenden Sie das folgende Format: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`.
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<companyname>.topdesk.net/tas/secure/login/verify`
 
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<companyname>.topdesk.net/tas/secure/login/verify`
+    c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.topdesk.net`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an das [Supportteam für den TOPdesk - Secure-Client](https://www.topdesk.com/us/support/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den TOPdesk - Secure-Client](https://www.topdesk.com/us/support/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -121,37 +121,37 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name=&quot;configure-topdesk---secure-sso&quot;></a>Konfigurieren des einmaligen Anmeldens für TOPdesk - Secure
+## <a name=&quot;configure-topdesk---secure-sso&quot;></a>Konfigurieren des einmaligen Anmeldens für TOPdesk - Secure
 
 1. Melden Sie sich auf Ihrer **TOPdesk – Secure**-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie im **TOPdesk**-Menü auf **Einstellungen**.
 
-    ![Einstellungen](./media/topdesk-secure-tutorial/ic790598.png &quot;Einstellungen")
+    ![Einstellungen](./media/topdesk-secure-tutorial/menu.png &quot;Einstellungen")
 
 3. Klicken Sie auf **Anmeldeeinstellungen**.
 
-    ![Login Settings (Anmeldeeinstellungen)](./media/topdesk-secure-tutorial/ic790599.png "Anmeldeeinstellungen")
+    ![Login Settings (Anmeldeeinstellungen)](./media/topdesk-secure-tutorial/overview.png "Anmeldeeinstellungen")
 
 4. Erweitern Sie das Menü **Anmeldeeinstellungen**, und klicken Sie dann auf **Allgemein**.
 
-    ![Allgemein](./media/topdesk-secure-tutorial/ic790600.png "Allgemein")
+    ![Allgemein](./media/topdesk-secure-tutorial/navigator.png "Allgemein")
 
 5. Führen Sie im Abschnitt **Sicher** des Konfigurationsabschnitts **SAML-Anmeldung** die folgenden Schritte aus:
 
-    ![Technische Einstellungen](./media/topdesk-secure-tutorial/ic790855.png "Technische Einstellungen")
+    ![Technische Einstellungen](./media/topdesk-secure-tutorial/configuration.png "Technische Einstellungen")
 
     a. Klicken Sie auf **Herunterladen**, um die öffentliche Metadatendatei herunterzuladen, und speichern Sie sie dann lokal auf Ihrem Computer.
 
     b. Öffnen Sie die Metadatendatei, und suchen Sie den Knoten **AssertionConsumerService**.
 
-    ![Assertion Consumer Service](./media/topdesk-secure-tutorial/ic790856.png "Assertion Consumer Service")
+    ![Assertion Consumer Service](./media/topdesk-secure-tutorial/service.png "Assertion Consumer Service")
 
     c. Kopieren Sie den Wert **AssertionConsumerService**, und fügen Sie ihn im Abschnitt **Domäne und URLs für TOPdesk - Secure** in das Textfeld Antwort-URL ein.
 
 6. Zum Erstellen einer Zertifikatsdatei führen Sie die folgenden Schritte durch:
 
-    ![Certificate](./media/topdesk-secure-tutorial/ic790606.png "Zertifikat")
+    ![Certificate](./media/topdesk-secure-tutorial/file.png "Zertifikat")
 
     a. Öffnen Sie die aus dem Azure-Portal heruntergeladene Metadatendatei.
 
@@ -163,11 +163,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 7. Klicken Sie im Abschnitt **Öffentlich** auf **Hinzufügen**.
 
-    ![Add (Hinzufügen)](./media/topdesk-secure-tutorial/ic790607.png "Hinzufügen")
+    ![Add (Hinzufügen)](./media/topdesk-secure-tutorial/secure.png "Hinzufügen")
 
 8. Führen Sie auf der Dialogseite **SAML-Konfigurationsassistent** die folgenden Schritte aus:
 
-    ![SAML Configuration Assistant](./media/topdesk-secure-tutorial/ic790608.png "SAML Configuration Assistant")
+    ![SAML Configuration Assistant](./media/topdesk-secure-tutorial/metadata.png "SAML Configuration Assistant")
 
     a. Klicken Sie zum Hochladen der aus dem Azure-Portal heruntergeladenen Metadatendatei unter **Verbundmetadaten** auf **Durchsuchen**.
 
@@ -194,11 +194,11 @@ Im Fall von TOPdesk - Secure ist die Bereitstellung eine manuelle Aufgabe.
 
 2. Klicken Sie im Menü oben auf **TOPdesk \> Neu \> Support-Dateien \> Operator**.
 
-    ![Operator](./media/topdesk-secure-tutorial/ic790610.png "Operator")
+    ![Operator](./media/topdesk-secure-tutorial/support-files.png "Operator")
 
 3. Führen Sie im Dialogfeld **Neuer Operator** die folgenden Schritte aus:
 
-    ![New Operator (Neuer Benutzer)](./media/topdesk-secure-tutorial/ic790611.png "New-Operator")
+    ![New Operator (Neuer Benutzer)](./media/topdesk-secure-tutorial/details.png "New-Operator")
 
     a. Klicken Sie auf die Registerkarte **Allgemein**.
 
@@ -213,7 +213,7 @@ Im Fall von TOPdesk - Secure ist die Bereitstellung eine manuelle Aufgabe.
 > [!NOTE]
 > Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von TOPdesk – Secure-Benutzerkonten oder mit den APIs von TOPdesk – Secure bereitstellen.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
@@ -221,7 +221,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Anmelde-URL für TOPdesk - Secure auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „TOPdesk - Secure“ klicken, sollten Sie automatisch bei der Instanz von TOPdesk - Secure angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „TOPdesk - Secure“ klicken, sollten Sie automatisch bei der Instanz von TOPdesk - Secure angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

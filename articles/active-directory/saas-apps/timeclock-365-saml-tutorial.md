@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/28/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: d0c8364cc85cfce900021272d17456527919122b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b65a5cb4e202f2610613003b6d4339e0bb5354ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99050803"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733766"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeclock-365-saml"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Timeclock 365 SAML
 
@@ -37,7 +37,8 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Timeclock 365 SAML unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Timeclock 365 SAML unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Timeclock 365 SAML unterstützt [Automatisierte Benutzerbereitstellung](timeclock-365-provisioning-tutorial.md).
 
 ## <a name="adding-timeclock-365-saml-from-the-gallery"></a>Hinzufügen von Timeclock 365 SAML aus dem Katalog
 
@@ -49,7 +50,6 @@ Zum Konfigurieren der Integration von Timeclock 365 SAML in Azure AD müssen Sie
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Timeclock 365 SAML** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Timeclock 365 SAML** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-timeclock-365-saml"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Timeclock 365 SAML
 
@@ -143,6 +143,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie auf die Schaltfläche **Create** (Erstellen), um den Testbenutzer zu erstellen.
 
+> [!NOTE]
+> Außerdem unterstützt Timeclock 365 SAML automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./timeclock-365-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -151,8 +154,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Timeclock 365 SAML-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „Timeclock 365 SAML“ klicken, werden Sie zur Anmelde-URL für Timeclock 365 SAML weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
-
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „Timeclock 365 SAML“ klicken, werden Sie zur Anmelde-URL für Timeclock 365 SAML weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

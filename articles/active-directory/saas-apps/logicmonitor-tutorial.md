@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit LogicMonitor | Microsoft Docs'
+title: 'Tutorial: Azure AD-SSO-Integration in LogicMonitor'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und LogicMonitor konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2021
+ms.date: 09/14/2021
 ms.author: jeedes
-ms.openlocfilehash: d5342782c26b5c274699bacc4ea0c7cdf5b7f880
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86623285f1fa4d9ca3c8be9d1d628bf3c49a0d6c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649406"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607656"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Tutorial: Azure Active Directory-Integration mit LogicMonitor
+# <a name="tutorial-azure-ad-sso-integration-with-logicmonitor"></a>Tutorial: Azure AD-SSO-Integration in LogicMonitor
 
 In diesem Tutorial erfahren Sie, wie Sie LogicMonitor in Azure Active Directory (Azure AD) integrieren. Die Integration von LogicMonitor in Azure AD ermöglicht Folgendes:
 
@@ -28,10 +28,10 @@ In diesem Tutorial erfahren Sie, wie Sie LogicMonitor in Azure Active Directory 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit LogicMonitor konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* LogicMonitor-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* LogicMonitor-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -63,7 +63,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Erstellen eines LogicMonitor-Testbenutzers](#create-logicmonitor-test-user)** , um eine Entsprechung von B. Simon in LogicMonitor zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
@@ -75,16 +75,14 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für LogicMonitor](common/sp-identifier.png)
-
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.logicmonitor.com`.
-
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<companyname>.logicmonitor.com`.
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<companyname>.logicmonitor.com`.
     
-    c. Geben Sie im Textfeld **Antwort-URL (Assertionsverbraucherdienst-URL)** eine URL in folgendem Format ein: `https://companyname.logicmonitor.com/santaba/saml/SSO/` 
+    b. Geben Sie im Textfeld **Antwort-URL (Assertionsverbraucherdienst-URL)** die folgende URL ein: `https://companyname.logicmonitor.com/santaba/saml/SSO/`. 
   
+    c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.logicmonitor.com`.
+
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Kundensupportteam von LogicMonitor](https://www.logicmonitor.com/contact/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von LogicMonitor](https://www.logicmonitor.com/contact/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -93,7 +91,6 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 6. Kopieren Sie im Abschnitt **LogicMonitor einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
-
 
 ### <a name="create-an-azure-ad-test-user&quot;></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -119,21 +116,21 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name=&quot;configure-logicmonitor-sso&quot;></a>Konfigurieren des einmaligen Anmeldens für LogicMonitor
+## <a name=&quot;configure-logicmonitor-sso&quot;></a>Konfigurieren des einmaligen Anmeldens für LogicMonitor
 
 1. Melden Sie sich auf Ihrer **LogicMonitor**-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie im oberen Menü auf das Symbol **Einstellungen**.
 
-    ![Einstellungen](./media/logicmonitor-tutorial/ic790052.png &quot;Einstellungen")
+    ![Einstellungen](./media/logicmonitor-tutorial/menu.png &quot;Einstellungen")
 
-3. Klicken Sie im Navigationsbereich links auf **Einmaliges Anmelden**
+3. Klicken Sie im Navigationsbereich auf der linken Seite auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden](./media/logicmonitor-tutorial/ic790053.png "Einmaliges Anmelden")
+    ![Einmaliges Anmelden](./media/logicmonitor-tutorial/roles.png "Einmaliges Anmelden")
 
 4. Führen Sie im Abschnitt **Einstellungen für einmaliges Anmelden** die folgenden Schritte aus:
 
-    ![SSO-Einstellungen](./media/logicmonitor-tutorial/ic790054.png "Einstellungen für einmaliges Anmelden")
+    ![SSO-Einstellungen](./media/logicmonitor-tutorial/metadata.png "Einstellungen für einmaliges Anmelden")
 
     a. Wählen Sie **Einmaliges Anmelden aktivieren** aus.
 
@@ -153,13 +150,13 @@ Damit sich Azure AAD-Benutzer anmelden können, müssen sie in der LogicMonitor-
 
 2. Klicken Sie im Menü oben auf **Einstellungen**, und klicken Sie dann auf **Rollen und Benutzer**.
 
-    ![Rollen und Benutzer](./media/logicmonitor-tutorial/ic790056.png "Rollen und Benutzer")
+    ![Rollen und Benutzer](./media/logicmonitor-tutorial/user.png "Rollen und Benutzer")
 
 3. Klicken Sie auf **Hinzufügen**.
 
 4. Führen Sie im Abschnitt **Konto hinzufügen** die folgenden Schritte aus:
 
-    ![Konto hinzufügen](./media/logicmonitor-tutorial/ic790057.png "Konto hinzufügen")
+    ![Konto hinzufügen](./media/logicmonitor-tutorial/details.png "Konto hinzufügen")
 
     a. Geben Sie für den Azure Active Directory-Benutzer, den Sie bereitstellen möchten, Werte für **Benutzername**, **E-Mail**, **Kennwort** und **Kennwort erneut eingeben** in die entsprechenden Textfelder ein.
 
@@ -170,7 +167,7 @@ Damit sich Azure AAD-Benutzer anmelden können, müssen sie in der LogicMonitor-
 > [!NOTE]
 > Sie können Azure Active Directory-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von LogicMonitor-Benutzerkonten oder mithilfe der von LogicMonitor bereitgestellten APIs erstellen.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
@@ -178,7 +175,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die LogicMonitor-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „LogicMonitor“ klicken, sollten Sie automatisch bei der LogicMonitor-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „LogicMonitor“ klicken, sollten Sie automatisch bei der LogicMonitor-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bba7516637bedf6e81747cbb27f926964c63f53
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937350"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128556507"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetriekanäle in Application Insights
 
@@ -111,7 +111,7 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 `ServerTelemetryChannel` speichert eingehende Elemente in einem Puffer im Arbeitsspeicher. Die Elemente werden serialisiert, komprimiert und einmal alle 30 Sekunden, oder sobald n 500 Elemente gepuffert wurden, in einer `Transmission`-Instanz gespeichert. Eine einzelne `Transmission`-Instanz enthält bis zu 500 Elemente und stellt einen Batch von Telemetriedaten dar, die über einen einzigen HTTPS-Aufruf an den Application Insights-Dienst gesendet werden.
 
-Standardmäßig können maximal 10 `Transmission`-Instanzen parallel gesendet werden. Wenn Telemetriedaten schneller eintreffen oder das Netzwerk bzw. das Application Insights-Back-End langsam ist, werden `Transmission`-Instanzen im Arbeitsspeicher gespeichert. Die Standardkapazität dieses `Transmission`-Puffers im Arbeitsspeicher beträgt 5 MB. Wenn die Kapazität des Arbeitsspeichers überschritten ist, werden `Transmission`-Instanzen auf einem lokalen Datenträger bis zu einem Maximum von 50 MB gespeichert. `Transmission`-Instanzen werden auch bei Auftreten von Netzwerkproblemen auf dem lokalen Datenträger gespeichert. Nur die Elemente, die auf einem lokalen Datenträger gespeichert sind, überstehen einen Absturz der Anwendung. Sie werden gesendet, sobald die Anwendung wieder gestartet wird.
+Standardmäßig können maximal 10 `Transmission`-Instanzen parallel gesendet werden. Wenn Telemetriedaten schneller eintreffen oder das Netzwerk bzw. das Application Insights-Back-End langsam ist, werden `Transmission`-Instanzen im Arbeitsspeicher gespeichert. Die Standardkapazität dieses `Transmission`-Puffers im Arbeitsspeicher beträgt 5 MB. Wenn die Kapazität des Arbeitsspeichers überschritten ist, werden `Transmission`-Instanzen auf einem lokalen Datenträger bis zu einem Maximum von 50 MB gespeichert. `Transmission`-Instanzen werden auch bei Auftreten von Netzwerkproblemen auf dem lokalen Datenträger gespeichert. Nur die Elemente, die auf einem lokalen Datenträger gespeichert sind, überstehen einen Absturz der Anwendung. Sie werden gesendet, sobald die Anwendung wieder gestartet wird. Wenn weiterhin Netzwerkprobleme bestehen, verwendet `ServerTelemetryChannel` eine exponentielle Backofflogik im Bereich von 10 Sekunden bis zu einer Stunde, bevor erneut versucht wird, Telemetriedaten zu senden. 
 
 ## <a name="configurable-settings-in-channels"></a>Konfigurierbare Einstellungen für die Kanäle
 

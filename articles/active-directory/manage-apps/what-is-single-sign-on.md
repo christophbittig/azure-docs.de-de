@@ -1,6 +1,7 @@
 ---
-title: Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO) von Azure?
-description: Enthält eine Beschreibung der Funktionsweise des einmaligen Anmeldens (Single Sign-On, SSO) mit Azure Active Directory. Nutzen Sie SSO, damit sich die Benutzer nicht für jede Anwendung ein eigenes Kennwort merken müssen. Verwenden Sie SSO auch, um die Verwaltung Ihrer Konten zu vereinfachen.
+title: Worum handelt es sich beim einmaligen Anmelden?
+description: Erfahren Sie mehr über einmaliges Anmelden für Unternehmensanwendungen in Azure Active Directory.
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -8,70 +9,67 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 1e822037e03f6301a14bf478b28276c55cf70de9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8d8c4972653ddc70c7c0eb97e57b37479d52441b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738734"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616021"
 ---
-# <a name="what-is-single-sign-on-sso"></a>Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?
+# <a name="what-is-single-sign-on-in-azure-active-directory"></a>Was ist einmaliges Anmelden in Azure Active Directory?
 
-Beim einmaligen Anmelden (Single Sign-On, SSO) müssen sich Benutzer nicht bei jeder Anwendung anmelden, die sie verwenden. Ein Benutzer meldet sich einmal an, und die Anmeldeinformationen werden anschließend auch für andere Apps verwendet.
+Dieser Artikel enthält Informationen zu den verfügbaren Optionen für einmaliges Anmelden (Single Sign-On, SSO) und eine Einführung in die Planung einer Bereitstellung für einmaliges Anmelden bei Verwendung von Azure Active Directory (Azure AD). Einmaliges Anmelden ist eine Authentifizierungsmethode, mit der sich Benutzer mit einem Satz von Anmeldeinformationen bei mehreren unabhängigen Softwaresystemen anmelden können. Bei Verwendung von einmaligem Anmelden (Single Sign-On, SSO) müssen sich Benutzer nicht bei jeder Anwendung anmelden, die sie verwenden. Mit SSO können Benutzer auf alle benötigten Anwendungen zugreifen, ohne sich mit unterschiedlichen Anmeldeinformation authentifizieren zu müssen. 
 
-Als Endbenutzer interessieren Sie die SSO-Details wahrscheinlich nicht sonderlich. Sie möchten nur die Apps nutzen, mit denen Sie produktiv arbeiten können, ohne häufig Ihr Kennwort eingeben zu müssen. Sie finden Ihre Apps unter <https://myapps.microsoft.com>.
+Viele Anwendungen sind bereits in Azure AD vorhanden, die Sie mit SSO verwenden können. Abhängig von den Anforderungen der Anwendung und ihrer Implementierung stehen Ihnen mehrere Optionen für SSO zur Verfügung. Nehmen Sie sich Zeit, Ihre SSO-Bereitstellung zu planen, bevor Sie Anwendungen in Azure AD erstellen. Die Verwaltung von Anwendungen kann mithilfe des Portals „Meine Apps“ vereinfacht werden.
 
-Lesen Sie als Administrator oder IT-Experte weiter, um mehr zu SSO und zur Implementierung in Azure zu erfahren.
+## <a name="single-sign-on-options"></a>Optionen für einmaliges Anmelden
 
-## <a name="single-sign-on-basics"></a>Grundlagen des einmaligen Anmeldens
+Die Auswahl einer Methode für einmaliges Anmelden hängt davon ab, wie die Anwendung für Authentifizierung konfiguriert ist. Cloudanwendungen können verbundbasierte Optionen wie OpenID Verbinden, OAuth und SAML verwenden. Die Anwendung kann auch kennwortbasiertes SSO oder verknüpftes SSO verwenden, oder SSO kann deaktiviert werden.
 
-Einmaliges Anmelden bedeutet einen gewaltigen Fortschritt in Bezug darauf, wie sich Benutzer bei Anwendungen anmelden und diese nutzen. Auf einmaligem Anmelden basierende Authentifizierungssysteme werden häufig als „moderne Authentifizierung“ bezeichnet. Die moderne Authentifizierung und einmaliges Anmelden fallen in die Computingkategorie „Identitäts- und Zugriffsverwaltung“ (Identity & Access Management, IAM). Sehen Sie sich das hier angegebene Video an, um sich damit vertraut zu machen, wie einmaliges Anmelden ermöglicht wird.
+- **Verbund**: Wenn Sie einmaliges Anmelden für mehrere Identitätsanbieter einrichten, wird dies als Verbund bezeichnet. Eine SSO-Implementierung auf der Grundlage von Verbundprotokollen verbessert die Sicherheit, Zuverlässigkeit, Endbenutzerfreundlichkeit und Implementierung. 
 
-Grundlagen der Authentifizierung: Grundlagen | Azure Active Directory
+    Mit Verbund-SSO nimmt Azure AD die Authentifizierung des Benutzers bei der Anwendung mithilfe seines Azure AD-Kontos vor. Diese Methode wird für [SAML 2.0](../develop/single-sign-on-saml-protocol.md)-, WS-Verbund- oder [OpenID Connect](../develop/active-directory-v2-protocols.md)-Anwendungen unterstützt. Verbund-SSO ist der umfangreichste SSO-Modus. Verwenden Sie Verbund-SSO anstelle von kennwortbasiertem SSO und Active Directory-Verbunddiensten (AD FS) mit Azure AD, wenn eine Anwendung dies unterstützt.
 
-> [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4]
+    Es gibt einige Szenarien, in denen die SSO-Option für eine Unternehmensanwendung nicht vorhanden ist. Wenn die Anwendung mithilfe von **App-Registrierungen** im Portal registriert wurde, wird die Funktion zum einmaligen Anmelden so konfiguriert, dass standardmäßig OpenID Connect und OAuth verwendet werden. In diesem Fall wird die Option zum einmaligen Anmelden in der Navigation unter Unternehmensanwendungen nicht angezeigt.
 
-## <a name="single-sign-on-with-web-applications"></a>Einmaliges Anmelden mit Webanwendungen
+    Einmaliges Anmelden ist nicht verfügbar, wenn eine Anwendung in einem anderen Mandanten gehostet wird. Einmaliges Anmelden ist ebenfalls nicht verfügbar, wenn Ihr Konto nicht über die erforderlichen Berechtigungen verfügt (Globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals). Berechtigungen können auch zu einem Szenario führen, in dem Sie die Option zum einmaligen Anmelden zwar öffnen, nicht aber speichern können.
 
-Webanwendungen sind sehr beliebt. Web-Apps werden von verschiedenen Unternehmen gehostet und als Dienst zur Verfügung gestellt. Beispiele für beliebte Web-Apps sind Microsoft 365, GitHub und Salesforce, und es gibt noch einige Tausend mehr. Benutzer verwenden auf ihren Computern einen Webbrowser, um auf Web-Apps zuzugreifen. Einmaliges Anmelden ermöglicht Benutzern die Navigation zwischen verschiedenen Web-Apps, ohne dass sie sich mehrfach anmelden müssen.
+    > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8]
 
-Informationen zur Funktionsweise des einmaligen Anmeldens mit Web-Apps finden Sie in den beiden unten angegebenen Videos.
+- **Kennwort**: Lokale Anwendungen können für einmaliges Anmelden die Methoden „Kennwort“, „Integrierte Windows-Authentifizierung“, „Header“ oder „Verknüpft“ verwenden. Die lokalen Optionen funktionieren, wenn Anwendungen für den [Anwendungsproxy](../app-proxy/what-is-application-proxy.md) konfiguriert wurden.
 
-Grundlagen der Authentifizierung: Webanwendungen | Azure Active Directory
+    Bei kennwortbasierter einmaliger Anmeldung melden sich Benutzer mit einem Benutzernamen und einem Kennwort bei der Anwendung an, wenn sie erstmals auf sie zugreifen. Nach der ersten Anmeldung werden der Benutzername und das Kennwort von Azure AD für die Anwendung bereitgestellt. Kennwortbasiertes einmaliges Anmelden ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mit einer Webbrowsererweiterung oder einer mobilen App. Diese Option verwendet den von der Anwendung bereitgestellten vorhandenen Anmeldevorgang, ermöglicht es einem Administrator, die Kennwörter zu verwalten, und erfordert nicht, dass der Benutzer das Kennwort kennt.
 
-> [!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY]
+- **Verknüpft**: Verknüpftes Anmelden sorgt während der Migration von Anwendungen über einen längeren Zeitraum für eine einheitliche Benutzererfahrung. Wenn Sie Anwendungen zu Azure AD migrieren, können Sie mithilfe des verknüpften Anmeldens schnell Links für alle Anwendungen veröffentlichen, die Sie migrieren möchten. Benutzer können alle Links im Portal „Meine Apps“ oder im Microsoft 365-Portal finden.
 
-Grundlagen der Authentifizierung: Einmalige Webanmeldung | Azure Active Directory
+    Nachdem ein Benutzer sich mit einer verknüpften Anwendung authentifiziert hat, muss ein Konto erstellt werden, bevor der Benutzer Zugriff durch einmaliges Anmelden erhält. Die Bereitstellung dieses Kontos kann automatisch oder manuell durch einen Administrator erfolgen. Sie können keine Richtlinien für bedingten Zugriff oder mehrstufige Authentifizierung auf eine verknüpfte Anwendung anwenden, da eine verknüpfte Anwendung keine Funktionen für einmaliges Anmelden über Azure AD bereitstellt. Wenn Sie eine verknüpfte Anwendung konfigurieren, fügen Sie einfach einen Link hinzu, der zum Starten der Anwendung angezeigt wird.
 
-> [!VIDEO https://www.youtube.com/embed/51B-jSOBF8U]
+- **Deaktiviert**: Wenn SSO deaktiviert ist, ist diese Option für die Anwendung nicht verfügbar. Wenn einmaliges Anmelden deaktiviert ist, müssen sich Benutzer möglicherweise zweimal authentifizieren. Beim ersten Mal authentifizieren die Benutzer sich in Azure AD, danach melden sie sich bei der Anwendung an.
 
-## <a name="cloud-versus-on-premises-hosted-apps"></a>Vergleich von in der Cloud und lokal gehosteten Apps
+    Deaktivieren Sie SSO, wenn Folgendes zutrifft:
 
-Die Art der Implementierung des einmaligen Anmeldens richtet sich danach, wo die App gehostet wird. Das Hosting ist aufgrund der Art und Weise wichtig, wie Netzwerkdatenverkehr für den Zugriff auf die App weitergeleitet wird. Wenn eine App über Ihr lokales Netzwerk gehostet wird und darüber zugänglich ist (als lokale App bezeichnet), müssen Benutzer für die Nutzung der App nicht über das Internet darauf zugreifen. Wenn die App an einem anderen Ort gehostet wird (als in der Cloud gehostete App bezeichnet), müssen Benutzer über das Internet zugreifen, um die App zu nutzen.
+    - Sie noch nicht bereit sind, diese Anwendung in einmaliges Anmelden mit Azure AD zu integrieren
+    - Sie andere Aspekte der Anwendung testen
+    - Eine lokale Anwendung erfordert keine Benutzerauthentifizierung, Sie wünschen diese jedoch. Wenn SSO deaktiviert ist, muss sich der Benutzer authentifizieren.
 
-> [!TIP]
-> In der Cloud gehostete Apps werden auch als SaaS-Apps (Software-as-a-Service) bezeichnet.
+    Wenn Sie die Anwendung für SP-initiiertes und SAML-basiertes einmaliges Anmelden konfiguriert haben und den SSO-Modus in „Deaktiviert“ ändern, wird nicht verhindert, dass sich Benutzer außerhalb des Portals „Meine Apps“ bei der Anwendung anmelden. Dazu müssen Sie die [Anmeldemöglichkeit für Benutzer deaktivieren](disable-user-sign-in-portal.md).
 
-Das einmalige Anmelden für in der Cloud gehostete Apps ist einfach. Sie informieren den Identitätsanbieter darüber, dass diese Vorgehensweise für die App genutzt wird. Anschließend konfigurieren Sie die App so, dass der Identitätsanbieter als vertrauenswürdig angesehen wird. Informationen dazu, wie Sie Azure AD als Identitätsanbieter für eine App verwenden, finden Sie unter [Schnellstartserie zur Anwendungsverwaltung](add-application-portal.md).
+## <a name="plan-sso-deployment"></a>Planen der SSO-Bereitstellung
 
-> [!TIP]
-> Die Ausdrücke „Cloud“ und „Internet“ werden häufig synonym verwendet. Der Grund hierfür sind die Netzwerkdiagramme. Es ist üblich, große Computernetzwerke in einem Diagramm in Form einer Wolke darzustellen, weil nicht alle Komponenten eingezeichnet werden können. Das Internet ist das bekannteste Netzwerk, und daher werden die Ausdrücke häufig als Synonyme gebraucht. Es können aber alle Computernetzwerke als Cloud bezeichnet werden.
+Webanwendungen werden von verschiedenen Unternehmen gehostet und als Dienst zur Verfügung gestellt. Beispiele für beliebte Webanwendungen sind Microsoft 365, GitHub und Salesforce, und es gibt noch einige Tausend mehr. Benutzer verwenden auf ihren Computern einen Webbrowser, um auf Webanwendungen zuzugreifen. Einmaliges Anmelden ermöglicht Benutzern die Navigation zwischen verschiedenen Webanwendungen, ohne dass sie sich mehrfach anmelden müssen.
 
-Sie können einmaliges Anmelden auch für lokale Apps nutzen. Die Technologie für lokales einmaliges Anmelden (Single Sign-On) wird als „Anwendungsproxy“ bezeichnet. Weitere Informationen hierzu finden Sie unter [Optionen für einmaliges Anmelden](sso-options.md).
+Die Art der Implementierung von SSO richtet sich danach, wo die Anwendung gehostet wird. Das Hosting ist aufgrund der Art und Weise wichtig, wie Netzwerkdatenverkehr für den Zugriff auf die Anwendung weitergeleitet wird. Benutzer müssen nicht das Internet für den Zugriff auf lokale Anwendungen (gehostet in einem lokalen Netzwerk) verwenden. Wenn die Anwendung in der Cloud gehostet wird, benötigen Benutzer das Internet, um sie zu verwenden. In der Cloud gehostete Anwendungen werden auch als SaaS-Anwendungen (Software-as-a-Service) bezeichnet.
 
-## <a name="multiple-identity-providers"></a>Mehrere Identitätsanbieter
+Für Cloudanwendungen werden Verbundprotokolle verwendet. Sie können einmaliges Anmelden auch für lokale Anwendungen nutzen. Sie können den Anwendungsproxy verwenden, um Zugriff für Ihre lokale Anwendung zu konfigurieren. Weitere Informationen finden Sie unter [Remotezugriff auf lokale Anwendungen über den Azure AD-Anwendungsproxy](../app-proxy/application-proxy.md).
 
-Wenn Sie einmaliges Anmelden für mehrere Identitätsanbieter einrichten, wird dies als Verbund bezeichnet. Informationen zur Funktionsweise des Verbunds finden Sie im unten angegebenen Video.
+## <a name="my-apps"></a>Meine Apps
 
-Grundlagen der Authentifizierung: Verbund | Azure Active Directory
-
-> [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8]
+Als Benutzer einer Anwendung interessieren Sie die SSO-Details wahrscheinlich nicht sonderlich. Sie möchten nur die Anwendungen nutzen, mit denen Sie produktiv arbeiten können, ohne häufig Ihr Kennwort eingeben zu müssen. Sie finden und verwalten Ihre Anwendungen im [Portal „Meine Apps“](https://myapps.microsoft.com). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md)
-* [Optionen für einmaliges Anmelden](sso-options.md)
+- [Planen einer Bereitstellung für einmaliges Anmelden in Azure Active Directory](plan-sso-deployment.md)

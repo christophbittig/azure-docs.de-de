@@ -1,14 +1,14 @@
 ---
-title: Erstellen von Aktivitätsprotokollwarnungen für Labs in Azure DevTest Labs
+title: Erstellen von Aktivitätsprotokollwarnungen für Labs
 description: Dieser Artikel enthält die Schritte zum Erstellen von Aktivitätsprotokollwarnungen für Labs in Azure DevTest Labs.
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: f774e3291961c58f55a9ed24026535e076235b98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ebb5ae118d6485afd697ff9b5db7113a101b358
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588762"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628164"
 ---
 # <a name="create-activity-log-alerts-for-labs-in-azure-devtest-labs"></a>Erstellen von Aktivitätsprotokollwarnungen für Labs in Azure DevTest Labs
 In diesem Artikel wird erläutert, wie Sie Aktivitätsprotokollwarnungen für Labs in Azure DevTest Labs erstellen (z. B. wenn eine VM erstellt oder gelöscht wird).
@@ -79,4 +79,3 @@ In diesem Beispiel erstellen Sie eine Warnung für alle Verwaltungsvorgänge in 
 - Weitere Informationen zur Erstellung von Aktionsgruppen mit verschiedenen Aktionstypen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/alerts/action-groups.md).
 - Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/activity-log.md).
 - Weitere Informationen zur Festlegung von Warnungen für Aktivitätsprotokolle finden Sie unter [Warnungen zum Aktivitätsprotokoll](../azure-monitor/alerts/activity-log-alerts.md).
-

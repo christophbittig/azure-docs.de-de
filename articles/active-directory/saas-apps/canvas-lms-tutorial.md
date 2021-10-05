@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Canvas | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration in Canvas'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Canvas konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: a71dac55c860348f31ce8da27ab050a6c71a5c68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b91f6c186be774110b52fab75b742dcb73925f03
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653034"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622192"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Tutorial: Azure Active Directory-Integration mit Canvas
+# <a name="tutorial-azure-ad-sso-integration-with-canvas"></a>Tutorial: Azure AD-SSO-Integration in Canvas
 
 In diesem Tutorial erfahren Sie, wie Sie Canvas in Azure Active Directory (Azure AD) integrieren. Die Integration von Canvas in Azure AD ermöglicht Folgendes:
 
@@ -63,7 +63,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Erstellen eines Canvas-Testbenutzers](#create-canvas-test-user)** , um eine Entsprechung von B. Simon in Canvas zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
@@ -75,14 +75,12 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Canvas](common/sp-identifier.png)
+    b. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<tenant-name>.instructure.com`.
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<tenant-name>.instructure.com`.
-
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<tenant-name>.instructure.com/saml2`.
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<tenant-name>.instructure.com/saml2`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von Canvas](https://community.canvaslms.com/community/help), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von Canvas](https://community.canvaslms.com/community/help), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **SAML-Signaturzertifikat** zu öffnen.
 
@@ -96,7 +94,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user&quot;></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
@@ -108,7 +106,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Canvas gewähren.
 
@@ -120,17 +118,17 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="configure-canvas-sso"></a>Konfigurieren des einmaligen Anmeldens für Canvas
+## <a name=&quot;configure-canvas-sso&quot;></a>Konfigurieren des einmaligen Anmeldens für Canvas
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Canvas-Unternehmenswebsite als Administrator an.
 
 2. Wechseln Sie zu **Kurse \> Verwaltete Konten \> Microsoft**.
 
-    ![Canvas](./media/canvas-lms-tutorial/ic775990.png "Canvas")
+    ![Canvas](./media/canvas-lms-tutorial/course.png &quot;Canvas")
 
 3. Wählen Sie im Navigationsbereich auf der linken Seite **Authentifizierung** aus, und klicken Sie dann auf **Neue SAML-Konfiguration hinzufügen**.
 
-    ![Authentifizierung](./media/canvas-lms-tutorial/ic775991.png "Authentifizierung")
+    ![Authentifizierung](./media/canvas-lms-tutorial/tools.png "Authentifizierung")
 
 4. Führen Sie auf der Seite "Current Integration" die folgenden Schritte aus.
 
@@ -162,19 +160,19 @@ Damit sich Azure AD-Benutzer bei Canvas anmelden können, müssen sie in Canvas 
 
 2. Wechseln Sie zu **Kurse \> Verwaltete Konten \> Microsoft**.
 
-   ![Canvas](./media/canvas-lms-tutorial/ic775990.png "Canvas")
+   ![Canvas](./media/canvas-lms-tutorial/course.png "Canvas")
 
 3. Klicken Sie auf **Users**.
 
-   ![Screenshot: Canvas-Menü mit der Option „Users“ (Benutzer) ausgewählt](./media/canvas-lms-tutorial/ic775995.png "Benutzer")
+   ![Screenshot: Canvas-Menü mit der Option „Users“ (Benutzer) ausgewählt](./media/canvas-lms-tutorial/user.png "Benutzer")
 
 4. Klicken Sie auf **Add New User**.
 
-   ![Screenshot: Schaltfläche „Add a new user“ (Neuen Benutzer hinzufügen)](./media/canvas-lms-tutorial/ic775996.png "Benutzer")
+   ![Screenshot: Schaltfläche „Add a new user“ (Neuen Benutzer hinzufügen)](./media/canvas-lms-tutorial/add-user.png "Benutzer")
 
 5. Führen Sie auf der Dialogseite "Add a New User" die folgenden Schritte aus:
 
-   ![Benutzer hinzufügen](./media/canvas-lms-tutorial/ic775997.png "Benutzer hinzufügen")
+   ![Benutzer hinzufügen](./media/canvas-lms-tutorial/name.png "Benutzer hinzufügen")
 
    a. Geben Sie im Textfeld **Vollständiger Name** den Namen des Benutzers ein, z.B. **BrittaSimon**.
 
@@ -189,7 +187,7 @@ Damit sich Azure AD-Benutzer bei Canvas anmelden können, müssen sie in Canvas 
 > [!NOTE]
 > Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Canvas-Benutzerkonten oder mit den APIs von Canvas bereitstellen.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
@@ -197,7 +195,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Navigieren Sie direkt zur Anmelde-URL für Canvas, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Canvas“ klicken, sollten Sie automatisch bei der Canvas-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Canvas“ klicken, sollten Sie automatisch bei der Canvas-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Konfigurieren von Eigenschaften für eine Anwendung'
+title: 'Schnellstart: Konfigurieren von Eigenschaften für eine Unternehmensanwendung'
 titleSuffix: Azure AD
-description: In dieser Schnellstartanleitung wird das Azure-Portal verwendet, um eine Anwendung zu konfigurieren, die für Ihren Azure AD-Mandanten (Azure Active Directory) registriert wurde.
+description: Konfigurieren der Eigenschaften einer Unternehmensanwendung in Azure Active Directory.
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -9,95 +9,80 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/23/2021
+ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: b043867dad8e9571421fe67a83844f8d13a04212
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: f6325dfceaa0ee6cedc60e5555b177e1f7a25d6c
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669419"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058262"
 ---
-# <a name="quickstart-configure-properties-for-an-application"></a>Schnellstart: Konfigurieren von Eigenschaften für eine Anwendung
+# <a name="quickstart-configure-enterprise-application-properties-in-azure-active-directory"></a>Schnellstart: Konfigurieren von Eigenschaften für eine Unternehmensanwendung in Azure Active Directory
 
-In der vorherigen Schnellstartanleitung haben Sie Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten) eine Anwendung hinzugefügt. Beim Hinzufügen einer Anwendung teilen Sie Ihrem Azure AD-Mandanten mit, dass er als Identitätsanbieter für die App fungiert. Nun konfigurieren Sie einige Eigenschaften für die App.
+In diesem Schnellstart verwenden Sie Azure Active Directory Admin Center, um die Eigenschaften einer Unternehmensanwendung zu konfigurieren, die Sie ihrem Azure Active Directory-Mandanten (Azure AD) zuvor hinzugefügt haben.
+
+Sie können die folgenden allgemeinen Attribute einer Unternehmensanwendung konfigurieren:
+
+- **Aktiviert für die Benutzeranmeldung?** – Legt fest, ob sich Benutzer, die der Anwendung zugewiesen sind, anmelden können.
+- **Benutzerzuweisung erforderlich?** – Legt fest, ob sich Benutzer, die der Anwendung nicht zugewiesen sind, anmelden können.
+- **Für Benutzer sichtbar?** – Legt fest, ob den einer App zugewiesenen Benutzern die Anwendung unter „Meine Apps“ und im Microsoft 365-App-Startfeld angezeigt wird. (Siehe das Waffelmenü in der oberen linken Ecke einer Microsoft 365-Website.)
+- **Logo** – Bestimmt das Logo, das die Anwendung darstellt.
+- **Hinweise** – Bietet einen Ort zum Hinzufügen von Hinweisen, die für die Anwendung gelten.
+
+Es wird empfohlen, zum Testen der Schritte in diesem Schnellstart keine Produktionsumgebung zu verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen Folgendes, um die Eigenschaften einer Anwendung auf Ihrem Azure AD-Mandanten zu konfigurieren:
+Zum Konfigurieren der Eigenschaften einer Unternehmensanwendung in Azure Active Directory benötigen Sie Folgendes:
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Eine der folgenden Rollen: Globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals.
-- Optional: Gehen Sie den Schnellstart [Anzeigen Ihrer Apps](view-applications-portal.md) durch.
-- Optional: Gehen Sie den Schnellstart [Hinzufügen einer App](add-application-portal.md) durch.
+- Ausführen der Schritte unter [Schnellstart: Hinzufügen einer Unternehmensanwendung](add-application-portal.md).
 
->[!IMPORTANT]
->Verwenden Sie zum Testen der in dieser Schnellstartanleitung aufgeführten Schritte keine Produktionsumgebung.
+## <a name="configure-application-properties"></a>Konfigurieren von Anwendungseigenschaften
 
-## <a name="configure-app-properties"></a>Konfigurieren von App-Eigenschaften
-
-Nachdem Sie Ihrem Azure AD-Mandanten eine Anwendung hinzugefügt haben, wird die Übersichtsseite angezeigt. Wenn Sie eine Anwendung konfigurieren, die bereits hinzugefügt wurde, lesen Sie die erste Schnellstartanleitung. Darin wird beschrieben, wie Sie die Ihrem Mandanten hinzugefügten Anwendungen anzeigen können.
+Anwendungseigenschaften steuern, wie die Anwendung dargestellt wird und wie auf die Anwendung zugegriffen wird.
 
 So bearbeiten Sie die Anwendungseigenschaften:
 
-1. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** aus. Suchen Sie dann nach der zu konfigurierenden Anwendung, und wählen Sie diese aus.
-2. Wählen Sie im Abschnitt **Verwalten** die Option **Eigenschaften** aus, um den Bereich **Eigenschaften** zur Bearbeitung zu öffnen.
-3. Nehmen Sie sich einen Moment Zeit, um sich mit den zur Verfügung stehenden Optionen vertraut zu machen. Welche Optionen verfügbar sind, hängt davon ab, wie die App in Azure AD integriert ist. Eine App, für die SAML-basiertes einmaliges Anmelden verwendet wird, verfügt beispielsweise über Felder wie *URL für den Benutzerzugriff*. Bei einer App, für die OIDC-basiertes einmaliges Anmelden verwendet wird, ist dies dagegen nicht der Fall. Beachten Sie auch, dass es sich bei Apps, die über **Azure Active Directory > App-Registrierungen** hinzugefügt werden, standardmäßig um OIDC-basierte Apps handelt. Bei Apps, die über **Azure Active Directory > Unternehmensanwendungen** hinzugefügt werden, kann dagegen eine beliebige Anzahl von Standards für einmaliges Anmelden genutzt werden. Alle Apps verfügen über Felder zum Konfigurieren, wann eine App angezeigt wird und verwendet werden kann. Die Felder lauten:
-    - Mit **Aktiviert für die Benutzeranmeldung?** wird festgelegt, ob sich Benutzer, die der Anwendung zugewiesen sind, anmelden können.
-    - Mit **Benutzerzuweisung erforderlich?** wird festgelegt, ob sich Benutzer, die der Anwendung nicht zugewiesen sind, anmelden können.
-    - Mit **Für Benutzer sichtbar?** wird festgelegt, ob den einer App zugewiesenen Benutzern die Anwendung unter [Meine Apps](https://myapps.microsoft.com) und im Microsoft 365-App-Startfeld angezeigt wird. (Siehe das Waffelmenü in der oberen linken Ecke einer Microsoft 365-Website.)
+1. Navigieren Sie zu [Azure Active Directory Admin Center](https://aad.portal.azure.com), und melden Sie sich mit einer der in den Voraussetzungen aufgeführten Rollen an.
+1. Wählen Sie im Menü auf der linken Seite die Option **Unternehmensanwendungen** aus. Der Bereich **Alle Anwendungen** wird geöffnet und zeigt eine Liste von Anwendungen in Ihrem Azure AD-Mandanten an. Suchen Sie nach der gewünschten Anwendung, und wählen Sie diese aus. Beispiel: **Azure AD SAML Toolkit 1**.
+1. Wählen Sie im Abschnitt **Verwalten** die Option **Eigenschaften** aus, um den Bereich **Eigenschaften** zur Bearbeitung zu öffnen.
+1. Wählen Sie **Ja** oder **Nein** aus, um zu entscheiden, ob die Anwendung für Benutzeranmeldung aktiviert ist.
+1. Wählen **Sie Ja** oder **Nein** aus, um zu entscheiden, ob sich nur Benutzerkonten anmelden können, die der Anwendung zugewiesen wurden.
+1. Wählen Sie **Ja** oder **Nein** aus, um zu entscheiden, ob Benutzer, die einer Anwendung zugewiesen sind, diese in „Meine Apps“ und Microsoft 365-Portalen anzeigen können. 
 
-    > [!TIP]
-    > Benutzer werden im Navigationsbereich **Benutzer und Gruppen** zugewiesen.
-
-    Die drei Optionen können unabhängig voneinander aktiviert/deaktiviert werden, und das resultierende Verhalten ist nicht immer offensichtlich. Die folgende Tabelle ist ggf. hilfreich:
-
-    | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Verhalten für Benutzer, die der App zugewiesen bzw. nicht zugewiesen wurden |
-    |---|---|---|---|
-    | Ja | Ja | Ja | Zugewiesenen Benutzern wird die App angezeigt, und sie können sich anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden. |
-    | Ja | Ja | Nein  | Zugewiesenen Benutzern wird die App nicht angezeigt, aber sie können sich anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden. |
-    | Ja | Nein  | Ja | Zugewiesenen Benutzern wird die App angezeigt, und sie können sich anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, aber sie können sich anmelden. |
-    | Ja | Nein  | Nein  | Zugewiesenen Benutzern wird die App nicht angezeigt, aber sie können sich anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, aber sie können sich anmelden. |
-    | Nein  | Ja | Ja | Zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden. |
-    | Nein  | Ja | Nein  | Zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden. |
-    | Nein  | Nein  | Ja | Zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden. |
-    | Nein  | Nein  | Nein  | Zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden. |
-
-4. Wählen Sie abschließend **Speichern** aus.
+    :::image type="content" source="media/add-application-portal-configure/configure-properties.png" alt-text="Konfigurieren Sie die Eigenschaften einer Unternehmensanwendung.":::
 
 ## <a name="use-a-custom-logo"></a>Verwenden eines benutzerdefinierten Logos
+
+Das Anwendungslogo wird im Portal „Meine Apps“ und im Microsoft 365-Portal angezeigt. Es wird auch angezeigt, wenn Administratoren diese Anwendung im Unternehmensanwendungskatalog anzeigen. Benutzerdefinierte Logos müssen genau 215x215 Pixel groß sein und im PNG-Format vorliegen. Es wird empfohlen, für Ihr Anwendungslogo einen einfarbigen Hintergrund ohne Transparenz zu verwenden, damit es für Benutzer optimal aussieht.
 
 So verwenden Sie ein benutzerdefiniertes Logo:
 
 1. Erstellen Sie ein Logo mit 215 x 215 Pixeln, und speichern Sie es im PNG-Format.
-2. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** aus. Suchen Sie dann nach der zu konfigurierenden Anwendung, und wählen Sie diese aus.
-3. Wählen Sie im Abschnitt **Verwalten** die Option **Eigenschaften** aus, um den Bereich **Eigenschaften** zur Bearbeitung zu öffnen.
-4. Wählen Sie das Symbol zum Hochladen des Logos aus.
-5. Wählen Sie abschließend **Speichern** aus.
+1. Wählen Sie das Symbol in **Datei auswählen** aus, um das Logo hochzuladen.
+1. Wählen Sie abschließend **Speichern** aus.
 
-    :::image type="content" source="media/add-application-portal/change-logo.png" alt-text="Screenshot des Bildschirms „Eigenschaften“, in dem zu sehen ist, wie das Logo geändert wird":::
-
-   > [!NOTE]
-   > Die in diesem Bereich **Eigenschaften** angezeigte Miniaturansicht wird nicht sofort aktualisiert. Sie können den Bereich **Eigenschaften** schließen und erneut öffnen, um das aktualisierte Symbol anzuzeigen.
-
-> [!TIP]
-> Sie können die App-Verwaltung mithilfe der Graph-API automatisieren. Informationen hierzu finden Sie unter [Automatisieren einer SAML-basierten SSO-App-Konfiguration mit Microsoft Graph-API](/graph/application-saml-sso-configure-api).
+Die Miniaturansicht für das Logo wird nicht sofort aktualisiert. Sie können den Bereich **Eigenschaften** schließen und erneut öffnen, um die aktualisierte Miniaturansicht anzuzeigen.
 
 ## <a name="add-notes"></a>Hinzufügen von Notizen
 
-Sie können das Notizfeld verwenden, um alle für die Verwaltung der Anwendung in Azure AD relevanten Informationen hinzuzufügen. „Notizen“ ist ein Feld für freien Text mit einer maximalen Größe von 1024 Zeichen.
+Sie können die Eigenschaft **Hinweise** verwenden, um für die Verwaltung der Anwendung in Azure AD relevante Informationen hinzuzufügen. Die Eigenschaft **Hinweise** ist ein Feld für freien Text mit einer maximalen Größe von 1024 Zeichen.
 
-1. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** aus. Suchen Sie dann nach der zu konfigurierenden Anwendung, und wählen Sie diese aus.
-2. Wählen Sie im Abschnitt **Verwalten** die Option **Eigenschaften** aus, um den Bereich **Eigenschaften** zur Bearbeitung zu öffnen.
-3. Aktualisieren Sie das Notizfeld, und wählen Sie **Speichern** aus.
+So geben Sie Hinweise für die Anwendung ein:
+
+1. Geben Sie die Hinweise ein, die für die Anwendung gelten sollen.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Schnellstartreihe nicht fortsetzen möchten, sollten Sie die App löschen, um den Testmandanten zu bereinigen. Das Löschen der App wird in der letzten Schnellstartanleitung dieser Reihe behandelt. Informationen finden Sie unter [Schnellstart: Löschen einer Anwendung von Ihrem Azure AD-Mandanten (Azure Active Directory)](delete-application-portal.md).
+Wenn Sie den nächsten Schnellstart durcharbeiten möchten, behalten Sie die von Ihnen erstellte Unternehmensanwendung bei. Andernfalls können Sie sie löschen, um Ihren Mandanten zu bereinigen. Weitere Informationen finden Sie unter [Löschen einer Anwendung](delete-application-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im nächsten Artikel erfahren Sie, wie Sie der App Benutzer zuweisen:
+Erfahren Sie, wie Sie die Anwendungen in Ihrem Azure AD-Mandanten suchen und anzeigen.
 > [!div class="nextstepaction"]
-> [Zuweisen von Benutzern zu einer App](add-application-portal-assign-users.md)
+> [Anwendungen anzeigen](view-applications-portal.md)

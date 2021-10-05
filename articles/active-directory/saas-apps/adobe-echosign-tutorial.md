@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in Adobe Sign | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration in Adobe Sign | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Adobe Sign konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/19/2021
+ms.date: 09/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 7162c38aae2fec4ea21aae56fa8c3649f7a55425
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62791850857770cba44eabf54719176e80cea48b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649958"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803378"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Tutorial: Azure Active Directory-Integration in Adobe Sign
+# <a name="tutorial-azure-ad-sso-integration-with-adobe-sign"></a>Tutorial: Azure AD-SSO-Integration in Adobe Sign
 
 In diesem Tutorial erfahren Sie, wie Sie Adobe Sign in Azure Active Directory (Azure AD) integrieren. Die Integration von Adobe Sign in Azure AD ermöglicht Folgendes:
 
@@ -37,7 +37,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Adobe Sign unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Adobe Sign unterstützt **SP**-initiiertes einmaliges Anmelden.
 
 ## <a name="add-adobe-sign-from-the-gallery"></a>Hinzufügen von Adobe Sign aus dem Katalog
 
@@ -64,7 +64,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
     1. **[Erstellen eines Adobe Sign-Testbenutzers](#create-adobe-sign-test-user)** , um eine Entsprechung von Britta Simon in Adobe Sign zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
@@ -119,9 +119,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="configure-adobe-sign-sso"></a>Konfigurieren des einmaligen Anmeldens für Adobe Sign
+## <a name="configure-adobe-sign-sso"></a>Konfigurieren des einmaligen Anmeldens für Adobe Sign
 
-1. Wenden Sie sich vor der Konfiguration an das [Supportteam für den Adobe Sign-Client](https://helpx.adobe.com/in/contact/support.html), um Ihre Domäne zur Adobe Sign-Zulassungsliste hinzufügen zu lassen. So fügen Sie die Domäne hinzu:
+1. Wenden Sie sich vor der Konfiguration an das [Supportteam für den Adobe Sign-Client](https://helpx.adobe.com/in/contact/support.html), um Ihre Domäne der Adobe Sign-Positivliste hinzuzufügen. So fügen Sie die Domäne hinzu:
 
     a. Das [Adobe Sign-Supportteam](https://helpx.adobe.com/in/contact/support.html) sendet Ihnen ein zufällig generiertes Token. Für Ihre Domäne sieht das Token wie folgt aus: **adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
 
@@ -144,13 +144,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Rufen Sie im SAML-Menü **Account Settings** (Kontoeinstellungen)  > **SAML Settings** (SAML-Einstellungen) auf.
 
-    ![Screenshot der Adobe Sign-SAML-Einstellungsseite](./media/adobe-echosign-tutorial/settings.png "Konto")
+    ![Screenshot der Seite „Adobe Sign-SAML-Einstellungen“.](./media/adobe-echosign-tutorial/settings.png "Konto")
 
 1. Führen Sie im Abschnitt für die **SAML-Einstellungen** die folgenden Schritte aus:
 
-    ![Screenshot, in dem die S A M L-Einstellungen mit „S A M L Mandatory“ hervorgehoben sind](./media/adobe-echosign-tutorial/saml1.png "SAML-Einstellungen")
+    ![Screenshot, in dem die S A M L-Einstellungen mit „S A M L Mandatory“ hervorgehoben sind](./media/adobe-echosign-tutorial/profile.png "SAML-Einstellungen")
 
-   ![Screenshot der SAML-Einstellungen](./media/adobe-echosign-tutorial/saml.png "SAML-Einstellungen")
+   ![Screenshot der SAML-Einstellungen.](./media/adobe-echosign-tutorial/certificate.png "SAML-Einstellungen")
 
    a. Wählen Sie als **SAML Mode** (SAML-Modus) **SAML Mandatory** (SAML erforderlich) aus.
 
@@ -200,7 +200,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Adobe Sign-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Adobe Sign“ klicken, sollten Sie automatisch bei der Adobe Sign-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Adobe Sign“ klicken, sollten Sie automatisch bei der Adobe Sign-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 49cee5c98c4099e214a732371269e935db353152
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82c6b6cd0dde6b321e4de8a87f99e1adad69040d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97106970"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662113"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Tutorial: Hinzufügen einer Ressource zu Ihrer ARM-Vorlage
 
@@ -50,7 +50,7 @@ Die meisten Ressourcen verfügen auch über eine `location`-Eigenschaft, mit der
 
 Die anderen Eigenschaften variieren je nach Ressourcentyp und API-Version. Das Verständnis der Beziehung zwischen der API-Version und den verfügbaren Eigenschaften ist wichtig. Wir werden daher ausführlicher darauf eingehen.
 
-In diesem Tutorial haben Sie der Vorlage ein Speicherkonto hinzugefügt. Diese API-Version finden Sie unter [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts). Bedenken Sie, dass Sie Ihrer Vorlage nicht alle Eigenschaften hinzugefügt haben. Viele der Eigenschaften sind optional. Der `Microsoft.Storage`-Ressourcenanbieter könnte eine neue API-Version veröffentlichen, ohne dass sich die von Ihnen bereitgestellte Version ändert. Sie können diese Version weiterhin verwenden und dabei sicher sein, dass die Ergebnisse Ihrer Bereitstellung immer konsistent sind.
+In diesem Tutorial haben Sie der Vorlage ein Speicherkonto hinzugefügt. Diese API-Version finden Sie unter [storageAccounts 2021-04-01](/azure/templates/microsoft.storage/2021-04-01/storageaccounts). Bedenken Sie, dass Sie Ihrer Vorlage nicht alle Eigenschaften hinzugefügt haben. Viele der Eigenschaften sind optional. Der `Microsoft.Storage`-Ressourcenanbieter könnte eine neue API-Version veröffentlichen, ohne dass sich die von Ihnen bereitgestellte Version ändert. Sie können diese Version weiterhin verwenden und dabei sicher sein, dass die Ergebnisse Ihrer Bereitstellung immer konsistent sind.
 
 Wenn Sie eine ältere API-Version anzeigen (z. B. [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts)), werden Sie feststellen, dass dort weniger Eigenschaften verfügbar sind.
 

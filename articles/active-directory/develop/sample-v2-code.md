@@ -12,12 +12,12 @@ ms.date: 08/27/2021
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 541c9f29e18f3972bf0f9e2a717457fa4fe07a70
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: fb8cf19f3b266d2cc7c3a1569f964acdc934ba7b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123102090"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786767"
 ---
 # <a name="microsoft-identity-platform-code-samples"></a>Codebeispiele für die Microsoft Identity Platform
 
@@ -88,7 +88,7 @@ In den folgenden Beispielen werden öffentliche Clientdesktopanwendungen veransc
 > | Node.js | [Anmelden von Benutzern](https://github.com/Azure-Samples/ms-identity-javascript-nodejs-desktop) | MSAL Node | Autorisierungscode mit PKCE |
 > | PowerShell | [Aufrufen von Microsoft Graph durch Anmelden von Benutzern unter Verwendung von Benutzername/Kennwort](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) | MSAL.NET | Kennwortanmeldeinformationen des Ressourcenbesitzers |
 > | Python | [Anmelden von Benutzern](https://github.com/Azure-Samples/ms-identity-python-desktop) | MSAL Python | Autorisierungscode mit PKCE |
-> | Universelle Windows-Plattform (UWP) | [Aufrufen von Microsoft Graph](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) | Web Account Manager-API | Integrierte Windows-Authentifizierung |
+> | Universelle Windows-Plattform (UWP) | [Aufrufen von Microsoft Graph](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/main/2-With-broker) | MSAL.NET | Web Account Manager |
 > | Windows Presentation Foundation (WPF) | [Anmelden von Benutzern und Aufrufen von Microsoft Graph](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | MSAL.NET | Autorisierungscode mit PKCE |
 > | XAML | &#8226; [Anmelden von Benutzern und Aufrufen der ASP.NET Core-Web-API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/1.%20Desktop%20app%20calls%20Web%20API) <br/> &#8226; [Anmelden von Benutzern und Aufrufen von Microsoft Graph](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | MSAL.NET | Autorisierungscode mit PKCE |
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 5e4091138f51fdd5af4052895cdb75c2390f7ce5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a927232bab058ff461ff1158739a6b4d390e1c56
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459729"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679463"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workplace by Facebook für die automatische Benutzerbereitstellung
 
@@ -109,7 +109,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Workplace by Facebook synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Workplace by Facebook für Updatevorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Workplace by Facebook-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|
+   |attribute|type|
    |---|---|
    |userName|String|
    |displayName|String|
@@ -168,6 +168,7 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 ## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
 *  Wenn Sie feststellen, dass ein Benutzer nicht erfolgreich erstellt wurde und ein Überwachungsprotokollereignis mit dem Code „1789003“ vorliegt, bedeutet dies, dass der Benutzer aus einer nicht überprüften Domäne stammt.
 *  In einigen Fällen erhalten Benutzer folgenden Fehler: „FEHLER: Fehlendes Feld ‚Email‘: Geben Sie den von Facebook zurückgegebenen E-Mail-Fehler an: Ausnahme bei der Verarbeitung der HTTP-Anforderung. Weitere Informationen finden Sie in der HTTP-Antwort, die von der „Response“-Eigenschaft dieser Ausnahme zurückgegeben wurde. Dieser Vorgang wurde 0-mal wiederholt. Er wird nach diesem Datum erneut wiederholt.“ Die Ursache dieses Fehler ist, dass Kunden der Facebook-E-Mail „mail“ anstelle von „userPrincipalName“ zuordnen, einige Benutzer jedoch kein mail-Attribut haben. Ändern Sie die Attributzuordnung in Workplace vom mail-Attribut von Facebook in Coalesce([mail],[userPrincipalName]), heben Sie die Zuordnung des Benutzers von Workplace zu Facebook auf, oder stellen Sie eine E-Mail-Adresse für den Benutzer bereit, um die Fehler zu vermeiden und die fehlerhaften Benutzer erfolgreich über Facebook in Workplace bereitstellen zu können.  
+*  Es gibt eine Option in Workplace, die das Vorhandensein von [Benutzern ohne E-Mail-Adressen](https://www.workplace.com/resources/tech/account-management/email-less#enable) ermöglicht. Wenn diese Einstellung auf der Workplace-Seite umschaltet wird, muss die Bereitstellung auf der Azure-Seite neu gestartet werden, damit Benutzer ohne E-Mail-Adressen erfolgreich in Workplace erstellt werden können.  
 
 
 ## <a name="change-log"></a>Änderungsprotokoll

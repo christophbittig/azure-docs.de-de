@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Hinzufügen einer Anwendung zu Ihrem Mandanten'
+title: 'Schnellstart: Hinzufügen einer Unternehmensanwendung'
+description: Hinzufügen einer Unternehmensanwendung in Azure Active Directory.
 titleSuffix: Azure AD
-description: In dieser Schnellstartanleitung wird mithilfe des Azure-Portals eine Kataloganwendung zu Ihrem Azure Active Directory-Mandanten (Azure AD) hinzugefügt.
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -9,70 +9,51 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 08/21/2021
+ms.date: 09/22/2021
 ms.author: davidmu
-ms.reviewer: ergreenl
-ms.openlocfilehash: 40d82ea916a647dc927e4420058d208c3fd18973
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.reviewer: ergleenl
+ms.openlocfilehash: 66de4e18f8a6c88ae3c1504197eb6f39632c6425
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111009"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058157"
 ---
-# <a name="quickstart-add-an-application-to-your-tenant"></a>Schnellstart: Hinzufügen einer Anwendung zu Ihrem Mandanten
+# <a name="quickstart-add-an-enterprise-application-in-azure-active-directory"></a>Schnellstart: Hinzufügen einer Unternehmensanwendung in Azure Active Directory
 
-Azure Active Directory (Azure AD) enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen. Viele der von Ihrer Organisation verwendeten Anwendungen sind wahrscheinlich bereits im Katalog enthalten.
+In diesem Schnellstart verwenden Sie Azure Active Directory Admin Center, um Ihrem Azure Active Directory-Mandanten (Azure AD) eine Unternehmensanwendung hinzuzufügen. Azure AD enthält einen Katalog mit Tausenden von vorab integrierten Unternehmensanwendungen. Viele der von Ihrer Organisation verwendeten Anwendungen sind wahrscheinlich bereits im Katalog enthalten. Dieser Quickstart verwendet die Anwendung **Azure AD SAML Toolkit** als Beispiel, aber die Konzepte gelten für die meisten [Unternehmensanwendungen Katalog](../saas-apps/tutorial-list.md).
 
-Nach dem Hinzufügen einer Anwendung zum Azure AD-Mandanten haben Sie folgende Möglichkeiten:
-
-- Konfigurieren der Eigenschaften für die App
-- Verwalten des Benutzerzugriffs auf die App mit einer Richtlinie für bedingten Zugriff
-- Konfigurieren des einmaligen Anmeldens, damit Benutzer sich mit ihren Azure AD-Anmeldeinformationen bei der App anmelden können
+Es wird empfohlen, zum Testen der Schritte in diesem Schnellstart keine Produktionsumgebung zu verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen Folgendes, um Ihrem Azure AD-Mandanten eine Anwendung hinzuzufügen:
+Sie benötigen Folgendes, um Ihrem Azure AD-Mandanten eine Unternehmensanwendung hinzuzufügen:
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Eine der folgenden Rollen: Globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals.
-- (Optional: Durcharbeitung von [Anzeigen Ihrer Apps](view-applications-portal.md).)
 
->[!IMPORTANT]
->Wir empfehlen Ihnen, zum Testen der Schritte in dieser Schnellstartanleitung keine Produktionsumgebung zu verwenden.
+## <a name="add-an-enterprise-application"></a>Hinzufügen einer Unternehmensanwendung
 
-## <a name="add-an-app-to-your-azure-ad-tenant"></a>Hinzufügen einer App zu Ihrem Azure AD-Mandanten
+So fügen Sie Ihrem Azure AD-Mandanten eine Unternehmensanwendung hinzu:
 
-Gehen Sie wie folgt vor, um Ihrem Azure AD-Mandanten eine Anwendung hinzuzufügen:
+1. Navigieren Sie zu [Azure Active Directory Admin Center](https://aad.portal.azure.com), und melden Sie sich mit einer der in den Voraussetzungen aufgeführten Rollen an.
+1. Wählen Sie im Menü auf der linken Seite die Option **Unternehmensanwendungen** aus. Der Bereich **Alle Anwendungen** wird geöffnet und zeigt eine Liste von Anwendungen in Ihrem Azure AD-Mandanten an.
+1. Wählen Sie im Bereich **Unternehmensanwendungen** die Option **Neue Anwendung** aus.
+1. Der Bereich **Azure AD-Katalog durchsuchen** wird mit Kacheln für Cloudplattformen, lokale Anwendungen und ausgewählten Anwendungen geöffnet. Für die im Abschnitt **Ausgewählte Anwendungen** aufgeführten Anwendungen wird mithilfe von Symbolen angegeben, ob sie die einmalige Verbundanmeldung und -bereitstellung unterstützen. Suchen Sie nach der Anwendung, und wählen Sie diese aus. In diesem Schnellstart wird **Azure AD SAML Toolkit** verwendet.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) unter **Azure-Dienste** die Option **Unternehmensanwendungen** aus. Der Bereich **Alle Anwendungen** wird geöffnet und zeigt eine nach dem Zufallsprinzip ausgewählte Gruppe von Anwendungen in Ihrem Azure AD-Mandanten an.
-2. Wählen Sie im Bereich **Unternehmensanwendungen** die Option **Neue Anwendung** aus.
-3. Der Bereich **Azure AD-Katalog durchsuchen** wird mit Kacheln für Cloudplattformen, lokale Anwendungen und ausgewählten Anwendungen geöffnet. Für die im Abschnitt **Ausgewählte Anwendungen** aufgeführten Anwendungen wird mithilfe von Symbolen angegeben, ob sie die einmalige Verbundanmeldung und -bereitstellung unterstützen.
-    ![Suchen nach einer App anhand des Namens oder der Kategorie](media/add-application-portal/browse-gallery.png)
-4. Sie können den Katalog nach der hinzuzufügenden App durchsuchen oder nach der Anwendung suchen, indem Sie ihren Namen in das Suchfeld eingeben. Wählen Sie dann die Anwendung in den Ergebnissen aus.
-5. Der nächste Schritt hängt davon ab, wie der Entwickler der Anwendung einmaliges Anmelden (Single Sign-On, SSO) implementiert hat. App-Entwickler haben vier verschiedene Möglichkeiten, um einmaliges Anmelden zu implementieren. Dies sind „SAML“, „OpenID Connect“, „Kennwort“ und „Verknüpft“. Beim Hinzufügen einer App können Sie den Filter nutzen, um nur die Apps anzuzeigen, für die eine bestimmte SSO-Implementierung verwendet wird (wie im Screenshot dargestellt). Ein beliebter Standard zum Implementieren von SSO ist beispielsweise SAML (Security Assertion Markup Language). Ein weiterer gängiger Standard ist OpenID Connect (OIDC). Die SSO-Konfiguration mit diesen Standards weicht von der üblichen Vorgehensweise ab. Sie sollten daher den SSO-Typ beachten, der von der hinzuzufügenden App implementiert wird.
+    :::image type="content" source="media/add-application-portal/browse-gallery.png" alt-text="Suchen Sie im Katalog der Unternehmensanwendungen nach der Anwendung, die Sie hinzufügen möchten.":::
 
-    - Wählen Sie **Registrieren** aus, wenn der Entwickler der App den **OIDC-Standard** für SSO verwendet hat. Eine Setupseite wird angezeigt. Lesen Sie sich als Nächstes die Schnellstartanleitung zum Einrichten des OIDC-basierten einmaligen Anmeldens durch.
-    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="Screenshot: Hinzufügen einer OIDC-basierten SSO-App":::
+1. Geben Sie einen Namen ein, den Sie verwenden möchten, um die Instanz der Anwendung zu bezeichnen. Beispiel: `Azure AD SAML Toolkit 1`.
+1. Klicken Sie auf **Erstellen**.
 
-    - Wählen Sie **Erstellen** aus, wenn der Entwickler der App den **SAML-Standard** für SSO verwendet hat. Eine Seite mit ersten Schritten und den Optionen zum Konfigurieren der Anwendung für Ihre Organisation wird angezeigt. In dem Formular können Sie den Namen der Anwendung entsprechend den Anforderungen Ihres Unternehmens bearbeiten. Lesen Sie sich als Nächstes die Schnellstartanleitung zum Einrichten des SAML-basierten einmaligen Anmeldens durch.
-    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="Screenshot: Hinzufügen einer SAML-basierten SSO-App":::
-
-> [!IMPORTANT]
-> Es gibt einige wichtige Unterschiede zwischen SAML- und OIDC-basierten SSO-Implementierungen. Bei SAML-basierten Apps können Sie mehrere Instanzen derselben App hinzufügen. Beispielsweise GitHub1, GitHub2 usw. Bei OIDC-basierten Apps können Sie nur eine Instanz einer App hinzufügen. Falls Sie bereits eine OIDC-basierte App hinzugefügt haben und dann versuchen, dieselbe App erneut hinzuzufügen und die Einwilligung zweimal zu erteilen, wird sie auf dem Mandanten nicht noch einmal hinzugefügt.
-
-Wenn sich die gesuchte Anwendung nicht im Katalog befindet, können Sie den Link **Eigene Anwendung erstellen** auswählen. Wählen Sie dann unter **Was haben Sie mit Ihrer Anwendung vor?** die Option **Beliebige andere, nicht im Katalog zu findende Anwendung integrieren** aus. Microsoft hat bereits mit vielen Anwendungsentwicklern zusammengearbeitet, um Anwendungen für das Arbeiten mit Azure AD vorzukonfigurieren. Die vorkonfigurierten Apps werden im Katalog angezeigt. Wenn die App, die Sie hinzufügen möchten, jedoch nicht aufgeführt ist, können Sie eine neue, generische App erstellen und diese dann selbst oder mithilfe des Entwicklers konfigurieren, der die App erstellt hat.
-
-Sie haben das Hinzufügen einer Anwendung abgeschlossen. In der nächsten Schnellstartanleitung wird veranschaulicht, wie Sie das Logo ändern und weitere Eigenschaften für Ihre Anwendung bearbeiten.
-
-> [!TIP]
-> Sie können die App-Verwaltung mithilfe der Graph-API automatisieren. Informationen hierzu finden Sie unter [Automatisieren einer SAML-basierten SSO-App-Konfiguration mit Microsoft Graph-API](/graph/application-saml-sso-configure-api).
+Wenn Sie eine Anwendung installieren möchten, die auf OpenID Connect basierendes SSO verwendet, wird anstelle der Schaltfläche **Erstellen** eine Schaltfläche angezeigt, die Sie zur Anmelde- oder Registrierungsseite der Anwendung weiterleitet, je nachdem, ob Sie bereits über ein Konto verfügen. Weitere Informationen finden Sie unter [Hinzufügen einer auf OpenID Connect basierenden Anwendung für einmaliges Anmelden](add-application-portal-setup-oidc-sso.md). Nach der Anmeldung wird die Anwendung Ihrem Mandanten hinzugefügt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Schnellstartreihe nicht fortsetzen möchten, sollten Sie die App löschen, um den Testmandanten zu bereinigen. Das Löschen der App wird in der letzten Schnellstartanleitung dieser Reihe behandelt. Informationen finden Sie unter [Schnellstart: Löschen einer Anwendung von Ihrem Azure AD-Mandanten (Azure Active Directory)](delete-application-portal.md).
+Wenn Sie den nächsten Schnellstart durcharbeiten möchten, behalten Sie die von Ihnen erstellte Unternehmensanwendung bei. Andernfalls können Sie sie löschen, um Ihren Mandanten zu bereinigen. Weitere Informationen finden Sie unter [Löschen einer Anwendung](delete-application-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im nächsten Artikel erfahren Sie, wie Sie eine App konfigurieren:
+Erfahren Sie, wie Sie ein Benutzerkonto erstellen und es der Unternehmensanwendung zuweisen, die Sie hinzugefügt haben.
 > [!div class="nextstepaction"]
-> [Konfigurieren einer App](add-application-portal-configure.md)
+> [Erstellen und Zuweisen eines Benutzerkontos](add-application-portal-assign-users.md)

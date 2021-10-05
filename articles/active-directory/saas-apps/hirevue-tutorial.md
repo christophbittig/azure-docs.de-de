@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit HireVue | Microsoft Docs'
+title: 'Tutorial: Azure AD-SSO-Integration in HireVue'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und HireVue konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/03/2021
+ms.date: 09/13/2021
 ms.author: jeedes
-ms.openlocfilehash: e5305a5abbddc6db68925d1c5a7abffb5e949193
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 073b6bde981bd9395470aca9e77e44674d2a546f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572257"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573914"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hirevue"></a>Tutorial: Azure Active Directory-Integration mit HireVue
+# <a name="tutorial-azure-ad-sso-integration-with-hirevue"></a>Tutorial: Azure AD-SSO-Integration in HireVue
 
 In diesem Tutorial erfahren Sie, wie Sie HireVue in Azure Active Directory (Azure AD) integrieren. Die Integration von HireVue in Azure AD ermöglicht Folgendes:
 
@@ -32,6 +32,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * HireVue-Abonnement mit SSO-Unterstützung
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
