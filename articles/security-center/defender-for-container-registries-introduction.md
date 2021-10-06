@@ -3,16 +3,16 @@ title: 'Azure Defender für Containerregistrierungen: Vorteile und Features'
 description: Enthält eine Beschreibung der Vorteile und Features von Azure Defender für Containerregistrierungen.
 author: memildin
 ms.author: memildin
-ms.date: 09/05/2021
+ms.date: 10/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5c9407e33cefc9c604192252a119db5a42851949
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 1f38acc2ef70e4f2c9a556a652954ebcdc86e2d8
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541403"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129419124"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Einführung in Azure Defender für Containerregistrierungen
 
@@ -29,7 +29,7 @@ Aktivieren Sie **Azure Defender für Containerregistrierungen** auf Abonnementeb
 |Unterstützte Registrierungen und Images:|Linux-Images in ACR-Registrierungen, auf die mit Shellzugriff über das öffentliche Internet zugegriffen werden kann<br>[Mit Azure Private Link geschützte ACR-Registrierungen](../container-registry/container-registry-private-link.md)|
 |Nicht unterstützte Registrierungen und Images:|Windows-Images<br>Private Registrierungen (sofern kein Zugriff auf [vertrauenswürdige Dienste](../container-registry/allow-access-trusted-services.md#trusted-services) gewährt wird)<br>Extrem minimalistische Images wie [Docker-Scratch](https://hub.docker.com/_/scratch/)-Images oder Images ohne Distribution, die nur eine Anwendung und deren Laufzeitabhängigkeiten ohne Paket-Manager, Shell oder Betriebssystem enthalten<br>Images mit der [Spezifikation für das Imageformat Open Container Initiative (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md)|
 |Erforderliche Rollen und Berechtigungen:|**Sicherheitsleseberechtigter** und [Azure Container Registry: Rollen und Berechtigungen](../container-registry/container-registry-roles.md)|
-|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png" border="false"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png" border="false"::: US Gov und China Gov: Derzeit wird nur das Feature zur Überprüfung bei Pushvorgang unterstützt. Weitere Informationen finden Sie unter [Wann werden Images überprüft?](#when-are-images-scanned)|
+|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png" border="false"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png" border="false"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>Welche Vorteile hat die Nutzung von Azure Defender für Containerregistrierungen?

@@ -3,12 +3,12 @@ title: Upgrade von verwalteten Azure Service Fabric-Clustern
 description: Erfahren Sie mehr über die Optionen zum Aktualisieren Ihres verwalteten Azure Service Fabric-Clusters.
 ms.topic: how-to
 ms.date: 08/23/2021
-ms.openlocfilehash: b30f240325eda83428a19377e63d5a7f37f88169
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 3374a67d2b404234feafd4bc621fd5fef745b3f4
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122865055"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546695"
 ---
 # <a name="manage-service-fabric-managed-cluster-upgrades"></a>Verwalten von Service Fabric-Clusterupgrades
 
@@ -53,12 +53,12 @@ Wenn Sie den Clusterupgrademodus mithilfe einer Resource Manager-Vorlage ändern
 
 ```json
 {
-"apiVersion": "2021-05-01",
-"type": "Microsoft.ServiceFabric/managedClusters",
-"properties": {
-        "ClusterUpgradeMode": "Manual",
-        "ClusterCodeVersion": "8.0.514.9590"
-        }
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedClusters",
+  "properties": {
+    "clusterUpgradeMode": "Manual",
+    "clusterCodeVersion": "8.0.514.9590"
+  }
 }
 ```
 
@@ -74,12 +74,12 @@ Um automatische Upgrades und die Wave-Bereitstellung zu konfigurieren, wird einf
 
 ```json
 {
-"apiVersion": "2021-05-01",
-"type": "Microsoft.ServiceFabric/managedClusters",
-"properties": {
-        "ClusterUpgradeMode": "Automatic",
-        "clusterUpgradeCadence": "Wave1",
-        }  
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedClusters",
+  "properties": {
+    "clusterUpgradeMode": "Automatic",
+    "clusterUpgradeCadence": "Wave1"
+  }
 }
 ```
 

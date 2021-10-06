@@ -1,27 +1,22 @@
 ---
 title: Einladen von Benutzern zu Azure Video Analyzer for Media (vormals Video Analyzer for Media) – Azure
-titleSuffix: Azure Video Analyzer for Media
 description: In diesem Artikel erfahren Sie, wie Sie Benutzer zu Azure Video Analyzer for Media (vormals Video Analyzer for Media) einladen.
-services: azure-video-analyzer
-author: Juliako
-manager: femila
 ms.topic: quickstart
-ms.subservice: azure-video-analyzer-media
-ms.date: 02/03/2021
-ms.author: juliako
-ms.openlocfilehash: b724ebdc929c654c5a31db2c797901147be3e29a
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.date: 09/14/2021
+ms.openlocfilehash: 791e9e7d3090aaa79cd754135f26e79fae3a9e0a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119584"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650769"
 ---
 # <a name="quickstart-invite-users-to-video-analyzer-for-media"></a>Schnellstart: Einladen von Benutzern zu Azure Video Analyzer for Media
 
 Um mit Ihren Kollegen zusammenzuarbeiten, können Sie sie zu Ihrem Azure Video Analyzer for Media-Konto (vormals Video Indexer) einladen. 
 
 > [!NOTE]
-> Nur der Administrator des Kontos kann Benutzer hinzufügen oder entfernen.
+> Nur der Administrator des Kontos kann Benutzer hinzufügen oder entfernen.</br>
+> Wenn Sie kostenpflichtige Konten verwenden, können Sie nur Azure AD-Benutzer einladen.
 
 ## <a name="invite-new-users"></a>Einladen neuer Benutzer
 

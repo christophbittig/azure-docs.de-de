@@ -10,13 +10,13 @@ ms.topic: reference
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 10/01/2021
-ms.openlocfilehash: 67983b60457d652a1e4de71c6655f7eedae40542
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.date: 09/28/2021
+ms.openlocfilehash: e9db19643252a94513be57c2cd3a18ee6038b742
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389758"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218166"
 ---
 # <a name="resource-management-in-azure-sql-database"></a>Ressourcenverwaltung in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ Informationen zu bestimmten Ressourcenlimits gemäß Tarif (auch als Dienstziel 
 | :--- | :--- |
 | Datenbanken pro [logischem Server](logical-servers.md) | 5.000 |
 | Standardanzahl von logischen Servern pro Abonnement in einer Region | 20 |
-| Maximale Anzahl von logischen Servern pro Abonnement in einer Region | 250 |
+| Maximale Anzahl von logischen Servern pro Abonnement in einer Region | 200 |
 | DTU-/eDTU-Kontingent pro logischem Server | 54.000 |
 | Kontingent von virtuellen Kernen pro logischem Server | 540 |
 | Maximale Anzahl von Pools für elastische Datenbanken pro logischem Server | Begrenzt durch die Anzahl von DTUs oder virtuellen Kernen. Beispiel: Wenn jeder Pool 1.000 DTUs umfasst, kann ein Server 54 Pools unterstützen.|

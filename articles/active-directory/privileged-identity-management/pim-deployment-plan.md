@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: conceptual
-ms.date: 07/26/2021
+ms.date: 09/28/2021
 ms.author: baselden
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afb94b9589171a5715b1e7bdf9a80ceb0a8b7f45
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e00d6d6486ea5977a38e5e860f2bcd28dbe749fb
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771173"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230112"
 ---
 # <a name="plan-a-privileged-identity-management-deployment"></a>Planen einer Bereitstellung von Privileged Identity Management
 
-**Privileged Identity Management (PIM)** bietet eine zeit- und genehmigungsbasierte Rollenaktivierung, damit die Risiken in Verbindung mit übermäßigen, unnötigen oder missbräuchlich verwendeten Zugriffsberechtigungen für wichtige Ressourcen verringert werden können. Diese Ressourcen umfassen Ressourcen in Azure Active Directory (Azure AD), Azure und anderen Microsoft-Onlinediensten wie Microsoft 365 oder Microsoft Intune. Sie können PIM auch mit Dienstanwendungen (SaaS) verwenden.
+**Privileged Identity Management (PIM)** bietet eine zeit- und genehmigungsbasierte Rollenaktivierung, damit die Risiken in Verbindung mit übermäßigen, unnötigen oder missbräuchlich verwendeten Zugriffsberechtigungen für wichtige Ressourcen verringert werden können. Diese Ressourcen umfassen Ressourcen in Azure Active Directory (Azure AD), Azure und anderen Microsoft-Onlinediensten wie Microsoft 365 oder Microsoft Intune.
 
 Mit PIM können Sie bestimmte Aktionen für einen bestimmten Bereich zulassen. Hauptfunktionen:
 

@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Hier erfahren Sie, wie Authentifizierungscode in einer Clientanwendung geschrieben wird.
 author: baanders
 ms.author: baanders
-ms.date: 8/26/2021
+ms.date: 9/1/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a1b2465f29ae659f3e255a4843a2abd5f9ab75b2
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: a1e397acfe8118c339b45d6c786ae2c0b2cc82e8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224858"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827019"
 ---
 # <a name="write-client-app-authentication-code"></a>Schreiben von Authentifizierungscode für die Client-App
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe der `Azure.Identity`-Client
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie zunächst die Einrichtungsschritte unter [Einrichten von Instanzen und Authentifizierung](how-to-set-up-instance-portal.md) aus. Dadurch wird sichergestellt, dass Sie über eine Azure Digital Twins-Instanz verfügen und der Benutzer Zugriffsberechtigungen besitzt. Nachdem Sie diese Einrichtung abgeschlossen haben, können Sie Client-App-Code schreiben.
+Führen Sie zunächst die Einrichtungsschritte unter [Einrichten von Instanzen und Authentifizierung](how-to-set-up-instance-portal.md) aus. Durch diese Einrichtung wird sichergestellt, dass Sie über eine Azure Digital Twins-Instanz verfügen und der Benutzer Zugriffsberechtigungen besitzt. Nachdem Sie diese Einrichtung abgeschlossen haben, können Sie Client-App-Code schreiben.
 
 Als Nächstes benötigen Sie ein Client-App-Projekt, in dem Sie den Code schreiben. Wenn Sie nicht bereits ein Client-App-Projekt eingerichtet haben, erstellen Sie ein einfaches Projekt in der Sprache Ihrer Wahl zur Verwendung in diesem Tutorial.
 
@@ -43,7 +43,7 @@ In `Azure.Identity` gibt es drei gängige Methoden zum Abrufen von Anmeldeinform
 * [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet&preserve-view=true) funktioniert hervorragend in Fällen, in denen Sie [verwaltete Identitäten (MSI)](../active-directory/managed-identities-azure-resources/overview.md) benötigen, und eignet sich gut für das Arbeiten mit Azure Functions und Bereitstellungen in Azure-Diensten.
 * [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) ist für interaktive Anwendungen vorgesehen und kann zum Erstellen eines authentifizierten SDK-Clients verwendet werden.
 
-Im restlichen Artikel wird gezeigt, wie Sie diese mit dem [.NET SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) verwenden.
+Im restlichen Artikel wird gezeigt, wie Sie diese Methoden mit dem [.NET SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) verwenden.
 
 ### <a name="add-azureidentity-to-your-net-project"></a>Hinzufügen von Azure.Identity zu Ihrem .NET-Projekt
 
@@ -85,7 +85,7 @@ Sie können die Anmeldeinformationen für die verwaltete Identität wie folgt in
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential-Methode
 
-Die [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)-Methode ist für interaktive Anwendungen gedacht und startet einen Webbrowser für die Authentifizierung. Sie können dies anstelle von `DefaultAzureCredential` in Fällen verwenden, in denen Sie interaktive Authentifizierung benötigen.
+Die [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)-Methode ist für interaktive Anwendungen gedacht und startet einen Webbrowser für die Authentifizierung. Sie können diese Methode anstelle von `DefaultAzureCredential` in Fällen verwenden, in denen Sie interaktive Authentifizierung benötigen.
 
 Wenn Sie die interaktiven Browseranmeldeinformationen verwenden möchten, benötigen Sie eine **App-Registrierung**, die über Berechtigungen für die Azure Digital Twins-APIs verfügt. Schritte zum Einrichten dieser App-Registrierung finden Sie unter [Erstellen einer App-Registrierung](./how-to-create-app-registration-portal.md). Nachdem Sie die App-Registrierung eingerichtet haben, benötigen Sie Folgendes...
 * [Die Anwendungs-ID (Client-ID) der App-Registrierung](./how-to-create-app-registration-portal.md#collect-client-id-and-tenant-id)
@@ -127,7 +127,7 @@ Wenn Sie die Azure-Funktion schreiben, sollten Sie ihrer Funktion diese Variable
 
 * **Eine NULL-Überprüfung für _adtInstanceUrl_:** Fügen Sie eine NULL-Überprüfung hinzu, und umschließen Sie Ihre Funktionslogik mit einem Try-Catch-Block, um alle Ausnahmen abzufangen.
 
-Nachdem einer Funktion diese Elemente hinzugefügt wurden, könnte Ihr Funktionscode wie im folgenden Beispiel aussehen.
+Nachdem einer Funktion diese Variablen hinzugefügt wurden, könnte Ihr Funktionscode wie im folgenden Beispiel aussehen.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs":::
 
@@ -155,7 +155,7 @@ Sie können auch den Basismandanten in den Anmeldeinformationsoptionen in Ihrem 
 
 ## <a name="other-credential-methods"></a>Andere Methoden für Anmeldeinformationen
 
-Wenn die oben genannten Authentifizierungsszenarien nicht die Anforderungen Ihrer App abdecken, können Sie andere Arten von Authentifizierung untersuchen, die auf der [Microsoft Identity Platform](../active-directory/develop/v2-overview.md#getting-started) angeboten werden. Die Dokumentation für diese Plattform behandelt zusätzliche Authentifizierungsszenarien, geordnet nach Anwendungstyp.
+Wenn die oben genannten Authentifizierungsszenarien nicht die Anforderungen Ihrer App abdecken, können Sie andere Arten von Authentifizierung untersuchen, die auf der [Microsoft Identity Platform](../active-directory/develop/v2-overview.md#getting-started) angeboten werden. Die Dokumentation für diese Plattform behandelt weitere Authentifizierungsszenarien, geordnet nach Anwendungstyp.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

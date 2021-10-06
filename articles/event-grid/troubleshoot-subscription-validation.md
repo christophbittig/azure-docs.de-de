@@ -2,13 +2,13 @@
 title: Azure Event Grid – Problembehandlung bei der Abonnementüberprüfung
 description: In diesem Artikel erfahren Sie, wie Sie Probleme bei Abonnementüberprüfungen beheben können.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 857760182675d5673a3b09495c2faaf7372a4164
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: 8db9d36b31c96187f985f98c4c2a1c79f4e58218
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94592939"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230492"
 ---
 # <a name="troubleshoot-azure-event-grid-subscription-validations"></a>Problembehandlung bei der Abonnementüberprüfung für Azure Event Grid
 Wenn bei der Erstellung eines Ereignisabonnements eine Fehlermeldung wie `The attempt to validate the provided endpoint https://your-endpoint-here failed. For more details, visit https://aka.ms/esvalidation` angezeigt wird, weist dies darauf hin, dass im Überprüfungshandshake ein Fehler aufgetreten ist. Überprüfen Sie Folgendes, um diesen Fehler zu beheben:

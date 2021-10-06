@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mit Azure Machine Learning einen neuen Azure Kubernetes Service-Cluster erstellen oder einen bestehenden AKS-Cluster an Ihren Arbeitsbereich anfügen können.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/16/2021
-ms.openlocfilehash: 7a0b2f24b10ace50d1e994284cb48b50799dfd57
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f7e2a3311f9540413880d20839f56a4932519f1c
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618189"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426357"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Erstellen und Anfügen eines Azure Kubernetes Service-Clusters
 
@@ -83,9 +83,6 @@ Wenn Sie einen Azure Kubernetes Service-Cluster mithilfe einer der folgenden Met
 Diese Methoden zum Erstellen eines AKS-Clusters verwenden die __Standardversion__ des Clusters. *Die Standardversion ändert sich im Laufe der Zeit*, wenn neue Kubernetes-Versionen veröffentlicht werden.
 
 Beim **Anfügen** an einen vorhandenen AKS-Cluster werden alle derzeit unterstützten AKS-Versionen unterstützt.
-
-> [!IMPORTANT]
-> Derzeit unterstützt Azure Machine Learning die Bereitstellung von Modellen in AKS Version **1.21.x**  nicht.
 
 > [!IMPORTANT]
 > Azure Kubernetes Service verwendet den [Blobfuse FlexVolume-Treiber](https://github.com/Azure/kubernetes-volume-drivers/blob/master/flexvolume/blobfuse/README.md) für die Versionen <=1.16 und den [Blob CSI-Treiber](https://github.com/kubernetes-sigs/blob-csi-driver/blob/master/README.md) für die Versionen >=1.17. Daher ist es wichtig, den [Webdienst nach dem Clusterupgrade erneut bereitzustellen oder zu aktualisieren](how-to-deploy-update-web-service.md), um die Bereitstellung für die richtige Blobfuse-Methode für die Clusterversion durchzuführen.

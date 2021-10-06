@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 678161e4eee7e954f1507c370560e6891850750b
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 54f0796d52d150db272e00c5cb66aa0c68a2e51c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115261"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129090987"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Azure Cosmos DB Java SDK v4 mit SQL-API-Konten
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -148,6 +148,14 @@ Hierbei handelt es sich um einen serverseitigen Fehler. Er gibt an, dass Sie den
 * **Implementieren von Backoff in getRetryAfterInMilliseconds-Intervallen**
 
     Es empfiehlt sich, die Last während Leistungstests so lange erhöhen, bis eine geringe Menge von Anforderungen gedrosselt wird. Wenn es sich um eine gedrosselte Anwendung handelt, sollte die Clientanwendung für das vom Server angegebene Wiederholungsintervall aussetzen. Durch das Aussetzen wird die geringstmögliche Wartezeit zwischen den Wiederholungsversuchen gewährleistet.
+
+### <a name="error-handling-from-java-sdk-reactive-chain"></a>Fehlerbehandlung über reaktive Java SDK-Kette
+
+Die Fehlerbehandlung über das Cosmos DB Java SDK ist wichtig, wenn es um die Anwendungslogik des Clients geht. Es gibt verschiedene, vom [Reactor Core-Framework](https://projectreactor.io/docs/core/release/reference/#error.handling) bereitgestellte Fehlerbehandlungsmechanismen, die in verschiedenen Szenarien verwendet werden können. Wir empfehlen Kunden, sich diese Fehlerbehandlungsoperatoren im Detail anzusehen und diejenigen zu verwenden, die am besten zu ihren Wiederholungslogikszenarien passen.
+
+> [!IMPORTANT]
+> Von der Verwendung des Operators [`onErrorContinue()`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#onErrorContinue-java.util.function.BiConsumer-) raten wir ab, weil er nicht in allen Szenarien unterstützt wird.
+> Beachten Sie, dass `onErrorContinue()` ein spezieller Operator ist, der das Verhalten Ihrer reaktiven Kette unklar machen kann. Er wird nicht auf Downstreamoperatoren, sondern auf Upstreamoperatoren angewendet und erfordert spezifische Operatorunterstützung, damit er funktioniert. Außerdem kann es vorkommen, dass der Bereich in Upstreamelementen unerwartet in Bibliothekscode integriert wird, was zu unbeabsichtigtem Verhalten führt. Weitere Details zu diesem speziellen Operator finden Sie in der [Dokumentation](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#onErrorContinue-java.util.function.BiConsumer-) zu `onErrorContinue()`.
 
 ### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Fehler beim Herstellen einer Verbindung mit dem Azure Cosmos DB-Emulator
 

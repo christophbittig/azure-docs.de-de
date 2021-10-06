@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: overview
 ms.date: 06/08/2021
-ms.openlocfilehash: 745a0b67bf2ac225f62b0e18cadc009a16007ab6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e9925b8c01cbaaeaf28815a7188118ff2060d507
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740941"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208018"
 ---
 # <a name="what-is-azure-data-factory"></a>Was ist Azure Data Factory?
 
@@ -32,7 +32,7 @@ Die Azure Data Factory-Plattform ist die richtige Lösung für solche Datenszena
 
 Außerdem können Sie Ihre transformierten Daten in Datenspeichern, z. B. Azure Synapse Analytics, veröffentlichen, damit sie von BI-Anwendungen (Business Intelligence) genutzt werden können. Über Azure Data Factory können Rohdaten letztendlich in aussagekräftigen Datenspeichern und Data Lakes organisiert und für bessere geschäftliche Entscheidungen genutzt werden.
 
-![Übersicht über Data Factory](media/data-flow/overview.png)
+:::image type="content" source="media/data-flow/overview.png" alt-text="Übersicht über Data Factory":::
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
@@ -60,7 +60,7 @@ Wenn Daten in einem zentralisierten Datenspeicher in der Cloud vorliegen, könne
 Falls Sie das manuelle Codieren von Transformationen vorziehen: ADF unterstützt externe Aktivitäten zur Ausführung Ihrer Transformationen mit Computediensten, z. B. HDInsight Hadoop, Spark, Data Lake Analytics und Machine Learning.
 
 ### <a name="cicd-and-publish"></a>CI/CD und Veröffentlichung
-[Data Factory verfügt über vollständige Unterstützung von CI/CD](continuous-integration-deployment.md) für Ihre Datenpipelines per Azure DevOps und GitHub. Dies ermöglicht Ihnen das inkrementelle Entwickeln und Bereitstellen Ihrer ETL-Prozesse vor der Veröffentlichung des fertigen Produkts. Nachdem die Rohdaten in einem für Unternehmen nutzbaren Format vorliegen, laden Sie sie mit Azure Data Warehouse, Azure SQL-Datenbank, Azure CosmosDB oder einer anderen Analyse-Engine, auf die Ihre Benutzer in ihren Business Intelligence-Tools verweisen können.
+[Data Factory verfügt über vollständige Unterstützung von CI/CD](continuous-integration-delivery.md) für Ihre Datenpipelines per Azure DevOps und GitHub. Dies ermöglicht Ihnen das inkrementelle Entwickeln und Bereitstellen Ihrer ETL-Prozesse vor der Veröffentlichung des fertigen Produkts. Nachdem die Rohdaten in einem für Unternehmen nutzbaren Format vorliegen, laden Sie sie mit Azure Data Warehouse, Azure SQL-Datenbank, Azure CosmosDB oder einer anderen Analyse-Engine, auf die Ihre Benutzer in ihren Business Intelligence-Tools verweisen können.
 ### <a name="monitor"></a>Überwachen
 Nachdem Sie Ihre Pipeline für die Datenintegration erfolgreich erstellt und bereitgestellt haben und einen geschäftlichen Nutzen aus den optimierten Daten ziehen können, können Sie die geplanten Aktivitäten und Pipelines auf Erfolgs- und Fehlerraten überwachen. Azure Data Factory bietet integrierte Unterstützung für die Pipelineüberwachung per Azure Monitor, API, PowerShell, Azure Monitor-Protokolle und Integritätsbereiche im Azure-Portal.
 

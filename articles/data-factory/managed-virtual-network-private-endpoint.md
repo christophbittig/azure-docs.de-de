@@ -7,15 +7,15 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions, devx-track-azurepowershell
-ms.date: 10/15/2021
-ms.openlocfilehash: 845860e8aaebf7d74f294135f8eec92a8146bd3c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/28/2021
+ms.openlocfilehash: f9c07abdfe512c2564fdfe1595f16db8a6372a8b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128627613"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230232"
 ---
-# <a name="azure-data-factory-managed-virtual-network-preview"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory (Vorschauversion)
+# <a name="azure-data-factory-managed-virtual-network"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -36,9 +36,6 @@ Vorteile der Verwendung eines verwalteten virtuellen Netzwerks:
 
 > [!IMPORTANT]
 >Derzeit wird das verwaltete virtuelle Netzwerk nur in derselben Region wie Azure Data Factory unterstützt.
-
-> [!Note]
->Da das verwaltete virtuelle Azure Data Factory-Netzwerk sich noch in der öffentlichen Vorschau befindet, gibt es keine SLA-Garantie.
 
 > [!Note]
 >Für eine vorhandene öffentliche Azure Integration Runtime-Instanz kann keine Umstellung auf eine Azure Integration Runtime-Instanz in einem verwalteten virtuellen Azure Data Factory-Netzwerk durchgeführt werden (und umgekehrt).
@@ -135,19 +132,20 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 ### <a name="supported-data-sources"></a>Unterstützte Datenquellen
 Die folgenden Datenquellen verfügen über native Unterstützung für private Endpunkte und können über Private Link eine Verbindung vom verwalteten virtuellen ADF-Netzwerk aus herstellen.
 - Azure Blob Storage (ohne Speicherkonto V1)
-- Azure Table Storage (ohne Speicherkonto V1)
-- Azure Files (ohne Speicherkonto V1)
-- Azure Data Lake Gen2
-- Azure SQL-Datenbank (ohne Azure SQL Managed Instance)
-- Azure Synapse Analytics
-- Azure Cosmos DB SQL
-- Azure-Schlüsseltresor
-- Azure Private Link-Dienst
-- Azure Search
+- Azure Cognitive Search
+- SQL-API von Azure Cosmos DB
+- Azure Data Lake Storage Gen2
+- Azure Database for MariaDB
 - Azure Database for MySQL
 - Azure Database for PostgreSQL
-- Azure Database for MariaDB
+- Azure Files (ohne Speicherkonto V1)
+- Azure-Schlüsseltresor
 - Azure Machine Learning
+- Azure Private Link-Dienst
+- Azure Purview
+- Azure SQL-Datenbank (ohne Azure SQL Managed Instance)
+- Azure Synapse Analytics
+- Azure Table Storage (ohne Speicherkonto V1)
 
 > [!Note]
 > Sie können weiterhin über das öffentliche Netzwerk auf alle Datenquellen zugreifen, die von Data Factory unterstützt werden.

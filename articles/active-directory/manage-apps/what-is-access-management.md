@@ -1,5 +1,6 @@
 ---
-title: Verwalten des Zugriffs auf Apps mit Azure AD
+title: Verwalten des Zugriffs auf Apps
+titleSuffix: Azure AD
 description: Erläutert, wie Azure Active Directory es Organisationen ermöglicht, die Apps festzulegen, auf die der jeweilige Benutzer Zugriff hat.
 services: active-directory
 author: davidmu1
@@ -8,19 +9,21 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2021
+ms.date: 09/23/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 584437c13168303630585c67ee853b135a2c09a5
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 89acfa0c1074d170dd0b0b9fb19f227a4e0c21ab
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435220"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061046"
 ---
-# <a name="managing-access-to-apps"></a>Verwalten des Zugriffs auf Apps
+# <a name="manage-access-to-apps-in-azure-active-directory"></a>Verwalten des Zugriffs auf Apps in Azure Active Directory
 
-Die fortwährende Zugriffsverwaltung sowie die Nutzungsauswertung und Berichterstellung bleiben auch nach Integration einer Anwendung in das Identitätssystem der Organisation eine Herausforderung. In vielen Fällen müssen IT-Administratoren oder das Helpdesk eine fortlaufende aktive Rolle in der Verwaltung des Zugriffs auf Ihre Apps ausüben. Manchmal erfolgt die Zuweisung durch das allgemeine oder abteilungsinterne IT-Team. Oft soll die Zuweisungsentscheidung an einen kommerziellen Entscheidungsträger delegiert werden, da die IT-Abteilung ohnehin dessen Genehmigung einholen muss.  Andere Organisationen investieren in die Integration in ein vorhandenes automatisiertes Identitäts- und Zugriffsverwaltungssystem wie rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) oder attributbasierte Zugriffssteuerung (Attribute-Based Access Control, ABAC). Sowohl die Integration als auch die Entwicklung der Regeln sind häufig spezifisch und kostspielig. Auch die Überwachung oder Berichterstattung stellt bei beiden Verwaltungsansätzen eine eigene Investition dar, die komplex und teuer ist.
+Die fortwährende Zugriffsverwaltung sowie die Nutzungsauswertung und Berichterstellung bleiben auch nach Integration einer Anwendung in das Identitätssystem der Organisation eine Herausforderung. In vielen Fällen müssen IT-Administratoren oder der Helpdesk eine ständige aktive Rolle bei der Verwaltung des Zugriffs auf Ihre Apps ausüben. Manchmal erfolgt die Zuweisung durch das allgemeine oder abteilungsinterne IT-Team. Oft soll die Zuweisungsentscheidung an einen kommerziellen Entscheidungsträger delegiert werden, da die IT-Abteilung ohnehin dessen Genehmigung einholen muss.  
+
+Andere Organisationen investieren in die Integration in ein vorhandenes automatisiertes Identitäts- und Zugriffsverwaltungssystem wie rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) oder attributbasierte Zugriffssteuerung (Attribute-Based Access Control, ABAC). Sowohl die Integration als auch die Entwicklung der Regeln sind häufig spezifisch und kostspielig. Auch die Überwachung oder Berichterstattung stellt bei beiden Verwaltungsansätzen eine eigene Investition dar, die komplex und teuer ist.
 
 ## <a name="how-does-azure-active-directory-help"></a>In welcher Weise hilft Azure Active Directory?
 
@@ -34,7 +37,10 @@ Die Anwendungszuweisung von Azure AD konzentriert sich auf zwei primäre Zuordn
 
 * **Einzelne Zuweisung** : Ein IT-Administrator mit den Verzeichnisberechtigungen eines globalen Administrators kann einzelne Benutzerkonten auswählen und ihnen Zugriff auf die Anwendung gewähren.
 
-* **Gruppenbasierte Zuweisung (setzt Azure AD Premium P1 oder P2 voraus)** : Ein IT-Administrator mit der Verzeichnisberechtigung „Globaler Administrator“ kann der Anwendung eine Gruppe zuweisen. Die Zugriffsmöglichkeit bestimmter Benutzer ergibt sich daraus, ob diese zum Zeitpunkt des Zugriffs auf die Anwendung Mitglied der festgelegten Gruppe sind. Mit anderen Worten: Ein Administrator kann im Grunde folgende Zuweisungsregel erstellen: „Jedes derzeitige Mitglied der zugewiesenen Gruppe hat Zugriff auf die Anwendung“. Mit dieser Zuweisungsoption können Administratoren alle zur Verfügung stehenden Optionen zur Azure AD-Gruppenverwaltung nutzen, einschließlich [attributbasierter dynamischer Gruppen](../fundamentals/active-directory-groups-create-azure-portal.md), externer Systemgruppen (z.B. lokale Active Directory- oder Workday-Instanz) oder Gruppen mit Administrator- bzw. mit Self-Service-Verwaltung. Eine einzelne Gruppe kann problemlos mehreren Apps zugewiesen werden, sodass sichergestellt wird, dass Anwendungen mit Zuweisungsaffinität dieselben Zuweisungsregeln verwenden, um die Verwaltungskomplexität insgesamt zu verringern. Beachten Sie, dass geschachtelte Gruppenmitgliedschaften für die gruppenbasierte Zuordnung zu Anwendungen derzeit nicht unterstützt werden.
+* **Gruppenbasierte Zuweisung (setzt Azure AD Premium P1 oder P2 voraus)** : Ein IT-Administrator mit der Verzeichnisberechtigung „Globaler Administrator“ kann der Anwendung eine Gruppe zuweisen. Die Zugriffsmöglichkeit bestimmter Benutzer ergibt sich daraus, ob diese zum Zeitpunkt des Zugriffs auf die Anwendung Mitglied der festgelegten Gruppe sind. Mit anderen Worten: Ein Administrator kann im Grunde folgende Zuweisungsregel erstellen: „Jedes derzeitige Mitglied der zugewiesenen Gruppe hat Zugriff auf die Anwendung“. Mit dieser Zuweisungsoption können Administratoren alle zur Verfügung stehenden Optionen zur Azure AD-Gruppenverwaltung nutzen, einschließlich [attributbasierter dynamischer Gruppen](../fundamentals/active-directory-groups-create-azure-portal.md), externer Systemgruppen (z.B. lokale Active Directory- oder Workday-Instanz) oder Gruppen mit Administrator- bzw. mit Self-Service-Verwaltung. Eine einzelne Gruppe kann problemlos mehreren Apps zugewiesen werden, sodass sichergestellt wird, dass Anwendungen mit Zuweisungsaffinität dieselben Zuweisungsregeln verwenden, um die Verwaltungskomplexität insgesamt zu verringern.
+
+>[!NOTE]
+>Derzeit werden Gruppenmitgliedschaften für die gruppenbasierte Zuordnung zu Anwendungen nicht unterstützt.
 
 Durch Einsatz dieser beiden Zuweisungsmodi können Administratoren jeden gewünschten Ansatz zur Zuweisungsverwaltung realisieren.
 
@@ -44,11 +50,11 @@ Bei bestimmten Anwendungstypen haben Sie die Möglichkeit, die Zuweisung von Ben
 
 * Anwendungen, die für das einmalige Anmelden (SSO) im Verbund mit SAML-basierter Authentifizierung konfiguriert sind
 * Anwendungsproxyanwendungen mit Azure Active Directory-Vorauthentifizierung
-* Anwendungen, die auf der Azure AD-Anwendungsplattform mit OAuth 2.0/OpenID Connect-Authentifizierung erstellt wurden (nachdem ein Benutzer oder Administrator seine Zustimmung für die Anwendung erteilt hat). Bestimmte Unternehmensanwendungen bieten zusätzliche Mechanismen, mit denen gesteuert werden kann, wer sich anmelden darf.
+* Anwendungen, die auf der Azure AD-Anwendungsplattform bei Verwendung der OAuth 2.0/OpenID Connect-Authentifizierung erstellt werden (nachdem ein Benutzer oder Administrator seine Zustimmung für die Anwendung erteilt hat). Bestimmte Unternehmensanwendungen bieten mehr Kontrolle darüber, wer sich anmelden darf.
 
-Wenn eine Benutzerzuweisung erforderlich ist, können sich nur die Benutzer anmelden, die Sie der Anwendung zuweisen (durch direkte Benutzerzuweisung oder basierend auf der Gruppenmitgliedschaft). Sie können auf die App auf ihrer Seite „Meine Apps“ oder über einen direkten Link zugreifen.
+Wenn eine Benutzerzuweisung erforderlich ist, können sich nur die Benutzer anmelden, die Sie der Anwendung zuweisen (durch direkte Benutzerzuweisung oder basierend auf der Gruppenmitgliedschaft). Sie können im Portal „Meine Apps“ oder über einen direkten Link auf die App zugreifen.
 
-Wenn die Benutzerzuweisung nicht erforderlich ist, wird die App nicht zugewiesenen Benutzern nicht in „Meine Apps“ angezeigt. Sie können sich jedoch weiterhin bei der Anwendung selbst anmelden (auch als SP-initiierte Anmeldung bezeichnet) oder auf der Seite **Eigenschaften** der Anwendung die **Benutzerzugriffs-URL** verwenden (auch als IDP-initiierte Anmeldung bezeichnet).
+Wenn die Benutzerzuweisung nicht erforderlich ist, wird die App nicht zugewiesenen Benutzern nicht in „Meine Apps“ angezeigt. Sie können sich jedoch weiterhin bei der Anwendung selbst anmelden (auch als SP-initiierte Anmeldung bezeichnet) oder auf der Seite **Eigenschaften** der Anwendung die **Benutzerzugriffs-URL** verwenden (auch als IDP-initiierte Anmeldung bezeichnet). Weitere Informationen zum Anfordern von Benutzerzuweisungskonfigurationen finden Sie unter [Konfigurieren einer Anwendung](add-application-portal-configure.md).
 
 Diese Einstellung hat keine Auswirkung darauf, ob eine Anwendung in „Meine Apps“ angezeigt wird. Anwendungen werden im Zugriffsbereich „Meine Apps“ von Benutzern angezeigt, sobald Sie der Anwendung einen Benutzer oder eine Gruppe zugewiesen haben.
 
@@ -81,20 +87,20 @@ Mit Azure AD können Anwendungen wie Salesforce beispielsweise für einmaliges 
 
 * Zum Aktivieren des Ausnahmemechanismus könnte für jede Rolle eine Self-Service-Gruppe erstellt werden. Die Gruppe „Salesforce Marketingausnahme“ kann beispielsweise als Self-Service-Gruppe erstellt werden. Diese Gruppe kann der Salesforce-Marketingrolle zugewiesen und das Leadershipteam der Marketingabteilung als deren Besitzer festgelegt werden. Mitglieder des Leadershipteams der Marketingabteilung könnten somit Benutzer hinzufügen oder entfernen, eine Beitrittsrichtlinie einrichten oder sogar einzelne Beitrittsanfragen genehmigen oder verweigern. Dieser Mechanismus wird auch durch ein für Information-Worker angemessenes Verfahren begünstigt, bei dem keine spezielle Schulung für Besitzer oder Mitglieder erforderlich ist.
 
-In diesem Fall würde allen zugewiesenen Benutzern automatisch Salesforce bereitgestellt, und bei einem Wechsel in andere Gruppen würde ihre Rollenzuweisung in Salesforce aktualisiert. Die Benutzer könnten Salesforce über „Meine Apps“, Office-Webclients oder sogar durch Aufrufen der Salesforce-Anmeldeseite innerhalb der Organisation ermitteln und darauf zugreifen. Administratoren könnten in diesem Fall den Nutzungs- und Zuweisungszustand mithilfe von Azure AD-Berichten leicht anzeigen.
+In diesem Fall werden alle zugewiesenen Benutzer automatisch für Salesforce bereitgestellt. Da sie unterschiedlichen Gruppen hinzugefügt werden, werden die Rollenzuweisungen in Salesforce aktualisiert. Die Benutzer können Salesforce über „Meine Apps“, Office-Webclients oder durch Aufrufen der Salesforce-Anmeldeseite innerhalb der Organisation ermitteln und darauf zugreifen. Administratoren können mithilfe von Azure AD-Berichten den Nutzungs- und Zuweisungsstatus leicht anzeigen.
 
-Administratoren können den [bedingten Zugriff von Azure AD](../conditional-access/concept-conditional-access-users-groups.md) einsetzen, um Zugriffsrichtlinien für bestimmte Rollen festzulegen. In diesen Richtlinien kann enthalten sein, ob der Zugriff von außerhalb der Unternehmensumgebung erlaubt ist, und sogar, ob die mehrstufige Authentifizierung oder bestimmte Geräteanforderungen für verschiedene Anwendungsfälle zur Anwendung kommen.
+Administratoren können den [bedingten Zugriff von Azure AD](../conditional-access/concept-conditional-access-users-groups.md) einsetzen, um Zugriffsrichtlinien für bestimmte Rollen festzulegen. In diesen Richtlinien kann enthalten sein, ob der Zugriff von außerhalb der Unternehmensumgebung erlaubt ist, und sogar, ob für den Zugriff die mehrstufige Authentifizierung oder bestimmte Geräteanforderungen für verschiedene Anwendungsfälle zur Anwendung kommen.
 
 ## <a name="access-to-microsoft-applications"></a>Zugriff auf Microsoft-Anwendungen
 
-Microsoft-Anwendungen (z. B. Exchange, SharePoint, Yammer usw.) werden nicht genau auf die gleiche Weise zugewiesen und verwaltet wie SaaS-Anwendungen von Drittanbietern oder andere Anwendungen, die Sie für einmaliges Anmelden mit Azure AD integrieren.
+Microsoft-Anwendungen (z. B. Exchange, SharePoint, Yammer usw.) werden etwas anders zugewiesen und verwaltet wie SaaS-Anwendungen von Drittanbietern oder andere Anwendungen, die Sie für einmaliges Anmelden mit Azure AD integrieren.
 
 Es gibt drei Hauptmethoden, über die ein Benutzer Zugriff auf eine von Microsoft veröffentlichte Anwendung erhalten kann.
 
 * Für Anwendungen in Microsoft 365 oder anderen kostenpflichtigen Sammlungen erhalten Benutzer Zugriff über eine **Lizenzzuweisung** direkt in ihrem Benutzerkonto oder über eine Gruppe mithilfe der Funktion für gruppenbasierte Lizenzzuweisung.
-* Bei Anwendungen, die Microsoft oder ein Drittanbieter kostenlos für jedermann veröffentlicht, erhalten Benutzer möglicherweise Zugriff über [Benutzerzustimmung](configure-user-consent.md). Dies bedeutet, dass sie sich mit ihrem Geschäfts-, Schul- oder Unikonto von Azure AD bei der Anwendung anmelden und dieser den Zugriff auf eine begrenzte Menge von Daten in ihrem Konto gewähren.
+* Bei Anwendungen, die Microsoft oder ein Drittanbieter kostenlos für alle Benutzer veröffentlicht, erhalten Benutzer möglicherweise Zugriff über die [Benutzerzustimmung](configure-user-consent.md). Die Benutzer melden sich mit ihrem Geschäfts-, Schul- oder Unikonto von Azure AD bei der Anwendung an und gewähren dieser den Zugriff auf eine begrenzte Menge von Daten in ihrem Konto.
 
-* Für Anwendungen, die Microsoft oder ein Drittanbieter kostenlos für alle Benutzer veröffentlicht, können Benutzer auch Zugriff über eine [Administratorzustimmung](manage-consent-requests.md) erhalten. Dies bedeutet, dass ein Administrator festgelegt hat, dass die Anwendung von allen Personen in seiner Organisation verwendet werden kann. Daher meldet er sich mit einem globalen Administratorkonto bei der Anwendung an und gewährt allen Benutzer in der Organisation Zugriff.
+* Bei Anwendungen, die Microsoft oder ein Drittanbieter kostenlos für alle Benutzer veröffentlicht, können Benutzer auch Zugriff über eine [Administratorzustimmung](manage-consent-requests.md) erhalten. Dies bedeutet, dass ein Administrator festgelegt hat, dass die Anwendung von allen Personen in seiner Organisation verwendet werden kann. Daher meldet er sich mit einem globalen Administratorkonto bei der Anwendung an und gewährt allen Benutzer in der Organisation Zugriff.
 
 Bei einigen Anwendungen werden diese Methoden kombiniert. Bestimmte Microsoft-Anwendungen gehören beispielsweise zu einem Microsoft 365-Abonnement, erfordern aber trotzdem eine Einwilligung.
 

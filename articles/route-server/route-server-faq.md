@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 09/01/2021
+ms.date: 09/23/2021
 ms.author: duau
-ms.openlocfilehash: e17d49654b3c658ed133686e11d70c72b7f7f3b8
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: fa5ea8f191c0b2ea9c7db483eb4d7b9c5a679be0
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426020"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094365"
 ---
 # <a name="azure-route-server-faq"></a>Häufig gestellte Fragen zu Azure Route Server
 
@@ -48,6 +48,10 @@ Nein. Azure Route Server tauscht nur BGP-Routen mit Ihrem virtuellen Netzwerkger
 
 Azure Route Server muss die Konnektivität mit dem Back-End-Dienst sicherstellen, der die Route Server-Konfiguration verwaltet, da eine solche öffentliche IP-Adresse erforderlich ist. 
 
+### <a name="does-azure-route-server-support-ipv6"></a>Unterstützt Azure Route Server IPv6?
+
+Nein. IPv6-Unterstützung wird zu einem späteren Zeitpunkt hinzugefügt. 
+
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-how-does-it-handle-them"></a>Was passiert, wenn Azure Route Server die gleiche Route von mehreren NVAs empfängt?
 
 Wenn die Route die gleiche AS-Pfadlänge aufweist, werden von Azure Route Server mehrere Kopien der Route (mit jeweils einem anderen nächsten Hop) zu den virtuellen Computern im virtuellen Netzwerk programmiert. Wenn die VMs Datenverkehr an das Ziel dieser Route senden, führen die VM-Hosts ein ECMP-Routing (Equal-Cost Multi Path) aus. Wenn jedoch eine NVA die Route mit einer kürzeren AS-Pfadlänge sendet als andere NVAs, wird von Azure Route Server nur die Route, bei der der nächste Hop auf diese NVA festgelegt ist, zu den virtuellen Computern im virtuellen Netzwerk programmiert.
@@ -55,6 +59,9 @@ Wenn die Route die gleiche AS-Pfadlänge aufweist, werden von Azure Route Server
 ### <a name="does-azure-route-server-preserve-the-bgp-communities-of-the-route-it-receives"></a>Werden von Azure Route Server die BGP-Communitys der empfangenen Route beibehalten?
 
 Ja. Von Azure Route Server wird die Route ohne Änderungen an den BGP-Communitys verteilt.
+
+### <a name="what-is-the-bgp-timer-setting-of-azure-route-server"></a>Wie ist die BGP-Timereinstellung von Azure Route Server?
+Der Keep-Alive-Timer ist auf 60 Sekunden und der Hold-Down-Timer auf 180 Sekunden festgelegt.
 
 ### <a name="what-autonomous-system-numbers-asns-can-i-use"></a>Welche autonomen Systemnummern (ASNs) kann ich verwenden?
 
@@ -71,9 +78,13 @@ Die folgenden ASNs sind für Azure oder IANA reserviert:
 
 Nein, Azure Route Server unterstützt nur 16-Bit-ASNs (2 Bytes).
 
-### <a name="can-i-configure-a-user-defined-route-udr-in-the-azurerouteserver-subnet"></a>Kann ich eine benutzerdefinierte Route (User Defined Route, UDR) im Subnetz „AzureRouteServer“ konfigurieren?
+### <a name="can-i-associate-a-user-defined-route-udr-to-the-routeserversubnet"></a>Kann ich dem RouteServerSubnet eine benutzerdefinierte Route (User Defined Route, UDR) zuordnen?
 
-Nein, Azure Route Server unterstützt keine Konfiguration benutzerdefinierter Routen im Subnetz „AzureRouteServer“.
+Nein, Azure Route Server unterstützt die Konfiguration benutzerdefinierter Routen im RouteServerSubnet nicht.
+
+### <a name="can-i-associate-a-network-security-group-nsg-to-the-routeserversubnet"></a>Kann ich dem RouteServerSubnet eine Netzwerksicherheitsgruppe (NSG) zuordnen?
+
+Nein, Azure Route Server unterstützt die Zuordnung von NSGs zum RouteServerSubnet nicht.
 
 ### <a name="can-i-peer-two-route-servers-in-two-peered-virtual-networks-and-enable-the-nvas-connected-to-the-route-servers-to-talk-to-each-other"></a>Kann ich zwei Routenserver in zwei virtuellen Netzwerken mit Peering verbinden und den mit den Routenservern verbundenen NVAs ermöglichen, miteinander zu kommunizieren? 
 

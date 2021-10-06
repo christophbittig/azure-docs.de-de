@@ -3,19 +3,16 @@ title: Verwenden von Azure Monitor-Metriken mit Azure Functions
 description: Hier erfahren Sie, wie Sie Azure Monitor-Metriken zum Anzeigen und Abfragen von Azure Functions-Telemetriedaten verwenden, die von Azure Application Insights gesammelt und gespeichert werden.
 ms.topic: how-to
 ms.date: 07/4/2021
-ms.openlocfilehash: b5f0b483295cccff8caf97503233e1e7881173cf
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 8f9e80a50e3041ea37d765938613563b31f16af0
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568596"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215755"
 ---
 # <a name="using-azure-monitor-metric-with-azure-functions"></a>Verwenden von Azure Monitor-Metriken mit Azure Functions
 
 Azure Functions ist in Azure Monitor-Metriken integriert und ermöglicht Ihnen die Analyse von Metriken, die während der Ausführung von Ihrer Funktions-App generiert werden. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor-Metriken](../azure-monitor/essentials/data-platform-metrics.md). Diese Metriken geben Aufschluss darüber, wie Ihre Funktions-App auf der App Service-Plattform ausgeführt wird. Sie können Daten zum Ressourcenverbrauch überprüfen, mit deren Hilfe die Kosten des Verbrauchstarifs abgeschätzt werden. Um detaillierte Telemetriedaten Ihrer Funktionsausführungen (einschließlich Protokolldaten) zu untersuchen, sollten Sie auch [Application Insights](functions-monitoring.md) in Azure Monitor verwenden. 
-
-> [!NOTE]
-> Azure Monitor-Metriken werden derzeit nicht unterstützt, wenn Ihre Funktions-App unter Linux in einem Verbrauchstarif ausgeführt wird.
 
 ## <a name="available-metrics"></a>Verfügbare Metriken
 

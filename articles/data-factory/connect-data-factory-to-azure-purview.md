@@ -4,16 +4,15 @@ description: Erfahren Sie, wie Sie eine Verbindung zwischen einer Data Factory u
 ms.author: jingwang
 author: linda33wj
 ms.service: data-factory
-ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions
-ms.date: 08/24/2021
-ms.openlocfilehash: e38c990622806e5e769626acb84377fc468a25a2
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.date: 09/27/2021
+ms.openlocfilehash: 5d5b1ed8a20bc459370a9bb7e437e1f5c977714d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966504"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217983"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Herstellen einer Verbindung zwischen einer Data Factory und Azure Purview (Vorschau)
 
@@ -42,7 +41,9 @@ So stellen Sie die Verbindung über die Erstellungsbenutzeroberfläche für Data
 
 3. Nachdem die Verbindung hergestellt wurde, wird der Name des Purview-Kontos auf der Registerkarte **Purview-Konto** angezeigt.
 
-Die Purview-Verbindungsinformationen werden in der Data Factory-Ressource wie im folgenden Beispiel gespeichert. Wenn Sie die Verbindung programmgesteuert herstellen möchten, können Sie die Data Factory aktualisieren und die Einstellungen vom Typ `purviewConfiguration` hinzufügen.
+Wenn Ihr Purview-Konto durch eine Firewall geschützt ist, erstellen Sie die verwalteten privaten Endpunkte für Purview. Erfahren Sie mehr darüber, wie Sie Data Factory [Zugriff auf ein abgesichertes Purview-Konto](how-to-access-secured-purview-account.md) ermöglichen. Sie können dies entweder während der ersten Verbindung durchführen oder eine bestehende Verbindung später bearbeiten.
+
+Die Purview-Verbindungsinformationen werden in der Data Factory-Ressource wie im folgenden Beispiel gespeichert. Wenn Sie die Verbindung programmgesteuert herstellen möchten, können Sie die Data Factory aktualisieren und die Einstellungen vom Typ `purviewConfiguration` hinzufügen. Wenn Sie die Herkunft aus SSIS-Aktivitäten pushen möchten, fügen Sie zusätzlich ein `catalogUri`-Tag hinzu.
 
 ```json
 {
@@ -55,8 +56,11 @@ Die Purview-Verbindungsinformationen werden in der Data Factory-Ressource wie im
             "purviewResourceId": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupname>/providers/Microsoft.Purview/accounts/<PurviewAccountName>"
         }
     },
-    "identity": {...},
     ...
+    "identity": {...},
+    "tags": {
+        "catalogUri": "<PurviewAccountName>.catalog.purview.azure.com //Note: used for SSIS lineage only"
+    }
 }
 ```
 
@@ -70,15 +74,26 @@ Die verwaltete Identität für Data Factory wird verwendet, um Pushvorgänge fü
 
 - Weisen Sie für Purview-Konten, die **am oder nach dem 18. August 2021** erstellt wurden, der verwalteten Identität für Data Factory die Rolle **Datenkurator** für Ihre Purview-**Stammsammlung** zu. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Purview](../purview/catalog-permissions.md) und unter [Hinzufügen von Rollen und Einschränken des Zugriffs über Sammlungen](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
 
-    Beim Herstellen einer Verbindung zwischen Data Factory und Purview über die Erstellungsbenutzeroberfläche versucht ADF, eine solche Rollenzuweisung automatisch hinzuzufügen. Wenn Sie für die Purview-Stammsammlung die Rolle **Sammlungsadministrator** haben, wird dieser Vorgang erfolgreich durchgeführt.
+    Beim Herstellen einer Verbindung zwischen Data Factory und Purview über die Erstellungsbenutzeroberfläche versucht ADF, eine solche Rollenzuweisung automatisch hinzuzufügen. Wenn Sie die Rolle **Sammlungsadministratoren** für die Purview-Stammsammlung innehaben und über Ihr Netzwerk Zugriff auf das Purview-Konto haben, wird dieser Vorgang erfolgreich ausgeführt.
 
 - Weisen Sie für Purview-Konten, die **vor dem 18. August 2021** erstellt wurden, der verwalteten Identität für Data Factory die in Azure integrierte Rolle [**Datenkurator für Purview**](../role-based-access-control/built-in-roles.md#purview-data-curator) für Ihr Purview-Konto zu. Weitere Informationen zu Legacyberechtigungen für die Zugriffssteuerung in Azure Purview finden Sie [hier](../purview/catalog-permissions.md#legacy-permission-guide).
 
     Beim Herstellen einer Verbindung zwischen Data Factory und Purview über die Erstellungsbenutzeroberfläche versucht ADF, eine solche Rollenzuweisung automatisch hinzuzufügen. Wenn Sie für das Purview-Konto die in Azure integrierte Rolle **Besitzer** oder **Benutzerzugriffsadministrator** haben, wird dieser Vorgang erfolgreich durchgeführt.
 
-Möglicherweise wird die folgende Warnung angezeigt, wenn Sie die Berechtigung zum Lesen von Purview-Rollenzuweisungsinformationen haben und die erforderliche Rolle nicht zugewiesen wird. Vergewissern Sie sich, dass die Verbindung für das pipelinebasierte Pushen von Herkunftsinformationen ordnungsgemäß festgelegt wurde. Wechseln Sie zu Ihrem Purview-Konto, und überprüfen Sie, ob der verwalteten Identität für Data Factory die Rolle **Datenkurator für Purview** zugewiesen wurde. Fügen Sie die Rollenzuweisung manuell hinzu, wenn dies nicht der Fall ist.
+## <a name="monitor-purview-connection"></a>Überwachen der Purview-Verbindung
 
-:::image type="content" source="./media/data-factory-purview/register-purview-account-warning.png" alt-text="Screenshot der Warnung beim Registrieren eines Purview-Kontos":::
+Sobald die Data Factory mit einem Purview-Konto verbunden wurde, wird die folgende Seite mit Details zu den aktivierten Integrationsfunktionen angezeigt.
+
+:::image type="content" source="./media/data-factory-purview/monitor-purview-connection-status.png" alt-text="Screenshot: Überwachen des Integrationsstatus zwischen Azure Data Factory und Purview.":::
+
+Für **Datenherkunft – Pipeline** kann einer der folgenden Status angezeigt werden:
+
+- **Verbunden**: Die Data Factory wurde erfolgreich mit dem Purview-Konto verbunden. Das bedeutet, dass Data Factory einem Purview-Konto zugeordnet ist und über die Berechtigung zum Pushen der Herkunft verfügt. Wenn Ihr Purview-Konto durch eine Firewall geschützt ist, müssen Sie auch sicherstellen, dass die Integration Runtime, die zum Ausführen der Aktivitäten und Durchführen von Pushbenachrichtigungen für die Herkunft verwendet wird, das Purview-Konto erreichen kann. Weitere Informationen finden Sie unter [Zugriff auf ein gesichertes Azure Purview-Konto von Azure Data Factory aus](how-to-access-secured-purview-account.md).
+- **Getrennt**: Die Data Factory kann die Herkunft nicht an Purview pushen, da der verwalteten Identität der Data Factory nicht die Rolle als Purview-Datenkurator gewährt wird. Wechseln Sie zum Beheben dieses Problems zu Ihrem Purview-Konto, um die Rollenzuweisungen zu überprüfen, und gewähren Sie die Rolle ggf. manuell. Weitere Informationen finden Sie im Abschnitt zum [Einrichten der Authentifizierung](#set-up-authentication).
+- **Unbekannt**: Data Factory kann des Status nicht feststellen. Mögliche Gründe:
+
+    - Das Purview-Konto ist von Ihrem aktuellen Netzwerk aus nicht erreichbar, da das Konto durch eine Firewall geschützt ist. Sie können die ADF-Benutzeroberfläche stattdessen über ein privates Netzwerk mit Konnektivität zu Ihrem Purview-Konto aufrufen.
+    - Sie haben keine Berechtigung zum Überprüfen von Rollenzuweisungen für das Purview-Konto. Sie können sich an den Purview-Kontoadministrator wenden, um die Rollenzuweisungen für Sie überprüfen zu lassen. Weitere Informationen zur benötigten Purview-Rolle finden Sie im Abschnitt zum [Einrichten der Authentifizierung](#set-up-authentication).
 
 ## <a name="report-lineage-data-to-azure-purview"></a>Übermitteln von Herkunftsdaten an Azure Purview
 
@@ -94,4 +109,4 @@ Sobald Sie die Data Factory mit einem Purview-Konto verbunden haben, können Sie
 
 [Ermitteln und Erkunden von Daten in ADF mithilfe von Purview](how-to-discover-explore-purview-data.md)
 
-[Azure Purview: Leitfaden zur Datenkatalogherkunft](../purview/catalog-lineage-user-guide.md)
+[Zugreifen auf ein geschütztes Purview-Konto](how-to-access-secured-purview-account.md)

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 08/20/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: d3317bafa2ff03e83bd79e9a3efa0ecfaffd4124
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 43358ec8c79e09d0701a098a2bd992f2cee8b23f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122752805"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378579"
 ---
 | Resource | Begrenzung |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -49,4 +49,4 @@ ms.locfileid: "122752805"
 <sup>8</sup>Dieser Grenzwert gilt nur für den Tarif „Consumption“. In diesen Kategorien gibt es keine Grenzwerte für andere Tarife.<br/>
 <sup>9</sup> Gilt für nur den Tarif „Consumption“. Enthält eine Abfragezeichenfolge der Länge bis zu 2048 Bytes.<br/>
 <sup>10</sup> Wenden Sie sich an den [Support](https://azure.microsoft.com/support/options/), wenn dieser Grenzwert erhöht werden soll.<br/>
-<sup>11</sup> Selbstgehostete Gateways werden nur in den Tarifen „Developer“ und „Premium“ unterstützt. Der Grenzwert gilt für die Anzahl von [selbstgehosteten Gatewayressourcen](/rest/api/apimanagement/2020-06-01-preview/gateway). Wenden Sie sich an den [Support](https://azure.microsoft.com/support/options/), um diesen Grenzwert zu erhöhen. Beachten Sie, dass die Anzahl von Knoten (oder Replikaten), die einer selbstgehosteten Gatewayressource zugeordnet sind, im Premium-Tarif unbegrenzt ist und im Developer-Tarif auf einen einzelnen Knoten begrenzt ist.
+<sup>11</sup> Selbstgehostete Gateways werden nur in den Tarifen „Developer“ und „Premium“ unterstützt. Der Grenzwert gilt für die Anzahl von [selbstgehosteten Gatewayressourcen](/rest/api/apimanagement/2021-04-01-preview/gateway). Wenden Sie sich an den [Support](https://azure.microsoft.com/support/options/), um diesen Grenzwert zu erhöhen. Beachten Sie, dass die Anzahl von Knoten (oder Replikaten), die einer selbstgehosteten Gatewayressource zugeordnet sind, im Premium-Tarif unbegrenzt ist und im Developer-Tarif auf einen einzelnen Knoten begrenzt ist.

@@ -10,35 +10,35 @@ ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 07/06/2021
-ms.openlocfilehash: f5822a3d5594388627858be22ca9bbc0a43c1739
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.date: 09/23/2021
+ms.openlocfilehash: 46cfef6e2a226e6eb3c369b46a1214943c998bc1
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113361079"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059262"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Verwenden von schreibgeschützten Replikaten zum Lesen schreibgeschützter Abfrageworkloads
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Als Teil der [Hochverfügbarkeitsarchitektur](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) wird jede Datenbank, jeder Pool für elastische Datenbanken und jede verwaltete Instanz der Dienstebenen „Premium“ und „Unternehmenskritisch“ automatisch mit einem primären Replikat mit Lese-/Schreibzugriff und mehreren sekundären schreibgeschützten Replikaten bereitgestellt. Die sekundären Replikate werden mit derselben Computegröße wie das primäre Replikat bereitgestellt. Die *horizontale Leseskalierung* ermöglicht es Ihnen, schreibgeschützte Workloads mithilfe der Computekapazität eines der schreibgeschützten Replikate auszulagern, anstatt sie auf dem Replikat mit Lese-/Schreibzugriff auszuführen. Auf diese Weise können einige schreibgeschützte Workloads von der Hauptworkload mit Lesen- und Schreibvorgängen isoliert werden, ohne ihre Leistung zu beeinträchtigen. Die Funktion ist für Anwendungen vorgesehen, die logisch getrennte, schreibgeschützte Workloads (z. B. zur Analyse) enthalten. In den Diensttarifen Premium und Unternehmenskritisch können Anwendungen Leistungsvorteile erzielen, die diese zusätzliche Kapazität ohne zusätzliche Kosten nutzen.
 
-Die *horizontale Leseskalierung* ist auch auf der Dienstebene Hyperscale verfügbar, wenn mindestens ein sekundäres Replikat erstellt wird. Mehrere sekundäre Replikate können für einen Lastenausgleich schreibgeschützter Workloads verwendet werden, wenn mehr Ressourcen erforderlich sind, als auf einem sekundären Replikat zur Verfügung stehen.
+Die *horizontale Leseskalierung* ist auch auf der Dienstebene „Hyperscale“ verfügbar, wenn mindestens ein [sekundäres Replikat](service-tier-hyperscale-replicas.md) hinzugefügt wird. Sekundäre [benannte Hyperscale-Replikate](service-tier-hyperscale-replicas.md#named-replica-in-preview) bieten unabhängige Skalierung, Zugriffsisolation, Workloadisolation, umfassende horizontale Leseskalierung und weitere Vorteile. Mehrere sekundäre [Hochverfügbarkeitsreplikate](service-tier-hyperscale-replicas.md#high-availability-replica) können für einen Lastenausgleich schreibgeschützter Workloads verwendet werden, für die mehr Ressourcen erforderlich sind, als auf einem sekundären Hochverfügbarkeitsreplikat zur Verfügung stehen. 
 
 Die Hochverfügbarkeitsarchitektur der Dienstebenen „Basic“, „Standard“ und „Universell“ enthält keine Replikate. Die *horizontale Leseskalierung* ist auf diesen Dienstebenen nicht verfügbar.
 
-Das folgende Diagramm veranschaulicht das Feature.
+Im folgenden Diagramm wird die Funktion für Datenbanken und verwaltete Instanzen in den Tarifen „Premium“ und „Unternehmenskritisch“ veranschaulicht.
 
 ![Schreibgeschützte Replikate](./media/read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-Die *horizontale Leseskalierung* ist bei Datenbanken in den Tarifen Premium, Unternehmenskritisch und Hyperscale standardmäßig aktiviert. Bei Hyperscale wird für neue Datenbanken standardmäßig ein sekundäres Replikat erstellt. 
+Die *horizontale Leseskalierung* ist bei Datenbanken in den Tarifen Premium, Unternehmenskritisch und Hyperscale standardmäßig aktiviert.
 
 > [!NOTE]
-> Die horizontale Leseskalierung ist auf der Dienstebene Unternehmenskritisch von Managed Instance immer aktiviert.
+> Die horizontale Leseskalierung ist auf der Dienstebene „Unternehmenskritisch“ von Managed Instance und für Hyperscale-Datenbanken mit mindestens einem sekundären Replikat immer aktiviert.
 
 Wenn Ihre SQL-Verbindungszeichenfolge mit `ApplicationIntent=ReadOnly` konfiguriert wurde, wird die Anwendung zu einem schreibgeschützten Replikat dieser Datenbank oder verwalteten Instanz umgeleitet. Informationen zur Verwendung der `ApplicationIntent`-Eigenschaft finden Sie unter [Angeben der Anwendungsabsicht](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
-Wenn Sie sicherstellen möchten, dass die Anwendung unabhängig von der Einstellung `ApplicationIntent` in der SQL-Verbindungszeichenfolge eine Verbindung mit dem primären Replikat herstellt, müssen Sie die horizontale Leseskalierung beim Erstellen der Datenbank oder beim Ändern ihrer Konfiguration explizit deaktivieren. Wenn Sie Ihre Datenbank z. B. vom Tarif Standard oder Universell auf einen der Tarife Premium, Unternehmenskritisch oder Hyperscale umstellen und sicherstellen möchten, dass weiterhin alle Verbindungen zum primären Replikat führen, deaktivieren Sie die horizontale Leseskalierung. Weitere Informationen zum Deaktivieren finden Sie unter [Aktivieren und Deaktivieren der horizontalen Leseskalierung](#enable-and-disable-read-scale-out).
+Wenn Sie sicherstellen möchten, dass die Anwendung unabhängig von der Einstellung `ApplicationIntent` in der SQL-Verbindungszeichenfolge eine Verbindung mit dem primären Replikat herstellt, müssen Sie die horizontale Leseskalierung beim Erstellen der Datenbank oder beim Ändern ihrer Konfiguration explizit deaktivieren. Wenn Sie Ihre Datenbank z. B. vom Tarif „Standard“ oder „Universell“ auf den Tarif „Premium“ oder „Unternehmenskritisch“ upgraden und sicherstellen möchten, dass weiterhin alle Verbindungen zum primären Replikat führen, deaktivieren Sie die horizontale Leseskalierung. Weitere Informationen zum Deaktivieren dieser Funktion finden Sie unter [Aktivieren und Deaktivieren der horizontalen Leseskalierung](#enable-and-disable-read-scale-out).
 
 > [!NOTE]
 > Abfragespeicher und SQL Profiler werden in schreibgeschützten Replikaten nicht unterstützt. 
@@ -85,7 +85,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 
 Wenn eine Verbindung mit einem schreibgeschützten Replikat besteht, spiegeln dynamische Verwaltungssichten (Dynamic Management Views, DMVs) den Status des Replikats wider und können zu Überwachungs- und Problembehandlungszwecken abgefragt werden. Die Datenbank-Engine stellt mehrere Sichten bereit, über die eine Vielzahl von Überwachungsdaten verfügbar gemacht werden kann. 
 
-Häufig verwendete Sichten sind:
+Die folgenden Sichten werden häufig für die Überwachung und Problembehandlung von Replikaten verwendet:
 
 | Name | Zweck |
 |:---|:---|
@@ -117,12 +117,12 @@ Wenn eine Transaktion mit Momentaufnahmeisolation auf Objektmetadaten zugreift, 
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>Abfragen mit langer Ausführungszeit für schreibgeschützte Replikate
 
-Abfragen, die für schreibgeschützte Replikate ausgeführt werden, müssen auf die Metadaten für die in der Abfrage referenzierten Objekte (Tabellen, Indizes, Statistiken usw.) zugreifen. Wenn ein Metadatenobjekt für das primäre Replikat geändert wird, während eine Abfrage eine Sperre für dasselbe Objekt im schreibgeschützten Replikat enthält, kann die Abfrage in seltenen Fällen den Prozess, der Änderungen vom primären Replikat auf das schreibgeschützte Replikat anwendet, [blockieren](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK). Wenn eine solche Abfrage über einen längeren Zeitraum ausgeführt wird, führt dies dazu, dass das schreibgeschützte Replikat mit dem primären Replikat nicht mehr synchronisiert ist.
+Abfragen, die für schreibgeschützte Replikate ausgeführt werden, müssen auf die Metadaten für die in der Abfrage referenzierten Objekte (Tabellen, Indizes, Statistiken usw.) zugreifen. Wenn Objektmetadaten im primären Replikat geändert werden, während eine Abfrage eine Sperre für das entsprechende Objekt im schreibgeschützten Replikat enthält, kann die Abfrage in seltenen Fällen den Prozess [blockieren](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK), der Änderungen vom primären Replikat auf das schreibgeschützte Replikat anwendet. Wenn eine solche Abfrage über einen längeren Zeitraum ausgeführt wird, führt dies dazu, dass das schreibgeschützte Replikat mit dem primären Replikat nicht mehr synchronisiert ist. Bei Replikaten, die potenzielle Failoverziele sind (sekundäre Replikate auf den Dienstebenen „Premium“ und „Unternehmenskritisch“, Hyperscale-Hochverfügbarkeitsreplikate und alle Georeplikate), würde dies im Falle eines Failovers auch die Datenbankwiederherstellung verzögern, was zu längeren Ausfallzeiten als erwartet führen würde.
 
-Wenn eine Abfrage mit langer Ausführungszeit für ein schreibgeschützten Replikat diese Art von Blockierung verursacht, wird sie automatisch beendet. Die Sitzung erhält den Fehler 1219, „Die Sitzung wurde aufgrund eines DDL-Vorgangs hoher Priorität getrennt“ oder den Fehler 3947, „Die Transaktion wurde abgebrochen, da die sekundäre Compute-Instanz die Wiederholung nicht aufholen konnte. Wiederholen Sie die Transaktion.“
+Wenn eine Abfrage mit langer Ausführungszeit für ein schreibgeschützten Replikat diese Art von Blockierung direkt oder indirekt verursacht, wird sie möglicherweise automatisch beendet, um übermäßige Datenlatenz und potenzielle Auswirkungen auf die Datenbankverfügbarkeit zu vermeiden. Die Sitzung erhält den Fehler 1219, „Die Sitzung wurde aufgrund eines DDL-Vorgangs hoher Priorität getrennt“ oder den Fehler 3947, „Die Transaktion wurde abgebrochen, da die sekundäre Compute-Instanz die Wiederholung nicht aufholen konnte. Wiederholen Sie die Transaktion.“
 
 > [!NOTE]
-> Wenn beim Ausführen von Abfragen für ein schreibgeschütztes Replikat einer der Fehler 3961, 1219 oder 3947 angezeigt wird, wiederholen Sie die Abfrage.
+> Wenn beim Ausführen von Abfragen für ein schreibgeschütztes Replikat einer der Fehler 3961, 1219 oder 3947 angezeigt wird, wiederholen Sie die Abfrage. Vermeiden Sie alternativ Vorgänge, bei denen Objektmetadaten (Schemaänderungen, Indexwartung, Statistikupdates usw.) im primären Replikat geändert werden, während Abfragen mit langer Ausführungszeit für sekundäre Replikate ausgeführt werden.
 
 > [!TIP]
 > Wenn eine Verbindung mit einem schreibgeschützten Replikat besteht, können auf den Dienstebenen „Premium“ und „Unternehmenskritisch“ die Spalten `redo_queue_size` und `redo_rate` in der DMV [sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) zum Überwachen der Datensynchronisierung verwendet werden und dadurch als Indikatoren für die Datenweitergabelatenz beim schreibgeschützten Replikat herangezogen werden.
@@ -130,7 +130,7 @@ Wenn eine Abfrage mit langer Ausführungszeit für ein schreibgeschützten Repli
 
 ## <a name="enable-and-disable-read-scale-out"></a>Aktivieren und Deaktivieren der horizontalen Leseskalierung
 
-Die horizontale Leseskalierung ist bei den Dienstebenen Premium, Unternehmenskritisch und Hyperscale standardmäßig aktiviert. Für die Dienstebenen Basic, Standard oder Universell kann die horizontale Leseskalierung nicht aktiviert werden. Die horizontale Leseskalierung wird für Hyperscale-Datenbanken, die mit null Replikaten konfiguriert sind, automatisch deaktiviert.
+Die horizontale Leseskalierung ist bei den Dienstebenen Premium, Unternehmenskritisch und Hyperscale standardmäßig aktiviert. Für die Dienstebenen Basic, Standard oder Universell kann die horizontale Leseskalierung nicht aktiviert werden. Für Hyperscale-Datenbanken, die ohne sekundäre Replikate konfiguriert sind, wird die horizontale Leseskalierung automatisch deaktiviert.
 
 Sie können die horizontale Leseskalierung für Singletons und Pools für elastische Datenbanken auf den Dienstebenen Premium oder Unternehmenskritisch mithilfe der folgenden Methoden deaktivieren und erneut aktivieren.
 
@@ -186,16 +186,16 @@ Weitere Informationen finden Sie unter [Databanken – Erstellen oder Aktualisie
 
 ## <a name="using-the-tempdb-database-on-a-read-only-replica"></a>Verwenden der Datenbank `tempdb` auf einem schreibgeschützten Replikat
 
-Die Datenbank `tempdb` auf dem primären Replikat wird nicht in die schreibgeschützten Replikate repliziert. Jedes Replikat verfügt über eine eigene Datenbank `tempdb`, die beim Erstellen des Replikats erstellt wird. Dadurch wird sichergestellt, dass `tempdb` aktualisiert und während der Abfrageausführung geändert werden kann. Wenn Ihre schreibgeschützte Workload von der Verwendung von `tempdb`-Objekten abhängig ist, sollten Sie diese Objekte im Rahmen Ihres Abfrageskripts erstellen.
+Die Datenbank `tempdb` auf dem primären Replikat wird nicht in die schreibgeschützten Replikate repliziert. Jedes Replikat verfügt über eine eigene Datenbank `tempdb`, die beim Erstellen des Replikats erstellt wird. Dadurch wird sichergestellt, dass `tempdb` aktualisiert und während der Abfrageausführung geändert werden kann. Wenn Ihre schreibgeschützte Workload von der Verwendung von `tempdb`-Objekten abhängig ist, sollten Sie diese Objekte als Teil derselben Workload erstellen, während eine Verbindung mit einem schreibgeschützten Replikat besteht.
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Verwenden der horizontalen Leseskalierung mit georeplizierten Datenbanken
 
-Georeplizierte sekundäre Datenbanken weisen dieselbe Hochverfügbarkeitsarchitektur wie die primären Datenbanken auf. Wenn Sie eine Verbindung mit der georeplizierten sekundären Datenbank mit aktivierter horizontaler Leseskalierung herstellen, werden Ihre Sitzungen mit `ApplicationIntent=ReadOnly` ebenso an eines der Replikate mit Hochverfügbarkeit weitergeleitet wie an die primäre Datenbank mit Lese-/Schreibzugriff. Die Sitzungen ohne `ApplicationIntent=ReadOnly` werden an das primäre Replikat der georeplizierten sekundären Datenbank weitergeleitet, das ebenfalls schreibgeschützt ist. 
+Georeplizierte sekundäre Datenbanken weisen dieselbe Hochverfügbarkeitsarchitektur wie primäre Datenbanken auf. Wenn Sie eine Verbindung mit der georeplizierten sekundären Datenbank mit aktivierter horizontaler Leseskalierung herstellen, werden Ihre Sitzungen mit `ApplicationIntent=ReadOnly` ebenso an eines der Replikate mit Hochverfügbarkeit weitergeleitet wie an die primäre Datenbank mit Lese-/Schreibzugriff. Die Sitzungen ohne `ApplicationIntent=ReadOnly` werden an das primäre Replikat der georeplizierten sekundären Datenbank weitergeleitet, das ebenfalls schreibgeschützt ist. 
 
-Auf diese Weise bietet das Erstellen eines Georeplikats zwei weitere schreibgeschützte Replikate für eine primäre Datenbank mit Lese-/Schreibzugriff, sodass insgesamt drei schreibgeschützte Replikate vorhanden sind. Jedes zusätzliche Georeplikat stellt ein weiteres Paar schreibgeschützter Replikate bereit. Georeplikate können in jeder Azure-Region erstellt werden, einschließlich der Region der primären Datenbank.
+Auf diese Weise können durch die Erstellung eines Georeplikats mehrere zusätzliche schreibgeschützte Replikate für eine primäre Datenbank mit Lese-/Schreibzugriff bereitgestellt werden. Jedes zusätzliche Georeplikat stellt einen weiteren Satz schreibgeschützter Replikate bereit. Georeplikate können in jeder Azure-Region erstellt werden, einschließlich der Region der primären Datenbank.
 
 > [!NOTE]
-> Es gibt keinen automatischen Roundrobin oder ein anderes Lastenausgleichsrouting zwischen den Replikaten einer georeplizierten sekundären Datenbank.
+> Es gibt kein automatisches Roundrobin oder ein anderes Lastenausgleichsrouting zwischen den Replikaten einer georeplizierten sekundären Datenbank, mit Ausnahme eines Hyperscale-Georeplikats mit mehr als einem Hochverfügbarkeitsreplikat. In diesem Fall werden Sitzungen mit schreibgeschützter Absicht auf alle Hochverfügbarkeitsreplikate eines Georeplikats verteilt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

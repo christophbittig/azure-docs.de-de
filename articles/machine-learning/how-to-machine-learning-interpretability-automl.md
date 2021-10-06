@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Ihr automatisiertes Machine Learning-Modell die Featurerelevanz ermittelt und beim Verwenden des Azure Machine Learning SDK Vorhersagen trifft.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: how-to
 ms.custom: automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 343d6dd27167001ecf98435596837eaab5f50da5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5d172148ec6d293d2a60a03bc60c0f94baa7a577
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339656"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426110"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen (Vorschau)
 

@@ -2,7 +2,6 @@
 title: 'Rollenbasierte Zugriffssteuerung in Azure: Custom Vision'
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung in Azure für Ihre Custom Vision-Projekte konfigurieren können.
-services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 050b4011dbc46b6b6567965ed94847dbaf3560c6
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: e2f59dc309181308f409b3533d58d3b6b4b1fdd8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982310"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361895"
 ---
 # <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 
@@ -34,7 +33,7 @@ Azure RBAC kann einer Custom Vision-Ressource zugewiesen werden. Wenn Sie Zugrif
 1. Wählen Sie auf der Registerkarte **Mitglieder** einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität aus.
 1. Wählen Sie auf der Registerkarte **Überprüfen und zuweisen** die Option **Überprüfen und zuweisen** aus, um die Rolle zuzuweisen.
 
-Innerhalb weniger Minuten wird dem Ziel die ausgewählte Rolle für den ausgewählten Bereich zugewiesen. Hilfe zu diesen Schritten finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](https://review.docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Innerhalb weniger Minuten wird dem Ziel die ausgewählte Rolle für den ausgewählten Bereich zugewiesen. Hilfe zu diesen Schritten finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="custom-vision-role-types"></a>Rollentypen in Custom Vision
 

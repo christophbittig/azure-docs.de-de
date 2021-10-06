@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Ausgelöste Pipelines ermöglichen die Automatisierung routinemäßiger, zeitaufwändiger Aufgaben wie Datenverarbeitung, Training und Überwachung.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: laobri
 author: lobrien
 ms.date: 01/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 473c6bde1e75070e0103137d9e24849f38c6d684
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 3c9343cad720ca240b4bed29e8ad9a265c07ee8e
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112466697"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426016"
 ---
 # <a name="trigger-machine-learning-pipelines"></a>Auslösen von Machine Learning-Pipelines
 

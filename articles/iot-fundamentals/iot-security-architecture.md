@@ -7,18 +7,17 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: e4e6a60f893108f8fa58d84dabb50c88afcf774c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c820c1a1c037e8f0678b2c0727fb8264202c7dd6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "73929610"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234488"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Internet der Dinge (IoT) – Sicherheitsarchitektur
 
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
-## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen dazu, wie Sie eine Lösung schützen, die mit einem IoT Solution Accelerator erstellt wurde, finden Sie unter [Schützen Ihrer IoT-Bereitstellung](iot-security-deployment.md).
+## <a name="see-also"></a>Siehe auch
 
 Im IoT Hub-Entwicklerhandbuch finden Sie unter [Verwalten des Zugriffs auf IoT Hub](../iot-hub/iot-hub-devguide-security.md) weitere Informationen zur Sicherheit von IoT Hub.

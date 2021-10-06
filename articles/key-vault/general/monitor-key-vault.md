@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 09/21/2021
 ms.author: mbaldwin
 ms.custom: subject-monitoring
-ms.openlocfilehash: 753dbf0bdaa1e97a04422b567dcbc199717bbd71
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: fbb92ac1d1d6992a78577a8dfc062d6730302f2d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129207303"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353356"
 ---
 # <a name="monitoring-azure-key-vault"></a>Überwachen von Azure Key Vault
 
@@ -84,7 +84,7 @@ Eine Liste der Tabellen, die von Azure Monitor-Protokollen verwendet und von Log
 > [!IMPORTANT]
 > Wenn Sie im Menü von Key Vault **Protokolle** auswählen, wird Log Analytics geöffnet, wobei der Abfragebereich auf die aktuelle Key Vault-Instanz festgelegt ist. Dies bedeutet, dass Protokollabfragen nur Daten aus dieser Ressource umfassen. Wenn Sie eine Abfrage ausführen möchten, die Daten aus anderen Schlüsseltresoren oder Daten aus anderen Azure-Diensten enthält, wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Ausführliche Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](/azure/azure-monitor/log-query/scope/).
 
-Hier sind einige Abfragen, die Sie in die Suchleiste **Protokollsuche** eingeben können, um die Überwachung Ihrer Key Vault-Ressourcen zu vereinfachen. Diese Abfragen arbeiten mit der [neuen Sprache](/azure-monitor/logs/log-query-overview).
+Hier sind einige Abfragen, die Sie in die Suchleiste **Protokollsuche** eingeben können, um die Überwachung Ihrer Key Vault-Ressourcen zu vereinfachen. Diese Abfragen arbeiten mit der [neuen Sprache](/azure/azure-monitor/logs/log-query-overview).
 
 * Gibt es langsame Anforderungen?
 
@@ -181,7 +181,7 @@ Hier sind einige Abfragen, die Sie in die Suchleiste **Protokollsuche** eingeben
 
 Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen Ihnen, Probleme in Ihrem System zu identifizieren und zu beheben, bevor Ihre Kunden sie bemerken. Sie können Warnungen für [Metriken](../../azure-monitor/platform/alerts-metric-overview.md), [Protokolle](../../azure-monitor/platform/alerts-unified-log.md) und das [Aktivitätsprotokoll](../../azure-monitor/platform/activity-log-alerts.md) festlegen. Verschiedene Arten von Warnungen haben jeweils ihre Vor- und Nachteile.
 
-Wenn Sie eine Anwendung erstellen oder ausführen, die Azure Key Vault verwendet, bietet [Azure Monitor Application Insights](/azure-monitor/overview#application-insights.md) möglicherweise zusätzliche Warnungen.
+Wenn Sie eine Anwendung erstellen oder ausführen, die Azure Key Vault verwendet, bietet [Azure Monitor Application Insights](/azure/azure-monitor/overview#application-insights) möglicherweise zusätzliche Warnungen.
 
 Hier sind einige allgemeine und empfohlene Warnungsregeln für Azure Key Vault.
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 'Verwenden Sie Azure Machine Learning sicher: Authentifizierung, Autorisierung, Netzwerksicherheit, Datenverschlüsselung und Überwachung.'
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
-ms.author: jmartens
+ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/02/2021
-ms.openlocfilehash: 27bd8124c0b78d1fecd1f7027104c3b5c9b8a8a1
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 09/22/2021
+ms.openlocfilehash: 5a6ee4c0e1a73642323dab67efbfc4b0efe1f1aa
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541516"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426961"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Sicherheit und Governance in Unternehmen für Azure Machine Learning
 
@@ -115,6 +115,7 @@ Beim Bereitstellen von Modellen als Webdienste können Sie TLS (Transport Layer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Bewährte Azure Machine Learning-Methoden für die Unternehmenssicherheit](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-enterprise-security)
 * [Sichere Azure Machine Learning-Webdienste mit TLS](how-to-secure-web-service.md)
 * [Nutzen eines als Webdienst bereitgestellten Machine Learning-Modells](how-to-consume-web-service.md)
 * [Verwenden von Azure Machine Learning hinter Azure Firewall](how-to-access-azureml-behind-firewall.md)

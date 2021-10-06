@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit BenQ IAM | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit BenQ IAM'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und BenQ IAM konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/30/2021
+ms.date: 09/16/2021
 ms.author: jeedes
-ms.openlocfilehash: cbe0dbe25956c097abd780f8f8da6213d231a3c4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1adfc67567176be0d5cda6124392f8069e7b962e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121784008"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629996"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benq-iam"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in BenQ IAM
+# <a name="tutorial-azure-ad-sso-integration-with-benq-iam"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit BenQ IAM
 
 In diesem Tutorial erfahren Sie, wie Sie BenQ IAM in Azure Active Directory (Azure AD) integrieren. Die Integration von BenQ IAM in Azure AD ermöglicht Folgendes:
 
@@ -75,9 +75,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://service-portaltest.benq.com/saml/init/<ID>`
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://service-portal.benq.com/saml/init/<ID>`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://service-portaltest.benq.com/saml/consume/<ID>`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://service-portal.benq.com/saml/consume/<ID>`
 
 1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
@@ -131,7 +131,30 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-benq-iam-sso"></a>Konfigurieren des einmaligen Anmeldens für BenQ IAM
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **BenQ IAM** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von BenQ IAM](mailto:benqcare.us@benq.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Melden Sie sich bei BenQ IAM mit dem BenQ-Administratorkonto an, und klicken Sie im Abschnitt „Kontoverwaltung“ auf **SSO-Einstellung**.
+
+    ![Screenshot: SSO-Einstellung](./media/benq-iam-tutorial/sso-setting.png)
+
+1. Wählen Sie im Popupfenster **SSO by SAML** als SSO-Einstellung aus, und klicken Sie auf **Weiter**.
+
+    ![Screenshot: SSO by SAML](./media/benq-iam-tutorial/sso-by-saml.png)
+
+1. Führen Sie auf der Seite **SSO-Einstellu8ng** die folgenden Schritte aus.
+
+    ![Screenshot: SSO-Konfiguration](./media/benq-iam-tutorial/saml-configuration.png)
+
+    a. Fügen Sie im Textfeld **Anmelde-/SSO-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    b. Fügen Sie im Textfeld **Bzeichner/Entitäts-ID** den Wert für den **Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    c. Öffnen Sie das aus dem Azure-Portal heruntergeladene **Zertifikat (Base64)** im Editor, und fügen Sie den Inhalt in das Textfeld **Certificate(Base64)** ein.
+
+    d. Kopieren Sie den Wert im Feld **Bezeichner**, und fügen Sie diesen Wert im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** im Textfeld **Bezeichner** ein.
+
+    e. Kopieren Sie den Wert für **Reply URL** (Antwort-URL), und fügen Sie diesen Wert im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Antwort-URL** ein.
+
+    f. Klicken Sie auf **Weiter**.
+
 
 ### <a name="create-benq-iam-test-user"></a>Erstellen eines BenQ IAM-Testbenutzers
 
@@ -151,7 +174,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der BenQ IAM-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „BenQ IAM“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der BenQ IAM-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „BenQ IAM“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der BenQ IAM-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

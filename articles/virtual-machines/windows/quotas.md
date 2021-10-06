@@ -3,16 +3,16 @@ title: vCPU-Kontingente für Azure
 description: Erfahren Sie mehr über vCPU-Kontingente für virtuelle Azure-Computer.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: quota
+ms.subservice: sizes
 ms.topic: how-to
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 8f032f2f39ea092c22e201fa7993179369ef45f8
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 6a984f044bb77b2a16ea41f34f00bf05d3e5220d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697768"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216002"
 ---
 # <a name="check-vcpu-quotas-using-azure-powershell"></a>Überprüfen von vCPU-Kontingenten mithilfe von Azure PowerShell
 
@@ -21,7 +21,7 @@ ms.locfileid: "122697768"
 Die vCPU-Kontingente für virtuelle Computer und die VM-Skalierungsgruppen werden bei jedem Abonnement und in jeder Region in zwei Ebenen angeordnet. „Regionale vCPUs gesamt“ bilden die erste Ebene, die zweite Ebene besteht aus den Kernen der verschiedenen VM-Größenfamilien, z.B. vCPUs der D-Serie. Bei jeder Bereitstellung eines neuen virtuellen Computers dürfen die vCPUs für den virtuellen Computer das vCPU-Kontingent für die VM-Größenfamilie bzw. das regionale vCPU-Gesamtkontingent nicht überschreiten. Wird eines dieser Kontingente überschritten, wird die VM-Bereitstellung nicht zugelassen. Es gibt auch ein Kontingent für die Gesamtanzahl der virtuellen Computer in der Region. Die Details zu den einzelnen Kontingenten können Sie entweder im [Azure-Portal](https://portal.azure.com) auf der Seite **Abonnement** im Bereich **Nutzung + Kontingente** anzeigen oder die Werte mithilfe von PowerShell abfragen.
 
 > [!NOTE]
-> Das Kontingent wird anhand der Gesamtanzahl der verwendeten Kerne (zugeordnet und nicht zugeordnet) berechnet. Wenn Sie zusätzliche Kerne benötigen, [fordern Sie eine Erhöhung des Kontingents an](../../azure-portal/supportability/resource-manager-core-quotas-request.md), oder löschen Sie nicht mehr benötigte VMs. 
+> Das Kontingent wird anhand der Gesamtanzahl der verwendeten Kerne (zugeordnet und nicht zugeordnet) berechnet. Wenn Sie zusätzliche Kerne benötigen, [fordern Sie eine Erhöhung des Kontingents an](../../azure-portal/supportability/regional-quota-requests.md), oder löschen Sie nicht mehr benötigte VMs. 
  
 ## <a name="check-usage"></a>Überprüfen der Nutzung
 
@@ -77,7 +77,7 @@ Premium Storage Managed Disks                1 10000 Count
 ## <a name="reserved-vm-instances"></a>Reservierte VM-Instanzen
 Reservierte VM-Instanzen, die einem Einzelabonnement ohne flexible VM-Größe zugeordnet sind, erweitern vCPU-Kontingente um einen neuen Aspekt. Diese Werte beschreiben die Anzahl der Instanzen der angegebenen Größe, die im Abonnement bereitstellbar sein muss. Sie fungieren im Kontingentsystem als Platzhalter, um sicherzustellen, dass ein Kontingent reserviert ist. Dadurch wird gewährleistet, dass reservierte VM-Instanzen im Abonnement bereitgestellt werden können. Wenn beispielsweise ein bestimmtes Abonnement über 10 reservierte VM-Instanzen der Größe „Standard_D1“ verfügt, ist „10“ der Nutzungsgrenzwert für reservierte Standard_D1-VM-Instanzen. Dadurch wird Azure veranlasst sicherzustellen, dass immer mindestens 10 vCPUs im regionalen vCPU-Gesamtkontingent sowie 10 vCPUs im vCPU-Kontingent für die Standard_D-Familie verfügbar sind, die für Standard_D1-Instanzen verwendet werden sollen.
 
-Wenn eine Erhöhung des Kontingents erforderlich ist, z.B. um ein Einzelabonnement für eine reservierte Instanz (RI) zu erwerben, können Sie für Ihr Abonnement eine [Erhöhung des Kontingents anfordern](../../azure-portal/supportability/resource-manager-core-quotas-request.md).
+Wenn eine Erhöhung des Kontingents erforderlich ist, z.B. um ein Einzelabonnement für eine reservierte Instanz (RI) zu erwerben, können Sie für Ihr Abonnement eine [Erhöhung des Kontingents anfordern](../../azure-portal/supportability/regional-quota-requests.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

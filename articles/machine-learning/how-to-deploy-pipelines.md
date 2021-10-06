@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Führen Sie Workflows für maschinelles Lernen mit Pipelines des maschinellen Lernens und dem Azure Machine Learning SDK für Python aus.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.reviewer: sgilley
 ms.author: laobri
 author: lobrien
 ms.date: 8/25/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d5cfd3e6df8b42789462447b552c49137c12e2cf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: be7c64940466d3e1379c407970e5bd71645d882b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349763"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429621"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Veröffentlichen und Nachverfolgen von Pipelines des maschinellen Lernens
 

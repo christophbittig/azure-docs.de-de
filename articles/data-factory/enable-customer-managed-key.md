@@ -8,12 +8,12 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.reviewer: mariozi
-ms.openlocfilehash: 3580ae78497426f1399981035e861bc51c912144
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 725ebc0dbb8b037dcfcde8d154353fd7cf0a1a59
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697555"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208092"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Verschlüsseln von Azure Data Factory mit vom Kunden verwalteten Schlüsseln
 
@@ -149,7 +149,7 @@ Standardmäßig ist die CMK-Konfiguration in der Vorlage Factory Azure Resource 
 
   :::image type="content" source="media/enable-customer-managed-key/07-include-in-template.png" alt-text="Screenshot: Einschließen der Einstellungen für die vom Kunden verwalteten Schlüssel in die ARM-Vorlage.":::
 
-Die folgenden Einstellungen werden zur ARM-Vorlage hinzugefügt. Diese Eigenschaften können in den Continuous Integration- und Delivery-Pipelines parametrisiert werden, indem die [Parameterkonfiguration von Azure Resource Manager](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template) bearbeitet wird
+Die folgenden Einstellungen werden zur ARM-Vorlage hinzugefügt. Diese Eigenschaften können in den Continuous Integration- und Delivery-Pipelines parametrisiert werden, indem die [Parameterkonfiguration von Azure Resource Manager](continuous-integration-delivery-resource-manager-custom-parameters.md) bearbeitet wird
 
   :::image type="content" source="media/enable-customer-managed-key/08-template-with-customer-managed-key.png" alt-text="Screenshot: Einschließen der Einstellungen für die vom Kunden verwalteten Schlüssel in die Azure Resource Manager-Vorlage.":::
 

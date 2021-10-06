@@ -9,17 +9,18 @@ ms.author: tchladek
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8718573de0742e69bee723f34ff94fcb20656be4
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: identity
+ms.openlocfilehash: 5fb6632fa31143c26d3cad84d42d1417aaf97496
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251130"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081337"
 ---
 # <a name="quickstart-set-up-and-manage-teams-access-tokens"></a>Schnellstart: Einrichten und Verwalten von Teams-Zugriffstoken
 
 > [!IMPORTANT]
-> Wenn Sie einen benutzerdefinierten Teams-Endpunkt aktivieren oder deaktivieren möchten, [füllen Sie dieses Formular aus und übermitteln es](https://forms.office.com/r/B8p5KqCH19).
+> Dieses Feature ist nur als Vorschau verfügbar. Wenn Sie einen benutzerdefinierten Teams-Endpunkt aktivieren oder deaktivieren möchten, [füllen Sie dieses Formular aus und übermitteln es](https://forms.office.com/r/B8p5KqCH19).
 
 In dieser Schnellstartanleitung erstellen Sie eine .NET-Konsolenanwendung, um einen Microsoft 365-Benutzer mithilfe der Microsoft Authentication Library (MSAL) und durch den Abruf eines Azure Active Directory-Benutzertokens (Azure AD) zu authentifizieren. Dieses Token wird dann mit dem Azure Communication Services-Identitäts-SDK gegen ein Teams-Zugriffstoken ausgetauscht. Das Teams-Zugriffstoken kann dann vom Communication Services-Anruf-SDK verwendet werden, um einen benutzerdefinierten Teams-Endpunkt zu erstellen.
 
@@ -191,6 +192,9 @@ Installieren Sie im Anwendungsverzeichnis mithilfe des Befehls `dotnet add packa
 dotnet add package Azure.Communication.Identity
 dotnet add package Microsoft.Identity.Client
 ```
+
+> [!NOTE]
+> Pakete für die private Vorschau sind in offiziellen Paketrepositorys wie NPM oder NuGet.org nicht verfügbar. Sie finden SDKs in den folgenden Paketrepositorys: [. NET](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&package=Azure.Communication.Identity&protocolType=NuGet&version=1.1.0-alpha.20210531.2) und [JavaScript](https://www.npmjs.com/package/@azure/communication-identity/v/1.1.0-alpha.20210531.1).
 
 #### <a name="set-up-the-app-framework"></a>Einrichten des App-Frameworks
 

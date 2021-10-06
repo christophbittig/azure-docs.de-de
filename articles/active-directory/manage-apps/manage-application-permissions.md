@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 7/10/2020
+ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7585ad6816a8d9fd0a331ae9fcb1e1cea81ddbac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab20521ea61820a7518529c4940837ab08ae3a4f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346912"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124822969"
 ---
-# <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Maßnahmen bei verdächtigen Anwendungen oder Anwendungen mit zu vielen Berechtigungen in Azure Active Directory
+# <a name="take-action-on-over-privileged-or-suspicious-applications-in-azure-active-directory"></a>Maßnahmen bei verdächtigen Anwendungen oder Anwendungen mit zu vielen Berechtigungen in Azure Active Directory
 
 Hier erfahren Sie, wie Sie Anwendungsberechtigungen überprüfen und verwalten. In diesem Artikel werden verschiedene Aktionen vorgestellt, die Sie entsprechend des jeweiligen Szenarios zum Schutz Ihrer Anwendung ausführen können. Diese Aktionen gelten für alle Anwendungen, die Ihrem Azure Active Directory (Azure AD)-Mandanten per Benutzer- oder Administratoreinwilligung hinzugefügt wurden.
 
@@ -28,6 +28,8 @@ Weitere Informationen zur Einwilligung für Anwendungen finden Sie unter [Azure 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Ausführen der folgenden Aktionen müssen Sie sich als globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator anmelden.
+
+- Einrichten von Azure AD PowerShell. Weitere Informationen finden Sie unter [Azure AD PowerShell](/powershell/azure/).
 
 Um den Zugriff auf Anwendungen zu beschränken, benötigen Sie die Benutzerzuweisung, und weisen Sie dann Benutzer oder Gruppen der Anwendung zu.  Weitere Informationen finden Sie unter [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](./assign-user-or-group-access-portal.md).
 
@@ -98,12 +100,8 @@ Wir empfehlen, die Anwendung zu deaktivieren, um den Benutzerzugriff zu blockier
 
 Rufen Sie die Objekt-ID des Dienstprinzipals ab.
 
-1. Melden Sie sich globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** aus.
-3. Wählen Sie die Anwendung aus, für die ein eingeschränkter Zugriff eingerichtet werden sollen.
-4. Wählen Sie **Eigenschaften** aus, und kopieren Sie dann die Objekt-ID.
-
    ```powershell
+   $app_name = "<Your App's display name>"
    $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
    $sp.ObjectId
    ```

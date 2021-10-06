@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie Modelle mit veröffentlichten Pipelines und Pipelineparametern im Azure Machine Learning-Designer erneut trainieren.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: keli19
 author: likebupt
 ms.date: 03/06/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: 54ba55233df201740e8949018e99e961bdd3c6f7
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b97837bea9654f713287b5e5263482e8067e22dd
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884730"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426584"
 ---
 # <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Verwenden von Pipelineparametern zum erneuten Trainieren von Modellen im Designer
 

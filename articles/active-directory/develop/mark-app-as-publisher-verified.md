@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 09/27/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb1347b0dfcb2be5c485e503fb87c5a70dd7d30c
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92363452"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153784"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Markieren Ihrer App als durch den Herausgeber verifiziert
 
@@ -46,9 +46,9 @@ Stellen Sie sicher, dass Sie die [Voraussetzungen](publisher-verification-overvi
 
     - In Partner Center muss dieser Benutzer über die folgenden [Rollen](/partner-center/permissions-overview) verfügen: „MPN-Administrator“, „Kontoadministrator“ oder „Globaler Administrator“ (dies ist eine freigegebene Rolle, die in Azure AD verwaltet wird). 
 
-1. Navigieren Sie zum App-Registrierungsportal:  
+1. Navigieren Sie zum Blatt **App-Registrierungen**:  
 
-1. Klicken Sie auf eine App, die Sie als durch den Herausgeber verifiziert markieren möchten, und öffnen Sie das Blatt „Branding“. 
+1. Klicken Sie auf eine App, die Sie als durch den Herausgeber verifiziert markieren möchten, und öffnen Sie das Blatt **Branding**. 
 
 1. Stellen Sie sicher, dass die [Herausgeberdomäne](howto-configure-publisher-domain.md) der App festgelegt ist. 
 

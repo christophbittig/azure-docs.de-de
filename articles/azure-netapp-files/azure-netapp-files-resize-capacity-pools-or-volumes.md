@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: b57997408112466c45d6ce1364e1ac0a2c358cd1
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: fcba2424c457d97a45096af9a35b5f2afa4086ba
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321031"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407245"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Ändern der Größe eines Kapazitätspools oder Volumes
 Sie können die Größe eines Kapazitätspools oder Volumes nach Bedarf ändern, beispielsweise, wenn ein Volume oder ein Kapazitätspool fast vollständig ausgelastet ist. 

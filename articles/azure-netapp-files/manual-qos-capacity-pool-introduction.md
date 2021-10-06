@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 49cc885976e022e8b7c4c44c3546febc217e2d7c
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 3ff9ed36800c60d50e70b328ab37606ddea09508
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071819"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407568"
 ---
 # <a name="manual-qos-capacity-pool"></a>Manueller QoS-Kapazitätspool
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 09/07/2021
-ms.openlocfilehash: 8c44d6e92f2943f3c565e80d42d9d0c474fddd4f
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 62f895fdea75ff97154910c177cda04413663d68
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542249"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352048"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>Migrationsübersicht: SQL Server zu Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -171,7 +171,7 @@ Standardmäßig unterstützt Azure Database Migration Service nur das Migrieren 
 
 Nach dem Neustart des Diensts werden die Windows-Anmeldungen der Benutzer/Gruppen in der Liste der für die Migration verfügbaren Anmeldungen angezeigt. Für alle Windows-Anmeldungen von Benutzern/Gruppen, die Sie migrieren, werden Sie aufgefordert, den zugeordneten Domänennamen anzugeben. Dienstbenutzerkonten (Konten mit dem Domänennamen NT AUTHORITY) und virtuelle Benutzerkonten (Konten mit dem Domänennamen NT SERVICE) werden nicht unterstützt. Weitere Informationen finden Sie unter [Migrieren von Windows-Benutzern und -Gruppen in einer SQL Server-Instanz zu Azure SQL Managed Instance mithilfe von T-SQL](../../managed-instance/migrate-sql-server-users-to-instance-transact-sql-tsql-tutorial.md).
 
-Alternativ können Sie das [PowerShell-Hilfstool](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins) verwenden, das speziell von den Datenmigrationsarchitekten von Microsoft entworfen wurde. Das Hilfsprogramm verwendet PowerShell, um ein T-SQL-Skript zum Neuerstellen von Anmeldungen und ausgewählten Datenbankbenutzern aus der Quelle im Ziel zu erstellen. 
+Alternativ können Sie das [PowerShell-Hilfstool](https://www.microsoft.com/download/details.aspx?id=103111) verwenden, das speziell von den Datenmigrationsarchitekten von Microsoft entworfen wurde. Das Hilfsprogramm verwendet PowerShell, um ein T-SQL-Skript zum Neuerstellen von Anmeldungen und ausgewählten Datenbankbenutzern aus der Quelle im Ziel zu erstellen. 
 
 Das PowerShell-Dienstprogramm ordnet Windows Server Active Directory-Konten automatisch Azure AD-Konten zu und kann für jede Anmeldung einen UPN-Abgleich mit der Active Directory-Quellinstanz durchführen. Das Tool erstellt benutzerdefinierte Server- und Datenbankrollen sowie Rollenmitgliedschaften, Datenbankrollen und Benutzerberechtigungen. Eigenständige Datenbanken werden noch nicht unterstützt, und nur eine Teilmenge der möglichen SQL Server-Berechtigungen werden erstellt. 
 

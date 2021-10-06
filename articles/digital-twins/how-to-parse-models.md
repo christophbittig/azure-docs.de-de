@@ -4,22 +4,22 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Sie die Parserbibliothek zum Analysieren von DTDL-Modellen verwenden können.
 author: baanders
 ms.author: baanders
-ms.date: 8/13/2021
+ms.date: 9/2/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 584d4ba9de922cd035a70850f723550b02863e16
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: e77fc64277cd0210a4741bc6828b5f1f72cf0e73
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122606595"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830995"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>Analysieren und Validieren von Modellen mit der DTDL-Parserbibliothek
 
 [Modelle](concepts-models.md) in Azure Digital Twins werden mithilfe der auf JSON-LD basierenden Sprache DTDL (Digital Twins Definition Language) definiert. **Es wird empfohlen, Ihre Modelle offline zu validieren, bevor Sie sie in Ihre Azure Digital Twins-Instanz hochladen.**
 
-Um dies zu unterstützen, wird eine clientseitige .NET DTDL-Bibliothek auf NuGet bereitgestellt: [Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). 
+Zu Ihrer Unterstützung bei der Validierung Ihrer Modelle steht eine clientseitige DTDL-Analysebibliothek für .NET auf NuGet zur Verfügung: [Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). 
 
 Sie können die Parserbibliothek direkt in Ihrem C#-Code verwenden, oder Sie verwenden das Beispielprojekt für die sprachagnostische Codeerstellung, das auf der Parserbibliothek basiert: [DTDL-Validierungssteuerelement (Beispiel)](/samples/azure-samples/dtdl-validator/dtdl-validator) .
 
@@ -86,5 +86,5 @@ Der folgende Code zeigt ein Beispiel für die Verwendung der Parserbibliothek, u
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie mit dem Schreiben Ihrer Modelle fertig sind, erfahren Sie, wie Sie sie mit den DigitalTwinsModels-APIs hochladen (und andere Verwaltungsvorgänge durchführen):
+Wenn Sie mit dem Schreiben Ihrer Modelle fertig sind, erfahren Sie, wie Sie sie mit den DigitalTwinsModels-APIs hochladen (und andere Verwaltungsvorgänge durchführen) können:
 * [Verwalten von DTDL-Modellen](how-to-manage-model.md)

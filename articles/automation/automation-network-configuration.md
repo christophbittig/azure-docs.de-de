@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Details zu den Netzwerkinformationen, die f
 ms.author: magoedte
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 2c3b00a3d60db16c3b768494f8630587a16033d8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2dd5d0d0c309e835fee8a55e9fa991a0efeaf729
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114465797"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231594"
 ---
 # <a name="azure-automation-network-configuration-details"></a>Details zur Netzwerkkonfiguration mit Azure Automation
 
@@ -26,7 +26,7 @@ Nachfolgend sind der Port und die URLs aufgeführt, die für die Kommunikation v
 
 ### <a name="network-planning-for-hybrid-runbook-worker"></a>Netzwerkplanung für Hybrid Runbook Worker
 
-Sowohl ein System- als auch ein Benutzer-Hybrid Runbook Worker benötigt Zugriff auf die in diesem Abschnitt angegebene Portnummer und die URLs, damit er eine Verbindung mit Azure Automation herstellen und sich bei dem Dienst registrieren kann. Der Worker benötigt zusätzlich Zugriff auf die [für den Log Analytics-Agent erforderlichen Ports und URLs](../azure-monitor/agents/agent-windows.md), um eine Verbindung mit dem Azure Monitor Log Analytics-Arbeitsbereich herstellen zu können.
+Sowohl ein System- als auch ein Benutzer-Hybrid Runbook Worker benötigt Zugriff auf die in diesem Abschnitt angegebene Portnummer und die URLs, damit er eine Verbindung mit Azure Automation herstellen und sich bei dem Dienst registrieren kann. Der Worker benötigt zusätzlich Zugriff auf die [für den Log Analytics-Agent erforderlichen Ports und URLs](../azure-monitor/agents/log-analytics-agent.md), um eine Verbindung mit dem Azure Monitor Log Analytics-Arbeitsbereich herstellen zu können.
 
 Wenn eines Ihrer Automation-Konten für eine bestimmte Region definiert ist, können Sie die Kommunikation der Hybrid Runbook Worker auf dieses regionale Rechenzentrum einschränken. Informationen zu den erforderlichen DNS-Einträgen finden Sie unter [Von Azure Automation verwendete DNS-Einträge in Azure-Rechenzentren](how-to/automation-region-dns-records.md).
 

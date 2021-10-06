@@ -10,12 +10,13 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: fef4972271046f7435140fd2d9ba3d18c7c3b11c
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: calling
+ms.openlocfilehash: a6e5f1ecb5686145718d83febf3faf5c520db6fe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254753"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609515"
 ---
 # <a name="calling-recording-overview"></a>Übersicht über die Anrufaufzeichnung
 
@@ -55,7 +56,7 @@ Runtimesteuerungs-APIs können verwendet werden, um die Aufzeichnung über inter
 Eine Event Grid-Benachrichtigung (`Microsoft.Communication.RecordingFileStatusUpdated`) wird veröffentlicht, wenn eine Aufzeichnung abrufbereit ist. Dies ist in der Regel wenige Minuten nach Abschluss des Aufzeichnungsprozesses der Fall (also beispielsweise nach dem Ende der Besprechung oder nach dem Beenden der Aufzeichnung). Aufzeichnungsereignisbenachrichtigungen enthalten Werte für `contentLocation` und `metadataLocation`, mit denen sowohl aufgezeichnete Medien als auch eine Metadatendatei zur Aufzeichnung abgerufen werden können.
 
 ### <a name="notification-schema-reference"></a>Referenz zum Benachrichtigungsschema
-```
+```typescript
 {
     "id": string, // Unique guid for event
     "topic": string, // Azure Communication Services resource id
@@ -89,6 +90,6 @@ In vielen Ländern und Staaten gibt es Gesetze und Vorschriften im Zusammenhang 
 Bestimmungen im Zusammenhang mit der Pflege personenbezogener Daten erfordern die Möglichkeit zum Exportieren von Benutzerdaten. Zur Erfüllung dieser Anforderungen enthalten Aufzeichnungsmetadatendateien die Teilnehmer-ID für jeden Aufrufteilnehmer im Array `participants`. Sie können die MRIs im Array `participants` mit Ihren internen Benutzeridentitäten abgleichen, um Aufrufteilnehmer zu identifizieren. Weiter unten finden Sie ein Beispiel für eine Aufzeichnungsmetadatendatei als Referenz.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie im [Schnellstartbeispiel zur Anrufaufzeichnung](../../quickstarts/voice-video-calling/call-recording-sample.md).
+Weitere Informationen finden Sie im [Schnellstart zur Anrufaufzeichnung](../../quickstarts/voice-video-calling/call-recording-sample.md).
 
 Weitere Informationen finden Sie unter den [Anrufautomatisierungs-APIs](./call-automation-apis.md).

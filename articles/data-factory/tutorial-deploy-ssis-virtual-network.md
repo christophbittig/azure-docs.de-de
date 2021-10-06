@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 35094effcef3ff773b708e65f234ee1409a8970a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a79229537b76dc62bca48985720f9c911de0c68c
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798235"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400665"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Konfigurieren einer Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) für die Verknüpfung mit einem virtuellen Netzwerk
 
@@ -60,7 +60,7 @@ Dazu müssen folgende Schritte ausgeführt werden:
     - Sie verwenden Azure ExpressRoute oder eine benutzerdefinierte Route (User-Defined Route, UDR).
     - Sie verwenden eine benutzerdefinierte Azure-SSIS IR.
     
-    Weitere Informationen finden Sie unter [Konfiguration von virtuellen Netzwerken](join-azure-ssis-integration-runtime-virtual-network.md#virtual-network-configuration).
+    Weitere Informationen finden Sie unter [Konfiguration von virtuellen Netzwerken](azure-ssis-integration-runtime-virtual-network-configuration.md).
 
 ## <a name="configure-a-virtual-network"></a>Konfigurieren eines virtuellen Netzwerks
 

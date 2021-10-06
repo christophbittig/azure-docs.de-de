@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c4c0c26d413f856e522af00d29798630263ed20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89231145"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633391"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenz zu Überwachungsaktivitäten von Azure AD
 
@@ -495,7 +495,54 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Benutzerverwaltung|Update device configuration (Gerätekonfiguration aktualisieren)|
 |Benutzerverwaltung|Rolle aktualisieren|
 
+## <a name="entitlement-management"></a>Berechtigungsverwaltung
 
+|Überwachungskategorie|Aktivität|
+|---|---|
+|Berechtigungsverwaltung|Hinzufügen der Rollenzuweisung „Berechtigungsverwaltung“|
+|Berechtigungsverwaltung|Administrator weist dem Benutzer direkt das Zugriffspaket zu|       
+|Berechtigungsverwaltung|Administrator entfernt die Zuweisung von Benutzerzugriffspaketen direkt|
+|Berechtigungsverwaltung|Genehmigen der Zugriffspaketzuweisungsanforderung|
+|Berechtigungsverwaltung|Zuweisen des Benutzers als externer Sponsor|
+|Berechtigungsverwaltung|Zuweisen des Benutzers als interner Sponsor|
+|Berechtigungsverwaltung|Automatisches Genehmigen der Zugriffspaketzuweisungsanforderung|
+|Berechtigungsverwaltung|Abbrechen der Zugriffspaketzuweisungsanforderung|
+|Berechtigungsverwaltung|Erstellen des Zugriffspakets|
+|Berechtigungsverwaltung|Erstellen der Zuweisungsrichtlinie für Zugriffspakete|
+|Berechtigungsverwaltung|Erstellen einer Benutzeraktualisierungsanforderung für die Zugriffspaketzuweisung|   
+|Berechtigungsverwaltung|Erstellen eines Katalogs für Zugriffspakete|
+|Berechtigungsverwaltung|Erstellen einer verbundenen Organisation|  
+|Berechtigungsverwaltung|Erstellen einer benutzerdefinierten Aktion|
+|Berechtigungsverwaltung|Erstellen einer Anforderung zum Entfernen von Ressourcen|
+|Berechtigungsverwaltung|Erstellen einer Ressourcenanforderung|
+|Berechtigungsverwaltung|Löschen eines Zugriffspakets|
+|Berechtigungsverwaltung|Löschen der Zuweisungsrichtlinie für Zugriffspakete|
+|Berechtigungsverwaltung|Löschen des Katalogs für Zugriffspakete|
+|Berechtigungsverwaltung|Löschen einer verbundenen Organisation|
+|Berechtigungsverwaltung|Verweigern von Zugriffspaketzuweisungsanforderung|
+|Berechtigungsverwaltung|Berechtigungsverwaltung entfernt Zugriffspaketzuweisungsanforderung für Benutzer|
+|Berechtigungsverwaltung|Ausführen einer benutzerdefinierten Aktion|
+|Berechtigungsverwaltung|Erweitern der Zugriffspaketzuweisung|
+|Berechtigungsverwaltung|Fehlerhafte Zugriffspaketzuweisungsanforderung|
+|Berechtigungsverwaltung|Erfüllen der Zugriffspaketzuweisungsanforderung|
+|Berechtigungsverwaltung|Erfüllen der Ressourcenzuweisung für Zugriffspakete| 
+|Berechtigungsverwaltung|Teilweises Erfüllen der Zugriffspaketzuweisungsanforderung|
+|Berechtigungsverwaltung|Bereit zum Erfüllen der Zugriffspaketzuweisungsanforderung|
+|Berechtigungsverwaltung|Entfernen der Rollenzuweisung „Berechtigungsverwaltung“|
+|Berechtigungsverwaltung|Entfernen der Ressourcenzuweisung für Zugriffspakete|
+|Berechtigungsverwaltung|Entfernen des Benutzers als externer Sponsor|
+|Berechtigungsverwaltung|Entfernen des Benutzers als interner Sponsor|
+|Berechtigungsverwaltung|Planen einer zukünftigen Zugriffspaketzuweisung|
+|Berechtigungsverwaltung|Aktualisieren des Zugriffspakets|
+|Berechtigungsverwaltung|Aktualisieren der Zuweisungsrichtlinie für Zugriffspakete|
+|Berechtigungsverwaltung|Aktualisieren des Katalogs für Zugriffspakete|
+|Berechtigungsverwaltung|Aktualisieren der Katalogressource für Zugriffspakete|
+|Berechtigungsverwaltung|Aktualisieren einer verbundenen Organisation|
+|Berechtigungsverwaltung|Aktualisieren einer benutzerdefinierten Aktion|
+|Berechtigungsverwaltung|Benutzeranforderung einer Zugriffspaketzuweisung|
+|Berechtigungsverwaltung|Benutzeranforderung einer Zugriffspaketzuweisung im Namen des Dienstprinzipals|
+|Berechtigungsverwaltung|Benutzeranforderungen zum Erweitern der Zugriffspaketzuweisung|
+|Berechtigungsverwaltung|Benutzeranforderungen zum Entfernen der Zugriffspaketzuweisung|
 
 
 
@@ -523,14 +570,17 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 
 |Überwachungskategorie|Aktivität|
 |---|---|
-|Andere|Anforderungsgenehmigung erstellen|
-|Andere|Zugriffsüberprüfung löschen|
-|Benutzerverwaltung|Reviewer aus Zugriffsüberprüfung entfernen|
-|Benutzerverwaltung|Anwenden der Überprüfungsergebnisse anfordern|
-|Benutzerverwaltung|Überprüfungsbeendigung anfordern|
-|Benutzerverwaltung|App-Zuweisung überprüfen|
-|Benutzerverwaltung|Gruppenmitgliedschaft überprüfen|
-|Benutzerverwaltung|RBAC-Rollenmitgliedschaft überprüfen|
+|Invited Users (Eingeladene Benutzer)|Löschen eines externen Benutzers|
+|Invited Users (Eingeladene Benutzer)|Email not sent, user unsubscribed (E-Mail nicht gesendet, Abonnement des Benutzers gekündigt)|
+|Invited Users (Eingeladene Benutzer)|Abonnierte E-Mail|
+|Invited Users (Eingeladene Benutzer)|E-Mail-Abonnement gekündigt|
+|Invited Users (Eingeladene Benutzer)|Einladungs-E-Mail|
+|Invited Users (Eingeladene Benutzer)|Externen Benutzer einladen|
+|Invited Users (Eingeladene Benutzer)|Einladen von externem Benutzer mit zurückgesetztem Einladungsstatus|
+|Invited Users (Eingeladene Benutzer)|Einladen von internem Benutzer zur B2B-Zusammenarbeit|
+|Invited Users (Eingeladene Benutzer)|Einlösen einer externen Benutzereinladung|
+|Invited Users (Eingeladene Benutzer)|Erstellen eines viralen Mandanten|
+|Invited Users (Eingeladene Benutzer)|Erstellen eines viralen Benutzers|
 
 
 ## <a name="microsoft-identity-manager-mim"></a>Microsoft Identity Manager (MIM)

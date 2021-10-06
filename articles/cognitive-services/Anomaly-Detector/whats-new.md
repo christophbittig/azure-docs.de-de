@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 06/23/2021
-ms.openlocfilehash: 2aa4fe3e7e2f7637060996b53748391da03879ec
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 07a47b432470b683680c315f2d1d741cc607774f
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123032280"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214597"
 ---
 # <a name="whats-new-in-anomaly-detector"></a>Neues in der Anomalieerkennung
 
@@ -19,6 +19,10 @@ Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versi
 Wir haben auch Links zu einigen benutzergenerierten Inhalten hinzugefügt. Diese Elemente werden mit dem Tag **[UGC]** gekennzeichnet. Einige dieser Links werden auf externen Websites gehostet, die nicht Microsoft gehören. Microsoft ist für deren Inhalt nicht verantwortlich. Verweisen Sie umsichtig auf diese Ressourcen. Wenden Sie sich an AnomalyDetector@microsoft.com, oder melden Sie ein Problem in GitHub, wenn Sie wünschen, dass wir den Inhalt löschen.
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="september-2021"></a>September 2021
+* Anomalieerkennung (univariant) verfügbar in Jio, Indien, Westen.
+* APIs zur multivarianten Anomalieerkennung wurden in fünf weiteren Regionen bereitgestellt: Asien, Osten, USA, Westen, Indien, Mitte, Südkorea, Mitte, Deutschland, Westen-Mitte.
 
 ### <a name="august-2021"></a>August 2021
 
@@ -70,9 +74,6 @@ Wir haben auch Links zu einigen benutzergenerierten Inhalten hinzugefügt. Diese
 * 20. August 2019 [Anomalieerkennung lokal einsetzen mit Containerunterstützung](https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support) – KI-Show mit Qun Ying und Seth Juarez
 * 13. August 2019 [Einführung der Azure-Anomalieerkennung](https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner) – KI-Show mit Qun Ying and Seth Juarez
 
-## <a name="open-source-projects"></a>Open-Source-Projekte
-
-* 3\. Juni 2019 **[UGC]** [Jupyter-Notebooks veranschaulichen Anomalieerkennung und Streamen in Power BI](https://github.com/marvinbuss/MS-AnomalyDetector) - Marvin Buss
 
 ## <a name="service-updates"></a>Dienstupdates
 

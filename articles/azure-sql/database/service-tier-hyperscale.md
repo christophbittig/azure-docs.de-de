@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 7/8/2021
-ms.openlocfilehash: bd5a9d64b237fe8c6591cac841b13f96a9c16f1d
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 9/9/2021
+ms.openlocfilehash: f5cc4321f49a2cee75f8111bd975f750f075680f
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864452"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094177"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Die Dienstebene „Hyperscale“ in Azure SQL-Datenbank bietet folgende zusätzl
 - Unterstützung für eine Datenbankgröße von bis zu 100 TB
 - Nahezu sofortige Datenbanksicherungen (basierend auf in Azure Blob Storage gespeicherten Dateimomentaufnahmen) unabhängig von der Größe und ohne E/A-Auswirkung auf Computeressourcen  
 - Schnelle Datenbankwiederherstellungen (basierend auf Dateimomentaufnahmen) in Minuten statt Stunden oder Tagen (kein von der Datengröße abhängiger Vorgang)
-- Höhere Gesamtleistung aufgrund eines höheren Protokolldurchsatzes und schnellere Transaktionscommits unabhängig von Datenmengen
+- Höhere Gesamtleistung aufgrund eines höheren Transaktionsprotokolldurchsatzes und schnellerer Transaktionscommits unabhängig von Datenmengen
 - Schnelle Aufskalierung: Sie können ein oder mehrere [schreibgeschützte Replikate](service-tier-hyperscale-replicas.md) zum Abladen Ihrer Leseworkload und zur Verwendung als unmittelbar betriebsbereite Standbyserver bereitstellen.
 - Schnelle Hochskalierung: Sie können Ihre Computeressourcen in konstanter Zeit hochskalieren, um hohe Workloads nach Bedarf zu bewältigen, und anschließend wieder herunterskalieren, sobald sie nicht mehr benötigt werden.
 
@@ -96,11 +96,11 @@ Die Datenbank-Engine, die auf Hyperscale-Computeknoten ausgeführt wird, ist die
 
 ### <a name="page-server"></a>Seitenserver
 
-Seitenserver sind Systeme, die eine horizontale hochskalierte Speicher-Engine darstellen.  Jeder Seitenserver ist für eine Teilmenge der Seiten in der Datenbank zuständig.  Nominell steuert jeder Seitenserver bis zu 128 GB bzw. bis zu 1 TB Daten. Es werden keine Daten auf mehreren Seitenservern gemeinsam genutzt (abgesehen von Seitenserverreplikaten, die für Redundanz und Verfügbarkeit gespeichert werden). Die Aufgabe eines Seitenservers besteht darin, Datenbankseiten nach Bedarf für die Computeknoten bereitzustellen und die Seiten auf dem neuesten Stand zu halten, wenn die Daten in Transaktionen aktualisiert werden. Seitenserver werden durch die Wiedergabe von Protokolldatensätzen aus dem Protokolldienst auf dem aktuellen Stand gehalten. Außerdem verwalten Seitenserver abdeckende SSD-basierte Caches zum Verbessern der Leistung. Eine langfristige Speicherung von Datenseiten wird in Azure Storage beibehalten, um eine zusätzliche Zuverlässigkeit zu gewährleisten.
+Seitenserver sind Systeme, die eine horizontale hochskalierte Speicher-Engine darstellen.  Jeder Seitenserver ist für eine Teilmenge der Seiten in der Datenbank zuständig.  Nominell steuert jeder Seitenserver bis zu 128 GB bzw. bis zu 1 TB Daten. Es werden keine Daten auf mehreren Seitenservern gemeinsam genutzt (abgesehen von Seitenserverreplikaten, die für Redundanz und Verfügbarkeit gespeichert werden). Die Aufgabe eines Seitenservers besteht darin, Datenbankseiten nach Bedarf für die Computeknoten bereitzustellen und die Seiten auf dem neuesten Stand zu halten, wenn die Daten in Transaktionen aktualisiert werden. Seitenserver werden durch die Wiedergabe von Transaktionsprotokoll-Datensätzen aus dem Protokolldienst auf dem aktuellen Stand gehalten. Außerdem verwalten Seitenserver abdeckende SSD-basierte Caches zum Verbessern der Leistung. Eine langfristige Speicherung von Datenseiten wird in Azure Storage beibehalten, um eine zusätzliche Zuverlässigkeit zu gewährleisten.
 
 ### <a name="log-service"></a>Protokolldienst
 
-Der Protokolldienstknoten akzeptiert Protokolldatensätze vom primären Computereplikat, speichert sie in einem permanenten Zwischenspeicher und leitet die Protokolldatensätze an die übrigen Computereplikate (damit sie ihre Caches aktualisieren können) sowie die entsprechenden Seitenserver weiter, damit die Daten dort aktualisiert werden können. Auf diese Weise werden alle Datenänderungen vom primären Computereplikat über den Protokolldienst an alle sekundären Computereplikate und Seitenserver weitergegeben. Schließlich werden die Protokolldatensätze in den langfristigen Speicher in Azure Storage gepusht. Hierbei handelt es sich um ein praktisch unbegrenztes Speicherrepository. Durch diesen Mechanismus entfällt die Notwendigkeit einer häufigen Protokollkürzung. Der Protokolldienst weist außerdem lokale Arbeitsspeicher- und SSD-Caches auf, um den Zugriff auf Protokolldatensätze zu beschleunigen.
+Der Protokolldienst akzeptiert Transaktionsprotokoll-Datensätze vom primären Computereplikat, speichert sie in einem permanenten Cache und leitet die Protokolldatensätze an die übrigen Computereplikate (zur Aktualisierung ihrer Caches) sowie an die entsprechenden Seitenserver weiter, damit die Daten dort aktualisiert werden können. Auf diese Weise werden alle Datenänderungen vom primären Computereplikat über den Protokolldienst an alle sekundären Computereplikate und Seitenserver weitergegeben. Schließlich werden die Transaktionsprotokoll-Datensätze per Push in den langfristigen Speicher in Azure Storage übertragen. Hierbei handelt es sich um ein praktisch unbegrenztes Speicherrepository. Durch diesen Mechanismus entfällt die Notwendigkeit einer häufigen Protokollkürzung. Der Protokolldienst weist außerdem lokale Arbeitsspeicher- und SSD-Caches auf, um den Zugriff auf Protokolldatensätze zu beschleunigen.
 
 ### <a name="azure-storage"></a>Azure-Speicher
 
@@ -167,49 +167,12 @@ Wenn Sie im Rahmen der Wiederherstellung einer Hyperscale-Datenbank in Azure SQL
 
 ## <a name="available-regions"></a><a name=regions></a>Verfügbare Regionen
 
-Die Hyperscale-Dienstebene für Azure SQL-Datenbank ist in allen Regionen verfügbar, standardmäßig jedoch nur in den unten aufgeführten Regionen aktiviert. Wenn Sie eine Hyperscale-Datenbank in einer Region erstellen möchten, wo Hyperscale nicht standardmäßig unterstützt wird, können Sie eine Onboardinganforderung über das Azure-Portal senden. Anweisungen finden Sie unter [Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank](quota-increase-request.md). Beachten Sie beim Übermitteln Ihrer Anforderung die folgenden Richtlinien:
+Die Dienstebene „Hyperscale“ von Azure SQL-Datenbank ist in den meisten Azure-Regionen aktiviert. Wenn Sie eine Hyperscale-Datenbank in einer Region erstellen möchten, wo Hyperscale nicht standardmäßig unterstützt wird, können Sie eine Onboardinganforderung über das Azure-Portal senden. Anweisungen finden Sie unter [Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank](quota-increase-request.md). Beachten Sie beim Übermitteln Ihrer Anforderung die folgenden Richtlinien:
 
 - Verwenden Sie den SQL-Datenbank-Kontingenttyp [Regionszugriff](quota-increase-request.md#region).
 - Fügen Sie in der Beschreibung die Compute-SKU/Gesamtanzahl der Kerne einschließlich Hochverfügbarkeits- und benannter Replikate hinzu, und geben Sie an, dass Sie Hyperscale-Kapazität anfordern.
 - Geben Sie außerdem eine Prognose der Gesamtgröße aller Datenbanken im Zeitverlauf in TB an.
 
-Aktivierte Regionen:
-- Australien (Osten)
-- Australien, Südosten
-- Australien, Mitte
-- Brasilien Süd
-- Kanada, Mitte
-- Kanada, Osten
-- USA (Mitte)
-- China, Osten 2
-- China, Norden 2
-- Asien, Osten
-- East US
-- USA, Osten 2
-- Frankreich, Mitte
-- Deutschland, Westen-Mitte
-- Japan, Osten
-- Japan, Westen
-- Korea, Mitte
-- Korea, Süden
-- USA Nord Mitte
-- Nordeuropa
-- Norwegen, Osten
-- Norwegen, Westen
-- Südafrika, Norden
-- USA Süd Mitte
-- Asien, Südosten
-- Schweiz, Westen
-- UK, Süden
-- UK, Westen
-- US DoD, Mitte
-- US DoD, Osten
-- US Govt Arizona
-- US Govt Texas
-- USA, Westen-Mitte
-- Europa, Westen
-- USA (Westen)
-- USA, Westen 2
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 

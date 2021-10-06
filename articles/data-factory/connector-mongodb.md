@@ -1,29 +1,29 @@
 ---
 title: Kopieren von Daten aus oder nach MongoDB
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Sie mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline Daten aus MongoDB in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern nach MongoDB kopieren.
-ms.author: chez
-author: chez-charlie
+description: Erfahren Sie, wie Sie mithilfe einer Copy-Aktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline Daten aus MongoDB in unterstützte Senkendatenspeicher oder Daten aus unterstützten Quelldatenspeichern nach MongoDB kopieren.
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 6788de24c3e8fc74ac69f73b5e91c13b56843eda
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 5642577cf8b8e1edf741c09bf4e1968d5cd69770
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307317"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831723"
 ---
-# <a name="copy-data-from-or-to-mongodb-by-using-azure-data-factory"></a>Kopieren von Daten aus oder nach MongoDB mithilfe von Azure Data Factory
+# <a name="copy-data-from-or-to-mongodb-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus oder nach MongoDB mithilfe von Azure Data Factory oder Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer MongoDB-Datenbank oder in eine MongoDB-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität in Azure Data Factory- oder Azure Synapse Analytics-Pipelines verwenden, um Daten aus einer MongoDB-Datenbank oder in eine MongoDB-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 >[!IMPORTANT]
->Die ADF-Version umfasst diesen neuen MongoDB-Connector, der bessere native MongoDB-Unterstützung bietet. Wenn Sie den vorherigen MongoDB-Connector in Ihrer Lösung verwenden, der aus Gründen der Abwärtskompatibilität unverändert unterstützt wird, finden Sie Informationen dazu im Artikel [MongoDB-Connector (Vorgängerversion)](connector-mongodb-legacy.md).
+>Der neue MongoDB-Connector umfasst eine bessere native MongoDB-Unterstützung. Wenn Sie den älteren MongoDB-Connector in Ihrer Lösung verwenden, der lediglich aus Gründen der Abwärtskompatibilität unverändert unterstützt wird, finden Sie entsprechende Informationen im Artikel [MongoDB-Connector (Legacy)](connector-mongodb-legacy.md).
 
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
@@ -73,7 +73,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit MongoDB verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **MongoDbV2** |Ja |
 | connectionString |Geben Sie die MongoDB-Verbindungszeichenfolge an, z.B. `mongodb://[username:password@]host[:port][/[database][?options]]`. Weitere Informationen finden Sie im [MongoDB-Handbuch zur Verbindungszeichenfolge](https://docs.mongodb.com/manual/reference/connection-string/). <br/><br /> Sie können eine Verbindungszeichenfolge auch in Azure Key Vault speichern. Ausführlichere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
@@ -103,7 +103,7 @@ Folgende Eigenschaften werden für den mit MongoDB verknüpften Dienst unterstü
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie unter [Datasets und verknüpfte Dienste](concepts-datasets-linked-services.md). Folgende Eigenschaften werden für das MongoDB-Dataset unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **MongoDbV2Collection** | Ja |
 | collectionName |Der Name der Sammlung in der MongoDB-Datenbank |Ja |
@@ -136,7 +136,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **MongoDbV2Source** | Ja |
 | filter | Gibt den Auswahlfilter mit Abfrageoperatoren an. Um alle Dokumente in einer Sammlung zurückzugeben, lassen Sie diesen Parameter aus oder übergeben Sie ein leeres Dokument ({}). | Nein |
@@ -147,7 +147,7 @@ Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unter
 | batchSize | Gibt die Anzahl von Dokumenten an, die in jedem Batch der Antwort von der MongoDB-Instanz zurückgegeben werden sollen. In den meisten Fällen wirkt sich eine Änderung der Batchgröße nicht auf den Benutzer oder die Anwendung aus. In Cosmos DB ist die maximale Größe von Batches auf 40 MB begrenzt. Dies entspricht der Summe des batchSize-Werts für die Anzahl von Dokumenten. Verringern Sie deshalb diesen Wert, falls Ihre Dokumente groß sind. | Nein<br/>(der Standardwert ist **100**) |
 
 >[!TIP]
->ADF unterstützt die Nutzung eines BSON-Dokuments im **Strict-Modus**. Stellen Sie sicher, dass die Filterabfrage den Strict-Modus und nicht den Shell-Modus aufweist. Eine weitere Beschreibung finden Sie im [MongoDB-Handbuch](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
+>Der Dienst unterstützt die Nutzung eines BSON-Dokuments im **Strict-Modus**. Stellen Sie sicher, dass die Filterabfrage den Strict-Modus und nicht den Shell-Modus aufweist. Eine weitere Beschreibung finden Sie im [MongoDB-Handbuch](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
 **Beispiel:**
 
@@ -194,7 +194,7 @@ Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität un
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **MongoDbV2Sink** festgelegt werden. |Ja |
-| writeBehavior |Beschreibt, wie Daten in MongoDB geschrieben werden. Zulässige Werte: **insert** und **upsert**.<br/><br/>Das Verhalten von **upsert** besteht darin, das Dokument zu ersetzen, wenn ein Dokument mit dem gleichen `_id`-Typ bereits vorhanden ist. Andernfalls wird das Dokument eingefügt.<br /><br />**Hinweis**: Data Factory generiert automatisch einen `_id`-Typ für ein Dokument, wenn ein `_id`-Typ weder im Originaldokument noch durch Spaltenzuordnung angegeben wird. Dies bedeutet, dass Sie sicherstellen müssen, dass Ihr Dokument eine ID besitzt, damit **upsert** wie erwartet funktioniert. |Nein<br />(der Standardwert ist **insert**) |
+| writeBehavior |Beschreibt, wie Daten in MongoDB geschrieben werden. Zulässige Werte: **insert** und **upsert**.<br/><br/>Das Verhalten von **upsert** besteht darin, das Dokument zu ersetzen, wenn ein Dokument mit dem gleichen `_id`-Typ bereits vorhanden ist. Andernfalls wird das Dokument eingefügt.<br /><br />**Hinweis**: Der Dienst generiert automatisch eine `_id` für ein Dokument, wenn eine `_id` weder im Originaldokument noch durch eine Spaltenzuordnung angegeben wird. Dies bedeutet, dass Sie sicherstellen müssen, dass Ihr Dokument eine ID besitzt, damit **upsert** wie erwartet funktioniert. |Nein<br />(der Standardwert ist **insert**) |
 | writeBatchSize | Die **writeBatchSize**-Eigenschaft steuert die Größe der in jeden Batch zu schreibenden Dokumente. Sie können versuchen, den Wert für **writeBatchSize** zu erhöhen, um die Leistung zu verbessern, oder den Wert verringern, falls Ihre Dokumente groß sind. |Nein<br />(der Standardwert ist **10.000**) |
 | writeBatchTimeout | Die Wartezeit, bis der Batch-Einfügevorgang beendet ist, bevor er eine Zeitüberschreitung verursacht. Der zulässige Wert ist timespan. | Nein<br/>(der Standardwert ist **00:30:00** – 30 Minuten) |
 
@@ -238,7 +238,7 @@ Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität un
 Sie können diesen MongoDB-Connector verwenden, um die folgenden Aufgaben auf einfache Weise zu erledigen:
 
 * Dokumente zwischen zwei MongoDB-Sammlungen unverändert kopieren.
-* Importieren von JSON-Dokumenten aus verschiedenen Quellen in MongoDB, z. B. aus Azure Cosmos DB, Azure Blob Storage, Azure Data Lake Store und anderen dateibasierten Speichern, die von Azure Data Factory unterstützt werden.
+* Importieren von JSON-Dokumenten aus verschiedenen Quellen in MongoDB, z. B. aus Azure Cosmos DB, Azure Blob Storage, Azure Data Lake Store und anderen unterstützten dateibasierten Speichern.
 * Exportieren von JSON-Dokumenten aus einer MongoDB-Sammlung in verschiedene dateibasierte Speicher.
 
 Um eine solche vom Schema unabhängige Kopie zu erzielen, überspringen Sie den Abschnitt „structure“ (auch *schema* genannt) im Dataset und die Schemazuordnung in der Kopieraktivität.
@@ -250,4 +250,4 @@ Informationen zum Kopieren von Daten aus MongoDB in eine tabellarische Senke ode
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quelles und Senken für die Kopieraktivität unterstützt werden, finden Sie in der Dokumentation für [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

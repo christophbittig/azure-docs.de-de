@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/16/2021
+ms.date: 09/24/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 76a7fa3cfeafa20dd81f043d67388bdfb281b6d4
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: c11227d975f572d6d473a22f62f4616ad024af3b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112232519"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061445"
 ---
 # <a name="user-profile-attributes"></a>Benutzerprofilattribute
 
@@ -39,7 +39,7 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](/g
 - Ob das Attribut in einem Benutzerflow verwendet werden kann
 - Ob das Attribut in einem [technischen Azure AD-Profil](active-directory-technical-profile.md) in einer benutzerdefinierten Richtlinie verwendet werden kann und in welchem Abschnitt (&lt;InputClaims&gt;, &lt;OutputClaims&gt; oder &lt;PersistedClaims&gt;)
 
-|Name     |type     |BESCHREIBUNG|Azure-Portal|Benutzerabläufe|Benutzerdefinierte Richtlinie|
+|Name     |Typ     |Beschreibung|Azure-Portal|Benutzerabläufe|Benutzerdefinierte Richtlinie|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Boolean|Gibt an, ob das Benutzerkonto aktiviert oder deaktiviert ist: **true**, wenn das Konto aktiviert ist, andernfalls **false**.|Ja|Nein|Persistent, Ausgabe|
 |ageGroup        |String|Die Altersgruppe des Benutzers. Mögliche Werte: „Null“, „Undefined“, „Minor“, „Adult“ und „NotAdult“.|Ja|Nein|Persistent, Ausgabe|
@@ -59,6 +59,7 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](/g
 |immutableId     |String|Ein Bezeichner, der in der Regel für Benutzer verwendet wird, die von einer lokalen Active Directory-Instanz migriert werden.|Nein|Nein|Persistent, Ausgabe|
 |legalAgeGroupClassification|String|Rechtliche Altersgruppenklassifizierung. Dieses Attribut ist schreibgeschützt und wird basierend auf den Eigenschaften „ageGroup“ und „consentProvidedForMinor“ berechnet. Zulässige Werte: „Null“, „minorWithOutParentalConsent“, „minorWithParentalConsent“, „minorNoParentalConsentRequired“, „notAdult“ und „adult“.|Ja|Nein|Persistent, Ausgabe|
 |legalCountry<sup>1</sup>  |String|Land/Region für rechtliche Zwecke.|Nein|Nein|Persistent, Ausgabe|
+|mail    |String|E-Mail-Adresse für den Benutzer. Beispiel: „bob@contoso.com“. HINWEIS: Akzentzeichen sind nicht zulässig.|Ja|Nein|Persistent, Ausgabe|
 |mailNickName    |String|Der E-Mail-Alias für den Benutzer. Maximale Länge: 64 Zeichen.|Nein|Nein|Persistent, Ausgabe|
 |mobile (mobilePhone) |String|Die primäre Mobiltelefonnummer des Benutzers. Maximale Länge: 64 Zeichen.|Ja|Nein|Persistent, Ausgabe|
 |netId           |String|Die Netz-ID.|Nein|Nein|Persistent, Ausgabe|
@@ -114,7 +115,7 @@ Ein Benutzer mit einem Kundenkonto kann sich mit mehreren Identitäten anmelden.
 
 In der Microsoft Graph-API werden sowohl lokale als auch Verbundidentitäten im Benutzerattribut `identities` gespeichert, das den Typ [objectIdentity](/graph/api/resources/objectidentity) aufweist. Die Sammlung `identities` stellt einen Satz von Identitäten dar, die für die Anmeldung bei einem Benutzerkonto verwendet werden. Diese Sammlung ermöglicht dem Benutzer, sich mit den zugehörigen Identitäten beim Benutzerkonto anzumelden. Das „identities“-Attribut kann bis zu zehn [objectIdentity](/graph/api/resources/objectidentity)-Objekte enthalten. Jedes Objekt enthält die folgenden Eigenschaften:
 
-| Name   | type |BESCHREIBUNG|
+| Name   | Typ |BESCHREIBUNG|
 |:---------------|:--------|:----------|
 |signInType|Zeichenfolge| Gibt die Benutzeranmeldetypen in Ihrem Verzeichnis an. Für ein lokales Konto: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName` oder ein beliebiger anderer Typ. Bei einem Konto für soziale Netzwerke muss dies auf `federated` festgelegt werden.|
 |Issuer (Aussteller)|Zeichenfolge|Gibt den Aussteller der Identität an. Bei lokalen Konten (bei denen **signInType** nicht `federated` ist) ist diese Eigenschaft der Standarddomänenname des lokalen B2C-Mandanten, z. B. `contoso.onmicrosoft.com`. Bei einer Identität für ein soziales Netzwerk (bei der der **signInType** `federated` ist) entspricht der Wert dem Namen des Ausstellers, z. B. `facebook.com`.|

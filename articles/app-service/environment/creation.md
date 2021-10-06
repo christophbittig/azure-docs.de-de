@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie eine App Service-Umgebung erstellen.
 author: ccompy
 ms.assetid: 7690d846-8da3-4692-8647-0bf5adfd862a
 ms.topic: article
-ms.date: 07/06/2021
+ms.date: 09/07/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 45d2c817f579cd183337a42e252dd3e606eafefa
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 0ed8291fd038f49e079bc3851b340bd7c9af5538
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113433200"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836357"
 ---
 # <a name="create-an-app-service-environment"></a>Erstellen einer App Service-Umgebung
 > [!NOTE]
@@ -36,15 +36,43 @@ Nachdem die ASE erstellt wurde, können Sie Folgendes nicht mehr ändern:
 
 Das Subnetz muss groß genug sein, um die maximale Größe abdecken zu können, auf die Sie Ihre ASE skalieren. Wählen Sie ein ausreichend großes Subnetz zur Unterstützung ihrer maximalen Skalierungsanforderungen aus, da es nach der Erstellung nicht mehr geändert werden kann. Die empfohlene Größe ist /24 mit 256 Adressen.
 
+## <a name="deployment-considerations"></a>Überlegungen zur Bereitstellung
+
+Es gibt zwei wichtige Punkte, die vor der Bereitstellung Ihrer ASE berücksichtigt werden müssen. 
+
+- VIP-Typ
+- Bereitstellungstyp
+
+Es gibt zwei verschiedene VIP-Typen: intern und extern. Mit einer internen VIP sind Ihre Apps in der ASE unter einer Adresse in Ihrem ASE-Subnetz erreichbar, und Ihre Apps befinden sich nicht im öffentlichen DNS. Während der Erstellung im Portal gibt es eine Option zum Erstellen einer privaten Azure DNS-Zone für Ihre ASE. Mit einer externen VIP befinden sich Ihre Apps unter einer öffentlichen, über das Internet erreichbaren Adresse, und sie befinden sich im öffentlichen DNS. 
+
+Es gibt drei verschiedene Bereitstellungstypen: 
+
+- Einzelzone 
+- Zonenredundant
+- Hostgruppe
+
+Die Einzelzonen-ASE ist in allen Regionen verfügbar, in denen ASEv3 verfügbar ist. Wenn Sie über eine Einzelzonen-ASE verfügen, unterliegen Sie einer Mindestgebühr für eine App Service-Planinstanz von „Windows Isoliert v2“. Sobald Sie über eine oder mehrere Instanzen verfügen, wird diese Gebühr entfernt. Es handelt sich nicht um eine zusätzliche Gebühr. 
+
+In einer zonenredundanten ASE verteilen sich Ihre Apps auf drei Zonen in derselben Region. Die zonenredundante ASE ist in einer Teilmenge der ASE-fähigen Regionen verfügbar, die hauptsächlich durch die Regionen eingeschränkt wird, die Verfügbarkeitszonen unterstützen. Wenn Sie über eine zonenredundante ASE verfügen, ist die kleinste Größe für Ihren App Service-Plan drei Instanzen. Dadurch wird sichergestellt, dass in jeder Verfügbarkeitszone eine Instanz vorhanden ist. App Service-Pläne können eine oder mehrere Instanzen gleichzeitig hochskaliert werden. Die Skalierung muss nicht in Einheiten von drei erfolgen, aber die App wird nur über alle Verfügbarkeitszonen ausgeglichen verteilt, wenn die Gesamtzahl der Instanzen ein Vielfaches von drei ist. Eine zonenredundante ASE verfügt über das Dreifache an Infrastruktur und wird mit zonenredundanten Komponenten hergestellt, sodass Ihre Workloads verfügbar bleiben, auch wenn zwei der drei Zonen aus irgendeinem Grund ausfallen. Aufgrund der erhöhten Systemanforderungen beträgt die Mindestgebühr für eine zonenredundante ASE neun Instanzen. Wenn Sie über weniger als neun App Service-Planinstanzen in Ihrer ASEv3 verfügen, wird die Differenz als „Windows I1v2“ berechnet. Wenn Sie über neun oder mehr Instanzen verfügen, fallen für eine zonenredundante ASE keine zusätzlichen Gebühren an. Weitere Informationen zur Zonenredundanz finden Sie unter [Regionen und Verfügbarkeitszonen][AZoverview].
+
+In einer Hostgruppenbereitstellung werden Ihre Apps in einer dedizierten Hostgruppe bereitgestellt. Die dedizierte Hostgruppe ist nicht zonenredundant. Durch eine dedizierte Hostgruppenbereitstellung kann Ihre ASE auf dedizierter Hardware bereitgestellt werden. Es gibt keine Mindestinstanzgebühr für die Verwendung einer ASE in einer dedizierten Hostgruppe, aber Sie müssen für die Hostgruppe bezahlen, wenn Sie die ASE bereitstellen. Zusätzlich dazu zahlen Sie eine rabattierte App Service-Plangebühr, wenn Sie Ihre Pläne erstellen und aufskalieren. Bei einer dedizierten Hostbereitstellung ist eine begrenzte Anzahl von Kernen verfügbar, die sowohl von den App Service-Plänen als auch von den Infrastrukturrollen verwendet werden. Dedizierte Hostbereitstellungen der ASE können die Gesamtzahl von 200 Instanzen, die normalerweise in einer ASE verfügbar sind, nicht erreichen. Die Anzahl der möglichen Gesamtinstanzen steht im Verhältnis zu der Gesamtzahl der App Service-Planinstanzen zuzüglich der lastbasierten Anzahl von Infrastrukturrollen. 
+
 ## <a name="creating-an-ase-in-the-portal"></a>Erstellen einer ASE im Portal
 
 1. Suchen Sie zum Erstellen einer ASE im Marketplace nach **App Service-Umgebung v3**.  
+
 2. Grundlegendes:  Wählen Sie das Abonnement aus, wählen Sie die Ressourcengruppe aus, bzw. erstellen Sie sie, und geben Sie den Namen Ihrer ASE ein.  Wählen Sie den Typ der virtuellen IP-Adresse aus. Wenn Sie „Intern“ auswählen, wird als ASE-Adresse für eingehenden Datenverkehr eine Adresse in Ihrem ASE-Subnetz verwendet. Wenn Sie „Extern“ auswählen, wird als ASE-Adresse für eingehenden Datenverkehr eine öffentliche Adresse mit Internetzugriff verwendet. Der ASE-Name wird auch für das Domänensuffix Ihrer ASE verwendet. Wenn Ihr ASE-Name *contoso* lautet und Sie über eine ASE mit interner VIP verfügen, lautet das Domänensuffix *contoso.appserviceenvironment.net*. Wenn Ihr ASE-Name *contoso* lautet und Sie über externe VIP verfügen, lautet das Domänensuffix *contoso.p.azurewebsites.net*. 
-![App Service-Umgebung: Registerkarte „Grundlagen“ zur Erstellung](./media/creation/creation-basics.png)
+
+    ![App Service-Umgebung: Registerkarte „Grundlagen“ zur Erstellung](./media/creation/creation-basics.png)
+
 3. Hosting: Wählen Sie für die Hostgruppenbereitstellung entweder *Aktiviert* oder *Deaktiviert* aus. „Hostgruppenbereitstellung“ wird verwendet, um dedizierte Hardware auszuwählen. Wenn Sie „Aktiviert“ auswählen, wird Ihre ASE auf dedizierter Hardware bereitgestellt. Bei der Bereitstellung auf dedizierter Hardware wird Ihnen während der ASE-Erstellung der gesamte dedizierte Host und anschließend ein reduzierter Preis für Ihre App Service-Planinstanzen in Rechnung gestellt. 
-![App Service-Umgebung: Hostingauswahl](./media/creation/creation-hosting.png)
-4. Netzwerk: Hier können Sie Ihr virtuelles Netzwerk und Ihr Subnetz auswählen oder erstellen. Wenn Sie eine ASE mit interner VIP erstellen, können Sie Azure DNS Private Zones konfigurieren, um Ihr Domänensuffix auf Ihre ASE zu verweisen. Details zur manuellen DNS-Konfiguration finden Sie im DNS-Abschnitt unter [Verwenden einer App Service-Umgebung][UsingASE].
-![App Service-Umgebung: Netzwerkauswahl](./media/creation/creation-networking.png)
+
+    ![App Service-Umgebung: Hostingauswahl](./media/creation/creation-hosting.png)
+
+4. Netzwerk: Hier können Sie Ihr virtuelles Netzwerk und Ihr Subnetz auswählen oder erstellen. Wenn Sie eine ASE mit interner VIP erstellen, können Sie private Azure DNS-Zonen konfigurieren, damit Ihr Domänensuffix auf Ihre ASE verweist. Details zur manuellen DNS-Konfiguration finden Sie im DNS-Abschnitt unter [Verwenden einer App Service-Umgebung][UsingASE].
+
+    ![App Service-Umgebung: Netzwerkauswahl](./media/creation/creation-networking.png)
+
 5. Überprüfen und erstellen: Überprüfen Sie, ob die Konfiguration korrekt ist, und wählen Sie „Erstellen“ aus. Die Erstellung Ihrer ASE kann bis zu knapp zwei Stunden dauern. 
 
 Nachdem die Erstellung Ihrer ASE abgeschlossen ist, können Sie sie als Speicherort auswählen, wenn Sie Ihre Apps erstellen. Weitere Informationen zum Erstellen von Apps in Ihrer ASE sowie zum Verwalten Ihrer ASE finden Sie unter [Verwenden einer App Service-Umgebung][UsingASE].
@@ -68,3 +96,4 @@ Die ASE wird normalerweise auf VMs bereitgestellt, die auf einem mehrinstanzfäh
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/alerts/alerts-log.md
+[AZoverview]: ../../availability-zones/az-overview.md

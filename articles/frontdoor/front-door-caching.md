@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/29/2020
+ms.date: 09/13/2021
 ms.author: duau
-ms.openlocfilehash: 977a0d3eb0081818c0afe4f544dd33169cea0e95
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: 1fb1aafed996fa79177157f6c20e6727ee532e7d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112370471"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563113"
 ---
 # <a name="caching-with-azure-front-door"></a>Zwischenspeicherung mit Azure Front Door
 In diesem Dokument werden die Verhaltensweisen von Azure Front Door Service mit Routingregeln mit aktivierter Zwischenspeicherung erläutert. Front Door ist ein modernes Content Delivery Network (CDN) mit Beschleunigung dynamischer Websites und Lastenausgleich und unterstützt zudem wie jedes andere CDN auch Zwischenspeicherungsverhaltensweisen.
@@ -81,6 +81,9 @@ Diese Profile unterstützen die folgenden Komprimierungscodierungen:
 Unterstützt eine Anforderung die GZip- und Brotli-Komprimierung, hat die Brotli-Komprimierung Vorrang.</br>
 Wenn in einer Anforderung für eine Ressource eine Komprimierung angegeben ist und die Anforderung zu einem Cachefehler führt, führt Azure Front Door Service die Komprimierung der Ressource direkt auf dem POP-Server durch. Anschließend wird die komprimierte Datei aus dem Cache bereitgestellt. Das resultierende Element wird mit „transfer-encoding: chunked“ zurückgegeben.
 
+> [!NOTE]
+> Bereichsanforderungen können in verschiedene Größen komprimiert werden. Azure Front Door verlangt, dass die Werte für die Inhaltslänge für jede GET-HTTP-Anforderung gleich sind. Wenn Clients Byte-Bereichsanforderungen mit dem `accept-encoding` Header senden, was dazu führt, dass der Ursprung mit unterschiedlichen Inhaltslängen antwortet: dann gibt Azure Front Door einen 503-Fehler zurück. Sie können entweder die Komprimierung auf Origin/Azure Front Door deaktivieren oder eine Regelsatzregel erstellen, um `accept-encoding` aus der Anforderung für Byte-Bereichsanforderungen zu entfernen.
+
 ## <a name="query-string-behavior"></a>Verhalten von Abfragezeichenfolgen
 Mit Azure Front Door Service können Sie steuern, wie Dateien für eine Webanforderung, die eine Abfragezeichenfolge enthält, zwischengespeichert werden. In einer Webanforderung mit einer Abfragezeichenfolge ist die Abfragezeichenfolge der Teil der Anforderung, der auf das Fragezeichen („?“) folgt. Eine Abfragezeichenfolge kann ein oder mehrere Schlüssel-Wert-Paare enthalten, wobei der Feldname und sein Wert durch ein Gleichheitszeichen („=“) getrennt sind. Die einzelnen Schlüssel-Wert-Paare sind durch ein kaufmännisches Und-Zeichen („&“) voneinander getrennt. Beispiel: `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Falls mehrere Schlüssel-Wert-Paare in einer Abfragezeichenfolge derselben Anforderung vorhanden sind, spielt die Reihenfolge keine Rolle.
 - **Ignorieren von Abfragezeichenfolgen:** In diesem Modus übergibt Azure Front Door Service die Abfragezeichenfolgen bei der ersten Anforderung vom Anforderer an das Back-End und speichert die Ressource im Cache zwischen. Für alle nachfolgenden Anforderungen der Ressource, die von der Azure Front Door Service-Umgebung verarbeitet werden, werden die Abfragezeichenfolgen bis zum Ablauf der zwischengespeicherten Ressource ignoriert.
@@ -121,11 +124,20 @@ Die folgenden Anforderungsheader werden bei Verwendung der Zwischenspeicherung n
 - Content-Length
 - Transfer-Encoding
 
-## <a name="cache-duration"></a>Cachedauer
+## <a name="cache-behavior-and-duration"></a>Cache-Verhalten und Dauer
 
-Die Cachedauer kann sowohl im Frontdoor-Designer als auch in der Regel-Engine konfiguriert werden. Die im Front Door-Designer festgelegte Cachedauer ist die minimale Cachedauer. Diese Außerkraftsetzung funktioniert nicht, wenn der Cachesteuerungsheader vom Ursprung eine längere Gültigkeitsdauer aufweist als der Außerkraftsetzungswert. 
+Das Cache-Verhalten und die Cache-Dauer können sowohl in der Front Door Designer Routingregel als auch in der Rules Engine konfiguriert werden. Die Zwischenspeichern-Konfiguration der Rules Engine hat immer Vorrang vor der Konfiguration der Routingregel des Front Door Designers.
 
-Die über die Regel-Engine festgelegte Cachedauer ist eine echte Cacheaußerkraftsetzung. Das bedeutet, dass der Außerkraftsetzungswert unabhängig vom Wert des Ursprungsantwortheaders verwendet wird.
+* Wenn *Caching***deaktiviert** ist, zwischenspeichert Front Door den Inhalt der Antwort unabhängig von den Urpsprungsantwortsanweisungen nicht.
+
+* Wenn *Caching***aktiviert** ist, ist das Cache-Verhalten für verschiedene Werte von *standardmäßige Cache-Dauer verwenden* unterschiedlich.
+    * Wenn *standardmäßige Cache-Dauer verwenden* auf **Ja** gesetzt ist, wird Front Door immer die Ursprungsantwortheader-Anweisung beachten. Wenn die Ursprungsrichtlinie fehlt, wird Front Door den Inhalt 1 bis 3 Tage lang zwischen speichern.
+    * Wenn *standardmäßige Cache-Dauer verwenden* auf **Nein** gesetzt ist,setzt Front Door immer die *Cache-Dauer* (erforderliche Felder) außer Kraft setzen, was bedeutet, dass es den Inhalt für die Cache-Dauer zwischenspeichert und dabei die Werte der Urpsprungsantwortsanweisungen ignoriert. 
+
+> [!NOTE]
+> * Die in der Front Door-Designer-Routingregel festgelegte *Cache-Dauer* ist die **Mindest-Cache-Dauer**. Diese Außerkraftsetzung funktioniert nicht, wenn der Cachesteuerungs-Header vom Ursprung eine größere TTL hat als der Außerkraftsetzungsungswert hat.
+> * Cache-Inhalte können aus dem Azure Front Door entfernt werden, bevor sie abgelaufen sind, wenn die Inhalte nicht so häufig angefordert werden, um Platz für häufiger angeforderte Inhalte zu schaffen.
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
