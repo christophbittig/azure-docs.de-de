@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: e02ac9d6abd3358218f268fb3da1e99b90fac7c5
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 9f095bbadf8f395b809d46c8beea5f6665932d12
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568080"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357915"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Tutorial: Verwenden von Key Vault-Verweisen in einer ASP.NET Core-App
 
@@ -203,7 +203,7 @@ Zum Hinzufügen eines Geheimnisses zum Tresor müssen Sie lediglich einige zusä
 
 Die Azure App Configuration greift nicht auf Ihren Schlüsseltresor zu. Ihre App liest direkt aus dem Key Vault, sodass Sie Ihrer App Lesezugriff auf die Geheimnisse in Ihrem Schlüsseltresor gewähren müssen. Auf diese Weise bleibt das Geheimnis immer in Ihrer App. Der Zugriff kann entweder mithilfe einer [Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md) oder der [rollenbasierten Zugriffssteuerung](../key-vault/general/rbac-guide.md)von Azure gewährt werden.
 
-Sie verwenden `DefaultAzureCredential` in Ihrem obigen Code. Es handelt sich um eine aggregierte Tokenanmeldeinformation, die automatisch eine Reihe von Anmeldeinformationstypen wie`EnvironmentCredential`, `ManagedIdentityCredential`, `SharedTokenCacheCredential`, and `VisualStudioCredential` ausprobiert. Weitere Informationen hierzu finden Sie in der Dokumentation unter [DefaultAzureCredential-Klasse.](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) Sie können `DefaultAzureCredential` explizit durch einen beliebigen Anmeldeinformationstyp ersetzen. Mit `DefaultAzureCredential` können Sie jedoch den gleichen Code verwenden, der sowohl in lokalen als auch in Azure-Umgebungen ausgeführt wird. Beispielsweise gewähren Sie Ihren eigenen Anmeldeinformationen Zugriff auf Ihren Schlüsseltresor. `DefaultAzureCredential` greift automatisch auf `SharedTokenCacheCredential` oder `VisualStudioCredential` zurück, wenn Sie Visual Studio für die lokale Entwicklung verwenden.
+Sie verwenden `DefaultAzureCredential` in Ihrem obigen Code. Es handelt sich um eine aggregierte Tokenanmeldeinformation, die automatisch eine Reihe von Anmeldeinformationstypen wie`EnvironmentCredential`, `ManagedIdentityCredential`, `SharedTokenCacheCredential`, and `VisualStudioCredential` ausprobiert. Weitere Informationen hierzu finden Sie in der Dokumentation unter [DefaultAzureCredential-Klasse.](/dotnet/api/azure.identity.defaultazurecredential) Sie können `DefaultAzureCredential` explizit durch einen beliebigen Anmeldeinformationstyp ersetzen. Mit `DefaultAzureCredential` können Sie jedoch den gleichen Code verwenden, der sowohl in lokalen als auch in Azure-Umgebungen ausgeführt wird. Beispielsweise gewähren Sie Ihren eigenen Anmeldeinformationen Zugriff auf Ihren Schlüsseltresor. `DefaultAzureCredential` greift automatisch auf `SharedTokenCacheCredential` oder `VisualStudioCredential` zurück, wenn Sie Visual Studio für die lokale Entwicklung verwenden.
 
 Alternativ können Sie die Umgebungsvariablen AZURE_TENANT_ID, AZURE_CLIENT_ID und AZURE_CLIENT_SECRET festlegen und `DefaultAzureCredential` wird den geheimen Clientschlüssel verwenden, den Sie über `EnvironmentCredential` verwenden, um sich bei Ihrem Schlüsseltresor zu authentifizieren. Nachdem Ihre App für einen Azure-Dienst mit aktivierter verwalteter Identität bereitgestellt wurde, wie z. B. dem Azure App Service, Azure Kubernetes Service oder der Azure Containerinstanz, gewähren Sie der verwalteten Identität des Azure-Diensts die Berechtigung für den Zugriff auf Ihren Schlüsseltresor. `DefaultAzureCredential` verwendet wird automatisch `ManagedIdentityCredential`, wenn Ihre App in Azure ausgeführt wird. Sie können dieselbe verwaltete Identität verwenden, um sich sowohl mit App Configuration als auch mit dem Key Vault authentifizieren. Weitere Informationen finden Sie unter [ das Verwenden verwalteter Identitäten für den Zugriff auf App Configuration](howto-integrate-azure-managed-service-identity.md).
 

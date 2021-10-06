@@ -10,12 +10,12 @@ ms.date: 08/16/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2aeedab7e8ec7204137ec12fdcc049c0ad01881f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3a28699af7167bfbc6ffd9a00d64b4fbfd593693
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606283"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389378"
 ---
 # <a name="configure-immutability-policies-for-containers"></a>Konfigurieren von Unveränderlichkeitsrichtlinien für Container
 
@@ -60,8 +60,8 @@ Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName <resource-group> `
 Um eine zeitbasierte Aufbewahrungsrichtlinie für einen Container mit Azure CLI zu konfigurieren, rufen Sie den Befehl [az storage container immutability-policy create](/cli/azure/storage/container/immutability-policy#az_storage_container_immutability_policy_create) auf, und geben Sie das Aufbewahrungsintervall in Tagen an. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli
-az storage container immutability-policy \
-    --resource-group <resource-group>
+az storage container immutability-policy create \
+    --resource-group <resource-group> \
     --account-name <storage-account> \
     --container-name <container> \
     --period 10
@@ -121,14 +121,14 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName <resource-group
 Um eine nicht gesperrte, zeitbasierte Aufbewahrungsrichtlinie mit Azure CLI zu ändern, rufen Sie den Befehl [az storage container immutability-policy extend](/cli/azure/storage/container/immutability-policy#az_storage_container_immutability_policy_extend) auf, und geben Sie das neue Aufbewahrungsintervall in Tagen an. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli
-$etag=$(az storage container immutability-policy show /
-        --account-name <storage-account> /
-        --container-name <container> /
-        --query etag /
+$etag=$(az storage container immutability-policy show \
+        --account-name <storage-account> \
+        --container-name <container> \
+        --query etag \
         --output tsv)
 
-az storage container immutability-policy \
-    --resource-group <resource-group>
+az storage container immutability-policy extend \
+    --resource-group <resource-group> \
     --account-name <storage-account> \
     --container-name <container> \
     --period 21 \
@@ -176,16 +176,16 @@ Lock-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName <resource-group> 
 Um eine Richtlinie mit Azure CLI zu sperren, rufen Sie zunächst den Befehl [az storage container immutability-policy show](/cli/azure/storage/container/immutability-policy#az_storage_container_immutability_policy_show) auf, um das ETag der Richtlinie abzurufen. Rufen Sie als Nächstes den Befehl [az storage container immutability-policy lock](/cli/azure/storage/container/immutability-policy#az_storage_container_immutability_policy_lock) auf, und übergeben Sie den ETag-Wert, um die Richtlinie zu sperren. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli
-$etag=$(az storage container immutability-policy show /
-        --account-name <storage-account> /
-        --container-name <container> /
-        --query etag /
+$etag=$(az storage container immutability-policy show \
+        --account-name <storage-account> \
+        --container-name <container> \
+        --query etag \
         --output tsv)
 
-az storage container immutability-policy lock /
-    --resource-group <resource-group> /
-    --account-name <storage-account> /
-    --container-name <container> /
+az storage container immutability-policy lock \
+    --resource-group <resource-group> \
+    --account-name <storage-account> \
+    --container-name <container> \
     --if-match $etag
 ```
 
@@ -235,20 +235,20 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName <resource-group> `
 Um mit der Azure CLI eine Aufbewahrungrichtlinie für juristische Zwecke für einen Container zu konfigurieren, rufen Sie den Befehl [az storage container legal-hold set](/cli/azure/storage/container/legal-hold#az_storage_container_legal_hold_set) auf. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli
-az storage container legal-hold set /
-    --tags tag1 tag2 /
-    --container-name <container> /
-    --account-name <storage-account> /
+az storage container legal-hold set \
+    --tags tag1 tag2 \
+    --container-name <container> \
+    --account-name <storage-account> \
     --resource-group <resource-group>
 ```
 
 Um eine Aufbewahrungrichtlinie für juristische Zwecke zu löschen, rufen Sie den Befehl [az storage container legal-hold clear](/cli/azure/storage/container/legal-hold#az_storage_container_legal_hold_clear) auf:
 
 ```azurecli
-az storage container legal-hold clear /
-    --tags tag1 tag2 /
-    --container-name <container> /
-    --account-name <storage-account> /
+az storage container legal-hold clear \
+    --tags tag1 tag2 \
+    --container-name <container> \
+    --account-name <storage-account> \
     --resource-group <resource-group>
 ```
 

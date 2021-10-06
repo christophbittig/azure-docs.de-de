@@ -1,15 +1,15 @@
 ---
 title: Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 description: Erfahren Sie, wie Sie alle Azure Lighthouse-Delegierungsaktivitäten für Ihren verwaltenden Mandanten überwachen können.
-ms.date: 05/11/2021
+ms.date: 09/08/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2472e7519a6c45ff62fb0c0280f0886b4aa0ff4d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 7eb38ac8ac7f86fd179663fe7bfb3aa1fb4e8830
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077698"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819596"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 
@@ -41,7 +41,9 @@ Nachdem Sie Ihre Zugriffsrechte erhöht haben, weist Ihr Konto die Rolle „Benu
 Nachdem Sie die Zugriffsrechte erhöht haben, können Sie einem Konto die entsprechenden Berechtigungen zuweisen, damit es Aktivitätsprotokolldaten auf Mandantenebene abfragen kann. Diesem Konto muss die integrierte Azure-Rolle [Überwachungsleser](../../role-based-access-control/built-in-roles.md#monitoring-reader) im Stammbereich Ihres Verwaltungsmandanten zugewiesen sein.
 
 > [!IMPORTANT]
-> Das Erteilen einer Rollenzuweisung im Stammbereich bedeutet, dass die gleichen Berechtigungen für jede Ressource im Mandanten gelten. Da dies einen sehr weitgefassten Zugriff ermöglicht, sollten Sie [diese Rolle möglicherweise einem Dienstprinzipalkonto zuweisen und dieses Konto für das Abfragen von Daten verwenden](#use-a-service-principal-account-to-query-the-activity-log). Sie können auch einzelnen Benutzern oder Benutzergruppen die Rolle „Überwachungsleser“ im Stammbereich zuweisen, damit sie die [Delegierungsinformationen direkt im Azure-Portal anzeigen](#view-delegation-changes-in-the-azure-portal) können. Beachten Sie, dass es sich hierbei um einen umfassenden Zugriff handelt, der auf eine möglichst geringe Anzahl von Benutzern begrenzt sein sollte.
+> Das Erteilen einer Rollenzuweisung im Stammbereich bedeutet, dass die gleichen Berechtigungen für jede Ressource im Mandanten gelten. Da dies einen sehr weitgefassten Zugriff ermöglicht, empfehlen wir, [diese Rolle einem Dienstprinzipalkonto zuzuweisen und dieses Konto für das Abfragen von Daten zu verwenden](#use-a-service-principal-account-to-query-the-activity-log).
+> 
+> Sie können auch einzelnen Benutzern oder Benutzergruppen die Rolle „Überwachungsleser“ im Stammbereich zuweisen, damit sie die [Delegierungsinformationen direkt im Azure-Portal anzeigen](#view-delegation-changes-in-the-azure-portal) können. Beachten Sie, dass es sich hierbei um einen umfassenden Zugriff handelt, der auf eine möglichst geringe Anzahl von Benutzern begrenzt sein sollte.
 
 Verwenden Sie eine der folgenden Methoden für die Stammbereichszuweisung.
 

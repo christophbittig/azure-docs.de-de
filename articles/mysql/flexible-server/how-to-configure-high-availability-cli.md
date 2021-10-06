@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 04/1/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 0327e725534f7b56171814e99098cee365785d8c
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: b6a430c70d59ff980063139e71daf76d1ede220a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114205011"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610142"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-with-azure-cli"></a>Verwalten von zonenredundanter Hochverfügbarkeit für Azure Database für MySQL Flexible Server mit Azure CLI
 
@@ -30,7 +30,9 @@ Die Hochverfügbarkeitsfunktion stellt ein physisch getrenntes primäres und Sta
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+- Ein Azure-Konto mit einem aktiven Abonnement. 
+
+    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 - Installieren Sie die Azure CLI, oder upgraden Sie sie auf die neueste Version. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 - Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az_login) beim Azure-Konto an. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
 
@@ -46,20 +48,23 @@ Die Hochverfügbarkeitsfunktion stellt ein physisch getrenntes primäres und Sta
 
 ## <a name="enable-high-availability-during-server-creation"></a>Aktivieren von Hochverfügbarkeit während der Servererstellung
 
-Sie können Server nur mit den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ mit Hochverfügbarkeit erstellen. Sie können Hochverfügbarkeit für einen Server nur während der Erstellung aktivieren.
+Sie können Server nur mit den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ mit Hochverfügbarkeit erstellen. Sie können zonenredundante Hochverfügbarkeit für einen Server nur während der Erstellung aktivieren.
 
 **Syntax:**
 
    ```azurecli
-    az mysql flexible-server create [--high-availability {Disabled, Enabled}]
+    az mysql flexible-server create [--high-availability {Disabled, SameZone, ZoneRedundant}]
+                                    [--sku-name]
+                                    [--tier]
                                     [--resource-group]
+                                    [--location]
                                     [--name]
    ```
 
 **Beispiel:**
 
    ```azurecli
-    az mysql flexible-server create --name myservername --sku-name Standard-D2ds_v4 --resource-group myresourcegroup --high-availability Enabled
+    az mysql flexible-server create --name myservername --sku-name Standard_D2ds_v4 --tier Genaralpurpose --resource-group myresourcegroup --high-availability ZoneRedundant --location eastus
    ```
 
 ## <a name="disable-high-availability"></a>Deaktivieren der Hochverfügbarkeit
@@ -67,10 +72,12 @@ Sie können Server nur mit den Tarifen „Universell“ oder „Arbeitsspeichero
 Sie können die Hochverfügbarkeit mit dem Befehl [az mysql flexible-server update](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_update) deaktivieren. Beachten Sie, dass das Deaktivieren von Hochverfügbarkeit nur unterstützt wird, wenn der Server mit Hochverfügbarkeit erstellt wurde. 
 
 ```azurecli
-az mysql flexible-server update [--high-availability {Disabled, Enabled}]
+az mysql flexible-server update [--high-availability {Disabled, SameZone, ZoneRedundant}]
                                 [--resource-group]
                                 [--name]
 ```
+>[!Note]
+>Wenn Sie von zonenredundanter Hochverfügbarkeit zu Hochverfügbarkeit in derselben Zone wechseln möchten, müssen Sie zuerst die Hochverfügbarkeit deaktivieren und dann dieselbe Zone aktivieren.
 
 **Beispiel:**
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/13/2021
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe5f9987cb99aa90d1452b4f442e326d4e95bcee
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: 3c4ea1a6b66980081597f301f22243bfd7397630
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113687801"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388335"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -273,8 +273,8 @@ Machen Sie die Änderungen, die Sie als Teil des aktivierten Notfallplans vorgen
  Wenn ein Notfall auftritt, und Ihre Organisation noch keine Entschärfung oder keinen Notfallplan implementiert hat, befolgen Sie die Empfehlungen im Abschnitt [Notfallpläne für Benutzersperre](#contingencies-for-user-lockout), wenn bereits die Richtlinien für bedingten Zugriff zum Erzwingen von MFA verwendet werden.
 Wenn Ihre Organisation ältere, pro Benutzer geltende MFA-Richtlinien verwendet, können Sie die folgende Alternative erwägen:
 
-1. Wenn Sie über die ausgehende IP-Adresse des Unternehmensnetzwerks verfügen, können Sie sie zum Aktivieren der ausschließlichen Authentifizierung bei dem Unternehmensnetzwerk als vertrauenswürdige IP-Adresse hinzufügen.
-   1. Wenn Sie nicht über ausgehende IP-Adressen verfügen oder Sie das Aktivieren des Zugriffs innerhalb und außerhalb des Unternehmensnetzwerks benötigten, können Sie den gesamten IPv4-Adressraum als vertrauenswürdige IP-Adressen hinzufügen, indem Sie 0.0.0.0/1 und 128.0.0.0/1 angeben.
+- Wenn Sie über die ausgehende IP-Adresse des Unternehmensnetzwerks verfügen, können Sie sie zum Aktivieren der ausschließlichen Authentifizierung bei dem Unternehmensnetzwerk als vertrauenswürdige IP-Adresse hinzufügen.
+- Wenn Sie nicht über ausgehende IP-Adressen verfügen oder Sie das Aktivieren des Zugriffs innerhalb und außerhalb des Unternehmensnetzwerks benötigten, können Sie den gesamten IPv4-Adressraum als vertrauenswürdige IP-Adressen hinzufügen, indem Sie 0.0.0.0/1 und 128.0.0.0/1 angeben.
 
 >[!IMPORTANT]
  > Wenn Sie die vertrauenswürdigen IP-Adressen erweitern, um die Blockierung des Zugriffs aufzuheben, werden keine Risikoerkennungen im Zusammenhang mit IP-Adressen (z. B. unmöglicher Ortswechsel oder unbekannte Orte) generiert.

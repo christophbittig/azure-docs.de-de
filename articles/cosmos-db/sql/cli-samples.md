@@ -1,24 +1,25 @@
 ---
-title: 'Azure CLI-Beispiele für Azure Cosmos DB: Core-API (SQL)'
-description: 'Azure CLI-Beispiele für Azure Cosmos DB: Core-API (SQL)'
+title: Azure CLI-Beispiele für Azure Cosmos DB | Microsoft-Dokumentation
+description: Dieser Artikel listet mehrere Azure CLI-Codebeispiele auf, die für die Interaktion mit Azure Cosmos DB verfügbar sind. Anzeigen von API-spezifische CLI-Beispielen.
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 10/13/2020
+ms.date: 09/17/2021
 ms.author: mjbrown
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5f68f09b8d97e9d653f1551c2ca1fe5ed5a47b0e
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.custom: devx-track-azurecli, seo-azure-cli
+keywords: cosmos db, azure cli Beispiele, azure cli Beispielcode, azure cli Beispielscript
+ms.openlocfilehash: 4529b51ff5109bfa6b8814b23e7e82844e7fb95c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123117540"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567716"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-core-sql-api"></a>Azure CLI-Beispiele für Azure Cosmos DB: Core-API (SQL)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
-Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Cosmos DB. Navigieren Sie über die Links auf der rechten Seite zu API-spezifischen Beispielen. Allgemeine Beispiele sind in allen APIs identisch. Referenzseiten für alle CLI-Befehle für Azure Cosmos DB sind in der [Referenz zur Azure CLI](/cli/azure/cosmosdb) verfügbar. Die CLI-Skriptbeispiele für Azure Cosmos DB finden Sie auch im [GitHub-Repository zur Azure Cosmos DB-CLI](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
+Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Cosmos DB. Verwenden Sie die Links auf der rechten Seite, um zu API-spezifischen Beispielen zu navigieren. Allgemeine Beispiele sind in allen APIs identisch. Referenzseiten für alle CLI-Befehle für Azure Cosmos DB sind in der [Referenz zur Azure CLI](/cli/azure/cosmosdb) verfügbar. Die CLI-Skriptbeispiele für Azure Cosmos DB finden Sie auch im [GitHub-Repository zur Azure Cosmos DB-CLI](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
 
 Für diese Beispiele wird mindestens Version 2.12.1 der Azure CLI benötigt. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
@@ -41,8 +42,8 @@ Diese Beispiele gelten für alle Azure Cosmos DB-APIs.
 
 |Aufgabe | BESCHREIBUNG |
 |---|---|
-| [Erstellen eines Kontos, einer Datenbank und eines Containers in Azure Cosmos DB](../scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Containers in Azure Cosmos DB für die Core-API (SQL) |
-| [Konto, Datenbank und Container mit Autoskalierung in Azure Cosmos erstellen](../scripts/cli/sql/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Containers mit Autoskalierung in Azure Cosmos DB für die Core-API (SQL) |
-| [Durchsatzvorgänge](../scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Lesen, Aktualisieren und Migrieren zwischen automatisch skaliertem und standardmäßigem Durchsatz in einer Datenbank und einem Container|
+| [Erstellen einer Azure Cosmos-Kontodatenbank und eines Containers](../scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Containers in Azure Cosmos DB für die Core-API (SQL) |
+| [Erstellen von einem Azure Cosmos Konto, einer Datenbank und einem Container mit Autoskalierung](../scripts/cli/sql/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellen eines Kontos, einer Datenbank und eines Containers mit Autoskalierung in Azure Cosmos DB für die Core-API (SQL) |
+| [Durchsatzvorgänge](../scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Lesen, Aktualisieren und Migrieren zwischen Autoskalierung und Standarddurchsatz auf einer Datenbank und einem Container.|
 | [Sperren von Ressourcen für die Löschung](../scripts/cli/sql/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Verhindern des Löschens von Ressourcen mit Ressourcensperren|
 |||

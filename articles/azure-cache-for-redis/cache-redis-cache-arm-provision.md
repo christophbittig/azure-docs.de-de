@@ -1,18 +1,18 @@
 ---
 title: Bereitstellen von Azure Cache for Redis mithilfe einer Azure Resource Manager-Vorlage
 description: Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) verwenden, um eine Azure Cache for Redis-Ressource bereitzustellen. Vorlagen werden für gängige Szenarien bereitgestellt.
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 04/28/2021
-ms.openlocfilehash: e9c804868c64d84b8cbe98093f75c4a45d568ec3
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 1f284169387209f3783a9621419bf17ea8240619
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112458756"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537705"
 ---
 # <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>Schnellstart: Erstellen einer Azure Cache for Redis-Ressource mithilfe einer ARM-Vorlage
 
@@ -43,7 +43,7 @@ Die folgenden Ressourcen sind in der Vorlage definiert:
 Resource Manager-Vorlagen für den neuen [Tarif „Premium“](cache-overview.md#service-tiers) sind ebenfalls verfügbar.
 
 * [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Clustering](https://azure.microsoft.com/resources/templates/redis-premium-cluster-diagnostics/)
-* [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Datenpersistenz](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
+* [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Datenpersistenz](https://azure.microsoft.com/resources/templates/redis-premium-persistence/)
 * [Erstellen eines in einem virtuellen Netzwerk bereitgestellten Premium Redis Caches](https://azure.microsoft.com/resources/templates/redis-premium-vnet/)
 
 Die neuesten Vorlagen finden Sie in [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) unter _Azure Cache for Redis_.

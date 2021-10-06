@@ -1,18 +1,18 @@
 ---
 title: 'Tutorial: Erstellen einer Web-App (cachefremd) – Azure Cache for Redis'
 description: Hier erfahren Sie, wie Sie eine Web-App mit Azure Cache for Redis erstellen, die ein cachefremdes Muster nutzt.
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: 2c274ffa263ac2313171ac7adc08f2ea2120c57c
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 7dc957607e9fbc36d25c028f45fffb5f93811db2
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112234661"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534735"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Tutorial: Erstellen eines cachefremden Leaderboards in ASP.NET
 

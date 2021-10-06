@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 194c37d38242e3376516b660dd37071d128b77fa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1ba1a97acfe2345ed5632ae6f84caacc525f13e4
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128650057"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544809"
 ---
 # <a name="delete-an-azure-billing-payment-method"></a>Löschen einer Zahlungsmethode für die Azure-Abrechnung
 
@@ -71,7 +71,7 @@ Nachdem alle Bedingungen erfüllt wurden, können Sie die Zahlungsmethode vom Ab
 1. Navigieren Sie zurück zu **Kostenverwaltung + Abrechnung** > **Abrechnungsprofile** > **Zahlungsmethoden**. Wählen Sie die Option **Trennen** aus. Wählen Sie unten auf der Seite „Detach the default payment method“ (Standardzahlungsmethode trennen) die Option **Trennen** aus.
 
 > [!NOTE]
-> - Nachdem Sie ein Abonnement gekündigt haben, kann es bis zu 90 Tage dauern, bis das Abonnement gelöscht wird. Gehen Sie wie folgt vor, um die Wartezeit zu verkürzen: Öffnen Sie eine Azure-Supportanfrage mit der Bitte zur sofortigen Löschung des Abonnements.
+> - Nachdem Sie ein Abonnement gekündigt haben, kann es bis zu 90 Tage dauern, bis das Abonnement gelöscht wird.
 > - Sie können eine Zahlungsmethode nur löschen, nachdem alle vorherigen Gebühren für ein Abrechnungsprofil beglichen wurden. Wenn Sie sich innerhalb eines aktiven Abrechnungszeitraums befinden, müssen Sie bis zum Ende des Abrechnungszeitraums warten, bis Sie Ihre Zahlungsmethode löschen können. **Stellen Sie sicher, dass alle anderen Bedingungen für die Trennung erfüllt sind, während Sie auf das Ende Ihres Abrechnungszeitraums warten**.
 
 ## <a name="delete-a-mosp-payment-method"></a>Löschen einer MOSP-Zahlungsmethode
@@ -95,7 +95,7 @@ Führen Sie die unten angegebenen Schritte aus, falls Ihre Zahlungsmethode von e
 1. Navigieren Sie zurück zu **Kostenverwaltung + Abrechnung** > **Abrechnungsprofile** > **Zahlungsmethoden**, und löschen Sie die Zahlungsmethode.
 
 > [!NOTE]
-> Nachdem Sie ein Abonnement gekündigt haben, kann es bis zu 90 Tage dauern, bis das Abonnement gelöscht wird. Gehen Sie wie folgt vor, um die Wartezeit zu verkürzen: Öffnen Sie eine Azure-Supportanfrage mit der Bitte zur sofortigen Löschung des Abonnements.
+> Nachdem Sie ein Abonnement gekündigt haben, kann es bis zu 90 Tage dauern, bis das Abonnement gelöscht wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

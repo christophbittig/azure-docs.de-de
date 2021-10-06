@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: f83ff3d1d03354daef3466c1f48eaa505e378634
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da37816b68e9984fdf801e3e84d50a57bf290e96
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94693748"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273550"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Verschieben eines externen Lastenausgleichs in eine andere Region über das Azure-Portal
 
@@ -289,7 +289,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Lastenausgleich für die Ver
                     }
                 ]
         ```
-       Informationen zu Lastenausgleichsregeln finden Sie unter [Was versteht man unter Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+       Informationen zu Lastenausgleichsregeln finden Sie unter [Was versteht man unter Azure Load Balancer?](load-balancer-overview.md)
 
     * **Tests:** Sie können in der Konfiguration einen Test des Lastenausgleichs hinzufügen oder entfernen, indem Sie Einträge in der Datei „template.json“ im Abschnitt **probes** hinzufügen oder entfernen:
 
@@ -309,7 +309,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Lastenausgleich für die Ver
                     }
                 ],
         ```
-       Weitere Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
+       Weitere Informationen finden Sie unter [Lastenausgleichs-Integritätstests](load-balancer-custom-probe-overview.md).
 
     * **NAT-Regeln für eingehenden Datenverkehr:** Sie können NAT-Regeln für eingehenden Datenverkehr für den Lastenausgleich hinzufügen oder entfernen, indem Sie Einträge in der Datei „template.json“ im Abschnitt **inboundNatRules** hinzufügen oder entfernen:
 
@@ -357,7 +357,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Lastenausgleich für die Ver
             }
         }
         ```
-        Informationen zu NAT-Regeln für eingehenden Datenverkehr finden Sie unter [Was versteht man unter Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+        Informationen zu NAT-Regeln für eingehenden Datenverkehr finden Sie unter [Was versteht man unter Azure Load Balancer?](load-balancer-overview.md)
 
     * **Regeln für ausgehenden Datenverkehr:** Sie können Regeln für ausgehenden Datenverkehr in der Konfiguration hinzufügen oder entfernen, indem Sie die Eigenschaft **outboundRules** in der Datei „template.json“ bearbeiten:
 

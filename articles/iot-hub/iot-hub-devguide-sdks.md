@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 823cb1ae9afb6af8b8ed0446e58930fa62ee7f07
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e8bfc95d80aa58b9781258c1b87902c2e8d0c37f
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346776"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458584"
 ---
 # <a name="azure-iot-hub-sdks"></a>Azure IoT Hub-SDKs
 
@@ -41,7 +41,7 @@ Die Azure IoT-Dienst-SDKs enthalten Code zum Erstellen von Anwendungen, die dire
 | Plattform  | Paket | Coderepository | Beispiele |  Verweis |
 |---|---|---|---|---|
 | .NET | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Devices ) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp) | [Beispiele](https://github.com/Azure-Samples/azure-iot-samples-csharp) | [Referenz](/dotnet/api/microsoft.azure.devices) |
-| Java | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java) | [Beispiele](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/pnp-service-sample) | [Referenz](/java/api/com.microsoft.azure.sdk.iot.service) |
+| Java | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java) | [Beispiele](https://github.com/Azure/azure-iot-sdk-java/tree/main/service/iot-service-samples/pnp-service-sample) | [Referenz](/java/api/com.microsoft.azure.sdk.iot.service) |
 | Node | [npm](https://www.npmjs.com/package/azure-iothub) | [GitHub](https://github.com/Azure/azure-iot-sdk-node) | [Beispiele](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples) | [Referenz](/javascript/api/azure-iothub/) |
 | Python | [pip](https://pypi.org/project/azure-iot-hub) | [GitHub](https://github.com/Azure/azure-iot-sdk-python) | [Beispiele](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-hub/samples) | [Referenz](/python/api/azure-iot-hub) |
 | Node.js | [npm](https://www.npmjs.com/package/azure-iot-common) | [GitHub](https://github.com/Azure/azure-iot-sdk-node) | [Beispiele](https://github.com/Azure/azure-iot-sdk-node/tree/master/service/samples/javascript) | [Referenz](/javascript/api/azure-iothub/) |
@@ -59,7 +59,7 @@ Mit **Microsoft Azure-Bereitstellungs-SDKs** können Sie Geräte in IoT Hub mit 
 | -----|-----|-----|-----|
 | .NET|[Geräte-SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Client/), [Dienst-SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) |[GitHub](https://github.com/Azure/azure-iot-sdk-csharp/)|[Referenz](/dotnet/api/microsoft.azure.devices.provisioning.client) |
 | C|[apt-get, MBED, Arduino IDE oder iOS](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md#packages-and-libraries)|[GitHub](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning\_client)|[Referenz](/azure/iot-hub/iot-c-sdk-ref/) |
-| Java|[Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk)|[GitHub](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning)|[Referenz](/java/api/com.microsoft.azure.sdk.iot.provisioning.device) |
+| Java|[Maven](https://github.com/Azure/azure-iot-sdk-java/blob/main/doc/java-devbox-setup.md#for-the-service-sdk)|[GitHub](https://github.com/Azure/azure-iot-sdk-java/blob/main/provisioning)|[Referenz](/java/api/com.microsoft.azure.sdk.iot.provisioning.device) |
 | Node.js|[Geräte-SDK](https://badge.fury.io/js/azure-iot-provisioning-device), [Dienst-SDK](https://badge.fury.io/js/azure-iot-provisioning-service) |[GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning)|[Referenz](/javascript/api/overview/azure/iothubdeviceprovisioning) |
 | Python|[Geräte-SDK](https://pypi.org/project/azure-iot-device/), [Dienst-SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/)|[GitHub](https://github.com/Azure/azure-iot-sdk-python)|[Gerätereferenz](/python/api/azure-iot-device/azure.iot.device.provisioningdeviceclient), [Dienstreferenz](/python/api/azure-mgmt-iothubprovisioningservices) |
 

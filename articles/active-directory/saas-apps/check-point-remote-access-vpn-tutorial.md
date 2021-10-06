@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 39072747cd2e6b9daa62f02b198a201c5b1782ea
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ef52547bb8ec27bd759a238d742173f6b8fc3994
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451419"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591974"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-remote-secure-access-vpn"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Check Point Remote Secure Access VPN
 
@@ -270,44 +270,64 @@ Es gibt zwei Optionen:
 1. Festlegen des Identitätsanbieter-Browsermodus (optional). Standardmäßig verwendet der Windows-Client seinen eingebetteten Browser, und der macOS-Client verwendet Safari für die Authentifizierung im Portal des Identitätsanbieters.
 Damit der Windows-Client dieses Verhalten ändern kann, damit Sie stattdessen Internet Explorer verwenden können:
 
-    1.  Öffnen Sie auf dem Clientcomputer einen Nur-Text-Editor als Administrator.
-    2.  Öffnen Sie die Datei trac.defaults im Text-Editor.
-        * Unter 32-Bit-Windows: ``%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults``
-        * Unter 64-Bit-Windows: ``%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults``
-    3.  Ändern Sie den Attributwert idp_browser_mode von „embedded“ zu „IE“:
-    4.  Speichern Sie die Datei .
-    5.  Starten Sie den Check Point Endpoint Security-VPN-Clientdienst neu.
-Öffnen Sie die Windows-Eingabeaufforderung als Administrator, und führen Sie die folgenden Befehle aus:
+   1. Öffnen Sie auf dem Clientcomputer einen Nur-Text-Editor als Administrator.
 
-        `# net stop TracSrvWrapper `
+   2. Öffnen Sie die Datei `trac.defaults` im Text-Editor.
 
-        `# net start TracSrvWrapper`
- 
+      - Unter 32-Bit-Windows: 
+
+        `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
+
+      - Unter 64-Bit-Windows: 
+
+        `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+
+    3. Ändern Sie den Attributwert `idp_browser_mode` von `embedded` in `IE`.
+
+    4. Speichern Sie die Datei .
+
+    5. Starten Sie den Check Point Endpoint Security-VPN-Clientdienst neu.
+
+   Öffnen Sie die Windows-Eingabeaufforderung als Administrator, und führen Sie die folgenden Befehle aus:
+
+   `# net stop TracSrvWrapper`
+
+   `# net start TracSrvWrapper`
 
 1. Starten Sie die Authentifizierung mit Browser, der im Hintergrund ausgeführt wird:
 
-    1.  Öffnen Sie auf dem Clientcomputer einen Nur-Text-Editor als Administrator.
-    2.  Öffnen Sie die Datei trac.defaults im Text-Editor.
-        * Unter 32-Bit-Windows: `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
-        * Unter 64-Bit-Windows: `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+   1. Öffnen Sie auf dem Clientcomputer einen Nur-Text-Editor als Administrator.
 
-        * Unter macOS: `/Library/Application Support/Checkpoint/Endpoint Security/Endpoint Connect/Trac.defaults`
+   2. Öffnen Sie die Datei `trac.defaults` im Text-Editor.
 
-    3.  Ändern Sie den Wert von **idp_show_browser_primary_auth_flow** zu **false**
-    4.  Speichern Sie die Datei .
-    5.  Starten Sie den Check Point Endpoint Security-VPN-Clientdienst neu
-        * Auf Windows-Clients: Öffnen Sie die Windows-Eingabeaufforderung als Administrator, und führen Sie die folgenden Befehle aus:
+      - Unter 32-Bit-Windows: 
 
-            `# net stop TracSrvWrapper`
+        `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
+
+      - Unter 64-Bit-Windows: 
+
+        `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+
+      - Unter MacOS:
+      
+        `/Library/Application Support/Checkpoint/Endpoint Security/Endpoint Connect/trac.defaults`
+
+    3. Ändern Sie den Wert von `idp_show_browser_primary_auth_flow` in `false`.
+
+    4. Speichern Sie die Datei .
+
+    5. Starten Sie den Check Point Endpoint Security-VPN-Clientdienst neu.
+       - Öffnen Sie auf Windows-Clients die Windows-Eingabeaufforderung als Administrator, und führen Sie die folgenden Befehle aus:
+
+         `# net stop TracSrvWrapper`
         
-            `# net start TracSrvWrapper`
+         `# net start TracSrvWrapper`
 
-        * Auf macOS-Clients
+       - Führen Sie auf macOS-Clients Folgendes aus:
 
-            `sudo launchctl stop com.checkpoint.epc.service`
+         `sudo launchctl stop com.checkpoint.epc.service`
 
-            `sudo launchctl start com.checkpoint.epc.service`
-
+         `sudo launchctl start com.checkpoint.epc.service`
 
 ### <a name="create-check-point-remote-secure-access-vpn-test-user"></a>Erstellen eines Check Point Remote Secure Access VPN-Testbenutzers
 
@@ -315,7 +335,7 @@ In diesem Abschnitt wird in Check Point Remote Secure Access VPN ein Benutzer na
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-1. Öffnen Sie den VPN-Client, und klicken Sie auf **Verbinden mit ...** .
+1. Öffnen Sie den VPN-Client, und klicken Sie auf **Verbinden mit...** .
 
     ![Screenshot: Verbinden mit ...](./media/check-point-remote-access-vpn-tutorial/connect.png)
 
@@ -328,5 +348,3 @@ In diesem Abschnitt wird in Check Point Remote Secure Access VPN ein Benutzer na
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nach dem Konfigurieren von Check Point Remote Secure Access VPN können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
-
-

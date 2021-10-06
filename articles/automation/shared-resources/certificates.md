@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 788f15cd1edad228e695e6e87f5b630b8e4fdf55
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: daed24e27c1dec0a6dec1bf3b12f8290078027b1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834442"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274783"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Verwalten von Zertifikaten in Azure Automation
 
@@ -22,7 +22,7 @@ Zertifikate werden in Azure Automation sicher gespeichert, sodass Runbooks oder 
 
 ## <a name="powershell-cmdlets-to-access-certificates"></a>PowerShell-Cmdlets für den Zugriff auf Zertifikate
 
-Über die Cmdlets in der folgenden Tabelle können Sie Zertifikate für Automation mit PowerShell erstellen und verwalten. Diese sind im Lieferumfang der [Az-Module](modules.md#az-modules) enthalten.
+Über die Cmdlets in der folgenden Tabelle können Sie Zertifikate für Automation mit PowerShell erstellen und verwalten. Diese sind im Lieferumfang der Az-Module enthalten.
 
 |Cmdlet |BESCHREIBUNG|
 | --- | ---|

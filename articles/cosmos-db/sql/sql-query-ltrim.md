@@ -5,31 +5,34 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/14/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8ce558be7b1380fbe16ccdd4226744c3e3c5b222
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 7dca2a6354c19031c2b55b7a61d69273a06c6f49
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350299"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661258"
 ---
 # <a name="ltrim-azure-cosmos-db"></a>LTRIM (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
- Gibt einen Zeichenfolgenausdruck zurück, nachdem vorangestellte Leerzeichen entfernt wurden.  
+ Gibt einen Zeichenfolgenausdruck zurück, nachdem er führende Leerzeichen oder angegebene Zeichen entfernt hat.   
   
 ## <a name="syntax"></a>Syntax
   
 ```sql
-LTRIM(<str_expr>)  
+LTRIM(<str_expr1>[, <str_expr2>])  
 ```  
   
 ## <a name="arguments"></a>Argumente
   
-*str_expr*  
-   Ist ein Zeichenfolgenausdruck.  
+*str_expr1*  
+   Ist ein Zeichenfolgenausdruck
+
+*str_expr2*  
+   Ist ein optionaler Zeichenfolgenausdruck, der von str_expr1 zugeschnitten werden soll. Ist er nicht gesetzt, wird standardmäßig ein Leerzeichen verwendet.
   
 ## <a name="return-types"></a>Rückgabetypen
   
@@ -40,14 +43,28 @@ LTRIM(<str_expr>)
   Das folgende Beispiel veranschaulicht die Verwendung von `LTRIM` in einer Abfrage.  
   
 ```sql
-SELECT LTRIM("  abc") AS l1, LTRIM("abc") AS l2, LTRIM("abc   ") AS l3 
+SELECT LTRIM("   abc") AS t1, 
+LTRIM("   abc   ") AS t2, 
+LTRIM("abc   ") AS t3, 
+LTRIM("abc") AS t4,
+LTRIM("abc", "ab") AS t5,
+LTRIM("abc", "abc") AS t6
 ```  
   
  Hier ist das Resultset.  
   
 ```json
-[{"l1": "abc", "l2": "abc", "l3": "abc   "}]  
-```  
+[
+    {
+        "t1": "abc",
+        "t2": "abc   ",
+        "t3": "abc   ",
+        "t4": "abc",
+        "t5": "c",
+        "t6": ""
+    }
+]
+``` 
 
 ## <a name="remarks"></a>Bemerkungen
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, azla
 ms.topic: how-to
 ms.date: 09/13/2021
-ms.openlocfilehash: ed101e95a8580274661fd19d752a478677359641
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0fedae22564d9bb393952e65a737d73e1fd254f9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128647193"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350488"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -897,7 +897,7 @@ Im Folgenden finden Sie Informationen zu selbst signierten TLS/SSL-Zertifikaten:
 
 * Für Logik-Apps in der globalen Azure Logic Apps-Umgebung mit mehreren Mandanten lassen HTTP-Vorgänge keine selbstsignierten TLS/SSL-Zertifikate zu. Wenn Ihre Logik-App per HTTP einen Server aufruft und ein selbstsigniertes TLS/SSL-Zertifikat vorlegt, schlägt der HTTP-Aufruf mit einem `TrustFailure`-Fehler fehl.
 
-* Für Logik-Apps in der Azure Logic Apps-Umgebung mit nur einem Mandanten unterstützen HTTP-Vorgänge selbstsignierte TLS/SSL-Zertifikate. Für diesen Authentifizierungstyp sind jedoch einige zusätzliche Schritte erforderlich. Andernfalls tritt bei dem Aufruf ein Fehler auf. Weitere Informationen finden Sie unter [TSL/SSL-Zertifikatauthentifizierung für Azure Logic Apps mit nur einem Mandanten](../connectors/connectors-native-http.md#tsl-ssl-certificate-authentication).
+* Für Logik-Apps in der Azure Logic Apps-Umgebung mit nur einem Mandanten unterstützen HTTP-Vorgänge selbstsignierte TLS/SSL-Zertifikate. Für diesen Authentifizierungstyp sind jedoch einige zusätzliche Schritte erforderlich. Andernfalls tritt bei dem Aufruf ein Fehler auf. Weitere Informationen finden Sie unter [TSL/SSL-Zertifikatauthentifizierung für Azure Logic Apps mit nur einem Mandanten](../connectors/connectors-native-http.md#tlsssl-certificate-authentication).
 
   Wenn Sie stattdessen ein Clientzertifikat oder Azure Active Directory Open Authentication (Azure AD OAuth) mit dem Anmeldeinformationstyp „Zertifikat“ verwenden möchten, müssen Sie ebenfalls einige weitere Schritte ausführen. Andernfalls tritt bei dem Aufruf ein Fehler auf. Weitere Informationen finden Sie unter [Clientzertifikat oder Azure Active Directory Open Authentication (Azure AD OAuth) mit dem Anmeldeinformationstyp „Zertifikat“ für Azure Logic Apps mit nur einem Mandanten](../connectors/connectors-native-http.md#client-certificate-authentication).
 

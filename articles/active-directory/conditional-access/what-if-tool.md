@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 119540738ac2703afd79891d9bf8a4a9ff0c7472
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47215f936ebc43b7aa720bc68f2caba294f03d46
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952761"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595349"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Beheben von Problemen mit dem What If-Tool beim bedingten Zugriff
 
@@ -67,6 +67,9 @@ Sie können nur einen Benutzer auswählen. Dies ist das einzige erforderliche Fe
 ### <a name="cloud-apps"></a>Cloud-Apps
 
 Der Standardwert für diese Einstellung ist **Alle Cloud-Apps**. Bei der Standardeinstellung wird eine Auswertung aller verfügbaren Richtlinien in Ihrer Umgebung durchgeführt. Sie können den Bereich auf Richtlinien begrenzen, die Auswirkungen auf bestimmte Cloud-Apps haben.
+
+> [!NOTE]
+> Bei Verwendung des What If-Tools wird nicht auf Abhängigkeiten des [Dienstabhängigkeiten für bedingten Zugriff](service-dependencies.md) getestet. Wenn Sie z. B. mit dem What If-Tool eine Richtlinie für bedingten Zugriff für Microsoft Teams testen möchten, berücksichtigt das Ergebnis keine Richtlinie, die für Office 365 Exchange Online gilt, eine Dienstabhängigkeit für bedingten Zugriff für Microsoft Teams.
 
 ### <a name="ip-address"></a>IP-Adresse
 

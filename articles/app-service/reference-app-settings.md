@@ -3,12 +3,12 @@ title: Referenz zu Umgebungsvariablen und App-Einstellungen
 description: Dieser Artikel beschreibt die häufig verwendeten Umgebungsvariablen und welche mit App-Einstellungen geändert werden können.
 ms.topic: article
 ms.date: 06/14/2021
-ms.openlocfilehash: b4be8fde0e771414d8b637af0c2aed33eeb48123
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d3c34f64aa4e13fe0dce371d9848f6422e7b1f63
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816010"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399810"
 ---
 # <a name="environment-variables-and-app-settings-in-azure-app-service"></a>Umgebungsvariablen und App-Einstellungen in Azure App Service
 
@@ -571,6 +571,9 @@ Die folgenden Umgebungsvariablen hängen mit dem Feature [Pushbenachrichtigungen
 | `WEBSITE_PUSH_TAG_WHITELIST` | Schreibgeschützt. Enthält die Tags in der Benachrichtigungsregistrierung. |
 | `WEBSITE_PUSH_TAGS_REQUIRING_AUTH` | Schreibgeschützt. Enthält eine Liste der Tags in der Benachrichtigungsregistrierung, die eine Benutzerauthentifizierung erfordert. |
 | `WEBSITE_PUSH_TAGS_DYNAMIC` | Schreibgeschützt. Enthält eine Liste der Tags in der Benachrichtigungsregistrierung, die automatisch hinzugefügt wurden. | 
+
+>[!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Whitelist*, den Microsoft nicht länger verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
 
 <!-- 
 ## WellKnownAppSettings

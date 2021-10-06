@@ -7,12 +7,12 @@ ms.author: sumuth
 author: mksuni
 ms.service: postgresql
 ms.date: 08/09/2021
-ms.openlocfilehash: 747a1c59d00ac4127fab4b6c28d02c837e540133
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 2f26ac8b2bea54bc49398b46eae02131991aac1b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122516003"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363707"
 ---
 # <a name="azure-pipelines-task-for-azure-database-for-postgresql-flexible-server"></a>Azure Pipelines-Aufgabe für Azure Database for PostgreSQL Flexible Server
 
@@ -21,7 +21,7 @@ Sie können Ihre Datenbankupdates nach jedem erfolgreichen Build mit **Azure Pip
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto. Falls Sie noch kein Konto haben, können Sie eine [kostenlose Testversion](https://azure.microsoft.com/free/) verwenden.
-- Eine [Azure Resource Manager-Dienstverbindung](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) zu Ihrem Azure-Konto
+- Eine [Azure Resource Manager-Dienstverbindung](/azure/devops/pipelines/library/connect-to-azure) zu Ihrem Azure-Konto
 - Bei von Microsoft gehosteten Agents ist Azure CLI vorinstalliert. Wenn Sie aber private Agents verwenden, [installieren Sie Azure CLI](/cli/azure/install-azure-cli) auf dem/den Computer(n), auf dem/denen der Build- und Release-Agent ausgeführt wird. Wenn ein Agent auf dem Computer bereits ausgeführt wird, auf dem die Azure CLI installiert ist, starten Sie ihn neu, um sicherzustellen, dass alle relevanten Stufenvariablen aktualisiert werden.
 - Erstellen einer Instanz von Azure Database for PostgreSQL Flexible Server im [Azure-Portal](./quickstart-create-server-portal.md) oder in [Azure CLI](./quickstart-create-server-cli.md)
 
@@ -90,11 +90,10 @@ Sie können die vollständige Liste aller Aufgabeneingaben anzeigen, wenn Sie di
 |failOnStandardError|(Optional) Wenn der Wert „true“ ist, schlägt diese Aufgabe fehl, wenn Fehler in den „StandardError“-Stream geschrieben werden. Deaktivieren Sie das Kontrollkästchen, damit Standardfehler ignoriert werden, und verwenden Sie Exitcodes, um den Status zu bestimmen. Der Standardwert ist „FALSE“.|
 |powerShellIgnoreLASTEXITCODE| (Optional) Wenn der Wert „FALSE“ ist, wird die Zeile <code>if ((Test-Path -LiteralPath variable:\\LASTEXITCODE)) { exit $LASTEXITCODE }</code> am Ende Ihres Skripts angefügt. Dadurch wird der letzte Exitcode aus einem externen Befehl als Exitcode von PowerShell weitergegeben. Andernfalls wird die Zeile am Ende Ihres Skripts nicht angefügt. Der Standardwert ist „FALSE“. |
 
-Wenn Probleme bei der CLI-Aufgabe auftreten, lesen Sie [Problembehandlung bei Build und Release](/azure/devops/pipelines/troubleshooting/troubleshooting?view=azure-devops).
+Wenn Probleme bei der CLI-Aufgabe auftreten, lesen Sie [Problembehandlung bei Build und Release](/azure/devops/pipelines/troubleshooting/troubleshooting).
 
 ## <a name="next-steps"></a>Nächste Schritte 
 Hier sind einige verwandte Aufgaben, die für die Bereitstellung mit Azure Piplelines verwendet werden können.
 
-- [Azure-Ressourcengruppenbereitstellung](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops)
-- [Azure-Web-App-Bereitstellung](/azure/devops/pipelines/tasks/deploy/azure-rm-web-app-deployment?view=azure-devops)
-
+- [Azure-Ressourcengruppenbereitstellung](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)
+- [Azure-Web-App-Bereitstellung](/azure/devops/pipelines/tasks/deploy/azure-rm-web-app-deployment)

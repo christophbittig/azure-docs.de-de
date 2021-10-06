@@ -1,17 +1,17 @@
 ---
 title: Migrieren zu Azure Cache for Redis
 description: Erfahren Sie, wie Sie Ihren vorhandenen Cache zu Azure Cache for Redis migrieren.
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.author: yegu
-ms.openlocfilehash: bd0e35105174cf64146cb27f75693e8348b1035e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.author: cauribeg
+ms.openlocfilehash: 4d2dab8534cafee529e0467026323c5018c84d43
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824989"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537797"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Migrieren zu Azure Cache for Redis
 

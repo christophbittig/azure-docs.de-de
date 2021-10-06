@@ -3,12 +3,12 @@ title: Was ist Azure Video Analyzer?
 description: Dieses Thema enthält eine Übersicht über Azure Video Analyzer.
 ms.topic: overview
 ms.date: 06/01/2021
-ms.openlocfilehash: 4cf2ba0bb9d5388eb6017fd0717929a3f5410a7d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 25f289a26743e92f6c904149e296ba6699fcf8b2
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128646915"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389101"
 ---
 # <a name="what-is-azure-video-analyzer-preview"></a>Was ist Azure Video Analyzer? (Vorschauversion)
  
@@ -22,7 +22,7 @@ Mithilfe von IoT-Lösungen, bei denen Videoanalysen mit Signalen anderer IoT-Sen
 
 Mit Video Analyzer können Sie weiterhin Ihre [CCTV-Kameras](https://en.wikipedia.org/wiki/Closed-circuit_television_camera) mit den vorhandenen [Videomanagementsystemen (VMS)](https://en.wikipedia.org/wiki/Video_management_system) verwenden und Anwendungen für die Videoanalyse unabhängig entwickeln. Video Analyzer kann in Verbindung mit SDKs und Tools für maschinelles Sehen verwendet werden, um innovative IoT-Lösungen zu entwickeln. Dies wird im folgenden Diagramm verdeutlicht.
 
-![Entwickeln von IoT-Lösungen mit Video Analyzer](./media/overview/product-diagram.svg)
+![Entwickeln von IoT-Lösungen mit Video Analyzer](./media/overview/product-diagram.png)
 
 ### <a name="concepts"></a>Konzepte
 

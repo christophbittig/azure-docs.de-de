@@ -1,17 +1,17 @@
 ---
 title: Konfigurieren der Georeplikation für Azure Cache for Redis-Instanzen (Premium)
 description: Erfahren Sie, wie Ihre Azure Cache for Redis-Instanzen (Premium) über Azure-Regionen hinweg repliziert werden.
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.author: yegu
-ms.openlocfilehash: c1d6d7fbac720a6a0f8793e75d08733ce01e0707
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.author: cauribeg
+ms.openlocfilehash: d6381556703c704eb0e8b24ea2f1a809bf864735
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112322348"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538505"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Konfigurieren der Georeplikation für Azure Cache for Redis-Instanzen (Premium)
 

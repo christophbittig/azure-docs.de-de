@@ -1,17 +1,17 @@
 ---
 title: Aktivieren der Zonenredundanz für Azure Cache for Redis
 description: Hier erfahren Sie, wie Sie Zonenredundanz für Ihre Azure Cache for Redis-Instanzen im Premium- und Enterprise-Tarif einrichten.
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 522cf0ad115e1149d7746ecadef96ae9494a1d8c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fb68ea362c5b91e5c60578f63c752d1982495efb
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339953"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538072"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis"></a>Aktivieren der Zonenredundanz für Azure Cache for Redis
 In diesem Artikel erfahren Sie, wie Sie eine zonenredundante Azure Cache-Instanz über das Azure-Portal konfigurieren.

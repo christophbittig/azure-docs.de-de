@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/05/2021
 ms.author: duau
-ms.openlocfilehash: b659fee979fd936a85c0cd5a711390594bbe79b1
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: d5b7bba4774eb81c684875a4db9ffb1afb2a60aa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795754"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811222"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Erstellen von ExpressRoute Direct mit dem Portal
 
@@ -135,4 +135,4 @@ Die folgenden Schritte unterstützen Sie beim Erstellen einer ExpressRoute-Verbi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu ExpressRoute Direct finden Sie in der [Übersicht](expressroute-erdirect-about.md).
+Nach dem Erstellen der ExpressRoute-Verbindung können Sie [virtuelle Netzwerke mit Ihrer ExpressRoute-Verbindung verknüpfen](expressroute-howto-add-gateway-portal-resource-manager.md).

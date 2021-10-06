@@ -1,17 +1,17 @@
 ---
 title: Konfigurieren eines virtuellen Netzwerks – Azure Cache for Redis-Instanz im Premium-Tarif
 description: Erfahren Sie, wie Sie die Unterstützung für virtuelle Netzwerke für Azure Cache for Redis-Instanzen im Premium-Tarif erstellen und verwalten.
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 618fc8258c2e34c482b6c11cac469de503fa0179
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0e231920a7aee35edd7a5913987ac37f0902b5fe
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346901"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538142"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurieren der Unterstützung virtueller Netzwerke einer Azure Cache for Redis-Instanz vom Typ „Premium“
 

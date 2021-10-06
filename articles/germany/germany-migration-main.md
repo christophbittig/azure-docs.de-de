@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate
-ms.openlocfilehash: 37dde9cf2f105c3e8e8c3dc86e59340c205f9254
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: 86d6fa3c7c5552c0bb48844e543c20dc3493b15e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112554271"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361493"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Übersicht über die Migrationsanleitung für Azure Deutschland
 
@@ -22,7 +22,7 @@ Die Artikel in diesem Abschnitt wurden erstellt, um Sie beim Migrieren Ihrer Wor
 
 Die beiden Regionen in Deutschland sind vollständig getrennt von Azure weltweit. Die Clouds in Azure weltweit und in Azure Deutschland haben ihre eigenen getrennten Azure Active Directory-Instanzen. Aus diesem Grund sind Azure Deutschland-Mandanten von Azure weltweit-Mandanten getrennt. In diesem Artikel sind die Migrationstools beschrieben, die Sie verwenden können, wenn Sie zwischen *verschiedenen* Mandanten migrieren.
 
-Der Leitfaden für die Identitäts-/Mandantenmigration wurde für reine Azure-Kunden konzipiert. Wenn Sie allgemeine Azure AD-Mandanten (Azure Active Directory) für Azure und Microsoft 365 (oder andere Microsoft-Produkte) verwenden, beinhaltet eine Identitätsmigration komplexe Vorgänge. Machen Sie sich in diesem Fall zuerst mit den [Aktionen während der Migrationsphasen und Auswirkungen für die Migration von Microsoft Cloud Deutschland](/microsoft-365/enterprise/ms-cloud-germany-transition-phases?view=o365-worldwide) vertraut. Wenden Sie sich bei Fragen an Ihren Konto-Manager oder an den Microsoft-Support.
+Der Leitfaden für die Identitäts-/Mandantenmigration wurde für reine Azure-Kunden konzipiert. Wenn Sie allgemeine Azure AD-Mandanten (Azure Active Directory) für Azure und Microsoft 365 (oder andere Microsoft-Produkte) verwenden, beinhaltet eine Identitätsmigration komplexe Vorgänge. Machen Sie sich in diesem Fall zuerst mit den [Aktionen während der Migrationsphasen und Auswirkungen für die Migration von Microsoft Cloud Deutschland](/microsoft-365/enterprise/ms-cloud-germany-transition-phases) vertraut. Wenden Sie sich bei Fragen an Ihren Konto-Manager oder an den Microsoft-Support.
 
 Azure Cloud Solution Provider müssen zusätzliche Schritte ausführen, um Kunden während und nach der Umstellung auf die neue deutsche Rechenzentrumsregion zu unterstützen. Weitere Informationen zu den zusätzlichen Schritten finden Sie [hier](/microsoft-365/enterprise/ms-cloud-germany-transition-add-csp).
 

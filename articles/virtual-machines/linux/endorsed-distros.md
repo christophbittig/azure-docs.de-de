@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: guybo
-ms.openlocfilehash: b9262d512ed27419bab38b3ad26e1bae8cddee0d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: e8694e218bdab1085a35ed65f7a8b1d09d7b0fc4
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696189"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455624"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Von Azure unterstützte Linux-Distributionen
 
@@ -75,7 +75,7 @@ Microsoft hat zwei (2) Migrationskanäle für CoreOS-Benutzer.
 Credativ ist ein unabhängiges Beratungs- und Dienstleistungsunternehmen, das sich auf die Entwicklung und Implementierung von professionellen Lösungen mithilfe von kostenloser Software spezialisiert hat. Als führender Open Source-Experte verfügt credativ über internationale Anerkennung bei zahlreichen IT-Abteilungen, die den credativ-Support nutzen. Zusammen mit Microsoft bereitet credativ Debian-Images vor. Die Images wurden speziell für die Ausführung auf Azure entwickelt und können einfach über die Plattform verwaltet werden. Über die eigenen Open Source Support Center unterstützt credativ außerdem die langfristige Wartung und Aktualisierung der Debian-Images für Azure.
 
 ### <a name="kinvolk"></a>Kinvolk
-[https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
+[https://www.flatcar-linux.org/](https://www.flatcar-linux.org/)
 
 Kinvolk ist das Unternehmen, das hinter Flatcar Container Linux steht und die ursprüngliche CoreOS-Vision einer minimalen, unveränderlichen und automatisch aktualisierenden Grundlage für Containeranwendungen weiterführt. Als minimale Distribution enthält Flatcar nur die zum Bereitstellen von Containern erforderlichen Pakete. Durch das unveränderliche Dateisystem werden Konsistenz und Sicherheit gewährleistet, und dank der automatischen Aktualisierungsfunktionen sind Sie immer mit den neuesten Sicherheitskorrekturen auf dem neuesten Stand. 
 

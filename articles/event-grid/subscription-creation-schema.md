@@ -2,13 +2,13 @@
 title: Azure Event Grid-Abonnementschema
 description: In diesem Artikel werden die Eigenschaften für das Abonnieren eines Ereignisses mit Azure Event Grid beschrieben. Event Grid-Abonnementschema
 ms.topic: reference
-ms.date: 07/07/2020
-ms.openlocfilehash: f6e33171cbba65cfeaca49ab6a8954be8bb89acb
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.date: 09/28/2021
+ms.openlocfilehash: 5a0671bea2ef1cb6b7169ca4e2c94128d88f9f94
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199950"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236491"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid-Abonnementschema
 
@@ -28,21 +28,21 @@ Der Name des Ereignisabonnements muss 3 bis 64 Zeichen umfassen und darf nur die
  
 ## <a name="event-subscription-properties"></a>Eigenschaften für Ereignisabonnements
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | destination | Objekt (object) | Das Objekt, das den Endpunkt definiert. |
 | filter | Objekt (object) | Ein optionales Feld zum Filtern der Ereignistypen. |
 
 ### <a name="destination-object"></a>destination-Objekt
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | endpointType | Zeichenfolge | Die Art des Endpunkts für das Abonnement (Webhook/HTTP, Event Hub oder Warteschlange). | 
 | endpointUrl | Zeichenfolge | Die Ziel-URL für Ereignisse in diesem Ereignisabonnement. | 
 
 ### <a name="filter-object"></a>filter-Objekt
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | Übereinstimmung, wenn der Ereignistyp in der Ereignisnachricht eine exakte Übereinstimmung für einen der Ereignistypnamen ist. Fehler, wenn der Ereignisname nicht den registrierten Ereignistypnamen für die Ereignisquelle entspricht. Der Standardwert entspricht allen Ereignistypen. |
 | subjectBeginsWith | Zeichenfolge | Ein Präfixabgleichfilter für das Betrefffeld in der Ereignisnachricht. Der Standardwert oder eine leere Zeichenfolge entspricht allen Optionen. | 

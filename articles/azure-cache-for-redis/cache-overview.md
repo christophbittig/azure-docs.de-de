@@ -1,17 +1,17 @@
 ---
 title: Was ist Azure Cache for Redis?
 description: Azure Cache for Redis bietet Funktionen wie cachefremdes Muster, Content Caching, Zwischenspeicherung von Benutzersitzungen, Auftrags- und Nachrichtenwarteschlangen sowie verteilte Transaktionen.
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 5debf0fdd82132ece890f29967e345ab5b134635
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 63aae0f54d07fea45f4cecc5a4699cd1448c0a4f
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297582"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537791"
 ---
 # <a name="about-azure-cache-for-redis"></a>Informationen zu Azure Cache for Redis
 

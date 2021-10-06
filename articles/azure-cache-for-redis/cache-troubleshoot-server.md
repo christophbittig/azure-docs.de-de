@@ -1,17 +1,17 @@
 ---
 title: Behandeln von serverseitigen Problemen bei Azure Cache for Redis
 description: Erfahren Sie, wie Sie häufige serverseitige Probleme bei Azure Cache for Redis beheben, z. B. hohe Arbeitsspeicherauslastung, hohe CPU-Auslastung, zeitintensive Befehle oder Bandbreiteneinschränkungen.
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: a3eb35ada01612d3a3298b1899d3e9fb7101684b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9c50ac01eb95672b946daf9916f83743d2156b01
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339503"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537401"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Behandeln von serverseitigen Problemen bei Azure Cache for Redis
 

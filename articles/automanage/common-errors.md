@@ -1,19 +1,17 @@
 ---
 title: Behandeln von häufigen Fehlern mit dem Onboarding von Azure Automanage
 description: Häufige Fehler beim Onboarding von Automanage und deren Behandlung
-author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
-ms.author: alsin
-ms.openlocfilehash: 7acca746acf17a6ef6dd837907a159cddb20be10
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 95d2f429c1ecb308d65aa01be0a6f3fa226b6168
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113004194"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458167"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Behandeln von häufigen Fehlern mit dem Onboarding von Automanage
 Die Integration eines Computers in den Dienst durch Automanage kann fehlschlagen. In diesem Dokument wird erläutert, wie Sie Bereitstellungsfehler behandeln können, Sie erfahren einige häufige Gründe für das Fehlschlagen von Bereitstellungen, und es werden mögliche nächste Schritte bei der Entschärfung beschrieben.

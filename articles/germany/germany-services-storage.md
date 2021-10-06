@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfdocs
-ms.openlocfilehash: 7a82dfa03c85ecf8ad5c80a7d037431b18a28fed
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 840ac16914196a238bcf8fdaaa518799dcb104e9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018472"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275029"
 ---
 # <a name="azure-germany-storage-services"></a>Speicherdienste von Azure Deutschland
 
@@ -40,7 +40,7 @@ Die Speicherdienstverschlüsselung schützt ruhende Daten in Azure Storage-Konte
 | [Azure Files](../storage/common/storage-introduction.md#azure-files) | Allgemein verfügbar | Allgemein verfügbar |
 | [Table Storage](../storage/common/storage-introduction.md#table-storage) |Allgemein verfügbar  |Allgemein verfügbar |
 | [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |Allgemein verfügbar | Allgemein verfügbar |
-| [Hot/Cold Blob Storage](../storage/blobs/storage-blob-storage-tiers.md) |Allgemein verfügbar |Allgemein verfügbar |
+| [Hot/Cold Blob Storage](../storage/blobs/access-tiers-overview.md) |Allgemein verfügbar |Allgemein verfügbar |
 | [Speicherdienstverschlüsselung](../storage/common/storage-service-encryption.md) |Allgemein verfügbar |Allgemein verfügbar |
 | Importieren/Exportieren |Nicht verfügbar |Nicht verfügbar |
 | StorSimple |Nicht verfügbar |Nicht verfügbar |

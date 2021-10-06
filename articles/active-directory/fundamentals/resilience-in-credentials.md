@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 399d2f71fa20d63dce89cf3be5c12ffd63264895
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd03ce16f0695c23f30146cb8099eb67614982dc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724709"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754411"
 ---
 # <a name="build-resilience-with-credential-management"></a>Erzielen von Resilienz durch Verwaltung von Anmeldeinformationen
 
@@ -57,7 +57,7 @@ Zusätzlich zu der oben beschriebenen Benutzerresilienz sollten Unternehmen Notf
 
 * Stellen Sie [kennwortlose Anmeldeinformationen](../authentication/howto-authentication-passwordless-deployment.md) bereit, z. B. Windows Hello for Business, Authentifizierung über das Telefon und FIDO2-Sicherheitsschlüssel, um Abhängigkeiten zu verringern.
 
-* Stellen Sie die [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md) als zweiten Faktor bereit.
+* Stellen Sie die [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc) als zweiten Faktor bereit.
 
 * Aktivieren Sie [Kennworthashsynchronisierung](../hybrid/whatis-phs.md) für Hybridkonten, die über Windows Server Active Directory synchronisiert werden. Diese Option kann neben Verbunddiensten wie AD FS aktiviert werden und bietet eine Fallbackmöglichkeit für den Fall, dass der Verbunddienst ausfällt.
 

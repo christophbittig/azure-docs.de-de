@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/01/2021
+ms.date: 09/15/2021
 ms.author: justinha
-ms.openlocfilehash: 3ff8ffe39a84f9a1eeddd7de01ad8db44f73d52c
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 2080cf50a5837b2b4347f03a77496f5d6215e958
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112199176"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605390"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -41,11 +41,12 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
 * Sie benötigen Berechtigungen als *globaler Administrator* in Ihrem Azure AD-Mandanten, um Azure AD DS zu aktivieren.
 * Sie benötigen Berechtigungen als *Mitwirkender* in Ihrem Azure-Abonnement, um die erforderlichen Azure AD DS-Ressourcen zu erstellen.
+* Ein virtuelles Netzwerk mit DNS-Servern, welche die erforderliche Infrastruktur wie Speicher abfragen können. DNS-Server, die keine allgemeinen Internetabfragen ausführen können, verhindern möglicherweise die Erstellung einer verwalteten Domäne. 
 
 Es ist bei Azure AD DS zwar nicht erforderlich, für den Azure AD-Mandanten die [Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) zu konfigurieren][configure-sspr], es wird jedoch empfohlen. Benutzer können Ihr Kennwort ohne SSPR ändern. SSPR ist jedoch hilfreich, wenn Benutzer ihr Kennwort vergessen haben und es zurücksetzen müssen.
 
 > [!IMPORTANT]
-> Nach der Erstellung einer verwalteten Domäne können Sie diese nicht in eine andere Ressourcengruppe, ein anderes virtuelles Netzwerk, ein anderes Abonnement usw. verschieben. Wählen Sie beim Bereitstellen der verwalteten Domäne das am besten geeignete Abonnement, die am besten geeignete Ressourcengruppe und Region und das am besten geeignete virtuelle Netzwerk aus.
+> Nach dem Erstellen können Sie die verwaltete Domäne nicht in ein anderes Abonnement, eine andere Ressourcengruppe, eine andere Region, ein anderes virtuelles Netzwerk oder ein anderes Subnetz verschieben. Wählen Sie beim Bereitstellen der verwalteten Domäne das am besten geeignete Abonnement, die am besten geeignete Ressourcengruppe und Region sowie das am besten geeignete virtuelle Netzwerk und Subnetz aus.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 

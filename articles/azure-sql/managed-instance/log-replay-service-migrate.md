@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma
-ms.date: 09/07/2021
-ms.openlocfilehash: 85bf8c07da9d283011d17f1f96ad76e0fa411213
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 09/21/2021
+ms.openlocfilehash: 2928ce1f58ddefce368a361b32fe65f9c79994cc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535309"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630241"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrieren von Datenbanken aus SQL Server zu SQL Managed Instance mit dem Protokollwiedergabedienst (Vorschau)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -89,11 +89,6 @@ Nachdem der Protokollwiedergabedienst beendet wurde – entweder automatisch bei
 - Azure Blob Storage-Container bereitgestellt
 - SAS-Sicherheitstoken (Shared Access Signature) mit generierten Berechtigungen „Lesen“ und „Auflisten“ für den Blob Storage-Container
 
-### <a name="migration-of-multiple-databases"></a>Migration mehrerer Datenbanken
-Sie müssen Sicherungsdateien für unterschiedliche Datenbanken in Blob Storage in separaten Ordnern anordnen.
-
-Starten Sie den Protokollwiedergabedienst für jede Datenbank separat, indem Sie in Blob Storage auf einen geeigneten Ordner verweisen. Für den Protokollwiedergabedienst können bis zu 100 gleichzeitige Wiederherstellungsprozesse pro verwalteter Instanz unterstützt werden.
-
 ### <a name="azure-rbac-permissions"></a>Azure RBAC-Berechtigungen
 Für die Ausführung des Protokollwiedergabediensts über die bereitgestellten Clients wird eine der folgenden Azure-Rollen benötigt:
 - Rolle „Besitzer des Abonnements“
@@ -108,6 +103,7 @@ Wir empfehlen die folgenden bewährten Methoden:
 - Aktivieren Sie die Sicherungskomprimierung.
 - Verwenden Sie Cloud Shell für die Ausführung von Skripts, da hierfür immer eine Aktualisierung auf die neuesten veröffentlichten Cmdlets durchgeführt wird.
 - Planen Sie, dass die Migration innerhalb von 36 Stunden nach dem Starten des Protokollwiedergabediensts abgeschlossen sein soll. Dies ist eine Toleranzperiode, mit der verhindert werden soll, dass systemseitig verwaltete Softwarepatches installiert werden.
+- Speichern Sie alle Sicherungsdateien für eine einzelne Datenbank in einem einzigen Ordner. Verwenden Sie keine Unterordner für dieselbe Datenbank.
 
 > [!IMPORTANT]
 > - Sie können die Datenbank, die mit dem Protokollwiedergabedienst wiederhergestellt wird, erst verwenden, nachdem der Migrationsprozess abgeschlossen ist. 
@@ -385,6 +381,22 @@ Verwenden Sie den folgenden Befehl, um den Migrationsprozess im Modus „Kontinu
 az sql midb log-replay complete -g mygroup --mi myinstance -n mymanageddb --last-backup-name "backup.bak"
 ```
 
+### <a name="migration-of-multiple-databases"></a>Migration mehrerer Datenbanken
+Sie müssen Sicherungsdateien für verschiedene Datenbanken in separaten Ordnern innerhalb des Azure Blob Storage-Containers speichern. Alle Sicherungsdateien für eine einzelne Datenbank müssen sich im selben Ordner befinden, da für eine einzelne Datenbank keine Unterordner vorhanden sein dürfen. Der Protokollwiedergabedienst muss für jede Datenbank separat gestartet werden, die auf den vollständigen URI-Pfad des Azure Blob Storage-Containers und den jeweiligen Datenbankordner verweist.
+
+Nachstehend finden Sie ein Beispiel für die Ordnerstruktur und die URI-Spezifikation, die beim Aufrufen des Protokollwiedergabediensts für mehrere Datenbanken erforderlich sind. Starten Sie den Protokollwiedergabedienst separat für jede Datenbank, und geben Sie dabei den vollständigen URI-Pfad zum Azure Blob Storage-Container und den jeweiligen Datenbankordner an.
+
+```URI
+-- Place all backup files for database 1 in its own separate folder within a storage container. No further subfolders are allowed under database1 folder for this database.
+https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/database1/<all database 1 backup files>
+
+-- Place all backup files for database 2 in its own separate folder within a storage container. No further subfolders are allowed under database2 folder for this database.
+https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/database2/<all database 2 backup files>
+
+-- Place all backup files for database 2 in its own separate folder within a storage container. No further subfolders are allowed under database3 folder for this database.
+https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/database3/<all database 3 backup files>
+```
+
 ## <a name="functional-limitations"></a>Funktionale Beschränkungen
 
 Für den Protokollwiedergabedienst gelten die folgenden funktionalen Beschränkungen:
@@ -394,7 +406,8 @@ Für den Protokollwiedergabedienst gelten die folgenden funktionalen Beschränku
 - Das SAS-Token, das vom Protokollwiedergabedienst verwendet wird, muss für den gesamten Azure Blob Storage-Container generiert werden und darf nur über die Berechtigungen „Lesen“ und „Auflisten“ verfügen.
 - Sicherungsdateien für verschiedene Datenbanken müssen in Blob Storage in separaten Ordnern abgelegt werden.
 - Sicherungsdateien, die die Zeichen % und $ im Dateinamen enthalten, können von LRS nicht verarbeitet werden. Erwägen Sie, solche Dateinamen umzubenennen.
-- Der Protokollwiedergabedienst muss separat für jede Datenbank gestartet werden, die auf separate Ordner mit Sicherungsdateien in Blob Storage verweist.
+- Das Speichern von Sicherungen in Unterordnern für eine einzelne Datenbank wird nicht unterstützt. Alle Sicherungen für eine einzelne Datenbank müssen im Stammverzeichnis eines einzigen Ordners gespeichert werden.
+- Bei Verwendung mehrerer Datenbanken müssen die Sicherungsdateien für jede Datenbank in einem separaten Ordner gespeichert werden. Der Protokollwiedergabedienst muss für jede Datenbank separat gestartet werden, die auf den vollständigen URI-Pfad mit einem einzelnen Datenbankordner verweist. 
 - Für den Protokollwiedergabedienst können bis zu 100 gleichzeitige Wiederherstellungsprozesse pro verwalteter Instanz unterstützt werden.
 
 ## <a name="troubleshooting"></a>Problembehandlung

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/07/2021
+ms.date: 09/16/2021
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: b583caa4fdb2a1e72833d4e24c317282be041513
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: fd8347acf6f5fb67de5c011692d893416d5ac068
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822133"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677509"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Datengrenzwerte und Ratenbegrenzungen für die Textanalyse-API
 <a name="data-limits"></a>
@@ -31,10 +31,12 @@ In diesem Artikel finden Sie die Grenzwerte für die Datengröße und -rate, die
 > * Daten- und Ratenbegrenzungen basieren auf der Anzahl von Dokumenten, die Sie an die API senden. Wenn Sie größere Dokumente analysieren müssen, als der Grenzwert zulässt, können Sie den Text in kleinere Textabschnitte aufteilen, bevor Sie ihn an die API senden. 
 >   * Ein Dokument ist eine einzelne aus Textzeichen bestehende Zeichenfolge.  
 
+
+
 | Begrenzung | Wert |
 |------------------------|---------------|
 | Maximale Größe eines einzelnen Dokuments | 5\.120 Zeichen (gemessen von [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)). Gilt auch für die Textanalyse für Gesundheit. |
-| Maximale Größe eines einzelnen Dokuments (Endpunkt: `/analyze`)  | 125.000 Zeichen (gemessen durch [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)). Gilt nicht für die Textanalyse für Gesundheit. |
+| Maximale Zeichenanzahl pro Anforderung (`/analyze`-Endpunkt)  | 125.000 Zeichen für alle übermittelten Dokumente, gemessen mithilfe von [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) (maximal 25 Dokumente). Gilt nicht für die Textanalyse für Gesundheit. |
 | Maximale Größe der gesamte Anforderung | 1 MB. Gilt auch für die Textanalyse für Gesundheit. |
 
 

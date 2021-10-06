@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 9/14/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261ab5d0f039705a2566b7c28ff4c06778bb661a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 676eb07a031aeae0e03d4352639a690bdc9b4cae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94410537"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612565"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Features des Azure AD Connect-Synchronisierungsdiensts
 
@@ -85,6 +85,15 @@ Wenn dieses Feature für Ihr Azure AD-Verzeichnis nicht aktiviert ist, können S
 
 ```powershell
 Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
+```
+
+## <a name="blocksoftmatch"></a>BlockSoftMatch
+Wenn dieses Feature aktiviert ist, blockiert es das Feature „Soft Match“. Kunden wird empfohlen, dieses Feature zu aktivieren und aktiviert zu lassen, bis für ihren Mandanten erneut Soft Matching erforderlich ist. Dieses Flag sollte wieder aktiviert werden, nachdem Soft Matching abgeschlossen wurde und nicht mehr benötigt wird.
+
+Beispiel: Führen Sie das folgende Cmdlet aus, um Soft Matching in Ihrem Mandanten zu blockieren:
+
+```
+PS C:\> Set-MsolDirSyncFeature -Feature BlockSoftMatch -Enable $True
 ```
 
 ## <a name="synchronize-userprincipalname-updates"></a>Synchronisieren von userPrincipalName-Updates

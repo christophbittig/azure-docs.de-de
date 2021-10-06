@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: d97df947309f9ccc9886e45878cfc91ea6423b23
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5fc2fbf2b0f55f356f6a2f5c4a3eb0fd2c527449
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590364"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545620"
 ---
 # <a name="use-azure-storage-explorer-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von Azure Storage-Explorer zum Verwalten von Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -30,6 +30,12 @@ In diesem Artikel erfahren Sie, wie Sie die Zugriffssteuerungslisten von Dateien
 - Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](../common/storage-account-create.md) für die Erstellung.
 
 - Azure Storage-Explorer muss auf dem lokalen Computer installiert sein. Informationen zum Installieren von Azure Storage-Explorer für Windows, Macintosh oder Linux finden Sie unter [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
+
+- Sie benötigen eine der folgenden Sicherheitsberechtigungen:
+
+  - Ihrer Benutzeridentität muss die Rolle [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) im Umfang des Zielcontainers, des Speicherkontos, der übergeordneten Ressourcengruppe oder des Abonnements zugewiesen sein.
+
+  - Sie müssen Besitzer des Zielcontainers, -verzeichnisses oder -blobs sein, in dem Sie die Einstellungen für die Zugriffssteuerungsliste anwenden möchten.
 
 > [!NOTE]
 > Storage Explorer nutzt bei Verwendung von Azure Data Lake Storage Gen2 sowohl den Blob-[Endpunkt](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) (blob) als auch den Data Lake Storage Gen2-Endpunkt (dfs). Wenn der Zugriff auf Azure Data Lake Storage Gen2 über private Endpunkte konfiguriert wird, stellen Sie sicher, dass zwei private Endpunkte für das Speicherkonto erstellt werden: einer mit der Zielunterressource `blob` und der andere mit der Zielunterressource `dfs`.

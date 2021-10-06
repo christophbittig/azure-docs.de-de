@@ -1,18 +1,18 @@
 ---
 title: Konfigurieren von Azure Cache for Redis
 description: Grundlagen der Redis-Standardkonfiguration für Azure Cache for Redis und Informationen zur Konfiguration Ihrer Azure Cache for Redis-Instanzen
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
-ms.author: yegu
+ms.author: cauribeg
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a182d86485a8ca934b3ed94b5251e12b456edabd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8da09266624321483b5fb5628bc29981022dd484
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128558673"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538928"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Konfigurieren von Azure Cache for Redis
 

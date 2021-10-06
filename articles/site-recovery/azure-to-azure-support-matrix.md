@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 11/29/2020
 author: Sharmistha-Rai
 ms.author: sharrai
-ms.openlocfilehash: 49abd2f167eb51cfaf4a431488b1e85c68bc7b5d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a960064aa9ee23c5d82c605aa551cdc0a4e07c49
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591309"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363443"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -239,6 +239,7 @@ Tags  | Unterstützt | Auf virtuelle Quellcomputer angewendete benutzergeneriert
 Größe des Datenträgers auf einer replizierten VM ändern | Das Ändern der Größe auf dem virtuellen Quellcomputer wird unterstützt. Das Herabsetzen der Größe auf dem virtuellen Quellcomputer wird nicht unterstützt. Die Größenänderung sollte vor dem Failover stattfinden. Es besteht keine Notwendigkeit, die Replikation zu deaktivieren bzw. erneut zu aktivieren.<br/><br/> Wenn Sie die Quell-VM nach einem Failover ändern, werden die Änderungen nicht erfasst.<br/><br/> Wenn Sie die Datenträgergröße auf dem virtuellen Azure-Computer nach einem Failover ändern, werden die Änderungen von Site Recovery nicht erfasst, und das Failback erfolgt auf die ursprüngliche VM-Größe.<br/><br/> Wenn Sie die Größe auf >=4 TB ändern, beachten Sie die Azure-Anleitung zum Datenträgern-Caching [hier](../virtual-machines/premium-storage-performance.md). 
 Hinzufügen eines Datenträgers zu einem replizierten virtuellen Computer | Unterstützt
 Offlineänderungen an geschützten Datenträgern | Wenn Sie Datenträger trennen und offline Änderungen vornehmen, muss eine vollständige Neusynchronisierung ausgelöst werden.
+Nutzung des Datenträgercaches | Die Zwischenspeicherung von Datenträgern wird nicht für Datenträger mit einer Größe von 4 TiB und höher unterstützt. Wenn mehrere Datenträger an Ihre VM angefügt sind, unterstützt jeder Datenträger mit 4 TiB oder weniger das Zwischenspeichern. Durch Ändern der Cacheeinstellung eines Azure-Datenträgers wird der Zieldatenträger getrennt und erneut angefügt. Wenn es sich um den Betriebssystemdatenträger handelt, wird der virtuelle Computer neu gestartet. Beenden Sie alle Anwendungen und Dienste, die von dieser Unterbrechung betroffen sein könnten, bevor Sie die Cacheeinstellung des Datenträgers ändern. Wenn diese Empfehlungen nicht befolgt werden, kann dies zu einer Beschädigung der Daten führen.
 
 ## <a name="replicated-machines---storage"></a>Replizierte Computer – Speicher
 

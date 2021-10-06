@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: rifox
-ms.openlocfilehash: 59c39c7d71946ee93a0d72d5b71e1b96333d2c15
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: b02c91690672d214017c554043e8ed1ec9a2df62
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122970244"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129440119"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Anruf mithilfe des Calling SDK von Azure Communication Services für Windows einleiten.
 
@@ -159,10 +159,7 @@ call_ = await call_agent_.StartCallAsync(callees, startCallOptions);
 Beenden Sie den aktuellen Anruf, nachdem auf die Schaltfläche `Hang Up` geklickt wurde. 
 
 ```C#
-private async void HangupButton_Click(object sender, RoutedEventArgs e)
-{
-    await call_.HangUpAsync(new HangUpOptions());
-}
+await call_.HangUpAsync(new HangUpOptions());
 ```
 
 ## <a name="run-the-code"></a>Ausführen des Codes
