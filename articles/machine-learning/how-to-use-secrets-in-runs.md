@@ -7,18 +7,17 @@ author: rastala
 ms.author: roastala
 ms.reviewer: larryfr
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.date: 08/24/2021
 ms.topic: how-to
-ms.openlocfilehash: 397f22711eadc38c82625a8b6a899f6485d798cf
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 0966d85fcab33752359c5174f6205c5556f2a137
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778233"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427930"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Verwenden von Geheimnissen als Anmeldeinformationen für die Authentifizierung in Azure Machine Learning-Trainingsausführungen
-
 
 In diesem Artikel erfahren Sie, wie Sie Geheimnisse sicher in Trainingsausführungen verwenden. Authentifizierungsinformationen (wie etwa Ihr Benutzername und Ihr Kennwort) sind Geheimnisse. Wenn Sie beispielsweise eine Verbindung mit einer externen Datenbank herstellen möchten, um Trainingsdaten abzufragen, müssen Sie Ihren Benutzernamen und Ihr Kennwort an den Remoteausführungskontext übergeben. Das Codieren solcher Werte in Trainingsskripts in Klartext ist unsicher, da so das Geheimnis verfügbar gemacht wird. 
 

@@ -4,12 +4,12 @@ description: Lernen Sie die Apache Hadoop-Komponenten und -Versionen in Azure HD
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 088498a5a8ab7732bc4e657e3575998c899ffd42
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f5e298235abadd5dab2f3e4283f201707c48d672
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355615"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236916"
 ---
 # <a name="hdinsight-40-component-versions"></a>HDInsight 4.0-Komponentenversionen
 
@@ -36,7 +36,6 @@ Die HDInsight 4.0 zugeordneten OSS-Komponentenversionen sind in der folgenden T
 | Apache Kafka           | 2.1.1, 2.4.1 (Vorschau)        |
 | Apache Ambari          | 2.7.0         |
 | Apache Zeppelin        | 0.8.0         |
-| Mono                   | 4.2.1         |
 
 
 In dieser Tabelle werden bestimmte HDInsight 4.0-Clustertypen aufgelistet, die eingestellt wurden.

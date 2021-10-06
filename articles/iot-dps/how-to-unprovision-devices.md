@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 7c91cd8cbb1a927a88f05fcea603c6a4ed6e1c14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7221c4e63dbb7524c9b80d5dde295398026fff3
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719031"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278121"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden 
 
@@ -23,7 +23,7 @@ Die Aufhebung der Bereitstellung eines Geräts umfasst im Allgemeinen zwei Schri
 1. Heben Sie die Registrierung des Geräts bei Ihrem Bereitstellungsdienst auf, um weiter automatische Bereitstellungen zu verhindern. Ein Registrierungseintrag kann deaktiviert oder gelöscht werden – je nachdem, ob Sie den Zugriff vorübergehend oder dauerhaft widerrufen möchten. Für Geräte mit X.509-Nachweis empfiehlt es sich gegebenenfalls, einen Eintrag in der Hierarchie Ihrer vorhandenen Registrierungsgruppen zu deaktivieren bzw. zu löschen.  
  
    - Informationen zum Aufheben der Registrierung eines Geräts finden Sie unter [Aufheben der Registrierung eines Geräts bei IoT Hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
-   - Unter [Gewusst wie: Verwalten von Geräteregistrierungen mit Azure Device Provisioning Service-SDKs](./quick-enroll-device-x509-java.md) erfahren Sie, wie Sie die Registrierung eines Geräts programmgesteuert mithilfe eines der Bereitstellungsdienst-SDKs aufheben.
+   - Unter [Gewusst wie: Verwalten von Geräteregistrierungen mit Azure Device Provisioning Service-SDKs](./quick-enroll-device-x509.md) erfahren Sie, wie Sie die Registrierung eines Geräts programmgesteuert mithilfe eines der Bereitstellungsdienst-SDKs aufheben.
 
 2. Heben Sie die Registrierung des Geräts bei Ihrer IoT Hub-Instanz auf, um eine weitere Kommunikation sowie weitere Datenübertragungen zu verhindern. Auch hier können Sie den Eintrag des Geräts in der Identitätsregistrierung für die IoT Hub-Instanz, in der es bereitgestellt wurde, entweder vorübergehend deaktivieren oder dauerhaft löschen. Weitere Informationen zur Deaktivierung finden Sie unter [Deaktivieren von Geräten](../iot-hub/iot-hub-devguide-identity-registry.md#disable-devices). Ihre IoT Hub-Ressource finden Sie im [Azure-Portal](https://portal.azure.com) unter „Geräteverwaltung“ > „IoT-Geräte“.
 

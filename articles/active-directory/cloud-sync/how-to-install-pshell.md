@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c150f4bf18f9c4f5b9215122a45df1de32f48c32
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: 9587c60cc37badc29a9a9f3ba80a77f6f193a3a9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113506239"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583043"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent-by-using-a-cli-and-powershell"></a>Installieren des Azure AD Connect-Bereitstellungs-Agents mit CLI und PowerShell
 In diesem Artikel erfahren Sie, wie Sie den Azure AD Connect-Bereitstellungs-Agent (Azure Active Directory) mithilfe von PowerShell-Cmdlets installieren.
@@ -35,12 +35,12 @@ Auf dem Windows-Server muss TLS 1.2 aktiviert sein, bevor Sie den Azure AD Con
 
  1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu **Azure Active Directory**.
  1. Wählen Sie im Menü im linken Bereich **Azure AD Connect** aus.
- 1. Wählen Sie **Bereitstellung verwalten (Vorschau)**  > **Alle Agents überprüfen** aus.
+ 1. Wählen Sie **Bereitstellung verwalten** > **Alle Agents überprüfen** aus.
  1. Laden Sie den Azure AD Connect-Bereitstellungs-Agent über das Azure-Portal herunter.
 
     ![Screenshot: Herunterladen des lokalen Agent.](media/how-to-install/install-9.png)</br>
 
- 1. Für diesen Leitfaden wurde der Agent in „C:\ProvisioningSetup“ heruntergeladen. 
+ 1. Für diesen Leitfaden wurde der Agent in den Ordner „C:\temp“ heruntergeladen. 
  1. Installieren Sie den Bereitstellungs-Agent im stillen Modus.
 
        ```

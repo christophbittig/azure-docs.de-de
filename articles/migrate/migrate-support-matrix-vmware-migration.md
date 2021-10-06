@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 6365499aff4508e40d8e2aa2ed61471f4fbff2fe
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 1217acb5911366b8e3943d414aeeeaf8a9e5e1e1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721260"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357236"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -73,15 +73,12 @@ In der Tabelle werden die Migrationsanforderungen ohne Agent für VMware-VMs zus
 > [!Note]
 > Stellen Sie für Linux-VMs zusätzlich zur Gewährleistung von Internetkonnektivität sicher, dass die folgenden Pakete installiert sind, um Microsoft Azure Linux-Agent (waagent) erfolgreich zu installieren:
 >- Python 2.6+
->- Python-setuptool
->- systemmd
 >- OpenSSL 1.0+
 >- OpenSSH 5.3+
 >- Dienstprogramme für das Dateisystem: sfdisk, fdisk, mkfs, parted
 >- Kennworttools: chpasswd, sudo
 >- Textverarbeitungstools: sed, grep
 >- Netzwerktools: ip-route
->- Aktivieren des rc.local-Diensts auf dem virtuellen Quellcomputer
 
 > [!TIP]
 >  Über das Azure-Portal können Sie bis zu 10 VMs auf einmal auswählen, um die Replikation zu konfigurieren. Um mehr VMs zu replizieren, können Sie das Portal verwenden und die zu replizierenden VMs in mehreren Stapeln von 10 VMs hinzufügen oder die Azure Migrate PowerShell-Schnittstelle zur Konfiguration der Replikation verwenden. Stellen Sie sicher, dass Sie die gleichzeitige Replikation nicht auf mehr als die maximal unterstützte Anzahl von VMs für gleichzeitige Replikationen konfigurieren.

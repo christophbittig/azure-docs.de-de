@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: fdcc56bb60622c6dec587be8ad7be63efdd08015
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: dfca5613659969485a97b0c9ff50c7739821df5d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114732221"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516513"
 ---
 In dieser Schnellstartanleitung werden zwei vorab geschriebene .NET-Anwendungen verwendet:
 
@@ -37,7 +37,7 @@ In dieser Schnellstartanleitung werden zwei vorab geschriebene .NET-Anwendungen 
     ```cmd/sh
     dotnet --version
     ```
-* Laden Sie bei Bedarf unter https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip die Azure IoT-C#-Beispiele herunter, und extrahieren Sie das ZIP-Archiv.
+* Laden Sie bei Bedarf unter https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip die Azure IoT-C#-Beispiele herunter, und extrahieren Sie das ZIP-Archiv.
 
 * Stellen Sie sicher, dass Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in dieser Schnellstartanleitung wird das MQTT-Protokoll verwendet, das über den Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub).
 

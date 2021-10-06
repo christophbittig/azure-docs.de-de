@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 92e1a38e962c80de53971523320cd168cfc66d06
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8385d046a57fe5bb4faab1f31daaa05c9f207e9f
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339725"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456535"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 
@@ -197,7 +197,7 @@ Wenn Sie weder OpenSSL noch andere TLS-Bibliotheken verwenden, nutzt das SDK auf
 
 Dieser Abschnitt stellt eine Beispielanwendung zum Verbinden eines Azure IoT-Java-Geräteclients mit einem IoT Edge-Gateway vor.
 
-1. Rufen Sie das Beispiel für **Send-event** aus [den Beispielen für das Azure IoT-Geräte-SDK für Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples) ab.
+1. Rufen Sie das Beispiel für **Send-event** aus [den Beispielen für das Azure IoT-Geräte-SDK für Java](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples) ab.
 2. Stellen Sie sicher, dass alle Voraussetzungen zum Ausführen des Beispiels erfüllt sind, indem Sie die Datei **readme.md** überprüfen.
 3. In der SDK-Dokumentation finden Sie Anweisungen zum Ausführen des Beispiels auf Ihrem Gerät.
 

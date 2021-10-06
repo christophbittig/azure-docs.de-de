@@ -6,12 +6,12 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: ee0bafdfe7d7caae2d4ba65e9967d9c46e6b3e3c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 05ccdc3613141e7b04c3255a6035c7a03ad25995
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346506"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579727"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-flexible-server-data-in-replication"></a>Konfigurieren der Datenreplikation in Azure Database for MySQL Flexible Server
 
@@ -20,7 +20,7 @@ ms.locfileid: "122346506"
 In diesem Artikel erfahren Sie, wie Sie die [Datenreplikation](concepts-data-in-replication.md) in Azure Database for MySQL Flexible Server einrichten, indem Sie Quell- und Replikatserver konfigurieren. In diesem Artikel wird davon ausgegangen, dass Sie über ein gewisses Maß an Erfahrung mit MySQL-Servern und -Datenbanken verfügen.
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 Die [Datenreplikationsfunktion](concepts-data-in-replication.md) synchronisiert Daten von einem lokalen MySQL-Quellserver, virtuellen Computern (VMs) oder Clouddatenbankdiensten, um ein Replikat in Azure Database for MySQL Flexible Server zu erstellen. Die Datenreplikation basiert auf der Position der binären Protokolldatei (binlog). Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
 
@@ -28,7 +28,7 @@ Die [Datenreplikationsfunktion](concepts-data-in-replication.md) synchronisiert 
 
 ## <a name="create-an-azure-database-for-mysql-flexible-server-instance-to-use-as-a-replica"></a>Erstellen Sie eine Azure Database for MySQL Flexible Server-Instanz, die als Replikat verwendet werden soll.
 
-1. Erstellen Sie eine neue Instanz von Azure Database for MySQL Flexible Server (z. B. „replica.mysql.database.azure.com“). Informationen zur Servererstellung finden Sie unter [Schnellstart: Verwenden des Azure-Portals zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz](quickstart-create-server-portal.md). Dieser Server ist der Replikatserver für die Datenreplikation.
+1. Erstellen Sie eine neue Instanz von Azure Database for MySQL Flexible Server (z. B. `replica.mysql.database.azure.com`). Informationen zur Servererstellung finden Sie unter [Schnellstart: Verwenden des Azure-Portals zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz](quickstart-create-server-portal.md). Dieser Server ist der Replikatserver für die Datenreplikation.
 
 2. Erstellen Sie dieselben Benutzerkonten und entsprechenden Berechtigungen.
 

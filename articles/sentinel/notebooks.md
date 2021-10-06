@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 06/24/2021
-ms.openlocfilehash: 9a72ec356161646df093bb6ca054f84ea0cfe6da
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d57941c06f4917c8ff3b27f5e566fc9d5f95474b
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128563064"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273001"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Aufspüren von Sicherheitsrisiken mit Jupyter Notebooks
 
@@ -91,7 +91,7 @@ In diesem Verfahren wird beschrieben, wie Sie einen Azure ML-Arbeitsbereich für
 
 1. Geben Sie die folgenden Informationen ein, und wählen Sie dann **Weiter** aus:
 
-    |Feld|Beschreibung|
+    |Feld|BESCHREIBUNG|
     |--|--|
     |**Abonnement**|Wählen Sie das gewünschte Azure-Abonnement aus.|
     |**Ressourcengruppe**|Verwenden Sie eine vorhandene Ressourcengruppe in Ihrem Abonnement, oder geben Sie einen Namen ein, um eine neue Ressourcengruppe zu erstellen. Eine Ressourcengruppe enthält verwandte Ressourcen für eine Azure-Lösung.|
@@ -322,7 +322,7 @@ If the *Runtime dependency of PyGObject is missing* error appears when you load 
     ModuleNotFoundError: No module named 'gi'
     ```
 
-1. Verwenden Sie das Skript [aml-compute-setup.sh](https://github.com/Azure/Azure-Sentinel-Notebooks/master/HowTos/aml-compute-setup.sh), das sich im Azure Sentinel-Notebooks-GitHub-Repository befindet, um `pygobject` in allen Notebooks und Anaconda-Umgebungen auf der Compute-Instanz automatisch zu installieren.
+1. Verwenden Sie das Skript [aml-compute-setup.sh](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/HowTos/aml-compute-setup.sh), das sich im Azure Sentinel-Notebooks-GitHub-Repository befindet, um `pygobject` in allen Notebooks und Anaconda-Umgebungen auf der Compute-Instanz automatisch zu installieren.
 
 > [!TIP]
 > Sie können diese Warnung auch beheben, indem Sie den folgenden Code in einem Notebook ausführen:

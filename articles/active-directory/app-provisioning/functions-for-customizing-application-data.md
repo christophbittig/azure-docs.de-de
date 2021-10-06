@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/21/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 6d345dcb2344c4f39eed7ce4da6b24cc9f717358
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2173afc4d96bd387f264d313696c41f0e6cbd84e
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128569962"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272180"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 
@@ -702,7 +702,7 @@ Zurückgegebener Beispielwert: *7/2/2021 3:33:38 PM*
 
 **Hinweise:**
 
-* Wenn der Parameter *wordSeparators* nicht angegeben wird, ruft PCase intern die .NET-Funktion [ToTitleCase](https://docs.microsoft.com/dotnet/api/system.globalization.textinfo.totitlecase?view=net-5.0) auf, um die *Quell*-Zeichenfolge in die richtige Groß-/Kleinschreibung zu konvertieren. Die .NET-Funktion *ToTitleCase* unterstützt einen umfassenden Satz an [Unicode-Zeichenkategorien](https://www.unicode.org/reports/tr44/#General_Category_Values) als Worttrennzeichen. 
+* Wenn der Parameter *wordSeparators* nicht angegeben wird, ruft PCase intern die .NET-Funktion [ToTitleCase](/dotnet/api/system.globalization.textinfo.totitlecase) auf, um die *Quell*-Zeichenfolge in die richtige Groß-/Kleinschreibung zu konvertieren. Die .NET-Funktion *ToTitleCase* unterstützt einen umfassenden Satz an [Unicode-Zeichenkategorien](https://www.unicode.org/reports/tr44/#General_Category_Values) als Worttrennzeichen. 
   * Leerzeichen
   * Neue-Zeile-Zeichen
   * *Steuerzeichen* wie Strg

@@ -2,13 +2,13 @@
 title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste der Azure-Ressourcentypen, die in eine neue Ressourcengruppe, ein neues Abonnement oder eine neue Region verschoben werden können.
 ms.topic: conceptual
-ms.date: 09/08/2021
-ms.openlocfilehash: 14ef825ec2e11d76b90161dc7cf3d8814c8daa04
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/04/2021
+ms.openlocfilehash: b5086256142c4ce72111dddcacaf19c4a40cdc35
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124764334"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429336"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -1183,7 +1183,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription | Regionenverschiebung |
 > | ------------- | ----------- | ---------- | ----------- |
-> | connectedclusters | Ja | Ja | Nein |
+> | connectedclusters | Nein | Nein | Nein |
 > | registeredsubscriptions | Nein | Nein | Nein |
 
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft.KubernetesConfiguration

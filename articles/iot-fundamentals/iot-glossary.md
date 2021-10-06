@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: 91604758ad2e53b3715a5b5c746959b3fe124ba6
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: ff8726ff95bd8e5e3c24fecb90d52ec48529ef7b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403395"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236008"
 ---
 # <a name="glossary-of-iot-terms"></a>Glossar mit IoT-Begriffen
 
@@ -367,10 +367,6 @@ Von IoT Plug & Play-[Geräten](#iot-plug-and-play-device) wird erwartet, dass 
 ### <a name="iot-plug-and-play-device"></a>IoT Plug & Play-Gerät
 
 Ein IoT Plug & Play-Gerät ist normalerweise ein kleines, eigenständiges Computergerät, das Daten sammelt oder andere Geräte steuert. Auf einem solchen Gerät wird Software oder Firmware ausgeführt, die ein [Gerätemodell](#device-model) implementiert.  Ein IoT Plug & Play-Gerät könnte z.B. ein Gerät zur Überwachung von Umweltdaten oder ein Regler für ein intelligentes Bewässerungssystem in der Landwirtschaft sein. Ein IoT Plug & Play-Gerät kann direkt oder als IoT Edge-Modul implementiert werden. Sie können eine in der Cloud gehostete IoT-Lösung zum Steuern, Überwachen und Empfangen von Daten von IoT Plug & Play-Geräten schreiben.
-
-### <a name="iot-solution-accelerators"></a>IoT Solution Accelerators
-
-In Azure IoT-Solution Accelerators werden mehrere Azure-Dienste zu Lösungen zusammengepackt. Diese Lösungen ermöglichen eine schnelle End-to-End-Implementierung gängiger IoT-Szenarien. Weitere Informationen finden Sie unter [Vergleich von Azure IoT-Optionen](../iot-accelerators/about-iot-accelerators.md).
 
 ## <a name="j"></a>J
 

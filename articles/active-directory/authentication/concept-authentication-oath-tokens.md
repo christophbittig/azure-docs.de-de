@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d5e34ee5013a6f4ad28779e92536ff2d8ef868
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 449a0ecd02e12816a9a9952fad0446f392ff4af7
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730766"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352875"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Authentifizierungsmethoden in Azure Active Directory – OATH-Token 
 
@@ -58,6 +58,9 @@ Je nach Größe der CSV-Datei kann die Verarbeitung ein paar Minuten dauern. Wä
 Sobald alle Fehler behoben sind, kann der Administrator die einzelnen Schlüssel aktivieren, indem er für das Token **Aktivieren** auswählt und das in dem Token angezeigte Einmalkennwort eingibt. Sie können maximal 200 OATH-Token alle 5 Minuten aktivieren. 
 
 Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-Hardwaretoken oder Authentifizierungsanwendungen wie die Microsoft Authenticator-App, die für die jederzeitige Verwendung konfiguriert sind. Hardware-Oath-Token können Gastbenutzern im Ressourcen Anker nicht zugewiesen werden.
+
+>[!IMPORTANT]
+>Die Vorschau wird in einer Azure Government oder Sovereign Cloud nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

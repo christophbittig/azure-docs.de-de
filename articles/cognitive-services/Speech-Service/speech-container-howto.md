@@ -8,30 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/27/2021
+ms.date: 09/01/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Lokal, Docker, Container
-ms.openlocfilehash: a78408759492cdba97bca8b6e4b71411af192f9f
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: a1f82384d7191c65293c85bdc3ef70347c6646f5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224121"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799033"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installieren und Ausführen von Docker-Containern für die APIs des Speech-Diensts 
 
-Container ermöglichen es Ihnen, einige der Speech-Dienst-APIs in Ihrer eigenen Umgebung auszuführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen Speech-Container herunterladen, installieren und ausführen.
+Container ermöglichen es Ihnen, _einige_ der Speech-Dienst-APIs in Ihrer eigenen Umgebung auszuführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen Speech-Container herunterladen, installieren und ausführen.
 
 Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur erstellen, die sowohl für stabile Cloudfunktionen als auch für das Edge optimiert ist. Es sind verschiedene Container verfügbar, die denselben [Preis](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) wie die cloudbasierten Azure Speech-Dienste haben.
 
+> [!IMPORTANT]
+> Wir haben die Standardstimmen für die Sprachsynthese und den Sprachsynthesecontainer am 31. August 2021 zurückgezogen. Erwägen Sie, Ihre Anwendungen zu migrieren, um stattdessen den Container für neuronale Sprachsynthese zu verwenden. [Führen Sie diese Schritte aus](./text-to-speech.md#migrate-to-neural-voice), um weitere Informationen zum Aktualisieren Ihrer Anwendung zu erhalten.
+
 | Container | Features | Neueste Version | Releasestatus |
 |--|--|--|--|
-| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.13.0 | Allgemein verfügbar |
-| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.13.0 | Allgemein verfügbar |
-| Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.14.1 | Allgemein verfügbar |
+| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.14.0 | Allgemein verfügbar |
+| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.14.0 | Allgemein verfügbar |
+| Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.15.0 | Allgemein verfügbar |
 | Speech-Sprachenerkennung | Erkennen der in Audiodateien gesprochenen Sprache | 1.3.0 | preview |
-| Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.8.0 | Allgemein verfügbar |
+| Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.9.0 | Allgemein verfügbar |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

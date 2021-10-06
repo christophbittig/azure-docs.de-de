@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 82ac4e9c4a2f573295790d5d7fa3b02c2e690bbc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8cf212bb6983e561f224aa238ad6afd5e5cf9ac2
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124819863"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274651"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Senden von Daten an eine geeignete Azure Storage-Blobebene mit Azure Data Box oder Azure Data Box Heavy
 
@@ -29,11 +29,11 @@ Azure Storage ermöglicht das Speichern von Daten auf möglichst kostengünstige
 
 Die kalte Speicherebene ist für selten verwendete Daten vorgesehen, die mindestens 30 Tage lang gespeichert werden müssen. Die Speicherkosten für die kalte Ebene sind geringer als für die heiße Speicherebene, die Datenzugriffsgebühren sind verglichen mit der heißen Ebene jedoch höher.
 
-Die Azure-Archivebene ist offline und ermöglicht die niedrigsten Speicherkosten, ist gleichzeitig aber mit den höchsten Zugriffskosten verbunden. Diese Ebene ist für Daten vorgesehen, die mindestens 180 Tage im Archivspeicher bleiben. Details zu den einzelnen Ebenen und zum Preismodell finden Sie unter [Vergleich der Speicherebenen](../storage/blobs/storage-blob-storage-tiers.md).
+Die Azure-Archivebene ist offline und ermöglicht die niedrigsten Speicherkosten, ist gleichzeitig aber mit den höchsten Zugriffskosten verbunden. Diese Ebene ist für Daten vorgesehen, die mindestens 180 Tage im Archivspeicher bleiben. Details zu den einzelnen Ebenen und zum Preismodell finden Sie unter [Vergleich der Speicherebenen](../storage/blobs/access-tiers-overview.md).
 
 Die Daten aus Data Box oder Data Box Heavy werden in eine Speicherebene hochgeladen, die dem Speicherkonto zugeordnet ist. Beim Erstellen eines Speicherkontos können Sie die heiße oder die kalte Zugriffsebene festlegen. Je nach dem Zugriffsmuster Ihrer Workload und den Kosten können Sie diese Daten aus der Standardebene in eine andere Speicherebene verschieben.
 
-Sie können das Tiering für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (universelle Konten der Version 2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Zur Auswahl der richtigen Speicherebene für Ihre Daten überprüfen Sie die ausführlichen Überlegungen in [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](../storage/blobs/storage-blob-storage-tiers.md).
+Sie können das Tiering für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (universelle Konten der Version 2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Zur Auswahl der richtigen Speicherebene für Ihre Daten überprüfen Sie die ausführlichen Überlegungen in [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](../storage/blobs/access-tiers-overview.md).
 
 ## <a name="set-a-default-blob-tier"></a>Festlegen einer Standardblobebene
 

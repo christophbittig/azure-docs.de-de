@@ -13,12 +13,12 @@ ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: e00eff9bfaa64abc4d37d7e4f6d66552b2f674cb
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 72537e46d7d249190585552e0a8ee11c43e40340
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418630"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128566556"
 ---
 # <a name="migrate-confidential-client-applications-from-adalnet-to-msalnet"></a>Migrieren vertraulicher Clientanwendungen von ADAL.NET zu MSAL.NET
 
@@ -38,7 +38,7 @@ Für App-Registrierungen gilt:
    - Eine `resourceId`-Zeichenfolge. Diese Variable ist der App-ID-URI der Web-API, die Sie aufrufen möchten.
    - Eine Instanz von `IClientAssertionCertificate` oder von `ClientAssertion`. Diese Instanz stellt die Clientanmeldeinformationen für Ihre App bereit, um die Identität Ihrer App nachzuweisen.
 
-1. Nachdem Sie festgestellt haben, dass Sie über Apps mit Verwendung von ADAL.NET verfügen, installieren Sie das MSAL.NET-NuGet-Paket [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) und aktualisieren Ihre Projektbibliotheksverweise. Weitere Informationen finden Sie unter [Installieren eines NuGet-Pakets](https://www.bing.com/search?q=install+nuget+package).
+1. Nachdem Sie festgestellt haben, dass Sie über Apps mit Verwendung von ADAL.NET verfügen, installieren Sie das MSAL.NET-NuGet-Paket [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) und aktualisieren Ihre Projektbibliotheksverweise. Weitere Informationen finden Sie unter [Installieren eines NuGet-Pakets](https://www.bing.com/search?q=install+nuget+package). Wenn Sie Tokencacheserialisierungsmodule verwenden möchten, installieren Sie auch [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web).
 
 1. Aktualisieren Sie den Code gemäß dem Szenario für vertrauliche Clients. Einige der erforderlichen Schritte gelten für alle Szenarien mit vertraulichen Clients. Andere Schritte gelten jeweils nur für ein einzelnes Szenario. 
 
@@ -327,6 +327,10 @@ Im Folgenden sehen Sie eine Gegenüberstellung des beispielhaften Autorisierungs
 :::row:::
    :::column span="":::
 ```csharp
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
+
 public partial class AuthWrapper
 {
  const string ClientId = "Guid (AppID)";
@@ -363,34 +367,51 @@ public partial class AuthWrapper
    :::column-end:::
    :::column span="":::
 ```csharp
+using Microsoft.Identity.Client;
+using Microsoft.Identity.Web;
+using System;
+using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
+
 public partial class AuthWrapper
 {
  const string ClientId = "Guid (Application ID)";
- const string authority 
-     = "https://login.microsoftonline.com/{tenant}";
+ const string authority
+    = "https://login.microsoftonline.com/{tenant}";
  private Uri redirectUri = new Uri("host/login_oidc");
  X509Certificate2 certificate = LoadCertificate();
 
- IConfidentialClientApplication app;
-
- public async Task<AuthenticationResult> GetAuthenticationResult(
-  string resourceId,
-  string authorizationCode)
+ public IConfidentialClientApplication CreateApplication()
  {
-  if (app == null)
-  {
-   app = ConfidentialClientApplicationBuilder.Create(ClientId)
-           .WithCertificate(certificate)
-           .WithAuthority(authority)
-           .WithRedirectUri(redirectUri.ToString())
-           .Build();
-  }
+  IConfidentialClientApplication app;
+
+  app = ConfidentialClientApplicationBuilder.Create(ClientId)
+               .WithCertificate(certificate)
+               .WithAuthority(authority)
+               .WithRedirectUri(redirectUri.ToString())
+               .WithLegacyCacheCompatibility(false)
+               .Build();
+
+  // Add a token cache. For details about other serialization
+  // see https://aka.ms/msal-net-cca-token-cache-serialization
+  app.AddInMemoryTokenCache();
+
+  return app;
+ }
+
+ // Called from 'code received event'.
+ public async Task<AuthenticationResult> GetAuthenticationResult(
+      string resourceId,
+      string authorizationCode)
+ {
+  IConfidentialClientApplication app = CreateApplication();
 
   var authResult = await app.AcquireTokenByAuthorizationCode(
-              new [] { $"{resourceId}/.default" },
-              authorizationCode)
-              .ExecuteAsync()
-              .ConfigureAwait(false);
+                  new[] { $"{resourceId}/.default" },
+                  authorizationCode)
+                  .ExecuteAsync()
+                  .ConfigureAwait(false);
 
   return authResult;
  }
@@ -399,7 +420,41 @@ public partial class AuthWrapper
    :::column-end:::
 :::row-end:::
 
-Durch den Aufruf von `AcquireTokenByAuthorizationCode` wird dem Tokencache ein Token hinzufügt. Um zusätzliche Token für andere Ressourcen oder Mandanten abzurufen, verwenden Sie `AcquireTokenSilent` in Ihren Controllern.
+Durch das Aufrufen von `AcquireTokenByAuthorizationCode` wird dem Tokencache ein Token hinzugefügt, wenn der Autorisierungscode empfangen wird. Um zusätzliche Token für andere Ressourcen oder Mandanten abzurufen, verwenden Sie `AcquireTokenSilent` in Ihren Controllern.
+
+```csharp
+public partial class AuthWrapper
+{
+ // Called from controllers
+ public async Task<AuthenticationResult> GetAuthenticationResult(
+      string resourceId2,
+      string authority)
+ {
+  IConfidentialClientApplication app = CreateApplication();
+  AuthenticationResult authResult;
+
+  var scopes = new[] { $"{resourceId2}/.default" };
+  var account = await app.GetAccountAsync(ClaimsPrincipal.Current.GetMsalAccountId());
+
+  try
+  {
+   // try to get an already cached token
+   authResult = await app.AcquireTokenSilent(
+               scopes,
+               account)
+                .WithAuthority(authority)
+                .ExecuteAsync().ConfigureAwait(false);
+  }
+  catch (MsalUiRequiredException)
+  {
+   // The controller will need to challenge the user
+   // including asking for claims={ex.Claims}
+   throw;
+  }
+  return authResult;
+ }
+}
+```
 
 #### <a name="benefit-from-token-caching"></a>Vorteile der Zwischenspeicherung von Token
 
@@ -410,6 +465,9 @@ Da Ihre Web-App `AcquireTokenByAuthorizationCode` verwendet, muss Ihre App einen
 app.UseInMemoryTokenCaches(); // or a distributed token cache.
 ```
 
+#### <a name="handling-msaluirequiredexception"></a>Behandeln von MsalUiRequiredException
+
+Wenn Ihr Controller versucht, ein Token für verschiedene Bereiche/Ressourcen im Hintergrund zu erhalten, löst MSAL.NET möglicherweise die Ausnahme `MsalUiRequiredException` aus. Dies wird erwartet, wenn sich der Benutzer beispielsweise erneut anmelden muss oder wenn der Zugriff auf die Ressource mehr Ansprüche erfordert (z. B. aufgrund einer Richtlinie für bedingten Zugriff). Ausführliche Informationen zur Problembehebung finden Sie unter [Behandeln von Fehlern und Ausnahmen in MSAL.NET](msal-error-handling-dotnet.md).
 
 [Erfahren Sie mehr über Web-Apps, die nachgeschaltete Web-APIs aufrufen](scenario-web-app-call-api-overview.md), und ihre Implementierung mit MSAL.NET oder Microsoft.Identity.Web in neuen Anwendungen.
 

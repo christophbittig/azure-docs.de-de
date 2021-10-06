@@ -4,25 +4,26 @@ titleSuffix: Azure Machine Learning
 description: Informationen zu Field-Programmable Gate Arrays Sie können einen Webdienst auf einem FPGA mit Azure Machine Learning für Rückschlüsse mit extrem geringen Latenzzeiten bereitstellen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: bfb29a00dbef95007eba6ca69f9a38d0f23d2da2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bfebb2dd7a73684887a2fa78d8d82ac26f2b7e50
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339529"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425523"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Bereitstellen von ML-Modellen für Field Programmable Gate Arrays (FPGAs) mit Azure Machine Learning 
 
 In diesem Artikel erfahren Sie mehr über FPGAs und die Bereitstellung von ML-Modellen in einem Azure-FPGA mithilfe des [Python-Pakets für hardwarebeschleunigte Modelle](/python/api/azureml-accel-models/azureml.accel) von [Azure Machine Learning](overview-what-is-azure-machine-learning.md).
 
 ## <a name="what-are-fpgas"></a>Was sind FPGAs?
+
 FPGAs enthalten ein Array von programmierbaren Logikblöcken sowie eine Hierarchie von neu konfigurierbaren Interconnects. Durch die Interconnects können diese Blöcke nach der Fertigung auf verschiedene Weise konfiguriert werden. Im Vergleich zu anderen Chips bieten FPGAs eine Kombination aus Programmierbarkeit und Leistung. 
 
 FPGAs ermöglichen es, eine geringe Latenzzeit für Echtzeit-Rückschlussanforderungen (oder Modellbewertungsanforderungen) zu erreichen. Asynchrone Anforderungen (Batchverarbeitung) sind nicht erforderlich. Die Batchverarbeitung kann zu Wartezeiten führen, weil mehr Daten verarbeitet werden müssen. Bei Implementierungen von neuronalen Prozessoren ist keine Batchverarbeitung erforderlich. Daher kann die Wartezeit im Vergleich zu CPU- und GPU-Prozessoren um ein Vielfaches geringer ausfallen.

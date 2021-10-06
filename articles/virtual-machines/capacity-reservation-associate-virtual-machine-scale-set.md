@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: fe9b445a1eccb6c897a1fd7f383e487714c23966
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e2563f7addb773b256a56dc67b2ec892b7231372
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575932"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532649"
 ---
 # <a name="associate-a-virtual-machine-scale-set-to-a-capacity-reservation-group-preview"></a>Zuordnen einer VM-Skalierungsgruppe zu einer Kapazitätsreservierungsgruppe (Vorschau)
 
@@ -28,9 +28,6 @@ Weitere Informationen zu diesen Modi finden Sie unter [Orchestrierungsmodi für 
 > Die Kapazitätsreservierung befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="register-for-capacity-reservation"></a>Registrieren für Kapazitätsreservierung 
-
-Bevor Sie das Feature zur Kapazitätsreservierung verwenden können, müssen Sie [Ihr Abonnement für die Vorschauversion registrieren](capacity-reservation-overview.md#register-for-capacity-reservation). Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Funktionsregistrierung abzuschließen.
 
 ## <a name="limitations-of-scale-sets-in-uniform-orchestration"></a>Einschränkungen von Skalierungsgruppen in einer einheitlichen Orchestrierung 
 

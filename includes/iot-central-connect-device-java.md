@@ -4,14 +4,14 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: 86329b17a437846c3a5c4a29dd901ac1b1ca5902
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 16ce672e03b2d0ad049d53d9819c8ed02094abc6
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114408332"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516616"
 ---
-[![Code durchsuchen](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
+[![Code durchsuchen](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -23,7 +23,7 @@ Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen
 
 - [Apache Maven 3](https://maven.apache.org/download.cgi)
 
-- Eine lokale Kopie des GitHub-Repositorys mit dem [Microsoft Azure IoT SDK für Java](https://github.com/Azure/azure-iot-sdk-java), das den Beispielcode enthält. Laden Sie über den folgenden Link eine Kopie des Repositorys herunter: [ZIP herunterladen](https://github.com/Azure/azure-iot-sdk-java/archive/master.zip). Entzippen Sie anschließend die Datei an einem geeigneten Speicherort auf Ihrem lokalen Computer.
+- Eine lokale Kopie des GitHub-Repositorys mit dem [Microsoft Azure IoT SDK für Java](https://github.com/Azure/azure-iot-sdk-java), das den Beispielcode enthält. Laden Sie über den folgenden Link eine Kopie des Repositorys herunter: [ZIP herunterladen](https://github.com/Azure/azure-iot-sdk-java/archive/main.zip). Entzippen Sie anschließend die Datei an einem geeigneten Speicherort auf Ihrem lokalen Computer.
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 

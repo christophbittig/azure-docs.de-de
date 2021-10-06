@@ -6,14 +6,14 @@ author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: tutorial
-ms.date: 05/18/2021
+ms.date: 09/13/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6352c86581da356f4b2bab1a80dd463d502a9ae3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: dc05d6488978004eebee68b901214ab71f0fffd4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481749"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656643"
 ---
 # <a name="tutorial-give-an-azure-function-app-access-to-a-media-services-account"></a>Tutorial: Gewähren von Zugriff auf ein Media Services-Konto für eine Azure-Funktions-App
 
@@ -117,34 +117,35 @@ func new --name OnAir --template "HTTP trigger" --authlevel "anonymous"
 
 ## <a name="configure-the-functions-project"></a>Konfigurieren des Functions-Projekts
 
-### <a name="add-items-to-the-csproj-file"></a>Hinzufügen von Elementen zur CSPROJ-Datei
+### <a name="install-media-services-and-other-extensions"></a>Installieren von Media Services und anderen Erweiterungen
 
-Fügen Sie der ersten Elementgruppe in der automatisch generierten CSPROJ-Datei (`<ItemGroup>`) die folgenden Zeilen hinzu:
+Führen Sie den Befehl dotnet add package im Terminalfenster aus, um die Erweiterungspakete zu installieren, die Sie in Ihrem Projekt benötigen. Mit dem folgenden Befehl werden die Pakete Media Services und Azure Identity installiert.
 
-```xml
-<PackageReference Include="Microsoft.Azure.Management.Fluent" Version="1.37.0" />
-<PackageReference Include="Microsoft.Azure.Management.Media" Version="3.0.4" />
+```bash
+dotnet add package Microsoft.Azure.Management.Media
+dotnet add package Azure.Identity
 ```
 
 ### <a name="edit-the-onaircs-code"></a>Bearbeiten des Codes in der Datei „OnAir.cs“
 
 Ändern Sie die Datei `OnAir.cs`. Ändern Sie die Variablen `subscriptionId`, `resourceGroup` und `mediaServicesAccountName` in die Werte, für die Sie sich zuvor entschieden haben.
 
-```aspx-csharp
-using System.Threading.Tasks;
+```csharp
+using Azure.Core;
+using Azure.Identity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Management.Media;
+using Microsoft.Azure.Management.Media.Models;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.Azure.Management.Media;
-using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
-using Microsoft.Azure.Management.ResourceManager.Fluent;
-using Microsoft.Azure.Management.Media.Models;
+using Microsoft.Rest;
+using System.Threading.Tasks;
 
 namespace MediaServicesLiveMonitor
 {
-    public static class LatestAsset
+    public static class OnAir
     {
         [FunctionName("OnAir")]
         public static async Task<IActionResult> Run(
@@ -159,14 +160,18 @@ namespace MediaServicesLiveMonitor
             {
                 return new BadRequestObjectResult("Missing 'name' URL parameter");
             }
-            
-            var credentials = SdkContext.AzureCredentialsFactory.FromSystemAssignedManagedServiceIdentity(
-                MSIResourceType.AppService,
-                AzureEnvironment.AzureGlobalCloud);
 
-            var subscriptionId = "00000000-0000-0000-000000000000";    // Update
-            var resourceGroup = "<your-resource-group-name>";                                    // Update
-            var mediaServicesAccountName = "<your-media-services-account-name>";                    // Update
+            var credential = new ManagedIdentityCredential();
+            var accessTokenRequest = await credential.GetTokenAsync(
+                new TokenRequestContext(
+                    scopes: new string[] { "https://management.core.windows.net" + "/.default" }
+                    )
+                );
+            ServiceClientCredentials credentials = new TokenCredentials(accessTokenRequest.Token, "Bearer");
+
+            var subscriptionId = "00000000-0000-0000-000000000000";                 // Update
+            var resourceGroup = "<your-resource-group-name>";                       // Update
+            var mediaServicesAccountName = "<your-media-services-account-name>";    // Update
 
             var mediaServices = new AzureMediaServicesClient(credentials)
             {
@@ -179,7 +184,7 @@ namespace MediaServicesLiveMonitor
             {
                 return new NotFoundResult();
             }
-            
+
             return new OkObjectResult(liveEvent.ResourceState == LiveEventResourceState.Running ? "On air" : "Off air");
         }
     }

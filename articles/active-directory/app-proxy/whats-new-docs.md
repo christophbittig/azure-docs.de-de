@@ -1,7 +1,7 @@
 ---
 title: Neuerungen im Azure Active Directory-Anwendungsproxy
 description: Neue und aktualisierte Dokumentation für den Azure Active Directory-Anwendungsproxy.
-ms.date: 08/03/2021
+ms.date: 09/08/2021
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: mtillman
-ms.openlocfilehash: f4fd9a1ac646e4a78598b4d07ba8197ed89da148
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 289cb5e77f94cbe60b71d642f99d21a41ecf042c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346262"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779465"
 ---
 # <a name="azure-active-directory-application-proxy-whats-new"></a>Azure Active Directory-Anwendungsproxy: Neuerungen
 
 Erfahren Sie mehr über die Neuerungen in der Dokumentation zum Azure Active Directory-Anwendungsproxy. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen für den AAD-Dienst finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="august-2021"></a>August 2021
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Konfigurieren von benutzerdefinierten Domänen per Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md)
+
+
 ## <a name="july-2021"></a>Juli 2021
 
 ### <a name="updated-articles"></a>Aktualisierte Artikel

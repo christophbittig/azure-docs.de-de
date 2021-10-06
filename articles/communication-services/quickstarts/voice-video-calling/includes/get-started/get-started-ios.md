@@ -6,12 +6,12 @@ ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 2c1340e41471ab25f00d7ad0a9e678dfeb65470f
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: be6dbd899f91df5a19878d0491f14b3eb636f8eb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122970241"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671664"
 ---
 In diesem Schnellstartanleitung erfahren Sie, wie Sie einen Anruf mithilfe des Calling SDK von Azure Communication Services für iOS beginnen.
 
@@ -38,8 +38,11 @@ Erstellen Sie in Xcode ein neues iOS-Projekt, und wählen Sie die Vorlage **Sing
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>Installieren des Pakets und der Abhängigkeiten mit CocoaPods
 
-1. Um eine Podfile-Datei für Ihre Anwendung zu erstellen, müssen Sie das Terminal öffnen, zum Projektordner navigieren und ```pod init``` ausführen
-3. Fügen Sie den folgenden Code in die Podfile-Datei ein, und speichern Sie die Datei (stellen Sie sicher, dass „target (Ziel)“ mit dem Namen Ihres Projekts übereinstimmt):
+1. Zum Erstellen einer Podfile-Datei für Ihre Anwendung müssen Sie das Terminal öffnen, zum Projektordner navigieren und dies ausführen:
+
+   `pod init`
+
+1. Fügen Sie den folgenden Code in die Podfile-Datei ein, und speichern Sie die Datei (stellen Sie sicher, dass „target (Ziel)“ mit dem Namen Ihres Projekts übereinstimmt):
 
    ```
    platform :ios, '13.0'
@@ -50,8 +53,9 @@ Erstellen Sie in Xcode ein neues iOS-Projekt, und wählen Sie die Vorlage **Sing
    end
    ```
 
-3. Führen Sie `pod install` aus.
-3. Öffnen Sie `.xcworkspace` mit Xcode.
+1. Führen Sie `pod install` aus.
+
+1. Öffnen Sie `.xcworkspace` mit Xcode.
 
 ### <a name="request-access-to-the-microphone"></a>Anfordern des Zugriffs auf das Mikrofon
 

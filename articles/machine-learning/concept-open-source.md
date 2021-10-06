@@ -4,17 +4,17 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie Open-Source-Python-Frameworks für maschinelles Lernen verwenden, um End-to-End-Lösungen für maschinelles Lernen in Azure Machine Learning zu trainieren, bereitzustellen und zu verwalten.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 01/14/2020
-ms.openlocfilehash: 8ec9aaf2222924718ad21cf0654d138be22c2d19
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: d8c765bbf006d02ec2c5bdf87a621119c922b02b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293389"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129430115"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>Open-Source-Integration in Azure Machine Learning-Projekte
 

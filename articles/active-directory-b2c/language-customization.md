@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 418f0797343a64728c4e48084b09bd0e426cec62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0954f438f21229b16800847f5d248909a61df051
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101686409"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573952"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Sprachanpassung in Azure Active Directory B2C
 
@@ -37,6 +37,10 @@ Möglicherweise müssen Sie aber gar nicht so genau steuern, welche Sprachen Ihr
 
 > [!NOTE]
 > Falls Sie benutzerdefinierte Benutzerattribute verwenden, müssen Sie Ihre eigenen Übersetzungen angeben. Weitere Informationen finden Sie unter [Anpassen von Zeichenfolgen](#customize-your-strings).
+
+Sehen Sie sich dieses Video an, um zu erfahren, wie Sie Sprache mit Azure AD B2C lokalisieren oder anpassen.
+
+>[!Video https://www.youtube.com/embed/yqrX5_tA7Ms]
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -184,7 +188,7 @@ https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 
 ## <a name="add-custom-languages"></a>Hinzufügen benutzerdefinierter Sprachen
 
-Sie können auch Sprachen hinzufügen, für die Microsoft aktuell keine Übersetzungen bereitstellt. Sie müssen in diesem Fall die Übersetzungen für alle Zeichenfolgen im Benutzerflow bereitstellen. Sprach- und Gebietsschema-Codes sind auf die begrenzt, die im ISO-Standard 639-1 festgelegt sind. Das Gebietsschema-Codeformat sollte „ISO_639-1_Code“-„Ländercode“ lauten, z. B. `en-GB`. Weitere Informationen zu Gebietsschema-ID-Formaten finden Sie unter https://docs.microsoft.com/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a.
+Sie können auch Sprachen hinzufügen, für die Microsoft aktuell keine Übersetzungen bereitstellt. Sie müssen in diesem Fall die Übersetzungen für alle Zeichenfolgen im Benutzerflow bereitstellen. Sprach- und Gebietsschema-Codes sind auf die begrenzt, die im ISO-Standard 639-1 festgelegt sind. Das Gebietsschema-Codeformat sollte „ISO_639-1_Code“-„Ländercode“ lauten, z. B. `en-GB`. Weitere Informationen finden Sie unter [Gebietsschema-ID-Formate](/openspecs/office_standards/ms-oe376/6c085406-a698-4e12-9d4d-c3b0ee3dbc4a).
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 2. Klicken Sie auf den Benutzerflow, für den Sie benutzerdefinierte Sprachen hinzufügen möchten, und klicken Sie dann auf **Sprachen**.
@@ -416,12 +420,13 @@ Im folgenden Beispiel werden der Registrierungs- oder Anmeldeseite sowie der Reg
 </ContentDefinitions>
 ```
 
-##  <a name="upload-and-test-your-updated-custom-policy"></a>Hochladen und Testen Ihrer aktualisierten benutzerdefinierten Richtlinie
+## <a name="upload-and-test-your-updated-custom-policy"></a>Hochladen und Testen Ihrer aktualisierten benutzerdefinierten Richtlinie
 
 ### <a name="upload-the-custom-policy"></a>Hochladen der benutzerdefinierten Richtlinie
 
 1. Speichern Sie die Erweiterungsdatei.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Richtlinien** die Option **Identity Experience Framework** aus.
 1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus.

@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: ab706018e7c38e43ae75d5af49c3bd6c0a78d783
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 8628683dafbc16a657bf7c8c04beecdc60e2506d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403483"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455378"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -55,9 +55,9 @@ Die folgende Tabelle enthält Links zu Codebeispielen für jede unterstützte Sp
 | Sprache | Parameter für das MQTT-Protokoll | Parameter für das Protokoll für MQTT über WebSockets
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt.Mqtt | azure-iot-device-mqtt.MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol).MQTT | IotHubClientProtocol.MQTT_WS |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/main/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol).MQTT | IotHubClientProtocol.MQTT_WS |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype).Mqtt | TransportType.Mqtt greift auf MQTT über WebSockets zurück, wenn bei MQTT ein Fehler auftritt. Um nur MQTT über WebSockets anzugeben, verwenden Sie TransportType.Mqtt_WebSocket_Only. |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/main/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype).Mqtt | TransportType.Mqtt greift auf MQTT über WebSockets zurück, wenn bei MQTT ein Fehler auftritt. Um nur MQTT über WebSockets anzugeben, verwenden Sie TransportType.Mqtt_WebSocket_Only. |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Unterstützt standardmäßig MQTT | Fügen Sie `websockets=True` im Befehl hinzu, um den Client zu erstellen. |
 
 Das folgende Fragment zeigt, wie Sie bei Verwendung des Azure IoT SDK für Node.js das Protokoll für MQTT über WebSockets angeben:
@@ -84,7 +84,7 @@ Um sicherzustellen, dass eine Client/IoT Hub-Verbindung aktiv bleibt, senden sow
 |Node.js     |   180 Sekunden      |     Nein    |
 |Java     |    230 Sekunden     |     Nein    |
 |C     | 240 Sekunden |  [Ja](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
-|C#     | 300 Sekunden |  [Ja](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
+|C#     | 300 Sekunden |  [Ja](https://github.com/Azure/azure-iot-sdk-csharp/blob/main/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
 |Python   | 60 Sekunden |  Nein   |
 
 Entsprechend der [MQTT-Spezifikation](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081) ist das Keep-Alive-Pingintervall von IoT Hub das 1,5-fache des Keep-Alive-Werts für Clients. IoT Hub schränkt jedoch das maximale serverseitige Timeout auf 29,45 Minuten (1.767 Sekunden) ein, weil sämtliche Azure-Dienste an das TCP-Leerlauftimeout von Azure Load Balancer (29,45 Minuten) gebunden sind. 

@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2021
-ms.openlocfilehash: 3d35eed46082d162afed5a2c9685265812b1e2d7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 768645614035afa852e5d9195666748df9116368
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339962"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577952"
 ---
 # <a name="networking-overview-for-azure-database-for-postgresql---flexible-server-preview"></a>Übersicht über den Netzwerkbetrieb bei Azure Database for PostgreSQL – Flexibler Server (Vorschau)
 
@@ -74,7 +74,7 @@ Nachstehend werden einige Konzepte erläutert, die Sie kennen sollten, wenn Sie 
   Derzeit werden keine NSGs unterstützt, bei denen eine ASG Teil der Regel mit Azure Database for PostgreSQL – Flexibler Server ist. Es wird derzeit empfohlen, die [IP-basierte Filterung von Quelle oder Ziel](../../virtual-network/network-security-groups-overview.md#security-rules) in einer NSG zu verwenden. 
 
   > [!IMPORTANT]
-  > Die Funktionen von Azure Database for PostgreSQL – Flexibler Server erfordern die Möglichkeit, ausgehenden Datenverkehr an die Zielports 5432 und 6432 zu senden. Wenn Sie Netzwerksicherheitsgruppen (NSGs) erstellen, um ausgehenden Datenverkehr von Azure Database for PostgreSQL – Flexibler Server zu blockieren, stellen Sie sicher, dass Datenverkehr an diese Zielports zugelassen wird. 
+  > Hochverfügbarkeitsfeatures von Azure Database for PostgreSQL (Flexible Server) erfordern die Fähigkeit, den Datenverkehr an die Zielports 5432 und 6432 innerhalb des Subnetzes des virtuellen Azure-Netzwerks, in dem Azure Database for PostgreSQL (Flexible Server) bereitgestellt wird, sowie zur Protokollarchivierung an Azure Storage zu senden und zu empfangen. Wenn Sie [Netzwerksicherheitsgruppen (Network Security Groups, NSG)](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) erstellen, um den Datenverkehrsfluss zu oder von Ihrer Azure Database for PostgreSQL Flexible Server-Instanz innerhalb des Subnetzes zu verweigern, in dem diese Instanz bereitgestellt wurde, müssen Sie sicherstellen, dass der Datenverkehr an die Zielports 5432 und 6432 innerhalb des Subnetzes sowie an Azure Storage zugelassen wird, indem Sie das [Diensttag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) Azure Storage als Ziel verwenden. 
 
 * **Integration privater DNS-Zonen:** Mit der Integration privater Azure-DNS-Zonen können Sie das private DNS innerhalb des aktuellen VNet oder eines beliebigen Peer-VNet in derselben Region auflösen, in dem die private DNS-Zone verknüpft ist. 
 
@@ -83,6 +83,10 @@ Nachstehend werden einige Konzepte erläutert, die Sie kennen sollten, wenn Sie 
 Wenn Sie über das Azure-Portal oder mit der Azure-Befehlszeilenschnittstelle flexible Server mit einem virtuellen Netzwerk erstellen, wird automatisch eine neue private DNS-Zone für jeden Server in Ihrem Abonnement bereitgestellt. Dabei wird der von Ihnen bereitgestellte Servername verwendet. 
 
 Wenn Sie eine Azure-API, eine Azure Resource Manager-Vorlage (ARM-Vorlage) oder Terraform verwenden, erstellen Sie private DNS-Zonen, die auf `postgres.database.azure.com` enden. Verwenden Sie diese Zonen beim Konfigurieren flexibler Server mit privatem Zugriff. Weitere Informationen finden Sie in der [Übersicht über private DNS-Zonen](../../dns/private-dns-overview.md).
+
+
+ Bei Verwendung des privaten Netzwerkzugriffs mit dem virtuellen Azure-Netzwerk ist die Bereitstellung der Informationen zu privaten DNS-Zonen für verschiedene Schnittstellen einschließlich API, ARM und Terraform obligatorisch.  Erstellen Sie daher für die Erstellung einer neuen Azure Database for PostgreSQL Flexible Server-Instanz mit privatem Netzwerkzugriff mit API, ARM oder Terraform private DNS-Zonen, und verwenden Sie diese beim Konfigurieren der flexiblen Server mit privatem Zugriff. Weitere Informationen finden Sie unter [REST-API-Spezifikationen für Microsoft Azure](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/preview/2021-06-01-preview/postgresql.json). Wenn Sie das [Azure-Portal](./how-to-manage-virtual-network-portal.md) oder [Azure CLI](./how-to-manage-virtual-network-cli.md) zum Erstellen flexibler Server verwenden, können Sie den Namen einer privaten DNS-Zone angeben, die Sie zuvor in demselben oder einem anderen Abonnement erstellt haben, oder es wird automatisch eine private DNS-Standardzone in Ihrem Abonnement erstellt.
+
 
 
 ### <a name="integration-with-a-custom-dns-server"></a>Integration mit einem benutzerdefinierten DNS-Server
@@ -163,7 +167,10 @@ Azure Database for PostgreSQL – Flexibler Server erzwingt das Verbinden Ihrer
 
 Azure Database for PostgreSQL unterstützt TLS 1.2 und höher. In [RFC 8996](https://datatracker.ietf.org/doc/rfc8996/) gibt die Internet Engineering Task Force (IETF) explizit an, dass TLS 1.0 und TLS 1.1 nicht verwendet werden dürfen. Beide Protokolle wurden Ende 2019 als veraltet gekennzeichnet.
 
-Alle eingehenden Verbindungen, die frühere Versionen des TLS-Protokolls verwenden (z. B. TLS 1.0 und TLS 1.1), werden verweigert.
+Alle eingehenden Verbindungen, die frühere Versionen des TLS-Protokolls (z. B. TLS 1.0 und TLS 1.1) verwenden, werden standardmäßig verweigert. 
+
+> [!NOTE]
+> SSL- und TLS-Zertifikate bestätigen, dass Ihre Verbindung durch moderne Verschlüsselungsprotokolle geschützt ist. Indem Sie Ihre Verbindung über das Netzwerk verschlüsseln, verhindern Sie nicht autorisierten Zugriff auf Ihre Daten während der Übertragung. Daher empfehlen wir Ihnen dringend, die neuesten Versionen von TLS zum Verschlüsseln Ihrer Verbindungen mit Azure Database for PostgreSQL Flexible Server zu verwenden. Obwohl dies nicht empfohlen wird, haben Sie bei Bedarf die Möglichkeit, TLS/SSL für Verbindungen mit Azure Database for PostgreSQL Flexible Server zu deaktivieren, indem Sie den Serverparameter **require_secure_transport** auf „OFF“ festlegen. Sie können auch die TLS-Version festlegen, indem Sie die Serverparameter **ssl_min_protocol_version** und **ssl_max_protocol_version** festlegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

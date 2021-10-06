@@ -1,7 +1,6 @@
 ---
 title: Sicherer Hybridzugriff mit Azure AD und Silverfort
 description: In diesem Tutorial wird erläutert, wie Sie Silverfort mit Azure AD integrieren, um sicheren Hybridzugriff zu nutzen.
-services: active-directory
 author: gargi-sinha
 manager: martinco
 ms.service: active-directory
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.date: 9/13/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce68bde35f817d17f1278f6826ffe38284bf6c1a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0429b00a03aaf39fa5eb5657253ee6ee51190049
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700399"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274556"
 ---
 # <a name="tutorial-configure-silverfort-with-azure-active-directory-for-secure-hybrid-access"></a>Tutorial: Konfigurieren von Silverfort mit Azure Active Directory für sicheren Hybridzugriff
 
@@ -134,7 +133,7 @@ Sie benötigen Folgendes, um SSO für eine Anwendung einzurichten, die Sie Ihrem
 
     ![Abbildung des Hinzufügens der Richtlinie](./media/silverfort-azure-ad-integration/add-policy.png)
 
-14. Kehren Sie zur Azure AD-Konsole zurück, und navigieren Sie zu **Unternehmensanwendungen**. Die neue Silverfort-Anwendung sollte nun angezeigt werden. Die Anwendung kann jetzt in [Richtlinien für bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?bc=/azure/active-directory/conditional-access/breadcrumb/toc.json&toc=/azure/active-directory/conditional-access/toc.json%23create-a-conditional-access-policy) eingefügt werden.
+14. Kehren Sie zur Azure AD-Konsole zurück, und navigieren Sie zu **Unternehmensanwendungen**. Die neue Silverfort-Anwendung sollte nun angezeigt werden. Die Anwendung kann jetzt in [Richtlinien für bedingten Zugriff](../authentication/tutorial-enable-azure-mfa.md?bc=/azure/active-directory/conditional-access/breadcrumb/toc.json&toc=/azure/active-directory/conditional-access/toc.json%23create-a-conditional-access-policy) eingefügt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

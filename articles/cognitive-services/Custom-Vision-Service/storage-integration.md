@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 06/25/2021
 ms.author: pafarley
-ms.openlocfilehash: f21313a357c5c86087d3505cfdf654d9958d3893
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: d247626607f5fd4b517d7436c21ae33ed5727220
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982364"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353321"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>Integrieren von Azure-Speicher für Benachrichtigungen und Sicherungen
 
@@ -39,7 +39,7 @@ Navigieren Sie als Nächstes im Azure-Portal zu Ihrer Speicherressource. Wechsel
 * Wenn Sie die Verwendung des Features für die Modellsicherung planen, wählen Sie die Rolle **Mitwirkender an Storage-Blobdaten** aus, und fügen Sie Ihre Custom Vision-Trainingsressource als Mitglied hinzu. Wählen Sie zum Abschließen **Überprüfen + zuweisen** aus.
 * Wenn Sie die Verwendung des Features für die Benachrichtigungswarteschlange planen, wählen Sie die Rolle **Mitwirkender an Storage-Warteschlangendaten** aus, und fügen Sie Ihre Custom Vision-Trainingsressource als Mitglied hinzu. Wählen Sie zum Abschließen **Überprüfen + zuweisen** aus.
 
-Hilfe zu Rollenzuweisungen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](https://review.docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Hilfe zu Rollenzuweisungen finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="get-integration-urls"></a>Abrufen von Integrations-URLs
 

@@ -3,12 +3,12 @@ title: Verwalten und Überwachen von Azure-VM-Sicherungen
 description: Erfahren Sie mehr über das Verwalten und Überwachen von Azure-VM-Sicherungen mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 09/17/2021
-ms.openlocfilehash: d1040c1261c3edff3010403a63c856ff1c0200fa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1fe5b1511147b8db3b0c46504ee88d99dd272287
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605618"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271800"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Verwalten von Azure-VM-Sicherungen mit dem Azure Backup-Dienst
 
@@ -142,7 +142,7 @@ Sie erhalten einer Benachrichtigung, wenn die Sicherungsaufträge beendet wurden
 So beenden Sie den Schutz eines virtuellen Computers und löschen die Daten
 
 >[!Note]
->Bei Wiederherstellungspunkten im Archiv, die sich keine 180 Tage auf der Zugriffsebene „Archiv“ befunden haben, verursacht das Löschen dieser Wiederherstellungspunkte Kosten für vorzeitiges Löschen. [Weitere Informationen](../storage/blobs/storage-blob-storage-tiers.md#cool-and-archive-early-deletion)
+>Bei Wiederherstellungspunkten im Archiv, die sich keine 180 Tage auf der Zugriffsebene „Archiv“ befunden haben, verursacht das Löschen dieser Wiederherstellungspunkte Kosten für vorzeitiges Löschen. [Weitere Informationen](../storage/blobs/access-tiers-overview.md)
 
 
 1. Wählen Sie auf dem [Dashboard für die Tresorelemente](#view-vms-on-the-dashboard) die Option **Sicherung beenden** aus.

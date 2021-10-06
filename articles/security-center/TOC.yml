@@ -68,6 +68,10 @@
       href: tutorial-security-policy.md
     - name: Untersuchen der Integrität Ihrer Ressourcen
       href: investigate-resource-health.md
+- name: Beispiele
+  items:
+    - name: Azure Resource Graph-Abfragen
+      href: ./resource-graph-samples.md
 - name: Konzepte
   items:
     - name: Konzepte von Cloud Security Posture Management
@@ -123,6 +127,9 @@
         - name: Übersicht über Azure Defender für Server
           displayName: VM
           href: defender-for-servers-introduction.md
+        - name: Anwenden von Azure-Sicherheitsbaselines
+          displayName: 'VM, guest configuration, vulnerabilities, ASB, benchmark'
+          href: apply-security-baseline.md
         - name: Überprüfung auf Sicherheitsrisiken
           items:
             - name: Überprüfen Ihrer Computer mit dem integrierten Sicherheitsrisikobewertungsscanner

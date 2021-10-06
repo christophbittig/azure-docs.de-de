@@ -9,12 +9,12 @@ ms.workload: ''
 ms.topic: quickstart
 ms.date: 5/21/2021
 ms.author: inhenkel
-ms.openlocfilehash: c9cb10722e618c4476ed11d66b95e509030c38de
-ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
+ms.openlocfilehash: 198009abab7e1c5f663a454eb23debc55c81d7f3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113138961"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730800"
 ---
 # <a name="event-based-face-redaction"></a>Ereignisbasierte Gesichtsbearbeitung
 
@@ -28,12 +28,12 @@ Die genutzte spezifische Transformation wird als [Face Redactor](./analyze-face-
 
 Am Ende der Schnellstartanleitung können Sie die in einem Video enthaltenen Gesichter bearbeiten:
 
-<img src="./media/face-redaction-event-based-python-quickstart/output-redacted.gif" alt="Example output" style="border: 1px solid #C3C3C3;" /> 
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/output-redacted.gif" alt-text="Beispielausgabe":::
 
 ## <a name="solution-overview"></a>Übersicht über die Lösungen
 
-<img src="./media/face-redaction-event-based-python-quickstart/architecture.png" alt="Architecture overview of solution" style="border: 1px solid #C3C3C3;" /> 
-          
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/architecture.png" alt-text="Übersicht über die Architektur der Lösung":::
+
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie die Lösung bereitstellen, auf die Sie oben in der Lösungsübersicht zugreifen können. Am Anfang steht ein Speicherkonto (Azure Data Lake Storage Gen2), das über eine Verbindung mit einem Ereignislistener verfügt (Event Grid). Der Ereignislistener löst eine Azure-Funktion aus, wenn neue MP4-Dateien in das Speicherkonto hochgeladen werden. Die Azure-Funktion übermittelt einen Auftrag an eine vorkonfigurierte Transformation in Azure Media Services. Das fertige bearbeitete Video wird in einem Blob Storage-Konto gespeichert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -131,9 +131,8 @@ Das unten angegebene Bash-Skript wird zum Konfigurieren der Ressourcen verwendet
  
 ## <a name="enable-github-actions-pipeline"></a>Aktivieren der GitHub Actions-Pipeline
  Die Workflowdatei in diesem Repository enthält die Schritte zum Ausführen der Bereitstellung dieser Lösung. Damit Sie den Workflow starten können, müssen Sie ihn für Ihr eigenes Repository aktivieren. Navigieren Sie zum Aktivieren in Ihrem Repository zur Registerkarte „Actions“ (Aktionen), und wählen Sie die Option „I understand my workflows, go ahead and enable them“ (Ich verstehe meine Workflows, und sie sollen aktiviert werden) aus.
- 
- <img src="./media/face-redaction-event-based-python-quickstart/activate-workflow.png" alt="Enable workflow" style="border: 1px solid #C3C3C3;" /> 
- 
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/activate-workflow.png" alt-text="Workflow aktivieren":::
+
 Nach dem Aktivieren von GitHub Actions finden Sie die Workloaddatei hier: [.github/workflows/main.yml](https://github.com/Azure-Samples/media-services-v3-python/blob/main/.github/workflows/main.yml).  Zusätzlich zu den Triggern ist noch ein Buildauftrag mit einigen Schritten vorhanden. Er enthält die folgenden Schritte:
 - **Env**: Hier sind mehrere Umgebungsvariablen definiert, die auf die weiter oben hinzugefügten GitHub-Geheimnisse verweisen.
 - **Lesen der Umgebungsdatei**: Die Umgebungsdatei für den Buildauftrag wird gelesen.
@@ -141,30 +140,31 @@ Nach dem Aktivieren von GitHub Actions finden Sie die Workloaddatei hier: [.gith
 - **Azure-Anmeldung**: In diesem Schritt wird das GitHub-Geheimnis für die Anmeldung bei der Azure CLI mit den Dienstprinzipaldetails verwendet.
 - **Bereitstellen von Azure-Ressourcen mit der Azure CLI-Skriptdatei**: Führt das Bereitstellungsskript für die Bereitstellung der Azure-Ressourcen aus.
 - **Bereitstellen des Azure-Funktionscodes**: In diesem Schritt wird die Azure-Funktion verpackt und im Verzeichnis „./azure-function“ bereitgestellt. Nachdem die Azure-Funktion erfolgreich bereitgestellt wurde, sollte sie im Azure-Portal unter dem Namen „EventGrid_AMSJob“ angezeigt werden:
-<img src="./media/face-redaction-event-based-python-quickstart/azurefunction.png" alt="Azure Function visible in Azure Portal" style="border: 1px solid #C3C3C3;" /> 
+
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/azurefunction.png" alt-text="Azure-Funktion ist im Azure-Portal sichtbar":::
 
 - **Konfigurieren von Azure-Ressourcen per Azure CLI-Skriptdatei**: Wenn alles korrekt ist, werden im letzten Schritt die bereitgestellten Azure-Dienste konfiguriert, um den Ereignislistener zu aktivieren.
 
 Wählen Sie nach der Aktivierung der Workflows den Workflow „Deploy Azure Media Services FaceRedaction solution“ (Azure Media Services-Lösung „FaceRedaction“ bereitstellen) und dann die Option „Workflow ausführen“ aus. Die Lösung wird nun mit den Variablen bereitgestellt, die in den vorherigen Schritten hinzugefügt wurden. Warten Sie einige Minuten, und vergewissern Sie sich dann, dass die Ausführung erfolgreich war.
 
-<img src="./media/face-redaction-event-based-python-quickstart/run-workflow.png" alt="Run workflow" style="border: 1px solid #C3C3C3;" /> 
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/run-workflow.png" alt-text="Workflow ausführen":::
 
 ## <a name="test-your-solution"></a>Testen Ihrer Lösung
 Navigieren Sie im Azure-Portal zum Speicher-Explorer Ihrer ADLS Gen2-Instanz. Laden Sie ein Video in den Container „raw“ hoch. Falls Sie ein Testvideo benötigen, können Sie es von [dieser Website](https://www.pexels.com/search/videos/group/) herunterladen. Die folgende Abbildung enthält eine Anleitung zum Hochladen eines Videos in das ADLS Gen2-Speicherkonto:
 
-<img src="./media/face-redaction-event-based-python-quickstart/upload-test-data.png" alt="Uploading Video" style="border: 1px solid #C3C3C3;" /> 
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/upload-test-data.png" alt-text="Hochladen von Videos":::
 
 Vergewissern Sie sich auf Ihrer Azure Media Services-Instanz, dass ein Auftrag erstellt wurde. Navigieren Sie hierfür zu Ihrem Azure Media Services-Konto, und wählen Sie im Menü die Option „Transforms + Jobs“ (Transformationen und Aufträge) aus. Wählen Sie anschließend die Transformation für die Gesichtsbearbeitung (Face Redactor) aus.
 
-<img src="./media/face-redaction-event-based-python-quickstart/ams-transform.png" alt="AMS Transform" style="border: 1px solid #C3C3C3;" /> 
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/ams-transform.png" alt-text="AMS-Transformation":::
 
 Auf dieser Seite sollte der Auftrag angezeigt werden, der von der Azure-Funktion ausgelöst wurde. Der Auftrag kann entweder bereits abgeschlossen sein oder sich noch in der Verarbeitung befinden.
 
-<img src="./media/face-redaction-event-based-python-quickstart/ams-job.png" alt="AMS Job" style="border: 1px solid #C3C3C3;" />  
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/ams-job.png" alt-text="AMS Job":::
 
 Wenn Sie den Auftrag auswählen, werden einige zugehörige Details angezeigt. Wenn Sie den Namen des Ausgabemedienobjekts auswählen und dann den Link zum verknüpften Speichercontainer verwenden, können Sie Ihr verarbeitetes Video sehen, nachdem der Auftrag abgeschlossen wurde.
 
-<img src="./media/face-redaction-event-based-python-quickstart/ams-output.png" alt="AMS Output" style="border: 1px solid #C3C3C3;" />  
+:::image type="content" source="./media/face-redaction-event-based-python-quickstart/ams-output.png" alt-text="AMS-Ausgabe":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

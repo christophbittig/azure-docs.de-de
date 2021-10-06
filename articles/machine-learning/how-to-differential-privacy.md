@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie mithilfe der Open-Source-basierten SmartNoise-Bibliotheken verschiedene bewährte Datenschutzmethoden auf Azure Machine Learning-Modelle anwenden können.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.custom: responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 01/21/2020
-ms.openlocfilehash: 58716b6a1d25c52447fc1bf277986787db08ca1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 907d31ee7e4dd3278ab3712a6ab0142b56462a1b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339224"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426186"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Verwenden von differenziellem Datenschutz in Azure Machine Learning (Vorschau)
 

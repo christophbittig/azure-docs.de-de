@@ -1,22 +1,22 @@
 ---
-title: Kopieren von Daten aus Teradata Vantage mithilfe von Azure Data Factory
+title: Kopieren von Daten aus Teradata Vantage
+description: Mit dem Teradata-Connector in Azure Data Factory und Synapse Analytics können Sie Daten aus Teradata Vantage in unterstützte Senkendatenspeicher kopieren.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Mit dem Teradata-Connector des Data Factory-Diensts können Sie Daten aus einer Teradata  Vantage-Instanz in Datenspeicher kopieren, die von Data Factory als Senken unterstützt werden.
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 26ac697767be4023b166b8d751bdbac331dde6a6
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: ab5fc46d558a68503c018fb35e53801f9e6ee282
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304229"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771686"
 ---
-# <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopieren von Daten aus Teradata Vantage mithilfe von Azure Data Factory
+# <a name="copy-data-from-teradata-vantage-using-azure-data-factory-and-synapse-analytics"></a>Kopieren von Daten aus Teradata Vantage mithilfe von Azure Data Factory und Synapse Analytics
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 >
@@ -25,7 +25,7 @@ ms.locfileid: "123304229"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel erfahren Sie, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Teradata Vantage zu kopieren. Der Artikel baut auf der [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf.
+In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität in Azure Data Factory- und Azure Synapse Analytics-Pipelines verwenden, um Daten aus Teradata Vantage zu kopieren. Der Artikel baut auf der [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -82,7 +82,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Der verknüpfte Teradata-Dienst unterstützt folgende Eigenschaften:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ muss auf **Teradata** festgelegt sein. | Ja |
 | connectionString | Gibt die erforderlichen Informationen für die Verbindungsherstellung mit der Teradata-Instanz an. Sehen Sie sich die folgenden Beispiele an.<br/>Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
@@ -92,7 +92,7 @@ Der verknüpfte Teradata-Dienst unterstützt folgende Eigenschaften:
 
 Weitere Verbindungseigenschaften, die Sie abhängig von Ihrem Anwendungsfall in der Verbindungszeichenfolge festlegen können:
 
-| Eigenschaft | BESCHREIBUNG | Standardwert |
+| Eigenschaft | Beschreibung | Standardwert |
 |:--- |:--- |:--- |
 | TdmstPortNumber | Die Nummer des Ports für den Zugriff auf die Teradata-Datenbank.<br>Ändern Sie diesen Wert nur, wenn Sie vom technischen Support dazu aufgefordert werden. | 1025 |
 | UseDataEncryption | Mit dieser Eigenschaft wird angegeben, ob die gesamte Kommunikation mit der Teradata-Datenbank verschlüsselt werden soll. Zulässige Werte sind „0“ und „1“.<br><br/>- **0 (deaktiviert, Standardwert):** Nur Authentifizierungsinformationen werden verschlüsselt.<br/>- **1 (aktiviert):** Alle zwischen dem Treiber und der Datenbank übermittelten Daten werden verschlüsselt. | `0` |
@@ -190,7 +190,7 @@ Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Teradata-Dataset
 
 Beim Kopieren von Daten aus Teradata werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ des Datasets muss auf `TeradataTable` festgelegt werden. | Ja |
 | database | Der Name der Teradata-Instanz. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
@@ -244,7 +244,7 @@ Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Quelle „Te
 
 Beim Kopieren von Daten aus Teradata werden die folgenden Eigenschaften im Abschnitt **source** der Copy-Aktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ der Quelle der Kopieraktivität muss auf `TeradataSource` festgelegt werden. | Ja |
 | Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. z. B. `"SELECT * FROM MyTable"`.<br>Wenn Sie partitioniertes Laden aktivieren, müssen Sie die entsprechenden integrierten Partitionsparameter in Ihre Abfrage integrieren. Beispiele finden Sie im Abschnitt [Paralleles Kopieren aus Teradata](#parallel-copy-from-teradata). | Nein (wenn „table“ im Dataset angegeben ist) |
@@ -292,19 +292,19 @@ Beim Kopieren von Daten aus Teradata werden die folgenden Eigenschaften im Absch
 
 ## <a name="parallel-copy-from-teradata"></a>Parallele Kopie von Teradata
 
-Der Data Factory-Teradata-Connector verfügt über eine integrierte Datenpartitionierung zum parallelen Kopieren von Daten aus Teradata. Die Datenpartitionierungsoptionen befinden sich auf der Registerkarte **Quelle** der Kopieraktivität.
+Der Teradata-Connector verfügt über eine integrierte Datenpartitionierung zum parallelen Kopieren von Daten aus Teradata. Die Datenpartitionierungsoptionen befinden sich auf der Registerkarte **Quelle** der Kopieraktivität.
 
-![Screenshot der Partitionierungsoptionen](./media/connector-teradata/connector-teradata-partition-options.png)
+:::image type="content" source="./media/connector-teradata/connector-teradata-partition-options.png" alt-text="Screenshot der Partitionierungsoptionen":::
 
-Wenn Sie die partitioniertes Kopieren aktivieren, führt Data Factory parallele Abfragen für Ihre Teradata-Quelle aus, um Daten anhand von Partitionen zu laden. Der Parallelitätsgrad wird über die Einstellung [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) der Kopieraktivität gesteuert. Wenn Sie zum Beispiel `parallelCopies` auf „4“ festlegen, werden von Data Factory gleichzeitig vier Abfragen generiert und ausgeführt. Diese Abfragen basieren auf den von Ihnen angegebenen Partitionsoptionen und -einstellungen, und jede Abfrage ruft einen Teil der Daten aus Ihrer Teradata-Instanz ab.
+Wenn Sie partitioniertes Kopieren aktivieren, führt der Dienst parallele Abfragen an die Teradata-Quelle aus, um Daten partitionsweise zu laden. Der Parallelitätsgrad wird über die Einstellung [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) der Kopieraktivität gesteuert. Wenn Sie z. B. `parallelCopies` auf vier einstellen, generiert der Dienst gleichzeitig vier Abfragen auf der Grundlage der von Ihnen angegebenen Partitionsoption und -einstellungen und führt sie aus, wobei jede Abfrage einen Teil der Daten aus Teradata abruft.
 
-Es wird empfohlen, das parallele Kopieren mit Datenpartitionierung zu aktivieren. Das gilt insbesondere, wenn Sie große Datenmengen aus Ihrer Teradata-Instanz laden. Im Anschluss finden Sie empfohlene Konfigurationen für verschiedene Szenarien. Beim Kopieren von Daten in einen dateibasierten Datenspeicher wird empfohlen, mehrere Dateien in einen Ordner zu schreiben. (Geben Sie nur den Ordnernamen an.) In diesem Fall ist die Leistung besser als beim Schreiben in eine einzelne Datei.
+Es wird empfohlen, das parallele Kopieren mit Datenpartitionierung zu aktivieren. Das gilt insbesondere, wenn Sie große Datenmengen aus Ihrer Teradata-Instanz laden. Im Anschluss finden Sie empfohlene Konfigurationen für verschiedene Szenarien. Beim Kopieren von Daten in einen dateibasierten Datenspeicher wird empfohlen, mehrere Dateien in einen Ordner zu schreiben (nur den Ordnernamen anzugeben). In diesem Fall ist die Leistung besser als beim Schreiben in eine einzelne Datei.
 
 | Szenario                                                     | Empfohlene Einstellungen                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Vollständiges Laden aus großer Tabelle                                   | **Partitionsoption:** Hash <br><br/>Während der Ausführung erkennt Data Factory automatisch die Primärindexspalte, wendet einen Hash darauf an und kopiert Daten anhand von Partitionen. |
-| Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage                 | **Partitionsoption:** Hash<br>**Abfrage**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`<br>**Partitionsspalte:** Geben Sie die Spalte für die Hashpartitionierung an. Ohne Angabe erkennt Data Factory automatisch die PK-Spalte der Tabelle, die Sie im Teradata-Dataset angegeben haben.<br><br>Während der Ausführung ersetzt Data Factory `?AdfHashPartitionCondition` durch die Hashpartitionierungslogik und sendet die Daten an Teradata. |
-| Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage, wenn eine Integerspalte mit gleichmäßig verteilten Werten für die Bereichspartitionierung vorhanden ist | **Partitionsoptionen:** Dynamische Bereichspartitionierung<br>**Abfrage**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`<br>**Partitionsspalte:** Geben Sie die Spalte für die Datenpartitionierung an. Die Partitionierung kann auf der Grundlage der Spalte mit dem Datentyp „Integer“ erfolgen.<br>**Obergrenze der Partition** und **Untergrenze der Partition**: Geben Sie an, ob Sie anhand der Partitionsspalte filtern möchten, um nur Daten zwischen der Ober- und der Untergrenze zu erhalten.<br><br>Data Factory ersetzt während der Ausführung `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound` und `?AdfRangePartitionLowbound` durch den tatsächlichen Spaltennamen und die Wertebereiche für die jeweilige Partition und sendet die Daten dann an Teradata. <br>Wenn Ihre Partitionsspalte „ID“ also beispielsweise mit der Untergrenze „1“ und der Obergrenze „80“ konfiguriert und paralleles Kopieren auf „4“ festgelegt ist, ruft Data Factory Daten anhand von vier Partitionen ab. Die ID-Bereiche sehen dann wie folgt aus: [1–20], [21–40], [41–60] und [61–80]. |
+| Vollständiges Laden aus großer Tabelle                                   | **Partitionsoption:** Hash <br><br/>Der Dienst erkennt während der Ausführung automatisch die Primärindexspalte, wendet einen Hash darauf an und kopiert Daten anhand von Partitionen. |
+| Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage                 | **Partitionsoption:** Hash<br>**Abfrage**: `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`<br>**Partitionsspalte:** Geben Sie die Spalte für die Hashpartitionierung an. Ohne Angabe erkennt der Dienst automatisch die Primärschlüsselspalte der Tabelle, die Sie im Teradata-Dataset angegeben haben.<br><br>Der Dienst ersetzt `?AdfHashPartitionCondition` während der Ausführung durch die Hashpartitionierungslogik und sendet die Daten an Teradata. |
+| Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage, wenn eine Integerspalte mit gleichmäßig verteilten Werten für die Bereichspartitionierung vorhanden ist | **Partitionsoptionen:** Dynamische Bereichspartitionierung<br>**Abfrage**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`<br>**Partitionsspalte:** Geben Sie die Spalte für die Datenpartitionierung an. Die Partitionierung kann auf der Grundlage der Spalte mit dem Datentyp „Integer“ erfolgen.<br>**Obergrenze der Partition** und **Untergrenze der Partition**: Geben Sie an, ob Sie anhand der Partitionsspalte filtern möchten, um nur Daten zwischen der Ober- und der Untergrenze zu erhalten.<br><br>Der Dienst ersetzt `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound` und `?AdfRangePartitionLowbound` während der Ausführung durch die tatsächlichen Spaltennamen und Wertebereiche für jede Partition und sendet sie an Teradata. <br>Wenn z. B. für die Partitionsspalte „ID“ die untere Grenze auf 1 und die obere Grenze auf 80 festgelegt ist und die Parallelkopie auf 4 eingestellt ist, ruft der Dienst Daten für jeweils 4 Partitionen ab. Die ID-Bereiche sehen dann wie folgt aus: [1–20], [21–40], [41–60] und [61–80]. |
 
 **Beispiel: Abfrage mit Hashpartition**
 
@@ -336,9 +336,9 @@ Es wird empfohlen, das parallele Kopieren mit Datenpartitionierung zu aktivieren
 
 ## <a name="data-type-mapping-for-teradata"></a>Datentypzuordnung für Teradata
 
-Beim Kopieren von Daten aus Teradata gelten folgende Zuordnungen. Weitere Informationen dazu, wie die Kopieraktivität das Quellschema und den Datentyp zur Senke zuordnet, finden Sie unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md).
+Beim Kopieren von Daten aus Teradata gelten die folgenden Zuordnungen von Teradata-Datentypen zu den vom Dienst intern verwendeten Zwischendatentypen. Weitere Informationen dazu, wie die Kopieraktivität das Quellschema und den Datentyp zur Senke zuordnet, finden Sie unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md).
 
-| Teradata-Datentyp | Data Factory-Zwischendatentyp |
+| Teradata-Datentyp | Zwischendatentyp des Diensts |
 |:--- |:--- |
 | BigInt |Int64 |
 | Blob |Byte[] |
@@ -387,4 +387,4 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivi
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quelles und Senken für die Kopieraktivität unterstützt werden, finden Sie in [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

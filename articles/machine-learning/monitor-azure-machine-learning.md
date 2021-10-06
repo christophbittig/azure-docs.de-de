@@ -3,19 +3,19 @@ title: Überwachen von Azure Machine Learning | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure Monitor verwenden können, um Metriken aus Azure Machine Learning anzuzeigen und zu erstellen sowie Warnungen zu solchen Metriken zu erstellen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: c0f35290aa653d5b9e9be9f1a9a0184854509889
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 9c6cb28bd55038f06992d6423785d03ecf30205f
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349971"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424953"
 ---
 # <a name="monitor-azure-machine-learning"></a>Überwachen von Azure Machine Learning
 

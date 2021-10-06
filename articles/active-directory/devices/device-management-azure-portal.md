@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4042ce416b2af83447af283d21c059050b9a144c
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 8ef9dca3604be281ccedf4d6f1af3e7861273e6b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866589"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590720"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Verwalten der Geräteidentität mithilfe des Azure-Portals
 
@@ -174,10 +174,10 @@ Sie müssen einer der folgenden Rollen zugewiesen sein, um die Geräteeinstellun
 
 - **Weitere lokale Administratoren für in Azure AD eingebundene Geräte**: Sie können die Benutzer auswählen, denen lokale Administratorrechte auf einem Gerät erteilt werden. Diese Benutzer werden der Rolle *Geräteadministratoren* in Azure AD hinzugefügt. Globale Administratoren in Azure AD und Gerätebesitzer erhalten standardmäßig lokale Administratorrechte. Diese Option ist eine Premium Edition-Funktion, die über Produkte wie Azure AD Premium oder die Enterprise Mobility Suite (EMS) zur Verfügung steht.
 - **Benutzer dürfen ihre Geräte für Azure AD registrieren**: Sie müssen diese Einstellung konfigurieren, um die Registrierung von Windows 10-, persönlichen, iOS-, Android- und macOS-Geräten in Azure AD zuzulassen. Bei Auswahl von **Keine** dürfen Geräte nicht bei Azure AD registriert werden. Für die Registrierung bei Microsoft Intune oder der mobilen Geräteverwaltung (MDM) für Microsoft 365 ist eine Registrierung erforderlich. Wenn Sie einen dieser Dienste konfiguriert haben, wird **ALLE** ausgewählt, und die Option **KEINE** ist nicht verfügbar.
-- **Für Geräte, die in Azure AD eingebunden oder bei Azure AD registriert werden sollen, ist mehrstufige Authentifizierung erforderlich**: Sie können auswählen, ob Benutzer einen zusätzlichen Authentifizierungsfaktor bereitstellen müssen, um ihr Gerät in Azure AD einzubinden oder zu registrieren. Der Standardwert ist **No**. Es wird empfohlen, beim Registrieren oder Einbinden eines Geräts die mehrstufige Authentifizierung zu verwenden. Bevor Sie die mehrstufige Authentifizierung für diesen Dienst aktivieren, müssen Sie sicherstellen, dass sie für die Benutzer konfiguriert ist, die ihre Geräte registrieren. Weitere Informationen zu den verschiedenen Azure AD Multi-Factor Authentication-Diensten finden Sie unter [Erste Schritte mit Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md). 
+- **Zum Registrieren oder Einbinden von Geräten in Azure AD Multi-Factor Authentication anfordern**: Sie können auswählen, ob Benutzer einen zusätzlichen Authentifizierungsfaktor bereitstellen müssen, um ihr Gerät in Azure AD einbinden oder registrieren zu können. Der Standardwert ist **No**. Es wird empfohlen, beim Registrieren oder Einbinden eines Geräts die mehrstufige Authentifizierung zu verwenden. Bevor Sie die mehrstufige Authentifizierung für diesen Dienst aktivieren, müssen Sie sicherstellen, dass sie für die Benutzer konfiguriert ist, die ihre Geräte registrieren. Weitere Informationen zu den verschiedenen Azure AD Multi-Factor Authentication-Diensten finden Sie unter [Erste Schritte mit Azure AD Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md). 
 
 > [!NOTE]
-> Die Einstellung **Für Geräte, die in Azure AD eingebunden oder bei Azure AD registriert werden sollen, ist mehrstufige Authentifizierung erforderlich** gilt für Geräte, die entweder in Azure AD eingebunden (mit einigen Ausnahmen) oder bei Azure AD registriert sind. Diese Einstellung gilt nicht für hybrid in Azure AD eingebundene Geräte, [in Azure AD eingebundene Azure-VMs](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) und in Azure AD eingebundene Geräte, die den [Selbstbereitstellungsmodus von Windows Autopilot](/mem/autopilot/self-deploying) verwenden.
+> Die Einstellung **Zum Registrieren oder Einbinden von Geräten in Azure AD Multi-Factor Authentication anfordern** gilt für Geräte, die entweder in Azure AD eingebunden (mit einigen Ausnahmen) oder bei Azure AD registriert sind. Diese Einstellung gilt nicht für hybrid in Azure AD eingebundene Geräte, [in Azure AD eingebundene Azure-VMs](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure) und in Azure AD eingebundene Geräte, die den [Selbstbereitstellungsmodus von Windows Autopilot](/mem/autopilot/self-deploying) verwenden.
 
 > [!IMPORTANT]
 > - Wir empfehlen in „Bedingter Zugriff“ die [Benutzeraktion „Geräte registrieren oder einbinden“](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) zum Erzwingen der mehrstufigen Authentifizierung beim Einbinden oder Registrieren eines Geräts. 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7e0f3e2ab306c46851e4c2ffcb6acf5824326282
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 88c320d8296972ee84776aa232d688cc9e981f83
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113564355"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349647"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 
@@ -28,7 +28,7 @@ Mithilfe des **Localization**-Elements können Sie mehrere Gebietsschemas oder S
 Die folgenden IDs werden für eine Inhaltsdefinition mit der ID `api.signuporsignin` und einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) verwendet.
 
 | id | Standardwert | Seitenlayoutversion |
-| -- | ------------- | ------ |
+| --- | ------------- | ------ |
 | **forgotpassword_link** | Forgot your password? (Kennwort vergessen?) | `All` |
 | **createaccount_intro** | Sie haben kein Konto? | `All` |
 | **button_signin** | Anmelden | `All` |
@@ -96,7 +96,7 @@ Im folgenden Beispiel wird der Facebook-Identitätsanbieter in Arabisch lokalisi
 ### <a name="sign-up-or-sign-in-error-messages"></a>Fehlermeldungen beim Registrieren oder Anmelden
 
 | id | Standardwert |
-| -- | ------------- |
+| --- | ------------- |
 | **UserMessageIfInvalidPassword** | Ihr Kennwort ist falsch. |
 | **UserMessageIfPasswordExpired**| Ihre Kennwort ist abgelaufen.|
 | **UserMessageIfClaimsPrincipalDoesNotExist** | Wir können Ihr Konto nicht finden. |
@@ -146,7 +146,7 @@ Im folgenden Beispiel wird der Facebook-Identitätsanbieter in Arabisch lokalisi
 Im Folgenden finden Sie die IDs für eine Inhaltsdefinition mit der ID `api.localaccountsignup` oder einer Inhaltsdefinition, die mit `api.selfasserted` beginnt, z. B. `api.selfasserted.profileupdate` und `api.localaccountpasswordreset`, und einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md).
 
 | id | Standardwert |
-| -- | ------------- |
+| --- | ------------- |
 | **ver_sent** | Prüfcode wurde gesendet an: |
 | **ver_but_default** | Standard |
 | **cancel_message** | Der Benutzer hat die Eingabe von Informationen zur Identitätsüberprüfung abgebrochen. |
@@ -185,7 +185,7 @@ Im Folgenden finden Sie die IDs für eine Inhaltsdefinition mit der ID `api.loca
 ### <a name="sign-up-and-self-asserted-pages-error-messages"></a>Fehlermeldungen für Anmeldeseiten und Seiten zur Identitätsüberprüfung
 
 | id | Standardwert |
-| -- | ------------- |
+| --- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | Es ist bereits ein Benutzer mit der angegebenen ID vorhanden. Wählen Sie eine andere ID. |
 | **UserMessageIfClaimNotVerified** | Anspruch nicht überprüft: {0} |
 | **UserMessageIfIncorrectPattern** | Ungültiges Muster für {0}. |
@@ -259,7 +259,7 @@ Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemen
 Im Folgenden finden Sie die IDs für eine Inhaltsdefinition mit der ID `api.phonefactor` und einem [technischen PhoneFactor-Profil](phone-factor-technical-profile.md).
 
 | id | Standardwert | Seitenlayoutversion |
-| -- | ------------- | ------ |
+| --- | ------------- | ------ |
 | **button_verify** | Rückruf | `All` |
 | **country_code_label** | Landesvorwahl | `All` |
 | **cancel_message** | Der Benutzer hat die mehrstufige Authentifizierung abgebrochen. | `All` |
@@ -283,7 +283,7 @@ Im Folgenden finden Sie die IDs für eine Inhaltsdefinition mit der ID `api.phon
 | **invalid_number** | Geben Sie eine gültige Telefonnummer ein. | `All` |
 | **intro_sms** | Bei uns ist die folgende Nummer für Sie hinterlegt. Wir senden einen Code per SMS, um Sie zu authentifizieren. | `All` |
 | **intro_entry_mixed** | Geben Sie unten eine Nummer ein, damit wir Ihnen einen Code per SMS senden oder Sie anrufen können, um Sie zu authentifizieren. | `All` |
-| **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ | `All` |
+| **number_pattern** | `^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$` | `All` |
 | **intro_sms_p** |Bei uns sind die folgenden Nummern für Sie hinterlegt. Wählen Sie eine Nummer aus, an die wir per SMS einen Code senden können, um Sie zu authentifizieren. | `All` |
 | **requiredField_countryCode** | Wählen Sie Ihre Landeskennzahl aus. | `All` |
 | **requiredField_number** | Geben Sie Ihre Telefonnummer ein. | `All` |
@@ -361,7 +361,7 @@ Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemen
 Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung](display-control-verification.md) mit der [Seitenlayoutversion 2.1.0 oder höher](page-layout.md).
 
 | id | Standardwert |
-| -- | ------------- |
+| --- | ------------- |
 |intro_msg <sup>*</sup>| Es ist eine Überprüfung erforderlich. Klicken Sie auf die Schaltfläche „Senden“.|
 |success_send_code_msg | Prüfcode wurde gesendet. Kopieren Sie den Code in das nachstehende Eingabefeld.|
 |failure_send_code_msg | Beim Überprüfen Ihrer E-Mail-Adresse sind Probleme aufgetreten. Geben Sie eine gültige E-Mail-Adresse ein, und versuchen Sie es erneut.|
@@ -402,7 +402,7 @@ Hinweis: Das `intro_msg`-Element ist ausgeblendet und wird auf der Seite zur Ide
 Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung](display-control-verification.md) mit der [Seitenlayoutversion 2.0.0 oder höher](page-layout.md).
 
 | id | Standardwert |
-| -- | ------------- |
+| --- | ------------- |
 |verification_control_but_change_claims |Change |
 |verification_control_fail_send_code |Der Code konnte nicht gesendet werden, versuchen Sie es später erneut. |
 |verification_control_fail_verify_code |Der Code konnte nicht überprüft werden, versuchen Sie es später erneut. |
@@ -432,7 +432,7 @@ Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung
 Im Folgenden finden Sie die IDs für Fehlermeldungen für das [technische Profil zum RESTful-Dienst](restful-technical-profile.md):
 
 | id | Standardwert |
-| -- | ------------- |
+| --- | ------------- |
 |DefaultUserMessageIfRequestFailed | Fehler beim Herstellen einer Verbindung mit dem Endpunkt des RESTful-Diensts. URL des RESTful-Diensts: {0} |
 |UserMessageIfCircuitOpen | {0} URL des RESTful-Diensts: {1} |
 |UserMessageIfDnsResolutionFailed | Der Hostname des Endpunkts des RESTful-Diensts konnte nicht aufgelöst werden. URL des RESTful-Diensts: {0} |
@@ -457,7 +457,7 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen für das [technische Profil
 Im Folgenden finden Sie die IDs der Fehlermeldungen für ein [technisches Azure AD MFA-Profil](multi-factor-auth-technical-profile.md):
 
 | id | Standardwert |
-| -- | ------------- |
+| --- | ------------- |
 |UserMessageIfCouldntSendSms | SMS kann nicht an das Telefon gesendet werden, versuchen Sie es mit einer anderen Telefonnummer. |
 |UserMessageIfInvalidFormat | Das Format Ihrer Telefonnummer ist ungültig. Korrigieren Sie sie, und versuchen Sie es erneut.|
 |UserMessageIfMaxAllowedCodeRetryReached | Falscher Code wurde zu oft eingegeben, versuchen Sie es später erneut.|
@@ -485,7 +485,7 @@ Im Folgenden finden Sie die IDs der Fehlermeldungen für ein [technisches Azure�
 Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profil zu Azure AD-SSPR](aad-sspr-technical-profile.md):
 
 | id | Standardwert |
-| -- | ------------- |
+| --- | ------------- |
 |UserMessageIfChallengeExpired | Der Code ist abgelaufen.|
 |UserMessageIfInternalError | Interner Fehler beim E-Mail-Dienst. Versuchen Sie es später noch einmal.|
 |UserMessageIfThrottled | Sie haben zu viele Anforderungen gesendet. Versuchen Sie es später noch einmal.|
@@ -511,8 +511,8 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profi
 
 Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profil mit Einmalkennwort](one-time-password-technical-profile.md).
 
-| id | Standardwert |
-| -- | ------------- |
+| id | Standardwert | BESCHREIBUNG | 
+| --- | ------------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die Codeüberprüfungssitzung abgelaufen ist. Der Code ist entweder abgelaufen, oder der Code wurde nie für einen angegebenen Bezeichner generiert. |
 | UserMessageIfMaxRetryAttempted | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die maximal zulässige Anzahl von Überprüfungsversuchen überschritten wurde. |
 | UserMessageIfMaxNumberOfCodeGenerated | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die maximal zulässige Anzahl von Codegenerierungsversuchen überschritten wurde. |
@@ -540,7 +540,7 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profi
 Im Folgenden finden Sie die IDs für Fehlermeldungen zu Transformationen von Ansprüchen:
 
 | id | Transformation von Ansprüchen | Standardwert |
-| -- | ------------- |------------- |
+| --- | ------------- |------------- |
 |UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | Fehler bei booleschem Anspruchswertvergleich für Anspruchstyp „inputClaim“.| 
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | Fehler bei Anspruchswertvergleich: Der angegebene linke Operand ist größer als der rechte Operand.|
 |UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | Fehler bei Anspruchswertvergleich mithilfe von StringComparison „OrdinalIgnoreCase“.|

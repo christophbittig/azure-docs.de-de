@@ -1,22 +1,20 @@
 ---
 title: Aktive Georeplikation
 description: Mit aktiver Georeplikation können Sie lesbare sekundäre Datenbanken für einzelne Datenbanken in Azure SQL-Datenbank im selben oder in einem anderen Rechenzentrum (Region) erstellen.
-services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
-ms.devlang: ''
 ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 04/28/2021
-ms.openlocfilehash: 1ab4655df0233fdea13f507f8b80b5caa92dc9d6
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 071947c4e0e3989abd4aaa4c68b860d99a8a0c43
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112284345"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357840"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Erstellen und Verwenden der aktiven Georeplikation: Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +25,7 @@ Die aktive Georeplikation ist ein Feature in Azure SQL-Datenbank, mit der Sie le
 > Die aktive Georeplikation für Azure SQL Hyperscale befindet sich [jetzt in der öffentlichen Vorschau](https://aka.ms/hsgeodr). Die aktuellen Einschränkungen umfassen: nur eine sekundäre Geodatenbank in derselben oder einer anderen Region; erzwungene und geplante Failover werden derzeit nicht unterstützt; Wiederherstellung einer Datenbank aus sekundärer Geodatenbank wird nicht unterstützt; Verwendung einer sekundären Geodatenbank als Quelldatenbank für Datenbankkopie oder als primäre Datenbank für eine andere sekundäre Geodatenbank wird nicht unterstützt.
 > 
 > Führen Sie die folgenden Schritte aus, falls Sie die sekundäre Geodatenbank zu einer primären (nicht schreibgeschützten) Datenbank machen müssen:
-> 1. Heben Sie die Verknüpfung für die Georeplikation in PowerShell mithilfe des Cmdlets [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) bzw. bei der Azure CLI mit [az sql db replica delete-link](/cli/azure/sql/db/replica?view=azure-cli-latest#az_sql_db_replica_delete_link) auf. Dadurch wird die sekundäre Datenbank zu einer eigenständigen Datenbank mit Lese-/Schreibzugriff. Dabei gehen alle Datenänderungen verloren, die zwar in der primären Datenbank committet, aber noch nicht in die sekundäre Datenbank repliziert wurden. Diese Änderungen können wiederhergestellt werden, wenn die alte primäre Datenbank verfügbar ist, oder (in einigen Fällen) durch Wiederherstellen der alten primären Datenbank auf den letzten verfügbaren Zeitpunkt.
+> 1. Heben Sie die Verknüpfung für die Georeplikation in PowerShell mithilfe des Cmdlets [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) bzw. bei der Azure CLI mit [az sql db replica delete-link](/cli/azure/sql/db/replica#az_sql_db_replica_delete_link) auf. Dadurch wird die sekundäre Datenbank zu einer eigenständigen Datenbank mit Lese-/Schreibzugriff. Dabei gehen alle Datenänderungen verloren, die zwar in der primären Datenbank committet, aber noch nicht in die sekundäre Datenbank repliziert wurden. Diese Änderungen können wiederhergestellt werden, wenn die alte primäre Datenbank verfügbar ist, oder (in einigen Fällen) durch Wiederherstellen der alten primären Datenbank auf den letzten verfügbaren Zeitpunkt.
 > 2. Wenn die alte primäre Datenbank verfügbar ist, löschen Sie sie, und richten Sie dann die Georeplikation für die neue primäre Datenbank ein (es wird eine neue sekundäre Datenbank erstellt). 
 > 3. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrer Anwendung entsprechend.
 

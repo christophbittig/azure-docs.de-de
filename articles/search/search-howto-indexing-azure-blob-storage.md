@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/14/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 5c19cfd69352d898c6f47c7256b8433164cd7eb9
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 0014c28b57480e8da301c57823cdba79cea67e96
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982994"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274896"
 ---
 # <a name="index-data-from-azure-blob-storage"></a>Indizieren von Daten aus Azure Blob Storage
 
@@ -32,7 +32,7 @@ In diesem Artikel werden die REST-APIs verwendet.
 
 ## <a name="supported-access-tiers"></a>Unterstützte Zugriffsebenen
 
-Die Blob Storage-[Zugriffsebenen](../storage/blobs/storage-blob-storage-tiers.md) lauten „Heiß“, „Kalt“ und „Archiv“. Indexer können nur auf „Heiß“ und „Kalt“ zugreifen. 
+Die Blob Storage-[Zugriffsebenen](../storage/blobs/access-tiers-overview.md) lauten „Heiß“, „Kalt“ und „Archiv“. Indexer können nur auf „Heiß“ und „Kalt“ zugreifen. 
 
 <a name="SupportedFormats"></a>
 
@@ -307,7 +307,7 @@ Das Indizieren von Blobs kann sehr zeitaufwändig sein. In Fällen, in denen Mil
 
 Zu häufigen Fehlern bei der Indizierung gehören nicht unterstützte Inhaltstypen, fehlende Inhalte oder übergroße Blobs.
 
-Der Blobindexer wird standardmäßig beendet, sobald ein Blob mit einem nicht unterstützten Inhaltstyp (z.B. ein Bild) gefunden wird. Sie könnten mithilfe des Parameters `excludedFileNameExtensions` bestimmte Inhaltstypen überspringen. Möglicherweise möchten Sie jedoch, dass die Indizierung auch dann fortgesetzt wird, wenn Fehler auftreten, und dann später einzelne Dokumente debuggen. Weitere Informationen zu Indexerfehlern finden Sie unter [Beheben von häufigen Problemen bei Suchindexern in der kognitiven Azure-Suche](search-indexer-troubleshooting.md) und [Beheben von häufigen Fehlern und Warnungen bei Suchindexern in Azure Cognitive Search](cognitive-search-common-errors-warnings.md).
+Der Blobindexer wird standardmäßig beendet, sobald ein Blob mit einem nicht unterstützten Inhaltstyp (z.B. ein Bild) gefunden wird. Sie könnten mithilfe des Parameters `excludedFileNameExtensions` bestimmte Inhaltstypen überspringen. Möglicherweise möchten Sie jedoch, dass die Indizierung auch dann fortgesetzt wird, wenn Fehler auftreten, und dann später einzelne Dokumente debuggen. Weitere Informationen zu Indexerfehlern finden Sie unter [Beheben von häufigen Problemen bei Suchindexern in Azure Cognitive Search](search-indexer-troubleshooting.md) und [Beheben von häufigen Fehlern und Warnungen bei Suchindexern in Azure Cognitive Search](cognitive-search-common-errors-warnings.md).
 
 ### <a name="respond-to-errors"></a>Reagieren auf Fehler
 

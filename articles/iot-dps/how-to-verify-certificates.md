@@ -7,12 +7,12 @@ ms.date: 06/29/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: c1c4490b89a960d89cb1678c96391faf0ac4cc5b
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 3d3f8ee754f371680cf5e3420946a732e5060f37
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113108546"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456212"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Nachweis des Besitzes für X.509-Zertifizierungsstellenzertifikate mit Ihrem Device Provisioning-Dienst
 
@@ -73,7 +73,7 @@ Nun müssen Sie den *Prüfcode* mit dem privaten Schlüssel signieren, der Ihrem
 Microsoft bietet Tools und Beispiele, die Ihnen dabei helfen können, ein signiertes Verifizierungszertifikat zu erstellen: 
 
 - Das **Azure IoT Hub C SDK** bietet PowerShell- (Windows) und Bash-Skripts (Linux), mit denen Sie Zertifizierungsstellen- und untergeordnete Zertifikate für die Entwicklung und zum Nachweis des Besitzes mit einem Prüfcode erstellen können. Sie können die entsprechenden [Dateien](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) für Ihr System in einen Arbeitsordner herunterladen und die Anweisungen in der [Infodatei zum Verwalten von ZS-Zertifikaten](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) befolgen, um einen Besitznachweis für ein Zertifizierungsstellenzertifikat auszuführen. 
-- Das **Azure IoT Hub C# SDK** enthält ein [Beispiel zum Überprüfen des Gruppenzertifikats](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), mit dem Sie einen Besitznachweis ausführen können.
+- Das **Azure IoT Hub C# SDK** enthält ein [Beispiel zum Überprüfen des Gruppenzertifikats](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/provisioning/Samples/service/GroupCertificateVerificationSample), mit dem Sie einen Besitznachweis ausführen können.
  
 > [!IMPORTANT]
 > Zusätzlich zum Ausführen des Besitznachweises ermöglichen die zuvor genannten PowerShell- und Bash-Skripts auch, Stammzertifikate, Zwischenzertifikate und untergeordnete Zertifikate zu erstellen, um Geräte zu authentifizieren und bereitzustellen. Diese Zertifikate sollten nur für die Entwicklung verwendet werden. Sie sollten nie in einer Produktionsumgebung verwendet werden. 
@@ -92,4 +92,4 @@ Die in der Dokumentation und den SDKs bereitgestellten PowerShell- und Bash-Skri
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum Erstellen einer Registrierungsgruppe mit dem Portal finden Sie unter [Verwalten von Geräteregistrierungen mit dem Azure-Portal](how-to-manage-enrollments.md).
-- Weitere Informationen zum Erstellen einer Registrierungsgruppe mit den Dienst-SDKs finden Sie unter [Verwalten von Geräteregistrierungen mit Dienst-SDKs](./quick-enroll-device-x509-java.md).
+- Weitere Informationen zum Erstellen einer Registrierungsgruppe mit den Dienst-SDKs finden Sie unter [Verwalten von Geräteregistrierungen mit Dienst-SDKs](./quick-enroll-device-x509.md).

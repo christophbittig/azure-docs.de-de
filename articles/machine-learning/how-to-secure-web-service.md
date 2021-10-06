@@ -4,17 +4,17 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie HTTPS mit TLS 1.2 aktivieren, um einen über Azure Machine Learning bereitgestellten Webdienst zu schützen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.author: jhirono
 author: jhirono
 ms.date: 07/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 10eb9d57b19968737077a595030bb2a986ec6c7b
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 8194b5c170186c5498e181e00f27c91156ae4ada
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113564786"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428177"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning
 
@@ -156,7 +156,7 @@ Bei einer AKS-Bereitstellung mit einem benutzerdefinierten Zertifikat oder bei e
 > Wenn Sie ein Zertifikat von Microsoft für die AKS-Bereitstellung verwenden, müssen Sie den DNS-Wert für den Cluster nicht manuell aktualisieren. Der Wert sollte automatisch festgelegt werden.
 
 Sie können die folgenden Schritte ausführen, um den DNS-Eintrag für Ihren benutzerdefinierten Domänennamen zu aktualisieren:
-1. Sie finden die IP-Adresse des Bewertungsendpunkts im Bewertungsendpunkt-URI, der normalerweise das Format *http://104.214.29.152:80/api/v1/service/<service-name>/score* aufweist. In diesem Beispiel lautet die IP-Adresse 104.214.29.152.
+1. Sie finden die IP-Adresse des Bewertungsendpunkts im Bewertungsendpunkt-URI, der normalerweise das Format `http://104.214.29.152:80/api/v1/service/<service-name>/score` aufweist. In diesem Beispiel lautet die IP-Adresse 104.214.29.152.
 1. Verwenden Sie die Tools von Ihrer Domänennamen-Registrierungsstelle, um den DNS-Eintrag für Ihren Domänennamen zu aktualisieren. Der Datensatz ordnet den FQDN (z. B. www\.contoso.com) der IP-Adresse zu. Der Eintrag muss auf die IP-Adresse des Bewertungsendpunkts verweisen.
 
     > [!TIP]

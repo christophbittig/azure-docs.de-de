@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie Daten in Azure Machine Learning-Designer importieren und transformieren, um eigene Datasets zu erstellen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 author: peterclu
 ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: 322408dac79b7ef113c6b0b51a25d5836688baea
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 3d658421d392032e4425a3f87f8f59f9baab2ce4
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889428"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427607"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Transformieren von Daten in Azure Machine Learning-Designer
 

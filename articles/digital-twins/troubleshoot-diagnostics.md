@@ -1,28 +1,27 @@
 ---
-title: Aktivieren und Abfragen von Diagnoseprotokollen
+title: Verwenden von Diagnoseprotokollen
 titleSuffix: Azure Digital Twins
-description: Erfahren Sie, wie Sie die Protokollierung mit Diagnoseeinstellungen aktivieren und die Protokolle für eine sofortige Anzeige abfragen.
+description: Erfahren Sie, wie Sie die Protokollierung mit Diagnoseeinstellungen aktivieren und die Protokolle für eine sofortige Anzeige abfragen. Erfahren Sie außerdem mehr über die Protokollkategorien und ihre Schemas.
 author: baanders
 ms.author: baanders
-ms.date: 8/24/2021
+ms.date: 9/15/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1479e2b6b715e8f80ea9e02b0b57a3995da2bfd9
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: c868f0c8418f6b265e3de5b4d8ea0c6b7312a33e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219717"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593647"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problembehandlung von Azure Digital Twins: Diagnoseprotokollierung
 
-Azure Digital Twins kann Protokolle für Ihre Dienstinstanz zur Überwachung von Leistung, Zugriff und anderen Daten erfassen. Anhand dieser Protokolle können Sie eine Vorstellung davon erhalten, was in Ihrer Azure Digital Twins-Instanz geschieht, und die Ursachen von Problemen analysieren, ohne den Azure-Support kontaktieren zu müssen.
+Azure Digital Twins kann **Protokolle** für Ihre Dienstinstanz zur Überwachung von Leistung, Zugriff und anderen Daten erfassen. Anhand dieser Protokolle können Sie eine Vorstellung davon erhalten, was in Ihrer Azure Digital Twins-Instanz geschieht, und die Ursachen von Problemen analysieren, ohne den Azure-Support kontaktieren zu müssen.
 
-In diesem Artikel wird das [Konfigurieren von Diagnoseeinstellungen](#turn-on-diagnostic-settings) im [Azure-Portal](https://portal.azure.com) erläutert, um mit der Erfassung von Protokollen von Ihrer Azure Digital Twins-Instanz zu beginnen. Sie können auch angeben, wo die Protokolle gespeichert werden sollen (z. B. Log Analytics oder ein Speicherkonto Ihrer Wahl).
+In diesem Artikel erfahren Sie, wie Sie Diagnoseeinstellungen im [Azure-Portal](https://portal.azure.com) konfigurieren, einschließlich der zu erfassenden Protokolltypen und ihrem Speicherort (z. B. in Log Analytics oder einem Speicherkonto Ihrer Wahl). Sie können die Protokolle anschließend abfragen, um schnell die passenden Einblicke zu gewinnen.
 
-Dieser Artikel enthält außerdem Listen aller [Protokollkategorien](#log-categories) und [Protokollschemas](#log-schemas), die von Azure Digital Twins erfasst werden.
-
-Nachdem Sie Protokolle eingerichtet haben, können Sie die [Protokolle abfragen](#view-and-query-logs), um schnell benutzerdefinierte Einblicke zu gewinnen.
+Dieser Artikel enthält darüber hinaus Informationen zu allen **Protokollkategorien**, die von Azure Digital Twins erfasst werden können, und deren **Schemas**.
 
 ## <a name="turn-on-diagnostic-settings"></a>Aktivieren von Diagnoseeinstellungen 
 
@@ -58,6 +57,32 @@ Aktivieren Sie Diagnoseeinstellungen, um mit dem Erfassen von Protokollen in Ihr
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Anschließend werden die Protokolle im konfigurierten Ziel auf der Seite **Diagnoseeinstellungen** für Ihre Instanz angezeigt. 
 
 Ausführlichere Informationen zu Diagnoseeinstellungen und deren Einrichtungsoptionen finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../azure-monitor/essentials/diagnostic-settings.md).
+
+## <a name="view-and-query-logs"></a>Anzeigen und Abfragen von Protokollen
+
+Nach dem Konfigurieren der Speicherdetails Ihrer Azure Digital Twins-Protokolle können Sie **benutzerdefinierte Abfragen** für sie schreiben, um Erkenntnisse zu generieren und Probleme zu beheben. Der Dienst stellt außerdem einige Beispielabfragen zur Verfügung, die Ihnen den Einstieg erleichtern können, indem sie Antworten auf häufig gestellte Fragen von Kunden zu ihren Instanzen geben.
+
+Nachfolgend wird beschrieben, wie Sie die Protokolle für Ihre Instanz abfragen.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer Azure Digital Twins-Instanz. Sie finden sie, indem Sie ihren Namen auf der Suchleiste des Portals eingeben. 
+
+2. Wählen Sie im Menü die Option **Protokolle** aus, um die Seite für Protokollabfragen zu öffnen. Die Seite wird mit einem Fenster mit dem Namen *Abfragen* geöffnet.
+
+    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Screenshot der Seite „Protokolle“ für eine Azure Digital Twins-Instanz im Azure-Portal mit überlagertem Fenster „Abfragen“, in dem vordefinierten Abfragen angezeigt werden." lightbox="media/troubleshoot-diagnostics/logs.png":::
+
+    Diese Abfragen sind vorgefertigte Beispiele, die für verschiedene Protokolle geschrieben wurden. Sie können eine der Abfragen auswählen, um sie in den Abfrage-Editor zu laden, und die Abfrage ausführen, um diese Protokolle für Ihre Instanz anzuzeigen.
+
+    Sie können das Fenster *Abfragen* auch ohne Ausführen einer Abfrage schließen, um direkt zur Seite mit dem Abfrage-Editor zu gelangen, auf der Sie benutzerdefinierten Abfragecode schreiben oder bearbeiten können.
+
+3. Nachdem Sie das Fenster *Abfragen* verlassen haben, wird die Hauptseite des Abfrage-Editors angezeigt. Hier können Sie den Text der Beispielabfragen anzeigen und bearbeiten oder eigene Abfragen von Grund auf neu schreiben.
+    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Screenshot der Seite „Protokolle“ für eine Azure Digital Twins-Instanz im Azure-Portal. Sie enthält eine Liste mit Protokollen, Abfragecode und Abfrageverlauf." lightbox="media/troubleshoot-diagnostics/logs-query.png":::
+
+    Linker Bereich: 
+    - Die Registerkarte *Tabellen* zeigt die verschiedenen [Protokollkategorien](#log-categories) von Azure Digital Twins, die Sie in Ihren Abfragen verwenden können. 
+    - Die Registerkarte *Abfragen* enthält die Beispielabfragen, die Sie in den Editor laden können.
+    - Mithilfe der Registerkarte *Filter* können Sie eine gefilterte Ansicht der Daten festlegen, die von der Abfrage zurückgegeben werden.
+
+Ausführlichere Informationen zu Protokollabfragen und deren Erstellung finden Sie in der [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="log-categories"></a>Protokollkategorien
 
@@ -338,34 +363,6 @@ Hier sehen Sie einen JSON-Beispieltext für `ADTEventRoutesOperation` vom Typ `M
   }
 },
 ```
-
-## <a name="view-and-query-logs"></a>Anzeigen und Abfragen von Protokollen
-
-Weiter oben in diesem Artikel wurden die zu speichernden Protokolltypen konfiguriert und deren Speicherort angegeben.
-
-Zum Beheben von Problemen und Generieren von Erkenntnissen aus diesen Protokollen können Sie **benutzerdefinierte Abfragen** generieren. Zu Beginn können Sie auch einige Beispielabfragen nutzen, die Ihnen vom Dienst bereitgestellt werden. Diese betreffen allgemeine Fragen, die Kunden zu ihrer Instanz haben können.
-
-Nachfolgend wird beschrieben, wie Sie die Protokolle für Ihre Instanz abfragen.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer Azure Digital Twins-Instanz. Sie finden sie, indem Sie ihren Namen auf der Suchleiste des Portals eingeben. 
-
-2. Wählen Sie im Menü die Option **Protokolle** aus, um die Seite für Protokollabfragen zu öffnen. Die Seite wird mit einem Fenster mit dem Namen *Abfragen* geöffnet.
-
-    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Screenshot der Seite „Protokolle“ für eine Azure Digital Twins-Instanz im Azure-Portal mit überlagertem Fenster „Abfragen“, in dem vordefinierten Abfragen angezeigt werden." lightbox="media/troubleshoot-diagnostics/logs.png":::
-
-    Diese Abfragen sind vorgefertigte Beispiele, die für verschiedene Protokolle geschrieben wurden. Sie können eine der Abfragen auswählen, um sie in den Abfrage-Editor zu laden, und die Abfrage ausführen, um diese Protokolle für Ihre Instanz anzuzeigen.
-
-    Sie können das Fenster *Abfragen* auch ohne Ausführen einer Abfrage schließen, um direkt zur Seite mit dem Abfrage-Editor zu gelangen, auf der Sie benutzerdefinierten Abfragecode schreiben oder bearbeiten können.
-
-3. Nachdem Sie das Fenster *Abfragen* verlassen haben, wird die Hauptseite des Abfrage-Editors angezeigt. Hier können Sie den Text der Beispielabfragen anzeigen und bearbeiten oder eigene Abfragen von Grund auf neu schreiben.
-    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Screenshot der Seite „Protokolle“ für eine Azure Digital Twins-Instanz im Azure-Portal. Sie enthält eine Liste mit Protokollen, Abfragecode und Abfrageverlauf." lightbox="media/troubleshoot-diagnostics/logs-query.png":::
-
-    Linker Bereich: 
-    - Die Registerkarte *Tabellen* zeigt die verschiedenen [Protokollkategorien](#log-categories) von Azure Digital Twins, die Sie in Ihren Abfragen verwenden können. 
-    - Die Registerkarte *Abfragen* enthält die Beispielabfragen, die Sie in den Editor laden können.
-    - Mithilfe der Registerkarte *Filter* können Sie eine gefilterte Ansicht der Daten festlegen, die von der Abfrage zurückgegeben werden.
-
-Ausführlichere Informationen zu Protokollabfragen und deren Erstellung finden Sie in der [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

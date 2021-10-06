@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 0d6c90120d050b6896161f50332faf447c3ed67b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aca884ebbfc10cc847bade34ea1a9bd73ada18c9
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788851"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458395"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Tutorial: Verwenden von Azure IoT Hub-Nachrichtenanreicherungen
 
@@ -48,7 +48,7 @@ Hier sind die Aufgaben, die Sie beim Durcharbeiten dieses Tutorials ausführen:
 
 ## <a name="retrieve-the-iot-c-samples-repository"></a>Abrufen des Repositorys „IoT C#-Beispiele“
 
-Laden Sie die [IoT C#-Beispiele](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) von GitHub herunter, und entzippen Sie sie. Dieses Repository enthält mehrere Anwendungen, Skripts und Resource Manager-Vorlagen. Für dieses Tutorial müssen folgende Vorlagen verwendet werden:
+Laden Sie die [IoT C#-Beispiele](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip) von GitHub herunter, und entzippen Sie sie. Dieses Repository enthält mehrere Anwendungen, Skripts und Resource Manager-Vorlagen. Für dieses Tutorial müssen folgende Vorlagen verwendet werden:
 
 * Für die manuelle Methode gibt es ein CLI-Skript, mit dem die Ressourcen erstellt werden. Dieses Skript ist in „/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli“ gespeichert. Mit diesem Skript werden die Ressourcen erstellt und wird das Nachrichtenrouting konfiguriert. Nachdem Sie dieses Skript ausgeführt haben, erstellen Sie die Nachrichtenanreicherungen manuell über das [Azure-Portal](https://portal.azure.com).
 * Für die automatisierte Methode gibt es eine Azure Resource Manager-Vorlage. Diese Vorlage ist in „/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments.json“ gespeichert. Mit dieser Vorlage werden die Ressourcen erstellt, wird das Nachrichtenrouting konfiguriert und werden dann die Nachrichtenanreicherungen konfiguriert.

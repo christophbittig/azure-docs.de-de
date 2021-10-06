@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5e3804ae4fd386668f4c34d11172e7f3dd1ae62
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 18cc593e3aa1f50dcdaeaea32d7ac584f8bd4a24
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595395"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354064"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -144,7 +144,7 @@ Im folgenden Beispiel hat ein Administrator für den bedingten Zugriff eine stan
 Auf dieser Seite können Sie optional die Benutzer und Gruppen für die Vorschau einschränken.
 
 > [!NOTE]
-> Sie können Microsoft Graph über [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&tabs=http#request-body) abfragen, um die CAE-Konfiguration in Ihrem Mandanten zu überprüfen. Eine HTTP 200-Antwort und der zugehörige Antworttext geben an, ob CAE in Ihrem Mandanten aktiviert oder deaktiviert ist. CAE ist nicht konfiguriert, wenn Microsoft Graph eine HTTP 404-Antwort zurückgibt.
+> Sie können Microsoft Graph über [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&preserve-view=true&tabs=http#request-body) abfragen, um die CAE-Konfiguration in Ihrem Mandanten zu überprüfen. Eine HTTP 200-Antwort und der zugehörige Antworttext geben an, ob CAE in Ihrem Mandanten aktiviert oder deaktiviert ist. CAE ist nicht konfiguriert, wenn Microsoft Graph eine HTTP 404-Antwort zurückgibt.
 
 ![Aktivieren der Vorschau der fortlaufenden Zugriffsevaluierung im Azure-Portal](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
 
@@ -206,7 +206,7 @@ Wenn mehrere Benutzer gleichzeitig an einem Dokument zusammenarbeiten, wird ihr 
 - Schließen der Office-App
 - Nach einem Zeitraum von 10 Stunden
 
-Um diese Zeit zu verkürzen, kann ein SharePoint-Administrator die maximale Gültigkeitsdauer von Co-Authoring-Sitzungen für Dokumente, die in SharePoint Online und OneDrive for Business gespeichert sind, durch [Konfiguration einer Netzstandortrichtlinie in SharePoint Online](/sharepoint/control-access-based-on-network-location) reduzieren. Wenn diese Konfiguration geändert ist, wird die maximale Gültigkeitsdauer von Koautorensitzungen auf 15 Minuten reduziert und kann mit dem SharePoint Online PowerShell-Befehl „[Set-SPOTenant-IPAddressWACTokenLifetime](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)“ weiter angepasst werden.
+Um diese Zeit zu verkürzen, kann ein SharePoint-Administrator die maximale Gültigkeitsdauer von Co-Authoring-Sitzungen für Dokumente, die in SharePoint Online und OneDrive for Business gespeichert sind, durch [Konfiguration einer Netzstandortrichtlinie in SharePoint Online](/sharepoint/control-access-based-on-network-location) reduzieren. Wenn diese Konfiguration geändert ist, wird die maximale Gültigkeitsdauer von Koautorensitzungen auf 15 Minuten reduziert und kann mit dem SharePoint Online PowerShell-Befehl „[Set-SPOTenant-IPAddressWACTokenLifetime](/powershell/module/sharepoint-online/set-spotenant)“ weiter angepasst werden.
 
 ### <a name="enable-after-a-user-is-disabled"></a>Aktivieren eines Benutzers nach seiner Deaktivierung
 

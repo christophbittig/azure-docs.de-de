@@ -4,12 +4,12 @@ description: Lernen Sie, wie Sie JetStream DR für Ihre Azure VMware Solution Pr
 ms.topic: how-to
 ms.date: 09/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 75bb77ad575f96e7605fe6a19e12d7129c28dac6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f43d2a8db4ef29588ad5260c583faab31bd01228
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128554437"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129279068"
 ---
 # <a name="deploy-disaster-recovery-using-jetstream-dr-preview"></a>Bereitstellen der Notfallwiederherstellung mithilfe von JetStream DR (Preview)
 
@@ -80,7 +80,7 @@ In diesem Szenario ist der primäre Standort eine Azure VMware Solution private 
 
 - [Richten Sie JetStream DR](https://ms.portal.azure.com/#create/jetstreamsoftware1596597632545.jsdravs-093020) aus dem Azure Marketplace ein, und abonnieren Sie sie, um die JetStream DR-Software herunterzuladen.
 
-- [Azure Blob Storage Konto,](../storage/common/storage-account-create.md) das entweder mit der Standard- oder Premium Performance-Ebene erstellt wurde. [Wählen Sie unter Zugriffsebene die Option **Heiß** aus.](../storage/blobs/storage-blob-storage-tiers.md) 
+- [Azure Blob Storage Konto,](../storage/common/storage-account-create.md) das entweder mit der Standard- oder Premium Performance-Ebene erstellt wurde. [Wählen Sie unter Zugriffsebene die Option **Heiß** aus.](../storage/blobs/access-tiers-overview.md) 
 
    >[!NOTE]
    >Die Option **Hierarchischen Namespace aktivieren** für das Blob wird nicht unterstützt.   
@@ -99,7 +99,7 @@ In diesem Szenario ist der primäre Standort eine Azure VMware Solution private 
 
 - [Richten Sie JetStream DR](https://ms.portal.azure.com/#create/jetstreamsoftware1596597632545.jsdravs-093020) aus dem Azure Marketplace ein, und abonnieren Sie sie, um die JetStream DR-Software herunterzuladen.
 
-- [Azure Blob Storage Konto,](../storage/common/storage-account-create.md) das entweder mit der Standard- oder Premium Performance-Ebene erstellt wurde. [Wählen Sie unter Zugriffsebene die Option **Heiß** aus.](../storage/blobs/storage-blob-storage-tiers.md) 
+- [Azure Blob Storage Konto,](../storage/common/storage-account-create.md) das entweder mit der Standard- oder Premium Performance-Ebene erstellt wurde. [Wählen Sie unter Zugriffsebene die Option **Heiß** aus.](../storage/blobs/access-tiers-overview.md) 
 
    >[!NOTE]
    >Die Option **Hierarchischen Namespace aktivieren** für das Blob wird nicht unterstützt.   

@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 01/01/2020
+ms.date: 09/14/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10242d867c5d9676b4f6833151863b820b2f11d1
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: b64fe0e7fa06c66cdf43d423444e4e9e5bf1b908
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481803"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633030"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Azure-Ressourcenrollen in Privileged Identity Management
 
@@ -93,23 +93,23 @@ Beim Typ **Aktiv** können Sie eine dieser Optionen für die Zuweisungsdauer wä
 > [!NOTE]
 > Alle Zuweisungen mit einem angegebenen Enddatum können von Ressourcenadministratoren erneuert werden. Zudem können Benutzer Self-Service-Anforderungen auslösen, um [Rollenzuweisungen zu verlängern oder zu erneuern](pim-resource-roles-renew-extend.md).
 
-## <a name="require-multi-factor-authentication"></a>Mehrstufige Authentifizierung erforderlich
+## <a name="require-multifactor-authentication"></a>Erzwingen der mehrstufigen Authentifizierung
 
 Privileged Identity Management ermöglicht die optionale Erzwingung der Azure AD Multi-Factor Authentication (MFA) für zwei bestimmte Szenarien.
 
-### <a name="require-multi-factor-authentication-on-active-assignment"></a>Multi-Factor Authentication bei aktiver Zuweisung erforderlich
+### <a name="on-active-assignment"></a>Bei aktiver Zuweisung
 
-In einigen Fällen sollten Sie einer Rolle für einen kurzen Zeitraum (z. B. einen Tag) einen Benutzer oder eine Gruppe zuweisen. In diesem Fall müssen die zugewiesenen Benutzer die Aktivierung nicht anfordern. In diesem Szenario kann Privileged Identity Management die Multi-Factor Authentication (MFA) nicht erzwingen, wenn der Benutzer seine Rollenzuweisung verwendet, weil die Rolle ab dem Moment der Zuweisung bereits aktiv ist.
+Diese Option erfordert, dass Administratoren eine mehrstufige Authentifizierung abschließen müssen, bevor sie eine aktive (im Gegensatz zu berechtigte) Rollenzuweisung erstellen. Privileged Identity Management kann die mehrstufige Authentifizierung nicht erzwingen, wenn der Benutzer seine Rollenzuweisung verwendet, weil die Rolle ab dem Zeitpunkt der Zuweisung bereits aktiv ist.
 
-Sie können sicherstellen, dass der Ressourcenadministrator, der die Zuweisung bearbeitet, auch wirklich die angegebene Person ist, indem Sie für die aktive Zuweisung MFA erzwingen. Aktivieren Sie dafür das Kontrollkästchen neben der Option **Multi-Factor Authentication bei aktiver Zuweisung erforderlich**.
+Um die mehrstufige Authentifizierung beim Erstellen einer aktiven Rollenzuweisung zu erzwingen, können Sie die mehrstufige Authentifizierung bei der aktiven Zuweisung erzwingen, indem Sie das Kontrollkästchen **Multi-Factor Authentication bei aktiver Zuweisung erforderlich** aktivieren.
 
-### <a name="require-multi-factor-authentication-on-activation"></a>Bei Aktivierung Multi-Factor Authentication anfordern
+### <a name="on-activation"></a>Bei Aktivierung
 
-Sie können erzwingen, dass Benutzer, die für eine Rolle berechtigt sind, vor der Aktivierung ihre Identität über Azure AD MFA bestätigen müssen. Mithilfe von MFA kann mit hoher Wahrscheinlichkeit sichergestellt werden, dass es sich auch wirklich um den jeweiligen Benutzer handelt. Durch die Erzwingung dieser Option werden wichtige Ressourcen in Situationen geschützt, in denen das Benutzerkonto unter Umständen kompromittiert wurde.
+Sie können erzwingen, dass Benutzer, die für eine Rolle berechtigt sind, vor der Aktivierung ihre Identität über Azure AD MFA bestätigen müssen. Mithilfe von mehrstufiger Authentifizierung kann mit hoher Wahrscheinlichkeit sichergestellt werden, dass es sich auch wirklich um den jeweiligen Benutzer handelt. Durch die Erzwingung dieser Option werden wichtige Ressourcen in Situationen geschützt, in denen das Benutzerkonto unter Umständen kompromittiert wurde.
 
-Damit vor der Aktivierung MFA erzwungen wird, müssen Sie das Kontrollkästchen für die Option **Bei Aktivierung Multi-Factor Authentication anfordern** aktivieren.
+Damit vor der Aktivierung die mehrstufige Authentifizierung (MFA) erzwungen wird, müssen Sie das Kontrollkästchen **Bei Aktivierung Multi-Factor Authentication anfordern** aktivieren.
 
-Weitere Informationen finden Sie unter [Multi-Factor Authentication und Privileged Identity Management](pim-how-to-require-mfa.md).
+Weitere Informationen finden Sie unter [Mehrstufige Authentifizierung und Privileged Identity Management](pim-how-to-require-mfa.md).
 
 ## <a name="activation-maximum-duration"></a>Maximale Aktivierungsdauer
 

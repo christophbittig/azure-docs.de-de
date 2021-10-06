@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d342565972b051dcd5362f192d15678e1817ce78
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c18e242694d5f4d02ce9111d852a66bf49e48bcd
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818858"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275485"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Problembehandlung bei Leistungsproblemen mit Azure-Dateifreigaben
 
@@ -82,7 +82,7 @@ Wenn Sie ermitteln möchten, ob die meisten Ihrer Anforderungen metadatenzentrie
 
 - Überprüfen Sie, ob die Anwendung so geändert werden kann, dass sich die Anzahl von Metadatenvorgängen verringert.
 - Fügen Sie auf der Dateifreigabe eine virtuelle Festplatte (Virtual Hard Disk, VHD) hinzu, und binden Sie die VHD über SMB vom Client ein, um Dateivorgänge für die Daten durchzuführen. Dieser Ansatz funktioniert bei Szenarios mit einem einzelnen Writer/Reader oder bei Szenarios mit mehreren Readern und keinen Writern. Weil das Dateisystem im Besitz des Clients (und nicht von Azure Files) ist, dürfen Metadatenvorgänge lokal sein. Das-Setup bietet eine ähnliche Leistung wie bei einem lokalen, direkt angeschlossenen Speicher.
-    -   Verwenden Sie zum Einbinden einer VHD auf einem Windows Client das PowerShell-Cmdlet [Mount-DiskImage.](https://docs.microsoft.com/powershell/module/storage/mount-diskimage)
+    -   Verwenden Sie zum Einbinden einer VHD auf einem Windows Client das PowerShell-Cmdlet [Mount-DiskImage.](/powershell/module/storage/mount-diskimage)
     -   Informationen zum Einbinden einer VHD unter Linux finden Sie in der Dokumentation für Ihre Linux-Distribution.     
 
 ### <a name="cause-3-single-threaded-application"></a>Ursache 3: Singlethread-Anwendung

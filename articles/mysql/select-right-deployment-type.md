@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 4cfa90e2863583cf920df333fd2e5dbd7d7b46c6
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: ee18a405ca6c6a9d2e6a3a6cceb5c0ff89b5cf73
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113084604"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748605"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Auswählen der richtigen MySQL Server-Option in Azure
 
@@ -31,44 +31,98 @@ Berücksichtigen Sie bei der Entscheidung die beiden folgenden Optionen:
 
   - [Flexible Server (Vorschau)](flexible-server/overview.md) ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität in Bezug auf Datenbank-Verwaltungsfunktionen und -Konfigurationseinstellungen bietet. Im Allgemeinen bietet der Dienst im Vergleich zur Single Server-Bereitstellung basierend auf den Benutzeranforderungen mehr Flexibilität und Möglichkeiten zur Anpassung der Serverkonfigurationen. Mit der flexiblen Serverarchitektur können Benutzer Hochverfügbarkeit in einer einzelnen Verfügbarkeitszone sowie in mehreren Verfügbarkeitszonen auswählen. Flexible Server-Instanzen bieten außerdem bessere Steuerelemente für die Kostenoptimierung mit der Möglichkeit, den Server und burstfähige SKUs zu starten/anzuhalten. Dies eignet sich hervorragend für Workloads, die nicht durchgehend die gesamte Computekapazität benötigen.
 
-  Flexible Server-Instanzen eignen sich am besten für Folgendes:
+Flexible Server-Instanzen eignen sich am besten für Folgendes:
 
   - Anwendungsentwicklung, bei der eine bessere Kontrolle und bessere Anpassungsmöglichkeiten für die MySQL-Engine erforderlich sind
   - Zonenredundante Hochverfügbarkeit
   - Verwaltete Wartungsfenster
-
-- **MySQL auf Azure-VMs**: Diese Option fällt in die Branchenkategorie IaaS. Mit diesem Dienst können Sie MySQL Server auf einem verwalteten virtuellen Computer auf der Azure-Cloudplattform ausführen. Alle aktuellen Versionen und Editionen von MySQL können auf diesem virtuellen Computer installiert werden.
+ 
+  - **MySQL auf Azure-VMs**: Diese Option fällt in die Branchenkategorie IaaS. Mit diesem Dienst können Sie MySQL Server auf einem verwalteten virtuellen Computer auf der Azure-Cloudplattform ausführen. Alle aktuellen Versionen und Editionen von MySQL können auf diesem virtuellen Computer installiert werden.
 
 ## <a name="comparing-the-mysql-deployment-options-in-azure"></a>Vergleich der MySQL-Bereitstellungsoptionen in Azure
 
 Die Hauptunterschiede zwischen diesen Optionen werden in der folgenden Tabelle aufgeführt:
 
-| attribute          | Azure Database for MySQL<br/>Einzelner Server |Azure Database for MySQL<br/>Flexible Server  |MySQL auf Azure-VMs                      |
-|:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
-| Unterstützte MySQL-Versionen | 5.6, 5.7 & 8.0| 5.7 und 8.0 | Beliebige Version|
+| attribute          | Azure Database for MySQL<br/>Einzelner Server |Azure Database for MySQL<br/>Flexible Server  |MySQL auf Azure-VMs |
+|:-------------------|:-------------------------------------------|:---------------------------------------------|:------------------|
+| [**Allgemein**](flexible-server/overview.md)  | | | |
+| Allgemeine Verfügbarkeit | GA seit 2018 | Öffentliche Vorschau | Allgemein verfügbar |
+| Vereinbarung zum Servicelevel (SLA) | SLA mit 99,99 %Verfügbarkeit |Keine SLA in der Vorschauversion| 99,99 % bei Verwendung von Verfügbarkeitszonen|
+| Zugrunde liegendes Betriebssystem | Windows | Linux  | Vom Benutzer verwaltet |
+| MySQL-Edition | Community Edition | Community Edition | Community oder Enterprise Edition |
+| Unterstützte MySQL-Versionen | 5.6 (eingestellt), 5.7 und 8.0| 5.7 und 8.0 | Beliebige Version|
+| Auswahl der Verfügbarkeitszone für die Anwendungscolocation | Nein | Ja | Ja |
+| Benutzername in Verbindungszeichenfolge | `<user_name>@server_name`. Beispiel: `mysqlusr@mypgServer` | Nur Benutzername. Beispiel: `mysqlusr` | Nur Benutzername. Beispiel: `mysqlusr` | 
+| [**Compute- und Speicherskalierung**](flexible-server/concepts-compute-storage.md) | | | |
+| Computetarife | Basic, Universell, Arbeitsspeicheroptimiert | Burstfähig, Universell, Arbeitsspeicheroptimiert | Burstfähig, Universell, Arbeitsspeicheroptimiert |
 | Compute-Skalierung | Unterstützt (die Skalierung vom und zum Tarif Basic wird nicht unterstützt)| Unterstützt | Unterstützt|
 | Speichergröße | 5 GiB bis 16 TiB| 20 GiB bis 16 TiB | 32 GiB bis 32.767 GiB|
 | Onlinespeicherskalierung | Unterstützt| Unterstützt| Nicht unterstützt|
 | Automatische Speicherskalierung | Unterstützt| Unterstützt| Nicht unterstützt|
-| Zusätzliche IOPS-Skalierung | Nicht unterstützt| Unterstützt| Nicht unterstützt|
+| IOPs-Skalierung | Nicht unterstützt| Unterstützt| Nicht unterstützt|
+| [**Kostenoptimierung**](https://azure.microsoft.com/pricing/details/mysql/flexible-server/) | | | |
+| Reservierte Azure-VM-Instanzen (RIs): Preise | Unterstützt | Unterstützt | Unterstützt |
+| Beenden/Starten des Servers für die Entwicklung | Server kann bis zu 7 Tage angehalten werden | Server kann bis zu 30 Tage angehalten werden | Unterstützt |
+| Kostengünstige burstfähige SKU | Nicht unterstützt | Unterstützt | Unterstützt |
+| [**Netzwerk/Sicherheit**](concepts-security.md) | | | |
 | Netzwerkverbindung | – Öffentliche Endpunkte mit Serverfirewall<br/> – Privater Zugriff mit Private Link-Unterstützung|– Öffentliche Endpunkte mit Serverfirewall<br/> – Privater Zugriff mit Virtual Network-Integration.| – Öffentliche Endpunkte mit Serverfirewall<br/> – Privater Zugriff mit Private Link-Unterstützung|
-| Vereinbarung zum Servicelevel (SLA) | SLA mit 99,99 %Verfügbarkeit |Keine SLA in der Vorschauversion| 99,99 % bei Verwendung von Verfügbarkeitszonen|
-| Betriebssystempatching| Automatic  | Automatisch mit benutzerdefinierter Wartungsfenstersteuerung | Von Endbenutzern verwaltet |
-| MySQL-Patching     | Automatic  | Automatisch mit benutzerdefinierter Wartungsfenstersteuerung | Von Endbenutzern verwaltet |
-| Hochverfügbarkeit | Integrierte Hochverfügbarkeit in einer einzelnen Verfügbarkeitszone| Integrierte Hochverfügbarkeit in Verfügbarkeitszonen und verfügbarkeitszonenübergreifend | Benutzerdefinierte Verwaltung, unter anderem mithilfe von Clustering und Replikation|
-| Zonenredundanz | Nicht unterstützt | Unterstützt | Unterstützt|
-| Zonenplatzierung | Nicht unterstützt | Unterstützt | Unterstützt|
-| Hybridszenario | Unterstützt mit [Datenreplikation](./concepts-data-in-replication.md)| Unterstützt mit [Datenreplikation](./flexible-server/concepts-data-in-replication.md) | Von Endbenutzern verwaltet |
-| Lesereplikate | Unterstützt (bis zu 5 Replikate)| Unterstützt (bis zu 10 Replikate)| Von Endbenutzern verwaltet |
-| Backup | Automatisiert mit Aufbewahrungsdauer von 7 bis 35 Tagen | Automatisiert mit Aufbewahrungsdauer von 1 bis 35 Tagen | Von Endbenutzern verwaltet |
-| Überwachen von Datenbankvorgängen | Unterstützt | Unterstützt | Von Endbenutzern verwaltet |
-| Notfallwiederherstellung | Unterstützt mit georedundantem Sicherungsspeicher und regionsübergreifenden Lesereplikaten | In Kürze verfügbar| Benutzerdefinierte Verwaltung mit Replikationstechnologien |
-| Statistik zur Abfrageleistung | Unterstützt | Nicht in der Vorschau verfügbar| Von Endbenutzern verwaltet |
-| Reservierte Azure-VM-Instanzen (RIs): Preise | Unterstützt | In Kürze verfügbar | Unterstützt |
-| Azure AD-Authentifizierung | Unterstützt | Nicht in der Vorschau verfügbar | Nicht unterstützt|
-| Verschlüsselung ruhender Daten | Unterstützt mit kundenseitig verwalteten Schlüsseln | Unterstützt mit dienstseitig verwalteten Schlüsseln | Nicht unterstützt|
 | SSL/TLS | Standardmäßig aktiviert mit Unterstützung für TLS 1.2, 1.1 und 1.0 | Standardmäßig aktiviert mit Unterstützung für TLS 1.2, 1.1 und 1.0| Unterstützung für TLS 1.2, 1.1 und 1.0 |
+| Verschlüsselung ruhender Daten | Unterstützt mit kundenseitig verwalteten Schlüsseln (BYOK) | Unterstützt mit dienstseitig verwalteten Schlüsseln | Nicht unterstützt|
+| Azure AD-Authentifizierung | Unterstützt | Nicht unterstützt | Nicht unterstützt|
+| Azure Defender-Unterstützung | Ja | Nein | Nein |
+| Serverüberwachung | Unterstützt | Unterstützt | Vom Benutzer verwaltet |
+| [**Patching und Wartung**](flexible-server/concepts-maintenance.md) | | |
+| Betriebssystempatching| Automatic  | Automatisch  | Vom Benutzer verwaltet |
+| Upgrades von MySQL-Nebenversionen  | Automatisch  | Automatisch | Vom Benutzer verwaltet |
+| Direkte Upgrades der MySQL-Hauptversion | Unterstützt von 5.6 bis 5.7 | Nicht unterstützt | Vom Benutzer verwaltet |
+| Wartungssteuerung | Systemverwaltet | Vom Kunden verwaltet | Vom Benutzer verwaltet |
+| Wartungsfenster | Jederzeit innerhalb eines 15-Stunden-Zeitfensters | Zeitfenster von 1 Stunde | Vom Benutzer verwaltet |
+| Benachrichtigungen zu geplanten Wartungen | 3 Tage | 5 Tage | Vom Benutzer verwaltet |
+| [**Hochverfügbarkeit**](flexible-server/concepts-high-availability.md) | | | |
+| Hochverfügbarkeit | Integrierte Hochverfügbarkeit (ohne Hot Standby)| Integrierte Hochverfügbarkeit (ohne Hot Standby), Hochverfügbarkeit in derselben Zone und zonenredundante HA mit Hot Standby | Vom Benutzer verwaltet |
+| Zonenredundanz | Nicht unterstützt | Unterstützt | Unterstützt|
+| Platzierung der Standbyzone | Nicht unterstützt | Unterstützt | Unterstützt|
+| Automatisches Failover | Ja (Wechsel zu anderem Server)| Ja | Vom Benutzer verwaltet|
+| erzwungenes Failover | Nein | Ja | Vom Benutzer verwaltet |
+| Transparentes Anwendungsfailover | Ja | Ja | Vom Benutzer verwaltet|
+| [**Replikation**](flexible-server/concepts-read-replicas.md) | | | |
+| Unterstützung für Lesereplikate | Ja | Ja | Vom Benutzer verwaltet |
+| Anzahl unterstützter Lesereplikate | 5 | 10 | Vom Benutzer verwaltet |
+| Modus der Replikation | Asynchron | Asynchron | Vom Benutzer verwaltet |
+| GTID-Unterstützung für Lesereplikate | Unterstützt | Unterstützt | Vom Benutzer verwaltet |
+| Regionsübergreifende Unterstützung (Georeplikation) | Ja | Nicht unterstützt | Vom Benutzer verwaltet |
+| Hybridszenario | Unterstützt mit [Datenreplikation](./concepts-data-in-replication.md)| Unterstützt mit [Datenreplikation](./flexible-server/concepts-data-in-replication.md) | Vom Benutzer verwaltet |
+| GTID-Unterstützung für die Datenreplikation | Unterstützt | Nicht unterstützt | Vom Benutzer verwaltet |
+| Replikation ausgehender Daten | Nicht unterstützt | In der Vorschau | Unterstützt |
+| [**Sicherung und Wiederherstellung**](flexible-server/concepts-backup-restore.md) | | | |
+| Automatisierte Sicherungen | Ja | Ja | Nein |
+| Sicherungsaufbewahrung | 7–35 Tage | 1–35 Tage | Vom Benutzer verwaltet |
+| Langzeitaufbewahrung von Sicherungen | Vom Benutzer verwaltet | Vom Benutzer verwaltet | Vom Benutzer verwaltet |
+| Exportieren von Sicherungskopien | Unterstützt für logische Sicherungen | Unterstützt für logische Sicherungen | Unterstützt |
+| Funktion für die Point-in-Time-Wiederherstellung zu jedem beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums | Ja | Ja | Vom Benutzer verwaltet |
+| Möglichkeit zum Wiederherstellen in einer anderen Zone | Nicht unterstützt | Ja | Ja |
+| Möglichkeit zum Wiederherstellen in einem anderen VNet | Nein | Ja | Ja |
+| Möglichkeit zum Wiederherstellen in einer anderen Region | Ja (georedundant) | Nein | Vom Benutzer verwaltet |
+| Möglichkeit zum Wiederherstellen eines gelöschten Servers | Ja | Nein | Nein |
+| [**Notfallwiederherstellung**](flexible-server/concepts-business-continuity.md) (Disaster Recovery, DR) | | | | 
+| DR in allen Azure-Regionen | Mit regionsübergreifenden Lesereplikaten, georedundante Sicherungen | Nicht unterstützt | Vom Benutzer verwaltet |
+| Automatisches Failover | Nein | Nicht unterstützt | Nein |
+| Gleicher Lese-/Schreib-Endpunkt verwendbar | Nein | Nicht unterstützt | Nein |
+| [**Überwachung**](flexible-server/concepts-monitoring.md) | | | |
+| Azure Monitor-Integration und -Warnungen | Unterstützt | Unterstützt | Vom Benutzer verwaltet |
+| Überwachen von Datenbankvorgängen | Unterstützt | Unterstützt | Vom Benutzer verwaltet |
+| Statistik zur Abfrageleistung | Unterstützt | Nicht unterstützt | Vom Benutzer verwaltet |
+| Serverprotokolle | Unterstützt | Unterstützt (mithilfe von Diagnoseprotokollen) | Vom Benutzer verwaltet |
+| Überwachungsprotokolle | Unterstützt | Unterstützt | Unterstützt | 
+| Fehlerprotokolle | Nicht unterstützt | Unterstützt | Unterstützt |
+| Azure Advisor-Unterstützung | Unterstützt | Nicht unterstützt | Nicht unterstützt |
+| **Plug-Ins** | | | |
+| validate_password | Nicht unterstützt | In der Vorschau | Unterstützt |
+| caching_sha2_password | Nicht unterstützt | In der Vorschau | Unterstützt |
+| [**Entwicklerproduktivität**](flexible-server/quickstart-create-server-cli.md) | | | |
 | Flottenverwaltung | Unterstützt mit der Azure CLI, PowerShell, REST und dem Azure Resource Manager | Unterstützt mit der Azure CLI, PowerShell, REST und Azure Resource Manager  | Unterstützt für VMs mit der Azure CLI, PowerShell, REST und Azure Resource Manager |
+| Terraform-Unterstützung | Unterstützt | Nicht unterstützt | Unterstützt |
+| GitHub Actions | Unterstützt | Unterstützt | Vom Benutzer verwaltet |
 
 ## <a name="business-motivations-for-choosing-paas-or-iaas"></a>Geschäftsmotive für die Entscheidung für PaaS oder IaaS
 

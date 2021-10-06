@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 08/02/2021
+ms.date: 09/21/2021
 ms.author: alkohli
-ms.openlocfilehash: d9506ce3f01f5500bab81e8e90c57761bef75805
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: db5b98170446e93737fd625671f5351cc11da337
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254596"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591917"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Tutorial: Erstellen eines Exportauftrags für Azure Data Box
 
@@ -101,17 +102,16 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
     |Speicherkonto     | Das Azure Storage-Konto, aus dem Sie Daten exportieren möchten. |
     |Exporttyp     | Gibt den Typ der aus **Alle Objekte** zu exportierenden Daten und **XML-Datei verwenden** an.<ul><li> **Alle Objekte**: Gibt an, dass der Auftrag alle Daten abhängig von Ihrer Auswahl für **Übertragungsoptionen** exportiert.</li><li> **XML-Datei verwenden**: Gibt eine XML-Datei an, die eine Reihe von Pfaden und Präfixen für Blobs und/oder Dateien enthält, die aus dem Speicherkonto exportiert werden sollen. Die XML-Datei muss sich im Container des ausgewählten Speicherkontos befinden, und die Auswahl aus Dateifreigaben wird derzeit nicht unterstützt. Die Datei muss eine nicht leere XML-Datei sein.</li></ul>        |
     |Übertragungsoptionen     |  Gibt die Datenübertragungsoptionen **Alle auswählen**, **Alle Blobs** und **Alle Dateien** an. <ul><li> **Alle auswählen**: Gibt an, dass alle Blobdateien und Azure Files exportiert werden. Wenn Sie ein Speicherkonto verwenden, das nur Blobs (Blobspeicherkonten) unterstützt, ist die Option **Alle Dateien** nicht auswählbar.</li><li> **Alle Blobs**: Gibt an, dass nur Block- und Seitenblobs exportiert werden.</li><li> **Alle Dateien**: Gibt an, dass alle Dateien außer Blobs exportiert werden. Der Typ Ihres Speicherkontos (GPv1 und GPv2, Storage Premium oder Blobspeicher) bestimmt, welche Datentypen Sie exportieren können. Weitere Informationen finden Sie unter [Unterstützte Speichertypen](../import-export/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
-    |Ausführliches Protokoll einschließen     | Gibt an, ob Sie eine ausführliche Protokolldatei mit einer Liste aller Dateien wünschen, die erfolgreich exportiert wurden.        |
+    |Ausführliches Protokoll einschließen     | Gibt an, ob Sie eine ausführliche Protokolldatei mit einer Liste aller Dateien wünschen, die erfolgreich exportiert wurden. Weitere Informationen zu den Kopierprotokollen und ausführlichen Protokollen für einen Exportauftrag finden Sie unter [Anzeigen von Protokollen](data-box-export-logs.md#view-logs-during-data-copy). |
 
     > [!NOTE]
-    >
-    > Wenn Sie **XML-Datei verwenden** für die Einstellung **Exporttyp** auswählen, müssen Sie sicherstellen, dass die XML-Datei gültige Pfade und/oder Präfixe enthält. Sie müssen die XML-Datei erstellen und bereitstellen.  Wenn die Datei ungültig ist oder keine Daten mit den angegebenen Pfaden übereinstimmen, wird der Auftrag mit partiellen Daten oder ohne exportierte Daten beendet.
+    > Wenn Sie **XML-Datei verwenden** für die Einstellung **Exporttyp** auswählen, müssen Sie sicherstellen, dass die XML-Datei gültige Pfade und/oder Präfixe enthält. Sie müssen die XML-Datei erstellen und bereitstellen. Wenn die Datei ungültig ist oder keine Daten mit den angegebenen Pfaden übereinstimmen, wird der Auftrag mit partiellen Daten oder ohne exportierte Daten beendet. Eine Anleitung finden Sie unter [Erstellen der XML-Datei](#create-xml-file).
 
     Informationen zum Hinzufügen einer XML-Datei zu einem Container finden Sie unter [Exportauftrag mit XML-Datei](data-box-deploy-export-ordered.md#export-order-using-xml-file).
 
    ![Auswählen der Exportoption](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-   Ein Beispiel für die XML-Eingabe finden Sie unter [Beispiel für eine XML-Datei](data-box-deploy-export-ordered.md#sample-xml-file).
+   Ein Beispiel für die XML-Eingabe finden Sie unter [Erstellen der XML-Datei](#create-xml-file).
 
 9. Überprüfen Sie Ihre Einstellungen in **Datenauswahl**, und wählen Sie **Weiter: Sicherheit>** , um den Vorgang fortzusetzen.
 
@@ -228,7 +228,9 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
 ## <a name="export-order-using-xml-file"></a>Exportauftrag mit XML-Datei
 
-Wenn Sie **XML-Datei verwenden** auswählen, können Sie bestimmte Container und Blobs (Seite und Block) angeben, die Sie exportieren möchten. Sie müssen die Spezifikationen in [Beispiel für eine XML-Dateitabelle](#sample-xml-file) zum Formatieren Ihres XML-Codes befolgen. In den folgenden Schritten wird gezeigt, wie Sie eine XML-Datei zum Exportieren von Daten verwenden:
+Wenn Sie **XML-Datei verwenden** auswählen, können Sie bestimmte Container und Blobs (Seite und Block) angeben, die Sie exportieren möchten. Die folgenden Schritte veranschaulichen, wie Sie die XML-Datei zum Exportieren von Daten verwenden. Eine Anleitung zum Erstellen der XML-Datei finden Sie unter [Erstellen der XML-Datei](#create-xml-file).
+
+So verwenden Sie eine XML-Datei zum Exportieren Ihrer Daten:
 
 1. Wählen Sie für **Exporttyp** die Option **XML-Datei verwenden** aus. Dies ist Ihre XML-Datei, die bestimmte Blobdateien und Azure-Dateien angibt, die Sie exportieren möchten. Um die XML-Datei hinzuzufügen, wählen Sie **Klicken Sie hier, um eine XML-Datei auszuwählen**.
 
@@ -261,6 +263,109 @@ Wenn Sie **XML-Datei verwenden** auswählen, können Sie bestimmte Container und
 7. Die XML-Datei wurde dem Container erfolgreich hinzugefügt. Nur Blobs und Azure Files, die Sie in dieser XML-Datei angegeben haben, werden exportiert.
 
    ![Zum Container hinzugefügte XML-Datei](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-added-to-container.png)
+
+## <a name="create-xml-file"></a>Erstellen der XML-Datei
+
+Befolgen Sie die folgenden Richtlinien, um die XML-Datei zu erstellen, wenn Sie Blobs und Dateien für den Export mithilfe einer XML-Datei auswählen:
+- **Registerkarte „XML-Beispieldatei“** : Kopieren Sie eine XML-Beispieldatei mit Beispielen für die einzelnen Tags.
+- **Registerkarte „XML-Dateiübersicht“** : Überprüfen Sie die Taganforderungen für die XML-Datei.
+- **Registerkarte „Präfixbeispiele“** : Sehen Sie sich Beispiele für gültige Präfixe an, die mehrere Blobs und Dateien für den Export auswählen.
+
+### <a name="sample-xml-file"></a>[Beispiel für eine XML-Datei](#tab/sample-xml-file)
+
+Diese XML-Beispieldatei enthält Beispiele für alle XML-Tags, die zum Auswählen von Blobs und Dateien für den Export in einem Data Box-Exportauftrag verwendet werden. 
+
+- Informationen zu den XML-Dateianforderungen finden Sie auf der Registerkarte **XML-Dateiübersicht**.
+- Weitere Beispiele für gültige Blob- und Dateipräfixe finden Sie auf der Registerkarte **Präfixbeispiele**.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+   <!--BlobList selects individual blobs (BlobPath) and multiple blobs (BlobPathPrefix) in Blob storage for export.-->
+   <BlobList>
+      <BlobPath>/container1/blob.txt</BlobPath> <!-- Exports /container1/blob.txt -->
+      <BlobPathPrefix>/container2/</BlobPathPrefix> <!--Exports all blobs in container2 -->
+      <BlobPathPrefix>/container</BlobPathPrefix>  <!-- Exports all containers beginning with prefix: "container" -->
+      <BlobPathPrefix>/container1/2021Q2</BlobPathPrefix> <!-- Exports all blobs in container1 with prefix: "2021Q2" -->
+   </BlobList>
+   
+   <!--AzureFileList selects individual files (FilePath) and multiple files (FilePathPrefix) in Azure File storage for export.-->
+   <AzureFileList>
+      <FilePath>/fileshare1/file.txt</FilePath> <!-- Exports /fileshare1/file.txt -->
+      <FilePathPrefix>/fileshare1/</FilePath> <!-- Exports all directories and files in fileshare1 -->
+      <FilePathPrefix>/fileshare</FilePathPrefix> <!-- Exports all directories and files in any fileshare with prefix: "fileshare" -->
+      <FilePathPrefix>/fileshare2/contosowest</FilePathPrefix> <!-- Exports all directories and files in fileshare2 with prefix: "contosowest" -->
+   </AzureFileList>
+```
+
+### <a name="xml-file-overview"></a>[XML-Dateiübersicht](#tab/xml-file-overview)
+
+Befolgen Sie diese Richtlinien, wenn Sie die XML-Datei für Ihren Exportauftrag erstellen. Falsche Tagformate können zu Exportfehlern führen.
+
+Schritte zum Hochladen der XML-Datei beim Erteilen eines Exportauftrags finden Sie unter [Exportauftrag mit einer XML-Datei](#export-order-using-xml-file).
+
+#### <a name="path-vs-prefix"></a>Pfad im Vergleich zu Präfix
+
+Um die XML-Tags in Ihrer XML-Datei ordnungsgemäß zu formen, müssen Sie den Unterschied zwischen einem Pfad und einem Präfix verstehen:
+
+* Ein *Pfad* bietet die Möglichkeit, ein einzelnes Blob oder eine einzelne Datei auszuwählen und zu filtern.
+* Ein *Präfix* bietet die Möglichkeit, mehrere Blobs oder Dateien auszuwählen und zu filtern.
+
+Beispiele für ordnungsgemäß formatierte Präfixe finden Sie auf der Registerkarte **Präfixbeispiele**.
+
+#### <a name="tag-usage"></a>Tagverwendung
+
+Die folgenden XML-Tags werden in der XML-Datei für einen Data Box-Exportauftrag verwendet:
+
+| XML-Tag           |BESCHREIBUNG |
+|-------------------|------------|
+|`<BlobList>`       |Übergeordnetes Tag für &lt;BlobPath&gt;- und &lt;BlobPathPrefix&gt;-Tags.|
+|`<BlobPath>`       |Wählt ein einzelnes Blob aus. |
+|`<BlobPathPrefix>` |Wählt Blobs mit einem gemeinsamen Präfix aus. Beispiele finden Sie auf der Registerkarte **Präfixbeispiele**.|
+|`<AzureFileList>`  |Übergeordnetes Tag für &lt;FilePath&gt;- und &lt;FilePathPrefix&gt;-Tags.|
+|`<FilePath>`       |Wählt eine einzelne Datei aus. |
+|`<FilePathPrefix>` |Wählt Dateien mit einem gemeinsamen Präfix aus. Beispiele finden Sie auf der Registerkarte **Präfixbeispiele**.|
+
+Um die Tags im Kontext anzuzeigen, wechseln Sie zur Registerkarte **XML-Beispieldatei.**
+
+#### <a name="xml-tag-requirements"></a>XML-Taganforderungen
+
+* Alle XML-Tags berücksichtigen Groß-/Kleinschreibung und müssen genau mit den Tags in der obigen Tabelle übereinstimmen.
+* Öffnende und schließende Tags müssen einander entsprechen.
+* Falsche XML-Tags oder Formatierungen führen möglicherweise zu Datenexportfehlern.
+* Wenn Blob- oder Dateipräfixe ungültig sind, werden keine Daten exportiert. Beispiele für gültige Präfixe finden Sie auf der Registerkarte **Präfixbeispiele**.
+
+### <a name="prefix-examples"></a>[Präfixbeispiele](#tab/prefix-examples)
+
+Diese Beispielpfade zeigen verschiedene Möglichkeiten zum Erstellen eines Präfixes, um mehrere Blobs oder Dateien für den Export auszuwählen.
+
+#### <a name="valid-blob-path-prefixes"></a>Gültige Blobpfadpräfixe
+
+Die folgenden Beispielpfade werden mit dem &lt;BlobPathPrefix&gt;-Tag verwendet, um mehrere Blobs in Azure Blob Storage für den Export auszuwählen.
+
+|Blobpfadpräfix        |BESCHREIBUNG                                                                     |Tagbeispiel                         |
+|------------------------|--------------------------------------------------------------------------------|------------------------------------|
+|/                       |Exportiert alle Blobs im Speicherkonto.                                       |`<BlobPathPrefix>/</BlobPathPrefix>`|
+|/$root/                 |Exportiert alle Blobs im Stammcontainer.                                        |`<BlobPathPrefix>/$root/</BlobPathPrefix>`|
+|/container2/            |Exportiert alle Blobs im Container **container2**.                              |`<BlobPathPrefix>/container1/</BlobPathPrefix>`|
+|/container          |Exportiert alle Blobs in allen Containern, die mit dem Präfix **container** beginnen.      |`<BlobPathPrefix>/containers</BlobPathPrefix>`|
+|/container1/2021Q2      |Exportiert alle Blobs im Container **container1**, die mit dem Präfix **2021Q2** beginnen.|`<BlobPathPrefix>/container1/2021Q2</BlobPathPrefix>`|
+
+Um ein *einzelnes* Blob für den Export auszuwählen, verwenden Sie das &lt;BlobPath&gt;-Tag mit einem Containerpfad und einem Blobnamen. Wenn Sie beispielsweise **blob.txt** im Container **container1** auswählen möchten, verwenden Sie dieses Tag: `<BlobPath>/container1/blob.txt</BlobPath>`.
+
+#### <a name="valid-file-path-prefixes"></a>Gültige Dateipfadpräfixe
+
+Die folgenden Beispielpfade werden mit dem &lt;FilePathPrefix&gt;-Tag verwendet, um mehrere Azure-Dateien für den Export auszuwählen.
+
+|Dateipfadpräfix        |BESCHREIBUNG                                                                                          |Tagbeispiel|
+|------------------------|-----------------------------------------------------------------------------------------------------|-----------|
+|/                       |Exportiert alle Dateien und Verzeichnisse im Speicherkonto. |`<FilePathPrefix>/</FilePath>Prefix`|
+|/fileshare1/            |Exportiert alle Dateien und Verzeichnisse in der Freigabe namens **fileshare1**.                                                 |`<FilePathPrefix>/fileshare1/</FilePath>Prefix`|
+|/fileshare              |Exportiert alle Dateien und Verzeichnisse in jeder Dateifreigabe, die mit dem Präfix **fileshare** beginnen. |`<FilePathPrefix>/fileshare</FilePath>Prefix`|
+|/fileshare2/contosowest |Exportiert alle Dateien und Verzeichnisse in der Dateifreigabe **fileshare2**, die mit dem Präfix **contosowest** beginnen.|`<FilePathPrefix>/fileshare1/contosowest</FilePath>Prefix`|
+
+Um eine *einzelne* Datei für den Export auszuwählen, verwenden Sie das &lt;FilePath&gt;-Tag mit einem Freigabepfad und einem Dateinamen. Wenn Sie beispielsweise **file.txt** in **fileshare1** auswählen möchten, verwenden Sie dieses Tag: `<FilePath>/fileshare1/file.txt</FilePath>`.
+
+---
 
 ## <a name="track-the-order"></a>Nachverfolgen der Bestellung
 
@@ -300,129 +405,6 @@ Um die Bestellung zu stornieren, navigieren Sie im Azure-Portal zu **Übersicht*
 Solange ein Auftrag noch nicht verarbeitet wird, können Sie ihn jederzeit stornieren.
 
 Um eine stornierte Bestellung zu löschen, navigieren Sie zu **Übersicht** und wählen dann auf der Befehlsleiste die Option **Löschen** aus.
-
-## <a name="sample-xml-file"></a>Beispiel für eine XML-Datei
-
-Der folgende XML-Code ist ein Beispiel für Blobnamen, Blobpräfixe und Azure Files im XML-Format, das im Exportauftrag verwendet wird, wenn Sie die Option **XML-Datei verwenden** auswählen:
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-   <!-- BlobList/prefix/Container list for Blob storage for export  -->
-   <BlobList>
-      <BlobPath>/8tbpageblob/8tbpageblob/8tbpageblob</BlobPath>
-      <BlobPathPrefix>/blockblob4dot75tbdata/</BlobPathPrefix>
-      <BlobPathPrefix>/1tbfilepageblob</BlobPathPrefix>
-      <BlobPathPrefix>/1tbfile/</BlobPathPrefix>
-      <BlobPathPrefix>/8mbfiles/</BlobPathPrefix>
-      <BlobPathPrefix>/64mbfiles/</BlobPathPrefix>
-   </BlobList>
-   <!-- FileList/prefix/Share list for Azure Files for export  -->
-   <AzureFileList>
-      <FilePathPrefix>/64mbfiles/</FilePathPrefix>
-      <FilePathPrefix>/4mbfiles/prefix2/subprefix</FilePathPrefix>
-      <FilePathPrefix>/1tbfile/prefix</FilePathPrefix>
-   </AzureFileList>
-```
-
-Einige wichtige Punkte in Bezug auf XML-Dateien:
-
-* Bei XML-Tags muss die Groß-/Kleinschreibung beachtet werden, und sie müssen genau dem obigen Beispiel entsprechen.
-* Öffnende und schließende Tags müssen einander entsprechen.
-* Falsche XML-Tags oder Formatierungen führen möglicherweise zu Datenexportfehlern.
-* Wenn Blob- und/oder Dateipräfixe ungültig sind, werden keine Daten exportiert.
-
-### <a name="examples-of-valid-blob-paths"></a>Beispiele für gültige Blobpfade
-
-Die folgende Tabelle enthält Beispiele für gültige Blob-Pfade:
-
-   | Auswahl | Blob-Pfad | BESCHREIBUNG |
-   | --- | --- | --- |
-   | Beginnt mit |/ |Exportiert alle Blobs im Speicherkonto |
-   | Beginnt mit |/$root/ |Exportiert alle Blobs im Stammcontainer |
-   | Beginnt mit |/containers |Exportiert alle Blobs in allen Containern, die mit dem Präfix **containers** beginnen |
-   | Beginnt mit |/container-name/ |Exportiert alle Blobs im Container **container-name** |
-   | Beginnt mit |/container-name/prefix |Exportiert alle Blobs im Container **container-name**, die mit dem Präfix **prefix** beginnen |
-   | Gleich |$root/logo.bmp |Exportiert das Blob **logo.bmp** im Stammcontainer |
-   | Gleich |8tbpageblob/mydata.txt |Exportiert Blob **mydata.txt** in Container **8tbpageblob** |
-
-## <a name="sample-log-files"></a>Beispiel für Protokolldateien
-
-Dieser Abschnitt enthält Beispiele für Protokolldateien, die während des Exports generiert werden. Die Fehlerprotokolle werden automatisch generiert. Zum Generieren der ausführlichen Protokolldatei müssen Sie beim Konfigurieren des Exportauftrags **Ausführliches Protokoll einschließen** im Azure-Portal einschließen.
-Weitere Informationen zum Kopieren und zu ausführlichen Protokollen finden Sie unter [Protokolle kopieren](data-box-deploy-export-copy-data.md#copy-data-from-data-box).
-
-<!-- ### Verbose log
-
-The following log files show examples of verbose logging when you select **Include verbose log**:
-
-```xml
-<File CloudFormat="BlockBlob" Path="validblobdata/test1.2.3.4" Size="1024" crc64="7573843669953104266"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/helloEndWithDot..txt" Size="11" crc64="7320094093915972193"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/test..txt" Size="12" crc64="17906086011702236012"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/test1" Size="1024" crc64="7573843669953104266"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/test1.2.3" Size="1024" crc64="7573843669953104266"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/.......txt" Size="11" crc64="7320094093915972193"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/copylogb08fa3095564421bb550d775fff143ed====..txt" Size="53638" crc64="1147139997367113454"></File>
-<File CloudFormat="BlockBlob" Path="validblobdata/testmaxChars-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-123456790-12345679" Size="1024" crc64="7573843669953104266"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file0" Size="0" crc64="0"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file1" Size="0" crc64="0"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file4096_000001" Size="4096" crc64="16969371397892565512"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file4096_000000" Size="4096" crc64="16969371397892565512"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/64KB-Seed10.dat" Size="65536" crc64="10746682179555216785"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/LiveSiteReport_Oct.xlsx" Size="7028" crc64="6103506546789189963"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/NE_Oct_GeoReport.xlsx" Size="103197" crc64="13305485882546035852"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/64KB-Seed1.dat" Size="65536" crc64="3140622834011462581"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/1mbfiles-0-0" Size="1048576" crc64="16086591317856295272"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file524288_000001" Size="524288" crc64="8908547729214703832"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/4mbfiles-0-0" Size="4194304" crc64="1339017920798612765"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/file524288_000000" Size="524288" crc64="8908547729214703832"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/8mbfiles-0-1" Size="8388608" crc64="3963298606737216548"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/1mbfiles-0-1" Size="1048576" crc64="11061759121415905887"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/XLS-10MB.xls" Size="1199104" crc64="2218419493992437463"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/8mbfiles-0-0" Size="8388608" crc64="1072783424245035917"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/4mbfiles-0-1" Size="4194304" crc64="9991307204216370812"></File>
-<File CloudFormat="BlockBlob" Path="export-ut-container/VL_Piracy_Negtive10_TPNameAndGCS.xlsx" Size="12398699" crc64="13526033021067702820"></File>
-```
-
-### Copy logs
-
-For more information regarding copy logs, see [Copy logs](data-box-deploy-export-copy-data.md#copy-data-from-data-box). -->
-
-<!-- The following xml shows an example of the copy log when the export is successful:
-
-```xml
-<CopyLog Summary="Summary">
-  <Status>Succeeded</Status>
-    <TotalFiles_Blobs>27</TotalFiles_Blobs>
-    <FilesErrored>0</FilesErrored>
-</CopyLog>
-```
-
-For more information regarding copy logs, see [Copy logs](data-box-deploy-export-copy-data.md#copy-data-from-data-box).
-
-The following xml shows an example of the copy log when the export has errors:
-
-```xml
-<ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/wastorage.v140.3.0.2.nupkg">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>400</ErrorCode>
-  <ErrorMessage>UnsupportBlobType</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/xunit.console.Primary_2020-05-07_03-54-42-PM_27444.hcsml">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>400</ErrorCode>
-  <ErrorMessage>UnsupportBlobType</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><ErroredEntity CloudFormat="AppendBlob" Path="export-ut-appendblob/xunit.console.Primary_2020-05-07_03-54-42-PM_27444 (1).hcsml">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>400</ErrorCode>
-  <ErrorMessage>UnsupportBlobType</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><CopyLog Summary="Summary">
-  <Status>Failed</Status>
-  <TotalFiles_Blobs>4</TotalFiles_Blobs>
-  <FilesErrored>3</FilesErrored>
-</CopyLog>
-``` -->
 
 ## <a name="next-steps"></a>Nächste Schritte
 

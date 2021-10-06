@@ -5,21 +5,18 @@ ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
-ms.openlocfilehash: 3e2946bf493da2570106fdb554704ef7f286b7cb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 24872e96333aeb67661c462e54acebc62b32c8aa
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355461"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455416"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>VMs starten/beenden v2 (Vorschau): Übersicht
 
 Mit dem Feature „VMs starten/beenden v2 (Vorschau)“ werden Azure-VMs mehrere Abonnements übergreifend gestartet oder beendet. Damit können Sie Azure-VMs nach benutzerdefinierten Zeitplänen starten und beenden, über [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Erkenntnisse gewinnen und mithilfe von [Aktionsgruppen](../../azure-monitor/alerts/action-groups.md) optional Benachrichtigungen senden. Das Feature kann in den meisten Szenarien sowohl auf Azure Resource Manager-VMs als auch klassischen VMs aktiviert werden.
 
 Diese neue Version von „VMs starten/beenden v2 (Vorschau)“ ist eine dezentralisierte kostengünstige Automatisierungsoption für Kunden, die Ihre VM-Kosten optimieren möchten. Sie bietet die gleiche Funktionalität wie die mit Azure Automation verfügbare [ursprüngliche Version](../../automation/automation-solution-vm-management.md), ist aber darauf ausgelegt, neuere Technologie in Azure zu nutzen.
-
-> [!NOTE]
-> Wenn Probleme während der Bereitstellung bzw. Verwendung von „VMs starten/beenden v2 (Vorschau)“ auftreten oder Sie eine Frage hierzu haben, können Sie ein Issue auf [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) einreichen. Das Erstellen eines Azure-Supportvorfalls über die [Azure-Supportwebsite](https://azure.microsoft.com/support/options/) ist für diese Vorschauversion nicht verfügbar. 
 
 ## <a name="overview"></a>Übersicht
 
