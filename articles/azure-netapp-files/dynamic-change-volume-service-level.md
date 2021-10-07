@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/06/2021
 ms.author: b-juche
-ms.openlocfilehash: d75bd3580f66d7948d28b0d9ff34e247bc51c6b5
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 7c9704549c68dce72c16f0b5386cdb76edb5fe90
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795022"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129406998"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Dynamisches Ändern der Dienstebene eines Volumes
 

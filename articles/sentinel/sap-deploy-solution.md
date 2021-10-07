@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 301181b291521b8a8b19a7d7266e90fa2c542e49
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7b6f68eea2c177ad4e6776723ae0387c0e0da6a1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128562929"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361830"
 ---
 #  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>Bereitstellen der kontinuierlichen Bedrohungsüberwachung in SAP (öffentliche Vorschau)
 
@@ -136,7 +136,7 @@ In diesem Verfahren wird beschrieben, wie Sie mithilfe der Azure CLI eine Ubuntu
 1. Verwenden Sie den folgenden Befehl als Beispiel, und fügen Sie die Werte für Ihre Ressourcengruppe und den VM-Namen ein:
 
     ```azurecli
-    az vm create  --resource-group [resource group name]   --name [VM Name] --image UbuntuLTS  --admin-username AzureUser --data-disk-sizes-gb 10 – --size Standard_DS2_– --generate-ssh-keys  --assign-identity
+    az vm create  --resource-group [resource group name]   --name [VM Name] --image UbuntuLTS  --admin-username azureuser --data-disk-sizes-gb 10 – --size Standard_DS2 --generate-ssh-keys  --assign-identity
     ```
 
 1. Installieren Sie Folgendes auf Ihrer neuen VM:
@@ -293,23 +293,13 @@ Fügen Sie Ihrem Azure Sentinel-Arbeitsbereich manuell SAP-bezogene Watchlists h
 
 Wenn Sie über einen Docker-Container verfügen, der bereits mit einer früheren Version des SAP-Datenconnectors ausgeführt wird, führen Sie das Updateskript für den SAP-Datenconnector aus, um die neuesten verfügbaren Features zu erhalten.
 
-1. Vergewissern Sie sich, dass Sie über die neuesten Versionen der relevanten Bereitstellungsskripts aus dem Azure Sentinel-GitHub-Repository verfügen. Führen Sie Folgendes aus:
+Vergewissern Sie sich, dass Sie über die neuesten Versionen der relevanten Bereitstellungsskripts aus dem Azure Sentinel-GitHub-Repository verfügen. 
 
-    ```azurecli
-    wget -O sapcon-instance-update.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-instance-update.sh && bash ./sapcon-instance-update.sh
-    ```
+Führen Sie Folgendes aus:
 
-1. Führen Sie den folgenden Befehl auf Ihrem Computer mit dem SAP-Datenconnector aus:
-
-    ```azurecli
-    ./ sapcon-instance-update.sh
-    ```
-
-1. Starten Sie den Docker-Container neu:
-
-    ```bash
-    docker restart sapcon-[SID]
-    ```
+```azurecli
+wget -O sapcon-instance-update.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-instance-update.sh && bash ./sapcon-instance-update.sh
+```
 
 Der Docker-Container des SAP-Datenconnectors auf Ihrem Computer wird aktualisiert. 
 

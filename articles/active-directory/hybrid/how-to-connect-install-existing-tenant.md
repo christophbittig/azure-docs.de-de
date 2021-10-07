@@ -1,27 +1,20 @@
 ---
 title: 'Azure AD Connect: Wenn Sie bereits über Azure AD verfügen | Microsoft-Dokumentation'
 description: Dieses Thema beschreibt die Verwendung von Connect, wenn ein Azure AD-Mandant vorhanden ist.
-services: active-directory
-documentationcenter: ''
 author: billmath
-manager: daveba
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61785fbdf4fe3e79b2c36a5ffa6a9ccb43259666
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93420528"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272812"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: Wenn Sie bereits über einen Mandanten verfügen
 Bei den meisten Themen zur Verwendung von Azure AD Connect wird davon ausgegangen, dass Sie mit einem neuen Azure AD-Mandanten starten und dass es keine weiteren Benutzer oder Objekte gibt. Wenn Sie jedoch bereits über einen Azure AD-Mandanten verfügen, der mit Benutzern und anderen Objekten aufgefüllt ist, und jetzt Connect verwenden möchten, eignet sich dieses Thema perfekt für Sie.
@@ -56,16 +49,18 @@ Wenn Sie Ihre Objekte mit einem Soft Match abgeglichen haben, wird dem Objekt in
 ### <a name="hard-match-vs-soft-match"></a>Hard Match im Vergleich zu Soft Match
 Bei einer neuen Connect-Installation gibt es keinen praktischen Unterschied zwischen einem Soft Match und einem Hard Match. Der Unterschied kommt bei einer Notfallwiederherstellung zum Tragen. Wenn der Server mit Azure AD Connect nicht mehr vorhanden ist, können Sie eine neue Instanz installieren, ohne dass Daten verloren gehen. Während der Erstinstallation wird ein Objekt mit einem sourceAnchor-Parameter an Connect gesendet. Die Übereinstimmung kann dann vom Client (Azure AD Connect) ausgewertet werden – dies ist erheblich schneller als das gleiche Vorgehen in Azure AD. Ein Hard Match wird sowohl von Connect als auch von Azure AD ausgewertet. Ein Soft Match wird nur von Azure AD ausgewertet.
 
+ Wir haben eine Konfigurationsoption hinzugefügt, um das Feature „Soft Matching“ in Azure AD Connect zu deaktivieren. Wir empfehlen Kunden, das Soft Matching zu deaktivieren, es sei denn, sie benötigen es, um reine Cloudkonten zu übernehmen. In diesem [Artikel](/powershell/module/msonline/set-msoldirsyncfeature) wird gezeigt, wie Sie das Soft Matching deaktivieren.
+
 ### <a name="other-objects-than-users"></a>Andere Objekte als Benutzer
 Für e-mail-aktivierte Gruppen und Kontakte können Sie ein Soft-Match basierend auf proxyAddresses durchführen. Ein Hard-Match ist nicht anwendbar, da Sie „sourceAnchor/immutableID“ (mithilfe von PowerShell) nur für Benutzer aktualisieren können. Für nicht e-mail-aktivierte Gruppen gibt es derzeit weder Soft-Match- noch Hard-Match-Unterstützung.
 
 ### <a name="admin-role-considerations"></a>Überlegungen zu Administratorrollen
 Um zu verhindern, dass nicht vertrauenswürdige lokale Benutzer einem Cloudbenutzer mit einer Administratorrolle zugeordnet werden, ordnet Azure AD Connect Objekten mit Administratorrolle keine lokalen Benutzerobjekte zu. Dies ist die Standardeinstellung. Um dieses Verhalten zu umgehen, können Sie die folgenden Schritte ausführen:
 
-1.  Entfernen Sie die Verzeichnisrollen von dem reinen Cloudbenutzerobjekt.
-2.  Wenn bei einem Benutzersynchronisierungsversuch ein Fehler aufgetreten ist, löschen Sie das unter Quarantäne gestellte Objekt in der Cloud endgültig.
-3.  Führen Sie eine Synchronisierung aus.
-4.  Fügen Sie optional die Verzeichnisrollen dem Benutzerobjekt in der Cloud wieder hinzu, nachdem die Zuordnung stattgefunden hat.
+1.    Entfernen Sie die Verzeichnisrollen von dem reinen Cloudbenutzerobjekt.
+2.    Wenn bei einem Benutzersynchronisierungsversuch ein Fehler aufgetreten ist, löschen Sie das unter Quarantäne gestellte Objekt in der Cloud endgültig.
+3.    Führen Sie eine Synchronisierung aus.
+4.    Fügen Sie optional die Verzeichnisrollen dem Benutzerobjekt in der Cloud wieder hinzu, nachdem die Zuordnung stattgefunden hat.
 
 
 

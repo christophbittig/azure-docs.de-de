@@ -13,7 +13,7 @@ items:
         href: privacy-data-collection-and-reporting.md
   - name: Schnellstarts
     items:
-      - name: "Planen der Bereitstellung von Datendiensten mit Azure\_Arc-Unterstützung"
+      - name: "Planen einer Bereitstellung von Datendiensten mit Azure\_Arc-Unterstützung"
         href: plan-azure-arc-data-services.md
   - name: Konzepte
     items:

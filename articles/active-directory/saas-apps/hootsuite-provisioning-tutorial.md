@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: thwimmer
-ms.openlocfilehash: c60f2ccc9325183fdcbc4edc533c7418e36eb6bf
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 34d1d765dbb5f2267c4c56d4dd91daa31f8799a7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113763618"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629857"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Hootsuitefür die automatische Benutzerbereitstellung
 
@@ -45,7 +45,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-2-configure-hootsuite-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Hootsuite für die Unterstützung der Bereitstellung mit Azure AD
 
-Wenden Sie sich an dev.support@hootsuite.com, um ein langfristiges geheimes Token zu erhalten, das in späteren Schritten benötigt wird. 
+Wenden Sie sich an Ihr Hootsuite-CSM, um ein langlebiges Token zu erhalten, das in späteren Schritten erforderlich ist.
 
 ## <a name="step-3-add-hootsuite-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Hootsuite aus dem Azure AD-Anwendungskatalog
 
@@ -100,7 +100,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Hootsuite synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Hootsuite für Aktualisierungsvorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Hootsuite-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |Attribut|type|
+   |attribute|type|
    |---|---|
    |userName|String|
    |emails[type eq "work"].value|String|
@@ -115,7 +115,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Hootsuite synchronisiert werden. Die Attribute, die als Eigenschaften vom Typ **Übereinstimmend** ausgewählt sind, werden verwendet, um die Gruppen in Hootsuite für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |Attribut|type|
+      |attribute|type|
       |---|---|
       |displayName|String|
       |externalId|String|

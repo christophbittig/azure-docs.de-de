@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 14a235337a1b3bf26874cffe8893f0c21f2ed9f7
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 814ed1001c39b48a5aa93162cb54ec520050eb66
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517872"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457561"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Abfragesyntax für das IoT Hub-Nachrichtenrouting
 
@@ -53,7 +53,7 @@ Der IoT Hub definiert ein [gemeinsames Format](iot-hub-devguide-messages-constru
 
 Mithilfe von Systemeigenschaften werden Inhalt und Quelle von Nachrichten identifiziert. 
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | contentType | string | Der Benutzer gibt den Inhaltstyp der Nachricht an. Dieser Wert sollte auf „application/JSON“ festgelegt werden, damit Abfragen für den Nachrichtentext ausgeführt werden können. |
 | contentEncoding | string | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
@@ -147,7 +147,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> Hier sehen Sie, wie die Codierung des Texts in JavaScript behandelt werden muss. Wenn Sie sich ein Beispiel in C# ansehen möchten, laden Sie die [Azure IoT-Beispiele für C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) herunter. Entzippen Sie die Datei „master.zip“. In der Datei „Program.cs“ aus der Visual Studio-Projektmappe *SimulatedDevice* werden die Codierung und Übermittlung von Nachrichten an eine IoT Hub-Instanz gezeigt. Dieses Beispiel wird auch im [Nachrichtenrouting-Tutorial](tutorial-routing.md) zum Testen des Nachrichtenroutings verwendet. Am Ende von „Program.cs“ befindet sich auch eine Methode, die dazu dient, in einer der codierten Dateien zu lesen, die Datei zu decodieren und den Inhalt als lesbaren ASCII-Code auszugeben. 
+> Hier sehen Sie, wie die Codierung des Texts in JavaScript behandelt werden muss. Wenn Sie sich ein Beispiel in C# ansehen möchten, laden Sie die [Azure IoT-Beispiele für C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip) herunter. Entzippen Sie die Datei „master.zip“. In der Datei „Program.cs“ aus der Visual Studio-Projektmappe *SimulatedDevice* werden die Codierung und Übermittlung von Nachrichten an eine IoT Hub-Instanz gezeigt. Dieses Beispiel wird auch im [Nachrichtenrouting-Tutorial](tutorial-routing.md) zum Testen des Nachrichtenroutings verwendet. Am Ende von „Program.cs“ befindet sich auch eine Methode, die dazu dient, in einer der codierten Dateien zu lesen, die Datei zu decodieren und den Inhalt als lesbaren ASCII-Code auszugeben. 
 
 
 ### <a name="query-expressions"></a>Abfrageausdrücke

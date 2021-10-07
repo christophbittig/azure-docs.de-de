@@ -38,12 +38,14 @@ items:
     items:
       - name: Verwenden von Purview Studio
         href: use-purview-studio.md
-      - name: Bewährte Methoden
+      - name: Best Practices und Richtlinien
         items:
           - name: Best Practices für die Bereitstellung
             href: deployment-best-practices.md
           - name: Sammlungsarchitektur
             href: concept-best-practices-collections.md
+          - name: Richtlinien für Purview-Preise
+            href: concept-guidelines-pricing.md
       - name: Purview-Berechtigungen
         href: catalog-permissions.md
       - name: Datenzuordnung

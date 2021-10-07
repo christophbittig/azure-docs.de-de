@@ -8,20 +8,28 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6d0432c93a0ab3f47b68e071026301c49e8c670c
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 1824eb31b17ba1a46bd5514797e11a502ac4665a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113567967"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810060"
 ---
 # <a name="configure-permission-classifications"></a>Konfigurieren von Berechtigungsklassifizierungen
 
 Mit Berechtigungsklassifizierungen können Sie die Auswirkung ermitteln, die unterschiedliche Berechtigungen gemäß den Richtlinien Ihres Unternehmens und den Risikobewertungen haben. Beispielsweise können Sie Berechtigungsklassifizierungen in Einwilligungsrichtlinien verwenden, um den Berechtigungssatz zu identifizieren, dem Benutzer zustimmen dürfen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Damit Sie die in dieser Anleitung gestellten Aufgaben ausführen können, benötigen Sie Folgendes:
+
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Rolle „Globaler Administrator“.
+- Einrichten von Azure AD PowerShell. Weitere Informationen finden Sie unter [Azure AD PowerShell](/powershell/azure/).
 
 ## <a name="manage-permission-classifications"></a>Verwalten von Berechtigungsklassifizierungen
 

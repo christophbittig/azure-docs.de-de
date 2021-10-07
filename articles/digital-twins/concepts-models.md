@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 8/25/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bfcaa516485b5ab1320db859f00a6f1709b7ef79
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 792ddf3f3ca57b16112de78a6ecf2c2d887494ef
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224872"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535842"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Grundlegendes zu Zwillingsmodellen in Azure Digital Twins
 
@@ -114,7 +115,7 @@ Sie können ein Telemetrieereignis auch über die Azure Digital Twins-API veröf
 
 ### <a name="schema"></a>Schema
 
-Gemäß DTDL kann das Schema für die Attribute **Eigenschaft** und **Telemetrie** aus einfachen Standardtypen (`integer`, `double`, `string` und `Boolean`) und anderen Typen wie `DateTime` und `Duration` bestehen. 
+Gemäß DTDL kann das Schema für die Attribute **Eigenschaft** und **Telemetrie** aus einfachen Standardtypen (`integer`, `double`, `string` und `boolean`) und anderen Typen wie `dateTime` und `duration` bestehen. 
 
 Zusätzlich zu den einfachen Typen können die Felder „Eigenschaft“ und „Telemetrie“ diese [komplexen Typen](#complex-object-type-example) enthalten:
 * `Object`

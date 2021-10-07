@@ -14,12 +14,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 060d09d17bf622af5ca5c062e00d2961a0a2b566
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: ffb9ac3874ae3eb1ab3ec883a8094c57d03b86a8
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572468"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534563"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Verwenden von PowerShell oder Azure CLI, um eine Verfügbarkeitsgruppe für SQL Server auf Azure-VMs zu konfigurieren 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -77,11 +77,11 @@ az storage account create -n <name> -g <resource group name> -l <region> `
 # Create the storage account
 # example: New-AzStorageAccount -ResourceGroupName SQLVM-RG -Name cloudwitness `
 #    -SkuName Standard_LRS -Location West US -Kind StorageV2 `
-#    -AccessTier Hot -EnableHttpsTrafficOnly
+#    -AccessTier Hot -EnableHttpsTrafficOnly $true
 
 New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
     -SkuName Standard_LRS -Location <region> -Kind StorageV2 `
-    -AccessTier Hot -EnableHttpsTrafficOnly
+    -AccessTier Hot -EnableHttpsTrafficOnly $true
 ```
 
 ---
@@ -121,12 +121,13 @@ az sql vm group create -n <cluster name> -l <region ex:eastus> -g <resource grou
 #  -StorageAccountUrl '<ex:https://cloudwitness.blob.core.windows.net/>' `
 #  -StorageAccountPrimaryKey '4Z4/i1Dn8/bpbseyWX'
 
+$storageAccountPrimaryKey = ConvertTo-SecureString -String "<PublicKey>" -AsPlainText -Force
 $group = New-AzSqlVMGroup -Name <name> -Location <regio> 
   -ResourceGroupName <resource group name> -Offer <SQL201?-WS201?> 
   -Sku Enterprise -DomainFqdn <FQDN> -ClusterOperatorAccount <domain account> 
   -ClusterBootstrapAccount <domain account>  -SqlServiceAccount <service account> 
   -StorageAccountUrl '<ex:StorageAccountUrl>' `
-  -StorageAccountPrimaryKey '<PublicKey>'
+  -StorageAccountPrimaryKey $storageAccountPrimaryKey
 ```
 
 ---
@@ -525,6 +526,6 @@ Nachdem die Verfügbarkeitsgruppe bereitgestellt wurde, sollten Sie die [HADR-Ei
 
 Weitere Informationen finden Sie unter:
 
-- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
 - [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

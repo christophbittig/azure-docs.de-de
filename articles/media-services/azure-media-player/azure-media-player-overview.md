@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/05/2021
-ms.openlocfilehash: ec36f6bd19728d47b73a0186fb1fb192ba57f4cf
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: faf5bc8a96cb3781ed1d48e9d7f0d1fd7cbc386e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449816"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679577"
 ---
 # <a name="azure-media-player-overview"></a>Übersicht über Azure Media Player #
 
@@ -19,7 +19,7 @@ Azure Media Player ist ein Webvideoplayer für die Wiedergabe von Medieninhalten
 
 Mit Microsoft Azure Media Services können Inhalte im DASH-, Smooth Streaming- und HLS-Format wiedergegeben werden. Der Azure Media Player erkennt diese unterschiedlichen Formate und übernimmt automatisch die beste Verknüpfung basierend auf den Funktionen von Plattform und Browser. Microsoft Azure Media Services ermöglicht auch die dynamische Verschlüsselung von Medienobjekten mit Common Encryption (PlayReady oder Widevine) oder AES-128-Bit-Umschlagverschlüsselung. Der Azure Media Player ermöglicht bei entsprechender Konfiguration die Entschlüsselung von PlayReady- und AES-128-Bit-verschlüsselten Inhalten.  Informationen zu dieser Konfiguration des Players finden Sie im Abschnitt [Geschützter Inhalt](azure-media-player-protected-content.md).
 
-Bringen Sie sich mit Anfragen nach neuen Features oder mit Ideen und Feedback auf der [UserVoice-Seite für Azure Media Player](https://aka.ms/ampuservoice) ein. Wenn Sie ein spezielles Problem oder eine Frage haben oder einen Fehler finden, wenden Sie sich unter ampinfo@microsoft.com an uns.
+Bei bestimmten Problemen oder Fragen, oder wenn Sie Fehler finden, [erstellen Sie ein Supportticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) in der Kategorie „Clientwiedergabe“.
 
 > [!NOTE]
 > Beachten Sie, dass Azure Media Player nur Mediendatenströme von Azure Media Services unterstützt.

@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Verknüpfen Sie Ihren Azure Synapse Analytics-Arbeitsbereich mit Ihrer Azure Machine Learning-Pipeline, um Apache Spark für die Datenbearbeitung zu verwenden.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.author: laobri
 author: lobrien
 ms.date: 03/04/2021
 ms.topic: how-to
 ms.custom: synapse-azureml
-ms.openlocfilehash: 01ac58f4c462861ba422a869f38b9fbf53690886
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 4139b5e2a05ebf4f6355db761d0458b4f367cbaf
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112377276"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425162"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>Verwenden von Apache Spark (unterstützt von Azure Synapse Analytics) in Ihrer Machine Learning-Pipeline (Vorschau)
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von Java Funktionen entwickeln könn
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fc827c8c03edecbdb10769f7830806ff01596bd1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d03a4121394141b7b39ae441d7eb3cf653a0b374
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346898"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232145"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
@@ -187,7 +187,7 @@ Mit Maven können Sie auch das Betriebssystem angeben, unter dem ihre Funktions-
 
 | Element |  Windows | Linux | Docker |
 | ---- | ---- | ---- | --- |
-| **`os`** | Windows | linux | docker |
+| **`os`** | `windows` | `linux` | `docker` |
 
 Das folgende Beispiel zeigt die Betriebssystemeinstellung im Abschnitt `runtime` der Datei „pom.xml“:
 

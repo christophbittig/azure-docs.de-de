@@ -4,12 +4,12 @@ ms.service: service-bus-relay
 ms.topic: include
 ms.date: 07/19/2021
 ms.author: spelluru
-ms.openlocfilehash: e4fd2d455a294b247353e4983c379066d704c87a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 43550a98e5df6c58214427a989e290b3c69ab338
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121801251"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129377929"
 ---
 ## <a name="overview"></a>Übersicht
 Wenn ein Sicherheitsprinzipal (ein Benutzer, eine Gruppe, eine Anwendung) versucht, auf eine Relay-Entität zuzugreifen, muss die Anforderung autorisiert werden. Mit Azure AD ist der Zugriff auf eine Ressource ein zweistufiger Prozess.
@@ -23,7 +23,7 @@ Bei Azure Relay ist die Verwaltung der Namespaces und aller zugehörigen Ressour
 | Rolle | BESCHREIBUNG | 
 | ---- | ----------- | 
 | [Azure Relay-Besitzer](../../role-based-access-control/built-in-roles.md#azure-relay-owner) | Mit dieser Rolle können Sie **Voll** zugriff auf Azure Relay-Ressourcen gewähren. |
-| [Azure Relay-Listener](../../role-based-access-control/built-in-roles.md#azure-relay-listener) | Mit dieser Rolle können Sie **Lausch- und Entitätslese-** zugriff auf Azure Relay-Ressourcen gewähren. |
+| [Azure Relay-Listener](../../role-based-access-control/built-in-roles.md#azure-relay-listener) | Mit dieser Rolle können Sie **Lausch- und Entitätslese**-zugriff auf Azure Relay-Ressourcen gewähren. |
 | [Azure Relay-Absender](../../role-based-access-control/built-in-roles.md#azure-relay-sender) | Mit dieser Rolle können Sie **Sende- und Entitätslese-** zugriff auf Azure Relay-Ressourcen gewähren. | 
 
 ## <a name="resource-scope"></a>Ressourcenumfang
@@ -37,5 +37,5 @@ In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff 
 - **Abonnement**: Die Rollenzuweisung gilt für alle Relay-Ressourcen in allen Ressourcengruppen im Abonnement.
 
 > [!NOTE]
-> Denken Sie daran, dass die Weitergabe von Azure-Rollenzuweisungen bis zu fünf Minuten dauern kann. Weitere Informationen dazu, wie integrierte Rollen definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../../role-based-access-control/role-definitions.md#management-and-data-operations). Informationen zum Erstellen von benutzerdefinierten Azure-Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md). 
+> Denken Sie daran, dass die Weitergabe von Azure-Rollenzuweisungen bis zu fünf Minuten dauern kann. Weitere Informationen dazu, wie integrierte Rollen definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../../role-based-access-control/role-definitions.md#control-and-data-actions). Informationen zum Erstellen von benutzerdefinierten Azure-Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md). 
 
