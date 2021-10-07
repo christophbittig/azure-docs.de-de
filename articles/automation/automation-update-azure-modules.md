@@ -3,17 +3,17 @@ title: Aktualisieren von Azure PowerShell-Modulen in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie häufig verwendete Azure PowerShell-Module aktualisieren, die standardmäßig in Azure Automation bereitgestellt werden.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/14/2019
+ms.date: 09/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c1632da35864fc6822b385adac06d7f124aea061
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: a2ff4799b335376f6f99004d45034ba6a4796059
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830410"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654364"
 ---
-# <a name="update-azure-powershell-modules"></a>Aktualisieren von Azure PowerShell-Modulen
+# <a name="update-azure-automation-powershell-modules"></a>Aktualisieren von PowerShell-Modulen in Azure Automation
 
 Die am häufigsten verwendeten PowerShell-Module werden standardmäßig in jedem Automation-Konto bereitgestellt. Weitere Informationen finden Sie unter [Standardmodule](shared-resources/modules.md#default-modules). Da das Azure-Team die Azure-Module regelmäßig aktualisiert, kann es bei den enthaltenen Cmdlets zu Änderungen kommen. Diese Änderungen, z. B. das Umbenennen eines Parameters oder das vollständige Einstellen eines Cmdlets, können nachteilige Auswirkungen auf Ihre Runbooks haben. 
 
@@ -24,7 +24,7 @@ Die am häufigsten verwendeten PowerShell-Module werden standardmäßig in jedem
 
 Führen Sie im Zuge von Aktualisierungen Tests und Überprüfungen durch, um Auswirkungen auf Ihre Runbooks und die damit automatisierten Prozesse zu vermeiden. Wenn Sie für diesen Zweck kein dediziertes Automation-Konto haben, sollten Sie eines erstellen, damit Sie während der Entwicklung Ihrer Runbooks viele verschiedene Szenarios testen können. Diese Tests sollten iterative Änderungen wie das Aktualisieren der PowerShell-Module einschließen.
 
-Vergewissern Sie sich, dass für Ihr Automation-Konto [Anmeldeinformationen für ein ausführendes Azure-Konto](automation-security-overview.md#run-as-accounts) erstellt wurden.
+Stellen Sie sicher, dass Ihrem Automation-Konto eine [systemseitig zugewiesene verwaltete Identität oder eine benutzerseitig zugewiesene verwaltete Identität](quickstarts/enable-managed-identity.md) hinzugefügt wurde.
 
 Wenn Sie Ihre Skripts lokal entwickeln, empfiehlt es sich, beim Testen lokal die gleichen Modulversionen zu verwenden wie in Ihrem Automation-Konto, um sicherzustellen, dass Sie die gleichen Ergebnisse erhalten. Nach dem Überprüfen der Ergebnisse und dem Anwenden aller erforderlichen Änderungen können Sie die Änderungen in die Produktion übernehmen.
 

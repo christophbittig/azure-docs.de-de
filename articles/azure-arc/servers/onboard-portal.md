@@ -1,16 +1,16 @@
 ---
-title: Verbinden von Hybridcomputern mit Azure über das Azure-Portal
-description: In diesem Artikel erfahren Sie, wie Sie Azure Arc-fähige Server im Azure-Portal verwenden, um den Agent zu installieren und Computer mit Azure zu verbinden.
+title: Verbinden von Hybridcomputern mit Azure mithilfe eines Bereitstellungsskripts
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe Azure Arc-fähiger Server und unter Verwendung des von Ihnen im Azure-Portal erstellten Bereitstellungsskripts den Agent installieren und Computer mit Azure verbinden.
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: bcccb9bbc4db14c2bc5553b1c88099f7b0d7f5d1
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 832e54538c6eb44e90dbd7ccb8ef804e0b0c45b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356586"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651976"
 ---
-# <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinden von Hybridcomputern mit Azure über das Azure-Portal
+# <a name="connect-hybrid-machines-to-azure-using-a-deployment-script"></a>Verbinden von Hybridcomputern mit Azure mithilfe eines Bereitstellungsskripts
 
 Azure Arc-fähige Server können mithilfe einiger manueller Schritte für einen oder einige wenige Windows- oder Linux-Computer in Ihrer Umgebung aktiviert werden. Alternativ steht auch eine automatisierte Methode in Form eines uns bereitgestellten Vorlagenskripts zur Verfügung. Dieses Skript automatisiert das Herunterladen und Installieren beider Agents.
 

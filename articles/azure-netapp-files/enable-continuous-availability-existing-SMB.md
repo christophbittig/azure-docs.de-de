@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/18/2021
+ms.date: 09/28/2021
 ms.author: b-juche
-ms.openlocfilehash: d9af43bad8f6db6b50070368be732f20fb1fbde8
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 705cc540097ea41bc0039336d7cc9fdc025dd247
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429888"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218382"
 ---
 # <a name="enable-continuous-availability-on-existing-smb-volumes"></a>Aktivieren der fortlaufenden Verfügbarkeit auf vorhandenen SMB-Volumes
 
@@ -27,7 +27,7 @@ Sie können das SMB-Feature „Fortlaufende Verfügbarkeit“ (Continuous Availa
 
 ## <a name="considerations"></a>Weitere Überlegungen
 
-* Die Option [**Momentaufnahmepfad ausblenden**](azure-netapp-files-manage-snapshots.md#edit-the-hide-snapshot-path-option) hat derzeit keine Auswirkungen auf SMB-Volumes, die durch eine Zertifizierungsstelle aktiviert wurden.  
+* Die Option [**Momentaufnahmepfad ausblenden**](snapshots-edit-hide-path.md) hat derzeit keine Auswirkungen auf SMB-Volumes, die durch eine Zertifizierungsstelle aktiviert wurden.  
 
 * Das `~snapshot`-Verzeichnis (das zum Durchlaufen anderer SMB-Volumes verwendet werden kann) ist für SMB-Volumes, die durch eine Zertifizierungsstelle aktiviert wurden, nicht sichtbar. Sie können weiterhin manuell `~snapshot\<snapshotName>` eingeben, um auf die Momentaufnahme zuzugreifen.
 
@@ -38,7 +38,7 @@ Sie können das SMB-Feature „Fortlaufende Verfügbarkeit“ (Continuous Availa
 3. Aktivieren Sie im angezeigten Fenster „Bearbeiten“ das Kontrollkästchen **Fortlaufende Verfügbarkeit aktivieren**.   
     ![Momentaufnahme mit der Option „Fortlaufende Verfügbarkeit aktivieren“.](../media/azure-netapp-files/enable-continuous-availability.png)
 
-4. Starten Sie den Server neu.   
+4. Starten Sie die Windows-Systeme neu, die eine Verbindung mit der vorhandenen SMB-Freigabe herstellen.   
 
     > [!NOTE]
     > Wenn Sie die Option **Fortlaufende Verfügbarkeit aktivieren** auswählen, werden die vorhandenen SMB-Sitzungen nicht automatisch fortlaufend verfügbar. Nachdem Sie die Option ausgewählt haben, müssen Sie den Server neu starten, damit die Änderung wirksam wird.  

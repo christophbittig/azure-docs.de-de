@@ -3,16 +3,16 @@ title: Autorisieren der REST-API in Azure IoT Central
 description: Wie Sie IoT Central-REST-API-Aufrufe authentifizieren und autorisieren
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 08/25/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 540137495e06bb05fbf5e96e3b930e0c8cda4b10
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 39c96be31a8a8be0cf1c2fc4f16fcbfa7468cb41
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461228"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584235"
 ---
 # <a name="how-to-authenticate-and-authorize-iot-central-rest-api-calls"></a>Wie Sie IoT Central-REST-API-Aufrufe authentifizieren und autorisieren
 
@@ -63,13 +63,13 @@ Informationen zum Abrufen eines Bearertokens für einen Dienstprinzipal finden S
 
 ## <a name="get-an-api-token"></a>Abrufen eines API-Tokens
 
-Um ein API-Token abzurufen, können Sie die IoT Central-Benutzeroberfläche oder einen REST-API-Aufruf verwenden.
+Um ein API-Token abzurufen, können Sie die IoT Central-Benutzeroberfläche oder einen REST-API-Aufruf verwenden. Administratoren, die der Stammorganisation zugeordnet wurden, und Benutzer, die der richtigen Rolle zugewiesen wurden, können API-Token erstellen.
 
 Auf der IoT Central-Benutzeroberfläche:
 
 1. Navigieren Sie zu **Administration > API-Token**.
-1. Wählen Sie **+ Token generieren** aus.
-1. Geben Sie einen Namen für das Token ein und wählen Sie eine Rolle aus.
+1. Wählen Sie **+ Token erstellen** aus.
+1. Geben Sie einen Namen für das Token ein, und wählen Sie eine Rolle und [Organisation](howto-create-organizations.md) aus.
 1. Wählen Sie **Generieren** aus.
 1. IoT Central zeigt das Token an, das wie im folgenden Beispiel aussieht:
 
@@ -77,7 +77,7 @@ Auf der IoT Central-Benutzeroberfläche:
 
     Dieser Bildschirm ist das einzige Mal, dass Sie das API-Token sehen können. Wenn Sie es verlieren, müssen Sie ein neues generieren.
 
-Ein API-Token ist ungefähr ein Jahr lang gültig. Sie können Token sowohl für integrierte als auch für benutzerdefinierte Rollen in Ihrer IoT Central-Anwendung generieren.
+Ein API-Token ist ungefähr ein Jahr lang gültig. Sie können Token sowohl für integrierte als auch für benutzerdefinierte Rollen in Ihrer IoT Central-Anwendung generieren. Die Organisation, die Sie beim Erstellen des API-Tokens auswählen, bestimmt, auf welche Geräte die API zugreifen kann. Alle API-Token, die erstellt werden, bevor Sie Ihrer Anwendung Organisationen hinzufügen, werden der Stammorganisation zugeordnet.
 
 Sie können API-Token auf der IoT Central Benutzeroberfläche löschen, wenn Sie den Zugriff widerrufen müssen.
 
@@ -146,6 +146,9 @@ Mithilfe der REST API:
     Diese Antwort ist die einzige Zeit, in der Sie Zugriff auf das API-Token haben, wenn Sie es verlieren, müssen Sie ein neues generieren.
 
 Sie können die REST-API verwenden, um API-Token in einer Anwendung aufzulisten und zu löschen.
+
+> [!TIP]
+> Die [Vorschau-API](/rest/api/iotcentral/1.1-previewdataplane/api-tokens) enthält Unterstützung für das neue [Organisationsfeature](howto-create-organizations.md).
 
 ## <a name="use-a-bearer-token"></a>Abrufen eines Bearertokens
 

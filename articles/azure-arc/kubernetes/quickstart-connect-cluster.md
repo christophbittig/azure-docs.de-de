@@ -1,23 +1,23 @@
 ---
 title: 'Schnellstart: Herstellen einer Verbindung eines vorhandenen Kubernetes-Clusters mit Azure Arc'
-description: In diesem Schnellstart erfahren Sie, wie Sie eine Verbindung mit einem Kubernetes-Cluster mit Azure Arc-Aktivierung herstellen.
+description: In diesem Schnellstart lernen Sie, wie Sie einen Azure Arc-aktivierten Kubernetes-Cluster verbinden.
 author: mgoedtel
 ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
-ms.date: 06/30/2021
+ms.date: 09/09/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, Cluster
-ms.openlocfilehash: 16e271cf6183dce74fad3075a2e8336030960a08
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: bcc4d9183bf60e37c1d024462d7ab924df1f671e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966637"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210768"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Schnellstart: Herstellen einer Verbindung eines vorhandenen Kubernetes-Clusters mit Azure Arc
 
-In diesem Schnellstart lernen Sie die Vorteile von Kubernetes mit Azure Arc-Unterstützung kennen und erfahren, wie Sie einen vorhandenen Kubernetes-Cluster mit Azure Arc verbinden. Eine konzeptionelle Übersicht über das Verbinden von Clustern mit Azure Arc finden Sie im Artikel[Architektur eine Azure Arc-fähigen Kubernetes-Agents](./conceptual-agent-architecture.md).
+In diesem Schnellstart lernen Sie die Vorteile von Azure Arc-aktiviertem Kubernetes kennen und erfahren, wie Sie einen vorhandenen Kubernetes-Cluster mit Azure Arc verbinden. Einen konzeptionellen Überblick über die Verbindung von Clustern mit Azure Arc finden Sie im Artikel [Azure Arc-aktivierte Kubernetes-Agent-Architektur](./conceptual-agent-architecture.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,10 +49,9 @@ In diesem Schnellstart lernen Sie die Vorteile von Kubernetes mit Azure Arc-Unte
 * Eine `kubeconfig`-Datei und ein Kontext, der auf Ihren Cluster verweist.
 * Lese- und Schreibberechtigungen für den Azure Arc-aktivierten Kubernetes-Ressourcentyp (`Microsoft.Kubernetes/connectedClusters`).
 
-* Installieren Sie das [neueste Release von Helm 3](https://helm.sh/docs/intro/install).
+* Installieren Sie [Helm 3](https://helm.sh/docs/intro/install). Stellen Sie sicher, dass die Helm 3-Version &lt; 3.7.0 ist.
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
 
 * [Azure PowerShell ab Version 5.9.0](/powershell/azure/install-az-ps)
 
@@ -81,7 +80,7 @@ In diesem Schnellstart lernen Sie die Vorteile von Kubernetes mit Azure Arc-Unte
 * Eine `kubeconfig`-Datei und ein Kontext, der auf Ihren Cluster verweist.
 * Lese- und Schreibberechtigungen für den Azure Arc-aktivierten Kubernetes-Ressourcentyp (`Microsoft.Kubernetes/connectedClusters`).
 
-* Installieren Sie das [neueste Release von Helm 3](https://helm.sh/docs/intro/install).
+* Installieren Sie [Helm 3](https://helm.sh/docs/intro/install). Stellen Sie sicher, dass die Helm 3-Version &lt; 3.7.0 ist.
 
 ---
 
@@ -96,9 +95,9 @@ In diesem Schnellstart lernen Sie die Vorteile von Kubernetes mit Azure Arc-Unte
 | `https://management.azure.com` (für Azure Cloud), `https://management.usgovcloudapi.net` (für Azure US Government) | Erforderlich, damit der Agent eine Verbindung mit Azure herstellen und den Cluster registrieren kann. |
 | `https://<region>.dp.kubernetesconfiguration.azure.com` (für Azure Cloud), `https://<region>.dp.kubernetesconfiguration.azure.us` (für Azure US Government) | Endpunkt auf Datenebene, über den der Agent Statusinformationen mithilfe von Push übermitteln und Konfigurationsinformationen abrufen kann |
 | `https://login.microsoftonline.com`, `login.windows.net` (für Azure Cloud), `https://login.microsoftonline.us` (für Azure US Government) | Erforderlich zum Abrufen und Aktualisieren von Azure Resource Manager-Token. |
-| `https://mcr.microsoft.com` | Erforderlich zum Pullen von Containerimages für Azure Arc-Agents.                                                                  |
+| `https://mcr.microsoft.com`, `https://*.data.mcr.microsoft.com` | Erforderlich zum Pullen von Containerimages für Azure Arc-Agents.                                                                  |
 | `https://gbl.his.arc.azure.com` |  Erforderlich, um den regionalen Endpunkt zum Pullen vom System zugewiesener MSI-Zertifikate (Managed Service Identity) abzurufen |
-| `https://*.his.arc.azure.com` (für Azure Cloud), `https://usgv.his.arc.azure.us` (für Azure US Government) |  Erforderlich zum Pullen vom System zugewiesener Zertifikate für verwaltete Dienstidentitäten (MSI). |
+| `https://*.his.arc.azure.com` (für Azure Cloud) `https://usgv.his.arc.azure.us` und `https://gbl.his.arc.azure.us` (für Azure US Government) |  Erforderlich zum Pullen vom System zugewiesener Zertifikate für verwaltete Identitäten. |
 |`*.servicebus.windows.net`, `guestnotificationservice.azure.com`, `*.guestnotificationservice.azure.com`, `sts.windows.net` | Für Szenarien, die auf [Cluster Connect](cluster-connect.md) und [benutzerdefinierten Speicherorten](custom-locations.md) basieren. |
 
 ## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. Registrieren von Anbietern für Kubernetes mit Azure Arc-Unterstützung
@@ -219,7 +218,7 @@ Helm release deployment succeeded
 </pre>
 
 > [!TIP]
-> Mit dem obigen Befehl ohne den angegebenen location-Parameter wird die Kubernetes-Ressource mit Azure Arc-Unterstützung am gleichen Standort wie die Ressourcengruppe erstellt. Wenn Sie die Kubernetes-Ressource mit Azure Arc-Unterstützung an einem anderen Standort erstellen möchten, geben Sie bei Ausführung des Befehls `az connectedk8s connect` entweder `--location <region>` oder `-l <region>` an.
+> Mit dem obigen Befehl ohne den angegebenen Ortsparameter wird die Kubernetes-Ressource mit Azure Arc-Unterstützung am gleichen Standort wie die Ressourcengruppe erstellt. Wenn Sie die Kubernetes-Ressource mit Azure Arc-Unterstützung an einem anderen Standort erstellen möchten, geben Sie bei Ausführung des Befehls `az connectedk8s connect` entweder `--location <region>` oder `-l <region>` an.
 
 > [!NOTE]
 > Wenn Sie mithilfe eines Dienstprinzipals bei der Azure-Befehlszeilenschnittstelle angemeldet sind, muss ein [zusätzlicher Parameter](troubleshooting.md#enable-custom-locations-using-service-principal) festgelegt werden, um das Feature für benutzerdefinierte Standorte im Cluster zu aktivieren.
@@ -247,21 +246,11 @@ Wenn sich Ihr Cluster hinter einem ausgehenden Proxyserver befindet, müssen die
 
 1. Legen Sie die für Azure CLI erforderlichen Umgebungsvariablen fest, um den ausgehenden Proxyserver zu verwenden:
 
-    * Wenn Sie die Bash verwenden, führen Sie den folgenden Befehl mit entsprechenden Werten aus:
-
-        ```bash
-        export HTTP_PROXY=<proxy-server-ip-address>:<port>
-        export HTTPS_PROXY=<proxy-server-ip-address>:<port>
-        export NO_PROXY=<cluster-apiserver-ip-address>:<port>
-        ```
-
-    * Wenn Sie PowerShell verwenden, führen Sie den folgenden Befehl mit entsprechenden Werten aus:
-
-        ```powershell
-        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
-        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
-        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
-        ```
+    ```bash
+    export HTTP_PROXY=<proxy-server-ip-address>:<port>
+    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+    ```
 
 2. Führen Sie den connect-Befehl mit den angegebenen Proxyparametern aus:
 
@@ -270,8 +259,9 @@ Wenn sich Ihr Cluster hinter einem ausgehenden Proxyserver befindet, müssen die
     ```
 
     > [!NOTE]
-    > * Einige Netzwerkanforderungen, z. B. diejenigen, die die Kommunikation zwischen Diensten im Cluster betreffen, müssen von dem Datenverkehr getrennt werden, der für die ausgehende Kommunikation über den Proxyserver weitergeleitet wird. Der `--proxy-skip-range`-Parameter kann verwendet werden, um den CIDR-Bereich und die Endpunkte durch Kommas getrennt anzugeben, sodass die Kommunikation zwischen den Agents und diesen Endpunkten nicht über den ausgehenden Proxy erfolgt. Mindestens der CIDR-Bereich der Dienste im Cluster sollte als Wert für diesen Parameter angegeben werden. Angenommen, `kubectl get svc -A` gibt eine Liste von Diensten zurück, wobei alle Dienste ClusterIP-Werte im Bereich `10.0.0.0/16` aufweisen. Der für `--proxy-skip-range` anzugebende Wert ist dann „10.0.0.0/16,kubernetes.default.svc“.
+    > * Einige Netzwerkanforderungen, z. B. diejenigen, die die Kommunikation zwischen Diensten im Cluster betreffen, müssen von dem Datenverkehr getrennt werden, der für die ausgehende Kommunikation über den Proxyserver weitergeleitet wird. Der `--proxy-skip-range`-Parameter kann verwendet werden, um den CIDR-Bereich und die Endpunkte durch Kommas getrennt anzugeben, sodass die Kommunikation zwischen den Agents und diesen Endpunkten nicht über den ausgehenden Proxy erfolgt. Mindestens der CIDR-Bereich der Dienste im Cluster sollte als Wert für diesen Parameter angegeben werden. Angenommen, `kubectl get svc -A` gibt eine Liste von Diensten zurück, wobei alle Dienste ClusterIP-Werte im Bereich `10.0.0.0/16` aufweisen. Der Wert, der dann für `--proxy-skip-range` angegeben werden soll, ist `10.0.0.0/16,kubernetes.default.svc,.svc.cluster.local,.svc`.
     > * `--proxy-http`, `--proxy-https` und `--proxy-skip-range` werden für die meisten ausgehenden Proxyumgebungen erwartet. `--proxy-cert` ist *nur* erforderlich, wenn Sie vertrauenswürdige Zertifikate, die vom Proxy erwartet werden, in den vertrauenswürdigen Zertifikatspeicher der Agent-Pods einfügen müssen.
+    > * Der Proxy für ausgehenden Datenverkehr muss so konfiguriert werden, dass websocket-Verbindungen zulässig sind.
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -279,13 +269,11 @@ Wenn sich Ihr Cluster hinter einem ausgehenden Proxyserver befindet, müssen Azu
 
 1. Legen Sie die für Azure PowerShell erforderlichen Umgebungsvariablen fest, um den ausgehenden Proxyserver zu verwenden:
 
-    * Führen Sie den folgenden Befehl mit entsprechenden Werten aus:
-
-        ```powershell
-        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
-        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
-        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
-        ```
+    ```powershell
+    $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
+    $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
+    $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
+    ```
 
 2. Führen Sie den connect-Befehl mit den angegebenen Proxyparametern aus:
 
@@ -328,11 +316,11 @@ eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
 ---
 
 > [!NOTE]
-> Nach dem Onboarding des Clusters dauert es ungefähr 5 bis 10 Minuten, bis die Clustermetadaten (Clusterversion, Agent-Version, Anzahl der Knoten usw.) auf der Übersichtsseite der Azure Arc-fähigen Kubernetes-Ressource im Azure-Portal angezeigt wird.
+> Nach dem Onboarding des Clusters dauert es ungefähr 5 bis 10 Minuten, bis die Clustermetadaten (Clusterversion, Agent-Version, Anzahl der Knoten usw.) auf der Übersichtsseite der Kubernetes-Ressource, für die Azure Arc aktiviert ist, im Azure-Portal angezeigt wird.
 
 ## <a name="6-view-azure-arc-agents-for-kubernetes"></a>6. Anzeigen von Azure Arc-Agents für Kubernetes
 
-Kubernetes mit Azure Arc-Aktivierung stellt einige Operatoren im Namespace `azure-arc` bereit.
+Kubernetes mit Azure Arc-Unterstützung stellt einige Operatoren im Namespace `azure-arc` bereit.
 
 1. Zeigen Sie diese Bereitstellungen und Pods wie folgt an:
 
@@ -368,25 +356,25 @@ Kubernetes mit Azure Arc-Aktivierung stellt einige Operatoren im Namespace `azur
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Mit dem folgenden Befehl können Sie die Kubernetes-Ressource mit Azure Arc-Aktivierung, alle zugeordneten Konfigurationsressourcen *und* alle Agents, die auf dem Cluster ausgeführt werden, mit der Azure CLI löschen:
+Sie können die Kubernetes-Ressource mit Azure Arc-Aktivierung, alle zugeordneten Konfigurationsressourcen *und* alle Agents, die auf dem Cluster ausgeführt werden, mit der Azure CLI mit dem folgenden Befehl löschen:
 
 ```azurecli
 az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
 ```
 
 >[!NOTE]
-> Das Löschen der Kubernetes-Ressource mit Azure Arc-Aktivierung mithilfe des Azure-Portals entfernt alle zugehörigen Konfigurationsressourcen, entfernt jedoch *keine* Agents, die auf dem Cluster ausgeführt werden. Die bewährte Methode besteht darin, die Kubernetes-Ressource mit Azure Arc-Aktivierung mithilfe von `az connectedk8s delete` anstatt über das Azure-Portal zu löschen.
+> Das Löschen der Kubernetes-Ressource mit Azure Arc-Aktivierung mithilfe des Azure-Portals entfernt alle zugehörigen Konfigurationsressourcen, entfernt jedoch *keine* Agents, die auf dem Cluster ausgeführt werden. Die bewährte Methode besteht darin, die Kubernetes-Ressource mit Azure Arc-Unterstützung mithilfe von `az connectedk8s delete` anstatt über das Azure-Portal zu löschen.
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-Mit dem folgenden Befehl in Azure PowerShell können Sie die Kubernetes-Ressource mit Azure Arc-Aktivierung, alle zugeordneten Konfigurationsressourcen *und* alle Agents löschen, die im Cluster ausgeführt werden:
+Sie können die Kubernetes-Ressource mit Azure Arc-Aktivierung, alle zugeordneten Konfigurationsressourcen *und* alle Agents, die im Cluster ausgeführt werden, Mit dem folgenden Befehl löschen:
 
 ```azurepowershell
 Remove-AzConnectedKubernetes -ClusterName AzureArcTest1 -ResourceGroupName AzureArcTest
 ```
 
 >[!NOTE]
-> Das Löschen der Kubernetes-Ressource mit Azure Arc-Aktivierung mithilfe des Azure-Portals entfernt alle zugehörigen Konfigurationsressourcen, entfernt jedoch *keine* Agents, die auf dem Cluster ausgeführt werden. Die bewährte Methode besteht darin, die Kubernetes-Ressource mit Azure Arc-Aktivierung mithilfe von `Remove-AzConnectedKubernetes` anstatt über das Azure-Portal zu löschen.
+> Das Löschen der Kubernetes-Ressource mit Azure Arc-Aktivierung mithilfe des Azure-Portals entfernt alle zugehörigen Konfigurationsressourcen, entfernt jedoch *keine* Agents, die auf dem Cluster ausgeführt werden. Die bewährte Methode besteht darin, die Kubernetes-Ressource mit Azure Arc-Unterstützung mithilfe von `Remove-AzConnectedKubernetes` anstatt über das Azure-Portal zu löschen.
 
 ---
 

@@ -388,6 +388,8 @@
                   href: open-service-mesh-nginx-ingress.md
                 - name: 'Konfigurieren des Einblicks mithilfe von Prometheus, Grafana und Jaeger'
                   href: open-service-mesh-open-source-observability.md
+                - name: Anpassen der OSM-CLI-Benutzeroberfläche
+                  href: open-service-mesh-customize-add-on-experience.md
             - name: Konfigurieren von Azure Monitor
               href: open-service-mesh-azure-monitor.md
             - name: Problembehandlung für OSM

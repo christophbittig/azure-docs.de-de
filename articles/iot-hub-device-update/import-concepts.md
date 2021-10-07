@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/10/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 39a1acb596f4d56915aabfa0a64fc69d6e55aec2
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: d01aa7f81d954183fcf487985e887bc81fa6c70c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113769106"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638646"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub"></a>Importieren von Updates in Device Update für IoT Hub
 Wenn Sie ein Update aus Device Update für IoT Hub auf Geräten bereitstellen möchten, müssen Sie es zuerst in den Device Update-Dienst _importieren_. Hier ist eine Übersicht über einige wichtige Konzepte, die Sie beim Importieren von Updates verstehen müssen.
@@ -25,7 +25,7 @@ Für jede Device Update for IoT Hub-Instanz werden die folgenden Grenzwerte erzw
 
 Es gilt außerdem ein Limit von 100 Updateversionen insgesamt (für alle Anbieter und Namen).
 
-Für jede einzelne Datei in einer Updateübermittlung beträgt die maximal zulässige Dateigröße 800 MB. Die _kombinierte_ Gesamtgröße aller Dateien in einer Updateübermittlung darf ebenfalls nicht über 800 MB liegen.
+Die maximal zulässige Dateigröße für jede einzelne Datei in einer Updateübermittlung beträgt 2 GB. Die _kombinierte_ Gesamtgröße aller Dateien in einer einzigen Updateübermittlung darf ebenfalls nicht über 2 GB liegen.
 
 ## <a name="import-manifest"></a>Importmanifest
 

@@ -1,18 +1,18 @@
 ---
 title: Netzwerk in der App Service-Umgebung
 description: Details zum Netzwerk in der App Service-Umgebung.
-author: ccompy
+author: madsd
 ms.assetid: 6f262f63-aef5-4598-88d2-2f2c2f2bfc24
 ms.topic: article
 ms.date: 06/30/2021
-ms.author: ccompy
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 89a14dc204e10231a134477650081396fc8e433f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 177a9095a6a1cfb15a7bd17e106406521d1eda14
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345811"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639014"
 ---
 # <a name="app-service-environment-networking"></a>Netzwerk in der App Service-Umgebung
 
@@ -21,7 +21,19 @@ ms.locfileid: "122345811"
 > 
 
 
-Die App Service-Umgebung (ASE) ist eine Bereitstellung von Azure App Service für einen Mandanten, die Web-Apps, API-Apps und Funktions-Apps hostet. Wenn Sie eine ASE installieren, wählen Sie das Azure Virtual Network (VNet) aus, in dem sie bereitgestellt werden soll. Der gesamte ein- und ausgehende Datenverkehr der Anwendungen findet innerhalb des von Ihnen angegebenen VNets statt. Die ASE wird in einem einzelnen Subnetz in Ihrem VNET bereitgestellt. In diesem Subnetz können keine anderen Komponenten bereitgestellt werden. Das Subnetz muss an Microsoft.Web/HostingEnvironments delegiert werden.
+Die App Service-Umgebung (ASE) ist eine Bereitstellung von Azure App Service für einen Mandanten, die Web-Apps, API-Apps und Funktions-Apps hostet. Wenn Sie eine ASE installieren, wählen Sie das Azure Virtual Network (VNet) aus, in dem sie bereitgestellt werden soll. Der gesamte ein- und ausgehende Datenverkehr der Anwendungen findet innerhalb des von Ihnen angegebenen VNets statt. Die ASE wird in einem einzelnen Subnetz in Ihrem VNET bereitgestellt. In diesem Subnetz können keine anderen Komponenten bereitgestellt werden.
+
+## <a name="subnet-requirements"></a>Subnetzanforderungen
+
+Das Ausgangssubnetz muss an „Microsoft.Web/hostingEnvironments“ delegiert und leer sein.
+
+Die Größe des Subnetzes kann sich auf die Skalierungsgrenzwerte der App Service-Planinstanzen innerhalb der ASE auswirken. Es wird empfohlen, einen /24-Adressraum (256 Adressen) für Ihr Subnetz zu verwenden, um sicherzustellen, dass genügend Adressen vorhanden sind, um die Produktionsskalierung zu unterstützen.
+
+Um ein kleineres Subnetz zu verwenden, sollten Sie die folgenden Details der ASE und des Netzwerksetups beachten.
+
+Jedes Subnetz verfügt über fünf Adressen, die für Verwaltungszwecke reserviert sind. Neben den Verwaltungsadressen skaliert die ASE die unterstützende Infrastruktur dynamisch und verwendet je nach Konfiguration, Skalierung und Auslastung zwischen 4 und 27 Adressen. Die verbleibenden Adressen können für Instanzen im App Service-Plan verwendet werden. Die Mindestgröße Ihres Subnetzes ist ein /27-Adressraum (32 Adressen).
+
+Wenn Ihnen die Adressen ausgehen, kann dies zur Folge haben, dass die Aufskalierung Ihrer App Service-Pläne in der ASE eingeschränkt wird, oder dass es bei intensiven Datenverkehrslasten zu einer erhöhten Latenz kommt, wenn wir die unterstützende Infrastruktur nicht skalieren können.
 
 ## <a name="addresses"></a>Adressen 
 
@@ -32,7 +44,7 @@ Die ASE enthält bei der Erstellung folgende Netzwerkinformationen:
 | Virtuelles ASE-Netzwerk | Das VNET, in dem die ASE bereitgestellt wird |
 | ASE-Subnetz | Das Subnetz, in dem die ASE bereitgestellt wird |
 | Domänensuffix | Das Domänensuffix der in dieser ASE erstellten Apps |
-| Virtuelle IP-Adresse | Dies ist der VIP-Typ, der von der ASE verwendet wird. Die beiden möglichen Werte lauten „intern“ und „extern“. |
+| Virtuelle IP-Adresse | Diese Einstellung ist der VIP-Typ, der von der ASE verwendet wird. Die beiden möglichen Werte lauten „intern“ und „extern“. |
 | Adresse für eingehenden Datenverkehr | Die eingehende Adresse ist die Adresse, über die Ihre Apps in dieser ASE aufgerufen werden. Wenn Sie über eine interne VIP verfügen, handelt es sich um eine Adresse in Ihrem ASE-Subnetz. Wenn die Adresse extern ist, handelt es sich um eine öffentliche Adresse. |
 | Ausgehende Standardadressen | Die Apps in dieser ASE verwenden diese Adresse standardmäßig, wenn sie ausgehende Aufrufe an das Internet senden. |
 

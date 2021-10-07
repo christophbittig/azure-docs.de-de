@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/25/2021
+ms.date: 09/13/2021
 ms.author: b-juche
-ms.openlocfilehash: fc5d979c0c89c6f331e6b48fa1ffba30b5a91eb2
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 4311070b594b7cfadde4845bf7e9f8380b8657bf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122970320"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577012"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösungsarchitekturen mit Azure NetApp Files
 Dieser Artikel enthält Verweise auf bewährte Methoden, die Ihnen helfen können, die Lösungsarchitekturen für die Verwendung von Azure NetApp Files zu verstehen.  
@@ -34,6 +34,7 @@ In diesem Abschnitt finden Sie Referenzen zu Lösungen für Linux OSS-Anwendunge
 
 ### <a name="oracle"></a>Oracle
 
+* [Oracle Database mit Azure NetApp Files – Azure-Beispielszenarien](/azure/architecture/example-scenario/file-storage/oracle-azure-netapp-files)
 * [Oracle Databases on Microsoft Azure Using Azure NetApp Files](https://www.netapp.com/media/17105-tr4780.pdf) (Oracle-Datenbanken in Microsoft Azure unter Verwendung von Azure NetApp Files)
 * [Oracle VM-Images und deren Bereitstellung in Microsoft Azure: Konfigurationsoptionen für freigegebenen Speicher](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [Leistung von Oracle-Datenbanken auf einzelnen Azure NetApp Files-Volumes](performance-oracle-single-volumes.md)
@@ -58,6 +59,7 @@ In diesem Abschnitt finden Sie Referenzen zu Lösungen für Windows-Anwendungen 
 
 ### <a name="sql-server"></a>SQL Server
 
+* [SQL Server in Azure Virtual Machines mit Azure NetApp Files – Azure-Beispielszenarien](/azure/architecture/example-scenario/file-storage/sql-server-azure-netapp-files)
 * [SQL Server im Azure-Bereitstellungshandbuch unter Verwendung von Azure NetApp Files](https://www.netapp.com/pdf.html?item=/media/27154-tr-4888.pdf)
 * [Vorteile der Verwendung von Azure NetApp Files für die SQL Server-Bereitstellung](solutions-benefits-azure-netapp-files-sql-server.md)
 * [Deploy SQL Server Over SMB with Azure NetApp Files](https://www.youtube.com/watch?v=x7udfcYbibs) (Bereitstellen von SQL Server über SMB mit Azure NetApp Files)
@@ -85,6 +87,7 @@ Dieser Abschnitt enthält Referenzen zu Lösungen für SAP in Azure.
 * [Horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure-VMs mithilfe von Azure NetApp Files auf RedHat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
 * [Horizontale SAP HANA-Skalierung mit HSR und Pacemaker unter RHEL: Azure Virtual Machines](../virtual-machines/workloads/sap/sap-hana-high-availability-scale-out-hsr-rhel.md)
 * [Tool für konsistente Momentaufnahmen in Azure-Anwendungen (AzAcSnap)](azacsnap-introduction.md)
+* [SAP HANA-Notfallwiederherstellung mit Azure NetApp Files](https://docs.netapp.com/us-en/netapp-solutions-sap/pdfs/sidebar/SAP_HANA_Disaster_Recovery_with_Azure_NetApp_Files.pdf)
 
 ### <a name="sap-anydb"></a>SAP AnyDB
 
@@ -171,6 +174,11 @@ Dieser Abschnitt enthält Lösungen für Azure-Plattformdienste.
 * [Azure NetApp Files + Trident = Dynamic and Persistent Storage for Kubernetes](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/) (Azure NetApp Files + Trident = dynamische und dauerhafte Speicherung für Kubernetes)
 * [Trident - Storage Orchestrator for Containers](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html) (Trident: Speicherorchestrator für Container)
 * [Magento-E-Commerce-Plattform in Azure Kubernetes Service (AKS)](/azure/architecture/example-scenario/magento/magento-azure)
+
+### <a name="azure-red-hat-openshift"></a>Azure Red Hat Openshift   
+
+*   [Verwenden von Trident zum Automatisieren von Azure NetApp Files von OpenShift](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/using-trident-to-automate-azure-netapp-files-from-openshift/ba-p/2367351)
+
 
 ### <a name="azure-batch"></a>Azure Batch
 

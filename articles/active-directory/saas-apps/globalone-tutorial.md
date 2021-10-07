@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit EY GlobalOne | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD SSO-Integration mit EY GlobalOne'
 description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und EY GlobalOne konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/07/2020
+ms.date: 09/22/2021
 ms.author: jeedes
-ms.openlocfilehash: a248718d12abf90abd80c9210b994e7d74ab111b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebd54b1553d2e150263a78a29c9b477b7979c1c3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92448723"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568521"
 ---
-# <a name="tutorial-integrate-ey-globalone-with-azure-active-directory"></a>Tutorial: Integrieren von EY GlobalOne in Azure Active Directory
+# <a name="tutorial-azure-ad-sso-integration-with-ey-globalone"></a>Tutorial: Azure AD SSO-Integration mit EY GlobalOne
 
 In diesem Tutorial erfahren Sie, wie Sie EY GlobalOne in Azure Active Directory (Azure AD) integrieren. Die Integration von EY GlobalOne in Azure AD ermöglicht Folgendes:
 
 * Steuern Sie in Azure AD, wer Zugriff auf EY GlobalOne hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei EY GlobalOne anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,15 +36,14 @@ Für die ersten Schritte benötigen Sie Folgendes:
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
-* EY GlobalOne unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden. 
+* EY GlobalOne unterstützt **SP- und IDP** veranlasstes einmaliges Anmelden. 
 * EY GlobalOne unterstützt die **Just-In-Time**-Benutzerbereitstellung.
-* Nach dem Konfigurieren von EY GlobalOne können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
-## <a name="adding-ey-globalone-from-the-gallery"></a>Hinzufügen von EY GlobalOne über den Katalog
+## <a name="add-ey-globalone-from-the-gallery"></a>Hinzufügen von EY GlobalOne aus dem Katalog
 
 Zum Konfigurieren der Integration von EY GlobalOne in Azure AD müssen Sie EY GlobalOne aus dem Katalog zu Ihrer Liste der verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
@@ -57,22 +54,22 @@ Zum Konfigurieren der Integration von EY GlobalOne in Azure AD müssen Sie EY 
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit EY GlobalOne mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in EY GlobalOne eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit EY GlobalOne die folgenden Schritte aus:
+Um Azure AD SSO mit EY GlobalOne zu konfigurieren und testen, führen Sie die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um B. Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Konfigurieren von EY GlobalOne](#configure-ey-globalone)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    * **[Erstellen eines EY GlobalOne-Testbenutzers](#create-ey-globalone-test-user)** , um eine Entsprechung von B. Simon in EY GlobalOne zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Konfigurieren sie das SSO von EY GlobalOne](#configure-ey-globalone-sso)** , um die SSO-Einstellungen auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines EY GlobalOne-Testbenutzers](#create-ey-globalone-test-user)** , um eine Entsprechung von B. Simon in EY GlobalOne zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **EY GlobalOne** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **EY GlobalOne** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -136,18 +133,12 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **EY GlobalOne** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann am unteren Bildschirmrand auf die Schaltfläche **Auswählen**.
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name="configure-ey-globalone"></a>Konfigurieren von EY GlobalOne
+## <a name="configure-ey-globalone-sso"></a>Konfigurieren von EY GlobalOne SSO
 
 Zum Konfigurieren des einmaligen Anmeldens aufseiten von **EY GlobalOne** müssen Sie das heruntergeladene **Zertifikat (Rohdaten)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von EY GlobalOne](mailto:globalone.support@ey.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -157,12 +148,20 @@ In diesem Abschnitt wird in EY GlobalOne ein Benutzer mit dem Namen Britta Simo
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-Wenn Sie im Zugriffsbereich die Kachel „EY GlobalOne“ auswählen, sollten Sie automatisch bei der EY GlobalOne-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+#### <a name="sp-initiated"></a>SP-initiiert:
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dies wird Sie zur EY GlobalOne Anmelde-URL umleiten, wo Sie den Anmeldevorgang veranlassen können.  
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* Gehen Sie direkt zur EY GlobalOne Anmelde-URL und veranlassen Sie von dort aus den Anmeldevorgang.
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
+#### <a name="idp-initiated"></a>IDP-initiiert:
+
+* Klicken Sie auf **Diese Anwendung testen** im Azure Portal und Sie sollten automatisch bei EY GlobalOne angemeldet werden, für das Sie das SSO eingerichtet haben. 
+
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie auf die Kachel EY GlobalOne in My Apps klicken, werden Sie, wenn sie im SP-Modus konfiguriert ist, zur Anmeldeseite der Anwendung umgeleitet, um den Anmeldevorgang zu veranlassen, und wenn sie im IDP-Modus konfiguriert ist, sollten Sie automatisch bei EY GlobalOne angemeldet werden, für das Sie SSO eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nachdem Sie EY GlobalOne konfiguriert haben, können Sie die Sitzungskontrolle durchsetzen, die vor Exfiltrieren und Infiltrieren der sensiblen Daten Ihres Unternehmens in Echtzeit schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

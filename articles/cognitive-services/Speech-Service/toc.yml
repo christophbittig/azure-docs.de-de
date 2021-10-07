@@ -31,6 +31,8 @@
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
         - name: Auswählen eines bestimmten Mikrofoneingabegeräts
           href: how-to-select-audio-input-devices.md
+        - name: Sprachenerkennung
+          href: language-identification.md
         - name: Verwenden der Sprachenerkennung
           href: how-to-automatic-language-detection.md
         - name: Verwenden der Batch-Transkriptions-API
@@ -330,8 +332,6 @@
       href: keyword-recognition-guidelines.md
     - name: Unterstützung für Regionen
       href: keyword-recognition-region-support.md
-- name: Sprachenerkennung
-  href: language-identification.md
 - name: Detaillierte Informationen zu Szenarien
   items:
     - name: Konversationsszenarien

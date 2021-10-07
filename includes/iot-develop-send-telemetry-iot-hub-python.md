@@ -7,46 +7,62 @@ ms.topic: include
 ms.date: 08/03/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: ef3c7af3150cd492be4d56d51bf31ecb989f45a2
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 5ce239a821a4e18c931c971a54e6a2832cd08dff
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122636443"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094046"
 ---
 [![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp)
 
-In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Sie verwenden die Azure CLI, um einen Azure IoT-Hub und ein Gerät zu erstellen. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen simulierten Temperaturregler auszuführen, ihn sicher mit dem Hub zu verbinden und Telemetriedaten zu senden.
+In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Sie verwenden die Azure CLI und den loT Explorer, um einen Azure loT-Hub und ein Gerät zu erstellen. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen simulierten Temperaturregler auszuführen, ihn sicher mit dem Hub zu verbinden und Telemetriedaten zu senden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+Dieser Schnellstart läuft auf Windows, Linux und Raspberry Pi. Er wurde mit den folgenden Betriebssystemen und Geräteversionen getestet:
+
+- Windows 10
+- Ubuntu 20.04 LTS auf dem Windows Subsystem für Linux (WSL)
+- Raspberry Pi OS Version 10 (Raspian) auf einem Raspberry Pi 3 Model B+
+
+Installieren Sie die folgenden Voraussetzungen auf Ihrem Entwicklungscomputer, außer es ist für den Raspberry Pi gekennzeichnet:
+
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 - [Git](https://git-scm.com/downloads).
-- [Python](https://www.python.org/downloads/)-Version 3.7 oder höher. Führen Sie zum Überprüfen Ihrer Python-Version `python --version` aus.
-- [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases): Plattformübergreifendes Hilfsprogramm zum Überwachen und Verwalten von Azure IoT 
+- [Python](https://www.python.org/downloads/)-Version 3.7 oder höher. Führen Sie zum Überprüfen Ihrer Python-Version `python3 --version` aus.
+- [Azure loT Explorer](https://github.com/Azure/azure-iot-explorer/releases): Ein plattformübergreifendes, GUI-basiertes Dienstprogramm zur Überwachung und Verwaltung von Azure loT. Wenn Sie Raspberry Pi als Entwicklungsplattform verwenden, empfehlen wir Ihnen, loT Explorer auf einem anderen Computer zu installieren. Wenn Sie loT Explorer nicht installieren möchten, können Sie Azure CLI verwenden, um die gleichen Schritte durchzuführen. 
 - Azure-Befehlszeilenschnittstelle. In dieser Schnellstartanleitung gibt es zwei Möglichkeiten zum Ausführen von Azure CLI-Befehlen:
     - Verwenden Sie Azure Cloud Shell. Dabei handelt es sich um eine interaktive Shell, mit der CLI-Befehle im Browser ausgeführt werden. Diese Option wird empfohlen, da Sie nichts installieren müssen. Wenn Sie Cloud Shell zum ersten Mal verwenden, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Führen Sie in der [Cloud Shell-Schnellstartanleitung](../articles/cloud-shell/quickstart.md) die Schritte zum **Starten von Cloud Shell** und **Auswählen der Bash-Umgebung** aus.
-    - Führen Sie optional die Azure CLI auf dem lokalen Computer aus. Wenn die Azure CLI bereits installiert ist, führen Sie `az upgrade` aus, um die CLI und die Erweiterungen auf die aktuelle Version zu aktualisieren. Informationen zur Installation der Azure CLI finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+    - Führen Sie optional die Azure CLI auf dem lokalen Computer aus. Wenn die Azure CLI bereits installiert ist, führen Sie `az upgrade` aus, um die CLI und die Erweiterungen auf die aktuelle Version zu aktualisieren. Informationen zur Installation der Azure CLI finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). Wenn Sie Raspberry Pi als Entwicklungsplattform verwenden, empfehlen wir Ihnen, Azure Cloud Shell zu verwenden oder Azure CLI auf einem anderen Computer zu installieren.
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
 ## <a name="run-a-simulated-device"></a>Ausführen eines simulierten Geräts
 In diesem Abschnitt verwenden Sie das Python SDK zum Senden von Nachrichten von einem simulierten Gerät an den IoT-Hub. Sie führen ein Beispiel aus, das einen Temperaturregler mit zwei Thermostatsensoren implementiert.
 
-1. Öffnen Sie ein neues Konsolenfenster. Sie verwenden diese Konsole, um das Python SDK zu installieren und mit Python-Beispielcode zu arbeiten.
+1. Öffnen Sie eine neue Konsole wie Windows CMD: PowerShell oder Bash. In den folgenden Schritten werden Sie diese Konsole verwenden, um das Python-SDK zu installieren und mit dem Python-Beispielcode zu arbeiten.
 
     > [!NOTE]
     > Wenn Sie eine lokale Installation der Azure CLI verwenden, sind nun möglicherweise zwei Konsolenfenster geöffnet. Achten Sie darauf, dass Sie die Befehle in diesem Abschnitt in der soeben geöffneten Konsole eingeben, nicht in der Konsole, die Sie für die CLI verwendet haben.
 
-1. Klonen Sie in der Python-Konsole die [Azure IoT Python SDK-Gerätebeispiele](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) auf Ihrem lokalen Computer:
+1. Klonen Sie die [Azure loT Python SDK Gerätebeispiele](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) auf Ihren lokalen Computer:
 
     ```console
     git clone https://github.com/Azure/azure-iot-sdk-python
     ```
-1. Navigieren Sie zum Verzeichnis mit den Beispielen:
+1. Navigieren Sie zum Beispielverzeichnis:
 
+    **Windows**
+    ```console
+    cd azure-iot-sdk-python\azure-iot-device\samples\pnp
+    ```
+
+    **Linux oder Raspberry Pi OS**
     ```console
     cd azure-iot-sdk-python/azure-iot-device/samples/pnp
     ```
+
+
 1. Installieren Sie das Azure IoT Python SDK:
 
     ```console
@@ -56,7 +72,7 @@ In diesem Abschnitt verwenden Sie das Python SDK zum Senden von Nachrichten von 
     * Legen Sie eine Umgebungsvariable mit dem Namen `IOTHUB_DEVICE_CONNECTION_STRING` fest. Verwenden Sie als Variablenwert die Geräteverbindungszeichenfolge, die Sie im vorherigen Abschnitt gespeichert haben.
     * Legen Sie eine Umgebungsvariable mit dem Namen `IOTHUB_DEVICE_SECURITY_TYPE` fest. Verwenden Sie als Variable den Literalzeichenfolgenwert `connectionString`.
 
-    **Windows (cmd)**
+    **CMD (Windows)**
 
     ```console
     set IOTHUB_DEVICE_CONNECTION_STRING=<your connection string here>
@@ -72,17 +88,17 @@ In diesem Abschnitt verwenden Sie das Python SDK zum Senden von Nachrichten von 
     $env:IOTHUB_DEVICE_SECURITY_TYPE='connectionString'
     ```
 
-    **Bash (Linux oder Windows)**
+    **Bash**
 
     ```bash
     export IOTHUB_DEVICE_CONNECTION_STRING="<your connection string here>"
     export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
     ```
 
-1. Führen Sie in der Python-Konsole den Code für die installierte Beispieldatei aus.
+1. Führen Sie den Code für die folgende Beispieldatei aus.
 
     ```console
-    python temp_controller_with_thermostats.py
+    python3 temp_controller_with_thermostats.py
     ```
     > [!NOTE]
     > In diesem Codebeispiel wird Azure IoT Plug & Play verwendet. Dadurch wird die Integration intelligenter Geräte in Ihre Lösungen ohne manuelle Konfiguration ermöglicht.  In den meisten Beispielen in dieser Dokumentation wird standardmäßig IoT Plug & Play verwendet. Weitere Informationen zu den Vorteilen und Einsatzmöglichkeiten von IoT Plug & Play finden Sie unter [Was ist IoT Plug & Play?](../articles/iot-develop/overview-iot-plug-and-play.md).
@@ -114,7 +130,7 @@ Zum Lesen von Telemetriedaten, die von einzelnen Gerätekomponenten gesendet wer
 
 So zeigen Sie Gerätetelemetriedaten mit der Azure CLI an:
 
-1. Führen Sie in der CLI-App den Befehl [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) aus, um Ereignisse zu überwachen, die vom simulierten Gerät an Ihren IoT-Hub gesendet werden. Verwenden Sie die Namen, die Sie zuvor in Azure IoT für Ihr Gerät und Ihren IoT-Hub erstellt haben.
+1. Führen Sie den Befehl [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) aus, um Ereignisse zu überwachen, die von dem simulierten Gerät an Ihren IoT-Hub gesendet werden. Verwenden Sie die Namen, die Sie zuvor in Azure IoT für Ihr Gerät und Ihren IoT-Hub erstellt haben.
 
     ```azurecli
     az iot hub monitor-events --output table --device-id mydevice --hub-name {YourIoTHubName}

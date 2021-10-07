@@ -3,17 +3,17 @@ title: Verwalten einzelner Geräte in Ihrer Azure IoT Central-Anwendung | Mic
 description: Hier finden Sie Informationen zum Verwalten einzelner Geräte in Ihrer Azure IoT Central-Anwendung. Sie erfahren, wie Sie Geräte erstellen, löschen und aktualisieren.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/08/2021
+ms.date: 08/20/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 22d433a874e1fc53d8b034c3efe1eb2837df485c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0ca2190bf5994edec56dce638d7361d90d2da2de
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114442602"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810670"
 ---
 # <a name="manage-individual-devices-in-your-azure-iot-central-application"></a>Verwalten einzelner Geräte in Ihrer Azure IoT Central-Anwendung
 
@@ -29,13 +29,16 @@ Informationen zum Verwalten von benutzerdefinierten Gruppen von Geräten finden 
 
 So zeigen Sie ein einzelnes Gerät an:
 
-1. Wählen Sie im linken Bereich **Geräte** aus. Hier sehen Sie eine Liste all Ihrer Geräte und Gerätevorlagen.
+1. Wählen Sie im linken Bereich **Geräte** aus. Hier sehen Sie eine Liste Ihrer Gerätevorlagen und eine Liste aller Geräte, auf die Ihre Organisation zugreifen kann.
 
 1. Wählen Sie eine Gerätevorlage aus.
 
-1. Im rechten Bereich der Seite **Geräte** sehen Sie eine Liste von Geräten, die anhand dieser Gerätevorlage erstellt wurden. Wählen Sie ein einzelnes Gerät aus, um die Seite „Gerätedetails“ für dieses Gerät anzuzeigen:
+1. Im rechten Bereich der Seite **Geräte** sehen Sie eine Liste von Geräten, die aus dieser Gerätevorlage erstellt wurden und auf die Ihre Organisation zugreifen kann. Wählen Sie ein einzelnes Gerät aus, um die Seite „Gerätedetails“ für dieses Gerät anzuzeigen:
 
     :::image type="content" source="media/howto-manage-devices-individually/device-list.png" alt-text="Screenshot: Geräteliste":::
+
+    > [!TIP]
+    > Mithilfe des Filtertools auf dieser Seite können Sie Geräte in einer bestimmten Organisation anzeigen.
 
 ## <a name="add-a-device"></a>Hinzufügen eines Geräts
 
@@ -51,9 +54,30 @@ So fügen Sie ein Gerät Ihrer Azure IoT Central-Anwendung hinzu:
 
 1. Schalten Sie die Umschaltfläche **Simuliert** auf **Ein** oder **Aus**. Ein reales Gerät steht für ein physisches Gerät, dessen Verbindung mit der Azure IoT Central-Anwendung Sie herstellen. Ein simuliertes Gerät enthält Beispieldaten, die von Azure IoT Central für Sie generiert werden.
 
-1. Klicken Sie auf **Erstellen**.
+1. Wenn Ihre Anwendung mit Organisationen arbeitet, wählen Sie die Organisation aus, zu der das Gerät gehört.
+
+    > [!TIP]
+    > Sie können festlegen, dass in der Dropdownliste der Organisation eine [Standardorganisation](howto-create-organizations.md#default-organization) angezeigt wird.
+
+1. Wählen Sie **Erstellen** aus.
 
 1. Dieses Gerät wird jetzt in der Geräteliste für diese Vorlage angezeigt. Wählen Sie das Gerät aus, um die Seite „Gerätedetails“ anzuzeigen, die alle Ansichten für das Gerät enthält.
+
+## <a name="change-organization"></a>Ändern der Organisation
+
+Zum Verschieben eines Geräts in eine andere Organisation müssen Sie sowohl auf die Quell- als auch auf die Zielorganisation zugreifen können. So verschieben Sie ein Gerät:
+
+1. Wählen Sie im linken Bereich **Geräte** aus.
+
+1. Wählen Sie in der Geräteliste das Gerät aus, das verschoben werden soll.
+
+1. Klicken Sie auf **Unternehmen**.
+
+1. Wählen Sie die neue Organisation für das Gerät aus:
+
+    :::image type="content" source="media/howto-manage-devices-individually/change-device-organization.png" alt-text="Screenshot: Verschieben eines Geräts in eine neue Organisation":::
+
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="migrate-devices-to-a-template"></a>Migrieren von Geräten zu einer Vorlage
 

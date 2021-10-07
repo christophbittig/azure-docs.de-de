@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 08/28/2021
 ms.topic: how-to
-ms.openlocfilehash: acbaa73fe51bd1de51084d0ec2752702ae96c66a
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: f0e0e947a91da29048144a94b9651e4584f26b41
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469957"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094109"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Erstellen und Verwalten einer Azure IoT Central-Anwendung über das CSP-Portal
 
@@ -76,7 +76,7 @@ Weitere Informationen finden Sie unter [Azure-Abonnements](../../guides/develope
 
 ## <a name="location"></a>Position
 
-**Standort** beschreibt die [geografische Region](https://azure.microsoft.com/global-infrastructure/geographies/), in der Sie die Anwendung erstellen möchten. Normalerweise wählen Sie den Standort aus, der Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen. Sie können eine IoT Central-Anwendung derzeit in den geografischen Regionen **Australien**, **Asien, Osten**, **Europa**, **USA**, **Vereinigtes Königreich** und **Japan** erstellen. Nachdem Sie einen Standort ausgewählt haben, können Sie Ihre Anwendung nicht zu einem späteren Zeitpunkt an einen anderen Standort verschieben.
+Im **Standort** möchten Sie die Anwendung erstellen. Normalerweise wählen Sie den Standort aus, der Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen. Zurzeit können Sie eine IoT Central-Anwendung in den Regionen **Australien, Osten**, **USA, Mitte**, **USA, Osten**, **USA, Osten2**, **Japan, Osten**, **Europa, Norden**, **Asien, Südosten**, **Vereinigtes Königreich, Süden**, **Europa, Westen** und **USA, Westen** erstellen. Nachdem Sie einen Standort ausgewählt haben, können Sie Ihre Anwendung nicht zu einem späteren Zeitpunkt an einen anderen Standort verschieben.
 
 ## <a name="application-template"></a>Anwendungsvorlage
 

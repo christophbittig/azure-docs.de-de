@@ -1,23 +1,23 @@
 ---
-title: Aktivität „If Condition“ in Azure Data Factory
+title: If Condition-Aktivität
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Die Aktivität „If Condition“ ermöglicht Ihnen die Steuerung des Verarbeitungsflusses basierend auf einer Bedingung.
+description: Mit der If Condition-Aktivität können Sie den Verarbeitungsfluss auf der Grundlage einer Bedingung in einer Azure Data Factory- oder Synapse Analytics-Pipeline steuern.
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: cc897e9657120b3a290c151a4c6582f29e905b4e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 04c0a91a7f4848f2422c0f6ed1e117686345bf78
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639952"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811682"
 ---
-# <a name="if-condition-activity-in-azure-data-factory"></a>Aktivität „If Condition“ in Azure Data Factory
+# <a name="if-condition-activity-in-azure-data-factory-and-synapse-analytics-pipelines"></a>If Condition-Aktivität in Azure Data Factory- und Synapse Analytics-Pipelines
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If-Anweisung in Programmiersprachen. Sie führt eine Aktivitätengruppe aus, wenn die Bedingung als `true` ausgewertet wird, und eine weitere Aktivitätengruppe, wenn die Bedingung als `false` ausgewertet wird. 
@@ -76,7 +76,7 @@ ifFalseActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als 
 Die Pipeline in diesem Beispiel kopiert Daten aus einem Eingabeordner in einen Ausgabeordner. Der Ausgabeordner wird durch den Wert des Pipelineparameters bestimmt: routeSelection. Wenn der routeSelection-Wert „true“ lautet, werden die Daten in „outputPath1“ kopiert. Wenn der routeSelection-Wert „false“ lautet, werden die Daten in „outputPath2“ kopiert. 
 
 > [!NOTE]
-> Dieser Abschnitt enthält die JSON-Definitionen und PowerShell-Beispielbefehle zum Ausführen der Pipeline. Eine exemplarische Vorgehensweise mit einer ausführlichen Anleitung zum Erstellen einer Data Factory-Pipeline mithilfe von Azure PowerShell und JSON-Definitionen finden Sie unter [Erstellen einer Data Factory und Pipeline mithilfe von PowerShell](quickstart-create-data-factory-powershell.md).
+> Dieser Abschnitt enthält die JSON-Definitionen und PowerShell-Beispielbefehle zum Ausführen der Pipeline. Eine exemplarische Vorgehensweise mit einer ausführlichen Anleitung zum Erstellen einer Pipeline mithilfe von Azure PowerShell und JSON-Definitionen finden Sie im [Tutorial zum Erstellen einer Data Factory mithilfe von Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Pipeline mit der Aktivität „If Condition“ (Adfv2QuickStartPipeline.json)
 
@@ -287,7 +287,7 @@ $result.Error -join "`r`n"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
+Informationen zu weiteren unterstützten Ablaufsteuerungsaktivitäten: 
 
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)
 - [ForEach-Aktivität](control-flow-for-each-activity.md)

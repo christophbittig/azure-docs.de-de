@@ -145,6 +145,8 @@
                       href: authenticate-aks-cross-tenant.md
                     - name: Authentifizieren unter Verwendung eines Kubernetes-Pullgeheimnisses
                       href: container-registry-auth-kubernetes.md
+                - name: Aktivieren des nicht authentifizierten Pullzugriffs
+                  href: anonymous-pull-access.md
             - name: Rollenbasierte Zugriffssteuerung in Azure
               href: container-registry-roles.md
               displayName: 'permissions, authorization'
@@ -252,7 +254,7 @@
 - name: Verweis
   expanded: false
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/acr
     - name: REST
       href: /rest/api/containerregistry

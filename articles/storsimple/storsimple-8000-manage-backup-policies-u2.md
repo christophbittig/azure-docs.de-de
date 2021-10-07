@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/05/2017
+ms.date: 09/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 9ec2bbef88ed185c3927676ad2596269783d1850
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fde4e0784e81c2127dd8097495b48ce506059bf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85515620"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589371"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Verwenden des StorSimple-Geräte-Manager-Diensts im Azure-Portal zum Verwalten von Sicherungsrichtlinien
 
@@ -76,6 +76,23 @@ Sie können einen Zeitplan hinzufügen oder ändern, der an eine vorhandene Sich
 
 [!INCLUDE [storsimple-8000-add-modify-backup-schedule](../../includes/storsimple-8000-add-modify-backup-schedule-u2.md)]
 
+## <a name="disable-a-schedule"></a>Deaktivieren eines Zeitplans
+
+Wenn Sie eine Sicherungsrichtlinie deaktivieren müssen, gehen Sie wie folgt vor. Sie können zum Beispiel einen Zeitplan deaktivieren, der die maximale Anzahl von 64 Backups erreicht hat, und dann einen neuen Zeitplan hinzufügen, um mehr Backups zu erstellen.
+
+Gehen Sie folgendermaßen vor, um eine Backup-Richtlinie zu deaktivieren:
+
+1.  Gehen Sie zu Ihrem StorSimple-Gerät und klicken Sie auf **Backuprichtlinien** .
+
+1.  Führen Sie einen Drilldown von der Backup-Richtlinie zu dem Zeitplan aus, den Sie deaktivieren möchten:
+
+    1. Klicken Sie auf die Backup-Richtlinie, um **Zeitpläne** für diese Richtlinie zu öffnen. 
+
+    1. Klicken Sie erneut auf die Richtlinie, um das Dialogfeld **Zeitpläne** zu öffnen.
+
+    1. Klicken Sie auf den Zeitplan, den Sie deaktivieren möchten, um **Zeitplan** konfigurieren zu öffnen. Wählen Sie im Feld **Status** die Option **Deaktiviert**.
+
+  [![Die Abbildung zeigt die Schritte zum Deaktivieren eines Zeitplans für eine Backup-Richtlinie auf einem StorSimple-Gerät. Jeder Schritt ist nummeriert, wobei die Bildschirmbeschriftung und das betroffene Element hervorgehoben sind.](./media/storsimple-8000-manage-backup-policies-u2/modify-schedule-illustration.png) ](./media/storsimple-8000-manage-backup-policies-u2/modify-schedule-illustration.png#lightbox)
 
 ## <a name="add-or-remove-a-volume"></a>Hinzufügen oder Entfernen eines Volumes
 

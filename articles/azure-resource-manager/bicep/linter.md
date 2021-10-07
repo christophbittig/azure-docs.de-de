@@ -2,28 +2,25 @@
 title: Verwenden des Bicep-Linters
 description: Erfahren Sie, wie Sie den Bicep-Linter verwenden.
 ms.topic: conceptual
-ms.date: 07/01/2021
-ms.openlocfilehash: 6b270a87a67235a6663a697b1329c5f86d570fdf
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.date: 09/10/2021
+ms.openlocfilehash: cef701d9a9f64990c0afbe265c3355f9c1a850ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779727"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631170"
 ---
 # <a name="use-bicep-linter"></a>Verwenden des Bicep-Linters
 
-Der Bicep-Linter kann zum Analysieren von Bicep-Dateien verwendet werden. Er prüft auf Syntaxfehler und fängt einen anpassbaren Satz bewährter Methoden für die Erstellung ab, bevor Sie Ihre Bicep-Dateien erstellen oder bereitstellen. Der Linter vereinfacht das Erzwingen von Codierungsstandards, indem er während der Entwicklung Leitfäden bereitstellt.
+Der Bicep-Linter kann zum Analysieren von Bicep-Dateien verwendet werden. Es aktiviert die Suche nach Syntaxfehlern und Verstößen gegen bewährte Verfahren, bevor Sie Ihre Bicep-Datei erstellen oder bereitstellen. Sie können die Dokumenterstellung zu Best Practices zum überprüfen der Datei anpassen. Der Linter vereinfacht das Erzwingen von Codierungsstandards, indem er während der Entwicklung Leitfäden bereitstellt.
 
-## <a name="install-linter"></a>Installieren des Linters
+## <a name="linter-requirements"></a>Linter-Anforderungen
 
-Der Linter kann mit Visual Studio Code und der Bicep-CLI verwendet werden. Voraussetzungen:
-
-- Bicep-CLI Version 0.4 oder höher
-- Bicep-Erweiterung für Visual Studio Code Version 0.4 oder höher
+Der Linter ist in die Bicep-CLI und die VS-Code-Erweiterung integriert. Um ihn zu verwenden, benötigen Sie die Version 0.4 oder höher.
 
 ## <a name="customize-linter"></a>Anpassen des Linters
 
-Wenn Sie „bicepconfig.json“ verwenden, können Sie den Linter aktivieren oder deaktivieren, regelspezifische Werte angeben und auch die Ebene von Regeln festlegen. Im Folgenden finden Sie die Standarddatei „bicepconfig.json“:
+Wenn Sie „bicepconfig.json“ verwenden, können Sie den Linter aktivieren oder deaktivieren, regelspezifische Werte angeben und auch die Ebene von Regeln festlegen. Das folgende Beispiel zeigt die standardmäßige bicepconfig.json:
 
 ```json
 {
@@ -105,7 +102,7 @@ Der folgende JSON-Code ist ein Beispiel für „bicepconfig.json“:
 ```
 
 - **enabled:** Geben Sie **true** ein, um den Linter zu aktivieren, und **false**, um den Linter zu deaktivieren.
-- **verbose:** Geben Sie **true** ein, um die Datei „bicepconfig.json“ anzuzeigen, die von Visual Studio Code verwendet wird.
+- **Hverbose**: Geben Sie **true** ein, um die von Visual Studio Code verwendete bicepconfig.json-Datei anzuzeigen.
 - **rules:** Geben Sie regelspezifische Werte ein. Jede Regel verfügt über mindestens eine Eigenschaft und Ebene. Diese Eigenschaft steuert das Verhalten von Bicep, sofern sie in der Bicep-Datei gefunden wird.
 
 Sie können mehrere Werte für die Regelebene verwenden:
@@ -114,17 +111,17 @@ Sie können mehrere Werte für die Regelebene verwenden:
 |--|--|--|
 | `Error` | Verstöße werden in der Buildausgabe an der Befehlszeile als Fehler angezeigt und bewirken einen Fehler des Builds. | Fehlerhafter Code wird mit einer roten Wellenlinie unterstrichen und auf der Registerkarte mit den Problemen angezeigt. |
 | `Warning` | Verstöße werden als Warnungen in der Buildausgabe der Befehlszeile angezeigt, bewirken aber nicht, dass Builds zu Fehlern führen. | Fehlerhafter Code wird mit einer gelben Wellenlinie unterstrichen und auf der Registerkarte mit den Problemen angezeigt. |
-| `Info` | Verstöße werden in der Buildausgabe der Befehlszeile nicht angezeigt. | Fehlerhafter Code wird mit einer blauen Wellenlinie unterstrichen und auf der Registerkarte mit den Problemen angezeigt. |
+| `Info` | Verstöße erscheinen in der Befehlszeilenausgabe des Builds nicht. | Fehlerhafter Code wird mit einer blauen Wellenlinie unterstrichen und auf der Registerkarte mit den Problemen angezeigt. |
 | `Off` | Vollständig unterdrückt. | Vollständig unterdrückt. |
 
 Der aktuelle Satz von Linterregeln ist minimal und stammt aus [arm-ttk-Testfällen](../templates/template-test-cases.md). Sowohl die Visual Studio Code-Erweiterung als auch die Bicep-CLI überprüfen standardmäßig alle verfügbaren Regeln, und alle Regeln sind auf die Warnstufe festgelegt. Basierend auf der Ebene einer Regel werden im Editor Fehler, Warnungen oder Informationsmeldungen angezeigt.
 
-- [no-hardcoded-env-urls](https://github.com/Azure/bicep/blob/main/docs/linter-rules/no-hardcoded-env-urls.md)
-- [no-unused-params](https://github.com/Azure/bicep/blob/main/docs/linter-rules/no-unused-params.md)
-- [no-unused-vars](https://github.com/Azure/bicep/blob/main/docs/linter-rules/no-unused-vars.md)
-- [prefer-interpolation](https://github.com/Azure/bicep/blob/main/docs/linter-rules/prefer-interpolation.md)
-- [secure-parameter-default](https://github.com/Azure/bicep/blob/main/docs/linter-rules/secure-parameter-default.md)
-- [simplify-interpolation](https://github.com/Azure/bicep/blob/main/docs/linter-rules/simplify-interpolation.md)
+- [no-hardcoded-env-urls](./linter-rule-no-hardcoded-environment-urls.md)
+- [no-unused-params](./linter-rule-no-unused-parameters.md)
+- [no-unused-vars](./linter-rule-no-unused-variables.md)
+- [prefer-interpolation](./linter-rule-prefer-interpolation.md)
+- [secure-parameter-default](./linter-rule-secure-parameter-default.md)
+- [simplify-interpolation](./linter-rule-simplify-interpolation.md)
 
 Die Bicep-Erweiterung von Visual Studio Code bietet IntelliSense beim Bearbeiten von Bicep-Konfigurationsdateien:
 
@@ -138,7 +135,7 @@ Installieren Sie die Bicep-Erweiterung 0.4 oder höher, um den Linter zu verwen
 
 Im Bereich **PROBLEME** im Screenshot gibt es vier Fehler, eine Warnung und eine Informationsmeldung.  Die Informationsmeldung zeigt die verwendete Bicep-Konfigurationsdatei an. Diese Informationen werden nur angezeigt, wenn Sie **verbose** in der Konfigurationsdatei auf **true** festgelegt haben.
 
-Zeigen Sie mit dem Mauszeiger auf einen der Problembereiche. Der Linter zeigt Details zum Fehler oder zur Warnung an. Wenn Sie auf den Bereich klicken, wird auch eine blaue Glühbirne angezeigt:
+Zeigen Sie mit dem Mauszeiger auf einen der Problembereiche. Der Linter zeigt Details zum Fehler oder zur Warnung an. Wählen Sie den Bereich aus, es wird auch eine blaue Glühbirne angezeigt:
 
 :::image type="content" source="./media/linter/bicep-linter-show-quickfix.png" alt-text="Verwendung des Bicep-Linters in Visual Studio Code: schnelle Problembehebung":::
 

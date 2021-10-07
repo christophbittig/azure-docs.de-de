@@ -439,8 +439,6 @@
         - name: Erstellen von Datenbanken und Benutzern
           href: howto-create-users.md
           displayName: users
-        - name: Überwachungsserver
-          href: flexible-server/how-to-alert-on-metric.md
     - name: Konzepte
       items:
         - name: Server Management
@@ -472,7 +470,7 @@
               href: flexible-server/concepts-business-continuity.md
             - name: Hochverfügbarkeit
               href: flexible-server/concepts-high-availability.md
-        - name: Überwachung und Protokolle
+        - name: Überwachung
           items:
             - name: Übersicht über die Überwachung
               href: flexible-server/concepts-monitoring.md
@@ -480,6 +478,8 @@
               href: flexible-server/concepts-slow-query-logs.md
             - name: Überwachungsprotokolle
               href: flexible-server/concepts-audit-logs.md
+            - name: Arbeitsmappen
+              href: flexible-server/concepts-workbooks.md
         - name: Replikation
           items:
             - name: Replikation eingehender Daten
@@ -551,22 +551,16 @@
               items:
                 - name: Azure-Portal
                   href: flexible-server/how-to-configure-high-availability.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: flexible-server/how-to-configure-high-availability-cli.md
-        - name: Überwachung und Protokolle
+        - name: Überwachung
           items:
-            - name: Konfigurieren des Protokolls für langsame Abfragen
-              items:
-                - name: Azure-Portal
-                  href: flexible-server/how-to-configure-slow-query-logs-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-configure-slow-query-log-cli.md
-            - name: Konfigurieren von Überwachungsprotokollen
-              items:
-                - name: Azure-Portal
-                  href: flexible-server/how-to-configure-audit-logs-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-configure-audit-log-cli.md
+            - name: Statistik zur Abfrageleistung
+              href: flexible-server/tutorial-query-performance-insights.md
+            - name: Überwachung
+              href: flexible-server/tutorial-configure-audit.md
+            - name: Alerts
+              href: flexible-server/how-to-alert-on-metric.md
         - name: Replikation
           items:
             - name: Konfigurieren der Replikation eingehender Daten

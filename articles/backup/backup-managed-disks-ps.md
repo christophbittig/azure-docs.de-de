@@ -2,14 +2,14 @@
 title: Sichern von Azure-Managed Disks über Azure PowerShell
 description: Erfahren Sie, wie Sie Azure Managed Disks über das Azure-Portal sichern können.
 ms.topic: conceptual
-ms.date: 03/26/2021
+ms.date: 09/17/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 31259bdbdc99fd307337cd6059f9160a0aeaf05e
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: beb6a266a9436b7c26f5786c5f5a57f10fb9319a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672130"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672654"
 ---
 # <a name="back-up-azure-managed-disks-using-azure-powershell"></a>Sichern von Azure-Managed Disks über Azure PowerShell
 
@@ -113,7 +113,7 @@ Azure Disk Backup ermöglicht mehrere Sicherungen pro Tag. Wenn Sie häufigere S
    >[!NOTE]
    > Obwohl der ausgewählte Tresor möglicherweise die Einstellung für die globale Redundanz aufweist, unterstützt Azure Disk Backup derzeit nur den Momentaufnahmen-Datenspeicher. Alle Sicherungen werden in einer Ressourcengruppe in Ihrem Abonnement gespeichert und nicht in den Sicherungstresorspeicher kopiert.
 
-Weitere Informationen zur Richtlinienerstellung finden Sie im Dokument [Azure Disk Sicherungsrichtlinie](backup-managed-disks.md#create-backup-policy).
+Weitere Informationen zur Richtlinienerstellung finden Sie unter [Erstellen der Sicherungsrichtlinie für Azure-Datenträger](backup-managed-disks.md#create-backup-policy).
 
 Wenn Sie die stündliche Häufigkeit oder die Beibehaltungsdauer bearbeiten möchten, verwenden Sie die Befehle [Edit-AzDataProtectionPolicyTriggerClientObject](/powershell/module/az.dataprotection/edit-azdataprotectionpolicytriggerclientobject?view=azps-5.7.0&preserve-view=true) und/oder [Edit-AzDataProtectionPolicyRetentionRuleClientObject](/powershell/module/az.dataprotection/edit-azdataprotectionpolicyretentionruleclientobject?view=azps-5.7.0&preserve-view=true). Sobald das Richtlinienobjekt alle gewünschten Werte aufweist, erstellen Sie mit [New-AzDataProtectionBackupPolicy](/powershell/module/az.dataprotection/new-azdataprotectionbackuppolicy?view=azps-5.7.0&preserve-view=true)eine neue Richtlinie aus dem Richtlinienobjekt.
 
@@ -155,7 +155,50 @@ Die Sicherungs tresore erfordern Berechtigungen auf dem Datenträger und die Mom
 
 ### <a name="assign-permissions"></a>Zuweisen von Berechtigungen
 
-Der Benutzer muss über RBAC für den Tresor (dargestellt durch die Tresor-MSI) und den relevanten Datenträger und/oder die Datenträger-RG einige Berechtigungen zuweisen. Diese können über das Portal oder PowerShell ausgeführt werden. Alle zugehörigen Berechtigungen werden in den Punkten 1, 2 und 3 in [diesem Abschnitt](backup-managed-disks.md#configure-backup)ausführlich erläutert.
+Der Benutzer muss über RBAC für den Tresor (dargestellt durch die Tresor-MSI) und den relevanten Datenträger und/oder die Datenträger-RG einige Berechtigungen zuweisen. Diese können über das Portal oder PowerShell ausgeführt werden.
+
+Der Sicherungstresor verwendet die verwaltete Identität für den Zugriff auf andere Azure-Ressourcen. Um das Backup von verwalteten Datenträgern zu konfigurieren, erfordert die verwaltete Identität vom Backup Tresor eine Reihe von Berechtigungen für die Quellfestplatten und Ressourcengruppen, auf denen Momentaufnahmen erstellt und verwaltet werden.
+
+Eine vom System zugewiesene verwaltete Identität ist auf eine pro Ressource beschränkt und ist an den Lebenszyklus dieser Ressource gebunden. Sie können der verwalteten Identität mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) Berechtigungen erteilen. Eine verwaltete Identität ist ein spezieller Dienstprinzipal, der nur zusammen mit Azure-Ressourcen verwendet werden kann. Informieren Sie sich ausführlicher über [verwaltete Identitäten](/azure/active-directory/managed-identities-azure-resources/overview).
+
+Um das Backup von verwalteten Datenträgern zu konfigurieren, müssen die folgenden Voraussetzungen erfüllt sein:
+
+- Weisen Sie die Rolle **Festplatten-Backup-Leser** der verwalteten Identität vom Backup Tresor auf der Quellfestplatte zu, die gesichert werden muss.
+
+  1. Wechseln Sie zu dem Datenträger, der gesichert werden muss.
+  1. Wechseln Sie zur **Zugriffssteuerung (IAM)** , und wählen Sie anschließend **Rollenzuweisung hinzufügen** aus.
+  1. Wählen Sie im rechten Kontextbereich **Festplatten-Backup-Leser** in der Dropdown-Liste **Rolle** aus.
+  1. Wählen Sie die verwaltete Identität des Backup Tresors aus und klicken Sie auf **Speichern**.
+  
+     >[!Tip]
+     >Geben Sie den Namen des Backup Tresors ein, um die verwaltete Identität des Tresors auszuwählen.
+
+  :::image type="content" source="./media/backup-managed-disks-ps/assign-disk-backup-reader-role-inline.png" alt-text="Screenshot, der den Prozess der Zuweisung der Rolle &quot;Festplatten-Backup-Leser&quot; zur verwalteten Identität des Backup Tresors auf der zu sichernden Quellfestplatte zeigt." lightbox="./media/backup-managed-disks-ps/assign-disk-backup-reader-role-expanded.png":::
+
+- Weisen Sie die Rolle **Mitwirkender für Datenträgermomentaufnahmen** der verwalteten Identität des Backup Tresors in der Ressourcengruppe zu, in der Backups erstellt und vom Azure Backup-Dienst verwaltet werden. Die Datenträgermomentaufnahmen werden in einer Ressourcengruppe innerhalb Ihres Abonnements gespeichert. Damit der Azure Backup Dienst Momentaufnahmen erstellen, speichern und verwalten kann, müssen Sie Berechtigungen für den Backup Tresor bereitstellen.
+
+  1. Wechseln Sie zur Ressourcengruppe. Sie Ressourcengruppe ist z. B. _SnapshotRG_ und befindet sich im selben Abonnement wie der zu sichernde Datenträger.
+  1. Wechseln Sie zur **Zugriffssteuerung (IAM)** , und wählen Sie anschließend **Rollenzuweisung hinzufügen** aus.
+  1. Wählen Sie im rechten Kontextbereich **Mitwirkender für Datenträgermomentaufnahmen** in der Dropdown-Liste **Role** aus. 
+  1. Wählen Sie die verwaltete Identität des Backup Tresors und klicken Sie auf **Speichern**.
+  
+     >[!Tip]
+     >Geben Sie den Namen des Sicherungstresors ein, um die verwaltete Identität des Tresors auszuwählen.
+
+  :::image type="content" source="./media/backup-managed-disks-ps/assign-disk-snapshot-contributor-role-inline.png" alt-text="Screenshot, der den Prozess der Zuweisung der Rolle Mitwirkender für Datenträgermomentaufnahmen zur verwalteten Identität des Backup Tresors in der Ressourcengruppe zeigt." lightbox="./media/backup-managed-disks-ps/assign-disk-snapshot-contributor-role-expanded.png":::
+
+- Vergewissern Sie sich, dass die verwaltete Identität des Sicherungstresors über den richtigen Satz an Rollenzuweisungen für den Quelldatenträger und die Ressourcengruppe, die als Momentaufnahmen-Datenspeicher verfügt, fungiert.
+
+  1. Gehen Sie zu **Backup Tresor** -> **Identität** und wählen Sie **Azure Rollenzuweisungen**.
+ 
+     :::image type="content" source="./media/backup-managed-disks-ps/select-azure-role-assignments-inline.png" alt-text="Screenshot von der Auswahl der Azure-Rollenzuweisungen." lightbox="./media/backup-managed-disks-ps/select-azure-role-assignments-expanded.png":::
+
+  1. Überprüfen Sie, ob die Rolle, der Ressourcenname und der Ressourcentyp korrekt sind.
+ 
+     :::image type="content" source="./media/backup-managed-disks-ps/verify-role-assignment-details-inline.png" alt-text="Screenshot von der Überprüfung der Rolle, des Ressourcennamens und des Ressourcentyps." lightbox="./media/backup-managed-disks-ps/verify-role-assignment-details-expanded.png":::
+
+>[!Note]
+>Während die Rollenzuweisungen im Portal korrekt wiedergegeben werden, kann es etwa 15-30 Minuten dauern, bis die Berechtigung auf die verwaltete Identität des Backup Tresors angewendet wird.
 
 ### <a name="prepare-the-request"></a>Vorbereiten der Anforderung
 

@@ -293,6 +293,8 @@ items:
             href: storage-blob-pageblob-overview.md
           - name: Statische Websites
             href: storage-blob-static-website.md
+          - name: Aktualisieren auf Data Lake Storage Gen2
+            href: upgrade-to-data-lake-storage-gen2.md
           - name: Unterstützung von Blob Storage
             href: storage-feature-support-in-storage-accounts.md
       - name: Anleitung
@@ -550,6 +552,8 @@ items:
                     href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
           - name: Regionsübergreifendes Verschieben
             href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          - name: Upgrade auf Data Lake Storage Gen2
+            href: upgrade-to-data-lake-storage-gen2-how-to.md
           - name: Monitor
             items:
               - name: Szenarios und bewährte Methoden

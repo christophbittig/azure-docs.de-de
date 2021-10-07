@@ -1,47 +1,158 @@
 ---
-title: Sicherheitsendpunkte im IoT Device Provisioning-Dienst | Microsoft-Dokumentation
+title: Sicherheitsendpunkte im Microsoft Azure IoT Device Provisioning-Dienst
 description: Konzepte für die Steuerung des Zugriffs auf IoT Device Provisioning Service (DPS) für Back-End-Apps. Enthält Informationen zu Sicherheitstoken.
-author: wesmc7777
+author: anastasia-ms
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 04/09/2019
-ms.author: wesmc
+ms.date: 08/30/2021
+ms.author: v-stharr
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 90ba464fa58e248ebea0f6b080461851c69f0ab7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cf2934c57441176034d28a7b60e33c639977e62d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347047"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779595"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Steuern des Zugriffs auf den Azure IoT Hub Device Provisioning-Dienst
 
-In diesem Artikel werden die Optionen für den Schutz Ihres IoT Device Provisioning-Diensts beschrieben. Der Bereitstellungsdienst verwendet *Berechtigungen*, um Zugriff auf die einzelnen Endpunkte zu gewähren. Berechtigungen beschränken den Zugriff auf eine Dienstinstanz auf der Grundlage von Funktionen.
+In diesem Artikel werden die verfügbaren Optionen für den Schutz Ihres IoT Device Provisioning-Diensts beschrieben. Der Bereitstellungsdienst (Provisioning Service) verwendet *Authentifizierung* und *Berechtigungen*, um Zugriff auf die einzelnen Endpunkte zu gewähren. Berechtigungen ermöglichen es dem Authentifizierungsprozess, den Zugriff auf eine Dienstinstanz auf der Grundlage von Funktionalität einzuschränken.
 
-Dieser Artikel beschreibt Folgendes:
+In diesem Artikel wird Folgendes erläutert:
 
-* Die verschiedenen Berechtigungen, die Sie einer Back-End-App für den Zugriff auf Ihren Bereitstellungsdienst gewähren können
-* Der Authentifizierungsvorgangs und die verwendeten Token zum Überprüfen der Berechtigungen.
+* Der Authentifizierungsprozess und die Token, mit denen der Bereitstellungsdienst Berechtigungen für die [Dienste-REST-API und REST-API für Device Messaging](/rest/api/iot-dps/) überprüft.
 
-### <a name="when-to-use"></a>Verwendung
+* Die verschiedenen Berechtigungen, die Sie einer Back-End-App für den Zugriff auf die Dienst-API gewähren können.
 
-Sie benötigen entsprechende Berechtigungen für den Zugriff auf Bereitstellungsdienst-Endpunkte. Beispiel: Eine Back-End-App muss jede Nachricht, die sie an den Dienst sendet, mit einem Token mit Sicherheitsanmeldeinformationen versehen.
+## <a name="authentication"></a>Authentifizierung
 
-## <a name="access-control-and-permissions"></a>Access Control und Berechtigungen
+Die Geräte-API unterstützt die schlüsselbasierte und X.509-zertifikatbasierte Geräteauthentifizierung.  
+
+Die Dienst-API unterstützt die schlüsselbasierte Authentifizierung für Back-End-Apps.  
+
+Bei der schlüsselbasierten Authentifizierung verwendet der Device Provisioning-Dienst Sicherheitstoken zum Authentifizieren von Diensten, um das Senden von Schlüsseln über das Netzwerk zu vermeiden. Darüber hinaus sind Sicherheitstoken im Hinblick auf Gültigkeitszeitraum und Bereich beschränkt. Azure IoT Device Provisioning-SDKs generieren Token automatisch (also ohne eine spezielle Konfiguration).  
+
+In einigen Fällen müssen Sie die REST-APIs des HTTP Device Provisioning-Diensts möglicherweise direkt (ohne die SDKs) verwenden. In den folgenden Abschnitten wird beschrieben, wie Sie sich bei den REST-APIs direkt authentifizieren können.
+
+## <a name="device-api-authentication"></a>Geräte-API-Authentifizierung
+
+Die [Geräte-API](/rest/api/iot-dps/device/runtime-registration) wird von Geräten für die Bestätigung beim Device Provisioning-Dienst verwendet, um eine Verbindung zu erhalten.
+
+>[!NOTE]
+>Wenn Sie eine authentifizierte Verbindung erhalten möchten, müssen Sie Geräte zuerst über eine Registrierung beim Device Provisioning-Dienst registrieren. Mithilfe der Dienst-AP können Sie ein Gerät über eine Registrierung programmgesteuert registrieren.
+
+Ein Gerät muss sich im Rahmen des Bereitstellungsprozesses bei der Geräte-API authentifizieren. Die Methode, die ein Gerät zur Authentifizierung verwendet, wird definiert, wenn Sie eine Registrierungsgruppe oder eine individuelle Registrierung einrichten. Unabhängig von der Authentifizierungsmethode muss das Gerät einen HTTPS-PUT für die folgende URL ausstellen, um sich selbst bereitzustellen.
+
+```http
+    https://global.azure-devices-provisioning.net/[ID_Scope]/registrations/[registration_id]/register?api-version=2021-06-01
+```
+Bei der Nutzung von schlüsselbasierter Authentifizierung wird im HTTP-Anforderungsheader  **Authorization**  ein Sicherheitstoken im folgenden Format übergeben:
+
+```bash
+    SharedAccessSignature sig={signature}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI} 
+```
+
+### <a name="security-token-structure-for-key-based-authentication"></a>Sicherheitstokenstruktur für die schlüsselbasierte Authentifizierung
+
+Das Sicherheitstoken wird im HTTP-Anforderungsheader  **Authorization**  im folgenden Format übergeben:
+
+```bash
+    SharedAccessSignature sig={signature}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI} 
+```
+
+Die folgenden Werte werden erwartet:
+
+| Wert  | Beschreibung |
+|:-------|:------------|
+| `{signature}`  | Eine HMAC-SHA256-Signaturzeichenfolge der Form: `{URL-encoded-resourceURI} + "\n" + expiry`. **Wichtig**: Der Schlüssel wird aus Base64 decodiert und als Schlüssel für die HMAC-SHA256-Berechnung (Hashed Message Authentication Code, Hashbasierter Nachrichtenauthentifizierungscode) verwendet. |
+| `{expiry}`  | UTF8-Zeichenfolge, dargestellt als die Anzahl von Sekunden seit dem 1. Januar 1970 um 00:00:00 UTC.  |
+| `{URL-encoded-resourceURI}`   |URL-Codierung von `{ID_Scope}/registrations/{registration_id}` in Kleinbuchstaben |
+| `{policyName}`  | Bei der Geräte-API ist diese Richtlinie immer „Registrierung“. |
+
+Der folgende Python-Codeausschnitt zeigt die Funktion  `generate_sas_token` , die das Token aus den Eingaben  `uri`, `key`, `policy_name` und `expiry` für eine individuelle Registrierung mithilfe eines Authentifizierungstyps mit symmetrischem Schlüssel berechnet.
+
+```python
+
+from base64 import b64encode, b64decode, encode 
+from hashlib import sha256 
+from time import time 
+from urllib.parse import quote_plus, urlencode 
+from hmac import HMAC 
+
+ def generate_sas_token(uri, key, policy_name, expiry=3600): 
+    ttl = time() + expiry 
+    sign_key = "%s\n%d" % ((quote_plus(uri)), int(ttl)) 
+    signature = b64encode(HMAC(b64decode(key), sign_key.encode('utf-8'), sha256).digest()) 
+
+    rawtoken = { 
+        'sr' :  uri, 
+        'sig': signature, 
+        'se' : str(int(ttl)), 
+        'skn' : policy_name 
+    } 
+
+    return 'SharedAccessSignature ' + urlencode(rawtoken) 
+
+print(generate_sas_token("myIdScope/registrations/mydeviceregistrationid", "00mysymmetrickey", "registration"))
+
+```
+
+Das Ergebnis sollte ähnlich wie die folgende Ausgabe aussehen:
+
+```bash
+
+SharedAccessSignature sr=myIdScope%2Fregistrations%2Fmydeviceregistrationid&sig=SDpdbUNk%2F1DSjEpeb29BLVe6gRDZI7T41Y4BPsHHoUg%3D&se=1630175722&skn=registration 
+```
+
+Das folgende Beispiel zeigt, wie die Shared Access Signature (SAS) anschließend zur Authentifizierung mit der Geräte-API verwendet wird.  
+
+```python
+
+curl -L -i -X PUT -H 'Content-Type: application/json' -H 'Content-Encoding:  utf-8' -H 'Authorization: [token]' -d '{"registrationId": "[registration_id]"}' https://global.azure-devices-provisioning.net/[ID_Scope]/registrations/[registration_id]/register?api-version=2021-06-01 
+
+```
+
+Wenn Sie eine auf einem symmetrischen Schlüssel basierende Registrierungsgruppe verwenden, müssen Sie zuerst mithilfe des Registrierungsgruppenschlüssels einen `device symmetric`-Schlüssel generieren. Verwenden Sie den primären oder sekundären Schlüssel der Registrierungsgruppe, um einen HMAC-SHA256 der Registrierungs-ID für das Gerät zu berechnen. Das Ergebnis wird dann in das Base64-Format konvertiert, um den abgeleiteten Geräteschlüssel abzurufen. Informationen zum Anzeigen von Codebeispielen finden Sie unter [Bereitstellen von Geräten mit symmetrischen Schlüsseln für Registrierungsgruppen](how-to-legacy-device-symm-key.md?tabs=linux%22%20%5Cl%20%22derive-a-device-key). Nachdem der symmetrische Schlüssel des Geräts abgeleitet wurde, können Sie es anhand der vorstehenden Beispiele registrieren.
+
+>[!WARNING]
+>Wenn Sie vermeiden möchten, dass der Gruppenhauptschlüssel in Ihren Gerätecode einbezogen wird, sollte der Vorgang zum Ableiten des Geräteschlüssels außerhalb des Geräts durchgeführt werden.
+
+### <a name="certificate-based-authentication"></a>Zertifikatbasierte Authentifizierung 
+
+Wenn Sie eine individuelle Registrierung oder eine Registrierungsgruppe für die X.509-zertifikatbasierte Authentifizierung eingerichtet haben, muss das Gerät sein ausgestelltes X.509-Zertifikat verwenden, um die Geräte-API zu bestätigen. In den folgenden Artikeln erfahren Sie, wie Sie die Registrierung einrichten und das Gerätezertifikat generieren können.
+
+* Schnellstart – [Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe von Python](quick-create-simulated-device-x509-python.md?tabs=linux)
+
+* Schnellstart – [Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe von Node.js](quick-create-simulated-device-x509-node.md)
+
+* Schnellstart – [Registrieren von X.509-Geräten bei Azure Device Provisioning Service mithilfe von Python](quick-enroll-device-x509-python.md)
+
+* Schnellstart – [Registrieren von X.509-Geräten bei Azure Device Provisioning Service mithilfe von Node.js](quick-enroll-device-x509-node.md)
+
+Nachdem die Registrierung eingerichtet und das Gerätezertifikat ausgestellt wurde, wird im folgenden Beispiel gezeigt, wie Sie sich mit dem X.509-Zertifikat des Geräts bei der Geräte-API authentifizieren können.
+
+```bash
+
+curl -L -i -X PUT –cert ./[device_cert].pem –key ./[device_cert_private_key].pem -H 'Content-Type: application/json' -H 'Content-Encoding:  utf-8' -d '{"registrationId": "[registration_id]"}' https://global.azure-devices-provisioning.net/[ID_Scope]/registrations/[registration_id]/register?api-version=2021-06-01 
+
+```
+
+## <a name="service-api-authentication"></a>Dienst-API-Authentifizierung
+
+Die [Geräte-API](/rest/api/iot-dps/service/device-registration-state) wird zum Abrufen des Registrierungsstatus und Entfernen von Geräteregistrierungen verwendet. Außerdem wird der Dienst von Back-End-Apps zum programmgesteuerten Verwalten von [einzelnen Gruppen](/rest/api/iot-dps/service/individual-enrollment) und [Registrierungsgruppen](/rest/api/iot-dps/service/enrollment-group) genutzt. Die Dienst-API unterstützt die schlüsselbasierte Authentifizierung für Back-End-Apps.  
+
+Sie müssen entsprechende Berechtigungen für den Zugriff auf die Dienst-API-Endpunkte haben. Beispiel: Eine Back-End-App muss jede Nachricht, die sie an den Dienst sendet, mit einem Token mit Sicherheitsanmeldeinformationen versehen.
+
+Der Azure IoT Hub Device Provisioning-Dienst gewährt Zugriff auf Endpunkte, indem er das Token anhand der SAS-Richtlinien überprüft. Sicherheitsanmeldeinformationen, beispielsweise symmetrische Schlüssel, werden niemals über eine physische Verbindung gesendet.
+
+### <a name="access-control-and-permissions"></a>Access Control und Berechtigungen
 
 Sie können [Berechtigungen](#device-provisioning-service-permissions) auf folgende Weise gewähren:
 
 * **SAS-Autorisierungsrichtlinien:** SAS-Richtlinien können eine beliebige Kombination von [Berechtigungen](#device-provisioning-service-permissions) gewähren. Sie können Richtlinien im [Azure-Portal][lnk-management-portal] oder programmgesteuert mithilfe der [REST-APIs des Device Provisioning-Diensts][lnk-resource-provider-apis] definieren. Ein neu erstellter Bereitstellungsdienst verfügt über folgende Standardrichtlinie:
 
-* **provisioningserviceowner**: Richtlinie mit sämtlichen Berechtigungen.
-
-> [!NOTE]
-> Weitere Informationen finden Sie unter [Berechtigungen](#device-provisioning-service-permissions).
-
-## <a name="authentication"></a>Authentifizierung
-
-Der Azure IoT Hub Device Provisioning-Dienst überprüft ein Token anhand der SAS-Richtlinien, um Zugriff auf Endpunkte zu gewähren. Sicherheitsanmeldeinformationen, beispielsweise symmetrische Schlüssel, werden niemals über eine physische Verbindung gesendet.
+* **provisioningserviceowner**: Richtlinie mit sämtlichen Berechtigungen. Weitere Informationen finden Sie unter [Berechtigungen](#device-provisioning-service-permissions).
 
 > [!NOTE]
 > Der Device Provisioning-Dienst wird über Ihr Azure-Abonnement geschützt – ebenso wie alle Anbieter im [Azure Resource Manager][lnk-azure-resource-manager].
@@ -51,7 +162,8 @@ Weitere Informationen zum Erstellen und Verwenden von Sicherheitstoken finden Si
 HTTP ist das einzige unterstützte Protokoll. Zur Implementierung der Authentifizierung wird ein gültiges Token in den Anforderungsheader **Authorization** eingeschlossen.
 
 #### <a name="example"></a>Beispiel
-```csharp
+
+```bash
 SharedAccessSignature sr = 
    mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`\
 ```
@@ -59,7 +171,7 @@ SharedAccessSignature sr =
 > [!NOTE]
 > Die [SDKs für den Azure IoT Device Provisioning-Dienst][lnk-sdks] generieren automatisch Token, wenn eine Verbindung mit dem Dienst hergestellt wird.
 
-## <a name="security-tokens"></a>Sicherheitstoken
+### <a name="security-tokens"></a>Sicherheitstoken
 
 Der Device Provisioning-Dienst verwendet Sicherheitstoken zum Authentifizieren von Diensten, um das Senden von Schlüsseln über das Netzwerk zu vermeiden. Darüber hinaus sind Sicherheitstoken im Hinblick auf Gültigkeitszeitraum und Bereich beschränkt. [SDKs für den Azure IoT Device Provisioning-Dienst][lnk-sdks] generieren Token automatisch (also ohne spezielle Konfiguration). In einigen Szenarien müssen Sie Sicherheitstoken allerdings direkt generieren und verwenden. Zu solchen Szenarien zählt auch die direkte Verwendung der HTTP-Oberfläche.
 
@@ -82,7 +194,8 @@ Hier sind die erwarteten Werte:
 | {URL-encoded-resourceURI} | URL-Codierung des Ressourcen-URI (beides in Kleinbuchstaben). URI-Präfix (nach Segment) der Endpunkte, auf die mit diesem Token zugegriffen werden kann – beginnend mit dem Hostnamen des IoT Device Provisioning-Diensts (kein Protokoll). Beispiel: `mydps.azure-devices-provisioning.net`. |
 | {policyName} |Der Name der gemeinsam genutzten Zugriffsrichtlinie, auf die dieses Token verweist. |
 
-**Hinweis zum Präfix**: Das URI-Präfix wird nach Segment, nicht nach Zeichen berechnet. Beispielsweise ist `/a/b` ein Präfix für `/a/b/c`, aber nicht für `/a/bc`.
+>[!NOTE]
+>Das URI-Präfix wird nach Segment, nicht nach Zeichen berechnet. Beispielsweise ist `/a/b` ein Präfix für `/a/b/c`, aber nicht für `/a/bc`.
 
 Der folgende „Node.js“-Codeausschnitt zeigt eine Funktion namens **GenerateSasToken**, die das Token aus den Eingaben `resourceUri, signingKey, policyName, expiresInMins` berechnet. In den nächsten Abschnitten wird erläutert, wie die verschiedenen Eingaben für die verschiedenen Anwendungsfälle für Token initialisiert werden.
 
@@ -148,7 +261,7 @@ Hier sind die Dienstfunktionen, die für die Endpunkte verfügbar gemacht werden
 | `{your-service}.azure-devices-provisioning.net/registrations/{id}` |Ermöglicht Vorgänge zum Abrufen und Verwalten des Status von Geräteregistrierungen |
 
 
-Beispielsweise würde ein Dienst, der mit einer vorab erstellten SAS-Richtlinie namens **enrollmentread** generiert wurde, ein Token mit den folgenden Parametern erstellen:
+Beispielsweise würde ein Dienst, der mit einer vorab erstellten SAS-Richtlinie namens `enrollmentread` generiert wurde, ein Token mit den folgenden Parametern erstellen:
 
 * Ressourcen-URI: `{mydps}.azure-devices-provisioning.net`
 * Signaturschlüssel: einer der Schlüssel der `enrollmentread` -Richtlinie

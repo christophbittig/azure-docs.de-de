@@ -135,7 +135,11 @@
     - name: Einrichten der Multimediaumleitung (Vorschau)
       href: multimedia-redirection.md
     - name: Installieren von Sprachpaketen
-      href: language-packs.md
+      items:
+        - name: "Images für Windows\_10 mit mehreren Sitzungen"
+          href: language-packs.md
+        - name: "Windows\_11 Enterprise-Images"
+          href: windows-11-language-packs.md
     - name: Verwenden von Azure Advisor
       href: azure-advisor.md
     - name: Anwenden von Empfehlungen

@@ -3,34 +3,39 @@ title: Erstellen und Verwalten von Azure IoT Central-Dashboards | Microsoft-Doku
 description: Erfahren Sie, wie Sie Anwendungs- und persönliche Dashboards in Azure IoT Central erstellen und verwalten.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/17/2019
+ms.date: 08/19/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 723af65800674fcb539c5f3003b9504b02969e6f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: bcd9b0f4aa1b4a7f89479270ebce65fba9968e56
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696724"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810780"
 ---
 # <a name="create-and-manage-dashboards"></a>Erstellen und Verwalten von Dashboards
 
-Das *Standardanwendungsdashboard* ist die Seite, die geladen wird, wenn Sie zum ersten Mal zu Ihrer Anwendung navigieren. Als Administrator können Sie bis zu 10 Anwendungsdashboards erstellen, die für alle Anwendungsbenutzer sichtbar sind. Nur Administratoren können Dashboards auf Anwendungsebene erstellen, bearbeiten und löschen.
+Das Standard-*Organisationsdashboard* ist die Seite, die geladen wird, wenn Sie zum ersten Mal zu Ihrer Anwendung navigieren. Als Administrator können Sie zusätzliche Organisationsdashboards erstellen, die einer bestimmten Organisation zugeordnet werden. Ein Organisationsdashboard ist nur für Benutzer sichtbar, die auf die Organisation zugreifen können, der das Dashboard zugeordnet wurde. Nur Benutzer in einer Rolle mit [Organisationsdashboardberechtigungen](howto-manage-users-roles.md#customizing-the-app) können Organisationsdashboards erstellen, bearbeiten und löschen.
 
-Alle Benutzer können eigene, *persönliche Dashboards* erstellen, und sie können zwischen Anwendungsdashboards und persönlichen Dashboards wechseln.
+> [!TIP]
+> In den Dashboardeinstellungen können Sie sehen, welcher Organisation ein Dashboard zugeordnet wurde.
+
+Alle Benutzer können eigene, *persönliche Dashboards* erstellen, und sie können zwischen Organisationsdashboards und persönlichen Dashboards wechseln.
 
 ## <a name="create-a-dashboard"></a>Erstellen eines Dashboards
 
-Der folgende Screenshot zeigt das Dashboard in einer Anwendung, die über die Vorlage Benutzerdefinierte Anwendung erstellt wurde. Sie können das Standardanwendungsdashboard durch ein persönliches Dashboard ersetzen. Wenn Sie ein Administrator sind, können Sie ein Dashboard auch durch ein anderes Dashboard auf Anwendungsebene ersetzen. Wählen Sie hierzu oben links auf der Seite **Neues Dashboard** aus:
+Der folgende Screenshot zeigt das Dashboard in einer Anwendung, die über die Vorlage **Benutzerdefinierte Anwendung** erstellt wurde. Wenn Ihre Rolle die entsprechenden Berechtigungen enthält, können Sie das Standarddashboard anpassen. Wählen Sie zum Erstellen eines neuen Dashboards oben links auf der Seite die Option **+ Neues Dashboard** aus:
 
 :::image type="content" source="media/howto-manage-dashboards/dashboard-custom-app.png" alt-text="Screenshot: Schaltfläche „Neues Dashboard“.":::
 
-Wählen Sie **Neues Dashboard** aus, um den Dashboard-Editor zu öffnen. Im Editor können Sie Ihrem Dashboard einen Namen geben und Elemente aus der Bibliothek auswählen. Die Bibliothek enthält die Kacheln und Dashboardprimitive, mit denen Sie das Dashboard anpassen können:
+Geben Sie ihrem Dashboard im Bereich **Dashboard erstellen** einen Namen, und wählen Sie entweder **Organisation** oder **Persönlich** als Dashboardtyp aus. Wenn Sie ein Organisationsdashboard erstellen, wählen Sie die [Organisation](howto-create-organizations.md) aus, der das Dashboard zugeordnet wird. Ein Organisationsdashboard und die zugehörigen Kacheln zeigen nur die Geräte, die für die Organisation und deren Unterorganisationen sichtbar sind.
+
+Nachdem Sie das Dashboard erstellt haben, wählen Sie die Elemente aus der Bibliothek aus, die Sie dem Dashboard hinzufügen möchten. Die Bibliothek enthält die Kacheln und Dashboardprimitive, mit denen Sie das Dashboard anpassen:
 
 :::image type="content" source="media/howto-manage-dashboards/dashboard-library.png" alt-text="Screenshot: Dashboardbibliothek":::
 
-Als Administrator können Sie ein persönliches Dashboard oder ein Anwendungsdashboard erstellen. Alle Anwendungsbenutzer können die Anwendungsdashboards sehen, die der Administrator erstellt. Alle Benutzer können persönliche Dashboards erstellen, die nur ihnen angezeigt werden.
+Als Administrator können Sie ein persönliches Dashboard oder ein Organisationsdashboard erstellen. Benutzern werden die Organisationsdashboards angezeigt, die der Organisation zugeordnet sind, der sie zugewiesen wurden. Alle Benutzer können persönliche Dashboards erstellen, die nur ihnen angezeigt werden.
 
 Geben Sie einen Titel ein, und wählen Sie den Typ des Dashboards aus, das Sie erstellen möchten. [Fügen Sie Kacheln hinzu](#add-tiles), um Ihr Dashboard anzupassen.
 
@@ -39,17 +44,21 @@ Geben Sie einen Titel ein, und wählen Sie den Typ des Dashboards aus, das Sie e
 
 ## <a name="manage-dashboards"></a>Dashboards verwalten
 
-Sie können über mehrere persönliche Dashboards verfügen und zwischen diesen wechseln oder eines der Standardanwendungsdashboards auswählen:
+Sie können mehrere persönliche Dashboards haben und dazwischen wechseln oder eines der Organisationsdashboards auswählen:
 
 :::image type="content" source="media/howto-manage-dashboards/switch-dashboards.png" alt-text="Screenshot: Wechseln zwischen Dashboards":::
 
-Sie können Ihre persönlichen Dashboards bearbeiten und die nicht mehr benötigten löschen. Wenn Sie ein Administrator sind, können Sie auch Dashboards auf Anwendungsebene bearbeiten oder löschen.
+Sie können Ihre persönlichen Dashboards bearbeiten und die nicht mehr benötigten löschen. Wenn Sie die richtigen [Berechtigungen](howto-manage-users-roles.md#customizing-the-app) haben, können Sie auch Organisationsdashboards bearbeiten oder löschen.
 
 :::image type="content" source="media/howto-manage-dashboards/delete-dashboards.png" alt-text="Screenshot: Löschvorgang von Dashboards.":::
 
+Wenn Sie ein Dashboard umbenennen oder die Organisation anzeigen möchten, der es zugewiesen ist, wählen Sie **Dashboardeinstellungen** aus:
+
+:::image type="content" source="media/howto-manage-dashboards/rename-dashboards.png" alt-text="Screenshot: Umbenennen eines Dashboards":::
+
 ## <a name="add-tiles"></a>Hinzufügen von Kacheln
 
-Der folgende Screenshot zeigt das Dashboard in einer Anwendung, die über die Vorlage Benutzerdefinierte Anwendung erstellt wurde. Wählen Sie **Bearbeiten** aus, um das aktuelle Dashboard anzupassen. Wählen Sie **Neues Dashboard** aus, um ein persönliches Dashboard oder ein Anwendungsdashboard hinzuzufügen:
+Der folgende Screenshot zeigt das Dashboard in einer Anwendung, die über die Vorlage **Benutzerdefinierte Anwendung** erstellt wurde. Wählen Sie **Bearbeiten** aus, um das aktuelle Dashboard anzupassen. Wählen Sie **Neues Dashboard** aus, um ein persönliches Dashboard oder ein Organisationsdashboard hinzuzufügen:
 
 :::image type="content" source="media/howto-manage-dashboards/dashboard-sample-contoso.png" alt-text="Screenshot: Dashboard für Anwendungen, die auf der Vorlage „Benutzerdefinierte Anwendung“ basieren.":::
 

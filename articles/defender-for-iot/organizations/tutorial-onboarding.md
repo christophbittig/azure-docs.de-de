@@ -4,14 +4,14 @@ description: In diesem Tutorial erfahren Sie, wie Sie das Onboarding für Azure 
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/06/2021
+ms.date: 09/23/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 66d95f5700cb3445aa5e2facabe12ea7c70ef92e
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: cd62dfaa3a90c6efde1f758bec3e7062ce3e858c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544670"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642147"
 ---
 # <a name="tutorial-azure-defender-for-iot-trial-setup"></a>Tutorial: Setup der Testversion von Azure Defender für IoT
 
@@ -247,6 +247,8 @@ Für die Überprüfung nach der Installation müssen Sie Tests ausführen, um si
 ## <a name="configure-a-span-port"></a>Konfigurieren eines SPAN-Ports
 
 Ein vSwitch enthält keine Spiegelungsfunktionen, aber Sie können einen SPAN-Port mithilfe einer Problemumgehung implementieren. Sie können die Problemumgehung entweder mit ESXi oder Hyper-V implementieren.
+
+:::image type="content" source="media/tutorial-onboarding/purdue-model.png" alt-text="Screenshot der Stelle in Ihrer Architektur, an der der Sensor platziert werden soll.":::
 
 ### <a name="configure-a-span-port-with-esxi"></a>Konfigurieren eines SPAN-Ports mit ESXi
 

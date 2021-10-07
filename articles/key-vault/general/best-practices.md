@@ -9,18 +9,22 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 7cfa2059cc03b96db39183cfa5056c9934a02290
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 0461228678762adbc4db936c35849f16a482c1a9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814350"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605504"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Bewährte Methoden zum Verwenden von Key Vault
 
 ## <a name="use-separate-key-vaults"></a>Verwenden separater Key Vault-Instanzen
 
 Es wird empfohlen, einen Schlüsseltresor pro Anwendung und Umgebung (Entwicklung, Präproduktion und Produktion) zu verwenden. Dadurch können Sie die Geheimnisse nicht umgebungsübergreifend freigegeben und es verringert auch die Bedrohung im Falle einer Sicherheitsverletzung.
+
+### <a name="why-we-recommend-separate-key-vaults"></a>Warum wir separate Schlüsseltresore empfehlen
+
+Zugriffsrichtlinien sind ein "Alles-oder-Nichts"-Konzept im Azure Key Vault. Wenn eine Identität über eine bestimmte Berechtigung verfügt (z.B. **Get**), kann die Identität ein *beliebiges* Geheimnis, beliebigen Schlüssel oder beliebiges Zertifikat im Tresor erhalten. Das bedeutet, dass die Gruppierung sensibler Daten im selben Tresor den  *Auswirkungsgrad* eines Sicherheitsereignisses vergrößert, da Angreifer in der Lage sein könnten, auf sensible Informationen über die Konzerne hinweg zuzugreifen. Um dies abzuschwächen, sollten Sie überlegen, auf welche sensiblen Informationen eine bestimmte Anwendung Zugriff haben *sollte*, und dann Ihre Tresore auf der Grundlage dieser Abgrenzung trennen. Die Trennung der Tresore nach Anwendungen ist die gebräuchlichste Abgrenzung.
 
 ## <a name="control-access-to-your-vault"></a>Steuern des Zugriffs auf Ihren Schlüsseltresor
 
@@ -57,3 +61,6 @@ Stellen Sie sicher, dass Sie regelmäßig Sicherungskopien Ihres Schlüsseltreso
 
 1. Aktivieren Sie [Vorläufiges Löschen](soft-delete-overview.md).
 2. Aktivieren Sie den Löschschutz, wenn Sie sich auch nach dem Aktivieren des vorläufigen Löschens vor dem erzwungenen Löschen des Geheimnis/Schlüsseltresors schützen möchten.
+
+## <a name="learn-more"></a>Weitere Informationen
+- [Best Practices für die Geheimnisverwaltung in Key Vault](../secrets/secrets-best-practices.md)

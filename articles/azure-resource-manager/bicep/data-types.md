@@ -2,13 +2,13 @@
 title: Datentypen in Bicep
 description: In diesem Artikel werden die Datentypen beschrieben, die in Bicep verfügbar sind.
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: f520e314aff783a78e1656c16721f0fb8504215b
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/22/2021
+ms.openlocfilehash: 936f17273a95ceb77030497b27f7f73defc37896
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221695"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624396"
 ---
 # <a name="data-types-in-bicep"></a>Datentypen in Bicep
 
@@ -49,7 +49,7 @@ var mixedArray = [
 ]
 ```
 
-Arrays in Bicep basieren auf 0. Beispielsweise ergibt der Ausdruck `exampleArray[0]` den Wert 1 und `exampleArray[2]` entspricht 3. Der Index des Indexers kann selbst ein anderer Ausdruck sein. Der Ausdruck `exampleArray[index]` wird zu 2 ausgewertet. Ganzzahlige Indexer sind nur für den Ausdruck von Arraytypen zulässig.
+Arrays in Bicep sind nullbasiert. Beispielsweise ergibt der Ausdruck `exampleArray[0]` den Wert 1 und `exampleArray[2]` entspricht 3. Der Index des Indexers kann selbst ein anderer Ausdruck sein. Der Ausdruck `exampleArray[index]` wird zu 2 ausgewertet. Ganzzahlige Indexer sind nur für den Ausdruck von Arraytypen zulässig.
 
 ```bicep
 var index = 1
@@ -77,7 +77,7 @@ Wenn Sie ganzzahlige Werte angeben, verwenden Sie keine Anführungszeichen.
 param exampleInt int = 1
 ```
 
-Für Integer, die als Inlineparameter übergeben werden, ist der Wertebereich möglicherweise durch das SDK oder Befehlszeilentool, das Sie zur Bereitstellung verwenden, eingeschränkt. Wenn Sie beispielsweise PowerShell zum Bereitstellen eines Bicep verwenden, können Integertypen im Bereich von -2147483648 bis 2147483647 liegen. Um diese Einschränkung zu vermeiden, geben Sie große Werte in einer [Parameterdatei](parameter-files.md) an. Ressourcentypen wenden ihre eigenen Grenzwerte für Integereigenschaften an.
+In Bicep sind ganze Zahlen 64-Bit-Ganzzahlen. Wenn sie als Inlineparameter übergeben werden, ist der Wertebereich möglicherweise durch das SDK oder Befehlszeilentool, das Sie zur Bereitstellung verwenden, eingeschränkt. Wenn Sie beispielsweise PowerShell zum Bereitstellen eines Bicep verwenden, können Integertypen im Bereich von -2147483648 bis 2147483647 liegen. Um diese Einschränkung zu vermeiden, geben Sie große Werte in einer [Parameterdatei](parameter-files.md) an. Ressourcentypen wenden ihre eigenen Grenzwerte für Integereigenschaften an.
 
 Gleitkomma-, Dezimal- oder Binärformate werden derzeit nicht unterstützt.
 
@@ -107,7 +107,7 @@ var a = {
   }
 }
 
-output result1 string = a.b // returns 'Dev' 
+output result1 string = a.b // returns 'Dev'
 output result2 int = a.c // returns 42
 output result3 bool = a.d.e // returns true
 ```
@@ -141,20 +141,20 @@ In der folgenden Tabelle sind die reservierten Zeichen aufgeführt, die mit eine
 
 | Escapesequenz | Dargestellter Wert | Notizen |
 |:-|:-|:-|
-| \\ | \ ||
-| \' | ' ||
-| \n | Zeilenvorschub (LF) ||
-| \r | Wagenrücklauf (CR) ||
-| \t | Tabstoppzeichen ||
-| \u{x} | Unicode-Codepunkt *x* | *x* stellt einen hexadezimalen Codepunktwert zwischen *0* und *10FFFF* (beide einschließlich) dar. Führende Nullen sind zulässig. Codepunkte oberhalb von *FFFF* werden als Ersatzzeichenpaar ausgegeben.
-| \$ | $ | Muss nur mit Escape geschützt werden, wenn darauf *{* folgt. |
+| `\\` | `\` ||
+| `\'` | `'` ||
+| `\n` | Zeilenvorschub (LF) ||
+| `\r` | Wagenrücklauf (CR) ||
+| `\t` | Tabstoppzeichen ||
+| `\u{x}` | Unicode-Codepunkt `x` | **x** stellt einen hexadezimalen Codepunktwert zwischen *0* und *10FFFF* (beide einschließlich) dar. Führende Nullen sind zulässig. Codepunkte oberhalb von *FFFF* werden als Ersatzzeichenpaar ausgegeben.
+| `\$` | `$` | Nur escapen, wenn von `{` gefolgt. |
 
 ```bicep
 // evaluates to "what's up?"
 var myVar = 'what\'s up?'
 ```
 
-Alle Zeichenfolgen in Bicep unterstützen Interpolation. Um einen Ausdruck einzufügen, umschließen Sie ihn durch *${* und *}'. Ausdrücke, auf die verwiesen wird, können sich nicht über mehrere Zeilen erstrecken.
+Alle Zeichenfolgen in Bicep unterstützen Interpolation. Um einen Ausdruck einzufügen, umschließen Sie ihn mit `${` und `}`. Ausdrücke, auf die verwiesen wird, können sich nicht über mehrere Zeilen erstrecken.
 
 ```bicep
 var storageName = 'storage${uniqueString(resourceGroup().id)}
@@ -216,6 +216,27 @@ param password string
 @secure()
 param configValues object
 ```
+
+## <a name="data-type-assignability"></a>Zuweisbarkeit von Datentypen
+
+In Bicep kann ein Wert eines Typs (Quelltyp) einem anderen Typ (Zieltyp) zugewiesen werden. Die folgende Tabelle zeigt, welcher Quelltyp (horizontal aufgelistet) welchem Zieltyp (vertikal aufgelistet) zugewiesen werden kann oder nicht. In der Tabelle bedeutet `X` zuweisbar, eine Leerstelle bedeutet nicht zuweisbar, und `?` bedeutet nur, wenn die Typen kompatibel sind.
+
+| Typen | `any` | `error` | `string` | `number` | `int` | `bool` | `null` | `object` | `array` | benannte Ressource | benanntes Modul | `scope` |
+|-|-|-|-|-|-|-|-|-|-|-|-|-|
+| `any`          |X| |X|X|X|X|X|X|X|X|X|X|
+| `error`        | | | | | | | | | | | | |
+| `string`       |X| |X| | | | | | | | | |
+| `number`       |X| | |X|X| | | | | | | |
+| `int`          |X| | | |X| | | | | | | |
+| `bool`         |X| | | | |X| | | | | | |
+| `null`         |X| | | | | |X| | | | | |
+| `object`       |X| | | | | | |X| | | | |
+| `array`        |X| | | | | | | |X| | | |
+| `resource`     |X| | | | | | | | |X| | |
+| `module`       |X| | | | | | | | | |X| |
+| `scope`        | | | | | | | | | | | |?|
+| **benannte Ressource** |X| | | | | | |?| |?| | |
+| **benanntes Modul**   |X| | | | | | |?| | |?| |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

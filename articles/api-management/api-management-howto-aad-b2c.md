@@ -6,28 +6,28 @@ services: api-management
 author: dlepow
 ms.service: api-management
 ms.topic: how-to
-ms.date: 07/07/2021
+ms.date: 09/28/2021
 ms.author: danlep
-ms.openlocfilehash: 23547515a44fff56bab668ed0206670b5f6ea342
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 900692d5f38e0ed1796a3cac213407a3bec29660
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128548838"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212910"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory B2C in Azure API Management
 
 
 Bei Azure Active Directory B2C handelt es sich um eine Lösung zur Cloudidentitätsverwaltung für kundenorientierte Web- und Mobilanwendungen. Sie können damit den Zugriff auf Ihr API Management-Entwicklerportal verwalten. 
 
-In diesem Leitfaden wird die in Ihrem API Management-Dienst für die Integration von Azure Active Directory B2C erforderliche Konfiguration beschrieben. Wenn Sie das veraltete Legacy-Entwicklerportal verwenden, unterscheiden sich einige Schritte (wie in diesem Artikel beschrieben).
+In diesem Tutorial lernen Sie die in Ihrem API Management-Dienst für die Integration von Azure Active Directory B2C erforderliche Konfiguration kennen. Wie später in diesem Artikel angemerkt, unterscheiden sich bei Verwendung des veralteten Legacy-Entwicklerportals einige Schritte.
 
 Informationen zum Aktivieren des Zugriffs auf das Entwicklerportal mithilfe einer klassischen Azure Active Directory-Instanz finden Sie unter [Autorisieren von Entwicklerkonten mithilfe von Active Directory](api-management-howto-aad.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure Active Directory B2C-Mandant, auf dem eine Anwendung erstellt werden kann. Weitere Informationen finden Sie unter [Azure Active Directory B2C – Übersicht](../active-directory-b2c/overview.md).
-* Arbeiten Sie die folgende Schnellstartanleitung durch, falls Sie nicht bereits über einen API Management-Dienst verfügen: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
+* Eine API Management-Instanz. Sollten Sie noch über keine verfügen, [erstellen Sie eine neue Azure API Management-Instanz](get-started-create-service-instance.md).
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
@@ -76,11 +76,11 @@ In diesem Abschnitt erstellen Sie einen Benutzerflow auf Ihrem Azure Active Dire
    * Notieren Sie sich den Schlüssel, und bewahren Sie ihn an einem sicheren Ort auf. Dieser Geheimniswert kann nach Verlassen dieser Seite nicht erneut angezeigt werden.
 1. Wechseln Sie zurück zum API Management-Bereich **Identitätsanbieter hinzufügen**, und fügen Sie den Schlüssel in das Textfeld **Geheimer Clientschlüssel** ein.
 1. Wechseln Sie zurück zur B2C-App-Registrierung. Wählen Sie im linken Menü unter **Verwalten** die Option **Authentifizierung** aus.
-    * Aktivieren Sie unter **Implizite Genehmigung** das Kontrollkästchen **Zugriffstoken**.
+    * Aktivieren Sie unter **Implizite Genehmigung** und Hybridflows die beiden Kontrollkästchen **Zugriffstoken** und **ID-Token**.
     * Wählen Sie **Speichern** aus.
 1. Wechseln Sie zurück zur API Management-Seite **Identitätsanbieter hinzufügen**.
     * Geben Sie unter **Anmeldemandant** den Domänennamen des Azure Active Directory B2C-Mandanten an.
-    * Über das Feld **Autorität** können Sie steuern, welche Azure AD B2C-Anmelde-URL verwendet wird. Legen Sie den Wert auf **<Name_Ihres_b2c_Mandanten>.b2clogin.com** fest.
+    * Über das Feld **Autorität** können Sie steuern, welche Azure Active Directory B2C-Anmelde-URL verwendet wird. Legen Sie den Wert auf **<Name_Ihres_b2c_Mandanten>.b2clogin.com** fest.
     * Geben Sie die **Registrierungsrichtlinie** und die **Anmelderichtlinie** aus den Richtlinien des B2C-Mandanten an.
     * Optional können Sie die Richtlinien für die **Profilbearbeitung** und die **Kennwortzurücksetzung** angeben.
 
@@ -89,12 +89,12 @@ In diesem Abschnitt erstellen Sie einen Benutzerflow auf Ihrem Azure Active Dire
 
 Nach dem Speichern der Änderungen können Entwickler neue Konten erstellen und sich am Entwicklerportal anmelden, indem sie Azure Active Directory B2C verwenden.
 
-## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>Entwicklerportal – Hinzufügen der Azure AD B2C-Kontoauthentifizierung
+## <a name="developer-portal---add-azure-active-directory-b2c-account-authentication"></a>Entwicklerportal – Hinzufügen der Azure Active Directory B2C-Kontoauthentifizierung
 
 > [!IMPORTANT]
 > Beim Erstellen oder Aktualisieren der Einstellungen für die Azure Active Directory B2C-Konfiguration müssen Sie das [Entwicklerportal erneut veröffentlichen](api-management-howto-developer-portal-customize.md#publish), damit die Änderungen wirksam werden.
 
-Im Entwicklerportal können Sie sich über das Widget **Schaltfläche „Anmelden“: OAuth** bei Azure AD B2C anmelden. Das Widget ist auf der Anmeldeseite des standardmäßigen Entwicklerportals bereits integriert.
+Im Entwicklerportal können Sie sich über das Widget **Schaltfläche „Anmelden“: OAuth** bei Azure Active Directory B2C anmelden. Das Widget ist auf der Anmeldeseite des standardmäßigen Entwicklerportals bereits integriert.
 
 1. Für die Registrierung über Azure Active Directory B2C öffnen Sie ein neues Browserfenster und navigieren zum Entwicklerportal. Wählen Sie **Anmelden**.
 
@@ -107,22 +107,26 @@ Wenn die Registrierung abgeschlossen ist, werden Sie zurück zum Entwicklerporta
 
 :::image type="content" source="media/api-management-howto-aad-b2c/developer-portal-home.png" alt-text="Anmeldung beim Entwicklerportal abgeschlossen":::
 
-Es wird zwar automatisch ein neues Konto erstellt, wenn sich ein neuer Benutzer bei Azure AD B2C anmeldet, aber Sie können trotzdem erwägen, das Widget auch auf der Registrierungsseite hinzuzufügen.
+Es wird zwar automatisch ein neues Konto erstellt, wenn sich ein neuer Benutzer bei Azure Active Directory B2C anmeldet, aber Sie können trotzdem erwägen, das Widget auch auf der Registrierungsseite hinzuzufügen.
 
 Das Widget **Registrierungsformular: OAuth** stellt ein Formular dar, das zum Registrieren bei OAuth verwendet wird.
 
-## <a name="legacy-developer-portal---how-to-sign-up-with-azure-ad-b2c"></a>Altes Entwicklerportal: Registrieren mit Azure AD B2C
+## <a name="legacy-developer-portal---how-to-sign-up-with-azure-active-directory-b2c"></a>Legacy-Entwicklerportal: Registrieren mit Azure Active Directory B2C
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
-1. Öffnen Sie für die Registrierung für ein Entwicklerkonto über Azure AD B2C ein neues Browserfenster, und wechseln Sie zum Legacy-Entwicklerportal. Klicken Sie auf die Schaltfläche **Registrieren**.
+> [!NOTE]
+> Um B2C ordnungsgemäß in das Legacy-Entwicklerportal zu integrieren, verwenden Sie **Standard v1**-Benutzerflows in Kombination mit der Aktivierung der [Kennwortzurücksetzung](/active-directory-b2c/user-flow-self-service-password-reset.md), bevor Sie sich mithilfe von Azure Active Directory B2C bei einem Entwicklerkonto registrieren bzw. anmelden. 
+
+1. Öffnen Sie ein neues Browserfenster, und wechseln Sie zum Legacy-Entwicklerportal. Klicken Sie auf die Schaltfläche **Registrieren**.
 
     :::image type="content" source="media/api-management-howto-aad-b2c/b2c-dev-portal.png" alt-text="Registrieren über das Legacy-Entwicklerportal":::
+
 1. Wählen Sie die Option zum Registrieren bei **Azure Active Directory B2C**.
 
     :::image type="content" source="media/api-management-howto-aad-b2c/b2c-dev-portal-b2c-button.png" alt-text="Registrieren über Azure Active Directory B2C":::
 
-3. Sie werden zu der Registrierungsrichtlinie weitergeleitet, die Sie im vorherigen Abschnitt konfiguriert haben. Wählen Sie die Registrierung über Ihre E-Mail-Adresse oder eines Ihrer vorhandenen Social Media-Konten.
+1. Sie werden zu der Registrierungsrichtlinie weitergeleitet, die Sie im vorherigen Abschnitt konfiguriert haben. Wählen Sie die Registrierung über Ihre E-Mail-Adresse oder eines Ihrer vorhandenen Social Media-Konten.
 
    > [!NOTE]
    > Wenn Azure Active Directory B2C als einzige Option im Herausgeberportal auf der Registerkarte **Identitäten** aktiviert ist, werden Sie direkt zur Registrierungsrichtlinie umgeleitet.
@@ -130,6 +134,8 @@ Das Widget **Registrierungsformular: OAuth** stellt ein Formular dar, das zum Re
    :::image type="content" source="media/api-management-howto-aad-b2c/b2c-dev-portal-b2c-options.png" alt-text="Optionen für die Registrierung im Legacy-Entwicklerportal":::
 
    Wenn die Registrierung abgeschlossen ist, werden Sie zurück zum Entwicklerportal geleitet. Sie sind jetzt am Entwicklerportal für Ihre API Management-Dienstinstanz angemeldet.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

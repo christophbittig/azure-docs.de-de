@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: 26ed060e7cc0ccf8bf4e35ddd5ab62b8ba8eef09
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: fc8992e8e602f4a92d870328b6da14dde06af087
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406518"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670821"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT Plug & Play-Konventionen
 
@@ -188,9 +188,84 @@ Ein Gerät kann einen Fehler melden, z. B.:
 }
 ```
 
+### <a name="object-type"></a>Objekttyp
+
+Wenn eine schreibbare Eigenschaft als Objekt definiert wird, muss der Dienst ein vollständiges Objekt an das Gerät senden. Das Gerät sollte das Update bestätigen, indem es ausreichende Informationen zurück an den Dienst sendet, damit er nachvollziehen kann, wie das Gerät bei dem Update reagiert hat. Diese Antwort könnte Folgendes enthalten:
+
+- Das gesamte Objekt.
+- Nur die Felder, die das Gerät aktualisiert hat.
+- Eine Teilmenge der Felder.
+
+Bei großen Objekten sollten Sie erwägen, die Größe des Objekts, das Sie in die Bestätigung einbeziehen, zu minimieren.
+
+Das folgende Beispiel zeigt eine schreibbare Eigenschaft, die als `Object` mit vier Feldern definiert wurde:
+
+DTDL:
+
+```json
+{
+  "@type": "Property",
+  "name": "samplingRange",
+  "schema": {
+    "@type": "Object",
+    "fields": [
+      {
+        "name": "startTime",
+        "schema": "dateTime"
+      },
+      {
+        "name": "lastTime",
+        "schema": "dateTime"
+      },
+      {
+        "name": "count",
+        "schema": "integer"
+      },
+      {
+        "name": "errorCount",
+        "schema": "integer"
+      }
+    ]
+  },
+  "displayName": "Sampling range"
+  "writable": true
+}
+```
+
+Senden Sie zum Aktualisieren dieser schreibbaren Eigenschaft ein vollständiges Objekt aus dem Dienst, das so aussieht:
+
+```json
+{
+  "samplingRange": {
+    "startTime": "2021-08-17T12:53:00.000Z",
+    "lastTime": "2021-08-17T14:54:00.000Z",
+    "count": 100,
+    "errorCount": 5
+  }
+}
+```
+
+Das Gerät antwortet mit einer Bestätigung, die so aussieht:
+
+```json
+{
+  "samplingRange": {
+    "ac": 200,
+    "av": 5,
+    "ad": "Weighing status updated",
+    "value": {
+      "startTime": "2021-08-17T12:53:00.000Z",
+      "lastTime": "2021-08-17T14:54:00.000Z",
+      "count": 100,
+      "errorCount": 5
+    }
+  }
+}
+```
+
 ### <a name="sample-no-component-writable-property"></a>Beispiel für eine schreibbare Eigenschaft eines Geräts ohne Komponenten
 
-Wenn ein Gerät über nur ein Nutzdatenelement mehrere gemeldete Eigenschaften empfängt, kann es die Antworten zu gemeldeten Eigenschaften übergreifend für mehrere Nutzdatenelemente senden.
+Wenn ein Gerät mehrere gewünschte Eigenschaften in einem einzelnen Nutzdatenelement empfängt, kann es die gemeldeten Eigenschaftenantworten über mehrere Nutzdatenelemente hinweg senden oder die Antworten in einem einzelnen Nutzdatenelement kombinieren.
 
 Ein Gerät oder Modul kann eine gültige JSON-Nachricht senden, die den DTDL v2-Regeln entspricht:
 
@@ -205,6 +280,12 @@ DTDL:
     {
       "@type": "Property",
       "name": "targetTemperature",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "targetHumidity",
       "schema": "double",
       "writable": true
     }
@@ -249,13 +330,16 @@ Beispiel für zweites Nutzdatenelement der gemeldeten Eigenschaft:
 }
 ```
 
+> [!NOTE]
+> Sie könnten diese beiden gemeldeten Eigenschaftennutzdaten in einem einzelnen Nutzdatenelement kombinieren.
+
 ### <a name="sample-multiple-components-writable-property"></a>Beispiel für eine schreibbare Eigenschaft eines Geräts mit mehreren Komponenten
 
 Das Gerät oder Modul muss zusätzlich den Marker `{"__t": "c"}` aufweisen, um anzugeben, dass das Element auf eine Komponente verweist.
 
 Der Marker wird nur für Updates von Eigenschaften gesendet, die in einer Komponente definiert sind. Updates von Eigenschaften, die in der Standardkomponente definiert sind, enthalten den Marker nicht. Weitere Informationen finden Sie unter [Beispiel für eine schreibbare Eigenschaft eines Geräts ohne Komponenten](#sample-no-component-writable-property).
 
-Wenn ein Gerät über nur ein Nutzdatenelement mehrere gemeldete Eigenschaften empfängt, kann es die Antworten zu gemeldeten Eigenschaften übergreifend für mehrere Nutzdatenelemente senden.
+Wenn ein Gerät mehrere gemeldete Eigenschaften in einem einzelnen Nutzdatenelement empfängt, kann es die gemeldeten Eigenschaftenantworten über mehrere Nutzdatenelemente hinweg senden oder die Antworten in einem einzelnen Nutzdatenelement kombinieren.
 
 Das Gerät oder Modul muss bestätigen, dass es die Eigenschaften erhalten hat, indem es gemeldete Eigenschaften sendet:
 
@@ -339,6 +423,9 @@ Beispiel für zweites Nutzdatenelement der gemeldeten Eigenschaft:
   }
 }
 ```
+
+> [!NOTE]
+> Sie könnten diese beiden gemeldeten Eigenschaftennutzdaten in einem einzelnen Nutzdatenelement kombinieren.
 
 ## <a name="commands"></a>Befehle
 

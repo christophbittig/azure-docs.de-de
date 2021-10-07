@@ -2,13 +2,13 @@
 title: BICEP-Dateistruktur und-Syntax
 description: Beschreibt die Struktur und die Eigenschaften einer BICEP-Datei mithilfe von deklarativer Syntax.
 ms.topic: conceptual
-ms.date: 07/02/2021
-ms.openlocfilehash: 5401aebb0b0a82a04a2b78f9af1dc6d133915c0b
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.date: 09/21/2021
+ms.openlocfilehash: f0fb7214d261c686273e275cb0d3d18b1d393f6b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113286626"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654326"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -191,7 +191,7 @@ Weitere Informationen finden Sie unter [Variablen in Bicep](./variables.md).
 
 ## <a name="resource"></a>Resource
 
-Verwenden `resource` Sie das Schlüsselwort, um eine bereitzustellende Ressource zu definieren. Die Ressourcendeklaration enthält einen symbolischen Namen für die Ressource. Sie verwenden diesen symbolischen Namen in anderen Teilen der BICEP-Datei, wenn Sie einen Wert aus der Ressource erhalten müssen.
+Verwenden `resource` Sie das Schlüsselwort, um eine bereitzustellende Ressource zu definieren. Die Ressourcendeklaration enthält einen symbolischen Namen für die Ressource. Sie verwenden diesen symbolischen Namen in anderen Teilen der BICEP-Datei, wenn Sie einen Wert aus der Ressource erhalten müssen. Der symbolische Name kann a-z, A-Z, 0-9, und „_“ enthalten, kann aber nicht mit einer Zahl beginnen.
 
 Die Ressourcendeklaration enthält auch den Ressourcentyp und die API-Version.
 
@@ -261,7 +261,7 @@ module webModule './webApp.bicep' = {
 }
 ```
 
-Mit dem symbolischen Namen können Sie von einer anderen Stelle in der Datei auf das Modul verweisen. Beispielsweise können Sie einen Ausgabewert aus einem Modul mit dem symbolischen Namen und dem Namen des Ausgabewerts erhalten.
+Mit dem symbolischen Namen können Sie von einer anderen Stelle in der Datei auf das Modul verweisen. Beispielsweise können Sie einen Ausgabewert aus einem Modul mit dem symbolischen Namen und dem Namen des Ausgabewerts erhalten. Der symbolische Name kann a-z, A-Z, 0-9, und „_“ enthalten, kann aber nicht mit einer Zahl beginnen.
 
 Ein Modul darf nicht denselben Namen wie ein Parameter, eine Variable oder eine Ressource haben.
 

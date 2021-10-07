@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 270e7f748f0d7fda14d93ac753ba655117f7ad36
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 247b025524a029fcb68fbe0682b365e9b7f240b5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044145"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128565171"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Nützliche Ressourcen für das Arbeiten mit Azure Sentinel
 
@@ -40,6 +40,19 @@ In Azure Sentinel werden Abfragen mit der Kusto-Abfragesprache (Kusto Query Lang
 Erstellen Sie in Azure Sentinel automatisierte Vorgänge mithilfe von Azure Logic Apps, mit einem wachsenden Katalog integrierter Playbooks. 
 
 Weitere Informationen finden Sie unter [Connectordokumentation](/connectors/).
+
+## <a name="compare-playbooks-workbooks-and-notebooks"></a>Vergleich von Playbooks, Arbeitsmappen und Notebooks
+
+In der folgenden Tabelle werden die Unterschiede zwischen Playbooks, Arbeitsmappen und Notebooks in Azure Sentinel beschrieben:
+
+|  |Playbooks  |Arbeitsmappen  |Notebooks  |
+|---------|---------|---------|---------|
+|**Personas**     |   <ul><li>SOC-Ingenieure</li><li>Analysten aller Ebenen</li></ul>      | <ul><li> SOC-Ingenieure</li><li>Analysten aller Ebenen</li></ul>       | <ul><li>Bedrohungssucher und Ebene-2/Ebene-3-Analysten</li><li>Zwischenfallermittler</li><li>Datenanalysten</li><li>Sicherheitsforscher</li></ul>       |
+|**Verwendung**     | Automatisierung von einfachen, wiederholbaren Aufgaben:<ul><li>Erfassung externer Daten </li><li>Datenanreicherung mit Tl, GeoIP-Lookups und mehr </li><li> Untersuchung </li><li>Behebung </li></ul>       | <ul><li>Visualisierung</li></ul>        |   <ul><li>Abfrage von Azure Sentinel-Daten und externen Daten </li><li>Datenanreicherung mit Tl, GeoIP-Lookups und Whois-Lookups und mehr </li><li> Untersuchung </li><li> Visualisierung </li><li> Suche </li><li>Maschinelles Lernen und Big-Data-Analyse </li></ul>      |
+|**Vorteile**     |<ul><li> Am besten geeignet für einzelne, wiederholbare Aufgaben </li><li>Keine Kodierungskenntnisse erforderlich  </li></ul>      |<ul><li>Am besten geeignet für einen Überblick über Azure Sentinel-Daten auf hoher Ebene </li><li>Keine Kodierungskenntnisse erforderlich</li></ul>       | <ul><li>Am besten für komplexe Ketten von wiederholbaren Aufgaben </li><li>Ad-hoc, mehr prozedurale Kontrolle</li><li>Leichteres Pivotieren mit interaktiven Funktionen </li><li>Umfangreiche Python-Bibliotheken für die Datenmanipulation und -visualisierung </li><li>Maschinelles Lernen und benutzerdefinierte Analysen </li><li>Einfaches Dokumentieren und Freigeben von Analysebeweisen </li></ul>       |
+|**Herausforderungen**     | <ul><li>Nicht geeignet für ad-hoc und komplexe Aufgabenketten </li><li>Nicht ideal zum Dokumentieren und Freigeben von Beweisen</li></ul>        |   <ul><li>Eine Integration mit externen Daten ist nicht möglich </li></ul>     |    <ul><li> Hohe Lernkurve und erfordert Programmierkenntnisse </li></ul>   |
+|  **Weitere Informationen**   | [Automatisieren der Bedrohungsabwehr mit Playbooks in Azure Sentinel](automate-responses-with-playbooks.md)        | [Visualisieren gesammelter Daten](get-visibility.md)        | [Verwendung von Jupyter Notebooks für die Suche nach Sicherheitsbedrohungen](notebooks.md)        |
+|     |         |         |         |
 
 ## <a name="comment-on-our-blogs-and-forums"></a>Kommentieren Sie unsere Blogs und Foren
 

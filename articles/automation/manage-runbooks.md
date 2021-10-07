@@ -3,15 +3,15 @@ title: Verwalten von Runbooks in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie Runbooks in Azure Automation verwalten.
 services: automation
 ms.subservice: process-automation
-ms.date: 05/03/2021
+ms.date: 09/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c33b4dfdcecf64c692ad5e0df5de3ea80cc34d84
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f30f2ea398404821face86470a43bbf6f86ffd7f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737565"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652014"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Verwalten von Runbooks in Azure Automation
 
@@ -19,10 +19,10 @@ Sie können Azure Automation ein Runbook hinzufügen, indem Sie entweder ein neu
 
 ## <a name="create-a-runbook"></a>Erstellen eines Runbooks
 
-Sie können ein neues Runbook in Azure Automation über das Azure-Portal oder mithilfe von Windows PowerShell erstellen. Nachdem das Runbook erstellt wurde, können Sie es mithilfe der folgenden Informationen bearbeiten:
+Erstellen Sie ein neues Runbook in Azure Automation über das Azure-Portal oder die PowerShell. Nachdem das Runbook erstellt wurde, können Sie es mithilfe der folgenden Informationen bearbeiten:
 
 * [Bearbeiten von Textrunbooks in Azure Automation](automation-edit-textual-runbook.md)
-* [Grundlagen der wichtigsten Windows PowerShell-Workflowkonzepte für Automation-Runbooks](automation-powershell-workflow.md)
+* [Grundlagen der wichtigsten PowerShell-Workflowkonzepte für Automation-Runbooks](automation-powershell-workflow.md)
 * [Verwalten von Python 2-Paketen in Azure Automation](python-packages.md)
 * [Verwalten von Python 3-Paketen (Vorschau) in Azure Automation](python-3-packages.md)
 
@@ -84,7 +84,7 @@ Mit dem folgenden Verfahren können eine Skriptdatei in Azure Automation importi
 > [!NOTE]
 > Nachdem Sie ein grafisches Runbook importiert haben, können Sie es in einen anderen Typ konvertieren. Sie können allerdings ein grafisches Runbook nicht in ein Textrunbook konvertieren.
 
-### <a name="import-a-runbook-with-windows-powershell"></a>Importieren eines Runbooks mit Windows PowerShell
+### <a name="import-a-runbook-with-powershell"></a>Importieren eines Runbooks mit PowerShell
 
 Verwenden Sie das Cmdlet [Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook), um eine Skriptdatei als Entwurf eines Runbooks zu importieren. Wenn das Runbook bereits vorhanden ist, tritt beim Import ein Fehler auf, sofern Sie nicht den Parameter `Force` mit dem Cmdlet verwenden.
 
@@ -167,16 +167,12 @@ Sie können den Fortschritt eines Runbooks mithilfe einer externen Quelle verfol
 Einige Runbooks verhalten sich möglicherweise merkwürdig, wenn sie in mehreren Aufträgen gleichzeitig ausgeführt werden. In diesem Fall ist es wichtig, dass ein Runbook Logik implementiert, um festzustellen, ob bereits ein laufender Auftrag vorhanden ist. Hier ist ein einfaches Beispiel.
 
 ```powershell
-# Authenticate to Azure
-$connection = Get-AutomationConnection -Name AzureRunAsConnection
-$cnParams = @{
-    ServicePrincipal      = $true
-    Tenant                = $connection.TenantId
-    ApplicationId         = $connection.ApplicationId
-    CertificateThumbprint = $connection.CertificateThumbprint
-}
-Connect-AzAccount @cnParams
-$AzureContext = Set-AzContext -SubscriptionId $connection.SubscriptionID
+# Connect to Azure with user-assigned managed identity
+Connect-AzAccount -Identity
+$identity = Get-AzUserAssignedIdentity -ResourceGroupName <ResourceGroupName> -Name <UserAssignedManagedIdentity>
+Connect-AzAccount -Identity -AccountId $identity.ClientId
+
+$AzureContext = Set-AzContext -SubscriptionId ($identity.id -split "/")[2]
 
 # Check for already running or new runbooks
 $runbookName = "RunbookName"
@@ -195,16 +191,6 @@ if (($jobs.Status -contains 'Running' -and $runningCount -gt 1 ) -or ($jobs.Stat
     # Insert Your code here
 }
 ```
-Alternativ können Sie die Verbindungsinformationen mithilfe der Splatting-Funktion von PowerShell an `Connect-AzAccount` übergeben. In diesem Fall sehen die ersten Zeilen des vorherigen Beispiels wie folgt aus:
-
-```powershell
-# Authenticate to Azure
-$connection = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount @connection
-$AzureContext = Set-AzContext -SubscriptionId $connection.SubscriptionID
-```
-
-Weitere Informationen finden Sie unter [Splatting](/powershell/module/microsoft.powershell.core/about/about_splatting).
 
 ## <a name="handle-transient-errors-in-a-time-dependent-script"></a>Behandeln vorübergehender Fehler in einem zeitabhängigen Skript
 
@@ -222,14 +208,10 @@ Ihr Runbook muss in der Lage sein, mit [Abonnements](automation-runbook-executio
 ```powershell
 Disable-AzContextAutosave -Scope Process
 
-$connection = Get-AutomationConnection -Name AzureRunAsConnection
-$cnParams = @{
-    ServicePrincipal      = $true
-    Tenant                = $connection.TenantId
-    ApplicationId         = $connection.ApplicationId
-    CertificateThumbprint = $connection.CertificateThumbprint
-}
-Connect-AzAccount @cnParams
+# Connect to Azure with user-assigned managed identity
+Connect-AzAccount -Identity
+$identity = Get-AzUserAssignedIdentity -ResourceGroupName <ResourceGroupName> -Name <UserAssignedManagedIdentity>
+Connect-AzAccount -Identity -AccountId $identity.ClientId
 
 $childRunbookName = 'ChildRunbookDemo'
 $accountName = 'MyAutomationAccount'

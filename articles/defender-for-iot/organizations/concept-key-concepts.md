@@ -1,16 +1,16 @@
 ---
 title: Hauptvorteile
 description: Hier erfahren Sie mehr über die grundlegenden Konzepte von Defender für IoT.
-ms.date: 12/13/2020
+ms.date: 09/09/2021
 ms.topic: article
-ms.openlocfilehash: ca1e5a4d8554b208f5275fd0e7519f2db3fafc08
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: be5c7f31cb652bb40f4bae35fa42b76d7a576276
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018022"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836471"
 ---
-# <a name="basic-concepts"></a>Grundlegende Konzepte 
+# <a name="basic-concepts"></a>Grundlegende Konzepte
 
 In diesem Artikel werden die wichtigsten Vorteile von Azure Defender für IoT beschrieben.
 
@@ -63,9 +63,9 @@ Bei **lokal verbundenen Sensoren** werden die vom Sensor erkannten Informationen
 
 ## <a name="air-gapped-networks"></a>Air-Gap-Netzwerke
 
-Wenn Sie in einer Air-Gap-Umgebung arbeiten, bietet die lokale Verwaltungskonsole in Defender für IoT eine Echtzeitansicht der wichtigsten IoT- und OT-Risikoindikatoren sowie Warnungen für alle Ihre Einrichtungen. Die enge Integration mit Ihren SOC-Workflows und Runbooks ermöglicht eine einfache Priorisierung von Entschärfungsaktivitäten und standortübergreifende Korrelation von Bedrohungen.  
+Wenn Sie in einer Air-Gap-Umgebung arbeiten, bietet die lokale Verwaltungskonsole in Defender für IoT eine Echtzeitansicht der wichtigsten IoT- und OT-Risikoindikatoren sowie Warnungen für alle Ihre Einrichtungen. Die enge Integration mit Ihren SOC-Workflows und Runbooks ermöglicht eine einfache Priorisierung von Entschärfungsaktivitäten und standortübergreifende Korrelation von Bedrohungen.
 
-Defender für IoT bietet eine konsolidierte Ansicht aller Geräte. Zudem stellt die Lösung wichtige Geräteinformationen wie Typ (PLC, RTU, DCS usw.), Hersteller, Modell und Revisionsebene der Firmware sowie Warnungsinformationen bereit.  
+Defender für IoT bietet eine konsolidierte Ansicht aller Geräte. Zudem stellt die Lösung wichtige Geräteinformationen wie Typ (PLC, RTU, DCS usw.), Hersteller, Modell und Revisionsebene der Firmware sowie Warnungsinformationen bereit.
 
 Defender für IoT ermöglicht die effektive Verwaltung mehrerer Bereitstellungen und eine umfassende einheitliche Ansicht des Netzwerks. Zudem bietet Defender für IoT eine optimierte Warnungsverarbeitung und die Kontrolle über die Sicherheit des Betriebsnetzwerks.
 
@@ -113,6 +113,7 @@ Wenn Sie mit benutzerdefinierten Horizon-Warnungen arbeiten, können Sie außerd
 
 Mithilfe von benutzerdefinierter, bedingungsbasierter Warnungsauslösung und Messaging können Sie bestimmte Netzwerkaktivitäten ermitteln sowie Ihre Sicherheits-, IT- und Betriebsteams effektiv aktualisieren.
 
+Eine vollständige Liste der unterstützten Protokolle finden Sie in [Unterstützte Protokolle](concept-supported-protocols.md#supported-protocols).
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 
