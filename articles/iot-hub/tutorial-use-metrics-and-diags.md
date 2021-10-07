@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: beab67a209c177c91a1c4fcfa44934234b6dbc06
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 139244b8519dcbbc02800b8e22e9c438d1cc2b80
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294812"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458925"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Tutorial: Einrichten und Verwenden von Metriken und Protokollen mit einem IoT-Hub
 
@@ -319,7 +319,7 @@ Im Abschnitt [Ressourcen einrichten](#set-up-resources) haben Sie eine Geräteid
 >
 > Es kann bis zu 10 Minuten dauern, bis Warnungen vollständig konfiguriert sind und durch IoT Hub aktiviert werden. Warten Sie mindestens 10 Minuten nach dem Konfigurieren der letzten Warnung, bis Sie die simulierte Geräte-App ausführen.
 
-Laden Sie die Lösung für die [IoT-Gerätesimulation](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) herunter. Dieser Link lädt ein Repository mit mehreren Anwendungen herunter. Die von Ihnen benötigte Anwendung befindet sich unter „iot-hub/Quickstarts/simulated-device/“.
+Laden Sie die Lösung für die [IoT-Gerätesimulation](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip) herunter. Dieser Link lädt ein Repository mit mehreren Anwendungen herunter. Die von Ihnen benötigte Anwendung befindet sich unter „iot-hub/Quickstarts/simulated-device/“.
 
 1. Navigieren Sie in einem lokalen Terminalfenster zum Stammordner der Lösung. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\simulated-device**.
 

@@ -5,18 +5,22 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 04/07/2021
-ms.openlocfilehash: 761dcc36e684aa8f024cb650929441b54dddb790
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a42798f5af63d9ec43760511a749861a955518cf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952920"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643078"
 ---
 # <a name="whats-new-in-language-understanding"></a>Neuerungen in Language Understanding
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="august-2021"></a>August 2021
+* Norwegen, Osten [Veröffentlichungsregion](luis-reference-regions.md#publishing-to-europe).
+* USA, Westen 3 [Veröffentlichungsregion](luis-reference-regions.md#other-publishing-regions).
 
 ### <a name="april-2021"></a>April 2021
 

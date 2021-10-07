@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 0486263551246a794f90867621be0e87d42747c6
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 90f7c99aa82dfc91c9910309b66246439e513c88
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273342"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532646"
 ---
 # <a name="overallocating-capacity-reservation-preview"></a>Überlasten der Kapazitätsreservierung (Vorschau)
 
@@ -27,9 +27,6 @@ In diesem Artikel wird davon ausgegangen, dass Sie eine Kapazitätsreservierungs
 > Die Kapazitätsreservierung befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
-## <a name="register-for-capacity-reservation"></a>Registrieren Sie sich für die Kapazitätsreservierung 
-
-Bevor Sie die Funktion zur Kapazitätsreservierung verwenden können, müssen Sie [Ihr Abonnement für die Vorschauversion registrieren](capacity-reservation-overview.md#register-for-capacity-reservation). Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Funktionsregistrierung abzuschließen.
 
 ## <a name="instance-view-for-capacity-reservation-group"></a>Instanzansicht für Kapazitätsreservierungsgruppe 
 

@@ -4,12 +4,12 @@ description: In diesem Artikel wird gezeigt, wie Sie einem verwalteten Service F
 ms.topic: how-to
 ms.date: 5/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6cf2d65fe90656fe3025e438a57ea60fe17abd0d
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 75f421ef750907a172ac3cf5c846b6b35f448521
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112453092"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544923"
 ---
 # <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type"></a>Hinzufügen einer verwalteten Identität zu einem verwalteten Service Fabric-Clusterknotentyp
 
@@ -38,18 +38,18 @@ Vorbereitungen
 Eine vom Benutzer zugewiesene verwaltete Identität kann im Abschnitt „resources“ einer Azure Resource Manager-Vorlage (ARM) für die Erstellung bei der Bereitstellung definiert werden:
 
 ```JSON
-{ 
-    "type": "Microsoft.ManagedIdentity/userAssignedIdentities", 
-    "name": "[parameters('userAssignedIdentityName')]", 
-    "apiVersion": "2018-11-30", 
-    "location": "[resourceGroup().location]"  
-},
+{
+  "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+  "name": "[parameters('userAssignedIdentityName')]",
+  "apiVersion": "2018-11-30",
+  "location": "[resourceGroup().location]"
+}
 ```
 
 Sie kann auch mit PowerShell erstellt werden:
 
 ```powershell
- New-AzResourceGroup -Name <managedIdentityRGName> -Location <location>
+New-AzResourceGroup -Name <managedIdentityRGName> -Location <location>
 New-AzUserAssignedIdentity -ResourceGroupName <managedIdentityRGName> -Name <userAssignedIdentityName>
 ```
 
@@ -85,20 +85,20 @@ Verwenden Sie die **ID** der vorherigen Ausgabe als **principalId** und ggf. die
 
 Diese Rollenzuweisung kann im Abschnitt „resources“ der Vorlage mithilfe der Prinzipal-ID und der Rollendefinitions-ID definiert werden:
 
-```JSON
+```json
 {
-    "type": "Microsoft.Authorization/roleAssignments", 
-    "apiVersion": "2020-04-01-preview",
-    "name": "[parameters('vmIdentityRoleNameGuid')]",
-    "scope": "[concat('Microsoft.ManagedIdentity/userAssignedIdentities', '/', parameters('userAssignedIdentityName'))]",
-    "dependsOn": [ 
-        "[concat('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]"
-    ], 
-    "properties": {
-        "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'f1a07417-d97a-45cb-824c-7a7467783830')]",
-        "principalId": "00000000-0000-0000-0000-000000000000" 
-    } 
-}, 
+  "type": "Microsoft.Authorization/roleAssignments",
+  "apiVersion": "2020-04-01-preview",
+  "name": "[parameters('vmIdentityRoleNameGuid')]",
+  "scope": "[concat('Microsoft.ManagedIdentity/userAssignedIdentities', '/', parameters('userAssignedIdentityName'))]",
+  "dependsOn": [
+    "[concat('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]"
+  ],
+  "properties": {
+    "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'f1a07417-d97a-45cb-824c-7a7467783830')]",
+    "principalId": "00000000-0000-0000-0000-000000000000"
+  }
+}
 ```
 > [!NOTE]
 > vmIdentityRoleNameGuid muss eine gültige GUID sein. Wenn Sie die gleiche Vorlage einschließlich dieser Rollenzuweisung erneut bereitstellen, stellen Sie sicher, dass die GUID mit der ursprünglich verwendeten identisch ist, oder entfernen Sie diese Ressource, da sie nur einmal erstellt werden muss.
@@ -123,26 +123,24 @@ New-AzResourceGroupDeployment -ResourceGroupName <managedIdentityRGName> -Templa
 Fügen Sie abschließend die Eigenschaften `vmManagedIdentity` und `userAssignedIdentities` zur Knotentypdefinition des verwalteten Clusters mit der vollständigen Ressourcen-ID der Identität hinzu, die im ersten Schritt erstellt wurde. Stellen Sie sicher, dass Sie als `apiVersion` **2021-05-01** oder höher verwenden.
 
 ```json
-
- {
-    "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
-    "apiVersion": "2021-05-01",
-    ...
-    "properties": {
-        "isPrimary" : true,
-        "vmInstanceCount": 5,
-        "dataDiskSizeGB": 100,
-        "vmSize": "Standard_D2_v2",
-        "vmImagePublisher" : "MicrosoftWindowsServer",
-        "vmImageOffer" : "WindowsServer",
-        "vmImageSku" : "2019-Datacenter",
-        "vmImageVersion" : "latest",
-        "vmManagedIdentity": {
-            "userAssignedIdentities": [
-                "[parameters('userAssignedIdentityResourceId')]"
-            ]
-        }
+{
+  "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+  "apiVersion": "2021-05-01",
+  "properties": {
+    "isPrimary": true,
+    "vmInstanceCount": 5,
+    "dataDiskSizeGB": 100,
+    "vmSize": "Standard_D2_v2",
+    "vmImagePublisher": "MicrosoftWindowsServer",
+    "vmImageOffer": "WindowsServer",
+    "vmImageSku": "2019-Datacenter",
+    "vmImageVersion": "latest",
+    "vmManagedIdentity": {
+      "userAssignedIdentities": [
+        "[parameters('userAssignedIdentityResourceId')]"
+      ]
     }
+  }
 }
 ```
 

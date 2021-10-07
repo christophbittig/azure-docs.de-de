@@ -3,12 +3,12 @@ title: Onboarding von Servern mit Azure Arc-Unterstützung auf Azure Sentinel
 description: Hier erfahren Sie, wie Sie Ihre Server mit Azure Arc-Unterstützung zu Azure Sentinel hinzufügen und deren Sicherheitsstatus proaktiv überwachen.
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5c0af2c48db12eca6453415767e611b0993554ee
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: d37a6b62a5a3d95cc02090b4536db2076b2e1b5c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608267"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124837231"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Onboarding von Servern mit Azure Arc-Unterstützung auf Azure Sentinel
 
@@ -26,11 +26,11 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Anforderungen erfüll
 
 ## <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Onboarding von Servern mit Azure Arc-Unterstützung auf Azure Sentinel
 
-Azure Sentinel verfügt über eine Reihe von Connectors für Microsoft-Lösungen, die sofort verfügbar sind und Echtzeitintegration bieten. Für physische und virtuelle Computer können Sie den Log Analytics-Agenten installieren, mit dem die Protokolle gesammelt und an Azure Sentinel weitergeleitet werden. Server mit Arc-Unterstützung erlauben die Bereitstellung des Log Analytics-Agents mithilfe der folgenden Methoden:
+Azure Sentinel verfügt über eine Reihe von Connectors für Microsoft-Lösungen, die sofort verfügbar sind und Echtzeitintegration bieten. Für physische und virtuelle Computer können Sie den Log Analytics-Agenten installieren, mit dem die Protokolle gesammelt und an Azure Sentinel weitergeleitet werden. Azure Arc-aktivierte Server unterstützen die Bereitstellung des Protokollanalyse-Agenten mit den folgenden Methoden:
 
 - Verwenden des VM-Erweiterungen-Frameworks.
 
-    Mit dieser Funktion in Servern mit Azure Arc-Unterstützung können Sie die VM-Erweiterung für den Log Analytics-Agent auf einem Nicht-Azure-Windows- und/oder Linux-Server bereitstellen. VM-Erweiterungen können mit den folgenden Methoden auf Ihren hybriden Computern oder Servern verwaltet werden, die von Azure Arc-fähigen Servern verwaltet werden:
+    Mit dieser Funktion in Servern mit Azure Arc-Unterstützung können Sie die VM-Erweiterung für den Log Analytics-Agent auf einem Nicht-Azure-Windows- und/oder Linux-Server bereitstellen. VM-Erweiterungen können mit den folgenden Methoden auf Ihren hybriden Computern oder Servern verwaltet werden, die von Azure Arc-aktivierten Servern verwaltet werden:
 
     - Das [Azure-Portal](manage-vm-extensions-portal.md)
     - Die [Azure CLI](manage-vm-extensions-cli.md)
@@ -39,12 +39,12 @@ Azure Sentinel verfügt über eine Reihe von Connectors für Microsoft-Lösungen
 
 - Verwenden von Azure Policy.
 
-    Bei dieser Vorgehensweise verwenden Sie die integrierte Azure Policy-Richtlinie zum [Bereitstellen des Log Analytics Agent auf Linux- oder Windows-Azure Arc-Computern](../../governance/policy/samples/built-in-policies.md#monitoring), um zu überwachen, ob der Log Analytics-Agent auf dem Server mit Arc-Unterstützung installiert ist. Wenn der Agent nicht installiert ist, wird er automatisch über einen Wartungstask bereitgestellt. Wenn Sie alternativ die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Methode [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring), um den Log Analytics-Agent zu installieren und zu konfigurieren.
+    Bei diesem Ansatz verwenden Sie die in der Azure Policy [Protokollanalyse-Agent zu Linux oder Windows Azure Arc Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) integrierte Richtlinie, um zu prüfen, ob der Protokollanalyse-Agent auf dem Azure Arc-aktivierten Server installiert ist. Wenn der Agent nicht installiert ist, wird er automatisch über einen Wartungstask bereitgestellt. Wenn Sie alternativ die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Methode [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring), um den Log Analytics-Agent zu installieren und zu konfigurieren.
 
 Es wird empfohlen, den Log Analytics-Agent für Windows oder Linux mit Azure Policy zu installieren.
 
-Sobald Ihre Server mit Arc-Unterstützung verbunden sind, beginnt das Streaming Ihrer Daten zu Azure Sentinel. Sie können dann mit der Arbeit mit Ihren Daten loslegen. Sie können die Protokolle in den [integrierten Arbeitsmappen](/azure/sentinel/get-visibility) anzeigen und mit der Erstellung von Abfragen in Log Analytics beginnen, um [die Daten zu untersuchen](/azure/sentinel/investigate-cases).
+Sobald Ihre Server mit Arc-Unterstützung verbunden sind, beginnt das Streaming Ihrer Daten zu Azure Sentinel. Sie können dann mit der Arbeit mit Ihren Daten loslegen. Sie können die Protokolle in den [integrierten Arbeitsmappen](../../sentinel/get-visibility.md) anzeigen und mit der Erstellung von Abfragen in Log Analytics beginnen, um [die Daten zu untersuchen](../../sentinel/investigate-cases.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](/azure/sentinel/detect-threats-built-in).
+Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](../../sentinel/detect-threats-built-in.md).

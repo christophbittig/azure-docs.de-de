@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/18/2021
+ms.date: 09/15/2021
 ms.author: justinha
-ms.openlocfilehash: 0d7c3eeb184f7ceb09541ca9533203f4b45194bb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 10cf2da31aa65714516797b478ab00f6759b0aff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355093"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561778"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Funktionsweise von Vertrauensstellungen für Ressourcengesamtstrukturen in Azure Active Directory Domain Services
 
@@ -155,6 +155,9 @@ Ist das Konto nicht in der Datenbank vorhanden, ermittelt der Domänencontroller
 Wenn zwei Gesamtstrukturen über eine Gesamtstruktur-Vertrauensstellung verbunden sind, können Authentifizierungsanforderungen, die über das Kerberos V5- oder NTLM-Protokoll erfolgen, zwischen Gesamtstrukturen weitergeleitet werden, um Zugriff auf Ressourcen in beiden Gesamtstrukturen zu ermöglichen.
 
 Wenn eine Gesamtstruktur-Vertrauensstellung erstmals eingerichtet wird, sammelt jede Gesamtstruktur alle vertrauenswürdigen Namespaces in ihrer Partnergesamtstruktur und speichert die Informationen in einem [vertrauenswürdigen Domänenobjekt](#trusted-domain-object) (Trusted Domain Object, TDO). Vertrauenswürdige Namespaces umfassen Domänenstrukturnamen, UPN-Suffixe (User Principal Name, Benutzerprinzipalname), SPN-Suffixe (Service Principal Name, Dienstprinzipalname) und SID-Namespaces (Sicherheits-ID), die in der anderen Gesamtstruktur verwendet werden. Vertrauenswürdige Domänenobjekte werden in den globalen Katalog repliziert.
+
+>[!NOTE]
+>Alternative UPN-Suffixe für Vertrauensstellungen werden nicht unterstützt. Wenn eine lokale Domäne das gleiche UPN-Suffix wie Azure AD DS verwendet, muss für die Anmeldung **sAMAccountName** verwendet werden.  
 
 Damit Authentifizierungsprotokolle dem Gesamtstruktur-Vertrauenspfad folgen können, muss der Dienstprinzipalname (SPN) des Ressourcencomputers zu einem Speicherort in der anderen Gesamtstruktur aufgelöst werden. Ein SPN kann einer der folgenden Namen sein:
 

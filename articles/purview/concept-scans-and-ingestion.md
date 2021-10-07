@@ -4,15 +4,15 @@ description: In diesem Artikel werden Überprüfungen und Erfassungen in Azure P
 author: nayenama
 ms.author: nayenama
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 08/18/2021
-ms.openlocfilehash: 85509f1500936dfaa0d308b01912ce927f3f380f
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 42162519e9e8f3835498d8955adbd7c254775dd9
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122825226"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211713"
 ---
 # <a name="scans-and-ingestion-in-azure-purview"></a>Überprüfungen und Erfassung in Azure Purview
 
@@ -23,6 +23,16 @@ Dieser Artikel bietet eine Übersicht über die Features zur Überprüfung und E
 Nachdem Datenquellen in Ihrem Purview-Konto [registriert](manage-data-sources.md) wurden, besteht der nächste Schritt darin, die Datenquellen zu überprüfen. Der Überprüfungsprozess stellt eine Verbindung mit der Datenquelle her und erfasst technische Metadaten wie Namen, Dateigröße, Spalten usw. Bei diesem Prozess wird auch ein Schema für strukturierte Datenquellen extrahiert. Außerdem werden Klassifizierungen auf Schemas angewendet und [Vertraulichkeitsbezeichnungen zugewiesen, wenn Ihr Purview-Konto mit einem Microsoft 365 Security and Compliance Center (SCC)](create-sensitivity-label.md) verbunden ist. Der Überprüfungprozess kann sofort ausgelöst oder für eine regelmäßige Ausführung geplant werden, um Ihr Purview-Konto auf dem neuesten Stand zu halten.
 
 Bei jedem Prüfvorgang können Sie Anpassungen vornehmen, damit Sie Ihre Quellen nur nach den von Ihnen benötigten Informationen durchsuchen.
+
+### <a name="choose-an-authentication-method-for-your-scans"></a>Auswählen einer Authentifizierungsmethode für die Überprüfungen
+
+Purview ist standardmäßig sicher. Kennwörter oder Geheimnisse werden nicht direkt in Purview gespeichert, sodass Sie eine Authentifizierungsmethode für Ihre Quellen auswählen müssen. Es gibt vier Authentifizierungsmöglichkeiten für Ihr Purview-Konto. Allerdings werden nicht alle Methoden für jede Datenquelle unterstützt.
+ - Verwaltete Identität
+ - Dienstprinzipal
+ - SQL-Authentifizierung
+ - Kontoschlüssel- oder Standardauthentifizierung
+
+Nach Möglichkeit ist eine verwaltete Identität die bevorzugte Authentifizierungsmethode, da dadurch Speicherung und Verwaltung von Anmeldeinformationen für einzelne Datenquellen überflüssig werden. Dies kann den Zeitaufwand für Sie und Ihr Team für die Einrichtung und Problembehandlung der Authentifizierung für Überprüfungen erheblich verringern. Wenn Sie eine verwaltete Identität für Ihr Purview-Konto aktivieren, wird in Azure Active Directory eine Identität erstellt und an den Lebenszyklus Ihres Kontos gebunden. 
 
 ### <a name="scope-your-scan"></a>Festlegen des Bereichs für Ihre Überprüfung
 
@@ -36,6 +46,10 @@ Ein Prüfungsregelsatz legt fest, nach welchen Arten von Informationen bei einer
 
 Es gibt bereits [Regelsätze für Systemüberprüfungen](create-a-scan-rule-set.md#system-scan-rule-sets) für viele Datenquellentypen, aber Sie können auch [eigene Regelsätze für Überprüfungen ](create-a-scan-rule-set.md) erstellen, um Ihre Überprüfungen für Ihre Organisation anzupassen.
 
+### <a name="schedule-your-scan"></a>Planen der Überprüfung
+
+Purview bietet die Möglichkeit, Überprüfungen wöchentlich oder monatlich zu einem bestimmten, frei wählbaren Zeitpunkt durchzuführen. Wöchentliche Überprüfungen können für Datenquellen mit Strukturen geeignet sein, die sich aktiv in der Entwicklung befinden oder sich häufig ändern. Die monatliche Überprüfung ist besser für Datenquellen geeignet, die sich selten ändern. Es hat sich bewährt, zusammen mit dem Administrator der Quelle, die Sie überprüfen möchten, einen Zeitpunkt zu ermitteln, zu dem die Computeanforderungen an die Quelle gering sind.
+
 ### <a name="how-scans-detect-deleted-assets"></a>So werden gelöschte Ressourcen bei Scans erkannt
 
 Ein Azure Purview-Katalog kennt den Status eines Datenspeichers nur, wenn er ihn überprüft. Damit der Katalog weiß, ob eine Datei, eine Tabelle oder ein Container gelöscht wurde, vergleicht er die letzte Scanausgabe mit der aktuellen Scanausgabe. Angenommen, die letzte Überprüfung eines Azure Data Lake Storage Gen2-Kontos umfasste einen Ordner mit dem Namen *folder1*. Bei erneuter Überprüfung desselben Kontos ist *folder1* nicht vorhanden. Daher geht der Katalog davon aus, dass der Ordner gelöscht wurde.
@@ -47,6 +61,9 @@ Die Logik zum Erkennen fehlender Dateien funktioniert sowohl bei mehreren Scans 
 Um gelöschte Dateien aus Ihrem Katalog herauszuhalten, ist es wichtig, reguläre Scans auszuführen. Das Überprüfungsintervall ist wichtig, da der Katalog gelöschte Ressourcen erst erkennen kann, wenn eine andere Überprüfung ausgeführt wird. Wenn Sie also einmal pro Monat in einem bestimmten Speicher Überprüfungen ausführen, kann der Katalog gelöschte Datenressourcen in diesem Speicher erst erkennen, wenn Sie einen Monat später die nächste Überprüfung ausführen.
 
 Wenn Sie große Datenspeicher wie Data Lake Storage Gen2 auflisten, gibt es mehrere Möglichkeiten (einschließlich Enumerationsfehlern und gelöschter Ereignisse), Informationen zu übersehen. Eine bestimmte Überprüfung könnte übersehen, dass eine Datei erstellt oder gelöscht wurde. Solange der Katalog nicht sicher ist, dass eine bestimmte Datei gelöscht wurde, wird sie nicht aus dem Katalog gelöscht. Diese Strategie bedeutet, dass Fehler auftreten können, wenn eine Datei, die im überprüften Datenspeicher nicht vorhanden ist, noch im Katalog vorhanden ist. In einigen Fällen muss ein Datenspeicher möglicherweise zwei oder drei Mal gescannt werden, bevor bestimmte gelöschte Ressourcen abgefangen werden.
+
+> [!NOTE]
+> Ressourcen, die zum Löschen markiert sind, werden nach einer erfolgreichen Überprüfung gelöscht. Gelöschte Ressourcen sind möglicherweise noch einige Zeit im Katalog sichtbar, bevor sie verarbeitet und entfernt werden.
 
 ## <a name="ingestion"></a>Erfassung
 

@@ -5,18 +5,17 @@ description: Enthält eine Beschreibung der Kontingente und Grenzwerte für Azur
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 author: SimranArora904
 ms.author: siarora
 ms.date: 06/14/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 66fe4d7e5b145b5f32fc0a881c4a9270872d9cac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eddf1f5a77ef67de3ab6e1861ae44a19b07d8027
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355509"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425978"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 

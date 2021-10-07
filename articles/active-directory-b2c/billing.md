@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 08/26/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7b0b5a35a85a8b0564112d62401c722e65505f2e
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: be29232e78ff3cbfa2aec9f880e42774ad0b2376
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186225"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570085"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Abrechnungsmodell für Azure Active Directory B2C
 
@@ -69,14 +69,15 @@ Ein Abonnement, das mit einem Azure AD B2C-Mandanten verknüpft ist, kann für d
 ### <a name="create-the-link"></a>Erstellen des Links
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis mit dem zu verwendenden Azure-Abonnement (*nicht* das Verzeichnis mit dem Azure AD B2C-Mandanten) aus.
-3. Wählen Sie **Ressource erstellen** aus, geben Sie `Active Directory B2C` im Feld **Marketplace durchsuchen** ein, und wählen Sie dann **Azure Active Directory B2C** aus.
-4. Klicken Sie auf **Erstellen**.
-5. Wählen Sie **Vorhandenen Azure AD B2C Mandanten mit meinem Azure-Abonnement verknüpfen** aus.
-6. Wählen Sie in der Dropdownliste einen **Azure AD B2C-Mandanten** aus. Es werden nur die Mandanten angezeigt, bei denen Sie als globaler Administrator fungieren und die noch nicht mit einem Abonnement verknüpft sind. Das Feld **Name der Azure AD B2C-Ressource** wird mit dem Domänennamen des ausgewählten Azure AD B2C-Mandanten ausgefüllt.
-7. Wählen Sie ein aktives Azure-**Abonnement** aus, für das Sie Administratorrechte haben.
-8. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie dann den **Ressourcengruppenstandort** an. Die hier vorgenommenen Einstellungen für die Ressourcengruppe haben keine Auswirkungen auf den Standort, die Leistung oder den Abrechnungsstatus Ihres Azure AD B2C-Mandanten.
-9. Klicken Sie auf **Erstellen**.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihr Azure AD-Abonnement enthält, und nicht das Verzeichnis, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Wählen Sie **Ressource erstellen** aus, geben Sie `Active Directory B2C` im Feld **Marketplace durchsuchen** ein, und wählen Sie dann **Azure Active Directory B2C** aus.
+1. Klicken Sie auf **Erstellen**.
+1. Wählen Sie **Vorhandenen Azure AD B2C Mandanten mit meinem Azure-Abonnement verknüpfen** aus.
+1. Wählen Sie in der Dropdownliste einen **Azure AD B2C-Mandanten** aus. Es werden nur die Mandanten angezeigt, bei denen Sie als globaler Administrator fungieren und die noch nicht mit einem Abonnement verknüpft sind. Das Feld **Name der Azure AD B2C-Ressource** wird mit dem Domänennamen des ausgewählten Azure AD B2C-Mandanten ausgefüllt.
+1. Wählen Sie ein aktives Azure-**Abonnement** aus, für das Sie Administratorrechte haben.
+1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie dann den **Ressourcengruppenstandort** an. Die hier vorgenommenen Einstellungen für die Ressourcengruppe haben keine Auswirkungen auf den Standort, die Leistung oder den Abrechnungsstatus Ihres Azure AD B2C-Mandanten.
+1. Klicken Sie auf **Erstellen**.
 
     ![Die Seite zum Erstellen der Azure AD-B2C-Ressource im Azure-Portal](./media/billing/portal-01-create-b2c-resource-page.png)
 
@@ -90,15 +91,17 @@ Führen Sie zum Ändern Ihres Tarifs die folgenden Schritte aus.
 
 1. Melden Sie sich beim Azure-Portal an.
 
-2. Wählen Sie im obersten Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis mit dem Azure-Abonnement aus, mit dem Ihr Azure AD B2C-Mandant verknüpft ist. (Wählen Sie *nicht* den Azure AD B2C-Mandanten selbst aus.)
+1. Wählen Sie in der Symbolleiste im Portal das Symbol **Verzeichnisse und Abonnements** aus, um das Azure AD-Verzeichnis (und nicht den eigentlichen Azure AD B2C-Mandanten) auszuwählen, das Ihr Azure-Abonnement enthält, mit dem Ihr Azure B2C-Mandant verknüpft ist.
 
-3. Geben Sie im Suchfeld oben im Portal den Namen Ihres Azure AD B2C-Mandanten ein. Wählen Sie dann in den Suchergebnissen unter **Ressourcen** den Mandanten aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 
-4. Wählen Sie auf der Seite **Ressourcenübersicht** unter **Tarif** die Option **Ändern** aus.
+1. Geben Sie im Suchfeld oben im Portal den Namen Ihres Azure AD B2C-Mandanten ein. Wählen Sie dann in den Suchergebnissen unter **Ressourcen** den Mandanten aus.
+
+1. Wählen Sie auf der Seite **Ressourcenübersicht** unter **Tarif** die Option **Ändern** aus.
 
    ![Ändern des Tarifs](media/billing/change-pricing-tier.png)
  
-5. Wählen Sie den Tarif aus, der die Funktionen enthält, die Sie aktivieren möchten.
+1. Wählen Sie den Tarif aus, der die Funktionen enthält, die Sie aktivieren möchten.
 
    ![Auswählen des Tarifs](media/billing/select-tier.png)
 
@@ -111,22 +114,18 @@ Die Umstellung auf das MAU-Abrechnungsmodell ist **nicht umkehrbar**. Nachdem Si
 Im Folgenden wird erläutert, wie Sie für eine vorhandene Azure AD B2C-Ressource die Umstellung auf die MAU-Abrechnung vornehmen:
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) als Abonnementbesitzer mit Administratorzugriff auf die Azure AD B2C-Ressource an.
-
-2. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Azure AD B2C-Verzeichnis aus, für das Sie ein Upgrade auf die MAU-Abrechnung durchführen möchten.<br/>
-
-    ![Verzeichnis- und Abonnementfilter im Azure-Portal](./media/billing/portal-mau-01-select-b2c-directory.png)
-
-3. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
-
-4. Wählen Sie auf der Seite **Übersicht** des Azure AD B2C-Mandanten den Link unter **Ressourcenname** aus. Sie werden an die Azure AD B2C-Ressource in Ihrem Azure AD-Mandanten weitergeleitet.<br/>
+1. Wählen Sie in der Symbolleiste im Portal das Symbol **Verzeichnisse und Abonnements** aus, um das Azure AD B2C-Verzeichnis aus, für das Sie ein Upgrade auf die MAU-Abrechnung durchführen möchten.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
+1. Wählen Sie auf der Seite **Übersicht** des Azure AD B2C-Mandanten den Link unter **Ressourcenname** aus. Sie werden an die Azure AD B2C-Ressource in Ihrem Azure AD-Mandanten weitergeleitet.<br/>
 
     ![Hervorgehobener Link zur Azure AD B2C-Ressource im Azure-Portal](./media/billing/portal-mau-02-b2c-resource-link.png)
 
-5. Wählen Sie auf der Seite **Übersicht** für die Azure AD B2C-Ressource unter **Abrechenbare Einheiten** den Link **Pro Authentifizierung (Änderung in MAU)** aus.<br/>
+1. Wählen Sie auf der Seite **Übersicht** für die Azure AD B2C-Ressource unter **Abrechenbare Einheiten** den Link **Pro Authentifizierung (Änderung in MAU)** aus.<br/>
 
     ![Hervorgehobener Link für die Änderung in MAU im Azure-Portal](./media/billing/portal-mau-03-change-to-mau-link.png)
 
-6. Wählen Sie **Bestätigen** aus, um das Upgrade auf die MAU-Abrechnung abzuschließen.<br/>
+1. Wählen Sie **Bestätigen** aus, um das Upgrade auf die MAU-Abrechnung abzuschließen.<br/>
 
     ![Bestätigungsdialogfeld für die MAU-basierte Abrechnung im Azure-Portal](./media/billing/portal-mau-04-confirm-change-to-mau.png)
 

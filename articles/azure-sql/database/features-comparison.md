@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, mathoma, danil
-ms.date: 08/26/2021
-ms.openlocfilehash: 451dd198b5507b99400d4e1c8e1670e596016af1
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/21/2021
+ms.openlocfilehash: 1b503462b7ff6abd1000e96fa2f3cfd6f15d33fc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123308291"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658961"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>Featurevergleich: Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -52,7 +52,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Integrierte Funktionen](/sql/t-sql/functions/functions) | Die meisten (siehe einzelne Funktionen) | Ja – siehe [Gespeicherte Prozeduren, Funktionen, Trigger](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers) |
 | [BULK INSERT-Anweisung](/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server) | Ja, aber nur aus Azure Blob Storage als Quelle. | Ja, aber nur aus Azure Blob Storage als Quelle – siehe [Unterschiede](../managed-instance/transact-sql-tsql-differences-sql-server.md#bulk-insert--openrowset). |
 | [Zertifikate und asymmetrische Schlüssel](/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Ja, ohne Zugriff auf das Dateisystem für `BACKUP`- und `CREATE`-Vorgänge. | Ja, ohne Zugriff auf das Dateisystem für `BACKUP`- und `CREATE`-Vorgänge – siehe [Unterschiede zwischen Zertifikaten](../managed-instance/transact-sql-tsql-differences-sql-server.md#certificates). |
-| [Change Data Capture – CDC](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nein | Ja |
+| [Change Data Capture – CDC](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Ja (Vorschau) für S3-Tarif und höher. Basic, S0, S1 und S2 werden nicht unterstützt. | Ja |
 | [Sortierung – Server/Instanz](/sql/relational-databases/collations/set-or-change-the-server-collation) | Nein, es wird immer die standardmäßige Serversortierung `SQL_Latin1_General_CP1_CI_AS` verwendet. | Ja, kann festgelegt werden, wenn die [Instanz erstellt wird](../managed-instance/create-template-quickstart.md), eine spätere Aktualisierung ist nicht möglich. |
 | [ColumnStore-Indizes](/sql/relational-databases/indexes/columnstore-indexes-overview) | Ja – [Premium-Tarif, Standard-Tarif – mindestens S3, Tarif „Universell“, Tarife „Unternehmenskritisch“ und „Hyperscale“](/sql/relational-databases/indexes/columnstore-indexes-overview) |Ja |
 | [Common Language Runtime – CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nein | Ja, aber ohne Zugriff auf das Dateisystem in der `CREATE ASSEMBLY`-Anweisung – siehe [CLR-Unterschiede](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr) |

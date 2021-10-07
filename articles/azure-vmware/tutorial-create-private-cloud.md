@@ -2,19 +2,17 @@
 title: 'Tutorial: Bereitstellen einer privaten Azure VMware Solution-Cloud'
 description: Hier erfahren Sie, wie Sie eine private Azure VMware Solution-Cloud erstellen und bereitstellen.
 ms.topic: tutorial
-ms.date: 06/11/2021
-ms.openlocfilehash: d91e9fe9261aa4a04f5e5dffd3505742d9886623
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/29/2021
+ms.openlocfilehash: 164795bddcd7557a90f2d087cdd5a239a95d3a71
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730346"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274081"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>Tutorial: Bereitstellen einer privaten Azure VMware Solution-Cloud
 
 Die private Azure VMware Solution-Cloud ermöglicht das Bereitstellen eines vSphere-Clusters in Azure. Für jede erstellte private Cloud gibt es standardmäßig ein vSAN-Cluster. Sie können Cluster hinzufügen, löschen und skalieren.  Pro Cluster sind mindestens drei Hosts erforderlich. Später können nacheinander weitere Host hinzugefügt werden. Pro Cluster sind bis zu 16 Hosts möglich. Pro privater Cloud sind maximal vier Cluster möglich.  Die erste Bereitstellung von Azure VMware Solution verfügt über drei Hosts. 
-
-Testcluster stehen zu Bewertungszwecken zur Verfügung und sind auf drei Hosts begrenzt. Pro privater Cloud gibt es einen einzelnen Testcluster. Sie können einen Testcluster während des Evaluierungszeitraums unter Verwendung eines einzelnen Hosts skalieren.
 
 Sie verwenden vSphere und NSX-T Manager, um die meisten weiteren Aspekte der Clusterkonfiguration oder des Clusterbetriebs zu verwalten. Der gesamte lokale Speicher jedes Hosts in einem Cluster befindet sich unter der Kontrolle von vSAN.
 

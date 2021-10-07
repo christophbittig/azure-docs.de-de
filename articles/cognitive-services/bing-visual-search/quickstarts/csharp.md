@@ -3,20 +3,18 @@ title: 'Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API und
 titleSuffix: Azure Cognitive Services
 description: Hier wird beschrieben, wie Sie ein Bild mit der API für die visuelle Bing-Suche und C# hochladen und dann Erkenntnisse zum Bild abrufen.
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/22/2020
-ms.author: scottwhi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 83e4e2b1c1eb10f7a4cd0f2fb4f87b280801eed0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e2f2b1d21e36f059b3848e6f9a1a9d6ed02c05ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487115"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669453"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und C#
 

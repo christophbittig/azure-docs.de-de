@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6dd82d635199e4aa47a07e09b3c4649dbc4ef7cd
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: e17ec995ad9d8171d1d6a0b51b5112e4597d618f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "122643446"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656675"
 ---
 # <a name="media-services-v3-samples"></a>Media Services v3-Beispiele
 
@@ -31,7 +31,10 @@ Auf den einzelnen Registerkarten finden Sie eine Beschreibung und Links zu den B
 |-------------|-------------|
 | [Account/CreateAccount](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Account/CreateAccount)|Das Beispiel zeigt, wie Sie ein Media Services-Konto erstellen und das primäre Speicherkonto festlegen, sowie erweiterte Konfigurationseinstellungen, wie z. B. eine Liste zugelassener IP-Adressen für die Schlüsselübermittlung, verwaltete Identität, Speicherauthentifizierung und die Verwendung eigener Verschlüsselungsschlüssel.|
 | [VideoEncoding/Encoding_PredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_PredefinedPreset)|Das Beispiel zeigt die Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer integrierten Voreinstellung und der Eingabe einer HTTP-URL, zum Veröffentlichen des Ausgabeobjekts für das Streaming und zum Herunterladen der Ergebnisse zur Überprüfung.|
+| [VideoEncoding/Encoding_H264_ContentAware](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264_ContentAware) | Veranschaulicht die einfachste Nutzung der inhaltsbezogenen H.264-Codierung ohne Einschränkungen |
+| [VideoEncoding/Encoding_H264_ContentAware_Constrained](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264_ContentAware_Constrained) | Veranschaulicht die Verwendung der PresetConfigurations-Klasse zum Einschränken des Ausgabeverhaltens der Voreinstellung.|
 | [VideoEncoding/Encoding_H264](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264)|Das Beispiel zeigt die Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer benutzerdefinierten H.264-Codierungsvoreinstellung und Eingabe einer HTTP-URL, zum Veröffentlichen des Ausgabeobjekts für das Streaming und zum Herunterladen der Ergebnisse zur Überprüfung.|
+| [VideoEncoding/Encoding_HEVC_ContentAware](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC_ContentAware) | Zeigt die grundlegende Nutzung des HEVC-Codecs mit inhaltsbezogener Codierung und ohne Einschränkungen.  Die PresetConfigurations-Klasse wird auch für HEVC unterstützt und kann diesem Beispiel hinzugefügt werden.|
 | [VideoEncoding/Encoding_HEVC](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)|Das Beispiel zeigt die Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer benutzerdefinierten HEVC-Codierungsvoreinstellung und Eingabe einer HTTP-URL, zum Veröffentlichen des Ausgabeobjekts für das Streaming und zum Herunterladen der Ergebnisse zur Überprüfung.|
 | [VideoEncoding/Encoding_StitchTwoAssets](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets)|Das Beispiel zeigt die Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer JobInputSequence zum Zusammenfügen von zwei oder mehr Objekten, die möglicherweise durch die Start- oder Endzeit abgeschnitten werden. Die sich ergebende codierte Datei ist ein einzelnes Video, in dem alle Objekte zusammengefügt sind.  Im Beispiel werden zudem das Ausgabeobjekt für das Streaming veröffentlicht und die Ergebnisse zur Überprüfung heruntergeladen.|
 | [VideoEncoding/Encoding_SpriteThumbnail](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_SpriteThumbnail)|Das Beispiel zeigt die Vorgehensweise zum Übermitteln eines Auftrags mithilfe einer benutzerdefinierten Voreinstellung mit Miniaturbild-Sprite und Eingabe einer HTTP-URL, zum Veröffentlichen des Ausgabeobjekts für das Streaming und zum Herunterladen der Ergebnisse zur Überprüfung.|
@@ -45,6 +48,7 @@ Auf den einzelnen Registerkarten finden Sie eine Beschreibung und Links zu den B
 | [Streaming/AssetFilters](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/AssetFilters)|Das Beispiel zeigt die Vorgehensweise zum Erstellen einer Transformation mit integrierter AdaptiveStreaming-Voreinstellung, zum Übermitteln eines Auftrags, zum Erstellen eines Ressourcenfilters und Kontofilters, zum Zuordnen der Filter zu Streaming-Locators und zum Drucken von URLs für die Wiedergabe.|
 | [Streaming/StreamHLSAndDASH](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamHLSAndDASH)|Das Beispiel zeigt die Vorgehensweise zum Erstellen einer Transformation mit integrierter AdaptiveStreaming-Voreinstellung, zum Übermitteln eines Auftrags und zum Veröffentlichen eines Ausgabeobjekts für HLS- und DASH-Streaming.|
 | [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | Das Beispiel bietet Leitfäden und bewährte Methoden für ein Produktionssystem, das bedarfsgesteuerte Codierung oder Analysen verwendet. Als Leser sollten Sie mit dem Begleitartikel [Hochverfügbarkeit mit Media Services und VOD](architecture-high-availability-encoding-concept.md) beginnen. Es gibt eine separate Lösungsdatei, die für das Beispiel [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/HighAvailabilityEncodingStreaming/README.md) bereitgestellt wird. |
+| [Azure Functions für Media Services](https://github.com/xpouyat/media-services-v3-dotnet-core-functions-integration/tree/main/Functions)|Dieses Projekt enthält Beispiele für Azure Functions, die zur Videoverarbeitung eine Verbindung mit Azure Media Services v3 herstellen. Sie können Visual Studio 2019 oder Visual Studio Code verwenden, um die Funktionen zu entwickeln und auszuführen. Eine ARM-Vorlage (Azure Resource Manager) und ein GitHub Actions-Workflow stehen für die Bereitstellung der Funktionsressourcen und zum Aktivieren von Continuous Deployment zur Verfügung.|
 
 ## <a name="nodejs"></a>[Node.JS](#tab/node/)
 

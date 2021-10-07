@@ -3,12 +3,12 @@ title: Azure-Event Hubs als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Event Hubs-Ereignisse bereitgestellt werden
 ms.topic: conceptual
 ms.date: 09/15/2021
-ms.openlocfilehash: 48d982e27d9da83d16bfbaad1a24ad1c8991a065
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b29f7f104ca0616a27abb5009e5ec27262169f00
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128647421"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358824"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs als Event Grid-Quelle
 
@@ -101,7 +101,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -115,7 +115,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | `fileUrl` | Zeichenfolge | Der Pfad zur Erfassungsdatei. |
 | `fileType` | Zeichenfolge | Der Dateityp der Erfassungsdatei. |
@@ -126,6 +126,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | `lastSequenceNumber` | integer | Die größte Sequenznummer aus der Warteschlange. |
 | `firstEnqueueTime` | Zeichenfolge | Die erste Zeit aus der Warteschlange. |
 | `lastEnqueueTime` | Zeichenfolge | Die letzte Zeit aus der Warteschlange. |
+
 
 ## <a name="tutorials-and-how-tos"></a>Tutorials und Vorgehensweisen
 

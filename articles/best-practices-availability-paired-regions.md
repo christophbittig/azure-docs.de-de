@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/21/2021
 ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: 4fe0b913c003ccf4247833ba1dc12c4ec1e7248a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 030197a39ef10193887e3fc9966acd1979137291
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346195"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233122"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare
 
@@ -96,7 +96,7 @@ Abbildung 2 – Hypothetisches Azure-Regionspaar
 ## <a name="cross-region-activities"></a>Regionsübergreifende Aktivitäten
 Wie in Abbildung 2 dargestellt.
 
-1. **Azure Compute (IaaS)** : Sie müssen im Voraus zusätzliche Computeressourcen bereitstellen, um sicherzustellen, dass Ressourcen während eines Notfalls in einer anderen Region zur Verfügung stehen. Weitere Informationen finden Sie unter [Technischer Leitfaden zur Resilienz in Azure](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md). 
+1. **Azure Compute (IaaS)** : Sie müssen im Voraus zusätzliche Computeressourcen bereitstellen, um sicherzustellen, dass Ressourcen während eines Notfalls in einer anderen Region zur Verfügung stehen. 
 
 2. **Azure Storage**: Wenn Sie verwaltete Datenträger verwenden, machen Sie sich mit [regionsübergreifenden Sicherungen](/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) mit Azure Backup und der [Replikation von VMs](./site-recovery/azure-to-azure-tutorial-enable-replication.md) aus einer Region in eine andere mit Azure Site Recovery vertraut. Wenn Sie Speicherkonten verwenden, wird georedundanter Speicher (GRS) beim Erstellen eines Azure Storage-Kontos standardmäßig konfiguriert. Mithilfe von GRS werden Ihre Daten dreimal in der primären Region und dreimal im Regionspaar automatisch repliziert. Weitere Informationen finden Sie unter [Redundanzoptionen für Azure Storage](storage/common/storage-redundancy.md).
 

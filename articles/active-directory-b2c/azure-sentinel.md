@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: be45eaa692b0b8235541c798cf82ca26b14b9f3f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: ec68ca976b52c50c09bf86c90c56304f05051b66
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691536"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740253"
 ---
 # <a name="tutorial-configure-security-analytics-for-azure-active-directory-b2c-data-with-azure-sentinel"></a>Tutorial: Sicherheitsanalysen für Azure Active Directory B2C-Daten mit Azure Sentinel konfigurieren
 
@@ -40,7 +40,7 @@ In diesem Tutorial erhalten Sie Informationen zu den folgenden Vorgängen:
 
 Aktivieren Sie **Diagnoseeinstellungen** in Azure AD in Ihrem Azure AD B2C Mandanten, um zu definieren, wohin Protokolle und Metriken für eine Ressource gesendet werden sollen.
 
-Konfigurieren Sie anschließend [Azure AD B2C so, dass Protokolle an Azure Monitor gesendet werden](https://docs.microsoft.com/azure/active-directory-b2c/azure-monitor).
+Konfigurieren Sie anschließend [Azure AD B2C so, dass Protokolle an Azure Monitor gesendet werden](./azure-monitor.md).
 
 ## <a name="deploy-an-azure-sentinel-instance"></a>Bereitstellen einer Azure Sentinel-Instanz
 
@@ -73,13 +73,13 @@ Nachdem Sie Ihre Azure AD B2C Instanz zum Senden von Protokollen an Azure Monito
 
 Nachdem Sie Azure Sentinel aktiviert haben, werden Sie benachrichtigt, wenn in Ihrem Azure AD B2C-Mandanten etwas Verdächtiges auftritt.
 
-Für das Entdecken von Bedrohungen und anormalen Verhaltensweisen in Ihrer Umgebung können Sie [benutzerdefinierte Analyseregeln](../sentinel/tutorial-detect-threats-custom.md) erstellen. Diese Regeln suchen nach bestimmten Ereignissen oder Ereignisgruppen und warnen Sie, wenn bestimmte Schwellenwerte oder Bedingungen erreicht werden. Sie generieren dann Vorfälle für weitere Untersuchungen.
+Für das Entdecken von Bedrohungen und anormalen Verhaltensweisen in Ihrer Umgebung können Sie [benutzerdefinierte Analyseregeln](../sentinel/detect-threats-custom.md) erstellen. Diese Regeln suchen nach bestimmten Ereignissen oder Ereignisgruppen und warnen Sie, wenn bestimmte Schwellenwerte oder Bedingungen erreicht werden. Sie generieren dann Vorfälle für weitere Untersuchungen.
 
 Im folgenden Beispiel wird das Szenario erläutert, in dem Sie eine Benachrichtigung erhalten, wenn jemand versucht, den Zugriff auf Ihre Umgebung zu erzwingen, dies aber nicht erfolgreich ist. Dies kann einen Brute-Force-Angriff bedeuten. Sie möchten über zwei oder mehr nicht erfolgreiche Anmeldungen innerhalb von 60 Sekunden benachrichtigt werden.
 
 1. Wählen Sie im Azure Sentinel-Navigationsmenü die Option **Analysen** aus.
 
-2. Wählen Sie auf der Aktionsleiste die Option **+ Erstellen** und anschließend **Geplante Abfrageregel** aus. Der **Assistent für Analyseregeln** wird geöffnet.
+2. Wählen Sie auf der Aktionsleiste die Option **+ Erstellen** und anschließend **Geplante Abfrageregel** aus. Dadurch wird der **Assistent für Analyseregeln** geöffnet.
 
 ![Bild zeigt „Geplante Abfrageregel erstellen“ ausgewählt](./media/azure-sentinel/create-scheduled-rule.png)
 
@@ -116,7 +116,7 @@ Legen Sie im Abschnitt Abfrageplanung die folgenden Parameter fest:
 8. Zeigen Sie die Ergebnisse Ihrer neuen Azure AD B2C-Regel für nicht erfolgreiche Anmeldungen an. Navigieren Sie zur Seite **Vorfälle**. Hier können Sie Bedrohungen eingrenzen, untersuchen und beseitigen. Ein Vorfall kann mehrere Warnungen enthalten. Es ist eine Aggregation aller relevanten Beweise für eine bestimmte Untersuchung. Sie können Eigenschaften wie Schweregrad und Status auf einer Vorfallebene festlegen.
 
 >[!Note]
->Ein wichtiges Feature von Azure Sentinel ist die [Untersuchung von Vorfällen](../sentinel/tutorial-investigate-cases.md).
+>Ein wichtiges Feature von Azure Sentinel ist die [Untersuchung von Vorfällen](../sentinel/investigate-cases.md).
 
 9. Wählen Sie einen bestimmten Vorfall aus, um mit der Untersuchung zu beginnen. Rechts sehen Sie ausführliche Informationen zum Vorfall, einschließlich des Schweregrads, der betroffenen Entitäten, der ursprünglichen Ereignisse, die diesen Vorfall ausgelöst haben sowie der eindeutigen ID des Vorfalls.
 

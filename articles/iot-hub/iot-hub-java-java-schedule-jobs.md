@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-java
-ms.openlocfilehash: 8a3ae9c425ed3ef34977f443c09ffb4b88c7a497
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d4b64e64cc613f51c41ee2346b0ced9fc8dc42d1
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355995"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456478"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Planen und Übertragen von Aufträgen (Java)
 
@@ -326,7 +326,7 @@ In diesem Abschnitt erstellen Sie eine Java-Konsolen-App, mit der die vom IoT Hu
     > [!NOTE]
     > Sie finden die aktuelle Version von **iot-device-client** mithilfe der [Maven-Suche](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
-4. Fügen Sie dem Knoten **dependencies** die folgende Abhängigkeit hinzu. Mit dieser Abhängigkeit wird ein NOP für die Apache [SLF4J](https://www.slf4j.org/)-Protokollierungsfassade konfiguriert, die vom Geräteclient-SDK zum Implementieren der Protokollierung verwendet wird. Diese Konfiguration ist optional, aber wenn Sie sie weglassen, wird in der Konsole beim Ausführen der App ggf. eine Warnung angezeigt. Weitere Informationen zur Protokollierung im Geräteclient-SDK finden Sie unter [Logging](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging) (Protokollierung) in der Infodatei *Samples for the Azure IoT device SDK for Java* (Beispiele für das Azure IoT-Geräte-SDK für Java).
+4. Fügen Sie dem Knoten **dependencies** die folgende Abhängigkeit hinzu. Mit dieser Abhängigkeit wird ein NOP für die Apache [SLF4J](https://www.slf4j.org/)-Protokollierungsfassade konfiguriert, die vom Geräteclient-SDK zum Implementieren der Protokollierung verwendet wird. Diese Konfiguration ist optional, aber wenn Sie sie weglassen, wird in der Konsole beim Ausführen der App ggf. eine Warnung angezeigt. Weitere Informationen zur Protokollierung im Geräteclient-SDK finden Sie unter [Logging](https://github.com/Azure/azure-iot-sdk-java/blob/main/device/iot-device-samples/readme.md#logging) (Protokollierung) in der Infodatei *Samples for the Azure IoT device SDK for Java* (Beispiele für das Azure IoT-Geräte-SDK für Java).
 
     ```xml
     <dependency>

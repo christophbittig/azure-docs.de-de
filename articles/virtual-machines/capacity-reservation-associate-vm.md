@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 6253039c2c256e421815cad30f06780bc6c89694
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c4aa31c94accf9aad13c54cf3680298476bf016d
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124774346"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532670"
 ---
 # <a name="associate-a-vm-to-a-capacity-reservation-group-preview"></a>Zuordnen einer VM zu einer Kapazitätsreservierungsgruppe (Vorschau) 
 
@@ -22,11 +22,6 @@ Dieser Artikel führt Sie durch die Schritte zum Zuordnen eines neuen oder vorha
 > [!IMPORTANT]
 > Die Kapazitätsreservierung befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-
-## <a name="register-for-capacity-reservation"></a>Registrieren für Kapazitätsreservierung 
-
-Bevor Sie das Feature zur Kapazitätsreservierung verwenden können, müssen Sie [Ihr Abonnement für die Vorschauversion registrieren](capacity-reservation-overview.md#register-for-capacity-reservation). Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Featureregistrierung abzuschließen.
 
 ## <a name="associate-a-new-vm"></a>Zuordnen eines neuen virtuellen Computers
 
