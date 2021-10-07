@@ -4,12 +4,12 @@ description: Sie können Azure Video Analyzer für fortlaufende oder ereignisbas
 ms.service: azure-video-analyzer
 ms.topic: tutorial
 ms.date: 09/08/2021
-ms.openlocfilehash: 68eb62e126065a6c39b5fd6648afb4b96accbd2d
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 925050ccc3650db3afa4a4e4181a7d245c53f9e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129401919"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605188"
 ---
 # <a name="tutorial-real-time-visualization-of-ai-inference-events-with-power-bi"></a>Tutorial: Echtzeitvisualisierung von KI-Rückschlussereignissen mit Power BI
 
@@ -30,14 +30,14 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 - [Überwachung und Protokollierung](monitor-log-edge.md) in Video Analyzer
 - Lesen von [D2C-Nachrichten von den integrierten Endpunkten von IoT Hub](../../iot-hub/iot-hub-devguide-messages-read-builtin.md)
-- Einführung in [Power BI-Dashboards](/power-bi/create-reports/service-dashboards)
+- Einführung in [Power BI-Dashboards](https://docs.microsoft.com/power-bi/create-reports/service-dashboards)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keins besitzen.
 - Dieses Tutorial basiert auf der Verwendung des [Linienüberquerungsbeispiels](use-line-crossing.md), in dem erkannt werden soll, wenn Objekte in einem Livevideofeed eine virtuelle Linie überschreiten. Sie können sich entscheiden, Visualisierungen für andere Pipelines zu erstellen – **eine Pipeline mit einer IoT Hub-Nachrichtensenke ist Voraussetzung**. Vergewissern Sie sich, dass Sie die Livepipeline erstellt haben, aktivieren Sie sie jedoch erst, nachdem Sie einen Stream Analytics-Auftrag erstellt haben.
 
-  > [!TIP]
+  > [!NOTE]
   >
   > - Das [Linienüberquerungsbeispiel](use-line-crossing.md) verwendet eine fünfminütige Videoaufzeichnung. Zum Erzielen optimaler Ergebnisse bei der Visualisierung sollten Sie die 60-minütige Aufzeichnung von Fahrzeugen auf einem Freeway verwenden, die unter [Anderes Dataset](https://github.com/Azure/video-analyzer/tree/main/media#other-dataset) verfügbar ist.
   > - Informationen zum Hinzufügen von Beispielvideodateien zum RTSP-Simulator finden Sie im Abschnitt „Konfiguration und Bereitstellung“ unter [Häufig gestellte Fragen](faq-edge.yml). Bearbeiten Sie nach dem Hinzufügen den Wert von `rtspUrl`, sodass er auf die neue Videodatei verweist.
@@ -146,7 +146,7 @@ Wählen Sie im Stream Analytics-Auftrag „Overview“ und dann **Starten** > **
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/power-bi/start-asa.png" alt-text="Screenshot: Starten und Ausführen eines Stream Analytics-Auftrags.":::
 
-> [!TIP]
+> [!NOTE]
 > IoT Hub ermöglicht die Datenaufbewahrung in den integrierten Event Hubs, standardmäßig für einen und maximal für bis zu sieben Tage. Sie können die Aufbewahrungsdauer bei der Erstellung Ihres IoT Hubs festlegen. Die Datenaufbewahrungsdauer in IoT Hub hängt von Ihrer IoT Hub-Ebene und dem Typ der Einheit ab. Weitere Informationen finden Sie [hier](../../iot-hub/iot-hub-devguide-messages-read-builtin.md). Verwenden Sie für eine längere Datenaufbewahrung [Azure Storage als Ausgabe](../../stream-analytics/blob-storage-azure-data-lake-gen2-output.md), und stellen Sie dann eine Verbindung von Power BI mit den Dateien im Speicherkonto her.
 
 ## <a name="run-a-sample-pipeline"></a>Ausführen einer Beispielpipeline
@@ -161,7 +161,7 @@ In Power BI können Sie Streamingdaten auf zwei Arten visualisieren:
 2. Eine Dashboardkachel mit benutzerdefiniertem Dataset
 
    > [!NOTE]
-   > In diesem Artikel verwenden wir die erste Methode, um Berichte zu erstellen, die wir dann an das Dashboard anheften. Diese Methode behält Daten im Visual für einen längeren Zeitraum bei und aggregiert automatisch auf der Grundlage der eingehenden Daten. Weitere Informationen zur zweiten Methode finden Sie unter [Einrichten eines benutzerdefinierten Streaming-Datasets in Power BI](/power-bi/connect-data/service-real-time-streaming#set-up-your-real-time-streaming-dataset-in-power-bi).
+   > In diesem Artikel verwenden wir die erste Methode, um Berichte zu erstellen, die wir dann an das Dashboard anheften. Diese Methode behält Daten im Visual für einen längeren Zeitraum bei und aggregiert automatisch auf der Grundlage der eingehenden Daten. Weitere Informationen zur zweiten Methode finden Sie unter [Einrichten eines benutzerdefinierten Streaming-Datasets in Power BI](https://docs.microsoft.com/power-bi/connect-data/service-real-time-streaming#set-up-your-real-time-streaming-dataset-in-power-bi).
 
 ### <a name="create-and-publish-a-power-bi-report"></a>Erstellen und Veröffentlichen eines Power BI-Berichts
 
@@ -199,7 +199,7 @@ Optional können Sie auch [ein Playerwidget einbetten](embed-player-in-power-bi.
 > :::image type="content" source="./media/power-bi/pinned-dashboard.png" alt-text="Power BI Dashboard mit angeheftetem Bericht und in einer Kachel hinzugefügtem Widgetplayer.":::
 
 > [!NOTE]
-> Die Videowiedergabe und die Berichterstellung sind aufgrund der zum Generieren von Berichten verwendeten Methode nicht synchron. Informationen zu einem näher an Echtzeit orientierten Ergebnis finden Sie unter [Einrichten eines benutzerdefinierten Streaming-Datasets in Power BI](/power-bi/connect-data/service-real-time-streaming#set-up-your-real-time-streaming-dataset-in-power-bi).
+> Die Videowiedergabe und die Berichterstellung sind aufgrund der zum Generieren von Berichten verwendeten Methode nicht synchron. Informationen zu einem näher an Echtzeit orientierten Ergebnis finden Sie unter [Einrichten eines benutzerdefinierten Streaming-Datasets in Power BI](https://docs.microsoft.com/power-bi/connect-data/service-real-time-streaming#set-up-your-real-time-streaming-dataset-in-power-bi).
 
 ## <a name="interpret-the-dashboard"></a>Interpretieren des Dashboards
 

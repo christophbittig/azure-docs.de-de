@@ -10,12 +10,12 @@ ms.date: 09/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 395b3d14571b9cf8ab2080c77aadf686dc8aea29
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7f0c0928a32807844d57eb91a903994a0264e460
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128599277"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534377"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Konfigurieren der Objektreplikation für Blockblobs
 
@@ -45,7 +45,7 @@ Wenn Sie die Objektreplikation im Azure-Portal konfigurieren, müssen Sie nur di
 Führen Sie die folgenden Schritte aus, um eine Replikationsrichtlinie im Azure-Portal zu erstellen:
 
 1. Navigieren Sie im Azure-Portal zum Quellspeicherkonto.
-1. Wählen Sie unter **Blob-Dienst** die Option **Objektreplikation** aus.
+1. Wählen Sie unter **Datenverwaltung** die Option **Objektreplikation** aus.
 1. Wählen Sie **Replikationsregeln einrichten** aus.
 1. Wählen Sie das Zielabonnement und das Zielspeicherkonto aus.
 1. Wählen Sie im Abschnitt **Containerpaare** einen Quellcontainer aus dem Quellkonto und einen Zielcontainer aus dem Zielkonto aus. Sie können bis zu 10 Containerpaare pro Replikationsrichtlinie erstellen.

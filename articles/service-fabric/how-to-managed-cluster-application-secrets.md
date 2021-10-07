@@ -3,12 +3,12 @@ title: Bereitstellen von Anwendungsgeheimnissen in verwalteten Service Fabric-Cl
 description: Erfahren Sie mehr über Azure Service Fabric-Anwendungsgeheimnisse und deren Bereitstellung in verwalteten Clustern.
 ms.topic: how-to
 ms.date: 8/23/2021
-ms.openlocfilehash: 81fbd254f6aee216661e720a73c97e89351a9fad
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 5b31e06b88d38ab0d5500e69b6733e739e2b3dae
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867345"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544733"
 ---
 # <a name="deploy-application-secrets-to-a-service-fabric-managed-cluster"></a>Bereitstellen von Anwendungsgeheimnissen in verwalteten Service Fabric-Clustern
 
@@ -62,26 +62,25 @@ Verwaltete Service Fabric-Cluster unterstützen zwei Methoden zum Hinzufügen ve
 
 ```json
 {
-    "apiVersion": "2021-05-01",
-    "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
-    "properties": {
-        "vmSecrets": [
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+  "properties": {
+    "vmSecrets": [
+      {
+        "sourceVault": {
+          "id": "/subscriptions/{subscriptionid}/resourceGroups/myrg1/providers/Microsoft.KeyVault/vaults/mykeyvault1"
+        },
+        "vaultCertificates": [
           {
-            "sourceVault": {
-              "id": "/subscriptions/{subscriptionid}/resourceGroups/myrg1/providers/Microsoft.KeyVault/vaults/mykeyvault1"
-            },
-            "vaultCertificates": [
-              {
-                "certificateStore": "MY",
-                "certificateUrl": "https://mykeyvault1.vault.azure.net/certificates/{certificatename}/{secret-version}"
-              }
-            ]
+            "certificateStore": "MY",
+            "certificateUrl": "https://mykeyvault1.vault.azure.net/certificates/{certificatename}/{secret-version}"
           }
         ]
-    }    
+      }
+    ]
+  }
 }
 ```
-
 
 <!-- Links -->
 [key-vault-get-started]:../key-vault/general/overview.md

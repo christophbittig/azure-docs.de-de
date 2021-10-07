@@ -5,12 +5,12 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 40c3d2dba3d41c7651846d09d01dd7afdce15af9
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: cf2461484d290dc05912121a6964b42ca58194cc
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112967059"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455520"
 ---
 # <a name="how-to-manage-startstop-vms-v2-preview"></a>Verwalten von „VMs starten/beenden v2 (Vorschau)“
 
@@ -21,9 +21,6 @@ ms.locfileid: "112967059"
 Die Protokolldaten, die auf jeder Kachel im Dashboard angezeigt werden, werden stündlich aktualisiert, können mit einer Option für die manuelle Aktualisierung bei Bedarf aktualisiert werden (durch Klicken auf das Symbol **Aktualisieren** für eine bestimmte Visualisierung) oder werden durch eine Aktualisierung des gesamten Dashboards aktualisiert.
 
 Weitere Informationen zum Arbeiten mit einem protokollbasierten Dashboard finden Sie im folgenden [Tutorial](../../azure-monitor/visualize/tutorial-logs-dashboards.md).
-
-> [!NOTE]
-> Wenn Probleme während der Bereitstellung bzw. Verwendung von „VMs starten/beenden v2 (Vorschau)“ auftreten oder Sie eine Frage hierzu haben, können Sie ein Issue unter [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) senden. Das Erstellen eines Azure-Supportvorfalls über die [Azure-Supportwebsite](https://azure.microsoft.com/support/options/) ist für diese Vorschauversion nicht verfügbar. 
 
 ## <a name="configure-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen
 

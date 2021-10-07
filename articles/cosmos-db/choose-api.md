@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/12/2021
-ms.openlocfilehash: 8e512c06901a533ef381bc389def45f07e8a028d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6d13f5f79da2906d1b994d4ab83e06d0593eaefe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123101996"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586637"
 ---
 # <a name="choose-an-api-in-azure-cosmos-db"></a>Auswählen einer API in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -51,8 +51,8 @@ Wenn Sie von anderen Datenbanken wie Oracle, DynamoDB, HBase usw. migrieren und 
 ### <a name="capacity-planning-for-migration-to-api-for-mongodb"></a>Kapazitätsplanung für die Migration zur API für MongoDB
 
 Sie möchten die Kapazitätsplanung für eine Migration zur SQL-API für Azure Cosmos DB aus einem vorhandenen Datenbankcluster durchführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
-    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Shard-Datenbankcluster und replizierten Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
-    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
+* Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Shard-Datenbankcluster und replizierten Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md).
+* Sollten Sie die typischen Anforderungsraten Ihrer aktuellen Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md).
 
 ## <a name="api-for-mongodb"></a>API für MongoDB
 
@@ -65,8 +65,8 @@ Die API für MongoDB ist mit den MongoDB-Serverversionen 4.0, 3.6 und 3.2 kompa
 ### <a name="capacity-planning-for-migration-to-api-for-mongodb"></a>Kapazitätsplanung für die Migration zur API für MongoDB
 
 Sie möchten die Kapazitätsplanung für eine Migration zur Azure Cosmos DB-API für MongoDB aus einem vorhandenen Datenbankcluster durchführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
-    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
-    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](./mongodb/estimate-ru-capacity-planner.md)
+* Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md).
+* Sollten Sie die typischen Anforderungsraten Ihrer aktuellen Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](./mongodb/estimate-ru-capacity-planner.md).
 
 ## <a name="cassandra-api"></a>Cassandra-API
 
@@ -84,7 +84,7 @@ Die Gremlin-API von Azure Cosmos DB basiert auf dem Graphcomputingframework [Ap
 
 Diese API speichert Daten im Schlüssel-Wert-Format. Wenn Sie derzeit Azure Table Storage verwenden, können Sie möglicherweise einige Einschränkungen bei Latenz, Skalierung, Durchsatz, globaler Verteilung, Indexverwaltung und eine niedrige Abfrageleistung feststellen. Die Tabellen-API überwindet diese Einschränkungen und wird zum Migrieren Ihrer App empfohlen, wenn Sie die Vorteile von Azure Cosmos DB nutzen möchten. Die Tabellen-API unterstützt nur OLTP-Szenarien.
 
-Anwendungen, die für Azure Table Storage geschrieben wurden, können mit geringfügigen Codeänderungen zur Tabellen-API migriert werden und Premium-Funktionen nutzen. Weitere Informationen finden Sie im Artikel zur [Tabellen-API](introduction.md).
+Anwendungen, die für Azure Table Storage geschrieben wurden, können mit geringfügigen Codeänderungen zur Tabellen-API migriert werden und Premium-Funktionen nutzen. Weitere Informationen finden Sie im Artikel zur [Tabellen-API](table/introduction.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

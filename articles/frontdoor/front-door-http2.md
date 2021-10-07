@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 20d45f5966aca3df89e17e03aa6120a4ddf5c5b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc5679036eb241abc82a57779e41e2d667238216
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91448696"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601424"
 ---
 # <a name="http2-support-in-azure-front-door"></a>HTTP/2-Unterstützung in Azure Front Door
 
 Derzeit ist die HTTP/2-Unterstützung für alle Azure Front Door-Konfigurationen aktiviert. Es ist keine weitere Aktion vom Kunden erforderlich.
 
-HTTP/2 ist eine wichtige Überarbeitung von HTTP/1.1, die eine schnellere Webleistung bietet, indem die Reaktionszeit reduziert wird. HTTP/2 wird ausgeführt, indem die vertrauten HTTP-Methoden, Statuscodes und Semantiken beibehalten werden, um die Benutzererfahrung zu verbessern. Obwohl HTTP/2 darauf ausgelegt ist, unter HTTP und HTTPS zu funktionieren, unterstützen viele Clientwebbrowser HTTP/2 nur über TLS (Transport Layer Security).
+HTTP/2 ist eine wichtige Überarbeitung von HTTP/1.1, die eine schnellere Webleistung bietet, indem die Reaktionszeit reduziert wird. HTTP/2 behält die bekannten HTTP-Methoden, Statuscodes und die Semantik von HTTP/1.1 bei, um die Benutzerfreundlichkeit zu verbessern. Obwohl HTTP/2 darauf ausgelegt ist, unter HTTP und HTTPS zu funktionieren, unterstützen viele Clientwebbrowser HTTP/2 nur über TLS (Transport Layer Security).
 
 > [!NOTE]
 > Die Unterstützung des HTTP/2-Protokolls ist nur für Anforderungen von Clients an Front Door verfügbar. Die Kommunikation von Front Door zu Back-Ends im Back-End-Pool erfolgt über HTTP/1.1. 
@@ -33,11 +33,11 @@ HTTP/2 bietet unter anderem folgende Vorteile:
 
 *   **Multiplexing und Parallelität**
 
-    Bei der Verwendung von HTTP 1.1 benötigt man für die Anforderung mehrerer Ressourcen mehrere TCP-Verbindungen, und mit jeder Verbindung ist Leistungsaufwand verbunden. HTTP/2 ermöglicht die Anforderung mehrerer Ressourcen über eine einzelne TCP-Verbindung.
+    Mit HTTP 1.1 sind für mehrere Anforderungen von Ressourcen mehrere TCP-Verbindungen erforderlich, und jede Verbindung verursacht ihre eigenen Leistungskosten. HTTP/2 ermöglicht die Anforderung mehrerer Ressourcen über eine einzelne TCP-Verbindung.
 
 *   **Header-Komprimierung**
 
-    Durch das Komprimieren von HTTP-Headern für bereitgestellte Ressourcen wird die Zeit bei der Übertragung erheblich reduziert.
+    Durch die Komprimierung der HTTP-Header für bereitgestellte Ressourcen werden deutlich weniger Daten über die Leitung gesendet.
 
 *   **Datenstrom-Abhängigkeiten**
 

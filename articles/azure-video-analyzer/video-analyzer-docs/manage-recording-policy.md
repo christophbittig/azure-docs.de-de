@@ -4,12 +4,12 @@ description: In diesem Thema wird erklärt, wie Sie die Aufzeichnungsrichtlinie 
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 95e5decc8092c6a40e368c395da61fd8b9904e30
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e4d05733db5739087ac1f6b64f87436a018c5883
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761997"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277838"
 ---
 # <a name="manage-recording-policy-with-video-analyzer"></a>Verwalten der Aufzeichnungsrichtlinie mit Azure Video Analyzer
 
@@ -43,7 +43,7 @@ Ihr Video Analyzer-Konto ist mit einem Microsoft Azure-Speicherkonto verknüpft,
 Für die obige Regel gilt Folgendes:
 
 * Sie gilt für alle Blockblobs im Speicherkonto.
-* Sie gibt an, dass die Blobs, die älter als 30 Tage sind, von der [heißen in die kalte Speicherebene](../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal) verschoben werden.
+* Sie gibt an, dass die Blobs, die älter als 30 Tage sind, von der [heißen in die kalte Speicherebene](../../storage/blobs/access-tiers-overview.md?tabs=azure-portal) verschoben werden.
 * Wenn Blobs älter als 90 Tage sind, müssen sie gelöscht werden.
 
 Wenn Sie Azure Video Analyzer zum Aufzeichnen in einer Videoressource verwenden, spezifizieren Sie eine `segmentLength`Funktion, welche die Mindestdauer des Videos (in Sekunden) angibt, die angehängt werden soll, bevor es in das Speicherkonto geschrieben wird. Ihre Videoressource enthält eine Reihe von Segmenten, von denen jedes einen um `segmentLength` neueren Erstellungszeitstempel als das vorherige hat. Wenn die Richtlinie für die Lebenszyklusverwaltung greift, werden Segmente gelöscht, die älter als der angegebene Schwellenwert sind. Sie können jedoch weiterhin über die Azure Video Analyzer-APIs auf die verbleibenden Segmente zugreifen und diese wiedergeben. Weitere Informationen finden Sie unter [Wiedergeben von Aufzeichnungen](playback-recordings-how-to.md). 

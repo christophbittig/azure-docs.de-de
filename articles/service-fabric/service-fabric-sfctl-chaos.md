@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: f59eb3296c27e64eb6a4644b2f455e3704381f49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d140f5f71413524dc60d0d07bdc6b646ac552a1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86260838"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351151"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Ermöglicht es, den Chaos-Testdienst zu starten und zu beenden sowie seine Berichte anzuzeigen.
@@ -21,7 +21,7 @@ Ermöglicht es, den Chaos-Testdienst zu starten und zu beenden sowie seine Beric
 | [schedule](service-fabric-sfctl-chaos-schedule.md) | Ruft den Zeitplan des Chaostests ab und legt diesen fest. |
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Befehl|BESCHREIBUNG|
 | --- | --- |
 | events | Ruft das jeweils nächste Segment der Chaostestereignisse basierend auf dem Fortsetzungstoken oder Zeitbereich ab. |
 | get | Ruft den Status des Chaostests ab. |
@@ -77,7 +77,7 @@ Ruft den Status des Chaostests ab, wobei der Ausführungsstatus des Chaostests, 
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
 Startet Chaos im Cluster
 
-Startet Chaos mit den übergebenen Chaos-Parametern, wenn Chaos noch nicht im Cluster ausgeführt wird. Wenn Chaos bei der Ausführung dieses Aufrufs bereits ausgeführt wird, führt der Aufruf zu einem Fehler mit dem Fehlercode FABRIC_E_CHAOS_ALREADY_RUNNING. Weitere Informationen finden Sie im Artikel [Auslösen von kontrolliertem Chaos in Service Fabric-Clustern](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos).
+Startet Chaos mit den übergebenen Chaos-Parametern, wenn Chaos noch nicht im Cluster ausgeführt wird. Wenn Chaos bei der Ausführung dieses Aufrufs bereits ausgeführt wird, führt der Aufruf zu einem Fehler mit dem Fehlercode FABRIC_E_CHAOS_ALREADY_RUNNING. Weitere Informationen finden Sie im Artikel [Auslösen von kontrolliertem Chaos in Service Fabric-Clustern](service-fabric-controlled-chaos.md).
 
 ### <a name="arguments"></a>Argumente
 

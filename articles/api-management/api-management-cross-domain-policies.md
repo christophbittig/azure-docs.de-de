@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2021
 ms.author: danlep
-ms.openlocfilehash: d5f15b6d3ba1b006c3495c6c7db693814f68a823
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f63a8e9f083256cb68a23d69e49d44d9bbfd57de
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601043"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429469"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Domänenübergreifende API Management-Richtlinien)
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
@@ -37,7 +37,7 @@ Verwenden Sie die `cross-domain`-Richtlinie, um die API von browserbasierten Ado
 ```xml
 <cross-domain>
     <!-Policy configuration is in the Adobe cross-domain policy file format,
-        see https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html-->
+        see https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/CrossDomain_PolicyFile_Specification.pdf-->
 </cross-domain>
 ```
 
@@ -53,7 +53,7 @@ Verwenden Sie die `cross-domain`-Richtlinie, um die API von browserbasierten Ado
 
 |Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
-|cross-domain|Stammelement Untergeordnete Elemente entsprechen der [Adobe-Dateispezifikation für domänenübergreifende Richtlinien](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Ja|
+|cross-domain|Stammelement Untergeordnete Elemente entsprechen der [Adobe-Dateispezifikation für domänenübergreifende Richtlinien](https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/CrossDomain_PolicyFile_Specification.pdf).|Ja|
 
 ### <a name="usage"></a>Verwendung
 Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
@@ -171,13 +171,13 @@ Mit dem Rückrufparameter `?cb=XXX` wird ein JSONP-Ergebnis zurückgegeben, und 
 
 ### <a name="elements"></a>Elemente
 
-|Name|Beschreibung|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |jsonp|Stammelement|Ja|
 
 ### <a name="attributes"></a>Attributes
 
-|Name|Beschreibung|Erforderlich|Standard|
+|Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |callback-parameter-name|Der domänenübergreifende JavaScript-Funktionsaufruf mit dem vollqualifizierten Domänennamen, in dem die Funktion liegt, als Präfix.|Ja|–|
 

@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei externen Azure Active Directory-Identitäten
 description: Neue und aktualisierte Dokumentation für externe Azure Active Directory-Identitäten
-ms.date: 09/08/2021
+ms.date: 10/05/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,26 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: b6346a9e8ff776143b6e000f945fcd9400e03a0d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3247f9e13e50a9fb7b4792be518af5b85767822a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776479"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533649"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Externe Azure Active Directory-Identitäten: Neuerungen
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation für die externen Azure Active Directory-Identitäten. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Dienst für externe Identitäten finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="september-2021"></a>September 2021
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Verbund mit SAML/WS-Fed-Identitätsanbietern für Gastbenutzer (Vorschau)](direct-federation.md)
+- [Add Azure Active Directory B2B collaboration users in the Azure portal](add-users-administrator.md) (Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal)
+- [Leave an organization as a guest user](leave-the-organization.md) (Verlassen einer Organisation als Gastbenutzer)
+- [Einladen von internen Benutzern zur B2B-Zusammenarbeit](invite-internal-users.md)
+
 
 ## <a name="august-2021"></a>August 2021
 

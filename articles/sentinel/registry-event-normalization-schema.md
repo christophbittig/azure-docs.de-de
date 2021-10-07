@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 07/01/2021
 ms.author: bagol
-ms.openlocfilehash: 38ab651ec864060aeb3bfcfd7f89a387d604723c
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: d10d1e9408db7ab29a7fe01e5bf906e9023124c7
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515133"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407226"
 ---
 # <a name="azure-sentinel-registry-event-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema (Öffentliche Vorschau)
 
@@ -73,6 +73,7 @@ Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | datetime | Der Zeitpunkt, zu dem das Ereignis vom meldenden Gerät generiert wurde.|
 | **_ResourceId**   | guid     | Die Azure-Ressourcen-ID des meldenden Geräts oder Diensts oder die Ressourcen-ID des Protokollforwarders für Ereignisse, die mit Syslog, CEF oder WEF weitergeleitet werden. |
+| **Type** | String | Die ursprüngliche Tabelle, aus der der Datensatz abgerufen wurde. Dieses Feld ist nützlich, wenn ein und dasselbe Ereignis über mehrere Kanäle in verschiedenen Tabellen empfangen werden kann und die gleichen EventVendor- und EventProduct-Werte hat.<br><br>Ein Sysmon-Ereignis kann z. B. entweder in der Tabelle Event oder in der Tabelle WindowsEvent gesammelt werden. |
 
 
 > [!NOTE]
@@ -87,7 +88,7 @@ Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbs
 | Feld               | Klasse       | Typ       |  BESCHREIBUNG        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | Optional    | String     |     Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert.   |
-| **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die vom Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
+| **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die im Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
 | **EventStartTime**      | Obligatorisch.   | Datum/Uhrzeit  |      Wenn die Quelle Aggregation unterstützt und der Datensatz mehrere Ereignisse darstellt, gibt dieses Feld die Zeit an, zu der das erste Ereignis generiert wurde. <br><br>Andernfalls wird in diesem Feld ein Alias für das Feld [TimeGenerated](#timegenerated) verwendet. |
 | **EventEndTime**        | Obligatorisch.   | Alias      |      Alias für das Feld [TimeGenerated](#timegenerated).    |
 | **EventType**           | Obligatorisch.   | Enumerated |    Beschreibt den vom Datensatz gemeldeten Vorgang. <br><br>Für Registrierungsdatensätze werden folgende Werte unterstützt: <br>- `RegistryKeyCreated` <br>- `RegistryKeyDeleted`<br>- `RegistryKeyRenamed` <br>- `RegistryValueDeleted` <br>- `RegistryValueSet`|
@@ -98,7 +99,7 @@ Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbs
 | **EventVendor**         | Obligatorisch.   | String     |           Der Hersteller des Produkts, das das Ereignis erzeugt. <br><br>Beispiel: `Microsoft`  <br><br>**Hinweis**: Dieses Feld ist möglicherweise nicht im Quelldatensatz verfügbar. In solchen Fällen muss dieses Feld vom Parser festgelegt werden.  |
 | **EventSchemaVersion**  | Obligatorisch.   | String     |    Die Version des Schemas. Die hier dokumentierte Version des Schemas ist `0.1`.         |
 | **EventReportUrl**      | Optional    | String     | Eine URL, die im Ereignis für eine Ressource bereitgestellt wird, die zusätzliche Informationen zum Ereignis enthält.|
-| **Dvc** | Obligatorisch.       | String     |               Ein eindeutiger Bezeichner des Geräts, auf dem das Ereignis aufgetreten ist. <br><br>Dieses Feld kann ein Alias für die Felder [DvcId](#dvcid), [DvcHostname](#dvchostname) oder [DvcIpAddr](#dvcipaddr) sein. Verwenden Sie für Cloudquellen, für die es kein offensichtliches Gerät gibt, den gleichen Wert wie das Feld [EventProduct](#eventproduct).         |
+| **Dvc** | Obligatorisch.       | String     |               Ein eindeutiger Bezeichner des Geräts, auf dem das Ereignis aufgetreten ist. <br><br>Dieses Feld kann ein Alias für die Felder [DvcId](#dvcid), [DvcHostname](#dvchostname) oder [DvcIpAddr](#dvcipaddr) sein. Verwenden Sie für Cloudquellen, für die es kein offensichtliches Gerät gibt, denselben Wert wie das Feld [EventProduct](#eventproduct).         |
 | <a name ="dvcipaddr"></a>**DvcIpAddr**           | Empfohlen | IP-Adresse |         Die IP-Adresse des Geräts, auf dem das Registrierungsereignis aufgetreten ist.  <br><br>Beispiel: `45.21.42.12`    |
 | <a name ="dvchostname"></a>**DvcHostname**         | Empfohlen | Hostname   |               Der Hostname des Geräts, auf dem das Registrierungsereignis aufgetreten ist. <br><br>Beispiel: `ContosoDc.Contoso.Azure`               |
 | <a name ="dvcid"></a>**DvcId**               | Optional    | String     |  Die eindeutige ID des Geräts, auf dem das Registrierungsereignis aufgetreten ist. <br><br>Beispiel: `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
@@ -132,10 +133,10 @@ Weitere Informationen finden Sie unter [Struktur der Registrierung](/windows/win
 | **ActorUserIdType**| Empfohlen  | String     |  Der Typ der ID, die im Feld [ActorUserId](#actoruserid) gespeichert ist. Weitere Informationen finden Sie unter [Benutzerentität](normalization-about-schemas.md#the-user-entity). <br><br>Beispiel: `SID`         |
 | **ActorSessionId** | Optional     | String     |   Die eindeutige ID der Anmeldesitzung des Akteurs.  <br><br>Beispiel: `999`<br><br>**Hinweis**: Der Typ ist als *Zeichenfolge* definiert, um unterschiedliche Systeme zu unterstützen, aber unter Windows muss dieser Wert numerisch sein. Wenn Sie einen Windows-Computer verwenden und die Quelle einen anderen Typ sendet, stellen Sie sicher, dass Sie den Wert konvertieren. Wenn die Quelle beispielsweise einen Hexadezimalwert verwendet haben, konvertieren Sie diesen in einen Dezimalwert.   |
 | <a name="actingprocessname"></a>**ActingProcessName**              | Optional     | String     |   Der Dateiname der Imagedatei des agierenden Prozesses. Dieser Name wird in der Regel als Prozessname betrachtet.  <br><br>Beispiel: `C:\Windows\explorer.exe`  |
-| **ActingProcessId**| Obligatorisch.    | Integer        | Die Prozess-ID (PID) des agierenden Prozesses.<br><br>Beispiel: `48610176`           <br><br>**Hinweis**: Der Typ ist als *Zeichenfolge* definiert, um unterschiedliche Systeme zu unterstützen, aber unter Windows und Linux muss dieser Wert numerisch sein. <br><br>Wenn Sie einen Windows- oder Linux-Computer verwenden und einen anderen Typ verwendet haben, stellen Sie sicher, dass Sie die Werte konvertieren. Wenn Sie beispielsweise einen Hexadezimalwert verwendet haben, konvertieren Sie diesen in einen Dezimalwert.    |
+| **ActingProcessId**| Obligatorisch.    | String        | Die Prozess-ID (PID) des handelnden Prozesses.<br><br>Beispiel: `48610176`           <br><br>**Hinweis**: Der Typ ist als *Zeichenfolge* definiert, um unterschiedliche Systeme zu unterstützen, aber unter Windows und Linux muss dieser Wert numerisch sein. <br><br>Wenn Sie einen Windows- oder Linux-Computer verwenden und einen anderen Typ verwendet haben, stellen Sie sicher, dass Sie die Werte konvertieren. Wenn Sie beispielsweise einen Hexadezimalwert verwendet haben, konvertieren Sie diesen in einen Dezimalwert.    |
 | **ActingProcessGuid**              | Optional     | String     |  Ein generierter eindeutiger Bezeichner (GUID) des agierenden Prozesses.   <br><br> Beispiel: `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
 | **ParentProcessName**              | Optional     | String     |  Der Dateiname der Imagedatei des übergeordneten Prozesses. Dieser Wert wird in der Regel als Prozessname betrachtet.    <br><br>Beispiel: `C:\Windows\explorer.exe` |
-| **ParentProcessId**| Obligatorisch.    | Integer    | Die Prozess-ID (PID) des übergeordneten Prozesses.   <br><br>     Beispiel: `48610176`    |
+| **ParentProcessId**| Obligatorisch.    | String    | Die Prozess-ID (PID) des übergeordneten Prozesses.   <br><br>     Beispiel: `48610176`    |
 | **ParentProcessGuid**              | Optional     | String     |  Ein generierter eindeutiger Bezeichner (GUID) des übergeordneten Prozesses.     <br><br> Beispiel: `EF3BD0BD-2B74-60C5-AF5C-010000001E00` |
 
 

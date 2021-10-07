@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: bc97781091f29c4d900e24b8211e4ee9d8422841
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 872e55781a55ac15f960e0111f4b197ab380598d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112581392"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129279125"
 ---
 # <a name="import-your-training-data-into-machine-learning-studio-classic-from-various-data-sources"></a>Importieren von Trainingsdaten aus verschiedenen Datenquellen in Machine Learning Studio (klassisch)
 
 **GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Um Ihre eigenen Daten in Machine Learning Studio (klassisch) zum Entwickeln und Trainieren einer Predictive Analytics-Lösung zu verwenden, können Sie Daten aus folgenden Quellen verwenden: 
 
@@ -152,7 +153,7 @@ In der folgenden Tabelle werden die unterstützten Onlinedatenquellen beschriebe
 > Im Allgemeinen sollten Azure-Speicherkonten, die Sie ggf. erstellt haben, bevor diese Dienstoption verfügbar war, nicht betroffen sein.
 > Wenn Sie ein neues Konto erstellen müssen, wählen Sie **Klassisch** als Bereitstellungsmodell, oder verwenden Sie Resource Manager, und wählen Sie für **Kontoart** die Option **Allgemein** anstelle von **Blobspeicher**.
 >
-> Weitere Informationen finden Sie unter [Azure Blob Storage: „Heiße“ und „kalte“ Speicherebenen](../../storage/blobs/storage-blob-storage-tiers.md).
+> Weitere Informationen finden Sie unter [Azure Blob Storage: „Heiße“ und „kalte“ Speicherebenen](../../storage/blobs/access-tiers-overview.md).
 
 ### <a name="supported-online-data-sources"></a>Unterstützte Onlinedatenquellen
 Das **Import Data**-Modul von Machine Learning Studio (klassisch) unterstützt die folgenden Datenquellen:

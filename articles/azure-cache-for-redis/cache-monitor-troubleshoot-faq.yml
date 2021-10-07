@@ -2,17 +2,17 @@
 metadata:
   title: Häufig gestellte Fragen zur Überwachung und Problembehandlung von Azure Cache for Redis
   description: Hier erhalten Sie Antworten auf häufig gestellte Fragen, die Ihnen bei der Überwachung und Problembehandlung von Azure Cache for Redis helfen.
-  author: yegu-ms
-  ms.author: yegu
+  author: curib
+  ms.author: cauribeg
   ms.service: cache
   ms.topic: conceptual
   ms.date: 08/06/2020
-  ms.openlocfilehash: d762625dc83a4ca77089c5929859f61e1f89c31a
-  ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+  ms.openlocfilehash: 3b6abac448e622b1c763fd05ca8c8bf3e2143182
+  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/01/2021
-  ms.locfileid: "113137361"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129537772"
 title: Häufig gestellte Fragen zur Überwachung und Problembehandlung von Azure Cache for Redis
 summary: Dieser Artikel bietet Antworten auf häufig gestellte Fragen rundum die Überwachung und Problembehandlung von Azure Cache for Redis.
 sections:

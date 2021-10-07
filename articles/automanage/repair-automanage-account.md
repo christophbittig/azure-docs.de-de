@@ -1,20 +1,18 @@
 ---
 title: Reparieren eines fehlerhaften Azure Automanage-Kontos
 description: Wenn Sie vor kurzem ein Abonnement mit einem Automanage-Konto in einen neuen Mandanten verschoben haben, müssen Sie es neu konfigurieren. Dieser Artikel enthält eine entsprechende Anleitung.
-author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.author: alsin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: fdfeae56ba1ef46b58fdb8f5beb32f85a6e2fcb4
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 2ce8bc5c26eb99ed19578a036a4569829bc44879
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752317"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458300"
 ---
 # <a name="repair-an-automanage-account"></a>Reparieren eines Automanage-Kontos
 Ihr [Azure Automanage-Konto](./automanage-virtual-machines.md#automanage-account) ist der Sicherheitskontext bzw. die Identität, unter dem bzw. unter der die automatisierten Vorgänge ausgeführt werden. Wenn Sie vor kurzem ein Abonnement mit einem Automanage-Konto in einen neuen Mandanten verschoben haben, müssen Sie das Konto neu konfigurieren. Hierzu müssen Sie den Identitätstyp zurücksetzen und die entsprechenden Rollen für das Konto zuweisen.

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0d5d9eb7d2d8097da47d6639b1b6bb6887825207
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ddb061acb98cea775e6d147146646916adf05d68
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128649112"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129270598"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
@@ -73,7 +73,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 Konten vom Typ „Allgemein v2“ unterstützen alle Azure-Speicherdienste und -Datenobjekte, aber Zugriffsebenen sind nur für Blockblobs in Blob Storage verfügbar. Wenn Sie ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ durchführen, können Sie eine Standardkontozugriffsebene („Heiß“ oder „Kalt“) angeben, um zu steuern, in welche Standardebene Ihre Blobdaten hochgeladen werden, wenn kein Parameter für die jeweilige Blobzugriffsebene angegeben wird.
 
-Blobzugriffsebenen ermöglichen es, den kostengünstigsten Speicher basierend auf Ihren erwarteten Nutzungsmustern auszuwählen. Blockblobs können in der heißen, der kalten oder der Archivspeicherebene gespeichert werden. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md).
+Blobzugriffsebenen ermöglichen es, den kostengünstigsten Speicher basierend auf Ihren erwarteten Nutzungsmustern auszuwählen. Blockblobs können in der heißen, der kalten oder der Archivspeicherebene gespeichert werden. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](../blobs/access-tiers-overview.md).
 
 Standardmäßig wird ein neues Speicherkonto auf der heißen Zugriffsebene erstellt. Für ein Speicherkonto vom Typ „Universell V1“ kann ein Upgrade auf die heiße oder kalte Kontoebene durchgeführt werden. Wenn beim Upgrade keine Kontozugriffsebene angegeben wird, wird sie standardmäßig auf „Heiß“ aktualisiert. Wenn Sie untersuchen, welche Zugriffsebene nach dem Upgrade verwendet werden soll, sollten Sie das Szenario Ihrer aktuellen Datennutzung berücksichtigen. Es gibt zwei typische Benutzerszenarien für die Migration auf ein Konto vom Typ „Allgemein v2“:
 

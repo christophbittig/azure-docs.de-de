@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub Device Provisioning-Dienst – TPM-Nachweis
 description: Dieser Artikel enthält eine konzeptionelle Übersicht über den TPM-Nachweisfluss mithilfe des IoT Hub Device Provisioning-Diensts (Device Provisioning Service, DPS).
-author: wesmc7777
-ms.author: wesmc
-ms.date: 06/21/2021
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 09/22/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: e670b0feabfe785712dc7140bcc594b770783e74
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 46f2b66412497a7fda7c9019b82146cc59f69362
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112457874"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278916"
 ---
 # <a name="tpm-attestation"></a>TPM-Nachweis
 
@@ -69,4 +69,4 @@ Nun stellt das Gerät eine Verbindung mit IoT Hub her, und Sie können darauf ve
 
 * [Konzepte für die Bereitstellung](about-iot-dps.md#provisioning-process)
 * [Erste Schritte mit der automatischen Bereitstellung](./quick-setup-auto-provision.md) 
-* [Schnellstart: Registrieren eines TPM-Geräts bei IoT Hub Device Provisioning Service per Java Service SDK](./quick-enroll-device-tpm-java.md)
+* [Schnellstart: Registrieren eines TPM-Geräts bei IoT Hub Device Provisioning Service per Java Service SDK](./quick-enroll-device-tpm.md)

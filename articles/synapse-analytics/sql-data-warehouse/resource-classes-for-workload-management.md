@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7714ce748eb172565357723924ab2212e9559e1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7c7dccf94c1211ef318d538c3a5c74ae16e427e
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98685326"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388810"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Workloadverwaltung mit Ressourcenklassen in Azure Synapse Analytics
 
@@ -84,8 +84,6 @@ Die Ressourcenklasse des Dienstadministrators ist unter smallrc festgelegt und k
 
 > [!NOTE]
 > Als „Active Directory-Administrator“ definierte Benutzer oder Gruppen sind auch Dienstadministratoren.
->
->
 
 ## <a name="resource-class-operations"></a>Ressourcenklassenvorgänge
 
@@ -107,8 +105,6 @@ Die folgenden Vorgänge werden über Ressourcenklassen gesteuert:
 
 > [!NOTE]  
 > SELECT-Anweisungen für dynamische Verwaltungssichten (Dynamic Management Views, DMVs) oder andere Systemsichten werden nicht durch Einschränkungen der Parallelität gesteuert. Sie können das System unabhängig von der Anzahl der darin ausgeführten Abfragen überwachen.
->
->
 
 ### <a name="operations-not-governed-by-resource-classes"></a>Nicht über Ressourcenklassen gesteuerte Vorgänge
 
@@ -185,8 +181,6 @@ Benutzer können Mitglieder mehrerer Ressourcenklassen sein. Wenn ein Benutzer m
 
 >[!NOTE]
 >Nutzen Sie die Vorteile der Workloadverwaltungsfunktionen ([Workloadisolation](sql-data-warehouse-workload-isolation.md), [Klassifizierung](sql-data-warehouse-workload-classification.md) und [Wichtigkeit](sql-data-warehouse-workload-importance.md)), um eine bessere Kontrolle über Ihre Workload und die vorhersagbare Leistung zu erhalten.  
->
->
 
 Wir empfehlen Ihnen, einen Benutzer zu erstellen, der speziell für das Ausführen eines bestimmten Typs von Abfrage- oder Ladevorgängen dediziert ist. Versehen Sie den Benutzer mit einer permanenten Ressourcenklasse, anstatt die Ressourcenklasse häufig zu ändern. Da bei statischen Ressourcenklassen eine stärkere umfassende Steuerung der Workload möglich ist, sollten Sie diese zuerst verwenden, bevor Sie den Einsatz von dynamischen Ressourcenklassen erwägen.
 

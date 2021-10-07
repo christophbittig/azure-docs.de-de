@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 09/15/2021
 ms.author: alkohli
-ms.openlocfilehash: ab087747bbc6ee9edcb072223c2edf3465ba4cba
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3fa49fdab111c60c9f73dad5703c39dbc33e1472
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460546"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554208"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>Zurückgeben Ihres Azure Stack Edge-Geräts
 
-[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
+[!INCLUDE [applies-to-pro-fpga](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-fpga-sku.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Daten löschen und Ihr Azure Stack Edge-Gerät zurückgeben. Nachdem Sie das Gerät zurückgegeben haben, können Sie auch die mit dem Gerät verknüpfte Ressource löschen.
 
@@ -50,7 +50,7 @@ Sie können Ihr Gerät über die lokale Webbenutzeroberfläche oder über PowerS
 
 Beginnen Sie den Rückgabeprozess mit den folgenden Schritten.
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-/Data Box Gateway-Ressource. Wählen Sie in der **Übersicht** über die Befehlsleiste im rechten Bereich die Option **Gerät zurückgeben** aus. 
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource. Wählen Sie in der **Übersicht** über die Befehlsleiste im rechten Bereich die Option **Gerät zurückgeben** aus. 
 
     ![Zurückgeben des Geräts 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
@@ -87,16 +87,31 @@ Beginnen Sie den Rückgabeprozess mit den folgenden Schritten.
 
 7. Nachdem das Azure Stack Edge-Betriebsteam die E-Mail erhalten hat, sendet es Ihnen ein Etikett für die Rücksendung. Nach Erhalt dieses Etiketts können Sie die Geräteabholung mit dem Versandunternehmen planen. 
 
+## <a name="pack-the-device"></a>Verpacken des Geräts
+
+Führen Sie die folgenden Schritte aus, um das Gerät zu verpacken.
+
+1. Fahren Sie das Gerät herunter. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung > Power settings** (Energieeinstellungen).
+2. Wählen Sie **Herunterfahren** aus. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**, um fortzufahren. Weitere Informationen finden Sie unter [Verwalten der Energieeinstellungen](../databox-online/azure-stack-edge-manage-access-power-connectivity-mode.md#manage-power).
+3. Trennen Sie die Netzkabel, und entfernen Sie alle Netzwerkkabel vom Gerät.
+4. Bereiten Sie das Versandpaket den folgenden Anweisungen entsprechend sorgfältig vor:
+    1. Verwenden Sie die Versandschachtel, die Sie von Azure angefordert haben, oder die Originalversandschachtel mit der zugehörigen Schaumstoffverpackung. 
+    1. Legen Sie das untere Schaumstoffteil in die Schachtel.
+    1. Legen Sie das Gerät auf den Schaumstoff, und achten Sie darauf, dass es passend im Schaumstoff sitzt.
+    1. Legen Sie das obere Schaumstoffteil in das Paket.
+    1. Bringen Sie die Netzkabel im Zubehörfach unter, und legen Sie die Schienen auf das obere Schaumstoffteil.
+    1. Verschließen Sie die Schachtel, und bringen Sie das Adressetikett, das Sie von Azure erhalten haben, auf dem Paket an.
+    
+    > [!IMPORTANT]
+    > Wenn die Richtlinien für die Vorbereitung der Rücklieferung nicht ordnungsgemäß beachtet werden, kann das Gerät u. U. beschädigt werden, sodass eine Gebühr für beschädigte Geräte anfallen kann. Weitere Informationen finden Sie in den [Produktbestimmungen](https://www.microsoft.com/licensing/product-licensing/products) und den [häufig gestellten Fragen zu verloren gegangenen oder beschädigten Geräten](https://azure.microsoft.com/pricing/details/databox/edge/).
+ 
+
+
 ## <a name="schedule-a-pickup"></a>Planen der Abholung
 
 Führen Sie die folgenden Schritte aus, um eine Abholung zu planen:
 
-1. Fahren Sie das Gerät herunter. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung > Power settings** (Energieeinstellungen).
-2. Wählen Sie **Herunterfahren** aus. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**, um fortzufahren. Weitere Informationen finden Sie unter [Verwalten der Energieeinstellungen](../databox-gateway/data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
-3. Trennen Sie die Netzkabel, und entfernen Sie alle Netzwerkkabel vom Gerät.
-4. Bereiten Sie das Versandpaket vor, indem Sie Ihren eigenen Karton verwenden oder den leeren, den Sie von Azure erhalten haben. Bringen Sie das Gerät und die mitgelieferten Netzkabel im Karton unter.
-5. Bringen Sie das Adressetikett, das Sie von Azure erhalten haben, auf dem Paket an.
-6. Planen Sie eine Abholung mit Ihrem regionalen Paketdienst. Bei Rückgabe des Geräts in den USA ist dies UPS oder FedEx. So planen Sie eine Abholung durch UPS
+1. Planen Sie eine Abholung mit Ihrem regionalen Paketdienst. Bei Rückgabe des Geräts in den USA ist dies UPS oder FedEx. So planen Sie eine Abholung durch UPS
 
     1. Rufen Sie Ihre lokale UPS-Versandstelle an (landes-/regionsspezifische gebührenfreie Telefonnummer).
     2. Geben Sie bei dem Telefonat die Nachverfolgungsnummer für die Rücksendung an, die Sie auf dem gedruckten Etikett finden.
@@ -109,7 +124,7 @@ Führen Sie die folgenden Schritte aus, um eine Abholung zu planen:
 Nachdem das Gerät im Azure-Rechenzentrum eingegangen ist, wird das Gerät auf Beschädigungen oder Anzeichen von Manipulation untersucht.
 
 - Wenn das Gerät intakt und in gutem Zustand eintrifft, endet die Abrechnung für diese Ressource. Das Azure Stack Edge-Betriebsteam setzt sich mit Ihnen in Verbindung, um die Rückgabe des Geräts zu bestätigen. Anschließend können Sie die Ressource löschen, die im Azure-Portal mit dem Gerät verknüpft ist.
-- Wenn das Gerät erheblich beschädigt eintrifft, fallen möglicherweise Geldbußen an. Weitere Informationen finden Sie unter [häufig gestellten Fragen zu verloren gegangenen oder beschädigten Geräten](https://azure.microsoft.com/pricing/details/databox/edge/) und [Produktbestimmungen](https://www.microsoft.com/licensing/product-licensing/products).  
+- Wenn das Gerät erheblich beschädigt eintrifft, fallen möglicherweise Gebühren an. Weitere Informationen finden Sie unter [häufig gestellten Fragen zu verloren gegangenen oder beschädigten Geräten](https://azure.microsoft.com/pricing/details/databox/edge/) und [Produktbestimmungen](https://www.microsoft.com/licensing/product-licensing/products).  
 
 
 Sie können das Gerät im Azure-Portal löschen:

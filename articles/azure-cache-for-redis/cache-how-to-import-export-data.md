@@ -1,17 +1,17 @@
 ---
 title: Importieren und Exportieren von Daten in Azure Cache for Redis
 description: Enthält Informationen zum Importieren und Exportieren von Daten in und aus dem Blob-Speicher mit Azure Cache for Redis-Instanzen des Premium-Tarifs.
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
-ms.author: yegu
-ms.openlocfilehash: 91991be65e132ebdcdc06fa5e3a7729debec7062
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.author: cauribeg
+ms.openlocfilehash: 8616280ee6884c176069d98764614d61faaef444
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836946"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538446"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Importieren und Exportieren von Daten in Azure Cache for Redis
 

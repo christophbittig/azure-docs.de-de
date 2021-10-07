@@ -11,20 +11,20 @@ ms.author: rohitna
 ms.reviewer: mathoma, vanto
 ms.date: 08/03/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 77b629f5fb354ee94d06055999ece59aea05e592
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: de6af2c8581c157634ee1f8676e3dbc84ccd1803
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340221"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590671"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-Konnektivitätseinstellungen
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa-formerly-sqldw.md)]
 
 In diesem Artikel werden Einstellungen vorgestellt, die die Konnektivität mit dem Server für Azure SQL-Datenbank und dem [dedizierten SQL-Pool (früher „SQL DW“)](../../synapse-analytics\sql-data-warehouse\sql-data-warehouse-overview-what-is.md) in Azure Synapse Analytics steuern. Diese Einstellungen gelten für alle SQL-Datenbank-Datenbanken und die Datenbanken des dedizierten SQL-Pools (früher „SQL DW“), die dem Server zugeordnet sind.
 
 > [!IMPORTANT]
-> Dieser Artikel gilt nicht für Azure SQL Managed Instance.
+> Dieser Artikel gilt nicht für Azure SQL Managed Instance. Dieser Artikel gilt auch nicht für dedizierte SQL-Pools in Azure Synapse Analytics-Arbeitsbereichen. Unter [Azure Synapse Analytics: IP-Firewallregeln](../../synapse-analytics/security/synapse-workspace-ip-firewall.md) finden Sie Anleitungen zum Konfigurieren von IP-Firewallregeln für Azure Synapse Analytics-Arbeitsbereiche.
 
 Die Konnektivitätseinstellungen können über den Bildschirm **Firewalls und virtuelle Netzwerke** aufgerufen werden, wie im folgenden Screenshot gezeigt:
 

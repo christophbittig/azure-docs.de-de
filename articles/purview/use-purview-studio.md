@@ -6,12 +6,12 @@ ms.author: nayenama
 ms.service: purview
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: 8c2628922391f3b8f6570c011dbc2220b1e7f815
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 2e3bcd7e51226f437f42f03fa43b144bee434f33
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212855"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456136"
 ---
 # <a name="use-purview-studio"></a>Verwenden von Purview Studio
 
@@ -59,7 +59,7 @@ In der folgenden Liste sind die Hauptfunktionen der **Startseite** zusammengefas
    > Weitere Informationen zu Azure Purview-Rollen finden Sie unter [Zugriffssteuerung in Azure Purview](catalog-permissions.md).
 
 5. Über die Navigationsleiste auf der linken Seite können Sie auf die Hauptseiten der Anwendung zugreifen.   
-6. Auf der Registerkarte **Zuletzt verwendet** wird eine Liste mit den Datenressourcen angezeigt, auf die zuletzt zugegriffen wurde. Weitere Informationen zum Zugreifen auf Ressourcen finden Sie unter [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md) und [Durchsuchen des Datenkatalogs anhand des Ressourcentyps](how-to-browse-catalog.md#browse-experience).  Die Registerkarte **Meine Elemente** enthält eine Liste mit Datenressourcen, die sich im Besitz des angemeldeten Benutzers befinden.
+6. Auf der Registerkarte **Zuletzt verwendet** wird eine Liste mit den Datenressourcen angezeigt, auf die zuletzt zugegriffen wurde. Weitere Informationen zum Zugreifen auf Ressourcen finden Sie unter [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md) und [Durchsuchen des Datenkatalogs anhand des Ressourcentyps](how-to-browse-catalog.md).  Die Registerkarte **Meine Elemente** enthält eine Liste mit Datenressourcen, die sich im Besitz des angemeldeten Benutzers befinden.
 7. Unter **Links** finden Sie Links zum Regionsstatus, zur Dokumentation, zu den Preisen, zur Übersicht und zum Purview-Status.
 8. Die obere Navigationsleiste enthält Abschnitte mit Informationen zu Versionshinweisen/Updates, Änderung des Purview-Kontos, Benachrichtigungen, Hilfe und Feedback.
 
