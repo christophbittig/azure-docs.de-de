@@ -102,7 +102,7 @@ Nachdem Sie die Registrierungsgruppe gespeichert haben, notieren Sie sich den ID
 
 ### <a name="run-sample-device-code&quot;></a>Ausführen des Beispiels für Gerätecode
 
-:::zone pivot=&quot;programming-language-csharp&quot;
+:::zone pivot="programming-language-csharp"
 
 Wenn Sie Windows verwenden, müssen sich die X.509-Zertifikate im Windows-Zertifikatspeicher befindet, damit das Beispiel funktioniert. So fügen Sie die Zertifikate dem Speicher hinzu:
 
