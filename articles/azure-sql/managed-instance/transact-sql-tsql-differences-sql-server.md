@@ -11,12 +11,12 @@ ms.author: danil
 ms.reviewer: mathoma, bonova, danil
 ms.date: 8/18/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 7f9067d2f568c3f3d65b89508d85046970c9e334
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 801bfe634281ffc795bd0f9c56089f915be52ac6
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273417"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083788"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,7 +70,7 @@ Einschränkungen:
 - Bei SQL Managed Instance können Sie eine Instanzdatenbank in einer Sicherung mit bis zu 32 Stripes sichern. Dies ist ausreichend für Datenbanken mit bis zu 4 TB, wenn die Sicherungskomprimierung verwendet wird.
 - Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht in einer Datenbank ausführen, die mit vom Dienst verwalteter Transparent Data Encryption (TDE) verschlüsselt ist. Die vom Dienst verwaltete TDE erzwingt die Verschlüsselung von Sicherungen mit einem internen TDE-Schlüssel. Der Schlüssel kann nicht exportiert werden, daher können Sie die Sicherung nicht wiederherstellen. Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder verwenden Sie stattdessen [vom Kunden verwaltete Transparent Data Encryption – BYOK (Bring Your Own Key)](../database/transparent-data-encryption-tde-overview.md#customer-managed-transparent-data-encryption---bring-your-own-key). Sie können die Verschlüsselung für die Datenbank auch deaktivieren.
 - Native Sicherungen, die auf einer verwalteten Instanz erstellt wurden, können nicht auf einer SQL Server-Instanz wiederhergestellt werden. Dies liegt daran, dass die verwaltete Instanz im Vergleich zu einer SQL Server-Version eine höhere interne Datenbankversion aufweist.
-- Zum Sichern oder Wiederherstellen einer Datenbank in bzw. aus einem Azure-Speicher ist es erforderlich, eine Shared Access Signature (SAS) mit einem URI zu erstellen, der Ihnen eingeschränkte Zugriffsrechte für Azure Storage-Ressourcen gewährt. [Weitere Informationen zu diesem Thema](restore-sample-database-quickstart.md#restore-from-a-backup-file-using-t-sql). Die Verwendung von Zugriffsschlüsseln für diese Szenarios wird nicht unterstützt.
+- Zum Sichern oder Wiederherstellen einer Datenbank in bzw. aus einem Azure-Speicher ist es erforderlich, eine Shared Access Signature (SAS) mit einem URI zu erstellen, der Ihnen eingeschränkte Zugriffsrechte für Azure Storage-Ressourcen gewährt. [Weitere Informationen zu diesem Thema](https://docs.microsoft.com/azure/azure-sql/managed-instance/restore-sample-database-quickstart#restore-from-a-backup-file-using-t-sql). Die Verwendung von Zugriffsschlüsseln für diese Szenarios wird nicht unterstützt.
 - Die maximale Stripegröße für Sicherungen mit dem Befehl `BACKUP` in SQL Managed Instance beträgt 195 GB. Dies ist die maximale Blobgröße. Erhöhen Sie die Streifenanzahl im Backup-Befehl, um die einzelne Streifengröße zu reduzieren und innerhalb dieser Einschränkungen zu bleiben.
 
     > [!TIP]

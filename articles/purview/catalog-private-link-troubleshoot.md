@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: c077eb0c1639089fcc7196693a617e32c01d9a9a
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 073b4bf8c1be14aa26141e20d5f6d6f4abdf9ff1
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230454"
+ms.locfileid: "129208792"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>Problembehandlung bei der Konfiguration privater Endpunkte für Purview-Konten
 
@@ -164,7 +164,7 @@ Beim Durchführen einer neuen Überprüfung wird möglicherweise die folgende Fe
   `message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)`
 
 ### <a name="cause"></a>Ursache 
-Dies kann ein Hinweis auf die Ausführung einer älteren Version der selbstgehosteten Integration Runtime sein. Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, müssen Sie die Version 5.9.7885.3 der selbstgehosteten Integration Runtime verwenden.
+Dies kann ein Hinweis auf die Ausführung einer älteren Version der selbstgehosteten Integration Runtime sein. Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, müssen Sie die selbstgehostete Integration Runtime-Version 5.9.7885.3 verwenden.
 
 ### <a name="resolution"></a>Lösung 
 Führen Sie ein Upgrade der selbstgehosteten Integration Runtime auf Version 5.9.7885.3 durch.

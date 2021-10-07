@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/11/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 845e852f2ef3155fce451f7e80f5c8f43eb8abf6
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 3b722cecc932370af8bcde7e374263a25d40c347
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355210"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094669"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning
 
@@ -108,7 +108,7 @@ myenv = Environment.from_pip_requirements(name = "myenv",
 
 ### <a name="enable-docker"></a>Aktivieren von Docker
 
-Azure Machine Learning erstellt ein Docker-Image und eine Python-Umgebung innerhalb dieses Containers gemäß Ihren Spezifikationen. Die Docker-Images werden zwischengespeichert und wiederverwendet: Die erste Ausführung in einer neuen Umgebung dauert in der Regel länger, da das Image erstellt wird. Geben Sie Docker für lokale Ausführungen in [RunConfiguration](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true#variables) an. 
+Azure Machine Learning erstellt ein Docker-Image und eine Python-Umgebung innerhalb dieses Containers gemäß Ihren Spezifikationen. Die Docker-Images werden zwischengespeichert und wiederverwendet: Die erste Ausführung in einer neuen Umgebung dauert in der Regel länger, da das Image erstellt wird. Geben Sie Docker für lokale Ausführungen in [RunConfiguration](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py#variables) an. 
 
 Standardmäßig wird das neu erstellte Docker-Image in der Containerregistrierung angezeigt, die dem Arbeitsbereich zugeordnet ist.  Der Repositoryname hat das Format *azureml/azureml_\<uuid\>* . Der *UUID*-Anteil (universally unique identifier, global eindeutiger Bezeichner) des Namens entspricht einem Hash, der aus der Umgebungskonfiguration errechnet wird. Diese Entsprechung ermöglicht es dem Dienst, zu ermitteln, ob bereits ein Image der betreffenden Umgebung zur Wiederverwendung vorhanden ist.
 

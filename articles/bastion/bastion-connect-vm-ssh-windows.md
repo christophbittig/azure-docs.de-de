@@ -8,12 +8,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4e08aed1b1b91f55a12f5920dfff898cd0109bae
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: ca2425aad93d5878060c723d4c43f41765483a65
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278593"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128700171"
 ---
 # <a name="create-an-ssh-connection-to-a-windows-vm-using-azure-bastion-preview"></a>Erstellen einer SSH-Verbindung mit einer Windows-VM mithilfe von Azure Bastion (Vorschau)
 
@@ -38,7 +38,7 @@ Stellen Sie sicher, dass Sie einen Azure Bastion-Host für das virtuelle Netzwer
 
 Um per SSH auf einen virtuellen Windows-Computer zuzugreifen, müssen Sie außerdem Folgendes sicherstellen:
 * Auf Ihrem virtuellen Windows-Computer wird Windows Server 2019 oder höher ausgeführt.
-* Auf Ihrem virtuellen Windows-Computer ist OpenSSH Server installiert und aktiv. Informationen zur Vorgehensweise finden Sie unter [Installieren von OpenSSH](/windows-server/administration/openssh/openssh_install_firstuse).
+* Auf Ihrem virtuellen Windows-Computer ist OpenSSH Server installiert und aktiv. Informationen zur Vorgehensweise finden Sie unter [Installieren von OpenSSH](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse).
 * Azure Bastion wurde für die Verwendung der Standard-SKU konfiguriert.
 
 ### <a name="required-roles"></a>Erforderliche Rollen

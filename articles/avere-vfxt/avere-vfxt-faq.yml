@@ -8,12 +8,12 @@ metadata:
   ms.date: 12/19/2019
   ms.author: rohogue
   ms.custom: references_regions
-  ms.openlocfilehash: 241bcb1e164bf8f0233e7110ffcdd9630e870e8d
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: a826f96396a4275b07598564281060dea0bf7b1a
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124751085"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129351415"
 title: 'Avere vFXT für Azure: Häufig gestellte Fragen'
 summary: In diesem Artikel werden Fragen beantwortet, die Ihnen bei der Entscheidung helfen können, ob Avere vFXT for Azure für Ihre Anforderungen geeignet ist. Er enthält grundlegende Informationen zu Avere vFXT und erläutert, wie die Zusammenarbeit mit anderen Azure-Komponenten und mit Produkten von Drittanbietern funktioniert.
 sections:
@@ -80,15 +80,6 @@ sections:
       Ist Avere vFXT hochverfügbar?
     answer: >
       Ja, Avere vFXT wird ausschließlich als Hochverfügbarkeitslösung betrieben.
-  - question: >
-      Unterstützt Avere vFXT für Azure auch andere Clouddienste?
-    answer: >
-      Ja, Kunden können mit dem Avere vFXT-Cluster mehrere Cloudanbieter verwenden. Es unterstützt Standardbuckets von AWS S3 und Google Cloud Services sowie Azure-Blobcontainer.
-
-
-      > [!NOTE]
-
-      > Für die Verwendung von Avere vFXT mit AWS oder Google Cloud Storage fällt eine Softwaregebühr an. Für die Verwendung von Azure-Blobspeicher fällt keine zusätzliche Softwaregebühr an.
 - name: 'Technisch: Compute'
   questions:
   - question: >
@@ -214,7 +205,7 @@ sections:
       Avere vFXT ist kein Speicher. Es handelt sich um einen Cache, der Daten von mehreren Speicherzielen, den sogenannten Kernspeichereinheiten, liest und schreibt. Die in Avere vFXT auf SSD Premium-Datenträgern gespeicherten Daten sind kurzlebig und werden schließlich in die Back-End-Kernspeichereinheit übertragen.
   - question: >
       Welche Kernspeichereinheiten werden von Avere vFXT unterstützt?
-    answer: "Im Allgemeinen werden von Avere vFXT für Azure die folgenden Systeme als Kernspeichereinheiten unterstützt:\n\n* Dell EMC Isilon (OneFS 7.1, 7.2, 8.0 und 8.1) \n* NetApp ONTAP (Clustered Mode 9.4, 9.3, 9.2, 9.1P1, 8.0 bis 8.3) und (7-Mode 7.*, 8.0 und 8.3)\n\n* Azure-Blobcontainer (nur lokal redundanter Speicher)\n* AWS S3-Buckets\n* Google Cloud-Buckets\n"
+    answer: "Im Allgemeinen werden von Avere vFXT für Azure die folgenden Systeme als Kernspeichereinheiten unterstützt:\n\n* Dell EMC Isilon (OneFS 7.1, 7.2, 8.0 und 8.1) \n* NetApp ONTAP (Clustered Mode 9.4, 9.3, 9.2, 9.1P1, 8.0 bis 8.3) und (7-Mode 7.*, 8.0 und 8.3)\n\n* Azure-Blobcontainer (nur lokal redundanter Speicher)\n"
   - question: >
       Warum unterstützt Avere vFXT nicht alle NFS-Kernspeichereinheiten?
     answer: >
@@ -248,7 +239,7 @@ sections:
       BLOB Storage der kalten Ebene („Cool“) wird in der Regel nicht für eine Avere vFXT for Azure-Kernspeichereinheit empfohlen. Die kalte Ebene bietet geringere Speicherkosten, aber höhere Betriebskosten. (Weitere Informationen finden Sie unter [Blockblob – Preise](<https://azure.microsoft.com/pricing/details/storage/blobs/>).) Wenn auf Daten häufig zugegriffen wird und diese häufig geändert oder gelöscht werden, sollten Sie die heiße Speicherebene Ebene („Hot“) verwenden.
 
 
-      Unter [Zugriffsebenen](../storage/blobs/storage-blob-storage-tiers.md#cool-access-tier) finden Sie weitere Informationen dazu, wann es sinnvoll ist, Speicher der kalten Ebene als vFXT-Kernspeichereinheit zu verwenden.
+      Unter [Zugriffsebenen](../storage/blobs/access-tiers-overview.md) finden Sie weitere Informationen dazu, wann es sinnvoll ist, Speicher der kalten Ebene als vFXT-Kernspeichereinheit zu verwenden.
   - question: >
       Wie verschlüssele ich den Blobcontainer?
     answer: "Sie können die Blobverschlüsselung entweder in Azure (bevorzugt) oder auf Ebene der Avere vFXT-Kernspeichereinheit konfigurieren.  \n"

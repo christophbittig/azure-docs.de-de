@@ -3,12 +3,12 @@ title: 'Gewusst wie: Testen der Paketartefakte für Gastkonfigurationen'
 description: Die Erfahrung beim Erstellen und Testen von Paketen, die Konfigurationen auf Computern überwachen oder anwenden.
 ms.date: 07/20/2021
 ms.topic: how-to
-ms.openlocfilehash: 216cd207033b3bddd4960b85d8943e3842f8041f
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: efa2fbd49509b323cbf0cf442cb0a29bbc51c8b7
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080649"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418725"
 ---
 # <a name="how-to-test-guest-configuration-package-artifacts"></a>Gewusst wie: Testen der Paketartefakte für Gastkonfigurationen
 
@@ -35,7 +35,7 @@ Um PowerShell unter Linux als „Root“ auszuführen, verwenden Sie den [Su-Bef
 
 ## <a name="validate-the-configuration-package-meets-requirements"></a>Überprüfen, ob das Konfigurationspaket die Anforderungen erfüllt
 
-Testen Sie zunächst mithilfe von `Get-GuestConfigurationPacakgeComplianceStatus `, ob das Konfigurationspaket die grundlegenden Anforderungen erfüllt. Der Befehl überprüft die folgenden Paketanforderungen.
+Testen Sie zunächst mithilfe von `Get-GuestConfigurationPackageComplianceStatus `, ob das Konfigurationspaket die grundlegenden Anforderungen erfüllt. Der Befehl überprüft die folgenden Paketanforderungen.
 
 - MOF ist am richtigen Speicherort vorhanden und gültig
 - Erforderliche Module/Abhängigkeiten sind mit der richtigen Version vorhanden, ohne Duplikate

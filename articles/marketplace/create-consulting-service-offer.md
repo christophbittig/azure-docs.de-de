@@ -7,17 +7,17 @@ ms.reviewer: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 10/27/2020
-ms.openlocfilehash: e9a0b2fe883fa46010fda74c58908128d05919e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: af8e238d57d6168e8c9620177cbf8e97a7d08727
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92754222"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083016"
 ---
 # <a name="how-to-create-a-consulting-service-offer-in-the-commercial-marketplace"></a>Erstellen eines Angebots für einen Beratungsdienst im kommerziellen Marketplace
 
-In diesem Artikel wird erläutert, wie Sie ein Angebot für einen Beratungsdienst für den kommerziellen Microsoft-Marketplace mithilfe von Partner Center erstellen. 
+In diesem Artikel wird erläutert, wie Sie ein Angebot für einen Beratungsdienst für den kommerziellen Microsoft-Marketplace mithilfe von Partner Center erstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -25,20 +25,46 @@ Zum Veröffentlichen eines Beratungsdienstangebots müssen Sie gewisse Berechtig
 
 ## <a name="create-a-new-consulting-service-offer"></a>Erstellen eines neuen Beratungsdienstangebots
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
-2.  Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
-3.  Klicken Sie auf der Registerkarte „Übersicht“ auf **+ Neues Angebot** > **Beratungsdienst**.
+1. Wählen Sie auf der Startseite die Kachel **Marketplace offers** (Marketplace-Angebote) aus.
 
-    ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-consulting-service.png)
+    [ ![Veranschaulichung der Kachel „Marketplace offers“ (Marketplace-Angebote) auf der Startseite in Partner Center](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
 
-4. Geben Sie im Dialogfeld **Neues Angebot** eine **Angebots-ID** ein. Diese ID ist in der URL des kommerziellen Marketplace-Angebots sichtbar. Wenn Sie in diesem Feld z. B. test-offer-1 eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+1. Klicken Sie auf der Seite „Marketplace offers“ (Marketplace-Angebote) auf **+ Neues Angebot** > **Beratungsdienst**.
+
+    [ ![Veranschaulichung der Liste „Neues Angebot“ auf der Seite „Marketplace offers“ (Marketplace-Angebote)](./media/new-offer-consulting-service-workspaces.png) ](./media/new-offer-consulting-service-workspaces.png#lightbox)
+
+1. Geben Sie im Dialogfeld **New consulting service** (Neuer Beratungsdienst) eine **Angebots-ID** ein. Diese ID ist in der URL des kommerziellen Marketplace-Angebots sichtbar. Wenn Sie in diesem Feld z. B. test-offer-1 eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 
     * Jedes Angebot in Ihrem Konto muss über eine eindeutige Angebots-ID verfügen.
     * Verwenden Sie nur Kleinbuchstaben und Zahlen. Die Angebots-ID kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt.
     * Nachdem Sie **Erstellen** ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
 
-5. Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird. Er wird nicht in den Onlinegeschäften angezeigt und unterscheidet sich vom Angebotsnamen, der Kunden angezeigt wird.
-6. Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
+1. Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird. Er wird nicht in den Onlinegeschäften angezeigt und unterscheidet sich vom Angebotsnamen, der Kunden angezeigt wird.
+1. Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
+1. Klicken Sie auf der Registerkarte „Übersicht“ auf **+ Neues Angebot** > **Beratungsdienst**.
+
+    ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-consulting-service.png)
+
+1. Geben Sie im Dialogfeld **Neues Angebot** eine **Angebots-ID** ein. Diese ID ist in der URL des kommerziellen Marketplace-Angebots sichtbar. Wenn Sie in diesem Feld z. B. test-offer-1 eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+
+    * Jedes Angebot in Ihrem Konto muss über eine eindeutige Angebots-ID verfügen.
+    * Verwenden Sie nur Kleinbuchstaben und Zahlen. Die Angebots-ID kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt.
+    * Nachdem Sie **Erstellen** ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
+
+1. Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird. Er wird nicht in den Onlinegeschäften angezeigt und unterscheidet sich vom Angebotsnamen, der Kunden angezeigt wird.
+1. Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
+
+---
 
 ## <a name="configure-lead-management"></a>Konfigurieren der Leadverwaltung
 

@@ -5,16 +5,19 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: dc44fc58b8832c30ed1b740eb6637f1fc8ed1413
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 51488a6694b843821110127640281a2da9986862
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129454960"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744765"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>Bereitstellen von „VMs starten/beenden v2 (Vorschau)“
 
 Führen Sie die Schritte in diesem Thema nacheinander aus, um das Feature „VMs starten/beenden v2 (Vorschau)“ zu installieren. Nachdem Sie den Installationsprozess abgeschlossen haben, konfigurieren Sie die Zeitpläne, um sie an Ihre Anforderungen anzupassen.
+
+> [!NOTE]
+> Wenn Probleme während der Bereitstellung bzw. Verwendung von „VMs starten/beenden v2 (Vorschau)“ auftreten oder Sie eine Frage hierzu haben, können Sie ein Issue auf [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) einreichen. Das Erstellen eines Azure-Supportvorfalls über die [Azure-Supportwebsite](https://azure.microsoft.com/support/options/) ist für diese Vorschauversion nicht verfügbar. 
 
 ## <a name="permissions-considerations"></a>Überlegungen zu Berechtigungen
 Beachten Sie folgende Punkte vor und während der Bereitstellung:

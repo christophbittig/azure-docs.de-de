@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7d6111a68be8bc195b7268a778a77facdd944772
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 2940e407e88239aa1afec84137e72073b7a5028a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129084130"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533239"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Schnellstart: Erstellen einer App Service-App mit einer ARM-Vorlage
 
@@ -57,12 +57,12 @@ In der folgenden Tabelle sind die Standardparameter und ihre Beschreibungen aufg
 
 | Parameter | type    | Standardwert                | Beschreibung |
 |------------|---------|------------------------------|-------------|
-| webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | App-Name |
-| location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | App-Region |
-| sku        | string  | "F1"                         | Instanzgröße (F1 = Free-Tarif) |
-| language   | string  | ".net"                       | Sprachstapel (.NET, PHP, Node, HTML) |
+| webAppName | Zeichenfolge  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | App-Name |
+| location   | Zeichenfolge  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | App-Region |
+| sku        | Zeichenfolge  | "F1"                         | Instanzgröße (F1 = Free-Tarif) |
+| language   | Zeichenfolge  | ".net"                       | Sprachstapel (.NET, PHP, Node, HTML) |
 | helloWorld | boolean | False                        | True = Hallo Welt-App bereitstellen |
-| repoUrl    | string  | " "                          | Externes Git-Repository (optional) |
+| repoUrl    | Zeichenfolge  | " "                          | Externes Git-Repository (optional) |
 
 ---
 
@@ -87,11 +87,11 @@ In der folgenden Tabelle sind die Standardparameter und ihre Beschreibungen aufg
 
 | Parameter | type    | Standardwert                | Beschreibung |
 |------------|---------|------------------------------|-------------|
-| webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | App-Name |
-| location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | App-Region |
-| sku        | string  | "F1"                         | Instanzgröße (F1 = Free-Tarif) |
-| linuxFxVersion   | string  | "DOTNETCORE&#124;3.0        | Sprachstapel &#124; Version |
-| repoUrl    | string  | " "                          | Externes Git-Repository (optional) |
+| webAppName | Zeichenfolge  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | App-Name |
+| location   | Zeichenfolge  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | App-Region |
+| sku        | Zeichenfolge  | "F1"                         | Instanzgröße (F1 = Free-Tarif) |
+| linuxFxVersion   | Zeichenfolge  | "DOTNETCORE&#124;3.0        | Sprachstapel &#124; Version |
+| repoUrl    | Zeichenfolge  | " "                          | Externes Git-Repository (optional) |
 
 ---
 
@@ -144,7 +144,7 @@ Aktualisieren Sie zum Bereitstellen eines anderen Sprachstapels <abbr title="Die
 
 | Parameter | type    | Standardwert                | BESCHREIBUNG |
 |------------|---------|------------------------------|-------------|
-| language   | string  | ".net"                       | Sprachstapel (.NET, PHP, Node, HTML) |
+| language   | Zeichenfolge  | ".net"                       | Sprachstapel (.NET, PHP, Node, HTML) |
 
 ---
 
@@ -191,4 +191,3 @@ Rufen Sie `http://<app_name>.azurewebsites.net/` auf, und überprüfen Sie, ob d
 - [Python mit Postgres](tutorial-python-postgresql-app.md)
 - [PHP mit MySQL](tutorial-php-mysql-app.md)
 - [Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von Java](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
-- [Zuordnen einer benutzerdefinierten Domäne](app-service-web-tutorial-custom-domain-uiex.md)

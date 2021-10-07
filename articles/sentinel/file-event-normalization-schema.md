@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: da4412d81dfaf6bb88b62aee26dfcd4cfd2402db
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d5928cf93aed6e1a887be07f2befd27df9a8e276
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810123"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407834"
 ---
 # <a name="azure-sentinel-file-event-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (Public Preview)
 
@@ -60,7 +60,7 @@ Zur Unterstützung des ASIM-Schemas für Dateiaktivität gehört auch die Unters
 
 
 - [SUNBURST- und SUPERNOVA-Hintertürhashes (normalisierte Dateiereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimFileEvent/imFileESolarWindsSunburstSupernova.yaml)
-- [Exchange Server: im März 2021 offengelegte Sicherheitsrisiken – IoC-Übereinstimmung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ExchangeServerVulnerabilitiesMarch2021IoCs.yaml)
+- [Exchange Server: im März 2021 offengelegte Sicherheitsrisiken – IoC-Übereinstimmung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ExchangeServerVulnerabilitiesMarch2021IoCs.yaml)
 - [Schreiben verdächtiger Dateien durch den HAFNIUM UM-Dienst](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/HAFNIUMUmServiceSuspiciousFile.yaml)
 - [NOBELIUM – Domänen-, Hash- und IP-IOCs – März 2021](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_IOCsMay2021.yaml)
 - [SUNSPOT-Protokolldateierstellung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/SUNSPOTLogFile.yaml)
@@ -77,7 +77,7 @@ Das Dateiereignis-Informationsmodell ist auf das [OSSEM-Prozessentitätsschema](
 
 Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und können beim Erstellen eines benutzerdefinierten Connectors überschrieben werden.
 
-| Feld         | Typ     | Diskussion (Discussion)      |
+| Feld         | type     | Diskussion (Discussion)      |
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | datetime | Der Zeitpunkt, zu dem das Ereignis vom meldenden Gerät generiert wurde.|
 | **_ResourceId**   | guid     | Die Azure-Ressourcen-ID des meldenden Geräts oder Diensts oder die Ressourcen-ID des Protokollforwarders für Ereignisse, die mit Syslog, CEF oder WEF weitergeleitet werden. |
@@ -92,7 +92,7 @@ Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und
 
 Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbst und das meldende Gerät.
 
-| Feld               | Klasse       | Typ       |  BESCHREIBUNG       |
+| Feld               | Klasse       | type       |  BESCHREIBUNG       |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | Optional    | String     |     Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert.   |
 | **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die im Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
@@ -135,11 +135,11 @@ Die Beziehung zwischen diesen Entitäten wird am besten wie folgt demonstriert: 
 
 Beispiel: `JohnDoe` (**Actor**) verwendet `Windows File Explorer` (**handelnder Prozess**), um `new.doc` (**Quelldatei**) in `old.doc` (**Zieldatei**) umzubenennen.
 
-| Feld          | Klasse        | Typ       | BESCHREIBUNG   |
+| Feld          | Klasse        | type       | BESCHREIBUNG   |
 |---------------|--------------|------------|-----------------|
 | **ActingProcessCommandLine** |Optional  |String  | Die Befehlszeile zum Ausführen des Programms. <br><br>Beispiel: `"choco.exe" -v` |
 |**ActingProcessGuid** |Optional     | String     |  Ein generierter eindeutiger Bezeichner (GUID) des handelnden Prozesses. Ermöglicht die systemübergreifende Identifizierung des Prozesses.  <br><br> Beispiel: `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
-| **ActingProcessId**| Obligatorisch.    | Integer        | Die Prozess-ID (PID) des handelnden Prozesses.<br><br>Beispiel: `48610176`           <br><br>**Hinweis**: Der Typ ist als *Zeichenfolge* definiert, um unterschiedliche Systeme zu unterstützen, aber unter Windows und Linux muss dieser Wert numerisch sein. <br><br>Wenn Sie einen Windows- oder Linux-Computer verwenden und einen anderen Typ verwendet haben, stellen Sie sicher, dass Sie die Werte konvertieren. Wenn Sie beispielsweise einen Hexadezimalwert verwendet haben, konvertieren Sie diesen in einen Dezimalwert.    |
+| **ActingProcessId**| Obligatorisch.    | String        | Die Prozess-ID (PID) des handelnden Prozesses.<br><br>Beispiel: `48610176`           <br><br>**Hinweis**: Der Typ ist als *Zeichenfolge* definiert, um unterschiedliche Systeme zu unterstützen, aber unter Windows und Linux muss dieser Wert numerisch sein. <br><br>Wenn Sie einen Windows- oder Linux-Computer verwenden und einen anderen Typ verwendet haben, stellen Sie sicher, dass Sie die Werte konvertieren. Wenn Sie beispielsweise einen Hexadezimalwert verwendet haben, konvertieren Sie diesen in einen Dezimalwert.    |
 | <a name="actingprocessname"></a>**ActingProcessName**              | Optional     | String     |   Der Name des handelnden Prozesses. Dieser Name wird häufig vom Image oder von der ausführbaren Datei abgeleitet, die zum Definieren des ursprünglichen Codes und der Daten verwendet wird, die dem virtuellen Adressraum des Prozesses zugeordnet sind.<br><br>Beispiel: `C:\Windows\explorer.exe`  |
 |**Process**| Alias| | Alias für [ActingProcessName](#actingprocessname)|
 | <a name="actoruserid"></a>**ActorUserId**    | Empfohlen  | String     |   Eine eindeutige ID des **Akteurs**. Die jeweilige ID hängt vom System ab, das das Ereignis generiert. Weitere Informationen finden Sie unter [Benutzerentität](normalization-about-schemas.md#the-user-entity).  <br><br>Beispiel: `S-1-5-18`    |
@@ -202,7 +202,7 @@ Der Pfad muss so normalisiert werden, dass er einem der folgenden Formate entspr
 Weitere Informationen finden Sie unter
 
 - [Normalisierung in Azure Sentinel](normalization.md)
-- [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Public Preview)](authentication-normalization-schema.md)
+- [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)](authentication-normalization-schema.md)
 - [Azure Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Netzwerknormalisierungsschema](normalization-schema.md)
 - [Azure Sentinel: Referenz zum Prozessereignis-Normalisierungsschema (Public Preview)](process-events-normalization-schema.md)

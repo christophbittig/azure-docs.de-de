@@ -1,14 +1,14 @@
 ---
 title: Integrieren von Palo Alto mit Azure Defender für IoT
 description: Die Defender für IoT-Plattform für die kontinuierliche ICS-Bedrohungsüberwachung wurde in die Palo Alto-Firewalls der nächsten Generation integriert, um eine schnellere und effizientere Blockierung von kritischen Bedrohungen zu ermöglichen.
-ms.date: 09/29/2021
+ms.date: 09/26/2021
 ms.topic: tutorial
-ms.openlocfilehash: ca6160920a19fc653132d6fdc8cccd878da7cee5
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 6579c69d5ab789c97972a81f00dc56d19ce1f9f8
+ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236790"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129062045"
 ---
 # <a name="tutorial-integrate-palo-alto-with-azure-defender-for-iot"></a>Tutorial: Integrieren von Palo Alto mit Azure Defender für IoT
 
@@ -69,7 +69,7 @@ Wenn Defender für IoT eine kritische Bedrohung identifiziert, wird eine Warnung
 
     :::image type="content" source="media/tutorial-palo-alto/edit.png" alt-text="Screenshot: Fenster „Weiterleitungsregel bearbeiten“":::
 
-1. Klicken Sie auf **Senden**.
+1. Klicken Sie auf **Submit** (Senden).
 
 Anschließend müssen Sie alle verdächtigen Quellen blockieren.
 
@@ -184,7 +184,7 @@ Verdächtiger Datenverkehr muss mit der Palo Alto-Firewall blockiert werden. Sie
 
     :::image type="content" source="media/tutorial-palo-alto/details.png" alt-text="Screenshot: Fenster „Aktion auswählen“":::
 
-1. Klicken Sie auf **Senden**.
+1. Klicken Sie auf **Submit** (Senden).
 
 Anschließend müssen Sie die verdächtige Quelle blockieren.
 

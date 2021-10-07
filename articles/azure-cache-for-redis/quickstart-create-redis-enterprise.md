@@ -1,18 +1,18 @@
 ---
 title: 'Schnellstart: Erstellen einer Redis Cache-Instanz im Enterprise-Tarif'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie eine Azure Cache for Redis-Instanz mit Enterprise-Tarifen erstellen.
-author: curib
-ms.author: cauribeg
+author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 7733f9df7f314dfdc0369075b96477e301825ce6
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 97d87ab28b4b2b000fe0e9b1517e43c79984e74e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537328"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563653"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache"></a>Schnellstart: Erstellen einer Redis Cache-Instanz im Enterprise-Tarif
 
