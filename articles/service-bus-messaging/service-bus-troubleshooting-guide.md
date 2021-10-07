@@ -4,12 +4,12 @@ description: Lernen Sie Tipps zur Problembehandlung und Empfehlungen für einige
 ms.topic: article
 ms.date: 03/03/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0afb1d7a14867e616623519ec5de2c43e9beba2d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 433383845771fca2b3df1ce1da81e070dd8e75c1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663655"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359381"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Leitfaden zur Problembehandlung für Azure Service Bus
 In diesem Artikel finden Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme, die bei der Verwendung von Azure Service Bus auftreten können. 
@@ -53,7 +53,7 @@ Die folgenden Schritte unterstützen Sie bei der Problembehandlung von Konnektiv
     ```
     Sie können äquivalente Befehle verwenden, wenn Sie andere Tools wie `tnc`, `ping` usw. nutzen. 
 - Rufen Sie eine Netzwerkablaufverfolgung ab, wenn die vorherigen Schritte nicht hilfreich sind, und analysieren Sie diese mit Tools wie [Wireshark](https://www.wireshark.org/). Wenden Sie sich bei Bedarf an den [Microsoft-Support](https://support.microsoft.com/). 
-- Informationen zum Ermitteln der IP-Adressen, die der Positivliste für Ihre Verbindungen hinzugefügt werden müssen, finden Sie unter [Welche IP-Adressen muss ich in die Zulassungsliste aufnehmen?](service-bus-faq.yml#what-ip-addresses-do-i-need-to-add-to-allow-list-). 
+- Informationen zum Ermitteln der IP-Adressen, die der Positivliste für Ihre Verbindungen hinzugefügt werden müssen, finden Sie unter [Welche IP-Adressen muss ich in die Zulassungsliste aufnehmen?](service-bus-faq.yml#what-ip-addresses-do-i-need-to-add-to-allowlist-). 
 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Mögliche Probleme im Zusammenhang mit Dienstupgrades/-neustarts

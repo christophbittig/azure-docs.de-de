@@ -25,6 +25,8 @@
   items:
     - name: Setup der Azure Defender für IoT-Testversion
       href: tutorial-onboarding.md
+    - name: Integrieren von ClearPass
+      href: tutorial-clearpass.md
     - name: Integrieren von CyberArk
       href: tutorial-cyberark.md
     - name: Integrieren von Forescout

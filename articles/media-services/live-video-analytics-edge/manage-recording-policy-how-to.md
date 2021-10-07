@@ -3,12 +3,12 @@ title: 'Verwalten der Aufzeichnungsrichtlinie mit Live Video Analytics: Azure'
 description: In diesem Thema wird erklärt, wie Sie die Aufzeichnungsrichtlinie mit Live Video Analytics verwalten.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: a8301b97e571370d498fba9a8d46cf3fc545ff29
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c9ec5a2efd56a0a2872f946dd23db72d2e7836b9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740363"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273645"
 ---
 # <a name="manage-recording-policy-with-live-video-analytics"></a>Verwalten der Aufzeichnungsrichtlinie mit Live Video Analytics
 
@@ -44,7 +44,7 @@ Ihr Media Service-Konto ist mit einem Azure Storage-Konto verknüpft. Wenn Sie V
 Für die obige Regel gilt Folgendes:
 
 * Sie gilt für alle Blockblobs im Speicherkonto.
-* Sie gibt an, dass die Blobs, die älter als 30 Tage sind, von der [heißen in die kalte Speicherebene](../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal) verschoben werden.
+* Sie gibt an, dass die Blobs, die älter als 30 Tage sind, von der [heißen in die kalte Speicherebene](../../storage/blobs/access-tiers-overview.md?tabs=azure-portal) verschoben werden.
 * Wenn Blobs älter als 90 Tage sind, müssen sie gelöscht werden.
 
 Wenn Sie Live Video Analytics für die Aufzeichnung in einem Medienobjekt verwenden, geben Sie eine `segmentLength`-Eigenschaft an, die das Modul anweist, eine Mindestdauer des Videos (in Sekunden) zu aggregieren, ehe es in die Cloud geschrieben wird. Ihr Medienobjekt enthält eine Reihe von Segmenten, die jeweils einen Erstellungszeitstempel haben, der um `segmentLength` neuer ist als der vorherige. Wenn die Richtlinie für die Lebenszyklusverwaltung greift, werden Segmente gelöscht, die älter als der angegebene Schwellenwert sind. Sie können jedoch weiterhin über Media Service-APIs auf die restlichen Segmente zugreifen und diese wiedergeben. Weitere Informationen finden Sie unter [Wiedergeben von Aufzeichnungen](playback-recordings-how-to.md). 

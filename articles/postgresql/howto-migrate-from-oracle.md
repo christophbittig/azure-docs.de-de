@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: c197f5200c3db60a63bfd8c8e4e01ab4881aa5b6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 758199dca165c301322631e0d29b1af2711dc56b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756357"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356933"
 ---
 # <a name="migrate-oracle-to-azure-database-for-postgresql"></a>Onlinemigration von Oracle zu Azure Database for PostgreSQL
 
@@ -92,7 +92,7 @@ Die Microsoft-Skripts für die Vorabbewertung für Oracle werden für die Oracle
 - Die Größe von Tabellen in jedem Schema.
 - Die Anzahl der Codezeilen pro Paket, Funktion, Prozedur usw.
 
-Laden Sie die zugehörigen Skripts von [GitHub](https://github.com/microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts) herunter.
+Laden Sie die zugehörigen Skripts von [GitHub](https://github.com/microsoft/DataMigrationTeam/tree/master/Whitepapers) herunter.
 
 ### <a name="assess"></a>Bewerten
 

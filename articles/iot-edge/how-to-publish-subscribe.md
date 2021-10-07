@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: f798f8be2989140711cb9122c9d59e7b91248f61
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 899a6c1f0e5f2eb7441ea2035cdb12bed13a4b85
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128600378"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457314"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge-preview"></a>Veröffentlichen und Abonnieren mit Azure IoT Edge (Vorschau)
 
@@ -417,7 +417,7 @@ Das Empfangen einer direkten Methode ähnelt dem Empfangen von vollständigen Zw
 
 ### <a name="send-direct-methods"></a>Senden von direkten Methoden
 
-Weil das Senden einer direkten Methode ein HTTP-Aufruf ist, geschieht dies nicht über den MQTT-Broker. Informationen zum Senden einer direkten Methode an IoT Hub finden Sie unter [Verstehen und Aufrufen direkter Methoden](../iot-hub/iot-hub-devguide-direct-methods.md). Informationen zum lokalen Senden einer direkten Methode an ein anderes Modul finden Sie in diesem [Azure IoT C# SDK-Beispiel für einen direkten Methodenaufruf](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/ModuleClient.cs#L597).
+Weil das Senden einer direkten Methode ein HTTP-Aufruf ist, geschieht dies nicht über den MQTT-Broker. Informationen zum Senden einer direkten Methode an IoT Hub finden Sie unter [Verstehen und Aufrufen direkter Methoden](../iot-hub/iot-hub-devguide-direct-methods.md). Informationen zum lokalen Senden einer direkten Methode an ein anderes Modul finden Sie in diesem [Azure IoT C# SDK-Beispiel für einen direkten Methodenaufruf](https://github.com/Azure/azure-iot-sdk-csharp/blob/main/iothub/device/src/ModuleClient.cs#L597).
 
 ## <a name="publish-and-subscribe-between-mqtt-brokers"></a>Veröffentlichen und Abonnieren zwischen MQTT-Brokern
 

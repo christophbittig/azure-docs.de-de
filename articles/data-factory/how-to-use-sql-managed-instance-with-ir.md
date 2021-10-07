@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 070c9ff8cbca98272be6aa0cf48a97381f4ff6b4
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: ce75b0439bdf14c8894fe91267ae3b88508a89d4
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216610"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400305"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Verwenden von verwalteten Azure SQL-Instanzen mit SQL Server Integration Services (SSIS) in Azure Data Factory
 
@@ -66,7 +66,7 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
 
                 | Transportprotokoll | `Source` | Quellportbereich | Destination |Destination port range |
                 |---|---|---|---|---|
-                |TCP|Statische IP-Adresse der Azure-SSIS IR <br> Ausführliche Informationen finden Sie unter [Bereitstellen einer eigenen öffentlichen IP-Adresse für eine Azure-SSIS IR](join-azure-ssis-integration-runtime-virtual-network.md#publicIP).|*|VirtualNetwork|3342|
+                |TCP|Statische IP-Adresse der Azure-SSIS IR <br> Ausführliche Informationen finden Sie unter [Bereitstellen einer eigenen öffentlichen IP-Adresse für eine Azure-SSIS IR](azure-ssis-integration-runtime-virtual-network-configuration.md#publicIP).|*|VirtualNetwork|3342|
 
              1. **Anforderung an ausgehenden Datenverkehr der Azure-SSIS IR** zum Zulassen von ausgehendem Datenverkehr an SQL Managed Instance.
 
@@ -111,7 +111,7 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
         |---|---|---|---|---|---|
         | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000–11999 |Lassen Sie ausgehenden Datenverkehr an SQL Managed Instance zu. Wenn die Verbindungsrichtlinie auf **Proxy** anstelle von **Redirect** festgelegt ist, wird nur Port 1433 benötigt. |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | Die Knoten Ihrer Azure-SSIS IR im virtuellen Netzwerk verwenden diesen Port für den Zugriff auf Azure-Dienste wie Azure Storage und Azure Event Hubs. |
-        | TCP | VirtualNetwork | * | Internet | 80 | (Optional) Die Knoten Ihrer Azure-SSIS IR im virtuellen Netzwerk verwenden diesen Port zum Herunterladen einer Zertifikatssperrliste aus dem Internet. Wenn Sie diesen Datenverkehr blockieren, kann es beim Starten der IR zu einer Leistungsherabstufung kommen und die Möglichkeit zum Überprüfen der Zertifikatssperrliste im Hinblick auf die Zertifikatverwendung verloren gehen. Wenn Sie das Ziel weiter auf bestimmte FQDNs eingrenzen möchten, finden Sie entsprechende Informationen im Abschnitt [Verwenden von Azure ExpressRoute oder UDR](./join-azure-ssis-integration-runtime-virtual-network.md#route).|
+        | TCP | VirtualNetwork | * | Internet | 80 | (Optional) Die Knoten Ihrer Azure-SSIS IR im virtuellen Netzwerk verwenden diesen Port zum Herunterladen einer Zertifikatssperrliste aus dem Internet. Wenn Sie diesen Datenverkehr blockieren, kann es beim Starten der IR zu einer Leistungsherabstufung kommen und die Möglichkeit zum Überprüfen der Zertifikatssperrliste im Hinblick auf die Zertifikatverwendung verloren gehen. Wenn Sie das Ziel weiter auf bestimmte FQDNs eingrenzen möchten, finden Sie entsprechende Informationen im Abschnitt [Verwenden von Azure ExpressRoute oder UDR](./azure-ssis-integration-runtime-virtual-network-configuration.md#route).|
         | TCP | VirtualNetwork | * | Storage | 445 | (Optional) Diese Regel ist nur erforderlich, wenn Sie das in Azure Files gespeicherte SSIS-Paket ausführen möchten. |
         |||||||
 
@@ -123,7 +123,7 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
         | TCP | CorpNetSaw | * | VirtualNetwork | 3389 | (Optional:) Diese Regel ist nur erforderlich, wenn ein Mitarbeiter des Microsoft-Supports den Kunden zum Öffnen für erweiterte Problembehandlung auffordert. Direkt nach Abschluss der Problembehandlung können die Ports wieder geschlossen werden. Das Diensttag **CorpNetSaw** gestattet nur sicheren Zugriff auf Arbeitsstationen im Microsoft-Unternehmensnetzwerk, um den Remotedesktop verwenden zu können. Dieses Diensttag kann im Portal nicht ausgewählt werden und steht nur über Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI) zur Verfügung. <br/><br/> Auf NIC-Ebene NSG ist Port 3389 standardmäßig geöffnet, und wir ermöglichen es Ihnen, Port 3389 auf Subnetzebene-NSG zu steuern. In der Zwischenzeit hat Azure-SSIS IR Port 3389 ausgehend von der Windows-Firewallregel auf jedem IR-Knoten für Schutzzwecke standardmäßig nicht zugelassen. |
         |||||||
 
-    1. Weitere Informationen finden Sie unter [Konfiguration von virtuellen Netzwerken](join-azure-ssis-integration-runtime-virtual-network.md#virtual-network-configuration):
+    1. Weitere Informationen finden Sie unter [Konfiguration von virtuellen Netzwerken](azure-ssis-integration-runtime-virtual-network-configuration.md):
         - Sie verwenden Ihre eigenen öffentlichen IP-Adressen für die Azure-SSIS IR.
         - Sie verwenden einen eigenen DNS-Server (Domain Name System).
         - Sie verwenden Azure ExpressRoute oder eine benutzerdefinierte Route (User-Defined Route, UDR).

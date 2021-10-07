@@ -1,18 +1,18 @@
 ---
 title: Erstellen einer ASP.NET-Web-App mit Azure Cache for Redis
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine ASP.NET-Web-App mit Azure Cache for Redis erstellen.
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: quickstart
 ms.date: 09/29/2020
-ms.author: yegu
+ms.author: cauribeg
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d32043aa51f798de96468768fd68a924914b621b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f76f350280b0a42f2915d9e9f00357919e5c4f8e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128660726"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533810"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer ASP.NET-Web-App 
 
@@ -39,7 +39,7 @@ Wenn Sie direkt mit dem Code fortfahren möchten, finden Sie im [ASP.NET-Schnell
 
     b. Wählen Sie **ASP.NET-Webanwendung (.NET Framework)** aus.
 
-    c. Wählen Sie **Weiter** aus.
+    c. Klicken Sie auf **Weiter**.
 
 3. Geben Sie im Feld **Projektname** einen Namen für das Projekt ein. In diesem Beispiel haben wir **ContosoTeamStats** verwendet.
 

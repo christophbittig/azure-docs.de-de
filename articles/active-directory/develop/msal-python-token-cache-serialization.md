@@ -13,12 +13,12 @@ ms.date: 11/13/2019
 ms.author: rayluo
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 7aaf59377949101ba8dd5c9454b89229e925e859
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbe91d7a25e516766939ba56a9d9cfafff4bf0b5
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87846189"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229903"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>Benutzerdefinierte Tokencacheserialisierung in MSAL für Python
 
@@ -38,4 +38,4 @@ Für Web-Apps oder Web-APIs können Sie den Sitzungs- bzw. einen Redis-Cache ode
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ein Beispiel für die Verwendung des Tokencaches für eine Windows- oder Windows- oder Linux-Web-App oder -Web-API finden Sie unter [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py#L64-L72). Das Beispiel bezieht sich auf eine Web-API, die die Microsoft Graph-API aufruft.
+Ein Beispiel für die Verwendung des Tokencaches für eine Windows- oder Windows- oder Linux-Web-App oder -Web-API finden Sie unter [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.3.0/app.py#L66-L74). Das Beispiel bezieht sich auf eine Web-API, die die Microsoft Graph-API aufruft.

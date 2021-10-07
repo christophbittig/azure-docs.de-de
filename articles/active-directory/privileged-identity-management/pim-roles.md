@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 05/11/2020
+ms.date: 09/01/2021
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c72587c5486ed61215fd20c215a1dd194f4b7bc4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61fb630df848ef30baf84cb0c13e1c0c37830400
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92372411"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803562"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Rollen, die nicht in Privileged Identity Management verwaltet werden können
 
@@ -40,7 +40,8 @@ Weitere Informationen zu Administratorrollen klassischer Abonnements finden Sie 
 Es werden alle Microsoft 365-Rollen in der Azure AD-Rollenumgebung und im Administratorportal unterstützt, z. B. „Exchange-Administrator“ und „SharePoint-Administrator“, aber es werden keine spezifischen Rollen innerhalb der rollenbasierten Zugriffssteuerung (RBAC) von Exchange oder SharePoint unterstützt. Weitere Informationen zu diesen Microsoft 365-Diensten finden Sie unter [Microsoft 365-Administratorrollen](/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
-> Bei berechtigten Benutzern für die Rolle „SharePoint-Administrator“, die Rolle „Geräteadministrator“ sowie allen Rollen, die versuchen, auf das Microsoft Security and Compliance Center zuzugreifen, können nach dem Aktivieren ihrer Rolle Verzögerungen von bis zu einigen Stunden auftreten. Wir arbeiten mit diesen Teams zusammen daran, diese Probleme zu beheben.
+> - Bei berechtigten Benutzern für die Rolle „SharePoint-Administrator“, die Rolle „Geräteadministrator“ sowie allen Rollen, die versuchen, auf das Microsoft Security and Compliance Center zuzugreifen, können nach dem Aktivieren ihrer Rolle Verzögerungen von bis zu einigen Stunden auftreten. Wir arbeiten mit diesen Teams zusammen daran, diese Probleme zu beheben.
+> - Informationen zu Verzögerungen beim Aktivieren der Rolle „Lokaler Administrator für in Azure AD eingebundenes Gerät“ finden Sie unter [Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten](/azure/active-directory/devices/assign-local-admin#manage-the-device-administrator-role).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

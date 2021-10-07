@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: reference
 author: vladai78
 ms.author: vladiv
-ms.reviewer: mathoma, jovanpop, sachinp
-ms.date: 09/14/2020
-ms.openlocfilehash: c134631d33313eaefef63fde48dd1693354bf18d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.reviewer: mathoma, vladiv, sachinp
+ms.date: 09/28/2021
+ms.openlocfilehash: 7fba2ede931375d310b64bf7800b2adf43b2a24e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692862"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212777"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Übersicht über Ressourcenlimits für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -142,13 +142,21 @@ In der folgenden Tabelle werden die **standardmäßigen regionalen Grenzwerte** 
 
 |Abonnementtyp| Max. Anzahl von SQL Managed Instance-Subnetzen | Max number of vCore units* (Maximale Anzahl von virtuellen Kerneinheiten) |
 | :---| :--- | :--- |
-|Nutzungsbasierte Bezahlung|3|320|
-|CSP |8 (15 in manchen Regionen**)|960 (1440 in manchen Regionen**)|
-|Pay-as-you-go Dev/Test|3|320|
-|Enterprise Dev/Test|3|320|
-|EA|8 (15 in manchen Regionen**)|960 (1440 in manchen Regionen**)|
-|Visual Studio Enterprise|2 |64|
-|Visual Studio Professional und MSDN Platforms|2|32|
+|CSP |16 (30 in manchen Regionen**)|960 (1440 in manchen Regionen**)|
+|EA|16 (30 in manchen Regionen**)|960 (1440 in manchen Regionen**)|
+|Enterprise Dev/Test|6|320|
+|Nutzungsbasierte Bezahlung|6|320|
+|Pay-as-you-go Dev/Test|6|320|
+|Azure Pass|3|64|
+|BizSpark|3|64|
+|BizSpark Plus|3|64|
+|Microsoft Azure Sponsorship|3|64|
+|Microsoft Partner Network|3|64|
+|Visual Studio Enterprise (MPN)|3|64|
+|Visual Studio Enterprise|3|32|
+|Visual Studio Enterprise (BizSpark)|3|32|
+|Visual Studio Professional|3|32|
+|MSDN Platforms|3|32|
 
 \* Berücksichtigen Sie bei der Planung von Bereitstellungen, dass die Dienstebene „Unternehmenskritisch“ (Business Critical, BC) viermal (4-mal) mehr v-Kern-Kapazität erfordert als die Dienstebene „Universell“ (General Purpose, GP). Beispiel: 1 virtueller Kern „Universell“ = 1 V-Kern-Einheit, und 1 virtueller Kern „Unternehmenskritisch“ = 4 virtuelle Kerne. Um die Nutzungsanalyse hinsichtlich der Standardgrenzwerte zu vereinfachen, fassen Sie die vCore-Einheiten für alle Subnetze in der Region zusammen, in der SQL Managed Instance bereitgestellt wird. Vergleichen Sie die Ergebnisse anschließend mit den Grenzwerten für Instanzeinheiten Ihres Abonnementtyps. Der Grenzwert **Max number of vCore units** (Maximale Anzahl von virtuellen Kerneinheiten) gilt für jedes Abonnement in einer Region. Es gibt keinen Grenzwert pro individuellem Subnetz, außer dass die Summe aller in mehreren Subnetzen bereitgestellten virtuellen Kerne niedriger oder gleich der **maximalen Anzahl von virtuellen Kerneinheiten** sein muss.
 

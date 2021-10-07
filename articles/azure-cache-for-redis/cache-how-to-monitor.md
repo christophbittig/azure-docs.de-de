@@ -1,17 +1,17 @@
 ---
 title: Überwachen von Azure Cache for Redis
 description: Erfahren Sie, wie Sie die Stabilität und Integrität Ihrer Azure Cache for Redis-Instanzen überwachen.
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 80290a9214e7d4b2715251f49b407d7456bd1fb6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 64234292051c5f780c33fd55fabf3305f45b756d
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293965"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538411"
 ---
 # <a name="monitor-azure-cache-for-redis"></a>Überwachen von Azure Cache for Redis
 
@@ -163,14 +163,16 @@ Zum Konfigurieren von Warnungsregeln für den Cache wählen Sie im **Ressourcenm
 
 Weitere Informationen zum Konfigurieren und Verwenden von Warnungen finden Sie unter [Übersicht über Warnungen](../azure-monitor/alerts/alerts-classic-portal.md).
 
-## <a name="activity-logs"></a>Aktivitätsprotokolle
+<!-- 
+## Activity Logs
 
-Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure Cache for Redis-Instanzen ausgeführt wurden. Sie wurden zuvor als „Überwachungsprotokolle“ oder „Betriebsprotokolle“ bezeichnet. Mit Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Azure Cache for Redis-Instanzen durchgeführt wurden.
+Activity logs provide insight into the operations that completed on your Azure Cache for Redis instances. It was previously known as "audit logs" or "operational logs". Using activity logs, you can determine the "what, who, and when" for any write operations (PUT, POST, DELETE) taken on your Azure Cache for Redis instances.
 
 > [!NOTE]
-> Aktivitätsprotokolle umfassen keine Lesevorgänge (GET).
->
+> Activity logs do not include read (GET) operations.
+> 
 
-Zum Anzeigen von Aktivitätsprotokollen für den Cache wählen Sie im **Ressourcenmenü** die Option **Aktivitätsprotokolle** aus.
+To view activity logs for your cache, select **Activity logs** from the **Resource menu**.
 
-Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Übersicht über das Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md).
+For more information about Activity logs, see [Overview of the Azure Activity Log](../azure-monitor/essentials/platform-logs-overview.md).
+-->

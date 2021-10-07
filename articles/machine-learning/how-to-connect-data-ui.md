@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Erstellen von Datenspeichern und Datasets, um sichere Verbindungen mit Daten in Speicherdiensten in Azure mit Azure Machine Learning Studio herzustellen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 07/06/2021
 ms.custom: data4ml
-ms.openlocfilehash: 8764f237d3e5304df95357cb770738e32d8395dd
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9453e2894f833fbedb1022d2326bd3423e78d94a
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114441880"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423631"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Herstellen einer Verbindung mit Daten in Azure Machine Learning Studio
 

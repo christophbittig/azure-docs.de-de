@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37192a38376536143472f406b9fd11c490a98e5b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96741761"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128578816"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Überwachen und Überprüfen der Protokolle für lokale Umgebungen mit Azure AD-Kennwortschutz
 
@@ -124,36 +124,55 @@ Beachten Sie, dass das Cmdlet `Get-AzureADPasswordProtectionSummaryReport` in Po
 > [!NOTE]
 > Bei diesem Cmdlet wird jeweils das Admin-Ereignisprotokoll der einzelnen DC-Agent-Dienste remote abgefragt. Wenn die Ereignisprotokolle eine große Anzahl von Ereignissen enthalten, kann es lange dauern, bis das Cmdlet abgeschlossen ist. Darüber hinaus können umfangreiche Netzwerkabfragen großer Datenmengen die Leistung des Domänencontrollers beeinträchtigen. Daher sollte dieses Cmdlet in Produktionsumgebungen sorgfältig verwendet werden.
 
-### <a name="sample-event-log-message-for-event-id-10014-successful-password-change"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 10014 – Kennwort erfolgreich geändert
+### <a name="sample-event-log-messages"></a>Beispiele für Ereignisprotokollmeldungen
+
+#### <a name="event-id-10014-successful-password-change"></a>Ereignis-ID 10014 (Erfolgreiche Kennwortänderung)
 
 ```text
 The changed password for the specified user was validated as compliant with the current Azure password policy.
 
- UserName: BPL_02885102771
- FullName:
+UserName: SomeUser
+FullName: Some User
 ```
 
-### <a name="sample-event-log-message-for-event-id-10017-and-30003-failed-password-set"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 10017 und 30003 – Kennwort nicht erfolgreich festgelegt
-
-10017:
+#### <a name="event-id-10017-failed-password-change"></a>Ereignis-ID 10017 (Kennwortänderung fehlgeschlagen):
 
 ```text
 The reset password for the specified user was rejected because it did not comply with the current Azure password policy. Please see the correlated event log message for more details.
 
- UserName: BPL_03283841185
- FullName:
+UserName: SomeUser
+FullName: Some User
 ```
 
-30003:
+#### <a name="event-id-30003-failed-password-change"></a>Ereignis-ID 30003 (Kennwortänderung fehlgeschlagen):
 
 ```text
 The reset password for the specified user was rejected because it matched at least one of the tokens present in the per-tenant banned password list of the current Azure password policy.
 
- UserName: BPL_03283841185
- FullName:
+UserName: SomeUser
+FullName: Some User
 ```
 
-### <a name="sample-event-log-message-for-event-id-30001-password-accepted-due-to-no-policy-available"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 30001 – Kennwort akzeptiert, da keine Richtlinie verfügbar
+#### <a name="event-id-10024-password-accepted-due-to-policy-in-audit-only-mode"></a>Ereignis-ID 10024 (Kennwort aufgrund einer Richtlinie im Modus „Nur Überwachen“ akzeptiert)
+
+``` text
+The changed password for the specified user would normally have been rejected because it did not comply with the current Azure password policy. The current Azure password policy is con-figured for audit-only mode so the password was accepted. Please see the correlated event log message for more details. 
+ 
+UserName: SomeUser
+FullName: Some User
+```
+
+#### <a name="event-id-30008-password-accepted-due-to-policy-in-audit-only-mode"></a>Ereignis-ID 30008 (Kennwort aufgrund einer Richtlinie im Modus „Nur Überwachen“ akzeptiert)
+
+``` text
+The changed password for the specified user would normally have been rejected because it matches at least one of the tokens present in the per-tenant banned password list of the current Azure password policy. The current Azure password policy is configured for audit-only mode so the password was accepted. 
+
+UserName: SomeUser
+FullName: Some User
+
+```
+
+#### <a name="event-id-30001-password-accepted-due-to-no-policy-available"></a>Ereignis-ID 30001 (Kennwort akzeptiert, da keine Richtlinie verfügbar)
 
 ```text
 The password for the specified user was accepted because an Azure password policy is not available yet
@@ -180,7 +199,7 @@ This condition may be caused by one or more of the following reasons:%n
    Resolution steps: ensure network connectivity exists to the domain.
 ```
 
-### <a name="sample-event-log-message-for-event-id-30006-new-policy-being-enforced"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 30006 – neue Richtlinie wird erzwungen
+#### <a name="event-id-30006-new-policy-being-enforced"></a>Ereignis-ID 30006 (Neue Richtlinie wird erzwungen)
 
 ```text
 The service is now enforcing the following Azure password policy.
@@ -192,13 +211,12 @@ The service is now enforcing the following Azure password policy.
  Enforce tenant policy: 1
 ```
 
-### <a name="sample-event-log-message-for-event-id-30019-azure-ad-password-protection-is-disabled"></a>Beispiel einer Ereignisprotokollmeldung für Ereignis-ID 30019 – Azure AD-Kennwortschutz ist deaktiviert
+#### <a name="event-id-30019-azure-ad-password-protection-is-disabled"></a>Ereignis-ID 30019 (Azure AD-Kennwortschutz ist deaktiviert)
 
 ```text
 The most recently obtained Azure password policy was configured to be disabled. All passwords submitted for validation from this point on will automatically be considered compliant with no processing performed.
 
 No further events will be logged until the policy is changed.%n
-
 ```
 
 ## <a name="dc-agent-operational-log"></a>DC-Agent-Betriebsprotokoll

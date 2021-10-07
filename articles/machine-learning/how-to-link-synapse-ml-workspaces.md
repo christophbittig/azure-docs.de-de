@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Es wird beschrieben, wie Sie Azure Synapse- und Azure Machine Learning-Arbeitsbereiche verknüpfen sowie Apache Spark-Pools anfügen, um eine Benutzeroberfläche mit einheitlichem Data Wrangling zu erhalten.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
 ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: devx-track-python, data4ml, synapse-azureml, contperf-fy21q4
-ms.openlocfilehash: 7652f1562050b3253b0df7ee16c4eff5dd6f8e85
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 812475b1a3b3029971dcc440ca6e26af95fdd389
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112376862"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425352"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-and-attach-apache-spark-poolspreview"></a>Verknüpfen von Azure Synapse Analytics- und Azure Machine Learning-Arbeitsbereichen sowie Anfügen von Apache Spark-Pools (Vorschau)
 

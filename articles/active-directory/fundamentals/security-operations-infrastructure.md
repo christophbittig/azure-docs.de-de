@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce43a9b518224e7458551139dc1f708dabc5b3e3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e0a3c2b380160ef68655f0727f4d47280cd5cd02
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347117"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754277"
 ---
 # <a name="security-operations-for-infrastructure"></a>Sicherheitsvorgänge für die Infrastruktur
 
@@ -39,13 +39,13 @@ Ein erster Schritt für die Erkennung unerwarteter Ereignisse und potenzieller A
 
 ## <a name="where-to-look"></a>Zu verwendende Ressourcen
 
-Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien: 
+Zur Untersuchung und Überwachung werden folgende Protokolldateien verwendet: 
 
 * [Azure AD-Überwachungsprotokolle](../reports-monitoring/concept-audit-logs.md)
 
 * [Anmeldeprotokolle](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365-Überwachungsprotokolle](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide) 
+* [Microsoft 365-Überwachungsprotokolle](/microsoft-365/compliance/auditing-solutions-overview) 
 
 * [Azure Key Vault-Protokolle](../../key-vault/general/logging.md?tabs=Vault)
 
@@ -174,18 +174,18 @@ Azure AD verwendet die Microsoft SQL Server-Datenbank-Engine oder SQL, um Azure
 
 | Zu überwachende Elemente| Hierbei gilt:| Notizen |
 | - | - | - |
-| mms_management_agent| SQL Server-Überwachungsdatensätze| Siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15) |
-| mms_partition| SQL Server-Überwachungsdatensätze| Siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15) |
-| mms_run_profile| SQL Server-Überwachungsdatensätze| Siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15) |
-| mms_server_configuration| SQL Server-Überwachungsdatensätze| Siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15) |
-| mms_synchronization_rule| SQL Server-Überwachungsdatensätze| Siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15) |
+| mms_management_agent| SQL Server-Überwachungsdatensätze| Siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records) |
+| mms_partition| SQL Server-Überwachungsdatensätze| Siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records) |
+| mms_run_profile| SQL Server-Überwachungsdatensätze| Siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records) |
+| mms_server_configuration| SQL Server-Überwachungsdatensätze| Siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records) |
+| mms_synchronization_rule| SQL Server-Überwachungsdatensätze| Siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records) |
 
 
 Informationen zum Überwachen von Konfigurationsinformationen:
 
-* Für SQL Server siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15)
+* Für SQL Server siehe [SQL Server Audit-Datensätze](/sql/relational-databases/security/auditing/sql-server-audit-records)
 
-* Für Azure Sentinel siehe [Herstellen einer Verbindung mit Windows-Sicherheitsereignissen](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15) 
+* Für Azure Sentinel siehe [Herstellen einer Verbindung mit Windows-Sicherheitsereignissen](/sql/relational-databases/security/auditing/sql-server-audit-records) 
 
 * Informationen zum Konfigurieren und Verwenden von Azure AD Connect finden Sie unter [Was ist Azure AD Connect?](../hybrid/whatis-azure-ad-connect.md)
 
@@ -215,7 +215,7 @@ Informationen zum Überwachen von Konfigurationsinformationen:
 
 
 
-* Weitere Informationen zum Protokollieren von PowerShell-Skriptvorgängen finden Sie unter [Aktivieren der Skriptblockprotokollierung](/powershell/module/microsoft.powershell.core/about/about_logging_windows?view=powershell-7.1) in der PowerShell-Referenzdokumentation.
+* Weitere Informationen zum Protokollieren von PowerShell-Skriptvorgängen finden Sie unter [Aktivieren der Skriptblockprotokollierung](/powershell/module/microsoft.powershell.core/about/about_logging_windows) in der PowerShell-Referenzdokumentation.
 
 * Weitere Informationen zum Konfigurieren der PowerShell-Protokollierung für die Analyse durch Splunk finden Sie unter [Get Data into Splunk User Behavior Analytics](https://docs.splunk.com/Documentation/UBA/5.0.4.1/GetDataIn/AddPowerShell) (Hinzufügen von Daten in Splunk User Behavior Analytics, in englischer Sprache).
 

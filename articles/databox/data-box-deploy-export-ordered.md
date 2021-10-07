@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 09/21/2021
+ms.date: 10/01/2021
 ms.author: alkohli
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: db5b98170446e93737fd625671f5351cc11da337
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 298d935b9b673e0b77bdd3e66cc3d348e2d52a07
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591917"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361518"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Tutorial: Erstellen eines Exportauftrags für Azure Data Box
 
@@ -346,8 +346,8 @@ Die folgenden Beispielpfade werden mit dem &lt;BlobPathPrefix&gt;-Tag verwendet,
 |------------------------|--------------------------------------------------------------------------------|------------------------------------|
 |/                       |Exportiert alle Blobs im Speicherkonto.                                       |`<BlobPathPrefix>/</BlobPathPrefix>`|
 |/$root/                 |Exportiert alle Blobs im Stammcontainer.                                        |`<BlobPathPrefix>/$root/</BlobPathPrefix>`|
-|/container2/            |Exportiert alle Blobs im Container **container2**.                              |`<BlobPathPrefix>/container1/</BlobPathPrefix>`|
-|/container          |Exportiert alle Blobs in allen Containern, die mit dem Präfix **container** beginnen.      |`<BlobPathPrefix>/containers</BlobPathPrefix>`|
+|/container2/            |Exportiert alle Blobs im Container **container2**.                              |`<BlobPathPrefix>/container2/</BlobPathPrefix>`|
+|/container          |Exportiert alle Blobs in allen Containern, die mit dem Präfix **container** beginnen.      |`<BlobPathPrefix>/container</BlobPathPrefix>`|
 |/container1/2021Q2      |Exportiert alle Blobs im Container **container1**, die mit dem Präfix **2021Q2** beginnen.|`<BlobPathPrefix>/container1/2021Q2</BlobPathPrefix>`|
 
 Um ein *einzelnes* Blob für den Export auszuwählen, verwenden Sie das &lt;BlobPath&gt;-Tag mit einem Containerpfad und einem Blobnamen. Wenn Sie beispielsweise **blob.txt** im Container **container1** auswählen möchten, verwenden Sie dieses Tag: `<BlobPath>/container1/blob.txt</BlobPath>`.
@@ -358,10 +358,10 @@ Die folgenden Beispielpfade werden mit dem &lt;FilePathPrefix&gt;-Tag verwendet,
 
 |Dateipfadpräfix        |BESCHREIBUNG                                                                                          |Tagbeispiel|
 |------------------------|-----------------------------------------------------------------------------------------------------|-----------|
-|/                       |Exportiert alle Dateien und Verzeichnisse im Speicherkonto. |`<FilePathPrefix>/</FilePath>Prefix`|
-|/fileshare1/            |Exportiert alle Dateien und Verzeichnisse in der Freigabe namens **fileshare1**.                                                 |`<FilePathPrefix>/fileshare1/</FilePath>Prefix`|
-|/fileshare              |Exportiert alle Dateien und Verzeichnisse in jeder Dateifreigabe, die mit dem Präfix **fileshare** beginnen. |`<FilePathPrefix>/fileshare</FilePath>Prefix`|
-|/fileshare2/contosowest |Exportiert alle Dateien und Verzeichnisse in der Dateifreigabe **fileshare2**, die mit dem Präfix **contosowest** beginnen.|`<FilePathPrefix>/fileshare1/contosowest</FilePath>Prefix`|
+|/                       |Exportiert alle Dateien und Verzeichnisse im Speicherkonto. |`<FilePathPrefix>/</FilePath>Prefix>`|
+|/fileshare1/            |Exportiert alle Dateien und Verzeichnisse in der Freigabe namens **fileshare1**.                                                 |`<FilePathPrefix>/fileshare1/</FilePath>Prefix>`|
+|/fileshare              |Exportiert alle Dateien und Verzeichnisse in jeder Dateifreigabe, die mit dem Präfix **fileshare** beginnen. |`<FilePathPrefix>/fileshare</FilePath>Prefix>`|
+|/fileshare2/contosowest |Exportiert alle Dateien und Verzeichnisse in der Dateifreigabe **fileshare2**, die mit dem Präfix **contosowest** beginnen.|`<FilePathPrefix>/fileshare2/contosowest</FilePath>Prefix>`|
 
 Um eine *einzelne* Datei für den Export auszuwählen, verwenden Sie das &lt;FilePath&gt;-Tag mit einem Freigabepfad und einem Dateinamen. Wenn Sie beispielsweise **file.txt** in **fileshare1** auswählen möchten, verwenden Sie dieses Tag: `<FilePath>/fileshare1/file.txt</FilePath>`.
 

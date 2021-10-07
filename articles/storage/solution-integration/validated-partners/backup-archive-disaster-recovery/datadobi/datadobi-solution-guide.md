@@ -8,12 +8,12 @@ ms.date: 04/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: ef74136627f7f7e90e94b91f212438d8e9daf0d6
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: cdeff15125a9af306e04baae5efaf758e8cf0b11
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489595"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278215"
 ---
 # <a name="backup-to-azure-with-dobiprotect"></a>Sicherung in Azure mit DobiProtect
 
@@ -74,7 +74,7 @@ Verwenden Sie die folgenden Methoden, um den Spielraum an Bandbreite zu ermittel
 
 ### <a name="choose-the-right-storage-options"></a>Wählen Sie die richtigen Speicheroptionen aus
 
-Wenn Sie Azure als Sicherungsziel verwenden, nutzen Sie [Azure Blob Storage](../../../../blobs/storage-blobs-introduction.md). Blob Storage ist die Objektspeicherlösung von Microsoft. Blob Storage ist für die Speicherung großer Mengen an unstrukturierten Daten optimiert, also Daten, für die kein Datenmodell und keine Datendefinition zutrifft. Darüber hinaus ist Azure Storage beständig, hochverfügbar, sicher und skalierbar. Sie können den richtigen Speicher für ihre Workload auswählen, um die für Ihre internen SLAs notwendige [Resilienz](../../../../common/storage-redundancy.md) bereitzustellen. Blob Storage ist ein Dienst mit nutzungsbasierter Bezahlung. Ihnen wird Folgendes [monatlich in Rechnung gestellt](../../../../blobs/storage-blob-storage-tiers.md#pricing-and-billing): die Menge der gespeicherten Daten, der Zugriff auf diese Daten und bei den Speicherebenen „Kalt“ und „Archiv“ ein Mindestzeitraum für die Aufbewahrung. In den folgenden Tabellen sind die für Sicherungsdaten geltenden Resilienz- und Ebenenoptionen aufgeführt.
+Wenn Sie Azure als Sicherungsziel verwenden, nutzen Sie [Azure Blob Storage](../../../../blobs/storage-blobs-introduction.md). Blob Storage ist die Objektspeicherlösung von Microsoft. Blob Storage ist für die Speicherung großer Mengen an unstrukturierten Daten optimiert, also Daten, für die kein Datenmodell und keine Datendefinition zutrifft. Darüber hinaus ist Azure Storage beständig, hochverfügbar, sicher und skalierbar. Sie können den richtigen Speicher für ihre Workload auswählen, um die für Ihre internen SLAs notwendige [Resilienz](../../../../common/storage-redundancy.md) bereitzustellen. Blob Storage ist ein Dienst mit nutzungsbasierter Bezahlung. Ihnen wird Folgendes [monatlich in Rechnung gestellt](../../../../blobs/access-tiers-overview.md#pricing-and-billing): die Menge der gespeicherten Daten, der Zugriff auf diese Daten und bei den Speicherebenen „Kalt“ und „Archiv“ ein Mindestzeitraum für die Aufbewahrung. In den folgenden Tabellen sind die für Sicherungsdaten geltenden Resilienz- und Ebenenoptionen aufgeführt.
 
 **Resilienzoptionen für Blob Storage**:
 

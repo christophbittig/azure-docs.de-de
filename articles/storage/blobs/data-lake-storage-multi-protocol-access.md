@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 01e8cec9a77db207e5320386cbc39c8bbcfddd07
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e2a73ae4a780836371414401cf4d0114a6a5b220
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128621146"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273911"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Multiprotokollzugriff für Azure Data Lake Storage
 
@@ -23,7 +23,7 @@ Bis vor Kurzem mussten Sie eventuell jeweils eigene Speicherlösungen für den O
 
 Mit Multiprotokollzugriff für Data Lake Storage können Sie das Ökosystem von Tools, Anwendungen und Diensten für Ihre Daten nutzen. Dies beinhaltet auch Tools und Anwendungen von Drittanbietern. Sie können sie auf Konten mit einem hierarchischen Namespace verweisen, ohne sie ändern zu müssen. Diese Anwendungen *erfordern keine Änderungen*, selbst wenn sie BLOB-APIs aufrufen, da BLOB-APIs jetzt für Daten in Konten mit einem hierarchischen Namespace verwendet werden können.
 
-BLOB Storage-Features, z. B. [Diagnoseprotokollierung](../common/storage-analytics-logging.md), [Zugriffsebenen](storage-blob-storage-tiers.md) und [Richtlinien für die Azure Blob Storage-Lebenszyklusverwaltung](./lifecycle-management-overview.md) können jetzt für Konten mit einem hierarchischen Namespace verwendet werden. Daher können Sie hierarchische Namespaces in Ihren Blob Storage-Konten aktivieren, ohne den Zugriff auf diese wichtigen Features zu verlieren.
+BLOB Storage-Features, z. B. [Diagnoseprotokollierung](../common/storage-analytics-logging.md), [Zugriffsebenen](access-tiers-overview.md) und [Richtlinien für die Azure Blob Storage-Lebenszyklusverwaltung](./lifecycle-management-overview.md) können jetzt für Konten mit einem hierarchischen Namespace verwendet werden. Daher können Sie hierarchische Namespaces in Ihren Blob Storage-Konten aktivieren, ohne den Zugriff auf diese wichtigen Features zu verlieren.
 
 > [!NOTE]
 > Der Multiprotokollzugriff für Data Lake Storage steht allgemein und in allen Regionen zur Verfügung. Einige Azure-Dienste oder Blob Storage-Features, die durch Multiprotokollzugriff aktiviert werden, befinden sich weiterhin in der Vorschauphase. In diesen Artikeln wird die aktuelle Unterstützung für Blob Storage-Features und Azure-Dienstintegrationen zusammengefasst.

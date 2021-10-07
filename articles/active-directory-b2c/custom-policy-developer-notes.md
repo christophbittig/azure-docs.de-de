@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/21/2021
+ms.date: 09/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 33389224bcc4abf05ffbb261e23409eb95896781
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: b428b069c0f576109179ecc64bddc409abe29e5f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220858"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568322"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Entwicklerhinweise für Azure Active Directory B2C
 
@@ -55,7 +55,9 @@ In der folgenden Tabelle sind die OAuth 2.0- und OpenId Connect-Anwendungsauthen
 [OBO (On-Behalf-Of)](../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)| Nicht verfügbar | Nicht verfügbar | Eine Anwendung ruft eine Dienst- oder Web-API auf, die wiederum eine andere Dienst- oder Web-API aufrufen muss. <br />  <br /> Damit der Dienst der mittleren Ebene authentifizierte Anforderungen an den Downstreamdienst senden kann, übergeben Sie ein *Client-Anmeldeinformationstoken* im Autorisierungsheader. Optional können Sie einen benutzerdefinierten Header mit dem Token Azure AD B2C-Benutzer hinzufügen.  |
 [OpenID Connect](openid-connect.md) | Allgemein verfügbar | Allgemein verfügbar | OpenID Connect führt das Konzept eines ID-Tokens ein. Hierbei handelt es sich um ein Sicherheitstoken, mit dem der Client die Identität des Benutzers überprüfen kann. |
 [OpenId Connect-Hybridflow](openid-connect.md) | Allgemein verfügbar | Allgemein verfügbar | Ermöglicht einer Webanwendung das Abrufen des ID-Tokens in der Autorisierungsanforderung zusammen mit einem Autorisierungscode.  |
-[Kennwortanmeldeinformationen des Ressourcenbesitzers (ROPC)](add-ropc-policy.md) | Vorschau | Vorschau | Ermöglicht es einer mobilen Anwendung, den Benutzer durch die direkte Verarbeitung seines Kennworts anzumelden. |
+[Kennwortanmeldeinformationen des Ressourcenbesitzers (ROPC)](add-ropc-policy.md) | Allgemein verfügbar | Allgemein verfügbar | Ermöglicht es einer mobilen Anwendung, den Benutzer durch die direkte Verarbeitung seines Kennworts anzumelden. |
+| [Abmeldung](session-behavior.md#sign-out)| Allgemein verfügbar | Allgemein verfügbar | |
+| [Einmaliges Abmelden](session-behavior.md#sign-out)  | Nicht verfügbar | Vorschau | |
 
 ### <a name="oauth-20-options"></a>OAuth 2.0-Optionen
 
@@ -66,6 +68,7 @@ In der folgenden Tabelle sind die OAuth 2.0- und OpenId Connect-Anwendungsauthen
 | Einfügen von JSON in User Journey über `client_assertion`| Nicht verfügbar| Als veraltet markiert |  |
 | Einfügen von JSON in UserJourney als [id_token_hint](id-token-hint.md) | Nicht verfügbar | Allgemein verfügbar | |
 | [Übergeben des Tokens eines Identitätsanbieters an die Anwendung](idp-pass-through-user-flow.md)| Vorschau| Vorschau| z.B. von Facebook in eine App |
+| [Angemeldet bleiben](session-behavior.md#enable-keep-me-signed-in-kmsi)| Allgemein verfügbar| Allgemein verfügbar| |
 
 ## <a name="saml2-application-authentication-flows"></a>SAML2-Anwendungsauthentifizierungsflows
 
@@ -81,6 +84,7 @@ In der folgenden Tabelle sind die Security Assertion Markup Language (SAML)-Anwe
 |Funktion  |Benutzerflow  |Benutzerdefinierte Richtlinie  |Notizen  |
 |---------|:---------:|:---------:|---------|
 | [Unterstützung für mehrere Sprachen](localization.md)| Allgemein verfügbar | Allgemein verfügbar | |
+| [Benutzerdefinierte Domänen](custom-domain.md)| Allgemein verfügbar | Allgemein verfügbar | |
 | [Benutzerdefinierte E-Mail-Überprüfung](custom-email-mailjet.md) | Nicht verfügbar | Allgemein verfügbar| |
 | [Anpassen der Benutzeroberfläche mit integrierten Vorlagen](customize-ui.md) | Allgemein verfügbar| Allgemein verfügbar| |
 | [Anpassen der Benutzeroberfläche mit benutzerdefinierten Vorlagen](customize-ui-with-html.md) | Allgemein verfügbar| Allgemein verfügbar| Anhand von HTML-Vorlagen. |
@@ -89,6 +93,7 @@ In der folgenden Tabelle sind die Security Assertion Markup Language (SAML)-Anwe
 | [Eingebettetes Anmeldeverfahren](embedded-login.md) | Nicht verfügbar |  Vorschau| Anhand des Inlineframe-Elements`<iframe>`. |
 | [Kennwortkomplexität](password-complexity.md) | Allgemein verfügbar | Allgemein verfügbar | |
 | [Deaktivieren der E-Mail-Überprüfung](disable-email-verification.md) | Allgemein verfügbar|  Allgemein verfügbar| Nicht für Produktionsumgebungen empfohlen. Die Deaktivierung der E-Mail-Überprüfung während des Registrierungsvorgangs kann zu Spam führen. |
+
 
 
 
@@ -147,7 +152,7 @@ In der folgenden Tabelle sind die Security Assertion Markup Language (SAML)-Anwe
 | [Sitzungsanbieter mit externer Anmeldung](custom-policy-reference-sso.md#externalloginssosessionprovider) | Allgemein verfügbar |  |
 | [SAML SSO-Sitzungsanbieter](custom-policy-reference-sso.md#samlssosessionprovider) | Allgemein verfügbar |  |
 | [OAuth SSO Session-Anbieter](custom-policy-reference-sso.md#oauthssosessionprovider)  | Allgemein verfügbar|  |
-| [Einmaliges Abmelden](session-behavior.md#sign-out)  |  Vorschau |  |
+
 
 ### <a name="components"></a>Komponenten
 
@@ -159,6 +164,7 @@ In der folgenden Tabelle sind die Security Assertion Markup Language (SAML)-Anwe
 | [Azure Active Directory](active-directory-technical-profile.md) als lokales Verzeichnis | Allgemein verfügbar |  |
 | [Prädikatüberprüfungen](predicates.md) | Allgemein verfügbar | z.B. Kennwortkomplexität |
 | [Anzeigesteuerelemente](display-controls.md) | Allgemein verfügbar |  |
+| [Sub Journeys](subjourneys.md) | Allgemein verfügbar | |
 
 ### <a name="developer-interface"></a>Entwicklerschnittstelle
 

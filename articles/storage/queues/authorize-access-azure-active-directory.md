@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8e28f56d67b4e92541c636e3b575b2f3404e3140
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 410d5daf67d590d84801a23627b5ce46e26367f5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733906"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357576"
 ---
 # <a name="authorize-access-to-queues-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Warteschlangen mithilfe von Azure Active Directory
 
@@ -65,7 +65,7 @@ Azure RBAC stellt eine Reihe von integrierten Rollen zum Autorisieren des Zugrif
 
 Informationen zum Zuweisen einer integrierten Azure-Rolle zu einem Sicherheitsprinzipal finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Warteschlangendaten](../queues/assign-azure-role-data-access.md). Informationen zum Auflisten von Azure RBAC-Rollen und deren Berechtigungen finden Sie unter [Auflisten von Azure-Rollendefinitionen](../../role-based-access-control/role-definitions-list.md).
 
-Weitere Informationen dazu, wie integrierte Rollen für Azure Storage definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../../role-based-access-control/role-definitions.md#management-and-data-operations). Informationen zum Erstellen von benutzerdefinierten Azure-Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md).
+Weitere Informationen dazu, wie integrierte Rollen für Azure Storage definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../../role-based-access-control/role-definitions.md#control-and-data-actions). Informationen zum Erstellen von benutzerdefinierten Azure-Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md).
 
 Nur Rollen, die explizit für den Datenzugriff definiert sind, ermöglichen einem Sicherheitsprinzipal den Zugriff auf Warteschlangendaten. Integrierte Rollen wie **Besitzer**, **Mitwirkender** und **Speicherkontomitwirkender** gestatten einem Sicherheitsprinzipal die Verwaltung eines Speicherkontos, gewähren aber keinen Zugriff auf die Warteschlangendaten in diesem Konto über Azure AD. Wenn eine Rolle jedoch **Microsoft.Storage/storageAccounts/listKeys/action** enthält, kann ein Benutzer, dem diese Rolle zugewiesen ist, über die Autorisierung mit gemeinsam verwendetem Schlüssel mit den Kontozugriffsschlüsseln auf Daten im Speicherkonto zugreifen. Weitere Informationen finden Sie unter [Auswählen der Autorisierung des Zugriffs auf Blobdaten im Azure-Portal](../../storage/queues/authorize-data-operations-portal.md).
 
@@ -101,5 +101,5 @@ In der Azure-Befehlszeilenschnittstelle und PowerShell ist die Anmeldung mit Azu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Autorisieren des Datenzugriffs in Azure Storage](../common/authorize-data-access.md)
+- [Autorisieren des Zugriffs auf Daten in Azure Storage](../common/authorize-data-access.md)
 - [Zuweisen einer Azure-Rolle für den Zugriff auf Warteschlangendaten](assign-azure-role-data-access.md)

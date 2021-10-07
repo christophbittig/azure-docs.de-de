@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 263531d24d50c27309163f0671a41ff7aacd36c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92205318"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601366"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurieren der Modellkonvertierung
 
@@ -109,13 +109,13 @@ Wenn ein Modell mit dem Gamma-Raum definiert wird, sollten diese Optionen auf �
 ### <a name="scene-parameters"></a>Szenenparameter
 
 * `sceneGraphMode`: Definiert, wie der Szenengraph in der Quelldatei konvertiert wird:
-  * `dynamic` (Standard): Alle Objekte in der Datei werden als [Entitäten](../../concepts/entities.md) in der API verfügbar gemacht und können unabhängig voneinander transformiert werden. Die Knotenhierarchie zur Runtime ist mit der Struktur in der Quelldatei identisch.
-  * `static`: Alle Objekte werden in der API verfügbar gemacht, sie können jedoch nicht unabhängig voneinander transformiert werden.
+  * `dynamic` (Standard): Alle Objekte in der Datei werden als [Entitäten](../../concepts/entities.md) in der API verfügbar gemacht und können unabhängig voneinander transformiert und neuen übergeordneten Objekten zugewiesen werden. Die Knotenhierarchie zur Runtime ist mit der Struktur in der Quelldatei identisch.
+  * `static`: Ähnlich wie `dynamic`, aber Objekte im Szenendiagramm können zur Laufzeit nicht anderen Objekten als neuen übergeordneten Objekten zugewiesen werden. Bei dynamischen Modellen mit vielen beweglichen Teilen (beispielsweise einer „Explosionsansicht“) generiert die Option `dynamic` ein Modell, das effizienter gerendert werden kann, der Modus `static` lässt jedoch weiterhin die Transformation einzelner Teile zu. Falls keine dynamische Zuordnung neuer übergeordneter Objekte erforderlich ist, ist die Option `static` am besten für Modelle mit vielen Einzelteilen geeignet.
   * `none`: Der Szenengraph wird zu einem Objekt reduziert.
 
-Jeder Modus weist eine andere Runtimeleistung auf. Im Modus `dynamic` ist der Leistungsaufwand linear von der Anzahl von [Entitäten](../../concepts/entities.md) im Graphen abhängig. Dies gilt auch, wenn kein Teil verschoben wird. Verwenden Sie den Modus `dynamic` nur, wenn Teile einzeln verschoben werden müssen, z. B. für die Animation einer „Explosion“.
+Jeder Modus weist eine andere Runtimeleistung auf. Im Modus `dynamic` ist der Leistungsaufwand linear von der Anzahl von [Entitäten](../../concepts/entities.md) im Graphen abhängig. Dies gilt auch, wenn kein Teil verschoben wird. Verwenden Sie den Modus `dynamic` nur, wenn viele Teile oder große Unterdiagramme gleichzeitig bewegt werden müssen, beispielsweise bei einer animierten „Explosionsansicht“.
 
-Im Modus `static` wird der vollständige Szenengraph exportiert, aber die Teile dieses Graphen verfügen über eine konstante Transformation relativ zum Stammteil. Der Stammknoten des Objekts kann aber weiterhin ohne größeren Leistungsaufwand verschoben, gedreht oder skaliert werden. Darüber hinaus werden bei [räumlichen Abfragen](../../overview/features/spatial-queries.md) einzelne Teile zurückgegeben, und jedes Teil kann anhand von [Zustandsüberschreibungen](../../overview/features/override-hierarchical-state.md) geändert werden. In diesem Modus ist der Runtime-Mehraufwand pro Objekt vernachlässigbar. Er eignet sich ideal für große Szenen, in denen Sie weiterhin Untersuchungen pro Objekt benötigen, aber keine Transformationsänderungen für einzelne Objekte durchführen.
+Der Modus `static` exportiert außerdem das vollständige Szenendiagramm. Bei [räumlichen Abfragen](../../overview/features/spatial-queries.md) werden einzelne Teile zurückgegeben, und jedes Teil kann mithilfe von [Zustandsüberschreibungen](../../overview/features/override-hierarchical-state.md) geändert werden. In diesem Modus ist der Runtime-Mehraufwand pro Objekt vernachlässigbar. Er eignet sich ideal für große Szenen, in denen Sie objektspezifische Überprüfungen, gelegentliche Transformationsänderungen an einzelnen Teilen, aber keine Neuzuordnung zu übergeordneten Objekten benötigen.
 
 Im Modus `none` fällt der geringste Runtime-Mehraufwand an, und es werden etwas kürzere Ladedauern erreicht. Die Überprüfung oder Transformation einzelner Objekte ist in diesem Modus nicht möglich. Ein Beispiel für einen Anwendungsfall sind Fotogrammetrie-Modelle, die gar nicht über einen aussagekräftigen Szenengraphen verfügen.
 

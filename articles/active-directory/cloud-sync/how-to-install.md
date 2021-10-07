@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 660d233c4fc0690799e8ec25e6a07e516035a90b
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: 11428df3662bb03d7d74decbd7230be0fdffa44f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113506329"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742647"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>Installieren des Azure AD Connect-Bereitstellungs-Agents
 In diesem Artikel erhalten Sie Informationen zum Installationsvorgang für den Azure AD Connect-Bereitstellungs-Agent (Azure Active Directory) und dessen Erstkonfiguration im Azure-Portal.
@@ -26,6 +26,10 @@ In diesem Artikel erhalten Sie Informationen zum Installationsvorgang für den A
 
 >[!NOTE]
 >In diesem Artikel wird die Installation des Bereitstellungs-Agents mithilfe des Assistenten behandelt. Informationen zum Installieren des Azure AD Connect-Bereitstellungs-Agents mithilfe einer Befehlszeilenschnittstelle (CLI) finden Sie unter [Installieren des Azure AD Connect Bereitstellungs-Agents mithilfe einer CLI und PowerShell](how-to-install-pshell.md).
+
+Weitere Informationen und ein Beispiel finden Sie im folgenden Video.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWK5mR]
 
 ## <a name="group-managed-service-accounts"></a>Gruppenverwaltete Dienstkonten
 Ein gruppenverwaltetes Dienstkonto (group Managed Service Account, gMSA) ist ein verwaltetes Domänenkonto, das eine automatische Kennwortverwaltung, eine vereinfachte Verwaltung von Dienstprinzipalnamen (Service Principal Name, SPN) und die Möglichkeit bietet, die Verwaltung an andere Administratoren zu delegieren. Außerdem wird diese Funktionalität auf mehrere Server erweitert. Die Azure AD Connect-Cloudsynchronisierung unterstützt und empfiehlt die Verwendung eines gruppenverwalteten Dienstkontos für die Ausführung des Agents. Weitere Informationen über gruppenverwaltete Dienstkonten finden Sie unter [Übersicht zu gruppenverwalteten Dienstkonten](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).

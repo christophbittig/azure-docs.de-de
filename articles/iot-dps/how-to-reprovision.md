@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d704e8f9687f3987d80018d84b41c0fd519da172
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43e0d3228937e507f988aa241b6fa0b619892c10
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791895"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273683"
 ---
 # <a name="how-to-reprovision-devices"></a>Erneutes Bereitstellen von Geräten
 
@@ -79,7 +79,7 @@ Wie oft ein Gerät eine Bereitstellungsanforderung sendet, hängt vom Szenario a
 
 Die in einem Registrierungseintrag befindliche Richtlinie für die erneute Bereitstellung bestimmt, wie die Dienstinstanz für die Gerätebereitstellung diese Bereitstellungsanforderungen verarbeitet, und legt fest, ob Gerätezustandsdaten während der erneuten Bereitstellung migriert werden sollen. Für einzelne Registrierungen und Registrierungsgruppen sind die gleichen Richtlinien verfügbar:
 
-Beispielsweise Code zum Senden von Bereitstellungsanforderungen von einem Gerät während einer Startsequenz. Weitere Informationen finden Sie unter [Automatische Bereitstellung eines simulierten Geräts](quick-create-simulated-device.md).
+Beispielsweise Code zum Senden von Bereitstellungsanforderungen von einem Gerät während einer Startsequenz. Weitere Informationen finden Sie unter [Automatische Bereitstellung eines simulierten Geräts](quick-create-simulated-device-tpm.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

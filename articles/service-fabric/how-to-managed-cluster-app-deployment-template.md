@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Service Fabric-Anwendung in einem verwal
 ms.topic: how-to
 ms.date: 8/23/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4e981e58cd5efb1430ab35772ab84428f7482977
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ae57620dda49494f90bb0bf78f629722edd5e653
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434518"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546385"
 ---
 # <a name="manage-application-lifecycle-on-a-managed-cluster-using-azure-resource-manager"></a>Verwalten des Anwendungslebenszyklus in einem verwalteten Cluster mit Azure Resource Manager
 
@@ -162,7 +162,7 @@ Sie müssen eine Anwendung, die bereits in einem Service Fabric-Cluster bereitge
     ```json
      "applicationTypeVersion": {
         "value": "1.0.1"
-    },
+    }
     ```
 ## <a name="delete-service-fabric-application-resources"></a>Löschen von Service Fabric-Anwendungsressourcen
 > [!NOTE]

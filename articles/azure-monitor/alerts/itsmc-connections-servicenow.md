@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 441ed0072eee17ee6250bb7de39442ecfd669cf3
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: e3d696580acd995a2396d56c404e2f904611ccac
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113687783"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129430134"
 ---
 # <a name="connect-servicenow-with-it-service-management-connector"></a>Verbinden von ServiceNow mit dem ITSM-Connector
 
@@ -35,12 +35,11 @@ ServiceNow-Administratoren m체ssen eine Client-ID und einen geheimen Clientschl�
 - [OAuth-Setup f체r Quebec](https://docs.servicenow.com/bundle/quebec-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [OAuth-Setup f체r Paris](https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [OAuth-Setup f체r Orlando](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
-- [OAuth-Setup f체r New York](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 - [OAuth-Setup f체r London](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
 
 Im Rahmen des OAuth-Setup wird Folgendes empfohlen:
 
-1. [Erstellen Sie einen Endpunkt f체r Clients, um auf die Instanz zuzugreifen](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_CreateEndpointforExternalClients.html).
+1. [Erstellen Sie einen Endpunkt f체r Clients, um auf die Instanz zuzugreifen](https://docs.servicenow.com/bundle/rome-platform-administration/page/administer/security/task/t_CreateEndpointforExternalClients.html).
 
 1. Aktualisieren Sie die Lebensdauer des Aktualisierungstokens:
 
