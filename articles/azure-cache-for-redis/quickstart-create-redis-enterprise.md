@@ -1,18 +1,18 @@
 ---
 title: 'Schnellstart: Erstellen einer Redis Cache-Instanz im Enterprise-Tarif'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie eine Azure Cache for Redis-Instanz mit Enterprise-Tarifen erstellen.
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: f1cf254aa6b8f03b5ea50a0adaa83ea56ba8f44a
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 7733f9df7f314dfdc0369075b96477e301825ce6
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746751"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537328"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache"></a>Schnellstart: Erstellen einer Redis Cache-Instanz im Enterprise-Tarif
 
@@ -35,11 +35,11 @@ Sie benötigen ein Azure-Abonnement. Erstellen Sie ein [Konto](https://azure.mic
 
 1. Konfigurieren Sie auf der Seite **Neuer Redis Cache** die Einstellungen für den neuen Cache.
 
-   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+   | Einstellung      |  Wert auswählen  | BESCHREIBUNG |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem diese neue Azure Cache for Redis-Instanz erstellt wird. |
    | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Der Name der Ressourcengruppe, in der Ihr Cache und weitere Ressourcen erstellt werden. Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. |
-   | **DNS-Name** | Geben Sie einen global eindeutigen Namen ein. | Der Cachename muss zwischen 1 und 63 Zeichen lang sein und darf nur Ziffern, Buchstaben und Bindestriche enthalten. Der Name muss mit einer Zahl oder einem Buchstaben beginnen und enden und darf keine aufeinanderfolgenden Bindestriche enthalten. Der *Hostname* Ihrer Cache-Instanz lautet *\<DNS name>.<Azure region>.redisenterprise.cache.azure.net*. |
+   | **DNS-Name** | Geben Sie einen Namen ein, der in der Region eindeutig ist. | Der Cachename muss zwischen 1 und 63 Zeichen lang sein und darf nur Ziffern, Buchstaben und Bindestriche enthalten. Der Name muss mit einer Zahl oder einem Buchstaben beginnen und enden und darf keine aufeinanderfolgenden Bindestriche enthalten. Der *Hostname* Ihrer Cache-Instanz lautet *\<DNS name\>.\<Azure region\>.redisenterprise.cache.azure.net*. |
    | **Standort** | Öffnen Sie die Dropdownliste, und wählen Sie einen Standort aus. | Enterprise-Tarife sind in ausgewählten Azure-Regionen verfügbar. |
    | **Cachetyp** | Wählen Sie in der Dropdownliste einen Tarif vom Typ *Enterprise* oder *Enterprise Flash* sowie eine Größe aus. |  Der Tarif bestimmt Größe, Leistung und verfügbare Features für den Cache. |
 

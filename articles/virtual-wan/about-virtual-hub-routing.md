@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 154680d5f62140b95e7ada3a37678ee3be1c5b24
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: de9488a475998b50d06d26f1d8b02bcdb1b21290
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350063"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780830"
 ---
 # <a name="about-virtual-hub-routing"></a>Informationen zum Routing virtueller Hubs
 
@@ -112,7 +112,7 @@ Beachten Sie beim Konfigurieren des Virtual WAN-Routings Folgendes:
 * Alle Branchverbindungen müssen ihre Routen an dieselbe Gruppe von Routingtabellen weitergeben. Wenn Sie z. B. festlegen, dass Branches an die Standardroutingtabelle weitergeben sollen, muss diese Konfiguration über alle Branches konsistent sein. Somit können alle Verbindungen, die der Standardroutingtabelle zugeordnet sind, alle Branches erreichen.
 * Das Routing zwischen Branches über Azure Firewall wird derzeit nicht unterstützt.
 * Wenn Sie Azure Firewall in mehreren Regionen verwenden, müssen alle virtuellen Spoke-Netzwerke derselben Routingtabelle zugeordnet werden. Beispielsweise ist es nicht möglich, dass eine Teilmenge der VNETs Azure Firewall durchlaufen, während andere VNETs Azure Firewall im selben virtuellen Hub umgehen.
-* Eine einzelne IP-Adresse für den nächsten Hop kann pro VNET-Verbindung konfiguriert werden.
+* Sie können mehrere IP-Adressen des nächsten Hops für eine einzelne virtuelle Netzwerkverbindung angeben. Die virtuelle Netzwerkverbindung unterstützt jedoch nicht „mehrere/eindeutig“ für die IP-Adresse des nächsten Hops zum „selben“ virtuellen Netzwerkgerät in einem virtuellen SPOKE-Netzwerk, „wenn“ eine der Routen mit der IP-Adresse des nächsten Hops als öffentliche IP-Adresse oder 0.0.0.0/0 (Internet) angegeben ist.
 * Alle Informationen im Zusammenhang mit der Route 0.0.0.0/0 sind auf die Routingtabelle des lokalen Hubs beschränkt. Diese Route wird nicht über Hubs weitergegeben.
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,17 +8,17 @@ metadata:
   ms.author: heidist
   ms.service: cognitive-search
   ms.topic: conceptual
-  ms.date: 04/10/2020
-  ms.openlocfilehash: 2bfa41d8a68d9640995ae6989ebd79a4b44c7c24
-  ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+  ms.date: 09/24/2021
+  ms.openlocfilehash: 782c8d8801935779222903f52d3ffaa6ba6f7007
+  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123449085"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129210916"
 title: Kognitive Azure-Suche – Häufig gestellte Fragen (FAQ)
 summary: Hier finden Sie Antworten auf häufig gestellte Fragen zu Konzepten, Code und Szenarien der kognitiven Azure-Suche.
 sections:
-- name: Plattform
+- name: Suchdienst
   questions:
   - question: >
       Wie unterscheidet sich die kognitive Azure-Suche von der Volltextsuche in meinem DBMS?
@@ -49,7 +49,7 @@ sections:
   - question: >
       Kann ich den Zugriff auf den Suchindex nach Benutzeridentität beschränken?
     answer: >
-      Sie können [Sicherheitsfilter](./search-security-trimming-for-azure-search.md) mit einem `search.in()`-Filter implementieren. Der Filter lässt sich gut mit [Identitätsverwaltungsdiensten wie Azure Active Directory(AAD)](./search-security-trimming-for-azure-search-with-aad.md) kombinieren, um Suchergebnisse auf der Grundlage definierter Benutzergruppenzugehörigkeit zu trimmen. Sie können sich auch für den [rollenbasierten Zugriff](search-security-rbac.md) registrieren, der derzeit als Public Preview verfügbar ist.
+      Sie können [Sicherheitsfilter](./search-security-trimming-for-azure-search.md) mit einem `search.in()`-Filter implementieren. Der Filter lässt sich gut mit [Identitätsverwaltungsdiensten wie Azure Active Directory (Azure AD)](./search-security-trimming-for-azure-search-with-aad.md) kombinieren, um Suchergebnisse auf Grundlage definierter Benutzergruppenzugehörigkeiten anzupassen. Sie können sich auch für den [rollenbasierten Zugriff](search-security-rbac.md) registrieren, der derzeit als Public Preview verfügbar ist.
   - question: >
       Warum ergeben sich keine Übereinstimmungen für Begriffe, von denen ich weiß, dass sie gültig sind?
     answer: >
@@ -60,7 +60,7 @@ sections:
   - question: >
       Meine Platzhaltersuchen sind langsam.
     answer: >
-      Die meisten Platzhaltersuchabfragen wie Präfix-, Fuzzy- und RegEx-Abfragen werden intern mit übereinstimmenden Begriffen im Suchindex umgeschrieben. Diese zusätzliche Verarbeitung aufgrund des Durchsuchens des Suchindexes erhöht die Latenz. Darüber hinaus können weit gefasste Suchabfragen, wie z.B. `a*`, die wahrscheinlich mit vielen Begriffen umgeschrieben werden, sehr langsam sein. Für leistungsstarke Platzhaltersuchen sollten Sie die Definition eines [benutzerdefinierten Analysetools](/rest/api/searchservice/custom-analyzers-in-azure-search) in Betracht ziehen.
+      Die meisten Platzhaltersuchabfragen wie Präfix-, Fuzzy- und RegEx-Abfragen werden intern mit übereinstimmenden Begriffen im Suchindex umgeschrieben. Diese zusätzliche Verarbeitung erhöht die Latenz. Darüber hinaus können weit gefasste Suchabfragen, wie z.B. `a*`, die wahrscheinlich mit vielen Begriffen umgeschrieben werden, sehr langsam sein. Für leistungsstarke Platzhaltersuchen sollten Sie die Definition eines [benutzerdefinierten Analysetools](/rest/api/searchservice/custom-analyzers-in-azure-search) in Betracht ziehen.
   - question: >
       Warum ist der Suchrang für jeden Treffer eine Konstante bzw. immer der Wert 1,0?
     answer: >

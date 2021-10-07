@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 89cb9122da21887165b2330f75dd316c184de823
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bb061fb11fbc770d751f60e15c81ce31c6a07440
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355877"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666324"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
@@ -25,7 +25,7 @@ Replikate sind neue Server, die Sie ähnlich wie normale Azure Database for MySQ
 Weitere Informationen zu Features und Problemen der MySQL-Replikation finden Sie in der [Dokumentation zur MySQL-Replikation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 >
 
 ## <a name="when-to-use-a-read-replica"></a>Einsatzmöglichkeiten von Lesereplikaten
@@ -44,7 +44,7 @@ Sie können ein Lesereplikat erstellen, das sich in einer anderen Region als Ihr
 
 Sie können einen Quellserver in jeder [Azure Database for MySQL-Region](https://azure.microsoft.com/global-infrastructure/services/?products=mysql) haben.  Ein Quellserver kann ein Replikat in der gekoppelten Region oder den universellen Replikatregionen besitzen. Die folgende Abbildung zeigt, welche Replikatregionen entsprechend Ihrer Quellregion verfügbar sind.
 
-[ :::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="Lesereplikatregionen":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[:::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="Lesereplikatregionen":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Universelle Replikatregionen
 
@@ -99,9 +99,9 @@ Es gibt jedoch einige Einschränkungen:
 ## <a name="create-a-replica"></a>Erstellen eines Replikats
 
 > [!IMPORTANT]
-> Das Feature für Lesereplikate ist nur für Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Quellserver einer der folgenden Tarife festgelegt ist.
+> * Das Feature für Lesereplikate ist nur für Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Quellserver einer der folgenden Tarife festgelegt ist.
+> * Verfügt der Quellserver über keine Replikatserver, ist für den Quellserver möglicherweise ein Neustart erforderlich, um sich je nach verwendetem Speicher (V1/V2) auf die Replikation vorzubereiten. Starten Sie den Server möglichst neu, und führen Sie diesen Vorgang außerhalb der Spitzenzeiten aus. Weitere Informationen finden Sie unter [Quellserverneustart](./concepts-read-replicas.md#source-server-restart). 
 
-Wenn ein Quellserver keine vorhandenen Replikatserver aufweist, wird die Quelle zunächst neu gestartet, um sich auf die Replikation vorzubereiten.
 
 Wenn Sie den Workflow zum Erstellen von Replikaten starten, wird ein leerer Azure Database for MySQL-Server erstellt. Der neue Server wird mit den Daten gefüllt, die auf dem Quellserver vorhanden waren. Die Erstellungszeit hängt von der Datenmenge in der Quelle und der verstrichenen Zeit seit der letzten wöchentlichen vollständigen Sicherung ab. Dieser Zeitraum kann wenige Minuten bis zu mehrere Stunden umfassen. Der Replikatserver wird immer in derselben Ressourcengruppe und demselben Abonnement wie der Quellserver erstellt. Wenn Sie einen Replikatserver in einer anderen Ressourcengruppe oder einem anderen Abonnement erstellen möchten, können Sie nach der Erstellung den [Replikatserver verschieben](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
@@ -198,7 +198,9 @@ Lesereplikate sind zurzeit nur in den Tarifen „Universell“ und „Arbeitsspe
 
 ### <a name="source-server-restart"></a>Quellserverneustart
 
-Wenn Sie ein Replikat für eine Quelle erstellen, die keine vorhandenen Replikate hat, startet die Quelle zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
+Bei Servern mit dem Speichertyp „Universell V1“ ist der Parameter `log_bin` standardmäßig deaktiviert. Sobald Sie das erste Lesereplikat erstellen, wird der Parameter aktiviert. Verfügt ein Quellserver über keine Lesereplikate, wird der Quellserver zunächst neu gestartet, um sich auf die Replikation vorzubereiten. Starten Sie den Server möglichst neu, und führen Sie diesen Vorgang außerhalb der Spitzenzeiten aus.
+
+Bei Quellservern mit dem Speichertyp „Universell V2“ ist der Parameter `log_bin` standardmäßig aktiviert. Zum Hinzufügen eines Lesereplikats ist kein Neustart erforderlich. 
 
 ### <a name="new-replicas"></a>Neue Replikate
 

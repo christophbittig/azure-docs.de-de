@@ -5,25 +5,23 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: 91ad4ce80a8e61b06b3597fe8088a0eb7f002d5e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: ca21e367752451f01c7ee8d1fc9596cfcb74029b
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968230"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094441"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>Schnellstart: Erstellen und Konfigurieren einer Route Server-Instanz mithilfe der Azure-Befehlszeilenschnittstelle 
 
-In diesem Artikel wird beschrieben, wie Sie Azure Route Server mithilfe von Azure PowerShell für das Peering mit einem virtuellen Netzwerkgerät (Network Virtual Appliance, NVA) in Ihrem virtuellen Netzwerk konfigurieren. Route Server lernt Routen von Ihrem NVA und programmiert sie auf den virtuellen Computern im virtuellen Netzwerk. Azure Route Server kündigt die virtuellen Netzwerkrouten auch für das NVA an. Weitere Informationen finden Sie unter [Azure Route Server](overview.md).
+In diesem Artikel wird beschrieben, wie Sie Azure Route Server mithilfe von Azure PowerShell für das Peering mit einem virtuellen Netzwerkgerät (Network Virtual Appliance, NVA) in Ihrem virtuellen Netzwerk konfigurieren. Route Server lernt Routen von Ihrem NVA und programmiert sie auf den VMs im virtuellen Netzwerk. Azure Route Server kündigt die virtuellen Netzwerkrouten auch für das NVA an. Weitere Informationen finden Sie unter [Azure Route Server](overview.md).
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Diagramm: Route Server-Bereitstellungsumgebung mit der Azure CLI" border="false":::
 
 > [!IMPORTANT]
-> Azure Route Server (Vorschau) befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Wenn Sie vor dem 1. September eine Azure Route Server-Instanz erstellt haben und ihr keine öffentliche IP-Adresse zugeordnet ist, müssen Sie die Route Server-Instanz neu erstellen, damit sie zu Verwaltungszwecken eine IP-Adresse abrufen kann.
 
 ##  <a name="prerequisites"></a>Voraussetzungen 
 
@@ -138,7 +136,7 @@ az network routeserver peering create \
     --resource-group myRouteServerRG
 ``` 
 
-Wenn Sie das Peering mit einem anderen NVA oder einer anderen Instanz desselben NVAs zwecks Redundanz einrichten möchten, verwenden Sie denselben Befehl wie oben mit anderem *PeerName*, anderer *PeerIp* und anderer *PeerAsn*.
+Wenn Sie das Peering zur Bereitstellung von Redundanz mit einem anderen NVA oder einer anderen Instanz desselben NVA einrichten möchten, verwenden Sie den gleichen Befehl wie oben. Geben Sie jedoch andere Werte für *PeerName*, *PeerIp* und *PeerAsn* an.
 
 ## <a name="complete-the-configuration-on-the-nva"></a>Abschließen der Konfiguration auf dem NVA 
 

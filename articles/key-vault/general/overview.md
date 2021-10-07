@@ -10,20 +10,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d88f3ed4dbeafc935e58096fb094518b8b0274b4
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b4635b461441b4ac4ed193a48cbd8e14790ac835
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411501"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060666"
 ---
 # <a name="about-azure-key-vault"></a>Informationen zu Azure Key Vault
 
 Mit Azure Key Vault lassen sich folgende Probleme lösen:
 
 - **Geheimnisverwaltung**: Azure Key Vault ermöglicht die sichere Speicherung und präzise Steuerung des Zugriffs auf Token, Kennwörter, Zertifikate, API-Schlüssel und andere Geheimnisse.
-- **Schlüsselverwaltung**: Azure Key Vault kann auch als Schlüsselverwaltungslösung verwendet werden. Azure Key Vault vereinfacht das Erstellen und Verwalten der zur Verschlüsselung Ihrer Daten verwendeten Verschlüsselungsschlüssel. 
-- **Zertifikatverwaltung**: Darüber hinaus können Sie mit dem Azure Key Vault-Dienst auf einfache Weise öffentliche und private TLS-/SSL-Zertifikate (Transport Layer Security/Secure Sockets Layer) für die Verwendung mit Azure und Ihren internen verbundenen Ressourcen registrieren, verwalten und bereitstellen.
+- **Schlüsselverwaltung**: Azure Key Vault kann als Schlüsselverwaltungslösung verwendet werden. Azure Key Vault vereinfacht das Erstellen und Verwalten der zur Verschlüsselung Ihrer Daten verwendeten Verschlüsselungsschlüssel.
+- **Zertifikatverwaltung**: Sie können mit dem Azure Key Vault-Dienst komfortabel öffentliche und private SSL-/TLS-Zertifikate (Secure Sockets Layer/Transport Layer Security) für die Verwendung mit Azure und Ihren internen verbundenen Ressourcen bereitstellen und verwalten.
 
 Azure Key Vault verfügt über zwei Dienstebenen: Die Dienstebene „Standard“ verschlüsselt mit einem Softwareschlüssel, und die Dienstebene „Premium“ enthält durch HSM (Hardwaresicherheitsmodul) geschützte Schlüssel. Einen Vergleich zwischen den Ebenen „Standard“ und „Premium“ finden Sie auf der Seite [Azure Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/).
 

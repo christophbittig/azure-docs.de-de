@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 721c13ea31f812dd5f5b5c335373884766764c80
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9e542c7d9e78ea73dc96809d7d1fa06d60f15283
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750699"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599998"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit GitHub AE
 
@@ -37,8 +37,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* GitHub AE unterstützt **SP**- und **IDP**-initiiertes einmaliges Anmelden
-* GitHub AE unterstützt die **Just-In-Time**-Benutzerbereitstellung
+* GitHub AE unterstützt **SP**- und **IDP**-initiiertes einmaliges Anmelden.
+* GitHub AE unterstützt die **Just-In-Time**-Benutzerbereitstellung.
+* GitHub AE unterstützt die [automatisierte Benutzerbereitstellung](github-ae-provisioning-tutorial.md).
 
 ## <a name="adding-github-ae-from-the-gallery"></a>Hinzufügen von GitHub AE aus dem Katalog
 
@@ -150,6 +151,8 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von GitHub AE müssen Sie 
 
 In diesem Abschnitt wird in GitHub AE ein Benutzer namens B. Simon erstellt. GitHub AE unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in GitHub AE vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
+Außerdem unterstützt GitHub AE die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./github-ae-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -164,7 +167,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der GitHub AE-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Zugriffsbereich verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie im Zugriffsbereich auf die Kachel „GitHub AE“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet, und wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der GitHub AE-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie unter „Meine Apps“ auf die Kachel „GitHub AE“ klicken, geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet, und wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der GitHub AE-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 877315ef266dbd877aa8223c985ee8f77a070112
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 84e64159a53f8df5a311c2e8a3cc930f1e17cbf7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123476871"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654818"
 ---
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -18,3 +18,6 @@ ms.locfileid: "123476871"
 |[Bot Service muss mit einem kundenseitig verwalteten Schlüssel (CMK) verschlüsselt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F51522a96-0869-4791-82f3-981000c2c67f) |Azure Bot Service verschlüsselt Ihre Ressource automatisch, um Ihre Daten zu schützen sowie die Sicherheits- und Complianceanforderungen der Organisation zu erfüllen. Standardmäßig werden von Microsoft verwaltete Verschlüsselungsschlüssel verwendet. Wählen Sie kundenseitig verwaltete Schlüssel (auch als Bring Your Own Key (BYOK) bezeichnet) aus, um mehr Flexibilität bei der Verwaltung von Schlüsseln oder der Steuerung des Zugriffs auf Ihr Abonnement zu haben. Weitere Informationen zur Azure Bot Service-Verschlüsselung finden Sie hier: [https://docs.microsoft.com/azure/bot-service/bot-service-encryption](/azure/bot-service/bot-service-encryption). |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_CMKEnabled_Audit.json) |
 |[Für den Botdienst muss der isolierte Modus aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F52152f42-0dda-40d9-976e-abb1acdd611e) |Bots müssen auf den Modus „nur isoliert“ festgelegt werden. Mit dieser Einstellung werden Bot Service-Kanäle konfiguriert, für die der Datenverkehr über das öffentliche Internet deaktiviert sein muss. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_NetworkIsolatedEnabled_Audit.json) |
 |[Für Bot Service müssen die lokalen Authentifizierungsmethoden deaktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fffea632e-4e3a-4424-bf78-10e179bb2e1a) |Durch das Deaktivieren lokaler Authentifizierungsmethoden wird die Sicherheit verbessert, indem sichergestellt wird, dass ein Bot AAD ausschließlich für die Authentifizierung verwendet. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_DisableLocalAuth_Audit.json) |
+|[BotService-Ressourcen müssen Private Link verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fad5621d6-a877-4407-aa93-a950b428315e) |Mit Azure Private Link können Sie Ihr virtuelles Netzwerk mit Azure-Diensten verbinden, ohne auf der Quelle oder auf dem Ziel eine öffentliche IP-Adresse zu verwenden. Die Private Link-Plattform verarbeitet die Konnektivität zwischen dem Consumer und den Diensten über das Azure-Backbone-Netzwerk. Durch das Zuordnen privater Endpunkte zu BotService-Ressourcen wird das Risiko von Datenlecks verringert. |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_PrivateEndpoint_Audit.json) |
+|[Konfigurieren Sie BotService-Ressourcen für die Verwendung privater DNS-Zonen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6a4e6f44-f2af-4082-9702-033c9e88b9f8) |Verwenden Sie private DNS-Zonen, um die DNS-Auflösung für einen privaten Endpunkt außer Kraft zu setzen. Eine private DNS-Zone wird mit Ihrem virtuellen Netzwerk verknüpft, um BotService-bezogene Ressourcen aufzulösen. Weitere Informationen finden Sie unter [https://aka.ms/privatednszone](../../../../articles/private-link/private-endpoint-dns.md). |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_PrivateDNSZone_DeployIfNotExists.json) |
+|[Konfigurieren Sie BotService-Ressourcen mit privaten Endpunkten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F29261f8e-efdb-4255-95b8-8215414515d6) |Private Endpunkte verbinden Ihr virtuelles Netzwerk ohne eine öffentliche IP-Adresse an Quelle oder Ziel mit Azure-Diensten. Durch das Zuordnen privater Endpunkte zu BotService-Ressourcen können Sie das Risiko von Datenlecks verringern. |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_PrivateEndpoint_DeployIfNotExists.json) |

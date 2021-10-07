@@ -13,12 +13,12 @@ ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: cb62c7558f7811ce7123ba405cbf01a75d7a3392
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 5a3dd6265c9fbefb85cf72b80473538983c682b7
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419334"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214701"
 ---
 # <a name="migrating-applications-to-msalnet-or-microsoftidentityweb"></a>Migrieren von Anwendungen zu MSAL.NET oder Microsoft.Identity.Web
 
@@ -52,7 +52,9 @@ Weitere Informationen zur nachstehenden Entscheidungsstruktur finden Sie unter [
  
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Erfahren Sie mehr über [öffentliche Clientanwendungen und vertrauliche Clientanwendungen](msal-client-applications.md).
 - Erfahren Sie, wie Sie [vertrauliche Clientanwendungen, die auf ASP.NET MVC oder dem klassischen .NET-Client basieren, von ADAL.NET zu MSAL.NET migrieren](msal-net-migration-confidential-client.md).
+- Erfahren Sie, wie Sie [öffentliche Clientanwendungen, die auf .NET oder dem klassischen .NET-Client basieren, von ADAL.NET zu MSAL.NET migrieren](msal-net-migration-public-client.md).
 - Erfahren Sie mehr über die [Unterschiede zwischen ADAL.NET- und MSAL.NET-Apps](msal-net-differences-adal-net.md).
 - Erfahren Sie, wie Sie vertrauliche Clientanwendungen, die auf ASP.NET Core basieren, von ADAL.NET zu Microsoft.Identity.Web:
   -  [Web-Apps](https://github.com/AzureAD/microsoft-identity-web/wiki/web-apps#migrating-from-previous-versions--adding-authentication)

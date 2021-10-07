@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei der Azure Active Directory-Anwendungsverwaltung
 description: Neue und aktualisierte Dokumentation für die Azure Active Directory-Anwendungsverwaltung
-ms.date: 08/03/2021
+ms.date: 09/08/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,38 @@ ms.author: davidmu
 author: davidmu1
 manager: CelesteDG
 reviewer: napuri
-ms.openlocfilehash: d95c81256dcb58b64273d6062563daf38dfdb4fa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a5de6a248d389c90cbc67f59b0b94f53c35821f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346030"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810029"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory-Anwendungsverwaltung: Neues
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Active Directory-Anwendungsverwaltung. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Anwendungsverwaltungsdienst finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="august-2021"></a>August 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Schutz vor Einwilligungsphishing](protect-against-consent-phishing.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Konfigurieren von Berechtigungsklassifizierungen](configure-permission-classifications.md)
+- [Konfigurieren der Gruppenbesitzereinwilligung für Apps, die auf Gruppendaten zugreifen](configure-user-consent-groups.md)
+- [Maßnahmen bei übermäßig privilegierten oder verdächtigen Anwendungen in Azure Active Directory ergreifen](manage-application-permissions.md)
+- [Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen](manage-consent-requests.md)
+- [Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung](grant-admin-consent.md)
+- [Schnellstart: Hinzufügen einer Anwendung zu Ihrem Mandanten](add-application-portal.md)
+- [Zuweisung von Benutzern und Gruppen zu einer Unternehmensanwendung](assign-user-or-group-access-portal.md)
+- [Verwalten des Zugriffs auf Apps](what-is-access-management.md)
+- [Azure Active Directory-Anwendungsverwaltung: Neues](whats-new-docs.md)
+- [Planen der Konfiguration von „Meine Apps“ in Azure Active Directory](my-apps-deployment-plan.md)
+- [Erweiterte Optionen für die Zertifikatsignatur in einem SAML-Token](certificate-signing-options.md)
+- [Erstellen von Sammlungen im Portal „Meine Apps“](access-panel-collections.md)
+
 
 ## <a name="july-2021"></a>Juli 2021
 

@@ -6,13 +6,13 @@ ms.author: srranga
 ms.custom: references_regions
 ms.service: postgresql
 ms.topic: overview
-ms.date: 07/30/2021
-ms.openlocfilehash: 5423af2f148a56e978bfbe6a1584b3e281f9a1a4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/21/2021
+ms.openlocfilehash: f5b1caaef90a25e6635c30d1e3272438a408393b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740292"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589623"
 ---
 # <a name="release-notes---azure-database-for-postgresql---flexible-server"></a>Versionshinweise: Azure Database for PostgreSQL – Flexible Server
 
@@ -20,6 +20,15 @@ Auf dieser Seite finden Sie aktuelle Neuigkeiten und Updates zu Featureergänzun
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – Flexible Server befindet sich in der Vorschau.
+
+## <a name="release-september-2021"></a>Release: September 2021
+
+* Unterstützung für [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_flexible_server).
+* Unterstützung für die [neuen Regionen](overview.md#azure-regions) „Indien, Mitte“ und „Japan, Westen“.
+* Unterstützung für den Nicht-SSL-Konnektivitätsmodus mithilfe eines neuen `require_secure_transport`-Serverparameters.
+* Unterstützung für den `log_line_prefix`-Serverparameter, der die Zeichenfolge am Anfang jeder Protokollzeile hinzufügt.
+* Unterstützung für [Azure Resource Health](../../service-health/resource-health-overview.md) für Flexible Server-Integritätsdiagnose und zum Erhalten von Unterstützung.
+* Verschiedene Fehlerbehebungen, Stabilitäts- und Leistungsverbesserungen
 
 ## <a name="release-july-2021"></a>Release: Juli 2021
 
@@ -29,7 +38,7 @@ Auf dieser Seite finden Sie aktuelle Neuigkeiten und Updates zu Featureergänzun
 * Unterstützung für `pg_stat_reset_shared('bgwriter');` und `pg_stat_reset_shared('archiver');` zum Zurücksetzen der in den Ansichten `pg_stat_bgwriter` und `pg_stat_archiver` angezeigten Leistungsindikatoren<sup>$</sup>.
 * Hier finden Sie verschiedene Möglichkeiten zur Fehlerbehebung und Stabilitäts- und Leistungsverbesserungen<sup>$</sup>.
 
-<sup> **$** </sup> Neue Server erhalten diese Features automatisch. Auf Ihren vorhandenen Servern werden diese Features während des zukünftigen Wartungsfensters Ihres Servers aktiviert.
+<sup> **$**</sup> Neue Server erhalten diese Features automatisch. Auf Ihren vorhandenen Servern werden diese Features während des zukünftigen Wartungsfensters Ihres Servers aktiviert.
 
 ## <a name="release-june-2021"></a>Release: Juni 2021
 
@@ -41,7 +50,7 @@ Auf dieser Seite finden Sie aktuelle Neuigkeiten und Updates zu Featureergänzun
 * Unterstützung für die lo-Erweiterung. Auf der [Seite „Erweiterungen“](./concepts-extensions.md) finden Sie Versionen, die von den einzelnen Hauptversionen unterstützt werden<sup>$</sup>.
 * Hier finden Sie verschiedene Möglichkeiten zur Fehlerbehebung und Stabilitäts- und Leistungsverbesserungen<sup>$</sup>.
   
-<sup> **$** </sup> Neue Server erhalten diese Features automatisch.  Ihre vorhandenen Server werden automatisch auf die neueste unterstützte Nebenversion aktualisiert. Während des zukünftigen Wartungsfensters Ihres Servers werden auch neue Funktionen aktiviert.
+<sup> **$**</sup> Neue Server erhalten diese Features automatisch.  Ihre vorhandenen Server werden automatisch auf die neueste unterstützte Nebenversion aktualisiert. Während des zukünftigen Wartungsfensters Ihres Servers werden auch neue Funktionen aktiviert.
 
 ## <a name="release-may-2021"></a>Release: Mai 2021
 

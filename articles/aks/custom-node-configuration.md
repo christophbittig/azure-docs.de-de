@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 7d9b3a6d3a5178354cced3cd5e4a49f7113ecdce
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: c872848791e2de3591c8e3e94d4aa5744c7bbcdc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220009"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656377"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Anpassen der Knotenkonfiguration für AKS-Knotenpools (Azure Kubernetes Service) (Vorschau)
 
@@ -66,10 +66,11 @@ Die unterstützten kubelet-Parameter und akzeptierten Werte werden unten aufgef�
 | `cpuCfsQuotaPeriod` | Intervall in Millisekunden (ms) | `100ms` | Legt den Wert des CPU-CFS-Kontingentzeitraums fest. | 
 | `imageGcHighThreshold` | 0–100 | 85 | Der Prozentsatz der Datenträgerauslastung, nach der die Image-Garbage Collection immer ausgeführt wird. Die minimale Datenträgerauslastung, die Garbage Collection **auslöst**. Legen Sie den Wert zum Deaktivieren von Image-Garbage Collection auf 100 fest. | 
 | `imageGcLowThreshold` | 0 bis 100, nicht größer als `imageGcHighThreshold` | 80 | Der Prozentsatz der Datenträgerauslastung, vor der die Image-Garbage Collection nie ausgeführt wird. Die minimale Datenträgerauslastung, die Garbage Collection auslösen **kann**. |
-| `topologyManagerPolicy` | none, best-effort, restricted, single-numa-node | none | Optimieren der NUMA-Knotenausrichtung. Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/). Nur Kubernetes v1.18 oder höher. |
+| `topologyManagerPolicy` | none, best-effort, restricted, single-numa-node | none | Optimieren der NUMA-Knotenausrichtung. Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/). |
 | `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | Keine | Zulässige Liste unsicherer sysctls oder unsicherer sysctl-Muster. | 
 | `containerLogMaxSizeMB` | Größe in Megabyte (MB) | 10 MB | Die maximale Größe (z. B. 10 MB) einer Containerprotokolldatei, bevor sie rotiert wird. | 
 | `containerLogMaxFiles` | ≥ 2 | 5 | Die maximale Anzahl von Containerprotokolldateien, die für einen Container vorhanden sein können | 
+| `podMaxPids` | -1 bis zum PID-Grenzwert des Kernels | -1 (∞)| Die maximale Anzahl von Prozess-IDs, die in einem Pod ausgeführt werden können. |
 
 ### <a name="linux-os-custom-configuration"></a>Benutzerdefinierte Linux-Betriebssystemkonfiguration
 

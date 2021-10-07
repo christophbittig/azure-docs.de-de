@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f0412b6e67ff62247feb3f8643553c5a6101ad73
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 7d6111a68be8bc195b7268a778a77facdd944772
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892668"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129084130"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Schnellstart: Erstellen einer App Service-App mit einer ARM-Vorlage
 
@@ -57,12 +57,12 @@ In der folgenden Tabelle sind die Standardparameter und ihre Beschreibungen aufg
 
 | Parameter | type    | Standardwert                | Beschreibung |
 |------------|---------|------------------------------|-------------|
-| webAppName | Zeichenfolge  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | App-Name |
-| location   | Zeichenfolge  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | App-Region |
-| sku        | Zeichenfolge  | "F1"                         | Instanzgröße (F1 = Free-Tarif) |
-| language   | Zeichenfolge  | ".net"                       | Sprachstapel (.NET, PHP, Node, HTML) |
+| webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | App-Name |
+| location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | App-Region |
+| sku        | string  | "F1"                         | Instanzgröße (F1 = Free-Tarif) |
+| language   | string  | ".net"                       | Sprachstapel (.NET, PHP, Node, HTML) |
 | helloWorld | boolean | False                        | True = Hallo Welt-App bereitstellen |
-| repoUrl    | Zeichenfolge  | " "                          | Externes Git-Repository (optional) |
+| repoUrl    | string  | " "                          | Externes Git-Repository (optional) |
 
 ---
 
@@ -87,11 +87,11 @@ In der folgenden Tabelle sind die Standardparameter und ihre Beschreibungen aufg
 
 | Parameter | type    | Standardwert                | Beschreibung |
 |------------|---------|------------------------------|-------------|
-| webAppName | Zeichenfolge  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | App-Name |
-| location   | Zeichenfolge  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | App-Region |
-| sku        | Zeichenfolge  | "F1"                         | Instanzgröße (F1 = Free-Tarif) |
-| linuxFxVersion   | Zeichenfolge  | "DOTNETCORE&#124;3.0        | Sprachstapel &#124; Version |
-| repoUrl    | Zeichenfolge  | " "                          | Externes Git-Repository (optional) |
+| webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | App-Name |
+| location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | App-Region |
+| sku        | string  | "F1"                         | Instanzgröße (F1 = Free-Tarif) |
+| linuxFxVersion   | string  | "DOTNETCORE&#124;3.0        | Sprachstapel &#124; Version |
+| repoUrl    | string  | " "                          | Externes Git-Repository (optional) |
 
 ---
 
@@ -106,7 +106,7 @@ In der folgenden Tabelle sind die Standardparameter und ihre Beschreibungen aufg
 ::: zone pivot="platform-windows"
 Führen Sie den folgenden Code aus, um eine .NET Framework-App unter Windows mithilfe der Azure CLI bereitzustellen. 
 
-Replace <abbr title="Gültige Zeichen: `a-z`, `0-9` und `-`.">`<app-name>`</abbr> durch einen global eindeutigen App-Namen. Weitere Informationen <abbr title="Sie können auch das Azure-Portal, Azure PowerShell oder die REST-API verwenden.">zu Bereitstellungsmethoden</abbr>finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/templates/deploy-powershell.md). [Hier](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sites) finden Sie weitere Beispiele für Azure App Service-Vorlagen.
+Replace <abbr title="Gültige Zeichen: `a-z`, `0-9` und `-`."> \<app-name> </abbr> durch einen global eindeutigen App-Namen. Weitere Informationen <abbr title="Sie können auch das Azure-Portal, Azure PowerShell oder die REST-API verwenden.">zu Bereitstellungsmethoden</abbr>finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/templates/deploy-powershell.md). [Hier](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sites) finden Sie weitere Beispiele für Azure App Service-Vorlagen.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
@@ -118,7 +118,7 @@ az deployment group create --resource-group myResourceGroup \
 ::: zone pivot="platform-linux"
 Führen Sie den folgenden Code aus, um eine Python-App unter Linux zu erstellen. 
 
-Replace <abbr title="Gültige Zeichen: `a-z`, `0-9` und `-`.">`<app-name>`</abbr> durch einen global eindeutigen App-Namen.
+Ersetzen Sie \<app-name\> durch einen global eindeutigen App-Namen. Gültige Zeichen: `a-z`, `0-9` und `-`.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
@@ -144,7 +144,7 @@ Aktualisieren Sie zum Bereitstellen eines anderen Sprachstapels <abbr title="Die
 
 | Parameter | type    | Standardwert                | BESCHREIBUNG |
 |------------|---------|------------------------------|-------------|
-| language   | Zeichenfolge  | ".net"                       | Sprachstapel (.NET, PHP, Node, HTML) |
+| language   | string  | ".net"                       | Sprachstapel (.NET, PHP, Node, HTML) |
 
 ---
 
@@ -153,6 +153,7 @@ Aktualisieren Sie zum Bereitstellen eines anderen Sprachstapels <abbr title="Die
 ::: zone pivot="platform-linux"
 <details>
 <summary>Wie stelle ich einen anderen Sprachstapel bereit?</summary>
+ 
 Aktualisieren Sie `linuxFxVersion` mit den entsprechenden Werten, um einen anderen Sprachstapel bereitzustellen. Im Anschluss finden Sie einige Beispiele. Führen Sie in Cloud Shell den folgenden Befehl aus, um die aktuellen Versionen anzuzeigen: `az webapp config show --resource-group myResourceGroup --name <app-name> --query linuxFxVersion`
 
 | Sprache    | Beispiel                                              |

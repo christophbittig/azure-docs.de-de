@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 61e9787c0a85ad412d3e70cfb2452d288a48d36a
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 3a6bb0fd360b334299c6cd1be2795121a3b53203
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983048"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777524"
 ---
 # <a name="index-data-from-sharepoint-online"></a>Indizieren von Daten über SharePoint Online
 
@@ -28,7 +28,6 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Cognitive Search
 
 Ein Indexer in Azure Cognitive Search ist ein Crawler, der durchsuchbare Daten und Metadaten aus einer Datenquelle extrahiert. Der SharePoint Online-Indexer stellt eine Verbindung mit Ihrer SharePoint Online-Website her und indiziert Dokumente aus einer oder mehreren Dokumentbibliotheken. Der Indexer bietet die folgenden Funktionen:
 + Es können Inhalte aus einer oder mehreren SharePoint Online-Dokumentbibliotheken indiziert werden.
-+ Es können Inhalte aus SharePoint Online-Dokumentbibliotheken im gleichen Mandanten wie Ihr Azure Cognitive Search-Dienst indiziert werden. Der Indexer funktioniert nicht mit SharePoint-Websites, die sich in einem anderen Mandanten als Ihr Azure Cognitive Search-Dienst befinden. 
 + Der Indexer unterstützt die inkrementelle Indizierung, d. h. er ermittelt die Inhalte in der Dokumentbibliothek, die geändert wurden, und indiziert bei zukünftigen Indizierungsläufen nur die aktualisierten Inhalte. Wenn beispielsweise ursprünglich fünf PDF-Dateien vom Indexer indiziert wurden, indiziert er bei der erneuten Ausführung nur die eine PDF-Datei, die aktualisiert wurde.
 + Text und normalisierte Bilder werden standardmäßig aus den indizierten Dokumenten extrahiert. Optional kann der Pipeline ein Skillset zur weiteren Inhaltsanreicherung hinzugefügt werden. Weitere Informationen zu Skillsets finden Sie im Artikel [Skillsetkonzepte in Azure Cognitive Search](cognitive-search-working-with-skillsets.md).
 
@@ -50,8 +49,11 @@ Zum Einrichten des SharePoint Online-Indexers müssen Sie einige Schritte im Azu
  
 > [!VIDEO https://www.youtube.com/embed/QmG65Vgl0JI]
 
-### <a name="step-1-enable-system-assigned-managed-identity"></a>Schritt 1: Aktivieren einer systemseitig zugewiesenen verwalteten Identität
-Wenn eine systemseitig zugewiesene verwaltete Identität aktiviert wird, erstellt Azure eine Identität für Ihren Suchdienst, die vom Indexer verwendet werden kann.
+### <a name="step-1-optional-enable-system-assigned-managed-identity"></a>Schritt 1 (optional): Aktivieren einer systemseitig zugewiesenen verwalteten Identität
+
+Wenn eine systemseitig zugewiesene verwaltete Identität aktiviert wird, erstellt Azure eine Identität für Ihren Suchdienst, die vom Indexer verwendet werden kann. Diese Identität wird verwendet, um den Mandanten, in dem der Suchdienst bereitgestellt wird, automatisch zu erkennen.
+
+Wenn sich die SharePoint Online-Website im gleichen Mandanten wie der Suchdienst befindet, müssen Sie die systemseitig zugewiesene verwaltete Identität für den Suchdienst aktivieren. Wenn sich die SharePoint Online-Website in einem anderen Mandanten als der Suchdienst befindet, muss die systemseitig zugewiesene verwaltete Identität nicht aktiviert werden.
 
 ![Aktivieren einer systemseitig zugewiesenen verwalteten Identität](media/search-howto-index-sharepoint-online/enable-managed-identity.png "Aktivieren einer systemseitig zugewiesenen verwalteten Identität")
 
@@ -117,10 +119,13 @@ api-key: [admin key]
 {
     "name" : "sharepoint-datasource",
     "type" : "sharepoint",
-    "credentials" : { "connectionString" : "SharePointOnlineEndpoint=[SharePoint Online site url];ApplicationId=[AAD App ID]" },
+    "credentials" : { "connectionString" : "SharePointOnlineEndpoint=[SharePoint Online site url];ApplicationId=[AAD App ID];TenantId=[SharePoint Online site tenant id]" },
     "container" : { "name" : "defaultSiteLibrary", "query" : null }
 }
 ```
+
+> [!NOTE]
+> Wenn sich die SharePoint Online-Website im gleichen Mandanten wie der Suchdienst befindet und die systemseitig zugewiesene verwaltete Identität aktiviert ist, muss `TenantId` nicht in die Verbindungszeichenfolge eingeschlossen werden. Wenn sich die SharePoint Online-Website in einem anderen Mandanten als der Suchdienst befindet, muss `TenantId` eingeschlossen werden.
 
 ### <a name="step-4-create-an-index"></a>Schritt 4: Erstellen eines Index
 Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben.

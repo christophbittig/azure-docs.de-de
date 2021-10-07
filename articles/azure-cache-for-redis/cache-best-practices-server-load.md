@@ -1,5 +1,5 @@
 ---
-title: Bewährte Methoden für die Verwendung und Überwachung der Serverauslastung für Azure Cache for Redis
+title: Bewährte Methoden für die Verwendung und Überwachung der Serverauslastung
 titleSuffix: Azure Cache for Redis
 description: Erfahren Sie, wie Sie die Serverauslastung für ihre Azure Cache for Redis verwenden und überwachen.
 author: shpathak-msft
@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: ceeff68f65ace76f4fe9060edeb775085508c969
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 51a0a5ede1c9d978fcc7eea98c7519c70bd9126e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114771"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626131"
 ---
 # <a name="manage-server-load-for-azure-cache-for-redis"></a>Verwalten der Serverauslastung für Azure Cache for Redis
 
@@ -34,7 +34,7 @@ Wenn Sie viele Clientinstanzen instanziieren, um gleichzeitig eine Verbindung mi
 
 ## <a name="memory-pressure"></a>Arbeitsspeicherauslastung
 
-Eine hohe Arbeitsspeicherauslastung auf dem Server erhöht die Wahrscheinlichkeit, dass das System Daten auf den Datenträger weitergeben muss, was zu Seitenfehlern führt, die das System erheblich verlangsamen können.
+Eine hohe Arbeitsspeicherauslastung auf dem Server erhöht die Wahrscheinlichkeit, dass das System Daten auf den Datenträger weitergeben muss. Dies führt zu Seitenfehlern, die das System erheblich verlangsamen können.
 
 ## <a name="avoid-long-running-commands"></a>Vermeiden von zeitintensiven Befehlen
 
@@ -42,11 +42,15 @@ Der Redis-Server ist ein Single-Thread-Prozess. Befehle mit einer zeitintensiven
 
 ## <a name="monitor-server-load"></a>Überwachungsserverauslastung
 
-Fügen Sie die Überwachung der Serverauslastung hinzu, um sicherzustellen, dass Sie Benachrichtigungen erhalten, wenn eine hohe Serverauslastung auftritt. Die Überwachung kann Ihnen helfen, Ihre Anwendungseinschränkungen zu verstehen. Anschließend können Sie proaktiv an der Entschärfung von Problemen arbeiten. Es wird empfohlen, die Serverauslastung unter 80 % zu halten, um negative Leistungseffekte zu vermeiden.
+Wenn Sie sicherstellen möchten, dass Sie bei einer hohen Serverauslastung benachrichtigt werden, fügen Sie die Überwachung der Serverauslastung hinzu. Die Überwachung kann Ihnen helfen, Ihre Anwendungseinschränkungen zu verstehen. Anschließend können Sie proaktiv an der Entschärfung von Problemen arbeiten. Es wird empfohlen, die Serverauslastung unter 80 % zu halten, um negative Leistungseffekte zu vermeiden.
 
 ## <a name="plan-for-server-maintenance"></a>Planen der Serverwartung
 
 Stellen Sie sicher, dass Sie über genügend Serverkapazität verfügen, um Ihre Spitzenlast zu bewältigen, während ihre Cacheserver in Wartung sind. Testen Sie Ihr System, indem Sie die Knoten bei einer Spitzenlast neu starten. Weitere Informationen zum Simulieren der Bereitstellung eines Patches finden Sie unter [Neustart](cache-administration.md#reboot).
+
+## <a name="test-for-increased-server-load-after-failover"></a>Testen auf erhöhte Serverauslastung nach einem Failover
+
+Bei Standard- und Premium-SKUs wird jeder Cache auf zwei Knoten gehostet. Die Clientverbindungen werden mit dem Load Balancer auf die beiden Knoten verteilt. Bei einer geplanten oder ungeplanten Wartung auf dem primären Knoten beendet der Knoten alle Clientverbindungen. In solchen Situationen können alle Clientverbindungen auf einem einzelnen Knoten landen, was zu einer erhöhten Serverauslastung auf dem verbleibenden Knoten führt. Es wird empfohlen, dieses Szenario zu testen. Starten Sie hierfür den primären Knoten neu, und vergewissern Sie sich, dass ein Knoten alle Clientverbindungen verarbeiten kann, ohne dass die Serverauslastung zu hoch wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

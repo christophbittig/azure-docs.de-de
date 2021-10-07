@@ -4,15 +4,15 @@ description: In diesem Artikel erfahren Sie, wie Sie eine Oracle-Quelle in Azure
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 2/25/2021
-ms.openlocfilehash: a9234a2bcce6a754a96d1f323af9f08a9697ff03
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 1a8956971e48529c75f07db54c196867a6c5955e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725237"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216940"
 ---
 # <a name="register-and-scan-oracle-source"></a>Oracle-Quelle registrieren und überprüfen
 
@@ -104,7 +104,7 @@ Gehen Sie auf dem Bildschirm **Quellen registrieren (Oracle)** wie folgt vor:
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1.  Klicken Sie im Verwaltungscenter auf Integration Runtimes. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, erstellen Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime.
+1.  Wählen Sie im Verwaltungscenter „Integration Runtimes“ aus. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, erstellen Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime.
 
 2.  Navigieren Sie zu **Quellen**.
 
@@ -143,11 +143,11 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
     :::image type="content" source="media/register-scan-oracle-source/scan.png" alt-text="Oracle überprüfen" border="true":::
 
-8.  Klicken Sie auf **Continue** (Weiter).
+8.  Wählen Sie **Weiter**.
 
 9.  Wählen Sie den **Auslöser für die Überprüfung**. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
 
-10.  Sehen Sie sich Ihre Überprüfung noch einmal an, und klicken Sie dann auf **Speichern und ausführen**.
+10.  Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie **Speichern und ausführen** aus.
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>Anzeigen Ihrer Überprüfungen und Überprüfungsausführungen
 

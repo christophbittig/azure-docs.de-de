@@ -1,23 +1,23 @@
 ---
-title: Übersicht über Kubernetes mit Azure Arc-Unterstützung
+title: Übersicht über Kubernetes mit Azure Arc-Aktivierung
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/25/2021
 ms.topic: overview
 author: mlearned
 ms.author: mlearned
-description: Dieser Artikel enthält eine Übersicht über Kubernetes mit Azure Arc-Unterstützung.
+description: Dieser Artikel enthält eine Übersicht zu Kubernetes mit Azure Arc-Aktivierung.
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: 80d1b741c4a3a1d60cc44e3afdeac22a61a7db4b
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 7a3d2c4465961984371abf17bff98d33f7b185a8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768286"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812557"
 ---
-# <a name="what-is-azure-arc-enabled-kubernetes"></a>Was ist Kubernetes mit Azure Arc-Aktivierung?
+# <a name="what-is-azure-arc-enabled-kubernetes"></a>Was ist Kubernetes mit Azure Arc-Unterstützung?
 
-Mithilfe von Kubernetes mit Azure Arc-Aktivierung können Sie Kubernetes-Cluster, die sich entweder innerhalb oder außerhalb von Azure befinden, anfügen und konfigurieren. Wenn Sie eine Verbindung von einem Kubernetes-Cluster mit Azure Arc herstellen, tritt Folgendes für den Cluster auf:
+Mithilfe von Kubernetes mit Azure Arc-Unterstützung können Sie Kubernetes-Cluster, die sich entweder innerhalb oder außerhalb von Azure befinden, anfügen und konfigurieren. Wenn Sie eine Verbindung von einem Kubernetes-Cluster mit Azure Arc herstellen, tritt Folgendes für den Cluster auf:
 * Er wird im Azure-Portal mit einer Azure Resource Manager-ID und einer verwalteten Identität angezeigt. 
 * Er wird in einem Azure-Abonnement und einer Ressourcengruppe platziert.
 * Er empfängt Tags genau wie jede andere Azure-Ressource. 
@@ -28,15 +28,15 @@ Zum Herstellen einer Verbindung zwischen einem Kubernetes-Cluster und Azure muss
 * Sie sammeln Azure Arc-Protokolle und -Metriken.
 * Sie achten auf Konfigurationsanforderungen. 
 
-Kubernetes mit Azure Arc-Unterstützung unterstützt branchenübliches SSL zum Schützen von Daten während der Übertragung. Außerdem werden ruhende Daten verschlüsselt und in einer Azure Cosmos DB-Datenbank gespeichert, um ihre Vertraulichkeit zu gewährleisten.
+Kubernetes mit Azure Arc-Aktivierung unterstützt branchenübliches SSL zum Absichern von Daten während der Übertragung. Außerdem werden ruhende Daten verschlüsselt und in einer Azure Cosmos DB-Datenbank gespeichert, um ihre Vertraulichkeit zu gewährleisten.
 
 ## <a name="supported-kubernetes-distributions"></a>Unterstützte Kubernetes-Distributionen
 
-Kubernetes mit Azure Arc-Aktivierung funktioniert mit jedem Kubernetes-Cluster, der eine CNCF-Zertifizierung (Cloud Native Computing Foundation) besitzt. Das Azure Arc-Team hat mit [wichtigen Partnern dieser Branche zusammengearbeitet](./validation-program.md), um die Konformität ihrer Kubernetes-Distributionen mit Kubernetes mit Azure Arc-Aktivierung zu überprüfen.
+Kubernetes mit Azure Arc-Unterstützung funktioniert mit jedem Kubernetes-Cluster, der eine CNCF-Zertifizierung (Cloud Native Computing Foundation) besitzt. Das Azure Arc-Team hat mit [wichtigen Partnern dieser Branche](./validation-program.md) zusammengearbeitet, um die Konformität ihrer Kubernetes-Distributionen mit Kubernetes mit Azure Arc-Unterstützung zu überprüfen.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios 
 
-Kubernetes mit Azure Arc-Aktivierung unterstützt die folgenden Szenarien: 
+Kubernetes mit Azure Arc-Unterstützung unterstützt die folgenden Szenarien: 
 
 * Verbinden von außerhalb von Azure ausgeführtem Kubernetes für Bestand, Gruppierung und Kennzeichnung
 
@@ -48,7 +48,7 @@ Kubernetes mit Azure Arc-Aktivierung unterstützt die folgenden Szenarien:
 
 * Anwenden von Richtliniendefinitionen mithilfe von Azure Policy für Kubernetes
 
-* Erstellen von [benutzerdefinierten Standorten](./custom-locations.md) als Zielstandorte für die Bereitstellung von Azure Arc-fähigen Datendiensten, [App Services in Azure Arc](../../app-service/overview-arc-integration.md) (einschließlich Web-, Funktions- und Logik-Apps) und [Event Grid in Kubernetes](../../event-grid/kubernetes/overview.md).
+* Erstellen von [benutzerdefinierten Standorten](./custom-locations.md) als Zielstandorte für die Bereitstellung von Datendiensten mit Azure Arc-Unterstützung, [App Services in Azure Arc](../../app-service/overview-arc-integration.md) (einschließlich Web-, Funktions- und Logik-Apps) und [Event Grid in Kubernetes](../../event-grid/kubernetes/overview.md)
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 

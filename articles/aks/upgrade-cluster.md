@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Upgrade eines Azure Kubernetes Service-Cl
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 9dcbe21ccddb13037cbd7633127880320da9ff2b
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 2b839350b8f993d107bce67266600d2f4b2386fd
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349887"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217370"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -22,7 +22,7 @@ Informationen zu AKS-Clustern, für die mehrere Knotenpools oder Windows Server-
 Der Artikel setzt voraus, dass Sie mindestens Version 2.0.65 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 > [!WARNING]
-> Durch ein AKS-Clusterupgrade werden Ihre Knoten als nicht planbar markiert und entleert (cordon/drain). Wenn Sie nur über ein geringes Computekontingent verfügen, kann das Upgrade möglicherweise nicht durchgeführt werden. Weitere Informationen finden Sie unter [Anfordern einer Kontingenterhöhung](../azure-portal/supportability/resource-manager-core-quotas-request.md).
+> Durch ein AKS-Clusterupgrade werden Ihre Knoten als nicht planbar markiert und entleert (cordon/drain). Wenn Sie nur über ein geringes Computekontingent verfügen, kann das Upgrade möglicherweise nicht durchgeführt werden. Weitere Informationen finden Sie unter [Anfordern einer Kontingenterhöhung](../azure-portal/supportability/regional-quota-requests.md).
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Suchen nach verfügbaren AKS-Clusterupgrades
 
@@ -149,7 +149,7 @@ Registrieren Sie das Featureflag `AutoUpgradePreview` mithilfe des Befehls [az f
 az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview
 ```
 
-Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Überprüfen Sie den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list]:
+Es kann einige Minuten dauern, bis der Status *Registered* (Registriert) angezeigt wird. Warten Sie, bis die Registrierung abgeschlossen ist. Überprüfen Sie den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list]:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AutoUpgradePreview')].{Name:name,State:properties.state}"

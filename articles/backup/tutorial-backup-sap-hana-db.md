@@ -2,13 +2,13 @@
 title: 'Tutorial: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern'
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
-ms.date: 09/01/2021
-ms.openlocfilehash: 3cfbd89e9df6cf2d0d30d744ee8e437e3c364094
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/27/2021
+ms.openlocfilehash: 629465100106ff3a2403a27cae9bb00e1350bf5e
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434248"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082724"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
 
@@ -38,8 +38,8 @@ Führen Sie vor dem Konfigurieren von Sicherungen unbedingt die folgenden Schrit
   * Es sollten Anmeldeinformationen zum Hinzufügen und Löschen von Benutzern vorhanden sein.
   * Beachten Sie, dass dieser Schlüssel nach der erfolgreichen Ausführung des Vorregistrierungsskripts gelöscht werden kann.
 * Sie können auch einen Schlüssel für den vorhandenen HANA SYSTSEM-Benutzer in **hdbuserstore** anstelle eines benutzerdefinierten Schlüssels erstellen, wie im obigen Schritt aufgeführt.
-* Führen Sie das Skript für die SAP HANA-Sicherungskonfiguration (Vorregistrierungsskript) auf dem virtuellen Computer, auf dem HANA installiert ist, als Stammbenutzer aus. Mit [diesem Skript](https://aka.ms/scriptforpermsonhana) wird das HANA-System auf die Sicherung vorbereitet. Dabei muss der in den vorherigen Schritten erstellte Schlüssel als Eingabe übergeben werden. Informationen dazu, wie diese Eingabe als Parameter an das Skript übergeben werden soll, finden Sie im Abschnitt [Aufgaben des Vorregistrierungsskripts](#what-the-pre-registration-script-does). In diesem Abschnitt erfahren Sie außerdem mehr über die Funktion des Vorregistrierungsskripts.
-* Wenn Ihr HANA-Setup private Endpunkte verwendet, führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) mit dem Parameter *-sn* oder *--skip-network-checks* aus.
+* Führen Sie das Skript für die SAP HANA-Sicherungskonfiguration (Vorregistrierungsskript) auf dem virtuellen Computer, auf dem HANA installiert ist, als Stammbenutzer aus. Mit [diesem Skript](https://go.microsoft.com/fwlink/?linkid=2173610) wird das HANA-System auf die Sicherung vorbereitet. Dabei muss der in den vorherigen Schritten erstellte Schlüssel als Eingabe übergeben werden. Informationen dazu, wie diese Eingabe als Parameter an das Skript übergeben werden soll, finden Sie im Abschnitt [Aufgaben des Vorregistrierungsskripts](#what-the-pre-registration-script-does). In diesem Abschnitt erfahren Sie außerdem mehr über die Funktion des Vorregistrierungsskripts.
+* Wenn Ihr HANA-Setup private Endpunkte verwendet, führen Sie das [Vorregistrierungsskript](https://go.microsoft.com/fwlink/?linkid=2173610) mit dem Parameter *-sn* oder *--skip-network-checks* aus.
 
 >[!NOTE]
 >Das Vorregistrierungsskript installiert **compat-unixODBC234** für SAP HANA-Workloads, die auf RHEL (7.4, 7.6 und 7.7) ausgeführt werden, sowie **unixODBC** für RHEL 8.1. [Dieses Paket befindet sich im Repository RHEL for SAP HANA (für RHEL 7 Server) Update Services für SAP-Lösungen (RPMs)](https://access.redhat.com/solutions/5094721).  Das Repository für ein Azure Marketplace RHEL-Image wäre **rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms**.
@@ -57,12 +57,14 @@ In der folgenden Tabelle sind die verschiedenen Alternativen zum Herstellen der 
 | FQDN-Tags von Azure Firewall          | Einfachere Verwaltung, da die erforderlichen FQDNs automatisch verwaltet werden | Nur mit Azure Firewall möglich                         |
 | Zugriff auf Dienst-FQDNs/-IPs | Keine zusätzlichen Kosten   <br><br>  Verwendung mit allen Netzwerksicherheits-Appliances und Firewalls möglich | Möglicherweise ist ein umfassender Satz von IP-Adressen oder FQDNs erforderlich.   |
 | Verwenden eines HTTP-Proxys                 | Zentraler Internetzugriffspunkt für VMs                       | Zusätzliche Kosten für das Ausführen einer VM mit der Proxysoftware         |
+| [VNET-Dienstendpunkt](/azure/virtual-network/virtual-network-service-endpoints-overview)    |     Kann für Azure Storage (= Recovery Services-Tresor) verwendet werden.     <br><br>     Bietet einen großen Vorteil für die Optimierung der Leistung des Datenverkehrs auf Datenebene.          |         Kann nicht für Azure AD und den Azure Backup-Dienst verwendet werden.    |
+| Virtuelles Netzwerkgerät      |      Kann für Azure Storage, Azure AD und den Azure Backup-Dienst verwendet werden. <br><br> **Datenebene**   <ul><li>      Azure Storage: `*.blob.core.windows.net`, `*.queue.core.windows.net`  </li></ul>   <br><br>     **Verwaltungsebene**  <ul><li>  Azure AD: Lassen Sie den Zugriff auf FQDNs zu, die in den Abschnitten 56 und 59 unter [Microsoft 365 Common und Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online) beschrieben sind. </li><li>   Azure Backup-Dienst: `.backup.windowsazure.com` </li></ul> <br>Erfahren Sie mehr über [Azure Firewall-Diensttags](/azure/firewall/fqdn-tags#:~:text=An%20FQDN%20tag%20represents%20a%20group%20of%20fully,the%20required%20outbound%20network%20traffic%20through%20your%20firewall.).       |  Erhöht den Mehraufwand für den Datenverkehr auf Datenebene und verringert den Durchsatz bzw. die Leistung.  |
 
 Weitere Informationen zur Verwendung dieser Optionen finden Sie unten:
 
 ### <a name="private-endpoints"></a>Private Endpunkte
 
-Private Endpunkte ermöglichen Ihnen, sichere Verbindungen von Servern in einem virtuellen Netzwerk mit Ihrem Recovery Services-Tresor herzustellen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihren Tresor. Der Netzwerkdatenverkehr zwischen Ihren Ressourcen innerhalb des virtuellen Netzwerks und dem Tresor wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbone-Netzwerk übertragen. Dadurch wird er vom öffentlichen Internet isoliert. Weitere Informationen zu privaten Endpunkten für Azure Backup finden Sie [hier](./private-endpoints.md).
+Private Endpunkte ermöglichen Ihnen, sichere Verbindungen von Servern in einem virtuellen Netzwerk mit Ihrem Recovery Services-Tresor herzustellen. Der private Endpunkt verwendet eine private IP-Adresse aus dem VNET-Adressraum für Ihren Tresor. Der Netzwerkdatenverkehr zwischen Ihren Ressourcen innerhalb des virtuellen Netzwerks und dem Tresor wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbone-Netzwerk übertragen. Dadurch wird er vom öffentlichen Internet isoliert. Ein privater Endpunkt wird einem bestimmten Subnetz eines virtuellen Netzwerks zugewiesen und kann nicht für Azure Active Directory verwendet werden. Weitere Informationen zu privaten Endpunkten für Azure Backup finden Sie [hier](./private-endpoints.md).
 
 ### <a name="nsg-tags"></a>NSG-Tags
 
@@ -102,17 +104,19 @@ Wenn Sie eine SAP HANA-Datenbank auf einem virtuellen Azure-Computer sichern, v
 
 ## <a name="understanding-backup-and-restore-throughput-performance"></a>Grundlegendes zur Durchsatzleistung bei der Sicherung und Wiederherstellung
 
-Bei den über Backint bereitgestellten Sicherungen (Protokoll und protokollfremd) für virtuelle SAP HANA-Azure-Computer handelt es sich um Streams zu Azure Recovery Services-Tresoren. Daher ist es wichtig, diese Streamingmethodik zu verstehen.
+Bei den über Backint bereitgestellten Sicherungen (Protokoll und protokollfremd) für virtuelle SAP HANA-Azure-Computer handelt es sich um Streams zu Azure Recovery Services-Tresoren (für die intern Azure Storage Blob genutzt wird). Daher ist es wichtig, diese Streamingmethodik zu verstehen.
 
-Die Backint-Komponente von HANA stellt die Pipes (eine Pipe für Lese- und eine für Schreibvorgänge) bereit. Diese sind mit zugrunde liegenden Datenträgern verbunden, auf denen sich Datenbankdateien befinden, die dann durch den Azure Backup-Dienst gelesen und an einen Azure Recovery Services-Tresor übertragen werden. Vom Azure Backup-Dienst wird neben den nativen Validierungsüberprüfungen von Backint auch eine Prüfsumme zum Überprüfen der Datenströme erstellt. Durch diese Überprüfungen wird sichergestellt, dass die im Azure Recovery Services-Tresor enthaltenen Daten zuverlässig und wiederherstellbar sind.
+Die Backint-Komponente von HANA stellt die Pipes (eine Pipe für Lese- und eine für Schreibvorgänge) bereit. Diese sind mit zugrunde liegenden Datenträgern verbunden, auf denen sich Datenbankdateien befinden, die dann durch den Azure Backup-Dienst gelesen und an einen Azure Recovery Services-Tresor übertragen werden. Hierbei handelt es sich um ein Azure Storage-Konto. Vom Azure Backup-Dienst wird neben den nativen Validierungsüberprüfungen von Backint auch eine Prüfsumme zum Überprüfen der Datenströme erstellt. Durch diese Überprüfungen wird sichergestellt, dass die im Azure Recovery Services-Tresor enthaltenen Daten zuverlässig und wiederherstellbar sind.
 
-Da es bei den Streams in erster Linie um Datenträger geht, müssen Sie mit der Datenträgerleistung vertraut sein, um die Sicherungs- und Wiederherstellungsleistung beurteilen zu können. Ausführliche Informationen zu Datenträgerdurchsatz und -leistung bei virtuellen Azure-Computern finden Sie in [diesem Artikel](../virtual-machines/disks-performance.md). Diese Informationen sind auf die Sicherungs- und Wiederherstellungsleistung übertragbar.
+Da für die Streams hauptsächlich Datenträger verwendet werden, müssen Sie für Lesevorgänge mit der Datenträgerleistung und für die Übertragung von Sicherungsdaten mit der Netzwerkleistung vertraut sein, um die Leistung der Sicherungs- und Wiederherstellungsvorgänge messen zu können. Ausführliche Informationen zum Durchsatz und zur Leistung von Datenträgern bzw. Netzwerken bei virtuellen Azure-Computern finden Sie in [diesem Artikel](../virtual-machines/disks-performance.md). Diese Informationen sind auf die Sicherungs- und Wiederherstellungsleistung übertragbar.
 
 **Der Azure Backup-Dienst versucht, bei protokollfremden Sicherungen für HANA (beispielsweise vollständig, differenziell oder inkrementell) eine Geschwindigkeit von bis zu ~420 MBit/s und bei Protokollsicherungen für HANA eine Geschwindigkeit von bis zu 100 MBit/s zu erreichen.** Wie bereits erwähnt, können diese Geschwindigkeiten nicht garantiert werden und hängen von folgenden Faktoren ab:
 
-* Maximaler Datenträgerdurchsatz des virtuellen Computers (ohne Cache)
-* Zugrunde liegender Datenträgertyp und dessen Durchsatz
-* Anzahl von Prozessen, von denen gleichzeitig versucht wird, Lese- und Schreibvorgänge auf dem gleichen Datenträger durchzuführen
+- Maximaler Datenträgerdurchsatz des virtuellen Computers ohne Zwischenspeicherung: Lesen aus dem Daten- oder Protokollbereich.
+- Zugrunde liegender Datenträgertyp und zugehöriger Durchsatz: Lesen aus dem Daten- oder Protokollbereich.
+- Maximaler Netzwerkdurchsatz des virtuellen Computers: Schreiben in den Recovery Services-Tresor.
+- Wenn das VNET über NVA/Firewall verfügt: zugehöriger Netzwerkdurchsatz
+- Bei Daten/Anmeldung für Azure NetApp Files: Bei Lesevorgängen aus ANF und Schreibvorgängen in den Tresor wird Netzwerkbandbreite des virtuellen Computers genutzt.
 
 > [!IMPORTANT]
 > Bei kleineren virtuellen Computern, bei denen der Durchsatz des Datenträgers ohne Cache sehr nahe bei oder unter 400 MBit/s liegt, gibt es ggf. Bedenken, dass die gesamten Datenträger-IOPS durch den Sicherungsdienst beansprucht werden, wodurch unter Umständen Lese- und Schreibvorgänge von SAP HANA auf den Datenträgern beeinträchtigt werden. Im nächsten Abschnitt erfahren Sie, wie Sie in diesem Fall den Verbrauch des Sicherungsdiensts drosseln oder auf den maximal zulässigen Grenzwert beschränken können.
@@ -176,13 +180,19 @@ Die Ausgabe des Befehls sollte den Schlüssel {SID} {DBNAME} und den Benutzer AZ
 
 Nachfolgend finden Sie eine Zusammenfassung der Schritte, die zum Abschließen der Ausführung des Vorregistrierungsskripts erforderlich sind. Beachten Sie, dass Sie in diesem Flow den SYSTEM-Benutzerschlüssel als Eingabeparameter für das Vorregistrierungsskript bereitstellen.
 
-|Wer  |From  |Auszuführendes Programm  |Kommentare  |
-|---------|---------|---------|---------|
-|```<sid>```adm (Betriebssystem)     |  HANA-Betriebssystem       |   Lesen Sie das Tutorial, und laden Sie das Vorregistrierungsskript herunter.      |   Lesen Sie die [oben angegebenen Voraussetzungen](#prerequisites), und laden Sie [hier](https://aka.ms/scriptforpermsonhana) das Vorregistrierungsskript herunter.  |
-|```<sid>```adm (Betriebssystem) und SYSTEM-Benutzer (HANA)    |      HANA-Betriebssystem   |   Führen Sie den Befehl „hdbuserstore Set“ aus.      |   Beispiel: hdbuserstore Set SYSTEM hostname>:3```<Instance#>```13 SYSTEM ```<password>``` **Hinweis:** Verwenden Sie nicht die IP-Adresse oder den vollqualifizierten Domänennamen, sondern den Hostnamen.      |
-|```<sid>```adm (Betriebssystem)    |   HANA-Betriebssystem      |  Führen Sie den Befehl „hdbuserstore List“ aus.       |   Überprüfen Sie, ob das Ergebnis den Standardspeicher enthält: ```KEY SYSTEM  ENV : <hostname>:3<Instance#>13  USER: SYSTEM```      |
-|Root (Betriebssystem)     |   HANA-Betriebssystem        |    Führen Sie das Azure Backup-HANA-Vorregistrierungsskript aus.      |    ```./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM```     |
-|```<sid>```adm (Betriebssystem)    |  HANA-Betriebssystem       |   Führen Sie den Befehl „hdbuserstore List“ aus.      |    Überprüfen Sie, ob das Ergebnis neue Zeilen enthält: ```KEY AZUREWLBACKUPHANAUSER  ENV : localhost: 3<Instance#>13   USER: AZUREWLBACKUPHANAUSER```     |
+| Wer     |    From    |    Auszuführendes Programm    |    Kommentare    |
+| --- | --- | --- | --- |
+| `<sid>`adm (Betriebssystem) |    HANA-Betriebssystem   | Lesen Sie das Tutorial, und laden Sie das Vorregistrierungsskript herunter.  |    Tutorial: [Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern](/azure/backup/tutorial-backup-sap-hana-db)   <br><br>    Laden Sie das [Vorregistrierungsskript](https://go.microsoft.com/fwlink/?linkid=2173610) herunter. |
+| `<sid>`adm (Betriebssystem)    |    HANA-Betriebssystem    |   Starten Sie HANA (HDB-Start).    |   Stellen Sie vor der Einrichtung sicher, dass HANA betriebsbereit ist und ausgeführt wird.   |
+| `<sid>`adm (Betriebssystem)   |   HANA-Betriebssystem  |    Führen Sie den folgenden Befehl aus: <br>  `hdbuserstore Set`   |  `hdbuserstore Set SYSTEM <hostname>:3<Instance#>13 SYSTEM <password>`  <br><br>   **Hinweis** <br>  Stellen Sie sicher, dass Sie nicht die IP-Adresse bzw. den FQDN, sondern den Hostnamen verwenden.   |
+| `<sid>`adm (Betriebssystem)   |  HANA-Betriebssystem    |   Führen Sie den folgenden Befehl aus:<br> `hdbuserstore List`   |  Überprüfen Sie, ob das Ergebnis wie folgt den Standardspeicher enthält: <br><br> `KEY SYSTEM`  <br> `ENV : <hostname>:3<Instance#>13`    <br>  `USER : SYSTEM`   |
+| Root (Betriebssystem)   |   HANA-Betriebssystem    |    Führen Sie das [HANA-Vorregistrierungsskript für Azure Backup](https://go.microsoft.com/fwlink/?linkid=2173610) aus.     | `./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM`    |
+| `<sid>`adm (Betriebssystem)   |   HANA-Betriebssystem   |    Führen Sie den folgenden Befehl aus: <br> `hdbuserstore List`   |   Überprüfen Sie, ob das Ergebnis wie folgt neue Zeilen enthält: <br><br>  `KEY AZUREWLBACKUPHANAUSER` <br>  `ENV : localhost: 3<Instance#>13`   <br> `USER: AZUREWLBACKUPHANAUSER`    |
+| Azure-Mitwirkender     |    Azure-Portal    |   Konfigurieren Sie die NSG, NVA, Azure Firewall usw., um ausgehenden Datenverkehr zum Azure Backup-Dienst, Azure AD und Azure Storage zuzulassen.     |    [Einrichten der Netzwerkkonnektivität](/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)    |
+| Azure-Mitwirkender |   Azure-Portal    |   Erstellen oder öffnen Sie einen Recovery Services-Tresor, und wählen Sie dann die HANA-Sicherung aus.   |   Suchen Sie nach allen virtuellen HANA-Zielcomputern, die gesichert werden sollen.   |
+| Azure-Mitwirkender    |   Azure-Portal    |   Ermitteln Sie HANA-Datenbanken, und konfigurieren Sie die Sicherungsrichtlinie.   |  Beispiel: <br><br>  Wöchentliche Sicherung: Jeden Sonntag um 2:00 Uhr, wöchentliche, monatliche und jährliche Aufbewahrung (12 Wochen, 12 Monate bzw. 3 Jahre)   <br>   Differenziell oder inkrementell: Jeden Tag, Sonntag ausgenommen    <br>   Protokoll: alle 15 Minuten mit Aufbewahrungsdauer von 35 Tagen    |
+| Azure-Mitwirkender  |   Azure-Portal    |    Recovery Services-Tresor: Sicherungselemente: SAP HANA     |   Überprüfen Sie die Sicherungsaufträge (Azure-Workload).    |
+| HANA-Administrator    | HANA Studio   | Überprüfen Sie die Sicherungskonsole, den Sicherungskatalog, „backup.log“, „backint.log“ und „global.ini“.   |    Sowohl SYSTEMDB als auch Mandantendatenbank.   |
 
 Nach erfolgreicher Ausführung des Vorregistrierungsskripts und anschließender Überprüfung können Sie die [Konnektivitätsanforderungen](#set-up-network-connectivity) überprüfen und dann über den Recovery Services-Tresor die [Sicherung konfigurieren](#discover-the-databases).
 
@@ -221,6 +231,12 @@ So erstellen Sie einen Recovery Services-Tresor
    ![Auswählen von „Bewerten + erstellen“](./media/tutorial-backup-sap-hana-db/review-create.png)
 
 Der Recovery Services-Tresor wird jetzt erstellt.
+
+## <a name="enable-cross-region-restore"></a>Aktivieren der regionsübergreifenden Wiederherstellung
+
+Im Recovery Services-Tresor können Sie die regionsübergreifende Wiederherstellung aktivieren. Sie müssen die regionsübergreifende Wiederherstellung aktivieren, bevor Sie Sicherungen in Ihren HANA-Datenbanken konfigurieren und schützen. Informieren Sie sich darüber, [wie Sie die regionsübergreifende Wiederherstellung aktivieren](/azure/backup/backup-create-rs-vault#set-cross-region-restore).
+
+Lesen Sie die [weiteren Informationen](/azure/backup/backup-azure-recovery-services-vault-overview) über die regionsübergreifende Wiederherstellung.
 
 ## <a name="discover-the-databases"></a>Ermitteln der Datenbanken
 

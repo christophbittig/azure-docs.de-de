@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 01/08/2021
+ms.date: 08/25/2021
 ms.author: sngun
-ms.openlocfilehash: 3e1391aa0d29e6b6ae50964413195552768d12b7
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 1cb2b9057a1be20896523eba5e1111046a2901ed
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543050"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798938"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Einführung in Azure Cosmos DB: Tabelle-API
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
@@ -25,15 +25,16 @@ Mit [Azure Cosmos DB](introduction.md) wird die Tabellen-API für Anwendungen be
 * Garantierte Hochverfügbarkeit.
 * Automatische sekundäre Indizierung
 
-[Azure Data Table SDKs](https://devblogs.microsoft.com/azure-sdk/announcing-the-new-azure-data-tables-libraries/) sind für .NET, Java, Python, Node.js und Go verfügbar. Diese SDKs können entweder für Table Storage oder Cosmos DB-Tabellen verwendet werden. Anwendungen, die mithilfe der Azure Data Tables SDKs für Azure Table Storage geschrieben wurden, können ohne Codeänderungen zur Azure Cosmos DB-Tabellen-API migriert werden, um die Premium-Funktionen zu nutzen.
+[Azure Tables SDKs](https://devblogs.microsoft.com/azure-sdk/announcing-the-new-azure-data-tables-libraries/) sind für .NET, Java, Python, Node.js und Go verfügbar. Diese SDKs können entweder für Table Storage oder Cosmos DB-Tabellen verwendet werden. Anwendungen, die mithilfe der Azure Tables SDKs für Azure Table Storage geschrieben wurden, können ohne Codeänderungen zur Azure Cosmos DB-Tabellen-API migriert werden, um die Premium-Funktionen zu nutzen.
 
 > [!NOTE]
 > Der [serverlose Kapazitätsmodus](../serverless.md) ist nun in der Tabellen-API von Azure Cosmos DB verfügbar.
 
 > [!IMPORTANT]
-> Die .NET Cosmos DB-Tabellenbibliothek [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) befindet sich im Wartungsmodus und wird demnächst eingestellt. Aktualisieren Sie auf die neue .NET Azure-Datentabellenbibliothek [Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/), um weiterhin die neuesten Features zu erhalten, die von der Tabellen-API unterstützt werden.
+> Die .NET Cosmos DB-Tabellenbibliothek [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) befindet sich im Wartungsmodus und wird demnächst eingestellt. Aktualisieren Sie auf das neue .NET Azure Tables SDK [Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/), um weiterhin die neuesten Features zu erhalten, die von der Tabellen-API unterstützt werden.
 
 ## <a name="table-offerings"></a>Tabellenangebote
+
 Wenn Sie derzeit Azure Table Storage verwenden, bietet Ihnen der Wechsel zur Azure Cosmos DB-Tabellen-API folgende Vorteile:
 
 | Funktion | Azure-Tabellenspeicher | Azure Cosmos DB-Tabellen-API |
@@ -49,11 +50,7 @@ Wenn Sie derzeit Azure Table Storage verwenden, bietet Ihnen der Wechsel zur Azu
 
 ## <a name="get-started"></a>Erste Schritte
 
-Erstellen Sie im [Azure-Portal](https://portal.azure.com) ein Azure Cosmos DB-Konto. Fahren Sie anschließend mit dem [Schnellstart für die Table-API per .NET](create-table-dotnet.md) fort. 
-
-> [!IMPORTANT]
-> Wenn Sie während der Vorschauphase ein Tabellen-API-Konto erstellt haben, erstellen Sie ein [neues Tabellen-API-Konto](create-table-dotnet.md#create-a-database-account) für die Verwendung mit den allgemein verfügbaren Table API SDKs.
->
+Erstellen Sie im [Azure-Portal](https://portal.azure.com) ein Azure Cosmos DB-Konto. Fahren Sie anschließend mit dem [Schnellstart für die Table-API per .NET](create-table-dotnet.md) fort.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: lle
-ms.openlocfilehash: b833b8b63415a36fb0ee2862c9dfa261cfeb44ef
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: d1b3770d236c7f88090840720e8f88fd453e70cf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864209"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755936"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problembehandlung bei der selbstgehosteten Integration Runtime
 
@@ -32,11 +32,11 @@ Wenn bei den Aktivitäten in der selbstgehosteten oder freigegebenen Integration
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
     
-    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png" alt-text="Ein Screenshot, der den Abschnitt „Aktivitätsausführungen“ im Bereich „Alle Pipelineausführungen“ zeigt":::.
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png" alt-text="Ein Screenshot, der den Abschnitt &quot;Aktivitätsausführungen&quot; im Bereich &quot;Alle Pipelineausführungen&quot; zeigt.":::
     
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
     
-    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page-synapse.png" alt-text="Ein Screenshot, der den Abschnitt „Aktivitätsausführungen“ im Bereich „Alle Pipelineausführungen“ zeigt":::.
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page-synapse.png" alt-text="Ein Screenshot, der den Abschnitt &quot;Aktivitätsausführungen&quot; im Bereich &quot;Alle Pipelineausführungen&quot; zeigt.":::
     
     ---
     
@@ -48,7 +48,7 @@ Wenn bei den Aktivitäten in der selbstgehosteten oder freigegebenen Integration
  
    Das Fenster **Protokolle der selbstgehosteten Integration Runtime (IR) für Microsoft freigeben** wird geöffnet.
 
-    ![Screenshot des Fensters „Protokolle der selbstgehosteten Integration Runtime (IR) für Microsoft freigeben“](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png" alt-text="Screenshot des Fensters &quot;Protokolle der selbstgehosteten Integration Runtime (IR) für Microsoft freigeben&quot;":::
 
 1. Wählen Sie die Protokolle aus, die Sie senden möchten. 
     * Bei einer *selbstgehosteten IR* können Sie Protokolle im Zusammenhang mit einer fehlgeschlagenen Aktivität oder alle Protokolle auf dem Knoten der selbstgehosteten IR hochladen. 
@@ -56,7 +56,7 @@ Wenn bei den Aktivitäten in der selbstgehosteten oder freigegebenen Integration
 
 1. Notieren Sie sich beim Hochladen der Protokolle die Berichts-ID und bewahren Sie sie für später auf, falls Sie weitere Unterstützung bei der Problemlösung benötigen.
 
-    ![Screenshot des Fensters mit dem Uploadfortschritt und der angezeigten Berichts-ID für die IR-Protokolle](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png" alt-text="Screenshot des Fensters mit dem Uploadfortschritt und der angezeigten Berichts-ID für die IR-Protokolle":::
 
 > [!NOTE]
 > Die Anforderungen zum Anzeigen und Hochladen von Protokollen werden auf allen selbstgehosteten IR-Instanzen ausgeführt, die online sind. Wenn Protokolle fehlen, stellen Sie sicher, dass alle selbstgehosteten IR-Instanzen online sind. 
@@ -86,7 +86,7 @@ Wenn Sie versuchen, auf der Benutzeroberfläche den Grenzwert für gleichzeitige
 
 Beispielszenario: Der Höchstwert für gleichzeitige Aufträge ist aktuell auf „24“ festgelegt, und Sie möchten die Anzahl erhöhen, damit Aufträge schneller ausgeführt werden können. Der Mindestwert, den Sie eingeben können, ist „3“, und der Höchstwert beträgt „32“. Sie erhöhen den Wert von 24 auf 32 und wählen dann die Schaltfläche **Aktualisieren** aus. Der Prozess bleibt in Status *Wird aktualisiert* hängen, wie aus dem folgenden Screenshot hervorgeht. Sie aktualisieren die Seite, und es wird immer noch der Wert 24 angezeigt. Er wurde nicht wie erwartet auf 32 aktualisiert.
 
-![Screenshot des Bereichs „Knoten“ der Integration Runtime, in dem der Vorgang mit dem Status „Wird aktualisiert“ angezeigt wird](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png" alt-text="Screenshot des Bereichs „Knoten“ der Integration Runtime, in dem der Vorgang mit dem Status &quot;Wird aktualisiert&quot; angezeigt wird":::
 
 #### <a name="cause"></a>Ursache
 
@@ -119,7 +119,7 @@ Bei der Behandlung von Fällen im Zusammenhang mit dem SSL/TLS-Handshake können
        
        b. Suchen Sie im Datei-Explorer im linken Bereich nach dem Zertifikat, das Sie überprüfen möchten. Klicken Sie mit der rechten Maustaste darauf, und wählen Sie dann **Alle Tasks** > **Exportieren** aus.
     
-        ![Screenshot des Bereichs zum Verwalten von Computerzertifikaten mit der Steuerung „Alle Tasks“ > „Exportieren“ für ein Zertifikat](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png" alt-text="Screenshot des Bereichs zum &quot;Verwalten von Computerzertifikaten&quot; mit der Steuerung &quot;Alle Tasks&quot; > &quot;Exportieren&quot; für ein Zertifikat":::
 
     2. Kopieren Sie das exportierte Zertifikat auf den Clientcomputer. 
     3. Führen Sie clientseitig in einem Eingabeaufforderungsfenster den folgenden Befehl aus: Achten Sie darauf, dass Sie *\<certificate path>* und *\<output txt file path>* durch die tatsächlichen Pfade ersetzen.
@@ -137,17 +137,17 @@ Bei der Behandlung von Fällen im Zusammenhang mit dem SSL/TLS-Handshake können
 
         Beispiel: 
 
-        ![Screenshot der Fehlerübersicht am Ende einer TXT-Datei](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png" alt-text="Screenshot der Fehlerübersicht am Ende einer TXT-Datei":::
 
         Wenn am Ende der Protokolldatei kein Fehler angezeigt wird (siehe folgender Screenshot), können Sie davon ausgehen, dass die Zertifikatkette auf dem Clientcomputer erfolgreich erstellt wurde.
         
-        ![Screenshot einer Protokolldatei ohne Fehleranzeige](media/self-hosted-integration-runtime-troubleshoot-guide/log-file.png)      
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/log-file.png" alt-text="Screenshot einer Protokolldatei ohne Fehleranzeige":::      
 
 - Wenn in der Zertifikatdatei die Dateinamenerweiterungen AIA (Authority Information Access), CDP (CRL Distribution Point) oder OCSP (Online Certificate Status Protocol) konfiguriert sind, können Sie eine intuitivere Überprüfung vornehmen:
  
     1. Rufen Sie diese Informationen ab, indem Sie die Zertifikatdetails überprüfen (siehe folgender Screenshot):
     
-        ![Screenshot mit den Zertifikatdetails](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png" alt-text="Screenshot mit den Zertifikatdetails":::
     
     1. Führen Sie den folgenden Befehl aus. Achten Sie darauf, *\<certificate path>* durch den tatsächlichen Pfad des Zertifikats zu ersetzen.
     
@@ -159,7 +159,7 @@ Bei der Behandlung von Fällen im Zusammenhang mit dem SSL/TLS-Handshake können
         
     1. Wählen Sie **Abrufen** aus, um Zertifikate mit den Dateinamenerweiterungen AIA, CDP und OCSP zu überprüfen.
 
-        ![Screenshot des URL-Abrufprogramms mit der Schaltfläche „Abrufen“](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png" alt-text="Screenshot des URL-Abrufprogramms mit der Schaltfläche „Abrufen“":::
  
         Die Zertifikatkette wurde erfolgreich erstellt, wenn der Zertifikatstatus von AIA *Überprüft* und der Zertifikatstatus von CDP oder OCSP ebenfalls *Überprüft* lautet.
 
@@ -181,7 +181,7 @@ Nachstehend eine genauere Fehlermeldung:
 
 In Process Monitor können Sie folgendes Ergebnis anzeigen:
 
-[![Screenshot der Pfadliste in Process Monitor](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png)](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png#lightbox)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png#lightbox" lightbox="media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png" alt-text="Screenshot der Pfadliste in Process Monitor":::
 
 > [!TIP] 
 > In Process Monitor können Sie Filter festlegen (siehe folgender Screenshot).
@@ -192,7 +192,7 @@ In Process Monitor können Sie folgendes Ergebnis anzeigen:
 
 <br>
 
-![Screenshot der Seite „Process Monitor-Filter“ mit den Filtern für die DLL](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png" alt-text="Screenshot der Seite &quot;Process Monitor-Filter&quot; mit den Filtern für die DLL":::
 
 #### <a name="resolution"></a>Lösung
 
@@ -219,7 +219,7 @@ Die selbstgehostete Integration Runtime wird plötzlich ohne Authentifizierungss
 
 „Der Authentifizierungsschlüssel wurde noch nicht zugewiesen.“
 
-![Screenshot des Integration Runtime-Ereignisbereichs, in dem anzeigt wird, dass noch kein Authentifizierungsschlüssel zugewiesen wurde](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png" alt-text="Screenshot des Integration Runtime-Ereignisbereichs, in dem anzeigt wird, dass noch kein Authentifizierungsschlüssel zugewiesen wurde":::
 
 #### <a name="cause"></a>Ursache
 
@@ -230,7 +230,7 @@ Die selbstgehostete Integration Runtime wird plötzlich ohne Authentifizierungss
 
 Wenn keiner der vorstehenden Gründe zutrifft, können Sie zum Ordner *%programdata%\Microsoft\Data Transfer\DataManagementGateway* navigieren und überprüfen, ob die Datei *Configurations* gelöscht wurde. Wenn sie gelöscht wurde, befolgen Sie die Anweisungen im Netwrix-Artikel [Wer hat eine Datei von den Windows-Dateiservern gelöscht?](https://www.netwrix.com/how_to_detect_who_deleted_file.html)
 
-![Screenshot des Bereichs mit den Ereignisprotokolldetails zum Überprüfen der Datei „Configurations“](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png" alt-text="Screenshot des Bereichs mit den Ereignisprotokolldetails zum Überprüfen der Datei „Configurations“":::
 
 
 ### <a name="cant-use-self-hosted-ir-to-bridge-two-on-premises-datastores"></a>Zwei lokale Datenspeicher können mit der selbstgehosteten IR nicht überbrückt werden
@@ -285,7 +285,7 @@ Die einzige Möglichkeit zur Vermeidung dieses Problems besteht darin sicherzust
 
    „Der Verschlüsselungsmodus für die Intranetkommunikation konnte nicht geändert werden. Wahrscheinlich besitzt das Zertifikat '\<*certificate name*>' keinen privaten Schlüssel, der für den Schlüsselaustausch geeignet ist, oder der Prozess verfügt möglicherweise nicht über Zugriffsrechte für den privaten Schlüssel. Weitere Details finden Sie in der inneren Ausnahme.“
 
-    ![Screenshot des Bereichs mit den Einstellungen des Integration Runtime Configuration Manager mit der Fehlermeldung „Privater Schlüssel fehlt“](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png" alt-text="Screenshot des Bereichs mit den Einstellungen des Integration Runtime Configuration Manager mit der Fehlermeldung &quot;Privater Schlüssel fehlt&quot;":::
 
 #### <a name="cause"></a>Ursache
 
@@ -370,7 +370,7 @@ Nachdem Sie das Dienstkonto im Dienstbereich geändert haben, stellen Sie mögli
 
 „Bei dem Knoten von Integration Runtime (selbstgehostet) ist bei der Registrierung ein Fehler aufgetreten. Es kann keine Verbindung zum Hostdienst von Integration Runtime (selbstgehostet) hergestellt werden.“
 
-![Screenshot des Fensters "Integration Runtime Configuration Manager", in dem ein IR-Registrierungsfehler angezeigt wird](media/self-hosted-integration-runtime-troubleshoot-guide/ir-registration-error.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/ir-registration-error.png" alt-text="Screenshot des Fensters &quot;Integration Runtime Configuration Manager&quot;, in dem ein IR-Registrierungsfehler angezeigt wird":::
 
 #### <a name="cause"></a>Ursache
 
@@ -380,19 +380,19 @@ Viele Ressourcen werden nur dem Dienstkonto gewährt. Wenn Sie das Dienstkonto i
 
 Navigieren Sie zum Integration Runtime-Ereignisprotokoll, um den Fehler zu überprüfen.
 
-![Screenshot des IR-Ereignisprotokolls mit dem aufgetretenen Laufzeitfehler](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png" alt-text="Screenshot des IR-Ereignisprotokolls mit dem aufgetretenen Laufzeitfehler":::
 
 * Wenn der Fehler im Ereignisprotokoll „UnauthorizedAccessException“ lautet, führen Sie folgende Schritte aus:
 
     1. Überprüfen Sie im Windows-Dienstbereich das Dienstanmeldekonto *DIAHostService*.
 
-        ![Screenshot des Eigenschaftenbereichs für das Dienstanmeldekonto](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png" alt-text="Screenshot des Eigenschaftenbereichs für das Dienstanmeldekonto":::
 
     1. Überprüfen Sie, ob das Dienstanmeldekonto Lese-/Schreibberechtigung für den Ordner *%programdata%\Microsoft\DataTransfer\DataManagementGateway* hat.
 
         - Standardmäßig sollte das Dienstanmeldekonto Lese-/Schreibberechtigung haben, falls es nicht geändert wurde.
 
-            ![Screenshot des Bereichs mit den Dienstberechtigungen](media/self-hosted-integration-runtime-troubleshoot-guide/service-permission.png)
+            :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/service-permission.png" alt-text="Screenshot des Bereichs mit den Dienstberechtigungen":::
 
         - Wenn Sie das Dienstanmeldekonto geändert haben, führen Sie die folgenden Schritte zur Behebung des Problems aus:
  
@@ -414,11 +414,11 @@ Navigieren Sie zum Integration Runtime-Ereignisprotokoll, um den Fehler zu über
 
     1. Überprüfen Sie im Windows-Dienstbereich das Dienstanmeldekonto *DIAHostService*.
     
-        ![Screenshot des Anmeldebereichs für das Dienstkonto](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png" alt-text="Screenshot des Bereichs &quot;Anmelden&quot; für das Dienstkonto":::
 
     1. Überprüfen Sie, ob das Dienstanmeldekonto über die Berechtigung **Als Dienst anmelden** zum Starten des Windows-Diensts verfügt:
 
-        ![Screenshot des Eigenschaftsbereichs „Als Dienst anmelden“](media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png" alt-text="Screenshot des Eigenschaftsbereichs &quot;Als Dienst anmelden&quot;":::
 
 #### <a name="more-information"></a>Weitere Informationen
 
@@ -432,7 +432,7 @@ Wenn in Ihrem Fall keines der beiden oben genannten Lösungsmuster zutrifft, ver
 
 Wenn Sie eine selbstgehostete IR registrieren, wird die Schaltfläche **Registrieren** im Configuration Manager-Bereich nicht angezeigt.
 
-![Screenshot des Configuration Manager-Bereichs, in dem eine Meldung angezeigt wird, dass der Integration Runtime-Knoten nicht registriert wurde](media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png" alt-text="Screenshot des Configuration Manager-Bereichs, in dem eine Meldung angezeigt wird, dass der Integration Runtime-Knoten nicht registriert wurde":::
 
 #### <a name="cause"></a>Ursache
 
@@ -445,7 +445,7 @@ Mit der Veröffentlichung der Integration Runtime 3.0 wurde die Schaltfläche *
     > [!IMPORTANT] 
     > Wählen Sie **Ja** im folgenden Prozess aus. Bewahren Sie beim Deinstallationsvorgang keine Daten auf.
 
-    ![Screenshot der Schaltfläche „Ja“ zum Löschen aller Benutzerdaten aus der Integration Runtime](media/self-hosted-integration-runtime-troubleshoot-guide/delete-data.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/delete-data.png" alt-text="Screenshot der Schaltfläche &quot;Ja&quot; zum Löschen aller Benutzerdaten aus der Integration Runtime":::
 
 1. Wenn Sie keine MSI-Installationsdatei für die Integration Runtime haben, wechseln Sie zum [Download Center](https://www.microsoft.com/en-sg/download/details.aspx?id=39717), um die aktuelle Integration Runtime herunterzuladen.
 1. Installieren Sie die MSI-Datei, und registrieren Sie die Integration Runtime.
@@ -495,7 +495,7 @@ Beim Installieren der selbstgehosteten IR über Microsoft Integration Runtime Co
 
 „Der Verschlüsselungsmodus für die Intranetkommunikation konnte nicht geändert werden: Fehler beim Gewähren des Zugriffs auf das Zertifikat ‚\<*certificate name*>‘ für das Integration Runtime-Dienstkonto. Fehlercode 103“
 
-![Screenshot mit der Fehlermeldung „... Fehler beim Gewähren des Zugriffs auf das Zertifikat für das Integration Runtime-Dienstkonto“](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png" alt-text="Screenshot mit der Fehlermeldung &quot;... Fehler beim Gewähren des Zugriffs auf das Zertifikat für das Integration Runtime-Dienstkonto&quot;":::
 
 #### <a name="cause"></a>Ursache
 
@@ -511,7 +511,7 @@ Importieren Sie das Zertifikat mithilfe des folgenden Befehls:
 
 `Certutil.exe -CSP "CSP or KSP" -ImportPFX FILENAME.pfx`
 
-![Screenshot des Befehls „certutil“ zum Importieren des Zertifikats](media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png" alt-text="Screenshot des Befehls „certutil“ zum Importieren des Zertifikats":::
 
 **Lösung 2** 
 
@@ -522,9 +522,9 @@ Konvertieren Sie das Zertifikat mit den folgenden Befehlen:
 
 Vor und nach der Konvertierung:
 
-![Screenshot des Ergebnisses vor der Zertifikatskonvertierung](media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png" alt-text="Screenshot des Ergebnisses vor der Zertifikatskonvertierung":::
 
-![Screenshot des Ergebnisses nach der Zertifikatskonvertierung](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png" alt-text="Screenshot des Ergebnisses nach der Zertifikatskonvertierung":::
 
 ### <a name="self-hosted-integration-runtime-version-5x"></a>Selbstgehostete Integration Runtime, Version 5.x
 Für das Upgrade auf die Version 5.x der selbstgehosteten Integration Runtime wird mindestens **.NET Framework Runtime 4.7.2** oder höher benötigt. Auf der Downloadseite befinden sich Downloadlinks für die aktuelle 4.x-Version und die beiden neuen 5.x-Versionen. 
@@ -552,7 +552,7 @@ Wenn Sie versuchen, die selbstgehostete Integration Runtime zu registrieren, wir
 
 „Bei dem Knoten von Integration Runtime (selbstgehostet) ist bei der Registrierung ein Fehler aufgetreten.“
 
-![Screenshot der Nachricht „Bei dem Knoten von Integration Runtime (selbstgehostet) ist bei der Registrierung ein Fehler aufgetreten“](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png" alt-text="Screenshot der Nachricht &quot;Bei dem Knoten von Integration Runtime (selbstgehostet) ist bei der Registrierung ein Fehler aufgetreten&quot;":::
 
 #### <a name="cause"></a>Ursache 
 
@@ -562,7 +562,7 @@ Die selbstgehostete Integration Runtime kann keine Verbindung zum Backenddienst 
 
 1. Überprüfen Sie, ob der Integration Runtime-Dienst ausgeführt wird. Wenn ja, fahren Sie mit Schritt 2 fort.
     
-   ![Screenshot mit der Anzeige, dass der selbstgehostete IR-Dienst ausgeführt wird](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png" alt-text="Screenshot mit der Anzeige, dass der selbstgehostete IR-Dienst ausgeführt wird":::
     
 1. Wenn kein Proxy für die selbstgehostete Integration Runtime konfiguriert ist (Standardeinstellung), führen Sie den folgenden PowerShell-Befehl auf dem Computer aus, auf dem die selbstgehostete Integration Runtime installiert ist:
 
@@ -575,7 +575,7 @@ Die selbstgehostete Integration Runtime kann keine Verbindung zum Backenddienst 
             
     Die folgende Antwort wird erwartet:
             
-    ![Screenshot der Antwort auf den PowerShell-Befehl](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png" alt-text="Screenshot der Antwort auf den PowerShell-Befehl":::
             
 1. Wenn Sie nicht die erwartete Antwort erhalten, verwenden Sie je nach Bedarf eine der folgenden Methoden:
             
@@ -604,7 +604,7 @@ Die selbstgehostete Integration Runtime kann keine Verbindung zum Backenddienst 
 
 Die folgende Antwort wird erwartet:
             
-![Screenshot der erwarteten Antwort auf den Powershell-Befehl](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png" alt-text="Screenshot der erwarteten Antwort auf den Powershell-Befehl":::
 
 > [!NOTE] 
 > Proxy-Aspekte:
@@ -618,7 +618,7 @@ Die folgende Antwort wird erwartet:
 
 Der Knoten der selbstgehosteten Integrated Runtime weist möglicherweise den Status **Inaktiv** auf, wie im folgenden Screenshot gezeigt:
 
-![Screenshot des Knotens der selbstgehosteten Integrated Runtime mit inaktivem Status](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png" alt-text="Screenshot des Knotens der selbstgehosteten Integrated Runtime mit inaktivem Status":::
 
 Dieses Verhalten tritt auf, wenn Knoten nicht miteinander kommunizieren können.
 
@@ -645,7 +645,7 @@ Dieses Verhalten tritt auf, wenn Knoten nicht miteinander kommunizieren können.
    
 1. Wenn der im folgenden Screenshot gezeigte Befehlszeilenfehler „Verbindung zum Host konnte nicht geöffnet werden“ ausgegeben wird, wenden Sie sich an Ihre IT-Abteilung, um Hilfe bei der Behebung dieses Problems zu erhalten. Wenden Sie sich nach erfolgreicher Telnet-Verwendung an den Microsoft-Support, wenn Sie weiterhin Probleme mit dem Status des Integrated Runtime-Knotens haben.
         
-   ![Screenshot mit dem Befehlszeilenfehler „Verbindung zum Host konnte nicht geöffnet werden“](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
+   :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png" alt-text="Screenshot mit dem Befehlszeilenfehler &quot;Verbindung zum Host konnte nicht geöffnet werden&quot;":::
         
 1. Überprüfen Sie, ob das Fehlerprotokoll den folgenden Eintrag enthält:
 
@@ -665,7 +665,7 @@ Um ein Problem mit der Netzwerkkonnektivität zu beheben, müssen Sie wissen, wi
 
 Möglicherweise müssen Sie gelegentlich bestimmte Konnektivitätsprobleme zwischen der selbstgehosteten IR und Ihrer Azure Data Factory oder Azure Synapse-Instanz (siehe folgender Screenshot) oder zwischen der selbstgehosteten IR und der Datenquelle oder Senke beheben. 
 
-![Screenshot der Meldung „Fehler bei der Verarbeitung der HTTP-Anforderung“](media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png" alt-text="Screenshot der Meldung &quot;Fehler bei der Verarbeitung der HTTP-Anforderung&quot;":::
 
 In beiden Fällen können möglicherweise folgende Fehler auftreten:
 
@@ -681,15 +681,15 @@ Wenn die zuvor genannten Fehler auftreten, befolgen Sie die Anweisungen in diese
 
     1. Sie können den Filter so festlegen, dass eine Zurücksetzung vom Server zur Clientseite angezeigt wird. Im folgenden Beispielscreenshot sehen Sie, dass der Azure Data Factory-Server die Serverseite darstellt.
 
-        ![Screenshot des Azure Data Factory-Servers](media/self-hosted-integration-runtime-troubleshoot-guide/data-factory-server.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/data-factory-server.png" alt-text="Screenshot des Azure Data Factory-Servers":::
 
     1. Wenn Sie das Zurücksetzungspaket erhalten, finden Sie die Konversation anhand des folgenden TCP-Protokolls (Transmission Control Protocol).
 
-        ![Screenshot der TCP-Konversation](media/self-hosted-integration-runtime-troubleshoot-guide/find-conversation.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/find-conversation.png" alt-text="Screenshot der TCP-Konversation":::
 
     1. Rufen Sie die Konversation zwischen Client und Azure Data Factory-Server ab, indem Sie den Filter entfernen.
 
-        ![Screenshot der Konversationsdetails](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png" alt-text="Screenshot der Konversationsdetails":::
 
 - Eine Analyse der erfassten Netmon-Ablaufverfolgung zeigt, dass die Gültigkeitsdauer (Time to Live, TTL) 64 beträgt. Anhand der im Artikel [Grundlegendes zur IP-Gültigkeitsdauer (Time to Live, TTL) und zur maximalen Anzahl an Weiterleitungen](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/) erwähnten Werte (extrahiert in die folgende Liste) können Sie sehen, dass das Linux-System dafür verantwortlich ist, dass das Paket zurückgesetzt und die Verbindung getrennt wird.
 
@@ -702,7 +702,7 @@ Wenn die zuvor genannten Fehler auftreten, befolgen Sie die Anweisungen in diese
     - Windows Server 2019 (2018): 128 für TCP, UDP und ICMP
     - macOS (2001): 64 für TCP, UDP und ICMP
 
-    ![Screenshot: TTL-Wert = 61](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-61.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/ttl-61.png" alt-text="Screenshot: TTL-Wert = 61":::
     
     Im vorherigen Beispiel wird der TTL-Wert 61 anstatt 64 als Gültigkeitsdauer angezeigt, da das Netzwerkpaket, wenn es sein Ziel erreicht, verschiedene Hops (z. B. Router oder Netzwerkgeräte) durchlaufen muss. Die Anzahl der Router oder Netzwerkgeräte wird abgezogen, um den TTL-Wert zu bilden.
     
@@ -714,7 +714,7 @@ Wenn die zuvor genannten Fehler auftreten, befolgen Sie die Anweisungen in diese
 
 - In einer idealen Situation würde die TTL-Hopanzahl 128 lauten. Das heißt, dass das Windows-Betriebssystem Ihre Azure Data Factory-Instanz ausführt. *128 minus 107 = 21 Hops*, wie im folgenden Beispiel gezeigt. Dies bedeutet, dass beim TCP-3-Wege-Handshake 21 Hops für das Paket von der Azure Data Factory-Instanz an die selbstgehostete IR gesendet wurden.
  
-    ![Screenshot: TTL-Wert = 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png" alt-text="Screenshot: TTL-Wert = 107":::
 
     Daher müssen Sie sich an das Netzwerkteam wenden, um zu den vierten Hop der selbstgehosteten IR zu ermitteln. Wenn es sich um die Firewall handelt (wie beim Linux-System), überprüfen Sie alle Protokolle, um herauszufinden, warum dieses Gerät das Paket nach dem TCP-3-Wege-Handshake zurücksetzt. 
     
@@ -727,9 +727,9 @@ Wenn die zuvor genannten Fehler auftreten, befolgen Sie die Anweisungen in diese
 
 Wenn Sie versuchen, Telnet **8.8.8.8 888** mit der erfassten Netmon-Ablaufverfolgung zu verwenden, sollte die Ablaufverfolgung wie in den folgenden Screenshots angezeigt werden:
 
-![Screenshot mit der Fehlermeldung „Verbindung zum Host an Port 888 konnte nicht geöffnet werden“](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png" alt-text="Screenshot mit der Fehlermeldung &quot;Verbindung zum Host an Port 888 konnte nicht geöffnet werden&quot;":::
 
-![Screenshot mit Beschreibung der Netmon-Ablaufverfolgung](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png" alt-text="Screenshot mit Beschreibung der Netmon-Ablaufverfolgung":::
  
 
 Die vorherigen Abbildungen zeigen, dass Sie an Port **888** keine TCP-Verbindung zu **8.8.8.8** auf Server-Seite herstellen konnten. Daher werden dort zwei zusätzliche **SynReTransmit**-Pakete angezeigt. Da die Quelle **SELF-HOST2** mit dem ersten Paket keine Verbindung zu **8.8.8.8** herstellen konnte, versucht sie weiterhin, die Verbindung herzustellen.
@@ -739,33 +739,33 @@ Die vorherigen Abbildungen zeigen, dass Sie an Port **888** keine TCP-Verbindung
 > 1. Wählen Sie **Filter laden** > **Standardfilter** > **Adressen** > **IPv4-Adressen** aus.
 > 1. Geben Sie **IPv4.Address == 8.8.8.8** ein, und wählen Sie dann **Anwenden** aus, um den Filter anzuwenden. Dann sollte die Kommunikation zwischen dem lokalen Computer und dem Ziel **8.8.8.8** angezeigt werden.
 
-![Screenshot: Adressfilter](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png" alt-text="Screenshot: Adressfilter":::
         
-![Screenshot: Weitere Adressfilter](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-2.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-2.png" alt-text="Screenshot: Weitere Adressfilter":::
 
 Erfolgreiche Szenarien sind in den folgenden Beispielen dargestellt: 
 
 - Wenn Sie mit Telnet **8.8.8.8 53** ohne Probleme erreichen können, gibt es einen erfolgreichen TCP-3-Wege-Handshake, und die Sitzung wird mit einem TCP-4-Wege-Handshake beendet.
 
-    ![Screenshot eines erfolgreichen Verbindungsszenarios](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-1.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-1.png" alt-text="Screenshot eines erfolgreichen Verbindungsszenarios":::
      
-    ![Screenshot mit Details eines erfolgreichen Verbindungsszenarios](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-2.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-2.png" alt-text="Screenshot mit Details eines erfolgreichen Verbindungsszenarios":::
 
 - Der vorherige TCP-3-Wege-Handshake erzeugt den folgenden Workflow:
 
-    ![Diagramm eines Workflows mit TCP-3-Wege-Handshake](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-3-handshake-workflow.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/tcp-3-handshake-workflow.png" alt-text="Diagramm eines Workflows mit TCP-3-Wege-Handshake":::
  
 - Der TCP-4-Wege-Handshake zum Beenden der Sitzung wird in den folgenden Workflows veranschaulicht:
 
-    ![Screenshot mit Details des TCP-4-Wege-Handshakes](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png" alt-text="Screenshot mit Details des TCP-4-Wege-Handshakes":::
 
-    ![Diagramm eines Workflows mit TCP-4-Wege-Handshake](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png" alt-text="Diagramm eines Workflows mit TCP-4-Wege-Handshake"::: 
 
 ### <a name="microsoft-email-notification-about-updating-your-network-configuration"></a>E-Mail-Benachrichtigung von Microsoft zum Aktualisieren Ihrer Netzwerkkonfiguration
 
 Möglicherweise erhalten Sie die folgende E-Mail-Benachrichtigung, in der eine Aktualisierung Ihrer Netzwerkkonfiguration empfohlen wird, um die Kommunikation mit neuen IP-Adressen für Azure Data Factory zum 8. November 2020 zuzulassen:
 
-   ![Screenshot der E-Mail-Benachrichtigung von Microsoft mit der Aufforderung zum Aktualisieren der Netzwerkkonfiguration](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
+   :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png" alt-text="Screenshot der E-Mail-Benachrichtigung von Microsoft mit der Aufforderung zum Aktualisieren der Netzwerkkonfiguration":::
 
 #### <a name="determine-whether-this-notification-affects-you"></a>Sind Sie von dieser Benachrichtigung betroffen?
 
@@ -789,7 +789,7 @@ So bestimmen Sie, ob Sie betroffen sind:
 
 - Wenn Einschränkungen durch Ausgangsregeln bestehen, prüfen Sie, ob Sie Diensttags verwenden. Wenn Sie Diensttags verwenden, sind Sie nicht betroffen. Sie brauchen nichts zu ändern oder hinzuzufügen, da der neue IP-Adressbereich in den Bereich der vorhandenen Diensttags fällt. 
 
-  ![Screenshot einer Zielüberprüfung mit DataFactory als Ziel](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png" alt-text="Screenshot einer Zielüberprüfung mit DataFactory als Ziel":::
 
 - Sie *sind* betroffen, wenn Sie die Positivliste für ausgehende IP-Adressen in den Einstellungen für die NSG-Regeln im virtuellen Azure-Netzwerk ausdrücklich aktivieren.
 
@@ -819,9 +819,9 @@ Wenn Sie das Ereignisprotokoll der selbstgehosteten IR oder die Clientbenachrich
 
 Am einfachsten überprüfen Sie das Dienstzertifikat, indem Sie die URL in Ihren Browser eingeben und den Dienst öffnen. Öffnen Sie beispielsweise auf dem Computer, auf dem die selbstgehostete IR installiert ist, den Link [Serverzertifikat überprüfen](https://eu.frontend.clouddatahub.net/), und zeigen Sie dann die Informationen zum Serverzertifikat an.
 
-  ![Screenshot des Bereichs „Serverzertifikat überprüfen“ des Azure Data Factory-Diensts](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png" alt-text="Screenshot des Bereichs „Serverzertifikat überprüfen“ des Azure Data Factory-Diensts":::
 
-  ![Screenshot des Fensters zum Überprüfen des Serverzertifizierungspfads](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png" alt-text="Screenshot des Fensters zum Überprüfen des Serverzertifizierungspfads":::
 
 #### <a name="cause"></a>Ursache
 
@@ -840,7 +840,7 @@ Weitere Informationen zum Herstellen einer Vertrauensstellung von Zertifikaten u
 #### <a name="additional-information"></a>Zusätzliche Informationen
 Wir haben eine neues, von DigiCert signiertes SSL-Zertifikat eingeführt. Überprüfen Sie, ob sich DigiCert Global Root G2 unter den vertrauenswürdigen Stammzertifizierungsstellen befindet.
 
-  ![Screenshot des Ordners „DigiCert Global Root G2“ im Verzeichnis „Vertrauenswürdige Stammzertifizierungsstellen“.](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png" alt-text="Screenshot des Ordners „DigiCert Global Root G2“ im Verzeichnis „Vertrauenswürdige Stammzertifizierungsstellen“.":::
 
 Wenn sich das Zertifikat nicht unter den vertrauenswürdigen Stammzertifizierungsstellen befindet, können Sie es [hier herunterladen](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt ). 
 

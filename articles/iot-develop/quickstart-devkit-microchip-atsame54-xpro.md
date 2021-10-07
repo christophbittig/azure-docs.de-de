@@ -6,13 +6,14 @@ ms.author: timlt
 ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
-ms.date: 06/08/2021
-ms.openlocfilehash: 9611f80c6895387e71cd6387736cb1445e6b1542
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.date: 09/22/2021
+zone_pivot_groups: iot-develop-toolset
+ms.openlocfilehash: 9b99f9ce23807e617d1b909034bbf9616ed54911
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112575308"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708052"
 ---
 # <a name="quickstart-connect-a-microchip-atsame54-xpro-evaluation-kit-to-iot-central"></a>Ein Schnellstart für das Verbinden eines Microchip ATSAME54-XPro Evaluation Kits mit IoT Central
 
@@ -42,6 +43,18 @@ Sie führen die folgenden Aufgaben aus:
     * Optional: der [Wetterklick](https://www.mikroe.com/weather-click)-Sensor. Sie können diesen Sensor zu dem Gerät hinzufügen, um die Wetterbedingungen zu überwachen. Auch wenn Sie nicht über diesen Sensor verfügen, können Sie diese Schnellstartanleitung abschließen.
     * Optional: Der [MikroBUS Xplained Pro](https://www.microchip.com/Developmenttools/ProductDetails/ATMBUSADAPTER-XPRO) Adapter. Verwenden Sie diesen Adapter, um den Wetterklick-Sensor an den Microchip E54 anzuschließen. Auch wenn Sie nicht über den Sensor und diesen Adapter verfügen, können Sie diese Schnellstartanleitung abschließen.
 
+:::zone pivot="iot-toolset-iar-ewarm"
+
+* EWARM von IAR. Sie können eine [kostenlose 30-Tage-Testversion von EWARM von IAR](https://www.iar.com/products/architectures/arm/iar-embedded-workbench-for-arm/) herunterladen.
+
+:::zone-end
+:::zone pivot="iot-toolset-mplab"
+
+* [MPLAB X IDE 5.35](https://www.microchip.com/mplab/mplab-x-ide)
+* [MPLAB XC32/32++ Compiler 2.4.0 oder höher](https://www.microchip.com/mplab/compilers)
+
+:::zone-end
+
 ## <a name="prepare-the-development-environment"></a>Vorbereiten der Entwicklungsumgebung
 
 Zum Einrichten Ihrer Entwicklungsumgebung klonen Sie zuerst ein GitHub-Repository, in dem alle für den Schnellstart benötigten Ressourcen enthalten sind. Anschließend installieren Sie einige Programmiertools.
@@ -58,6 +71,8 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>Installieren der Tools
 
+:::zone pivot="iot-toolset-cmake"
+
 Das geklonte Repository enthält ein Setupskript, mit dem die erforderlichen Tools installiert und konfiguriert werden. Wenn Sie diese Tools im Rahmen einer anderen Schnellstartanleitung für ein eingebettetes Gerät installiert haben, müssen Sie diesen Schritt nicht erneut ausführen.
 
 > [!NOTE]
@@ -68,19 +83,24 @@ Das geklonte Repository enthält ein Setupskript, mit dem die erforderlichen Too
 
 So installieren Sie die Tools
 
-1. Navigieren Sie im Datei-Explorer zum folgenden Pfad im Repository, und führen Sie das Setupskript mit dem Namen *get-toolchain.bat* aus:
+1. Navigieren Sie im Datei-Explorer zum folgenden Pfad im Repository, und führen Sie das Setupskript mit dem Namen ***get-toolchain.bat*** aus:
+> *getting-started\tools\get-toolchain.bat*
 
-    *getting-started\tools\get-toolchain.bat*
-
-1. Öffnen Sie nach der Installation ein neues Konsolenfenster, um die vom Setupskript vorgenommenen Konfigurationsänderungen zu überprüfen. Verwenden Sie diese Konsole für die Ausführung der restlichen Programmieraufgaben in der Schnellstartanleitung. Sie können die Windows-Eingabeaufforderung, PowerShell oder Git Bash für Windows verwenden.
-1. Führen Sie den folgenden Code aus, um zu überprüfen, ob Version 3.14 (oder höher) von CMake installiert ist.
+2. Öffnen Sie nach der Installation ein neues Konsolenfenster, um die vom Setupskript vorgenommenen Konfigurationsänderungen zu überprüfen. Verwenden Sie diese Konsole für die Ausführung der restlichen Programmieraufgaben in der Schnellstartanleitung. Sie können die Windows-Eingabeaufforderung, PowerShell oder Git Bash für Windows verwenden.
+3. Führen Sie den folgenden Code aus, um zu überprüfen, ob Version 3.14 (oder höher) von CMake installiert ist.
 
     ```shell
     cmake --version
     ```
-So installieren Sie die restlichen Tools:
 
-* Installieren Sie [Microchip Studio für AVR-&reg; und SAM-Geräte](https://www.microchip.com/en-us/development-tools-tools-and-software/microchip-studio-for-avr-and-sam-devices#). Microchip Studio ist eine Geräteentwicklungsumgebung, die die Tools zum Programmieren und Einspielen von Microchip E54 enthält. In diesem Tutorial verwenden Sie Microchip Studio nur, um den Microchip E54 einzuspielen. Die Installation dauert einige Minuten und fordert Sie mehrmals auf, die Installation von Komponenten zu genehmigen.
+4. Installieren Sie [Microchip Studio für AVR-&reg; und SAM-Geräte](https://www.microchip.com/en-us/development-tools-tools-and-software/microchip-studio-for-avr-and-sam-devices#). Microchip Studio ist eine Geräteentwicklungsumgebung, die die Tools zum Programmieren und Einspielen von Microchip E54 enthält. In diesem Tutorial verwenden Sie Microchip Studio nur, um den Microchip E54 einzuspielen. Die Installation dauert einige Minuten und fordert Sie mehrmals auf, die Installation von Komponenten zu genehmigen.
+
+:::zone-end
+:::zone pivot="iot-toolset-iar-ewarm, iot-toolset-mplab"
+
+Verwenden Sie die Installationsanleitung, die vom Hersteller Ihres Toolsets bereitgestellt wird, um Ihr Toolset für die Entwicklung zu installieren und vorzubereiten.
+
+:::zone-end
 
 [!INCLUDE [iot-develop-embedded-create-central-app-with-device](../../includes/iot-develop-embedded-create-central-app-with-device.md)]
 
@@ -90,102 +110,151 @@ Zum Verbinden des Microchip E54 mit Azure ändern Sie eine Konfigurationsdatei f
 
 ### <a name="add-configuration"></a>Hinzufügen einer Konfiguration
 
+:::zone pivot="iot-toolset-cmake"
+
 1. Öffnen Sie die folgende Datei in einem Text-Editor:
+> *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
 
-    *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
+2. Legen Sie die Konstanten aus den Azure IoT-Geräteinformationen auf die Werte fest, die Sie nach dem Erstellen der Azure-Ressourcen gespeichert haben.
+> |Konstantenname|Wert|
+> |-------------|-----|
+> | `IOT_DPS_ID_SCOPE` | {*Ihr Wert für den ID-Bereich*} |
+> | `IOT_DPS_REGISTRATION_ID` | {*Ihr Wert für die Geräte-ID*} |
+> | `IOT_DEVICE_SAS_KEY` | {*Ihr Wert für den Primärschlüssel*} |
 
-1. Legen Sie die Konstanten aus den Azure IoT-Geräteinformationen auf die Werte fest, die Sie nach dem Erstellen der Azure-Ressourcen gespeichert haben.
+3. Speichern und schließen Sie die Datei.
 
-    |Konstantenname|Wert|
-    |-------------|-----|
-    |`IOT_DPS_ID_SCOPE` |{*Ihr Wert für den ID-Bereich*}|
-    |`IOT_DPS_REGISTRATION_ID` |{*Ihr Wert für die Geräte-ID*}|
-    |`IOT_DEVICE_SAS_KEY` |{*Ihr Wert für den Primärschlüssel*}|
+:::zone-end
+:::zone pivot="iot-toolset-iar-ewarm"
 
-1. Speichern und schließen Sie die Datei.
+1. Öffnen Sie den EWARM-Arbeitsbereich ***azure_rtos.eww*** in IAR, nachdem Sie die ZIP-Datei extrahiert haben.
+
+2. Legen Sie die Konstanten aus den Azure IoT-Geräteinformationen auf die Werte fest, die Sie nach dem Erstellen der Azure-Ressourcen gespeichert haben.
+> |Konstantenname|Wert|
+> |-------------|-----|
+> | `IOT_DPS_ID_SCOPE` | {*Ihr Wert für den ID-Bereich*} |
+> | `IOT_DPS_REGISTRATION_ID` | {*Ihr Wert für die Geräte-ID*} |
+> | `IOT_DEVICE_SAS_KEY` | {*Ihr Wert für den Primärschlüssel*} |
+
+3. Speichern und schließen Sie die Datei.
+
+:::zone-end
+:::zone pivot="iot-toolset-mplab"
+
+1. Öffnen Sie MPLab, und wählen Sie **File > Open Project** (Datei > Projekt öffnen) und dann alle Projekte aus der extrahierten ZIP-Datei aus.
+
+2. Legen Sie die Konstanten aus den Azure IoT-Geräteinformationen auf die Werte fest, die Sie nach dem Erstellen der Azure-Ressourcen gespeichert haben.
+> |Konstantenname|Wert|
+> |-------------|-----|
+> | `IOT_DPS_ID_SCOPE` | {*Ihr Wert für den ID-Bereich*} |
+> | `IOT_DPS_REGISTRATION_ID` | {*Ihr Wert für die Geräte-ID*} |
+> | `IOT_DEVICE_SAS_KEY` | {*Ihr Wert für den Primärschlüssel*} |
+
+3. Speichern und schließen Sie die Datei.
+
+:::zone-end
 
 ### <a name="connect-the-device"></a>Verbinden des Geräts
 
 1. Suchen Sie auf dem Microchip E54 die Schaltfläche **Zurücksetzen,** den **Ethernet**-Port und den Micro-USB-Port mit der Bezeichnung **Debug USB**. Jede der Komponenten ist in der folgenden Abbildung hervorgehoben:
+> ![Suchen Sie die wichtigen Komponenten auf dem Microchip E54 Evaluation Kit Board](media/quickstart-devkit-microchip-atsame54-xpro/microchip-xpro-board.png)
 
-    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/microchip-xpro-board.png" alt-text="Suchen Sie die wichtigen Komponenten auf dem Microchip E54 Evaluation Kit Board":::
+2. Schließen Sie das Micro-USB-Kabel an den **Debug USB**-Port des Microchip E54 an and und verbinden Sie ihn dann mit Ihren Computer.
+> [!NOTE]
+>  Weitere Informationen zum Einrichten und den ersten Schritte mit dem Microchip E54 finden Sie optional in dem [Benutzerhandbuch für SAM E54 Xplained Pro](http://ww1.microchip.com/downloads/en/DeviceDoc/70005321A.pdf).
 
-1. Schließen Sie das Micro-USB-Kabel an den **Debug USB**-Port des Microchip E54 an and und verbinden Sie ihn dann mit Ihren Computer.
-    > [!NOTE]
-    >  Weitere Informationen zum Einrichten und den ersten Schritte mit dem Microchip E54 finden Sie optional in dem [Benutzerhandbuch für SAM E54 Xplained Pro](http://ww1.microchip.com/downloads/en/DeviceDoc/70005321A.pdf).
-
-1. Verwenden Sie das Ethernet-Kabel, um den Microchip E54 mit einem Ethernet-Anschluss zu verbinden.
+3. Verwenden Sie das Ethernet-Kabel, um den Microchip E54 mit einem Ethernet-Anschluss zu verbinden.
 
 ### <a name="optional-install-a-weather-sensor"></a>Optional: Installieren eines Wettersensors
 
 Führen Sie die Schritte in diesem Abschnitt aus, wenn Sie über den Wetterklick-Sensor und den MikroBUS Xplained Pro-Adapter verfügen. Fahren Sie andernfalls mit dem [Erstellen des Images](#build-the-image) fort. Sie können diese Schnellstartanleitung auch dann abschließen, wenn Sie nicht über einen Sensor verfügen. Der Beispielcode für das Gerät gibt simulierte Daten zurück, wenn kein echter Sensor vorhanden ist.
 
 1. Wenn Sie über den Wetterklick-Sensor und den MikroBUS Xplained Pro-Adapter verfügen, installieren Sie sie, wie auf dem folgenden Foto gezeigt auf dem Microchip E54:
+> :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/sam-e54-sensor.png" alt-text="Installieren des Wetterklick-Sensors und des MikroBUS Xplained Pro-Adapters auf dem Microchip E54":::
 
-    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/sam-e54-sensor.png" alt-text="Installieren des Wetterklick-Sensors und des MikroBUS Xplained Pro-Adapters auf dem Microchip E54":::
+2. Öffnen Sie die zuvor bearbeitete Konfigurationsdatei erneut:
+> *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
 
-1. Öffnen Sie die zuvor bearbeitete Konfigurationsdatei erneut:
+3. Legen Sie den Wert der Konstante `__SENSOR_BME280__` auf **1** fest, wie im folgenden Code aus der Headerdatei gezeigt. Durch Festlegen dieses Werts kann das Gerät die echten Sensordaten des Wetterklick-Sensors verwenden.
+> `#define __SENSOR_BME280__ 1`
 
-    *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
-
-1. Legen Sie den Wert der Konstante `__SENSOR_BME280__` auf *1* fest, wie im folgenden Code aus der Headerdatei gezeigt. Durch Festlegen dieses Werts kann das Gerät die echten Sensordaten des Wetterklick-Sensors verwenden.
-
-    `#define __SENSOR_BME280__ 1`
-
-1. Speichern und schließen Sie die Datei.
+4. Speichern und schließen Sie die Datei.
 
 ### <a name="build-the-image"></a>Erstellen des Image
 
-1. Führen Sie in Ihrer Konsole oder im Datei-Explorer das Skript *rebuild.bat* unter dem folgenden Pfad aus, um das Image zu erstellen:
+:::zone pivot="iot-toolset-cmake"
 
-    *getting-started\Microchip\ATSAME54-XPRO\tools\rebuild.bat*
+1. Führen Sie in Ihrer Konsole oder im Datei-Explorer das Skript ***rebuild.bat*** unter dem folgenden Pfad aus, um das Image zu erstellen:
+> *getting-started\Microchip\ATSAME54-XPRO\tools\rebuild.bat*
 
 2. Vergewissern Sie sich nach Abschluss des Buildvorgangs, dass die Binärdatei unter dem folgenden Pfad erstellt wurde:
+> *getting-started\Microchip\ATSAME54-XPRO\build\app\atsame54_azure_iot.bin*
 
-    *getting-started\Microchip\ATSAME54-XPRO\build\app\atsame54_azure_iot.bin*
+:::zone-end
+:::zone pivot="iot-toolset-iar-ewarm"
+
+Wählen Sie in IAR nacheinander **Project > Batch Build** _ (Projekt > Batcherstellung), _ *build_all** und **Make** (Erstellen) aus, um den Buildvorgang für alle Projekte durchzuführen. Sie können verfolgen, wie die Kompilierung durchgeführt wird und alle Beispielprojekte verknüpft werden.
+
+:::zone-end
+:::zone pivot="iot-toolset-mplab"
+
+Stellen Sie sicher, dass der Buildvorgang für die abhängigen Bibliotheken (***azure_iot, threadx, netxduo, same54_lib** _) aller Beispielprojekte durchgeführt wird, indem Sie das Projekt im Bereich _ *Projects** (Projekte) auswählen, mit der rechten Maustaste darauf klicken und die Option **Build** auswählen.
+
+:::zone-end
 
 ### <a name="flash-the-image"></a>Einspielen des Images
 
+:::zone pivot="iot-toolset-cmake"
+
 1. Öffnen Sie die **Windows Start > Microchip Studio-Eingabeaufforderungskonsole** und wechseln Sie zum Ordner der von Ihnen erstellten Binärdatei Microchip E54.
+> *getting-started\Microchip\ATSAME54-XPRO\build\app*
 
-    *getting-started\Microchip\ATSAME54-XPRO\build\app*
+2. Verwenden Sie das Hilfsprogramm *Atprogram*, um den Microchip E54 mit dem Binärbild zu einzuspielen:
 
-1. Verwenden Sie das Hilfsprogramm *Atprogram*, um den Microchip E54 mit dem Binärbild zu einzuspielen:
+> [!NOTE] 
+> Weitere Informationen zur Verwendung der Atmel-ICE- und Atprogram-Tools mit dem Microchip E54 finden Sie in der Dokumentation [Verwenden von Atmel-ICE für die AVR-Programmierung in der Massenproduktion](http://ww1.microchip.com/downloads/en/AppNotes/00002466A.pdf).
 
-    > [!NOTE] 
-    > Weitere Informationen zur Verwendung der Atmel-ICE- und Atprogram-Tools mit dem Microchip E54 finden Sie in der Dokumentation [Verwenden von Atmel-ICE für die AVR-Programmierung in der Massenproduktion](http://ww1.microchip.com/downloads/en/AppNotes/00002466A.pdf).
+> ```shell
+> atprogram --tool edbg --interface SWD --device ATSAME54P20A program --chiperase --file atsame54_azure_iot.bin --verify
+> ```
 
-    ```shell
-    atprogram --tool edbg --interface SWD --device ATSAME54P20A program --chiperase --file atsame54_azure_iot.bin --verify
-    ```
+> Nach Abschluss des Einspielvorgangs bestätigt die Konsole, dass die Programmierung erfolgreich war:
 
-    Nach Abschluss des Einspielvorgangs bestätigt die Konsole, dass die Programmierung erfolgreich war:
+> ```output
+> Firmware check OK
+> Programming and verification completed successfully.
+> ```
 
-    ```output
-    Firmware check OK
-    Programming and verification completed successfully.
-    ```
+:::zone-end
+:::zone pivot="iot-toolset-iar-ewarm"
+
+Wählen Sie in IAR in der Symbolleiste die grüne Schaltfläche **Download and Debug** (Herunterladen und debuggen) aus, um das Programm herunterzuladen und auszuführen. Wählen Sie anschließend **Go** (Starten) aus.
+
+:::zone-end
+:::zone pivot="iot-toolset-mplab"
+
+Wählen Sie in MPLAB die Option **Debug > Debug Main Project** (Debuggen > Hauptprojekt debuggen) aus.
+
+:::zone-end
 
 ### <a name="confirm-device-connection-details"></a>Bestätigen der Details zur Geräteverbindung
 
 Sie können die **Termite**-App verwenden, um die Kommunikation zu überwachen und sich zu vergewissern, dass Ihr Gerät richtig eingerichtet wurde.
 
 1. Starten Sie **Termite**.    
-    > [!TIP]
-    > Wenn beim Initialisieren oder Verbinden Ihres Geräts nach dem Einspielen Probleme auftreten, helfen Ihnen die Informationen zur [Problembehandlung](troubleshoot-embedded-device-quickstarts.md) weiter.
-1. Wählen Sie **Settings** aus.
-1. Überprüfen Sie im Dialogfeld **Serial port settings** (Einstellungen für den seriellen Anschluss) die folgenden Einstellungen, und ändern Sie sie bei Bedarf:
-    * **Baud rate** (Baudrate): 115.200
-    * **Port**: Der Porst, an dem Ihr Microchip E54 angeschlossen ist. Falls die Dropdownliste mehrere Anschlussoptionen enthält, können Sie hier den richtigen Anschluss auswählen. Öffnen Sie den **Geräte-Manager** von Windows, und ermitteln Sie unter **Anschlüsse**, welcher Anschluss verwendet wird.
-    * **Flusssteuerungsmodus**: DTR/DSR
+> [!TIP]
+> Wenn beim Initialisieren oder Verbinden Ihres Geräts nach dem Einspielen per Flashvorgang Probleme auftreten, helfen Ihnen die Informationen zu den weiteren Schritten unter „Problembehandlung“](troubleshoot-embedded-device-quickstarts.md) weiter.
+2. Wählen Sie **Settings** aus.
+3. Überprüfen Sie im Dialogfeld **Serial port settings** (Einstellungen für den seriellen Anschluss) die folgenden Einstellungen, und ändern Sie sie bei Bedarf:
+> * **Baud rate** (Baudrate): 115.200
+> * **Port**: Der Porst, an dem Ihr Microchip E54 angeschlossen ist. Falls die Dropdownliste mehrere Anschlussoptionen enthält, können Sie hier den richtigen Anschluss auswählen. Öffnen Sie den **Geräte-Manager** von Windows, und ermitteln Sie unter **Anschlüsse**, welcher Anschluss verwendet wird.
+> * **Flusssteuerung**: DTR/DSR :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/termite-settings.png" alt-text="Screenshot: Einstellungen für serielle Anschlüsse in der Termite-App":::
 
-    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/termite-settings.png" alt-text="Screenshot: Einstellungen für serielle Anschlüsse in der Termite-App":::
+4. Wählen Sie „OK“ aus.
+5. Drücken Sie an Ihrem Gerät die Taste **Reset**. Die Taste ist auf dem Gerät entsprechend beschriftet und befindet sich in der Nähe des Micro-USB-Anschlusses.
+6. Überprüfen Sie in der **Termite**-App die folgenden Prüfpunktwerte, um sich zu vergewissern, dass das Gerät initialisiert und mit Azure IoT verbunden wurde.
 
-1. Wählen Sie „OK“ aus.
-1. Drücken Sie an Ihrem Gerät die Taste **Reset**. Die Taste ist auf dem Gerät entsprechend beschriftet und befindet sich in der Nähe des Micro-USB-Anschlusses.
-1. Überprüfen Sie in der **Termite**-App die folgenden Prüfpunktwerte, um sich zu vergewissern, dass das Gerät initialisiert und mit Azure IoT verbunden wurde.
-
-    ```output
+```output
     Starting Azure thread
 
     Initializing DHCP
@@ -216,7 +285,7 @@ Sie können die **Termite**-App verwenden, um die Kommunikation zu überwachen u
         Model id: dtmi:azurertos:devkit:gsg;1
     Connected to IoT Hub
     SUCCESS: Azure IoT Hub client initialized
-    ```
+```
 
 Lassen Sie Termite geöffnet, damit Sie die Geräteausgabe während der folgenden Schritte verfolgen können.
 
@@ -224,8 +293,8 @@ Lassen Sie Termite geöffnet, damit Sie die Geräteausgabe während der folgende
 
 Zeigen Sie den Gerätestatus im IoT Central-Portal wie folgt an:
 1. Wählen Sie im Anwendungsdashboard im seitlichen Navigationsmenü die Option **Geräte** aus.
-1. Vergewissern Sie sich, dass der **Gerätestatus** auf **Bereitgestellt** aktualisiert wurde.
-1. Vergewissern Sie sich, dass die Anzeige unter **Gerätevorlage** auf **Leitfaden für erste Schritte** aktualisiert wurde.
+1. Vergewissern Sie sich, dass der **Gerätestatus** auf *Bereitgestellt* aktualisiert wurde.
+1. Vergewissern Sie sich, dass die Anzeige unter **Gerätevorlage** auf *Leitfaden für erste Schritte* aktualisiert wurde.
 
     :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/iot-central-device-view-status.png" alt-text="Screenshot: Gerätestatus in IoT Central":::
 
@@ -267,7 +336,7 @@ Wählen Sie auf der Geräteseite die Registerkarte **Info** aus.
 
 ## <a name="troubleshoot-and-debug"></a>Problembehandlung und Debuggen
 
-Wenn beim Erstellen des Gerätecodes, beim Einspielen per Flashvorgang auf dem Gerät oder beim Herstellen einer Verbindung Probleme auftreten, helfen Ihnen die Informationen zur [Problembehandlung](troubleshoot-embedded-device-quickstarts.md) weiter.
+Wenn beim Erstellen des Gerätecodes, beim Einspielen per Flashvorgang auf dem Gerät oder beim Herstellen einer Verbindung Probleme auftreten, lesen Sie [Problembehandlung](troubleshoot-embedded-device-quickstarts.md).
 
 Informationen zum Debuggen der Anwendung finden Sie unter [Debuggen mit Visual Studio Code](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md).
 
@@ -292,4 +361,3 @@ Lesen Sie als Nächstes die folgenden Artikel, um mehr darüber zu erfahren, wie
 
 > [!IMPORTANT]
 > Mit Azure RTOS werden für OEMs Komponenten bereitgestellt, mit denen diese die Kommunikation schützen, Code erstellen und die Datenisolation sicherstellen können, indem sie die zugrunde liegenden MCU/MPU-Mechanismen für den Hardwareschutz verwenden. Letztendlich ist aber jeder OEM selbst dafür verantwortlich sicherzustellen, dass sein Gerät die sich ständig weiter entwickelnden Sicherheitsanforderungen erfüllt.
-

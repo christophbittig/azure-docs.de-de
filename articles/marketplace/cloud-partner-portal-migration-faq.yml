@@ -1,22 +1,22 @@
 ### YamlMime:FAQ
 metadata:
-  title: 'Häufig gestellte Fragen zur Umstellung vom Cloud-Partnerportal auf Partner Center: Kommerzieller Marketplace von Microsoft'
+  title: Häufig gestellte Fragen zur Migration des Cloud-Partnerportals – kommerzieller Microsoft-Marketplace – Azure
   description: Enthält Antworten auf häufig gestellte Fragen zur Umstellung von Angeboten vom Cloud-Partnerportal auf Partner Center.
   ms.service: marketplace
   ms.subservice: partnercenter-marketplace-publisher
   ms.topic: article
   author: keferna
   ms.author: keferna
-  ms.date: 07/14/2020
-  ms.openlocfilehash: 4015d78469f08450d81495f61800f68f980b9b02
-  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+  ms.date: 09/27/2021
+  ms.openlocfilehash: 0a74c3e25e7c6c9341950160afef1edfc98460ba
+  ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/25/2021
-  ms.locfileid: "122866340"
-title: Häufig gestellte Fragen zur Umstellung vom Cloud-Partnerportal auf Partner Center
+  ms.lasthandoff: 09/27/2021
+  ms.locfileid: "129080786"
+title: Häufig gestellte Fragen zur Migration des Cloud-Partnerportals
 summary: >
-  Das Cloud-Partnerportal wurde auf Partner Center umgestellt. Partner Center verfügt über eine optimierte integrierte Benutzeroberfläche für die Veröffentlichung neuer Angebote bei [Microsoft AppSource](https://appsource.microsoft.com/) oder auf dem [Azure Marketplace](https://azuremarketplace.microsoft.com/) und für die Verwaltung vorhandener Angebote, die aus dem Cloud-Partnerportal migriert wurden. Alle Funktionen des Cloud-Partnerportals sind auch in Partner Center verfügbar. Dieser Artikel enthält häufig gestellte Fragen zu diesem Thema.
+  Das Cloud-Partnerportal wurde auf Partner Center umgestellt. Partner Center verfügt über eine optimierte, integrierte Benutzeroberfläche für die Veröffentlichung neuer Angebote bei [Microsoft AppSource](https://appsource.microsoft.com/) oder auf dem [Azure Marketplace](https://azuremarketplace.microsoft.com/) und für die Verwaltung vorhandener Angebote, die aus dem Cloud-Partnerportal migriert wurden. Alle Funktionen des Cloud-Partnerportals sind auch in Partner Center verfügbar. In diesem Artikel werden häufig gestellte Fragen zur Umstellung vom Cloud-Partnerportal auf Partner Center behandelt.
 sections:
 - name: Wird ignoriert.
   questions:
@@ -30,9 +30,9 @@ sections:
 
       | --- | --- |
 
-      | Konto | Sie müssen kein neues Partner Center-Konto erstellen, und Sie können Ihre vorhandenen Anmeldeinformationen für das Cloud-Partnerportal verwenden, um sich an Partner Center anzumelden. In Partner Center verwalten Sie nun Ihr Konto, die Benutzer, die Berechtigungen und die Abrechnung. Der Herausgebervertrag und die Informationen zum Unternehmensprofil werden zu Ihrem neuen Partner Center-Konto migriert. Dies gilt auch für alle Auszahlungsprofilinformationen, Benutzerkonten und Berechtigungen sowie für die aktiven Angebote. Weitere Informationen finden Sie unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](manage-account.md). |
+      | Konto | Sie müssen kein neues Partner Center-Konto erstellen, und Sie können Ihre vorhandenen Anmeldeinformationen für das Cloud-Partnerportal verwenden, um sich bei Partner Center anzumelden. In Partner Center verwalten Sie nun Ihr Konto, die Benutzer, die Berechtigungen und die Abrechnung. Der Herausgebervertrag und die Informationen zum Unternehmensprofil werden zu Ihrem neuen Partner Center-Konto migriert. Dies gilt auch für alle Auszahlungsprofilinformationen, Benutzerkonten und Berechtigungen sowie für die aktiven Angebote. Weitere Informationen finden Sie unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](manage-account.md). |
 
-      | Benutzerumgebung für die Veröffentlichung und Verwaltung von Angeboten | Wir haben Ihre Angebotsdaten aus dem Cloud-Partnerportal in Partner Center verschoben. Sie greifen auf Ihre Angebote nun in Partner Center zu und können die verbesserte Benutzerumgebung und eine intuitive Benutzeroberfläche verwenden. Informieren Sie sich über das [Aktualisieren eines bestehenden Angebots im kommerziellen Marketplace](update-existing-offer.md). |
+      | Benutzerumgebung für die Veröffentlichung und Verwaltung von Angeboten | Wir haben Ihre Angebotsdaten aus dem Cloud-Partnerportal in Partner Center verschoben. Sie greifen auf Ihre Angebote nun in Partner Center zu und können die verbesserte Benutzerumgebung und eine intuitive Benutzeroberfläche verwenden. Informieren Sie sich über das [Aktualisieren bestehender Angebote im kommerziellen Marketplace](update-existing-offer.md). |
 
       | Verfügbarkeit Ihrer Angebote auf dem kommerziellen Marketplace | Keine Änderungen. Wenn Ihr Angebot im kommerziellen Marketplace live geschaltet ist, bleibt dieser Livezustand unverändert. |
 
@@ -59,46 +59,25 @@ sections:
 
       | --- | --- | --- |
 
-      | Seite „Alle Angebote“ | [https://cloudpartner.azure.com/#alloffers](https://cloudpartner.azure.com/#alloffers) | [https://partner.microsoft.com/dashboard/commercial-marketplace/overview](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) |
+      | Seite „Alle Angebote“ | [https://cloudpartner.azure.com/#alloffers](https://cloudpartner.azure.com/#alloffers) | [https://partner.microsoft.com/dashboard/marketplace-offers/overview](https://partner.microsoft.com/dashboard/marketplace-offers/overview) |
 
-      | Seite „Alle Herausgeber“ | [https://cloudpartner.azure.com/#publishers](https://cloudpartner.azure.com/#publishers) | [https://partner.microsoft.com/dashboard/account/v3/publishers/list](https://partner.microsoft.com/dashboard/account/v3/publishers/list) |
+      | Seite „Alle Herausgeber“ | [https://cloudpartner.azure.com/#publishers](https://cloudpartner.azure.com/#publishers) | [https://partner.microsoft.com/dashboard/account/v3/organization/identity](https://partner.microsoft.com/dashboard/account/v3/organization/identity) |
 
-      | Herausgeberprofil | [https://cloudpartner.azure.com/#profile](https://cloudpartner.azure.com/#profile) | [https://partner.microsoft.com/dashboard/account/management](https://partner.microsoft.com/dashboard/account/management) |
+      | Herausgeberprofil | [https://cloudpartner.azure.com/#profile](https://cloudpartner.azure.com/#profile) | [https://partner.microsoft.com/dashboard/account/v3/organization/legalinfo#developer](https://partner.microsoft.com/dashboard/account/v3/organization/legalinfo#developer) |
 
-      | Seite „Benutzer“ | [https://cloudpartner.azure.com/#users](https://cloudpartner.azure.com/#users) | [https://partner.microsoft.com/dashboard/account/usermanagement](https://partner.microsoft.com/dashboard/account/usermanagement) |
+      | Seite „Benutzer“ | [https://cloudpartner.azure.com/#users](https://cloudpartner.azure.com/#users) | [https://partner.microsoft.com/dashboard/account/v3/usermanagement#users](https://partner.microsoft.com/dashboard/account/v3/usermanagement#users) |
 
-      | Seite „Verlauf“ | [https://cloudpartner.azure.com/#history](https://cloudpartner.azure.com/#history) | Die Funktion „Verlauf“ wird in Partner Center noch nicht unterstützt. |
+      | Seite „Verlauf“ | [https://cloudpartner.azure.com/#history](https://cloudpartner.azure.com/#history) | Auf die Funktion „Verlauf“ kann von jedem Angebot aus zugegriffen werden. |
 
-      | Dashboard „Insights“ | [https://cloudpartner.azure.com/#insights](https://cloudpartner.azure.com/#insights) | [https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) |
+      | Dashboard „Insights“ | [https://cloudpartner.azure.com/#insights](https://cloudpartner.azure.com/#insights) | [https://partner.microsoft.com/dashboard/insights/analytics/overview](https://partner.microsoft.com/dashboard/insights/analytics/overview) |
 
       | Auszahlungsbericht | [https://cloudpartner.azure.com/#insights/payout](https://cloudpartner.azure.com/#insights/payout) | [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
 
       |||
   - question: >
-      Unterschiede zwischen Auszahlungsberichten
-    answer: >
-      Bei Auszahlungsberichten gibt es zwischen dem außer Betrieb genommenen Cloud-Partnerportal und dem aktuellen Partner Center folgende Unterschiede:
-
-
-      | Cloudpartnerportal | Partner Center |
-
-      | --- | --- |
-
-      | **Link**: https://cloudpartner.azure.com/ | **Link**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory und https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-
-      | **Navigation**: In Insights Payout bereitgestellte Auszahlungsberichte | **Navigation**: In Partner Center bereitgestellte Auszahlungsberichte – Auszahlungssymbol |
-
-      | **Bereich:**<ul><li>Angezeigt wird die Transaktion pro Position, und zwar für „Inkasso in Bearbeitung“, „Eingezogen“ und „Bezahlt“.</li><li>Bericht: Enthält nach dem Erstellen der Bestellung alle Positionen (einschließlich „Inkasso in Bearbeitung“ und „Abrechnung in Bearbeitung“) sowie den Inkassostatus und die Positionen, die noch nicht für eine Zahlung qualifiziert sind.</li></ul> | **Bereich:**<ul><li>Zeigt die Positionen, sobald sie als qualifizierte Einnahmen betrachtet werden.</li><li>Die Kundenzahlung geht zuerst an Microsoft. Anschließend können die ISVs dann sehen, wie der Auszahlungsbericht gestartet wird.</li><li>Im Auszahlungsbericht werden „Inkasso in Bearbeitung“ und „Abrechnung in Bearbeitung“ nicht angezeigt.</li></ul> |
-
-      | **Transaktion nicht auszahlungsbereit**: Abrechnung in Bearbeitung | **Transaktion nicht auszahlungsbereit**: Nächste voraussichtliche Zahlung: Die Auszahlung befindet sich im Status „Nicht verarbeitet“. |
-
-      | **Auszahlungsstatus**: – | **Auszahlungsstatus**:<ul><li>Nicht verarbeitet: Die Einnahme ist für eine Auszahlung qualifiziert.</li><li>Anstehend: Die Einnahme wird in die nächste monatliche Auszahlung an den Herausgeber eingeschlossen.</li><li>Gesendet: Die Zahlung wurde an Ihre Bank gesendet.</li></ul> |
-
-      |||
-  - question: >
       Was passiert mit den Angeboten, die ich im Cloud-Partnerportal veröffentlicht habe?
     answer: >
-      Die Angebote wurden nach Partner Center verschoben und sind für Sie zugänglich, nachdem Sie sich bei Partner Center angemeldet haben (mit Ausnahme von Angeboten für „Verwalteter Dynamics NAV-Dienst“ und „Cortana Intelligence“). Wenn sich Ihr Angebot auf dem kommerziellen Marketplace im Livezustand befunden hat, wird dieser Zustand beibehalten, und Ihre Kunden können es ohne Unterbrechung erwerben und bereitstellen. Ausführlichere Informationen finden Sie unter der nächsten Frage: **Welche Angebote wurden nach Partner Center verschoben?** .
+      Die Angebote wurden nach Partner Center verschoben und sind für Sie zugänglich, nachdem Sie sich bei Partner Center angemeldet haben (mit Ausnahme von Angeboten für „Verwalteter Dynamics NAV-Dienst“ und „Cortana Intelligence“). Wenn sich Ihr Angebot auf dem kommerziellen Marketplace im Livezustand befunden hat, wird dieser Zustand beibehalten, und Ihre Kunden können es ohne Unterbrechung erwerben und bereitstellen. Ausführlichere Informationen finden Sie unter der nächsten Frage: **Welche Angebote wurden nach Partner Center verschoben?**
   - question: >
       Welche Angebote wurden nach Partner Center verschoben?
     answer: >
@@ -134,45 +113,9 @@ sections:
 
       | Verwalteter Dienst | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Vorgehensweise beim Planen eines Angebots für verwaltete Dienste für den kommerziellen Microsoft-Marketplace](./plan-managed-service-offer.md). |
 
-      | Verwalteter Dynamics NAV-Dienst | Nein | Microsoft hat „Verwalteter Dynamics NAV-Dienst“ zu [Dynamics 365 Business Central](/dynamics365/business-central/) weiterentwickelt. Aus diesem Grund wurden Liveangebote für „Verwalteter Dynamics NAV-Dienst“ aus AppSource entfernt. Diese Angebote sind für Kunden nicht mehr auffindbar und wurden nicht nach Partner Center verschoben. Passen Sie Ihre Angebote an die Dynamics 365 Business Central-Angebote an, und übermitteln Sie sie im [Partner Center](https://partner.microsoft.com/), um sie in AppSource verfügbar zu machen. Weitere Informationen finden Sie im Artikel zum [Erstellen eines Angebots vom Typ „Dynamics 365 for Business Central“](dynamics-365-business-central-offer-setup.md). |
+      | Verwalteter Dynamics NAV-Dienst | Nein | Microsoft hat „Verwalteter Dynamics NAV-Dienst“ zu [Dynamics 365 Business Central](/dynamics365/business-central/) weiterentwickelt. Aus diesem Grund wurden Liveangebote für „Verwalteter Dynamics NAV-Dienst“ aus AppSource entfernt. Diese Angebote sind für Kunden nicht mehr auffindbar und wurden nicht nach Partner Center verschoben. Passen Sie Ihre Angebote an die Dynamics 365 Business Central-Angebote an, und übermitteln Sie sie im [Partner Center](https://partner.microsoft.com/dashboard/marketplace-offers/overview), um sie in AppSource verfügbar zu machen. Weitere Informationen finden Sie im Artikel zum [Erstellen eines Angebots vom Typ „Dynamics 365 for Business Central“](dynamics-365-business-central-offer-setup.md). |
 
       | Cortana Intelligence | Nein | Da Microsoft die Produktroadmap für Cortana Intelligence weiterentwickelt hat, wurden Cortana Intelligence-Liveangebote aus AppSource entfernt. Diese Angebote sind für Kunden nicht mehr auffindbar und wurden nicht nach Partner Center verschoben. Passen Sie Ihre Angebote an die SaaS-Angebote (Software-as-a-Service) an, und übermitteln Sie sie im [Partner Center](https://partner.microsoft.com/), um sie auf dem kommerziellen Marketplace verfügbar zu machen. Weitere Informationen finden Sie unter [Planen eines SaaS-Angebots im kommerziellen Marketplace](./plan-saas-offer.md). |
-  - question: >
-      Ich kann meine Cloud-Partnerportal-Angebote im Partner Center nicht finden
-    answer: >
-      Die in Partner Center angezeigten Informationen richten sich nach den Programmen, für die Sie sich registriert haben, Ihren Konten und den Benutzerrollen und Berechtigungen, die Ihnen zugewiesen wurden. Es sind viele Partner Center-Programme verfügbar, und Sie können sich für mehrere Programme registrieren. Sie haben mit denselben Benutzeranmeldeinformationen auch Zugriff auf mehrere Konten.
-
-
-      Die Angebote, die Sie im Cloud-Partnerportal erstellt haben, sind in Partner Center unter dem Programm **Kommerzieller Marketplace** und unter dem Konto verfügbar, das zum Erstellen der Angebote verwendet wird. Führen Sie die unten angegebenen Schritte aus, um sicherzustellen, dass Sie das richtige Programm und das richtige Konto anzeigen. Weitere Tipps zur Problembehandlung finden Sie unter [Verwalten Ihres Partner Center-Kontos](/partner-center/partner-center-account-setup).
-
-
-      ### <a name="access-the-right-program-in-partner-center"></a>Zugreifen auf das richtige Programm in Partner Center
-
-
-      1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2166002) mit denselben Anmeldeinformationen an, die Sie zum Anmelden beim Cloud-Partnerportal verwendet haben. Im Navigationsbereich auf der linken Seite werden Optionen angezeigt, die den Programmen, für die Sie registriert sind, zugeordnet sind.
-
-          Nehmen wir beispielsweise an, dass Sie Zugriff auf drei Programme haben: „MPN“, „Empfehlungen“ und „Kommerzieller Marketplace“. Wenn Sie sich bei Partner Center anmelden, werden diese drei Programme im Navigationsbereich angezeigt.
-
-      2. Wählen Sie **Kommerzieller Marketplace** > **Übersicht** aus, um auf Ihre Angebote zuzugreifen.
-
-          Falls das Programm „Kommerzieller Marketplace“ im Navigationsbereich auf der linken Seite nicht angezeigt wird, befinden Sie sich unter Umständen im falschen Konto. Führen Sie die Schritte im nächsten Abschnitt aus, um auf das richtige Konto zuzugreifen.
-
-          [![Screenshot: Menü „Übersicht“ in Partner Center](media/cpp-pc-faq/overview-menu.png "Menü „Übersicht“ in Partner Center")](media/cpp-pc-faq/overview-menu.png#lightbox)
-
-      ### <a name="access-the-right-account-in-partner-center"></a>Zugreifen auf das richtige Konto in Partner Center
-
-
-      Falls Sie mehrere Konten nutzen, wird in Partner Center im linken Navigationsmenü eine Schaltfläche mit zwei Pfeilen zum Auswählen des Kontos angezeigt. Wählen Sie die Schaltfläche zum Auswählen des Kontos aus, um eine Liste mit allen Konten anzuzeigen, die Sie nutzen. Wählen Sie ein Konto in der Liste aus, um zu diesem Konto zu wechseln und alle zugehörigen Programme und Informationen anzuzeigen. Wenn im Navigationsmenü keine Schaltfläche zum Auswählen des Kontos angezeigt wird, nutzen Sie nur ein Konto.
-
-
-      [![Screenshot: Schaltfläche für Kontoauswahl in Partner Center](media/cpp-pc-faq/picker-button.png "Schaltfläche für Kontoauswahl in Partner Center")](media/cpp-pc-faq/picker-button.png#lightbox)
-  - question: >
-      Wie kann ich neue Angebote erstellen?
-    answer: >
-      Greifen Sie in [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165935) auf das Programm „Kommerzieller Marketplace“ zu, um neue Angebote zu erstellen.
-
-
-      [![Screenshot: Menü „Übersicht“ in Partner Center](media/cpp-pc-faq/new-offer.png "Menü „Übersicht“ in Partner Center")](media/cpp-pc-faq/new-offer.png#lightbox)
   - question: >
       Ich kann mich nicht anmelden und muss ein Supportticket erstellen
     answer: >
@@ -181,78 +124,6 @@ sections:
       Wo finde ich eine Anleitung zur Verwendung von Partner Center?
     answer: >
       Navigieren Sie zur [Dokumentation zum kommerziellen Marketplace](index.yml). Erweitern Sie **Erstellen und Verwalten von Angeboten**, um Hilfeartikel zum Erstellen von Angeboten in Partner Center anzuzeigen.
-  - question: >
-      Was ist der Unterschied zwischen der Veröffentlichungs- und Angebotsverwaltung?
-    answer: >
-      Hier sind einige Unterschiede zwischen dem Cloud-Partnerportal und Partner Center aufgeführt.
-
-
-      ### <a name="modular-publishing-capabilities"></a>Modulare Veröffentlichungsfunktionen
-
-
-      Partner Center bietet eine modulare Veröffentlichungsoption, mit der Sie die zu veröffentlichenden Änderungen auswählen können, statt immer alle Aktualisierungen auf einmal zu veröffentlichen. Auf dem folgenden Bildschirm ist beispielsweise zu sehen, dass die einzigen Änderungen, die für die Veröffentlichung ausgewählt sind, die Änderungen von **Eigenschaften** und **Angebotsliste** sind. Die Änderungen, die Sie auf der Seite „Vorschau“ vornehmen, werden nicht veröffentlicht.
-
-
-      [![Screenshot: Seite für Überprüfung und Veröffentlichung in Partner Center](media/cpp-pc-faq/review-page.png "Seite für Überprüfung und Veröffentlichung in Partner Center")](media/cpp-pc-faq/review-page.png#lightbox)
-
-
-      Die Aktualisierungen, die Sie nicht veröffentlichen, werden als Entwürfe gespeichert. Verwenden Sie weiterhin Ihre Angebotsvorschau, um Ihr Angebot zu überprüfen, bevor Sie es für die Öffentlichkeit live schalten.
-
-
-      ### <a name="enhanced-preview-options"></a>Erweiterte Vorschauoptionen
-
-
-      Partner Center enthält eine [Vergleichsfunktion](update-existing-offer.md#compare-changes-to-your-offer) mit verbesserten Filteroptionen. Damit können Sie die Vorschauversion mit der Liveversion des Angebots vergleichen.
-
-
-      [![Screenshot: Vergleichsfunktion in Partner Center](media/cpp-pc-faq/compare.png "Vergleichsfunktion in Partner Center")](media/cpp-pc-faq/compare.png#lightbox)
-
-
-      ### <a name="branding-and-navigation-changes"></a>Branding- und Navigationsänderungen
-
-
-      Es wurden einige Änderungen am Branding vorgenommen. *SKUs* werden in Partner Center beispielsweise als *Pläne* bezeichnet.
-
-
-      [![Screenshot: Seite „Pläne“ in Partner Center](media/cpp-pc-faq/plans.png "Seite „Pläne“ in Partner Center")](media/cpp-pc-faq/plans.png#lightbox)
-
-
-      Darüber hinaus werden die Informationen, die Sie bisher im Cloud-Partnerportal auf den Seiten **Marketplace** oder **Storefrontdetails** (Beratungsdienst, Power BI-App) angegeben haben, nun auf der Seite **Angebotsliste** in Partner Center erfasst:
-
-
-      [ ![Screenshot: Seite „Angebotsliste“ in Partner Center](./media/cpp-pc-faq/offer-listing.png) ](./media/cpp-pc-faq/offer-listing.png#lightbox)
-
-
-      Die Informationen, die Sie für SKUs bisher auf einer einzelnen Seite im Cloud-Partnerportal angegeben haben, können nun in Partner Center auf mehreren Seiten erfasst werden:
-
-
-      - Seite „Plansetup“
-
-      - Seite „Planlisting“
-
-      - Seite für die Planverfügbarkeit
-
-      - Seite für die technische Konfiguration für den Plan:
-
-
-      [![Veranschaulicht die Seite „Technische Konfiguration“ im Partner Center](media/cpp-pc-faq/technical-configuration.png)](media/cpp-pc-faq/technical-configuration.png#lightbox)
-
-
-      Ihre Angebots-ID wird nun in der linken Navigationsleiste des Angebots angezeigt:
-
-
-      ![Angebots-ID in Partner Center](media/cpp-pc-faq/offer-id.png)
-
-
-      ### <a name="stop-selling-an-offer"></a>Beenden des Verkaufs eines Angebots
-
-
-      Sie können direkt im Partner Center-Portal die [Beendigung des Vertriebs eines Angebots](update-existing-offer.md#stop-distribution-of-an-offer-or-plan) im Marketplace anfordern. Die entsprechende Option ist auf der Seite **Angebotsübersicht** für Ihr Angebot verfügbar.
-
-
-      [![Screenshot: Seite zum Beenden des Vertriebs eines Angebots in Partner Center](media/cpp-pc-faq/stop-sell.png "Seite zum Beenden des Verkaufs eines Angebots in Partner Center")](media/cpp-pc-faq/stop-sell.png#lightbox)
-
-      <br><br>
   - question: >
       Werden die REST-APIs des Cloud-Partnerportals weiterhin unterstützt?
     answer: >-
@@ -265,6 +136,6 @@ sections:
 
       | POST Publish, GoLive, Cancel | Bei migrierten Angeboten weist der Antwortheader ein anderes Format auf. Er funktioniert jedoch weiterhin auf dieselbe Weise und gibt einen relativen Pfad zum Abrufen des Vorgangsstatus an. | Beim Senden der entsprechenden POST-Anforderungen für ein Angebot weist der Adressheader je nach Migrationsstatus des Angebots eins von zwei Formaten auf: <ul><li>Nicht migrierte Angebote: `/api/operations/{PublisherId}${offerId}$2$preview?api-version=2017-10-31`</li><li>Migrierte Angebote: `/api/publishers/{PublisherId}/offers/{offereId}/operations/408a4835-0000-1000-0000-000000000000?api-version=2017-10-31`</li></ul>|
 
-      | GET-Vorgang | Für Angebote, für die bisher in der Antwort das Feld „notification-email“ unterstützt wurde, wird dieses Feld entfernt und für migrierte Angebote nicht mehr zurückgegeben. | Bei migrierten Angeboten werden keine Benachrichtigungen mehr an die Liste der in den Anforderungen angegebenen E-Mail-Adressen gesendet. Stattdessen wird der API-Dienst an den Benachrichtigungs-E-Mail-Prozess in Partner Center angepasst, um E-Mails zu senden. Dies bedeutet, dass Benachrichtigungen über den Vorgangsstatus an die E-Mail-Adresse gesendet werden, die in Partner Center in den Kontoeinstellungen im Abschnitt mit den Kontaktinformationen zum Verkäufer festgelegt ist.<br><br>Stellen Sie sicher, dass die E-Mail-Adresse, die in Partner Center in den [Kontoeinstellungen](https://partner.microsoft.com/dashboard/account/management) im Abschnitt mit den Kontaktinformationen zum Verkäufer festgelegt ist, richtig angegeben ist, damit Sie Benachrichtigungen erhalten. |
+      | GET-Vorgang | Für Angebote, für die bisher in der Antwort das Feld „notification-email“ unterstützt wurde, wird dieses Feld entfernt und für migrierte Angebote nicht mehr zurückgegeben. | Bei migrierten Angeboten werden keine Benachrichtigungen mehr an die Liste der in den Anforderungen angegebenen E-Mail-Adressen gesendet. Stattdessen wird der API-Dienst an den Benachrichtigungs-E-Mail-Prozess in Partner Center angepasst, um E-Mails zu senden. Dies bedeutet, dass Benachrichtigungen über den Vorgangsstatus an die E-Mail-Adresse gesendet werden, die in Partner Center in den Kontoeinstellungen im Abschnitt mit den Kontaktinformationen zum Verkäufer festgelegt ist.<br><br>Stellen Sie sicher, dass die E-Mail-Adresse, die in Partner Center in den [Kontoeinstellungen](https://partner.microsoft.com/dashboard/account/v3/organization/legalinfo#developer) im Abschnitt mit den Kontaktinformationen festgelegt ist, richtig angegeben ist, damit Sie Benachrichtigungen erhalten. |
 
       |||

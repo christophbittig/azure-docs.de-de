@@ -1,23 +1,24 @@
 ---
-title: Azure CLI-Skriptbeispiele
+title: Azure CLI-Beispiele für Azure SQL-Datenbank und verwaltete SQL-Instanzen | Microsoft-Dokumentation
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Azure CLI-Skriptbeispiele zum Erstellen und Verwalten von Azure SQL-Datenbank und verwalteten Azure SQL-Instanzen
+description: Hier finden Sie Azure CLI-Skriptbeispiele zum Erstellen und Verwalten von Azure SQL-Datenbank und Azure SQL Managed Instance.
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: deployment-configuration
-ms.custom: overview-samples, mvc, sqldbrb=2, devx-track-azurecli
+ms.custom: overview-samples, mvc, sqldbrb=2, devx-track-azurecli, seo-azure-cli
 ms.devlang: azurecli
 ms.topic: sample
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
-ms.date: 02/03/2019
-ms.openlocfilehash: f0300464054a3417951c0283536e5506a12612bf
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 09/17/2021
+keywords: SQL-Datenbank, verwaltete Instanz, Azure CLI-Beispiele, Beispiele Azure CLI, Azure CLI-Codebeispiele, Azure CLI-Skriptbeispiele
+ms.openlocfilehash: adc7f1db28fa1b0e8cafb2b3363876b1e316f8bd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690448"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662151"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure CLI-Beispiele für Azure SQL-Datenbank und verwaltete SQL-Instanzen 
  

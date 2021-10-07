@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 9879b6a5e70af9aff6a2f7a97321f996a8aa209b
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 3c7e455377ab243f8140ac346c6f924a3b04f0d8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033329"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554167"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>Azure Cosmos DB-API für MongoDB (Serverversion 4.0): unterstützte Features und Syntax
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -313,9 +313,9 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 | $dateToString | Ja |
 | $isoDayOfWeek | Ja |
 | $isoWeek | Ja |
-| $dateFromParts | Nein | 
-| $dateToParts | Nein |
-| $dateFromString | Nein |
+| $dateFromParts | Ja | 
+| $dateToParts | Ja |
+| $dateFromString | Ja |
 | $isoWeekYear | Ja |
 
 ### <a name="conditional-expressions"></a>Bedingte Ausdrücke
@@ -534,34 +534,8 @@ $polygon | Nein |
 
 Bei Verwendung des `findOneAndUpdate`-Vorgangs werden Sortiervorgänge für ein einzelnes Feld unterstützt, Sortiervorgänge für mehrere Felder jedoch nicht.
 
-## <a name="unique-indexes"></a>Eindeutige Indizes
-
-[Eindeutige Indizes](mongodb-indexing.md#unique-indexes) stellen sicher, dass ein bestimmtes Feld in den gesamten Dokumenten einer Sammlung keine doppelten Werte enthält. Dies ist vergleichbar mit der Bewahrung der Eindeutigkeit für den Standardschlüssel „_id“. Sie können eindeutige Indizes in Azure Cosmos DB erstellen, indem Sie den Befehl `createIndex` mit dem Einschränkungsparameter `unique` verwenden:
-
-```javascript
-globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
-{
-    "_t" : "CreateIndexesResponse",
-    "ok" : 1,
-    "createdCollectionAutomatically" : false,
-    "numIndexesBefore" : 1,
-    "numIndexesAfter" : 4
-}
-```
-
-## <a name="compound-indexes"></a>Zusammengesetzte Indizes
-
-[Zusammengesetzte Indizes](mongodb-indexing.md#compound-indexes-mongodb-server-version-36) sind eine Möglichkeit, einen Index für Feldergruppen (bis zu acht Felder) zu erstellen. Dieser Indextyp unterscheidet sich von den nativen zusammengesetzten MongoDB-Indizes. In Azure Cosmos DB werden zusammengesetzte Indizes für Sortiervorgänge verwendet, die auf mehrere Felder angewendet werden. Um einen zusammengesetzten Index zu erstellen, müssen Sie mehr als eine Eigenschaft als Parameter angeben:
-
-```javascript
-globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
-{
-    "createdCollectionAutomatically" : false, 
-    "numIndexesBefore" : 1,
-    "numIndexesAfter" : 2,
-    "ok" : 1
-}
-```
+## <a name="indexing"></a>Indizierung
+Die API für MongoDB [unterstützt eine Vielzahl von Indizes](mongodb-indexing.md), um die Sortierung nach mehreren Feldern zu ermöglichen, die Abfrageleistung zu verbessern und Eindeutigkeit zu erzwingen.
 
 ## <a name="gridfs"></a>GridFS
 
@@ -605,5 +579,5 @@ Einige Anwendungen unterstützen eine [Schreibbestätigung](https://docs.mongodb
 - Erfahren Sie, wie Sie [Robo 3T](connect-using-robomongo.md) mit der API für MongoDB von Azure Cosmos DB verwenden.
 - Untersuchen Sie MongoDB-[Beispiele](nodejs-console-app.md) mit der API für MongoDB von Azure Cosmos DB.
 - Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
-    - Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
-    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-capacity-planner.md).
+    - Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md). 
+    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-capacity-planner.md)

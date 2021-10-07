@@ -6,12 +6,12 @@ metadata:
   ms.service: azure-vmware
   ms.custom: contperf-fy21q4
   ms.date: 08/19/2021
-  ms.openlocfilehash: 716605f2a617d5f02d93596e760156b58f9ddcb2
-  ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+  ms.openlocfilehash: 536dfd9fa71c2f6eaefe25ada08f537868cf3f58
+  ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/20/2021
-  ms.locfileid: "122514663"
+  ms.lasthandoff: 09/26/2021
+  ms.locfileid: "129061711"
 title: Häufig gestellte Fragen zu Azure VMware Solution
 summary: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure VMware Solution.
 sections:
@@ -43,7 +43,7 @@ sections:
   - question: Wie werden die Preise für Azure VMware Solution strukturiert sein?
     answer: Allgemeine Fragen zu Preisen finden Sie auf der Seite [Preise](https://azure.microsoft.com/pricing/details/azure-vmware) für Azure VMware Solution.
   - question: Ist VMware HCX Enterprise verfügbar, und wenn ja, wie hoch ist der Preis?
-    answer: VMware HCX Enterprise ist mit Azure VMware Solution als *Vorschau*-Funktion/-Dienst verfügbar. Solange sich VMware HCX Enterprise für Azure VMware Solution in der Vorschau befindet, handelt es sich um eine kostenlose Funktion/einen kostenlosen Dienst, für die bzw. den die Nutzungsbedingungen für Dienste in der Vorschau gelten. Sobald der VMware HCX Enterprise-Dienst die Phase „Allgemeine Verfügbarkeit“ erreicht hat, erhalten Sie eine Benachrichtigung, dass in 30 Tagen die Abrechnung umgestellt wird. Danach können Sie den Dienst ausschalten oder abbestellen.
+    answer: Wenn Sie VMware HCX Enterprise verwenden möchten, stellen Sie sicher, dass Sie das  VMware HCX Enterprise-Add-On über eine [Supportanfrage](https://rc.portal.azure.com/#create/Microsoft.Support) aktiviert haben. Es handelt sich um eine kostenlose Testversion für zwölf Monate in Azure VMware Solution.
   - question: Fallen für den Datenverkehr zwischen einem lokalen Standort und Azure VMware Solution über ExpressRoute Gebühren für ausgehende Datenübertragungen im Volumentarif an?
     answer: "Der Datenverkehr zwischen ExpressRoute und Azure VMware Solution wird in keiner Weise gemessen. Der Datenverkehr auf Ihrer ExpressRoute-Verbindung zwischen Ihrem lokalen Standort und Azure wird nach ExpressRoute-Tarifen abgerechnet.\n\n- **Azure VMware Solution für VNet** erfolgt über eine interne ExpressRoute-Leitung und ist innerhalb derselben Region wie Azure VMware Solution kostenlos. Wenn die interne ExpressRoute-Leitung jedoch regionsübergreifend verbunden ist, fallen Kosten für die Datenübertragung an.\n\n- **Azure VMware Solution für lokale Standorte** erfolgt über vNet oder ExpressRoute Global Reach (zwischen internem ExpressRoute und externem ExpressRoute). Es ist immer noch kostenlos, sofern die Verbindung mit vNet (wie oben erwähnt) oder die Verwendung von ExpressRoute Global Reach innerhalb der Region erfolgt, in der Azure VMware Solution bereitgestellt wird. \n"
   - question: Wann beginnt und endet die Messung für Azure VMware Solution-Testcluster?

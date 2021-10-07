@@ -1,7 +1,7 @@
 ---
 title: Join-Transformation in einem Zuordnungsdatenfluss
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Hier erfahren Sie, wie Sie Daten aus zwei Datenquellen mithilfe der Join-Transformation in einem Azure Data Factory-Zuordnungsdatenfluss miteinander kombinieren.
+description: Hier erfahren Sie, wie Sie Daten aus zwei Datenquellen mithilfe der Join-Transformation in einem Zuordnungsdatenfluss in Azure Data Factory oder Synapse Analytics miteinander kombinieren.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 05/15/2020
-ms.openlocfilehash: 77df05774f695235b1ccc1a11713ea68cacafefb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 2a1efc21511fe665d4e54cf955244daf598d4f8b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639995"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060174"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Join-Transformation in einem Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 Mithilfe der Join-Transformation können Sie Daten aus zwei Quellen oder Streams in einem Zuordnungsdatenfluss miteinander kombinieren. Der Ausgabestream enthält alle Spalten aus beiden Quellen, die auf der Grundlage einer Verknüpfungsbedingung abgeglichen wurden. 
 
@@ -63,19 +65,19 @@ Wenn Sie explizit ein vollständiges kartesisches Produkt erzeugen möchten, ver
 1. Wählen Sie unter **Jointyp** den gewünschten Jointyp aus.
 1. Wählen Sie die Schlüsselspalten aus, auf denen der Abgleich für Ihre Verknüpfungsbedingung basieren soll. Standardmäßig sucht der Datenfluss nach Übereinstimmung mit einer Spalte in jedem Datenstrom. Wenn der Vergleich auf einem berechneten Wert basieren soll, zeigen Sie mit dem Mauszeiger auf die Dropdownliste für die Spalte, und wählen Sie **Berechnete Spalte** aus.
 
-![Join-Transformation](media/data-flow/join.png "Join")
+:::image type="content" source="media/data-flow/join.png" alt-text="Join-Transformation":::
 
 ### <a name="non-equi-joins"></a>Nicht-Gleichheitsverknüpfungen
 
 Wenn Sie in Ihren Joinbedingungen einen bedingten Operator wie „ungleich“ „(!=)“ oder „größer als“ „(>)“ verwenden möchten, ändern Sie die Dropdownliste des Operators zwischen den beiden Spalten. Bei Nicht-Gleichheitsverknüpfungen muss mindestens einer der beiden Datenströme mithilfe der Übertragungsoption **Fixed** (Fest) auf der Registerkarte **Optimieren** übertragen werden.
 
-![Nicht-Gleichheitsverknüpfung](media/data-flow/non-equi-join.png "Nicht-Gleichheitsverknüpfung")
+:::image type="content" source="media/data-flow/non-equi-join.png" alt-text="Nicht-Gleichheitsverknüpfung":::
 
 ## <a name="optimizing-join-performance"></a>Optimieren der Leistung beim Verknüpfen
 
 Im Gegensatz zu „Merge Join“ in Tools wie SSIS ist die Join-Transformation kein obligatorischer Vorgang vom Typ „Merge Join“. Die Join-Schlüssel müssen nicht sortiert werden. Der Join-Vorgang erfolgt basierend auf dem optimalen Join-Vorgang in Spark (Broadcast- oder Map-Side-Join).
 
-![Optimieren der Join-Transformation](media/data-flow/joinoptimize.png "Join-Optimierung")
+:::image type="content" source="media/data-flow/joinoptimize.png" alt-text="Optimieren der Join-Transformation":::
 
 Wenn bei Joins, Suchvorgängen und Exists-Transformationen der Arbeitsspeicher des Workerknotens groß genug für einen oder beide Datenströme ist, können Sie die Leistung optimieren, indem Sie die **Übertragung** aktivieren. Standardmäßig entscheidet die Spark-Engine automatisch, ob eine Seite übertragen werden soll oder nicht. Klicken Sie auf **Fest**, um die zu übertragende Seite manuell auszuwählen.
 
@@ -85,7 +87,7 @@ Es wird nicht empfohlen, die Übertragung über die Option **Off** (Aus) zu deak
 
 Wenn Sie einen Datenstrom mit sich selbst verknüpfen möchten, müssen Sie einen vorhandenen Stream per Auswahltransformation mit einem Alias versehen. Erstellen Sie einen neuen Branch, indem Sie neben einer Transformation auf das Pluszeichen klicken und **Neuer Branch** auswählen. Fügen Sie eine Auswahltransformation hinzu, um den ursprünglichen Stream mit einem Alias zu versehen. Fügen Sie eine Join-Transformation hinzu. Wählen Sie dabei den ursprünglichen Stream als **Linker Stream** und die Auswahltransformation als **Rechter Stream** aus.
 
-![Selbstverknüpfung](media/data-flow/selfjoin.png "Selbstverknüpfung")
+:::image type="content" source="media/data-flow/selfjoin.png" alt-text="Selbstverknüpfung":::
 
 ## <a name="testing-join-conditions"></a>Testen der Join-Bedingungen
 
@@ -108,9 +110,9 @@ Verwenden Sie einen kleinen Satz bekannter Daten, wenn Sie die Join-Transformati
 
 Das folgende Beispiel ist eine Join-Transformation namens `JoinMatchedData` mit dem linken Stream `TripData` und dem rechten Stream `TripFare`.  Die Verknüpfungsbedingung ist der Ausdruck `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}`, der „true“ zurückgibt, wenn die Spalten `hack_license`, `medallion`, `vendor_id` und `pickup_datetime` in den beiden Streams übereinstimmen. Der Jointyp (`joinType`) lautet `'inner'`. Da Broadcasting nur im linken Stream aktiviert wird, hat `broadcast` den Wert `'left'`.
 
-Auf der Data Factory-Benutzeroberfläche sieht diese Transformation wie folgt aus:
+In der Benutzeroberfläche sieht diese Transformation wie in der folgenden Abbildung aus:
 
-![Screenshot der Transformation mit ausgewählter Registerkarte für Joineinstellungen und dem Jointyp „Innerer“](media/data-flow/join-script1.png "Join-Beispiel")
+:::image type="content" source="media/data-flow/join-script1.png" alt-text="Screenshot der Transformation mit ausgewählter Registerkarte für Joineinstellungen und dem Jointyp „Innerer“":::
 
 Das Datenflussskript für diese Transformation befindet sich im folgenden Codeausschnitt:
 
@@ -130,9 +132,9 @@ TripData, TripFare
 
 Das folgende Beispiel ist eine Join-Transformation namens `JoiningColumns` mit dem linken Stream `LeftStream` und dem rechten Stream `RightStream`. Diese Transformation übernimmt zwei Streams und verknüpft alle Zeilen, in denen die Spalte `leftstreamcolumn` größer als die Spalte `rightstreamcolumn` ist. Der Jointyp (`joinType`) lautet `cross`. Broadcasting ist nicht aktiviert, `broadcast` weist den Wert `'none'` auf.
 
-Auf der Data Factory-Benutzeroberfläche sieht diese Transformation wie folgt aus:
+In der Benutzeroberfläche sieht diese Transformation wie in der folgenden Abbildung aus:
 
-![Screenshot der Transformation mit ausgewählter Registerkarte für Joineinstellungen und dem Jointyp „Benutzerdefiniert“ (Kreuzprodukt)](media/data-flow/join-script2.png "Join-Beispiel")
+:::image type="content" source="media/data-flow/join-script2.png" alt-text="Screenshot der Transformation mit ausgewählter Registerkarte für Joineinstellungen und dem Jointyp „Benutzerdefiniert“ (Kreuzprodukt)":::
 
 Das Datenflussskript für diese Transformation befindet sich im folgenden Codeausschnitt:
 

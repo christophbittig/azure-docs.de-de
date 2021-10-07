@@ -3,12 +3,12 @@ title: 'Tutorial: Überwachen eines Hybridcomputers mit Azure Monitor VM Insight
 description: Hier erfahren Sie, wie Sie Daten von einem Hybridcomputer in Azure Monitor sammeln und analysieren.
 ms.topic: tutorial
 ms.date: 04/21/2021
-ms.openlocfilehash: 8ab801885e86ed90d5f28c2ce90a994828b358a0
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 5489e459bc4d407b818c1f55afe0f7fa3c9acbb8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772621"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807523"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-vm-insights"></a>Tutorial: Überwachen eines Hybridcomputers mit VM Insights
 
@@ -34,7 +34,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Starten Sie den Azure Arc-Dienst im Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Computer – Azure Arc** suchen und diese Option auswählen.
 
-    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Suchen nach Servern mit Azure Arc-Unterstützung unter „Alle Dienste“" border="false":::
+    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Suchen nach Servern mit Azure Arc-Unterstützung unter „Alle Dienste“" border="false":::
 
 1. Wählen Sie auf der Seite **Computer – Azure Arc** den verbundenen Computer aus, den Sie im [Schnellstart](quick-enable-hybrid-vm.md) erstellt haben.
 

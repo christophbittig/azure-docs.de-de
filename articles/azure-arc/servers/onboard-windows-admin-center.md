@@ -3,12 +3,12 @@ title: Verbinden von Hybridcomputern mit Azure über Windows Admin Center
 description: In diesem Artikel wird beschrieben, wie Sie Azure Arc-fähige Server über Windows Admin Center verwenden, um den Agent zu installieren und Computer mit Azure zu verbinden.
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1abfe2e69a8f3e7b2ab1abcc2d34c79877b750d3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: cc5e47c1f52f0a35048cc796015184d2a0d2dda7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351348"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788950"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>Verbinden von Hybridcomputern mit Azure über Windows Admin Center
 
@@ -16,7 +16,7 @@ Sie können Azure Arc-fähige Server für einen oder mehrere Windows-Computer in
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Arc-fähige Server: Sehen Sie sich die Informationen zu den [Voraussetzungen](agent-overview.md#prerequisites) an und stellen Sie sicher, dass die Anforderungen für Ihr Abonnement, Ihr Azure-Konto und die zugehörigen Ressourcen erfüllt sind.
+* Azure Arc-fähige Server: Sehen Sie sich die Informationen zu den [Voraussetzungen](agent-overview.md#prerequisites) an, und stellen Sie sicher, dass die Anforderungen für Ihr Abonnement, Ihr Azure-Konto und die zugehörigen Ressourcen erfüllt sind.
 
 * Windows Admin Center: Sehen Sie sich die Anforderungen zur [Vorbereitung Ihrer Umgebung](/windows-server/manage/windows-admin-center/deploy/prepare-environment) an, um die [Azure-Integration zu konfigurieren](/windows-server/manage/windows-admin-center/azure/azure-integration) und bereitzustellen.
 
@@ -30,7 +30,7 @@ Für diese Bereitstellungsmethode benötigen Sie Administratorrechte auf dem Win
 
 ## <a name="deploy"></a>Bereitstellen
 
-Führen Sie die folgenden Schritte aus, um den Windows-Server mit Arc-fähigen Servern zu konfigurieren.
+Führen Sie die folgenden Schritte aus, um den Windows-Server mit Azure Arc-fähigen Servern zu konfigurieren.
 
 1. Melden Sie sich bei Windows Admin Center an.
 
@@ -69,4 +69,4 @@ Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich her
 
 * Lesen Sie den [Planungs- und Bereitstellungsleitfaden](plan-at-scale-deployment.md), um die Bereitstellung von Servern mit Azure Arc-Unterstützung in beliebiger Größenordnung zu planen und eine zentrale Verwaltung und Überwachung zu implementieren.
 
-* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [VM Insights](../../azure-monitor/vm/vminsights-enable-policy.md) und vielem mehr.
+* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [VM Insights](../../azure-monitor/vm/vminsights-enable-policy.md) und vieles mehr.

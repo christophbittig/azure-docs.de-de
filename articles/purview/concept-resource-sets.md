@@ -6,24 +6,22 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 07/23/2021
-ms.openlocfilehash: 6c51a118b0581759f456b243b6dde25890b36f39
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.date: 09/24/2021
+ms.openlocfilehash: d1d15fb4ff3bc2d820311b4f847c21236d83b6f3
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114668474"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708751"
 ---
 # <a name="understanding-resource-sets"></a>Grundlegendes zu Ressourcensätzen
 
 In diesem Artikel erfahren Sie, wie Azure Purview Datenressourcen mit Ressourcensätzen logischen Ressourcen zuordnet.
 ## <a name="background-info"></a>Hintergrundinformationen
 
-In skalierbaren Datenverarbeitungssystemen wird eine einzelne Tabelle in der Regel in mehreren Dateien auf einem Datenträger gespeichert. Dieses Konzept wird in Azure Purview mithilfe von Ressourcensätzen dargestellt. Ein Ressourcensatz ist ein einzelnes Objekt im Katalog, das eine große Anzahl von Ressourcen im Speicher darstellt.
+In skalierbaren Datenverarbeitungssystemen wird eine einzelne Tabelle in der Regel in mehreren Dateien gespeichert. Im Azure Purview-Datenkatalog geschieht dies mithilfe von Ressourcensätzen. Ein Ressourcensatz ist ein einzelnes Objekt im Katalog, das eine große Anzahl von Ressourcen im Speicher darstellt.
 
 Angenommen, Ihr Spark-Cluster hat einen DataFrame in einer Azure Data Lake Storage Gen2-Datenquelle (ADLS) persistent gespeichert. In Spark sieht die Tabelle zwar wie eine einzelne logische Ressource aus, aber auf dem Datenträger gibt es wahrscheinlich Tausende von Parquet-Dateien, von denen jede eine Partition des gesamten DataFrame-Inhalts darstellt. Für IoT-Daten und Webprotokolldaten gilt dieselbe Herausforderung. Stellen Sie sich vor, Sie verfügen über einen Sensor, der mehrmals pro Sekunde Protokolldateien ausgibt. Es dauert nicht lange, bis Hunderttausende von Protokolldateien dieses einzelnen Sensors vorliegen.
-
-Um der Herausforderung zu begegnen, eine große Anzahl von Datenressourcen einer einzelnen logischen Ressource zuzuordnen, verwendet Azure Purview Ressourcensätze.
 
 ## <a name="how-azure-purview-detects-resource-sets"></a>So erkennt Azure Purview Ressourcensätze
 
@@ -41,23 +39,44 @@ Mit dieser Strategie ordnet Azure Purview die folgenden Ressourcen dem gleichen 
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/cy_gb/234.json`
 - `https://myaccount.blob.core.windows.net/mycontainer/weblogs/de_Ch/23434.json`
 
-## <a name="file-types-that-azure-purview-will-not-detect-as-resource-sets"></a>Dateitypen, die von Azure Purview nicht als Ressourcensätze erkannt werden
+### <a name="file-types-that-azure-purview-will-not-detect-as-resource-sets"></a>Dateitypen, die von Azure Purview nicht als Ressourcensätze erkannt werden
 
 Purview versucht absichtlich nicht, die meisten Dokumentdateitypen wie Word, Excel oder PDF als Ressourcensätze zu klassifizieren. Das CSV-Format bildet eine Ausnahme, da es sich dabei um ein gängiges partitioniertes Dateiformat handelt.
 
 ## <a name="how-azure-purview-scans-resource-sets"></a>So überprüft Azure Purview Ressourcensätze
 
-Wenn Azure Purview Ressourcen erkennt, die als Teil eines Ressourcensatzes eingeschätzt werden, erfolgt der Wechsel von der vollständigen Überprüfung zur Stichprobenüberprüfung. Bei einer Stichprobenüberprüfung wird nur eine Teilmenge der Dateien geöffnet, die als im Ressourcensatz befindlich eingeschätzt werden. Für jede geöffnete Datei wird das zugehörige Schema verwendet und werden die jeweiligen Klassifizierer ausgeführt. Azure Purview findet dann die neueste Ressource unter den geöffneten Ressourcen und verwendet das Schema und die Klassifizierungen dieser Ressource im Eintrag für den gesamten Ressourcensatz im Katalog.
+Wenn Azure Purview Ressourcen erkennt, die als Teil eines Ressourcensatzes eingeschätzt werden, erfolgt der Wechsel von der vollständigen Überprüfung zur Stichprobenüberprüfung. Bei einer Stichprobenüberprüfung wird nur eine Teilmenge der Dateien geöffnet, die im Ressourcensatz vermutet werden. Dabei werden für jede geöffnete Datei das zugehörige Schema verwendet und die jeweiligen Klassifizierungen ausgeführt. Azure Purview findet dann die neueste Ressource unter den geöffneten Ressourcen und verwendet das Schema und die Klassifizierungen dieser Ressource im Eintrag für den gesamten Ressourcensatz im Katalog.
 
-## <a name="what-azure-purview-stores-about-resource-sets"></a>Was Azure Purview über Ressourcensätze speichert
+## <a name="advanced-resource-sets"></a>Erweiterte Ressourcensätze
 
-Zusätzlich zu den einzelnen Schemas und Klassifizierungen speichert Azure Purview die folgenden Informationen zu Ressourcensätzen:
+Standardmäßig bestimmt Azure Purview das Schema und die Klassifizierungen für Ressourcensätze basierend auf den [Stichprobenregeln für Ressourcensatzüberprüfungen](sources-and-scans.md#resource-set-file-sampling). Azure Purview kann die Ressourcen Ihres Ressourcensatzes mithilfe der Funktion **Erweiterte Ressourcensätze** anpassen und erweitern. Ist die Option „Erweiterte Ressourcensätze“ aktiviert, führt Azure Purview zusätzliche Aggregationen aus, um die folgenden Informationen zu den Ressourcen eines Ressourcensatzes zu berechnen:
 
-- Daten aus der letzten gründlich gescannten Partitionsressource.
-- Aggregierte Informationen über die Partitionsressourcen, aus denen der Ressourcensatz besteht.
-- Eine Partitionsanzahl, die zeigt, wie viele Partitionsressourcen gefunden wurden.
-- Eine Schemaanzahl, die zeigt, wie viele eindeutige Schemas im gründlich gescannten Stichprobensatz gefunden wurden. Dieser Wert ist entweder eine Zahl von 1–5 oder 5+ für Werte größer als 5.
+- Die meisten aktuellen Schemas und Klassifizierungen für eine genaue Darstellung der Schemaabweichung durch veränderte Metadaten
+- Einen Beispielpfad einer Datei, die im Ressourcensatz enthalten ist
+- Eine Partitionsanzahl mit der Anzahl der Dateien, die den Ressourcensatz bilden 
+- Eine Schemaanzahl mit der Anzahl der eindeutigen Schemas, die gefunden wurden Dieser Wert ist entweder eine Zahl von 1–5 oder 5+ für Werte größer als 5.
 - Eine Liste von Partitionstypen, wenn mehrere Partitionstypen im Ressourcensatz enthalten sind. Beispielsweise könnte ein IoT-Sensor sowohl XML- als auch JSON-Dateien ausgeben, obwohl beide logisch Teil desselben Ressourcensatzes sind.
+- Die Gesamtgröße aller Dateien, aus denen der Ressourcensatz besteht 
+
+Diese Eigenschaften finden Sie auf der Seite mit den Ressourcendetails des Ressourcensatzes.
+
+:::image type="content" source="media/concept-resource-sets/resource-set-properties.png" alt-text="Berechnete Eigenschaften bei aktivierter Option „Erweiterte Ressourcensätze“" border="true":::
+
+Wenn Sie die Option „Erweiterte Ressourcensätze“ aktivieren, können Sie auch [Musterregeln für Ressourcensätze](how-to-resource-set-pattern-rules.md) erstellen. Damit können Sie festlegen, wie Azure Purview die Ressourcensätze während der Überprüfung gruppieren soll. 
+
+### <a name="turning-on-advanced-resource-sets"></a>Aktivieren erweiterter Ressourcensätze
+
+Die Option „Erweiterte Ressourcensätze“ ist in allen neuen Azure Purview-Instanzen standardmäßig deaktiviert. Wenn Sie die Option aktivieren möchten, wechseln Sie im Verwaltungshub zu **Kontoinformationen**.
+
+> [!NOTE]
+> Für alle Purview-Instanzen, die vor dem 19. August 2021 erstellt wurden, sind die erweiterten Ressourcensätze standardmäßig aktiviert.
+
+:::image type="content" source="media/concept-resource-sets/advanced-resource-set-toggle.png" alt-text="Aktivieren der Option „Erweiterte Ressourcensätze“" border="true":::
+
+Sobald Sie die erweiterten Ressourcensätze aktiviert haben, werden für alle neu erfassten Ressourcen die zusätzlichen Erweiterungen ausgeführt. Es wird empfohlen, nach Aktivierung des Features eine Stunde zu warten, bevor Sie neue Data Lake-Daten überprüfen.
+
+> [!IMPORTANT]
+> Das Aktivieren erweiterter Ressourcensätze wirkt sich auf die Aktualisierungsrate von Ressourcen- und Klassifizierungserkenntnissen aus. Bei aktivierter Option „Erweiterte Ressourcensätze“ werden Ressourcen- und Klassifizierungserkenntnisse nur zweimal täglich aktualisiert.
 
 ## <a name="built-in-resource-set-patterns"></a>Integrierte Ressourcensatzmuster
 
@@ -80,7 +99,7 @@ Azure Purview unterstützt die folgenden Ressourcensatzmuster. Diese Muster kön
 | Date(jjjj/mm/tt)InPath  | {Jahr}/{Monat}/{Tag} | Muster für Jahr/Monat/Tag, das sich über mehrere Ordner erstreckt |
 
 
-## <a name="how-resource-sets-are-displayed-in-the-azure-purview-catalog"></a>Anzeigen von Ressourcensätzen im Azure Purview-Katalog
+## <a name="how-resource-sets-are-displayed-in-the-azure-purview-data-catalog"></a>Anzeigen von Ressourcensätzen im Azure Purview-Datenkatalog
 
 Wenn Azure Purview eine Gruppe von Ressourcen einem Ressourcensatz zuordnet, wird versucht, die nützlichsten Informationen zu extrahieren, um sie als Anzeigenamen im Katalog zu verwenden. Einige Beispiele für die standardmäßig angewendete Benennungskonvention: 
 

@@ -3,17 +3,17 @@ title: Übersicht über die Wartungssteuerung für virtuelle Azure-Computer unte
 description: Es wird beschrieben, wie Sie die Wartung steuern, wenn diese mithilfe der Wartungssteuerung auf Ihre virtuellen Azure-Computer angewendet wird.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: maintenance-control
+ms.subservice: maintenance
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 01152d1e422088503621e684f8908182c5caa3a4
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 741a7a73fc7ac4ac468febfd9beec77c3a8c9946
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691676"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216522"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Verwalten von Plattformupdates mit der Wartungssteuerung 
 
@@ -32,7 +32,7 @@ Mit der Wartungssteuerung können Sie folgende Aktionen ausführen:
 ## <a name="limitations"></a>Einschränkungen
 
 - Virtuelle Computer müssen sich auf einem [dedizierten Host](./dedicated-hosts.md) befinden oder mithilfe einer [isolierten VM-Größe](isolation.md) erstellt werden.
-- Die Dauer des Wartungsfensters muss mindestens zwei Stunden betragen. Dabei handelt es sich um die Zeit zwischen dem Initiieren des Updates durch den Kunden und dem Abschluss des Updates. 
+- Die Dauer des Wartungsfensters kann monatlich variieren, und manchmal kann es bis zu zwei Stunden dauern, bis die ausstehenden Updates angewendet werden, nachdem sie vom Benutzer oder von der Benutzerin initiiert wurden.  
 - Nach 35 Tagen wird automatisch ein Update angewendet.
 - Der Benutzer muss über einen **Ressourcenmitwirkender**-Zugriff verfügen.
 

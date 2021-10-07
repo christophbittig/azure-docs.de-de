@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bef4e1b8f4524e9b883bfe4aa5ef7b2a0e2bcf83
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: df71173837075c786d7c8f9907e0ed3cac576b16
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347116"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676255"
 ---
 # <a name="azure-active-directory-security-operations-guide"></a>Azure Active Directory: Leitfaden zu Sicherheitsvorgängen
 
@@ -92,7 +92,7 @@ Microsoft bietet viele Produkte und Dienste, mit denen Sie Ihre IT-Umgebung an I
 
    * [Untersuchen eines Risikos mit Azure Active Directory Identity Protection](../identity-protection/howto-identity-protection-investigate-risk.md) 
 
-   * [Verknüpfen von Azure AD Identity Protection-Daten mit Azure Sentinel](../../sentinel/connect-azure-ad-identity-protection.md)
+   * [Verknüpfen von Azure AD Identity Protection-Daten mit Azure Sentinel](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)
 
 * Active Directory Domain Services (AD DS)
 
@@ -110,23 +110,23 @@ Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien:
 
 * [Anmeldeprotokolle](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365-Überwachungsprotokolle](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide)
+* [Microsoft 365-Überwachungsprotokolle](/microsoft-365/compliance/auditing-solutions-overview)
 
 * [Azure Key Vault-Protokolle](../../key-vault/general/logging.md?tabs=Vault)
 
 Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und als CSV- (durch Trennzeichen getrennte Werte) oder JSON-Dateien (JavaScript Object Notation) herunterladen. Das Azure-Portal bietet mehrere Möglichkeiten zur Integration von Azure AD-Protokollen in andere Tools, die eine umfassendere Automatisierung von Überwachung und Benachrichtigungen ermöglichen:
 
-* **[Azure Sentinel:](../../sentinel/overview.md)** Ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
+* **[Azure Sentinel](../../sentinel/overview.md)** : ermöglicht intelligente Sicherheitsanalysen auf Unternehmensebene, indem SIEM-Funktionen (Security Information and Event Management) zur Verfügung gestellt werden. 
 
-* **[Azure Monitor:](../../azure-monitor/overview.md)** Ermöglicht die automatisierte Überwachung verschiedener Bedingungen und entsprechende Warnungen. Damit können Arbeitsmappen erstellt oder verwendet werden, um Daten aus verschiedenen Quellen zu kombinieren.
+* **[Azure Monitor](../../azure-monitor/overview.md)** : ermöglicht die automatisierte Überwachung verschiedener Bedingungen und entsprechende Warnungen. Damit können Arbeitsmappen erstellt oder verwendet werden, um Daten aus verschiedenen Quellen zu kombinieren.
 
-* **Azure Event Hubs[ mit](../../event-hubs/event-hubs-about.md)Integration in ein SIEM-System**- [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) wie Splunk, ArcSight, QRadar und Sumo Logic integriert werden.
+* **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) mit Integration in ein SIEM-System**- [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme wie Splunk, ArcSight, QRadar und Sumo Logic integriert](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) werden.
 
-* **[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS):** Ermöglicht Ihnen das Ermitteln und Verwalten von Apps, eine Apps und Ressourcen übergreifende Governance und die Überprüfung der Konformität Ihrer Cloud-Apps.
+* **[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS)** ermöglicht Ihnen das Entdecken und Verwalten von Apps, eine Apps und Ressourcen übergreifende Governance und Überprüfung der Konformität Ihrer Cloud-Apps.
 
-Ein Großteil der Überwachung und zugehörigen Warnungen hängt von den Auswirkungen Ihrer Richtlinien für bedingten Zugriff ab. Sie können die Arbeitsmappe [Erkenntnisse und Berichterstellung zum bedingten Zugriff](../conditional-access/howto-conditional-access-insights-reporting.md) verwenden, um die Auswirkungen einer oder mehrere Richtlinien für bedingten Zugriff auf Ihre Anmeldungen sowie die Ergebnisse von Richtlinien, einschließlich Gerätestatus, zu untersuchen. Diese Arbeitsmappe bietet Ihnen die Möglichkeit, eine Zusammenfassung der Auswirkungen anzuzeigen und die Auswirkungen über einen bestimmten Zeitraum zu ermitteln. Sie können mithilfe der Arbeitsmappe auch die Anmeldungen eines bestimmten Benutzers untersuchen. 
+Ein Großteil der Überwachung und zugehörigen Warnungen hängt von den Auswirkungen Ihrer Richtlinien für bedingten Zugriff ab. Sie können die Arbeitsmappe [Erkenntnisse und Berichterstellung zum bedingten Zugriff](../conditional-access/howto-conditional-access-insights-reporting.md) verwenden, um die Auswirkungen einer oder mehrerer Richtlinien für bedingten Zugriff auf Ihre Anmeldungen sowie die Ergebnisse von Richtlinien, einschließlich Gerätestatus, zu untersuchen. Diese Arbeitsmappe bietet Ihnen die Möglichkeit, eine Zusammenfassung der Auswirkungen anzuzeigen und die Auswirkungen über einen bestimmten Zeitraum zu ermitteln. Sie können mithilfe der Arbeitsmappe auch die Anmeldungen eines bestimmten Benutzers untersuchen. 
 
-Im verbleibenden Teil dieses Artikels wird beschrieben, welche Ereignisse Sie überwachen und wofür Sie Warnungen erstellen sollten, wobei die Inhalte nach der Art der Bedrohung organisiert sind. Wo es spezielle vordefinierte Lösungen gibt, verweisen wir auf diese oder stellen Beispiele im Anschluss an die Tabelle zur Verfügung. Andernfalls können Sie Warnungen mithilfe der oben genannten Tools erstellen. 
+Im restlichen Teil dieses Artikels wird beschrieben, was wir Ihnen zur Überwachung und für zugehörige Warnungen empfehlen, und zwar gegliedert nach der Art der Bedrohung. Wo es spezielle vordefinierte Lösungen gibt, verweisen wir auf diese oder stellen Beispiele im Anschluss an die Tabelle zur Verfügung. Andernfalls können Sie Warnungen mithilfe der oben genannten Tools erstellen. 
 
 * **[Identity Protection:](../identity-protection/overview-identity-protection.md)** Generiert drei wichtige Berichte, die Sie bei der Untersuchung verwenden können:
 
@@ -158,7 +158,7 @@ Im Rahmen einer Azure-Hybridumgebung sollte Folgendes das Minimum für eine Übe
 
 * **Azure AD Connect-Synchronisierungsmodul:** Die lokale Komponente, die auch als Synchronisierungsmodul bezeichnet wird. Informationen zu diesem Feature finden Sie unter [Features des Azure AD Connect-Synchronisierungsdiensts](../hybrid/how-to-connect-syncservice-features.md).
 
-* **Kennwortschutz-DC-Agent:** Der DC-Agent für den Azure-Kennwortschutz unterstützt bei der Überwachung und dem Reporting von Ereignisprotokollmeldungen. Weitere Informationen finden Sie unter ../authentication/concept-password-ban-bad-on-premises.md.
+* **Kennwortschutz-DC-Agent:** Der DC-Agent für den Azure-Kennwortschutz unterstützt bei der Überwachung und dem Reporting von Ereignisprotokollmeldungen. Weitere Informationen finden Sie unter [Erzwingen des lokalen Azure AD-Kennwortschutzes für Active Directory Domain Services](../authentication/concept-password-ban-bad-on-premises.md). 
 
 * **Kennwortfilter-DLL:** Die Kennwortfilter-DLL des DC-Agents empfängt Anforderungen zur Kennwortüberprüfung vom Betriebssystem. Der Filter leitet diese an den DC-Agent-Dienst weiter, der lokal auf dem Domänencontroller ausgeführt wird. Informationen zur Verwendung der DLL finden Sie unter [Erzwingen des lokalen Azure AD-Kennwortschutzes für Active Directory Domain Services](../authentication/concept-password-ban-bad-on-premises.md). 
 
@@ -214,7 +214,7 @@ Im Rahmen einer cloudbasierten Azure-Umgebung sollte Folgendes das Minimum für 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie die folgenden Artikel im Leitfaden zu Sicherheitsvorgängen:
+Weitere Informationen finden Sie in den folgenden Artikeln im Leitfaden zu Sicherheitsvorgängen:
 
 [Azure AD: Übersicht über Sicherheitsvorgänge](security-operations-introduction.md)
 

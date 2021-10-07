@@ -9,12 +9,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: pstn
-ms.openlocfilehash: 3ab9c444fbd2413d0534aba7b1db62198e92a82f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b03779f9c56d2ebcc4d070165cdf29a54e78d269
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609686"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060951"
 ---
 # <a name="azure-direct-routing-infrastructure-requirements"></a>Anforderungen an die Infrastruktur für direktes Azure-Routing 
 
@@ -156,16 +156,13 @@ Die folgende Tabelle enthält den Portbereich der Medienprozessoren:
 
 ## <a name="media-traffic-media-processors-geography"></a>Mediendatenverkehr: Geografie von Medienprozessoren
 
-Der Mediendatenverkehr wird über sogenannte Medienprozessoren geleitet. Medienprozessoren werden in den gleichen Rechenzentren platziert wie SIP-Proxys. Außerdem gibt es zusätzliche Medienprozessoren zur Optimierung des Medienflusses. Beispielsweise gibt es derzeit keine SIP-Proxykomponente in Australien (SIP-Datenverkehr wird über Singapur oder Hongkong SAR abgewickelt), der Medienprozessor ist jedoch lokal in Australien vorhanden. Der Bedarf für lokale Medienprozessoren geht auf die Wartezeit zurück, die auftritt, wenn Datenverkehr über weite Strecken gesendet wird (beispielsweise von Australien nach Singapur oder Hongkong SAR). Im Beispiel von Datenverkehr, der von Australien nach Hongkong SAR oder Singapur gesendet wird, lässt sich für SIP-Datenverkehr trotz Wartezeit eine gute Gesprächsqualität erreichen. Für Echtzeit-Mediendatenverkehr ist sie allerdings nicht akzeptabel.
-
-Standorte, an denen sowohl SIP-Proxy- als auch Medienprozessorkomponenten bereitgestellt werden:
+Der Mediendatenverkehr wird über sogenannte Medienprozessoren geleitet. Medienprozessoren werden in den gleichen Rechenzentren platziert wie SIP-Proxys:
 - USA (zwei in den Rechenzentren der Regionen „USA, Westen“ und „USA, Osten“)
 - Europa (Rechenzentren in Amsterdam und Dublin)
 - Asien (Rechenzentren in Singapur und Hongkong SAR)
 - Australien (Rechenzentren in den Regionen „Australien, Osten“ und „Australien, Südosten“)
-
-Standorte, an denen nur Medienprozessoren bereitgestellt werden (SIP-Flows über das nächstgelegene Rechenzentrum):
 - Japan (Rechenzentren in den Regionen „Japan, Osten“ und „Japan, Westen“)
+
 
 
 ## <a name="media-traffic-codecs"></a>Mediendatenverkehr: Codecs

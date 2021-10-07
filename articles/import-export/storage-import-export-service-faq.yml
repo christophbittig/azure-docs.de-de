@@ -6,15 +6,15 @@ metadata:
   services: storage
   ms.service: storage
   ms.topic: conceptual
-  ms.date: 08/24/2021
+  ms.date: 09/07/2021
   ms.author: alkohli
   ms.subservice: common
-  ms.openlocfilehash: bfdbb966783e4f95945933c074265d8c45ee1f61
-  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+  ms.openlocfilehash: 7a4344ed0aa7346d3c87d36d96e4772c08080327
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/25/2021
-  ms.locfileid: "122867609"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124763555"
 title: 'Azure Import/Export-Dienst: Häufig gestellte Fragen'
 summary: >
   Es folgen Fragen, die Sie möglicherweise stellen, wenn Sie Ihren Azure Import/Export-Dienst zum Übertragen von Daten in Azure Storage verwenden, und die zugehörigen Antworten.
@@ -88,18 +88,7 @@ sections:
       Senden Sie nur die Festplatten im Versandpaket. Legen Sie keine Gegenstände wie z. B. Strom- oder USB-Kabel bei.
   - question: >
       Muss ich meine Festplatten mit FedEx oder DHL schicken?
-    answer: >
-      Sie können Festplatten mit allen gängigen Kurierdiensten wie FedEx, DHL, UPS oder US Postal Service an das Azure-Rechenzentrum schicken. Allerdings müssen Sie für die Rücksendung der Laufwerke vom Rechenzentrum an Sie Folgendes angeben:
-
-
-      - Eine FedEx-Kontonummer in den USA und Europa, oder
-
-      - eine DHL-Kontonummer in den Regionen Asien und Australien.
-
-
-      > [!NOTE]
-
-      > Die Rechenzentren in Indien verlangen im Briefkopf eine Zustellaufforderung zur Rücksendung der Laufwerke. Um den gewünschten Zutrittsausweis zu arrangieren, müssen Sie auch die Abholung bei Ihrem gewählten Spediteur buchen und die Details mit dem Rechenzentrum klären.
+    answer: "Sie können Festplatten mit allen gängigen Kurierdiensten an das Azure-Rechenzentrum schicken. Es wird empfohlen, FedEx, DHL oder UPS zu verwenden. Beachten Sie bei Verwendung von US Postal Service, dass das Gerät an das nächstgelegene US-Postamt und nicht an das Rechenzentrum geliefert wird, was zu erheblichen Verzögerungen führen kann.\n\nFür die Rücksendung der Festplatten vom Rechenzentrum an Sie müssen Sie Folgendes angeben: \n\n- Eine FedEx-Kontonummer in den USA und Europa, oder\n- eine DHL-Kontonummer in den Regionen Asien und Australien.\n\n> [!NOTE]\n> Die Rechenzentren in Indien verlangen im Briefkopf eine Zustellaufforderung zur Rücksendung der Laufwerke. Um den gewünschten Zutrittsausweis zu arrangieren, müssen Sie auch die Abholung bei Ihrem gewählten Spediteur buchen und die Details mit dem Rechenzentrum klären.\n    \n"
   - question: >
       Gelten für den internationalen Versand und die Rückgabe meines Datenträgers bestimmte Einschränkungen?
     answer: >

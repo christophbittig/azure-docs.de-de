@@ -3,12 +3,12 @@ title: 'Azure Lab Services: Hochladen eines benutzerdefinierten Linux-Images aus
 description: Beschreibt, wie ein benutzerdefiniertes Linux-Image aus einer physischen Laborumgebung importiert wird.
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 919505e31526c3d17d42bd29d9cef3b46758c959
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 9a8591d383ac5230085bc83d1d791e9de830a99e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122831395"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771363"
 ---
 # <a name="bring-a-linux-custom-image-from-your-physical-lab-environment"></a>Importieren eines benutzerdefinierten Linux-Images aus einer physischen Laborumgebung
 
@@ -38,7 +38,7 @@ Die folgenden Schritte zeigen, wie Sie ein Ubuntu-Image für die Distributionen�
     - Die VM muss als VM der **Generation 1** erstellt werden.
     - Verwenden Sie die Netzwerkkonfigurationsoption **Standardswitch**, damit die VM eine Verbindung mit dem Internet herstellen kann.
     - In den Einstellungen unter **Virtuelle Festplatte verbinden** darf die **Größe** des Datenträgers *nicht* größer als 128 GB sein, wie in der folgenden Abbildung gezeigt.
-       
+
         :::image type="content" source="./media/upload-custom-image-shared-image-gallery/connect-virtual-hard-disk.png" alt-text="Screenshot des Bildschirms „Virtuelle Festplatte verbinden“":::
 
     - Wählen Sie in den Einstellungen der **Installationsoptionen** die **ISO**-Datei aus, die Sie zuvor aus Ubuntu heruntergeladen haben.
@@ -52,7 +52,7 @@ Die folgenden Schritte zeigen, wie Sie ein Ubuntu-Image für die Distributionen�
     Wenn Sie die oben genannten Schritte ausführen, müssen Sie einige wichtige Punkte beachten:
     - Mit diesen Schritten wird ein [generalisiertes](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) Image erstellt, wenn Sie den Befehl **deprovision+user** ausführen. Dies garantiert jedoch nicht, dass alle vertraulichen Informationen aus dem Image gelöscht werden oder dass es für eine erneute Verteilung genutzt werden kann.
     - Der letzte Schritt besteht darin, die **VHDX**-Datei in eine **VHD**-Datei zu konvertieren. Im Folgenden finden Sie entsprechende Schritte, die zeigen, wie dies mit dem **Hyper-V-Manager** ausgeführt wird:
-        
+
         1. Navigieren Sie zu **Hyper-V-Manager** > **Aktion** > **Datenträger bearbeiten**.
         1. **Konvertieren** Sie nun den Datenträger von einer VHDX in eine VHD.
         1. Wählen Sie für **Datenträgertyp** die Option **Feste Größe** aus.
@@ -61,48 +61,47 @@ Die folgenden Schritte zeigen, wie Sie ein Ubuntu-Image für die Distributionen�
 
 Um die Größe der VHD zu ändern und die Konvertierung in eine VHDX auszuführen, können Sie auch die folgenden PowerShell-Cmdlets verwenden:
 
-- [Resize-VHD](/powershell/module/hyper-v/resize-vhd?view=windowsserver2019-ps)
-- [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=windowsserver2019-ps)
+- [Resize-VHD](/powershell/module/hyper-v/resize-vhd)
+- [Convert-VHD](/powershell/module/hyper-v/convert-vhd)
 
 ## <a name="upload-the-custom-image-to-a-shared-image-gallery"></a>Hochladen des benutzerdefinierten Images in eine Shared Image Gallery
 
 1. Laden Sie die VHD-Datei in Azure hoch, um einen verwalteten Datenträger zu erstellen.
     1. Sie können entweder Storage-Explorer oder AzCopy in der Befehlszeile verwenden, wie unter [Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region](../virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) beschrieben.
 
-    1. Nachdem Sie die VHD hochgeladen haben, sollten Sie nun über einen verwalteten Datenträger verfügen, den Sie im Azure-Portal anzeigen können. 
-    
+    1. Nachdem Sie die VHD hochgeladen haben, sollten Sie nun über einen verwalteten Datenträger verfügen, den Sie im Azure-Portal anzeigen können.
+
     Wenn Ihr Computer in den Energiesparmodus wechselt oder gesperrt wird, wird der Uploadvorgang möglicherweise unterbrochen, und es tritt ein Fehler auf. Stellen Sie außerdem sicher, dass Sie nach Abschluss von AzCopy den SAS-Zugriff auf den Datenträger widerrufen. Andernfalls wird beim Versuch, ein Image aus dem Datenträger zu erstellen, dieser Fehler angezeigt: „Der Vorgang ‚Image erstellen‘ wird für den Datenträger ‚Ihr Datenträgername‘ im Status ‚Aktiver Upload‘ nicht unterstützt. Fehlercode: OperationNotAllowed*“.
-    
+
     Auf der Registerkarte **Größe und Leistung** des verwalteten Datenträgers im Azure-Portal können Sie die Datenträgergröße ändern. Wie bereits erwähnt, darf die Größe *nicht* größer als 128 GB sein.
 
 1. Erstellen Sie in einer Shared Image Gallery eine Imagedefinition und -version:
-    1. [Erstellen Sie eine Imagedefinition:](../virtual-machines/windows/shared-images-portal.md#create-an-image-definition)
+    1. [Erstellen Sie eine Imagedefinition:](../virtual-machines/image-version.md)
         - Wählen Sie **Gen 1** als **VM-Generation** aus.
         - Wählen Sie unter **Betriebssystem** die Option **Linux** aus.
         - Wählen Sie unter **Betriebssystemstatus** die Option **Generalisiert** aus.
-     
-    Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](../virtual-machines/shared-image-galleries.md#image-definitions). 
-    
+
+    Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](../virtual-machines/shared-image-galleries.md#image-definitions).
+
     Sie können auch eine vorhandene Imagedefinition verwenden und eine neue Version für Ihr benutzerdefiniertes Image erstellen.
-    
-1. [Erstellen Sie eine Imageversion:](../virtual-machines/windows/shared-images-portal.md#create-an-image-version)
-   - Die Eigenschaft **Versionsnummer** verwendet das folgende Format: *MajorVersion.MinorVersion.Patch*. Wenn Sie Lab Services verwenden, um ein Lab zu erstellen und ein benutzerdefiniertes Image auswählen, wird automatisch die neueste Version des Images verwendet. Die aktuellste Version wird basierend auf dem höchsten Wert von MajorVersion, MinorVersion und Patch ausgewählt.
+
+1. [Erstellen Sie eine Imageversion:](../virtual-machines/image-version.md)
+    - Die Eigenschaft **Versionsnummer** verwendet das folgende Format: *MajorVersion.MinorVersion.Patch*. Wenn Sie Lab Services verwenden, um ein Lab zu erstellen und ein benutzerdefiniertes Image auswählen, wird automatisch die neueste Version des Images verwendet. Die aktuellste Version wird basierend auf dem höchsten Wert von MajorVersion, MinorVersion und Patch ausgewählt.
     - Wählen Sie als **Quelle** in der Dropdownliste die Option **Datenträger und/oder Momentaufnahmen** aus.
     - Wählen Sie für die Eigenschaft **Betriebssystemdatenträger** den Datenträger aus, den Sie in den vorherigen Schritten erstellt haben.
-    
+
     Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imageversionen](../virtual-machines/shared-image-galleries.md#image-versions).
 
 ## <a name="create-a-lab"></a>Erstellen eines Labs
-   
+
 [Erstellen Sie das Lab](tutorial-setup-classroom-lab.md) in Azure Lab Services, und wählen Sie das benutzerdefinierte Image in Shared Image Gallery aus.
 
-Wenn Sie den Datenträger *nach* der Installation des Betriebssystems auf der ursprünglichen Hyper-V-VM erweitert haben, müssen Sie ggf. auch die Partition im Betriebssystem von Linux so erweitern, dass der nicht zugeordnete Datenträgerspeicherplatz genutzt wird:
-- Melden Sie sich bei der Vorlagen-VM des Labs an, und führen Sie ähnliche Schritte wie die unter [Erweitern einer Datenträgerpartition und eines Dateisystems](../virtual-machines/linux/expand-disks.md#expand-a-disk-partition-and-filesystem) beschriebenen aus.
-    
+Wenn Sie den Datenträger *nach* der Installation des Betriebssystems auf der ursprünglichen Hyper-V-VM erweitert haben, müssen Sie ggf. auch die Partition im Dateisystem von Linux so erweitern, dass der nicht zugeordnete Datenträgerspeicherplatz genutzt wird.  Melden Sie sich bei der Vorlagen-VM des Labs an, und führen Sie ähnliche Schritte wie die unter [Erweitern einer Datenträgerpartition und eines Dateisystems](../virtual-machines/linux/expand-disks.md#expand-a-disk-partition-and-filesystem) beschriebenen aus.
+
 Der Betriebssystemdatenträger befindet sich in der Regel auf der Partition **/dev/sad2**. Verwenden Sie den Befehl **df -h**, um die aktuelle Größe der Partition des Betriebssystemdatenträgers anzuzeigen.
-    
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Übersicht über Shared Image Gallery](../virtual-machines/shared-image-galleries.md)
-* [Anfügen oder Trennen einer Shared Image Gallery](how-to-attach-detach-shared-image-gallery.md)
-* [Verwenden eines Katalogs mit freigegebenen Images](how-to-use-shared-image-gallery.md)
+- [Übersicht über Shared Image Gallery](../virtual-machines/shared-image-galleries.md)
+- [Anfügen oder Trennen einer Shared Image Gallery](how-to-attach-detach-shared-image-gallery.md)
+- [Verwenden eines Katalogs mit freigegebenen Images](how-to-use-shared-image-gallery.md)

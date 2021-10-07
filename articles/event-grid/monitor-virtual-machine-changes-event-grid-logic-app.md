@@ -6,19 +6,19 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, azla
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: a170b062127f55ece83dd717d8bd7a00e6531b9b
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.date: 07/01/2021
+ms.openlocfilehash: fb315a42dc33a8ead4d3d09e0dbb15972bf8e585
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896998"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646794"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Tutorial: Überwachen von Änderungen an virtuellen Computern mit Azure Event Grid und Logic Apps
 
-Zum Überwachen und Reagieren auf bestimmte Ereignisse, die für Azure-Ressourcen oder Drittanbieterressourcen auftreten, können Sie Aufgaben automatisieren und als Workflow ausführen, indem Sie eine [Logik-App](../logic-apps/logic-apps-overview.md) mit minimalem Code erstellen. Diese Ressourcen können derartige Ereignisse in einem [Azure-Ereignisraster](../event-grid/overview.md) (Azure Event Grid) veröffentlichen. Das Ereignisraster überträgt diese Ereignisse wiederum mithilfe von Push an Abonnenten, die als Endpunkte Warteschlangen, Webhooks, oder [Event Hubs](../event-hubs/event-hubs-about.md) aufweisen. Als Abonnent kann Ihre Logik-App auf diese Ereignisse vom Ereignisraster warten, bevor automatisierte Workflows zur Durchführung von Aufgaben ausgeführt werden.
+Zum Überwachen und Reagieren auf bestimmte Ereignisse, die für Azure-Ressourcen oder Drittanbieterressourcen auftreten, können Sie mithilfe von Azure Logic Apps einen automatisierten [Logik-App-Workflow](../logic-apps/logic-apps-overview.md) mit minimalem Code erstellen. Sie können festlegen, dass diese Ressourcen Ereignisse in einem [Azure-Ereignisraster](../event-grid/overview.md) (Azure Event Grid) veröffentlichen. Das Ereignisraster überträgt diese Ereignisse wiederum mithilfe von Push an Abonnenten, die als Endpunkte Warteschlangen, Webhooks, oder [Event Hubs](../event-hubs/event-hubs-about.md) aufweisen. Als Abonnent wartet Ihr Workflow, bis diese Ereignisse im Ereignisraster eintreffen, bevor die Schritte zum Verarbeiten der Ereignisse ausgeführt werden.
 
 Im Folgenden werden einige Beispiele für Ereignisse aufgeführt, die Herausgeber mit dem Azure Event Grid-Dienst an Abonnenten senden können:
 
@@ -30,22 +30,22 @@ Im Folgenden werden einige Beispiele für Ereignisse aufgeführt, die Herausgebe
 
 * Eine neue Meldung wird in einer Warteschlange angezeigt.
 
-In diesem Tutorial wird eine Logik-App erstellt, die Änderungen an einer VM überwacht und E-Mails über diese Änderungen sendet. Wenn Sie eine Logik-App mit einem Ereignisabonnement für eine Azure-Ressource erstellen, werden Ereignisse aus dieser Ressource über ein Ereignisraster an die Logik-App weitergeleitet. Das Tutorial führt Sie durch das Erstellen dieser Logik-App:
+In diesem Tutorial wird eine Logik-App-Ressource erstellt, die in einer [*mehrinstanzenfähigen* Azure Logic Apps-Instanz](../logic-apps/logic-apps-overview.md) ausgeführt wird und auf dem [nutzungsabhängigen Preismodell](../logic-apps/logic-apps-pricing.md#consumption-pricing) basiert. Mithilfe dieser Logik-App-Ressource erstellen Sie einen Workflow, der Änderungen an einem virtuellen Computer überwacht und E-Mails zu diesen Änderungen sendet. Wenn Sie einen Workflow mit einem Ereignisabonnement für eine Azure-Ressource erstellen, werden Ereignisse aus dieser Ressource über ein Ereignisraster an den Workflow weitergeleitet. Einen Vergleich zwischen den Azure Logic Apps-Modellen mit einem und mehreren Mandanten finden Sie unter [Vergleich zwischen Umgebungen mit einem Mandanten und mehreren Mandanten bzw. Integrationsdienstumgebung für Azure Logic Apps](../logic-apps/single-tenant-overview-compare.md).
 
-![Screenshot von Logic Apps Designer mit einem Workflow zum Überwachen einer VM mit Event Grid.](./media/monitor-virtual-machine-changes-event-grid-logic-app/monitor-virtual-machine-event-grid-logic-app-overview.png)
+![Screenshot: Workflow-Designer mit einem Workflow, der mithilfe von Azure Event Grid einen virtuellen Computer überwacht](./media/monitor-virtual-machine-changes-event-grid-logic-app/monitor-virtual-machine-event-grid-logic-app-overview.png)
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen Sie eine Logik-App zur Überwachung von Ereignissen über ein Ereignisraster.
+> * Erstellen einer Logik-App-Ressource und eines Workflows zur Überwachung von Ereignissen über ein Ereignisraster
 > * Fügen Sie eine Bedingung zur Prüfung auf Änderungen an einem virtuellen Computer hinzu.
 > * Senden Sie bei Änderungen an Ihrem virtuellen Computer E-Mails.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Ein E-Mail-Konto bei einem von Logic Apps unterstützten E-Mail-Anbieter wie Office 365 Outlook, Outlook.com oder Gmail zum Senden von Benachrichtigungen. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](/connectors/).
+* Ein E-Mail-Konto bei einem mit Azure Logic Apps verwendbaren E-Mail-Dienst wie Office 365 Outlook, Outlook.com oder Gmail zum Senden von Benachrichtigungen. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](/connectors/).
 
   Dieses Tutorial verwendet ein Office 365 Outlook-Konto. Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche sieht aber unter Umständen etwas anders aus.
 
@@ -54,9 +54,13 @@ In diesem Tutorial lernen Sie Folgendes:
 
 * Ein [virtueller Computer](https://azure.microsoft.com/services/virtual-machines), der als einziger Computer in einer eigenen Azure-Ressourcengruppe enthalten ist. Erstellen Sie eine VM mithilfe des [Tutorials zum Erstellen eines virtuellen Computers](../virtual-machines/windows/quick-create-portal.md), wenn Sie dies nicht bereits getan haben. Zur Veröffentlichung von Ereignissen auf dem virtuellen Computer [müssen Sie keine weiteren Aktionen durchführen](../event-grid/overview.md).
 
-## <a name="create-blank-logic-app"></a>Erstellen einer leeren Logik-App
+* Falls Sie über eine Firewall verfügen, durch die der Datenverkehr auf bestimmte IP-Adressen beschränkt wird, richten Sie diese so ein, dass der Zugriff für [eingehende](../logic-apps/logic-apps-limits-and-config.md#inbound) und [ausgehende](../logic-apps/logic-apps-limits-and-config.md#outbound) IP-Adressen zugelassen ist, die von Azure Logic Apps in der Azure-Region genutzt werden, in der Sie Ihren Logik-App-Workflow erstellen.
 
-1. Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Portal](https://portal.azure.com) an.
+  In diesem Beispiel werden verwaltete Connectors verwendet, für die Ihre Firewall so eingerichtet werden muss, dass der Zugriff für *alle* [ausgehenden IP-Adressen des verwalteten Connectors](/connectors/common/outbound-ip-addresses) in der Azure-Region für Ihre Logik-App-Ressource zugelassen ist.
+
+## <a name="create-logic-app-resource"></a>Erstellen einer Logik-App-Ressource
+
+1. Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Integration** > **Logik-App**.
 
@@ -66,7 +70,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
    ![Screenshot des Menüs zum Erstellen von Logik-Apps, das Details wie Name, Abonnement, Ressourcengruppe und Standort zeigt.](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | Beschreibung |
    |----------|----------|-------|-------------|
    | **Name** | Ja | <*logic-app-name*> | Geben Sie einen eindeutigen Namen für Ihre Logik-App an. |
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Wählen Sie für alle Dienste in diesem Tutorial dasselbe Azure-Abonnement aus. |
@@ -74,34 +78,34 @@ In diesem Tutorial lernen Sie Folgendes:
    | **Location** | Ja | <*Azure-Region*> | Wählen Sie für alle Dienste in diesem Tutorial die gleiche Azure-Region. |
    |||
 
-1. Nachdem Ihre Logik-App von Azure bereitgestellt wurde, zeigt der Designer für Logik-Apps eine Seite mit einem Einführungsvideo und häufig verwendeten Triggern an. Scrollen Sie nach unten, bis der Bereich unter dem Video und den Triggern angezeigt wird.
+1. Nachdem Ihre Logik-App von Azure bereitgestellt wurde, zeigt der Workflow-Designer eine Seite mit einem Einführungsvideo und häufig verwendeten Triggern an. Scrollen Sie nach unten, bis der Bereich unter dem Video und den Triggern angezeigt wird.
 
 1. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App**.
 
    ![Screenshot von Logic Apps-Vorlagen, der die Auswahl zum Erstellen einer leeren Logik-App zeigt.](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-logic-app-template.png)
 
-   Im Designer für Logik-Apps werden jetzt die [*Trigger*](../logic-apps/logic-apps-overview.md#logic-app-concepts) angezeigt, die Sie verwenden können, um Ihre Logik-App zu starten. Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder eine bestimmte Bedingung erfüllt wird. Bei jeder Auslösung des Triggers erstellt Azure Logic Apps eine Workflowinstanz, die Ihre Logik-App ausführt.
+   Im Workflow-Designer werden jetzt die [*Trigger*](../logic-apps/logic-apps-overview.md#logic-app-concepts) angezeigt, die Sie zum Starten Ihrer Logik-App verwenden können. Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder eine bestimmte Bedingung erfüllt wird. Bei jeder Auslösung des Triggers erstellt Azure Logic Apps eine Workflowinstanz, die Ihre Logik-App ausführt.
 
 ## <a name="add-an-event-grid-trigger"></a>Hinzufügen eines Event Grid-Triggers
 
 Fügen Sie nun den Event Grid-Trigger hinzu, den Sie zum Überwachen der Ressourcengruppe für Ihren virtuellen Computer verwenden.
 
-1. Geben Sie im Suchfeld des Designers `event grid` als Filter ein. Wählen Sie in der Triggerliste den Trigger **Bei Eintritt eines Ressourcenereignisses** aus.
+1. Geben Sie im Designer in das Suchfeld `event grid` ein. Wählen Sie in der Triggerliste den Trigger **Bei Eintritt eines Ressourcenereignisses** aus.
 
-   ![Screenshot von Logic Apps Designer, der die Auswahl von Event Grid-Triggern für ein Ressourcenereignis zeigt.](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
+   ![Screenshot: Workflow-Designer mit dem ausgewählten Event Grid-Trigger](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
 
 1. Wenn Sie aufgefordert werden, melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos bei Azure Event Grid an. Überprüfen Sie in der Liste **Mandant**, in der der zugeordnete Azure Active Directory-Mandant für Ihr Azure-Abonnement angezeigt wird, dass der richtige Mandant angegeben ist. Beispiel:
 
-   ![Screenshot von Logic Apps Designer, der die Azure-Anmeldeaufforderung zum Herstellen einer Verbindung mit Event Grid zeigt.](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
+   ![Screenshot: Workflow-Designer mit der Azure-Anmeldeaufforderung zum Herstellen einer Verbindung mit Event Grid](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
    > Wenn Sie mit einem persönlichen Microsoft-Konto wie @outlook.com oder @hotmail.com angemeldet sind, wird der Event Grid-Trigger möglicherweise nicht ordnungsgemäß angezeigt. Um dieses Problem zu umgehen, wählen Sie [Verbindung über Dienstprinzipal herstellen](../active-directory/develop/howto-create-service-principal-portal.md) aus oder authentifizieren sich als Mitglied der Azure Active Directory-Instanz, die Ihrem Azure-Abonnement zugeordnet ist, z. B. *Benutzername*@emailoutlook.onmicrosoft.com.
 
 1. Abonnieren Sie für Ihre Logik-App jetzt die Ereignisse des Herausgebers. Geben Sie die Details zu Ihrem Ereignisabonnement wie in der folgenden Tabelle beschrieben an, z. B.:
 
-   ![Screenshot von Logic Apps Designer, der den Detail-Editor für den Trigger beim Eintreten eines Ressourcenereignisses zeigt.](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
+   ![Screenshot: Workflow-Designer mit dem geöffneten Editor für Triggerdetails](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | Beschreibung |
    | -------- | -------- | ----- | ----------- |
    | **Abonnement** | Ja | <*event-publisher-Azure-subscription-name*> | Wählen Sie den Namen für das Azure-Abonnement aus, das dem *Ereignisherausgeber* zugeordnet ist. Wählen Sie für dieses Tutorial den Namen des Azure-Abonnements für Ihren virtuellen Computer aus. |
    | **Ressourcentyp** | Ja | <*event-publisher-Azure-resource-type*> | Wählen Sie den Azure-Ressourcentyp für den Ereignisherausgeber aus. Weitere Informationen zu Azure-Ressourcentypen finden Sie unter [Azure-Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md). Wählen Sie für dieses Tutorial den Wert `Microsoft.Resources.ResourceGroups` aus, um Azure-Ressourcengruppen zu überwachen. |
@@ -112,7 +116,7 @@ Fügen Sie nun den Event Grid-Trigger hinzu, den Sie zum Überwachen der Ressour
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus. Um die Details einer Aktion in Ihrer Logik-App zu reduzieren und auszublenden, wählen Sie die Titelleiste der Aktion aus.
 
-   ![Screenshot von Logic Apps Designer, der die Schaltfläche „Speichern“ zum Speichern von Workflowänderungen zeigt.](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-save.png)
+   ![Screenshot: Workflow-Designer und ausgewählte Schaltfläche „Speichern“](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-save.png)
 
    Wenn Sie Ihre Logik-App mit einen Ereignisrastertrigger speichern, erstellt Azure automatisch ein Ereignisabonnement für Ihre Logik-App in Ihrer ausgewählten Ressource. Veröffentlicht die Ressource nun ein Ereignis im Ereignisraster, überträgt dieses Ereignisraster das Ereignis mithilfe von Push automatisch an Ihre Logik-App. Dieses Ereignis löst Ihre Logik-App aus, erstellt dann eine Instanz des in den folgenden Schritten definierten Workflows und startet deren Ausführung.
 
@@ -124,25 +128,25 @@ Falls Sie möchten, dass Ihre Logik-App nur ausgeführt wird, wenn ein bestimmte
 
 1. Wählen Sie im Designer für Logik-Apps unter dem Event Grid-Trigger die Option **Neuer Schritt** aus.
 
-   ![Screenshot von Logic Apps Designer, der die Schaltfläche zum Hinzufügen neuer Schritte zum Workflow zeigt.](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
+   ![Screenshot: Workflow-Designer mit ausgewählter Option „Neuer Schritt“](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
 
 1. Geben Sie unter **Aktion auswählen** im Suchfeld `condition` als Filter ein. Wählen Sie in der Liste „Aktionen“ die Aktion **Bedingung** aus.
 
-   ![Screenshot von Logic Apps Designer, der die Schaltfläche zum Hinzufügen einer neuen Bedingungsaktion zeigt.](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
+   ![Screenshot: Workflow-Designer mit ausgewählter Aktion „Bedingung“](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
 
    Der Designer für Logik-Apps fügt Ihrem Workflow eine leere Bedingung einschließlich der abhängig davon, ob die Bedingung „true“ oder „false“ ist, zu befolgenden Aktionspfade hinzu.
 
-   ![Screenshot von Logic Apps Designer, der eine leere Bedingung anzeigt, die dem Workflow hinzugefügt wurde.](./media/monitor-virtual-machine-changes-event-grid-logic-app/empty-condition.png)
+   ![Screenshot: Workflow-Designer mit einer dem Workflow hinzugefügten leeren Bedingung](./media/monitor-virtual-machine-changes-event-grid-logic-app/empty-condition.png)
 
 1. Benennen Sie den Titel der Bedingung in `If a virtual machine in your resource group has changed` um. Wählen Sie in der Titelleiste der Bedingung die Schaltfläche mit den Auslassungspunkten ( **...** ) und anschließend **Umbenennen** aus.
 
-   ![Screenshot von Logic Apps Designer, der das Kontextmenü des Bedingungs-Editors anzeigt, bei dem die Option „Umbenennen“ ausgewählt ist.](./media/monitor-virtual-machine-changes-event-grid-logic-app/rename-condition.png)
+   ![Screenshot: Workflow-Designer mit dem Kontextmenü des Bedingungs-Editors und ausgewählter Option „Umbenennen“](./media/monitor-virtual-machine-changes-event-grid-logic-app/rename-condition.png)
 
 1. Erstellen Sie eine Bedingung, die das `body`-Ereignis auf ein `data`-Objekt überprüft, bei dem die Eigenschaft `operationName` dem Vorgang `Microsoft.Compute/virtualMachines/write` entspricht. Weitere Informationen finden Sie unter [Event Grid-Ereignisschema](../event-grid/event-schema.md).
 
    1. Klicken Sie in der ersten Zeile unter **Und** innerhalb des linken Felds. Wählen Sie in der angezeigten Liste mit dynamischem Inhalt die Option **Ausdruck** aus.
 
-      ![Screenshot von Logic Apps Designer, der die Bedingung mit ausgewähltem Ausdrucks-Editor zeigt.](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-choose-expression.png)
+      ![Screenshot: Workflow-Designer mit der Aktion „Bedingung“ und der geöffneten Liste mit dynamischem Inhalt mit ausgewählter Option „Ausdruck“](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-choose-expression.png)
 
    1. Geben Sie im Ausdrucks-Editor den folgenden Ausdruck ein, mit dem der Vorgangsname für den Trigger zurückgegeben wird, und wählen Sie **OK** aus:
 
@@ -160,11 +164,11 @@ Falls Sie möchten, dass Ihre Logik-App nur ausgeführt wird, wenn ein bestimmte
 
    Ihre fertig gestellte Bedingung sieht nun wie im folgenden Beispiel aus:
 
-   ![Screenshot von Logic Apps Designer, der eine Bedingung anzeigt, die den Vorgang vergleicht.](./media/monitor-virtual-machine-changes-event-grid-logic-app/complete-condition.png)
+   ![Screenshot: Workflow-Designer mit einer Bedingung, die den Vorgang vergleicht](./media/monitor-virtual-machine-changes-event-grid-logic-app/complete-condition.png)
 
    Wenn Sie von der Entwurfsansicht zur Programmieransicht und wieder zurück in die Entwurfsansicht wechseln, wird der Ausdruck, den Sie in der Bedingung angegeben haben, in das Token **data.operationName** aufgelöst:
 
-   ![Screenshot von Logic Apps Designer, der eine Bedingung mit aufgelösten Token anzeigt.](./media/monitor-virtual-machine-changes-event-grid-logic-app/resolved-condition.png)
+   ![Screenshot: Workflow-Designer mit einer Bedingung, die über aufgelöste Token verfügt](./media/monitor-virtual-machine-changes-event-grid-logic-app/resolved-condition.png)
 
 1. Speichern Sie Ihre Logik-App.
 
@@ -174,7 +178,7 @@ Fügen Sie nun eine [*Aktion*](../logic-apps/logic-apps-overview.md#logic-app-co
 
 1. Wählen Sie im Feld **Bei TRUE** der Bedingung die Option **Aktion hinzufügen** aus.
 
-   ![Screenshot des Bedingungs-Editors von Logic Apps Designer, der die Schaltfläche zum Hinzufügen einer Aktion anzeigt, wenn die Bedingung zutrifft.](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
+   ![Screenshot: Workflow-Designer mit dem geöffneten Bereich „Bei TRUE“ der Bedingung und ausgewählter Option „Aktion hinzufügen“](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
 
 1. Geben Sie unter **Aktion auswählen** im Suchfeld `send an email` als Filter ein. Suchen Sie abhängig von Ihrem E-Mail-Anbieter nach dem entsprechenden Connector, und wählen Sie diesen aus. Wählen Sie anschließend die Aktion „E-Mail senden“ für Ihren Connector aus. Beispiel:
 
@@ -186,7 +190,7 @@ Fügen Sie nun eine [*Aktion*](../logic-apps/logic-apps-overview.md#logic-app-co
 
    Dieses Tutorial fährt mit dem Office 365 Outlook-Connector fort. Wenn Sie einen anderen Anbieter verwenden, werden dieselben Schritte durchgeführt, allerdings kann das Erscheinungsbild der Benutzeroberfläche eventuell etwas abweichen.
 
-   ![Screenshot von Logic Apps Designer, der die Suche für die Aktion „E-Mail senden“ im Office 365 Outlook-Connector anzeigt.](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-send-email.png)
+   ![Screenshot: Workflow-Designer mit geöffnetem Suchfeld zum Suchen nach der Aktion „E-Mail senden“](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-send-email.png)
 
 1. Wenn noch keine Verbindung für Ihren E-Mail-Anbieter besteht, melden Sie sich nach Aufforderung zur Authentifizierung bei Ihrem E-Mail-Konto an.
 
@@ -194,7 +198,7 @@ Fügen Sie nun eine [*Aktion*](../logic-apps/logic-apps-overview.md#logic-app-co
 
 1. Geben Sie die Informationen zur E-Mail gemäß der folgenden Tabelle an:
 
-   ![Screenshot von Logic Apps Designer, der den dynamischen Inhalt anzeigt, der bei einer zutreffenden Bedingung zur Betreffzeile einer E-Mail hinzugefügt wird.](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-empty-email-action.png)
+   ![Screenshot: Workflow-Designer mit dynamischem Inhalt, der einer E-Mail-Betreffzeile hinzugefügt wird, wenn die Bedingung TRUE ist](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-empty-email-action.png)
 
    > [!TIP]
    > Klicken Sie zum Auswählen der Ausgabe aus vorherigen Schritten in Ihrem Workflow in ein Bearbeitungsfeld, um die Liste mit dynamischen Inhalten anzuzeigen, oder wählen Sie die Option **Dynamischen Inhalt hinzufügen** aus. Wählen Sie für jeden Abschnitt in der Liste **Mehr anzeigen** aus, um weitere Ergebnisse anzuzeigen. Um die Liste mit dynamischen Inhalten zu schließen, wählen Sie erneut **Dynamischen Inhalt hinzufügen** aus.
@@ -211,11 +215,11 @@ Fügen Sie nun eine [*Aktion*](../logic-apps/logic-apps-overview.md#logic-app-co
 
    Ihre E-Mail-Aktion könnte nun folgendem Beispiel entsprechen:
 
-   ![Screenshot von Logic Apps Designer, der ausgewählte Ausgaben anzeigt, die beim Aktualisieren einer VM in einer E-Mail gesendet werden.](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-send-email-details.png)
+   ![Screenshot: Workflow-Designer mit ausgewählten Ausgaben, die beim Aktualisieren eines virtuellen Computers in einer E-Mail gesendet werden sollen](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-send-email-details.png)
 
    Anschließend sieht Ihre Logik-App in etwa wie im folgenden Beispiel aus:
 
-   ![Screenshot von Logic Apps Designer, der die erstellte Logik-App mit Details zu Triggern und Aktionen anzeigt.](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-completed.png)
+   ![Screenshot: Workflow-Designer mit fertiger Logik-App und Details zu Triggern und Aktionen](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-completed.png)
 
 1. Speichern Sie Ihre Logik-App. Um die Details der einzelnen Aktionen in Ihrer Logik-App zu reduzieren und auszublenden, wählen Sie die Titelleiste der Aktion aus.
 
@@ -225,7 +229,7 @@ Fügen Sie nun eine [*Aktion*](../logic-apps/logic-apps-overview.md#logic-app-co
 
 1. Um zu überprüfen, ob Ihre Logik-App die angegebenen Ereignisse abruft, aktualisieren Sie Ihren virtuellen Computer.
 
-   Beispielsweise können Sie die Größe Ihrer VM im Azure-Portal oder [mit Azure PowerShell ändern](../virtual-machines/windows/resize-vm.md).
+   Sie können beispielsweise die [Größe des virtuellen Computers ändern](../virtual-machines/resize-vm.md).
 
    Nach nur wenigen Minuten sollten Sie eine E-Mail erhalten. Beispiel:
 

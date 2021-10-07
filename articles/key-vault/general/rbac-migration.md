@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 88ac65c35b29c2113576594788f820973331d64b
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 5f92ecca8ccecda0f4ba6e7e87dc0287c75ed41b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515009"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761617"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>Migrieren von Key Vault-Zugriffsrichtlinien zu einem Berechtigungsmodell für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -31,7 +31,7 @@ Azure RBAC bietet gegenüber Key Vault-Zugriffsrichtlinien die folgenden Hauptvo
 
 Azure RBAC besitzt die folgenden Nachteile:
 - Latenz bei Rollenzuweisungen: Es kann mehrere Minuten dauern, bis eine Rollenzuweisung angewendet wird. Key Vault-Zugriffsrichtlinien werden sofort zugewiesen.
-- Begrenzte Anzahl von Rollenzuweisungen: 2000 Rollenzuweisungen pro Abonnement gegenüber 1024 Zugriffsrichtlinien pro Key Vault
+- Begrenzte Anzahl von Rollenzuweisungen - Azure RBAC erlaubt nur 2000 Rollenzuweisungen für alle Dienste pro Abonnement gegenüber 1024 Zugriffsrichtlinien pro Key Vault
 
 ## <a name="access-policies-to-azure-roles-mapping"></a>Zugriffsrichtlinien für die Zuordnung von Azure-Rollen
 

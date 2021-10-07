@@ -1,25 +1,25 @@
 ---
 title: Transformieren von Daten mit Python in Databricks
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Sie Daten verarbeiten oder transformieren, indem Sie eine Databricks-Python-Aktivität in einer Azure Data Factory-Pipeline ausführen.
+description: Erfahren Sie, wie Sie Daten verarbeiten oder umwandeln können, indem Sie eine Databricks Python-Aktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline ausführen.
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
-ms.date: 03/15/2018
+ms.date: 09/09/2021
 author: nabhishek
 ms.author: abnarain
 ms.custom: devx-track-python, synapse
-ms.openlocfilehash: 24d1ab1860f875201c255e775af151af88585731
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: b178a54d71d7f004f66e15f455c0b618842d765e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122356368"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806356"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Transformieren von Daten durch Ausführen einer Python-Aktivität in Azure Databricks
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Die Python-Aktivität in Azure Databricks in einer [Data Factory-Pipeline](concepts-pipelines-activities.md) führt eine Python-Datei in Ihrem Azure Databricks-Cluster aus. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.  Azure Databricks ist eine verwaltete Plattform für die Ausführung von Apache Spark.
+Die Azure Databricks Python Activity in einer [Pipeline](concepts-pipelines-activities.md) führt eine Python-Datei in Ihrem Azure Databricks-Cluster aus. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.  Azure Databricks ist eine verwaltete Plattform für die Ausführung von Apache Spark.
 
 Das folgende Video enthält eine 11-minütige Einführung und Demonstration dieses Features:
 
@@ -60,7 +60,7 @@ Dies ist die JSON-Beispieldefinition der Python-Aktivität in Databricks:
 
 Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definition verwendet werden:
 
-|Eigenschaft|BESCHREIBUNG|Erforderlich|
+|Eigenschaft|Beschreibung|Erforderlich|
 |---|---|---|
 |name|Der Name der Aktivität in der Pipeline.|Ja|
 |description|Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.|Nein|

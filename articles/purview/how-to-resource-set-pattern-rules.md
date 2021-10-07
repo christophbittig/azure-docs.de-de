@@ -4,19 +4,19 @@ description: Erfahren Sie, wie Sie Musterregeln für Ressourcensätze erstellen,
 author: djpmsft
 ms.author: daperlov
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 04/15/2021
-ms.openlocfilehash: 00b3abc14207e2cb20d61f20639bf326a426cf37
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.date: 09/27/2021
+ms.openlocfilehash: c2d6f90bf9a3e3b3f7c03db1ab0a4fbf258703eb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813607"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218867"
 ---
 # <a name="create-resource-set-pattern-rules"></a>Erstellen von Musterregeln für Ressourcensatz
 
-In skalierbaren Datenverarbeitungssystemen wird eine einzelne Tabelle in der Regel in mehreren Dateien auf einem Datenträger gespeichert. Dieses Konzept wird in Azure Purview mithilfe von Ressourcensätzen dargestellt. Ein Ressourcensatz ist ein einzelnes Objekt im Datenkatalog, das eine große Anzahl von Ressourcen im Speicher darstellt. Weitere Informationen finden Sie unter [Grundlegendes zu Ressourcensätzen](concept-resource-sets.md).
+In großen Datenverarbeitungssystemen wird eine einzelne Tabelle in der Regel in mehreren Dateien gespeichert. Dieses Konzept wird in Azure Purview mithilfe von Ressourcensätzen dargestellt. Ein Ressourcensatz ist ein einzelnes Objekt im Datenkatalog, das eine große Anzahl von Ressourcen im Speicher darstellt. Weitere Informationen finden Sie unter [Grundlegendes zu Ressourcensätzen](concept-resource-sets.md).
 
 Beim Überprüfen eines Speicherkontos verwendet Azure Purview eine Reihe definierter Muster, um zu bestimmen, ob eine Gruppe von Ressourcen ein Ressourcensatz ist. In einigen Fällen entspricht die Ressourcensatzgruppierung von Azure Purview möglicherweise nicht genau dem Datentyp. Mit den Musterregeln für Ressourcensätze können Sie die Art und Weise, wie Azure Purview erkennt, welche Assets als Ressourcensätze gruppiert sind und wie sie innerhalb des Katalogs angezeigt werden, anpassen oder außer Kraft setzen.
 
@@ -26,12 +26,13 @@ Musterregeln werden derzeit in den folgenden Quelltypen unterstützt:
 - Azure Files
 - Amazon S3
 
+Die Featuregruppe „Advanced resource set“ (Erweiterter Ressourcensatz) muss aktiviert sein, um Musterregeln für Ressourcensätze zu erstellen. Weitere Informationen finden Sie unter [Grundlegendes zu Ressourcensätzen](concept-resource-sets.md#advanced-resource-sets).
 
 ## <a name="how-to-create-a-resource-set-pattern-rule"></a>Erstellen einer Musterregel für einen Ressourcensatz
 
 Führen Sie die folgenden Schritte aus, um eine neue Musterregel für Ressourcensätze zu erstellen:
 
-1. Navigieren Sie zum Verwaltungscenter. Wählen Sie **Musterregeln** im Menü unter der Überschrift „Ressourcensätze“ aus. Wählen Sie **+ Neu** aus, um eine neue Regel zu erstellen.
+1. Navigieren Sie zu Data Map. Klicken Sie im Menü unter der Überschrift „Quellverwaltung“ auf **Pattern rules** (Musterregeln). Wählen Sie **+ Neu** aus, um eine neue Regel zu erstellen.
 
    :::image type="content" source="media/how-to-resource-set-pattern-rules/create-new-scoped-resource-set-rule.png" alt-text="Erstellen von neuen Musterregeln für Ressourcensatz" border="true":::
 

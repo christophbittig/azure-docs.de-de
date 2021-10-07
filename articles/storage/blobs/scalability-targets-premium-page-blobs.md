@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 09/24/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 23a176bfa5e3861dbc4ad5c03ea54fc847d3f56b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9d669d583563e81fa55d3626e6505ebe108340c
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96922541"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153461"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Skalierungs- und Leistungsziele für Seitenblob-Speicherkonten mit Premium-Leistung
 
@@ -31,11 +31,13 @@ Seitenblob-Speicherkonten mit Premium-Leistung weisen folgende Skalierbarkeitszi
 
 | Gesamtkapazität des Kontos                            | Gesamtbandbreite für ein lokal redundantes Speicherkonto                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| Datenträgerkapazität: 4 TB (einzelner Datenträger)/35 TB (kumulativer Gesamtwert aller Datenträger) <br>Kapazität für Momentaufnahmen: 10 TB | Bis zu 50 Gigabit pro Sekunde für eingehenden<sup>1</sup> und ausgehenden<sup>2</sup> Datenverkehr |
+| Datenträgerkapazität: 4 TB (einzelner Datenträger)/35 TB (kumulativer Gesamtwert aller Datenträger) <br>Kapazität für Momentaufnahmen: 10 TB<sup>3</sup> | Bis zu 50 Gigabit pro Sekunde für eingehenden<sup>1</sup> und ausgehenden<sup>2</sup> Datenverkehr |
 
 <sup>1</sup> Alle Daten (Anforderungen), die an ein Speicherkonto gesendet werden
 
 <sup>2</sup> Alle Daten (Antworten), die von einem Speicherkonto empfangen werden
+
+<sup>3</sup> Ein einzelnes Seitenblob kann über insgesamt maximal 100 Momentaufnahmen verfügen.
 
 Ein Seitenblobkonto mit Premium-Leistung ist ein universelles Konto, das für Premium-Leistung konfiguriert wurde. Es werden Speicherkonten vom Typ „Universell v2“ empfohlen.
 

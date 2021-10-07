@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 06/10/2021
-ms.openlocfilehash: 6998005024bdbf61fb941ae3ff778be55dc5bb26
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 40323124846bd825b2d0c51d16f7dfa7dc67511f
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346159"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082682"
 ---
 # <a name="license-dashboard-in-commercial-marketplace-analytics"></a>Lizenzdashboard für Analysen auf dem kommerziellen Marketplace
 
@@ -27,11 +27,31 @@ Dieser Artikel bietet Informationen zum Lizenzdashboard im kommerziellen Marketp
 
 ## <a name="check-license-usage"></a>Überprüfen der Lizenznutzung
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
 Gehen Sie wie folgt vor, um die Lizenznutzung von ISV-Apps im Partner Center zu überprüfen:
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie auf der Startseite die Kachel **Insights** aus.
+
+    [ ![Screenshot der Kachel „Insights“ auf der Startseite von Partner Center](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. Wählen Sie im linken Menü die Option **Lizenz** aus.
+
+    [ ![Screenshot des Lizenzdashboards im Partner Center](./media/license-dashboard/license-dashboard-workspaces.png) ](./media/license-dashboard/license-dashboard-workspaces.png#lightbox)
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+Gehen Sie wie folgt vor, um die Lizenznutzung von ISV-Apps im Partner Center zu überprüfen:
+
 1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165507) an.
 1. Klicken Sie im linken Navigationsmenü auf **Kommerzieller Marketplace** > **Analysieren** > **Lizenz**.
 
 :::image type="content" source="./media/license-dashboard/license-dashboard.png" alt-text="Screenshot des Lizenzdashboards im Partner Center.":::
+
+---
 
 ## <a name="elements-of-the-license-dashboard"></a>Elemente des Lizenzdashboards
 
@@ -41,7 +61,15 @@ In den folgenden Abschnitten wird beschrieben, wie das Lizenzdashboard verwendet
 
 Oben rechts auf der Seite finden Sie eine Monatsbereichsauswahl. Passen Sie die Ausgabe der Widgets auf der Seite an, indem Sie einen Monatsbereich basierend auf den letzten 6 oder 12 Monaten oder einen benutzerdefinierten Monatsbereich mit einer maximalen Dauer von 12 Monaten auswählen. Der standardmäßige Monatsbereich (Berechnungszeitraum) beträgt sechs Monate.
 
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view) 
+
+[ ![Screenshot der Monatsbereichsauswahl im Lizenzdashboard im Partner Center](./media/license-dashboard/license-workspace-filters.png) ](./media/license-dashboard/license-workspace-filters.png#lightbox)
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view) 
+
 :::image type="content" source="./media/license-dashboard/month-range.png" alt-text="Screenshot der Monatsbereichsauswahl im Lizenzdashboard im Partner Center.":::
+
+---
 
 ## <a name="customers-widget"></a>Widget „Kunden“
 

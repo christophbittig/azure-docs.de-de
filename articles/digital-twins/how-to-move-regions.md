@@ -4,20 +4,20 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Sie eine Instanz von Azure Digital Twins aus einer Azure-Region in eine andere verschieben.
 author: baanders
 ms.author: baanders
-ms.date: 08/26/2020
+ms.date: 9/8/2021
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 9617fc3cc7668d8449a9ec3b46e6c82228783e9d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9fc28555be055fe74f183c965190b2c784c4533b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447147"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676787"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Verschieben einer Azure Digital Twins-Instanz in eine andere Azure-Region
 
-Wenn Sie Ihre Azure Digital Twins-Instanz in eine andere Region verschieben müssen, erstellen Sie Ihre Ressourcen in der neuen Region neu, und löschen Sie dann die ursprünglichen Ressourcen. Am Ende dieses Vorgangs werden Sie mit einer neuen Azure Digital Twins-Instanz arbeiten, die bis auf den aktualisierten Speicherort mit der ersten identisch ist.
+Wenn Sie Ihre Azure Digital Twins-Instanz in eine andere Region verschieben müssen, besteht die aktuelle Vorgehensweise darin, Ihre Ressourcen in der neuen Region neu zu erstellen. Nachdem die Ressourcen in der neuen Region neu erstellt wurden, werden die ursprünglichen Ressourcen gelöscht. Am Ende dieses Vorgangs werden Sie mit einer neuen Azure Digital Twins-Instanz arbeiten, die bis auf den aktualisierten Speicherort mit der ersten identisch ist.
 
 Dieser Artikel bietet einen Leitfaden, wie Sie eine vollständige Verschiebung durchführen, indem Sie alles kopieren, was Sie benötigen, damit die neue Instanz mit dem Original übereinstimmt.
 
@@ -33,7 +33,7 @@ Dieser Vorgang umfasst die folgenden Schritte:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie versuchen, Ihre Azure Digital Twins-Instanz neu zu erstellen, gehen Sie die Komponenten Ihrer ursprünglichen Instanz durch, um sich eine klare Vorstellung von allen Komponenten zu machen, die erneut erstellt werden müssen.
+Bevor Sie versuchen, Ihre Azure Digital Twins-Instanz neu zu erstellen, gehen Sie die Komponenten Ihrer ursprünglichen Instanz durch, um sich eine klare Vorstellung von allen Komponenten zu machen, die Sie neu erstellen müssen.
 
 Dabei stellen sich unter anderem folgende Fragen:
 
@@ -63,15 +63,15 @@ In diesem Abschnitt bereiten Sie die Neuerstellung Ihrer Instanz vor, indem Sie 
 
 ### <a name="download-models-twins-and-graph-with-azure-digital-twins-explorer"></a>Herunterladen von Modellen, Zwillingen und eines Graphen mit dem Azure Digital Twins-Explorer
 
-Öffnen Sie als zunächst [Azure-Portal](https://portal.azure.com) den **Azure Digital Twins-Explorer** für Ihre Instanz. Navigieren Sie dazu im Portal zu Ihrer neuen Azure Digital Twins-Instanz, indem Sie in der Suchleiste des Portals nach ihrem Namen suchen. Wählen Sie dann die Schaltfläche **Explorer (Vorschau) öffnen** aus. 
+Öffnen Sie als zunächst [Azure-Portal](https://portal.azure.com) den **Azure Digital Twins-Explorer** für Ihre Instanz. Suchen Sie in der Suchleiste des Portals nach dem Namen Ihrer Azure Digital Twins-Instanz, um im Portal zu dieser zu navigieren. Wählen Sie dann die Schaltfläche **Explorer (Vorschau) öffnen** aus. 
 
 :::image type="content" source="media/includes/azure-digital-twins-explorer-portal-access.png" alt-text="Screenshot des Azure-Portal mit der Seite „Übersicht“ für eine Azure Digital Twins-Instanz. Die Schaltfläche „Azure Digital Twins-Explorer (Vorschau) öffnen“ ist hervorgehoben." lightbox="media/includes/azure-digital-twins-explorer-portal-access.png":::
 
-Dadurch wird ein Azure Digital Twins-Explorer-Fenster geöffnet, das mit dieser Instanz verbunden ist.
+Durch das Klicken auf diese Schaltfläche wird ein Azure Digital Twins-Explorer-Fenster geöffnet, das mit dieser Instanz verbunden ist.
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="Screenshot: Azure-Portal in einem Internetbrowser Im Portal wird der Azure Digital Twins-Explorer angezeigt, der keine Daten enthält." lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
 
-Befolgen Sie die Anweisungen des Azure Digital Twins-Explorers zum [Exportieren von Graphen und Modellen](how-to-use-azure-digital-twins-explorer.md#export-graph-and-models). Dadurch wird eine JSON-Datei auf Ihren Computer heruntergeladen, die den Code für Ihre Modelle, Zwillinge und Beziehungen enthält (auch für Modelle, die derzeit nicht im Graphen verwendet werden).
+Befolgen Sie die Anweisungen des Azure Digital Twins-Explorers zum [Exportieren von Graphen und Modellen](how-to-use-azure-digital-twins-explorer.md#export-graph-and-models). Wenn Sie diese Anweisungen befolgen, können Sie eine JSON-Datei auf Ihren Computer herunterladen, die den Code für Ihre Modelle, Zwillinge und Beziehungen enthält (auch für Modelle, die derzeit nicht im Graphen verwendet werden).
 
 ## <a name="move"></a>Move
 
@@ -90,11 +90,11 @@ Nun richten Sie die Daten der neuen Instanz so ein, dass sie eine Kopie der ursp
 
 #### <a name="upload-models-twins-and-graph-with-azure-digital-twins-explorer"></a>Hochladen von Modellen, Zwillingen und eines Graphen mit dem Azure Digital Twins-Explorer
 
-In diesem Abschnitt können Sie die Modelle, Zwillinge und Graphen erneut in die neue Instanz hochladen. Wenn Sie in Ihrer ursprünglichen Instanz keine Modelle, Zwillinge oder Graphen besitzen oder Sie diese nicht in die neue Instanz verschieben möchten, können Sie mit dem [nächsten Abschnitt](#re-create-endpoints-and-routes) fortfahren.
+In diesem Abschnitt können Sie die Modelle, Zwillinge und Graphen erneut in die neue Instanz hochladen. Wenn Sie in Ihrer ursprünglichen Instanz keine Modelle, Zwillinge oder Graphen besitzen oder Sie diese nicht in die neue Instanz verschieben möchten, können Sie mit dem [nächsten Abschnitt](#recreate-endpoints-and-routes) fortfahren.
 
 Navigieren Sie zunächst im [Azure-Portal](https://portal.azure.com) zum **Azure Digital Twins-Explorer** für die neue Instanz. 
 
-Importieren Sie die zuvor in diesem Artikel [heruntergeladene JSON-Datei](#download-models-twins-and-graph-with-azure-digital-twins-explorer) in Ihre neue Instanz, indem Sie die Schritte in den Anweisungen des Azure Digital Twins-Explorers zum [Importieren einer Datei in Azure Digital Twins-Explorer](how-to-use-azure-digital-twins-explorer.md#import-file-to-azure-digital-twins-explorer) ausführen. Dadurch werden alle Modelle, Zwillinge und Beziehungen aus Ihrer ursprünglichen Instanz in die neue Instanz hochgeladen.
+Importieren Sie die [JSON-Datei](#download-models-twins-and-graph-with-azure-digital-twins-explorer), die Sie in einem früheren Schritt in diesem Artikel in Ihre neue Instanz heruntergeladen haben. Dazu können Sie die Schritte in den Azure Digital Twins-Explorer-Anweisungen zum [Importieren einer Datei in Azure Digital Twins-Explorer](how-to-use-azure-digital-twins-explorer.md#import-file-to-azure-digital-twins-explorer) ausführen. Mit diesen Schritten können Sie alle Modelle, Zwillinge und Beziehungen aus Ihrer ursprünglichen Instanz in die neue Instanz hochladen.
 
 Um zu überprüfen, ob alles erfolgreich hochgeladen wurde, navigieren Sie zur Registerkarte **Twin Graph** (Zwillingsgraph) zurück und wählen die Schaltfläche **Abfrage ausführen** im Bereich **Abfrage-Explorer** aus. Damit führen Sie die Standardabfrage aus, die alle Zwillinge und Beziehungen im Graphen anzeigt. Durch diese Aktion wird auch die Liste der Modelle im Bereich **Modelle** aktualisiert.
 
@@ -106,13 +106,13 @@ Der Graph sollte mit all seinen Zwillingen und Beziehungen im Bereich **Twin Gra
 
 Diese Ansichten bestätigen, dass Ihre Modelle, Zwillinge und Graphen erneut in die neue Instanz in der Zielregion hochgeladen wurden.
 
-#### <a name="re-create-endpoints-and-routes"></a>Erneutes Erstellen von Endpunkten und Routen
+#### <a name="recreate-endpoints-and-routes"></a>Erneutes Erstellen von Endpunkten und Routen
 
-Wenn Sie Endpunkte oder Routen in Ihrer ursprünglichen Instanz besitzen, müssen Sie diese in Ihrer neuen Instanz neu erstellen. Wenn Sie in Ihrer ursprünglichen Instanz keine Endpunkte oder Routen besitzen oder Sie diese nicht in die neue Instanz verschieben möchten, können Sie zum [nächsten Abschnitt](#relink-connected-resources) springen.
+Wenn Sie Endpunkte oder Routen in Ihrer ursprünglichen Instanz besitzen, müssen Sie diese in Ihrer neuen Instanz neu erstellen. Wenn Sie in Ihrer ursprünglichen Instanz jedoch keine Endpunkte oder Routen besitzen oder Sie diese nicht in die neue Instanz verschieben möchten, können Sie zum [nächsten Abschnitt](#relink-connected-resources) überspringen.
 
 Führen Sie andernfalls die Schritte unter [Verwalten von Endpunkten und Routen](how-to-manage-routes.md) aus, und verwenden Sie dabei die neue Instanz. Beachten Sie Folgendes:
 
-* Sie müssen *nicht* die Event Grid-, Event Hub- oder Service Bus-Ressource neu erstellen, die Sie für den Endpunkt verwenden. Weitere Informationen finden Sie im Abschnitt „Voraussetzungen“ in den Endpunktanleitungen. Sie müssen den Endpunkt nur auf der Azure Digital Twins-Instanz neu erstellen.
+* Sie müssen die Event Grid-, Event Hub- oder Service Bus-Ressource *nicht* neu erstellen, die Sie für den Endpunkt verwenden. Weitere Informationen finden Sie im Abschnitt „Voraussetzungen“ in den Endpunktanleitungen. Sie müssen nur den Endpunkt in der Azure Digital Twins-Instanz neu erstellen.
 * Sie können Endpunkt- und Routennamen wiederverwenden, da ihr Gültigkeitsbereich eine andere Instanz ist.
 * Denken Sie daran, alle erforderlichen Filter zu den von Ihnen erstellten Routen hinzuzufügen.
 

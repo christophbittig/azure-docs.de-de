@@ -2,22 +2,17 @@
 title: 'Bicep-Funktionen: Bereiche'
 description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei zum Abrufen von Werten zu Bereitstellungsbereichen verwendet werden.
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 2bf09aef4e3b59f6718a96c6ce2650d508872106
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: 4432aa528dbdd565128a15eb79d4b4c01572c924
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026353"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827452"
 ---
 # <a name="scope-functions-for-bicep"></a>Bereichsfunktionen für Bicep
 
-Resource Manager stellt die folgenden Funktionen zum Abrufen von Bereichswerten in Ihrer Bicep-Datei bereit:
-
-* [managementGroup](#managementgroup)
-* [Ressourcengruppe](#resourcegroup)
-* [Abonnement](#subscription)
-* [tenant](#tenant)
+Dieser Artikel beschreibt die Bicep-Funktionen zum Abrufen von Scope-Werten.
 
 ## <a name="managementgroup"></a>managementGroup
 
@@ -35,7 +30,7 @@ Gibt ein Objekt zurück, das zum Festlegen des Bereichs in einer Verwaltungsgrup
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | name |Nein |Zeichenfolge |Eindeutiger Bezeichner für die Verwaltungsgruppe zur Bereitstellung Verwenden Sie nicht den Anzeigenamen für die Verwaltungsgruppe. Wenn Sie keinen Wert angeben, wird die aktuelle Verwaltungsgruppe ausgegeben. |
 
@@ -80,7 +75,7 @@ Die Funktion resourceGroup hat zwei spezielle Verwendungszwecke. Ein Zweck ist d
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | resourceGroupName |Nein |Zeichenfolge | Name der Ressourcengruppe, in der Sie die Bereitstellung durchführen Wenn Sie keinen Wert angeben, wird die aktuelle Ressourcengruppe ausgegeben. |
 | subscriptionId |Nein |Zeichenfolge |Eindeutiger Bezeichner für das Abonnement, in dem Sie die Bereitstellung durchführen Wenn Sie keinen Wert angeben, wird das aktuelle Abonnement ausgegeben. |
@@ -171,7 +166,7 @@ Die Funktion subscription hat zwei spezielle Verwendungszwecke. Ein Zweck ist da
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nein |Zeichenfolge |Eindeutiger Bezeichner für das Abonnement, in dem Sie die Bereitstellung durchführen Wenn Sie keinen Wert angeben, wird das aktuelle Abonnement ausgegeben. |
 

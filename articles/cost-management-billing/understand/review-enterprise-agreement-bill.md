@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 09/08/2021
 ms.author: banders
-ms.openlocfilehash: 5d945c421dc0a4abed17b3a355339c131dd922df
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 60c7acf1f88f37d44ef38516480640eeebd220b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728048"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662037"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Grundlegendes zu Ihrer Azure Enterprise-Rechnung
 
@@ -42,7 +42,7 @@ Dieser Abschnitt gilt nicht für Azure-Kunden in Australien, Japan oder Singapur
 Wenn eines der folgenden Ereignisse während des Abrechnungszyklus auftritt, erhalten Sie eine Azure-Rechnung:
 
 - **Dienstüberschreitung:** Die Kosten für die Nutzung durch Ihre Organisation überschreiten Ihr Guthaben.
-- **Separat abgerechnete Gebühren:** Die von Ihrer Organisation genutzten Dienste sind nicht durch das Guthaben abgedeckt. Die folgenden Dienste werden Ihnen unabhängig von Ihrem Guthaben in Rechnung gestellt:
+- **Separat abgerechnete Gebühren:** Die von Ihrer Organisation genutzten Dienste sind nicht durch das Guthaben abgedeckt. Die folgenden Dienste werden Ihnen unabhängig von Ihrem Guthaben in Rechnung gestellt. Die genannten Dienste sind Beispiele für separat abgerechnete Gebühren. Sie können eine vollständige Liste der Dienste erhalten, bei denen Gebühren separat abgerechnet werden, indem Sie eine [Supportanfrage senden](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -75,7 +75,7 @@ Dieser Abschnitt gilt nur für Azure-Kunden in Australien, Japan oder Singapur.
 Bei folgenden Ereignissen erhalten Sie eine oder mehrere Azure-Rechnungen:
 
 - **Dienstüberschreitung:** Die Kosten für die Nutzung durch Ihre Organisation überschreiten Ihr Guthaben.
-- **Separat abgerechnete Gebühren:** Die von Ihrer Organisation genutzten Dienste sind nicht durch das Guthaben abgedeckt. Die folgenden Dienste werden Ihnen in Rechnung gestellt:
+- **Separat abgerechnete Gebühren:** Die von Ihrer Organisation genutzten Dienste sind nicht durch das Guthaben abgedeckt. Die folgenden Dienste werden Ihnen in Rechnung gestellt. Die genannten Dienste sind Beispiele für separat abgerechnete Gebühren. Sie können eine vollständige Liste der Dienste erhalten, bei denen Gebühren separat abgerechnet werden, indem Sie eine [Supportanfrage senden](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -368,7 +368,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 
 ### <a name="to-access-microsoft-azure-consumption-insights"></a>So greifen Sie auf Microsoft Azure Consumption Insights zu:
 
-1. Gehen Sie zu [Microsoft Azure Consumption Insights](https://app.powerbi.com/getdata/services/azureconsumption?cpcode=MicrosoftAzureConsumptionInsights&amp;getDataForceConnect=true&amp;WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26).
+1. Gehen Sie zu Microsoft Azure Consumption Insights.
 1. Wählen Sie **Jetzt anfordern** aus.
 1. Geben Sie eine Registrierungsnummer und die Anzahl der Monate an, und wählen Sie dann **Weiter** aus.
 1. Geben Sie Ihren API-Zugriffsschlüssel ein, um die Verbindung herzustellen. Den Schlüssel für Ihre Registrierung finden Sie im [Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26).

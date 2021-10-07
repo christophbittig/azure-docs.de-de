@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdbb34c147b3629384d7173c3c20d75aac3c7da1
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 819a492f7a0a624afd3255c1b92151536bbf7bca
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113108799"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803605"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Nahtlose einmalige Anmeldung mit Azure Active Directory
 
@@ -84,7 +84,7 @@ Das einmalige Anmelden (SSO) über das primäre Aktualisierungstoken funktionier
 
 \*\*\*Erfordert [zusätzliche Konfigurationsschritte](how-to-connect-sso-quick-start.md#browser-considerations).
 
-\*\* \* \*Microosft Edge auf Chromium-Basis
+\*\*\*\*Microsoft Edge auf Basis von Chromium
 
 ## <a name="next-steps"></a>Nächste Schritte
 

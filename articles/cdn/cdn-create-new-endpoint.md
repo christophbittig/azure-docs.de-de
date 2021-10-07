@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: d98b7050b2472c1dd0405c213b450c719bcd8572
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: e045a7df3389dc58fe8ac2298f2f51b0337a5f94
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322444"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775510"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts
 
@@ -62,6 +62,9 @@ Nachdem Sie ein CDN-Profil erstellt haben, erstellen Sie damit einen Endpunkt.
    ![CDN-Endpunkt](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
    Die Dauer für die Verteilung des Endpunkts hängt vom Tarif ab, den Sie bei der Erstellung des Profils ausgewählt haben. Bei **Akamai Standard** wird der Vorgang in der Regel innerhalb von einer Minute abgeschlossen, bei **Microsoft Standard** in zehn Minuten und bei **Verizon Standard** und **Verizon Premium** in bis zu 30 Minuten.
+
+> [!NOTE]
+> Bei *Verizon-CDN-Endpunkten* werden alle über das zusätzliche Verizon-Portal konfigurierten Ressourcen bereinigt, wenn ein Endpunkt aus irgendeinem Grund **deaktiviert** oder **angehalten** wird. Diese Konfigurationen können nicht durch das Neustarten des Endpunkts automatisch wiederhergestellt werden. Sie müssen diese Konfigurationsänderungen erneut vornehmen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

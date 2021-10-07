@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 06/24/2021
+ms.date: 09/12/2021
 tags: azure-synpase
-ms.openlocfilehash: 869498111df151f78cb0a1d9ad7ede1dd84aaf42
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 8a3740a228aa03a23f3584c3412b8451ebacc35e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582617"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812412"
 ---
 # <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -52,6 +52,13 @@ Sie richten eine Richtlinie für die dynamische Datenmaskierung im Azure-Portal 
 
 Von der DDM-Empfehlungs-Engine werden bestimmte Felder Ihrer Datenbank als potenzielle Felder mit vertraulichen Daten angegeben, bei denen es sich um gute Kandidaten für die Maskierung handelt. Auf dem Blatt „Dynamische Datenmaskierung“ im Portal werden die empfohlenen Spalten für Ihre Datenbank angezeigt. Sie können einfach für eine oder mehrere Spalten auf **Maske hinzufügen** und dann auf **Speichern** klicken, um eine Maskierung auf diese Felder anzuwenden.
 
+## <a name="manage-dynamic-data-masking-using-t-sql"></a>Verwalten der dynamischen Datenmaskierung mit T-SQL
+
+- Um eine dynamische Daten Maske zu erstellen, siehe [Erstellen einer dynamischen Daten Maske](/sql/relational-databases/security/dynamic-data-masking#creating-a-dynamic-data-mask).
+- Um eine Maske zu einer vorhandenen Spalte hinzuzufügen oder zu bearbeiten, siehe [Maske zu einer vorhandenen Spalte hinzufügen oder bearbeiten](/sql/relational-databases/security/dynamic-data-masking#adding-or-editing-a-mask-on-an-existing-column).
+- Zur Erteilung von Berechtigungen zur Ansicht unmaskierter Daten siehe [Erteilung von Berechtigungen zur Ansicht unmaskierter Daten](/sql/relational-databases/security/dynamic-data-masking#granting-permissions-to-view-unmasked-data).
+- Zum Löschen einer dynamischen Daten Maske, siehe [Löschen einer dynamischen Daten Maske](/sql/relational-databases/security/dynamic-data-masking#dropping-a-dynamic-data-mask).
+
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Einrichten der dynamischen Datenmaskierung für Ihre Datenbank mithilfe von PowerShell-Cmdlets
 
 ### <a name="data-masking-policies"></a>Datenmaskierungsrichtlinien
@@ -82,7 +89,19 @@ Sie können die REST-API verwenden, um Datenmaskierungsrichtlinien und -regeln p
 
 ## <a name="permissions"></a>Berechtigungen
 
-Die dynamische Datenmaskierung kann von den Rollen „Azure SQL-Datenbank-Administrator“, „Serveradministrator“ oder die RBAC-Rolle [SQL-Sicherheits-Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) konfiguriert werden.
+Dies sind die eingebauten Rollen, mit denen die dynamische Datenmaskierung konfiguriert wird:
+- [SQL-Sicherheits-Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager)
+- [Mitwirkender von SQL DB](../../role-based-access-control/built-in-roles.md#sql-db-contributor)
+- [Mitwirkender von SQL Server](../../role-based-access-control/built-in-roles.md#sql-server-contributor)
+
+Dies sind die erforderlichen Maßnahmen zur Verwendung der dynamischen Datenmaskierung:
+
+Read/Write:
+- Microsoft.Sql/servers/databases/dataMaskingPolicies/* Lesen:
+- Microsoft.Sql/servers/databases/dataMaskingPolicies/lesen schreiben:
+-   Microsoft.Sql/servers/databases/dataMaskingPolicies/write
+
+Um mehr über Berechtigungen bei der Verwendung von dynamischer Datenmaskierung mit dem T-SQL-Befehl zu erfahren, siehe [Berechtigungen](/sql/relational-databases/security/dynamic-data-masking#permissions)
 
 ## <a name="see-also"></a>Weitere Informationen
 

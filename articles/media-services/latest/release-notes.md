@@ -12,12 +12,12 @@ ms.custom: references_regions
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 46ebdd1f5cb3093b0c1c1a5bc3273cf1aa1afd8f
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 4a2c4959d6a84e8561ac23924207744b6c65f88b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634827"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129053487"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -30,15 +30,50 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Behebung von Programmfehlern
 * Veraltete Funktionen
 
+## <a name="september-2021"></a>September 2021
+
+
+### <a name="improved-scale-management-and-monitoring-for-a-streaming-endpoint-in-the-portal"></a>Verbesserte Skalierungsverwaltung und -überwachung für einen Streamingendpunkt im Portal
+
+Die Portalseite des Streamingendpunkts bietet Ihnen jetzt eine einfache Möglichkeit, Ihre Ausgangskapazität zu verwalten und die Reichweite Ihrer Zielgruppe mit und ohne konfigurierte CDN einzuschätzen.  Passen Sie einfach die Übermittlungsbitrate und die erwartete CDN-Cachetrefferquote an, um schnelle Schätzungen Ihrer Zielgruppengröße zu erhalten und zu ermitteln, ob Sie auf mehr Premium-Streamingendpunkte hochskalieren müssen.
+
+   [ ![Skalieren und Überwachen von Streamingendpunkten im Portal](./media/release-notes/streaming-endpoint-monitor-inline.png) ](./media/release-notes/streaming-endpoint-monitor.png#lightbox)
+
+### <a name="streaming-endpoint-portal-page-now-shows-cpu-egress-and-latency-metrics"></a>Die Portalseite des Streamingendpunkts zeigt jetzt CPU-, Ausgangs- und Latenzmetriken an.
+
+Sie können nun die CPU-Last, die ausgehende Bandbreite und End-to-End-Latenzmetriken auf deren Streamingendpunkten im Azure-Portal visualisieren. Sie können jetzt Überwachungswarnungen basierend auf den CPU-, Ausgangs- oder Latenzmetriken direkt im Portal erstellen, indem Sie die Leistungsfähigkeit von Azure Monitor nutzen.
+
+### <a name="user-assigned-managed-identities-support-for-media-services-accounts"></a>Unterstützung von benutzerseitig zugewiesene verwaltete Identitäten für Media Services Konten
+
+Mit von benutzerseitig zugewiesenen, verwalteten Identitäten können Kunden jetzt die Sicherheit ihrer Speicherkonten und zugehörigen Schlüsseltresore optimieren. Der Zugriff auf das Kundenspeicherkonto und die Schlüsseltresore ist auf die benutzerseitig zugewiesene, verwaltete Identität beschränkt.  Sie haben die volle Kontrolle über die Lebensdauer der benutzerseitig zugewiesenen, verwalteten Identitäten und können den Zugriff des Mediendienstkontos auf ein bestimmtes Speicherkonto bei Bedarf einfach widerrufen.
+
+### <a name="media-services-storage-accounts-page-in-the-portal-now-support-both-uami-and-sami"></a>Die Seite „Media Services-Speicherkonten“ im Portal unterstützt jetzt sowohl UAMI als auch SAMI.
+
+Sie können jetzt benutzerseitig zugewiesene verwaltete Identitäten (User-Assigned Managed Identities, UAMI) oder systemseitig verwaltete Identitäten (System-Assigned Managed Identities, SAMI) für Ihre Speicherkonten direkt im Azure-Portal für Media Services zuweisen und verwalten.
+
+### <a name="bring-your-own-key-page-now-also-supports-both-uami-and-sami"></a>Die Seite „Bring Your Own Key“ unterstützt jetzt auch UAMI und SAMI.
+Die Seite des Schlüsselverwaltungsportals für Media Services unterstützt jetzt die Konfiguration und Verwaltung von benutzerseitig zugewiesene verwaltete Identitäten (UAMI) oder von systemseitig zugewiesenen verwalteten Identitäten (SAMI).
+
+   [![Bring Your Own Keys für die Kontoverschlüsselung](./media/release-notes/byok-managed-identity.png)](./media/release-notes/byok-managed-identity.png)
+
+
+### <a name="private-link-support-for-media-services"></a>Private Link-Unterstützung für Media Services
+Sie können nun den öffentlichen Zugriff auf Ihre Liveereignisse, Streamingendpunkte und Schlüsselübermittlungsdienste-Endpunkte für den Inhaltsschutz und DRM einschränken, indem Sie einen privaten Endpunkt für jeden der Dienste erstellen. Dadurch wird der öffentliche Zugriff auf jeden dieser Dienste eingeschränkt. Nur Datenverkehr, der aus Ihrem konfigurierten virtuellen Netzwerk (VNet) stammt, das im privaten Endpunkt konfiguriert ist, kann diese Endpunkte erreichen.
+
+### <a name="ip-allow-list-for-key-service"></a>Liste mit zugelassenen IP-Adressen für Schlüsseldienst
+Sie können jetzt festlegen, dass bestimmte öffentliche IP-Adressen Zugriff auf den Schlüsselübermittlungsdienst für DRM und Inhaltsschutz haben sollen. Liveereignis- und Streamingendpunkte unterstützen bereits die Konfiguration der Liste mit zugelassenen IP-Adressen auf ihren jeweiligen Seiten.
+
+Sie verfügen jetzt auch über ein Featureflag auf Kontoebene, um den öffentlichen Internetzugriff auf Ihr Media Services-Konto zuzulassen bzw. zu blockieren.
+
 ## <a name="july-2021"></a>Juli 2021
 
-### <a name="net-sdk-microsoftazuremanagementmedia--500-release-available-in-nuget-coming-soon---early-september-2021"></a>.NET SDK (Microsoft.Azure.Management.Media ) Release 5.0.0 in NuGet verfügbar (In Kürze verfügbar – Anfang September 2021!)
+### <a name="net-sdk-microsoftazuremanagementmedia--500-release-available-in-nuget"></a>.NET SDK (Microsoft.Azure.Management.Media ) Release 5.0.0 in NuGet verfügbar
 
 Das [Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/5.0.0) .NET SDK Version 5.0.0 wird jetzt auf NuGet veröffentlicht. Diese Version wird generiert, um mit der stabilen Version [2021-06-01](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01) der Open-API (Swagger) ARM-REST-API zu arbeiten.
 
 Ausführliche Informationen zu Änderungen ab Version 4.0.0 finden Sie im [Änderungsprotokoll](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/mediaservices/Microsoft.Azure.Management.Media/CHANGELOG.md).
 
-#### <a name="changes-in-the-500-net-sdk-release-coming-soon---early-september-2021"></a>Änderungen am .NET SDK Release 5.0.0 (In Kürze verfügbar – Anfang September 2021!)
+#### <a name="changes-in-the-500-net-sdk-release"></a>Änderungen im 5.0.0 .NET SDK-Release
 
 * Das Media Services-Konto unterstützt jetzt systemseitig und benutzerseitig zugewiesene verwaltete Identitäten.
 * Die Option **PublicNetworkAccess** wurde Media Services-Konten hinzugefügt. Diese Option kann zusammen mit dem Private Link-Feature verwendet werden, um nur den Zugriff von privaten Netzwerken zuzulassen und den Zugriff auf öffentliche Netzwerke zu blockieren.
@@ -48,8 +83,9 @@ Ausführliche Informationen zu Änderungen ab Version 4.0.0 finden Sie im [Ände
 #### <a name="breaking-changes-in-tht-500-net-sdk-release"></a>Breaking Changes in Version 5.0.0 des .NET SDK
 
 * **ApiErrorException** wurde durch **ErrorResponseException** ersetzt, um mit allen anderen Azure SDKs konsistent zu sein. Der Ausnahmetext hat sich nicht geändert.
+* Alle Aufrufe, die „404 Nicht gefunden“ zurückgeben, geben jetzt eine **ErrorResponseException** aus, anstatt NULL zurückzugeben. Diese Änderung wurde vorgenommen, um mit anderen Azure SDKs konsistent zu sein.
 * Der Media Service-Konstruktor verfügt über einen neuen optionalen PublicNetworkAccess-Parameter hinter dem KeyDelivery-Parameter.
-* Die Type-Eigenschaft in „MediaServiceIdentity“ wurde von Enumeration (enum) in Zeichenfolge (string) für „ManagedIdentityType“ geändert, um mehrere durch Komma getrennte Typen zu ermöglichen. Gültige Zeichenfolgen für den Typ sind „SystemAssigned“ oder „SystemAssigned,UserAssigned“ oder „UserAssigned“.
+* Die Type-Eigenschaft in **MediaServiceIdentity** wurde von Enumeration (enum) in Zeichenfolge (string) für „ManagedIdentityType“ geändert, um mehrere durch Komma getrennte Typen zu ermöglichen. Gültige Zeichenfolgen sind **SystemAssigned** oder **UserAssigned**.
 
 ## <a name="june-2021"></a>Juni 2021
 
@@ -71,7 +107,7 @@ Informationen zum Verwenden von Media Services mit privaten Verbindungen finden 
 
 Die Region „USA, Westen 3“ ist jetzt allgemein verfügbar und kann von Kunden verwendet werden, wenn sie neue Media Services-Konten erstellen.
 
-### <a name="key-delivery-supports-ip-allowlist-restrictions"></a>Schlüsselübermittlung unterstützt Einschränkungen der Liste zugelassener IP-Adressen
+### <a name="key-delivery-supports-ip-allow-list-restrictions"></a>Schlüsselübermittlung unterstützt Einschränkungen der Liste zugelassener IP-Adressen
 
 Media Services-Konten können jetzt mit Einschränkungen der Liste zugelassener IP-Adressen für die Schlüsselübermittlung konfiguriert werden. Die neue Einstellung für die Positivliste ist auf der Media Services-Kontoressource über das SDK sowie im Portal und über die CLI verfügbar.
 Dies ermöglicht es den Operatoren, die Bereitstellung von DRM-Lizenzen und symmetrischen AES-128-Schlüsseln auf bestimmte IPv4-Bereiche zu beschränken.
@@ -161,6 +197,8 @@ Version 3 bietet Folgendes:
 - Liveereignisunterstützung rund um die Uhr
 - ARM REST APIs, Client-SDKs für .NET Core, Node.js, Python, Java, Go und Ruby
 - Kundenseitig verwaltete Schlüssel, vertrauenswürdige Speicherintegration, Unterstützung für private Verbindungen und [vieles mehr](./migrate-v-2-v-3-migration-benefits.md)
+
+Im Rahmen des Updates der v3-API und SDKs werden Media Reserve Units (MRUs) nicht mehr für Media Services-Konten benötigt, da das System basierend auf der Last automatisch hoch- und herunterskaliert wird. Weitere Informationen finden Sie im [MRUs Migrationsleitfaden](./migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md).
 
 #### <a name="action-required"></a>Erforderliche Aktion
 

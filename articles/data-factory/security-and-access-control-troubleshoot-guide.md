@@ -1,26 +1,26 @@
 ---
 title: Beheben von Problemen mit der Sicherheit und Zugriffssteuerung
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Hier erfahren Sie, wie Sie Probleme mit der Sicherheit und Zugriffssteuerung in Azure Data Factory beheben.
+description: Hier erfahren Sie, wie Sie Probleme mit der Sicherheit und Zugriffskontrolle in Azure Data Factory und Synapse Analytics beheben.
 author: lrtoyou1223
 ms.service: data-factory
 ms.subservice: integration-runtime
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 07/28/2021
+ms.date: 09/09/2021
 ms.author: lle
-ms.openlocfilehash: a025e46914390d203537d0ddd0c9faf5f22488ab
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 990fc37f08116aad5b576e2e207aa04913795894
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864155"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814973"
 ---
-# <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Beheben von Problemen mit der Sicherheit und Zugriffssteuerung in Azure Data Factory
+# <a name="troubleshoot-azure-data-factory-and-synapse-analytics-security-and-access-control-issues"></a>Fehlerbehebung bei Sicherheits- und Zugriffskontrollproblemen in Azure Data Factory und Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel werden gängige Methoden zur Problembehandlung für die Sicherheit und Zugriffssteuerung in Azure Data Factory beschrieben.
+In diesem Artikel werden gängige Methoden zur Fehlerbehebung für Sicherheit und Zugriffskontrolle in Azure Data Factory- und Synapse Analytics-Pipelines untersucht.
 
 ## <a name="common-errors-and-messages"></a>Häufige Fehler und Meldungen
 
@@ -66,17 +66,17 @@ Wenn keine der vorherigen Methoden funktioniert, wenden Sie sich an Microsoft, u
 
 #### <a name="symptoms"></a>Symptome
 
-Nachdem Sie den öffentlichen Netzwerkzugriff für Data Factory deaktiviert haben, gibt die selbstgehostete Integration Runtime folgende Fehlermeldung aus: „Der Authentifizierungsschlüssel ist ungültig oder leer.“
+Nachdem Sie den öffentlichen Netzwerkzugriff für den Dienst deaktiviert haben, gibt die selbst gehostete Integrationslaufzeit den folgenden Fehler aus: "Der Authentifizierungsschlüssel ist ungültig oder leer.”
 
 #### <a name="cause"></a>Ursache
 
 Das Problem wird wahrscheinlich durch ein Problem bei der Domain Name System-Auflösung (DNS) verursacht, da die Deaktivierung der öffentlichen Konnektivität und das Einrichten eines privaten Endpunkts eine erneute Verbindung verhindert.
 
-Gehen Sie folgendermaßen vor, um zu überprüfen, ob der vollständig qualifizierte Data Factory-Domänenname (FQDN) in die öffentliche IP-Adresse aufgelöst ist:
+Um zu überprüfen, ob der vollständig qualifizierte Domänenname (FQDN) des Dienstes in die öffentliche IP-Adresse aufgelöst wird, gehen Sie wie folgt vor:
 
-1. Vergewissern Sie sich, dass Sie den virtuellen Azure-Computer (VM) im gleichen virtuellen Netzwerk wie den privaten Data Factory-Endpunkt erstellt haben.
+1. Vergewissern Sie sich, dass Sie die virtuelle Azure-Maschine (VM) in demselben virtuellen Netzwerk wie der private Endpunkt des Dienstes erstellt haben.
 
-2. Führen Sie PsPing und Ping von der Azure-VM zum Data Factory-FQDN aus:
+2. Führen Sie PsPing und Ping von der Azure-VM zum FQDN des Dienstes aus:
 
    `psping.exe <dataFactoryName>.<region>.datafactory.azure.net:443`
    `ping <dataFactoryName>.<region>.datafactory.azure.net`
@@ -90,15 +90,15 @@ Gehen Sie folgendermaßen vor, um zu überprüfen, ob der vollständig qualifizi
 
 Gehen Sie zur Lösung des Problems wie folgt vor:
 
-- Als Option empfiehlt es sich, manuell eine „VNet-Verknüpfung“ unter der „Private Link-DNS-Zone“ von Data Factory hinzuzufügen. Lesen Sie für weitere Informationen den Artikel [Azure Private Link für Azure Data Factory](./data-factory-private-link.md#dns-changes-for-private-endpoints). Die Anweisung dient zum Konfigurieren der privaten DNS-Zone oder des benutzerdefinierten DNS-Servers, um den Data Factory-FQDN in eine private IP-Adresse aufzulösen. 
+- Als Option möchten wir Ihnen vorschlagen, manuell einen "Virtual Network link" unter der "Private link DNS Zone" für den Dienst hinzuzufügen. Einzelheiten finden Sie im Artikel [Azure Private Link](./data-factory-private-link.md#dns-changes-for-private-endpoints). Die Anweisung dient dazu, die private DNS-Zone oder den benutzerdefinierten DNS-Server so zu konfigurieren, dass der FQDN des Dienstes in eine private IP-Adresse aufgelöst wird. 
 
 - Wenn Sie die private DNS-Zone oder den benutzerdefinierten DNS-Server jedoch nicht konfigurieren möchten, versuchen Sie es mit der folgenden temporären Lösung:
 
-  1. Ändern Sie die Hostdatei in Windows, und ordnen Sie die private IP-Adresse (den privaten Azure Data Factory-Endpunkt) dem Azure Data Factory-FQDN zu.
+  1. Ändern Sie die Host-Datei in Windows, und ordnen Sie die private IP (den privaten Endpunkt des Dienstes) dem FQDN des Dienstes zu.
   
      Wechseln Sie auf dem virtuellen Azure-Computer zu `C:\Windows\System32\drivers\etc`, und öffnen Sie dann die Datei *host* im Editor. Fügen Sie die Zeile hinzu, mit der die private IP-Adresse dem FQDN am Ende der Datei zugeordnet wird, und speichern Sie die Änderung.
      
-     ![Screenshot der Zuordnung der privaten IP-Adresse zum Host.](media/self-hosted-integration-runtime-troubleshoot-guide/add-mapping-to-host.png)
+     :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/add-mapping-to-host.png" alt-text="Screenshot der Zuordnung der privaten IP-Adresse zum Host.":::
 
   1. Führen Sie die gleichen Befehle wie in den vorherigen Überprüfungsschritten erneut aus, um die Antwort zu überprüfen, die die private IP-Adresse enthalten sollte.
 
@@ -147,28 +147,34 @@ Gehen Sie zur Lösung des Problems wie folgt vor:
 
 **Lösung 2**
 
-Um das Problem zu lösen, gehen Sie zu [Azure Private Link für Azure Data Factory](./data-factory-private-link.md).
+Um das Problem zu lösen, gehen Sie zu [Azure Private Link](./data-factory-private-link.md).
 
 Versuchen Sie, den Zugriff über das öffentliche Netzwerk auf der Benutzeroberfläche zu aktivieren, wie im folgenden Screenshot gezeigt:
 
-![Screenshot des Steuerelements „Aktiviert“ für „Zugriff über öffentliche Netzwerke zulassen“ im Bereich „Netzwerk“.](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
+# <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png" alt-text="Screenshot des Kontrollkästchens &quot;Aktiviert&quot; für &quot;Öffentlichen Netzwerk-Zugang zulassen&quot; auf der Seite &quot; Netzwerke&quot;.":::
 
-### <a name="adf-private-dns-zone-overrides-azure-resource-manager-dns-resolution-causing-not-found-error"></a>Überschreibung der Azure Resource Manager-DNS-Auflösung durch die private DNS-Zone von ADF führt zum Fehler „Nicht gefunden“
+# <a name="synapse-analytics"></a>[Synapse Analytics](#tab/synapse-analytics)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access-synapse.png" alt-text="Screenshot des Kontrollkästchens &quot;Aktiviert&quot; für &quot;Öffentlichen Netzzugang zulassen&quot; auf der Seite &quot;Netzwerke&quot;. ":::
+
+---
+
+### <a name="service-private-dns-zone-overrides-azure-resource-manager-dns-resolution-causing-not-found-error"></a>Die private DNS-Zone eines Dienstes überschreibt die Azure Resource Manager DNS-Auflösung und verursacht den Fehler "Nicht gefunden"
 
 #### <a name="cause"></a>Ursache
-Sowohl Azure Resource Manager als auch ADF verwenden dieselbe private Zone, was bei einem Szenario, in dem die Azure Resource Manager-Einträge nicht gefunden werden, zu einem potenziellen Konflikt mit dem privaten DNS des Kunden führt.
+Sowohl Azure Resource Manager als auch der Dienst verwenden dieselbe private Zone, wodurch ein potenzieller Konflikt im privaten DNS des Kunden entsteht, in dem die Azure Resource Manager-Datensätze nicht gefunden werden.
 
 #### <a name="solution"></a>Lösung
 1. Suchen Sie im Azure-Portal unter **privatelink.azure.com** nach privaten DNS-Zonen.
-![Screenshot: Suchen nach privaten DNS-Zonen](media/security-access-control-troubleshoot-guide/private-dns-zones.png)
+:::image type="content" source="media/security-access-control-troubleshoot-guide/private-dns-zones.png" alt-text="Screenshot: Suchen nach privaten DNS-Zonen":::
 2. Überprüfen Sie, ob ein Eintrag vom Typ „A“ mit dem Namen **adf** vorhanden ist.
-![Screenshot: A-Eintrag](media/security-access-control-troubleshoot-guide/a-record.png)
+:::image type="content" source="media/security-access-control-troubleshoot-guide/a-record.png" alt-text="Screenshot: A-Eintrag":::
 3.  Navigieren Sie zu **VNET-Verknüpfungen**, und löschen Sie alle Einträge.
-![Screenshot: VNET-Verknüpfung](media/security-access-control-troubleshoot-guide/virtual-network-link.png)
-4.  Navigieren Sie im Azure-Portal zu Ihrer Data Factory-Instanz, und erstellen Sie den privaten Endpunkt für das Azure Data Factory-Portal neu.
-![Screenshot: Neuerstellen des privaten Endpunkts](media/security-access-control-troubleshoot-guide/create-private-endpoint.png)
+:::image type="content" source="media/security-access-control-troubleshoot-guide/virtual-network-link.png" alt-text="Screenshot: VNET-Verknüpfung":::
+4.  Navigieren Sie zu Ihrem Dienst im Azure-Portal und erstellen Sie den privaten Endpunkt für das Portal neu.
+:::image type="content" source="media/security-access-control-troubleshoot-guide/create-private-endpoint.png" alt-text="Screenshot: Neuerstellen des privaten Endpunkts":::
 5.  Kehren Sie zu den privaten DNS-Zonen zurück, und überprüfen Sie, ob eine neue private DNS-Zone vorliegt (**privatelink.adf.azure.com**).
-![Screenshot: Neuer DNS-Eintrag](media/security-access-control-troubleshoot-guide/check-dns-record.png)
+:::image type="content" source="media/security-access-control-troubleshoot-guide/check-dns-record.png" alt-text="Screenshot: Neuer DNS-Eintrag":::
 
 ### <a name="connection-error-in-public-endpoint"></a>Verbindungsfehler beim öffentlichen Endpunkt
 
@@ -185,41 +191,40 @@ Beispiel: Die Azure Blob Storage-Senke hat Azure Integration Runtime (öffentlic
 
 #### <a name="cause"></a>Ursache
 
-ADF verwendet möglicherweise weiterhin die Integration Runtime für verwaltete VNETs, jedoch könnte ein solcher Fehler auftreten, weil der öffentliche Endpunkt für Azure Blob Storage im verwalteten VNET aufgrund des Testergebnisses nicht zuverlässig ist und die Verbindung mit Azure Blob Storage und Azure Data Lake Gen2 über einen öffentlichen Endpunkt eines verwalteten, virtuellen ADF-Netzwerks gemäß [Verwaltete virtuelle Netzwerke und verwaltete private Endpunkte](./managed-virtual-network-private-endpoint.md#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network) nicht unterstützt wird.
+Der Dienst kann immer noch Verwaltetes VNet IR verwenden, aber Sie könnten auf diesen Fehler stoßen, weil der öffentliche Endpunkt zu Azure Blob Storage im Verwalteten VNet basierend auf dem Testergebnis nicht zuverlässig ist und Azure Blob Storage und Azure Data Lake Gen2 nicht unterstützt werden, um über den öffentlichen Endpunkt vom Verwalteten Virtuellen Netzwerk des Dienstes gemäß [Verwaltetes virtuelles Netzwerk & verwaltete private Endpunkte](./managed-virtual-network-private-endpoint.md#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network) verbunden zu werden.
 
 #### <a name="solution"></a>Lösung
 
 - Aktivieren Sie einen privaten Endpunkt für die Quell- und Senkenseite, wenn Sie die Integration Runtime für verwaltete VNETs verwenden.
-- Wenn Sie dennoch den öffentlichen Endpunkt verwenden möchten, können Sie stattdessen nur die Integration Runtime für verwaltete VNETs für die Quelle und die Senke verwenden. Selbst wenn Sie zur öffentlichen Integration Runtime zurückwechseln, verwendet ADF möglicherweise weiterhin die Integration Runtime für verwaltete VNETs, wenn diese noch vorhanden ist.
+- Wenn Sie dennoch den öffentlichen Endpunkt verwenden möchten, können Sie stattdessen nur die Integration Runtime für verwaltete VNETs für die Quelle und die Senke verwenden. Auch wenn Sie wieder zu öffentlichen IR wechseln, kann der Dienst weiterhin das Verwaltete VNet IR verwenden, wenn das Verwaltete VNet IR noch vorhanden ist.
 
-### <a name="internal-error-while-trying-to-delete-adf-with-customer-managed-key-cmk-and-user-assigned-managed-identity-ua-mi"></a>Es ist ein interner Fehler beim Versuch, ADF mit kundenverwalteten Schlüsseln (Customer Managed Key, CMK) und vom Benutzer zugewiesener verwalteter Identität (UA-MI) zu löschen, aufgetreten
+### <a name="internal-error-while-trying-to-delete-a-data-factory-or-synapse-workspace-with-customer-managed-key-cmk-and-user-assigned-managed-identity-ua-mi"></a>Interner Fehler beim Versuch, eine Datenfabrik oder einen Synapse-Arbeitsbereich mit Customer Managed Key (CMK) und User Assigned Managed Identity (UA-MI) zu löschen
 
 #### <a name="symptoms"></a>Symptome
 `{\"error\":{\"code\":\"InternalError\",\"message\":\"Internal error has occurred.\"}}`
 
 #### <a name="cause"></a>Ursache
 
-Wenn Sie Vorgänge im Zusammenhang mit CMK durchführen, sollten Sie zuerst alle ADF-bezogenen Vorgänge und dann externe Vorgänge (z. B. verwaltete Identitäten oder Key Vault Vorgänge) durchführen. Wenn Sie beispielsweise alle Ressourcen löschen möchten, müssen Sie zuerst die Factory löschen und dann den Schlüsseltresor löschen. Wenn Sie dies in einer anderen Reihenfolge tun, schlägt der ADF-Aufruf fehl, da er verwandte Objekte nicht mehr lesen kann, und er kann nicht überprüfen, ob das Löschen möglich ist oder nicht. 
+Wenn Sie Vorgänge im Zusammenhang mit CMK durchführen, sollten Sie zuerst alle Vorgänge im Zusammenhang mit dem Dienst abschließen und dann erst externe Vorgänge (wie Managed Identities oder Key Vault). Wenn Sie z. B. alle Ressourcen löschen möchten, müssen Sie zuerst die Serviceinstanz und dann den Schlüsseltresor löschen.  Wenn Sie den Schlüsseltresor zuerst löschen, tritt dieser Fehler auf, da der Dienst die erforderlichen Objekte nicht mehr lesen kann und nicht in der Lage ist zu überprüfen, ob eine Löschung möglich ist oder nicht. 
 
 #### <a name="solution"></a>Lösung
 
 Dieses Problem kann auf drei Arten behandelt werden. Dies sind:
 
-* Sie haben den Zugriff von ADF auf den Schlüsseltresor widerrufen, in dem der CMK-Schlüssel gespeichert wurde. 
-Sie können den Zugriff auf die Data Factory mit den folgenden Berechtigungen neu zuweisen: **Abrufen, Aufhebung der Umschließung des Schlüssels und Schlüssel Umschließen**. Diese Berechtigungen sind erforderlich, um vom Kunden verwaltete Schlüssel in Data Factory aktivieren zu können. Informationen hierzu finden Sie im Abschnitt [Zugriff auf die ADF gewähren](enable-customer-managed-key.md#grant-data-factory-access-to-azure-key-vault). Sobald die Erlaubnis erteilt wurde, sollten Sie in der Lage sein, die ADF zu löschen
+* Sie haben dem Dienst den Zugriff auf den Schlüsseltresor entzogen, in dem der CMK-Schlüssel gespeichert war. Sie können den Zugriff auf die folgenden Berechtigungen neu zuweisen: **Holen, Schlüssel entpacken und Schlüssel umpacken**. Diese Berechtigungen sind erforderlich, um vom Kunden verwaltete Schlüssel zu aktivieren. Siehe [Zugang zu kundenverwalteten Schlüsseln gewähren](enable-customer-managed-key.md#grant-data-factory-access-to-azure-key-vault). Sobald die Genehmigung erteilt ist, sollten Sie den Dienst löschen können.
  
-* Der Kunde hat den Key Vault/CMK vor dem Löschen der ADF gelöscht. Die Einstellungen „Vorläufiges Löschen“ und „Schutz vor endgültigem Löschen“ für CMK in der ADF müssen aktiviert sein. Dafür ist eine Standardaufbewahrungsrichtlinie von 90 Tagen festgelegt. Sie können den gelöschten Schlüssel wiederherstellen.  
- Bitte lesen Sie die Informationen zu [Wiederherstellen von gelöschten Schlüsseln](../key-vault/general/key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates) und [Gelöschter Schlüsselwert](../key-vault/general/key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault)
+* Der Kunde hat Key Vault / CMK vor der Löschung des Dienstes gelöscht. CMK im Dienst sollte "Soft Delete" und "Purge Protect" aktiviert haben, die eine Standardaufbewahrungsrichtlinie von 90 Tagen haben. Sie können den gelöschten Schlüssel wiederherstellen.  
+Bitte lesen Sie die Informationen zu [Wiederherstellen von gelöschten Schlüsseln](../key-vault/general/key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates ) und [Gelöschter Schlüsselwert](../key-vault/general/key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault)
 
-* Die vom Benutzer zugewiesene verwaltete Identität (UA-MI) wurde vor ADF gelöscht. Sie können das mithilfe von REST-API-Aufrufen wiederherstellen. Sie können das in einem HTTP-Client Ihrer Wahl in einer beliebigen Programmiersprache durchführen. Wenn Sie die REST-API-Aufrufe mit Azure-Authentifizierung noch nicht eingerichtet haben, ist die einfachste Möglichkeit um die Einrichtung auszuführen die Verwendung von POSTMAN/Fiddler. Bitte führen Sie die folgenden Schritte aus.
+* User Assigned Managed Identity (UA-MI) wurde vor dem Dienst gelöscht. Sie können das mithilfe von REST-API-Aufrufen wiederherstellen. Sie können das in einem HTTP-Client Ihrer Wahl in einer beliebigen Programmiersprache durchführen. Wenn Sie die REST-API-Aufrufe mit Azure-Authentifizierung noch nicht eingerichtet haben, ist die einfachste Möglichkeit um die Einrichtung auszuführen die Verwendung von POSTMAN/Fiddler. Bitte führen Sie die folgenden Schritte aus.
 
-   1.  Führen Sie ein GET-Aufruf an die Factory mithilfe der folgenden Methode aus GET-URL wie   `https://management.azure.com/subscriptions/YourSubscription/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourFactoryName?api-version=2018-06-01`
+   1.  Führen Sie einen GET-Aufruf mit Method: GET Url wie `https://management.azure.com/subscriptions/YourSubscription/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourFactoryName?api-version=2018-06-01`
 
    2. Sie müssen eine neue vom Benutzer verwaltete Identität mit einem anderen Namen erstellen (der gleiche Name funktioniert möglicherweise, aber es ist sicherer, einen anderen Namen als in der „GET-Antwort“ zu verwenden)
 
    3. Ändern Sie die Encryption.identity-Eigenschaft und identity.userassignedidentities so, dass sie auf die neu erstellte verwaltete Identität verweisen. Entfernen Sie die „clientId“ und „principalId“ aus dem userAssignedIdentity-Objekt. 
 
-   4.  Nehmen Sie einen PUT-Aufruf an dieselbe Factory-URL vor und übergeben Sie den neuen Text. Es ist sehr wichtig, dass Sie alles übergeben, was Sie in der GET-Antwort erhalten haben und nur die Identität ändern. Andernfalls würden sie andere Einstellungen versehentlich außer Kraft setzen. 
+   4.  Führen Sie einen PUT-Aufruf an dieselbe URL durch und übergeben Sie den neuen Body. Es ist sehr wichtig, dass Sie alles übergeben, was Sie in der GET-Antwort erhalten haben und nur die Identität ändern. Andernfalls würden sie andere Einstellungen versehentlich außer Kraft setzen. 
 
    5.  Nachdem der Aufruf erfolgreich war, können Sie die Entitäten erneut sehen und das Löschen wiederholen. 
 
@@ -229,7 +234,7 @@ Sie können den Zugriff auf die Data Factory mit den folgenden Berechtigungen ne
 
 #### <a name="symptoms"></a>Symptome
 
-Beim Versuch, die selbstgehostete Integration Runtime über die Azure Data Factory-Benutzeroberfläche übergreifend für Data Factorys in anderen Mandanten freizugeben, werden Ihnen eventuell andere Data Factorys (in verschiedenen Mandanten) angezeigt, und der Versuch schlägt fehl.
+Möglicherweise bemerken Sie andere Datenfabriken (auf verschiedenen Tenants), wenn Sie versuchen, die selbstgehostete IR von der Benutzeroberfläche aus freizugeben, aber Sie können sie nicht für Datenfabriken freigeben, die sich auf verschiedenen Tenants befinden.
 
 #### <a name="cause"></a>Ursache
 

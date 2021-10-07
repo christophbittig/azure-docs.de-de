@@ -7,12 +7,12 @@ ms.reviewers: estfan, azla
 ms.topic: conceptual
 ms.date: 08/04/2021
 tags: connectors
-ms.openlocfilehash: 8efcbac4b2cdd93c2646ad75a024df79cf5f2623
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 295cfe41e66791233ce7057a55717714902db9a7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122353668"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806517"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Empfangen und Beantworten eingehender HTTPS-Anforderungen in Azure Logic Apps
 
@@ -29,6 +29,9 @@ Beispielsweise können Sie mit Ihrer Logik-App Folgendes durchführen:
 Dieser Artikel zeigt, wie Sie den Anforderungstrigger und die Antwortaktion verwenden können, damit Ihre Logik-App eingehende Aufrufe empfangen und darauf antworten kann.
 
 Weitere Informationen zu Sicherheit, Autorisierung und Verschlüsselung für eingehende Aufrufe Ihrer Logik-App, etwa über [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (früher bekannt als Secure Sockets Layer [SSL]) oder [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml), finden Sie unter [Sicherer Zugriff und Daten: Zugriff für eingehende Aufrufe anforderungsbasierter Trigger](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests). In diesem Artikel erfahren Sie auch, wie Sie Ihre Logik-App mit Azure API Management verfügbar machen oder IP-Adressen aus eingehenden Aufrufen einschränken.
+
+> [!NOTE]
+> Für den Ressourcentyp **Logik-App (Standard)** in Azure Logic Apps mit nur einem Mandanten ist Azure AD OAuth derzeit nicht für eingehende Aufrufe anforderungsbasierter Trigger verfügbar, z. B. anforderungsbasierter Trigger und HTTP-Webhooktrigger.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

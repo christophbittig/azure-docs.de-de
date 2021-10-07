@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/09/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: d1c479bf51536d89d0705cd585870638b23f1ceb
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: cce864b104b421a205c8a1231f49a2abf707f55e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892434"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>Tutorial: Azure Active Directory-Integration mit Boxcryptor
 
@@ -39,6 +39,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Boxcryptor unterstützt **SP-initiiertes** einmaliges Anmelden.
 * Boxcryptor unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* Boxcryptor unterstützt die [automatisierte Benutzerbereitstellung](boxcryptor-provisioning-tutorial.md).
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
@@ -123,6 +124,8 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Boxcryptor** müssen 
 
 In diesem Abschnitt wird in Boxcryptor ein Benutzer namens B. Simon erstellt. Boxcryptor unterstützt die Just-in-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Boxcryptor vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
+Außerdem unterstützt Boxcryptor die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./boxcryptor-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -131,7 +134,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Boxcryptor-Anmelde-URL auf, und initiieren Sie den Anmeldeablauf.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „Boxcryptor“ klicken, werden Sie zur Anmelde-URL für Boxcryptor weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“auf die Kachel „Boxcryptor“ klicken, werden Sie zur Anmelde-URL für Boxcryptor weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

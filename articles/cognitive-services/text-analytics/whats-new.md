@@ -8,19 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/27/2021
+ms.date: 09/21/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 8752a80eb4b5faae3566ce1e7bbd70dd61b26ba1
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 35b4d70ae5e1b7e93b08c7ebe16e5707172ed792
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219605"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672341"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
 Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu neuen Releases und Funktionen.
+
+## <a name="september-2021"></a>September 2021
+
+* Ab Version `3.0.017010001-onprem-amd64` kann der Container „Textanalyse für Gesundheit“ jetzt mithilfe der Clientbibliothek aufgerufen werden. Weitere Informationen finden Sie unter [Installieren und Ausführen von Containern für die Textanalyse](how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare#run-the-container-with-client-library-support).
+
 
 ## <a name="august-2021"></a>August 2021
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: b8029f8eb78539cb49bc3d13fefe9e2bf11b9f76
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6297956cb77898c26beaa617a59b1b43cc111e80
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638897"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771762"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Inkrementelles Laden von Daten aus Azure SQL Managed Instance in Azure Storage mithilfe von Change Data Capture (CDC)
 
@@ -103,11 +103,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Daten + Analysen** > **Data Factory** aus:
 
-   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-azure-data-factory-menu.png" alt-text="Auswahl von Data Factory im Bereich &quot;Neu&quot;":::
 
 2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein.
 
-     ![Seite „Neue Data Factory“](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-azure-data-factory.png)
+     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-azure-data-factory.png" alt-text="Seite „Neue Data Factory“":::
 
    Der Name der Azure Data Factory muss **global eindeutig** sein. Sollte der folgende Fehler auftreten, ändern Sie den Namen der Data Factory (beispielsweise in „<IhrName>ADFTutorialDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Artikel [Azure Data Factory – Benennungsregeln](naming-rules.md).
 
@@ -125,7 +125,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 7. Klicken Sie auf **Erstellen**.
 8. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
 
-   ![Screenshot mit einer Meldung, dass die Bereitstellung abgeschlossen ist, und einer Option zum Wechseln zur Ressource](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png" alt-text="Screenshot mit einer Meldung, dass die Bereitstellung abgeschlossen ist, und einer Option zum Wechseln zur Ressource":::
 9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
 
       :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Startseite für Azure Data Factory mit der Kachel „Open Azure Data Factory Studio“":::
@@ -133,7 +133,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 10. Wählen Sie auf der Kachel **Open Azure Data Factory Studio** die Option **Öffnen** um das Data Factory Benutzerinterface (UI) in einem separaten Tab zu starten.
 11. Wechseln Sie am linken Rand der Homepage zur Registerkarte **Verwalten** wie in der folgenden Abbildung gezeigt:
 
-    ![Screenshot der Schaltfläche „Manage“ (Verwalten)](media/doc-common-process/get-started-page-manage-button.png)
+    :::image type="content" source="media/doc-common-process/get-started-page-manage-button.png" alt-text="Screenshot der Schaltfläche „Manage“ (Verwalten)":::
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, können Sie verknüpfte Dienste in einer Data Factory erstellen. In diesem Abschnitt werden Dienste erstellt, die mit Ihrem Azure Storage-Konto und mit Azure SQL Managed Instance verknüpft sind.
@@ -143,17 +143,17 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit der Data Factory.
 
 1. Klicken Sie auf **Verbindungen** und dann auf **+ Neu**.
 
-   ![Schaltfläche für eine neue Verbindung](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-connection-button-storage.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-connection-button-storage.png" alt-text="Schaltfläche für eine neue Verbindung":::
 2. Wählen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die Option **Azure Blob Storage**, und klicken Sie dann auf **Weiter**.
 
-   ![Auswählen von „Azure Blob Storage“](./media/tutorial-incremental-copy-change-data-capture-feature-portal/select-azure-storage.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/select-azure-storage.png" alt-text="Auswählen von „Azure Blob Storage“":::
 3. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus:
 
    1. Geben Sie unter **Name** die Zeichenfolge **AzureStorageLinkedService** ein.
    2. Wählen Sie unter **Speicherkontoname** Ihr Azure Storage-Konto aus.
    3. Klicken Sie auf **Speichern**.
 
-   ![Einstellungen für Azure-Speicherkonto](./media/tutorial-incremental-copy-change-data-capture-feature-portal/azure-storage-linked-service-settings.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/azure-storage-linked-service-settings.png" alt-text="Einstellungen für Azure-Speicherkonto":::
 
 
 ### <a name="create-azure-sql-mi-database-linked-service"></a>Erstellen eines mit der Azure SQL Managed Instance-Datenbank verknüpften Diensts
@@ -174,7 +174,7 @@ In diesem Schritt wird Ihre Azure SQL Managed Instance-Datenbank mit der Data F
    7. Klicken Sie auf **Verbindung testen**, um die Verbindung zu testen.
    8. Klicken Sie auf **Speichern**, um den verknüpften Dienst zu speichern.
 
-   ![Mit der Azure SQL Managed Instance-Datenbank verknüpfter Dienst: Einstellungen](./media/tutorial-incremental-copy-change-data-capture-feature-portal/azure-sql-managed-instance-database-linked-service-settings.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/azure-sql-managed-instance-database-linked-service-settings.png" alt-text="Mit der Azure SQL Managed Instance-Datenbank verknüpfter Dienst: Einstellungen":::
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
 In diesem Schritt werden Datasets erstellt, um die Datenquelle und das Datenziel darzustellen.
@@ -184,30 +184,30 @@ In diesem Schritt erstellen Sie ein Dataset, das für die Quelldaten steht.
 
 1. Klicken Sie in der Strukturansicht auf **+** (Pluszeichen) und dann auf **Dataset**.
 
-   ![Menü „Neues Dataset“](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-dataset-menu.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-dataset-menu.png" alt-text="Menü „Neues Dataset“":::
 2. Wählen Sie **Verwaltete Azure SQL-Datenbank-Instanz** aus, und klicken Sie anschließend auf **Weiter**.
 
-   ![Quelldatasettyp – Azure SQL-Datenbank](./media/tutorial-incremental-copy-change-data-capture-feature-portal/select-azure-sql-database.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/select-azure-sql-database.png" alt-text="Quelldatasettyp – Azure SQL-Datenbank":::
    
 3. Legen Sie auf der Registerkarte **Eigenschaften festlegen** den Datasetnamen und die Verbindungsinformationen fest:
  
    1. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlMI1** aus.
    2. Wählen Sie unter **Tabellenname** die Option **[dbo].[dbo_customers_CT]** aus.  Hinweis: Diese Tabelle wurde automatisch erstellt, als CDC für die Tabelle „customers“ aktiviert wurde. Geänderte Daten werden nie direkt aus dieser Tabelle abgefragt, sondern über die [Change Data Capture-Funktionen](/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql) extrahiert.
 
-   ![Quellverbindung](./media/tutorial-incremental-copy-change-data-capture-feature-portal/source-dataset-configuration.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/source-dataset-configuration.png" alt-text="Quellverbindung":::
 
 ### <a name="create-a-dataset-to-represent-data-copied-to-sink-data-store"></a>Erstellen Sie ein Dataset zum Darstellen von Daten, die in den Senkendatenspeicher kopiert werden.
 In diesem Schritt erstellen Sie ein Dataset, das für die Daten steht, die aus dem Quelldatenspeicher kopiert werden. Den Data Lake-Container haben Sie im Rahmen der Vorbereitung in Ihrer Azure Blob Storage-Instanz erstellt. Erstellen Sie den Container, wenn er noch nicht vorhanden ist (oder) geben Sie den Namen eines bereits vorhandenen ein. In diesem Tutorial wird der Name der Ausgabedatei dynamisch unter Verwendung der (später konfigurierten) Auslösungszeit generiert.
 
 1. Klicken Sie in der Strukturansicht auf **+** (Pluszeichen) und dann auf **Dataset**.
 
-   ![Menü „Neues Dataset“](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-dataset-menu.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-dataset-menu.png" alt-text="Menü „Neues Dataset“":::
 2. Wählen Sie **Azure Blob Storage** aus, und klicken Sie auf **Weiter**.
 
-   ![Senkendatasettyp – Azure Blob Storage](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-type.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-type.png" alt-text="Senkendatasettyp – Azure Blob Storage":::
 3. Wählen Sie **DelimitedText** aus, und klicken Sie auf **Weiter**.
 
-   ![Format des Senkendatasets: DelimitedText](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-format.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-format.png" alt-text="Format des Senkendatasets: DelimitedText":::
 4. Legen Sie auf der Registerkarte **Eigenschaften festlegen** den Datasetnamen und die Verbindungsinformationen fest:
 
    1. Wählen Sie unter **Verknüpfter Dienst** die Option **AzureStorageLinkedService**.
@@ -215,20 +215,20 @@ In diesem Schritt erstellen Sie ein Dataset, das für die Daten steht, die aus d
    3. Aktivieren Sie das Kontrollkästchen **First row as header** (Erste Zeile als Header).
    4. Klicken Sie auf **OK**.
 
-   ![Senkendataset – Verbindung](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration.png" alt-text="Senkendataset – Verbindung":::
 
 ## <a name="create-a-pipeline-to-copy-the-changed-data"></a>Erstellen einer Pipeline zum Kopieren der geänderten Daten
 In diesem Schritt wird eine Pipeline erstellt, die zunächst mithilfe einer **Lookup-Aktivität** überprüft, wie viele geänderte Datensätze in der Änderungstabelle vorhanden sind. Durch eine Aktivität vom Typ „If-Bedingung“ wird geprüft, ob die Anzahl geänderter Datensätze größer Null ist, und eine **Kopieraktivität** wird ausgeführt, um die eingefügten/aktualisierten/gelöschten Daten aus Azure SQL-Datenbank in Azure Blob Storage zu kopieren. Abschließend wird ein Trigger für ein rollierendes Fenster konfiguriert, und die Start- und Endzeiten werden als Parameter für den Start und das Ende des Fensters an die Aktivitäten übergeben. 
 
 1. Wechseln Sie auf der Data Factory-Benutzeroberfläche zur Registerkarte **Bearbeiten**. Klicken Sie im Bereich auf der linken Seite auf **+** (Pluszeichen) und dann auf **Pipeline**.
 
-    ![Menü für neue Pipeline](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-pipeline-menu.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-pipeline-menu.png" alt-text="Menü für neue Pipeline":::
 2. Eine neue Registerkarte zum Konfigurieren der Pipeline wird angezeigt. Außerdem wird die Pipeline in der Strukturansicht angezeigt. Ändern Sie im **Eigenschaftenfenster** den Namen der Pipeline in **IncrementalCopyPipeline**.
 
-    ![Pipelinename](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-name.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-name.png" alt-text="Pipelinename":::
 3. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie die **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers. Legen Sie den Namen der Aktivität auf **GetChangeCount** fest. Durch diese Aktivität wird die Anzahl von Datensätzen in der Änderungstabelle für ein bestimmtes Zeitfenster abgerufen.
 
-    ![Lookup-Aktivität – Name](./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-name.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-name.png" alt-text="Lookup-Aktivität – Name":::
 4. Wechseln Sie im Fenster **Eigenschaften** zu **Einstellungen**:
    1. Geben Sie im Feld **Source Dataset** (Quelldataset) den Namen des SQL Managed Instance-Datasets an.
    2. Wählen Sie die Option „Abfrage“ aus, und geben Sie Folgendes in das Abfragefeld ein:
@@ -240,13 +240,13 @@ In diesem Schritt wird eine Pipeline erstellt, die zunächst mithilfe einer **Lo
     ```
    3. Aktivieren Sie das Kontrollkästchen **First row only** (Nur erste Zeile).
 
-    ![Lookup-Aktivität – Einstellungen](./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-settings.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-settings.png" alt-text="Lookup-Aktivität – Einstellungen":::
 5. Klicken Sie auf die Schaltfläche **Datenvorschau**, um sich zu vergewissern, dass durch die Lookup-Aktivität eine gültige Ausgabe abgerufen wird.
 
-    ![Lookup-Aktivität: Vorschau](./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-preview.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-preview.png" alt-text="Lookup-Aktivität: Vorschau":::
 6. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Iteration & Conditionals** (Iteration und Bedingungen), und ziehen Sie die Aktivität **If-Bedingung** auf die Oberfläche des Pipeline-Designers. Legen Sie den Namen der Aktivität auf **HasChangedRows** fest. 
 
-    ![Aktivität „If-Bedingung“: Name](./media/tutorial-incremental-copy-change-data-capture-feature-portal/if-condition-activity-name.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/if-condition-activity-name.png" alt-text="Aktivität „If-Bedingung“: Name":::
 7. Wechseln Sie im Fenster **Eigenschaften** zu **Aktivitäten**:
 
    1. Geben Sie unter **Ausdruck** Folgendes ein:
@@ -257,20 +257,20 @@ In diesem Schritt wird eine Pipeline erstellt, die zunächst mithilfe einer **Lo
 
    2. Klicken Sie auf das Stiftsymbol, um die True-Bedingung zu bearbeiten.
 
-   ![Aktivität „If-Bedingung“: Einstellungen](./media/tutorial-incremental-copy-change-data-capture-feature-portal/if-condition-activity-setting.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/if-condition-activity-setting.png" alt-text="Aktivität „If-Bedingung“: Einstellungen":::
 
    3. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie eine Aktivität vom Typ **Warten** auf die Oberfläche des Pipeline-Designers. Hierbei handelt es sich um eine temporäre Aktivität zum Debuggen der If-Bedingung; sie wird später in diesem Tutorial noch geändert. 
 
-   ![If-Bedingung „True“: Warten](./media/tutorial-incremental-copy-change-data-capture-feature-portal/if-condition-activity-wait.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/if-condition-activity-wait.png" alt-text="If-Bedingung „True“: Warten":::
 
    4. Klicken Sie auf der Breadcrumb-Leiste auf „IncrementalCopyPipeline“, um zur Hauptpipeline zurückzukehren.
 
 8. Führen Sie die Pipeline im Modus **Debuggen** aus, um sich zu vergewissern, dass die Ausführung erfolgreich ist. 
 
-   ![Pipeline: Debuggen](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug.png" alt-text="Pipeline: Debuggen":::
 9. Kehren Sie als Nächstes zum Schritt für die True-Bedingung zurück, und löschen Sie die Aktivität **Warten**. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Move & transform** (Verschieben und transformieren), und ziehen Sie eine Aktivität vom Typ **Copy** auf die Oberfläche des Pipeline-Designers. Legen Sie den Namen der Aktivität auf **IncrementalCopyActivity** fest. 
 
-   ![Copy-Aktivität – Name](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-name.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-name.png" alt-text="Copy-Aktivität – Name":::
 10. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Quelle**, und führen Sie die folgenden Schritte aus:
 
    1. Geben Sie im Feld **Source Dataset** (Quelldataset) den Namen des SQL Managed Instance-Datasets an. 
@@ -284,33 +284,33 @@ In diesem Schritt wird eine Pipeline erstellt, die zunächst mithilfe einer **Lo
       SELECT * FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, 'all')
       ```
 
-   ![Copy-Aktivität – Quelleinstellungen](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-settings.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-settings.png" alt-text="Copy-Aktivität – Quelleinstellungen":::
 
 11. Klicken Sie auf die Vorschauoption, um sich zu vergewissern, dass die geänderten Zeilen durch die Abfrage korrekt zurückgegeben werden.
 
-    ![Screenshot der Vorschau zum Überprüfen der Abfrage](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png" alt-text="Screenshot der Vorschau zum Überprüfen der Abfrage":::
 12. Wechseln Sie zur Registerkarte **Senke**, und geben Sie im Feld **Sink Dataset** (Senkendataset) das Azure Storage-Dataset an.
 
-    ![Screenshot der Registerkarte „Senke“](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png" alt-text="Screenshot der Registerkarte „Senke“":::
 13. Kehren Sie zur Canvas der Hauptpipeline zurück, und verbinden Sie nacheinander die Aktivität **Lookup** mit der Aktivität **If-Bedingung**. Ziehen Sie die **grüne** Schaltfläche der Aktivität **Lookup** zur Aktivität **If-Bedingung**.
 
-    ![Verbinden von Lookup- und Copy-Aktivität](./media/tutorial-incremental-copy-change-data-capture-feature-portal/connect-lookup-if.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/connect-lookup-if.png" alt-text="Verbinden von Lookup- und Copy-Aktivität":::
 14. Klicken Sie in der Symbolleiste auf **Überprüfen**. Vergewissern Sie sich, dass keine Validierungsfehler vorliegen. Schließen Sie das Fenster **Pipeline Validation Report** (Pipelineüberprüfungsbericht), indem Sie auf **>>** klicken.
 
-    ![Schaltfläche „Überprüfen“](./media/tutorial-incremental-copy-change-data-capture-feature-portal/validate-button.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/validate-button.png" alt-text="Schaltfläche „Überprüfen“":::
 15. Klicken Sie auf „Debuggen“, um die Pipeline zu testen und sich zu vergewissern, dass am Speicherort eine Datei generiert wird.
 
-    ![Debuggen der inkrementellen Pipeline: 2](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug-2.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug-2.png" alt-text="Debuggen der inkrementellen Pipeline: 2":::
 16. Veröffentlichen Sie Entitäten (verknüpfte Dienste, Datasets und Pipelines) für den Data Factory-Dienst, indem Sie auf die Schaltfläche **Alle veröffentlichen** klicken. Warten Sie, bis die Meldung **Veröffentlichung erfolgreich** angezeigt wird.
 
-    ![Schaltfläche "Veröffentlichen"](./media/tutorial-incremental-copy-change-data-capture-feature-portal/publish-button-2.png)    
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/publish-button-2.png" alt-text="Schaltfläche &quot;Veröffentlichen&quot;":::    
 
 ### <a name="configure-the-tumbling-window-trigger-and-cdc-window-parameters"></a>Konfigurieren des Triggers für ein rollierendes Fenster und der CDC-Fensterparameter 
 In diesem Schritt wird ein Trigger für ein rollierendes Fenster erstellt, um den Auftrag nach einem kurz getakteten Zeitplan auszuführen. Hierbei werden die Systemvariablen „WindowStart“ und „WindowEnd“ des Triggers für das rollierende Fenster als Parameter an die Pipeline übergeben, um sie in der CDC-Abfrage zu verwenden.
 
 1. Navigieren Sie zur Registerkarte **Parameter** der Pipeline **IncrementalCopyPipeline**, und fügen Sie der Pipeline mithilfe der Schaltfläche **+ Neu** zwei Parameter (**triggerStartTime** und **triggerEndTime**) hinzu, die die Start- und Endzeit des rollierenden Fensters darstellen. Fügen Sie zu Debuggingzwecken Standardwerte im Format **JJJJ-MM-TT HH24:MI:SS.FFF** hinzu. Achten Sie jedoch darauf, dass die Startzeit des Triggers (triggerStartTime) nicht vor der CDC-Aktivierung für die Tabelle liegt, da sonst ein Fehler auftritt.
 
-    ![Menü „Trigger Now“ (Jetzt auslösen)](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-parameters.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-parameters.png" alt-text="Menü „Trigger Now“ (Jetzt auslösen)":::
 2. Klicken Sie auf die Registerkarte mit den Einstellungen der Aktivität **Lookup**, und konfigurieren Sie die Abfrage für die Verwendung des Start- und Endparameters. Kopieren Sie Folgendes in die Abfrage:
     ```sql
     @concat('DECLARE @begin_time datetime, @end_time datetime, @from_lsn binary(10), @to_lsn binary(10); 
@@ -332,7 +332,7 @@ In diesem Schritt wird ein Trigger für ein rollierendes Fenster erstellt, um de
     ```
 4. Klicken Sie auf die Registerkarte **Senke** der Aktivität **Copy** und anschließend auf **Öffnen**, um die Dataseteigenschaften zu bearbeiten. Klicken Sie auf die Registerkarte **Parameter**, und fügen Sie einen neuen Parameter namens **triggerStart** hinzu.    
 
-    ![Screenshot des Hinzufügens eines neuen Parameters zur Registerkarte „Parameter“](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png" alt-text="Screenshot des Hinzufügens eines neuen Parameters zur Registerkarte „Parameter“":::
 5. Konfigurieren Sie als Nächstes die Dataseteigenschaften, um die Daten mit datumsbasierten Partitionen in einem Unterverzeichnis von **customers/incremental** zu speichern.
    1. Klicken Sie in den Dataseteigenschaften auf die Registerkarte **Verbindung**, und fügen Sie dynamische Inhalte für die Abschnitte **Verzeichnis** und **Datei** hinzu. 
    2. Geben Sie im Abschnitt **Verzeichnis** den folgenden Ausdruck ein, indem Sie unter dem Textfeld auf den Link für dynamischen Inhalt klicken:
@@ -345,30 +345,30 @@ In diesem Schritt wird ein Trigger für ein rollierendes Fenster erstellt, um de
     ```sql
     @concat(formatDateTime(dataset().triggerStart,'yyyyMMddHHmmssfff'),'.csv')
     ```
-    ![Konfiguration des Senkendatasets: 3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-3.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-3.png" alt-text="Konfiguration des Senkendatasets: 3":::
 
    4. Klicken Sie auf die Registerkarte **IncrementalCopyPipeline**, um zu den Einstellungen für die **Senke** in der Aktivität **Copy** zurückzukehren. 
    5. Erweitern Sie die Dataseteigenschaften, und geben Sie im triggerStart-Parameterwert dynamischen Inhalt mit dem folgenden Ausdruck ein:
      ```sql
      @pipeline().parameters.triggerStartTime
      ```
-    ![Konfiguration des Senkendatasets: 4](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-4.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-4.png" alt-text="Konfiguration des Senkendatasets: 4":::
 
 6. Klicken Sie auf „Debuggen“, um die Pipeline zu testen und sich zu vergewissern, dass die Ordnerstruktur und die Ausgabedatei erwartungsgemäß generiert werden. Laden Sie die Datei herunter, und öffnen Sie sie, um den Inhalt zu überprüfen. 
 
-    ![Debuggen des inkrementellen Kopierens: 3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug-3.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug-3.png" alt-text="Debuggen des inkrementellen Kopierens: 3":::
 7. Vergewissern Sie sich, dass die Parameter in die Abfrage eingefügt werden, indem Sie die Eingabeparameter der Pipelineausführung überprüfen.
 
-    ![Debuggen des inkrementellen Kopierens: 4](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug-4.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug-4.png" alt-text="Debuggen des inkrementellen Kopierens: 4":::
 8. Veröffentlichen Sie Entitäten (verknüpfte Dienste, Datasets und Pipelines) für den Data Factory-Dienst, indem Sie auf die Schaltfläche **Alle veröffentlichen** klicken. Warten Sie, bis die Meldung **Veröffentlichung erfolgreich** angezeigt wird.
 9. Konfigurieren Sie abschließend einen Trigger für ein rollierendes Fenster, um die Pipeline in regelmäßigen Abständen auszuführen, und legen Sie Parameter für Start- und Endzeit fest. 
    1. Klicken Sie auf die Schaltfläche **Trigger hinzufügen**, und wählen Sie **Neu/Bearbeiten** aus.
 
-   ![Hinzufügen eines neuen Triggers](./media/tutorial-incremental-copy-change-data-capture-feature-portal/add-trigger.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/add-trigger.png" alt-text="Hinzufügen eines neuen Triggers":::
 
    2. Geben Sie einen Namen für den Trigger und eine Startzeit an, die der Endzeit des obigen Debugfensters entspricht.
 
-   ![Trigger für ein rollierendes Fenster](./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png" alt-text="Trigger für ein rollierendes Fenster":::
 
    3. Geben Sie im nächsten Bildschirm die folgenden Werte für den Start- bzw. Endparameter an:
     ```sql
@@ -376,7 +376,7 @@ In diesem Schritt wird ein Trigger für ein rollierendes Fenster erstellt, um de
     @formatDateTime(trigger().outputs.windowEndTime,'yyyy-MM-dd HH:mm:ss.fff')
     ```
 
-   ![Trigger für ein rollierendes Fenster: 2](./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger-2.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger-2.png" alt-text="Trigger für ein rollierendes Fenster: 2":::
 
 > [!NOTE]
 > Beachten Sie, dass der Trigger erst ausgeführt wird, nachdem er veröffentlicht wurde. Das erwartete Verhalten des rollierenden Fensters besteht außerdem in der Ausführung aller historischen Intervalle seit dem Startdatum bis zum aktuellen Zeitpunkt. Weitere Informationen zu Triggern für ein rollierendes Fenster finden Sie [hier](./how-to-create-tumbling-window-trigger.md). 
@@ -396,16 +396,16 @@ In diesem Schritt wird ein Trigger für ein rollierendes Fenster erstellt, um de
 ### <a name="monitor-the-incremental-copy-pipeline"></a>Überwachen der inkrementellen Kopierpipeline
 1. Klicken Sie links auf die Registerkarte **Überwachen**. Die Pipelineausführung wird in der Liste mit ihrem Status angezeigt. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. Zeigen Sie auf eine Stelle in der Nähe des Namens der Pipeline, um auf die Aktion „Erneut ausführen“ und auf den Verbrauchsbericht zuzugreifen.
 
-    ![Pipelineausführungen](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-pipeline-runs.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-pipeline-runs.png" alt-text="Pipelineausführungen":::
 2. Klicken Sie auf den Namen der Pipeline, um mit der Pipelineausführung verknüpfte Aktivitätsausführungen anzuzeigen. Wurden geänderte Daten erkannt, stehen drei Aktivitäten zur Verfügung (unter anderem die Copy-Aktivität). Andernfalls enthält die Liste nur zwei Einträge. Klicken Sie im oberen Bereich auf den Link **Alle Pipelines**, um zur Ansicht mit den Pipelineausführungen zurückzukehren.
 
-    ![Aktivitätsausführungen](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-activity-runs.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-activity-runs.png" alt-text="Aktivitätsausführungen":::
 
 
 ### <a name="review-the-results"></a>Überprüfen der Ergebnisse
 Die zweite Datei ist im Ordner `customers/incremental/YYYY/MM/DD` des Containers `raw` enthalten.
 
-![Ausgabedatei des inkrementellen Kopiervorgangs](media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-run.png)
+:::image type="content" source="media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-run.png" alt-text="Ausgabedatei des inkrementellen Kopiervorgangs":::
  
 
 ## <a name="next-steps"></a>Nächste Schritte

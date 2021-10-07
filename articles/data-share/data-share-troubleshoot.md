@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 04/22/2021
-ms.openlocfilehash: 57b5e5f483ce8076622e4705a3a5b566e2e3aa1f
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 09/10/2021
+ms.openlocfilehash: da746d14d891c875c9bed49c94e8b408d956e29e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987882"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811249"
 ---
 # <a name="troubleshoot-common-problems-in-azure-data-share"></a>Behandeln allgemeiner Probleme in Azure Data Share 
 
@@ -35,6 +35,8 @@ In einigen Fällen wird möglicherweise eine leere Einladungsliste angezeigt, we
 * **Die Einladung wird nicht an Ihre E-Mail-Adresse für die Anmeldung bei Azure, sondern an Ihren E-Mail-Alias gesendet.** Wenn Sie den Azure Data Share-Dienst bereits registriert oder eine Data Share-Ressource im Azure-Mandanten erstellt haben, aber die Einladung weiterhin nicht angezeigt wird, ist möglicherweise Ihr E-Mail-Alias als Empfänger festgelegt. Wenden Sie sich an Ihren Datenanbieter, und vergewissern Sie sich, dass die Einladung an Ihre E-Mail-Adresse für die Anmeldung bei Azure und nicht an Ihren E-Mail-Alias gesendet wird.
 
 * **Die Einladung wurde bereits akzeptiert.** Der Link in der E-Mail führt Sie zur Seite der **Data Share-Einladungen** im Azure-Portal. Auf dieser Seite werden nur ausstehende Einladungen aufgeführt. Bereits akzeptierte Einladungen werden auf der Seite nicht angezeigt. Wechseln Sie zu der Data Share-Ressource, mit der Sie die Einladung akzeptiert haben. Dort können Sie die empfangenen Freigaben anzeigen und die Einstellung für den Azure Data Explorer-Zielcluster konfigurieren.
+
+* **Sie sind Gastbenutzer*in des Mandanten.** Wenn Sie Gastbenutzer*in des Mandanten sind, müssen Sie Ihre E-Mail-Adresse für den Mandanten bestätigen, bevor Sie die Einladung anzeigen. Nach der Überprüfung ist sie zwölf Monate lang gültig. 
 
 ## <a name="creating-and-receiving-shares"></a>Erstellen und Empfangen von Freigaben
 

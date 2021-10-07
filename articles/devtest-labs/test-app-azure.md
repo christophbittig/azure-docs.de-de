@@ -1,14 +1,14 @@
 ---
-title: Testen Ihrer App in Azure | Microsoft-Dokumentation
+title: Testen Ihrer App in Azure
 description: Erfahren Sie, wie Sie eine Dateifreigabe in einem Lab erstellen und auf Ihrem lokalen Computer und auf einem virtuellen Computer im Lab einbinden und dann Desktop-/Webanwendungen in der Dateifreigabe bereitstellen und testen.
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9d4e78bf0ebe5e28ac9bb180acafae3fcdd0f08
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87282244"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604377"
 ---
 # <a name="test-your-app-in-azure"></a>Testen Ihrer App in Azure 
 Dieser Artikel enthält Schritte zum Testen der Anwendung in Azure mithilfe von DevTest Labs. Zunächst richten Sie eine Dateifreigabe in einem Lab ein und binden sie als Laufwerk auf Ihrem lokalen Entwicklungscomputer und einem virtuellen Computer in einem Lab ein. Anschließend stellen Sie die App in Visual Studio 2019 in der Dateifreigabe bereit, damit Sie die App auf dem virtuellen Computer im Lab ausführen können.  

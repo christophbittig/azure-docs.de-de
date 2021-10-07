@@ -4,22 +4,17 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei zu
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 53e9f34e2d04f68add7babd8c12b4fd583015847
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: e909ea77da32675beec6d5117430717acf274ab1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026370"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124731097"
 ---
 # <a name="deployment-functions-for-bicep"></a>Bereitstellungsfunktionen für Bicep
 
-Resource Manager stellt die folgenden Funktionen zum Abrufen von Werten im Zusammenhang mit der aktuellen Bereitstellung Ihrer Bicep-Datei bereit:
-
-* [deployment](#deployment)
-* [Umgebung](#environment)
-
-Informationen zum Abrufen von Werten aus Ressourcen, Ressourcengruppen oder Abonnements finden Sie unter [Ressourcenfunktionen](./bicep-functions-resource.md).
+In diesem Artikel werden die Bicep-Funktionen zum Abrufen von Werten im Zusammenhang mit der aktuellen Bereitstellung beschrieben.
 
 ## <a name="deployment"></a>deployment
 
@@ -200,4 +195,4 @@ Im vorherigen Beispiel wird bei Bereitstellung in globalem Azure das folgende Ob
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer Bicep-Datei finden Sie unter [Grundlegendes zur Struktur und Syntax von Bicep-Dateien](./file.md).
+* Informationen zum Abrufen von Werten aus Ressourcen, Ressourcengruppen oder Abonnements finden Sie unter [Ressourcenfunktionen](./bicep-functions-resource.md).

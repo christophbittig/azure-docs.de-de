@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Senden von Gerätetelemetriedaten an Azure IoT Hub'
-description: In dieser Schnellstartanleitung erfahren Geräteentwickler, wie sie eine sichere Verbindung zwischen einem Gerät und Azure IoT Hub herstellen. Sie verwenden ein Azure IoT-Geräte-SDK für C, C#, Python, Node.js oder Java, um eine Client-App auf einem simulierten Gerät auszuführen. Anschließend stellen Sie eine Verbindung mit IoT Hub her und senden Telemetriedaten.
+description: In dieser Schnellstartanleitung erfahren Geräteentwickler, wie sie eine sichere Verbindung zwischen einem Gerät und Azure IoT Hub herstellen. Sie verwenden ein Azure IoT-Geräte-SDK für C, C#, Python, Node.js oder Java, um einen simulierten Geräteclient für Windows, Linux oder Raspberry Pi OS (Raspian) zu erstellen. Abschließend verbinden Sie das Gerät mit Azure IoT Hub und senden Telemetriedaten.
 author: timlt
 ms.author: timlt
 ms.service: iot-develop
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 08/03/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: 0ac38398f31c2256761c0f1b75d03f2fafeb65f8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f7b1543b91d604b6640bf97877bf2c134deee866
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744296"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094080"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-hub"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an Azure IoT Hub
+# <a name="quickstart-send-telemetry-from-an-iot-plug-and-play-device-to-azure-iot-hub"></a>Schnellstart: Senden von Telemetriedaten von einem IoT Plug & Play-Gerät an Azure IoT Hub
 
 **Gilt für**: [Entwickler von Geräteanwendungen](about-iot-develop.md#device-application-development)
 

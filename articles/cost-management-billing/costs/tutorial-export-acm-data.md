@@ -3,18 +3,18 @@ title: 'Tutorial: Erstellen und Verwalten von exportierten Daten aus Azure Cost 
 description: Dieser Artikel erläutert, wie Sie aus Azure Cost Management exportierte Daten erstellen und verwalten können, um sie in externen Systemen zu verwenden.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/05/2021
+ms.date: 09/16/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f6d640d40b586e435e1484fce8d6560a961ba6ac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5c27f34adcf427a82f425f7ef4cf24a4ae843bc4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731950"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648770"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -295,6 +295,14 @@ Im Folgenden finden Sie eine Beispieldatei für das „__manifest.json“-Manife
   ]
 }
 ```
+
+### <a name="export-versions"></a>Exportversionen
+
+Wenn Sie einen geplanten Export im Azure-Portal oder mit der API erstellen, wird er immer mit der zum Erstellungszeitpunkt verwendeten Exportversion ausgeführt. Azure behält Ihre zuvor erstellten Exporte in der gleichen Version bei, es sei denn, Sie aktualisieren sie. Dadurch wird verhindert, dass sich bei einer Änderung der Version die Gebühren und die CSV-Felder ändern. Da sich die Exportfunktionalität im Laufe der Zeit ändert, werden manchmal Feldnamen geändert und neue Felder hinzugefügt.
+
+Wenn Sie die neuesten verfügbaren Daten und Felder verwenden möchten, empfiehlt es sich, einen neuen Export im Azure-Portal zu erstellen. Um einen vorhandenen Export auf die neueste Version zu aktualisieren, nehmen Sie eine Aktualisierung im Azure-Portal oder mit der neuesten Export-API-Version vor. Durch die Aktualisierung eines vorhandenen Exports kann es zu geringfügigen Unterschieden bei den Feldern und Gebühren in nachfolgend erstellten Dateien kommen.
+
+
 ## <a name="verify-that-data-is-collected"></a>Überprüfen, ob Daten gesammelt wurden
 
 Sie können ganz einfach überprüfen, ob Ihre Cost Management-Daten erfasst werden, und die exportierte CSV-Datei mit dem Azure Storage-Explorer anzeigen.

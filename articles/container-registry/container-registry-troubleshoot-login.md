@@ -3,12 +3,12 @@ title: Beheben von Problemen bei der Anmeldung bei der Registrierung
 description: Symptome, Ursachen und Lösungen allgemeiner Probleme bei der Anmeldung bei einer Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 6670d127736a97490ab5c01c03699b6a8f077778
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 48b3069911b16fce23017d562d0b99fbd8f0268c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338865"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732996"
 ---
 # <a name="troubleshoot-registry-login"></a>Beheben von Problemen mit der Registrierungsanmeldung
 
@@ -131,7 +131,7 @@ Verwandte Links:
 
 ## <a name="advanced-troubleshooting"></a>Erweiterte Problembehandlung
 
-Wenn [Sammlung von Ressourcenprotokollen](monitor-service.md) in der Registrierung aktiviert ist, überprüfen Sie das Protokoll „ContainterRegistryLoginEvents“. In diesem Protokoll werden Registrierungauthentifizierungsereignisse und der -status gespeichert, einschließlich der eingehenden Identität und IP-Adresse. Fragen Sie das Protokoll nach [Authentifizierungsfehlern für die Registrierung](monitor-service.md#registry-authentication-failures) ab. 
+Wenn die [Sammlung mit Ressourcenprotokollen](monitor-service.md) in der Registrierung aktiviert ist, sollten Sie das Protokoll „ContainerRegistryLoginEvents“ überprüfen. In diesem Protokoll werden Registrierungauthentifizierungsereignisse und der -status gespeichert, einschließlich der eingehenden Identität und IP-Adresse. Fragen Sie das Protokoll nach [Authentifizierungsfehlern für die Registrierung](monitor-service.md#registry-authentication-failures) ab. 
 
 Verwandte Links:
 

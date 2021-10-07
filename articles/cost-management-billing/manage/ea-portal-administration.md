@@ -3,18 +3,18 @@ title: Azure EA-Portalverwaltung
 description: In diesem Artikel werden die häufigsten Aufgaben erläutert, die Administratoren im Azure EA-Portal durchführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/25/2021
+ms.date: 09/28/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
+ms.reviewer: sapnakeshari
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: bf887ad515f8c4349fcff54d25be1c70a30d018f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: ede22b400b597c8cc474d49f65341bb5b24ea118
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123098318"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216762"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -198,7 +198,7 @@ Unternehmensadministratoren können Abteilungen unter der Registrierung vorhande
 
 1. Melden Sie sich beim Azure EA-Portal als Unternehmensadministrator an.
 1. Wählen Sie im linken Navigationsbereich **Verwalten** aus.
-1. Wählen Sie **Abteilung** aus.
+1. Wählen Sie **Konto** aus.
 1. Zeigen Sie auf die Zeile mit dem Konto, und wählen Sie rechts das Stiftsymbol aus.
 1. Wählen Sie im Dropdownmenü die Abteilung aus.
 1. Wählen Sie **Speichern** aus.

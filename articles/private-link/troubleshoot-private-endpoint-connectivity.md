@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: cb66b9ad3106b9cad5b9b22cbe32838e13f56c28
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0df95d90d0119f8bc513fe2a26ed731d87401b3d
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339523"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154259"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Behandeln von Problemen mit der Konnektivität privater Azure-Endpunkte
 
@@ -119,7 +119,19 @@ Vergewissern Sie sich mithilfe der folgenden Schritte, dass alle üblichen Konfi
       - Stellen Sie von einem anderen Quellcomputer aus eine Verbindung mit dem privaten Endpunkt her. Auf diese Weise können Sie für virtuelle Computer spezifische Probleme isolieren. 
       - Stellen Sie eine Verbindung mit einem beliebigen virtuellen Computer her, der sich im selben virtuellen Netzwerk wie der private Endpunkt befindet.  
 
-1. Sollten weiterhin Konnektivitätsprobleme auftreten, wenden Sie sich an das [Azure-Supportteam](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+1. Wenn der private Endpunkt mit einem [Private Link-Dienst](./troubleshoot-private-link-connectivity.md) verknüpft ist, der mit einem Lastenausgleich verknüpft ist, prüfen Sie, ob der Back-End-Pool den Zustand „Fehlerfrei“ meldet. Die Behebung der Integrität des Lastenausgleichs wird das Problem mit der Verbindung zum privaten Endpunkt beheben.
+
+    - Sie können ein visuelles Diagramm oder eine [Abhängigkeitsansicht](../azure-monitor/insights/network-insights-overview.md#dependency-view) der zugehörigen Ressourcen, Metriken und Erkenntnisse anzeigen, indem Sie zu Folgendem wechseln:
+        - Azure Monitor
+        - Netzwerke
+        - Private Endpunkte
+        - Abhängigkeitsansicht 
+
+![Überwachen von Netzwerken](https://user-images.githubusercontent.com/20302679/134994620-0660b9e2-e2a3-4233-8953-d3e49b93e2f2.png)
+
+![DependencyView](https://user-images.githubusercontent.com/20302679/134994637-fb8b4a1a-81d5-4723-b1c3-d7bdc72162f3.png)
+
+9. Sollten weiterhin Konnektivitätsprobleme auftreten, wenden Sie sich an das [Azure-Supportteam](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

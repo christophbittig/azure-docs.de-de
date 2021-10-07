@@ -8,16 +8,16 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 65d8ad19426aca491260035364c4e99bfc1b5179
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: f7bd58361a4943ce295ab0f0b78f386079f0bba6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469642"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577859"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Einführung in Azure Data Lake Storage Gen2
 
-‎Azure Data Lake Storage Gen2 setzt auf [Azure Blob Storage](storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für die Big Data-Analyse. 
+Azure Data Lake Storage Gen2 setzt auf [Azure Blob Storage](storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für die Big Data-Analyse.
 
 Data Lake Storage Gen2 vereint die Funktionen von [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) und Azure Blob Storage. Beispielsweise bietet Data Lake Storage Gen2 Dateisystemsemantik, Sicherheit auf Dateiebene und Skalierung. Da diese Funktionen auf Blob Storage basieren, profitieren Sie gleichzeitig von kostengünstigem, mehrstufigem Speicher mit Hochverfügbarkeit und Notfallwiederherstellungsfunktionen.
 
@@ -29,23 +29,23 @@ Ein wesentlicher Bestandteil von Data Lake Storage Gen2 ist das Hinzufügen eine
 
 Data Lake Storage Gen2 baut auf Blobspeicher auf und verbessert wie folgt die Leistung, Verwaltung und Sicherheit:
 
--   Die **Leistung** ist optimiert, da Sie keine Daten als Voraussetzung für die Analyse kopieren oder transformieren müssen. Im Vergleich zum flachen Namespace im Blobspeicher verbessert der hierarchische Namespace die Leistung von Verzeichnisverwaltungsvorgängen erheblich, wodurch die gesamte Auftragsverarbeitungsleistung gesteigert wird.
+- Die **Leistung** ist optimiert, da Sie keine Daten als Voraussetzung für die Analyse kopieren oder transformieren müssen. Im Vergleich zum flachen Namespace im Blobspeicher verbessert der hierarchische Namespace die Leistung von Verzeichnisverwaltungsvorgängen erheblich, wodurch die gesamte Auftragsverarbeitungsleistung gesteigert wird.
 
--   Die **Verwaltung** ist einfacher, weil Sie Dateien mithilfe von Verzeichnissen und Unterverzeichnissen organisieren und bearbeiten können.
+- Die **Verwaltung** ist einfacher, weil Sie Dateien mithilfe von Verzeichnissen und Unterverzeichnissen organisieren und bearbeiten können.
 
--   Die **Sicherheit** ist durchsetzbar, da Sie POSIX-Berechtigungen für Verzeichnisse oder einzelne Dateien definieren können.
+- Die **Sicherheit** ist durchsetzbar, da Sie POSIX-Berechtigungen für Verzeichnisse oder einzelne Dateien definieren können.
 
 Data Lake Storage Gen2 ist darüber hinaus sehr kostengünstig, da diese SKU auf dem kostengünstigen [Azure Blob Storage](storage-blobs-introduction.md) aufbaut. Durch diese zusätzlichen Features werden die Gesamtbetriebskosten für Big Data-Analysen in Azure weiter gesenkt.
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Besondere Features von Data Lake Storage Gen2
 
--   **Hadoop-kompatibler Zugriff:** Data Lake Storage Gen2 ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten sowie deren Verwaltung. Der neue [ABFS-Treiber](data-lake-storage-abfs-driver.md) (für den Datenzugriff) ist in allen Apache Hadoop-Umgebungen verfügbar. Zu diesen Umgebungen zählen unter anderem [Azure HDInsight](../../hdinsight/index.yml) *,* [Azure Databricks](/azure/databricks/) und [Azure Synapse Analytics](../../synapse-analytics/index.yml).
+- **Mit Hadoop kompatibler Zugriff:** Data Lake Storage Gen2 ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten und deren Verwaltung. Der neue [ABFS-Treiber](data-lake-storage-abfs-driver.md) (für den Datenzugriff) ist in allen Apache Hadoop-Umgebungen verfügbar. Zu diesen Umgebungen zählen unter anderem [Azure HDInsight](../../hdinsight/index.yml) *,* [Azure Databricks](/azure/databricks/) und [Azure Synapse Analytics](../../synapse-analytics/index.yml).
 
--   **Obermenge von POSIX-Berechtigungen:** Das Sicherheitsmodell für Data Lake Gen2 unterstützt Zugriffssteuerungslisten und POSIX-Berechtigungen sowie zusätzliche Granularität speziell für Data Lake Storage Gen2. Die Einstellungen können über den Storage-Explorer oder Frameworks wie Hive und Spark konfiguriert werden.
+- **Obermenge von POSIX-Berechtigungen:** Das Sicherheitsmodell für Data Lake Gen2 unterstützt Zugriffssteuerungslisten und POSIX-Berechtigungen sowie zusätzliche Granularität speziell für Data Lake Storage Gen2. Die Einstellungen können über den Storage-Explorer oder Frameworks wie Hive und Spark konfiguriert werden.
 
--   **Kosteneffizienz:** Data Lake Storage Gen2 bietet kostengünstige Speicherkapazität und -transaktionen. Features wie [Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md) tragen während des Lebenszyklus der Daten zur Kostenoptimierung bei.
+- **Kosteneffizienz:** Data Lake Storage Gen2 bietet kostengünstige Speicherkapazität und -transaktionen. Features wie [Azure Blob Storage-Lebenszyklus](./lifecycle-management-overview.md) tragen während des Lebenszyklus der Daten zur Kostenoptimierung bei.
 
--   **Optimierter Treiber:** Der ABFS-Treiber ist speziell für Big Data-Analysen [optimiert](data-lake-storage-abfs-driver.md). Die entsprechenden REST-APIs werden über den Endpunkt `dfs.core.windows.net` bereitgestellt.
+- **Optimierter Treiber:** Der ABFS-Treiber ist speziell für Big Data-Analysen [optimiert](data-lake-storage-abfs-driver.md). Die entsprechenden REST-APIs werden über den Endpunkt `dfs.core.windows.net` bereitgestellt.
 
 ### <a name="scalability"></a>Skalierbarkeit
 
@@ -70,7 +70,7 @@ Die folgenden Begriffe stellen äquivalente Entitäten dar, wie sie durch versch
 
 ## <a name="supported-blob-storage-features"></a>Unterstützte Blob Storage-Features
 
-Für Ihr Konto stehen Blob Storage-Features wie [Diagnoseprotokollierung](../common/storage-analytics-logging.md), [Zugriffsebenen](storage-blob-storage-tiers.md) und [Richtlinien für die Blob Storage-Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md) zur Verfügung. Die meisten Blob Storage-Features werden vollständig unterstützt, aber einige Features werden nur auf Vorschauebene oder noch nicht unterstützt.  
+Für Ihr Konto stehen Blob Storage-Features wie [Diagnoseprotokollierung](../common/storage-analytics-logging.md), [Zugriffsebenen](storage-blob-storage-tiers.md) und [Richtlinien für die Blob Storage-Lebenszyklusverwaltung](./lifecycle-management-overview.md) zur Verfügung. Die meisten Blob Storage-Features werden vollständig unterstützt, aber einige Features werden nur auf Vorschauebene oder noch nicht unterstützt.
 
 Informationen zur Unterstützung der einzelnen Blob Storage-Features mit Data Lake Storage Gen2 finden Sie unter [Unterstützung von Blob Storage-Features in Azure Storage-Konten](storage-feature-support-in-storage-accounts.md).
 

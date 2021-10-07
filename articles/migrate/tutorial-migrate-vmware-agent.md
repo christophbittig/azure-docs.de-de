@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: be43dda1e1fdf6d23031f2d2bf75a7f126ddef7a
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 7e16fd0d1c6370cb0ab973760c988c600f42888c
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272833"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153518"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Migrieren von VMware-VMs zu Azure (Agent-basiert)
 
@@ -354,7 +354,7 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
 
 ## <a name="complete-the-migration"></a>Fertigstellen der Migration
 
-1. Klicken Sie nach Abschluss der Migration mit der rechten Maustaste auf die VM und dann auf **Migration beenden**. Die folgenden Schritte werden ausgeführt:
+1. Klicken Sie nach Abschluss der Migration mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Replikation beenden** aus. Die folgenden Schritte werden ausgeführt:
     - Beendet die Replikation für den lokalen Computer.
     - Entfernt den Computer aus dem Zähler **Server werden repliziert.** in Azure Migrate: Servermigration.
     - Bereinigt die Replikationsstatusinformationen für den virtuellen Computer.

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: keferna
 ms.author: keferna
-ms.date: 04/21/2021
-ms.openlocfilehash: a8c10ea5bdfab20ed5a250fba656527cd7935527
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 09/27/2021
+ms.openlocfilehash: b09500142878ee383ccc20e8b62ed22b0f9478c5
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129403"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079870"
 ---
 # <a name="create-an-azure-container-offer"></a>Erstellen eines Azure-Containerangebots
 
@@ -26,6 +26,25 @@ Planen[eines Azure-Containerangebots](marketplace-containers.md). Dort werden di
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+
+1. Wählen Sie auf der Startseite die Kachel **Marketplace offers** (Marketplace-Angebote) aus.
+
+    [ ![Veranschaulichung der Kachel „Marketplace offers“ (Marketplace-Angebote) auf der Startseite in Partner Center](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. Klicken Sie auf der Seite „Marketplace offers“ (Marketplace-Angebote) auf **+ Neues Angebot** > **Azure-Container**.
+
+    [ ![Menüoptionen im linken Bereich und die Schaltfläche „Neues Angebot“](./media/azure-container/new-offer-azure-container-workspaces.png) ](./media/azure-container/new-offer-azure-container-workspaces.png#lightbox)
+
+> [!IMPORTANT]
+> Nachdem Ihr Angebot veröffentlicht wurde, werden Änderungen, die Sie in Partner Center vornehmen, im Azure Marketplace erst angezeigt, nachdem Sie das Angebot erneut veröffentlicht haben. Achten Sie darauf, ein Angebot nach einer Änderung stets neu zu veröffentlichen.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 2. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
 3. Wählen Sie auf der Übersichtsseite die Option **+ Neues Angebot** > **Azure-Container** aus.
@@ -34,6 +53,8 @@ Planen[eines Azure-Containerangebots](marketplace-containers.md). Dort werden di
 
 > [!IMPORTANT]
 > Nachdem Ihr Angebot veröffentlicht wurde, werden Änderungen, die Sie in Partner Center vornehmen, im Azure Marketplace erst angezeigt, nachdem Sie das Angebot erneut veröffentlicht haben. Achten Sie darauf, ein Angebot nach einer Änderung stets neu zu veröffentlichen.
+
+---
 
 ## <a name="new-offer"></a>Neues Angebot
 
@@ -63,5 +84,5 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren von Angebotseigenschaften](azure-container-properties.md)
+- [Konfigurieren von Angebotseigenschaften](azure-container-properties.md) 
 - [Bewährte Methoden für Angebotslistung](gtm-offer-listing-best-practices.md)

@@ -1,15 +1,15 @@
 ---
-title: Starten und Beenden von VMs in Azure DevTest Labs mit Befehlszeilentools
+title: Starten und Beenden von VMs mit Befehlszeilentools
 description: Erfahren Sie, wie Sie Befehlszeilentools verwenden, um virtuelle Computer in Azure DevTest Labs zu starten und zu beenden.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 62d4a33df13b1eb5cc7a0360a90ab92c2914b1f0
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e0c75cda526f5a365badf3f97aeb92a94b93588f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692454"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655560"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Starten und Beenden von virtuellen Computern in Azure DevTest Labs mit Befehlszeilentools
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell oder der Azure CLI virtuelle Computer in einem Lab in Azure DevTest Labs starten bzw. beenden. Zur Automatisierung dieser Vorgänge können Sie PowerShell- bzw. CLI-Skripts erstellen. 

@@ -4,15 +4,15 @@ description: In diesem Leitfaden wird beschrieben, wie Sie eine Überprüfung f�
 author: djpmsft
 ms.author: daperlov
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 5cbf179cd28a36705379049a66010d02d2e7cf24
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 14799d5a3ae5878461775e8f581fdda44c140d30
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346670"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209963"
 ---
 # <a name="register-and-scan-azure-cosmos-database-sql-api"></a>Vorgehensweise beim Registrieren und Scannen von Azure Cosmos DB (SQL-API)
 
@@ -74,7 +74,7 @@ Gehen Sie auf dem Bildschirm **Quellen registrieren (Azure Cosmos DB (SQL-API))
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+1. Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
 
 1. Wählen Sie die von Ihnen registrierte Azure Cosmos DB-Datenquelle aus.
 

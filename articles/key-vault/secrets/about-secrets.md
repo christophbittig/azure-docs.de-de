@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 232a3293d6529955a768ed8d7700289ddbed5177
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: e32e6ecacb2de646314be237c6b7bce973a0ed4e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136362"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213475"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informationen zu Azure Key Vault-Geheimnissen
 
@@ -119,18 +119,18 @@ Die folgenden Berechtigungen können beim Autorisieren eines Benutzer- oder Anwe
 
 Weitere Informationen finden Sie in der [REST-API-Referenz für Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
 
-Schrittanleitungen zum Steuern des Zugriffs in Key Vault:
-- [Zuweisen einer Key Vault-Zugriffsrichtlinie mithilfe der Befehlszeilenschnittstelle](../general/assign-access-policy-cli.md)
-- [Zuweisen einer Key Vault-Zugriffsrichtlinie mithilfe von PowerShell](../general/assign-access-policy-powershell.md)
-- [Zuweisen einer Key Vault-Zugriffsrichtlinie über das Azure-Portal](../general/assign-access-policy-portal.md)
-- [Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure](../general/rbac-guide.md)
+## <a name="usage-scenarios"></a>Verwendungsszenarien
 
+| Verwendung | Beispiele |
+|--------------|-------------|
+|Sicheres Speichern, Verwalten des Lebenszyklus und Überwachen von Anmeldeinformationen (etwa Kennwörter, Zugriffsschlüssel und geheime Clientschlüssel für Dienstprinzipale) für die Kommunikation zwischen Diensten.  | - [Verwenden von Azure Key Vault mit einem virtuellen Computer](../general/tutorial-net-virtual-machine.md)<br> - [Verwenden von Azure Key Vault mit einer Azure-Web-App](../general/tutorial-net-create-vault-azure-web-app.md) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Best Practices für die Geheimnisverwaltung in Key Vault](secrets-best-practices.md)
 - [Informationen zu Key Vault](../general/overview.md)
 - [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../general/about-keys-secrets-certificates.md)
-- [Informationen zu Schlüsseln](../keys/about-keys.md)
-- [Informationen zu Zertifikaten](../certificates/about-certificates.md)
+- [Zuweisen einer Key Vault-Zugriffsrichtlinie](../general/assign-access-policy.md)
+- [Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure](../general/rbac-guide.md)
 - [Sicherer Zugriff auf einen Schlüsseltresor](../general/security-features.md)
 - [Entwicklerhandbuch für Key Vault](../general/developers-guide.md)

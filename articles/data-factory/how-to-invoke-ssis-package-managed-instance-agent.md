@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lrtoyou1223
 ms.date: 04/14/2020
-ms.openlocfilehash: 4bcce019e5b659f7af4056e861631a7a6ed31efb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b16cc04837fef57d5510d9c34be94f76dd87033d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339364"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730761"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Ausführen von SSIS-Paketen mit dem Azure SQL Managed Instance-Agent
 
@@ -36,17 +36,17 @@ Bei diesem Verfahren verwenden Sie den SQL Managed Instance-Agent zum Aufrufen e
 1. Stellen Sie in der aktuellen Version von SSMS eine Verbindung mit einer Instanz von SQL Managed Instance her.
 1. Erstellen Sie einen neuen Agent-Auftrag und einen neuen Auftragsschritt. Klicken Sie unter **SQL Server-Agent** mit der rechten Maustaste auf den Ordner **Aufträge**, und wählen Sie dann **Neuer Auftrag** aus.
 
-   ![Auswahl zum Erstellen eines neuen Agent-Auftrags](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png" alt-text="Auswahl zum Erstellen eines neuen Agent-Auftrags":::
 
 1. Wählen Sie auf der Seite **Neuer Auftragsschritt** den Typ **SQL Server Integration Services-Paket** aus.
 
-   ![Auswahl zum Erstellen eines neuen SSIS-Auftragsschritts](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png" alt-text="Auswahl zum Erstellen eines neuen SSIS-Auftragsschritts":::
 
 1. Wählen Sie auf der Registerkarte **Paket** als Paketspeicherort **SSIS-Katalog** aus.
 1. Da sich SSISDB in einer Instanz von SQL Managed Instance befindet, müssen Sie keine Authentifizierung angeben.
 1. Geben Sie ein SSIS-Paket aus der SSISDB an.
 
-   ![Registerkarte „Paket“ mit Auswahl für den Paketquellentyp](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png" alt-text="Registerkarte „Paket“ mit Auswahl für den Paketquellentyp":::
 
 1. Auf der Registerkarte **Konfiguration** haben Sie folgende Möglichkeiten:
   
@@ -54,7 +54,7 @@ Bei diesem Verfahren verwenden Sie den SQL Managed Instance-Agent zum Aufrufen e
    - Setzen Sie die Werte unter **Verbindungs-Manager** außer Kraft.
    - Setzen Sie die Eigenschaft außer Kraft, und wählen Sie die Protokollierungsebene unter **Erweitert** aus.
 
-   ![Registerkarte „Konfiguration“ mit Auswahl für den Paketquellentyp](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png" alt-text="Registerkarte „Konfiguration“ mit Auswahl für den Paketquellentyp":::
 
 1. Wählen Sie **OK** aus, um die Agent-Auftragskonfiguration zu speichern.
 1. Starten Sie den Agent-Auftrag, um das SSIS-Paket auszuführen.
@@ -66,11 +66,11 @@ Bei diesem Verfahren verwenden Sie den SQL Managed Instance-Agent zum Ausführen
 1. Stellen Sie in der aktuellen Version von SSMS eine Verbindung mit einer Instanz von SQL Managed Instance her.
 1. Erstellen Sie einen neuen Agent-Auftrag und einen neuen Auftragsschritt. Klicken Sie unter **SQL Server-Agent** mit der rechten Maustaste auf den Ordner **Aufträge**, und wählen Sie dann **Neuer Auftrag** aus.
 
-   ![Auswahl zum Erstellen eines neuen Agent-Auftrags](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png" alt-text="Auswahl zum Erstellen eines neuen Agent-Auftrags":::
 
 1. Wählen Sie auf der Seite **Neuer Auftragsschritt** den Typ **SQL Server Integration Services-Paket** aus.
 
-   ![Auswahl zum Erstellen eines neuen SSIS-Auftragsschritts](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png" alt-text="Auswahl zum Erstellen eines neuen SSIS-Auftragsschritts":::
 
 1. Auf der Registerkarte **Paket**:
 
@@ -80,7 +80,7 @@ Bei diesem Verfahren verwenden Sie den SQL Managed Instance-Agent zum Ausführen
 
       - Wenn Ihr Paket zu Azure Files hochgeladen wird, wählen Sie **Azure-Dateifreigabe** aus.
 
-        ![Optionen für den Dateiquellentyp](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
+        :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png" alt-text="Optionen für den Dateiquellentyp":::
 
         Der Paketpfad ist **`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`** .
 
@@ -111,11 +111,11 @@ Bei diesem Verfahren verwenden Sie den SQL Managed Instance-Agent zum Ausführen
 1. Stellen Sie in der aktuellen Version von SSMS eine Verbindung mit einer Instanz von SQL Managed Instance her.
 1. Erstellen Sie einen neuen Agent-Auftrag und einen neuen Auftragsschritt. Klicken Sie unter **SQL Server-Agent** mit der rechten Maustaste auf den Ordner **Aufträge**, und wählen Sie dann **Neuer Auftrag** aus.
 
-   ![Auswahl zum Erstellen eines neuen Agent-Auftrags](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png" alt-text="Auswahl zum Erstellen eines neuen Agent-Auftrags":::
 
 1. Wählen Sie auf der Seite **Neuer Auftragsschritt** den Typ **SQL Server Integration Services-Paket** aus.
 
-   ![Auswahl zum Erstellen eines neuen SSIS-Auftragsschritts](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png" alt-text="Auswahl zum Erstellen eines neuen SSIS-Auftragsschritts":::
 
 1. Auf der Registerkarte **Paket**:
 
@@ -125,7 +125,7 @@ Bei diesem Verfahren verwenden Sie den SQL Managed Instance-Agent zum Ausführen
 
       Der Paketpfad ist **`<package store name>\<folder name>\<package name>`** .
 
-      ![Optionen für den Paketspeichertyp](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-package-store.png)
+      :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-package-store.png" alt-text="Optionen für den Paketspeichertyp":::
 
    1. Falls Ihre Paketdatei mit einem Kennwort verschlüsselt ist, müssen Sie die Option **Verschlüsselungskennwort** auswählen und das Kennwort eingeben.
 1. Geben Sie auf der Registerkarte **Konfigurationen** den Pfad zur Konfigurationsdatei ein, falls Sie eine Konfigurationsdatei zum Ausführen des SSIS-Pakets benötigen.
@@ -152,7 +152,7 @@ Um die Paketausführung über einen Auftrag des SQL Managed Instance-Agents abzu
    Wenn sich Ihre SSIS-Pakete in SSISDB befinden, verwenden Sie **ssisdb.internal.execution_parameter_values** als Tabelle für die Auftragsausführung. Wenn sich Ihre SSIS-Pakete im Dateisystem befinden, verwenden Sie **ssisdb.internal.execution_parameter_values_noncatalog**.
 1. Klicken Sie mit der rechten Maustaste auf den SSISDB-Katalog, und wählen Sie dann **Aktive Vorgänge** aus.
 
-   ![„Aktive Vorgänge“ im Kontextmenü für den SSISDB-Katalog](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png" alt-text="&quot;Aktive Vorgänge&quot; im Kontextmenü für den SSISDB-Katalog":::
 
 1. Beenden Sie den entsprechenden Vorgang basierend auf der **executionId**.
 

@@ -3,20 +3,20 @@ title: Herstellen einer Verbindung mit Azure Blob Storage
 description: Informationen zum Erstellen und Verwalten von Blobs in Azure-Speicherkonten mithilfe von Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
-ms.topic: conceptual
+ms.reviewer: estfan, azla
+ms.topic: how-to
 ms.date: 06/23/2021
 tags: connectors
-ms.openlocfilehash: e3d8730976d623b5304a50341bcf257f35047e25
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 7fc6b33248af8b638218858c95d1c0de8b056e76
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113359549"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824869"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Blobs in Azure Blob Storage mithilfe von Azure Logic Apps
 
-Mit dem [Azure Blob Storage-Connector ](/connectors/azureblobconnector/) können Sie innerhalb von Azure Logic Apps auf Dateien zugreifen, die als Blobs in Ihrem Azure-Speicherkonto gespeichert sind, und diese verwalten. Dieser Connector stellt Trigger und Aktionen für Blobvorgänge in Ihren Logik-App-Workflows bereit. Mit diesen Vorgängen können Sie Aufgaben und Workflows für die Verwaltung der Dateien in Ihrem Speicherkonto automatisieren. Zu den [verfügbaren Connectoraktionen](/connectors/azureblobconnector/#actions) zählen das Überprüfen, Löschen, Lesen und Hochladen von Blobs. Der [verfügbare Trigger](/connectors/azureblobconnector/#triggers) wird ausgelöst, wenn ein Blob hinzugefügt oder geändert wird. 
+Mit dem [Azure Blob Storage-Connector ](/connectors/azureblobconnector/) können Sie innerhalb von Azure Logic Apps auf Dateien zugreifen, die als Blobs in Ihrem Azure-Speicherkonto gespeichert sind, und diese verwalten. Dieser Connector stellt Trigger und Aktionen für Blobvorgänge in Ihren Logik-App-Workflows bereit. Mit diesen Vorgängen können Sie Aufgaben und Workflows für die Verwaltung der Dateien in Ihrem Speicherkonto automatisieren. Zu den [verfügbaren Connectoraktionen](/connectors/azureblobconnector/#actions) zählen das Überprüfen, Löschen, Lesen und Hochladen von Blobs. Der [verfügbare Trigger](/connectors/azureblobconnector/#triggers) wird ausgelöst, wenn ein Blob hinzugefügt oder geändert wird.
 
 Sie können sich mit Blob Storage sowohl über Logik-App-Ressourcentypen mit Standard- und Verbrauchstarif verbinden. Sie können den Connector mit Logik-Apps in einer Einzelmandanten-, mehrinstanzenfähigen oder Integrationsdienstumgebung (Integration Service Environment, ISE) verwenden. Für Logik-Apps in einer Umgebung mit nur einem Mandanten bietet Blob Storage integrierte Vorgänge sowie verwaltete Connectorvorgänge.
 
@@ -40,14 +40,14 @@ Anstelle des Blob Storage-Connectors können Sie auch eine [verwaltete Identitä
 
 - Standardmäßig können Blob Storage-Aktionen Dateien mit einer Größe von *bis zu 50 MB* lesen oder schreiben. Zum Verarbeiten von Dateien mit einer Größe von mehr als 50 MB bis maximal 1.024 MB unterstützen Azure Blob Storage-Aktionen die [Nachrichtenblockerstellung](../logic-apps/logic-apps-handle-large-messages.md). Für die Aktion [**Blobinhalt abrufen**](/connectors/azureblobconnector/#get-blob-content) wird implizit die Blockerstellung verwendet.
 - Blob Storage-Trigger unterstützen nicht die Blockerstellung. Trigger wählen beim Anfordern von Dateiinhalten nur Dateien aus, die 50 MB oder kleiner sind. Befolgen Sie das folgende Muster, um Dateien abzurufen, die größer als 50 MB sind:
-  - Verwenden Sie einen Blob Storage-Trigger, der Dateieigenschaften zurückgibt, z. B. [**Wenn ein Blob hinzugefügt oder geändert wird (nur Eigenschaften)** ](/connectors/azureblobconnector/#when-a-blob-is-added-or-modified-(properties-only)).
+  - Verwenden Sie einen Blob Storage-Trigger, der Dateieigenschaften zurückgibt, z. B. [**Wenn ein Blob hinzugefügt oder geändert wird (nur Eigenschaften)**](/connectors/azureblobconnector/#when-a-blob-is-added-or-modified-(properties-only)).
   - Lassen Sie auf den Trigger die Blob Storage-Aktion [**Blobinhalt abrufen**](/connectors/azureblobconnector/#get-blob-content) folgen, die die vollständige Datei liest und die Blockerstellung implizit verwendet.
 
 ## <a name="add-blob-storage-trigger"></a>Hinzufügen eines Blob Storage-Triggers
 
 In Logic Apps muss jede Logik-App mit einem [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) beginnen, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder eine bestimmte Bedingung erfüllt ist. 
 
-Dieser Connector hat einen verfügbaren Trigger, der entweder [**Wenn ein Blob in Azure Storage hinzugefügt oder geändert wird** oder **Wenn ein Blob hinzugefügt oder geändert wird (nur Eigenschaften)** ](/connectors/azureblobconnector/#when-a-blob-is-added-or-modified-(properties-only)) heißt. Der Trigger wird ausgelöst, wenn Eigenschaften eines Blobs in Ihrem Speichercontainer hinzugefügt oder aktualisiert werden. Jedes Mal erstellt die Logic Apps-Engine eine Logik-App-Instanz und beginnt mit der Ausführung Ihres Workflows.
+Dieser Connector hat einen verfügbaren Trigger, der entweder [**Wenn ein Blob in Azure Storage hinzugefügt oder geändert wird** oder **Wenn ein Blob hinzugefügt oder geändert wird (nur Eigenschaften)**](/connectors/azureblobconnector/#when-a-blob-is-added-or-modified-(properties-only)) heißt. Der Trigger wird ausgelöst, wenn Eigenschaften eines Blobs in Ihrem Speichercontainer hinzugefügt oder aktualisiert werden. Jedes Mal erstellt die Logic Apps-Engine eine Logik-App-Instanz und beginnt mit der Ausführung Ihres Workflows.
 
 ### <a name="single-tenant"></a>[Einzelmandant](#tab/single-tenant)
 
@@ -169,7 +169,7 @@ Für Logik-Apps in einer Umgebung mit mehreren Mandanten:
 
 ## <a name="access-storage-accounts-behind-firewalls"></a>Zugreifen auf Speicherkonten hinter Firewalls
 
-Sie können ein Azure-Speicherkonto mit Netzwerksicherheit versehen, indem Sie den [Zugriff mit einer Firewall und Firewallregeln einschränken](../storage/common/storage-network-security.md). Dieses Setup stellt jedoch eine Herausforderung für Azure und andere Microsoft-Dienste dar, die Zugriff auf das Speicherkonto benötigen. Die lokale Kommunikation im Rechenzentrum abstrahiert die internen IP-Adressen, sodass Sie keine Firewallregeln mit IP-Einschränkungen einrichten können. 
+Sie können ein Azure-Speicherkonto mit Netzwerksicherheit versehen, indem Sie den [Zugriff mit einer Firewall und Firewallregeln einschränken](../storage/common/storage-network-security.md). Dieses Setup stellt jedoch eine Herausforderung für Azure und andere Microsoft-Dienste dar, die Zugriff auf das Speicherkonto benötigen. Die lokale Kommunikation im Rechenzentrum abstrahiert die internen IP-Adressen, sodass Sie keine Firewallregeln mit IP-Einschränkungen einrichten können.
 
 So greifen Sie mithilfe des Blob Storage-Connectors hinter Firewalls auf Speicherkonten zu
 
@@ -183,19 +183,24 @@ Andere Lösungen für den Zugriff auf Speicherkonten hinter Firewalls:
 
 ### <a name="access-storage-accounts-in-other-regions"></a>Zugreifen auf Speicherkonten in anderen Regionen
 
-Logik-Apps können nicht direkt auf Speicherkonten hinter Firewalls zugreifen, wenn sich beide in derselben Region befinden. Als Abhilfe können Sie Ihre Logik-Apps in einer anderen Region als der Ihres Speicherkontos einrichten. Gewähren Sie anschließend Zugriff auf die [ausgehenden IP-Adressen für die verwalteten Connectors in Ihrer Region](../logic-apps/logic-apps-limits-and-config.md#outbound).
+Logik-Apps können nicht direkt auf Speicherkonten hinter Firewalls zugreifen, wenn sich beide in derselben Region befinden. Als Abhilfe können Sie Ihre Logik-Apps in einer anderen Region als der Ihres Speicherkontos einrichten. Gewähren Sie anschließend Zugriff auf die [ausgehenden IP-Adressen für die verwalteten Connectors in Ihrer Region](/connectors/common/outbound-ip-addresses#azure-logic-apps).
 
 > [!NOTE]
-> Diese Lösung gilt nicht für den Azure Table Storage-Connector und den Azure Queue Storage-Connector. Um auf Ihren Table Storage oder Queue Storage zuzugreifen, können Sie [stattdessen integrierte HTTP-Trigger und -Aktionen verwenden](../logic-apps/logic-apps-http-endpoint.md).
+> Diese Lösung gilt nicht für den Azure Table Storage-Connector und den Azure Queue Storage-Connector. Um auf Ihren Table Storage oder Queue Storage zuzugreifen, können Sie stattdessen [integrierte HTTP-Trigger und -Aktionen verwenden](../logic-apps/logic-apps-http-endpoint.md).
 
 So fügen Sie Ihre ausgehenden IP-Adressen der Firewall des Speicherkontos hinzu
 
-1. Beachten Sie die [ausgehenden IP-Adressen](../logic-apps/logic-apps-limits-and-config.md#outbound) für die Region Ihrer Logik-App.
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Öffnen Sie die Seite Ihres Speicherkontos. Wählen Sie im Navigationsmenü unter **Sicherheit + Netzwerkbetrieb** die Option **Netzwerk** aus. 
-1. Wählen Sie unter **Zugriff erlauben von** die Option **Ausgewählte Netzwerke** aus. Zusammengehörige Einstellungen werden jetzt auf der Seite angezeigt.
-1. Fügen Sie unter **Firewall** die IP-Adressen oder -Bereiche hinzu, die Zugriff benötigen. 
-    :::image type="content" source="./media/connectors-create-api-azureblobstorage/storage-ip-configure.png" alt-text="Screenshot der Seite „Netzwerk“ des Blob Storage-Kontos in Azure-Portal mit Firewalleinstellungen zum Hinzufügen von IP-Adressen und -Bereichen zur Positivliste.":::
+1. Beachten Sie die [ausgehenden IP-Adressen des verwalteten Connectors](/connectors/common/outbound-ip-addresses#azure-logic-apps) für die Region Ihrer Logik-App.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und suchen Sie Ihre Speicherkontoressource.
+
+1. Wählen Sie im Menü Ihrer Speicherkontoressource unter **Sicherheit + Netzwerkbetrieb** die Option **Netzwerk** aus.
+
+1. Wählen Sie unter **Zugriff erlauben von** den Eintrag **Ausgewählte Netzwerke** aus. Die zugehörigen Einstellungen werden jetzt auf der Seite angezeigt.
+
+1. Fügen Sie unter **Firewall** die IP-Adressen oder -Bereiche hinzu, die Zugriff benötigen.
+
+   :::image type="content" source="./media/connectors-create-api-azureblobstorage/storage-ip-configure.png" alt-text="Screenshot der Seite „Netzwerk“ des Blob Storage-Kontos in Azure-Portal mit Firewalleinstellungen zum Hinzufügen von IP-Adressen und -Bereichen zur Positivliste.":::
 
 ### <a name="access-storage-accounts-through-trusted-virtual-network"></a>Zugreifen auf Speicherkonten über ein vertrauenswürdiges virtuelles Netzwerk
 

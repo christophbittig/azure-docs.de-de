@@ -13,20 +13,20 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/04/2020
+ms.date: 08/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00c519ef06637c5193b347f0bbc906c6232a7ca8
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 08ad43beae80d48224d7b0eb960c1e5a0d09f112
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532541"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607900"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API
 
-Die [Berichtserstellungs-APIs von Azure Active Directory (Azure AD)](./concept-reporting-api.md) bieten Ihnen über eine Gruppe von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über Programmiersprachen und Tools aufrufen.
+Die [Berichtserstellungs-APIs von Azure Active Directory (Azure AD)](./concept-reporting-api.md) bieten Ihnen über eine Gruppe von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über mehrere Programmiersprachen und Tools aufrufen.
 
 Die Berichterstellungs-API verwendet [OAuth](../../api-management/api-management-howto-protect-backend-with-aad.md) zum Autorisieren des Zugriffs auf die Web-APIs.
 
@@ -92,39 +92,36 @@ Um Ihr Verzeichnis für den Zugriff auf die Azure AD-Berichterstellungs-API zu k
 
 ## <a name="grant-permissions"></a>Erteilen von Berechtigungen 
 
-Abhängig von der API, auf die Sie zugreifen möchten, müssen Sie Ihrer App die folgenden Berechtigungen erteilen:  
+Für den Zugriff auf die Berichterstellungs-API von Azure AD müssen Sie Ihrer App die folgenden beiden Berechtigungen erteilen:  
 
 | API | Berechtigung |
 | --- | --- |
-| Microsoft Azure Active Directory | Verzeichnisdaten lesen |
+| Microsoft Graph | Verzeichnisdaten lesen |
 | Microsoft Graph | Alle Überwachungsprotokolldaten lesen |
 
-![Screenshot: Zeigt, wo Sie im Bereich „API-Berechtigungen“ die Option „Berechtigung hinzufügen“ auswählen können](./media/howto-configure-prerequisites-for-reporting-api/36.png)
+![Screenshot: Zeigt, wo Sie im Bereich „API-Berechtigungen“ die Option „Berechtigung hinzufügen“ auswählen können](./media/howto-configure-prerequisites-for-reporting-api/api-permissions.png)
 
-Im folgenden Abschnitt werden die Schritte für beide APIs aufgelistet. Wenn Sie nicht auf eine der APIs zugreifen möchten, können Sie die zugehörigen Schritte überspringen.
+Im folgenden Abschnitt werden die Schritte für die API-Einstellung aufgelistet.
 
 **So erteilen Sie Ihrer Anwendung die Berechtigung zur Verwendung der APIs**:
 
 
-1. Wählen Sie **API-Berechtigungen** und dann **Berechtigung hinzufügen** aus. 
+1. Klicken Sie auf **API-Berechtigungen** und anschließend auf **Berechtigung hinzufügen**.
 
-    ![Screenshot: Seite „API-Berechtigungen“, auf der Sie „Berechtigung hinzufügen“ auswählen können](./media/howto-configure-prerequisites-for-reporting-api/05.png)
+    ![Screenshot: Seite „API-Berechtigungen“, auf der Sie „Berechtigung hinzufügen“ auswählen können](./media/howto-configure-prerequisites-for-reporting-api/add-api-permission.png)
 
-2. Suchen Sie auf der Seite **API-Berechtigungen anfordern** unter **Unterstützte Legacy-APIs** nach **Azure Active Directory Graph**. 
+2. Suchen Sie auf der Seite **API-Berechtigungen anfordern** nach **Microsoft Graph**.
 
-    ![Screenshot: Seite „API-Berechtigungen anfordern“, auf der Sie „Azure Active Directory Graph“ auswählen können](./media/howto-configure-prerequisites-for-reporting-api/06.png)
+    ![Screenshot: Seite „API-Berechtigungen anfordern“, auf der Sie „Azure Active Directory Graph“ auswählen können](./media/howto-configure-prerequisites-for-reporting-api/select-microsoft-graph-api.png)
 
-3. Wählen Sie auf der Seite **Erforderliche Berechtigungen** die Option **Anwendungsberechtigungen** aus, erweitern Sie **Verzeichnis**, und aktivieren Sie dann das Kontrollkästchen **Directory.ReadAll**.  Wählen Sie **Berechtigungen hinzufügen** aus.
+3. Wählen Sie auf der Seite **Erforderliche Berechtigungen** die Option **Anwendungsberechtigungen** aus. Aktivieren Sie das Kontrollkästchen **Verzeichnis**, und wählen Sie anschließend **Directory.ReadAll** aus. Aktivieren Sie das Kontrollkästchen **AuditLog**, und wählen Sie anschließend **AuditLog.Read.All** aus. Wählen Sie **Berechtigungen hinzufügen** aus.
 
-    ![Screenshot: Seite „API-Berechtigungen anfordern“, auf der Sie Anwendungsberechtigungen auswählen können](./media/howto-configure-prerequisites-for-reporting-api/07.png)
+    ![Screenshot: Seite „API-Berechtigungen anfordern“, auf der Sie Anwendungsberechtigungen auswählen können](./media/howto-configure-prerequisites-for-reporting-api/select-permissions.png)
 
-4. Wählen Sie auf der Seite **Berichterstellungs-API-Anwendung – API-Berechtigungen** die Option **Administratoreinwilligung erteilen** aus. 
+4. Wählen Sie auf der Seite **Berichterstellungs-API-Anwendung – API-Berechtigungen** die Option **Administratoreinwilligung erteilen** aus.
 
-    ![Screenshot: Seite „Berichterstellungs-API-Anwendung – API-Berechtigungen“, auf der Sie „Administratoreinwilligung erteilen“ auswählen können](./media/howto-configure-prerequisites-for-reporting-api/08.png)
+    ![Screenshot: Seite „Berichterstellungs-API-Anwendung – API-Berechtigungen“, auf der Sie „Administratoreinwilligung erteilen“ auswählen können](./media/howto-configure-prerequisites-for-reporting-api/grant-admin-consent.png)
 
-5. Hinweis: **Microsoft Graph** wird bei der API-Registrierung standardmäßig hinzugefügt.
-
-    ![Screenshot: Seite „API-Berechtigungen“, auf der Sie „Berechtigung hinzufügen“ auswählen können](./media/howto-configure-prerequisites-for-reporting-api/15.png)
 
 ## <a name="gather-configuration-settings"></a>Erfassen von Konfigurationseinstellungen 
 
@@ -132,9 +129,9 @@ In diesem Abschnitt wird gezeigt, wie Sie die folgenden Einstellungen aus Ihrem 
 
 - Domänenname
 - Client-ID
-- Geheimer Clientschlüssel
+- Geheimer Clientschlüssel oder Zertifikat
 
-Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigurieren. 
+Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigurieren. Aus Sicherheitsgründen wird die Verwendung eines Zertifikats empfohlen.
 
 ### <a name="get-your-domain-name"></a>Ermitteln des Domänennamens
 
@@ -142,7 +139,7 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich die Option **Azure Active Directory**.
    
-    ![Screenshot: Azure-Portalmenü mit ausgewählter Option „Azure Active Directory“](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Screenshot des Azure-Portalmenüs mit ausgewählter Option „Azure Active Directory“ zum Abrufen des Domänennamens](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. Wählen Sie auf der Seite **Azure Active Directory** die Option **Benutzerdefinierte Domänennamen**.
 
@@ -157,7 +154,7 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
 
 1. Klicken Sie im linken Navigationsbereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**.
    
-    ![Screenshot: Azure-Portalmenü mit ausgewählter Option „Azure Active Directory“](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Screenshot des Azure-Portalmenüs mit ausgewählter Option „Azure Active Directory“ zum Abrufen der Client-ID der Anwendung](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2. Wählen Sie Ihre Anwendung auf der Seite **App-Registrierungen** aus.
 
@@ -167,13 +164,12 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
 
 
 ### <a name="get-your-applications-client-secret"></a>Abrufen des geheimen Clientschlüssels der Anwendung
- Vermeiden Sie Fehler beim Zugreifen auf Überwachungsprotokolle oder beim Anmelden mithilfe der API.
 
 **So rufen Sie den geheimen Clientschlüssel der Anwendung ab:**
 
 1. Klicken Sie im linken Navigationsbereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**.
    
-    ![Screenshot: Azure-Portalmenü mit ausgewählter Option „Azure Active Directory“](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+    ![Screenshot des Azure-Portalmenüs mit ausgewählter Option „Azure Active Directory“ zum Abrufen des geheimen Clientschlüssels der Anwendung](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
 
 2.  Wählen Sie Ihre Anwendung auf der Seite **App-Registrierungen** aus.
 
@@ -181,7 +177,7 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
 
     ![Screenshot: Seite „Zertifikate und Geheimnisse“, auf der Sie einen geheimen Clientschlüssel hinzufügen können](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
-5. Führen Sie auf der Seite **Geheimen Clientschlüssel hinzufügen** die folgenden Aktionen aus:
+4. Führen Sie auf der Seite **Geheimen Clientschlüssel hinzufügen** die folgenden Aktionen aus:
 
     a. Geben Sie im Textfeld **Beschreibung** Folgendes ein: `Reporting API`.
 
@@ -190,6 +186,22 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
     c. Klicken Sie auf **Speichern**.
 
     d. Kopieren Sie den Schlüsselwert.
+
+### <a name="upload-the-certificate-of-your-application"></a>Hochladen des Zertifikats Ihrer Anwendung
+
+**Führen Sie folgende Schritte aus, um das Zertifikat hochzuladen:**
+
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich die Option **Azure Active Directory**.
+   
+    ![Screenshot des Azure-Portalmenüs mit ausgewählter Option „Azure Active Directory“ zum Hochladen des Zertifikats](./media/howto-configure-prerequisites-for-reporting-api/01.png) 
+
+2. Klicken Sie auf der Seite **Azure Active Directory** auf die Option **App-Registrierung**.
+3. Wählen Sie auf der Anwendungsseite Ihre Anwendung aus.
+4. Wählen Sie **Zertifikate & Geheimnisse** aus.
+5. Wählen Sie **Zertifikat hochladen**.
+6. Klicken Sie auf das Dateisymbol. Wählen Sie ein Zertifikat aus, und klicken Sie anschließend auf **Hinzufügen**.
+
+    ![Screenshot: Hochladen des Zertifikats](./media/howto-configure-prerequisites-for-reporting-api/upload-certificate.png)
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>Beheben von Fehlern in der Berichterstellungs-API
 

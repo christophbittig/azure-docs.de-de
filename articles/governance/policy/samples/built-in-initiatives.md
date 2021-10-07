@@ -1,15 +1,15 @@
 ---
 title: Liste der integrierten Richtlinieninitiativen
 description: Hier finden Sie eine Liste der integrierten Richtlinieninitiativen für Azure Policy. Zu den Kategorien zählen Einhaltung gesetzlicher Bestimmungen, Gastkonfiguration und vieles mehr.
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 857f1ef3c01bb3261f201e5da5defdc8ffa602fc
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 69ac7fd7e6803172e09f21f45444a70444326090
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123474737"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618333"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Integrierte Azure Policy-Richtlinieninitiativen
 
@@ -44,6 +44,10 @@ Die Namen der einzelnen Integrationen sind Links zur Quelle der Initiativendefin
 ## <a name="security-center"></a>Security Center
 
 [!INCLUDE [azure-policy-reference-policysets-security-center](../../../../includes/policy/reference/bycat/policysets-security-center.md)]
+
+## <a name="trusted-launch"></a>Vertrauenswürdiger Start
+
+[!INCLUDE [azure-policy-reference-policysets-trusted-launch](../../../../includes/policy/reference/bycat/policysets-trusted-launch.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

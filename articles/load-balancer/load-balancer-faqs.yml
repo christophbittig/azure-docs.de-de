@@ -8,12 +8,12 @@ metadata:
   ms.topic: article
   ms.date: 04/22/2020
   ms.author: errobin
-  ms.openlocfilehash: 0a855bf66c705e07d556831b60f7f4ec391e29fd
-  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+  ms.openlocfilehash: 65fdc072fed31da0ad452a3ef5426b6e53f9c47f
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129272307"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128556314"
 title: Häufig gestellte Fragen zu Load Balancer
 summary: ''
 sections:
@@ -72,7 +72,7 @@ sections:
   - question: >
       Kann ich über die teilnehmende Back-End-Pool-VM auf das Front-End meines internen Load Balancers zugreifen?
     answer: >
-      Nein, Azure Load Balancer unterstützt dieses Szenario nicht. Weitere Informationen zu diesem Thema finden Sie auf unserer [Problembehandlungsseite](load-balancer-troubleshoot-backend-traffic.md#cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm).
+      Nein, Azure Load Balancer unterstützt dieses Szenario nicht. Weitere Informationen zu diesem Thema finden Sie auf unserer [Problembehandlungsseite](https://docs.microsoft.com/azure/load-balancer/load-balancer-troubleshoot-backend-traffic#cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm).
   - question: >
       Welche bewährten Methoden gelten in Bezug auf ausgehende Verbindungen?
     answer: "Load Balancer Standard und Standard Public IP führen Fähigkeiten und andere Verhaltensweisen für ausgehende Verbindungen ein. Sie sind nicht identisch mit Basic-SKUs. Wenn Sie bei der Arbeit mit Standard-SKUs ausgehende Verbindungen wünschen, müssen Sie diese explizit entweder mit Standard Public IP-Adressen oder Standard Public Load Balancer definieren. Dies umfasst die Erstellung von ausgehenden Verbindungen bei der Verwendung eines internen Load Balancer Standard. Es wird empfohlen, dass Sie für einen Standard Public Load Balancer immer Ausgangsregeln verwenden. Das bedeutet, dass Sie bei Verwendung eines internen Load Balancer Standard Schritte unternehmen müssen, um die ausgehenden Verbindungen für die VMs im Back-End-Pool herzustellen, wenn ausgehende Verbindungen gewünscht sind. Im Kontext der ausgehenden Verbindungen verhalten sich eine einzelne eigenständige VM, alle VMs in einer Verfügbarkeitsgruppe sowie alle Instanzen in einer VM-Skalierungsgruppe wie eine Gruppe. Das bedeutet, wenn eine einzelne VM in einer Verfügbarkeitsgruppe einer Standard-SKU zugeordnet ist, verhalten sich jetzt alle VM-Instanzen in dieser Verfügbarkeitsgruppe nach denselben Regeln wie bei der Zuordnung zu einer Standard-SKU, auch wenn eine einzelne Instanz nicht direkt mit ihr verbunden ist. Dieses Verhalten wird auch bei einem eigenständigen virtuellen Computer mit mehreren Netzwerkschnittstellenkarten beobachtet, die an einen Lastenausgleich angeschlossen sind. Wenn eine eigenständige NIC hinzugefügt wird, zeigt sie dasselbe Verhalten. Lesen Sie dieses Dokument sorgfältig und vollständig, um die allgemeinen Konzepte zu verstehen, überprüfen Sie [Load Balancer Standard](./load-balancer-overview.md) auf Unterschiede zwischen den SKUs, und überprüfen Sie die [Ausgangsregeln](load-balancer-outbound-connections.md#outboundrules).\nDie Verwendung von Ausgangsregeln ermöglicht Ihnen eine differenzierte Steuerung aller Aspekte ausgehender Verbindungen.\n \n"

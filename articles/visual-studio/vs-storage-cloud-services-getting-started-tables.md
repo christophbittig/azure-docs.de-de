@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 9f6733545701cd46bc950f3a856a0f7ef032336e
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 3cad09a5359bd5d9bd2041eb92d0e994adf80080
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822409"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823085"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Erste Schritte mit Azure-Tabellenspeicher und verbundenen Visual Studio-Diensten (Clouddienstprojekte)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -48,40 +48,39 @@ Um auf Tabellen in Clouddienst-Projekten zuzugreifen, müssen Sie die folgenden 
    
     ```csharp
     using Microsoft.Framework.Configuration;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Table;
+    using Azure.Data.Table;
+    using System.Collections.Generic
     using System.Threading.Tasks;
     using LogLevel = Microsoft.Framework.Logging.LogLevel;
     ```
-2. Rufen Sie ein **CloudStorageAccount** -Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen.
+2. Rufen Sie ein **AzureStorageConnectionString**-Objekt zum Erstellen eines **TableServiceClient** ab, der Vorgänge auf Kontoebene wie das Erstellen und Löschen von Tabellen ausführt.
    
     ```csharp
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-    CloudConfigurationManager.GetSetting("<storage account name>
-    _AzureStorageConnectionString"));
+    string storageConnString = "_AzureStorageConnectionString"
     ```
+
    > [!NOTE]
    > Verwenden Sie den gesamten obigen Code vor dem Code in den folgenden Beispielen.
-   > 
-   > 
-3. Rufen Sie ein **CloudTableClient** -Objekt ab, um auf die Tabellenobjekte in Ihrem Speicherkonto zu verweisen.
+   
+3. Rufen Sie ein **TableServiceClient**-Objekt ab, um auf die Tabellenobjekte in Ihrem Speicherkonto zu verweisen.
    
     ```csharp
-    // Create the table client.
-    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+    // Create the table service client.
+    TableServiceClient tableServiceClient = new TableServiceClient(storageConnString);
     ```
-4. Rufen Sie ein **CloudTable** -Verweisobjekt ab, um auf eine bestimmte Tabelle und auf bestimmte Entitäten zu verweisen.
+
+4. Rufen Sie ein **TableClient**-Verweisobjekt ab, um auf eine bestimmte Tabelle und bestimmte Entitäten zu verweisen.
    
     ```csharp
     // Get a reference to a table named "peopleTable".
-    CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
+    TableClient peopleTable = tableServiceClient.GetTableClient("peopleTable");
     ```
 
 ## <a name="create-a-table-in-code"></a>Erstellen einer Tabelle in Code
-Um die Azure-Tabelle zu erstellen, fügen Sie einfach einen Aufruf von **CreateIfNotExistsAsync** hinzu, nachdem Sie wie im Abschnitt „Zugriff auf Tabellen in Code“ beschrieben ein **CloudTable**-Objekt abgerufen haben.
+Um die Azure-Tabelle zu erstellen, fügen Sie einfach einen Aufruf von **CreateIfNotExistsAsync** hinzu, nachdem Sie wie im Abschnitt „Zugriff auf Tabellen in Code“ beschrieben ein **TableClient**-Objekt abgerufen haben.
 
 ```csharp
-// Create the CloudTable if it does not exist.
+// Create the TableClient if it does not exist.
 await peopleTable.CreateIfNotExistsAsync();
 ```
 
@@ -89,7 +88,7 @@ await peopleTable.CreateIfNotExistsAsync();
 Erstellen Sie eine Klasse, mit der die Eigenschaften der Entität definiert werden, um eine Entität zu einer Tabelle hinzuzufügen. Der folgenden Code definiert eine Entitätsklasse namens **CustomerEntity** , die den Vornamen des Kunden als Zeilenschlüssel und den Nachnamen als Partitionsschlüssel verwendet.
 
 ```csharp
-public class CustomerEntity : TableEntity
+public class CustomerEntity : ITableEntity
 {
     public CustomerEntity(string lastName, string firstName)
     {
@@ -105,7 +104,7 @@ public class CustomerEntity : TableEntity
 }
 ```
 
-Tabellenvorgänge, die Entitäten betreffen, werden mit dem **CloudTable** -Objekt ausgeführt, das Sie zuvor unter "Zugreifen auf Tabellen im Code" erstellt haben. Das **TableOperation** -Objekt stellt den auszuführenden Vorgang dar. Das folgende Codebeispiel zeigt das Erstellen eines **CloudTable**-Objekts und eines **CustomerEntity**-Objekts. Um den Vorgang vorzubereiten, wird eine **TableOperation** zum Einfügen der Kundenentität in die Tabelle erstellt. Schließlich wird der Vorgang durch einen Aufruf von **CloudTable.ExecuteAsync** ausgeführt.
+AddEntity-Vorgänge, die Entitäten betreffen, werden mit dem **TableClient**-Objekt ausgeführt, das Sie zuvor unter „Zugreifen auf Tabellen im Code“ erstellt haben. Die Methode **AddEntity** repräsentiert den abzuschließenden Vorgang. Das folgende Codebeispiel zeigt das Erstellen eines **TableClient**-Objekts und eines **CustomerEntity**-Objekts. Zur Vorbereitung des Vorgangs wird die Kundenentität mit **AddEntity** in die Tabelle eingefügt.
 
 ```csharp
 // Create a new customer entity.
@@ -113,78 +112,63 @@ CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
 customer1.Email = "Walter@contoso.com";
 customer1.PhoneNumber = "425-555-0101";
 
-// Create the TableOperation that inserts the customer entity.
-TableOperation insertOperation = TableOperation.Insert(customer1);
-
-// Execute the insert operation.
-await peopleTable.ExecuteAsync(insertOperation);
+// Inserts the customer entity.
+peopleTable.AddEntity(customer1)
 ```
 
 
 ## <a name="insert-a-batch-of-entities"></a>Einfügen eines Entitätsbatchs
-Sie können mehrere Entitäten mit einem Schreibvorgang in eine Tabelle einfügen. Das folgende Codebeispiel erstellt zwei Entitätsobjekte („Jeff Smith“ und „Ben Smith“), fügt diese mithilfe der Insert-Methode einem **TableBatchOperation**-Objekt hinzu und startet den Vorgang dann durch einen Aufruf von **CloudTable.ExecuteBatchAsync**.
+Sie können mehrere Entitäten mit einem Schreibvorgang in eine Tabelle einfügen. Das folgende Codebeispiel erstellt zwei Entitätsobjekte („Jeff Smith“ und „Ben Smith“), fügt sie mit der AddRange-Methode zu einem **addEntitiesBatch**-Objekt hinzu und startet dann den Vorgang durch Aufruf von **TableClient.SubmitTransactionAsync**.
 
 ```csharp
-// Create the batch operation.
-TableBatchOperation batchOperation = new TableBatchOperation();
+// Create a list of 2 entities with the same partition key.
+List<CustomerEntity> entityList = new List<CustomerEntity>
+{
+    new CustomerEntity("Smith", "Jeff")
+    {
+        { "Email", "Jeff@contoso.com" },
+        { "PhoneNumber", "425-555-0104" }
+    },
+    new CustomerEntity("Smith", "Ben")
+    {
+        { "Email", "Ben@contoso.com" },
+        { "PhoneNumber", "425-555-0102" }
+    },
+};
 
-// Create a customer entity and add it to the table.
-CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
-customer1.Email = "Jeff@contoso.com";
-customer1.PhoneNumber = "425-555-0104";
+// Create the batch.
+List<TableTransactionAction> addEntitiesBatch = new List<TableTransactionAction>();
 
-// Create another customer entity and add it to the table.
-CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
-customer2.Email = "Ben@contoso.com";
-customer2.PhoneNumber = "425-555-0102";
+// Add the entities to be added to the batch.
+addEntitiesBatch.AddRange(entityList.Select(e => new TableTransactionAction(TableTransactionActionType.Add, e)));
 
-// Add both customer entities to the batch insert operation.
-batchOperation.Insert(customer1);
-batchOperation.Insert(customer2);
-
-// Execute the batch operation.
-await peopleTable.ExecuteBatchAsync(batchOperation);
+// Submit the batch.
+Response<IReadOnlyList<Response>> response = await peopleTable.SubmitTransactionAsync(addEntitiesBatch).ConfigureAwait(false);
 ```
 
 ## <a name="get-all-of-the-entities-in-a-partition"></a>Abrufen aller Entitäten in einer Partition
-Verwenden Sie ein **TableQuery** -Objekt, um eine Tabelle nach allen Entitäten in einer Partition abzufragen. Im folgenden Codebeispiel wird ein Filter für Entitäten erstellt, wobei "Smith" der Partitionsschlüssel ist. In diesem Beispiel werden die Felder der einzelnen Entitäten in den Abfrageergebnissen an die Konsole ausgegeben.
+Verwenden Sie ein **Abfrage**-Methode, um für eine Tabelle alle Entitäten einer Partition abzufragen. Im folgenden Codebeispiel wird ein Filter für Entitäten erstellt, wobei "Smith" der Partitionsschlüssel ist. In diesem Beispiel werden die Felder der einzelnen Entitäten in den Abfrageergebnissen an die Konsole ausgegeben.
 
 ```csharp
-// Construct the query operation for all customer entities where PartitionKey="Smith".
-TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
-    .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"));
+Pageable<CustomerEntity> queryResultsFilter = peopleTable.Query<CustomerEntity>(filter: "PartitionKey eq 'Smith'");
 
 // Print the fields for each customer.
-TableContinuationToken token = null;
-do
+foreach (CustomerEntity qEntity in queryResultsFilter)
 {
-    TableQuerySegment<CustomerEntity> resultSegment = await peopleTable.ExecuteQuerySegmentedAsync(query, token);
-    token = resultSegment.ContinuationToken;
-
-    foreach (CustomerEntity entity in resultSegment.Results)
-    {
-        Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
-        entity.Email, entity.PhoneNumber);
-    }
-} while (token != null);
-
-return View();
+    Console.WriteLine("{0}, {1}\t{2}\t{3}", qEntity.PartitionKey, qEntity.RowKey, qEntity.Email, qEntity.PhoneNumber);
+}
 ```
 
 
 ## <a name="get-a-single-entity"></a>Abrufen einer einzelnen Entität
-Sie können eine Abfrage schreiben, um eine bestimmte Entität abzurufen. Der folgende Code verwendet ein **TableOperation** -Objekt, um einen Kunden namens "Ben Smith" anzugeben. Diese Methode gibt anstelle einer Sammlung nur eine Entität zurück, und bei dem zurückgegebenen Wert in **TableResult.Result** handelt es sich um ein **CustomerEntity**-Objekt. Die Angabe beider Schlüssel (für Partition und Zeile) in einer Abfrage ist die schnellste Möglichkeit, um eine einzelne Entität aus dem **Tabellenspeicherdienst** abzurufen.
+Sie können eine Abfrage schreiben, um eine bestimmte Entität abzurufen. Der folgende Code verwendet eine **GetEntityAsync**-Methode, um einen Kunden namens „Ben Smith“ anzugeben. Diese Methode gibt anstelle einer Sammlung nur eine einzelne Entität zurück, und bei dem zurückgegebenen Wert in **GetEntityAsync.Result** handelt es sich um ein **CustomerEntity**-Objekt. Die Angabe beider Schlüssel (für Partition und Zeile) in einer Abfrage ist die schnellste Möglichkeit, um eine einzelne Entität aus dem **Tabellenspeicherdienst** abzurufen.
 
 ```csharp
-// Create a retrieve operation that takes a customer entity.
-TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
-
-// Execute the retrieve operation.
-TableResult retrievedResult = await peopleTable.ExecuteAsync(retrieveOperation);
+var singleResult = peopleTable.GetEntityAsync<CustomerEntity>("Smith", "Ben");
 
 // Print the phone number of the result.
-if (retrievedResult.Result != null)
-    Console.WriteLine(((CustomerEntity)retrievedResult.Result).PhoneNumber);
+if (singleResult.Result != null)
+    Console.WriteLine(((CustomerEntity)singleResult.Result).PhoneNumber);
 else
     Console.WriteLine("The phone number could not be retrieved.");
 ```
@@ -193,22 +177,14 @@ else
 Sie können eine Entität nach dem Abrufen löschen. Der folgende Code sucht nach einer Kundenentität namens "Ben Smith". Wenn diese gefunden wird, wird sie gelöscht.
 
 ```csharp
-// Create a retrieve operation that expects a customer entity.
-TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
+var singleResult = peopleTable.GetEntityAsync<CustomerEntity>("Smith", "Ben");
 
-// Execute the operation.
-TableResult retrievedResult = peopleTable.Execute(retrieveOperation);
+CustomerEntity deleteEntity = (CustomerEntity)singleResult.Result;
 
-// Assign the result to a CustomerEntity object.
-CustomerEntity deleteEntity = (CustomerEntity)retrievedResult.Result;
-
-// Create the Delete TableOperation and then execute it.
+// Delete the entity given the partition and row key.
 if (deleteEntity != null)
 {
-    TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
-
-    // Execute the operation.
-    await peopleTable.ExecuteAsync(deleteOperation);
+    await peopleTable.DeleteEntity(deleteEntity.PartitionKey, deleteEntity.RowKey);
 
     Console.WriteLine("Entity deleted.");
 }

@@ -1,27 +1,27 @@
 ---
-title: Kopieren von Daten aus Office 365 mithilfe von Azure Data Factory
+title: Daten aus Office 365 kopieren
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Daten aus Office 365 mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
+description: Lernen Sie, wie Sie Daten aus Office 365 in unterstützte Sink-Datenspeicher kopieren können, indem Sie die Kopieraktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline verwenden.
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 10/20/2019
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 58f760514c38529dc059d7150392e6a98e48f2da
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 45f4f771d2cb289b9893bb8243add86df36ac915
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123308222"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815031"
 ---
-# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopieren von Daten aus Office 365 mithilfe von Azure Data Factory
+# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus Office 365 in Azure mit Azure Data Factory oder Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Dank der Integration von Azure Data Factory und [Microsoft Graph Data Connect](/graph/data-connect-concept-overview) können Sie die umfangreichen Unternehmensdaten in Ihrem Office 365-Mandanten auf skalierbare Weise in Azure überführen und auf Grundlage dieser wertvollen Datenbestände Analyseanwendungen erstellen und Erkenntnisse extrahieren. Die Integration in Privileged Access Management bietet sichere Zugriffssteuerung für die wertvollen zusammengestellten Daten in Office 365.  Über [diesen Link](/graph/data-connect-concept-overview) erhalten Sie eine Übersicht über Microsoft Graph Data Connect und über [diesen Link](/graph/data-connect-policies#licensing) Informationen zur Lizenzierung.
+Azure Data Factory und Synapse Analytics-Pipelines lassen sich mit [Microsoft Graph Data Connect](/graph/data-connect-concept-overview) integrieren, so dass Sie die umfangreichen Unternehmensdaten in Ihrem Office 365-Tenant auf skalierbare Weise in Azure einbringen und auf der Grundlage dieser wertvollen Daten analytische Anwendungen erstellen und Erkenntnisse gewinnen können. Die Integration in Privileged Access Management bietet sichere Zugriffssteuerung für die wertvollen zusammengestellten Daten in Office 365.  Über [diesen Link](/graph/data-connect-concept-overview) erhalten Sie eine Übersicht über Microsoft Graph Data Connect und über [diesen Link](/graph/data-connect-policies#licensing) Informationen zur Lizenzierung.
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Office 365 zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität verwenden, um Daten aus Office 365 zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 Der ADF Office 365-Connector und Microsoft Graph Data Connect ermöglichen die umfangreiche Erfassung verschiedener Datasettypen von Exchange-E-Mail-fähigen Postfächern, einschließlich Adressbuchkontakte, Kalenderereignisse, E-Mails, Benutzerinformationen, Postfacheinstellungen usw.  [Hier](/graph/data-connect-datasets) finden Sie die vollständige Liste verfügbarer Datasets.
@@ -29,7 +29,7 @@ Der ADF Office 365-Connector und Microsoft Graph Data Connect ermöglichen die u
 Vorerst können Sie in einer einzelnen Kopieraktivität **Daten aus Office 365 nur im JSON-Format (setOfObjects-Typ) in [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)** kopieren. Wenn Sie Office 365-Daten in andere Typen von Datenspeichern oder in anderen Formaten laden möchten, können Sie die erste Kopieraktivität mit einer nachfolgenden Kopieraktivität verketten, um Daten in einen der [unterstützten ADF-Zielspeicher](copy-activity-overview.md#supported-data-stores-and-formats) zu laden (siehe Spalte „Als Senke unterstützt“ in der Tabelle „Unterstützte Datenspeicher und Formate“).
 
 >[!IMPORTANT]
->- Das Azure-Abonnement mit der Data Factory und der Senkendatenspeicher müssen sich im gleichen Azure Active Directory-Mandanten (Azure AD) befinden wie der Office 365-Mandant.
+>- Das Azure-Abonnement, das die Datenfabrik oder den Synapse-Arbeitsbereich und den Sink-Datenspeicher enthält, muss unter demselben Azure Active Directory (Azure AD)-Mandanten wie der Office 365-Mandant sein.
 >- Stellen Sie sicher, dass die für die Kopieraktivität verwendete Azure Integration Runtime-Region und das Ziel in der gleichen Region sind, in der sich das Postfach der Benutzer des Office 365-Mandanten befindet. [Hier](concepts-integration-runtime.md#integration-runtime-location) erfahren Sie, wie der Azure Integration Runtime-Standort bestimmt wird. In [dieser Tabelle](/graph/data-connect-datasets#regions) finden Sie die Liste der unterstützten Office-Regionen und die entsprechenden Azure-Regionen.
 >- Die Dienstprinzipalauthentifizierung ist der einzige Authentifizierungsmechanismus, der für Azure Blob Storage, Azure Data Lake Storage Gen1 und Azure Data Lake Storage Gen2 als Zielspeicher unterstützt wird.
 
@@ -77,7 +77,7 @@ Führen Sie die folgenden Schritte aus, um einen verknüpften Dienst für Office
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Ein Screenshot, der das Erstellen eines neuen verknüpften Diensts mit der Azure Data Factory Benutzeroberfläche zeigt.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -105,7 +105,7 @@ Folgende Eigenschaften werden für den mit Office 365 verknüpften Dienst unters
 | office365TenantId | Die Azure-Mandanten-ID, zu der das Office 365-Konto gehört. | Ja |
 | servicePrincipalTenantId | Geben Sie die Mandanteninformationen Ihrer Azure AD-Webanwendung an. | Ja |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
-| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. | Ja |
+| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als „SecureString“, um es sicher zu speichern. | Ja |
 | connectVia | Die Integration Runtime, die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll.  Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein |
 
 >[!NOTE]
@@ -173,7 +173,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Beim Kopieren von Daten aus Office 365 werden die folgenden Eigenschaften im Abschnitt **source** der Copy-Aktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **Office365Source** | Ja |
 | allowedGroups | Gruppenauswahlprädikat.  Verwenden Sie diese Eigenschaft, um bis zu 10 Benutzergruppen auszuwählen, für die die Daten abgerufen werden sollen.  Wenn keine Gruppen angegeben sind, werden Daten für die gesamte Organisation zurückgegeben. | Nein |
@@ -326,4 +326,4 @@ Beim Kopieren von Daten aus Office 365 werden die folgenden Eigenschaften im Ab
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quelles und Senken für die Kopieraktivität unterstützt werden, finden Sie in der Dokumentation für [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -8,14 +8,21 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1f57d48d2fecded727e4087a138fa67c514bea0e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e570e5f06af814a6d0cbb581275d1c70ebf0df8a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340194"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780792"
 ---
 # <a name="scenario-bgp-peering-with-a-virtual-hub-preview"></a>Szenario: BGP-Peering mit einem virtuellen Hub (Vorschau)
+
+> [!IMPORTANT]
+> Das BGP-Peering mit Virtual WAN Hub-Feature befindet sich derzeit in der geschlossenen öffentlichen Vorschau. Wenn Sie dieses Feature ausprobieren möchten, senden Sie zusammen mit der Ressourcen-ID Ihrer Virtual WAN Ressource eine E-Mail an **previewbgpwithvhub@microsoft.com** . Nachdem Sie die Bestätigung der Featureaktivierung erhalten haben, finden Sie auf der folgenden [Dokumentationsseite](create-bgp-peering-hub-portal.md) wichtige Überlegungen und eine ausführliche Anleitung für die Konfiguration. 
+>
+> Um die Ressourcen-ID zu finden, öffnen Sie das Azure-Portal, navigieren Sie zu Ihrer Virtual WAN-Ressource und klicken Sie auf **Einstellungen > Eigenschaften > Ressourcen-ID**.<br> Beispiel: `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/virtualWans/<virtualWANname>`
+>
+
 
 Der Azure Virtual WAN-Hubrouter, auch Router für virtuelle Hubs genannt, fungiert als Routen-Manager und vereinfacht das Routing innerhalb von und zwischen virtuellen Hubs. Anders ausgedrückt hat ein Router für virtuelle Hubs folgende Aufgaben:
 

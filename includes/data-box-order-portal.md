@@ -3,15 +3,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: databox
 ms.topic: include
-ms.date: 08/26/2021
+ms.date: 09/08/2021
 ms.author: alkohli
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: cce8075187517377efc406ce3b452e8a5c33a817
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 6f784c075d24fe26b7ec1ea9d5921dfb460e5298
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468559"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743340"
 ---
 Führen Sie im Azure-Portal die folgenden Schritte aus, um ein Gerät zu bestellen:
 
@@ -36,9 +36,13 @@ Führen Sie im Azure-Portal die folgenden Schritte aus, um ein Gerät zu bestell
 
     [ ![Starten eines Importauftrags für Azure Data Box](media/data-box-order-portal/data-box-import-03.png) ](media/data-box-order-portal/data-box-import-03.png#lightbox)
 
-5. Wählen Sie aus, welches Data Box-Produkt Sie bestellen möchten: **Data Box** (wie unten dargestellt) oder Data Box Heavy. Bei Data Box beträgt die maximal nutzbare Kapazität für eine einzelne Bestellung 80 TB. Bei Data Box Heavy beträgt die maximal nutzbare Kapazität für eine einzelne Bestellung 770 TB. Sie können mehrere Bestellungen für größere Datenmengen erstellen.
+5. Wählen Sie aus, welches Data Box-Produkt Sie bestellen möchten: **Data Box** (wie unten dargestellt) oder Data Box Heavy. 
 
     [ ![Screenshot: Bildschirm zum Auswählen eines Azure Data Box-Produkts. Die Auswahlschaltfläche für Data Box ist hervorgehoben.](media/data-box-order-portal/data-box-import-04.png) ](media/data-box-order-portal/data-box-import-04.png#lightbox)
+
+    Bei Data Box beträgt die maximal nutzbare Kapazität für eine einzelne Bestellung 80 TB. Bei Data Box Heavy beträgt die maximal nutzbare Kapazität für eine einzelne Bestellung 770 TB. Sie können mehrere Bestellungen für größere Datenmengen erstellen.
+
+    Wenn Sie **Data Box Heavy** auswählen, überprüft das Data Box-Team die Geräteverfügbarkeit in Ihrer Region. Sie werden benachrichtigt, wenn Sie mit der Bestellung fortfahren können.
 
 6. Navigieren Sie unter **Bestellung** zur Registerkarte **Allgemeine Informationen**, und geben Sie die folgenden Informationen ein, oder wählen Sie sie aus. Wählen Sie anschließend **Weiter: Datenziel>** aus.
 

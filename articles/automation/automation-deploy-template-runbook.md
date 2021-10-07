@@ -3,15 +3,15 @@ title: Bereitstellen einer Azure Resource Manager-Vorlage in einem Azure Automat
 description: In diesem Artikel wird das Bereitstellen einer in Azure Storage gespeicherten Azure Resource Manager-Vorlage aus einem PowerShell-Runbook beschrieben.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/15/2021
+ms.date: 09/23/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 12ac36645b037eb54522ecc8251501bdb6552776
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 61ff25cd9878ee94ce0ba6db7b2c4e4ac8e649de
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639601"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057755"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-automation-powershell-runbook"></a>Bereitstellen einer Azure Resource Manager-Vorlage in einem Automation-PowerShell-Runbook
 
@@ -19,7 +19,7 @@ Sie können ein [Automation-PowerShell-Runbook](./learn/automation-tutorial-runb
 
 In diesem Artikel erstellen wir ein PowerShell-Runbook, für das eine in [Azure Storage](../storage/common/storage-introduction.md) gespeicherte Resource Manager-Vorlage verwendet wird, um ein neues Azure Storage-Konto bereitzustellen.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -189,9 +189,15 @@ param (
 Disable-AzContextAutosave -Scope Process
 
 # Connect to Azure with user-assigned managed identity
-Connect-AzAccount -Identity
-$identity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $userAssignedManagedIdentity
-Connect-AzAccount -Identity -AccountId $identity.ClientId
+$AzureContext = (Connect-AzAccount -Identity).context
+$identity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup `
+    -Name $userAssignedManagedIdentity `
+    -DefaultProfile $AzureContext
+$AzureContext = (Connect-AzAccount -Identity -AccountId $identity.ClientId).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+    -DefaultProfile $AzureContext
 
 #Set the parameter values for the Resource Manager template
 $Parameters = @{

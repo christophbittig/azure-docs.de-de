@@ -11,12 +11,12 @@ author: wenxwei
 ms.author: wenxwei
 ms.date: 06/22/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 4da4cb933f24a0ca172c6b0fd6b8b9827d615859
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 94eb2beb95a43e422e8bff6c3ab53f7d2e6c208b
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122823462"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094707"
 ---
 # <a name="create-a-training-job-with-the-job-creation-ui-preview"></a>Erstellen eines Trainingsauftrags mit der Benutzeroberfläche für die Auftragserstellung (Vorschau)
 
@@ -85,7 +85,7 @@ Nachdem Sie ein Computeziel ausgewählt haben, müssen Sie die Laufzeitumgebung 
 
 ### <a name="curated-environments"></a>Zusammengestellte Umgebungen
 
-Zusammengestellte Umgebungen sind von Azure definierte Sammlungen von Python-Paketen, die in gängigen ML-Workloads verwendet werden. Zusammengestellte Umgebungen sind in Ihrem Arbeitsbereich standardmäßig verfügbar. Diese Umgebungen werden durch zwischengespeicherte Docker-Images unterstützt, wodurch der Mehraufwand für die Vorbereitung der Ausführung reduziert wird. Die auf der Seite „Zusammengestellte Umgebungen“ angezeigten Karten enthalten Details zu den einzelnen Umgebungen. 
+Zusammengestellte Umgebungen sind von Azure definierte Sammlungen von Python-Paketen, die in gängigen ML-Workloads verwendet werden. Zusammengestellte Umgebungen sind in Ihrem Arbeitsbereich standardmäßig verfügbar. Diese Umgebungen werden durch zwischengespeicherte Docker-Images unterstützt, wodurch der Mehraufwand für die Vorbereitung der Ausführung reduziert wird. Die auf der Seite „Zusammengestellte Umgebungen“ angezeigten Karten enthalten Details zu den einzelnen Umgebungen. Weitere Informationen finden Sie unter [Azure Machine Learning – zusammengestellte Umgebungen](resource-curated-environments.md).
 
  [![Zusammengestellte Umgebungen](media/how-to-train-with-ui/curated-env.png)](media/how-to-train-with-ui/curated-env.png)
 

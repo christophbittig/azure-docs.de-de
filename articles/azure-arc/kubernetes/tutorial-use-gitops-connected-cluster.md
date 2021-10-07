@@ -1,25 +1,25 @@
 ---
-title: 'Tutorial: Bereitstellen von Konfigurationen mithilfe von GitOps in einem Kubernetes-Cluster mit Azure Arc-Aktivierung'
-description: In diesem Tutorial wird das Anwenden von Konfigurationen auf einen Kubernetes-Cluster mit Azure Arc-Aktivierung veranschaulicht. Einen konzeptionellen Einblick in diesen Prozess finden Sie im Artikel „Konfigurationen und GitOps – Kubernetes mit Azure Arc-Aktivierung“.
+title: 'Tutorial: Bereitstellen von Konfigurationen mithilfe von GitOps in einem Kubernetes-Cluster mit Azure Arc-Unterstützung'
+description: In diesem Tutorial wird das Anwenden von Konfigurationen auf einen Kubernetes-Cluster mit Azure Arc-Unterstützung veranschaulicht. Einen konzeptionellen Einblick in diesen Prozess finden Sie im Artikel „Konfigurationen und GitOps – Kubernetes mit Azure Arc-Aktivierung“.
 author: shashankbarsin
 ms.author: shasb
 ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial , devx-track-azurecli
-ms.openlocfilehash: c98a912394bf660f7a2f09c25c10629fd9810434
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: c40720eccde3c075c422d478c1b0cbf493b5196f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123098301"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820641"
 ---
-# <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Tutorial: Bereitstellen von Konfigurationen mithilfe von GitOps in einem Kubernetes-Cluster mit Azure Arc-Aktivierung 
+# <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Tutorial: Bereitstellen von Konfigurationen mithilfe von GitOps in einem Kubernetes-Cluster mit Azure Arc-Unterstützung 
 
-In diesem Tutorial werden Sie Konfigurationen mithilfe von GitOps auf einen Kubernetes-Cluster mit Azure Arc-Aktivierung anwenden. Sie lernen Folgendes:
+In diesem Tutorial wenden Sie Konfigurationen mithilfe von GitOps auf einen Kubernetes-Cluster mit Azure Arc-Unterstützung an. Sie lernen Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen Sie eine Konfiguration auf einem Kubernetes-Cluster mit Azure Arc-Aktivierung mit einem Git-Beispielrepository.
+> * Erstellen Sie mithilfe eines Git-Beispielrepositorys eine Konfiguration in einem Kubernetes-Cluster mit Azure Arc-Unterstützung.
 > * Überprüfen Sie, ob die Konfiguration erfolgreich erstellt wurde.
 > * Anwenden der Konfiguration aus einem privaten Git-Repository.
 > * Überprüfen Sie die Kubernetes-Konfiguration.
@@ -27,9 +27,9 @@ In diesem Tutorial werden Sie Konfigurationen mithilfe von GitOps auf einen Kube
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Ein vorhandener Cluster, der mit Kubernetes mit Azure Arc-Aktivierung verbunden ist.
-    - Wenn Sie noch keine Verbindung mit einem Cluster hergestellt haben, führen Sie unseren [Schnellstart zum Verbinden eines Kubernetes-Clusters mit Azure Arc-Aktivierung](quickstart-connect-cluster.md) durch.
-- Ein grundlegendes Verständnis der Vorteile und der Architektur dieses Features. Weitere Informationen finden Sie im Artikel [Konfigurationen und GitOps: Kubernetes mit Azure Arc-Aktivierung](conceptual-configurations.md).
+- Ein vorhandener Cluster, der mit Kubernetes mit Azure Arc-Unterstützung verbunden ist
+    - Wenn Sie noch keine Verbindung mit einem Cluster hergestellt haben, führen Sie unseren [Schnellstart zum Verbinden eines Kubernetes-Clusters mit Azure Arc-Unterstützung](quickstart-connect-cluster.md) aus.
+- Ein grundlegendes Verständnis der Vorteile und der Architektur dieses Features. Weitere Informationen finden Sie im Artikel [Konfigurationen und GitOps: Azure Arc-fähiges Kubernetes](conceptual-configurations.md).
 - Installieren Sie die `k8s-configuration` Azure CLI-Erweiterung der Version >= 1.0.0:
   
   ```azurecli
@@ -189,7 +189,7 @@ Weitere Informationen finden Sie in der [Flux-Dokumentation](https://aka.ms/Flux
 > Flux synchronisiert standardmäßig über die Verzweigung `master` des Git-Repositorys. Neuere Git-Repositorys verfügen jedoch über die Stammverzweigung mit dem Namen `main`. In diesem Fall müssen Sie `--git-branch=main` in den Parametern vom Typ „--operator-params“ festlegen. 
 
 > [!TIP]
-> Sie können eine Konfiguration im Azure-Portal auf der Registerkarte **GitOps** der Kubernetes-Ressource mit Azure Arc-Aktivierung erstellen.
+> Sie können eine Konfiguration im Azure-Portal auf der Registerkarte **GitOps** der Kubernetes-Ressource mit Azure Arc-Unterstützung erstellen.
 
 ## <a name="validate-the-configuration"></a>Überprüfen der Konfiguration
 

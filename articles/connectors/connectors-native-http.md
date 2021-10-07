@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 09/13/2021
 tags: connectors
-ms.openlocfilehash: 10c946010fa3caba14130c3c7055c711323ad93c
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 1c894c6162a8c9e24794f5c52ce1f6cefb6fa85a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110498290"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563707"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps
 
@@ -104,14 +104,14 @@ Diese integrierte Aktion führt einen HTTP-Aufruf der angegebenen URL für einen
 
 Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Trigger oder einer -Aktion, die diese Informationen zurückgeben:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 |----------|------|-------------|
 | `headers` | JSON-Objekt | Die Header aus der Anforderung |
 | `body` | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
 | `status code` | Integer | Der Statuscode aus der Anforderung |
 |||
 
-| Statuscode | Beschreibung |
+| Statuscode | BESCHREIBUNG |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Zulässig |
@@ -256,7 +256,9 @@ Angenommen, Sie verfügen über eine Logik-App, die eine HTTP POST-Anforderung 
 
 ## <a name="asynchronous-request-response-behavior"></a>Asynchrones Anforderungs-Antwort-Verhalten
 
-Alle HTTP-basierten Aktionen in Azure Logic Apps befolgen erst einmal das [Standardmuster für asynchrone Vorgänge](/azure/architecture/patterns/async-request-reply). Laut diesem Muster gibt der Empfänger sofort eine [202 ACCEPTED](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)-Antwort zurück, wenn eine HTTP-Aktion einen Endpunkt, einen Dienst, das System oder die API aufruft oder eine Anforderung an ebendiese sendet. Dieser Code bestätigt, dass der Empfänger die Anforderung akzeptiert, aber die Verarbeitung noch nicht abgeschlossen hat. Die Antwort kann einen `location`-Header enthalten, in dem die URL und eine Aktualisierungs-ID angegeben sind, mit denen der Aufrufer den Status der asynchronen Anforderung abrufen oder überprüfen kann, bis der Empfänger die Verarbeitung beendet und eine Antwort mit dem Code [200 OK](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) oder einem anderen Statuscode zurückgibt, der nicht 202 ist. Der Aufrufer muss jedoch nicht darauf warten, dass die Verarbeitung der Anforderung abgeschlossen wird, und kann mit der Ausführung der nächsten Aktion fortfahren. Weitere Informationen finden Sie unter [Gegenüberstellung von synchronem und asynchronem Messaging](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
+Für *zustandsabhängige* Workflows in Azure Logic Apps mit mehreren Mandanten und Einzelmandanten folgen alle HTTP-basierten Aktionen dem Standardmuster [asynchroner Operationen](/azure/architecture/patterns/async-request-reply) als Standardverhalten. Laut diesem Muster gibt der Empfänger sofort eine [202 ACCEPTED](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)-Antwort zurück, wenn eine HTTP-Aktion einen Endpunkt, einen Dienst, das System oder die API aufruft oder eine Anforderung an ebendiese sendet. Dieser Code bestätigt, dass der Empfänger die Anforderung akzeptiert, aber die Verarbeitung noch nicht abgeschlossen hat. Die Antwort kann einen `location` Header enthalten, der den URI und eine Refresh-ID angibt, mit der Aufrufer den Status der asynchronen Anforderung abfragen oder überprüfen kann, bis der Empfänger die Verarbeitung beendet und eine ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) Erfolgsmeldung oder eine andere Nicht-202-Antwort zurückgibt. Der Aufrufer muss jedoch nicht darauf warten, dass die Verarbeitung der Anforderung abgeschlossen wird, und kann mit der Ausführung der nächsten Aktion fortfahren. Weitere Informationen finden Sie unter [Gegenüberstellung von synchronem und asynchronem Messaging](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
+
+Für *zustandslose* Workflows in Azure Logic Apps mit einem Mandanten verwenden HTTP-basierte Aktionen nicht das asynchrone Operationsmuster. Stattdessen werden sie nur synchron ausgeführt, geben die ["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) Antwort unverändert zurück und fahren mit dem nächsten Schritt in der Workflow-Ausführung fort. Wenn die Antwort einen `location`-Header enthält, fragt ein zustandsloser Workflow den angegebenen URI nicht ab, um den Status zu überprüfen. Um dem Standardmuster für asynchrone Operationen [ zu folgen, verwenden Sie stattdessen einen zustandsbehafteten Workflow](/azure/architecture/patterns/async-request-reply).
 
 * Im Logik-App-Designer verfügt die HTTP-Aktion, nicht der Trigger, über eine Einstellung für das **asynchrone Muster**, die automatisch aktiviert ist. Diese Einstellung gibt an, dass der Aufrufer nicht auf den Abschluss der Verarbeitung wartet, sondern mit der nächsten Aktion fortfahren kann, dass er aber weiterhin den Status überprüft, bis die Verarbeitung beendet wird. Wenn diese Einstellung deaktiviert ist, gibt sie an, dass der Aufrufer auf den Abschluss der Verarbeitung wartet, bevor er mit der nächsten Aktion fortfährt.
 
@@ -306,6 +308,22 @@ HTTP-Anforderungen unterliegen einem [Timeoutlimit](../logic-apps/logic-apps-lim
 * Ersetzen der HTTP-Aktion durch eine [HTTP-Webhook-Aktion](../connectors/connectors-native-webhook.md), die darauf wartet, dass der Empfänger den Status und die Ergebnisse in der Antwort sendet, nachdem die Verarbeitung der Anforderung abgeschlossen wurde
 
 <a name="disable-location-header-check"></a>
+
+### <a name="set-up-interval-between-retry-attempts-with-the-retry-after-header"></a>Intervall zwischen Wiederholungsversuchen mit dem Retry-After-Header einrichten
+
+Um die Anzahl der Sekunden zwischen den Wiederholungsversuchen festzulegen, können Sie der HTTP-Aktionsantwort die Kopfzeile `Retry-After` hinzufügen. Wenn der Zielendpunkt beispielsweise den Statuscode `429 - Too many requests` zurückgibt, können Sie ein längeres Intervall zwischen den Wiederholungsversuchen festlegen. Der `Retry-After`-Header funktioniert auch mit dem `202 - Accepted`-Statuscode.
+
+Das folgende Beispiel zeigt die Antwort der HTTP-Aktion, die `Retry-After` enthält:
+
+```json
+{
+    "statusCode": 429,
+    "headers": {
+        "Retry-After": "300"
+    }
+}
+```
+
 
 ## <a name="disable-checking-location-headers"></a>Deaktivieren der Überprüfung von Location-Headern
 

@@ -8,15 +8,15 @@ ms.service: role-based-access-control
 ms.subservice: conditions
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2021
+ms.date: 09/24/2021
 ms.author: rolyon
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 57a4c866681f9970982a34545081549a407377db
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 7401b7369d766df5513100b30b7b65c324517fbe
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592032"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091983"
 ---
 # <a name="add-or-edit-azure-role-assignment-conditions-using-the-azure-portal-preview"></a>Hinzufügen oder Bearbeiten von Azure-Rollenzuweisungsbedingungen über das Azure-Portal (Vorschau)
 
@@ -50,9 +50,9 @@ Es gibt zwei Möglichkeiten, um eine Bedingung hinzuzufügen. Sie können eine B
 
 1. Befolgen Sie die Schritte zum [Zuweisen von Azure-Rollen über das Azure-Portal](role-assignments-portal.md).
 
-1. Klicken Sie auf der Registerkarte **Bedingung** auf **Bedingung hinzufügen**.
+1. Klicken Sie auf der Registerkarte **Conditions (optional)** (Bedingungen (optional)) auf **Bedingung hinzufügen**.
 
-    Wenn die Registerkarte „Bedingung“ nicht angezeigt wird, überprüfen Sie, ob Sie eine Rolle ausgewählt haben, die Bedingungen unterstützt.
+    Wenn die Registerkarte „Conditions (optional)“ (Bedingungen (optional)) nicht angezeigt wird, stellen Sie sicher, dass Sie eine Rolle ausgewählt haben, die Bedingungen unterstützt.
 
    ![Screenshot der Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Bedingung hinzufügen“ auf der Benutzeroberfläche der Vorschauversion.](./media/shared/condition.png)
 
@@ -159,6 +159,6 @@ Nachdem die Seite zum Hinzufügen einer Rollenzuweisungsbedingung geöffnet wurd
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Beispiel für Azure-Rollenzuweisungsbedingungen (Vorschau)](../storage/common/storage-auth-abac-examples.md)
+- [Beispiele für Azure-Rollenzuweisungsbedingungen (Vorschau)](../storage/common/storage-auth-abac-examples.md)
 - [Tutorial: Hinzufügen einer Rollenzuweisungsbedingung zum Einschränken des Zugriffs auf Blobs mit dem Azure-Portal (Vorschau)](../storage/common/storage-auth-abac-portal.md)
 - [Problembehandlung: Bedingungen für die Azure-Rollenzuweisung (Vorschau)](conditions-troubleshoot.md)

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/25/2021
+ms.date: 09/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aa60cf86a8bc59b9eed2adc8ac0ba2cfb89be584
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: b095b0e53b7d9cd76a7bb0cb92258dc9bda34b3d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835610"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588920"
 ---
 # <a name="page-layout-versions"></a>Seitenlayoutversionen
 
@@ -56,6 +56,23 @@ Das Azure AD B2C-Seitenlayout verwendet die folgende Versionen der [jQuery-Bibli
 
 ## <a name="self-asserted-page-selfasserted"></a>Selbstbestätigte Seite (selbstbestätigt)
 
+**2.1.8**
+
+- Der Anspruchsname wird dem `class`-Attribut des `<li>` HTML-Elements hinzugefügt, das die Attribut-Eingabeelemente des Benutzers umgibt. Der Klassenname ermöglicht es Ihnen, einen CSS-Selektor zu erstellen, um das übergeordnete `<li>`-Element für ein bestimmtes Benutzerattribut-Eingabeelement auszuwählen. Das folgende HTML-Markup zeigt das Klassenattribut für die Anmeldeseite:
+  
+  ```html
+  <div id="attributeList" class="attr">
+    <ul>
+      <li class="EmailBox email_li">...</li>
+      <li class="Password newPassword_li">...</li>
+      <li class="Password reenterPassword_li">...</li>
+      <li class="TextBox displayName_li">...</li>
+      <li class="TextBox givenName_li">...</li>
+      <li class="TextBox surname_li">...</li>
+      <li class="TextBox extension_age_li">...</li>
+    </ul>
+  </div>
+  ```
 **2.1.7**
 - Sprachcodierungsproblem, das dazu führt, dass die Anforderung fehlschlägt, wurde behoben.
 - Fehler in der Barrierefreiheit, bei dem Inlinefehlermeldungen nur bei der Formularübermittlung angezeigt wurden, wurde behoben.

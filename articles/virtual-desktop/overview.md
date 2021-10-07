@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 773e0053512026f6a92a2981d43340b68e708186
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f988fafbdd381c88a3f8da60fb48fa3320a82876
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113757713"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674450"
 ---
 # <a name="what-is-azure-virtual-desktop"></a>Was ist Azure Virtual Desktop?
 
@@ -123,6 +123,8 @@ Weitere Informationen zu URLs, die Sie für die Verwendung der Clients entsperre
 
 Für Azure Virtual Desktop gilt die [Microsoft-Lebenszyklusrichtlinie](/lifecycle/), und es werden die folgenden x64-Betriebssystemimages unterstützt:
 
+* Windows 11 Enterprise mit mehreren Sitzungen (Vorschau)
+* Windows 11 Enterprise (Vorschau)
 * Windows 10 Enterprise (mehrere Sitzungen)
 * Windows 10 Enterprise
 * Windows 7 Enterprise
@@ -136,12 +138,14 @@ Die verfügbaren Automatisierungs- und Bereitstellungsoptionen hängen davon ab,
 
 |Betriebssystem|Azure-Imagekatalog|Manuelle VM-Bereitstellung|Integration von Azure Resource Manager-Vorlagen|Bereitstellungshost-Pools auf Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
+|Windows 11 Enterprise mit mehreren Sitzungen (Vorschau)|Ja|Ja|Ja|Ja|
+|Windows 11 Enterprise (Vorschau)|Ja|Ja|Ja|Ja|
 |Windows 10 Enterprise mit mehreren Sitzungen, Version 1909 oder höher|Ja|Ja|Ja|Ja|
 |Windows 10 Enterprise, Version 1909 oder höher|Ja|Ja|Ja|Ja|
 |Windows 7 Enterprise|Ja|Ja|Nein|Nein|
 |Windows Server 2019|Ja|Ja|Nein|Nein|
 |Windows Server 2016|Ja|Ja|Ja|Ja|
-|Windows Server 2012 R2|Ja|Ja|Nein|Nein|
+|Windows Server 2012 R2|Ja|Ja|Nein|Nein|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

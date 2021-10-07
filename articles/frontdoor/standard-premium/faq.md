@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/18/2021
 ms.author: duau
-ms.openlocfilehash: be1ffdecb727426f914a74970a720f4f19e51824
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 378ba28eaa4b68cb1d05fa0af5c11ca95bd52a8b
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351292"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210324"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Häufig gestellte Fragen zu Azure Front Door Standard/Premium (Vorschauversion)
 
@@ -126,6 +126,8 @@ Eine Alternative zum Sperren Ihrer Anwendung, damit Datenverkehr nur von Ihrer s
         </system.webServer>
     </configuration>
     ```
+
+* Azure Front Door unterstützt auch das Diensttag *AzureFrontDoor.Frontend*, das die Liste der IP-Adressen bietet, die Clients beim Herstellen einer Verbindung mit Front Door verwenden. Sie können das Diensttag *AzureFrontDoor.Frontend* verwenden, wenn Sie den ausgehenden Datenverkehr steuern, der zugelassen werden sollte, um eine Verbindung mit den hinter Azure Front Door bereitgestellten Diensten herzustellen. Azure Front Door unterstützt auch das zusätzliche Diensttag *AzureFrontDoor.FirstParty* zum internen Integrieren mit anderen Azure-Diensten. Weitere Informationen zu Anwendungsfällen für Azure Front Door-Diensttags finden Sie unter [Verfügbare Diensttags](../../virtual-network/service-tags-overview.md#available-service-tags).
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Kann sich die Anycast-IP-Adresse während der Lebensdauer meiner Front Door-Instanz ändern?
 

@@ -8,31 +8,21 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 07/01/2021
+ms.date: 09/27/2021
 ms.topic: how-to
-ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack
-ms.openlocfilehash: 2da9b19bb0d2bcdf09cb478898590d55398b2cc9
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
+ms.openlocfilehash: c445ee7d2567595d1602e2e895f0c3203f16dff6
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122356299"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079616"
 ---
 # <a name="set-up-automl-training-with-python"></a>Einrichten von AutoML-Training mit Python
 
-Hier erfahren Sie, wie Sie eine AutoML-Trainingsausführung mit dem [Python SDK für Azure Machine Learning](/python/api/overview/azure/ml/intro) mithilfe von automatisiertem ML von Azure Machine Learning einrichten. Das automatisierte ML wählt einen Algorithmus und Hyperparameter für Sie aus und generiert ein Modell, das Sie anschließend bereitstellen können. Es gibt mehrere Optionen für die Konfiguration dieser Art von Experimente.
+Hier erfahren Sie, wie Sie eine AutoML-Trainingsausführung (automatisiertes maschinelles Lernen) mit dem [Python-SDK für Azure Machine Learning](/python/api/overview/azure/ml/intro) mithilfe von automatisiertem ML von Azure Machine Learning einrichten. Das automatisierte ML wählt einen Algorithmus und Hyperparameter für Sie aus und generiert ein Modell, das Sie anschließend bereitstellen können. Dieser Leitfaden enthält Details zu den verschiedenen Optionen, die Sie zum Konfigurieren von automatisierten ML-Experimenten verwenden können.
 
 Ein vollständiges Beispiel finden Sie unter [Tutorial: Trainieren eines Regressionsmodells mit AutoML](tutorial-auto-train-models.md).
-
-Folgende Konfigurationsoptionen sind für das automatisierte ML verfügbar:
-
-* Wählen Sie die Experimentart aus: Klassifizierung, Regression oder Zeitreihenvorhersage
-* Datenquelle, Datenformate und Abrufen von Daten
-* Wählen Sie das Computeziel aus: lokal oder remote.
-* Einstellungen für automatisierte Machine Learning-Experimente
-* Ausführen eines Experiments mit automatisiertem maschinellem Lernen
-* Untersuchen von Modellmetriken
-* Registrieren und Bereitstellen von Modellen
 
 Wenn Sie lieber ohne Code arbeiten, finden Sie hier Informationen zum [Einrichten von AutoML-Training in Azure Machine Learning Studio ohne Code](how-to-use-automated-ml-for-ml-models.md).
 
@@ -86,7 +76,8 @@ Mit dem folgenden Code wird ein TabularDataset-Element aus einer Web-URL erstell
 from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
-  ```
+```
+
 **Für lokale Computeexperimente** werden DataFrames-Objekte von Pandas für schnellere Verarbeitungszeiten empfohlen.
 
   ```python
@@ -133,7 +124,7 @@ Legen Sie als Nächstes die Instanz fest, auf der das Modell trainiert werden so
 
 * Ihr **lokaler** Computer (z. B. lokaler Desktop oder Laptop): Diese Option wird in der Regel für kleine Datasets und während der Untersuchungsphase verwendet. Ein Beispiel mit einem lokalen Computeziel finden Sie in [diesem Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb). 
  
-* Ein **Remotecomputer** in der Cloud: [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) ist ein verwalteter Dienst, mit dem Machine Learning-Modelle in Clustern virtueller Azure-Computer trainiert werden können. 
+* Ein **Remotecomputer** in der Cloud: [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) ist ein verwalteter Dienst, mit dem Machine Learning-Modelle in Clustern virtueller Azure-Computer trainiert werden können. Compute-Instanzen werden auch als Computeziel unterstützt.
 
     Ein Remotebeispiel mit Azure Machine Learning Managed Compute finden Sie in [diesem Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb). 
 
@@ -145,42 +136,28 @@ Legen Sie als Nächstes die Instanz fest, auf der das Modell trainiert werden so
 
 Es gibt mehrere Optionen zum Konfigurieren von Experimenten mit automatisiertem ML. Diese Parameter werden beim Instanziieren eines `AutoMLConfig`-Objekts festgelegt. Unter [AutoMLConfig-Klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) finden Sie eine vollständige Liste der Parameter.
 
-Beispiele hierfür sind:
+Das folgende Beispiel gilt für eine Klassifizierungsaufgabe. Im Experiment wird die AUC gewichtet als [primäre Metrik](#primary-metric) verwendet. Für das Experiment sind ein Timeoutwert von 30 Minuten und zwei Faltungen für die Kreuzvalidierung festgelegt.
 
-1. Ein Klassifizierungsexperiment, in dem AUC gewichtet als primäre Metrik verwendet wird, wobei das Experimentzeitlimit auf 30 Minuten festgelegt ist und 2 Kreuzvalidierungfolds verwendet werden.
+```python
+    automl_classifier=AutoMLConfig(task='classification',
+                                   primary_metric='AUC_weighted',
+                                   experiment_timeout_minutes=30,
+                                   blocked_models=['XGBoostClassifier'],
+                                   training_data=train_data,
+                                   label_column_name=label,
+                                   n_cross_validations=2)
+```
+Sie können auch Vorhersageaufgaben konfigurieren, was eine zusätzliche Einrichtung erfordert. Weitere Informationen finden Sie im Artikel [Einrichten von AutoML zum Trainieren eines Zeitreihenvorhersagemodells mit Python](how-to-auto-train-forecast.md). 
 
-   ```python
-       automl_classifier=AutoMLConfig(task='classification',
-                                      primary_metric='AUC_weighted',
-                                      experiment_timeout_minutes=30,
-                                      blocked_models=['XGBoostClassifier'],
-                                      training_data=train_data,
-                                      label_column_name=label,
-                                      n_cross_validations=2)
-   ```
-1. Beim folgenden Beispiel handelt es sich um ein Regressionsexperiment, das nach 60 Minuten mit fünf Kreuzvalidierungsfolds endet.
-
-   ```python
-      automl_regressor = AutoMLConfig(task='regression',
-                                      experiment_timeout_minutes=60,
-                                      allowed_models=['KNN'],
-                                      primary_metric='r2_score',
-                                      training_data=train_data,
-                                      label_column_name=label,
-                                      n_cross_validations=5)
-   ```
-
-
-1. Für Prognoseaufgaben ist ein zusätzliches Setup erforderlich. Weitere Informationen finden Sie im Artikel [Einrichten von AutoML für die Zeitreihenprognose](how-to-auto-train-forecast.md). 
-
-    ```python
+```python
     time_series_settings = {
-        'time_column_name': time_column_name,
-        'time_series_id_column_names': time_series_id_column_names,
-        'forecast_horizon': n_test_periods
-    }
+                            'time_column_name': time_column_name,
+                            'time_series_id_column_names': time_series_id_column_names,
+                            'forecast_horizon': n_test_periods
+                           }
     
-    automl_config = AutoMLConfig(task = 'forecasting',
+    automl_config = AutoMLConfig(
+                                 task = 'forecasting',
                                  debug_log='automl_oj_sales_errors.log',
                                  primary_metric='normalized_root_mean_squared_error',
                                  experiment_timeout_minutes=20,
@@ -189,8 +166,9 @@ Beispiele hierfür sind:
                                  n_cross_validations=5,
                                  path=project_folder,
                                  verbosity=logging.INFO,
-                                 **time_series_settings)
-    ```
+                                 **time_series_settings
+                                )
+```
     
 ### <a name="supported-models"></a>Unterstützte Modelle
 
@@ -223,23 +201,17 @@ Klassifizierung | Regression | Zeitreihe und Vorhersage
 ||| SeasonalAverage
 ||| [ExponentialSmoothing](https://www.statsmodels.org/v0.10.2/generated/statsmodels.tsa.holtwinters.ExponentialSmoothing.html)
 
-### <a name="primary-metric"></a>Primäre Metrik
-Der Parameter `primary metric` bestimmt die Metrik, die während des Modelltrainings für die Optimierung verwendet werden soll. Die verfügbaren Metriken, die Sie auswählen können, werden vom ausgewählten Tasktyp bestimmt. In der folgenden Tabelle werden gültige primäre Metriken für jeden Tasktyp aufgeführt.
+### <a name="primary-metric"></a>Primary metric (Primäre Metrik)
 
-Bei der Auswahl einer primären Metrik für optimiertes automatisiertes ML muss eine Vielzahl von Faktoren berücksichtigt werden. Der wichtigste Aspekt sollte sein, welche Metrik Ihre Geschäftsanforderungen am besten widerspiegelt. Anschließend sollten Sie überprüfen, ob die Metrik für Ihr Datasetprofil (Datengröße, Datenbereich, Klassenverteilung usw.) geeignet ist.
+Der Parameter `primary_metric` bestimmt die Metrik, die während des Modelltrainings für die Optimierung verwendet werden soll. Die verfügbaren Metriken, die Sie auswählen können, richten sich nach der Art der ausgewählten Aufgabe.
+
+Bei der Auswahl einer primären Metrik für optimiertes automatisiertes ML muss eine Vielzahl von Faktoren berücksichtigt werden. Der wichtigste Aspekt sollte sein, welche Metrik Ihre Geschäftsanforderungen am besten widerspiegelt. Anschließend sollten Sie überprüfen, ob die Metrik für Ihr Datasetprofil (Datengröße, Datenbereich, Klassenverteilung usw.) geeignet ist. In den folgenden Abschnitten werden die empfohlenen primären Metriken basierend auf dem Aufgabentyp und Geschäftsszenario zusammengefasst. 
 
 Informationen zu den speziellen Definitionen dieser Metriken finden Sie unter [Grundlagen von Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).
 
-|Klassifizierung | Regression | Zeitreihe und Vorhersage
-|--|--|--
-|`accuracy`| `spearman_correlation` | `normalized_root_mean_squared_error`
-|`AUC_weighted` | `normalized_root_mean_squared_error` | `r2_score`
-|`average_precision_score_weighted` | `r2_score` | `normalized_mean_absolute_error`
-|`norm_macro_recall` | `normalized_mean_absolute_error` | 
-|`precision_score_weighted` |
-
 #### <a name="metrics-for-classification-scenarios"></a>Metriken für Klassifizierungsszenarien 
-Postschwellenwert-Metriken wie `accuracy`, `average_precision_score_weighted`, `norm_macro_recall`, und `precision_score_weighted` optimieren möglicherweise nicht so gut für Datensätze, die klein sind, sehr große Klassenschieflage (Klassenungleichgewicht) aufweisen oder wenn der erwartete metrische Wert sehr nahe bei 0,0 oder 1,0 liegt. In diesen Fällen eignet sich `AUC_weighted` möglicherweise besser als primäre Metrik. Nach Abschluss des automatisierten ML können Sie das stärkste Modell basierend auf der Metrik auswählen, die sich am besten für Ihre Geschäftsanforderungen eignet.
+
+Postschwellenwertmetriken wie `accuracy`, `average_precision_score_weighted`, `norm_macro_recall`, und `precision_score_weighted` optimieren möglicherweise nicht so gut für Datensätze, die klein sind, eine sehr große Klassenschieflage (Klassenungleichgewicht) aufweisen oder wenn der erwartete Metrikwert sehr nahe bei 0,0 oder 1,0 liegt. In diesen Fällen eignet sich `AUC_weighted` möglicherweise besser als primäre Metrik. Nach Abschluss des automatisierten ML können Sie das stärkste Modell basierend auf der Metrik auswählen, die sich am besten für Ihre Geschäftsanforderungen eignet.
 
 | Metrik | Beispiel eines Anwendungsfalls |
 | ------ | ------- |
@@ -263,6 +235,7 @@ In diesem Fall würden `normalized_mean_absolute_error` und `normalized_root_mea
 | `normalized_mean_absolute_error` |  |
 
 #### <a name="metrics-for-time-series-forecasting-scenarios"></a>Metriken für Szenarien zur Zeitreihenvorhersage
+
 Die Empfehlungen ähneln den Empfehlungen für Regressionsszenarien. 
 
 | Metrik | Beispiel eines Anwendungsfalls |
@@ -300,15 +273,15 @@ Das Ensemble-Training kann mithilfe der booleschen Parameter `enable_voting_ense
 
 ```python
 automl_classifier = AutoMLConfig(
-        task='classification',
-        primary_metric='AUC_weighted',
-        experiment_timeout_minutes=30,
-        training_data=data_train,
-        label_column_name=label,
-        n_cross_validations=5,
-        enable_voting_ensemble=False,
-        enable_stack_ensemble=False
-        )
+                                 task='classification',
+                                 primary_metric='AUC_weighted',
+                                 experiment_timeout_minutes=30,
+                                 training_data=data_train,
+                                 label_column_name=label,
+                                 n_cross_validations=5,
+                                 enable_voting_ensemble=False,
+                                 enable_stack_ensemble=False
+                                )
 ```
 
 Es gibt mehrere Standardargumente, die als `kwargs` in einem `AutoMLConfig`-Objekt bereitgestellt werden können, um das Ensemble-Standardverhalten zu verändern.
@@ -333,27 +306,27 @@ Der folgende Code zeigt ein Beispiel für das Angeben des benutzerdefinierten En
 
 ```python
 ensemble_settings = {
-    "ensemble_download_models_timeout_sec": 600
-    "stack_meta_learner_type": "LogisticRegressionCV",
-    "stack_meta_learner_train_percentage": 0.3,
-    "stack_meta_learner_kwargs": {
-        "refit": True,
-        "fit_intercept": False,
-        "class_weight": "balanced",
-        "multi_class": "auto",
-        "n_jobs": -1
-    }
-}
+                     "ensemble_download_models_timeout_sec": 600
+                     "stack_meta_learner_type": "LogisticRegressionCV",
+                     "stack_meta_learner_train_percentage": 0.3,
+                     "stack_meta_learner_kwargs": {
+                                                    "refit": True,
+                                                    "fit_intercept": False,
+                                                    "class_weight": "balanced",
+                                                    "multi_class": "auto",
+                                                    "n_jobs": -1
+                                                  }
+                    }
 
 automl_classifier = AutoMLConfig(
-        task='classification',
-        primary_metric='AUC_weighted',
-        experiment_timeout_minutes=30,
-        training_data=train_data,
-        label_column_name=label,
-        n_cross_validations=5,
-        **ensemble_settings
-        )
+                                 task='classification',
+                                 primary_metric='AUC_weighted',
+                                 experiment_timeout_minutes=30,
+                                 training_data=train_data,
+                                 label_column_name=label,
+                                 n_cross_validations=5,
+                                 **ensemble_settings
+                                )
 ```
 
 <a name="exit"></a> 
@@ -405,7 +378,8 @@ Jeder Knoten im Cluster fungiert als einzelner virtueller Computer (VM), der ein
 
 Um die Verwaltung von untergeordneten Ausführungen und deren Zeitpunkt der Durchführung zu erleichtern, empfehlen wir Ihnen, einen dedizierten Cluster pro Experiment zu erstellen und die Anzahl von `max_concurrent_iterations` Ihres Experiments an die Anzahl der Knoten im Cluster anzupassen. Auf diese Weise verwenden Sie alle Clusterknoten gleichzeitig mit der von Ihnen gewünschten Anzahl von gleichzeitigen untergeordneten Ausführungen/Iterationen.
 
-Konfigurieren Sie `max_concurrent_iterations` in Ihrem `AutoMLConfig`-Objekt. Wenn es nicht konfiguriert ist, ist standardmäßig nur eine gleichzeitige untergeordnete Ausführung/Iteration pro Experiment zulässig.  
+Konfigurieren Sie `max_concurrent_iterations` in Ihrem `AutoMLConfig`-Objekt. Wenn es nicht konfiguriert ist, ist standardmäßig nur eine gleichzeitige untergeordnete Ausführung/Iteration pro Experiment zulässig.
+Im Fall einer Compute-Instanz kann `max_concurrent_iterations` auf die gleiche Anzahl von Kernen wie auf dem virtuellen Computer der Compute-Instanz festgelegt werden.
 
 ## <a name="explore-models-and-metrics"></a>Untersuchen von Modellen und Metriken
 
@@ -443,7 +417,7 @@ def print_model(model, prefix=""):
             print()   
 ```
 
-Für eine lokalen oder Remote-Ausführung, die gerade aus demselben Experiment-Notebook eingereicht und trainiert wurde, können Sie das beste Modell anhand der `get_output()`-Methode übergeben. 
+Für eine lokale Ausführung oder Remoteausführung, die über dasselbe Experimentnotebook eingereicht und trainiert wurde, können Sie das beste Modell anhand der `get_output()`-Methode übergeben. 
 
 ```python
 best_run, fitted_model = run.get_output()
@@ -559,9 +533,9 @@ Details zum Erstellen einer Bereitstellungskonfiguration und Bereitstellen eines
 
 Die Interpretierbarkeit von Modellen ermöglicht es Ihnen, zu verstehen, warum Ihre Modelle Vorhersagen erstellt haben, und die zugrunde liegenden Featurewichtigkeitswerte zu verstehen. Das SDK enthält verschiedene Pakete zum Aktivieren von Modellinterpretierbarkeitsfeatures, sowohl für die Trainings- als auch die Rückschlusszeit, für lokale und bereitgestellte Modelle.
 
-Codebeispiele zur Aktivierung von Interpretierbarkeitsfeatures insbesondere in Experimenten mit automatisiertem ML finden Sie unter [Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen](how-to-machine-learning-interpretability-automl.md).
+Weitere Informationen zum Aktivieren von Interpretierbarkeitsfeatures insbesondere in Experimenten mit automatisiertem ML finden Sie unter [Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen (Vorschau)](how-to-machine-learning-interpretability-automl.md).
 
-Allgemeine Informationen dazu, wie Modellerklärungen und Featurewichtigkeit in anderen Bereichen des SDK außerhalb des automatisierten maschinellen Lernens aktiviert werden können, finden Sie im Artikel [Modellinterpretierbarkeit mit Azure Machine Learning Service](how-to-machine-learning-interpretability.md).
+Allgemeine Informationen dazu, wie Modellerklärungen und Featurewichtigkeit in anderen Bereichen des SDK außerhalb des automatisierten maschinellen Lernens aktiviert werden können, finden Sie im Artikel [Modellinterpretierbarkeit in Azure Machine Learning (Vorschauversion)](how-to-machine-learning-interpretability.md).
 
 > [!NOTE]
 > Das ForecastTCN-Modell wird aktuell vom Erklärungsclient nicht unterstützt. Dieses Modell gibt kein Erklärungsdashboard zurück, wenn es als bestes Modell zurückgegeben wird, und es unterstützt keine Erklärungsläufe auf Anforderung.

@@ -1,7 +1,6 @@
 ---
 title: 'Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Computer in Python | Microsoft-Dokumentation'
 description: In diesem Tutorial konfigurieren Sie einen virtuellen Computer in einer Python-Anwendung zum Lesen eines Geheimnisses aus Ihrem Schlüsseltresor.
-services: key-vault
 author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 25182105db831724565c6bf3dbbbb79832b677f7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 463474d13f0df50aebd775e119918e0db7ad65c2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772058"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597309"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Windows in Python
 
@@ -109,7 +108,7 @@ az keyvault set-policy --name "<your-unique-keyvault-name>" --object-id "<system
 Befolgen Sie zum Anmelden beim virtuellen Computer die Anleitung unter [Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung](../../virtual-machines/linux/login-using-aad.md) bzw. [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](../../virtual-machines/windows/connect-logon.md).
 
 
-Für die Anmeldung bei einem virtuellen Linux-Computer können Sie den ssh-Befehl mit dem im Schritt [Erstellen eines virtuellen Computers](#create-a-virtual-machine) erhaltenen Wert für <publicIpAddress> verwenden:
+Für die Anmeldung bei einem virtuellen Linux-Computer können Sie den ssh-Befehl mit dem im Schritt [Erstellen eines virtuellen Computers](#create-a-virtual-machine) erhaltenen Wert für \<publicIpAddress\> verwenden:
 
 ```terminal
 ssh azureuser@<PublicIpAddress>
@@ -129,7 +128,7 @@ pip3 install azure.identity
 
 ## <a name="create-and-edit-the-sample-python-script"></a>Erstellen und Bearbeiten des Python-Beispielskripts
 
-Erstellen Sie auf dem virtuellen Computer eine Python-Datei mit dem Namen **sample.py**. Bearbeiten Sie die Datei so, dass sie den folgenden Code enthält. Ersetzen Sie dabei „<your-unique-keyvault-name>“ durch den Namen Ihres Schlüsseltresors:
+Erstellen Sie auf dem virtuellen Computer eine Python-Datei mit dem Namen **sample.py**. Bearbeiten Sie die Datei so, dass sie den folgenden Code enthält. Ersetzen Sie dabei \<your-unique-keyvault-name\> durch den Namen Ihres Schlüsseltresors:
 
 ```python
 from azure.keyvault.secrets import SecretClient

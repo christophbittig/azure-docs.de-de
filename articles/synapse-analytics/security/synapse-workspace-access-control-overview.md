@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: b92603e5aa9f7c42a2e4789353077058b1fc6ea9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6ee619e6036b9d8bc3b0323bc793903dab0a2735
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730919"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207320"
 ---
 # <a name="azure-synapse-access-control"></a>Azure Synapse-Zugriffssteuerung 
 
@@ -48,7 +48,7 @@ Um diese Ressourcen *erstellen* zu können, müssen Sie ein Azure-Besitzer oder 
 Synapse unterstützt zwei Entwicklungsmodelle.
 
 - **Synapse-Liveentwicklung**. Sie entwickeln und debuggen Code in Synapse Studio und **veröffentlichen** den Code anschließend, um ihn zu speichern und auszuführen.  Der Synapse-Dienst ist die „Source of Truth“ (Quelle der Wahrheit) für die Codebearbeitung und -ausführung.  Nicht veröffentlichte Arbeit geht verloren, wenn Sie Synapse Studio schließen.  
-- **Entwicklung mit Aktivierung von Git**. Sie entwickeln und debuggen Code in Synapse Studio und **committen** Änderungen in einen Arbeitsbranch eines Git-Repositorys. Die Arbeit aus einem oder mehreren Branches wird in einen Kollaborationsbranch eingebunden, über den Sie sie im Dienst **veröffentlichen** können. Das Git-Repository ist die Source of Truth für die Codebearbeitung und der Dienst die Source of Truth für die Ausführung. Änderungen müssen vor dem Schließen von Synapse Studio in das Git-Repository committet oder im Dienst veröffentlicht werden. Weitere Informationen zur Verwendung von Synapse Analytics mit Git finden Sie [hier](../cicd/continuous-integration-deployment.md).
+- **Entwicklung mit Aktivierung von Git**. Sie entwickeln und debuggen Code in Synapse Studio und **committen** Änderungen in einen Arbeitsbranch eines Git-Repositorys. Die Arbeit aus einem oder mehreren Branches wird in einen Kollaborationsbranch eingebunden, über den Sie sie im Dienst **veröffentlichen** können. Das Git-Repository ist die Source of Truth für die Codebearbeitung und der Dienst die Source of Truth für die Ausführung. Änderungen müssen vor dem Schließen von Synapse Studio in das Git-Repository committet oder im Dienst veröffentlicht werden. Weitere Informationen zur Verwendung von Synapse Analytics mit Git finden Sie [hier](../cicd/continuous-integration-delivery.md).
 
 Bei beiden Entwicklungsmodellen kann jeder Benutzer mit Zugriff auf Synapse Studio Codeartefakte erstellen. Sie benötigen jedoch zusätzliche Berechtigungen, um Artefakte im Dienst zu veröffentlichen, veröffentlichte Artefakte zu lesen, Änderungen in Git zu committen, Code auszuführen und auf verknüpfte Daten zuzugreifen, die durch Anmeldeinformationen geschützt sind.
 
@@ -76,7 +76,7 @@ Der Ersteller eines Arbeitsbereichs wird als Active Directory-Administrator des
 
 **Serverlose SQL-Pools**: Synapse-Administratoren werden Berechtigungen vom Typ `db_owner` (`DBO`) für den serverlosen SQL-Pool „Integriert“ erteilt. Um anderen Benutzern Zugriff auf serverlose SQL-Pools zu gewähren, müssen Synapse-Administratoren SQL-Skripts für jeden serverlosen Pool ausführen.  
 
-**Dedizierte SQL-Pools**: Die Active Directory-Administratorberechtigung wird dem Ersteller des Arbeitsbereichs und der Arbeitsbereichs-MSI (Managed Service Identity, verwaltete Dienstidentität) erteilt.  Die Berechtigung für den Zugriff auf dedizierte SQL-Pools wird nicht automatisch gewährt. Um anderen Benutzern oder Gruppen Zugriff auf dedizierte SQL-Pools zu gewähren, muss der Active Directory-Administrator SQL-Skripts für jeden dedizierten SQL-Pool ausführen.
+**Dedizierte SQL-Pools**: Synapse-Administratoren werden Berechtigungen vom Typ `db_owner` (`DBO`) für die dedizierten SQL-Pools erteilt. Die Active Directory-Administratorberechtigung wird dem Ersteller des Arbeitsbereichs und der Arbeitsbereichs-MSI (Managed Service Identity, verwaltete Dienstidentität) erteilt.  Die Berechtigung für den Zugriff auf dedizierte SQL-Pools wird nicht automatisch gewährt. Um anderen Benutzern oder Gruppen Zugriff auf dedizierte SQL-Pools zu gewähren, muss der Active Directory-Administrator SQL-Skripts für jeden dedizierten SQL-Pool ausführen.
 
 Beispiele für SQL-Skripts zum Erteilen von SQL-Berechtigungen für SQL-Pools finden Sie unter [Einrichten der Synapse-Zugriffssteuerung](./how-to-set-up-access-control.md).  
 

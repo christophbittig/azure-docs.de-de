@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: 37671dcb12f2ed1f230e236d68dcf2e6a49bae30
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: da4412d81dfaf6bb88b62aee26dfcd4cfd2402db
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515492"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810123"
 ---
 # <a name="azure-sentinel-file-event-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (Public Preview)
 
@@ -54,13 +54,13 @@ Wenn Sie benutzerdefinierte Parser für das Dateiereignis-Informationsmodell imp
 
 Fügen Sie Ihre KQL-Funktion dem quellunabhängigen Parser `imFileEvent` hinzu, um sicherzustellen, dass alle Inhalte, die das Modell Dateiereignis verwenden, auch den neuen Parser verwenden.
 
-## <a name="normalized-content-for-process-activity-data"></a>Normalisierter Inhalt für Prozessaktivitätsdaten
+## <a name="normalized-content-for-file-activity-data"></a>Normalisierter Inhalt für Dateiaktivitätsdaten
 
-Zur Unterstützung des ASIM-Schemas für Dateiaktivität gehört auch die Unterstützung der folgenden integrierten Analyseregeln mit normalisierten Authentifizierungsparsern. Im Folgenden finden Sie Links zum Azure Sentinel GitHub-Repository. Sie können diese Regeln aber auch in dem [Azure Sentinel Analytics-Regelkatalog](detect-threats-built-in.md) finden. Verwenden Sie die verlinkten GitHub-Seiten, um alle relevanten Hunting-Abfragen für die aufgeführten Regeln zu kopieren.
+Zur Unterstützung des ASIM-Schemas für Dateiaktivität gehört auch die Unterstützung der folgenden integrierten Analyseregeln mit normalisierten Dateiaktivitätsparsern. Im Folgenden finden Sie Links zum Azure Sentinel GitHub-Repository. Sie können diese Regeln aber auch in dem [Azure Sentinel Analytics-Regelkatalog](detect-threats-built-in.md) finden. Verwenden Sie die verlinkten GitHub-Seiten, um alle relevanten Hunting-Abfragen für die aufgeführten Regeln zu kopieren.
 
 
 - [SUNBURST- und SUPERNOVA-Hintertürhashes (normalisierte Dateiereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimFileEvent/imFileESolarWindsSunburstSupernova.yaml)
-- [Exchange Server: im März 2021 offengelegte Sicherheitsrisiken – IoC-Übereinstimmung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ExchangeServerVulnerabilitiesMarch2021IoCs.yaml)
+- [Exchange Server: im März 2021 offengelegte Sicherheitsrisiken – IoC-Übereinstimmung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ExchangeServerVulnerabilitiesMarch2021IoCs.yaml)
 - [Schreiben verdächtiger Dateien durch den HAFNIUM UM-Dienst](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/HAFNIUMUmServiceSuspiciousFile.yaml)
 - [NOBELIUM – Domänen-, Hash- und IP-IOCs – März 2021](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_IOCsMay2021.yaml)
 - [SUNSPOT-Protokolldateierstellung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/SUNSPOTLogFile.yaml)
@@ -81,6 +81,7 @@ Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | datetime | Der Zeitpunkt, zu dem das Ereignis vom meldenden Gerät generiert wurde.|
 | **_ResourceId**   | guid     | Die Azure-Ressourcen-ID des meldenden Geräts oder Diensts oder die Ressourcen-ID des Protokollforwarders für Ereignisse, die mit Syslog, CEF oder WEF weitergeleitet werden. |
+| **Type** | String | Die ursprüngliche Tabelle, aus der der Datensatz abgerufen wurde. Dieses Feld ist nützlich, wenn ein und dasselbe Ereignis über mehrere Kanäle in verschiedenen Tabellen empfangen werden kann und die gleichen EventVendor- und EventProduct-Werte hat.<br><br>Ein Sysmon-Ereignis kann z. B. entweder in der Tabelle Event oder in der Tabelle WindowsEvent gesammelt werden. |
 | | | |
 
 > [!NOTE]

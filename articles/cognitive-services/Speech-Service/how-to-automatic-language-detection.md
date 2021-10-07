@@ -1,28 +1,30 @@
 ---
 title: Verwenden der Sprachenerkennung
 titleSuffix: Azure Cognitive Services
-description: Die Sprachenerkennung wird verwendet, um aufgrund eines Vergleichs anhand einer Liste bereitgestellter Sprachen die gesprochene Sprache mit der an das Speech SDK übergebenen Audioeingabe zu ermitteln.
+description: Die Spracherkennung kann bei der Spracherkennung eingesetzt werden, um die Sprache zu bestimmen, die in den erkannten Sprachaufnahmen gesprochen wird.
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/21/2021
-ms.author: lajanuar
+ms.author: pafarley
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: e24a24b54d31a98497bfba453b6677ebf0f560a9
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 917dd55035ecca40c0a8a25a8f70d79d6a7e6e37
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343554"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806634"
 ---
 # <a name="how-to-use-language-identification"></a>Verwenden der Sprachenerkennung
 
 Die Sprachenerkennung wird verwendet, um aufgrund eines Vergleichs anhand einer Liste bereitgestellter Sprachen die gesprochene Sprache mit der an das Speech SDK übergebenen Audioeingabe zu ermitteln. Der von der Sprachenerkennung zurückgegebene Wert wird dann verwendet, um das Sprachmodell zur Umwandlung von Sprache in Text auszuwählen und Ihnen eine genauere Transkription zu bieten. 
 
-Die Sprachenerkennung kann auch bei der [Sprachübersetzung](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall#multi-lingual-translation-with-language-identification) oder bei der [eigenständigen Erkennung](#standalone-language-identification) verwendet werden. Welche Sprachen verfügbar sind, erfahren Sie unter [Sprachunterstützung](language-support.md).
+Die Sprachenerkennung kann auch bei der [Sprachübersetzung](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall#multi-lingual-translation-with-language-identification) oder bei der [eigenständigen Erkennung](./language-identification.md) verwendet werden. 
+
+Welche Sprachen verfügbar sind, erfahren Sie unter [Sprachunterstützung](language-support.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -339,87 +341,6 @@ speechRecognizer.recognizeOnceAsync((result: SpeechSDK.SpeechRecognitionResult) 
 
 ::: zone-end
 
-## <a name="standalone-language-identification"></a>Eigenständige Sprachenerkennung
-
-::: zone pivot="programming-language-csharp"
-
-In Anwendungsfällen, in denen Sie nur die gesprochene Ausgangssprache erkennen möchten, können Sie die eigenständige Sprachenerkennung verwenden, wie im folgenden Codebeispiel gezeigt. `SourceLanguageRecognizer` kann auch in Szenarien mit kontinuierlicher Erkennung verwendet werden.
-
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
-
-var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>","<paste-your-region>");
-// can switch "Latency" to "Accuracy" depending on priority
-speechConfig.SetProperty(PropertyId.SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
-
-var autoDetectSourceLanguageConfig =
-    AutoDetectSourceLanguageConfig.FromLanguages(
-        new string[] { "en-US", "de-DE" });
-
-using (var recognizer = new SourceLanguageRecognizer(speechConfig, autoDetectSourceLanguageConfig))
-{
-    var result = await recognizer.RecognizeOnceAsync();
-    if (result.Reason == ResultReason.RecognizedSpeech)
-    {
-        var lang = AutoDetectSourceLanguageResult.FromResult(result).Language;
-        Console.WriteLine($"DETECTED: Language={lang}");
-    }
-}
-```
-
-Im [Beispiel auf GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/standalone_language_detection_samples.cs) finden Sie weitere Beispiele für die eigenständige Sprachenerkennung, einschließlich eines Beispiels für die kontinuierliche Erkennung.
-
-::: zone-end
-
-::: zone pivot="programming-language-cpp"
-
-In Anwendungsfällen, in denen Sie nur die gesprochene Ausgangssprache erkennen möchten, können Sie die eigenständige Sprachenerkennung verwenden, wie im folgenden Codebeispiel gezeigt. `SourceLanguageRecognizer` kann auch in Szenarien mit kontinuierlicher Erkennung verwendet werden.
-
-```cpp
-using namespace std;
-using namespace Microsoft::CognitiveServices::Speech;
-using namespace Microsoft::CognitiveServices::Speech::Audio;
-
-auto config = SpeechConfig::FromSubscription("<paste-your-subscription-key>","<paste-your-region>");
-config->SetProperty(PropertyId::SpeechServiceConnection_SingleLanguageIdPriority, "Latency");
-
-auto autoDetectSourceLanguageConfig = AutoDetectSourceLanguageConfig::FromLanguages({ "en-US", "de-DE" });
-
-auto recognizer = SourceLanguageRecognizer::FromConfig(config, autoDetectSourceLanguageConfig);
-cout << "Say something...\n";
-
-auto result = recognizer->RecognizeOnceAsync().get();
-if (result->Reason == ResultReason::RecognizedSpeech)
-{
-    auto lidResult = AutoDetectSourceLanguageResult::FromResult(result);
-    cout << "DETECTED: Language="<< lidResult->Language << std::endl;
-}
-```
-
-Im [Beispiel auf GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/standalone_language_detection_samples.cpp) finden Sie weitere Beispiele für die eigenständige Sprachenerkennung, einschließlich eines Beispiels für die kontinuierliche Erkennung.
-
-::: zone-end
-
-::: zone pivot="programming-language-java"
-> [!IMPORTANT]
-> Dieses Feature wird derzeit nur in C#, C++ und Python unterstützt.
-::: zone-end
-
-::: zone pivot="programming-language-python"
-> [!IMPORTANT]
-> Dieses Feature wird derzeit nur in C#, C++ und Python unterstützt.
-::: zone-end
-
-::: zone pivot="programming-language-objectivec"
-> [!IMPORTANT]
-> Dieses Feature wird derzeit nur in C#, C++ und Python unterstützt.
-::: zone-end
-
-::: zone pivot="programming-language-javascript"
-> [!IMPORTANT]
-> Dieses Feature wird derzeit nur in C#, C++ und Python unterstützt.
-::: zone-end
 
 ## <a name="use-a-custom-model-for-language-identification"></a>Verwenden eines benutzerdefinierten Modells für die Sprachenerkennung
 
@@ -509,6 +430,7 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 
 ::: zone-end
 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 ::: zone pivot="programming-language-csharp"
@@ -530,5 +452,3 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 ::: zone pivot="programming-language-objectivec"
 * Informationen zur Sprachenerkennung finden Sie im [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L525) auf GitHub.
 ::: zone-end
-
-* [Speech SDK-Referenzdokumentation](speech-sdk.md)

@@ -5,14 +5,14 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 02/18/2021
-ms.author: qixwang
-ms.openlocfilehash: 4690a513494d794377ee0c2e8cfb101e8fd66a0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/08/2021
+ms.author: duau
+ms.openlocfilehash: b49d7d051b099c47fa6bfe65ed8c0ee8f4b03872
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101098080"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792360"
 ---
 # <a name="troubleshooting-common-routing-problems-with-azure-front-door-standardpremium"></a>Behandeln von häufigen Routingproblemen bei Azure Front Door Standard/Premium
 
@@ -24,19 +24,31 @@ In diesem Artikel wird beschrieben, wie Sie häufige Routingprobleme in Ihrer Az
 
 * Reguläre Anforderungen, die ohne Azure Front Door an das Back-End gesendet werden, sind erfolgreich. Das Durchlaufen von Azure Front Door führt zu 503-Fehlermeldungen.
 * Der Fehler von Azure Front Door wird in der Regel nach ungefähr 30 Sekunden angezeigt.
+* Intermittierende 503-Fehler mit Protokoll `ErrorInfo: OriginInvalidResponse`.
 
 ### <a name="cause"></a>Ursache
 
-Für dieses Problem gibt es zwei mögliche Ursachen:
+Für dieses Problem gibt es drei mögliche Ursachen:
  
 * Ihr Ursprung benötigt länger als das konfigurierte Timeout (Standardwert: 30 Sekunden), um die Anforderung von Azure Front Door zu erhalten.
-* Die zum Beantworten der Anforderung von Azure Front Door erforderliche Zeit überschreitet den Timeoutwert. 
+* Die zum Beantworten der Anforderung von Azure Front Door erforderliche Zeit überschreitet den Timeoutwert.
+* Der Client hat eine Byte-Bereichsanforderung mit `Accept-Encoding header` (Kompression aktiviert).
 
 ### <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 
 * Senden Sie die Anforderung direkt an Ihr Back-End (ohne Azure Front Door). Beobachten Sie, wie lange es normalerweise dauert, bis Ihr Back-End antwortet.
 * Senden Sie die Anforderung über Azure Front Door, und prüfen Sie, ob Sie Antworten des Typs 503 erhalten. Falls nicht, ist das Timeout möglicherweise nicht das Problem. Wenden Sie sich an den Support.
-* Wenn bei der Verwendung von Azure Front Door ein Antwortcode mit Fehlern des Typs 503 zurückgegeben wird, konfigurieren Sie das `sendReceiveTimeout`-Feld für Azure Front Door. Sie können das Standardtimeout auf bis zu vier Minuten (240 Sekunden) verlängern. Die Einstellung befindet sich unter `Endpoint Setting` und heißt `Origin response timeout`. 
+* Wenn Anfragen, die über Azure Front Door laufen, zu einem 503-Fehlerantwortcode führen, konfigurieren Sie das **Origin-Antwort-Timeout (in Sekunden)** für den Endpunkt. Sie können die Standardzeitüberschreitung auf bis zu 4 Minuten (240 Sekunden) verlängern. Die Einstellung kann durch Aufrufen des *Endpunktmanagers* und Auswahl von **Endpunkt bearbeiten** konfiguriert werden.
+
+    :::image type="content" source="..\media\troubleshoot-route-issues\origin-response-timeout-1.png" alt-text="Screenshot der Auswahl von &quot;Endpunkt bearbeiten&quot; im Endpunktmanager.":::
+
+    Wählen Sie dann **Endpunkteigenschaften**, um die **Herkunftsantwortzeitüberschreitung** zu konfigurieren:
+
+    :::image type="content" source="..\media\troubleshoot-route-issues\origin-response-timeout-2.png" alt-text="Screenshot der ausgewählten Endpunkteigenschaften und des Origin-Antwortzeitfelds." lightbox="..\media\troubleshoot-route-issues\origin-response-timeout-2-expanded.png":::
+
+* Wenn die Zeitüberschreitung das Problem nicht behebt, verwenden Sie ein Tool wie Fiddler oder das Entwickler-Tool Ihres Browsers, um zu prüfen, ob der Client Byte-Bereichsanfragen mit Accept-Encoding-Headern sendet, was dazu führt, dass der Ursprung mit unterschiedlichen Inhaltslängen antwortet. Wenn ja, können Sie entweder die Komprimierung an der Origin/Azure Front Door deaktivieren oder eine Regel erstellen, um `accept-encoding` aus der Anforderung für Bytebereich-Anforderungen zu entfernen.
+
+    :::image type="content" source="..\media\troubleshoot-route-issues\remove-encoding-rule.png" alt-text="Screenshot der accept-encoding-Regel in einem Regelsatz.":::
 
 ## <a name="requests-sent-to-the-custom-domain-return-a-400-status-code"></a>Für an die benutzerdefinierte Domäne gesendete Anforderungen wird der Statuscode 400 zurückgegeben
 

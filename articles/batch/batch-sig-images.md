@@ -4,12 +4,12 @@ description: Benutzerdefinierte Imagepools sind eine effiziente Möglichkeit zum
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: a9ff30f52ae19e3d6a7bc58ca81eabeb91d21146
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19a6168c2d6d2a37458dbbe9d8917f6e679da47f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024063"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827486"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Imagepools
 
@@ -81,7 +81,7 @@ Beachten Sie beim Erstellen von VMs die folgenden Richtlinien:
 
 ### <a name="create-a-vm-snapshot"></a>Erstellen einer Momentaufnahme eines virtuellen Computers
 
-Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer VHD. Sie können zum Erstellen einer Momentaufnahme des Betriebssystemdatenträgers oder der Datenträger eines virtuellen Computers das Azure-Portal oder Befehlszeilentools verwenden. Schritte und Optionen zum Erstellen einer Momentaufnahme finden Sie in der Anleitung für virtuelle [Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md)- oder [Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md)-Computer.
+Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer VHD. Sie können zum Erstellen einer Momentaufnahme des Betriebssystemdatenträgers oder der Datenträger eines virtuellen Computers das Azure-Portal oder Befehlszeilentools verwenden. Die Schritte und Optionen zur Erstellung eines Snapshots finden Sie in der Anleitung für [VMs](../virtual-machines/snapshot-copy-managed-disk.md).
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>Erstellen eines Images auf der Grundlage von Momentaufnahmen
 
@@ -89,7 +89,7 @@ Verwenden Sie zum Erstellen eines verwalteten Images auf der Grundlage einer Mom
 
 ### <a name="create-a-shared-image-gallery"></a>Erstellen einer Shared Image Gallery-Instanz
 
-Nachdem Sie Ihr verwaltetes Image erfolgreich erstellt haben, müssen Sie eine Shared Image Gallery-Instanz erstellen, um Ihr benutzerdefiniertes Image verfügbar zu machen. Weitere Informationen zum Vorbereiten einer Shared Image Gallery-Instanz für Ihre Images finden Sie unter [Erstellen einer Shared Image Gallery-Instanz mit der Azure-Befehlszeilenschnittstelle](../virtual-machines/shared-images-cli.md) und [Erstellen einer Shared Image Gallery-Instanz über das Azure-Portal](../virtual-machines/linux/shared-images-portal.md).
+Nachdem Sie Ihr verwaltetes Image erfolgreich erstellt haben, müssen Sie eine Shared Image Gallery-Instanz erstellen, um Ihr benutzerdefiniertes Image verfügbar zu machen. Wie Sie eine Shared Image Gallery für Ihre Bilder erstellen können, erfahren Sie unter [Shared Image Gallery erstellen](../virtual-machines/create-gallery.md).
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Erstellen eines Pools aus einem freigegebenen Image mithilfe der Azure-Befehlszeilenschnittstelle
 

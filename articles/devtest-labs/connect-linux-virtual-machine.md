@@ -1,14 +1,14 @@
 ---
-title: Herstellen einer Verbindung mit Ihren Linux-VMs in Azure DevTest Labs
+title: Herstellen einer Verbindung mit virtuellen Linux-Computern
 description: Es wird beschrieben, wie Sie in einem Lab (Azure DevTest Labs) eine Verbindung mit Ihrer Linux-VM herstellen.
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.openlocfilehash: 52fe245f85034a4c6300615ad8fb6040c1168298
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 956c27235dcdf9d57c908ce2e840e3c77518875b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86528124"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676046"
 ---
 # <a name="connect-to-a-linux-vm-in-your-lab-azure-devtest-labs"></a>Herstellen einer Verbindung mit einer Linux-VM im Lab (Azure DevTest Labs)
 In diesem Artikel wird beschrieben, wie Sie in Ihrem Lab eine Verbindung mit einer Linux-VM herstellen. 

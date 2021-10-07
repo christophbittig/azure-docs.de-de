@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: f01d02fb2d11f6d2ec7e068d8f8aea5191734371
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: bade266f219acfbd1636ba6650b2554383b5a4c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114712936"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128910028"
 ---
 [![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
 
@@ -30,7 +30,7 @@ In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azu
 
 ### <a name="configure-your-environment"></a>Konfigurieren Ihrer Umgebung
 
-1. Öffnen Sie mithilfe der Windows-Eingabeaufforderung, von PowerShell oder Bash eine Konsole.
+1. Öffnen Sie eine Konsole, etwa die Windows-Eingabeaufforderung, PowerShell oder Bash.
 
 1. Legen Sie mit den entsprechenden Befehle für Ihre Konsole die folgenden Umgebungsvariablen fest. Das simulierte Gerät verwendet diese Werte, um eine Verbindung mit IoT Central herzustellen. Verwenden Sie für `IOTHUB_DEVICE_DPS_ID_SCOPE`, `IOTHUB_DEVICE_DPS_DEVICE_KEY` und `IOTHUB_DEVICE_DPS_DEVICE_ID` die Geräteverbindungswerte, die Sie zuvor gespeichert haben.
 

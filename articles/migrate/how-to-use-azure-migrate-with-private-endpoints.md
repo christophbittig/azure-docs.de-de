@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: 5c0c9a44126ed5bd16544e8f5819eeb3add4a789
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: efe9f6ce21e59df3d7f8009b7ff540a77b4cc50a
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128678305"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094498"
 ---
 # <a name="use-azure-migrate-with-private-endpoints"></a>Verwenden von Azure Migrate mit privaten Endpunkten
 
@@ -27,7 +27,7 @@ Es wird empfohlen, die Verbindung über private Endpunkte herzustellen, wenn die
 
 ### <a name="supported-geographies"></a>Unterstützte geografischer Regionen
 
-Die Funktionalität befindet sich jetzt in allen [öffentlichen Cloudregionen](./migrate-support-matrix.md#supported-geographies-public-cloud) in der Vorschauphase.
+Die Funktionalität befindet sich in unterstützten [öffentlichen](/azure/migrate/migrate-support-matrix#supported-geographies-public-cloud) und [behördlichen Cloudgeografien](/azure/migrate-support-matrix#supported-geographies-azure-government) jetzt in der Vorschau.
 
 ### <a name="required-permissions"></a>Erforderliche Berechtigungen
 
@@ -121,7 +121,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
     **Download** | **Hashwert**
     --- | ---
-    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2160648) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2160648) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
 
 > [!NOTE]
 > Das gleiche Skript kann verwendet werden, um eine Appliance mit privater Endpunktkonnektivität für jedes der ausgewählten Szenarien (z. B. VMware, Hyper-V, physisch usw.), um eine Appliance mit der gewünschten Konfiguration bereitzustellen.

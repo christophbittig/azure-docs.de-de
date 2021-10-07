@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/22/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1022ebd9166e3e2e92a4c67cd434190c91dd09c3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ed76c271590b4f5fbc79c7713b70186a8d9eb426
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339794"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552064"
 ---
 # <a name="time-based-retention-policies-for-immutable-blob-data"></a>Zeitbasierte Aufbewahrungsrichtlinien für unveränderliche Blobdaten
 
@@ -28,7 +28,7 @@ Der kürzeste Aufbewahrungszeitraum für eine zeitbasierte Aufbewahrungsrichtlin
 
 Wenn Sie eine zeitbasierte Aufbewahrungsrichtlinie konfigurieren, bleiben die betroffenen Objekte so lange im unveränderlichen Zustand, wie der Aufbewahrungszeitraum *gilt*. Die Gültigkeit des Aufbewahrungszeitraums für Objekte entspricht der Differenz zwischen der Erstellungszeit des Blobs und dem vom Benutzer angegebenen Aufbewahrungszeitraum. Da der Aufbewahrungszeitraum einer Richtlinie verlängert werden kann, wird für den unveränderlichen Speicher der letzte Wert des vom Benutzer angegebenen Aufbewahrungszeitraums verwendet, um den effektiven Aufbewahrungszeitraum zu berechnen.
 
-Ein Beispiel: Angenommen, der Benutzer erstellt eine zeitbasierte Aufbewahrungsrichtlinie mit einem Aufbewahrungszeitraum von fünf Jahren. Ein in diesem Container vorhandenes Blob (_testblob1_) wurde vor einem Jahr erstellt. Der effektive Aufbewahrungszeitraum für _testblob1_ beträgt also vier Jahre. Wenn ein neues Blob (_testblob2_) in den Container hochgeladen wird, beträgt der effektive Aufbewahrungszeitraum für _testblob2_ fünf Jahre ab dem Zeitpunkt seiner Erstellung.
+Ein Beispiel: Angenommen, der Benutzer erstellt eine zeitbasierte Aufbewahrungsrichtlinie mit einem Aufbewahrungszeitraum von fünf Jahren. Ein in diesem Container vorhandenes Blob (*testblob1*) wurde vor einem Jahr erstellt. Der effektive Aufbewahrungszeitraum für *testblob1* beträgt also vier Jahre. Wenn ein neues Blob (*testblob2*) in den Container hochgeladen wird, beträgt der effektive Aufbewahrungszeitraum für *testblob2* fünf Jahre ab dem Zeitpunkt seiner Erstellung.
 
 ## <a name="locked-versus-unlocked-policies"></a>Gesperrte und entsperrte Richtlinien
 
@@ -98,7 +98,7 @@ Wenn die von einer vorherigen Version geerbte Richtlinie entsperrt ist, kann der
 
 Wenn die von einer vorherigen Version geerbte Richtlinie gesperrt ist, kann der Aufbewahrungszeitraum verlängert werden. Die Richtlinie kann weder gelöscht noch kann der Aufbewahrungszeitraum verkürzt werden.
 
-Wenn für die aktuelle Version keine Richtlinie konfiguriert ist, erbt die vorherige Version keine Richtlinie. Sie können eine benutzerdefinierte Richtlinie für die Version konfigurieren.  
+Wenn für die aktuelle Version keine Richtlinie konfiguriert ist, erbt die vorherige Version keine Richtlinie. Sie können eine benutzerdefinierte Richtlinie für die Version konfigurieren.
 
 Wenn die Richtlinie für eine aktuelle Version geändert wird, bleiben die Richtlinien für vorhandene vorherige Versionen unverändert, auch wenn die Richtlinie von einer aktuellen Version geerbt wurde.
 
@@ -124,7 +124,7 @@ Nur zeitbasierte Aufbewahrungsrichtlinien enthalten die **AllowProtectedAppendWr
 
 Da diese Einstellung zu einer zeitbasierten Aufbewahrungsrichtlinie gehört, bleiben die Anfügeblobs so lange im unveränderlichen Zustand, wie der Aufbewahrungszeitraum *gilt*. Da neue Daten auch nach der anfänglichen Erstellung des Anfügeblobs angefügt werden können, gibt es bei der Festlegung des Aufbewahrungszeitraums einen geringfügigen Unterschied. Die Gültigkeit des Aufbewahrungszeitraums entspricht der Differenz zwischen dem Zeitpunkt der letzten Änderung des Blobs und dem vom Benutzer angegebenen Aufbewahrungszeitraum. Entsprechend wird beim Verlängern des Aufbewahrungszeitraums für den unveränderlichen Speicher der letzte Wert des vom Benutzer angegebenen Aufbewahrungszeitraums verwendet, um den effektiven Aufbewahrungszeitraum zu berechnen.
 
-Ein Beispiel: Angenommen, ein Benutzer erstellt eine zeitbasierte Aufbewahrungsrichtlinie mit aktivierter **AllowProtectedAppendWrites**-Eigenschaft und einem Aufbewahrungszeitraum von 90 Tagen. Ein Anfügeblob (_logblob1_) wird am aktuellen Datum im Container erstellt. Dem Anfügeblob werden während der nächsten 10 Tage weiterhin neue Protokolle hinzugefügt. Der effektive Aufbewahrungszeitraum für _logblob1_ beträgt also 100 Tage ab dem aktuellen Datum (Zeitpunkt der letzten Anfügung + 90 Tage).
+Ein Beispiel: Angenommen, ein Benutzer erstellt eine zeitbasierte Aufbewahrungsrichtlinie mit aktivierter **AllowProtectedAppendWrites**-Eigenschaft und einem Aufbewahrungszeitraum von 90 Tagen. Ein Anfügeblob (*logblob1*) wird am aktuellen Datum im Container erstellt. Dem Anfügeblob werden während der nächsten 10 Tage weiterhin neue Protokolle hinzugefügt. Der effektive Aufbewahrungszeitraum für *logblob1* beträgt also 100 Tage ab dem aktuellen Datum (Zeitpunkt der letzten Anfügung + 90 Tage).
 
 Bei entsperrten zeitbasierten Aufbewahrungsrichtlinien kann die Einstellung der **AllowProtectedAppendWrites**-Eigenschaft zu jedem Zeitpunkt aktiviert und deaktiviert werden. Nachdem die zeitbasierte Richtlinie gesperrt wurde, kann die **AllowProtectedAppendWrites**-Eigenschaft nicht mehr geändert werden.
 

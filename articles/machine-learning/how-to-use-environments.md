@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/11/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 1588dedad6778993bc2db6307103e614a8f772ef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 845e852f2ef3155fce451f7e80f5c8f43eb8abf6
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355498"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355210"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning
 
@@ -91,6 +91,7 @@ env = Environment.get(workspace=ws, name="AzureML-sklearn-0.24-ubuntu18.04-py37-
 curated_clone = env.clone("customize_curated")
 ```
 
+
 ### <a name="use-conda-dependencies-or-pip-requirements-files"></a>Verwenden von Conda-Abhängigkeiten oder pip-Anforderungsdateien
 
 Sie können eine Umgebung aus einer Conda-Spezifikations- oder einer pip-Anforderungsdatei erstellen. Verwenden Sie die [`from_conda_specification()`](/python/api/azureml-core/azureml.core.environment.environment#from-conda-specification-name--file-path-)-Methode oder die [`from_pip_requirements()`](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-)-Methode. Schließen Sie den Namen Ihrer Umgebung und den Dateipfad der gewünschten Datei in das Methodenargument ein. 
@@ -107,14 +108,7 @@ myenv = Environment.from_pip_requirements(name = "myenv",
 
 ### <a name="enable-docker"></a>Aktivieren von Docker
 
-Wenn Sie Docker aktivieren, erstellt Azure Machine Learning ein Docker-Image und eine Python-Umgebung innerhalb dieses Containers gemäß Ihren Spezifikationen. Die Docker-Images werden zwischengespeichert und wiederverwendet: Die erste Ausführung in einer neuen Umgebung dauert in der Regel länger, da das Image erstellt wird.
-
-Die [`DockerSection`](/python/api/azureml-core/azureml.core.environment.dockersection) der Azure Machine Learning-Klasse `Environment` ermöglicht es Ihnen, das Gastbetriebssystem, in dem Ihr Trainingslauf ausgeführt wird, im Detail anzupassen und zu steuern. Mithilfe der Variable `arguments` können zusätzliche Argumente angegeben werden, die an den Docker-Ausführungsbefehl übergeben werden sollen.
-
-```python
-# Creates the environment inside a Docker container.
-myenv.docker.enabled = True
-```
+Azure Machine Learning erstellt ein Docker-Image und eine Python-Umgebung innerhalb dieses Containers gemäß Ihren Spezifikationen. Die Docker-Images werden zwischengespeichert und wiederverwendet: Die erste Ausführung in einer neuen Umgebung dauert in der Regel länger, da das Image erstellt wird. Geben Sie Docker für lokale Ausführungen in [RunConfiguration](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py&preserve-view=true#variables) an. 
 
 Standardmäßig wird das neu erstellte Docker-Image in der Containerregistrierung angezeigt, die dem Arbeitsbereich zugeordnet ist.  Der Repositoryname hat das Format *azureml/azureml_\<uuid\>* . Der *UUID*-Anteil (universally unique identifier, global eindeutiger Bezeichner) des Namens entspricht einem Hash, der aus der Umgebungskonfiguration errechnet wird. Diese Entsprechung ermöglicht es dem Dienst, zu ermitteln, ob bereits ein Image der betreffenden Umgebung zur Wiederverwendung vorhanden ist.
 
@@ -262,12 +256,6 @@ conda_dep.add_pip_package("pillow")
 
 # Adds dependencies to PythonSection of myenv
 myenv.python.conda_dependencies=conda_dep
-```
-
-Sie können auch Umgebungsvariablen zu Ihrer Umgebung hinzufügen. Diese werden dann über „os.environ.get“ in Ihrem Trainingsskript verfügbar.
-
-```python
-myenv.environment_variables = {"MESSAGE":"Hello from Azure Machine Learning"}
 ```
 
 >[!IMPORTANT]

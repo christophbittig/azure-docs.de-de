@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: 3fc9607a6882ddae42c2606abb60903dbcb05108
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 3f37a9c14a66156b908eb1d046f98301add07c20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436462"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562381"
 ---
 # <a name="nv-series-migration-guide"></a>NV-Serie: Migrationsleitfaden
 
@@ -90,7 +90,7 @@ Befolgen Sie die Anleitung zum [Anfordern einer Erhöhung des vCPU-Kontingents n
 
 ### <a name="resize-the-current-vm"></a>Ändern der Größe der aktuellen VM
 
-Sie können [die Größe der VM über das Azure-Portal oder mit PowerShell ändern](./windows/resize-vm.md). Sie können [die Größe der VM auch mithilfe der Azure CLI ändern](./linux/change-vm-size.md). 
+Sie können die [Größe der VM ändern](resize-vm.md).
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 **F:** Welchen GPU-Treiber sollte ich für die Größe des virtuellen Zielcomputers verwenden? 

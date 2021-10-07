@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 30593c51f17b99989409ddd22c9c1caa28468039
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f70c35f55256ef98dd261a13058f1b6ad5330d9f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720830"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616800"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-the-microsoft-identity-platform"></a>Schnellstart: Schützen einer ASP.NET Core-Web-API mit Microsoft Identity Platform
 
@@ -36,7 +36,7 @@ In dieser Schnellstartanleitung laden Sie ein ASP.NET Core-Web-API-Codebeispiel
 > Registrieren Sie zunächst die Web-API in Ihrem Azure AD-Mandanten, und fügen Sie einen Bereich hinzu:
 >
 > 1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
-> 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+> 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnisse + Abonnements** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie die Anwendung registrieren möchten.
 > 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 > 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
 > 1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein. Geben Sie beispielsweise **AspNetCoreWebApi-Quickstart** ein. Benutzern Ihrer App wird dieser Name angezeigt. Sie können ihn später ändern.

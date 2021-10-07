@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/10/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: fbe50ecdc116a203b09d023312a18686f43b7aef
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 928aa9bc71fefce85ffea5dbf230a9b072b7070c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099998"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650760"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>Tutorial: Azure Active Directory-Integration mit AuditBoard
 
@@ -38,6 +38,7 @@ Um die Azure AD-Integration mit AuditBoard konfigurieren zu können, benötigen 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * AuditBoard unterstützt **SP- und IDP**-initiiertes SSO.
+* AuditBoard unterstützt die [automatisierte Benutzerbereitstellung](auditboard-provisioning-tutorial.md).
 
 ## <a name="add-auditboard-from-the-gallery"></a>Hinzufügen von AuditBoard aus dem Katalog
 
@@ -122,6 +123,8 @@ Zum Konfigurieren des einmaligen Anmeldens bei **AuditBoard** müssen Sie die **
 
 In diesem Abschnitt erstellen Sie in AuditBoard einen Benutzer namens Britta Simon. Wenden Sie sich an das [Supportteam von AuditBoard](mailto:support@auditboard.com), um die Benutzer der AuditBoard-Plattform hinzufügen zu lassen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
+Außerdem unterstützt AuditBoard die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./auditboard-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -136,7 +139,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der AuditBoard-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „AuditBoard“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der AuditBoard-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „AuditBoard“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der AuditBoard-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

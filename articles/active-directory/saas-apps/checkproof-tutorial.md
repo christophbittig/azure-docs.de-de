@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/06/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d6e1c99bd70cedd678cbf3dcef4ef66a594d969
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 631d65b7119d071961b6fd48bd13e152ac7f2321
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728417"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661543"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-checkproof"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit CheckProof
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * CheckProof unterstützt **IDP**-initiiertes einmaliges Anmelden.
+* CheckProof unterstützt die [automatisierte Benutzerbereitstellung](checkproof-provisioning-tutorial.md).
 
 ## <a name="add-checkproof-from-the-gallery"></a>Hinzufügen von CheckProof aus dem Katalog
 
@@ -135,13 +136,16 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![CheckProof-Seite für das Erstellen eines Benutzers](./media/checkproof-tutorial/user.png)
 
+> [!NOTE]
+>Außerdem unterstützt CheckProof die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./checkproof-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
 * Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der CheckProof-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „CheckProof“ klicken, sollten Sie automatisch bei der CheckProof-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „CheckProof“ klicken, sollten Sie automatisch bei der CheckProof-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

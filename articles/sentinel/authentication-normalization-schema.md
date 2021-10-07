@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: b2eeec44054f57857e0da08134f6bada3aaf24f6
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: e0cab6a9d2d4c341cf326383e11b289bf606d37a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514766"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755180"
 ---
 # <a name="azure-sentinel-authentication-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)
 
@@ -76,10 +76,11 @@ In den folgenden Tabellen ist mit *Typ* ein logischer Typ gemeint. Weitere Infor
 
 Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und können beim Erstellen eines benutzerdefinierten Connectors überschrieben werden.
 
-|Feld  |Typ  |BESCHREIBUNG  |
+|Feld  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |<a name ="timegenerated"></a>**TimeGenerated**     |  datetime       |Der Zeitpunkt, zu dem das Ereignis vom meldenden Gerät generiert wurde.         |
 |**_ResourceId**     | guid        |  Die Azure-Ressourcen-ID des meldenden Geräts oder Diensts oder die Ressourcen-ID des Protokollforwarders für Ereignisse, die mit Syslog, CEF oder WEF weitergeleitet werden.       |
+| **Type** | String | Die ursprüngliche Tabelle, aus der der Datensatz abgerufen wurde. Dieses Feld ist nützlich, wenn dasselbe Ereignis über mehrere Kanäle in unterschiedlichen Tabellen empfangen werden kann und die gleichen EventVendor- und EventProduct-Werte vorliegen.<br><br>Beispielsweise kann ein Sysmon-Ereignis entweder in der Event-Tabelle oder in der WindowsEvent-Tabelle gesammelt werden. |
 |     |         |         |
 
 > [!NOTE]
@@ -90,7 +91,7 @@ Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und
 
 Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbst und das meldende Gerät.
 
-| Feld               | Klasse       | Typ       |  BESCHREIBUNG        |
+| Feld               | Klasse       | type       |  BESCHREIBUNG        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | Optional    | String     |     Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert.   |
 | **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die im Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest. <br><br>**Hinweis**: Dieses Feld ist aus Gründen der Konsistenz enthalten, wird jedoch in der Regel nicht für Authentifizierungsereignisse verwendet.  |
@@ -109,7 +110,7 @@ Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbs
 | **EventVendor**         | Obligatorisch.   | String     |           Der Hersteller des Produkts, das das Ereignis erzeugt. <br><br>Beispiel: `Microsoft`  <br><br>**Hinweis**: Dieses Feld ist möglicherweise nicht im Quelldatensatz verfügbar. In solchen Fällen muss dieses Feld vom Parser festgelegt werden.  |
 | **EventSchemaVersion**  | Obligatorisch.   | String     |    Die Version des Schemas. Die hier dokumentierte Version des Schemas ist `0.1`.         |
 | **EventReportUrl**      | Optional    | String     | Eine URL, die im Ereignis für eine Ressource bereitgestellt wird, die zusätzliche Informationen zum Ereignis enthält.|
-| <a name ="dvc"></a>**Dvc** | Obligatorisch.       | String     |              Ein eindeutiger Bezeichner des Geräts, auf dem das Ereignis aufgetreten ist. <br><br>Dieses Feld kann ein Alias für die Felder [DvcId](#dvcid), [DvcHostname](#dvchostname) oder [DvcIpAddr](#dvcipaddr) sein. Verwenden Sie für Cloudquellen, für die es kein offensichtliches Gerät gibt, den gleichen Wert wie im Feld [Ereignisprodukt](#eventproduct).             |
+| <a name ="dvc"></a>**Dvc** | Obligatorisch.       | String     |              Ein eindeutiger Bezeichner des Geräts, auf dem das Ereignis aufgetreten ist. <br><br>Dieses Feld kann ein Alias für die Felder [DvcId](#dvcid), [DvcHostname](#dvchostname) oder [DvcIpAddr](#dvcipaddr) sein. Verwenden Sie für Cloudquellen, für die es kein offensichtliches Gerät gibt, den gleichen Wert wie das Feld [Ereignisprodukt](#eventproduct).             |
 | <a name ="dvcipaddr"></a>**DvcIpAddr**           | Empfohlen | IP-Adresse |         Die IP-Adresse des Geräts, auf dem das Prozessereignis aufgetreten ist.  <br><br>Beispiel: `45.21.42.12`  <br><br>**Hinweis**: Verwenden Sie dieses Feld nicht, wenn ein Bezeichner verfügbar, der Typ jedoch unbekannt ist. Weitere Informationen finden Sie unter [Dvc](#dvc).  |
 | <a name ="dvchostname"></a>**DvcHostname**         | Empfohlen | Hostname   |               Der Hostname des Geräts, auf dem das Prozessereignis aufgetreten ist. <br><br>Beispiel: `ContosoDc.Contoso.Azure`      <br><br>**Hinweis**: Verwenden Sie dieses Feld nicht, wenn ein Bezeichner verfügbar, der Typ jedoch unbekannt ist. Weitere Informationen finden Sie unter [Dvc](#dvc).          |
 | <a name ="dvcid"></a>**DvcId**               | Optional    | String     |  Die eindeutige ID des Geräts, auf dem das Prozessereignis aufgetreten ist. <br><br>Beispiel: `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
@@ -134,7 +135,7 @@ Die Beziehung zwischen diesen Entitäten lässt sich am besten wie folgt darstel
 
 Ein **Akteur**, der eine *agierende Anwendung* (**ActingApp**) auf einem *Quellgerät* (**SrcDvc**) ausführt, authentifiziert einen **Zielbenutzer** (TargetUser) bei einer *Zielanwendung* (**TargetApp**) auf einem *Zielgerät* (**TargetDvc**).
 
-| Feld          | Klasse        | Typ       | BESCHREIBUNG   |
+| Feld          | Klasse        | type       | BESCHREIBUNG   |
 |---------------|--------------|------------|-----------------|
 |**LogonMethod** |Optional |String |Die zum Durchführen der Authentifizierung verwendete Methode. <br><br>Beispiel: `Username & Password` |
 |**LogonProtocol** |Optional |String |Das zum Durchführen der Authentifizierung verwendete Protokoll. <br><br>Beispiel: `NTLM` |

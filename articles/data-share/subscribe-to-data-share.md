@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 03/24/2021
-ms.openlocfilehash: d063a0870616b5b977df18c56d9d66515b03d0a5
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.date: 09/10/2021
+ms.openlocfilehash: 035b6c9b12df69395409c1c0aa70be219bc2533e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870857"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760192"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Tutorial: Akzeptieren und Empfangen von Daten mithilfe von Azure Data Share  
 
@@ -94,9 +94,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
    Wenn Sie eine Einladung direkt im Azure-Portal öffnen möchten, suchen Sie im Azure-Portal nach **Einladungen zu Data Share**. Dadurch gelangen Sie zur Liste mit den Data Share-Einladungen.
 
+   Wenn Sie Gastbenutzer eines Mandanten sind, werden Sie aufgefordert, Ihre E-Mail-Adresse für den Mandanten zu überprüfen, bevor Sie die Data Share-Einladung zum ersten Mal anzeigen. Nach der Überprüfung ist sie zwölf Monate lang gültig.
+
    ![Liste mit Einladungen](./media/invitations.png "Liste mit Einladungen") 
 
-1. Wählen Sie die Freigabe aus, die Sie anzeigen möchten. 
+1. Wählen Sie die Einladung aus, die Sie anzeigen möchten. 
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

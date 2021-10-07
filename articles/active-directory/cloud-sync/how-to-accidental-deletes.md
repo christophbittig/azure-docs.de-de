@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/25/2021
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da54bd28c1d9ea933e88b6c86cf6092c10d036a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5055b847eab1ee53688abfa308b5969f7526f668
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98785184"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742680"
 ---
 # <a name="accidental-delete-prevention"></a>Verhindern von versehentlichen Löschvorgängen
 
@@ -27,6 +27,10 @@ Dieses Dokument enthält eine Beschreibung der Funktion gegen versehentliches L�
 - Einrichten eine E-Mail-Adresse für Benachrichtigungen, sobald der betreffende Synchronisierungsauftrag gemäß diesem Szenario in Quarantäne gestellt wird 
 
 Zum Verwenden dieser Funktion legen Sie den Schwellenwert für die Anzahl von gelöschten Objekten fest, bei dessen Erreichung die Synchronisierung angehalten wird.  Nachdem diese Anzahl erreicht wurde, wird die Synchronisierung angehalten und eine Benachrichtigung an die angegebene E-Mail-Adresse gesendet.  Anhand dieser Benachrichtigung können Sie untersuchen, was passiert ist.
+
+Weitere Informationen und ein Beispiel finden Sie im folgenden Video.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWK5mV]
 
 
 ## <a name="configure-accidental-delete-prevention"></a>Konfigurieren der Verhinderung von versehentlichen Löschvorgängen

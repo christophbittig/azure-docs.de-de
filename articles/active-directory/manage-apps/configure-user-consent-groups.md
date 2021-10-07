@@ -8,20 +8,28 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1ce7254f92c4cc3d2a7dcf77885be88eda37099b
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 94c3280731f40839f462632fedaa30ebc916466e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113567970"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754188"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Konfigurieren der Gruppenbesitzereinwilligung für Apps, die auf Gruppendaten zugreifen
 
 Gruppen- und Teambesitzer können Anwendungen (z. B. von Drittanbietern veröffentlichte Anwendungen) autorisieren, auf die einer Gruppe zugeordneten Daten Ihrer Organisation zuzugreifen. Beispielsweise kann ein Teambesitzer in Microsoft Teams einer App gestatten, alle Teamnachrichten des Teams zu lesen oder das Basisprofil der Mitglieder einer Gruppe aufzulisten. Weitere Informationen finden Sie unter [Resource-specific consent in Microsoft Teams](/microsoftteams/resource-specific-consent) (Ressourcenspezifische Einwilligung in Microsoft Teams).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Damit Sie die in dieser Anleitung gestellten Aufgaben ausführen können, benötigen Sie Folgendes:
+
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Rolle „Globaler Administrator“
+- Einrichten von Azure AD PowerShell. Weitere Informationen finden Sie unter [Azure AD PowerShell](/powershell/azure/).
 
 ## <a name="manage-group-owner-consent-to-apps"></a>Verwalten der Gruppenbesitzereinwilligung für Apps
 

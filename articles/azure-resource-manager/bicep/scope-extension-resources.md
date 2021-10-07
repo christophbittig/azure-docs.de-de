@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: a899622c22d68217fd4fbf73e495f89885f4d7ba
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 2b1fb9960caf81a51c80dae312979d90f6eb5f4d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445411"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733429"
 ---
 # <a name="set-scope-for-extension-resources-in-bicep"></a>Festlegen des Bereichs für Erweiterungsressourcen in Bicep
 
@@ -22,6 +22,10 @@ In diesem Artikel wird gezeigt, wie Sie den Bereich für einen Erweiterungsresso
 
 > [!NOTE]
 > Die Bereichseigenschaft ist nur für Erweiterungsressourcentypen verfügbar. Wenn Sie einen anderen Bereich für einen Ressourcentyp angeben möchten, der kein Erweiterungstyp ist, verwenden Sie ein [Modul](modules.md).
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen zu Erweiterungsressourcen und praktische Anleitungen finden Sie unter [Bereitstellen von untergeordneten und Erweiterungsressourcen mithilfe von Bicep](/learn/modules/child-extension-bicep-templates) auf **Microsoft Learn**.
 
 ## <a name="apply-at-deployment-scope"></a>Anwenden im Bereitstellungsumfang
 

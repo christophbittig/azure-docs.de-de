@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 59eb3874a7f0de9eba1f5b75204618c887cb9bb2
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: d206e92eeea06b8e8a95a74c7a253eae5280eb5f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122343127"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607803"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -224,6 +224,8 @@ Einschränkungen:
 * Vor dem Erstellen des AKS-Clusters muss dem Subnetz eine benutzerdefinierte Routingtabelle zugeordnet werden.
 * Die zugeordnete Routingtabellenressource kann nach der Clustererstellung nicht mehr aktualisiert werden. Benutzerdefinierte Regeln in der Routingtabelle können jedoch geändert werden.
 * Von jedem AKS-Cluster muss eine einzelne, eindeutige Routingtabelle für alle Subnetze verwendet werden, die dem Cluster zugeordnet sind. Eine Routingtabelle kann nicht von mehreren Clustern genutzt werden, da dies zu Überschneidungen bei Pod-CIDRs sowie zu Konflikten bei Routingregeln führen kann.
+* Mit einer systemseitig zugewiesenen verwalteten Identität können Sie kein eigenes Subnetz und keine eigene Routingtabelle bereitstellen. Verwenden Sie für ein eigenes Subnetz und eine eigene Routingtabelle eine [benutzerseitig zugewiesene verwaltete Identität][user-assigned managed identity], und weisen Sie vor Erstellen des Clusters die Berechtigungen zu. Stellen Sie sicher, dass die benutzerseitig zugewiesene verwaltete Identität über Schreibberechtigungen für Ihr benutzerdefiniertes Subnetz und die benutzerdefinierte Routingtabelle verfügt.
+* Die Verwendung einer Routingtabelle für mehrere AKS-Cluster wird nicht unterstützt.
 
 Nachdem Sie eine benutzerdefinierte Routingtabelle erstellt und dem Subnetz in Ihrem virtuellen Netzwerk zugeordnet haben, können Sie einen neuen AKS-Cluster erstellen, von dem Ihre Routingtabelle genutzt wird.
 Sie müssen die Subnetz-ID für den Ort verwenden, an dem Sie Ihren AKS-Cluster bereitstellen möchten. Dieses Subnetz muss ebenfalls Ihrer benutzerdefinierten Routingtabelle zugeordnet werden.
@@ -267,3 +269,4 @@ Da jetzt ein AKS-Cluster in Ihrem vorhandenen Subnetz des virtuellen Netzwerks b
 [express-route]: ../expressroute/expressroute-introduction.md
 [network-comparisons]: concepts-network.md#compare-network-models
 [custom-route-table]: ../virtual-network/manage-route-table.md
+[user-assigned managed identity]: use-managed-identity.md#bring-your-own-control-plane-mi

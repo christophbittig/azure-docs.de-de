@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: a3ff769b8f879246a47228f03f5a1b9a5b5fb84d
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 6c392d1af427c7a9837519ea8443efc5773aa6db
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272473"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154810"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrieren von Computern als physische Server zu Azure
 
@@ -340,12 +340,12 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
 
 ## <a name="complete-the-migration"></a>Fertigstellen der Migration
 
-1. Klicken Sie nach Abschluss der Migration mit der rechten Maustaste auf die VM und dann auf **Migration beenden**. Die folgenden Schritte werden ausgeführt:
+1. Klicken Sie nach Abschluss der Migration mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Replikation beenden** aus. Die folgenden Schritte werden ausgeführt:
     - Beendet die Replikation für den lokalen Computer.
     - Entfernt den Computer aus dem Zähler **Server werden repliziert.** in Azure Migrate: Servermigration.
     - Bereinigt die Replikationsstatusinformationen für den Computer.
 1. Überprüfen und [beheben Sie alle Windows-Aktivierungsprobleme auf dem virtuellen Azure-Computer](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems). 
-1. Führen Sie App-Anpassungen nach der Migration durch, z.B. die Aktualisierung von Hostnamen, Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
+1. Führen Sie App-Anpassungen nach der Migration durch, z. B. die Aktualisierung von Hostnamen, Datenbankverbindungszeichenfolgen und Webserverkonfigurationen.
 1. Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.
 1. Leiten Sie den Datenverkehr auf die migrierte Instanz der Azure-VM um.
 1. Entfernen Sie die lokalen VMs aus Ihrem lokalen VM-Bestand.

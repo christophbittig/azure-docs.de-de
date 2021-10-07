@@ -2,13 +2,13 @@
 title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
-ms.date: 07/08/2021
-ms.openlocfilehash: 4beb484a6f3e81fe6baa7cbeba33c0f18639fb18
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 09/27/2021
+ms.openlocfilehash: 12d589088f17e3eeb3bda0fecbb2c1fc24b65203
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444654"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129084092"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -26,6 +26,9 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 * **a** bis **z** (Kleinbuchstaben)
 * **A** bis **Z** (Großbuchstaben)
 * **0** bis **9** (Zahlen)
+
+> [!NOTE]
+> Alle Ressourcen mit einem öffentlichen Endpunkt dürfen keine reservierten Wörter oder Marken im Namen enthalten. Eine Liste mit blockierten Wörtern finden Sie unter [Fehler vom Typ „Reservierter Ressourcenname“ beheben](../templates/error-reserved-resource-name.md).
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 
@@ -86,9 +89,9 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
 > | locks | Zuweisungsbereich | 1-90 | Alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern.<br><br>Darf nicht mit einem Punkt enden. |
-> | policyAssignments | Zuweisungsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname<br><br>1-24 Ressourcenname im Verwaltungsgruppenbereich | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden. |
-> | policyDefinitions | Definitionsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden. |
-> | policySetDefinitions | Definitionsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname<br><br>1-24 Ressourcenname im Verwaltungsgruppenbereich | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname darf nicht `%` enthalten und nicht mit einem Punkt oder Leerzeichen enden.  |
+> | policyAssignments | Zuweisungsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname<br><br>1-24 Ressourcenname im Verwaltungsgruppenbereich | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname kann nicht verwenden:<br>`<>*%&:\?.+/` oder Steuerzeichen. <br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |
+> | policyDefinitions | Definitionsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname kann nicht verwenden:<br>`<>*%&:\?.+/` oder Steuerzeichen. <br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |
+> | policySetDefinitions | Definitionsbereich | 1–128 Anzeigename<br><br>1-64 Ressourcenname<br><br>1-24 Ressourcenname im Verwaltungsgruppenbereich | Der Anzeigename kann beliebige Zeichen enthalten.<br><br>Der Ressourcenname kann nicht verwenden:<br>`<>*%&:\?.+/` oder Steuerzeichen. <br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -96,14 +99,14 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
 > | automationAccounts | Ressourcengruppe und Region <br>(Siehe Hinweis unten) | 6-50 | Alphanumerische Zeichen und Bindestriche.<br><br>Muss mit einem Buchstaben beginnen und mit einem alphanumerischen Zeichen enden. |
-> | automationAccounts/certificates | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` <br><br>Darf nicht mit einem Leerzeichen enden.  |
-> | automationAccounts/connections | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` <br><br>Darf nicht mit einem Leerzeichen enden. |
-> | automationAccounts/credentials | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` <br><br>Darf nicht mit einem Leerzeichen enden. |
+> | automationAccounts/certificates | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` oder Steuerzeichen. <br><br>Darf nicht mit einem Leerzeichen enden.  |
+> | automationAccounts/connections | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` oder Steuerzeichen. <br><br>Darf nicht mit einem Leerzeichen enden. |
+> | automationAccounts/credentials | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` oder Steuerzeichen. <br><br>Darf nicht mit einem Leerzeichen enden. |
 > | automationAccounts/runbooks | Automation-Konto | 1 - 63 | Alphanumerische Zeichen, Unterstriche und Bindestriche.<br><br>Beginnen Sie mit einem Buchstaben.  |
-> | automationAccounts/schedules | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` <br><br>Darf nicht mit einem Leerzeichen enden. |
-> | automationAccounts/variables | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` <br><br>Darf nicht mit einem Leerzeichen enden. |
+> | automationAccounts/schedules | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` oder Steuerzeichen. <br><br>Darf nicht mit einem Leerzeichen enden. |
+> | automationAccounts/variables | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` oder Steuerzeichen. <br><br>Darf nicht mit einem Leerzeichen enden. |
 > | automationAccounts/watchers | Automation-Konto | 1 - 63 |  Alphanumerische Zeichen, Unterstriche und Bindestriche.<br><br>Beginnen Sie mit einem Buchstaben. |
-> | automationAccounts/webhooks | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` <br><br>Darf nicht mit einem Leerzeichen enden. |
+> | automationAccounts/webhooks | Automation-Konto | 1–128 | Verwendung nicht möglich:<br> `<>*%&:\?.+/` oder Steuerzeichen. <br><br>Darf nicht mit einem Leerzeichen enden. |
 
 > [!NOTE]
 > Automation-Kontonamen sind für jede Region und Ressourcengruppe eindeutig. Namen gelöschter Automation-Konten sind möglicherweise nicht sofort wieder verfügbar.
@@ -171,7 +174,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
 > | availabilitySets | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
-> | cloudservices | Ressourcengruppe | 1-15 <br><br>Siehe Hinweis weiter unten. | Leerzeichen oder die folgenden Zeichen dürfen nicht verwendet werden:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
+> | cloudservices | Ressourcengruppe | 1-15 <br><br>Siehe Hinweis weiter unten. | Leerzeichen, Steuerzeichen oder diese Zeichen können nicht verwendet werden:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
 > | diskEncryptionSets | Ressourcengruppe | 1-80 | Alphanumerische Zeichen und Unterstriche. |
 > | disks | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
 > | galleries | Ressourcengruppe | 1-80 | Alphanumerische Zeichen und Punkte.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
@@ -181,8 +184,8 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | galleries/images/versions | image | 32-bit integer | Zahlen und Punkte. |
 > | images | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
 > | snapshots | Ressourcengruppe | 1-80 | Alphanumerische Zeichen, Unterstriche, Punkte und Bindestriche.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. Enden Sie mit einem alphanumerischen Zeichen oder einem Unterstrich. |
-> | virtualMachines | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Leerzeichen oder die folgenden Zeichen dürfen nicht verwendet werden:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Virtuelle Windows-Computer dürfen keine Punkte enthalten oder mit Bindestrichen enden.<br><br>Linux-VMs dürfen nicht mit einem Punkt oder Bindestrich enden. |
-> | virtualMachineScaleSets | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Leerzeichen oder die folgenden Zeichen dürfen nicht verwendet werden:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
+> | virtualMachines | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Leerzeichen, Steuerzeichen oder diese Zeichen können nicht verwendet werden:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Virtuelle Windows-Computer dürfen keine Punkte enthalten oder mit Bindestrichen enden.<br><br>Linux-VMs dürfen nicht mit einem Punkt oder Bindestrich enden. |
+> | virtualMachineScaleSets | Ressourcengruppe | 1–15 (Windows)<br>1–64 (Linux)<br><br>Siehe Hinweis weiter unten. | Leerzeichen, Steuerzeichen oder diese Zeichen können nicht verwendet werden:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Darf nicht mit einem Unterstrich beginnen. Darf nicht mit einem Punkt oder Bindestrich enden. |
 
 > [!NOTE]
 > Virtuelle Azure-Computer weisen zwei getrennte Namen auf: einen Ressourcennamen und einen Hostnamen. Wenn Sie im Portal einen virtuellen Computer erstellen, wird für beide Namen der gleiche Wert verwendet. Die Einschränkungen in der obigen Tabelle gelten für den Hostnamen. Der eigentliche Ressourcenname kann bis zu 64 Zeichen lang sein.
@@ -192,7 +195,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | communicationServices | Global | 1 - 63 | Alphanumerische Zeichen, Bindestriche und Unterstriche. |
+> | communicationServices | Global | 1 - 63 | Alphanumerische Zeichen und Bindestriche.<br><br>Unterstriche können nicht verwendet werden. |
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
 
@@ -254,8 +257,8 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | associations | Ressourcengruppe | 1–180 | Verwendung nicht möglich:<br>`%&\\?/`<br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |
-> | resourceProviders | Ressourcengruppe | 3–64 | Verwendung nicht möglich:<br>`%&\\?/`<br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |
+> | associations | Ressourcengruppe | 1–180 | Verwendung nicht möglich:<br>`%&\\?/` oder Steuerzeichen.<br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |
+> | resourceProviders | Ressourcengruppe | 3–64 | Verwendung nicht möglich:<br>`%&\\?/` oder Steuerzeichen.<br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
@@ -277,13 +280,13 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
 > | factories | Global | 3-63 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
-> | factories/dataflows | Fabrik | 1–260 | Verwendung nicht möglich:<br>`<>*#.%&:\\+?/`<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
-> | factories/datasets | Fabrik | 1–260 | Verwendung nicht möglich:<br>`<>*#.%&:\\+?/`<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
+> | factories/dataflows | Fabrik | 1–260 | Verwendung nicht möglich:<br>`<>*#.%&:\\+?/` oder Steuerzeichen.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
+> | factories/datasets | Fabrik | 1–260 | Verwendung nicht möglich:<br>`<>*#.%&:\\+?/` oder Steuerzeichen.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
 > | factories/integrationRuntimes | Fabrik | 3-63 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
-> | factories/linkedservices | Fabrik | 1–260 | Verwendung nicht möglich:<br>`<>*#.%&:\\+?/`<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
-> | factories/pipelines | Fabrik | 1–260 | Verwendung nicht möglich:<br>`<>*#.%&:\\+?/`<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
-> | factories/triggers | Fabrik | 1–260 | Verwendung nicht möglich:<br>`<>*#.%&:\\+?/`<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
-> | factories/triggers/rerunTriggers | Trigger (trigger) | 1–260 | Verwendung nicht möglich:<br>`<>*#.%&:\\+?/`<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
+> | factories/linkedservices | Fabrik | 1–260 | Verwendung nicht möglich:<br>`<>*#.%&:\\+?/` oder Steuerzeichen.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
+> | factories/pipelines | Fabrik | 1–260 | Verwendung nicht möglich:<br>`<>*#.%&:\\+?/` oder Steuerzeichen.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
+> | factories/triggers | Fabrik | 1–260 | Verwendung nicht möglich:<br>`<>*#.%&:\\+?/` oder Steuerzeichen.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
+> | factories/triggers/rerunTriggers | Trigger (trigger) | 1–260 | Verwendung nicht möglich:<br>`<>*#.%&:\\+?/` oder Steuerzeichen.<br><br>Beginnen Sie mit einem alphanumerischen Zeichen. |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 
@@ -389,7 +392,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | clusters | Ressourcengruppe | 6-50 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen Sie mit einem Buchstaben. Enden Sie mit einem Buchstaben oder einer Zahl. |
 > | Namespaces | Global | 6-50 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen Sie mit einem Buchstaben. Enden Sie mit einem Buchstaben oder einer Zahl. |
 > | namespaces/AuthorizationRules | Namespace | 1-50 | Alphanumerische Zeichen, Punkte, Bindestriche und Unterstriche.<br><br>Beginnen und enden Sie mit einem Buchstaben oder einer Zahl. |
-> | namespaces/disasterRecoveryConfigs | Namespace | 1-50 | Alphanumerische Zeichen, Punkte, Bindestriche und Unterstriche.<br><br>Beginnen und enden Sie mit einem Buchstaben oder einer Zahl. |
+> | namespaces/disasterRecoveryConfigs | Global | 6-50 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen Sie mit einem Buchstaben. Enden Sie mit einem alphanumerischen Zeichen. |
 > | namespaces/eventhubs | Namespace | 1-50 | Alphanumerische Zeichen, Punkte, Bindestriche und Unterstriche.<br><br>Beginnen und enden Sie mit einem Buchstaben oder einer Zahl. |
 > | namespaces/eventhubs/authorizationRules | Event Hub | 1-50 | Alphanumerische Zeichen, Punkte, Bindestriche und Unterstriche.<br><br>Beginnen und enden Sie mit einem Buchstaben oder einer Zahl. |
 > | namespaces/eventhubs/consumergroups | Event Hub | 1-50 | Alphanumerische Zeichen, Punkte, Bindestriche und Unterstriche.<br><br>Beginnen und enden Sie mit einem Buchstaben oder einer Zahl. |
@@ -413,11 +416,11 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | actionGroups | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`:<>+/&%\?` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
-> | components | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`%&\?/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
-> | scheduledQueryRules | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`*<>%{}&:\\?/#` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
-> | metricAlerts | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`*#&+:<>?@%{}\/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
-> | activityLogAlerts | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`<>*%{}&:\\?+/#` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
+> | actionGroups | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`:<>+/&%\?` oder Steuerzeichen. <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
+> | components | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`%&\?/` oder Steuerzeichen. <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
+> | scheduledQueryRules | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`*<>%{}&:\\?/#` oder Steuerzeichen. <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
+> | metricAlerts | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`*#&+:<>?@%{}\/` oder Steuerzeichen. <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
+> | activityLogAlerts | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`<>*%{}&:\\?+/#` oder Steuerzeichen. <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
@@ -467,9 +470,9 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | commitmentPlans | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`<>*%&:?+/\\`<br><br>Darf nicht mit einem Leerzeichen enden. |
-> | webServices | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`<>*%&:?+/\\`<br><br>Darf nicht mit einem Leerzeichen enden. |
-> | workspaces | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`<>*%&:?+/\\`<br><br>Darf nicht mit einem Leerzeichen enden. |
+> | commitmentPlans | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`<>*%&:?+/\\` oder Steuerzeichen.<br><br>Darf nicht mit einem Leerzeichen enden. |
+> | webServices | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`<>*%&:?+/\\` oder Steuerzeichen.<br><br>Darf nicht mit einem Leerzeichen enden. |
+> | workspaces | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`<>*%&:?+/\\` oder Steuerzeichen.<br><br>Darf nicht mit einem Leerzeichen enden. |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -618,9 +621,33 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | --- | --- | --- | --- |
 > | deployments | Ressourcengruppe | 1-64 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche und Punkte. |
 > | resourcegroups | Abonnement | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche, Punkte und Unicode-Zeichen entsprechend der [Dokumentation zu regulären Ausdrücken](/rest/api/resources/resourcegroups/createorupdate).<br><br>Darf nicht mit einem Punkt enden. |
-> | tagNames | resource | 1–512 | Verwendung nicht möglich:<br>`<>%&\?/` |
+> | tagNames | resource | 1–512 | Verwendung nicht möglich:<br>`<>%&\?/` oder Steuerzeichen. |
 > | tagNames/tagValues | Tagname | 1–256 | Alle Zeichen. |
 > | templateSpecs | Ressourcengruppe | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche und Punkte. |
+
+## <a name="microsoftsecurity"></a>Microsoft.Security
+
+> [!div class="mx-tableFixed"]
+> | Entität | `Scope` | Länge | Gültige Zeichen |
+> | --- | --- | --- | --- |
+> | advancedThreatProtectionSettings | Ressourcengruppe | Siehe Wert | Muss gleich `current` sein. |
+> | alertsSuppressionRules | Abonnement | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | assessmentMetadata | Bewertungstyp | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | assessments | Bewertungstyp | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | automations | Ressourcengruppe | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | autoProvisioningSettings | Abonnement | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | connectors | Abonnement | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | deviceSecurityGroups | Ressourcengruppe | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | informationProtectionPolicies | Ressourcengruppe | Siehe Werte | Verwenden Sie einer der:<br>`custom`<br>`effective` | 
+> | iotSecuritySolutions | Ressourcengruppe | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | locations/applicationwhitelistings | Abonnement | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | locations / jitNetworkAccessPolicies | Ressourcengruppe | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | ingestionSettings | Abonnement | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | pricings | Abonnement | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | securityContacts | Abonnement | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
+> | settings | Abonnement | Siehe Werte | Verwenden Sie einer der:<br>`MCAS`<br>`Sentinel`<br>`WDATP`<br>`WDATP_EXCLUDE_LINUX_PUBLIC_PREVIEW` |
+> | serverVulnerabilityAssessments | Ressourcentyp | Siehe Wert | Muss gleich `Default` sein. |
+> | sqlVulnerabilityAssessments / baselineRules | Sicherheitsrisikobewertung | 1–260 | Alphanumerische Zeichen, Unterstriche und Bindestriche. |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
@@ -660,11 +687,11 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | managedInstances | Global | 1 - 63 | Kleinbuchstaben, Zahlen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. <br><br> Darf keine Sonderzeichen wie etwa `@` enthalten. |
 > | servers | Global | 1 - 63 | Kleinbuchstaben, Zahlen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. |
 > | servers/administrators | server |  | Muss `ActiveDirectory`lauten. |
-> | servers/databases | server | 1–128 | Verwendung nicht möglich:<br>`<>*%&:\/?`<br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |
+> | servers/databases | server | 1–128 | Verwendung nicht möglich:<br>`<>*%&:\/?` oder Steuerzeichen.<br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |
 > | servers/databases/syncGroups | database | 1–150 | Alphanumerische Zeichen, Bindestriche und Unterstriche. |
-> | servers/elasticPools | server | 1–128 | Verwendung nicht möglich:<br>`<>*%&:\/?`<br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |
+> | servers/elasticPools | server | 1–128 | Verwendung nicht möglich:<br>`<>*%&:\/?` oder Steuerzeichen.<br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |
 > | servers/failoverGroups | Global | 1 - 63 | Kleinbuchstaben, Zahlen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. |
-> | servers/firewallRules | server | 1–128 | Verwendung nicht möglich:<br>`<>*%&:;\/?`<br><br>Darf nicht mit einem Punkt enden. |
+> | servers/firewallRules | server | 1–128 | Verwendung nicht möglich:<br>`<>*%&:;\/?` oder Steuerzeichen.<br><br>Darf nicht mit einem Punkt enden. |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
@@ -712,9 +739,9 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | environments | Ressourcengruppe | 1-90 | Verwendung nicht möglich:<br>`'<>%&:\?/#` |
-> | environments/accessPolicies | Environment | 1-90 | Verwendung nicht möglich:<br> `'<>%&:\?/#` |
-> | environments/eventSources | Environment | 1-90 | Verwendung nicht möglich:<br>`'<>%&:\?/#` |
+> | environments | Ressourcengruppe | 1-90 | Verwendung nicht möglich:<br>`'<>%&:\?/#` oder Steuerzeichen. |
+> | environments/accessPolicies | Environment | 1-90 | Verwendung nicht möglich:<br> `'<>%&:\?/#` oder Steuerzeichen. |
+> | environments/eventSources | Environment | 1-90 | Verwendung nicht möglich:<br>`'<>%&:\?/#` oder Steuerzeichen. |
 > | environments/referenceDataSets | Environment | 3-63 | Alphanumerische Zeichen |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -734,4 +761,6 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Empfehlungen zum Benennen von Ressourcen finden Sie unter [Bereitschaft: Empfohlene Namens- und Kennzeichnungskonventionen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+* Empfehlungen zum Benennen von Ressourcen finden Sie unter [Bereitschaft: Empfohlene Namens- und Kennzeichnungskonventionen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+
+* Alle Ressourcen mit einem öffentlichen Endpunkt dürfen keine reservierten Wörter oder Marken im Namen enthalten. Eine Liste mit blockierten Wörtern finden Sie unter [Fehler vom Typ „Reservierter Ressourcenname“ beheben](../templates/error-reserved-resource-name.md).

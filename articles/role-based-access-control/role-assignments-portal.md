@@ -7,15 +7,15 @@ manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/25/2021
+ms.date: 09/24/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal,subject-rbac-steps
-ms.openlocfilehash: e6a06c2a2a525e89fd6d7ab61f983f2b91c1cc8a
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: 368a3480af60b4c1a9b819d3b4667f2212e62290
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112989001"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094803"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>Zuweisen von Azure-Rollen über das Azure-Portal
 
@@ -176,23 +176,21 @@ Die Zuweisung von Rollen zum Gewähren von Zugriff auf Azure-Ressourcen erfolgt 
 
    ![Screenshot: Bereich „Mitglieder auswählen“ auf der Benutzeroberfläche der Vorschauversion](./media/shared/select-members.png)
 
-1. Klicken Sie auf **Speichern**, um die Benutzer, Gruppen oder Dienstprinzipale der Liste „Mitglieder“ hinzuzufügen.
+1. Klicken Sie auf **Auswählen**, um die Benutzer*innen, Gruppen oder Dienstprinzipale der Liste „Mitglieder“ hinzuzufügen.
 
 1. Um die ausgewählte Rolle mindestens einer verwalteten Identität zuzuweisen, wählen Sie **Verwaltete Identität** aus.
 
 1. Klicken Sie auf **Mitglieder auswählen**.
 
-1. Wählen Sie im Bereich **Verwaltete Identitäten auswählen** aus, ob der Typ [Systemseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) oder [Benutzerseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) ist.
+1. Wählen Sie im Bereich **Select managed identities** (Verwaltete Identitäten auswählen) aus, ob der Typ [User-assigned managed identity](../active-directory/managed-identities-azure-resources/overview.md) (Benutzerseitig zugewiesene verwaltete Identität) oder [System-assigned managed identity](../active-directory/managed-identities-azure-resources/overview.md) (Systemseitig zugewiesene verwaltete Identität) ist.
 
 1. Suchen Sie nach den verwalteten Identitäten, und wählen Sie sie aus.
 
-    Wenn Sie eine systemseitig zugewiesene verwaltete Identität ausgewählt haben, müssen Sie die Azure-Dienstinstanz auswählen, in der sich die verwaltete Identität befindet.
+    Bei systemseitig zugewiesenen verwalteten Identitäten können Sie verwaltete Identitäten nach Azure-Dienstinstanz auswählen.
 
-   ![Screenshot: Hinzufügen systemseitig zugewiesener verwalteter Identitäten mithilfe des Bereichs „Prinzipal auswählen“ in der Benutzeroberfläche der Vorschauversion.](./media/role-assignments-portal/select-managed-identity-system.png)
+   ![Screenshot: Bereich „Select managed identities“ (Verwaltete Identitäten auswählen) in der Benutzeroberfläche der Vorschauversion](./media/role-assignments-portal/select-managed-identity.png)
 
-   ![Screenshot: Hinzufügen benutzerseitig zugewiesener verwalteter Identitäten mithilfe des Bereichs „Prinzipal auswählen“ in der Benutzeroberfläche der Vorschauversion.](./media/role-assignments-portal/select-managed-identity-user.png)
-
-1. Klicken Sie auf **Speichern**, um die verwalteten Identitäten der Liste „Mitglieder“ hinzuzufügen.
+1. Klicken Sie auf **Auswählen**, um die verwalteten Identitäten der Liste „Mitglieder“ hinzuzufügen.
 
 1. Geben Sie im Feld **Beschreibung** eine optionale Beschreibung für diese Rollenzuweisung ein.
 
@@ -202,7 +200,7 @@ Die Zuweisung von Rollen zum Gewähren von Zugriff auf Azure-Ressourcen erfolgt 
 
 ## <a name="step-5-optional-add-condition-preview"></a>Schritt 5: (Optional) Hinzufügen einer Bedingung (Vorschau)
 
-Wenn Sie eine Rolle ausgewählt haben, die Bedingungen unterstützt, wird eine Registerkarte **Bedingung** angezeigt, und Sie haben die Möglichkeit, Ihrer Rollenzuweisung eine Bedingung hinzuzufügen. Eine [Bedingung](conditions-overview.md) ist eine zusätzliche Überprüfung, die Sie ihrer Rollenzuweisung optional hinzufügen können, um eine genauere Zugriffssteuerung zu ermöglichen.
+Wenn Sie eine Rolle ausgewählt haben, die Bedingungen unterstützt, wird die Registerkarte **Conditions (optional)** (Bedingungen (optional)) angezeigt, über die Sie Ihrer Rollenzuweisung eine Bedingung hinzufügen können. Eine [Bedingung](conditions-overview.md) ist eine zusätzliche Überprüfung, die Sie ihrer Rollenzuweisung optional hinzufügen können, um eine genauere Zugriffssteuerung zu ermöglichen.
 
 Derzeit können Bedingungen zu integrierten oder benutzerdefinierten Rollenzuweisungen hinzugefügt werden, die über [Aktionen für Speicherblobdaten](conditions-format.md#actions) verfügen. Dies umfasst die folgenden integrierten Rollen:
 

@@ -1,46 +1,44 @@
 ---
-title: B2B-Unternehmensintegration
-description: Erfahren Sie mehr über das Erstellen automatisierter B2B-Workflows für die Unternehmensintegration mit Azure Logic Apps und dem Enterprise Integration Pack
+title: Workflows für die B2B-Unternehmensintegration
+description: Erfahren Sie mehr über das Erstellen automatisierter B2B-Workflows für die Unternehmensintegration mit Azure Logic Apps und dem Enterprise Integration Pack.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, azla
 ms.topic: overview
-ms.date: 05/11/2021
-ms.openlocfilehash: 08de00415229b410e7b88bc4cae26754c466baef
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.date: 09/14/2021
+ms.openlocfilehash: 91ea9eb37e7c4e2e97513a1496a52d2521e9f4b2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789081"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652135"
 ---
-# <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>B2B-Unternehmensintegrationslösungen mit Azure Logic Apps und dem Enterprise Integration Pack
+# <a name="b2b-enterprise-integration-workflows-with-azure-logic-apps-and-enterprise-integration-pack"></a>Workflows für die B2B-Unternehmensintegration mit Azure Logic Apps und Enterprise Integration Pack
 
-Für Business-to-Business-Lösungen (B2B) und eine nahtlose Kommunikation zwischen Organisationen können Sie mithilfe des Enterprise Integration Pack (EIP) mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) automatisierte skalierbare Unternehmensintegrationsworkflows erstellen. Organisationen können Nachrichten elektronisch austauschen, auch wenn sie unterschiedliche Protokolle und Formate verwenden. Das EIP wandelt verschiedene Formate in ein Format um, das von den Systemen Ihrer Organisation verarbeitet werden kann, und unterstützt branchenübliche Protokolle wie [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md) und [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Sie können die Sicherheit von Nachrichten auch mithilfe von Verschlüsselung und digitalen Signaturen erhöhen. Das EIP unterstützt diese [Unternehmensintegrationsconnectors](../connectors/managed.md#enterprise-connectors) und diese Branchenstandards:
+Für Business-to-Business-Lösungen (B2B) und eine nahtlose Kommunikation zwischen Organisationen können Sie mithilfe von [Azure Logic Apps](logic-apps-overview.md) mit Enterprise Integration Pack (EIP) automatisierte skalierbare Unternehmensintegrationsworkflows erstellen.
+
+## <a name="what-is-the-enterprise-integration-pack"></a>Was ist das Enterprise Integration Pack?
+
+Wenn Sie mit Microsoft BizTalk Server oder Azure BizTalk Services vertraut sind, sind die B2B-Funktionen leicht zu verwenden, da das EIP ähnliche Konzepte befolgt. Ein wesentlicher Unterschied besteht jedoch darin, dass das EIP hinsichtlich der Architektur auf *Integrationskonten* basiert. Bei diesen Konten handelt es sich um cloudbasierte Container in Azure, sodass Sie B2B-Artefakte für die B2B-Kommunikation, einschließlich [Handelspartner](logic-apps-enterprise-integration-partners.md), [Vereinbarungen](logic-apps-enterprise-integration-agreements.md), [Zuordnungen](logic-apps-enterprise-integration-maps.md), [Schemata](logic-apps-enterprise-integration-schemas.md), [Zertifikate](logic-apps-enterprise-integration-certificates.md) usw., einfacher speichern, verwalten und verwenden können.
+
+Mithilfe dieser Artefakte können Sie B2B-Workflows und Integrationslösungen erstellen, die Clouddienste wie Azure, Microsoft und andere SaaS-Apps (Software-as-Service), lokale Systeme und benutzerdefinierte Apps einbeziehen, indem Sie Azure Logic Apps mit [über 400 integrierten Vorgängen und verwalteten Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors) verwenden. Beispielsweise können Sie mithilfe integrierter Codeausführungsvorgänge und Azure Functions benutzerdefinierten Code aus Ihren Workflows erstellen und ausführen. Sie können auch [Unternehmensintegrationsconnectors](../connectors/managed.md#enterprise-connectors) verwenden, die die folgenden Branchenstandards unterstützen:
 
 * Electronic Data Interchange (EDI)
 * Enterprise Application Integration (EAI)
 
-Wenn Sie mit Microsoft BizTalk Server oder Azure BizTalk Services vertraut sind, sind die Features leicht zu verwenden, da das EIP ähnliche Konzepte befolgt. Ein wesentlicher Unterschied besteht jedoch darin, dass die Architektur des EIP auf Integrationskonten basiert, um die Speicherung und Verwaltung von Artefakten zu vereinfachen, die bei der B2B-Kommunikation verwendet werden. Diese Konten sind cloudbasierte Container, in denen alle Artefakte wie Partner, Vereinbarungen, Schemas, Zuordnungen und Zertifikate gespeichert werden.
+Obwohl Organisationen unterschiedliche Protokolle und Formate für die B2B-Kommunikation verwenden, können Sie dennoch elektronisch Nachrichten mit anderen Organisationen austauschen. Sie können diese verschiedenen Formate in ein Format umwandeln, das die Systeme Ihrer Organisation verarbeiten können, indem Sie das EIP verwenden, das branchenübliche Protokolle wie [AS2](logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md), [EDIFACT](logic-apps-enterprise-integration-edifact.md) und [RosettaNet](logic-apps-enterprise-integration-rosettanet.md) unterstützt. Sie können die Nachrichtensicherheit auch mithilfe von Verschlüsselung und digitalen Signaturen erhöhen.
 
-## <a name="why-use-the-enterprise-integration-pack"></a>Gründe für die Verwendung des Enterprise Integration Pack
+## <a name="what-do-i-need-to-get-started"></a>Was benötige ich für den Einstieg?
 
-* Mit dem EIP können Sie alle Ihre Artefakte zentral in Ihrem Integrationskonto speichern.
+* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Sie können B2B-Workflows erstellen und in Software-as-a-Service-Apps (SaaS) von Drittanbietern, lokalen Apps und benutzerdefinierten Apps integrieren, indem Sie Azure Logic Apps und Connectors nutzen.
+* Ein [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md) zum Speichern der B2B-Artefakte, die Sie definieren und verwenden möchten.
 
-* Mit Azure Functions können Sie benutzerdefinierten Code für Ihre Logik-Apps erstellen.
+* Ihre B2B-Artefakte wie [Handelspartner](logic-apps-enterprise-integration-partners.md), [Vereinbarungen](logic-apps-enterprise-integration-agreements.md), [Zuordnungen](logic-apps-enterprise-integration-maps.md), [Schemas](logic-apps-enterprise-integration-schemas.md), [Zertifikate](logic-apps-enterprise-integration-certificates.md) usw.
 
-## <a name="how-do-i-get-started"></a>Wie fange ich an?
-
-Bevor Sie mit dem EIP mit dem Entwickeln von B2B-Logik-App-Workflows beginnen, benötigen Sie Folgendes:
-
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
-
-* Ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) mit den Artefakten, die Sie verwenden möchten
-
-* Zum Erstellen von Zuordnungen und Schemas können Sie die [Erweiterung „Microsoft Azure Logic Apps Enterprise Integration Tools“](https://aka.ms/vsenterpriseintegrationtools) und Visual Studio 2019 verwenden. 
+* Zum Erstellen von Zuordnungen und Schemas können Sie die [Erweiterung „Microsoft Azure Logic Apps Enterprise Integration Tools“](https://aka.ms/vsenterpriseintegrationtools) und Visual Studio 2019 verwenden. Bei Verwendung von Visual Studio 2015 können Sie die Erweiterung [Microsoft Azure Logic Apps Enterprise Integration Tools für Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas) verwenden.
 
    > [!IMPORTANT]
    > Installieren Sie diese Erweiterung nicht zusammen mit der BizTalk Server-Erweiterung. Sind beide Erweiterungen installiert, kann dies zu unerwartetem Verhalten führen. Stellen Sie sicher, dass nur eine dieser Erweiterungen installiert ist.
@@ -48,14 +46,17 @@ Bevor Sie mit dem EIP mit dem Entwickeln von B2B-Logik-App-Workflows beginnen, b
    > [!NOTE]
    > Auf Monitoren mit hoher Auflösung kann ein [Anzeigeproblem des Zuordnungs-Designers](/visualstudio/designers/disable-dpi-awareness) in Visual Studio auftreten. Um dieses Anzeigeproblem zu beheben, [starten Sie Visual Studio im nicht DPI-fähigen Modus neu](/visualstudio/designers/disable-dpi-awareness#restart-visual-studio-as-a-dpi-unaware-process), oder fügen Sie den [DPIUNAWARE-Registrierungswert](/visualstudio/designers/disable-dpi-awareness#add-a-registry-entry) hinzu.
 
+Nachdem Sie ein Integrationskonto erstellt und Ihre Artefakte hinzugefügt haben, können Sie mit der Erstellung von B2B-Workflows beginnen, indem Sie eine Logik-App-Ressource erstellen. Wenn Sie noch keine Erfahrung mit Logik-Apps haben, sollten Sie zunächst einen [einfachen Workflow für eine Logik-App erstellen](quickstart-create-first-logic-app-workflow.md). Sie können Logik-Apps auch mithilfe von [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md), [Visual Studio](quickstart-create-logic-apps-with-visual-studio.md) oder [PowerShell](/powershell/module/az.logicapp) erstellen, verwalten und bereitstellen.
 
-* Bei Verwendung von Visual Studio 2015 können Sie die Erweiterung [Microsoft Azure Logic Apps Enterprise Integration Tools für Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas) verwenden.
+> [!IMPORTANT]
+> Wenn Sie den Ressourcentyp **Logik-App (Verbrauch)** verwenden, müssen Sie Ihr Integrationskonto mit Ihrer Logic-App-Ressource verknüpfen, bevor Sie B2B-Artefakte für die Verwendung in Ihrem Workflow auswählen können. Zum Definieren und Hinzufügen dieser Artefakte zu Ihrem Integrationskonto benötigen Sie jedoch noch keine Logik-App-Ressource.
+>
+> Wenn Sie den Ressourcentyp **Logik-App (Standard)** verwenden, können Sie Schemata und Zuordnungen direkt zu Ihrer Logik-App-Ressource hinzufügen und diese Artefakte in mehreren Workflows innerhalb *derselben Logik-App-Ressource* verwenden. 
+> Sie benötigen weiterhin ein Integrationskonto, um andere Artefakte wie Partner und Vereinbarungen zu speichern, aber eine Verknüpfung ist nicht mehr notwendig, sodass diese Möglichkeit nicht besteht. Weitere Informationen zu diesen Ressourcentypen finden Sie unter [Was ist Azure Logic Apps: Ressourcentyp und Hostumgebungen](logic-apps-overview.md#resource-type-and-host-environment-differences).
 
-Wenn Sie ein Integrationskonto erstellt und Ihre Artefakte hinzugefügt haben, können Sie mithilfe dieser Artefakte B2B-Workflows erstellen, indem Sie eine Logik-App im Azure-Portal erstellen. Wenn Sie mit Logik-Apps noch nicht vertraut sind, [erstellen Sie zunächst eine einfache Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Damit Sie diese Artefakte verwenden können, müssen Sie zunächst Ihr Integrationskonto mit Ihrer Logik-App verknüpfen. Anschließend kann Ihre Logik-App auf Ihr Integrationskonto zugreifen. Sie können Logik-Apps auch mithilfe von Visual Studio oder [PowerShell](/powershell/module/az.logicapp) erstellen, verwalten und bereitstellen.
+Das folgende Diagramm zeigt die wichtigsten Schritte für das Erstellen von Workflows für B2B-Logik-Apps:
 
-Im Folgenden finden Sie allgemeine Schritte, um mit dem Erstellen von B2B-Logik-Apps zu beginnen:
-
-![Voraussetzungen für das Erstellen von B2B-Logik-Apps](./media/logic-apps-enterprise-integration-overview/overview.png)
+![Konzeptdiagramm mit den erforderlichen Schritten zum Erstellen von Workflows für B2B-Logik-Apps.](media/logic-apps-enterprise-integration-overview/overview.png)
 
 ## <a name="try-now"></a>Jetzt testen
 
@@ -64,7 +65,7 @@ Im Folgenden finden Sie allgemeine Schritte, um mit dem Erstellen von B2B-Logik-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen von Handelspartnern](logic-apps-enterprise-integration-partners.md)
-* [Erstellen von Vereinbarungen](../logic-apps/logic-apps-enterprise-integration-agreements.md)
+* [Erstellen von Vereinbarungen](logic-apps-enterprise-integration-agreements.md)
 * [Hinzufügen von Schemas](logic-apps-enterprise-integration-schemas.md)
-* [Hinzufügen von Zuordnungen](../logic-apps/logic-apps-enterprise-integration-maps.md)
-* [Migrieren von BizTalk Services](../logic-apps/logic-apps-move-from-mabs.md)
+* [Hinzufügen von Zuordnungen](logic-apps-enterprise-integration-maps.md)
+* [Migrieren von BizTalk Services](logic-apps-move-from-mabs.md)

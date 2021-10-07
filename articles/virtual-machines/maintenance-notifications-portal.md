@@ -3,17 +3,17 @@ title: Verwenden des Portals für Wartungsbenachrichtigungen
 description: Zeigen Sie Wartungsbenachrichtigungen für in Azure ausgeführte virtuelle Computer über das Portal an, und starten Sie eine Self-Service-Wartung.
 author: shants123
 ms.service: virtual-machines
-ms.subservice: maintenance-control
+ms.subservice: maintenance
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 11/19/2019
+ms.date: 09/08/2021
 ms.author: shants
-ms.openlocfilehash: 8ec87f5377fad1e42ad5b6e96f32a4dae241a4ca
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a027014500fa9e4a6ca1f68e2da5fb62df37e5ec
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698790"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216041"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen über das Portal
 
@@ -27,9 +27,7 @@ Sie können im Azure-Portal nach VMs suchen, für die eine Wartung geplant ist.
 
 2. Klicken Sie im linken Navigationsbereich auf **Virtuelle Computer**.
 
-3. Klicken Sie im Bereich mit den virtuellen Computern auf die Schaltfläche **Spalten bearbeiten**, um die Liste mit den verfügbaren Spalten zu öffnen.
-
-4. Wählen Sie die folgenden Spalten aus, und fügen Sie sie hinzu:
+3. Klicken Sie im Bereich „Virtuelle Computer“ auf **Maintenance -> Virtual machine maintenance** (Wartung -> Wartung virtueller Computer), um die Liste mit den Wartungsspalten zu öffnen.
 
    **Wartungsstatus**: Zeigt den Wartungsstatus für den virtuellen Computer an. Mögliche Werte:
       

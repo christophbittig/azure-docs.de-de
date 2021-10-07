@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 05/10/2021
+ms.date: 08/24/2021
 ms.author: alkohli
-ms.openlocfilehash: d98141c52acc3cd0628943d17a89ec9822299d48
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 842a6572ca7daf3c0039b088f25d538f709a1df7
+ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738138"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "129208606"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box- und Azure Data Box Heavy-Importaufträge
 
@@ -32,6 +32,9 @@ Die folgende Tabelle enthält eine Zusammenfassung der einzelnen Schritte bei de
 | Löschen von Daten vom Gerät   | [Anzeigen der Kette von Protokollen zur Rückverfolgbarkeit](#get-chain-of-custody-logs-after-data-erasure) einschließlich von Überwachungsprotokollen und Auftragsverlauf                |
 
 In diesem Artikel werden die verschiedenen verfügbaren Verfahren und Tools detailliert beschrieben, mit denen Data Box- oder Data Box Heavy-Importaufträge nachverfolgt und überwacht werden können. Die Informationen in diesem Artikel gelten sowohl für Data Box- als auch für Data Box Heavy-Importaufträge. In den folgenden Abschnitten gelten alle Verweise auf Data Box auch für Data Box Heavy.
+
+> [!NOTE]
+> [!INCLUDE [data-box-copy-logs-behind-firewall](../../includes/data-box-copy-logs-behind-firewall.md)]
 
 ## <a name="set-up-access-control-on-the-order"></a>Einrichten der Zugriffssteuerung für den Auftrag
 
@@ -79,7 +82,7 @@ Während des Kopiervorgangs von Daten auf die Data Box oder Data Box Heavy wird 
 Vergewissern Sie sich, dass die Kopieraufträge ohne Fehler abgeschlossen wurden. Sollte während des Kopiervorgangs ein Fehler aufgetreten sein, laden Sie die Protokolle von der Seite **Verbindung herstellen und Daten kopieren** herunter.
 
 - Falls Sie eine Datei kopiert haben, die in einem Ordner für verwaltete Datenträger in Ihrer Data Box keinem ganzzahligen Vielfachen von 512 Byte entspricht, wird die Datei nicht als Seiten-Blob in Ihr Staging-Speicherkonto hochgeladen. Die Protokolle enthalten dann einen Fehler. Entfernen Sie die Datei und kopieren Sie eine Datei, die einem ganzzahligen Vielfachen von 512 Bytes entspricht.
-- Wenn Sie eine VHDX, eine dynamische oder andere VHD kopiert haben (diese Dateitypen werden nicht unterstützt), wird in den Protokollen ein Fehler angezeigt.
+- Wenn Sie eine VHDX-Datei, eine dynamische VHD oder eine differenzierende VHD kopiert haben, sehen Sie in den Protokollen einen Fehler. Diese Dateitypen werden nicht unterstützt.
 
 Hier finden Sie ein Beispiel für die Datei *error.xml* für verschiedene Fehler beim Kopieren auf verwaltete Datenträger.
 
@@ -210,6 +213,9 @@ Standardmäßig werden Protokolle in einen Container mit dem Namen `copylog` ges
 Der Pfad des Kopierprotokolls wird auch auf dem Blatt **Übersicht** für das Portal angezeigt.
 
 ![Pfad zum Kopierprotokoll nach Abschluss auf dem Blatt „Übersicht“](media/data-box-logs/copy-log-path-1.png)
+
+> [!NOTE]
+> [!INCLUDE [data-box-copy-logs-behind-firewall](../../includes/data-box-copy-logs-behind-firewall.md)]
 
 ### <a name="upload-completed-successfully"></a>Upload erfolgreich abgeschlossen
 

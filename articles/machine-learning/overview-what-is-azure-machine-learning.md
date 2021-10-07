@@ -10,12 +10,12 @@ author: cjgronlund
 ms.date: 08/03/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 6709309bed5546dacdadc1ba412954e83310e183
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: f0b798db68ee15ffeb393c30f7a7ccc81e4cf386
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446560"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606245"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -52,7 +52,7 @@ Entwickler finden vertraute Schnittstellen in Azure Machine Learning. Beispiel:
 
 ### <a name="studio-ui"></a>Studio-Benutzeroberfläche 
 
-Das Azure Machine Learning Studio ist eine grafische Benutzeroberfläche für einen Projektarbeitsbereich. In Studio haben Sie die folgenden Möglichkeiten:
+Das [Azure Machine Learning Studio](https://ml.azure.com) ist eine grafische Benutzeroberfläche für einen Projektarbeitsbereich. In Studio haben Sie die folgenden Möglichkeiten:
 
 - Anzeigen von Ausführungen, Metriken, Protokollen, Ausgaben usw.
 - Erstellen und Bearbeiten von Notebooks und Dateien.
@@ -65,6 +65,8 @@ Das Azure Machine Learning Studio ist eine grafische Benutzeroberfläche für ei
 - Erstellen Sie Aufträge für automatisiertes maschinelles Lernen.
 
 Außerdem verfügt der Designer über eine Drag & Drop-Schnittstelle, über die Sie Modelle trainieren und bereitstellen können. 
+
+Wenn Sie ML Studio (klassisch) verwenden, [erfahren Sie mehr über die eingestellte Unterstützung von Studio (klassisch) und den Unterschied zwischen diesem und Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio).
 
 ## <a name="enterprise-readiness-and-security"></a>Unternehmensbereitschaft und -sicherheit
 

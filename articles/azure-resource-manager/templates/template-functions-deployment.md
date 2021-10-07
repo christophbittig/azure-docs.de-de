@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Bereitstellung
 description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Abrufen von Informationen zur Bereitstellung verwendet werden können.
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: a51e11a34e9c5dd51b07bfa1f2d64e1b306f5b31
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/09/2021
+ms.openlocfilehash: 12f449cd70f0ccbeeb0d232299f38fb814a8cb24
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959696"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733333"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Bereitstellungsfunktionen für ARM-Vorlagen
 
@@ -142,21 +142,9 @@ Wenn Sie eine Vorlage aus dem Bereitstellungsverlauf im Portal erneut bereitstel
 
 ### <a name="example"></a>Beispiel
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) gibt das Bereitstellungsobjekt zurück:
+Im folgenden Beispiel wird ein Bereitstellungsobjekt zurückgegeben.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "deploymentOutput": {
-      "type": "object",
-      "value": "[deployment()]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/deployment/deployment.json":::
 
 Im vorherigen Beispiel wird das folgende Objekt zurückgegeben:
 
@@ -182,6 +170,10 @@ Im vorherigen Beispiel wird das folgende Objekt zurückgegeben:
   }
 }
 ```
+
+Für eine Abonnementbereitstellung gibt das folgende Beispiel ein Bereitstellungsobjekt zurück.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/deployment/deploymentsubscription.json":::
 
 ## <a name="environment"></a>Environment
 
@@ -231,19 +223,7 @@ Diese Funktion gibt Eigenschaften für die aktuelle Azure-Umgebung zurück. Das 
 
 Die folgende Beispielvorlage gibt das Umgebungsobjekt zurück.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "environmentOutput": {
-      "type": "object",
-      "value": "[environment()]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/deployment/environment.json":::
 
 Im vorherigen Beispiel wird bei Bereitstellung in globalem Azure das folgende Objekt zurückgegeben:
 
@@ -291,7 +271,7 @@ Verweisen Sie in Bicep mithilfe ihrer symbolischen Namen direkt auf Parameter.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | parameterName |Ja |Zeichenfolge |Der Name des zurückzugebenden Parameter. |
 
@@ -320,67 +300,13 @@ In der Regel verwenden Sie Parameter zum Festlegen von Ressourcenwerten. Im folg
 
 ### <a name="example"></a>Beispiel
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) zeigt eine vereinfachte Nutzungsweise der Parameterfunktion.
+Die folgenden Beispiele zeigen eine vereinfachte Nutzungsweise der Parameterfunktion.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringParameter": {
-      "type": "string",
-      "defaultValue": "option 1"
-    },
-    "intParameter": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "objectParameter": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b"
-      }
-    },
-    "arrayParameter": {
-      "type": "array",
-      "defaultValue": [ 1, 2, 3 ]
-    },
-    "crossParameter": {
-      "type": "string",
-      "defaultValue": "[parameters('stringParameter')]"
-    }
-  },
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "stringOutput": {
-      "value": "[parameters('stringParameter')]",
-      "type": "string"
-    },
-    "intOutput": {
-      "value": "[parameters('intParameter')]",
-      "type": "int"
-    },
-    "objectOutput": {
-      "value": "[parameters('objectParameter')]",
-      "type": "object"
-    },
-    "arrayOutput": {
-      "value": "[parameters('arrayParameter')]",
-      "type": "array"
-    },
-    "crossOutput": {
-      "value": "[parameters('crossParameter')]",
-      "type": "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/deployment/parameters.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | stringOutput | String | option 1 |
 | intOutput | Int | 1 |
@@ -400,7 +326,7 @@ Verweisen Sie in Bicep mithilfe ihrer symbolischen Namen direkt auf Variablen.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | variableName |Ja |String |Der Name der zurückzugebenden Variable. |
 
@@ -435,47 +361,13 @@ In der Regel verwenden Sie Variablen, um Ihre Vorlage zu vereinfachen, indem Sie
 
 ### <a name="example"></a>Beispiel
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) gibt unterschiedliche Variablenwerte zurück.
+Im folgenden Beispiel werden unterschiedliche Variablenwerte zurückgegeben.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {
-    "var1": "myVariable",
-    "var2": [ 1, 2, 3, 4 ],
-    "var3": "[ variables('var1') ]",
-    "var4": {
-      "property1": "value1",
-      "property2": "value2"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "exampleOutput1": {
-      "value": "[variables('var1')]",
-      "type": "string"
-    },
-    "exampleOutput2": {
-      "value": "[variables('var2')]",
-      "type": "array"
-    },
-    "exampleOutput3": {
-      "value": "[variables('var3')]",
-      "type": "string"
-    },
-    "exampleOutput4": {
-      "value": "[variables('var4')]",
-      "type": "object"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/deployment/variables.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |

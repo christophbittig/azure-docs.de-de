@@ -9,12 +9,12 @@ ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 4e5abd957f65fd62bd3933c9f67288b063a6274f
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 39e2e9c0258be13698d3569dcc6e64d02bff8f42
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039728"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554499"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Verbinden einer Node.js Mongoose-Anwendung mit Azure Cosmos DB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -54,12 +54,14 @@ Nachdem Sie die Datenbank erstellt haben, verwenden Sie den Namen in der unten g
 
 1. Um eine Node.js-Anwendung in dem von Ihnen gewünschten Ordner zu erstellen, führen Sie den folgenden Befehl an einer Eingabeaufforderung für den Knoten aus.
 
-    ```npm init```
+   `npm init`
 
-    Beantworten Sie die Fragen. Danach ist das Projekt einsatzbereit.
+   Beantworten Sie die Fragen. Danach ist das Projekt einsatzbereit.
 
 2. Fügen Sie im Ordner eine neue Datei hinzu, und nennen Sie diese ```index.js```.
+
 3. Installieren Sie die erforderlichen Pakete, indem Sie eine der ```npm install```-Optionen verwenden:
+
    * Mongoose:```npm install mongoose@5 --save```
 
      > [!Note]
@@ -70,7 +72,7 @@ Nachdem Sie die Datenbank erstellt haben, verwenden Sie den Namen in der unten g
      >[!Note]
      > Das ```--save```-Flag bewirkt, dass die Abhängigkeit zur Datei „package.json“ hinzugefügt wird.
 
-4. Importieren Sie die Abhängigkeiten in Ihre „index.js“-Datei.
+4. Importieren Sie die Abhängigkeiten in Ihre `index.js`-Datei.
 
     ```JavaScript
    var mongoose = require('mongoose');

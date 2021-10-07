@@ -1,19 +1,19 @@
 ---
 title: Senken der Kosten für Azure Synapse Analytics mit reservierter Azure-Kapazität
 description: Hier erfahren Sie, wie Sie die Kosten für Azure Synapse Analytics mit reservierter Kapazität senken und so Geld sparen können.
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: bd43b668c318b825c5c5b6f36fc1da1055863bed
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: f738b2e551ecb26426ef25603969fb471ecfa437
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599098"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666588"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>Senken der Kosten für Azure Synapse Analytics mit reservierter Kapazität
 
@@ -52,8 +52,9 @@ Angenommen, für Ihre Gesamtnutzung von Azure Synapse Analytics benötigen Sie D
    - **Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
    - **Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
    - **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
-   - Für Enterprise-Kunden ist der Abrechnungskontext die EA-Registrierung.
-   - Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.
+       - Für Enterprise-Kunden ist der Abrechnungskontext die EA-Registrierung.
+       - Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.
+   - **Verwaltungsgruppe**: Wendet den Reservierungsrabatt auf die entsprechende Ressource in der Liste der Abonnements an, die ein Teil des Verwaltungsgruppen- und Abrechnungsbereichs sind.
 5. Wählen Sie eine Azure-Region aus, die durch die reservierte Kapazität abgedeckt ist.
 6. Wählen Sie die Menge aus. Geben Sie als Menge die 100 Data Warehouse-Einheiten (cDWU) ein, die Sie erwerben möchten.    
    Bei einer Menge von 30 erhalten Sie beispielsweise 3.000 cDWU-Einheiten reservierter Kapazität pro Stunde.

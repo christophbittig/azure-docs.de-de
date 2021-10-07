@@ -1,6 +1,7 @@
 ---
-title: Best Practices für den Zugriff mit den geringsten Berechtigungen auf Azure AD – Microsoft Identity Platform
-description: Informationen über eine Reihe von Best Practices und allgemeiner Leitfaden für das Prinzip der geringsten Berechtigungen.
+title: Erhöhen der App-Sicherheit nach dem Prinzip der geringsten Rechte
+titleSuffix: Microsoft identity platform
+description: Hier erfahren Sie, wie Sie gemäß dem Prinzip der geringsten Rechte die Sicherheit Ihrer Anwendung und deren Daten erhöhen und mit welchen Features von Microsoft Identity Platform Sie geringstmögliche Zugriffsberechtigungen implementieren.
 services: active-directory
 author: Chrispine-Chiedo
 manager: CelesteDG
@@ -8,64 +9,100 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/26/2021
+ms.date: 09/09/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: yuhko, saumadan, marsma
-ms.openlocfilehash: db2eb2dcda894b997f485795ab62d983966a7f2f
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: a7e504bfd13d89ba417067faf88cf17cf12e1d0b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372756"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786482"
 ---
-# <a name="best-practices-for-least-privileged-access-for-applications"></a>Best Practices für den Zugriff mit den geringsten Berechtigungen für Anwendungen
+# <a name="enhance-security-with-the-principle-of-least-privilege"></a>Erhöhen der Sicherheit nach dem Prinzip der geringsten Rechte
 
-Das Prinzip der geringsten Berechtigungen ist ein Informationssicherheitskonzept, das vorsieht, Benutzern und Anwendungen die geringstmöglichen Zugriffsberechtigungen zu gewähren, die zum Ausführen der erforderlichen Aufgaben erforderlich sind. Wenn Sie das Prinzip der geringsten Berechtigungen verstehen, können Sie vertrauenswürdige Anwendungen für Ihre Kunden erstellen.
+Zur Erhöhung der Informationssicherheit sollte Benutzern und Anwendungen gemäß dem Prinzip der geringsten Rechte nur Zugriff auf Daten und Vorgänge gewährt werden, die sie für die Ausführung ihrer Aufgaben benötigen.
 
-Die geringsten Berechtigungen zu verwenden ist mehr als nur eine gute Sicherheitsmaßnahme. Das Konzept hilft Ihnen dabei, die Integrität und Sicherheit Ihrer Daten zu gewährleisten. Es trägt auch zur Geheimhaltung Ihrer Daten bei und verringert Risiken, indem verhindert wird, dass Anwendungen mehr Zugriff auf Daten haben als unbedingt benötigt. Allgemein betrachtet ist das Prinzip der geringsten Berechtigungen ein Teil der [Zero Trust-Philosophie](https://www.microsoft.com/security/business/zero-trust) für proaktive Sicherheit in Unternehmen.
+Befolgen Sie die hier beschriebenen Schritte, um die Angriffsfläche Ihrer Anwendung und die Auswirkungen einer möglichen Sicherheitsverletzung (den *Auswirkungsbereich*) für Ihre in Microsoft Identity Platform integrierte Anwendung zur reduzieren.
 
-In diesem Artikel werden einige Best Practices beschrieben, mit denen Sie das Prinzip der geringsten Berechtigungen umsetzen können, um Ihre Anwendungen für Endbenutzer sicherer zu machen. Es werden folgende Aspekte des Prinzips der geringsten Berechtigungen behandelt:
-- Wie das Zusammenspiel von Einwilligungen mit Zugriffsberechtigungen funktioniert
-- Was es bedeutet, wenn eine App überprivilegiert oder geringstmöglich privilegiert ist
-- Wie Entwickler mit dem Prinzip der geringsten Berechtigungen umgehen sollten
-- Wie Organisationen mit dem Prinzip der geringsten Berechtigungen umgehen sollten
+## <a name="recommendations-at-a-glance"></a>Empfehlungen auf einen Blick
 
-## <a name="using-consent-to-control-access-permissions-to-data"></a>Verwenden von Einwilligung zum Steuern von Zugriffsberechtigungen auf Daten
+- Vermeiden Sie **überprivilegierte** Anwendungen, indem Sie *nicht verwendete* und *reduzierbare* Berechtigungen aufheben.
+- Verwenden Sie das **Einwilligungsframework** von Identity Platform, um bei Zugriffsanforderungen auf geschützte Daten die Einwilligung eines Mitarbeiters zu erzwingen.
+- Wenden Sie das Prinzip der geringsten Rechte beim **Erstellen** von Anwendungen in allen Entwicklungsphasen an.
+- **Überprüfen** Sie Ihre bereitgestellten Anwendungen regelmäßig, um überprivilegierte Apps zu identifizieren.
 
-Für den Zugriff auf geschützte Daten ist die [Einwilligung](../develop/application-consent-experience.md#consent-and-permissions) des Endbenutzers erforderlich. Wenn eine Anwendung auf dem Gerät Ihres Benutzers Zugriff auf geschützte Daten anfordert, sollte sie nach der Einwilligung des Benutzers fragen, bevor sie Zugang zu den geschützten Daten gewährt. Der Endbenutzer muss die Einwilligung für die angeforderte Berechtigung erteilen (oder verweigern), bevor die Anwendung fortfahren kann. Als Anwendungsentwickler ist es am besten, die am geringsten privilegierte Zugangsberechtigung anzufordern.
+## <a name="whats-an-overprivileged-application"></a>Was ist eine *überprivilegierte* Anwendung?
 
-:::image type="content" source="./media/least-privilege-best-practice/api-permissions.png" alt-text="Screenshot des Bereichs „API-Berechtigungen“ einer App-Registrierung im Azure-Portal":::
+Eine Anwendung wird als „überprivilegiert“ bezeichnet, wenn sie über **nicht verwendete** oder **reduzierbare** Berechtigungen verfügt. Durch nicht verwendete und reduzierbare Berechtigungen kann es zu nicht autorisiertem oder unbeabsichtigtem Zugriff auf Daten oder Vorgänge kommen, der für die Ausführung der Aufgaben einer App oder ihrer Benutzer nicht erforderlich ist.
 
-## <a name="overprivileged-and-least-privileged-applications"></a>Überprivilegierte und geringstmöglich privilegierte Anwendungen
+:::row:::
+   :::column span="":::
+      ### <a name="unused-permissions"></a>Nicht verwendete Berechtigungen
 
-Eine überprivilegierte Anwendung kann eines der folgenden Merkmale aufweisen:
-- **Ungenutzte Berechtigungen:** Eine Anwendung hat ungenutzte Berechtigungen, wenn die von ihr ausgeführten API-Aufrufe nicht alle ihr gewährten Berechtigungen nutzen. Beispielsweise liest eine App in [MS Graph](/graph/overview) möglicherweise nur OneDrive-Dateien (mit der Berechtigung „*Files.Read.All*“), hat aber auch die Berechtigung „*Calendars.Read*“ erhalten, obwohl sie nicht die Kalender-API nutzt.
-- **Reduzierbare Berechtigungen**: Einer App wurde eine Berechtigung erteilt, um einen API-Aufruf durchzuführen, der auch mit einer geringer berechtigten Alternative funktioniert. Beispielsweise kann eine App, die nur Benutzerprofile liest, aber über „*User.ReadWrite.All*“ verfügt, als überprivilegiert betrachtet werden. In diesem Fall sollte der App stattdessen „*User.Read.All*“ erteilt werden. Dies ist die geringstmögliche Berechtigung zum ausführen der Anforderung.
+        Bei einer nicht verwendeten Berechtigung handelt es sich um eine Berechtigung, die einer Anwendung erteilt wurde, deren dadurch verfügbar gemachte API bzw. Vorgang bei regulärer Verwendung jedoch nicht von der App aufgerufen wird.
 
-Auf eine Anwendung, die als geringstmöglich privilegiert angesehen werden kann, trifft Folgendes zu:
-- **Gerade genug Berechtigungen**: Erteilen Sie nur den geringstmöglichen Satz an Berechtigungen, der von einem Endbenutzer einer Anwendung, eines Diensts oder eines Systems zum Ausführen der erforderlichen Aufgaben benötigt wird.
+        - **Beispiel**: Eine Anwendung zeigt eine Liste von Dateien an, die im OneDrive-Speicher des angemeldeten Benutzers gespeichert sind. Dies geschieht durch Aufrufen der Microsoft Graph-API und mithilfe der Berechtigung [Files.Read](/graph/permissions-reference). Der App wurde jedoch auch die Berechtigung [Calendars.Read](/graph/permissions-reference#calendars-permissions) erteilt, obwohl sie keine Kalenderfeatures bereitstellt und die Kalender-API nicht aufruft.
 
-## <a name="approaching-least-privilege-as-an-application-developer"></a>Anwendungsentwickler und das Prinzip der geringsten Rechte
+        - **Sicherheitsrisiko**: Nicht verwendete Berechtigungen stellen ein Sicherheitsrisiko im Bereich der *horizontalen Rechteausweitung* dar. Eine Entität, die ein Sicherheitsrisiko in Ihrer Anwendung ausnutzt, könnte über eine nicht verwendete Berechtigung Zugriff auf eine API bzw. einen Vorgang erhalten, der bei beabsichtigter Verwendung von der Anwendung weder unterstützt noch zugelassen wird.
 
-Als Entwickler sind Sie für die Sicherheit der Daten Ihrer Kunden mitverantwortlich. Bei der Entwicklung Ihrer Anwendungen müssen Sie dem Prinzip der geringsten Rechte folgen. Es wird empfohlen, folgende Prinzipien zu beachten, um zu verhindern, dass Ihre Anwendung überprivilegiert ist:
-- Die Berechtigungen, die für die von Ihrer Anwendung auszuführenden API-Aufrufe erforderlich sind, vollständig verstehen.
-- Die am geringsten privilegierte Berechtigung für die jeweiligen API-Aufrufe Ihrer App kennen. Dazu den [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) verwenden.
-- Die entsprechenden [Berechtigungen](/graph/permissions-reference) mit den geringsten bis hin zu den meisten Privilegien finden.
-- Wenn Ihre App API-Aufrufe mit überlappenden Berechtigungen ausführt, alle doppelten Berechtigungssätze entfernen.
-- Nur den Berechtigungssatz mit den geringsten Berechtigungen auf Ihre Anwendung anwenden, indem Sie die Berechtigung mit den geringsten Berechtigungen in der Berechtigungsliste auswählen.
+        - **Abhilfe**: Entfernen Sie alle Berechtigungen, die nicht in API-Aufrufen Ihrer Anwendung verwendet werden.
+   :::column-end:::
+   :::column span="":::
+      ### <a name="reducible-permissions"></a>Reduzierbare Berechtigungen
 
-## <a name="approaching-least-privilege-as-an-organization"></a>Umgang mit dem Prinzip der geringsten Berechtigungen durch Organisationen
+        Eine reduzierbare Berechtigung weist eine Entsprechung mit niedrigeren Berechtigungen auf, die der Anwendung und deren Benutzern dennoch den Zugriff bereitstellt, der für die Ausführung der jeweiligen Aufgaben erforderlich ist.
 
-Organisationen ändern vorhandene Anwendungen oft ungern, da dies die Geschäftsabläufe beeinträchtigen kann. Dies stellt jedoch ein Problem dar, wenn bereits erteilte Berechtigungen überprivilegiert sind und widerrufen werden müssen. Für Organisationen lohnt es sich, Berechtigungen regelmäßig zu überprüfen. Es wird empfohlen, folgende Prinzipien zu beachten, damit Ihre Anwendungen sicher bleiben:
-- Die von Ihren Anwendungen vorgenommenen API-Aufrufe evaluieren.
-- Den [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) und die [Microsoft Graph](/graph/overview)-Dokumentation verwenden, um die erforderlichen und am wenigsten privilegierten Berechtigungen zu ermitteln.
-- Die Berechtigungen überwachen, die Benutzern oder Anwendungen gewährt werden.
-- Ihre Anwendungen aktualisieren, sodass sie den am wenigsten privilegierten Berechtigungssatz verwenden.
-- Berechtigungen regelmäßig überprüfen, um sicherzustellen, dass alle autorisierten Berechtigungen weiterhin relevant sind.
+        - **Beispiel**: Eine Anwendung zeigt die Profilinformationen des angemeldeten Benutzers durch Aufrufen der Microsoft Graph-API an. Die Profilbearbeitung wird jedoch nicht unterstützt. Der App wurde jedoch die Berechtigung [User.ReadWrite.All](/graph/permissions-reference#user-permissions) erteilt. Hier wird die Berechtigung *User.ReadWrite.All* als reduzierbar angesehen, da die Berechtigung *User.Read.All* ausreicht, um schreibgeschützten Zugriff auf die Profildaten des Benutzers zu gewähren.
+
+        - **Sicherheitsrisiko**: Reduzierbare Berechtigungen stellen ein Sicherheitsrisiko im Bereich der *vertikalen Rechteausweitung* dar. Eine Entität, die ein Sicherheitsrisiko in Ihrer Anwendung ausnutzt, könnte über eine reduzierbare Berechtigung nicht autorisierten Zugriff auf Daten erhalten bzw. Vorgänge ausführen, die normalerweise nicht Teil der Rolle dieser Entität sind.
+
+        - **Abhilfe**: Ersetzen Sie alle reduzierbaren Berechtigungen in Ihrer Anwendung durch die jeweilige Entsprechung mit den geringstmöglichen Berechtigungen, die für die Ausführung der gewünschten Funktionen ausreichen.
+   :::column-end:::
+:::row-end:::
+
+Vermeiden Sie Sicherheitsrisiken durch nicht verwendete und reduzierbare Berechtigungen, indem Sie immer nur die *geringstmöglichen* Berechtigungen erteilen. In anderen Worten: Eine Anwendung bzw. ein Benutzer sollten immer nur diejenigen Zugriffsrechte erhalten, die für die Ausführung der erforderlichen Aufgaben auch benötigt werden.
+
+## <a name="use-consent-to-control-access-to-data"></a>Steuern des Datenzugriffs mithilfe von Einwilligung
+
+Die meisten Anwendungen, die Sie erstellen, benötigen Zugriff auf geschützte Daten, zu dem der Besitzer der Daten seine [Einwilligung](application-consent-experience.md#consent-and-permissions) geben muss. Eine Einwilligung kann auf unterschiedliche Weise erteilt werden. Dies kann etwa durch einen Mandantenadministrator erfolgen, der *allen* Benutzern in einem Azure AD-Mandanten eine Zugriffsberechtigung erteilen kann, oder durch die Benutzer der Anwendung selbst.
+
+Wenn eine Anwendung auf dem Gerät Ihres Benutzers Zugriff auf geschützte Daten anfordert, sollte sie nach der Einwilligung des Benutzers fragen, bevor sie Zugang zu den geschützten Daten gewährt. Der Endbenutzer muss die Einwilligung für die angeforderte Berechtigung erteilen (oder verweigern), bevor die Anwendung fortfahren kann.
+
+:::image type="content" source="./media/least-privilege-best-practice/api-permissions.png" alt-text="Screenshot des Azure-Portals mit dem Bereich „API-Berechtigungen“ einer App-Registrierung":::
+
+## <a name="least-privilege-during-app-development"></a>Prinzip der geringsten Rechte bei der App-Entwicklung
+
+Als Entwickler einer Anwendung liegt es in *Ihrer* Verantwortung, die Sicherheit der App und der Benutzerdaten zu gewährleisten.
+
+Befolgen Sie die folgenden Richtlinien während der Anwendungsentwicklung, um keine überprivilegierte App zu erstellen:
+
+- Machen Sie sich vollumfänglich mit den Berechtigungen vertraut, die für die API-Aufrufe Ihrer Anwendung erforderlich sind.
+- Identifizieren Sie mithilfe des [Graph-Explorers](https://developer.microsoft.com/graph/graph-explorer) die jeweils geringstmögliche Berechtigung für einen erforderlichen API-Aufruf Ihrer App.
+- Ermitteln Sie die entsprechenden [Berechtigungen](/graph/permissions-reference) aufsteigend nach dem Berechtigungsumfang.
+- Entfernen Sie alle doppelten Berechtigungen, wenn Ihre App API-Aufrufe mit überlappenden Berechtigungen ausführt.
+- Nutzen Sie für Ihre Anwendung nur die geringsten Berechtigungen, indem Sie in der Berechtigungsliste jeweils die geringstmögliche Berechtigung auswählen.
+
+## <a name="least-privilege-for-deployed-apps"></a>Prinzip der geringsten Rechte für bereitgestellte Apps
+
+Häufig schrecken Organisationen davor zurück, bereits ausgeführte Anwendungen zu ändern, um Auswirkungen auf den laufenden Geschäftsbetrieb zu vermeiden. Ihre Organisation sollte dennoch abwägen, ob das Risiko eines Sicherheitsincidents, der durch überprivilegierte Berechtigungen Ihrer App ermöglicht oder verschlimmert wird, eine geplante Aktualisierung der Anwendung nicht aufwiegt.
+
+Stellen Sie mithilfe der folgenden Standardmethoden sicher, dass bereitgestellte Apps in Ihrer Organisation nicht überprivilegiert sind oder es im Laufe der Zeit werden:
+
+- Werten Sie die von Ihren Anwendungen ausgeführten API-Aufrufe aus.
+- Ermitteln Sie mithilfe des [Graph-Explorers](https://developer.microsoft.com/graph/graph-explorer) und der [Microsoft Graph](/graph/overview)-Dokumentation die erforderlichen und geringstmöglichen Berechtigungen.
+- Überwachen Sie die Berechtigungen, die Benutzern oder Anwendungen erteilt werden.
+- Aktualisieren Sie Ihre Anwendungen, damit diese die geringstmöglichen Berechtigungen aufweisen.
+- Überprüfen Sie die Berechtigungen regelmäßig dahingehend, ob alle autorisierten Berechtigungen weiterhin relevant sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Einwilligung und Berechtigungen in Azure Active Directory finden Sie unter [Grundlegendes zu Einwilligungen für Azure AD-Anwendungen](../develop/application-consent-experience.md).
-- Weitere Informationen zu Berechtigungen und Einwilligung in Microsoft Identity finden Sie unter [Berechtigungen und Zustimmung auf der Microsoft Identity Platform](../develop/v2-permissions-and-consent.md).
-- Weitere Informationen zu Zero Trust finden Sie unter [Zero Trust-Bereitstellungscenter](/security/zero-trust/).
+**Zugriff auf geschützte Ressourcen und Einwilligung**
+
+Weitere Informationen zum Konfigurieren des Zugriffs auf geschützte Ressourcen und der Benutzeroberfläche zum Erteilen der Zugriffseinwilligung finden Sie in den folgenden Artikeln:
+
+- [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/v2-permissions-and-consent.md)
+- [Grundlegendes zur Zustimmung für Azure AD-Anwendungen](../develop/application-consent-experience.md)
+
+**Zero Trust**: Nutzen Sie die hier beschriebenen Maßnahmen gemäß dem Prinzip der geringsten Rechte im Rahmen der proaktiven [Zero Trust-Sicherheitsstrategie](/security/zero-trust/) in Ihrer Organisation.

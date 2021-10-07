@@ -1,15 +1,15 @@
 ---
 title: Details der Einhaltung gesetzlicher Bestimmungen für CIS Microsoft Azure Foundations Benchmark 1.1.0
 description: Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß CIS Microsoft Azure Foundations Benchmark 1.1.0 Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 3b2d7a49eb67fb2905ddf5c5fa98c3973f1e2e82
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 64d435173809ac2af16c52f8b7999afd15c2d117
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123472666"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646173"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-110-regulatory-compliance-built-in-initiative"></a>Details zur integrierten Initiative zur Einhaltung der gesetzlichen Bestimmungen gemäß CIS Microsoft Azure Foundations Benchmark 1.1.0
 
@@ -117,7 +117,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Virtuelle Computer sollten temporäre Datenträger, Caches und Datenflüsse zwischen Compute- und Speicherressourcen verschlüsseln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Hiermit werden VMs ohne aktivierte Datenträgerverschlüsselung über Azure Security Center als Empfehlungen überwacht. |AuditIfNotExists, Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[Virtuelle Computer sollten temporäre Datenträger, Caches und Datenflüsse zwischen Compute- und Speicherressourcen verschlüsseln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Standardmäßig werden die Datenträger für Betriebssystem und Daten für eine VM im Ruhezustand mithilfe plattformseitig verwalteter Schlüssel verschlüsselt. Temporäre Datenträger, Datencaches und zwischen Compute- und Speicherressourcen übertragene Daten werden nicht verschlüsselt. In folgenden Fällen sollten Sie diese Empfehlung ignorieren: 1. Verwenden der Verschlüsselung auf dem Host, oder 2. Die serverseitige Verschlüsselung in Managed Disks erfüllt Ihre Sicherheitsanforderungen. Weitere Informationen erhalten Sie unter [Serverseitige Verschlüsselung von Azure Disk Storage](../../../virtual-machines/disk-encryption.md) und [Übersicht über Verschlüsselungsoptionen für verwaltete Datenträger](../../../virtual-machines/disk-encryption-overview.md#comparison). |AuditIfNotExists, Disabled |[2.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="ensure-asc-default-policy-setting-monitor-network-security-groups-is-not-disabled"></a>Sicherstellen, dass die ASC-Standardrichtlinieneinstellung „Netzwerksicherheitsgruppen überwachen“ nicht deaktiviert ist
 
@@ -230,7 +230,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 **ID:** CIS Azure 3.8 **Besitz**: Kunde
 
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Speicherkonten sollten Zugriff von vertrauenswürdigen Microsoft-Diensten zulassen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9d007d0-c057-4772-b18c-01e546713bcd) |Einige Microsoft-Dienste, die mit Speicherkonten interagieren, agieren von Netzwerken aus, denen nicht mithilfe von Netzwerkregeln Zugriff gewährt werden kann. Lassen Sie für vertrauenswürdige Microsoft-Dienste die Umgehung der Netzwerkregeln zu, damit solche Dienste ordnungsgemäß funktionieren. Diese Dienste verwenden dann eine strenge Authentifizierung, um auf das Speicherkonto zuzugreifen. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccess_TrustedMicrosoftServices_Audit.json) |
 
@@ -240,7 +240,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 **ID:** CIS Azure 4.1 **Besitz**: Kunde
 
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Die Überwachung in SQL Server muss aktiviert werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9) |Die Überwachung für Ihre SQL Server-Instanz sollte aktiviert werden, um Datenbankaktivitäten in allen Datenbanken auf dem Server nachzuverfolgen und in einem Überwachungsprotokoll zu speichern. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Audit.json) |
 
@@ -248,7 +248,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 **ID:** CIS Azure 4.2 **Besitz**: Kunde
 
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Für SQL-Überwachungseinstellungen müssen Aktionsgruppen zum Erfassen kritischer Aktivitäten konfiguriert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ff426e2-515f-405a-91c8-4f2333442eb5) |Die AuditActionsAndGroups-Eigenschaft muss mindestens SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP, BATCH_COMPLETED_GROUP enthalten, um eine umfassende Überwachungsprotokollierung sicherzustellen. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_ActionsAndGroups_Audit.json) |
 
@@ -348,7 +348,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 **ID:** CIS Azure 5.1.1 **Besitz**: Kunde
 
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure-Abonnements benötigen ein Protokollprofil für das Aktivitätsprotokoll](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7796937f-307b-4598-941c-67d3a05ebfe7) |Diese Richtlinie stellt sicher, dass ein Protokollprofil für den Export von Aktivitätsprotokollen aktiviert ist. Sie überwacht, ob für den Export der Protokolle entweder in ein Speicherkonto oder in einen Event Hub ein Protokollprofil erstellt wurde. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Logprofile_activityLogs_Audit.json) |
 
@@ -507,7 +507,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Virtuelle Computer sollten temporäre Datenträger, Caches und Datenflüsse zwischen Compute- und Speicherressourcen verschlüsseln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Hiermit werden VMs ohne aktivierte Datenträgerverschlüsselung über Azure Security Center als Empfehlungen überwacht. |AuditIfNotExists, Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[Virtuelle Computer sollten temporäre Datenträger, Caches und Datenflüsse zwischen Compute- und Speicherressourcen verschlüsseln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Standardmäßig werden die Datenträger für Betriebssystem und Daten für eine VM im Ruhezustand mithilfe plattformseitig verwalteter Schlüssel verschlüsselt. Temporäre Datenträger, Datencaches und zwischen Compute- und Speicherressourcen übertragene Daten werden nicht verschlüsselt. In folgenden Fällen sollten Sie diese Empfehlung ignorieren: 1. Verwenden der Verschlüsselung auf dem Host, oder 2. Die serverseitige Verschlüsselung in Managed Disks erfüllt Ihre Sicherheitsanforderungen. Weitere Informationen erhalten Sie unter [Serverseitige Verschlüsselung von Azure Disk Storage](../../../virtual-machines/disk-encryption.md) und [Übersicht über Verschlüsselungsoptionen für verwaltete Datenträger](../../../virtual-machines/disk-encryption-overview.md#comparison). |AuditIfNotExists, Disabled |[2.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="ensure-that-data-disks-are-encrypted"></a>Sicherstellen, dass reguläre Datenträger verschlüsselt sind
 
@@ -515,7 +515,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Virtuelle Computer sollten temporäre Datenträger, Caches und Datenflüsse zwischen Compute- und Speicherressourcen verschlüsseln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Hiermit werden VMs ohne aktivierte Datenträgerverschlüsselung über Azure Security Center als Empfehlungen überwacht. |AuditIfNotExists, Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[Virtuelle Computer sollten temporäre Datenträger, Caches und Datenflüsse zwischen Compute- und Speicherressourcen verschlüsseln](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Standardmäßig werden die Datenträger für Betriebssystem und Daten für eine VM im Ruhezustand mithilfe plattformseitig verwalteter Schlüssel verschlüsselt. Temporäre Datenträger, Datencaches und zwischen Compute- und Speicherressourcen übertragene Daten werden nicht verschlüsselt. In folgenden Fällen sollten Sie diese Empfehlung ignorieren: 1. Verwenden der Verschlüsselung auf dem Host, oder 2. Die serverseitige Verschlüsselung in Managed Disks erfüllt Ihre Sicherheitsanforderungen. Weitere Informationen erhalten Sie unter [Serverseitige Verschlüsselung von Azure Disk Storage](../../../virtual-machines/disk-encryption.md) und [Übersicht über Verschlüsselungsoptionen für verwaltete Datenträger](../../../virtual-machines/disk-encryption-overview.md#comparison). |AuditIfNotExists, Disabled |[2.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="ensure-that-unattached-disks-are-encrypted"></a>Sicherstellen, dass „nicht angefügte Datenträger“ verschlüsselt sind
 
@@ -600,7 +600,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 **ID:** CIS Azure 9.2 **Besitz**: Kunde
 
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Zugriff auf Webanwendung nur über HTTPS gestatten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa4af4a39-4135-47fb-b175-47fbdf85311d) |Durch die Verwendung von HTTPS wird die Server-/Dienstauthentifizierung sichergestellt, und Daten werden bei der Übertragung vor Abhörangriffen auf der Vermittlungsschicht geschützt. |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppServiceWebapp_AuditHTTP_Audit.json) |
 
@@ -608,7 +608,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 **ID:** CIS Azure 9.3 **Besitz**: Kunde
 
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[API-App muss neueste TLS-Version verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8cb6aa8b-9e41-4f4e-aa25-089a7ac2581e) |Upgrade auf neueste TLS-Version durchführen |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_RequireLatestTls_ApiApp_Audit.json) |
 |[Funktions-App muss neueste TLS-Version verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff9d614c5-c173-4d56-95a7-b4437057d193) |Upgrade auf neueste TLS-Version durchführen |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_RequireLatestTls_FunctionApp_Audit.json) |
@@ -628,7 +628,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 **ID:** CIS Azure 9.5 **Besitz**: Kunde
 
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[API-App muss verwaltete Identität verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4d441f8-f9d9-4a9e-9cef-e82117cb3eef) |Verwaltete Identität zur Erhöhung der Authentifizierungssicherheit verwenden |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_UseManagedIdentity_ApiApp_Audit.json) |
 |[Funktions-App muss verwaltete Identität verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0da106f2-4ca3-48e8-bc85-c638fe6aea8f) |Verwaltete Identität zur Erhöhung der Authentifizierungssicherheit verwenden |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_UseManagedIdentity_FunctionApp_Audit.json) |
@@ -638,7 +638,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 **ID:** CIS Azure 9.7 **Besitz**: Kunde
 
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Sicherstellen, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der API-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |Für die PHP-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle PHP-Version für API-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt derzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
 |[Sicherstellen, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |Für die PHP-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle PHP-Version für Web-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt derzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
@@ -647,7 +647,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 **ID:** CIS Azure 9.8 **Besitz**: Kunde
 
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Sicherstellen, dass die neueste Python-Version angegeben ist, wenn sie als Teil der API-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |Für die Python-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Python-Version für API-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt derzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
 |[Sicherstellen, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |Für die Python-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Python-Version für Funktions-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt derzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
@@ -657,7 +657,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 **ID:** CIS Azure 9.9 **Besitz**: Kunde
 
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der API-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |Für die Java-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Python-Version für API-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt derzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
 |[Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |Für die Java-Software werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Es wird empfohlen, die aktuelle Java-Version für Funktions-Apps zu verwenden, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt derzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
@@ -667,7 +667,7 @@ Diese integrierte Initiative wird als Teil des [Blaupausenbeispiels für CIS Mic
 
 **ID:** CIS Azure 9.10 **Besitz**: Kunde
 
-|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Sicherstellen, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der API-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F991310cd-e9f3-47bc-b7b6-f57b557d07db) |Für HTTP werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Verwenden Sie die aktuelle HTTP-Version für Web-Apps, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt derzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_HTTP_Latest.json) |
 |[Sicherstellen, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Funktions-App verwendet wird](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2c1c086-2d84-4019-bff3-c44ccd95113c) |Für HTTP werden in regelmäßigen Abständen neue Versionen herausgegeben – entweder zum Beheben von Sicherheitsmängeln oder zum Bereitstellen neuer Funktionen. Verwenden Sie die aktuelle HTTP-Version für Web-Apps, um von Sicherheitsfixes (falls vorhanden) und/oder neuen Funktionen der neuesten Version zu profitieren. Diese Richtlinie gilt derzeit nur für Linux-Web-Apps. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_HTTP_Latest.json) |

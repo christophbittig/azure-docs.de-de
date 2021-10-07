@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 9be8ef1772da6259441a8de4c85fa44d54945c7d
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: c9cedace5f4755e22c4f08ecdde0d3f6fb8fa52f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821815"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663210"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Features für die Leistungsoptimierung bei Kopieraktivitäten
 
@@ -32,8 +32,8 @@ Die zulässige Anzahl von DIUs für die Ausführung einer Kopieraktivität liegt
 |:--- |:--- |---- |
 | Zwischen Dateispeichern |- **Kopieren aus einer einzelnen oder in eine einzelne Datei**: 2–4 <br>- **Kopieren aus mehreren oder in mehrere Dateien**: 2–256, je nach Anzahl und Größe der Dateien <br><br>Wenn Sie beispielsweise Daten aus einem Ordner mit 4 großen Dateien kopieren und die Hierarchie beibehalten möchten, ist die maximale effektive DIU gleich 16. Wenn Sie sich für das Zusammenführen der Datei entscheiden, ist die maximale effektive DIU gleich 4. |Zwischen 4 und 32, je nach Anzahl und Größe der Dateien |
 | Aus Dateispeicher in Nicht-Dateispeicher |- **Kopieren aus einer einzelnen Datei**: 2–4 <br/>- **Kopieren aus mehreren Dateien**: 2–256, je nach Anzahl und Größe der Dateien <br/><br/>Wenn Sie beispielsweise Daten aus einem Ordner mit 4 großen Dateien kopieren, ist die maximale effektive DIU gleich 16. |- **Kopieren in Azure SQL-Datenbank oder Azure Cosmos DB**: zwischen 4 und 16, je nach der Senkenebene (DTUs/RUs) und dem Quelldateimuster<br>- **Kopieren in Azure Synapse Analytics** mithilfe von PolyBase oder der COPY-Anweisung: 2<br>– Anderes Szenario: 4 |
-| Aus Nicht-Dateispeicher in Dateispeicher |- **Kopieren aus einem Datenspeicher mit aktivierter Partitionsoption** (einschließlich [Azure SQL-Datenbank](connector-azure-sql-database.md#azure-sql-database-as-the-source), [Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source) und [Teradata](connector-teradata.md#teradata-as-source)): 2–256 beim Schreiben in einen Ordner und 2–4 beim Schreiben in eine einzelne Datei. Beachten Sie, dass pro Quelldatenpartition bis zu 4 DIUs verwendet werden können.<br>- **Andere Szenarien**: 2–4 |- **Kopieren aus REST oder HTTP**: 1<br/>- **Kopieren aus Amazon Redshift** mithilfe von UNLOAD: 2<br>- **Anderes Szenario**: 4 |
-| Zwischen Nicht-Dateispeichern |- **Kopieren aus einem Datenspeicher mit aktivierter Partitionsoption** (einschließlich [Azure SQL-Datenbank](connector-azure-sql-database.md#azure-sql-database-as-the-source), [Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source) und [Teradata](connector-teradata.md#teradata-as-source)): 2–256 beim Schreiben in einen Ordner und 2–4 beim Schreiben in eine einzelne Datei. Beachten Sie, dass pro Quelldatenpartition bis zu 4 DIUs verwendet werden können.<br/>- **Andere Szenarien**: 2–4 |- **Kopieren aus REST oder HTTP**: 1<br>- **Anderes Szenario**: 4 |
+| Aus Nicht-Dateispeicher in Dateispeicher |- **Kopieren aus einem Datenspeicher mit aktivierter Partitionsoption** (einschließlich [Azure Database for PostgreSQL](connector-azure-database-for-postgresql.md#azure-database-for-postgresql-as-source), [Azure SQL-Datenbank](connector-azure-sql-database.md#azure-sql-database-as-the-source), [Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source) und [Teradata](connector-teradata.md#teradata-as-source)): 2–256 beim Schreiben in einen Ordner und 2–4 beim Schreiben in eine einzelne Datei. Beachten Sie, dass pro Quelldatenpartition bis zu 4 DIUs verwendet werden können.<br>- **Andere Szenarien**: 2–4 |- **Kopieren aus REST oder HTTP**: 1<br/>- **Kopieren aus Amazon Redshift** mithilfe von UNLOAD: 2<br>- **Anderes Szenario**: 4 |
+| Zwischen Nicht-Dateispeichern |- **Kopieren aus einem Datenspeicher mit aktivierter Partitionsoption** (einschließlich [Azure Database for PostgreSQL](connector-azure-database-for-postgresql.md#azure-database-for-postgresql-as-source), [Azure SQL-Datenbank](connector-azure-sql-database.md#azure-sql-database-as-the-source), [Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source), [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source), [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [SQL Server](connector-sql-server.md#sql-server-as-a-source) und [Teradata](connector-teradata.md#teradata-as-source)): 2–256 beim Schreiben in einen Ordner und 2–4 beim Schreiben in eine einzelne Datei. Beachten Sie, dass pro Quelldatenpartition bis zu 4 DIUs verwendet werden können.<br/>- **Andere Szenarien**: 2–4 |- **Kopieren aus REST oder HTTP**: 1<br>- **Anderes Szenario**: 4 |
 
 Sie können die für die einzelnen Kopiervorgänge verwendeten DIUs in der Überwachungsansicht der Kopieraktivität oder der Aktivitätsausgabe anzeigen. Weitere Informationen finden Sie unter [Überwachung der Kopieraktivität](copy-activity-monitoring.md). Wenn Sie diese Standardeinstellung überschreiben möchten, geben Sie einen Wert für die Eigenschaft `dataIntegrationUnits` wie folgt an. Die *tatsächliche Anzahl von DIUs*, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster.
 
@@ -135,7 +135,7 @@ Beim Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeiche
 
 Bei aktivierter Stagingfunktion werden die Daten zunächst aus dem Quelldatenspeicher in den Stagingspeicher kopiert (von Ihnen bereitgestelltes Azure-Blob oder Azure Data Lake Storage Gen2). Danach werden sie aus dem Staging- in den Senkendatenspeicher kopiert. Die Kopieraktivität verwaltet den zweistufigen Ablauf automatisch und löscht außerdem nach Abschluss der Datenverschiebung temporäre Daten aus dem Stagingspeicher.
 
-![gestaffeltem Kopieren](media/copy-activity-performance/staged-copy.png)
+:::image type="content" source="media/copy-activity-performance/staged-copy.png" alt-text="Gestaffeltes Kopieren":::
 
 Wenn Sie die Datenverschiebung unter Verwendung eines Stagingspeichers aktivieren, können Sie angeben, ob die Daten vor dem Verschieben aus dem Quelldatenspeicher in den Stagingspeicher komprimiert und dann vor dem Verschieben aus einem Zwischen- oder Stagingdatenspeicher in den Senkendatenspeicher dekomprimiert werden sollen.
 
@@ -145,7 +145,7 @@ Derzeit können Sie keine Daten zwischen zwei Datenspeichern kopieren, die über
 
 Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging**, um anzugeben, ob die Daten vor dem Laden in einen Zielspeicher im Speicher bereitgestellt werden sollen. Wenn Sie **enableStaging** auf `TRUE` festlegen, müssen Sie zusätzliche Eigenschaften angeben. Diese sind in der folgenden Tabelle aufgeführt. 
 
-| Eigenschaft | BESCHREIBUNG | Standardwert | Erforderlich |
+| Eigenschaft | Beschreibung | Standardwert | Erforderlich |
 | --- | --- | --- | --- |
 | enableStaging |Geben Sie an, ob Sie Daten über einen Stagingzwischenspeicher kopieren möchten. |False |Nein |
 | linkedServiceName |Geben Sie den Namen eines verknüpften Diensts vom Typ [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) oder [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) an, der auf die Storage-Instanz verweist, die Sie als Stagingzwischenspeicher verwenden. |– |Ja, wenn **enableStaging** auf „TRUE“ festgelegt ist. |

@@ -1,7 +1,7 @@
 ---
-title: Aktivität „Filter“ in Azure Data Factory
+title: Filteraktivität
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Die Aktivität „Filter“ filtert die Eingaben.
+description: Die Aktivität Filter filtert die Eingaben in Azure Data Factory- und Synapse Analytics-Pipelines.
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 05/04/2018
-ms.openlocfilehash: 2ec871aeb6fb7146e66c3d3124ed8bba3400d4c8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: d5a78ca89841abc1d6f060a2f84b7db5ec3758e0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639957"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831634"
 ---
-# <a name="filter-activity-in-azure-data-factory"></a>Aktivität „Filter“ in Azure Data Factory
+# <a name="filter-activity-in-azure-data-factory-and-synapse-analytics-pipelines"></a>Filteraktivität in Azure Data Factory- und Synapse Analytics-Pipelines
 Sie können eine Filter-Aktivität in einer Pipeline verwenden, um einen Filterausdruck auf ein Eingabearray anzuwenden. 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -112,7 +112,7 @@ In diesem Beispiel enthält die Pipeline zwei Aktivitäten: **Filter** und **For
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
+Informationen zu weiteren unterstützten Ablaufsteuerungsaktivitäten: 
 
 - [Aktivität „If Condition“](control-flow-if-condition-activity.md)
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)

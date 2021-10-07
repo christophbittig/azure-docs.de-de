@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 04/20/2021
-ms.openlocfilehash: 59c1ca67c9e93b62890512cda647ffcdf7712f9a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 09/10/2021
+ms.openlocfilehash: 61189ba63c072f2c08acc55047d494b076288953
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107819266"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743254"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Freigeben und Empfangen von Daten aus Azure Blob Storage und Azure Data Lake Storage
 
@@ -143,6 +143,8 @@ Sie können eine Einladung über die E-Mail oder direkt aus dem Azure-Portal öf
 1. Wenn Sie die Einladung aus der E-Mail öffnen möchten, überprüfen Sie Ihren Posteingang auf eine Einladung von Ihrem Datenanbieter. Die Einladung stammt von Microsoft Azure und hat die Bezeichnung „Azure Data Share-Einladung von *\<yourdataprovider\@domain.com>* “. Wählen Sie **Einladung anzeigen** aus, um Ihre Einladung in Azure anzuzeigen. 
 
    Wenn Sie eine Einladung aus dem Azure-Portal öffnen möchten, suchen Sie dort nach *Einladungen zu Data Share*. Es wird eine Liste der Data Share-Einladungen angezeigt.
+
+   Wenn Sie ein/e Gastbenutzer*in von Mandanten sind, werden Sie aufgefordert, Ihre E-Mail-Adresse für die Mandanten zu überprüfen, bevor Sie die Data Share-Einladung zum ersten Mal anzeigen. Nach der Überprüfung ist sie 12 Monate lang gültig.
 
    ![Screenshot: Liste der Einladungen im Azure-Portal](./media/invitations.png "Liste mit Einladungen") 
 

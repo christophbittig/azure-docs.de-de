@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/03/2021
+ms.date: 09/10/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa2356cf45c1b1a04fac14bff2888d031ca5a423
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 5b7e00a892398ed8a644d3a65e2d9b9338fd2fbd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750985"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780678"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Einladen von internen Benutzern zur B2B-Zusammenarbeit
 
@@ -36,8 +36,7 @@ Das Senden einer Einladung an ein vorhandenes internes Konto ermöglicht es Ihne
 - **Lokal synchronisierte Benutzer**: Für Benutzerkonten, die zwischen dem lokalen Standort und der Cloud synchronisiert werden, bleibt das lokale Verzeichnis die Autoritätsquelle, nachdem die Einladung zur B2B-Zusammenarbeit erfolgt ist. Alle Änderungen, die Sie am lokalen Konto vornehmen, werden mit dem Cloudkonto synchronisiert, z. B. das Deaktivieren oder Löschen des Kontos. Aus diesem Grund können Sie durch das einfache Löschen des lokalen Kontos nicht verhindern, dass sich der Benutzer bei seinem lokalen Konto anmeldet, während das Cloudkonto beibehalten wird. Sie können aber das Kennwort für das lokale Konto auf eine zufällige GUID oder einen anderen unbekannten Wert festlegen.
 
 > [!NOTE]
-> Wenn Sie Azure AD Connect Cloud Sync verwenden, gibt es standardmäßig eine Regel, die „OnPremUserPrincipalName“ in den Benutzer schreibt. Diese Regel muss so geändert werden, dass sie diese Eigenschaft nicht für Benutzer schreibt, die Sie von internen in externe Benutzer konvertieren möchten.
-
+Bei der Azure AD Connect-Synchronisierung gibt es eine Standardregel, die das [onPremisesUserPrincipalName-Attribut](../hybrid/reference-connect-sync-attributes-synchronized.md#notes) in das Benutzerobjekt schreibt. Da das Vorhandensein dieses Attributs verhindern kann, dass sich Benutzer*innen mit externen Anmeldeinformationen anmelden, werden Intern-zu-Extern-Konvertierungen für Benutzerobjekte mit diesem Attribut blockiert. Wenn Sie Azure AD Connect verwenden und in der Lage sein möchten, interne Benutzer*innen zu einer B2B-Zusammenarbeit einzuladen, müssen Sie die [Standardregel so ändern](../hybrid/how-to-connect-sync-change-the-configuration.md), dass das Attribut „onPremisesUserPrincipalName“ nicht in das Benutzerobjekt geschrieben wird.
 ## <a name="how-to-invite-internal-users-to-b2b-collaboration"></a>Gewusst wie: Einladen von internen Benutzern zur B2B-Zusammenarbeit
 
 Sie können PowerShell oder die Einladungs-API nutzen, um eine B2B-Einladung an einen internen Benutzer zu senden. Stellen Sie sicher, dass die E-Mail-Adresse, die Sie für die Einladung verwenden möchten, für das interne Benutzerobjekt als externe E-Mail-Adresse festgelegt ist.

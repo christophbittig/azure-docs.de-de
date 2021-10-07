@@ -14,32 +14,32 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/16/2020
+ms.date: 08/23/2021
 ms.author: yelevin
-ms.openlocfilehash: 105f3e55999d433f4d9a160ef93d789b23200dfe
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 0c782c7cb301a88e54213f18d702ed1f81baabf2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251931"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563094"
 ---
 # <a name="what-is-azure-sentinel"></a>Was ist Azure Sentinel?
 
-Microsoft Azure Sentinel ist eine skalierbare, cloudnative Lösung für **Security Information & Event Management (SIEM)** und die **Sicherheitsorchestrierung mit automatisierter Reaktion (Security Orchestration Automated Response, SOAR)** . Azure Sentinel bietet intelligente Sicherheits- und Bedrohungsanalysen für das ganze Unternehmen und stellt eine zentrale Lösung für die Warnungs- und Bedrohungserkennung, die proaktive Suche sowie die Reaktion auf Bedrohungen bereit. 
+Microsoft Azure Sentinel ist eine skalierbare, cloudnative Lösung für **Security Information & Event Management (SIEM)** und die **Sicherheitsorchestrierung mit automatisierter Reaktion (Security Orchestration Automated Response, SOAR)** . Azure Sentinel bietet intelligente Sicherheits- und Bedrohungsanalysen für das ganze Unternehmen und stellt eine zentrale Lösung für die Warnungs- und Bedrohungserkennung, die proaktive Suche sowie die Reaktion auf Bedrohungen bereit.
 
 Mit Azure Sentinel können Sie Ihr gesamtes Unternehmen sozusagen aus der Vogelperspektive beobachten und die immer komplexeren Angriffe mit Unmengen von Warnungen und lang andauernden Lösungsversuchen leichter in den Griff bekommen.
 
-- **Sammeln Sie Daten auf Cloudebene** über alle Benutzer, Geräte, Anwendungen und Infrastrukturen hinweg, lokal und in mehreren Clouds. 
+- **Sammeln Sie Daten auf Cloudebene** über alle Benutzer, Geräte, Anwendungen und Infrastrukturen hinweg, lokal und in mehreren Clouds.
 
-- **Ermitteln Sie bisher unentdeckte Bedrohungen**, und [minimieren Sie falsch positive Ergebnisse](false-positives.md) mithilfe der Analysefunktionen und unvergleichlichen Informationen zu Bedrohungen von Microsoft. 
+- **Ermitteln Sie bisher unentdeckte Bedrohungen**, und [minimieren Sie falsch positive Ergebnisse](false-positives.md) mithilfe der Analysefunktionen und unvergleichlichen Informationen zu Bedrohungen von Microsoft.
 
-- **Untersuchen Sie Bedrohungen mit künstlicher Intelligenz (KI)** , und verfolgen Sie verdächtige Aktivitäten in großem Stil. Dabei profitieren Sie von der jahrelangen Erfahrung von Microsoft in Sachen Cybersicherheit. 
+- **Untersuchen Sie Bedrohungen mit künstlicher Intelligenz (KI)** , und verfolgen Sie verdächtige Aktivitäten in großem Stil. Dabei profitieren Sie von der jahrelangen Erfahrung von Microsoft in Sachen Cybersicherheit.
 
 - **Reagieren** Sie dank der integrierten Orchestrierung und Automatisierung häufiger Aufgaben schnell auf Incidents.
 
 ![Kernfunktionen von Azure Sentinel](./media/overview/core-capabilities.png)
 
-Azure Sentinel beruht auf dem gesamten Spektrum bestehender Azure-Dienste und umfasst bewährte Konzepte wie Log Analytics und Logic Apps. Azure Sentinel erweitert die Untersuchung und Erkennung durch KI, bietet den Bedrohungsanalysestream von Microsoft und ermöglicht Ihnen die Verwendung eigener Bedrohungsanalysen. 
+Azure Sentinel beruht auf dem gesamten Spektrum bestehender Azure-Dienste und umfasst bewährte Konzepte wie Log Analytics und Logic Apps. Azure Sentinel erweitert die Untersuchung und Erkennung durch KI, bietet den Bedrohungsanalysestream von Microsoft und ermöglicht Ihnen die Verwendung eigener Bedrohungsanalysen.
 
 ## <a name="connect-to-all-your-data"></a>Herstellen einer Verbindung mit all Ihren Daten
 
@@ -55,9 +55,15 @@ Weitere Informationen finden Sie im Abschnitt zur [Ermittlung Ihres Datenconnect
 
 ## <a name="workbooks"></a>Arbeitsmappen
 
-Nachdem Sie Ihre [Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.md) haben, können Sie die Daten mithilfe der Azure Sentinel-Integration, die für Vielseitigkeit bei der Erstellung benutzerdefinierter Arbeitsmappen sorgt, in Azure Monitor-Arbeitsmappen überwachen. Arbeitsmappen werden in Azure Sentinel zwar anders angezeigt werden, dennoch kann für Sie hilfreich sein, zu sehen, wie [interaktive Berichte mit Azure Monitor Arbeitsmappen erstellt werden](../azure-monitor/visualize/workbooks-overview.md). Azure Sentinel ermöglicht das Erstellen von benutzerdefinierten Arbeitsmappen für Ihre Daten und enthält auch integrierte Arbeitsmappenvorlagen, mit denen Sie schnell Erkenntnisse zu den Daten erhalten, sobald Sie eine Verbindung mit einer Datenquelle herstellen.
+Nachdem Sie Ihre [Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.md) haben, können Sie die Daten mithilfe der Azure Sentinel-Integration, die für Vielseitigkeit bei der Erstellung benutzerdefinierter Arbeitsmappen sorgt, in Azure Monitor-Arbeitsmappen überwachen.
+
+Arbeitsmappen werden in Azure Sentinel zwar anders angezeigt werden, dennoch kann für Sie hilfreich sein, zu sehen, wie [interaktive Berichte mit Azure Monitor Arbeitsmappen erstellt werden](../azure-monitor/visualize/workbooks-overview.md). Azure Sentinel ermöglicht das Erstellen von benutzerdefinierten Arbeitsmappen für Ihre Daten und enthält auch integrierte Arbeitsmappenvorlagen, mit denen Sie schnell Erkenntnisse zu den Daten erhalten, sobald Sie eine Verbindung mit einer Datenquelle herstellen.
 
 ![Dashboards](./media/tutorial-monitor-data/access-workbooks.png)
+
+- Arbeitsmappen sind für SOC-Techniker und Analysten aller Ebenen bestimmt, damit diese Daten visualisieren können.
+
+- Arbeitsmappen eignen sich am besten für die allgemeine Anzeige von Azure Sentinel-Daten und erfordern keine Programmierkenntnisse, aber Sie können Arbeitsmappen nicht mit externen Daten integrieren.
 
 ## <a name="analytics"></a>Analytics
 
@@ -68,11 +74,17 @@ Um Fehlinformationen zu reduzieren und die Anzahl von Warnungen zu minimieren, d
 
 ## <a name="security-automation--orchestration"></a>Automatisierung und Orchestrierung der Sicherheit
 
-Automatisieren Sie häufige Aufgaben, und [vereinfachen Sie die Sicherheitsorchestrierung mit Playbooks](tutorial-respond-threats-playbook.md), die sowohl in Azure-Dienste als auch Ihre vorhandenen Tools integriert werden können. Die Automatisierungs- und Orchestrierungslösung von Azure Sentinel beruht auf Azure Logic Apps. Sie bietet daher eine hochgradig erweiterbare Architektur, die eine skalierbare Automatisierung zur Berücksichtigung neuer Technologien und Bedrohungen ermöglicht. Zum Erstellen von Playbooks mit Azure Logic Apps steht Ihnen ein ständig wachsender Katalog von integrierten Playbooks zur Verfügung. Der Katalog umfasst [mehr als 200 Connectors](../connectors/apis-list.md) für Dienste wie Azure Functions. Mit den Connectors können Sie beliebige benutzerdefinierte Logik im Code, in ServiceNow, Jira, Zendesk, HTTP-Anforderungen, Microsoft Teams, Slack, Windows Defender ATP und Cloud App Security anwenden.
+Automatisieren Sie häufige Aufgaben, und [vereinfachen Sie die Sicherheitsorchestrierung mit Playbooks](tutorial-respond-threats-playbook.md), die in Azure-Dienste und Ihre vorhandenen Tools integriert werden können.
+
+Die Automatisierungs- und Orchestrierungslösung von Azure Sentinel beruht auf Azure Logic Apps. Sie verfügt daher über eine hochgradig erweiterbare Architektur, die eine skalierbare Automatisierung zur Berücksichtigung neuer Technologien und Bedrohungen ermöglicht. Zum Erstellen von Playbooks mit Azure Logic Apps steht Ihnen ein ständig wachsender Katalog von integrierten Playbooks zur Verfügung. Der Katalog umfasst [mehr als 200 Connectors](../connectors/apis-list.md) für Dienste wie Azure Functions. Mit den Connectors können Sie beliebige benutzerdefinierte Logik im Code, in ServiceNow, Jira, Zendesk, HTTP-Anforderungen, Microsoft Teams, Slack, Windows Defender ATP und Cloud App Security anwenden.
 
 Wenn Sie beispielsweise das ServiceNow-Ticketsystem verwenden, können Sie Ihre Workflows mit den zur Verwendung von Azure Logic Apps verfügbaren Tools automatisieren und bei jeder Erkennung eines bestimmten Ereignisses ein Ticket in ServiceNow öffnen.
 
 ![Playbooks](./media/tutorial-respond-threats-playbook/logic-app.png)
+
+- Playbooks sind für SOC-Techniker und Analysten aller Ebenen bestimmt, damit diese Aufgaben wie Datenerfassung, Anreicherung, Untersuchung und Korrektur automatisieren und vereinfachen können.
+
+- Playbooks funktionieren am besten für einzelne, wiederholbare Aufgaben und erfordern keine Programmierkenntnisse. Für Ad-hoc-Aufgaben oder komplexe Aufgabenfolgen oder zum Dokumentieren und Freigeben von Beweisen sind Playbooks nicht geeignet.
 
 
 ## <a name="investigation"></a>Untersuchung
@@ -88,9 +100,26 @@ Verwenden Sie die auf dem MITRE-Framework basierenden [leistungsstarken Such- un
 
 ![Übersicht über das Hunting-Feature](./media/overview/hunting.png)
 
+## <a name="notebooks"></a>Notebooks
+
+Azure Sentinel unterstützt Jupyter Notebooks in Azure Machine Learning-Arbeitsbereichen, z. B. umfassende Bibliotheken für maschinelles Lernen, Visualisierung und Datenanalyse.
+
+[Verwenden Sie Notebooks in Azure Sentinel](notebooks.md), um die Möglichkeiten zu erweitern, die Ihnen für Azure Sentinel-Daten zur Verfügung stehen. Sie haben beispielsweise die folgenden Optionen: Durchführen von Analysen, die nicht in Azure Sentinel integriert sind, z. B. einige Machine Learning-Features für Python, Erstellen von Datenvisualisierungen, die nicht in Azure Sentinel integriert sind, z. B. benutzerdefinierte Zeitachsen und Prozessstrukturen, oder Integrieren von Azure Sentinel-externen Datenquellen, z. B. ein lokales Dataset.
+
+:::image type="content" source="media/notebooks/sentinel-notebooks-on-machine-learning.png" alt-text="Screenshot: Sentinel-Notebook in einem AML-Arbeitsbereich":::
+
+- Azure Sentinel-Notebooks sind für Personen bestimmt, die nach Bedrohungen suchen bzw. Analysen auf Ebene 2 und 3 durchführen, Incidents untersuchen, Data Science betreiben oder im Bereich der Sicherheit forschen.
+
+- Notebooks verfügen über Abfragen für Azure Sentinel- und externe Daten sowie über Features für Datenanreicherung, Untersuchung, Visualisierung, Hunting, maschinelles Lernen und Big Data-Analysen.
+
+- Am besten eignen sich Notebooks für komplexere wiederholbare Aufgabenfolgen, Ad-hoc-Prozedursteuerungen, maschinelles Lernen und benutzerdefinierte Analysen. Darüber hinaus werden umfangreiche Python-Bibliotheken für die Bearbeitung und Visualisierung von Daten unterstützt, und Notebooks sind hilfreich beim Dokumentieren und Freigeben von Beweisen, die per Analyse ermittelt wurden.
+
+- Notebooks erfordern eine steilere Lernkurve und mehr Programmierkenntnisse und verfügen über eine eingeschränkte Automatisierungsunterstützung.
+
+
 ## <a name="community"></a>Community
 
-Die Azure Sentinel-Community ist eine hervorragende Ressource für die Bedrohungserkennung und Automatisierung. Die Sicherheitsanalysten von Microsoft erstellen laufend neue Arbeitsmappen, Playbooks, Suchabfragen usw., die in der Community veröffentlicht werden und Ihnen zur Verwendung in Ihrer Umgebung zur Verfügung stehen. Sie können Beispielinhalte aus dem privaten GitHub-[Repository](https://aka.ms/asicommunity) der Community herunterladen, um benutzerdefinierte Arbeitsmappen, Suchabfragen, Notebooks und Playbooks für Azure Sentinel zu erstellen. 
+Die Azure Sentinel-Community ist eine hervorragende Ressource für die Bedrohungserkennung und Automatisierung. Die Sicherheitsanalysten von Microsoft erstellen laufend neue Arbeitsmappen, Playbooks, Suchabfragen usw., die in der Community veröffentlicht werden und Ihnen zur Verwendung in Ihrer Umgebung zur Verfügung stehen. Sie können Beispielinhalte aus dem privaten GitHub-[Repository](https://aka.ms/asicommunity) der Community herunterladen, um benutzerdefinierte Arbeitsmappen, Suchabfragen, Notebooks und Playbooks für Azure Sentinel zu erstellen.
 
 ![Kennenlernen der Benutzer-Community](./media/overview/community.png)
 

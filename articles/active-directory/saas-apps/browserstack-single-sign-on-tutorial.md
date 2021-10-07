@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/07/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 4f86124a687d668359b5f51433ddb91d93cd4370
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 4c6f2e6abec3baa674123adacc0b522c1e0a01f7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965661"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619206"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-browserstack-single-sign-on"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit BrowserStack Single Sign-On
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * BrowserStack Single Sign-On (SSO) unterstützt per **SP und IdP** initiiertes einmaliges Anmelden
+* BrowserStack Single Sign-On unterstützt die [automatisierte Benutzerbereitstellung](browserstack-single-sign-on-provisioning-tutorial.md).
 
 ## <a name="add-browserstack-single-sign-on-from-the-gallery"></a>Hinzufügen von BrowserStack Single Sign-On aus dem Katalog
 
@@ -128,6 +129,8 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **BrowserStack Single S
 
 In diesem Abschnitt erstellen Sie in BrowserStack Single Sign-On einen Benutzer mit dem Namen „B. Simon“. Wenden Sie sich an das[Supportteam von BrowserStack Single Sign-On](mailto:support@browserstack.com), um die Benutzer der BrowserStack Single Sign-On-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
+Außerdem unterstützt BrowserStack Single Sign-On die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./browserstack-single-sign-on-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -142,7 +145,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der BrowserStack Single Sign-on-Instanz angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „BrowserStack Single Sign-on“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IdP-Modus konfiguriert haben, sollten Sie automatisch bei der Instanz von BrowserStack Single Sign-on angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „BrowserStack Single Sign-on“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IdP-Modus konfiguriert haben, sollten Sie automatisch bei der Instanz von BrowserStack Single Sign-on angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

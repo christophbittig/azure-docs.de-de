@@ -1,39 +1,39 @@
 ---
-title: Fehlertoleranz der Kopieraktivität in Azure Data Factory
+title: Fehlertoleranz bei Kopiervorgängen
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Hier erfahren Sie, wie Sie der Kopieraktivität in Azure Data Factory Fehlertoleranz hinzufügen, indem die inkompatiblen Daten übersprungen werden.
+description: Erfahren Sie, wie Sie die Fehlertoleranz für Kopieraktivitäten in Azure Data Factory und Synapse Analytics-Pipelines erhöhen können, indem Sie inkompatible Daten überspringen.
 author: dearandyxu
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 09/09/2021
 ms.author: yexu
-ms.openlocfilehash: 544d298616c8021991fedb1ee47d452cfbc427f3
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: c6b5a08cc4f0cc90f8ae827f4f8c2c7469e92b44
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255047"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767563"
 ---
-#  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fehlertoleranz der Kopieraktivität in Azure Data Factory
+#  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory-and-synapse-analytics-pipelines"></a>Fehlertoleranz bei Kopiervorgängen in Azure Data Factory und Synapse Analytics-Pipelines
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [Aktuelle Version](copy-activity-fault-tolerance.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Wenn Sie Daten aus dem Quell- in den Zielspeicher kopieren, bietet die Azure Data Factory-Kopieraktivität eine bestimmte Ebene von Fehlertoleranzen, um eine Unterbrechung aufgrund Fehlern während der Datenverschiebung zu verhindern. Sie kopieren beispielsweise Millionen von Zeilen aus dem Quell- in den Zielspeicher. In der Zieldatenbank wurde ein Primärschlüssel (Primary Key, PK) erstellt, für die Quelldatenbank aber wurden keine Primärschlüssel definiert. Wenn Sie doppelte Zeilen aus der Quelle in das Ziel kopieren, wird diese PK-Verletzung in der Zieldatenbank angezeigt. Dann bietet Ihnen die Kopieraktivität zwei Möglichkeiten zur Behandlung solcher Fehler: 
+Wenn Sie Daten von der Quelle in den Zielspeicher kopieren, bietet der Kopiervorgang ein gewisses Maß an Fehlertoleranz, um Unterbrechungen aufgrund von Fehlern in der Mitte der Datenverschiebung zu verhindern. Sie kopieren beispielsweise Millionen von Zeilen aus dem Quell- in den Zielspeicher. In der Zieldatenbank wurde ein Primärschlüssel (Primary Key, PK) erstellt, für die Quelldatenbank aber wurden keine Primärschlüssel definiert. Wenn Sie doppelte Zeilen aus der Quelle in das Ziel kopieren, wird diese PK-Verletzung in der Zieldatenbank angezeigt. Dann bietet Ihnen die Kopieraktivität zwei Möglichkeiten zur Behandlung solcher Fehler: 
 - Sie können die Kopieraktivität abbrechen, sobald ein Fehler aufgetreten ist. 
 - Sie können den Rest weiter kopieren, indem Sie die Fehlertoleranz aktivieren, um die inkompatiblen Daten zu überspringen. Überspringen Sie in diesem Fall beispielsweise die doppelte Zeile. Außerdem können Sie die übersprungenen Daten protokollieren, indem Sie das Sitzungsprotokoll innerhalb der Kopieraktivität aktivieren. Ausführlichere Informationen finden Sie im [Sitzungsprotokoll in der Copy-Aktivität](copy-activity-log.md).
 
 ## <a name="copying-binary-files"></a>Kopieren von Binärdateien 
 
-ADF unterstützt die folgenden Fehlertoleranzszenarien beim Kopieren von Binärdateien. Sie können die Kopieraktivität wahlweise abbrechen oder den Rest in den folgenden Szenarien weiterhin kopieren:
+Der Dienst unterstützt die folgenden Fehlertoleranzszenarien beim Kopieren von Binärdateien. Sie können die Kopieraktivität wahlweise abbrechen oder den Rest in den folgenden Szenarien weiterhin kopieren:
 
-1. Gleichzeitig werden die Dateien, die von ADF kopiert werden sollen, von anderen Anwendungen gelöscht.
-2. Einige bestimmte Ordner oder Dateien erlauben ADF nicht den Zugriff, weil ACLs dieser Dateien oder Ordner eine höhere Berechtigungsstufe als die in ADF konfigurierten Verbindungsinformationen erfordern.
-3. Mindestens eine Datei wird nicht überprüft, ob sie zwischen Quell- und Zielspeicher konsistent ist, wenn Sie die Einstellung für Datenkonsistenzprüfung in ADF aktivieren.
+1. Die Dateien, die vom Dienst kopiert werden sollen, werden gleichzeitig von anderen Anwendungen gelöscht.
+2. Auf einige bestimmte Ordner oder Dateien kann der Dienst nicht zugreifen, weil die ACLs dieser Dateien oder Ordner eine höhere Berechtigungsstufe erfordern als die konfigurierten Verbindungsinformationen.
+3. Eine oder mehrere Dateien werden nicht auf ihre Konsistenz zwischen Quell- und Zielspeicher überprüft, wenn Sie die Einstellung zur Überprüfung der Datenkonsistenz aktivieren.
 
 ### <a name="configuration"></a>Konfiguration 
 Wenn Sie Binärdateien zwischen Storage-Speichern kopieren, können Sie die Fehlertoleranz so aktivieren: 
@@ -79,8 +79,8 @@ Wenn Sie Binärdateien zwischen Storage-Speichern kopieren, können Sie die Fehl
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | -------- 
 skipErrorFile | Eine Gruppe von Eigenschaften zur Angabe der Fehlertypen, die während der Datenverschiebung übersprungen werden sollen. | | Nein
-fileMissing | Eines der Schlüssel-Wert-Paare in der „skipErrorFile“-Eigenschaftensammlung zur Bestimmung, ob Sie von anderen Anwendungen gelöschte Dateien überspringen möchten, wenn ADF in der Zwischenzeit kopiert. <br/> – True: Sie möchten den Rest kopieren, indem Sie die von anderen Anwendungen gelöschten Dateien überspringen. <br/> – False: Die Kopieraktivität soll abgebrochen werden, sobald alle Dateien während der Datenverschiebung aus dem Quellspeicher gelöscht werden. <br/>Beachten Sie, dass diese Eigenschaft auf „true“ als Standardwert festgelegt wird. | True (Standard) <br/>False | Nein
-fileForbidden | Eines der Schlüssel-Wert-Paare in der „skipErrorFile“-Eigenschaftensammlung zur Bestimmung, ob Sie die jeweiligen Dateien überspringen möchten, wenn die ACLs dieser Dateien oder Ordner eine höhere Berechtigungsstufe als die in ADF konfigurierte Verbindung erfordern. <br/> – True: Sie möchten den Rest kopieren, indem Sie die Dateien überspringen. <br/> – False: Sie möchten die Kopieraktivität abbrechen, nachdem Ihnen das Berechtigungsproblem bei Ordnern oder Dateien mitgeteilt wurde. | True <br/>False (Standard) | Nein
+fileMissing | Eines der Schlüssel-Wert-Paare in der skipErrorFile-Eigenschaftstasche legt fest, ob Dateien übersprungen werden sollen, die zum Zeitpunkt der Ausführung des Kopiervorgangs durch den Dienst gerade von anderen Anwendungen gelöscht werden. <br/> – True: Sie möchten den Rest kopieren, indem Sie die von anderen Anwendungen gelöschten Dateien überspringen. <br/> – False: Die Kopieraktivität soll abgebrochen werden, sobald alle Dateien während der Datenverschiebung aus dem Quellspeicher gelöscht werden. <br/>Beachten Sie, dass diese Eigenschaft auf „true“ als Standardwert festgelegt wird. | True (Standard) <br/>False | Nein
+fileForbidden | Eines der Schlüssel-Wert-Paare in der Eigenschaft skipErrorFile legt fest, ob bestimmte Dateien übersprungen werden sollen, wenn die ACLs dieser Dateien oder Ordner eine höhere Berechtigungsstufe erfordern als die konfigurierte Verbindung. <br/> – True: Sie möchten den Rest kopieren, indem Sie die Dateien überspringen. <br/> – False: Sie möchten die Kopieraktivität abbrechen, nachdem Ihnen das Berechtigungsproblem bei Ordnern oder Dateien mitgeteilt wurde. | True <br/>False (Standard) | Nein
 dataInconsistency | Eines der Schlüssel-Wert-Paare in der „skipErrorFile“-Eigenschaftensammlung zur Bestimmung, ob Sie die inkonsistenten Daten zwischen Quell- und Zielspeicher überspringen möchten. <br/> – True: Sie möchten den Rest kopieren, indem Sie inkonsistente Daten überspringen. <br/> – False: Sie möchten die Kopieraktivität abbrechen, sobald inkonsistente Daten gefunden wurden. <br/>Beachten Sie, dass diese Eigenschaft nur gültig ist, wenn Sie „validateDataConsistency“ als „True“ festlegen. | True <br/>False (Standard) | Nein
 invalidFileName | Eines der Schlüssel-Wert-Paare in der skipErrorFile-Eigenschaftensammlung zur Bestimmung, ob Sie bestimmte Dateien überspringen möchten, wenn die Dateinamen im Zielspeicher ungültig sind. <br/> \- TRUE: Sie möchten den Rest kopieren, indem Sie die Dateien mit ungültigen Dateinamen überspringen. <br/> - FALSE: Sie möchten die Kopieraktivität abbrechen, wenn Dateien ungültige Dateinamen aufweisen. <br/>Beachten Sie, dass diese Eigenschaft nur funktioniert, wenn Sie Binärdateien aus einem Speicher in ADLS Gen2 oder aus AWS S3 in einen beliebigen Speicher kopieren. | True <br/>False (Standard) | Nein
 logSettings  | Eine Gruppe von Eigenschaften, die angegeben werden können, wenn Sie die Namen der übersprungenen Objekte protokollieren möchten. | &nbsp; | Nein
@@ -133,9 +133,9 @@ Die Protokolldateien müssen die CSV-Dateien sein. Das Schema der Protokolldatei
 
 Column | BESCHREIBUNG 
 -------- | -----------  
-Timestamp | Der Zeitstempel, der angibt, wann ADF die Datei überspringt.
+Timestamp | Zeitstempel, zu dem die Datei übersprungen wurde.
 Ebene | Die Protokollstufe dieses Elements. Sie lautet bei dem Element, mit dem das Überspringen der Datei angezeigt wird, „Warning“ (Warnung).
-Vorgangsname | Das Vorgangsverhalten der ADF-Kopieraktivität für jede Datei. Es lautet „FileSkip“ zur Angabe der Datei, die übersprungen werden soll.
+Vorgangsname | Verhalten der Copy-Aktivität bei jeder Datei. Es lautet „FileSkip“ zur Angabe der Datei, die übersprungen werden soll.
 OperationItem | Die Namen der zu überspringenden Dateien.
 `Message` | Weitere Informationen zu den Ursachen für das Überspringen der Datei.
 
@@ -145,7 +145,7 @@ Timestamp,Level,OperationName,OperationItem,Message
 2020-03-24 05:35:41.0209942,Warning,FileSkip,"bigfile.csv","File is skipped after read 322961408 bytes: ErrorCode=UserErrorSourceBlobNotExist,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=The required Blob is missing. ContainerName: https://transferserviceonebox.blob.core.windows.net/skipfaultyfile, path: bigfile.csv.,Source=Microsoft.DataTransfer.ClientLibrary,'." 
 2020-03-24 05:38:41.2595989,Warning,FileSkip,"3_nopermission.txt","File is skipped after read 0 bytes: ErrorCode=AdlsGen2OperationFailed,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=ADLS Gen2 operation failed for: Operation returned an invalid status code 'Forbidden'. Account: 'adlsgen2perfsource'. FileSystem: 'skipfaultyfilesforbidden'. Path: '3_nopermission.txt'. ErrorCode: 'AuthorizationPermissionMismatch'. Message: 'This request is not authorized to perform this operation using this permission.'. RequestId: '35089f5d-101f-008c-489e-01cce4000000'..,Source=Microsoft.DataTransfer.ClientLibrary,''Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Operation returned an invalid status code 'Forbidden',Source=,''Type=Microsoft.Azure.Storage.Data.Models.ErrorSchemaException,Message='Type=Microsoft.Azure.Storage.Data.Models.ErrorSchemaException,Message=Operation returned an invalid status code 'Forbidden',Source=Microsoft.DataTransfer.ClientLibrary,',Source=Microsoft.DataTransfer.ClientLibrary,'." 
 ```
-Im vorstehenden Protokoll können Sie sehen, dass „bigfile.csv“ übersprungen wurde, weil eine andere Anwendung diese Datei gelöscht hat, als sie von ADF kopiert wurde. Und „3_nopermission.txt“ wurde übersprungen, weil ADF aufgrund eines Berechtigungsproblems nicht darauf zugreifen darf.
+Aus dem obigen Protokoll können Sie ersehen, dass bigfile.csv übersprungen wurde, weil eine andere Anwendung diese Datei gelöscht hat, als der Dienst sie kopierte. Und 3_nopermission.txt wurde übersprungen, weil der Dienst aufgrund eines Berechtigungsproblems nicht auf sie zugreifen darf.
 
 
 ## <a name="copying-tabular-data"></a>Kopieren von Tabellendaten 
@@ -229,9 +229,9 @@ Die Protokolldateien sind die CSV-Dateien. Das Schema der Protokolldatei lautet 
 
 Column | BESCHREIBUNG 
 -------- | -----------  
-Timestamp | Der Zeitstempel, der angibt, wann ADF die inkompatiblen Zeilen überspringt.
+Timestamp | Der Zeitstempel, zu dem die inkompatiblen Zeilen übersprungen wurden
 Ebene | Die Protokollstufe dieses Elements. Sie lautet „Warning“ (Warnung), wenn dieses Element die übersprungenen Zeilen anzeigt.
-Vorgangsname | Das Vorgangsverhalten der ADF-Kopieraktivität für jede Zeile. Es lautet „TabularRowSkip“, um anzugeben, dass die betreffende inkompatible Zeile übersprungen wurde.
+Vorgangsname | Copy-Aktivität Betriebsverhalten in jeder Zeile. Es lautet „TabularRowSkip“, um anzugeben, dass die betreffende inkompatible Zeile übersprungen wurde.
 OperationItem | Die übersprungenen Zeilen aus dem Quelldatenspeicher.
 `Message` | Weitere Informationen zu den Ursachen für die Inkompatibilität dieser bestimmten Zeile.
 

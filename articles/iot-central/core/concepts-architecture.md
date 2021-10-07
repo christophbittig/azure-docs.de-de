@@ -7,77 +7,102 @@ ms.date: 08/31/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 37e4224ae1347647d15959a55d19d2c6487935d7
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 724c7e65d04b635dcaa635d29483da756cf47bfc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273211"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675864"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central-Architektur
 
-Dieser Artikel bietet eine Übersicht über die wichtigsten Konzepte in der Azure IoT Central-Architektur.
+Dieser Artikel bietet eine Übersicht über die wichtigsten Elemente in einer IoT Central-Lösungsarchitektur.
+
+:::image type="content" source="media/concepts-architecture/architecture.png" alt-text="Allgemeine Architektur einer IoT Central-Lösung" border="false":::
+
+Eine IoT Central-Anwendung:
+
+- Ermöglicht Ihnen die Verwaltung der IoT-Geräte in Ihrer Lösung
+- Ermöglicht Ihnen das Anzeigen und Analysieren der Daten von Ihren Geräten
+- Kann in andere Dienste, die Teil der Lösung sind, exportiert und mit diesen integriert werden
+
+## <a name="iot-central"></a>IoT Central
+
+IoT Central ist eine vorgefertigte Umgebung für die IoT-Lösungsentwicklung. Es handelt sich um eine PaaS-IoT-Lösung (Platform as a Service), und die primäre Schnittstelle ist eine Web-UI. Es gibt auch eine [REST-API](#rest-api), mit der Sie programmgesteuert mit Ihrer Anwendung interagieren können.
+
+In diesem Abschnitt werden die wichtigsten Funktionen einer IoT Central-Anwendung beschrieben.
+
+### <a name="manage-devices"></a>Verwalten von Geräten
+
+Mit IoT Central können Sie den Bestand an [IoT-Geräten](#devices) verwalten, die Daten an Ihre Lösung senden. Beispielsweise können Sie folgende Aktionen ausführen:
+
+- Steuern Sie, welche Geräte eine [Verbindung](concepts-get-connected.md) mit Ihrer Anwendung herstellen können und wie sie sich authentifizieren.
+- Verwenden Sie [Gerätevorlagen](concepts-device-templates.md), um die Gerätetypen zu definieren, die eine Verbindung mit Ihrer Anwendung herstellen können.
+- Verwalten Sie Geräte, indem Sie Eigenschaften festlegen oder Befehle auf verbundenen Geräten aufrufen. Legen Sie beispielsweise eine Zieltemperatureigenschaft für ein Thermostat fest, oder rufen Sie einen Befehl auf, um für ein Gerät ein Update seiner Firmware auszulösen. Sie können folgendermaßen Eigenschaften festlegen und Befehle aufrufen:
+  - Für einzelne Geräte über eine [anpassbare](concepts-device-templates.md#views) Webbenutzeroberfläche
+  - Für mehrere Geräte mit geplanten oder bedarfsorientierten [Aufträgen](howto-manage-devices-in-bulk.md)
+- Verwalten Sie [Gerätemetadaten](concepts-device-templates.md#cloud-properties) wie Kundenadresse oder Datum des letzten Diensts.
+
+### <a name="view-and-analyze-data"></a>Anzeigen und Analysieren von Daten
+
+In einer IoT Central-Anwendung können Sie Daten für einzelne Geräte oder aggregierte Daten von mehreren Geräten anzeigen und analysieren:
+
+- Verwenden Sie Gerätevorlagen, um [benutzerdefinierte Ansichten](howto-set-up-template.md#views) für einzelne Geräte bestimmter Typen zu definieren. Sie können z. B. die Temperatur im Zeitverlauf für ein einzelnes Thermostat zeichnen oder den Livestandort eines Lieferlastwagens anzeigen.
+- Verwenden Sie die integrierte [Analyse](tutorial-use-device-groups.md), um aggregierte Daten für mehrere Geräte anzuzeigen. Sie können z. B. die Gesamtauslastung in mehreren Einzelhandelsläden anzeigen oder die Filialen mit den höchsten oder niedrigsten Auslastungsraten identifizieren.
+- Erstellen Sie benutzerdefinierte [Dashboards](howto-manage-dashboards.md), um Ihre Geräte zu verwalten. Sie können z. B. Karten, Kacheln und Diagramme hinzufügen, um Gerätetelemetriedaten anzuzeigen.  
+
+### <a name="secure-your-solution"></a>Sichern Ihrer Lösung
+
+In einer IoT Central-Anwendung können Sie die folgenden Sicherheitsaspekte Ihrer Lösung verwalten:
+
+- [Gerätekonnektivität](concepts-get-connected.md): Erstellen, Widerrufen und Aktualisieren der Sicherheitsschlüssel, mit denen Ihre Geräte eine Verbindung mit Ihrer Anwendung herstellen.
+- [App-Integrationen](howto-authorize-rest-api.md#get-an-api-token): Erstellen, Widerrufen und Aktualisieren der Sicherheitsschlüssel, die andere Anwendungen verwenden, um sichere Verbindungen mit Ihrer Anwendung herzustellen.
+- [Benutzerverwaltung](howto-manage-users-roles.md): Verwalten der Benutzer, die sich bei der Anwendung anmelden können, und der Rollen, die bestimmen, über welche Berechtigungen diese Benutzer verfügen.
+- [Organisationen](howto-create-organizations.md): Definieren einer Hierarchie, um zu verwalten, welche Benutzer sehen können, welche Geräte in Ihrer IoT Central-Anwendung angezeigt werden.
+
+### <a name="rest-api"></a>REST-API
+
+Erstellen Sie Integrationen, mit denen andere Anwendungen und Dienste Ihre Anwendung verwalten können. Beispielsweise können Sie die [Geräte](howto-control-devices-with-rest-api.md) in Ihrer Anwendung programmgesteuert verwalten oder [Benutzerinformationen](howto-manage-users-roles-with-rest-api.md) mit einem externen System synchronisieren.
 
 ## <a name="devices"></a>Geräte
 
-Geräte tauschen Daten mit Ihrer Azure IoT Central-Anwendung aus. Ein Gerät kann Folgendes durchführen:
+Geräte sammeln Daten von Sensoren, die als Telemetriedatenstrom an eine IoT Central Anwendung gesendet werden. Beispielsweise sendet eine Kühleinheit einen Datenstrom mit Temperaturwerten, oder ein Lieferlastwagen streamt seinen Standort.
 
-- Senden von Messungen wie Telemetrie
-- Synchronisieren von Einstellungen mit Ihrer Anwendung
+Ein Gerät kann Eigenschaften verwenden, um seinen Zustand zu melden, z. B. ob ein Ventil geöffnet oder geschlossen ist. Eine IoT Central-Anwendung kann auch Eigenschaften verwenden, um den Gerätezustand festzulegen, z. B. eine Zieltemperatur für ein Thermostat einstellen.
 
-In Azure IoT Central werden die Daten, die ein Gerät mit Ihrer Anwendung austauschen kann, in einer Gerätevorlage angegeben. Weitere Informationen zu Gerätevorlagen finden Sie unter [Gerätevorlagen](concepts-device-templates.md).
+IoT Central kann Geräte auch steuern, indem Befehle auf dem Gerät aufgerufen werden. Ein Beispiel ist die Anweisung an ein Gerät, ein Firmwareupdate herunterzuladen und zu installieren.
 
-Um mehr darüber zu erfahren, wie Geräte eine Verbindung mit Ihrer Azure IoT Central-Anwendung herstellen können, lesen Sie [Gerätekonnektivität](concepts-get-connected.md).
+Die [Telemetrie, Eigenschaften und Befehle](concepts-telemetry-properties-commands.md), die ein Gerät implementiert, werden zusammen als Gerätefunktionen bezeichnet. Sie definieren diese Funktionen in einem Modell, das vom Gerät und der IoT Central-Anwendung gemeinsam genutzt wird. In IoT Central ist dieses Modell Teil der Gerätevorlage, die einen bestimmten Gerätetyp definiert.
 
-### <a name="azure-iot-edge-devices"></a>Azure IoT Edge-Geräte
+Die [Geräteimplementierung](tutorial-connect-device.md) sollte die [IoT Plug & Play-Konventionen](../../iot-develop/concepts-convention.md) befolgen, um sicherzustellen, dass eine Kommunikation mit IoT Central möglich ist. Weitere Informationen finden Sie in den verschiedenen Sprach-[SDKs und Beispielen](../../iot-develop/libraries-sdks.md).
 
-Ebenso wie Geräte, die mit den [Azure IoT-SDKs](https://github.com/Azure/azure-iot-sdks) erstellt wurden, können Sie auch [Azure IoT Edge Geräte](../../iot-edge/about-iot-edge.md) mit einer IoT Central-Anwendung verbinden. IoT Edge ermöglicht die Ausführung von Cloud Intelligence und benutzerdefinierter Logik direkt auf IoT-Geräten, die von IoT Central verwaltet werden. Sie können auch IoT Edge als Gateway verwenden, um anderen nachgeschalteten Geräten das Herstellen einer Verbindung mit IoT Central zu ermöglichen.
+Geräte stellen über eines der unterstützten Protokolle eine Verbindung mit IoT Central her: [MQTT, AMQP oder HTTP](../../iot-hub/iot-hub-devguide-protocols.md).
+
+## <a name="gateways"></a>Gateways
+
+Lokale Gerätegateways sind in verschiedenen Szenarios nützlich, z. B.:
+
+- Geräte können möglicherweise keine direkte Verbindung mit IoT Central herstellen, da sie keine Verbindung mit dem Internet herstellen können. Sie können z. B. über eine Sammlung von Bluetooth-aktivierten Auslastungssensoren verfügen, die über ein Gateway verbunden werden müssen.
+- Die Menge der von Ihren Geräten generierten Daten kann hoch sein. Zur Kostensenkung können Sie die Daten in einem lokalen Gateway kombinieren oder aggregieren, bevor sie an Ihre IoT Central-Anwendung gesendet werden.
+- Ihre Lösung erfordert möglicherweise schnelle Antworten auf Anomalien in den Daten. Sie können Regeln auf einem Gateway ausführen, die Anomalien identifizieren, und lokal Maßnahmen ergreifen, ohne Daten an Ihre IoT Central-Anwendung senden zu müssen.
 
 Weitere Informationen finden Sie unter [Verbinden eines Azure IoT Edge-Geräts mit einer Azure IoT Central-Anwendung](concepts-iot-edge.md).
 
-## <a name="cloud-gateway"></a>Cloudgateway
-
-Azure IoT Central verwendet Azure IoT Hub als Cloudgateway, das Gerätekonnektivität ermöglicht. IoT Hub ermöglicht Folgendes:
-
-- Datenerfassung im großen Maßstab in der Cloud
-- Geräteverwaltung
-- Sichere Gerätekonnektivität
-
-Weitere Informationen zu IoT Hub finden Sie unter [Dokumentation zu IoT Hub](../../iot-hub/index.yml).
-
-Weitere Informationen zur Gerätekonnektivität in Azure IoT Central finden Sie unter [Gerätekonnektivität](concepts-get-connected.md).
-
-## <a name="data-stores"></a>Datenspeicher
-
-Azure IoT Central speichert Anwendungsdaten in der Cloud. Zu den gespeicherten Anwendungsdaten zählen Folgende:
-
-- Gerätevorlagen
-- Geräteidentitäten
-- Gerätemetadaten
-- Benutzer- und Rollendaten
-
-Azure IoT Central verwendet einen Zeitreihenspeicher für die Messdaten, die von Ihren Geräten gesendet werden. Die Zeitreihendaten von Geräten werden vom Analysedienst verwendet.
-
 ## <a name="data-export"></a>Datenexport
 
-In einer Azure IoT Central-Anwendung können Sie einen [fortlaufenden Export Ihrer Daten](howto-export-data.md) auf Ihre eigenen Azure Event Hubs und Azure Service Bus-Instanzen durchführen. Außerdem können Sie Ihre Daten in regelmäßigen Abständen in Ihr Azure-Blobspeicherkonto exportieren. Mit IoT Central können Messungen, Geräte und Gerätevorlagen exportiert werden.
+IoT Central verfügt zwar über integrierte Analysefeatures, Sie können Daten aber in andere Dienste und Anwendungen exportieren. Gründe für den Export von Daten:
 
-## <a name="batch-device-updates"></a>Geräteupdates als Batchvorgang
+### <a name="storage-and-analysis"></a>Speicher und Analyse
 
-In einer Azure IoT Central-Anwendung können Sie [Aufträge erstellen und ausführen](howto-manage-devices-in-bulk.md), um verbundene Geräte zu verwalten. Mit diesen Aufträgen können Sie Massenaktualisierungen an Geräteeigenschaften oder -einstellungen vornehmen oder Befehle ausführen. Sie können beispielsweise einen Auftrag erstellen, um die Lüfterdrehzahl für mehrere Verkaufsautomaten mit Kühlung zu erhöhen.
+Für die langfristige Speicherung und Kontrolle über Archivierungs- und Aufbewahrungsrichtlinien können Sie Ihre [Daten kontinuierlich in andere Speicherziele exportieren](howto-export-data.md). Mithilfe von separatem Speicher können Sie auch andere Analysetools verwenden, um Erkenntnisse zu gewinnen und die Daten in Ihrer Lösung anzuzeigen.
 
-## <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
+### <a name="business-automation"></a>Geschäftsautomatisierung
 
-Jede IoT Central-Anwendung verfügt über ein eigenes integriertes RBAC-System. Ein Administrator kann mithilfe einer der vordefinierten Rollen oder durch Erstellen einer benutzerdefinierten Rolle [Zugriffsregeln für eine Azure IoT Central-Anwendung definieren](howto-manage-users-roles.md). Über Rollen wird festgelegt, auf welche Bereiche einer Anwendung ein Benutzer zugreifen und welche Aktionen er ausführen darf.
+Mit [Regeln](howto-configure-rules-advanced.md) in IoT Central können Sie externe Aktionen auslösen, z. B. das Senden einer E-Mail oder das Auslösen eines Ereignisses als Reaktion auf Bedingungen innerhalb von IoT Central. Beispielsweise können Sie einen Techniker benachrichtigen, wenn die Umgebungstemperatur für ein Gerät einen Schwellenwert erreicht.
 
-## <a name="security"></a>Sicherheit
+### <a name="additional-computation"></a>Zusätzliche Berechnung
 
-Zu den Sicherheitsfeatures in Azure IoT Central gehören Folgende:
-
-- Während der Übertragung und im Ruhezustand verschlüsselte Daten
-- Die von Azure Active Directory oder vom Microsoft-Konto bereitgestellte Authentifizierung. Unterstützung für zweistufige Authentifizierung
-- Vollständige Mandantenisolation
-- Sicherheit auf Geräteebene
+Möglicherweise müssen Sie [Berechnungen für Ihre Daten transformieren oder durchführen](howto-transform-data.md), bevor sie in IoT Central oder einem anderen Dienst verwendet werden können. Beispielsweise können Sie den Standortdaten, die von einem Lieferlastwagen gemeldet werden, lokale Wetterinformationen hinzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

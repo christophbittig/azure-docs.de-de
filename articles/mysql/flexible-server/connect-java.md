@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 01/16/2021
-ms.openlocfilehash: 857de601019e7e8778795f5de7939b461e86df07
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: bb78b1ec37541d96d6ad5440ec0e0f3624d90de6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113288840"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604820"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql-flexible-server"></a>Schnellstart: Verwenden von Java und JDBC mit Azure Database for MySQL Flexible Server
 
@@ -23,7 +23,9 @@ In diesem Thema wird die Erstellung einer Beispielanwendung veranschaulicht, die
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Konto. Falls Sie noch kein Konto haben, können Sie eine [kostenlose Testversion](https://azure.microsoft.com/free/) verwenden.
+- Ein Azure-Konto mit einem aktiven Abonnement. 
+
+    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 - [Azure Cloud Shell](../../cloud-shell/quickstart.md) oder [Azure CLI](/cli/azure/install-azure-cli). Wir empfehlen Azure Cloud Shell, damit Sie automatisch angemeldet werden und Zugriff auf alle erforderlichen Tools erhalten.
 - Ein unterstütztes [Java Development Kit](/azure/developer/java/fundamentals/java-support-on-azure), Version 8 (in Azure Cloud Shell enthalten).
 - Das [Apache Maven](https://maven.apache.org/)-Buildtool
@@ -85,7 +87,7 @@ az mysql flexible-server create \
   	| jq
 ```
 
-Geben Sie unbedingt <YOUR-IP-ADDRESS> ein, um von Ihrem lokalen Computer auf den Server zugreifen zu können. Mit diesem Befehl wird ein für die Entwicklung geeigneter, flexibler MySQL-Server mit der Ebene „Burstfähig“ erstellt.
+Geben Sie unbedingt \<YOUR-IP-ADDRESS\> ein, um von Ihrem lokalen Computer auf den Server zugreifen zu können. Mit diesem Befehl wird ein für die Entwicklung geeigneter, flexibler MySQL-Server mit der Ebene „Burstfähig“ erstellt.
 
 Der von Ihnen erstellte MySQL-Server verfügt über eine leere Datenbank mit dem Namen **flexibleserverdb**. Diese Datenbank wird für diesen Artikel verwendet.
 

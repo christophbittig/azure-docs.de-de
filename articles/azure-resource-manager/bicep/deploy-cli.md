@@ -1,18 +1,19 @@
 ---
-title: Bereitstellen von Ressourcen mit Azure CLI und Bicep-Dateien
+title: Bereitstellen von Ressourcen mit Azure CLI und Bicep-Dateien | Microsoft-Dokumentation
 description: Verwenden Sie Azure Resource Manager und Azure CLI, um Ressourcen in Azure bereitzustellen. Die Ressourcen sind in einer Bicep-Datei definiert.
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/15/2021
-ms.openlocfilehash: 1feb5f2e858113086b9349c79dacb024570fb5a4
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.date: 09/17/2021
+ms.custom: devx-track-azurecli, seo-azure-cli
+ms.openlocfilehash: 0c474a7bf1d74b44b85f108b6a7fa28bcdc48902
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635157"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625618"
 ---
-# <a name="deploy-resources-with-bicep-and-azure-cli"></a>Bereitstellen von Ressourcen mit Bicep und Azure CLI
+# <a name="how-to-deploy-resources-with-bicep-and-azure-cli"></a>Bereitstellen von Ressourcen mit Bicep und Azure CLI
 
 In diesem Artikel wird erläutert, wie Ihre Ressourcen mithilfe der Azure CLI und Bicep-Dateien in Azure bereitgestellt werden. Wenn Sie nicht mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen vertraut sind, informieren Sie sich in der [Bicep-Übersicht](./overview.md).
 
@@ -86,7 +87,7 @@ Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird 
 
 ## <a name="deploy-remote-bicep-file"></a>Bereitstellen einer Bicep-Remotedatei
 
-Derzeit wird die Bereitstellung von Bicep-Remotedateien von Azure CLI nicht unterstützt. Kompilieren Sie die Bicep-Datei mithilfe der [Bicep-Befehlszeilenschnittstelle](./install.md#development-environment) in eine JSON-Vorlage, und laden Sie dann die JSON-Datei an den Remotespeicherort.
+Derzeit wird die Bereitstellung von Bicep-Remotedateien von Azure CLI nicht unterstützt. Kompilieren Sie die Bicep-Datei mithilfe der [Bicep-Befehlszeilenschnittstelle](./install.md#vs-code-and-bicep-extension) in eine JSON-Vorlage, und laden Sie dann die JSON-Datei an den Remotespeicherort.
 
 ## <a name="parameters"></a>Parameter
 
@@ -182,7 +183,7 @@ Vor dem Bereitstellen der Bicep-Datei können Sie die Änderungen, die von der B
 
 ## <a name="deploy-template-specs"></a>Bereitstellen von Vorlagenspezifikationen
 
-Azure CLI unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von Bicep-Dateien derzeit nicht. Sie können jedoch eine BICEP-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Hier sehen Sie ein [Beispiel](https://github.com/Azure/azure-docs-bicep-samples/blob/main/create-template-spec-using-bicep/azuredeploy.bicep). Sie können Ihre Bicep-Datei auch mithilfe der Bicep-Befehlszeilenschnittstelle in Form einer ARM-Vorlagen-JSON-Datei erstellen und dann eine Vorlagenspezifikation mit der JSON-Vorlage erstellen.
+Azure CLI unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von Bicep-Dateien derzeit nicht. Sie können jedoch eine Bicep-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Das [Beispiel für das Erstellen einer Vorlagenspezifikation](https://github.com/Azure/azure-docs-bicep-samples/blob/main/samples/create-template-spec/azuredeploy.bicep) zeigt, wie Sie eine Vorlagenspezifikation in einer Bicep-Datei erstellen. Sie können Ihre Bicep-Datei auch mithilfe der Bicep-Befehlszeilenschnittstelle in Form einer ARM-Vorlagen-JSON-Datei erstellen und dann eine Vorlagenspezifikation mit der JSON-Vorlage erstellen.
 
 ## <a name="deployment-name"></a>„Deployment name“ (Bereitstellungsname)
 

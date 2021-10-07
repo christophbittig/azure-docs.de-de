@@ -8,12 +8,12 @@ author: lrtoyou1223
 ms.author: lle
 ms.custom: seo-lt-2019
 ms.date: 05/09/2020
-ms.openlocfilehash: c64f71e6cdd008efa74d7279e3dc275bd24825f0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a1a05322a43f791ad9058659ea6e0cd53839196c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346591"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814769"
 ---
 # <a name="automating-self-hosted-integration-runtime-installation-using-local-powershell-scripts"></a>Automatisieren der Installation von selbstgehosteter Integration Runtime mithilfe von lokalen PowerShell-Skripts
 Sie können mithilfe von lokalen PowerShell-Skripts die Installation von selbstgehosteter Integration Runtime auf lokalen Computern automatisieren (mit Ausnahme von Azure VMs, bei denen Sie stattdessen die Resource Manager-Vorlage nutzen können). In diesem Artikel werden zwei Skripts vorgestellt, die Sie dafür verwenden können.
@@ -31,9 +31,9 @@ Sie können mithilfe von lokalen PowerShell-Skripts die Installation von selbstg
 > Diese Skripts werden mithilfe des [dokumentierten Befehlszeilen-Hilfsprogramms](./create-self-hosted-integration-runtime.md#set-up-an-existing-self-hosted-ir-via-local-powershell) in der selbstgehosteten Integration Runtime erstellt. Bei Bedarf können die Skripts entsprechend angepasst werden, um deren Automatisierungsanforderungen zu erfüllen.
 > Die Skripts müssen pro Knoten angewendet werden. Stellen Sie deshalb sicher, dass sie bei einem Setup mit Hochverfügbarkeit (2 oder mehr Knoten) auf allen Knoten ausgeführt werden.
 
-* Zur Automatisierung des Setups: Installieren und registrieren Sie einen neuen selbstgehosteten Integration Runtime-Knoten mithilfe von **[InstallGatewayOnLocalMachine.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/InstallGatewayOnLocalMachine.ps1)** – Das Skript kann zum Installieren des selbstgehosteten Integration Runtime-Knotens und zu dessen Registrierung mit einem Authentifizierungsschlüssel verwendet werden. Es akzeptiert zwei Argumente: das **erste** zur Angabe des Speicherorts für die [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) auf einem lokalen Datenträger, das **zweite** zur Angabe des **Authentifizierungsschlüssels** (für die Registrierung eines selbstgehosteten IR-Knotens).
+* Zur Automatisierung des Setups: Installieren und registrieren Sie einen neuen selbstgehosteten Integration Runtime-Knoten mithilfe von **[InstallGatewayOnLocalMachine.ps1](https://github.com/Azure/Azure-DataFactory/blob/main/SamplesV2/SelfHostedIntegrationRuntime/AutomationScripts/InstallGatewayOnLocalMachine.ps1)** – Das Skript kann zum Installieren des selbstgehosteten Integration Runtime-Knotens und zu dessen Registrierung mit einem Authentifizierungsschlüssel verwendet werden. Es akzeptiert zwei Argumente: das **erste** zur Angabe des Speicherorts für die [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) auf einem lokalen Datenträger, das **zweite** zur Angabe des **Authentifizierungsschlüssels** (für die Registrierung eines selbstgehosteten IR-Knotens).
 
-* Zur Automatisierung manueller Updates: Aktualisieren Sie den selbstgehosteten IR-Knoten mit einer bestimmten Version oder auf die neueste Version **[script-update-gateway.ps1](https://github.com/nabhishek/SelfHosted-IntegrationRuntime_AutomationScripts/blob/master/script-update-gateway.ps1)** . Dies wird auch für den Fall unterstützt, dass Sie das automatische Update deaktiviert haben oder mehr Kontrolle über Updates haben möchten. Das Skript kann zum Aktualisieren des selbstgehosteten Integration Runtime-Knotens auf die neueste Version oder eine angegebene höhere Version verwendet werden (ein Downgrade funktioniert nicht). Es akzeptiert ein Argument zur Angabe der Versionsnummer (Beispiel: „-Version 3.13.6942.1“). Wenn keine Version angegeben wurde, wird die selbstgehostete IR immer auf die neueste Version aus den [Downloads](https://www.microsoft.com/download/details.aspx?id=39717) aktualisiert.
+* Zur Automatisierung manueller Updates: Aktualisieren Sie den selbstgehosteten IR-Knoten mit einer bestimmten Version oder auf die neueste Version **[script-update-gateway.ps1](https://github.com/Azure/Azure-DataFactory/blob/main/SamplesV2/SelfHostedIntegrationRuntime/AutomationScripts/script-update-gateway.ps1)** . Dies wird auch für den Fall unterstützt, dass Sie das automatische Update deaktiviert haben oder mehr Kontrolle über Updates haben möchten. Das Skript kann zum Aktualisieren des selbstgehosteten Integration Runtime-Knotens auf die neueste Version oder eine angegebene höhere Version verwendet werden (ein Downgrade funktioniert nicht). Es akzeptiert ein Argument zur Angabe der Versionsnummer (Beispiel: „-Version 3.13.6942.1“). Wenn keine Version angegeben wurde, wird die selbstgehostete IR immer auf die neueste Version aus den [Downloads](https://www.microsoft.com/download/details.aspx?id=39717) aktualisiert.
     > [!NOTE]
     > Es können nur die letzten 3 Versionen angegeben werden. Im Idealfall wird damit ein vorhandener Knoten auf die neueste Version aktualisiert. **DABEI WIRD DAVON AUSGEGANGEN, DASS SIE EINE REGISTRIERTE SELBSTGEHOSTETE IR HABEN**. 
 
@@ -52,10 +52,10 @@ Sie können mithilfe von lokalen PowerShell-Skripts die Installation von selbstg
     > Ersetzen Sie „benutzername“ durch Ihren Benutzernamen.
     > Geben Sie bei der Ausführung des Skripts den Speicherort der Datei „InstallGatewayOnLocalMachine.ps1“ an. In diesem Beispiel wurde sie auf dem Desktop gespeichert.
 
-1. Wenn es auf Ihrem Computer eine vorinstallierte selbstgehostete IR gibt, wird sie vom Skript automatisch deinstalliert und dann eine neue konfiguriert. Das folgende Fenster wird eingeblendet: ![configure integration runtime](media/self-hosted-integration-runtime-automation-scripts/integration-runtime-configure.png) (Integration Runtime konfigurieren).
+1. Wenn es auf Ihrem Computer eine vorinstallierte selbstgehostete IR gibt, wird sie vom Skript automatisch deinstalliert und dann eine neue konfiguriert. Das folgende Fenster wird eingeblendet: :::image type="content" source="media/self-hosted-integration-runtime-automation-scripts/integration-runtime-configure.png" alt-text="configure integration runtime"::: (Integration Runtime konfigurieren).
 
 1. Nach Abschluss der Installation und Schlüsselregistrierung werden in Ihrer lokalen PowerShell die Ergebnisse *Succeed to install gateway* (Gateway wurde erfolgreich installiert) und *Succeed to register gateway* (Gateway wurde erfolgreich registriert) angezeigt.
-        [![Skript 1, Ausführungsergebnis](media/self-hosted-integration-runtime-automation-scripts/script-1-run-result.png)](media/self-hosted-integration-runtime-automation-scripts/script-1-run-result.png#lightbox)
+        [:::image type="content" source="media/self-hosted-integration-runtime-automation-scripts/script-1-run-result.png#lightbox" alt-text="script 1 run result](media/self-hosted-integration-runtime-automation-scripts/script-1-run-result.png)":::
 
 ### <a name="for-automating-manual-updates"></a>Zur Automatisierung manueller Updates
 Dieses Skript wird zum Aktualisieren/Installieren + Registrieren der neuesten selbstgehosteten Integration Runtime verwendet. Mit dem Skript werden die folgenden Schritte ausgeführt:
@@ -76,4 +76,4 @@ Zur Verwendung dieses Skripts können Sie dem nachstehenden Befehlszeilenbeispie
    PS C:\windows\system32> C:\Users\username\Desktop\script-update-gateway.ps1 -version 3.13.6942.1
    ``` 
    Wenn Ihre aktuelle Version bereits die neueste ist, wird das folgende Ergebnis angezeigt und Ihnen mitgeteilt, dass kein Update erforderlich ist.   
-    [![Skript 2, Ausführungsergebnis](media/self-hosted-integration-runtime-automation-scripts/script-2-run-result.png)](media/self-hosted-integration-runtime-automation-scripts/script-2-run-result.png#lightbox)
+    [:::image type="content" source="media/self-hosted-integration-runtime-automation-scripts/script-2-run-result.png#lightbox" alt-text="script 2 run result](media/self-hosted-integration-runtime-automation-scripts/script-2-run-result.png)":::

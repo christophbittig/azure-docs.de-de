@@ -8,12 +8,12 @@ ms.author: srahaman
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 7b0ac0fdb6ee5b734d642612c1fea16665e07684
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 47d690b53b6e8fe9ccc2660e48283ce05e262d30
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435508"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154183"
 ---
 # <a name="best-practices-azure-communication-services-calling-sdks"></a>Bewährte Methoden: Azure Communication Services Calling SDKs
 Dieser Artikel enthält Informationen zu bewährten Methoden im Zusammenhang mit Azure Communication Services (ACS) Calling SDKs.
@@ -55,9 +55,16 @@ document.addEventListener("visibilitychange", function() {
 });
  ```
 
-### <a name="hang-up-the-call-on-microphonemuteunexpectedly-ufd"></a>Beenden des Anrufs für UFD microphoneMuteUnexpectedly
-Wenn ein iOS-/Safari-Benutzer einen PSTN-Anruf empfängt, verliert Azure Communication Services den Mikrofonzugriff. Azure Communication Services gibt das Anrufdiagnoseereignis `microphoneMuteUnexpectedly` aus, und an diesem Punkt kann Communication Services den Zugriff auf das Mikrofon nicht wiedererlangen.
-Es wird empfohlen, den Aufruf in dieser Situation zu beenden ( `call.hangUp` ).
+### <a name="handle-os-muting-call-when-phone-call-comes-in"></a>Behandeln Sie den Aufruf der Stummschaltung des Betriebssystems bei eingehenden Anrufen.
+Wenn während eines ACS-Anrufs (sowohl für iOS als auch für Android) ein Telefonanruf eingeht, schaltet das Betriebssystem das Mikrofon und die Kamera des Benutzers automatisch stumm. Unter Android wird die Stummschaltung des Anrufs automatisch aufgehoben und das Video wird nach Beendigung des Telefonats neu gestartet. Unter iOS ist eine Aktion des Benutzers erforderlich, um die Stummschaltung aufzuheben und das Video erneut zu starten. Sie können die Benachrichtigung, dass das Mikrofon unerwartet stummgeschaltet wurde, mit dem Qualitätsereignis von `microphoneMuteUnexpectedly` abhören. Beachten Sie, dass Sie SDK 1.2.2-beta.1 oder höher verwenden müssen, um einen Anruf ordnungsgemäß wiederherstellen zu können.
+```JavaScript
+const latestMediaDiagnostic = call.api(SDK.Features.Diagnostics).media.getLatest();
+const isIosSafari = (getOS() === OSName.ios) && (getPlatformName() === BrowserName.safari);
+if (isIosSafari && latestMediaDiagnostic.microphoneMuteUnexpectedly && latestMediaDiagnostic.microphoneMuteUnexpectedly.value) {
+  // received a QualityEvent on iOS that the microphone was unexpectedly muted - notify user to unmute their microphone and to start their video stream
+}
+ ```
+Ihre Anwendung sollte `call.startVideo(localVideoStream);` aufrufen, um einen Videostream zu starten, und `this.currentCall.unmute();` verwenden, um die Audiostummschaltung aufzuheben.
 
 ### <a name="device-management"></a>Geräteverwaltung
 Sie können das Azure Communication Services SDK verwenden, um Ihre Geräte und Medienvorgänge zu verwalten.

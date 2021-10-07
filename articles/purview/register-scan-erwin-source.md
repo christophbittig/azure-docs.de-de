@@ -1,18 +1,18 @@
 ---
-title: Registrieren von Erwin Mart und Einrichten von Überprüfungen in Azure Purview
+title: Registrieren von erwin Mart und Einrichten von Überprüfungen
 description: In diesem Artikel erfahren Sie, wie Sie erwin Mart in Azure Purview registrieren und eine Überprüfung einrichten.
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 7/16/2021
-ms.openlocfilehash: 2b6c9f621c4c18a172e12bc93387eb75451cb851
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8077658b644853f9ce0789a1d0863b3bde902818
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736331"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211525"
 ---
 # <a name="register-and-scan-erwin-mart-server-preview"></a>Registrieren und Überprüfen von erwin Mart Server (Vorschau)
 
@@ -71,7 +71,7 @@ Gehen Sie auf dem Bildschirm „Register sources (erwin)“ (Quellen registriere
 4.  Geben Sie den **Anwendungsnamen** ein.
 
     >[!Note]
-    > Die oben genannten Details finden Sie, indem Sie zu Ihrer Instanz von erwin Data Modeler navigieren. Klicken Sie auf „Mart“ -\> „Connect“ (Verbinden), um Details zum Servernamen, Port und Anwendungsnamen anzuzeigen.
+    > Die oben genannten Details finden Sie, indem Sie zu Ihrer Instanz von erwin Data Modeler navigieren. Wählen Sie „Mart“ \> „Connect“ (Verbinden) aus, um Details zum Servernamen, Port und Anwendungsnamen anzuzeigen.
 
     :::image type="content" source="media/register-scan-erwin-source/erwin-details.png" alt-text="Erwin-Details suchen" border="true":::
     
@@ -86,7 +86,7 @@ Gehen Sie auf dem Bildschirm „Register sources (erwin)“ (Quellen registriere
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1.  Klicken Sie im Verwaltungscenter auf Integration Runtimes. Stellen Sie sicher, dass eine selbstgehostete Integration Runtime auf der VM eingerichtet ist, auf der die erwin Mart-Instanz ausgeführt wird. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
+1.  Wählen Sie im Verwaltungscenter „Integration Runtimes“ aus. Stellen Sie sicher, dass eine selbstgehostete Integration Runtime auf der VM eingerichtet ist, auf der die erwin Mart-Instanz ausgeführt wird. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
 
 2.  Navigieren Sie zu **Quellen**.
 
@@ -124,13 +124,13 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
     :::image type="content" source="media/register-scan-erwin-source/setup-scan.png" alt-text="Auslösen der Überprüfung" border="true":::
    
 
-6.  Klicken Sie auf **Testverbindung**.
+6.  Wählen Sie **Verbindung testen** aus.
 
-7.  Klicken Sie auf **Continue** (Weiter).
+7.  Wählen Sie **Weiter**.
 
 8.  Wählen Sie den **Auslöser für die Überprüfung**. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
 
-9.  Sehen Sie sich Ihre Überprüfung noch einmal an, und klicken Sie dann auf **Speichern und ausführen**.
+9.  Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie **Speichern und ausführen** aus.
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>Anzeigen Ihrer Überprüfungen und Überprüfungsausführungen
 

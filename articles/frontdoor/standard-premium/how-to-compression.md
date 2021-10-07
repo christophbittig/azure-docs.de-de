@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: 4b526d82465862b1c0d27aed6443c6d7199bfb5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca9c2e3b4e9873d4880385479b701d36c92238b0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101097780"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750180"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-front-door-standardpremium-preview"></a>Verbessern der Leistung durch Komprimieren von Dateien in Azure Front Door Standard/Premium (Vorschau)
 
@@ -29,6 +29,9 @@ Es gibt zwei Methoden zur Aktivierung der Dateikomprimierung:
 
 - Sie aktivieren die Komprimierung auf Ihrem Ursprungsserver. In diesem Fall leitet Azure Front Door die komprimierten Dateien weiter und übermittelt sie an die Clients, die sie angefordert haben.
 - Sie aktivieren die Komprimierung direkt auf den Azure Front Door-POP-Servern (*Komprimierung im laufendem Betrieb*). In diesem Fall komprimiert Azure Front Door die Dateien und sendet sie an die Endbenutzer.
+
+> [!NOTE]
+> Bereichsanforderungen können in verschiedene Größen komprimiert werden. Bei Azure Front Door müssen die Inhaltslängenwerte für alle GET HTTP-Anforderungen identisch sein. Senden Clients Bytebereichsanforderungen mit dem Header `accept-encoding`, der dazu führt, dass das Ursprungsobjekt mit unterschiedlichen Inhaltslängen antwortet, gibt Azure Front Door den Fehler 503 zurück. Deaktivieren Sie in diesem Fall entweder die Komprimierung für das Ursprungsobjekt bzw. Azure Front Door, oder erstellen Sie eine Regelsatzregel, um `accept-encoding` aus der Anforderung für Bytebereichsanforderungen zu entfernen.
 
 > [!IMPORTANT]
 > Es kann bis zu 10 Minuten dauern, bis die Änderungen an der Konfiguration von Azure Front Door im gesamten Netzwerk verteilt wurden. Wenn Sie die Komprimierung für Ihren CDN-Endpunkt zum ersten Mal einrichten, sollten Sie jedoch 1–2 Stunden warten, um sicherzugehen, dass die Komprimierungseinstellungen an alle POPs verteilt wurden. Erst danach lohnt sich ggf. eine Problembehandlung.

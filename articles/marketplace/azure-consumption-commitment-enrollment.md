@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/27/2021
-ms.openlocfilehash: a3fe8707df1270f8571ad86fe07406376f71ab93
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 7f784773ff2f29b7f5b9c244811f818861f5ae42
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339872"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080618"
 ---
 # <a name="azure-consumption-commitment-enrollment"></a>Registrierung für Azure Consumption Commitment
 
@@ -35,6 +35,27 @@ Ein Angebot muss die folgenden Anforderungen erfüllen, um im MACC-Programm regi
 
 ## <a name="how-to-see-if-your-offer-is-enrolled-in-the-macc-program"></a>Wie Sie erfahren, ob Ihr Angebot im MACC-Programm registriert ist
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie auf der Startseite die Kachel **Marketplace offers** (Marketplace-Angebote) aus.
+
+    [ ![Veranschaulichung der Kachel „Marketplace offers“ (Marketplace-Angebote) auf der Startseite in Partner Center](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. Klicken Sie auf der Seite „Marketplace offers“ (Marketplace-Angebote) auf das Angebot, das Sie ansehen möchten.
+1. Auf der Seite **Angebotsübersicht** wird im Abschnitt **Marketplace-Programme** der **Status „Microsoft Azure Consumption Commitment“** entweder als _Registriert_ oder _Nicht registriert_ angezeigt.
+
+    [ ![Screenshot: Seite „Angebotsübersicht“ in Partner Center mit dem Microsoft Azure Consumption Commitment-Status](media/azure-benefit/enrolled-workspaces.png) ](media/azure-benefit/enrolled-workspaces.png#lightbox)
+
+    ***Abbildung 1: Angebot, das im MACC-Programm registriert ist***
+
+> [!NOTE]
+> Der MACC-Programmstatus für Angebote, die in Azure Marketplace veröffentlicht werden, wird wöchentlich montags aktualisiert. Das bedeutet, dass, wenn Sie ein Angebot veröffentlichen, das die Voraussetzungen des MACC-Programms erfüllt, der Status im Partner Center bis zum folgenden Montag nicht als „Registriert“ angezeigt wird.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 1. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
 1. Wählen Sie im Abschnitt **Angebote** das gewünschte Angebot aus.
@@ -46,6 +67,8 @@ Ein Angebot muss die folgenden Anforderungen erfüllen, um im MACC-Programm regi
 
 > [!NOTE]
 > Der MACC-Programmstatus für Angebote, die in Azure Marketplace veröffentlicht werden, wird wöchentlich montags aktualisiert. Das bedeutet, dass, wenn Sie ein Angebot veröffentlichen, das die Voraussetzungen des MACC-Programms erfüllt, der Status im Partner Center bis zum folgenden Montag nicht als „Registriert“ angezeigt wird.
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

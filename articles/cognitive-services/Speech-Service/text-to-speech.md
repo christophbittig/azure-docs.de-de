@@ -3,20 +3,21 @@ title: 'Übersicht über die Sprachsynthese: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Das Feature Text-zu-Sprache in Speech-Dienst ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in natürliche, menschenähnliche synthetisierte Sprache umzuwandeln. Dieser Artikel bietet einen Überblick über die Vorteile und Funktionen des Sprachsynthesediensts.
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/31/2021
-ms.author: lajanuar
+ms.date: 09/01/2020
+ms.author: pafarley
+ms.custom: cog-serv-seo-aug-2020
 keywords: Sprachsynthese
-ms.openlocfilehash: 84eb522123e5a77de667231b5f91d96a0e7c6a56
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 7be06937cf9f3117d426fd9c19cbb6059826e6ec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272959"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736891"
 ---
 # <a name="what-is-neural-text-to-speech"></a>Was ist die neuronale Sprachsynthese?
 
@@ -84,7 +85,7 @@ Ausführliche Informationen finden Sie unter [Cognitive Services-Preise – Spra
 
 ## <a name="migrate-to-neural-voice"></a>Migrieren in eine neuronale Stimme
 
-Wir stellen die Standardstimmen am **31. August 2024** ein und sie werden nach diesem Datum nicht mehr unterstützt.Die Ankündigung wurde an alle vor dem **31. August 2021** vorhandenen Speech-Abonnements gesendet. Während des Außerbetriebnahmezeitraums (**31. August 2021 bis 31. August 2024)** können vorhandene Benutzer weiterhin ihre Standardstimmen verwenden. Alle neuen Benutzer/neuen Sprachressourcen sollten zu den neuronalen Stimmen wechseln.
+Wir stellen die Standardstimmen am **31. August 2024** ein und sie werden nach diesem Datum nicht mehr unterstützt.Die Ankündigung wurde an alle vor dem **31. August 2021** vorhandenen Speech-Abonnements gesendet. Während des Außerbetriebnahmezeitraums (**31. August 2021 bis 31. August 2024)** können vorhandene Standardstimmenbenutzer*innen weiterhin ihre Standardstimmen verwenden. Alle neuen Benutzer*innen bzw. neuen Sprachressourcen sollten zu den neuronalen Stimmen wechseln.
 
 **Erforderliche Aktion**
 

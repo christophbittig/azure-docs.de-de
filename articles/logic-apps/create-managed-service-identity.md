@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: article
 ms.date: 06/25/2021
 ms.custom: devx-track-azurepowershell, subject-rbac-steps
-ms.openlocfilehash: 76edcac6b77b70928cb2d6cd378b421b68b3d3ef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 884decde4df80f6e8837245faad0136fe715371f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346230"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775199"
 ---
 # <a name="authenticate-access-to-azure-resources-using-managed-identities-in-azure-logic-apps"></a>Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps
 
@@ -30,16 +30,12 @@ In diesem Artikel wird gezeigt, wie Sie beide Arten von verwalteten Identitäten
 
 Azure Logic Apps unterstützt sowohl [*systemseitig zugewiesene* verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) als auch [*benutzerseitig zugewiesene* verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md), die Sie je nach Ausführungsort Ihrer Logik-App-Workflows für eine Gruppe von Logik-Apps freigeben können:
 
-* Eine Logik-App mit mehreren Mandanten (Verbrauchsplan) unterstützt sowohl die systemseitig zugewiesene Identität als auch eine *einzelne* benutzerseitig zugewiesene Identität. Auf Logik-App-Ebene oder Verbindungsebene können Sie jedoch nur einen verwalteten Identitätstyp verwenden, da Sie nicht beide gleichzeitig aktivieren können.
-
-  Eine auf einem einzelnen Mandanten basierende Logik-App (Standardplan) unterstützt derzeit nur die systemseitig zugewiesene Identität.
-
-  Weitere Informationen zu mehreren Mandanten (Verbrauchsplan) und einem einzelnen Mandanten (Standardplan) finden Sie in der Dokumentation [Vergleich zwischen Umgebungen mit einem Mandanten und mehreren Mandanten bzw. Integrationsdienstumgebung](single-tenant-overview-compare.md).
+* Der Ressourcentyp **Logik-App (Verbrauch)** unterstützt die Verwendung der systemseitig zugewiesenen Identität oder einer benutzerseitig zugewiesenen *einzelnen* Identität. Auf Logik-App-Ebene oder Verbindungsebene können Sie jedoch nur einen verwalteten Identitätstyp verwenden, da Sie nicht beide gleichzeitig aktivieren können. Derzeit unterstützt der Ressourcentyp **Logik-App (Standard)** nur die systemseitig zugewiesene Identität, die automatisch aktiviert wird, und nicht die benutzerseitig zugewiesene Identität. Weitere Informationen zu diesen verschiedenen Logik-App-Ressourcentypen finden Sie in der Dokumentation unter [Vergleich zwischen Umgebungen mit einem Mandanten und mehreren Mandanten bzw. Integrationsdienstumgebung für Azure Logic Apps](single-tenant-overview-compare.md).
 
 <a name="built-in-managed-identity"></a>
 <a name="managed-connectors-managed-identity"></a>
 
-* Nur bestimmte integrierte und verwaltete Connectorvorgänge, die Azure AD Open Authentication unterstützen, können eine verwaltete Identität für die Authentifizierung verwenden. Die folgende Tabelle enthält nur eine *Beispielauswahl*. Eine vollständige Liste finden Sie unter [Authentifizierungstypen für Trigger und Aktionen, die die Authentifizierung unterstützen](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
+* Nur bestimmte integrierte und verwaltete Connectorvorgänge, die Azure AD Open Authentication (Azure AD OAuth) unterstützen, können eine verwaltete Identität für die Authentifizierung verwenden. Die folgende Tabelle enthält nur eine *Beispielauswahl*. Eine vollständige Liste finden Sie unter [Authentifizierungstypen für Trigger und Aktionen, die die Authentifizierung unterstützen](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
   | Vorgangsart | Unterstützte Vorgänge |
   |----------------|----------------------|
@@ -56,6 +52,12 @@ Azure Logic Apps unterstützt sowohl [*systemseitig zugewiesene* verwaltete Iden
 * Die Azure-Zielressource, auf die Sie zugreifen möchten. Für diese Ressource fügen Sie eine Rolle für die verwaltete Identität hinzu, die der Logik-App hilft, den Zugriff auf die Zielressource zu authentifizieren.
 
 * [Die Logik-App, in der Sie den Trigger oder die Aktionen verwenden möchten, die verwaltete Identitäten unterstützen](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
+
+  | Logik-App-Ressourcentyp | Unterstützung verwalteter Identitäten |
+  |-------------------------|--------------------------|
+  | **Logik-App (Verbrauch)** | Systemseitig oder benutzerseitig zugewiesen |
+  | **Logik-App (Standard)** | Systemseitig zugewiesene Identität (automatisch aktiviert) |
+  |||
 
 ## <a name="enable-managed-identity"></a>Aktivieren einer verwalteten Identität
 
@@ -176,7 +178,7 @@ Zum Einrichten einer benutzerseitig zugewiesenen verwalteten Identität für Ihr
 
    ![Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | Beschreibung |
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Der Name des zu verwendenden Azure-Abonnements |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Der Name der zu verwendenden Ressourcengruppe. Erstellen Sie eine neue Gruppe, oder wählen Sie eine vorhandene Gruppe aus. Dieses Beispiel erstellt eine neue Gruppe namens `fabrikam-managed-identities-RG`. |

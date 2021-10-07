@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: e33c1fc4b5daa3ca2092e63413dcedcc42f82509
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 7a6b1099ea81c7a4a50692496ee044fe4a72bd24
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123354482"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742954"
 ---
 # <a name="migrate-databases-with-azure-sql-migration-extension-for-azure-data-studio-preview"></a>Migrieren von Datenbanken mit der Azure SQL-Migrationserweiterung für Azure Data Studio (Vorschau)
 
-Mit der Azure SQL-Migrationserweiterung für [Azure Data Studio](/sql/azure-data-studio/what-is-azure-data-studio.md) können Sie die Bewertungs- und -Migrationsfunktion von SQL Server in Azure Data Studio verwenden.
+Mit der [Azure SQL-Migrationserweiterung für Azure Data Studio](/sql/azure-data-studio/extensions/azure-sql-migration-extension) können Sie die Bewertungs- und -Migrationsfunktion von SQL Server in Azure Data Studio verwenden.
 
 ## <a name="architecture-of-azure-sql-migration-extension-for-azure-data-studio"></a>Architektur der Azure SQL-Migrationserweiterung für Azure Data Studio
 
@@ -48,8 +48,8 @@ Der Workflow des Migrationsprozesses ist unten dargestellt.
 
 Folgende Voraussetzungen von Azure Database Migration Service gelten für alle unterstützten Migrationsszenarien:
 
-* [Herunterladen und Installieren von Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio.md)
-* [Installieren der Azure SQL-Migrationserweiterung](/sql/azure-data-studio/extensions/azure-sql-migration-extension.md) aus Azure Data Studio Marketplace
+* [Herunterladen und Installieren von Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
+* [Installieren der Azure SQL-Migrationserweiterung](/sql/azure-data-studio/extensions/azure-sql-migration-extension) aus Azure Data Studio Marketplace
 * Verwenden Sie ein Azure-Konto, das einer der unten aufgeführten integrierten Rollen zugewiesen ist:
     - Mitwirkender für die Zielinstanz von Azure SQL Managed Instance (und Storage-Konto zum Hochladen Ihrer Datenbanksicherungsdateien von der SMB-Netzwerkfreigabe).
     - Rolle „Besitzer“ oder „Mitwirkender“ für die Azure-Ressourcengruppen, die die Zielinstanz von Azure SQL Managed Instance oder das Azure-Speicherkonto enthalten.
@@ -83,7 +83,7 @@ Folgende Voraussetzungen von Azure Database Migration Service gelten für alle u
     > Wenn Ihre Datenbanksicherungsdateien bereits in einem Azure-Speicherkonto bereitgestellt werden, ist während der Migration keine selbstgehostete Integration Runtime erforderlich.
 
 * Stellen Sie bei Verwendung der selbstgehosteten Integration Runtime sicher, dass der Computer, auf dem die Runtime installiert ist, eine Verbindung mit der SQL Server-Quellinstanz und der Netzwerkdateifreigabe herstellen kann, auf der sich Sicherungsdateien befinden. Der ausgehende Port 445 muss aktiviert sein, um Zugriff auf die Netzwerkdateifreigabe zu ermöglichen.
-* Wenn Sie Azure Database Migration Service zum ersten Mal verwenden, stellen Sie sicher, dass der Ressourcenanbieter Microsoft.DataMigration in Ihrem Abonnement registriert ist. Sie können die Schritte zum [Registrieren des Ressourcenanbieters](/quickstart-create-data-migration-service-portal.md#register-the-resource-provider) ausführen.
+* Wenn Sie Azure Database Migration Service zum ersten Mal verwenden, stellen Sie sicher, dass der Ressourcenanbieter Microsoft.DataMigration in Ihrem Abonnement registriert ist. Sie können die Schritte zum [Registrieren des Ressourcenanbieters](/azure/dms/quickstart-create-data-migration-service-portal#register-the-resource-provider) ausführen.
 
 ### <a name="recommendations-for-using-self-hosted-integration-runtime-for-database-migrations"></a>Empfehlungen für die Verwendung der selbstgehosteten Integration Runtime für Datenbankmigrationen
 - Verwenden Sie eine einzelne selbstgehostete Integration Runtime für mehrere SQL Server-Quelldatenbanken.
@@ -140,4 +140,4 @@ Migrieren Sie die SQL Server-Datenbanken während der Vorschau zu Ihrer Zielinst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht und weitere Informationen zur Installation der Azure SQL-Migrationserweiterung finden Sie unter [Azure SQL-Migrationserweiterung für Azure Data Studio](/sql/azure-data-studio/extensions/azure-sql-migration-extension.md).
+- Eine Übersicht und weitere Informationen zur Installation der Azure SQL-Migrationserweiterung finden Sie unter [Azure SQL-Migrationserweiterung für Azure Data Studio](/sql/azure-data-studio/extensions/azure-sql-migration-extension).

@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 0d872a60c4aea89e621fe25ade45697244a74fa8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e7356319a875f3289531c24e5a053e745a543c0a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779721"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830137"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Zugreifen auf das Kubernetes-Webdashboard in Azure Kubernetes Service (AKS)
 
@@ -21,10 +21,9 @@ Weitere Informationen zum Kubernetes-Dashboard finden Sie unter [Web UI (Dashbo
 
 > [!WARNING]
 > **Das AKS-Dashboard-Add-On ist zur Einstellung festgelegt. Verwenden Sie stattdessen die [Kubernetes-Ressourcenansicht im Azure-Portal (Vorschau)][kubernetes-portal].** 
-> * Das Kubernetes-Dashboard ist für Cluster mit einer Kubernetes-Version unter 1.18 standardmäßig aktiviert.
-> * Das Dashboard-Add-On wird standardmäßig für alle neuen Cluster deaktiviert, die unter Kubernetes 1.18 oder höher erstellt werden. 
- > * Ab Kubernetes 1.19 in der Vorschauversion unterstützt AKS die Installation des verwalteten Add-Ons „kube-dashboard“ nicht mehr. 
- > * Vorhandene Cluster, für die das Add-On aktiviert ist, sind nicht betroffen. Die Benutzer werden weiterhin in der Lage sein, das Open-Source-Dashboard manuell als vom Benutzer installierte Software zu installieren.
+> * Das Dashboard-Add-on wird standardmäßig für alle neuen Cluster deaktiviert.
+> * Ab Kubernetes 1.19 in der Vorschauversion unterstützt AKS die Installation des verwalteten Add-Ons „kube-dashboard“ nicht mehr. 
+> * Vorhandene Cluster, für die das Add-On aktiviert ist, sind nicht betroffen. Die Benutzer werden weiterhin in der Lage sein, das Open-Source-Dashboard manuell als vom Benutzer installierte Software zu installieren.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -34,32 +33,11 @@ Außerdem muss mindestens die Version 2.6.0 der Azure-Befehlszeilenschnittstell
 
 ## <a name="disable-the-kubernetes-dashboard"></a>Deaktivieren des Kubernetes-Dashboards
 
-Das Add-On „kube-dashboard“ ist **standardmäßig auf Clustern aktiviert, die älter als K8s 1.18** sind. Das Add-On kann durch Ausführen des folgenden Befehls deaktiviert werden.
+Das Add-On kann durch Ausführen des folgenden Befehls deaktiviert werden.
 
 ``` azurecli
 az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
-
-## <a name="start-the-kubernetes-dashboard"></a>Starten des Kubernetes-Dashboards
-
-> [!WARNING]
-> Das AKS-Dashboard-Add-On ist ab Version 1.19 zur Einstellung festgelegt. Verwenden Sie stattdessen die [Kubernetes-Ressourcenansicht im Azure-Portal (Vorschau)][kubernetes-portal]. 
-> * Der folgende Befehl öffnet für die Versionen 1.19 und höher nun die Ressourcenansicht im Azure-Portal anstelle des Kubernetes-Dashboards.
-
-Verwenden Sie den Befehl [az aks browse][az-aks-browse], um das Kubernetes-Dashboard auf einem Cluster zu starten. Dieser Befehl erfordert die Installation des Add-Ons „kube-dashboard“ auf dem Cluster, das bei Clustern mit einer Version älter als Kubernetes 1.18 standardmäßig enthalten ist.
-
-Im folgenden Beispiel wird das Dashboard für den Cluster namens *myAKSCluster* in der Ressourcengruppe namens *myResourceGroup* geöffnet:
-
-```azurecli
-az aks browse --resource-group myResourceGroup --name myAKSCluster
-```
-
-Der Befehl erstellt einen Proxy zwischen Ihrem Entwicklungssystem und der Kubernetes-API und öffnet einen Webbrowser mit dem Kubernetes-Dashboard. Wenn ein Webbrowser das Kubernetes-Dashboard nicht öffnet, kopieren Sie die in der Azure-Befehlszeilenschnittstelle angegebene URL-Adresse (in der Regel `http://127.0.0.1:8001`).
-
-> [!NOTE]
-> Wenn Sie das Dashboard unter `http://127.0.0.1:8001` nicht sehen, können Sie manuell zu den folgenden Adressen weiterleiten. Cluster unter Version 1.16 oder höher verwenden „https“ und erfordern einen separaten Endpunkt.
-> * K8s 1.16 oder höher: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
-> * K8s 1.15 und niedriger: `http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard:/proxy`
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)

@@ -3,22 +3,22 @@ title: Verbinden eines Hybridcomputers mit Azure Arc-fähigen Servern
 description: Hier erfahren Sie, wie Sie Ihren Hybridcomputer mit Azure Arc-fähigen Servern verbinden und registrieren.
 ms.topic: quickstart
 ms.date: 12/15/2020
-ms.openlocfilehash: d5f1699447093f148b0dadbdd23857c9e16e13a3
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: fc645f930fe37f8a3eca10d1647d40eb9c7a2280
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772657"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807639"
 ---
 # <a name="quickstart-connect-hybrid-machines-with-azure-arc-enabled-servers"></a>Schnellstart: Verbinden von Hybridcomputern mit Azure Arc-fähigen Servern
 
-Mit [Azure Arc-fähigen Servern](../overview.md) können Sie Windows- und Linux-Computer steuern, die in lokalen Umgebungen, in Edgeumgebungen und in Multicloudumgebungen gehostet werden. In diesem Schnellstart wird der Connected Machine-Agent auf Ihrem außerhalb von Azure gehosteten Windows- oder Linux-Computer bereitgestellt und für die Verwaltung durch Azure Arc-fähige Server konfiguriert.
+Mit [Azure Arc-fähigen Servern](../overview.md) können Sie Windows- und Linux-Computer steuern, die in lokalen Umgebungen, in Edgeumgebungen und in Multicloudumgebungen gehostet werden. In dieser Schnellstartanleitung wird der Connected Machine-Agent auf Ihrem außerhalb von Azure gehosteten Windows- oder Linux-Computer bereitgestellt und für die Verwaltung durch Server mit Azure Arc-Unterstützung konfiguriert.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-* Zur Bereitstellung des hybriden Connected Machine-Agents für Azure Arc-fähige Server müssen Sie auf dem Computer über Administratorberechtigungen verfügen, um den Agent installieren und konfigurieren zu können. Verwenden Sie dazu unter Linux das root-Konto und unter Windows ein Konto, das der Gruppe „Lokale Administratoren“ angehört.
+* Zur Bereitstellung des hybriden Connected Machine-Agents für Server mit Azure Arc-Unterstützung müssen Sie auf dem Computer über Administratorberechtigungen verfügen, um den Agent installieren und konfigurieren zu können. Verwenden Sie dazu unter Linux das root-Konto und unter Windows ein Konto, das der Gruppe „Lokale Administratoren“ angehört.
 
 * Machen Sie sich zunächst mit den [Voraussetzungen](../agent-overview.md#prerequisites) für den Agent vertraut, und vergewissern Sie sich, dass Folgendes erfüllt ist:
 
@@ -56,7 +56,7 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
 
 1. Starten Sie den Azure Arc-Dienst im Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Server – Azure Arc** suchen und diese Option auswählen.
 
-    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Suchen nach Azure Arc-fähigen Servern unter „Alle Dienste“" border="false":::
+    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Suchen nach Servern mit Azure Arc-Unterstützung unter „Alle Dienste“" border="false":::
 
 1. Wählen Sie auf der Seite **Server - Azure Arc** oben links **Hinzufügen** aus.
 

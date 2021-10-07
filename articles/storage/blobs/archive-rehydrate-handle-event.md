@@ -10,12 +10,12 @@ ms.date: 08/11/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 658483d1479036c7cc90dbaf439dbee6706dd475
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 3ce2f92f88e24eb634222db5ffab45acaf1a5820
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342794"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577990"
 ---
 # <a name="run-an-azure-function-in-response-to-a-blob-rehydration-event"></a>Ausführen einer Azure-Funktion als Reaktion auf ein Blobaktivierungsereignis
 
@@ -118,10 +118,10 @@ Als Nächstes erstellen Sie eine Azure-Funktion, die ausgeführt wird, wenn ein 
     eventInfo.AppendLine(string.Format("{0} operation occurred.", eventApi));
     eventInfo.AppendLine(string.Format("Blob URL: {0}", eventBlobUrl));
     eventInfo.AppendLine($@"Additional event details:
-        Id=[{eventGridEvent.Id}] 
-        EventType=[{eventGridEvent.EventType}] 
-        EventTime=[{eventGridEvent.EventTime}] 
-        Subject=[{eventGridEvent.Subject}] 
+        Id=[{eventGridEvent.Id}]
+        EventType=[{eventGridEvent.EventType}]
+        EventTime=[{eventGridEvent.EventTime}]
+        Subject=[{eventGridEvent.Subject}]
         Topic=[{eventGridEvent.Topic}]");
 
     // If event was BlobCreated and API call was CopyBlob, respond to the event.
@@ -236,7 +236,7 @@ Nachdem Sie die Azure-Funktion lokal getestet haben, veröffentlichen Sie die Az
 
 Führen Sie diese Schritte aus, um die Funktion zu veröffentlichen:
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Azure Functions-Projekt, und wählen Sie **Veröffentlichen**.
+1. Klicken Sie im Projektmappen-Explorer auf das Azure Functions-Projekt und halten Sie die Maustaste gedrückt (oder klicken Sie mit der rechten Maustaste darauf), und wählen Sie **Veröffentlichen** aus.
 1. Wählen Sie im Fenster **Veröffentlichen** als Ziel **Azure** und anschließend **Weiter** aus.
 1. Wählen Sie als genaues Ziel **Azure-Funktions-App (Windows)** und dann **Weiter** aus.
 1. Wählen Sie auf der Registerkarte **Functions-Instanz** im Dropdownmenü Ihr Azure-Abonnement aus, und suchen Sie dann in der Liste der verfügbaren Funktions-Apps nach Ihrer Azure-Funktions-App.
@@ -247,7 +247,7 @@ Führen Sie diese Schritte aus, um die Funktion zu veröffentlichen:
 
     :::image type="content" source="media/archive-rehydrate-handle-event/visual-studio-publish-azure-function.png" alt-text="Screenshot der Seite zum Veröffentlichen der Azure-Funktion in Visual Studio":::
 
-Immer, wenn Sie Änderungen am Code in Ihrer Azure-Funktion vornehmen, müssen Sie die aktualisierte Funktion in Azure veröffentlichen. 
+Immer, wenn Sie Änderungen am Code in Ihrer Azure-Funktion vornehmen, müssen Sie die aktualisierte Funktion in Azure veröffentlichen.
 
 ## <a name="subscribe-to-blob-rehydration-events-from-a-storage-account"></a>Abonnieren von Blobaktivierungsereignissen aus dem Speicherkonto
 
@@ -285,7 +285,7 @@ Mit der Azure-Funktion aus diesem Artikel wird in zwei Szenarien ein Protokollbl
 - Wenn das Ereignis **Microsoft.Storage.BlobCreated** ist und der API-Vorgang **Blob kopieren** lautet.
 - Wenn das Ereignis **Microsoft.Storage.BlobTierChanged** ist und der API-Vorgang **Blobtarif festlegen** lautet.
 
-Unter diesen beiden Verfahren finden Sie Informationen zum Testen der Funktion durch Aktivieren eines Blobs:  
+Unter diesen beiden Verfahren finden Sie Informationen zum Testen der Funktion durch Aktivieren eines Blobs:
 
 - [Aktivieren eines Blobs mit einem Kopiervorgang](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-with-a-copy-operation)
 - [Aktivieren eines Blobs durch Ändern seiner Ebene](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-by-changing-its-tier)

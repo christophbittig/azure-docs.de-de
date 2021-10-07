@@ -8,18 +8,21 @@ ms.date: 09/01/2021
 ms.topic: quickstart
 ms.service: route-server
 ms.custom: devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 65f5957d52dcf510601f4a4773cde4c8a477dc97
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 8fe644edd7b08a5f18787b16abfe5e0a1951df40
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475618"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094403"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>Schnellstart: Erstellen und Konfigurieren einer Route Server-Instanz mithilfe von Azure PowerShell
 
 In diesem Artikel wird beschrieben, wie Sie Azure Route Server mithilfe von Azure PowerShell für das Peering mit einem virtuellen Netzwerkgerät (Network Virtual Appliance, NVA) in Ihrem virtuellen Netzwerk konfigurieren. Route Server lernt Routen von Ihrem NVA und programmiert sie auf den VMs im virtuellen Netzwerk. Azure Route Server kündigt die virtuellen Netzwerkrouten auch für das NVA an. Weitere Informationen finden Sie unter [Azure Route Server](overview.md).
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Diagramm: Route Server-Bereitstellungsumgebung mit Azure PowerShell" border="false":::
+
+> [!IMPORTANT]
+> Wenn Sie vor dem 1. September eine Azure Route Server-Instanz erstellt haben und ihr keine öffentliche IP-Adresse zugeordnet ist, müssen Sie die Route Server-Instanz neu erstellen, damit sie zu Verwaltungszwecken eine IP-Adresse abrufen kann.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -126,7 +129,7 @@ Um die Konfiguration auf dem NVA abzuschließen und die BGP-Sitzungen zu aktivie
 ```azurepowershell-interactive
 $routeserver = @{
     RouteServerName = 'myRouteServer'
-    ResourcGroupName = 'myRouteServerRG'
+    ResourceGroupName = 'myRouteServerRG'
 } 
 Get-AzRouteServer @routeserver
 ```
@@ -147,7 +150,7 @@ Wenn Sie über ein ExpressRoute- und Azure VPN-Gateway in demselben virtuellen 
 ```azurepowershell-interactive
 $routeserver = @{
     RouteServerName = 'myRouteServer'
-    ResourcGroupName = 'myRouteServerRG'
+    ResourceGroupName = 'myRouteServerRG'
     AllowBranchToBranchTraffic
 }  
 Update-AzRouteServer @routeserver 
@@ -158,7 +161,7 @@ Update-AzRouteServer @routeserver
 ```azurepowershell-interactive
 $routeserver = @{
     RouteServerName = 'myRouteServer'
-    ResourcGroupName = 'myRouteServerRG'
+    ResourceGroupName = 'myRouteServerRG'
 }  
 Update-AzRouteServer @routeserver 
 ```
@@ -170,7 +173,7 @@ Verwenden Sie [Get-AzRouteServerPeerAdvertisedRoute](/powershell/module/az.netwo
 ```azurepowershell-interactive
 $remotepeer = @{
     RouteServerName = 'myRouteServer'
-    ResourcGroupName = 'myRouteServerRG'
+    ResourceGroupName = 'myRouteServerRG'
     PeerName = 'myNVA'
 }
 Get-AzRouteServerPeerAdvertisedRoute @routeserver
@@ -181,7 +184,7 @@ Get-AzRouteServerPeerAdvertisedRoute @routeserver
 ```azurepowershell-interactive
 $routeserver = @{
     RouteServerName = 'myRouteServer'
-    ResourcGroupName = 'myRouteServerRG'
+    ResourceGroupName = 'myRouteServerRG'
     AllowBranchToBranchTraffic
 }  
 Get-AzRouteServerPeerLearnedRoute @routeserver

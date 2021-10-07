@@ -1,7 +1,7 @@
 ---
 title: Suchtransformation in einem Zuordnungsdatenfluss
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Verweisen Sie mithilfe der Suchtransformation in einem Zuordnungsdatenfluss auf Daten aus einer anderen Quelle.
+description: Sie können mithilfe der Suchtransformation im Zuordnungsdatenfluss für Azure Data Factory- und Synapse Analytics-Pipelines auf Daten aus einer anderen Quelle verweisen.
 author: kromerm
 ms.reviewer: daperlov
 ms.author: makromer
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 02/19/2021
-ms.openlocfilehash: f6250b15f854870d14d9977c8eebd7c71e565635
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 8c5371fee2b0e7c4440762f9d7e609bf2dd496be
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639994"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060117"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Suchtransformation in einem Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 Verwenden Sie die Suchtransformation, um auf Daten aus einer anderen Quelle in einem Datenfluss zu verweisen. Die Suchtransformation fügt Spalten aus übereinstimmenden Daten an Ihre Quelldaten an.
 
@@ -29,7 +31,7 @@ Eine Suchtransformation ist mit einer linken äußeren Verknüpfung vergleichbar
 
 ## <a name="configuration"></a>Konfiguration
 
-![Screenshot der Registerkarte „Sucheinstellungen“ mit den im folgenden Text beschriebenen Bezeichnungen](media/data-flow/lookup1.png "Nachschlagen")
+:::image type="content" source="media/data-flow/lookup1.png" alt-text="Screenshot der Registerkarte „Sucheinstellungen“ mit den im folgenden Text beschriebenen Bezeichnungen":::
 
 **Primärer Datenstrom:** Der eingehende Datenstrom. Dieser Datenstrom entspricht der linken Seite einer Verknüpfung.
 
@@ -47,13 +49,13 @@ In den Ausgabedaten sind alle Spalten beider Datenströme enthalten. Um doppelte
 
 Wenn Sie in Ihren Joinbedingungen einen bedingten Operator wie „ungleich“ „(!=)“ oder „größer als“ „(>)“ verwenden möchten, ändern Sie die Dropdownliste des Operators zwischen den beiden Spalten. Bei Nicht-Gleichheitsverknüpfungen muss mindestens einer der beiden Datenströme mithilfe der Übertragungsoption **Fixed** (Fest) auf der Registerkarte **Optimieren** übertragen werden.
 
-![Nichtgleichheitsuche](media/data-flow/non-equi-lookup.png "Nichtgleichheitsuche")
+:::image type="content" source="media/data-flow/non-equi-lookup.png" alt-text="Nichtgleichheitsuche":::
 
 ## <a name="analyzing-matched-rows"></a>Analysieren übereinstimmender Zeilen
 
 Nach der Suchtransformation können Sie mithilfe der Funktion `isMatch()` feststellen, ob bei der Suche Übereinstimmungen für einzelne Zeilen ermittelt wurden.
 
-![Suche: Muster](media/data-flow/lookup111.png "Suche: Muster")
+:::image type="content" source="media/data-flow/lookup111.png" alt-text="Suche: Muster":::
 
 Ein Beispiel für dieses Muster ist die Verwendung der Transformation für bedingtes Teilen für die Funktion `isMatch()`. Im obigen Beispiel durchlaufen übereinstimmende Zeilen den obersten Stream und nicht übereinstimmende Zeilen den Stream ```NoMatch```.
 
@@ -63,7 +65,7 @@ Verwenden Sie einen kleinen Satz bekannter Daten, wenn Sie die Suchtransformatio
 
 ## <a name="broadcast-optimization"></a>Broadcastoptimierung
 
-![Broadcastjoin](media/data-flow/broadcast.png "Broadcastjoin")
+:::image type="content" source="media/data-flow/broadcast.png" alt-text="Broadcastjoin":::
 
 Wenn bei Join, Lookup- und Exists-Transformationen der Arbeitsspeicher des Workerknotens groß genug für einen oder beide Datenströme ist, können Sie die Leistung optimieren, indem Sie die **Übertragung** aktivieren. Standardmäßig entscheidet die Spark-Engine automatisch, ob eine Seite übertragen werden soll oder nicht. Klicken Sie auf **Fest**, um die zu übertragende Seite manuell auszuwählen.
 
@@ -89,7 +91,7 @@ Wenn Sie mehrere kleinere Suchvorgänge für dieselbe Quelle ausführen, sind ei
 ```
 ### <a name="example"></a>Beispiel
 
-![Screenshot der Registerkarte „Sucheinstellungen“ für den folgenden Code](media/data-flow/lookup-dsl-example.png "Nachschlagen")
+:::image type="content" source="media/data-flow/lookup-dsl-example.png" alt-text="Screenshot der Registerkarte „Sucheinstellungen“ für den folgenden Code":::
 
 Der nachfolgende Codeausschnitt zeigt das Datenflussskript für die obige Suchkonfiguration.
 

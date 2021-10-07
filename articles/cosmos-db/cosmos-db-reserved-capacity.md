@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/26/2021
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 7726960ac4fc5a4a3a64fe8b51e23e77e157ba6d
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 79dfd958c3f4816fb9486ff2cb56c1f4ea905dc9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037859"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625428"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimieren der Kosten mit reservierter Kapazität in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -71,7 +71,7 @@ Diese Empfehlung zum Erwerb einer Reservierung von 30.000 RU/s weist darauf hin
 
    |Feld  |BESCHREIBUNG  |
    |---------|---------|
-   |`Scope`   |   Eine Option, die steuert, wie viele Abonnements die mit der Reservierung verbundenen Abrechnungsvorteile nutzen können. Sie steuert auch, wie die Reservierung auf bestimmte Abonnements angewendet wird. <br/><br/>  Wenn Sie **Gemeinsam** auswählen, wird der Reservierungsrabatt wird auf Azure Cosmos DB-Instanzen angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Der Abrechnungskontext basiert darauf, wie Sie sich für Azure registriert haben. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Bezahlung umfasst der freigegebene Bereich einzelne Abonnements mit Preisen für nutzungsbasierte Bezahlung, die vom Kontoadministrator erstellt wurden.  <br/><br/>  Wenn Sie **Einzelabonnement** auswählen, wird der Reservierungsrabatt auf Azure Cosmos DB-Instanzen im ausgewählten Abonnement angewendet. <br/><br/> Wenn Sie die Option **Einzelne Ressourcengruppe** wählen, wird der Reservierungsrabatt auf Azure Cosmos DB-Instanzen im ausgewählten Abonnement und die ausgewählte Ressourcengruppe in diesem Abonnement angewendet. <br/><br/> Sie können den Reservierungsumfang nach dem Kauf der reservierten Kapazität ändern.  |
+   |`Scope`   |   Eine Option, die steuert, wie viele Abonnements die mit der Reservierung verbundenen Abrechnungsvorteile nutzen können. Sie steuert auch, wie die Reservierung auf bestimmte Abonnements angewendet wird. <br/><br/>  Wenn Sie **Gemeinsam** auswählen, wird der Reservierungsrabatt wird auf Azure Cosmos DB-Instanzen angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Der Abrechnungskontext basiert darauf, wie Sie sich für Azure registriert haben. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Bezahlung umfasst der freigegebene Bereich einzelne Abonnements mit Preisen für nutzungsbasierte Bezahlung, die vom Kontoadministrator erstellt wurden. </br></br>Wenn Sie **Verwaltungsgruppe** auswählen, wird der Rabatt für Reservierungen auf Azure Cosmos DB-Instanzen angewendet, die in Abonnements ausgeführt werden, die sowohl Teil der Verwaltungsgruppe als auch des Abrechnungsbereichs sind. <br/><br/>  Wenn Sie **Einzelabonnement** auswählen, wird der Reservierungsrabatt auf Azure Cosmos DB-Instanzen im ausgewählten Abonnement angewendet. <br/><br/> Wenn Sie die Option **Einzelne Ressourcengruppe** wählen, wird der Reservierungsrabatt auf Azure Cosmos DB-Instanzen im ausgewählten Abonnement und die ausgewählte Ressourcengruppe in diesem Abonnement angewendet. <br/><br/> Sie können den Reservierungsumfang nach dem Kauf der reservierten Kapazität ändern.  |
    |Subscription  |   Das Abonnement, das für die Bezahlung der reservierten Azure Cosmos DB-Kapazitäten verwendet wird. Die Zahlungsmethode für das ausgewählte Abonnement wird für das Inrechnungstellen der Kosten verwendet. Es muss einer der folgenden Abonnementtypen vorliegen: <br/><br/>  Enterprise Agreement (Angebotsnummer: MS-AZR-0017P oder MS-AZR-0148P): Bei einem Enterprise-Abonnement werden die Gebühren vom Saldo der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) der Reservierung abgezogen oder als Überschreitung belastet. <br/><br/> Einzelnes Abonnement mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P): Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Bezahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung berechnet.    |
    | Ressourcengruppe | Ressourcengruppe, auf die der Rabatt für reservierte Kapazitäten angewendet wird. |
    |Begriff  |   Ein Jahr oder drei Jahre   |

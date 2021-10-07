@@ -6,12 +6,12 @@ ms.date: 09/07/2021
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 5d73da041b5ecb5dd2b7089ee898b5bffbe4f512
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: f0f93a43fd74ba38b8be17636b695e287354ed5a
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542996"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218273"
 ---
 # <a name="quickstart-create-an-automation-account-using-the-azure-portal"></a>Schnellstart: Erstellen eines Automation-Kontos über das Azure-Portal
 
@@ -33,7 +33,7 @@ Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto e
 
 1. Geben Sie auf der Seite **Automation-Konto hinzufügen** die folgenden Informationen an:
 
-   | Eigenschaft | BESCHREIBUNG |
+   | Eigenschaft | Beschreibung |
    |---|---|
    |Name| Geben Sie einen eindeutigen Namen für den Standort und die Ressourcengruppe ein. Namen von gelöschten Automation-Konten sind möglicherweise nicht sofort verfügbar. Nach der Eingabe auf der Benutzeroberfläche kann der Kontoname nicht mehr geändert werden. |
    |Subscription| Wählen Sie in der Dropdownliste das Azure-Abonnement für das Konto aus.|

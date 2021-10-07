@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/03/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 4a392ab735368b9850397e1e921590f898d273c1
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 198d11d85cacb984808db5449524812a151d82b7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557464"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821296"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-templafy-saml2"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Templafy SAML2
 
@@ -39,6 +39,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Templafy SAML2 unterstützt **SP-initiiertes** einmaliges Anmelden.
 * Templafy SAML2 unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* Templafy SAML2 unterstützt die [automatisierte Benutzerbereitstellung](templafy-saml-2-provisioning-tutorial.md).
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
@@ -144,6 +145,8 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Templafy SAML2** müs
 
 In diesem Abschnitt wird ein Benutzer mit dem Namen „B. Simon“ in Templafy SAML2 erstellt. Templafy SAML2 unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Templafy SAML2 vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
+Außerdem unterstützt Templafy SAML2 die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./templafy-saml-2-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -152,7 +155,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Anmelde-URL für Templafy SAML2 auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Templafy SAML2“ klicken, werden Sie zur Anmelde-URL für Templafy SAML2 umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Templafy SAML2“ klicken, werden Sie zur Anmelde-URL für Templafy SAML2 umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

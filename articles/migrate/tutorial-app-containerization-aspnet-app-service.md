@@ -2,17 +2,17 @@
 title: 'Die Azure App-Containerisierung: ASP.NET; Containerisierung und Migration von ASP.NET-Anwendungen zum Azure App Service.'
 description: 'Tutorial: Das Containerisieren und Migrieren von ASP.NET-Anwendungen zum Azure App Service.'
 services: ''
-author: rahugup
+author: rahug1190
 manager: bsiva
 ms.topic: tutorial
 ms.date: 07/02/2021
 ms.author: rahugup
-ms.openlocfilehash: fd0a7d3e1af6bb0a0dad10f9a92194b495b13b91
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: e574b7b71f9ea2c968020a11c7b18c3ff4f0a64b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253112"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621439"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-app-service"></a>Das Containerisieren und Migrieren von ASP.NET-Apps zum Azure App Service
 
@@ -153,7 +153,8 @@ Das App-Containerisierungstool stellt unter Verwendung der angegebenen Anmeldein
 1. Geben Sie die **IP-Adresse oder den FQDN und die Anmeldeinformationen** für den Server an, auf dem die ASP.NET-Anwendung ausgeführt wird. Diese Daten sollen verwendet werden, um eine Remoteverbindung mit dem Server zur Anwendungsermittlung herzustellen.
     - Die angegebenen Anmeldeinformationen müssen für einen lokalen Administrator (Windows) auf dem Anwendungsserver angegeben werden.
     - Bei Domänenkonten (der Benutzer muss Administrator auf dem Anwendungsserver sein) müssen Sie dem Domänennamen den Benutzernamen voranstellen ( *<Domäne\Benutzername>* ).
-    - Sie können die Anwendungsermittlung für bis zu fünf Server gleichzeitig ausführen.
+    - Bei lokalen Konten (der Benutzer muss Administrator auf dem Anwendungsserver sein) müssen Sie dem Benutzernamen den Hostnamen voranstellen ( *<Hostname\Benutzername>* ).
+    - Sie können die Anwendungsermittlung für bis zu fünf Server gleichzeitig ausführen.
 
 2. Klicken Sie auf **Überprüfen**, um sich zu vergewissern, dass der Anwendungsserver von dem Computer aus erreichbar ist, auf dem das Tool ausgeführt wird, und dass die Anmeldeinformationen gültig sind. Bei erfolgreicher Überprüfung wird der Status in der entsprechenden Spalte als **Zugeordnet** angezeigt.  
 
@@ -166,8 +167,8 @@ Das App-Containerisierungstool stellt unter Verwendung der angegebenen Anmeldein
     ![Screenshot der ermittelten ASP.NET-Anwendung](./media/tutorial-containerize-apps-aks/discovered-app-asp.png)
 
 
-4. Verwenden Sie das Kontrollkästchen, um die zu containerisierenden Anwendungen auszuwählen.
-5. **Containername angeben**: Legen Sie Namen für die Zielcontainer der ausgewählten Anwendungen fest. Der Containername sollte im Format <*Name:Tag*> angegeben werden, wobei „Tag“ für das Containerimage verwendet wird. Sie können den Zielcontainernamen beispielsweise auf *appname:v1* festlegen.   
+5. Verwenden Sie das Kontrollkästchen, um die zu containerisierenden Anwendungen auszuwählen.
+6. **Containername angeben**: Legen Sie Namen für die Zielcontainer der ausgewählten Anwendungen fest. Der Containername sollte im Format <*Name:Tag*> angegeben werden, wobei „Tag“ für das Containerimage verwendet wird. Sie können den Zielcontainernamen beispielsweise auf *appname:v1* festlegen.   
 
 ### <a name="parameterize-application-configurations"></a>Parametrisieren von Anwendungskonfigurationen
 Durch das Parametrisieren der Konfiguration steht diese zur Bereitstellungszeit als Parameter zur Verfügung. Das bedeutet, dass Sie diese Einstellung während der Anwendungsbereitstellung konfigurieren können, anstatt sie in einem bestimmten Wert im Containerimage hartzucodieren. Diese Option ist beispielsweise für Parameter wie Datenbank-Verbindungszeichenfolgen nützlich.

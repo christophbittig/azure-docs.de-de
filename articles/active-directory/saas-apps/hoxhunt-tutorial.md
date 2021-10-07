@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: e18cd80c0232c4552c0e3dc57a23477d410c5395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a78ae10f7f5f5428f55003af81366c70c4433d81
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92442557"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591936"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hoxhunt"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Hoxhunt
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Hoxhunt unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Hoxhunt unterstützt die [automatisierte Benutzerbereitstellung](hoxhunt-provisioning-tutorial.md).
 
 ## <a name="adding-hoxhunt-from-the-gallery"></a>Hinzufügen von Hoxhunt über den Katalog
 
@@ -70,7 +71,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Hoxhunt** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -92,6 +93,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Kopieren Sie im Abschnitt **Hoxhunt einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
@@ -124,15 +126,17 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Hoxhunt** müssen Sie
 
 In diesem Abschnitt erstellen Sie in Hoxhunt einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Hoxhunt-Supportteam](mailto:support@hoxhunt.com), um die Benutzer auf der Hoxhunt-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
+Außerdem unterstützt Hoxhunt die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./hoxhunt-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Hoxhunt weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Hoxhunt weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-2. Rufen Sie direkt die Hoxhunt-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die Hoxhunt-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-3. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „Hoxhunt“ klicken, werden Sie zur Anmelde-URL für Hoxhunt umgeleitet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Hoxhunt“ klicken, werden Sie zur Anmelde-URL für Hoxhunt umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

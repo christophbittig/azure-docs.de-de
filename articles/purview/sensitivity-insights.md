@@ -4,19 +4,22 @@ description: In dieser Schrittanleitung wird beschrieben, wie Sie die Berichters
 author: batamig
 ms.author: bagol
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-insights
 ms.topic: how-to
-ms.date: 01/17/2021
-ms.openlocfilehash: d3b828aab13a822c307119dca64dac81c9201d5b
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.date: 09/27/2021
+ms.openlocfilehash: cf3540f439396f3e4308eae10077693de440827f
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397801"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213964"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Vertraulichkeitsbezeichnungs-Erkenntnisse zu Ihren Daten in Azure Purview
 
 In diesem Leitfaden ist beschrieben, wie Sie auf Sicherheitserkenntnisse zugreifen, die von Vertraulichkeitsbezeichnungen bereitgestellt werden, die auf Ihre Daten angewendet wurden, und wie Sie diese Sicherheitserkenntnisse anzeigen und filtern.
+
+> [!IMPORTANT]
+> Erkenntnisse für Azure Purview-Vertraulichkeitsbezeichnungen befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
 Unterstützte Datenquellen sind unter anderem: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, SQL Server, Azure SQL-Datenbank, Azure SQL Managed Instance, Amazon S3 Buckets
 
@@ -40,11 +43,11 @@ Stellen Sie vor dem Beginn mit Purview-Erkenntnissen sicher, dass Sie die folgen
 
 - [Erweitern der Microsoft 365-Vertraulichkeitsbezeichnungen auf Objekte (Assets) in Azure Purview](create-sensitivity-label.md) und Erstellen oder Auswählen der Bezeichnungen, die Sie auf Ihre Daten anwenden möchten
 
-- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen. Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview (Vorschau)](manage-data-sources.md) und [Erstellen eines Überprüfungsregelsatzes](create-a-scan-rule-set.md).
+- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen. Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview](manage-data-sources.md) und [Erstellen eines Überprüfungsregelsatzes](create-a-scan-rule-set.md).
 
 - Anmeldung bei Purview mit einem Konto mit der Rolle [„Datenleser“ oder „Datenkurator“](catalog-permissions.md#roles)
 
-Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview (Vorschau)](manage-data-sources.md) und [Automatisches Bezeichnen Ihrer Daten in Azure Purview](create-sensitivity-label.md).
+Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview](manage-data-sources.md) und [Automatisches Bezeichnen Ihrer Daten in Azure Purview](create-sensitivity-label.md).
 
 ## <a name="use-purview-sensitivity-labeling-insights"></a>Verwenden von Purview-Vertraulichkeitsbezeichnungs-Erkenntnissen
 
@@ -74,7 +77,7 @@ In Purview werden die gleichen Klassifizierungen (auch als [vertrauliche Informa
     > [!NOTE]
     > Ist dieser Bericht leer, haben Sie Ihre Vertraulichkeitsbezeichnungen möglicherweise nicht auf Azure Purview erweitert. Weitere Informationen finden Sie unter [Automatisches Bezeichnen Ihrer Daten in Azure Purview](create-sensitivity-label.md).
 
-   :::image type="content" source="media/insights/sensitivity-labeling-insights-small.png" alt-text="Vertraulichkeitsbezeichnungs-Erkenntnisse" lightbox="media/insights/sensitivity-labeling-insights.png":::
+   :::image type="content" source="media/insights/sensitivity-labeling-insights-small.png" alt-text="Vertraulichkeitsbezeichnungs-Erkenntnisse":::
 
    Die Hauptseite für **Vertraulichkeitsbezeichnungs-Erkenntnisse** zeigt die folgenden Bereiche an:
 
@@ -99,11 +102,11 @@ Wählen Sie in einem der folgenden **Vertraulichkeitsbezeichnungs-Erkenntnisse**
 
 Beispiel:
 
-:::image type="content" source="media/insights/sensitivity-label-drilldown-small.png" alt-text="Drilldown zu Vertraulichkeitsbezeichnungen" lightbox="media/insights/sensitivity-label-drilldown.png":::
+:::image type="content" source="media/insights/sensitivity-label-drilldown-small.png" alt-text="Drilldown zu Vertraulichkeitsbezeichnungen":::
 
 Führen Sie einen der folgenden Schritte aus, um weitere Informationen zu erhalten:
 
-|Option  |BESCHREIBUNG  |
+|Option  |Beschreibung  |
 |---------|---------|
 |**Filtern der Daten**     |  Verwenden Sie die Filter oberhalb des Rasters, um die angezeigten Daten zu filtern, einschließlich des Bezeichnungsnamens, des Abonnementnamens oder des Quellentyps. <br><br>Wenn Sie sich bezüglich des genauen Bezeichnungsnamens nicht sicher sind, können Sie einen Teil oder den ganzen Namen in das Feld **Nach Schlüsselwort filtern** eingeben.       |
 |**Sortieren des Rasters** |Wählen Sie einen Spaltenheader aus, um das Raster nach dieser Spalte zu sortieren. | 

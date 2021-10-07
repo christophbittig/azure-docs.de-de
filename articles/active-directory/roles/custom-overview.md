@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
-ms.date: 11/20/2020
+ms.date: 09/13/2021
 ms.author: rolyon
-ms.reviewer: vincesm
+ms.reviewer: abhijeetsinha
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f376a8e5d61b9bb3fda39184f4ff0873c48c8b43
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 21e1b91c10d687b0b82626372510dcaf2a0611ef
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732333"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601792"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Übersicht über die rollenbasierte Zugriffssteuerung in Azure Active Directory
 
@@ -52,23 +52,23 @@ Im Folgenden finden Sie die allgemeinen Schritte, anhand derer Azure AD ermitte
 
 ## <a name="role-assignment"></a>Rollenzuweisung
 
-Eine Rollenzuweisung ist eine Azure AD-Ressource, die einem *Benutzer* eine *Rollendefinition* in einem bestimmten *Bereich* zuordnet, um Zugriff auf Azure AD-Ressourcen zu gewähren. Der Zugriff wird durch Erstellen einer Rollenzuweisung erteilt und durch Entfernen einer Rollenzuweisung widerrufen. Eine Rollenzuweisung besteht im Kern aus drei Elementen:
+Eine Rollenzuweisung ist eine Azure AD-Ressource, die einem *Sicherheitsprinzipal* eine *Rollendefinition* in einem bestimmten *Bereich* zuordnet, um Zugriff auf Azure AD-Ressourcen zu gewähren. Der Zugriff wird durch Erstellen einer Rollenzuweisung erteilt und durch Entfernen einer Rollenzuweisung widerrufen. Eine Rollenzuweisung besteht im Kern aus drei Elementen:
 
-- Ein Azure AD-Benutzer
-- Rollendefinition
-- Ressourcenumfang
+- Sicherheitsprinzipal: Eine Identität, die die Berechtigungen erhält. Dies kann ein Benutzer, eine Gruppe oder ein Dienstprinzipal sein. 
+- Rollendefinition: Eine Sammlung von Berechtigungen 
+- Bereich: Eine Möglichkeit, den Geltungsbereich dieser Berechtigungen einzuschränken
 
-Zum [Erstellen von Rollenzuweisungen](custom-create.md) können Sie das Azure-Portal, Azure AD PowerShell oder die Graph-API verwenden. Sie können auch [die Rollenzuweisungen auflisten](view-assignments.md).
+Zum [Erstellen von Rollenzuweisungen](manage-roles-portal.md) können Sie das Azure-Portal, Azure AD PowerShell oder die Graph-API verwenden. Sie können auch [die Rollenzuweisungen auflisten](view-assignments.md).
 
-Das folgende Diagramm zeigt ein Beispiel für eine Rollenzuweisung. In diesem Beispiel wurde Chris Green die benutzerdefinierte Rolle „App-Registrierungsadministrator“ für den Bereich der Contoso Widget Builder-App-Registrierung zugewiesen. Diese Zuweisung erteilt Chris nur für diese spezifische App-Registrierung die Berechtigungen der Rolle „App-Registrierungsadministrator“.
+Das folgende Diagramm zeigt ein Beispiel für eine Rollenzuweisung. In diesem Beispiel wurde Chris die benutzerdefinierte Rolle „App-Registrierungsadministrator“ für den Bereich der Contoso Widget Builder-App-Registrierung zugewiesen. Diese Zuweisung erteilt Chris nur für diese spezifische App-Registrierung die Berechtigungen der Rolle „App-Registrierungsadministrator“.
 
 ![Die Rollenzuweisung definiert, wie Berechtigungen erzwungen werden. Sie besteht aus drei Teilen.](./media/custom-overview/rbac-overview.png)
 
 ### <a name="security-principal"></a>Sicherheitsprinzipal
 
-Ein Sicherheitsprinzipal stellt den Benutzer dar, dem Zugriff auf Azure AD-Ressourcen zugewiesen werden soll. Ein Benutzer ist eine Person, die über ein Benutzerprofil in Azure Active Directory verfügt.
+Ein Sicherheitsprinzipal stellt einen Benutzer, eine Gruppe oder einen Dienstprinzipal dar, dem bzw. der Zugriff auf Azure AD-Ressourcen zugewiesen werden. Ein Benutzer ist eine Person, die über ein Benutzerprofil in Azure Active Directory verfügt. Eine Gruppe ist eine neue Microsoft 365- oder Sicherheitsgruppe, deren Eigenschaft „isAssignableToRole“ auf „true“ festgelegt ist (derzeit in der Vorschauphase). Ein Dienstprinzipal ist eine Identität, die für den Zugriff auf Azure AD-Ressourcen mit Anwendungen, gehosteten Diensten und automatisierten Tools erstellt wird.
 
-### <a name="role"></a>Role
+### <a name="role-definition"></a>Rollendefinition
 
 Eine Rollendefinition oder Rolle ist eine Sammlung von Berechtigungen. Eine Rollendefinition listet die Vorgänge auf, die für Azure AD-Ressourcen ausgeführt werden können, z. B. Lesen, Schreiben, Aktualisieren und Löschen. Azure AD umfasst zwei Arten von Rollen:
 
@@ -77,7 +77,21 @@ Eine Rollendefinition oder Rolle ist eine Sammlung von Berechtigungen. Eine Roll
 
 ### <a name="scope"></a>`Scope`
 
-Ein Bereich ist die Beschränkung zulässiger Aktionen auf eine bestimmte Azure AD-Ressource im Rahmen einer Rollenzuweisung. Beim Zuweisen einer Rolle können Sie einen Bereich angeben, der den Zugriff des Administrators auf eine bestimmte Ressource beschränkt. Wenn Sie z. B. einem Entwickler eine benutzerdefinierte Rolle – jedoch nur zum Verwalten einer bestimmten Anwendungsregistrierung – zuweisen möchten, können Sie die entsprechende Anwendungsregistrierung als Bereich in die Rollenzuweisung einschließen.
+Mithilfe eines Bereichs können die zulässigen Aktionen im Rahmen einer Rollenzuweisung auf bestimmte Ressourcen beschränkt werden. Wenn Sie beispielsweise einem Entwickler eine benutzerdefinierte Rolle – jedoch nur zum Verwalten einer bestimmten Anwendungsregistrierung – zuweisen möchten, können Sie die entsprechende Anwendungsregistrierung als Bereich in die Rollenzuweisung einschließen.
+
+Wenn Sie eine Rolle zuweisen, geben Sie einen der folgenden Bereichstypen an:
+
+- Tenant
+- [Verwaltungseinheit](administrative-units.md)
+- Azure AD-Ressource
+
+Wenn Sie eine Azure AD-Ressource als Bereich angeben, ist eine der folgenden Ressourcen möglich:
+
+- Azure AD-Gruppen
+- Unternehmensanwendungen
+- Anwendungsregistrierungen
+
+Weitere Informationen finden Sie unter [Zuweisen von Azure AD-Rollen mit verschiedenen Gültigkeitsbereichen](assign-roles-different-scopes.md).
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 
@@ -86,5 +100,5 @@ Die Nutzung integrierter Rollen in Azure AD ist kostenlos, während für benutz
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Grundlegendes zu Rollen in Azure Active Directory](concept-understand-roles.md)
-- Erstellen von benutzerdefinierten Rollenzuweisungen über das [Azure-Portal, Azure AD PowerShell und die Graph-API](custom-create.md)
-- [Auflisten von Rollenzuweisungen](view-assignments.md)
+- [Zuweisen von Azure AD-Rollen zu Benutzern](manage-roles-portal.md)
+- [Erstellen und Zuweisen einer benutzerdefinierten Rolle](custom-create.md)

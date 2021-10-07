@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 07/26/2021
-ms.openlocfilehash: a974bf12873d46b7835d861b8c4d7007fb7e72ee
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eb94adfa104b68f515374090cfd07f300896a163
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340071"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708812"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>Erstellen von Plänen für ein VM-Angebot
 
@@ -218,6 +218,9 @@ Beim Erstellen einer VM wird die verwendete virtuelle Hardware definiert. Basier
 3. Wenn Sie eine vorhandene VM, die bereits mit Generation 1 veröffentlicht wurde, aktualisieren möchten, bearbeiten Sie die Details auf der Seite **Technische Konfiguration**.
 
 Weitere Informationen zu den Unterschieden zwischen den Funktionen von Generation 1 und Generation 2 finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](../virtual-machines/generation-2.md).
+
+> [!NOTE]
+> Für eine veröffentlichte Generation ist mindestens eine Imageversion erforderlich, damit sie für Kunden verfügbar bleibt. Wenn Sie den gesamten Plan (einschließlich aller Generationen und Images) entfernen möchten, wählen Sie auf der Seite **Planübersicht** die Option **Plan als veraltet kennzeichnen** aus. Informationen hierzu finden Sie im ersten Abschnitt dieses Artikels.
 
 ### <a name="vm-images"></a>VM-Images
 

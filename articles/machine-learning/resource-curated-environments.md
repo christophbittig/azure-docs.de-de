@@ -10,19 +10,20 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.date: 07/08/2021
-ms.openlocfilehash: bf67c2a23bf78960723efa37ea9bdc8f80c0c774
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: dd534574d275dacd8bd549902e9f0e56a1a6ca93
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304714"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667025"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning – zusammengestellte Umgebungen
 
-In diesem Artikel werden die in Azure Machine Learning verfügbaren zusammengestellten Umgebungen aufgelistet. Zusammengestellte Umgebungen werden von Azure Machine Learning bereitgestellt und sind standardmäßig in Ihrem Arbeitsbereich verfügbar. Sie werden durch zwischengespeicherte Docker-Images unterstützt, in denen die neueste Version des Azure Machine Learning SDK verwendet wird. Damit werden die Kosten für die Vorbereitung der Ausführung reduziert und kürzere Bereitstellungszeiten ermöglicht. Verwenden Sie diese Umgebungen, um schnell mit verschiedenen Machine Learning-Frameworks zu beginnen.
+In diesem Artikel werden die in Azure Machine Learning verfügbaren zusammengestellten Umgebungen mit den neuesten Frameworkversionen aufgelistet. Zusammengestellte Umgebungen werden von Azure Machine Learning bereitgestellt und sind standardmäßig in Ihrem Arbeitsbereich verfügbar. Sie werden durch zwischengespeicherte Docker-Images unterstützt, in denen die neueste Version des Azure Machine Learning SDK verwendet wird. Damit werden die Kosten für die Vorbereitung der Ausführung reduziert und kürzere Bereitstellungszeiten ermöglicht. Verwenden Sie diese Umgebungen, um schnell mit verschiedenen Machine Learning-Frameworks zu beginnen.
 
 > [!NOTE]
-> Diese Liste wurde im August 2021 aktualisiert. Verwenden Sie das [Python SDK](how-to-use-environments.md), die [CLI](/cli/azure/ml/environment?view=azure-cli-latest&preserve-view=true#az_ml_environment_list) oder Azure Machine Learning [Studio](how-to-manage-environments-in-studio.md), um die neueste Liste der Umgebungen und ihre Abhängigkeiten abrufen. Weitere Informationen finden Sie im [Artikel zu Umgebungen](how-to-use-environments.md#use-a-curated-environment). Nach dem Release dieses neuen Satzes werden vorherige zusammengestellte Umgebungen ausgeblendet, können aber weiterhin verwendet werden. 
+> Diese Liste wurde im September 2021 aktualisiert. Verwenden Sie das [Python SDK](how-to-use-environments.md), die [CLI](/cli/azure/ml/environment?view=azure-cli-latest&preserve-view=true#az_ml_environment_list) oder Azure Machine Learning [Studio](how-to-manage-environments-in-studio.md), um die neueste Liste der Umgebungen und ihre Abhängigkeiten abrufen. Weitere Informationen finden Sie im [Artikel zu Umgebungen](how-to-use-environments.md#use-a-curated-environment). 
+
 
 ## <a name="pytorch"></a>PyTorch
 
@@ -31,14 +32,14 @@ In diesem Artikel werden die in Azure Machine Learning verfügbaren zusammengest
 **Dockerfile-Konfiguration**: Das folgende Dockerfile kann für Ihre persönlichen Workflows angepasst werden:
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.1-cudnn8-ubuntu18.04:20210806.v1
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.1-cudnn8-ubuntu18.04:20210906.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/pytorch-1.9
 
 # Create conda environment
 RUN conda create -p $AZUREML_CONDA_ENVIRONMENT_PATH \
     python=3.7 \
-    pip=21.2.1 \
+    pip=20.2.4 \
     pytorch=1.9.0 \
     torchvision=0.10.0 \
     torchaudio=0.9.0 \
@@ -57,15 +58,18 @@ RUN HOROVOD_WITH_PYTORCH=1 \
                 'pandas>=1.1,<1.2' \
                 'scipy>=1.5,<1.6' \
                 'numpy>=1.10,<1.20' \
-                'azureml-core==1.33.0' \
-                'azureml-defaults==1.33.0' \
-                'azureml-mlflow==1.33.0' \
-                'azureml-telemetry==1.33.0' \
+                'ipykernel~=6.0' \
+                'azureml-core==1.34.0' \
+                'azureml-defaults==1.34.0' \
+                'azureml-mlflow==1.34.0' \
+                'azureml-telemetry==1.34.0' \
                 'tensorboard==2.4.0' \
                 'tensorflow-gpu==2.4.1' \
                 'onnxruntime-gpu>=1.7,<1.8' \
                 'horovod[pytorch]==0.21.3' \
-                'future==0.17.1'
+                'future==0.17.1' \
+                'torch-tb-profiler==0.2.1'
+
 
 # This is needed for mpi to locate libpython
 ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
@@ -78,7 +82,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 **Dockerfile-Konfiguration**: Das folgende Dockerfile kann für Ihre persönlichen Workflows angepasst werden:
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210806.v1
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210906.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/lightgbm
 
@@ -104,10 +108,11 @@ RUN HOROVOD_WITH_TENSORFLOW=1 \
                 'distributed~=2021.6.0' \
                 'dask-ml~=1.9.0' \
                 'adlfs~=0.7.0' \
-                'azureml-core==1.33.0' \
-                'azureml-defaults==1.33.0' \
-                'azureml-mlflow==1.33.0' \
-                'azureml-telemetry==1.33.0'
+                'ipykernel~=6.0' \
+                'azureml-core==1.34.0' \
+                'azureml-defaults==1.34.0' \
+                'azureml-mlflow==1.34.0' \
+                'azureml-telemetry==1.34.0'
 
 # This is needed for mpi to locate libpython
 ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
@@ -119,7 +124,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 **Dockerfile-Konfiguration**: Das folgende Dockerfile kann für Ihre persönlichen Workflows angepasst werden:
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210806.v1
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210906.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/sklearn-0.24.1
 
@@ -137,10 +142,11 @@ RUN pip install 'matplotlib>=3.3,<3.4' \
                 'pandas>=1.1,<1.2' \
                 'scipy>=1.5,<1.6' \
                 'numpy>=1.10,<1.20' \
-                'azureml-core==1.33.0' \
-                'azureml-defaults==1.33.0' \
-                'azureml-mlflow==1.33.0' \
-                'azureml-telemetry==1.33.0' \
+                'ipykernel~=6.0' \
+                'azureml-core==1.34.0' \
+                'azureml-defaults==1.34.0' \
+                'azureml-mlflow==1.34.0' \
+                'azureml-telemetry==1.34.0' \
                 'scikit-learn==0.24.1'
 
 # This is needed for mpi to locate libpython
@@ -154,7 +160,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 **Dockerfile-Konfiguration**: Das folgende Dockerfile kann für Ihre persönlichen Workflows angepasst werden:
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20210806.v1
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20210906.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/tensorflow-2.4
 
@@ -173,10 +179,11 @@ RUN HOROVOD_WITH_TENSORFLOW=1 \
                 'pandas>=1.1,<1.2' \
                 'scipy>=1.5,<1.6' \
                 'numpy>=1.10,<1.20' \
-                'azureml-core==1.33.0' \
-                'azureml-defaults==1.33.0' \
-                'azureml-mlflow==1.33.0' \
-                'azureml-telemetry==1.33.0' \
+                'ipykernel~=6.0' \
+                'azureml-core==1.34.0' \
+                'azureml-defaults==1.34.0' \
+                'azureml-mlflow==1.34.0' \
+                'azureml-telemetry==1.34.0' \
                 'tensorboard==2.4.0' \
                 'tensorflow-gpu==2.4.1' \
                 'tensorflow-datasets==4.3.0' \

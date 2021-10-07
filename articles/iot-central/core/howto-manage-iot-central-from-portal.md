@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 07/06/2021
 ms.topic: how-to
-ms.openlocfilehash: 53d93bf202e896a8c2678e78917c15cdd39d80fb
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 57486312b380fc18cfdb399343535e5e12245bff
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340474"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091596"
 ---
 # <a name="manage-and-monitor-iot-central-from-the-azure-portal"></a>Verwalten und Überwachen von IoT Central über das Azure-Portal
 
@@ -33,13 +33,17 @@ Navigieren Sie zum Erstellen einer Anwendung zur Seite [IoT Central-Anwendung](h
 * **Vorlage** ist der Typ der IoT Central-Anwendung, die Sie erstellen möchten. Sie können eine neue Anwendung entweder anhand der Liste mit den branchenrelevanten Vorlagen erstellen, um schnell einzusteigen, oder Sie starten von Grund auf neu, indem Sie eine Vorlage für eine **benutzerdefinierte Anwendung** verwenden.
 
 * Der **Standort** beschreibt die [geografische Region](https://azure.microsoft.com/global-infrastructure/geographies/), in der Sie Ihre Anwendung erstellen möchten. Normalerweise wählen Sie den Standort aus, der Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen. Azure IoT Central ist derzeit an den folgenden Standorten verfügbar:
-
-  * Asien-Pazifik
-  * Australien
-  * Europa
-  * Japan
-  * Vereinigtes Königreich
-  * USA
+    
+    * Australien
+    * East Central US (USA, Osten-Mitte)
+    * East US
+    * USA (Ost) 2
+    * Japan, Osten
+    * Nordeuropa
+    * Asien, Südosten
+    * UK, Süden
+    * Europa, Westen
+    * USA (Westen)
 
   Nachdem Sie einen Standort ausgewählt haben, können Sie Ihre Anwendung nicht zu einem späteren Zeitpunkt an einen anderen Standort verschieben.
 

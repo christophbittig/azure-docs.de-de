@@ -2,13 +2,13 @@
 title: Konfigurieren von VMware HCX in Azure VMware Solution
 description: Konfigurieren Sie den lokalen VMware HCX-Connector für Ihre private Azure VMware Solution-Cloud.
 ms.topic: tutorial
-ms.date: 07/30/2021
-ms.openlocfilehash: 1249a694e01e01d4e7aa31c639c4422be2372ee4
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/07/2021
+ms.openlocfilehash: 1fbcd8cc2cc596395f3736949f54f30ac224d060
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255472"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755822"
 ---
 # <a name="configure-on-premises-vmware-hcx-connector"></a>Konfigurieren des lokalen VMware HCX-Connectors
 
@@ -26,9 +26,15 @@ Nachdem Sie diese Schritte ausgeführt haben, verfügen Sie über eine produktio
 
 - [VMware HCX-Connector](install-vmware-hcx.md) wurde installiert.
 
-- Wenn Sie VMware HCX Enterprise verwenden möchten, stellen Sie sicher, dass Sie das [ VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)-Add-On über eine [Supportanfrage](https://portal.azure.com/#create/Microsoft.Support) aktiviert haben.
+- Wenn Sie VMware HCX Enterprise verwenden möchten, stellen Sie sicher, dass Sie das [ VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)-Add-On über eine [Supportanfrage](https://portal.azure.com/#create/Microsoft.Support) aktiviert haben. Es handelt sich um eine kostenlose Testversion für zwölf Monate in Azure VMware Solution.
 
-- [Erforderliche Softwareversionen](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)
+- Falls Sie [VMware HCX MON aktivieren](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-0E254D74-60A9-479C-825D-F373C41F40BC.html) möchten, sollten Sie sicherstellen, dass Sie über Folgendes verfügen:  
+
+   - NSX-T oder VDS in der lokalen Umgebung für HCX-Netzwerkerweiterung (kein Standardswitch)
+
+   - Mindestens ein aktives erweitertes Netzwerksegment
+
+- Die [Anforderungen in Bezug auf die VMware-Softwareversion](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html) sind erfüllt.
 
 - Ihre lokale vSphere-Umgebung (Quellumgebung) erfüllt die [Mindestanforderungen](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
 
@@ -204,31 +210,18 @@ Eine umfassende Übersicht über diese Vorgehensweise vermittelt das Video [Azur
    >
    >:::image type="content" source="media/tutorial-vmware-hcx/hcx-service-mesh-datastore-host.png" alt-text="Screenshot: HCX Service Mesh-Datenspeicher und -Host" lightbox="media/tutorial-vmware-hcx/hcx-service-mesh-datastore-host.png":::
 
+Für den Status des HCX Interconnect-Tunnels sollte **UP** (grün) angezeigt werden. Nun ist alles bereit zum Migrieren und Schützen von Azure VMware Solution-VMs über VMware HCX. Azure VMware Solution unterstützt Workloadmigrationen (mit oder ohne Netzwerkerweiterung). Sie können also weiterhin Workloads in Ihrer vSphere-Umgebung migrieren und Netzwerke lokal erstellen und darin dann VMs bereitstellen. Weitere Informationen finden Sie in der [VMware HCX-Dokumentation](https://docs.vmware.com/en/VMware-HCX/index.html). 
+
+
+
 Eine umfassende Übersicht über diese Vorgehensweise vermittelt das Video [Azure VMware Solution: Service Mesh](https://www.youtube.com/embed/COY3oIws108).
 
-## <a name="create-a-network-extension"></a>Erstellen einer Netzwerkerweiterung
-
-Dies ist ein optionaler Schritt zum Erweitern von Netzwerken aus Ihrer lokalen Umgebung um Azure VMware Solution.
-
-1. Wählen Sie unter **Services** (Dienste) Folgendes aus: **Network Extension** > **Create a Network Extension** („Netzwerkerweiterung“ > „Netzwerkerweiterung erstellen“).
-
-   :::image type="content" source="media/tutorial-vmware-hcx/create-network-extension.png" alt-text="Screenshot: Auswahlmöglichkeiten für das Starten der Erstellung einer Netzwerkerweiterung." lightbox="media/tutorial-vmware-hcx/create-network-extension.png":::
-
-1. Wählen Sie jedes der Netzwerke aus, die Sie um Azure VMware Solution erweitern möchten, und wählen Sie dann **Next** (Weiter) aus.
-
-   :::image type="content" source="media/tutorial-vmware-hcx/select-extend-networks.png" alt-text="Screenshot: Auswahl eines Netzwerks.":::
-
-1. Geben Sie die lokale Gateway-IP-Adresse für jedes der Netzwerke ein, die Sie erweitern möchten, ein, und wählen Sie dann **Submit** (Senden) aus.
-
-   :::image type="content" source="media/tutorial-vmware-hcx/extend-networks-gateway.png" alt-text="Screenshot: Eintrag einer Gateway-IP-Adresse.":::
-
-   Es dauert einige Minuten, bis die Netzwerkerweiterung abgeschlossen ist. Sobald dies der Fall ist, erfolgt die Statusänderung in **Extension complete** (Erweiterung abgeschlossen).
-
-   :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="Screenshot: Status „Erweiterung abgeschlossen“.":::
-
-Eine umfassende Übersicht über diese Vorgehensweise vermittelt das Video [Azure VMware Solution: Netzwerkerweiterung](https://www.youtube.com/embed/gYR0nftKui0).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn der Tunnelstatus für die HCX Interconnect-Appliance **UP** lautet und grün angezeigt wird, können Sie virtuelle Azure VMware Solution-Computer mithilfe von VMware HCX migrieren und schützen. Azure VMware Solution unterstützt Workloadmigrationen (mit oder ohne Netzwerkerweiterung). Sie können weiterhin Workloads in ihrer vSphere-Umgebung migrieren sowie Netzwerke lokal erstellen und VMs in diesen Netzwerken bereitstellen. Weitere Informationen finden Sie in der [VMware HCX-Dokumentation](https://docs.vmware.com/en/VMware-HCX/index.html).
+Nachdem Sie nun den HCX-Connector konfiguriert haben, können Sie sich auch über Folgendes informieren:
+
+- [Erstellen einer HCX-Netzwerkerweiterung](configure-hcx-network-extension.md)
+
+- [Leitfaden zu VMware HCX Mobility Optimized Networking (MON)](vmware-hcx-mon-guidance.md)
 

@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/25/2021
-ms.openlocfilehash: b47efc959518b7a4d35fb5ef79cd04f18cdfaa22
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/27/2021
+ms.openlocfilehash: 02ea61356157c7e2a421c736a1af5bd87a1bcb5c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433510"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212337"
 ---
 # <a name="how-to-get-lineage-from-azure-synapse-analytics-into-azure-purview"></a>Abrufen der Datenherkunft aus Azure Synapse Analytics in Azure Purview
 
@@ -46,7 +46,7 @@ Sie können Pipelines mit Copy-Aktivität im Azure Synapse-Arbeitsbereich erstel
 
 ### <a name="step-3-monitor-lineage-reporting-status"></a>Schritt 3: Überwachen Sie den Status der Datenherkunftsberichte
 
-Nachdem Sie die Azure Synapse-Pipeline ausgeführt haben, können Sie in der Überwachungsansicht der Synapse-Pipeline den Status der Datenherkunftsberichte überprüfen. Klicken Sie dazu auf die folgende Schaltfläche **Datenherkunftsstatus**. Dieselben Informationen sind ebenfalls in der JSON-Aktivitätsausgabe zu finden -> Abschnitt `reportLineageToPurvew`.
+Nachdem Sie die Azure Synapse-Pipeline ausgeführt haben, können Sie in der Überwachungsansicht der Synapse-Pipeline den Status der Datenherkunftsberichte überprüfen. Klicken Sie dazu auf die unten gezeigte Schaltfläche für den **Datenherkunftsstatus**. Dieselben Informationen sind ebenfalls in der JSON-Aktivitätsausgabe zu finden -> Abschnitt `reportLineageToPurvew`.
 
 :::image type="content" source="../data-factory/media/data-factory-purview/monitor-lineage-reporting-status.png" alt-text="Überwachen Sie den Status der Datenherkunftsberichte in der Pipeline-Überwachungsansicht.":::
 

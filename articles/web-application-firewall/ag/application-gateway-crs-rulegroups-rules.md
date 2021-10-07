@@ -5,19 +5,19 @@ description: Diese Seite enthält Informationen zu CRS-Regelgruppen und -Regeln 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2021
+ms.date: 09/02/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: a3908710febab64b8f4bb41692397f87eaee5613
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ad8b70e7a5b07b2e933bc01af42dca0e89683959
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434500"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638005"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-Regelgruppen und -Regeln der Web Application Firewall
 
-Mit der Application Gateway Web Application Firewall (WAF) werden Webanwendungen vor allgemeinen Sicherheitsrisiken und Exploits geschützt. Hierfür werden Regeln verwendet, die basierend auf den OWASP-Kernregelsätzen 3.2, 3.1, 3.0 oder 2.2.9 definiert sind. Diese Regeln können einzeln deaktiviert werden. In diesem Artikel sind die aktuellen Regeln und Regelsätze enthalten.
+Mit der Application Gateway Web Application Firewall (WAF) werden Webanwendungen vor allgemeinen Sicherheitsrisiken und Exploits geschützt. Hierfür werden Regeln verwendet, die basierend auf den OWASP-Kernregelsätzen 3.2, 3.1, 3.0 oder 2.2.9 definiert sind. Diese Regeln können einzeln deaktiviert werden. In diesem Artikel sind die aktuellen Regeln und Regelsätze enthalten. Hier finden Sie Erläuterungen für die seltenen Fälle, in denen ein veröffentlichter Regelsatz aktualisiert werden muss.
 
 ## <a name="core-rule-sets"></a>Kernregelsätze
 
@@ -805,7 +805,7 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 
 # <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="29-rule-sets"></a><a name="owasp229"></a> 2.9-Regelsätze
+## <a name="229-rule-sets"></a><a name="owasp229"></a> 2.2.9-Regelsätze
 
 ### <a name="crs_20_protocol_violations"></a><a name="crs20"></a> crs_20_protocol_violations
 

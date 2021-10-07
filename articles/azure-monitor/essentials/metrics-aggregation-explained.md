@@ -5,15 +5,15 @@ author: rboucher
 ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 03/10/2021
-ms.openlocfilehash: 9c543b1bebfdeb47c1a1e1326f49247d8103191f
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.date: 08/31/2021
+ms.openlocfilehash: 71c348d313c236d438521d70ca135feee647bb32
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340371"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744533"
 ---
-# <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Erläuterungen zur Azure Monitor-Metrikaggregation und -anzeige
+# <a name="azure-monitor-metrics-aggregation-and-display-explained"></a>Erläuterungen zur Azure Monitor-Metrikaggregation und -anzeige
 
 Dieser Artikel erläutert die Aggregation von Metriken in der Azure Monitor-Zeitreihendatenbank, die Azure Monitor-[Plattformmetriken](../data-platform.md) und [benutzerdefinierte Metriken](../essentials/metrics-custom-overview.md) unterstützen. Dieser Artikel gilt auch für [Application Insights-Standardmetriken](../app/app-insights-overview.md). 
 

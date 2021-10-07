@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aaa4618705c40d4ef294df707f9567db1eb2f78b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 9b2e96f288bc2c83f1957aa66a770c09be21282b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122687890"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588502"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>Schnellstart: Erstellen und Verschlüsseln einer Linux-VM mit der Azure CLI
 
@@ -67,7 +67,7 @@ Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauer
 Bei der Azure-Datenträgerverschlüsselung werden die Verschlüsselungsschlüssel in Azure Key Vault gespeichert. Erstellen Sie mit [az keyvault create](/cli/azure/keyvault#az_keyvault_create) einen Schlüsseltresor. Um dem Schlüsseltresor die Speicherung von Verschlüsselungscodes zu ermöglichen, verwenden Sie den Parameter „--enabled-for-disk-encryption“.
 
 > [!Important]
-> Jeder Schlüsseltresor muss einen Namen aufweisen, der in Azure eindeutig ist. Ersetzen Sie in den Beispielen unten <your-unique-keyvault-name> durch einen von Ihnen gewählten Namen.
+> Jeder Schlüsseltresor muss einen Namen aufweisen, der in Azure eindeutig ist. Ersetzen Sie in den folgenden Beispielen \<your-unique-keyvault-name\> durch den Namen, den Sie auswählen.
 
 ```azurecli-interactive
 az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myResourceGroup" --location "eastus" --enabled-for-disk-encryption

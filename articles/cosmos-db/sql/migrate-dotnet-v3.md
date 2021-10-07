@@ -1,18 +1,18 @@
 ---
-title: Migrieren einer Anwendung für die Verwendung des Azure Cosmos DB .NET SDK 3.0 (com.azure.cosmos)
-description: Erfahren Sie, wie Sie Ihre vorhandene .NET-Anwendung von v2 des SDK auf das neuere .NET SDK v3 (com.azure.cosmos-Paket) für die Core-API (SQL) aktualisieren.
+title: Migrieren Sie Ihre Anwendung zur Verwendung des Azure Cosmos DB .NET SDK 3.0 (Microsoft.Azure.Cosmos)
+description: Erfahren Sie, wie Sie Ihre bestehende .NET-Anwendung vom SDK v2 auf das neuere .NET SDK v3 (Microsoft.Azure.Cosmos-Paket) für Core (SQL) API aktualisieren können.
 author: stefArroyo
 ms.author: esarroyo
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 08/26/2021
-ms.openlocfilehash: 65c2ab23c98ae9b3a2c57a71e52c1df37f182139
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 9ee782734baaf8947aa4e4f930cac874e32a5df6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115122"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788190"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>Migrieren einer Anwendung für die Verwendung des Azure Cosmos DB .NET SDK v3
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -148,7 +148,7 @@ CosmosClient client = cosmosClientBuilder.Build();
 
 ### <a name="exceptions"></a>Ausnahmen
 
-Während das v2 SDK `DocumentClientException` verwendete, um Fehler in Vorgängen zu signalisieren, verwendet das v3 SDK `CosmosClientException`, wodurch `StatusCode`, `Diagnostics` und andere antwortbezogene Informationen verfügbar gemacht werden. Bei Verwendung von `ToString()` werden sämtliche Informationen serialisiert:
+Wo das v2 SDK `DocumentClientException` verwendete, um Fehler während Vorgängen zu signalisieren, verwendet das v3 SDK `CosmosClientException`, das `StatusCode`, `Diagnostics` und andere antwortbezogene Informationen verfügbar macht. Alle vollständigen Informationen werden serialisiert, wenn `ToString()` verwendet wird:
 
 ```csharp
 catch (CosmosClientException ex)
@@ -162,7 +162,7 @@ catch (CosmosClientException ex)
 
 ### <a name="diagnostics"></a>Diagnose
 
-Während im v2 SDK die „Direct-Only“-Diagnose über die Eigenschaft `ResponseDiagnosticsString` zur Verfügung stand, verwendet das v3 SDK die Eigenschaft `Diagnostics`. Diese ist in allen Antworten und Ausnahmen verfügbar, die mehr Informationen enthalten und nicht auf den direkten Modus eingeschränkt sind. Sie umfassen nicht nur die Zeit, die vom SDK für den Vorgang aufgewendet wurde, sondern auch die während des Vorgangs kontaktierten Regionen:
+Wenn dem v2 SDK die „Direct-Only“-Diagnose über die Eigenschaft `ResponseDiagnosticsString` zur Verfügung stand, verwendet das v3 SDK `Diagnostics`, das in allen Antworten und Ausnahmen zur Verfügung steht, die umfangreicher und nicht auf den direkten Modus eingeschränkt sind. Sie umfassen nicht nur die Zeit, die beim SDK für den Vorgang aufgewendet wurde, sondern auch die Regionen, die der Vorgang kontaktiert hat:
 
 ```csharp
 try
@@ -195,17 +195,17 @@ Einige Einstellungen in `ConnectionPolicy` wurden umbenannt oder ersetzt:
 
 | .NET v2 SDK | .NET v3 SDK |
 |-------------|-------------|
-|`EnableEndpointRediscovery`|`LimitToEndpoint`: Der Wert wird jetzt invertiert. Wenn `EnableEndpointRediscovery` auf `true` festgelegt wurde, sollte `LimitToEndpoint` auf `false` festgelegt werden. Bevor Sie diese Einstellung verwenden, müssen Sie ihre [Auswirkungen auf den Client](troubleshoot-sdk-availability.md) verstehen.|
-|`ConnectionProtocol`|Entfernt. Das Protokoll ist an den Modus gebunden und lautet entweder „Gateway“ (HTTPS) oder „Direct“ (TCP).|
+|`EnableEndpointRediscovery`|`LimitToEndpoint` – Der Wert wird jetzt invertiert; wenn `EnableEndpointRediscovery` auf `true` festgelegt wurde, sollte `LimitToEndpoint` auf `false` festgelegt werden. Bevor Sie diese Einstellung verwenden, müssen Sie verstehen, [wie sie sich auf den Client auswirkt](troubleshoot-sdk-availability.md).|
+|`ConnectionProtocol`|Entfernt. Das Protokoll ist an den Modus gebunden – entweder „Gateway“ (HTTPS) oder „Direct“ (TCP).|
 |`MediaRequestTimeout`|Entfernt. Anlagen werden nicht mehr unterstützt.|
 
 ### <a name="session-token"></a>Sitzungstoken
 
-Während im v2 SDK das Sitzungstoken einer Antwort als `ResourceResponse.SessionToken` verfügbar gemacht wurde, wenn ein Sitzungstoken erfasst werden musste (weil das Sitzungstoken ein Header ist), macht das v3 SDK diesen Wert in der Eigenschaft `Headers.Session` einer beliebigen Antwort verfügbar.
+Wenn das v2 SDK das Sitzungstoken einer Antwort wie `ResourceResponse.SessionToken` für Fälle verfügbar gemacht hat, in denen die Erfassung des Tokens erforderlich war (weil es ein Header ist), macht das v3 SDK diesen Wert in der Eigenschaft `Headers.Session` jeder beliebigen Antwort verfügbar.
 
 ### <a name="timestamp"></a>Timestamp
 
-Während im v2 SDK der Zeitstempel eines Dokuments über die Eigenschaft `Timestamp` verfügbar gemacht wurde, können Benutzer – da `Document` nicht mehr zur Verfügung steht – die [Systemeigenschaft](../account-databases-containers-items.md#properties-of-an-item) `_ts` einer Eigenschaft in ihrem Modell zuordnen.
+Wenn das v2 SDK den Zeitstempel eines Dokuments über die Eigenschaft `Timestamp` verfügbar gemacht hat, weil `Document` nicht mehr zur Verfügung steht, können Benutzer die `_ts` [Systemeigenschaft](../account-databases-containers-items.md#properties-of-an-item) einer Eigenschaft in ihrem Modell zuordnen.
 
 ### <a name="openasync"></a>OpenAsync
 
@@ -711,4 +711,4 @@ private static async Task DeleteItemAsync(DocumentClient client)
 * Erfahren Sie mehr darüber, [was Sie mit dem v3 SKD tun können](sql-api-dotnet-v3sdk-samples.md).
 * Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
     * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md). 
-    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md).
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

@@ -3,19 +3,19 @@ title: Verwalten von Pre- und Post-Skripts in der Bereitstellung der Updateverwa
 description: In diesem Artikel erfahren Sie, wie Sie Pre- und Post-Skripts für Updatebereitstellungen konfigurieren und verwalten.
 services: automation
 ms.subservice: update-management
-ms.date: 07/20/2021
+ms.date: 09/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 57a8158dca53f4f60bc4405e1b95aa0ad9d2cf9b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f94a21268625adf3df4dda2f022868f7cc40f72f
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472092"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060318"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Verwalten von Pre- und Post-Skripts
 
-Pre- und Post-Skripts sind Runbooks, die vor (Pre-Aufgaben) und nach (Post-Aufgaben) einer Updatebereitstellung in Ihrem Azure Automation-Konto ausgeführt werden. Pre- und Post-Skripts werden nicht lokal, sondern im Azure-Kontext ausgeführt. Pre-Skripts werden zu Beginn der Updatebereitstellung ausgeführt. Post-Skripts werden am Ende der Bereitstellung sowie nach allen konfigurierten Neustarts ausgeführt.
+Pre- und Post-Skripts sind Runbooks, die vor (Pre-Aufgaben) und nach (Post-Aufgaben) einer Updatebereitstellung in Ihrem Azure Automation-Konto ausgeführt werden. Pre- und Post-Skripts werden nicht lokal, sondern im Azure-Kontext ausgeführt. Pre-Skripts werden zu Beginn der Updatebereitstellung ausgeführt. Unter Windows werden Postskripts am Ende der Bereitstellung sowie nach allen konfigurierten Neustarts ausgeführt. Unter Linux werden Postskripts nach dem Ende der Bereitstellung ausgeführt, aber nicht nach einem Neustart des Computers. 
 
 ## <a name="pre-script-and-post-script-requirements"></a>Anforderungen an Pre- und Post-Skripts
 
@@ -45,7 +45,7 @@ Neben den Standardrunbookparametern steht auch der `SoftwareUpdateConfigurationR
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext-Eigenschaften
 
-|Eigenschaft  |type |BESCHREIBUNG  |
+|Eigenschaft  |Type |BESCHREIBUNG  |
 |---------|---------|---------|
 |SoftwareUpdateConfigurationName     |String | Der Name der Softwareupdatekonfiguration.        |
 |SoftwareUpdateConfigurationRunId     |GUID | Die eindeutige ID für die Ausführung        |
@@ -181,7 +181,7 @@ Pre- und Post-Skripts werden nicht direkt auf den Computern in Ihrer Bereitstell
 
 Pre- und Post-Aufgaben werden nicht nativ auf den virtuellen Azure-Computern in Ihrer Bereitstellung, sondern als Runbooks ausgeführt. Für die Interaktion mit den Azure-VMs benötigen Sie die folgenden Elemente:
 
-* Ein ausführendes Konto
+* Eine [verwaltete Identität](../automation-security-overview.md#managed-identities-preview) oder ein ausführendes Konto
 * Ein Runbook, das Sie ausführen möchten
 
 Verwenden Sie das Cmdlet [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) für die Interaktion mit Ihren Azure-VMs. Ein Beispiel dafür finden Sie im Runbookbeispiel [Updateverwaltung: Ausführen eines Skripts mit dem Befehl „Run“](https://github.com/azureautomation/update-management-run-script-with-run-command).
@@ -190,7 +190,7 @@ Verwenden Sie das Cmdlet [Invoke-AzVMRunCommand](/powershell/module/az.compute/i
 
 Pre- und Post-Aufgaben werden im Azure-Kontext ausgeführt und haben keinen Zugriff auf Azure-fremde Computer. Für die Interaktion mit den Azure-fremden Computern benötigen Sie Folgendes:
 
-* Ein ausführendes Konto
+* Eine [verwaltete Identität](../automation-security-overview.md#managed-identities-preview) oder ein ausführendes Konto
 * Einen auf dem Computer installierten Hybrid Runbook Worker
 * Ein Runbook, das Sie lokal ausführen möchten
 * Ein übergeordnetes Runbook
@@ -242,7 +242,7 @@ Die Beispiele basieren alle auf der einfachen Vorlage, die im folgenden Beispiel
 
 .DESCRIPTION
   This script is intended to be run as a part of Update Management pre/post-scripts.
-  It requires a RunAs account.
+  It requires the Automation account's system-assigned managed identity.
 
 .PARAMETER SoftwareUpdateConfigurationRunContext
   This is a system variable which is automatically passed in by Update Management during a deployment.
@@ -251,21 +251,20 @@ Die Beispiele basieren alle auf der einfachen Vorlage, die im folgenden Beispiel
 param(
     [string]$SoftwareUpdateConfigurationRunContext
 )
+
 #region BoilerplateAuthentication
-#This requires a RunAs account
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
 
-Add-AzAccount `
-    -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
 
-$AzureContext = Select-AzSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 #endregion BoilerplateAuthentication
 
 #If you wish to use the run context, it must be converted from JSON
-$context = ConvertFrom-Json  $SoftwareUpdateConfigurationRunContext
+$context = ConvertFrom-Json $SoftwareUpdateConfigurationRunContext
 #Access the properties of the SoftwareUpdateConfigurationRunContext
 $vmIds = $context.SoftwareUpdateConfigurationSettings.AzureVirtualMachines | Sort-Object -Unique
 $runId = $context.SoftwareUpdateConfigurationRunId
@@ -285,6 +284,11 @@ Set-AutomationVariable -Name $runId -Value $vmIds
 $variable = Get-AutomationVariable -Name $runId
 #>
 ```
+
+Wenn Sie möchten, dass das Runbook mit der systemseitig zugewiesenen verwalteten Identität ausgeführt wird, lassen Sie den Code unverändert. Wenn Sie lieber eine benutzerseitig zugewiesene verwaltete Identität verwenden möchten, gehen Sie wie folgt vor:
+1. Entfernen Sie in Zeile 22 `$AzureContext = (Connect-AzAccount -Identity).context`.
+1. Fügen Sie stattdessen `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` ein.
+1. Geben Sie die Client-ID ein.
 
 > [!NOTE]
 > Für nicht grafische PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](../automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.

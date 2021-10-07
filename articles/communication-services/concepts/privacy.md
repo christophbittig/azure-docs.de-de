@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b8500ed6c43149e47a82b58e9b25a07ac7eef59
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 06817450cb0957e845b5b9fecde21d94080183ac
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258049"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060989"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionale Verfügbarkeit und Datenresidenz
 
@@ -22,6 +22,9 @@ Azure Communication Services unterstützt Kunden bei der Erfüllung ihrer Anford
 ## <a name="data-residency"></a>Datenresidenz
 
 Bei der Erstellung einer Communication Services-Ressource geben Sie kein Azure-Rechenzentrum, sondern eine **geografische Region** an. Alle von Communication Services gespeicherten Chatnachrichten und Ressourcendaten werden im Ruhezustand in dieser geografischen Region gespeichert. Das Rechenzentrum wird dabei intern von Communication Services ausgewählt. Daten können jedoch andere geografische Regionen durchlaufen oder in anderen geografischen Regionen verarbeitet werden. Diese globalen Endpunkte sind erforderlich, um Endbenutzern unabhängig von ihrem Standort eine hohe Leistung mit geringer Wartezeit zu bieten.
+
+> [!NOTE]
+> Bei PSTN und SMS werden die für den Betrieb und die Abrechnung des Diensts erforderlichen Anruf- und Nachrichtendatensätze unter Umständen in den USA gespeichert.
 
 ## <a name="data-collection"></a>Datensammlung
 
@@ -75,11 +78,11 @@ Gesendete und empfangene SMS-Nachrichten werden flüchtig durch den Dienst verar
 
 ### <a name="pstn-voice-calling"></a>Sprachanrufe über das Festnetz
 
-Audio- und Videokommunikation wird flüchtig durch den Dienst verarbeitet, und mit Ausnahme von Azure Monitor-Protokollen werden keine Daten in Ihrer Ressource gespeichert.
+Audio- und Videokommunikation wird flüchtig durch den Dienst verarbeitet, und mit Ausnahme von Azure Monitor-Protokollen werden keine Daten zur Anrufabwicklung in Ihrer Ressource gespeichert.
 
 ### <a name="internet-voice-and-video-calling"></a>Sprach- und Videoanrufe über das Internet
 
-Audio- und Videokommunikation wird flüchtig durch den Dienst verarbeitet, und mit Ausnahme von Azure Monitor-Protokollen werden keine Daten in Ihrer Ressource gespeichert.
+Audio- und Videokommunikation wird flüchtig durch den Dienst verarbeitet, und mit Ausnahme von Azure Monitor-Protokollen werden keine Daten zur Anrufabwicklung in Ihrer Ressource gespeichert.
 
 ### <a name="call-recording"></a>Anrufaufzeichnung
 

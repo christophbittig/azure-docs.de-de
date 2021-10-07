@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/01/2021
+ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 119cf21f90102f7ebccd8e4e06cd5e5dee3c4bfe
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 01a483e43429f45562cbb464e2b595023bd2ad5f
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427982"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091025"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -54,9 +54,9 @@ Nein. Die IP-Zuweisung zu Azure NetApp Files-Volumes ist dynamisch. Die statisch
 
 Nein, Azure NetApp Files unterstützt derzeit kein Doppelstapel-VNet (IPv4 und IPv6).  
 
-### <a name="is-the-number-of-the-ip-addresses-using-azure-vmware-solutions-for-guest-os-mounts-limited-to-1000"></a>Ist die Anzahl der IP-Adressen, die Azure VMWare Solutions für Gastbetriebssystem-Einbindungen verwenden, [auf 1.000 beschränkt](azure-netapp-files-resource-limits.md#resource-limits)?
+### <a name="is-the-number-of-the-ip-addresses-using-azure-vmware-solutions-for-guest-os-mounts-limited-to-1000"></a>Ist die Anzahl der IP-Adressen, die Azure VMware Solution für Gastbetriebssystemeinbindungen verwenden, [auf 1.000 beschränkt](azure-netapp-files-resource-limits.md#resource-limits)?
 
-Nein. Azure VMWare Solutions befindet sich hinter einem ER-Gateway. Dadurch verhält es sich ähnlich wie ein lokales System. Die Anzahl der AVS-„Hosts“ und -„Gäste“ ist für Azure NetApp Files nicht sichtbar und der Grenzwert von 1.000 IP-Adressen ist nicht anwendbar.
+Nein. Azure VMware Solution befindet sich hinter einem ER-Gateway. Dadurch verhält sich der Dienst ähnlich wie ein lokales System. Die Anzahl der AVS-„Hosts“ und -„Gäste“ ist für Azure NetApp Files nicht sichtbar und der Grenzwert von 1.000 IP-Adressen ist nicht anwendbar.
  
 ## <a name="security-faqs"></a>Häufig gestellte Fragen zur Sicherheit
 
@@ -277,7 +277,7 @@ Size: 4096            Blocks: 8          IO Block: 65536  directory
 Ja, die für Momentaufnahmen [genutzte Kapazität](azure-netapp-files-cost-model.md#capacity-consumption-of-snapshots) zählt zum bereitgestellten Speicherplatz im Volume. Wenn das Volume vollständig ausgelastet ist, kommen folgende Maßnahmen in Frage:
 
 * [Ändern Sie die Größe des Volumes](azure-netapp-files-resize-capacity-pools-or-volumes.md).
-* [Entfernen Sie ältere Momentaufnahmen](azure-netapp-files-manage-snapshots.md#delete-snapshots), um Speicherplatz auf dem Hostingvolume freizugeben. 
+* [Entfernen Sie ältere Momentaufnahmen](snapshots-delete.md), um Speicherplatz auf dem Hostingvolume freizugeben. 
 
 ### <a name="does-azure-netapp-files-support-auto-grow-for-volumes-or-capacity-pools"></a>Wird in Azure NetApp Files die automatische Vergrößerung für Volumes oder Kapazitätspools unterstützt?
 
@@ -317,7 +317,7 @@ Standardmäßig verbleiben Ihre Daten in der Region, in der Sie Ihre Azure NetAp
     
 Azure NetApp Files stellt NFS- und SMB-Volumes bereit.  Sie können jedes dateibasierte Kopiertool zum Replizieren von Daten zwischen Azure-Regionen verwenden. 
 
-Mit der Funktion zur [regionsübergreifenden Replikation](cross-region-replication-introduction.md) können Sie Daten asynchron aus einem Azure NetApp Files-Volume (Quelle) in einer Region in ein anderes Azure NetApp Files-Volume (Ziel) in einer anderen Region replizieren.  Außerdem können Sie [unter Verwendung einer Momentaufnahme eines vorhandenen Volumes ein neues Volume erstellen](azure-netapp-files-manage-snapshots.md#restore-a-snapshot-to-a-new-volume).
+Mit der Funktion zur [regionsübergreifenden Replikation](cross-region-replication-introduction.md) können Sie Daten asynchron aus einem Azure NetApp Files-Volume (Quelle) in einer Region in ein anderes Azure NetApp Files-Volume (Ziel) in einer anderen Region replizieren.  Außerdem können Sie [unter Verwendung einer Momentaufnahme eines vorhandenen Volumes ein neues Volume erstellen](snapshots-restore-new-volume.md).
 
 NetApp bietet eine SaaS-basierte Lösung: [NetApp Cloud Sync](https://cloud.netapp.com/cloud-sync-service).  Die Lösung ermöglicht es Ihnen, NFS- oder SMB-Daten in Azure NetApp Files-NFS-Exporte oder SMB-Dateifreigaben zu replizieren. 
 
@@ -336,6 +336,34 @@ Nein. Azure Data Box unterstützt Azure NetApp Files derzeit nicht.
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>Wird die Migration mit dem Azure Import/Export-Dienst unterstützt?
 
 Nein. Der Azure Import/Export-Dienst unterstützt Azure NetApp Files derzeit nicht.
+
+## <a name="azure-netapp-files-backup-faqs"></a>Häufig gestellte Fragen zur Azure NetApp Files-Sicherung
+
+In diesem Abschnitt werden Fragen zum Feature für [Azure NetApp Files-Sicherungen](backup-introduction.md) beantwortet. 
+
+### <a name="when-do-my-backups-occur"></a>Wann werden meine Sicherungen durchgeführt?   
+
+Azure NetApp Files-Sicherungen werden innerhalb eines zufälligen Zeitraums gestartet, nachdem die Frequenz einer Sicherungsrichtlinie eingegeben wurde. Beispielsweise werden wöchentliche Sicherungen sonntags innerhalb eines zufällig zugewiesenen Intervalls nach 00:00 Uhr initiiert. Diese Zeitsteuerung kann von den Benutzer*innen derzeit nicht geändert werden. Die Baselinesicherung wird initiiert, sobald Sie dem Volume die Sicherungsrichtlinie zuweisen.
+
+### <a name="what-happens-if-a-backup-operation-encounters-a-problem"></a>Was geschieht, wenn bei einem Sicherungsvorgang ein Problem auftritt?
+
+Wenn während eines Sicherungsvorgangs ein Problem auftritt, wird der Vorgang für die Azure NetApp Files-Sicherung automatisch erneut ausgeführt, ohne dass eine Benutzerinteraktion erforderlich ist. Wenn bei Wiederholungsversuchen weiterhin Fehler auftreten, meldet die Azure NetApp Files-Sicherung, dass der Vorgang nicht erfolgreich durchgeführt wurde.
+
+### <a name="can-i-change-the-location-or-storage-tier-of-my-backup-vault"></a>Kann ich den Speicherort oder die Speicherebene meines Sicherungstresors ändern?
+
+Nein, Azure NetApp Files verwaltet automatisch den Sicherungsdatenspeicherort in Azure Storage, und dieser Speicherort oder die Azure-Speicherebene kann von Benutzer*innen nicht geändert werden.
+
+### <a name="what-types-of-security-are-provided-for-the-backup-data"></a>Welche Arten von Sicherheit werden für die Sicherungsdaten bereitgestellt?
+
+Azure NetApp Files verwendet während der Codierung der empfangenen Sicherungsdaten die AES-256-Bit-Verschlüsselung. Darüber hinaus werden die verschlüsselten Daten mithilfe von HTTPS-TLSv1.2-Verbindungen sicher an den Azure-Speicher übertragen. Die Azure NetApp Files-Sicherung ist von der integrierten Funktion des Azure Storage-Kontos für die Verschlüsselung ruhender Daten zum Speichern der Sicherungsdaten abhängig.
+
+### <a name="what-happens-to-the-backups-when-i-delete-a-volume-or-my-netapp-account"></a>Was geschieht mit den Sicherungen, wenn ich ein Volume oder mein NetApp-Konto lösche? 
+
+ Wenn Sie ein Azure NetApp Files-Volume löschen, werden die Sicherungen beibehalten. Wenn Sie die Sicherungen nicht beibehalten möchten, deaktivieren Sie die Sicherungen vor dem Löschen des Volumes. Wenn Sie ein NetApp-Konto löschen, werden die Sicherungen weiterhin beibehalten und unter anderen NetApp-Konten desselben Abonnements angezeigt, sodass sie noch für die Wiederherstellung verfügbar sind. Wenn Sie alle NetApp-Konten unter einem Abonnement löschen, müssen Sie sicherstellen, dass Sie Sicherungen deaktivieren, bevor Sie alle Volumes unter allen NetApp-Konten löschen.
+
+### <a name="whats-the-systems-maximum-backup-retries-for-a-volume"></a>Welche maximale Anzahl von wiederholten Sicherungsversuchen für ein Volume gibt das System vor?  
+
+Das System unternimmt bei der Verarbeitung eines geplanten Sicherungsauftrags zehn Wiederholungsversuche. Wenn der Auftrag fehlschlägt, gibt das System einen Fehler für den Sicherungsvorgang aus. Bei geplanten Sicherungen (basierend auf der konfigurierten Richtlinie) versucht das System, die Daten einmal pro Stunde zu sichern. Wenn neue Momentaufnahmen verfügbar sind, die nicht übertragen wurden (oder bei denen beim letzten Versuch ein Fehler aufgetreten ist), werden diese Momentaufnahmen bei der Übertragung berücksichtigt. 
 
 ## <a name="product-faqs"></a>Häufig gestellte Fragen (FAQs) zu Produkten
 

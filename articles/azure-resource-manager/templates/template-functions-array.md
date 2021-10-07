@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Arrays
 description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Arbeiten mit Arrays verwendet werden können.
 ms.topic: conceptual
-ms.date: 05/11/2021
-ms.openlocfilehash: 62704fc3ac6b4198e35d09f9951b9239bd95ce5a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/08/2021
+ms.openlocfilehash: 25fb249e1840a7538fa1dd14f3b1a930bbefdfee
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959734"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755993"
 ---
 # <a name="array-functions-for-arm-templates"></a>Arrayfunktionen für ARM-Vorlagen
 
@@ -52,45 +52,7 @@ Ein -Array.
 
 Im folgenden Beispiel wird die Verwendung der array-Funktion mit unterschiedlichen Typen gezeigt.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "intToConvert": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "stringToConvert": {
-      "type": "string",
-      "defaultValue": "efgh"
-    },
-    "objectToConvert": {
-      "type": "object",
-      "defaultValue": {
-        "a": "b",
-        "c": "d"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "intOutput": {
-      "type": "array",
-      "value": "[array(parameters('intToConvert'))]"
-    },
-    "stringOutput": {
-      "type": "array",
-      "value": "[array(parameters('stringToConvert'))]"
-    },
-    "objectOutput": {
-      "type": "array",
-      "value": "[array(parameters('objectToConvert'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/array.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -111,7 +73,7 @@ Kombiniert mehrere Arrays und gibt das verkettete Array zurück oder kombiniert 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Das erste Array bzw. die erste Zeichenfolge für die Verkettung. |
-| zusätzliche Argumente |Nein  |Array oder Zeichenfolge |Weitere Arrays bzw. Zeichenfolgen in sequenzieller Reihenfolge für die Verkettung. |
+| mehr Argumente |Nein  |Array oder Zeichenfolge |Weitere Arrays oder Strings in sequenzieller Reihenfolge für die Verkettung. |
 
 Diese Funktion akzeptiert eine beliebige Anzahl von Argumenten und Zeichenfolgen oder Arrays für die Parameter. Sie können jedoch nicht sowohl Arrays als auch Zeichenfolgen für Parameter angeben. Arrays werden nur mit anderen Arrays verkettet.
 
@@ -123,38 +85,7 @@ Eine Zeichenfolge oder ein Array aus verketteten Werten.
 
 Im folgenden Beispiel wird veranschaulicht, wie zwei Arrays kombiniert werden.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [
-        "1-1",
-        "1-2",
-        "1-3"
-      ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [
-        "2-1",
-        "2-2",
-        "2-3"
-      ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "return": {
-      "type": "array",
-      "value": "[concat(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/concat-array.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -162,27 +93,9 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json) zeigt, wie zwei Zeichenfolgenwerte kombiniert werden und eine verkettete Zeichenfolge zurückgegeben wird.
+Das folgende Beispiel zeigt, wie zwei Zeichenfolgenwerte kombiniert werden und eine verkettete Zeichenfolge zurückgeben.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "prefix": {
-      "type": "string",
-      "defaultValue": "prefix"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "concatOutput": {
-      "type": "string",
-      "value": "[concat(parameters('prefix'), '-', uniqueString(resourceGroup().id))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/concat-string.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -211,62 +124,11 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Das folgende Beispiel zeigt die Verwendung von „contains“ mit unterschiedlichen Typen:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "OneTwoThree"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "stringTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'e')]"
-    },
-    "stringFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'z')]"
-    },
-    "objectTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'one')]"
-    },
-    "objectFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'a')]"
-    },
-    "arrayTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'three')]"
-    },
-    "arrayFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'four')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/contains.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -283,7 +145,7 @@ Erstellt ein Array auf der Grundlage der Parameter.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | args |Nein |Zeichenfolge, ganze Zahl, Array oder Objekt |Die Werte im Array. |
 
@@ -295,54 +157,11 @@ Ein -Array. Wenn keine Parameter angegeben werden, wird ein leeres Array zurück
 
 Das folgende Beispiel zeigt die Verwendung von „createArray“ mit unterschiedlichen Typen:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "stringArray": {
-      "type": "array",
-      "value": "[createArray('a', 'b', 'c')]"
-    },
-    "intArray": {
-      "type": "array",
-      "value": "[createArray(1, 2, 3)]"
-    },
-    "objectArray": {
-      "type": "array",
-      "value": "[createArray(parameters('objectToTest'))]"
-    },
-    "arrayArray": {
-      "type": "array",
-      "value": "[createArray(parameters('arrayToTest'))]"
-    },
-    "emptyArray": {
-      "type": "array",
-      "value": "[createArray()]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/createarray.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | stringArray | Array | ["a", "b", "c"] |
 | intArray | Array | [1, 2, 3] |
@@ -358,9 +177,9 @@ Bestimmt, ob ein Array, Objekt oder eine Zeichenfolge leer ist.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Ja |Array, Objekt oder Zeichenfolge |Der Wert, für den geprüft werden soll, ob er leer ist. |
+| itemToTest |Ja |Array, Objekt oder Zeichenfolge |Der Wert, für den überprüft werden soll, ob er leer ist. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -370,46 +189,11 @@ Gibt **True** zurück, wenn der Werte leer ist. Andernfalls wird **False** zurü
 
 Im folgenden Beispiel wird überprüft, ob ein Array, Objekt und eine Zeichenfolge leer sind.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": []
-    },
-    "testObject": {
-      "type": "object",
-      "defaultValue": {}
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": ""
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testArray'))]"
-    },
-    "objectEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testObject'))]"
-    },
-    "stringEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/empty.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -423,7 +207,7 @@ Gibt das erste Element des Arrays oder das erste Zeichen der Zeichenfolge zurüc
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen erstes Element oder Zeichen abgerufen wird. |
 
@@ -435,30 +219,7 @@ Der Typ (Zeichenfolge, ganze Zahl, Array oder Objekt) des ersten Elements in ein
 
 Im folgenden Beispiel wird die Verwendung der first-Funktion mit einem Array und einer Zeichenfolge gezeigt.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayOutput": {
-      "type": "string",
-      "value": "[first(parameters('arrayToTest'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[first('One Two Three')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/first.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -479,7 +240,7 @@ Gibt ein einzelnes Array oder ein Objekt mit den gemeinsamen Elementen aus den P
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Objekt |Der erste Wert für die Suche nach gemeinsamen Elementen. |
 | arg2 |Ja |Array oder Objekt |Der zweite Wert für die Suche nach gemeinsamen Elementen. |
-| zusätzliche Argumente |Nein |Array oder Objekt |Weitere Werte für die Suche nach gemeinsamen Elementen. |
+| mehr Argumente |Nein |Array oder Objekt |Weitere Werte für die Suche nach gemeinsamen Elementen. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -487,52 +248,9 @@ Ein Array oder Objekt mit den gemeinsamen Elementen.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die Verwendung von „intersection“ mit Arrays und Objekten gezeigt:
+Das folgende Beispiel zeigt, wie Sie die Schnittmenge mit Arrays und Objekten verwenden können.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstObject": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "secondObject": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "z",
-        "three": "c"
-      }
-    },
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [ "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "objectOutput": {
-      "type": "object",
-      "value": "[intersection(parameters('firstObject'), parameters('secondObject'))]"
-    },
-    "arrayOutput": {
-      "type": "array",
-      "value": "[intersection(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/intersection.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -561,30 +279,7 @@ Der Typ (Zeichenfolge, ganze Zahl, Array oder Objekt) des letzten Elements in ei
 
 Im folgenden Beispiel wird die Verwendung der last-Funktion mit einem Array und einer Zeichenfolge gezeigt.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayOutput": {
-      "type": "string",
-      "value": "[last(parameters('arrayToTest'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[last('One Two Three')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/last.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -611,55 +306,9 @@ Eine ganze Zahl.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die Verwendung von „length“ mit einem Array und einer Zeichenfolge gezeigt:
+Das folgende Beispiel zeigt, wie man length mit einem Array und einer Zeichenkette verwendet.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "propA": "one",
-        "propB": "two",
-        "propC": "three",
-        "propD": {
-          "propD-1": "sub",
-          "propD-2": "sub"
-        }
-      }
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayLength": {
-      "type": "int",
-      "value": "[length(parameters('arrayToTest'))]"
-    },
-    "stringLength": {
-      "type": "int",
-      "value": "[length(parameters('stringToTest'))]"
-    },
-    "objectLength": {
-      "type": "int",
-      "value": "[length(parameters('objectToTest'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/length.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -698,31 +347,9 @@ Ein Ganzzahlwert, der den größten Wert darstellt.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird gezeigt, wie „max“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird:
+Das folgende Beispiel zeigt, wie man max mit einem Array und einer Liste von Ganzzahlen verwendet.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ 0, 3, 2, 5, 4 ]
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "int",
-      "value": "[max(parameters('arrayToTest'))]"
-    },
-    "intOutput": {
-      "type": "int",
-      "value": "[max(0,3,2,5,4)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/max.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -749,31 +376,9 @@ Ein Ganzzahlwert, der den kleinsten Wert darstellt.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird gezeigt, wie „min“ mit einem Array und einer Liste mit ganzen Zahlen verwendet wird:
+Das folgende Beispiel zeigt, wie man min mit einem Array und einer Liste von Ganzzahlen verwendet.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ 0, 3, 2, 5, 4 ]
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "int",
-      "value": "[min(parameters('arrayToTest'))]"
-    },
-    "intOutput": {
-      "type": "int",
-      "value": "[min(0,3,2,5,4)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/min.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -801,31 +406,9 @@ Ein Array mit ganzen Zahlen.
 
 ### <a name="example"></a>Beispiel
 
-Das folgende Beispiel zeigt die Verwendung der „range“-Funktion:
+Das folgende Beispiel zeigt, wie Sie die Bereichsfunktion verwenden.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "startingInt": {
-      "type": "int",
-      "defaultValue": 5
-    },
-    "numberOfElements": {
-      "type": "int",
-      "defaultValue": 3
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "rangeOutput": {
-      "type": "array",
-      "value": "[range(parameters('startingInt'),parameters('numberOfElements'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/range.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -844,7 +427,7 @@ Gibt ein Array mit allen Elementen gemäß der angegebenen Anzahl im Array bzw. 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |Array oder Zeichenfolge |Array oder Zeichenfolge, wo Elemente übersprungen werden sollen. |
-| numberToSkip |Ja |INT |Die Anzahl der zu überspringenden Elemente bzw. Zeichen. Wenn dieser Wert 0 (null) oder kleiner ist, werden alle Elemente oder Zeichen in dem Wert zurückgegeben. Ist der Wert größer als die Länge des Arrays bzw. der Zeichenfolge, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. |
+| numberToSkip |Ja |INT |Die Anzahl der zu überspringenden Elemente bzw. Zeichen. Wenn dieser Wert 0 (null) oder kleiner ist, werden alle Elemente oder Zeichen in dem Wert zurückgegeben. Ist er größer als die Länge des Arrays bzw. der Zeichenfolge, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -854,49 +437,11 @@ Ein Array oder eine Zeichenfolge.
 
 Im folgenden Beispiel wird die angegebene Anzahl von Elementen im Array und Zeichen in der Zeichenfolge übersprungen.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "elementsToSkip": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    },
-    "charactersToSkip": {
-      "type": "int",
-      "defaultValue": 4
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "array",
-      "value": "[skip(parameters('testArray'),parameters('elementsToSkip'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[skip(parameters('testString'),parameters('charactersToSkip'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/skip.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
@@ -905,14 +450,14 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 `take(originalValue, numberToTake)`
 
-Gibt ein Array mit der angegebenen Anzahl von Elementen ab dem Anfang des Arrays bzw. eine Zeichenfolge mit der angegebenen Anzahl von Zeichen ab dem Anfang der Zeichenfolge zurück.
+Gibt ein Array oder eine Zeichenkette zurück. Ein Array hat die angegebene Anzahl von Elementen ab dem Beginn des Arrays. Eine Zeichenkette hat die angegebene Anzahl von Zeichen vom Anfang der Zeichenkette an.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |Array oder Zeichenfolge |Das Array bzw. die Zeichenfolge, wo die Elemente entnommen werden sollen. |
-| numberToTake |Ja |INT |Die Anzahl der zu entnehmenden Elemente bzw. Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. Ist der Wert größer als die Länge des entsprechenden Arrays bzw. der Zeichenfolge, werden alle Elemente des Arrays bzw. der Zeichenfolge zurückgegeben. |
+| numberToTake |Ja |INT |Die Anzahl der zu entnehmenden Elemente bzw. Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. Ist er größer als die Länge des entsprechenden Arrays bzw. der Zeichenfolge, werden alle Elemente des Arrays bzw. der Zeichenfolge zurückgegeben. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -922,49 +467,11 @@ Ein Array oder eine Zeichenfolge.
 
 Im folgenden Beispiel wird die angegebene Anzahl von Elementen aus dem Array und Zeichen aus der Zeichenfolge entnommen.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "elementsToTake": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    },
-    "charactersToTake": {
-      "type": "int",
-      "defaultValue": 2
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "array",
-      "value": "[take(parameters('testArray'),parameters('elementsToTake'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[take(parameters('testString'),parameters('charactersToTake'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/take.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
@@ -977,11 +484,11 @@ Gibt ein einzelnes Array oder Objekt mit allen Elementen aus den Parametern zur�
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Objekt |Der erste zum Verknüpfen von Elementen zu verwendende Wert. |
 | arg2 |Ja |Array oder Objekt |Der zweite zum Verknüpfen von Elementen zu verwendende Wert. |
-| zusätzliche Argumente |Nein |Array oder Objekt |Weitere zum Verknüpfen von Elementen zu verwendende Werte. |
+| mehr Argumente |Nein |Array oder Objekt |Weitere Werte, die für die Verbindung von Elementen zu verwenden sind. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -989,56 +496,13 @@ Ein Array oder Objekt.
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird die Verwendung von „union“ mit Arrays und Objekten gezeigt:
+Das folgende Beispiel zeigt, wie Union mit Arrays und Objekten verwendet werden kann.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstObject": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c1"
-      }
-    },
-    "secondObject": {
-      "type": "object",
-      "defaultValue": {
-        "three": "c2",
-        "four": "d",
-        "five": "e"
-      }
-    },
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [ "three", "four" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "objectOutput": {
-      "type": "object",
-      "value": "[union(parameters('firstObject'), parameters('secondObject'))]"
-    },
-    "arrayOutput": {
-      "type": "array",
-      "value": "[union(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/union.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |

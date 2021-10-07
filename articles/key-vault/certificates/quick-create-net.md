@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9188079a93c9c2688a310413401e90014b278bf8
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 47f3bc4082edf64a66fbc90e4f9838040220f3f0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813414"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782383"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>Schnellstart: Azure Key Vault-Zertifikatclientbibliothek für .NET (SDK v4)
 
@@ -134,9 +134,9 @@ using Azure.Security.KeyVault.Certificates;
 
 ### <a name="authenticate-and-create-a-client"></a>Authentifizieren und Erstellen eines Clients
 
-In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren beim Schlüsseltresor verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie in der [Übersicht zu verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren beim Schlüsseltresor verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie unter [Übersicht zu verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md.
 
-Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential) aus der [Azure Identity-Bibliothek](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme) verwendet, wodurch der gleiche Code in verschiedenen Umgebungen mit verschiedenen Optionen für die Identitätsbereitstellung verwendet werden kann. Weitere Informationen zur Authentifizierung beim Schlüsseltresor finden Sie im [Entwicklerhandbuch](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
+Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential) aus der [Azure Identity-Bibliothek](/dotnet/api/overview/azure/identity-readme) verwendet, wodurch der gleiche Code in verschiedenen Umgebungen mit verschiedenen Optionen für die Identitätsbereitstellung verwendet werden kann. Weitere Informationen zur Authentifizierung beim Schlüsseltresor finden Sie im [Entwicklerhandbuch](../general/developers-guide.md#authenticate-to-key-vault-in-code).
 
 ```csharp
 string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -147,7 +147,7 @@ var client = new CertificateClient(new Uri(kvUri), new DefaultAzureCredential())
 
 ### <a name="save-a-certificate"></a>Speichern eines Zertifikats
 
-In diesem Beispiel können Sie der Einfachheit halber das selbstsignierte Zertifikat mit der Standardausstellungsrichtlinie verwenden. Verwenden Sie für diese Aufgabe die [StartCreateCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.startcreatecertificateasync)-Methode. Die Parameter der Methode akzeptieren einen Zertifikatnamen und die [Zertifikatrichtlinie](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificatepolicy).
+In diesem Beispiel können Sie der Einfachheit halber das selbstsignierte Zertifikat mit der Standardausstellungsrichtlinie verwenden. Verwenden Sie für diese Aufgabe die [StartCreateCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.startcreatecertificateasync)-Methode. Die Parameter der Methode akzeptieren einen Zertifikatnamen und die [Zertifikatrichtlinie](/dotnet/api/azure.security.keyvault.certificates.certificatepolicy).
 
 ```csharp
 var operation = await client.StartCreateCertificateAsync("myCertificate", CertificatePolicy.Default);

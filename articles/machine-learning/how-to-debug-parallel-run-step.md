@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: pansav
 author: psavdekar
 ms.date: 09/23/2020
-ms.openlocfilehash: aaacc12f6a577fd0a2ff0150d22902bb6e7d6cc1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 3150ad022ddde1b72d0941d552351715920a161e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753393"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217805"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>Behandeln von Problemen mit „ParallelRunStep“
 
@@ -28,17 +28,17 @@ Allgemeine Tipps zur Problembehandlung für Pipelines finden Sie unter [Problemb
 
  „ParallelRunStep“ wird als Schritt in ML-Pipelines ausgeführt. Als Erstes sollten Sie ggf. [Ihre Skripts lokal testen](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines).
 
-##  <a name="script-requirements"></a>Skriptanforderungen
+## <a name="entry-script-requirements"></a>Einstiegsskriptanforderungen
 
-Das Skript für `ParallelRunStep` *muss zwei Funktionen enthalten*:
+Das Einstiegsskript für `ParallelRunStep` *muss* eine `run()`-Funktion enthalten und kann optional eine `init()`-Funktion enthalten:
 - `init()`: Verwenden Sie diese Funktion für alle kostspieligen oder allgemeinen Vorbereitungsmaßnahmen für die spätere Verarbeitung. Ein Beispiel wäre etwa das Laden des Modells in ein globales Objekt. Diese Funktion wird nur einmal zu Beginn des Prozesses aufgerufen.
     > [!NOTE]
-    > Wenn Ihre `init`-Methode ein Ausgabeverzeichnis erstellt, geben Sie `exist_ok=True` an. Die `init`-Methode wird von jedem Workerprozess auf jedem Knoten aufgerufen, auf dem der Auftrag ausgeführt wird.
+    > Wenn Ihre `init`-Methode ein Ausgabeverzeichnis erstellt, geben Sie `parents=True` und `exist_ok=True` an. Die `init`-Methode wird von jedem Workerprozess auf jedem Knoten aufgerufen, auf dem der Auftrag ausgeführt wird.
 -  `run(mini_batch)`: Diese Funktion wird für jede Instanz vom Typ `mini_batch` ausgeführt.
     -  `mini_batch`: `ParallelRunStep` ruft die Run-Methode auf und übergibt entweder eine Liste oder einen Pandas-Datenrahmen (`DataFrame`) als Argument an die Methode. Jeder Eintrag in „mini_batch“ entspricht einem Dateipfad, wenn die Eingabe ein `FileDataset` ist, bzw. einem Pandas-Datenrahmen (`DataFrame`), wenn die Eingabe ein `TabularDataset` ist.
     -  `response`: Die Run-Methode sollte einen Pandas-Datenrahmen (`DataFrame`) oder ein Array zurückgeben. Bei Verwendung von „append_row output_action“ werden diese zurückgegebenen Elemente am Ende der allgemeinen Ausgabedatei hinzugefügt. Bei Verwendung von „summary_only“ wird der Inhalt der Elemente ignoriert. Bei allen Ausgabeaktionen geben die zurückgegebenen Ausgabeelemente jeweils eine erfolgreiche Ausführung für ein Eingabeelement aus dem Eingabeminibatch an. Stellen Sie sicher, dass das Ausführungsergebnis genügend Daten für eine Zuordnung zwischen der Eingabe und der Ausgabe des Ausführungsergebnisses enthält. Die Ausführungsausgabe wird in die Ausgabedatei geschrieben. Da hierbei nicht unbedingt die Reihenfolge eingehalten wird, müssen Sie einen Schlüssel in der Ausgabe verwenden, um sie der Eingabe zuzuordnen.
         > [!NOTE]
-        > Für ein Eingabeelement wird ein Ausgabeelement erwartet.  
+        > Für ein Eingabeelement wird ein Ausgabeelement erwartet.
 
 ```python
 %%writefile digit_identification.py
@@ -101,7 +101,8 @@ file_path = os.path.join(script_dir, "<file_name>")
     - Bei `FileDataset` handelt es sich um die Anzahl von Dateien (Mindestwert: `1`). Mehrere Dateien können zu einem Minibatch zusammengefasst werden.
     - Bei `TabularDataset` handelt es sich um die Datengröße. Beispielwerte: `1024`, `1024KB`, `10MB`, `1GB`. Empfohlener Wert: `1MB`. Der Minibatch auf der Grundlage von `TabularDataset` geht nie über Dateigrenzen hinaus. Ein Beispiel: Angenommen, Sie verfügen über unterschiedlich große CSV-Dateien. Die kleinste Datei hat eine Größe von 100 KB, die größte Datei ist 10 MB groß. Wenn Sie nun `mini_batch_size = 1MB` festlegen, werden Dateien mit einer Größe von weniger als 1 MB als einzelner Minibatch behandelt. Dateien mit einer Größe von mehr als 1 MB werden dagegen in mehrere Minibatches aufgeteilt.
         > [!NOTE]
-        > TabularDatasets, die mit SQL gesichert sind, können nicht partitioniert werden. TabularDatasets aus einer einzelnen Parquet-Datei und einer einzelnen Zeilengruppe können nicht partitioniert werden.
+        > TabularDatasets, die mit SQL gesichert sind, können nicht partitioniert werden.
+        > TabularDatasets aus einer einzelnen Parquet-Datei und einer einzelnen Zeilengruppe können nicht partitioniert werden.
 
 - `error_threshold`: Die Anzahl von Datensatzfehlern für `TabularDataset` bzw. Dateifehlern für `FileDataset`, die während der Verarbeitung ignoriert werden sollen. Übersteigt die Fehleranzahl für die gesamte Eingabe diesen Wert, wird der Auftrag abgebrochen. Der Fehlerschwellenwert gilt für die gesamte Eingabe und nicht für den einzelnen Minibatch, der an die Methode `run()` gesendet wird. Zulässiger Bereich: `[-1, int.max]`. Der Teil `-1` gibt an, dass bei der Verarbeitung alle Fehler ignoriert werden sollen.
 - `output_action`: Gibt an, wie die Ausgabe strukturiert werden soll:
@@ -111,18 +112,18 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `source_directory`: Pfade zu Ordnern mit allen Dateien, die am Computeziel ausgeführt werden sollen (optional).
 - `compute_target`: Nur `AmlCompute` wird unterstützt.
 - `node_count`: Die Anzahl von Computeknoten, die zum Ausführen des Benutzerskripts verwendet werden sollen.
-- `process_count_per_node`: Die Anzahl der Workerprozesse pro Knoten zum parallelen Ausführen des Eingabeskripts. Für einen GPU-Computer ist der Standardwert 1. Für einen CPU-Computer ist der Standardwert die Anzahl der Kerne pro Knoten. Ein Workerprozess ruft `run()` wiederholt auf, indem er den von ihm abgerufenen Minibatch übergibt. Die Gesamtanzahl der Workerprozesse in Ihrem Auftrag ist `process_count_per_node * node_count`, wodurch die maximale Anzahl von `run()` für die parallele Ausführung bestimmt wird.  
+- `process_count_per_node`: Die Anzahl der Workerprozesse pro Knoten zum parallelen Ausführen des Eingabeskripts. Für einen GPU-Computer ist der Standardwert 1. Für einen CPU-Computer ist der Standardwert die Anzahl der Kerne pro Knoten. Ein Workerprozess ruft `run()` wiederholt auf, indem er den von ihm abgerufenen Minibatch übergibt. Die Gesamtanzahl der Workerprozesse in Ihrem Auftrag ist `process_count_per_node * node_count`, wodurch die maximale Anzahl von `run()` für die parallele Ausführung bestimmt wird.
 - `environment`: Die Python-Umgebungsdefinition. Sie kann für die Verwendung einer vorhandenen Python-Umgebung oder für die Einrichtung einer temporären Umgebung konfiguriert werden. Die Definition kann auch zum Festlegen der erforderlichen Anwendungsabhängigkeiten verwendet werden (optional).
 - `logging_level`: Die Ausführlichkeit des Protokolls. Mögliche Werte (mit zunehmender Ausführlichkeit): `WARNING`, `INFO`, `DEBUG`. (optional; Standardwert: `INFO`)
 - `run_invocation_timeout`: Das Timeout für den Aufruf der Methode `run()` in Sekunden. (optional; Standardwert `60`)
-- `run_max_try`: Maximale Anzahl der Versuche von `run()` für einen Minibatch. Ein `run()` ist fehlgeschlagen, wenn eine Ausnahme ausgelöst wird oder beim Erreichen von `run_invocation_timeout` nichts zurückgegeben wird (optional; der Standardwert ist `3`). 
+- `run_max_try`: Maximale Anzahl der Versuche von `run()` für einen Minibatch. Ein `run()` ist fehlgeschlagen, wenn eine Ausnahme ausgelöst wird oder beim Erreichen von `run_invocation_timeout` nichts zurückgegeben wird (optional; der Standardwert ist `3`).
 
-Sie können `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` und `run_max_try` als `PipelineParameter` festlegen, sodass Sie die Parameterwerte beim erneuten Senden einer Pipelineausführung optimieren können. In diesem Beispiel verwenden Sie `PipelineParameter` für `mini_batch_size` und `Process_count_per_node`, und Sie ändern diese Werte, wenn Sie erneut eine Ausführung senden. 
+Sie können `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` und `run_max_try` als `PipelineParameter` festlegen, sodass Sie die Parameterwerte beim erneuten Senden einer Pipelineausführung optimieren können. In diesem Beispiel verwenden Sie `PipelineParameter` für `mini_batch_size` und `Process_count_per_node`, und Sie ändern diese Werte, wenn Sie erneut eine Ausführung senden.
 
 #### <a name="cuda-devices-visibility"></a>Sichtbarkeit von CUDA-Geräten
 Für Computeziele, die mit GPUs ausgestattet sind, wird die Umgebungsvariable `CUDA_VISIBLE_DEVICES` in Workerprozessen festgelegt. In AmlCompute finden Sie die Gesamtzahl der GPU-Geräte in der Umgebungsvariablen `AZ_BATCHAI_GPU_COUNT_FOUND`, die automatisch festgelegt wird. Wenn jeder Workerprozess über eine dedizierte GPU verfügen soll, legen Sie `process_count_per_node` auf die Anzahl der GPU-Geräte auf einem Computer fest. Jeder Workerprozess weist `CUDA_VISIBLE_DEVICES` einen eindeutigen Index zu. Wenn ein Workerprozess aus irgendeinem Grund beendet wird, verwendet der nächste gestartete Workerprozess den freigegebenen GPU-Index.
 
-Wenn die Gesamtzahl der GPU-Geräte kleiner als `process_count_per_node` ist, wird den Workerprozessen ein GPU-Index zugewiesen, bis alle verwendet wurden. 
+Wenn die Gesamtzahl der GPU-Geräte kleiner als `process_count_per_node` ist, wird den Workerprozessen ein GPU-Index zugewiesen, bis alle verwendet wurden.
 
 Wenn beispielsweise die Gesamtzahl der GPU-Geräte 2 und `process_count_per_node = 4` ist, weisen Prozess 0 und Prozess 1 den Index 0 und 1 auf. Für Prozess 2 und 3 ist keine Umgebungsvariable vorhanden. Bei einer Bibliothek, die diese Umgebungsvariable für die GPU-Zuweisung verwendet, verfügen Prozess 2 und 3 nicht über GPUs und versuchen nicht, GPU-Geräte zu beziehen. Wenn Prozess 0 beendet wird, wird der GPU-Index 0 freigegeben. Dem nächsten Prozess (Prozess 4) wird GPU-Index 0 zugewiesen.
 
@@ -183,7 +184,7 @@ Wenn Sie detailliert erfahren möchten, wie die einzelnen Knoten das Bewertungss
 
 - `~/logs/sys/node/<node_id>/<process_name>.txt`: Diese Datei enthält ausführliche Informationen zu den einzelnen Minibatches, die von einem Worker abgerufen oder abgeschlossen werden. Für jeden Minibatch umfasst diese Datei Folgendes:
 
-    - Die IP-Adresse und die PID des Workerprozesses. 
+    - Die IP-Adresse und die PID des Workerprozesses.
     - Die Gesamtzahl der Elemente, die Anzahl der erfolgreich verarbeiteten Elemente und die Anzahl der nicht erfolgreichen Elemente.
     - Die Startzeit, die Dauer, die Verarbeitungszeit und die Laufzeit der Methode.
 
@@ -198,7 +199,7 @@ Sie können für jeden Knoten auch die Ergebnisse regelmäßiger Prüfungen der 
     - `node_resource_usage.csv`: Übersicht über die Ressourcennutzung des Knotens.
     - `processes_resource_usage.csv`: Übersicht über die Ressourcennutzung der einzelnen Prozesse.
 
-### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Wie protokolliere ich mein Benutzerskript aus einem Remotekontext?
+## <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>Wie protokolliere ich mein Benutzerskript aus einem Remotekontext?
 
 ParallelRunStep kann mehrere Prozesse auf einem Knoten entsprechend dem process_count_per_node ausführen. Wir empfehlen die unten gezeigte Verwendung der ParallelRunStep-Protokollierung, um die Protokolle der einzelnen Prozesse auf dem Knoten zu organisieren und die Druck- und Protokollanweisungen zu kombinieren. Sie können eine Protokollierung von EntryScript abrufen, damit die Protokolle im Ordner **logs/user** im Portal aufgeführt werden.
 
@@ -224,33 +225,71 @@ def run(mini_batch):
     return mini_batch
 ```
 
-### <a name="where-does-the-message-from-python-logging-sink-to"></a>In welche Senke gelangt die Nachricht von `logging` in Python?
+## <a name="where-does-the-message-from-python-logging-sink-to"></a>In welche Senke gelangt die Nachricht von `logging` in Python?
 „ParallelRunStep“ legt einen Handler für die Stammprotokollierung fest, der die Nachricht an die Senke `logs/user/stdout/<node_id>/processNNN.stdout.txt` schickt.
 
 `logging` hat standardmäßig die Stufe `WARNING`. Standardmäßig werden niedrigere Stufen als `WARNING` nicht angezeigt, also z. B. `INFO` oder `DEBUG`.
 
-### <a name="where-is-the-message-from-subprocess-created-with-popen"></a>Wo befindet sich die Nachricht aus dem Unterprozess, der mit „Popen()“ erstellt wurde?
-Wenn weder `stdout` noch `stderr` angegeben ist, erbt ein Unterprozess die Einstellung des Workerprozesses.
-
-`stdout` schreibt in `logs/sys/node/<node_id>/processNNN.stdout.txt` und `stderr` in `logs/sys/node/<node_id>/processNNN.stderr.txt`.
-
-### <a name="how-could-i-write-to-a-file-to-show-up-in-the-portal"></a>Wie kann ich in eine Datei schreiben, die im Portal angezeigt werden soll?
+## <a name="how-could-i-write-to-a-file-to-show-up-in-the-portal"></a>Wie kann ich in eine Datei schreiben, die im Portal angezeigt werden soll?
 Dateien im Ordner `logs` werden ins Portal hochgeladen und dort angezeigt.
 Sie können den Ordner `logs/user/entry_script_log/<node_id>` wie unten gezeigt abrufen und ihren Dateipfad zum Schreiben zusammenstellen:
 
 ```python
 from pathlib import Path
+from azureml_user.parallel_run import EntryScript
+
 def init():
     """Init once in a worker process."""
     entry_script = EntryScript()
-    folder = entry_script.log_dir
+    log_dir = entry_script.log_dir
+    log_dir = Path(entry_script.log_dir)  # logs/user/entry_script_log/<node_id>/.
+    log_dir.mkdir(parents=True, exist_ok=True) # Create the folder if not existing.
 
-    fil_path = Path(folder) / "<file_name>"
+    proc_name = entry_script.agent_name  # The process name in pattern "processNNN".
+    fil_path = log_dir / f"{proc_name}_<file_name>" # Avoid conflicting among worker processes with proc_name.
 ```
 
-### <a name="how-do-i-write-a-file-to-the-output-directory-and-then-view-it-in-the-portal"></a>Wie kann ich eine Datei in das Ausgabeverzeichnis schreiben und dann im Portal anzeigen?
+## <a name="how-to-handle-log-in-new-processes"></a>Wie wird die Anmeldung neuer Prozesse gehandhabt?
+Sie können mit dem [`subprocess`](https://docs.python.org/3/library/subprocess.html)-Modul neue Prozesse in Ihrem Einstiegsskript erzeugen, eine Verbindung mit ihren Eingabe-/Ausgabe-/Fehlerpipes herstellen und ihre Rückgabecodes abrufen.
 
-Sie können das Ausgabeverzeichnis aus der Klasse `EntryScript` abrufen und in dieses schreiben. Zum Anzeigen der geschriebenen Dateien wählen Sie im Azure Machine Learning-Portal in der Schrittansicht „Ausführen“ die Registerkarte **Ausgaben + Protokolle** aus. Klicken Sie auf den Link **Datenausgaben**, und führen Sie dann die im Dialogfeld beschriebenen Schritte aus. 
+Es wird empfohlen, die [`run()`](https://docs.python.org/3/library/subprocess.html#subprocess.run)-Funktion mit `capture_output=True` zu verwenden. Fehler werden in `logs/user/error/<node_id>/<process_name>.txt` angezeigt.
+
+Wenn Sie `Popen()` verwenden möchten, sollten Sie „stdout/stderr“ wie folgt zu Dateien umleiten:
+```python
+from pathlib import Path
+from subprocess import Popen
+
+from azureml_user.parallel_run import EntryScript
+
+
+def init():
+    """Show how to redirect stdout/stderr to files in logs/user/entry_script_log/<node_id>/."""
+    entry_script = EntryScript()
+    proc_name = entry_script.agent_name  # The process name in pattern "processNNN".
+    log_dir = Path(entry_script.log_dir)  # logs/user/entry_script_log/<node_id>/.
+    log_dir.mkdir(parents=True, exist_ok=True) # Create the folder if not existing.
+    stdout_file = str(log_dir / f"{proc_name}_demo_stdout.txt")
+    stderr_file = str(log_dir / f"{proc_name}_demo_stderr.txt")
+    proc = Popen(
+        ["...")],
+        stdout=open(stdout_file, "w"),
+        stderr=open(stderr_file, "w"),
+        # ...
+    )
+
+```
+
+> [!NOTE]
+> Ein Workerprozess führt den „Systemcode“ und den Code des Einstiegsskripts im selben Prozess aus.
+>
+> Wenn kein `stdout` oder `stderr` angegeben wird, erbt ein Unterprozess, der mit `Popen()` in Ihrem Einstiegsskript erstellt wird, die Einstellung des Workerprozesses.
+>
+> `stdout` schreibt in `logs/sys/node/<node_id>/processNNN.stdout.txt` und `stderr` in `logs/sys/node/<node_id>/processNNN.stderr.txt`.
+
+
+## <a name="how-do-i-write-a-file-to-the-output-directory-and-then-view-it-in-the-portal"></a>Wie kann ich eine Datei in das Ausgabeverzeichnis schreiben und dann im Portal anzeigen?
+
+Sie können das Ausgabeverzeichnis aus der Klasse `EntryScript` abrufen und in dieses schreiben. Zum Anzeigen der geschriebenen Dateien wählen Sie im Azure Machine Learning-Portal in der Schrittansicht „Ausführen“ die Registerkarte **Ausgaben + Protokolle** aus. Klicken Sie auf den Link **Datenausgaben**, und führen Sie dann die im Dialogfeld beschriebenen Schritte aus.
 
 Verwenden Sie `EntryScript` in Ihrem Eingabeskript, wie im folgenden Beispiel gezeigt:
 
@@ -264,14 +303,14 @@ def run(mini_batch):
     (Path(output_dir) / res2).write...
 ```
 
-### <a name="how-can-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Wie kann ich eine seitliche Eingabe, z. B. eine oder mehrere Dateien mit einer Nachschlagetabelle, an alle meine Mitarbeiter weitergeben?
+## <a name="how-can-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>Wie kann ich eine seitliche Eingabe, z. B. eine oder mehrere Dateien mit einer Nachschlagetabelle, an alle meine Mitarbeiter weitergeben?
 
 Der Benutzer kann mit dem Parameter side_inputs von ParalleRunStep Verweisdaten an das Skript übergeben. Alle als side_inputs bereitgestellten Datasets werden auf den einzelnen Workerknoten eingebunden. Der Benutzer kann den Speicherort der Eingabe durch Übergeben des Arguments erhalten.
 
 Konstruieren Sie ein [Dataset](/python/api/azureml-core/azureml.core.dataset.dataset), das die Verweisdaten enthält, geben Sie einen lokalen Mount-Pfad an und registrieren Sie es in Ihrem Arbeitsbereich. Übergeben Sie es an den Parameter `side_inputs` für Ihr `ParallelRunStep`. Zusätzlich können Sie den zugehörigen Pfad im Abschnitt `arguments` hinzufügen, um einfach auf den eingebundenen Pfad zuzugreifen.
 
 > [!NOTE]
-> Verwenden Sie FileDatasets nur für side_inputs. 
+> Verwenden Sie FileDatasets nur für side_inputs.
 
 ```python
 local_path = "/tmp/{}".format(str(uuid.uuid4()))
@@ -296,7 +335,7 @@ args, _ = parser.parse_known_args()
 labels_path = args.labels_dir
 ```
 
-### <a name="how-to-use-input-datasets-with-service-principal-authentication"></a>Wie werden Eingabedatasets mit Dienstprinzipalauthentifizierung verwendet?
+## <a name="how-to-use-input-datasets-with-service-principal-authentication"></a>Wie werden Eingabedatasets mit Dienstprinzipalauthentifizierung verwendet?
 Der Benutzer kann Eingabedatasets mit Dienstprinzipalauthentifizierung übergeben, die im Arbeitsbereich verwendet werden. Das Verwenden eines solchen Datasets in ParallelRunStep erfordert, dass das Dataset dafür registriert wird, damit die ParallelRunStep-Konfiguration erstellt werden kann.
 
 ```python
@@ -304,15 +343,15 @@ service_principal = ServicePrincipalAuthentication(
     tenant_id="***",
     service_principal_id="***",
     service_principal_password="***")
- 
+
 ws = Workspace(
     subscription_id="***",
     resource_group="***",
     workspace_name="***",
     auth=service_principal
     )
- 
-default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***') 
+
+default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore-name***')
 ds = Dataset.File.from_files(default_blob_store, '**path***')
 registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
@@ -353,6 +392,8 @@ ParallelRunStep startet neue Workerprozesse als Ersatz für diejenigen, die auf 
 
 * Sehen Sie sich diese [Jupyter-Notebooks zur Veranschaulichung von Azure Machine Learning-Pipelines](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines) an.
 
-* Hilfe zum Paket [azureml-pipeline-steps](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) finden Sie in der SDK-Referenz. Zeigen Sie die [Referenzdokumentation](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep) für die ParallelRunStep-Klasse an.
+* Hilfe zum Paket [azureml-pipeline-steps](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) finden Sie in der SDK-Referenz.
+
+* Lesen Sie die [Referenzdokumentation](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig) für die Klasse „ParallelRunConfig“ und die [Dokumentation](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep) für die Klasse „ParallelRunStep“.
 
 * Folgen Sie dem [erweiterten Tutorial](tutorial-pipeline-batch-scoring-classification.md) zur Verwendung von Pipelines mit ParallelRunStep. Das Tutorial zeigt, wie eine andere Datei als seitliche Eingabe übergeben werden kann.

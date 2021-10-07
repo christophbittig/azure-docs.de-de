@@ -1,26 +1,25 @@
 ---
 title: 'Tutorial: Implementieren von Continuous Integration und Continuous Delivery (CI/CD) mit GitOps unter Verwendung von Kubernetes-Clustern mit Azure Arc-Unterstützung'
-description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie eine CI/CD-Lösung mithilfe von GitOps und Kubernetes-Clustern mit Azure Arc-Unterstützung einrichten. Einen konzeptionellen Einblick in diesen Workflow finden Sie im Artikel „CI/CD-Workflow unter Verwendung von GitOps – Kubernetes mit Azure Arc-Unterstützung“.
+description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie eine CI/CD-Lösung mithilfe von GitOps und Kubernetes-Clustern mit Azure Arc-Unterstützung einrichten. Einen konzeptionellen Einblick in diesen Workflow finden Sie im Artikel „CI/CD-Workflow unter Verwendung von GitOps – Kubernetes mit Azure Arc-Unterstützung“.
 author: tcare
 ms.author: tcare
 ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: 8b62437fc8bcad406750101eb72b1ef8d48c102f
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: a325f248a4f634657d9b73e3d4b7929e0614a023
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322204"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820722"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Tutorial: Implementieren von Continuous Integration und Continuous Delivery (CI/CD) mit GitOps unter Verwendung von Kubernetes-Clustern mit Azure Arc-Unterstützung
 
-
-In diesem Tutorial richten Sie eine CI/CD-Lösung mithilfe von GitOps und Kubernetes-Clustern mit Azure Arc-Unterstützung ein. Unter Verwendung der Azure Vote-Beispiel-App führen Sie folgende Schritte aus:
+In diesem Tutorial richten Sie eine CI/CD-Lösung mithilfe von GitOps und Kubernetes-Clustern mit Azure Arc-Unterstützung ein. Unter Verwendung der Azure Vote-Beispiel-App führen Sie folgende Schritte aus:
 
 > [!div class="checklist"]
-> * Erstellen eines Kubernetes-Clusters mit Azure Arc-Unterstützung.
+> * Erstellen eines Kubernetes-Clusters mit Azure Arc-Unterstützung
 > * Verbinden Ihrer Anwendung und GitOps-Repositorys mit Azure Repos.
 > * Importieren von CI/CD-Pipelines.
 > * Verbinden von Azure Container Registry (ACR) mit Azure DevOps und Kubernetes.
@@ -40,10 +39,10 @@ In diesem Tutorial wird davon ausgegangen, dass Sie mit Azure DevOps, Azure Repo
 * Schließen Sie das [vorherige Tutorial](./tutorial-use-gitops-connected-cluster.md) ab, um sich mit den Schritten zum Bereitstellen von GitOps für Ihre CI/CD-Umgebung vertraut zu machen.
 * Machen Sie sich mit dem [Nutzen und der Architektur](./conceptual-configurations.md) dieser Funktion vertraut.
 * Überprüfen Sie, ob Folgendes vorhanden ist:
-  * Ein [verbundener Kubernetes-Cluster mit Azure Arc-Unterstützung](./quickstart-connect-cluster.md#3-connect-an-existing-kubernetes-cluster), dessen Name **arc-cicd-cluster** lautet.
+  * Ein [verbundener Kubernetes-Cluster mit Azure Arc-Unterstützung](./quickstart-connect-cluster.md#3-connect-an-existing-kubernetes-cluster), dessen Name **arc-cicd-cluster** lautet
   * Eine verbundene ACR-Instanz (Azure Container Registry) mit [AKS-Integration](../../aks/cluster-container-registry-integration.md) oder [einer anderen Clusterauthentifizierung als AKS](../../container-registry/container-registry-auth-kubernetes.md).
   * Die Berechtigungen „Buildadministrator“ und „Projektadministrator“ für [Azure Repos](/azure/devops/repos/get-started/what-is-repos) und [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-get-started).
-* Installieren Sie die folgenden Kubernetes-CLI-Erweiterungen mit Azure Arc-Aktivierung der Versionen >= 1.0.0:
+* Installieren Sie die folgenden Kubernetes-CLI-Erweiterungen mit Azure Arc-Unterstützung mit mindestens der Version 1.0.0:
 
   ```azurecli
   az extension add --name connectedk8s
@@ -350,7 +349,7 @@ Falls Sie diese Anwendung nicht weiterverwenden möchten, löschen Sie die Resso
 
 In diesem Tutorial haben Sie einen vollständigen CI/CD-Workflow eingerichtet, bei dem von der Anwendungsentwicklung bis hin zur Bereitstellung DevOps implementiert wird. Bei Änderungen an der App werden automatisch Validierungs- und Bereitstellungsschritte ausgelöst, die manuell genehmigt werden müssen.
 
-Fahren Sie mit unserem konzeptionellen Artikel fort, um mehr über GitOps und Konfigurationen mit Kubernetes mit Azure Arc-Unterstützung zu erfahren.
+Fahren Sie mit unserem konzeptionellen Artikel fort, um mehr über GitOps und Konfigurationen mit Kubernetes mit Azure Arc-Unterstützung zu erfahren.
 
 > [!div class="nextstepaction"]
 > [CI/CD-Workflow mit GitOps: Kubernetes mit Azure Arc-Unterstützung](./conceptual-gitops-ci-cd.md)

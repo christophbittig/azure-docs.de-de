@@ -7,14 +7,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: normesta
-ms.openlocfilehash: e22e7dcfde1782600cdb53814014e6080ffbbfa1
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 758a89e8366e338fe5aaaee7fd6b89d9f7daa588
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129271629"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604016"
 ---
-# <a name="blob-storage-feature-support-in-azure-storage-accounts"></a>Unterstützung von Blob Storage-Features in Azure Storage-Konten
+# <a name="blob-storage-feature-support-in-azure-storage-accounts"></a>Unterstützung von Blob-Storage-Funktionen in Azure Storage-Konten
 
 Dieser Artikel zeigt, ob eine Funktion vollständig unterstützt wird (allgemein verfügbar), auf der Vorschauebene unterstützt wird oder noch nicht unterstützt wird. Die Unterstützungsebenen hängen vom Speicherkontotyp ab und davon, ob bestimmte Funktionen oder Protokolle im Konto aktiviert sind.
 
@@ -24,9 +24,9 @@ Die in diesen Tabellen enthaltenen Elemente ändern sich im Laufe der Zeit, da d
 
 | Storage-Feature | Blob Storage (Standardunterstützung) | Data Lake Storage Gen2 <sup>1</sup>   | NFS 3.0 <sup>1</sup>  |
 |---------------|-------------------|---|---|
-| [Zugriffsebene – Archiv](access-tiers-overview.md) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
-| [Zugriffsebene – kalt](access-tiers-overview.md)    | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png)|
-| [Zugriffsebene – heiß](access-tiers-overview.md) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
+| [Zugriffsebene – Archiv](storage-blob-storage-tiers.md) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
+| [Zugriffsebene – kalt](storage-blob-storage-tiers.md)   | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png)|
+| [Zugriffsebene – heiß](storage-blob-storage-tiers.md) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 | [Anonymer öffentlicher Zugriff](anonymous-read-access-configure.md) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png)|
 | [Azure Active Directory Sicherheit](authorize-access-azure-active-directory.md) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 | [Blob-Inventar](blob-inventory.md) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> |
@@ -70,9 +70,9 @@ Die in diesen Tabellen enthaltenen Elemente ändern sich im Laufe der Zeit, da d
 
 | Storage-Feature | Blob Storage (Standardunterstützung) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> |
 |---------------|-------------------|---|---|
-| [Zugriffsebene – Archiv](access-tiers-overview.md)  | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
-| [Zugriffsebene – kalt](access-tiers-overview.md) | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
-| [Zugriffsebene – heiß](access-tiers-overview.md) | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| [Zugriffsebene – Archiv](storage-blob-storage-tiers.md)  | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| [Zugriffsebene – kalt](storage-blob-storage-tiers.md) | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| [Zugriffsebene – heiß](storage-blob-storage-tiers.md) | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
 | [Anonymer öffentlicher Zugriff](anonymous-read-access-configure.md) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 | [Azure Active Directory Sicherheit](authorize-access-azure-active-directory.md) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 | [Blob-Inventar](blob-inventory.md) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup> |
@@ -103,7 +103,7 @@ Die in diesen Tabellen enthaltenen Elemente ändern sich im Laufe der Zeit, da d
 | [Vorläufiges Löschen für Blobs](./soft-delete-blob-overview.md)   | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup>   <sup>3</sup> | ![Nein](../media/icons/no-icon.png) |
 | [Vorläufiges Löschen für Container](soft-delete-container-overview.md) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) |
 | [Statische Websites](storage-blob-static-website.md) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
-| [Storage Analytics-Protokolle (klassisch)](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) <sup>2</sup> <sup>3</sup> | ![Nein](../media/icons/no-icon.png)|
+| [Storage Analytics-Protokolle (klassisch)](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png)  <sup>2</sup>  <sup>3</sup> | ![Nein](../media/icons/no-icon.png)|
 | [Metriken von Storage Analytics (klassisch)](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 
 <sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.

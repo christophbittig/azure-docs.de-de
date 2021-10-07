@@ -1,23 +1,20 @@
 ---
-title: Bereitschaftsüberprüfung für Datenquellen im großen Stil (Vorschau)
+title: Bereitschaftsüberprüfung für Datenquellen im großen Stil
 description: In diesem Tutorial prüfen Sie die Bereitschaft Ihrer Azure-Datenquellen, bevor Sie diese in Azure Purview registrieren und überprüfen.
 author: zeinam
 ms.author: zeinam
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
-ms.date: 05/28/2021
-ms.openlocfilehash: d7dc8ab7987f149747df30834f426ce6d119eb5c
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.date: 09/27/2021
+ms.openlocfilehash: 1eaca951a5abe43bda2621043321537cee2daa13
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105919"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213411"
 ---
-# <a name="tutorial-check-data-source-readiness-at-scale-preview"></a>Tutorial: Bereitschaftsüberprüfung für Datenquellen im großen Stil (Vorschau)
-
-> [!IMPORTANT]
-> Azure Purview ist derzeit als Vorschauversion verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
+# <a name="tutorial-check-data-source-readiness-at-scale"></a>Tutorial: Bereitschaftsüberprüfung für Datenquellen im großen Stil
 
 Azure Purview benötigt Zugriff auf die Datenquellen, um sie zu überprüfen. Für diesen Zugriff verwendet der Service die entsprechenden Anmeldeinformationen. Bei *Anmeldeinformationen* handelt es sich um Informationen für die Authentifizierung, die von Azure Purview für die Authentifizierung bei Ihren registrierten Datenquellen genutzt werden können. Es gibt mehrere Möglichkeiten, die Anmeldeinformationen für Azure Purview einzurichten, z. B.: 
 - Die verwaltete Identität, die dem Azure Purview-Konto zugewiesen ist.
@@ -39,7 +36,7 @@ In Teil 1 dieser Tutorialreihe führen Sie die folgenden Aktionen aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnements, in denen sich Ihre Datenquellen befinden. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
+* Die Azure-Abonnements, in denen sich Ihre Datenquellen befinden. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 * Ein [Azure Purview-Konto](create-catalog-portal.md)
 * Eine Azure Key Vault-Ressource für jedes Abonnement, das Datenquellen wie Azure SQL-Datenbank, Azure Synapse Analytics oder Azure SQL Managed Instance enthält.
 * Das [Prüflistenskript für die Bereitschaftsüberprüfung von Azure Purview-Datenquellen](https://github.com/Azure/Purview-Samples/tree/master/Data-Source-Readiness).
@@ -55,29 +52,29 @@ Erstellen Sie vor dem Ausführen des Skripts eine .csv-Datei (z. B. C:\temp\Subs
 |Spaltenname|Beschreibung|Beispiel|
 |----|----|----|
 |`SubscriptionId`|Azure-Abonnement-IDs für Ihre Datenquellen.|12345678-aaaa-bbbb-cccc-1234567890ab|
-|`KeyVaultName`|Name des vorhandenen Schlüsseltresors, der im Datenquellenabonnement bereitgestellt wird.|ContosoDevKeyVault|
-|`SecretNameSQLUserName`|Name eines vorhandenen Azure Key Vault-Geheimnisses, das einen Azure Active Directory-Benutzernamen (Azure AD) enthält, mit dem man sich über die Azure AD-Authentifizierung bei Azure Synapse, Azure SQL-Datenbank oder Azure SQL Managed Instance anmelden kann.|ContosoDevSQLAdmin|
-|`SecretNameSQLPassword`|Name eines vorhandenen Azure Key Vault-Geheimnisses, das ein Azure Active Directory-Benutzerkennwort (Azure AD) enthält, mit dem man sich über die Azure AD-Authentifizierung bei Azure Synapse, Azure SQL-Datenbank oder Azure SQL Managed Instance anmelden kann.|ContosoDevSQLPassword|
+|`KeyVaultName`|Der Name des vorhandenen Schlüsseltresors, der im Datenquellenabonnement bereitgestellt wird.|ContosoDevKeyVault|
+|`SecretNameSQLUserName`|Der Name eines vorhandenen Azure Key Vault-Geheimnisses, das einen Azure Active Directory-Benutzernamen (Azure AD) enthält, mit dem man sich über die Azure AD-Authentifizierung bei Azure Synapse, Azure SQL-Datenbank oder Azure SQL Managed Instance anmelden kann.|ContosoDevSQLAdmin|
+|`SecretNameSQLPassword`|Der Name eines vorhandenen Azure Key Vault-Geheimnisses, das ein Azure Active Directory-Benutzerkennwort (Azure AD) enthält, mit dem man sich über die Azure AD-Authentifizierung bei Azure Synapse, Azure SQL-Datenbank oder Azure SQL Managed Instance anmelden kann.|ContosoDevSQLPassword|
    
 
-**Beispiel .csv-Datei:**
+**Beispiel .csv-Datei**:
     
-:::image type="content" source="./media/tutorial-data-sources-readiness/subscriptions-input.png" alt-text="Screenshot, der eine beispielhafte Abonnementliste zeigt." lightbox="./media/tutorial-data-sources-readiness/subscriptions-input.png":::
+:::image type="content" source="./media/tutorial-data-sources-readiness/subscriptions-input.png" alt-text="Ein Screenshot, der eine beispielhafte Abonnementliste zeigt." lightbox="./media/tutorial-data-sources-readiness/subscriptions-input.png":::
 
 > [!NOTE] 
 > Bei Bedarf können Sie den Dateinamen und den Pfad im Code aktualisieren.
 
 
 
-## <a name="run-the-script-and-install-the-required-powershell-modules"></a>Führen Sie das Skript aus und installieren Sie die erforderlichen PowerShell-Module. 
+## <a name="run-the-script-and-install-the-required-powershell-modules"></a>Führen Sie das Skript aus und installieren Sie die erforderlichen PowerShell-Module 
 
 Führen Sie die folgenden Schritte aus, um das Skript auf Ihrem Windows-Computer auszuführen:
 
 1. [Laden Sie das Prüflistenskript für die Bereitschaftsüberprüfung von Azure Purview-Datenquellen](https://github.com/Azure/Purview-Samples/tree/master/Data-Source-Readiness) an den gewünschten Speicherort herunter.
 
-2. Geben Sie auf Ihrem Computer **PowerShell** in das Suchfeld auf der Windows-Taskleiste ein. Klicken Sie in der Suchliste mit der rechten Maustaste auf **Windows PowerShell** und wählen Sie **Als Administrator ausführen** aus.
+2. Geben Sie auf Ihrem Computer **PowerShell** in das Suchfeld auf der Windows-Taskleiste ein. Klicken Sie in der Suchliste auf **Windows PowerShell**, und halten Sie die Maustaste gedrückt (oder klicken Sie mit der rechten Maustaste darauf), und wählen Sie dann **Als Administrator ausführen** aus.
 
-3. Geben Sie den folgenden Befehl im PowerShell-Fenster ein: (Ersetzen Sie `<path-to-script>` durch den Ordnerpfad der extrahierten Skript-Datei.)
+3. Geben Sie den folgenden Befehl im PowerShell-Fenster ein. (Ersetzen Sie `<path-to-script>` durch den Ordnerpfad der extrahierten Skript-Datei.)
 
    ```powershell
    dir -Path <path-to-script> | Unblock-File
@@ -88,9 +85,9 @@ Führen Sie die folgenden Schritte aus, um das Skript auf Ihrem Windows-Computer
    ```powershell
    Install-Module -Name Az -AllowClobber -Scope CurrentUser
    ```
-6. Wird die Meldung *Der NuGet-Anbieter ist erforderlich, um den Vorgang fortzusetzen.* angezeigt, geben Sie **J** ein, und drücken Sie die **Eingabetaste**.
+6. Wird die Meldung *Der NuGet-Anbieter ist erforderlich, um den Vorgang fortzusetzen* angezeigt, geben Sie **J** ein, und drücken dann die **Eingabetaste**.
 
-7. Wird die Meldung *Nicht vertrauenswürdiges Repository* angezeigt, geben Sie **A** ein und drücken Sie die **Eingabetaste**.
+7. Wird die Meldung *Nicht vertrauenswürdiges Repository* angezeigt, geben Sie **A** ein und drücken dann die **Eingabetaste**.
 
 5. Wiederholen Sie die vorherigen Schritte, um die Module `Az.Synapse` und `AzureAD` zu installieren.
 
@@ -150,7 +147,7 @@ Befolgen Sie die nachstehenden Schritte, um das Skript auszuführen:
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted
    ```
 
-3. Führen Sie das Skript mit den folgenden Parametern aus: Ersetzen Sie die Platzhalter `DataType` , `PurviewName` und `SubscriptionID` .
+3. Führen Sie das Skript mit den folgenden Parametern aus. Ersetzen Sie die Platzhalter `DataType` , `PurviewName` und `SubscriptionID` .
 
    ```powershell
    .\purview-data-sources-readiness-checklist.ps1 -AzureDataType <DataType> -PurviewAccount <PurviewName> -PurviewSub <SubscriptionID>

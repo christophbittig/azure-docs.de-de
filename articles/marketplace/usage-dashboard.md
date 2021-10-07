@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 07/15/2021
-ms.openlocfilehash: c68216675a41a71b21216ce558b03171781dbc43
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: c50a36c521848956577fd0e8f53bdb2dceaaee8f
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355942"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129084043"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace
 
@@ -36,17 +36,45 @@ Im [Dashboard „Nutzung“](https://go.microsoft.com/fwlink/?linkid=2166106) we
 > [!NOTE]
 > Die maximale Latenz zwischen der Generierung von Nutzungsereignissen und der Berichterstattung im Partner Center beträgt 48 Stunden.
 
+## <a name="access-the-usage-dashboard"></a>Zugreifen auf das Dashboard „Nutzung“
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie auf der Startseite die Kachel **Insights** aus.
+
+    [ ![Veranschaulichung der Kachel „Insights“ auf der Startseite in Partner Center](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. Klicken Sie im linken Menü auf **Nutzung**.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Klicken Sie im linken Navigationsbereich auf **Kommerzieller Marketplace** > **Analysieren** > **Nutzung**.
+
+---
+
 ## <a name="elements-of-the-usage-dashboard"></a>Elemente des Dashboards „Nutzung“
 
 In den folgenden Abschnitten wird beschrieben, wie das Dashboard „Nutzung“ verwendet wird und wie die Daten gelesen werden.
 
-Um auf das Dashboard „Nutzung“ im Partner Center zuzugreifen, wählen Sie unter **Kommerzieller Marketplace** die Optionen **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Nutzung** aus.
-
 ### <a name="month-range"></a>Monatsbereich
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+Oben rechts auf jeder Seite finden Sie eine Monatsbereichsauswahl. Passen Sie die Ausgabe der Diagramme auf der Seite **Nutzung** an, indem Sie einen Monatsbereich basierend auf den letzten 6 oder 12 Monaten oder einen benutzerdefinierten Monatsbereich mit einer maximalen Dauer von 12 Monaten auswählen. Der standardmäßige Monatsbereich (Berechnungszeitraum) beträgt sechs Monate.
+
+[ ![Veranschaulichung der Monatsfilter auf dem Dashboard „Nutzung“](./media/usage-dashboard/usage-dashboard-filters.png) ](./media/usage-dashboard/usage-dashboard-filters.png#lightbox)
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
 
 Oben rechts auf jeder Seite finden Sie eine Monatsbereichsauswahl. Passen Sie die Ausgabe der Diagramme auf der Seite **Nutzung** an, indem Sie einen Monatsbereich basierend auf den letzten 6 oder 12 Monaten oder einen benutzerdefinierten Monatsbereich mit einer maximalen Dauer von 12 Monaten auswählen. Der standardmäßige Monatsbereich (Berechnungszeitraum) beträgt sechs Monate.
 
 :::image type="content" source="./media/usage-dashboard/month-filter.png" alt-text="Veranschaulicht die Monatsfilter im Dashboard „Nutzung“":::
+
+---
 
 ### <a name="usage-trend"></a>Nutzungstrend
 
@@ -202,4 +230,4 @@ Wenn Sie über mehrere Angebote verfügen, bei denen benutzerdefinierte Verbrauc
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](usage-dashboard.md).
 - Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](downloads-dashboard.md).
 - Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in Microsoft AppSource finden Sie unter [Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center](ratings-reviews.md).
-- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Terminologie und häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace](./analytics-faq.yml).
+- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen](./analytics-faq.yml).

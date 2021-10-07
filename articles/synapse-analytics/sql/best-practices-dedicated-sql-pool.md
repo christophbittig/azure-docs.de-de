@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 03/17/2021
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4d37cabb8b74fea3a72ddafdf3322d20379f8d29
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: c0c436a2e36edbd6feb433074efc2d746ee38f18
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349907"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091823"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Best Practices für dedizierte SQL-Pools in Azure Synapse Analytics
 
-Dieser Artikel enthält eine Sammlung von Best Practices, mit denen Sie eine optimale Leistung für dedizierte SQL-Pools in Azure Synapse Analytics erzielen können. Im Folgenden finden Sie grundlegende Anleitungen und wichtige Bereiche, auf die Sie sich beim Erstellen Ihrer Lösung konzentrieren sollten. In jedem Abschnitt wird ein Konzept vorgestellt und Sie dann über Links zu Artikeln mit ausführlicheren Informationen geleitet, in denen auf das jeweilige Konzept näher eingegangen wird.
+Dieser Artikel enthält eine Sammlung von Best Practices, mit denen Sie eine optimale Leistung für dedizierte SQL-Pools in Azure Synapse Analytics erzielen können.  Wenn Sie mit einem serverlosen SQL-Pool arbeiten, finden Sie unter [Best Practices für serverlose SQL-Pools in Azure Synapse Analytics](best-practices-serverless-sql-pool.md) eine spezifische Anleitung. Im Folgenden finden Sie grundlegende Anleitungen und wichtige Bereiche, auf die Sie sich beim Erstellen Ihrer Lösung konzentrieren sollten. In jedem Abschnitt wird ein Konzept vorgestellt und Sie dann über Links zu Artikeln mit ausführlicheren Informationen geleitet, in denen auf das jeweilige Konzept näher eingegangen wird.
 
 ## <a name="dedicated-sql-pools-loading"></a>Laden von dedizierten SQL-Pools
 
@@ -39,12 +39,11 @@ Um die Zeit für die Pflege der Statistik zu verkürzen, sollten Sie auswählen,
 
 Weitere Informationen zu Statistiken finden Sie in den Artikeln [Verwalten von Tabellenstatistiken](develop-tables-statistics.md), [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) und [UPDATE STATISTICS](/sql/t-sql/statements/update-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 
-## <a name="tune-query-performance-with-new-product-enhancements"></a>Optimieren der Abfrageleistung mit neuen Produkterweiterungen
+## <a name="tune-query-performance"></a>Optimieren der Abfrageleistung
 
 - [Leistungsoptimierung mit materialisierten Sichten](../sql-data-warehouse/performance-tuning-materialized-views.md)
 - [Leistungsoptimierung mit einem sortierten gruppierten Columnstore-Index](../sql-data-warehouse/performance-tuning-ordered-cci.md)
 - [Leistungsoptimierung mit Zwischenspeichern von Resultsets](../sql-data-warehouse/performance-tuning-result-set-caching.md)
-
 
 ## <a name="group-insert-statements-into-batches"></a>Gruppieren von INSERT-Anweisungen in Batches
 
@@ -79,7 +78,7 @@ Wenn Sie über mehrere auf diese Daten gerichtete Abfragen verfügen, sollten Si
 
 ## <a name="hash-distribute-large-tables"></a>Verwenden der Hashverteilung für große Tabellen
 
-Für Tabellen wird standardmäßig die Roundrobin-Verteilung eingesetzt.   Diese Standardeinstellung erleichtert es Benutzern, mit dem Erstellen von Tabellen zu beginnen, ohne entscheiden zu müssen, wie die Tabellen verteilt werden sollen. Roundrobin-Tabellen können für einige Workloads ausreichend leistungsfähig sein. Aber in den meisten Fällen bietet eine Verteilungsspalte eine bessere Leistung.  
+Für Tabellen wird standardmäßig die Roundrobin-Verteilung eingesetzt. Diese Standardeinstellung erleichtert es Benutzern, mit dem Erstellen von Tabellen zu beginnen, ohne entscheiden zu müssen, wie die Tabellen verteilt werden sollen. Roundrobin-Tabellen können für einige Workloads ausreichend leistungsfähig sein. Aber in den meisten Fällen bietet eine Verteilungsspalte eine bessere Leistung.  
 
 Das häufigste Beispiel für den Fall, in dem eine von einer Spalte verteilte Tabelle eine höhere Leistung als eine Roundrobin-Tabelle aufweist, ist die Verknüpfung von zwei großen Faktentabellen.  
 
@@ -205,4 +204,3 @@ Wenn Sie Informationen benötigen, die in diesem Artikel nicht enthalten sind, k
 
 Wir überwachen dieses Forum aktiv, um sicherzustellen, dass Ihre Frage entweder von einem anderen Benutzer oder einem Mitarbeiter beantwortet wird.  Falls Sie Ihre Fragen lieber über Stack Overflow stellen möchten, können Sie dazu auch das [Stack Overflow-Forum für Azure Synapse Analytics](https://stackoverflow.com/questions/tagged/azure-synapse) nutzen.
 
-Möglichkeiten zu Funktionsanfragen finden Sie auf der [Azure Synapse Analytics-Feedbackseite](https://feedback.azure.com/forums/307516-sql-data-warehouse).  Das Hinzufügen Ihrer Anforderungen oder das Stimmen für andere Anforderungen hilft uns, uns auf die am meisten nachgefragten Features zu konzentrieren.

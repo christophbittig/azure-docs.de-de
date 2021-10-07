@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: d3f353693aeafb3093a2a8edce017cc24c0aca49
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d9e634597d82b6cac52237f0c800cdfc33bc883a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370683"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635411"
 ---
 # <a name="rest-api"></a>REST-API
 Dieser Artikel beschreibt die REST-APIs von Azure Event Grid in IoT Edge.
@@ -29,26 +29,26 @@ Event Grid in IoT Edge macht die folgenden APIs über HTTP (Port 5888) und HTTPS
 ### <a name="request-query-string"></a>Anfordern der Abfragezeichenfolge
 Alle API-Anforderungen benötigen den folgenden Abfragezeichenfolgenparameter:
 
-```?api-version=2019-01-01-preview```
+`?api-version=2019-01-01-preview`
 
 ### <a name="request-content-type"></a>Anfordern des Inhaltstyps
 Alle API-Anforderungen müssen einen **Content-Type** besitzen.
 
 Im Falle von **EventGridSchema** oder **CustomSchema** kann „Content-Type“ einen der folgenden Werte aufweisen:
 
-```Content-Type: application/json```
+`Content-Type: application/json`
 
-```Content-Type: application/json; charset=utf-8```
+`Content-Type: application/json; charset=utf-8`
 
 Im Falle von **CloudEventSchemaV1_0** im strukturierten Modus kann „Content-Type“ einen der folgenden Werte aufweisen:
 
-```Content-Type: application/cloudevents+json```
+`Content-Type: application/cloudevents+json`
     
-```Content-Type: application/cloudevents+json; charset=utf-8```
+`Content-Type: application/cloudevents+json; charset=utf-8`
     
-```Content-Type: application/cloudevents-batch+json```
+`Content-Type: application/cloudevents-batch+json`
     
-```Content-Type: application/cloudevents-batch+json; charset=utf-8```
+`Content-Type: application/cloudevents-batch+json; charset=utf-8`
 
 Im Falle von **CloudEventSchemaV1_0** im binären Modus finden Sie Details in der [Dokumentation](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md).
 
@@ -760,19 +760,19 @@ Legen Sie zum Veröffentlichen in einer Storage-Warteschlange `endpointType` auf
 * queueName: Der Name der Storage-Warteschlange, in der Sie veröffentlichen.
 * connectionString: Die Verbindungszeichenfolge für das Speicherkonto, in dem sich die Storage-Warteschlange befindet.
 
-    >[!NOTE]
-    > Im Gegensatz zu Event Hubs, Service Bus-Warteschlangen und Service Bus-Themen ist die für Storage-Warteschlangen verwendete Verbindungszeichenfolge nicht entitätsspezifisch. Stattdessen muss dies die Verbindungszeichenfolge für das Speicherkonto sein.
+  >[!NOTE]
+  > Im Gegensatz zu Event Hubs, Service Bus-Warteschlangen und Service Bus-Themen ist die für Storage-Warteschlangen verwendete Verbindungszeichenfolge nicht entitätsspezifisch. Stattdessen muss dies die Verbindungszeichenfolge für das Speicherkonto sein.
 
-    ```json
-        {
-          "properties": {
-            "destination": {
-              "endpointType": "storageQueue",
-              "properties": {
-                "queueName": "<your-storage-queue-name>",
-                "connectionString": "<your-storage-account-connection-string>"
-              }
-            }
-          }
+  ```json
+  {
+    "properties": {
+      "destination": {
+        "endpointType": "storageQueue",
+        "properties": {
+          "queueName": "<your-storage-queue-name>",
+          "connectionString": "<your-storage-account-connection-string>"
         }
-    ```
+      }
+    }
+  }
+  ```

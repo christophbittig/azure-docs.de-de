@@ -6,15 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 05/19/2021
-ms.openlocfilehash: 43ce147cc1d8cb9cb6bcc389ad02cfcf71038e34
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 09/27/2021
+ms.openlocfilehash: 6056259817c24079ae1a2efc912a8251feeaa1ad
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110547615"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081990"
 ---
-# <a name="how-to-create-a-dynamics-365-for-business-central-offer"></a>Erstellen eines Dynamics 365 for Business Central-Angebots
+# <a name="create-a-dynamics-365-for-business-central-offer"></a>Erstellen eines Angebots für Dynamics 365 for Business Central
 
 In diesem Artikel wird beschrieben, wie Sie ein Angebot für [Dynamics 365 for Business Central](https://dynamics.microsoft.com/business-central/overview) erstellen. Dieser Angebotstyp ist ein ERP-Dienst (Enterprise Resource Planning), der eine Vielzahl von Geschäftsprozessen unterstützt, z. B. für das Finanzwesen, operative Vorgänge, Lieferketten-, CRM- und Projektmanagement sowie E-Commerce. Alle Angebote für Dynamics 365 for Operations müssen unseren Zertifizierungsprozess durchlaufen.
 
@@ -26,18 +26,39 @@ Erstellen Sie, bevor Sie beginnen, ein Konto für den kommerziellen Marketplace 
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2166002) an.
+
+1. Wählen Sie auf der Startseite die Kachel **Marketplace-Angebote** aus.
+
+    [ ![Veranschaulichung der Kachel „Marketplace-Angebote“ auf der Startseite in Partner Center.](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. Wählen Sie auf der Seite Marketplace-Angebote **+ Neues Angebot** >  **Dynamics 365 for Business Central** aus.
+
+    [ ![Veranschaulicht die Schaltfläche „Neues Angebot“. Der Angebotstyp Dynamics 365 Business Central ist hervorgehoben.](media/dynamics-365/new-offer-dynamics-365-business-central-workspaces.png) ](media/dynamics-365/new-offer-dynamics-365-business-central-workspaces.png#lightbox)
+
+> [!IMPORTANT]
+> Nachdem ein Angebot veröffentlicht wurde, werden sämtliche Änderungen, die Sie im Partner Center daran vornehmen, erst nach erneuter Veröffentlichung des Angebots in Microsoft AppSource angezeigt. Achten Sie darauf, ein Angebot nach einer Änderung stets neu zu veröffentlichen.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
-2. Klicken Sie im linken Navigationsmenü auf **Kommerzieller Marketplace** > **Übersicht**.
-3. Wählen Sie in der Übersicht **+ Neues Angebot** > **Dynamics 365 for Business Central** aus.
+1. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
+1. Wählen Sie in der Übersicht **+ Neues Angebot** > **Dynamics 365 for Business Central** aus.
 
     :::image type="content" source="media/dynamics-365/new-offer-dynamics-365-business-central.png" alt-text="Die Menüoptionen im linken Fensterbereich und die Schaltfläche „Neues Angebot“.":::
 
 > [!IMPORTANT]
 > Nachdem ein Angebot veröffentlicht wurde, werden sämtliche Änderungen, die Sie im Partner Center daran vornehmen, erst nach erneuter Veröffentlichung des Angebots in Microsoft AppSource angezeigt. Achten Sie darauf, ein Angebot nach einer Änderung stets neu zu veröffentlichen.
 
+---
+
 ## <a name="new-offer"></a>Neues Angebot
 
-Geben Sie eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto.
+Geben Sie im angezeigten Dialogfeld eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto.
 
 - Diese ID ist in der Webadresse für das Angebot und in Azure Resource Manager-Vorlagen für Kunden sichtbar, falls zutreffend.
 - Verwenden Sie nur Kleinbuchstaben und Zahlen. Die ID kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt. Wenn die Herausgeber-ID z. B. `testpublisherid` lautet und Sie **test-offer-1** eingeben, lautet die Webadresse für das Angebot `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1`.

@@ -8,12 +8,13 @@ ms.author: bobazile
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 079ef0c70641100e0b2efe7d08d79dc218a83abc
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: pstn
+ms.openlocfilehash: b6fa8523a347f9191c607ce3ba50b32f2d088886
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259026"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636019"
 ---
 # <a name="session-border-controllers-and-voice-routing"></a>Unterstützte Sitzungsgrenzcontroller (SBCs) und Sprachrouting
 Mit dem Azure Communication Services direktem Routing können Sie Ihre vorhandene Infrastruktur der Telefonie mit Azure verbinden. In diesem Artikel werden die Schritte aufgeführt, die auf hoher Ebene zum Verbinden eines unterstützten Session Border Controller (SBC) zum direkten Routing erforderlich sind. Außerdem wird erläutert, wie das Sprachrouting für die aktivierte Communication-Ressource funktioniert. 
@@ -48,6 +49,9 @@ Wenn Sie einer Ressource eine Konfiguration für direktes Routing hinzufügen, v
 ## <a name="voice-routing-examples"></a>Beispiele für das Sprachrouting
 In den folgenden Beispielen wird das Sprachrouting in einem Anruffluss angezeigt.
 
+> [!NOTE]
+> In allen Beispielen werden die SBCs in einer Route nach dem Zufallsprinzip ausprobiert, während die höhere Sprachroute eine höhere Priorität hat.
+
 ### <a name="one-route-example"></a>Ein Beispiel für eine Route:
 Wenn Sie eine Sprachroute mit einem Muster `^\+1(425|206)(\d{7})$` erstellt und ihr `sbc1.contoso.biz` und `sbc2.contoso.biz` hinzugefügt haben, wird der Anruf, wenn der Benutzer ihn an `+1 425 XXX XX XX` oder `+1 206 XXX XX XX` tätigt, zunächst an SBC`sbc1.contoso.biz` oder `sbc2.contoso.biz` weitergeleitet. Wenn kein SBC verfügbar ist, wird der Anruf verworfen.
 
@@ -58,7 +62,7 @@ Wenn Sie eine Sprachroute mit einem Muster `^\+1(425|206)(\d{7})$` erstellt und 
 Wenn Sie eine Sprachroute mit einem Muster `^\+1(425|206)(\d{7})$` erstellt und mit `sbc1.contoso.biz` und `sbc2.contoso.biz` ergänzt haben, und dann eine zweite Route mit demselben Muster mit `sbc3.contoso.biz` und `sbc4.contoso.biz` sowie eine dritte Route mit `^+1(\d[10])$` und `sbc5.contoso.biz` erstellt haben. Wenn der Benutzer in diesem Fall einen Anruf an `+1 425 XXX XX XX` oder `+1 206 XXX XX XX` tätigt, wird der Aufruf zuerst an SBC `sbc1.contoso.biz` oder `sbc2.contoso.biz` geroutet. Wenn sowohl der SBC 1 als auch der SBC 2 nicht verfügbar sind, wird versucht, die Route mit einer niedrigerer Priorität (`sbc3.contoso.biz` und `sbc4.contoso.biz`) verwenden. Wenn keiner der SBCs einer zweiten Route verfügbar ist, wird die dritte Route ausprobiert. Wenn der SBC 5 ebenfalls nicht verfügbar ist, wird der Aufruf verworfen. Außerdem, wenn ein Benutzer `+1 321 XXX XX XX` wählt, geht der Anruf an `sbc5.contoso.biz` und wenn es nicht verfügbar ist, wird der Anruf verworfen.
 
 > [!NOTE]
-> In allen Beispielen werden die SBCs in einer Route nach dem Zufallsprinzip ausprobiert, während die höhere Sprachroute eine höhere Priorität hat.
+> Failover zum nächsten SBC im Sprachrouting funktioniert nur für die Antwortcodes 408, 503 und 504.
 
 > [!NOTE]
 > Wenn die gewählte Nummer in keinem der Beispiele dem Muster entspricht, wird der Anruf verworfen. Das gilt nicht, wenn eine erworbene Nummer für die Kommunikationsressource vorhanden ist und diese Nummer als `alternateCallerId` in der Anwendung verwendet wurde. 

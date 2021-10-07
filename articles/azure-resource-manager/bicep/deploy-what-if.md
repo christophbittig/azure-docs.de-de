@@ -3,20 +3,24 @@ title: Was-wäre-wenn für die Bicep-Bereitstellung
 description: Hier erfahren Sie, welche Änderungen an Ihren Ressourcen vorgenommen werden, bevor Sie eine Bicep-Datei bereitstellen.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 09/02/2021
 ms.author: tomfitz
-ms.openlocfilehash: 42e4198f2597ca3708e58bbc7a25545eab96b8c6
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 697a72e33b4f03f7441e51085f2519fa32f88590
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634586"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793681"
 ---
 # <a name="bicep-deployment-what-if-operation"></a>Was-wäre-wenn-Vorgang für die Bicep-Bereitstellung
 
 Vor dem Bereitstellen einer Bicep-Datei können Sie eine Vorschau der Änderungen anzeigen, die vorgenommen werden. Der von Azure Resource Manager bereitgestellte Was-wäre-wenn-Vorgang zeigt, wie sich Ressourcen ändern, wenn Sie die Bicep-Datei bereitstellen. Der Was-wäre-wenn-Vorgang nimmt keine Änderungen an vorhandenen Ressourcen vor. Stattdessen sagt er die Änderungen vorher, die vorgenommen werden, wenn die angegebene Bicep-Datei bereitgestellt wird.
 
 Sie können den Was-wäre-wenn-Vorgang mit Azure PowerShell-, Azure CLI- oder REST-API-Vorgängen verwenden. Der Was-wäre-wenn-Vorgang wird für Bereitstellungen auf Ressourcengruppen-, Abonnements-, Verwaltungsgruppen- und Mandantenebene unterstützt.
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen zum Was-wäre-wenn-Vorgang und eine praktische Anleitung finden Sie unter [Vorschau von Azure-Bereitstellungsänderungen mithilfe von Was-wäre-wenn](/learn/modules/arm-template-whatif/) auf **Microsoft Learn**.
 
 ## <a name="install-azure-powershell-module"></a>Installieren des Azure PowerShell-Moduls
 
@@ -196,7 +200,11 @@ Die folgenden Ergebnisse zeigen die zwei unterschiedlichen Ausgabeformate:
 
 ### <a name="set-up-environment"></a>Einrichten der Umgebung
 
-Um zu sehen, wie Was-wäre-wenn funktioniert, führen wir nun einige Tests aus. Stellen Sie zunächst eine [Bicep-Datei zum Erstellen eines virtuellen Netzwerks](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/what-if/what-if-before.bicep) bereit. Sie verwenden dieses virtuelle Netzwerk, um zu testen, wie Änderungen bei Was-wäre-wenn gemeldet werden. Laden Sie eine Kopie der Bicep-Datei herunter.
+Um zu sehen, wie Was-wäre-wenn funktioniert, führen wir nun einige Tests aus. Stellen Sie zunächst eine Bicep-Datei zum Erstellen eines virtuellen Netzwerks bereit. Sie verwenden dieses virtuelle Netzwerk, um zu testen, wie Änderungen bei Was-wäre-wenn gemeldet werden. Laden Sie eine Kopie der Bicep-Datei herunter.
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/samples/deploy-what-if/what-if-before.bicep":::
+
+Um die Bicep-Datei bereitzustellen, verwenden Sie:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -224,7 +232,11 @@ az deployment group create \
 
 ### <a name="test-modification"></a>Testen der Änderung
 
-Nach Abschluss der Bereitstellung, sind Sie bereit, um den Was-wäre-wenn-Vorgang zu testen. Diesmal stellen Sie eine [Bicep-Datei zum Ändern des virtuellen Netzwerks](https://github.com/Azure/azure-docs-bicep-samples/blob/main/bicep/what-if/what-if-after.bicep) bereit. Es fehlt eins der ursprünglichen Tags, ein Subnetz wurde entfernt, und das Adresspräfix wurde geändert. Laden Sie eine Kopie der Bicep-Datei herunter.
+Nach Abschluss der Bereitstellung, sind Sie bereit, um den Was-wäre-wenn-Vorgang zu testen. Diesmal stellen Sie eine Bicep-Datei zum Ändern des virtuellen Netzwerks bereit. Es fehlt eins der ursprünglichen Tags, ein Subnetz wurde entfernt, und das Adresspräfix wurde geändert. Laden Sie eine Kopie der Bicep-Datei herunter.
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/samples/deploy-what-if/what-if-after.bicep":::
+
+Um die Änderungen zu sehen, verwenden Sie:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -374,6 +386,24 @@ Are you sure you want to execute the deployment?
 ```
 
 Die erwarteten Änderungen werden angezeigt, und Sie können bestätigen, dass die Bereitstellung ausgeführt werden soll.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Beispielressourcen nicht mehr benötigen, verwenden Sie Azure CLI oder Azure PowerShell, um die Ressourcengruppe zu löschen.
+
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+
+```azurecli
+az group delete --name ExampleGroup
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+Remove-AzResourceGroup -Name ExampleGroup
+```
+
+---
 
 ## <a name="sdks"></a>SDKs
 

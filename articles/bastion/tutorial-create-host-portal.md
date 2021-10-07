@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 08/30/2021
+ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: cd6f2de9d440309662ef47a950f6c1331e30d5fb
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 0aa2efb84c207592131d3b7c3060aebc22cc49f6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221094"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668893"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm"></a>Tutorial: Konfigurieren von Bastion und Herstellen einer Verbindung mit einer Windows-VM
 
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein virtuelles Netzwerk
+* Ein [virtuelles Netzwerk](../virtual-network/quick-create-portal.md)
 * Ein virtueller Windows-Computer im virtuellen Netzwerk Wenn Sie nicht über einen virtuellen Computer verfügen, erstellen Sie einen über [Schnellstart: Erstellen einer VM](../virtual-machines/windows/quick-create-portal.md).
 * Die folgenden Rollen sind für Ihre Ressourcen erforderlich:
    * Erforderliche VM-Rollen:
@@ -94,7 +94,7 @@ In diesem Abschnitt erfahren Sie, wie Sie das Bastionhostobjekt in Ihrem VNET er
 
 * **Name**: Der Name der neuen Bastion-Ressource.
 
-* **Region**: Die öffentliche Azure-Region, in der die Ressource erstellt wird.
+* **Region**: Die öffentliche Azure-Region, in der die Ressource erstellt wird. Wählen Sie die Region aus, in der sich Ihr virtuelles Netzwerk befindet.
 
 * **Tarif**: Der Tarif wird auch als **SKU** bezeichnet. Für dieses Tutorial wählen wir die **Standard**-SKU in der Dropdownliste aus. Wenn Sie die Standard-SKU auswählen, können Sie die Anzahl der Instanzen für die Skalierung des Hosts konfigurieren. Von der Basic-SKU wird die Hostskalierung nicht unterstützt. Weitere Informationen finden Sie unter [Konfigurationseinstellungen – SKU](configuration-settings.md#skus). Die Standard-SKU befindet sich in der Vorschauversion.
 
@@ -104,9 +104,9 @@ In diesem Abschnitt erfahren Sie, wie Sie das Bastionhostobjekt in Ihrem VNET er
 
 * **Virtuelles Netzwerk:** Das virtuelle Netzwerk, in dem die Bastion-Ressource erstellt wird. Im Rahmen dieses Prozesses können Sie über das Portal ein neues virtuelles Netzwerk erstellen oder eines der vorhandenen virtuellen Netzwerke verwenden. Achten Sie bei Verwendung eines bereits vorhandenen virtuellen Netzwerks darauf, dass der freie Adressraum die Anforderungen des Bastion-Subnetzes erfüllt. Sollte Ihr virtuelles Netzwerk nicht in der Dropdownliste angezeigt werden, überprüfen Sie, ob Sie die richtige Ressourcengruppe ausgewählt haben.
 
-* **Subnetz**: Nach dem Erstellen oder Auswählen eines virtuellen Netzwerks wird das Subnetzfeld auf der Seite angezeigt. Dies ist das Subnetz, in dem Ihre Bastion-Instanzen bereitgestellt werden. 
+* **Subnetz**: Nach dem Erstellen oder Auswählen eines virtuellen Netzwerks wird das Subnetzfeld auf der Seite angezeigt. Dies ist das Subnetz, in dem Ihre Bastion-Instanzen bereitgestellt werden. Der Name muss **AzureBastionSubnet** lauten. Weitere Informationen finden Sie unter den folgenden Schritten zum Hinzufügen des Subnetzes.
 
-#### <a name="add-the-azurebastionsubnet"></a>Hinzufügen des AzureBastionSubnet
+#### <a name="manage-subnet-configuration"></a>Verwalten der Subnetzkonfiguration
 
 Wahrscheinlich haben Sie noch kein AzureBastionSubnet konfiguriert. So konfigurieren Sie das Bastion-Subnetz: 
 

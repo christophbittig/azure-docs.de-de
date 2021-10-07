@@ -1,18 +1,18 @@
 ---
-title: Überprüfen von Azure Synapse Analytics-Arbeitsbereichen
+title: Registrieren und Überprüfen von Azure Synapse Analytics-Arbeitsbereichen
 description: Hier erfahren Sie, wie Sie einen Azure Synapse-Arbeitsbereich in Ihrem Azure Purview-Datenkatalog überprüfen.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 06/18/2021
-ms.openlocfilehash: a74e88d72d1e7109b6e0acfa81485476eed9e00b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8a7b23089e9b17e35b56b04991c76b37baedf231
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355098"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207790"
 ---
 # <a name="register-and-scan-azure-synapse-analytics-workspaces"></a>Registrieren und Überprüfen von Azure Synapse Analytics-Arbeitsbereichen
 
@@ -138,6 +138,7 @@ Die Authentifizierung für eine Azure Synapse-Quelle kann auf zwei Arten einger
     EXEC sp_addrolemember 'db_datareader', [PurviewAccountName]
     GO
     ```
+
 #### <a name="use-a-managed-identity-for-serverless-sql-databases"></a>Verwenden einer verwalteten Identität für serverlose SQL-Datenbanken
 
 1. Navigieren Sie zu Ihrem Azure Synapse-Arbeitsbereich.
@@ -148,6 +149,14 @@ Die Authentifizierung für eine Azure Synapse-Quelle kann auf zwei Arten einger
     CREATE USER [PurviewAccountName] FOR LOGIN [PurviewAccountName];
     ALTER ROLE db_datareader ADD MEMBER [PurviewAccountName]; 
     ```
+
+#### <a name="grant-permission-to-use-credentials-for-external-tables"></a>Erteilen der Berechtigung zum Verwenden von Anmeldeinformationen für externe Tabellen
+
+Wenn der Azure Synapse Arbeitsbereich über externe Tabellen verfügt, muss der verwalteten Azure Purview-Identität die Berechtigung „Verweise“ für die Anmeldeinformationen im Bereich der „externe Tabelle“ erteilt werden. Mit der Berechtigung „Verweise“ kann Azure Purview Daten aus externen Tabellen lesen.
+
+```sql
+GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::[scoped_credential] TO [PurviewAccountName];
+```
 
 #### <a name="use-a-service-principal-for-dedicated-sql-databases"></a>Verwenden eines Dienstprinzipals für dedizierte SQL-Datenbanken
 
@@ -199,7 +208,7 @@ Die Authentifizierung für eine Azure Synapse-Quelle kann auf zwei Arten einger
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1. Wählen Sie in Purview Studio im linken Bereich die Registerkarte **Data Map** aus.
+1. Wählen Sie in [Purview Studio](https://web.purview.azure.com/resource/) im linken Bereich die Registerkarte **Data Map** aus.
 
 1. Wählen Sie die von Ihnen registrierte Datenquelle aus.
 
@@ -232,11 +241,11 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
     * Die **Statusleiste** zeigt eine kurze Zusammenfassung des Ausführungsstatus der untergeordneten Ressourcen. Der Status wird in der Überprüfung auf Arbeitsbereichsebene angezeigt.  
     * Grün bedeutet, dass die Überprüfung erfolgreich ausgeführt wurde. Rot gibt an, dass die Überprüfungsausführung nicht erfolgreich war. Grau bedeutet, dass die Überprüfung noch nicht abgeschlossen ist.  
-    * Durch Klicken auf die Überprüfungsausführungen können Sie ausführlichere Informationen anzeigen.
+    * Durch die Auswahl der Überprüfungsausführungen können Sie ausführlichere Informationen anzeigen.
 
       :::image type="content" source="media/register-scan-synapse-workspace/synapse-scan-details.png" alt-text="Screenshot: Detailseite der Azure Synapse Analytics-Überprüfung" lightbox="media/register-scan-synapse-workspace/synapse-scan-details.png"::: 
 
-    * Im unteren Bereich der Seite mit den Quellendetails finden Sie eine Zusammenfassung der letzten nicht erfolgreichen Überprüfungsausführungen. Auch hier können durch Klicken auf die Überprüfungsausführungen ausführlichere Informationen angezeigt werden.
+    * Im unteren Bereich der Seite mit den Quellendetails finden Sie eine Zusammenfassung der letzten nicht erfolgreichen Überprüfungsausführungen. Durch die Auswahl der Überprüfungsausführungen können Sie ausführlichere Informationen anzeigen.
 
 #### <a name="manage-your-scans"></a>Verwalten Ihrer Überprüfungen
 

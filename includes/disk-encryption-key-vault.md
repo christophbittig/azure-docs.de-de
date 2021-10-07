@@ -1,5 +1,5 @@
 ---
-title: Datei einfügen
+title: include file
 description: include file
 services: virtual-machines
 author: msmbaldwin
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: fa16db2472daaa98f972460d691c07f700ec3447
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 1e0ec6d37990fbddcdebf7a1d2efd063cd9e4ea6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110722063"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909590"
 ---
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -42,7 +42,7 @@ Erstellen Sie mit dem Azure CLI-Befehl [az keyvault create](/cli/azure/keyvault
 >[!WARNING]
 > Der Schlüsseltresor und die VMs müssen sich im selben Abonnement befinden. Um sicherzustellen, dass die Verschlüsselungsgeheimnisse die Regionsgrenzen nicht verlassen, müssen sich der Schlüsseltresor und die VMs außerdem für Azure Disk Encryption in derselben Region befinden. Erstellen und verwenden Sie einen Schlüsseltresor, der sich im selben Abonnement und derselben Region wie die zu verschlüsselnden VMs befindet. 
 
-Jeder Schlüsseltresor muss einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen „<your-unique-keyvault-name>“ durch den Namen Ihres Schlüsseltresors.
+Jeder Schlüsseltresor muss einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen \<your-unique-keyvault-name\> durch den Namen Ihres Schlüsseltresors.
 
 ### <a name="azure-cli"></a>Azure CLI
 

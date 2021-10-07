@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/12/2018
+ms.date: 09/09/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 7bbd54ed68863a4704319a25af96b6463ad2377b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18f4276c3013f50ceacf74f4c8cec068f0de88cb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98539713"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775529"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Erstellen eines Azure CDN-Endpunkts
 In diesem Artikel werden alle Einstellungen zum Erstellen eines [Azure Content Delivery Network (CDN)](cdn-overview.md)-Endpunkts in einem vorhandenen CDN-Profil beschrieben. Nach der Erstellung eines Profils und eines Endpunkts können Sie mit der Bereitstellung von Inhalten für Ihre Kunden beginnen. Eine Schnellstartanleitung zum Erstellen eines Profils und-Endpunkts finden Sie unter [Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts](cdn-create-new-endpoint.md).
@@ -100,6 +100,9 @@ Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.c
     - Bei Profilen vom Typ **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** ist die Weitergabe in der Regel in 30 Minuten abgeschlossen. 
    
     Wenn Sie versuchen, den CDN-Domänennamen zu verwenden, bevor die Endpunktkonfiguration an die Point of Presence-Server (POP-Server) verteilt wurde, wird unter Umständen der Antwortstatus „HTTP 404“ angezeigt. Falls Sie auch mehrere Stunden nach Erstellung des Endpunkts weiterhin den Antwortstatus 404 erhalten, lesen Sie [Problembehandlung bei Azure CDN-Endpunkten, die den Statuscode 404 zurückgeben](cdn-troubleshoot-endpoint.md).
+
+> [!NOTE]
+> Bei *Verizon-CDN-Endpunkten* werden alle über das zusätzliche Verizon-Portal konfigurierten Ressourcen bereinigt, wenn ein Endpunkt aus irgendeinem Grund **deaktiviert** oder **angehalten** wird. Diese Konfigurationen können nicht durch das Neustarten des Endpunkts automatisch wiederhergestellt werden. Sie müssen diese Konfigurationsänderungen erneut vornehmen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie einen nicht mehr benötigten Endpunkt löschen möchten, wählen Sie ihn aus. Wählen Sie dann **Löschen** aus. 

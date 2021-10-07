@@ -3,15 +3,15 @@ title: Empfehlungen
 description: Empfohlene bewährte Methoden zum Erzielen besserer Ergebnisse
 author: ariye
 ms.author: crtreasu
-ms.date: 03/12/2021
+ms.date: 09/10/2021
 ms.topic: best-practice
 ms.service: azure-object-anchors
-ms.openlocfilehash: 0a092b45b341af37e4251951b06d1211fa6c600a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 119837282409719a194341467a5d8164a46431b9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111983796"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777581"
 ---
 # <a name="best-practices"></a>Bewährte Methoden
 
@@ -31,16 +31,24 @@ Wir empfehlen Ihnen, einige dieser Schritte auszuprobieren, um die besten Ergebn
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Mixed-Reality/Azure-Object-Anchors-Detection-and-Alignment-Best-Practices/player]
 
-- Das bereitgestellte Runtime-SDK benötigt einen benutzerseitig bereitgestellten Suchbereich, um nach den physischen Objekten zu suchen und diese zu erkennen. Der Suchbereich kann ein Begrenzungsrahmen, eine Kugel, ein Pyramidenstumpf (Frustum) oder eine beliebige Kombination daraus sein. Um eine falsche Erkennung zu vermeiden, empfiehlt es sich, einen Suchbereich festzulegen, der groß genug ist, um das Objekt abzudecken. Wenn Sie die bereitgestellten Beispiel-Apps verwenden, können Sie auf einer Seite des Objekts, ungefähr 2 Meter von der nächstgelegenen Oberfläche entfernt, stehen und die App starten.
-- Bevor Sie die App „Azure Object Anchors“ auf einem HoloLens 2-Gerät starten, entfernen Sie die Hologramme in der Nähe Ihres Arbeitsplatzes in den Haupteinstellungen Ihrer Geräte über ***Einstellungen->System->Hologramme***.
+- Das bereitgestellte Runtime-SDK benötigt einen benutzerseitig bereitgestellten Suchbereich, um nach den physischen Objekten zu suchen und diese zu erkennen. Der Suchbereich kann ein Begrenzungsrahmen, eine Kugel, ein Pyramidenstumpf (Frustum) oder eine beliebige Kombination daraus sein. Um eine falsche Erkennung zu vermeiden, legen Sie einen Suchbereich fest, der groß genug ist, um das Objekt abzudecken. Wenn Sie die bereitgestellten Beispiel-Apps verwenden, starten Sie die App mit einem Abstand von ca. zwei Metern von der nächstgelegenen Oberfläche.
+- Bevor Sie die Azure Object Anchors-App auf einem HoloLens 2-Gerät starten, entfernen Sie alle Hologramme mithilfe der App **Einstellungen**.
+  Navigieren Sie zu **System** -> **Holograms** („System“ > „Hologramme“), und klicken Sie dann auf **Remove all holograms** (Alle Hologramme entfernen), um mit einer neuen Karte zu beginnen.
 
-  Mit diesem Schritt wird sichergestellt, dass alte und nicht mehr relevante Hologramme nicht dauerhaft bleiben und so verwirrende Visualisierungen für das aktuell in der Ansicht befindliche Objekt erzeugen, wenn ein neues Objekt, wie z. B. ein Auto, im selben Bereich vorhanden ist, der zuvor von einem anderen Objekt belegt wurde, oder wenn sich das Objekt aus dem Zielbereich hinausbewegt hat.
-- Scannen Sie das Objekt, z. B. ein Auto, nach dem Entfernen der Hologramme und vor dem Starten der App, indem Sie das Objekt aus einer Entfernung von ca. 1–2 Metern ansehen, während Sie das Gerät tragen, und ein- oder zweimal langsam und vollständig um das Objekt herumgehen.
+  Durch das Löschen der Hologramme wird sichergestellt, dass Objekte an ihren aktuellen Positionen ordnungsgemäß erkannt werden können, falls sie vor Kurzem verschoben wurden.
+- Scannen Sie das Objekt nach dem Entfernen der Hologramme und vor dem Starten der App, indem Sie mit der HoloLens in einem Abstand von ein bis zwei Metern 5-mal um das Objekt laufen.
 
-  Durch diesen Schritt wird sichergestellt, dass jegliche Restoberflächenschätzungen, die von früheren Objekten und Scans in Ihrem Bereich erzeugt wurden, durch die Oberflächen des aktuellen Zielobjekts aktualisiert werden, mit dem Sie arbeiten möchten. Andernfalls sieht die App möglicherweise doppelte Geisteroberflächen, die zu einer ungenauen Ausrichtung Ihres 3D-Modells und der zugeordneten Hologramme führen. Durch das Vorscannen des Objekts wird auch die Erkennungswartezeit von Azure Object Anchors erheblich reduziert, beispielsweise von 30  auf 5 Sekunden.
-- Bei dunklen und hochgradig reflektierenden Objekten müssen Sie das Objekt möglicherweise aus einem geringeren Abstand scannen und dabei außerdem den Kopf auf und ab bewegen sowie von links nach rechts und umgekehrt, damit das Gerät Oberflächen aus mehreren Winkeln und mehreren Abständen sehen kann.
-- Wenn Sie eine falsche Objekterkennung sehen, z. B. eine gespiegelte Ausrichtung oder eine fehlerhafte Haltung wie bei einem gekippten Modell, sollten Sie die räumliche Zuordnung visualisieren. Häufig resultieren die falschen Ergebnisse aus einer schlechten oder unvollständigen Oberflächenrekonstruktion. Sie können die Hologramme entfernen, das Objekt scannen und die Objekterkennung in der App erneut ausführen.
+  Das Vorscannen eines Objekts und einer Umgebung kann bei der Bereinigung von noch vorhandenen Oberflächen helfen, die basierend auf früheren Objekten und Scans erstellt wurden.
+  Andernfalls sieht die App möglicherweise Geisteroberflächen, die zu einer ungenauen Ausrichtung Ihres 3D-Modells und der zugeordneten Hologramme führen. Durch das Vorscannen des Objekts kann auch die Azure Object Anchors-Erkennungswartezeit erheblich reduziert (z. B. von 30 auf 5 Sekunden).
+- Bei dunklen und stark reflektierenden Objekten müssen Sie das Objekt mit weniger Abstand sowie aus mehreren Winkeln und verschiedenen Entfernungen scannen.
 - Das bereitgestellte Runtime-SDK bietet ein paar Parameter, die Benutzern eine Feinabstimmung der Erkennung erlauben, wie in unseren Beispiel-Apps veranschaulicht. Die Standardparameter funktionieren für die meisten Objekte gut. Wenn Sie feststellen, dass Sie sie für bestimmte Objekte anpassen müssen, finden Sie hier einige Empfehlungen:
   - Verwenden Sie einen niedrigeren Schwellenwert für die Oberflächenabdeckung, wenn das physische Objekt groß, dunkel oder glänzend ist.
   - Lassen Sie eine kleine Skalierungsänderung (z. B. 0,1) für ein großes Objekt wie ein Auto zu.
   - Lassen Sie eine gewisse graduelle Abweichung zwischen der lokalen vertikalen Richtung des Objekts und der Schwerkraft zu, wenn sich das Objekt auf einer Schrägen befindet.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Leitfaden haben Sie einige bewährte Methoden zum Erzielen der besten Ergebnisse bei der Verwendung von Azure Object Anchors zum Erkennen eines Objekts kennengelernt. Im Folgenden finden Sie einige verwandte Artikel:
+
+> [!div class="nextstepaction"]
+> [Problembehandlung bei der Objekterkennung](./troubleshoot/object-detection.md)

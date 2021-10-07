@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/20/2021
+ms.date: 09/20/2021
 ms.author: tisande
-ms.openlocfilehash: 7468b544f36645609e1da344aef583c33157da7d
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 680b383cee86ec4233579b9305c47e60ad4d5ff4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350396"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625340"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Schlüsselwörter in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -102,11 +102,30 @@ Die Ergebnisse sind:
 ]
 ```
 
-Abfragen mit einer Aggregatsystemfunktion und einer Unterabfrage mit `DISTINCT` werden nicht unterstützt. Beispielsweise wird die folgende Abfrage nicht unterstützt:
+Abfragen mit einer Aggregatsystemfunktion und einer Unterabfrage mit `DISTINCT` werden nur in bestimmten SDK-Versionen unterstützt. Abfragen mit der folgenden Form werden z. B. nur in den unten angegebenen SDK-Versionen unterstützt:
 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
+
+**Unterstützte SDK-Versionen:**
+
+|**SDK**|**Unterstützte Versionen**|
+|-------|----------------------|
+|.NET SDK|3.18.0 oder höher|
+|Java-SDK|4.19.0 oder höher|
+|Node.js SDK|Nicht unterstützt|
+|Python SDK|Nicht unterstützt|
+
+Für Abfragen mit einer Aggregatsystemfunktion und einer Unterabfrage mit `DISTINCT` gibt es einige weitere Einschränkungen:
+
+|**Einschränkung**|**Beispiel**|
+|-------|----------------------|
+|WHERE-Klausel in der äußeren Abfrage|SELECT COUNT(1) FROM (SELECT DISTINCT VALUE c.lastName FROM c) AS lastName WHERE lastName = "Smith"|
+|ORDER BY-Klausel in der äußeren Abfrage|SELECT VALUE COUNT(1) FROM (SELECT DISTINCT VALUE c.lastName FROM c) AS lastName ORDER BY lastName|
+|GROUP BY-Klausel in der äußeren Abfrage|SELECT COUNT(1) as annualCount, d.year FROM (SELECT DISTINCT c.year, c.id FROM c) AS d GROUP BY d.year|
+|Geschachtelte Unterabfrage|SELECT COUNT(1) FROM (SELECT y FROM (SELECT VALUE StringToNumber(SUBSTRING(d.date, 0, 4 FROM (SELECT DISTINCT c.date FROM c) d) AS y WHERE y > 2012)|
+|Mehrere Aggregationen|SELECT COUNT(1) as AnnualCount, SUM(d.sales) as TotalSales FROM (SELECT DISTINCT c.year, c.sales, c.id FROM c) AS d|
 
 ## <a name="like"></a>LIKE
 

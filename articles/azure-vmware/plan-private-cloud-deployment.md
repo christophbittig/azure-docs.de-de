@@ -3,13 +3,13 @@ title: Planen der Azure VMware Solution-Bereitstellung
 description: Erfahren Sie, wie Sie Ihre Azure VMware Solution-Bereitstellung planen.
 ms.topic: tutorial
 ms.custom: contperf-fy21q4
-ms.date: 07/07/2021
-ms.openlocfilehash: 4f0f59a01ff53646a23809efa129a154bfba81ee
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 09/27/2021
+ms.openlocfilehash: 6528727fda867f5f07d7d83b09df1bbf70df6b92
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444212"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079464"
 ---
 # <a name="plan-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
@@ -34,7 +34,7 @@ Wenn Sie fertig sind, folgen Sie den empfohlenen nächsten Schritten am Ende, um
 Identifizieren Sie das Abonnement, das Sie zum Bereitstellen von Azure VMware Solution verwenden möchten.  Sie können ein neues Abonnement erstellen oder ein vorhandenes Abonnement verwenden.
 
 >[!NOTE]
->Das Abonnement muss einem Microsoft Enterprise Agreement (EA) oder einem Azure-Plan für Cloud Solution Provider (CSP) zugeordnet sein. Weitere Informationen finden Sie unter den [Berechtigungskriterien](request-host-quota-azure-vmware-solution.md#eligibility-criteria).
+>Das Abonnement muss einem Microsoft Enterprise Agreement (EA) oder einem Azure-Plan für Cloud Solution Provider (CSP) oder einer Microsoft-Kundenvereinbarung (MCA) zugeordnet sein. Weitere Informationen finden Sie unter den [Berechtigungskriterien](request-host-quota-azure-vmware-solution.md#eligibility-criteria).
 
 ## <a name="identify-the-resource-group"></a>Identifizieren der Ressourcengruppe
 
@@ -65,7 +65,7 @@ Ihre erste Azure VMware Solution-Bereitstellung umfasst eine private Cloud mit e
 
 
 >[!NOTE]
->Informationen zu den Grenzwerten für die Anzahl von Hosts pro Cluster, die Anzahl von Clustern pro privater Cloud und die Anzahl der Hosts pro privater Cloud finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-vmware-solution-limits).
+>Informationen zu den Grenzwerten für die Anzahl von Hosts pro Cluster, die Anzahl von Clustern pro privater Cloud und die Anzahl der Hosts pro privater Cloud finden Sie unter [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-vmware-solution-limits).
 
 ## <a name="request-a-host-quota"></a>Anfordern eines Hostkontingents 
 

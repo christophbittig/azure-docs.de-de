@@ -1,14 +1,14 @@
 ---
-title: Integrieren von Umgebungen in Azure Pipelines in Azure DevTest Labs
+title: Integrieren von Umgebungen in Azure Pipelines
 description: Hier erfahren Sie, wie Sie Azure DevTest Labs-Umgebungen in Ihre CI- und CD-Pipelines (Continuous Integration und Continuous Delivery) von Azure DevOps integrieren.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 18f334fe85b6a38c38fc41d55c711ee6d6629760
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 4f205fb70978a667df8a8fe82beea38e492828a0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006129"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651118"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrieren von Umgebungen in Ihre Azure DevOps-CI/CD-Pipelines
 Mithilfe der in Azure DevOps Services (ehemals Visual Studio Team Services) installierten Erweiterung „Azure DevTest Labs Tasks“ können Sie Ihre Build- und Releasepipeline mit Continuous Integration (CI)/Continuous Delivery (CD) problemlos in Azure DevTest Labs integrieren. Diese Erweiterungen vereinfachen beispielsweise die schnelle Bereitstellung einer [Umgebung](devtest-lab-test-env.md) für eine bestimmte Testaufgabe und die anschließende Löschung der Umgebung nach Abschluss des Tests. 
@@ -72,4 +72,3 @@ Weitere Informationen finden Sie in folgenden Artikeln:
 - [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md)
 - Resource Manager-Schnellstartvorlagen für die DevTest Labs-Automatisierung aus dem [GitHub-Repository für DevTest Labs](https://github.com/Azure/azure-quickstart-templates)
 - [VSTS Troubleshooting page (Seite zur Problembehandlung bei VSTS)](/azure/devops/pipelines/troubleshooting)
-

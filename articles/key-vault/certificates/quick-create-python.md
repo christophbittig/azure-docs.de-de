@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f74fa900a03daeae3cf825bfa6e06434833e2195
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 443adca76ae565ee98eccfec439beb38a7952d3c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292430"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740795"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Schnellstart: Azure Key Vault-Zertifikatclientbibliothek für Python
 
@@ -143,15 +143,15 @@ python kv_certificates.py
 ```
 
 - Wenn Berechtigungsfehler auftreten, stellen Sie sicher, dass Sie den [`az keyvault set-policy`-Befehl](#grant-access-to-your-key-vault) ausgeführt haben.
-- Wenn Sie den Code mit dem gleichen Schlüsselnamen erneut ausführen, wird möglicherweise der Fehler „(Konflikt) Zertifikat <name> befindet sich derzeit in einem gelöschten, aber wiederherstellbaren Zustand“ angezeigt. Verwenden Sie einen anderen Schlüsselnamen.
+- Wenn Sie den Code mit dem gleichen Schlüsselnamen erneut ausführen, wird möglicherweise der Fehler „(Konflikt) Zertifikat \<name\> befindet sich derzeit in einem gelöschten, aber wiederherstellbaren Zustand“ angezeigt. Verwenden Sie einen anderen Schlüsselnamen.
 
 ## <a name="code-details"></a>Codedetails
 
 ### <a name="authenticate-and-create-a-client"></a>Authentifizieren und Erstellen eines Clients
 
-In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren beim Schlüsseltresor verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie in der [Übersicht zu verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren beim Schlüsseltresor verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie in der [Übersicht zu verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](/python/api/azure-identity/azure.identity.defaultazurecredential) verwendet, mit der derselbe Code in verschiedenen Umgebungen mit verschiedenen Optionen zum Bereitstellen von Identitäten verwendet werden kann. Weitere Informationen finden Sie unter der [DefaultAzureCredential-Authentifizierung](https://docs.microsoft.com/python/api/overview/azure/identity-readme). 
+Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format `https://\<your-key-vault-name\>.vault.azure.net` erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](/python/api/azure-identity/azure.identity.defaultazurecredential) verwendet, mit der derselbe Code in verschiedenen Umgebungen mit verschiedenen Optionen zum Bereitstellen von Identitäten verwendet werden kann. Weitere Informationen finden Sie unter der [DefaultAzureCredential-Authentifizierung](/python/api/overview/azure/identity-readme). 
 
 ```python
 credential = DefaultAzureCredential()

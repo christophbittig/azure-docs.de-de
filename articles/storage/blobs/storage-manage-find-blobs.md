@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 95262d66be9300cc1c88ec80e3da4a5367705c76
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: fa2284e03c8d69bacb40a2fe99d3c3cb10a73828
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969414"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154639"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>Verwalten und Finden von Azure-Blobdaten mit Blobindextags
 
@@ -28,7 +28,7 @@ Blobindextags ermöglichen Ihnen Folgendes:
 
 - Angeben von bedingtem Verhalten für Blob-APIs basierend auf der Auswertung von Indextags
 
-- Verwenden von Indextags für erweiterte Steuerungsmöglichkeiten bei Features wie der [Lebenszyklusverwaltung für Blobs](storage-lifecycle-management-concepts.md)
+- Verwenden von Indextags für erweiterte Steuerungsmöglichkeiten bei Features wie der [Lebenszyklusverwaltung für Blobs](./lifecycle-management-overview.md)
 
 Stellen Sie sich ein Szenario vor, bei dem Sie über Millionen von Blobs in Ihrem Speicherkonto verfügen, auf die von vielen verschiedenen Anwendungen zugegriffen wird. Sie möchten alle zugehörigen Daten eines einzelnen Projekts finden. Sie sind sich nicht sicher, was alles dazugehört, weil die Daten über mehrere Container mit unterschiedlichen Namenskonventionen verteilt sein können. Alle Daten werden von Ihren Anwendungen aber mit projektabhängigen Tags hochgeladen. Anstatt Millionen von Blobs zu durchsuchen, um Namen und Eigenschaften zu vergleichen, können Sie `Project = Contoso` als Kriterium für die Ermittlung verwenden. Per Blobindex werden alle Container innerhalb Ihres gesamten Speicherkontos gefiltert, um in kürzester Zeit nur die 50 Blobs aus `Project = Contoso` zurückzugeben.
 
@@ -67,10 +67,7 @@ Sie können ein einzelnes Tag auf Ihr Blob anwenden, um anzugeben, wann die Vera
 
 Sie können mehrere Tags auf Ihr Blob anwenden, um eine ausführlichere Beschreibung für die Daten hinzuzufügen.
 
-> "Project" = 'Contoso'  
-> "Classified" = 'True'  
-> "Status" = 'Unprocessed'  
-> "Priority" = '01'
+> "Project" = 'Contoso' "Classified" = 'True' "Status" = 'Unprocessed' "Priority" = '01'
 
 Um die vorhandenen Indextagattribute zu ändern, rufen Sie die vorhandenen Tagattribute ab, ändern sie und ersetzen sie durch den Vorgang [Set Blob Tags](/rest/api/storageservices/set-blob-tags). Um alle Indextags aus dem Blob zu entfernen, rufen Sie den Vorgang `Set Blob Tags` ohne Tagattribute auf. Da Blobindextags eine Unterressource der Blobdateninhalte sind, ändert `Set Blob Tags` weder die zugrunde liegenden Inhalte, noch die Uhrzeit der letzten Änderung oder das ETag eines Blobs. Sie können Indextags für alle aktuellen Basisblobs erstellen oder ändern. Indextags werden auch für frühere Versionen beibehalten, aber nicht an die Blobindex-Engine übergeben, sodass Sie Indextags nicht abfragen können, um frühere Versionen abzurufen. Tags in Momentaufnahmen oder vorläufig gelöschten Blobs können nicht geändert werden.
 
@@ -179,7 +176,7 @@ In der Tabelle unten sind die zulässigen Operatoren für bedingte Vorgänge auf
 
 ## <a name="platform-integrations-with-blob-index-tags"></a>Plattformintegration bei Blobindextags
 
-Blobindextags sind nicht nur zum Kategorisieren, Verwalten und Durchsuchen Ihrer Blobdaten nützlich, sondern ermöglichen auch die Integration in andere Blob Storage-Features, z. B. die [Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md).
+Blobindextags sind nicht nur zum Kategorisieren, Verwalten und Durchsuchen Ihrer Blobdaten nützlich, sondern ermöglichen auch die Integration in andere Blob Storage-Features, z. B. die [Lebenszyklusverwaltung](./lifecycle-management-overview.md).
 
 ### <a name="lifecycle-management"></a>Lebenszyklusverwaltung
 
@@ -260,7 +257,7 @@ Benutzern, die eine [Azure AD-Identität](../common/authorize-data-access.md) ve
 | [Abrufen von Blobtags](/rest/api/storageservices/get-blob-tags)           | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read     |
 | [Suchen nach Blobs anhand von Tags](/rest/api/storageservices/find-blobs-by-tags) | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action |
 
-Für Vorgänge von Indextags sind zusätzliche Berechtigungen erforderlich, die über die Berechtigungen für die zugrunde liegenden Blobdaten hinausgehen. Die Rolle [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) verfügt über Berechtigungen für alle drei Blobindextag-Vorgänge. [Storage-Blobdatenleser](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) verfügt nur über Berechtigungen für die Vorgänge `Find Blobs by Tags` und `Get Blob Tags`.
+Für Vorgänge von Indextags sind zusätzliche Berechtigungen erforderlich, die über die Berechtigungen für die zugrunde liegenden Blobdaten hinausgehen. Die Rolle [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) verfügt über Berechtigungen für alle drei Blobindextag-Vorgänge. 
 
 ### <a name="sas-permissions"></a>SAS-Berechtigungen
 
@@ -306,18 +303,18 @@ In der folgenden Tabelle werden die Unterschiede zwischen Metadaten und Blobinde
 
 Ihnen wird die durchschnittliche monatliche Anzahl von Indextags innerhalb eines Speicherkontos berechnet. Für das Indizierungsmodul fallen keine Kosten an. Anforderungen zum Festlegen von Blobtags, Abrufen von Blobtags und Suchen von Blobtags werden zu den aktuellen jeweiligen Transaktionsraten berechnet. Beachten Sie, dass die Anzahl der Listentransaktionen, die beim Durchführen einer Transaktion vom Typ „Blobs nach Tag suchen“ genutzt werden, der Anzahl der Klauseln in der Anforderung entspricht. Beispielsweise besteht die Abfrage „(StoreID = 100)“ aus einer Listentransaktion.  Die Abfrage „(StoreID = 100 UND SKU = 10010)“ besteht aus zwei Listentransaktionen. Weitere Informationen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="regional-availability-and-storage-account-support"></a>Regionale Verfügbarkeit und Unterstützung von Speicherkonten
+<a id="regional-availability-and-storage-account-support"></a>
 
-Blobindextags stehen nur für Konten vom Typ „Universell V2“ zur Verfügung, bei denen der hierarchische Namespace (HNS) deaktiviert ist. Konten vom Typ „Universell V1“ werden nicht unterstützt, Sie können aber für ein Konto vom Typ „Universell V1“ ein Upgrade auf ein Konto vom Typ „Universell V2“ durchführen.
+## <a name="feature-support"></a>Featureunterstützung
 
-Indextags werden für Storage Premium-Konten nicht unterstützt. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat.
 
-Blobindextags sind derzeit in allen öffentlichen Regionen verfügbar.
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) |
+| Premium-Blockblobs          | ![Nein](../media/icons/no-icon.png)|![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
-Weitere Informationen zum Einstieg in Blobindex finden Sie unter [Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage](storage-blob-index-how-to.md).
-
-> [!IMPORTANT]
-> Weitere Informationen finden Sie im Abschnitt [Bedingungen und bekannte Probleme](#conditions-and-known-issues) dieses Artikels.
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
 
 ## <a name="conditions-and-known-issues"></a>Bedingungen und bekannte Probleme
 
@@ -327,7 +324,7 @@ In diesem Abschnitt werden bekannte Probleme und Bedingungen beschrieben.
 
 - Beim Hochladen von Seitenblobs mit Indextags werden die Tags nicht beibehalten. Legen Sie die Tags nach dem Hochladen eines Seitenblobs fest.
 
-- Bei aktivierter Blobspeicher-Versionsverwaltung können weiterhin Indextags für die aktuelle Version verwendet werden. Indextags werden für frühere Versionen beibehalten, aber nicht an die Blobindex-Engine übergeben, sodass Sie sie nicht zum Abrufen früherer Versionen verwenden können. Wenn Sie eine frühere Version auf die aktuelle Version höherstufen, werden die Tags dieser vorherigen Version zu den Tags der aktuellen Version. Da diese Tags der aktuellen Version zugeordnet sind, werden sie an die Blobindex-Engine übergeben und können von Ihnen abgefragt werden. 
+- Bei aktivierter Blobspeicher-Versionsverwaltung können weiterhin Indextags für die aktuelle Version verwendet werden. Indextags werden für frühere Versionen beibehalten, aber nicht an die Blobindex-Engine übergeben, sodass Sie sie nicht zum Abrufen früherer Versionen verwenden können. Wenn Sie eine frühere Version auf die aktuelle Version höherstufen, werden die Tags dieser vorherigen Version zu den Tags der aktuellen Version. Da diese Tags der aktuellen Version zugeordnet sind, werden sie an die Blobindex-Engine übergeben und können von Ihnen abgefragt werden.
 
 - Es gibt keine API, mit der Sie ermitteln können, ob Indextags indiziert wurden.
 
@@ -353,4 +350,4 @@ Nein, mit Resource Manager-Tags lassen sich Ressourcen der Steuerungsebene organ
 
 Ein Beispiel für die Verwendung des Blobindex finden Sie unter [Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage](storage-blob-index-how-to.md).
 
-Erfahren Sie mehr über die [Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md), und legen Sie eine Regel mit Blobindexabgleich fest.
+Erfahren Sie mehr über die [Lebenszyklusverwaltung](./lifecycle-management-overview.md), und legen Sie eine Regel mit Blobindexabgleich fest.

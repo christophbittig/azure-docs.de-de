@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 10df7f8db2a787300787f8995ac0ea3a33736e68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5b03a7c713203dd61eb95fd5422b3002939e9011
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355701"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208735"
 ---
 # <a name="source-control-in-synapse-studio"></a>Quellcodeverwaltung in Synapse Studio
 
@@ -23,6 +23,9 @@ In diesem Artikel wird erläutert, wie Sie in einem Synapse-Arbeitsbereich mit a
 
 > [!NOTE]
 > Die Git-Integration von Synapse Studio ist in der Azure Government-Cloud nicht verfügbar.
+
+## <a name="prerequisites"></a>Voraussetzungen
+Benutzer*innen müssen über die Azure-Rolle „Mitwirkender“ (Azure RBAC) oder eine Rolle mit mehr Berechtigungen für den Synapse-Arbeitsbereich verfügen, um ein Git-Repository zu konfigurieren, die Einstellungen dafür zu bearbeiten und dessen Verbindung mit Synapse zu trennen. 
 
 ## <a name="configure-git-repository-in-synapse-studio"></a>Konfigurieren des Git-Repositorys in Synapse Studio 
 
@@ -40,9 +43,6 @@ Wechseln Sie zum Verwaltungshub von Synapse Studio. Wählen Sie **Git-Konfigurat
 
 ![Konfigurieren der Coderepositoryeinstellungen im Verwaltungshub](media/configure-repo-2.png)
 
-> [!NOTE]
-> Benutzer, denen die Rollen Mitwirkender, Besitzer oder Rollen höherer Ebene im Arbeitsbereich zugewiesen sind, können die Einstellung bearbeiten und die Verbindung mit dem Git-Repository in Azure Synapse Studio trennen. 
-
 Sie können in Ihrem Arbeitsbereich entweder eine Verbindung mit dem Azure DevOps- oder GitHub-Git-Repository herstellen.
 
 ## <a name="connect-with-azure-devops-git"></a>Herstellen einer Verbindung mit dem Azure DevOps-Git-Repository 
@@ -57,7 +57,7 @@ Wenn Sie eine Verbindung mit dem Git-Repository herstellen, wählen Sie zuerst A
 
 Im Konfigurationsbereich werden die folgenden Azure DevOps-Git-Einstellungen angezeigt:
 
-| Einstellung | BESCHREIBUNG | Wert |
+| Einstellung | Beschreibung | Wert |
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des Coderepositorys für Azure Repos.<br/> | Azure DevOps Git oder GitHub |
 | **Azure Active Directory** | Ihr Name des Azure AD-Mandanten. | `<your tenant name>` |
@@ -161,9 +161,13 @@ Versionskontrollsysteme (auch als _Quellcodeverwaltung_ bezeichnet) ermöglichen
 
 ### <a name="creating-feature-branches"></a>Erstellen von Featurebranches
 
-Jedes Git-Repository, das einer Synapse Studio-Instanz zugeordnet ist, verfügt über einen Branch für die Zusammenarbeit. (`main` oder `master` ist der Standardbranch für die Kollaboration.) Benutzer können auch Featurebranches erstellen, indem sie im Dropdownmenü „Branch“ auf **+ Neuer Branch** klicken. Sobald der Bereich „Neuer Branch“ angezeigt wird, geben Sie den Namen Ihres Featurebranches ein.
+Jedes Git-Repository, das einer Synapse Studio-Instanz zugeordnet ist, verfügt über einen Branch für die Zusammenarbeit. (`main` oder `master` ist der Standardbranch für die Kollaboration.) Benutzer können auch Featurebranches erstellen, indem sie im Dropdownmenü „Branch“ auf **+ Neuer Branch** klicken. 
 
 ![Neuen Branch erstellen](media/create-new-branch.png)
+
+Geben Sie, sobald der Bereich für den neuen Branch angezeigt wird, den Namen Ihres Featurebranchs ein, und wählen Sie einen Branch aus, der als Basis verwendet werden soll.
+
+![Erstellen eines Branchs basierend auf einem privaten Branch ](media/create-branch-from-private-branch.png)
 
 Wenn Sie bereit sind, die Änderungen in Ihrem Featurebranch mit Ihrem Kollaborationsbranch zu mergen, klicken Sie auf das Dropdownmenü „Branch“ und dann auf **Pull Request erstellen**. Sie gelangen zum Git-Anbieter, wo Sie Pullanforderungen auslösen, Codereviews durchführen und Änderungen an Ihrem Kollaborationsbranch zusammenführen können. Sie können nur Veröffentlichungen für den Synapse-Dienst Ihres Kollaborationsbranchs durchführen. 
 
@@ -243,4 +247,4 @@ Wenn der Branch für die Veröffentlichung nicht mit dem Kollaborationsbranch sy
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Implementieren von Continuous Integration und Deployment finden Sie unter [Continuous Integration und Continuous Delivery in Azure Data Factory](continuous-integration-deployment.md).
+* Informationen zum Implementieren von Continuous Integration und Deployment finden Sie unter [Continuous Integration und Continuous Delivery in Azure Data Factory](continuous-integration-delivery.md).

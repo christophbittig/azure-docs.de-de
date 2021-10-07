@@ -4,17 +4,17 @@ description: In diesem Artikel erfahren Sie, wie Sie eine Looker-Quelle in Azure
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 7/16/2021
-ms.openlocfilehash: ed524382bf1fcc0c93fc61dd1c0450d69a16b74c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 1f39a1d261b4c8ed4223d66ebb34c94be7310b2e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749406"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214774"
 ---
-# <a name="register-and-scan-lookerpreview"></a>Registrieren und Überprüfen von Looker (Vorschau)
+# <a name="register-and-scan-looker-preview"></a>Registrieren und Überprüfen von Looker (Vorschau)
 
 In diesem Artikel erfahren Sie, wie Sie eine Looker Server-Instanz in Purview registrieren und eine Überprüfung einrichten.
 
@@ -67,7 +67,7 @@ Gehen Sie auf dem Bildschirm „Registrieren einer Looker-Quelle“ wie folgt vo
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1. Klicken Sie im Verwaltungscenter auf Integration Runtimes. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
+1. Wählen Sie im Verwaltungscenter „Integration Runtimes“ aus. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
 
 2. Navigieren Sie zu **Quellen**.
 
@@ -89,7 +89,7 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
     - Geben Sie die Client-ID Ihres Looker API3-Schlüssels im Feld Benutzername an
     - Speichern Sie das Client-Geheimnis Ihre Ihres Looker API3-Schlüssels als Geheimnis in Ihrem Schlüsseltresor.
 
-    **Hinweis**: Um auf die Client-ID und das Client-Geheimnis zuzugreifen, navigieren Sie zu Looker – \>Admin – \>Benutzer – \>Klicken Sie auf **Edit** bei einem Benutzer –\> Klicken Sie auf **Bearbeiten von Schlüsseln**  -\>. Benutzen Sie die Client-ID oder das Client Geheimnis um ein neues zu erstellen.
+    **Hinweis**: Um auf die Client-ID und den geheimen Clientschlüssel zuzugreifen, navigieren Sie zu „Looker“ \> „Administrator“ \> „Benutzer“ \> wählen Sie für einen Benutzer die Option **Bearbeiten** aus \> wählen Sie **Schlüssel bearbeiten** aus  -\> verwenden Sie die Client-ID oder den geheimen Clientschlüssel, oder erstellen Sie einen neuen Schlüssel.
     :::image type="content" source="media/register-scan-looker-source/looker-details.png" alt-text="Abrufen von Looker-Details" border="true":::
     
 
@@ -101,13 +101,13 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
     :::image type="content" source="media/register-scan-looker-source/setup-scan.png" alt-text="Auslösen der Überprüfung" border="true":::
 
-6. Klicken Sie auf **Testverbindung**.
+6. Wählen Sie **Verbindung testen** aus.
 
-7. Klicken Sie auf **Continue** (Weiter).
+7. Wählen Sie **Weiter**.
 
 8. Wählen Sie den **Auslöser für die Überprüfung**. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
 
-9. Sehen Sie sich Ihre Überprüfung noch einmal an, und klicken Sie dann auf **Speichern und ausführen**.
+9. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie **Speichern und ausführen** aus.
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>Anzeigen Ihrer Überprüfungen und Überprüfungsausführungen
 

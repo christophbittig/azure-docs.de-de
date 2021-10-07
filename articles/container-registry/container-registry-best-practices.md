@@ -2,13 +2,13 @@
 title: Registrierung – bewährte Methoden
 description: Erfahren Sie, wie Sie Azure Container Registry anhand dieser bewährten Methoden effektiv verwenden.
 ms.topic: article
-ms.date: 01/07/2021
-ms.openlocfilehash: 0811cc4a5bffc21ffba19e64a3887eab6bc36fbb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 08/13/2021
+ms.openlocfilehash: 1b713ac047b575c68cd8ed539187e3caac13a322
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784135"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626967"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Bewährte Methoden für Azure Container Registry
 
@@ -74,28 +74,37 @@ Azure Container Registry unterstützt Sicherheitsverfahren in Ihrer Organisation
 
 Die Speichereinschränkungen jeder [Dienstebene der Containerregistrierung][container-registry-skus] sind jeweils für ein typisches Szenario konzipiert: **Basic** für die ersten Schritte, **Standard** für die meisten Produktionsanwendungen und **Premium** für Leistung mit Hyperskalierung und [Georeplikation][container-registry-geo-replication]. Während der gesamten Dauer Ihrer Registrierung sollten Sie die Größe durch regelmäßiges Löschen von ungenutztem Inhalt verwalten.
 
-Verwenden Sie den Azure CLI-Befehl [az acr show-usage][az-acr-show-usage], um die aktuelle Größe Ihrer Registrierung anzuzeigen:
+Verwenden Sie den Azure CLI-Befehl [az acr show-usage][az-acr-show-usage], um den aktuellen Verbrauch des Speichers und anderen Ressourcen in Ihrer Registrierung anzuzeigen:
 
 ```azurecli
 az acr show-usage --resource-group myResourceGroup --name myregistry --output table
 ```
 
-```output
-NAME      LIMIT         CURRENT VALUE    UNIT
---------  ------------  ---------------  ------
-Size      536870912000  185444288        Bytes
-Webhooks  100                            Count
+Beispielausgabe:
+
+```
+NAME                        LIMIT         CURRENT VALUE    UNIT
+--------------------------  ------------  ---------------  ------
+Size                        536870912000  215629144        Bytes
+Webhooks                    500           1                Count
+Geo-replications            -1            3                Count
+IPRules                     100           1                Count
+VNetRules                   100           0                Count
+PrivateEndpointConnections  10            0                Count
 ```
 
-Sie finden die aktuelle Speichernutzung auch in der **Übersicht** Ihrer Registrierung im Azure-Portal:
+Sie finden den aktuellen Speicherverbrauch auch in der **Übersicht** Ihrer Registrierung im Azure-Portal:
 
 ![Informationen zur Registrierungsnutzung im Azure-Portal][registry-overview-quotas]
+
+> [!NOTE]
+> In einer [georeplizierten](container-registry-geo-replication.md) Registrierung wird der Speicherverbrauch für die Startregion angezeigt. Multiplizieren Sie mit der Anzahl der Replikationen, um den gesamten verbrauchten Registrierungsspeicher zu erhalten.
 
 ### <a name="delete-image-data"></a>Löschen von Imagedaten
 
 Azure Container Registry unterstützt mehrere Methoden zum Löschen von Imagedaten aus Ihrer Containerregistrierung. Sie können Images anhand von Tags oder Manifesthashes löschen oder ein gesamtes Repository löschen.
 
-Weitere Informationen zum Löschen von Imagedaten aus Ihrer Registrierung, einschließlich nicht mit Tags gekennzeichneter Images (manchmal als „verbleibend“ oder „verwaist“ bezeichnet) finden Sie unter [Löschen von Containerimages in Azure Container Registry](container-registry-delete.md).
+Weitere Informationen zum Löschen von Imagedaten aus Ihrer Registrierung, einschließlich nicht mit Tags gekennzeichneter Images (manchmal als „verbleibend“ oder „verwaist“ bezeichnet) finden Sie unter [Löschen von Containerimages in Azure Container Registry](container-registry-delete.md). Eine [Aufbewahrungsrichtlinie](container-registry-retention-policy.md) kann auch für nicht markierte Manifeste festgelegt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

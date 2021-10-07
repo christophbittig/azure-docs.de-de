@@ -7,19 +7,19 @@ ms.topic: article
 ms.service: app-service
 ms.custom: subject-monitoring
 ms.date: 04/16/2021
-ms.openlocfilehash: 537173792c4e14ac1dfdb142d8ab15e3e68e5649
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 1c3ff0fb224d5c1f8fe0133f184044b8aa5b30a3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114230584"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124837136"
 ---
 # <a name="monitoring-app-service"></a>Überwachen von App Service
 
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel werden die Überwachungsdaten beschrieben, die von App Service generiert und an [Azure Monitor](../azure-monitor/overview.md) gesendet werden. Sie können auch die [integrierte Diagnose zur Ressourcenüberwachung](troubleshoot-diagnostic-logs.md) verwenden, um das Debuggen einer App Service-App zu unterstützen. Wenn Sie nicht mit den Features von Azure Monitor vertraut sind, die Bestandteil aller Azure-Dienste sind, für die Azure Monitor verwendet wird, lesen Sie den Artikel [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md).
 
 > [!NOTE]
-> Die Azure Monitor-Integration in App Service befindet sich in der [Vorschauphase](https://aka.ms/appsvcblog-azmon).
+> Die Integration der Diagnoseeinstellungen in den App-Dienst befindet sich in der [Vorschau](https://aka.ms/appsvcblog-azmon).
 >
 
 ## <a name="monitoring-data"></a>Überwachungsdaten 

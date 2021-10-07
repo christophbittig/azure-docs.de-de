@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 3693fcf7783bd66bebe5b7d792a12eefaad66286
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: a63eaf3047dec956755616e06e1c250d88825772
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437146"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609781"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Connector für Azure Monitor-Protokolle für Azure Logic Apps und Power Automate
 Mit [Azure Logic Apps](../../logic-apps/index.yml) und [Power Automate](https://flow.microsoft.com) können Sie automatisierte Workflows erstellen, indem Sie Hunderte von Aktionen für eine Vielzahl von Diensten verwenden. Mit dem Connector für Azure Monitor-Protokolle können Sie Workflows erstellen, die Daten aus einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung in Azure Monitor abrufen. In diesem Artikel werden die mit dem Connector möglichen Aktionen beschrieben. Außerdem wird eine Anleitung zur Erstellung eines Workflows unter Verwendung dieser Daten gegeben.
@@ -25,7 +25,7 @@ Der Connector für Azure Monitor-Protokolle weist folgende Grenzwerte auf:
 * Maximales Abfragetimeout: 110 Sekunden
 * Diagrammvisualisierungen könnten auf der Seite „Protokolle“ verfügbar sein und im Connector fehlen, da der Connector und die Seite „Protokolle“ derzeit nicht die gleichen Diagrammbibliotheken verwenden.
 
-Der Connector kann abhängig von der verwendeten Abfrage und der Größe der Ergebnisse seine Grenzwerte erreichen. Sie können solche Fälle häufig vermeiden, indem Sie die Flowwiederholung so anpassen, dass sie häufiger in einem kleineren Zeitbereich ausgeführt wird oder dass Daten aggregiert werden, um die Größe der Ergebnisse zu reduzieren. Häufige Abfragen mit niedrigeren Intervallen als 100 Sekunden werden aufgrund der Zwischenspeicherung nicht empfohlen.
+Der Connector kann abhängig von der verwendeten Abfrage und der Größe der Ergebnisse seine Grenzwerte erreichen. Sie können solche Fälle häufig vermeiden, indem Sie die Flowwiederholung so anpassen, dass sie häufiger in einem kleineren Zeitbereich ausgeführt wird oder dass Daten aggregiert werden, um die Größe der Ergebnisse zu reduzieren. Häufige Abfragen mit niedrigeren Intervallen als 120 Sekunden werden aufgrund der Zwischenspeicherung nicht empfohlen.
 
 ## <a name="actions"></a>Aktionen
 In der folgenden Tabelle werden die Aktionen beschrieben, die mit dem Connector für die Azure Monitor-Protokolle möglich sind. Beide ermöglichen Ihnen, eine Protokollabfrage auf einen Log Analytics-Arbeitsbereich oder eine Application Insights-Anwendung anzuwenden. Der Unterschied besteht darin, wie die Daten zurückgegeben werden.

@@ -5,19 +5,16 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c0b3984629376f11692b727bb28b34c15708c596
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dc44fc58b8832c30ed1b740eb6637f1fc8ed1413
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339388"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129454960"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>Bereitstellen von „VMs starten/beenden v2 (Vorschau)“
 
 Führen Sie die Schritte in diesem Thema nacheinander aus, um das Feature „VMs starten/beenden v2 (Vorschau)“ zu installieren. Nachdem Sie den Installationsprozess abgeschlossen haben, konfigurieren Sie die Zeitpläne, um sie an Ihre Anforderungen anzupassen.
-
-> [!NOTE]
-> Wenn Probleme während der Bereitstellung bzw. Verwendung von „VMs starten/beenden v2 (Vorschau)“ auftreten oder Sie eine Frage hierzu haben, können Sie ein Issue auf [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) einreichen. Das Erstellen eines Azure-Supportvorfalls über die [Azure-Supportwebsite](https://azure.microsoft.com/support/options/) ist für diese Vorschauversion nicht verfügbar. 
 
 ## <a name="permissions-considerations"></a>Überlegungen zu Berechtigungen
 Beachten Sie folgende Punkte vor und während der Bereitstellung:
@@ -32,6 +29,10 @@ Zur Vereinfachung der Verwaltung und Entfernung empfiehlt es sich, „VMs starte
 
 > [!NOTE]
 > Derzeit unterstützt diese Vorschau nicht das Angeben eines vorhandenen Speicherkontos oder einer Application Insights-Ressource.
+
+
+> [!NOTE]
+> Das Benennungsformat für die Funktions-App und das Speicherkonto hat sich geändert. Um globale Eindeutigkeit zu gewährleisten, wird jetzt eine zufällige und eindeutige Zeichenfolge an die Namen dieser Ressource angefügt.
 
 1. Öffnen Sie Ihren Browser, und navigieren Sie zur [GitHub-Organisation](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md) „VMs starten/beenden v2“.
 1. Wählen Sie die Bereitstellungsoption basierend auf der Azure-Cloudumgebung aus, in der Ihre Azure-VMs erstellt werden. Dadurch wird die Azure Resource Manager-Seite für die benutzerdefinierte Bereitstellung im Azure-Portal geöffnet.
@@ -57,9 +58,6 @@ Zur Vereinfachung der Verwaltung und Entfernung empfiehlt es sich, „VMs starte
 1. Wählen Sie im Benachrichtigungsbereich die Option **Zu Ressourcengruppe wechseln** aus. Ein Bildschirm wird angezeigt, der etwa wie folgt aussieht:
 
     :::image type="content" source="media/deploy/deployment-results-resource-list.png" alt-text="Ressourcenliste der Vorlagenbereitstellung von „VMs starten/beenden“.":::
-
-> [!NOTE]
-> Das Benennungsformat für die Funktions-App und das Speicherkonto hat sich geändert. Um globale Eindeutigkeit zu gewährleisten, wird jetzt eine zufällige und eindeutige Zeichenfolge an die Namen dieser Ressource angefügt.
 
 > [!NOTE]
 > Wir erfassen Vorgangs- und Heartbeattelemetriedaten, um Sie bei der Problembehandlung besser unterstützen zu können, wenn Sie sich an das Supportteam wenden. Wir erfassen auch den Ereignisverlauf virtueller Computer, um zu überprüfen, wann der Dienst auf einem virtuellen Computer agiert hat und wie lange für einen virtuellen Computer der Standbymodus aktiviert war, um die Effizienz des Diensts zu bestimmen.
@@ -190,8 +188,11 @@ Bei jedem Szenario können Sie als Ziel der Aktion ein oder mehrere Abonnements 
           "/subscriptions/11111111-0000-1111-2222-444444444444/resourceGroups/rg2/providers/Microsoft.ClassicCompute/virtualMachines/vm30"
           
         ]
+      }
     }
     ```
+
+1. Klicken Sie im Übersichtsbereich für die Logik-App auf **Aktivieren**.  
 
 ## <a name="sequenced-start-and-stop-scenario"></a>Szenario mit sequenziertem Starten und Beenden
 

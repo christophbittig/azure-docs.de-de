@@ -6,18 +6,22 @@ ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 73ff2c609438ead1e1fa42468e97be801a76e7e2
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 95d07e313b5b8d970b2d8471295ed00c29961b96
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450285"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626093"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang
 
 Vor dem Bereitstellen einer ARM-Vorlage (Azure Resource Manager-Vorlage) können Sie eine Vorschau der Änderungen anzeigen, die vorgenommen werden. Azure Resource Manager stellt den Was-wäre-wenn-Vorgang bereit, damit Sie sehen können, wie sich Ressourcen ändern, wenn Sie die Vorlage bereitstellen. Der Was-wäre-wenn-Vorgang nimmt keine Änderungen an vorhandenen Ressourcen vor. Stattdessen sagt er die Änderungen vorher, wenn die angegebene Vorlage bereitgestellt wird.
 
 Sie können den Was-wäre-wenn-Vorgang mit Azure PowerShell-, Azure CLI- oder REST-API-Vorgängen verwenden. Der Was-wäre-wenn-Vorgang wird für Bereitstellungen auf Ressourcengruppen-, Abonnements-, Verwaltungsgruppen- und Mandantenebene unterstützt.
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen zu Was-wäre-wenn und eine praktische Anleitung finden Sie unter [Vorschau von Azure-Bereitstellungsänderungen mithilfe von Was-wäre-wenn](/learn/modules/arm-template-whatif) auf **Microsoft Learn**.
 
 ## <a name="install-azure-powershell-module"></a>Installieren des Azure PowerShell-Moduls
 

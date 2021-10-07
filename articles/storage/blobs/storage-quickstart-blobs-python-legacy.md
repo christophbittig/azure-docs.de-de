@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Azure Blob Storage-Clientbibliothek v2.1 für Python'
 description: In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Anschließend verwenden Sie die Speicherclientbibliothek v2.1 für Python, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: c6934dcb7e24423db487f820276050cd55139bf7
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 9d33ccde3b9a489754318704c905f13a6b894b86
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123476518"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582305"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Schnellstart: Verwalten von Blobs per Python v2.1 SDK
 
@@ -31,15 +31,15 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs mit Python verwalten
 
 ## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
 
-In dieser Schnellstartanleitung wird als [Beispielanwendung](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git) eine einfache Python-Anwendung verwendet.  
+In dieser Schnellstartanleitung wird als [Beispielanwendung](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git) eine einfache Python-Anwendung verwendet.
 
-Verwenden Sie den folgenden [git](https://git-scm.com/)-Befehl, um die Anwendung in Ihre Entwicklungsumgebung herunterzuladen. 
+Verwenden Sie den folgenden [git](https://git-scm.com/)-Befehl, um die Anwendung in Ihre Entwicklungsumgebung herunterzuladen.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git 
 ```
 
-Öffnen Sie zum Überprüfen des Python-Programms die Datei *example.py* im Stammverzeichnis des Repositorys.  
+Öffnen Sie zum Überprüfen des Python-Programms die Datei *example.py* im Stammverzeichnis des Repositorys.
 
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
@@ -80,8 +80,8 @@ Das Beispielprogramm erstellt eine Testdatei im Ordner *Dokumente*, lädt die Da
     python example.py
     ```
 
-    Daraufhin werden Nachrichten angezeigt, die in etwa wie in der folgenden Ausgabe aussehen:
-  
+    Daraufhin werden Nachrichten angezeigt, die der folgenden Ausgabe ähneln:
+
     ```output
     Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
 
@@ -95,12 +95,12 @@ Das Beispielprogramm erstellt eine Testdatei im Ordner *Dokumente*, lädt die Da
 
 1. Überprüfen Sie vor dem Fortfahren die beiden Dateien im Ordner *Dokumente*.
 
-    * *QuickStart_\<universally-unique-identifier\>*
-    * *QuickStart_\<universally-unique-identifier\>_DOWNLOADED*
+    - *QuickStart_\<universally-unique-identifier\>*
+    - *QuickStart_\<universally-unique-identifier\>_DOWNLOADED*
 
 1. Wenn Sie diese Dateien öffnen, sehen Sie, dass sie identisch sind.
 
-    Sie können auch ein Tool wie den [Azure Storage-Explorer](https://storageexplorer.com) verwenden. Er ist gut geeignet, um die Dateien im Blobspeicher anzuzeigen. Der Azure Storage-Explorer ist ein kostenloses plattformübergreifendes Tool, das Ihnen den Zugriff auf die Speicherkontoinformationen ermöglicht. 
+    Sie können auch ein Tool wie den [Azure Storage-Explorer](https://storageexplorer.com) verwenden. Er ist gut geeignet, um die Dateien im Blobspeicher anzuzeigen. Der Azure Storage-Explorer ist ein kostenloses plattformübergreifendes Tool, das Ihnen den Zugriff auf die Speicherkontoinformationen ermöglicht.
 
 1. Drücken Sie nach dem Anzeigen der Dateien eine beliebige Taste, um das Beispiel zu beenden und die Testdateien zu löschen.
 
@@ -110,7 +110,7 @@ Nachdem Sie nun wissen, welche Aktionen das Beispiel ausführt, öffnen Sie die 
 
 ### <a name="get-references-to-the-storage-objects"></a>Abrufen von Verweisen auf die Speicherobjekte
 
-In diesem Abschnitt instanziieren Sie die Objekte, erstellen einen neuen Container und legen dann Berechtigungen für den Container fest, damit die Blobs öffentlich sind. Sie geben dem Container den Namen `quickstartblobs`. 
+In diesem Abschnitt instanziieren Sie die Objekte, erstellen einen neuen Container und legen dann Berechtigungen für den Container fest, damit die Blobs öffentlich sind. Sie geben dem Container den Namen `quickstartblobs`.
 
 ```python
 # Create the BlockBlockService that the system uses to call the Blob service for the storage account.
@@ -128,9 +128,9 @@ block_blob_service.set_container_acl(
 
 Als Erstes erstellen Sie die Verweise auf die Objekte, die zum Zugreifen auf und Verwalten von Blobspeicher verwendet werden. Diese Objekte bauen aufeinander auf und jedes wird vom jeweils nächsten in der Liste verwendet.
 
-* Instanziieren Sie das **BlockBlobService**-Objekt, das auf den Blob-Dienst im Speicherkonto verweist. 
+- Instanziieren Sie das **BlockBlobService**-Objekt, das auf den Blob-Dienst im Speicherkonto verweist.
 
-* Instanziieren Sie das **CloudBlobContainer**-Objekt, das den Container darstellt, auf den Sie zugreifen. Vom System werden Container genutzt, um Ihre Blobs zu strukturieren – genau wie Ordner, die Sie auf Ihrem Computer zum Strukturieren Ihrer Dateien verwenden.
+- Instanziieren Sie das **CloudBlobContainer**-Objekt, das den Container darstellt, auf den Sie zugreifen. Vom System werden Container genutzt, um Ihre Blobs zu strukturieren – genau wie Ordner, die Sie auf Ihrem Computer zum Strukturieren Ihrer Dateien verwenden.
 
 Wenn Sie über den Cloudblobcontainer verfügen, instanziieren Sie das **CloudBlockBlob**-Objekt, das auf das spezielle Blob verweist, das für Sie relevant ist. Anschließend können Sie das Blob nach Bedarf hochladen, herunterladen und kopieren.
 
@@ -141,7 +141,7 @@ Wenn Sie über den Cloudblobcontainer verfügen, instanziieren Sie das **CloudBl
 
 Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. Blockblobs können eine Größe von bis zu 4,7 TB haben und alle Arten von Dateien sein, von Excel-Arbeitsblättern bis zu großen Videodateien. Sie können Anfügeblobs für die Protokollierung verwenden, wenn Sie etwas in eine Datei schreiben und ihr nach und nach weitere Informationen hinzufügen möchten. Seitenblobs werden hauptsächlich für die VHD-Dateien verwendet, die als Grundlage für IaaS-VMs (Infrastructure-as-a-Service) dienen. Blockblobs werden am häufigsten verwendet. In dieser Schnellstartanleitung werden Blockblobs verwendet.
 
-Um eine Datei in ein Blob hochzuladen, ermitteln Sie den vollständigen Dateipfad, indem Sie den Verzeichnisnamen mit dem Dateinamen auf Ihrem lokalen Laufwerk verknüpfen. Anschließend können Sie die Datei mithilfe der Methode `create_blob_from_path` in den angegebenen Pfad hochladen. 
+Um eine Datei in ein Blob hochzuladen, ermitteln Sie den vollständigen Dateipfad, indem Sie den Verzeichnisnamen mit dem Dateinamen auf Ihrem lokalen Laufwerk verknüpfen. Anschließend können Sie die Datei mithilfe der Methode `create_blob_from_path` in den angegebenen Pfad hochladen.
 
 Mit dem Beispielcode wird eine lokale Datei erstellt, die vom System für den Upload und Download verwendet wird. Hierbei wird die hochzuladende Datei als *full_path_to_file* (Vollständiger_Pfad_zur_Datei) und der Name des Blobs als *local_file_name* (Name_der_lokalen_Datei) hochgeladen. In diesem Beispiel wird die Datei in den Container mit dem Namen `quickstartblobs` hochgeladen:
 
@@ -164,7 +164,7 @@ block_blob_service.create_blob_from_path(
     container_name, local_file_name, full_path_to_file)
 ```
 
-Sie können für Blob Storage mehrere Uploadmethoden verwenden. Wenn Sie also beispielsweise über einen Speicherstream verfügen, können Sie anstelle von `create_blob_from_path` die Methode `create_blob_from_stream` verwenden. 
+Sie können für Blob Storage mehrere Uploadmethoden verwenden. Wenn Sie also beispielsweise über einen Speicherstream verfügen, können Sie anstelle von `create_blob_from_path` die Methode `create_blob_from_stream` verwenden.
 
 ### <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
@@ -180,7 +180,6 @@ for blob in generator:
 
 ### <a name="download-the-blobs"></a>Herunterladen der Blobs
 
-
 Laden Sie Blobs mithilfe der Methode `get_blob_to_path` auf Ihren lokalen Datenträger herunter.
 Mit dem folgenden Code wird das Blob heruntergeladen, das Sie zuvor hochgeladen haben. An den Blobnamen wird *_DOWNLOADED* angefügt, damit auf Ihrem lokalen Datenträger beide Dateien angezeigt werden können.
 
@@ -195,6 +194,7 @@ block_blob_service.get_blob_to_path(
 ```
 
 ### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
 Wenn Sie die in dieser Schnellstartanleitung hochgeladenen Blobs nicht mehr benötigen, können Sie mithilfe der Methode `delete_container` den gesamten Container löschen. Falls Sie stattdessen einzelne Dateien löschen möchten, verwenden Sie die Methode `delete_blob`.
 
 ```python
@@ -218,7 +218,7 @@ Weitere Informationen zur Python-Entwicklung mit Blobspeicher finden Sie unter d
 - Sehen Sie sich die [Beispiele für Blobspeicher](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob) an, die mit der Python-Clientbibliothek geschrieben wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
- 
-In dieser Schnellstartanleitung haben Sie gelernt, wie Sie mit Python Dateien zwischen einem lokalen Datenträger und Azure Blob Storage übertragen. 
+
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie mit Python Dateien zwischen einem lokalen Datenträger und Azure Blob Storage übertragen.
 
 Weitere Informationen zum Storage-Explorer und zu Blobs finden Sie unter [Verwalten von Azure Blob Storage-Ressourcen mit dem Storage-Explorer (Vorschau)](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

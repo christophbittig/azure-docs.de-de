@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/27/2021
-ms.openlocfilehash: fccbd763818facfa429451ce0c53d74ee8f6b8a4
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.date: 09/22/2021
+ms.openlocfilehash: af7069aae9412f7964cca82c034d0e0966220ada
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609266"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081128"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -39,15 +39,17 @@ Eine Compute-Instanz ist eine vollständig verwaltete cloudbasierte Arbeitsstati
 
 |Hauptvorteile|BESCHREIBUNG|
 |----|----|
-|Produktivität|Sie können Modelle mit integrierten Notebooks und den folgenden Tools im Azure Machine Learning Studio erstellen und bereitstellen:<br/>-  Jupyter<br/>-  JupyterLab<br/>-  VS Code (Vorschauversion)<br/>-  RStudio (Vorschauversion)<br/>Die Compute-Instanz ist vollständig in den Arbeitsbereich und das Studio von Azure Machine Learning integriert. Sie können Notebooks und Daten mit anderen Datenanalysten im Arbeitsbereich gemeinsam nutzen.<br/> Sie können auch [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) mit Compute-Instanzen verwenden.
-|Verwaltet und sicher|Verringern Sie Ihren Sicherheitsaufwand, und gewinnen Sie Compliance mit Anforderungen der Unternehmenssicherheit. Compute-Instanzen bieten verlässliche Verwaltungsrichtlinien und sichere Netzwerkkonfigurationen wie die folgenden:<br/><br/>– Automatisierte Bereitstellung über Resource Manager-Vorlagen oder das Azure Machine Learning SDK<br/>- [Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../role-based-access-control/overview.md)<br/>- [Unterstützung virtueller Netzwerke](./how-to-secure-training-vnet.md#compute-instance)<br/>- SSH-Richtlinie zum Aktivieren/Deaktivieren des SSH-Zugriffs<br/>TLS 1.2 aktiviert |
+|Produktivität|Sie können Modelle mit integrierten Notebooks und den folgenden Tools im Azure Machine Learning Studio erstellen und bereitstellen:<br/>-  Jupyter<br/>-  JupyterLab<br/>-  VS Code (Vorschauversion)<br/>-  RStudio (Vorschauversion)<br/>Die Compute-Instanz ist vollständig in den Arbeitsbereich und das Studio von Azure Machine Learning integriert. Sie können Notebooks und Daten mit anderen Datenanalysten im Arbeitsbereich gemeinsam nutzen.<br/> Sie können auch VS Code mit Compute-Instanzen verwenden.
+|Verwaltet und sicher|Verringern Sie Ihren Sicherheitsaufwand, und gewinnen Sie Compliance mit Anforderungen der Unternehmenssicherheit. Compute-Instanzen bieten verlässliche Verwaltungsrichtlinien und sichere Netzwerkkonfigurationen wie die folgenden:<br/><br/>– Automatisierte Bereitstellung über Resource Manager-Vorlagen oder das Azure Machine Learning SDK<br/>- [Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../role-based-access-control/overview.md)<br/>- [Unterstützung virtueller Netzwerke](./how-to-secure-training-vnet.md#compute-cluster)<br/> - SSH-Richtlinie zum Aktivieren/Deaktivieren des SSH-Zugriffs<br/>– Mit der Option [Keine öffentliche IP-Adresse](./how-to-secure-training-vnet.md#no-public-ip) können Sie eine sichere Konnektivitätslösung ohne Abhängigkeit von einer öffentlichen IP-Adresse aktivieren.</br>– Aktivierung von TLS 1.2 |
 |Vorkonfiguriert&nbsp;für&nbsp;ML|Sparen Sie Zeit bei der Einrichtung von Aufgaben mit vorkonfigurierten und aktuellen ML-Paketen, Deep Learning- Frameworks und GPU-Treibern.|
 |Vollständig anpassbar|Umfassende Unterstützung für Azure-VM-Typen einschließlich GPUs und durchweg einfache Anpassungen wie die Installation von Paketen und Treibern machen erweiterte Szenarien zu einem Kinderspiel. |
 
+* Schützen Sie Ihre Compute-Instanz mit der Option **[Keine öffentliche IP-Adresse (Vorschau)](./how-to-secure-training-vnet.md#no-public-ip)** .
 * Die Compute-Instanz ist ähnlich Computeclustern ebenfalls ein sicheres Computeziel, es handelt sich aber um einen einzelnen Knoten.
 * Sie können selbst eine [Compute-Instanz erstellen](how-to-create-manage-compute-instance.md?tabs=python#create) oder ein Administrator kann eine **[Compute-Instanz für Sie erstellen](how-to-create-manage-compute-instance.md?tabs=python#on-behalf)** .
 * Sie können auch ein **[Setupskript (Vorschau) verwenden](how-to-create-manage-compute-instance.md#setup-script)** , um die Computeinstanz gemäß Ihren Anforderungen automatisch anzupassen und zu konfigurieren.
 * Um Kosten zu sparen, **[erstellen Sie einen Zeitplan (Vorschau)](how-to-create-manage-compute-instance.md#schedule)** , um die Compute-Instanz automatisch zu starten und zu beenden.
+
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Tools und Umgebungen
 
@@ -109,7 +111,7 @@ Als Administrator können Sie eine **[Compute-Instanz für andere Benutzer im Ar
 
 Sie können auch ein **[Setupskript (Vorschau) verwenden](how-to-create-manage-compute-instance.md#setup-script)** , um die Computeinstanz gemäß Ihren Anforderungen automatisch anzupassen und zu konfigurieren.
 
-[Erstellen Sie für eine neue Compute-Instanz](how-to-create-manage-compute-instance.md?tabs=azure-studio#create) in Ihrem Arbeitsbereich im Azure Machine Learning Studio eine neue Compute-Instanz entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks**, wenn Sie bereit sind, eines Ihrer Notebooks auszuführen.
+Erstellen Sie für eine neue Compute-Instanz für sich in Ihrem Arbeitsbereich im Azure Machine Learning Studio [eine neue Compute-Instanz](how-to-create-manage-compute-instance.md?tabs=azure-studio#create), und zwar entweder im Abschnitt **Compute** oder im Abschnitt **Notebooks**, wenn Sie bereit sind, eines Ihrer Notebooks auszuführen.
 
 Sie können auch eine Instanz
 * direkt in der [integrierten Notebookumgebung](tutorial-train-models-with-aml.md#azure) erstellen.

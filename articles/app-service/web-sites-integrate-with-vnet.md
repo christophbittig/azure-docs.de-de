@@ -1,18 +1,18 @@
 ---
 title: Integration einer App in Azure Virtual Network
 description: Integrieren einer App in Azure App Service mit virtuellen Azure-Netzwerken
-author: ccompy
+author: madsd
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 08/04/2021
-ms.author: ccompy
+ms.date: 09/20/2021
+ms.author: madsd
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: ac90dadc93ce09bc2ce0af6314e4bd2c48ab79f8
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: b861ac7f2b9d0a3d8935ff0e16579fd4f5e224d1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768670"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641927"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 
@@ -34,7 +34,7 @@ Es gibt zwei Varianten der Nutzung von Azure App Service:
 
     :::image type="content" source="./media/web-sites-integrate-with-vnet/vnetint-add-vnet.png" alt-text="Auswählen des VNETs":::
 
-    * Wenn sich das VNET in derselben Region befindet, erstellen Sie ein neues Subnetz, oder wählen Sie ein leeres bereits vorhandenes Subnetz aus.
+    * Wenn sich das VNet in derselben Region befindet, erstellen Sie ein neues Subnetz, oder wählen Sie ein leeres bereits vorhandenes Subnetz aus.
     * Wenn Sie ein VNET in einer anderen Region auswählen möchten, müssen Sie über ein VNET-Gateway verfügen, für das Point-to-Site aktiviert ist.
     * Wenn die Integration in ein klassisches VNET erfolgen soll, wählen Sie anstelle der Dropdownliste **Virtuelles Netzwerk** die Option **Klicken Sie hier, um eine Verbindung mit einem klassischen VNET herzustellen** aus. Wählen Sie das gewünschte klassische virtuelle Netzwerk aus. Das Ziel-VNET muss bereits über ein bereitgestelltes Gateway für virtuelle Netzwerke verfügen, für das Point-to-Site aktiviert ist.
 
@@ -46,15 +46,13 @@ Während der Integration wird Ihre App neu gestartet. Wenn die Integration abges
 
 Die regionale VNET-Integration unterstützt das Herstellen einer Verbindung mit einem VNET in der gleichen Region und erfordert kein Gateway. Die Verwendung der regionalen VNET-Integration ermöglicht der App Zugriff auf Folgendes:
 
-* Ressourcen in einem VNET in derselben Region wie Ihre App.
-* Ressourcen in VNETs, die mit dem VNET, in das Ihre App integriert ist, per Peering verbunden sind.
-* Durch Dienstendpunkte geschützte Dienste.
-* Ressourcen über Azure ExpressRoute-Verbindungen.
 * Ressourcen in dem VNET, in das Sie integriert sind.
-* Ressourcen über Verbindungen mit Peering, einschließlich von Azure ExpressRoute-Verbindungen.
+* Ressourcen in VNets, die mit dem VNet, in das Ihre App integriert ist, per Peering verbunden sind, einschließlich globaler Peeringverbindungen.
+* Ressourcen über Azure ExpressRoute-Verbindungen.
+* Durch Dienstendpunkte geschützte Dienste.
 * Dienste, von denen private Endpunkte unterstützt werden.
 
-Wenn Sie VNET-Integration mit VNETs in derselben Region verwenden, können Sie die folgenden Azure-Netzwerkfunktionen nutzen:
+Wenn Sie regionale VNet-Integration verwenden, können Sie die folgenden Azure-Netzwerkfunktionen nutzen:
 
 * **Netzwerksicherheitsgruppen (NSGs)** : Sie können ausgehenden Datenverkehr mit einer NSG blockieren, die in Ihrem Integrationssubnetz platziert ist. Die Regeln für eingehenden Datenverkehr gelten nicht, da Sie die VNET-Integration nicht verwenden können, um eingehenden Zugriff auf Ihre App bereitzustellen.
 * **Routingtabellen (UDRs)** : Sie können eine Routingtabelle im Integrationssubnetz platzieren, um ausgehenden Datenverkehr an beliebige gewünschte Ziele zu senden.
@@ -63,11 +61,13 @@ Das Feature wird für Windows- und Linux-Apps vollständig unterstützt, einschl
 
 ### <a name="how-regional-vnet-integration-works"></a>Funktionsweise der regionalen VNET-Integration
 
-Apps in App Service werden auf Workerrollen gehostet. Der Tarif „Basic“ und höhere Tarife sind dedizierte Hostingpläne, bei denen keine anderen Kundenworkloads auf den gleichen Workern ausgeführt werden. Die regionale VNET-Integration beruht auf der Einbindung virtueller Schnittstellen mit Adressen im delegierten Subnetz. Da sich die Herkunftsadresse in Ihrem VNET befindet, kann sie ähnlich wie eine VM im VNET auf die meisten Ressourcen zugreifen, die im oder über das VNET verfügbar sind. Die Netzwerkimplementierung unterscheidet sich von der Ausführung eines virtuellen Computers in Ihrem VNET. Aus diesem Grund sind einige Netzwerkfunktionen für dieses Feature noch nicht verfügbar.
+Apps in App Service werden auf Workerrollen gehostet. Die regionale VNet-Integration beruht auf der Einbindung virtueller Schnittstellen in die Workerrollen mit Adressen im delegierten Subnetz. Da sich die Herkunftsadresse in Ihrem VNET befindet, kann sie ähnlich wie eine VM im VNET auf die meisten Ressourcen zugreifen, die im oder über das VNET verfügbar sind. Die Netzwerkimplementierung unterscheidet sich von der Ausführung eines virtuellen Computers in Ihrem VNET. Aus diesem Grund sind einige Netzwerkfunktionen für dieses Feature noch nicht verfügbar.
 
 :::image type="content" source="./media/web-sites-integrate-with-vnet/vnetint-how-regional-works.png" alt-text="Funktionsweise der regionalen VNET-Integration":::
 
-Bei aktivierter regionaler VNET-Integration sendet Ihre App ausgehenden Datenverkehr über das VNet. Ihre App verwendet nach wie vor die ausgehenden Adressen, die im Portal für die App-Eigenschaften aufgeführt sind. Wenn das gesamte Datenverkehrsrouting aktiviert ist, wird der gesamte ausgehende Datenverkehr an Ihr VNet gesendet. Ist das gesamte Datenverkehrsrouting nicht aktiviert, werden nur privater Datenverkehr (RFC1918) und Dienstendpunkte, die im Integrationssubnetz konfiguriert sind, an das VNet gesendet, und ausgehender Datenverkehr für das Internet wird über die üblichen Kanäle abgewickelt.
+Bei aktivierter regionaler VNET-Integration sendet Ihre App ausgehenden Aufrufe über das VNet. Ihre App verwendet nach wie vor die ausgehenden Adressen, die im Portal für die App-Eigenschaften aufgeführt sind. Wenn Ihr ausgehender Aufruf jedoch an einen virtuellen Computer oder einen privaten Endpunkt im Integrations-VNet oder einem VNet mit Peering gerichtet ist, ist die ausgehende Adresse eine Adresse aus dem Integrationssubnetz. Die private IP-Adresse, die einer Instanz zugewiesen ist, wird über die Umgebungsvariable ```WEBSITE_PRIVATE_IP``` verfügbar gemacht.
+
+Wenn das gesamte Datenverkehrsrouting aktiviert ist, wird der gesamte ausgehende Datenverkehr an Ihr VNet gesendet. Ist das gesamte Datenverkehrsrouting nicht aktiviert, werden nur privater Datenverkehr (RFC1918) und Dienstendpunkte, die im Integrationssubnetz konfiguriert sind, an das VNet gesendet, und ausgehender Datenverkehr für das Internet wird über die üblichen Kanäle abgewickelt.
 
 Die Funktion unterstützt nur eine virtuelle Schnittstelle pro Worker. Eine virtuelle Schnittstelle pro Worker bedeutet eine regionale VNET-Integration pro App Service Plan. Alle Apps im selben App Service-Plan können dieselbe VNet-Integration verwenden. Wenn eine App eine Verbindung mit einem zusätzlichen VNET herstellen muss, müssen Sie einen weiteren App Service-Plan erstellen. Die verwendete virtuelle Schnittstelle ist keine Ressource, auf die Kunden direkten Zugriff haben.
 
@@ -97,7 +97,7 @@ Beim Konfigurieren der regionalen VNET-Integration stehen zwei Routingtypen zur 
 
 #### <a name="application-routing"></a>Anwendungsrouting
 
-Beim Konfigurieren des Anwendungsroutings können Sie entweder den gesamten Datenverkehr oder nur privaten Datenverkehr (auch [RFC1918-Datenverkehr](https://datatracker.ietf.org/doc/html/rfc1918#section-3) genannt) an Ihr VNet weiterleiten. Dies wird über die Einstellung „Route All“ (Gesamten Datenverkehr weiterleiten) konfiguriert. Ist „Route All“ (Gesamten Datenverkehr weiterleiten) deaktiviert, wird von Ihrer App nur privater Datenverkehr an Ihr VNet weitergeleitet. Wenn Sie den gesamten ausgehenden Datenverkehr an Ihr VNet weiterleiten möchten, muss „Route All“ (Gesamten Datenverkehr weiterleiten) aktiviert sein.
+Beim Konfigurieren des Anwendungsroutings können Sie entweder den gesamten Datenverkehr oder nur privaten Datenverkehr (auch [RFC1918-Datenverkehr](https://datatracker.ietf.org/doc/html/rfc1918#section-3) genannt) an Ihr VNet weiterleiten. Dieses Verhalten konfigurieren Sie über die Einstellung „Route All“ (Gesamten Datenverkehr weiterleiten). Ist „Route All“ (Gesamten Datenverkehr weiterleiten) deaktiviert, wird von Ihrer App nur privater Datenverkehr an Ihr VNet weitergeleitet. Wenn Sie den gesamten ausgehenden Datenverkehr an Ihr VNet weiterleiten möchten, muss „Route All“ (Gesamten Datenverkehr weiterleiten) aktiviert sein.
 
 > [!NOTE]
 > * Ist „Route All“ (Gesamten Datenverkehr weiterleiten) aktiviert, unterliegt der gesamte Datenverkehr den NSGs und UDRs, die auf Ihr Integrationssubnetz angewendet werden. Wenn das gesamte Datenverkehrsrouting aktiviert ist, wird ausgehender Datenverkehr weiterhin von den Adressen gesendet, die in Ihren App-Eigenschaften aufgeführt sind – es sei denn, Sie stellen Routen bereit, durch die der Datenverkehr an einen anderen Ort weitergeleitet wird.
@@ -152,8 +152,8 @@ Mit der regionalen VNET-Integration können Sie Azure-Dienste erreichen, die mit
 
 Wenn Sie Aufrufe an [private Endpunkte][privateendpoints] senden möchten, müssen Sie sicherstellen, dass Ihre DNS-Suchen zu dem privaten Endpunkt aufgelöst werden. Sie können dieses Verhalten auf eine der folgenden Arten erzwingen: 
 
-* Integrieren mit private Azure DNS-Zonen. Falls Ihr VNet nicht über einen benutzerdefinierten DNS-Server verfügt, erfolgt dies automatisch, wenn die Zonen mit dem VNet verknüpft werden.
-* Verwalten des privaten Endpunkts im DNS-Server, der von Ihrer App verwendet wird. Hierzu müssen Sie die Adresse des privaten Endpunkts kennen und dann den Endpunkt, den Sie erreichen möchten, mit einem A-Eintrag auf diese Adresse verweisen lassen.
+* Integrieren mit private Azure DNS-Zonen. Falls Ihr VNet nicht über einen benutzerdefinierten DNS-Server verfügt, erfolgt diese Integration automatisch, wenn die Zonen mit dem VNet verknüpft werden.
+* Verwalten des privaten Endpunkts im DNS-Server, der von Ihrer App verwendet wird. Hierzu müssen Sie die IP-Adresse des privaten Endpunkts kennen und dann den Endpunkt, den Sie erreichen möchten, mit einem A-Eintrag auf diese Adresse verweisen lassen.
 * Konfigurieren Ihres eigenen DNS-Servers zur Weiterleitung an private Azure DNS-Zonen.
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
@@ -165,19 +165,19 @@ Nachdem Ihre App in Ihr VNet integriert wurde, verwendet sie den DNS-Server, mit
 
 ### <a name="limitations"></a>Einschränkungen
 
-Es gibt einige Einschränkungen bei der Verwendung der VNET-Integration in VNETs in derselben Region:
+Es gibt einige Einschränkungen bei der Verwendung der regionalen VNet-Integration:
 
-* Sie können nicht über Verbindungen mit globalem Peering auf Ressourcen zugreifen.
-* Sie können keine Ressourcen über Peeringverbindungen mit klassischen virtuellen Netzwerken erreichen.
-* Das Feature ist in allen App Service-Skalierungseinheiten in den Tarifen „Premium V2“ und „Premium V3“ verfügbar. Es ist außerdem im Tarif „Standard“ verfügbar, jedoch nur in neueren App Service-Skalierungseinheiten. Wenn Sie sich auf einer älteren Skalierungseinheit befinden, können Sie das Feature nur aus einem „Premium V2“-App Service-Plan verwenden. Wenn Sie sicherstellen möchten, dass Sie das Feature in einem „Standard“-App Service-Plan verwenden können, erstellen Sie Ihre App in einem „Premium V3“-App Service-Plan. Diese Pläne werden nur für auf unseren neuesten Skalierungseinheiten unterstützt. Sie können anschließend nach Bedarf herunterskalieren.  
-* Das Integrationssubnetz kann nur von einem App Service-Plan verwendet werden.
+* Das Feature ist in allen App Service-Skalierungseinheiten in den Tarifen „Premium V2“ und „Premium V3“ verfügbar. Es ist außerdem im Tarif „Standard“ verfügbar, jedoch nur in neueren App Service-Skalierungseinheiten. Wenn Sie sich auf einer älteren Skalierungseinheit befinden, können Sie das Feature nur aus einem „Premium V2“-App Service-Plan verwenden. Wenn Sie sicherstellen möchten, dass Sie das Feature in einem „Standard“-App Service-Plan verwenden können, erstellen Sie Ihre App in einem „Premium V3“-App Service-Plan. Diese Pläne werden nur für auf unseren neuesten Skalierungseinheiten unterstützt. Sie können nach dem Erstellen des Plans nach Bedarf herunterskalieren.
 * Die Funktion kann nicht für Apps im Plan „App Service (isoliert)“ in einer App Service-Umgebung verwendet werden.
+* Sie können keine Ressourcen über Peeringverbindungen mit klassischen virtuellen Netzwerken erreichen.
 * Für das Feature ist ein nicht genutztes Subnetz vom Typ /28 oder größer in einem Azure Resource Manager-VNet erforderlich.
 * Die App und das VNET müssen sich in derselben Region befinden.
+* Für das Integrations-VNet dürfen keine IPv6-Adressräume definiert sein.
+* Das Integrationssubnetz kann nur von einem App Service-Plan verwendet werden.
 * Es ist nicht möglich, ein VNET mit einer integrierten App zu löschen. Entfernen Sie die Integration, bevor Sie das VNET löschen.
 * Sie können nur eine regionale VNET-Integration pro App Service-Plan verwenden. Mehrere Apps im gleichen App Service-Plan können das gleiche VNET verwenden.
 * Sie können das Abonnement einer App oder eines Plans nicht ändern, solange eine App mit regionaler VNET-Integration vorhanden ist.
-* Ihre App kann ohne Konfigurationsänderungen keine Adressen in Azure DNS Private Zones unter Linux-Plänen auflösen.
+* Ihre App kann ohne aktivierte Option „Route all“ (Gesamten Datenverkehr weiterleiten) keine Adressen in Azure DNS Private Zones unter Linux-Plänen auflösen.
 
 ## <a name="gateway-required-vnet-integration"></a>Von einem Gateway abhängige VNet-Integration
 
@@ -220,7 +220,7 @@ Die von einem Gateway abhängige VNet-Integration basiert auf der Point-to-Site-
 
 Apps können durch Integration mit VNETs, die Site-to-Site-Verbindungen aufweisen, auf lokale Ressourcen zugreifen. Wenn Sie die von einem Gateway abhängige VNet-Integration verwenden, aktualisieren Sie Ihre lokalen VPN-Gatewayrouten mit Ihren Point-to-Site-Adressblöcken. Verwenden Sie beim ersten Einrichten des Site-to-Site-VPN die Skripts für die Konfiguration. Die Routen sollten damit richtig eingerichtet werden. Wenn Sie die Point-to-Site-Adressen nach dem Erstellen des Site-to-Site-VPN hinzufügen, müssen Sie die Routen manuell aktualisieren. Die Details zur Vorgehensweise variieren je nach Gateway und sind hier nicht beschrieben. Das Border Gateway Protocol (BGP) kann nicht für eine Site-to-Site-VPN-Verbindung konfiguriert werden.
 
-Für die regionale VNET-Integration ist keine zusätzliche Konfiguration erforderlich, um über Ihr VNET lokale Ressourcen zu erreichen. Sie müssen Ihr VNET lediglich über ExpressRoute oder ein Site-to-Site-VPN mit lokalen Ressourcen verbinden.
+Für die regionale VNet-Integration ist keine zusätzliche Konfiguration erforderlich, um über Ihr VNET lokale Ressourcen zu erreichen. Sie müssen Ihr VNET lediglich über ExpressRoute oder ein Site-to-Site-VPN mit lokalen Ressourcen verbinden.
 
 > [!NOTE]
 > Bei der von einem Gateway abhängigen VNET-Integration wird eine App nicht in ein VNET integriert, das ein ExpressRoute-Gateway enthält. Selbst wenn das ExpressRoute-Gateway im [Koexistenzmodus][VPNERCoex] konfiguriert ist, funktioniert die VNet-Integration nicht. Wenn Sie über eine ExpressRoute-Verbindung auf Ressourcen zugreifen müssen, verwenden Sie die regionale VNET-Integrationsfunktion oder eine in Ihrem VNET ausgeführte [App Service-Umgebung][ASE].
@@ -231,7 +231,7 @@ Für die regionale VNET-Integration ist keine zusätzliche Konfiguration erforde
 
 Wenn Sie Peering mit der regionalen VNet-Integration verwenden, ist keine zusätzliche Konfiguration erforderlich.
 
-Bei der von einem Gateway abhängigen VNet-Integration müssen Sie für das Peering einige zusätzliche Elemente konfigurieren. So konfigurieren Sie Peering für Ihre App
+Bei der von einem Gateway abhängigen VNet-Integration müssen Sie für das Peering einige weitere Elemente konfigurieren. So konfigurieren Sie Peering für Ihre App
 
 1. Fügen Sie eine Peeringverbindung mit dem VNET hinzu, mit dem Ihre App eine Verbindung herstellt. Aktivieren Sie beim Hinzufügen der Peeringverbindung **Zugriff auf virtuelles Netzwerk zulassen** sowie **Weitergeleiteten Datenverkehr zulassen** und **Gatewaytransit zulassen**.
 1. Fügen Sie in dem VNET, das mit dem VNET, mit dem Sie verbunden sind, mittels Peering verknüpft ist, eine Peeringverbindung hinzu. Aktivieren Sie beim Hinzufügen der Peeringverbindung im Ziel-VNET **Zugriff auf virtuelles Netzwerk zulassen**, und wählen Sie **Weitergeleiteten Datenverkehr zulassen** und **Allow remote gateways** (Remotegateways zulassen) aus.

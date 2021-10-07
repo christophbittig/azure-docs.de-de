@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: security
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 7ea57756eb272da42470fa60af2e4a0d5cd1abea
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b94ceb3bc190f57e3e5190e89e1018fc8a6e77f6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122641017"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831153"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Verwenden von Azure Key Vault-Geheimnissen in Pipelineaktivitäten
 
@@ -28,19 +28,19 @@ Diese Funktion basiert auf der verwalteten Data Factory-Identität.  Information
 
 1. Öffnen Sie die Eigenschaften Ihrer Data Factory, und kopieren Sie den Wert für die Anwendungs-ID der verwalteten Identität.
 
-    ![Wert der verwalteten Identität](media/how-to-use-azure-key-vault-secrets-pipeline-activities/managedidentity.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/managedidentity.png" alt-text="Wert der verwalteten Identität":::
 
 2. Öffnen Sie die Key Vault-Zugriffsrichtlinien, und fügen Sie die Berechtigungen für die verwaltete Identität zum Abrufen und Auflisten von Geheimnissen hinzu.
 
-    ![Der Screenshot zeigt die Seite „Zugriffsrichtlinien“, auf der die Aktion „Zugriffsrichtlinie hinzufügen“ hervorgehoben ist.](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png" alt-text="Screenshot, der die Seite &quot;Zugangsrichtlinien&quot; mit der hervorgehobenen Aktion &quot;Zugangsrichtlinie hinzufügen&quot; zeigt.":::
 
-    ![Key Vault-Zugriffsrichtlinien](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png" alt-text="Key Vault-Zugriffsrichtlinien":::
 
     Klicken Sie auf **Hinzufügen** und dann auf **Speichern**.
 
 3. Navigieren Sie zu Ihrem Key Vault-Geheimnis, und kopieren Sie die Geheimnis-ID.
 
-    ![Geheimnis-ID](media/how-to-use-azure-key-vault-secrets-pipeline-activities/secretidentifier.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/secretidentifier.png" alt-text="Geheimnis-ID":::
 
     Notieren Sie sich den URI des Geheimnisses, den Sie während der Data Factory-Pipelineausführung abrufen möchten.
 
@@ -54,7 +54,7 @@ Diese Funktion basiert auf der verwalteten Data Factory-Identität.  Information
     |Authentifizierung     |MSI         |
     |Resource        |https://vault.azure.net       |
 
-    ![Webaktivität](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png" alt-text="Webaktivität":::
 
     > [!IMPORTANT]
     > Sie müssen **?api-version=7.0** am Ende Ihres Geheimnis-URI hinzufügen.  
@@ -64,7 +64,7 @@ Diese Funktion basiert auf der verwalteten Data Factory-Identität.  Information
 
 5. Wenn Sie den Wert in einer anderen Aktivität nutzen möchten, verwenden Sie den Codeausdruck **\@activity(‚web1‘).output.value**.
 
-    ![Codeausdruck](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
+    :::image type="content" source="media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png" alt-text="Codeausdruck":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,26 +10,24 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs, devx-track-azurepowershell
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 4994e345b55e5b7fe77e116475fa2e5a29a9751f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 8e8a0e931a2c33883bf18ad92a367110d9be093e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669994"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572961"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>Schnellstart: Erstellen eines Azure-Schlüsseltresors und eines Schlüssels mithilfe einer ARM-Vorlage 
 
 [Azure Key Vault](../general/overview.md) ist ein Clouddienst, der einen sicheren Speicher für Geheimnisse bereitstellt, z. B. für Schlüssel, Kennwörter, Zertifikate usw. In dieser Schnellstartanleitung geht es um die Bereitstellung einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen eines Schlüsseltresors und eines Schlüssels.
 
-> [!NOTE]
-> Dieses Feature ist nicht für Azure Government verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie für diesen Artikel die folgenden Schritte aus:
 
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-- Dem Benutzer muss eine integrierte Azure-Rolle zugewiesen sein, z. B. „Mitwirkender“. [Weitere Informationen finden Sie hier](../../role-based-access-control/role-assignments-portal.md)
+- Dem Benutzer muss eine integrierte Azure-Rolle zugewiesen sein. Empfohlen wird die Rolle **Mitwirkender**. [Weitere Informationen finden Sie hier](../../role-based-access-control/role-assignments-portal.md)
 - Ihre Azure AD-Benutzerobjekt-ID wird von der Vorlage zum Konfigurieren von Berechtigungen benötigt. Die folgende Prozedur ruft die Objekt-ID (GUID) ab.
 
     1. Führen Sie den folgenden Azure PowerShell- oder Azure CLI-Befehl aus, indem Sie die Option **Ausprobieren** wählen und das Skript anschließend in den Shell-Bereich einfügen. Klicken Sie zum Einfügen des Skripts mit der rechten Maustaste auf die Shell, und wählen Sie **Einfügen** aus.
@@ -171,7 +169,7 @@ Weitere Vorlagenbeispiele für Azure Key Vault finden Sie in [Azure-Schnellstart
 
 |Parameter  |Definition  |
 |---------|---------|
-|**Keysize**  | Gibt Vorgänge an, die unter Verwendung des Schlüssels ausgeführt werden können. Ohne Angabe dieses Parameters können alle Vorgänge ausgeführt werden. Zulässige Werte für diesen Parameter sind eine durch Kommas getrennte Liste mit Schlüsselvorgängen gemäß [JWK-Spezifikation (JSON Web Key)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41): <br> `["sign", "verify", "encrypt", "decrypt", " wrapKey", "unwrapKey"]` |
+|**keyOps**  | Gibt Vorgänge an, die unter Verwendung des Schlüssels ausgeführt werden können. Ohne Angabe dieses Parameters können alle Vorgänge ausgeführt werden. Zulässige Werte für diesen Parameter sind eine durch Kommas getrennte Liste mit Schlüsselvorgängen gemäß [JWK-Spezifikation (JSON Web Key)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41): <br> `["sign", "verify", "encrypt", "decrypt", " wrapKey", "unwrapKey"]` |
 |**CurveName**  |  Name der elliptischen Kurve für den EC-Schlüsseltyp. Weitere Informationen finden Sie unter [JsonWebKeyCurveName](/rest/api/keyvault/createkey/createkey#jsonwebkeycurvename). |
 |**Kty**  |  Die Art des zu erstellenden Schlüssels. Gültige Werte finden Sie unter [JsonWebKeyType](/rest/api/keyvault/createkey/createkey#jsonwebkeytype). |
 |**Tags** | Anwendungsspezifische Metadaten in Form von Schlüssel-Wert-Paaren.  |

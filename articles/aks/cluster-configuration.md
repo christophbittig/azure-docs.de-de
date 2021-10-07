@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/09/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 3937e0a6c00de78acfa774ab6446d2b3d8e68206
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6c454c23eec0bb5b0fef1ceca3ad8f8e4c52493d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377122"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812595"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurieren eines AKS-Clusters
 
@@ -19,62 +19,11 @@ Im Rahmen der Erstellung eines AKS-Clusters müssen Sie möglicherweise Ihre Clu
 
 ## <a name="os-configuration"></a>Betriebssystemkonfiguration
 
-AKS unterstützt jetzt Ubuntu 18.04 als Standardbetriebssystem für Knoten (BS) in allgemeiner Verfügbarkeit (General Availability, GA) für Cluster in höheren Kubernetes-Versionen als 1.18. Für Versionen unter 1.18 ist AKS Ubuntu 16.04 weiterhin das Standardbasisimage. Ab Kubernetes v1.18 ist die Standardbasis AKS Ubuntu 18.04.
-
-> [!IMPORTANT]
-> Knotenpools, die unter Kubernetes 1.18 oder höher erstellt wurden, verwenden standardmäßig ein `AKS Ubuntu 18.04`-Knotenimage. Knotenpools auf einer unterstützten Kubernetes-Version vor 1.18 erhalten `AKS Ubuntu 16.04` als Knotenimage, werden jedoch auf `AKS Ubuntu 18.04` aktualisiert, sobald die Kubernetes-Version des Knotenpools auf 1.18 oder höher aktualisiert wird.
-> 
-> Es wird dringend empfohlen, Ihre Workloads auf AKS Ubuntu 18.04-Knotenpools zu testen, bevor Sie Cluster auf 1.18 oder höher verwenden.
-
-
-### <a name="use-aks-ubuntu-1804-ga-on-new-clusters"></a>Verwenden von AKS Ubuntu 18.04 (GA) auf neuen Clustern
-
-In Kubernetes v1.18 oder höher erstellte Cluster verwenden standardmäßig ein `AKS Ubuntu 18.04`-Knotenimage. Knotenpools in einer unterstützten Kubernetes-Version vor 1.18 erhalten weiterhin `AKS Ubuntu 16.04` als Knotenimage, werden jedoch auf `AKS Ubuntu 18.04` aktualisiert, sobald die Kubernetes-Version des Clusters oder Knotenpools auf v1.18 oder höher aktualisiert wird.
-
-Es wird dringend empfohlen, Ihre Workloads auf AKS Ubuntu 18.04-Knotenpools zu testen, bevor Sie Cluster auf 1.18 oder höher verwenden.
-
-Wenn Sie einen Cluster mit dem `AKS Ubuntu 18.04`-Knotenimage erstellen möchten, erstellen Sie einfach einen Cluster, auf dem Kubernetes v1.18 oder höher ausgeführt wird, wie unten gezeigt.
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
-```
-
-### <a name="use-aks-ubuntu-1804-ga-on-existing-clusters"></a>Verwenden von AKS Ubuntu 18.04 (GA) auf vorhandenen Clustern
-
-In Kubernetes v1.18 oder höher erstellte Cluster verwenden standardmäßig ein `AKS Ubuntu 18.04`-Knotenimage. Knotenpools in einer unterstützten Kubernetes-Version vor 1.18 erhalten weiterhin `AKS Ubuntu 16.04` als Knotenimage, werden jedoch auf `AKS Ubuntu 18.04` aktualisiert, sobald die Kubernetes-Version des Clusters oder Knotenpools auf v1.18 oder höher aktualisiert wird.
-
-Es wird dringend empfohlen, Ihre Workloads auf AKS Ubuntu 18.04-Knotenpools zu testen, bevor Sie Cluster auf 1.18 oder höher verwenden.
-
-Wenn Ihre Cluster oder Knotenpools für das `AKS Ubuntu 18.04`-Knotenimage bereit sind, können Sie diese wie unten beschrieben einfach auf v1.18 oder höher aktualisieren.
-
-```azurecli
-az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
-```
-
-Gehen Sie wie folgt vor, wenn Sie nur einen Knotenpool aktualisieren möchten:
-
-```azurecli
-az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
-```
-
-### <a name="test-aks-ubuntu-1804-ga-on-existing-clusters"></a>Testen von AKS Ubuntu 18.04 (GA) auf vorhandenen Clustern
-
-Knotenpools, die unter Kubernetes 1.18 oder höher erstellt wurden, verwenden standardmäßig ein `AKS Ubuntu 18.04`-Knotenimage. Knotenpools in einer unterstützten Kubernetes-Version vor 1.18 erhalten weiterhin `AKS Ubuntu 16.04` als Knotenimage, werden jedoch auf `AKS Ubuntu 18.04` aktualisiert, sobald die Kubernetes-Version des Knotenpools auf v1.18 oder höher aktualisiert wird.
-
-Es wird dringend empfohlen, Ihre Workloads in AKS Ubuntu 18.04-Knotenpools zu testen, bevor Sie Ihre Produktionsknotenpools aktualisieren.
-
-Wenn Sie einen Knotenpool mit dem `AKS Ubuntu 18.04`-Knotenimage erstellen möchten, erstellen Sie einfach einen Knotenpool, auf dem Kubernetes v1.18 oder höher ausgeführt wird. Für Ihre Clustersteuerungsebene muss auch mindestens v1.18 verwendet werden, aber für Ihre anderen Knotenpools kann eine ältere Kubernetes-Version verwendet werden.
-Nachfolgend aktualisieren wir zunächst die Steuerungsebene, und dann erstellen wir einen neuen Knotenpool mit v1.18, der die Betriebssystemversion des neuen Knotenimages erhält.
-
-```azurecli
-az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14 --control-plane-only
-
-az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
-```
+Die allgemein verfügbare Version (General Availability, GA) von AKS unterstützt Ubuntu 18.04 als Standardbetriebssystem für Knoten in Clustern.
 
 ## <a name="container-runtime-configuration"></a>Konfiguration der Containerruntime
 
-Eine Containerruntime ist eine Software, die Container ausführt und Containerimages auf einem Knoten verwaltet. Die Runtime erleichtert die Abstraktion von sys-Aufrufen oder betriebssystemspezifischen Funktionen zum Ausführen von Containern unter Linux oder Windows. Bei Linux-Knotenpools wird `containerd` für Knotenpools mit Kubernetes Version 1.19 und höher und Docker für Knotenpools mit Kubernetes 1.18 und früher verwendet. Für Windows Server 2019-Knotenpools ist `containerd` in der Vorschau verfügbar und kann in Knotenpools mit Kubernetes 1.20 und höher verwendet werden. Docker wird jedoch weiterhin standardmäßig verwendet.
+Eine Containerruntime ist eine Software, die Container ausführt und Containerimages auf einem Knoten verwaltet. Die Runtime erleichtert die Abstraktion von sys-Aufrufen oder betriebssystemspezifischen Funktionen zum Ausführen von Containern unter Linux oder Windows. Bei Linux-Knotenpools wird `containerd` für Knotenpools mit Version 1.19 und höher von Kubernetes verwendet. Für Windows Server 2019-Knotenpools ist `containerd` in der Vorschau verfügbar und kann in Knotenpools mit Kubernetes 1.20 und höher verwendet werden. Docker wird jedoch weiterhin standardmäßig verwendet.
 
 [`Containerd`](https://containerd.io/) ist eine mit [OCI](https://opencontainers.org/) (Open Container Initiative) kompatible Kerncontainerruntime, die den Mindestsatz erforderlicher Funktionen zum Ausführen von Containern und zum Verwalten von Images auf einem Knoten bereitstellt. Sie wurde im März 2017 an die Cloud Native Compute Foundation (CNCF) [übergeben](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/). Die aktuelle Moby-Version (Upstream-Docker), die AKS verwendet, baut bereits auf `containerd` auf, wie oben dargestellt.
 

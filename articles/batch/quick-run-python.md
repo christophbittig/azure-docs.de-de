@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Ausführen eines Azure Batch-Auftrags mithilfe der Python-API'
 description: In dieser Schnellstartanleitung führen Sie einen Azure Batch-Beispielauftrag und Aufgaben mithilfe der Batch Python-Clientbibliothek aus. Erfahren Sie mehr über die wichtigsten Konzepte des Batch-Diensts.
-ms.date: 08/17/2020
+ms.date: 09/10/2021
 ms.topic: quickstart
 ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
 - mode-api
-ms.openlocfilehash: 75f83e0ea4823796ace348084bab0915babc8979
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 8311e299b7ff2fde0ea9b9b845c2f2a703bb1743
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535568"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827351"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Schnellstart: Ausführen eines Azure Batch-Auftrags mit der Python-API
 
@@ -29,7 +29,7 @@ Nach Abschluss dieser Schnellstartanleitung sind Sie mit den wichtigsten Konzept
 
 - Ein Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md).
 
-- [Python](https://python.org/downloads), Version 2.7 oder 3.6, einschließlich des [pip](https://pip.pypa.io/en/stable/installing/)-Paket-Managers
+- [Python](https://python.org/downloads), Version 2.7 bzw. 3.6 oder höher, einschließlich des [pip](https://pip.pypa.io/en/stable/installing/)-Paket-Managers
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -78,7 +78,6 @@ Beim Ausführen der Beispielanwendung sieht die Konsolenausgabe in etwa wie folg
 ```output
 Sample start: 11/26/2018 4:02:54 PM
 
-Container [input] created.
 Uploading file taskdata0.txt to container [input]...
 Uploading file taskdata1.txt to container [input]...
 Uploading file taskdata2.txt to container [input]...
@@ -94,7 +93,7 @@ Nach Abschluss der einzelnen Aufgaben wird dazu jeweils die Ausgabe angezeigt, d
 Printing task output...
 Task: Task0
 Node: tvm-2850684224_3-20171205t000401z
-Standard out:
+Standard output:
 Batch processing began with mainframe computers and punch cards. Today it still plays a central role in business, engineering, science, and other pursuits that require running lots of automated tasks....
 ...
 ```
@@ -106,23 +105,27 @@ Die normale Ausführungsdauer beträgt ca. drei Minuten, wenn die Anwendung in d
 Mit der Python-App in dieser Schnellstartanleitung werden folgende Schritte ausgeführt:
 
 - Es werden drei kleine Textdateien in einen Blobcontainer in Ihrem Azure-Speicherkonto hochgeladen. Diese Dateien dienen als Eingaben für die Verarbeitung mit Batch-Aufgaben.
-- Ein Pool mit zwei Computeknoten wird erstellt, auf denen Ubuntu 18.04 LTS ausgeführt wird.
+- Ein Pool mit zwei Computeknoten wird erstellt, auf denen Ubuntu 20.04 LTS ausgeführt wird.
 - Es werden ein Auftrag und drei Aufgaben für die Ausführung auf den Knoten erstellt. Jede Aufgabe verarbeitet eine der Eingabedateien über eine Befehlszeile der Bash-Shell.
-* Es werden die von den Aufgaben zurückgegebenen Dateien angezeigt.
+- Es werden die von den Aufgaben zurückgegebenen Dateien angezeigt.
 
 Ausführliche Informationen finden Sie in der Datei `python_quickstart_client.py` und in den folgenden Abschnitten.
 
 ### <a name="preliminaries"></a>Vorbereitende Maßnahmen
 
-Für die Interaktion mit einem Speicherkonto verwendet die App das Paket [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) zum Erstellen eines [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice)-Objekts.
+Für die Interaktion mit einem Speicherkonto erstellt die App ein [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient)-Objekt.
 
 ```python
-blob_client = azureblob.BlockBlobService(
-    account_name=config._STORAGE_ACCOUNT_NAME,
-    account_key=config._STORAGE_ACCOUNT_KEY)
+blob_service_client = BlobServiceClient(
+        account_url="https://{}.{}/".format(
+            config._STORAGE_ACCOUNT_NAME,
+            config._STORAGE_ACCOUNT_DOMAIN
+        ),
+        credential=config._STORAGE_ACCOUNT_KEY
+    )
 ```
 
-Die App verwendet den `blob_client`-Verweis, um im Speicherkonto einen Container zu erstellen und Datendateien in den Container hochzuladen. Die Dateien im Speicher werden als Batch-[ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile)-Objekte definiert, die von Batch später auf Computeknoten heruntergeladen werden können.
+Die App verwendet den `blob_service_client`-Verweis, um im Speicherkonto einen Container zu erstellen und Datendateien in den Container hochzuladen. Die Dateien im Speicher werden als Batch-[ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile)-Objekte definiert, die von Batch später auf Computeknoten heruntergeladen werden können.
 
 ```python
 input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
@@ -130,44 +133,44 @@ input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
                     os.path.join(sys.path[0], 'taskdata2.txt')]
 
 input_files = [
-    upload_file_to_container(blob_client, input_container_name, file_path)
+    upload_file_to_container(blob_service_client, input_container_name, file_path)
     for file_path in input_file_paths]
 ```
 
 Die App erstellt ein [BatchServiceClient](/python/api/azure.batch.batchserviceclient)-Objekt zum Erstellen und Verwalten von Pools, Aufträgen und Aufgaben im Batch-Dienst. Für den Batch-Client im Beispiel wird die Authentifizierung mit gemeinsam verwendetem Schlüssel genutzt. Batch unterstützt auch die Azure Active Directory-Authentifizierung.
 
 ```python
-credentials = batch_auth.SharedKeyCredentials(config._BATCH_ACCOUNT_NAME,
-                                              config._BATCH_ACCOUNT_KEY)
+credentials = SharedKeyCredentials(config._BATCH_ACCOUNT_NAME,
+        config._BATCH_ACCOUNT_KEY)
 
-batch_client = batch.BatchServiceClient(
-    credentials,
-    batch_url=config._BATCH_ACCOUNT_URL)
+    batch_client = BatchServiceClient(
+        credentials,
+        batch_url=config._BATCH_ACCOUNT_URL)
 ```
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Erstellen eines Pools mit Computeknoten
 
-Zum Erstellen eines Batch-Pools verwendet die App die [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter)-Klasse, um die Anzahl von Knoten, die VM-Größe und eine Poolkonfiguration festzulegen. Hier gibt ein [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration)-Objekt einen [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference)-Verweis auf ein Ubuntu Server 18.04 LTS-Image an, das im Azure Marketplace veröffentlicht wurde. Batch unterstützt viele verschiedene Linux- und Windows Server-Images im Azure Marketplace und außerdem benutzerdefinierte VM-Images.
+Zum Erstellen eines Batch-Pools verwendet die App die [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter)-Klasse, um die Anzahl von Knoten, die VM-Größe und eine Poolkonfiguration festzulegen. Hier gibt ein [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration)-Objekt einen [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference)-Verweis auf ein Ubuntu Server 20.04 LTS-Image an, das im Azure Marketplace veröffentlicht wurde. Batch unterstützt viele verschiedene Linux- und Windows Server-Images im Azure Marketplace und außerdem benutzerdefinierte VM-Images.
 
-Die Anzahl von Knoten (`_POOL_NODE_COUNT`) und die VM-Größe (`_POOL_VM_SIZE`) sind definierte Konstanten. Im Beispiel wird standardmäßig ein Pool mit zwei Knoten der Größe *Standard_A1_v2* erstellt. Die vorgeschlagene Größe bietet für dieses kurze Beispiel eine gute Balance zwischen Leistung und Kosten.
+Die Anzahl von Knoten (`_POOL_NODE_COUNT`) und die VM-Größe (`_POOL_VM_SIZE`) sind definierte Konstanten. Im Beispiel wird standardmäßig ein Pool mit zwei Knoten der Größe *Standard_DS1_v2* erstellt. Die vorgeschlagene Größe bietet für dieses kurze Beispiel eine gute Balance zwischen Leistung und Kosten.
 
 Mit der [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations)-Methode wird der Pool an den Batch-Dienst übermittelt.
 
 ```python
-new_pool = batch.models.PoolAddParameter(
-    id=pool_id,
-    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
-        image_reference=batchmodels.ImageReference(
-            publisher="Canonical",
-            offer="UbuntuServer",
-            sku="18.04-LTS",
-            version="latest"
-        ),
-        node_agent_sku_id="batch.node.ubuntu 18.04"),
-    vm_size=config._POOL_VM_SIZE,
-    target_dedicated_nodes=config._POOL_NODE_COUNT
-)
-batch_service_client.pool.add(new_pool)
+new_pool = batchmodels.PoolAddParameter(
+        id=pool_id,
+        virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+            image_reference=batchmodels.ImageReference(
+                publisher="canonical",
+                offer="0001-com-ubuntu-server-focal",
+                sku="20_04-lts",
+                version="latest"
+            ),
+            node_agent_sku_id="batch.node.ubuntu 20.04"),
+        vm_size=config._POOL_VM_SIZE,
+        target_dedicated_nodes=config._POOL_NODE_COUNT
+    )
+    batch_service_client.pool.add(new_pool)
 ```
 
 ### <a name="create-a-batch-job"></a>Erstellen eines Batch-Auftrags
@@ -175,9 +178,10 @@ batch_service_client.pool.add(new_pool)
 Ein Batch-Auftrag ist eine logische Gruppierung für eine oder mehrere Aufgaben. Ein Auftrag enthält gemeinsame Einstellungen für Aufgaben, z.B. die Priorität und den Pool zum Ausführen von Aufgaben. Die App verwendet die [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter)-Klasse, um in Ihrem Pool einen Auftrag zu erstellen. Die Methode [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) fügt einen Auftrag zum angegebenen Batch-Konto hinzu. Der Auftrag enthält ursprünglich keine Aufgaben.
 
 ```python
-job = batch.models.JobAddParameter(
+job = batchmodels.JobAddParameter(
     id=job_id,
-    pool_info=batch.models.PoolInformation(pool_id=pool_id))
+    pool_info=batchmodels.PoolInformation(pool_id=pool_id))
+
 batch_service_client.job.add(job)
 ```
 
@@ -192,7 +196,7 @@ tasks = list()
 
 for idx, input_file in enumerate(input_files):
     command = "/bin/bash -c \"cat {}\"".format(input_file.file_path)
-    tasks.append(batch.models.TaskAddParameter(
+    tasks.append(batchmodels.TaskAddParameter(
         id='Task{}'.format(idx),
         command_line=command,
         resource_files=[input_file]

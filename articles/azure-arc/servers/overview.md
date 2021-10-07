@@ -3,12 +3,12 @@ title: 'Server mit Azure Arc-Unterstützung: Übersicht'
 description: Hier erfahren Sie, wie Sie außerhalb von Azure gehostete Server mithilfe von Servern mit Azure Arc-Unterstützung wie eine Azure-Ressource verwalten.
 ms.date: 08/27/2021
 ms.topic: overview
-ms.openlocfilehash: 2a6ed9eb865ed588653cd9ce5a41863af2db6de4
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 5bca2ec2bdf46f27ca83c4747c5ecb5688fa1708
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123108714"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807153"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Was sind Server mit Azure Arc-Unterstützung?
 
@@ -45,7 +45,7 @@ Erfasste und in einem Log Analytics-Arbeitsbereich gespeicherte Protokolldaten 
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
-Weitere Informationen dazu, wie Server mit Arc-Unterstützung verwendet werden können, um Überwachungs-, Sicherheits- und Updatedienste von Azure in Hybrid- und Multicloudumgebungen zu implementieren, finden Sie im folgenden Video.
+Weitere Informationen dazu, wie Server mit Azure Arc-Unterstützung verwendet werden können, um Überwachungs-, Sicherheits- und Updatedienste von Azure in Hybrid- und Multicloudumgebungen zu implementieren, finden Sie im folgenden Video.
 
 > [!VIDEO https://www.youtube.com/embed/mJnmXBrU1ao]
 
@@ -66,10 +66,10 @@ Wenn der Computer beispielsweise mit Azure Arc in der Region „USA, Osten“ re
 
 ### <a name="supported-environments"></a>Unterstützte Umgebungen
 
-Server mit Arc-Unterstützung unterstützen die Verwaltung physischer Server und virtueller Computer, die *außerhalb* von Azure gehostet werden. Spezifische Informationen dazu, welche Hybrid Cloud-Umgebungen, die virtuelle Computer hosten, unterstützt werden, finden Sie unter [Voraussetzungen für den Connected Machine-Agent](agent-overview.md#supported-environments).
+Server mit Azure Arc-Unterstützung unterstützen die Verwaltung physischer Server und virtueller Computer, die *außerhalb* von Azure gehostet werden. Spezifische Informationen dazu, welche Hybrid Cloud-Umgebungen, die virtuelle Computer hosten, unterstützt werden, finden Sie unter [Voraussetzungen für den Connected Machine-Agent](agent-overview.md#supported-environments).
 
 > [!NOTE]
-> Server mit Arc-Unterstützung sind nicht für die Verwaltung in Azure ausgeführter virtueller Computer vorgesehen, und dies wird auch nicht unterstützt.
+> Server mit Azure Arc-Unterstützung sind nicht für die Verwaltung in Azure ausgeführter virtueller Computer vorgesehen, und dies wird auch nicht unterstützt.
 
 ### <a name="agent-status"></a>Agent-Status
 
@@ -77,6 +77,6 @@ Der Connected Machine-Agent sendet alle fünf Minuten eine reguläre Heartbeatn
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Bevor Sie Server mit Arc-Unterstützung auf mehreren Hybridcomputern auswerten oder aktivieren, lesen Sie [Übersicht über den Connected Machine-Agent](agent-overview.md), um die Anforderungen und technischen Details zum Agent und Bereitstellungsmethoden zu verstehen.
+* Bevor Sie Server mit Azure Arc-Unterstützung auf mehreren Hybridcomputern auswerten oder aktivieren, lesen Sie [Übersicht über den Connected Machine-Agent](agent-overview.md), um die Anforderungen und technischen Details zum Agent und Bereitstellungsmethoden zu verstehen.
 
 * Lesen Sie den [Planungs- und Bereitstellungsleitfaden](plan-at-scale-deployment.md), um die Bereitstellung von Servern mit Azure Arc-Unterstützung in beliebiger Größenordnung zu planen und eine zentrale Verwaltung und Überwachung zu implementieren.

@@ -1,26 +1,26 @@
 ---
-title: Kopieren von Daten aus Google Cloud Storage mithilfe von Azure Data Factory
+title: Kopieren von Daten aus Google Cloud Storage
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Es wird beschrieben, wie Sie mithilfe von Azure Data Factory Daten aus Google Cloud Storage in unterstützte Senkendatenspeicher kopieren.
+description: Erfahren Sie, wie Sie mit Azure Data Factory oder Synapse Analytics Daten aus Google Cloud Storage in unterstützte Sink-Datenspeicher kopieren können.
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 6dc99ca4c6d7b004bd8994c89a3e79e1f2d817d4
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 64e8622380f94ff56833e295adf8fa67e49e1ae7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312751"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815083"
 ---
-# <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>Kopieren von Daten aus Google Cloud Storage mithilfe von Azure Data Factory
+# <a name="copy-data-from-google-cloud-storage-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus Google Cloud Storage mit Azure Data Factory oder Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Daten von Google Cloud Storage (GCS) kopieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+In diesem Artikel wird beschrieben, wie Sie Daten von Google Cloud Storage (GCS) kopieren. Wenn Sie mehr erfahren möchten, lesen Sie die Einführungsartikel zu [Azure Data Factory](introduction.md) und [Synapse Analytics](../synapse-analytics/overview-what-is.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -42,13 +42,13 @@ Für Ihr Google Cloud Storage-Konto ist folgendes Setup erforderlich:
 3. Erstellen eines Dienstkontos und Definieren der richtigen Berechtigungsebenen mithilfe von Cloud IAM auf GCP 
 4. Generieren der Zugriffsschlüssel für dieses Dienstkonto
 
-![Abrufen des Zugriffsschlüssels für Google Cloud Storage](media/connector-google-cloud-storage/google-storage-cloud-settings.png)
+:::image type="content" source="media/connector-google-cloud-storage/google-storage-cloud-settings.png" alt-text="Abrufen des Zugriffsschlüssels für Google Cloud Storage":::
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 
 Sie müssen zum Kopieren von Daten aus Google Cloud Storage sicherstellen, dass Ihnen die folgenden Berechtigungen für Objektvorgänge erteilt wurden: ` storage.objects.get` und ` storage.objects.list`
 
-Wenn Sie die Data Factory-Benutzeroberfläche für die Erstellung verwenden, ist eine zusätzliche ` storage.buckets.list`-Berechtigung für Vorgänge wie das Testen der Verbindung mit dem verknüpften Dienst und das Durchsuchen vom Stamm erforderlich. Wenn Sie diese Berechtigung nicht erteilen möchten, können Sie die Optionen „Test connection to file path“ (Verbindung mit Dateipfad testen) bzw. „Browse from specified path“ (Von angegebenem Pfad suchen) auf der Benutzeroberfläche auswählen.
+Wenn Sie die Benutzeroberfläche als Autor verwenden, ist eine zusätzliche ` storage.buckets.list`-Berechtigung für Vorgänge wie das Testen der Verbindung zum verknüpften Dienst und das Durchsuchen vom Stammverzeichnis aus erforderlich. Wenn Sie diese Berechtigung nicht erteilen möchten, können Sie die Optionen „Test connection to file path“ (Verbindung mit Dateipfad testen) bzw. „Browse from specified path“ (Von angegebenem Pfad suchen) auf der Benutzeroberfläche auswählen.
 
 Eine vollständige Liste der Google Cloud Storage-Rollen und zugehöriger Berechtigungen finden Sie unter [IAM-Rollen für Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles) auf der Google Cloud-Website.
 
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um über die Benutzeroberfläche des Azu
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen eines neuen verknüpften Diensts mithilfe der Azure Data Factory-Benutzeroberfläche":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory-Benutzeroberfläche.":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -86,11 +86,11 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für mit Google Cloud Storage verknüpfte Dienste unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **GoogleCloudStorage** festgelegt werden. | Ja |
 | accessKeyId | ID des geheimen Zugriffsschlüssels. Informationen zum Ermitteln des Zugriffsschlüssels und des Geheimnisses finden Sie unter [Voraussetzungen](#prerequisites). |Ja |
-| secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
+| secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als einen **SecureString**, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
 | serviceUrl | Geben Sie den benutzerdefinierten GCS-Endpunkt als `https://storage.googleapis.com` an. | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. |Nein |
 
@@ -123,7 +123,7 @@ Hier sehen Sie ein Beispiel:
 
 Folgende Eigenschaften werden für Google Cloud Storage unter `location`-Einstellungen in einem formatbasierten Dataset unterstützt:
 
-| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft   | Beschreibung                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die **type**-Eigenschaft unter `location` im Dataset muss auf **GoogleCloudStorageLocation** festgelegt werden. | Ja      |
 | bucketName | Der Name des GCS-Buckets.                                          | Ja      |
@@ -167,7 +167,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Folgende Eigenschaften werden für Google Cloud Storage unter `storeSettings`-Einstellungen in einer formatbasierten Kopierquelle unterstützt:
 
-| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                                    |
+| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | Die **type**-Eigenschaft unter `storeSettings` muss auf **GoogleCloudStorageReadSettings** festgelegt werden. | Ja                                                         |
 | ***Suchen Sie die zu kopierenden Dateien:*** |  |  |
@@ -243,7 +243,7 @@ In diesem Abschnitt wird das resultierende Verhalten beschrieben, wenn ein Datei
 
 Angenommen, Sie haben die folgende Quellordnerstruktur und möchten die Dateien kopieren, deren Namen fett formatiert sind:
 
-| Beispielquellstruktur                                      | Inhalt in „FileListToCopy.txt“                             | Konfiguration der Data Factory                                            |
+| Beispielquellstruktur                                      | Inhalt in „FileListToCopy.txt“                             | Konfiguration |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | bucket<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadaten<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | Datei1.csv<br>Unterordner1/Datei3.csv<br>Unterordner1/Datei5.csv | **Im Dataset:**<br>– Bucket: `bucket`<br>– Ordnerpfad: `FolderA`<br><br>**In der Quelle der Kopieraktivität:**<br>– Dateilistenpfad: `bucket/Metadata/FileListToCopy.txt` <br><br>Der Dateilistenpfad verweist auf eine Textdatei im selben Datenspeicher, der eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Diese enthält den relativen Pfad zu dem im Dataset konfigurierten Pfad. |
 
@@ -261,7 +261,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ## <a name="legacy-models"></a>Legacy-Modelle
 
-Wenn Sie einen Amazon S3-Connector zum Kopieren von Daten aus Google Cloud Storage verwenden, wird er für die Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird empfohlen, das oben erwähnte neue Modell zu verwenden. Die Data Factory-Benutzeroberfläche für die Erstellung ist zum Generieren des neuen Modells gewechselt.
+Wenn Sie einen Amazon S3-Connector zum Kopieren von Daten aus Google Cloud Storage verwenden, wird er für die Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird empfohlen, das oben erwähnte neue Modell zu verwenden. Die Erstellungsbenutzeroberfläche für die Erstellung ist zum Generieren des neuen Modells gewechselt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die von der Kopieraktivität in Azure Data Factory als Quellen und Senken unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die diese Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

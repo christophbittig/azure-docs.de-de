@@ -7,23 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/10/2021
-ms.openlocfilehash: ee6e17e6fe52125d75f2782b1fa77215045787a3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/10/2021
+ms.openlocfilehash: d87ec3fa05e1740b5cba7b4230894f1df822ac1f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346757"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784625"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Anzeigen eines Wissensspeichers mit Storage-Explorer
 
-Ein [Wissensspeicher](knowledge-store-concept-intro.md) wird durch ein Skillset definiert und in Azure Storage gespeichert. In diesem Artikel erfahren Sie, wie Sie mit dem Storage-Explorer im Azure-Portal die Inhalte eines Wissensspeichers anzeigen.
+Bei einem [Wissensspeicher](knowledge-store-concept-intro.md) handelt es sich um Inhalte, die von einem Azure Cognitive Search-Skillset erstellt und in Azure Storage gespeichert werden. In diesem Artikel wird erläutert, wie Sie mit dem Storage-Explorer im Azure-Portal den Inhalt eines Wissensspeichers anzeigen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Erstellen Sie einen Wissensspeicher im [Azure-Portal](knowledge-store-create-portal.md) oder in [Postman und den REST-APIs](knowledge-store-create-rest.md).
-
-+ Sie benötigen außerdem den Namen des Azure Storage-Kontos, das Sie zum Erstellen des Wissensspeichers verwendet haben, sowie den Zugriffsschlüssel aus dem Azure-Portal.
+Beginnen Sie mit einem vorhandenen Wissensspeicher, der im [Azure-Portal](knowledge-store-create-portal.md) oder mithilfe der [REST-APIs](knowledge-store-create-rest.md) erstellt wurde. Sowohl mit den exemplarischen Vorgehensweisen für das Portal als auch für REST können Sie Wissensspeicher in Azure Table Storage erstellen.
 
 ## <a name="start-storage-explorer"></a>Starten Sie den Storage-Explorer.
 
@@ -31,27 +29,27 @@ Ein [Wissensspeicher](knowledge-store-concept-intro.md) wird durch ein Skillset 
 
 1. Klicken Sie im linken Navigationsbereich des Speicherkontos auf **Storage-Explorer**.
 
-## <a name="view-edit-and-query-tables"></a>Anzeigen, Bearbeiten und Abfragen von Tabellen
+## <a name="edit-and-query-tables"></a>Bearbeiten und Abfragen von Tabellen
 
-Sowohl das Portal als auch exemplarische Vorgehensweisen für REST erstellen einen Wissensspeicher in Table Storage.
+1. Erweitern Sie die Liste **TABELLEN**, um eine Liste der Azure-Tabellenprojektionen anzuzeigen, die beim Erstellen des Wissensspeichers erstellt wurden. Wenn Sie den Wissensspeicher mithilfe des Schnellstarts oder REST-Artikels erstellt haben, enthalten die Tabellen Inhalte im Zusammenhang mit Kundenbewertungen eines europäischen Hotels.
 
-1. Erweitern Sie die Liste **TABELLEN**, um eine Liste der Azure-Tabellenprojektionen anzuzeigen, die beim Erstellen des Wissensspeichers erstellt wurden. Die Tabellen sollten Inhalt im Zusammenhang mit Hotelrezensionen enthalten.
-
-1. Wählen Sie eine beliebige Tabelle aus, um die angereicherten Daten, einschließlich Schlüsselbegriffen und Stimmungspunktzahlen, anzuzeigen.
+1. Wählen Sie in der Liste eine Tabelle aus.
 
    ![Anzeigen von Tabellen im Storage-Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Anzeigen von Tabellen im Storage-Explorer")
 
-1. Zum Ändern des Datentyps für einen beliebigen Tabellenwert oder zum Ändern einzelner Werte in der Tabelle klicken Sie auf **Bearbeiten**. Wenn Sie den Datentyp für eine Spalte in einer Tabellenzeile ändern, erfolgt die Änderung für alle Zeilen.
+1. Klicken Sie auf **Bearbeiten**, um den Datentyp, Eigenschaftenname oder einzelne Datenwerte in der Tabelle zu ändern.
 
    ![Bearbeiten einer Tabelle im Storage-Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-edit-table.png "Bearbeiten einer Tabelle im Storage-Explorer")
 
-1. Klicken Sie zum Ausführen von Abfragen in der Befehlsleiste auf **Abfrage**, und geben Sie Ihre Bedingungen ein.  
+1. Klicken Sie zum Ausführen von Abfragen auf der Befehlsleiste auf **Abfrage**, und geben Sie Ihre Bedingungen ein.
 
    ![Abfragen einer Tabelle im Storage-Explorer](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "Abfragen einer Tabelle im Storage-Explorer")
 
+Im Storage-Explorer können Sie mithilfe der [unterstützten Abfragesyntax](/rest/api/storageservices/Querying-Tables-and-Entities) nur eine Tabelle gleichzeitig abfragen. Wenn Sie tabellenübergreifende Abfragen ausführen möchten, sollten Sie stattdessen Power BI verwenden.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verbinden Sie diesen Wissensspeicher zur detaillierteren Analyse mit Power BI, oder fahren Sie mit Code fort, und erstellen Sie mit der REST-API und Postman einen anderen Wissensspeicher.
+Verbinden Sie diesen Wissensspeicher mit Power BI, um Visualisierungen zu erstellen, die mehrere Tabellen enthalten.
 
 > [!div class="nextstepaction"]
 > [Herstellen einer Verbindung mit Power BI](knowledge-store-connect-power-bi.md)

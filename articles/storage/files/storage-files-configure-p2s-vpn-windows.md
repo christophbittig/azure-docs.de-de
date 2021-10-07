@@ -8,12 +8,12 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2b5abad1e83f33acb32fbba97616c81f47677295
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 7e73d987ad8029d1ee65af0f92173561230af599
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112118371"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589243"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Konfigurieren eines P2S-VPN (Point-to-Site) unter Windows zur Verwendung mit Azure Files
 Sie können eine P2S-VPN-Verbindung (Point-to-Site) verwenden, um Ihre Azure-Dateifreigaben außerhalb von Azure über SMB einzubinden, ohne Port 445 zu öffnen. Eine P2S-VPN-Verbindung ist eine VPN-Verbindung zwischen Azure und einem einzelnen Client. Um eine P2S-VPN-Verbindung mit Azure Files zu verwenden, muss für jeden Client, der eine Verbindung herstellen möchte, eine P2S-VPN-Verbindung konfiguriert werden. Wenn Sie über viele Clients verfügen, die sich über Ihr lokales Netzwerk mit Ihren Azure-Dateifreigaben verbinden müssen, können Sie anstelle einer P2S-Verbindung für jeden Client eine S2S-VPN-Verbindung (Site-to-Site) verwenden. Weitere Informationen finden Sie unter [Konfigurieren eines S2S-VPN (Site-to-Site) zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md).
@@ -333,6 +333,65 @@ Invoke-Command `
     }
 ```
 
+## <a name="rotate-vpn-root-certificate"></a>Rotieren des VPN-Stammzertifikats
+Wenn ein Stammzertifikat aufgrund von Ablauf oder neuen Anforderungen rotiert werden muss, können Sie dem vorhandenen Gateway für virtuelle Netzwerke ein neues Stammzertifikat hinzufügen, ohne das Gateway für virtuelle Netzwerke erneut bereitstellen zu müssen.  Nachdem das Stammzertifikat mit dem folgenden Beispielskript hinzugefügt wurde, müssen Sie das [VPN-Clientzertifikat](#create-client-certificate) neu erstellen.  
+
+Ersetzen Sie `<resource-group-name>`, `<desired-vpn-name-here>` und `<new-root-cert-name>` durch Ihre eigenen Werte, und führen Sie dann das Skript aus.
+
+```PowerShell
+#Creating the new Root Certificate
+$ResourceGroupName = "<resource-group-name>"
+$vpnName = "<desired-vpn-name-here>"
+$NewRootCertName = "<new-root-cert-name>"
+
+$rootcertname = "CN=$NewRootCertName"
+$certLocation = "Cert:\CurrentUser\My"
+$date = get-date -Format "MM_yyyy"
+$vpnTemp = "C:\vpn-temp_$date\"
+$exportedencodedrootcertpath = $vpnTemp + "P2SRootCertencoded.cer"
+$exportedrootcertpath = $vpnTemp + "P2SRootCert.cer"
+
+if (-Not (Test-Path $vpnTemp)) {
+    New-Item -ItemType Directory -Force -Path $vpnTemp | Out-Null
+}
+
+$rootcert = New-SelfSignedCertificate `
+    -Type Custom `
+    -KeySpec Signature `
+    -Subject $rootcertname `
+    -KeyExportPolicy Exportable `
+    -HashAlgorithm sha256 `
+    -KeyLength 2048 `
+    -CertStoreLocation $certLocation `
+    -KeyUsageProperty Sign `
+    -KeyUsage CertSign
+
+Export-Certificate `
+    -Cert $rootcert `
+    -FilePath $exportedencodedrootcertpath `
+    -NoClobber | Out-Null
+
+certutil -encode $exportedencodedrootcertpath $exportedrootcertpath | Out-Null
+
+$rawRootCertificate = Get-Content -Path $exportedrootcertpath
+
+[System.String]$rootCertificate = ""
+foreach($line in $rawRootCertificate) { 
+    if ($line -notlike "*Certificate*") { 
+        $rootCertificate += $line 
+    } 
+}
+
+#Fetching gateway details and adding the newly created Root Certificate.
+$gateway = Get-AzVirtualNetworkGateway -Name $vpnName -ResourceGroupName $ResourceGroupName
+
+Add-AzVpnClientRootCertificate `
+    -PublicCertData $rootCertificate `
+    -ResourceGroupName $ResourceGroupName `
+    -VirtualNetworkGatewayName $gateway `
+    -VpnClientRootCertificateName $NewRootCertName
+
+```
 ## <a name="see-also"></a>Siehe auch
 - [Netzwerküberlegungen für den direkten Zugriff auf Azure-Dateifreigaben](storage-files-networking-overview.md)
 - [Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-linux.md)

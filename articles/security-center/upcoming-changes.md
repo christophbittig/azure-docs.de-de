@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 08/19/2021
+ms.date: 09/12/2021
 ms.author: memildin
-ms.openlocfilehash: 0e9988aa7779d85714d6e1562af78c3a5bf0e1ff
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 2d78588e900becc8fc802f1e4665b4fe533f0f6a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444690"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766842"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Wichtige bevorstehende Änderungen an Azure Security Center
 
@@ -28,7 +28,7 @@ Die neuesten Versionshinweise finden Sie unter [Neuerungen in Azure Security Cen
 
 | Geplante Änderung       | Voraussichtliches Datum der Änderung |
 |----------------------|---------------------------|
-| [Die Legacy-Implementierung von ISO 27001 wird durch die neue ISO-Norm 27001:2013 ersetzt.](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)| August 2021|
+| [Die Legacy-Implementierung von ISO 27001 wird durch die neue ISO-Norm 27001:2013 ersetzt.](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)| September 2021|
 | [Ändern des Präfix einiger Warnungstypen von „ARM_“ in „VM_“](#changing-prefix-of-some-alert-types-from-arm_-to-vm_)                                          | Oktober 2021|
 | [Änderungen an Empfehlungen für die Verwaltung von Endpoint Protection-Lösungen](#changes-to-recommendations-for-managing-endpoint-protection-solutions)             | Q4 2021    |
 | [Verbesserungen bei der Empfehlung zur Klassifizierung vertraulicher Daten in den SQL Datenbanken](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)   | Q1 2022    |
@@ -36,7 +36,7 @@ Die neuesten Versionshinweise finden Sie unter [Neuerungen in Azure Security Cen
 
 ### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>Die Legacyimplementierung von ISO 27001 wird durch die neue ISO-Norm 27001:2013 ersetzt.
 
-**Geschätztes Datum der Änderung:** August 2021
+**Geschätztes Datum für die Änderung:** September 2021
 
 Die Legacyimplementierung von ISO 27001 wird vom Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen entfernt. Wenn Sie Ihre ISO 27001-Konformität mit Security Center nachverfolgen, integrieren Sie den neuen Standard „ISO 27001:2013“ für alle relevanten Verwaltungsgruppen oder Abonnements. Die derzeitige Legacynorm „ISO 27001“ wird in Kürze vom Dashboard entfernt.
 

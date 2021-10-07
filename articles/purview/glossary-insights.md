@@ -4,19 +4,22 @@ description: In dieser Schrittanleitung wird beschrieben, wie Sie die Glossarber
 author: SunetraVirdi
 ms.author: suvirdi
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-insights
 ms.topic: how-to
-ms.date: 11/20/2020
-ms.openlocfilehash: eb1d59ae41b04be60dec90aaee4b2305b6d39ca6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 09/27/2021
+ms.openlocfilehash: 315cfdc60de77ab4d6345c5d579351049c5129a2
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095849"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218936"
 ---
 # <a name="glossary-insights-on-your-data-in-azure-purview"></a>Glossarerkenntnisse über Ihre Daten in Azure Purview
 
 In dieser Schrittanleitung wird beschrieben, wie Sie auf Purview-Glossar-Erkenntnisberichte für Ihre Daten zugreifen, sie anzeigen und filtern können.
+
+> [!IMPORTANT]
+> Azure Purview-Erkenntnisse befinden sich derzeit in der VORSCHAUPHASE. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
 In dieser Schrittanleitung lernen Sie Folgendes:
 
@@ -44,15 +47,15 @@ In Azure Purview können Sie Glossarbegriffe erstellen und diese Ressourcen anf�
 
 1. Wechseln Sie zum **Azure Purview**-[Instanzbildschirm im Azure-Portal](https://aka.ms/purviewportal), und wählen Sie Ihr Purview-Konto aus.
 
-1. Wählen Sie auf der Seite **Übersicht** im Abschnitt **Erste Schritte** die Kontokachel **Purview starten** aus.
+1. Klicken Sie auf der Seite **Übersicht** im Abschnitt **Erste Schritte** auf die Kontokachel **Open Purview Studio** (Purview Studio öffnen).
 
-   :::image type="content" source="./media/glossary-insights/portal-access.png" alt-text="„Purview starten“ im Azure-Portal":::
+   :::image type="content" source="./media/glossary-insights/portal-access.png" alt-text="Starten von Purview im Azure-Portal":::
 
-1. Wählen Sie auf der **Startseite** von Purview die Kachel **Erkenntnisse anzeigen** aus, um auf Ihren Bereich **Erkenntnisse** (:::image type="icon" source="media/glossary-insights/ico-insights.png" border="false":::) zuzugreifen.
+1. Klicken Sie auf der Purview-Seite **Start** im linken Menü auf **Erkenntnisse**.
 
    :::image type="content" source="./media/glossary-insights/view-insights.png" alt-text="Anzeigen Ihrer Erkenntnisse im Azure-Portal":::
 
-1. Wählen Sie im Bereich **Erkenntnisse** :::image type="icon" source="media/glossary-insights/ico-insights.png" border="false"::: die Option **Glossar** aus, um den **Glossarerkenntnisse**-Bericht von Purview anzuzeigen.
+1. Wählen Sie im Bereich **Erkenntnisse** die Option **Glossar** aus, um den **Glossarerkenntnisse**-Bericht von Purview anzuzeigen.
 
 **Glossarerkenntnisse** bieten Geschäftskunden wertvolle Informationen, um ein genau definiertes Glossar für ihre Organisation zu verwalten.
 
@@ -63,17 +66,17 @@ In Azure Purview können Sie Glossarbegriffe erstellen und diese Ressourcen anf�
 
 2. Im Abschnitt **Momentaufnahme von Begriffen** (darüber angezeigt) werden für Begriffe mit Ressourcen und für Begriffe ohne Ressourcen die Begriffsstatus **_Entwurf_ *,* _Genehmigt_ *,* _Warnung_*und*_Abgelaufen_** angezeigt.
 
-3. Klicken Sie auf **Mehr anzeigen**, um die Begriffsnamen mit verschiedenen Status und weitere Details zu  **_Inhaltsverantwortlichen_*und*_Experten_** anzuzeigen. 
+3. Klicken Sie auf **Mehr anzeigen**, um die Begriffsnamen mit verschiedenen Status und weitere Details zu **_Inhaltsverantwortlichen_ *_ und _* _Experten_** anzuzeigen. 
 
    :::image type="content" source="./media/glossary-insights/glossary-view-more.png" alt-text="Momentaufnahme von Begriffen mit und ohne Ressourcen":::  
 
-4. Wenn Sie für **Approved terms with assets** (Genehmigte Begriffe mit Ressourcen) auf „Mehr anzeigen“ klicken, können Sie zur Detailseite für Begriffe im *Glossar* und von dort zur Liste der Ressourcen mit den zugehörigen Begriffen navigieren. 
+4. Wenn Sie für ***Approved terms with assets** _ (Genehmigte Begriffe mit Ressourcen) auf „Mehr anzeigen“ klicken, können Sie zur Detailseite für Begriffe im _ *Glossar** und von dort zur Liste der Ressourcen mit den zugehörigen Begriffen navigieren. 
 
    :::image type="content" source="./media/glossary-insights/navigate-to-glossary-detail.png" alt-text="Einblicke in das Glossar"::: 
 
 4. Zeigen Sie auf der Seite „Glossarerkenntnisse“ die Verteilung **Unvollständiger Begriffe** nach dem Typ der fehlenden Informationen an. Im Diagramm wird in den Feldern **_Missing Definition_ *(Fehlende Definition),* _Missing Expert_ *(Fehlender Experte),* _Missing Steward_ *(Fehlender Inhaltsverantwortlicher) und*_Missing multiple_**  (Mehrere fehlend) die Anzahl der Begriffe angezeigt, für die die entsprechenden Informationen fehlen.
 
-1. Klicken Sie in „Unvollständige Begriffe“ auf **Mehr anzeigen**, um die Begriffe anzuzeigen, für die Informationen fehlen. Sie können zur Detailseite für Glossarbegriffe navigieren, um die fehlenden Informationen für einen Begriff einzugeben und sicherzustellen, dass der Glossarbegriff vollständig ist.
+1. Klicken Sie unter _*„Unvollständige Begriffe“** auf ***Mehr anzeigen** _, um die Begriffe anzuzeigen, für die Informationen fehlen. Sie können zur Detailseite für Glossarbegriffe navigieren, um die fehlenden Informationen für einen Begriff einzugeben und sicherzustellen, dass der Glossarbegriff vollständig ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

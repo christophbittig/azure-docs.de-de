@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 75a9a8f9888c0e3773135aa407938601b74bab0e
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: eccc5389330fd43025dbb66835b82e45d0284df9
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690270"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216097"
 ---
 # <a name="mv2-series"></a>Mv2-Serie
 
@@ -43,8 +43,9 @@ Virtuelle Computer der Mv2-Serie verfügen über Hyperthreading-Technologie von 
 
 - Windows Server 2019 oder höher
 - SUSE Linux Enterprise Server 12 SP4 oder höher, oder SUSE Linux Enterprise Server 15 SP1 oder höher
-- Red Hat Enterprise Linux 7.6, 7.7, 8.1 oder höher 
-- Oracle Enterprise Linux 7.7 oder höher
+- Red Hat Enterprise Linux 7.6 oder höher und 8.1 oder höher
+- Oracle Enterprise Linux 7.7 oder höher und 8.1 oder höher
+- Ubuntu 18.04 mit Version 5.4.0 oder höher des Azure-Kernels
 
 <sup>2</sup> [Eingeschränkte Kerngrößen verfügbar](./constrained-vcpu.md)
 

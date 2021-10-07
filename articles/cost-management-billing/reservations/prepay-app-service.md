@@ -1,20 +1,20 @@
 ---
 title: Speichern für Azure App Service mit reservierter Kapazität
 description: Hier erfahren Sie, wie Sie Kosten für reservierte Instanzen von Azure App Service Premium v3 und Premium v2 sowie für Stempelgebühren (isoliert) sparen können.
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 09/20/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: f80619f1eeb7cdd970e4e3ee64491453c790149d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 305849e104c3d8fb48b5d661d3d21f589fd69516
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378524"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664426"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>Sparen von Kosten mit reservierten Azure App Service-Instanzen
 
@@ -63,7 +63,7 @@ Wenn Sie über eine EA-Vereinbarung verfügen, können Sie die Option **Weitere 
 | **Feld** | **Beschreibung** |
 |---|---|
 | Subscription | Das zum Bezahlen für die Reservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Zahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Microsoft-Kundenvereinbarung“ oder ein einzelnes Abonnement mit Sätzen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Die Gebühren werden vom Guthaben in Bezug auf den Mindestverbrauch abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit Sätzen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt. |
-| `Scope` | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <ul><li>**Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an. </li><li>**Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li>**Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li></ul> |
+| `Scope` | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <ul><li>**Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an. </li><li>**Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li>**Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li><li>**Verwaltungsgruppe**: Wendet den Reservierungsrabatt auf die entsprechende Ressource in der Liste der Abonnements an, die Teil des Verwaltungsgruppen- und Abrechnungsbereichs sind.</li></ul> |
 | Region | Die Azure-Region, die durch die Reservierung abgedeckt wird |
 | Größe der reservierten Premium V3-Instanz | Die Größe der reservierten Premium V3-Instanzen. |
 | Begriff | Ein Jahr oder drei Jahre Es ist auch eine Laufzeit von fünf Jahren verfügbar (allerdings nur für reservierte HBv2-Premium V3-Instanzen). |
@@ -89,7 +89,7 @@ Wenn Sie über eine EA-Vereinbarung verfügen, können Sie die Option **Weitere 
 | **Feld** | **Beschreibung** |
 | --- | --- |
 | Subscription | Das zum Bezahlen für die Reservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Zahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Microsoft-Kundenvereinbarung“ oder ein einzelnes Abonnement mit Sätzen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Die Gebühren werden vom Guthaben in Bezug auf den Mindestverbrauch abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit Sätzen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt. |
-| `Scope` | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<UL><LI>**Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li>**Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li>**Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li> |
+| `Scope` | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<UL><LI>**Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li>**Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li>**Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li><li>**Verwaltungsgruppe**: Wendet den Reservierungsrabatt auf die entsprechende Ressource in der Liste der Abonnements an, die Teil des Verwaltungsgruppen- und Abrechnungsbereichs sind.</li></ul> |
 | Region | Die Azure-Region, die durch die Reservierung abgedeckt wird |
 | Größe für reservierte Instanzen von App Service (isoliert) v2 | Die Größe der reservierten Instanzen von App Service (isoliert) v2. |
 | Begriff | Ein Jahr oder drei Jahre Es ist auch eine Laufzeit von fünf Jahren verfügbar (allerdings nur für reservierte Instanzen von HBv2 v2 [isoliert]). |
@@ -134,6 +134,7 @@ Reservierte Kapazität für gesonderte Stempel kann über das [Azure-Portal](htt
     - **Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
     - **Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
     - **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
+    - **Verwaltungsgruppe**: Wendet den Reservierungsrabatt auf die entsprechende Ressource in der Liste der Abonnements an, die Teil des Verwaltungsgruppen- und Abrechnungsbereichs sind.
 1. Wählen Sie unter **Region** eine Azure-Region aus, die durch die reservierte Kapazität abgedeckt ist, und fügen Sie die Reservierung dem Warenkorb hinzu.
 1. Wählen Sie einen isolierten Plantyp aus, und klicken Sie anschließend auf **Auswählen**.  
     ![Beispiel ](./media/prepay-app-service/app-service-isolated-stamp-select.png)

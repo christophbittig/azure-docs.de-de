@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 08/06/2021
-ms.openlocfilehash: b9b3a1e651e6207cc037ab8e4c70f81a176c3d82
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: ebf0a77eb4b0e79931af4f33a8adad4f6c115c22
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340070"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081534"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Zusammenfassung“ in Analysen für den kommerziellen Marketplace
 
@@ -31,17 +31,45 @@ Das [Dashboard „Zusammenfassung“](https://go.microsoft.com/fwlink/?linkid=21
 - Nutzung der Angebote durch Kunden
 - Seitenbesuche der Kunden in Azure Marketplace und AppSource
 
+## <a name="access-the-summary-dashboard"></a>Zugreifen auf das Dashboard „Zusammenfassung“
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie auf der Startseite die Kachel **Insights** aus.
+
+    [ ![Screenshot der Kachel „Insights“ auf der Startseite von Partner Center](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. Wählen Sie im linken Menü die Option **Zusammenfassung** aus.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Klicken Sie im linken Navigationsbereich auf **Kommerzieller Marketplace** > **Analysieren** > **Zusammenfassung**.
+
+---
+
 ## <a name="elements-of-the-summary-dashboard"></a>Elemente des Dashboards „Zusammenfassung“
 
 In den folgenden Abschnitten wird beschrieben, wie das Dashboard „Zusammenfassung“ verwendet und wie die Daten gelesen werden.
 
-Um auf das Dashboard „Zusammenfassung“ im Partner Center zuzugreifen, wählen Sie unter **Kommerzieller Marketplace** die Option **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Zusammenfassung** aus.
-
 ### <a name="month-range"></a>Monatsbereich
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+Oben rechts auf jeder Seite finden Sie eine Monatsbereichsauswahl. Passen Sie die Ausgabe der Diagramme auf der Seite **Zusammenfassung** an, indem Sie einen Monatsbereich basierend auf der letzten angegebenen Anzahl von Monaten oder einen benutzerdefinierten Monatsbereich mit einer maximalen Dauer von 12 Monaten auswählen. Der standardmäßige Monatsbereich (Berechnungszeitraum) beträgt sechs Monate.
+
+[ ![Screenshot der Monatsbereichsoptionen im Dashboard „Zusammenfassung“](./media/summary-dashboard/summary-dashboard-filters.png) ](./media/summary-dashboard/summary-dashboard-filters.png#lightbox)
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
 
 Oben rechts auf jeder Seite finden Sie eine Monatsbereichsauswahl. Passen Sie die Ausgabe der Diagramme auf der Seite **Zusammenfassung** an, indem Sie einen Monatsbereich basierend auf den letzten 3, 6 oder 12 Monaten oder einen benutzerdefinierten Monatsbereich mit einer maximalen Dauer von 12 Monaten auswählen. Der standardmäßige Monatsbereich (Berechnungszeitraum) beträgt sechs Monate.
 
 :::image type="content" source="./media/summary-dashboard/summary-dashboard.png" alt-text="Veranschaulicht die Monatsbereichsoptionen auf dem Dashboard „Zusammenfassung“.":::
+
+---
 
 > [!NOTE]
 > Alle Metriken in den Visualisierungswidgets und Exportberichten berücksichtigen den vom Benutzer ausgewählten Berechnungszeitraum.

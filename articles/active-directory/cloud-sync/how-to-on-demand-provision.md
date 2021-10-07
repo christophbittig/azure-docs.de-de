@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5048b78c7d59b3358dbffe2e3e6eedf41decabb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20719182a9b97bc783ef2bdc16ccad327dba79aa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554274"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742577"
 ---
 # <a name="on-demand-provisioning-in-azure-ad-connect-cloud-sync"></a>Bedarfsorientierte Bereitstellung in der Azure AD Connect-Cloudsynchronisierung
 
@@ -24,6 +24,10 @@ Sie können mit der Cloudsynchronisierungsfunktion von Azure Active Directory Co
 
 > [!IMPORTANT] 
 > Wenn Sie die bedarfsorientierte Bereitstellung verwenden, werden die Bereichsfilter nicht auf den von Ihnen ausgewählten Benutzer angewendet. Sie können die bedarfsorientierte Bereitstellung für Benutzer verwenden, die sich außerhalb der von Ihnen angegebenen Organisationseinheiten befinden.
+
+Weitere Informationen und ein Beispiel finden Sie im folgenden Video.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWK5mW]
 
 ## <a name="validate-a-user"></a>Validieren eines Benutzers
 Führen Sie die folgenden Schritte aus, um die bedarfsorientierte Bereitstellung zu verwenden:

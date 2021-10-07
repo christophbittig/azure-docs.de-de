@@ -1,5 +1,5 @@
 ---
-title: Validieren von XML für die B2B-Unternehmensintegration
+title: Überprüfung von XML in Unternehmensintegrationsworkflows
 description: Überprüfen von XML mithilfe von Schemas in Azure Logic Apps mit Enterprise Integration Packs.
 services: logic-apps
 ms.suite: integration
@@ -7,17 +7,19 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 08/25/2021
-ms.openlocfilehash: 87650a1ab950f8e88fe08a1c4555c98652776730
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/15/2021
+ms.openlocfilehash: 842b26502dcfa073bca21891eed44fe990037f06
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099284"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128660802"
 ---
 # <a name="validate-xml-for-workflows-in-azure-logic-apps"></a>XML-Überprüfung für Workflows in Azure Logic Apps
 
-In B2B-Szenarien für die Unternehmensintegration müssen die beteiligten Parteien in der Regel zunächst sicherstellen, dass die ausgetauschten Nachrichten gültig sind, bevor eine Datenverarbeitung gestartet werden kann. Dokumente können anhand eines vordefinierten Schemas mithilfe der Aktion **XML-Überprüfung** in Azure Logic Apps überprüft werden.
+In B2B-Szenarien für die Unternehmensintegration müssen die beteiligten Parteien per Vereinbarung häufig sicherstellen, dass die ausgetauschten Nachrichten gültig sind, bevor eine Datenverarbeitung gestartet werden kann. Ihr Logik-App-Workflow kann XML-Nachrichten und Dokumente mithilfe der Aktion **XML-Überprüfung** und eines vordefinierten [Schemas](logic-apps-enterprise-integration-schemas.md) überprüfen.
+
+Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](logic-apps-overview.md). Weitere Informationen zur B2B-Unternehmensintegration finden Sie in [B2B-Unternehmensintegrations-Workflows mit Azure Logic Apps und Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,33 +29,30 @@ In B2B-Szenarien für die Unternehmensintegration müssen die beteiligten Partei
 
   Wenn Sie über einen leeren Workflow verfügen, verwenden Sie einen Trigger nach Wahl. In diesem Beispiel wird der Anforderungstrigger verwendet.
 
-  Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen in der folgenden Dokumentation:
+* Eine [Integrationskontoressource](logic-apps-enterprise-integration-create-integration-account.md), in der Sie Artefakte wie Handelspartner, Vereinbarungen, Zertifikate usw. zur Verwendung in Ihren Unternehmensintegrations- und B2B-Workflows definieren und speichern. Diese Ressource muss die folgenden Anforderungen erfüllen:
 
-  * [Was ist Azure Logic Apps?](logic-apps-overview.md)
+  * Sie muss demselben Azure-Abonnement zugeordnet sein wie Ihre Logik-App-Ressource.
 
-  * [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](quickstart-create-first-logic-app-workflow.md)
+  * Das Konto befindet sich am selben Standort oder in derselben Azure-Region wie Ihre Logik-App-Ressource, in der Sie die Aktion **XML-Überprüfung*** verwenden möchten.
 
-  * [Erstellen eines Logik-App-Workflows mit nur einem Mandanten](create-single-tenant-workflows-azure-portal.md)
+  * Wenn Sie den [Ressourcentyp **Logik-App (Verbrauch)** ](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigen Sie ein Integrationskonto mit den folgenden Elementen:
 
-  * [Modelle für Verbrauchsmessung, Abrechnung und Preise bei Azure Logic Apps](logic-apps-pricing.md)
+    * Dem [Schema](logic-apps-enterprise-integration-schemas.md), das zum Validieren von XML-Inhalt verwendet werden soll.
 
-* Wenn Sie den Ressourcentyp **Logik-App (Verbrauch)** verwenden, benötigen Sie ein [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md) das die folgenden Anforderungen erfüllt:
+    * Einer [Verbindung mit Ihrer Logik-App-Ressource](logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
-  * Das Konto ist demselben Azure-Abonnement zugeordnet wie Ihre Logik-App-Ressource.
+  * Wenn Sie den [Ressourcentyp **Logik-App (Standard)** ](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, müssen Sie keine Schemas in Ihrem Integrationskonto speichern. Stattdessen können Sie [Ihrer Logik-App-Ressource Schemas direkt im Azure-Portal oder in Visual Studio Code hinzufügen](logic-apps-enterprise-integration-schemas.md). Sie können diese Schemas dann in mehreren Workflows innerhalb *derselben Logik-App-Ressource* verwenden.
 
-  * Das Konto befindet sich am gleichen Standort oder in derselben Azure-Region wie Ihre Logik-App-Ressource, in der Sie die Aktion **XML-Überprüfung** verwenden möchten.
+    Sie benötigen weiterhin ein Integrationskonto, um andere Artefakte wie Partner, Vereinbarungen und Zertifikate zu speichern und um die [AS2](logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md) und [EDIFACT](logic-apps-enterprise-integration-edifact.md)-Vorgänge zu verwenden. Allerdings brauchen Sie Ihre Logic-App-Ressource nicht mit Ihrem Integrationskonto verknüpfen, so dass die Verknüpfungsfunktionalität nicht besteht. Ihr Integrationskonto muss noch andere Anforderungen erfüllen, z.B. dass es dasselbe Azure-Abonnement verwendet und sich am selben Ort befindet wie Ihre Logic-App-Ressource.
 
-  * Das Konto ist mit der Logik-App-Ressource [verknüpft](logic-apps-enterprise-integration-create-integration-account.md#link-account).
-
-  * Es umfasst das [Schema](logic-apps-enterprise-integration-schemas.md), das zum Validieren des XML-Inhalts verwendet werden soll.
-
-  Wenn Sie den Ressourcentyp **Logik-App (Standard)** verwenden, müssen Sie kein Integrationskonto verknüpfen. Sie müssen aber dennoch das [Schema](logic-apps-enterprise-integration-schemas.md) hinzufügen, das zum Überprüfen von XML-Inhalten für Ihre Logik-App-Ressource verwendet werden soll. Sie können diese Aufgabe im Menü Ihrer Logik-App-Ressource im Abschnitt **Schemas** unter **Einstellungen** ausführen.
+    > [!NOTE]
+    > Derzeit unterstützt nur der **Logic App (Verbrauch)** Ressourcentyp [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge. Der Ressourcentyp **Logic App (Standard)** umfasst keine [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge.
 
 ## <a name="add-xml-validation-action"></a>Hinzufügen der XML-Überprüfungsaktion
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre Logik-App und den Workflow in der Designeransicht.
 
-1. Wenn Sie über eine leere Logik-App ohne Trigger verfügen, fügen Sie einen Trigger nach Wahl hinzu. In diesem Beispiel wird der Anforderungstrigger verwendet. Fahren Sie andernfalls mit dem nächsten Schritt fort.
+1. Fügen Sie im Falle einer leeren Logik-App ohne Trigger einen Trigger Ihrer Wahl hinzu. In diesem Beispiel wird der Anforderungstrigger verwendet. Fahren Sie andernfalls mit dem nächsten Schritt fort.
 
    Um den Anforderungstrigger hinzuzufügen, geben Sie im Suchfeld des Designers `HTTP request` ein, und wählen Sie den Anforderungstrigger mit dem Namen **Beim Empfang einer HTTP-Anforderung** aus.
 
@@ -75,17 +74,17 @@ In B2B-Szenarien für die Unternehmensintegration müssen die beteiligten Partei
 
 1. Klicken Sie zum Angeben des zu überprüfenden XML-Inhalts in das Feld **Inhalt**, um die dynamische Inhaltsliste anzuzeigen.
 
-   Die Liste mit den dynamischen Inhalten enthält Eigenschaftstoken, die die Ausgaben der vorherigen Schritte im Workflow darstellen. Falls eine erwartete Eigenschaft nicht in der Liste enthalten ist, überprüfen Sie in der Trigger- oder Aktionsüberschrift der Liste, ob Sie **Mehr anzeigen** auswählen können.
+   Die Liste mit den dynamischen Inhalten enthält Eigenschaftstoken, die die Ausgaben der vorherigen Schritte im Workflow darstellen. Sollte eine erwartete Eigenschaft in der Liste fehlen, überprüfen Sie in der Trigger- oder Aktionsüberschrift der Liste, ob die Option **Mehr anzeigen** vorhanden ist.
 
-   Für eine verbrauchsbasierte App oder eine auf dem ISE-Plan basierende Logik-App sieht der Designer wie im folgenden Beispiel aus:
+   Für eine auf dem Verbrauchstarif oder dem ISE-Plan basierende Logik-App sieht der Designer wie im folgenden Beispiel aus:
 
-   ![Screenshot: Designer mit mehreren Mandanten, mit Cursor im Feld „Inhalt“ und geöffneter dynamischer Inhaltsliste](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list-multi-tenant.png)
+   ![Screenshot: Designer mit mehreren Mandanten, mit geöffneter Liste „Dynamischer Inhalt“ und Cursor im Feld „Inhalt“](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list-multi-tenant.png)
 
-   Für eine auf dem Standard-Plan basierende Logik-App sieht der Designer wie im folgenden Beispiel aus:
+   Für eine auf dem Standardtarif basierende Logik-App sieht der Designer wie im folgenden Beispiel aus:
 
-   ![Screenshot: Designer mit einem Mandanten, mit Cursor im Feld „Inhalt“ und geöffneter dynamischer Inhaltsliste](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list-single-tenant.png)
+   ![Screenshot: Designer mit einem Mandanten, mit geöffneter Liste „Dynamischer Inhalt“ und Cursor im Feld „Inhalt“](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list-single-tenant.png)
 
-1. Wählen Sie in der dynamischen Inhaltsliste das Eigenschaftentoken für den zu überprüfenden Inhalt aus.
+1. Wählen Sie in der Liste „Dynamischer Inhalt“ das Eigenschaftstoken für den Inhalt aus, den Sie überprüfen möchten.
 
    In diesem Beispiel wird das Token **Text** für den Trigger ausgewählt.
 
@@ -96,6 +95,8 @@ In B2B-Szenarien für die Unternehmensintegration müssen die beteiligten Partei
    Sie haben die Einrichtung Ihrer Aktion **XML-Überprüfung** abgeschlossen. In einer echten App empfiehlt es sich ggf., die überprüften Daten in einer branchenspezifischen App wie Salesforce zu speichern. Um die überprüfte Ausgabe an Salesforce zu senden, fügen Sie eine Salesforce-Aktion hinzu.
 
 1. Um Ihre Überprüfungsaktion zu testen, lösen Sie die Ausführung Ihres Workflows aus. Senden Sie beispielsweise für den Anforderungstrigger eine Anforderung an die Endpunkt-URL des Triggers.
+
+   Die Aktion **XML-Überprüfung** wird ausgeführt, nachdem der Workflow ausgelöst wurde und sobald XML-Inhalte zur Überprüfung verfügbar sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

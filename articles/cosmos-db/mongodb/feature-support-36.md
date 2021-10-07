@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 08e9b63c8ec56ddba1899372d0d6b1d2c8bc423f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2fcaaf038ec7a619ec36a68fdd720ac7599da25f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121784184"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649717"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB-API für MongoDB (Version 3.6): unterstützte Features und Syntax
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -295,9 +295,9 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 | $dateToString | Ja |
 | $isoDayOfWeek | Ja |
 | $isoWeek | Ja |
-| $dateFromParts | Nein | 
-| $dateToParts | Nein |
-| $dateFromString | Nein |
+| $dateFromParts | Ja | 
+| $dateToParts | Ja |
+| $dateFromString | Ja |
 | $isoWeekYear | Ja |
 
 ### <a name="conditional-expressions"></a>Bedingte Ausdrücke
@@ -417,7 +417,7 @@ In $regex-Abfragen ermöglichen linksverankerte Ausdrücke eine Indexsuche. Die 
 
 Wenn „$“ oder „|“ eingeschlossen werden muss, empfiehlt es sich, zwei (oder mehr) RegEx-Abfragen zu erstellen. Die folgende ursprüngliche Abfrage ```find({x:{$regex: /^abc$/})``` muss beispielsweise wie folgt geändert werden:
 
-```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```
+`find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})`
 
 Der erste Teil verwendet den Index zum Einschränken der Suche auf die Dokumente, die mit „^abc“ beginnen, und der zweite Teil stimmt die exakten Einträge ab. Der Strichoperator „|“ dient als „oder“-Funktion: Die Abfrage ```find({x:{$regex: /^abc |^def/})``` stimmt die Dokumente ab, in denen das Feld „x“ Werte enthält, die mit „abc“ oder „def“ beginnen. Zur Nutzung des Index wird empfohlen, die Abfrage in zwei unterschiedliche Abfragen zu unterteilen, die durch den „$or“-Operator verbunden sind: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
 
@@ -513,34 +513,8 @@ $polygon | Nein |
 
 Bei Verwendung des `findOneAndUpdate`-Vorgangs werden Sortiervorgänge für ein einzelnes Feld unterstützt, Sortiervorgänge für mehrere Felder jedoch nicht.
 
-## <a name="unique-indexes"></a>Eindeutige Indizes
-
-[Eindeutige Indizes](mongodb-indexing.md#unique-indexes) stellen sicher, dass ein bestimmtes Feld in den gesamten Dokumenten einer Sammlung keine doppelten Werte enthält. Dies ist vergleichbar mit der Bewahrung der Eindeutigkeit für den Standardschlüssel „_id“. Sie können eindeutige Indizes in Cosmos DB erstellen, indem Sie den Befehl `createIndex` mit dem Einschränkungsparameter `unique` verwenden:
-
-```javascript
-globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
-{
-        "_t" : "CreateIndexesResponse",
-        "ok" : 1,
-        "createdCollectionAutomatically" : false,
-        "numIndexesBefore" : 1,
-        "numIndexesAfter" : 4
-}
-```
-
-## <a name="compound-indexes"></a>Zusammengesetzte Indizes
-
-[Zusammengesetzte Indizes](mongodb-indexing.md#compound-indexes-mongodb-server-version-36) sind eine Möglichkeit, einen Index für Feldergruppen (bis zu acht Felder) zu erstellen. Dieser Indextyp unterscheidet sich von den nativen zusammengesetzten MongoDB-Indizes. In Azure Cosmos DB werden zusammengesetzte Indizes für Sortiervorgänge verwendet, die auf mehrere Felder angewendet werden. Um einen zusammengesetzten Index zu erstellen, müssen Sie mehr als eine Eigenschaft als Parameter angeben:
-
-```javascript
-globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
-{
-        "createdCollectionAutomatically" : false, 
-        "numIndexesBefore" : 1,
-        "numIndexesAfter" : 2,
-        "ok" : 1
-}
-```
+## <a name="indexing"></a>Indizierung
+Die API für MongoDB [unterstützt eine Vielzahl von Indizes](mongodb-indexing.md), um die Sortierung nach mehreren Feldern zu ermöglichen, die Abfrageleistung zu verbessern und Eindeutigkeit zu erzwingen.
 
 ## <a name="gridfs"></a>GridFS
 
@@ -549,10 +523,6 @@ Azure Cosmos DB unterstützt GridFS über jeden GridFS-kompatiblen MongoDB-Trei
 ## <a name="replication"></a>Replikation
 
 Cosmos DB unterstützt die automatische, native Replikation auf den niedrigsten Ebenen. Diese Logik wird erweitert, um auch die globale Replikation mit geringer Latenz zu erreichen. Cosmos DB unterstützt keine manuellen Replikationsbefehle.
-
-
-
-
 
 ## <a name="retryable-writes"></a>Wiederholbare Schreibvorgänge
 

@@ -3,12 +3,12 @@ title: 'Gewusst wie: Testen der Paketartefakte für Gastkonfigurationen'
 description: Die Erfahrung beim Erstellen und Testen von Paketen, die Konfigurationen auf Computern überwachen oder anwenden.
 ms.date: 07/20/2021
 ms.topic: how-to
-ms.openlocfilehash: 927e048f59d74b4137710c2f0a1f284adec0cdcb
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 216cd207033b3bddd4960b85d8943e3842f8041f
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122773015"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080649"
 ---
 # <a name="how-to-test-guest-configuration-package-artifacts"></a>Gewusst wie: Testen der Paketartefakte für Gastkonfigurationen
 
@@ -44,7 +44,7 @@ Testen Sie zunächst mithilfe von `Get-GuestConfigurationPacakgeComplianceStatus
 
 Parameter des Cmdlets `Get-GuestConfigurationPackageComplianceStatus `:
 
-- **Package**: Dateipfad oder URI des Gastkonfigurationspakets.
+- **Path**: Dateipfad oder URI des Gastkonfigurationspakets
 - **Parameter**: Richtlinienparameter im Hashtabellenformat.
 
 Wenn dieser Befehl zum ersten Mal ausgeführt wird, wird der Gastkonfigurations-Agent auf dem Testcomputer unter Windows unter dem Pfad `c:\programdata\GuestConfig\bin` und unter Linux unter `/var/lib/GuestConfig/bin` installiert. Auf diesen Pfad kann ein Benutzerkonto nicht zugreifen, sodass für den Befehl eine Rechteerweiterung erforderlich ist.
@@ -55,14 +55,14 @@ In Windows aus einer PowerShell 7-Sitzung mit erhöhten Rechten.
 
 ```powershell
 # Get the current compliance results for the local machine
-Get-GuestConfigurationPackageComplianceStatus -Package ./MyConfig.zip
+Get-GuestConfigurationPackageComplianceStatus -Path ./MyConfig.zip
 ```
 
 In Linux durch Ausführen von PowerShell mit „sudo“.
 
 ```bash
 # Get the current compliance results for the local machine
-sudo pwsh -command 'Get-GuestConfigurationPackageComplianceStatus -Package ./MyConfig.zip'
+sudo pwsh -command 'Get-GuestConfigurationPackageComplianceStatus -Path ./MyConfig.zip'
 ```
 
 Der Befehl gibt ein Objekt aus, das den Konformitätsstatus und die Details pro Ressource enthält.
@@ -82,20 +82,20 @@ Wenn der Konfigurationspaketmodus `AuditandSet` ist, können Sie schließlich mi
 
 Parameter des Cmdlets `Start-GuestConfigurationPackageRemediation`:
 
-- **Package**: Vollständiger Pfad des Gastkonfigurationspakets.
+- **Pfad**: Vollständiger Pfad des Pakets mit der Gastkonfiguration.
 
 In Windows aus einer PowerShell 7-Sitzung mit erhöhten Rechten.
 
 ```powershell
 # Test applying the configuration to local machine
-Start-GuestConfigurationPackageRemediation -Package ./MyConfig.zip
+Start-GuestConfigurationPackageRemediation -Path ./MyConfig.zip
 ```
 
 In Linux durch Ausführen von PowerShell mit „sudo“.
 
 ```bash
 # Test applying the configuration to local machine
-sudo pwsh -command 'Start-GuestConfigurationPackageRemediation -Package ./MyConfig.zip'
+sudo pwsh -command 'Start-GuestConfigurationPackageRemediation -Path ./MyConfig.zip'
 ```
 
 Der Befehl gibt keine Ausgabe zurück, solange keine Fehler auftreten. Verwenden Sie zur Problembehandlung bei Details in Verbindung mit Ereignissen, die während der Ausführung von `Set` auftreten, den `-verbose`-Parameter.

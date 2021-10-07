@@ -10,12 +10,12 @@ ms.date: 8/05/2021
 ms.author: ronytho
 ms.reviewer: jrasnick, wiassaf
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 3aa47a247ead1a388ce9fda030f348ac9a6b75c4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 513b2edd432a274f155e79362e715fbc426a9f9e
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588597"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081508"
 ---
 # <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>Einrichten der Zugriffssteuerung für Ihren Azure Synapse-Arbeitsbereich 
 
@@ -181,16 +181,16 @@ Der Ersteller der Arbeitsstation wird automatisch als SQL Active Directory-Admi
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>SCHRITT 7: Gewähren des Zugriffs auf SQL-Pools
 
-Standardmäßig wird allen Benutzern mit der Rolle „Synapse-Administrator“ auch die SQL-Rolle `db_owner` für den serverlosen SQL-Pool „Built-in“ und alle zugehörigen Datenbanken zugewiesen.
+Standardmäßig wird allen Benutzern mit der Rolle „Synapse-Administrator“ auch die SQL-Rolle `db_owner` für die dedizierten und serverlosen SQL-Pools im Arbeitsbereich zugewiesen.
 
 Der Zugriff auf SQL-Pools für andere Benutzer und die Arbeitsbereichs-MSI wird mithilfe von SQL-Berechtigungen gesteuert.  Für das Zuweisen von SQL-Berechtigungen müssen nach der Erstellung SQL-Skripts für jede SQL-Datenbank ausgeführt werden.  Sie müssen diese Skripts in den folgenden drei Fällen ausführen:
 1. Gewähren des Zugriffs auf den serverlosen SQL-Pool „Built-in“ und die zugehören Datenbanken für andere Benutzer
-2. Gewähren des Zugriffs für beliebige Benutzer auf Datenbanken in dedizierten Pools
+2. Gewähren des Zugriffs für beliebige Benutzer auf Datenbanken in dedizierten SQL-Pools
 3. Gewähren des Zugriffs für die Arbeitsbereichs-MSI auf eine Datenbank im SQL-Pool, damit Pipelines, die Zugriff auf den SQL-Pool benötigen, erfolgreich ausgeführt werden können
 
 Weiter unten finden Sie SQL-Beispielskripts.
 
-Um Zugriff auf eine Datenbank im dedizierten SQL-Pool zu gewähren, können die Skripts vom Ersteller des Arbeitsbereichs oder von einem beliebigen Mitglied der Gruppe `workspace1_SQLAdmins` ausgeführt werden.  
+Um Zugriff auf eine Datenbank im dedizierten SQL-Pool zu gewähren, können die Skripts vom Ersteller des Arbeitsbereichs oder von einem beliebigen Mitglied der Gruppe `workspace1_SQLAdmins` oder der Gruppe `workspace1_SynapseAdministrators` ausgeführt werden.  
 
 Zum Gewähren des Zugriffs auf den serverlosen SQL-Pool „Built-in“ können die Skripts von jedem Mitglied der Gruppen `workspace1_SQLAdmins` oder `workspace1_SynapseAdministrators` ausgeführt werden. 
 

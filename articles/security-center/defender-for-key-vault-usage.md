@@ -3,39 +3,41 @@ title: Reagieren auf Warnungen von Azure Defender für Key Vault
 description: Erfahren Sie etwas über die erforderlichen Schritte zum Reagieren auf Warnungen von Azure Defender für Key Vault.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 09/13/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 67c556e44f07240b1ad1bcde61f40042da46def8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45ed38f3325ae66c72fff7f0aec35347b5e28ace
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96122196"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664977"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Reagieren auf Warnungen zu Azure Defender für Key Vault
-Wenn Sie eine Warnung von Azure Defender für Key Vault erhalten, empfiehlt es sich, die Warnung wie unten beschrieben zu untersuchen und auf sie zu reagieren. Azure Defender für Key Vault schützt Anwendungen und Anmeldeinformationen. Selbst wenn Sie mit der Anwendung oder dem Benutzer, die bzw. der die Warnung ausgelöst hat, vertraut sind, sollten Sie bei jeder Warnung die Situation unbedingt überprüfen.  
+Wenn Sie eine Warnung von [Azure Defender für Key Vault](defender-for-key-vault-introduction.md) erhalten, wird empfohlen, die Warnung wie unten beschrieben zu untersuchen und darauf zu reagieren. Azure Defender für Key Vault schützt Anwendungen und Anmeldeinformationen. Selbst wenn Sie mit der Anwendung oder dem Benutzer, die bzw. der die Warnung ausgelöst hat, vertraut sind, sollten Sie bei jeder Warnung die Situation unbedingt überprüfen.  
 
-Jede Warnung von Azure Defender für Key Vault schließt die folgenden Elemente ein:
+Warnungen von Azure Defender für Key Vault enthalten die folgenden Elemente:
 
-- ObjectID
-- Benutzerprinzipalname oder IP-Adresse der verdächtigen Ressource
+- Objekt-ID
+- Benutzerprinzipalname oder IP-Adresse der verdächtigen Ressource 
+
+Je nach *Typ* des ausgeführten Zugriffs sind einige Felder möglicherweise nicht verfügbar. Wenn auf Ihren Schlüsseltresor beispielsweise durch eine Anwendung zugegriffen wurde, wird kein zugeordneter Benutzerprinzipalname angezeigt. Wenn der Datenverkehr von außerhalb von Azure stammt, wird keine Objekt-ID angezeigt.
 
 > [!TIP]
-> Basierend auf dem *Typ* des aufgetretenen Zugriffs sind einige Felder möglicherweise nicht verfügbar. Wenn auf Ihren Schlüsseltresor beispielsweise durch eine Anwendung zugegriffen wurde, wird kein zugeordneter Benutzerprinzipalname angezeigt. Wenn der Datenverkehr von außerhalb von Azure stammt, wird keine Objekt-ID angezeigt.
+> Virtuellen Azure-Computern werden IP-Adressen von Microsoft zugewiesen. Dadurch ist es möglich, dass eine Warnung eine IP-Adresse von Microsoft enthält, obwohl sie sich auf eine außerhalb von Microsoft ausgeführte Aktivität bezieht. Daher sollten Sie auch bei einer Warnung, die eine IP-Adresse von Microsoft enthält, die auf dieser Seite beschriebenen Schritte ausführen.
 
-## <a name="step-1-contact"></a>Schritt 1: Contact
+## <a name="step-1-identify-the-source"></a>Schritt 1: Identifizieren der Quelle
 
 1. Überprüfen Sie, ob der Datenverkehr aus Ihrem Azure-Mandanten stammt. Wenn die Key Vault-Firewall aktiviert ist, haben Sie wahrscheinlich dem Benutzer oder der Anwendung, der bzw. die diese Warnung ausgelöst hat, den Zugriff gewährt.
-1. Wenn Sie die Quelle des Datenverkehrs nicht überprüfen können, fahren Sie fort mit [Schritt 2: Sofortige Risikominderung](#step-2-immediate-mitigation).
+1. Wenn Sie die Quelle des Datenverkehrs nicht überprüfen können, fahren Sie mit [Schritt 2: Entsprechendes Reagieren](#step-2-respond-accordingly) fort.
 1. Wenn Sie die Quelle des Datenverkehrs in Ihrem Mandanten ermitteln können, wenden Sie sich an den Benutzer oder den Besitzer der Anwendung. 
 
 > [!CAUTION]
 > Azure Defender für Key Vault dient zur Erkennung verdächtiger Aktivitäten, die durch gestohlene Anmeldeinformationen verursacht werden. Verwerfen Sie die Warnung **nicht**, nur weil Sie den Benutzer oder die Anwendung kennen. Wenden Sie sich an den Besitzer der Anwendung oder den Benutzer, und vergewissern Sie sich, dass die Aktivität legitim war. Sie können ggf. eine Unterdrückungsregel erstellen, um Rauschen auszuschließen. Weitere Informationen finden Sie unter [Unterdrücken von Warnungen von Azure Defender](alerts-suppression-rules.md).
 
 
-## <a name="step-2-immediate-mitigation"></a>Schritt 2: Sofortige Risikominderung 
+## <a name="step-2-respond-accordingly"></a>Schritt 2: Entsprechendes Reagieren 
 Wenn Sie den Benutzer oder die Anwendung nicht erkannt haben oder wenn Sie der Ansicht sind, dass der Zugriff nicht autorisiert werden sollte:
 
 - Wenn der Datenverkehr von einer unbekannten IP-Adresse stammt:
@@ -50,9 +52,9 @@ Wenn Sie den Benutzer oder die Anwendung nicht erkannt haben oder wenn Sie der A
     1. Wenden Sie sich an den Administrator.
     1. Ermitteln Sie, ob Azure Active Directory-Berechtigungen verringert oder widerrufen werden müssen.
 
-## <a name="step-3-identify-impact"></a>Schritt 3: Ermitteln der Auswirkungen 
-Nachdem die Auswirkungen behoben wurden, untersuchen Sie die betroffenen Geheimnisse in Ihrem Schlüsseltresor:
-1. Öffnen Sie die Seite „Sicherheit“ für Ihre Azure Key Vault-Instanz, und zeigen Sie die ausgelöste Warnung an.
+## <a name="step-3-measure-the-impact"></a>Schritt 3: Messen der Auswirkungen
+Nachdem Sie das Ereignis behoben haben, untersuchen Sie die betroffenen Geheimnisse in Ihrer Key Vault-Instanz:
+1. Öffnen Sie für Ihre Azure Key Vault-Instanz die Seite **Sicherheit**, und zeigen Sie die ausgelöste Warnung an.
 1. Wählen Sie die genaue ausgelöste Warnung aus.
     Überprüfen Sie die Liste der Geheimnisse, auf die zugegriffen wurde, und den Zeitstempel.
 1. Wenn Sie Key Vault-Diagnoseprotokolle aktiviert haben, überprüfen Sie optional die vorherigen Vorgänge für die entsprechende IP-Adresse, den Benutzerprinzipal oder die Objekt-ID des Aufrufers.  

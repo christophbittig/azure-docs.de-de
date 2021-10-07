@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: mathoma
 ms.date: 09/05/2019
-ms.openlocfilehash: 60afa287a96425ec0a3aead7e5affa6e046b7cbd
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a003370180471e02f4801bffd2477f0c50faa99d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689715"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676559"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Bereitstellen von Azure SQL Managed Instance in einem Instanzpool
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,20 +26,24 @@ Dieser Artikel beschreibt ausführlich das Erstellen eines [Instanzpools](instan
 
 ## <a name="instance-pool-operations"></a>Vorgänge für Instanzenpools
 
-In der folgenden Tabelle sind die verfügbaren Vorgänge im Zusammenhang mit Instanzenpools und deren Verfügbarkeit im Azure-Portal und in PowerShell aufgeführt.
+In der folgenden Tabelle finden Sie eine Auflistung der verfügbaren Vorgänge im Zusammenhang mit Instanzpools und deren Verfügbarkeit im Azure-Portal, in PowerShell und der Azure CLI:
 
-|Get-Help|Azure-Portal|PowerShell|
-|:---|:---|:---|
-|Erstellen eines Instanzenpools|Nein|Ja|
-|Aktualisieren eines Instanzpools (begrenzte Anzahl von Eigenschaften)|Nein |Ja |
-|Überprüfen von Verwendung und Eigenschaften eines Instanzpools|Nein|Ja |
-|Löschen eines Instanzpools|Nein|Ja|
-|Erstellen einer verwalteten Instanz innerhalb eines Instanzpools|Nein|Ja|
-|Aktualisieren der Ressourcennutzung für eine verwaltete Instanz|Ja |Ja|
-|Überprüfen von Nutzung und Eigenschaften einer verwalteten Instanz|Ja|Ja|
-|Löschen einer verwalteten Instanz aus dem Pool|Ja|Ja|
-|Erstellen einer Datenbank in einer Instanz innerhalb des Pools|Ja|Ja|
-|Löschen einer Datenbank aus SQL Managed Instance|Ja|Ja|
+|Get-Help|Azure-Portal|PowerShell|Azure CLI|
+|:---|:---|:---|:---|
+|Erstellen eines Instanzenpools|Nein|Ja|Ja|
+|Aktualisieren eines Instanzpools (begrenzte Anzahl von Eigenschaften)|Nein |Ja | Ja|
+|Überprüfen von Verwendung und Eigenschaften eines Instanzpools|Nein|Ja | Ja |
+|Löschen eines Instanzpools|Nein|Ja|Ja|
+|Erstellen einer verwalteten Instanz innerhalb eines Instanzpools|Nein|Ja|Nein|
+|Aktualisieren der Ressourcennutzung für eine verwaltete Instanz|Ja |Ja|Nein|
+|Überprüfen von Nutzung und Eigenschaften einer verwalteten Instanz|Ja|Ja|Nein|
+|Löschen einer verwalteten Instanz aus dem Pool|Ja|Ja|Nein|
+|Erstellen einer Datenbank in einer Instanz innerhalb des Pools|Ja|Ja|Nein|
+|Löschen einer Datenbank aus SQL Managed Instance|Ja|Ja|Nein|
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Zur Verwendung von PowerShell [installieren Sie die neueste Version von PowerShell Core](/powershell/scripting/install/installing-powershell#powershell), und befolgen Sie die Anweisungen zum [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
 
 Verfügbare [PowerShell-Befehle](/powershell/module/az.sql/):
 
@@ -51,10 +55,24 @@ Verfügbare [PowerShell-Befehle](/powershell/module/az.sql/):
 |[Remove-AzSqlInstancePool](/powershell/module/az.sql/remove-azsqlinstancepool/) | Entfernt einen Instanzpool in SQL Managed Instance. |
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Gibt Nutzungsinformationen über einen SQL Managed Instance-Pool zurück. |
 
-
-Zur Verwendung von PowerShell [installieren Sie die neueste Version von PowerShell Core](/powershell/scripting/install/installing-powershell#powershell), und befolgen Sie die Anweisungen zum [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
-
 Verwenden Sie für Vorgänge für Instanzen innerhalb von Pools sowie für Einzelinstanzen die [Standardbefehle für verwaltete Instanzen](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances). Wenn diese Befehle für eine Instanz in einem Pool verwendet werden, muss allerdings der *Name des Instanzenpools* angegeben werden.
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Bereiten Sie die Umgebung für die Azure CLI vor.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+In der [Azure CLI](/cli/azure/sql) verfügbare Befehle:
+
+|Cmdlet |Beschreibung |
+|:---|:---|
+|[az sql instance-pool create](/cli/azure/sql/instance-pool#az_sql_instance_pool_create) | Erstellt einen SQL Managed Instance-Pool. |
+|[az sql instance-pool show](/cli/azure/sql/instance-pool#az_sql_instance_pool_show) | Gibt Informationen über einen Instanzpool zurück. |
+|[az sql instance-pool update](/cli/azure/sql/instance-pool#az_sql_instance_pool_update) | Legt Eigenschaften für einen Instanzpool in SQL Managed Instance fest, oder aktualisiert diese. |
+|[az sql instance-pool delete](/cli/azure/sql/instance-pool#az_sql_instance_pool_delete) | Entfernt einen Instanzpool in SQL Managed Instance. |
+
+---
 
 ## <a name="deployment-process"></a>Bereitstellungsprozess
 
@@ -85,6 +103,8 @@ Für Instanzenpools gelten die folgenden Einschränkungen:
 > [!IMPORTANT]
 > Das Bereitstellen eines Instanzenpools ist ein zeitintensiver Vorgang und dauert ungefähr 4,5 Stunden.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 So rufen Sie Netzwerkparameter ab:
 
 ```powershell
@@ -105,6 +125,37 @@ $instancePool = New-AzSqlInstancePool `
   -ComputeGeneration "Gen5" `
   -Location "westeurope"
 ```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+So rufen Sie Parameter des virtuellen Netzwerks ab:
+
+```azurecli
+az network vnet show --resource-group MyResourceGroup --name miPoolVirtualNetwork
+```
+
+So rufen Sie Parameter des virtuellen Subnetzes ab:
+
+```azurecli
+az network vnet subnet show --resource group MyResourceGroup --name miPoolSubnet --vnet-name miPoolVirtualNetwork
+```
+
+So erstellen Sie einen Instanzenpool
+
+```azurecli
+az sql instance-pool create
+    --license-type LicenseIncluded 
+    --location westeurope
+    --name mi-pool-name
+    --capacity 8
+    --tier GeneralPurpose
+    --family Gen5 
+    --resrouce-group myResourceGroup
+    --subnet miPoolSubnet
+    --vnet-name miPoolVirtualNetwork
+```
+
+---
 
 > [!IMPORTANT]
 > Da die Bereitstellung eines Instanzenpools ein zeitintensiver Vorgang ist, müssen Sie warten, bis er abgeschlossen ist, bevor Sie die nachfolgenden Schritte in diesem Artikel ausführen.

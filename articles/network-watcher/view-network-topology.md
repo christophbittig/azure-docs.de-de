@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
-ms.openlocfilehash: f20fa22dac3fba4d01cbc5e398bafa4113e94a96
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 26d9b36ec6633f08acfbcc14c6a2fa5a93eb17ae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780297"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666248"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Anzeigen der Topologie eines virtuellen Azure-Netzwerks
 
@@ -144,6 +144,10 @@ Alle in einer Topologie zurückgegebenen Ressourcen haben die folgenden Eigensch
     - **AssociationType:** verweist auf die Beziehung zwischen dem untergeordneten und dem übergeordneten Objekt. Gültige Werte sind *Contains* oder *Associated*.
     - **Name:** der Name der referenzierten Ressource
     - **ResourceId:** der URI der Ressource, auf die in der Zuordnung verwiesen wird
+
+## <a name="supported-resources"></a>Unterstützte Ressourcen
+
+Die Network Watcher-Topologie unterstützt nur eine begrenzte Anzahl von Ressourcen. Dabei handelt es sich um virtuelle Netzwerke, Subnetze, Netzwerkschnittstellen, Netzwerksicherheitsgruppen, Load Balancer, Load Balancer-Integritätstests, öffentliche IP-Adressen, Peering virtueller Netzwerke, Gateways für virtuelle Netzwerke, VPN-Gatewayverbindungen, virtuelle Computer und VM-Skalierungsgruppen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

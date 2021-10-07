@@ -8,12 +8,12 @@ metadata:
   ms.date: 12/19/2019
   ms.author: rohogue
   ms.custom: references_regions
-  ms.openlocfilehash: 1d5230119afa33c05878d11e407e80acdc10f15a
-  ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+  ms.openlocfilehash: 241bcb1e164bf8f0233e7110ffcdd9630e870e8d
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/13/2021
-  ms.locfileid: "113657016"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124751085"
 title: 'Avere vFXT für Azure: Häufig gestellte Fragen'
 summary: In diesem Artikel werden Fragen beantwortet, die Ihnen bei der Entscheidung helfen können, ob Avere vFXT for Azure für Ihre Anforderungen geeignet ist. Er enthält grundlegende Informationen zu Avere vFXT und erläutert, wie die Zusammenarbeit mit anderen Azure-Komponenten und mit Produkten von Drittanbietern funktioniert.
 sections:
@@ -101,7 +101,7 @@ sections:
   - question: >
       Kann die Avere vFXT-Umgebung skaliert werden?
     answer: >
-      Der Avere vFXT-Cluster kann zwischen drei und 24 virtuelle Computerknoten umfassen. Wenden Sie sich an den technischen Support von Azure, um Hilfe bei der Planung zu erhalten, wenn Sie den Meinung sind, dass Sie einen Cluster mit mehr als neun Knoten benötigen. Die größere Anzahl von Knoten erfordert eine größere Bereitstellungsarchitektur.
+      Der Avere vFXT-Cluster kann zwischen 3 und 20 VM-Knoten umfassen. Wenden Sie sich an den technischen Support von Azure, wenn Sie Hilfe bei der Planung der richtigen Clustergröße für Ihren Workflow benötigen.
   - question: >
       Kann die Avere vFXT-Umgebung automatisch skaliert werden?
     answer: >

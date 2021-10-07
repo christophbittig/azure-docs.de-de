@@ -6,12 +6,12 @@ ms.author: v-condav
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 6/16/2021
-ms.openlocfilehash: 4ab409c067d83e44cb22c3a22589eca0a4a7785a
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 4abf1d9236d236f9d19d9336bb3173ca14bb3c61
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114291281"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665167"
 ---
 # <a name="tutorial-using-industrial-iot-to-pull-data-into-azure-data-explorer"></a>Tutorial: Pullen von Daten in Azure Data Explorer mithilfe von Industrial IoT
 
@@ -165,7 +165,7 @@ opcua_telemetry
 
 ## <a name="create-line-graph-of-the-data"></a>Erstellen eines Liniendiagramms der Daten
 
-Erstellen Sie nun ein Liniendiagramm der Daten, indem Sie alles in Gleitkommazahlen umwandeln. Wenn die Umwandlung fehlschlägt, werden die Daten ignoriert. Verwenden Sie hierzu das gehostete Azure Data Explorer-Dashboard. Klicken Sie auf **In Webbenutzeroberfläche öffnen** und dann auf **Dashboards**. Wählen Sie **Neues Dashboard erstellen** aus, und klicken Sie dann auf **Kachel hinzufügen** aus. Wählen Sie dann **Datenquelle** aus, und geben Sie den Namen der Azure Data Explorer-Instanz in das Formular „https://<YourInstanceName>.<Your RegionName>kusto.windows.net“ ein. Wählen Sie Ihre Datenbank aus, und klicken Sie auf **Anwenden**. Geben Sie dann die folgende Abfrage ein.
+Erstellen Sie nun ein Liniendiagramm der Daten, indem Sie alles in Gleitkommazahlen umwandeln. Wenn die Umwandlung fehlschlägt, werden die Daten ignoriert. Verwenden Sie hierzu das gehostete Azure Data Explorer-Dashboard. Klicken Sie auf **In Webbenutzeroberfläche öffnen** und dann auf **Dashboards**. Wählen Sie **Neues Dashboard erstellen** aus, und klicken Sie dann auf **Kachel hinzufügen** aus. Wählen Sie dann **Datenquelle** aus, und geben Sie den Namen der Azure Data Explorer-Instanz in das Formular `https://<YourInstanceName>.<Your RegionName>.kusto.windows.net` ein. Wählen Sie Ihre Datenbank aus, und klicken Sie auf **Anwenden**. Geben Sie dann die folgende Abfrage ein.
 
 ```
 opcua_telemetry

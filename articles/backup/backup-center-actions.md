@@ -2,13 +2,13 @@
 title: Ausführen von Aktionen mithilfe von Backup Center
 description: In diesem Artikel erfahren Sie, wie Sie Aktionen mithilfe von Backup Center ausführen.
 ms.topic: conceptual
-ms.date: 09/07/2020
-ms.openlocfilehash: 8c21475e5a52cdce7e38bbeb9d00df3c3ac3a752
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/22/2021
+ms.openlocfilehash: e8b357c19caeb20c2a50d9a05f9d8d583bd8f640
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506448"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083618"
 ---
 # <a name="perform-actions-using-backup-center"></a>Ausführen von Aktionen mithilfe von Backup Center
 
@@ -76,7 +76,7 @@ Führen Sie die entsprechenden Schritte für die Art der wiederherzustellenden D
 
     ![Auswählen der Datenquelle für die Wiederherstellung eines Azure Database for PostgreSQL-Servers](./media/backup-center-actions/restore-select-datasource-postgresql.png)
 
-3. Wählen Sie eine Sicherungsinstanz und anschließend **Fortsetzen** aus. Daraufhin gelangen Sie zu den gleichen Wiederherstellungseinstellungen wie über einen Recovery Services-Tresor. Weitere Informationen zum Wiederherstellen eines Azure Database for PostgreSQL-Servers mit einem Backup-Tresor finden Sie [hier](backup-azure-database-postgresql.md#restore).
+3. Wählen Sie eine Sicherungsinstanz und anschließend **Fortsetzen** aus. Daraufhin gelangen Sie zu den gleichen Wiederherstellungseinstellungen wie über einen Recovery Services-Tresor. Weitere Informationen zum Wiederherstellen eines Azure Database for PostgreSQL-Servers mit einem Backup-Tresor finden Sie [hier](restore-azure-database-postgresql.md).
 
 ## <a name="create-a-new-vault"></a>Erstellen eines neuen Tresors
 
@@ -116,25 +116,32 @@ Führen Sie die entsprechenden Schritte für die Art der zu sichernden Datenquel
 
 Mit Backup Center können Sie nach Sicherungsinstanzen in Ihrem gesamten Sicherungsbestand suchen und Sicherungsvorgänge nach Bedarf ausführen.
 
-Navigieren Sie zum Auslösen einer bedarfsgesteuerten Sicherung zu Backup Center, und wählen Sie das Menüelement **Sicherungsinstanzen** aus. Dadurch können Sie Details zu allen Sicherungsinstanzen anzeigen, auf die Sie Zugriff haben. Sie können nach der Sicherungsinstanz suchen, die Sie sichern möchten. Wenn Sie im Raster mit der rechten Maustaste auf ein Element klicken, wird eine Liste mit verfügbaren Aktionen geöffnet. Wählen Sie die Option **Jetzt sichern** aus, um eine bedarfsgesteuerte Sicherung auszuführen.
+Navigieren Sie zum Backup Center, und wählen Sie das Menüelement **Sicherungsinstanzen** aus, um den Schutz zu beenden. Dadurch können Sie Details zu allen Sicherungsinstanzen anzeigen, auf die Sie Zugriff haben. Sie können nach der Sicherungsinstanz suchen, die Sie sichern möchten. Wenn Sie im Raster mit der rechten Maustaste auf ein Element klicken, wird eine Liste mit verfügbaren Aktionen geöffnet. Wählen Sie die Option **Jetzt sichern** aus, um eine bedarfsgesteuerte Sicherung auszuführen.
 
 ![Bedarfsgesteuerte Sicherung](./media/backup-center-actions/backup-center-on-demand-backup.png)
 
 Weitere Informationen zum Ausführen bedarfsgesteuerter Sicherungen für virtuelle Azure-Computer finden Sie [hier](backup-azure-manage-vms.md#run-an-on-demand-backup).
 
-Weitere Informationen zum Ausführen bedarfsgesteuerter Sicherungen für Azure Database for PostgreSQL-Server finden Sie [hier](backup-azure-database-postgresql.md#on-demand-backup).
+Weitere Informationen zum Ausführen bedarfsgesteuerter Sicherungen für Azure Database for PostgreSQL-Server finden Sie [hier](backup-azure-database-postgresql.md).
 
 ## <a name="stop-backup-for-a-backup-instance"></a>Beenden der Sicherung für eine Sicherungsinstanz
 
 Manchmal möchten Sie möglicherweise die Sicherung für eine Sicherungsinstanz beenden – etwa, wenn die zugrunde liegende Ressource nicht mehr vorhanden ist.
 
-Navigieren Sie zum Auslösen einer bedarfsgesteuerten Sicherung zu Backup Center, und wählen Sie das Menüelement **Sicherungsinstanzen** aus. Dadurch können Sie Details zu allen Sicherungsinstanzen anzeigen, auf die Sie Zugriff haben. Sie können nach der Sicherungsinstanz suchen, die Sie sichern möchten. Wenn Sie im Raster mit der rechten Maustaste auf ein Element klicken, wird eine Liste mit verfügbaren Aktionen geöffnet. Wählen Sie die Option **Sicherung beenden** aus, um die Sicherung für die Sicherungsinstanz zu beenden.
+Navigieren Sie zum Backup Center, und wählen Sie das Menüelement **Sicherungsinstanzen** aus, um den Schutz zu beenden. Dadurch können Sie Details zu allen Sicherungsinstanzen anzeigen, auf die Sie Zugriff haben. Sie können nach der Sicherungsinstanz suchen, die Sie sichern möchten. Wenn Sie im Raster mit der rechten Maustaste auf ein Element klicken, wird eine Liste mit verfügbaren Aktionen geöffnet. Wählen Sie die Option **Sicherung beenden** aus, um die Sicherung für die Sicherungsinstanz zu beenden.
 
 ![Schutz beenden](./media/backup-center-actions/backup-center-stop-protection.png)
 
-Weitere Informationen zum Beenden der Sicherung für virtuelle Azure-Computer finden Sie [hier](backup-azure-manage-vms.md#stop-protecting-a-vm).
+- Weitere Informationen zum Beenden der Sicherung für virtuelle Azure-Computer finden Sie [hier](backup-azure-manage-vms.md#stop-protecting-a-vm).
+- Weitere Informationen zum Beenden der Sicherung für einen Datenträger finden Sie [hier](manage-azure-managed-disks.md#stop-protection-preview).
+- Weitere Informationen zum Beenden der Sicherung für Azure Database for PostgreSQL-Server finden Sie [hier](manage-azure-database-postgresql.md#stop-protection-preview).
 
-Weitere Informationen zum Beenden der Sicherung für Azure Database for PostgreSQL-Server finden Sie [hier](backup-azure-database-postgresql.md#stop-protection).
+## <a name="resume-backup"></a>Sicherung fortsetzen
+
+Sie können die Sicherung für Ihre Workloads fortsetzen, wenn Sie Daten während der Funktion **Schutz Beenden** beibehalten haben.
+
+- Weitere Informationen über das Fortsetzen des Schutzes für Ihren Datenträger finden Sie [hier](manage-azure-database-postgresql.md#resume-protection).
+- Weitere Informationen zum Fortsetzen des Schutzes für Azure Database for PostgreSQL finden Sie [hier](manage-azure-managed-disks.md#resume-protection).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

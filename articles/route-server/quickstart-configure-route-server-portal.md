@@ -5,20 +5,23 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 09/01/2021
+ms.date: 09/08/2021
 ms.author: duau
-ms.openlocfilehash: 36be075345dcacdf8246f46462a2665718f27e7e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: a6714867b5b863f608e3282c5e6f3bb0d2425969
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424796"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091481"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>Schnellstart: Erstellen und Konfigurieren einer Route Server-Instanz mithilfe des Azure-Portals
 
 In diesem Artikel wird beschrieben, wie Sie Azure Route Server mithilfe des Azure-Portals für das Peering mit einem virtuellen Netzwerkgerät (Network Virtual Appliance, NVA) in Ihrem virtuellen Netzwerk konfigurieren. Azure Route Server lernt Routen vom NVA und programmiert sie auf den virtuellen Computern im virtuellen Netzwerk. Azure Route Server kündigt die virtuellen Netzwerkrouten auch für das NVA an. Weitere Informationen finden Sie unter [Azure Route Server](overview.md).
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Diagramm: Route Server-Bereitstellungsumgebung mit dem Azure-Portal" border="false":::
+
+> [!IMPORTANT]
+> Wenn Sie vor dem 1. September eine Azure Route Server-Instanz erstellt haben und ihr keine öffentliche IP-Adresse zugeordnet ist, müssen Sie die Route Server-Instanz neu erstellen, damit sie zu Verwaltungszwecken eine IP-Adresse abrufen kann.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +36,7 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
 
 ### <a name="create-a-route-server"></a>Erstellen einer Route Server-Instanz
 
-1. Gehe zu https://aka.ms/routeserver.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, suchen Sie **Routenserver**, und wählen Sie die Option dann aus.
 
 1. Wählen Sie **+ Create new route server** (+ Neuen Routenserver erstellen) aus.
 

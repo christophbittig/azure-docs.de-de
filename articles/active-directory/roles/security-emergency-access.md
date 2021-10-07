@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7fb48f71a891493220440d56a50e3c72510892
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f840d72698790be10630fe182f4655554ff23962
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339915"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748376"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Verwalten von Konten für den Notfallzugriff in Azure AD
 
@@ -44,9 +44,9 @@ Erstellen Sie mindestens zwei Konten für den Notfallzugriff. Bei diesen Konten 
 Beim Konfigurieren dieser Konten müssen die folgenden Anforderungen erfüllt werden:
 
 - Die Konten für den Notfallzugriff dürfen keinem Einzelbenutzer in der Organisation zugeordnet werden. Stellen Sie sicher, dass Ihre Konten nicht mit Mobiltelefonen von Mitarbeitern, Hardwaretoken einzelner Mitarbeiter oder anderen mitarbeiterspezifischen Anmeldeinformationen verbunden sind. Durch diese Vorsichtsmaßnahme werden Fälle abgedeckt, in denen einzelne Mitarbeiter nicht erreichbar sind, wenn die Anmeldeinformationen benötigt werden. Es muss unbedingt sichergestellt werden, dass alle registrierten Geräte an einem bekannten, sicheren Ort aufbewahrt werden, die über verschiedene Wege mit Azure AD kommunizieren können.
-- Der für ein Konto für den Notfallzugriff verwendete Authentifizierungsmechanismus sollte sich von dem unterscheiden, der für Ihre anderen Administratorkonten einschließlich anderer Konten für den Notfallzugriff verwendet wird.  Erfolgt beispielsweise die normale Administratoranmeldung über lokale MFA, wäre Azure AD MFA ein anderer Mechanismus.  Wenn jedoch Azure AD MFA die primäre Authentifizierungsmethode für Ihre Administratorkonten ist, sollten Sie einen anderen Ansatz für diese Konten in Betracht ziehen. Hier käme z. B. die Verwendung von bedingtem Zugriff mit einem MFA-Drittanbieter über benutzerdefinierte Steuerelemente infrage.
+- Verwenden Sie eine sichere Authentifizierungsmethode für Ihre Konten für den Notfallzugriff, und stellen Sie sicher, dass nicht die gleichen Authentifizierungsmethoden wie für Ihre anderen Verwaltungskonten verwendet werden. Wenn Ihr normales Administratorkonto beispielsweise die Microsoft Authenticator-App für die sichere Authentifizierung verwendet, verwenden Sie einen FIDO2-Sicherheitsschlüssel für Ihre Notfallkonten. Berücksichtigen Sie die [Abhängigkeiten verschiedener Authentifizierungsmethoden](../fundamentals/resilience-in-credentials.md), um zu vermeiden, dass dem Authentifizierungsprozess externe Anforderungen hinzugefügt werden.
 - Die jeweiligen Geräte oder die Anmeldeinformationen dürfen nicht ablaufen oder aufgrund mangelnder Verwendung in den Bereich der automatisierten Bereinigung fallen.  
-- Sie sollten die Rolle „Globaler Administrator“ für Ihre Konten für den Notfallzugriff dauerhaft zuweisen. 
+- In Azure AD Privileged Identity Management sollten Sie die Rollenzuweisung „Globaler Administrator“ als dauerhafte Einstellung festlegen, anstatt Berechtigungen für Ihre Notfallzugriffskonten zu gewähren. 
 
 ### <a name="exclude-at-least-one-account-from-phone-based-multi-factor-authentication"></a>Ausschließen mindestens eines Kontos aus der telefonbasierten mehrstufigen Authentifizierung
 
@@ -56,11 +56,11 @@ Für mindestens eines Ihrer Konten für den Notfallzugriff sollte jedoch nicht d
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>Ausschließen mindestens eines Kontos aus Richtlinien für bedingten Zugriff
 
-In einem Notfall soll eine Richtlinie Ihren Zugriff nicht potenziell blockieren, um ein Problem zu beheben. Mindestens ein Konto für den Notfallzugriff sollte aus allen Richtlinien für bedingten Zugriff ausgeschlossen werden.
+In einem Notfall soll eine Richtlinie Ihren Zugriff nicht potenziell blockieren, um ein Problem zu beheben. Wenn Sie den bedingten Zugriff verwenden, muss mindestens ein Konto für den Notfallzugriff von allen Richtlinien für bedingten Zugriff ausgeschlossen werden.
 
 ## <a name="federation-guidance"></a>Verbundleitfaden
 
-Einige Organisationen verwenden AD-Domänendienste und ADFS oder einen ähnlichen Identitätsanbieter, um einen Verbund mit Azure AD zu bilden. [Es sollten keine lokalen Konten mit Administratorrechten vorhanden sein](../fundamentals/protect-m365-from-on-premises-attacks.md). Das Kontrollieren und/oder Bereitstellen der Authentifizierung für Konten mit Administratorrechten außerhalb Azure AD schafft unnötige Risiken im Falle eines Ausfalls oder einer Gefährdung dieser Systeme.
+Einige Organisationen verwenden AD-Domänendienste und AD FS oder einen ähnlichen Identitätsanbieter, um einen Verbund mit Azure AD zu bilden. Zwischen dem Notfallzugriff für lokale Systeme und dem Notfallzugriff für Clouddienste sollte unterschieden werden, und diese sollten nicht voneinander abhängig sein. Das Verwenden und Bereitstellen der Authentifizierung für Konten mit Notfallzugriffsrechten aus anderen Systemen sorgt für unnötiges Risiko im Fall eines Ausfalls dieser Systeme.
 
 ## <a name="store-account-credentials-safely"></a>Sicheres Speichern der Anmeldeinformationen für Konten
 
@@ -158,4 +158,4 @@ Diese Schritte sollten in regelmäßigen Abständen und für wichtige Änderunge
 - [Registrieren für Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md), sofern nicht bereits geschehen
 - [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer](../authentication/howto-mfa-userstates.md)
 - [Konfigurieren zusätzlicher Schutzmechanismen für globale Administratoren in Microsoft 365](/office365/enterprise/protect-your-global-administrator-accounts) bei Verwendung von Microsoft 365
-- [Starten einer Zugriffsüberprüfung für globale Administratoren](../privileged-identity-management/pim-how-to-start-security-review.md) und [Umstellen der vorhandenen globalen Administratoren auf spezifischere Administratorrollen](permissions-reference.md)
+- [Starten einer Zugriffsüberprüfung für globale Administratoren](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md) und [Umstellen der vorhandenen globalen Administratoren auf spezifischere Administratorrollen](permissions-reference.md)

@@ -6,18 +6,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/27/2021
+ms.date: 09/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4643502a16982fc3b3c2a659a4dbc127e515d349
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 917f60440d98924e5339f29fb99587eacf40b415
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346147"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766253"
 ---
 # <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>Installieren eines Clientzertifikats für die Zertifikatauthentifizierung bei P2S-Verbindungen
 
-Wenn ein P2S-VPN-Gateway so konfiguriert ist, dass es eine Zertifikatauthentifizierung erfordert, muss auf jedem Clientcomputer ein lokales Clientzertifikat installiert sein. Dieser Artikel hilft Ihnen, ein Clientzertifikat zu installieren.
+Wenn ein P2S-VPN-Gateway so konfiguriert ist, dass es eine Zertifikatauthentifizierung erfordert, muss auf jedem Clientcomputer ein lokales Clientzertifikat installiert sein. In diesem Artikel wird beschrieben, wie Sie ein Clientzertifikat lokal auf einem Clientcomputer installieren. Sie können auch [Intune](/mem/intune/configuration/vpn-settings-configure) verwenden, um bestimmte VPN-Clientprofile und Zertifikate zu installieren.
 
 Wenn Sie ein Clientzertifikat aus einem selbstsignierten Stammzertifikat generieren möchten, lesen Sie einen der folgenden Artikel:
 

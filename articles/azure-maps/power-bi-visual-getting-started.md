@@ -1,24 +1,24 @@
 ---
 title: Erste Schritte mit dem Azure Maps-Visual in Power BI | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie das Microsoft Azure Maps-Visual für Power BI verwendet wird.
-author: rbrundritt
-ms.author: richbrun
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: e57f687622b0878d66bfde5770ed9a97b613a683
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 6a26361cc09a4dd420930725b29a1d346769270a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091355"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744621"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Erste Schritte mit dem Azure Maps-Visual in Power BI
 
-<Token>**GILT FÜR:** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für **_Consumer_** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für Designer und Entwickler ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI Desktop ![X, das Nein anzeigt.](media/power-bi-visual/no.png) Erfordert eine Pro- oder Premium-Lizenz</Token>
+**GILT FÜR:** ![Grünes Häkchen](media/power-bi-visual/yes.png) Power BI-Dienst für **_Consumer_** ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI-Dienst für Designer und Entwickler ![Grünes Häkchen.](media/power-bi-visual/yes.png) Power BI Desktop ![X, das Nein anzeigt.](media/power-bi-visual/no.png) Erfordert eine Pro- oder Premium-Lizenz
 
 Dieser Artikel zeigt die Verwendung des Microsoft Azure Maps-Visuals für Power BI.
 

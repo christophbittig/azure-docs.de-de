@@ -1,20 +1,18 @@
 ---
 title: Freigeben von VM-Images für freigegebene Kataloge
 description: Erfahren Sie, wie Shared Image Gallerys verwendet werden, um Linux-VM-Images in Ihrer Organisation freizugeben.
-author: axayjo
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 6/8/2021
-ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: c94e040d5047b25b8d260792fd362e50a29b9601
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a62c7c80ad2e785e9f09b68d9a5ec9ca7d355800
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696290"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129454998"
 ---
 # <a name="shared-image-galleries-overview"></a>Übersicht über Kataloge mit freigegebenen Images
 
@@ -125,7 +123,7 @@ Im Katalog mit freigegebenen Images können Sie die Anzahl der Replikate angeben
 Mit dem Katalog mit freigegebenen Images können Sie jetzt bis zu 1.000 VM-Instanzen in einer VM-Skalierungsgruppe bereitstellen (erhöht von 600 mit verwalteten Images). Imagereplikate bieten eine bessere Leistung, Zuverlässigkeit und Konsistenz bei der Bereitstellung.   Sie können in jeder Zielregion ein andere Replikatanzahl festlegen, basierend auf der für die Region erforderlichen Skalierung. Da jedes Replikat eine tiefe Kopie Ihres Images ist, hilft dies dabei, Ihre Bereitstellungen mit jedem zusätzlichen Replikat linear zu skalieren. Obwohl natürlich keine zwei Images oder Regionen identisch sind, gibt es dennoch eine allgemeine Richtlinie für die Verwendung von Replikaten in einer Region:
 
 - Bei Bereitstellungen ohne VM-Skalierungsgruppen: Es empfiehlt sich, für je 20 VMs, die Sie gleichzeitig erstellen, ein Replikat beizubehalten. Wenn Sie beispielsweise 120 VMs gleichzeitig mit demselben Image in einer Region erstellen, empfehlen wir, dass Sie mindestens 6 Replikate Ihres Images behalten. 
-- Bei Bereitstellungen mit Skalierungsgruppen: Für jede Skalierungsgruppenbereitstellung mit bis zu 600 Instanzen empfiehlt es sich, mindestens ein Replikat beizubehalten. Wenn Sie beispielsweise 5 Skalierungsgruppen gleichzeitig erstellen, wobei jede davon 600 VM-Instanzen in einer Region enthält, die dasselbe Image verwenden, empfehlen wir, dass Sie mindestens 5 Replikate Ihres Images behalten. 
+- Bei Bereitstellungen von VM-Skalierungsgruppen: Es empfiehlt sich, für jede Skalierungsgruppe, die Sie gleichzeitig erstellen, ein Replikat beizubehalten.
 
 Wir empfehlen Ihnen stets, die Anzahl der Replikate überdimensioniert bereitzustellen, wegen Faktoren wie Größe, Inhalt und Betriebssystemtyp des Images.
 
@@ -238,13 +236,13 @@ Um alle Ressourcen eines Katalogs mit freigegebenen Images für die Abonnements,
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
 ```
 
-Weitere Informationen finden Sie unter **Verwalten von Katalogressourcen** mithilfe der [Azure CLI](update-image-resources-cli.md) oder mit [PowerShell](update-image-resources-powershell.md).
+Weitere Informationen finden Sie unter [Auflisten, Aktualisieren und Löschen von Imageressourcen](update-image-resources.md).
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Kann ich mein vorhandenes Image in den Katalog mit geteilten Images verschieben?
  
 Ja. Es gibt 3 Szenarien, die auf den Typen von Images basieren, die Sie haben können.
 
- Szenario 1: Wenn Sie ein verwaltetes Image haben, können Sie daraus eine Imagedefinition und eine Imageversion erstellen. Weitere Informationen finden Sie unter **Migrieren von einem verwalteten Image zu einer Imageversion** mithilfe der [Azure CLI](image-version-managed-image-cli.md) oder mit [PowerShell](image-version-managed-image-powershell.md).
+ Szenario 1: Wenn Sie ein verwaltetes Image haben, können Sie daraus eine Imagedefinition und eine Imageversion erstellen. Weitere Informationen finden Sie unter [Erstellen einer Imagedefinition und einer Imageversion](image-version.md).
 
  Szenario 2: Wenn Sie ein nicht verwaltetes Image haben, können Sie daraus ein verwaltetes Image erstellen und dann daraus eine Imagedefinition und eine Imageversion erstellen. 
 
@@ -255,11 +253,11 @@ Ja. Es gibt 3 Szenarien, die auf den Typen von Images basieren, die Sie haben k�
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Kann ich eine Imageversion von einem speziellen Datenträger erstellen?
 
-Ja, Sie können eine VM aus einem spezialisierten Image erstellen, indem Sie die [CLI](vm-specialized-image-version-cli.md), [PowerShell](vm-specialized-image-version-powershell.md) oder die API verwenden. 
+Ja, Sie können eine VM aus einem [spezialisierten Image](windows/create-vm-specialized.md) erstellen. 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Kann ich die Katalogressource mit geteilten Images nach der Erstellung in ein anderes Abonnement verschieben?
 
-Nein, Sie können die Shared Image Gallery-Ressource nicht in ein anderes Abonnement verschieben. Sie können die Imageversionen im Katalog in andere Regionen replizieren oder ein Image aus einem anderen Katalog mithilfe der [Azure CLI](image-version-another-gallery-cli.md) oder mit [PowerShell](image-version-another-gallery-powershell.md) kopieren.
+Nein, Sie können die Shared Image Gallery-Ressource nicht in ein anderes Abonnement verschieben. Sie können die Imageversionen im Katalog in andere Regionen replizieren oder ein [Image aus einem anderen Katalog](image-version.md) kopieren.
 
 ### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Kann ich meine Imageversionen zwischen Clouds replizieren, beispielsweise Azure China 21Vianet, Azure Deutschland und Azure Government Cloud?
 
@@ -325,4 +323,4 @@ Sie können Ihre Frage außerdem in [Q&A](/answers/topics/azure-virtual-machines
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie freigegebene Images mit der [Azure-Befehlszeilenschnittstelle](shared-images-cli.md) oder [PowerShell](shared-images-powershell.md) bereitstellen.
+Erfahren Sie, wie Sie freigegebene Images mit der [Azure-Befehlszeilenschnittstelle](create-gallery.md) oder [PowerShell](create-gallery.md) bereitstellen.

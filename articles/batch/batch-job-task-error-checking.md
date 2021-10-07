@@ -3,14 +3,14 @@ title: Ermitteln von Auftrags- und Aufgabenfehlern
 description: Erfahren Sie mehr über Fehler, auf die Sie achten müssen, und wie Sie die Problembehandlung für Aufträge und Tasks durchführen können.
 author: mscurrell
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 09/08/2021
 ms.author: markscu
-ms.openlocfilehash: d8cf3b5e28d4455e00e0bdcbae2063771d3e8acd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31ca874ebb4e3d11d46ff47e775605ffdd015f63
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95736798"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815381"
 ---
 # <a name="job-and-task-error-checking"></a>Überprüfung auf Auftrags- und Taskfehler
 
@@ -25,7 +25,7 @@ Ein Auftrag ist eine Gruppierung einer oder mehrerer Tasks, wobei die Tasks jewe
 Beim Hinzufügen eines Auftrags können die folgenden Parameter angegeben werden, die beeinflussen können, wie der Auftrag fehlschlagen kann:
 
 - [Auftragseinschränkungen](/rest/api/batchservice/job/add#jobconstraints)
-  - Die `maxWallClockTime`-Eigenschaft kann optional angegeben werden, um die maximale Zeitspanne festzulegen, die ein Auftrag aktiv sein oder ausgeführt werden kann. Bei Überschreitung wird der Auftrag mit der in der [executionInfo](/rest/api/batchservice/job/get#cloudjob) für den Auftrag festgelegten Eigenschaft `terminateReason` beendet.
+  - Die `maxWallClockTime`-Eigenschaft kann optional angegeben werden, um die maximale Zeitspanne festzulegen, die ein Auftrag aktiv sein oder ausgeführt werden kann. Bei Überschreitung wird der Auftrag mit der in der [executionInfo](/rest/api/batchservice/job/get#jobexecutioninformation) für den Auftrag festgelegten Eigenschaft `terminateReason` beendet.
 - [Task zur Auftragsvorbereitung](/rest/api/batchservice/job/add#jobpreparationtask)
   - Wenn angegeben, wird bei der ersten Ausführung eines Tasks für einen Auftrag auf einem Knoten ein Auftragsvorbereitungstask ausgeführt. Der Auftragsvorbereitungstask kann fehlschlagen, was dazu führt, dass der Task nicht ausgeführt und der Auftrag nicht abgeschlossen wird.
 - [Task zur Auftragsfreigabe](/rest/api/batchservice/job/add#jobreleasetask)
@@ -41,7 +41,7 @@ Die folgenden Auftragseigenschaften sollten auf Fehler überprüft werden:
 
 ### <a name="job-preparation-tasks"></a>Task zur Auftragsvorbereitung
 
-Wenn ein Auftragsvorbereitungstask für einen Auftrag angegeben wird, wird eine Instanz dieses Tasks ausgeführt, wenn ein Task für den Auftrag zum ersten Mal auf einem Knoten ausgeführt wird. Den für den Auftrag konfigurierten Auftragsvorbereitungstask können Sie sich als Taskvorlage vorstellen, wobei mehrere Taskinstanzen zur Auftragsvorbereitung bis zur Anzahl der Knoten in einem Pool ausgeführt werden.
+Wenn für einen Auftrag eine [Auftragsvorbereitungsaufgabe](batch-job-prep-release.md#job-preparation-task) angegeben ist, wird eine Instanz dieser Aufgabe ausgeführt, wenn zum ersten Mal eine Aufgabe für den Auftrag auf einem Knoten ausgeführt wird. Den für den Auftrag konfigurierten Auftragsvorbereitungstask können Sie sich als Taskvorlage vorstellen, wobei mehrere Taskinstanzen zur Auftragsvorbereitung bis zur Anzahl der Knoten in einem Pool ausgeführt werden.
 
 Die Taskinstanzen für die Auftragsvorbereitung sollten überprüft werden, um festzustellen, ob Fehler aufgetreten sind:
 
@@ -51,7 +51,7 @@ Die Taskinstanzen für die Auftragsvorbereitung sollten überprüft werden, um f
 
 ### <a name="job-release-tasks"></a>Tasks zur Auftragsfreigabe
 
-Wenn ein Auftragsfreigabetask für einen Auftrag angegeben ist, wird beim Beenden eines Auftrags eine Instanz des Auftragsfreigabetasks auf jedem Poolknoten ausgeführt, auf dem ein Auftragsvorbereitungstask ausgeführt wurde. Die Taskinstanzen für die Auftragsfreigabe sollten überprüft werden, um festzustellen, ob Fehler aufgetreten sind:
+Wenn für einen Auftrag eine [Auftragsfreigabeaufgabe](batch-job-prep-release.md#job-release-task) angegeben ist, wird bei der Beendigung eines Auftrags eine Instanz der Auftragsfreigabeaufgabe auf jedem Pool-Knoten ausgeführt, auf dem eine Auftragsvorbereitungsaufgabe ausgeführt wurde. Die Taskinstanzen für die Auftragsfreigabe sollten überprüft werden, um festzustellen, ob Fehler aufgetreten sind:
 
 - Alle Instanzen des Auftragsfreigabetasks, die ausgeführt wurden, können mithilfe der API zum [Auflisten des Vorbereitungs- und Freigabetaskstatus](/rest/api/batchservice/job/listpreparationandreleasetaskstatus) aus dem Auftrag abgerufen werden. Wie bei jedem Task sind für die Eigenschaften wie `failureInfo`, `exitCode` und `result`[Ausführungsinformationen](/rest/api/batchservice/job/listpreparationandreleasetaskstatus#jobpreparationandreleasetaskexecutioninformation) verfügbar.
 - Wenn mindestens eine Auftragsfreigabetask fehlschlägt, wird der Auftrag dennoch beendet und wechselt in den Status `completed`.
@@ -92,4 +92,4 @@ Bei jedem Dateiupload schreibt Batch zwei Protokolldateien in den Computeknoten:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Überprüfen Sie, ob Ihre Anwendung eine umfassende Fehlerüberprüfung implementiert. Es kann wichtig sein, Probleme schnell zu erkennen und zu diagnostizieren.
-- Erfahren Sie mehr zu [Aufträgen und Tasks](jobs-and-tasks.md).
+- Erfahren Sie mehr über [Jobs und Aufgaben](jobs-and-tasks.md) und [Jobvorbereitung und Freigabeaufgaben](batch-job-prep-release.md).

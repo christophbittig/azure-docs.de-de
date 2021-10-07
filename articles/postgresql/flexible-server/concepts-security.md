@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 07/26/2021
-ms.openlocfilehash: 6fcd772fce8a3f5e869f12e9b20c1219adf8155b
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 09/08/2021
+ms.openlocfilehash: cf5c28d197aabf60d7e6ee36c2e724ffad435522
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866853"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559207"
 ---
 # <a name="security-in-azure-database-for-postgresql---flexible-server"></a>Sicherheit in Azure Database for PostgreSQL – Flexible Server
 
@@ -23,7 +23,9 @@ Zum Schutz der Daten auf Ihrem Azure Database for PostgreSQL-Server gibt es mehr
 
 Azure Database for PostgreSQL verschlüsselt Daten auf zwei Arten:
 
-- **Daten während der Übertragung**: Azure Database for PostgreSQL verschlüsselt Daten während der Übertragung mit Secure Sockets Layer und Transport Layer Security (SSL/TLS). Verschlüsselung wird standardmäßig erzwungen.
+- **Daten während der Übertragung**: Azure Database for PostgreSQL verschlüsselt Daten während der Übertragung mit Secure Sockets Layer und Transport Layer Security (SSL/TLS). Verschlüsselung wird standardmäßig erzwungen. Ausführlichere Informationen finden Sie in [diesem Leitfaden](how-to-connect-tls-ssl.md). Zur Erhöhung der Sicherheit können Sie die [SCRAM-Authentifizierung](how-to-connect-scram.md) aktivieren.
+ Obwohl dies nicht zu empfehlen ist, haben Sie bei Bedarf die Möglichkeit, TLS/SSL für Verbindungen mit Azure Database for PostgreSQL Flexible Server zu deaktivieren, indem Sie den Serverparameter **require_secure_transport** auf „OFF“ festlegen. Sie können auch die TLS-Version angeben, indem Sie die Serverparameter **ssl_min_protocol_version** und **ssl_max_protocol_version** festlegen.
+
 - **Ruhende Daten**: Azure Database for PostgreSQL nutzt für die Speicherverschlüsselung das FIPS 140-2-zertifizierte Kryptografiemodul. Daten werden auf dem Datenträger verschlüsselt, einschließlich Sicherungen und der temporären Dateien, die während der Ausführung von Abfragen erstellt wurden. 
 
   Der Dienst verwendet das in der Azure Storage-Verschlüsselung enthaltene AES-256-Bit-Verschlüsselungsverfahren, und die Schlüssel werden vom System verwaltet. Dies ähnelt anderen Verschlüsselungstechnologien für ruhende Daten wie Transparent Data Encryption in SQL Server- oder Oracle-Datenbanken. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
@@ -45,11 +47,55 @@ Wenn Sie Azure Database for PostgreSQL – Flexible Server ausführen, haben Si
 
 Während Sie den Azure Database for PostgreSQL-Server erstellen, geben Sie Anmeldeinformationen für eine Administratorrolle ein. Diese Administratorrolle kann zum Erstellen weiterer [PostgreSQL-Rollen](https://www.postgresql.org/docs/current/user-manag.html) genutzt werden.
 
-Mithilfe von [Azure Active Directory-Authentifizierung](../concepts-aad-authentication.md) können Sie auch eine Verbindung mit dem Server herstellen. Aktivitäten in Ihren Datenbanken können mithilfe der [Überwachungsprotokollierung](../concepts-audit.md) nachverfolgt werden. 
+Ein auf ein Objekt angewendeter
+
+```SQL
+postgres=> create role demouser with password 'password123';
+```
+
+Sie können die Liste mit den Rollen auf Ihrem Server in regelmäßigen Abständen überprüfen. Beispielsweise können Sie eine Verbindung herstellen, indem Sie den `psql`-Client verwenden, und die Tabelle `pg_roles` abfragen, in der alle Rollen und die zugehörigen Berechtigungen, z. B. zusätzliche Rollen erstellen, Datenbanken erstellen, Replikation usw., aufgeführt sind. 
+
+```SQL
+postgres=> \x
+Expanded display is on.
+postgres=> select * from pg_roles where rolname='demouser';
+-[ RECORD 1 ]--+---------
+rolname        | demouser
+rolsuper       | f
+rolinherit     | t
+rolcreaterole  | f
+rolcreatedb    | f
+rolcanlogin    | f
+rolreplication | f
+rolconnlimit   | -1
+rolpassword    | ********
+rolvaliduntil  |
+rolbypassrls   | f
+rolconfig      |
+oid            | 24827
+
+```
+
+Für Flexible Server ist auch die [Überwachungsprotokollierung](../concepts-audit.md) verfügbar, um Aktivitäten in Ihren Datenbanken nachverfolgen zu können. 
 
 > [!NOTE]
 > Azure Database for PostgreSQL – Flexible Server unterstützt zurzeit den [Azure Defender-Datenschutz](../../security-center/azure-defender.md) nicht. 
 
+## <a name="updating-passwords"></a>Aktualisieren von Kennwörtern
+
+Eine bewährte Methode zur Erhöhung der Sicherheit besteht darin, Ihr Administratorkennwort und die Kennwörter für Datenbankbenutzer regelmäßig zu rotieren. Wir empfehlen Ihnen, sichere Kennwörter mit Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen zu verwenden.
+
+### <a name="reset-administrator-password"></a>Zurücksetzen des Administratorkennworts
+
+Befolgen Sie die [Anleitung](./how-to-manage-server-portal.md#reset-admin-password) zum Zurücksetzen des Administratorkennworts.
+
+### <a name="update-database-user-password"></a>Aktualisieren eines Kennworts für Datenbankbenutzer
+
+Sie können Clienttools verwenden, um die Kennwörter von Datenbankbenutzern zu aktualisieren. Ein auf ein Objekt angewendeter
+```SQL
+postgres=> alter role demouser with password 'Password123!';
+ALTER ROLE
+```
 ## <a name="next-steps"></a>Nächste Schritte
 - Aktivieren Sie [Firewallregeln für IP-Adressen](concepts-firewall-rules.md) bei Netzwerken mit öffentlichem Zugriff.
 - Informieren Sie sich über [Netzwerke mit privatem Zugriff mit Azure Database for PostgreSQL – Flexible Server](concepts-networking.md).

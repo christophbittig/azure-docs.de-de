@@ -8,12 +8,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: b8d1e962c9f25d2a26a8c8e537390028795844b9
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 7497db682cd8fac12cd93a83c3765862898455ee
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671528"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763479"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Schnellstart: Azure Key Vault-Geheimnisclientbibliothek für Java
 Hier finden Sie Informationen zu den ersten Schritten mit der Azure Key Vault-Geheimnisclientbibliothek für Java. Führen Sie die weiter unten beschriebenen Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben auszuprobieren.
@@ -154,9 +154,9 @@ import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>Authentifizieren und Erstellen eines Clients
-In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren bei Key Vault verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie in der [Übersicht zu verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren bei Key Vault verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie in der [Übersicht zu verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) verwendet, mit der derselbe Code in verschiedenen Umgebungen mit unterschiedlichen Optionen zum Bereitstellen von Identitäten verwendet werden kann. Weitere Informationen finden Sie unter der [DefaultAzureCredential-Authentifizierung](https://docs.microsoft.com/java/api/overview/azure/identity-readme).
+Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format `https://\<your-key-vault-name\>.vault.azure.net` erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](/java/api/com.azure.identity.defaultazurecredential) verwendet, mit der derselbe Code in verschiedenen Umgebungen mit unterschiedlichen Optionen zum Bereitstellen von Identitäten verwendet werden kann. Weitere Informationen finden Sie unter der [DefaultAzureCredential-Authentifizierung](/java/api/overview/azure/identity-readme).
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");

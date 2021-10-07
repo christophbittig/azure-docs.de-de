@@ -1,7 +1,6 @@
 ---
 title: 'Erstellen und Abrufen der Attribute eines verwalteten Schlüssels in Azure Key Vault: Azure PowerShell'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Azure PowerShell einen verwalteten Schlüssel in Azure Key Vault festlegen und den Schlüssel daraus abrufen.
-services: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 01/26/2021
@@ -11,12 +10,12 @@ ms.subservice: keys
 tags:
 - azure-resource-manager
 ms.custom: devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 6f2588ce3dc2add87b845d5c4ff6255171b6af08
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 0658d715c7d7b2e7a34cd8fbd9ec3f76d9a67d10
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670012"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128550440"
 ---
 # <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen eines verwalteten Schlüssels aus Azure Key Vault mithilfe von PowerShell
 
@@ -56,7 +55,7 @@ Erstellen Sie mithilfe des Azure PowerShell-Cmdlets [New-AzKeyVaultManagedHsm](
 - Name des verwalteten HSM: Eine Zeichenfolge mit 3 bis 24 Zeichen, die nur Zahlen (0–9), Buchstaben (a–z, A–Z) und Bindestriche (-) enthalten darf.
 
   > [!Important]
-  > Jedes verwaltete HSM muss einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen „<your-unique-managed-hsm-name>“ durch den Namen Ihres verwalteten HSM.
+  > Jedes verwaltete HSM muss einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen \<your-unique-managed-hsm-name\> durch den Namen Ihres verwalteten HSM.
 
 - Ressourcengruppennamen: **myResourceGroup**
 - Standort: **EastUS**

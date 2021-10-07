@@ -1,19 +1,20 @@
 ---
-title: 'Azure CLI-Beispiele: Azure Database for MariaDB'
+title: 'Azure CLI-Beispiele: Azure Database for MariaDB | Microsoft-Dokumentation'
 description: Dieser Artikel führt die Azure CLI-Codebeispiele auf, die für die Interaktion mit Azure Database for MariaDB verfügbar sind.
 author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc, devx-track-azurecli
-ms.date: 3/18/2020
-ms.openlocfilehash: aa9efba1c49063d40b4df0444fb3bc63b124a0a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-, seo-azure-cli
+ms.date: 09/17/2021
+Keywords: Azure CLI-Beispiele, Azure CLI-Codebeispiele, Azure CLI-Skriptbeispiele
+ms.openlocfilehash: d17c08503d16a4d36180eb1a34f47d6144f34a67
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664598"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615775"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>Azure CLI-Beispiele für Azure Database for MariaDB 
 Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Database for MariaDB.

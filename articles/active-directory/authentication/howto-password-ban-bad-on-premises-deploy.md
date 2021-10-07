@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81e40a295d9572fb38a1289d4bdf661095b9ca7a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2bb017cd4532d4739b563d4a22a50a731268407f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449121"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759717"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -95,6 +95,9 @@ Es gelten die folgenden zentralen Anforderungen:
     | --- | --- |
     |`https://login.microsoftonline.com`|Authentifizierungsanforderungen|
     |`https://enterpriseregistration.windows.net`|Funktion für Azure AD-Kennwortschutz|
+
+> [!NOTE]
+> Einige Endpunkte (z. B. der CRL-Endpunkt) werden in diesem Artikel nicht behandelt. Eine Liste aller unterstützten Endpunkte finden Sie unter [Microsoft 365 allgemein und Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online).
 
 ### <a name="azure-ad-password-protection-dc-agent"></a>Azure AD-Kennwortschutz-DC-Agent
 

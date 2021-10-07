@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: eee7204413face46870de049b38a79061de28347
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 754a4540bc7164e672abd4fc81d8ecb86e2359a9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929793"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737351"
 ---
 # <a name="get-started-with-azure-application-consistent-snapshot-tool"></a>Erste Schritte mit dem Tool für konsistente Momentaufnahmen in Azure-Anwendungen
 
@@ -164,7 +164,7 @@ In den folgenden Anleitungen wird die Nutzung der Momentaufnahmetools veranschau
 
 - [Voraussetzungen für Speichermomentaufnahmen](azacsnap-installation.md#prerequisites-for-installation)
   - [Aktivieren der Kommunikation mit dem Speicher](azacsnap-installation.md#enable-communication-with-storage)
-  - [Aktivieren der Kommunikation mit SAP HANA](azacsnap-installation.md#enable-communication-with-sap-hana)
+  - [Aktivieren der Kommunikation mit der Datenbank](azacsnap-installation.md#enable-communication-with-database)
 - [Manuelles Erstellen von Momentaufnahmen](azacsnap-tips.md#take-snapshots-manually)
 - [Einrichten von automatischen Momentaufnahmesicherungen](azacsnap-tips.md#setup-automatic-snapshot-backup)
 - [Überwachen der Momentaufnahmen](azacsnap-tips.md#monitor-the-snapshots)

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1131b42b58e1ed751a7563b4c59e71981b722305
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0d95def7048b3077232bb728a97c28107ec80313
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643379"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128654463"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>Tutorial: Erstellen einer Instanz von Azure Database for MySQL Flexible Server (Vorschau) mit App Services-Web-App im virtuellen Netzwerk
 
@@ -36,7 +36,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 Für den Artikel müssen Sie mindestens Version 2.0 der Azure-Befehlszeilenschnittstelle lokal ausführen. Führen Sie den Befehl `az --version` aus, um die installierte Version anzuzeigen. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
@@ -89,7 +89,7 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 
 > [!NOTE]
 > - Verwenden Sie für das Argument „--location“ den gleichen Standort wie für die Datenbank im vorherigen Abschnitt.
-> - Ersetzen Sie _&lt;app-name>_ in ganz Azure durch einen eindeutigen Namen (der Serverendpunkt ist https://\<app-name>.azurewebsites.net). Gültige Zeichen für <app-name> sind A-Z, 0-9 und der Bindestrich (-). Ein bewährtes Muster ist eine Kombination aus Ihrem Firmennamen und einer App-ID.
+> - Ersetzen Sie _\<app-name\>_ durch einen innerhalb von Azure eindeutigen Namen. (Der Serverendpunkt ist `https://\<app-name>.azurewebsites.net`.) Zulässige Zeichen für \<app-name\> sind A-Z, 0-9 und -. Ein bewährtes Muster ist eine Kombination aus Ihrem Firmennamen und einer App-ID.
 > - Im Basic-Tarif von App Service wird die VNet-Integration nicht unterstützt. Verwenden Sie den Standard- oder Premium-Tarif. 
 
 Durch diesen Befehl werden folgende Aktionen ausgeführt, was einige Minuten dauern kann:

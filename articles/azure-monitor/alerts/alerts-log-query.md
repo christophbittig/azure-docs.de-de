@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: e15b3f81cf5f29efa739939fe29df25f338187cc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 82f40d33d0465a7981105472ccd0487e7e24da80
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475256"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635126"
 ---
 # <a name="optimizing-log-alert-queries"></a>Optimieren von Protokollwarnungsabfragen
 In diesem Artikel wird beschrieben, wie Abfragen für [Protokollwarnungen](./alerts-unified-log.md) zum Erzielen optimaler Leistung geschrieben und konvertiert werden. Optimierte Abfragen verringern die Latenz und die Auslastung durch Warnungen, die häufig ausgeführt werden.

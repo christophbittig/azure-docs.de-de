@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 0ab04c21cb904baf7ede72fd69f6d6b8375b07cc
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 872f6efb6cc8df8ed63fec23af3807a18dde6201
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289893"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708478"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Tutorial: Konfigurieren eines virtuellen Netzwerkgateways für ExpressRoute mit dem Azure-Portal
 > [!div class="op_single_selector"]
@@ -87,9 +87,10 @@ Sie können sich ein [Video](https://azure.microsoft.com/documentation/videos/az
     | Virtuelles Netzwerk | Wählen Sie *TestVNet* aus. |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**.|
     | Name der öffentlichen IP-Adresse | Geben Sie einen Namen für die öffentliche IP-Adresse ein. |
+    | SKU der öffentlichen IP-Adresse | Geben Sie eine SKU für die öffentliche IP-Adresse ein. Wählen Sie für ein Gateway mit dualem Stapel *Standard* aus. |
 
     > [!IMPORTANT]
-    > Falls Sie planen, IPv6-basiertes privates Peering über ExpressRoute zu verwenden, helfen Ihnen die Informationen in der [PowerShell-Dokumentation](./expressroute-howto-add-gateway-resource-manager.md) weiter. Darin wird beschrieben, wie Sie Ihr Gateway mit einer öffentlichen IP-Adresse vom Typ „Standard, Statisch“ erstellen.
+    > Falls Sie planen, IPv6-basiertes privates Peering über ExpressRoute zu verwenden, erstellen Sie Ihr Gateway unbedingt mit einer öffentlichen IP-Adresse vom Typ „Standard, Statisch“.
     > 
     > 
 

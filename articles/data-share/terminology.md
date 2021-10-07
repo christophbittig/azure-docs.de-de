@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a02624f4e5cf3ebbcd2f476372707f58c1d99f69
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "73468555"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664065"
 ---
 # <a name="azure-data-share-concepts"></a>Azure Data Share-Konzepte 
 
@@ -27,7 +27,7 @@ Ein Datenconsumer ist die Organisation, die Daten von einem Datenanbieter empfä
 
 ## <a name="data-share"></a>Datenfreigabe
 
-Eine Datenfreigabe ist eine Gruppe von Datasets, die als einzelne Entität freigegeben werden. Die Datasets können aus einer Reihe von Azure-Datenquellen stammen, die von Azure Data Share unterstützt werden. Zurzeit unterstützt Azure Data Share Azure Blob Storage und Azure Data Lake Store. 
+Eine Datenfreigabe ist eine Gruppe von Datasets, die als einzelne Entität freigegeben werden. Die Datasets können aus einer Reihe von Azure-Datenquellen stammen, die von Azure Data Share unterstützt werden. Derzeit von Azure Data Share [unterstützte Datenspeicher](supported-data-stores.md#supported-data-stores). 
 
 ## <a name="share-subscription"></a>Freigabeabonnement 
 

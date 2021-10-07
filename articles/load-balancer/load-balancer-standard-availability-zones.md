@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: dfec3e6305b6b955cfb7b2cfd787507db36ff6ba
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 87a7d10c9748a2e173d8f43dcca3611666277792
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213595"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653703"
 ---
 # <a name="load-balancer-and-availability-zones"></a>Load Balancer und Verfügbarkeitszonen
 
@@ -57,6 +57,10 @@ Für ein öffentliches Load Balancer-Front-End fügen Sie der öffentlichen IP-A
 
 Für ein internes Load Balancer-Front-End fügen Sie der internen Load Balancer-Front-End-IP-Konfiguration einen **zones**-Parameter hinzu. Ein zonales Front-End sichert eine IP-Adresse in einem Subnetz für eine bestimmte Zone zu.
 
+## <a name="non-zonal"></a>Nicht zonal
+
+Load Balancer können auch in einer nicht zonalen Konfiguration mithilfe eines Front-Ends ohne Zone (öffentliche IP-Adresse oder öffentliches IP-Adressenpräfix) erstellt werden.  Diese Option bietet keine Garantie für Redundanz. Beachten Sie, dass alle öffentlichen IP-Adressen, die von der Basic-SKU auf die Standard-SKU [geupgradet](https://docs.microsoft.com/azure/virtual-network/public-ip-upgrade-portal) werden, den Typ „no-zone“ haben.
+
 ## <a name="design-considerations"></a><a name="design"></a> Überlegungen zum Entwurf
 
 Nachdem Sie nun die Zoneneigenschaften für Load Balancer Standard verstanden haben, sind die folgenden Entwurfsüberlegungen beim Entwerfen von Hochverfügbarkeit möglicherweise hilfreich.
@@ -67,6 +71,14 @@ Nachdem Sie nun die Zoneneigenschaften für Load Balancer Standard verstanden ha
 - Ein **zonales** Front-End ist eine Reduzierung des Diensts auf eine einzelne Zone und von der jeweiligen Zone abhängig. Wenn die Zone, in der sich Ihre Bereitstellung befindet, ausfällt, wird dies von der Bereitstellung nicht überstanden.
 
 Es wird empfohlen, für Produktionsworkloads einen zonenredundanten Load Balancer zu verwenden.
+
+### <a name="multiple-frontends"></a>Mehrere Front-Ends
+
+Mithilfe mehrerer Front-Ends können Sie einen Lastenausgleich für Datenverkehr auf mehrere Ports und/oder IP-Adressen ermöglichen.  Beim Entwerfen Ihrer Architektur ist es wichtig, die Art und Weise zu berücksichtigen, wie Zonenredundanz und mehrere Front-Ends interagieren können.  Beachten Sie, dass alle IP-Adressen, die als Front-Ends zugewiesen sind, zonenredundant sein müssen, wenn das Ziel ist, dass jedes Front-End immer ausfallsicher ist.   Wenn eine Gruppe von Front-Ends einer einzelnen Zone zugeordnet werden soll, muss jede IP-Adresse für diese Gruppe dieser spezifischen Zone zugeordnet werden.  Es ist nicht erforderlich, für jede Zone einen Lastenausgleich zu haben. Stattdessen könnte jedes zonale Front-End (oder die Gruppe zonaler Front-Ends) virtuellen Computern im Back-End-Pool zugeordnet werden, die Teil dieser spezifischen Verfügbarkeitszone sind.
+
+### <a name="transition-between-regional-zonal-models"></a>Übergang zwischen regionalen zonalen Modellen
+
+Wenn eine Region um [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) erweitert wird, bleiben alle vorhandenen Front-End-IP-Adressen nicht zonal. Um sicherzustellen, dass Ihre Architektur die neuen Zonen nutzen kann, wird empfohlen, neue Front-End-IP-Adressen zu erstellen und die entsprechenden Regeln und Konfigurationen zu replizieren, um diese neuen öffentlichen IP-Adressen zu nutzen.
 
 ### <a name="control-vs-data-plane-implications"></a>Auswirkungen auf Steuerungsebene und Datenebene
 
@@ -79,7 +91,6 @@ Informationen zur Verbesserung der Resilienz Ihrer Anwendung in Ausfallszenarien
 ## <a name="limitations"></a>Einschränkungen
 
 * Zonen können nach der Erstellung nicht geändert, aktualisiert oder für die Ressource erstellt werden.
-
 * Nach der Erstellung kann für Ressourcen kein Update von der zonalen auf die zonenredundante Einstellung oder umgekehrt ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

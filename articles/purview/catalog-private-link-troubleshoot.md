@@ -6,18 +6,20 @@ ms.author: zeinam
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 09/02/2021
-ms.openlocfilehash: 89627b97a5c2e8ae068db18583fab38aeb6fe5f6
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/27/2021
+ms.openlocfilehash: c077eb0c1639089fcc7196693a617e32c01d9a9a
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434554"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230454"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>Problembehandlung bei der Konfiguration privater Endpunkte für Purview-Konten
 
-Dieser Leitfaden fasst bekannte Einschränkungen im Zusammenhang mit der Verwendung privater Endpunkte für Azure Purview zusammen und enthält eine Liste der Schritte und Lösungen zum Beheben einiger der häufigsten relevanten Probleme. 
+> [!IMPORTANT]
+> Wenn Sie einen privaten _Portalendpunkt_ für Ihr Purview-Konto **vor dem 27. September 2021 um 15:30 UTC** erstellt haben, müssen Sie die erforderlichen Maßnahmen ergreifen, wie in [DNS für private Portalendpunkte neu konfigurieren](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints) beschrieben. **Diese Aktionen müssen vor dem 11. Oktober 2021 abgeschlossen sein. Wenn dies nicht geschieht, funktionieren vorhandene private Endpunkte im Portal nicht mehr**.
 
+Dieser Leitfaden fasst bekannte Einschränkungen im Zusammenhang mit der Verwendung privater Endpunkte für Azure Purview zusammen und enthält eine Liste der Schritte und Lösungen zum Beheben einiger der häufigsten relevanten Probleme. 
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 
@@ -44,7 +46,7 @@ Dieser Leitfaden fasst bekannte Einschränkungen im Zusammenhang mit der Verwend
 
 2. Wenn der private Endpunkt für das Portal bereitgestellt wird, stellen Sie sicher, dass Sie auch den privaten Endpunkt für das Konto bereitstellen.
 
-3. Wenn ein privater Endpunkt für das Portal bereitgestellt und die Einstellung für den Zugriff auf das öffentliche Netzwerk in Ihrem Azure Purview-Konto auf „Verweigern“ festgelegt ist, stellen Sie sicher, dass Sie Azure Purview Studio über das interne Netzwerk starten. 
+3. Wenn ein privater Endpunkt für das Portal bereitgestellt und die Einstellung für den Zugriff auf das öffentliche Netzwerk in Ihrem Azure Purview-Konto auf „Verweigern“ festgelegt ist, stellen Sie sicher, dass Sie [Azure Purview Studio](https://web.purview.azure.com/resource/) über das interne Netzwerk starten.
   <br>
     - Sie können zum Abfragen von `web.purview.azure.com` das Befehlszeilentool **NSlookup.exe** verwenden, um die ordnungsgemäße Namensauflösung zu überprüfen. Das Ergebnis muss eine private IP-Adresse zurückgeben, die zum privaten Endpunkt für das Portal gehört. 
     - Beim Überprüfen der Netzwerkkonnektivität können Sie alle Netzwerktesttools verwenden, um die ausgehende Konnektivität mit dem Endpunkt `web.purview.azure.com` an Port **443** zu testen. Die Verbindung muss erfolgreich sein.    
@@ -84,7 +86,7 @@ Dieser Leitfaden fasst bekannte Einschränkungen im Zusammenhang mit der Verwend
     TcpTestSucceeded : True
     ```
     
-5. Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, stellen Sie sicher, dass Sie die neueste Version der selbstgehosteten Integration Runtime aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) herunterladen und installieren.
+5. Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, stellen Sie sicher, dass Sie die neueste Version der selbstgehosteten Integration Runtime aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) herunterladen und installieren.
    
 6. Testen Sie die Netzwerkkonnektivität und Namensauflösung der selbstgehosteten Integration Runtime für den Purview-Endpunkt.
 
@@ -136,18 +138,18 @@ Dieser Leitfaden fasst bekannte Einschränkungen im Zusammenhang mit der Verwend
 
 9.  Wenn sich Datenquellen im lokalen Netzwerk befinden, überprüfen Sie Ihre DNS-Weiterleitungskonfiguration. Testen Sie die Namensauflösung innerhalb desselben Netzwerks, in dem sich Datenquellen befinden, für die selbstgehostete Integration Runtime, Azure Purview-Endpunkte und verwaltete Ressourcen. Es wird erwartet, dass über die DNS-Abfrage für jeden Endpunkt eine gültige private IP-Adresse abgerufen wird.
     
-    Weitere Informationen finden Sie in den Szenarios [Virtual Network-Workloads ohne benutzerdefinierten DNS-Server](../private-link/private-endpoint-dns.md#virtual-network-workloads-without-custom-dns-server) und [Lokale Workloads mit DNS-Weiterleitung](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder) unter [DNS-Konfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md).
+    Weitere Informationen finden Sie in den Szenarien [Virtual Network-Workloads ohne benutzerdefinierten DNS-Server](../private-link/private-endpoint-dns.md#virtual-network-workloads-without-custom-dns-server) und [Lokale Workloads mit DNS-Weiterleitung](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder) unter [DNS-Konfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md).
 
 10. Wenn Verwaltungscomputer und selbstgehostete Integration Runtime-VMs im lokalen Netzwerk bereitgestellt werden und Sie die DNS-Weiterleitung in Ihrer Umgebung eingerichtet haben, überprüfen Sie die DNS-Einstellungen und Netzwerkeinstellungen in Ihrer Umgebung. 
 
-11. Wenn der private Erfassungsendpunkt verwendet wird, stellen Sie sicher, dass die selbstgehostete Integration Runtime erfolgreich im Purview-Konto registriert und sowohl auf der selbstgehosteten Integration Runtime-VM als auch in Azure Purview Studio als ausgeführt angezeigt wird.
+11. Wenn der private Erfassungsendpunkt verwendet wird, stellen Sie sicher, dass die selbstgehostete Integration Runtime erfolgreich im Purview-Konto registriert und sowohl auf der selbstgehosteten Integration Runtime-VM als auch in [Purview Studio](https://web.purview.azure.com/resource/) als ausgeführt angezeigt wird.
 
 ## <a name="common-errors-and-messages"></a>Häufige Fehler und Meldungen
 
 ### <a name="issue"></a>Problem 
 Beim Durchführen einer Überprüfung wird möglicherweise die folgende Fehlermeldung angezeigt:
 
-  ```Internal system error. Please contact support with correlationId:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx System Error, contact support.```
+`Internal system error. Please contact support with correlationId:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx System Error, contact support.`
 
 ### <a name="cause"></a>Ursache 
 Dies kann ein Hinweis auf Probleme im Zusammenhang mit der Konnektivität oder Namensauflösung zwischen dem virtuellen Computer, auf dem die selbstgehostete Integration Runtime ausgeführt wird, und dem Speicherkonto oder Event Hub der verwalteten Azure Purview-Ressourcen sein.
@@ -159,10 +161,10 @@ Dies kann ein Hinweis auf Probleme im Zusammenhang mit der Konnektivität oder N
 ### <a name="issue"></a>Problem 
 Beim Durchführen einer neuen Überprüfung wird möglicherweise die folgende Fehlermeldung angezeigt:
 
-  ```message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)```
+  `message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)`
 
 ### <a name="cause"></a>Ursache 
-Dies kann ein Hinweis auf die Ausführung einer älteren Version der selbstgehosteten Integration Runtime sein. Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, müssen Sie die selbstgehostete Integration Runtime-Version 5.9.7885.3 verwenden.
+Dies kann ein Hinweis auf die Ausführung einer älteren Version der selbstgehosteten Integration Runtime sein. Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, müssen Sie die Version 5.9.7885.3 der selbstgehosteten Integration Runtime verwenden.
 
 ### <a name="resolution"></a>Lösung 
 Führen Sie ein Upgrade der selbstgehosteten Integration Runtime auf Version 5.9.7885.3 durch.

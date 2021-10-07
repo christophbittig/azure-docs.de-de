@@ -11,13 +11,13 @@ ms.topic: quickstart
 author: misliplavo
 ms.author: mlazic
 ms.reviewer: mathoma
-ms.date: 12/14/2018
-ms.openlocfilehash: 31cdd093db7f687ecf1e35e655cff469a03a8fec
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.date: 09/13/2021
+ms.openlocfilehash: f683bbd008e47a154fac11d89e8d06f0e07b87f2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690377"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674208"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Schnellstart: Wiederherstellen einer Datenbank in Azure SQL Managed Instance mit SSMS
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -44,7 +44,79 @@ In dieser Schnellstartanleitung gilt Folgendes:
 > [!NOTE]
 > Weitere Informationen zum Sichern und Wiederherstellen einer SQL Server-Datenbank mithilfe von Azure Blob Storage und einem [SAS-Schlüssel (Shared Access Signature)](../../storage/common/storage-sas-overview.md) finden Sie unter [SQL Server-Sicherung über URLs](/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
-## <a name="restore-from-a-backup-file"></a>Wiederherstellen aus einer Sicherungsdatei
+## <a name="restore-from-a-backup-file-using-the-restore-wizard"></a>Wiederherstellen aus einer Sicherungsdatei mithilfe des Wiederherstellungs-Assistenten
+
+Führen Sie in SSMS die folgenden Schritte aus, um die Wide World Importers-Datenbank mithilfe des Wiederherstellungs-Assistenten in SQL Managed Instance wiederherzustellen. Die Datenbanksicherungsdatei ist in einem vorkonfigurierten Azure Blob Storage-Konto gespeichert.
+
+1. Öffnen Sie SSMS, und stellen Sie eine Verbindung mit Ihrer verwalteten Instanz her.
+2. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Datenbanken der verwalteten Instanz, und wählen Sie **Datenbank wiederherstellen** aus, um den Wiederherstellungs-Assistenten zu öffnen.
+
+    ![Screenshot: Öffnen des Wiederherstellungs-Assistenten](./media/restore-sample-database-quickstart/restore-wizard-start.png)
+
+3. Wählen Sie im neuen Wiederherstellungs-Assistenten die Auslassungspunkte ( **...** ) aus, um die Quelle der zu verwendenden Sicherungsdatei auszuwählen.
+
+    ![Screenshot: Öffnen eines neuen Fensters des Wiederherstellungs-Assistenten](./media/restore-sample-database-quickstart/new-restore-wizard.png)
+
+4. Wählen Sie unter **Sicherungsmedien auswählen** die Option **Hinzufügen** aus. Unter **Sicherungsmedientyp** wird nur die Option **URL** angezeigt, da dies der einzige unterstützte Quelltyp ist. Klicken Sie auf **OK**.
+
+    ![Screenshot: Auswählen des Geräts](./media/restore-sample-database-quickstart/restore-wizard-select-device.png)
+
+5. Unter **Speicherort für Sicherungsdatei auswählen** können Sie zwischen drei Optionen wählen, um Informationen zum Speicherort von Sicherungsdateien anzugeben:
+    - Wählen Sie in der Dropdownliste einen vorab registrierten Speichercontainer aus.
+    - Geben Sie einen neuen Speichercontainer und eine SAS (Shared Access Signature) ein. (Neue SQL-Anmeldeinformationen werden für Sie registriert.) 
+    - Wählen Sie **Hinzufügen** aus, um weitere Speichercontainer aus Ihrem Azure-Abonnement zu durchsuchen.
+
+    ![Screenshot: Auswählen des Speicherorts der Sicherungsdatei](./media/restore-sample-database-quickstart/restore-wizard-backup-file-location.png)
+
+    Führen Sie die nächsten Schritte aus, wenn Sie die Schaltfläche **Hinzufügen** auswählen. Wenn Sie den Speicherort der Sicherungsdatei mithilfe einer anderen Methode angeben, fahren Sie mit Schritt 12 fort.
+6. Wählen Sie unter **Verbindung mit einem Microsoft-Abonnement herstellen** die Option **Anmelden** aus, um sich bei Ihrem Azure-Abonnement anzumelden:
+
+    ![Screenshot: Anmeldung beim Azure-Abonnement](./media/restore-sample-database-quickstart/restore-wizard-connect-subscription-sign-in.png)
+
+7. Melden Sie sich bei Ihrem Microsoft-Konto an, um die Sitzung in Azure zu initiieren:
+
+    ![Screenshot: Anmelden bei der Azure-Sitzung](./media/restore-sample-database-quickstart/restore-wizard-sign-in-session.png)
+
+8. Wählen Sie das Abonnement aus, in dem sich das Speicherkonto mit den Sicherungsdateien befindet:
+
+    ![Screenshot: Auswählen des Abonnements](./media/restore-sample-database-quickstart/restore-wizard-select-subscription.png)
+
+9. Wählen Sie das Speicherkonto aus, in dem sich die Sicherungsdateien befinden:
+
+    ![Screenshot: Speicherkonto](./media/restore-sample-database-quickstart/restore-wizard-select-storage-account.png)
+
+10. Wählen Sie den Blobcontainer aus, in dem sich die Sicherungsdateien befinden:
+
+    ![Auswählen des Blobcontainers](./media/restore-sample-database-quickstart/restore-wizard-select-container.png)
+
+11. Geben Sie das Ablaufdatum der SAS-Richtlinie an, und wählen Sie **Anmeldeinformationen erstellen** aus. Eine SAS mit den richtigen Berechtigungen wird erstellt. Klicken Sie auf **OK**.
+
+    ![Screenshot: Generieren der SAS](./media/restore-sample-database-quickstart/restore-wizard-generate-shared-access-signature.png)
+
+12. Erweitern Sie im linken Bereich die Ordnerstruktur, um den Ordner anzuzeigen, in dem sich die Sicherungsdateien befinden. Wählen Sie alle Sicherungsdateien aus, die mit dem wiederherzustellenden Sicherungssatz verknüpft sind, und wählen Sie dann **OK** aus:
+
+    ![Screenshot: Auswahl der Sicherungsdatei](./media/restore-sample-database-quickstart/restore-wizard-backup-file-selection.png)
+
+    SSMS überprüft den Sicherungssatz. Der Vorgang dauert abhängig von der Größe des Sicherungssatzes bis zu einigen Sekunden.
+
+13. Wurde die Sicherung überprüft, geben Sie den Namen der Zieldatenbank an, oder übernehmen Sie den Datenbanknamen des Sicherungssatzes, und klicken Sie dann auf **OK**:
+
+    ![Screenshot: Starten der Wiederherstellung](./media/restore-sample-database-quickstart/restore-wizard-start-restore.png)
+
+    Die Wiederherstellung wird gestartet. Die Dauer hängt von der Größe des Sicherungssatzes ab.
+
+    ![Screenshot: Ausführen der Wiederherstellung](./media/restore-sample-database-quickstart/restore-wizard-running-restore.png)
+
+14. Nach Abschluss der Wiederherstellung wird in einem Dialogfeld angezeigt, dass sie erfolgreich war. Klicken Sie auf **OK**.
+
+    ![Screenshot: Abgeschlossene Wiederherstellung](./media/restore-sample-database-quickstart/restore-wizard-finish-restore.png)
+
+15. Überprüfen Sie die wiederhergestellte Datenbank im Objekt-Explorer:
+
+    ![Screenshot: Wiederhergestellte Datenbank](./media/restore-sample-database-quickstart/restore-wizard-restored-database.png)
+
+
+## <a name="restore-from-a-backup-file-using-t-sql"></a>Wiederherstellen aus einer Sicherungsdatei mithilfe von T-SQL
 
 Führen Sie in SQL Server Management Studio die folgenden Schritte aus, um die Wide World Importers-Datenbank in SQL Managed Instance wiederherzustellen. Die Datenbanksicherungsdatei ist in einem vorkonfigurierten Azure Blob Storage-Konto gespeichert.
 
@@ -94,7 +166,7 @@ Führen Sie in SQL Server Management Studio die folgenden Schritte aus, um die W
 7. Nachdem die Wiederherstellung abgeschlossen wurde, zeigen Sie die Datenbank im Objekt-Explorer an. Mithilfe der Ansicht [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) können Sie überprüfen, ob die Datenbankwiederherstellung abgeschlossen wurde.
 
 > [!NOTE]
-> Der Vorgang der Datenbankwiederherstellung ist asynchron und wiederholbar. Möglicherweise erhalten Sie eine Fehlermeldung in SQL Server Management Studio, falls die Verbindung unterbrochen oder ein Timeout überschritten wird. Azure SQL-Datenbank versucht weiterhin, die Datenbank im Hintergrund wiederherzustellen, und Sie können den Wiederherstellungsfortschritt mithilfe der Ansichten [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) und [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) verfolgen.
+> Der Vorgang der Datenbankwiederherstellung ist asynchron und wiederholbar. Möglicherweise erhalten Sie eine Fehlermeldung in SQL Server Management Studio, falls die Verbindung unterbrochen oder ein Timeout überschritten wird. Azure SQL Managed Instance versucht weiterhin, die Datenbank im Hintergrund wiederherzustellen, und Sie können den Wiederherstellungsfortschritt mithilfe der Ansichten [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) und [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nachverfolgen.
 > In einigen Phasen des Wiederherstellungsprozesses wird ein eindeutiger Bezeichner anstelle des tatsächlichen Datenbanknamens in den Systemansichten angezeigt. Informationen zum unterschiedlichen Verhalten bei der `RESTORE`-Anweisung finden Sie [hier](./transact-sql-tsql-differences-sql-server.md#restore-statement).
 
 ## <a name="next-steps"></a>Nächste Schritte

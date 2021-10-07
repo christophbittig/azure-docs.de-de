@@ -7,12 +7,12 @@ ms.date: 04/27/2021
 ms.service: confidential-ledger
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 552e8a4565710cb22f65ee5abf493c5471d89f3c
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 1fd69155a6131565b81ba9684e5c2c077a5420d9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113585517"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671524"
 ---
 # <a name="quickstart-microsoft-azure-confidential-ledger-client-library-for-python"></a>Schnellstart: Microsoft Azure Confidential Ledger Clientbibliothek für Python
 
@@ -99,7 +99,7 @@ credential = DefaultAzureCredential()
 Wir schließen das Setup ab, indem wir einige Variablen für die Verwendung in Ihrer Anwendung festlegen: die Ressourcengruppe (myResourceGroup), den Namen des Ledgers, den Sie erstellen möchten, und zwei URLs, die von der Clientbibliothek der Datenebene verwendet werden sollen.
 
   > [!Important]
-  > Jedes Ledger muss einen weltweit eindeutigen Namen haben. Ersetzen Sie in dem folgenden Beispiel „<your-unique-keyvault-name>“ durch den Namen Ihres Ledgers.
+  > Jedes Ledger muss einen weltweit eindeutigen Namen haben. Ersetzen Sie \<your-unique-keyvault-name\> im folgenden Beispiel durch den Namen Ihres Ledgers.
 
 ```python
 resource_group = "myResourceGroup"

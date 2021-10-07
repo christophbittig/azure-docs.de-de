@@ -4,13 +4,13 @@ description: Beschreibt Bicep-Vergleichsoperatoren, die Werte vergleichen.
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: db9c01cf87fcf2c268e9685589bf13674af27184
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/07/2021
+ms.openlocfilehash: 1a28da26a3c97982bb0e06deebae6ae68b1eb7d9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026527"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744415"
 ---
 # <a name="bicep-comparison-operators"></a>Bicep-Vergleichsoperatoren
 
@@ -61,7 +61,7 @@ output stringGtE bool = firstString >= secondString
 
 Ausgabe des Beispiels:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ---- |
 | `intGtE` | boolean | true |
 | `stringGtE` | boolean | true |
@@ -102,7 +102,7 @@ Ausgabe des Beispiels:
 
 Durch **e** in **bend** wird die erste Zeichenfolge größer.
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ---- |
 | `intGt` | boolean | true |
 | `stringGt` | boolean | true |
@@ -141,7 +141,7 @@ output stringLtE bool = firstString <= secondString
 
 Ausgabe des Beispiels:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ---- |
 | `intLtE` | boolean | true |
 | `stringLtE` | boolean | true |
@@ -182,7 +182,7 @@ Ausgabe des Beispiels:
 
 Die Zeichenfolge ist `true`, da Kleinbuchstaben kleiner als Großbuchstaben sind.
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ---- |
 | `intLt` | boolean | true |
 | `stringLt` | boolean | true |
@@ -225,11 +225,87 @@ output boolEqual bool = firstBool == secondBool
 
 Ausgabe des Beispiels:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ---- |
 | `intEqual` | boolean | true |
 | `stringEqual` | boolean | true |
 | `boolEqual` | boolean | true |
+
+Beim Vergleichen von Arrays müssen die beiden Arrays die gleichen Elemente und die gleiche Reihenfolge aufweisen. Die Arrays müssen nicht einander zugewiesen werden.
+
+```bicep
+var array1 = [
+  1
+  2
+  3
+]
+
+var array2 = [
+  1
+  2
+  3
+]
+
+var array3 = array2
+
+var array4 = [
+  3
+  2
+  1
+]
+
+output sameElements bool = array1 == array2 // returns true because arrays are defined with same elements
+output assignArray bool = array2 == array3 // returns true because one array was defined as equal to the other array
+output differentOrder bool = array4 == array1 // returns false because order of elements is different
+```
+
+Ausgabe des Beispiels:
+
+| Name | Type | Wert |
+| ---- | ---- | ---- |
+| sameElements | bool | true |
+| assignArray | bool | true |
+| differentOrder | bool | false |
+
+Beim Vergleichen von Objekten müssen die Eigenschaftennamen und Werte identisch sein. Die Eigenschaften müssen nicht in der gleichen Reihenfolge definiert werden.
+
+```bicep
+var object1 = {
+  prop1: 'val1'
+  prop2: 'val2'
+}
+
+var object2 = {
+  prop1: 'val1'
+  prop2: 'val2'
+}
+
+var object3 = {
+  prop2: 'val2'
+  prop1: 'val1'
+}
+
+var object4 = object3
+
+var object5 = {
+  prop1: 'valX'
+  prop2: 'valY'
+}
+
+output sameObjects bool = object1 == object2 // returns true because both objects defined with same properties
+output differentPropertyOrder bool = object3 == object2 // returns true because both objects have same properties even though order is different
+output assignObject bool = object4 == object1 // returns true because one object was defined as equal to the other object
+output differentValues bool = object5 == object1 // returns false because values are different
+```
+
+Ausgabe des Beispiels:
+
+| Name | Type | Wert |
+| ---- | ---- | ---- |
+| sameObjects | bool | true |
+| differentPropertyOrder | bool | true |
+| assignObject | bool | true |
+| differentValues | bool | false |
 
 ## <a name="not-equal-"></a>Ungleich !=
 
@@ -269,11 +345,13 @@ output boolNotEqual bool = firstBool != secondBool
 
 Ausgabe des Beispiels:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ---- |
 | `intNotEqual` | boolean | true |
 | `stringNotEqual` | boolean | true |
 | `boolNotEqual` | boolean | true |
+
+Informationen zu Arrays und Objekten finden Sie in den Beispielen unter [Gleich ==](#equals-).
 
 ## <a name="equal-case-insensitive-"></a>Groß-/Kleinschreibung nicht berücksichtigt =~
 
@@ -283,7 +361,7 @@ Ignoriert Groß- und Kleinschreibung, um festzustellen, ob die beiden Werte glei
 
 ### <a name="operands"></a>Operanden
 
-| Operand | type | BESCHREIBUNG |
+| Operand | type | Beschreibung |
 | ---- | ---- | ---- |
 | `operand1`  | Zeichenfolge | Erste Zeichenfolge im Vergleich. |
 | `operand2`  | Zeichenfolge | Zweite Zeichenfolge im Vergleich. |
@@ -309,7 +387,7 @@ output strEqual2 bool = thirdString =~ fourthString
 
 Ausgabe des Beispiels:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ---- |
 | `strEqual1` | boolean | true |
 | `strEqual2` | boolean | false |
@@ -322,7 +400,7 @@ Ignoriert die Groß-/Schreibung, um zu bestimmen, ob die beiden Werte **nicht** 
 
 ### <a name="operands"></a>Operanden
 
-| Operand | type | BESCHREIBUNG |
+| Operand | type | Beschreibung |
 | ---- | ---- | ---- |
 | `operand1` | Zeichenfolge | Erste Zeichenfolge im Vergleich. |
 | `operand2` | Zeichenfolge | Zweite Zeichenfolge im Vergleich. |
@@ -348,7 +426,7 @@ output strEqual2 bool = thirdString !~ fourthString
 
 Ausgabe des Beispiels:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ---- |
 | `strNotEqual1` | boolean | true |
 | `strNotEqual2` | boolean | false |

@@ -4,13 +4,13 @@ description: Hier werden die für Azure Resource Manager-Bereitstellungen verfü
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: 80fc9e4e1285d86858a476feba30621a7afe1c79
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/10/2021
+ms.openlocfilehash: 13591112171919d6c58959c40dffa1340f3e8ebd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221038"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764312"
 ---
 # <a name="bicep-operators"></a>Bicep-Operatoren
 
@@ -38,7 +38,9 @@ Die nachstehenden Operatoren sind in absteigender Rangfolge aufgeführt (je höh
 | `?` `:` | Bedingter Ausdruck (ternär) | Von rechts nach links
 | `??` | Coalesce | Von links nach rechts
 
-Wenn Sie einen Ausdruck zwischen `(` und `)` einschließen, können Sie die Standardrangfolge des Bicep-Operators überschreiben. Beispielsweise wertet der Ausdruck x + y / z zuerst die Division und dann die Addition aus. Der Ausdruck (x + y) / z wertet jedoch die Addition zuerst und die Division danach aus.
+## <a name="parentheses"></a>Klammern
+
+Wenn Sie einen Ausdruck in Klammern einschließen, können Sie die Standardpriorität des Bicep-Operators außer Kraft setzen. Der Ausdruck `x + y / z` wertet zum Beispiel zuerst die Division und dann die Addition aus. Der Ausdruck `(x + y) / z` wertet jedoch zuerst die Addition und dann die Division aus.
 
 ## <a name="accessor"></a>Accessor
 
@@ -55,7 +57,7 @@ Die Accessoroperatoren werden verwendet, um auf geschachtelte Ressourcen und Eig
 
 Die Vergleichsoperatoren vergleichen Werte und geben entweder `true` oder `false` zurück.
 
-| Operator | Name | BESCHREIBUNG |
+| Operator | Name | Beschreibung |
 | ---- | ---- | ---- |
 | `>=` | [Größer oder gleich](./operators-comparison.md#greater-than-or-equal-) | Wertet aus, ob der erste Wert größer oder gleich dem zweiten Wert ist. |
 | `>`  | [Größer als](./operators-comparison.md#greater-than-) | Wertet aus, ob der erste Wert größer ist als der zweite Wert. |
@@ -74,7 +76,7 @@ Die logischen Operatoren werten boolesche Werte aus, geben Werte zurück, die un
 | ---- | ---- | ---- |
 | `&&` | [Und](./operators-logical.md#and-) | Gibt `true` zurück, wenn alle Werte WAHR sind. |
 | `||`| [Oder](./operators-logical.md#or-) | Gibt `true` zurück, wenn einer der beiden Werte WAHR ist. |
-| `!` | [Not](./operators-logical.md#not-) | Negiert einen booleschen Wert. |
+| `!` | [Not](./operators-logical.md#not-) | Negiert einen booleschen Wert. Nimmt einen Operanden. |
 | `??` | [Koaleszieren (COALESCE)](./operators-logical.md#coalesce-) | Gibt den ersten Wert zurück, der ungleich NULL ist. |
 | `?` `:` | [Bedingter Ausdruck](./operators-logical.md#conditional-expression--) | Wertet eine Bedingung auf WAHR oder FALSCH aus und gibt einen Wert zurück. |
 
@@ -88,8 +90,8 @@ Die numerischen Operatoren verwenden zur Ausführung von Berechnungen ganze Zahl
 | `/` | [Dividieren](./operators-numeric.md#divide-) | Dividiert eine ganze Zahl durch eine ganze Zahl. |
 | `%` | [Modulo](./operators-numeric.md#modulo-) | Dividiert eine ganze Zahl durch eine ganze Zahl und gibt den Rest zurück. |
 | `+` | [Add (Hinzufügen)](./operators-numeric.md#add-) | Addiert zwei ganze Zahlen. |
-| `-` | [Subtrahieren](./operators-numeric.md#subtract--) | Subtrahiert eine ganze Zahl von einer ganzen Zahl. |
-| `-` | [Minus](./operators-numeric.md#minus--) | Multipliziert eine ganze Zahl mit `-1`. |
+| `-` | [Subtrahieren](./operators-numeric.md#subtract--) | Subtrahiert eine Ganzzahl von einer anderen Ganzzahl. Benötigt zwei Operanden. |
+| `-` | [Minus](./operators-numeric.md#minus--) (unär) | Multipliziert eine ganze Zahl mit `-1`. Nimmt einen Operanden. |
 
 > [!NOTE]
 > Subtrahieren und Minus verwenden denselben Operator. Die Funktionalität ist unterschiedlich, weil Subtrahieren zwei Operanden und Minus einen Operanden verwendet.

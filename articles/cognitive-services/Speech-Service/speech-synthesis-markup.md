@@ -3,26 +3,26 @@ title: Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML
 titleSuffix: Azure Cognitive Services
 description: Verwenden der Markupsprache für Sprachsynthese zum Steuern der Aussprache und des Satzrhythmus in Text-zu-Sprache
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: b71d0d114388c25f3f14c85d37f0568ceed49337
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: a43758b1c20b3983b4b2c0920481549ddccb0328
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419328"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708850"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
 Speech Synthesis Markup Language (SSML) ist eine XML-basierte Markupsprache, die Entwicklern ermöglicht, anzugeben, wie der Eingabetext mithilfe des Sprachsynthesediensts in synthetisierte Sprache konvertiert werden soll. Verglichen mit Nur-Text ermöglicht SSML Entwicklern, die Tonhöhe, Aussprache, Sprechgeschwindigkeit, Lautstärke und mehr für die Ausgabe der Sprachsynthese zu optimieren. Die normale Interpunktion, z.B. das Pausieren nach einem Punkt, oder die Verwendung der korrekten Intonation, wenn ein Satz mit einem Fragezeichen endet, werden automatisch verarbeitet.
 
-Die Speech-Dienstimplementierung von SSML basiert auf der [Markupsprache für Sprachsynthese, Version 1.0](https://www.w3.org/TR/speech-synthesis) des World Wide Web Consortiums.
+Die Speech-Dienstimplementierung von SSML basiert auf der [Markupsprache für Sprachsynthese, Version 1.0](https://www.w3.org/TR/2004/REC-speech-synthesis-20040907/) des World Wide Web Consortiums.
 
 > [!IMPORTANT]
 > Chinesische, japanische und koreanische Zeichen zählen bei der Abrechnung jeweils als zwei Zeichen. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
@@ -127,6 +127,8 @@ Anpassungen der Sprechweise werden derzeit für folgende neuronale Stimmen unter
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
+* `en-US-SaraNeural`
+* `ja-JP-NanamiNeural`
 * `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
@@ -136,6 +138,7 @@ Anpassungen der Sprechweise werden derzeit für folgende neuronale Stimmen unter
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 * `zh-CN-XiaoruiNeural`
+* `zh-CN-XiaoshuangNeural`
 
 Die Intensität der Sprechweise kann weiter verändert werden, damit sie besser zu Ihrem Anwendungsfall passt. Sie können mit `styledegree` eine kräftigere oder sanftere Sprechweise angeben, um die Sprache ausdrucksstärker oder gedämpfter zu gestalten. Zurzeit werden Anpassungen in der Sprechweise der  neuronalen Stimmen für Chinesisch (Mandarin, vereinfacht) unterstützt.
 
@@ -183,6 +186,12 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 |                         | `style="assistant"`       | Herzlicher und zwangloser Ton für digitale Assistenten    |
 |                         | `style="newscast"`        | Gewandter und ungezwungener Ton für die Mitteilung allgemeiner Nachrichten   |
 | `en-US-GuyNeural`       | `style="newscast"`        | Formeller und professioneller Ton für Nachrichten |
+| `en-US-SaraNeural`      | `style="cheerful"`        | Positiver und fröhlicher Ton    |
+|                         | `style="sad"`             | Trauriger Ton   |
+|                         | `style="angry"`           | Wütender und verärgerter Ton   |
+| `ja-JP-NanamiNeural`    | `style="cheerful"`        | Positiver und fröhlicher Ton   |
+|                         | `style="chat"`            | Lockerer und zwangloser Ton   |
+|                         | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport    |
 | `pt-BR-FranciscaNeural` | `style="calm"`            | Kühle, gesammelte und gelassene Haltung beim Sprechen Ton, Tonhöhe und Intonation sind im Vergleich zu anderen Sprachtypen viel einheitlicher                                |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Formeller und professioneller Ton für Nachrichten |
 |                         | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport  |
@@ -243,6 +252,7 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 | `zh-CN-XiaoruiNeural`   | `style="sad"`             | Trauriger Ton mit höherer Tonhöhe, geringerer Intensität und geringerer stimmlicher Energie Häufige Indikatoren für diese Emotion wären Wimmern oder Weinen während der Rede         |
 |                         | `style="angry"`           | Wütender und verärgerter Ton mit geringerer Tonhöhe, höherer Intensität und höherer stimmlicher Energie Der Sprecher ist in einem Zustand, in dem er wütend, unzufrieden und beleidigt ist.       |
 |                         | `style="fearful"`         | Ängstlicher und nervöser Ton mit höherer Tonhöhe, höherer stimmlicher Energie und höherem Tempo Der Sprecher befindet sich in einem Zustand der Anspannung und Beunruhigung.                       |
+| `zh-CN-XiaoshuangNeural`   | `style="chat"` | Lockerer und zwangloser Ton |
 
 Verwenden Sie diese Tabelle, um die unterstützten Rollen und deren Definitionen zu überprüfen.
 
@@ -564,6 +574,9 @@ Wenn Sie die Aussprache mehrerer Entitäten definieren möchten, können Sie ein
 
 Das `lexicon`-Element enthält mindestens ein `lexeme`-Element. Jedes `lexeme`-Element enthält mindestens ein `grapheme`-Element und mindestens eines der Elemente `grapheme`, `alias` und `phoneme`. Das `grapheme`-Element enthält Text, der die <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">Orthografie</a> beschreibt. Mithilfe der `alias`-Elemente wird die Aussprache eines Akronyms oder eines abgekürzten Begriffs angegeben. Das `phoneme`-Element stellt Text bereit, der die Aussprache von `lexeme` beschreibt. Wenn die Elemente `alias` und `phoneme` mit demselben `grapheme`-Element bereitgestellt werden, weist `alias` eine höhere Priorität auf.
 
+> [!IMPORTANT]
+> Beim Element `lexeme` wird die Groß-/Kleinschreibung im benutzerdefinierten Lexikon beachtet. Wenn Sie beispielsweise nur ein Phonem für das `lexeme`„Hallo“ bereitstellen, funktioniert es nicht für das `lexeme` „hallo“.
+
 Das Lexikon enthält das erforderliche `xml:lang`-Attribut, um anzugeben, auf welches Gebietsschema es angewendet werden soll. Ein benutzerdefiniertes Lexikon ist standardmäßig auf ein einzelnes Gebietsschema beschränkt, sodass die Anwendung auf ein anderes Gebietsschema nicht funktioniert.
 
 Wichtig: Die Aussprache eines Ausdrucks kann mit dem benutzerdefinierten Lexikon nicht direkt festgelegt werden. Wenn Sie die Aussprache für ein Akronym oder einen abgekürzten Begriff festlegen möchten, müssen Sie zuerst einen Alias (`alias`) angeben und anschließend das Phonem (`phoneme`) diesem Alias (`alias`) zuordnen. Beispiel:
@@ -578,6 +591,8 @@ Wichtig: Die Aussprache eines Ausdrucks kann mit dem benutzerdefinierten Lexikon
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
   </lexeme>
 ```
+> [!Note]
+> Im internationalen phonetischen Alphabet (IPA) wird die Silbengrenze mit „.“ dargestellt.
 
 Sie können auch direkt ihren erwarteten `alias` für das Akronym oder einen abgekürzten Begriff angeben. Beispiel:
 ```xml
@@ -612,6 +627,8 @@ Nachdem Sie Ihr benutzerdefiniertes Lexikon veröffentlicht haben, können Sie v
 ```
 
 Wenn Sie dieses benutzerdefinierte Lexikon verwenden, wird „BTW“ als „By the way“ gelesen. „Benigni“ wird gemäß der IPA-Angabe als „bɛˈniːnji“ gelesen.
+
+Da es im benutzerdefinierten Lexikon leicht zu Fehlern kommen kann, stellt Microsoft ein [Überprüfungstool für das benutzerdefinierte Lexikon](https://github.com/jiajzhan/Custom-Lexicon-Validation) bereit. Es enthält detaillierte Fehlermeldungen, um nach Fehlern zu suchen. Bevor Sie SSML mit dem benutzerdefinierten Lexikon an den Speech-Dienst senden, sollten Sie Ihr benutzerdefiniertes Lexikon mit diesem Tool überprüfen. 
 
 **Einschränkungen**
 - Dateigröße: Die maximale Größe benutzerdefinierter Lexikondateien beträgt 100 KB. Wenn diese Größe überschritten wird, treten bei Syntheseanforderungen Fehler auf.

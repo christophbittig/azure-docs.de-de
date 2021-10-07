@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/04/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 59e7d6dcf8a5b384b82c5d3294d5f627d990fb7b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d6925b0f4e9f871444e85a1369be541fd1172af9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745491"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573647"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iris-intranet"></a>Tutorial: Azure Active Directory-Integration mit Iris Intranet
 
@@ -40,6 +40,8 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Iris Intranet unterstützt **SP**-initiiertes einmaliges Anmelden.
 
 * Iris Intranet unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+
+* Iris Intranet unterstützt die [automatisierte Benutzerbereitstellung](iris-intranet-provisioning-tutorial.md).
 
 ## <a name="add-iris-intranet-from-the-gallery"></a>Hinzufügen von Iris Intranet über den Katalog
 
@@ -120,6 +122,8 @@ Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Iris Intranet** müss
 
 In diesem Abschnitt wird in Iris Intranet ein Benutzer namens Britta Simon erstellt. Iris Intranet unterstützt die Just-In-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Iris Intranet vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
+Außerdem unterstützt Iris Intranet die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./iris-intranet-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -128,7 +132,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Iris Intranet-Anmelde-URL auf, und initiieren Sie den Anmeldeablauf.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Iris Intranet“ klicken, werden Sie zur Anmelde-URL für Iris Intranet umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Iris Intranet“ klicken, werden Sie zur Anmelde-URL für Iris Intranet umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

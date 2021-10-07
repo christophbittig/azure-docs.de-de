@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 26e90482ad03406bbf586c7c9a8f2fdcc31cad7c
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 50e5a8fb09a3bd54dd4131f6c60de6b315233e86
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254023"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557654"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>Tutorial: Erstellen eines Azure Digital Twins-Graphen unter Verwendung der Azure CLI
 
@@ -161,6 +161,8 @@ Verwenden Sie zum Erstellen eines digitalen Zwillings den Befehl [az dt twin cre
     
     :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="Screenshot: Cloud Shell mit einem Teil des Ergebnisses der Zwillingsabfrage (mit „room0“ und „room1“)" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
+
 ### <a name="modify-a-digital-twin"></a>Ändern eines digitalen Zwillings
 
 Sie können auch die Eigenschaften eines von Ihnen erstellten Zwillings ändern. 
@@ -217,7 +219,7 @@ Verwenden Sie zum Hinzufügen einer Beziehung den Befehl [az dt twin relationshi
     
     Die Ausgabe des jeweiligen Befehls enthält Informationen zur erfolgreich erstellten Beziehung.
 
-1. Sie können die Beziehungen mithilfe eines der folgenden Befehle zum Abfragen der Beziehungen in der Azure Digital Twins-Instanz überprüfen.
+1. Sie können die Beziehungen mithilfe einer der folgenden Befehle zum Ausgeben der Beziehungen in der Azure Digital Twins-Instanz überprüfen.
     * So zeigen Sie alle Beziehungen an, die von den einzelnen Etagen ausgehen (Anzeige der Beziehungen von einer Seite):
         ```azurecli-interactive
         az dt twin relationship list --dt-name <Azure-Digital-Twins-instance-name> --twin-id floor0
@@ -241,6 +243,8 @@ Die Zwillinge und Beziehungen, die Sie in diesem Tutorial eingerichtet haben, bi
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>Abfragen des Zwillingsgraphen zum Beantworten von Umgebungsfragen
 
 Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-query-language.md) des Zwillingsgraphen und das effiziente Beantworten von Fragen zur Umgebung. In der Azure CLI wird dazu der Befehl [az dt twin query](/cli/azure/dt/twin?view=azure-cli-latest&preserve-view=true#az_dt_twin_query) verwendet.
+
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
 
 Führen Sie in Cloud Shell die folgenden Abfragen aus, um einige Fragen zur Beispielumgebung zu beantworten.
 
@@ -278,7 +282,7 @@ Führen Sie in Cloud Shell die folgenden Abfragen aus, um einige Fragen zur Beis
     :::image type="content" source="media/tutorial-command-line/cli/output-query-relationship.png" alt-text="Screenshot: Cloud Shell mit dem Ergebnis der Beziehungsabfrage (mit „room0“)" lightbox="media/tutorial-command-line/cli/output-query-relationship.png":::
 
     > [!NOTE]
-    > Beachten Sie, dass die ID eines Zwillings (beispielsweise floor0 in der obigen Abfrage) mithilfe des Metadatenfelds `$dtId` abgefragt wird. 
+    > Die ID eines Zwillings (wie „floor0“ in der obigen Abfrage) wird über das Metadatenfeld `$dtId` abgefragt. 
     >
     >Wenn Sie Cloud Shell verwenden, um eine Abfrage mit Metadatenfeldern wie diesem auszuführen, die mit `$` beginnen, müssen Sie `$` mit einem Graviszeichen als Escapezeichen versehen, um Cloud Shell mitzuteilen, dass es sich dabei nicht um eine Variable handelt und es im Abfragetext als Literal behandelt werden soll. Dies ist im obigen Screenshot dargestellt.
 

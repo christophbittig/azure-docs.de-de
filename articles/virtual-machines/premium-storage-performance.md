@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6cd71daa43eb311316bb0da8b54bbef8733fb168
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 5c6530f138167cbd21ed1b40dee3b056ceb8c638
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694328"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803868"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Storage Premium: Entwurf für hohe Leistung
 
@@ -311,7 +311,7 @@ Für alle Premium-SSDs oder Ultra-Datenträger können Sie möglicherweise „Ba
 
 * Verwenden Sie für **reiserFS** zum Deaktivieren von Barrieren die Bereitstellungsoption „barrier=none“.  Verwenden Sie „barrier=flush“, um Barrieren explizit zu aktivieren.
 * Verwenden Sie für **ext3/ext4** zum Deaktivieren von Barrieren die Bereitstellungsoption „barrier=0“.  Verwenden Sie „barrier=1“, um Barrieren explizit zu aktivieren.
-* Verwenden Sie für **XFS** zum Deaktivieren von Barrieren die Bereitstellungsoption „nobarrier“.  Verwenden Sie „barrier“, um Barrieren explizit zu aktivieren.  Beachten Sie, dass in neueren Linux-Kernelversionen der Entwurf des XFS-Dateisystems immer die Dauerhaftigkeit gewährleistet und das Deaktivieren von Barrieren keine Auswirkungen hat.  
+* Verwenden Sie für **XFS** zum Deaktivieren von Barrieren die Bereitstellungsoption „nobarrier“.  Verwenden Sie „barrier“, um Barrieren explizit zu aktivieren. Seit Version 4.10 des Mainline-Linux-Kernels gewährleistet das Design des XFS-Dateisystems stets eine lange Lebensdauer. Das Deaktivieren von Barrieren hat keine Auswirkungen und die Option "nobarrier" ist veraltet. Einige Linux-Distributionen haben die Änderungen jedoch möglicherweise in eine frühere Kernel-Version zurückportiert. Erkundigen Sie sich bei Ihrem Distributionsanbieter nach dem Status in der von Ihnen verwendeten Distribution und Version.
 
 ## <a name="disk-striping"></a>Datenträgerstriping
 

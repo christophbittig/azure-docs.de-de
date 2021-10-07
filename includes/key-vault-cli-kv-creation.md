@@ -4,19 +4,19 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: a87fbbb276fd8813492cc293bc08b958ee3d6b7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d3c7cdcebc244aefb6ef5b2ceb7b931344a8960
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99070261"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593710"
 ---
 Verwenden Sie den Azure CLI-Befehl [az keyvault create](/cli/azure/keyvault#az_keyvault_create), um in der Ressourcengruppe aus dem vorherigen Schritt eine Key Vault-Instanz zu erstellen. Dazu müssen einige Informationen angegeben werden:
 
 - Name des Schlüsseltresors: Eine Zeichenfolge mit 3 bis 24 Zeichen, die nur Zahlen (0–9), Buchstaben (a–z, A–Z) und Bindestriche (-) enthalten darf.
 
   > [!Important]
-  > Jeder Schlüsseltresor muss einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen „<your-unique-keyvault-name>“ durch den Namen Ihres Schlüsseltresors.
+  > Jeder Schlüsseltresor muss einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen \<your-unique-keyvault-name\> durch den Namen Ihres Schlüsseltresors.
 
 - Ressourcengruppennamen: **myResourceGroup**
 - Standort: **EastUS**

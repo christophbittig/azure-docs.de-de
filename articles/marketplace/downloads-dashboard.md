@@ -7,13 +7,13 @@ ms.topic: article
 author: shganesh-dev
 ms.author: shganesh
 ms.reviewer: sroy
-ms.date: 08/21/2020
-ms.openlocfilehash: b0771ee85fc486d4fbcc4fb181b1ce0b7b7d47dd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 34d8746939b1ec4a957d72b089541eb6b5c0b5dd
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339278"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080226"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace
 
@@ -28,9 +28,27 @@ Das [Dashboard „Downloads“](https://go.microsoft.com/fwlink/?linkid=2165766)
 
 Sie erhalten eine Popupbenachrichtigung mit einem Link zum Dashboard **Downloads**, wenn Sie einen Download mit mehr als 1.000 Datenzeilen anfordern. Diese Datendownloads stehen für einen Zeitraum von 30 Tagen zur Verfügung, und werden dann entfernt.
 
-## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>Lebensdauerexport von Analytics-Berichten zum kommerziellen Marketplace
+## <a name="access-the-downloads-dashboard"></a>Zugreifen auf das Dashboard „Downloads“
 
-Um auf das Dashboard „Downloads“ zuzugreifen, öffnen Sie das Dashboard **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** im kommerziellen Marketplace.
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie auf der Startseite die Kachel **Insights** aus.
+
+    [ ![Veranschaulichung der Kachel „Insights“ auf der Startseite in Partner Center](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. Klicken Sie im Menü links auf **Downloads**.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Klicken Sie im linken Navigationsbereich auf **Kommerzieller Marketplace** > **Analysieren** > **Downloads**.
+
+---
+
+## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>Lebensdauerexport von Analytics-Berichten zum kommerziellen Marketplace
 
 Auf der Seite „Downloads“ kann der Endbenutzer folgende Aktionen ausführen:
 
@@ -48,9 +66,17 @@ Unterstützung für die Lebensdauerexportfunktionalität von Analytics-Berichten
 | Verwendung | ![Schwarzes X](media/downloads-dashboard/check-black-no.png) | Maximal ein Jahr |
 |
 
-Ein Benutzer kann asynchrone Downloads von Berichten aus dem Abschnitt „Downloads“ planen:
+Ein/e Benutzer*in kann asynchrone Downloads von Berichten aus dem Dashboard „Downloads“ planen.
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+[![Planen asynchroner Downloads von Berichten von der Seite „Downloads“](media/downloads-dashboard/download-reports-workspaces.png)](media/downloads-dashboard/download-reports.png#lightbox)
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
 
 [![Planen asynchroner Downloads von Berichten aus dem Abschnitt „Downloads“](media/downloads-dashboard/download-reports.png)](media/downloads-dashboard/download-reports.png#lightbox)
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

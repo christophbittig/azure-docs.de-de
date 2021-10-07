@@ -5,12 +5,12 @@ ms.date: 02/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6bfe1a2d7fb993e51c82f14b508d697900b7a333
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 9b9f8f594fbc85c69a546a82f2857802382eea28
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319753"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128556469"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Tutorial: Bereitstellen einer verknüpften Vorlage
 
@@ -48,7 +48,7 @@ Mit dem folgenden PowerShell-Skript werden ein Speicherkonto und ein Container e
 Wählen Sie **Try-it** aus, um die Cloud Shell zu öffnen, wählen Sie **Kopieren** aus, um das PowerShell-Skript zu kopieren, und klicken Sie mit der rechten Maustaste auf den Shellbereich, um das Skript einzufügen:
 
 > [!IMPORTANT]
-> Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Der Name muss eindeutig sein. In der Vorlage ist der Name des Speicherkontos der Projektname, an den **store** angefügt wird. Der Projektname muss zwischen 3 und 11 Zeichen lang sein. Daher muss der Projektname die Anforderungen des Speicherkontonamens erfüllen und weniger als 11 Zeichen enthalten.
+> Speicherkontonamen müssen eindeutig und zwischen 3 und 24 Zeichen lang sein, und sie dürfen nur **Zahlen** und **Kleinbuchstaben** enthalten. Die Variable `storageAccountName` der Beispielvorlage kombiniert das Maximum des Parameters `projectName` von 11 Zeichen mit einem [uniqueString](./template-functions-string.md#uniquestring)-Wert von 13 Zeichen.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.

@@ -3,12 +3,12 @@ title: Installieren des Connected Machine-Agent mithilfe von Windows PowerShell
 description: In diesem Artikel erfahren Sie, wie Sie Computer mithilfe von Azure Arc-fähigen Servern und Windows PowerShell DSC mit Azure verbinden.
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a6e955df43e3589c97091cb111699ce402723d0
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 357d89a989efbc3b8deded193808d47753b722d9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351411"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789083"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Installieren des Connected Machine-Agent mithilfe von Windows PowerShell DSC
 
@@ -20,7 +20,7 @@ Mit [Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/g
 
 - Das [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc)-DSC-Modul
 
-- Ein Dienstprinzipal zum nicht interaktiven Herstellen einer Verbindung der Computer mit Azure Arc-fähigen Servern. Führen Sie die Schritte im Abschnitt [Erstellen eines Dienstprinzipals für flexibles Onboarding](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) aus, wenn Sie noch keinen Dienstprinzipal für Arc-fähige Server erstellt haben.
+- Ein Dienstprinzipal zum nicht interaktiven Herstellen einer Verbindung der Computer mit Azure Arc-fähigen Servern. Führen Sie die Schritte im Abschnitt [Erstellen eines Dienstprinzipals für flexibles Onboarding](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) aus, wenn Sie noch keinen Dienstprinzipal für Azure Arc-fähige Server erstellt haben.
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>Installieren des ConnectedMachine-DSC-Moduls
 
@@ -90,4 +90,4 @@ Das [CompositeResource](https://www.powershellgallery.com/packages/compositereso
 
 * Lesen Sie den [Planungs- und Bereitstellungsleitfaden](plan-at-scale-deployment.md), um die Bereitstellung von Servern mit Azure Arc-Unterstützung in beliebiger Größenordnung zu planen und eine zentrale Verwaltung und Überwachung zu implementieren.
 
-* Informieren Sie sich, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten können, z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet oder beim Aktivieren der Überwachung mit [VM Insights](../../azure-monitor/vm/vminsights-enable-policy.md).
+* Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [VM Insights](../../azure-monitor/vm/vminsights-enable-policy.md) und vieles mehr.

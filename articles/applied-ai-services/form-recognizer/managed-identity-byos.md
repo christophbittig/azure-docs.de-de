@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 07/08/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8ecd6ae9578f719707c3d52ba8348cda5af3e08d
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 43220ce85bf02919a0ccf069bc9646a16c3a0a26
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356603"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155351"
 ---
 # <a name="create-and-use-managed-identity-for-your-form-recognizer-resource"></a>Erstellen und Verwenden einer verwalteten Identität für Ihre Formularerkennungsressource
 
@@ -45,11 +45,20 @@ Zunächst benötigen Sie Folgendes:
 
 * Eine [**Formularerkennungs**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)- oder [**Cognitive Services**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)-Ressource im Azure-Portal. Ausführliche Schritte _finden_ Sie unter [Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals](../../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows).
 
-* Ein [**Azure Blob Storage-Konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Sie erstellen Container zum Speichern und Organisieren Ihrer Blobdaten unter Ihrem Speicherkonto. Wenn das Konto über eine Firewall verfügt, muss das Kontrollkästchen [Ausnahme für vertrauenswürdige Azure-Dienste](../../storage/common/storage-network-security.md?tabs=azure-portal#manage-exceptions) aktiviert sein.
+* Ein [**Azure Blob Storage-Konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) in derselben Region wie Ihre Formularerkennung-Ressource. Sie erstellen Container zum Speichern und Organisieren Ihrer Blobdaten unter Ihrem Speicherkonto. 
+
+  * Wenn sich Ihr Speicherkonto hinter einer Firewall befindet, **müssen Sie die folgende Konfiguration aktivieren**: </br></br>
+
+  * Klicken Sie auf der Seite Ihres Speicherkontos im linken Menü auf **Sicherheit + Netzwerkbetrieb** → **Netzwerk**.
+    :::image type="content" source="media/managed-identities/security-and-networking-node.png" alt-text="Screenshot: Registerkarte „Sicherheit + Netzwerkbetrieb“":::
+
+  * Klicken Sie im Hauptfenster auf **Allow access from selected networks** (Zugriff aus bestimmten Netzwerken zulassen).
+  :::image type="content" source="media/managed-identities/firewalls-and-virtual-networks.png" alt-text="Screenshot: Aktiviertes Optionsfeld „Ausgewählte Netzwerke“":::
+
+  * Navigieren Sie auf der Seite „Ausgewählte Netzwerke“ zur Kategorie **Ausnahmen**, und stellen Sie sicher, dass das Kontrollkästchen [**Allow Azure services on the trusted services list to access this storage account**](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions) (Azure-Diensten in der Liste der vertrauenswürdigen Dienste den Zugriff auf dieses Speicherkonto erlauben) aktiviert ist.
 
     :::image type="content" source="media/managed-identities/allow-trusted-services-checkbox-portal-view.png" alt-text="Screenshot: Kontrollkästchen für das Zulassen vertrauenswürdiger Dienste, Portalansicht":::
-
-* Eine kurze Übersicht über die [**rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)** ](../../role-based-access-control/role-assignments-portal.md) über das Azure-Portal.
+* Eine kurze Übersicht über die [**rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)**](../../role-based-access-control/role-assignments-portal.md) über das Azure-Portal.
 
 ## <a name="managed-identity-assignments"></a>Zuweisungen verwalteter Identitäten
 

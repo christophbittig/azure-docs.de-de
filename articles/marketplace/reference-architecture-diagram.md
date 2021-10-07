@@ -7,13 +7,13 @@ ms.reviewer: stmummer
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 02/18/2021
-ms.openlocfilehash: f7dfaf8e8afb4d7a5e39c16cf280c10dcae05859
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 09/22/2021
+ms.openlocfilehash: 63c820a7dd4bcbe1322478a46043963edc45dd2b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133041"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129054260"
 ---
 # <a name="reference-architecture-diagram"></a>Diagramm zur Referenzarchitektur
 
@@ -24,6 +24,8 @@ Das Diagramm zur Referenzarchitektur kann über mehrere Tools erstellt werden. M
 Einen hilfreichen Ausgangspunkt zum Entwickeln eines Diagramms zur Referenzarchitektur bieten die [Azure-Architekturmodelle](/azure/architecture/browse/).
 
 ## <a name="typical-components-of-a-reference-architecture-diagram"></a>Typische Komponenten eines Diagramms zur Referenzarchitektur
+
+Im Diagramm muss Ihre IP-Adresse eindeutig als Lösungs-, Anwendungs- oder Dienstcode identifiziert werden, der sowohl in Azure bereitgestellt wird als auch den Verbrauch fördert. Dieser Code muss in hohem Maße wiederverwendbar sein und darf nicht von einer umfassenden Anpassung pro Bereitstellung abhängen.
 
 - Clouddienste, die Ihr Angebot hosten und mit ihm interagieren (einschließlich Dienste, die Azure-Ressourcen beanspruchen)
 - Von Ihrem Angebot genutzte Datenverbindungen, Datenschichten und Datendienste

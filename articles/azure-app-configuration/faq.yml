@@ -9,12 +9,12 @@ metadata:
   ms.date: 02/19/2020
   ms.author: alkemper
   ms.custom: references_regions
-  ms.openlocfilehash: 6dd7cff8408d89cfca117241ebb434f6976a32fb
-  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+  ms.openlocfilehash: fdfc62b4b5c61cd1b064e6623464147d01dbc58e
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/27/2021
-  ms.locfileid: "123112038"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128603104"
 title: Häufig gestellte Fragen zu Azure App Configuration
 summary: In diesem Artikel werden häufig gestellte Fragen zu Azure App Configuration beantwortet.
 sections:
@@ -107,6 +107,8 @@ sections:
 
       - USA, Westen 2
 
+      - USA, Westen 3
+
       - Kanada, Mitte
 
       - Frankreich, Mitte
@@ -138,20 +140,25 @@ sections:
 
       * Überschreiten des täglichen Anforderungslimits für einen Speicher im Free-Tarif.
 
-      * Temporäre Drosselung aufgrund einer hohen Anforderungsrate für einen Speicher im Standard-Tarif.
+      * Überschreiten des stündlichen Anforderungslimits für einen Speicher in der Standardebene
+
+      * Vorübergehende Drosselung aufgrund zahlreicher Anforderungen†
 
       * Übermäßige Bandbreitenauslastung.
 
-      * Versuch, einen Schlüssel zu erstellen oder zu ändern, wenn das Speicherkontingent überschritten wird.
+      * Versuch, einen Schlüssel zu erstellen oder zu ändern, wenn das Speicherkontingent überschritten wird
 
 
       Überprüfen Sie den Text der 429-Antwort, um den genauen Grund zu ermitteln, warum die Anforderung fehlgeschlagen ist.
+
+
+      †Ein Konfigurationsspeicher kann vorübergehend gedrosselt werden, wenn er eine große Anzahl von Anforderungen empfängt. App Configuration-Clients, etwa das Azure SDK, Konfigurationsanbieterbibliotheken und Azure Pipeline-Aufgaben, werden bei gedrosselten Anforderungen automatisch wiederholt. Bei allen Anwendungen, die einen dieser Clients oder einen benutzerdefinierten Client nutzen, der bei gedrosselten Anfragen eine Wiederholung durchführt, sollte diese vorübergehende Drosselung unbemerkt bleiben.
   - question: Warum kann ich keinen App Configuration-Speicher erstellen, der den gleichen Namen wie der gerade gelöschte Speicher hat?
     answer: >
       Wenn ein App Configuration-Speicher im Standard-Tarif gelöscht wird, ist der Name nach dem Löschen noch sieben Tage reserviert. Es ist möglich, einen Speicher mit dem gleichen Namen zu erstellen, bevor der Reservierungszeitraum abgelaufen ist. Dies gilt aber nur für den Fall, dass er sich unter demselben Abonnement und in derselben Ressourcengruppe und Region wie der ursprüngliche Speicher befindet. Falls die Ressourcengruppe, die den Speicher enthalten hat, gelöscht wurde, muss sie zunächst unter demselben Abonnement neu erstellt werden, bevor darin der Speicher neu erstellt werden kann.
 
 
-      Der App Configuration-Speicher kann erst in einem anderen Abonnement oder einer anderen Ressourcengruppe erstellt werden, wenn der Aufbewahrungszeitraum abgelaufen ist. Die Ressource kann jedoch im ursprünglichen Abonnement bzw. der ursprünglichen Ressourcengruppe neu erstellt und dann in ein neues Abonnement bzw. eine neue Ressourcengruppe verschoben werden, indem Sie [diese Anweisungen](/azure/azure-resource-manager/management/move-resource-group-and-subscription#use-the-portal) befolgen.
+      Der App Configuration-Speicher kann erst in einem anderen Abonnement oder einer anderen Ressourcengruppe erstellt werden, wenn der Aufbewahrungszeitraum abgelaufen ist. Die Ressource kann jedoch im ursprünglichen Abonnement bzw. der ursprünglichen Ressourcengruppe neu erstellt und dann in ein neues Abonnement bzw. eine neue Ressourcengruppe verschoben werden, indem Sie [diese Anweisungen](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal) befolgen.
 
 
       Das erneute Erstellen eines App Configuration-Speichers während des Aufbewahrungszeitraums wird derzeit nur von der Azure CLI mithilfe des [hier](/cli/azure/appconfig?view=azure-cli-latest#az_appconfig_create) beschriebenen Befehls `az appconfig create` unterstützt.

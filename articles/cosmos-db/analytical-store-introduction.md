@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 80818386ccd47619ccb23323474ac76fa2240db2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b2501631c8ccdb6c61d4f31e9179a7e94c2276cb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427712"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210400"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Was ist der Azure Cosmos DB-Analysespeicher?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -149,7 +149,7 @@ Die folgenden Einschränkungen gelten für die operativen Daten in Azure Cosmos 
   * Das Löschen aller Dokumente in einer Sammlung setzt das Schema des analytischen Speichers nicht zurück.
   * Eine Versionierung des Schemas gibt es nicht. Die letzte Version, die aus dem Transaktionsspeicher abgeleitet wird, ist die, die Sie im Analysespeicher sehen werden.
 
-* Zurzeit kann Azure Synapse Spark keine Eigenschaften lesen, deren Namen einige (unten aufgeführte) Sonderzeichen enthalten. Wenn dies bei Ihnen zutrifft, wenden Sie sich an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com), um weitere Informationen zu erhalten.
+* Zurzeit kann Azure Synapse Spark keine Eigenschaften lesen, deren Namen einige der unten aufgeführten Sonderzeichen enthalten. Azure Synapse SQL (serverlos) ist nicht betroffen.
   * : (Doppelpunkt)
   * ` (Graviszeichen, Accent grave)
   * , (Komma)
@@ -161,6 +161,21 @@ Die folgenden Einschränkungen gelten für die operativen Daten in Azure Cosmos 
   * = (Gleichheitszeichen)
   * " (Anführungszeichen)
  
+* Wenn Sie Eigenschaftennamen haben, die die oben aufgeführten Zeichen verwenden, sind die folgenden Alternativen verfügbar:
+   * Ändern Sie Ihr Datenmodell im Voraus, um diese Zeichen zu vermeiden.
+   * Da die Schemazurücksetzung derzeit nicht unterstützt wird, können Sie Ihre Anwendung ändern, um eine redundante Eigenschaft mit einem ähnlichen Namen hinzuzufügen, um diese Zeichen zu vermeiden.
+   * Verwenden Sie den Änderungsfeed, um eine materialisierte Sicht Ihres Containers ohne diese Zeichen in Eigenschaftennamen zu erstellen.
+   * Verwenden Sie die neue Spark-Option `dropColumn`, um die betroffenen Spalten zu ignorieren, wenn Daten in einen DataFrame geladen werden. Die Syntax zum Löschen einer hypothetischen Spalte namens „FirstName,LastNAme“, die ein Komma enthält, ist:
+
+```Python
+df = spark.read\
+     .format("cosmos.olap")\
+     .option("spark.synapse.linkedService","<your-linked-service-name>")\
+     .option("spark.synapse.container","<your-container-name>")\
+     .option("spark.synapse.dropColumn","FirstName,LastName")\
+     .load()
+```
+
 * Azure Synapse Spark unterstützt jetzt Eigenschaften, deren Namen Leerzeichen enthalten.
 
 ### <a name="schema-representation"></a>Schemadarstellung

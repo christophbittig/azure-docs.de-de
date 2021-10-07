@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: ac0d8adff819e51be8c5649130447590741bc082
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 765eb53098f757d29072d736d50086f31bb11dc3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440707"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649753"
 ---
 # <a name="deploy-an-application-managed-by-open-service-mesh-osm-using-azure-application-gateway-ingress-aks-add-on"></a>Bereitstellen einer von Open Service Mesh (OSM) verwalteten Anwendung mit dem AKS-Add-On für den Azure Application Gateway-Eingang
 
@@ -29,7 +29,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Die in dieser Anleitung beschriebenen Schritte setzen voraus, dass Sie zuvor das OSM AKS-Add-on für Ihren AKS-Cluster aktiviert haben. Lesen Sie andernfalls den Artikel [Bereitstellen des OSM-AKS-Add-Ons](./open-service-mesh-deploy-add-on.md), bevor Sie fortfahren. Außerdem muss Ihr AKS-Cluster Version Kubernetes `1.19+` und höher sein, die Kubernetes RBAC muss aktiviert sein und eine `kubectl` Verbindung mit dem Cluster hergestellt haben (wenn Sie Hilfe zu diesen Elementen benötigen, sehen Sie sich den [AKS-Schnellstart](./kubernetes-walkthrough.md)an und haben das AKS OSM-Add-on installiert.
+Die in dieser Anleitung beschriebenen Schritte setzen voraus, dass Sie zuvor das OSM AKS-Add-on für Ihren AKS-Cluster aktiviert haben. Lesen Sie andernfalls den Artikel [Bereitstellen des OSM-AKS-Add-Ons](./open-service-mesh-deploy-addon-az-cli.md), bevor Sie fortfahren. Außerdem muss Ihr AKS-Cluster Version Kubernetes `1.19+` und höher sein, die Kubernetes RBAC muss aktiviert sein und eine `kubectl` Verbindung mit dem Cluster hergestellt haben (wenn Sie Hilfe zu diesen Elementen benötigen, sehen Sie sich den [AKS-Schnellstart](./kubernetes-walkthrough.md)an und haben das AKS OSM-Add-on installiert.
 
 Die folgenden Ressourcen müssen installiert sein:
 
@@ -100,10 +100,10 @@ Beachten Sie, dass **enablePermissiveTrafficPolicyMode** auf **true** festgelegt
 
 In diesem Lernprogramm verwenden wir die OSM-Buchhandelsanwendung, die aus den folgenden Anwendungskomponenten besteht:
 
-- bookbuyer
-- bookthief
-- bookstore
-- bookwarehouse
+- `bookbuyer`
+- `bookthief`
+- `bookstore`
+- `bookwarehouse`
 
 Legen Sie für jede dieser Anwendungskomponenten Namensräume an.
 
@@ -175,9 +175,9 @@ service/bookwarehouse created
 deployment.apps/bookwarehouse created
 ```
 
-## <a name="update-the-bookbuyer-service"></a>Aktualisieren des Buchkäufer-Dienstanbieter
+## <a name="update-the-bookbuyer-service"></a>Aktualisieren des `Bookbuyer`-Diensts
 
-Aktualisieren Sie den Buchkäufer-Dienst auf die richtige Konfiguration des Eingangsports mit dem folgenden Service-Manifest.
+Aktualisieren Sie den `bookbuyer`-Dienst mit dem folgenden Dienstmanifest auf die richtige Konfiguration des Eingangsports:
 
 ```azurecli-interactive
 kubectl apply -f - <<EOF
@@ -199,22 +199,22 @@ EOF
 
 ## <a name="verify-the-bookstore-application"></a>Überprüfen der Buchladen-Anwendung
 
-Ab jetzt haben wir die Buchladen-Multicontainer-Anwendung bereitgestellt, aber sie ist nur innerhalb des AKS-Clusters zugänglich. Später werden wir den Azure Application Gateway Ingress Controller hinzufügen, um die Anwendung außerhalb des AKS-Clusters zu exponieren. Um zu überprüfen, dass die Anwendung innerhalb des Clusters läuft, werden wir einen Port-Forward verwenden, um sowohl die UI der Buchkäufer- als auch der Buchdieb-Komponente anzuzeigen.
+Ab jetzt haben wir die Buchladen-Multicontainer-Anwendung bereitgestellt, aber sie ist nur innerhalb des AKS-Clusters zugänglich. Später werden wir den Azure Application Gateway Ingress Controller hinzufügen, um die Anwendung außerhalb des AKS-Clusters zu exponieren. Um zu überprüfen, ob die Anwendung innerhalb des Clusters ausgeführt wird, verwenden Sie eine Portweiterleitung, um die Benutzeroberfläche der `bookbuyer`-Komponenten anzuzeigen.
 
-Lassen Sie uns zuerst den Namen des Bookbuyer-Pods ermitteln
+Ermitteln Sie zunächst den Namen des `bookbuyer`-Pods.
 
 ```azurecli-interactive
 kubectl get pod -n bookbuyer
 ```
 
-Eine Ausgabe ähnlich der folgenden sollte angezeigt werden. Ihrem Bookbuyer-Pod wird ein eindeutiger Name angefügt.
+Eine Ausgabe ähnlich der folgenden sollte angezeigt werden. Ihrem `bookbuyer`-Pod wird ein eindeutiger Name angehängt.
 
 ```Output
 NAME                         READY   STATUS    RESTARTS   AGE
 bookbuyer-7676c7fcfb-mtnrz   2/2     Running   0          7m8s
 ```
 
-Sobald wir den Namen des Pods haben, können wir nun den Befehl port-forward verwenden, um einen Tunnel von unserem lokalen System zur Anwendung im AKS-Cluster einzurichten. Führen Sie den folgenden Befehl aus, um die Portweiterleitung für den lokalen Systemport 8080 einzurichten. Verwenden Sie wieder Ihren spezifischen Buchkäufer-Pod-Namen.
+Sobald wir den Namen des Pods haben, können wir nun den Befehl port-forward verwenden, um einen Tunnel von unserem lokalen System zur Anwendung im AKS-Cluster einzurichten. Führen Sie den folgenden Befehl aus, um die Portweiterleitung für den lokalen Systemport 8080 einzurichten. Verwenden Sie erneut den spezifischen Podnamen `bookbuyer`.
 
 ```azurecli-interactive
 kubectl port-forward bookbuyer-7676c7fcfb-mtnrz -n bookbuyer 8080:14001
@@ -227,11 +227,11 @@ Forwarding from 127.0.0.1:8080 -> 14001
 Forwarding from [::1]:8080 -> 14001
 ```
 
-Rufen Sie bei bestehender Portweiterleitung die folgende URL in einem Browser auf `http://localhost:8080`. Sie sollten nun in der Lage sein, die Benutzeroberfläche der Bookbuyer-Anwendung im Browser zu sehen, ähnlich wie in der Abbildung unten.
+Rufen Sie bei bestehender Portweiterleitung die folgende URL in einem Browser auf `http://localhost:8080`. Sie sollten nun in der Lage sein, die Benutzeroberfläche der `bookbuyer`-Anwendung im Browser zu sehen, ähnlich wie in der folgenden Abbildung:
 
 ![OSM-Buchkäufer-App für App Gateway UI-Bild](./media/aks-osm-addon/osm-agic-bookbuyer-img.png)
 
-## <a name="create-an-azure-application-gateway-to-expose-the-bookbuyer-application"></a>Erstellen einer Azure Application Gateway-Instanz zum Verfügbarmachen der Buchkäufer-Anwendung 
+## <a name="create-an-azure-application-gateway-to-expose-the-bookbuyer-application"></a>Erstellen einer Azure Application Gateway-Instanz zum Verfügbarmachen der `bookbuyer`-Anwendung
 
 > [!NOTE]
 > In den folgenden Anweisungen wird eine neue Instanz des Azure-Anwendung Gateways erstellt, das für den Eingang verwendet werden soll. Wenn Sie ein vorhandenes Azure Application Gateway verwenden möchten, fahren Sie mit dem Abschnitt zur Aktivierung des Add-ons Application Gateway Ingress Controller fort.
@@ -287,9 +287,9 @@ appGWVnetId=$(az network vnet show -n myVnet -g myResourceGroup -o tsv --query "
 az network vnet peering create -n AKStoAppGWVnetPeering -g $nodeResourceGroup --vnet-name $aksVnetName --remote-vnet $appGWVnetId --allow-vnet-access
 ```
 
-## <a name="expose-the-bookbuyer-service-to-the-internet"></a>Den Buchkäufer-Dienst für das Internet freigeben
+## <a name="expose-the-bookbuyer-service-to-the-internet"></a>Verfügbarmachen des `bookbuyer`-Diensts im Internet
 
-Wenden Sie das folgende Ingress-Manifest auf den AKS-Cluster an, um den Buchkäufer-Dienst über das Azure Application Gateway dem Internet auszusetzen.
+Wenden Sie das folgende Eingangsmanifest auf den AKS-Cluster an, um den `bookbuyer`-Dienst über die Azure Application Gateway-Instanz im Internet verfügbar zu machen.
 
 ```azurecli-interactive
 kubectl apply -f - <<EOF
@@ -326,7 +326,7 @@ Warning: extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.2
 ingress.extensions/bookbuyer-ingress created
 ```
 
-Da der Host-Name im Ingress-Manifest ein Pseudo-Name ist, der zum Testen verwendet wird, ist der DNS-Name nicht im Internet verfügbar. Alternativ können wir das curl-Programm verwenden und über den Hostname-Header der öffentlichen Azure Application Gateway-IP-Adresse verfügen und einen 200-Code empfangen, der uns erfolgreich mit dem Buchkäufer-Dienst verbindet.
+Da der Host-Name im Ingress-Manifest ein Pseudo-Name ist, der zum Testen verwendet wird, ist der DNS-Name nicht im Internet verfügbar. Alternativ können Sie das curl-Programm verwenden und den Hostnamenheader an die öffentliche Azure Application Gateway-IP-Adresse übergeben, um einen 200-Code zu empfangen, der erfolgreich eine Verbindung mit dem `bookbuyer`-Dienst herstellt.
 
 ```azurecli-interactive
 appGWPIP=$(az network public-ip show -g MyResourceGroup -n myPublicIp -o tsv --query "ipAddress")

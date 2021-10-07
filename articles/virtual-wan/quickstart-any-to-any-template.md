@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: 8981d305fff1970b58b569d95c6f16e933b2ca10
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: ee1814d70395be3c084513d7bf59537ba426471a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111812890"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559095"
 ---
 # <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>Schnellstart: Erstellen einer Any-to-Any-Konfiguration mit einer ARM-Vorlage
 

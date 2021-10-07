@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 08/04/2021
+ms.date: 09/22/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, security
-ms.openlocfilehash: 6d7faa793b296259968eb54980fe8ff8e32514f2
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 10cd246d0a60184616facb799f9dc079cb5cf30d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105500"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216781"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Schützen eines Azure Machine Learning-Arbeitsbereichs mit virtuellen Netzwerken
 
@@ -45,6 +45,8 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Arbeitsbereichsressourcen 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 + Im Artikel [Übersicht über die Netzwerksicherheit](how-to-network-security-overview.md) finden Sie Informationen zu gängigen Szenarien im Zusammenhang mit virtuellen Netzwerken sowie zur Gesamtarchitektur virtueller Netzwerke.
+
++ Lesen Sie den Artikel [Bewährte Azure Machine Learning-Methoden für die Unternehmenssicherheit](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-enterprise-security), um mehr über bewährte Methoden zu erfahren.
 
 + Ein vorhandenes virtuelles Netzwerk und Subnetz, die mit Ihren Computeressourcen verwendet werden können
 
@@ -79,6 +81,9 @@ Wenn sich ACR hinter einem virtuellen Netzwerk befindet, kann Azure Machine Lear
 > [!IMPORTANT]
 > Der Computecluster, der zum Erstellen von Docker-Images verwendet wird, muss auf die Paket-Repositories zugreifen können, die zum Schulen und Bereitstellen Ihrer Modelle verwendet werden. Möglicherweise müssen Sie Netzwerk-Sicherheitsregeln hinzufügen, die den Zugriff auf öffentliche Repositories zulassen, [private Python-Pakete verwenden](how-to-use-private-python-packages.md) oder [benutzerdefinierte Docker-Images](how-to-train-with-custom-image.md) verwenden, die bereits die Pakete enthalten.
 
+> [!WARNING]
+> Wenn Ihre Azure Container Registry einen privaten Endpunkt zur Kommunikation mit dem virtuellen Netzwerk verwendet, können Sie keine verwaltete Identität mit einem Azure Machine Learning-Computecluster verwenden. Um eine verwaltete Identität mit einem Computecluster zu verwenden, verwenden Sie einen Dienstendpunkt mit der Azure Container Registry für den Arbeitsbereich.
+
 ## <a name="required-public-internet-access"></a>Erforderlicher öffentlicher Internetzugriff
 
 [!INCLUDE [machine-learning-required-public-internet-access](../../includes/machine-learning-public-internet-access.md)]
@@ -94,47 +99,20 @@ Weitere Informationen zum Konfigurieren eines privaten Endpunkts für Ihren Arbe
 > [!WARNING]
 > Wenn Sie einen Arbeitsbereich mit privaten Endpunkten sichern, wird die End-to-End-Sicherheit allein nicht sichergestellt. Sie müssen die Schritte im restlichen Artikel und in der VNET-Serie ausführen, um einzelne Komponenten Ihrer Lösung zu sichern. Wenn Sie z. B. einen privaten Endpunkt für den Arbeitsbereich verwenden, ihr Azure Storage-Konto sich jedoch nicht hinter dem VNet befindet, verwendet der Datenverkehr zwischen dem Arbeitsbereich und dem Speicher das VNet nicht zur Sicherung.
 
-## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Schützen von Azure-Speicherkonten mit Dienstendpunkten
+## <a name="secure-azure-storage-accounts"></a>Schützen von Azure-Speicherkonten
 
-Azure Machine Learning unterstützt Speicherkonten, die so konfiguriert sind, dass sie Dienstendpunkte oder private Endpunkte verwenden. In diesem Abschnitt erfahren Sie, wie Sie ein Azure-Speicherkonto mithilfe von Dienstendpunkten schützen. Informationen zu privaten Endpunkten finden Sie im nächsten Abschnitt.
+Azure Machine Learning unterstützt Speicherkonten, die so konfiguriert sind, dass sie entweder einen privaten Endpunkt oder einen Dienstendpunkt verwenden. 
 
-Führen Sie die folgenden Schritte aus, um ein Azure-Speicherkonto für den Arbeitsbereich in einem virtuellen Netzwerk zu verwenden:
-
-1. Wechseln Sie im Azure-Portal zu dem Speicherdienst, den Sie in Ihrem Arbeitsbereich verwenden möchten.
-
-   [![Der Speicher, der an den Azure Machine Learning-Arbeitsbereich angefügt ist](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
-
-1. Wählen Sie auf der Speicherdienstkonto-Seite __Netzwerk__ aus.
-
-   ![Der Netzwerkbereich auf der Azure Storage-Seite im Azure-Portal.](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
-
-1. Führen Sie auf der Registerkarte __Firewalls und virtuelle Netzwerke__ folgende Aktionen aus:
-    1. Klicken Sie auf __Ausgewählte Netzwerke__.
-    1. Wählen Sie unter __Virtuelle Netzwerke__ den Link __Vorhandenes virtuelles Netzwerk hinzufügen__ aus. Durch diese Aktion wird das virtuelle Netzwerk an dem Ort hinzugefügt, wo sich Ihre Computeressource befindet (siehe Schritt 1).
-
-        > [!IMPORTANT]
-        > Das Speicherkonto muss sich in demselben virtuellen Netzwerk und Subnetz befinden wie die Compute-Instanzen oder Cluster, die für Training oder Rückschluss verwendet werden.
-
-    1. Aktivieren Sie das Kontrollkästchen __Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben__. Durch diese Änderung erhalten nicht alle Azure-Dienste Zugriff auf Ihr Speicherkonto.
-    
-        * Ressourcen einiger Dienste, **die in Ihrem Abonnement registriert sind**, können für bestimmte Vorgänge auf das Speicherkonto **im selben Abonnement** zugreifen. Hierzu zählen beispielsweise das Schreiben von Protokollen und Sicherungsvorgänge.
-        * Ressourcen einiger Dienste kann durch __Zuweisen einer Azure-Rolle__ zur vom System zugewiesenen verwalteten Identität der explizite Zugriff auf Ihr Speicherkonto gewährt werden.
-
-        Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../storage/common/storage-network-security.md#trusted-microsoft-services).
+# <a name="private-endpoint"></a>[Privater Endpunkt](#tab/pe)
 
 > [!TIP]
-> Wenn Sie einen Dienstendpunkt verwenden, können Sie auch den öffentlichen Zugriff deaktivieren. Weitere Informationen finden Sie unter [Öffentlichen Lesezugriff verweigern](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account).
+> Sie müssen zwei private Endpunkte für Ihr Standardspeicherkonto konfigurieren:
+> * Einen privaten Endpunkt mit einer untergeordneten Zielressource für **Blob**
+> * Einen privaten Endpunkt mit einer untergeordneten Zielressource für **Dateien** (Dateifreigabe)
+>
+> Wenn Sie [ParallelRunStep](./tutorial-pipeline-batch-scoring-classification.md) in Ihrer Pipeline verwenden möchten, müssen Sie auch private Endpunkte mit Zielunterressourcen des Typs **Warteschlange** und **Tabelle** konfigurieren. „ParallelRunStep“ verwendet Warteschlangen und Tabellen für die Planung und Verteilung von Aufgaben.
 
-## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>Schützen von Azure-Speicherkonten mit privaten Endpunkten
-
-Azure Machine Learning unterstützt Speicherkonten, die so konfiguriert sind, dass sie Dienstendpunkte oder private Endpunkte verwenden. Wenn das Speicherkonto private Endpunkte verwendet, müssen Sie zwei private Endpunkte für Ihr Standardspeicherkonto konfigurieren:
-1. Einen privaten Endpunkt mit einer untergeordneten Zielressource für **Blob**
-1. Einen privaten Endpunkt mit einer untergeordneten Zielressource für **Dateien** (Dateifreigabe)
-
-> [!TIP]
-> Wenn Sie [ParallelRunStep](./tutorial-pipeline-batch-scoring-classification.md) in Ihrer Pipeline verwenden möchten, müssen Sie auch private Endpunkte mit Zielunterressourcen von Typ **Warteschlange** und **Tabelle** konfigurieren. „ParallelRunStep“ verwendet Warteschlangen und Tabellen im Hintergrund für die Planung und Verteilung von Aufgaben.
-
-![Screenshot: Seite für die Konfiguration von privaten Endpunkten mit den Optionen „Blob“ und „Datei“](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
+:::image type="content" source="./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png" alt-text="Screenshot: Seite für die Konfiguration von privaten Endpunkten mit den Optionen „Blob“ und „Datei“":::
 
 Wenn Sie einen privaten Endpunkt für ein Speicherkonto konfigurieren möchten, das **nicht** der Standardspeicher ist, wählen Sie als **untergeordnete Zielressource** den entsprechenden Typ für das Speicherkonto aus, das Sie hinzufügen möchten.
 
@@ -143,6 +121,33 @@ Weitere Informationen finden Sie unter [Verwenden privater Endpunkte für Azure 
 > [!TIP]
 > Wenn Sie einen privaten Endpunkt verwenden, können Sie auch den öffentlichen Zugriff deaktivieren. Weitere Informationen finden Sie unter [Öffentlichen Lesezugriff verweigern](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account).
 
+# <a name="service-endpoint"></a>[Dienstendpunkt](#tab/se)
+
+1. Wählen Sie das Azure Storage-Konto im Azure-Portal aus.
+
+1. Wählen Sie im Bereich __Sicherheit + Netzwerkbetrieb__ auf der linken Seite die Option __Netzwerk__ und dann die Registerkarte __Firewalls und virtuelle Netzwerke__ aus.
+
+1. Klicken Sie auf __Ausgewählte Netzwerke__. Wählen Sie unter __Virtuelle Netzwerke__ den Link __Vorhandenes virtuelles Netzwerk hinzufügen__ und dann das virtuelle Netzwerk aus, das Ihr Arbeitsbereich verwendet.
+
+    > [!IMPORTANT]
+    > Das Speicherkonto muss sich in demselben virtuellen Netzwerk und Subnetz befinden wie die Compute-Instanzen oder Cluster, die für Training oder Rückschluss verwendet werden.
+
+1. Wählen Sie unter __Ressourceninstanzen__ entsprechend `Microsoft.MachineLearningServices/Workspace` als __Ressourcentyp__ und dann Ihren Arbeitsbereich mithilfe von __Instanzname__ aus. Weitere Informationen finden Sie unter [Vertrauenswürdiger Zugriff auf der Grundlage einer systemseitig zugewiesenen verwalteten Identität](/azure/storage/common/storage-network-security#trusted-access-based-on-system-assigned-managed-identity).
+
+1. Wählen Sie unter __Ausnahmen__ die Option __Allow Azure services on the trusted services list to access this storage account__ (Für Azure-Dienste aus der Liste vertrauenswürdiger Dienste Zugriff auf dieses Speicherkonto zulassen) aus.
+
+    * Ressourcen einiger Dienste, **die in Ihrem Abonnement registriert sind**, können für bestimmte Vorgänge auf das Speicherkonto **im selben Abonnement** zugreifen. Hierzu zählen beispielsweise das Schreiben von Protokollen und Sicherungsvorgänge.
+    * Ressourcen einiger Dienste kann durch __Zuweisen einer Azure-Rolle__ zur vom System zugewiesenen verwalteten Identität der explizite Zugriff auf Ihr Speicherkonto gewährt werden.
+
+    Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../storage/common/storage-network-security.md#trusted-microsoft-services).
+
+:::image type="content" source="./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png" alt-text="Der Netzwerkbereich auf der Azure Storage-Seite im Azure-Portal.":::
+
+> [!TIP]
+> Wenn Sie einen Dienstendpunkt verwenden, können Sie auch den öffentlichen Zugriff deaktivieren. Weitere Informationen finden Sie unter [Öffentlichen Lesezugriff verweigern](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account).
+
+---
+
 ## <a name="secure-azure-key-vault"></a>Schützen von Azure Key Vault
 
 Azure Machine Learning verwendet eine zugeordnete Key Vault-Instanz zum Speichern der folgenden Anmeldeinformationen:
@@ -150,7 +155,17 @@ Azure Machine Learning verwendet eine zugeordnete Key Vault-Instanz zum Speiche
 * Kennwörter in Azure Container Repository-Instanzen
 * Verbindungszeichenfolgen zur Verbindung mit Datenspeichern.
 
-Azure Key Vault kann für die Verwendung von Dienstendpunkten oder privaten Endpunkten konfiguriert werden. Um die Azure Machine Learning-Experimentierfunktionen mit Azure Key Vault hinter einem virtuellen Netzwerk zu verwenden, gehen Sie wie folgt vor:
+Azure Key Vault kann für die Verwendung eines privaten Endpunkts oder eines Dienstendpunkts konfiguriert werden. Um die Azure Machine Learning-Experimentierfunktionen mit Azure Key Vault hinter einem virtuellen Netzwerk zu verwenden, gehen Sie wie folgt vor:
+
+> [!TIP]
+> Unabhängig davon, ob Sie einen privaten Endpunkt oder einen Dienstendpunkt verwenden, muss sich der Schlüsseltresor im selben Netzwerk befinden wie der private Endpunkt des Arbeitsbereichs.
+
+# <a name="private-endpoint"></a>[Privater Endpunkt](#tab/pe)
+
+Informationen zur Verwendung eines privaten Endpunkts mit Azure Key Vault finden Sie unter [Integrieren von Key Vault in Azure Private Link](/azure/key-vault/general/private-link-service#establish-a-private-link-connection-to-key-vault-using-the-azure-portal).
+
+
+# <a name="service-endpoint"></a>[Dienstendpunkt](#tab/se)
 
 1. Wechseln Sie zu der Key Vault-Instanz, die mit dem Arbeitsbereich verknüpft ist.
 
@@ -161,14 +176,18 @@ Azure Key Vault kann für die Verwendung von Dienstendpunkten oder privaten Endp
     1. Wählen Sie unter __Virtuelle Netzwerke__ die Option __Vorhandenes virtuelles Netzwerk hinzufügen__ aus, um das virtuelle Netzwerk hinzuzufügen, in dem sich die Computeressourcen für Ihre Experimente befinden.
     1. Wählen Sie unter __Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben__ die Option __Ja__ aus.
 
-   [![Der Abschnitt „Firewalls und virtuelle Netzwerke“ im Bereich „Key Vault“](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
+    :::image type="content" source="./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png" alt-text="Abschnitt „Firewalls und virtuelle Netzwerke“ im Bereich „Key Vault“":::
+
+Weitere Informationen finden Sie unter [Konfigurieren von Azure Key Vault-Netzwerkeinstellungen](/azure/key-vault/general/how-to-azure-key-vault-network-security).
+
+---
 
 ## <a name="enable-azure-container-registry-acr"></a>Aktivieren von Azure Container Registry (ACR)
 
 > [!TIP]
 > Wenn Sie beim Erstellen des Arbeitsbereichs keine vorhandene Azure Container Registry verwendet haben, ist möglicherweise keine vorhanden. Standardmäßig wird vom Arbeitsbereich erst eine ACR-Instanz erstellt, wenn eine solche benötigt wird. Um die Erstellung einer solchen zu erzwingen, trainieren Sie ein Modell mit Ihrem Arbeitsbereich, oder stellen Sie es bereit, bevor Sie die Schritte in diesem Abschnitt ausführen.
 
-Azure Container Registry kann so konfiguriert werden, dass entweder Dienstendpunkte oder private Endpunkte verwendet werden. Führen Sie die folgenden Schritte aus, um Ihren Arbeitsbereich so zu konfigurieren, dass er ACR verwendet, wenn er sich im virtuellen Netzwerk befindet:
+Azure Container Registry kann so konfiguriert werden, dass ein privater Endpunkt verwendet wird. Führen Sie die folgenden Schritte aus, um Ihren Arbeitsbereich so zu konfigurieren, dass er ACR verwendet, wenn er sich im virtuellen Netzwerk befindet:
 
 1. Suchen Sie den Namen der Azure Container Registry-Instanz für Ihren Arbeitsbereich mit einer der folgenden Methoden:
 
@@ -188,7 +207,7 @@ Azure Container Registry kann so konfiguriert werden, dass entweder Dienstendpun
 
     Der Befehl gibt einen Wert zurück, der `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"` ähnelt. Der letzte Teil der Zeichenfolge ist der Name der Azure Container Registry-Instanz für den Arbeitsbereich.
 
-1. Um den Zugriff auf das virtuelle Netzwerk einzuschränken, führen Sie die Schritte unter [Konfigurieren des Netzwerkzugriffs für die Registrierung](../container-registry/container-registry-vnet.md#configure-network-access-for-registry) aus. Wenn Sie das virtuelle Netzwerk hinzufügen, wählen Sie das virtuelle Netzwerk und das Subnetz für die Azure Machine Learning-Ressourcen aus.
+1. Beschränken Sie den Zugriff auf Ihr virtuelles Netzwerk mithilfe der Schritte in [Herstellen einer privaten Verbindung mit einer Azure Container Registry-Instanz](../container-registry/container-registry-private-link.md). Wenn Sie das virtuelle Netzwerk hinzufügen, wählen Sie das virtuelle Netzwerk und das Subnetz für die Azure Machine Learning-Ressourcen aus.
 
 1. Konfigurieren Sie den ACR für den Arbeitsbereich, um den [Zugriff durch vertrauenswürdige Dienste zuzulassen](../container-registry/allow-access-trusted-services.md).
 
@@ -264,18 +283,7 @@ validate=False)
 
 ## <a name="securely-connect-to-your-workspace"></a>Sicheres Herstellen einer Verbindung mit Ihrem Arbeitsbereich
 
-Die folgenden Methoden können verwendet werden, um eine Verbindung mit dem sicheren Arbeitsbereich herzustellen:
-
-* [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md): Verbindet lokale Netzwerke über eine private Verbindung mit dem VNet. Die Verbindung wird über das öffentliche Internet hergestellt. Es gibt zwei Arten von VPN Gateways, die Sie verwenden können:
-
-    * [Point-to-Site](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md): Jeder Clientcomputer verwendet einen VPN-Client, um eine Verbindung mit dem VNet herzustellen.
-    * [Site-to-Site](../vpn-gateway/tutorial-site-to-site-portal.md): Ein VPN-Gerät verbindet das VNet mit Ihrem lokalen Netzwerk.
-
-* [ExpressRoute](https://azure.microsoft.com/services/expressroute/): Verbindet lokale Netzwerke über eine private Verbindung mit der Cloud. Die Verbindung wird über einen Konnektivitätsanbieter hergestellt.
-* [Azure Bastion](../bastion/bastion-overview.md): In diesem Szenario erstellen Sie einen virtuellen Azure-Computer (auch als Jumpbox bezeichnet) im VNet. Anschließend stellen Sie mit Azure Bastion eine Verbindung mit dem virtuellen Computer her. Bastion ermöglicht es Ihnen, über eine RDP- oder SSH-Sitzung in Ihrem lokalen Webbrowser eine Verbindung mit dem virtuellen Computer herzustellen. Anschließend verwenden Sie die Jumpbox als Entwicklungsumgebung. Da sie sich innerhalb des VNet befindet, kann sie direkt auf den Arbeitsbereich zugreifen. Ein Beispiel für die Verwendung einer Jumpbox finden Sie unter [Tutorial: Erstellen eines sicheren Arbeitsbereichs](tutorial-create-secure-workspace.md).
-
-> [!IMPORTANT]
-> Wenn Sie ein __VPN-Gateway__ oder __ExpressRoute__ verwenden, müssen Sie planen, wie die Namensauflösung zwischen Ihren lokalen Ressourcen und denen im VNet funktioniert. Weitere Informationen finden Sie unter [Verwenden eines benutzerdefinierten DNS-Servers](how-to-custom-dns.md).
+[!INCLUDE [machine-learning-connect-secure-workspace](../../includes/machine-learning-connect-secure-workspace.md)]
 
 ## <a name="workspace-diagnostics"></a>Arbeitsbereichsdiagnose
 

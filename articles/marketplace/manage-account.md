@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
-ms.date: 04/07/2021
-ms.openlocfilehash: 2bd5ae6696c5ce1c2d4ea3be974245fde1053b71
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.date: 09/27/2021
+ms.openlocfilehash: 9e30cc845fbc4ec2aefc062780f53e3bb0f02161
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416288"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082611"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
 
@@ -21,20 +21,40 @@ ms.locfileid: "112416288"
 - Besitzer
 - Manager
 
-Nachdem Sie [ein Partner Center-Konto erstellt](./create-account.md) haben, können Sie das [Dashboard des kommerziellen Marketplace](https://go.microsoft.com/fwlink/?linkid=2166002) verwenden, um Ihr Konto und Ihre Angebote zu verwalten.
+Nachdem Sie [ein Partner Center-Konto erstellt](./create-account.md) haben, können Sie das [Dashboard des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) verwenden, um Ihr Konto und Ihre Angebote zu verwalten.
 
 ## <a name="access-your-account-settings"></a>Zugreifen auf Ihre Kontoeinstellungen
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+Wenn nicht bereits geschehen, sollten Sie (oder der Administrator Ihrer Organisation) auf die [Kontoeinstellungen](https://partner.microsoft.com/dashboard/account/v3/organization/legalinfo#mpn) Ihres Partner Center-Kontos zugreifen.
+
+1. Melden Sie sich beim [Dashboard des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/home) in Partner Center mit dem Konto an, auf das Sie zugreifen möchten. Wenn Sie mehreren Konten angehören und sich mit einem anderen Konto angemeldet haben, können Sie die [Konten wechseln](switch-accounts.md).
+
+1. Wählen Sie oben rechts **Einstellungen** (Zahnradsymbol) und dann **Kontoeinstellungen** aus.
+
+    [ ![Screenshot des Menüs „Kontoeinstellungen“ in Partner Center](./media/manage-accounts/settings-account-workspaces.png) ](./media/manage-accounts/settings-account-workspaces.png#lightbox)
+
+1. Wählen Sie unter **Kontoeinstellungen** die Option **Rechtliche Hinweise** aus. Wählen Sie dann die Registerkarte **Entwickler** aus, um Details zu Ihrem Konto im kommerziellen Marketplace anzuzeigen.
+
+    [ ![Screenshot der Registerkarte „Entwickler“ auf der Seite „Rechtliche Hinweise“ unter „Kontoeinstellungen“](./media/manage-accounts/developer-tab-workspaces.png) ](./media/manage-accounts/developer-tab-workspaces.png#lightbox)
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
 
 Wenn nicht bereits geschehen, sollten Sie (oder der Administrator Ihrer Organisation) auf die [Kontoeinstellungen](https://go.microsoft.com/fwlink/?linkid=2165291) Ihres Partner Center-Kontos zugreifen.
 
 1. Melden Sie sich beim [Dashboard des kommerziellen Marketplace](https://go.microsoft.com/fwlink/?linkid=2165290) in Partner Center mit dem Konto an, auf das Sie zugreifen möchten. Wenn Sie mehreren Konten angehören und sich mit einem anderen Konto angemeldet haben, können Sie die [Konten wechseln](switch-accounts.md).
 1. Wählen Sie oben rechts **Einstellungen** (Zahnradsymbol) und dann **Kontoeinstellungen** aus.
 
-    [ ![Screenshot des Menüs „Kontoeinstellungen“ in Partner Center](./media/manage-accounts/settings-account.png) ](./media/manage-accounts/settings-account.png#lightbox)
+   :::image type="content" source="media/manage-accounts/settings-account.png" alt-text="Screenshot der Option „Kontoeinstellungen“ in Partner Center":::
 
 1. Wählen Sie unter **Kontoeinstellungen** die Option **Rechtliche Hinweise** aus. Wählen Sie dann die Registerkarte **Entwickler** aus, um Details zu Ihrem Konto im kommerziellen Marketplace anzuzeigen.
 
-    [ ![Screenshot der Registerkarte „Entwickler“ auf der Seite „Rechtliche Hinweise“ unter „Kontoeinstellungen“](./media/manage-accounts/developer-tab.png) ](./media/manage-accounts/developer-tab.png#lightbox)
+   :::image type="content" source="media/manage-accounts/developer-tab.png" alt-text="Screenshot: Registerkarte „Entwickler“" lightbox="media/manage-accounts/developer-tab.png":::
+
+---
 
 ### <a name="account-settings-page"></a>Seite „Kontoeinstellungen“
 
@@ -110,7 +130,7 @@ Auf der Seite **Vereinbarungen** können Sie eine Liste der von Ihnen autorisier
 
 Um auf die Seite „Vereinbarungen“ zuzugreifen, gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165507) an.
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 1. Wählen Sie oben rechts **Einstellungen** > **Kontoeinstellungen** aus.
 1. Wählen Sie unter **Kontoeinstellungen** die Option **Vereinbarungen** aus.
 
@@ -118,14 +138,38 @@ Möglicherweise wird am oberen Rand dieser Seite **Aktionen erforderlich** angez
 
 ## <a name="set-up-a-payout-profile"></a>Einrichten eines Auszahlungsprofils
 
-Ein Auszahlungsprofil ist das Bankkonto, auf das Ihre Verkaufserlöse überwiesen werden. Dieses Bankkonto muss sich in demselben Land oder derselben Region befinden, in dem bzw. der Sie Ihr Partner Center-Konto registriert haben. Weitere Informationen zum Auszahlungsprofil finden Sie unter [Erstellen und Verwalten von Auszahlungs- und Steuerprofilen für Incentives in Partner Center](/partner-center/incentives-create-and-manage-your-payout-and-tax-profiles) und [Einrichten von Auszahlungskonten und Steuerformularen](/partner-center/set-up-your-payout-account).
+Ein Auszahlungsprofil ist das Bankkonto, auf das Ihre Verkaufserlöse überwiesen werden. Dieses Bankkonto muss sich in demselben Land oder derselben Region befinden, in dem bzw. der Sie Ihr Partner Center-Konto registriert haben. Weitere Informationen zu einem Auszahlungsprofil finden Sie unter [Einrichten Ihres Auszahlungskontos und Steuerformulars](/partner-center/set-up-your-payout-account).
 
-Zum Einrichten Ihres Auszahlungsprofils gehen Sie folgendermaßen vor:
+### <a name="to-set-up-your-payout-profile"></a>Zum Einrichten Ihres Auszahlungsprofils gehen Sie folgendermaßen vor:
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+1. Melden Sie sich beim [Dashboard des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/home) in Partner Center mit dem Konto an, auf das Sie zugreifen möchten.
+
+1. Wählen Sie oben rechts **Einstellungen** (Zahnradsymbol) und dann **Kontoeinstellungen** aus.
+
+    [ ![Screenshot des Menüs „Kontoeinstellungen“ in Partner Center](./media/manage-accounts/settings-account-workspaces.png) ](./media/manage-accounts/settings-account-workspaces.png#lightbox)
+
+1. Wählen Sie im linken Menü unter **Auszahlung und Steuer** die **Profilzuweisung Auszahlung und Steuer**.
+
+    [ ![Veranschaulicht die Seite „Auszahlungs- und Steuerprofilzuweisung“.](./media/manage-accounts/payout-and-tax-profile-assignment.png) ](./media/manage-accounts/payout-and-tax-profile-assignment.png#lightbox)
+
+    > [!NOTE]
+    > Wenn der Abschnitt **Auszahlung und Steuern** im linken Menü nicht angezeigt wird, wenden Sie sich an Ihren globalen Administrator oder Kontoadministrator, um Berechtigungen zu erhalten.
+
+1. Weitere Informationen zum Einrichten Ihres Auszahlungsprofils finden Sie unter [Einrichten Ihres Auszahlungskontos und Steuerformulars](/partner-center/set-up-your-payout-account).
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
 
 1. Navigieren Sie in Partner Center zur [Übersichtsseite des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
-2. Wählen Sie im Abschnitt **Profil** neben **Auszahlungsprofil** die Option **Aktualisieren** aus.
-3. **Zahlungsmethode auswählen**: Bankkonto oder PayPal.
-4. **Zahlungsinformationen hinzufügen**: Unter anderem müssen Sie hier möglicherweise einen Kontotyp auswählen (Giro- oder Sparkonto) und den Namen des Kontoinhabers, die Kontonummer, Bankleitzahl, Rechnungsadresse, Telefonnummer oder die PayPal-E-Mail-Adresse eingeben. Weitere Informationen über die Verwendung von PayPal als Zahlungsmethode für Ihr Konto und darüber, ob diese in Ihrem Markt oder Ihrer Region unterstützt wird, finden Sie unter [PayPal-Informationen](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
+1. Wählen Sie im Abschnitt **Profil** neben **Auszahlungsprofil** die Option **Aktualisieren** aus.
+
+    > [!NOTE]
+    > Wenn der Abschnitt **Auszahlung und Steuern** im linken Menü nicht angezeigt wird, wenden Sie sich an Ihren globalen Administrator oder Kontoadministrator, um Berechtigungen zu erhalten.
+
+1. Weitere Informationen zum Einrichten Ihres Auszahlungsprofils finden Sie unter [Einrichten Ihres Auszahlungskontos und Steuerformulars](/partner-center/set-up-your-payout-account).
+
+---
 
 > [!IMPORTANT]
 > Wenn Sie Ihr Zahlungskonto ändern, kann dies dazu führen, dass sich Ihre Zahlungen um maximal einen Zahlungszyklus verzögern. Diese Verzögerung tritt auf, weil wir die Kontoänderung überprüfen müssen. Dies ist der gleiche Vorgang wie bei der ersten Einrichtung des Auszahlungskontos. Nachdem das Konto bestätigt wurde, erhalten Sie trotzdem den vollen Betrag. Zahlungen, die für den aktuellen Zahlungszyklus fällig sind, werden im nächsten Zyklus hinzugefügt.  
@@ -179,17 +223,16 @@ Die Einstellungen für die Geräteverwaltung gelten nur für die Veröffentlichu
 
 ## <a name="create-a-billing-profile"></a>Erstellen eines Abrechnungsprofils
 
-Wenn Sie ein Angebot für [Dynamics 365 for Customer Engagement und Power Apps](dynamics-365-customer-engage-offer-setup.md) oder [Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) veröffentlichen, müssen Sie ein *Abrechnungsprofil* ausfüllen.
+Wenn Sie ein Angebot für [Dynamics 365 for Customer Engagement und Power Apps](./partner-center-portal/create-new-customer-engagement-offer.md) oder [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) veröffentlichen, müssen Sie ein *Abrechnungsprofil* ausfüllen.
 
 Die Abrechnungsadresse ist von Ihrer juristischen Entität bereits ausgefüllt. Sie können diese Adresse später aktualisieren. Die Felder „Steuer“ und „USt-IdNr.“ sind für einige Länder erforderlich und für andere optional. Der Name des Landes/der Region und der Firmenname können nicht bearbeitet werden.
 
-1. Wechseln Sie zu **Kontoeinstellungen**.
+1. Wählen Sie oben rechts **Einstellungen** (Zahnradsymbol) und dann **Kontoeinstellungen** aus.
 1. Erweitern Sie dann im linken Navigationsbereich **Organisationsprofil**, und wählen Sie **Abrechnungsprofil** aus.
-
 
 ## <a name="multi-user-account-management"></a>Kontoverwaltung für mehrere Benutzer
 
-Partner Center nutzt [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) für den Zugriff auf Mehrbenutzerkonten und deren Verwaltung. Das Azure AD Ihrer Organisation wird im Rahmen des Registrierungsprozesses automatisch mit Ihrem Partner Center-Konto verknüpft.
+Partner Center nutzt [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) für den Zugriff auf Mehrbenutzerkonten und deren Verwaltung. Das Azure AD Ihrer Organisation wird im Rahmen des Registrierungsprozesses automatisch mit Ihrem Partner Center-Konto verknüpft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

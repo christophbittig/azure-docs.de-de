@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: f925eb888c1955212a762eb46c63300afd17d77d
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 89548cf1c98e360569255b9028b26230fedf5ed2
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427727"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092336"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln physischer Server mit der Ermittlung und Bewertung von Azure Migrate
 
@@ -194,28 +194,30 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Ausführen des Azure Migrate-Installationsskripts
 
 1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.  Führen Sie das Skript nicht auf einem Server mit einer vorhandenen Azure Migrate-Appliance aus.
-2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
-3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
-4. Führen Sie das Skript mit dem Namen **AzureMigrateInstaller.ps1** aus, indem Sie den folgenden Befehl ausführen:
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
+
+3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
+
+4. Führen Sie das Skript mit dem Namen `AzureMigrateInstaller.ps1` aus, indem Sie den folgenden Befehl ausführen:
+
+   `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 
 5. Treffen Sie eine Auswahl aus den Szenario-, Cloud- und Konnektivitätsoptionen, um eine Appliance mit der gewünschten Konfiguration bereitzustellen. Mit der nachfolgend gezeigten Auswahl richten Sie beispielsweise eine Appliance zum Ermitteln und Bewerten **physischer Server** _(oder in anderen Clouds wie AWS, GCP, Xen, usw. ausgeführter Server)_ für ein Azure Migrate-Projekt mit **Standardkonnektivität** _(öffentlicher Endpunkt)_ in einer **öffentlichen Azure-Cloud** ein.
 
-    :::image type="content" source="./media/tutorial-discover-physical/script-physical-default-inline.png" alt-text="Screenshot: Einrichten einer Appliance mit der gewünschten Konfiguration" lightbox="./media/tutorial-discover-physical/script-physical-default-expanded.png":::
+   :::image type="content" source="./media/tutorial-discover-physical/script-physical-default-inline.png" alt-text="Screenshot: Einrichten einer Appliance mit der gewünschten Konfiguration" lightbox="./media/tutorial-discover-physical/script-physical-default-expanded.png":::
 
 6. Das Installationsskript führt folgende Schritte aus:
 
- - Installation von Agents und einer Webanwendung.
- - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
- - Download und Installation eines wiederbeschreibbaren IIS-Moduls.
- - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
- - Erstellung der folgenden Dateien in diesem Pfad:
-    - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
-    - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
+   - Installation von Agents und einer Webanwendung.
+   - Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
+   - Download und Installation eines wiederbeschreibbaren IIS-Moduls.
+   - Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
+   - Erstellung der folgenden Dateien in diesem Pfad:
+     - **Konfigurationsdateien:** `%ProgramData%\Microsoft Azure\Config`
+     - **Protokolldateien:** `%ProgramData%\Microsoft Azure\Logs`
 
-Nach der erfolgreichen Ausführung des Skripts wird der Appliancekonfigurations-Manager automatisch gestartet.
+Nach der erfolgreichen Ausführung des Skripts wird der Appliance-Konfigurations-Manager automatisch gestartet.
 
 > [!NOTE]
 > Bei Problemen können Sie zum Troubleshooting unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log“ auf die Skriptprotokolle zugreifen.
@@ -231,15 +233,15 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 1. Öffnen Sie in einem Browser auf einem beliebigen Server, der eine Verbindung mit der Appliance herstellen kann, die URL der Appliance-Web-App: **https://*Name oder IP-Adresse der Appliance*: 44368**.
 
    Alternativ können Sie auch auf dem Desktop auf die App-Verknüpfung klicken, um die App zu öffnen.
-2. Akzeptieren Sie die **Lizenzbedingungen**, und lesen Sie die Drittanbieterinformationen.
+1. Akzeptieren Sie die **Lizenzbedingungen**, und lesen Sie die Drittanbieterinformationen.
 1. Gehen Sie in der Web-App unter **Erforderliche Komponenten einrichten** wie folgt vor:
-    - **Konnektivität**: Die App überprüft, ob der Server über Internetzugriff verfügt. Wenn der Server einen Proxy verwendet:
-        - Klicken Sie auf **Proxy einrichten**, um die Proxyadresse im Format http://ProxyIPAddress oder http://ProxyFQDN) und den überwachenden Port anzugeben.
-        - Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
-        - Es werden nur HTTP-Proxys unterstützt.
-        - Wenn Sie Proxydetails hinzugefügt oder den Proxy und/oder die Authentifizierung deaktiviert haben, klicken Sie auf **Speichern**, um die Konnektivitätsprüfung erneut auszulösen.
-    - **Uhrzeitsynchronisierung**: Die Uhrzeit wird überprüft. Die Uhrzeit der Appliance muss mit der Internetzeit synchronisiert werden, damit die Ermittlung ordnungsgemäß funktioniert.
-    - **Updates installieren**: Das Tool „Azure Migrate: Ermittlung und Bewertung“ überprüft, ob auf der Appliance die neuesten Updates installiert sind. Nachdem die Prüfung abgeschlossen ist, können Sie auf **Appliancedienste anzeigen** klicken, um den Status und die Versionen der auf der Appliance ausgeführten Komponenten anzuzeigen.
+   - **Konnektivität**: Die App überprüft, ob der Server über Internetzugriff verfügt. Wenn der Server einen Proxy verwendet:
+     - Klicken Sie auf **Proxy einrichten**, um die Proxyadresse im Format http://ProxyIPAddress oder http://ProxyFQDN) und den überwachenden Port anzugeben.
+     - Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
+     - Es werden nur HTTP-Proxys unterstützt.
+     - Wenn Sie Proxydetails hinzugefügt oder den Proxy und/oder die Authentifizierung deaktiviert haben, klicken Sie auf **Speichern**, um die Konnektivitätsprüfung erneut auszulösen.
+   - **Uhrzeitsynchronisierung**: Die Uhrzeit wird überprüft. Die Uhrzeit der Appliance muss mit der Internetzeit synchronisiert werden, damit die Ermittlung ordnungsgemäß funktioniert.
+   - **Updates installieren**: Das Tool „Azure Migrate: Ermittlung und Bewertung“ überprüft, ob auf der Appliance die neuesten Updates installiert sind. Nachdem die Prüfung abgeschlossen ist, können Sie auf **Appliancedienste anzeigen** klicken, um den Status und die Versionen der auf der Appliance ausgeführten Komponenten anzuzeigen.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Registrieren der Appliance bei Azure Migrate
 
@@ -249,14 +251,11 @@ Führen Sie die Ersteinrichtung der Appliance durch.
     ![Modales Dialogfeld mit Gerätecode](./media/tutorial-discover-vmware/device-code.png)
 
 1. Klicken Sie auf **Copy code & Login** (Code kopieren und anmelden), um den Gerätecode zu kopieren und eine Azure-Anmeldeaufforderung in einer neuen Browserregisterkarte zu öffnen. Sollte keine Anmeldung angezeigt werden, vergewissern Sie sich, dass Sie den Popupblocker im Browser deaktiviert haben.
-1. Fügen Sie auf der neuen Registerkarte den Gerätecode ein, und melden Sie sich mit Ihrem Azure-Benutzernamen und dem zugehörigen Kennwort an.
-   
-   Die Anmeldung mit einer PIN wird nicht unterstützt.
-3. Falls Sie die Registerkarte für die Anmeldung versehentlich schließen, ohne die Anmeldung durchzuführen, müssen Sie die Browserregisterkarte des Appliance-Konfigurations-Managers aktualisieren, um die Schaltfläche „Anmelden“ wieder zu aktivieren.
+1. Fügen Sie auf der neuen Registerkarte den Gerätecode ein, und melden Sie sich mit Ihrem Azure-Benutzernamen und dem zugehörigen Kennwort an. Die Anmeldung mit einer PIN wird nicht unterstützt.
+1. Falls Sie die Registerkarte für die Anmeldung versehentlich schließen, ohne die Anmeldung durchzuführen, müssen Sie die Browserregisterkarte des Appliance-Konfigurations-Managers aktualisieren, um die Schaltfläche „Anmelden“ wieder zu aktivieren.
 1. Wechseln Sie nach der erfolgreichen Anmeldung wieder zur vorherigen Registerkarte mit dem Appliance-Konfigurations-Manager.
-4. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen [Berechtigungen]() für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
+1. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen [Berechtigungen]() für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
 1. Nachdem die Appliance erfolgreich registriert wurde, können Sie die Registrierungsdetails anzeigen, indem Sie auf **Details anzeigen** klicken.
-
 
 ## <a name="start-continuous-discovery"></a>Starten der kontinuierlichen Ermittlung
 
@@ -289,8 +288,7 @@ Stellen Sie nun eine Verbindung zwischen der Appliance und den zu ermittelnden p
 1. Sie können die Verbindung mit Servern jederzeit vor Beginn der Ermittlung **erneut überprüfen**.
 1. Klicken Sie auf **Ermittlung starten**, um die Ermittlung der erfolgreich überprüften Server zu starten. Nachdem die Ermittlung erfolgreich gestartet wurde, können Sie den Ermittlungsstatus für jeden Server in der Tabelle überprüfen.
 
-
-Daraufhin wird die Ermittlung gestartet. Es dauert ca. 2 Minuten pro Server, bis Metadaten des ermittelten Servers im Azure-Portal angezeigt werden.
+Es dauert etwa zwei Minuten, bis die Ermittlung von 100 Servern abgeschlossen ist und ihre Metadaten im Azure-Portal angezeigt werden.
 
 ## <a name="verify-servers-in-the-portal"></a>Überprüfen von Servern im Portal
 
@@ -298,6 +296,13 @@ Nach Abschluss der Ermittlung können Sie überprüfen, ob die Server im Portal 
 
 1. Öffnen Sie das Azure Migrate-Dashboard.
 2. Klicken Sie unter **Azure Migrate – Server** > **Azure Migrate: Ermittlung und Bewertung** auf das Symbol mit der Anzahl für **Ermittelte Server**.
+
+## <a name="delete-servers"></a>Löschen von Servern
+Nachdem die Ermittlung initiiert wurde, können Sie alle hinzugefügten Server aus dem Appliancekonfigurations-Manager löschen, indem Sie in der Tabelle nach **Ermittlungsquelle hinzufügen** suchen und auf **Löschen** klicken.
+
+>[!NOTE]
+> Wenn Sie einen Server löschen möchten, auf dem die Ermittlung initiiert wurde, werden die laufende Ermittlung und Bewertung beendet, was sich möglicherweise auf die Vertrauenswürdigkeit der Bewertung auswirkt, die diesen Server enthält. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2171565)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Bewerten Sie physische Server](tutorial-assess-physical.md) für die Migration zu Azure.

@@ -5,14 +5,14 @@ author: yegu-ms
 manager: maiye
 ms.service: cache
 ms.topic: conceptual
-ms.date: 01/22/2020
+ms.date: 09/15/2021
 ms.author: yegu
-ms.openlocfilehash: 5f9e0a18db0920acd35ebd7b133ed3fe5d0eaee9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 46363d3bed85c275a39fea174191fad18d95d753
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352948"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609420"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>Anwendung des Reservierungsrabatts auf Azure Cache for Redis
 
@@ -20,7 +20,7 @@ Nachdem Sie eine reservierte Azure Cache for Redis-Kapazität erworben haben,
 
 ## <a name="how-reservation-discount-is-applied"></a>Wie der Reservierungsrabatt angewendet wird
 
-Nicht in Anspruch genommener Reservierungsrabatt **geht verloren**. Das heißt, wenn Sie für eine Stunde nicht über die entsprechenden Ressourcen verfügen, verlieren Sie eine Reservierungsmenge für diese Stunde. Sie können ungenutzte reservierte Stunden nicht übertragen.
+Nicht in Anspruch genommener Reservierungsrabatt ***geht verloren***. Das heißt, wenn Sie für eine Stunde nicht über die entsprechenden Ressourcen verfügen, verlieren Sie eine Reservierungsmenge für diese Stunde. Sie können ungenutzte reservierte Stunden nicht übertragen.
 
 Wenn Sie eine Ressource beenden, wird der Reservierungsrabatt automatisch auf eine andere entsprechende Ressource im angegebenen Reservierungsumfang angewandt. Werden im angegebenen Reservierungsumfang keine entsprechenden Ressourcen gefunden, gehen die reservierten Stunden verloren.
 
@@ -30,7 +30,7 @@ Der Rabatt für reservierter Azure Cache for Redis-Kapazität wird auf Stunde
 
 Die folgenden Beispiele veranschaulichen, wie der Rabatt für reservierte Azure Cache for Redis-Kapazität angewendet wird – abhängig davon, wie viele Cache-Instanzen Sie erworben haben und wann sie ausgeführt werden.
 
-**Beispiel 1**: Sie erwerben reservierte Azure Cache for Redis-Kapazität für einen 6-GB-Cache. Wenn Sie einen 13-GB-Cache verwenden, der den restlichen Attributen der Reservierung entspricht, werden 7 GB Ihrer Azure Cache for Redis-Nutzung zum Preis für die nutzungsbasierte Bezahlung abgerechnet, und Sie erhalten den Reservierungsrabatt für eine Computenutzungsstunde des 6-GB-Caches.
+* **Beispiel 1**: Sie erwerben reservierte Azure Cache for Redis-Kapazität für einen 6-GB-Cache. Wenn Sie einen 13-GB-Cache verwenden, der den restlichen Attributen der Reservierung entspricht, werden 7 GB Ihrer Azure Cache for Redis-Nutzung zum Preis für die nutzungsbasierte Bezahlung abgerechnet, und Sie erhalten den Reservierungsrabatt für eine Computenutzungsstunde des 6-GB-Caches.
 
 Bei den übrigen Beispielen wird davon ausgegangen, dass die von Ihnen erworbene reservierte Azure Cache for Redis-Kapazität für einen 26-GB-Cache gilt und die restlichen Reservierungsattribute dem aktiven Cache entsprechen.
 

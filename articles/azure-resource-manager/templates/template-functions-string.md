@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Zeichenfolge
 description: Informationen zu den Funktionen, die in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Arbeiten mit Zeichenfolgen verwendet werden können.
 ms.topic: conceptual
-ms.date: 05/14/2021
-ms.openlocfilehash: e8b99fa59feeaa3e18916089c71f17fa48627627
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/09/2021
+ms.openlocfilehash: bfb80a03012f5a1a9194789a82efd5cccd1eb18d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959491"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806987"
 ---
 # <a name="string-functions-for-arm-templates"></a>Zeichenfolgenfunktionen für ARM-Vorlagen
 
@@ -66,44 +66,9 @@ Eine Zeichenfolge mit der base64-Darstellung.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) zeigt die Nutzungsweise der base64-Funktion.
+Das folgende Beispiel zeigt die Verwendung der Funktion `base64`.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringData": {
-      "type": "string",
-      "defaultValue": "one, two, three"
-    },
-    "jsonFormattedData": {
-      "type": "string",
-      "defaultValue": "{'one': 'a', 'two': 'b'}"
-    }
-  },
-  "variables": {
-    "base64String": "[base64(parameters('stringData'))]",
-    "base64Object": "[base64(parameters('jsonFormattedData'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "base64Output": {
-      "type": "string",
-      "value": "[variables('base64String')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[base64ToString(variables('base64String'))]"
-    },
-    "toJsonOutput": {
-      "type": "object",
-      "value": "[base64ToJson(variables('base64Object'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/base64.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -131,44 +96,9 @@ Ein JSON-Objekt.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) verwendet die base64ToJson-Funktion zum Konvertieren eines base64-Werts:
+Das folgende Beispiel verwendet die Funktion `base64ToJson`, um einen base64-Wert zu konvertieren:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringData": {
-      "type": "string",
-      "defaultValue": "one, two, three"
-    },
-    "jsonFormattedData": {
-      "type": "string",
-      "defaultValue": "{'one': 'a', 'two': 'b'}"
-    }
-  },
-  "variables": {
-    "base64String": "[base64(parameters('stringData'))]",
-    "base64Object": "[base64(parameters('jsonFormattedData'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "base64Output": {
-      "type": "string",
-      "value": "[variables('base64String')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[base64ToString(variables('base64String'))]"
-    },
-    "toJsonOutput": {
-      "type": "object",
-      "value": "[base64ToJson(variables('base64Object'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/base64.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -196,44 +126,9 @@ Eine Zeichenfolge des konvertierten base64-Werts.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) verwendet die base64ToString-Funktion zum Konvertieren eines base64-Werts:
+Im folgenden Beispiel wird die Funktion `base64ToString` verwendet, um einen base64-Wert zu konvertieren:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringData": {
-      "type": "string",
-      "defaultValue": "one, two, three"
-    },
-    "jsonFormattedData": {
-      "type": "string",
-      "defaultValue": "{'one': 'a', 'two': 'b'}"
-    }
-  },
-  "variables": {
-    "base64String": "[base64(parameters('stringData'))]",
-    "base64Object": "[base64(parameters('jsonFormattedData'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "base64Output": {
-      "type": "string",
-      "value": "[variables('base64String')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[base64ToString(variables('base64String'))]"
-    },
-    "toJsonOutput": {
-      "type": "object",
-      "value": "[base64ToJson(variables('base64Object'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/base64.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -254,7 +149,7 @@ Kombiniert mehrere Zeichenfolgenwerte und gibt die verkettete Zeichenfolge zurü
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge oder Array |Die erste Zeichenfolge oder das erste Array für die Verkettung. |
-| zusätzliche Argumente |Nein |Zeichenfolge oder Array |Weitere Zeichenfolgen oder Arrays in sequenzieller Reihenfolge für die Verkettung. |
+| mehr Argumente |Nein |Zeichenfolge oder Array |Weitere Zeichenketten oder Arrays in sequentieller Reihenfolge für die Verkettung. |
 
 Diese Funktion akzeptiert eine beliebige Anzahl von Argumenten und Zeichenfolgen oder Arrays für die Parameter. Sie können jedoch nicht sowohl Arrays als auch Zeichenfolgen für Parameter angeben. Zeichenfolgen werden nur mit anderen Zeichenfolgen verkettet.
 
@@ -264,27 +159,9 @@ Eine Zeichenfolge oder ein Array aus verketteten Werten.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json) zeigt, wie zwei Zeichenfolgenwerte kombiniert werden und eine verkettete Zeichenfolge zurückgegeben wird.
+Das folgende Beispiel zeigt, wie zwei Zeichenfolgenwerte kombiniert werden und eine verkettete Zeichenfolge zurückgeben.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "prefix": {
-      "type": "string",
-      "defaultValue": "prefix"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "concatOutput": {
-      "type": "string",
-      "value": "[concat(parameters('prefix'), '-', uniqueString(resourceGroup().id))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/concat-string.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -292,40 +169,9 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) zeigt, wie zwei Arrays kombiniert werden.
+Im folgenden Beispiel wird veranschaulicht, wie zwei Arrays kombiniert werden.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [
-        "1-1",
-        "1-2",
-        "1-3"
-      ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [
-        "2-1",
-        "2-2",
-        "2-3"
-      ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "return": {
-      "type": "array",
-      "value": "[concat(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/concat-array.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -352,60 +198,9 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json) zeigt die Verwendung von „contains“ mit unterschiedlichen Typen:
+Das folgende Beispiel zeigt die Verwendung von „contains“ mit unterschiedlichen Typen:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "OneTwoThree"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "stringTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'e')]"
-    },
-    "stringFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'z')]"
-    },
-    "objectTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'one')]"
-    },
-    "objectFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'a')]"
-    },
-    "arrayTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'three')]"
-    },
-    "arrayFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'four')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/contains.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -436,35 +231,9 @@ Eine als Daten-URI formatierte Zeichenfolge.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json) konvertiert einen Wert in einen Daten-URI und einen Daten-URI in eine Zeichenfolge:
+Das folgende Beispiel konvertiert einen Wert in einen Daten-URI und konvertiert einen Daten-URI in eine Zeichenfolge.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "Hello"
-    },
-    "dataFormattedString": {
-      "type": "string",
-      "defaultValue": "data:;base64,SGVsbG8sIFdvcmxkIQ=="
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "dataUriOutput": {
-      "value": "[dataUri(parameters('stringToTest'))]",
-      "type": "string"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[dataUriToString(parameters('dataFormattedString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/datauri.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -491,35 +260,9 @@ Eine Zeichenfolge, die den konvertierten Wert enthält.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json) konvertiert einen Wert in einen Daten-URI und einen Daten-URI in eine Zeichenfolge:
+Das folgende Beispiel konvertiert einen Wert in einen Daten-URI und konvertiert einen Daten-URI in eine Zeichenfolge.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "Hello"
-    },
-    "dataFormattedString": {
-      "type": "string",
-      "defaultValue": "data:;base64,SGVsbG8sIFdvcmxkIQ=="
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "dataUriOutput": {
-      "value": "[dataUri(parameters('stringToTest'))]",
-      "type": "string"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[dataUriToString(parameters('dataFormattedString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/datauri.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -546,44 +289,9 @@ Gibt **True** zurück, wenn der Werte leer ist. Andernfalls wird **False** zurü
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json) überprüft, ob ein Array, ein Objekt und eine Zeichenfolge leer sind.
+Im folgenden Beispiel wird überprüft, ob ein Array, Objekt und eine Zeichenfolge leer sind.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": []
-    },
-    "testObject": {
-      "type": "object",
-      "defaultValue": {}
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": ""
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testArray'))]"
-    },
-    "objectEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testObject'))]"
-    },
-    "stringEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/empty.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -612,41 +320,9 @@ Bestimmt, ob eine Zeichenfolge mit einem Wert endet. Bei dem Vergleich wird Gro�
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json) zeigt die Verwendung der Funktionen startsWith und endsWith:
+Das folgende Beispiel zeigt, wie man die Funktionen `startsWith` und `endsWith` verwendet:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "startsTrue": {
-      "value": "[startsWith('abcdef', 'ab')]",
-      "type": "bool"
-    },
-    "startsCapTrue": {
-      "value": "[startsWith('abcdef', 'A')]",
-      "type": "bool"
-    },
-    "startsFalse": {
-      "value": "[startsWith('abcdef', 'e')]",
-      "type": "bool"
-    },
-    "endsTrue": {
-      "value": "[endsWith('abcdef', 'ef')]",
-      "type": "bool"
-    },
-    "endsCapTrue": {
-      "value": "[endsWith('abcdef', 'F')]",
-      "type": "bool"
-    },
-    "endsFalse": {
-      "value": "[endsWith('abcdef', 'e')]",
-      "type": "bool"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/startsendswith.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -677,32 +353,9 @@ Ein Zeichenfolgenwert, der dem letzten Zeichen entspricht, bzw. der Typ (Zeichen
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json) zeigt die Verwendung der first-Funktion mit einem Array und einer Zeichenfolge.
+Im folgenden Beispiel wird die Verwendung der first-Funktion mit einem Array und einer Zeichenfolge gezeigt.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayOutput": {
-      "type": "string",
-      "value": "[first(parameters('arrayToTest'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[first('One Two Three')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/first.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -723,7 +376,7 @@ Erstellt eine formatierte Zeichenfolge aus Eingabewerten.
 |:--- |:--- |:--- |:--- |
 | formatString | Ja | Zeichenfolge | Die zusammengesetzte Formatzeichenfolge. |
 | arg1 | Ja | Zeichenfolge, Integer oder boolescher Wert | Der Wert, der in die formatierte Zeichenfolge aufgenommen werden soll. |
-| zusätzliche Argumente | Nein | Zeichenfolge, Integer oder boolescher Wert | Weitere Werte, die in die formatierte Zeichenfolge aufgenommen werden sollen. |
+| mehr Argumente | Nein | Zeichenfolge, Integer oder boolescher Wert | Mehrere Werte, die in die formatierte Zeichenfolge aufgenommen werden sollen. |
 
 ### <a name="remarks"></a>Bemerkungen
 
@@ -731,36 +384,9 @@ Verwenden Sie diese Funktion zum Formatieren einer Zeichenfolge in Ihrer Vorlage
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende Beispielvorlage zeigt die Verwendung der format-Funktion.
+Das folgende Beispiel zeigt die Verwendung der format-Funktion.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "greeting": {
-      "type": "string",
-      "defaultValue": "Hello"
-    },
-    "name": {
-      "type": "string",
-      "defaultValue": "User"
-    },
-    "numberToFormat": {
-      "type": "int",
-      "defaultValue": 8175133
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "formatTest": {
-      "type": "string",
-      "value": "[format('{0}, {1}. Formatted number: {2:N0}', parameters('greeting'), parameters('name'), parameters('numberToFormat'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/format.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -779,7 +405,7 @@ Erstellt einen Wert im Format eines Globally Unique Identifiers basierend auf de
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | baseString |Ja |Zeichenfolge |Der in der Hashfunktion für die Erstellung des GUID verwendete Wert. |
-| Zusätzliche Parameter nach Bedarf. |Nein |Zeichenfolge |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
+| weitere Parameter nach Bedarf |Nein |Zeichenfolge |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
 
 ### <a name="remarks"></a>Bemerkungen
 
@@ -813,31 +439,9 @@ Eine Zeichenfolge mit 36 Zeichen im Format eines Globally Unique Identifiers.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/guid.json) gibt Ergebnisse vom GUID zurück:
+Das folgende Beispiel liefert Ergebnisse aus `guid`:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "guidPerSubscription": {
-      "value": "[guid(subscription().subscriptionId)]",
-      "type": "string"
-    },
-    "guidPerResourceGroup": {
-      "value": "[guid(resourceGroup().id)]",
-      "type": "string"
-    },
-    "guidPerDeployment": {
-      "value": "[guid(resourceGroup().id, deployment().name)]",
-      "type": "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/guid.json":::
 
 ## <a name="indexof"></a>indexOf
 
@@ -858,37 +462,9 @@ Eine ganze Zahl, die die Position des zu suchenden Elements darstellt. Der Wert 
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json) zeigt die Verwendung der Funktionen indexOf und lastIndexOf:
+Im folgenden Beispiel wird gezeigt, wie man die Funktionen `indexOf` und `lastIndexOf` verwendet:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "firstT": {
-      "value": "[indexOf('test', 't')]",
-      "type": "int"
-    },
-    "lastT": {
-      "value": "[lastIndexOf('test', 't')]",
-      "type": "int"
-    },
-    "firstString": {
-      "value": "[indexOf('abcdef', 'CD')]",
-      "type": "int"
-    },
-    "lastString": {
-      "value": "[lastIndexOf('abcdef', 'AB')]",
-      "type": "int"
-    },
-    "notFound": {
-      "value": "[indexOf('abcdef', 'z')]",
-      "type": "int"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/indexof.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -926,32 +502,9 @@ Ein Zeichenfolgenwert, der dem letzten Zeichen entspricht, bzw. der Typ (Zeichen
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json) zeigt die Verwendung der last-Funktion mit einem Array und einer Zeichenfolge.
+Das folgende Beispiel zeigt, wie man die Funktion `last` mit einem Array und einer Zeichenkette verwendet.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayOutput": {
-      "type": "string",
-      "value": "[last(parameters('arrayToTest'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[last('One Two Three')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/last.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -979,41 +532,13 @@ Eine ganze Zahl, die die letzte Position des zu suchenden Elements darstellt. De
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json) zeigt die Verwendung der Funktionen indexOf und lastIndexOf:
+Im folgenden Beispiel wird gezeigt, wie man die Funktionen `indexOf` und `lastIndexOf` verwendet:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "firstT": {
-      "value": "[indexOf('test', 't')]",
-      "type": "int"
-    },
-    "lastT": {
-      "value": "[lastIndexOf('test', 't')]",
-      "type": "int"
-    },
-    "firstString": {
-      "value": "[indexOf('abcdef', 'CD')]",
-      "type": "int"
-    },
-    "lastString": {
-      "value": "[lastIndexOf('abcdef', 'AB')]",
-      "type": "int"
-    },
-    "notFound": {
-      "value": "[indexOf('abcdef', 'z')]",
-      "type": "int"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/indexof.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | firstT | Int | 0 |
 | lastT | Int | 3 |
@@ -1029,7 +554,7 @@ Gibt die Anzahl von Zeichen in einer Zeichenfolge, Elementen in einem Array oder
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array, Zeichenfolge oder Objekt |Das Array, von dem die Anzahl der Elemente ermittelt werden soll, die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll, oder das Objekt, von dem die Anzahl der Eigenschaften auf Stammebene ermittelt werden soll. |
 
@@ -1039,59 +564,13 @@ Eine ganze Zahl.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json) zeigt die Verwendung von „length“ mit einem Array und einer Zeichenfolge:
+Das folgende Beispiel zeigt, wie man die Funktion `length` mit einem Array und einer Zeichenkette verwendet:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "propA": "one",
-        "propB": "two",
-        "propC": "three",
-        "propD": {
-          "propD-1": "sub",
-          "propD-2": "sub"
-        }
-      }
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayLength": {
-      "type": "int",
-      "value": "[length(parameters('arrayToTest'))]"
-    },
-    "stringLength": {
-      "type": "int",
-      "value": "[length(parameters('stringToTest'))]"
-    },
-    "objectLength": {
-      "type": "int",
-      "value": "[length(parameters('objectToTest'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/length.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | arraylength | Int | 3 |
 | stringLength | Int | 13 |
@@ -1123,75 +602,23 @@ Eine Zeichenfolge mit 36 Zeichen im Format eines Globally Unique Identifiers.
 
 ### <a name="examples"></a>Beispiele
 
-In der folgenden Beispielvorlage wird ein Parameter mit einem neuen Bezeichner veranschaulicht.
+Im folgenden Beispiel wird ein Parameter mit einem neuen Bezeichner veranschaulicht.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "guidValue": {
-      "type": "string",
-      "defaultValue": "[newGuid()]"
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "guidOutput": {
-      "type": "string",
-      "value": "[parameters('guidValue')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/newguid.json":::
 
 Die Ausgabe des vorherigen Beispiels variiert bei jeder Bereitstellung. Sie sollte jedoch folgender ähneln:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | guidOutput | Zeichenfolge | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
-Im folgenden Beispiel wird die newGuid-Funktion verwendet, um einen eindeutigen Namen für ein Speicherkonto zu erstellen. Diese Vorlage funktioniert möglicherweise in Testumgebungen, in denen das Speicherkonto nur für kurze Zeit vorhanden ist und nicht erneut bereitgestellt wird.
+Das folgende Beispiel verwendet die Funktion `newGuid`, um einen eindeutigen Namen für ein Speicherkonto zu erstellen. Diese Vorlage funktioniert möglicherweise in Testumgebungen, in denen das Speicherkonto nur für kurze Zeit vorhanden ist und nicht erneut bereitgestellt wird.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "guidValue": {
-      "type": "string",
-      "defaultValue": "[newGuid()]"
-    }
-  },
-  "variables": {
-    "storageName": "[concat('storage', uniqueString(parameters('guidValue')))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageName')]",
-      "location": "West US",
-      "apiVersion": "2018-07-01",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "StorageV2",
-      "properties": {}
-    }
-  ],
-  "outputs": {
-    "nameOutput": {
-      "type": "string",
-      "value": "[variables('storageName')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/newguid-storageaccount.json":::
 
 Die Ausgabe des vorherigen Beispiels variiert bei jeder Bereitstellung. Sie sollte jedoch folgender ähneln:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | nameOutput | Zeichenfolge | storagenziwvyru7uxie |
 
@@ -1203,7 +630,7 @@ Gibt eine rechtsbündig ausgerichtete Zeichenfolge zurück, indem links Zeichen 
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | valueToPad |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der rechtsbündig ausgerichtet werden soll. |
 | totalLength |Ja |INT |Die Gesamtzahl der Zeichen in der zurückgegebenen Zeichenfolge. |
@@ -1217,27 +644,9 @@ Eine Zeichenfolge mit mindestens der angegebenen Zeichenanzahl.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json) zeigt, wie Sie den vom Benutzer angegebenen Parameterwert auffüllen, indem Sie das Nullzeichen hinzufügen, bis er die Gesamtzahl der Zeichen erreicht.
+Das folgende Beispiel zeigt, wie Sie den vom Benutzer angegebenen Parameterwert auffüllen, indem Sie das Nullzeichen hinzufügen, bis er die Gesamtzahl der Zeichen erreicht.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "123"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "stringOutput": {
-      "type": "string",
-      "value": "[padLeft(parameters('testString'),10,'0')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/padleft.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -1265,31 +674,9 @@ Eine Zeichenfolge mit den ersetzten Zeichen.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/replace.json) zeigt, wie Sie aus einer von einem Benutzer bereitgestellten Zeichenfolge alle Gedankenstriche entfernen und einen Teil der Zeichenfolge durch eine andere Zeichenfolge ersetzen.
+Das folgende Beispiel zeigt, wie Sie aus einer von einem Benutzer bereitgestellten Zeichenfolge alle Gedankenstriche entfernen und einen Teil der Zeichenfolge durch eine andere Zeichenfolge ersetzen.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "123-123-1234"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "firstOutput": {
-      "type": "string",
-      "value": "[replace(parameters('testString'),'-', '')]"
-    },
-    "secondOutput": {
-      "type": "string",
-      "value": "[replace(parameters('testString'),'1234', 'xxxx')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/replace.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -1317,47 +704,9 @@ Ein Array oder eine Zeichenfolge.
 
 ### <a name="examples"></a>Beispiele
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json) wird die angegebene Anzahl von Elementen im Array und von Zeichen in einer Zeichenfolge übersprungen.
+Im folgenden Beispiel wird die angegebene Anzahl von Elementen im Array und Zeichen in der Zeichenfolge übersprungen.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "elementsToSkip": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    },
-    "charactersToSkip": {
-      "type": "int",
-      "defaultValue": 4
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "array",
-      "value": "[skip(parameters('testArray'),parameters('elementsToSkip'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[skip(parameters('testString'),parameters('charactersToSkip'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/skip.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -1385,38 +734,9 @@ Ein Array der Zeichenfolgen.
 
 ### <a name="examples"></a>Beispiele
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/split.json) wird die Eingabezeichenfolge mit einem Komma sowie entweder mit einem Komma oder Semikolon getrennt.
+Das folgende Beispiel trennt die Eingabezeichenfolge mit einem Komma und entweder mit einem Komma oder einem Semikolon.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstString": {
-      "type": "string",
-      "defaultValue": "one,two,three"
-    },
-    "secondString": {
-      "type": "string",
-      "defaultValue": "one;two,three"
-    }
-  },
-  "variables": {
-    "delimiters": [ ",", ";" ]
-  },
-  "resources": [],
-  "outputs": {
-    "firstOutput": {
-      "type": "array",
-      "value": "[split(parameters('firstString'),',')]"
-    },
-    "secondOutput": {
-      "type": "array",
-      "value": "[split(parameters('secondString'),variables('delimiters'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/split.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -1444,41 +764,9 @@ Stellt fest, ob eine Zeichenfolge mit einem bestimmten Wert beginnt. Bei dem Ver
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json) zeigt die Verwendung der Funktionen startsWith und endsWith:
+Das folgende Beispiel zeigt, wie man die Funktionen `startsWith` und `endsWith` verwendet:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "startsTrue": {
-      "value": "[startsWith('abcdef', 'ab')]",
-      "type": "bool"
-    },
-    "startsCapTrue": {
-      "value": "[startsWith('abcdef', 'A')]",
-      "type": "bool"
-    },
-    "startsFalse": {
-      "value": "[startsWith('abcdef', 'e')]",
-      "type": "bool"
-    },
-    "endsTrue": {
-      "value": "[endsWith('abcdef', 'ef')]",
-      "type": "bool"
-    },
-    "endsCapTrue": {
-      "value": "[endsWith('abcdef', 'F')]",
-      "type": "bool"
-    },
-    "endsFalse": {
-      "value": "[endsWith('abcdef', 'e')]",
-      "type": "bool"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/startsendswith.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -1509,50 +797,9 @@ Eine Zeichenfolge des konvertierten Werts.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/string.json) zeigt das Konvertieren verschiedener Typen von Werten in Zeichenfolgen:
+Das folgende Beispiel zeigt, wie verschiedene Arten von Werten in Zeichenketten umgewandelt werden können.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testObject": {
-      "type": "object",
-      "defaultValue": {
-        "valueA": 10,
-        "valueB": "Example Text"
-      }
-    },
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "a",
-        "b",
-        "c"
-      ]
-    },
-    "testInt": {
-      "type": "int",
-      "defaultValue": 5
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "objectOutput": {
-      "type": "string",
-      "value": "[string(parameters('testObject'))]"
-    },
-    "arrayOutput": {
-      "type": "string",
-      "value": "[string(parameters('testArray'))]"
-    },
-    "intOutput": {
-      "type": "string",
-      "value": "[string(parameters('testInt'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/string.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -1597,27 +844,9 @@ Die Funktion schlägt fehl, wenn sich die Teilzeichenfolge über das Ende der Ze
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/substring.json) extrahiert eine Teilzeichenfolge aus einem Parameter.
+Im folgenden Beispiel wird eine Teilzeichenfolge aus einem Parameter extrahiert.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "substringOutput": {
-      "value": "[substring(parameters('testString'), 4, 3)]",
-      "type": "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/substring.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -1629,7 +858,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 `take(originalValue, numberToTake)`
 
-Gibt eine Zeichenfolge mit der angegebenen Anzahl von Zeichen ab dem Anfang der Zeichenfolge bzw. ein Array mit der angegebenen Anzahl von Elementen ab dem Anfang des Arrays zurück.
+Gibt ein Array oder eine Zeichenkette zurück. Ein Array hat die angegebene Anzahl von Elementen ab dem Beginn des Arrays. Eine Zeichenkette hat die angegebene Anzahl von Zeichen vom Anfang der Zeichenkette an.
 
 ### <a name="parameters"></a>Parameter
 
@@ -1644,47 +873,9 @@ Ein Array oder eine Zeichenfolge.
 
 ### <a name="examples"></a>Beispiele
 
-In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json) wird die angegebene Anzahl von Elementen aus dem Array und von Zeichen aus einer Zeichenfolge entnommen.
+Im folgenden Beispiel wird die angegebene Anzahl von Elementen aus dem Array und Zeichen aus der Zeichenfolge entnommen.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "elementsToTake": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    },
-    "charactersToTake": {
-      "type": "int",
-      "defaultValue": 2
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "array",
-      "value": "[take(parameters('testArray'),parameters('elementsToTake'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[take(parameters('testString'),parameters('charactersToTake'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/take.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -1711,31 +902,9 @@ Die in Kleinbuchstaben konvertierte Zeichenfolge.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json) konvertiert einen Parameterwert in Klein- und Großbuchstaben.
+Im folgenden Beispiel wird ein Parameterwert in Klein- und Großbuchstaben konvertiert.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "toLowerOutput": {
-      "value": "[toLower(parameters('testString'))]",
-      "type": "string"
-    },
-    "toUpperOutput": {
-      "type": "string",
-      "value": "[toUpper(parameters('testString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/tolower.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -1762,31 +931,9 @@ Die in Großbuchstaben konvertierte Zeichenfolge.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json) konvertiert einen Parameterwert in Klein- und Großbuchstaben.
+Im folgenden Beispiel wird ein Parameterwert in Klein- und Großbuchstaben konvertiert.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "toLowerOutput": {
-      "value": "[toLower(parameters('testString'))]",
-      "type": "string"
-    },
-    "toUpperOutput": {
-      "type": "string",
-      "value": "[toUpper(parameters('testString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/tolower.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -1813,27 +960,9 @@ Die Zeichenfolge ohne vorangestellte oder nachstehende Leerzeichen.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/trim.json) entfernt die Leerzeichen aus dem Parameter.
+Im folgenden Beispiel werden die Leerzeichen aus dem Parameter entfernt.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testString": {
-      "type": "string",
-      "defaultValue": "    one two three   "
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "return": {
-      "type": "string",
-      "value": "[trim(parameters('testString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/trim.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -1852,7 +981,7 @@ Erstellt auf der Grundlage der als Parameter angegebenen Werte eine deterministi
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | baseString |Ja |Zeichenfolge |Der Wert, der in der Hashfunktion verwendet wird, um eine eindeutige Zeichenfolge zu erstellen. |
-| Zusätzliche Parameter nach Bedarf. |Nein |Zeichenfolge |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
+| weitere Parameter nach Bedarf |Nein |Zeichenfolge |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
 
 ### <a name="remarks"></a>Bemerkungen
 
@@ -1899,25 +1028,9 @@ Eine Zeichenfolge mit 13 Zeichen.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uniquestring.json) gibt Ergebnisse von `uniquestring` zurück:
+Im folgenden Beispiel werden Ergebnisse aus `uniquestring` zurückgegeben:
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "uniqueRG": {
-      "value": "[uniqueString(resourceGroup().id)]",
-      "type": "string"
-    },
-    "uniqueDeploy": {
-      "value": "[uniqueString(resourceGroup().id, deployment().name)]",
-      "type": "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/uniquestring.json":::
 
 ## <a name="uri"></a>uri
 
@@ -1929,14 +1042,14 @@ Erstellt einen absoluten URI durch Kombinieren der baseUri- und der relativeUri-
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| baseUri |Ja |Zeichenfolge |Die Zeichenfolge mit dem Basis-URI. Achten Sie darauf, das Verhalten bezüglich der Behandlung des nachgestellten Schrägstrichs (`/`) zu beobachten, wie im Anschluss auf die folgende Tabelle beschrieben.  |
+| baseUri |Ja |Zeichenfolge |Die Zeichenfolge mit dem Basis-URI. Achten Sie auf das Verhalten bei der Behandlung des abschließenden Schrägstrichs (`/`), wie es in dieser Tabelle beschrieben ist.  |
 | relativeUri |Ja |Zeichenfolge |Der Zeichenfolge mit dem relativen URI, die der Zeichenfolge mit dem Basis-URI hinzugefügt werden soll. |
 
-* Wenn **BaseUri** mit einem nachgestellten Schrägstrich endet, ist das Ergebnis einfach **BaseUri**, gefolgt von **relativeUri**.
+* Wenn **baseUri** mit einem abschließenden Schrägstrich endet, ist das Ergebnis **baseUri** gefolgt von **relativeUri**.
 
-* Wenn **baseUri** nicht mit einem nachgestellten Schrägstrich endet, gibt es zwei Möglichkeiten.
+* Wenn **baseUri** nicht mit einem abschließenden Schrägstrich endet, geschieht eines von zwei Dingen.
 
-   * Wenn **baseUri** gar keine Schrägstriche aufweist (abgesehen von `//` in der Nähe des Anfangs), ist das Ergebnis einfach **baseUri**, gefolgt von **relativeUri**.
+   * Wenn **baseUri** überhaupt keine Schrägstriche enthält (abgesehen von dem `//` am Anfang), ist das Ergebnis **baseUri**, gefolgt von **relativeUri**.
 
    * Wenn **baseUri** einige Schrägstriche aufweist, aber nicht mit einem Schrägstrich endet, wird alles ab dem letzten Schrägstrich aus **baseUri** entfernt, und das Ergebnis ist **baseUri**, gefolgt von **relativeUri**.
 
@@ -1963,34 +1076,9 @@ Im folgenden Beispiel wird veranschaulicht, wie basierend auf dem Wert der über
 "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
 ```
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) zeigt die Verwendung von „uri“, uriComponent und uriComponentToString:
+Die folgende Beispielvorlage zeigt, wie `uri`, `uriComponent` und `uriComponentToString` zu verwenden sind.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "variables": {
-    "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-    "uriEncoded": "[uriComponent(variables('uriFormat'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "uriOutput": {
-      "type": "string",
-      "value": "[variables('uriFormat')]"
-    },
-    "componentOutput": {
-      "type": "string",
-      "value": "[variables('uriEncoded')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[uriComponentToString(variables('uriEncoded'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/uri.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
@@ -2008,7 +1096,7 @@ Codiert einen URI.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |Ja |Zeichenfolge |Der zu codierende Wert. |
 
@@ -2018,38 +1106,13 @@ Eine Zeichenfolge des als URI codierten Werts.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) zeigt die Verwendung von „uri“, uriComponent und uriComponentToString:
+Die folgende Beispielvorlage zeigt, wie `uri`, `uriComponent` und `uriComponentToString` zu verwenden sind.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "variables": {
-    "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-    "uriEncoded": "[uriComponent(variables('uriFormat'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "uriOutput": {
-      "type": "string",
-      "value": "[variables('uriFormat')]"
-    },
-    "componentOutput": {
-      "type": "string",
-      "value": "[variables('uriEncoded')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[uriComponentToString(variables('uriEncoded'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/uri.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
@@ -2063,7 +1126,7 @@ Gibt eine Zeichenfolge des als URI codierten Werts zurück.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |Ja |Zeichenfolge |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. |
 
@@ -2073,38 +1136,13 @@ Eine decodierte Zeichenfolge des als URI codierten Werts.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) zeigt die Verwendung von „uri“, uriComponent und uriComponentToString:
+Das folgende Beispiel zeigt, wie man `uri`, `uriComponent` und `uriComponentToString` verwendet.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "variables": {
-    "uriFormat": "[uri('http://contoso.com/resources/', 'nested/azuredeploy.json')]",
-    "uriEncoded": "[uriComponent(variables('uriFormat'))]"
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "uriOutput": {
-      "type": "string",
-      "value": "[variables('uriFormat')]"
-    },
-    "componentOutput": {
-      "type": "string",
-      "value": "[variables('uriEncoded')]"
-    },
-    "toStringOutput": {
-      "type": "string",
-      "value": "[uriComponentToString(variables('uriEncoded'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/uri.json":::
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | uriOutput | String | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | String | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |

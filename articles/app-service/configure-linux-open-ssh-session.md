@@ -5,15 +5,15 @@ keywords: Azure App Service, Web-App, Linux, OSS
 author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.topic: article
-ms.date: 02/23/2021
+ms.date: 09/10/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 1e30af51207d525daee5cfd4806877b02b044867
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 955df8f28345baae89dafc8f3b6116b89e0e1b96
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769921"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768019"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Öffnen einer SSH-Sitzung mit einem Linux-Container in Azure App Service
 
@@ -41,7 +41,7 @@ Mithilfe von TCP-Tunneln können Sie eine Netzwerkverbindung zwischen Ihrem Entw
 
 Zunächst müssen Sie die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) (Azure CLI) installieren. Öffnen Sie [Azure Cloud Shell](../cloud-shell/overview.md), wenn Sie sich die Vorgehensweise ohne Installation der Azure CLI ansehen möchten. 
 
-Öffnen Sie eine Remoteverbindung mit Ihrer App, indem Sie den Befehl [az webapp remote-connection create](/cli/azure/webapp#az_webapp_create_remote_connection) verwenden. Geben Sie _\<subscription-id>_ , _\<group-name>_ und \_\<app-name>_ für Ihre App an.
+Öffnen Sie eine Remoteverbindung mit Ihrer App, indem Sie den Befehl [az webapp create-remote-connection](/cli/azure/webapp#az_webapp_create_remote_connection) verwenden. Geben Sie _\<subscription-id>_ , _\<group-name>_ und _\<app-name>_ für Ihre App an.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &

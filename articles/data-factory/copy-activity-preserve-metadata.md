@@ -1,26 +1,26 @@
 ---
-title: Beibehalten von Metadaten und Zugriffssteuerungslisten bei Verwendung der Kopieraktivität in Azure Data Factory
+title: Erhaltung von Metadaten und ACLs durch Kopiervorgänge
+description: Erfahren Sie, wie Sie Metadaten und ACLs beibehalten, wenn Sie die Kopieraktivität in Azure Data Factory und Synapse Analytics-Pipelines verwenden.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Sie Metadaten und Zugriffssteuerungslisten beim Kopieren mit der Kopieraktivität in Azure Data Factory beibehalten.
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: b5bb9cc624f298ae4997b46a5cc7b4cf2a0d21ed
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 64608834c5d5b22383242f6739747d955e2feb3a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123250729"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767373"
 ---
-#  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Beibehalten von Metadaten und Zugriffssteuerungslisten bei Verwendung der Kopieraktivität in Azure Data Factory
+#  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory-or-synapse-analytics"></a>Erhaltung von Metadaten und ACLs durch Kopieraktivitäten in Azure Data Factory oder Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Wenn Sie die Azure Data Factory-Kopieraktivität verwenden, um Daten von der Quelle in die Senke zu kopieren, können Sie in den folgenden Szenarios auch die Metadaten und Zugriffssteuerungslisten beibehalten.
+Wenn Sie die Azure Data Factory- oder Synapse Analytics-Pipelines-Kopieraktivität verwenden, um Daten von der Quelle zur Senke zu kopieren, können Sie in den folgenden Szenarien auch die Metadaten und ACLs mitnehmen.
 
 ## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> Beibehalten von Metadaten für die Lake-Migration
 
@@ -31,11 +31,11 @@ Die Kopieraktivität unterstützt die Beibehaltung der folgenden Attribute beim 
 - **Alle vom Kunden angegebenen Metadaten** 
 - Und die folgenden **fünf integrierten Systemeigenschaften des Datenspeichers**: `contentType`, `contentLanguage` (mit Ausnahme von Amazon S3) `contentEncoding`, `contentDisposition`, `cacheControl`.
 
-**Behandeln von Unterschieden in Metadaten:** Amazon S3 und Azure Storage erlauben unterschiedliche Zeichensätze in den Schlüsseln der vom Kunden angegebenen Metadaten. Wenn Sie sich bei Verwendung der Kopieraktivität für die Beibehaltung von Metadaten entscheiden, ersetzt ADF die ungültigen Zeichen automatisch durch „_“.
+**Behandeln von Unterschieden in Metadaten:** Amazon S3 und Azure Storage erlauben unterschiedliche Zeichensätze in den Schlüsseln der vom Kunden angegebenen Metadaten. Wenn Sie sich dafür entscheiden, Metadaten mit Hilfe von Kopiervorgängen zu erhalten, ersetzt der Dienst die ungültigen Zeichen automatisch durch "_".
 
 Wenn Sie Dateien unverändert von Amazon S3/Azure Data Lake Storage Gen2/Azure Blob/Azure File Storage in Azure Data Lake Storage Gen2/Azure Blob/Azure File Storage mit Binärformat kopieren, finden Sie die dazu erforderliche Option **Beibehalten** auf der Registerkarte **Kopieraktivität** > **Einstellungen** für die Aktivitätserstellung oder auf der Seite **Einstellungen** im Tool zum Kopieren von Daten.
 
-![Kopieraktivität mit Beibehaltung von Metadaten](./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png)
+:::image type="content" source="./media/copy-activity-preserve-metadata/copy-activity-preserve-metadata.png" alt-text="Kopieraktivität mit Beibehaltung von Metadaten":::
 
 Hier ist ein Beispiel für die JSON-Konfiguration der Kopieraktivität (siehe `preserve`): 
 
@@ -88,17 +88,17 @@ Die Kopieraktivität unterstützt die Beibehaltung der folgenden Arten von Zugri
 - **Besitzer:** Kopieren und Beibehalten des besitzenden Benutzers von Dateien und Verzeichnissen. Hierfür ist Administratorzugriff auf die Data Lake Storage Gen2-Senke erforderlich.
 - **Gruppe**: Kopieren und Beibehalten der besitzenden Gruppe von Dateien und Verzeichnissen. Hierfür ist Administratorzugriff auf die Data Lake Storage Gen2-Senke oder der Zugriff des besitzenden Benutzers erforderlich (sofern der besitzende Benutzer auch Mitglied der Zielgruppe ist).
 
-Wenn Sie das Kopieren aus einem Ordner angeben, repliziert Data Factory die ACLs für diesen Ordner und die darin enthaltenen Dateien und Verzeichnisse, sofern `recursive` auf „true“ festgelegt ist. Falls Sie das Kopieren aus einer einzelnen Datei angeben, werden die ACLs in dieser Datei kopiert.
+Wenn Sie angeben, dass aus einem Ordner kopiert werden soll, repliziert der Dienst die ACLs für den betreffenden Ordner und die Dateien und Verzeichnisse darunter, wenn `recursive` auf true gesetzt ist. Falls Sie das Kopieren aus einer einzelnen Datei angeben, werden die ACLs in dieser Datei kopiert.
 
 >[!NOTE]
->Wenn Sie ADF verwenden, um ACLs von Data Lake Storage Gen1/Gen2 in Gen2 beizubehalten, werden die vorhandenen ACLs in den entsprechenden Ordnern/Dateien der Gen2-Senke überschrieben.
+>Wenn Sie den Kopiervorgang verwenden, um ACLs von Data Lake Storage Gen1/Gen2 auf Gen2 zu übertragen, werden die vorhandenen ACLs auf den entsprechenden Ordnern/Dateien von Sink Gen2 überschrieben.
 
 >[!IMPORTANT]
->Bei Auswahl der Beibehaltung von ACLs sollten Sie sicherstellen, dass Sie ausreichende Berechtigungen für die Verwendung von Data Factory für Ihr Data Lake Storage Gen2-Senkenkonto gewähren. Verwenden Sie beispielsweise die Kontoschlüsselauthentifizierung, oder weisen Sie dem Dienstprinzipal bzw. der verwalteten Identität die Rolle „Besitzer von Speicherblobdaten“ zu.
+>Wenn Sie sich für die Beibehaltung von ACLs entscheiden, stellen Sie sicher, dass Sie ausreichend hohe Berechtigungen gewähren, damit der Dienst mit Ihrem Sink Data Lake Storage Gen2-Konto arbeiten kann. Verwenden Sie beispielsweise die Kontoschlüsselauthentifizierung, oder weisen Sie dem Dienstprinzipal bzw. der verwalteten Identität die Rolle „Besitzer von Speicherblobdaten“ zu.
 
 Wenn Sie die Quelle als Data Lake Storage Gen1/Gen2 mit Binärformat oder der binären Kopieroption und die Senke als Data Lake Storage Gen2 mit Binärformat oder der binären Kopieroption konfigurieren, finden Sie die Option **Beibehalten** auf der Seite **Einstellungen** im Tool zum Kopieren von Daten oder auf der Registerkarte **Kopieraktivität** > **Einstellungen** für die Aktivitätserstellung.
 
-![Data Lake Storage Gen1/Gen2 in Gen2 – Beibehalten der Zugriffssteuerungsliste (ACL)](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
+:::image type="content" source="./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png" alt-text="Data Lake Storage Gen1/Gen2 in Gen2 – Beibehalten der Zugriffssteuerungsliste (ACL)":::
 
 Hier ist ein Beispiel für die JSON-Konfiguration der Kopieraktivität (siehe `preserve`): 
 

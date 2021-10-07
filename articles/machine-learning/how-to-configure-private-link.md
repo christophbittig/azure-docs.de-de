@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/01/2021
-ms.openlocfilehash: 1c07e96a82814e59c635a592313e461d06a6fcc3
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.date: 09/07/2021
+ms.openlocfilehash: df1f492824503c6ab8c63091c93e3d048107cb48
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217465"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129052137"
 ---
 # <a name="configure-a-private-endpoint-for-an-azure-machine-learning-workspace"></a>Konfigurieren eines privaten Endpunkts für einen Azure Machine Learning-Arbeitsbereich
 
@@ -39,14 +39,23 @@ Azure Private Link ermöglicht Ihnen das Herstellen einer Verbindung mit Ihrem A
 
 [!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
 
-* Sie benötigen ein vorhandenes virtuelles Netzwerk, in dem der private Endpunkt erstellt werden soll. Außerdem müssen Sie vor dem Hinzufügen des privaten Endpunkts [Netzwerkrichtlinien für private Endpunkte deaktivieren](../private-link/disable-private-endpoint-network-policy.md).
+* Sie benötigen ein vorhandenes virtuelles Netzwerk, in dem der private Endpunkt erstellt werden soll. 
+* [Sie müssen die privaten Endpunkt-Netzwerkrichtlinien deaktivieren](../private-link/disable-private-endpoint-network-policy.md) bevor sie private Endpunkte hinzufügen.
 
 ## <a name="limitations"></a>Einschränkungen
 
-* Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit einem privaten Endpunkt ist in den Regionen vom Typ „Azure Government“ nicht verfügbar.
 * Wenn öffentlicher Zugriff für einen Arbeitsbereich aktiviert wird, der mit einem privaten Endpunkt abgesichert ist, und Sie Azure Machine Learning Studio über das öffentliche Internet verwenden, können einige Features wie der Designer beim Zugriff auf Ihre Daten fehlschlagen. Dieses Problem tritt auf, wenn die Daten in einem Dienst gespeichert werden, der hinter dem VNet geschützt ist. Dies gilt z. B. für ein Azure Storage-Konto.
 * Wenn Sie Mozilla Firefox verwenden, treten möglicherweise Probleme beim Zugriff auf den privaten Endpunkt für Ihren Arbeitsbereich auf. Dieses Problem kann im Zusammenhang mit DNS über HTTPS in Mozilla auftreten. Es wird empfohlen, zur Problemumgehung Microsoft Edge oder Google Chrome zu verwenden.
 * Einen privaten Endpunkt zu verwenden hat keine Auswirkungen auf die Azure-Steuerungsebene, d. h. auf Verwaltungsvorgänge wie das Löschen des Arbeitsbereichs oder das Verwalten von Computeressourcen. Beispiele: Erstellen, Aktualisieren oder Löschen eines Computeziels. Diese Vorgänge werden ganz normal über das öffentliche Internet ausgeführt. Bei Vorgängen auf Datenebene, etwa bei der Verwendung von Azure Machine Learning Studio, APIs (einschließlich veröffentlichter Pipelines) oder des SDK, wird der private Endpunkt verwendet.
+* Wenn Sie eine Compute-Instanz oder einen Computecluster in einem Arbeitsbereich mit einem privaten Endpunkt erstellen, müssen sich die Compute-Instanz und der Computecluster in derselben Azure-Region wie der Arbeitsbereich befinden.
+* Beim Erstellen oder Anfügen eines Azure Kubernetes Service-Clusters an einen Arbeitsbereich mit einem privaten Endpunkt muss sich der Cluster in derselben Region wie der Arbeitsbereich befinden.
+* Wenn Sie einen Arbeitsbereich mit mehreren privaten Endpunkten (Vorschau) verwenden, muss sich einer der privaten Endpunkte im selben VNET wie die folgenden Abhängigkeitsdienste befinden:
+
+    * Azure Storage Konto, das den Standardspeicher für den Arbeitsbereich bietet
+    * Azure Key Vault für den Arbeitsbereich
+    * Azure Container Registry für den Arbeitsbereich
+
+    Beispielsweise würde ein VNET (Dienst-VNET) einen privaten Endpunkt für die Abhängigkeitsdienste und den Arbeitsbereich enthalten. Diese Konfiguration ermöglicht dem Arbeitsbereich die Kommunikation mit den Diensten. Ein anderes VNET („Clients“) kann nur einen privaten Endpunkt für den Arbeitsbereich enthalten und nur für die Kommunikation zwischen Cliententwicklungscomputern und dem Arbeitsbereich verwendet werden.
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>Erstellen eines Arbeitsbereichs, der einen privaten Endpunkt verwendet
 
@@ -170,14 +179,60 @@ Wählen Sie im Azure Machine Learning-Arbeitsbereich im Portal die Option __Priv
 
 ---
 
-## <a name="using-a-workspace-over-a-private-endpoint"></a>Verwenden eines Arbeitsbereichs über einen privaten Endpunkt
+## <a name="securely-connect-to-your-workspace"></a>Sicheres Herstellen einer Verbindung mit Ihrem Arbeitsbereich
 
-Da die Kommunikation mit dem Arbeitsbereich nur aus dem virtuellen Netzwerk zulässig ist, müssen alle Entwicklungsumgebungen, in denen der Arbeitsbereich verwendet wird, Mitglieder des virtuellen Netzwerks sein. Beispiel: ein virtueller Computer im virtuellen Netzwerk.
+[!INCLUDE [machine-learning-connect-secure-workspace](../../includes/machine-learning-connect-secure-workspace.md)]
+
+## <a name="multiple-private-endpoints-preview"></a>Mehrere private Endpunkte (Vorschau)
+
+Als Previewfunktion unterstützt Azure Machine Learning mehrere private Endpunkte für einen Arbeitsbereich. Es werden häufig mehrere private Endpunkte verwendet, wenn Sie unterschiedliche Umgebungen voneinander trennen möchten. Im Folgenden finden Sie einige Szenarios, die mithilfe mehrerer privater Endpunkte aktiviert werden:
+
+* Cliententwicklungsumgebungen in einem separaten VNET.
+* Ein Azure Kubernetes Service-Cluster (AKS) in einem separaten VNET.
+* Andere Azure-Dienste in einem separaten VNET. Beispielsweise können Azure Synapse und Azure Data Factory ein von Microsoft verwaltetes virtuelles Netzwerk verwenden. In beiden Fällen kann dem verwalteten VNET, das von diesen Diensten verwendet wird, ein privater Endpunkt für den Arbeitsbereich hinzugefügt werden. Weitere Informationen zur Verwendung eines verwalteten virtuellen Netzwerks mit diesen Diensten finden Sie in den folgenden Artikeln:
+
+    * [Verwaltete private Endpunkte in Synapse](/azure/synapse-analytics/security/synapse-workspace-managed-private-endpoints)
+    * [Verwaltetes virtuelles Netzwerk in Azure Data Factory](/azure/data-factory/managed-virtual-network-private-endpoint)
+
+    > [!IMPORTANT]
+    > [Der Schutz vor Datenexfiltration von Synapse](/azure/synapse-analytics/security/workspace-data-exfiltration-protection) wird bei der Azure Machine Learning nicht unterstützt.
 
 > [!IMPORTANT]
-> Um eine vorübergehende Unterbrechung der Konnektivität zu vermeiden, empfiehlt Microsoft, den DNS-Cache auf Computern, die eine Verbindung mit dem Arbeitsbereich herstellen, nach dem Aktivieren eines privaten Endpunkts zu leeren. 
+> Jedes VNet, das einen privaten Endpunkt für den Arbeitsbereich enthält, muss außerdem Zugriff auf das Azure-Storage-Konto, den Azure Key Vault und Azure Container Registry haben, die vom Arbeitsbereich verwendet werden. Beispielsweise können Sie einen privaten Endpunkt für die Dienste in jedem VNet erstellen.
 
-Weitere Informationen zu Azure Virtual Machines finden Sie in der [Dokumentation zu Virtual Machines](../virtual-machines/index.yml).
+Zum Hinzufügen mehrerer Endpunkte werden die gleichen Schritte wie im Abschnitt [Hinzufügen eines privaten Endpunkts zu einem Arbeitsbereich](#add-a-private-endpoint-to-a-workspace) beschrieben.
+
+### <a name="scenario-isolated-clients"></a>Szenario: Isolierte Clients
+
+Wenn Sie die Entwicklungsclients isolieren möchten, damit sie keinen direkten Zugriff auf die Computeressourcen haben, die von Azure Machine Learning verwendet werden, führen Sie die folgenden Schritte aus:
+
+> [!NOTE]
+> Bei diesen Schritten wird davon ausgegangen, dass Sie über einen vorhandenen Arbeitsbereich, Azure Storage, Azure Key Vault und Azure Container Registry verfügen. Jeder dieser Dienste verfügt über einen privaten Endpunkt in einem vorhandenen VNet.
+
+1. Erstellen Sie ein weiteres VNet für Clients. Dieses VNet kann Azure Virtual Machines enthalten, die als Ihre Clients fungieren, oder ein VPN-Gateway, das von lokalen Clients zum Herstellen einer Verbindung mit dem VNet verwendet wird.
+1. Fügen Sie einen neuen privaten Endpunkt für das Azure Storage-Konto, Azure Key Vault und die Azure Container Registry Ihres Arbeitsbereichs hinzu. Diese privaten Endpunkte sollten im Client-VNet vorhanden sein.
+1. Wenn Sie über zusätzlichen Speicher verfügen, der von Ihrem Arbeitsbereich verwendet wird, fügen Sie einen neuen privaten Endpunkt für diesen Speicher hinzu. Der private Endpunkt sollte im Client-VNet vorhanden sein und die Integration der privaten DNS-Zone aktiviert sein.
+1. Fügen Sie Ihrem Arbeitsbereich einen neuen privaten Endpunkt hinzu. Dieser private Endpunkt sollte im Client-VNet vorhanden sein und die Integration der privaten DNS-Zone aktiviert sein.
+1. Verwenden Sie die Schritte im Artikel [Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md#datastore-azure-storage-account), um Studio den Zugriff auf die Speicherkonto(en) zu ermöglichen.
+
+Das folgende Diagramm veranschaulicht diese Konfiguration: Das __Workload__-VNet enthält Computes, die vom Arbeitsbereich für das Training und die Bereitstellung erstellt werden. Das __Client__-VNet enthält Clients oder ExpressRoute-/VPN-Clientverbindungen. Beide VNets enthalten private Endpunkte für den Arbeitsbereich, Azure Storage Konto, Azure Key Vault und Azure Container Registry.
+
+:::image type="content" source="./media/how-to-configure-private-link/multiple-private-endpoint-workspace-client.png" alt-text="Diagramm des isolierten Client-VNet":::
+
+### <a name="scenario-isolated-azure-kubernetes-service"></a>Szenario: Isolierte Azure Kubernetes Service
+
+Wenn Sie einen isolierten Azure Kubernetes Service erstellen möchten, der vom Arbeitsbereich verwendet wird, führen Sie die folgenden Schritte aus:
+
+> [!NOTE]
+> Bei diesen Schritten wird davon ausgegangen, dass Sie über einen vorhandenen Arbeitsbereich, Azure Storage, Azure Key Vault und Azure Container Registry verfügen. Jeder dieser Dienste verfügt über einen privaten Endpunkt in einem vorhandenen VNet.
+
+1. Erstellen Sie eine Azure Kubernetes Service-Instanz (AKS). Während der Erstellung erstellt AKS ein VNet, das den AKS-Cluster enthält.
+1. Fügen Sie einen neuen privaten Endpunkt für das Azure Storage-Konto, Azure Key Vault und die Azure Container Registry Ihres Arbeitsbereichs hinzu. Diese privaten Endpunkte sollten im Client-VNet vorhanden sein.
+1. Wenn Sie über einen anderen Speicher verfügen, der von Ihrem Arbeitsbereich verwendet wird, fügen Sie einen neuen privaten Endpunkt für diesen Speicher hinzu. Der private Endpunkt sollte im Client-VNet vorhanden sein und die Integration der privaten DNS-Zone aktiviert sein.
+1. Fügen Sie Ihrem Arbeitsbereich einen neuen privaten Endpunkt hinzu. Dieser private Endpunkt sollte im Client-VNet vorhanden sein und die Integration der privaten DNS-Zone aktiviert sein.
+1. Fügen Sie den AKS-Cluster zum Azure Machine Learning-Arbeitsbereich hinzu. Weitere Informationen finden Sie unter [Erstellen und Anfügen eines Azure Kubernetes Service-Clusters](how-to-create-attach-kubernetes.md#attach-an-existing-aks-cluster).
+
+:::image type="content" source="./media/how-to-configure-private-link/multiple-private-endpoint-workspace-aks.png" alt-text="Diagramm des isolierten AKS-VNet":::
 
 ## <a name="enable-public-access"></a>Aktivieren des öffentlichen Zugriffs
 
@@ -210,7 +265,6 @@ Die Azure CLI-[Erweiterung 1.0 für maschinelles Lernen](reference-azure-machine
 Zurzeit gibt es keine Möglichkeit, diese Funktionalität über das Portal zu aktivieren.
 
 ---
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

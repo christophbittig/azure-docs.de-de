@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 09/09/2021
 ms.author: memildin
-ms.openlocfilehash: 9f1fdfeadd56b070c942c023a7373b43363a1916
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ef37d84d2fcef851e13837ae40da14db9fb2412f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339452"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777448"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Verwenden von adaptiven Anwendungssteuerungen zum Verringern der Angriffsfläche Ihres Computers
 
@@ -30,12 +30,12 @@ Wenn Sie adaptive Anwendungssteuerungen aktiviert und konfiguriert haben, erhalt
 
 ## <a name="what-are-the-benefits-of-adaptive-application-controls"></a>Was sind die Vorteile von adaptiven Anwendungssteuerungen?
 
-Durch die Definition von Listen mit bekannten sicheren Anwendungen und das Generieren von Warnungen, wenn etwas anderes ausgeführt wird, können Sie mehrere Härtungsziele erreichen:
+Durch die Definition von Listen mit bekannten sicheren Anwendungen und das Generieren von Warnungen, wenn etwas anderes ausgeführt wird, können Sie mehrere Übersichts- und Complianceziele erreichen:
 
 - Erkennen potenzieller Schadsoftware, auch wenn sie von Antischadsoftware-Lösungen übersehen wird
 - Verbessern der Konformität mit lokalen Sicherheitsrichtlinien, die die ausschließliche Verwendung lizenzierter Software vorschreiben
-- Vermeiden des Ausführens alter oder nicht unterstützter Anwendungen
-- Verhindern bestimmter Software, die von Ihrer Organisation gesperrt wurde
+- Identifizieren veralteter oder nicht unterstützter Anwendungsversionen 
+- Identifizieren von Software, die von Ihrer Organisation gesperrt ist, aber trotzdem auf Ihren Computern ausgeführt wird
 - Erhöhen der Überwachung von Apps, die auf sensible Daten zugreifen
 
 Derzeit sind keine Erzwingungsoptionen verfügbar. Adaptive Anwendungssteuerungen sollen Sicherheitswarnungen ausgeben, wenn eine andere als die von Ihnen als sicher definierte Anwendung ausgeführt wird.

@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Zuweisen von Benutzern zu einer Anwendung'
+title: 'Schnellstart: Erstellen und Zuweisen eines Benutzerkontos'
 titleSuffix: Azure AD
-description: In dieser Schnellstartanleitung wird erläutert, wie Sie Benutzern die Verwendung einer App ermöglichen, für die Sie Azure AD als Identitätsanbieter eingerichtet haben.
+description: Erstellen Sie ein Benutzerkonto in Ihrem Azure Active Directory-Mandanten, und weisen Sie es einer Anwendung zu.
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -9,68 +9,65 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/23/2021
+ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 5c8b4ec030f60b940d8d6c36bd31e10932151dd5
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 28f5cfe158c13928d9443df22551bcfd6e7d8e85
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114667167"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058392"
 ---
-# <a name="quickstart-assign-users-to-an-application"></a>Schnellstart: Zuweisen von Benutzern zu einer Anwendung
+# <a name="quickstart-create-and-assign-a-user-account-in-azure-active-directory"></a>Schnellstart: Erstellen und Zuweisen eines Benutzerkontos in Azure Active Directory
 
-In der vorherigen Schnellstartanleitung haben Sie die Eigenschaften für eine App konfiguriert. Beim Festlegen der Eigenschaften haben Sie die Umgebung für zugewiesene und nicht zugewiesene Benutzer konfiguriert. In dieser Schnellstartanleitung wird das Zuweisen von Benutzern zur App erläutert.
+In dieser Schnellstartanleitung verwenden Sie Azure Active Directory Admin Center, um ein Benutzerkonto in Ihrem Azure AD-Mandanten (Azure Active Directory) zu erstellen. Nach dem Erstellen des Kontos können Sie es der Unternehmensanwendung zuweisen, die Sie Ihrem Mandanten hinzugefügt haben.
+
+Es wird empfohlen, zum Testen der Schritte in dieser Schnellstartanleitung keine Produktionsumgebung zu verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen Folgendes, um Benutzer einer App zuzuweisen, die Sie Ihrem Azure AD-Mandanten hinzugefügt haben:
+Sie benötigen Folgendes, um ein Benutzerkonto zu erstellen und es einer Unternehmensanwendung zuzuweisen:
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Eine der folgenden Rollen: Globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals.
-- Optional: Gehen Sie den Schnellstart [Anzeigen Ihrer Apps](view-applications-portal.md) durch.
-- Optional: Gehen Sie den Schnellstart [Hinzufügen einer App](add-application-portal.md) durch.
-- Optional: Gehen Sie den Schnellstart [Konfigurieren einer App](add-application-portal-configure.md) durch.
+- Ausführen der Schritte unter [Schnellstart: Hinzufügen einer Unternehmensanwendung](add-application-portal.md).
 
->[!IMPORTANT]
->Verwenden Sie zum Testen der in dieser Schnellstartanleitung aufgeführten Schritte keine Produktionsumgebung.
+## <a name="create-a-user-account"></a>Erstellen eines Benutzerkontos
 
-## <a name="assign-users-to-an-app"></a>Zuweisen von Benutzern zu einer App
+So erstellen Sie ein Benutzerkonto in Ihrem Azure AD-Mandanten:
 
-1. Wählen Sie im Azure AD-Portal die Option **Unternehmensanwendungen** aus. Suchen Sie dann nach der zu konfigurierenden Anwendung, und wählen Sie diese aus.
-2. Wählen Sie im Navigationsmenü auf der linken Seite **Benutzer und Gruppen** aus.
-   > [!NOTE]
-   > Für einige der Microsoft 365-Apps muss PowerShell verwendet werden.
-3. Wählen Sie die Schaltfläche **Benutzer/Gruppen hinzufügen**.
-4. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-5. Wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie der Anwendung zuweisen möchten. Sie können auch mit der Eingabe des Benutzer- oder des Gruppennamens im Suchfeld beginnen. Sie können mehrere Benutzer und Gruppen auswählen. Ihre Auswahl wird unter **Ausgewählte Elemente** angezeigt.
-    > [!IMPORTANT]
-    > Wenn Sie einer Anwendung eine Gruppe zuweisen, haben nur die Benutzer in der Gruppe Zugriff. Die Zuweisung wird nicht an geschachtelte Gruppen weitergegeben.
+1. Navigieren Sie zu [Azure Active Directory Admin Center](https://aad.portal.azure.com), und melden Sie sich mit einer der in den Voraussetzungen aufgeführten Rollen an.
+1. Wählen Sie im Menü auf der linken Seite die Option **Benutzer** aus.
+1. Wählen Sie im oberen Bereich die Option **Neuer Benutzer** aus.
 
-    > [!NOTE]
-    > Für die gruppenbasierte Zuweisung ist die Azure Active Directory Premium P1- oder P2-Edition erforderlich. Die gruppenbasierte Zuweisung wird nur für Sicherheitsgruppen unterstützt. Geschachtelte Gruppenmitgliedschaften und Microsoft 365-Gruppen werden aktuell nicht unterstützt. Weitere Informationen zu Lizenzierungsanforderungen für die in diesem Artikel erläuterten Features finden Sie in der [Preisübersicht für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory).
-6. Wählen Sie abschließend **Auswählen** aus.
-   :::image type="content" source="./media/assign-user-or-group-access-portal/assign-users.png" alt-text="Zuweisen eines Benutzers oder einer Gruppe zur App":::
-7. Wählen Sie im Bereich **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe aus der Liste aus, und wählen Sie dann am unteren Rand des Bereichs die Schaltfläche **Auswählen** aus.
-8. Falls von der Anwendung unterstützt, können Sie dem Benutzer oder der Gruppe eine Rolle zuweisen. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Rolle auswählen** aus. Wählen Sie dann im Bereich **Rolle auswählen** eine Rolle aus, die den ausgewählten Benutzern oder Gruppen zugeordnet werden soll. Wählen Sie anschließend unten im Bereich **OK** aus.
-    > [!NOTE]
-    > Wenn die Anwendung die Rollenauswahl nicht unterstützt, wird die Standardzugriffsrolle zugewiesen. In diesem Fall verwaltet die Anwendung die Zugriffsebene von Benutzern.
-9. Wählen Sie im Bereich **Zuweisung hinzufügen** unten die Schaltfläche **Zuweisen** aus.
+    :::image type="content" source="media/add-application-portal-assign-users/new-user.png" alt-text="Hinzufügen eines neuen Benutzerkontos zu Ihrem Azure AD-Mandanten":::
+    
+1. Geben Sie in das Feld **Benutzername** den Benutzernamen des Benutzerkontos ein. Beispiel: `contosouser1@contoso.com`. Achten Sie darauf, `contoso.com` in den Namen Ihrer Mandantendomäne zu ändern.
+1. Geben Sie in das Feld **Name** den Namen des Benutzers des Kontos ein. Beispiel: `contosouser1`.
+1. Lassen Sie **Kennwort automatisch generieren** aktiviert, und wählen Sie dann **Kennwort anzeigen** aus. Notieren Sie sich den Wert, der im Feld Kennwort angezeigt wird.
+1. Wählen Sie **Erstellen** aus.
 
-Sie können die Zuweisung von Benutzern oder Gruppen mit demselben Verfahren aufheben. Wählen Sie den gewünschten Benutzer oder die gewünschte Gruppe und dann die Schaltfläche **Entfernen** aus. Für einige der Microsoft 365- und Office 365-Apps muss PowerShell verwendet werden.
+## <a name="assign-a-user-account-to-an-enterprise-application"></a>Zuweisen eines Benutzerkontos zu einer Unternehmensanwendung
+
+So weisen Sie einer Unternehmensanwendung ein Benutzerkonto zu:
+
+1. Wählen Sie in [Azure Active Directory Admin Center](https://aad.portal.azure.com) die Option **Unternehmensanwendungen** aus, suchen Sie dann nach der Anwendung, der Sie das Benutzerkonto zuweisen möchten, und wählen Sie sie aus. Verwenden Sie beispielsweise die in der vorherigen Schnellstartanleitung erstellte Anwendung namens **Azure AD SAML Toolkit 1**.
+1. Wählen Sie im Bereich auf der linken Seite **Benutzer und Gruppen** und dann **Benutzer/Gruppe hinzufügen** aus.
+
+    :::image type="content" source="media/add-application-portal-assign-users/assign-user.png" alt-text="Zuweisen eines Benutzerkontos zu einer Anwendung in Ihrem Azure AD-Mandanten":::
+
+1. Wählen Sie im Bereich **Zuweisung hinzufügen** unter **Benutzer und Gruppen** die Option **Keine ausgewählt** aus.
+1. Suchen Sie nach dem Benutzer, den Sie der Anwendung zuweisen möchten, und wählen Sie ihn aus. Beispiel: `contosouser1@contoso.com`.
+1. Wählen Sie **Auswählen**.
+1. Wählen Sie im Bereich **Zuweisung hinzufügen** unten die Option **Zuweisen** aus.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Schnellstartanleitung abgeschlossen haben, sollten Sie die App löschen. Dies dient zur Bereinigung des Testmandanten. Das Löschen der App wird in der letzten Schnellstartanleitung dieser Reihe behandelt. Informationen finden Sie unter [Schnellstart: Löschen einer Anwendung von Ihrem Azure AD-Mandanten (Azure Active Directory)](delete-application-portal.md).
+Wenn Sie den nächsten Schnellstart durcharbeiten möchten, behalten Sie die von Ihnen erstellte Anwendung. Andernfalls können Sie sie löschen, um Ihren Mandanten zu bereinigen. Weitere Informationen finden Sie unter [Löschen einer Anwendung](delete-application-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im nächsten Artikel erfahren Sie, wie Sie einmaliges Anmelden für eine App einrichten:
+Erfahren Sie, wie Sie einmaliges Anmelden für eine Unternehmensanwendung einrichten:
 > [!div class="nextstepaction"]
-> [Einrichten des einmaligen SAML-basierten Anmeldens](add-application-portal-setup-sso.md)
-
-oder
-
-> [!div class="nextstepaction"]
-> [Einrichten des einmaligen OIDC-basierten Anmeldens](add-application-portal-setup-oidc-sso.md)
+> [Einmaliges Anmelden aktivieren](add-application-portal-setup-sso.md)

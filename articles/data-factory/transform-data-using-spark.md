@@ -1,29 +1,29 @@
 ---
 title: Transformieren von Daten mit einer Spark-Aktivität
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Hier erfahren Sie, wie Sie Daten durch Ausführen von Spark-Programmen in einer Azure Data Factory-Pipeline mithilfe der Spark-Aktivität transformieren können.
+description: Hier erfahren Sie, wie Sie Daten umwandeln können, indem Sie Spark-Programme aus einer Azure Data Factory- oder Synapse Analytics-Pipeline mithilfe der Spark-Aktivität ausführen.
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
-ms.date: 06/09/2021
-ms.openlocfilehash: 702c1a5208fae42e3704e345713f540b0e05d900
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: b5b877d27e04aa81e710b518d3923d438fe0afd2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351220"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805972"
 ---
-# <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Spark-Aktivität in Azure Data Factory
+# <a name="transform-data-using-spark-activity-in-azure-data-factory-and-synapse-analytics"></a>Umwandlung von Daten mithilfe von Spark-Aktivitäten in Azure Data Factory und Synapse Analytics
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-spark.md)
 > * [Aktuelle Version](transform-data-using-spark.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Die Spark-Aktivität in einer Data Factory-[Pipeline](concepts-pipelines-activities.md) führt Spark-Programme in [Ihrem eigenen](compute-linked-services.md#azure-hdinsight-linked-service) oder [bedarfsabhängigen](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight-Cluster aus. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet. Wenn Sie einen bedarfsgesteuerten mit Spark verknüpften Dienst verwenden, erstellt Data Factory für Sie automatisch bei Bedarf einen Spark-Cluster zum Verarbeiten der Daten und löscht dann den Cluster, sobald die Verarbeitung abgeschlossen ist. 
+Die Spark-Aktivität in einer Datenfabrik und Synapse [Pipelines](concepts-pipelines-activities.md) führt ein Spark-Programm auf [ihrem eigenen](compute-linked-services.md#azure-hdinsight-linked-service) oder [auf Abruf](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)  HDInsight-Cluster aus. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](transform-data.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet. Wenn Sie einen mit Spark verknüpften On-Demand-Dienst verwenden, erstellt der Dienst automatisch einen Spark-Cluster für Sie, um die Daten just-in-time zu verarbeiten, und löscht den Cluster, sobald die Verarbeitung abgeschlossen ist. 
 
 
 ## <a name="spark-activity-properties"></a>Eigenschaften von Spark-Aktivitäten
@@ -58,7 +58,7 @@ Dies ist die JSON-Beispieldefinition einer Spark-Aktivität:
 
 Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definition verwendet werden:
 
-| Eigenschaft              | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft              | Beschreibung                              | Erforderlich |
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | Der Name der Aktivität in der Pipeline.    | Ja      |
 | description           | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
@@ -76,9 +76,9 @@ Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definiti
 ## <a name="folder-structure"></a>Ordnerstruktur
 Spark-Aufträge lassen sich besser erweitern als Pig- oder Hive-Aufträge. Bei Spark-Aufträgen können Sie mehrere Abhängigkeiten wie z.B. jar-Pakete (im Java-CLASSPATH platziert), Python-Dateien (im PYTHONPATH platziert) sowie beliebige andere Dateien bereitstellen.
 
-Erstellen Sie folgende Ordnerstruktur in Azure Blob Storage, auf den der verknüpfte HDInsight-Dienst verweist. Laden Sie dann abhängige Dateien in die entsprechenden Unterordner in dem Stammordner hoch, der von **entryFilePath** repräsentiert wird. Python-Dateien werden beispielsweise in den Unterordner „pyFiles“ und jar-Dateien in den Unterordner „jars“ des Stammordners hochgeladen. Zur Laufzeit erwartet der Data Factory-Dienst die folgende Ordnerstruktur in Azure Blob Storage:     
+Erstellen Sie folgende Ordnerstruktur in Azure Blob Storage, auf den der verknüpfte HDInsight-Dienst verweist. Laden Sie dann abhängige Dateien in die entsprechenden Unterordner in dem Stammordner hoch, der von **entryFilePath** repräsentiert wird. Python-Dateien werden beispielsweise in den Unterordner „pyFiles“ und jar-Dateien in den Unterordner „jars“ des Stammordners hochgeladen. Zur Laufzeit erwartet der Dienst die folgende Ordnerstruktur im Azure Blob-Speicher:     
 
-| `Path`                  | BESCHREIBUNG                              | Erforderlich | type   |
+| Pfad                  | Beschreibung                              | Erforderlich | type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (Stamm)            | Der Stammpfad des Spark-Auftrags im verknüpften Speicherdienst. | Ja      | Ordner |
 | &lt;benutzerdefiniert&gt; | Der Pfad, der auf die Eingabedatei des Spark-Auftrags zeigt. | Ja      | Datei   |

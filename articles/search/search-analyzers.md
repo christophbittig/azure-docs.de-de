@@ -7,18 +7,18 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 09/08/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d40dd0b91f9dcfb7bf5b6e8f084f25ee4f90d780
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68b6f6794a690313648dfaaaaf49fdd3150b6171
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104596551"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124735330"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analysetools für Textverarbeitung in der kognitiven Azure-Suche
 
-Ein *Analyzer* ist eine Komponente der [Volltextsuche](search-lucene-query-architecture.md), mit dem Text in Abfragezeichenfolgen und indizierten Dokumenten verarbeitet wird. Die Textverarbeitung (auch als lexikalische Analyse bezeichnet) ist transformativ und ändert eine Zeichenfolge durch folgende Aktionen:
+Ein *Analysetool* ist eine Komponente der [Volltextsuch-Engine](search-lucene-query-architecture.md), das für die Verarbeitung von Zeichenfolgen während der Indizierung und Abfrageausführung verantwortlich ist. Die Textverarbeitung (auch als lexikalische Analyse bezeichnet) ist transformativ und ändert eine Zeichenfolge durch folgende Aktionen:
 
 + Entfernen nicht unbedingt benötigter Wörter (Stoppwörter) und Satzzeichen
 + Unterteilen von Ausdrücken und Wörtern mit Bindestrichen in Einzelwörter
@@ -27,7 +27,7 @@ Ein *Analyzer* ist eine Komponente der [Volltextsuche](search-lucene-query-archi
 
 Die Analyse gilt für `Edm.String`-Felder, die als „durchsuchbar“ gekennzeichnet sind, was auf die Volltextsuche hinweist. 
 
-Bei Feldern mit dieser Konfiguration erfolgt die Analyse während der Indizierung, wenn Token erstellt werden und dann noch mal während der Abfrageausführung, wenn Abfragen analysiert werden und die Engine diese auf übereinstimmende Token überprüft. Eine Übereinstimmung ist wahrscheinlicher, wenn dasselbe Analysetool sowohl für die Indizierung als auch für Abfragen verwendet wird. Sie können das Tool jedoch für jede Workload in Abhängigkeit von Ihren Anforderungen einzeln festlegen.
+Bei Feldern dieser Konfiguration erfolgt die Analyse während der Indizierung, wenn Token erstellt werden und dann noch mal während der Abfrageausführung, wenn Abfragen analysiert werden und die Engine diese auf übereinstimmende Token überprüft. Eine Übereinstimmung ist wahrscheinlicher, wenn dasselbe Analysetool sowohl für die Indizierung als auch für Abfragen verwendet wird. Sie können das Tool jedoch für jede Workload in Abhängigkeit von Ihren Anforderungen einzeln festlegen.
 
 Abfragetypen, bei denen es sich *nicht* um eine Volltextsuche handelt (z. B. Filter oder Fuzzysuche), durchlaufen auf Abfrageseite nicht die Analysephase. Stattdessen sendet der Parser diese Zeichenfolgen direkt an die Suchmaschine, wobei das Muster verwendet wird, das Sie als Grundlage für die Suche bereitstellen. In der Regel erfordern diese Abfrageformulare ganze Zeichenfolgentoken für den Musterabgleich. Sie benötigen möglicherweise [benutzerdefinierte Analysetools](index-add-custom-analyzers.md), um bei der Indizierung ganze Begriffstoken sicherzustellen. Weitere Informationen darüber, wann und warum Abfragebegriffe analysiert werden, finden Sie unter [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md).
 
@@ -37,7 +37,7 @@ Weitere Hintergrundinformationen zur lexikalischen Analyse finden Sie im folgend
 
 ## <a name="default-analyzer"></a>Standardanalysemodul  
 
-Bei Azure Cognitive Search-Abfragen wird ein Analysetool automatisch für alle Zeichenfolgenfelder aufgerufen, die als durchsuchbar markiert sind. 
+In Azure Cognitive Search wird ein Analysetool automatisch für alle Zeichenfolgenfelder aufgerufen, die als durchsuchbar markiert sind. 
 
 Azure Cognitive Search verwendet standardmäßig das [Standardanalysetool von Apache Lucene (Standard-Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html). Dieses unterteilt Text gemäß den Regeln der [Unicode-Textsegmentierung](https://unicode.org/reports/tr29/) in einzelne Elemente. Darüber hinaus konvertiert das Standardanalyseprogramm alle Zeichen in Kleinbuchstaben. Während der Indizierung und der Abfrageverarbeitung durchlaufen sowohl indizierte Dokumente als auch Suchbegriffe die Analyse.  
 
@@ -99,7 +99,7 @@ Der beste Zeitpunkt zum Hinzufügen und Zuweisen von Analysetools ist während d
 
 Da Analysetools für das Umwandeln von Ausdrücken in Token verwendet werden, sollten Sie ein Analysetool zuweisen, wenn das Feld erstellt wird. Das Zuweisen eines Analysetools oder von „indexAnalyzer“ zu einem Feld, das bereits physisch erstellt wurde, ist nicht zulässig (obwohl Sie die Eigenschaft „searchAnalyzer“ jederzeit ohne Auswirkung auf den Index ändern können).
 
-Sie müssen den [Index vollständig neu erstellen](search-howto-reindex.md), um das Analysetool eines vorhandenen Felds zu ändern (einzelne Felder können nicht neu erstellt werden). Für Indizes in der Produktion können Sie ein erneutes Erstellen aufschieben, indem Sie ein neues Feld mit der neuen Analysetoolzuweisung erstellen und diese anstelle der alten verwenden. Integrieren Sie das neue Feld mit [Update Index](/rest/api/searchservice/update-index) (Index aktualisieren), und füllen Sie es mit [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents). Später können Sie den Index als Bestandteil der geplanten Indexwartung bereinigen, um veraltete Felder zu entfernen.
+Sie müssen den gesamten Index löschen und neu erstellen, um das Analysetool eines vorhandenen Felds zu ändern (einzelne Felder können nicht neu erstellt werden). Für Indizes in der Produktion können Sie ein erneutes Erstellen aufschieben, indem Sie ein neues Feld mit der neuen Analysetoolzuweisung erstellen und diese anstelle der alten verwenden. Integrieren Sie das neue Feld mit [Update Index](/rest/api/searchservice/update-index) (Index aktualisieren), und füllen Sie es mit [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents). Später können Sie den Index als Bestandteil der geplanten Indexwartung bereinigen, um veraltete Felder zu entfernen.
 
 Rufen Sie [Update Index](/rest/api/searchservice/update-index) (Index aktualisieren) auf, um ein neues Feld zu einem vorhandenen Index hinzuzufügen, und verwenden Sie [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents), um es aufzufüllen.
 
@@ -382,7 +382,7 @@ Eine ausführliche Beschreibung der Abfrageausführung finden Sie in der [Vollte
 
 Weitere Informationen zu Analysetools erhalten Sie in den folgenden Artikeln:
 
-+ [Sprachanalysen](index-add-language-analyzers.md)
-+ [Benutzerdefinierte Analysen](index-add-custom-analyzers.md)
++ [Hinzufügen eines Sprachanalysetools](index-add-language-analyzers.md)
++ [Hinzufügen eines benutzerdefinierten Analysetools](index-add-custom-analyzers.md)
 + [Erstellen von Suchindizes in Azure Cognitive Search](search-what-is-an-index.md)
 + [Erstellen eines mehrsprachigen Index](search-language-support.md)

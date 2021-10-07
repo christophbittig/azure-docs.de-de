@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 07/22/2021
-ms.openlocfilehash: 890330700e21c34b1a3d9ae78068f577f5f64c6b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 28b616d0e0e4730fe96e5366a590ea84e5fa39cf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355506"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777752"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
@@ -313,7 +313,7 @@ Mithilfe der folgenden Tastenkombinationen können Sie in Azure Machine Learning
 
 * Wenn Sie keine Verbindung mit einem Notebook herstellen können, stellen Sie sicher, dass die WebSocket-Kommunikation **nicht** deaktiviert ist. Damit die Jupyter-Funktionen für Compute-Instanzen eingesetzt werden können, muss die WebSocket-Kommunikation aktiviert sein. Stellen Sie sicher, dass Ihr Netzwerk WebSocket-Verbindungen mit *.instances.azureml.net und *.instances.azureml.ms zulässt. 
 
-* Wenn eine Compute-Instanz in einem Arbeitsbereich mit einem privaten Endpunkt bereitgestellt wird, kann [nur im virtuellen Netzwerk darauf zugegriffen werden](./how-to-secure-training-vnet.md#compute-instance). Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für „<Instanzname>.<Region>.instances.azureml.ms“ mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md?tabs=azure-cli).
+* Wenn eine Compute-Instanz in einem Arbeitsbereich mit einem privaten Endpunkt bereitgestellt wird, kann [nur im virtuellen Netzwerk darauf zugegriffen werden](./how-to-secure-training-vnet.md). Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für „<Instanzname>.<Region>.instances.azureml.ms“ mit der privaten IP-Adresse des privaten Endpunkts Ihres Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md?tabs=azure-cli).
 
 * Wenn Ihr Kernel abgestürzt ist und neu gestartet wurde, können Sie den folgenden Befehl ausführen, um das Jupyter-Protokoll anzuzeigen und weitere Details zu erfahren: `sudo journalctl -u jupyter`. Wenn Kernelprobleme weiterhin bestehen, erwägen Sie, eine Compute-Instanz mit mehr Arbeitsspeicher zu verwenden.
 
@@ -323,4 +323,4 @@ Mithilfe der folgenden Tastenkombinationen können Sie in Azure Machine Learning
 
 * [Ausführen Ihres ersten Experiments](tutorial-1st-experiment-sdk-train.md)
 * [Sichern des Dateispeichers mit Momentaufnahmen](../storage/files/storage-snapshots-files.md)
-* [Arbeiten in sicheren Umgebungen](./how-to-secure-training-vnet.md#compute-instance)
+* [Arbeiten in sicheren Umgebungen](./how-to-secure-training-vnet.md#compute-cluster)

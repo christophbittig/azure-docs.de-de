@@ -1,18 +1,18 @@
 ---
-title: Überprüfen von Azure Data Explorer
-description: In diesem Leitfaden wird beschrieben, wie Sie eine Überprüfung für Azure Data Explorer durchführen.
+title: Registrieren und Überprüfen von Azure Data Explorer
+description: In diesem Leitfaden wird beschrieben, wie Sie eine Überprüfung für Azure Data Explorer in Azure Purview durchführen.
 author: nayenama
 ms.author: nayenama
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 05/08/2021
-ms.openlocfilehash: adf9f3da66908dc473388f9b3da14439de86ddcb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 28ed2e82108cce48ac7ce6988bd9e9833253855a
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355556"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209932"
 ---
 # <a name="register-and-scan-azure-data-explorer"></a>Registrieren und Überprüfen von Azure Data Explorer
 
@@ -63,9 +63,7 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 
 1. Navigieren Sie zum Azure-Portal. Navigieren Sie anschließend zu Ihrer Azure Data Explorer-Instanz.
 
-1. Fügen Sie den Dienstprinzipal auf der Registerkarte **Berechtigungen** der Rolle **AllDatabasesViewer** hinzu. Dies ist im folgenden Screenshot dargestellt.
-
-    :::image type="content" source="./media/register-scan-azure-data-explorer/permissions-auth.png" alt-text="Screenshot: Hinzufügen eines Dienstprinzipals in den Berechtigungen" border="true":::
+1. Fügen Sie den Dienstprinzipal der Rolle **AllDatabasesViewer** auf der Registerkarte **Berechtigungen** hinzu.
 
 ## <a name="register-an-azure-data-explorer-account"></a>Registrieren eines Azure Data Explorer-Kontos
 
@@ -93,7 +91,7 @@ Führen Sie auf dem Bildschirm **Register sources (Azure Data Explorer (Kusto))*
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+1. Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
 
 1. Wählen Sie die von Ihnen registrierte Azure Data Explorer-Quelle aus.
 

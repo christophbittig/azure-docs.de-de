@@ -4,24 +4,31 @@ description: Datei einfügen
 author: timlt
 ms.service: iot-develop
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 09/17/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 4bb64b6ee52bbf70a13bc1e654322f2f49bd0dee
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 85e75839d204360847162b470d149e580fac80bc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114712926"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909926"
 ---
 [![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp)
 
 In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Zunächst erstellen Sie eine Azure IoT Central-Anwendung zum Hosten von Geräten. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen simulierten Temperaturregler auszuführen, ihn sicher mit IoT Central zu verbinden und Telemetriedaten zu senden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+Diese Schnellstartanleitung wird unter Windows, Linux und Raspberry Pi ausgeführt. Sie wurde mit den folgenden Betriebssystem- und Geräteversionen getestet:
+
+- Windows 10
+- Ubuntu 20.04 LTS, ausgeführt im Windows-Subsystem für Linux (WSL)
+- Raspberry Pi OS Version 10 (Buster), ausgeführt auf einem Raspberry Pi 3 Model B+
+
+Installieren Sie die folgenden Komponenten auf dem Entwicklungscomputer:
+
 - [Node.js](https://nodejs.org/)-Version 6 oder höher. Führen Sie zum Überprüfen Ihrer Version `node --version` in Ihrer Konsolen-App aus.
 - [Git](https://git-scm.com/downloads).
-- Dieser Schnellstart kann unter Linux oder Windows ausgeführt werden. In den Shellbefehlen wird das Linux-Standardpfadtrennzeichen `/` verwendet. Ersetzen Sie bei Verwendung von Windows diese Trennzeichen durch das Windows-Pfadtrennzeichen `\`.
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
@@ -30,11 +37,11 @@ In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azu
 
 ### <a name="configure-your-environment"></a>Konfigurieren Ihrer Umgebung
 
-1. Öffnen Sie mithilfe der Windows-Eingabeaufforderung, von PowerShell oder Bash eine Konsole.
+1. Öffnen Sie eine Konsole, etwa die Windows-Eingabeaufforderung, PowerShell oder Bash.
 
 1. Legen Sie mit den entsprechenden Befehle für Ihre Konsole die folgenden Umgebungsvariablen fest. Das simulierte Gerät verwendet diese Werte, um eine Verbindung mit IoT Central herzustellen. Verwenden Sie für `IOTHUB_DEVICE_DPS_ID_SCOPE`, `IOTHUB_DEVICE_DPS_DEVICE_KEY` und `IOTHUB_DEVICE_DPS_DEVICE_ID` die Geräteverbindungswerte, die Sie zuvor gespeichert haben.
 
-    **Windows-Eingabeaufforderung**
+    **Eingabeaufforderung (Windows)**
 
     ```console
     set IOTHUB_DEVICE_SECURITY_TYPE=DPS
@@ -57,7 +64,7 @@ In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azu
     $env:IOTHUB_DEVICE_DPS_ENDPOINT='global.azure-devices-provisioning.net'
     ```
 
-    **Bash (Linux oder Windows)**
+    **Bash**
 
     ```bash
     export IOTHUB_DEVICE_SECURITY_TYPE='DPS'
@@ -75,10 +82,18 @@ In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azu
     git clone https://github.com/Azure/azure-iot-sdk-node
     ```
 
-1. Navigieren Sie zum Verzeichnis mit den Beispielen.
+1. Navigieren Sie zum Beispielverzeichnis.
+
+    **Windows**
+    ```console
+    cd azure-iot-sdk-node\device\samples\pnp
+    ```
+
+    **Linux oder Raspberry Pi OS**
     ```console
     cd azure-iot-sdk-node/device/samples/pnp
     ```
+
 1. Installieren Sie das Node.js SDK von Azure IoT sowie die erforderlichen Abhängigkeiten:
     ```console
     npm install

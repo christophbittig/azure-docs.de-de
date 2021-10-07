@@ -1,18 +1,18 @@
 ---
 title: Registrieren und Überprüfen einer lokalen SQL Server-Datenquelle
-description: In diesem Tutorial ist beschrieben, wie Sie eine lokale SQL Server-Datenquelle mit einer selbstgehosteten Integration Runtime überprüfen können.
+description: In diesem Tutorial ist beschrieben, wie Sie eine lokale SQL Server-Datenquelle mit einer selbstgehosteten Integration Runtime in Azure Purview überprüfen können.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 09/18/2020
-ms.openlocfilehash: 2f07ed4ca7bdb722a2563c5e81f7e30a57c79aeb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 4cef99adecadc73f105dfffcdc72163c8b622cc3
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345767"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208645"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Registrieren und Überprüfen einer lokalen SQL Server-Datenquelle
 
@@ -48,16 +48,6 @@ Es gibt nur eine Möglichkeit, die Authentifizierung für eine lokale SQL Server
 
 Das SQL-Konto muss Zugriff auf die **Masterdatenbank** besitzen. Dies liegt daran, dass sich `sys.databases` in der Masterdatenbank befindet. Der Purview-Scanner muss `sys.databases` durchlaufen, um alle SQL-Datenbankinstanzen auf dem Server zu finden.
 
-#### <a name="using-an-existing-server-administrator"></a>Verwenden eines vorhandenen Serveradministrators
-
-Wenn Sie einen vorhandenen Serveradministrator (sa) verwenden möchten, um Ihre lokale SQL Server-Datenquelle zu überprüfen, stellen Sie Folgendes sicher:
-
-1. `sa` ist kein Windows-Authentifizierungskonto.
-
-2. Die Anmeldung auf Serverebene, die Sie verwenden möchten, muss die Serverrollen „public“ und „sysadmin“ aufweisen. Sie können dies überprüfen, indem Sie eine Verbindung mit dem Server herstellen, zu SQL Server Management Studio (SSMS) navigieren, zu „Sicherheit“ navigieren, den Anmeldenamen auswählen, den Sie verwenden möchten, mit der rechten Maustaste auf **Eigenschaften** klicken und dann **Serverrollen** auswählen.
-
-   :::image type="content" source="media/register-scan-on-premises-sql-server/server-level-login.png" alt-text="Anmeldung auf Serverebene":::
-
 #### <a name="creating-a-new-login-and-user"></a>Erstellen einer neuen Anmeldung und eines neuen Benutzers
 
 Führen Sie die folgenden Schritte aus, wenn Sie eine neue Anmeldung und einen neuen Benutzer erstellen möchten, der Ihre SQL Server-Datenquelle überprüfen (scannen) kann:
@@ -65,7 +55,7 @@ Führen Sie die folgenden Schritte aus, wenn Sie eine neue Anmeldung und einen n
 > [!Note]
    > Alle nachfolgenden Schritte können mit dem [hier](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql) bereitgestellten Code ausgeführt werden.
 
-1. Navigieren Sie zu SQL Server Management Studio (SSMS), stellen Sie eine Verbindung mit dem Server her, navigieren Sie zu „Sicherheit“, klicken Sie mit der rechten Maustaste auf „Anmeldung“, und erstellen Sie eine neue Anmeldung. Wählen Sie „SQL Server-Authentifizierung“ aus.
+1. Navigieren Sie zu SQL Server Management Studio (SSMS), stellen Sie eine Verbindung mit dem Server her, navigieren Sie zu „Sicherheit“, wählen und halten Sie „Anmeldung“ (oder über rechte Maustaste), und erstellen Sie eine neue Anmeldung. Wählen Sie „SQL Server-Authentifizierung“ aus.
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/create-new-login-user.png" alt-text="Eine neue Anmeldung und einen neuen Benutzer erstellen":::
 
@@ -77,7 +67,7 @@ Führen Sie die folgenden Schritte aus, wenn Sie eine neue Anmeldung und einen n
 
 4. Klicken Sie zum Speichern auf OK.
 
-5. Navigieren Sie erneut zu dem von Ihnen erstellten Benutzer, indem Sie mit der rechten Maustaste klicken und **Eigenschaften** auswählen. Geben Sie ein neues Kennwort ein, und bestätigen Sie es. Wählen Sie die Option „Altes Kennwort angeben“ aus, und geben Sie das alte Kennwort ein. **Sie müssen Ihr Kennwort ändern, sobald Sie eine neue Anmeldung erstellen.**
+5. Navigieren Sie erneut zu dem*der Benutzer*in, den Sie erstellt haben, indem Sie darauf klicken und die Maustaste gedrückt halten (oder die rechte Maustaste verwenden) und die Option **Eigenschaften** auswählen. Geben Sie ein neues Kennwort ein, und bestätigen Sie es. Wählen Sie die Option „Altes Kennwort angeben“ aus, und geben Sie das alte Kennwort ein. **Sie müssen Ihr Kennwort ändern, sobald Sie eine neue Anmeldung erstellen.**
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/change-password.png" alt-text="Kennwort ändern":::
 
@@ -109,7 +99,7 @@ Führen Sie die folgenden Schritte aus, wenn Sie eine neue Anmeldung und einen n
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+1. Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
 
 1. Wählen Sie die von Ihnen registrierte SQL Server-Quelle aus.
 

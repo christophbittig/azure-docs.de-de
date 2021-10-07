@@ -1,7 +1,7 @@
 ---
 title: Rangtransformation in einem Zuordnungsdatenfluss
+description: Hier erfahren Sie, wie Sie eine Zuordnungsdatenfluss-Rangfolgetransformation verwenden, um eine Rangfolgespalte in Azure Data Factory- oder Synapse Analytics-Pipelines zu generieren.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Hier erfahren Sie, wie Sie die Rangtransformation im Zuordnungsdatenfluss von Azure Data Factory zum Generieren einer Rangspalte verwenden.
 author: kromerm
 ms.author: makromer
 ms.reviewer: makromer
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 10/05/2020
-ms.openlocfilehash: 6577425827668f0eaddb19b276e940fff7dafa1a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: c3af0355a02badb5aaa5d5b13a51b74392c931d8
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640926"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059874"
 ---
 # <a name="rank-transformation-in-mapping-data-flow"></a>Rangtransformation in einem Zuordnungsdatenfluss 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 Verwenden Sie die Rangtransformation, um eine geordnete Rangfolge basierend auf den vom Benutzer angegebenen Sortierbedingungen zu generieren. 
 
@@ -27,7 +29,7 @@ Verwenden Sie die Rangtransformation, um eine geordnete Rangfolge basierend auf 
 
 ## <a name="configuration"></a>Konfiguration
 
-![Rangeinstellungen](media/data-flow/rank-configuration.png "Rangeinstellungen")
+:::image type="content" source="media/data-flow/rank-configuration.png" alt-text="Rangeinstellungen":::
 
 **Keine Beachtung von Groß-/Kleinschreibung**: Wenn eine Sortierspalte vom Typ „String“ ist, wird die Groß-/Kleinschreibung bei der Rangfolge berücksichtigt. 
 
@@ -57,7 +59,7 @@ Bei der oben gezeigten Konfiguration werden eingehende Basketballdaten übernomm
 
 ### <a name="example"></a>Beispiel
 
-![Rangeinstellungen](media/data-flow/rank-configuration.png "Rangeinstellungen")
+:::image type="content" source="media/data-flow/rank-configuration.png" alt-text="Rangeinstellungen":::
 
 Der folgende Codeausschnitt zeigt das Datenflussskript für die obige Rangkonfiguration.
 

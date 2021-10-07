@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: def73d137f3cc2c79ae8417995ec6bdf6c519b7d
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 09/10/2021
+ms.openlocfilehash: 605405965e4c6bc17321401245866f9b21f3a988
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812622"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760059"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Unterstützte Datenspeicher in Azure Data Share
 
@@ -68,7 +68,7 @@ Wenn Consumer Daten in Azure Data Lake Storage Gen2 oder Azure Blob Storage akze
 Weitere Informationen finden Sie unter [Freigeben und Empfangen von Daten aus Azure SQL-Datenbank und Azure Synapse Analytics](how-to-share-from-sql.md).
 
 ## <a name="share-from-data-explorer"></a>Freigeben aus Data Explorer
-Azure Data Share unterstützt die Möglichkeit zur direkten Freigabe von Datenbanken über Azure Data Explorer-Cluster. Eine Freigabe durch einen Datenanbieter kann auf der Ebene der Datenbank oder des Clusters erfolgen. 
+Azure Data Share unterstützt die Möglichkeit zur direkten Freigabe von Datenbanken über Azure Data Explorer-Cluster. Eine Freigabe durch einen Datenanbieter kann auf der Ebene der Datenbank oder des Clusters erfolgen. Wenn Sie die Data Share-API zum Freigeben von Daten verwenden, können Sie auch bestimmte Tabellen freigeben.  
 
 Bei der Freigabe auf Datenbankebene können Datenconsumer nur auf die Datenbanken zugreifen, die vom Datenanbieter freigegeben wurden. Wenn ein Anbieter Daten auf Clusterebene freigegeben hat, können Datenconsumer auf alle Datenbanken im Cluster des Anbieters zugreifen, einschließlich zukünftiger Datenbanken, die vom Datenanbieter erstellt werden.
 

@@ -4,15 +4,15 @@ description: Beschreiben Sie Mechanismen, die konfiguriert werden können, um sc
 author: rgarcia
 manager: vrivera
 ms.author: rgarcia
-ms.date: 05/28/2021
-ms.topic: overview
+ms.date: 09/08/2021
+ms.topic: troubleshooting
 ms.service: azure-object-anchors
-ms.openlocfilehash: f7ebff2a9fb45831842b9390e3e72cdbfe58e794
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: cbdf29aa7bb9c342e08b64af0745c689910b26bd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111987887"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791971"
 ---
 # <a name="how-to-detect-a-difficult-object"></a>Erkennen eines schwierigen Objekts
 
@@ -21,6 +21,8 @@ Manchmal kann es vorkommen, dass ein Objekt schwieriger zu erkennen ist. Beispie
 - Wenn auf eine große Oberfläche nicht zugegriffen werden kann, da sich das Objekt vor einer Wand befindet.
 - Wenn ein Objekt zu groß ist und es zu lange dauert, um es zu umgehen.
 - Wenn die Oberfläche des Objekts von den Gerätesensoren nicht erkannt wird.
+
+## <a name="adjusting-object-query-values"></a>Anpassen von Objektabfragewerten
 
 Einige Mechanismen, die vom Azure Object Anchors SDK bereitgestellt werden und in diesen Situationen hilfreich sein können, sind die folgenden:
 
@@ -40,3 +42,11 @@ Einige Mechanismen, die vom Azure Object Anchors SDK bereitgestellt werden und i
   - Eine Kugel, indem Sie `ObjectSearchArea.FromSphere` verwenden.
 
 Weitere Informationen finden Sie in der `ObjectQuery`-Klasse für [Unity](/dotnet/api/microsoft.azure.objectanchors.objectquery) oder [HoloLens C++/WinRT](/cpp/api/object-anchors/winrt/objectquery).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Leitfaden zur Problembehandlung haben Sie erfahren, wie Sie Probleme bei der Erkennung von schwer zu erkennenden Objekten behandeln.
+Hier sind einige verwandte Artikel:
+
+> [!div class="nextstepaction"]
+> [Problembehandlung bei der Objekterkennung](./troubleshoot/object-detection.md)

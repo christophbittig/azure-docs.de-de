@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/27/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: a49dec3b7a87eebebbb6d4737618a387c80e4f1a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d476a5df53425d202b8c06e08765e0e35a39f41e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742810"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674393"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Elium
 
@@ -42,6 +42,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Elium unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 * Elium unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* Elium unterstützt die [automatisierte Benutzerbereitstellung](elium-provisioning-tutorial.md).
 
 ## <a name="add-elium-from-the-gallery"></a>Hinzufügen von Elium aus dem Katalog
 
@@ -190,8 +191,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 In diesem Abschnitt wird in Elium ein Benutzer namens B. Simon erstellt. Elium unterstützt die **Just-in-Time-Bereitstellung**, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Falls ein Benutzer nicht bereits in Elium vorhanden ist, wird beim Versuch, auf Elium zuzugreifen, ein neuer Benutzer erstellt.
 
-> [!Note]
-> Setzen Sie sich mit dem [Elium-Supportteam](mailto:support@elium.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+Außerdem unterstützt Elium die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./elium-provisioning-tutorial.md).
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
@@ -207,7 +207,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
  
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Elium-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
  
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie in „Meine Apps“ auf die Kachel „Elium“ klicken, geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Elium-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Wenn Sie in „Meine Apps“ auf die Kachel „Elium“ klicken, geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Elium-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: pricing
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: a5032ce26fcce2dbee2a95385292c5b455904586
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/07/2021
+ms.openlocfilehash: 38d6f8d8b96526c8ba190559a639985bedf96cff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355955"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798558"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Grundlegendes zu Azure Data Factory-Preisen anhand von Beispielen
 
@@ -36,7 +36,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 
 3. Einen Zeitplantrigger, der die Pipeline einmal pro Stunde ausführt.
 
-   ![Diagramm einer Pipeline mit einem Zeitplantrigger. In der Pipeline fließt die Kopieraktivität in ein Eingabedataset, das zu einem verknüpften AWS-S3-Dienst fließt. Außerdem fließt die Kopieraktivität auch in ein Ausgabedataset, das zu einem verknüpften Azure Storage-Dienst fließt.](media/pricing-concepts/scenario1.png)
+   :::image type="content" source="media/pricing-concepts/scenario1.png" alt-text="Das Diagramm zeigt eine Pipeline mit einem Plantrigger. In der Pipeline fließt die Kopieraktivität in ein Eingabedataset, das zu einem verknüpften AWS-S3-Dienst fließt. Außerdem fließt die Kopieraktivität auch in ein Ausgabedataset, das zu einem verknüpften Azure Storage-Dienst fließt.":::
 
 | **Vorgänge** | **Typen und Einheiten** |
 | --- | --- |
@@ -67,7 +67,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 2. Eine Azure Databricks-Aktivität für die Datentransformation.
 3. Ein Zeitplantrigger, um die Pipeline einmal pro Stunde auszuführen.
 
-![Diagramm einer Pipeline mit einem Zeitplantrigger. In der Pipeline fließt die Kopieraktivität in ein Eingabedataset, ein Ausgabedataset und eine Databricks-Aktivität, die in Azure Databricks ausgeführt wird. Das Eingabedataset fließt in einen verknüpften AWS-S3-Dienst. Das Ausgabedataset fließt in einen verknüpften Azure Storage-Dienst.](media/pricing-concepts/scenario2.png)
+:::image type="content" source="media/pricing-concepts/scenario2.png" alt-text="Das Diagramm zeigt eine Pipeline mit einem Plantrigger. In der Pipeline fließt die Kopieraktivität in ein Eingabedataset, das zu einem verknüpften AWS-S3-Dienst fließt. Die Kopieraktivität fließt auch in ein Ausgabedataset, das zu einem verknüpften Azure Storage-Dienst fließt. Außerdem wird die Databricks-Aktivität auf Azure Databricks ausgeführt.":::
 
 | **Vorgänge** | **Typen und Einheiten** |
 | --- | --- |
@@ -101,7 +101,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 3. Eine Azure Databricks-Aktivität für die Datentransformation.
 4. Ein Zeitplantrigger, um die Pipeline einmal pro Stunde auszuführen.
 
-![Diagramm einer Pipeline mit einem Zeitplantrigger. In der Pipeline fließt die Kopieraktivität in ein Eingabedataset, ein Ausgabedataset und eine Suchaktivität, die in eine Databricks-Aktivität fließt, die in Azure Databricks ausgeführt wird. Das Eingabedataset fließt in einen verknüpften AWS-S3-Dienst. Das Ausgabedataset fließt in einen verknüpften Azure Storage-Dienst.](media/pricing-concepts/scenario3.png)
+:::image type="content" source="media/pricing-concepts/scenario3.png" alt-text="Das Diagramm zeigt eine Pipeline mit einem Plantrigger. In der Pipeline fließt die Kopieraktivität in ein Eingabedataset, das zu einem verknüpften AWS-S3-Dienst fließt. Die Kopieraktivität fließt auch in ein Ausgabedataset, das zu einem verknüpften Azure Storage-Dienst fließt. Außerdem fließt die Lookup-Aktivität in die Databricks-Aktivität, die auf Azure Databricks ausgeführt wird.":::
 
 | **Vorgänge** | **Typen und Einheiten** |
 | --- | --- |
@@ -125,6 +125,16 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
   - Datenverschiebungsaktivitäten = 0,166 US-$ (anteilig für die Ausführungszeit von 10 Minuten. 0,25 US-$/Stunde auf Azure Integration Runtime)
   - Pipelineaktivität = 0,00003 US-$ (anteilig für die Ausführungszeit von 1 Minute. 0,002 US-$/Stunde auf Azure Integration Runtime)
   - Externe Pipelineaktivität = 0,000041 US-$ (anteilig für die Ausführungszeit von 10 Minuten. 0,00025 US-$/Stunde auf Azure Integration Runtime)
+
+## <a name="run-ssis-packages-on-azure-ssis-integration-runtime"></a>Ausführen von SSIS-Paketen auf Azure-SSIS Integration Runtime
+
+Azure-SSIS Integration Runtime (IR) ist ein spezieller Cluster von virtuellen Azure-Computern (VMs) für die Ausführung von SSIS-Paketen in Azure Data Factory (ADF). Wenn Sie sie bereitstellen, wird sie Ihnen zugewiesen, d. h. sie wird wie jede andere dedizierte Azure-VM berechnet, solange Sie sie laufen lassen, unabhängig davon, ob Sie sie zur Ausführung von SSIS-Paketen verwenden oder nicht. Was die laufenden Kosten betrifft, können Sie die stündliche Schätzung z. B. im ADF-Portal anzeigen:  
+
+:::image type="content" source="media/pricing-concepts/ssis-pricing-example.png" alt-text="SSIS Preisbeispiel:":::
+
+Wenn Sie im obigen Beispiel Ihre Azure-SSIS IR 2 Stunden lang laufen lassen, werden Ihnen die folgenden Kosten berechnet: **2 (Stunden) × 1,158 US-Dollar/Stunde = 2,316 US-Dollar** .
+
+Um Ihre Azure-SSIS IR-Betriebskosten zu verwalten, können Sie Ihre VM-Größe verkleinern, Ihre Clustergröße vergrößern und Ihre eigene SQL Server-Lizenz über die Azure Hybrid Benefit-Option (AHB) verwenden, was Ihnen erhebliche Einsparungen ermöglicht. Weitere Informationen finden Sie unter [Azure-SSIS IR-Preise](https://azure.microsoft.com/pricing/details/data-factory/ssis/). Sie können auch Ihre Azure-SSIS IR starten und stoppen, wann immer Sie möchten, um Ihre SSIS-Workloads zu verarbeiten, mehr dazu finden Sie unter [Azure-SSIS IR rekonfigurieren](manage-azure-ssis-integration-runtime.md#to-reconfigure-an-azure-ssis-ir) und [Azure-SSIS IR terminieren](how-to-schedule-azure-ssis-integration-runtime.md).
 
 ## <a name="using-mapping-data-flow-debug-for-a-normal-workday"></a>Verwenden der Zuordnungsdatenfluss-Debugfunktion für einen normalen Arbeitstag
 
@@ -171,7 +181,8 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 
 ## <a name="data-integration-in-azure-data-factory-managed-vnet"></a>Datenintegration in einem verwalteten Azure Data Factory-VNET
 In diesem Szenario möchten Sie die ursprünglichen Dateien in Azure Blob Storage löschen und Daten aus Azure SQL-Datenbank in Azure Blob Storage kopieren. Diese Ausführung erfolgt zweimal für unterschiedliche Pipelines. Die Ausführungszeit dieser beiden Pipelines überschneidet sich.
-![Szenario 4:](media/pricing-concepts/scenario-4.png) Um dieses Szenario zu realisieren, müssen Sie zwei Pipelines mit folgenden Elementen erstellen:
+:::image type="content" source="media/pricing-concepts/scenario-4.png" alt-text="Szenario4":::
+Um dieses Szenario zu realisieren, müssen Sie zwei Pipelines mit folgenden Elementen erstellen:
   - Eine Pipelineaktivität – Löschaktivität.
   - Eine Kopieraktivität mit einem Eingabedataset für die aus Azure Blob Storage zu kopierenden Daten.
   - Ein Ausgabedataset für die Daten in Azure SQL-Datenbank.

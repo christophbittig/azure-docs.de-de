@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/20/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 5e2f5689b476e4b6bf1c707c2c630879af4962fc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0717ed4934bd2a8ff9c0dbc4b893710aaaff870b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471759"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650798"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Coda
 
@@ -40,6 +40,8 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Coda unterstützt **IDP-initiiertes** einmaliges Anmelden.
 
 * Coda unterstützt die **Just-In-Time**-Benutzerbereitstellung.
+
+* Coda unterstützt die [automatisierte Benutzerbereitstellung](coda-provisioning-tutorial.md).
 
 ## <a name="add-coda-from-the-gallery"></a>Hinzufügen von Coda aus dem Katalog
 
@@ -155,13 +157,15 @@ Damit ist das Setup der SAML-SSO-Verbindung abgeschlossen.
 
 In diesem Abschnitt wird in Coda ein Benutzer mit dem Namen Britta Simon erstellt. Coda unterstützt die Just-in-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Coda vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
+Außerdem unterstützt Coda die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./coda-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
 * Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Coda-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Coda“ klicken, sollten Sie automatisch bei der Coda-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Coda“ klicken, sollten Sie automatisch bei der Coda-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

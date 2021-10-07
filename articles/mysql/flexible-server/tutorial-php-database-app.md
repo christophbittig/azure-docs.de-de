@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3a2f51d0d15ebd00335f7685d3983e527a3e8b7d
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 8e85133b8c476f2de046a8396ba171d563751bd7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643380"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128579763"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Tutorial: Erstellen einer PHP- (Laravel) und flexiblen MySQL – Flexible Server-App (Vorschau) in Azure App Service
 
@@ -33,7 +33,8 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Aktualisieren des Datenmodells und erneutes Bereitstellen der App
 > * Verwalten der App im Azure-Portal
 
-Wenn Sie kein [Azure-Abonnement](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), bevor Sie beginnen.
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -332,7 +333,7 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.azurewebs
 Sie haben eine leere neue Web-App mit aktivierter Git-Bereitstellung erstellt.
 
 > [!NOTE]
-> Die URL des Git-Remoterepository wird in der Eigenschaft deploymentLocalGitUrl im folgenden Format gezeigt: https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git. Speichern Sie diese URL, da Sie sie später noch benötigen.
+> Die URL des Git-Remotespeicherorts wird in der deploymentLocalGitUrl-Eigenschaft im Format `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git` angezeigt. Speichern Sie diese URL, da Sie sie später noch benötigen.
 
 ### <a name="configure-database-settings"></a>Konfigurieren der Datenbankeinstellungen
 

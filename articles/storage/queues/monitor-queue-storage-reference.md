@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: subject-monitoring
-ms.openlocfilehash: 506f5a46688f597b8ac5db341c5bbe5eb5fb67c8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 58f2771cd8bf9704a098cdad5d72131b0a67bad1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763143"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804435"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Überwachen von Daten in Azure Queue Storage – Referenz
 
@@ -61,7 +61,7 @@ Azure Storage unterstützt folgende Dimensionen für Metriken in Azure Monitor:
 ## <a name="resource-logs-preview"></a>Ressourcenprotokolle (Vorschau)
 
 > [!NOTE]
-> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen öffentlichen Cloudregionen für Vorschautests zur Verfügung. Diese Vorschauversion ermöglicht Protokolle für Blobs (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen, Tabellen, Universell V1-Premium-Speicherkonten und Universell V2-Speicherkonten. Klassische Speicherkonten werden nicht unterstützt.
+> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen der öffentlichen und der US Government-Cloud für Vorschautests zur Verfügung. Diese Vorschauversion ermöglicht Protokolle für Blobs (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen, Tabellen, Universell V1-Premium-Speicherkonten und Universell V2-Speicherkonten. Klassische Speicherkonten werden nicht unterstützt.
 
 In der nachstehenden Tabelle sind die Eigenschaften für Azure Storage-Ressourcenprotokolle aufgelistet, wenn diese in Azure Monitor-Protokollen oder Azure Storage gesammelt werden. Diese Eigenschaften beschreiben den Vorgang, den Dienst und den Autorisierungstyp, der zum Ausführen des Vorgangs verwendet wurde.
 

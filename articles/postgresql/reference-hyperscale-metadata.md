@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 74403365fe48584fa5d1db0e349c9dfc3772d874
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8213ca39f85a50d7e5354948467f3fbd66cb4797
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652850"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094726"
 ---
 # <a name="system-tables-and-views"></a>Systemtabellen und Sichten
 
@@ -33,7 +33,7 @@ Sie können diese Tabellen nach der Anmeldung beim Koordinatorknoten mithilfe vo
 
 Die pg\_dist\_partition-Tabelle speichert Metadaten dazu, welche Tabellen in der Datenbank verteilte Tabellen sind. Für jede verteilte Tabelle speichert sie auch Informationen zur Verteilungsmethode und detaillierte Informationen zur Verteilungsspalte.
 
-| Name         | type     | BESCHREIBUNG                                                                                                                                                                                                                                           |
+| Name         | Type     | BESCHREIBUNG                                                                                                                                                                                                                                           |
 |--------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | logicalrelid | regclass | Verteilte Tabelle, der diese Zeile entspricht. Dieser Wert verweist auf die relfilenode-Spalte in der pg_class-Systemkatalogtabelle.                                                                                                                   |
 | partmethod   | char     | Die Methode, die zum Partitionieren/Verteilen verwendet wird. Die Werte dieser Spalte, die verschiedenen Verteilungsmethoden entsprechen, sind „Anfügen: „a“, Hash: „h“, Verweistabelle: „n“.                                                                          |
@@ -54,7 +54,7 @@ SELECT * from pg_dist_partition;
 In der pg\_dist\_shard-Tabelle werden Metadaten zu einzelnen Shards einer Tabelle gespeichert. Pg_dist_shard enthält Informationen dazu, zu welcher verteilten Tabelle Sards gehören, sowie Statistiken zur Verteilungsspalte für Shards.
 Für verteilte Tabellen vom Typ „Anfügen“ entsprechen diese Statistiken den Minimal-/Maximalwerten der Verteilungsspalte. Bei Tabellen mit Hashverteilung handelt es sich um Hashtokenbereiche, die diesem Shard zugewiesen sind. Diese Statistiken werden zum Bereinigen nicht verknüpfter Shards während SELECT-Abfragen verwendet.
 
-| Name          | type     | BESCHREIBUNG                                                                                                                                                                                  |
+| Name          | Type     | BESCHREIBUNG                                                                                                                                                                                  |
 |---------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | logicalrelid  | regclass | Verteilte Tabelle, der diese Zeile entspricht. Dieser Wert verweist auf die relfilenode-Spalte in der pg_class-Systemkatalogtabelle.                                                          |
 | shardid       | BIGINT   | Der global eindeutige Bezeichner, der diesem Shard zugewiesen ist.                                                                                                                                           |
@@ -87,7 +87,7 @@ Die shardstorage-Spalte in pg\_dist\_shard gibt den Typ des für den Shard verwe
 
 Die pg\_dist\_placement-Tabelle verfolgt den Speicherort von Shardreplikaten auf Workerknoten nach. Jedes Replikat eines Shards, das einem bestimmten Knoten zugewiesen ist, wird als Shardplatzierung bezeichnet. In dieser Tabelle werden Informationen zur Integrität und zum Speicherort der einzelnen Shardplatzierungen gespeichert.
 
-| Name        | type   | BESCHREIBUNG                                                                                                                               |
+| Name        | Type   | BESCHREIBUNG                                                                                                                               |
 |-------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | shardid     | BIGINT | Der Shardbezeichner, der dieser Platzierung zugeordnet ist. Dieser Wert verweist auf die shardid-Spalte in der pg_dist_shard-Katalogtabelle.             |
 | shardstate  | INT    | Beschreibt den Status dieser Platzierung. Verschiedene Shardzustände werden im Abschnitt unten erläutert.                                         |
@@ -122,7 +122,7 @@ Hyperscale (Citus) verwaltet die Shardintegrität pro Platzierung. Wenn eine Pla
 
 Die pg\_dist\_node-Tabelle enthält Informationen zu den Workerknoten im Cluster.
 
-| Name             | type    | BESCHREIBUNG                                                                                                                                                                                |
+| Name             | Type    | BESCHREIBUNG                                                                                                                                                                                |
 |------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | nodeid           | INT     | Automatisch generierter Bezeichner für einen einzelnen Knoten.                                                                                                                                          |
 | groupid          | INT     | Bezeichner zum Bezeichnen einer Gruppe mit einem primären Server und null oder mehr sekundären Servern, wenn das Streamingreplikationsmodell verwendet wird. Standardmäßig ist dieser Wert mit dem Wert für nodeid identisch.         |
@@ -149,7 +149,7 @@ SELECT * from pg_dist_node;
 
 Die Citus.pg\_dist\_object-Tabelle enthält eine Liste von Objekten, z. B. von Typen und Funktionen, die auf dem Koordinatorknoten erstellt und an Workerknoten weitergegeben wurden. Wenn ein Administrator dem Cluster neue Workerknoten hinzufügt, erstellt Hyperscale (Citus) automatisch Kopien der verteilten Objekte auf den neuen Knoten (in der richtigen Reihenfolge, um Objektabhängigkeiten zu erfüllen).
 
-| Name                        | type    | BESCHREIBUNG                                          |
+| Name                        | Type    | BESCHREIBUNG                                          |
 |-----------------------------|---------|------------------------------------------------------|
 | classid                     | oid     | Klasse des verteilten Objekts                      |
 | objid                       | oid     | Objekt-ID des verteilten Objekts                  |
@@ -212,7 +212,7 @@ Die pg\_dist\_colocation-Tabelle enthält Informationen dazu, in welchen Tabelle
 Wenn sich zwei Tabellen in derselben Colocationsgruppe befinden, stellt Hyperscale (Citus) sicher, dass Shards mit denselben Partitionswerten auf denselben Workerknoten platziert werden.
 Colocation ermöglicht Joinoptimierungen, bestimmte verteilte Rollups und Fremdschlüsselunterstützung. Shardcolocation wird eingeleitet, wenn die Shardanzahl, Replikationsfaktoren und Partitionsspaltentypen zwischen zwei Tabellen insgesamt übereinstimmen. Wenn dies gewünscht wird, kann jedoch eine benutzerdefinierte Colocationsgruppe angegeben werden, wenn eine verteilte Tabelle erstellt wird.
 
-| Name                   | type | BESCHREIBUNG                                                                   |
+| Name                   | Type | BESCHREIBUNG                                                                   |
 |------------------------|------|-------------------------------------------------------------------------------|
 | colocationid           | INT  | Eindeutiger Bezeichner für die Colocationsgruppe, der diese Zeile entspricht.          |
 | shardcount             | INT  | Die Shardsanzahl für alle Tabellen in dieser Colocationsgruppe                          |
@@ -231,7 +231,7 @@ SELECT * from pg_dist_colocation;
 
 Diese Tabelle definiert Strategien, die [rebalance_table_shards](reference-hyperscale-functions.md#rebalance_table_shards) verwenden kann, um zu bestimmen, wohin Shards verschoben werden sollen.
 
-| Name                           | type    | BESCHREIBUNG                                                                                                                                       |
+| Name                           | Type    | BESCHREIBUNG                                                                                                                                       |
 |--------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------|
 | default_strategy               | boolean | Gibt an, ob rebalance_table_shards diese Strategie standardmäßig auswählen soll. Verwenden Sie citus_set_default_rebalance_strategy, um diese Spalte zu aktualisieren.             |
 | shard_cost_function            | regproc | Ein Bezeichner für eine Kostenfunktion, die eine shardid als bigint-Typ annehmen muss und Kosten vom Typ „real“ zurückgibt.                                |
@@ -329,7 +329,7 @@ Hyperscale (Citus) bietet `citus_stat_statements` für Statistiken zur Ausführu
 
 In dieser Sicht können Abfragen von Ursprungsmandanten in einer mehrinstanzenfähigen Anwendung überwacht werden. Dies hilft bei der Entscheidung, wann Mandantenisolation ausgeführt werden sollte.
 
-| Name          | type   | BESCHREIBUNG                                                                      |
+| Name          | Type   | BESCHREIBUNG                                                                      |
 |---------------|--------|----------------------------------------------------------------------------------|
 | queryid       | BIGINT | Bezeichner (gut geeignet für pg_stat_statements-Joins)                                   |
 | userid        | oid    | Der Benutzer, der die Abfrage ausgeführt hat.                                                           |
@@ -482,7 +482,38 @@ Im Feld `query` werden Daten angezeigt, die aus dem Shard kopiert werden, um gez
 > Wenn eine Routerabfrage (z. B. ein einzelner Mandant in einer mehrinstanzenfähigen Anwendung) `SELECT
 > * FROM table WHERE tenant_id = X`) ohne einen Transaktionsblock ausgeführt wird, sind die Spalten master\_query\_host\_name und master\_query\_host\_port in citus\_worker\_stat\_activity NULL.
 
-Um zu sehen, wie `citus_lock_waits` funktioniert, können Sie eine Sperrsituation manuell generieren. Zunächst richten Sie eine Testtabelle aus dem Koordinator ein:
+Im Folgenden sind Beispiele für nützliche Abfragen aufgeführt, die Sie mit `citus_worker_stat_activity` erstellen können:
+
+```postgresql
+-- active queries' wait events on a certain node
+
+SELECT query, wait_event_type, wait_event
+  FROM citus_worker_stat_activity
+ WHERE query_hostname = 'xxxx' and state='active';
+
+-- active queries' top wait events
+
+SELECT wait_event, wait_event_type, count(*)
+  FROM citus_worker_stat_activity
+ WHERE state='active'
+ GROUP BY wait_event, wait_event_type
+ ORDER BY count(*) desc;
+
+-- total internal connections generated per node by Citus
+
+SELECT query_hostname, count(*)
+  FROM citus_worker_stat_activity
+ GROUP BY query_hostname;
+
+-- total internal active connections generated per node by Citus
+
+SELECT query_hostname, count(*)
+  FROM citus_worker_stat_activity
+ WHERE state='active'
+ GROUP BY query_hostname;
+```
+
+Die nächste Ansicht ist `citus_lock_waits`. Um zu sehen, wie diese Ansicht funktioniert, können Sie manuell eine Sperrsituation generieren. Hierzu richten Sie zunächst über den Koordinator eine Testtabelle ein:
 
 ```postgresql
 CREATE TABLE numbers AS

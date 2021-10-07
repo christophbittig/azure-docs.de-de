@@ -1,14 +1,14 @@
 ---
 title: Aktualisieren einer Delegierung
 description: Hier erfahren Sie, wie Sie eine Delegierung für einen Kunden aktualisieren, für den zuvor ein Onboarding in Azure Lighthouse durchgeführt wurde.
-ms.date: 02/16/2021
+ms.date: 09/08/2021
 ms.topic: how-to
-ms.openlocfilehash: e8044732cd1cb544515bcfe5b2c0ac3b40bf0cfe
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 41ba14433f1af7abb60034e4034f0585ed9968f4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114389253"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736679"
 ---
 # <a name="update-a-delegation"></a>Aktualisieren einer Delegierung
 
@@ -58,12 +58,12 @@ Nach Abschluss der Bereitstellung [vergewissern Sie sich, dass sie erfolgreich w
 
 ## <a name="updating-managed-service-offers"></a>Aktualisieren von Angeboten für verwaltete Dienste
 
-Wenn Sie das Onboarding Ihres Kunden über ein im Azure Marketplace veröffentlichtes Angebot für verwaltete Dienste durchgeführt haben und die Autorisierungen aktualisieren möchten, können Sie die Delegierung folgendermaßen aktualisieren: [Veröffentlichen Sie eine neue Version Ihres Angebots](../../marketplace/update-existing-offer.md) mit den [Autorisierungen](../../marketplace/plan-managed-service-offer.md), die Sie im Plan für diesen Kunden in aktualisierter Form verwenden möchten. Dann kann der Kunde im Azure-Portal ein Update auf die neueste Version ausführen.
+Wenn Sie das Onboarding Ihres Kunden über ein im Azure Marketplace veröffentlichtes Angebot für verwaltete Dienste durchgeführt haben und die Autorisierungen aktualisieren möchten, erreichen Sie dies wie folgt: [Veröffentlichen Sie eine neue Version Ihres Angebots](../../marketplace/update-existing-offer.md) mit den [Autorisierungen](../../marketplace/create-managed-service-offer-plans.md#authorizations), die Sie im Plan für diesen Kunden in aktualisierter Form verwenden möchten. Kund*innen können dann die [Änderungen im Azure-Portal überprüfen und die neue Version akzeptieren](view-manage-service-providers.md#update-service-provider-offers).
 
-Wenn Sie den Verwaltungsmandanten ändern möchten, müssen Sie [ein neues Angebot für verwaltete Dienste erstellen und veröffentlichen](../../marketplace/plan-managed-service-offer.md), das der Kunde akzeptieren kann.
+Wenn Sie den Verwaltungsmandanten ändern möchten, müssen Sie [ein neues Angebot für verwaltete Dienste erstellen und veröffentlichen](publish-managed-services-offers.md), das der Kunde akzeptieren kann.
 
-> [!TIP]
-> Wie bereits erwähnt, empfiehlt es sich, für ein und denselben Kunden und Verwaltungsmandanten nicht mehrere verschiedene Angebote zu verwenden. Wenn Sie ein neues Angebot für einen Kunden veröffentlichen, das denselben Verwaltungsmandanten verwendet, stellen Sie sicher, dass das ältere Angebot entfernt wird, bevor der Kunde das neuere Angebot annimmt.
+> [!IMPORTANT]
+> Wie bereits erwähnt, empfiehlt es sich, für ein und dieselben Kund*innen und Verwaltungsmandanten nicht mehrere verschiedene Angebote zu verwenden. Wenn Sie ein neues Angebot für einen Kunden veröffentlichen, das denselben Verwaltungsmandanten verwendet, stellen Sie sicher, dass das ältere Angebot entfernt wird, bevor der Kunde das neuere Angebot annimmt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

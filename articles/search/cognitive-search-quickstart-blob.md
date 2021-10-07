@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 08/17/2021
-ms.openlocfilehash: d29f434e1ac8b5fa8b96dcf4ad4f1125c20eb4db
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: d39ee872024cc3eb301e59d45e276843bb886340
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451761"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210552"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-skillset-in-the-azure-portal"></a>Schnellstart: Erstellen eines Skillsets für Azure Cognitive Search über das Azure-Portal
 
@@ -171,7 +171,7 @@ Ein weiteres wichtiges Konzept ist, dass Skills mit Inhaltstypen arbeiten und be
 
 Die Ausgabe wird an einen Suchindex weitergeleitet, und es gibt eine Zuordnung zwischen Name-Wert-Paaren, die im Zuge der Indizierung erstellt wurden, und einzelnen Feldern in Ihrem Index. Intern richtet das Portal [Anmerkungen](cognitive-search-concept-annotations-syntax.md) ein und definiert eine [Qualifikationsgruppe](cognitive-search-defining-skillset.md), um die Reihenfolge der Vorgänge und den allgemeinen Ablauf festzulegen. Diese Schritte sind im Portal ausgeblendet, werden aber wichtig, wenn Sie selbst mit der Erstellung von Code beginnen.
 
-Außerdem haben Sie gelernt, dass Sie Inhalte durch Abfragen des Index überprüfen können. Azure Cognitive Search stellt letztendlich einen durchsuchbaren Index bereit, den Sie entweder mit der [einfachen](/rest/api/searchservice/simple-query-syntax-in-azure-search) oder mit der [vollständig erweiterten Abfragesyntax](/rest/api/searchservice/lucene-query-syntax-in-azure-search) abfragen können. Ein Index, der angereicherte Felder enthält, ist wie jeder andere. Wenn Sie standardmäßige oder [benutzerdefinierte Analysetools](search-analyzers.md), [Bewertungsprofile](/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [Synonyme](search-synonyms.md), [facettierte Filter](search-filters-facets.md), die geografische Suche oder andere Azure Cognitive Search-Features einbeziehen möchten, stehen Ihnen alle Wege offen.
+Außerdem haben Sie gelernt, dass Sie Inhalte durch Abfragen des Index überprüfen können. Azure Cognitive Search stellt letztendlich einen durchsuchbaren Index bereit, den Sie entweder mit der [einfachen](/rest/api/searchservice/simple-query-syntax-in-azure-search) oder mit der [vollständig erweiterten Abfragesyntax](/rest/api/searchservice/lucene-query-syntax-in-azure-search) abfragen können. Ein Index, der angereicherte Felder enthält, ist wie jeder andere. Wenn Sie standardmäßige oder [benutzerdefinierte Analysetools](search-analyzers.md), [Bewertungsprofile](/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [Synonyme](search-synonyms.md), [Facettennavigation](search-faceted-navigation.md), die geografische Suche oder andere Azure Cognitive Search-Features einbeziehen möchten, stehen Ihnen alle Wege offen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

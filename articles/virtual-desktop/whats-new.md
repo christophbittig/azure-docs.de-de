@@ -3,17 +3,17 @@ title: Neues in Azure Virtual Desktop - Azure
 description: Neue Features und Produktupdates für Azure Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 07/30/2021
+ms.date: 09/27/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 88c94a3f1b6329c80cddcec49c7ebb445a21d8e0
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 438a3f4091afbfb885e2f585196193ce91f13f4a
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123318139"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154544"
 ---
 # <a name="whats-new-in-azure-virtual-desktop"></a>Neues in Azure Virtual Desktop
 
@@ -42,6 +42,10 @@ Der Azure Virtual Desktop-Agent wird mindestens einmal pro Monat aktualisiert.
 
 Hier sind die Änderungen für Azure Virtual Desktop-Agent angegeben:
 
+- Version 1.0.3373.2600: Dieses Update wurde im September 2021 veröffentlicht und umfasst die folgenden Änderungen:
+    - Allgemeine Agent-Verbesserungen.
+    - Behebung von Problemen beim Neustart des Agents auf VMs mit Windows 7.
+    - Behebung eines Problems, bei dem Felder in der Tabelle „WVDAgentHealthStatus“ nicht richtig angezeigt wurden.
 - Version 1.0.3130.2900: Dieses Update wurde im Juli 2021 veröffentlicht und umfasst die folgenden Änderungen:
     - allgemeine Verbesserungen und Fehlerbehebungen
     - Problembehebung beim Abrufen des Hostpool-Pfads für die Intune-Registrierung.
@@ -67,33 +71,51 @@ Hier sind die Änderungen für Azure Virtual Desktop-Agent angegeben:
 
 Sie sind neugierig auf die neuesten Updates für FSLogix? Informieren Sie sich über die [Neuerungen für FSLogix](/fslogix/whats-new).
 
+## <a name="september-2021"></a>September 2021
+
+Änderungen im September 2021:
+
+### <a name="azure-portal-updates"></a>Azure-Portalupdates
+
+Sie können jetzt Azure Resource Manager-Vorlagen für alle Updates verwenden, die Sie nach der Bereitstellung auf Ihre Sitzungshosts anwenden möchten. Sie können auf dieses Feature zugreifen, indem Sie beim Erstellen eines Hostpools die Registerkarte **Virtuelle Computer** auswählen.
+
+Darüber hinaus können Sie jetzt auch während der Erstellung von Hostpools Diagnoseeinstellungen für Hostpools, App-Gruppen und Arbeitsbereiche festlegen und müssen dies nicht mehr hinterher erledigen. Beim Konfigurieren dieser Einstellungen während der Hostpoolerstellung werden zudem automatisch Berichtsdaten für Erkenntnisse zu Azure Virtual Desktop eingerichtet.
+
+### <a name="azure-active-directory-domain-join"></a>Azure Active Directory-Domänenbeitritt
+
+Der Azure Active Directory-Domänenbeitritt ist jetzt allgemein verfügbar. Mit diesem Dienst können Sie Ihre Sitzungshosts in Azure Active Directory einbinden. Über den Domänenbeitritt können Sie auch unter Microsoft Endpoint Manager die automatische Registrierung bei Intune durchführen. Sie können auf dieses Feature in der öffentlichen Azure-Cloud zugreifen, aber nicht in der Government- oder Azure China-Cloud. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-azure-ad-joined-vms-support/ba-p/2751083).
+
+### <a name="azure-china"></a>Azure China
+
+Azure Virtual Desktop ist in der Azure China-Cloud jetzt allgemein verfügbar. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://azure.microsoft.com/updates/general-availability-azure-virtual-desktop-is-now-available-in-the-azure-china-cloud/).
+
+### <a name="automatic-migration-module-tool"></a>Tool für das Modul „Automatische Migration“
+
+Mit dem Tool für die automatische Migration können Sie mit wenigen PowerShell-Befehlen Ihre Organisation aus Azure Virtual Desktop (klassisch) in Azure Virtual Desktop verschieben. Dieses Feature befindet sich derzeit in der öffentlichen Vorschauphase. Weitere Informationen finden Sie unter [Automatische Migration](automatic-migration.md).
+
 ## <a name="august-2021"></a>August 2021
 
 Änderungen im August 2021:
 
-### <a name="windows-11-preview-on-avd"></a>Windows 11 (Vorschau) in AVD
+### <a name="windows-11-preview-for-azure-virtual-desktop"></a>Windows 11 (Vorschau) für Azure Virtual Desktop
 
 Windows 11 -Images (Vorschauversion) sind jetzt im Azure Marketplace verfügbar, damit Kunden sie mit Azure Virtual Desktop testen und überprüfen können. Weitere Informationen finden Sie in [unserer Ankündigung](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/windows-11-preview-is-now-available-on-azure-virtual-desktop/ba-p/2666468).
 
-### <a name="multimedia-redirection-mmr-is-now-in-public-preview"></a>Multimediaumleitung (MMR) jetzt in der öffentlichen Vorschau
+### <a name="multimedia-redirection-is-now-in-public-preview"></a>Beginn der öffentlichen Vorschauphase für Multimediaumleitung
 
-Die Multimediaumleitung (MMR) ermöglicht eine ruckelfreie Wiedergabe von Videos in Ihrem Azure Virtual Desktop-Webbrowser und funktioniert mit Microsoft Edge und Google Chrome. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/public-preview-announcing-public-preview-of-multimedia/m-p/2663244#M7692).
+Die Multimediaumleitung ermöglicht eine reibungslose Wiedergabe von Videos in Ihrem Azure Virtual Desktop-Webbrowser und funktioniert mit Microsoft Edge und Google Chrome. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/public-preview-announcing-public-preview-of-multimedia/m-p/2663244#M7692).
 
-### <a name="ip-virtualization-support-for-windows-server-2019"></a>Unterstützung der IP-Virtualisierung für Windows Server 2019
+### <a name="windows-defender-application-control-and-azure-disk-encryption-support"></a>Unterstützung für Windows Defender Application Control und Azure Disk Encryption
 
-Die IP-Virtualisierung wird auf Windows Server 2008 R2 und höher unterstützt. Um die IP-Virtualisierung für Windows Server 2019 zu verwenden, sind weitere Schritte erforderlich. Weitere Informationen finden Sie in [unserer Ankündigung](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/ip-virtualization-support-for-windows-server-2019/m-p/2658650).
-
-### <a name="windows-defender-application-control-and-azure-disk-encryption-is-now-supported"></a>Unterstützung für Microsoft Defender Application Control und Azure Disk Encryption
-
-Azure Virtual Desktop unterstützt jetzt Microsoft Defender Application Control, um zu steuern, welche Treiber und Anwendungen auf der Windows-VM ausgeführt werden dürfen. Unterstützt wird auch Azure Disk Encryption, ein Dienst, der Windows BitLocker verwendet, um die Volumeverschlüsselung für das Betriebssystem und die Datenträger Ihrer VMs zu ermöglichen. Weitere Informationen finden Sie in [unserer Ankündigung](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/support-for-windows-defender-application-control-and-azure-disk/m-p/2658633#M7685).
+Azure Virtual Desktop unterstützt jetzt Windows Defender Application Control, damit gesteuert werden kann, welche Treiber und Anwendungen auf virtuellen Windows-Computern (VMs) ausgeführt werden dürfen. Darüber hinaus wird auch Azure Disk Encryption unterstützt. Dies ist ein Dienst, bei dem Windows BitLocker verwendet wird, um die Volumeverschlüsselung für das Betriebssystem und die Datenträger Ihrer VMs zu ermöglichen. Weitere Informationen finden Sie in [unserer Ankündigung](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/support-for-windows-defender-application-control-and-azure-disk/m-p/2658633#M7685).
  
 ### <a name="signing-into-azure-ad-using-smart-cards-are-now-supported-in-azure-virtual-desktop"></a>Unterstützung in Azure Virtual Desktop für die Anmeldung bei Azure AD mithilfe von Smartcards
 
-Obwohl dies kein neues Feature für Azure AD ist, wird die Konfiguration der Active Directory-Verbunddienste (AD FS) für die Anmeldung mit Smartcards jetzt in Azure Virtual Desktop unterstützt. Weitere Informationen finden Sie in [unserer Ankündigung](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/signing-in-to-azure-ad-using-smart-cards-now-supported-in-azure/m-p/2654209#M7671).
+Obwohl dies kein neues Feature für Azure AD ist, wird die Konfiguration der Active Directory-Verbunddienste (AD FS) für die Anmeldung mit Smartcards jetzt in Azure Virtual Desktop unterstützt. Weitere Informationen finden Sie in [unserer Ankündigung](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/signing-in-to-azure-ad-using-smart-cards-now-supported-in-azure/m-p/2654209#M7671).
 
 ### <a name="screen-capture-protection-is-now-generally-available"></a>Bildschirmaufnahmeschutz jetzt allgemein verfügbar
 
-Mit dem Bildschirmaufnahmeschutz in AVD können Sie verhindern, dass vertrauliche Informationen von auf den Clientendpunkten ausgeführter Software erfasst werden. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-screen-capture-protection-for/m-p/2699684).
+Mit dem Bildschirmaufnahmeschutz in Azure Virtual Desktop können Sie verhindern, dass vertrauliche Informationen von Software, die auf den Clientendpunkten ausgeführt wird, erfasst werden. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-screen-capture-protection-for/m-p/2699684).
 
 ## <a name="july-2021"></a>Juli 2021
 
@@ -540,7 +562,7 @@ Weitere Informationen zu neuen Features finden Sie in [diesem Blogbeitrag](https
 
 ### <a name="autoscaling-tool-update"></a>Aktualisierung des Tools für die automatische Skalierung
 
-Die aktuelle Version des Tools für die automatische Skalierung, die sich in der Vorschauphase befunden hat, ist jetzt allgemein verfügbar. Für dieses Tool werden ein Azure Automation-Konto und die Azure-Logik-App verwendet, um virtuelle Sitzungshostcomputer (VMs) in einem Hostpool automatisch herunterzufahren und neu zu starten und so die Infrastrukturkosten zu reduzieren. Weitere Informationen finden Sie unter [Skalieren von Sitzungshosts mit Azure Automation](set-up-scaling-script.md).
+Die aktuelle Version des Tools für die automatische Skalierung, die sich in der Vorschauphase befunden hat, ist jetzt allgemein verfügbar. Für dieses Tool werden ein Azure Automation-Konto und die Azure-Logik-App verwendet, um Sitzungshost-VMs in einem Hostpool automatisch herunterzufahren und neu zu starten und so die Infrastrukturkosten zu reduzieren. Weitere Informationen finden Sie unter [Skalieren von Sitzungshosts mit Azure Automation](set-up-scaling-script.md).
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -581,7 +603,7 @@ Diese Änderung umfasst Folgendes:
 
 - Bei diesem Update müssen Sie Azure Marketplace oder die GitHub-Vorlage nicht mehr wiederholt ausführen, um einen Hostpool zu erweitern. Zum Erweitern eines Hostpools müssen Sie lediglich im Azure-Portal zu Ihrem Hostpool wechseln und **+ Hinzufügen** auswählen, um weitere Sitzungshosts bereitzustellen.
 
-- Die Hostpoolbereitstellung ist jetzt in die [Azure Shared Image Gallery](../virtual-machines/shared-image-galleries.md) (Katalog der freigegebenen Images) vollständig integriert. Shared Image Gallery ist ein separater Azure-Dienst, der VM-Imagedefinitionen (Virtual Machine) speichert, einschließlich der Versionsverwaltung für Images. Sie können Ihre Images auch mithilfe der globalen Replikation kopieren und für lokale Bereitstellung in andere Azure-Regionen senden.
+- Die Hostpoolbereitstellung ist jetzt in die [Azure Shared Image Gallery](../virtual-machines/shared-image-galleries.md) (Katalog der freigegebenen Images) vollständig integriert. Shared Image Gallery ist ein separater Azure-Dienst, unter dem VM-Imagedefinitionen, z. B. die Versionsverwaltung für Images, gespeichert werden. Sie können Ihre Images auch mithilfe der globalen Replikation kopieren und für lokale Bereitstellung in andere Azure-Regionen senden.
 
 - Überwachungsfunktionen, die über PowerShell oder die Diagnostics Service-Webapp erledigt wurden, wurden jetzt im Azure-Portal in Log Analytics verschoben. Außerdem stehen Ihnen jetzt zwei Optionen zum Visualisieren Ihrer Berichte zur Verfügung. Sie können Kusto-Abfragen ausführen und Arbeitsmappen zum Erstellen virtueller Berichte verwenden.
 

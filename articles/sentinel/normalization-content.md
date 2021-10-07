@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: 6ff0d40fbfa75eb6ae40766a4be42891c11156dd
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: deb5377aef61736a14ce8110e96c16e5352096cd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432196"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552253"
 ---
 # <a name="azure-sentinel-information-model-asim-security-content--public-preview"></a>Azure Sentinel Informationsmodell (ASIM) Sicherheitsinhalt (Öffentliche Vorschau)
 
@@ -30,8 +30,12 @@ Zu den normalisierten Sicherheitsinhalten in Azure Sentinel gehören Analyserege
 
 Dieser Artikel listet integrierte Azure Sentinel-Inhalte auf, die für die Unterstützung von ASIM konfiguriert wurden.  Im Folgenden finden Sie Links zum Azure Sentinel GitHub-Repository. Sie können diese Regeln aber auch in dem [Azure Sentinel Analytics-Regelkatalog](detect-threats-built-in.md) finden. Verwenden Sie die verlinkten GitHub-Seiten, um alle relevanten Hunting-Abfragen zu kopieren.
 
+> [!TIP]
+> Informieren Sie sich auch über das [ausführliche Webinar zu normalisierten Parsern und Inhalten in Azure Sentinel](https://www.youtube.com/watch?v=zaqblyjQW6k), oder sehen Sie sich die [Folien](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM) an. Weitere Informationen finden Sie in den [nächsten Schritten](#next-steps).
+>
+
 > [!IMPORTANT]
-> ASIM befindet sich derzeit in PREVIEW. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> ASIM befindet sich derzeit in der Vorschauphase. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 >
 
 ## <a name="authentication-security-content"></a>Inhalt der Authentifizierungssicherheit
@@ -52,12 +56,15 @@ Der folgende integrierte DNS-Abfrageinhalt wird für die ASIM-Normalisierung unt
 
 ### <a name="analytics-rules"></a>Analyseregeln
 
- - [Übermäßige NXDOMAIN-DNS-Abfragen (normalisiertes DNS)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDns_ExcessiveNXDOMAINDNSQueries.yaml)
+ - (Preview) TI map Domain entity to DNS Events (Normalized DNS)
+ - (Preview) TI map IP entity to DNS Events (Normalized DNS)
+ - [Potenzielle DGA erkannt (ASimDNS)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDns_HighNXDomainCount_detection.yaml)
+  - [Übermäßige NXDOMAIN-DNS-Abfragen (normalisiertes DNS)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDns_ExcessiveNXDOMAINDNSQueries.yaml)
  - [DNS-Ereignisse im Zusammenhang mit Miningpools (normalisiertes DNS)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDNS_Miners.yaml)
  - [DNS-Ereignisse im Zusammenhang mit ToR-Proxys (normalisiertes DNS)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDNS_TorProxies.yaml)
  - [Bekannte Barium-Domänen](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/BariumDomainIOC112020.yaml)
  - [Bekannte Barium-IP-Adressen](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/BariumIPIOC112020.yaml) 
- - [Exchange Server: im März 2021 offengelegte Sicherheitsrisiken – IoC-Übereinstimmung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ExchangeServerVulnerabilitiesMarch2021IoCs.yaml)
+ - [Exchange Server: im März 2021 offengelegte Sicherheitsrisiken – IoC-Übereinstimmung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ExchangeServerVulnerabilitiesMarch2021IoCs.yaml)
  - [Known GALLIUM domains and hashes (Bekannte GALLIUM-Domänen und -Hashes)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/GalliumIOCs.yaml)
  - [Known IRIDIUM IP (Bekannte IRIDIUM-IP-Adresse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/IridiumIOCs.yaml)
  - [NOBELIUM - Domain and IP IOCs - March 2021 (NOBELIUM – Domänen- und IP-IOCs – März 2021)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_DomainIOCsMarch2021.yaml)
@@ -74,7 +81,7 @@ Der folgende integrierte Dateiaktivitätsinhalt wird für die ASIM-Normalisierun
 ### <a name="analytic-rules"></a>Analyseregeln
 
 - [SUNBURST- und SUPERNOVA-Hintertürhashes (normalisierte Dateiereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimFileEvent/imFileESolarWindsSunburstSupernova.yaml)
-- [Exchange Server: im März 2021 offengelegte Sicherheitsrisiken – IoC-Übereinstimmung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ExchangeServerVulnerabilitiesMarch2021IoCs.yaml)
+- [Exchange Server: im März 2021 offengelegte Sicherheitsrisiken – IoC-Übereinstimmung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ExchangeServerVulnerabilitiesMarch2021IoCs.yaml)
 - [Schreiben verdächtiger Dateien durch den HAFNIUM UM-Dienst](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/HAFNIUMUmServiceSuspiciousFile.yaml)
 - [NOBELIUM – Domänen-, Hash- und IP-IOCs – März 2021](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_IOCsMay2021.yaml)
 - [SUNSPOT-Protokolldateierstellung](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/SUNSPOTLogFile.yaml)
@@ -89,8 +96,8 @@ Der folgende integrierte Prozessaktivitätsinhalt wird für die ASIM-Normalisier
  - [Wahrscheinliche Verwendung des AdFind Recon-Tools (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_AdFind_Usage.yaml)
  - [Base64-codierte Windows-Prozessbefehlszeilen (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_base64_encoded_pefile.yaml)
  - [Schadsoftware im Papierkorb (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_malware_in_recyclebin.yaml)
- - [SKRIPTIUM – verdächtige rundll32.exe-Ausführung von vbscript (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_NOBELIUM_SuspiciousRundll32Exec.yaml)
- - [SUNBURST verdächtige untergeordnete SolarWinds-Prozesse (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_SolarWinds_SUNBURST_Process-IOCs.yaml)
+ - [NOBELIUM – verdächtige rundll32.exe-Ausführung von vbscript (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_NOBELIUM_SuspiciousRundll32Exec.yaml)
+ - [SUNBURST – verdächtige untergeordnete SolarWinds-Prozesse (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_SolarWinds_SUNBURST_Process-IOCs.yaml)
 
 ### <a name="hunting-queries"></a>Hunting-Abfragen
 
@@ -185,12 +192,13 @@ imDns
 | extend timestamp = TimeGenerated, IPCustomEntity = SrcIpAddr
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel wird der Inhalt der Azure Sentinel Informationsmodell (ASIM) diskutiert.
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-- [ Azure Sentinel Informationsmodell Übersicht](normalization.md)
-- [ Azure Sentinel Informationsmodell Schemas](normalization-about-schemas.md)
-- [ Azure Sentinel-Informationsmodell Parser](normalization-about-parsers.md)
+- Informieren Sie sich über das [ausführliche Webinar zu normalisierten Parsern und Inhalten in Azure Sentinel](https://www.youtube.com/watch?v=zaqblyjQW6k), oder sehen Sie sich die [Folien](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM) an.
+- [ Azure Sentinel-Informationsmodell Übersicht](normalization.md)
+- [Schemas des Azure Sentinel-Informationsmodells](normalization-about-schemas.md)
+- [Parser des Azure Sentinel-Informationsmodells](normalization-about-parsers.md)

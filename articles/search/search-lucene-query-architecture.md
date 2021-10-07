@@ -1,26 +1,26 @@
 ---
 title: Architektur der Engine für die Volltextsuche und Indizierung (Lucene)
 titleSuffix: Azure Cognitive Search
-description: Beschreibung der Konzepte für die Lucene-Abfrageverarbeitung und den Dokumentabruf für die Volltextsuche bei der kognitiven Azure-Suche.
+description: Beschreibung der Konzepte für die Lucene-Abfrageverarbeitung und den Dokumentabruf für die Volltextsuche bei Azure Cognitive Search.
 manager: nitinme
 author: yahnoosh
 ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/28/2021
+ms.openlocfilehash: b070cc197de1a3e4390d3957cda5b2bd65c754f3
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96002747"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210419"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Volltextsuche in Azure Cognitive Search
 
 Dieser Artikel ist für Entwickler bestimmt, die eingehendere Informationen zur Funktionsweise der Lucene-Volltextsuche in der kognitiven Azure-Suche benötigen. Für Textabfragen werden die erwarteten Ergebnisse in der kognitiven Azure-Suche in den meisten Szenarien problemlos bereitgestellt, aber es kann auch vorkommen, dass Sie ein unerwartetes Ergebnis erhalten. In diesen Situationen können Kenntnisse der vier Phasen der Lucene-Abfragenausführung (Abfrageanalyse, lexikalische Analyse, Dokumentabgleich, Bewertung) hilfreich beim Identifizieren von bestimmten Änderungen von Abfrageparametern oder der Indexkonfiguration sein, auf denen das gewünschte Ergebnis basiert. 
 
 > [!Note] 
-> Bei der kognitiven Azure-Suche wird Lucene für die Volltextsuche eingesetzt, die Lucene-Integration deckt jedoch nicht alles ab. Wir machen die Lucene-Funktionalität wahlweise verfügbar und erweitern sie, um die für die kognitive Azure-Suche wichtigen Szenarien zu ermöglichen. 
+> Bei Azure Cognitive Search wird [Apache Lucene](https://lucene.apache.org/) für die Volltextsuche eingesetzt, wobei die Lucene-Integration jedoch nicht alles abdeckt. Wir machen die Lucene-Funktionalität wahlweise verfügbar und erweitern sie, um die für die kognitive Azure-Suche wichtigen Szenarien zu ermöglichen. 
 
 ## <a name="architecture-overview-and-diagram"></a>Architektur – Übersicht und Diagramm
 

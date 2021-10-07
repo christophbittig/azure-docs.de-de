@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: contperf-fy21q1, automl, FY21Q4-aml-seo-hack
 ms.date: 06/11/2021
-ms.openlocfilehash: 87ee8e4b5d28628ae09eec83d7f72f44e762e34f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 26a83b28fd6e1fdaded9884deb0d7197e0a59a6f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122356379"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784888"
 ---
 # <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>Einrichten von AutoML zum Trainieren eines Zeitreihenvorhersagemodells mit Python
 
@@ -147,7 +147,7 @@ Eine Übersicht über zusätzliche Parameter finden in der folgenden Tabelle. Sy
 |`forecast_horizon`|Definiert die Anzahl der Zeiträume, die Sie vorhersagen möchten. Der Horizont wird in Einheiten der Zeitreihenhäufigkeit angegeben. Die Einheiten basieren auf dem Zeitintervall Ihrer Trainingsdaten, z. B. monatlich oder wöchentlich, die vorhergesagt werden sollen.|✓|
 |`enable_dnn`|[Aktivieren Sie Vorhersage-DNNs]().||
 |`time_series_id_column_names`|Die verwendeten Spaltennamen dienen zum eindeutigen Identifizieren der Zeitreihe in Daten, die mehrere Zeilen mit demselben Zeitstempel aufweisen. Ohne definierte Zeitreihenbezeichner wird bei dem Dataset von einer einzelnen Zeitreihe ausgegangen. Weitere Informationen zu einzelnen Zeitreihen finden Sie unter [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).||
-|`freq`| Die Häufigkeit der Zeitreihendatasets. Dieser Parameter stellt den Zeitraum dar, in dem Ereignisse zu erwarten sind, z. B. täglich, wöchentlich, jährlich usw. Die Häufigkeit muss ein [Pandas-Offset-Alias](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects) sein. Weitere Informationen über die [Häufigkeit](#frequency--target-data-aggregation)||
+|`freq`| Die Häufigkeit der Zeitreihendatasets. Dieser Parameter stellt den Zeitraum dar, in dem Ereignisse zu erwarten sind, z. B. täglich, wöchentlich, jährlich usw. Die Häufigkeit muss ein [Pandas-Offset-Alias](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects) sein. Weitere Informationen finden Sie im Abschnitt zur [Häufigkeit](#frequency-target-data-aggregation).||
 |`target_lags`|Anzahl der Zeilen, um die die Zielwerte basierend auf der Häufigkeit der Daten verzögert werden sollen. Diese Verzögerung wird als Liste oder als einzelner Integer dargestellt. Die Verzögerung sollte verwendet werden, wenn die Beziehung zwischen den unabhängigen Variablen und der abhängigen Variable standardmäßig nicht übereinstimmt oder korreliert. ||
 |`feature_lags`| Welche Features verzögert werden, wird automatisch durch automatisiertes ML festgelegt, wenn `target_lags` festgelegt und `feature_lags` auf `auto` festgelegt ist. Das Aktivieren von Featureverzögerungen kann zur Verbesserung der Genauigkeit beitragen. Featureverzögerungen sind standardmäßig deaktiviert. ||
 |`target_rolling_window_size`|*n* Historische Zeiträume zum Generieren der vorhergesagten Werte, < = Größe Trainingsmenge. Wenn nicht angegeben, ist *n* die vollständige Trainingsmenge. Geben Sie diesen Parameter an, wenn Sie beim Trainieren des Modells nur eine bestimmte Menge des Verlaufs beachten möchten. Erfahren Sie mehr über [rollierende Zeitfensteraggregationen als Ziel](#target-rolling-window-aggregation).||
@@ -360,7 +360,7 @@ ws = Workspace.from_config()
 experiment = Experiment(ws, "Tutorial-automl-forecasting")
 local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
-```
+``` 
  
 ## <a name="forecasting-with-best-model"></a>Vorhersagen mit dem besten Modell
 
@@ -413,6 +413,95 @@ Wiederholen Sie die erforderlichen Schritte, um diese zukünftigen Daten in eine
 
 > [!NOTE]
 > In-Sample-Vorhersagen werden für die Vorhersage mit automatisiertem maschinellen Lernen nicht unterstützt, wenn `target_lags` und/oder `target_rolling_window_size` aktiviert sind.
+
+## <a name="forecasting-at-scale"></a>Vorhersagen im großen Stil 
+
+Es gibt Szenarios, in denen ein einzelnes Machine Learning-Modell nicht ausreicht und mehrere Machine Learning-Modelle benötigt werden. Beispiele hierfür sind die Vorhersage des Umsatzes für jedes einzelne Geschäft einer Marke oder das Anpassen einer Benutzeroberfläche an die einzelnen Benutzer*innen. Das Erstellen eines Modells für jede Instanz kann bei vielen Problemen im Bereich des maschinellen Lernens zu besseren Ergebnissen führen. 
+
+Das Gruppieren ist ein Konzept bei der Zeitreihenvorhersage, bei dem Zeitreihen kombiniert werden können, um ein einzelnes Modell pro Gruppe zu trainieren. Dieser Ansatz kann besonders hilfreich sein, wenn Sie über Zeitreihen verfügen, bei denen eine Glättung, eine Füllung oder Entitäten in der Gruppe erforderlich sind, die vom Verlauf oder Trends für andere Entitäten profitieren können. Viele Modelle und hierarchische Zeitreihenvorhersagen sind Lösungen, die durch automatisiertes maschinelles Lernen für diese umfangreichen Vorhersageszenarios unterstützt werden. 
+
+### <a name="many-models"></a>Viele Modelle
+
+Die Azure Machine Learning-Lösung mit vielen Modellen mit automatisiertem maschinellem Lernen ermöglicht Benutzern das gleichzeitige Trainieren und Verwalten von Millionen von Modellen. Der Solution Accelerator verwendet [Azure Machine Learning-Pipelines](concept-ml-pipelines.md) zum Trainieren vieler Modelle. Genauer gesagt werden ein [Pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29)-Objekt und [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep) verwendet, und es müssen bestimmte Konfigurationsparameter über [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig) festgelegt werden. 
+
+
+Das folgende Diagramm zeigt den Workflow für die Lösung mit vielen Modellen. 
+
+![Diagramm mit dem Konzept für viele Modelle](./media/how-to-auto-train-forecast/many-models.svg)
+
+Der folgende Code enthält die wichtigsten Parameter, die Benutzer*innen benötigen, um das Ausführen der vielen Modelle einzurichten.
+
+```python
+from azureml.train.automl.runtime._many_models.many_models_parameters import ManyModelsTrainParameters
+
+partition_column_names = ['Store', 'Brand']
+automl_settings = {"task" : 'forecasting',
+                   "primary_metric" : 'normalized_root_mean_squared_error',
+                   "iteration_timeout_minutes" : 10, #This needs to be changed based on the dataset. Explore how long training is taking before setting this value 
+                   "iterations" : 15,
+                   "experiment_timeout_hours" : 1,
+                   "label_column_name" : 'Quantity',
+                   "n_cross_validations" : 3,
+                   "time_column_name": 'WeekStarting',
+                   "max_horizon" : 6,
+                   "track_child_runs": False,
+                   "pipeline_fetch_max_batch_size": 15,}
+
+mm_paramters = ManyModelsTrainParameters(automl_settings=automl_settings, partition_column_names=partition_column_names)
+
+```
+
+### <a name="hierarchical-time-series-forecasting"></a>Hierarchische Zeitreihenvorhersage
+
+In den meisten Anwendungen müssen Kunden ihre Vorhersagen auf der Makro- und Mikroebene des Unternehmens verstehen, egal, ob es sich nun um die Vorhersage des Umsatzes für Produkte an verschiedenen geografischen Standorten oder das Verstehen des erwarteten Mitarbeiterbedarfs für verschiedene Organisationen in einem Unternehmen handelt. Die Fähigkeit, ein Machine Learning-Modell so zu trainieren, dass es intelligente Vorhersagen basierend auf Hierarchiedaten trifft, ist von zentraler Bedeutung. 
+
+Eine hierarchische Zeitreihe ist eine Struktur, in der alle Reihen basierend auf Dimensionen wie Geografie oder Produkttyp in einer Hierarchie angeordnet sind. Das folgende Beispiel zeigt Daten mit eindeutigen Attributen, die hierarchisch angeordnet sind. Die Hierarchie in diesem Fall wird basierend auf dem Produkttyp (z. B. Kopfhörer oder Tablets), der Produktkategorie, die die Produkttypen weiter in Zubehör und Geräte unterteilt, und der Region definiert, in der die Produkte verkauft werden. 
+
+![Beispieltabelle mit Rohdaten für hierarchische Daten](./media/how-to-auto-train-forecast/hierarchy-data-table.svg)
+ 
+Zur weiteren Veranschaulichung enthalten die Blattebenen der Hierarchie alle Zeitreihen mit eindeutigen Kombinationen aus Attributwerten. Jede nächsthöhere Ebene in der Hierarchie berücksichtigt eine Dimension weniger beim Definieren der Zeitreihe und aggregiert jede Gruppe untergeordneter Knoten auf der Ebene darunter in einem übergeordneten Knoten.
+ 
+![Hierarchievisual für Daten](./media/how-to-auto-train-forecast/data-tree.svg)
+
+Die hierarchische Zeitreihenlösung baut auf der Lösung mit vielen Modellen auf und verwendet ein ähnliches Konfigurationssetup.
+
+Der folgende Code enthält die wichtigsten Parameter, die Sie benötigen, um das Ausführen der hierarchischen Zeitreihenvorhersagen einzurichten. 
+
+```python
+
+from azureml.train.automl.runtime._hts.hts_parameters import HTSTrainParameters
+
+model_explainability = True
+
+engineered_explanations = False # Define your hierarchy. Adjust the settings below based on your dataset.
+hierarchy = ["state", "store_id", "product_category", "SKU"]
+training_level = "SKU"# Set your forecast parameters. Adjust the settings below based on your dataset.
+time_column_name = "date"
+label_column_name = "quantity"
+forecast_horizon = 7
+
+
+automl_settings = {"task" : "forecasting",
+                   "primary_metric" : "normalized_root_mean_squared_error",
+                   "label_column_name": label_column_name,
+                   "time_column_name": time_column_name,
+                   "forecast_horizon": forecast_horizon,
+                   "hierarchy_column_names": hierarchy,
+                   "hierarchy_training_level": training_level,
+                   "track_child_runs": False,
+                   "pipeline_fetch_max_batch_size": 15,
+                   "model_explainability": model_explainability,# The following settings are specific to this sample and should be adjusted according to your own needs.
+                   "iteration_timeout_minutes" : 10,
+                   "iterations" : 10,
+                   "n_cross_validations": 2}
+
+hts_parameters = HTSTrainParameters(
+    automl_settings=automl_settings,
+    hierarchy_column_names=hierarchy,
+    training_level=training_level,
+    enable_engineered_explanations=engineered_explanations
+)
+```
 
 ## <a name="example-notebooks"></a>Beispielnotebooks
 

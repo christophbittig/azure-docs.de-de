@@ -4,17 +4,17 @@ description: Während ein Blob sich auf der Archivzugriffsebene befindet, wird e
 services: storage
 author: tamram
 ms.author: tamram
-ms.date: 08/24/2021
+ms.date: 08/31/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: 33f29c44e32f1deed0c21e3695e61457a31c7f65
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 2c4eac524ecda8a2b90036748fd2a6f2a389a3cd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122829676"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823724"
 ---
 # <a name="overview-of-blob-rehydration-from-the-archive-tier"></a>Übersicht über die Aktivierung von Blobs aus der Archivebene
 
@@ -80,7 +80,7 @@ Sobald eine [Set Blob Tier](/rest/api/storageservices/set-blob-tier)-Anforderung
 Informationen zum Aktivieren eines Blobs durch Ändern seiner Ebene in eine Onlineebene finden Sie unter [Aktivieren eines Blobs durch Ändern seiner Ebene](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-by-changing-its-tier).
 
 > [!CAUTION]
-> Wenn Sie die Ebene eines Blobs ändern, hat das keine Auswirkungen auf den Zeitpunkt der letzten Änderung. Wenn für das Speicherkonto eine [Lebenszyklusverwaltungsrichtlinie](storage-lifecycle-management-concepts.md) gilt, kann die Aktivierung eines Blobs mit **Set Blob Tier** dazu führen, dass das Blob aufgrund der Lebenszyklusrichtlinie nach der Aktivierung auf die Archivebene zurück verschoben wird, weil der Zeitpunkt der letzten Änderung nach dem für die Richtlinie festgelegten Schwellenwert liegt.
+> Wenn Sie die Ebene eines Blobs ändern, hat das keine Auswirkungen auf den Zeitpunkt der letzten Änderung. Wenn für das Speicherkonto eine [Lebenszyklusverwaltungsrichtlinie](./lifecycle-management-overview.md) gilt, kann die Aktivierung eines Blobs mit **Set Blob Tier** dazu führen, dass das Blob aufgrund der Lebenszyklusrichtlinie nach der Aktivierung auf die Archivebene zurück verschoben wird, weil der Zeitpunkt der letzten Änderung nach dem für die Richtlinie festgelegten Schwellenwert liegt.
 >
 > Wenn Sie das vermeiden möchten, aktivieren Sie das archivierte Blob, indem Sie es stattdessen wie in der Beschreibung im Abschnitt [Kopieren eines archivierten Blobs auf eine Onlineebene](#copy-an-archived-blob-to-an-online-tier) kopieren. Bei einem Kopiervorgang wird eine neue Instanz des Blobs mit einem aktualisierten Zeitpunkt der letzten Änderung erstellt, sodass die Lebenszyklusverwaltungsrichtlinie nicht ausgelöst wird.
 

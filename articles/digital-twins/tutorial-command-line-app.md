@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Tutorial zum Erstellen eines Azure Digital Twins-Szenarios unter Verwendung einer Beispielbefehlszeilenanwendung
 author: baanders
 ms.author: baanders
-ms.date: 5/8/2020
+ms.date: 9/1/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 1d4faa9ad8bce084fdd011fb9a79fd867f02aa27
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4d75685ce62258c18d3c501ae08acd2678e177a6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446905"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658372"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>Tutorial: Erstellen eines Azure Digital Twins-Graphen unter Verwendung Beispielclient-App
 
@@ -73,7 +73,7 @@ Nach dem Entwerfen von Modellen müssen Sie diese in Ihre Azure Digital Twins-In
 
 1. Nachdem Sie die Room.js Datei im vorherigen Abschnitt bearbeitet haben, starten Sie jetzt die Ausführung der Konsolen-App erneut.
 
-1. Führen Sie im Projektkonsolenfenster den folgenden Befehl aus, um das aktualisierte Room-Modell sowie ein Floor-Modell hochzuladen, das Sie auch im nächsten Abschnitt verwenden, um unterschiedliche Arten von Zwillingen zu erstellen.
+1. Führen Sie im Projektkonsolenfenster den folgenden Befehl aus, um das aktualisierte Room-Modell zusammen mit einem Floor-Modell hochzuladen, das Sie auch im nächsten Abschnitt verwenden, um unterschiedliche Arten von Zwillingen zu erstellen.
 
     ```cmd/sh
     CreateModels Room Floor
@@ -81,7 +81,7 @@ Nach dem Entwerfen von Modellen müssen Sie diese in Ihre Azure Digital Twins-In
     
     In der Ausgabe sollte die erfolgreiche Erstellung der Modelle angegeben sein.
 
-1. Vergewissern Sie sich, dass die Modelle erstellt wurden, indem Sie den Befehl `GetModels true` ausführen. Dadurch werden alle hochgeladenen Modelle aus der Azure Digital Twins-Instanz abgefragt und ausführliche Informationen ausgegeben. Suchen Sie in den Ergebnissen nach dem bearbeiteten Room-Modell:
+1. Vergewissern Sie sich, dass die Modelle erstellt wurden, indem Sie den Befehl `GetModels true` ausführen. Dieser Befehl gibt die vollständigen Informationen für alle Modelle aus, die in Ihre Azure Digital Twins-Instanz hochgeladen wurden. Suchen Sie in den Ergebnissen nach dem bearbeiteten Room-Modell:
 
     :::image type="content" source="media/tutorial-command-line/app/output-get-models.png" alt-text="Screenshot: Ergebnis von „GetModels“ mit dem aktualisierten Raummodell" lightbox="media/tutorial-command-line/app/output-get-models.png":::
 
@@ -89,13 +89,13 @@ Nach dem Entwerfen von Modellen müssen Sie diese in Ihre Azure Digital Twins-In
 
 Die Beispielanwendung verarbeitet auch Fehler des Diensts. 
 
-Führen Sie den Befehl `CreateModels` erneut aus, um eins des soeben hochgeladenen Modelle ein zweites Mal hochzuladen:
+Führen Sie den Befehl `CreateModels` erneut aus, um eins des hochgeladenen Modelle ein zweites Mal hochzuladen:
 
 ```cmd/sh
 CreateModels Room
 ```
 
-Da Modelle nicht überschrieben werden können, wird jetzt ein Dienstfehler zurückgegeben.
+Da Modelle nicht überschrieben werden können, wird bei diesem Befehl jetzt ein Dienstfehler zurückgegeben.
 Ausführliche Informationen zum Löschen von vorhandenen Modellen finden Sie unter [Verwalten von DTDL-Modellen](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
@@ -117,7 +117,7 @@ Sie haben einige Modelle in Ihre Azure Digital Twins-Instanz hochgeladen und kö
 
 Zum Erstellen eines digitalen Zwillings verwenden Sie den Befehl `CreateDigitalTwin`. Sie müssen auf das Modell verweisen, auf dem der Zwilling basiert, und können optional Anfangswerte für Eigenschaften im Modell definieren. Sie müssen in dieser Phase keine Beziehungsinformationen übergeben.
 
-1. Führen Sie diesen Code in der ausgeführten Projektkonsole aus, um mehrere Zwillinge basierend auf dem zuvor aktualisierten Room-Modell und dem Floor-Modell zu erstellen. Denken Sie daran, dass Room drei Eigenschaften hat, sodass Sie Argumente mit den Anfangswerten für diese angeben können. (Die Initialisierung von Eigenschaftswerten ist grundsätzlich optional, für dieses Tutorial werden sie allerdings benötigt.)
+1. Führen Sie diesen Code in der ausgeführten Projektkonsole aus, um mehrere Zwillinge basierend auf dem zuvor aktualisierten Room-Modell und dem Floor-Modell zu erstellen. Denken Sie daran, dass „Room“ drei Eigenschaften hat, sodass Sie Argumente mit den Anfangswerten für diese Eigenschaften angeben können. (Die Initialisierung von Eigenschaftswerten ist grundsätzlich optional, für dieses Tutorial werden sie allerdings benötigt.)
 
     ```cmd/sh
     CreateDigitalTwin dtmi:example:Room;2 room0 RoomName string Room0 Temperature double 70 HumidityLevel double 30
@@ -131,6 +131,8 @@ Zum Erstellen eines digitalen Zwillings verwenden Sie den Befehl `CreateDigitalT
     :::image type="content" source="media/tutorial-command-line/app/output-create-digital-twin.png" alt-text="Screenshot: Auszug aus dem Ergebnis der Befehle vom Typ „CreateDigitalTwin“ mit „floor0“, „floor1“, „room0“ und „room1“" lightbox="media/tutorial-command-line/app/output-create-digital-twin.png":::
 
 1. Führen Sie den Befehl `Query` aus, um sich zu vergewissern, dass die Zwillinge erstellt wurden. Mit diesem Befehl werden alle digitalen Zwillinge der Azure Digital Twins-Instanz abgefragt. Suchen Sie in den Ergebnissen nach den Zwillingen room0, room1, floor0 und floor1.
+
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
 
 ### <a name="modify-a-digital-twin"></a>Ändern eines digitalen Zwillings
 
@@ -182,7 +184,7 @@ Verwenden Sie zum Hinzufügen einer Beziehung den Befehl `CreateRelationship`. G
     
     :::image type="content" source="media/tutorial-command-line/app/output-create-relationship.png" alt-text="Screenshot: Auszug aus dem Ergebnis der Befehle vom Typ „CreateRelationship“ mit „relationship0“ und „relationship1“" lightbox="media/tutorial-command-line/app/output-create-relationship.png":::
 
-1. Sie können die Beziehungen mithilfe eines der folgenden Befehle zum Abfragen der Beziehungen in der Azure Digital Twins-Instanz überprüfen.
+1. Sie können die Beziehungen mithilfe einer der folgenden Befehle zum Ausgeben der Beziehungen in der Azure Digital Twins-Instanz überprüfen.
     * So zeigen Sie alle Beziehungen an, die von den einzelnen Etagen ausgehen (Anzeige der Beziehungen von einer Seite):
         ```cmd/sh
         GetRelationships floor0
@@ -207,6 +209,8 @@ Die Zwillinge und Beziehungen, die Sie in diesem Tutorial eingerichtet haben, bi
 
 Eine Hauptfunktion von Azure Digital Twins ist das einfache [Abfragen](concepts-query-language.md) des Zwillingsgraphen und das effiziente Beantworten von Fragen zur Umgebung. 
 
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
+
 Führen Sie in der ausgeführten Projektkonsole die folgenden Befehle aus, um einige Fragen zur Beispielumgebung zu beantworten.
 
 1. **Welche Entitäten aus meiner Umgebung werden in Azure Digital Twins dargestellt?** (Abfrage aller Elemente)
@@ -215,11 +219,11 @@ Führen Sie in der ausgeführten Projektkonsole die folgenden Befehle aus, um ei
     Query
     ```
 
-    Auf diese Weise können Sie schnell eine Bestandsaufnahme Ihrer Umgebung machen und sicherstellen, dass in Azure Digital Twins alles nach Ihren Wünschen dargestellt wird. Das Ergebnis ist eine Ausgabe, die jeden digitalen Zwilling mit seinen Details enthält. Hier sehen Sie einen Auszug:
+    Mit diesem Befehl können Sie schnell eine Bestandsaufnahme Ihrer Umgebung machen und sicherstellen, dass in Azure Digital Twins alles wunschgemäß dargestellt wird. Das Ergebnis dieses Befehls ist eine Ausgabe, die jeden digitalen Zwilling mit seinen Details enthält. Auszug:
 
     :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="Screenshot: Teilergebnis der Zwillingsabfrage mit „room0“ und „floor1“":::
 
-    >[!NOTE]
+    >[!TIP]
     >Im Beispielprojekt entspricht der Befehl `Query` ohne zusätzliche Argumente `Query SELECT * FROM DIGITALTWINS`. Wenn Sie alle Zwillinge in Ihrer Instanz mithilfe der [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder der [CLI-Befehle](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) abfragen möchten, verwenden Sie die längere (vollständige) Abfrage.
 
 1. **Welche Räume sind in meiner Umgebung vorhanden?** (Abfrage nach Modell)

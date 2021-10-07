@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: overview
 ms.date: 08/24/2021
 ms.custom: mvc, references_regions
-ms.openlocfilehash: ae7ef0d0ff3cb946bc8c900517a8975bb618ad3c
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 4f125035bdb71302681f84fd04b25767828f1490
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768142"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589661"
 ---
 # <a name="overview---azure-database-for-postgresql---flexible-server"></a>Übersicht: Azure Database for PostgreSQL – Flexible Server
 
@@ -29,7 +29,7 @@ In diesem Artikel erhalten Sie eine Übersicht und Einführung in die grundlegen
 
 ## <a name="overview"></a>Übersicht
 
-„Azure Database for PostgreSQL – Flexible Server“ ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität in Bezug auf Verwaltungsfunktionen und Konfigurationseinstellungen für Datenbanken bietet. Im Allgemeinen ermöglicht der Dienst mehr Flexibilität und die Anpassung der Serverkonfiguration an die Anforderungen der Benutzer. Die flexible Serverarchitektur ermöglicht es Benutzern, die Datenbank-Engine mit der Clientebene anzuordnen, um die Latenz zu verringern und Hochverfügbarkeit innerhalb einer und in mehreren Verfügbarkeitszonen zu erreichen. Flexible Server-Instanzen bieten auch eine bessere Kostenoptimierung mit der Möglichkeit, Ihren Server anzuhalten/zu starten, und dem Computetarif „Burstfähig“, der ideal für Workloads ist, die nicht ständig volle Computekapazität benötigen. Der Dienst unterstützt derzeit die Community-Version von PostgreSQL 11 und 12. Der Dienst ist derzeit in der Vorschauphase und in einer Vielzahl von [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) verfügbar.
+„Azure Database for PostgreSQL – Flexible Server“ ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität in Bezug auf Verwaltungsfunktionen und Konfigurationseinstellungen für Datenbanken bietet. Im Allgemeinen ermöglicht der Dienst mehr Flexibilität und die Anpassung der Serverkonfiguration an die Anforderungen der Benutzer. Die flexible Serverarchitektur ermöglicht es Benutzern, die Datenbank-Engine mit der Clientebene anzuordnen, um die Latenz zu verringern und Hochverfügbarkeit innerhalb einer und in mehreren Verfügbarkeitszonen zu erreichen. Flexible Server-Instanzen bieten auch eine bessere Kostenoptimierung mit der Möglichkeit, Ihren Server anzuhalten/zu starten, und dem Computetarif „Burstfähig“, der ideal für Workloads ist, die nicht ständig volle Computekapazität benötigen. Der Dienst unterstützt derzeit die Community-Version von PostgreSQL 11, 12 und 13. Der Dienst ist derzeit in der Vorschauphase und in einer Vielzahl von [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) verfügbar.
 
 ![Flexible Server: Übersicht](./media/overview/overview-flexible-server.png)
 

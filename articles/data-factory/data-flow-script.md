@@ -7,21 +7,23 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/15/2021
-ms.openlocfilehash: 0860d59d7d04354b6236d02126492468dec5921b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/22/2021
+ms.openlocfilehash: 73fe862475b866e625d4bf2bdce3c044b6dcc87b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639942"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061578"
 ---
 # <a name="data-flow-script-dfs"></a>Datenflussskript (DFS)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
+
 Beim Datenflussskript (DFS) handelt es sich um die zugrunde liegenden Metadaten (ähnlich wie eine Programmiersprache), die zur Ausführung der in einem Zuordnungsdatenfluss enthaltenen Transformationen dienen. Jede Transformation wird durch eine Reihe von Eigenschaften dargestellt, die die erforderlichen Informationen zur ordnungsgemäßen Ausführung des Auftrags liefern. Durch Klicken auf die Schaltfläche „Skript“ im oberen Menüband der Browser-Benutzeroberfläche kann das Skript aus ADF heraus angezeigt und bearbeitet werden.
 
-![Schaltfläche „Skript“](media/data-flow/scriptbutton.png "Schaltfläche „Skript“")
+:::image type="content" source="media/data-flow/scriptbutton.png" alt-text="Schaltfläche „Skript“":::
 
 So weist beispielsweise `allowSchemaDrift: true,` in einer Quelltransformation den Dienst an, alle Spalten aus dem Quelldataset in den Datenfluss einzubeziehen – sogar, wenn sie in der Schemaprojektion nicht enthalten sind.
 
@@ -35,7 +37,7 @@ Hier sind ein paar Beispiele für Anwendungsfälle:
 
 Wenn Sie ein Datenflussskript zur Verwendung von PowerShell oder einer API erstellen, müssen Sie den formatierten Text in eine einzige Zeile reduzieren. Sie können Tabstopps und Zeilenumbrüche als Escapezeichen beibehalten. Der Text muss aber so formatiert werden, dass er in eine JSON-Eigenschaft passt. In der Benutzeroberfläche des Skript-Editors gibt es ganz unten eine Schaltfläche, über die das Skript als eine einzige Zeile formatiert wird.
 
-![Schaltfläche „Kopieren“](media/data-flow/copybutton.png "Schaltfläche „Kopieren“")
+:::image type="content" source="media/data-flow/copybutton.png" alt-text="Schaltfläche „Kopieren“":::
 
 ## <a name="how-to-add-transforms"></a>Hinzufügen von Transformationen
 Zum Hinzufügen von Transformationen sind drei grundlegende Schritte erforderlich: Hinzufügen der Haupttransformationsdaten, Umleiten des Eingabestreams und Umleiten des Ausgabestreams. Dies lässt sich am einfachsten in einem Beispiel zeigen.
@@ -277,6 +279,19 @@ Sie können dieses Skript verwenden, um Schlüsselspalten zu identifizieren und 
 
 ```
 aggregate(each(match(true()), $$ = countDistinct($$))) ~> KeyPattern
+```
+
+### <a name="compare-previous-or-next-row-values"></a>Vergleich mit Werten in der Zeile davor oder danach
+Dieser Beispielausschnitt zeigt, wie die Fenstertransformation verwendet werden kann, um Spaltenwerte aus dem aktuellen Zeilenkontext mit Spaltenwerten aus Zeilen vor und nach der aktuellen Zeile zu vergleichen. In diesem Beispiel wird eine abgeleitete Spalte verwendet, um einen Dummywert zu generieren und so eine Fensterpartition für das gesamte Dataset zu ermöglichen. Mit einer Ersatzschlüsseltransformation wird jeder Zeile ein eindeutiger Schlüsselwert zugewiesen. Wenn Sie dieses Muster auf Ihre Datentransformationen anwenden, können Sie den Ersatzschlüssel entfernen, wenn es sich um eine Spalte handelt, nach der Sie sortieren möchten. Wenn Sie über Spalten verfügen, die zum Partitionieren Ihrer Daten verwendet werden, können Sie die abgeleitete Spalte entfernen.
+
+```
+source1 keyGenerate(output(sk as long),
+    startAt: 1L) ~> SurrogateKey1
+SurrogateKey1 derive(dummy = 1) ~> DerivedColumn1
+DerivedColumn1 window(over(dummy),
+    asc(sk, true),
+    prevAndCurr = lag(title,1)+'-'+last(title),
+        nextAndCurr = lead(title,1)+'-'+last(title)) ~> leadAndLag
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

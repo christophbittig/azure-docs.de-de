@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 9015e3ce69042a2e7d96588956becff889827ab3
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 3feae35a4b7c98ea317bb9cec5dd54ca3f5db63c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225187"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562512"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -23,7 +23,7 @@ In diesem Leitfaden sind Lösungen für häufig aufgetretene Probleme im Storage
 
 ## <a name="azure-rbac-permissions-issues"></a>Azure RBAC-Berechtigungsprobleme
 
-Die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, [Azure RBAC](../../role-based-access-control/overview.md)) ermöglicht eine hochgradig anpassbare Zugriffsverwaltung von Azure-Ressourcen, indem mehrere Berechtigungen in _Rollen_ kombiniert werden. Hier folgen einige Strategien, um Azure RBAC im Storage-Explorer optimal zu nutzen.
+Die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, [Azure RBAC](../../role-based-access-control/overview.md)) ermöglicht eine hochgradig anpassbare Zugriffsverwaltung von Azure-Ressourcen, indem mehrere Berechtigungen in *Rollen* kombiniert werden. Hier folgen einige Strategien, um Azure RBAC im Storage-Explorer optimal zu nutzen.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Wie kann ich im Storage-Explorer auf meine Ressourcen zugreifen?
 
@@ -31,22 +31,22 @@ Falls Sie Probleme beim Zugreifen auf Speicherressourcen per Azure RBAC haben, w
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>„Lesen: Auflisten/Abrufen von Speicherkonten“ – Berechtigungsproblem
 
-Sie benötigen die Berechtigung zum Auflisten von Speicherkonten. Ihnen muss die Rolle _Leser_ zugewiesen sein, um diese Berechtigung zu erhalten.
+Sie benötigen die Berechtigung zum Auflisten von Speicherkonten. Ihnen muss die Rolle *Leser* zugewiesen sein, um diese Berechtigung zu erhalten.
 
 #### <a name="list-storage-account-keys"></a>Auflisten von Speicherkontoschlüsseln
 
-Für Storage-Explorer können auch Kontoschlüssel zum Authentifizieren von Anforderungen verwendet werden. Sie können Zugriff auf Kontoschlüssel über leistungsstärkere Rollen erhalten, z. B. über die Rolle _Mitwirkender_.
+Für Storage-Explorer können auch Kontoschlüssel zum Authentifizieren von Anforderungen verwendet werden. Sie können Zugriff auf Kontoschlüssel über leistungsstärkere Rollen erhalten, z. B. über die Rolle *Mitwirkender*.
 
 > [!NOTE]
 > Mit Zugriffsschlüsseln werden für deren Besitzer uneingeschränkte Berechtigungen gewährt. Daher wird nicht empfohlen, diese Schlüssel an Kontobenutzer weiterzugeben. Wenn Sie Zugriffsschlüssel widerrufen müssen, können Sie sie über das [Azure-Portal](https://portal.azure.com/) neu generieren.
 
 #### <a name="data-roles"></a>Datenrollen
 
-Ihnen muss mindestens eine Rolle zugewiesen sein, über die Zugriff zum Lesen der Daten von Ressourcen gewährt wird. Wenn Sie beispielsweise Blobs auflisten oder herunterladen müssen, benötigen Sie mindestens die Rolle _Storage-Blobdatenleser_.
+Ihnen muss mindestens eine Rolle zugewiesen sein, über die Zugriff zum Lesen der Daten von Ressourcen gewährt wird. Wenn Sie beispielsweise Blobs auflisten oder herunterladen müssen, benötigen Sie mindestens die Rolle *Storage-Blobdatenleser*.
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Warum benötige ich eine Rolle auf der Verwaltungsebene, damit meine Ressourcen in Storage-Explorer angezeigt werden?
 
-Azure Storage verfügt über zwei Zugriffsebenen: _Verwaltung_ und _Daten_. Auf Abonnements und Speicherkonten wird über die Verwaltungsebene zugegriffen. Auf Container, Blobs und andere Datenressourcen wird über die Datenebene zugegriffen. Wenn Sie beispielsweise eine Liste mit Ihren Speicherkonten aus Azure abrufen möchten, senden Sie eine Anforderung an den Verwaltungsendpunkt. Wenn Sie eine Liste mit den Blobcontainern eines Kontos anzeigen möchten, können Sie eine Anforderung an den entsprechenden Dienstendpunkt senden.
+Azure Storage verfügt über zwei Zugriffsebenen: *Verwaltung* und *Daten*. Auf Abonnements und Speicherkonten wird über die Verwaltungsebene zugegriffen. Auf Container, Blobs und andere Datenressourcen wird über die Datenebene zugegriffen. Wenn Sie beispielsweise eine Liste mit Ihren Speicherkonten aus Azure abrufen möchten, senden Sie eine Anforderung an den Verwaltungsendpunkt. Wenn Sie eine Liste mit den Blobcontainern eines Kontos anzeigen möchten, können Sie eine Anforderung an den entsprechenden Dienstendpunkt senden.
 
 Azure-Rollen können Berechtigungen für den Zugriff auf die Verwaltungs- oder Datenebene gewähren. Mit der Rolle „Leser“ wird beispielsweise Lesezugriff auf die Ressourcen der Verwaltungsebene gewährt.
 
@@ -72,7 +72,7 @@ Für andere Ressourcentypen verfügen wir derzeit nicht über eine Azure RBAC-be
 1. Wählen Sie den Ressourcentyp aus, mit dem Sie eine Verbindung herstellen möchten.
 1. Wählen Sie **Shared Access Signature (SAS)** aus. Wählen Sie **Weiter** aus.
 1. Geben Sie die empfangene SAS-URL und dann einen eindeutigen Anzeigenamen für die Verbindung ein. Wählen Sie **Weiter** und dann **Verbinden** aus.
- 
+
 Weitere Informationen zum Anfügen an Ressourcen finden Sie unter [Anfügen an eine einzelne Ressource](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource).
 
 ### <a name="recommended-azure-built-in-roles"></a>Empfohlene in Azure integrierte Rollen
@@ -115,11 +115,11 @@ Wenn Sie über keine Kopie der selbstsignierten Zertifikate verfügen, bitten Si
 Sie können versuchen, sie mithilfe der folgenden Schritte zu finden:
 
 1. Installieren Sie OpenSSL.
-    * [Windows](https://slproweb.com/products/Win32OpenSSL.html): Eine Light-Version sollte ausreichend sein.
-    * Mac und Linux: Sollte im Betriebssystem enthalten sein.
+    - [Windows](https://slproweb.com/products/Win32OpenSSL.html): Eine Light-Version sollte ausreichend sein.
+    - Mac und Linux: Sollte im Betriebssystem enthalten sein.
 2. Führen Sie OpenSSL aus.
-    * Windows: Öffnen Sie das Installationsverzeichnis, wählen Sie **/bin/** aus, und doppelklicken Sie dann auf **openssl.exe**.
-    * Mac und Linux: Führen Sie `openssl` über ein Terminal aus.
+    - Windows: Öffnen Sie das Installationsverzeichnis, wählen Sie **/bin/** aus, und doppelklicken Sie dann auf **openssl.exe**.
+    - Mac und Linux: Führen Sie `openssl` über ein Terminal aus.
 3. Führen Sie den Befehl `s_client -showcerts -connect <hostname>:443` für einen der Microsoft- oder Azure-Hostnamen aus, hinter denen sich Ihre Speicherressourcen befinden. Hier finden Sie eine Liste mit Hostnamen, auf die häufig von Storage-Explorer zugegriffen wird.
 4. Suchen Sie nach selbstsignierten Zertifikaten. Sind Antragsteller (`("s:")`) und Zertifikataussteller (`("i:")`) identisch, handelt es sich höchstwahrscheinlich um ein selbstsigniertes Zertifikat.
 5. Wenn Sie die selbstsignierten Zertifikate gefunden haben, kopieren Sie jeweils den gesamten Inhalt von (einschließlich) `-----BEGIN CERTIFICATE-----` bis `-----END CERTIFICATE-----`, und fügen Sie ihn in eine neue CER-Datei ein.
@@ -192,7 +192,7 @@ Falls nach dem Zurücksetzen weiterhin Probleme auftreten, führen Sie die folge
 1. Öffnen Sie den Storage-Explorer.
 2. Entfernen Sie alle Konten, und schließen Sie dann Storage-Explorer.
 3. Löschen Sie den Ordner `.IdentityService` von Ihrem Computer. Der Ordner befindet sich unter Windows unter `C:\users\<username>\AppData\Local`. Bei Mac und Linux finden Sie den Ordner im Stammverzeichnis Ihres Benutzerverzeichnisses.
-4. Wenn Sie Mac oder Linux verwenden, müssen Sie auch den Eintrag „Microsoft.Developer.IdentityService“ aus dem Keystore des Betriebssystems löschen. Unter Mac ist der Keystore die Anwendung *Gnome Keychain*. Unter Linux wird die Anwendung in der Regel als _Schlüsselbund_ bezeichnet, der Name kann jedoch abhängig von Ihrer Distribution abweichen.
+4. Wenn Sie Mac oder Linux verwenden, müssen Sie auch den Eintrag „Microsoft.Developer.IdentityService“ aus dem Keystore des Betriebssystems löschen. Unter Mac ist der Keystore die Anwendung *Gnome Keychain*. Unter Linux wird die Anwendung in der Regel als *Schlüsselbund* bezeichnet, der Name kann jedoch abhängig von Ihrer Distribution abweichen.
 6. Starten Sie den Storage-Explorer neu, und versuchen Sie, sich erneut anzumelden.
 
 ### <a name="macos-keychain-errors-or-no-sign-in-window"></a>macOS: Schlüsselbundfehler oder kein Anmeldefenster
@@ -225,19 +225,19 @@ Wenn keines der oben genannten Anmeldeprobleme vorliegt oder Sie Ihr Anmeldeprob
 
 Wenn Sie nach erfolgreicher Anmeldung Ihre Abonnements nicht abrufen können, probieren Sie die folgenden Methoden zur Problembehandlung:
 
-* Überprüfen Sie, ob Ihr Konto Zugriff auf die erwarteten Abonnements hat. Sie können Ihren Zugriff überprüfen, indem Sie sich am Portal für die Azure-Umgebung anmelden, die Sie verwenden möchten.
-* Stellen Sie sicher, dass die Anmeldung mit der richtigen Azure-Umgebung (Azure, Azure China 21Vianet, Azure Deutschland, Azure US Government oder Benutzerdefinierte Umgebung) erfolgt ist.
-* Wenn Sie sich hinter einem Proxyserver befinden, sollten Sie sicherstellen, dass Sie den Storage-Explorer-Proxy richtig konfiguriert haben.
-* Entfernen Sie das Konto, und fügen Sie es wieder hinzu.
-* Wenn ein Link mit der Beschriftung „Weitere Informationen“ oder „Fehlerdetails“ angezeigt wird, prüfen Sie, welche Fehlermeldungen für die fehlerhaften Mandanten gemeldet werden. Wenn Sie nicht sicher sind, wie Sie auf die Fehlermeldungen reagieren sollen, können Sie [ein Problem in GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues) öffnen.
+- Überprüfen Sie, ob Ihr Konto Zugriff auf die erwarteten Abonnements hat. Sie können Ihren Zugriff überprüfen, indem Sie sich am Portal für die Azure-Umgebung anmelden, die Sie verwenden möchten.
+- Stellen Sie sicher, dass die Anmeldung mit der richtigen Azure-Umgebung (Azure, Azure China 21Vianet, Azure Deutschland, Azure US Government oder Benutzerdefinierte Umgebung) erfolgt ist.
+- Wenn Sie sich hinter einem Proxyserver befinden, sollten Sie sicherstellen, dass Sie den Storage-Explorer-Proxy richtig konfiguriert haben.
+- Entfernen Sie das Konto, und fügen Sie es wieder hinzu.
+- Wenn ein Link mit der Beschriftung „Weitere Informationen“ oder „Fehlerdetails“ angezeigt wird, prüfen Sie, welche Fehlermeldungen für die fehlerhaften Mandanten gemeldet werden. Wenn Sie nicht sicher sind, wie Sie auf die Fehlermeldungen reagieren sollen, können Sie [ein Problem in GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues) öffnen.
 
 ## <a name="cant-remove-an-attached-storage-account-or-resource"></a>Angefügtes Konto oder angefügte Ressource kann nicht entfernt werden
 
 Wenn ein zugeordnetes Konto oder eine verbundene Speicherressource über die Benutzeroberfläche nicht entfernt werden kann, können Sie alle zugeordneten Ressourcen manuell löschen, indem Sie die folgenden Ordner löschen:
 
-* Windows: `%AppData%/StorageExplorer`
-* macOS: `/Users/<your_name>/Library/Application Support/StorageExplorer`
-* Linux: `~/.config/StorageExplorer`
+- Windows: `%AppData%/StorageExplorer`
+- macOS: `/Users/<your_name>/Library/Application Support/StorageExplorer`
+- Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]
 > Schließen Sie Storage-Explorer, bevor Sie diese Ordner löschen.
@@ -280,9 +280,9 @@ Ein Netzwerktool wie Fiddler kann Ihnen dabei helfen, Probleme zu diagnostiziere
 1. Konfigurieren Sie das Netzwerktool als Proxyserver, der auf dem lokalen Host ausgeführt wird. Wenn Sie weiterhin hinter einem echten Proxy arbeiten müssen, müssen Sie das Netzwerktool möglicherweise so konfigurieren, dass eine Verbindung über den Proxy hergestellt wird.
 2. Überprüfen Sie die vom Netzwerktool verwendete Portnummer.
 3. Konfigurieren Sie die Proxyeinstellungen für Storage-Explorer so, dass der lokale Host und die Portnummer des Netzwerktools (z. B. „localhost:8888“) verwendet wird.
- 
+
 Bei korrekter Konfiguration protokolliert das Netzwerktool die vom Storage-Explorer an Verwaltungs- und Dienstendpunkte gesendeten Netzwerkanforderungen.
- 
+
 Wenn das Netzwerktool Storage-Explorer-Datenverkehr anscheinend nicht protokolliert, testen Sie das Tool mit einer anderen Anwendung. Geben Sie z. B. die Endpunkt-URL für eine Ihrer Speicherressourcen (z. B. `https://contoso.blob.core.windows.net/`) in einem Webbrowser ein. Sie erhalten dann eine Antwort wie die folgende:
 
   ![Codebeispiel](./media/storage-explorer-troubleshooting/4022502_en_2.png)
@@ -295,8 +295,8 @@ Wenn Ihr Netzwerktool nur Datenverkehr von anderen Anwendungen anzeigt, müssen 
 
 Wenn Ihre Proxyeinstellungen richtig sind, müssen Sie sich möglicherweise an den Administrator für den Proxyserver wenden, um Folgendes zu erreichen:
 
-* Sicherstellen, dass der Proxy nicht den Datenverkehr zu Azure Verwaltungs- oder Ressourcenendpunkten blockiert.
-* das von Ihrem Proxyserver verwendete Authentifizierungsprotokoll überprüfen. Storage-Explorer unterstützt nur Standardauthentifizierungsprotokolle. NTLM-Proxys werden vom Storage-Explorer nicht unterstützt.
+- Sicherstellen, dass der Proxy nicht den Datenverkehr zu Azure Verwaltungs- oder Ressourcenendpunkten blockiert.
+- das von Ihrem Proxyserver verwendete Authentifizierungsprotokoll überprüfen. Storage-Explorer unterstützt nur Standardauthentifizierungsprotokolle. NTLM-Proxys werden vom Storage-Explorer nicht unterstützt.
 
 ## <a name="unable-to-retrieve-children-error-message"></a>Fehlermeldung: Untergeordnete Elemente können nicht abgerufen werden
 
@@ -317,17 +317,17 @@ Wenn Sie diese Fehlermeldung erhalten, wenn Sie versuchen, eine benutzerdefinier
 1. Starten Sie den Storage-Explorer. Wechseln Sie im Menü zu **Hilfe** > **Entwicklertools umschalten**.
 2. Wechseln Sie im geöffneten Fenster auf der Registerkarte **Anwendung** zu **Lokaler Speicher** (linke Seite) > **file://** .
 3. Abhängig von der Art der Verbindung, bei der ein Problem auftritt, suchen Sie nach dem Schlüssel, und kopieren Sie dann den Wert in einen Text-Editor. Der Wert ist ein Array Ihrer benutzerdefinierten Verbindungsnamen, wie die folgenden:
-    * Speicherkonten
-        * `StorageExplorer_CustomConnections_Accounts_v1`
-    * Blobcontainer
-        * `StorageExplorer_CustomConnections_Blobs_v1`
-        * `StorageExplorer_CustomConnections_Blobs_v2`
-    * Dateifreigaben
-        * `StorageExplorer_CustomConnections_Files_v1`
-    * Warteschlangen
-        * `StorageExplorer_CustomConnections_Queues_v1`
-    * Tabellen
-        * `StorageExplorer_CustomConnections_Tables_v1`
+    - Speicherkonten
+        - `StorageExplorer_CustomConnections_Accounts_v1`
+    - Blobcontainer
+        - `StorageExplorer_CustomConnections_Blobs_v1`
+        - `StorageExplorer_CustomConnections_Blobs_v2`
+    - Dateifreigaben
+        - `StorageExplorer_CustomConnections_Files_v1`
+    - Warteschlangen
+        - `StorageExplorer_CustomConnections_Queues_v1`
+    - Tabellen
+        - `StorageExplorer_CustomConnections_Tables_v1`
 4. Nachdem Sie Ihre aktuellen Verbindungsnamen gespeichert haben, legen Sie den Wert in den Entwicklertools auf `[]` fest.
 
 Wenn Sie die nicht beschädigten Verbindungen beibehalten möchten, können Sie die folgenden Schritte ausführen, um die beschädigten Verbindungen zu finden. Wenn es Ihnen nichts ausmacht, alle bestehenden Verbindungen zu verlieren, können Sie diese Schritte überspringen und den plattformspezifischen Anweisungen folgen, um Ihre Verbindungsdaten zu löschen.
@@ -366,9 +366,9 @@ Wenn der Fehler nach Ausführung dieser Schritte weiterhin auftritt oder wenn Si
 
 Wenn Sie eine Verbindung mit einem Dienst über eine SAS-URL herstellen und ein Fehler auftritt:
 
-* Stellen Sie sicher, dass die URL die erforderlichen Berechtigungen zum Lesen oder Auflisten von Ressourcen umfasst.
-* Vergewissern Sie sich, dass die URL nicht abgelaufen ist.
-* Wenn die SAS-URL auf einer Zugriffsrichtlinie basiert, stellen Sie sicher, dass die Zugriffsrichtlinie nicht aufgehoben wurde.
+- Stellen Sie sicher, dass die URL die erforderlichen Berechtigungen zum Lesen oder Auflisten von Ressourcen umfasst.
+- Vergewissern Sie sich, dass die URL nicht abgelaufen ist.
+- Wenn die SAS-URL auf einer Zugriffsrichtlinie basiert, stellen Sie sicher, dass die Zugriffsrichtlinie nicht aufgehoben wurde.
 
 Wenn Sie versehentlich eine ungültige SAS-URL angefügt haben und diese jetzt nicht trennen können, führen Sie diese Schritte aus:
 
@@ -400,49 +400,53 @@ Storage-Explorer, wie im „.tar. gz“-Download bereitgestellt, wird nur für d
 - Ubuntu 18.04 x64
 - Ubuntu 16.04 x64
 
-Für Storage-Explorer muss .NET Core auf dem System installiert sein. Wir empfehlen .NET Core 2.1, aber Storage-Explorer funktioniert auch mit Version 2.2.
+Für Storage-Explorer muss .NET Core 3.1 auf dem System installiert sein.
 
 > [!NOTE]
-> Storage-Explorer bis Version 1.7.0 erfordert .NET Core 2.0. Wenn Sie bereits eine neuere Version von .NET Core installiert haben, müssen Sie [Storage-Explorer mit Patches versehen](#patching-storage-explorer-for-newer-versions-of-net-core). Wenn Sie Storage-Explorer 1.8.0 oder höher ausführen, benötigen Sie mindestens .NET Core 2.1.
+> Die Storage-Explorer-Versionen 1.8.0 bis 1.20.1 erfordern .NET Core 2.1. Storage-Explorer bis Version 1.7.0 erfordert .NET Core 2.0.
 
 ### <a name="ubuntu-2004"></a>[Ubuntu 20.04 ](#tab/2004)
 
 1. Laden Sie die Storage-Explorer- Datei „.tar.gz“ herunter.
 2. Installieren Sie die [.NET Core-Runtime](/dotnet/core/install/linux):
+
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
-     sudo apt-get install -y dotnet-runtime-2.1
+     sudo apt-get install -y dotnet-runtime-3.1
    ```
 
 ### <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Laden Sie die Storage-Explorer- Datei „.tar.gz“ herunter.
 2. Installieren Sie die [.NET Core-Runtime](/dotnet/core/install/linux):
+
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
-     sudo apt-get install -y dotnet-runtime-2.1
+     sudo apt-get install -y dotnet-runtime-3.1
    ```
 
 ### <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Laden Sie die Storage-Explorer- Datei „.tar.gz“ herunter.
 2. Installieren Sie die [.NET Core-Runtime](/dotnet/core/install/linux):
+
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
-     sudo apt-get install -y dotnet-runtime-2.1
+     sudo apt-get install -y dotnet-runtime-3.1
    ```
+
 ---
 
 Viele Bibliotheken, die von Storage-Explorer benötigt werden, werden mit den Standardinstallationen von Ubuntu von Canonical vorinstalliert. In benutzerdefinierten Umgebungen fehlen möglicherweise einige dieser Bibliotheken. Wenn beim Starten von Storage-Explorer Probleme auftreten, sollten Sie sicherstellen, dass die folgenden Pakete auf dem System installiert sind:
@@ -470,16 +474,16 @@ Bei Storage-Explorer 1.7.0 oder früher müssen Sie möglicherweise die von Stor
 3. Entzippen Sie das Paket.
 4. Öffnen Sie den Ordner `streamjsonrpc.1.5.43/lib/netstandard1.1/`.
 5. Kopieren Sie `StreamJsonRpc.dll` an die folgenden Speicherorte im Storage-Explorer-Ordner:
-   * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
-   * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
+   - `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
+   - `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 
 ## <a name="open-in-explorer-from-the-azure-portal-doesnt-work"></a>„In Explorer öffnen“ über das Azure-Portal funktioniert nicht
 
 Wenn die Schaltfläche **In Explorer öffnen** im Azure-Portal nicht funktioniert, sollten Sie sicherstellen, dass Sie einen kompatiblen Browser verwenden. Für die folgenden Browser wurde die Kompatibilität getestet:
-* Microsoft Edge
-* Mozilla Firefox
-* Google Chrome
-* Microsoft Internet Explorer
+- Microsoft Edge
+- Mozilla Firefox
+- Google Chrome
+- Microsoft Internet Explorer
 
 ## <a name="gathering-logs"></a>Sammeln von Protokollen
 
@@ -558,7 +562,7 @@ Teil 1: Installieren und Konfigurieren von Fiddler
 Teil 2: Reproduzieren des Problems
 1. Schließen Sie alle Apps bis auf Fiddler.
 2. Löschen Sie das Fiddler-Protokoll (X-Symbol oben links in der Nähe des Menüs „Ansicht“).
-3. Optional/empfohlen: Lassen Sie Fiddler sich einige Minuten einrichten. Wenn Netzwerkaufrufe angezeigt werden, klicken Sie mit der rechten Maustaste darauf, und wählen Sie „Jetzt filtern“ > „<process name> ausblenden“ aus.
+3. Optional/empfohlen: Lassen Sie Fiddler sich einige Minuten einrichten. Wenn Netzwerkaufrufe angezeigt werden, die nicht mit Storage-Explorer im Zusammenhang stehen, klicken Sie mit der rechten Maustaste darauf, und wählen Sie „Jetzt filtern“ > „(Prozessname) ausblenden“ aus.
 4. Starten Sie den Storage-Explorer.
 5. Reproduzieren Sie das Problem.
 6. Klicken Sie auf „Datei > Speichern > Alle Sitzungen...“, und speichern Sie diese an einem Ort, den Sie sich gut merken können.

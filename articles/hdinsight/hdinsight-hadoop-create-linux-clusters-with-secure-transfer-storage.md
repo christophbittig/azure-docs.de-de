@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: 22804015ebf0344c00e60c88f780fe22ba440b52
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: deb10f2b3e4e2b5e7d911992a601f66e1e557268
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774987"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211649"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Apache Hadoop-Cluster mit Speicherkonten mit sicherer Übertragung in Azure HDInsight
 
@@ -38,6 +38,21 @@ Informationen zum Aktualisieren eines vorhandenen Speicherkontos mit PowerShell 
 Stellen Sie für den Azure CLI-Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create) sicher, dass der Parameter `--https-only` auf `true` festgelegt ist.
 
 Informationen zum Aktualisieren eines vorhandenen Speicherkontos über die Azure-Befehlszeilenschnittstelle finden Sie unter [Erfordern sicherer Übertragung über die Azure-Befehlszeilenschnittstelle](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli).
+
+### <a name="secure-transfer-errors"></a>Fehler bei der sicheren Übertragung
+
+
+Wenn Sie nach dem Erstellen des HDInsight-Clusters versehentlich die Option „Require secure transfer“ (Sichere Übertragung erforderlich) aktiviert haben, werden möglicherweise Fehlermeldungen wie die folgende angezeigt:
+
+`com.microsoft.azure.storage.StorageException: The account being accessed does not support http.`
+
+Nur bei HBase-Clustern können Sie die folgenden Schritte ausführen, um die Clusterfunktionalität wiederherzustellen:
+1. Beenden Sie HBase über Ambari.
+2. Beenden Sie das HDFS über Ambari.
+3. Navigieren Sie in Ambari zu HDFS --> Configs --> Advanced --> fs.defaultFS (HDFS --> Konfigurationen --> Erweitert --> fs.defaultFS).
+4. Ändern Sie „wasb“ in „wasbs“, und speichern Sie diese Änderung.
+5. Wenn Sie das Feature für beschleunigte Schreibvorgänge verwenden, muss bei den HBase-Konfigurationen bei „hbase.rootDir“ ebenfalls „wasb“ in „wasbs“ geändert werden.
+6. Starten Sie alle erforderlichen Dienste neu.
 
 ## <a name="add-additional-storage-accounts"></a>Hinzufügen weiterer Speicherkonten
 

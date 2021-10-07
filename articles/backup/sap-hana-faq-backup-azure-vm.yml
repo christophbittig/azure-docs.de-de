@@ -4,13 +4,13 @@ metadata:
   description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern von SAP HANA-Datenbanken mit dem Azure Backup-Dienst.
   ms.topic: article
   ms.service: backup
-  ms.date: 06/23/2021
-  ms.openlocfilehash: 5983508897520ad6fe5b91df3bd6abf26244d09f
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 09/27/2021
+  ms.openlocfilehash: 2b1a7e39c1cf4a7e6c5b1da6f748c7e143608104
+  ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122351128"
+  ms.lasthandoff: 09/27/2021
+  ms.locfileid: "129080689"
 title: 'Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern'
 summary: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern von SAP HANA-Datenbanken mit dem Azure Backup-Dienst.
 sections:
@@ -34,9 +34,16 @@ sections:
     answer: >
       Erfolgreiche Sicherungsaufträge generieren heute keine Warnungen. Warnungen werden nur für Sicherungsaufträge generiert, bei denen ein Fehler aufgetreten ist. [Erfahren Sie](backup-azure-monitoring-built-in-monitor.md), wie Sie das Azure-Portal verwenden, um Azure Backup-Warnungen anzuzeigen.
   - question: >
+      Wie überprüfe ich, ob meine Sicherung (geplant oder bei Bedarf) erfolgreich ausgeführt wurde?
+    answer: "Sie können den Status Ihrer Sicherungen (geplant oder bei Bedarf) an den folgenden Stellen überprüfen:\n\n1. **Sicherungsaufträge:** Azure Backup zeigt alle manuell ausgelösten Aufträge im Azure-Portal im Abschnitt „Sicherungsaufträge“ an.  <br><br>   Zu den Aufträgen, die im Azure-Portal angezeigt werden, gehören Datenbankermittlungs- und -registrierungsvorgänge sowie Sicherungs- und Wiederherstellungsvorgänge. Geplante Aufträge (einschließlich Protokollsicherungen) werden in diesem Abschnitt nicht angezeigt. Manuell ausgelöste Sicherungen über die nativen SAP HANA-Clients (Studio/Cockpit/DBA Cockpit) werden hier ebenfalls nicht angezeigt.\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/manually-triggered-jobs.png\" alt-text=\"Screenshot: Manuell ausgelöste Aufträge im Abschnitt „Sicherungsaufträge“ im Azure-Portal\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/jobs-and-operations-list.png\" alt-text=\"Screenshot: Aufträge einschließlich Datenbankermittlungs- und -registrierungsvorgängen sowie Sicherungs- und Wiederherstellungsvorgängen\":::\n \n1. **Sicherungswarnungen:** Warnungen unterstützen Sie beim Überwachen von Sicherungen von SAP HANA-Datenbanken. Sie helfen Ihnen dabei, sich auf die erforderlichen Ereignisse zu konzentrieren, sodass Sie nicht mehr ständig die vielen Ereignisse überprüfen müssen, die beim Erstellen einer Sicherung generiert werden. Weitere Informationen finden Sie unter [Anzeigen von Sicherungswarnungen](/azure/backup/sap-hana-db-manage#view-backup-alerts).\n\n1. **Sicherungsberichte:** Berichte sind eine weitere Möglichkeit, den Status Ihrer Sicherungsaufträge einzusehen. Diese Berichte sehen wie folgt aus:\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports.png\" alt-text=\"Screenshot: Eine Art von Bericht im Azure-Portal\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports-mabs.png\" alt-text=\"Screenshot: Die andere Art von Bericht im Azure-Portal\":::\n\n   Weitere Informationen finden Sie unter [Konfigurieren von Azure Backup-Berichten](/azure/backup/configure-reports).\n\n1. **Native SAP HANA-Clients:** Wenn Sie SAP HANA nutzen, können Sie auch HANA Studio verwenden, einen der gängigsten HANA-Clients. Navigieren Sie in diesem Client zu **Backup Console** -> **Backup Catalog** (Sicherungskonsole -> Sicherungskatalog), um den **Sicherungsstatus** anzuzeigen.\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/sap-hana-native-client-reports.png\" alt-text=\"Screenshot: Berichte in nativen SAP HANA-Clients\":::\n"
+  - question: >
       Werden geplante Sicherungsaufträge im Menü „Sicherungsaufträge“ angezeigt?
     answer: >
       Im Menü „Sicherungsauftrag“ werden nur bedarfsgesteuerte Sicherungsaufträge angezeigt, die entweder in Bearbeitung, erfolgreich oder fehlgeschlagen sind. Verwenden Sie für geplante Aufträge [Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md).
+  - question: >
+      Wie lang ist der Aufbewahrungszeitraum bei vollständigen Sicherungen für eine automatische Reparatur, die aufgrund der LSNValidation-Fehler ausgelöst wurden?
+    answer: >
+      Azure Backup gibt keinen expliziten Aufbewahrungszeitraum für vollständige Sicherungen für eine automatische Reparatur vor. Diese Sicherung wird so lang aufbewahrt, wie Sie auch die abhängigen Deltasicherungen (differenziellen oder inkrementellen Sicherungen) und Protokollsicherungen aufbewahren. Wenn Sie die letzte abhängige Sicherung für diese Sicherung für eine automatische Reparatur gelöscht haben, wird die Sicherung für eine automatische Reparatur ebenfalls gelöscht.
   - question: >
       Werden zukünftige Datenbanken für die Durchführung von Sicherungen automatisch hinzugefügt?
     answer: >
@@ -106,7 +113,7 @@ sections:
 
       - [Beenden des Schutzes](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) (mit Beibehaltung der Daten) auf dem primären Knoten
 
-      - Ausführen des [Vorregistrierungsskripts](https://aka.ms/scriptforpermsonhana) auf dem sekundären Knoten
+      - Ausführen des [Vorregistrierungsskripts](https://go.microsoft.com/fwlink/?linkid=2173610) auf dem sekundären Knoten
 
       - [Ermitteln der Datenbanken](tutorial-backup-sap-hana-db.md#discover-the-databases) auf dem sekundären Knoten und [Konfigurieren der entsprechenden Sicherungen](tutorial-backup-sap-hana-db.md#configure-backup)
 
@@ -144,6 +151,37 @@ sections:
 
 
       Anschließend wird auf Knoten 1 erneut eine vollständige Sicherung ausgelöst, und nach deren Abschluss beginnen die Protokollsicherungen.
+
+
+      >[!Note]
+
+      >[Das Ausführen des Vorregistrierungsskripts](./tutorial-backup-sap-hana-db.md#prerequisites) mit einem benutzerdefinierten Sicherungsbenutzerkonto als Eingabe könnte Ihnen dabei helfen, Ihre HSR-Sicherungen besser zu verwalten. Der Grund hierfür ist, dass das Skript sicherstellt, dass beide Knoten im HSR-Setup über denselben Sicherungsschlüssel verfügen, wodurch weniger Probleme in Zusammenhang mit der Synchronisierung von Sicherungen und Fehlern auftreten.
+  - question: >
+      Was passiert, wenn ich im HSR-Setup den Schutz für den sekundären/inaktiven Knoten nicht (mit „Daten beibehalten“) beende?
+    answer: >
+      1. Bei HANA System Replication (HSR) akzeptiert der sekundäre Knoten überhaupt keine Verbindungen. Sobald die Sicherung konfiguriert ist, pingt der Azure Backup-Dienst regelmäßig, wobei ein Fehler auftritt. Manchmal spiegeln sich diese Fehlversuche auf dem primären Knoten wider. Nach mehreren Fehlern wird der Benutzer bzw. die Benutzerin gesperrt, und beim primären Knoten beginnt der Fehler _ODBCConnectionError_ aufzutreten.   <br><br>Wir haben festgestellt, dass dieses Problem nicht bei allen Benutzer*innen auftritt. Es wird empfohlen, dass Sie oder SAP die Ursache dafür untersuchen bzw. untersucht, dass Benutzer*innen auf dem primären Knoten gesperrt werden, wenn bei der Benutzerverbindung auf dem sekundären Knoten ein Fehler auftritt.
+
+
+      1. Wenn Sie das Vorregistrierungsskript ausführen, werden die Benutzerinformationen mit dem neuen Kennwort auf dem primären Knoten aktualisiert. Anschließend wird die Verbindung wiederhergestellt, und es wird versucht, eine Sicherung zu erstellen. Es kann jedoch sein, dass dasselbe Szenario noch mal eintritt.
+
+
+      1. Darüber hinaus werden bei den Sicherungen (vollständigen Sicherungen), bei denen auf dem sekundären Knoten Fehler auftreten, Warnungen generiert.
+
+
+      Zur Vermeidung der oben erläuterten Probleme empfiehlt es sich, den Schutz für einen Knoten zu beenden, sobald er zu einem sekundären Knoten wird, (damit nicht versucht wird, Verbindungen herzustellen, und Benutzer*innen nicht gesperrt werden) und den Schutz wieder zu aktivieren, sobald der Knoten zu einem primären Knoten wird. Wenn diese Sperrsituation bei HSR-Setups bei Ihnen nicht eintritt und die ausgelösten Warnungen Sie nicht stören, können Sie Sicherungen für beide Knoten einrichten, sodass der Dienst sich um Übernahme und Failback kümmert.
+  - question: >
+      Welche Durchsatzleistung bietet Azure Backup bei Sicherungen und Wiederherstellungen, und wie richte ich mein HANA-System so ein, dass es diesen maximalen Durchsatz nutzt?
+    answer: >
+      Sehen Sie sich die Informationen im [verlinkten Abschnitt zur Durchsatzleistung bei Sicherungen und Wiederherstellungen](/azure/backup/tutorial-backup-sap-hana-db#understanding-backup-and-restore-throughput-performance) an, die Azure Backup für HANA-Workloads bietet. <br><br> Verwenden Sie die folgenden Ressourcen, um Ihr HANA-System so einzurichten, dass es die verbesserte Leistung nutzt:
+
+       - [Auswählen eines Datenträgertyps für virtuelle Azure IaaS-Computer: verwaltete Datenträger](/azure/virtual-machines/disks-types#premium-ssd)
+       - [Leistungsstufen für Azure Managed Disks](/azure/virtual-machines/disks-change-performance)
+       - [M-Serie](/azure/virtual-machines/m-series)
+       - [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)
+
+      >[!Note]
+
+      >Sie können die Durchsatzleistung für Sicherungen auch beschränken. [Weitere Informationen](/azure/backup/tutorial-backup-sap-hana-db#limiting-backup-throughput-performance)
 - name: Restore
   questions:
   - question: >
@@ -162,7 +200,7 @@ sections:
       Kann ich eine Sicherung einer laufenden Datenbank auf SLES verwenden, um sie in einem RHEL HANA-System wiederherzustellen (oder umgekehrt)?
     answer: >
       Ja. Sie können Streamingsicherungen, die auf einer auf SLES laufenden HANA-Datenbank ausgelöst wurden, verwenden, um sie auf einem RHEL HANA-System wiederherzustellen (und umgekehrt). Das heißt, dass die betriebssystemübergreifende Wiederherstellung mithilfe von Streamingsicherungen möglich ist. Sie müssen aber sicherstellen, dass sowohl das HANA-System, auf dem Sie die Wiederherstellung durchführen möchten, als auch das HANA-System, das für die Wiederherstellung verwendet wird, gemäß SAP für die Wiederherstellung kompatibel sind. Lesen Sie SAP HANA-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148), um zu erfahren, welche Wiederherstellungstypen kompatibel sind.
-- name: Richtlinie
+- name: Policy
   questions:
   - question: >
       Verschiedene verfügbare Optionen bei der Erstellung einer neuen Richtlinie für SAP HANA-Sicherungen

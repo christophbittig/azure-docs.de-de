@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-storage
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 77ab092fc62fb3f7a6270a4b5f38aeeed16d60fc
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1af52e4344b7a70331e3b5d9cdc13d9ff4227068
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698864"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129053334"
 ---
 # <a name="lsv2-series"></a>Lsv2-Reihe
 
@@ -49,7 +49,7 @@ Bursting: Unterstützt<br>
 
 <sup>1</sup> VMs der Lsv2-Reihe verfügen über einen standardmäßigen SCSI-basierten temporären Ressourcendatenträger für die Verwendung als Auslagerungsdatei des Betriebssystems (D: unter Windows, /dev/sdb unter Linux). Dieser Datenträger bietet 80 GiB Speicher, 4.000 IOPS und eine Übertragungsrate von 80 MB/s für jeweils 8 vCPUs (beispielsweise bietet Standard_L80s_v2 800 GiB bei 40.000 IOPS und 800 MB/s). Dadurch wird sichergestellt, dass die NVMe-Laufwerke vollständig für die Anwendungsnutzung reserviert werden können. Dieser Datenträger ist kurzlebig, und beim Beenden oder Aufheben der Zuordnung gehen alle Daten verloren.
 
-<sup>2</sup> Lokale NVMe-Datenträger sind kurzlebig. Die Daten auf diesen Datenträgern gehen verloren, wenn Sie den virtuellen Computer beenden oder seine Zuordnung aufheben.
+<sup>2</sup> Lokale NVMe-Datenträger sind kurzlebig. Die Daten auf diesen Datenträgern gehen verloren, wenn Sie den virtuellen Computer beenden oder seine Zuordnung aufheben. Lokale NVMe-Datenträger werden nicht durch [Azure Storage Verschlüsselung](disk-encryption.md) verschlüsselt, auch wenn Sie die [Verschlüsselung auf dem Host](disk-encryption.md#supported-vm-sizes) aktivieren.
 
 <sup>3</sup> Hyper-V NVMe Direct-Technologie ermöglicht den ungedrosselten Zugriff auf lokale NVMe-Laufwerke, die sicher dem Bereich der Gast-VM zugeordnet sind.  Für das Erreichen maximaler Leistung sind entweder der neueste WS2019-Build oder Ubuntu 18.04 oder 16.04 aus dem Azure Marketplace erforderlich.  Die Schreibleistung weicht je nach EA-Größe, Laufwerksauslastung und Kapazitätsnutzung ab.
 

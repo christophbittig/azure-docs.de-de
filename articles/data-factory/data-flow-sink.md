@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/24/2021
-ms.openlocfilehash: 39c8ed3f8d8b11839964ac376ac35badd6546411
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/10/2021
+ms.openlocfilehash: afdc363c53790f1710ee274d5430416e415059fd
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824623"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059946"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Senkentransformation in einem Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 Nachdem Sie die Datentransformation abgeschlossen haben, schreiben Sie sie mithilfe der Senkentransformation in einen Zielspeicher. Jeder Datenfluss erfordert mindestens eine Senkentransformation. Sie können aber so viele Senken wie erforderlich hinzufügen, um Ihren Transformationsfluss zu realisieren. Um in weitere Senken zu schreiben, erstellen Sie über neue Verzweigungen und bedingte Teilungen neue Datenströme.
 
@@ -35,7 +37,7 @@ Inlinedatasets werden empfohlen, wenn flexible Schemas, einmalig genutzte Senken
 
 Um ein Inline-Dataset zu verwenden, wählen Sie das gewünschte Format im Selektor **Senkentyp** aus. Anstatt ein Senkendataset auszuwählen, wählen Sie den verknüpften Dienst aus, mit dem Sie eine Verbindung herstellen möchten.
 
-![Screenshot mit hervorgehobener Auswahl von „Inline“.](media/data-flow/inline-selector.png "Screenshot mit hervorgehobener Auswahl von „Inline“")
+:::image type="content" source="media/data-flow/inline-selector.png" alt-text="Screenshot mit hervorgehobener Auswahl von „Inline“.":::
 
 ## <a name="workspace-db-synapse-workspaces-only"></a>Workspace DB (nur Synapse-Arbeitsbereiche)
 
@@ -44,7 +46,7 @@ Bei Verwendung von Datenflüssen in Azure Synapse-Arbeitsbereichen verfügen Sie
 > [!NOTE]
 > Der Workspace DB-Connector von Azure Synapse befindet sich derzeit in der öffentlichen Vorschauphase und funktioniert nur bei Spark Lake-Datenbanken.
 
-![Screenshot: Hervorgehobene Auswahl von „Workspace DB“](media/data-flow/syms-sink.png "Screenshot mit hervorgehobener Auswahl von „Inline“")
+:::image type="content" source="media/data-flow/syms-sink.png" alt-text="Screenshot: Hervorgehobene Auswahl von „Workspace DB“":::
 
 ##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> Unterstützte Senkentypen
 
@@ -76,11 +78,12 @@ Im folgenden Video werden verschiedene Senkenoptionen für Dateitypen mit Texttr
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
-![Screenshot mit Hervorhebung von „Senkeneinstellungen“.](media/data-flow/sink-settings.png "Screenshot mit Hervorhebung von „Senkeneinstellungen“.")
+:::image type="content" source="media/data-flow/sink-settings.png" alt-text="Screenshot mit Hervorhebung von „Senkeneinstellungen“.":::
 
 **Schemaabweichung**: [Schemaabweichung](concepts-data-flow-schema-drift.md) ist die Fähigkeit des Diensts, flexible Schemas in Ihren Datenflüssen nativ zu verarbeiten, ohne Spaltenänderungen explizit definieren zu müssen. Aktivieren Sie **Schemaabweichung zulassen**, wenn Sie zusätzliche Spalten zusätzlich zur Definition im Datenschema der Senke schreiben möchten.
 
-**Schema überprüfen**: Wenn „Schema überprüfen“ ausgewählt ist, führt der Datenfluss zu einem Fehler, wenn eine der Spalten des Eingangsquellschemas in der Quellprojektion nicht gefunden wird oder wenn die Datentypen nicht übereinstimmen. Verwenden Sie diese Einstellung, um eine Übereinstimmung der Quelldaten mit dem Vertrag Ihrer definierten Projektion zu erzwingen. Dies ist in Szenarien mit Datenbankquellen nützlich, um anzugeben, dass die Spaltennamen oder -typen geändert wurden.
+**Schema überprüfen:** Wenn „Schema überprüfen“ ausgewählt ist, führt der Datenfluss zu einem Fehler, wenn eine der Spalten in der Senkenprojektion im Senkenspeicher nicht gefunden wird oder wenn die Datentypen nicht übereinstimmen. Verwenden Sie diese Einstellung, um eine Übereinstimmung des Senkenschemas mit dem Vertrag Ihrer definierten Projektion zu erzwingen. Dies ist in Szenarios mit Datenbanksenken nützlich, um anzugeben, dass die Spaltennamen oder -typen geändert wurden.
+
 
 ## <a name="cache-sink"></a>Cachesenke
 
@@ -90,11 +93,11 @@ Von einer *Cachesenke* wird dann gesprochen, wenn Daten von einem Datenfluss in 
 
 Um in eine Cachesenke zu schreiben, fügen Sie eine Senkentransformation hinzu, und wählen Sie **Cache** als Senkentyp aus. Im Gegensatz zu anderen Senkentypen müssen Sie kein Dataset oder keinen verknüpften Dienst auswählen, da Sie nicht in einen externen Speicher schreiben. 
 
-![Auswählen der Cachesenke](media/data-flow/select-cache-sink.png "Auswählen der Cachesenke")
+:::image type="content" source="media/data-flow/select-cache-sink.png" alt-text="Auswählen der Cachesenke":::
 
 In den Senkeneinstellungen können Sie optional die Schlüsselspalten der Cachesenke angeben. Diese werden bei Verwendung der Funktion `lookup()` in einer Cachesuche als Übereinstimmungsbedingungen verwendet. Wenn Sie Schlüsselspalten angeben, können Sie die Funktion `outputs()` nicht in einer Cachesuche verwenden. Weitere Informationen zur Syntax für die Cachesuche finden Sie unter [zwischengespeicherten Suchen](concepts-data-flow-expression-builder.md#cached-lookup).
 
-![Schlüsselspalten der Cachesenke](media/data-flow/cache-sink-key-columns.png "Schlüsselspalten der Cachesenke")
+:::image type="content" source="media/data-flow/cache-sink-key-columns.png" alt-text="Schlüsselspalten der Cachesenke":::
 
 Wenn Sie beispielsweise eine einzelne Schlüsselspalte `column1` in einer Cachesenke namens `cacheExample` angeben, wird beim Aufruf von `cacheExample#lookup()` mit einem Parameter festgelegt, mit welcher Zeile in der Cachesenke der Vergleich durchgeführt werden soll. Die Funktion gibt eine einzelne komplexe Spalte mit Unterspalten für jede zugeordnete Spalte aus.
 
@@ -113,12 +116,12 @@ Wenn Sie die automatische Zuordnung deaktivieren, können Sie feste spaltenbasie
 
 Standardmäßig werden Daten ohne festgeschriebene Reihenfolge in mehrere Senken geschrieben. Die Ausführungs-Engine schreibt im Verlauf der Transformationslogik Daten parallel. Dabei kann bei jeder Ausführung die Senkenreihenfolge variieren. Um die genaue Reihenfolge der Senken anzugeben, aktivieren Sie auf der Registerkarte **Allgemein** des Datenflusses **Benutzerdefinierte Senkenreihenfolge**. Falls aktiviert, erfolgt in den Senken das Schreiben sequenziell in aufsteigender Reihenfolge.
 
-![Screenshot mit Hervorhebung von „Benutzerdefinierte Senkenreihenfolge“](media/data-flow/custom-sink-ordering.png "Screenshot mit Hervorhebung von „Benutzerdefinierte Senkenreihenfolge“")
+:::image type="content" source="media/data-flow/custom-sink-ordering.png" alt-text="Screenshot mit Hervorhebung von „Benutzerdefinierte Senkenreihenfolge“":::
 
 > [!NOTE]
 > Bei Verwendung von [zwischengespeicherten Suchen](./concepts-data-flow-expression-builder.md#cached-lookup) müssen Sie sicherstellen, dass die zwischengespeicherten Senken in der Senkenreihenfolge auf 1 festgelegt sind, wobei es sich um den niedrigsten (oder ersten) Rang handelt.
 
-![Benutzerdefinierte Senkenreihenfolge](media/data-flow/cache-2.png "Benutzerdefinierte Senkenreihenfolge")
+:::image type="content" source="media/data-flow/cache-2.png" alt-text="Benutzerdefinierte Senkenreihenfolge":::
 
 ### <a name="sink-groups"></a>Senkengruppen
 

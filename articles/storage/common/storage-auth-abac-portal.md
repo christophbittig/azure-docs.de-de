@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
-ms.date: 05/06/2021
-ms.openlocfilehash: 3e5e46e15a7885eb5e3f4828cb8298355a116fd8
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 09/24/2021
+ms.openlocfilehash: 0ab670b9ef6309b8db01f4a53f41c703dea69423
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300487"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092274"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-the-azure-portal-preview"></a>Tutorial: Hinzufügen einer Rollenzuweisungsbedingung zum Einschränken des Zugriffs auf Blobs über das Azure-Portal (Vorschau)
 
@@ -29,8 +29,8 @@ In den meisten Fällen gewährt eine Rollenzuweisung die für Azure-Ressourcen b
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Hinzufügen einer Bedingung zu einer Rollenzuweisung
-> * Einschränken des Zugriffs auf Blobs basierend auf einem Blobindextag
+> - Hinzufügen einer Bedingung zu einer Rollenzuweisung
+> - Einschränken des Zugriffs auf Blobs basierend auf einem Blobindextag
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -67,7 +67,7 @@ Im Code sieht die Bedingung wie folgt aus:
 1. Melden Sie sich beim Azure-Portal als Besitzer eines Abonnements an.
 
 1. Klicken Sie auf **Azure Active Directory**.
-    
+
 1. Erstellen Sie einen Benutzer, oder suchen Sie nach einem bereits vorhandenen Benutzer. In diesem Tutorial wird Chandra als Beispiel verwendet.
 
 ## <a name="step-2-set-up-storage"></a>Schritt 2: Einrichten des Speichers
@@ -87,7 +87,7 @@ Im Code sieht die Bedingung wie folgt aus:
     Falls der Abschnitt „Blobindextags“ nicht angezeigt wird und Sie Ihr Abonnement eben erst registriert haben, warten Sie ggf. einige Minuten, damit die Änderungen weitergegeben werden können. Weitere Informationen finden Sie unter [Verwenden von Blobindextags (Vorschau) zum Verwalten und Suchen von Daten in Azure Blob Storage](../blobs/storage-blob-index-how-to.md).
 
     > [!NOTE]
-    > Von Blobs wird auch das Speichern beliebiger benutzerdefinierter Schlüssel-Wert-Metadaten unterstützt. Metadaten sind zwar mit Blobindextags vergleichbar, für Bedingungen müssen jedoch Blobindextags verwendet werden. 
+    > Von Blobs wird auch das Speichern beliebiger benutzerdefinierter Schlüssel-Wert-Metadaten unterstützt. Metadaten sind zwar mit Blobindextags vergleichbar, für Bedingungen müssen jedoch Blobindextags verwendet werden.
 
     | Schlüssel | Wert |
     | --- | --- |
@@ -133,7 +133,7 @@ Im Code sieht die Bedingung wie folgt aus:
 
 ## <a name="step-4-add-a-condition"></a>Schritt 4: Hinzufügen einer Bedingung
 
-1. Klicken Sie auf der Registerkarte **Bedingung** auf **Bedingung hinzufügen**.
+1. Klicken Sie auf der Registerkarte **Bedingungen (optional)** auf **Bedingung hinzufügen**.
 
     ![Screenshot: Seite „Bedingung für Rollenzuweisung hinzufügen“ für eine neue Bedingung](./media/storage-auth-abac-portal/condition-add-new.png)
 
@@ -141,7 +141,7 @@ Im Code sieht die Bedingung wie folgt aus:
 
 1. Klicken Sie im Abschnitt „Aktion hinzufügen“ auf **Aktionen auswählen**.
 
-    Die Seite „Aktion auswählen“ wird angezeigt. Bei diesem Bereich handelt es sich um eine gefilterte Liste von Datenaktionen – basierend auf der Rollenzuweisung, die als Ziel Ihrer Bedingung verwendet wird. 
+    Die Seite „Aktion auswählen“ wird angezeigt. Bei diesem Bereich handelt es sich um eine gefilterte Liste von Datenaktionen – basierend auf der Rollenzuweisung, die als Ziel Ihrer Bedingung verwendet wird.
 
     ![Screenshot: Bereich „Aktion auswählen“ mit ausgewählter Aktion](./media/storage-auth-abac-portal/condition-actions-select.png)
 
@@ -155,8 +155,8 @@ Im Code sieht die Bedingung wie folgt aus:
 
     | Einstellung | Wert |
     | --- | --- |
-    | Attributquelle | Ressource |
-    | Attribut | Blobindextags [Werte in Schlüssel] |
+    | Attributquelle | Resource |
+    | attribute | Blobindextags [Werte in Schlüssel] |
     | Key | Project |
     | Betreiber | StringEqualsIgnoreCase |
     | Wert | Cascade |
@@ -213,7 +213,7 @@ Zum Testen der Bedingung muss Azure PowerShell verwendet werden.
     ```
 
     Im Anschluss sehen Sie ein Beispiel für die Ausgabe. Wie Sie sehen, können Sie die Datei aufgrund der hinzugefügten Bedingung **nicht** lesen.
-    
+
     ```azurepowershell
     Get-AzStorageBlob: This request is not authorized to perform this operation using this permission. HTTP Status Code: 403 - HTTP Error Message: This request is not authorized to perform this operation using this permission.
     ErrorCode: AuthorizationPermissionMismatch
@@ -221,7 +221,7 @@ Zum Testen der Bedingung muss Azure PowerShell verwendet werden.
     RequestId: <requestId>
     Time: Sun, 13 Sep 2020 12:33:42 GMT
     ```
-    
+
 1. Lesen Sie die Datei für das Projekt „Cascade“.
 
     ```azurepowershell
@@ -229,10 +229,10 @@ Zum Testen der Bedingung muss Azure PowerShell verwendet werden.
     ```
 
     Im Anschluss sehen Sie ein Beispiel für die Ausgabe. Wie Sie sehen, können Sie die Datei lesen, da sie über das Tag „Project=Cascade“ verfügt.
-    
+
     ```azurepowershell
        AccountName: <storageAccountName>, ContainerName: <containerName>
-    
+
     Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotT
                                                                                                                   ime
     ----                 --------  ------          -----------                    ------------         ---------- ---------

@@ -3,16 +3,16 @@ title: 'Tutorial: Neue Richtlinienzuweisung per Azure-Portal'
 description: In diesem Tutorial erstellen Sie über das Azure-Portal eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
 ms.topic: tutorial
 ms.date: 04/21/2021
-ms.openlocfilehash: be7752b5ccf73269b1e4715fc05c85162b4ea546
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: e1d131c6419fcc0bed866a3334a065e46e399c78
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770341"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807513"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Tutorial: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen
 
-Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln. Azure Policy unterstützt die Überwachung des Zustands Ihres Servers mit Arc-Unterstützung mithilfe von Gastkonfigurationsrichtlinien. Die Gastkonfigurationsdefinitionen von Azure Policy können Einstellungen auf dem Computer überwachen oder anwenden. In diesem Tutorial durchlaufen Sie den Prozess zum Erstellen und Zuweisen einer Richtlinie und identifizieren, auf welchen Ihrer Server mit Arc-Unterstützung der Log Analytics-Agent nicht installiert ist.
+Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wie Sie den Status Ihrer Ressourcen ermitteln. Azure Policy unterstützt die Überwachung des Zustands Ihres Servers mit Azure Arc-Unterstützung mithilfe von Gastkonfigurationsrichtlinien. Die Gastkonfigurationsdefinitionen von Azure Policy können Einstellungen auf dem Computer überwachen oder anwenden. In diesem Tutorial durchlaufen Sie den Prozess zum Erstellen und Zuweisen einer Richtlinie und identifizieren, auf welchen Ihrer Server mit Azure Arc-Unterstützung der Log Analytics-Agent nicht installiert ist.
 
 Am Ende dieses Prozesses können Sie erfolgreich Computer identifizieren, für die der Log Analytics-Agent für Windows oder Linux nicht installiert ist. Sie sind mit der Richtlinienzuweisung _nicht konform_.
 

@@ -6,16 +6,16 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 09/24/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2591e3468999bfb48fc125bd6edfe17da8eecefd
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: be0dc81d20bf62eb0033691e5d4eac5f406a7c0f
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114728142"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214616"
 ---
-# <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Verarbeiten und Extrahieren von Informationen aus Bildern in KI-Anreicherungsszenarien
+# <a name="extract-text-and-information-from-images-in-ai-enrichment-scenarios"></a>Extrahieren von Text und Informationen aus Bildern in KI-Anreicherungsszenarios
 
 Die kognitive Azure-Suche umfasst mehrere Funktionen für die Verarbeitung von Bildern und Bilddateien. Im Rahmen der [Dokumententschlüsselung](search-indexer-overview.md#document-cracking) können Sie den Parameter *imageAction* verwenden, um alphanumerischen Text (beispielsweise das Wort „Stopp“ eines Stopp-Schilds) aus Fotos oder Bildern zu extrahieren. Ein anderes Szenario wäre etwa die Generierung einer Textdarstellung eines Bilds – etwa „Löwenzahn“ (oder die Farbe „Gelb“) für ein Foto eines Löwenzahns. Des Weiteren können Sie Metadaten des Bilds extrahieren (beispielsweise die Größe).
 

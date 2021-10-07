@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: aarathin
 ms.author: aarathin
-ms.date: 05/21/2021
-ms.openlocfilehash: 13557124999faeb68cbe009e4bbc3531023c12f9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/27/2021
+ms.openlocfilehash: 4817502ac03074bd1521724fe1d5e76259f3add4
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971316"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129084004"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Erstellen eines IoT Edge-Modulangebots
 
@@ -26,6 +26,23 @@ Lesen Sie zunächst den Artikel [Planen eines IoT Edge-Modulangebots](marketpla
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2166002) an.
+
+1. Wählen Sie auf der Startseite die Kachel **Marketplace offers** (Marketplace-Angebote) aus.
+
+    [ ![Veranschaulichung der Kachel „Marketplace offers“ (Marketplace-Angebote) auf der Startseite in Partner Center](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. Klicken Sie auf der Seite „Marketplace offers“ (Marketplace-Angebote) auf **+ Neues Angebot** > **IoT Edge-Modul**.
+
+    [ ![Menüoptionen im linken Bereich und die Schaltfläche „Neues Angebot“](./media/iot-edge/new-offer-iot-edge-workspaces.png) ](./media/iot-edge/new-offer-iot-edge-workspaces.png#lightbox)
+
+> [!IMPORTANT]
+> Nachdem Ihr Angebot veröffentlicht wurde, werden Änderungen, die Sie in Partner Center vornehmen, im Azure Marketplace erst angezeigt, nachdem Sie das Angebot erneut veröffentlicht haben. Achten Sie darauf, ein Angebot nach einer Änderung stets neu zu veröffentlichen.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 2. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
 3. Wählen Sie auf der Übersichtsseite die Option **+ Neues Angebot** > **IoT Edge-Modul** aus.
@@ -34,6 +51,8 @@ Lesen Sie zunächst den Artikel [Planen eines IoT Edge-Modulangebots](marketpla
 
 > [!IMPORTANT]
 > Nachdem Ihr Angebot veröffentlicht wurde, werden Änderungen, die Sie in Partner Center vornehmen, im Azure Marketplace erst angezeigt, nachdem Sie das Angebot erneut veröffentlicht haben. Achten Sie darauf, ein Angebot nach einer Änderung stets neu zu veröffentlichen.
+
+---
 
 ## <a name="new-offer"></a>Neues Angebot
 

@@ -1,26 +1,26 @@
 ---
-title: Kopieren von Daten aus Xero mithilfe von Azure Data Factory
+title: Kopieren von Daten aus Xero
+description: Hier erfahren Sie, wie Sie mithilfe einer Copy-Aktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline Daten aus Xero in unterstützte Senkendatenspeicher kopieren.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Daten aus Xero mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: c95efb768dc66dd35a88d0cd57d37e4d7e43ce3c
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 17b92068145ac07833f7e73cc4d694a89f39ad7f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123311119"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779842"
 ---
-# <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopieren von Daten aus Xero mithilfe von Azure Data Factory
+# <a name="copy-data-from-xero-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus Xero mithilfe von Azure Data Factory oder Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Xero zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Copy-Aktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline verwenden, um Daten aus Xero zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -48,7 +48,7 @@ Verwenden Sie die folgenden Schritte, um einen verknüpften Dienst mit Xero auf 
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory Benutzeroberfläche.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory-Benutzeroberfläche.":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -71,17 +71,17 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit Xero verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Xero** | Ja |
 | connectionProperties | Eine Gruppe von Eigenschaften zum Definieren, wie eine Verbindung mit Xero hergestellt werden soll. | Ja |
 | ***Unter `connectionProperties`:*** | | |
 | host | Der Endpunkt des Xero-Servers (`api.xero.com`).  | Ja |
 | authenticationType | Zulässige Werte sind `OAuth_2.0` und `OAuth_1.0`. | Ja |
-| consumerKey | Geben Sie für OAuth 2.0 die **Client-ID** für Ihre Xero-Anwendung an.<br>Geben Sie für OAuth 1.0 den Consumerschlüssel an, der der Xero-Anwendung zugeordnet ist.<br>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
-| privateKey | Geben Sie für OAuth 2.0 den **geheimen Clientschlüssel** für Ihre Xero-Anwendung an.<br>Geben Sie für OAuth 1.0 den privaten Schlüssel aus der PEM-Datei an, der für Ihre private Xero-Anwendung generiert wurde. Weitere Informationen finden Sie unter [Erstellen eines Schlüsselpaars aus öffentlichem und privatem Schlüssel](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Achten Sie darauf, **„privatekey.pem“ mit dem NumBits-Wert 512** mithilfe von `openssl genrsa -out privatekey.pem 512` zu generieren – 1.024 wird nicht unterstützt. Schließen Sie gesamten Text der PEM-Datei einschließlich der Unix-Zeilenschaltungen (\n) ein (siehe Beispiel unten).<br/><br>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| consumerKey | Geben Sie für OAuth 2.0 die **Client-ID** für Ihre Xero-Anwendung an.<br>Geben Sie für OAuth 1.0 den Consumerschlüssel an, der der Xero-Anwendung zugeordnet ist.<br>Markieren Sie dieses Feld als einen „SecureString“, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| privateKey | Geben Sie für OAuth 2.0 den **geheimen Clientschlüssel** für Ihre Xero-Anwendung an.<br>Geben Sie für OAuth 1.0 den privaten Schlüssel aus der PEM-Datei an, der für Ihre private Xero-Anwendung generiert wurde. Weitere Informationen finden Sie unter [Erstellen eines Schlüsselpaars aus öffentlichem und privatem Schlüssel](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Achten Sie darauf, **„privatekey.pem“ mit dem NumBits-Wert 512** mithilfe von `openssl genrsa -out privatekey.pem 512` zu generieren – 1.024 wird nicht unterstützt. Schließen Sie gesamten Text der PEM-Datei einschließlich der Unix-Zeilenschaltungen (\n) ein (siehe Beispiel unten).<br/><br>Markieren Sie dieses Feld als einen „SecureString“, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | tenantId | Die Mandanten-ID, die Ihrer Xero-Anwendung zugeordnet ist. Gilt für die OAuth 2.0-Authentifizierung.<br>Informationen zum Abrufen der Mandanten-ID finden Sie im Abschnitt [Check the tenants you're authorized to access](https://developer.xero.com/documentation/oauth2/auth-flow) (Überprüfen der Mandanten, denen Zugriff gewährt wurde). | Ja, für die OAuth 2.0-Authentifizierung |
-| refreshToken | Gilt für die OAuth 2.0-Authentifizierung.<br/>Das OAuth 2.0-Aktualisierungstoken ist der Xero-Anwendung zugeordnet und wird zum Aktualisieren des Zugriffstokens verwendet. Das Zugriffstoken läuft nach 30 Minuten ab. In [diesem Artikel](https://developer.xero.com/documentation/oauth2/auth-flow) erfahren Sie, wie der Xero-Autorisierungsflow funktioniert und wie Sie das Aktualisierungstoken abrufen. Um ein Aktualisierungstoken zu erhalten, müssen Sie den [offline_access-Bereich](https://developer.xero.com/documentation/oauth2/scopes) anfordern. <br/>**Bekannte Beschränkung**: Beachten Sie, dass Xero das Aktualisierungstoken zurücksetzt, nachdem es zur Aktualisierung des Zugriffstokens verwendet wurde. Bei operationalisierten Workloads müssen Sie vor jeder Ausführung der Kopieraktivität ein gültiges Aktualisierungstoken festlegen, das von Azure Data Factory verwendet werden kann.<br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja, für die OAuth 2.0-Authentifizierung |
+| refreshToken | Gilt für die OAuth 2.0-Authentifizierung.<br/>Das OAuth 2.0-Aktualisierungstoken ist der Xero-Anwendung zugeordnet und wird zum Aktualisieren des Zugriffstokens verwendet. Das Zugriffstoken läuft nach 30 Minuten ab. In [diesem Artikel](https://developer.xero.com/documentation/oauth2/auth-flow) erfahren Sie, wie der Xero-Autorisierungsflow funktioniert und wie Sie das Aktualisierungstoken abrufen. Um ein Aktualisierungstoken zu erhalten, müssen Sie den [offline_access-Bereich](https://developer.xero.com/documentation/oauth2/scopes) anfordern. <br/>**Bekannte Beschränkung**: Beachten Sie, dass Xero das Aktualisierungstoken zurücksetzt, nachdem es zur Aktualisierung des Zugriffstokens verwendet wurde. Bei operationalisierten Workloads müssen Sie vor jeder Ausführung der Copy-Aktivität ein gültiges Aktualisierungstoken festlegen, das der Dienst verwenden kann.<br/>Markieren Sie dieses Feld als einen „SecureString“, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja, für die OAuth 2.0-Authentifizierung |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
 | usePeerVerification | Gibt an, ob die Identität des Servers überprüft werden soll, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
@@ -161,7 +161,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus Xero die „type“-Eigenschaft des Datasets auf **XeroObject** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **XeroObject** | Ja |
 | tableName | Der Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
@@ -191,7 +191,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus Xero den Quelltyp in der Kopieraktivität auf **XeroSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **XeroSource** | Ja |
 | Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Contacts"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/03/2020
+ms.date: 09/25/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: e8f5405e55c3443b020265e68d68737f6d266a17
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: b2d3cb2eadc86ec04cca6561777a44c4700403eb
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179304"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081470"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten
 
@@ -39,22 +39,27 @@ Im nächsten Tutorial erfahren Sie, wie Sie eine Anwendung registrieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+- Ein Azure-Konto, dem mindestens die Rolle [Mitwirkender](../role-based-access-control/built-in-roles.md) innerhalb des Abonnements oder einer Ressourcengruppe im Abonnement zugewiesen wurde, ist erforderlich. 
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Erstellen eines Azure AD B2C-Mandanten
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Melden Sie sich mit einem Azure-Konto an, dem mindestens die [Mitwirkender](../role-based-access-control/built-in-roles.md)-Rolle innerhalb des Abonnements oder einer Ressourcengruppe im Abonnement zugewiesen wurde.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. 
 
-1. Wählen Sie das Verzeichnis aus, das Ihr Abonnement enthält.
+1. Wählen Sie das Verzeichnis aus, das Ihr Abonnement enthält:
+    1. Wählen Sie im Azure-Portal auf der Symbolleiste das Filtersymbol **Verzeichnisse und Abonnements** aus. 
+    
+    ![Filtersymbol „Verzeichnisse und Abonnements“](media/tutorial-create-tenant/directories-subscription-filter-icon.png)
 
-    Wählen Sie auf der Symbolleiste des Azure-Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihr Abonnement enthält. Dabei handelt es sich um ein anderes Verzeichnis als das, in dem Ihr Azure AD B2C-Mandant enthalten sein wird.
+    1. Navigieren Sie zu dem Verzeichnis, das Ihr Abonnement enthält, und wählen Sie daneben die Schaltfläche **Umschalten** aus. Beim Wechseln des Verzeichnisses wird das Portal neu geladen.
 
-    ![Abonnementmandant, Filter „Verzeichnis und Abonnement“ mit ausgewähltem Abonnementmandanten](media/tutorial-create-tenant/portal-01-pick-directory.png)
+    ![„Verzeichnisse und Abonnements“ mit der Schaltfläche „Umschalten“](media/tutorial-create-tenant/switch-directory.png)
 
 1. Fügen Sie **Microsoft.AzureActiveDirectory** als Ressourcenanbieter für das verwendete Azure-Abonnement hinzu ([weitere Informationen](../azure-resource-manager/management/resource-providers-and-types.md?WT.mc_id=Portal-Microsoft_Azure_Support#register-resource-provider-1)):
 
     1. Wählen Sie im Menü oder auf der **Startseite** des Azure-Portals die Option **Abonnements** aus.
-    2. Wählen Sie Ihr Abonnement und dann **Ressourcenanbieter** aus.
+    2. Wählen Sie Ihr Abonnement und dann im Menü auf der linken Seite **Ressourcenanbieter** aus.
     3. Stellen Sie sicher, dass in der Zeile **Microsoft.AzureActiveDirectory** der Status **Registriert** angezeigt wird. Falls nicht, wählen Sie die Zeile und dann **Registrieren** aus.
 
 1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
@@ -77,19 +82,18 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     ![Formular „Mandanten erstellen“ mit Beispielwerten im Azure-Portal](media/tutorial-create-tenant/review-and-create-tenant.png)
 
 1. Klicken Sie auf **Überprüfen + erstellen**.
-1. Überprüfen Sie Ihre Verzeichniseinstellungen. Klicken Sie anschließend auf **Erstellen**. [Hier](../azure-resource-manager/templates/common-deployment-errors.md) finden Sie Informationen zum Beheben von Bereitstellungsfehlern.
+1. Überprüfen Sie Ihre Verzeichniseinstellungen. Klicken Sie anschließend auf **Erstellen**. [Hier](../azure-resource-manager/templates/common-deployment-errors.md) finden Sie weitere Informationen zum Beheben von Bereitstellungsfehlern.
 
 Sie können mehrere Azure AD B2C-Mandanten zu Abrechnungszwecken mit einem einzelnen Azure-Abonnement verknüpfen. Zum Verknüpfen eines Mandanten müssen Sie auf dem Azure AD B2C-Mandanten ein Administrator sein, und Ihnen muss unter dem Azure-Abonnement mindestens die Rolle „Mitwirkender“ zugewiesen sein. Weitere Informationen finden Sie unter [Verknüpfen eines Azure AD B2C-Mandanten mit einem Abonnement](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
 
 ## <a name="select-your-b2c-tenant-directory"></a>Auswählen Ihres B2C-Mandantenverzeichnisses
 
-Wenn Sie mit der Verwendung Ihres neuen Azure AD B2C-Mandanten beginnen möchten, müssen Sie zu dem Verzeichnis wechseln, das den Mandanten enthält.
+Wenn Sie mit der Verwendung Ihres neuen Azure AD B2C-Mandanten beginnen möchten, müssen Sie zu dem Verzeichnis wechseln, das den Mandanten enthält:
+1. Wählen Sie im Azure-Portal auf der Symbolleiste das Filtersymbol **Verzeichnisse und Abonnements** aus.
+1. Navigieren Sie auf der Registerkarte **Alle Verzeichnisse** zu dem Verzeichnis, das Ihren Azure AD B2C-Mandanten enthält, und wählen Sie dann daneben die Schaltfläche **Umschalten** aus.
 
-Wählen Sie im oberen Menü des Azure-Portals den Filter **Verzeichnis und Abonnement** und dann das Verzeichnis mit Ihrem Azure AD B2C-Mandanten aus.
+Wenn Ihr neuer Azure B2C-Mandant zunächst nicht in der Liste angezeigt wird, aktualisieren Sie Ihr Browserfenster, oder melden Sie sich ab und wieder neu an. Wählen Sie dann im Azure-Portal auf der Symbolleiste erneut das Filtersymbol **Verzeichnisse und Abonnements** aus.
 
-Wenn Ihr neuer Azure B2C-Mandant zunächst nicht in der Liste angezeigt wird, aktualisieren Sie Ihr Browserfenster, und wählen Sie dann erneut im oberen Menü den Filter **Verzeichnis und Abonnement** aus.
-
-![B2C-Mandant mit Verzeichnis im Azure-Portal ausgewählt](media/tutorial-create-tenant/portal-07-select-tenant-directory.png)
 
 ## <a name="add-azure-ad-b2c-as-a-favorite-optional"></a>Hinzufügen von Azure AD B2C als Favorit (optional)
 

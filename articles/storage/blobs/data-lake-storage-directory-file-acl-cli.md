@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 08e1976a1bc97ae83d1b9d45700fd614420be0c2
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 8dec2e939c6f39169d4c8fbbdfbcdf08d4d42599
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413067"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651577"
 ---
 # <a name="use-azure-cli-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Verwenden der Azure CLI zum Verwalten von Verzeichnissen und Dateien in Azure Data Lake Storage Gen2
 
@@ -27,7 +27,7 @@ Informationen zum Abrufen, Festlegen und Aktualisieren der Zugriffssteuerungslis
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+- Ein Azure-Abonnement. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 - Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](create-data-lake-storage-account.md) für die Erstellung.
 
@@ -43,7 +43,7 @@ Informationen zum Abrufen, Festlegen und Aktualisieren der Zugriffssteuerungslis
     az --version
    ```
 
-   Wenn Ihre Version der Azure-Befehlszeilenschnittstelle kleiner als `2.6.0` ist, dann installieren Sie eine neuere Version. Weitere Informationen finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+   Wenn Ihre Version der Azure-Befehlszeilenschnittstelle kleiner als `2.6.0` ist, dann installieren Sie eine neuere Version. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 
 ## <a name="connect-to-the-account"></a>Herstellen einer Verbindung mit dem Konto
 
@@ -72,7 +72,7 @@ Informationen zum Abrufen, Festlegen und Aktualisieren der Zugriffssteuerungslis
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
-Ein Container fungiert als Dateisystem für Ihre Dateien. Mit dem Befehl `az storage fs create` können Sie einen erstellen. 
+Ein Container fungiert als Dateisystem für Ihre Dateien. Mit dem Befehl `az storage fs create` können Sie einen erstellen.
 
 In diesem Beispiel wird ein Container namens `my-file-system` erstellt.
 
@@ -102,7 +102,7 @@ az storage fs file list -f my-file-system --account-name mystorageaccount --auth
 
 Mit dem Befehl `az storage fs delete` können Sie einen Container löschen.
 
-In diesem Beispiel wird der Container `my-file-system` gelöscht. 
+In diesem Beispiel wird der Container `my-file-system` gelöscht.
 
 ```azurecli
 az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -110,7 +110,7 @@ az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mo
 
 ## <a name="create-a-directory"></a>Erstellen eines Verzeichnisses
 
-Erstellen Sie eine Verzeichnisreferenz mit dem Befehl `az storage fs directory create`. 
+Erstellen Sie eine Verzeichnisreferenz mit dem Befehl `az storage fs directory create`.
 
 In diesem Beispiel wird dem Container `my-file-system`, der sich in einem Konto namens `mystorageaccount` befindet, ein Verzeichnis namens `my-directory` hinzugefügt.
 
@@ -146,27 +146,27 @@ az storage fs directory move -n my-directory -f my-file-system --new-directory "
 
 Löschen Sie ein Verzeichnis mit dem Befehl `az storage fs directory delete`.
 
-In diesem Beispiel wird das Verzeichnis `my-directory` gelöscht. 
+In diesem Beispiel wird das Verzeichnis `my-directory` gelöscht.
 
 ```azurecli
-az storage fs directory delete -n my-directory -f my-file-system  --account-name mystorageaccount --auth-mode login 
+az storage fs directory delete -n my-directory -f my-file-system  --account-name mystorageaccount --auth-mode login
 ```
 
 ## <a name="check-if-a-directory-exists"></a>Überprüfen, ob ein Verzeichnis vorhanden ist
 
 Ermitteln Sie mit dem Befehl `az storage fs directory exists`, ob ein bestimmtes Verzeichnis im Container vorhanden ist.
 
-Dieses Beispiel zeigt, ob im Container `my-file-system` ein Verzeichnis mit dem Namen `my-directory` vorhanden ist. 
+Dieses Beispiel zeigt, ob im Container `my-file-system` ein Verzeichnis mit dem Namen `my-directory` vorhanden ist.
 
 ```azurecli
-az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login 
+az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
 ## <a name="download-from-a-directory"></a>Herunterladen aus einem Verzeichnis
 
 Laden Sie eine Datei mit dem Befehl `az storage fs file download` aus einem Verzeichnis herunter.
 
-In diesem Beispiel wird eine Datei mit dem Namen `upload.txt` aus einem Verzeichnis mit dem Namen `my-directory` heruntergeladen. 
+In diesem Beispiel wird eine Datei mit dem Namen `upload.txt` aus einem Verzeichnis mit dem Namen `my-directory` heruntergeladen.
 
 ```azurecli
 az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\myFolder\download.txt" --account-name mystorageaccount --auth-mode login
@@ -176,7 +176,7 @@ az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\
 
 Listen Sie den Inhalt eines Verzeichnisses mit dem Befehl `az storage fs file list` auf.
 
-In diesem Beispiel wird der Inhalt eines Verzeichnisses namens `my-directory` aufgelistet, das sich im Container `my-file-system` eines Speicherkontos mit dem Namen `mystorageaccount` befindet. 
+In diesem Beispiel wird der Inhalt eines Verzeichnisses namens `my-directory` aufgelistet, das sich im Container `my-file-system` eines Speicherkontos mit dem Namen `mystorageaccount` befindet.
 
 ```azurecli
 az storage fs file list -f my-file-system --path my-directory --account-name mystorageaccount --auth-mode login
@@ -186,7 +186,7 @@ az storage fs file list -f my-file-system --path my-directory --account-name mys
 
 Laden Sie eine Datei mit dem Befehl `az storage fs file upload` in ein Verzeichnis hoch.
 
-In diesem Beispiel wird die Datei `upload.txt` in das Verzeichnis `my-directory` hochgeladen. 
+In diesem Beispiel wird die Datei `upload.txt` in das Verzeichnis `my-directory` hochgeladen.
 
 ```azurecli
 az storage fs file upload -s "C:\myFolder\upload.txt" -p my-directory/upload.txt  -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -217,7 +217,7 @@ Löschen Sie eine Datei mit dem Befehl `az storage fs file delete`.
 In diesem Beispiel wird eine Datei namens `my-file.txt` gelöscht.
 
 ```azurecli
-az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login 
+az storage fs file delete -p my-directory/my-file.txt -f my-file-system  --account-name mystorageaccount --auth-mode login
 ```
 
 ## <a name="see-also"></a>Weitere Informationen

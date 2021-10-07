@@ -16,12 +16,12 @@ ms.date: 06/01/2021
 ms.author: dpless
 ms.custom: contperf-fy21q3
 ms.reviewer: jroth
-ms.openlocfilehash: 474954faebe62138e234f5bb7a7c1bee7bdcf95b
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: f5c6a0864790003e115d201c1a50b181df63c5ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397173"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666702"
 ---
 # <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>Checkliste: Bewährte Methoden für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,7 +62,7 @@ Im folgenden finden Sie eine kurze Checkliste mit bewährten Methoden für die S
     - Planen Sie für das Protokolllaufwerk die Kapazität und testen die Leistung im Verhältnis zu den Kosten, während Sie die [Premium-Datenträger P30-P80](../../../virtual-machines/disks-types.md#premium-ssd) bewerten.
       - Wenn eine Speicherwartezeit von weniger als einer Millisekunde erforderlich ist, verwenden Sie [Azure Ultra-Datenträger](../../../virtual-machines/disks-types.md#ultra-disk) für das Transaktionsprotokoll. 
       - Für Bereitstellungen von virtuellen Computern der M-Serie sollten Sie eine [Schreibbeschleunigung](../../../virtual-machines/how-to-enable-write-accelerator.md) der Verwendung von Azure-Ultra-Datenträgern vorziehen.
-    - Platzieren Sie [tempdb](/sql/relational-databases/databases/tempdb-database) auf dem lokalen SSD- `D:\` Laufwerk für die meisten SQL Server Workloads, nachdem Sie die optimale VM-Größe ausgewählt haben. 
+    - Platzieren Sie [tempdb](/sql/relational-databases/databases/tempdb-database) auf dem lokalen kurzlebigen SSD-Standardlaufwerk `D:\` für die meisten SQL Server-Workloads, nachdem Sie die optimale VM-Größe ausgewählt haben. 
       - Wenn die Kapazität des lokalen Laufwerks für „tempdb“ nicht ausreicht, können Sie die Vergrößerung der VM in Erwägung ziehen. Weitere Informationen finden Sie unter [Richtlinien für das Zwischenspeichern von Datendateien](performance-guidelines-best-practices-storage.md#data-file-caching-policies).
 - Erstellen Sie ein Stripeset mehrerer Azure-Datenträger mithilfe von [Speicherplätzen](/windows-server/storage/storage-spaces/overview), um die E/A-Bandbreite bis zum IOPS- und Durchsatzlimit des virtuellen Zielcomputers zu erhöhen.
 - Legen Sie [Hostzwischenspeicherung](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) für Datenträger mit Datendateien auf „Schreibgeschützt“ fest.
@@ -146,8 +146,9 @@ Erwägen Sie für die SQL Server Verfügbarkeitsgruppe oder Failoverclusterinsta
 * Falls sich die unerwarteten Failover durch Optimierung der Leistung der SQL Server-VMs nicht beheben lassen, erwägen Sie eine [Lockerung der Überwachung](hadr-cluster-best-practices.md#relaxed-monitoring) für die Verfügbarkeitsgruppe oder Failoverclusterinstanz. Dadurch wird jedoch möglicherweise nicht die zugrunde liegende Ursache des Problems behoben, und durch Verringerung der Fehlerwahrscheinlichkeit können Symptome maskiert werden. Möglicherweise müssen Sie die zugrunde liegende Ursache dennoch untersuchen und beheben. Verwenden Sie für Windows Server 2012 oder höher die folgenden empfohlenen Werte: 
    - **Leasetimeout**:Verwenden Sie diese Gleichung, um den maximalen Leasetimeoutwert zu berechnen:   
     `Lease timeout < (2 * SameSubnetThreshold * SameSubnetDelay)`.    
-    Beginnen Sie mit 40 Sekunden. Wenn Sie die zuvor empfohlenen gelockerten `SameSubnetThreshold`- und `SameSubnetDelay`-Werte verwenden, darf der Leasetimeoutwert 80 Sekunden nicht überschreiten.    
-   - **Maximale Fehler in einem angegebenen Zeitraum**: Legen Sie diesen Wert auf 6 fest. 
+    Beginnen Sie mit 40 Sekunden. Wenn Sie die zuvor empfohlenen gelockerten `SameSubnetThreshold`- und `SameSubnetDelay`-Werte verwenden, darf der Leasetimeoutwert 80 Sekunden nicht überschreiten. 
+   - **Maximale Anzahl von Fehlern in einem angegebenen Zeitraum**: Legen Sie diesen Wert auf 6 fest.
+   - **Timeout für die Integritätsprüfung**: Legen Sie diesen Wert zunächst auf 60.000 fest, und passen Sie ihn bei Bedarf an. 
 * Wenn Sie den Namen des virtuellen Netzwerks (VNN) verwenden, um eine Verbindung mit Ihrer HADR-Lösung herzustellen, geben Sie `MultiSubnetFailover = true` in der Verbindungszeichenfolge an, auch wenn Ihr Cluster nur ein Subnetz umfasst. 
    - Wenn der Client `MultiSubnetFailover = True` nicht unterstützt, müssen Sie möglicherweise `RegisterAllProvidersIP = 0` und `HostRecordTTL = 300` festlegen, um Clientanmeldeinformationen für kürzere Zeiträume zwischenzuspeichern. Dies kann jedoch zu zusätzlichen Abfragen an den DNS-Server führen. 
 - Beim Herstellen einer Verbindung mit der HADR-Lösung mithilfe des Namens des verteilten Netzwerks (Distributed Network Name, DNN) ist Folgendes zu beachten:

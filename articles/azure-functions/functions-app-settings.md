@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: 78e142fd97158fb64387950f9515ac168c216e5d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6b860e40acd118bc708ab00001707755272525b6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123108668"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663609"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -56,7 +56,7 @@ Standardmäßig nutzen [Functions-Proxys](functions-proxies.md) eine Verknüpfun
 
 Diese Einstellung steuert, ob die Zeichen `%2F` in Routenparametern als Schrägstrich decodiert werden, wenn sie in die Back-End-URL eingefügt werden.
 
-|Schlüssel|Wert|BESCHREIBUNG|
+|Schlüssel|Wert|Beschreibung|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|`true`|Routenparameter mit codierten Schrägstrichen werden decodiert. |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|`false`|Alle Routenparameter werden unverändert weitergegeben (Standardverhalten). |
@@ -335,7 +335,7 @@ Der Dateipfad für den Funktions-App-Code und die Konfiguration in einem ereigni
 
 Wird nur bei der Bereitstellung für einen Premium-Plan oder Verbrauchsplan verwendet, der unter Windows ausgeführt wird. Wird nicht für Verbrauchspläne unter Linux unterstützt. Das Ändern oder Entfernen dieser Einstellung kann dazu führen, dass Ihre Funktions-App nicht gestartet wird. Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
 
-Wenn Sie während der Bereitstellung eine Azure Resource Manager-Vorlage zum Erstellen einer Funktions-App verwenden, schließen Sie WEBSITE_CONTENTSHARE nicht in die Vorlage ein. Diese Anwendungseinstellung wird während der Bereitstellung generiert. Weitere Informationen finden Sie unter [Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions](functions-infrastructure-as-code.md#windows).
+Wenn Sie während der Bereitstellung eine Azure Resource Manager-Vorlage zum Erstellen einer Funktions-App verwenden, schließen Sie WEBSITE_CONTENTSHARE nicht in die Vorlage ein. Diese Sloteinstellung wird während der Bereitstellung generiert. Weitere Informationen finden Sie unter [Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions](functions-infrastructure-as-code.md#windows).
 
 ## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
 

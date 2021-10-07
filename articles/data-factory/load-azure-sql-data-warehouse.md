@@ -1,20 +1,20 @@
 ---
 title: Laden von Daten in Azure Synapse Analytics
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Verwenden von Azure Data Factory- oder Synapse-Pipelines zum Kopieren von Daten in Azure Synapse Analytics.
+description: Verwenden Sie Azure Data Factory oder eine Azure Synapse-Pipeline, um Daten in Azure Synapse Analytics zu kopieren.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: b297e47e3b1cb890312b6f7a566eb4f033e6612a
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: e91d2dbae4f73e99a5e341330c0841e8173cedc8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824119"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819923"
 ---
 # <a name="load-data-into-azure-synapse-analytics-using-azure-data-factory-or-a-synapse-pipeline"></a>Laden von Daten in Azure Synapse Analytics mithilfe einer Azure Data Factory- oder Synapse-Pipeline
 
@@ -71,7 +71,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool „Kopieren von Daten“ zum _L
 
 2. Wählen Sie auf der Seite **Eigenschaften** unter **Aufgabentyp** den Typ **Integrierte Kopieraufgabe** aus, und wählen Sie dann **Weiter** aus.
 
-    ![Eigenschaftenseite](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png" alt-text="Seite „Eigenschaften“":::
 
 3. Führen Sie auf der Seite **Quelldatenspeicher** die folgenden Schritte aus:
     >[!TIP]
@@ -82,17 +82,17 @@ In diesem Artikel erfahren Sie, wie Sie das Tool „Kopieren von Daten“ zum _L
 
     1. Wählen Sie im Katalog **Azure SQL-Datenbank** und dann **Weiter** aus. Sie können in das Suchfeld zum Filtern der Connectors „SQL“ eingeben.
 
-        ![Auswählen der Azure SQL-Datenbank](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
+        :::image type="content" source="./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png" alt-text="Auswählen der Azure SQL-Datenbank":::
     
     1. Wählen Sie auf der Seite **Neue Verbindung (Azure SQL Database)** in der Dropdownliste Ihren Server- und Datenbanknamen aus und geben Sie den Benutzernamen und das Kennwort an. Wählen Sie **Verbindung testen** aus, um die Einstellungen zu überprüfen. Wählen Sie dann **Erstellen** aus.
 
-        ![Konfigurieren von Azure SQL-Datenbank](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
+        :::image type="content" source="./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png" alt-text="Konfigurieren von Azure SQL-Datenbank":::
     
     1. Wählen Sie auf der Seite **Zieldatenspeicher** die neu erstellte Verbindung als Quelle in dem Bereich **Verbindung** aus.
 
     1. Geben Sie **SalesLT** in dem Abschnitt **Quelltabellen** ein, um die Tabellen zu filtern. Aktivieren Sie das Kontrollkästchen **(Alles auswählen)** , um alle Tabellen für den Kopiervorgang zu verwenden, und wählen Sie dann **Weiter** aus.
 
-    ![Ein Screenshot, der die Konfiguration der Seite „Quelldatenspeicher“ zeigt.](./media/load-azure-sql-data-warehouse/source-data-store-page.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/source-data-store-page.png" alt-text="Ein Screenshot, der die Konfiguration der Seite „Quelldatenspeicher“ zeigt.":::
 
 4. Geben Sie auf der Seite **Filter anwenden** die Einstellungen an, oder wählen Sie **Weiter** aus. Sie können eine Datenvorschau anzeigen und das Schema der Eingabedaten einsehen, indem Sie die Schaltfläche **Datenvorschau** auswählen. 
 
@@ -107,21 +107,21 @@ In diesem Artikel erfahren Sie, wie Sie das Tool „Kopieren von Daten“ zum _L
 
     1. Wählen Sie im Katalog **Azure Synapse Analytics** aus, und klicken Sie auf **Weiter**.
 
-        ![Auswählen von Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+        :::image type="content" source="./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png" alt-text="Auswählen von Azure Synapse Analytics":::
 
     1. Wählen Sie auf der Seite **Neue Verbindung (Azure Synapse Analytics)** in der Dropdownliste Ihren Server- und Datenbanknamen aus und geben Sie den Benutzernamen und das Kennwort an. Wählen Sie **Verbindung testen** aus, um die Einstellungen zu überprüfen. Wählen Sie dann **Erstellen** aus.
 
-        ![Konfigurieren von Azure Synapse Analytics](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+        :::image type="content" source="./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png" alt-text="Konfigurieren von Azure Synapse Analytics":::
 
     1. Wählen Sie auf der Seite **Zieldatenspeicher** die neu erstellte Verbindung als Senke in dem Bereich **Verbindung** aus.
 
 6. Überprüfen Sie den Inhalt der Seite **Tabellenzuordnung** und klicken Sie dann auf **Weiter**. Eine intelligente Tabellenzuordnung wird angezeigt. Die Quelltabellen werden den Zieltabellen auf Grundlage der Tabellennamen zugeordnet. Wenn eine Quelltabelle im Ziel nicht vorhanden ist, wird von dem Service standardmäßig eine Zieltabelle mit dem gleichen Namen erstellt. Sie können eine Quelltabelle auch einer vorhandenen Zieltabelle zuordnen.
 
-   ![Ein Screenshot, der die Konfiguration der Seite „Zieldatenspeicher“ zeigt.](./media/load-azure-sql-data-warehouse/destination-data-store-page.png)
+   :::image type="content" source="./media/load-azure-sql-data-warehouse/destination-data-store-page.png" alt-text="Ein Screenshot, der die Konfiguration der Seite „Zieldatenspeicher“ zeigt.":::
 
 1. Überprüfen Sie den Inhalt der Seite **Spaltenzuordnung**, und wählen Sie dann **Weiter** aus. Die intelligente Tabellenzuordnung basiert auf dem Spaltennamen. Wenn Sie den Dienst die Tabellen automatisch erstellen lassen, kann eine Datentypkonvertierung erfolgen, wenn zwischen den Quell- und Zielspeichern Inkompatibilitäten vorliegen. Wenn es eine nicht unterstützte Datentypkonvertierung zwischen der Quell- und Zielspalte gibt, wird eine Fehlermeldung neben der entsprechenden Tabelle angezeigt.
 
-    ![Seite „Spaltenzuordnung“](./media/load-azure-sql-data-warehouse/schema-mapping.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/schema-mapping.png" alt-text="Seite „Spaltenzuordnung“":::
 
 1. Führen Sie auf der Seite **Einstellungen** die folgenden Schritte aus:
 
@@ -132,7 +132,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool „Kopieren von Daten“ zum _L
 
     1. Deaktivieren Sie die Option **Typstandard verwenden**, und wählen Sie dann **Weiter** aus.
 
-    ![Konfigurieren von PolyBase](./media/load-azure-sql-data-warehouse/configure-polybase.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/configure-polybase.png" alt-text="Konfigurieren von PolyBase":::
 
 8. Überprüfen Sie auf der Seite **Zusammenfassung** die Einstellungen, und klicken Sie dann auf **Weiter**.
 
@@ -152,13 +152,13 @@ In diesem Artikel erfahren Sie, wie Sie das Tool „Kopieren von Daten“ zum _L
 
 12. Wählen Sie oben den Link **Alle Pipelineausführungen** aus, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**.
 
-    ![Überwachung der Aktivitätsausführungen](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/activity-monitoring.png" alt-text="Überwachung der Aktivitätsausführungen":::
 
 1. Zum Überwachen der Ausführungsdetails jeder Kopieraktivität wählen Sie in der Ansicht der Aktivitätsausführungen unter **Aktivitätsname** den Link **Details** (Brillensymbol) aus. Sie können Details wie die Menge der Daten, die aus der Quelle in die Senke kopiert wurden, den Datendurchsatz, die Ausführungsschritte mit entsprechender Dauer sowie die verwendeten Konfigurationen überwachen.
 
-    ![Überwachen von Details zur Aktivitätsausführung 1](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png" alt-text="Überwachen von Details zur Aktivitätsausführung 1":::
 
-    ![Überwachen von Details zur Aktivitätsausführung 2](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png" alt-text="Überwachen von Details zur Aktivitätsausführung 2":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

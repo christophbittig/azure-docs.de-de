@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e7bcfe1afc063d89bc6a5339bf62521cd644b8ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1c769cdac870c7384495d41158bd7ad516608575
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048339"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632954"
 ---
 # <a name="register-a-saas-application"></a>Registrieren einer SaaS-Anwendung
 
@@ -74,13 +74,13 @@ Post<br>
 
 ##### <a name="request-header"></a>*Anforderungsheader*
 
-|  Headername       |  Erforderlich         |  BESCHREIBUNG |
+|  Headername       |  Erforderlich         |  Beschreibung |
 |  ---------------   |  ---------------  | ------------ |
 |  `content-type`    |  True      |  Der Anforderung zugeordneter Inhaltstyp. Standardwert: `application/x-www-form-urlencoded`. |
 
 ##### <a name="request-body"></a>*Anforderungstext*
 
-|  Eigenschaftenname     |  Erforderlich         |  BESCHREIBUNG |
+|  Eigenschaftenname     |  Erforderlich         |  Beschreibung |
 |  ---------------   |  ---------------  | ------------ |
 |  `grant_type`      |  True      |  Gewährungstyp. Verwenden Sie `"client_credentials"`. |
 |  `client_id`       |  True      |  Der Azure AD-App zugeordneter Client-/App-Bezeichner. |
@@ -89,7 +89,7 @@ Post<br>
 
 ##### <a name="response"></a>*Antwort*
 
-|  Name     |  Typ         |  BESCHREIBUNG |
+|  Name     |  type         |  BESCHREIBUNG |
 |  ------   |  ---------------  | ------------ |
 |  200 – OK   |  TokenResponse    |  Anforderung erfolgreich. |
 
@@ -109,7 +109,14 @@ Beispiel für eine Antwort:
   }
 ```
 
-Der Wert von `"access_token"` in der Antwort ist das Zugriffstoken (`<access_token>`), das Sie beim Aufrufen aller SaaS-Fulfillment- und Marketplace-Messungs-APIs übergeben.
+| Element | BESCHREIBUNG |
+| ------- | ----------- |
+| `access_token` | Dieses Element ist das Zugriffstoken (`<access_token>`), das Sie beim Aufrufen aller SaaS-Fulfillment- und Marketplace-Messungs-APIs als Autorisierungsparameter übergeben. Beim Aufrufen einer geschützten REST-API wird das Token als „Bearertoken“ in das `Authorization`-Anforderungsheader-Feld eingebettet, damit der Aufrufer von der API authentifiziert werden kann. | 
+| `expires_in` | Der Zeitraum in Sekunden, wie lange das Zugriffstoken ab dem Zeitpunkt der Ausstellung gültig ist, bevor es abläuft. Der Ausstellungszeitpunkt ist im Anspruch `iat` des Tokens zu finden. |
+| `expires_on` | Der Zeitpunkt, zu dem das Zugriffstoken abläuft. Das Datum wird als Anzahl von Sekunden ab „1970-01-01T0:0:0Z UTC“ (entspricht dem Anspruch `exp` des Tokens) dargestellt. |
+| `not_before` | Der Zeitpunkt, ab dem das Zugriffstoken wirksam ist und akzeptiert werden kann. Das Datum wird als Anzahl von Sekunden ab „1970-01-01T0:0:0Z UTC“ (entspricht dem Anspruch `nbf` des Tokens) dargestellt. |
+| `resource` | Die Ressource, für die das Zugriffstoken angefordert wurde (Übereinstimmung mit dem Abfragezeichenfolgenparameter `resource` der Anforderung). |
+| `token_type` | Der Typ des Tokens. In diesem Fall ein „Bearerzugriffstoken“, sodass die Ressource Zugriff auf den Bearer dieses Tokens gewähren kann. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

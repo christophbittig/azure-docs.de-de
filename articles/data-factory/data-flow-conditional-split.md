@@ -1,7 +1,7 @@
 ---
 title: Transformation für bedingtes Teilen im Zuordnungsdatenfluss
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Es wird beschrieben, wie Sie Daten auf verschiedene Streams aufteilen, indem Sie die Transformation für bedingtes Teilen im Azure Data Factory-Zuordnungsdatenfluss verwenden.
+description: Teilen Sie Daten auf verschiedene Datenströme auf, indem Sie die Transformation für bedingtes Teilen in einem Zuordnungsdatenfluss in Azure Data Factory oder Synapse Analytics verwenden.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 05/21/2020
-ms.openlocfilehash: 557ef01f206346a7d9596160fc4ab9f8dc0ceea2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 15864e8dfb694478f8156d5122608dec88493285
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640000"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060288"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Transformation für bedingtes Teilen im Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 Bei der Transformation für bedingtes Teilen werden Datenzeilen basierend auf Übereinstimmungsbedingungen an verschiedene Streams geleitet. Die Transformation für bedingtes Teilen ist mit einer CASE-Entscheidungsstruktur in einer Programmiersprache vergleichbar. Die Transformation wertet Ausdrücke aus und leitet dann die Datenzeile basierend auf den Ergebnissen an den angegebenen Datenstrom weiter.
 
@@ -31,7 +33,7 @@ Mit der Einstellung **Teilen bei** wird bestimmt, ob die Zeile mit den Daten an 
 
 Verwenden Sie den Ausdrucks-Generator für Datenflüsse, um einen Ausdruck für die Teilungsbedingung einzugeben. Klicken Sie zum Hinzufügen einer neuen Bedingung in einer vorhandenen Zeile auf das Pluszeichen. Darüber hinaus kann für Zeilen, für die sich keine Übereinstimmung mit einer Bedingung ergibt, auch ein Standardstream hinzugefügt werden.
 
-![Bedingtes Teilen](media/data-flow/conditionalsplit1.png "Optionen für bedingtes Teilen")
+:::image type="content" source="media/data-flow/conditionalsplit1.png" alt-text="Bedingtes Teilen":::
 
 ## <a name="data-flow-script"></a>Datenflussskript
 
@@ -51,9 +53,9 @@ Verwenden Sie den Ausdrucks-Generator für Datenflüsse, um einen Ausdruck für 
 
 Das folgende Beispiel ist eine Transformation für bedingtes Teilen mit dem Namen `SplitByYear`, bei der der eingehende Stream `CleanData` verwendet wird. Diese Transformation verfügt über die beiden Teilungsbedingungen `year < 1960` und `year > 1980`. `disjoint` ist „false“, weil die Daten an die erste übereinstimmende Bedingung geleitet werden. Alle Zeilen, die die erste Bedingung erfüllen, werden an den Ausgabestream `moviesBefore1960` geleitet. Alle verbleibenden Zeilen, die die zweite Bedingung erfüllen, werden an den Ausgabestream `moviesAFter1980` geleitet. Für alle anderen Zeilen wird der Standardstream `AllOtherMovies` verwendet.
 
-Auf der Data Factory-Benutzeroberfläche sieht diese Transformation wie folgt aus:
+In der Benutzeroberfläche des Diensts sieht diese Transformation wie in der folgenden Abbildung aus:
 
-![Bedingtes Teilen](media/data-flow/conditionalsplit1.png "Optionen für bedingtes Teilen")
+:::image type="content" source="media/data-flow/conditionalsplit1.png" alt-text="Bedingtes Teilen":::
 
 Das Datenflussskript für diese Transformation befindet sich im folgenden Codeausschnitt:
 

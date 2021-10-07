@@ -4,29 +4,31 @@ description: Datei einfügen
 author: timlt
 ms.service: iot-develop
 ms.topic: include
-ms.date: 05/06/2021
+ms.date: 09/10/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 9b383086eb9a53f061f445b26fe2bcd1242524ae
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0665035b31142f5be7fa825a83d8575b49e8e717
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121802395"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909608"
 ---
 [![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp)
 
 In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Zunächst erstellen Sie eine Azure IoT Central-Anwendung zum Hosten von Geräten. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen simulierten Temperaturregler auszuführen, ihn sicher mit IoT Central zu verbinden und Telemetriedaten zu senden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- Dieser Schnellstart kann unter Linux oder Windows ausgeführt werden. In den Shellbefehlen wird das Linux-Standardpfadtrennzeichen `/` verwendet. Ersetzen Sie bei Verwendung von Windows diese Trennzeichen durch das Windows-Pfadtrennzeichen `\`.
+Diese Schnellstartanleitung wird unter Windows, Linux und Raspberry Pi ausgeführt. Sie wurde mit den folgenden Betriebssystem- und Geräteversionen getestet:
+
+- Windows 10
+- Ubuntu 20.04 LTS, ausgeführt im Windows-Subsystem für Linux (WSL)
+- Raspberry Pi OS Version 10 (Buster), ausgeführt auf einem Raspberry Pi 3 Model B+
 
 Installieren Sie die übrigen erforderlichen Komponenten für Ihr Betriebssystem.
 
-### <a name="linux"></a>Linux
-Die Schritte in diesem Tutorial wurden unter Ubuntu Linux 18.04 getestet.
-
-Installieren Sie die folgende Software in Ihrer lokalen Linux-Umgebung, um diesen Schnellstart unter Linux auszuführen:
+### <a name="linux-or-raspberry-pi-os"></a>Linux oder Raspberry Pi OS
+Installieren Sie die folgende Software zum Ausführen dieser Schnellstartanleitung unter Linux und Raspberry Pi OS:
 
 Installieren Sie **GCC**, **Git**, **CMake** und alle erforderlichen Abhängigkeiten mithilfe des Befehls `apt-get`:
 
@@ -59,7 +61,7 @@ In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azu
 
 ### <a name="configure-your-environment"></a>Konfigurieren Ihrer Umgebung
 
-1. Öffnen Sie eine Konsole, um das Azure IoT-C-Geräte-SDK zu installieren, und führen Sie das Codebeispiel aus. Wählen Sie unter Windows **Start** aus, geben Sie *Developer-Eingabeaufforderung für VS 2019* ein, und öffnen Sie die Konsole. Öffnen Sie unter Linux Bash. 
+1. Öffnen Sie eine Konsole, um das Azure IoT-C-Geräte-SDK zu installieren, und führen Sie das Codebeispiel aus. Wählen Sie unter Windows **Start** aus, geben Sie *Developer-Eingabeaufforderung für VS 2019* ein, und öffnen Sie die Konsole. Öffnen Sie für Linux und Raspberry Pi OS ein Terminal für Bash-Befehle. 
 
 1. Legen Sie mit den entsprechenden Befehle für Ihre Konsole die folgenden Umgebungsvariablen fest. Das simulierte Gerät verwendet diese Werte, um eine Verbindung mit IoT Central herzustellen. Verwenden Sie für `IOTHUB_DEVICE_DPS_ID_SCOPE`, `IOTHUB_DEVICE_DPS_DEVICE_KEY` und `IOTHUB_DEVICE_DPS_DEVICE_ID` die Geräteverbindungswerte, die Sie zuvor gespeichert haben.
 
@@ -87,6 +89,8 @@ In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azu
     ```
 
 ### <a name="install-the-sdk-and-samples"></a>Installieren des SDK und der Beispiele
+
+1. Navigieren Sie zu dem lokalen Ordner, in dem Sie das Beispielrepository klonen möchten.
 
 1. Kopieren Sie das Azure IoT-C-Geräte-SDK auf Ihren lokalen Computer.
 
@@ -119,7 +123,7 @@ In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azu
 
     **Bash**
     ```bash
-    cmake/iothub_client/samples/pnp/pnp_temperature_controller/Debug/pnp_temperature_controller
+    cmake/iothub_client/samples/pnp/pnp_temperature_controller/pnp_temperature_controller
     ```
 
     Nachdem Ihr simuliertes Gerät eine Verbindung mit der IoT Central-Anwendung hergestellt hat, stellt es eine Verbindung mit der Geräteinstanz her, die Sie in der Anwendung erstellt haben, und beginnt mit dem Senden von Telemetriedaten. Die Verbindungsdetails und die Telemetrieausgabe werden in der Konsole angezeigt: 

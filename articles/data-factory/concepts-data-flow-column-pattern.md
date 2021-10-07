@@ -1,7 +1,7 @@
 ---
-title: Spaltenmuster in Azure Data Factory-Mappingdatenflüssen
+title: Spaltenmuster bei der Zuordnungdatenflusses
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erstellen generalisierter Datentransformationsmuster unter Verwendung von Spaltenmustern in Azure Data Factory-Mappingdatenflüssen
+description: Erstellen Sie verallgemeinerte Datentransformationsmuster unter Verwendung von Spaltenmustern bei der Zuordnungdatenflüssen mit Azure Data Factory oder Synapse Analytics.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 05/21/2021
-ms.openlocfilehash: 0b99e1cc31464aabe2519da172f250dc7a6f7c8d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 32d39c956121881da0073b53fe5b4196dbc179de
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640721"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828498"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Verwenden von Spaltenmustern in Mappingdatenflüssen
 
@@ -32,24 +32,24 @@ In verschiedenen Mappingdatenfluss-Transformationen kann auf Vorlagenspalten mit
 
 Um ein Spaltenmuster in einer Transformation einer abgeleiteten Spalte, eines Aggregats oder eines Fensters hinzuzufügen, klicken Sie oberhalb der Spaltenliste auf **Hinzufügen**, oder klicken Sie auf das Pluszeichen („+“) neben einer vorhandenen abgeleiteten Spalte. Wählen Sie **Spaltenmuster hinzufügen** aus.
 
-![Screenshot: Plussymbol zum Hinzufügen von Spaltenmustern](media/data-flow/add-column-pattern.png "Spaltenmuster")
+:::image type="content" source="media/data-flow/add-column-pattern.png" alt-text="Screenshot: Plussymbol zum Hinzufügen von Spaltenmustern":::
 
 Verwenden Sie den [Ausdrucks-Generator](concepts-data-flow-expression-builder.md), um die Übereinstimmungsbedingung einzugeben. Erstellen Sie einen booleschen Ausdruck, um Spalten auf der Grundlage von `name`, `type`, `stream`, `origin` und `position` der Spalte abzugleichen. Das Muster wirkt sich sowohl auf Spalten mit Datendrift als auch auf definierte Spalten aus, bei denen die Bedingung zutrifft (also „true“ zurückgegeben wird).
 
 
-![Screenshot: Registerkarte mit den Einstellungen der abgeleiteten Spalte](media/data-flow/edit-column-pattern.png "Spaltenmuster")
+:::image type="content" source="media/data-flow/edit-column-pattern.png" alt-text="Screenshot: Registerkarte mit den Einstellungen der abgeleiteten Spalte":::
 
 Das obige Spaltenmuster stimmt mit jeder Spalte vom Typ „Double“ überein und erstellt eine abgeleitete Spalte pro Übereinstimmung. Durch Angeben von `$$` als Spaltennamensfeld wird jede übereinstimmende Spalte mit demselben Namen aktualisiert. Der Wert jeder Spalte ist der vorhandene Wert, der auf zwei Dezimalstellen gerundet wird.
 
 Um zu überprüfen, ob die Übereinstimmungsbedingung korrekt ist, können Sie auf der Registerkarte **Untersuchen** das Ausgabeschema definierter Spalten überprüfen oder auf der Registerkarte **Datenvorschau** eine Momentaufnahme der Daten anzeigen. 
 
-![Screenshot: Registerkarte „Ausgabeschema“](media/data-flow/columnpattern3.png "Spaltenmuster")
+:::image type="content" source="media/data-flow/columnpattern3.png" alt-text="Screenshot: Registerkarte „Ausgabeschema“":::
 
 ### <a name="hierarchical-pattern-matching"></a>Hierarchischer Musterabgleich
 
 Sie können auch einen Musterabgleich in komplexen hierarchischen Strukturen erstellen. Erweitern Sie den Abschnitt `Each MoviesStruct that matches`, in dem Sie für jede Hierarchie im Datenstrom aufgefordert werden. Anschließend können Sie übereinstimmende Muster für Eigenschaften innerhalb der ausgewählten Hierarchie erstellen.
 
-![Screenshot zeigt ein hierarchisches Spaltenmuster.](media/data-flow/patterns-hierarchy.png "Spaltenmuster in Hierarchien")
+:::image type="content" source="media/data-flow/patterns-hierarchy.png" alt-text="Screenshot zeigt ein hierarchisches Spaltenmuster.":::
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Regelbasierte Zuordnung in „Auswählen“ und „Senke“
 
@@ -57,11 +57,11 @@ Beim Zuordnen von Spalten in Quell- und Auswahltransformationen können Sie entw
 
 Klicken Sie zum Hinzufügen einer regelbasierten Zuordnung auf **Zuordnung hinzufügen**, und wählen Sie **Rule-based mapping** (Regelbasierte Zuordnung) aus.
 
-![Screenshot: Ausgewählte regelbasierte Zuordnung unter „Zuordnung hinzufügen“](media/data-flow/rule2.png "Regelbasierte Zuordnung")
+:::image type="content" source="media/data-flow/rule2.png" alt-text="Screenshot: Ausgewählte regelbasierte Zuordnung unter „Zuordnung hinzufügen“":::
 
 Jede regelbasierte Zuordnung erfordert zwei Eingaben: die Bedingung, gemäß der der Abgleich auf Übereinstimmung erfolgen soll, und den Namen jeder zugeordneten Spalte. Beide Werte werden über den [Ausdrucks-Generator](concepts-data-flow-expression-builder.md) eingegeben. Geben Sie im linken Ausdrucksfeld Ihre boolesche Übereinstimmungsbedingung ein. Geben Sie im rechten Ausdrucksfeld das Zuordnungsziel für die übereinstimmende Spalte an.
 
-![Screenshot: Eine Zuordnung](media/data-flow/rule-based-mapping.png "Regelbasierte Zuordnung")
+:::image type="content" source="media/data-flow/rule-based-mapping.png" alt-text="Screenshot: Eine Zuordnung":::
 
 Verwenden Sie die `$$`-Syntax, um auf den eingegebenen Namen einer übereinstimmenden Spalte zu verweisen. Nehmen wir das obige Bild als Beispiel: Ein Benutzer wünscht einen Abgleich auf Übereinstimmung aller Zeichenfolgenspalten, deren Namen kürzer als sechs Zeichen sind. Wenn eine eingehende Spalte mit`test` benannt wurde, wird die Spalte durch den Ausdruck `$$ + '_short'` in `test_short` umbenannt. Wenn dies die einzige vorhandene Zuordnung ist, werden alle Spalten, die die Bedingung nicht erfüllen, aus den ausgegebenen Daten entfernt.
 
@@ -71,7 +71,7 @@ Muster stimmen sowohl mit abweichenden als auch definierten Spalten überein. Um
 
 Wenn Sie auf das nach unten zeigende Chevronsymbol klicken, können Sie eine RegEx-Zuordnungsbedingung angeben. Eine RegEx-Zuordnungsbedingung gleicht alle Spaltennamen ab, die der angegebenen RegEx-Bedingung entsprechen. Sie kann in Kombination mit standardmäßigen regelbasierten Zuordnungen verwendet werden.
 
-![Screenshot: RegEx-Zuordnungsbedingung mit Hierarchieebene und Namensübereinstimmung](media/data-flow/regex-matching.png "Regelbasierte Zuordnung")
+:::image type="content" source="media/data-flow/regex-matching.png" alt-text="Screenshot: RegEx-Zuordnungsbedingung mit Hierarchieebene und Namensübereinstimmung":::
 
 Das obige Beispiel stimmt mit dem RegEx-Muster `(r)` oder einem beliebigen Spaltennamen überein, der den Kleinbuchstaben r enthält. Ähnlich wie bei der standardmäßigen regelbasierten Zuordnung werden alle übereinstimmenden Spalten von der Bedingung auf der rechten Seite mit der `$$`-Syntax geändert.
 
@@ -79,7 +79,7 @@ Das obige Beispiel stimmt mit dem RegEx-Muster `(r)` oder einem beliebigen Spalt
 
 Wenn Ihre definierte Projektion eine Hierarchie hat, können Sie die regelbasierte Zuordnung verwenden, um die Unterspalten der Hierarchie zuzuordnen. Geben Sie eine Übereinstimmungsbedingung und die komplexe Spalte an, deren Unterspalten Sie zuordnen möchten. Jede übereinstimmende Unterspalte wird mithilfe der rechts angegebenen Regel „Name as“ (Benennen als) ausgegeben.
 
-![Screenshot: Regelbasierte Zuordnung für eine Hierarchie](media/data-flow/rule-based-hierarchy.png "Regelbasierte Zuordnung")
+:::image type="content" source="media/data-flow/rule-based-hierarchy.png" alt-text="Screenshot: Regelbasierte Zuordnung für eine Hierarchie":::
 
 Das obige Beispiel stimmt mit allen Unterspalten der komplexen Spalte `a` überein. `a` enthält die beiden Unterspalten `b` und `c`. Das Ausgabeschema enthält die beiden Spalten `b` und `c`, da die „Name as“-Bedingung `$$` lautet.
 

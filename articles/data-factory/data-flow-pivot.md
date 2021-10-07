@@ -1,25 +1,26 @@
 ---
 title: Pivottransformation im Zuordnungsdatenfluss
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Pivotieren Sie Daten aus Zeilen in Spalten mithilfe der Pivottransformation des Azure Data Factory-Zuordnungsdatenflusses.
+description: Sie können mithilfe der Zuordnungsdatenfluss-Pivottransformation in Azure Data Factory- und Synapse Analytics-Pipelines Daten aus Zeilen in Spalten pivotieren.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 07/17/2020
-ms.openlocfilehash: bb46b41e72d98be0a3b474f109adfa7303bd8f2b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: c6aa95864ad12d5776a8e90eb2b1bd8dac1f04a2
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122640869"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059927"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Pivottransformation im Zuordnungsdatenfluss
 
-
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 Verwenden Sie die Pivottransformation, um aus den eindeutigen Zeilenwerten einer einzelnen Spalte mehrere Spalten zu erstellen. Pivotieren ist eine Aggregationstransformation, bei der Sie die Option „Nach Spalten gruppieren“ auswählen und mithilfe von [Aggregatfunktionen](data-flow-expression-functions.md#aggregate-functions) Pivotspalten erstellen.
 
@@ -31,7 +32,7 @@ Für die Pivottransformation sind drei verschiedene Eingaben erforderlich: „Na
 
 ### <a name="group-by"></a>Gruppieren nach
 
-![Gruppierungsoptionen](media/data-flow/pivot2.png "Gruppierungsoptionen")
+:::image type="content" source="media/data-flow/pivot2.png" alt-text="Gruppierungsoptionen":::
 
 Wählen Sie aus, über welche Spalten die pivotierten Spalten aggregiert werden sollen. Die Ausgabedaten gruppieren alle Zeilen mit denselben Werten für „Gruppieren nach“ in eine Zeile. Die in der pivotierten Spalte ausgeführte Aggregation erfolgt in jeder Gruppe.
 
@@ -39,7 +40,7 @@ Dieser Abschnitt ist optional. Wenn keine Gruppieren nach-Spalten ausgewählt we
 
 ### <a name="pivot-key"></a>Pivotschlüssel
 
-![Pivotschlüssel](media/data-flow/pivot3.png "Pivotschlüssel")
+:::image type="content" source="media/data-flow/pivot3.png" alt-text="Pivotschlüssel":::
 
 Der Pivotschlüssel ist die Spalte, deren Zeilenwerte in neue Spalten pivotiert werden. Standardmäßig erstellt die Pivottransformation eine neue Spalte für jeden eindeutigen Zeilenwert.
 
@@ -47,7 +48,7 @@ Im Abschnitt **Wert** können Sie bestimmte Zeilenwerte eingeben, die pivotiert 
 
 ### <a name="pivoted-columns"></a>Pivotierte Spalten
 
-![Pivotierte Spalten](media/data-flow/pivot4.png "Pivotierte Spalten")
+:::image type="content" source="media/data-flow/pivot4.png" alt-text="Pivotierte Spalten":::
 
 Generieren Sie für jeden eindeutigen Pivotschlüsselwert, der zu einer Spalte transformiert wird, einen aggregierten Zeilenwert für jede Gruppe. Sie können mehrere Spalten pro Pivotschlüssel erstellen. Jede Pivotspalte muss mindestens eine [Aggregatfunktion](data-flow-expression-functions.md#aggregate-functions) enthalten.
 
@@ -61,7 +62,7 @@ Generieren Sie für jeden eindeutigen Pivotschlüsselwert, der zu einer Spalte t
 
 Die folgende Hilfegrafik zeigt, wie die verschiedenen Pivotkomponenten miteinander interagieren:
 
-![Hilfegrafik für Pivotfunktion](media/data-flow/pivot5.png "Hilfegrafik für Pivotfunktion")
+:::image type="content" source="media/data-flow/pivot5.png" alt-text="Hilfegrafik für Pivotfunktion":::
 
 ## <a name="pivot-metadata"></a>Pivotmetadaten
 
@@ -73,7 +74,7 @@ Wenn bestimmte Pivotschlüsselwerte festgelegt wurden, werden die pivotierten Sp
 
 Pivot generiert neue Spaltennamen dynamisch basierend auf Zeilenwerten. Sie können diese neuen Spalten zu den Metadaten hinzufügen, auf die später im Datenfluss verwiesen werden kann. Verwenden Sie hierzu die Schnellaktion [Abweichende zuordnen](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action) in der Datenvorschau. 
 
-![Pivotspalten](media/data-flow/newpivot1.png "Zuordnen abweichender Pivotspalten")
+:::image type="content" source="media/data-flow/newpivot1.png" alt-text="Pivotspalten":::
 
 ### <a name="sinking-pivoted-columns"></a>Senken für pivotierte Spalten
 

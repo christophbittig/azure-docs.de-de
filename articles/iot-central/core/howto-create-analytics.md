@@ -1,18 +1,18 @@
 ---
 title: Analysieren von Gerätedaten in Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Analysieren Sie Gerätedaten in Ihrer Azure IoT Central-Anwendung.
-author: ankitscribbles
-ms.author: ankitgup
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/16/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2ee6c615556946fa3c28212bc3cf1917c4ef7f2f
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: ad16a831b22097e98bd02b606e3a6596cf4e48f5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343247"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810939"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Analysieren von Gerätedaten mithilfe von Analytics
 
@@ -22,7 +22,10 @@ Azure IoT Central bietet umfassende Analysefunktionen, mit denen Sie historische
 
 Die Benutzeroberfläche für Analysen enthält drei Hauptkomponenten:
 
-- **Datenkonfigurationsbereich:** Wählen Sie im Konfigurationsbereich zuerst die Gerätegruppe aus, bei der Sie die Daten analysieren möchten. Wählen Sie als Nächstes die Telemetriedaten, die Sie analysieren möchten, und dann die Aggregationsmethode für die einzelnen Telemetriedaten aus. Mithilfe des Steuerelements **Aufteilen nach** können Sie die Daten gruppieren und dazu die Geräteeigenschaften als Dimensionen verwenden.
+- **Datenkonfigurationsbereich:** Wählen Sie im Konfigurationsbereich zuerst die Gerätegruppe aus, bei der Sie die Daten analysieren möchten. Wählen Sie als Nächstes die Telemetriedaten, die Sie analysieren möchten, und dann die Aggregationsmethode für die einzelnen Telemetriedaten aus. Mit dem Steuerelement **Gruppieren nach** können Sie die Daten gruppieren, indem Sie die Geräteeigenschaften als Dimensionen verwenden.
+
+    > [!TIP]
+    > Wenn Ihr Gerät Organisationen verwendet, hängen die angezeigten Gerätegruppen von Ihrer Organisationsmitgliedschaft ab.
 
 - **Zeitsteuerelement:** Mithilfe des Zeitsteuerelements können Sie die Dauer auswählen, für die Sie die Daten analysieren möchten. Sie können eines der Enden des Schiebereglers ziehen, um den gewünschten Zeitraum auszuwählen. Das Zeitsteuerelement enthält auch den Schieberegler **Intervallgröße**, über den der Bucket oder die Intervallgröße zum Aggregieren der Daten gesteuert wird.
 
@@ -41,10 +44,10 @@ Wählen Sie zuerst eine **Gerätegruppe** und dann die Telemetriedaten aus, die 
     > [!NOTE]
     > Historische Datenpunkte werden nur angezeigt, wenn die Bedingungen der Abfrage erfüllt sind. Beispiel: Gestern wurde ein Gerät von **Vorlage1** auf **Vorlage2** aktualisiert. Wenn Sie heute Gerätegruppen mit Geräten des Typs **Vorlage1** abfragen, werden Gerätedaten von gestern und davor angezeigt. Wenn Sie Gerätegruppen mit Geräten des Typs **Vorlage2** abfragen, werden das Gerät und die Daten ab dem Zeitpunkt der Aktualisierung angezeigt.
 
-- **Aufteilen nach**: Mithilfe des Steuerelements **Aufteilen nach** können Sie die Daten gruppieren und dazu die Geräteeigenschaften als Dimensionen verwenden. Gerätetelemetrie und -eigenschaften werden mit Cloudeigenschaften kombiniert, wenn das Gerät Daten sendet. Wenn die Cloud- oder Geräteeigenschaft aktualisiert wird, werden die Telemetriedaten – nach verschiedenen Werten gruppiert – im Diagramm angezeigt.
+- **Gruppieren nach**: Mit dem Steuerelement **Gruppieren nach** können Sie die Daten gruppieren, indem Sie die Geräteeigenschaften als Dimensionen verwenden. Gerätetelemetrie und -eigenschaften werden mit Cloudeigenschaften kombiniert, wenn das Gerät Daten sendet. Wenn die Cloud- oder Geräteeigenschaft aktualisiert wird, werden die Telemetriedaten – nach verschiedenen Werten gruppiert – im Diagramm angezeigt.
 
     > [!TIP]
-    > Wenn Sie Daten für jedes Gerät getrennt anzeigen möchten, wählen Sie im Steuerelement **Aufteilen nach** die Option **Geräte-ID** aus.
+    > Wenn Sie die Daten für jedes Gerät getrennt anzeigen möchten, wählen Sie im Steuerelement **Gruppieren nach** die Option **Geräte-ID** aus.
 
 ## <a name="interact-with-your-data"></a>Interagieren Sie mit Ihren Daten
 
@@ -67,7 +70,7 @@ Nachdem Sie Ihre Daten abgefragt haben, können Sie sie im Liniendiagramm visual
   > [!TIP]
   > Die Intervallgröße wird – basierend auf dem ausgewählten Zeitraum – dynamisch bestimmt. Kleinere Zeiträume ermöglichen Ihnen eine Datenaggregation in sehr präzisen Intervallen von bis zu wenigen Sekunden.
 
-- **Diagrammlegende:** Die Diagrammlegende zeigt die ausgewählten Telemetriedaten im Diagramm. Zeigen Sie mit dem Mauszeiger auf ein Element in der Legende, um es im Diagramm zu fokussieren. Wenn Sie **Aufteilen nach** verwenden, werden die Telemetriedaten nach den Werten der ausgewählten Dimension gruppiert. Sie können die Sichtbarkeit jedes Telemetrietyps umschalten oder auf den Gruppennamen klicken, um die Gruppensichtbarkeit umzuschalten.  
+- **Diagrammlegende:** Die Diagrammlegende zeigt die ausgewählten Telemetriedaten im Diagramm. Zeigen Sie mit dem Mauszeiger auf ein Element in der Legende, um es im Diagramm zu fokussieren. Wenn Sie **Gruppieren nach** verwenden, werden die Telemetriedaten nach den Werten der ausgewählten Dimension gruppiert. Sie können die Sichtbarkeit jedes Telemetrietyps umschalten oder auf den Gruppennamen klicken, um die Gruppensichtbarkeit umzuschalten.  
 
 - **Steuerelement „y-Achsenformat“:** Der Modus „y-Achse“ durchläuft die verfügbaren Ansichtsoptionen für die y-Achse. Dieses Steuerelement steht nur zur Verfügung, wenn Sie mehrere Telemetrietypen visualisieren. Es gibt die folgenden drei Modi:
 

@@ -4,19 +4,21 @@ description: In dieser Schrittanleitung wird beschrieben, wie Sie die Klassifizi
 author: batamig
 ms.author: bagol
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 01/17/2021
-ms.openlocfilehash: 057d097eb66eddffc15bb65bfb9e6fb64209e5f8
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.date: 09/27/2021
+ms.openlocfilehash: 642611a680e0848208aa7e42493fee6fc16fb4d7
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397442"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208844"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Klassifizierungserkenntnisse zu Ihren Daten aus Azure Purview
 
 In dieser Schrittanleitung wird beschrieben, wie Sie auf Purview-Klassifizierungserkenntnisberichte für Ihre Daten zugreifen, sie anzeigen und filtern können.
+
+> [!IMPORTANT]
+> Azure Purview-Erkenntnisse befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
 Unterstützte Datenquellen: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure Synapse Analytics (ehemals SQL DW), Azure SQL-Datenbank, Azure SQL Managed Instance, SQL Server, Amazon S3 Buckets
 
@@ -33,11 +35,11 @@ Stellen Sie vor dem Beginn mit Purview-Erkenntnissen sicher, dass Sie die folgen
 
 - Einrichten Ihrer Azure-Ressourcen und Füllen der entsprechenden Konten mit Testdaten
 
-- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen. Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview (Vorschau)](manage-data-sources.md) und [Erstellen eines Überprüfungsregelsatzes](create-a-scan-rule-set.md).
+- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen. Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview](manage-data-sources.md) und [Erstellen eines Überprüfungsregelsatzes](create-a-scan-rule-set.md).
 
 - Anmeldung bei Purview mit einem Konto mit der Rolle [„Datenleser“ oder „Datenkurator“](catalog-permissions.md#roles)
 
-Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview (Vorschau)](manage-data-sources.md).
+Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview](manage-data-sources.md).
 
 ## <a name="use-purview-classification-insights"></a>Verwenden von Purview-Klassifizierungserkenntnissen
 
@@ -52,13 +54,13 @@ Für Purview werden die gleichen Arten von vertraulichen Informationen wie in Mi
 
 1. Wechseln Sie zum **Azure Purview**-[Instanzbildschirm im Azure-Portal](https://aka.ms/purviewportal), und wählen Sie Ihr Purview-Konto aus.
 
-1. Wählen Sie auf der Seite **Übersicht** im Abschnitt **Erste Schritte** die Kontokachel **Purview starten** aus.
+1. Wählen Sie auf der Seite **Übersicht** im Abschnitt **Erste Schritte** die Kachel zum **Purview Studio** aus.
 
 1. Wählen Sie in Purview das Menüelement **Erkenntnisse** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: auf der linken Seite aus, um auf Ihren **Erkenntnisse**-Bereich zuzugreifen.
 
 1. Im Bereich **Erkenntnisse** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: wählen Sie **Klassifizierung** aus, um den Bericht zu den Purview-**Klassifizierungserkenntnissen** anzuzeigen.
 
-   :::image type="content" source="./media/insights/select-classification-labeling-small.png" alt-text="Klassifizierungserkenntnisbericht" lightbox="media/insights/select-classification-labeling.png":::
+   :::image type="content" source="./media/insights/select-classification-labeling.png" alt-text="Klassifizierungserkenntnisbericht" lightbox="media/insights/select-classification-labeling.png":::
 
    Die Hauptseite für **Klassifizierungserkenntnisse** zeigt die folgenden Bereiche an:
 
@@ -83,11 +85,11 @@ Wählen Sie in einer der folgenden Graphen zu **Klassifizierungserkenntnissen** 
 
 Beispiel:
 
-:::image type="content" source="media/insights/view-classifications-small.png" alt-text="Alle Klassifizierungen anzeigen" lightbox="media/insights/view-classifications.png":::
+:::image type="content" source="media/insights/view-classifications-small.png" alt-text="Alle Klassifizierungen anzeigen":::
 
 Führen Sie einen der folgenden Schritte aus, um weitere Informationen zu erhalten:
 
-|Option  |BESCHREIBUNG  |
+|Option  |Beschreibung  |
 |---------|---------|
 |**Filtern der Daten**     |  Verwenden Sie die Filter oberhalb des Rasters, um die angezeigten Daten zu filtern, einschließlich des Klassifizierungsnamens, des Abonnementnamens oder des Quellentyps. <br><br>Wenn Sie sich bezüglich des genauen Klassifizierungsnamens nicht sicher sind, können Sie einen Teil oder den ganzen Namen in das Feld **Nach Schlüsselwort filtern** eingeben.       |
 |**Sortieren des Rasters** |Wählen Sie einen Spaltenheader aus, um das Raster nach dieser Spalte zu sortieren. | 

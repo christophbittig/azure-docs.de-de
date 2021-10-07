@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie das erforderliche Netzwerk zum Bereitste
 ms.topic: tutorial
 ms.custom: contperf-fy22q1
 ms.date: 07/30/2021
-ms.openlocfilehash: 61a1c1c45455c9edc402aca1e5471f3ed95a8d66
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 99389c55ab13b6c6c181a4d7d1bcf14c3b8ba08d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069553"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597795"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure
 
@@ -27,8 +27,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 >[!NOTE]
 >Bevor Sie ein neues vNet erstellen, prüfen Sie, ob Sie bereits über ein vorhandenes vNet in Azure verfügen, das Sie zum Herstellen einer Verbindung mit Azure VMware Solution verwenden können, oder ob Sie ein neues vNet erstellen müssen.  
->* Um ein vorhandenes vNet zu verwenden, nutzen Sie unter **Konnektivität** die Registerkarte **[Azure vNet-Verbindung](#select-an-existing-vnet)** . 
->* Zum Erstellen eines neuen vNet verwenden Sie die Registerkarte **[Azure vNet-Verbindung](#create-a-new-vnet)** , oder erstellen Sie [manuell](#create-a-vnet-manually) ein vNet.
+>* Wenn Sie ein vorhandenes VNet im gleichen Azure-Abonnement wie Azure VMware Solution nutzen möchten, verwenden Sie die Registerkarte **[Azure vNet-Verbindung](#select-an-existing-vnet)** unter **Konnektivität**. 
+>* Wenn Sie ein vorhandenes VNet in einem anderen Azure-Abonnement als Azure VMware Solution nutzen möchten, verwenden Sie den Leitfaden unter **[Manuelles Herstellen einer Verbindung mit der privaten Cloud](#connect-to-the-private-cloud-manually)** . 
+>* Wenn Sie ein neues VNet im gleichen Azure-Abonnement wie Azure VMware Solution nutzen möchten, verwenden Sie die Registerkarte **[Azure vNet-Verbindung](#create-a-new-vnet)** , oder erstellen Sie [manuell](#create-a-vnet-manually) ein VNet.
 
 ## <a name="connect-with-the-azure-vnet-connect-feature"></a>Herstellen einer Verbindung mit dem Feature „Azure vNet-Verbindung“
 

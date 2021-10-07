@@ -1,19 +1,20 @@
 ---
-title: Aktivieren der reinen Azure Active Directory-Authentifizierung mit Azure SQL
+title: Aktivieren der reinen Azure Active Directory-Authentifizierung
 description: Dieser Artikel beschreibt die Vorgehensweise zur Aktivierung der reinen Azure AD-Authentifizierung (Azure Active Directory) mit Azure SQL-Datenbank und Azure SQL Managed Instance.
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 ms.service: sql-db-mi
 ms.subservice: security
 ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 06/30/2021
-ms.openlocfilehash: 6ea0da3b8a6ddcc2f41bd9e779742f3e2d9cbe4d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 08/31/2021
+ms.openlocfilehash: 76425e37c83ea5ac44653e20753e35606b89d370
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470761"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643230"
 ---
 # <a name="tutorial-enable-azure-active-directory-only-authentication-with-azure-sql"></a>Tutorial: Aktivieren der reinen Azure Active Directory-Authentifizierung mit Azure SQL
 
@@ -184,7 +185,7 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer **SQL Serve
 
 # <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
-Diese Befehle können verwendet werden, um zu überprüfen, ob die reine Azure AD-Authentifizierung für den logischen Server Ihrer SQL-Datenbank oder für Ihre verwaltete SQL-Instanz aktiviert ist. Mitglieder mit den Rollen [SQL Server-Mitwirkender](../../role-based-access-control/built-in-roles.md#sql-server-contributor) und [SQL Managed Instance-Mitwirkender](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) können diese Befehle verwenden, um den Status der reinen Azure AD-Authentifizierung zu überprüfen. Sie können die Funktion allerdings nicht aktivieren oder deaktivieren.
+Mit diesen Befehlen kann überprüft werden, ob die reine Azure AD-Authentifizierung für den [logischen Server](logical-servers.md) für Azure SQL-Datenbank oder SQL Managed Instance aktiviert ist. Mitglieder mit den Rollen [SQL Server-Mitwirkender](../../role-based-access-control/built-in-roles.md#sql-server-contributor) und [SQL Managed Instance-Mitwirkender](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) können diese Befehle verwenden, um den Status der reinen Azure AD-Authentifizierung zu überprüfen. Sie können die Funktion allerdings nicht aktivieren oder deaktivieren.
 
 ## <a name="check-status-in-sql-database"></a>Überprüfen des Status in SQL-Datenbank
 
@@ -240,7 +241,7 @@ Diese Befehle können verwendet werden, um zu überprüfen, ob die reine Azure A
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Diese Befehle können verwendet werden, um zu überprüfen, ob die reine Azure AD-Authentifizierung für den logischen Server Ihrer SQL-Datenbank oder für Ihre verwaltete SQL-Instanz aktiviert ist. Mitglieder mit den Rollen [SQL Server-Mitwirkender](../../role-based-access-control/built-in-roles.md#sql-server-contributor) und [SQL Managed Instance-Mitwirkender](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) können diese Befehle verwenden, um den Status der reinen Azure AD-Authentifizierung zu überprüfen. Sie können die Funktion allerdings nicht aktivieren oder deaktivieren.
+Mit diesen Befehlen kann überprüft werden, ob die reine Azure AD-Authentifizierung für den [logischen Server](logical-servers.md) für Azure SQL-Datenbank oder SQL Managed Instance aktiviert ist. Mitglieder mit den Rollen [SQL Server-Mitwirkender](../../role-based-access-control/built-in-roles.md#sql-server-contributor) und [SQL Managed Instance-Mitwirkender](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) können diese Befehle verwenden, um den Status der reinen Azure AD-Authentifizierung zu überprüfen. Sie können die Funktion allerdings nicht aktivieren oder deaktivieren.
 
 Der Status gibt **True** zurück, wenn die Funktion aktiviert ist, und **False**, wenn sie deaktiviert ist.
 
@@ -401,3 +402,4 @@ Nachdem Sie die reine Azure AD-Authentifizierung deaktiviert haben, testen Sie, 
 
 - [Reine Azure AD-Authentifizierung mit Azure SQL](authentication-azure-ad-only-authentication.md)
 - [Erstellen eines Servers mit aktivierter reiner Azure AD-Authentifizierung in Azure SQL](authentication-azure-ad-only-authentication-create-server.md)
+- [Verwenden von Azure Policy zur Erzwingung der reinen Azure Active Directory-Authentifizierung mit Azure SQL](authentication-azure-ad-only-authentication-policy-how-to.md)
