@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 20d5dc867455d46cd7f06f7c436c20430a09b1e5
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: b52f599dd3430f963b03b5fdba41f71abf11ee43
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486210"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707660"
 ---
 # <a name="visualize-data"></a>Visualisieren von Daten
 Azure Synapse ist ein integrierter Analysedienst zur schnelleren Gewinnung von Erkenntnissen aus Data Warehouses und Big Data-Analysesystemen. Die Datenvisualisierung ist eine Schlüsselkomponente, um Erkenntnisse über Ihre Daten gewinnen zu können. Sie hilft, sowohl Big Data als auch kleine Datenmengen für den Menschen verständlicher zu gestalten. Sie erleichtert auch die Erkennung von Mustern, Trends und Ausreißern in Datengruppen. 
@@ -53,7 +53,7 @@ So greifen Sie auf die Diagrammoptionen zu
 Sie können <code>display(df, summary = true)</code> verwenden, um die statistische Zusammenfassung eines jeweiligen Apache Spark-Datenrahmens zu überprüfen, dazu gehören Spaltennamen, Spaltentypen, eindeutige Werte und fehlende Werte für jede Spalte. Sie können auch eine bestimmte Spalte auswählen, um ihren Mindestwert, Höchstwert, Durchschnittswert und die Standardabweichung anzuzeigen.
     ![built-in-charts-summary](./media/apache-spark-development-using-notebooks/synapse-built-in-charts-summary.png#lightbox)
    
-### <a name="displayhtmldf-option"></a>displayHTML(df): Option
+### <a name="displayhtml-option"></a>displayHTML(): Option
 Azure Synapse Analytics-Notebooks unterstützen HTML-Grafiken mithilfe der Funktion ```displayHTML```.
 
 Die folgende Abbildung ist ein Beispiel für das Erstellen von Visualisierungen mithilfe von [D3.js](https://d3js.org/).
@@ -254,14 +254,30 @@ h = plotly.offline.plot(fig, output_type='div')
 # display this html
 displayHTML(h)
 ```
+### <a name="pandas"></a>Pandas
+
+Sie können die HTML-Ausgabe des Pandas-Datenrahmens als Standardausgabe anzeigen. Notebook zeigt den formatierten HTML-Inhalt automatisch an. 
+
+   ![Beispiel für einen Panda-Graphen.](./media/apache-spark-data-viz/support-panda.png#lightbox)
+
+```python
+import pandas as pd 
+import numpy as np 
+
+df = pd.DataFrame([[38.0, 2.0, 18.0, 22.0, 21, np.nan],[19, 439, 6, 452, 226,232]], 
+
+                  index=pd.Index(['Tumour (Positive)', 'Non-Tumour (Negative)'], name='Actual Label:'), 
+
+                  columns=pd.MultiIndex.from_product([['Decision Tree', 'Regression', 'Random'],['Tumour', 'Non-Tumour']], names=['Model:', 'Predicted:'])) 
+
+df 
+```
 
 
 ### <a name="additional-libraries"></a>Weitere Bibliotheken 
 Über diese Bibliotheken hinaus enthält die Azure Synapse Analytics-Runtime auch den folgenden Satz von Bibliotheken, die häufig für die Visualisierung von Daten verwendet werden:
-- [Matplotlib](https://matplotlib.org/)
-- [Bokeh](https://bokeh.org/)
+
 - [Seaborn](https://seaborn.pydata.org/) 
-- [Plotly](https://plotly.com/)
 
 Die aktuellsten Informationen zu den verfügbaren Bibliotheken und Versionen finden Sie in der [Dokumentation](./spark/../apache-spark-version-support.md) zur Azure Synapse Analytics-Runtime.
 

@@ -1,24 +1,26 @@
 ---
 title: Auswählen von Transformationen im Zuordnungsdatenfluss
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 'Azure Data Factory Mapping Data Flow: Auswahltransformation'
+description: Hier erfahren Sie mehr über die Auswahltransformation im Zuordnungsdatenfluss in Azure Data Factory- und Synapse Analytics-Pipelines.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 06/02/2020
-ms.openlocfilehash: 073299ee4c42ec43f71b16ecaa6499cd7c16f55f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 47965d920738a8b0a20ac33446224af84041aa0c
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639837"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061616"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Auswählen von Transformationen im Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 Verwenden Sie die Auswahltransformation, um Spalten umzubenennen, zu löschen oder neu anzuordnen. Diese Transformation ändert keine Zeilendaten, sondern wählt aus, welche Spalten nachgelagert weitergegeben werden. 
 
@@ -28,7 +30,7 @@ Bei einer Auswahltransformation können Benutzer feste Zuordnungen festlegen, Mu
 
 Wenn in Ihrer Projektion weniger als 50 Spalten definiert sind, haben alle definierten Spalten standardmäßig eine feste Zuordnung. Eine feste Zuordnung verwendet eine definierte, eingehende Spalte und ordnet ihr einen genauen Namen zu.
 
-![Feste Zuordnung](media/data-flow/fixedmapping.png "Feste Zuordnung")
+:::image type="content" source="media/data-flow/fixedmapping.png" alt-text="Feste Zuordnung":::
 
 > [!NOTE]
 > Sie können eine abweichende Spalte nicht mithilfe einer festen Zuordnung zuordnen oder umbenennen.
@@ -37,7 +39,7 @@ Wenn in Ihrer Projektion weniger als 50 Spalten definiert sind, haben alle defi
 
 Feste Zuordnungen können verwendet werden, um eine Unterspalte einer hierarchischen Spalte einer Spalte der obersten Ebene zuzuordnen. Wenn es eine festgelegte Hierarchie gibt, verwenden Sie die Dropdownliste „Spalte“, um eine Unterspalte auszuwählen. Die Auswahltransformation erstellt eine neue Spalte mit dem Wert und Datentyp der Unterspalte.
 
-![Hierarchische Zuordnung](media/data-flow/select-hierarchy.png "Hierarchische Zuordnung")
+:::image type="content" source="media/data-flow/select-hierarchy.png" alt-text="Hierarchische Zuordnung":::
 
 ## <a name="rule-based-mapping"></a>Regelbasierte Zuordnung
 
@@ -48,11 +50,11 @@ Wenn Sie viele Spalten auf einmal zuordnen oder abweichende Spalten nachgeschalt
 
 Klicken Sie zum Hinzufügen einer regelbasierten Zuordnung auf **Zuordnung hinzufügen**, und wählen Sie **Rule-based mapping** (Regelbasierte Zuordnung) aus.
 
-![Screenshot: Ausgewählte regelbasierte Zuordnung unter „Zuordnung hinzufügen“](media/data-flow/rule2.png "Regelbasierte Zuordnung")
+:::image type="content" source="media/data-flow/rule2.png" alt-text="Screenshot: Ausgewählte regelbasierte Zuordnung unter „Zuordnung hinzufügen“":::
 
 Jede regelbasierte Zuordnung erfordert zwei Eingaben: die Bedingung, gemäß der der Abgleich auf Übereinstimmung erfolgen soll, und den Namen jeder zugeordneten Spalte. Beide Werte werden über den [Ausdrucks-Generator](concepts-data-flow-expression-builder.md) eingegeben. Geben Sie im linken Ausdrucksfeld Ihre boolesche Übereinstimmungsbedingung ein. Geben Sie im rechten Ausdrucksfeld das Zuordnungsziel für die übereinstimmende Spalte an.
 
-![Screenshot: Eine Zuordnung](media/data-flow/rule-based-mapping.png "Regelbasierte Zuordnung")
+:::image type="content" source="media/data-flow/rule-based-mapping.png" alt-text="Screenshot: Eine Zuordnung":::
 
 Verwenden Sie die `$$`-Syntax, um auf den eingegebenen Namen einer übereinstimmenden Spalte zu verweisen. Nehmen wir das obige Bild als Beispiel: Ein Benutzer wünscht einen Abgleich auf Übereinstimmung aller Zeichenfolgenspalten, deren Namen kürzer als sechs Zeichen sind. Wenn eine eingehende Spalte mit`test` benannt wurde, wird die Spalte durch den Ausdruck `$$ + '_short'` in `test_short` umbenannt. Wenn dies die einzige vorhandene Zuordnung ist, werden alle Spalten, die die Bedingung nicht erfüllen, aus den ausgegebenen Daten entfernt.
 
@@ -62,7 +64,7 @@ Muster stimmen sowohl mit abweichenden als auch definierten Spalten überein. Um
 
 Wenn Sie auf das nach unten zeigende Chevronsymbol klicken, können Sie eine RegEx-Zuordnungsbedingung angeben. Eine RegEx-Zuordnungsbedingung gleicht alle Spaltennamen ab, die der angegebenen RegEx-Bedingung entsprechen. Sie kann in Kombination mit standardmäßigen regelbasierten Zuordnungen verwendet werden.
 
-![Screenshot: RegEx-Zuordnungsbedingung mit Hierarchieebene und Namensübereinstimmung](media/data-flow/regex-matching.png "Regelbasierte Zuordnung")
+:::image type="content" source="media/data-flow/regex-matching.png" alt-text="Screenshot: RegEx-Zuordnungsbedingung mit Hierarchieebene und Namensübereinstimmung":::
 
 Das obige Beispiel stimmt mit dem RegEx-Muster `(r)` oder einem beliebigen Spaltennamen überein, der den Kleinbuchstaben r enthält. Ähnlich wie bei der standardmäßigen regelbasierten Zuordnung werden alle übereinstimmenden Spalten von der Bedingung auf der rechten Seite mithilfe von `$$`-Syntax geändert.
 
@@ -72,7 +74,7 @@ Wenn es mehrere RegEx-Übereinstimmungen in Ihrem Spaltennamen gibt, können Sie
 
 Wenn Ihre definierte Projektion eine Hierarchie hat, können Sie die regelbasierte Zuordnung verwenden, um die Unterspalten der Hierarchie zuzuordnen. Geben Sie eine Übereinstimmungsbedingung und die komplexe Spalte an, deren Unterspalten Sie zuordnen möchten. Jede übereinstimmende Unterspalte wird mithilfe der rechts angegebenen Regel „Name as“ (Benennen als) ausgegeben.
 
-![Screenshot: Regelbasierte Zuordnung für eine Hierarchie](media/data-flow/rule-based-hierarchy.png "Regelbasierte Zuordnung")
+:::image type="content" source="media/data-flow/rule-based-hierarchy.png" alt-text="Screenshot: Regelbasierte Zuordnung für eine Hierarchie":::
 
 Das obige Beispiel stimmt mit allen Unterspalten der komplexen Spalte `a` überein. `a` enthält die beiden Unterspalten `b` und `c`. Das Ausgabeschema weist die beiden Spalten `b` und `c` auf, da die Bedingung „Name as“ `$$` ist.
 
@@ -84,7 +86,7 @@ Sie können Spaltennamen mithilfe einer regelbasierten Zuordnung parametrisieren
 
 Beim Hinzufügen einer Auswahltransformation kann **Auto mapping** (Automatische Zuordnung) durch Umschalten des Schiebereglers für die automatische Zuordnung aktiviert werden. Bei der automatischen Zuordnung ordnet die Auswahltransformation alle eingehenden Spalten, mit Ausnahme von Duplikaten, mit dem ihrer Eingabe entsprechenden Namen zu. Dies schließt abweichende Spalten ein, was bedeutet, dass die Ausgabedaten Spalten enthalten können, die in Ihrem Schema nicht definiert sind. Weitere Informationen zu abweichenden Spalten finden Sie unter [Schemaabweichung](concepts-data-flow-schema-drift.md).
 
-![Automatische Zuordnung](media/data-flow/automap.png "Automatische Zuordnung")
+:::image type="content" source="media/data-flow/automap.png" alt-text="Automatische Zuordnung":::
 
 Bei aktivierter automatischer Zuordnung berücksichtigt die Auswahltransformation die Einstellungen für das Überspringen von Duplikaten und bietet einen neuen Alias für die vorhandenen Spalten. Aliasing ist nützlich, wenn mehrere Verknüpfungs- oder Nachschlagevorgänge für denselben Datenstrom und in Selbstverknüpfungsszenarien erfolgen. 
 
@@ -92,7 +94,7 @@ Bei aktivierter automatischer Zuordnung berücksichtigt die Auswahltransformatio
 
 Standardmäßig löscht die Auswahltransformation duplizierte Spalten sowohl in der Eingabe- als auch in der Ausgabeprojektion. Duplizierte Eingabespalten stammen oft aus Verknüpfungs- und Nachschlagetransformationen, bei denen die Spaltennamen auf jeder Seite der Verknüpfung dupliziert werden. Duplizierte Ausgabespalten können auftreten, wenn Sie zwei verschiedene Eingabespalten demselben Namen zuordnen. Wählen Sie durch Umschalten des Kontrollkästchens, ob duplizierte Spalten gelöscht oder weitergegeben werden sollen.
 
-![Überspringen von Duplikaten](media/data-flow/select-skip-dup.png "Überspringen von Duplikaten")
+:::image type="content" source="media/data-flow/select-skip-dup.png" alt-text="Überspringen von Duplikaten":::
 
 ## <a name="ordering-of-columns"></a>Anordnen von Spalten
 
@@ -119,7 +121,7 @@ Die Reihenfolge der Zuordnungen bestimmt die Reihenfolge der Ausgabespalten. Wen
 
 Es folgen ein Beispiel für ein Auswahlzuordnung und das zugehörige Datenflussskript:
 
-![Beispiel eines Auswahlskripts](media/data-flow/select-script-example.png "Beispiel eines Auswahlskripts")
+:::image type="content" source="media/data-flow/select-script-example.png" alt-text="Beispiel eines Auswahlskripts":::
 
 ```
 DerivedColumn1 select(mapColumn(

@@ -2,14 +2,14 @@
 title: Verschlüsseln der Registrierung mithilfe eines kundenseitig verwalteten Schlüssels
 description: Erfahren Sie mehr über die Verschlüsselung ruhender Daten Ihrer Azure Container Registry und wie Sie Ihre Premium-Registrierung mit einem kundenseitig verwalteten Schlüssel verschlüsseln, der in Azure Key Vault gespeichert ist.
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 09/13/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 399b1940ff3d87fa862e234948742a35d814f558
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: a5fd3140474b1d6d7c36d686c14f2dc4e6a9ef73
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634901"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561601"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Verschlüsseln der Registrierung mithilfe eines kundenseitig verwalteten Schlüssels
 
@@ -564,6 +564,12 @@ Wenn dieses Problem mit einer systemseitig zugewiesenen Identität auftritt, [er
 Wenn Sie nach dem Erstellen einer verschlüsselten Registrierung eine Key Vault-Firewall oder ein virtuelles Netzwerk aktivieren, werden möglicherweise HTTP 403- oder andere Fehler beim Imageimport oder der automatisierten Schlüsselrotation angezeigt. Um dieses Problem zu beheben, konfigurieren Sie die verwaltete Identität und den Schlüssel neu, die Sie ursprünglich für die Verschlüsselung verwendet haben. Die Schritte hierzu finden Sie unter [Rotieren von Schlüsseln](#rotate-key). 
 
 Wenn das Problem weiterhin besteht, wenden Sie sich an den Azure-Support.
+
+### <a name="accidental-deletion-of-key-vault-or-key"></a>Versehentliches Löschen des Schlüsseltresors oder Schlüssels
+
+Wenn Sie den Schlüsseltresor oder den Schlüssel löschen, der zum Verschlüsseln einer Registrierung mit einem kundenseitig verwalteten Schlüssel verwendet wird, kann nicht auf den Inhalt der Registrierung zugegriffen werden. Wenn das [vorläufige Löschen](../key-vault/general/soft-delete-overview.md) im Schlüsseltresor aktiviert ist (Standardoption), können Sie einen gelöschten Tresor oder ein Schlüsseltresorobjekt wiederherstellen und Registrierungsvorgänge fortsetzen.
+
+Informationen zum Löschen und Wiederherstellen von Schlüsseltresoren finden Sie unter [Azure Key Vault-Wiederherstellungsverwaltung mit Schutz durch vorläufiges Löschen und Bereinigungsschutz](../key-vault/general/key-vault-recovery.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

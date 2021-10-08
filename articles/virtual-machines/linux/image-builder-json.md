@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 703c2023103d9225e5dfad5bd0d288164350122f
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: d10c64af28f6b8dacdbc28d7d29c691fe50580e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450339"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569331"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Erstellen einer Azure Image Builder-Vorlage 
 
@@ -25,32 +25,31 @@ Azure Image Builder verwendet eine JSON-Datei, um Informationen an den Image Bui
 Das grundlegende Format der Vorlage:
 
 ```json
- { 
+  { 
     "type": "Microsoft.VirtualMachineImages/imageTemplates", 
     "apiVersion": "2020-02-14", 
     "location": "<region>", 
     "tags": {
-        "<name": "<value>",
-        "<name>": "<value>"
-     },
-    "identity":{},           
+      "<name>": "<value>",
+      "<name>": "<value>"
+    },
+    "identity": {},          
     "dependsOn": [], 
     "properties": { 
-        "buildTimeoutInMinutes": <minutes>, 
-        "vmProfile": 
-            {
-            "vmSize": "<vmSize>",
+      "buildTimeoutInMinutes": <minutes>, 
+      "vmProfile": {
+        "vmSize": "<vmSize>",
         "proxyVmSize": "<vmSize>",
-            "osDiskSizeGB": <sizeInGB>,
-            "vnetConfig": {
-                "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
-                }
-            },
-        "source": {}, 
-        "customize": {}, 
-        "distribute": {} 
-      } 
- } 
+        "osDiskSizeGB": <sizeInGB>,
+        "vnetConfig": {
+          "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+        }
+      },
+      "source": {}, 
+      "customize": {}, 
+      "distribute": {} 
+    } 
+  } 
 ```
 
 
@@ -143,11 +142,11 @@ Erforderlich: Damit Image Builder die Berechtigung zum Lesen/Schreiben von Image
 
 ```json
     "identity": {
-    "type": "UserAssigned",
-          "userAssignedIdentities": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
             "<imgBuilderId>": {}
         }
-        },
+    },
 ```
 
 
@@ -177,10 +176,10 @@ Azure Image Builder unterstützt Windows Server- und -Client- sowie Azure Market
 ```json
         "source": {
             "type": "PlatformImage",
-                "publisher": "Canonical",
-                "offer": "UbuntuServer",
-                "sku": "18.04-LTS",
-                "version": "latest"
+            "publisher": "Canonical",
+            "offer": "UbuntuServer",
+            "sku": "18.04-LTS",
+            "version": "latest"
         },
 ```
 
@@ -218,7 +217,7 @@ Hiermit wird ein vorhandenes verwaltetes Image einer generalisierten VHD oder VM
 ```json
         "source": { 
             "type": "ManagedImage", 
-                "imageId": "/subscriptions/<subscriptionId>/resourceGroups/{destinationResourceGroupName}/providers/Microsoft.Compute/images/<imageName>"
+            "imageId": "/subscriptions/<subscriptionId>/resourceGroups/{destinationResourceGroupName}/providers/Microsoft.Compute/images/<imageName>"
         }
 ```
 
@@ -236,7 +235,7 @@ Hiermit wird eine vorhandene Imageversion aus einem Katalog mit freigegebenen Im
         "source": { 
             "type": "SharedImageVersion", 
             "imageVersionID": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/p  roviders/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageDefinitionName/versions/<imageVersion>" 
-   } 
+        } 
 ```
 
 `imageVersionId` sollte dem ResourceId-Wert der Imageversion entsprechen. Verwenden Sie den Befehl [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list), um die Imageversionen aufzulisten.
@@ -308,13 +307,13 @@ Die Shellanpassung unterstützt die Ausführung von Shellskripts. Die Shellskrip
             "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
-        "customize": [ 
+    "customize": [ 
         { 
             "type": "Shell", 
             "name": "<name>", 
             "inline": "<commands to run>"
-        }, 
-    ], 
+    }, 
+    ],
 ```
 
 Betriebssystemunterstützung: Linux 
@@ -397,7 +396,7 @@ Die Shellanpassung unterstützt das Ausführen von PowerShell-Skripts und Inline
              "validExitCodes": "<exit code>",
              "runElevated": "<true or false>" 
          } 
-    ], 
+     ], 
 ```
 
 Betriebssystemunterstützung: Windows und Linux
@@ -455,16 +454,16 @@ Diese Anpassung basiert auf dem [Community Windows Update Provisioner](https://p
 
 ```json
      "customize": [
-            {
-                "type": "WindowsUpdate",
-                "searchCriteria": "IsInstalled=0",
-                "filters": [
+          {
+               "type": "WindowsUpdate",
+               "searchCriteria": "IsInstalled=0",
+               "filters": [
                     "exclude:$_.Title -like '*Preview*'",
                     "include:$true"
-                            ],
-                "updateLimit": 20
-            }
-               ], 
+               ],
+               "updateLimit": 20
+          }
+     ], 
 ```
 
 Betriebssystemunterstützung: Windows
@@ -580,7 +579,7 @@ Die Imageausgabe ist eine verwaltete Imageressource.
        "location": "<region>",
        "runOutputName": "<name>",
        "artifactTags": {
-            "<name": "<value>",
+            "<name>": "<value>",
             "<name>": "<value>"
         }
 }
@@ -653,7 +652,7 @@ Sie können die Ausgabe in einer VHD erstellen. Anschließend können Sie die VH
     "type": "VHD",
     "runOutputName": "<VHD name>",
     "tags": {
-        "<name": "<value>",
+        "<name>": "<value>",
         "<name>": "<value>"
     }
 }

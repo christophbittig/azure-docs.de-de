@@ -6,13 +6,13 @@ ms.author: danlep
 ms.topic: how-to
 ms.custom: subject-monitoring
 ms.service: container-registry
-ms.date: 03/19/2021
-ms.openlocfilehash: 1b7f8a13a7d372fe67e5ca7c235febfa52294432
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.date: 08/13/2021
+ms.openlocfilehash: ff82571b791f20cf46150be06e583af29f13dbd5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294945"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586966"
 ---
 # <a name="monitor-azure-container-registry"></a>Überwachen von Azure Container Registry
 
@@ -20,7 +20,7 @@ Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfüge
 
 ## <a name="monitor-overview"></a>Azure Monitor: Übersicht
 
-Die Seite **Übersicht** im Azure-Portal enthält für jede Registrierung eine kurze Übersicht über die aktuelle Ressourcennutzung und -aktivität, z. B. Push- und Pullvorgänge. Diese allgemeinen Informationen sind nützliche, doch wird hier nur ein kleiner Teil der Überwachungsdaten angezeigt. 
+Die Seite **Übersicht** im Azure-Portal enthält für jede Registrierung eine kurze Übersicht über die aktuelle Ressourcennutzung und -aktivität, z. B. Push- und Pullvorgänge. Diese allgemeinen Informationen sind nützlich, doch wird hier nur eine kleine Menge Daten angezeigt. 
 
 :::image type="content" source="media/monitor-service/metrics-overview.png" alt-text="Übersicht über Registrierungsmetriken"::: 
 
@@ -55,7 +55,7 @@ Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Az
 > [!TIP]
 > Sie können Diagnoseeinstellungen für eine Registrierung auch erstellen, indem Sie im Portal zu Ihrer Registrierung navigieren. Wählen Sie im Menü unter **Überwachung** die Option **Diagnoseeinstellungen** aus.
 
-Die folgende Abbildung zeigt die Optionen, wenn Sie Diagnoseeinstellungen für eine Registrierung aktivieren.
+Die folgende Abbildung zeigt die Möglichkeiten, die Sie haben, wenn Sie Diagnoseeinstellungen für eine Registrierung aktivieren.
 
 :::image type="content" source="media/monitor-service/diagnostic-settings.png" alt-text="Diagnoseeinstellungen für Container Registry":::
 
@@ -76,7 +76,6 @@ Sie können zur Referenz auf eine Liste [aller in Azure Monitor unterstützter R
 
 Mit den folgenden Azure CLI-Befehlen können Informationen zu den Metriken von Azure Container Registry abgerufen werden.
 
-* [az acr show-usage](/cli/azure/acr/#az_acr_show_usage): Anzeigen des aktuell von Azure Container Registry verwendeten Speichers
 * [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az_monitor_metrics_list_definitions): Auflisten von Metrikdefinitionen und -dimensionen
 * [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list): Abrufen von Metrikwerten
 
@@ -208,3 +207,4 @@ In der folgenden Tabelle sind allgemeine und empfohlene Warnungsregeln für Azur
 
 - Eine Referenz zu den Metriken, Protokollen und anderen wichtigen Werten, die von Azure Container Registry erstellt werden, finden Sie in der [Referenz zu Azure Container Registry-Überwachungsdaten](monitor-service-reference.md).
 - Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/essentials/monitor-azure-resource.md).
+- Siehe [Registrierungsbenutzung zeigen](container-registry-skus.md#show-registry-usage), um zu erfahren, wie Sie eine Momentaufnahme der Speicherauslastung und des Ressourcenverbrauchs in Ihrer Registrierung erhalten.

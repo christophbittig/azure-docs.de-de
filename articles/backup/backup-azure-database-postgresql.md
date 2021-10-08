@@ -2,14 +2,14 @@
 title: Sichern von Azure Database for PostgreSQL
 description: Weitere Informationen zur Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 09/06/2021
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 8c3540ee686eb69304f95e31126a1a29a48aeea8
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 1896f836d9eeb2f4d32e4b0784424837a2f80d0c
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213901"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081831"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 
@@ -67,7 +67,7 @@ Azure Backup hält strikte Sicherheitsrichtlinien ein. Obwohl es sich um einen n
 
 8. Wenn die Datenübertragung abgeschlossen ist, bestätigt der Koordinator den Commit mit dem Sicherungsdienst.
 
-    ![Sicherungsprozess](./media/backup-azure-database-postgresql/backup-process.png)
+    ![Sicherungsprozess](./media/backup-azure-database-postgresql-overview/backup-process.png)
 
 ## <a name="configure-backup-on-azure-postgresql-databases"></a>Konfigurieren der Sicherung für Azure PostgreSQL-Datenbanken
 
@@ -162,21 +162,22 @@ Sie können eine Datenbank auf jedem beliebigen Azure PostgreSQL-Server innerhal
 Führen Sie diese Schrittanleitung aus, um eine Wiederherstellung auszulösen:
 
 1. Es gibt zwei Möglichkeiten, den Wiederherstellungsvorgang zu starten:
-    1. Wechseln Sie zu [Backup Center](backup-center-overview.md) -> **Übersicht** -> **Wiederherstellen**.
 
-    ![Auswählen von „Wiederherstellen“ in Backup Center](./media/backup-azure-database-postgresql/backup-center-restore.png)
+   1. Wechseln Sie zu [Backup Center](backup-center-overview.md) -> **Übersicht** -> **Wiederherstellen**.
 
-    Wählen Sie unter **Initiieren: Wiederherstellen** als **Datenquellentyp** die Option **Azure Database for PostgreSQL** aus. Wählen Sie die **Sicherungsinstanz** aus.
+      ![Auswählen von „Wiederherstellen“ in Backup Center](./media/backup-azure-database-postgresql/backup-center-restore.png)
 
-    ![Auswählen des Datenquellentyps unter „Initiieren: Wiederherstellen“](./media/backup-azure-database-postgresql/initiate-restore.png)
+      Wählen Sie unter **Initiieren: Wiederherstellen** als **Datenquellentyp** die Option **Azure Database for PostgreSQL** aus. Wählen Sie die **Sicherungsinstanz** aus.
 
-    1. Alternativ können Sie direkt zu **Sicherungstresor** -> **Sicherungsinstanzen** wechseln. Wählen Sie **Sicherungsinstanz** entsprechend der Datenbank aus, die Sie wiederherstellen möchten.
+      ![Auswählen des Datenquellentyps unter „Initiieren: Wiederherstellen“](./media/backup-azure-database-postgresql/initiate-restore.png)
 
-    ![Sicherungsinstanzen für die Wiederherstellung](./media/backup-azure-database-postgresql/backup-instances-restore.png)
+   1. Alternativ können Sie direkt zu **Sicherungstresor** -> **Sicherungsinstanzen** wechseln. Wählen Sie **Sicherungsinstanz** entsprechend der Datenbank aus, die Sie wiederherstellen möchten.
 
-    ![Liste der Sicherungsinstanzen](./media/backup-azure-database-postgresql/list-backup-instances.png)
+      ![Sicherungsinstanzen für die Wiederherstellung](./media/backup-azure-database-postgresql/backup-instances-restore.png)
 
-    ![Auswählen von „Wiederherstellen“](./media/backup-azure-database-postgresql/select-restore.png)
+      ![Liste der Sicherungsinstanzen](./media/backup-azure-database-postgresql/list-backup-instances.png)
+
+      ![Auswählen von „Wiederherstellen“](./media/backup-azure-database-postgresql/select-restore.png)
 
 1. Klicken Sie in der Liste der vollständigen Sicherungen, die für die ausgewählte Sicherungsinstanz verfügbar sind, auf **Wiederherstellungspunkt auswählen**. Standardmäßig ist der letzte Wiederherstellungspunkt ausgewählt.
 
@@ -232,12 +233,6 @@ Wählen Sie Aufbewahrungsregeln in der Liste aus, die in der zugehörigen Sicher
 ![Auslösen von „Jetzt sichern“](./media/backup-azure-database-postgresql/backup-now.png)
 
 ![Auswählen aus der Liste der Aufbewahrungsregeln](./media/backup-azure-database-postgresql/retention-rules.png)
-
-### <a name="stop-protection"></a>Schutz beenden
-
-Sie können den Schutz für ein Sicherungselement beenden. Dadurch werden auch die zugehörigen Wiederherstellungspunkte für das Sicherungselement gelöscht. Für Wiederherstellungspunkte, die sich mindestens sechs Monate lang nicht auf der Archivebene befunden haben, wird beim Löschen eine Gebühr für vorzeitiges Löschen fällig. Derzeit gibt es noch keine Möglichkeit, den Schutz unter Beibehaltung der bestehenden Wiederherstellungspunkte zu beenden.
-
-![Schutz beenden](./media/backup-azure-database-postgresql/stop-protection.png)
 
 ### <a name="change-policy"></a>Ändern einer Richtlinie
 
@@ -306,6 +301,9 @@ Die Liste der erforderlichen Schritte zum Erteilen der Berechtigungen finden Sie
 ### <a name="usererrormissingnetworksecuritypermissions"></a>UserErrorMissingNetworkSecurityPermissions
 
 Richten Sie die Netzwerkleitung ein, indem Sie in der Serveransicht das Flag **Zugriff auf Azure-Dienste zulassen** aktivieren. Legen Sie in der Serveransicht im Bereich **Verbindungssicherheit** das Flag **Zugriff auf Azure-Dienste zulassen** auf **Ja** fest.
+
+>[!Note]
+>Stellen Sie vor dem Aktivieren dieses Flags sicher, dass Sie das Flag **Zugriff auf öffentliches Netzwerk verweigern** auf **Nein** festlegen.
 
 ![Zugriff auf Azure-Dienste erlauben](./media/backup-azure-database-postgresql/allow-access-to-azure-services.png)
 

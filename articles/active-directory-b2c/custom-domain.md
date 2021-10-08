@@ -8,22 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
+ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b64806b3683db8f6cd3ec665b462f4f6f26397eb
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: ceb265ef339d39f14dbc042914e471c692ae6420
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770152"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568557"
 ---
 # <a name="enable-custom-domains-for-azure-active-directory-b2c"></a>Aktivieren von benutzerdefinierten Domänen für Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Domänen in Umleitungs-URLs für Azure Active Directory B2C (Azure AD B2C) aktivieren. Die Verwendung einer benutzerdefinierten Domäne für Ihre Anwendung ermöglicht eine einheitliche Benutzeroberfläche. Aus der Perspektive der Benutzer bleiben diese während des Anmeldevorgangs in Ihrer Domäne und werden nicht auf die Azure AD B2C-Standarddomäne *&lt;Mandantenname&gt;.b2clogin.com* umgeleitet.
 
@@ -36,8 +35,8 @@ Sie können benutzerdefinierte Domänen für Azure AD B2C mithilfe von [Azure F
 Die Integration in Azure Front Door wird in der Abbildung unten veranschaulicht:
 
 1. Ein Benutzer wählt die Anmeldeschaltfläche in einer Anwendung aus, über die er auf die Azure AD B2C-Anmeldeseite gelangt. Auf dieser Seite ist ein benutzerdefinierter Domänenname angegeben.
-1. Der benutzerdefinierte Domänenname wird im Webbrowser in die IP-Adresse von Azure Front Door aufgelöst. Bei der DNS-Auflösung zeigt ein kanonischer Namenseintrag (CNAME-Eintrag) mit einem benutzerdefinierten Domänennamen auf den standardmäßigen Front Door-Front-End-Host (z. B. `contoso.azurefd.net`). 
-1. Der an die benutzerdefinierte Domäne (z. B. `login.contoso.com`) gerichtete Datenverkehr wird an den angegebenen standardmäßigen Front Door-Front-End-Host (`contoso.azurefd.net`) weitergeleitet.
+1. Der benutzerdefinierte Domänenname wird im Webbrowser in die IP-Adresse von Azure Front Door aufgelöst. Bei der DNS-Auflösung zeigt ein kanonischer Namenseintrag (CNAME-Eintrag) mit einem benutzerdefinierten Domänennamen auf den standardmäßigen Front Door-Front-End-Host (z. B. `contoso-frontend.azurefd.net`). 
+1. Der an die benutzerdefinierte Domäne (z. B. `login.contoso.com`) gerichtete Datenverkehr wird an den angegebenen standardmäßigen Front Door-Front-End-Host (`contoso-frontend.azurefd.net`) weitergeleitet.
 1. In Azure Front Door werden die Azure AD B2C-Inhalte über die Azure AD B2C-Standarddomäne `<tenant-name>.b2clogin.com` aufgerufen. Die Anforderung an den Azure AD B2C-Endpunkt enthält den ursprünglichen benutzerdefinierten Domänennamen.
 1. In Azure AD B2C wird durch Anzeigen der relevanten Inhalte und der ursprünglichen benutzerdefinierten Domäne auf die Anforderung geantwortet.
 
@@ -100,7 +99,8 @@ Führen Sie die folgenden Schritte aus, um eine Front Door für Ihren Azure AD B
   
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie **Verzeichnis + Abonnement** und dann das Verzeichnis aus, das das Azure-Abonnement enthält, das für Azure Front Door verwendet werden soll. Bei diesem Verzeichnis sollte es sich *nicht* um das Verzeichnis handeln, das Ihren Azure AD B2C-Mandanten enthält.
+1. Um das Verzeichnis auszuwählen, welches das Azure-Abonnement enthält und das Sie für Azure Front Door benutzen wollen, und *nicht* das Verzeichnis, in dem sich Ihr Azure AD B2C-Mandant befindet, wählen Sie das Symbol **Verzeichnisse und Abonnements** in der Toolbar des Portals.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**. 
 1. Wählen Sie auf der Startseite oder im Azure-Menü die Option **Ressource erstellen** aus. Wählen Sie **Netzwerk** > **Alle anzeigen** > **Front Door** aus.
 1. Geben Sie auf der Registerkarte **Grundlagen** der Seite **Frontdoor-Instanz erstellen** die folgenden Informationen ein, oder wählen Sie sie aus. Wählen Sie anschließend **Weiter: Konfiguration** aus.
 
@@ -171,11 +171,11 @@ In diesem Schritt fügen Sie die benutzerdefinierte Domäne hinzu, die Sie in [S
 
 ### <a name="31-create-a-cname-dns-record"></a>3.1 Erstellen eines CNAME-DNS-Eintrags
 
-Bevor Sie eine benutzerdefinierte Domäne mit Ihrer Azure Front Door Service-Konfiguration verwenden können, müssen Sie zunächst einen kanonischen Namenseintrag (CNAME) bei Ihrem Domänenanbieter erstellen, der auf den Front-End-Standardhost von Azure Front Door Service verweist (z. B. „contoso.azurefd.net“).
+Bevor Sie eine benutzerdefinierte Domäne mit Ihrem Front Door verwenden können, müssen Sie zunächst einen kanonischen Namenseintrag (CNAME) bei Ihrem Domänenanbieter erstellen, der auf Ihren Front-End-Standardhost verweist (z. B. „contoso.azurefd.net“).
 
 Ein CNAME-Eintrag ist eine Art von DNS-Eintrag, mit dem ein Quelldomänenname einem Zieldomänennamen zugeordnet wird (Alias). Für Azure Front Door ist der Quelldomänenname Ihr benutzerdefinierter Domänenname und der Zieldomänenname der Name Ihres Azure Front Door-Standardhosts, den Sie in [Schritt 2.1](#21-add-frontend-host) konfiguriert haben. 
 
-Nachdem der von Ihnen erstellte CNAME-Eintrag von Azure Front Door Service überprüft wurde, wird der für die benutzerdefinierte Quelldomäne (z. B. login.contoso.com) bestimmte Datenverkehr an den angegebenen Ziel-Front-End-Standardhost von Azure Front Door Service geleitet (z. B. `contoso.azurefd.net`). Weitere Informationen finden Sie unter [Hinzufügen einer benutzerdefinierten Domäne zu Front Door](../frontdoor/front-door-custom-domain.md). 
+Nachdem der von Ihnen erstellte CNAME-Eintrag von Azure Front Door Service überprüft wurde, wird der für die benutzerdefinierte Quelldomäne (z. B. login.contoso.com) bestimmte Datenverkehr an den angegebenen Ziel-Front-End-Standardhost von Azure Front Door Service geleitet (z. B. `contoso-frontend.azurefd.net`). Weitere Informationen finden Sie unter [Hinzufügen einer benutzerdefinierten Domäne zu Front Door](../frontdoor/front-door-custom-domain.md). 
 
 Erstellen Sie wie folgt einen CNAME-Eintrag für Ihre benutzerdefinierten Domäne:
 
@@ -187,13 +187,13 @@ Erstellen Sie wie folgt einen CNAME-Eintrag für Ihre benutzerdefinierten Domän
 
     | `Source`          | type  | Destination           |
     |-----------------|-------|-----------------------|
-    | `<login.contoso.com>` | CNAME | `contoso.azurefd.net` |
+    | `<login.contoso.com>` | CNAME | `contoso-frontend.azurefd.net` |
 
    - Quelle: Geben Sie den Namen Ihrer benutzerdefinierten Domäne ein (z. B. login.contoso.com).
 
    - Typ: Geben Sie *CNAME* ein.
 
-   - Ziel: Geben Sie den in [Schritt 2.1](#21-add-frontend-host) erstellten Front Door-Front-End-Standardhost ein. Der Host muss im folgenden Format angegeben werden: _&lt;hostname&gt;_ .azurefd.net. Beispiel: `contoso.azurefd.net`.
+   - Ziel: Geben Sie den in [Schritt 2.1](#21-add-frontend-host) erstellten Front Door-Front-End-Standardhost ein. Der Host muss im folgenden Format angegeben werden: _&lt;hostname&gt;_ .azurefd.net. Beispiel: `contoso-frontend.azurefd.net`.
 
 1. Speichern Sie die Änderungen.
 
@@ -253,7 +253,8 @@ Führen Sie die folgenden Schritte aus, um Azure Blob Storage für die Ressource
 ## <a name="test-your-custom-domain"></a>Testen Ihrer benutzerdefinierten Domäne
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows (Richtlinien)** aus.
 1. Wählen Sie einen Benutzerflow und dann **Benutzerflow ausführen** aus.
@@ -409,6 +410,10 @@ Mit Azure Front Door wird die ursprüngliche IP-Adresse des Benutzers übergeben
 
 Zur Verwendung einer eigenen Web Application Firewall vor Azure Front Door müssen Sie die entsprechenden Vorgänge konfigurieren und überprüfen, ob sie ordnungsgemäß mit den Azure AD B2C-Benutzerflows oder benutzerdefinierten Richtlinien durchgeführt werden.  
 
+### <a name="can-my-azure-front-door-instance-be-hosted-in-a-different-subscription-than-my-azure-ad-b2c-tenant"></a>Kann meine Azure Front Door-Instanz in einem anderen Abonnement als meinem Azure AD B2C-Mandanten gehostet werden?
+    
+Ja, Azure Front Door kann sich in einem anderen Abonnement befinden.
+    
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zu [OAuth-Autorisierungsanforderungen](protocols-overview.md)

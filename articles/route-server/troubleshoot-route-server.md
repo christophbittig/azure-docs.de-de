@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: how-to
-ms.date: 09/01/2021
+ms.date: 09/23/2021
 ms.author: duau
-ms.openlocfilehash: b5b40f4e4dfa72eacdcf178dedbc11c969bf7315
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: abece146cb2394046b7f46aa96ea70dc124cade0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424670"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649055"
 ---
 # <a name="troubleshooting-azure-route-server-issues"></a>Beheben von Problemen mit Azure Route Server
 
@@ -26,7 +26,7 @@ Wenn Ihr NVA die Standardroute ankündigt, programmiert Azure Route Server sie f
 | 0.0.0.0/0 | Internet |
 
 
-### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-why-does-the-bgp-peering-go-down"></a>Warum kann ich von meinem NVA die BGP-Peer-IP von Azure Route Server anpingen, aber dieselbe IP-Adresse nicht mehr anpingen, nachdem ich das BGP-Peering zwischen ihnen eingerichtet habe? Weshalb ist das BGP-Peering nicht mehr möglich?
+### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-or-why-is-the-bgp-peering-flapping"></a>Warum kann ich von meinem NVA die BGP-Peer-IP von Azure Route Server anpingen, aber dieselbe IP-Adresse nicht mehr anpingen, nachdem ich das BGP-Peering zwischen ihnen eingerichtet habe? Oder warum wird das BGP-Peering nicht mehr verwendet?
 
 Bei einigen NVAs müssen Sie eine statische Route für das Azure Route Server-Subnetz hinzufügen. Wenn sich beispielsweise Azure Route Server in 10.0.255.0/27 und Ihr NVA in 10.0.1.0/24 befindet, müssen Sie der Routingtabelle auf dem NVA die folgende Route hinzufügen:
 
@@ -40,10 +40,6 @@ Bei einigen NVAs müssen Sie eine statische Route für das Azure Route Server-Su
 Wenn Sie Azure Route Server in einem virtuellen Netzwerk bereitstellen, muss die Steuerungsebene zwischen den Gateways und dem virtuellen Netzwerk aktualisiert werden. Während dieser Aktualisierung wird für einen gewissen Zeitraum die Konnektivität der VMs im virtuellen Netzwerk mit dem lokalen Netzwerk getrennt. Es wird dringend empfohlen, eine Wartung für die Bereitstellung von Azure Route Server in Ihrer Produktionsumgebung zu planen.  
 
 ## <a name="control-plane-issues"></a>Probleme mit der Steuerungsebene
-
-### <a name="why-is-the-bgp-peering-between-my-nva-and-the-azure-route-server-going-up-and-down-flapping"></a>Warum wird das BGP-Peering zwischen meinem NVA und der Azure Route Server-Instanz hoch- und herunterskaliert („Fluktuation“)?
-
-Der Grund für die Fluktuation könnte die BGP-Timereinstellung sein. Standardmäßig ist der Keep-Alive-Timer in Azure Route Server auf 60 Sekunden und der Hold-Down-Timer auf 180 Sekunden festgelegt.
 
 ### <a name="why-does-my-on-premises-network-connected-to-azure-vpn-gateway-not-receive-the-default-route-advertised-by-azure-route-server"></a>Warum erhält mein lokales Netzwerk, das mit dem Azure-VPN-Gateway verbunden ist, nicht die vom Azure Route Server angekündigte Standardroute?
 

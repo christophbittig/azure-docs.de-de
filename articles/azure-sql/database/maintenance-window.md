@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 07/22/2021
-ms.openlocfilehash: 9f058cfc97821dc9ddcbedeeed1acf9ebb9919d3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/05/2021
+ms.openlocfilehash: ca8ed4fa480bd394196f4ca5b37c52bcc06e41c1
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349663"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546157"
 ---
 # <a name="maintenance-window-preview"></a>Wartungsfenster (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,32 +76,49 @@ Die Auswahl eines anderen Wartungsfensters anstelle des Standardwartungsfensters
 
 Die Auswahl eines anderen Wartungsfensters anstelle des Standardwartungsfensters ist derzeit in folgenden Regionen verfügbar:
 
-- Australien (Osten)
-- Australien, Südosten
-- Brasilien Süd
-- Kanada, Mitte
-- Kanada, Osten
-- Indien, Mitte
-- USA (Mitte)
-- East US
-- USA (Ost 2)
-- Asien, Osten
-- Frankreich, Süden
-- Deutschland, Westen-Mitte
-- Japan, Osten
-- Südkorea, Mitte*
-- USA, Norden-Mitte
-- Nordeuropa
-- USA, Süden-Mitte
-- Asien, Südosten
-- UK, Süden
-- UK, Westen
-- USA, Westen-Mitte
-- Europa, Westen
-- USA (Westen)
-- USA, Westen 2
-
-*Nur für Azure SQL Managed Instance verfügbar
+| Azure-Region | Verwaltete SQL-Instanz | SQL-Datenbank | SQL-Datenbank in einer [Azure-Verfügbarkeitszone](high-availability-sla.md) | 
+|:---|:---|:---|:---|
+| Australien, Mitte 1 | Ja | | |
+| Australien, Mitte 2 | Ja | | |
+| Australien (Osten) | Ja | Ja | Ja |
+| Australien, Südosten | Ja | Ja | |
+| Brasilien Süd | Ja | Ja |  |
+| Kanada, Mitte | Ja | Ja | Ja |
+| Kanada, Osten | Ja | Ja | |
+| Indien, Mitte | Ja | Ja | |
+| USA (Mitte) | Ja | Ja | Ja |
+| China, Osten 2 |Ja | Ja ||
+| China, Norden 2 |Ja|Ja ||
+| East US | Ja | Ja | Ja |
+| USA (Ost) 2 | Ja | Ja | Ja |
+| Asien, Osten | Ja | Ja | |
+| Frankreich, Mitte | Ja | Ja | |
+| Frankreich, Süden | Ja | Ja | |
+| Deutschland, Westen-Mitte | Ja | Ja |  |
+| Deutschland, Norden | Ja |  |  |
+| Japan, Osten | Ja | Ja | Ja |
+| Japan, Westen | Ja | Ja | |
+| Korea, Mitte | Ja | | |
+| Korea, Süden | Ja | | |
+| USA Nord Mitte | Ja | Ja | |
+| Nordeuropa | Ja | Ja | Ja |
+| Südafrika, Norden | Ja | | | 
+| Südafrika, Westen | Ja | | | 
+| USA Süd Mitte | Ja | Ja | Ja |
+| Indien (Süden) | Ja | Ja | |
+| Asien, Südosten | Ja | Ja | Ja |
+| Schweiz, Norden | Ja | Ja | |
+| Schweiz, Westen | Ja | | |
+| VAE, Mitte | Ja | | |
+| Vereinigte Arabische Emirate, Norden | Ja | | |
+| UK, Süden | Ja | Ja | Ja |
+| UK, Westen | Ja | Ja | |
+| USA, Westen-Mitte | Ja | Ja | |
+| Europa, Westen | Ja | Ja | Ja |
+| Indien, Westen | Ja | | |
+| USA (Westen) | Ja | Ja |  |
+| USA, Westen 2 | Ja | Ja | Ja |
+| | | | | 
 
 ## <a name="gateway-maintenance-for-azure-sql-database"></a>Gatewaywartung für Azure SQL-Datenbank
 
@@ -136,13 +153,15 @@ Das Konfigurieren und Ändern des Wartungsfensters führt dazu, dass die IP-Adre
 >  Stellen Sie sicher, dass der Datenverkehr nach der Änderung der IP-Adresse nicht durch NSG- und Firewallregeln blockiert wird. 
 
 ### <a name="serialization-of-virtual-cluster-management-operations"></a>Serialisierung von Verwaltungsvorgängen für virtuelle Cluster
+
 Vorgänge, die sich auf den virtuellen Cluster auswirken, z. B. Dienstupgrades und die Änderung der Größe virtueller Cluster (Hinzufügen neuer oder Entfernen nicht benötigter Computeknoten) werden serialisiert. Anders ausgedrückt: Ein neuer Verwaltungsvorgang für virtuelle Cluster kann erst gestartet werden, nachdem der vorherige beendet wurde. Wenn das Wartungsfenster geschlossen wird, bevor der laufende Dienstupgrade- oder Wartungsvorgang abgeschlossen ist, werden alle anderen in der Zwischenzeit übermittelten Verwaltungsvorgänge für virtuelle Cluster zurückgehalten, bis das nächste Wartungsfenster geöffnet und der Dienstupgrade- oder Wartungsvorgang abgeschlossen ist. Ein Wartungsvorgang für einen virtuellen Cluster dauert üblicherweise nicht länger als ein einzelnes Fenster. Dies kann jedoch bei sehr komplexen Wartungsvorgängen der Fall sein.
+
 Die Serialisierung von Verwaltungsvorgängen für virtuelle Cluster ist ein allgemeines Verhalten, das auch für die Standardwartungsrichtlinie gilt. Wenn ein Wartungsfensterplan konfiguriert ist, kann der Zeitraum zwischen zwei angrenzenden Fenstern einige Tage betragen. Übermittelte Vorgänge können ebenfalls mehrere Tage lang zurückhalten werden, wenn sich der Wartungsvorgang auf zwei Fenster erstreckt. Dies ist sehr selten, die Erstellung neuer Instanzen oder das Ändern der Größe von vorhandenen Instanzen (wenn zusätzliche Computeknoten erforderlich sind) kann aber während dieses Zeitraums blockiert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Vorabbenachrichtigungen](advance-notifications.md)
 * [Konfigurieren von Wartungsfenstern](maintenance-window-configure.md)
+* [Vorabbenachrichtigungen](advance-notifications.md)
 
 ## <a name="learn-more"></a>Weitere Informationen
 

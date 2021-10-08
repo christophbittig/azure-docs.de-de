@@ -4,14 +4,14 @@ description: Liste der Metriken, die mit Azure Monitor für jeden Ressourcentyp 
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 08/04/2021
+ms.date: 09/10/2021
 ms.author: robb
-ms.openlocfilehash: 4975d83773edba94676b7beeff166c6edb86248d
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: c08644242bc811bfce8be2883bc2dec95f83f13d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350712"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616724"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -123,6 +123,7 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |---|---|---|---|---|---|---|
 |BackendDuration|Ja|Dauer von Back-End-Anforderungen|Millisekunden|Average|Dauer von Back-End-Anforderungen in Millisekunden|Speicherort, Hostname|
 |Capacity|Ja|Capacity|Percent|Average|Auslastungsmetrik für ApiManagement-Dienst. Hinweis: Für andere SKUs als Premium gibt die Aggregation „Max“ den Wert als 0 an.|Standort|
+|ConnectionAttempts|Ja|WebSocket-Verbindungsversuche (Vorschau)|Anzahl|Gesamt|Anzahl der WebSocket-Verbindungsversuche basierend auf ausgewählter Quelle und ausgewähltem Ziel|Standort, Quelle, Ziel, Zustand|
 |Duration|Ja|Gesamtdauer von Gatewayanforderungen|Millisekunden|Average|Gesamtdauer von Gatewayanforderungen in Millisekunden|Speicherort, Hostname|
 |EventHubDroppedEvents|Ja|Gelöschte EventHub-Ereignisse|Anzahl|Gesamt|Anzahl übersprungener Ereignisse aufgrund Erreichen der maximalen Warteschlangengröße|Standort|
 |EventHubRejectedEvents|Ja|Abgelehnte EventHub-Ereignisse|Anzahl|Gesamt|Anzahl abgelehnter EventHub-Ereignisse (falsche Konfiguration oder nicht autorisiert)|Standort|
@@ -139,6 +140,7 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |SuccessfulRequests|Ja|Erfolgreiche Gatewayanforderungen (veraltet)|Anzahl|Gesamt|Anzahl von erfolgreichen Gatewayanforderungen – verwenden Sie stattdessen die multidimensionale Anforderungsmetrik mit der GatewayResponseCodeCategory-Dimension.|Speicherort, Hostname|
 |TotalRequests|Ja|Gatewayanforderungen insgesamt (veraltet)|Anzahl|Gesamt|Anzahl von Gatewayanforderungen – verwenden Sie stattdessen die multidimensionale Anforderungsmetrik mit der GatewayResponseCodeCategory-Dimension.|Speicherort, Hostname|
 |UnauthorizedRequests|Ja|Nicht autorisierte Gatewayanforderungen (veraltet)|Anzahl|Gesamt|Anzahl von nicht autorisierten Gatewayanforderungen – verwenden Sie stattdessen die multidimensionale Anforderungsmetrik mit der GatewayResponseCodeCategory-Dimension.|Speicherort, Hostname|
+|WebSocketMessages|Ja|WebSocket-Meldungen (Vorschau)|Anzahl|Gesamt|Anzahl der WebSocket-Meldungen basierend auf ausgewählter Quelle und ausgewähltem Ziel|Standort, Quelle, Ziel|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
@@ -169,6 +171,14 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |gen-1-size|Ja|gen-1-size|Byte|Average|Heapgröße: Gen 1|Deployment, AppName, Pod|
 |gen-2-gc-count|Ja|gen-2-gc-count|Anzahl|Average|Anzahl von Gen: 2 GCs|Deployment, AppName, Pod|
 |gen-2-size|Ja|gen-2-size|Byte|Average|Heapgröße: Gen 2|Deployment, AppName, Pod|
+|IngressBytesReceived|Ja|Empfangene Bytes|Byte|Average|Anzahl der Bytes, die in Azure Spring Cloud von den Clients empfangen wurden|Hostname, HttpStatus|
+|IngressBytesReceivedRate|Ja|Durchsatz eingehend (Bytes/Sek.)|Bytes pro Sekunde|Average|Anzahl der Bytes, die in Azure Spring Cloud von den Clients empfangen wurden|Hostname, HttpStatus|
+|IngressBytesSent|Ja|Gesendete Bytes|Byte|Average|Anzahl der Bytes, die von Azure Spring Cloud an Clients gesendet wurden|Hostname, HttpStatus|
+|IngressBytesSentRate|Ja|Durchsatz ausgehend (Bytes/Sek.)|Bytes pro Sekunde|Average|Anzahl der Bytes, die von Azure Spring Cloud pro Sekunde an Clients gesendet wurden|Hostname, HttpStatus|
+|IngressFailedRequests|Ja|Anforderungsfehler|Anzahl|Average|Anzahl der fehlerhaften Anforderungen in Azure Spring Cloud von den Clients|Hostname, HttpStatus|
+|IngressRequests|Ja|Requests|Anzahl|Average|Anzahl der Anforderungen in Azure Spring Cloud von den Clients|Hostname, HttpStatus|
+|IngressResponseStatus|Ja|Antwortstatus|Anzahl|Average|Von Azure Spring Cloud zurückgegebener HTTP-Antwortstatus; die Antwortstatuscode-Verteilung kann weiter kategorisiert werden, um Antworten in 2xx-, 3xx-, 4xx- und 5xx-Kategorien anzuzeigen|Hostname, HttpStatus|
+|IngressResponseTime|Ja|Antwortzeit|Sekunden|Average|Von Azure Spring Cloud zurückgegebene HTTP-Antwortzeit|Hostname, HttpStatus|
 |jvm.gc.live.data.size|Ja|jvm.gc.live.data.size|Byte|Average|Größe des Arbeitsspeicherpools der alten Generation nach einer vollständigen Garbage Collection|Deployment, AppName, Pod|
 |jvm.gc.max.data.size|Ja|jvm.gc.max.data.size|Byte|Average|Maximale Größe des Arbeitsspeicherpools der alten Generation|Deployment, AppName, Pod|
 |jvm.gc.memory.allocated|Ja|jvm.gc.memory.allocated|Byte|Maximum|Inkrementiert zur Erhöhung der Größe des Speicherpools der neuen Generation nach einer Garbage Collection gegenüber dem Zeitpunkt vor der nächsten|Deployment, AppName, Pod|
@@ -207,6 +217,7 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |total-requests|Ja|total-requests|Anzahl|Average|Gesamtanzahl der Anforderungen während der Lebensdauer des Prozesses|Deployment, AppName, Pod|
 |working-set|Ja|working-set|Anzahl|Average|Vom Prozess verwendete Arbeitssatzmenge (MB)|Deployment, AppName, Pod|
 
+
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
@@ -215,7 +226,8 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |TotalUpdateDeploymentMachineRuns|Ja|Gesamtzahl von Updatebereitstellungsausführungen auf dem Computer|Anzahl|Gesamt|Gesamtzahl von Updatebereitstellungsausführungen für Software auf dem Computer in einer Updatebereitstellungsausführung für Software|SoftwareUpdateConfigurationName, Status, TargetComputer, SoftwareUpdateConfigurationRunId|
 |TotalUpdateDeploymentRuns|Ja|Gesamtzahl von Updatebereitstellungsausführungen|Anzahl|Gesamt|Gesamtzahl von Updatebereitstellungsausführungen für Software|SoftwareUpdateConfigurationName, Status|
 
-## <a name="microsoftavsprivateclouds"></a>Microsoft.AVS/privateClouds
+
+## <a name="microsoftavsprivateclouds"></a>microsoft.avs/privateClouds
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
@@ -227,6 +239,7 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |TotalMbAverage|Ja|Durchschnittlicher gesamter Arbeitsspeicher|Byte|Average|Gesamt Arbeitsspeicher im Cluster|clustername|
 |UsageAverage|Ja|Durchschnittliche Arbeitsspeicherauslastung|Percent|Average|Speichernutzung als Prozentsatz des gesamten konfigurierten oder verfügbaren Arbeitsspeichers|clustername|
 |UsedLatest|Ja|Verwendeter Datenträger mit dem Datenspeicher|Byte|Average|Die Gesamtmenge der im Datenspeicher verwendeten Datenträger|dsname|
+
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
@@ -264,6 +277,7 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |UnusableNodeCount|Nein|Anzahl nicht verwendbarer Knoten|Anzahl|Gesamt|Anzahl nicht verwendbarer Knoten|Keine Dimensionen|
 |WaitingForStartTaskNodeCount|Nein|Anzahl von Knoten, die auf den Starttask warten|Anzahl|Gesamt|Anzahl von Knoten, die auf den Abschluss des Starttasks warten|Keine Dimensionen|
 
+
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
@@ -283,6 +297,7 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |Knoten insgesamt|Ja|Knoten insgesamt|Anzahl|Average|Gesamtanzahl von Knoten|Scenario, ClusterName|
 |Nicht verwendbare Kerne|Ja|Nicht verwendbare Kerne|Anzahl|Average|Anzahl der nicht verwendbaren Kerne|Scenario, ClusterName|
 |Unusable Nodes (Nicht verwendbare Knoten)|Ja|Unusable Nodes (Nicht verwendbare Knoten)|Anzahl|Average|Anzahl nicht verwendbarer Knoten|Scenario, ClusterName|
+
 
 ## <a name="microsoftbingaccounts"></a>microsoft.bing/accounts
 
@@ -793,26 +808,48 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
+|AudioSecondsTranscribed|Ja|Transkribierte Audiosekunden|Anzahl|Gesamt|Anzahl der transkribierten Sekunden|ApiName, FeatureName, UsageChannel, Region|
+|AudioSecondsTranslated|Ja|Übersetzte Audiosekunden|Anzahl|Gesamt|Anzahl der übersetzten Sekunden|ApiName, FeatureName, UsageChannel, Region|
 |BlockedCalls|Ja|Blockierte Aufrufe|Anzahl|Gesamt|Anzahl von Aufrufen, die das Raten- oder Kontingentlimit überschritten haben|ApiName, OperationName, Region|
-|CharactersTrained|Ja|Trainierte Zeichen|Anzahl|Gesamt|Gesamtzahl trainierter Zeichen|ApiName, OperationName, Region|
-|CharactersTranslated|Ja|Übersetzte Zeichen|Anzahl|Gesamt|Gesamtanzahl von Zeichen in einer eingehenden Textanforderung|ApiName, OperationName, Region|
+|CharactersTrained|Ja|Trainierte Zeichen (veraltet)|Anzahl|Gesamt|Gesamtzahl trainierter Zeichen|ApiName, OperationName, Region|
+|CharactersTranslated|Ja|Übersetzte Zeichen (veraltet)|Anzahl|Gesamt|Gesamtanzahl von Zeichen in einer eingehenden Textanforderung|ApiName, OperationName, Region|
 |ClientErrors|Ja|Clientfehler|Anzahl|Gesamt|Anzahl von Aufrufen mit Fehler auf Clientseite (HTTP-Antwortcode 4xx)|ApiName, OperationName, Region|
+|ComputerVisionTransactions|Ja|Transaktionen für maschinelles Sehen|Anzahl|Gesamt|Anzahl der Transaktionen für maschinelles Sehen|ApiName, FeatureName, UsageChannel, Region|
+|CustomVisionTrainingTime|Ja|Trainingszeit für Custom Vision|Sekunden|Gesamt|Trainingszeit für Custom Vision|ApiName, FeatureName, UsageChannel, Region|
+|CustomVisionTransactions|Ja|Transaktionen für Custom Vision|Anzahl|Gesamt|Anzahl der Vorhersagetransaktionen für Custom Vision|ApiName, FeatureName, UsageChannel, Region|
 |DataIn|Ja|Eingehende Daten|Byte|Gesamt|Menge eingehender Daten in Byte|ApiName, OperationName, Region|
 |DataOut|Ja|Datenausgabe|Byte|Gesamt|Menge ausgehender Daten in Byte|ApiName, OperationName, Region|
+|DocumentCharactersTranslated|Ja|Übersetzte Dokumentzeichen|Anzahl|Gesamt|Anzahl der Zeichen in einer Dokumentübersetzungsanforderung|ApiName, FeatureName, UsageChannel, Region|
+|DocumentCustomCharactersTranslated|Ja|Übersetzte benutzerdefinierte Dokumentzeichen|Anzahl|Gesamt|Anzahl der Zeichen in einer Anforderung zur benutzerdefinierten Dokumentübersetzung|ApiName, FeatureName, UsageChannel, Region|
+|FaceImagesTrained|Ja|Trainierte Gesichtsbilder|Anzahl|Gesamt|Anzahl der trainierten Bilder; 1\.000 Bilder pro Transaktion trainiert|ApiName, FeatureName, UsageChannel, Region|
+|FacesStored|Ja|Gespeicherte Gesichter|Anzahl|Gesamt|Anzahl der gespeicherten Gesichter, wird täglich anteilig berechnet; die Anzahl der gespeicherten Gesichter wird täglich gemeldet|ApiName, FeatureName, UsageChannel, Region|
+|FaceTransactions|Ja|Gesichtserkennungstransaktionen|Anzahl|Gesamt|Anzahl der API-Aufrufe an den Gesichtserkennungsdienst|ApiName, FeatureName, UsageChannel, Region|
+|ImagesStored|Ja|Gespeicherte Bilder|Anzahl|Gesamt|Anzahl der in Custom Vision gespeicherten Bilder|ApiName, FeatureName, UsageChannel, Region|
 |Latency|Ja|Latency|Millisekunden|Average|Latenz in Millisekunden|ApiName, OperationName, Region|
 |LearnedEvents|Ja|Erfasste Ereignisse|Anzahl|Gesamt|Anzahl erfasster Ereignisse.|IsMatchBaseline, Modus, RunId|
-|MatchedRewards|Ja|Übereinstimmende Belohnungen|Anzahl|Gesamt| Anzahl übereinstimmender Belohnungen.|Mode, RunId|
+|LUISSpeechRequests|Ja|LUIS-Sprachanforderungen|Anzahl|Gesamt|Anzahl der LUIS-Anforderungen zum Verstehen der Sprach-Absichts-Umsetzung|ApiName, FeatureName, UsageChannel, Region|
+|LUISTextRequests|Ja|LUIS-Textanforderungen|Anzahl|Gesamt|Anzahl der LUIS-Textanforderungen|ApiName, FeatureName, UsageChannel, Region|
+|MatchedRewards|Ja|Übereinstimmende Belohnungen|Anzahl|Gesamt|Anzahl übereinstimmender Belohnungen.|Mode, RunId|
+|NumberofSpeakerProfiles|Ja|Anzahl der Sprecherprofile|Anzahl|Gesamt|Anzahl der registrierten Sprecherprofile; wird anteilig stündlich berechnet|ApiName, FeatureName, UsageChannel, Region|
 |ObservedRewards|Ja|Beobachtete Belohnungen|Anzahl|Gesamt|Anzahl beobachteter Belohnungen.|Mode, RunId|
-|ProcessedCharacters|Ja|Verarbeitete Zeichen|Anzahl|Gesamt|Anzahl von Zeichen.|ApiName, FeatureName, UsageChannel, Region|
+|ProcessedCharacters|Ja|Verarbeitete Zeichen|Anzahl|Gesamt|Anzahl der vom Immersive Reader verarbeiteten Zeichen|ApiName, FeatureName, UsageChannel, Region|
+|ProcessedHealthTextRecords|Ja|Verarbeitete Textdatensätze zur Integrität|Anzahl|Gesamt|Anzahl der verarbeiteten Textdatensätze zur Integrität|ApiName, FeatureName, UsageChannel, Region|
+|ProcessedImages|Ja|Verarbeitete Bilder|Anzahl|Gesamt|Anzahl der verarbeiteten Bilder|ApiName, FeatureName, UsageChannel, Region|
+|ProcessedPages|Ja|Verarbeitete Seiten|Anzahl|Gesamt|Anzahl der verarbeiteten Seiten|ApiName, FeatureName, UsageChannel, Region|
 |ProcessedTextRecords|Ja|Verarbeitete Textdatensätze|Anzahl|Gesamt|Anzahl von Textdatensätzen.|ApiName, FeatureName, UsageChannel, Region|
 |ServerErrors|Ja|Serverfehler|Anzahl|Gesamt|Anzahl von Aufrufen mit internem Dienstfehler (HTTP-Antwortcode 5xx)|ApiName, OperationName, Region|
-|SpeechSessionDuration|Ja|Dauer der Sprachsitzung|Sekunden|Gesamt|Gesamtdauer der Sprachsitzung in Sekunden|ApiName, OperationName, Region|
+|SpeakerRecognitionTransactions|Ja|Transaktionen zur Sprechererkennung|Anzahl|Gesamt|Anzahl von Transaktionen zur Sprechererkennung|ApiName, FeatureName, UsageChannel, Region|
+|SpeechModelHostingHours|Ja|Hostingstunden des Sprachmodells|Anzahl|Gesamt|Anzahl der Hostingstunden des Sprachmodells|ApiName, FeatureName, UsageChannel, Region|
+|SpeechSessionDuration|Ja|Dauer der Sprachsitzung (veraltet)|Sekunden|Gesamt|Gesamtdauer der Sprachsitzung in Sekunden|ApiName, OperationName, Region|
 |SuccessfulCalls|Ja|Erfolgreiche Aufrufe|Anzahl|Gesamt|Anzahl erfolgreicher Aufrufe|ApiName, OperationName, Region|
 |SynthesizedCharacters|Ja|Synthetisierte Zeichen|Anzahl|Gesamt|Anzahl von Zeichen.|ApiName, FeatureName, UsageChannel, Region|
+|TextCharactersTranslated|Ja|Übersetzte Textzeichen|Anzahl|Gesamt|Anzahl der Zeichen in eingehenden Textübersetzungsanforderungen|ApiName, FeatureName, UsageChannel, Region|
+|TextCustomCharactersTranslated|Ja|Übersetzte benutzerdefinierte Textzeichen|Anzahl|Gesamt|Anzahl der Zeichen in eingehenden benutzerdefinierten Textübersetzungsanforderungen|ApiName, FeatureName, UsageChannel, Region|
+|TextTrainedCharacters|Ja|Trainierte Zeichen in Text|Anzahl|Gesamt|Anzahl der mithilfe der Textübersetzung trainierten Zeichen|ApiName, FeatureName, UsageChannel, Region|
 |TotalCalls|Ja|Aufrufe gesamt|Anzahl|Gesamt|Gesamtanzahl von Aufrufen|ApiName, OperationName, Region|
 |TotalErrors|Ja|Fehler insgesamt|Anzahl|Gesamt|Gesamtzahl von Aufrufen mit Fehlerantwort (HTTP-Antwortcode 4xx oder 5xx)|ApiName, OperationName, Region|
 |TotalTokenCalls|Ja|Tokenaufrufe gesamt|Anzahl|Gesamt|Gesamtanzahl von Tokenaufrufen|ApiName, OperationName, Region|
-|TotalTransactions|Ja|Transaktionen gesamt|Anzahl|Gesamt|Gesamtanzahl von Transaktionen|Keine Dimensionen|
+|TotalTransactions|Ja|Transaktionen gesamt (veraltet)|Anzahl|Gesamt|Gesamtanzahl von Transaktionen|Keine Dimensionen|
 |VoiceModelHostingHours|Ja|Hostingstunden des Stimmmodells|Anzahl|Gesamt|Anzahl der Stunden.|ApiName, FeatureName, UsageChannel, Region|
 |VoiceModelTrainingMinutes|Ja|Trainingsminuten des Stimmmodells|Anzahl|Gesamt|Anzahl der Minuten.|ApiName, FeatureName, UsageChannel, Region|
 
@@ -823,7 +860,7 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |---|---|---|---|---|---|---|
 |APIRequestAuthentication|Nein|Anforderungen der Authentifizierungs-API|Anzahl|Anzahl|Anzahl aller Anforderungen an den Endpunkt „Communication Services-Authentifizierung“.|Vorgang, StatusCode, StatusCodeClass|
 |APIRequestChat|Ja|Anforderungen der Chat-API|Anzahl|Anzahl|Anzahl aller Anforderungen an den Endpunkt „Communication Services-Chat“.|Vorgang, StatusCode, StatusCodeClass|
-|APIRequestSMS|Ja|Anforderungen der SMS-API|Anzahl|Anzahl|Anzahl aller Anforderungen an den Endpunkt „Communication Services SMS“.|Vorgang, StatusCode, StatusCodeClass|
+|APIRequestSMS|Ja|Anforderungen der SMS-API|Anzahl|Anzahl|Anzahl aller Anforderungen an den Endpunkt „Communication Services SMS“.|Vorgang, StatusCode, StatusCodeClass, ErrorCode|
 
 
 ## <a name="microsoftcomputecloudservices"></a>Microsoft.Compute/cloudServices
@@ -918,6 +955,7 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |Verbrauchte von der VM zwischengespeicherte IOPS in Prozent|Ja|Verbrauchte von der VM zwischengespeicherte IOPS in Prozent|Percent|Average|Prozentsatz der von der VM beanspruchten zwischengespeicherten Datenträger-IOPS|Keine Dimensionen|
 |Prozentsatz der von der VM beanspruchten nicht zwischengespeicherten Bandbreite|Ja|Prozentsatz der von der VM beanspruchten nicht zwischengespeicherten Bandbreite|Percent|Average|Prozentsatz der von der VM beanspruchten nicht zwischengespeicherten Datenträgerbandbreite|Keine Dimensionen|
 |Verbrauchte von der VM nicht zwischengespeicherte IOPS in Prozent|Ja|Verbrauchte von der VM nicht zwischengespeicherte IOPS in Prozent|Percent|Average|Prozentsatz der von der VM beanspruchten nicht zwischengespeicherten Datenträger-IOPS|Keine Dimensionen|
+|VmAvailabilityMetric|Ja|VM-Verfügbarkeitsmetrik (Vorschau)|Anzahl|Average|Maß für die Verfügbarkeit virtueller Computer im Zeitverlauf. Hinweis: Diese Metrik wird derzeit nur für eine kleine Gruppe von Kunden als Vorschauversion angezeigt, da wir die Verbesserung der Datenqualität und -konsistenz priorisieren. Im Rahmen der Verbesserung unseres Datenstandards werden wir dieses Feature phasenweise für die gesamte Flotte einführen.|Keine Dimensionen|
 
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
@@ -1238,6 +1276,8 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |aborted_connections|Ja|Abgebrochene Verbindungen|Anzahl|Gesamt|Abgebrochene Verbindungen|Keine Dimensionen|
 |active_connections|Ja|Die aktiven Verbindungen.|Anzahl|Maximum|Die aktiven Verbindungen.|Keine Dimensionen|
 |backup_storage_used|Ja|Verwendeter Sicherungsspeicher|Byte|Maximum|Verwendeter Sicherungsspeicher|Keine Dimensionen|
+|cpu_credits_consumed|Ja|Verbrauchte CPU-Guthaben|Anzahl|Maximum|Verbrauchte CPU-Guthaben|Keine Dimensionen|
+|cpu_credits_remaining|Ja|Verbleibende CPU-Guthaben|Anzahl|Maximum|Verbleibende CPU-Guthaben|Keine Dimensionen|
 |cpu_percent|Ja|Host-CPU in Prozent|Percent|Maximum|Host-CPU in Prozent|Keine Dimensionen|
 |io_consumption_percent|Ja|E/A in Prozent|Percent|Maximum|E/A in Prozent|Keine Dimensionen|
 |memory_percent|Ja|Hostarbeitsspeicher in Prozent|Percent|Maximum|Hostarbeitsspeicher in Prozent|Keine Dimensionen|
@@ -1388,10 +1428,10 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |d2c.endpoints.latency.serviceBusQueues|Ja|Routing: Nachrichtenwartezeit für Service Bus-Warteschlange|Millisekunden|Average|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Nachricht bei einem Service Bus-Warteschlangenendpunkt.|Keine Dimensionen|
 |d2c.endpoints.latency.serviceBusTopics|Ja|Routing: Nachrichtenwartezeit für Service Bus-Thema|Millisekunden|Average|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Nachricht bei einem Service Bus-Themaendpunkt.|Keine Dimensionen|
 |d2c.endpoints.latency.storage|Ja|Routing: Nachrichtenwartezeit für Speicher|Millisekunden|Average|Durchschnittliche Wartezeit (Millisekunden) zwischen dem Eingang der Nachricht beim IoT Hub und dem Eingang der Nachricht bei einem Speicherendpunkt.|Keine Dimensionen|
-|d2c.telemetry.egress.dropped|Ja|Routing: Verworfene Telemetrienachrichten|Anzahl|Gesamt|Die Anzahl der Nachrichten, die vom IoT Hub-Routing aufgrund von inaktiven Endpunkten gelöscht wurden. Dieser Wert zählt nicht die Nachrichten, die an die Fallbackroute übermittelt werden, da gelöschte Nachrichten dort nicht übermittelt werden.|Keine Dimensionen|
+|d2c.telemetry.egress.dropped|Ja|Routing: Verworfene Telemetrienachrichten |Anzahl|Gesamt|Die Anzahl der Nachrichten, die vom IoT Hub-Routing aufgrund von inaktiven Endpunkten gelöscht wurden. Dieser Wert zählt nicht die Nachrichten, die an die Fallbackroute übermittelt werden, da gelöschte Nachrichten dort nicht übermittelt werden.|Keine Dimensionen|
 |d2c.telemetry.egress.fallback|Ja|Routing: An den Fallback übermittelte Nachrichten|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Nachrichten an den mit der Fallbackroute verbundenen Endpunkt übermittelt hat.|Keine Dimensionen|
 |d2c.telemetry.egress.invalid|Ja|Routing: Nicht kompatible Telemetrienachrichten|Anzahl|Gesamt|Die Häufigkeit, mit der das IoT Hub-Routing Nachrichten aufgrund einer Inkompatibilität mit dem Endpunkt nicht übermitteln konnte. Dieser Wert umfasst keine Wiederholungen.|Keine Dimensionen|
-|d2c.telemetry.egress.orphaned|Ja|Routing: Verwaiste Telemetrienachrichten|Anzahl|Gesamt|Die Häufigkeit, mit der Nachrichten durch das IoT Hub-Routing verwaist wurden, da sie mit keinen Routingregeln (einschließlich der Fallbackregel) übereinstimmten.|Keine Dimensionen|
+|d2c.telemetry.egress.orphaned|Ja|Routing: Verwaiste Telemetrienachrichten |Anzahl|Gesamt|Die Häufigkeit, mit der Nachrichten durch das IoT Hub-Routing verwaist wurden, da sie mit keinen Routingregeln (einschließlich der Fallbackregel) übereinstimmten. |Keine Dimensionen|
 |d2c.telemetry.egress.success|Ja|Routing: Übermittelte Telemetrienachrichten|Anzahl|Gesamt|Die Anzahl der erfolgreichen Nachrichtenübermittlungen an alle Endpunkte über das IoT Hub-Routing Wenn eine Nachricht an mehrere Endpunkte weitergeleitet wird, erhöht sich dieser Wert für jede erfolgreiche Übermittlung um eins Wenn eine Nachricht mehrmals an denselben Endpunkt übermittelt wird, erhöht sich dieser Wert für jede erfolgreiche Übermittlung um eins|Keine Dimensionen|
 |d2c.telemetry.Ingress.allProtocol|Ja|Telemetry message send attempts (Sendeversuche für Telemetrienachrichten)|Anzahl|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die an Ihren IoT Hub gesendet werden sollten|Keine Dimensionen|
 |d2c.telemetry.ingress.sendThrottle|Ja|Anzahl von Drosselungsfehlern|Anzahl|Gesamt|Anzahl von Drosselungsfehlern aufgrund von Drosselungen des Gerätedurchsatzes|Keine Dimensionen|
@@ -1540,7 +1580,7 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |---|---|---|---|---|---|---|
 |AddRegion|Ja|Region hinzugefügt|Anzahl|Anzahl|Region hinzugefügt|Region|
 |AutoscaleMaxThroughput|Nein|Autoskalierung – Maximaler Durchsatz|Anzahl|Maximum|Maximaler Durchsatz für Autoskalierung|DatabaseName, CollectionName|
-|AvailableStorage|Nein|Verfügbarer Speicher (veraltet)|Byte|Gesamt|Die Metrik „Verfügbarer Speicher“ wird Ende September 2023 aus Azure Monitor entfernt. Die Speichergröße für Cosmos DB-Sammlungen ist jetzt unbegrenzt. Die einzige Einschränkung besteht darin, dass die Speichergröße für jeden logischen Partitionsschlüssel 20 GB beträgt. Sie können PartitionKeyStatistics im Diagnoseprotokoll aktivieren, um den Speicherverbrauch der wichtigsten Partitionsschlüssel zu ermitteln. Weitere Informationen zum Speicherkontingent für Cosmos DB finden Sie in diesem Dokument [https://docs.microsoft.com/azure/cosmos-db/concepts-limits](/azure/cosmos-db/concepts-limits). Nach diesem Datum werden verbleibende Warnungsregeln, die noch für die veraltete Metrik definiert sind, automatisch deaktiviert.|CollectionName, DatabaseName, Region|
+|AvailableStorage|Nein|Verfügbarer Speicher (veraltet)|Byte|Gesamt|Die Metrik „Verfügbarer Speicher“ wird Ende September 2023 aus Azure Monitor entfernt. Die Speichergröße für Cosmos DB-Sammlungen ist jetzt unbegrenzt. Die einzige Einschränkung besteht darin, dass die Speichergröße für jeden logischen Partitionsschlüssel 20 GB beträgt. Sie können PartitionKeyStatistics im Diagnoseprotokoll aktivieren, um den Speicherverbrauch der wichtigsten Partitionsschlüssel zu ermitteln. Weitere Informationen zum Speicherkontingent für Cosmos DB finden Sie unter https://docs.microsoft.com/azure/cosmos-db/concepts-limits. Nach diesem Datum werden verbleibende Warnungsregeln, die noch für die veraltete Metrik definiert sind, automatisch deaktiviert.|CollectionName, DatabaseName, Region|
 |CassandraConnectionClosures|Nein|Abschluss von Cassandra-Verbindungen|Anzahl|Gesamt|Anzahl von Cassandra-Verbindungen, die geschlossen wurden, gemeldet mit einer Granularität von einer Minute|APIType, Region, ClosureReason|
 |CassandraConnectorAvgReplicationLatency|Nein|Cassandra-Connector – Durchschnittliche Replikationslatenz|Millisekunden|Average|Durchschnittliche Replikationslatenz im Cassandra-Connector|Keine Dimensionen|
 |CassandraConnectorReplicationHealthStatus|Nein|Cassandra-Connector – Integritätsstatus|Anzahl|Anzahl|Integritätsstatus des Cassandra-Connectors|NotStarted, ReplicationInProgress, Error|
@@ -1823,9 +1863,6 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |IoTConnectorMeasurementIngestionLatencyMs|Ja|Durchschnittliche Wartezeit der Gruppierungsphase|Millisekunden|Average|Die Zeitspanne zwischen dem Empfang der Gerätedaten durch den IoT-Connector und der Verarbeitung der Daten in der FHIR-Konvertierungsphase.|Vorgang, ConnectorName|
 |IoTConnectorNormalizedEvent|Ja|Anzahl normalisierter Nachrichten|Anzahl|SUM|Die Gesamtanzahl zugeordneter normalisierter Werte, die in der Normalisierungsphase des Azure IoT-Connectors für FHIR ausgegeben wurden.|Vorgang, ConnectorName|
 |IoTConnectorTotalErrors|Ja|Gesamtfehlerzahl|Anzahl|SUM|Die Gesamtanzahl der vom Azure IoT-Connector für FHIR protokollierten Fehler|Name, Vorgang, ErrorType, ErrorSeverity, ConnectorName|
-|ServiceApiErrors|Ja|Dienstfehler|Anzahl|SUM|Die Gesamtanzahl der vom Dienst generierten internen Serverfehler.|Protokoll, Authentifizierung, Operation, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
-|ServiceApiLatency|Ja|Dienstlatenz|Millisekunden|Average|Die Antwortlatenz des Diensts.|Protokoll, Authentifizierung, Operation, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
-|ServiceApiRequests|Ja|Service Requests|Anzahl|SUM|Die Gesamtanzahl der vom Dienst empfangenen Anforderungen.|Protokoll, Authentifizierung, Operation, ResourceType, StatusCode, StatusCodeClass, StatusCodeText|
 |TotalErrors|Ja|Fehler insgesamt|Anzahl|SUM|Die Gesamtanzahl der internen Serverfehler im Dienst.|Protokoll, StatusCode, StatusCodeClass, StatusCodeText|
 |TotalLatency|Ja|Gesamtlatenz|Millisekunden|Average|Die Antwortlatenz des Diensts.|Protocol|
 |TotalRequests|Ja|Anzahl von Anforderungen|Anzahl|SUM|Die Gesamtanzahl der vom Dienst empfangenen Anforderungen.|Protocol|
@@ -1837,11 +1874,11 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |---|---|---|---|---|---|---|
 |DeviceEvent|Ja|Anzahl eingehender Nachrichten|Anzahl|SUM|Die Gesamtanzahl der vom Azure IoT-Connector für FHIR empfangenen Nachrichten vor einer Normalisierung.|Operation, ResourceName|
 |DeviceEventProcessingLatencyMs|Ja|Durchschnittliche Wartezeit in der Normalisierungsphase|Millisekunden|Average|Die durchschnittliche Zeit zwischen dem Erfassungszeitpunkt eines Ereignisses und dem Zeitpunkt seiner Verarbeitung zur Normalisierung.|Operation, ResourceName|
-|IoTConnectorTotalErrors|Ja|Gesamtfehlerzahl|Anzahl|SUM|Die Gesamtanzahl der vom Azure IoT-Connector für FHIR protokollierten Fehler|Name, Operation, ErrorType, ErrorSeverity, ResourceName|
 |Messung|Ja|Anzahl der Messungen|Anzahl|SUM|Die Anzahl normalisierter Messwerte, die in der FHIR-Konvertierungsphase des Azure IoT-Connectors für FHIR empfangen wurden.|Operation, ResourceName|
 |MeasurementGroup|Ja|Anzahl von Nachrichtengruppen|Anzahl|SUM|Die Gesamtanzahl eindeutiger Gruppierungen von Messungen nach Typ, Gerät, Patient und konfiguriertem Zeitraum, generiert in der FHIR-Konvertierungsphase.|Operation, ResourceName|
 |MeasurementIngestionLatencyMs|Ja|Durchschnittliche Wartezeit der Gruppierungsphase|Millisekunden|Average|Die Zeitspanne zwischen dem Empfang der Gerätedaten durch den IoT-Connector und der Verarbeitung der Daten in der FHIR-Konvertierungsphase.|Operation, ResourceName|
 |NormalizedEvent|Ja|Anzahl normalisierter Nachrichten|Anzahl|SUM|Die Gesamtanzahl zugeordneter normalisierter Werte, die in der Normalisierungsphase des Azure IoT-Connectors für FHIR ausgegeben wurden.|Operation, ResourceName|
+|TotalErrors|Ja|Gesamtfehlerzahl|Anzahl|SUM|Die Gesamtanzahl der vom Azure IoT-Connector für FHIR protokollierten Fehler|Name, Operation, ErrorType, ErrorSeverity, ResourceName|
 
 
 ## <a name="microsofthybridnetworknetworkfunctions"></a>microsoft.hybridnetwork/networkfunctions
@@ -2192,6 +2229,13 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |EgressBandwidth|Nein|Ausgangsbandbreite|BitsPerSecond|Average|Ausgangsbandbreite in Bits pro Sekunde.|Keine Dimensionen|
 |Requests|Ja|Requests|Anzahl|Gesamt|Anforderungen an einen Streamingendpunkt|OutputFormat, HttpStatusCode, ErrorCode|
 |SuccessE2ELatency|Ja|End-to-End-Wartezeit bei Erfolg|Millisekunden|Average|Durchschnittliche Latenz für erfolgreiche Anforderungen in Millisekunden.|OutputFormat|
+
+
+## <a name="microsoftmediavideoanalyzers"></a>Microsoft.Media/videoanalyzers
+
+|Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
+|---|---|---|---|---|---|---|
+|ReceivedBytes|Ja|Empfangene Bytes|Byte|Gesamt|Die Anzahl der vom Pipelineknoten empfangenen Bytes.|PipelineTopology, Pipeline, Knoten|
 
 
 ## <a name="microsoftmixedrealityremoterenderingaccounts"></a>Microsoft.MixedReality/remoteRenderingAccounts
@@ -2856,6 +2900,14 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |ScanTimeTaken|Ja|Überprüfungsdauer|Sekunden|Gesamt|Gibt die Gesamtdauer der Überprüfung in Sekunden an.|Keine Dimensionen|
 
 
+## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/Vaults
+
+|Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
+|---|---|---|---|---|---|---|
+|BackupHealthEvent|Ja|Ereignisse der Sicherungsintegrität (Vorschau)|Anzahl|Anzahl|Anzahl der Integritätsereignisse im Zusammenhang mit der Integrität des Sicherungsauftrags|dataSourceURL, backupInstanceUrl, dataSourceType, healthStatus, backupInstanceName|
+|RestoreHealthEvent|Ja|Ereignisse der Wiederherstellungsintegrität (Vorschau)|Anzahl|Anzahl|Anzahl der Integritätsereignisse im Zusammenhang mit der Integrität des Wiederherstellungsauftrags|dataSourceURL, backupInstanceUrl, dataSourceType, healthStatus, backupInstanceName|
+
+
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
@@ -2879,8 +2931,8 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
-|Latency|Ja|Latenzdaten für eingehende HTTP-Anforderungen|Anzahl|Average|Latenzdaten für eingehende HTTP-Anforderungen|Methode, Namespace, RequestRegion, ResourceType, Microsoft.SubscriptionId|
-|Verkehr|Ja|Verkehr|Anzahl|Average|HTTP-Datenverkehr|RequestRegion, StatusCode, StatusCodeClass, ResourceType, Namespace, Microsoft.SubscriptionId|
+|Latency|Nein|Latency|Sekunden|Average|Latenzdaten für alle Anforderungen an Azure Resource Manager|IsCustomerOriginated, Method, Namespace, RequestRegion, ResourceType, StatusCode, StatusCodeClass, Microsoft.SubscriptionId|
+|Verkehr|Nein|Verkehr|Anzahl|Anzahl|Datenverkehrsdaten für alle Anforderungen an Azure Resource Manager|IsCustomerOriginated, Method, Namespace, RequestRegion, ResourceType, StatusCode, StatusCodeClass, Microsoft.SubscriptionId|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
@@ -2919,23 +2971,6 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |WSXNS|Nein|Speicherauslastung (Deprecated)|Percent|Maximum|Speicherauslastungsmetrik für Service Bus-Premium-Namespace Diese Metrik ist veraltet. Verwenden Sie stattdessen die Speicherauslastingsmetrik (NamespaceMemoryUsage).|Replikat|
 
 
-## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
-
-|Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
-|---|---|---|---|---|---|---|
-|ActualCpu|Nein|ActualCpu|Anzahl|Average|Tatsächliche CPU-Auslastung in Millicores|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|ActualMemory|Nein|ActualMemory|Byte|Average|Tatsächliche Arbeitsspeichernutzung in MB|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|AllocatedCpu|Nein|AllocatedCpu|Anzahl|Average|Diesem Container zugeordnete CPU in Millicores|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|AllocatedMemory|Nein|AllocatedMemory|Byte|Average|Diesem Container zugeordneter Arbeitsspeicher in MB|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|ApplicationStatus|Nein|ApplicationStatus|Anzahl|Average|Status der Service Fabric Mesh-Anwendung|ApplicationName, Status|
-|ContainerStatus|Nein|ContainerStatus|Anzahl|Average|Status des Containers in der Service Fabric Mesh-Anwendung|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName, Status|
-|CpuUtilization|Nein|CpuUtilization|Percent|Average|Auslastung der CPU für diesen Container als Prozentsatz von AllocatedCpu|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|MemoryUtilization|Nein|MemoryUtilization|Percent|Average|Auslastung der CPU für diesen Container als Prozentsatz von AllocatedCpu|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
-|RestartCount|Nein|RestartCount|Anzahl|Average|Anzahl Neustarts eines Containers in Service Fabric Mesh-Anwendung|ApplicationName, Status, ServiceName, ServiceReplicaName, CodePackageName|
-|ServiceReplicaStatus|Nein|ServiceReplicaStatus|Anzahl|Average|Integritätsstatus eines Dienstreplikats in Service Fabric Mesh-Anwendung|ApplicationName, Status, ServiceName, ServiceReplicaName|
-|ServiceStatus|Nein|ServiceStatus|Anzahl|Average|Integritätsstatus eines Diensts in Service Fabric Mesh-Anwendung|ApplicationName, Status, ServiceName|
-
-
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
@@ -2970,17 +3005,6 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |virtual_core_count|Ja|Anzahl virtueller Kerne|Anzahl|Average|Anzahl virtueller Kerne|Keine Dimensionen|
 
 
-## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
-
-|Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
-|---|---|---|---|---|---|---|
-|database_dtu_consumption_percent|Nein|DTU-Prozentsatz|Percent|Average|DTU-Prozentsatz|DatabaseResourceId, ElasticPoolResourceId|
-|database_storage_used|Nein|Genutzter Datenspeicherplatz|Byte|Average|Genutzter Datenspeicherplatz|DatabaseResourceId, ElasticPoolResourceId|
-|dtu_consumption_percent|Ja|DTU-Prozentsatz|Percent|Average|DTU-Prozentsatz|ElasticPoolResourceId|
-|dtu_used|Ja|DTU-Verbrauch|Anzahl|Average|DTU-Verbrauch|DatabaseResourceId|
-|storage_used|Ja|Genutzter Datenspeicherplatz|Byte|Average|Genutzter Datenspeicherplatz|ElasticPoolResourceId|
-
-
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
@@ -3000,8 +3024,9 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |cpu_percent|Ja|CPU-Prozentsatz|Percent|Average|CPU-Prozentsatz|Keine Dimensionen|
 |cpu_used|Ja|Verwendete CPU|Anzahl|Average|Verwendete CPU. Gilt für V-Kern-basierte Datenbanken.|Keine Dimensionen|
 |deadlock|Ja|Deadlocks|Anzahl|Gesamt|Deadlocks. Gilt nicht für Data Warehouses.|Keine Dimensionen|
-|delta_num_of_bytes_read|Ja|Remote-Datenlesevorgänge|Byte|Gesamt|Ein-/Ausgaben aus Datenlesevorgängen. Einheiten sind in E/As, was Bytes geteilt durch 8192 entspricht.|Keine Dimensionen|
-|delta_num_of_bytes_written|Ja|Remote-Protokollschreibvorgänge|Byte|Gesamt|Ein-/Ausgaben aus Protokollschreibvorgängen. Einheiten sind in E/As, was Bytes geteilt durch 8192 entspricht.|Keine Dimensionen|
+|delta_num_of_bytes_read|Ja|Remote-Datenlesevorgänge|Byte|Gesamt|Remotedatenlesevorgänge in Bytes|Keine Dimensionen|
+|delta_num_of_bytes_total|Ja|Gesamtanzahl der gelesenen und geschriebenen Remotebytes|Byte|Gesamt|Gesamtanzahl der von Compute gelesenen und geschriebenen Remotebytes|Keine Dimensionen|
+|delta_num_of_bytes_written|Ja|Remote-Protokollschreibvorgänge|Byte|Gesamt|Remoteprotokollschreibvorgänge in Bytes|Keine Dimensionen|
 |diff_backup_size_bytes|Ja|Speichergröße für differenzielle Sicherungen|Byte|Maximum|Speichergröße für kumulative differenzielle Sicherungen Gilt für V-Kern-basierte Datenbanken. Gilt nicht für Hyperscale-Datenbanken.|Keine Dimensionen|
 |dtu_consumption_percent|Ja|DTU-Prozentsatz|Percent|Average|DTU-Prozentsatz. Gilt für DTU-basierte Datenbanken.|Keine Dimensionen|
 |dtu_limit|Ja|DTU-Grenzwert|Anzahl|Average|DTU-Grenzwert. Gilt für DTU-basierte Datenbanken.|Keine Dimensionen|
@@ -3554,6 +3579,24 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |FunctionHits|Ja|FunctionHits|Anzahl|Gesamt|FunctionHits|Instanz|
 |SiteErrors|Ja|SiteErrors|Anzahl|Gesamt|SiteErrors|Instanz|
 |SiteHits|Ja|SiteHits|Anzahl|Gesamt|SiteHits|Instanz|
+
+
+## <a name="wandiscofusionmigrators"></a>Wandisco.Fusion/migrators
+
+|Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
+|---|---|---|---|---|---|---|
+|Bytes pro Sekunde|Ja|Bytes pro Sekunde|Bytes pro Sekunde|Average|Für einen Migrator genutzte Durchsatzgeschwindigkeit in Bytes/Sekunde||
+|DirectoriesCreatedCount|Ja|Anzahl der erstellten Verzeichnisse|Anzahl|Gesamt|Fortlaufende Ansicht, wie viele Verzeichnisse im Rahmen einer Migration erstellt wurden||
+|FileMigrationCount|Ja|Anzahl der migrierten Dateien|Anzahl|Gesamt|Fortlaufende Gesamtanzahl der migrierten Dateien||
+|InitialScanDataMigratedInBytes|Ja|Migrierte Bytes nach anfänglichem Scanvorgang|Byte|Gesamt|Zeigt die Gesamtanzahl der Bytes an, die als Ergebnis des anfänglichen Scanvorgangs des lokalen Dateisystems in einem neuen Migrator übertragen wurden. Daten, die der Migration nach dem anfänglichen Scanvorgang hinzugefügt werden, sind NICHT in dieser Metrik enthalten.||
+|LiveDataMigratedInBytes|Ja|Migrierte Livedaten in Bytes|Anzahl|Gesamt|Fortlaufende Gesamtanzahl von Livedaten, die seit Beginn der Migration aufgrund von Clientaktivitäten geändert wurden||
+|MigratorCPULoad|Ja|CPU-Auslastung durch Migrator|Percent|Average|CPU-Verbrauch durch den Migratorprozess||
+|NumberOfExcludedPaths|Ja|Anzahl der ausgeschlossenen Pfade|Anzahl|Gesamt|Fortlaufende Anzahl der Pfade, die aufgrund von Ausschlussregeln von der Migration ausgeschlossen wurden||
+|NumberOfFailedPaths|Ja|Anzahl der Pfade mit Fehlern|Anzahl|Gesamt|Anzahl der Pfade, die nicht migriert werden konnten||
+|SystemCPULoad|Ja|CPU-Auslastung durch System|Percent|Average|CPU-Gesamtverbrauch||
+|TotalMigratedDataInBytes|Ja|Gesamtmenge der migrierten Daten in Bytes|Byte|Gesamt|Ansicht der erfolgreich migrierten Bytes für einen bestimmten Migrator||
+|TotalTransactions|Ja|Transaktionen gesamt|Anzahl|Gesamt|Eine fortlaufende Gesamtanzahl der Datentransaktionen, die dem Benutzer in Rechnung gestellt werden könnten||
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

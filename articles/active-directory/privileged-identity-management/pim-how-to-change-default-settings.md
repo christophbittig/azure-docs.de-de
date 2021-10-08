@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/25/2021
+ms.date: 09/14/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 558f8b720992f44a747689cb0e69436507b685c4
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 31d58536b1af26d037b3c53f04bcae5c9359ff47
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866994"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606701"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Azure AD-Rollen in PIM
 
@@ -78,9 +78,9 @@ Wenn Sie mehrstufige Authentifizierung zum Aktivieren der Rollenzuweisung anford
 
 ### <a name="on-active-assignment"></a>Bei aktiver Zuweisung
 
-Es kann vorkommen, dass Sie einen Benutzer einer Rolle für einen kurzen Zeitraum (z. B. einen Tag) zuweisen möchten. In diesem Fall müssen die zugewiesenen Benutzer die Aktivierung nicht anfordern. In diesem Szenario kann Privileged Identity Management die mehrstufige Authentifizierung nicht erzwingen, wenn der Benutzer seine Rollenzuweisung verwendet, weil die Rolle ab dem Zeitpunkt der Zuweisung bereits aktiv ist.
+Diese Option erfordert, dass Administratoren eine Mehrfaktoren- Authentifizierung abschließen müssen, bevor sie eine aktive (und nicht nur berechtigte) Rollenzuweisung erstellen. Hier kann Privileged Identity Management die Mehrfaktoren- Authentifizierung nicht erzwingen, wenn der Benutzer seine Rollenzuweisung verwendet, weil die Rolle ab dem Zeitpunkt der Zuweisung bereits aktiv ist.
 
-Wenn Sie mehrstufige Authentifizierung bei aktiver Zuweisung anfordern möchten, wählen Sie auf der Registerkarte „Zuweisung“ von **Rolleneinstellung bearbeiten** die Option **Require Azure Multi-Factor Authentication on active assignment** (Multi-Factor Authentication bei aktiver Zuweisung anfordern) aus.
+Wenn Sie eine aktive Zuweisung einer Rolle erstellen und dafür Mehrfaktoren-Authentifizierung verlangen möchten, wählen Sie die Option **Verlange bei aktiver Zuweisung Azure Mehrfaktoren-Authentifizierung** in der Registerkarte „Zuweisung“ bei **Einstellungen für Rolle bearbeiten**.
 
 Weitere Informationen finden Sie unter [Mehrstufige Authentifizierung und Privileged Identity Management](pim-how-to-require-mfa.md).
 

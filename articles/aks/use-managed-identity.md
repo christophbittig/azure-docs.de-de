@@ -1,15 +1,14 @@
 ---
 title: Verwenden verwalteter Identitäten in Azure Kubernetes Service
 description: Erfahren Sie, wie Sie verwaltete Identitäten in Azure Kubernetes Service (AKS) verwenden.
-services: container-service
 ms.topic: article
 ms.date: 05/12/2021
-ms.openlocfilehash: dbc02f8b65235a47fc523665ea6337774a6eb557
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: e9a7a0a46e36d544a5b7d785da2b64ecde4f3faa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343503"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585300"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Verwenden verwalteter Identitäten in Azure Kubernetes Service
 
@@ -83,7 +82,10 @@ az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 > [!NOTE]
 > Nach der Aktualisierung werden die Steuerungsebene und die Add-On-Pods des Clusters auf die Verwendung der verwalteten Identität umgestellt. Für Kubelet wird jedoch so lange der Dienstprinzipal verwendet, bis Sie den Agentpool upgraden. Führen Sie auf Ihren Knoten `az aks nodepool upgrade --node-image-only` aus, um das Update auf verwaltete Identitäten abzuschließen. 
-
+>
+> Wenn Ihr Cluster „--attach-acr“ zum Pullen aus dem Image aus Azure Container Registry verwendet hat, müssen Sie nach dem Aktualisieren des Clusters auf die verwaltete Identität `az aks update --attach-acr <ACR Resource ID>` erneut ausführen, damit das neu erstellte Kubelet, das für die verwaltete Identität verwendet wird, die Berechtigung zum Pullen aus ACR erhält. Andernfalls können Sie nach dem Upgrade keinen Pull aus ACR ausführen.
+>
+> Die Azure CLI stellt sicher, dass die Berechtigung Ihres Add-Ons nach der Migration richtig festgelegt ist. Wenn Sie die Azure CLI zum Durchführen des Migrationsvorgangs nicht verwenden, müssen Sie die Berechtigung der Add-On-Identität selbst verarbeiten. Hier ist ein Beispiel für die Verwendung von [ARM](../role-based-access-control/role-assignments-template.md). 
 
 ## <a name="obtain-and-use-the-system-assigned-managed-identity-for-your-aks-cluster"></a>Abrufen und Verwenden der vom System zugewiesenen verwalteten Identität für Ihren AKS-Cluster
 
@@ -147,7 +149,7 @@ Das Ergebnis sollte wie folgt aussehen:
   "principalId": "<principalId>",
   "resourceGroup": "myResourceGroup",                       
   "tags": {},
-  "tenantId": "<tenant-id>>",
+  "tenantId": "<tenant-id>",
   "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
 }
 ```

@@ -13,16 +13,20 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a834d4d30c40b618b1601a7f8901c68143ef4912
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccb3876799c0a1473f06c1838536df17eab03398
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648516"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754379"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>Resilienz durch Überwachung und Analyse
 
 Durch die Überwachung werden Verfügbarkeit und Leistung Ihrer Anwendungen und Dienste maximiert. Sie bietet eine umfassende Lösung für das Sammeln, Analysieren und Behandeln von Telemetriedaten aus Ihrer Infrastruktur und Ihren Anwendungen. Mithilfe von Warnungen werden Sie proaktiv benachrichtigt, wenn Probleme mit Ihrem Dienst oder Ihren Anwendungen erkannt werden. Mit Warnungen können Sie Probleme identifizieren und beheben, bevor die Endbenutzer Ihres Diensts sie bemerken. [Azure AD Log Analytics](https://azure.microsoft.com/services/monitor/?OCID=AID2100131_SEM_6d16332c03501fc9c1f46c94726d2264:G:s&ef_id=6d16332c03501fc9c1f46c94726d2264:G:s&msclkid=6d16332c03501fc9c1f46c94726d2264#features) hilft Ihnen beim Analysieren und Durchsuchen der Überwachungs- und Anmeldeprotokolle und beim Erstellen benutzerdefinierter Ansichten.
+
+Sehen Sie sich dieses Video an, um zu erfahren, wie Sie die Überwachung und Berichterstellung in Azure AD B2C mithilfe von Azure Monitor einrichten.
+
+>[!Video https://www.youtube.com/embed/Mu9GQy-CbXI]
 
 ## <a name="monitor-and-get-notified-through-alerts"></a>Überwachung und Benachrichtigung durch Warnungen
 

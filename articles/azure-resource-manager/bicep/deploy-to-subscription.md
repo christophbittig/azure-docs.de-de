@@ -3,12 +3,12 @@ title: Verwenden von Bicep zum Bereitstellen von Ressourcen in einem Abonnement
 description: Hier wird das Erstellen einer Bicep-Datei beschrieben, die Ressourcen im Bereich des Azure-Abonnements bereitstellt. Es wird gezeigt, wie Sie eine Ressourcengruppe erstellen.
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: a683e0c46547be3ecb48a20a88f9a95a5b6c8ef8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: df9938e209e163b19e666a26dec4176e83fc79e6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453424"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793738"
 ---
 # <a name="subscription-deployments-with-bicep-files"></a>Abonnementbereitstellungen mit Bicep-Dateien
 
@@ -18,6 +18,10 @@ Um die Verwaltung von Ressourcen zu vereinfachen, können Sie Ressourcen auf der
 
 > [!NOTE]
 > In einer Bereitstellung auf Abonnementebene können Sie in 800 verschiedenen Ressourcengruppen bereitstellen.
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen zu Bereitstellungsbereichen und praktische Anleitungen finden Sie unter [Bereitstellen von Ressourcen für Abonnements, Verwaltungsgruppen und Mandanten mithilfe von Bicep](/learn/modules/deploy-resources-scopes-bicep/) auf **Microsoft Learn**.
 
 ## <a name="supported-resources"></a>Unterstützte Ressourcen
 

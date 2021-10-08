@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/24/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a7f066a350eae18b9c847d206310cfc3ab8bd57
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 4e980417c2c48455e43143fb2f870a63d6395f94
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112913381"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546204"
 ---
 # <a name="operating-system-upgrade"></a>Betriebssystemupgrade
 In diesem Artikel werden die Details von Betriebssystemupgrades für HANA (große Instanzen) – auch als BareMetal-Infrastruktur bezeichnet – beschrieben.
@@ -28,7 +28,7 @@ In diesem Artikel werden die Details von Betriebssystemupgrades für HANA (groß
 >Für die Durchführung von Upgrades für Ihr Betriebssystem sind Sie verantwortlich. Der Microsoft Operations-Support kann Sie in wichtigen Bereichen des Upgradevorgangs unterstützen. Es ist aber ratsam, dass Sie sich beim Planen eines Upgrades auch an Ihren Betriebssystemanbieter wenden.
 
 Das Microsoft Operations-Team installiert das Betriebssystem während der Bereitstellung der HANA-Instanz (große Instanzen) (im weiteren Verlauf auch als „HLI“ abgekürzt“).
-Sie müssen das Betriebssystem verwalten. Beispielsweise müssen Sie für die HLI das Patchen, Optimieren, Aktualisieren usw. durchführen. Bevor Sie größere Änderungen am Betriebssystem vornehmen, z. B. ein Upgrade von SP1 auf SP2, sollten Sie sich zunächst an das Microsoft Operations-Team wenden, indem Sie ein Supportticket erstellen. Das Team kann dann mit Ihnen Kontakt aufnehmen. Wir empfehlen Ihnen, dieses Ticket mindestens eine Woche vor dem Upgrade zu erstellen. 
+Sie müssen das Betriebssystem verwalten. Beispielsweise müssen Sie für die HLI das Patchen, Optimieren, Aktualisieren usw. durchführen. Bevor Sie größere Änderungen am Betriebssystem vornehmen, z. B. ein Upgrade von SP1 auf SP2, sollten Sie sich zunächst an das Microsoft Operations-Team wenden, indem Sie ein Supportticket erstellen. Sie werden sich mit Ihnen beraten. Wir empfehlen Ihnen, dieses Ticket mindestens eine Woche vor dem Upgrade zu erstellen. 
 
 Geben Sie folgende Informationen in Ihrem Ticket an:
 

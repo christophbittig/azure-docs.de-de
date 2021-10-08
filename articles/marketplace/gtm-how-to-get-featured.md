@@ -6,19 +6,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2021
-ms.openlocfilehash: 7c3a2a00c0323bc9e80b1d94d445f873d5b86d34
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.date: 09/23/2021
+ms.openlocfilehash: 60ed6920d6d4f914fc8f8b410c83ba124bf393c5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112541336"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646471"
 ---
 # <a name="how-to-get-featured-in-microsoft-appsource-and-azure-marketplace"></a>So präsentieren Sie sich in AppSource und im Azure Marketplace
 
 Azure Marketplace und AppSource verfügen über Abschnitte für **ausgewählte Apps**, in denen Ihre App präsentiert werden kann:
 
-* Erstens: Wenn Sie über ein Test-, Beratungs- oder Transaktionsangebot verfügen, sind Sie im Rahmen der [Vorteile des kommerziellen Marketplace](./gtm-your-marketplace-benefits.md) möglicherweise für den Vorteil **Platzierung in der Empfehlungskategorie im kommerziellen Marketplace** qualifiziert. Ist dies der Fall, wird Ihr Angebot im kommerziellen Marketplace automatisch in einer der Kategorien präsentiert, die sich auf der linken Seite Ihres Angebots befinden. Die Kategorie und das Timing Ihrer Platzierung sind abhängig von der Verfügbarkeit. In [diesem Video](https://partner.microsoft.com/asset/detail/best-practices-for-optimizing-your-listing-mp4) (microsoft.com) werden bewährte Methoden für die Optimierung Ihres Angebots behandelt, mit denen Sie Ihr Marketplace-Angebot noch weiter verbessern können.
+* Erstens: Wenn Sie über ein BERATUNGS- oder TRANSAKTIONSANGEBOT verfügen, sind Sie im Rahmen der [Vorteile des kommerziellen Marketplace](./gtm-your-marketplace-benefits.md) möglicherweise für den Vorteil **Platzierung in der Empfehlungskategorie im kommerziellen Marketplace** qualifiziert. Ist dies der Fall, wird Ihr Angebot im kommerziellen Marketplace automatisch in einer der Kategorien präsentiert, die sich auf der linken Seite Ihres Angebots befinden. Die Kategorie und das Timing Ihrer Platzierung sind abhängig von der Verfügbarkeit. In [diesem Video](https://partner.microsoft.com/asset/detail/best-practices-for-optimizing-your-listing-mp4) (microsoft.com) werden bewährte Methoden für die Optimierung Ihres Angebots behandelt, mit denen Sie Ihr Marketplace-Angebot noch weiter verbessern können.
 * Zweitens: Schauen Sie sich unten die Liste der bewährten Methoden und Kriterien an, um einen Platz zu erhalten.
 
 Der Auswahlalgorithmus für „Ausgewählte Apps“ erzeugt eine Punktzahl von Microsoft für eine App, ganz ähnlich der Kreditwürdigkeit einer Person in den USA.  Die wöchentliche Auswahl der ausgewählten Apps basiert auf der Berechnung der Leistung von App und Dienst.

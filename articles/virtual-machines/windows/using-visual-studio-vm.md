@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: andster
 keywords: visualstudio
-ms.openlocfilehash: de2c782b7b311256e287f49f931ed6ab1de09c55
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: d77e0c04e5fac91de2142d14ba88d3188303945d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688536"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582142"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-Images in Azure
 **Gilt für**: :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
@@ -81,7 +81,7 @@ Azure bietet eine umfassende Palette von Größen für virtuelle Computer. Da Vi
     
 Weitere Informationen zu den aktuellen VM-Größen finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../sizes.md).
 
-Mit Azure können Sie die Größe des virtuellen Computers ändern, um einen erneuten Abgleich Ihrer ursprünglichen Wahl vorzunehmen. Sie können einen neuen virtuellen Computer mit einer besser geeigneten Größe bereitstellen oder die Größe des vorhandenen virtuellen Computers an verschiedene zugrunde liegende Hardware anpassen. Weitere Informationen finden Sie unter [Ändern der Größe eines virtuellen Windows-Computers](./resize-vm.md).
+Mit Azure können Sie die Größe des virtuellen Computers ändern, um einen erneuten Abgleich Ihrer ursprünglichen Wahl vorzunehmen. Sie können einen neuen virtuellen Computer mit einer besser geeigneten Größe bereitstellen oder die Größe des vorhandenen virtuellen Computers an verschiedene zugrunde liegende Hardware anpassen. Weitere Informationen finden Sie unter [Ändern der Größe eines virtuellen Windows-Computers](../resize-vm.md).
 
 ## <a name="after-the-vm-is-running-whats-next"></a>Wie geht es weiter, wenn der virtuelle Computer ausgeführt wird?
 Visual Studio folgt in Azure dem Modell „Verwendung Ihrer eigenen Lizenz“. Wie bei einer Installation auf proprietärer Hardware besteht einer der ersten Schritte in der Lizenzierung Ihrer Visual Studio-Installation. Visual Studio lässt sich mit einer der folgenden Methoden entsperren:
@@ -96,7 +96,7 @@ Das Spektrum der Entwicklungsumgebungen ist unüberschaubar, und für den Ausbau
 
 Kurze Zusammenfassung: Verwenden Sie das Tool für die Systemvorbereitung (Sysprep), und fahren Sie die ausgeführte VM herunter. Erfassen Sie die VM *(Abbildung 1)* anschließend über die Benutzeroberfläche des Azure-Portals als Image. Azure speichert die Datei `.vhd` mit dem Image im Speicherkonto Ihrer Wahl. Anschließend wird das neue Image als Imageressource in der Liste der Ressourcen Ihres Abonnements angezeigt.
 
-<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*Abbildung 1: Erfassen eines Images über die Benutzeroberfläche des Azure-Portals*</center>
+<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI"><center>*Abbildung 1: Erfassen eines Images über die Benutzeroberfläche des Azure-Portals*</center>
 
 Weitere Informationen finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](./capture-image-resource.md).
 

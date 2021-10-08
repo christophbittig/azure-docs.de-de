@@ -1,5 +1,5 @@
 ---
-title: Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center
+title: Dashboard für Bewertungen und Rezensionen für den gewerblichen Markt
 description: Erfahren Sie, wie Sie auf eine konsolidierte Ansicht des Kundenfeedbacks zu Ihren Angeboten in Microsoft AppSource und im Azure Marketplace zugreifen können.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 07/06/2021
-ms.openlocfilehash: d1a4f749e883ecc184ac54e16a7eeb5d83686ad6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: df8d3d610262d9d544b9161c14d790a54d00f3cc
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346292"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082636"
 ---
-# <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center
+# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Dashboard für Bewertungen und Rezensionen in Commercial Marketplace Analytics
 
-Dieser Artikel enthält Informationen zum Dashboard „Bewertungen und Rezensionen“ in Partner Center. Im Dashboard wird eine konsolidierte Ansicht des Kundenfeedbacks zu Angeboten bei Microsoft AppSource und im Azure Marketplace angezeigt. Beim Suchen, Durchsuchen und Erwerben von Angeboten in beiden Marketplaces können Kunden Bewertungen und Rezensionen für die von ihnen erworbenen Angebote abgeben.
+Dieser Artikel enthält Informationen über das Dashboard für Bewertungen und Rezensionen im Partner Center. Im Dashboard wird eine konsolidierte Ansicht des Kundenfeedbacks zu Angeboten bei Microsoft AppSource und im Azure Marketplace angezeigt. Beim Suchen, Durchsuchen und Erwerben von Angeboten in beiden Marketplaces können Kunden Bewertungen und Rezensionen für die von ihnen erworbenen Angebote abgeben.
 
 - Kunden können eine neue Bewertung übermitteln oder eine vorhandene Bewertung oder Rezension, die sie bereits übermittelt haben, überprüfen, aktualisieren oder löschen. Kunden können nur Änderungen an den Bewertungen und Rezensionen vornehmen, deren Besitzer sie sind.  
 - Rezensionen werden auf der Registerkarte „Rezensionen“ auf der Produktseite des Angebots im Azure Marketplace bzw. in AppSource veröffentlicht. Kunden können ihren Namen einschließen oder ihre Beiträge anonym veröffentlichen.  
@@ -25,20 +25,35 @@ Dieser Artikel enthält Informationen zum Dashboard „Bewertungen und Rezension
 >[!NOTE]
 > Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](analytics-faq.yml).
 
-## <a name="access-the-dashboard"></a>Zugreifen auf das Dashboard
+## <a name="access-the-ratings--reviews-dashboard"></a>Zugriff auf das Dashboard für Bewertungen und Rezensionen
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht Arbeitsbereiche](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie auf der Startseite die Kachel **Einblicke**.
+
+    [ ![Veranschaulicht die Kachel Einblicke auf der Startseite des Partner Centers.](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. Wählen Sie im linken Menü **Bewertungen & Rezensionen**.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
 
 Erweitern Sie in Partner Center im [Dashboard des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) den Abschnitt **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** , und wählen Sie **Bewertungen und Rezensionen** aus.
 
+---
+
 Im Dashboard wird eine grafische Darstellung der folgenden Kundenaktivität angezeigt:
 
-- Bewertungen und Rezensionen  
+- Ratings  
 - Rezensionskommentare
 
-Auf den Registerkarten zu **Marketplace Insights** können Sie die Metriken zu Ihrem Angebot bei Microsoft AppSource und im Azure Marketplace separat anzeigen. Wählen Sie das Angebot im Dropdownmenü der Angebote aus, um bestimmte Angebotsmetriken anzuzeigen.
+Verwenden Sie die Registerkarten **Marketplace Insights**, um die Microsoft AppSource- und Microsoft Azure Marketplace-Metriken für Ihr Angebot getrennt zu betrachten. Wählen Sie das Angebot im Dropdownmenü der Angebote aus, um bestimmte Angebotsmetriken anzuzeigen.
 
-### <a name="ratings--reviews-summary"></a>Zusammenfassung von Bewertungen und Rezensionen
+### <a name="ratings-and-reviews-summary"></a>Zusammenfassung von Bewertungen und Rezensionen
 
-Im Abschnitt mit der Zusammenfassung von Bewertungen und Rezensionen werden die folgenden Metriken für einen ausgewählten Datumsbereich angezeigt:
+Im Abschnitt "Zusammenfassung" werden die folgenden Metriken für einen ausgewählten Datumsbereich angezeigt:
 
 - **Durchschnittliche Bewertung:** Gewichtete durchschnittliche Sternebewertung aller Bewertungen, die von Kunden für das ausgewählte Angebot gesendet wurden.
 - **Aufschlüsselung der Bewertungen:** Aufschlüsselung der Sternebewertung nach Anzahl von Kunden, die Bewertungen gesendet haben. Im Balkendiagramm sind tatsächliche und überarbeitete Bewertungen (Anzahl aktualisierter Bewertungen) gestapelt.
@@ -53,20 +68,37 @@ Rezensionen werden in chronologischer Reihenfolge nach Veröffentlichungsdatum a
 
 :::image type="content" source="media/marketplace-publisher-guide-rating-reviews/analyze-reviews.png" alt-text="Veranschaulicht die Analyse von Rezensionskommentaren in Partner Center." lightbox="media/marketplace-publisher-guide-rating-reviews/analyze-reviews.png":::
 
-### <a name="responding-to-a-review"></a>Reagieren auf eine Rezension
+### <a name="respond-to-a-review"></a>Auf eine Bewertung antworten
 
-Sie können auf Rezensionen von Benutzern reagieren. Die Antwort wird entweder in Azure Marketplace- oder AppSource-Storefronts angezeigt. Diese Funktionalität gilt für die folgenden Angebotstypen: Azure-Anwendung, Azure-Container, virtueller Azure-Computer, Dynamics 365 Business Central, Dynamics 365 Customer Engagement und Power Apps, Dynamics 365 Operations, IoT Edge-Modul, verwalteter Dienst, Power BI-App und Software-as-a-Service. Führen Sie die folgenden Schritte aus, um auf eine Rezension zu reagieren:
+Sie können auf Rezensionen von Benutzern reagieren. Die Antwort wird entweder in Azure Marketplace- oder AppSource-Storefronts angezeigt. Diese Funktionalität gilt für die folgenden Angebotstypen: Azure-Anwendung, Azure-Container, virtueller Azure-Computer, Dynamics 365 Business Central, Dynamics 365 Customer Engagement und Power Apps, Dynamics 365 Operations, IoT Edge-Modul, verwalteter Dienst, Power BI-App und Software-as-a-Service.
 
-1. Wählen Sie die Registerkarte **Bewertungen und Rezensionen** aus und wählen Sie dann **Azure Marketplace** oder **AppSource** aus. Sie können **Filter** auswählen, um die Liste der Rezensionen einzugrenzen und z. B. nur Rezensionen mit einer bestimmten Sternebewertung anzuzeigen.
+Führen Sie die folgenden Schritte aus, um auf eine Rezension zu reagieren:
 
-:::image type="content" source="media/marketplace-publisher-guide-rating-reviews/ratings-and-reviews.png" alt-text="Veranschaulicht die Bewertungen und Rezensionen in AppSource." lightbox="media/marketplace-publisher-guide-rating-reviews/ratings-and-reviews.png":::
-2. Wählen Sie den Link **Antworten** bei der Rezension aus, auf die Sie reagieren möchten, geben Sie Ihre Antwort in das **Textfeld** ein und wählen Sie dann **Antwort senden** aus.
+#### <a name="workspaces-view"></a>[Ansicht Arbeitsbereiche](#tab/workspaces-view)
+
+1. Wählen Sie auf der Seite **Bewertungen & Rezensionen** die Option **Azure Marketplace** oder **AppSource**. Sie können **Filter** auswählen, um die Liste der Bewertungen einzugrenzen und z. B. nur Bewertungen mit einer bestimmten Sternebewertung anzuzeigen.
+
+    [![Illustriert die Seite mit den Bewertungen und Rezensionen.](media/marketplace-publisher-guide-rating-reviews/ratings-and-reviews-workspace.png)](media/marketplace-publisher-guide-rating-reviews/ratings-and-reviews-workspace.png#lightbox)
+
+1. Wählen Sie den Link **Antworten** bei der Rezension aus, auf die Sie reagieren möchten, geben Sie Ihre Antwort in das **Textfeld** ein und wählen Sie dann **Antwort senden** aus.
 
 Die Antwort wird unter dem Text der ursprünglichen Rezension auf der Produktdetailseite in der AppSource- und Azure Marketplace-Onlinestorefront angezeigt.
 
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+1. Wählen Sie auf der Seite **Bewertungen & Rezensionen** die Option **Azure Marketplace** oder **AppSource**. Sie können **Filter** auswählen, um die Liste der Rezensionen einzugrenzen und z. B. nur Rezensionen mit einer bestimmten Sternebewertung anzuzeigen.
+
+    :::image type="content" source="media/marketplace-publisher-guide-rating-reviews/ratings-and-reviews.png" alt-text="Veranschaulicht die Bewertungen und Rezensionen in AppSource." lightbox="media/marketplace-publisher-guide-rating-reviews/ratings-and-reviews.png":::
+
+1. Wählen Sie den Link **Antworten** bei der Rezension aus, auf die Sie reagieren möchten, geben Sie Ihre Antwort in das **Textfeld** ein und wählen Sie dann **Antwort senden** aus.
+
+Die Antwort wird unter dem Text der ursprünglichen Rezension auf der Produktdetailseite in der AppSource- und Azure Marketplace-Onlinestorefront angezeigt.
+
+---
+
 #### <a name="appsource"></a>AppSource
 
-:::image type="content" source="media/marketplace-publisher-guide-rating-reviews/review-reply-appsource.png" alt-text="Veranschaulicht die Rezensionsantwort in AppSource." lightbox="media/marketplace-publisher-guide-rating-reviews/review-reply-appsource.png":::
+:::image type="content" source="media/marketplace-publisher-guide-rating-reviews/review-reply-appsource.png" alt-text="Veranschaulicht die Antwort auf die AppSource-Überprüfung" lightbox="media/marketplace-publisher-guide-rating-reviews/review-reply-appsource.png":::
 
 #### <a name="azure-marketplace-online-store"></a>Azure Marketplace-Onlineshop
 

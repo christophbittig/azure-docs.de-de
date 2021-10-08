@@ -2,21 +2,21 @@
 title: Installieren von VMware HCX in Azure VMware Solution
 description: Installieren Sie VMware HCX in Ihrer privaten Azure VMware Solution-Cloud.
 ms.topic: how-to
-ms.date: 08/12/2021
-ms.openlocfilehash: 2dec92fdee47c242a8e7e5b3df7befc586964910
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.date: 09/16/2021
+ms.openlocfilehash: e3db000661ea310c35d32d988db5cd2001290004
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340475"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600815"
 ---
 # <a name="install-and-activate-vmware-hcx-in-azure-vmware-solution"></a>Installieren und Aktivieren von VMware HCX in Azure VMware Solution
 
-VMware HCX Advanced und der zugehörige Cloud-Manager werden nicht mehr vorab in Azure VMware Solution bereitgestellt. Stattdessen müssen Sie es über das Azure-Portal als Add-On installieren. Die Standardeinstellung ist HCX Advanced. Danach können Sie weiterhin VMware HCX Enterprise Edition über den Support anfordern, wenn Sie die Features der Enterprise-Edition benötigen. Sie laden dennoch die OVA-Datei des HCX-Connectors herunter und stellen das virtuelle Gerät auf Ihrem lokalen vCenter bereit.
+VMware HCX Advanced und der zugehörige Cloud-Manager werden nicht mehr vorab in Azure VMware Solution bereitgestellt. Stattdessen installieren Sie diese Komponenten über das Azure-Portal als Add-On. Sie laden dennoch die OVA-Datei des HCX-Connectors herunter und stellen das virtuelle Gerät auf Ihrem lokalen vCenter bereit. 
 
-HCX Advanced unterstützt bis zu drei Standortverbindungen (lokal-zu-Cloud oder Cloud-zu-Cloud). Wenn Sie mehr als drei Standortverbindungen benötigen, verwenden Sie HCX Enterprise Edition. Um HCX Enterprise Edition zu aktivieren, das sich derzeit in der öffentlichen Vorschauversion für Azure VMware Solution befindet, müssen Sie eine Supportanfrage öffnen, damit es aktiviert wird. Sobald der Dienst allgemein verfügbar ist, haben Sie 30 Tage Zeit, um über Ihre nächsten Schritte zu entscheiden. Sie können auch den HCX Enterprise Edition-Dienst deaktivieren oder abbestellen, aber HCX Advanced behalten, da es Teil der Knotenkosten ist.
+Jede Edition von VMware HCX unterstützt 25 Standortpaare (lokal/Cloud oder Cloud/Cloud).  Die Standardedition ist HCX Advanced. Sie können jedoch eine [Supportanfrage](https://rc.portal.azure.com/#create/Microsoft.Support) eröffnen, damit HCX Enterprise Edition aktiviert ist, die sich derzeit in der öffentlichen Vorschau befindet. Sobald der Dienst allgemein verfügbar ist, haben Sie 30 Tage Zeit, um über Ihre nächsten Schritte zu entscheiden. Sie können auch den HCX Enterprise Edition-Dienst deaktivieren oder abbestellen, aber HCX Advanced behalten, da es Teil der Knotenkosten ist.
 
-Ein Downgrade von HCX Enterprise Edition auf HCX Advanced ist ohne erneute Bereitstellung möglich. Stellen Sie zunächst sicher, dass Sie zu einem HCX Advanced-Konfigurationszustand zurückgekehrt sind und nicht die Enterprise-Features verwenden. Wenn Sie ein Downgrade planen, stellen Sie sicher, dass keine geplanten Migrationen stattfinden, Features wie RAV und MON nicht verwendet werden und die Anzahl der Standortkopplungen drei oder weniger beträgt.
+Ein Downgrade von HCX Enterprise Edition auf HCX Advanced ist ohne erneute Bereitstellung möglich. Stellen Sie zunächst sicher, dass Sie Ihre Konfiguration auf HCX Advanced zurückgesetzt haben und keine Enterprise-Features verwenden. Wenn Sie ein Downgrade planen, stellen Sie sicher, dass keine Migrationen geplant sind, Features wie RAV und [HCX Mobility Optimized Networking (MON)](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-0E254D74-60A9-479C-825D-F373C41F40BC.html) nicht verwendet werden und maximal drei Standortpaare vorhanden sind.
 
 >[!TIP]
 >Sie können [HCX Advanced](#uninstall-hcx-advanced) auch über das Portal deinstallieren. Wenn Sie HCX Advanced deinstallieren, vergewissern Sie sich, dass keine aktiven Migrationen ausgeführt werden. Durch das Entfernen von HCX Advanced werden die von den virtuellen HCX-Geräten belegten Ressourcen in Ihre private Cloud zurückgeführt.
@@ -26,13 +26,15 @@ In dieser Schrittanleitung führen Sie die folgenden Schritte aus:
 * Installieren von HCX Advanced über das Azure-Portal
 * Herunterladen und Bereitstellen der OVA-Datei für den VMware HCX-Connector
 * Aktivieren von HCX Advanced mit einem Lizenzschlüssel
-* Deinstallieren von HCX Advanced
+
 
 Wenn Sie fertig sind, folgen Sie den empfohlenen nächsten Schritten am Ende, um mit den Schritten dieses Leitfadens für erste Schritte fortzufahren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Vorbereiten von HCX-Installationen](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-A631101E-8564-4173-8442-1D294B731CEB.html)
+
+- Wenn Sie VMware HCX Enterprise verwenden möchten, stellen Sie sicher, dass Sie das [ VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)-Add-On über eine [Supportanfrage](https://portal.azure.com/#create/Microsoft.Support) aktiviert haben. Es handelt sich um eine kostenlose Testversion für zwölf Monate in Azure VMware Solution.
 
 - [VMware-Blogreihe: Cloudmigration](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html)
 

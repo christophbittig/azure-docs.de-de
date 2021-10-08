@@ -3,12 +3,12 @@ title: Reservierte Instanzen von Azure VMware Solution
 description: Es wird beschrieben, wie Sie eine reservierte Instanz für Azure VMware Solution erwerben. Die reservierte Instanz deckt nur den Computebereich Ihrer Nutzung ab und schließt die Softwarelizenzierungskosten ein.
 ms.topic: how-to
 ms.date: 05/13/2021
-ms.openlocfilehash: 6204e7cade66ee60885db20226981980f4741a76
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: edb4136039624ceef8bd6a419a8b617798b611ae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351396"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643166"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Sparen von Kosten mit Azure VMware Solution
 
@@ -55,7 +55,7 @@ Diese Anforderungen gelten für den Erwerb einer reservierten Instanz eines dedi
    | Feld        |  BESCHREIBUNG |
    | ------------ | ------------ |
    | Subscription | Das zum Bezahlen für die Reservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Zahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) „Microsoft-Kundenvereinbarung“ oder ein einzelnes Abonnement mit Sätzen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Die Gebühren werden ggf. von der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit Sätzen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt. |
-   | `Scope`        | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<br><ul><li><b>Einzelne Ressourcengruppe</b>: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li><b>Einzelabonnement</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li><b>Gemeinsam genutzt</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Daher handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen erstellt wurden.</li></ul>       |
+   | `Scope`        | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<br><ul><li><b>Einzelne Ressourcengruppe</b>: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li><b>Einzelabonnement</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li><b>Gemeinsam genutzt</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Daher handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen erstellt wurden.<li>**Verwaltungsgruppe**: Wendet den Reservierungsrabatt auf die entsprechende Ressource in der Liste der Abonnements an, die Teil des Verwaltungsgruppen- und Abrechnungsbereichs sind.</li></li></ul>       |
    | Region       | Die Azure-Region, die durch die Reservierung abgedeckt wird   |
    | Hostgröße    | AV36    |
    | Begriff         | Ein Jahr oder drei Jahre  |
@@ -84,7 +84,7 @@ CSPs, die reservierte Instanzen für ihre Kunden erwerben möchten, müssen die 
    | Feld        |  BESCHREIBUNG |
    | ------------ | ------------ |
    | Subscription | Das Abonnement, mit dem die Reservierung finanziert wird. Die Zahlungsmethode für das Abonnement wird mit Zahlungen für die Reservierung belastet. Der Abonnementtyp muss berechtigt sein, wie in diesem Fall ein CSP-Abonnement.|
-   | `Scope`        | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<br><ul><li><b>Einzelne Ressourcengruppe</b>: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li><b>Einzelabonnement</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li><b>Gemeinsam genutzt</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Daher handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen erstellt wurden.</li></ul>       |
+   | `Scope`        | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen:<br><ul><li><b>Einzelne Ressourcengruppe</b>: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li><b>Einzelabonnement</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li><b>Gemeinsam genutzt</b>: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Daher handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen erstellt wurden.<li>**Verwaltungsgruppe**: Wendet den Reservierungsrabatt auf die entsprechende Ressource in der Liste der Abonnements an, die Teil des Verwaltungsgruppen- und Abrechnungsbereichs sind.</li></li></ul>       |
    | Region       | Die Azure-Region, die durch die Reservierung abgedeckt wird   |
    | Hostgröße    | AV36    |
    | Begriff         | Ein Jahr oder drei Jahre  |

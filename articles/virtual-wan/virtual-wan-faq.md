@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 7b0045ccfd54d956ef8ae7fd2eb1b38705aafd31
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: c4c31314ca8e559748425518258e0eec965d9c09
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514967"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754433"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN – Häufig gestellte Fragen
 
@@ -34,7 +34,9 @@ Virtual WAN ist in zwei Varianten verfügbar: Basic und Standard. In Virtual WAN
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Wie werden Verfügbarkeitszonen und Resilienz in Virtual WAN gehandhabt?
 
-Virtual WAN ist eine Sammlung von Hubs und Diensten, die innerhalb des Hubs zur Verfügung gestellt werden. Der Benutzer kann gemäß seinen Anforderungen beliebig viele Virtual WAN-Instanzen besitzen. In einem Virtual WAN-Hub gibt es mehrere Dienste wie VPN, ExpressRoute usw. Jeder dieser Dienste (mit Ausnahme der Azure Firewall) wird in einer Region der Verfügbarkeitszonen eingesetzt, sofern die Region Verfügbarkeitszonen unterstützt. Wenn eine Region nach der anfänglichen Bereitstellung im Hub zu einer Verfügbarkeitszone wird, kann der Benutzer die Gateways neu erstellen, wodurch eine Bereitstellung der Verfügbarkeitszone ausgelöst wird. Alle Gateways werden in einem Hub als „Aktiv/Aktiv“ zur Verfügung gestellt, was bedeutet, dass in einem Hub die Resilienz integriert ist. Benutzer können Verbindungen mit mehreren Hubs herstellen, wenn sie eine regionsübergreifende Resilienz wünschen.
+Virtual WAN ist eine Sammlung von Hubs und Diensten, die innerhalb des Hubs zur Verfügung gestellt werden. Der Benutzer kann gemäß seinen Anforderungen beliebig viele Virtual WAN-Instanzen besitzen. In einem Virtual WAN-Hub gibt es mehrere Dienste wie VPN, ExpressRoute usw. Jeder dieser Dienste wird über Verfügbarkeitszonen hinweg bereitgestellt (mit Ausnahme von Azure Firewall), sofern die Region Verfügbarkeitszonen unterstützt. Wenn eine Region nach der anfänglichen Bereitstellung im Hub zu einer Verfügbarkeitszone wird, kann der Benutzer die Gateways neu erstellen, wodurch eine Bereitstellung der Verfügbarkeitszone ausgelöst wird. Alle Gateways werden in einem Hub als „Aktiv/Aktiv“ zur Verfügung gestellt, was bedeutet, dass in einem Hub die Resilienz integriert ist. Benutzer können Verbindungen mit mehreren Hubs herstellen, wenn sie eine regionsübergreifende Resilienz wünschen. 
+
+Derzeit kann Azure Firewall zur Unterstützung von Verfügbarkeitszonen über das Azure Firewall Manager-Portal, über [PowerShell](/powershell/module/az.network/new-azfirewall?view=azps-6.3.0#example-6--create-a-firewall-with-no-rules-and-with-availability-zones) oder die CLI bereitgestellt werden. Es gibt derzeit keine Möglichkeit, eine bestehende Firewall für die Bereitstellung über Verfügbarkeitszonen hinweg zu konfigurieren. Sie müssen Ihre Azure Firewall löschen und erneut bereitstellen. 
 
 Obwohl das Konzept von Virtual WAN global ist, basiert die eigentliche virtuelle WAN-Ressource auf dem Resource Manager und wird regional bereitgestellt. Falls die virtuelle WAN-Region selbst ein Problem aufweisen sollte, werden alle Hubs in diesem virtuellen WAN weiterhin unverändert funktionieren, aber der Benutzer kann keine neuen Hubs erstellen, bis die virtuelle WAN-Region verfügbar ist.
 

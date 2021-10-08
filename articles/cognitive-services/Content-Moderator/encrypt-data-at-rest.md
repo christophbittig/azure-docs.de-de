@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 1401108a594e30790e842ec379724603f11d493f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7beb615307b602789b845e10cee28ca402acf9e9
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100524059"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217180"
 ---
 # <a name="content-moderator-encryption-of-data-at-rest"></a>Content Moderator-Verschlüsselung für ruhende Daten
 
@@ -25,7 +25,7 @@ Content Moderator verschlüsselt automatisch Daten, wenn sie in der Cloud persis
 > [!IMPORTANT]
 > Vom Kunden verwaltete Schlüssel sind nur im Tarif E0 verfügbar. Wenn Sie die Möglichkeit haben möchten, von Kunden verwaltete Schlüssel zu verwenden, füllen Sie das [Formular zum Anfordern von kundenseitig verwalteten Schlüsseln für Content Moderator](https://aka.ms/cogsvc-cmk) aus, und reichen Sie es ein. Nach ca. 3–5 Werktagen erhalten Sie eine Rückmeldung zum Status Ihrer Anforderung. Je nach Bedarf können Sie in einer Warteschlange platziert und genehmigt werden, sobald Platz verfügbar ist. Nachdem Ihre Verwendung von CMK mit Content Moderator genehmigt wurde, müssen Sie eine neue Content Moderator-Ressource erstellen und als Tarif „E0“ auswählen. Nachdem die Content Moderator-Ressource mit dem Tarif „E0“ erstellt wurde, können Sie mit Azure Key Vault Ihre verwaltete Identität einrichten.
 
-[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
+Kundenseitig verwaltete Schlüssel sind in allen Azure-Regionen verfügbar.
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 

@@ -10,18 +10,18 @@ ms.date: 05/08/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: a0f4a8602b3f4b10ac1ef6ca1ac65e5bedc76210
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 244d7b7d2ff6fe88b883b2e8adbeeaa0e7fb167e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187395"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593228"
 ---
 # <a name="create-develop-and-maintain-synapse-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse-Notebooks in Azure Synapse Analytics
 
 Ein Synapse-Notebook ist eine Weboberfläche zum Erstellen von Dateien, die Live-Code, Visualisierungen und beschreibenden Text enthalten. Notebooks sind ein guter Ausgangspunkt, um Ideen zu überprüfen und schnelle Experimente zu verwenden, um Erkenntnisse aus Ihren Daten zu gewinnen. Notebooks werden auch häufig bei der Datenvorbereitung, Datenvisualisierung, Machine Learning und andere Big Data-Szenarien verwendet.
 
-Mit einem Synapse-Notebook können Sie:
+Mit einem Synapse-Notebook können Sie: 
 
 * Ohne Einrichtungsaufwand sofort loslegen.
 * Daten mit integrierten Sicherheitsfeatures auf Unternehmensniveau schützen.
@@ -42,10 +42,11 @@ Das Synapse-Team brachte die neue Notebookkomponente in Synapse Studio ein, um d
 |Drag & Drop zum Verschieben einer Zelle| Nicht unterstützt |&#9745;|
 |Gliederung (Inhaltsverzeichnis)| Nicht unterstützt |&#9745;|
 |Variablen-Explorer| Nicht unterstützt |&#9745;|
-|Textzelle mit Symbolleisten-Schaltflächen formatieren|&#9745;| Nicht verfügbar |
+|Textzelle mit Symbolleisten-Schaltflächen formatieren|&#9745;| Nicht unterstützt|
 |Kommentieren von Codezellen| Nicht unterstützt | &#9745;|
 
-
+> [!NOTE]
+> Der Variablen-Explorer unterstützt nur Python.
 ## <a name="create-a-notebook"></a>Erstellen eines Notebooks
 
 Ein Notebook kann auf zwei Arten erstellt werden. Sie können ein neues Notebook erstellen oder ein vorhandenes Notebook aus dem **Objekt-Explorer** in einen Synapse-Arbeitsbereich importieren. Synapse-Notebooks erkennen Standard Jupyter Notebook IPYNB-Dateien.
@@ -64,7 +65,7 @@ Wir bieten umfangreiche Vorgänge zum Entwickeln von Notebooks:
 + [IDE-artiges IntelliSense](#ide-style-intellisense)
 + [Codeausschnitte](#code-snippets)
 + [Textzelle mit Symbolleisten-Schaltflächen formatieren](#format-text-cell-with-toolbar-buttons)
-+ [Rückgängigmachen des Zellenvorgangs](#undo-cell-operation)
++ [Zellenvorgang rückgängig machen/wiederholen](#undo-redo-cell-operation)
 + [Kommentieren von Codezellen](#Code-cell-commenting)
 + [Verschieben einer Zelle](#move-a-cell)
 + [Löschen einer Zelle](#delete-a-cell)
@@ -91,13 +92,10 @@ Es gibt mehrere Möglichkeiten, um Ihrem Notebook eine neue Zelle hinzuzufügen.
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
-1. Erweitern Sie oben links die Schaltfläche **+ Zelle**, und wählen Sie **Codezelle** oder **Markdown-Zelle** aus.
+1. Zeigen Sie mit dem Mauszeiger auf den Bereich zwischen zwei Zellen, und wählen Sie **Code** oder **Markdown** aus.
     ![Ein Screenshot, der „Eine Zelle mit der Schaltfläche Zelle hinzufügen“ in Azure Notebook zeigt](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-1.png)
-2. Wählen Sie das Pluszeichen am Anfang einer Zelle und anschließend **Codezelle** oder **Markdown-Zelle** aus.
 
-    ![Ein Screenshot, der „Eine Zelle zwischen den Zwischenräumen hinzufügen“ in Azure Notebook zeigt](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-2.png)
-
-3. Verwenden Sie [aznb-Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode). Drücken Sie **A**, um eine Zelle oberhalb der aktuellen Zelle einzufügen. Drücken Sie **B**, um eine Zelle unterhalb der aktuellen Zelle einzufügen.
+2. Verwenden Sie [aznb-Tastenkombinationen im Befehlsmodus](#shortcut-keys-under-command-mode). Drücken Sie **A**, um eine Zelle oberhalb der aktuellen Zelle einzufügen. Drücken Sie **B**, um eine Zelle unterhalb der aktuellen Zelle einzufügen.
 
 ---
 
@@ -107,8 +105,8 @@ Synapse-Notebooks unterstützen vier Apache Spark-Sprachen:
 
 * PySpark (Python)
 * Spark (Scala)
-* SparkSQL
-* .NET für Apache Spark (C#)
+* Spark SQL
+* .NET Spark (C#)
 
 Sie können die primäre Sprache für neu hinzugefügte Zellen in der Dropdownliste in der oberen Befehlsleiste festlegen.
 
@@ -138,7 +136,7 @@ Sie können in einem Synapse-Notebook nicht direkt auf Daten oder Variablen in v
 1. Lesen Sie in Zelle 1 einen Datenrahmen von einem SQL-Poolconnector mithilfe von Scala, und erstellen Sie eine temporäre Tabelle.
 
    ```scala
-   %%scala
+   %%spark
    val scalaDataFrame = spark.read.sqlanalytics(&quot;mySQLPoolDatabase.dbo.mySQLPoolTable")
    scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
@@ -166,8 +164,8 @@ Die IntelliSense-Funktionen befinden sich in unterschiedlichen Stadien der Entwi
 |Languages| Syntaxhervorhebung | Syntaxfehlermarkierungen  | Codevervollständigung für Syntax | Codevervollständigung für Variablen| Codevervollständigung für Systemfunktionen| Codevervollständigung für Benutzerfunktionen| Intelligenter Einzug | Codefaltung|
 |--|--|--|--|--|--|--|--|--|
 |PySpark (Python)|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|Spark (Scala)|Ja|Ja|Ja|Ja|-|-|-|Ja|
-|SparkSQL|Ja|Ja|-|-|-|-|-|-|
+|Spark (Scala)|Ja|Ja|Ja|Ja|Ja|Ja|-|Ja|
+|SparkSQL|Ja|Ja|Ja|Ja|Ja|-|-|-|
 |.NET für Spark (C#)|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 
 >[!Note]
@@ -196,7 +194,7 @@ Die Symbolleiste mit den Formatschaltflächen ist für das Notebook der Vorschau
 
 ---
 
-<h3 id="undo-cell-operation">Rückgängigmachen des Zellenvorgangs</h3>
+<h3 id="undo-redo-cell-operation">Zellenvorgang rückgängig machen/wiederholen</h3>
 
 # <a name="classical-notebook"></a>[Klassisches Notebook](#tab/classical)
 
@@ -218,6 +216,7 @@ Unterstützte Rückgängig-Zellenvorgänge:
 
 > [!NOTE]
 > Die Textvorgänge in der Zelle und die Codezellenkommentare sind nicht rückgängig zu machen.
+> Sie können jetzt bis zu 10 der letzten zurückliegenden Zellenaktionen rückgängig machen/wiederherstellen.
 
 
 ---
@@ -294,7 +293,7 @@ Wählen Sie am unteren Rand der aktuellen Zelle die Pfeilschaltfläche aus, um s
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
-Wählen Sie die Auslassungspunkte für **Weitere Befehle** (...) auf der Zellensymbolleiste und dann **Eingabe** aus, um die Eingabe der aktuellen Zelle zu reduzieren. Um sie zu erweitern, wählen Sie **Eingabe ausgeblendet** aus, während die Zelle reduziert ist.
+Wählen Sie auf der Zellensymbolleiste die Auslassungspunkte für **Weitere Befehle** (...) und dann **Eingabe ausblenden** aus, um die Eingabe der aktuellen Zelle zu reduzieren. Zum Erweitern wählen Sie **Eingabe anzeigen** aus, während die Zelle reduziert ist.
 
    ![Ein Animiertes GIF von „Reduzieren einer Zelleneingabe“ in Azure Notebook](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-input.gif)
 
@@ -310,7 +309,7 @@ Wählen Sie links oben in der aktuellen Zellenausgabe die Schaltfläche **Ausgab
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
-Wählen Sie die Auslassungspunkte für **Weitere Befehle** (...) auf der Zellensymbolleiste und dann **Ausgabe** aus, um die Ausgabe der aktuellen Zelle zu reduzieren. Um sie zu erweitern, wählen Sie dieselbe Schaltfläche aus, während die Ausgabe der Zelle ausgeblendet ist.
+Wählen Sie auf der Zellensymbolleiste die Auslassungspunkte für **Weitere Befehle** (...) und dann **Ausgabe ausblenden** aus, um die Ausgabe der aktuellen Zelle zu reduzieren. Zum Erweitern wählen Sie **Ausgabe anzeigen** aus, während die Zelle reduziert ist.
 
    ![Ein Animiertes GIF von „Reduzieren einer Zellenausgabe“ in Azure Notebook](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-output.gif)
 

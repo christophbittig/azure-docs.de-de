@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 33e332b05cbb6c0d20b73a13134590ed3cda4f38
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 8d5feae71fc6b901f761e6a52805a7ac5fad04a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112298779"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673538"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate-Servermigration: Häufig gestellte Fragen
 
@@ -181,7 +181,7 @@ Zeit bis zum Abschluss der anfänglichen Replikation = {Größe der Datenträger
 
 ### <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Wie kann ich die Replikation mithilfe der Azure Migrate-Appliance für die VMware-Replikation ohne Agent drosseln?  
 
-Sie können die Replikation mithilfe von NetQosPolicy drosseln. Beispiel:
+Sie können die Replikation mithilfe von NetQosPolicy drosseln. Beachten Sie, dass diese Drosselung nur für die ausgehenden Verbindungen aus der Azure Migrate Appliance gilt. Beispiel:
 
 Das in der NetQosPolicy zu verwendende AppNamePrefix ist „GatewayWindowsService“. Sie können eine Richtlinie auf der Azure Migrate-Appliance erstellen, um den Replikationsdatenverkehr von der Appliance zu drosseln, indem Sie eine Richtlinie wie die folgende erstellen:
 

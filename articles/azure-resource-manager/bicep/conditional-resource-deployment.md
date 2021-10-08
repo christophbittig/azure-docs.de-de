@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: f3c845757d6cd251905e39999c9858224ee67269
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: be7e52cb093eb9920be5b6e8e9971b7f882f7f06
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354829"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793833"
 ---
 # <a name="conditional-deployment-in-bicep"></a>Bedingte Bereitstellung in Bicep
 
@@ -18,6 +18,10 @@ Manchmal muss eine Ressource oder ein Modul optional in Bicep bereitgestellt wer
 
 > [!NOTE]
 > Die bedingte Bereitstellung wird nicht an [untergeordnete Ressourcen](child-resource-name-type.md) weitergegeben. Wenn Sie eine Ressource und ihre untergeordneten Ressourcen bedingt bereitstellen möchten, müssen Sie dieselbe Bedingung auf jeden Ressourcentyp anwenden.
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen und praktische Anleitungen zu Bedingungen finden Sie in **Microsoft Learn** unter [Erstellen flexibler Bicep-Vorlagen mithilfe von Bedingungen und Schleifen](/learn/modules/build-flexible-bicep-templates-conditions-loops/).
 
 ## <a name="deploy-condition"></a>Bereitstellungsbedingung
 

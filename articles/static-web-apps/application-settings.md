@@ -5,15 +5,15 @@ services: static-web-apps
 author: burkeholland
 ms.service: static-web-apps
 ms.topic: how-to
-ms.date: 05/08/2020
+ms.date: 09/23/2021
 ms.author: buhollan
 ms.custom: devx-track-js
-ms.openlocfilehash: 8132ed61a1588c8ccdeb2ac9dc0eb6b5354fd0e0
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: a104860eb72a6376c2ab337f31bb06fd041f42a0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778845"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597092"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps"></a>Konfigurieren von Anwendungseinstellungen für Azure Static Web Apps
 
@@ -21,47 +21,28 @@ Anwendungseinstellungen enthalten Konfigurationseinstellungen für Werte, die si
 
 Anwendungseinstellungen:
 
+- Sind als Umgebungsvariablen für die Back-End-API einer statischen Web-App verfügbar.
+- Können zum Speichern von Geheimnissen verwendet werden, die in der [Authentifizierungskonfiguration](key-vault-secrets.md) verwendet werden.
 - Sind im Ruhezustand verschlüsselt.
 - Werden in [Staging](review-publish-pull-requests.md)- und Produktionsumgebungen kopiert.
 - Dürfen nur alphanumerische Zeichen, `.` und `_` enthalten.
-- Werden gelegentlich auch als Umgebungsvariablen bezeichnet.
 
 > [!IMPORTANT]
 > Die in diesem Artikel beschriebenen Anwendungseinstellungen gelten nur für die Back-End-API einer statischen Azure-Web-App.
 >
-> Informationen zur Verwendung von Umgebungsvariablen mit Ihrer Front-End-Webanwendung finden Sie in der Dokumentation zum [JavaScript-Framework](#javascript-frameworks-and-libraries) oder zum [Generator für statische Websites](#static-site-generators).
+> Informationen zum Konfigurieren von Umgebungsvariablen, die zum Erstellen Ihrer Front-End-Webanwendung erforderlich sind, finden Sie unter [Buildkonfiguration](build-configuration.md#environment-variables).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Eine Azure Static Web Apps-Anwendung
-- [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
+- [Azure CLI](/cli/azure/install-azure-cli): Erforderlich, wenn Sie die Befehlszeile verwenden.
 
-## <a name="types-of-application-settings"></a>Arten von Anwendungseinstellungen
+## <a name="configure-api-application-settings-for-local-development"></a>Konfigurieren von API-Anwendungseinstellungen für die lokale Entwicklung
 
-Für eine Azure Static Web Apps-Anwendung gelten normalerweise zwei Aspekte. Der erste Aspekt ist die Webanwendung bzw. der statische Inhalt, der per HTML, CSS, JavaScript und mit Bildern dargestellt wird. Der zweite Aspekt ist die Back-End-API, die auf einer Azure Functions-Anwendung basiert.
+APIs in Azure Static Web Apps basieren auf Azure Functions. Dies ermöglicht es Ihnen, Anwendungseinstellungen in der Datei _local.settings.json_ zu definieren, wenn Sie die Anwendung lokal ausführen. In dieser Datei sind die Anwendungseinstellungen in der Eigenschaft `Values` der Konfiguration definiert.
 
-In diesem Artikel wird veranschaulicht, wie Sie Anwendungseinstellungen für die Back-End-API in Azure Functions verwalten.
-
-Die in diesem Artikel beschriebenen Anwendungseinstellungen können in statischen Webanwendungen nicht verwendet oder referenziert werden. Viele Front-End-Frameworks und Generatoren für statische Websites ermöglichen die Verwendung von Umgebungsvariablen während der Entwicklung. Beim Buildvorgang werden diese Variablen durch die entsprechenden Werte im generierten HTML- oder JavaScript-Code ersetzt. Da Daten im HTML- und JavaScript-Code von Besuchern der Website leicht ermittelt werden können, sollten Sie es vermeiden, vertrauliche Informationen in der Front-End-Anwendung anzuordnen. Einstellungen, die vertrauliche Daten enthalten, sollten am besten im API-Teil Ihrer Anwendung angeordnet werden.
-
-Weitere Informationen zur Verwendung von Umgebungsvariablen mit Ihrem JavaScript-Framework bzw. der -Bibliothek finden Sie in den folgenden Artikeln.
-
-### <a name="javascript-frameworks-and-libraries"></a>JavaScript-Frameworks und -Bibliotheken
-
-- [Angular](https://angular.io/guide/build#configuring-application-environments)
-- [React](https://create-react-app.dev/docs/adding-custom-environment-variables/)
-- [Svelte](https://linguinecode.com/post/how-to-add-environment-variables-to-your-svelte-js-app)
-- [Vue](https://cli.vuejs.org/guide/mode-and-env.html)
-
-### <a name="static-site-generators"></a>Generatoren für statische Websites
-
-- [Gatsby](https://www.gatsbyjs.org/docs/environment-variables/)
-- [Hugo](https://gohugo.io/getting-started/configuration/)
-- [Jekyll](https://jekyllrb.com/docs/configuration/environments/)
-
-## <a name="about-api-app-settings"></a>Informationen zu API-App-Einstellungen
-
-APIs in Azure Static Web Apps basieren auf Azure Functions. Dies ermöglicht es Ihnen, Anwendungseinstellungen in der Datei _local.settings.json_ zu definieren. In dieser Datei sind die Anwendungseinstellungen in der Eigenschaft `Values` der Konfiguration definiert.
+> [!NOTE]
+> Die Datei _local.settings.json_ wird nur für die lokale Entwicklung verwendet. Verwenden Sie das [Azure-Portal](https://portal.azure.com), um Anwendungseinstellungen für die Produktionsumgebung zu konfigurieren.
 
 Mit der unten angegebenen Beispieldatei _local.settings.json_ wird veranschaulicht, wie Sie einen Wert für `DATABASE_CONNECTION_STRING` hinzufügen.
 
@@ -76,21 +57,21 @@ Mit der unten angegebenen Beispieldatei _local.settings.json_ wird veranschaulic
 }
 ```
 
-Auf in der Eigenschaft `Values` definierte Einstellungen kann im Code in Form von Umgebungsvariablen verwiesen werden, die über das Objekt `process.env` zur Verfügung stehen.
+Auf in der Eigenschaft `Values` definierte Einstellungen kann im Code in Form von Umgebungsvariablen verwiesen werden. In Node.js-Funktionen sind sie z. B. im `process.env`-Objekt verfügbar.
 
 ```js
 const connectionString = process.env.DATABASE_CONNECTION_STRING;
 ```
 
-Die Datei `local.settings.json` wird vom GitHub-Repository nicht nachverfolgt, weil vertrauliche Informationen, z. B. Datenbank-Verbindungszeichenfolgen, häufig in der Datei enthalten sind. Da die lokalen Einstellungen auf Ihrem Computer verbleiben, müssen Sie Ihre Einstellungen manuell in Azure hochladen.
+Die Datei `local.settings.json` wird vom GitHub-Repository nicht nachverfolgt, weil vertrauliche Informationen, z. B. Datenbank-Verbindungszeichenfolgen, häufig in der Datei enthalten sind. Da die lokalen Einstellungen auf Ihrem Computer verbleiben, müssen Sie Ihre Einstellungen in Azure manuell konfigurieren.
 
-Im Allgemeinen erfolgt das Hochladen Ihrer Einstellungen nur unregelmäßig und ist nicht bei jedem Buildvorgang erforderlich.
+Im Allgemeinen erfolgt das Konfigurieren Ihrer Einstellungen nur unregelmäßig und ist nicht bei jedem Buildvorgang erforderlich.
 
-## <a name="uploading-application-settings"></a>Hochladen von Anwendungseinstellungen
+## <a name="configure-application-settings"></a>Konfigurieren von Anwendungseinstellungen
 
 Sie können Anwendungseinstellungen über das Azure-Portal oder mit der Azure CLI konfigurieren.
 
-### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
+### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
 Das Azure-Portal verfügt über eine Oberfläche zum Erstellen, Aktualisieren und Löschen von Anwendungseinstellungen.
 
@@ -112,7 +93,7 @@ Das Azure-Portal verfügt über eine Oberfläche zum Erstellen, Aktualisieren un
 
 1. Klicken Sie auf **Speichern**.
 
-### <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
+### <a name="use-the-azure-cli"></a>Verwenden der Azure CLI
 
 Sie können den Befehl `az rest` verwenden, um für Ihre Einstellungen Massenuploads in Azure durchzuführen. Der Befehl akzeptiert Anwendungseinstellungen als JSON-Objekte in einer übergeordneten Eigenschaft mit dem Namen `properties`.
 
@@ -124,9 +105,9 @@ Die einfachste Möglichkeit, eine JSON-Datei mit den entsprechenden Werten zu er
    local.settings*.json
    ```
 
-2. Erstellen Sie als Nächstes eine Kopie der Datei _local.settings.json_, und geben Sie ihr den Namen _local.settings.properties.json_.
+1. Erstellen Sie als Nächstes eine Kopie der Datei _local.settings.json_, und geben Sie ihr den Namen _local.settings.properties.json_.
 
-3. Entfernen Sie in der neuen Datei alle anderen Daten, bei denen es sich nicht um Anwendungseinstellungen handelt, und benennen Sie `Values` in `properties` um.
+1. Entfernen Sie in der neuen Datei alle anderen Daten, bei denen es sich nicht um Anwendungseinstellungen handelt, und benennen Sie `Values` in `properties` um.
 
    Die Datei sollte nun in etwa wie im folgenden Beispiel aussehen:
 
@@ -138,31 +119,31 @@ Die einfachste Möglichkeit, eine JSON-Datei mit den entsprechenden Werten zu er
    }
    ```
 
-Beim Azure CLI-Befehl werden einige spezifische Werte Ihres Kontos benötigt, um das Upload durchführen zu können. Im Fenster _Übersicht_ Ihrer Static Web Apps-Ressource haben Sie Zugriff auf die folgenden Informationen:
+1. Führen Sie den folgenden Befehl aus, um die statischen Web-Apps in Ihrem Abonnement aufzulisten und deren Details anzuzeigen.
 
-1. Name der statischen Website
-2. Ressourcengruppenname
-3. Abonnement-ID
+    ```bash
+    az staticwebapp list -o json
+    ```
 
-:::image type="content" source="media/application-settings/overview.png" alt-text="Übersicht über Azure Static Web Apps":::
+    Suchen Sie die statische Web-App, die Sie konfigurieren möchten, und notieren Sie sich deren ID.
 
-4. Führen Sie in einem Terminal oder an der Befehlszeile den unten angegebenen Befehl aus. Ersetzen Sie die Platzhalter `<YOUR_STATIC_SITE_NAME>`, `<YOUR_RESOURCE_GROUP_NAME>` und `<YOUR_SUBSCRIPTION_ID>` durch Ihre Werte aus dem Fenster _Übersicht_.
+1. Führen Sie in einem Terminal oder an der Befehlszeile den folgenden Befehl zum Hochladen der Einstellungen aus. Ersetzen Sie `<YOUR_APP_ID>` durch die ID der App, die Sie im vorherigen Schritt abgerufen haben.
 
    ```bash
-   az rest --method put --headers "Content-Type=application/json" --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/config/functionappsettings?api-version=2019-12-01-preview" --body @local.settings.properties.json
+   az rest --method put --headers "Content-Type=application/json" --uri "<YOUR_APP_ID>/config/functionappsettings?api-version=2019-12-01-preview" --body @local.settings.properties.json
    ```
 
-> [!IMPORTANT]
-> Die Datei „local.settings.properties.json“ muss sich in demselben Verzeichnis befinden, in dem dieser Befehl ausgeführt wird. Diese Datei kann einen beliebigen Namen haben. Der Name hat keine signifikante Bedeutung.
+  > [!IMPORTANT]
+  > Die Datei „local.settings.properties.json“ muss sich in demselben Verzeichnis befinden, in dem dieser Befehl ausgeführt wird. Diese Datei kann einen beliebigen Namen haben. Der Name hat keine signifikante Bedeutung.
 
 ### <a name="view-application-settings-with-the-azure-cli"></a>Anzeigen von Anwendungseinstellungen mit der Azure CLI
 
 Sie können Anwendungseinstellungen mit der Azure CLI anzeigen.
 
-- Führen Sie in einem Terminal oder an der Befehlszeile den unten angegebenen Befehl aus. Ersetzen Sie die Platzhalter `<YOUR_SUBSCRIPTION_ID>`, `<YOUR_RESOURCE_GROUP_NAME>` und `<YOUR_STATIC_SITE_NAME>` durch Ihre Werte.
+- Führen Sie in einem Terminal oder an der Befehlszeile den unten angegebenen Befehl aus. Stellen Sie sicher, dass Sie den Platzhalter `<YOUR_APP_ID>` durch Ihren Wert ersetzen.
 
    ```bash
-   az rest --method post --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/listFunctionAppSettings?api-version=2019-12-01-preview"
+   az rest --method post --uri "<YOUR_APP_ID>/listFunctionAppSettings?api-version=2019-12-01-preview"
    ```
 
 ## <a name="next-steps"></a>Nächste Schritte

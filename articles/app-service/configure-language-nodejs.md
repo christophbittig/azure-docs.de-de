@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/23/2021
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 14ac7953654941de176bf74bd38787b33b9c864c
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8f65fff40419ef11dcb5d90c670d10573a114fd4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225765"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657061"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Konfigurieren einer Node.js-App für Azure App Service
 
@@ -351,7 +351,7 @@ if (req.secure) {
 
 ## <a name="monitor-with-application-insights"></a>Überwachen mit Application Insights
 
-Mit Application Insights können Sie die Leistung, die Ausnahmen und die Verwendung Ihrer Anwendung überwachen, ohne Codeänderungen vorzunehmen. Um den Application Insights-Agent anzufügen, navigieren Sie im Portal zu Ihrer Web-App, wählen Sie unter **Einstellungen** die Option **Application Insights** aus, und wählen Sie dann **Application Insights aktivieren** aus. Wählen Sie dann eine vorhandene Application Insights-Ressource aus, oder erstellen Sie eine neue Ressource. Klicken Sie abschließend unten auf **Anwenden**. Informationen zum Instrumentieren der Web-App mit PowerShell finden Sie in [diesen Anweisungen](../azure-monitor/app/azure-web-apps.md?tabs=netcore#enabling-through-powershell).
+Mit Application Insights können Sie die Leistung, die Ausnahmen und die Verwendung Ihrer Anwendung überwachen, ohne Codeänderungen vorzunehmen. Um den Application Insights-Agent anzufügen, navigieren Sie im Portal zu Ihrer Web-App, wählen Sie unter **Einstellungen** die Option **Application Insights** aus, und wählen Sie dann **Application Insights aktivieren** aus. Wählen Sie dann eine vorhandene Application Insights-Ressource aus, oder erstellen Sie eine neue Ressource. Klicken Sie abschließend unten auf **Anwenden**. Informationen zum Instrumentieren der Web-App mit PowerShell finden Sie in [diesen Anweisungen](../azure-monitor/app/azure-web-apps-nodejs.md#enable-through-powershell).
 
 Mit diesem Agent wird die serverseitige Node.js-Anwendung überwacht. Um clientseitiges JavaScript zu überwachen, [fügen Sie dem Projekt das JavaScript SDK hinzu](../azure-monitor/app/javascript.md). 
 
@@ -369,6 +369,23 @@ Wenn sich eine funktionierende Node.js-App in App Service anders verhält oder F
     - Bestimmte Webframeworks können statische Dateien im Produktionsmodus unterschiedlich bereitstellen.
     - Bestimmte Webframeworks können benutzerdefinierte Startskripts verwenden, wenn sie im Produktionsmodus ausgeführt werden.
 - Führen Sie Ihre App in App Service im Entwicklungsmodus aus. In [MEAN.js](https://meanjs.org/) können Sie Ihre App z. B. zur Laufzeit in den Entwicklungsmodus versetzen, indem Sie die [App-Einstellung `NODE_ENV` festlegen](configure-common.md).
+
+::: zone pivot="platform-windows"
+
+#### <a name="you-do-not-have-permission-to-view-this-directory-or-page"></a>Keine Berechtigung zum Anzeigen dieses Verzeichnisses oder dieser Seite
+
+Nachdem Sie Ihren Node.js-Code in einer nativen Windows-App in App Service bereitgestellt haben, wird möglicherweise die Meldung `You do not have permission to view this directory or page.` im Browser angezeigt, wenn Sie zur URL Ihrer App navigieren. Das liegt wahrscheinlich daran, dass keine *web.config*-Datei vorhanden ist (mehr dazu finden Sie in dieser [Vorlage](https://github.com/projectkudu/kudu/blob/master/Kudu.Core/Scripts/iisnode.config.template) und einem [Beispiel](https://github.com/Azure-Samples/nodejs-docs-hello-world/blob/master/web.config)).
+
+Wenn Sie Ihre Dateien über Git oder eine ZIP-Bereitstellung [mit aktivierter Buildautomatisierung](deploy-zip.md#enable-build-automation-for-zip-deploy) bereitstellen, generiert die Bereitstellungs-Engine automatisch eine *web.config*-Datei im Webstammverzeichnis Ihrer App (`%HOME%\site\wwwroot`), wenn eine der folgenden Bedingungen zutrifft:
+
+- Ihr Projektstamm verfügt über eine *package.json*-Datei, die ein `start`-Skript definiert, das den Pfad einer JavaScript-Datei enthält.
+- Ihr Projektstamm verfügt entweder über eine *server.js*- oder eine *app.js*-Datei.
+
+Die generierte *web.config*-Datei ist auf das erkannte Startskript zugeschnitten. Bei anderen Bereitstellungsmethoden müssen Sie die *web.config*-Datei manuell hinzufügen. Stellen Sie sicher, dass die Datei ordnungsgemäß formatiert ist. 
+
+Wenn Sie die [ZIP-Bereitstellung](deploy-zip.md) verwenden (z. B. über Visual Studio Code), stellen Sie sicher, dass Sie die [Buildautomatisierung aktivieren](deploy-zip.md#enable-build-automation-for-zip-deploy), da diese nicht standardmäßig aktiviert ist. [`az webapp up`](/cli/azure/webapp#az_webapp_up) verwendet die ZIP-Bereitstellung mit aktivierter Buildautomatisierung.
+
+::: zone-end
 
 ::: zone pivot="platform-linux"
 

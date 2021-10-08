@@ -1,22 +1,22 @@
 ---
-title: 'Kopieren und Einfügen bei virtuellen Computern: Azure Bastion'
-description: Erfahren Sie, wie das Kopieren und Einfügen bei einer Azure-VM mit Bastion funktioniert.
+title: 'Kopieren und Einfügen bei virtuellen Windows-Computern: Azure Bastion'
+description: Erfahren Sie, wie das Kopieren und Einfügen bei einer Windows-VM mit Bastion funktioniert.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: b8c90e3c8bea7f6471a60804f546957f5236b70b
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 5ce8faa76e1ddbd8d1d1adb52759dba0afe9c737
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536011"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629614"
 ---
-# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Kopieren und Einfügen bei virtuellen Computern: Azure Bastion
+# <a name="copy-and-paste-to-a-windows-virtual-machine-azure-bastion"></a>Kopieren und Einfügen bei virtuellen Windows-Computern: Azure Bastion
 
-Dieser Artikel hilft Ihnen, Text mit Azure Bastion aus VMs zu kopieren und in VMs einzufügen. Bevor Sie mit einem virtuellen Computer arbeiten, stellen Sie sicher, dass Sie die Schritte zum [Erstellen eines Azure Bastion-Hosts (Vorschauversion)](./tutorial-create-host-portal.md) befolgt haben. Stellen Sie dann entweder mit [RDP](bastion-connect-vm-rdp.md) oder [SSH](bastion-connect-vm-ssh.md) eine Verbindung mit der VM her, mit der Sie arbeiten möchten.
+Dieser Artikel hilft Ihnen, Text mit Azure Bastion aus VMs zu kopieren und in VMs einzufügen. Bevor Sie mit einem virtuellen Computer arbeiten, stellen Sie sicher, dass Sie die Schritte zum [Erstellen eines Azure Bastion-Hosts (Vorschauversion)](./tutorial-create-host-portal.md) befolgt haben. Stellen Sie dann entweder mit [RDP](bastion-connect-vm-rdp-windows.md) oder [SSH](bastion-connect-vm-ssh-windows.md) eine Verbindung mit der VM her, mit der Sie arbeiten möchten.
 
 Für Browser, die den erweiterten Zugriff auf die Zwischenablage-API unterstützen, können Sie Text zwischen Ihrem lokalen Gerät und der Remotesitzung genauso kopieren und einfügen wie zwischen Anwendungen und Ihrem lokalen Gerät. Für andere Browser können Sie die Zwischenablagenzugriffs-Toolpalette von Bastion verwenden.
 

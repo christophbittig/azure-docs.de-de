@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ddbe9ff6a3dfa195d0739205c3e32070b170f30
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92674508"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560750"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats-APIs
 
@@ -70,15 +70,15 @@ Hier sind die gängigsten Anforderungsheader aufgeführt, die Sie bei einem API-
 
 **Kopfzeile** | **Beschreibung und Beispiel**
 --- | ---
-Content-Type  | Das Anforderungsformat (Content-Type: application/<format>). Für Azure FarmBeats-Datenhub-APIs wird das JSON-Format verwendet. Content-Type: application/json
-Authorization  | Gibt das Zugriffstoken an, das zum Ausführen eines API-Aufrufs erforderlich ist. Autorisierung: Bearer <Access-Token>
+Content-Type  | Das Anforderungsformat (Content-Type: application/\<format\>). Für Azure FarmBeats-Datenhub-APIs wird das JSON-Format verwendet. Content-Type: application/json
+Authorization  | Gibt das Zugriffstoken an, das zum Ausführen eines API-Aufrufs erforderlich ist. Autorisierung: Bearer \<Access-Token\>
 Akzeptieren | Das Antwortformat. Für Azure FarmBeats-Datenhub-APIs wird das JSON-Format verwendet. Accept: application/json
 
 ### <a name="api-requests"></a>API-Anforderungen
 
 Zum Senden einer REST-API-Anforderung kombinieren Sie die HTTP-Methode (GET, POST, PUT oder DELETE), die URL zum API-Dienst und den Ressourcen-URI (zum Abfragen, Übermitteln von Daten, Aktualisieren oder Löschen) und fügen anschließend mindestens einen HTTP-Anforderungsheader hinzu.
 
-Die URL zum API-Dienst ist Ihre Datenhub-URL, z. B. „https://\<yourdatahub-website-name>.azurewebsites.net.
+Die URL zum API-Dienst ist Ihre Datenhub-URL, z. B. `https://<yourdatahub-website-name>.azurewebsites.net`.
 
 Optional können Sie Abfrageparameter in GET-Aufrufe einfügen, um Daten in den Antworten zu filtern, zu sortieren und deren Größe zu beschränken.
 
@@ -158,7 +158,7 @@ Auf Azure FarmBeats-APIs kann von einem Benutzer oder einer App-Registrierung in
     - Wechseln Sie zurück zur **Übersicht**, und wählen Sie den Link neben **Anwendung im lokalen Verzeichnis verwalten** aus.
     - Wechseln Sie zu **Eigenschaften**, um die **Objekt-ID** zu erfassen.
 
-4. Wechseln Sie zum Datahub Swagger (https://<yourdatahub>.azurewebsites.net/swagger/index.html), und gehen Sie wie folgt vor:
+4. Navigieren Sie zu Ihrem Datahub Swagger (`https://<yourdatahub>.azurewebsites.net/swagger/index.html`) und tun Sie folgendes:
     - Navigieren Sie zur **RoleAssignment-API**.
     - Führen Sie einen POST-Vorgang durch, um ein **RoleAssignment**-Objekt für die soeben erstellte **Objekt-ID** zu erstellen.
  

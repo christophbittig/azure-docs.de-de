@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 09/11/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 8f48e6bd94566922066b277553f64b25f5d55a45
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 75e3dc21c5cb5e8590b63c3382260331bb0bd844
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696337"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754641"
 ---
 # <a name="h-series"></a>H-Reihe
 
@@ -47,7 +47,7 @@ Virtuelle Computer der H-Serie sind für Anwendungen optimiert, für die Anforde
 
 ## <a name="software-specifications"></a>Softwarespezifikationen
 
-| Softwarespezifikationen     |Virtueller Computer der HC-Serie           |
+| Softwarespezifikationen     |H-Serie-VM           |
 |-----------------------------|-----------------------|
 | Maximale MPI-Auftragsgröße            | 4800 Kerne (300 VMs in einer einzelnen VM-Skalierungsgruppe mit singlePlacementGroup=true)  |
 | MPI-Unterstützung                 | Intel MPI 5.x, MS-MPI  |
@@ -58,7 +58,7 @@ Virtuelle Computer der H-Serie sind für Anwendungen optimiert, für die Anforde
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Andere Größen
+## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
 
 - [Allgemeiner Zweck](sizes-general.md)
 - [Arbeitsspeicheroptimiert](sizes-memory.md)
@@ -66,6 +66,11 @@ Virtuelle Computer der H-Serie sind für Anwendungen optimiert, für die Anforde
 - [GPU-optimiert](sizes-gpu.md)
 - [High Performance Computing](sizes-hpc.md)
 - [Vorherige Generationen](sizes-previous-gen.md)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
+
+Weitere Informationen zu Datenträgertypen finden Sie unter [Welche Datenträgertypen stehen in Azure zur Verfügung?](disks-types.md)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

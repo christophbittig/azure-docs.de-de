@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 08/30/2021
-ms.openlocfilehash: 68c657b7e8e045b8756bc2db8de2b4024b7530b8
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/14/2021
+ms.openlocfilehash: 71b2e494d8a570c38180f4dfc86bda87b23f4e95
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256488"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554583"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -222,7 +222,7 @@ Zur Verdeutlichung der Änderungssequenz nehmen wir an, dass Server A der prim�
 
 ## <a name="best-practices-for-sql-managed-instance"></a>Bewährte Methoden für SQL Managed Instance
 
-Die Autofailover-Gruppe muss auf der primären Instanz konfiguriert werden und stellt eine Verbindung zur sekundären Instanz in einer anderen Azure-Region her.  Alle Datenbanken in der Instanz werden in der sekundären Instanz repliziert.
+Die Autofailover-Gruppe muss auf der primären Instanz konfiguriert werden und stellt eine Verbindung zur sekundären Instanz in einer anderen Azure-Region her.  Alle Benutzerdatenbanken in der Instanz werden in der sekundären Instanz repliziert. Systemdatenbanken wie _master_ und _msdb_ werden nicht repliziert.
 
 Das folgende Diagramm zeigt eine typische Konfiguration einer georedundanten Cloudanwendung mit einer verwalteten Instanz und Autofailover-Gruppe.
 
@@ -320,12 +320,13 @@ Angenommen, Instanz A ist die primäre Instanz, Instanz B die vorhandene sekun
 > Wenn die Failovergruppe gelöscht wird, werden auch die DNS-Einträge für die Listenerendpunkte gelöscht. An diesem Punkt ist nicht völlig ausgeschlossen, dass eine andere Person eine Failovergruppe oder einen Serveralias mit dem gleichen Namen erstellt. In diesem Fall können Sie diese Komponenten nicht mehr nutzen. Verwenden Sie keine generischen Namen für die Failovergruppe, um das Risiko zu minimieren.
 
 ### <a name="enable-scenarios-dependent-on-objects-from-the-system-databases"></a>Aktivieren von Szenarien in Abhängigkeit von Objekten in den Systemdatenbanken
-Systemdatenbanken werden nicht in die sekundäre Instanz in einer Failovergruppe repliziert. Um Szenarien zu ermöglichen, die von Objekten in den Systemdatenbanken der sekundären Instanz abhängen, stellen Sie sicher, dass in der sekundären Instanz die gleichen Objekte angelegt werden. Wenn Sie beispielsweise in der sekundären Instanz die gleichen Anmeldungen nutzen möchten, stellen Sie sicher, dass sie mit identischer SID erstellt werden. 
+Systemdatenbanken werden **nicht** in die sekundäre Instanz in einer Failovergruppe repliziert. Um Szenarien zu ermöglichen, in denen Objekte aus den Systemdatenbanken erforderlich sind, stellen Sie sicher, dass diese Objekte in der sekundären Instanz erstellt werden, und synchronisieren Sie sie mit der primären Instanz. Wenn Sie beispielsweise in der sekundären Instanz die gleichen Anmeldungen nutzen möchten, stellen Sie sicher, dass sie mit identischer SID erstellt werden. 
 ```SQL
 -- Code to create login on the secondary instance
 CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 ``` 
-
+### <a name="synchronize-instance-properties-and-retention-policies-between-primary-and-secondary-instance"></a>Synchronisieren von Instanzeigenschaften und Aufbewahrungsrichtlinien zwischen primärer und sekundärer Instanz
+Instanzen in der Failovergruppe bleiben separate Azure-Ressourcen, und Änderungen an der Konfiguration der primären Instanz werden nicht automatisch in die sekundäre Instanz repliziert. Stellen Sie sicher, dass Sie alle relevanten Änderungen in der primären _und_ der sekundären Instanz vornehmen. Wenn Sie beispielsweise die Sicherungsspeicherredundanz oder die Richtlinie für die langfristige Sicherungsaufbewahrung für die primäre Instanz ändern, stellen Sie sicher, dass Sie sie auch in der sekundären Instanz ändern.
 
 ## <a name="failover-groups-and-network-security"></a>Failovergruppen und Netzwerksicherheit
 

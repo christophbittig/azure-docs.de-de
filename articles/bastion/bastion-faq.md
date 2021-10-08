@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/13/2021
+ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8ff219e326f7c8a2bbc075594ff8ffb30e9b04f5
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: d44ccec62a9da63fccc45a0735ff16f615dfbb4b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289160"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643135"
 ---
 # <a name="azure-bastion-faq"></a>Häufig gestellte Fragen zu Azure Bastion
 
@@ -126,6 +126,9 @@ Ja. Standardmäßig wird Benutzern der Bastionhost angezeigt, der im selben virt
 Ja, die Konnektivität über Bastion funktioniert weiterhin für mittels Peering verbundene VNETs in verschiedenen Abonnements für einen einzelnen Mandanten. Abonnements von zwei unterschiedlichen Mandanten werden nicht unterstützt. Damit Bastion im Dropdownmenü **Verbinden** angezeigt wird, muss der Benutzer unter **Abonnement > Globales Abonnement** die Abonnements auswählen, auf die er Zugriff hat.
 
 :::image type="content" source="./media/bastion-faq/global-subscriptions.png" alt-text="Globaler Abonnementfilter" lightbox="./media/bastion-faq/global-subscriptions.png":::
+
+### <a name="does-bastion-support-connectivity-to-azure-virtual-desktop"></a>Unterstützt Bastion die Konnektivität mit Azure Virtual Desktop?
+Nein, die Bastion-Konnektivität mit Azure Virtual Desktop wird nicht unterstützt.
 
 ### <a name="i-have-access-to-the-peered-vnet-but-i-cant-see-the-vm-deployed-there"></a>Ich habe Zugriff auf das Peering-VNET, sehe aber die dort bereitgestellte VM nicht.
 

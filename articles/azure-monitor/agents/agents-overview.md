@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2021
-ms.openlocfilehash: 204c7a75eed5be4b6c3aca91d59011fd2b1327b5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8542f3e39669135295073f4f937c6edfdd5127cf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349536"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128566537"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -31,7 +31,7 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 | **Unterstützte Umgebungen** | Azure<br>Andere Cloud (Azure Arc)<br>Lokal (Azure Arc)  | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | 
 | **Agent-Anforderungen**  | Keine | Keine | Keine | Erfordert Log Analytics-Agent |
 | **Gesammelte Daten** | Ereignisprotokolle<br>Leistung | Ereignisprotokolle<br>ETW-Ereignisse<br>Leistung<br>Dateibasierte Protokolle<br>IIS-Protokolle<br>.NET-App-Protokolle<br>Absturzabbilder<br>Agent-Diagnoseprotokolle | Ereignisprotokolle<br>Leistung<br>Dateibasierte Protokolle<br>IIS-Protokolle<br>Erkenntnisse und Lösungen<br>Sonstige Dienste | Prozessabhängigkeiten<br>Netzwerkverbindungsmetriken |
-| **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken | Azure Storage<br>Azure Monitor-Metriken<br>Event Hub | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
+| **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken<sup>1</sup> | Azure Storage<br>Azure Monitor-Metriken<br>Event Hub | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
 | **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | Metrik-Explorer | VM Insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM Insights<br>Dienstzuordnung |
 
 ### <a name="linux-agents"></a>Linux-Agents
@@ -44,7 +44,7 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 | **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken<sup>1</sup> | Azure Storage<br>Event Hub | Azure Monitor-Metriken | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
 | **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | | Metrik-Explorer | VM Insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM Insights<br>Dienstzuordnung |
 
-<sup>1</sup> Derzeit gilt eine Einschränkung für den Azure Monitor-Agent für Linux, die bewirkt, dass die Verwendung von Azure Monitor-Metriken als *einziges* Ziel nicht unterstützt wird. Die Verwendung zusammen mit Azure Monitor-Protokollen funktioniert. Diese Einschränkung wird im nächsten Erweiterungsupdate behoben.
+<sup>1</sup> [Klicken Sie hier,](../essentials/metrics-custom-overview.md#quotas-and-limits) um weitere Einschränkungen bei der Verwendung von Azure Monitor-Metriken zu überprüfen. Unter Linux wird die Verwendung von Azure Monitor-Metriken als einziges Ziel in v.1.10.9.0 oder höher unterstützt. 
 
 ## <a name="azure-monitor-agent"></a>Azure Monitor-Agent
 
@@ -54,7 +54,7 @@ Verwenden Sie den Azure Monitor-Agent zu folgenden Zwecken:
 
 - Sammeln von Gastprotokollen und Metriken von einem beliebigen Computer in Azure, in anderen Clouds oder in lokalen Systemen. (Für Computer außerhalb von Azure sind [Azure Arc-fähige Server](../../azure-arc/servers/overview.md) erforderlich.) 
 - Zentrales Verwalten der Datensammlungskonfiguration mithilfe von [Datensammlungsregeln](./data-collection-rule-overview.md) und Verwenden von Azure Resource Manager-Vorlagen oder -Richtlinien (ARM) für die Gesamtverwaltung.
-- Senden von Daten an Azure Monitor-Protokolle und Azure Monitor- Metriken zur Analyse mit Azure Monitor. 
+- Senden von Daten an Azure Monitor-Protokolle und Azure Monitor- Metriken (Vorschau) zur Analyse mit Azure Monitor. 
 - Nutzen der Windows-Ereignisfilterung oder Multihoming für Protokolle unter Windows und Linux.
 <!--- Send data to Azure Storage for archiving.
 - Send data to third-party tools using [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md).
@@ -144,6 +144,7 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 
 | Betriebssystem | Azure Monitor-Agent | Log Analytics-Agent | Abhängigkeits-Agent | Diagnoseerweiterung | 
 |:---|:---:|:---:|:---:|:---:|
+| Windows Server 2022                                      | X |   |   |   |
 | Windows Server 2019                                      | X | X | X | X |
 | Windows Server 2019 Core                                 | X |   |   |   |
 | Windows Server 2016                                      | X | X | X | X |
@@ -153,9 +154,11 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | Windows Server 2008 R2 SP1                               | X | X | X | X |
 | Windows Server 2008 R2                                   |   |   | X | X |
 | Windows Server 2008 SP2                                   |   | X |  |  |
-| Windows 10 Enterprise<br>(einschließlich Multisession) und Pro<br>(nur Serverszenarien)  | X | X | X | X |
-| Windows 8 Enterprise und Pro<br>(nur Serverszenarien)  |   | X | X |   |
-| Windows 7 SP1<br>(nur Serverszenarien)                 |   | X | X |   |
+| Windows 10 Enterprise<br>(einschließlich Multisession) und Pro<br>(Nur Serverszenarien<sup>1</sup>)  | X | X | X | X |
+| Windows 8 Enterprise und Pro<br>(Nur Serverszenarien<sup>1</sup>)  |   | X | X |   |
+| Windows 7 SP1<br>(Nur Serverszenarien<sup>1</sup>)                 |   | X | X |   |
+
+<sup>1</sup> Wenn das Betriebssystem auf Server-Hardware läuft, das bedeutet, die Computer sind immer angeschlossen, immer eingeschaltet, und es laufen nicht gleichzeitig andere Workloads darauf (PC, Office, Browser usw.)
 
 ### <a name="linux"></a>Linux
 

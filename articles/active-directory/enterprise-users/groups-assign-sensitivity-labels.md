@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bb00c2554b17ec68cfd1cffa0902bed421b9e4e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 05ea462d08c50e6483aeb0968b00b6b18d0e7397
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433069"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092674"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Zuweisen von Vertraulichkeitsbezeichnungen zu Microsoft 365-Gruppen in Azure Active Directory
 
@@ -45,11 +45,13 @@ Damit veröffentlichte Bezeichnungen auf Gruppen angewendet werden können, müs
 1. Rufen Sie die aktuellen Gruppeneinstellungen für die Azure AD-Organisation ab.
 
     ```PowerShell
-    $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
+    $setting = (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ)
+    $template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+    $setting = $template.CreateDirectorySetting()
     ```
 
     > [!NOTE]
-    > Wenn für diese Azure AD-Organisation keine Gruppeneinstellungen erstellt wurden, wird im obigen Cmdlet der Fehler „Das Argument kann nicht an den Parameter "Identity" gebunden werden, da es NULL ist.“ angezeigt. In diesem Fall müssen Sie zunächst die Einstellungen erstellen. Um Gruppeneinstellungen für diese Azure AD-Organisation zu erstellen, führen Sie die Schritte in [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../enterprise-users/groups-settings-cmdlets.md) aus.
+    > Wenn keine Gruppeneinstellungen für diese Azure AD-Organisation erstellt wurden, erhalten Sie eine Fehlermeldung mit dem Wortlaut " Das Argument kann nicht an den Parameter 'Id' gebunden werden, da dieser null ist". In diesem Fall müssen Sie zuerst die Einstellungen erstellen. Um Gruppeneinstellungen für diese Azure AD-Organisation zu erstellen, führen Sie die Schritte in [Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen](../enterprise-users/groups-settings-cmdlets.md) aus.
 
 1. Zeigen Sie als nächstes die aktuellen Gruppeneinstellungen an.
 
@@ -66,7 +68,7 @@ Damit veröffentlichte Bezeichnungen auf Gruppen angewendet werden können, müs
 1. Speichern Sie dann die Änderungen, und übernehmen Sie die Einstellungen:
 
     ```PowerShell
-    Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+    New-AzureADDirectorySetting -DirectorySetting $setting
     ```
 
 Außerdem müssen Sie Ihre Vertraulichkeitsbezeichnungen mit Azure AD synchronisieren. Entsprechende Anweisungen finden Sie unter [Aktivieren von Vertraulichkeitsbezeichnungen für Container und Synchronisieren von Bezeichnungen](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).

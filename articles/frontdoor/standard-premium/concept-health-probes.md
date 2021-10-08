@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 30a8208babab2991c9d9e86cc419ac50e1530d7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a856ae7d38439d11ba0ddd65ebecdda7a3d2ce48
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101098041"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750198"
 ---
 # <a name="azure-front-door-standardpremium-preview-health-probe-monitoring"></a>Integritätstestüberwachung in Azure Front Door Standard/Premium (Vorschau)
 
@@ -62,6 +62,8 @@ Azure Front Door verwendet in allen Algorithmen denselben aus drei Schritten bes
 
 1. Front Door misst und verwaltet zusätzlich die Latenz (Roundtripzeit) für jedes Back-End für die Menge der fehlerfreien Back-Ends im Back-End-Pool.
 
+> [!NOTE]
+> Wenn ein einzelner Endpunkt Mitglied mehrerer Back-End-Pools ist, optimiert Azure Front Door die Anzahl der an das Back-End gesendeten Integritätstests, um die Last auf dem Back-End zu reduzieren. Integritätstestanforderungen werden basierend auf dem niedrigsten konfigurierten Stichprobenintervall gesendet. Die Integrität des Endpunkts in allen Pools wird durch die Antworten von denselben Integritätstests bestimmt.
 
 ## <a name="complete-health-probe-failure"></a>Vollständiger Integritätstestfehler
 

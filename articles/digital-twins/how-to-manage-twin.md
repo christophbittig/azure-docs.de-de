@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Sie einzelne Zwillinge und Beziehungen abrufen, aktualisieren und löschen.
 author: baanders
 ms.author: baanders
-ms.date: 10/21/2020
+ms.date: 9/13/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0873d6f0bfff73fc0bdc44ce90b322af23d4df28
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 4be8ef1085d6a940e7f2d95f43a75d1b4e7c11f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835733"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611687"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
@@ -40,14 +40,13 @@ Wenn Sie einen Zwilling erstellen möchten, verwenden Sie die `CreateOrReplaceDi
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwinCall":::
 
 Zum Erstellen eines digitalen Zwillings müssen Sie Folgendes angeben:
-* Die gewünschte ID für den digitalen Zwilling, den Sie in dieser Phase definieren
+* Ein ID-Wert, den Sie dem digitalen Zwilling zuweisen möchten (Sie definieren diese ID, wenn der Zwilling erstellt wird)
 * Das zu verwendende [Modell](concepts-models.md)
-
-Optional können Sie Anfangswerte für alle Eigenschaften des digitalen Zwillings bereitstellen. Eigenschaften werden als optional behandelt und können später festgelegt werden. **Sie werden jedoch erst als Teil eines Zwillings angezeigt, nachdem sie festgelegt wurden.**
-
->[!NOTE]
->Obwohl Zwillingseigenschaften nicht initialisiert werden müssen, **müssen** alle [Komponenten](concepts-models.md#elements-of-a-model) auf dem Zwilling beim Erstellen des Zwillings festgelegt werden. Es kann sich um leere Objekte handeln, aber die Komponenten selbst müssen vorhanden sein.
-
+* Jede gewünschte Initialisierung von Zwillingsdaten, einschließlich...
+    - Eigenschaften (optional zum Initialisieren): Sie können bei Bedarf Anfangswerte für Eigenschaften des digitalen Zwillings festlegen. Eigenschaften werden als optional behandelt und können später festgelegt werden. Beachten Sie aber, dass **sie erst als Teil eines Zwillings angezeigt werden, nachdem sie festgelegt wurden**.
+    - Telemetrie (zu initialisieren empfohlen): Sie können auch Anfangswerte für Telemetriefelder auf dem Zwilling festlegen. Obwohl die Initialisierung von Telemetriedaten nicht erforderlich ist, werden auch Telemetriefelder erst dann als Teil eines Zwillings angezeigt, wenn sie festgelegt wurden. Das bedeutet, dass **Sie Telemetriewerte für einen Zwilling nur dann bearbeiten können, wenn diese erst initialisiert wurden**.
+    - Komponenten (für die Initialisierung erforderlich, wenn sie auf dem Zwilling vorhanden sind): Wenn Ihr Zwilling [Komponenten](concepts-models.md#elements-of-a-model) enthält, müssen diese beim Erstellen des Zwillings initialisiert werden. Es kann sich um leere Objekte handeln, aber die Komponenten selbst müssen vorhanden sein.
+    
 Die Modell- und alle ursprünglichen Eigenschaftswerte werden über den `initData`-Parameter bereitgestellt. Dabei handelt es sich um eine JSON-Zeichenfolge, die die relevanten Daten enthält. Weitere Informationen zum Strukturieren dieses Objekts finden Sie im nächsten Abschnitt.
 
 > [!TIP]
@@ -146,7 +145,7 @@ Weitere Informationen zu den Serialisierungshilfsklassen wie `BasicDigitalTwin` 
 
 ## <a name="view-all-digital-twins"></a>Anzeigen aller digitalen Zwillinge
 
-Verwenden Sie zum Anzeigen aller digitalen Zwillinge in Ihrer Instanz eine [Abfrage](how-to-query-graph.md). Sie können eine Abfrage mit den [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder den [CLI-Befehlen](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) ausführen.
+Verwenden Sie zum Anzeigen aller digitalen Zwillinge in Ihrer Instanz eine [Abfrage](how-to-query-graph.md). Sie können eine Abfrage mit den [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder den [CLI-Befehlen](/cli/azure/dt/twin?view=azure-cli-latest&preserve-view=true#az_dt_twin_query) ausführen.
 
 Im Folgenden finden Sie den Text der grundlegenden Abfrage, die eine Liste aller digitalen Zwillinge in der Instanz zurückgibt:
 

@@ -8,12 +8,12 @@ ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: b1e7c210dc7e9a0482f6f2471e5079f71a4ac621
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0d9ae624ddc0a4e5a2f5d9ac38428f4f3c10a01e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355582"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832411"
 ---
 # <a name="plan-to-deploy-azure-arc-enabled-data-services"></a>Planen der Bereitstellung von Azure Arc-fähigen Datendiensten
 
@@ -44,6 +44,9 @@ Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind:
 Nachdem die Infrastruktur vorbereitet wurde, stellen Sie die Azure Arc-fähigen Datendiensten folgendermaßen bereit:
 1. Erstellen Sie einen Azure Arc-fähigen Datencontrollers für eine der validierten Distributionen eines Kubernetes-Clusters.
 1. Erstellen Sie eine SQL Managed Instance-Instanz mit Azure Arc-Unterstützung und/oder eine PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung.
+
+> [!CAUTION]
+> Einige der Datendienstebenen und -modi sind [allgemein verfügbar](release-notes.md), einige befinden sich in der Vorschau. Es wird empfohlen, allgemein verfügbare Dienste und Vorschauversionen nicht auf demselben Datencontroller zu kombinieren. Wenn Sie allgemein verfügbare Dienste und Vorschauversionen auf demselben Datencontroller kombinieren, können Sie kein direktes Upgrade ausführen. In einem solchen Szenario müssen Sie den Datencontroller und die Datendienste entfernen und neu erstellen, wenn Sie ein Upgrade durchführen möchten.
 
 ## <a name="overview-create-the-azure-arc-enabled-data-controller"></a>Übersicht: Erstellen eines Azure Arc-fähigen Datencontrollers
 
@@ -78,12 +81,12 @@ Unabhängig von der gewählten Option müssen Sie während der Erstellung die fo
 - **Azure resource group name** (Azure-Ressourcengruppenname): Der Name der Ressourcengruppe, in der die Datencontrollerressource in Azure erstellt werden soll.  Alle SQL Managed Instance-Instanzen und PostgreSQL Hyperscale-Servergruppen mit Azure Arc-Unterstützung werden ebenfalls in dieser Ressourcengruppe erstellt.
 - **Azure Location** (Azure-Standort): Der Azure-Standort, an dem die Metadaten der Datencontrollerressource in Azure gespeichert werden. Eine Liste der verfügbaren Regionen finden Sie unter [Globale Azure-Infrastruktur/Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc). Die Metadaten und Abrechnungsinformationen zu den Azure-Ressourcen, die vom bereitgestellten Datencontroller verwaltet werden, werden nur an dem Speicherort in Azure gespeichert, den Sie als Location-Parameter angeben. Wenn Sie die Bereitstellung im Direktverbindungsmodus durchführen, entspricht der Location-Parameter für den Datencontroller dem Speicherort der benutzerdefinierten Standortressource, die Sie als Ziel verwenden.
 - **Service Principal information** (Dienstprinzipalinformationen): Wie im Artikel zu den [Voraussetzungen für den Upload](upload-metrics-and-logs-to-azure-monitor.md) beschrieben, benötigen Sie die Dienstprinzipalinformationen bei einer Bereitstellung im *direkten* Konnektivitätsmodus während der Erstellung des Azure Arc-Datencontrollers. Für den *indirekten* Konnektivitätsmodus wird der Dienstprinzipal weiterhin benötigt, um manuelle Exporte und Uploads durchzuführen, nachdem der Azure Arc-Datencontroller erstellt wurde.
-- **Infrastructure** (Infrastruktur): Zu Abrechnungszwecken muss die Infrastruktur angegeben werden, in der Sie Azure Arc-fähige Datendienste ausführen.  Folgende Optionen sind verfügbar: `alibaba`, `aws`, `azure`, `gcp`, `onpremises` oder `other`.
+- **Infrastruktur**: Zu Abrechnungszwecken muss die Infrastruktur angegeben werden, in der Sie Azure Arc-fähige Datendienste ausführen.  Folgende Optionen sind verfügbar: `alibaba`, `aws`, `azure`, `gcp`, `onpremises` oder `other`.
 
 ## <a name="additional-concepts-for-direct-connected-mode"></a>Zusätzliche Konzepte für den direkten Verbindungsmodus
 
 Wie im Artikel [Konnektivitätsmodi und -anforderungen](./connectivity.md) beschrieben, kann der Azure Arc-Datencontroller im **direkten** oder **indirekten** Konnektivitätsmodus bereitgestellt werden. Die Bereitstellung von Azure Arc-Datendiensten im **direkten** Verbindungsmodus erfordert das Verständnis einiger zusätzlicher Konzepte und Überlegungen.
-Zunächst muss der Kubernetes-Cluster, in dem die Arc-fähigen Datendienste bereitgestellt werden, ein [Azure Arc-fähiger Kubernetes-Cluster](../kubernetes/overview.md) sein. Das Onboarding des Kubernetes-Clusters in Azure Arc bietet Azure-Konnektivität, die für Funktionen wie den automatischen Upload von Nutzungsinformationen, Protokollen, Metriken usw. genutzt wird. Durch die Verbindung Ihres Kubernetes-Clusters mit Azure können Sie außerdem Azure Arc-Datendienste direkt über das Azure-Portal in Ihren Cluster bereitstellen und verwalten.
+Zunächst muss der Kubernetes-Cluster, in dem die Azure Arc-fähigen Datendienste bereitgestellt werden, ein [Azure Arc-fähiger Kubernetes-Cluster](../kubernetes/overview.md) sein. Das Onboarding des Kubernetes-Clusters in Azure Arc bietet Azure-Konnektivität, die für Funktionen wie den automatischen Upload von Nutzungsinformationen, Protokollen, Metriken usw. genutzt wird. Durch die Verbindung Ihres Kubernetes-Clusters mit Azure können Sie außerdem Azure Arc-Datendienste direkt über das Azure-Portal in Ihren Cluster bereitstellen und verwalten.
 
 Für die Verbindungsherstellung zwischen Ihrem Kubernetes-Cluster und Azure sind folgende Schritte erforderlich:
 - [Verbinden Ihres Clusters mit Azure](../kubernetes/quickstart-connect-cluster.md)
@@ -110,4 +113,3 @@ Es gibt mehrere Optionen zum Erstellen des Azure Arc-Datencontrollers:
 - [Erstellen eines Datencontrollers im indirekten Konnektivitätsmodus über Azure Data Studio](create-data-controller-indirect-azure-data-studio.md)
 - [Erstellen eines Datencontrollers im indirekten Konnektivitätsmodus über das Azure-Portal mithilfe eines Jupyter Notebooks in Azure Data Studio](create-data-controller-indirect-azure-portal.md)
 - [Erstellen eines Datencontrollers im indirekten Konnektivitätsmodus mit Kubernetes-Tools wie kubectl oder oc](create-data-controller-using-kubernetes-native-tools.md)
-

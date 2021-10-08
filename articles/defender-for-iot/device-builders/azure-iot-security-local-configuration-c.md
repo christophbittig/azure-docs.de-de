@@ -3,12 +3,12 @@ title: Lokale Sicherheits-Agent-Konfiguration (C)
 description: Erfahren Sie mehr über die lokalen Konfigurationen des Defender für IoT-Sicherheits-Agents für C.
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 7cd230b188c7c1d644ec03cff2d084ff7ea57139
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 24445ce60b3a6d070805cf04a23d7834c24f01e4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016158"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680496"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>Grundlegendes zur Datei „LocalConfiguration.json“ – C-Agent
 
@@ -32,7 +32,7 @@ Die Datei befindet sich standardmäßig unter: „/var/ASCIoTAgent/LocalConfigur
 | Identity | „DPS“, „SecurityModule“, „Device“ | Authentifizierungsidentität: „DPS“, wenn die Authentifizierung über DPS erfolgt, „SecurityModule“, wenn die Authentifizierung über die Anmeldeinformationen des Defender-IoT-Micro-Agents erfolgt, oder „Device“, wenn die Authentifizierung über Geräteanmeldeinformationen erfolgt. |
 | AuthenticationMethod | „SasToken“, „SelfSignedCertificate“ | Das Benutzergeheimnis zur Authentifizierung: Wählen Sie „SasToken“ aus, wenn das Benutzergeheimnis ein symmetrischer Schlüssel ist, und „SelfSignedCertificate“, wenn das Geheimnis ein selbstsigniertes Zertifikat ist.  |
 | FilePath | Pfad zur Datei (Zeichenfolge) | Der Pfad zu der Datei, die das Authentifizierungsgeheimnis enthält. |
-| HostName | Zeichenfolge | Der Hostname des Azure IoT-Hubs. normalerweise <mein-hub>.azure-devices.net |
+| HostName | Zeichenfolge | Der Hostname des Azure IoT-Hubs. Normalerweise \<my-hub\>.azure-devices.net |
 | deviceId | Zeichenfolge | Die ID des Geräts (wie in Azure IoT Hub registriert) |
 | DPS | JsonObject | DPS-bezogene Konfigurationen |
 | IDScope | Zeichenfolge | ID-Bereich von DPS |

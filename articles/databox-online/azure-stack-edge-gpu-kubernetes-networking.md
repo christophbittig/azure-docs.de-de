@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 06/24/2021
+ms.date: 09/27/2021
 ms.author: alkohli
-ms.openlocfilehash: ece1d03787308613961fe56087f8b621a753c856
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: a969486194f66be5c7ce4c3973352ca036a025f8
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572573"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093115"
 ---
 # <a name="kubernetes-networking-on-azure-stack-edge-pro-gpu-device"></a>Kubernetes-Netzwerke auf Azure Stack Edge Pro GPU-Geräten
 
@@ -139,10 +139,10 @@ Add-HcsNetRoute -InterfaceAlias <Port number> -DestinationPrefix <Destination IP
 Hier sehen Sie eine Beispielausgabe.
 
 ```output
-Add-HcsNetRoute -InterfaceAlias "Port3" -DestinationPrefix "192.168.21.0/24" -NextHop "192.168.20.1" -RouteMetric 100 
+Add-HcsNetRoute -InterfaceAlias "Port3" -DestinationPrefix "192.168.20.0/24" -NextHop "192.168.20.1" -RouteMetric 100 
 ```
 
-Der oben gezeigte Befehl erstellt einen Eintrag in der Routingtabelle, der das Zielsubnetz 192.168.21.0/24 definiert, den nächsten Hop als 192.168.20.1 angibt und diesem Routingeintrag eine Routingmetrik von 100 zuweist. Je niedriger die Routingmetrik, desto höher ist die Priorität, die der Route zugewiesen ist.
+Der obige Befehl erstellt einen Eintrag in der Routing-Tabelle, der ein Ziel-Subnetz 192.168.20.0/24 definiert, den nächsten Hop als 192.168.20.1 angibt und diesem Routing-Eintrag eine Routing-Metrik von 100 zuweist. Je niedriger die Routingmetrik, desto höher ist die Priorität, die der Route zugewiesen ist.
 
 ## <a name="check-route-configuration"></a>Überprüfen der Routenkonfiguration
 

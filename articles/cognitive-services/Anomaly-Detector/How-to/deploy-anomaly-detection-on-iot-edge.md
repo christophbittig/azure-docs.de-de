@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0fd02fbdd8f6c02ce86a4e0c1ee3eabec69e56c3
-ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
+ms.openlocfilehash: 21dd554388616b2cd4882a5a550b4de74f5d9be3
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2021
-ms.locfileid: "113296719"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059208"
 ---
 # <a name="deploy-an-anomaly-detector-univariate-module-to-iot-edge"></a>Bereitstellen eines Moduls zur Erkennung von univariaten Anomalien in IoT Edge
 
@@ -58,7 +58,7 @@ Hier erfahren Sie, wie Sie das [Anomalieerkennungsmodul](../anomaly-detector-con
 
 6. Wählen Sie **Update** (Aktualisieren) aus.
 
-7. Klicken Sie auf **Weiter: Routen**, um Ihre Route zu definieren. Sie legen fest, dass alle Nachrichten von allen Modulen an Azure IoT Hub gesendet werden.
+7. Klicken Sie auf **Weiter: Routen**, um Ihre Route zu definieren. Sie legen fest, dass alle Nachrichten von allen Modulen an Azure IoT Hub gesendet werden. Wie Sie eine Route deklarieren, erfahren Sie unter [Einrichten von Routen in IoT Edge](../../../iot-edge/module-composition.md?view=iotedge-2020-11).
 
 8. Klicken Sie auf **Weiter: Überprüfen + erstellen**. Sie können eine Vorschau der JSON-Datei anzeigen, die alle Module definiert, die auf Ihrem IoT Edge-Gerät bereitgestellt werden.
     
@@ -68,7 +68,7 @@ Hier erfahren Sie, wie Sie das [Anomalieerkennungsmodul](../anomaly-detector-con
 
 11. Scrollen Sie nach unten, und sehen Sie sich die aufgeführten Module an. Überprüfen Sie, ob der Laufzeitstatus für Ihr neues Modul ausgeführt wird. 
 
-Informationen zur Problembehandlung für den Laufzeitstatus Ihres IoT Edge-Geräts finden Sie im [Leitfaden zur Problembehandlung](../../../iot-edge/troubleshoot.md).
+Um den Laufzeitstatus Ihres IoT Edge-Geräts zu überprüfen, lesen Sie den [Leitfaden zur Fehlerbehebung](../../../iot-edge/troubleshoot.md).
 
 ## <a name="test-anomaly-detector-on-an-iot-edge-device"></a>Testen der Anomalieerkennung auf einem IoT Edge-Gerät
 

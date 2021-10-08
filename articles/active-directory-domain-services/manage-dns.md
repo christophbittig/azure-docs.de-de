@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/18/2021
+ms.date: 09/16/2021
 ms.author: justinha
-ms.openlocfilehash: 935abb1a1eae362e3036c323da35aa5fd7b9b018
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: a02dbe66e255cd56865a0ce75310260fd690b069
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707962"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546990"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>Verwalten von DNS und Erstellen bedingter Weiterleitungen in einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -28,7 +28,7 @@ In einer Hybridumgebung werden in anderen DNS-Namespaces (z. B. in einer lokale
 In diesem Artikel erfahren Sie, wie Sie die DNS-Servertools installieren und dann die DNS-Konsole zur Verwaltung von Einträgen und zum Erstellen bedingter Weiterleitungen in Azure AD DS verwenden.
 
 >[!NOTE]
->Das Erstellen oder Ändern von DNS-Weiterleitungen auf Serverebene wird nicht unterstützt und führt zu Problemen für die von Azure AD DS verwaltete Domäne.
+>Das Erstellen oder Ändern von Stammhinweisen oder DNS-Weiterleitungen auf Serverebene wird nicht unterstützt und führt zu Problemen für die von Azure AD DS verwaltete Domäne. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

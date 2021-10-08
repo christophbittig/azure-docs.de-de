@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/26/2021
+ms.date: 09/20/2021
 ms.author: tisande
-ms.openlocfilehash: 7fee5b4133cc048576ff0b794d441fac3ee162e6
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: a8d1dc69ef64726f55dffd20221a19c3f3114964
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035942"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595140"
 ---
 # <a name="azure-cosmos-db-integrated-cache-frequently-asked-questions"></a>Häufig gestellte Fragen zum in der Azure Cosmos DB integrierten Cache
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -56,6 +56,10 @@ Sobald die Funktion allgemein verfügbar ist, wird die SLA/SLO-Verfügbarkeit f�
 
 Die Erweiterung des integrierten Caches über die SQL-API hinaus ist auf der Planungsliste vorgesehen, aber über die erste öffentliche Vorschau des integrierten Caches hinaus.
 
+### <a name="what-consistency-does-the-integrated-cache-support"></a>Welche Konsistenz unterstützt der integrierte Cache?
+
+Der integrierte Cache unterstützt sowohl Sitzungskonsistenz als auch letztliche Konsistenz. Sie können auch die optionale [MaxIntegratedCacheStaleness](integrated-cache.md#maxintegratedcachestaleness) konfigurieren, die eine Obergrenze für zwischengespeicherte Daten festlegt.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Integrierter Cache](integrated-cache.md)
@@ -63,4 +67,4 @@ Die Erweiterung des integrierten Caches über die SQL-API hinaus ist auf der Pla
 - [Dediziertes Gateway](dedicated-gateway.md)
 - Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
     - Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
-    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
+    - Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

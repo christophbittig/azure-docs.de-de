@@ -3,12 +3,12 @@ title: Bewährte Methoden zur Verbesserung der Leistung mit Azure Service Bus
 description: Beschreibt, wie Service Bus verwendet wird, um die Leistung beim Austausch von Brokernachrichten zu optimieren.
 ms.topic: article
 ms.date: 08/30/2021
-ms.openlocfilehash: d7bd692809504bb16607a431e879f0abfff953cb
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 51b8005f9aa3b53bbcb8d78b83c4449992cf0210
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225260"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560714"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
 
@@ -84,13 +84,14 @@ AMQP ist am effizientesten, weil hierbei die Verbindung mit Service Bus aufrecht
 > SBMP ist nur für .NET Framework verfügbar. AMQP ist die Standardeinstellung für .NET Standard.
 
 ## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>Auswählen des geeigneten Service Bus .NET SDK
-Es gibt drei unterstützte Azure Service Bus .NET SDKs. Da sich die zugehörigen APIs ähneln, kann es ggf. zu Unsicherheit bei der Auswahl kommen. Die folgende Tabelle enthält hierzu hilfreiche Informationen. Das SDK „Azure.Messaging.ServiceBus“ ist das neueste, dessen Verwendung gegenüber den anderen empfohlen wird. Sowohl „Azure.Messaging.ServiceBus“ als auch „Microsoft.Azure.ServiceBus“ sind moderne, leistungsfähige und plattformübergreifend kompatible SDKs. Darüber hinaus unterstützen sie AMQP über WebSockets und sind Teil der Azure .NET SDK-Sammlung von Open-Source-Projekten.
+
+Das Paket `Azure.Messaging.ServiceBus` ist das neueste Azure Service Bus .NET SDK und ab November 2020 verfügbar. Es gibt zwei ältere .NET SDKs, die weiterhin kritische Fehlerbehebungen erhalten, aber wir empfehlen dringend, stattdessen das neueste SDK zu verwenden. Ausführliche Informationen zum Wechsel von den älteren SDKs finden Sie im [Migrationsleitfaden](https://aka.ms/azsdk/net/migrate/sb).
 
 | NuGet-Paket | Primäre Namespaces | Mindestplattform | Protokolle |
 |---------------|----------------------|---------------------|-------------|
-| [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>Universelle Windows-Plattform 10.0.16299 | AMQP<br>HTTP |
+| [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) (**aktuelle Version**) | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>Universelle Windows-Plattform 10.0.16299 | AMQP<br>HTTP |
 | [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>Universelle Windows-Plattform 10.0.16299 | AMQP<br>HTTP |
-| [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+| [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) (**Legacyversion**) | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
 Weitere Informationen zu den Mindestplattformen für die Unterstützung von .NET Standard finden Sie unter [Unterstützung der .NET-Implementierung](/dotnet/standard/net-standard#net-implementation-support).
 
@@ -102,9 +103,13 @@ Es wird empfohlen, diese Objekte nach dem Senden oder Empfangen einzelner Nachri
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
+> Beachten Sie, dass ab November 2020 ein neueres Paket für Azure.Messaging.ServiceBus verfügbar ist. Obwohl für das Microsoft.Azure.ServiceBus-Paket weiterhin kritische Fehlerbehebungen bereitgestellt werden, empfehlen wir Ihnen dringend, ein Upgrade durchzuführen. Weitere Informationen finden Sie im [Migrationsleitfaden](https://aka.ms/azsdk/net/migrate/sb).
+
 Service Bus-Clientobjekte, z. B. Implementierungen von [`IQueueClient`][QueueClient] oder [`IMessageSender`][MessageSender], sollten für die Abhängigkeitsinjektion als Singletons registriert werden (oder einmal instanziiert und dann freigegeben werden). Es empfiehlt sich, Messagingfactorys oder Warteschlangen-, Themen- oder Abonnementclients nicht zu schließen, nachdem Sie eine Nachricht gesendet haben, und dann erneut zu erstellen, wenn Sie die nächste Nachricht senden. Durch das Schließen einer Messagingfactory wird die Verbindung mit dem Service Bus-Dienst gelöscht. Beim erneuten Erstellen der Factory wird eine neue Verbindung hergestellt. 
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+> Beachten Sie, dass ab November 2020 ein neueres Paket für Azure.Messaging.ServiceBus verfügbar ist. Obwohl für das WindowsAzure.ServiceBus-Paket weiterhin kritische Fehlerbehebungen bereitgestellt werden, empfehlen wir Ihnen dringend, ein Upgrade durchzuführen. Weitere Informationen finden Sie im [Migrationsleitfaden](https://aka.ms/azsdk/net/migrate/sb).
 
 Service Bus-Clientobjekte, z. B. `QueueClient` oder `MessageSender`, werden über ein [MessagingFactory][MessagingFactory]-Objekt erstellt, das die interne Verwaltung von Verbindungen ermöglicht. Es empfiehlt sich, Messagingfactorys oder Warteschlangen-, Themen- oder Abonnementclients nicht zu schließen, nachdem Sie eine Nachricht gesendet haben, und dann erneut zu erstellen, wenn Sie die nächste Nachricht senden. Durch Schließen einer Messagingfactory wird die Verbindung mit dem Service Bus-Dienst gelöscht, und eine neue Verbindung wird beim erneuten Erstellen der Factory hergestellt. 
 

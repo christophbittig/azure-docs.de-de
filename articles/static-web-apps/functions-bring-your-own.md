@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/07/2021
 ms.author: cshoe
-ms.openlocfilehash: 6c56a9dd3a39f26fe4f050114145e0ebcbc083b2
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 7925bd70488106943f0030e6b26534938fbc7d36
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556134"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570890"
 ---
 # <a name="bring-your-own-functions-to-azure-static-web-apps"></a>Einführen eigener Funktionen in Azure Static Web Apps (Bring Your Own Functions)
 
@@ -43,7 +43,7 @@ https://red-sea-123.azurestaticapps.net/api/getProducts
 
 Bevor Sie eine vorhandene Functions-App zuordnen, müssen Sie zunächst die Konfiguration Ihrer statischen Web-App anpassen.
 
-1. Legen Sie den `api_location`-Wert in der Datei für die [Workflowkonfiguration](./github-actions-workflow.md) auf eine leere Zeichenfolge (`""`) fest.
+1. Legen Sie den `api_location`-Wert in der Datei für die [Workflowkonfiguration](./build-configuration.md) auf eine leere Zeichenfolge (`""`) fest.
 
 1. Öffnen Sie Ihre Static Web Apps-Instanz im [Azure-Portal](https://portal.azure.com).
 
@@ -62,7 +62,7 @@ Bevor Sie eine vorhandene Functions-App zuordnen, müssen Sie zunächst die Konf
     :::image type="content" source="media/functions-bring-your-own/azure-static-web-apps-link-existing-functions-app.png" alt-text="Verknüpfen einer vorhandenen Functions-App":::
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass Sie den `api_location`-Wert in der Datei für die [Workflowkonfiguration](./github-actions-workflow.md) auf eine leere Zeichenfolge (`""`) festlegen, bevor Sie eine vorhandene Functions-Anwendung verknüpfen.
+> Stellen Sie sicher, dass Sie den `api_location`-Wert in der Datei für die [Workflowkonfiguration](./build-configuration.md) auf eine leere Zeichenfolge (`""`) festlegen, bevor Sie eine vorhandene Functions-Anwendung verknüpfen.
 
 ## <a name="deployment"></a>Bereitstellung
 
@@ -73,7 +73,7 @@ Sie sind für die Einrichtung eines [Bereitstellungsworkflows](../azure-function
 - **Authentifizierung und Autorisierung**: Wenn für Ihre vorhandene Functions-App noch keine Authentifizierungs- und Autorisierungsrichtlinien eingerichtet wurden, hat die statische Web-App exklusiven Zugriff auf die API. Damit andere Anwendungen auf Ihre Functions-App zugreifen können, fügen Sie einen anderen Identitätsanbieter hinzu, oder ändern Sie die Sicherheitseinstellungen, um nicht authentifizierten Zugriff zuzulassen.
 
   > [!NOTE]
-  > Wenn Sie die Authentifizierung und Autorisierung in Ihrer verknüpften Functions-App aktivieren, muss diese Version 2 des Anbieters für die Azure App Service-Authentifizierung und -Autorisierung verwenden.
+  > Wenn Sie die Authentifizierung und Autorisierung in Ihrer verknüpften Functions-App aktivieren, muss diese die Azure App Service-Authentifizierung und -Autorisierung Version 2 des Anbieters verwenden.
 
 - **Erforderlicher öffentlicher Zugriff**: Eine vorhandene Functions-App darf die folgenden Sicherheitskonfigurationen nicht anwenden.
   - Einschränken der IP-Adresse der Functions-App
@@ -84,7 +84,7 @@ Sie sind für die Einrichtung eines [Bereitstellungsworkflows](../azure-function
 ## <a name="restrictions"></a>Beschränkungen
 
 - Für eine einzelne statische Web-App ist nur eine Azure Functions-App verfügbar.
-- Der `api_location`-Wert in der [Workflowkonfiguration](./github-actions-workflow.md) muss auf eine leere Zeichenfolge festgelegt werden.
+- Der `api_location`-Wert in der [Workflowkonfiguration](./build-configuration.md) muss auf eine leere Zeichenfolge festgelegt werden.
 - Wird nur in der Static Web Apps-Produktionsumgebung unterstützt.
 - Während Ihre Azure Functions-App möglicherweise auf verschiedene Trigger reagiert, kann die statische Web-App nur über HTTP-Endpunkte auf Funktionen zugreifen.
 

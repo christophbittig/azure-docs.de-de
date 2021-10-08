@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 9aee2c46f677f5265b7eafce9cc7af7214f745df
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 187ed49a116b99524f6cfca408bdb0d7e15a47ca
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652944"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092583"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Skalieren der Migration von virtuellen VMware-Computern zu Azure ohne Agents
 
@@ -70,7 +70,7 @@ Klicken Sie unter **Download Azure Migrate appliance** (Azure Migrate-Appliance 
 > 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-> 3. Laden Sie die neueste Version des Installationsprogramms für die Appliance für die horizontale Skalierung aus dem Portal herunter, wenn der berechnete Hashwert nicht mit dieser Zeichenfolge identisch ist: CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+> 3. Laden Sie die neueste Version des Installationsprogramms für die Appliance für die horizontale Skalierung aus dem Portal herunter, wenn der berechnete Hashwert nicht mit dieser Zeichenfolge identisch ist: BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Ausführen des Azure Migrate-Installationsskripts
 
@@ -80,7 +80,7 @@ Klicken Sie unter **Download Azure Migrate appliance** (Azure Migrate-Appliance 
 
 3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
 
-4. Führen Sie das Skript mit dem Namen `AzureMigrateInstaller.ps1` aus, indem Sie den folgenden Befehl ausführen:
+4. Führen Sie das Skript `AzureMigrateInstaller.ps1` mit folgendem Befehl aus:
 
   `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 `
 

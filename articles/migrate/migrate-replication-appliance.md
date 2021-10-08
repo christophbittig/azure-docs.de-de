@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 5f63b033c3995932662fc9b68c1397bf57b0326e
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 4a06267aae473ecc1b42812f7ed07405faafd7aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714972"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607468"
 ---
 # <a name="replication-appliance"></a>Replikationsappliance
 
@@ -58,7 +58,7 @@ Lizenz | Die Appliance ist mit einer Windows Server 2016-Evaluierungslizenz ausg
 Gebietsschema des Betriebssystems | Englisch (en-us)
 TLS | TLS 1.2 muss aktiviert sein.
 .NET Framework | NET Framework 4.6 oder höher sollte auf dem Computer installiert sein (mit aktivierter starker Kryptografie).
-MySQL | MySQL sollte auf der Appliance installiert sein.<br/> MySQL sollte installiert sein. Sie können MySQL manuell installieren oder bei der Bereitstellung der Appliance durch Site Recovery installieren lassen.
+MySQL | MySQL sollte auf der Appliance installiert sein.<br/> MySQL sollte installiert sein. Sie können MySQL manuell installieren oder während der Bereitstellung der Appliance durch Azure Migrate installieren lassen.
 Andere Apps | Führen Sie keine anderen Apps auf der Replikationsappliance aus.
 Windows Server-Rollen | Aktivieren Sie die folgenden Rollen nicht: <br> - Active Directory Domain Services <br>- Internetinformationsdienste <br> - Hyper-V
 Gruppenrichtlinien | Aktivieren Sie die folgenden Gruppenrichtlinien nicht: <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> [Weitere Informationen](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))

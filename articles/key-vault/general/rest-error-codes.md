@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de0aa3f3149141ddacd7906297656d58b8fad24c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91631221"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633999"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault: REST-API-Fehlercodes
  
@@ -131,6 +131,8 @@ HTTP 403 bedeutet, dass die Anforderung authentifiziert wurde (die anfordernde I
 - Die IP-Adresse der anfordernden Ressource ist in den Firewalleinstellungen des Schlüsseltresors nicht genehmigt.
 
 HTTP 403 tritt häufig auf, wenn die Anwendung des Kunden nicht die Client-ID verwendet, die der Kunde meint. Dies bedeutet in der Regel, dass die Zugriffsrichtlinien für die tatsächliche aufrufende Identität nicht ordnungsgemäß eingerichtet sind.
+
+Wenn Sie sofort nach dem Hinzufügen einer Identität zur Zugriffsrichtlinie einen 403-Fehler erhalten, können Sie diesen behandeln, indem Sie regelmäßige Wiederholungsversuche hinzufügen.
 
 ### <a name="troubleshooting-403"></a>Problembehandlung von Fehlercode 403
 

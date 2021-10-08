@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/30/2021
-ms.openlocfilehash: 28017bb8649e748ddf2299748f3d718ae4896a68
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 8773957a2b34851babb42c6804fc21d6a9d5112b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416198"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657460"
 ---
 # <a name="plan-an-iot-edge-modules-offer"></a>Planen eines IoT Edge-Modulangebots
 
@@ -42,7 +42,7 @@ IoT Edge-Module werden nur im Azure Marketplace veröffentlicht, in AppSource s
 
 ## <a name="technical-requirements"></a>Technische Anforderungen
 
-Die wichtigsten technischen Voraussetzungen für die Zertifizierung und Veröffentlichung eines IoT Edge-Moduls im Azure Marketplace finden Sie unter [Vorbereiten der technischen Ressourcen für das IoT Edge-Modul](iot-edge-technical-asset.md).
+Die technischen Voraussetzungen für die Zertifizierung und Veröffentlichung eines IoT Edge-Moduls im Azure Marketplace finden Sie unter [Vorbereiten Ihrer technischen Ressourcen für das IoT Edge-Modul](iot-edge-technical-asset.md).
 
 ## <a name="eligibility-prerequisites"></a>Voraussetzungen für die Berechtigung
 

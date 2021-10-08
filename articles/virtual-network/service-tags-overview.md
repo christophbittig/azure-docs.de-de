@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/23/2021
+ms.date: 9/20/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 11f8c7ddd7e06e9cc4c27173d5bb8f9dd14cbd42
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 79785c82e06c9dc1621b3278ef886866ae9695ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768472"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590288"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
@@ -101,6 +101,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **Internet** | Der IP-Adressraum, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist.<br/><br/>Der Adressbereich schließt den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) ein. | Beide | Nein | Nein |
 | **LogicApps** | Logik-Apps | Beide | Nein | Nein |
 | **LogicAppsManagement** | Verwaltungsdatenverkehr für Logik-Apps. | Eingehend | Nein | Nein |
+| **MicrosoftAzureFluidRelay** | Dieses Tag stellt die IP-Adressen dar, die für Azure Microsoft Fluid Relay Server verwendet werden. | Ausgehend | Nein | Nein |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security | Ausgehend | Nein | Nein |
 | **MicrosoftContainerRegistry** | Containerregistrierung für Microsoft-Containerimages. <br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit vom Tag **AzureFrontDoor.FirstParty** auf. | Ausgehend | Ja | Ja |
 | **PowerBI** | Power BI. *Hinweis: Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar.* | Beide | Nein | Nein|
@@ -155,6 +156,19 @@ Sie können JSON-Dateien mit der aktuellen Liste der Diensttags zusammen mit Det
 - [Azure Deutschland](https://www.microsoft.com/download/details.aspx?id=57064)   
 
 Die IP-Adressbereiche in diesen Dateien liegen in CIDR-Notation vor. 
+
+Beachten Sie, dass die folgenden AzureCloud-Tags keine regionalen Namen aufweisen, die gemäß dem normalen Schema formatiert sind: 
+- AzureCloud.centralfrance (Zentralfrankreich)
+- AzureCloud.southfrance (Südfrankreich)
+- AzureCloud.germanywc (West- und Mitteldeutschland)
+- AzureCloud.germanyn (Norddeutschland)
+- AzureCloud.norwaye (Ostnorwegen)
+- AzureCloud.norwayw (Westnorwegen)
+- AzureCloud.switzerlandn (Nordschweiz)
+- AzureCloud.switzerlandw (Westschweiz)
+- AzureCloud.usstagee (OstUSASTG)
+- AzureCloud.usstagec (Süd-und MittelUSASTG)
+
 
 > [!NOTE]
 >Ein Teil dieser Informationen wurde in XML-Dateien für [Azure öffentlich](https://www.microsoft.com/download/details.aspx?id=41653), [Azure China](https://www.microsoft.com/download/details.aspx?id=42064) und [Azure Deutschland](https://www.microsoft.com/download/details.aspx?id=54770) veröffentlicht. Diese XML-Downloads werden zum 30. Juni 2020 eingestellt und stehen nach diesem Datum nicht mehr zur Verfügung. Sie sollten stattdessen wie in den vorherigen Abschnitten beschrieben die Ermittlungs-API oder JSON-Dateidownloads verwenden.

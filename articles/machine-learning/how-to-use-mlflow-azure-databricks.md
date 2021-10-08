@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 62fd9820d1ec743d7424679753828b0cb7837fbc
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: 9f5fae1fb1a4afaca021eddd8b04625d87b9b2d9
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113031047"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707995"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning"></a>Nachverfolgen von ML-Experimenten in Azure Databricks mit MLflow und Azure Machine Learning
 
@@ -214,7 +214,9 @@ display(preds)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Beachten Sie Folgendes, falls Sie nicht planen, die protokollierten Metriken und Artefakte in Ihrem Arbeitsbereich zu verwenden: Das Löschen einzelner Einträge ist derzeit nicht möglich. Löschen Sie stattdessen die Ressourcengruppe, die das Speicherkonto und den Arbeitsbereich enthält, damit hierfür keine Gebühren anfallen:
+Wenn Sie Ihren Azure Databricks-Arbeitsbereich behalten möchten, aber den Azure ML-Arbeitsbereich nicht mehr benötigen, können Sie den Azure ML-Arbeitsbereich löschen. Diese Aktion führt dazu, dass die Verknüpfung zwischen Ihrem Azure Databricks- und dem Azure ML-Arbeitsbereich getrennt wird. 
+
+Falls Sie nicht planen, die protokollierten Metriken und Artefakte in Ihrem Arbeitsbereich zu verwenden, beachten Sie, dass das Löschen einzelner Einträge derzeit nicht möglich ist. Löschen Sie stattdessen die Ressourcengruppe, die das Speicherkonto und den Arbeitsbereich enthält, damit hierfür keine Gebühren anfallen:
 
 1. Wählen Sie ganz links im Azure-Portal **Ressourcengruppen** aus.
 

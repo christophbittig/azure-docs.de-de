@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/21/2021
+ms.date: 09/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1b50fbbdd38d1bb24c1732c465784c3ddb757e3f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 057afd588193a8fdfba020e25d086dc915bb9eaa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114454780"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612831"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Semantische Suche in Azure Cognitive Search
 
@@ -36,6 +36,13 @@ Die semantische Suche ist ein Premium-Feature. Es wird empfohlen, diesen Artikel
 
 Die semantische Suche ist eine Sammlung von Features, die die Qualität von Suchergebnissen verbessern. Wenn diese für Ihren Suchdienst aktiviert ist, erweitert sie die herkömmliche Abfrageausführungspipeline auf zwei Arten. Zum einen wird einem anfänglichen Resultset eine sekundäre Bewertung hinzugefügt, wodurch die Ergebnisse mit der höchsten semantischen Relevanz ganz oben in der Liste angezeigt werden. Zweitens werden Beschriftungen und Antworten extrahiert und zurückgegeben, die Sie auf einer Suchseite ausgeben können, um das Benutzererlebnis bei der Suche zu verbessern.
 
+| Funktion | BESCHREIBUNG |
+|---------|-------------|
+| [Semantische Neubewertung](semantic-ranking.md) | Verwendet Kontext oder semantische Bedeutung, um eine neue Relevanzbewertung für vorhandene Ergebnisse zu berechnen. |
+| [Semantische Titel und Markierungen](semantic-how-to-query-request.md) | Extrahiert Sätze und Ausdrücke aus einem Dokument, die den Inhalt am besten zusammenfassen, und hebt wichtige Passagen zum einfachen Überfliegen hervor. Titel, die ein Ergebnis zusammenfassen, sind nützlich, wenn einzelne Inhaltsfelder für die Ergebnisseite zu dicht sind. Der markierte Text hebt die relevantesten Begriffe und Ausdrücke hervor, sodass Benutzer schnell ermitteln können, warum eine Entsprechung als relevant eingestuft wurde. |
+| [Semantische Antworten](semantic-answers.md) | Eine optionale und zusätzliche Unterstruktur, die von einer Semantikabfrage zurückgegeben wird. Sie bietet eine direkte Antwort auf eine Abfrage, die wie eine Frage aussieht. Ein Dokument muss Text mit den Merkmalen einer Antwort enthalten. |
+| [Rechtschreibprüfung](speller-how-to-add.md) | Korrektur von Tippfehlern, bevor die Abfragebegriffe die Suchmaschine erreichen. |
+
 ## <a name="how-semantic-ranking-works"></a>Funktionsweise der semantischen Rangfolge
 
 Die *semantische Rangfolge* sucht nach Kontext und Verwandtschaft zwischen Begriffen und stuft die Übereinstimmungen hoch, die gemäß Abfrage sinnvoller sind. Language Understanding findet Zusammenfassungen oder *Titel* und *Antworten* innerhalb Ihrer Inhalte und schließt diese in die Antwort mit ein, die dann für eine effektivere Suchfunktion auf einer Suchergebnisseite dargestellt werden kann.
@@ -47,17 +54,6 @@ Die zugrunde liegende Technologie stammt von Bing und Microsoft Research und ist
 Im folgenden Video erhalten Sie eine Übersicht zu den Funktionen.
 
 > [!VIDEO https://www.youtube.com/embed/yOf0WfVd_V0]
-
-## <a name="features-in-semantic-search"></a>Features der semantischen Suche
-
-Die semantische Suche verbessert Genauigkeit und Treffer durch diese neuen Funktionen:
-
-| Funktion | BESCHREIBUNG |
-|---------|-------------|
-| [Rechtschreibprüfung](speller-how-to-add.md) | Korrektur von Tippfehlern, bevor die Abfragebegriffe die Suchmaschine erreichen. |
-| [Semantische Rangfolge](semantic-ranking.md) | Verwendung von Kontext oder semantischer Bedeutung, um eine Relevanzbewertung zu berechnen. |
-| [Semantische Titel und Markierungen](semantic-how-to-query-request.md) | Sätze und Ausdrücke aus einem Dokument, die den Inhalt am besten zusammenfassen, mit Hervorhebungen wichtiger Passagen zum einfachen Scannen. Titel, die ein Ergebnis zusammenfassen, sind nützlich, wenn einzelne Inhaltsfelder für die Ergebnisseite zu dicht sind. Der markierte Text hebt die relevantesten Begriffe und Ausdrücke hervor, sodass Benutzer schnell ermitteln können, warum eine Entsprechung als relevant eingestuft wurde. |
-| [Semantische Antworten](semantic-answers.md) | Eine optionale und zusätzliche Unterstruktur, die von einer Semantikabfrage zurückgegeben wird. Sie bietet eine direkte Antwort auf eine Abfrage, die wie eine Frage aussieht. |
 
 ### <a name="order-of-operations"></a>Reihenfolge der Vorgänge
 
@@ -77,15 +73,15 @@ Um semantische Funktionen in Abfragen zu verwenden, müssen Sie geringfügige Ä
 
 ## <a name="semantic-capabilities-and-limitations"></a>Semantische Funktionen und Einschränkungen
 
-Die semantische Suche ist eine neuere Technologie, weshalb es wichtig ist, festzulegen, was von ihr erwartet werden kann und was nicht. Die Qualität der Suchergebnisse wird auf zwei Arten verbessert:
+Die semantische Suche ist eine neuere Technologie, weshalb es wichtig ist, festzulegen, was von ihr erwartet werden kann und was nicht. Sie kann beispielsweise die Qualität von Suchvorgängen verbessern:
 
-* Erstens werden Übereinstimmungen heraufgestuft, die semantisch näher an der Absicht der ursprünglichen Abfrage liegen.
+* Übereinstimmungen, die semantisch näher an der Absicht der ursprünglichen Abfrage liegen, werden heraufgestuft.
 
-* Zweitens können Ergebnisse einfacher genutzt werden, wenn Beschriftungen und potenziell auch Antworten auf der Seite vorhanden sind.
+* In jedem Ergebnis werden Zeichenfolgen gesucht, die als Beschriftungen und möglicherweise auch als Antworten verwendet werden können, die auf einer Suchergebnisseite gerendert werden können.
 
-Die semantische Suche ist nicht in jedem Szenario von Vorteil. Stellen Sie daher zunächst sicher, dass Sie über Inhalte verfügen, die die zugehörigen Funktionen nutzen können. Die Sprachmodelle in der semantischen Suche funktionieren am besten für durchsuchbare Inhalte, die viele Informationen enthalten und in offener Textform strukturiert sind. Bei der Auswertung Ihrer Inhalte auf Antworten suchen die Modelle beispielsweise nach einer langen Zeichenfolge, die wie eine Antwort aussieht, und extrahieren diese. Es werden aber keine neuen Zeichenfolgen als Antworten auf eine Abfrage oder als Beschriftungen für ein passendes Dokument erstellt. Um die Frage „Welches Auto weist den niedrigsten Kraftstoffverbrauch auf?“ zu beantworten, sollte ein Index Sätze wie „Hybridautos weisen den niedrigsten Kraftstoffverbrauch aller auf dem Markt befindlichen Autos auf“ enthalten.
+Sie kann eine Abfrage nicht erneut über den gesamten Korpus hinweg ausführen, um semantisch relevante Ergebnisse zu finden. Die semantische Suche bewertet das *vorhandene* Resultset neu, das aus den 50 besten Ergebnissen besteht, die vom Standardalgorithmus für die Rangfolge ermittelt wurden. Darüber hinaus kann die semantische Suche keine neuen Informationen oder Zeichenfolgen erstellen. Beschriftungen und Antworten werden wörtlich aus Ihren Inhalten extrahiert. Wenn die Ergebnisse also keinen Text enthalten, der einer Antwort ähnelt, erzeugen die Sprachmodelle keine Antwort.
 
-Die semantische Suche kann keine Informationen aus verschiedenen Inhaltsteilen in einem Dokument oder Dokumentkorpus ableiten. Bei der Abfrage „Resorthotels in einer Wüste“ ohne geografische Eingabe findet die Engine beispielsweise keine Übereinstimmungen für Hotels in Arizona oder Nevada, obwohl es in beiden Staaten Wüsten gibt. Ebenso berechnet die Engine für die Rückgabe keinen Zeitintervall basierend auf dem aktuellen Datum, wenn die Abfrage die Klausel „in den letzten fünf Jahren“ enthält. In Cognitive Search umfassen Mechanismen, die für die oben genannten Szenarios hilfreich sein können, sogenannte [Synonymzuordnungen](search-synonyms.md), mit denen Sie Zuordnungen zwischen sich nach außen hin unterscheidenden Begriffen erstellen können, und [Datenfilter](search-query-odata-filter.md), die als OData-Ausdruck angegeben sind.
+Obwohl die semantische Suche nicht in jedem Szenario von Vorteil ist, können bestimmte Inhalte erheblich von ihren Funktionen profitieren. Die Sprachmodelle in der semantischen Suche funktionieren am besten für durchsuchbare Inhalte, die viele Informationen enthalten und in offener Textform strukturiert sind. Für Wissensdatenbanken, Onlinedokumentationen oder Dokumente, die beschreibende Inhalte enthalten, bieten die Funktionen der semantischen Suche die meisten Vorteile.
 
 ## <a name="availability-and-pricing"></a>Verfügbarkeit und Preismodell
 
@@ -98,7 +94,31 @@ Die semantische Suche ist nach der [Registrierung](https://aka.ms/SemanticSearch
 
 Sie können die Rechtschreibprüfung ohne semantische Suche kostenlos verwenden. Gebühren für die semantische Suche werden erhoben, wenn Abfrageanforderungen `queryType=semantic` enthalten und die Suchzeichenfolge nicht leer ist (z. B. `search=pet friendly hotels in new york`). Leere Suchen (Abfragen der Form `search=*`) werden nicht in Rechnung gestellt, selbst wenn „queryType“ auf `semantic` festgelegt ist.
 
-Wenn Sie keine semantische Suche für Ihren Suchdienst wünschen, können Sie die [semantische Suche deaktivieren](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#searchsemanticsearch), um eine versehentliche Nutzung und Gebühren zu vermeiden.
+## <a name="disable-semantic-search"></a>Deaktivieren der semantischen Suche
+
+Gebühren fallen nur für einen Suchdienst an, in dem das Feature aktiviert ist. Wenn Sie sich jedoch vollständig vor einer versehentlichen Verwendung schützen möchten, legen Sie die Option als [deaktiviert](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#searchsemanticsearch) fest.
+
+* Version 2021-04-01-Preview der Verwaltungs-REST-API bietet diese Option.
+
+* Zum Deaktivieren von Features sind die Berechtigungen „Besitzer“ oder „Mitwirkender“ erforderlich.
+
+```http
+PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourcegroups/{{resource-group}}/providers/Microsoft.Search/searchServices/{{search-service-name}}?api-version=2021-04-01-Preview
+    {
+      "location": "{{region}}",
+      "sku": {
+        "name": "standard"
+      },
+      "properties": {
+        "semanticSearch": "disabled"
+      }
+    }
+```
+
+Um die semantische Suche erneut zu aktivieren, führen Sie die obige Anforderung erneut aus, und legen Sie „semanticSearch“ entweder auf „free“ (Standardwert) oder „standard“ fest.
+
+> [!TIP]
+> Aufrufe der Verwaltungs-REST-API werden über Azure Active Directory authentifiziert. Anleitungen zum Einrichten eines Sicherheitsprinzipals und einer Anforderung finden Sie in diesem Blogbeitrag zu [Azure-REST-APIs mit Postman (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/). Das vorherige Beispiel wurde anhand der Anweisungen und der Postman-Sammlung im Blogbeitrag getestet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

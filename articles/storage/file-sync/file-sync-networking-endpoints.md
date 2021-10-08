@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 798d0aaa6f4423679576c37a0af7bf64de37a313
-ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
+ms.openlocfilehash: f128aac2135b85c3e612ce1249766b7e5db29f05
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112428807"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549617"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Konfigurieren von Netzwerkendpunkten für die Azure-Dateisynchronisierung
 Azure Files und die Azure-Dateisynchronisierung verfügen über zwei Arten von Endpunkten für den Zugriff auf Azure-Dateifreigaben: 
@@ -30,7 +30,7 @@ Wir empfehlen Ihnen, vor dem Lesen dieses Leitfadens den Artikel [Azure-Dateisyn
 In diesem Artikel wird Folgendes vorausgesetzt:
 - Sie verfügen über ein Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 - Sie haben bereits eine Azure-Dateifreigabe in einem Speicherkonto erstellt, mit dem von der lokalen Umgebung aus eine Verbindung hergestellt werden soll. Informationen zum Erstellen einer Azure-Dateifreigabe finden Sie unter [Erstellen einer Azure-Dateifreigabe](../files/storage-how-to-create-file-share.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json).
-- Sie haben bereits einen Speichersynchronisierungsdienst erstellt und Ihren Windows-Dateiserver dafür registriert. Informationen zum Bereitstellen der Azure-Dateisynchronisierung finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung](file-sync-deployment-guide.md).
+- Sie lassen Domänendatenverkehr zu den folgenden Endpunkten zu (siehe [Azure-Dienstendpunkte](../file-sync/file-sync-firewall-and-proxy.md#firewall)):
 
 Außerdem zu beachten:
 - Falls Sie Azure PowerShell verwenden möchten, [installieren Sie die neueste Version](/powershell/azure/install-az-ps).

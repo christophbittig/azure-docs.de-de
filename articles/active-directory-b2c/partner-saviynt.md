@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: fe5a2114a99b7867ac5e51b6bf9ec542ad47ca13
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 2685570bb14cf177f0a658196aa1750f9d8e02a1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257890"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558346"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von Saviynt mit Azure Active Directory B2C
 
@@ -76,37 +76,22 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 ### <a name="create-an-azure-ad-application-for-saviynt"></a>Erstellen einer Azure AD-Anwendung für Saviynt
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/#home) an.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option aus.
+1. Wählen Sie **App-Registrierungen** > **Neue Registrierung** aus.
+1. Geben Sie unter Name einen Namen für die Anwendung ein. Verwenden Sie beispielsweise „Saviynt“ als Namen, und klicken Sie dann auf **Erstellen**.
+1. Navigieren Sie zu **API-Berechtigungen**, und klicken Sie dann auf **+ Berechtigung hinzufügen**.
+1. Die Seite API-Berechtigungen anfordern wird angezeigt. Wählen Sie die Registerkarte **Microsoft-APIs** aus, und wählen Sie dann **Microsoft Graph** als häufig verwendete Microsoft-API aus.
+1. Fahren Sie mit der nächsten Seite fort, und klicken Sie auf **Anwendungsberechtigungen**.
+1. Klicken Sie auf **Verzeichnis**, und aktivieren Sie die Kontrollkästchen **Directory.Read.All** und **Directory.ReadWrite.All**.
+1. Klicken Sie auf **Berechtigungen hinzufügen**. Überprüfen Sie die hinzugefügten Berechtigungen.
+1. Klicken Sie auf **Grant admin consent for Default Directory** > **Save** (Administratoreinwilligung für Standardverzeichnis gewähren > Speichern).
+1. Navigieren Sie zu **Zertifikate und Geheimnisse**, und klicken Sie dann auf **+ Geheimen Clientschlüssel hinzufügen**. Geben Sie eine Beschreibung für den geheimen Clientschlüssel ein, wählen Sie die Ablaufoption aus, und klicken Sie dann auf **Hinzufügen**.
+1. Der geheime Schlüssel wird generiert und im Abschnitt „Geheimer Clientschlüssel“ angezeigt. Sie müssen ihn später verwenden.
 
-2. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-
-3. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option aus.
-
-4. Wählen Sie **App-Registrierungen** > **Neue Registrierung** aus.
-
-5. Geben Sie unter Name einen Namen für die Anwendung ein. Verwenden Sie beispielsweise „Saviynt“ als Namen, und klicken Sie dann auf **Erstellen**.
-
-6. Navigieren Sie zu **API-Berechtigungen**, und klicken Sie dann auf **+ Berechtigung hinzufügen**.
-
-7. Die Seite API-Berechtigungen anfordern wird angezeigt. Wählen Sie die Registerkarte **Microsoft-APIs** aus, und wählen Sie dann **Microsoft Graph** als häufig verwendete Microsoft-API aus.
-
-8. Fahren Sie mit der nächsten Seite fort, und klicken Sie auf **Anwendungsberechtigungen**.
-
-9. Klicken Sie auf **Verzeichnis**, und aktivieren Sie die Kontrollkästchen **Directory.Read.All** und **Directory.ReadWrite.All**.
-
-10. Klicken Sie auf **Berechtigungen hinzufügen**. Überprüfen Sie die hinzugefügten Berechtigungen.
-
-11. Klicken Sie auf **Grant admin consent for Default Directory** > **Save** (Administratoreinwilligung für Standardverzeichnis gewähren > Speichern).
-
-12. Navigieren Sie zu **Zertifikate und Geheimnisse**, und klicken Sie dann auf **+ Geheimen Clientschlüssel hinzufügen**. Geben Sie eine Beschreibung für den geheimen Clientschlüssel ein, wählen Sie die Ablaufoption aus, und klicken Sie dann auf **Hinzufügen**.
-
-13. Der geheime Schlüssel wird generiert und im Abschnitt „Geheimer Clientschlüssel“ angezeigt.
-
-    >[!NOTE]
-    > Sie benötigen den geheimen Clientschlüssel später.
-
-14. Navigieren Sie zur **Übersicht**, und rufen Sie die **Client-ID** und die **Mandanten-ID** ab.
-
-15. Sie benötigen die Mandanten-ID, die Client-ID und den geheimen Clientschlüssel zum Abschließen des Setups in Saviynt.
+1. Navigieren Sie zur **Übersicht**, und rufen Sie die **Client-ID** und die **Mandanten-ID** ab.
+1. Sie benötigen die Mandanten-ID, die Client-ID und den geheimen Clientschlüssel zum Abschließen des Setups in Saviynt.
 
 ### <a name="enable-saviynt-to-delete-users"></a>Saviynt das Löschen von Benutzern ermöglichen
 

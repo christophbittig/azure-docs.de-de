@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f27cee969d666d8605c0c87552eed1f305e1e4c3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2a48a9f4ded6386b4b5a4ea2d02d796b8e5ed4f7
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339922"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213912"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Funktionsweise des Rückschreibens von Self-Service-Kennwortzurücksetzungen in Azure Active Directory
 
@@ -105,7 +105,7 @@ Das Kennwortrückschreiben ist ein äußerst sicherer Dienst. Zum Schutz Ihrer I
 Nachdem ein Benutzer eine Kennwortzurücksetzung übermittelt hat, durchläuft die Zurücksetzungsanforderung verschiedene Verschlüsselungsschritte, bevor sie in Ihrer lokalen Umgebung eintrifft. Diese Verschlüsselungsschritte stellen maximale Dienstzuverlässigkeit und -sicherheit sicher. Die Schritte lassen sich wie folgt beschreiben:
 
 1. **Kennwortverschlüsselung mit 2.048-Bit-RSA-Schlüssel:** Nachdem ein Benutzer ein zurückzuschreibendes Kennwort an die lokale Umgebung übermittelt hat, wird dieses Kennwort mit einem 2.048-Bit-RSA-Schlüssel verschlüsselt.
-1. **Verschlüsselung auf Paketebene mit AES-GCM:** Das gesamte Paket (bestehend aus Kennwort und den erforderlichen Metadaten) wird mithilfe von AES-GCM verschlüsselt. Diese Verschlüsselung verhindert, dass jemand mit direktem Zugriff auf den zugrunde liegenden Service Bus-Kanal den Inhalt anzeigen oder manipulieren kann.
+1. **Verschlüsselung auf Paketebene mit 256-Bit-AES-GCM**: Das gesamte Paket (bestehend aus Kennwort und den erforderlichen Metadaten) wird mithilfe von AES-GCM verschlüsselt (mit einer Schlüsselgröße von 256 Bit). Diese Verschlüsselung verhindert, dass jemand mit direktem Zugriff auf den zugrunde liegenden Service Bus-Kanal den Inhalt anzeigen oder manipulieren kann.
 1. **Abwicklung der gesamten Kommunikation über TLS/SSL:** Die gesamte Kommunikation mit Service Bus wird über einen TLS/SSL-Kanal abgewickelt. Diese Verschlüsselung schützt den Inhalt vor nicht autorisierten Dritten.
 1. **Automatischer Schlüsselrollover im Abstand von sechs Monaten:** Alle sechs Monate oder jedes Mal, wenn das Kennwortrückschreiben deaktiviert und dann in Azure AD Connect wieder aktiviert wird, erfolgt ein Rollover aller Schlüssel, um ein Höchstmaß an Dienstzuverlässigkeit und Sicherheit zu erreichen.
 

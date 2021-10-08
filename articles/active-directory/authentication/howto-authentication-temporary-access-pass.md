@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/11/2021
+ms.date: 09/23/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb911bb58413e6551224d98371cf56ecbd8e01f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e8b0279e0f97f3440bdef04046c2cb6eb35b6573
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339563"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605789"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>Konfigurieren eines befristeten Zugriffspasses in Azure AD für die Registrierung von kennwortlosen Authentifizierungsmethoden (Vorschau)
 
@@ -26,7 +26,6 @@ Kennwortlose Authentifizierungsmethoden (wie z. B. FIDO2 und die kennwortlose A
 - Verwenden eines befristeten Zugriffspasses (Temporary Access Pass, TAP) 
 
 Ein befristeter Zugriffspass ist ein von einem Administrator ausgegebener zeitlich begrenzter Passcode, der strenge Authentifizierungsanforderungen erfüllt und zum Integrieren anderer Authentifizierungsmethoden einschließlich kennwortloser Methoden verwendet werden kann. Ein befristeter Zugriffspass erleichtert auch die Wiederherstellung, wenn ein Benutzer seinen Faktor für die strenge Authentifizierung (z. B. FIDO2-Sicherheitsschlüssel oder Microsoft Authenticator-App) verloren oder vergessen hat, sich jedoch anmelden muss, um neue strenge Authentifizierungsmethoden zu registrieren.
-
 
 In diesem Artikel wird beschrieben, wie Sie in Azure AD mit dem Azure-Portal einen befristeten Zugriffspass aktivieren und verwenden. Sie können diese Aktionen auch mithilfe der REST-APIs ausführen. 
 
@@ -120,13 +119,23 @@ Benutzer verwenden am häufigsten einen befristeten Zugriffspass, um bei der ers
 Der Benutzer ist jetzt angemeldet und kann eine Methode (z. B. den FIDO2-Sicherheitsschlüssel) aktualisieren oder registrieren. Benutzer, die ihre Authentifizierungsmethoden aktualisieren, weil Sie ihre Anmeldeinformationen oder ihr Gerät verloren haben, sollten sicherstellen, dass sie die alten Authentifizierungsmethoden entfernen.
 Benutzer können sich auch weiterhin mit ihrem Kennwort anmelden; ein TAP ersetzt nicht das Kennwort eines Benutzers.
 
-Benutzer können ihren befristeten Zugriffspass auch verwenden, um sich direkt über die Authenticator-App für die kennwortlose Anmeldung per Telefon zu registrieren. Weitere Informationen finden Sie unter [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos in der Microsoft Authenticator-App](../user-help/user-help-auth-app-add-work-school-account.md).
+### <a name="passwordless-phone-sign-in"></a>Kennwortlose Anmeldung per Telefon
+
+Benutzer können ihren befristeten Zugriffspass auch verwenden, um sich direkt über die Authenticator-App für die kennwortlose Anmeldung per Telefon zu registrieren. Weitere Informationen finden Sie unter [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos in der Microsoft Authenticator-App](https://support.microsoft.com/account-billing/add-your-work-or-school-account-to-the-microsoft-authenticator-app-43a73ab5-b4e8-446d-9e54-2a4cb8e4e93c).
 
 ![Screenshot: Eingeben eines befristeten Zugriffspasses mit einem Geschäfts-, Schul- oder Unikonto](./media/how-to-authentication-temporary-access-pass/enter-work-school.png)
 
-## <a name="delete-a-temporary-access-pass"></a>Löschen eines befristeten Zugriffspasses
+### <a name="guest-access"></a>Gastzugriff
 
-Ein abgelaufener befristeter Zugriffspass kann nicht mehr verwendet werden. Unter den **Authentifizierungsmethoden** für einen Benutzer wird in der Spalte **Details** angezeigt, wann der befristete Zugriffspass abgelaufen ist. Sie können einen abgelaufenen befristeten Zugriffspass löschen, indem Sie die folgenden Schritte ausführen:
+Gastbenutzer können sich bei einem Ressourcenmandanten mit einer befristeter Zugriffspass anmelden, der von ihrem eigenen Mandanten ausgestellt wurde, wenn der befristeter Zugriffspass die Authentifizierungsanforderung des eigenen Mandanten erfüllt. Wenn eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für den Ressourcenmandanten erforderlich ist, muss der Gastbenutzer diese ausführen, um Zugriff auf die Ressource zu erhalten.
+
+### <a name="expiration"></a>Ablauf
+
+Ein abgelaufener oder gelöschter befristeter Zugriffspass kann für die interaktive oder nicht interaktive Authentifizierung nicht verwendet werden. Benutzer müssen sich mit anderen Authentifizierungsmethoden erneut authentifizieren, nachdem ein befristeter Zugriffspass abgelaufen ist oder gelöscht wurde. 
+
+## <a name="delete-an-expired-temporary-access-pass"></a>Löschen eines abgelaufenen befristeten Zugriffspasses
+
+Unter den **Authentifizierungsmethoden** für einen Benutzer wird in der Spalte **Details** angezeigt, wann der befristete Zugriffspass abgelaufen ist. Sie können einen abgelaufenen befristeten Zugriffspass löschen, indem Sie die folgenden Schritte ausführen:
 
 1. Navigieren Sie im Azure AD-Portal zu **Benutzer**, wählen Sie einen Benutzer (z. B. *TAP-Benutzer*) aus, und wählen Sie dann **Authentifizierungsmethoden** aus.
 1. Wählen Sie auf der rechten Seite der in der Liste angezeigten Authentifizierungsmethode **Befristeter Zugriffspass (Vorschau)** die Option **Löschen** aus.
@@ -152,7 +161,6 @@ Weitere Informationen zu NIST-Standards für das Onboarding und die Wiederherste
 Beachten Sie die folgenden Einschränkungen:
 
 - Bei Verwendung eines einmaligen befristeten Zugriffspasses zum Registrieren einer kennwortlosen Methode wie FIDO2 oder die Anmeldung per Telefon muss der Benutzer die Registrierung innerhalb von 10 Minuten nach der Anmeldung mit dem einmaligen befristeten Zugriffspass abschließen. Diese Einschränkung gilt nicht für einen befristeten Zugriffspass, der mehrmals verwendet werden kann.
-- Gastbenutzer können sich nicht mit einem befristeten Zugriffspass anmelden.
 - Der befristete Zugriffspass befindet sich in der öffentlichen Vorschau und ist derzeit nicht in Azure für die US-Regierung verfügbar.
 - Benutzer im Geltungsbereich der Richtlinie für die Self-Service-Kennwortzurücksetzung (SSPR) *oder* [MFA-Registrierungsrichtlinie für den Identitätsschutz](../identity-protection/howto-identity-protection-configure-mfa-policy.md) müssen eine der Authentifizierungsmethoden registrieren, nachdem sie sich mit einem befristeten Zugriffspass angemeldet haben. Benutzer im Gültigkeitsbereich für diese Richtlinien werden an den [Interruptmodus der kombinierten Registrierung](concept-registration-mfa-sspr-combined.md#combined-registration-modes) umgeleitet. Diese Vorgehensweise unterstützt derzeit keine FIDO2-Registrierung und keine Registrierung mit Anmeldung per Telefon. 
 - Ein befristeter Zugriffspass kann nicht mit der NPS-Erweiterung (Network Policy Server) und dem AD FS-Adapter (Active Directory Federation Services) oder aber während der Verwendung von Windows Setup/Out-of-Box-Experience (OOBE), Autopilot oder zur Bereitstellung von Windows Hello for Business verwendet werden. 
@@ -173,4 +181,3 @@ Beachten Sie die folgenden Einschränkungen:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Planen einer Bereitstellung mit kennwortloser Authentifizierung in Azure Active Directory](howto-authentication-passwordless-deployment.md)
-

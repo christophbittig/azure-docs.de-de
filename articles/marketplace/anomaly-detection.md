@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie die automatische Anomalieerkennung für geta
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 5/03/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 1226a66a68c9ee8163e1a786cba8f1107c84c2b1
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.date: 9/27/2021
+ms.openlocfilehash: 5d253ab72d2915145444485c98131027555efdbc
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112414627"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081608"
 ---
 # <a name="manage-metered-billing-anomalies-in-partner-center"></a>Verwalten von Anomalien bei der getakteten Abrechnung in Partner Center
 
@@ -27,6 +27,52 @@ Sie als Partner müssen die Überschreitungsnutzung ihrer Kunden bezüglich ihre
 Um sicherzustellen, dass Ihre Kunden eine korrekte Abrechnung erhalten, verwenden Sie das Feature zur **Anomalieerkennung** für SaaS-Apps und für Pläne verwalteter Azure-Anwendungen. Dieses Feature überwacht die Nutzung und vergleicht sie mit der getakteten Abrechnung, um so einen zu erwartenden Nutzungswert innerhalb eines erwarteten Bereichs vorherzusagen. Wenn sich die Nutzung außerhalb des erwarteten Bereichs befindet, wird sie als unerwartete Nutzung (Anomalie) behandelt, und für Sie erhalten eine Warnmeldung auf der Seite „Übersicht“ im Programm „Kommerzieller Marketplace“ im Partner Center. Sie können die Nutzung Ihrer Kunden täglich für jede von Ihnen festgelegte benutzerdefinierte Verbrauchseinheitsdimension nachverfolgen.
 
 ## <a name="view-and-manage-metered-usage-anomalies"></a>Anzeigen und Verwalten von Anomalien bei der gemessenen Nutzung
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie auf der Homepage die Kachel **Insights** aus.
+
+    [ ![Abbildung der Kachel „Insights“ auf der Homepage von Partner Center.](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. Wählen Sie im linken Menü **Verbrauch** aus.
+1. Klicken Sie auf die Registerkarte **Metered usage anomalies** (Anomalien bei der gemessenen Nutzung).
+
+    [![Screenshot der Registerkarte „Metered usage anomalies“ (Anomalien bei der gemessenen Nutzung) auf der Seite „Usage“ (Nutzung)](./media/anomaly-detection/metered-usage-anomalies-workspaces.png)](./media/anomaly-detection/metered-usage-anomalies-workspaces.png#lightbox)<br>
+    ***Abbildung 1: Registerkarte „Metered usage anomalies“ (Anomalien bei der gemessenen Nutzung)***
+
+1. Als Herausgeber werden Sie für jede ermittelte Nutzungsanomalie im Hinblick auf die getaktete Abrechnung aufgefordert, Untersuchungen anzustellen und zu ermitteln, ob es sich um eine Anomalie handelt oder nicht. Klicken Sie auf **Mark as anomaly** (Als Anomalie kennzeichnen), um die Diagnose zu bestätigen.
+
+     [![Screenshot des Dialogfelds „Mark as anomaly“ (Als Anomalie kennzeichnen)](./media/anomaly-detection/mark-as-anomaly-workspaces.png)](./media/anomaly-detection/mark-as-anomaly-workspaces.png#lightbox)<br>
+    ***Abbildung 2: Dialogfeld „Mark as anomaly“ (Als Anomalie kennzeichnen)***
+
+1. Wenn Sie der Meinung sind, dass es sich bei der erkannten Überschreitungsnutzung um keine Anomalie handelt, können Sie Feedback geben, indem Sie bei der gemeldeten Anomalie in Partner Center für die konkrete Überschreitungsnutzung auf **Not an anomaly** (Keine Anomalie) klicken.
+
+    [![Screenshot des Dialogfelds „Why is it not an anomaly?“ (Warum ist es keine Anomalie?)](./media/anomaly-detection/why-is-it-not-an-anomaly-workspaces.png)](./media/anomaly-detection/why-is-it-not-an-anomaly-workspaces.png#lightbox)
+    ***Abbildung 3: Dialogfeld „Why is it not an anomaly?“ (Warum ist es keine Anomalie?)***
+
+1. Sie können auf der Seite nach unten scrollen, damit eine Liste aller nicht bestätigter Anomalien angezeigt wird. Die Liste zeigt alle Anomalien an, die Sie nicht bestätigt haben. Für alle gemeldeten Anomalien in Partner Center können Sie entweder „Als Anomalie kennzeichnen“ oder „Keine Anomalie“ auswählen.
+
+   [![Screenshot der Liste nicht bestätigter Anomalien auf der Seite „Usage“ (Nutzung) in Partner Center](./media/anomaly-detection/unacknowledged-anomalies-workspaces.png)](./media/anomaly-detection/unacknowledged-anomalies-workspaces.png#lightbox)<br>
+    ***Abbildung 4: Liste nicht bestätigter Anomalien in Partner Center***
+
+    Standardmäßig werden gekennzeichnete Anomalien mit geschätzten finanziellen Auswirkungen von mehr als 100 USD in Partner Center angezeigt. Sie können jedoch die Option **Alle** in der Liste **Geschätzte finanzielle Auswirkungen von Anomalien** auswählen, um alle gekennzeichneten Anomalien anzuzeigen.
+
+    [ ![Screenshot: alle gemessenen Verbrauchsanomalien für das ausgewählte Angebot.](./media/anomaly-detection/all-anomalies.png) ](./media/anomaly-detection/all-anomalies.png#lightbox)
+
+1. Außerdem wird ein Aktionsprotokoll für Anomalien angezeigt, in dem die Aktionen aufgeführt sind, die Sie für die Überschreitungsnutzungen durchgeführt haben. Im Aktionsprotokoll wird angezeigt, für welche Überschreitungsnutzungsereignisse Sie „Als Anomalie kennzeichnen“ oder „Keine Anomalie“ ausgewählt haben.
+
+   [![Veranschaulicht das Aktionsprotokoll für Anomalien auf der Seite „Nutzung“.](./media/anomaly-detection/anomaly-action-log-workspaces.png)](./media/anomaly-detection/anomaly-action-log-workspaces.png#lightbox)<br>
+   ***Abbildung 5: Aktionsprotokoll für Anomalien***
+
+1. Rückwirkende Korrekturen für Überschreitungsnutzungsereignisse in exportierten Berichten werden in Partner Center-Analysen nicht unterstützt. Sie können in Partner Center die korrigierte Überschreitungsnutzung zu einer Anomalie eingeben, und die Details werden für eine weitere Untersuchung an Microsoft-Teams übermittelt. Je nach Untersuchungsergebnis überweist Microsoft ein Guthaben an den Kunden, dem ein zu hoher Betrag in Rechnung gestellt wurde. Wenn Sie eine der gekennzeichneten Anomalien auswählen, können Sie auf **Mark as anomaly** (Als Anomalie kennzeichnen) klicken, um die Überschreitungsnutzungsanomalie als tatsächliche Anomalie zu kennzeichnen.
+
+   [![Veranschaulicht das Dialogfeld „Als Anomalie kennzeichnen.](./media/anomaly-detection/mark-as-anomaly-workspaces.png)](./media/anomaly-detection/mark-as-anomaly-workspaces.png#lightbox)<br>
+   ***Abbildung 6: Dialogfeld „Als Anomalie kennzeichnen“***
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 1. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Analysieren** > **Nutzung** aus.
@@ -64,6 +110,8 @@ Um sicherzustellen, dass Ihre Kunden eine korrekte Abrechnung erhalten, verwende
    [![Veranschaulicht das Dialogfeld „Als Anomalie kennzeichnen.](./media/anomaly-detection/new-reported-usage.png)](./media/anomaly-detection/new-reported-usage.png#lightbox)<br>
    ***Abbildung 6: Dialogfeld „Als Anomalie kennzeichnen“***
 
+---
+
 Wenn eine Überschreitungsnutzung in Partner Center erstmalig gemeldet wird, erhalten Sie 30 Tage Zeit, für die Anomalie „Als Anomalie kennzeichnen“ oder „Keine Anomalie“ auszuwählen. Nach Ablauf der 30 Tage können Sie als Herausgeber für die Anomalien keine Aktionen mehr ausführen.
 
 > [!IMPORTANT]
@@ -80,6 +128,8 @@ Wenn Sie eine Überschreitungsnutzung als Anomalie gekennzeichnet haben oder ein
 
 > [!IMPORTANT]
 > Wenn ein zu hoher Betrag berechnet wurde, können Sie Überschreitungsnutzungen erneut übermitteln.
+
+---
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Volumenabrechnung für SaaS mit dem Messungsdienst für den kommerziellen Marketplace](./partner-center-portal/saas-metered-billing.md)

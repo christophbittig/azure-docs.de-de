@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 826217091b3297da0c068336ff67a0a58841716d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4e494b38bea9b799a6a2ee82b3fbb9847446d699
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690458"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611706"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Begriffe in der Datei zu Azure-Nutzung und -Gebühren für eine Microsoft-Kundenvereinbarung
 
@@ -32,11 +32,11 @@ Wenn Sie EA-Kunde sind, werden Sie feststellen, dass sich die Begriffe in der CS
 
 | CSV-Datei für die Azure-Nutzung mit Enterprise Agreement | CSV-Datei für die Azure-Nutzung und -Gebühren mit Microsoft-Kundenvereinbarung |
 | --- | --- |
-| Date | date |
+| Datum | Datum |
 | Month (Monat)| date |
-| Day (Tag) | date |
-| Jahr | date |
-| Produkt | product |
+| Tag | date |
+| Year | date |
+| Product | product |
 | MeterId | meterID |
 | MeterCategory | meterCategory |
 | MeterSubCategory | meterSubCategory |
@@ -51,7 +51,7 @@ Wenn Sie EA-Kunde sind, werden Sie feststellen, dass sich die Begriffe in der CS
 | ServiceInfo1 | serviceInfo1 |
 | ServiceInfo2 | serviceInfo2 |
 | AdditionalInfo | additionalInfo |
-| `Tags` | tags |
+| Tags | tags |
 | StoreServiceIdentifier | – |
 | DepartmentName | invoiceSection |
 | CostCenter | costCenter |
@@ -90,7 +90,7 @@ meterSubCategory | Der Name der Unterklassifizierungskategorie der Verbrauchsein
 meterRegion | Der Name der Region, in der die Verbrauchseinheit für den Dienst verfügbar ist. Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden.
 offer | Der Name des erworbenen Angebots
 PayGPrice | Einzelhandelspreis für die Ressource
-PricingModel | Bezeichner, der angibt, wie die Verbrauchseinheit berechnet wird (Werte: Bedarfsgesteuert, Reservierung, Spot)
+PricingModel | Bezeichner, der angibt, wie der Preis für die Verbrauchsanzeige angegeben wird (Werte: Bedarfsgesteuert, Reservierung, Spot)
 productId | Der eindeutige Bezeichner für das Produkt, für das die Gebühren anfallen
 product | Der Name des Produkts, für das die Gebühren anfallen
 Abonnement-ID | Der eindeutige Bezeichner für das Abonnement, für das die Gebühren anfallen
@@ -107,7 +107,7 @@ resourceLocation | Gibt den Standort des Rechenzentrums an, in dem die Ressource
 location | Normalisierter Standort der Ressource, wenn mehrere Ressourcenstandorte für dieselben Regionen konfiguriert wurden
 quantity | Die Anzahl der erworbenen oder genutzten Einheiten
 unitOfMeasure | Die Abrechnungsmaßeinheiten für den Dienst. Computedienste werden beispielsweise pro Stunde abgerechnet.
-chargeType | Die Art der Gebühr Werte: <ul><li>AsCharged-Usage: Gebühren fallen entsprechend der Nutzung eines Azure-Diensts an. Dazu zählt die Nutzung mit VMs, die aufgrund von reservierten Instanzen nicht in Rechnung gestellt werden.</li><li>AsCharged-PurchaseMarketplace: Einmalige oder feste laufende Gebühren für Marketplace-Käufe</li><li>AsCharged-UsageMarketplace: Gebühren für Marketplace-Dienste, deren Gebühren anhand der Verbrauchseinheiten berechnet werden</li></ul>
+chargeType | Die Art der Gebühr Werte: <ul><li>Gebrauch AsCharged: Gebühren fallen entsprechend der Nutzung eines Azure-Diensts an. Dazu zählt die Nutzung mit VMs, die aufgrund von reservierten Instanzen nicht in Rechnung gestellt werden.</li><li>AsCharged-PurchaseMarketplace: Einmalige oder feste laufende Gebühren für Marketplace-Käufe</li><li>AsCharged-UsageMarketplace: Gebühren für Marketplace-Dienste, die anhand von Verbrauchseinheiten berechnet werden</li></ul>
 isAzureCreditEligible | Ein Flag, das angibt, ob die Gebühr für den Dienst mit einer Azure-Gutschrift bezahlt werden kann (Werte: True, False)
 serviceInfo1 | Dienstspezifische Metadaten
 serviceInfo2 | Ein Legacyfeld, in dem optionale dienstspezifische Metadaten erfasst werden

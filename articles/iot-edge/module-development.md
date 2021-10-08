@@ -3,16 +3,16 @@ title: Entwickeln von Modulen für Azure IoT Edge | Microsoft-Dokumentation
 description: Entwickeln von benutzerdefinierten Modellen für Azure IoT Edge zur Kommunikation mit Runtime und IoT Hub
 author: kgremban
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 09/03/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fafb9475d308863113fa943d4e52cf3c1b5652cd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5a04acfdec42319b998b2854be9690bab360558c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339168"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128550531"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Entwickeln eigener IoT Edge-Module
 
@@ -81,7 +81,7 @@ Verwenden Sie zum Senden von Gerät-zu-Cloud-Telemetrienachrichten mithilfe von 
 <!-- <1.2> -->
 ::: moniker range=">=iotedge-2020-11"
 
-Das Senden von Gerät-zu-Cloud-Telemetrienachrichten mit dem MQTT-Broker ist mit dem Veröffentlichen von Nachrichten in benutzerdefinierten Themen vergleichbar, verwendet jedoch das folgende spezielle IoT Hub-Thema für Ihr Modul: `devices/<device_name>/<module_name>/messages/events`. Autorisierungen müssen entsprechend eingerichtet werden. Die MQTT-Bridge muss ebenfalls so konfiguriert werden, dass sie die Nachrichten zu diesem Thema an die Cloud weiterleiten.
+Das Senden von Gerät-zu-Cloud-Telemetrienachrichten mit dem MQTT-Broker ist mit dem Veröffentlichen von Nachrichten in benutzerdefinierten Themen vergleichbar, verwendet jedoch das folgende spezielle IoT Hub-Thema für Ihr Modul: `devices/<device_name>/modules/<module_name>/messages/events`. Autorisierungen müssen entsprechend eingerichtet werden. Die MQTT-Bridge muss ebenfalls so konfiguriert werden, dass sie die Nachrichten zu diesem Thema an die Cloud weiterleiten.
 
 ::: moniker-end
 
@@ -90,7 +90,7 @@ Zum Verarbeiten von Nachrichten mithilfe des Routings richten Sie zuerst eine Ro
 <!-- <1.2> -->
 ::: moniker range=">=iotedge-2020-11"
 
-Das Verarbeiten von Nachrichten mit dem MQTT-Broker ähnelt dem Abonnieren von Nachrichten zu benutzerdefinierten Themen, es werden jedoch die speziellen IoT Edge-Themen der Ausgabewarteschlange Ihres Moduls verwendet: `devices/<device_name>/<module_name>/messages/events`. Autorisierungen müssen entsprechend eingerichtet werden. Optional können Sie neue Nachrichten zu den Themen Ihrer Wahl senden.
+Das Verarbeiten von Nachrichten mit dem MQTT-Broker ähnelt dem Abonnieren von Nachrichten zu benutzerdefinierten Themen, es werden jedoch die speziellen IoT Edge-Themen der Ausgabewarteschlange Ihres Moduls verwendet: `devices/<device_name>/modules/<module_name>/messages/events`. Autorisierungen müssen entsprechend eingerichtet werden. Optional können Sie neue Nachrichten zu den Themen Ihrer Wahl senden.
 
 ::: moniker-end
 
@@ -103,7 +103,7 @@ Um einen Modulzwilling mit dem Azure IoT SDK abzurufen, rufen Sie die `ModuleCli
 <!-- <1.2> -->
 ::: moniker range=">=iotedge-2020-11"
 
-Um einen Modulzwilling mit einem beliebigen MQTT-Client abzurufen, ist ein etwas höherer Aufwand erforderlich, da das Abrufen eines Zwillings kein typisches MQTT-Muster ist. Zuerst muss das Modul das spezielle IoT Hub-Thema `$iothub/twin/res/#` abonnieren. Dieser Themenname wird von IoT Hub geerbt, und alle Geräte/Module müssen dasselbe Thema abonnieren. Dies bedeutet nicht, dass Geräte den Zwilling voneinander empfangen. IoT Hub und edgeHub wissen, welcher Zwilling wohin übermittelt werden sollte, auch wenn alle Geräte auf denselben Themennamen lauschen. Nachdem das Abonnement erstellt wurde, muss das Modul den Zwilling anfordern, indem es eine Nachricht für das spezielle IoT Hub-Thema mit der Anforderungs-ID `$iothub/twin/GET/?$rid=1234` veröffentlicht. Diese Anforderungs-ID ist eine beliebige ID (d. h. eine GUID), die von IoT Hub zusammen mit den angeforderten Daten zurückgesendet wird. Auf diese Weise kann ein Client seine Anforderungen mit den Antworten koppeln. Der Ergebniscode ist ein HTTP-ähnlicher Statuscode, bei dem eine erfolgreiche Ausführung als „200“ codiert ist.
+Um einen Modulzwilling mit einem beliebigen MQTT-Client abzurufen, ist ein etwas höherer Aufwand erforderlich, da das Abrufen eines Zwillings kein typisches MQTT-Muster ist. Zuerst muss das Modul das spezielle IoT Hub-Thema `$iothub/twin/res/#` abonnieren. Dieser Themenname wird von IoT Hub geerbt, und alle Geräte/Module müssen dasselbe Thema abonnieren. Dies bedeutet nicht, dass Geräte den Zwilling voneinander empfangen. IoT Hub und edgeHub wissen, welcher Zwilling wohin übermittelt werden sollte, auch wenn alle Geräte auf denselben Themennamen lauten. Nachdem das Abonnement erstellt wurde, muss das Modul den Zwilling anfordern, indem es eine Nachricht für das spezielle IoT Hub-Thema mit der Anforderungs-ID `$iothub/twin/GET/?$rid=1234` veröffentlicht. Diese Anforderungs-ID ist eine beliebige ID (d. h. eine GUID), die von IoT Hub zusammen mit den angeforderten Daten zurückgesendet wird. Auf diese Weise kann ein Client seine Anforderungen mit den Antworten koppeln. Der Ergebniscode ist ein HTTP-ähnlicher Statuscode, bei dem eine erfolgreiche Ausführung als „200“ codiert ist.
 
 ::: moniker-end
 
@@ -112,7 +112,7 @@ Um einen Modulzwillingspatch mit dem Azure IoT SDK zu empfangen, implementieren 
 <!-- <1.2> -->
 ::: moniker range=">=iotedge-2020-11"
 
-Um einen Modulzwillingspatch mit einem beliebigen MQTT-Client zu empfangen, wird ein mit dem Empfang von vollständigen Zwillingen vergleichbarer Prozess verwendet: Ein Client muss das spezielle IoT Hub-Thema `$iothub/twin/PATCH/properties/desired/#` abonnieren. Anschließend wird das Abonnement vom Client empfangen, wenn IoT Hub eine Änderung des gewünschten Abschnitts des Zwillings sendet.
+Das Verfahren, um einen Modulzwillingspatch mit einem beliebigen MQTT-Client zu empfangen, ist ähnlich dem zum Empfang von vollständigen Zwillingen: Ein Client muss das spezielle IoT Hub-Thema `$iothub/twin/PATCH/properties/desired/#` abonnieren. Anschließend wird das Abonnement vom Client empfangen, wenn IoT Hub eine Änderung des gewünschten Abschnitts des Zwillings sendet.
 
 ::: moniker-end
 
@@ -165,6 +165,31 @@ Bei allen Sprachen in der folgenden Tabelle unterstützt IoT Edge die Entwicklun
 IoT Edge 1.1 LTS ist der letzte Releasekanal, der Windows-Container unterstützt. Ab Version 1.2 werden Windows-Container nicht mehr unterstützt.
 
 Informationen zum Entwickeln mit Windows-Containern finden Sie in der [IoT Edge 1.1-Version](?view=iotedge-2018-06&preserve-view=true) dieses Artikels.
+
+:::moniker-end
+<!-- end 1.2 -->
+
+<!--1.2-->
+:::moniker range="iotedge-2020-11"
+
+## <a name="module-security"></a>Modulsicherheit
+
+Sie sollten Ihre Module mit Blick auf die Sicherheit entwickeln. Weitere Informationen zum Schützen Ihrer Module finden Sie unter [Docker-Sicherheit](https://docs.docker.com/engine/security/).
+
+Um die Modulsicherheit zu verbessern, hat IoT Edge einige Containerfunktionen standardmäßig deaktiviert. Sie können die Standardwerte überschreiben, um Ihren Modulen bei Bedarf privilegierte Funktionen zur Verfügung zu stellen.
+
+### <a name="allow-elevated-docker-permissions"></a>Zulassen von gesteigerten Docker-Berechtigungen
+
+In der Datei "config.toml" auf einem IoT Edge-Gerät gibt es einen Parameter mit dem Namen `allow_elevated_docker_permissions`. Wenn es auf **true** gesetzt ist, lässt dieses Flag das Flag `--privileged` sowie alle zusätzlichen Funktionen zu, die Sie im Feld `CapAdd` der Docker HostConfig in den[Optionen zum Erstellen von Containern](how-to-use-create-options.md) definieren.
+
+>[!NOTE]
+>Derzeit ist dieses Flag standardmäßig **true**, wodurch Bereitstellungen privilegierte Berechtigungen für Module erteilen können. Es wird empfohlen, dieses Flag auf FALSE zu setzen, um die Gerätesicherheit zu verbessern. In Zukunft wird dieses Flag standardmäßig auf **FALSE** festgelegt.
+
+### <a name="enable-cap_chown-and-cap_setuid"></a>Aktivieren von CAP_CHOWN und CAP_SETUID
+
+Die Docker-Funktionen **Docker-CAP_CHOWN** und **CAP_SETUID** sind standardmäßig deaktiviert. Diese Funktionen können verwendet werden, um auf gesicherten Dateien auf dem Hostgerät zu schreiben und potenziell Stammzugriff zu erhalten.
+
+Wenn Sie diese Funktionen benötigen, können Sie sie mithilfe von CapADD in den Optionen zum Erstellen von Containern manuell erneut aktivieren.
 
 :::moniker-end
 <!-- end 1.2 -->

@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: e071298ce1ed191f79e071f18916d8afba10d625
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: a0dd6e3e8f4c2a7645da1ceccf77f7607d2b84b3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123478804"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656947"
 ---
 # <a name="connection-resilience"></a>Verbindungsresilienz
 
@@ -26,17 +26,19 @@ Testen Sie die Resilienz Ihres Systems bei Verbindungsunterbrechungen mithilfe e
 
 ## <a name="configure-appropriate-timeouts"></a>Konfigurieren von entsprechenden Timeouts
 
-Konfigurieren Sie Ihre Clientbibliothek, um ein *Verbindungstimeout* von 10 bis 15 Sekunden und ein *Befehlstimeout* von 5 Sekunden zu verwenden. Das *Verbindungstimeout* ist die Zeit, die ein Client wartet, bis er eine Verbindung mit dem Redis-Server herstellt. Die meisten Clientbibliotheken verfügen über eine weitere Timeoutkonfiguration für *Befehlstimeouts*. Dies ist die Zeitspanne, die der Client auf eine Antwort vom Redis-Server wartet.
+Zwei Timeoutwerte sind bei der Verbindungsresilienz wichtig: [Connect timeout](#connect-timeout) (Verbindungstimeout) und [command timeout](#command-timeout) (Befehlstimeout).
 
-Einige Bibliotheken haben das *Befehlstimeout* standardmäßig auf 5 Sekunden eingestellt. Je nach Szenario und den Größen der Werte, die in Ihrem Cache gespeichert sind, sollten Sie eine höhere oder niedrigere Einstellung in Betracht ziehen.
+### <a name="connect-timeout"></a>Connect timeout
 
-Ist das *Befehlstimeout* zu kurz, kann die Verbindung instabil wirken. Wenn das *Befehlstimeout* jedoch zu groß ist, muss Ihre Anwendung möglicherweise lange warten, um herauszufinden, ob für den Befehl ein Timeout ausgeführt wird.
+Das `connect timeout` ist die Zeit, die ein Client wartet, bis er eine Verbindung mit dem Redis-Server herstellt. Konfigurieren Sie Ihre Clientbibliothek so, dass sie ein `connect timeout` von fünf Sekunden verwendet, damit das System auch bei hoher CPU-Auslastung genügend Zeit hat, eine Verbindung herzustellen.
 
-Konfigurieren Sie Ihre Clientbibliothek für die Verwendung eines *Verbindungstimeouts* von mindestens 15 Sekunden, wodurch das System genug Zeit erhält, die Verbindung auch unter höherer CPU-Auslastung herzustellen. Bei einem niedrigeren *Verbindungstimeoutwert* ist nicht sichergestellt, dass die Verbindung in diesem Zeitraum hergestellt werden kann.
+Bei einem niedrigeren `connection timeout` ist nicht sichergestellt, dass die Verbindung in diesem Zeitraum hergestellt werden kann. Bei Beeinträchtigungen (hohe Client- oder Server-CPU-Auslastung usw.) hat ein kurzer `connection timeout`-Wert zur Folge, dass bei dem Verbindungsversuch ein Fehler auftritt. Dieses Verhalten macht eine schlechte Situation häufig noch schlimmer. Statt zu helfen, verschlimmern kürzere Timeouts das Problem, weil sie ein Neustarten des Prozesses der Verbindungsherstellung erzwingen und damit zu einer *Verbinden -> Fehler -> Wiederholen*-Schleife führen können.
 
-Bei Beeinträchtigungen (hohe Client- oder Server-CPU-Auslastung usw.) hat ein niedriger Verbindungstimeoutwert zur Folge, dass der Verbindungsversuch fehlschlägt. Dieses Verhalten macht eine schlechte Situation häufig noch schlimmer. Statt zu helfen, verschlimmern kürzere Timeouts das Problem, weil sie ein Neustarten des Prozesses der Verbindungsherstellung erzwingen und damit zu einer *Verbinden -> Fehler -> Wiederholen*-Schleife führen können.
+### <a name="command-timeout"></a>Befehlstimeout
 
-Im Allgemeinen wird empfohlen, das *Verbindungstimeout* bei 15 Sekunden oder höher zu belassen. Ein erfolgreicher Verbindungsversuch nach 15 oder 20 Sekunden ist besser als ein Verbindungsversuch, der schnell fehlschlägt und zu häufigen Wiederholungen führt. Solch eine Wiederholungsschleife kann längere Ausfallzeiten zur Folge haben, als wenn Sie dem System gleich zu Anfang mehr Zeit für die Herstellung der Verbindung einräumen.
+Die meisten Clientbibliotheken verfügen über eine weitere Timeoutkonfiguration für `command timeouts`. Dies ist die Zeitspanne, die der Client auf eine Antwort vom Redis-Server wartet. Wir empfehlen zwar eine anfängliche Einstellung von weniger als fünf Sekunden, aber sie sollten je nach Szenario und der Größe der Werte, die in Ihrem Cache gespeichert sind, den höheren oder niedrigeren `command timeout` festlegen.
+
+Ist das `command timeout` zu kurz, kann die Verbindung instabil wirken. Wenn der `command timeout`-Wert jedoch zu groß ist, muss Ihre Anwendung möglicherweise lange warten, um herauszufinden, ob der Befehl einen Timeout verursacht.
 
 ## <a name="avoid-client-connection-spikes"></a>Vermeiden von Spitzen bei Clientverbindungen
 
@@ -66,3 +68,9 @@ Wenden Sie Entwurfsmuster für Resilienz an. Weitere Informationen finden Sie un
 ## <a name="idle-timeout"></a>Leerlauftimeout
 
 Azure Cache for Redis verfügt derzeit über ein Leerlauftimeout von 10 Minuten für Verbindungen, sodass die Einstellung für das Leerlauftimeout in Ihrer Clientanwendung weniger als 10 Minuten betragen sollte. Die meisten gängigen Clientbibliotheken verfügen über eine Konfigurationseinstellung, mit der Clientbibliotheken `PING`-Befehle von Redis automatisch und in regelmäßigen Abständen an einen Redis-Server senden können. Wenn Sie jedoch Clientbibliotheken ohne diese Art von Einstellung verwenden, sind Kundenanwendungen selbst dafür verantwortlich, die Verbindung aktiv zu halten.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Bewährte Methoden für die Entwicklung](cache-best-practices-development.md)
+- [Häufig gestellte Fragen zur Azure Cache for Redis-Entwicklung](cache-development-faq.yml)
+- [Failover und Patching](cache-failover.md)

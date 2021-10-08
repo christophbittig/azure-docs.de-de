@@ -2,13 +2,13 @@
 title: Registrierungstarife und -funktionen
 description: Erfahren Sie mehr über die Features und Beschränkungen (Kontingente) der Diensttarife (SKUs) „Basic“, „Standard“ und „Premium“ von Azure Container Registry.
 ms.topic: article
-ms.date: 06/24/2021
-ms.openlocfilehash: 8c27426cae6d80e31aef3d7ef9b75d28a14bd923
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 08/12/2021
+ms.openlocfilehash: 7f9fe5d461dede4510d3fc8069f42e7950803984
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113437538"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582332"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry-Tarife
 
@@ -62,6 +62,26 @@ Beim Pushen eines einzelnen Images vom Typ `nginx:latest` mit 133 MB in eine Az
 Pull- oder Pushvorgänge können gedrosselt werden, wenn von der Registrierung festgestellt wird, dass die Anforderungsrate die für die Dienstebene der Registrierung zulässigen Grenzwerte übersteigt. Möglicherweise wird ein HTTP 429-Fehler wie der folgende angezeigt: `Too many requests`.
 
 Eine Drosselung kann vorübergehend auftreten, wenn Sie innerhalb eines sehr kurzen Zeitraums eine große Menge von Pull- oder Pushvorgängen für Images generieren, auch wenn die durchschnittliche Rate von Lese- und Schreibvorgängen innerhalb der Registrierungsgrenzwerte liegt. Unter Umständen müssen Sie eine Wiederholungslogik mit Backoff in Ihrem Code implementieren oder die maximale Anforderungsrate für die Registrierung verringern.
+
+## <a name="show-registry-usage"></a>Registrierungsnutzung anzeigen
+
+Verwenden Sie den Befehl [az acr show-usage](/cli/az/acr#az_acr_show_usage) oder die REST-API [Nutzungen auflisten](/rest/api/containerregstry/registries/list-usages), um eine Momentaufnahme Ihres Speicherverbrauchs und anderer Ressourcen im Vergleich zu den Grenzwerten für die Dienstebene dieser Registrierung zu erhalten. Speicherverwendung wird auch auf der Seite **Übersicht** der Registrierung im Portal angezeigt.
+
+Nutzungsinformationen helfen Ihnen, Entscheidungen zum [Ändern der Dienstebene](#changing-tiers) zu treffen, wenn sich ihre Registrierung einem Grenzwert nähert. Diese Informationen helfen Ihnen auch dabei, [Ihren Verbrauch unter Kontrolle zu halten](container-registry-best-practices.md#manage-registry-size). 
+
+> [!NOTE]
+> Die Speichernutzung der Registrierung sollte nur als Leitfaden verwendet werden und spiegelt möglicherweise nicht die aktuellen Registrierungsvorgänge wider. Überwachen Sie die [Metrik des verwendeten Speichers](monitor-service-reference.md#container-registry-metrics) der Registrierung, um aktuelle Daten zu erhalten. 
+
+Abhängig von der Dienstebene Ihrer Registrierung umfassen die Nutzungsinformationen einige oder alle der folgenden Angaben sowie den Grenzwert in dieser Ebene:
+
+* Verbrauchter Speicher in Bytes<sup>1</sup>
+* Anzahl von [Webhooks](container-registry-webhook.md)
+* Anzahl der [Georeplikate](container-registry-geo-replication.md) (einschließlich des Homereplikats)
+* Anzahl der [privaten Endpunkte](container-registry-private-link.md)
+* Anzahl von [IP-Zugriffsregeln](container-registry-access-selected-networks.md)
+* Anzahl von [Regeln für das virtuelle Netzwerk](container-registry-vnet.md)
+
+<sup>1</sup>In einer geo-replizierten Registrierung wird Speichernutzung für die Heimregion angezeigt. Multiplizieren Sie mit der Anzahl der Replikationen, um den gesamten verbrauchten Speicher zu erhalten.
 
 ## <a name="changing-tiers"></a>Wechseln von Tarifen
 

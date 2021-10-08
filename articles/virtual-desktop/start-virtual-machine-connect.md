@@ -3,15 +3,15 @@ title: 'Virtuellen Computer bei Verbindung starten: Azure'
 description: Vorgehensweise beim Konfigurieren des Features zum Starten eines virtuellen Computers bei Verbindung.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/06/2021
+ms.date: 09/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 301a2b0626b6dd40f90a8b693e3284c12d948fa1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 85110db5b3f9e11105fa27a9ed8767d3d7e9e2bd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339147"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592240"
 ---
 # <a name="start-virtual-machine-on-connect"></a>VM bei Verbindung starten
 
@@ -51,10 +51,16 @@ So weisen Sie eine benutzerdefinierte Rolle für „VM bei Verbindung starten“
 
 3. Benennen Sie als Nächstes die benutzerdefinierte Rolle, und fügen Sie eine Beschreibung hinzu. Wir empfehlen Ihnen die Benennung „VM bei Verbindung starten“.
 
-4. Fügen Sie auf der Registerkarte **Berechtigungen** dem Abonnement, dem Sie die Rolle zuweisen, die folgenden Berechtigungen hinzu: 
+4. Fügen Sie auf der Registerkarte **Berechtigungen** dem Abonnement, dem Sie die Rolle zuweisen, einen der beiden folgenden Berechtigungssätze hinzu: 
  
    - Microsoft.Compute/virtualMachines/start/action
-   - Microsoft.Compute/virtualMachines/read
+   - Microsoft.Compute/virtualMachines/read 
+   - Microsoft.Compute/virtualMachines/instanceView/read 
+
+   Sie können stattdessen auch diese Berechtigungen verwenden:
+
+   - Microsoft.Compute/virtualMachines/start/action
+   - Microsoft.Compute/virtualMachines/*/read 
 
 5. Klicken Sie auf **OK**, wenn Sie fertig sind.
 
@@ -85,7 +91,7 @@ Wenn Sie eine JSON-Datei verwenden, um die benutzerdefinierte Rolle zu erstellen
   "Description": "Start VM on connect with AVD (Custom)",
   "Actions": [
     "Microsoft.Compute/virtualMachines/start/action",
-    "Microsoft.Compute/virtualMachines/read"
+    "Microsoft.Compute/virtualMachines/*/read"
   ],
   "NotActions": [],
   "DataActions": [],

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0cd1d38bf2a96e8530c9647a6b09ad55893e569a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fa34a8e5e801080f354e13b632917a1a05eabf43
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355908"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832638"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Konnektivitätsmodi und -anforderungen
 
@@ -72,7 +72,7 @@ Schließlich sind einige mit Azure verbundene Dienste nur dann verfügbar, wenn 
 |**Abrechnungstelemetriedaten**|Kundenumgebung-> Azure|Erforderlich|Nein|Indirekt oder direkt|Die Nutzung von Datenbankinstanzen muss zu Abrechnungszwecken an Azure gesendet werden. |
 |**Überwachungsdaten und -protokolle**|Kundenumgebung-> Azure|Optional|Möglicherweise abhängig von der Datenmenge (siehe [Azure Monitor-Preise](https://azure.microsoft.com/pricing/details/monitor/))|Indirekt oder direkt|Möglicherweise möchten Sie die lokal erfassten Überwachungsdaten und -protokolle an Azure Monitor senden, um Daten aus mehreren Umgebungen an einem Ort zu aggregieren und auch Azure Monitor-Dienste wie Warnungen zu nutzen, die Daten in Azure Machine Learning zu verwenden usw.|
 |**Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)**|Kundenumgebung -> Azure -> Kundenumgebung|Optional|Nein|Nur direkt|Wenn Sie Azure RBAC verwenden möchten, muss die Konnektivität mit Azure jederzeit hergestellt werden.  Wenn Sie Azure RBAC nicht verwenden möchten, können Sie die lokale Kubernetes-RBAC verwenden.|
-|**Azure Active Directory (AAD) (Zukünftig)**|Kundenumgebung -> Azure -> Kundenumgebung|Optional|Möglicherweise, aber vielleicht zahlen Sie bereits für Azure AD|Nur direkt|Wenn Sie Azure AD für die Authentifizierung verwenden möchten, muss Konnektivität mit Azure jederzeit hergestellt werden. Wenn Sie Azure AD nicht für die Authentifizierung verwenden möchten, können Sie Active Directory-Verbunddienste (ADFS) über Active Directory verwenden. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
+|**Azure Active Directory (AAD) (Zukünftig)**|Kundenumgebung -> Azure -> Kundenumgebung|Optional|Möglicherweise, aber vielleicht zahlen Sie bereits für Azure AD|Nur direkt|Wenn Sie Azure AD für die Authentifizierung verwenden möchten, muss Konnektivität mit Azure jederzeit hergestellt werden. Wenn Sie Azure AD nicht für die Authentifizierung verwenden möchten, können Sie die Active Directory-Verbunddienste (AD FS) über Active Directory verwenden. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
 |**Sichern und Wiederherstellen**|Kundenumgebung -> Kundenumgebung|Erforderlich|Nein|Indirekt oder direkt|Der Sicherungs- und Wiederherstellungsdienst kann so konfiguriert werden, dass er auf lokale Speicherklassen verweist. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
 |**Azure Backup: langfristige Aufbewahrung (Zukünftig)**| Kundenumgebung-> Azure | Optional| Ja, für Azure Storage | Nur direkt |Möglicherweise möchten Sie Sicherungen, die lokal erstellt wurden, an Azure Backup für die langfristige, externe Aufbewahrung von Sicherungen senden und sie zur Wiederherstellung in die lokale Umgebung zurückholen. **Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
 |**Azure Defender-Sicherheitsdienste (Zukünftig)**|Kundenumgebung -> Azure -> Kundenumgebung|Optional|Ja|Nur direkt|**Ausstehende Verfügbarkeit des direkten Konnektivitätsmodus**|
@@ -102,6 +102,34 @@ Das Kubernetes-Kubelet auf jedem der Kubernetes-Knoten, das die Containerimages 
 #### <a name="connection-target"></a>Verbindungsziel
 
 `mcr.microsoft.com`
+
+#### <a name="protocol"></a>Protocol
+
+HTTPS
+
+#### <a name="port"></a>Port
+
+443
+
+#### <a name="can-use-proxy"></a>Kann Proxy verwenden
+
+Ja
+
+#### <a name="authentication"></a>Authentifizierung
+
+Keine
+
+### <a name="helm-chart-used-to-create-data-controller-in-direct-connected-mode"></a>Zum Erstellen eines Datencontrollers im direkt verbundenen Modus verwendetes Helm-Chart
+
+Das Helm-Chart, das zum Bereitstellen des Azure Arc-Datencontroller-Bootstrappers und der Objekte auf Clusterebene verwendet wird, z. B. benutzerdefinierte Ressourcendefinitionen, Clusterrollen und Clusterrollenbindungen, wird per Pull aus einer Azure Container Registry-Instanz abgerufen.
+
+#### <a name="connection-source"></a>Verbindungsquelle
+
+Das Kubernetes-Kubelet auf jedem der Kubernetes-Knoten, das die Containerimages pullt.
+
+#### <a name="connection-target"></a>Verbindungsziel
+
+`arcdataservicesrow1.azurecr.io`
 
 #### <a name="protocol"></a>Protocol
 
@@ -195,4 +223,3 @@ Azure Active Directory
 > Zurzeit werden alle HTTPS/443-Verbindungen des Browsers mit dem Datencontroller zum Ausführen des Befehls `az arcdata dc export` sowie mit den Grafana- und Kibana-Dashboards mit selbstsignierten Zertifikaten SSL-verschlüsselt.  In Zukunft wird eine Funktion verfügbar sein, mit der Sie Ihre eigenen Zertifikate für die Verschlüsselung dieser SSL-Verbindungen bereitstellen können.
 
 Verbindungen aus Azure Data Studio mit dem Kubernetes-API-Server verwenden die von Ihnen eingerichtete Kubernetes-Authentifizierung und -Verschlüsselung.  Jeder Benutzer, der Azure Data Studio oder die CLI verwendet, muss über eine authentifizierte Verbindung mit der Kubernetes-API verfügen, um viele der Aktionen im Zusammenhang mit Azure Arc-fähigen Datendiensten ausführen zu können.
-

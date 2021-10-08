@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 03/18/2021
-ms.openlocfilehash: 240f87a6b3154995340830e1861c8a76e6e3557f
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 55e8efc7b49f14f6eb4cfe399866e53df29e3e36
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259657"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767060"
 ---
 # <a name="dependency-analysis"></a>Abhängigkeitsanalyse
 
@@ -31,7 +31,7 @@ Es gibt zwei Optionen für die Bereitstellung der Abhängigkeitsanalyse:
 
 **Option** | **Details** | **Öffentliche Cloud** | **Azure Government**
 ----  |---- | ----
-**Ohne Agent** | Fragt Daten von Servern auf VMware mit vSphere-APIs ab.<br/><br/> Sie müssen keine Agents auf Servern installieren.<br/><br/> Diese Option befindet sich derzeit nur für Server auf VMware in der Vorschauversion. | Unterstützt. | Unterstützt.
+**Ohne Agent** | Fragt Daten von Servern auf VMware mit vSphere-APIs ab.<br/><br/> Sie müssen keine Agents auf Servern installieren.<br/><br/> Diese Option gilt derzeit nur für Server auf VMware. | Unterstützt. | Unterstützt.
 **Agent-basierte Analyse** | Verwendet die [Dienstzuordnungslösung](../azure-monitor/vm/service-map.md) in Azure Monitor, um die Abhängigkeitsvisualisierung und Analyse zu ermöglichen.<br/><br/> Sie müssen auf jedem lokalen Server, den Sie analysieren möchten, Agents installieren. | Unterstützt | Wird nicht unterstützt.
 
 ## <a name="agentless-analysis"></a>Analyse ohne Agent

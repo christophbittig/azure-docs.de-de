@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 08/30/2021
-ms.openlocfilehash: cad2ac9319eb674cb8022ff5ce3d2df2a57df648
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/22/2021
+ms.openlocfilehash: 4897b557626be5071a21d2cc1a6a8194eaed8994
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224702"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154278"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz
 
@@ -91,7 +91,7 @@ Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden un
 * [ComputeInstance.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computeinstance(class)#wait-for-completion-show-output-false--is-delete-operation-false-)
 
 
-# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
@@ -123,10 +123,11 @@ Weitere Informationen finden Sie in der Referenz zu [az ml computetarget create 
 1. <a name="advanced-settings"></a>Wählen Sie **Weiter: Erweiterte Einstellungen** wenn Sie folgendes möchten:
 
     * Aktivieren vom SSH-Zugang.  Folgen Sie den [ausführlichen Anweisungen für den SSH-Zugang](#enable-ssh) unten.
-    * Virtuelles Netz aktivieren. Geben Sie **Ressourcengruppe**, **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Weitere Informationen finden Sie unter diesen [Netzwerkanforderungen](./how-to-secure-training-vnet.md) für VNET. 
+    * Virtuelles Netz aktivieren. Geben Sie **Ressourcengruppe**, **Virtuelles Netzwerk** und **Subnetz** an, um die Compute-Instanz innerhalb von Azure Virtual Network (VNET) zu erstellen. Sie können auch __Keine öffentliche IP-Adresse__ (Vorschau) auswählen, um die Erstellung einer öffentlichen IP-Adresse zu verhindern, die einen Private Link-Arbeitsbereich erfordert. Sie müssen diese [Netzwerkanforderungen](./how-to-secure-training-vnet.md) auch für die Einrichtung virtueller Netzwerke erfüllen. 
     * Den Computer einem anderen Benutzer zuweisen. Für weitere Informationen über die Zuweisung an andere Benutzer siehe [Erstellen im Namen von](#on-behalf).
     * Mit einem Einrichtungsskript bereitstellen (Vorschau) – weitere Einzelheiten zur Erstellung und Verwendung eines Einrichtungsskripts finden Sie unter [Anpassen der Compute-Instanz mit einem Skript](#setup-script).
     * Zeitplan hinzufügen (Vorschau). Legen Sie Zeiten für das automatische Starten und/oder Herunterfahren der Compute-Instanz fest. Siehe [Details zu Zeitplänen](#schedule) unten.
+
 
 ---
 
@@ -265,8 +266,50 @@ Verwenden Sie dann entweder cron- oder LogicApps-Ausdrücke, um den Zeitplan fü
     // the ranges shown above or two numbers in the range separated by a 
     // hyphen (meaning an inclusive range). 
     ```
-
+### <a name="azure-policy-support-to-default-a-schedule"></a>Azure Policy-Unterstützung zur Vorgabe eines Zeitplans
 Verwenden Sie die Azure-Policy, um für jede Compute-Instanz in einem Abonnement einen Zeitplan für das Herunterfahren zu erzwingen, oder verwenden Sie standardmäßig einen Zeitplan, wenn nichts vorhanden ist.
+Nachfolgend finden Sie ein Beispiel für eine Richtlinie, die das Herunterfahren um 22.00 Uhr PST vorsieht.
+```json
+{
+    "mode": "All",
+    "policyRule": {
+     "if": {
+      "allOf": [
+       {
+        "field": "Microsoft.MachineLearningServices/workspaces/computes/computeType",
+        "equals": "ComputeInstance"
+       },
+       {
+        "field": "Microsoft.MachineLearningServices/workspaces/computes/schedules",
+        "exists": "false"
+       }
+      ]
+     },
+     "then": {
+      "effect": "append",
+      "details": [
+       {
+        "field": "Microsoft.MachineLearningServices/workspaces/computes/schedules",
+        "value": {
+         "computeStartStop": [
+          {
+           "triggerType": "Cron",
+           "cron": {
+            "startTime": "2021-03-10T21:21:07",
+            "timeZone": "Pacific Standard Time",
+            "expression": "0 22 * * *"
+           },
+           "action": "Stop",
+           "status": "Enabled"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    }
+}    
+```
 
 ## <a name="customize-the-compute-instance-with-a-script-preview"></a><a name="setup-script"></a> Anpassen der Compute-Instanz mit einem Skript (Vorschau)
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/23/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9967eaa374116ac28bd0db830eed6a4fc2becfa0
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 8cedd159c1c4c8a7d5309024d66ddc104c07506b
+ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771790"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129062084"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen    
 
@@ -166,7 +166,7 @@ Keiner der Legacytarife bietet regionsbezogene Preise.
 
 ## <a name="log-analytics-and-azure-defender-security-center"></a>Log Analytics und Azure Defender (Security Center)
 
-Die Abrechnung für [Azure Defender (Security Center)](../../security-center/index.yml) ist eng mit der Log Analytics-Abrechnung verbunden. Azure Defender bietet eine Zuordnung von 500 MB/Knoten/Tag für die folgende Teilmenge von [Sicherheitsdatentypen](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) und die Datentypen „Update“ und „UpdateSummary“, wenn die Lösung für die Updateverwaltung nicht im Arbeitsbereich ausgeführt wird oder die Zielgruppenadressierung aktiviert ist. Weitere Informationen finden Sie [hier](../../security-center/security-center-pricing.md#what-data-types-are-included-in-the-500-mb-data-daily-allowance). Wenn für den Arbeitsbereich der Legacytarif „Pro Knoten“ gilt, werden die Azure Defender- und Log Analytics-Zuordnungen kombiniert und gemeinsam auf alle abrechenbaren erfassten Daten angewendet.  
+Die Abrechnung für [Azure Defender für Server (Security Center)](../../security-center/index.yml) ist eng mit der Log Analytics-Abrechnung verknüpft. Azure Defender [rechnet anhand der Anzahl überwachter Dienste](https://azure.microsoft.com/pricing/details/azure-defender/) ab und bietet eine Datenzuordnung von 500 MB/Server/Tag, die auf eine Teilmenge von [Sicherheitsdatentypen](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) und die Datentypen „Update“ und „UpdateSummary“ angewendet wird, wenn die Lösung für die Updateverwaltung nicht im Arbeitsbereich ausgeführt wird oder die Zielgruppenadressierung aktiviert ist. Weitere Informationen finden Sie [hier](../../security-center/security-center-pricing.md#what-data-types-are-included-in-the-500-mb-data-daily-allowance). Die Anzahl der überwachten Server wird pro Stunde berechnet. Die täglichen Datenzuordnungsbeiträge von jedem überwachten Server werden auf Arbeitsbereichsebene aggregiert. Wenn für den Arbeitsbereich der Legacytarif „Pro Knoten“ gilt, werden die Azure Defender- und Log Analytics-Zuordnungen kombiniert und gemeinsam auf alle abrechenbaren erfassten Daten angewendet.  
 
 ## <a name="change-the-data-retention-period"></a>Ändern des Datenaufbewahrungszeitraums
 

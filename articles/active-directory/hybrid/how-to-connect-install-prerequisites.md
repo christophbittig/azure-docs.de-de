@@ -16,12 +16,12 @@ ms.date: 06/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2ff57c06fba085fd28e7e0b13ec6e503517cab7
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 665ca1dca46dbfcf1cdc5e07b0c4672f79dc586a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768679"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546812"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 In diesem Artikel werden die Voraussetzungen und die Hardwareanforderungen für Azure Active Directory (Azure AD) Connect beschrieben.
@@ -75,7 +75,7 @@ Weitere Informationen zum Schützen Ihrer Active Directory-Umgebung finden Sie u
 - Wenn Ihre globalen Administratoren MFA aktiviert haben, *muss* die URL https://secure.aadcdn.microsoftonline-p.com in der Liste vertrauenswürdiger Websites enthalten sein. Sie werden aufgefordert, diese Website zur Liste vertrauenswürdiger Websites hinzuzufügen, wenn Sie zu einer MFA-Abfrage aufgefordert werden und diese zuvor noch nicht hinzugefügt wurde. Sie können dafür den Internet Explorer verwenden.
 - Wenn Sie planen, Azure AD Connect Health für die Synchronisierung zu verwenden, stellen Sie sicher, dass auch die Voraussetzungen für Azure AD Connect Health erfüllt sind. Weitere Informationen finden Sie unter [Installieren des Azure AD Connect Health-Agents](how-to-connect-health-agent-install.md).
 
-#### <a name="harden-your-azure-ad-connect-server"></a>Schützen des Azure AD Connect-Servers 
+### <a name="harden-your-azure-ad-connect-server"></a>Schützen des Azure AD Connect-Servers 
 Es wird empfohlen, den Azure AD Connect-Server zuverlässig zu schützen, um die Angriffsfläche für Sicherheitsangriffe für diese wichtige Komponente Ihrer IT-Umgebung zu verringern. Wenn Sie die folgenden Empfehlungen befolgen, können Sie einige Sicherheitsrisiken für Ihre Organisation minimieren.
 
 - Behandeln Sie Azure AD Connect genauso wie einen Domänencontroller und andere Ressourcen der Ebene 0. Weitere Informationen finden Sie unter [Active Directory-Verwaltungsebenenmodell](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).
@@ -87,6 +87,7 @@ Es wird empfohlen, den Azure AD Connect-Server zuverlässig zu schützen, um di
 - Implementieren Sie dedizierte [Arbeitsstationen mit privilegiertem Zugriff](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) für alle Mitarbeiter mit privilegiertem Zugriff auf die Informationssysteme Ihrer Organisation. 
 - Berücksichtigen Sie diese [zusätzlichen Richtlinien](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface), um die Angriffsfläche Ihrer Active Directory-Umgebung zu verringern.
 - Folgen Sie den Anweisungen unter [Überwachen von Änderungen an der Verbundkonfiguration](how-to-connect-monitor-federation-changes.md) zum Einrichten von Warnungen zur Überwachung von Änderungen an der zwischen Ihrem Identitätsanbieter und Azure AD eingerichteten Vertrauensstellung. 
+- Aktivieren Sie Mehrfaktoren-Authentifizierung (MFA) für alle Benutzer, die über privilegierten Zugriff in Azure AD oder in AD verfügen. Ein Sicherheitsproblem bei der Verwendung von AADConnect besteht im Folgenden: Wenn ein Angreifer die Kontrolle über den Azure AD Connect-Server erhalten kann, kann er Benutzer in Azure AD manipulieren. Um zu verhindern, dass ein Angreifer diese Funktionen zum Übernehmen von Azure AD-Konten verwendet, bietet MFA Schutz, sodass ein Angreifer den zweiten Faktor auch dann nicht umgehen kann, wenn er z. B. das Kennwort eines Benutzers mithilfe von Azure AD Connect zurücksetzen kann.
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Von Azure AD Connect verwendete SQL Server-Datenbank
 * Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Identitätsdaten. Standardmäßig wird SQL Server 2019 Express LocalDB (eine einfache Version von SQL Server Express) installiert. Für SQL Server Express gilt eine Größenbeschränkung von 10 GB. Dies ermöglicht Ihnen das Verwalten von ca. 100.000 Objekten. Wenn Sie eine größere Anzahl von Verzeichnisobjekten verwalten möchten, müssen Sie im Installations-Assistenten auf eine andere Installation von SQL Server verweisen. Der SQL Server-Installationstyp kann sich auf die [Leistung von Azure AD Connect](./plan-connect-performance-factors.md#sql-database-factors) auswirken.

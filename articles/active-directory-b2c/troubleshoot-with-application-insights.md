@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/26/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b8ceea26ed7a5e58e890c4e313b00f1f4f37f4e7
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 32961477c21c55c21705790495436e2ed10b72fc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967797"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568413"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Sammeln von Azure Active Directory B2C-Protokollen mit Application Insights
 
@@ -35,17 +35,19 @@ Erstellen Sie eine Instanz von Application Insights in Ihrem Abonnement, falls S
 > [!TIP]
 > Eine einzelne Instanz von Application Insights kann für mehrere Azure AD B2C-Mandanten verwendet werden. Anschließend können Sie in der Abfrage nach dem Mandanten oder dem Richtliniennamen filtern. Weitere Informationen finden Sie in den Beispielen für [SLA für Application Insights](#see-the-logs-in-application-insights).
 
-Führen Sie die folgenden Schritte aus, um eine beendende Instanz von Application Insights in Ihrem Abonnement zu verwenden:
+Um eine bestehende Instanz von Application Insights in Ihrem Abonnement zu verwenden, führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der oberen Menüleiste den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihr Azure-Abonnement (nicht Ihr Azure AD B2C-Verzeichnis) enthält.
+1. Sie müssen das Azure AD-Verzeichnis verwenden, in welchem sich Ihr Azure-Abonnement befindet, und nicht Ihr Azure AD B2C-Verzeichnis. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Öffnen Sie die zuvor erstellte Application Insights-Ressource.
 1. auf der Seite **Übersicht** und zeichnen Sie den **Instrumentierungsschlüssel** auf
 
 Führen Sie die folgenden Schritte aus, um eine Instanz von Application Insights in Ihrem Abonnement zu verwenden:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der oberen Menüleiste den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihr Azure-Abonnement (nicht Ihr Azure AD B2C-Verzeichnis) enthält.
+1. Sie müssen das Azure AD-Verzeichnis verwenden, in welchem sich Ihr Azure-Abonnement befindet, und nicht Ihr Azure AD B2C-Verzeichnis. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie **Ressource erstellen** im linken Navigationsbereich aus.
 1. Suchen Sie nach **Application Insights**, wählen Sie die Option aus, und wählen Sie dann **Erstellen** aus.
 1. Füllen Sie das Formular aus, wählen Sie **Überprüfen und erstellen** und dann **Erstellen** aus.

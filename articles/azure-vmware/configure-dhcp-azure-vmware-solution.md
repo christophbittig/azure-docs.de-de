@@ -3,23 +3,26 @@ title: Konfigurieren von DHCP für Azure VMware Solution
 description: Erfahren Sie, wie Sie DHCP konfigurieren, indem Sie entweder NSX-T Manager zum Hosten eines DHCP-Servers oder einen externen DHCP-Server eines Drittanbieters verwenden.
 ms.topic: how-to
 ms.custom: contperf-fy21q2, contperf-fy22q1
-ms.date: 07/13/2021
-ms.openlocfilehash: d781a7cc0ced6df4f5ad1e562a78f00e023ea10a
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.date: 09/13/2021
+ms.openlocfilehash: 10234147303ab9959fa1a907b0c558be9e3fe0f6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343603"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600955"
 ---
 # <a name="configure-dhcp-for-azure-vmware-solution"></a>Konfigurieren von DHCP für Azure VMware Solution
 
 [!INCLUDE [dhcp-dns-in-azure-vmware-solution-description](includes/dhcp-dns-in-azure-vmware-solution-description.md)]
 
-In dieser Schrittanleitung verwenden Sie NSX-T Manager, um DHCP für Azure VMware Solution auf eine der beiden folgenden Arten zu konfigurieren: 
+In dieser Schrittanleitung verwenden Sie NSX-T Manager, um DHCP für Azure VMware Solution auf eine der folgenden Arten zu konfigurieren: 
 
-- [NSX-T zum Hosten Ihres DHCP-Servers](#use-nsx-t-to-host-your-dhcp-server)
 
-- [Externer DHCP-Server eines Drittanbieters](#use-a-third-party-external-dhcp-server)
+- [Verwenden des Azure-Portals zum Erstellen eines DHCP-Servers oder Relays](#use-the-azure-portal-to-create-a-dhcp-server-or-relay)
+
+- [Verwenden von NSX-T zum Hosten Ihres DHCP-Servers](#use-nsx-t-to-host-your-dhcp-server)
+
+- [Verwenden eines externen DHCP-Servers eines Drittanbieters](#use-a-third-party-external-dhcp-server)
 
 >[!TIP]
 >Wenn Sie DHCP unter Verwendung einer vereinfachten Ansicht der NSX-T-Vorgänge konfigurieren möchten, lesen Sie [Konfigurieren von DHCP für Azure VMware Solution](configure-dhcp-azure-vmware-solution.md).
@@ -29,6 +32,22 @@ In dieser Schrittanleitung verwenden Sie NSX-T Manager, um DHCP für Azure VMwar
 >Für Clouds, die am oder nach dem 1. Juli 2021 erstellt wurden, muss die vereinfachte Ansicht der NSX-T-Vorgänge verwendet werden, um DHCP auf dem Standardgateway der Ebene 1 in Ihrer Umgebung zu konfigurieren.
 >
 >DHCP kann für VMs in einem gestreckten VMware HCX L2-Netzwerk nicht verwendet werden, wenn der DHCP-Server sich in einem lokalen Rechenzentrum befindet.  NSX blockiert standardmäßig den Durchlauf aller DHCP-Anforderungen durch das gestreckte L2-Netzwerk. Die Lösung finden Sie in der Vorgehensweise zum [Konfigurieren von DHCP in gestreckten VMware HCX L2-Netzwerken](configure-l2-stretched-vmware-hcx-networks.md).
+
+## <a name="use-the-azure-portal-to-create-a-dhcp-server-or-relay"></a>Verwenden des Azure-Portals zum Erstellen eines DHCP-Servers oder Relays
+
+DHCP-Server oder -Relays können direkt mit der Azure VMware Solution im Azure-Portal erstellt werden. Der DHCP-Server oder das DHCP-Relay stellt eine Verbindung mit dem Tier-1-Gateway her, das beim Bereitstellen von Azure VMware Solution erstellt wurde. Alle Segmente, in denen Sie DHCP-Bereiche vergeben haben, werden Teil dieses DHCPs. Nachdem Sie einen DHCP-Server oder ein DHCP-Relay erstellt haben, müssen Sie zu dessen Verwendung ein Subnetz oder einen Bereich auf Segmentebene definieren.
+
+1. Wählen Sie in Ihrer privaten Azure VMware Solution-Cloud unter **Workloadnetzwerk** die Option **DHCP** > **Hinzufügen** aus.
+
+2. Wählen Sie entweder **DHCP-Server** oder **DHCP-Relay** aus, und geben Sie dann einen Namen für den Server oder das Relay und drei IP-Adressen an. 
+
+   >[!NOTE]
+   >Bei einem DHCP-Relay ist für eine erfolgreiche Konfiguration nur eine IP-Adresse erforderlich.
+
+   :::image type="content" source="media/networking/add-dhcp-server-relay.png" alt-text="Screenshot, der das Hinzufügen eines DHCP-Servers oder -Relays in Azure VMware Solution zeigt.":::
+
+4. Vervollständigen Sie die DHCP-Konfiguration, indem Sie [DHCP-Bereiche in den logischen Segmenten bereitstellen](tutorial-nsx-t-network-segment.md#use-azure-portal-to-add-an-nsx-t-segment), und wählen Sie dann **OK**.
+
 
 
 ## <a name="use-nsx-t-to-host-your-dhcp-server"></a>Verwenden von NSX-T zum Hosten Ihres DHCP-Servers

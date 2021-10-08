@@ -1,23 +1,16 @@
 ---
 title: Versionshinweise zu Azure Video Analyzer for Media (früher Video Indexer) | Microsoft-Dokumentation
 description: Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu Azure Video Analyzer for Media (früher Video Indexer).
-services: azure-video-analyzer
-documentationcenter: ''
-author: Juliako
-manager: femila
-editor: ''
-ms.workload: na
 ms.topic: article
-ms.subservice: azure-video-analyzer-media
 ms.custom: references_regions
 ms.date: 08/01/2021
 ms.author: juliako
-ms.openlocfilehash: 69d0190454a1b5948e894c5bc5a03a235daca78d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3bfe1e7f18f50723eed9d456eac8a773f06a34bf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340327"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552564"
 ---
 # <a name="video-analyzer-for-media-release-notes"></a>Versionshinweise zu Video Analyzer for Media
 
@@ -29,6 +22,19 @@ Damit Sie bei den aktuellen Entwicklungen in Bezug auf Azure Video Analyzer for 
 * Bekannte Probleme
 * Behebung von Programmfehlern
 * Veraltete Funktionen
+
+## <a name="august-2021"></a>August 2021
+
+### <a name="re-index-video-or-audio-files"></a>Erneutes Indizieren von Video- oder Audiodateien
+
+Es gibt jetzt eine Option zum erneuten Indizieren von Video- oder Audiodateien, bei denen während des Indizierungsprozesses ein Fehler aufgetreten ist.
+
+### <a name="improve-accessibility-support"></a>Verbesserte Unterstützung für Barrierefreiheit
+
+Fehler im Zusammenhang mit CSS, Designs und Barrierefreiheit wurden behoben:
+
+* Hoher Kontrast
+* Kontoeinstellungen und Ansichten zu Erkenntnissen im [Portal](https://www.videoindexer.ai).  
 
 ## <a name="july-2021"></a>Juli 2021
 
@@ -106,7 +112,7 @@ Das neu hinzugefügte Paket ist verfügbar, wenn Sie beim Indizieren oder Neuind
 
 ### <a name="new-developer-portal"></a>Neues Entwicklerportal 
 
-Video Analyzer for Media verfügt über ein [Neues Entwicklerportal](https://api-portal.videoindexer.ai/) – testen Sie die neuen Video Analyzer for Media-APIs, und finden Sie alle relevanten Ressourcen an einem Ort: [GitHub-Repository](https://github.com/Azure-Samples/media-services-video-indexer), [Stack Overflow](https://stackoverflow.com/questions/tagged/video-indexer), [Video Analyzer for Media Tech Community](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer) mit relevanten Blogbeiträgen, [Häufig gestellte Fragen (FAQs) zu Video Analyzer for Media](faq.md), [User Voice](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016), um Feedback zu geben und Features vorzuschlagen, und ["CodePen"-Link](https://codepen.io/videoindexer) mit Codebeispielen für Widgets. 
+Video Analyzer for Media verfügt über ein [Neues Entwicklerportal](https://api-portal.videoindexer.ai/) – testen Sie die neuen Video Analyzer for Media-APIs, und finden Sie alle relevanten Ressourcen an einem Ort: [GitHub-Repository](https://github.com/Azure-Samples/media-services-video-indexer), [Stack Overflow](https://stackoverflow.com/questions/tagged/video-indexer), [Video Analyzer for Media Tech Community](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer) mit relevanten Blogbeiträgen, [Häufig gestellte Fragen (FAQs) zu Video Analyzer for Media](faq.yml), [User Voice](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016), um Feedback zu geben und Features vorzuschlagen, und ["CodePen"-Link](https://codepen.io/videoindexer) mit Codebeispielen für Widgets. 
  
 ### <a name="advanced-customization-capabilities-for-insight-widget"></a>Erweiterte Anpassungsmöglichkeiten für das Erkenntnis-Widget 
 

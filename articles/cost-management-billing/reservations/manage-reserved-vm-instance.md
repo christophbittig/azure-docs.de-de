@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie Azure-Reservierungen verwalten. Informie
 ms.service: cost-management-billing
 ms.subservice: reservations
 author: bandersmsft
-ms.reviewer: yashesvi
+ms.reviewer: primittal
 ms.topic: how-to
-ms.date: 06/27/2021
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: cee0acf851d82ba09867b8d66c09a17b21e7af45
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: cbfe1aae48f09330a025861a82cfd8caaa878e41
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112989055"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621885"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Verwalten von Reservierungen für Azure-Ressourcen
 
@@ -52,6 +52,8 @@ So aktualisieren Sie den Bereich einer Reservierung:
 Wenn Sie von „Freigegeben“ zu „Einzeln“ wechseln, können Sie nur Abonnements auswählen, deren Besitzer Sie sind. Es können nur Abonnements in demselben Abrechnungskontext wie die Reservierung ausgewählt werden.
 
 Der Bereich gilt nur für einzelne Abonnements mit nutzungsbasierter Zahlung (Angebote MS-AZR-0003P oder MS-AZR-0023P), für das Enterprise-Angebot MS-AZR-0017P oder MS-AZR-0148P oder für CSP-Abonnementtypen.
+
+Wenn alle Abonnements aus einer Verwaltungsgruppe verschoben werden, wird der Reservierungsbereich automatisch in Freigegeben geändert.
 
 ## <a name="who-can-manage-a-reservation-by-default"></a>Wer kann eine Reservierung standardmäßig verwalten?
 

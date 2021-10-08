@@ -2,17 +2,35 @@
 title: Plattformupdates für Azure VMware Solution
 description: Erfahren Sie mehr über die Plattformupdates für Azure VMware Solution.
 ms.topic: reference
-ms.date: 07/23/2021
-ms.openlocfilehash: 01667e4a22dc220e9895071d047210e8487ff2bb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/21/2021
+ms.openlocfilehash: 3159323fa567bc622c9627ded4e8f70bfac20b4f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355972"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636114"
 ---
 # <a name="platform-updates-for-azure-vmware-solution"></a>Plattformupdates für Azure VMware Solution
 
 Die Azure VMware Solution wird ab März 2021 wichtige Aktualisierungen anwenden. Sie erhalten eine Benachrichtigung über Azure Service Health, die den Zeitplan der Wartung enthält. Weitere Informationen finden Sie unter [Wartung des Hosts und Lebenszyklusmanagement](concepts-private-clouds-clusters.md#host-maintenance-and-lifecycle-management).
+
+## <a name="september-21-2021"></a>21. September 2021
+Gemäß dem VMware-Sicherheitshinweis [VMSA-2021-0020](https://www.vmware.com/security/advisories/VMSA-2021-0020.html) wurden VMware mehrere Schwachstellen in VMware vCenter Server gemeldet.
+ 
+Zur Behebung der Schwachstellen (CVE-2021-21980, CVE-2021-21991, CVE-2021-21992, CVE-2021-21993, CVE-2021-22005, CVE-2021-22006, CVE-2021-22007, CVE-2021-22008, CVE-2021-22009, CVE-2021-22010, CVE-2021-22011, CVE-2021-22012, CVE-2021-22013, CVE-2021-22014, CVE-2021-22015, CVE-2021-22016, CVE-2021-22017, CVE-2021-22018, CVE-2021-22019, CVE-2021-22020), die im VMware-Sicherheitshinweis [VMSA-2021-0020](https://www.vmware.com/security/advisories/VMSA-2021-0020.html) gemeldet wurden, wurde vCenter Server auf 6. 7 Update 3o in allen Azure VMware Solution Private Clouds aktualisiert. Alle neuen Azure VMware Solution Private Clouds werden mit vCenter Server Version 6.7 Update 3o bereitgestellt.
+ 
+Weitere Informationen finden Sie unter [VMware vCenter Server 6.7 Update 3o Release Notes](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-vcenter-server-67u3o-release-notes.html)
+ 
+Es ist keine weitere Aktion erforderlich.
+
+## <a name="september-10-2021"></a>10. September 2021
+
+Alle neuen Azure VMware Solution Private Clouds werden jetzt mit der ESXi-Version ESXi670-202103001 (Build-Nummer: 17700523) bereitgestellt. ESXi-Hosts in bestehenden privaten Clouds wurden auf diese Version gepatcht.
+
+Weitere Informationen zu dieser ESXi-Version finden Sie unter [VMware ESXi 6.7, Patch Release ESXi670-202103001](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/esxi670-202103001.html).
+
+
+
 
 ## <a name="july-23-2021"></a>23. Juli 2021
 

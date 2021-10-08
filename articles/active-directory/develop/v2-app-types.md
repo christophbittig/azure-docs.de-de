@@ -12,12 +12,12 @@ ms.date: 11/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q2
-ms.openlocfilehash: 7ec309f016e73642262399bd75e7b5146bc5e497
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c775efa92c249904348f1ced18994c42e9ecc8eb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98752772"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597814"
 ---
 # <a name="application-types-for-the-microsoft-identity-platform"></a>Anwendungstypen für die Microsoft Identity Platform
 
@@ -44,7 +44,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 Viele moderne Apps verfügen über ein Single-Page-Webanwendungs-Front-End, das in erster Linie in JavaScript geschrieben ist, häufig mit einem Framework wie Angular, React oder Vue. Die Microsoft Identity Platform unterstützt diese Apps durch Verwendung des [OpenID Connect](v2-protocols-oidc.md)-Protokolls zur Authentifizierung und entweder des [OAuth 2.0-Flows zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) oder des neueren [OAuth 2.0-Autorisierungscodes + PKCE-Flows](v2-oauth2-auth-code-flow.md) zur Autorisierung (siehe unten).
 
-Das folgende Flussdiagramm veranschaulicht die OAuth 2.0-Autorisierungscodegenehmigung (ohne Details zu PKCE), bei der die App einen Code vom Endpunkt `authorize` der Microsoft Identity Platform erhält und diesen gegen Token und Aktualisierungstoken unter Verwendung von standortübergreifenden Webanforderungen einlöst. Das Aktualisierungstoken läuft nach jeweils 24 Stunden ab, und die App muss einen weiteren Code anfordern. Zusätzlich zum Zugriffstoken wird normalerweise über denselben Flow und/oder eine separate OpenID Connect-Anforderung (hier nicht dargestellt) auch ein `id_token` angefordert, das den bei der Clientanwendung angemeldeten Benutzer repräsentiert.
+Das folgende Flussdiagramm veranschaulicht die OAuth 2.0-Autorisierungscodegenehmigung (ohne Details zu PKCE), bei der die App einen Code vom Endpunkt `authorize` der Microsoft Identity Platform erhält und diesen gegen ein Zugriffstoken und ein Aktualisierungstoken unter Verwendung von standortübergreifenden Webanforderungen einlöst. Das Zugriffstoken läuft nach jeweils 24 Stunden ab, und die App muss mithilfe des Aktualisierungstokens einen weiteren Code anfordern. Zusätzlich zum Zugriffstoken wird normalerweise über denselben Flow und/oder eine separate OpenID Connect-Anforderung (hier nicht dargestellt) auch ein `id_token` angefordert, das den bei der Clientanwendung angemeldeten Benutzer repräsentiert.
 
 :::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="Diagramm des OAuth 2.0-Autorisierungscodeflows zwischen einer Single-Page-Webanwendung und dem Endpunkt des Sicherheitstokendiensts." border="false":::
 

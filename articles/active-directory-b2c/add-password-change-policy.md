@@ -1,37 +1,39 @@
 ---
-title: Konfigurieren der Kennwortänderung mithilfe von benutzerdefinierten Richtlinien
+title: Einrichten der Kennwortänderung mithilfe von benutzerdefinierten Richtlinien
 titleSuffix: Azure AD B2C
-description: Erfahren Sie, wie Sie Benutzern das Ändern ihres Kennworts mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C ermöglichen.
+description: Erfahren Sie, wie Sie eine benutzerdefinierte Richtlinie einrichten, damit Benutzer ihr Kennwort in Azure Active Directory B2C ändern können.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/03/2021
+ms.date: 08/24/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a0f5376574dd0329641ebc68b906bc5342437be8
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 16295eb707968a606c74813f9f6b7585aaf59546
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777702"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570619"
 ---
-# <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren der Kennwortänderung mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
+# <a name="set-up-password-change-by-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Kennwortänderung mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-In Azure Active Directory B2C (Azure AD B2C) können Sie mit einem lokalen Konto angemeldeten Benutzern ermöglichen, ihr Kennwort zu ändern, ohne ihre Identität durch E-Mail-Überprüfung nachweisen zu müssen. Der Kennwortänderungsflow umfasst die folgenden Schritte:
+Sie können Azure Active Directory B2C (Azure AD B2C) so konfigurieren, dass ein Benutzer, der mit einem lokalen Konto angemeldet ist, sein Kennwort ändern kann, ohne die E-Mail-Überprüfung zu verwenden, um seine Identität nachzuweisen. 
+
+Der Ablauf zur Kennwortänderung umfasst die folgenden Schritte:
 
 1. Der Benutzer meldet sich bei seinem lokalen Konto an. Wenn die Sitzung noch aktiv ist, autorisiert Azure AD B2C den Benutzer und fährt mit dem nächsten Schritt fort.
-1. Der Benutzer überprüft das **Alte Kennwort** und erstellt und bestätigt dann das **Neue Kennwort**.
+1. Unter **Altes Kennwort** überprüft der Benutzer sein altes Kennwort. Unter **Neues Kennwort** wird das neue Kennwort erstellt und bestätigt.
 
-![Kennwortänderungsflow](./media/add-password-change-policy/password-change-flow.png)  
+   ![Screenshot, der zwei nummerierte Dialoge für ein Ändern des Kennworts zeigt.](./media/add-password-change-policy/password-change-flow.png)  
 
 > [!TIP]
-> Der Ablauf der Kennwortänderung ermöglicht Benutzern nur dann, ihr Kennwort zu ändern, wenn sie ihr Kennwort kennen und es ändern möchten. Sie sollten auch die [Self-Service-Kennwortzurücksetzung](add-password-reset-policy.md) aktivieren für Fälle, in denen der Benutzer sein Kennwort vergessen hat.
+> Ein Benutzer kann den in diesem Artikel beschriebenen Kennwortänderungsablauf nur verwenden, wenn er sein Kennwort kennt und dieses ändern möchte. Sie sollten auch das [Rücksetzen des Kennworts in Selbstbedienung](add-password-reset-policy.md) aktivieren für Fälle, in denen der Benutzer sein Kennwort vergessen hat.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -44,11 +46,11 @@ In Azure Active Directory B2C (Azure AD B2C) können Sie mit einem lokalen Konto
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy) beschriebenen Schritte aus.
-* Wenn dies noch nicht erfolgt ist, [registrieren Sie eine Webanwendung in Azure Active Directory B2C](tutorial-register-applications.md).
+* [Registrieren einer Webanwendung in Azure Active Directory B2C](tutorial-register-applications.md)
 
 ## <a name="add-the-elements"></a>Hinzufügen der Elemente
 
-1. Öffnen Sie Ihre Datei *TrustframeworkExtensions.xml*, und fügen Sie das folgende **ClaimType**-Element mit dem Bezeichner `oldPassword` zum [ClaimsSchema](claimsschema.md)-Element hinzu:
+1. Öffnen Sie Ihre Datei *TrustFrameworkExtensions.xml*. Fügen Sie das folgende **ClaimType** Element zum [ClaimsSchema](claimsschema.md) hinzu, mit dem Bezeichner von `oldPassword`:
 
     ```xml
     <BuildingBlocks>
@@ -63,7 +65,7 @@ In Azure Active Directory B2C (Azure AD B2C) können Sie mit einem lokalen Konto
     </BuildingBlocks>
     ```
 
-2. Ein [ClaimsProvider](claimsproviders.md)-Element enthält das technische Profil, das den Benutzer authentifiziert. Fügen Sie dem **ClaimsProviders**-Element die folgenden Anspruchsanbieter hinzu:
+1. Ein [ClaimsProvider](claimsproviders.md)-Element enthält das technische Profil, das den Benutzer authentifiziert. Fügen Sie dem **ClaimsProviders**-Element die folgenden Anspruchsanbieter hinzu:
 
     ```xml
     <ClaimsProviders>
@@ -106,7 +108,7 @@ In Azure Active Directory B2C (Azure AD B2C) können Sie mit einem lokalen Konto
     </ClaimsProviders>
     ```
 
-3. Das [UserJourney](userjourneys.md)-Element definiert den Pfad, den der Benutzer beim Interagieren mit Ihrer Anwendung durchläuft. Fügen Sie das **UserJourneys**-Element hinzu (sofern es noch nicht vorhanden ist), und identifizieren Sie dabei die **UserJourney** als `PasswordChange`:
+1. Das [UserJourney](userjourneys.md)-Element definiert den Pfad, den der Benutzer beim Interagieren mit Ihrer Anwendung durchläuft. Fügen Sie das **UserJourneys**-Element hinzu (sofern es noch nicht vorhanden ist), mit der **UserJourney**-Identifizierung von`PasswordChange`:
 
     ```xml
     <UserJourneys>
@@ -139,11 +141,11 @@ In Azure Active Directory B2C (Azure AD B2C) können Sie mit einem lokalen Konto
     </UserJourneys>
     ```
 
-4. Speichern Sie die Richtliniendatei *TrustFrameworkExtensions.xml*.
-5. Kopieren Sie die Datei *ProfileEdit.xml*, die Sie mit dem Starter Pack heruntergeladen haben, und weisen Sie ihr den Namen *ProfileEditPasswordChange.xml* zu.
-6. Öffnen Sie die neue Datei, und aktualisieren Sie das Attribut **PolicyId** mit einem eindeutigen Wert. Dieser Wert ist der Name Ihrer Richtlinie. Beispiel: *B2C_1A_profile_edit_password_change*.
-7. Ändern Sie das Attribut **ReferenceId** in `<DefaultUserJourney>`, sodass es der ID der neuen von Ihnen erstellten User Journey entspricht. Beispiel: *PasswordChange*.
-8. Speichern Sie die Änderungen.
+1. Speichern Sie die Richtliniendatei *TrustFrameworkExtensions.xml*.
+1. Kopieren Sie die Datei *ProfileEdit.xml*, die Sie mit dem Starter Pack heruntergeladen haben, und weisen Sie ihr den Namen *ProfileEditPasswordChange.xml* zu.
+1. Öffnen Sie die neue Datei, und aktualisieren Sie das Attribut **PolicyId** mit einem eindeutigen Wert. Dieser Wert ist der Name Ihrer Richtlinie. Beispiel: *B2C_1A_profile_edit_password_change*.
+1. Ändern Sie das Attribut **ReferenceId** in der **DefaultUserJourney**, um die ID der neuen Nutzer-Journey, die Sie geschaffen haben, anzugleichen. Beispiel: *PasswordChange*.
+1. Speichern Sie die Änderungen.
 
 ## <a name="upload-and-test-the-policy"></a>Hochladen und Testen der Richtlinie
 
@@ -152,21 +154,21 @@ In Azure Active Directory B2C (Azure AD B2C) können Sie mit einem lokalen Konto
 1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 1. Wählen Sie **Framework für die Identitätsfunktion** aus.
-1. Klicken Sie auf der Seite „Benutzerdefinierte Richtlinien“ auf **Richtlinie hochladen**.
-1. Aktivieren Sie **Richtlinie überschreiben, sofern vorhanden**, suchen Sie nach der Datei *TrustframeworkExtensions.xml*, und wählen Sie die Datei aus.
-1. Klicken Sie auf **Hochladen**.
+1. Wählen Sie unter **Benutzerdefinierte Richtlinien** die **Richtlinie zum Hochladen** aus.
+1. Aktivieren Sie **Richtlinie überschreiben, sofern vorhanden**, suchen Sie nach der Datei *TrustFrameworkExtensions.xml*, und wählen Sie die Datei aus.
+1. Wählen Sie **Hochladen** aus.
 1. Wiederholen Sie die Schritte 5 bis 7 für die Datei der vertrauenden Seite, z. B. *ProfileEditPasswordChange.xml*.
 
-### <a name="run-the-policy"></a>Ausführen der Richtlinie
+## <a name="run-the-policy"></a>Ausführen der Richtlinie
 
 1. Öffnen Sie die Richtlinie, die Sie geändert haben. Beispiel: *B2C_1A_profile_edit_password_change*.
-2. Wählen Sie für **Anwendung** Ihre Anwendung aus, die Sie zuvor registriert haben. Um das Token anzuzeigen, muss als **Antwort-URL** der Wert `https://jwt.ms` angegeben werden.
-3. Klicken Sie auf **Jetzt ausführen**. Entfernen Sie auf der neu geöffneten Registerkarte „&amp;prompt=login“ aus der URL, und aktualisieren Sie die Registerkarte. Melden Sie sich dann mit dem Konto an, das Sie zuvor erstellt haben. Jetzt haben Sie die Möglichkeit, das Kennwort zu ändern.
+1. Wählen Sie als **Anwendung** die Anwendung aus, die Sie vorher registriert haben. Um das Token anzuzeigen, muss als **Antwort-URL** der Wert `https://jwt.ms` angegeben werden.
+1. Wählen Sie **Jetzt ausführen** aus. Auf der neuen Registerkarte, die sich öffnet, entfernen Sie „&prompt=login“ aus der URL und aktualisieren Sie die Registerkarte. Melden Sie sich dann mit dem Konto an, das Sie zuvor erstellt haben. In einem Dialogfeld zur Kennwortänderung haben Sie die Möglichkeit, das Kennwort zu ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Die Beispielrichtlinie finden Sie auf [GitHub](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change).
-- Erfahren Sie, wie Sie die [Kennwortkomplexität in Azure AD B2C konfigurieren](password-complexity.md).
-- Richten Sie einen [Kennwortzurücksetzungsflow](add-password-reset-policy.md) ein.
+* Die [Beispielrichtlinie finden Sie auf GitHub](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change).
+* Erfahren Sie, wie Sie die [Kennwortkomplexität in Azure AD B2C konfigurieren](password-complexity.md).
+* Richten Sie einen [Kennwortzurücksetzungsflow](add-password-reset-policy.md) ein.
 
 ::: zone-end

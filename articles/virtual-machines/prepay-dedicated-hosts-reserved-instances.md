@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 464ffc8b5d4d04aeb7e4013f5b25d240d5ee9b06
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1cdd083c1f3e394feea1e29434f87878ace8dbfc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688963"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546223"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Einsparen von Kosten mit Azure Dedicated Host-Reservierungen
 
@@ -43,7 +43,7 @@ Rabatte für Reservierungen gelten nicht für Folgendes:
 
 - **Clouds** – Reservierungen können in den Regionen Deutschland und China nicht käuflich erworben werden.
 
-- **Nicht genügend Kontingent:** Für eine Reservierung, die einem Einzelabonnement zugeordnet ist, muss im Abonnement ein vCPU-Kontingent für die neue reservierte Instanz verfügbar sein. Beispiel: Wenn für das Zielabonnement eine Kontingentgrenze von 10 vCPUs für die DSv3-Serie gilt, können Sie keine Reservierung für dedizierte Hosts erwerben, die diese Serie unterstützen. Bei der Kontingentüberprüfung für Reservierungen werden die im Abonnement bereits bereitgestellten virtuellen Computer und dedizierten Hosts berücksichtigt. Um dieses Problem zu beheben, können Sie eine [Anforderung zur Kontingenterhöhung erstellen](../azure-portal/supportability/resource-manager-core-quotas-request.md).
+- **Nicht genügend Kontingent:** Für eine Reservierung, die einem Einzelabonnement zugeordnet ist, muss im Abonnement ein vCPU-Kontingent für die neue reservierte Instanz verfügbar sein. Beispiel: Wenn für das Zielabonnement eine Kontingentgrenze von 10 vCPUs für die DSv3-Serie gilt, können Sie keine Reservierung für dedizierte Hosts erwerben, die diese Serie unterstützen. Bei der Kontingentüberprüfung für Reservierungen werden die im Abonnement bereits bereitgestellten virtuellen Computer und dedizierten Hosts berücksichtigt. Um dieses Problem zu beheben, können Sie eine [Anforderung zur Kontingenterhöhung erstellen](../azure-portal/supportability/regional-quota-requests.md).
 
 - **Kapazitätsbeschränkungen:** In seltenen Fällen beschränkt Azure den Erwerb neuer Reservierungen für einen Teil der Dedicated Host-SKUs aufgrund von geringer Kapazität in einer Region.
 
@@ -85,6 +85,8 @@ Wenn Sie über eine EA-Vereinbarung verfügen, können Sie die Option **Weitere 
 - **Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
 
 - **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
+
+- **Verwaltungsgruppe**: Wendet den Reservierungsrabatt auf die entsprechende Ressource in der Liste der Abonnements an, die sowohl zur Verwaltungsgruppe als auch zum Abrechnungsbereich gehören.
 
 ## <a name="usage-data-and-reservation-utilization"></a>Nutzungsdaten und Reservierungsnutzung
 

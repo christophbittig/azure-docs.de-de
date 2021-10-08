@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 06/17/2021
+ms.date: 08/27/2021
 ms.author: cshoe
-ms.openlocfilehash: 210618ba5c49fbe0e53bd5b3fb2fe808b6b6aa03
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f2dacc8a0ed551fd92b916e25dfd87695e2576d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346072"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570835"
 ---
 # <a name="configure-azure-static-web-apps"></a>Konfigurieren von Azure Static Web Apps
 
@@ -34,7 +34,7 @@ Die Konfiguration für Azure Static Web Apps erfolgt in der Datei _staticwebapp.
 
 ## <a name="file-location"></a>Dateispeicherort
 
-Der für die Datei _staticwebapp.config.json_ empfohlene Speicherort ist der Ordner, der in der [Workflowdatei](./github-actions-workflow.md) als `app_location` festgelegt wurde. Die Datei kann jedoch in einem beliebigen Unterordner innerhalb des als `app_location` festgelegten Ordners platziert werden.
+Der für die Datei _staticwebapp.config.json_ empfohlene Speicherort ist der Ordner, der in der [Workflowdatei](./build-configuration.md) als `app_location` festgelegt wurde. Die Datei kann jedoch in einem beliebigen Unterordner innerhalb des als `app_location` festgelegten Ordners platziert werden.
 
 Details finden Sie unter [Beispielkonfigurationsdatei](#example-configuration-file).
 
@@ -271,6 +271,11 @@ Definieren Sie jeden IPv4-Adressblock in CIDR-Notation (Classless Inter-Domain R
 ```
 
 Bei Angabe mindestens eines IP-Adressblocks wird Anforderungen, die von IP-Adressen stammen, die keinem Wert in `allowedIpRanges` entsprechen, der Zugriff verweigert.
+
+## <a name="authentication"></a>Authentifizierung 
+
+* [Standard-Authentifizierungsanbieter](authentication-authorization.md#login) erfordern keine Einstellungen in der Konfigurationsdatei. 
+* [Benutzerdefinierte Authentifizierungsanbieter](authentication-custom.md) verwenden die `authentication`-Eigenschaft der Einstellungsdatei. 
 
 ## <a name="example-configuration-file"></a>Beispielkonfigurationsdatei
 

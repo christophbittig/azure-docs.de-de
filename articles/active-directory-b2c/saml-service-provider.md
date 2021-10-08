@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/30/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 52966adfeffc137bf9edd95c61887dbc98f02aa6
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 673835a3e3112bf433faeba815e65c6203dd9ce8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221556"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603807"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -44,6 +44,10 @@ Organisationen, die Azure AD B2C als Lösung für die Identitäts- und Zugriffs
 2. Der Benutzer kann ein lokales Azure AD B2C-Konto oder einen anderen Verbundidentitätsanbieter (sofern konfiguriert) für die Authentifizierung verwenden.
 3. Wenn sich Benutzer mit einem Verbundidentitätsanbieter anmelden, wird eine Tokenantwort an Azure AD B2C gesendet.
 4. Azure AD B2C generiert eine SAML-Assertion und sendet sie an die Anwendung.
+
+Sehen Sie sich dieses Video an, um zu erfahren, wie Sie SAML-Anwendungen in Azure AD B2C integrieren. 
+
+>[!Video https://www.youtube.com/embed/r2TIVBCm7v4]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -95,7 +99,8 @@ Erstellen Sie ein Signaturzertifikat für die SAML-Antwort, um eine Vertrauensst
 Sie müssen Ihr Zertifikat in Ihrem Azure AD B2C-Mandanten speichern.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** und dann das Verzeichnis aus, das Ihren Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 1. Wählen Sie auf der Seite **Übersicht** die Option **Identity Experience Framework** aus.
 1. Wählen Sie **Richtlinienschlüssel** aus, und wählen Sie dann **Hinzufügen** aus.
@@ -292,7 +297,8 @@ Ersetzen Sie `<tenant-name>` durch den Namen des Azure AD B2C-Mandanten. Ersetze
 Damit Azure AD B2C Ihre Anwendung als vertrauenswürdig einstuft, müssen Sie eine Azure AD B2C-Anwendungsregistrierung erstellen. Die Registrierung enthält Konfigurationsinformationen, z. B. den Metadatenendpunkt der Anwendung.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** und dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
 1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Geben Sie z. B. **SAMLApp1** ein.

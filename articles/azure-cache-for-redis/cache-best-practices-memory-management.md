@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: 613d5dd906795b59465458565a00cd37b7374e65
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 36fe87e03a78a4dee34c2016b8f4723cb8aa95be
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115425"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598725"
 ---
 # <a name="memory-management"></a>Speicherverwaltung
 
@@ -43,3 +43,10 @@ Konfigurieren Sie Ihre [maxmemory-reserved-Einstellung](cache-configure.md#maxme
 * Mit der Einstellung  `maxfragmentationmemory-reserved`  wird der Arbeitsspeicher in MB pro Instanz in einem Cluster konfiguriert, der für die Speicherfragmentierung reserviert ist. Wenn Sie diesen Wert einstellen, ist die Erfahrung des Redis-Servers konsistenter, wenn der Cache voll oder fast voll ist und die Fragmentierungsrate hoch ist. Wenn Arbeitsspeicher für Vorgänge dieser Art reserviert ist, ist er nicht für die Zwischenspeicherung von Daten verfügbar.
 
 * Bei der Auswahl eines neuen Speicherreservierungswerts (`maxmemory-reserved`  oder  `maxfragmentationmemory-reserved`) sollte berücksichtigt werden, wie sich diese Änderung auf einen Cache auswirkt, der bereits mit einer großen Datenmenge ausgeführt wird. Beispiel: Wenn Ihr Cache über eine Kapazität von 53 GB verfügt und 49 GB an Daten enthält, ändern Sie den Reservierungswert in 8 GB, um den maximal verfügbaren Arbeitsspeicher für das System auf 45 GB zu verringern. Wenn entweder der aktuelle Wert für  `used_memory`  oder der Wert für  `used_memory_rss`  höher als der neue Grenzwert von 45 GB ist, muss das System Daten entfernen, bis sowohl  `used_memory`  als auch  `used_memory_rss`  unter 45 GB liegen. Durch die Entfernung können sich Serverauslastung und Arbeitsspeicherfragmentierung erhöhen. Weitere Informationen zu Cachemetriken, etwa  `used_memory`  und  `used_memory_rss`, finden Sie unter  [Verfügbare Metriken und Berichtsintervalle](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Bewährte Methoden für die Entwicklung](cache-best-practices-development.md)
+* [Häufig gestellte Fragen zur Azure Cache for Redis-Entwicklung](cache-development-faq.yml)
+* [Einstellung „maxmemory-reserved“](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)
+* [Bewährte Methoden zum Skalieren](cache-best-practices-scale.md)

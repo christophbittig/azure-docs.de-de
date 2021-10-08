@@ -5,12 +5,12 @@ author: johndowns
 ms.author: jodowns
 ms.topic: conceptual
 ms.date: 08/18/2021
-ms.openlocfilehash: 812cb0b861418d3bd3d13959cf074442d9a81538
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: eb9a24c0c5b6b7bd037fe5da13fe108878f55a15
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446868"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648314"
 ---
 # <a name="shared-variable-file-pattern"></a>Datei mit freigegebenen Variablen (Muster)
 
@@ -24,7 +24,7 @@ Darüber hinaus verfügen Sie, wenn Sie mit Variablen arbeiten, die als Arrays d
 
 ## <a name="solution"></a>Lösung
 
-Erstellen Sie eine JSON-Datei, die die Variablen enthält, die Sie freigeben müssen. Verwenden Sie die Bicep-Funktionen `json()` und `loadTextContent()`, um die Datei zu laden und auf die Variablen zuzugreifen. Verwenden Sie für Arrayvariablen die `concat()`-Funktion, um die freigegebenen Werte mit den benutzerdefinierten Werten für die spezifische Ressource zu kombinieren.
+Erstellen Sie eine JSON-Datei, die die Variablen enthält, die Sie freigeben müssen. Verwenden Sie die [`json()`-Funktion](bicep-functions-object.md#json) und die [`loadTextContent()`-Funktion](bicep-functions-files.md#loadtextcontent) zum Laden der Datei und zum Zugriff auf die Variablen. Verwenden Sie für Arrayvariablen die [`concat()`-Funktion](bicep-functions-array.md#concat), um die freigegebenen Werte mit den benutzerdefinierten Werten für die spezifische Ressource zu kombinieren.
 
 ## <a name="example-1-naming-prefixes"></a>Beispiel 1: Namenspräfixe
 

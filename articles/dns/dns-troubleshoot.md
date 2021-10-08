@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: fae63c61949302e25c9dee2899577fa4f0d2a975
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4621b73c8b71ba3bb4b42801de5e306cfa3562e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94965577"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573103"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS – Handbuch zur Problembehandlung
 
@@ -72,6 +72,33 @@ Die DNS-Namensauflösung ist ein mehrstufiger Prozess, der aufgrund einer Vielza
 * [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md)
 
 
+## <a name="unhealthy-dns-zones"></a>Fehlerhafte DNS-Zonen
+
+Konfigurationsfehler können dazu führen, dass DNS-Zonen fehlerhaft werden. Im Folgenden ein paar Szenarien, die zu diesem Verhalten führen können:
+
+* **Fehlerhafte Delegierung**: Eine Zone enthält *NS*-Delegierungsdatensätze, mit denen Datenverkehr von primären an die untergeordneten Zonen delegiert werden kann. Wenn einer der *NS*-Einträge in der übergeordneten Zone vorhanden ist, sollte der DNS-Server eigentlich andere Einträge unterhalb der Delegierung maskieren, mit Ausnahme von Glue-Einträgen. Wenn die Zone jedoch andere Datensätze unterhalb der Delegierung enthält, wird die Zone als fehlerhaft gekennzeichnet.
+
+    Die folgende Tabelle enthält Szenarien und die entsprechenden Zonenzustandsergebnisse, wenn eine Zone einen NS-Delegierungsdatensatz enthält.
+
+    | Szenario | Zone enthält</br>NS-Delegierungsdatensatz? | Zone enthält</br>Glue Records? | Zone enthält andere</br>Datensätze unterhalb der</br>Delegierung? | Zonenintegrität |
+    |----------|-------------------------------------|-----------------------------|--------------------------------------------------|-------------|
+    | 1        | Nein                                  | -                           | -                                                | Healthy     |
+    | 2        | Ja                                 | Ja                         | Nein                                               | Healthy     |
+    | 3        | Ja                                 | Nein                          | Nein                                               | Healthy     |
+    | 4        | Ja                                 | Nein                          | Ja                                              | Fehlerhaft   |
+    | 5        | Ja                                 | Ja                         | Ja                                              | Fehlerhaft   |
+
+    **Empfehlung:** Entfernen Sie alle Datensätze mit Ausnahme von Glue-Datensätzen unterhalb der Delegierungsdatensätze in Ihren Zonen.
+
+* **Null TTL** – Die Gültigkeitsdauer (Time to Live, TTL) ist eine Einstellung, die dem DNS-Resolver sagt, wie lange eine Abfrage zwischengespeichert werden soll, bevor eine neue angefordert wird. Die gesammelten Informationen werden dann im Cache des rekursiven oder lokalen Resolvers für die TTL-Dauer gespeichert, bevor das Gerät sich zurück wendet, um neue und aktualisierte Details zu sammeln.
+
+    Wenn TTL in der Konfiguration auf 0 festgelegt ist, kann eines der folgenden Probleme auftreten:
+
+    * Lange Antwort.
+    * Anstieg des DNS-Datenverkehrs und der Kosten.
+    * Empfindlich für DDoS-Angriffe.
+
+    **Empfehlung**: Stellen Sie sicher, dass der TTL-Wert nicht auf *0* festgelegt ist. 
 
 ## <a name="how-do-i-specify-the-service-and-protocol-for-an-srv-record"></a>Wie gebe ich den „service“ und „protocol“ für einen SRV-Eintrag an?
 

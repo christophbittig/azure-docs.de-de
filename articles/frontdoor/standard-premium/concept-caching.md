@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 24a925b0d16dc1650398e6211aaff42cd47620eb
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: a8adfef720d446c3ae2a45d27cee72a8135edb70
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112369409"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595045"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>Zwischenspeichern mit Azure Front Door Standard/Premium (Vorschau)
 
@@ -42,7 +42,7 @@ Alle Blöcke werden von Azure Front Door Service zwischengespeichert, sobald sie
 
 ## <a name="file-compression"></a>Dateikomprimierung
 
-Weitere Informationen finden Sie unter „Verbessern der Leistung durch Komprimieren von Dateien in Azure Front Door Standard/Premium (Vorschau)“.
+Weitere Informationen finden Sie unter [Verbessern der Leistung durch Komprimieren von Dateien in Azure Front Door](how-to-compression.md).
 
 ## <a name="query-string-behavior"></a>Verhalten von Abfragezeichenfolgen
 
@@ -71,9 +71,20 @@ Die folgenden Anforderungsheader werden bei Verwendung der Zwischenspeicherung n
 * Content-Length
 * Transfer-Encoding
 
-## <a name="cache-duration"></a>Cachedauer
+## <a name="cache-behavior-and-duration"></a>Cacheverhalten und -dauer
 
-Die Cachedauer kann im Regelsatz konfiguriert werden. Die über den Regelsatz festgelegte Cachedauer ist eine gültige Cacheüberschreibung. Das bedeutet, dass der Überschreibungswert verwendet wird, unabhängig vom Wert im Antwortheader.
+Cacheverhalten und Cachedauer können sowohl in der Front Door-Designer-Routingregel als auch in der Regel-Engine konfiguriert werden. Die Cachingkonfiguration der Regel-Engine setzt die Konfiguration der Front Door-Designer-Routingregel immer außer Kraft.
+
+* Wenn das *Caching* **deaktiviert** ist, speichert Front Door den Inhalt der Antwort unabhängig von den ursprünglichen Anweisungen der Antwort nicht zwischen.
+
+* Wenn das *Caching* **aktiviert** ist, ist das Cacheverhalten für verschiedene Werte von *Standardcachedauer verwenden* unterschiedlich.
+    * Wenn *Standardcachedauer verwenden* auf **Ja** festgelegt ist, beachtet Front Door immer die ursprüngliche Anweisung des Antwortheaders. Wenn die ursprüngliche Anweisung fehlt, speichert Front Door den Inhalt ein bis drei Tage lang zwischen.
+    * Wenn *Standardcachedauer verwenden* auf **Nein** festgelegt ist, setzt Front Door die Anweisung immer außer Kraft und verwendet den Wert von *Cachedauer* (erforderliches Feld). Das bedeutet, dass die Inhalte für die in diesem Feld angegebene Dauer zwischengespeichert und die Werte der ursprünglichen Anweisungen der Antwort ignoriert werden. 
+
+> [!NOTE]
+> * Die in der Front Door-Designer-Routingregel festgelegte *Cachedauer* ist die **minimale Cachedauer**. Diese Außerkraftsetzung funktioniert nicht, wenn der Cachesteuerungsheader vom Ursprung eine längere Gültigkeitsdauer aufweist als der Außerkraftsetzungswert.
+> * Wenn Cacheinhalte nicht sehr häufig angefordert werden, können sie vor ihrem Ablauf aus Azure Front Door entfernt werden, um Platz für häufiger angeforderte Inhalte zu schaffen.
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

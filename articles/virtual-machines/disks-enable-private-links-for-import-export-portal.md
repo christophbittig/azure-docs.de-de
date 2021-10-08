@@ -4,15 +4,15 @@ description: Aktivieren Sie über das Azure-Portal Private Link für Ihre verwal
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/19/2021
+ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b023f7f068d1dc52c073519cc7e7f308e5d86ad0
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: c38c1ec60b3a7fbeb65f85e4560c4495ab93a031
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696455"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754822"
 ---
 # <a name="restrict-importexport-access-for-managed-disks-using-azure-private-link"></a>Einschränken des Import-/Exportzugriffs für verwaltete Datenträger mithilfe von Azure Private Link
 
@@ -88,6 +88,32 @@ Als Nächstes müssen Sie einen privaten Endpunkt erstellen und für den Datentr
 1. Wählen Sie **Speichern** aus.
 
 Sie haben nun eine private Verbindung konfiguriert, die Sie zum Importieren und Exportieren Ihres verwalteten Datenträgers verwenden können.
+
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+**F: Welchen Vorteil bietet Private Link für das Exportieren und Importieren von Managed Disks?**
+
+**A:** Sie können Private Link nutzen, um den Export und Import aus bzw. in Managed Disks nur auf Ihr virtuelles Azure-Netzwerk zu beschränken.
+
+**F: Wie kann ich sicherstellen, dass ein Datenträger nur über Private Link exportiert oder importiert werden kann?**
+
+**A:** Sie müssen die **DiskAccessId**-Eigenschaft auf eine Instanz eines Datenträgerzugriffsobjekts festlegen. Darüber hinaus können Sie die **NetworkAccessPolicy**-Eigenschaft auf **AllowPrivate** festlegen.
+
+**F: Kann ich mehrere virtuelle Netzwerke mit demselben Datenträgerzugriffsobjekt verknüpfen?**
+
+**A:** Nein. Derzeit können Sie ein Datenträgerzugriffsobjekt nur mit einem einzigen virtuellen Netzwerk verknüpfen.
+
+**F: Kann ich ein virtuelles Netzwerk mit einem Datenträgerzugriffsobjekt in einem anderen Abonnement verknüpfen?**
+
+**A:** Nein. Derzeit können Sie ein Datenträgerzugriffsobjekt nur mit einem virtuellen Netzwerk im selben Abonnement verknüpfen.
+
+**F: Wie viele Export- oder Importvorgänge mit demselben Datenträgerzugriffsobjekt können gleichzeitig stattfinden?**
+
+**A:** Sie können fünf gleichzeitige Export- oder Importvorgänge durchführen.
+
+**F: Kann ich einen SAS-URI eines Datenträgers oder einer Momentaufnahme verwenden, um die zugrunde liegende VHD einer VM herunterzuladen, die sich nicht im selben Subnetz wie der dem Datenträger zugeordnete private Endpunkt befindet?**
+
+**A:** Nein. Sie können dies nur für einen virtuellen Computer durchführen, der sich im gleichen Subnetz wie das Subnetz des privaten Endpunkts befindet, der dem Datenträger zugeordnet ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

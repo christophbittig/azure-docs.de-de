@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jhirono
 ms.author: larryfr
 author: blackmist
-ms.date: 08/17/2021
+ms.date: 09/15/2021
 ms.topic: how-to
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: c704064685b4096c8ee7b4a1015d82fae7c40ba9
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: f0b4f19e8c1e06aa8ab5657fd1c70a75814451ad
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343646"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612185"
 ---
 # <a name="how-to-create-a-secure-workspace"></a>So erstellen Sie einen sicheren Arbeitsbereich
 
@@ -79,22 +79,30 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Netzwerk zu erstellen:
     1. Wählen Sie __+ Subnetz hinzufügen__ aus, und verwenden Sie die folgenden Werte für das Subnetz, um ein Subnetz zu erstellen, das den Arbeitsbereich, die Abhängigkeitsdienste und die Ressourcen enthält, die für das Training verwendet werden:
         * __Subnetzname__: Training
         * __Subnetzadressbereich__: 172.17.0.0/24
-        * __Dienste__: Wählen Sie die folgenden Dienste aus:
-            * __Microsoft.Storage__
-            * __Microsoft.KeyVault__
-            * __Microsoft.ContainerRegistry__
 
         :::image type="content" source="./media/tutorial-create-secure-workspace/vnet-add-training-subnet.png" alt-text="Screenshot: Trainingssubnetz":::
+
+        > [!TIP]
+        > Wenn Sie einen _Dienstendpunkt_ verwenden möchten, um Ihr Azure Storage-Konto, Azure Key Vault und Azure Container Registry zum VNet hinzuzufügen, wählen Sie unter __Dienste__ Folgendes aus:
+        > * __Microsoft.Storage__
+        > * __Microsoft.KeyVault__
+        > * __Microsoft.ContainerRegistry__
+        >
+        > Wenn Sie einen _privaten Endpunkt_ verwenden möchten, um diese Dienste dem VNet hinzuzufügen, müssen Sie diese Einträge nicht auswählen. Die Schritte in diesem Artikel verwenden einen privaten Endpunkt für diese Dienste, sodass Sie sie nicht auswählen müssen, wenn Sie diese Schritte befolgen.
 
     1. Wählen Sie erneut __+ Subnetz hinzufügen__ aus, und verwenden Sie die folgenden Werte, um ein Subnetz für Computeressourcen zu erstellen, die zur Bewertung Ihrer Modelle verwendet werden:
         * __Subnetzname__: Bewertung
         * __Subnetzadressbereich__: 172.17.1.0/24
-        * __Dienste__: Wählen Sie die folgenden Dienste aus:
-            * __Microsoft.Storage__
-            * __Microsoft.KeyVault__
-            * __Microsoft.ContainerRegistry__
 
         :::image type="content" source="./media/tutorial-create-secure-workspace/vnet-add-scoring-subnet.png" alt-text="Screenshot: Bewertungssubnetz":::
+
+        > [!TIP]
+        > Wenn Sie einen _Dienstendpunkt_ verwenden möchten, um Ihr Azure Storage-Konto, Azure Key Vault und Azure Container Registry zum VNet hinzuzufügen, wählen Sie unter __Dienste__ Folgendes aus:
+        > * __Microsoft.Storage__
+        > * __Microsoft.KeyVault__
+        > * __Microsoft.ContainerRegistry__
+        >
+        > Wenn Sie einen _privaten Endpunkt_ verwenden möchten, um diese Dienste dem VNet hinzuzufügen, müssen Sie diese Einträge nicht auswählen. Die Schritte in diesem Artikel verwenden einen privaten Endpunkt für diese Dienste, sodass Sie sie nicht auswählen müssen, wenn Sie diese Schritte befolgen.
 
 1. Wählen Sie __Sicherheit__ aus. Wählen Sie für __BastionHost__ die Option __Aktivieren__ aus. [Azure Bastion](../bastion/bastion-overview.md) bietet eine sichere Möglichkeit für den Zugriff auf die VM-Jumpbox, die Sie in einem späteren Schritt im VNet erstellen. Verwenden Sie die folgenden Werte für die restlichen Felder:
 
@@ -283,21 +291,6 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Netzwerk zu erstellen:
 
 Azure Machine Learning Studio ist eine webbasierte Anwendung, mit der Sie Ihren Arbeitsbereich problemlos verwalten können. Es ist jedoch eine zusätzliche Konfiguration erforderlich, bevor die Anwendung mit Ressourcen verwendet werden kann, die in einem VNet abgesichert sind. Führen Sie die folgenden Schritte aus, um Studio zu aktivieren:
 
-1. Wählen Sie im Azure-Portal Ihr Speicherkonto und dann __Zugriffssteuerung (IAM)__ aus.
-1. Wählen Sie __+ Hinzufügen__ und dann __Rollenzuweisung hinzufügen (Vorschau)__ aus.
-
-    ![Seite „Zugriffssteuerung (IAM)“ mit geöffnetem Menü „Rollenzuweisung hinzufügen“](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
-
-1. Wählen Sie auf der Registerkarte __Rolle__ die Option __Mitwirkender an Storage-Blobdaten__ aus.
-
-    ![Seite „Rollenzuweisung hinzufügen“ mit ausgewählter Registerkarte „Rolle“](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
-
-1. Wählen Sie auf der Registerkarte __Mitglieder__ im Bereich __Zugriff zuweisen zu__ die Option __Benutzer, Gruppe oder Dienstprinzipal__ und dann die Option __+ Mitglieder auswählen__ aus. Geben Sie im Dialogfeld __Mitglieder auswählen__ den Namen als Azure Machine Learning-Arbeitsbereich ein. Wählen Sie den Dienstprinzipal für den Arbeitsbereich aus, und verwenden Sie dann die Schaltfläche __Auswählen__.
-
-    :::image type="content" source="./media/tutorial-create-secure-workspace/studio-select-service-principal.png" alt-text="Screenshot: Auswählen des Dienstprinzipals":::
-
-1. Wählen Sie auf der Registerkarte **Überprüfen und zuweisen** die Option **Überprüfen und zuweisen** aus, um die Rolle zuzuweisen.
-
 1. Wenn Sie ein Azure Storage-Konto verwenden, das über einen privaten Endpunkt verfügt, fügen Sie den Dienstprinzipal für den Arbeitsbereich als __Leser__ für die privaten Speicherendpunkte hinzu. Wählen Sie im Azure-Portal Ihr Speicherkonto und dann __Netzwerk__ aus. Wählen Sie als Nächstes __Private Endpunktverbindungen__ aus.
 
     :::image type="content" source="./media/tutorial-create-secure-workspace/storage-private-endpoint-select.png" alt-text="Screenshot: private Speicherendpunkte":::
@@ -407,8 +400,8 @@ Ein Computecluster wird von Ihren Trainingsaufträgen verwendet. Eine Compute-In
 > [!TIP]
 > Wenn Sie einen Computecluster oder eine Compute-Instanz erstellen, wird von Azure Machine Learning eine Netzwerksicherheitsgruppe (NSG) dynamisch hinzugefügt. Diese NSG enthält die folgenden Regeln, die spezifisch für Computecluster und Compute-Instanzen sind:
 > 
-> * Zulassen des eingehenden TCP-Datenverkehrs an den Ports 29876–29877 vom Diensttag `BatchNodeManagement`
-> * Zulassen des eingehenden TCP-Datenverkehrs am Port 44224 vom Diensttag `AzureMachineLearning`
+> * Zulassen des eingehenden TCP-Datenverkehrs an den Ports 29876-29877 vom Diensttag `BatchNodeManagement`.
+> * Zulassen des eingehenden TCP-Datenverkehrs am Port 44224 vom Diensttag `AzureMachineLearning`.
 >
 > Im folgenden Screenshot sehen Sie ein Beispiel für diese Regeln:
 >

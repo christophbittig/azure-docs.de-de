@@ -1,28 +1,27 @@
 ---
 title: Kopieren von Daten aus mit Amazon Simple Storage Service (S3) kompatiblem Speicher
+description: Erfahren Sie, wie Sie mithilfe einer Kopieraktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline Daten aus kompatiblem Amazon S3-Speicher in unterstützte Senkendatenspeicher kopieren.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Hier erfahren Sie, wie Sie mithilfe von Azure Data Factory Daten aus Amazon S3-kompatiblem Speicher in unterstützte Senkendatenspeicher kopieren.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 98191eb2e958510fe01fc5a02e0490bf7c2d41ae
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 82abc8fcfacc09621b66192c1f40b8c33d73ae50
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123306995"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563458"
 ---
-# <a name="copy-data-from-amazon-s3-compatible-storage-by-using-azure-data-factory"></a>Kopieren von Daten aus Amazon S3-kompatiblem Speicher mithilfe von Azure Data Factory
+# <a name="copy-data-from-amazon-s3-compatible-storage-by-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus kompatiblem Amazon S3-Speicher mithilfe von Azure Data Factory oder Synapse Analytics
 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Daten aus mit Amazon Simple Storage Service (Amazon S3) kompatiblem Speicher kopieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
-
-
+In diesem Artikel wird beschrieben, wie Sie Daten aus mit Amazon Simple Storage Service (Amazon S3) kompatiblem Speicher kopieren. Weitere Informationen finden Sie in den Einführungsartikeln zu [Azure Data Factory](introduction.md) und [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -41,7 +40,7 @@ Dieser Amazon S3-kompatible Storage-Connector unterstützt insbesondere das Kop
 
 Um Daten aus Amazon S3-kompatiblem Speicher kopieren zu können, müssen Sie sicherstellen, dass Ihnen die folgenden Berechtigungen für Amazon S3-Objektvorgänge erteilt wurden: `s3:GetObject` und `s3:GetObjectVersion`.
 
-Wenn Sie die Data Factory-Benutzeroberfläche für die Erstellung verwenden, sind zusätzliche die Berechtigungen `s3:ListAllMyBuckets` und `s3:ListBucket`/`s3:GetBucketLocation` für Vorgänge wie das Testen der Verbindung mit dem verknüpften Dienst und das Durchsuchen vom Stamm erforderlich. Wenn Sie diese Berechtigungen nicht erteilen möchten, können Sie auf der Benutzeroberfläche die Option zum Testen der Verbindung mit dem Dateipfad oder zum Durchsuchen vom angegebenen Pfad auswählen.
+Wenn Sie die Benutzeroberfläche für die Erstellung verwenden, sind zusätzliche `s3:ListAllMyBuckets`- und `s3:ListBucket`/`s3:GetBucketLocation`-Berechtigungen für Vorgänge wie das Testen der Verbindung mit dem verknüpften Dienst und das Durchsuchen aus dem Stammverzeichnis erforderlich. Wenn Sie diese Berechtigungen nicht erteilen möchten, können Sie auf der Benutzeroberfläche die Option zum Testen der Verbindung mit dem Dateipfad oder zum Durchsuchen vom angegebenen Pfad auswählen.
 
 Die vollständige Liste der Amazon S3-Berechtigungen finden Sie unter [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html) (Angeben von Berechtigungen in einer Richtlinie) auf der AWS-Website.
 
@@ -57,7 +56,7 @@ Führen Sie die folgenden Schritte aus, um über die Benutzeroberfläche des Azu
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory Benutzeroberfläche.":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Erstellen Sie einen neuen verknüpften Dienst mithilfe der Azure Data Factory-Benutzeroberfläche.":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -74,17 +73,17 @@ Führen Sie die folgenden Schritte aus, um über die Benutzeroberfläche des Azu
 
 ## <a name="connector-configuration-details"></a>Details zur Connectorkonfiguration 
 
-In den folgenden Abschnitten finden Sie Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten verwendet werden, die für Amazon S3-kompatiblen Speicher spezifisch sind.
+In den folgenden Abschnitten finden Sie Details zu Eigenschaften, die zum Definieren von Entitäten verwendet werden, die für kompatiblen Amazon S3-Speicher spezifisch sind.
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
 Für einen mit Amazon S3 kompatiblen verknüpften Dienst werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die **type**-Eigenschaft muss auf **AmazonS3Compatible** festgelegt werden. | Ja |
 | accessKeyId | ID des geheimen Zugriffsschlüssels. |Ja |
-| secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
+| secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als **SecureString**, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
 | serviceUrl | Geben Sie den benutzerdefinierten S3-Endpunkt `https://<service url>` an. | Nein |
 | forcePathStyle | Gibt an, ob anstelle des Zugriffs mit virtuellem Hosting der [Zugriff im S3-Pfadstil](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html#path-style-access) verwendet wird. Zulässige Werte sind **false** (Standard) und **true**.<br> Sehen Sie in der Dokumentation des jeweiligen Datenspeichers nach, ob der Zugriff im Pfadstil verwendet werden muss. |Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. |Nein |
@@ -244,7 +243,7 @@ In diesem Abschnitt wird das resultierende Verhalten beschrieben, wenn ein Datei
 
 Angenommen, Sie haben die folgende Quellordnerstruktur und möchten die Dateien kopieren, deren Namen fett formatiert sind:
 
-| Beispielquellstruktur                                      | Inhalt in „FileListToCopy.txt“                             | Konfiguration der Data Factory                                            |
+| Beispielquellstruktur                                      | Inhalt in „FileListToCopy.txt“                             | Konfiguration |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | bucket<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unterordner1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Datei4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Datei5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadaten<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | Datei1.csv<br>Unterordner1/Datei3.csv<br>Unterordner1/Datei5.csv | **Im Dataset:**<br>– Bucket: `bucket`<br>– Ordnerpfad: `FolderA`<br><br>**In der Quelle der Kopieraktivität:**<br>– Dateilistenpfad: `bucket/Metadata/FileListToCopy.txt` <br><br>Der Dateilistenpfad verweist auf eine Textdatei im selben Datenspeicher, der eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Diese enthält den relativen Pfad zu dem im Dataset konfigurierten Pfad. |
 
@@ -263,4 +262,4 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die von der Kopieraktivität in Azure Data Factory als Quellen und Senken unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die diese Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

@@ -10,12 +10,12 @@ ms.author: justinha
 author: calui
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 0a4ad5d9aaa9bb851a651ddc77bd1acb773b6019
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 0e925e520b5136750dc7ef9151d7e5741176525c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113485705"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595615"
 ---
 # <a name="sign-in-to-azure-ad-with-email-as-an-alternate-login-id-preview"></a>Anmeldung bei Azure AD mit einer E-Mail-Adresse als alternative Anmelde-ID (Vorschau)
 
@@ -71,6 +71,7 @@ In der aktuellen Vorschauversion gelten die folgenden Einschränkungen für die 
     * Microsoft Office unter macOS
     * Microsoft Teams im Web
     * OneDrive (wenn der Anmeldeflow keine mehrstufige Authentifizierung umfasst)
+    * Microsoft 365-Verwaltungsportal
 
 * **Nicht unterstützte Apps:** Einige Anwendungen von Drittanbietern funktionieren möglicherweise nicht wie erwartet, wenn sie voraussetzen, dass die Ansprüche vom Typ `unique_name` oder `preferred_username` unveränderlich sind oder immer einem bestimmten Benutzerattribut entsprechen (beispielsweise UPN).
 

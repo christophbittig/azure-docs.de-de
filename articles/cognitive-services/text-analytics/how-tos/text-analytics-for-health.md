@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/18/2021
+ms.date: 09/16/2021
 ms.author: aahi
-ms.openlocfilehash: 5b1883b06ae234ed8a4f9adf949cf26919f7b877
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: d86e9d5cbd9168625f71ce7b4ebb0be598d00557
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113550154"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677420"
 ---
 # <a name="how-to-use-text-analytics-for-health"></a>Gewusst wie: Verwenden von Text Analytics for Health
 
@@ -83,7 +83,7 @@ Wenn Sie den Text Analytics for Health-Container in Ihrer eigenen Umgebung ausf�
 
 ## <a name="using-the-client-library"></a>Verwenden der Clientbibliothek
 
-Die neueste Vorabversion der Text Analytics-Clientbibliothek ermöglicht es Ihnen, Text Analytics for Health mithilfe eines Clientobjekts aufzurufen. Weitere Informationen finden Sie in der Referenzdokumentation und in den Beispielen auf GitHub:
+Die neueste Vorabversion der Text Analytics-Clientbibliothek ermöglicht es Ihnen, Textanalyse für Integrität mithilfe der Clientbibliothek aufzurufen. Weitere Informationen finden Sie in der Referenzdokumentation und in den Beispielen auf GitHub:
 * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
 * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
 * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)

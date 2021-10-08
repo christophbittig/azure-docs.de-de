@@ -3,12 +3,12 @@ title: Verwalten von gesicherten SAP HANA-Datenbanken für Azure-VMs
 description: In diesem Artikel erfahren Sie mehr über allgemeine Aufgaben zum Verwalten und Überwachen von SAP HANA-Datenbanken, die auf virtuellen Azure-Computern ausgeführt werden.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 54d3341a83873ad3cc50815f04a0b252bb44438e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d514a8f790f906a4830672dc726c03ad2cf41a2c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101703765"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662246"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Verwalten und Überwachen gesicherter SAP HANA-Datenbanken
 
@@ -85,6 +85,10 @@ Diese bedarfsgesteuerten Sicherungen werden auch in der Liste der Wiederherstell
 #### <a name="restore"></a>Restore
 
 Von nativen HANA-Clients (unter Verwendung von **Backint**) ausgelöste Wiederherstellungen auf denselben Computer können von der Seite **Sicherungsaufträge** aus [überwacht](#monitor-manual-backup-jobs-in-the-portal) werden.
+
+#### <a name="delete"></a>Löschen
+
+Löschvorgänge von nativen HANA-Clients werden von Azure Backup **NICHT** unterstützt, weil die Sicherungsrichtlinie den Lebenszyklus von Sicherungen im Azure Recovery Services-Tresor bestimmt.
 
 ### <a name="run-sap-hana-native-client-backup-to-local-disk-on-a-database-with-azure-backup-enabled"></a>Ausführen einer Sicherung des nativen SAP HANA-Clients auf einem lokalen Datenträger für eine Datenbank, für die Azure Backup aktiviert ist
 

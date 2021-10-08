@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 03/01/2021
 ms.author: rolyon
 ms.custom: H1Hack27Feb2017, devx-track-azurepowershell
-ms.openlocfilehash: de71203ab8b61aa3c81d610b231deedab4c63baa
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 43ee281bc9696740c7909ef6b6758d4542808721
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110693661"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755223"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Anzeigen von Aktivitätsprotokollen für Azure RBAC-Änderungen
 
@@ -47,7 +47,7 @@ Das Aktivitätsprotokoll im Portal verfügt über mehrere Filter. Im Folgenden d
 | Ereigniskategorie | <ul><li>Administrative</li></ul> |
 | Vorgang | <ul><li>Erstellen von Rollenzuweisungen</li><li>Löschen von Rollenzuweisungen</li><li>Erstellen oder Aktualisieren von benutzerdefinierten Rollendefinition</li><li>Löschen von benutzerdefinierten Rollendefinition</li></ul> |
 
-Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/activity-log.md).
 
 
 ## <a name="interpret-a-log-entry"></a>Interpretieren eines Protokolleintrags
@@ -235,5 +235,5 @@ AzureActivity
 ![Screenshot: Aktivitätsprotokolle im Advanced Analytics-Portal](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
+* [Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen](../azure-monitor/essentials/activity-log.md)
 * [Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll](../azure-monitor/essentials/platform-logs-overview.md)

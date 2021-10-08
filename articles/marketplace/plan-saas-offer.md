@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/31/2021
-ms.openlocfilehash: 7afdd852bebc4eeff24671d8d60cb8805f86f29c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/17/2021
+ms.openlocfilehash: e31fff677b6e1363d0afda420d521d31b2cf4247
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355368"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657555"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -265,12 +265,8 @@ Das folgende Beispiel zeigt eine exemplarische Aufschlüsselung der Kosten und A
 | Azure-Nutzungskosten (D1/1-Kern) | Abrechnung direkt mit dem Herausgeber, nicht mit dem Kunden |
 | Microsoft führt die Abrechnung mit dem Kunden durch | 100,00 USD pro Monat (der Herausgeber muss alle anfallenden oder weiterzugebenden Infrastrukturkosten in der Lizenzgebühr berücksichtigen) |
 | **Microsoft berechnet** | **100 USD pro Monat** |
-| Microsoft zahlt Ihnen 80% Ihrer Lizenzkosten<br>`*` Für qualifizierte SaaS-Apps zahlt Microsoft 90 % Ihrer Lizenzkosten| 80,00 USD pro Monat<br>``*`` 90,00 USD pro Monat |
-|||
-
-**`*` Reduzierte Marketplace-Dienstgebühr:** Für bestimmte SaaS-Angebote, die Sie im kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 Prozent (wie im Microsoft-Herausgebervertrag angegeben) auf 10 Prozent. Damit Ihre Angebote qualifiziert sind, müssen sie von Microsoft als gefördert für Azure IP-Co-Selling gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr in Anspruch genommen werden kann. Sobald die Anforderungen für die Berechtigung erfüllt sind, wird die reduzierte Dienstgebühr für alle Transaktionen ab dem ersten Tag des folgenden Monats gewährt und weiterhin angewendet, bis der Azure IP-Co-Sell Incentivized-Status nicht mehr gegeben ist. Einzelheiten zur Berechtigung für das IP-Co-Selling finden Sie unter [Requirements for Co-sell Status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status) (Anforderungen für den Co-Selling-Status). Die reduzierte Marketplace-Dienstgebühr gilt auch für VMs, verwaltete Apps und andere berechtigte transaktionsfähige IaaS-Angebote im Rahmen der Azure IP-Co-Selling-Incentives, die über den kommerziellen Marketplace bereitgestellt werden.
-
-## <a name="preview-audience"></a>Vorschauzielgruppe
+| Microsoft berechnet eine Marketplace-Servicegebühr von 3 % und bezahlt Ihnen 97 % Ihrer Lizenzkosten | 97,00 USD pro Monat |
+|
 
 Eine Vorschauzielgruppe kann auf das Angebot zugreifen, bevor es in den Onlinestores veröffentlicht wird. Sie können sehen, wie Ihr Angebot im kommerziellen Marketplace aussehen wird, und die End-to-End-Funktionalität testen, bevor Sie Sie live veröffentlichen. 
 

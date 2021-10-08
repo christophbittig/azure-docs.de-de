@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: dlepow
 ms.author: danlep
 ms.date: 07/12/2021
-ms.openlocfilehash: c14107561886a9e29c2d95c5d04847274afdf4e3
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: e2f56f8886a387158c148edaf9ae557deac3783f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733947"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659151"
 ---
 # <a name="azure-api-management-as-an-event-grid-source-preview"></a>Azure API Management als Event Grid-Quelle (Vorschau)
 
@@ -116,16 +116,13 @@ Das folgende Beispiel zeigt das Schema eines Benutzerlöschungsereignisses: Das 
 
 # <a name="event-grid-event-schema"></a>[Event Grid-Ereignisschema](#tab/event-grid-event-schema)
 
-Das folgende Beispiel zeigt das Schema eines API-Aktualisierungsereignisses: Die `data`-Eigenschaft enthält sowohl das `updatedProperies`-Array als auch den `resourceUri`.  Das Schema anderer Ereignisse zur Aktualisierung von API Management-Ressourcen ist ähnlich. 
+Das folgende Beispiel zeigt das Schema eines API-Aktualisierungsereignisses: Das Schema anderer Ereignisse zur Aktualisierung von API Management-Ressourcen ist ähnlich. 
 ```json
 [{
   "id": "95015754-aa51-4eb6-98d9-9ee322b82ad7",
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}",
   "subject": "/apis/myapi;Rev=1",
   "data": {
-    "updatedProperties": [
-      "path"
-    ],
     "resourceUri": "/subscriptions/subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
   },
   "eventType": "Microsoft.ApiManagement.APIUpdated",
@@ -137,7 +134,7 @@ Das folgende Beispiel zeigt das Schema eines API-Aktualisierungsereignisses: Die
 
 # <a name="cloud-event-schema"></a>[Cloudereignisschema](#tab/cloud-event-schema)
 
-Das folgende Beispiel zeigt das Schema eines API-Aktualisierungsereignisses: Die `data`-Eigenschaft enthält sowohl das `updatedProperies`-Array als auch den `resourceUri`.  Das Schema anderer Ereignisse zur Aktualisierung von API Management-Ressourcen ist ähnlich. 
+Das folgende Beispiel zeigt das Schema eines API-Aktualisierungsereignisses: Das Schema anderer Ereignisse zur Aktualisierung von API Management-Ressourcen ist ähnlich. 
 
 ```json
 [{
@@ -145,10 +142,7 @@ Das folgende Beispiel zeigt das Schema eines API-Aktualisierungsereignisses: Die
   "source": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}",
   "subject": "/apis/myapi;Rev=1",
   "data": {
-    "updatedProperties": [
-      "path"
-    ],
-    "resourceUri": "/subscriptions/subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
   },
   "Type": "Microsoft.ApiManagement.APIUpdated",
   "Time": "2021-07-12T23:13:44.9048323Z",
@@ -163,10 +157,10 @@ Das folgende Beispiel zeigt das Schema eines API-Aktualisierungsereignisses: Die
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| `subject` | Zeichenfolge | Die vollständig qualifizierte ID der Ressource, für die die Änderung des Konformitätsstatus gilt, einschließlich des Ressourcennamens und des Ressourcentyps. Verwendet das Format `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>`. |
+| `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | `eventType` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | `eventTime` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
 | `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
@@ -181,7 +175,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| `subject` | Zeichenfolge | Die vollständig qualifizierte ID der Ressource, für die die Änderung des Konformitätsstatus gilt, einschließlich des Ressourcennamens und des Ressourcentyps. Verwendet das Format `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>`. |
+| `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | `type` | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | `time` | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
 | `id` | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
@@ -192,10 +186,9 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
-| `resourceUri` | Zeichenfolge | Der URI der API Management-Ressource, die das Ereignis ausgelöst hat. |
-| `updatedProperties` | string[] | Liste der Eigenschaften, die in der API Management-Ressource aktualisiert wurden, die ein Aktualisierungsereignis ausgelöst hat. |
+| `resourceUri` | Zeichenfolge | Die vollständig qualifizierte ID der Ressource, für die die Änderung des Konformitätsstatus gilt, einschließlich des Ressourcennamens und des Ressourcentyps. Verwendet das Format, `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/Microsoft.ApiManagement/service/<ServiceName>/<ResourceType>/<ResourceName>` |
 
 ## <a name="tutorials-and-how-tos"></a>Tutorials und Vorgehensweisen
 

@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 08/02/2021
-ms.openlocfilehash: 2a838d2c1206cbc1a73e00d3ff41337400a08676
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8f4bb5279442abb10a9b19e5cb3e3666a1319bb2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339816"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621591"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Datenverschlüsselung mit Azure Machine Learning
 
@@ -36,6 +36,8 @@ Das Flag `hbi_workspace` steuert die Menge der [von Microsoft zu Diagnosezwecken
 * Startet die Verschlüsselung des lokalen Scratch-Datenträgers in Ihrem Azure Machine Learning-Computecluster, sofern Sie in diesem Abonnement keine vorherigen Cluster erstellt haben. Andernfalls müssen Sie ein Supportticket erstellen, um die Verschlüsselung des Scratch-Datenträgers Ihrer Computecluster zu aktivieren. 
 * Bereinigt Ihren lokalen Scratch-Datenträger zwischen den Ausführungen.
 * Führt unter Verwendung Ihres Schlüsseltresors die sichere Übergabe der Anmeldeinformationen für Speicherkonto, Containerregistrierung und SSH-Konto von der Ausführungsebene zu Ihren Computeclustern durch.
+
+Wenn dieses Flag auf True gesetzt ist, ist eine mögliche Auswirkung mehr Schwierigkeiten bei der Problembehandlung. Dies kann passieren, weil einige Telemetriedaten nicht an Microsoft gesendet werden und weniger Einblick in Erfolgsraten oder Problemtypen besteht und daher möglicherweise nicht so proaktiv reagieren kann, wenn dieses Flag auf True gesetzt ist.
 
 > [!TIP]
 > Das Flag `hbi_workspace` wirkt sich nicht auf die Verschlüsselung während der Übertragung aus, sondern nur auf die Verschlüsselung ruhender Daten.

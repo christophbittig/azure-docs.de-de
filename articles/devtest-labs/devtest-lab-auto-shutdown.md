@@ -1,14 +1,14 @@
 ---
-title: Verwalten von Richtlinien zum automatischen Herunterfahren in Azure DevTest Labs und Compute-VMs | Microsoft-Dokumentation
+title: Verwalten von Richtlinien zum automatischen Herunterfahren in Azure DevTest Labs und Compute-VMs
 description: Erfahren Sie, wie Sie eine Richtlinie zum automatischen Herunterfahren für ein Lab festlegen, sodass virtuelle Computer automatisch heruntergefahren werden, wenn sie nicht verwendet werden.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 946ee2a4d6f3503671664b0e46806fef7f71a459
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 75fa8f07c7e3d67ea029413d427046e20d45cdea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113301994"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648580"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Konfigurieren des automatischen Herunterfahrens für Lab- und Compute-VMs in Azure DevTest Labs
 

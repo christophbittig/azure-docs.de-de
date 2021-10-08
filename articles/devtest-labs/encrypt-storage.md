@@ -1,14 +1,14 @@
 ---
-title: Verschlüsseln eines von einem Lab verwendeten Azure-Speicherkontos in Azure DevTest Labs
+title: Verschlüsseln eines von einem Lab verwendeten Azure-Speicherkontos
 description: Erfahren Sie, wie Sie die Verschlüsselung eines von einem Lab verwendeten Azure-Speichers in Azure DevTest Labs konfigurieren.
 ms.topic: how-to
 ms.date: 07/29/2020
-ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 337cd45b20b9fe52bb487a3b36bde905541f840b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92149303"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552583"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>Verschlüsseln eines von einem Lab verwendeten Azure-Speichers in Azure DevTest Labs
 Jedes Lab, das in Azure DevTest Labs erstellt wird, wird mit einem zugeordneten Azure-Speicherkonto erstellt. Dieses Speicherkonto dient den folgenden Zwecken: 
@@ -65,7 +65,7 @@ Diese Dokumente werden verwendet, um die Option zum Erstellen von Formeln aus vo
 - Erstellen einer VM aus einer Formel
 
 ### <a name="artifact-results"></a>Artefaktergebnisse
-Bei der Anwendung von Artefakten kann die Größe der jeweiligen Artefaktergebnisse mit der Zeit zunehmen, je nach Anzahl und Art der Artefakte, die auf Lab-VMs ausgeführt werden. Daher möchten Sie als Lab-Besitzer ggf. den Lebenszyklus solcher Dokumente steuern. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](../storage/blobs/storage-lifecycle-management-concepts.md).
+Bei der Anwendung von Artefakten kann die Größe der jeweiligen Artefaktergebnisse mit der Zeit zunehmen, je nach Anzahl und Art der Artefakte, die auf Lab-VMs ausgeführt werden. Daher möchten Sie als Lab-Besitzer ggf. den Lebenszyklus solcher Dokumente steuern. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](../storage/blobs/lifecycle-management-overview.md).
 
 > [!IMPORTANT]
 > Es wird empfohlen, diesen Schritt durchzuführen, um die mit dem Azure Storage-Konto verbundenen Kosten zu reduzieren. 

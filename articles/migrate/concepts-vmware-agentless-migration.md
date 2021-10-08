@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 05/31/2021
-ms.openlocfilehash: ed0560d85d267de90ff23d8aa66c1f628c90e3c6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c19bff913f38503dbd99f86757ad6cda0ee5cb5a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967442"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658220"
 ---
 # <a name="azure-migrate-agentless-migration-of-vmware-virtual-machines"></a>Azure Migrate Migration ohne Agents von virtuellen VMware-Computern
 
@@ -60,7 +60,7 @@ Ein Zyklus wird als abgeschlossen bezeichnet, nachdem die Datenträger konsolidi
 | Service Bus | Zielregion | Azure Migrate-Projektabonnement | Wird für die Kommunikation zwischen Clouddienst und Azure Migrate Appliance verwendet |
 | Protokollspeicherkonto | Zielregion | Azure Migrate-Projektabonnement | Wird zum Speichern von Replikationsdaten verwendet, die vom Dienst gelesen und auf den verwalteten Datenträger des Kunden angewendet werden |
 | Gatewayspeicherkonto | Zielregion | Azure Migrate-Projektabonnement | Wird zum Speichern von Computerzuständen während der Replikation verwendet |
-| Schlüsseltresor | Zielregion | Azure Migrate-Projektabonnement | Verwaltet die Protokollspeicherkontoschlüssel und speichert die Dienstbus-Verbindungszeichenfolgen. |
+| Schlüsseltresor | Zielregion | Azure Migrate-Projektabonnement | Verwaltet Verbindungszeichenfolgen für Service Bus und Zugriffsschlüssel für das Protokollspeicherkonto |
 | Virtueller Azure-Computer | Zielregion | Zielabonnement | VM, die bei der Migration in Azure erstellt wurde |
 | Azure Managed Disks | Zielregion | Zielabonnement | Verwaltete Datenträger, die an Azure-VMs angefügt sind |
 | Netzwerkschnittstellenkarten | Zielregion | Zielabonnement | Die NICs, die an die in Azure erstellten VMs angefügt sind |
@@ -121,13 +121,12 @@ Das heißt, die nächste Deltareplikation wird nicht vor einer Stunde geplant. B
 > [!Note]
 > Die Planungslogik ist nach Abschluss der ersten Replikation anders. Der erste Deltazyklus wird unmittelbar nach Abschluss der ersten Replikation geplant, und die nachfolgenden Zyklen folgen der oben beschriebenen Planungslogik.
 
-
 - Wenn Sie die Migration auslösen, wird für den virtuellen Computer vor der Migration ein bedarfsbasierter Deltareplikationszyklus (Deltareplikationszyklus vor dem Failover) ausgeführt.
 
 **Priorisieren von VMs für verschiedene Phasen der Replikation**
 
 - Laufende VM-Replikationen werden gegenüber geplanten Replikationen (neue Replikationen) priorisiert.
-- Der Zyklus vor der Migration (bedarfsbasierte Deltareplikation) hat die höchste Priorität, gefolgt vom ersten Replikationszyklus. Der Deltareplikationszyklus hat die geringste Priorität.
+- Der Zyklus vor dem Failover (bedarfsbasierte Deltareplikation) hat die höchste Priorität, gefolgt vom ersten Replikationszyklus. Der Deltareplikationszyklus hat die geringste Priorität.
 
 Das heißt, wenn ein Migrationsvorgang ausgelöst wird, wird der bedarfsbasierte Replikationszyklus für den virtuellen Computer geplant und andere laufende Replikationen stehen wieder hintenan, wenn sie um Ressourcen konkurrieren.
 
@@ -146,7 +145,7 @@ Azure Migrate unterstützt die gleichzeitige Replikation von 500 virtuellen Comp
 ![Konfiguration für die horizontale Skalierung](./media/concepts-vmware-agentless-migration/scale-out-configuration.png)
 
 
-Nachdem Sie die primäre Appliance konfiguriert haben, können Sie die Appliance für die horizontale Skalierung jederzeit bereitstellen, bis 300 VMs gleichzeitig repliziert werden. Wenn 300 VMs gleichzeitig repliziert werden, müssen Sie die Appliance für die horizontale Skalierung bereitstellen, um fortzufahren.
+Nachdem Sie die primäre Appliance konfiguriert haben, können Sie die Appliance für die horizontale Skalierung jederzeit bereitstellen, aber dies ist nicht erforderlich, bis 300 VMs gleichzeitig repliziert werden. Wenn 300 VMs gleichzeitig repliziert werden, müssen Sie die Appliance für die horizontale Skalierung bereitstellen, um fortzufahren.
 
 ## <a name="stop-replication"></a>Beenden der Replikation
 
@@ -173,7 +172,7 @@ Sie können die Replikationsbandbreite mithilfe von _NetQosPolicy_ erhöhen oder
 
 Sie können eine Richtlinie auf der Azure Migrate-Appliance erstellen, um den Replikationsdatenverkehr von der Appliance zu drosseln, indem Sie eine Richtlinie wie die folgende erstellen:
 
-```New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1MB```
+`New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1MB`
 
 > [!NOTE]
 > Dies gilt für alle replizierenden VMs von der Azure Migrate Appliance gleichzeitig.
@@ -182,7 +181,7 @@ Sie können die Replikationsbandbreite auch nach einem Zeitplan erhöhen und ver
 
 ### <a name="blackout-window"></a>Blackout-Fenster
 
-Azure Migrate bietet einen konfigurationsbasierten Mechanismus, über den Kunden das Zeitintervall angeben können, in dem keine Replikationen fortgesetzt werden sollen. Dieses Zeitintervall wird als Blackout-Fenster bezeichnet. Ein Blackout-Fenster kann in mehreren Szenarien notwendig sein, z. B. wenn die Quellumgebung ressourcenbeschränkt ist, wenn Kunden möchten, dass die Replikation nur außerhalb der Geschäftszeiten erfolgt usw.
+Azure Migrate bietet einen konfigurationsbasierten Mechanismus, über den Kunden das Zeitintervall angeben können, in dem keine Replikationen fortgesetzt werden sollen. Dieses Zeitintervall wird als Blackout-Fenster bezeichnet. Ein Blackout-Fenster kann in mehreren Szenarien notwendig sein, z. B. wenn die Quellumgebung ressourcenbeschränkt ist oder wenn Kunden möchten, dass die Replikation nur außerhalb der Geschäftszeiten erfolgt usw.
 
 > [!NOTE]
 > Die vorhandenen Replikationszyklen am Anfang des Blackout-Fensters werden abgeschlossen, bevor die Replikation angehalten wird.

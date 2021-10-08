@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: mijos, rarayudu, azla
 ms.topic: conceptual
 ms.date: 01/20/2021
-ms.openlocfilehash: f3ea6476173e7be1a6239e97ef2e5fbb5257aead
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: db99be325d50f89e6e1c96c1471431815b98936d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356584"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824300"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -30,6 +30,8 @@ In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel 
   * Azure Government: Arizona, Virginia und Texas.
 
 * Sie können einen vom Kunden verwalteten Schlüssel *nur beim Erstellen der ISE* angeben, nicht später. Sie können diesen Schlüssel nach dem Erstellen Ihrer ISE nicht mehr deaktivieren. Zurzeit wird das Rotieren eines vom Kunden verwalteten Schlüssels für eine ISE nicht unterstützt.
+
+* Der Schlüsseltresor, in dem Ihr kundenseitig verwalteter Schlüssel gespeichert ist, muss sich in derselben Azure-Region befinden wie Ihre ISE.
 
 * Zur Unterstützung von kundenseitig verwalteten Schlüsseln muss die [systemseitig zugewiesene oder die benutzerseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) Ihrer ISE aktiviert sein. Mit dieser Identität kann Ihre ISE den auf geschützte Ressourcen wie virtuelle Computer und andere Systeme oder Dienste, die sich innerhalb eines virtuellen Azure-Netzwerks befinden oder damit verbunden sind, authentifizieren. Auf diese Weise müssen Sie sich nicht mit Ihren Anmeldeinformationen anmelden.
 

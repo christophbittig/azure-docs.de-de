@@ -9,21 +9,21 @@ ms.topic: how-to
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 08/12/2021
+ms.date: 09/14/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 2bcc1a9fdd930a8c9dd85604528a276f9de8d6e8
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 2207ac32595d3780bf662d9a4124b7cbf74ce6a7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113105"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633969"
 ---
 # <a name="configure-inbound-and-outbound-network-traffic"></a>Konfigurieren von ein- und ausgehendem Netzwerkdatenverkehr
 
 In diesem Artikel erfahren Sie mehr über die Netzwerkkommunikationsanforderungen beim Sichern eines Azure Machine Learning-Arbeitsbereichs in einem virtuellen Netzwerk (VNet). Dies umfasst, wie Sie Azure Firewall konfigurieren, um den Zugriff auf Ihren Azure Machine Learning-Arbeitsbereich und das öffentliche Internet zu steuern. Weitere Informationen zum Schützen von Azure Machine Learning finden Sie unter [Unternehmenssicherheit für Azure Machine Learning](concept-enterprise-security.md).
 
 > [!NOTE]
-> Die Informationen in diesem Artikel gelten für den Azure Machine Learning-Arbeitsbereich, unabhängig davon, ob er einen privaten Endpunkt oder einen Dienstendpunkt verwendet.
+> Die Informationen in diesem Artikel gelten für den Azure Machine Learning-Arbeitsbereich, der mit einem privaten Endpunkt konfiguriert ist.
 
 > [!TIP]
 > Dieser Artikel ist Teil einer Reihe zum Schützen eines Azure Machine Learning-Workflows. Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
@@ -69,11 +69,13 @@ Diese Regelsammlungen werden unter [Wie lauten einige der Azure Firewall-Konzep
     | AzureFrontDoor.FrontEnd</br>* In Azure China nicht erforderlich. | TCP | 443 | 
     | ContainerRegistry.region  | TCP | 443 |
     | MicrosoftContainerRegistry.region | TCP | 443 |
+    | Keyvault.region | TCP | 443 |
 
     > [!TIP]
     > * ContainerRegistry.region ist nur für benutzerdefinierte Docker-Images erforderlich. Dazu gehören geringfügige Änderungen (z. B. zusätzliche Pakete) an von Microsoft bereitgestellten Basisimages.
     > * MicrosoftContainerRegistry.region wird nur benötigt, wenn Sie planen, die von Microsoft bereitgestellten _Standard-Docker-Images_ zu verwenden und vom _Benutzer verwaltete Abhängigkeiten zu aktivieren_.
-    > * Ersetzen Sie bei Einträgen, die `region` enthalten, durch die verwendete Azure-Region. Beispielsweise `ContainerRegistry.westus`.
+    > * „Keyvault.region“ ist nur erforderlich, wenn Ihr Arbeitsbereich mit aktiviertem [hbi_workspace](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)-Flag erstellt wurde.
+    > * Ersetzen Sie bei Einträgen, die `region` enthalten, durch die verwendete Azure-Region. Beispiel: `ContainerRegistry.westus`.
 
 1. Fügen Sie __Anwendungsregeln__ für die folgenden Hosts hinzu:
 
@@ -91,6 +93,9 @@ Diese Regelsammlungen werden unter [Wie lauten einige der Azure Firewall-Konzep
     | **\*.tensorflow.org** | Wird von einigen Beispielen verwendet, die auf Tensorflow basieren. |
     | **update.code.visualstudio.com**</br></br>**\*.vo.msecnd.net** | Wird zum Abrufen von VS Code-Serverbits verwendet, die über ein Setupskript in der Compute-Instanz installiert werden.|
     | **raw.githubusercontent.com/microsoft/vscode-tools-for-ai/master/azureml_remote_websocket_server/\*** | Wird zum Abrufen von Websocket-Serverbits verwendet, die in der Compute-Instanz installiert werden. Der Websocket-Server wird verwendet, um Anforderungen des Visual Studio Code-Clients (Desktopanwendung) an den Visual Studio Code-Server zu übertragen, der in der Compute-Instanz ausgeführt wird.|
+    | **dc.applicationinsights.azure.com** | Wird zum Sammeln von Metriken und Diagnoseinformationen für die Zusammenarbeit mit dem Microsoft-Support verwendet. |
+    | **dc.applicationinsights.microsoft.com** | Wird zum Sammeln von Metriken und Diagnoseinformationen für die Zusammenarbeit mit dem Microsoft-Support verwendet. |
+    | **dc.services.visualstudio.com** | Wird zum Sammeln von Metriken und Diagnoseinformationen für die Zusammenarbeit mit dem Microsoft-Support verwendet. | 
     
 
     Wählen Sie __http, https__ für __Protokoll:Port__ aus.
@@ -106,19 +111,6 @@ Wenn Sie Azure Kubernetes Service mit Azure Machine Learning verwenden, muss der
 * Allgemeine Anforderungen für eingehenden/ausgehenden Datenverkehr für AKS, wie im Artikel [Einschränken des ausgehenden Datenverkehrs in Azure Kubernetes Service](../aks/limit-egress-traffic.md) beschrieben.
 * __Ausgehend__ an mcr.microsoft.com.
 * Wenn Sie ein Modell in einem AKS-Cluster bereitstellen, beziehen Sie sich auf den Leitfaden im Artikel [Bereitstellen von ML-Modellen in Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md#connectivity).
-
-### <a name="diagnostics-for-support"></a>Diagnosen für den Support
-
-Wenn Sie bei der Zusammenarbeit mit dem Microsoft-Support Diagnoseinformationen sammeln müssen, verwenden Sie die folgenden Schritte:
-
-1. Fügen Sie eine __Netzwerkregel__ hinzu, um den Datenverkehr zum und vom `AzureMonitor`-Tag zuzulassen.
-1. Fügen Sie __Anwendungsregeln__ für die folgenden Hosts hinzu. Wählen Sie __http, https__ für __Protokoll:Port__ für diese Hosts aus:
-
-    + **dc.applicationinsights.azure.com**
-    + **dc.applicationinsights.microsoft.com**
-    + **dc.services.visualstudio.com**
-
-    Eine Liste der IP-Adressen für die Azure Monitor-Hosts finden Sie unter [Von Azure Monitor verwendete IP-Adressen](../azure-monitor/app/ip-addresses.md).
 
 ## <a name="other-firewalls"></a>Andere Firewalls
 
@@ -167,11 +159,13 @@ Die Hosts in den folgenden Tabellen befinden sich im Besitz von Microsoft und st
 > [!IMPORTANT]
 > Ihre Firewall muss die Kommunikation mit \*.instances.azureml.ms über die __TCP__-Ports __18881, 443 und 8787__ zulassen.
 
+> [!TIP]
+> Der FQDN für Azure Key Vault ist nur erforderlich, wenn Ihr Arbeitsbereich mit aktiviertem [hbi_workspace](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)-Flag erstellt wurde.
+
 **Docker-Images, die von Azure Machine Learning verwaltet werden**
 
 | **Erforderlich für** | **Azure (öffentlich)** | **Azure Government** | **Azure China 21Vianet** |
 | ----- | ----- | ----- | ----- |
-| Azure Container Registry | azurecr.io | azurecr.us | azurecr.cn |
 | Microsoft Container Registry | mcr.microsoft.com | mcr.microsoft.com | mcr.microsoft.com |
 | Vordefinierte Azure Machine Learning-Images | viennaglobal.azurecr.io | viennaglobal.azurecr.io | viennaglobal.azurecr.io |
 
@@ -184,8 +178,15 @@ Verwenden Sie außerdem die Informationen im Abschnitt über die [Eingangskonfig
 
 Informationen zum Einschränken des Zugriffs auf Modelle, die in AKS bereitgestellt werden, finden Sie unter [Steuern des ausgehenden Datenverkehrs in Azure Kubernetes Service](../aks/limit-egress-traffic.md).
 
-> [!TIP]
-> Wenn Sie mit dem Microsoft-Support zusammenarbeiten, um Diagnoseinformationen zu sammeln, müssen Sie den ausgehenden Datenverkehr zu den IP-Adressen zulassen, die von Azure Monitor-Hosts verwendet werden. Eine Liste der IP-Adressen für die Azure Monitor-Hosts finden Sie unter [Von Azure Monitor verwendete IP-Adressen](../azure-monitor/app/ip-addresses.md).
+**Unterstützen der Diagnose**
+
+Damit der Microsoft-Support Probleme mit Ihrem Arbeitsbereich diagnostizieren kann, müssen Sie ausgehenden Datenverkehr an die folgenden Hosts zulassen:
+
+* **dc.applicationinsights.azure.com**
+* **dc.applicationinsights.microsoft.com**
+* **dc.services.visualstudio.com**
+
+Eine Liste der IP-Adressen für diese Hosts finden Sie unter [Von Azure Monitor verwendete IP-Adressen](../azure-monitor/app/ip-addresses.md).
 
 ### <a name="python-hosts"></a>Python-Hosts
 

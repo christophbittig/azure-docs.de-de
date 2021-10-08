@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 08/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: c01e83fbbf117c5491e9e12ac24aa0d5d2fa8b67
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 6e10ace3ca0932cf5803719429a68b89a4118dfa
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446851"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059319"
 ---
 # <a name="availability-zones-in-azure-monitor"></a>Verfügbarkeitszonen in Azure Monitor
 
-[Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md) schützen Ihre Anwendungen und Daten vor Rechenzentrumsausfällen und können Resilienz für Azure Monitor Features wie Application Insights und andere Features bieten, die auf einem Log Analytics-Arbeitsbereich basieren. Wenn ein Arbeitsbereich mit einer Verfügbarkeitszone verknüpft ist, bleibt er aktiv und betriebsbereit, auch wenn ein bestimmtes Rechenzentrum fehlerhaft oder vollständig ausgeschaltet ist, indem die Verfügbarkeit anderer Zonen in der Region genutzt wird. Sie müssen nichts unternehmen und müssen auch nicht über den Incident Bescheid wissen, um zu einer alternativen Zone zu wechseln. 
+[Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md) schützen Ihre Anwendungen und Daten vor Rechenzentrumsausfällen und können Resilienz für Azure Monitor-Features wie Application Insights und andere Features bieten, die einen Log Analytics-Arbeitsbereich erfordern. Wenn ein Arbeitsbereich mit einer Verfügbarkeitszone verknüpft ist, bleibt er aktiv und betriebsbereit, auch wenn ein bestimmtes Rechenzentrum fehlerhaft oder vollständig ausgeschaltet ist, indem die Verfügbarkeit anderer Zonen in der Region genutzt wird. Sie müssen nichts unternehmen und müssen auch nicht über den Incident Bescheid wissen, um zu einer alternativen Zone zu wechseln. 
 
 
 ## <a name="regions"></a>Regions
@@ -49,9 +49,9 @@ Der Übergang zu einem neuen Cluster kann ein schrittweiser Prozess sein. Entfer
 Abfragen für Ihren Arbeitsbereich fragen jeweils beide Cluster ab, um ein einzelnes, einheitliches Resultset bereitstellen zu können. Dies bedeutet, dass alle Azure Monitor Features, die auf dem Arbeitsbereich basieren (z. B. Arbeitsmappen und Dashboards), weiterhin das vollständige, einheitliche Resultset basierend auf Daten aus beiden Clustern enthalten.
 
 ## <a name="billing"></a>Abrechnung
-[Für die Verwendung eines dedizierten Clusters](logs-dedicated-clusters.md#create-a-dedicated-cluster) entstehen Kosten. Hierfür ist eine tägliche Kapazitätsreservierung von 1.000 GB erforderlich. Dies wird am 4. August 2021 auf 500 GB reduziert. 
+[Für die Verwendung eines dedizierten Clusters](logs-dedicated-clusters.md#create-a-dedicated-cluster) entstehen Kosten. Hierfür ist eine tägliche Kapazitätsreservierung von 500 GB erforderlich. 
 
-Wenn Sie bereits über einen dedizierten Cluster verfügen und diesen für den Zugriff auf seine Daten behalten möchten, werden Ihnen beide dedizierte Cluster in Rechnung gestellt. Ab dem 4. August 2021 wird die mindestens erforderliche Kapazitätsreservierung für dedizierte Cluster auf 500 GB/täglich reduziert. Daher wird empfohlen, diesen Mindestwert auf Ihren alten Cluster anzuwenden, um Gebühren zu senken.
+Wenn Sie bereits über einen dedizierten Cluster verfügen und diesen für den Zugriff auf seine Daten behalten möchten, werden Ihnen beide dedizierte Cluster in Rechnung gestellt. Seit 4. August 2021 ist die mindestens erforderliche Kapazitätsreservierung für dedizierte Cluster von 1000 GB auf 500 GB pro Tag reduziert. Daher empfiehlt es sich, diesen Mindestwert auf Ihren alten Cluster anzuwenden, um Gebühren zu senken.
 
 Der neue Cluster wird am ersten Tag nicht in Rechnung gestellt, um eine doppelte Abrechnung während der Konfiguration zu vermeiden. Nur die Daten, die vor Abschluss der Migration erfasst wurden, werden weiterhin am Migrationsdatum in Rechnung gestellt. 
 

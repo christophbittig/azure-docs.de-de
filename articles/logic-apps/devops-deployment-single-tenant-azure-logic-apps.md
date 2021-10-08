@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: bae25b29fb0244641f3f1db80d8f2679d2070777
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 09/13/2021
+ms.openlocfilehash: a94abb3b2c640dbd0bcd372e83844d660af514cd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369108"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548190"
 ---
 # <a name="devops-deployment-for-single-tenant-azure-logic-apps"></a>DevOps-Bereitstellung für Azure Logic Apps-Instanzen mit nur einem Mandanten
 
@@ -29,7 +29,7 @@ Wenn Sie Logik-Apps mithilfe des Ressourcentyps **Logik-App (Standard)** erstell
 
 Beispielsweise können Sie die neu gestaltete Containerruntime und die Workflows als Teil Ihrer Logik-App zusammen verpacken. Sie können mit allgemeinen Schritten oder Aufgaben Ihre Logik-App-Ressourcen erstellen, zusammenstellen und in bereitstellungsbereite Artefakte zippen. Kopieren Sie zum Bereitstellen Ihrer Apps die Artefakte in die Hostumgebung. Starten Sie anschließend die Apps, um Ihre Workflows auszuführen. Alternativ können Sie Ihre Artefakte mithilfe der Tools und Prozesse, die Sie bereits kennen und verwenden, in Bereitstellungspipelines integrieren. Wenn Ihr Szenario beispielsweise Container erfordert, können Sie Ihre Logik-Apps containerisieren und in Ihre vorhandenen Pipelines integrieren.
 
-Zum Einrichten und Bereitstellen Ihrer Infrastrukturressourcen, z. B. virtuelle Netzwerke und Konnektivität, können Sie weiterhin ARM-Vorlagen verwenden und diese Ressourcen zusammen mit anderen Prozessen und Pipelines, die Sie für diese Zwecke verwenden, separat bereitstellen. 
+Zum Einrichten und Bereitstellen Ihrer Infrastrukturressourcen, z. B. virtuelle Netzwerke und Konnektivität, können Sie weiterhin ARM-Vorlagen verwenden und diese Ressourcen zusammen mit anderen Prozessen und Pipelines, die Sie für diese Zwecke verwenden, separat bereitstellen.
 
 Mit Verwendung von Standardoptionen für Build und Bereitstellung können Sie sich getrennt von der Infrastrukturbereitstellung auf die App-Entwicklung konzentrieren. So erhalten Sie ein allgemeineres Projektmodell, in dem Sie viele ähnliche oder identische Bereitstellungsoptionen wie für eine generische App anwenden können. Außerdem profitieren Sie von einer konsistenteren Umgebung zum Erstellen von Bereitstellungspipelines für Ihre App-Projekte und zum Ausführen der erforderlichen Tests und Überprüfungen vor der Veröffentlichung in der Produktion. Welchen Technologiestapel Sie auch verwenden, Sie können Logik-Apps mit den Tools Ihrer Wahl bereitstellen.
 
@@ -43,7 +43,7 @@ Azure Logic Apps-Instanzen mit nur einem Mandanten erben viele Funktionen und Vo
 
 ### <a name="local-development-and-testing"></a>Lokale Entwicklung und Tests
 
-Wenn Sie Visual Studio Code mit der Erweiterung Azure Logic Apps (Standard) verwenden, können Sie auf einem einzelnen Mandanten basierende Logik-App-Workflows lokal in Ihrer Entwicklungsumgebung entwickeln, erstellen und ausführen, ohne eine Bereitstellung in Azure durchführen zu müssen. Sie können Ihre Workflows auch überall dort ausführen, wo Azure Functions ausgeführt werden kann. Erfordert Ihr Szenario z. B. Container, können Sie Logik-Apps containerisieren und als Container bereitstellen.
+Wenn Sie Visual Studio Code mit der Erweiterung Azure Logic Apps (Standard) verwenden, können Sie auf einem einzelnen Mandanten basierende Logik-App-Workflows lokal in Ihrer Entwicklungsumgebung entwickeln, erstellen und ausführen, ohne eine Bereitstellung in Azure durchführen zu müssen. Sie können Ihre Workflows überall dort ausführen, wo auch Azure Functions ausgeführt werden kann. Erfordert Ihr Szenario z. B. Container, können Sie Logik-Apps containerisieren und als Container bereitstellen.
 
 Verglichen mit dem mehrinstanzenfähigen Modell, bei dem Sie für eine vorhandene, in Azure ausgeführte Ressource entwickeln müssen, bietet diese Funktion eine erhebliche Verbesserung und einen entscheidenden Vorteil.
 
@@ -97,7 +97,7 @@ Wenn Sie in Visual Studio Code mit dem Designer Ihre Workflows entwickeln oder �
 
 ### <a name="service-provider-connections"></a>Dienstanbieterverbindungen
 
-Wenn Sie einen integrierten Vorgang für einen Dienst wie Azure Service Bus oder Azure Event Hubs in Azure Logic Apps-Instanzen mit nur einem Mandanten verwenden, erstellen Sie eine Dienstanbieterverbindung, die im selben Prozess wie Ihr Workflow ausgeführt wird. Diese Verbindungsinfrastruktur wird als Teil Ihrer Logik-App gehostet und verwaltet, und Ihre App-Einstellungen speichern die Verbindungszeichenfolgen für jeden integrierten Vorgang auf Dienstanbieterbasis, den Ihre Workflows verwenden.
+Wenn Sie einen integrierten Vorgang für einen Dienst wie Azure Service Bus oder Azure Event Hubs in Azure Logic Apps-Instanzen mit nur einem Mandanten verwenden, erstellen Sie eine Dienstanbieterverbindung, die im selben Prozess wie Ihr Workflow ausgeführt wird. Diese Verbindungsinfrastruktur wird als Teil Ihrer Logik-App-Ressource gehostet und verwaltet, und Ihre App-Einstellungen speichern die Verbindungszeichenfolgen für jeden integrierten Vorgang auf Dienstanbieterbasis, den Ihre Workflows verwenden.
 
 In Ihrem Logik-App-Projekt verfügt jeder Workflow über eine workflow.json-Datei, die die zugrunde liegende JSON-Definition des Workflows enthält. Diese Workflowdefinition verweist dann auf die erforderlichen Verbindungszeichenfolgen in der Datei „connections.json“ des Projekts.
 
@@ -114,7 +114,7 @@ Das folgende Beispiel zeigt, wie die Dienstanbieterverbindung für einen integri
       },
       "displayName": "{service-bus-connection-name}"
    },
-   ...
+   <...>
 }
 ```
 

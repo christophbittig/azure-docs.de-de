@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 08/11/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: bf52db4950fd14e15cbd52d94b2e4ffbb9d225bb
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: dc687c2f3d14c2da02fa3ce5b3a3357292977771
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314546"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648960"
 ---
 # <a name="preview-flexible-orchestration-for-virtual-machine-scale-sets-in-azure"></a>Vorschau: Flexible Orchestrierung für VM-Skalierungsgruppen in Azure
 
@@ -54,13 +54,11 @@ Bevor Sie VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ bereitste
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Verwenden Sie während der Preview des Orchestrierungsmodus „Flexibel“ für Skalierungsgruppen das *Preview*-Azure-Portal, das in den folgenden Schritten verlinkt ist. 
-
-1. Melden Sie sich unter https://preview.portal.azure.com beim Azure-Portal an.
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 1. Navigieren Sie zu Ihren **Abonnements**.
-1. Navigieren Sie zur Detailseite für das Abonnement, für das Sie eine Skalierungsgruppe im Orchestrierungsmodus „Flexibel“ erstellen möchten, indem Sie den Namen des Abonnements auswählen.
-1. Klicken Sie im Menü unter **Einstellungen** auf **Previewfunktionen**.
-1. Wählen Sie die folgenden vier zu aktivierenden Orchestratorfeatures aus: *VMOrchestratorSingleFD*, *VMOrchestratorMultiFD*, *VMScaleSetFlexPreview* und *SkipPublicIpWriteRBACCheckForVMNetworkInterfaceConfigurationsPublicPreview*.
+1. Navigieren Sie zur Detailseite für das Abonnement, für das Sie eine Skalierungsgruppe im Modus „Flexible Orchestrierung“ erstellen möchten, indem Sie den Namen des Abonnements auswählen.
+1. Wählen Sie im Menü unter **Einstellungen** die Option **Previewfunktionen** aus.
+1. Wählen Sie die folgenden vier zu aktivierenden Orchestrator-Funktionen aus: *VMOrchestratorSingleFD*, *VMOrchestratorMultiFD*, *VMScaleSetFlexPreview*, and *SkipPublicIpWriteRBACCheckForVMNetworkInterfaceConfigurationsPublicPreview*.
 1. Wählen Sie **Registrieren**.
 
 Nachdem Sie die Features für Ihr Abonnement registriert haben, schließen Sie den Opt-in-Prozess ab, indem Sie die Änderung an den Computeressourcenanbieter weitergeben. 
@@ -86,6 +84,12 @@ Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den 
 Get-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute
 ```
 
+Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
+
+```azurepowershell-interactive
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
+```
+
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 Verwenden Sie [az feature register](/cli/azure/feature#az_feature_register), um die Vorschauversion für Ihr Abonnement zu aktivieren.
 
@@ -102,6 +106,11 @@ Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den 
 az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD
 ```
 
+Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
+```
 
 ## <a name="get-started-with-flexible-orchestration-mode"></a>Erste Schritte mit dem Orchestrierungsmodus „Flexibel“
 
@@ -123,21 +132,26 @@ VM-Skalierungsgruppen mit der Orchestrierung „Flexibel“ fungieren als dünne
 
     Wenn Sie eine VM erstellen, können Sie optional festlegen, dass diese zu einer VM-Skalierungsgruppe hinzugefügt wird. Eine VM kann nur zum Zeitpunkt ihrer Erstellung zu einer Skalierungsgruppe hinzugefügt werden.
 
+Der flexible Orchestrierungsmodus kann mit VM-SKUs verwendet werden, die [speichererhaltende Updates oder Livemigration](../virtual-machines/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot) unterstützen. Dies umfasst 90 % aller iaaS-VMs, die in Azure bereitgestellt werden. Im Großen und Ganzen schließt dies universelle Größenfamilien ein, wie virtuelle Computer der B-, D-, E- und F-Serie. Derzeit kann der flexible Modus nicht über VM-SKUs oder Familien orchestrieren, die keine speichererhaltenden Updates unterstützen, einschließlich virtueller Computer der G-, H-, L-, M-, N-Serie. Sie können die [Computeressourcen-SKUs-API](/rest/api/compute/resource-skus/list) verwenden, um zu bestimmen, ob eine bestimmte VM-SKU unterstützt wird.
+
+```azurecli-interactive
+az vm list-skus -l eastus --size standard_d2s_v3 --query "[].capabilities[].[name, value]" -o table
+```
 
 ## <a name="explicit-network-outbound-connectivity-required"></a>Explizite ausgehende Netzwerkkonnektivität erforderlich 
 
 Um die Standardnetzwerksicherheit zu verbessern, erfordern VM-Skalierungsgruppen mit der Orchestrierung „Flexibel“, dass implizit über das Profil für die automatische Skalierung erstellte Instanzen über ausgehende Konnektivität verfügen, die explizit durch eine der folgenden Methoden definiert wird: 
 
 - Für die meisten Szenarios werden die unter [Tutorial: Erstellen eines NAT-Gateways mithilfe des Azure-Portals](../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md) beschrieben Schritte empfohlen.
-- Im Fall von Szenarios mit hohen Sicherheitsanforderungen oder bei Verwendung von Azure Firewall oder virtuellen Netzwerkappliances (Network Virtual Appliance, NVA) können Sie eine benutzerdefinierte Route als nächsten Hop durch die Firewall festlegen. 
+- Im Fall von Szenarien mit hohen Sicherheitsanforderungen oder bei Verwendung von Azure Firewall oder virtuellen Netzwerkappliances (Network Virtual Appliance, NVA) können Sie eine benutzerdefinierte Route als nächsten Hop durch die Firewall festlegen. 
 - Instanzen befinden sich im Back-End-Pool einer Azure Load Balancer-Instanz der Standard-SKU. 
 - Sie fügen eine öffentliche IP-Adresse an die Netzwerkschnittstelle der Instanz an. 
 
-Bei Einzelinstanz-VMs und VM-Skalierungsgruppen mit der Orchestrierung „Einheitlich“ wird die ausgehende Konnektivität automatisch bereitgestellt. 
+Bei Einzelinstanz-VMs und VM-Skalierungsgruppen mit der Orchestrierung „Einheitlich“ wird ausgehende Konnektivität automatisch bereitgestellt. 
 
-Dies sind häufige Szenarios, die eine explizite ausgehende Konnektivität erfordern: 
+Dies sind häufige Szenarios, die explizite ausgehende Konnektivität erfordern: 
 
-- Die Aktivierung einer Windows-VM erfordert, dass Sie die ausgehende Konnektivität zwischen der VM-Instanz mit dem Schlüsselverwaltungsdienst (Key Management Service, KMS) für die Windows-Aktivierung definiert haben. Weitere Informationen finden Sie unter [Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems).  
+- Die Aktivierung einer Windows-VM erfordert, dass Sie ausgehende Konnektivität zwischen der VM-Instanz mit dem Schlüsselverwaltungsdienst (Key Management Service, KMS) definiert haben. Weitere Informationen finden Sie unter [Behandlung von Problemen bei der VM-Aktivierung](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems).  
 - Zugriff auf Speicherkonten oder Key Vault. Die Verbindung mit Azure-Diensten kann auch über [Private Link](../private-link/private-link-overview.md) hergestellt werden. 
 
 Weitere Details zum Definieren von sicheren ausgehenden Verbindungen finden Sie unter [Ausgehender Standardzugriff in Azure](https://aka.ms/defaultoutboundaccess).

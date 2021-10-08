@@ -1,13 +1,9 @@
 ---
 title: Horizontale SAP HANA-Skalierung mit HSR und Pacemaker unter SLES | Microsoft-Dokumentation
 description: Horizontale SAP HANA-Skalierung mit HSR und Pacemaker unter SLES
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/26/2021
 ms.author: radeltch
-ms.openlocfilehash: 211fa45626a8ca4db8e555795adccc55bc6c0a3e
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: ab66bcdc834fd894d7d258ab9c7c08a0049b07ed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534460"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673139"
 ---
 # <a name="high-availability-for-sap-hana-scale-out-system-with-hsr-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit für horizontal skalierte SAP HANA-Systeme mit HSR unter SUSE Linux Enterprise Server 
 
@@ -30,7 +26,6 @@ ms.locfileid: "110534460"
 
 [anf-azure-doc]:../../../azure-netapp-files/index.yml
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all 
-[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -622,11 +617,11 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
      * Für **Enter Root User Name [root]** (Root-Benutzername [root] eingeben): Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
      * Für **Select roles for host 'hana-s1-db2' [1]** (Rollen für Host 'hana-s1-db2' [1] eingeben): 1 (für Worker)
      * Für **Enter Host Failover Group for host 'hana-s1-db2' [default]** (Hostfailovergruppe für Host 'hana-s1-db2' [Standard] eingeben): Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Für **Enter Storage Partition Number for host 'hana-s1-db2' [<<assign automatically>>]** (Speicherpartitionsnummer für Host 'hana-s1-db2' eingeben): Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Enter Storage Partition Number for host 'hana-s1-db2' [\<\<assign automatically\>\>]** (Speicherpartitionsnummer für Host 'hana-s1-db2' eingeben): Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
      * Für **Enter Worker Group for host 'hana-s1-db2' [default]** (Workergruppe für Host 'hana-s1-db2' [Standard] eingeben): Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
      * Für **Select roles for host 'hana-s1-db3' [1]** (Rollen für Host 'hana-s1-db3' [1] eingeben): 1 (für Worker)
      * Für **Enter Host Failover Group for host 'hana-s1-db3' [default]** (Hostfailovergruppe für Host 'hana-s1-db3' [Standard] eingeben): Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Für **Enter Storage Partition Number for host 'hana-s1-db3' [<<assign automatically>>]** (Speicherpartitionsnummer für Host 'hana-s1-db3' eingeben): Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Enter Storage Partition Number for host 'hana-s1-db3' [\<\<assign automatically\>\>]** (Speicherpartitionsnummer für Host 'hana-s1-db3' eingeben): Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
      * Für **Enter Worker Group for host 'hana-s1-db3' [default]** (Workergruppe für Host 'hana-s1-db3' [Standard] eingeben): Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
      * Für **System Administrator (hn1adm) Password** (Kennwort für den Systemadministrator (hn1adm)): Geben Sie das Kennwort ein.
      * Für **Enter SAP Host Agent User (sapadm) Password** (Kennwort für SAP-Host-Agent-Benutzer (sapadm) eingeben): Geben Sie das Kennwort ein.

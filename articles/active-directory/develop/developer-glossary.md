@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/24/2020
+ms.date: 09/27/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 930341b60f785c2c618be4ee235225519a08aaa6
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f1797ce848793e8f0d129039f00bb491c09e8308
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530066"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153917"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform – Glossar für Entwickler
 
@@ -34,7 +34,7 @@ Zugriffstoken werden abhängig von den vorgelegten Anmeldeinformationen gelegent
 * [Autorisierungsgewährung mit Autorisierungscode](#authorization-grant): In diesem Fall wird der Endbenutzer zunächst als Ressourcenbesitzer authentifiziert, und die Autorisierung für den Ressourcenzugriff wird an den Client delegiert. Der Client wird später beim Beziehen des Zugriffstokens authentifiziert. Das Token wird gelegentlich spezifischer als Benutzer- und App-Token bezeichnet, da es sowohl den Benutzer, der die Clientanwendung autorisiert hat, als auch die Anwendung darstellt.
 * [Autorisierungsgewährung mit Clientanmeldeinformationen](#authorization-grant): In diesem Fall stellt der Client die einzige Authentifizierung (ohne Authentifizierung/Autorisierung des Ressourcenbesitzers) bereit, weshalb das Token gelegentlich als App-exklusives Token bezeichnet wird.
 
-Weitere Details finden Sie unter [Microsoft Identity Platform – Tokenreferenz][AAD-Tokens-Claims].
+Weitere Informationen finden Sie in der [Zugriffstokenreferenz][AAD-Tokens-Claims].
 
 ## <a name="application-id-client-id"></a>Anwendungs-ID (Client-ID)
 
@@ -113,7 +113,7 @@ Weitere Informationen finden Sie unter [Consent Framework](consent-framework.md)
 
 Ein vom [Autorisierungsendpunkt](#authorization-endpoint) eines [Autorisierungsservers](#authorization-server) bereitgestelltes [OpenID Connect][OpenIDConnect-ID-Token]-[Sicherheitstoken](#security-token) mit [Ansprüchen](#claim) in Verbindung mit der Authentifizierung eines Endbenutzers vom Typ [Ressourcenbesitzer](#resource-owner). ID-Token werden genau wie Zugriffstoken als digital signiertes [JSON Web Token (JWT)][JWT] dargestellt. Im Gegensatz zu einem Zugriffstoken werden die Ansprüche eines ID-Tokens allerdings nicht im Zusammenhang mit dem Zugriff auf Ressourcen und speziell mit der Zugriffssteuerung verwendet.
 
-Weitere Details finden Sie unter [Microsoft Identity Platform – Tokenreferenz][AAD-Tokens-Claims].
+Weitere Informationen finden Sie in der [ID-Tokenreferenz](id-tokens.md).
 
 ## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
@@ -145,6 +145,8 @@ Berechtigungsanforderungen für eine Anwendung werden im [Azure-Portal][AZURE-po
 Eine Art von [Sicherheitstoken](#security-token). Wird von einem [Autorisierungsserver](#authorization-server) ausgestellt und von einer [Clientanwendung](#client-application) für die Anforderung eines neuen [Zugriffstokens](#access-token) verwendet, ehe das aktuelle Zugriffstoken abläuft. In der Regel in Form eines [JSON-Webtokens (JWT)][JWT].
 
 Im Gegensatz zu Zugriffstoken können Aktualisierungstoken widerrufen werden. Wenn eine Clientanwendung versucht, mithilfe eines widerrufenen Aktualisierungstokens ein neues Zugriffstoken anzufordern, lehnt der Autorisierungsserver die Anforderung ab, und die Clientanwendung hat keine Berechtigung mehr, im Auftrag des [Ressourcenbesitzer](#resource-owner) auf den [Ressourcenserver](#resource-server) zuzugreifen.
+
+Weitere Informationen finden Sie unter [Aktualisierungstoken](refresh-tokens.md).
 
 ## <a name="resource-owner"></a>Ressourcenbesitzers
 

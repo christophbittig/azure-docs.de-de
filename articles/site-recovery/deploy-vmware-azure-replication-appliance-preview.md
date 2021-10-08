@@ -3,13 +3,13 @@ title: Bereitstellen der Azure Site Recovery-Replikationsappliance – Vorschau
 description: In diesem Artikel werden die Unterstützung und die Anforderungen für das Bereitstellen der Replikationsappliance für die VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery beschrieben.
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/19/2021
-ms.openlocfilehash: e4021aa0f5572a51ca4d3ddda37f64f4da46a3b4
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 09/01/2021
+ms.openlocfilehash: 940cfb52985e956a283e8278c572569e4f350f55
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446878"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129084187"
 ---
 # <a name="deploy-azure-site-recovery-replication-appliance---preview"></a>Bereitstellen der Azure Site Recovery-Replikationsappliance – Vorschau
 
@@ -19,7 +19,10 @@ ms.locfileid: "122446878"
 >[!NOTE]
 > Stellen Sie sicher, dass Sie einen neuen Recovery Services-Tresor zum Einrichten der Vorschauappliance erstellen. Verwenden Sie keinen vorhandenen Tresor.
 
-Sie stellen eine lokale Replikationsappliance bereit, wenn Sie [Azure Site Recovery](site-recovery-overview.md) für die Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure verwenden.
+>[!NOTE]
+> Das Aktivieren der Replikation für physische Computer wird in dieser Vorschauversion nicht unterstützt. 
+
+Sie stellen eine lokale Replikationsappliance bereit, wenn Sie [Azure Site Recovery](site-recovery-overview.md) für die Notfallwiederherstellung von VMware-VMs in Azure verwenden.
 
 - Die Replikationsappliance koordiniert die Kommunikation zwischen der lokalen VMware-Umgebung und Azure. Darüber hinaus verwaltet er die Datenreplikation.
 - [Erfahren Sie mehr](vmware-azure-architecture-preview.md) über die Komponenten und Prozesse der Azure Site Recovery-Replikationsappliance.
@@ -47,7 +50,7 @@ FIPS (Federal Information Processing Standard) | FIPS-Modus nicht aktivieren|
 
 |**Komponente** | **Anforderung**|
 |--- | ---|
-|Art der IP-Adresse | statischen|
+|Vollqualifizierter Domänenname (FQDN) | statischen|
 |Ports | 443 (Steuerkanalorchestrierung)<br>9443 (Datentransport)|
 |NIC-Typ | VMXNET3 (wenn es sich bei der Appliance um eine VMware-VM handelt)|
 
@@ -67,13 +70,37 @@ Stellen Sie sicher, dass die folgenden URLs zulässig und von der Azure Site Rec
   |aka.ms |Lassen Sie den Zugriff (auch als Links bezeichnet) zu. Wird für Azure Site Recovery-Applianceupdates verwendet. |
   |download.microsoft.com/download |Zulassen von Downloads von Microsoft Download Center |
   |`*.servicebus.windows.net `|Kommunikation zwischen der Appliance und dem Azure Site Recovery-Dienst. |
-  |`*.discoverysrv.windowsazure.com `|Stellen Sie eine Verbindung mit der Azure Site Recovery-Ermittlungsdienst-URL her. |
-  |`*.hypervrecoverymanager.windowsazure.com `|Herstellen einer Verbindung mit Azure Site Recovery-Microservices-URLs  |
-  |`*.blob.core.windows.net `|Hochladen von Daten in Azure-Speicher, der zum Erstellen von Zieldatenträgern verwendet wird |
-  |`*.backup.windowsazure.com `|Schutzdienst-URL: Ein Microservice, der von Azure Site Recovery zum Verarbeiten und Erstellen replizierter Datenträger in Azure verwendet wird |
+  |`*.discoverysrv.windowsazure.com `<br><br>`*.hypervrecoverymanager.windowsazure.com `<br><br> `*.backup.windowsazure.com ` |Stellt eine Verbindung mit Azure Site Recovery-Microservices-URLs her.
+  |`*.blob.core.windows.net `|Lädt Daten in Azure-Speicher hoch, der zum Erstellen von Zieldatenträgern verwendet wird. |
+
 
 > [!NOTE]
 > Private Links werden in der Vorschauversion nicht unterstützt.
+
+## <a name="folder-exclusions-from-antivirus-program"></a>Ordnerausschlüsse aus dem Antivirenprogramm
+
+### <a name="if-antivirus-software-is-active-on-appliance"></a>Bei aktiver Antivirensoftware auf der Appliance
+
+Schließen Sie für eine reibungslose Replikation und zur Vermeidung von Konnektivitätsproblemen die folgenden Ordner von der Antivirensoftware aus:
+
+C:\ProgramData\Microsoft Azure <br>
+C:\ProgramData\ASRLogs <br>
+C:\Windows\Temp\MicrosoftAzure C:\Programme\Microsoft Azure Appliance Auto Update <br>
+C:\Programme\Microsoft Azure Appliance Configuration Manager <br>
+C:\Programme\Microsoft Azure Push Install Agent <br>
+C:\Programme\Microsoft Azure RCM Proxy Agent <br>
+C:\Programme\Microsoft Azure Recovery Services Agent <br>
+C:\Programme\Microsoft Azure Server Discovery Service <br>
+C:\Programme\Microsoft Azure Site Recovery Process Server <br>
+C:\Programme\Microsoft Azure Site Recovery Provider <br>
+C:\Programme\Microsoft Azure to On-Premise Reprotect agent <br>
+C:\Programme\Microsoft Azure VMware Discovery Service <br>
+C:\Programme\Microsoft On-Premise to Azure Replication agent <br>
+E:\ <br>
+
+### <a name="if-antivirus-software-is-active-on-source-machine"></a>Aktive Antivirensoftware auf dem Quellcomputer
+
+Ist auf dem Quellcomputer Antivirensoftware aktiviert, muss der Installationsordner ausgeschlossen werden. Schließen Sie daher für die reibungslose Replikation den Ordner C:\ProgramData\ASR\agent aus.
 
 ## <a name="prepare-azure-account"></a>Vorbereiten des Azure-Kontos
 
@@ -148,6 +175,9 @@ Die OVF-Vorlage erstellt einen Computer mit den erforderlichen Spezifikationen.
 4. Wählen Sie **Abschließen** aus. Das System wird neu gestartet, und Sie können sich mit dem Administratorbenutzerkonto anmelden.
 
 ### <a name="set-up-the-appliance-through-powershell"></a>Einrichten der Appliance über PowerShell
+
+>[!NOTE]
+> Das Aktivieren der Replikation für physische Computer wird in dieser Vorschauversion nicht unterstützt. 
 
 Im Falle von Organisationseinschränkungen können Sie die Site Recovery-Replikationsappliance manuell über PowerShell einrichten. Führen Sie die folgenden Schritte aus:
 
@@ -240,6 +270,9 @@ Im Falle von Organisationseinschränkungen können Sie die Site Recovery-Replika
 
     Stellen Sie sicher, dass Sie den Browser nicht schließen, während die Konfiguration ausgeführt wird.
 
+    >[!NOTE]
+    > Das Klonen von Appliances wird in dieser Vorschauversion nicht unterstützt. Wenn Sie versuchen, eine Appliance zu klonen, kann dies den Wiederherstellungsfluss unterbrechen.
+
 
 ## <a name="view-azure-site-recovery-replication-appliance-in-azure-portal"></a>Anzeigen der Azure Site Recovery-Replikationsappliance im Azure-Portal
 
@@ -267,4 +300,4 @@ Eine Appliance, die einen integrierten Prozessserver zum Schutz der Workload ver
 Ausführliche Informationen zur Verwendung mehrerer Appliances und zum Failover einer Replikationsappliance finden Sie in [diesem Artikel](switch-replication-appliance-preview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](vmware-azure-tutorial.md)
+[Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](vmware-azure-set-up-replication-tutorial-preview.md)

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/26/2021
+ms.date: 09/20/2021
 ms.author: tisande
-ms.openlocfilehash: 29a97d3f68d9b097bfe5c67f0b5832271fa983e1
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 39b385096fadb5d410520889c0aa8f1a07f1a67a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123031116"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616553"
 ---
 # <a name="azure-cosmos-db-integrated-cache---overview-preview"></a>Übersicht: Integrierter Azure Cosmos DB-Cache (Vorschauversion)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -88,13 +88,17 @@ Abfragefortsetzungstoken werden ggf. automatisch im Abfragecache zwischengespeic
 
 ## <a name="integrated-cache-consistency"></a>Konsistenz des integrierten Caches
 
-Der integrierte Cache unterstützt nur die letztliche [Konsistenz](consistency-levels.md). Wenn ein Lesevorgang über einen konsistenten Präfix, eine Sitzung, begrenzte Veraltung oder starke Konsistenz verfügt, umgeht dieser immer den integrierten Cache.
+Der integrierte Cache unterstützt nur die sitzungsbasierte und die letztliche [Konsistenz](consistency-levels.md). Wenn ein Lesevorgang über ein konsistentes Präfix, begrenzte Veraltung oder starke Konsistenz verfügt, umgeht der Vorgang den integrierten Cache immer.
 
-Die einfachste Vorgehensweise zum Konfigurieren der letztlichen Konsistenz für alle Lesevorgänge besteht darin, [diese auf Kontoebene festzulegen](consistency-levels.md#configure-the-default-consistency-level). Wenn Sie die letztliche Konsistenz jedoch nur für einige Ihrer Lesevorgänge festlegen möchten, können Sie die Konsistenz auch auf [Anforderungsebene](how-to-manage-consistency.md#override-the-default-consistency-level) konfigurieren.
+Die einfachste Vorgehensweise zum Konfigurieren der Sitzungskonsistenz oder letztlichen Konsistenz für alle Lesevorgänge besteht darin, [diese auf Kontoebene festzulegen](consistency-levels.md#configure-the-default-consistency-level). Wenn Sie die letztliche Konsistenz jedoch nur für einige Ihrer Lesevorgänge festlegen möchten, können Sie die Konsistenz auch auf [Anforderungsebene](how-to-manage-consistency.md#override-the-default-consistency-level) konfigurieren.
+
+### <a name="session-consistency"></a>Sitzungskonsistenz
+
+Die [Sitzungskonsistenz](consistency-levels.md#session-consistency) ist die gängigste Konsistenzebene für Konten in einer einzelnen Region sowie für weltweit verteilte Azure Cosmos DB-Konten. Bei Verwendung der Sitzungskonsistenz können einzelne Clientsitzungen ihre eigenen Schreibvorgänge lesen. Bei Verwendung des integrierten Caches gilt für Clients, die außerhalb der Sitzung Schreibvorgänge ausführen, die letztliche Konsistenz.
 
 ## <a name="maxintegratedcachestaleness"></a>MaxIntegratedCacheStaleness
 
-`MaxIntegratedCacheStaleness` ist die maximal zulässige Veraltung für zwischengespeichertes Lesen und Abfragen von Punkten. `MaxIntegratedCacheStaleness` ist auf Anforderungsebene konfigurierbar. Wenn Sie beispielsweise für `MaxIntegratedCacheStaleness` einen Wert von 2 Stunden festlegen, gibt Ihre Anforderung nur dann zwischengespeicherte Daten zurück, wenn die Daten weniger als 2 Stunden alt sind. Um die Wahrscheinlichkeit von wiederholten Lesezugriffen mithilfe des integrierten Caches zu erhöhen, sollten Sie für `MaxIntegratedCacheStaleness` den maximalen Wert festlegen, den Ihre Geschäftsanforderungen zulassen.
+Der Wert für `MaxIntegratedCacheStaleness` ist die maximal zulässige Veraltung für zwischengespeicherte Punktlesevorgänge und Abfragen, unabhängig von der ausgewählten Konsistenz. `MaxIntegratedCacheStaleness` ist auf Anforderungsebene konfigurierbar. Wenn Sie beispielsweise für `MaxIntegratedCacheStaleness` einen Wert von 2 Stunden festlegen, gibt Ihre Anforderung nur dann zwischengespeicherte Daten zurück, wenn die Daten weniger als 2 Stunden alt sind. Um die Wahrscheinlichkeit von wiederholten Lesezugriffen mithilfe des integrierten Caches zu erhöhen, sollten Sie für `MaxIntegratedCacheStaleness` den maximalen Wert festlegen, den Ihre Geschäftsanforderungen zulassen.
 
 Es ist wichtig zu verstehen, dass `MaxIntegratedCacheStaleness` beim Konfigurieren für eine Anforderung, die den Cache auffüllt, sich nicht auf die Dauer der Zwischenspeicherung dieser Anforderung auswirkt. `MaxIntegratedCacheStaleness` erzwingt Konsistenz, wenn Sie versuchen, zwischengespeicherte Daten zu verwenden. Es gibt keine globale Einstellung für TTL oder Cachedatenaufbewahrung, sodass Daten nur dann aus dem Cache entfernt werden, wenn entweder der integrierte Cache voll ist oder ein neuer Lesezugriff mit einem `MaxIntegratedCacheStaleness` ausgeführt wird, der niedriger als das Alter des aktuellen zwischengespeicherten Eintrags ist.
 
@@ -154,7 +158,7 @@ In den folgenden Beispielen wird das Debuggen einiger gängiger Szenarios verans
 
 ### <a name="i-cant-tell-if-my-requests-are-hitting-the-integrated-cache"></a>Wie erkenne ich, ob meine Anforderungen den integrierten Cache betreffen?
 
-Überprüfen Sie `IntegratedCacheItemHitRate` und `IntegratedCacheQueryHitRate`. Wenn beide Werte 0 (null) sind, treffen Anforderungen nicht den integrierten Cache. Überprüfen Sie, ob Sie die Verbindungszeichenfolge des dedizierten Gateways verwenden, indem Sie eine [Verbindung mit dem Gatewaymodus herstellen](sql-sdk-connection-modes.md) und die [letztliche Konsistenz festgelegt haben](consistency-levels.md#configure-the-default-consistency-level).
+Überprüfen Sie `IntegratedCacheItemHitRate` und `IntegratedCacheQueryHitRate`. Wenn beide Werte 0 (null) sind, treffen Anforderungen nicht den integrierten Cache. Stellen Sie sicher, dass Sie die Verbindungszeichenfolge des dedizierten Gateways verwenden, [die Verbindung im Gatewaymodus hergestellt haben](sql-sdk-connection-modes.md) und [Sitzungskonsistenz oder letztliche Konsistenz festgelegt haben](consistency-levels.md#configure-the-default-consistency-level).
 
 ### <a name="i-want-to-understand-if-my-dedicated-gateway-is-too-small"></a>Woran erkenne ich, ob mein dediziertes Gateway zu klein ist?
 

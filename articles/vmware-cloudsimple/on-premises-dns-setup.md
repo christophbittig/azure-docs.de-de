@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1f7537790c22bf09da89cd02ba213b1573f19d9c
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: a14d99a81aaad48c8daf0c0bf0d49b3a7e229f3d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177420"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600283"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurieren von DNS für die Namensauflösung für den vCenter-Zugriff in der privaten Cloud über lokale Arbeitsstationen
 
@@ -43,10 +43,10 @@ Sie können eine Zone als Stubzone einrichten und auf die DNS-Server in der priv
 
 Welche Datei und welche Parameter konfiguriert werden müssen, hängt vom jeweiligen DNS-Setup ab.
 
-Bearbeiten Sie z. B für die BIND-Standardserverkonfiguration die Datei „/etc/named.conf“ auf Ihrem DNS-Server, und fügen Sie die folgenden Zoneninformationen hinzu.
+Bearbeiten Sie z. B für die BIND-Standardserverkonfiguration die Datei `/etc/named.conf` auf Ihrem DNS-Server, und fügen Sie die folgenden Zoneninformationen hinzu.
 
 > [!NOTE]
->Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
+>Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
 
 ```
 zone "az.cloudsimple.io"

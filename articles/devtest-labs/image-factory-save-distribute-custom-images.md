@@ -1,14 +1,14 @@
 ---
-title: Speichern und Verteilen von Images in Azure DevTest Labs | Microsoft-Dokumentation
+title: Speichern und Verteilen von Images
 description: In diesem Artikel werden die Schritte erläutert, mit denen Sie benutzerdefinierte Images bereits erstellter virtueller Computer (VMs) in Azure DevTest Labs speichern können.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d89a792e66d227eaeb20e48c80d432aa0cf56871
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85476239"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623568"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Speichern von benutzerdefinierten Images und Verteilen an mehrere Labs
 In diesem Artikel werden die Schritte erläutert, mit denen Sie benutzerdefinierte Images bereits erstellter virtueller Computer (VMs) speichern können. Ferner wird erläutert, wie diese benutzerdefinierten Images an andere DevTest Labs in der Organisation verteilt werden können.

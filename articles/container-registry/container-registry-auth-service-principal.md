@@ -3,12 +3,12 @@ title: Authentifizieren mit dem Dienstprinzipal
 description: Gewähren Sie Zugriff auf Images in Ihrer privaten Containerregistrierung, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden.
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: 7d64f63de3227394d1f69b2049f0a58dda35e6e6
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 117929df4c8b0fa7a54a23bcc039294122cd5afa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440716"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651881"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry-Authentifizierung mit Dienstprinzipalen
 
@@ -16,7 +16,7 @@ Sie können einen Dienstprinzipal von Azure Active Directory (Azure AD) verwende
 
 ## <a name="what-is-a-service-principal"></a>Was ist ein Dienstprinzipal?
 
-*Dienstprinzipale* von Azure AD ermöglichen den Zugriff auf Azure-Ressourcen innerhalb Ihres Abonnements. Sie können sich einen Dienstprinzipal als Benutzeridentität für einen Dienst vorstellen, wobei „Dienst“ jede Anwendung, jeder Dienst oder jede Plattform sein kann, die auf die Ressourcen zugreifen muss. Sie haben die Möglichkeit, einen Dienstprinzipal mit Zugriffsrechten so zu konfigurieren, dass diese nur für die von Ihnen angegebenen Ressourcen gelten. Anschließend legen Sie für Ihre Anwendung bzw. Ihren Dienst fest, dass diese bzw. dieser die Anmeldeinformationen des Dienstprinzipals verwendet, um auf diese Ressourcen zuzugreifen.
+[*Dienstprinzipale*](../active-directory/develop/app-objects-and-service-principals.md) von Azure AD ermöglichen den Zugriff auf Azure-Ressourcen innerhalb Ihres Abonnements. Sie können sich einen Dienstprinzipal als Benutzeridentität für einen Dienst vorstellen, wobei „Dienst“ jede Anwendung, jeder Dienst oder jede Plattform sein kann, die auf die Ressourcen zugreifen muss. Sie haben die Möglichkeit, einen Dienstprinzipal mit Zugriffsrechten so zu konfigurieren, dass diese nur für die von Ihnen angegebenen Ressourcen gelten. Anschließend legen Sie für Ihre Anwendung bzw. Ihren Dienst fest, dass diese bzw. dieser die Anmeldeinformationen des Dienstprinzipals verwendet, um auf diese Ressourcen zuzugreifen.
 
 Im Rahmen der Azure Container Registry können Sie einen Azure AD-Dienstprinzipal mit Pull-, Push- und Pull- oder anderen Berechtigungen für Ihre private Registrierung in Azure erstellen. Eine vollständige Liste finden Sie unter [Azure Container Registry – Rollen und Berechtigungen](container-registry-roles.md).
 
@@ -51,13 +51,13 @@ Die obigen Beispielskripts für die Azure CLI auf GitHub sowie Versionen für Az
 
 Sobald Sie einem Dienstprinzipal Zugriff auf Ihre Containerregistrierung gewährt haben, können Sie seine Anmeldeinformationen für den Zugriff auf „monitorlose“ Dienste und Anwendungen konfigurieren oder sie mit dem Befehl `docker login` eingeben. Verwenden Sie die folgenden Werte:
 
-* **User Name (Benutzername)** : Anwendungs-ID des Dienstprinzipals (auch als *Client-ID* bezeichnet)
-* **Password (Kennwort)** : Kennwort des Dienstprinzipals (auch als *geheimer Clientschlüssel* bezeichnet)
+* **Benutzername**: **Anwendungs-ID (Client)** des Dienstprinzipals
+* **Kennwort**: **Kennwort (geheimer Clientschlüssel)** des Dienstprinzipals
 
 Jeder Wert hat das Format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. 
 
 > [!TIP]
-> Sie können das Kennwort eines Dienstprinzipals neu generieren, indem Sie den Befehl [az ad sp reset-credentials](/cli/azure/ad/sp/credential#az_ad_sp_credential_reset) ausführen.
+> Sie können das Kennwort (geheimer Clientschlüssel) eines Dienstprinzipals neu generieren, indem Sie den Befehl [az ad sp credential reset](/cli/azure/ad/sp/credential#az_ad_sp_credential_reset) ausführen.
 >
 
 ### <a name="use-credentials-with-azure-services"></a>Verwenden von Anmeldeinformationen mit Azure-Diensten

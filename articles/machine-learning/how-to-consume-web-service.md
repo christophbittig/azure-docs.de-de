@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.custom: devx-track-python,devx-track-csharp
-ms.openlocfilehash: 1d037931125dd60fc285588f31228a748008d25c
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 7c95844bf9a639a89fdd39b702c7d6327a9f6fe8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112114903"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740728"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 

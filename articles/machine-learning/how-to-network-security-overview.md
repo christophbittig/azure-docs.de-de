@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 06/11/2021
+ms.date: 09/24/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: f68550d6e72f0c2bd162c10d1d5340edcca61f6f
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 1844d9a84714231aac7cb399239c31a6af62661c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039023"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093514"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>Schützen von Azure Machine Learning-Arbeitsbereichsressourcen mit virtuellen Netzwerken (VNets)
@@ -50,13 +50,13 @@ In der folgenden Tabelle sehen Sie in einer Gegenüberstellung, wie Dienste mit 
 | Szenario | Arbeitsbereich | Zugeordnete Ressourcen | Trainingscompute-Umgebung | Rückschlusscompute-Umgebung |
 |-|-|-|-|-|-|
 |**Kein virtuelles Netzwerk**| Öffentliche IP-Adresse | Öffentliche IP-Adresse | Öffentliche IP-Adresse | Öffentliche IP-Adresse |
-|**Sichere Ressourcen in einem virtuellen Netzwerk**| Private IP-Adresse (privater Endpunkt) | Öffentliche IP-Adresse (Dienstendpunkt) <br> **oder** <br> Private IP-Adresse (privater Endpunkt) | Private IP-Adresse | Private IP-Adresse  | 
+|**Sichere Ressourcen in einem virtuellen Netzwerk**| Private IP-Adresse (privater Endpunkt) | Öffentliche IP-Adresse (Dienstendpunkt) <br> **oder** <br> Private IP-Adresse (privater Endpunkt) | Öffentliche IP-Adresse | Private IP-Adresse  | 
 
 * **Arbeitsbereich**: Erstellen Sie einen privaten Endpunkt für Ihren Arbeitsbereich. Der private Endpunkt verbindet den Arbeitsbereich über mehrere private IP-Adressen mit dem VNET.
-* **Zugehörige Ressourcen:** Stellen Sie mithilfe von Dienstendpunkten oder privaten Endpunkten eine Verbindung mit Arbeitsbereichsressourcen wie Azure Storage, Azure Key Vault oder Azure Container Services her.
+* **Zugeordnete Ressource**: Stellen Sie mithilfe von Dienstendpunkten oder privaten Endpunkten eine Verbindung mit Arbeitsbereichsressourcen wie Azure Storage oder Azure Key Vault her. Verwenden Sie für Azure Container Services einen privaten Endpunkt.
     * **Dienstendpunkte** geben die Identität Ihres virtuellen Netzwerks gegenüber dem Azure-Dienst an. Nachdem Sie Dienstendpunkte in Ihrem virtuellen Netzwerk aktiviert haben, können Sie eine virtuelle Netzwerkregel hinzufügen, um die Azure-Dienstressourcen in Ihrem virtuellen Netzwerk zu schützen. Dienstendpunkte nutzen öffentliche IP-Adressen.
     * **Private Endpunkte** sind Netzwerkschnittstellen, die das Herstellen einer sicheren Verbindung mit einem Dienst gestatten, der über Private Link betrieben wird. Ein privater Endpunkt verwendet eine private IP-Adresse in Ihrem VNET und bindet den Dienst so effektiv in das VNET ein.
-* **Trainingscomputezugriff:** Hiermit greifen Sie sicher auf Computeziele zu, die zu Trainingszwecken verwendet werden, wie beispielsweise Azure Machine Learning-Compute-Instanz oder Azure Machine Learning-Computecluster. 
+* **Trainingscomputezugriff**: Hiermit greifen Sie über öffentliche IP-Adressen sicher auf Computeziele zu, die zu Trainingszwecken verwendet werden, wie beispielsweise eine Azure Machine Learning Compute-Instanz oder einen Azure Machine Learning Compute-Cluster. 
 * **Rückschlusscomputezugriff:** Hiermit greifen Sie mit privaten IP-Adressen auf AKS-Computecluster (Azure Kubernetes Services) zu.
 
 
@@ -74,12 +74,12 @@ Führen Sie die folgenden Schritte aus, um Ihren Arbeitsbereich und zugehörige 
 
 1. Erstellen Sie einen [Arbeitsbereich mit Private Link-Unterstützung](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint), um die Kommunikation zwischen Ihrem VNET und dem Arbeitsbereich zu ermöglichen.
 1. Fügen Sie dem virtuellen Netzwerk die folgenden Dienste hinzu. Verwenden Sie dazu _entweder_ einen __Dienstendpunkt__ oder einen __privaten Endpunkt__. Gewähren Sie außerdem vertrauenswürdigen Microsoft-Diensten Zugriff auf diese Dienste:
-    
+
     | Dienst | Endpunktinformationen | Zulassen vertrauenswürdiger Informationen |
     | ----- | ----- | ----- |
     | __Azure Key Vault__| [Dienstendpunkt](../key-vault/general/overview-vnet-service-endpoints.md)</br>[Privater Endpunkt](../key-vault/general/private-link-service.md) | [Erlauben der Umgehung dieser Firewall für vertrauenswürdige Microsoft-Dienste](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
-    | __Azure Storage-Konto__ | [Dienstendpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)</br>[Privater Endpunkt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints) | [Gewähren von Zugriff für vertrauenswürdige Azure-Dienste](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
-    | __Azure Container Registry__ | [Dienstendpunkt](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)</br>[Privater Endpunkt](../container-registry/container-registry-private-link.md) | [Zulassen vertrauenswürdiger Dienste](../container-registry/allow-access-trusted-services.md) |
+    | __Azure Storage-Konto__ | [Dienst und privater Endpunkt](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[Privater Endpunkt](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [Gewähren von Zugriff für vertrauenswürdige Azure-Dienste](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
+    | __Azure Container Registry__ | [Privater Endpunkt](../container-registry/container-registry-private-link.md) | [Zulassen vertrauenswürdiger Dienste](../container-registry/allow-access-trusted-services.md) |
 
 
 ![Architekturdiagramm, das darstellt, wie der Arbeitsbereich und die zugehörigen Ressourcen über Dienstendpunkte oder private Endpunkte in einem VNET miteinander kommunizieren](./media/how-to-network-security-overview/secure-workspace-resources.png)
@@ -98,7 +98,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die Trainingsumgebung in Azure Machine
 
 Führen Sie die folgenden Schritte aus, um die Trainingsumgebung zu schützen:
 
-1. [Erstellen Sie im virtuellen Netzwerk eine Azure Machine Learning-Compute-Instanz und einen Azure Machine Learning-Computercluster](how-to-secure-training-vnet.md#compute-instance), um den Trainingsauftrag auszuführen.
+1. [Erstellen Sie im virtuellen Netzwerk eine Azure Machine Learning-Compute-Instanz und einen Azure Machine Learning-Computercluster](how-to-secure-training-vnet.md#compute-cluster), um den Trainingsauftrag auszuführen.
 1. [Lassen Sie eingehende Kommunikation zu](how-to-secure-training-vnet.md#required-public-internet-access), damit Verwaltungsdienste Aufträge an Ihre Computeressourcen übermitteln können. 
 
 ![Architekturdiagramm, das die Absicherung verwalteter Computecluster und -instanzen zeigt](./media/how-to-network-security-overview/secure-training-environment.png)

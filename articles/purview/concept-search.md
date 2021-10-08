@@ -1,18 +1,18 @@
 ---
-title: Grundlegendes zu Suchfunktionen in Azure Purview (Vorschau)
+title: Grundlegendes zu Suchfunktionen in Azure Purview
 description: In diesem Artikel wird erläutert, wie Azure Purview die Datenermittlung durch Suchfunktionen ermöglicht.
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: af8ec9e0aac38240c7da92edd614892ff65712e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: 6bc9029a4b75206b5de99622729415b1aa36d4a2
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96550415"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207524"
 ---
 # <a name="understand-search-features-in-azure-purview"></a>Grundlegendes zu Suchfunktionen in Azure Purview
 
@@ -60,4 +60,4 @@ Relevanz ist die Standardsortierreihenfolge auf der Suchergebnisseite. Die Suchr
 
 * [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md)
 * [Schnellstart: Erstellen eines Azure Purview-Kontos unter Verwendung von Azure PowerShell/Azure CLI](create-catalog-powershell.md)
-* [Schnellstart: Verwenden von Purview Studio](use-purview-studio.md)
+* [Benutzen Sie das Purview Studio](use-purview-studio.md)

@@ -1,13 +1,9 @@
 ---
 title: Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver
 description: In diesem Artikel wird Hochverfügbarkeit bei Azure Virtual Machines für SAP NetWeaver beschrieben.
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -16,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b63dc024124665e76e27241101de9b70e62fa17
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 2f9d8c2c6b300a13956e3bdf4e4c4591e7f2ee87
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486245"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591271"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>Azure Virtual Machines mit Hochverfügbarkeit für SAP NetWeaver
 
@@ -1330,7 +1326,7 @@ Mit dem Failovercluster-Manager und dem SIOS DataKeeper-Tool für die Verwaltung
 
 Die Clustergruppe **SAP PR1** wird auf dem Clusterknoten A ausgeführt, z.B. auf **pr1-ascs-0**. Weisen Sie den freigegebenen Datenträger S, der Teil der Clustergruppe **SAP PR1** ist und von der ASCS/SCS-Instanz verwendet wird, dem Clusterknoten A zu.
 
-![Abbildung 61: Failovercluster-Manager: Die SAP-Clustergruppe <SID> wird auf Clusterknoten A ausgeführt.][sap-ha-guide-figure-5000]
+![Abbildung 61: Failover Cluster Manager: Die SAP \<SID\> Clustergruppe läuft auf dem Clusterknoten A][sap-ha-guide-figure-5000]
 
 _**Abbildung 61:** Failovercluster-Manager: Die SAP-Clustergruppe <*SID*> wird auf Clusterknoten A ausgeführt._
 
@@ -1359,7 +1355,7 @@ _**Abbildung 62:** Replizieren des lokalen Volumes von Clusterknoten A auf Clust
 
    Nach dem Failover wird die SAP-Clustergruppe <*SID*> auf dem Clusterknoten B ausgeführt, z.B. auf **pr1-ascs-1**.
 
-   ![Abbildung 63: Failovercluster-Manager: Die SAP-Clustergruppe <SID> wird auf Clusterknoten B ausgeführt.][sap-ha-guide-figure-5002]
+   ![Abbildung 63: In Failover Cluster Manager läuft die SAP \<SID\> Clustergruppe unter Clusterknoten B][sap-ha-guide-figure-5002]
 
    _**Abbildung 63**: Failovercluster-Manager: Die SAP-Clustergruppe <*SID*> wird auf Clusterknoten B ausgeführt._
 

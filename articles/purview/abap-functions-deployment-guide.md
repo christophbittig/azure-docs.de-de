@@ -6,13 +6,13 @@ ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/13/2020
-ms.openlocfilehash: 9bd3c315fcc15317a9fa483289fdc326ca6aa47f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 09/27/2021
+ms.openlocfilehash: f235e4b293c47c9d2833732fa6333a350a1fd272
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102614359"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210343"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>Bereitstellen des ABAP-Funktionsmoduls für die Metadatenextraktion für die SAP R3-Brückenfamilie
 
@@ -65,7 +65,7 @@ Wählen Sie im Object Navigator in der Liste **Function Group** (Funktionsgruppe
 
 1. Wählen Sie die Funktionsgruppe aus, nachdem sie erstellt wurde.
 
-2. Klicken Sie mit der rechten Maustaste auf den Namen der Funktionsgruppe im Repository-Browser und wählen Sie **Erstellen** und dann **Funktionsmodul** aus.
+2. Markieren und halten Sie den Namen der Funktionsgruppe im Repository-Browser (oder klicken Sie mit der rechten Maustaste darauf) und wählen Sie **Erstellen** und dann **Funktionsmodul**.
 
 3. Geben Sie `Z_MITI_DOWNLOAD` im Feld **Funktionsmodul** ein. Tragen Sie die richtige Beschreibung in das Eingabefeld **Kurztext** ein.
 
@@ -112,7 +112,7 @@ Wenn das Modul erstellt wurde, geben Sie die folgenden Informationen an:
 
 7. Speichern Sie die Funktion (STRG+S drücken oder im Hauptmenü **Function Module** (Funktionsmodul), **Save** (Speichern) auswählen).
 
-8. Klicken Sie auf der Symbolleiste auf das Symbol **Activate** (Aktivieren) (STRG+F3) und wählen Sie im Dialogfeld die Schaltfläche **Continue** (Weiter). Wenn Sie dazu aufgefordert werden, sollten Sie auswählen, dass die generierten einzuschließenden Elemente zusammen mit dem Hauptfunktionsmodul aktiviert werden sollen.
+8. Wählen Sie das Symbol **Aktivieren** in der Symbolleiste (ctrl+F3) und die Schaltfläche **Fortfahren** im Dialogfenster. Wenn Sie dazu aufgefordert werden, sollten Sie auswählen, dass die generierten einzuschließenden Elemente zusammen mit dem Hauptfunktionsmodul aktiviert werden sollen.
 
 ### <a name="testing-the-function"></a>Testen der Funktion
 

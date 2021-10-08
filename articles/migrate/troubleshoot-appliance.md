@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 07/01/2020
-ms.openlocfilehash: c67ad02737fc8a40895f99cd3acf05ba98e7643e
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: d6d87d7503a68091e72f1aa84703966ab28f32b5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123305893"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654516"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance"></a>Behandeln von Problemen mit der Azure Migrate-Appliance
 
@@ -275,10 +275,7 @@ Sie erhalten den Fehler „Der WS-Verwaltungsdienst kann die Anforderung nicht v
 
 - Wenn dieser Fehler auftritt, stellen Sie sicher, dass das im Appliancekonfigurations-Manager bereitgestellte Benutzerkonto (domain/local) diesen Gruppen hinzugefügt wurde: Remoteverwaltungsbenutzer, Leistungsmonitorbenutzer und Leistungsprotokollbenutzer.
 - Wenn die Gruppe „Remoteverwaltungsbenutzer“ nicht vorhanden ist, fügen Sie der Gruppe „WinRMRemoteWMIUsers_“ ein Benutzerkonto hinzu.
-- Sie können auch überprüfen, ob das WS-Management-Protokoll auf dem Server aktiviert ist, indem Sie den folgenden Befehl an der Eingabeaufforderung des Zielservers ausführen:
-    
-    ```` winrm qc ````
-
+- Sie können auch überprüfen, ob das WS-Management-Protokoll auf dem Server aktiviert ist, indem Sie den folgenden Befehl an der Eingabeaufforderung des Zielservers ausführen: `winrm qc`.
 - Wenn das Problem weiterhin auftritt, stellen Sie sicher, dass das Benutzerkonto über Zugriffsberechtigungen für den CIMV2-Namespace und Unternamespaces in der WMI-Systemsteuerung verfügt. Sie können den Zugriff festlegen, indem Sie die folgenden Schritte ausführen:
 
     1. Navigieren Sie zu dem Server, bei dem die Überprüfung auf der Appliance fehlschlägt.

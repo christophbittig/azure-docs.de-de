@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: 8d59aa45343c90520b416e9bf151e06e0339038b
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 09/27/2021
+ms.openlocfilehash: c0226e8ffdd8445818313d6f21255752dc2e5616
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542510"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083263"
 ---
 # <a name="create-an-azure-application-offer"></a>Erstellen eines Azure-Anwendungsangebots
 
@@ -22,6 +22,35 @@ Als Herausgeber im kommerziellen Marketplace können Sie ein Azure-Anwendungsang
 Lesen Sie den Artikel [Planen eines Azure-Anwendungsangebots für den kommerziellen Marketplace](plan-azure-application-offer.md), wenn Sie dies noch nicht getan haben. Er stellt Ressourcen bereit und unterstützt Sie bei der Erfassung der Informationen und Objekte, die Sie beim Erstellen Ihres Angebots benötigen.
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht Arbeitsbereiche](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+
+1. Wählen Sie auf der Startseite die Kachel **Marktplatzangebote**.
+
+    [ ![Veranschaulicht die Kachel mit den Microsoft Azure Marketplace-Angeboten auf der Startseite des Partner Centers.](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. Wählen Sie auf der Seite Marktplatzangebote **+ Neues Angebot** > **Azure-Anwendung**.
+
+    [ ![Illustriert die Schaltfläche Neues Angebot auf der Seite Microsoft Azure Marketplace-Angebote.](./media/create-new-azure-app-offer/new-offer-azure-app-workspaces.png) ](./media/create-new-azure-app-offer/new-offer-azure-app-workspaces.png#lightbox)
+
+1. Geben Sie im Dialogfeld **Neue Azure-Anwendung** eine **Angebots-ID** ein. Dies ist ein eindeutiger Bezeichner für jedes Angebot in Ihrem Konto. Diese ID ist in der URL der Auflistung im kommerziellen Marketplace und ggf. in den Azure Resource Manager-Vorlagen sichtbar. Wenn Sie in diesem Feld z. B. test-offer-1 eingeben, lautet die Webadresse für das Angebot `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+
+     * Jedes Angebot in Ihrem Konto muss über eine eindeutige Angebots-ID verfügen.
+     * Verwenden Sie nur Kleinbuchstaben und Zahlen. Sie kann Bindestriche und Unterstriche enthalten, jedoch keine Leerzeichen, und ist auf 50 Zeichen beschränkt.
+     * Nachdem Sie **Erstellen** ausgewählt haben, kann die Angebots-ID nicht mehr geändert werden.
+
+1. Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot im Partner Center verwendet wird.
+
+     * Dieser Name ist nur im Partner Center sichtbar und unterscheidet sich vom Angebotsnamen und anderen Werten, die den Kunden angezeigt werden.
+     * Nachdem Sie **Erstellen** ausgewählt haben, kann der Angebotsalias nicht mehr geändert werden.
+
+1. Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 
@@ -43,6 +72,8 @@ Lesen Sie den Artikel [Planen eines Azure-Anwendungsangebots für den kommerziel
      * Nachdem Sie **Erstellen** ausgewählt haben, kann der Angebotsalias nicht mehr geändert werden.
 
 1. Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
+
+---
 
 ## <a name="configure-your-azure-application-offer-setup-details"></a>Konfigurieren der Details der Einrichtung Ihres Azure-Anwendungsangebots
 

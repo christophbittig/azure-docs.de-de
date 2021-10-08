@@ -7,67 +7,76 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/23/2021
-ms.openlocfilehash: 6ffad57e87b61b9198102ddf8ae4ec8f1a9002ac
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 09/22/2021
+ms.openlocfilehash: 3a9669b2c569947c76f4f2b92fa316f3b09ab517
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122356229"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577903"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Verwenden der rollenbasierten Autorisierung in Azure Cognitive Search
 
-Azure bietet ein [Autorisierungssystem mit rollenbasierter Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md) (Role-Based Access Control, RBAC) für alle Dienste, die auf der Plattform ausgeführt werden. In Cognitive Search können Sie die rollenbasierte Autorisierung folgendermaßen verwenden:
+Azure bietet ein [Autorisierungssystem mit rollenbasierter Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md) (Role-Based Access Control, RBAC) für alle Dienste, die auf der Plattform ausgeführt werden. In Cognitive Search können Sie Rollen folgendermaßen verwenden:
 
-+ Über die Rollen „Besitzer“, „Mitwirkender“ und „Leser“ können Sie im Dienst selbst den Zugriff auf Vorgänge auf Steuerungsebene zulassen, z. B. zum Hinzufügen von Kapazität oder Rotieren von Schlüsseln.
++ Verwenden Sie für die Dienstverwaltung allgemein verfügbare Rollen.
 
-+ Sie können den Zugriff auf Vorgänge auf Datenebene zulassen, z. B. zum Erstellen oder Abfragen von Indizes. Diese Funktion ist derzeit ([auf Nachfrage](https://aka.ms/azure-cognitive-search/rbac-preview)) in der öffentlichen Vorschau verfügbar. Nach dem Onboarding Ihres Abonnements befolgen Sie die Anweisung in diesem Artikel, um das Feature zu verwenden.
++ Verwenden Sie für die Inhaltsverwaltung (Erstellen und Verwalten von Indizes und anderen Objekten der obersten Ebene) neue Vorschaurollen, [**die beantragt werden können**](https://aka.ms/azure-cognitive-search/rbac-preview).
 
-+ Sie können zulassen, dass ausgehende Indizierungsverbindungen [mithilfe einer verwalteten Identität](search-howto-managed-identities-data-sources.md) hergestellt werden. Wenn einem Suchdienst eine verwaltete Identität zugewiesen ist, können Sie Rollenzuweisungen erstellen, die externe Datendienste wie z. B. Azure Blob Storage erweitern, um Lesezugriff auf Blobs durch Ihren vertrauenswürdigen Suchdienst zuzulassen.
+> [!NOTe]
+> „Suchdienstmitwirkender“ ist eine allgemein verfügbare Rolle mit Vorschaumöglichkeiten. Es ist die einzige Rolle, die eine echte Hybridlösung für Dienst- und Inhaltsverwaltungsaufgaben unterstützt und alle Vorgänge für einen bestimmten Suchdienst zulässt. Um in den Genuss der Vorschaufunktionen bei der Inhaltsverwaltung für diese Rolle zu kommen, [**registrieren Sie sich für die Vorschauversion**](https://aka.ms/azure-cognitive-search/rbac-preview).
 
-Dieser Artikel konzentriert sich auf die ersten beiden Punkte: Rollen für die Steuerungsebene und Vorgänge auf Datenebene. Wenn Sie weitere Informationen zu ausgehenden Indizierungsaufrufen wünschen, beginnen Sie mit [Konfigurieren einer verwalteten Identität](search-howto-managed-identities-data-sources.md).
+Einige RBAC-Szenarien werden **nicht** unterstützt bzw. nicht in diesem Artikel behandelt:
 
-Einige RBAC-Szenarien werden **nicht** direkt unterstützt. Dazu gehören die folgenden:
++ Ausgehende Indexerverbindungen sind unter [Einrichten einer Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität](search-howto-managed-identities-data-sources.md) dokumentiert. Wenn einem Suchdienst eine verwaltete Identität zugewiesen ist, können Sie Rollenzuweisungen erstellen, die externen Datendiensten wie z. B. Azure Blob Storage Lesezugriff auf Blobs durch Ihren vertrauenswürdigen Suchdienst erlauben.
 
-+ [Benutzerdefinierte Rollen](../role-based-access-control/custom-roles.md)
++ [Benutzerdefinierte Rollen](../role-based-access-control/custom-roles.md) werden nicht unterstützt.
 
-+ Zugriff auf Benutzeridentitäten über Suchergebnisse (zuweilen als Sicherheit auf Zeilenebene oder Sicherheit auf Dokumentebene bezeichnet)
++ Zugriff auf Benutzeridentitäten über Suchergebnisse (zuweilen als Sicherheit auf Zeilen- oder Dokumentebene bezeichnet) wird nicht unterstützt. Bei der Sicherheit auf Dokumentebene besteht ein Workaround darin, [Sicherheitsfilter](search-security-trimming-for-azure-search.md) zu verwenden, um die Ergebnisse basierend auf der Benutzeridentität einzuschränken, sodass Dokumente entfernt werden, auf die der Anfragende keinen Zugriff haben sollte.
 
-  > [!Tip]
-  > Bei der Sicherheit auf Dokumentebene besteht ein Workaround darin, [Sicherheitsfilter](search-security-trimming-for-azure-search.md) zu verwenden, um die Ergebnisse basierend auf der Benutzeridentität einzuschränken, sodass Dokumente entfernt werden, auf die der Anfragende keinen Zugriff haben sollte.
-  >
+## <a name="built-in-roles-used-in-search"></a>Bei der Suche verwendete integrierte Rollen
 
-## <a name="roles-used-in-search"></a>Bei der Suche verwendete Rollen
+Zu den integrierten Rollen in Cognitive Search gehören allgemein verfügbare und Vorschaurollen, denen Azure Active Directory-Benutzer und -Gruppen als Mitglieder zugewiesen sind.
 
-Zu den integrierten Rollen gehören allgemein verfügbare und vorschauberechtigte Rollen, denen Azure Active Directory-Benutzer und -Gruppen als Mitglieder zugewiesen sind.
+Rollenzuweisungen sind kumulativ und gelten für alle Tools und Clientbibliotheken, die zum Erstellen oder Verwalten eines Suchdiensts verwendet werden. Zu diesen Clients gehören das Azure-Portal, die Verwaltungs-REST-API, Azure PowerShell, die Azure CLI und die Verwaltungsclientbibliothek der Azure SDKs.
 
-Rollenzuweisungen sind kumulativ und gelten für alle Tools und Clientbibliotheken, die zum Erstellen oder Verwalten eines Suchdiensts verwendet werden. Zu den Clients gehören das Azure-Portal, die Verwaltungs-REST-API, Azure PowerShell, die Azure CLI und die Verwaltungsclientbibliothek der Azure SDKs. 
+Rollen gelten für den Suchdienst als Ganzes und müssen von einem Besitzer zugewiesen werden. Sie können bestimmten Indizes oder anderen Objekten der obersten Ebene keine Rollen zuweisen.
 
 Es gibt keine regions-, ebenen- oder preisbezogenen Einschränkungen für die Nutzung von RBAC in Azure Cognitive Search, aber Ihr Dienst muss sich in der öffentlichen Azure-Cloud befinden.
 
-| Role | Status | Gilt für: | BESCHREIBUNG |
-| ---- | -------| ---------- | ----------- |
-| [Besitzer](../role-based-access-control/built-in-roles.md#owner) | Stable | Steuerungsebene | Vollzugriff auf die Ressource, einschließlich der Fähigkeit zum Zuweisen von Azure-Rollen. Abonnementadministratoren sind standardmäßig Mitglieder. |
-| [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor) | Stable | Steuerungsebene | Dieselbe Zugriffsebene wie ein Besitzer, ohne die Fähigkeit zum Zuweisen von Rollen. |
-| [Leser](../role-based-access-control/built-in-roles.md#reader) | Stable | Steuerungsebene | Eingeschränkter Zugriff auf partielle Dienstinformationen. Im Portal kann die Rolle „Leser“ auf der Seite „Übersicht“ des Diensts im Abschnitt „Zusammenfassung“ und auf der Registerkarte „Monitor“ auf Informationen zugreifen. Der Zugriff auf alle anderen Registerkarten und Seiten ist nicht möglich. </br></br>Diese Rolle hat Zugriff auf Dienstinformationen: Ressourcengruppe, Dienststatus, Abonnementname und -ID, Tags, URL, Tarif, Replikate, Partitionen und Sucheinheiten. </br></br>Diese Rolle hat auch Zugriff auf Dienstmetriken: Suchlatenz, Prozentsatz der gedrosselten Anforderungen, durchschnittliche Abfragen pro Sekunde. </br></br>Sie hat keinen Zugriff auf API-Schlüssel, Rollenzuweisungen, Inhalte (Indizes oder Synonymzuordnungen) oder Inhaltsmetriken (verbrauchter Speicher, Anzahl von Objekten). |
-| [Mitwirkender von Suchdienst](../role-based-access-control/built-in-roles.md#search-service-contributor) | Vorschau | Steuerungsebene | Bietet Vollzugriff auf Suchdienst und Objektdefinitionen, aber keinen Zugriff auf indizierte Daten. Diese Rolle ist für Dienstadministratoren gedacht, die mehr Informationen benötigen, als die Rolle „Leser“ bietet, aber keinen Zugriff auf Index- oder Synonymzuordnungsinhalte haben sollten.|
-| [Mitwirkender an Suchindexdaten](../role-based-access-control/built-in-roles.md#search-index-data-contributor) | Vorschau | Datenebene | Bietet Vollzugriff auf Indexdaten, aber auch sonst nichts. Diese Rolle ist für Entwickler oder Indexbesitzer geeignet, die für das Erstellen und Laden von Inhalten zuständig sind, aber keinen Zugriff auf Suchdienstinformationen haben sollten. Der Geltungsbereich umfasst alle Ressourcen des Suchdiensts auf oberster Ebene (Indizes, Synonymzuordnungen, Indizierungsfunktionen, Datenquellen, Skillsets). |
-| [Suchindexdatenleser](../role-based-access-control/built-in-roles.md#search-index-data-reader) | Vorschau | Datenebene | Bietet schreibgeschützten Zugriff auf Indexdaten. Diese Rolle ist für Benutzer gedacht, die Abfragen in einem Index ausführen. Der Geltungsbereich umfasst alle Ressourcen des Suchdiensts auf oberster Ebene (Indizes, Synonymzuordnungen, Indizierungsfunktionen, Datenquellen, Skillsets). |
+| Role | Gilt für: | BESCHREIBUNG |
+| ---- | ---------- | ----------- |
+| [Besitzer](../role-based-access-control/built-in-roles.md#owner) | Dienstbetrieb (allgemein verfügbar) | Vollzugriff auf die Suchressource, einschließlich Fähigkeit zum Zuweisen von Azure-Rollen. Abonnementadministratoren sind standardmäßig Mitglieder. |
+| [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor) | Dienstbetrieb (allgemein verfügbar) | Gleiche Zugriffsebene wie Besitzer, jedoch ohne die Fähigkeit, Rollen zuzuweisen oder Autorisierungsoptionen zu ändern. |
+| [Leser](../role-based-access-control/built-in-roles.md#reader) | Dienstbetrieb (allgemein verfügbar) | Eingeschränkter Zugriff auf partielle Dienstinformationen. Im Portal kann die Rolle „Leser“ auf der Seite „Übersicht“ des Diensts im Abschnitt „Zusammenfassung“ und auf der Registerkarte „Monitor“ auf Informationen zugreifen. Der Zugriff auf alle anderen Registerkarten und Seiten ist nicht möglich. </br></br>Diese Rolle hat Zugriff auf Dienstinformationen: Ressourcengruppe, Dienststatus, Abonnementname und -ID, Tags, URL, Tarif, Replikate, Partitionen und Sucheinheiten. </br></br>Diese Rolle hat auch Zugriff auf Dienstmetriken: Suchlatenz, Prozentsatz der gedrosselten Anforderungen, durchschnittliche Abfragen pro Sekunde. </br></br>Sie hat keinen Zugriff auf API-Schlüssel, Rollenzuweisungen, Inhalte (Indizes oder Synonymzuordnungen) oder Inhaltsmetriken (verbrauchter Speicher, Anzahl von Objekten). |
+| [Mitwirkender von Suchdienst](../role-based-access-control/built-in-roles.md#search-service-contributor) | Dienstbetrieb (allgemein verfügbar) und Objekte und Inhalte der obersten Ebene (Vorschau) | Diese Rolle ist eine Kombination aus Mitwirkenden auf Dienstebene, aber mit Vollzugriff auf alle Aktionen für Indizes, Synonymzuordnungen, Indexer, Datenquellen und Skillsets über [`Microsoft.Search/searchServices/*`](/azure/role-based-access-control/resource-provider-operations#microsoftsearch) auf Inhaltsebene. Diese Rolle ist für Suchdienstadministratoren vorgesehen, die den Dienst und dessen Inhalt vollständig verwalten müssen. Zur Inhaltsverwaltung müssen Sie sich für die Vorschauversion registrieren. </br></br>Ebenso wie Mitwirkende können Mitglieder dieser Rolle keine Rollenzuweisungen vornehmen oder verwalten oder Autorisierungsoptionen ändern. |
+| [Mitwirkender an Suchindexdaten](../role-based-access-control/built-in-roles.md#search-index-data-contributor) | Dokumentensammlung (Vorschau) | Bietet Vollzugriff auf Inhalte in allen Indizes des Suchdiensts. Diese Rolle ist für Entwickler oder Indexbesitzer gedacht, die die Dokumentsammlung eines Index importieren, aktualisieren oder abfragen müssen. |
+| [Suchindexdatenleser](../role-based-access-control/built-in-roles.md#search-index-data-reader) | Dokumentsammlung (Vorschau) | Bietet schreibgeschützten Zugriff auf Suchindizes im Suchdienst. Diese Rolle ist für Apps und Benutzer gedacht, die Abfragen ausführen. |
 
-## <a name="scope-control-plane-and-data-plane"></a>Geltungsbereich: Steuerungsebene und Datenebene
+> [!NOTE]
+> Bei Azure-Ressourcen gibt es für Vorgänge die Kategorien [Steuerungsebene und Datenebene](../azure-resource-manager/management/control-plane-and-data-plane.md). In Cognitive Search bezieht sich „Steuerungsebene“ auf alle Vorgänge, die von der [Verwaltungs-REST-API](/rest/api/searchmanagement/) oder entsprechenden Clientbibliotheken unterstützt werden. Die „Datenebene“ bezieht sich auf Vorgänge für den Suchdienstendpunkt, z. B. Indizierung oder Abfragen, oder auf andere Vorgänge, die in der [REST-API für die Suche](/rest/api/searchservice/) oder entsprechenden Clientbibliotheken angegeben sind. Die meisten Rollen gelten bloß auf einer Ebene. Ausnahme ist die Rolle „Suchdienstmitwirkender“, die Aktionen auf beiden Ebenen unterstützt.
 
-Bei Azure-Ressourcen gibt es für Vorgänge die Kategorien [Steuerungsebene und Datenebene](../azure-resource-manager/management/control-plane-and-data-plane.md). Die integrierten Rollen für Cognitive Search gelten entweder für die eine oder für die andere Ebene.
+## <a name="step-1-preview-sign-up"></a>Schritt 1: Vorschau der Registrierung
 
-| Category | Operationen (Operations) |
-|----------|------------|
-| Steuerungsebene | Folgende Vorgänge können ausgeführt werden: Erstellen, Aktualisieren und Löschen von Diensten, Verwalten von API-Schlüsseln, Anpassen von Partitionen und Replikaten usw. Die [Verwaltungs-REST-API](/rest/api/searchmanagement/) und gleichwertige Clientbibliotheken definieren die Vorgänge, die auf Steuerungsebene gelten. |
-| Datenebene | Vorgänge im Suchdienstendpunkt – dies umfasst sämtliche im Dienst gehosteten Objekte und Daten. Indizierung, Abfrage und alle zugehörigen Aktionen zielen auf die Datenebene ab, auf die über die [Such-REST-API](/rest/api/searchservice/) und gleichwertige Clientbibliotheken zugegriffen wird. </br></br>Derzeit können Sie Rollenzuweisungen nicht verwenden, um den Zugriff auf einzelne Indizes, Synonymzuordnungen, Indizierungsfunktionen, Datenquellen oder Skillsets zu beschränken. |
+**Gilt für**: Mitwirkender an Suchindexdaten, Suchindexdatenleser, Suchdienstmitwirkender
 
-## <a name="configure-search-for-data-plane-authentication"></a>Konfigurieren der Suche für die Authentifizierung auf Datenebene
+Überspringen Sie diesen Schritt, wenn Sie allgemein verfügbare Rollen (Besitzer, Mitwirkender, Leser) oder nur die Aktionen auf Dienstebene von „Suchdienstmitwirkender“ verwenden.
 
-Wenn Sie eine der in der Vorschau befindlichen Rollen auf Datenebene (Mitwirkender an Suchindexdaten und Suchindexdatenleser) und die Azure AD-Authentifizierung verwenden, muss Ihr Suchdienst so konfiguriert sein, dass er einen **Autorisierungsheader** in Datenanforderungen erkennt, der ein OAuth2-Zugriffstoken bereitstellt. In diesem Abschnitt wird erläutert, wie Sie Ihren Suchdienst konfigurieren. Wenn Sie Rollen auf Steuerungsebene (Besitzer, Mitwirkender, Leser) verwenden, können Sie diesen Schritt überspringen.
+Neue integrierte Vorschaurollen bieten einen präzisen Satz von Berechtigungen für Inhalte im Suchdienst. Obwohl integrierte Rollen stets im Azure-Portal sichtbar sind, ist eine Dienstregistrierung erforderlich, um sie betriebsbereit zu machen.
 
-Bevor Sie beginnen, [registrieren](https://aka.ms/azure-cognitive-search/rbac-preview) Sie sich für die RBAC-Vorschau. Ihr Abonnement muss bei dem Programm registriert sein, bevor Sie dieses Feature verwenden können. Die Verarbeitung von Registrierungsanfragen kann bis zu zwei Werktage in Anspruch nehmen. Sie erhalten eine E-Mail, wenn Ihr Dienst einsatzbereit ist.
+Gehen Sie zur Registrierung beim Vorschauprogramm wie folgt vor:
+
++ [Füllen Sie dieses Formular aus](https://aka.ms/azure-cognitive-search/rbac-preview).
+
+Die Verarbeitung von Registrierungsanfragen kann bis zu zwei Werktage in Anspruch nehmen. Sie erhalten eine E-Mail, wenn Ihr Dienst einsatzbereit ist.
+
+## <a name="step-2-preview-configuration"></a>Schritt 2: Vorschau auf die Konfiguration
+
+**Gilt für**: Mitwirkender an Suchindexdaten, Suchindexdatenleser, Suchdienstmitwirkender
+
+Überspringen Sie diesen Schritt, wenn Sie allgemein verfügbare Rollen (Besitzer, Mitwirkender, Leser) oder nur die Aktionen auf Dienstebene von „Suchdienstmitwirkender“ verwenden.
+
+In diesem Schritt konfigurieren Sie Ihren Dienst so, dass er einen **Autorisierungsheader** bei Datenanforderungen erkennt, die ein OAuth2-Token für den Zugriff enthalten.
 
 ### <a name="azure-portal"></a>[**Azure-Portal**](#tab/config-svc-portal)
 
@@ -77,7 +86,7 @@ Bevor Sie beginnen, [registrieren](https://aka.ms/azure-cognitive-search/rbac-pr
 
 1. Wählen Sie im linken Navigationsbereich **Schlüssel** aus.
 
-1. Wählen Sie einen Mechanismus für die **API-Zugriffssteuerung**. Wenn diese Optionen nicht angezeigt werden, überprüfen Sie die Portal-URL. Wenn Sie Ihre Auswahl nicht speichern können, gibt es ein Problem mit der Registrierung Ihres Abonnements. 
+1. Wählen Sie einen Mechanismus für die **API-Zugriffssteuerung**. 
 
    | Option | Status | BESCHREIBUNG |
    |--------|--------|-------------|
@@ -85,31 +94,59 @@ Bevor Sie beginnen, [registrieren](https://aka.ms/azure-cognitive-search/rbac-pr
    | Rollenbasierte Zugriffssteuerung | Vorschau | Zur Ausführung der Aufgabe ist die Mitgliedschaft in einer Rollenzuweisung erforderlich, wie im nächsten Schritt beschrieben. Außerdem ist ein Autorisierungsheader erforderlich. Die Auswahl dieser Option schränkt Sie auf Clients ein, die die REST-API „2021-04-30-preview“ verwenden. |
    | Beide | Vorschau | Anforderungen sind entweder mit einem API-Schlüssel oder einem Autorisierungstoken gültig. |
 
-Sobald Ihr Suchdienst RBAC-fähig ist, erfordert das Portal das Featureflag in der URL, um Rollen zuzuweisen und Inhalte anzuzeigen. **Inhalte wie Indizes und Indizierungsfunktionen sind im Portal nur sichtbar, wenn Sie es mit dem entsprechenden Featureflag öffnen.** Wenn Sie zu einem späteren Zeitpunkt das Standardverhalten wiederherstellen möchten, legen Sie die Auswahl der API-Schlüssel wieder auf **API-Schlüssel** fest.
+Wenn diese Optionen nicht angezeigt werden, prüfen Sie die Portal-URL.
+
+Wenn Sie Ihre Auswahl nicht speichern können oder diese Fehlermeldung erhalten: „API-Zugriffssteuerung konnte den Suchdienst `<name>` nicht aktualisieren. DisableLocalAuth ist in der Vorschauphase und nicht für dieses Abonnement aktiviert“, wurde Ihre Abonnementregistrierung nicht eingeleitet oder verarbeitet.
 
 ### <a name="rest-api"></a>[**REST-API**](#tab/config-svc-rest)
 
-Verwenden Sie die Verwaltungs-REST-API in Version 2021-04-01-Preview, um Ihren Dienst zu konfigurieren.
+Verwenden Sie die Verwaltungs-REST-API-Version „2021-04-01-Preview“, [Erstellen oder Aktualisieren des Dienst](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update), um Ihren Dienst zu konfigurieren.
 
-1. Rufen Sie [Dienst erstellen oder aktualisieren](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) auf.
+Wenn Sie Postman oder ein anderes Webtesttool verwenden, finden Sie im folgenden Tipp Hilfe zum Einrichten der Anforderung.
 
-1. Legen Sie [DataPlaneAuthOptions](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#dataplaneauthoptions) auf `aadOrApiKey` fest. Sehen Sie sich die Syntax in [diesem Beispiel](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#searchcreateorupdateserviceauthoptions) an.
+1. Legen Sie [AuthOptions](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#dataplaneauthoptions) auf aadOrApiKey fest.
 
-1. Legen Sie [AadAuthFailureMode](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#aadauthfailuremode) fest, um anzugeben, ob bei Authentifizierungsfehlern 401- oder 403-Fehler zurückgegeben werden.
+   Legen Sie optional [AadAuthFailureMode](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#aadauthfailuremode) fest, um anzugeben, ob 401 anstelle von 403 zurückgegeben wird, wenn die Authentifizierung fehlschlägt. Der Standardwert von disableLocalAuth ist FALSE, sodass Sie ihn nicht festlegen müssen. Im Folgenden wird jedoch hervorgehoben, dass er immer dann FALSE sein muss, wenn authOptions festgelegt ist.
+
+    ```http
+    PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourcegroups/{{resource-group}}/providers/Microsoft.Search/searchServices/{{search-service-name}}?api-version=2021-04-01-Preview
+    {
+      "location": "{{region}}",
+      "sku": {
+        "name": "standard"
+      },
+      "properties": {
+        "disableLocalAuth": false,
+        "authOptions": {
+          "aadOrApiKey": {
+            "aadAuthFailureMode": "http401WithBearerChallenge"
+          }
+        }
+      }
+   }
+    ```
+
+1. [Weisen Sie dem Dienst Rollen zu](#assign-roles), und überprüfen Sie, ob sie auf Datenebene korrekt funktionieren.
+
+> [!TIP]
+> Aufrufe der Verwaltungs-REST-API werden von Azure Active Directory authentifiziert. Anleitungen zum Einrichten eines Sicherheitsprinzipals und einer Anforderung finden Sie in diesem Blogbeitrag zu [Azure-REST-APIs mit Postman (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/). Das vorherige Beispiel wurde anhand der Anweisungen und der Postman-Sammlung im Blogbeitrag getestet.
 
 ---
 
-## <a name="assign-roles"></a>Zuweisen von Rollen
+<a name="assign-roles"></a>
+
+## <a name="step-3-assign-roles"></a>Schritt 3: Zuweisen von Rollen
 
 Rollen können mit einer der in der Dokumentation zur rollenbasierten Zugriffssteuerung in Azure beschriebenen [unterstützten Methode](../role-based-access-control/role-assignments-steps.md) zugewiesen werden.
 
-Sie müssen Besitzer sein oder über die Berechtigung [Microsoft.Authorization/roleAssignments/write](/azure/templates/microsoft.authorization/roleassignments) verfügen, um Rollenzuweisungen zu verwalten.
+Sie müssen **Besitzer** sein oder über die Berechtigung [Microsoft.Authorization/roleAssignments/write](/azure/templates/microsoft.authorization/roleassignments) verfügen, um Rollenzuweisungen zu verwalten.
 
-### <a name="azure-portal"></a>[**Azure-Portal**](#tab/rbac-portal)
+### <a name="azure-portal"></a>[**Azure-Portal**](#tab/roles-portal)
 
-Legen Sie das Featureflag in der Portal-URL so fest, dass sie für die Vorschaurollen funktioniert: Suchdienstmitwirkender, Mitwirkender an Suchindexdaten und Suchindexdatenleser.
+1. Öffnen Sie für Vorschaurollen das Portal mit der folgenden Syntax: [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true). Die URL sollte `feature.enableRbac=true` enthalten.
 
-1. Öffnen Sie das Portal mit dieser Syntax: [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true). Die URL sollte `feature.enableRbac=true` enthalten.
+   > [!NOTE]
+   > Für Benutzer und Gruppen, die einer Vorschaurolle zugewiesen sind, werden Portalinhalte wie Indizes und Indexer nur sichtbar, wenn Sie das Portal mit dem Featureflag öffnen. 
 
 1. Navigieren Sie zu Ihrem Suchdienst.
 
@@ -117,9 +154,16 @@ Legen Sie das Featureflag in der Portal-URL so fest, dass sie für die Vorschaur
 
 1. Wählen Sie auf der rechten Seite unter **Zugriff auf diese Ressource gewähren** die Option **Rollenzuweisung hinzufügen** aus.
 
-1. Suchen Sie eine geeignete Rolle (Besitzer, Mitwirkender, Leser, Suchdienstmitwirkender, Mitwirkender an Suchindexdaten, Suchindexdatenleser), und weisen Sie dieser eine Azure Active Directory-Benutzer- oder -Gruppenidentität zu.
+1. Suchen Sie eine passende Rolle, und weisen Sie dann eine Azure Active Directory-Benutzer- oder Gruppenidentität zu:
 
-### <a name="powershell"></a>[**PowerShell**](#tab/rbac-powershell)
+   + Besitzer
+   + Mitwirkender
+   + Leser
+   + Mitwirkender von Suchdienst
+   + Mitwirkender an Suchindexdaten (Vorschau)
+   + Suchindexdatenleser (Vorschau)
+
+### <a name="powershell"></a>[**PowerShell**](#tab/roles-powershell)
 
 Wenn Sie [PowerShell zum Zuweisen von Rollen verwenden](../role-based-access-control/role-assignments-powershell.md), rufen Sie [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) auf, und geben Sie den Namen des Azure-Benutzers oder der Azure-Gruppe sowie den Geltungsbereich der Zuweisung an.
 
@@ -151,36 +195,100 @@ Denken Sie daran, dass Sie den Zugriff nur auf Ressourcen der obersten Ebene bes
 
 ---
 
-## <a name="configure-requests-and-test"></a>Konfigurieren von Anforderungen und Testen
+## <a name="step-4-test"></a>Schritt 4: Testen
 
-Zum Durchführen programmgesteuerter Tests überprüfen Sie, ob Ihr Code eine Such-REST-API (beliebige unterstützte Version) verwendet, und legen Sie den Autorisierungsheader auf „requests“ fest. Wenn Sie eins der Azure-SDKs verwenden, überprüfen Sie die Betaversionen, um zu ermitteln, ob der Autorisierungsheader verfügbar ist. 
+### <a name="azure-portal"></a>[**Azure-Portal**](#tab/test-portal)
 
-Je nach Anwendung ist möglicherweise eine zusätzliche Konfiguration erforderlich, um eine Anwendung bei Azure Active Directory zu registrieren oder um Autorisierungstoken abzurufen und zu übergeben.
+1. Öffnen Sie für Vorschaurollen das Portal mit der folgenden Syntax: [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true). 
 
-Alternativ dazu können Sie zum Testen das Azure-Portal verwenden und die Rollen sich selbst zuweisen:
-
-1. Öffnen Sie das Portal mit dieser Syntax: [https://ms.portal.azure.com/?feature.enableRbac=true](https://ms.portal.azure.com/?feature.enableRbac=true). 
-
-   Auch wenn Sie RBAC in einem vorherigen Schritt für Ihren Dienst aktiviert haben, erfordert das Portal das Featureflag, um RBAC-Verhaltensweisen aufrufen zu können. **Inhalte wie Indizes und Indizierungsfunktionen sind im Portal nur sichtbar, wenn Sie es mit dem entsprechenden Featureflag öffnen.** Wenn Sie das Standardverhalten wiederherstellen möchten, legen Sie die Auswahl der API-Schlüssel wieder auf **API-Schlüssel** fest.
+   > [!NOTE]
+   > Für Benutzer und Gruppen, die einer Vorschaurolle zugewiesen sind, werden Portalinhalte wie Indizes und Indexer nur sichtbar, wenn Sie das Portal mit dem Featureflag öffnen. 
 
 1. Navigieren Sie zu Ihrem Suchdienst.
 
 1. Wählen Sie auf der Seite „Übersicht“ die Registerkarte **Indizes** aus:
 
-   + Im Fall der Mitgliedschaft in der Rolle „Suchindexdatenleser“ verwenden Sie den Such-Explorer, um den Index abzufragen. Sie können jede API-Version verwenden, um den Zugriff zu überprüfen.
+   + Mitglieder der Rolle „Suchindexdatenleser“ fragen den Index über den Such-Explorer ab. Sie können jede API-Version verwenden, um den Zugriff zu überprüfen. Sie sollten Abfragen durchführen und Ergebnisse anzeigen können, aber Sie können die Indexdefinition nicht anzeigen.
 
-   + Im Fall der Rolle „Mitwirkender an Suchindexdaten“ wählen Sie **Neuer Index** aus, um einen neuen Index zu erstellen. Durch Speichern eines neuen Index wird der Schreibzugriff auf den Dienst überprüft.
+   + Mitglieder der Rolle „Mitwirkender an Suchindexdaten“ können **Neuer Index** auswählen, um einen neuen Index zu erstellen. Durch Speichern eines neuen Index wird der Schreibzugriff auf den Dienst überprüft.
+
+### <a name="rest-api"></a>[**REST-API**](#tab/test-rest)
+
++ Registrieren Sie Ihre Anwendung mit Azure Active Directory.
+
++ Überarbeiten Sie Ihren Code so, dass eine [Such-REST-API](/rest/api/searchservice/) (jede unterstützte Version) verwendet wird. Legen Sie den **Autorisierungsheader** für Anforderungen fest, und ersetzen Sie den Header **api-key**.
+
+  :::image type="content" source="media/search-security-rbac/rest-authorization-header.png" alt-text="Screenshot einer HTTP-Anforderung mit Autorisierungsheader" border="true":::
+
+Weitere Informationen zum Abrufen eines Tokens für eine bestimmte Umgebung finden Sie unter [Microsoft Identity Platform-Authentifizierungsbibliotheken](/azure/active-directory/develop/reference-v2-libraries).
+
+### <a name="net-sdk"></a>[**.NET SDK**](#tab/test-dotnet)
+
+Das Azure SDK für .NET unterstützt einen Autorisierungsheader im Paket [NuGet-Katalog | Azure.Search.Documents 11.4.0-beta.2](https://www.nuget.org/packages/Azure.Search.Documents/11.4.0-beta.2).
+
+Möglicherweise ist eine zusätzliche Konfiguration erforderlich, um eine Anwendung bei Azure Active Directory zu registrieren oder Autorisierungstoken abzurufen und zu übergeben.
+
++ Beim Abrufen des OAuth-Tokens ist der Bereich https://search.azure.com/.default. Das SDK erfordert, dass die Zielgruppe https://search.azure.com ist. „.default“ ist eine Azure AD-Konvention.
+
++ Das SDK überprüft, ob der Benutzer über den Bereich „user_impersonation“ verfügt, der von Ihrer App gewährt werden muss, aber das SDK selbst fragt lediglich nach https://search.azure.com/.default.
+
+Beispiel der Verwendung von [Anmeldeinformationen für geheimen Clientschlüssel](/dotnet/api/azure.core.tokencredential):
+
+```csharp
+var tokenCredential =  new ClientSecretCredential(aadTenantId, aadClientId, aadSecret);
+SearchClient srchclient = new SearchClient(serviceEndpoint, indexName, tokenCredential);
+```
+
+> [!NOTE]
+> Wenn Sie den Fehler 403 erhalten, prüfen Sie, ob Ihr Suchdienst beim Vorschauprogramm registriert und ob Ihr Dienst für Zuweisungen von Vorschaurollen konfiguriert ist.
+
+---
 
 ## <a name="disable-api-key-authentication"></a>Deaktivieren der API-Schlüssel-Authentifizierung
 
-API-Schlüssel können nicht gelöscht werden, aber Sie können sie in Ihrem Dienst deaktivieren. Wenn Sie die Rollen „Mitwirkender an Suchindexdaten“ und „Suchindexdatenleser“ sowie die Azure AD-Authentifizierung verwenden, können Sie API-Schlüssel deaktivieren. Dadurch lehnt der Suchdienst alle datenbezogenen Anforderungen ab, bei denen ein Schlüssel übergeben wird.
+API-Schlüssel können nicht gelöscht werden, aber Sie können sie in Ihrem Dienst deaktivieren. Wenn Sie die Rollen „Suchdienstmitwirkender“, „Mitwirkender an Suchindexdaten“ und „Suchindexdatenleser“ sowie die Azure AD-Authentifizierung verwenden, können Sie API-Schlüssel deaktivieren. Dadurch lehnt der Suchdienst alle datenbezogenen Anforderungen ab, die im Header einen API-Schlüssel für inhaltsbezogene Anforderungen übergeben.
 
-Verwenden Sie für diese Aufgabe die folgende Vorschauversion der Verwaltungs-REST-API: 2021-04-01-preview.
+Deaktivieren Sie die [schlüsselbasierte Authentifizierung](search-security-api-keys.md) mithilfe der Verwaltungs-REST-API-Version 2021-04-01-Preview, und senden Sie zwei aufeinanderfolgende Anforderungen an den [Updatedienst](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update).
 
-1. Legen Sie [DataPlaneAuthOptions](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#dataplaneauthoptions) auf `aadOrApiKey` fest.
+Zum Deaktivieren von Features sind die Berechtigungen „Besitzer“ oder „Mitwirkender“ erforderlich. Führen Sie die folgenden Schritte in Postman oder einem anderen Webtesttool aus (siehe folgenden Tipp):
 
-1. [Weisen Sie Rollen zu](#assign-roles), und überprüfen Sie, ob sie ordnungsgemäß funktionieren.
+1. Legen Sie für die erste Anforderung [AuthOptions](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#dataplaneauthoptions) auf aadOrApiKey fest, um die Azure AD-Authentifizierung zu aktivieren. Beachten Sie, dass die Option angibt, dass eine der beiden Methoden möglich ist: Azure AD oder die nativen API-Schlüssel.
 
-1. Legen Sie `disableLocalAuth` auf **true** fest.
+    ```http
+    PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourcegroups/{{resource-group}}/providers/Microsoft.Search/searchServices/{{search-service-name}}?api-version=2021-04-01-Preview
+    {
+      "location": "{{region}}",
+      "sku": {
+        "name": "standard"
+      },
+      "properties": {
+        "authOptions": {
+          "aadOrApiKey": {
+            "aadAuthFailureMode": "http401WithBearerChallenge"
+          }
+        }
+      }
+   }
+    ```
 
-Wenn Sie den letzten Schritt rückgängig machen und dann `disableLocalAuth` auf **false** festlegen, akzeptiert der Suchdienst API-Schlüssel in Anforderungen automatisch wieder (vorausgesetzt, diese Schlüssel sind angegeben).
+1. Legen Sie bei der zweiten Anforderung [disableLocalAuth](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#request-body) auf TRUE fest. In diesem Schritt wird der API-Schlüsselteil der Option aadOrApiKey deaktiviert, sodass Ihnen nur die Azure AD-Authentifizierung bleibt.
+
+    ```http
+    PUT https://management.azure.com/subscriptions/{{subscriptionId}}/resourcegroups/{{resource-group}}/providers/Microsoft.Search/searchServices/{{search-service-name}}?api-version=2021-04-01-Preview
+    {
+      "location": "{{region}}",
+      "sku": {
+        "name": "standard"
+      },
+      "properties": {
+        "disableLocalAuth": true
+      }
+    }
+    ```
+
+Sie können die Schritte 1 und 2 nicht kombinieren. In Schritt 1 muss disableLocalAuth auf FALSE festgelegt sein, um die Anforderungen zum Festlegen von AuthOptions zu erfüllen. In Schritt 2 wird dieser Wert in TRUE geändert.
+
+Um die Schlüsselauthentifizierung erneut zu aktivieren, müssen Sie die letzte Anforderung erneut ausführen und disableLocalAuth auf FALSE festlegen. Der Suchdienst akzeptiert API-Schlüssel in Anforderungen automatisch erneut (vorausgesetzt, diese Schlüssel sind angegeben).
+
+> [!TIP]
+> Aufrufe der Verwaltungs-REST-API werden von Azure Active Directory authentifiziert. Anleitungen zum Einrichten eines Sicherheitsprinzipals und einer Anforderung finden Sie in diesem Blogbeitrag zu [Azure-REST-APIs mit Postman (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/). Das vorherige Beispiel wurde anhand der Anweisungen und der Postman-Sammlung im Blogbeitrag getestet.

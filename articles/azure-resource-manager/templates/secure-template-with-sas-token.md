@@ -1,26 +1,33 @@
 ---
-title: Sicheres Bereitstellen von Vorlagen mithilfe des SAS-Token
-description: Bereitstellen von Ressourcen in Azure mithilfe einer Azure Resource Manager-Vorlage, die mit einem SAS-Token geschützt ist. Zeigt Azure PowerShell und Azure CLI.
+title: Bereitstellen einer ARM-Vorlage mit SAS-Token – Azure Resource Manager | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Azure CLI oder Azure PowerShell verwenden, um eine private ARM-Vorlage mit einem SAS-Token sicher bereitzustellen. Schützen und verwalten Sie den Zugriff auf Ihre Vorlagen.
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: d8a173c719c239d72c57febbe54688f079a601bb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/17/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, seo-azure-cli
+keywords: Private Vorlage, SAS-Tokenvorlage, Speicherkonto, Vorlagensicherheit, Azure ARM-Vorlage, Azure Resource Manager-Vorlage
+ms.openlocfilehash: 0e6a680e0344ed5a03715c35e99394aead756501
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959971"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584940"
 ---
-# <a name="deploy-private-arm-template-with-sas-token"></a>Bereitstellen einer privaten ARM-Vorlage mit SAS-Token
+# <a name="how-to-deploy-private-arm-template-with-sas-token"></a>Bereitstellen einer privaten ARM-Vorlage mit SAS-Token
 
-Wenn sich Ihre ARM-Vorlage (Azure Resource Manager) in einem Speicherkonto befindet, können Sie den Zugriff auf die Vorlage beschränken, um deren öffentliche Bereitstellung zu vermeiden. Sie greifen auf eine gesicherte Vorlage zu, indem Sie ein SAS-Token (Shared Access Signature) für die Vorlage erstellen und dieses Token während der Bereitstellung bereitstellen. In diesem Artikel wird erläutert, wie Sie Azure PowerShell oder Azure CLI verwenden, um eine Vorlage mit einem SAS-Token bereitzustellen.
+Wenn sich Ihre ARM-Vorlage (Azure Resource Manager) in einem Speicherkonto befindet, können Sie den Zugriff auf die Vorlage beschränken, um deren öffentliche Bereitstellung zu vermeiden. Sie greifen auf eine gesicherte Vorlage zu, indem Sie ein SAS-Token (Shared Access Signature) für die Vorlage erstellen und dieses Token während der Bereitstellung bereitstellen. In diesem Artikel wird erläutert, wie Sie Azure PowerShell oder Azure CLI verwenden, um eine ARM-Vorlage mit einem SAS-Token sicher bereitzustellen.
+
+Sie finden Informationen darüber, wie Sie den Zugriff auf Ihre privaten ARM-Vorlagen schützen und verwalten können, sowie Anleitungen zu den folgenden Schritten:
+
+* Erstellen eines Speicherkontos mit einem gesicherten Container
+* Hochladen der Vorlage in das Speicherkonto
+* Bereitstellen eines SAS-Tokens während der Bereitstellung
 
 > [!IMPORTANT]
-> Anstatt Ihre Vorlage mit einem SAS-Token zu sichern, sollten Sie die Verwendung von [Vorlagenspezifikationen](template-specs.md) in Erwägung ziehen. Mit Vorlagenspezifikationen können Sie Ihre Vorlagen mit anderen Benutzern in Ihrer Organisation teilen und den Zugriff auf die Vorlagen über Azure RBAC verwalten.
+> Anstatt Ihre private Vorlage mit einem SAS-Token zu sichern, sollten Sie die Verwendung von [Vorlagenspezifikationen](template-specs.md) in Erwägung ziehen. Mit Vorlagenspezifikationen können Sie Ihre Vorlagen mit anderen Benutzern in Ihrer Organisation teilen und den Zugriff auf die Vorlagen über Azure RBAC verwalten.
 
 ## <a name="create-storage-account-with-secured-container"></a>Erstellen eines Speicherkontos mit einem gesicherten Container
 
-Das folgende Skript erstellt ein Speicherkonto und einen Container mit deaktiviertem öffentlichem Zugriff.
+Das folgende Skript erstellt ein Speicherkonto und einen Container mit deaktiviertem öffentlichem Zugriff für die Vorlagensicherheit.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -65,7 +72,7 @@ az storage container create \
 
 ---
 
-## <a name="upload-template-to-storage-account"></a>Hochladen der Vorlage in das Speicherkonto
+## <a name="upload-private-template-to-storage-account"></a>Hochladen einer privaten Vorlage zum Speicherkonto
 
 Jetzt können Sie Ihre Vorlage in das Speicherkonto hochladen. Geben Sie den Pfad zu der Vorlage an, die Sie verwenden möchten.
 
@@ -94,7 +101,7 @@ az storage blob upload \
 Generieren Sie zum Bereitstellen einer privaten Vorlage in einem Speicherkonto ein SAS-Token, und fügen Sie es dem URI für die Vorlage hinzu. Legen Sie die Ablaufzeit so fest, dass ausreichend Zeit für die Bereitstellung bleibt.
 
 > [!IMPORTANT]
-> Auf den Blob, der die Vorlage enthält, hat nur der Kontobesitzer Zugriff. Wenn Sie jedoch ein SAS-Token für das Blob erstellen, können andere Benutzer über diesen URI auf das Blob zugreifen. Wenn ein anderer Benutzer den URI abfängt, hat dieser Benutzer Zugriff auf die Vorlage. Ein SAS-Token ist eine gute Möglichkeit zum Einschränken des Zugriffs auf Ihre Vorlagen. Sie sollten allerdings Kennwörter auf keinen Fall direkt in die Vorlage einschließen.
+> Auf den Blob, der die private Vorlage enthält, hat nur der Kontobesitzer Zugriff. Wenn Sie jedoch ein SAS-Token für das Blob erstellen, können andere Benutzer über diesen URI auf das Blob zugreifen. Wenn ein anderer Benutzer den URI abfängt, hat dieser Benutzer Zugriff auf die Vorlage. Ein SAS-Token ist eine gute Möglichkeit zum Einschränken des Zugriffs auf Ihre Vorlagen. Sie sollten allerdings Kennwörter auf keinen Fall direkt in die Vorlage einschließen.
 >
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

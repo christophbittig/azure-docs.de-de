@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 11/09/2020
-ms.openlocfilehash: 43332c559c309bc99754467994a4718ece78d3cc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 9/27/2021
+ms.openlocfilehash: 7d665b34a112328a742e2ba4ed9816406a58fa30
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339279"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082959"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Kunden“ in Analysen für den kommerziellen Marketplace
 
@@ -38,17 +38,45 @@ Das Dashboard [Kunden](https://go.microsoft.com/fwlink/?linkid=2166011) zeigt Da
 > [!NOTE]
 > Die maximale Latenz zwischen der Kundengewinnung und der Berichterstattung im Partner Center beträgt 48 Stunden.
 
+## <a name="access-the-customers-dashboard"></a>Zugriff auf das Dashboard Kunden
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht Arbeitsbereiche](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie auf der Startseite die Kachel **Einblicke**.
+
+    [ ![Veranschaulicht die Kachel Einblicke auf der Startseite des Partner Centers.](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. Wählen Sie im linken Menü die Option **Kunden**.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie in der linken Navigation **Gewerblicher Marktplatz** > **Analysieren** > **Kunden**.
+
+---
+
 ## <a name="elements-of-the-customers-dashboard"></a>Elemente des Dashboards „Kunden“
 
 In den folgenden Abschnitten wird beschrieben, wie das Dashboard „Kunden“ verwendet wird und wie die Daten gelesen werden.
 
-Um auf das Dashboard „Kunden“ in Partner Center zuzugreifen, wählen Sie unter **Kommerzieller Marketplace** die Option **[Analysieren](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Kunden** aus.
-
 ### <a name="month-range"></a>Monatsbereich
+
+#### <a name="workspaces-view"></a>[Ansicht Arbeitsbereiche](#tab/workspaces-view)
+
+Oben rechts auf jeder Seite finden Sie eine Monatsbereichsauswahl. Passen Sie die Ausgabe der Diagramme auf der Seite **Kunden** an, indem Sie einen Monatsbereich basierend auf den letzten 6 oder 12 Monaten oder einen benutzerdefinierten Monatsbereich mit einer maximalen Dauer von 12 Monaten auswählen. Der standardmäßige Monatsbereich (Berechnungszeitraum) beträgt sechs Monate.
+
+[ ![Illustriert die Monatsfilter auf der Seite Kunden.](./media/customer-dashboard/customers-workspace-filters.png) ](./media/customer-dashboard/customers-workspace-filters.png#lightbox)
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
 
 Oben rechts auf jeder Seite finden Sie eine Monatsbereichsauswahl. Passen Sie die Ausgabe der Diagramme auf der Seite **Kunden** an, indem Sie einen Monatsbereich basierend auf den letzten 6 oder 12 Monaten oder einen benutzerdefinierten Monatsbereich mit einer maximalen Dauer von 12 Monaten auswählen. Der standardmäßige Monatsbereich (Berechnungszeitraum) beträgt sechs Monate.
 
 :::image type="content" source="./media/customer-dashboard/month-range-filters.png" alt-text="Veranschaulicht die Monatsfilter auf der Seite „Kunden“.":::
+
+---
 
 > [!NOTE]
 > Alle Metriken in den Visualisierungswidgets und Exportberichten berücksichtigen den vom Benutzer ausgewählten Berechnungszeitraum.
@@ -81,7 +109,7 @@ In diesem Abschnitt finden Sie Trend und Anzahl für alle Kunden einschließlich
 
 Das Diagramm **Kunden nach Aufträgen/Nutzung** enthält drei Registerkarten: „Aufträge“, „Normalisierte Nutzung“ und „Tatsächliche Nutzung“. Wählen Sie die Registerkarte **Aufträge** aus, um Auftragsdetails anzuzeigen.
 
-:::image type="content" source="./media/customer-dashboard/customers-by-orders-usage.png" alt-text="Veranschaulicht die Registerkarte „Aufträge“ des Widgets „Kunden nach Aufträgen/Nutzung“ auf der Seite „Kunden“.":::
+[ ![Veranschaulicht die Registerkarte "Aufträge" des Widgets "Kunden nach Aufträgen und Nutzung" auf der Seite "Kunden".](./media/customer-dashboard/customers-by-orders-usage.png) ](./media/customer-dashboard/customers-by-orders-usage.png#lightbox)
 
 Beachten Sie Folgendes:
 
@@ -182,4 +210,4 @@ Die Filter auf der Seite Kunden werden auf der Ebene der Seite „Kunden“ ange
 - Informationen zu Metriken zur Nutzung und zur getakteten Abrechnung für VM-Angebote finden Sie unter [Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace](./usage-dashboard.md).
 - Eine Liste Ihrer Downloadanforderungen der letzten 30 Tagen finden Sie unter [Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace](downloads-dashboard.md).
 - Eine konsolidierte Ansicht des Kundenfeedbacks für Angebote im Azure Marketplace und in Microsoft AppSource finden Sie unter [Analyse-Dashboard „Bewertungen und Rezensionen“ in Partner Center](ratings-reviews.md).
-- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Terminologie und häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace](./analytics-faq.yml).
+- Häufig gestellte Fragen zu Analysen für den kommerziellen Marketplace und ein umfassendes Wörterbuch mit Datenbegriffen finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen](./analytics-faq.yml).

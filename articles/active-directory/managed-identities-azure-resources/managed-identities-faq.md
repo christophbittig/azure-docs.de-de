@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 04/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 07b106630cffae75c5e4588d14de7ae938945614
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 7d2f09d3990f9e71e55b29b1eac771266627237a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534123"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791287"
 ---
 # <a name="managed-identities-for-azure-resources-frequently-asked-questions---azure-ad"></a>Häufig gestellte Fragen zu verwalteten Identitäten für Azure-Ressourcen – Azure AD
 
@@ -38,11 +38,12 @@ Die Liste der Ressourcen, die über eine vom System zugewiesene verwaltete Ident
 az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
 ```
 
+### <a name="what-azure-rbac-permissions-are-required-to-work-with-managed-identities"></a>Welche Azure RBAC-Berechtigungen sind für verwaltete Identitäten erforderlich? 
 
-### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>Welche Azure RBAC-Berechtigungen sind für eine verwaltete Identität auf einer Ressource erforderlich? 
-
-- Systemseitig zugewiesene verwaltete Identität: Sie benötigen Schreibberechtigungen für die Ressource. Für virtuelle Computer benötigen Sie z.B. „Microsoft.Compute/virtualMachines/write“. Diese Aktion ist in ressourcenspezifischen integrierten Rollen wie [Mitwirkender von virtuellen Computern](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) enthalten.
-- Benutzerseitig zugewiesene verwaltete Identität: Sie benötigen Schreibberechtigungen für die Ressource. Für virtuelle Computer benötigen Sie z.B. „Microsoft.Compute/virtualMachines/write“. Zusätzlich zu der Rollenzuweisung [Operator für verwaltete Identität](../../role-based-access-control/built-in-roles.md#managed-identity-operator) für die verwaltete Identität.
+- Systemseitig zugewiesene verwaltete Identität: Sie benötigen Schreibberechtigungen für die Ressource. Für virtuelle Computer benötigen Sie beispielsweise `Microsoft.Compute/virtualMachines/write`. Diese Aktion ist in ressourcenspezifischen integrierten Rollen wie [Mitwirkender von virtuellen Computern](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) enthalten.
+- Zuweisen von benutzerseitig zugewiesenen verwalteten Identitäten zu Ressourcen: Sie benötigen Schreibberechtigungen für die Ressource. Für virtuelle Computer benötigen Sie beispielsweise `Microsoft.Compute/virtualMachines/write`. Sie benötigen auch die `Microsoft.ManagedIdentity/userAssignedIdentities/*/assign/action`-Aktion für die benutzerseitig zugewiesene Identität. Diese Aktion ist in der integrierten Rolle [Operator für verwaltete Identität](../../role-based-access-control/built-in-roles.md#managed-identity-operator) enthalten.
+- Verwalten von benutzerseitig zugewiesenen Identitäten: Um benutzerseitig zugewiesene verwaltete Identitäten zu erstellen oder zu löschen, benötigen Sie die Rollenzuweisung [Mitwirkender für verwaltete Identität](../../role-based-access-control/built-in-roles.md#managed-identity-contributor).
+- Verwalten von Rollenzuweisungen für verwaltete Identitäten: Sie benötigen die Rollenzuweisung [Besitzer](../../role-based-access-control/built-in-roles.md#all) oder [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#all) für die Ressource, auf die Sie Zugriff gewähren möchten. Sie benötigen die Rollenzuweisung [Leser](../../role-based-access-control/built-in-roles.md#all) für die Ressource mit einer systemseitig zugewiesenen Identität oder für die benutzerseitig zugewiesene Identität, die die Rollenzuweisung erhält. Wenn Sie keinen Lesezugriff haben, können Sie beim Hinzufügen der Rollenzuweisung nach „Benutzer, Gruppe oder Dienstprinzipal“ suchen, um den der Identität zugrunde liegenden Dienstprinzipal zu finden, anstatt nach der verwalteten Identität zu suchen. [Weitere Informationen zum Zuweisen von Azure-Rollen](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="how-do-i-prevent-the-creation-of-user-assigned-managed-identities"></a>Wie verhindere ich die Erstellung von verwalteten Identitäten, die vom Benutzer zugewiesen werden?
 

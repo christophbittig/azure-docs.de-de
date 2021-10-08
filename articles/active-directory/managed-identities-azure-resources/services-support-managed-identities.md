@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: a7022c9de1449d0c4001b1d814eeb9464b98c24a
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c9167111a1799575b5dc0d06cb26bf7cc20002e9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769981"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124826807"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -66,14 +66,14 @@ Konfigurieren Sie die verwaltete Identität für Azure App Service anhand der fo
 - [Azure PowerShell](../../app-service/overview-managed-identity.md#using-azure-powershell)
 - [Azure Resource Manager-Vorlage](../../app-service/overview-managed-identity.md#using-an-azure-resource-manager-template)
 
-### <a name="azure-arc-enabled-kubernetes"></a>Kubernetes mit Azure Arc-Aktivierung
+### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc-fähiges Kubernetes
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | Vom System zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 | Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
-Kubernetes mit Azure Arc-Aktivierung [unterstützt derzeit systemseitig zugewiesene Identitäten](../../azure-arc/kubernetes/quickstart-connect-cluster.md). Das Zertifikat der Identität für den verwalteten Dienst wird von allen Kubernetes-Agents mit Azure Arc-Aktivierung zur Kommunikation mit Azure verwendet.
+Kubernetes mit Azure Arc-Unterstützung [unterstützt derzeit systemseitig zugewiesene Identitäten](../../azure-arc/kubernetes/quickstart-connect-cluster.md). Das Zertifikat der Identität für den verwalteten Dienst wird von allen Kubernetes-Agents mit Azure Arc-Unterstützung zur Kommunikation mit Azure verwendet.
 
 ### <a name="azure-arc-enabled-servers"></a>Server mit Azure Arc-Unterstützung
 
@@ -84,8 +84,8 @@ Kubernetes mit Azure Arc-Aktivierung [unterstützt derzeit systemseitig zugewies
 
 Alle Azure Arc-fähigen Server verfügen über eine systemseitig zugewiesene Identität. Die systemseitig zugewiesene Identität auf einem Azure Arc-fähigen Server kann nicht deaktiviert oder geändert werden. Weitere Informationen zur Nutzung von verwalteten Identitäten auf Azure Arc-fähigen Servern finden Sie in den folgenden Ressourcen:
 
-- [Authentifizieren bei Azure-Ressourcen mit Arc-fähigen Servern](../../azure-arc/servers/managed-identity-authentication.md)
-- [Verwenden einer verwalteten Identität mit Arc-fähigen Servern](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-arc-enabled-servers)
+- [Authentifizieren bei Azure-Ressourcen mit Azure Arc-fähigen Servern](../../azure-arc/servers/managed-identity-authentication.md)
+- [Verwenden einer verwalteten Identität mit Azure Arc-fähigen Servern](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-azure-arc-enabled-servers)
 
 ### <a name="azure-automanage"></a>Automatische Azure-Verwaltung
 
@@ -507,7 +507,6 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 | --- | :-: | :-: | :-: | :-: |
 | Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 | Vom Benutzer zugewiesen | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
-
 
 > [!NOTE]
 > Sie können verwaltete Identitäten für die Authentifizierung eines [Azure Stream Analytics-Auftrags in Power BI](../../stream-analytics/powerbi-output-managed-identity.md) verwenden.

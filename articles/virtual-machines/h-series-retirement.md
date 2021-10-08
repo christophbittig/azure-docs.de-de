@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 08/02/2021
 ms.author: amverma
-ms.openlocfilehash: 023fb8a352e1e02023fe0ce16afba9531625e370
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 98465066f79f93777255a3072c472d342b557bdc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515962"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600226"
 ---
 # <a name="migrate-your-h-and-h_promo-series-virtual-machines-by-august-31-2022"></a>Migrieren Sie Ihre VM der H- und H_Promo-Serie bis zum 31. August 2022
 Da Microsoft Azure neuere Generationen von high Performance Computing (HPC), universelle und speicheroptimierte VMs eingeführt hat, empfehlen wir, Workloads von ursprünglichen VMs der H-Serie (einschließlich H-Serie-Promo) zu unseren neueren Angeboten zu migrieren.
@@ -54,4 +54,4 @@ Befolgen Sie die Anleitung zum [Anfordern einer Erhöhung des vCPU-Kontingents n
 
 
 ### <a name="resize-the-current-virtual-machine"></a>Ändern Sie die Größe des aktuellen VM.
-Sie können [die Größe des VM mithilfe von PowerShell](./windows/resize-vm.md), [Azure CLI](./linux/change-vm-size.md) oder über das Azure-Portal ändern.
+Sie können [die Größe des virtuellen Computers ändern](resize-vm.md).

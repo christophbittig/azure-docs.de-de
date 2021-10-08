@@ -5,14 +5,14 @@ author: dlepow
 ms.service: api-management
 ms.topic: how-to
 ms.date: 08/11/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: references_regions
-ms.openlocfilehash: 2415a07a215c99a1775593aae403af6f84b308fa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d43d6e7b04e117e4144356ac22ea2858408405df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349819"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582840"
 ---
 # <a name="availability-zone-support-for-azure-api-management"></a>Unterstützung von Verfügbarkeitszonen für Azure API Management 
 
@@ -63,7 +63,7 @@ Aktivieren Sie im Portal optional Zonenredundanz, wenn Sie ihrem API Management
 1. Wählen Sie einen vorhandenen Standort oder auf der oberen Leiste die Option **+ Hinzufügen** aus. Der Standort muss [Verfügbarkeitszonen unterstützen](#supported-regions).
 1. Wählen Sie die Anzahl der **[Skalierungseinheiten](upgrade-and-scale.md)** am Standort aus.
 1. Wählen Sie unter **Verfügbarkeitszonen** mindestens eine Zone aus. Die Anzahl von ausgewählten Einheiten muss gleichmäßig auf die Verfügbarkeitszonen verteilt werden. Wenn Sie beispielsweise drei Einheiten ausgewählt haben, wählen Sie drei Zonen aus, sodass jede Zone eine Einheit hostet.
-1. Wird die API Management-Instanz in einem [virtuellen Netzwerk](api-management-using-with-vnet.md) bereitgestellt, konfigurieren Sie Einstellungen für das virtuelle Netzwerk am Standort. Wählen Sie ein vorhandenes virtuelles Netzwerk, Subnetz und eine öffentliche IP-Adresse aus, die am Standort verfügbar sind.
+1. Wenn die API Management-Instanz in einem [virtuellen Netzwerk](api-management-using-with-vnet.md) bereitgestellt wird, konfigurieren Sie die Einstellungen des virtuellen Netzwerks am Standort, indem Sie ein vorhandenes virtuelles Netzwerk, ein Subnetz und eine öffentliche IP-Adresse auswählen, die am Standort verfügbar sind. Für einen vorhandenen Standort müssen das virtuelle Netzwerk und das Subnetz über das Blatt Virtual Network konfiguriert werden.
 1. Wählen Sie **Anwenden** und dann **Speichern** aus.
 
 :::image type="content" source="media/zone-redundancy/add-location-zones.png" alt-text="Aktivieren der Zonenredundanz":::

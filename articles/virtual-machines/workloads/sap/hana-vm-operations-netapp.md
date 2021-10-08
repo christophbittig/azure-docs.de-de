@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/23/2021
+ms.date: 09/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6b0fa5e1af60b65c513fd3fa6250dba2a978879
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 4683b38ba6a59b0a50f7e0ea4165657407b59b69
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965895"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823175"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS v4.1-Volumes unter Azure NetApp Files für SAP HANA
 
@@ -40,7 +40,7 @@ Wenn Sie Azure NetApp Files für die Hochverfügbarkeitsarchitektur von SAP NetW
 - Um eine niedrige Latenz zu erzielen, ist es wichtig, dass die virtuellen Computer in unmittelbarer Nähe des Azure NetApp-Speichers bereitgestellt werden.  
 - Das ausgewählte virtuelle Netzwerk muss über ein an Azure NetApp Files delegiertes Subnetz verfügen.
 - Stellen Sie sicher, dass die Latenz zwischen dem Datenbankserver und dem ANF-Volume gemessen wird und unter 1 Millisekunde liegt.
-- Der Durchsatz eines Azure NetApp-Volumes ist eine Funktion des Volumekontingents und der Dienstebene, wie in [Dienstebenen für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md) beschrieben. Stellen Sie bei der Größenanpassung der HANA Azure NetApp-Volumes sicher, dass der sich ergebende Durchsatz die HANA-Systemanforderungen erfüllt.
+- Der Durchsatz eines Azure NetApp-Volumes ist eine Funktion des Volumekontingents und der Dienstebene, wie in [Dienstebenen für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md) beschrieben. Stellen Sie bei der Größenanpassung der HANA Azure NetApp-Volumes sicher, dass der sich ergebende Durchsatz die HANA-Systemanforderungen erfüllt. Alternativ können Sie einen [manuellen QoS-Kapazitätspool](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md) verwenden, in dem Volumenkapazität und -durchsatz unabhängig konfiguriert und skaliert werden können (SAP HANA-spezifische Beispiele finden Sie in [diesem Dokument](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)).
 - Versuchen Sie, Volumes zu „konsolidieren“, um mit einem größeren Volume höhere Leistung zu erzielen, verwenden Sie z. B. ein Volume für „/sapmnt“, „/usr/sap/trans“..., wenn möglich.  
 - Azure NetApp Files bietet [Exportrichtlinien](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md): Sie können die zulässigen Clients und den Zugriffstyp (Lesen und Schreiben, schreibgeschützt usw.) steuern. 
 - Azure NetApp Files wertet derzeit noch keine Zonen aus. Das Azure NetApp Files-Feature wird bisher nicht in allen Verfügbarkeitszonen in einer Azure-Region bereitgestellt. Achten Sie auf mögliche Latenzauswirkungen in einigen Azure-Regionen.   
@@ -61,7 +61,7 @@ Es ist wichtig, die Leistungsbeziehung und die Größe zu kennen, und zu wissen,
 
 Die folgende Tabelle zeigt, dass es sinnvoll sein kann, ein großes „Standard“-Volume zum Speichern von Sicherungen zu erstellen, und dass es nicht sinnvoll ist, ein „Ultra“-Volume zu erstellen, das größer als 12 TB ist, da die maximale physikalische Bandbreitenkapazität eines einzelnen Volume überschritten würde. 
 
-Der maximale Schreibdurchsatz für ein Volume und eine einzelne Linux-Sitzung liegt zwischen 1,2 und 1,4 GB/s. Wenn Sie mehr Durchsatz für /hana/data benötigen, können Sie die SAP HANA-Partitionierung für Datenvolumes verwenden, um für die E/A-Aktivität während des erneuten Ladens von Daten oder HANA-Sicherungspunkten über mehrere HANA-Datendateien ein Striping vorzunehmen, die sich auf mehreren NFS-Freigaben befinden. Weitere Informationen zum Striping von HANA-Datenvolumen finden Sie in diesen Artikeln:
+Der maximale Schreibdurchsatz für ein Volume und eine einzelne Linux-Sitzung liegt zwischen 1,2 und 1,4 GB/s. Wenn Sie mehr Durchsatz für /hana/data benötigen, können Sie die SAP HANA-Partitionierung für Datenvolumes verwenden, um für die E/A-Aktivität während des erneuten Ladens von Daten oder HANA-Sicherungspunkten über mehrere HANA-Datendateien ein Striping vorzunehmen, die sich auf mehreren NFS-Freigaben befinden. Zur Verbesserung des Lesedurchsatzes kann die Einbindungsoption „NFS nconnect“ verwendet werden. Weitere Informationen zur Leistung von Azure NetApp Files unter Linux und zu „nconnect“ finden Sie unter [Einbindungsoptionen für NFS unter Linux: bewährte Methoden für Azure NetApp Files](../../../azure-netapp-files/performance-linux-mount-options.md). Weitere Informationen zum Striping von HANA-Datenvolumen finden Sie in diesen Artikeln:
 
 - [HANA-Administratorhandbuch](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
 - [Blog zu SAP HANA-Datenvolumepartitionierung](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
@@ -75,9 +75,11 @@ Der maximale Schreibdurchsatz für ein Volume und eine einzelne Linux-Sitzung li
 | 2 TB | 32 MB/s | 128 MB/s | 256 MB/s |
 | 4 TB | 64 MB/s | 256 MB/s | 512 MB/s |
 | 10 TB | 160 MB/s | 640 MB/s | 1\.280 MB/s |
-| 15 TB | 240 MB/s | 960 MB/s | 1\.400 MB/s |
-| 20 TB | 320 MB/s | 1\.280 MB/s | 1\.400 MB/s |
-| 40 TB | 640 MB/s | 1\.400 MB/s | 1\.400 MB/s |
+| 15 TB | 240 MB/s | 960 MB/s | 1\.400 MB/s<sup>1</sup> |
+| 20 TB | 320 MB/s | 1\.280 MB/s | 1\.400 MB/s<sup>1</sup> |
+| 40 TB | 640 MB/s | 1\.400 MB/s<sup>1</sup> | 1\.400 MB/s<sup>1</sup> |
+
+<sup>1</sup>: Durchsatzlimits für Schreibvorgänge oder für Lesevorgänge in einzelnen Sitzungen (für den Fall, dass die NFS-Bereitstellungsoption „nconnect“ nicht verwendet wird) 
 
 Es ist wichtig zu wissen, dass die Daten im Speicher-Back-End in die gleichen SSDs geschrieben werden. Das Leistungskontingent aus dem Kapazitätspool wurde erstellt, um die Umgebung verwalten zu können.
 Die Speicher-KPIs sind für alle HANA-Datenbankgrößen gleich. In fast allen Fällen spiegelt diese Annahme nicht die Realität und die Kundenerwartung wider. Die Größe von HANA-Systemen bedeutet nicht notwendigerweise, dass ein kleines System einen niedrigen und ein großes System einen hohen Speicherdurchsatz erfordert. Im Allgemeinen sind jedoch für größere HANA-Datenbankinstanzen höhere Durchsatzanforderungen zu erwarten. Infolge der Dimensionierungsregeln von SAP für die zugrunde liegende Hardware bieten solch größere HANA-Instanzen auch mehr CPU-Ressourcen und eine höhere Parallelität in Aufgaben wie dem Laden von Daten nach einem Neustart einer Instanz. Daher sollten die Volumegrößen den Erwartungen und Anforderungen der Kunden angepasst werden. Sie sollten nicht nur durch reine Kapazitätsanforderungen bestimmt werden.
@@ -90,9 +92,9 @@ Beim Entwerfen der Infrastruktur für SAP in Azure müssen Sie einige Mindestanf
 | Datenvolume – Schreiben | 250 MB/s | 4 TB | 2 TB |
 | Datenvolume – Lesen | 400 MB/s | 6,3 TB | 3,2 TB |
 
-Da alle drei KPIs erforderlich sind, muss das **/hana/data**-Volume auf die größere Kapazität skaliert werden, um die minimalen Leseanforderungen zu erfüllen.
+Da alle drei KPIs erforderlich sind, muss das **/hana/data**-Volume auf die größere Kapazität skaliert werden, um die minimalen Leseanforderungen zu erfüllen. Bei Verwendung manueller QoS-Kapazitätspools können Größe und Durchsatz der Volumes unabhängig voneinander definiert werden. Da sowohl die Kapazität als auch der Durchsatz aus demselben Kapazitätspool entnommen werden, müssen die Dienstebene und die Größe des Pools ausreichend groß sein, um die Gesamtleistung zu erbringen (ein Beispiel finden Sie [hier](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)).
 
-Für HANA-Systeme, die keine hohe Bandbreite erfordern, kann die ANF-Volumegröße geringer sein. Für den Fall, dass ein HANA-System mehr Durchsatz erfordert, kann das Volume angepasst werden, indem die Größe der Kapazität online geändert wird. Für Sicherungsvolumes sind keine KPIs definiert. Der Durchsatz des Sicherungsvolumes ist jedoch für eine gut funktionierende Umgebung entscheidend. Die Leistung von Protokoll- und Datenvolume muss auf die Kundenerwartungen zugeschnitten werden.
+Bei HANA-Systemen, für die keine hohe Bandbreite erforderlich ist, kann der Durchsatz des ANF-Volumes entweder durch eine kleinere Volumegröße oder bei manuellem QoS durch direktes Anpassen des Durchsatzes verringert werden. Für den Fall, dass ein HANA-System mehr Durchsatz erfordert, kann das Volume angepasst werden, indem die Größe der Kapazität online geändert wird. Für Sicherungsvolumes sind keine KPIs definiert. Der Durchsatz des Sicherungsvolumes ist jedoch für eine gut funktionierende Umgebung entscheidend. Die Leistung von Protokoll- und Datenvolume muss auf die Kundenerwartungen zugeschnitten werden.
 
 > [!IMPORTANT]
 > Unabhängig von der Kapazität, die Sie auf einem einzelnen NFS-Volume bereitstellen, wird erwartet, dass der Durchsatz im Bereich von 1,2 bis 1,4 GB/Sek. Bandbreite von einem Consumer in einer einzelnen Sitzung genutzt wird. Dies hat mit der zugrundeliegenden Architektur des ANF-Angebots und den damit verbundenen Einschränkungen der Linux-Sitzungen bezüglich NFS zu tun. Die Leistungs- und Durchsatzzahlen, die im Artikel [Ergebnisse des Leistungsbenchmarktests für Azure NetApp Files](../../../azure-netapp-files/performance-benchmarks-linux.md) beschrieben werden, wurden für ein gemeinsam genutztes NFS-Volume mit mehreren Client-VMs und daher mit mehreren Sitzungen durchgeführt. Dieses Szenario unterscheidet sich von dem Szenario, das wird in SAP messen. Dabei messen wir den Durchsatz von einer einzelnen VM für ein NFS-Volume, Auf ANF gehostet.
@@ -141,8 +143,9 @@ Neben Streamingsicherungen und dem Azure Backup-Dienst, der SAP HANA-Datenbanken
 
 SAP HANA unterstützt:
 
-- Speicherbasierte Momentaufnahmensicherungen ab SAP HANA 1.0 SPS7
-- Speicherbasierte Momentaufnahmensicherungen für MDC-HANA-Umgebungen (Multi Database Container) ab SAP HANA 2.0 SPS4
+- Unterstützung von speicherbasierter Momentaufnahmesicherung für Einzelcontainersysteme mit SAP HANA 1.0 SPS7 und höher 
+- Unterstützung von speicherbasierter Momentaufnahmesicherung für MDC-HANA-Umgebungen (Multi Database Container) mit einem einzelnen Mandanten mit SAP HANA 2.0 SPS1 und höher
+- Unterstützung von speicherbasierter Momentaufnahmesicherung für MDC-HANA-Umgebungen (Multi Database Container) mit mehreren Mandanten mit SAP HANA 2.0 SPS4 und höher
 
 
 Das Erstellen speicherbasierter Momentaufnahmensicherungen ist ein einfaches Verfahren in vier Schritten: 
@@ -177,8 +180,11 @@ Der Vorgang der Momentaufnahmensicherung kann auf unterschiedliche Weise mithilf
 > [!CAUTION]
 > Eine Momentaufnahme an sich ist keine geschützte Sicherung, da sie sich im gleichen physischen Speicher befindet wie das Volume, von dem Sie gerade diese Momentaufnahme erstellt haben. Es ist obligatorisch, mindestens eine Momentaufnahme pro Tag an einem anderen Speicherort zu „sichern“. Dies kann in derselben Umgebung, in einer Azure-Remoteregion oder in Azure Blob Storage durchgeführt werden.
 
+Verfügbare Lösungen für die auf Speichermomentaufnahmen basierende anwendungskonsistente Sicherung:
 
-Für Benutzer von Commvault-Sicherungsprodukten ist Commvault IntelliSnap V.11.21 und höher die zweite Option. Diese oder höhere Versionen von Commvault bieten Unterstützung für Azure NetApp Files. Im Artikel [Commvault IntelliSnap 11.21](https://documentation.commvault.com/11.21/essential/116350_getting_started_with_backup_and_restore_operations_for_azure_netapp_file_services_smb_shares_and_nfs_shares.html) finden Sie weitere Informationen.
+- Das Microsoft-[Tool für konsistente Momentaufnahmen in Azure-Anwendungen (AzAcSnap)](../../../azure-netapp-files/azacsnap-introduction.md) ist ein Befehlszeilentool, das den Datenschutz für Datenbanken von Drittanbietern ermöglicht, indem es die gesamte Orchestrierung abwickelt, die erforderlich ist, damit die Anwendungsdaten konsistent sind, bevor eine Speichermomentaufnahme erstellt wird, nach der die Daten in einem Betriebszustand zurückgegeben werden. AzAcSnap unterstützt momentaufnahmebasierte Sicherungen für HANA (große Instanzen) sowie Azure NetApp Files. Weitere Informationen finden Sie unter „Worum handelt es sich beim Tool für konsistente Momentaufnahmen in Azure-Anwendungen?“ 
+- Für Benutzer von Commvault-Sicherungsprodukten ist Commvault IntelliSnap V.11.21 und höher eine weitere Option. Diese oder höhere Versionen von Commvault bieten Unterstützung von Momentaufnahmen für Azure NetApp Files. Im Artikel [Commvault IntelliSnap 11.21](https://documentation.commvault.com/11.21/essential/116350_getting_started_with_backup_and_restore_operations_for_azure_netapp_file_services_smb_shares_and_nfs_shares.html) finden Sie weitere Informationen.
+
 
 
 ### <a name="back-up-the-snapshot-using-azure-blob-storage"></a>Sichern der Momentaufnahme mit Azure Blob Storage

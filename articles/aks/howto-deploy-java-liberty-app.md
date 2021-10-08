@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aks, kubernetes
-ms.openlocfilehash: d0e6f2fea6894378da736ba83a90ee28402ec7f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc84317ce923731e7eb46e24ed98db4fdd594bd3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100007130"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658049"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Bereitstellen einer Java-Anwendung mit Open Liberty oder WebSphere Liberty in einem Azure Kubernetes Service (AKS)-Cluster
 
@@ -52,7 +52,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 Verwenden Sie den Befehl [az acr create](/cli/azure/acr#az_acr_create) zum Erstellen der ACR-Instanz. Im folgenden Beispiel wird die ACR-Instanz *youruniqueacrname* erstellt. Stellen Sie sicher, dass *youruniqueacrname* in Azure eindeutig ist.
 
 ```azurecli-interactive
-REGISTRY_NAME=youruniqueacrname
+export REGISTRY_NAME=youruniqueacrname
 az acr create --resource-group $RESOURCE_GROUP_NAME --name $REGISTRY_NAME --sku Basic --admin-enabled
 ```
 
@@ -69,9 +69,9 @@ Nach kurzer Zeit sollte eine JSON-Ausgabe mit Folgendem angezeigt werden:
 Sie müssen sich bei der ACR-Instanz anmelden, bevor Sie ein Image an diese pushen können. Führen Sie die folgenden Befehle zum Überprüfen der Verbindung aus:
 
 ```azurecli-interactive
-LOGIN_SERVER=$(az acr show -n $REGISTRY_NAME --query 'loginServer' -o tsv)
-USER_NAME=$(az acr credential show -n $REGISTRY_NAME --query 'username' -o tsv)
-PASSWORD=$(az acr credential show -n $REGISTRY_NAME --query 'passwords[0].value' -o tsv)
+export LOGIN_SERVER=$(az acr show -n $REGISTRY_NAME --query 'loginServer' -o tsv)
+export USER_NAME=$(az acr credential show -n $REGISTRY_NAME --query 'username' -o tsv)
+export PASSWORD=$(az acr credential show -n $REGISTRY_NAME --query 'passwords[0].value' -o tsv)
 
 docker login $LOGIN_SERVER -u $USER_NAME -p $PASSWORD
 ```
@@ -128,22 +128,22 @@ aks-nodepool1-xxxxxxxx-yyyyyyyyyy   Ready    agent   76s     v1.18.10
 
 ## <a name="install-open-liberty-operator"></a>Installieren von Open Liberty Operator
 
-Nachdem Sie den Cluster erstellt und eine Verbindung damit hergestellt haben, installieren Sie den [Open Liberty Operator](https://github.com/OpenLiberty/open-liberty-operator/tree/master/deploy/releases/0.7.0) durch Ausführung der folgenden Befehle.
+Nachdem Sie den Cluster erstellt und eine Verbindung damit hergestellt haben, installieren Sie den [Open Liberty Operator](https://github.com/OpenLiberty/open-liberty-operator/tree/master/deploy/releases/0.7.1) durch Ausführung der folgenden Befehle.
 
 ```azurecli-interactive
 OPERATOR_NAMESPACE=default
 WATCH_NAMESPACE='""'
 
 # Install Custom Resource Definitions (CRDs) for OpenLibertyApplication
-kubectl apply -f https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.0/openliberty-app-crd.yaml
+kubectl apply -f https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.1/openliberty-app-crd.yaml
 
 # Install cluster-level role-based access
-curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.0/openliberty-app-cluster-rbac.yaml \
+curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.1/openliberty-app-cluster-rbac.yaml \
       | sed -e "s/OPEN_LIBERTY_OPERATOR_NAMESPACE/${OPERATOR_NAMESPACE}/" \
       | kubectl apply -f -
 
 # Install the operator
-curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.0/openliberty-app-operator.yaml \
+curl -L https://raw.githubusercontent.com/OpenLiberty/open-liberty-operator/master/deploy/releases/0.7.1/openliberty-app-operator.yaml \
       | sed -e "s/OPEN_LIBERTY_WATCH_NAMESPACE/${WATCH_NAMESPACE}/" \
       | kubectl apply -n ${OPERATOR_NAMESPACE} -f -
 ```
@@ -156,19 +156,26 @@ Zum Bereitstellen und Ausführen Ihrer Liberty-Anwendung im AKS-Cluster müssen 
 1. Wechseln Sie in das Verzeichnis `javaee-app-simple-cluster` des lokalen Klons.
 1. Führen Sie `mvn clean package` zum Verpacken der Anwendung aus.
 1. Führen Sie zum Testen der Anwendung `mvn liberty:dev` aus. Bei erfolgreicher Ausführung sollte in der Befehlsausgabe `The defaultServer server is ready to run a smarter planet.` angezeigt werden. Verwenden Sie `CTRL-C`, um die Anwendung zu beenden.
+1. Rufen Sie Werte für die Eigenschaften `artifactId` und `version` ab, die in der Datei `pom.xml` definiert sind.
+
+   ```azurecli-interactive
+   artifactId=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.artifactId}' --non-recursive exec:exec)
+   version=$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+   ```
+1. Führen Sie `cd target` aus, um das Verzeichnis in den Build des Beispiels zu ändern.
 1. Führen Sie einen der folgenden Befehle aus, um das Anwendungsimage zu erstellen und es an die ACR-Instanz zu pushen.
    * Erstellen Sie mit Open Liberty Base ein Image, wenn Sie lieber Open Liberty als Lightweight Open Source Java™-Runtime verwenden möchten:
 
      ```azurecli-interactive
      # Build and tag application image. This will cause the ACR instance to pull the necessary Open Liberty base images.
-     az acr build -t javaee-cafe-simple:1.0.0 -r $REGISTRY_NAME .
+     az acr build -t ${artifactId}:${version} -r $REGISTRY_NAME .
      ```
 
    * Erstellen Sie mit WebSphere Liberty ein Basisimage, wenn Sie lieber eine kommerzielle Version von Open Liberty verwenden möchten:
 
      ```azurecli-interactive
      # Build and tag application image. This will cause the ACR instance to pull the necessary WebSphere Liberty base images.
-     az acr build -t javaee-cafe-simple:1.0.0 -r $REGISTRY_NAME --file=Dockerfile-wlp .
+     az acr build -t ${artifactId}:${version} -r $REGISTRY_NAME --file=Dockerfile-wlp .
      ```
 
 ## <a name="deploy-application-on-the-aks-cluster"></a>Bereitstellen der Anwendung auf dem AKS-Cluster
@@ -184,26 +191,26 @@ Führen Sie die folgenden Schritte aus, um die Liberty-Anwendung im AKS-Cluster 
       --docker-password=${PASSWORD}
    ```
 
-1. Überprüfen Sie, ob das aktuelle Arbeitsverzeichnis `javaee-app-simple-cluster` Ihres lokalen Klons ist.
+1. Überprüfen Sie, ob das aktuelle Arbeitsverzeichnis `javaee-app-simple-cluster/target` Ihres lokalen Klons ist.
 1. Führen Sie die folgenden Befehle aus, um Ihre Liberty-Anwendung mit drei Replikaten im AKS-Cluster bereitzustellen. Die Befehlsausgabe wird auch inline angezeigt.
 
    ```azurecli-interactive
-   # Create OpenLibertyApplication "javaee-app-simple-cluster"
-   cat openlibertyapplication.yaml | sed -e "s/\${Container_Registry_URL}/${LOGIN_SERVER}/g" | sed -e "s/\${REPLICAS}/3/g" | kubectl apply -f -
+   # Create OpenLibertyApplication "javaee-cafe-cluster"
+   kubectl apply -f openlibertyapplication.yaml
 
-   openlibertyapplication.openliberty.io/javaee-app-simple-cluster created
+   openlibertyapplication.openliberty.io/javaee-cafe-cluster created
 
    # Check if OpenLibertyApplication instance is created
-   kubectl get openlibertyapplication javaee-app-simple-cluster
+   kubectl get openlibertyapplication ${artifactId}-cluster
 
    NAME                        IMAGE                                                   EXPOSED   RECONCILED   AGE
-   javaee-app-simple-cluster   youruniqueacrname.azurecr.io/javaee-cafe-simple:1.0.0             True         59s
+   javaee-cafe-cluster         youruniqueacrname.azurecr.io/javaee-cafe:1.0.25         True         59s
 
    # Check if deployment created by Operator is ready
-   kubectl get deployment javaee-app-simple-cluster --watch
+   kubectl get deployment ${artifactId}-cluster --watch
 
    NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
-   javaee-app-simple-cluster   0/3     3            0           20s
+   javaee-cafe-cluster         0/3     3            0           20s
    ```
 
 1. Warten Sie, bis unter der Spalte `READY` der Wert `3/3` und unter der Spalte `AVAILABLE` der Wert `3` angezeigt wird. Verwenden Sie dann `CTRL-C`, um den Überwachungsprozess `kubectl` zu beenden.
@@ -215,10 +222,10 @@ Wenn die Anwendung ausgeführt wird, macht ein Kubernetes-Lastenausgleichsdienst
 Verwenden Sie zum Überwachen des Fortschritts den Befehl [kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) mit dem Argument `--watch`.
 
 ```azurecli-interactive
-kubectl get service javaee-app-simple-cluster --watch
+kubectl get service ${artifactId}-cluster --watch
 
 NAME                        TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
-javaee-app-simple-cluster   LoadBalancer   10.0.251.169   52.152.189.57   80:31732/TCP     68s
+javaee-cafe-cluster         LoadBalancer   10.0.251.169   52.152.189.57   80:31732/TCP     68s
 ```
 
 Nachdem die externe IP-Adresse (*EXTERNAL-IP*) von *ausstehend* in eine tatsächliche öffentliche IP-Adresse geändert wurde, verwenden Sie `CTRL-C`, um die `kubectl`-Überwachung zu beenden.

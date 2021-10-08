@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 224b0685b922e6ddd833637ddc1b628f0479ec70
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 61703654b11543f2c0f41fa68964cae287d940b8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112200814"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563737"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>LDAP-Synchronisierung mit Azure Active Directory
 
@@ -40,7 +40,7 @@ Sie müssen Identitätsdaten zwischen Ihren lokalen LDAP v3-Verzeichnissen und 
 
 * **Web-App**: Anwendung, die von LDAP v3-Verzeichnissen abhängig ist.
 
-* **Azure AD**: Azure AD synchronisiert Identitätsinformationen (Benutzer, Gruppen, Kennwörter) aus lokalen LDAP-Verzeichnissen der Organisation über Azure AD Connect. 
+* **Azure AD**: Azure AD synchronisiert Identitätsinformationen (Benutzer, Gruppen) über Azure AD Connect aus lokalen LDAP-Verzeichnissen der Organisation. 
 
 * **Azure AD Connect**: Ein Tool zum Verbinden von lokalen Identitätsinfrastrukturen mit Microsoft Azure AD. Der Assistent und die Anleitungen auf der Oberfläche unterstützen beim Bereitstellen und Konfigurieren von Voraussetzungen und erforderlichen Komponenten für die Verbindung. 
 

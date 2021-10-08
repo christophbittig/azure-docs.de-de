@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/30/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a2cf8ef27efb6e368390f23d4011e5dcb7c1e939
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 10c914847da1f466ae88ea4ec7ffe269560c8e5d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425055"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671087"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Sicherer Zugriff auf Daten in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,6 +36,8 @@ Primäre/sekundäre Schlüssel ermöglichen den Zugriff auf alle Verwaltungsress
 
 > [!NOTE]
 > Im folgenden Abschnitt werden die Schritte zum Rotieren und erneuten Generieren von Schlüsseln für die SQL-API beschrieben. Wenn Sie eine andere API verwenden, finden Sie weitere Informationen in den Abschnitten [Azure Cosmos DB-API für Mongo DB](database-security.md?tabs=mongo-api#key-rotation), [Cassandra-API](database-security.md?tabs=cassandra-api#key-rotation), [Gremlin-API](database-security.md?tabs=gremlin-api#key-rotation) oder [Tabellen-API](database-security.md?tabs=table-api#key-rotation).
+>
+> Informationen zum Überwachen Ihres Kontos auf wichtige Updates und zur Neugenerierung von Schlüsseln finden Sie im Artikel [Überwachen Ihres Azure Cosmos DB-Kontos auf Updates und Erneuerungen von Schlüsseln](monitor-account-key-updates.md).
 
 Der Prozess der Schlüsselrotation und -neugenerierung ist einfach. Stellen Sie zunächst sicher, dass **Ihre Anwendung konsistent entweder den Primärschlüssel oder den Sekundärschlüssel** verwendet, um auf Ihr Azure Cosmos DB-Konto zuzugreifen. Führen Sie dann die unten beschriebenen Schritte aus.
 

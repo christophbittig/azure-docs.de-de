@@ -6,17 +6,17 @@ services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.reviewer: larryfr
-ms.date: 10/21/2020
+ms.date: 09/14/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 960cbbac9a1fc8c3a87296ddcb0711564417c647
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 7db7f1b3364b2a6bdb6d39a07a0d70b180937055
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885900"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427531"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Einrichten einer Entwicklungsumgebung mit Azure Databricks und automatisiertem maschinellem Lernen in Azure Machine Learning 
 
@@ -53,7 +53,7 @@ Verwenden Sie die folgenden Einstellungen:
 | Einstellung |Anwendungsbereich| Wert |
 |----|---|---|
 | Clustername |immer| IhrClustername |
-| Databricks-Runtimeversion |immer| Runtime 7.1 (Scala 2.21, Spark 3.0.0) – Nicht-ML|
+| Databricks-Runtimeversion |immer| Runtime 7.3 LTS oder niedriger – nicht ML|
 | Python-Version |immer| 3 |
 | Workertyp <br>(bestimmt die maximale Anzahl gleichzeitiger Iterationen) |Automatisiertes maschinelles Lernen<br>Machine Learning| Arbeitsspeicheroptimierte VM bevorzugt |
 | Worker |immer| 2 oder mehr |
@@ -97,7 +97,7 @@ Um AutoML zu verwenden, fahren Sie mit [Hinzufügen des Azure ML SDK mit AutoML 
   ![Azure Machine Learning SDK für Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg) 
 
 ## <a name="add-the-azure-ml-sdk-with-automl-to-databricks"></a>Hinzufügen des Azure ML SDK mit AutoML zu Databricks
-Wenn der Cluster mit Databricks Runtime 7.1 oder höher (*nicht* ML) erstellt wurde, führen Sie den folgenden Befehl in der ersten Zelle Ihres Notebooks aus, um das AML SDK zu installieren.
+Wenn der Cluster mit Databricks Runtime 7.1 - 7.3 LTS oder höher (*nicht* ML) erstellt wurde, führen Sie den folgenden Befehl in der ersten Zelle Ihres Notebooks aus, um das AML SDK zu installieren.
 
 ```
 %pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt

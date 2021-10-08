@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1b4b3e85323e2023afb67b2175377cb9b2d13a4f
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 7f327e0eecbfe51095f3f533dc787cc9aeedfb1e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177510"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638309"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrieren von Workloads unter Verwendung von Layer-2-Stretchingnetzwerken
 
@@ -414,7 +414,7 @@ ENCAP       : GENEVE
 
 ## <a name="obtain-the-peer-code-for-l2vpn-on-the-nsx-t-side"></a>Abrufen des Peercodes für L2VPN auf NSX-T-Seite
 
-Rufen Sie den Peercode des NSX-T-Endpunkts ab. Der Peercode wird für das Konfigurieren des Remoteendpunkts benötigt. Die <Sitzungs-ID> für das L2VPN kann im vorherigen Abschnitt abgerufen werden. Weitere Informationen finden Sie im [Handbuch zur NSX-T 2.3-API](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html).
+Rufen Sie den Peercode des NSX-T-Endpunkts ab. Der Peercode wird für das Konfigurieren des Remoteendpunkts benötigt. Das L2VPN \<session-id\> kann aus dem vorherigen Abschnitt entnommen werden. Weitere Informationen finden Sie im [Handbuch zur NSX-T 2.3-API](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html).
 
 ```
 GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes

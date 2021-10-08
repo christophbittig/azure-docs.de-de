@@ -1,14 +1,14 @@
 ---
 title: Empfohlene Sicherheitsmaßnahmen
 description: Beim Verwenden von Azure Lighthouse müssen Sicherheit und Zugriffssteuerung berücksichtigt werden.
-ms.date: 03/12/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 897f09c41d550d6200cc3d78743bb3b010f2c402
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 52bc5301633f8e9d92aeaeee22ecf34b6458fccb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113768251"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782364"
 ---
 # <a name="recommended-security-practices"></a>Empfohlene Sicherheitsmaßnahmen
 
@@ -44,6 +44,9 @@ Beispielsweise könnten Sie eine Struktur wie die folgende verwenden:
 Nachdem Sie diese Gruppen erstellt haben, können Sie Benutzer nach Bedarf zuweisen. Fügen Sie nur die Benutzer hinzu, die wirklich Zugriff benötigen. Achten Sie darauf, dass Sie die Gruppenmitgliedschaft regelmäßig überprüfen und alle Benutzer entfernen, die nicht mehr angemessen oder erforderlich sind.
 
 Bedenken Sie, dass jede Gruppe (bzw. jeder Benutzer oder Dienstprinzipal), wenn Sie [das Onboarding von Kunden über ein öffentliches verwaltetes Dienstangebot durchführen](../how-to/publish-managed-services-offers.md), die Sie einschließen, über dieselben Berechtigungen für jeden Kunden verfügt, der den Plan kauft. Um verschiedene Gruppen für die Arbeit mit den einzelnen Kunden zuzuweisen, müssen Sie einen gesonderten privaten Plan veröffentlichen, der exklusiv für jeden Kunden ist, oder Sie müssen Kunden einzeln aufnehmen, indem Sie Azure Resource Manager-Vorlagen verwenden. Beispielsweise könnten Sie einen öffentlichen Plan veröffentlichen, der nur über sehr eingeschränkten Zugriff verfügt, und dann mit dem Kunden direkt zusammenarbeiten, um dessen Ressourcen für zusätzlichen Zugriff zu integrieren, indem Sie eine angepasste Azure Resource Manager-Vorlage verwenden, die nach Bedarf zusätzlichen Zugriff gewährt.
+
+> [!TIP]
+> Sie können auch *berechtigte Autorisierungen* erstellen, mit denen Benutzer in Ihrem verwaltungsfähigen Mandanten vorübergehend ihre Rolle erhöhen können. Durch Verwenden von berechtigten Autorisierungen können Sie die Anzahl von permanenten Benutzerzuweisungen zu privilegierten Rollen verringern. Dadurch werden Sicherheitsrisiken im Zusammenhang mit privilegiertem Zugriff durch Benutzer in Ihrem Mandanten minimiert. Dieses Feature befindet sich derzeit in der Public Preview, und hierfür gelten spezifische Lizenzierungsanforderungen. Weitere Informationen finden Sie unter [Erstellen von berechtigten Autorisierungen](../how-to/create-eligible-authorizations.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

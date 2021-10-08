@@ -1,18 +1,20 @@
 ---
-title: Bereitstellen von Ressourcen mit Azure-CLI und Vorlagen
-description: Verwenden Sie Azure Resource Manager und Azure CLI, um Ressourcen in Azure bereitzustellen. Die Ressourcen werden in einer Resource Manager-Vorlage definiert.
+title: Azure-Bereitstellungsvorlagen mit Azure CLI – Azure Resource Manager | Microsoft-Dokumentation
+description: Verwenden Sie Azure Resource Manager und die Azure CLI, um Ressourcengruppen zu erstellen und in Azure bereitzustellen. Die Ressourcen werden in einer Azure-Bereitstellungsvorlage definiert.
 ms.topic: conceptual
-ms.date: 07/15/2021
-ms.openlocfilehash: 8ecb8bb2e6b24571d91e97157ff91ba931b0719d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.date: 09/17/2021
+ms.custom: devx-track-azurecli, seo-azure-cli
+keywords: Bereitstellen der ARM-Vorlage mit Azure CLI, Erstellen einer Ressourcengruppe in Azure, Azure-Bereitstellungsvorlage, Bereistellungsressourcen, ARM-Vorlage, Azure-ARM-Vorlage
+ms.openlocfilehash: 5b7734e3b91f7e842f17888f3f3c67d05655fc97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296771"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585012"
 ---
-# <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI
+# <a name="how-to-use-azure-resource-manager-arm-deployment-templates-with-azure-cli"></a>Verwenden von ARM-Bereitstellungsvorlagen (Azure Resource Manager) mit der Azure CLI
 
-In diesem Artikel wird erläutert, wie Sie Ihre Ressourcen mithilfe der Azure CLI und Azure Resource Manager-Vorlagen (ARM) in Azure bereitstellen. Wenn Sie nicht mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen vertraut sind, informieren Sie sich unter [Übersicht über die Vorlagenbereitstellung](overview.md).
+In diesem Artikel wird erläutert, wie Sie Ihre Ressourcen mithilfe der Azure CLI und Azure Resource Manager-Vorlagen (ARM) in Azure bereitstellen.  Wenn Sie nicht mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen vertraut sind, informieren Sie sich unter [Übersicht über die Vorlagenbereitstellung](overview.md).
 
 Die Bereitstellungsbefehle wurden in Version 2.2.0 der Azure CLI geändert. Die Beispiele in diesem Artikel erfordern [Version 2.20.0 oder höher der Azure CLI](/cli/azure/install-azure-cli).
 
@@ -22,7 +24,7 @@ Wenn die Azure-Befehlszeilenschnittstelle nicht installiert ist, können Sie Azu
 
 ## <a name="deployment-scope"></a>Bereitstellungsumfang
 
-Sie können als Ziel für Ihre Bereitstellung eine Ressourcengruppe, ein Abonnement, eine Verwaltungsgruppe oder einen Mandanten verwenden. Abhängig vom Umfang der Bereitstellung verwenden Sie unterschiedliche Befehle.
+Sie können als Ziel für Ihre Azure-Bereitstellungsvorlage eine Ressourcengruppe, ein Abonnement, eine Verwaltungsgruppe oder einen Mandanten verwenden. Abhängig vom Umfang der Bereitstellung verwenden Sie unterschiedliche Befehle.
 
 * Für die Bereitstellung in einer **Ressourcengruppe** verwenden Sie [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create):
 
@@ -58,7 +60,7 @@ Der Benutzer, der die Vorlage bereitstellt, muss für jeden Bereich über die er
 
 ## <a name="deploy-local-template"></a>Bereitstellen einer lokalen Vorlage
 
-Sie können eine Vorlage bereitstellen, die auf Ihrem lokalen Computer oder extern gespeichert ist. In diesem Abschnitt wird die Bereitstellung einer lokalen Vorlage beschrieben.
+Sie können eine ARM-Vorlage bereitstellen, die auf Ihrem lokalen Computer oder extern gespeichert ist. In diesem Abschnitt wird die Bereitstellung einer lokalen Vorlage beschrieben.
 
 Wenn eine Bereitstellung in einer Ressourcengruppe erfolgen soll, die nicht vorhanden ist, erstellen Sie zunächst die Ressourcengruppe. Der Name einer Ressourcengruppe darf nur alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern enthalten. Der Name kann bis zu 90 Zeichen umfassen. Der Name darf nicht mit einem Punkt enden.
 
@@ -76,7 +78,7 @@ az deployment group create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Nachricht mit dem Ergebnis angezeigt:
+Das Abschließen der Azure-Bereitstellungsvorlage kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Nachricht mit dem Ergebnis angezeigt:
 
 ```output
 "provisioningState": "Succeeded",
@@ -118,9 +120,9 @@ az deployment group create \
 
 Weitere Informationen finden Sie unter [Verwenden des relativen Pfads für verknüpfte Vorlagen](./linked-templates.md#linked-template).
 
-## <a name="deployment-name"></a>„Deployment name“ (Bereitstellungsname)
+## <a name="azure-deployment-template-name"></a>Azure-Bereitstellungsvorlagenname
 
-Wenn Sie eine ARM-Vorlage bereitstellen, können Sie der Bereitstellung einen Namen geben. Dieser Name kann das Abrufen der Bereitstellung aus dem Bereitstellungsverlauf vereinfachen. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Vorlagendatei verwendet. Wenn Sie beispielsweise eine Vorlage mit dem Namen _azuredeploy.json_ bereitstellen und keinen Bereitstellungsnamen angeben, erhält die Bereitstellung den Namen `azuredeploy`.
+Wenn Sie eine ARM-Vorlage bereitstellen, können Sie der Azure-Bereitstellungsvorlage einen Namen geben. Dieser Name kann das Abrufen der Bereitstellung aus dem Bereitstellungsverlauf vereinfachen. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Vorlagendatei verwendet. Wenn Sie beispielsweise eine Vorlage mit dem Namen _azuredeploy.json_ bereitstellen und keinen Bereitstellungsnamen angeben, erhält die Bereitstellung den Namen `azuredeploy`.
 
 Bei jedem Ausführen einer Bereitstellung wird dem Bereitstellungsverlauf der Ressourcengruppe ein Eintrag mit dem Bereitstellungsnamen hinzugefügt. Wenn Sie eine andere Bereitstellung ausführen und denselben Namen vergeben, wird der vorherige Eintrag durch die aktuelle Bereitstellung ersetzt. Wenn Sie eindeutige Einträge im Bereitstellungsverlauf beibehalten möchten, müssen Sie jeder Bereitstellung einen eindeutigen Namen geben.
 
@@ -175,7 +177,7 @@ Weitere Informationen finden Sie unter [Azure Resource Manager-Vorlagenspezifika
 
 ## <a name="preview-changes"></a>Vorschau der Änderungen
 
-Vor dem Bereitstellen der Vorlage können Sie die Änderungen, die von der Vorlage an Ihrer Umgebung vorgenommen werden, in der Vorschau anzeigen. Überprüfen Sie anhand des [„Was-wäre-wenn“-Vorgangs](./deploy-what-if.md), ob die Vorlage die erwarteten Änderungen vornimmt. „Was-wäre-wenn“ überprüft auch die Vorlage auf Fehler.
+Vor dem Bereitstellen der ARM-Vorlage können Sie die Änderungen, die von der Vorlage an Ihrer Umgebung vorgenommen werden, in der Vorschau anzeigen. Überprüfen Sie anhand des [„Was-wäre-wenn“-Vorgangs](./deploy-what-if.md), ob die Vorlage die erwarteten Änderungen vornimmt. „Was-wäre-wenn“ überprüft auch die Vorlage auf Fehler.
 
 ## <a name="parameters"></a>Parameter
 

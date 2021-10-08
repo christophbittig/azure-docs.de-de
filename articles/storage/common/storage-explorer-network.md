@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
 ms.author: marayerm
-ms.openlocfilehash: a4afdc8897e15fcb563812bda9da378c66ca4bd9
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 2731f4473b726e7433167fe15c9e1f29c775d9cb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432426"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627879"
 ---
 # <a name="network-connections-in-storage-explorer"></a>Netzwerkverbindungen in Storage-Explorer
 
@@ -20,31 +20,32 @@ Wenn Sie keine Verbindung mit einem lokalen Emulator herstellen, verwendet Stora
 
 ## <a name="hostnames-accessed-by-storage-explorer"></a>Hostnamen, auf die der Storage-Explorer zugreift
 
-Storage-Explorer richtet Anforderungen an verschiedene Endpunkte, während sie verwendet werden. Die folgende Liste enthält allgemeine Hostnamen, an die Storage-Explorer Anforderungen richtet:
+Storage-Explorer richtet Anforderungen an verschiedene Endpunkte, während sie verwendet werden. In der folgenden Liste sind häufige Hostnamen aufgeführt, an die Storage-Explorer Anforderungen stellt:
+
 - ARM-Endpunkte:
-    - `management.azure.com` (Azure weltweit)
-    - `management.chinacloudapi.cn` (Azure China)
-    - `management.microsoftazure.de` (Azure Deutschland)
-    - `management.usgovcloudapi.net` (Azure US Government)
+  - `management.azure.com` (Azure weltweit)
+  - `management.chinacloudapi.cn` (Azure China)
+  - `management.microsoftazure.de` (Azure Deutschland)
+  - `management.usgovcloudapi.net` (Azure US Government)
 - Anmeldeendpunkte:
-    - `login.microsoftonline.com` (Azure weltweit)
-    - `login.chinacloudapi.cn` (Azure China)
-    - `login.microsoftonline.de` (Azure Deutschland)
-    - `login.microsoftonline.us` (Azure US Government)
+  - `login.microsoftonline.com` (Azure weltweit)
+  - `login.chinacloudapi.cn` (Azure China)
+  - `login.microsoftonline.de` (Azure Deutschland)
+  - `login.microsoftonline.us` (Azure US Government)
 - Graph-Endpunkte:
-    - `graph.windows.net` (Azure weltweit)
-    - `graph.chinacloudapi.cn` (Azure China)
-    - `graph.cloudapi.de` (Azure Deutschland)
-    - `graph.windows.net` (Azure US Government)
+  - `graph.windows.net` (Azure weltweit)
+  - `graph.chinacloudapi.cn` (Azure China)
+  - `graph.cloudapi.de` (Azure Deutschland)
+  - `graph.windows.net` (Azure US Government)
 - Azure Storage-Endpunkte:
-    - `(blob|file|queue|table|dfs).core.windows.net` (Azure weltweit)
-    - `(blob|file|queue|table|dfs).core.chinacloudapi.net` (Azure China)
-    - `(blob|file|queue|table|dfs).core.cloudapi.net` (Azure Deutschland)
-    - `(blob|file|queue|table|dfs).core.cloudapi.net` (Azure US Government)
-- Storage-Explorer-Aktualisierung: `storageexplorerpublish.blob.core.windows.net` 
+  - `(blob|file|queue|table|dfs).core.windows.net` (Azure weltweit)
+  - `(blob|file|queue|table|dfs).core.chinacloudapi.cn` (Azure China)
+  - `(blob|file|queue|table|dfs).core.cloudapi.de` (Azure Deutschland)
+  - `(blob|file|queue|table|dfs).core.usgovcloudapi.net` (Azure US Government)
+- Storage-Explorer-Aktualisierung: `storageexplorerpublish.blob.core.windows.net`
 - Microsoft-Linkweiterleitung:
-    - `aka.ms`
-    - `go.microsoft.com`
+  - `aka.ms`
+  - `go.microsoft.com`
 - Alle benutzerdefinierten Domänen, privaten Links oder für Azure Stack-Instanzen spezifische Endpunkte, hinter denen sich Ihre Ressourcen befinden
 - Hostnamen des Remoteemulators
 
@@ -151,55 +152,55 @@ Die folgende Liste enthält die vom **Systemproxy** unterstützten Funktionen:
 - Suchen nach und Herunterladen von Updates
 - Auflisten von Abonnements
 - Speicherkontofunktionen
-    - Auflistung
+  - Auflistung
 - Blobfeatures
-    - Container
-        - Erstellen
-        - Auflistung
-        - Verwalten von gespeicherten Zugriffsrichtlinien
-        - Ändern der öffentlichen Zugriffsebene
-        - Leasen
-        - Eigenschaften
-        - Löschen
-    - Blobs
-        - Auflistung
-        - Statistik
-        - Wiederherstellen
-    - ADLS Gen2-Blobs
-        - Auflistung
-        - Statistik
-        - Verwalten von ACLs (nur Anzeigen und Ändern vorhandener Entitäten)
-        - Verteilen von ACLs
-        - Move
-        - Umbenennen
-        - Ordner erstellen
+  - Container
+    - Erstellen
+    - Auflistung
+    - Verwalten von gespeicherten Zugriffsrichtlinien
+    - Ändern der öffentlichen Zugriffsebene
+    - Leasen
+    - Eigenschaften
+    - Löschen
+  - Blobs
+    - Auflistung
+    - Statistik
+    - Wiederherstellen
+  - ADLS Gen2-Blobs
+    - Auflistung
+    - Statistik
+    - Verwalten von ACLs (nur Anzeigen und Ändern vorhandener Entitäten)
+    - Verteilen von ACLs
+    - Move
+    - Umbenennen
+    - Ordner erstellen
 - Warteschlangenfunktionen
-    - Warteschlangen
-        - Erstellen
-        - Auflistung
-        - Verwalten von Zugriffsrichtlinien
-        - Eigenschaften
-        - Löschen
-        - Clear
-    - Warteschlangennachrichten
-        - Auflistung
-        - Move
-        - Hinzufügen
-        - Entfernen aus der Warteschlange
+  - Warteschlangen
+    - Erstellen
+    - Auflistung
+    - Verwalten von Zugriffsrichtlinien
+    - Eigenschaften
+    - Löschen
+    - Clear
+  - Warteschlangennachrichten
+    - Auflistung
+    - Move
+    - Hinzufügen
+    - Entfernen aus der Warteschlange
 - Dateifreigabefeatures
-    - Dateien und Ordner
-        - Neuer Ordner
-        - Eigenschaften
+  - Dateien und Ordner
+    - Neuer Ordner
+    - Eigenschaften
 - Datenträgerfeatures
-    - Auflisten von Ressourcengruppen
-    - Auflisten von Datenträgern
-    - Hochladen von Datenträgern
-    - Herunterladen von Datenträgern
-    - Kopieren von Datenträgern
-    - Erstellen von Momentaufnahmen
-    - Löschen von Datenträgern
+  - Auflisten von Ressourcengruppen
+  - Auflisten von Datenträgern
+  - Hochladen von Datenträgern
+  - Herunterladen von Datenträgern
+  - Kopieren von Datenträgern
+  - Erstellen von Momentaufnahmen
+  - Löschen von Datenträgern
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Behandeln von Proxyproblemen](./storage-explorer-troubleshooting.md#proxy-issues)
-* [Behandeln von Zertifikatproblemen](./storage-explorer-troubleshooting.md#ssl-certificate-issues)
+- [Behandeln von Proxyproblemen](./storage-explorer-troubleshooting.md#proxy-issues)
+- [Behandeln von Zertifikatproblemen](./storage-explorer-troubleshooting.md#ssl-certificate-issues)

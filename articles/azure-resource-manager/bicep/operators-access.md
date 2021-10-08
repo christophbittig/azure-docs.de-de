@@ -4,13 +4,13 @@ description: Beschreibt die Bicep-Zugriffsoperatoren für Ressourcen und Eigensc
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: b5eebb9b5dd6d39ae790b8fda7133e94ecd0cdb5
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/10/2021
+ms.openlocfilehash: f3ed1ca46c2dfbcab8bfbdc720ff7ab448cbc742
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224287"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744443"
 ---
 # <a name="bicep-accessor-operators"></a>Bicep-Accessoroperatoren
 
@@ -25,11 +25,15 @@ Die Accessoroperatoren werden verwendet, um auf untergeordnete Ressourcen, Eigen
 
 ## <a name="index-accessor"></a>Indexaccessor
 
-`array[index]`
+`array[integerIndex]`
 
-`object['index']`
+`object['stringIndex']`
 
-Um ein Element in einem Array abzurufen, verwenden Sie `[index]`, und geben Sie eine ganze Zahl für den Index an.
+Verwenden Sie den Indexaccessor, um entweder ein Element aus einem Array oder eine Eigenschaft aus einem Objekt abzurufen.
+
+Für ein **Array** geben Sie den Index als **ganze Zahl** an. Die ganze Zahl entspricht der auf Null basierenden Position des abzurufenden Elements.
+
+Für ein **Objekt** geben Sie den Index als **Zeichenfolge** an. Die Zeichenfolge entspricht dem Namen des abzurufenden Objekts.
 
 Das folgende Beispiel ruft ein Element in einem Array ab.
 
@@ -45,11 +49,11 @@ output accessorResult string = arrayVar[1]
 
 Ausgabe des Beispiels:
 
-| Name | type | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ---- |
 | accessorResult | Zeichenfolge | „Contoso“ |
 
-Sie können auch den Indexaccessor verwenden, um eine Objekteigenschaft anhand des Namens abzurufen. Sie müssen eine Zeichenfolge, keine ganze Zahl, für den Index verwenden. Das folgende Beispiel ruft eine Eigenschaft für ein Objekt ab.
+Das nächste Beispiel ruft eine Eigenschaft für ein Objekt ab.
 
 ```bicep
 var environmentSettings = {
@@ -66,7 +70,7 @@ output accessorResult string = environmentSettings['dev'].name
 
 Ausgabe des Beispiels:
 
-| Name | type | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ---- |
 | accessorResult | Zeichenfolge | „Development“ |
 
@@ -160,7 +164,7 @@ output outputQ int = x.q
 
 Ausgabe des Beispiels:
 
-| Name | type | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ---- |
 | `outputZ` | Zeichenfolge | 'Hello' |
 | `outputQ` | integer | 42 |

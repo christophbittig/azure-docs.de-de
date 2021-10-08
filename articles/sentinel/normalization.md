@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2021
 ms.author: bagol
-ms.openlocfilehash: e03f343444aed0c3aafac28deccb0f38c35e2478
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: e90171faf59daf70bde2150036fdf0a757e53979
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515056"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621393"
 ---
 # <a name="normalization-and-the-azure-sentinel-information-model-asim-public-preview"></a>Normalisierung und das Azure Sentinel-Informationsmodell (ASIM) (Öffentliche Vorschau)
 
@@ -91,7 +91,7 @@ Im Azure Sentinel-Informationsmodell werden die folgenden Begriffe verwendet:
 
 So beginnen Sie mit der Verwendung von ASIM:
 
-1. Stellen Sie die ASIM-Parser aus dem [Azure Sentinel-GitHub-Repository](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers) über die Ordner bereit, die mit `ASim*` beginnen.
+1. Stellen Sie alle ASIM-Parser schnell aus dem [Azure Sentinel GitHub-Repository](https://aka.ms/AzSentinelASim) bereit.
 
 1. Aktivieren Sie Analyseregelvorlagen, die ASIM verwenden. Weitere Informationen finden Sie unter [Inhaltsliste des Azure Sentinel-Informationsmodells (ASIM)](normalization-content.md#builtin).
 
@@ -103,13 +103,13 @@ So beginnen Sie mit der Verwendung von ASIM:
 
     - Ermöglichen Sie die Verwendung integrierter Analysefunktionen für Ihre benutzerdefinierten Daten, indem Sie Parser für Ihre benutzerdefinierten Quellen [schreiben](normalization-about-parsers.md) und sie dem relevanten quellenunabhängigen Parser [hinzufügen](normalization-about-parsers.md#include).
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel gibt einen Überblick über die Normalisierung in Azure Sentinel und das Azure Sentinel-Informationsmodell.
+Dieser Artikel gibt einen Überblick über die Normalisierung in Azure Sentinel und das Azure Sentinel Information Model.
 
 Weitere Informationen finden Sie unter
 
 - Sehen Sie sich das [ASIM-Webinar](https://www.youtube.com/watch?v=WoGD-JeC7ng) an, oder befassen Sie sich mit den [Folien](https://1drv.ms/b/s!AnEPjr8tHcNmjDY1cro08Fk3KUj-?e=murYHG).
 - [Schemas des Azure Sentinel-Informationsmodells](normalization-about-schemas.md)
 - [Parser des Azure Sentinel-Informationsmodells](normalization-about-parsers.md)
-- [Inhalte des Azure Sentinel-Informationsmodells](normalization-content.md)
+- [ Azure Sentinel-Informationsmodell Inhalt](normalization-content.md)

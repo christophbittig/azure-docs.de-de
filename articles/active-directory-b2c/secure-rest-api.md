@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ef1c747666b2c75567d88f440cef37a631f64064
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f77c099425aac4f6484db8745e036a6dd1833ed4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355094"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128578943"
 ---
 # <a name="secure-your-api-used-an-api-connector-in-azure-ad-b2c"></a>Schützen Ihrer API, die als API-Connector in Azure AD B2C verwendet wird 
 
@@ -59,7 +59,8 @@ Führen Sie die folgenden Schritte aus, um einen API-Connector mit HTTP-Standard
 Um ein technisches REST-API-Profil mit HTTP-Standardauthentifizierung zu konfigurieren, müssen Sie die folgenden kryptografischen Schlüssel zum Speichern des Benutzernamens und des Kennworts erstellen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den Filter **Verzeichnis und Abonnement** und dann Ihr Azure AD B2C-Verzeichnis aus.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 1. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
 1. Wählen Sie **Richtlinienschlüssel** aus, und wählen Sie dann **Hinzufügen** aus.
@@ -179,7 +180,8 @@ Um ein neues Zertifikat in einen bestehenden API-Anschluss hochzuladen, wählen 
 ### <a name="add-a-client-certificate-policy-key"></a>Hinzufügen eines Richtlinienschlüssels für das Clientzertifikat
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den Filter **Verzeichnis und Abonnement** und dann Ihr Azure AD B2C-Verzeichnis aus.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 1. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
 1. Wählen Sie **Richtlinienschlüssel** aus, und wählen Sie dann **Hinzufügen** aus.
@@ -285,14 +287,14 @@ Im folgenden Beispiel wird ein technisches REST-API-Profil verwendet, um eine An
 Bevor das technische Profil mit Azure AD interagieren kann, um ein Zugriffstoken abzurufen, müssen Sie eine Anwendung registrieren. Azure AD B2C basiert auf der Azure AD-Plattform. Sie können die App in Ihrem Azure AD B2C-Mandanten oder in einem beliebigen Azure AD-Mandanten erstellen, den Sie verwalten. So registrieren Sie eine Anwendung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD- oder Azure AD B2C-Mandanten enthält.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen | Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie im linken Menü **Azure Active Directory** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispiel: *Client_Credentials_Auth_app*.
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
 1. Wählen Sie **Registrieren**.
-2. Notieren Sie sich die **Anwendungs-ID (Client)** . 
-
+1. Notieren Sie sich die **Anwendungs-ID (Client)** .
 
 Für einen Clientanmeldeinformationenflow müssen Sie ein Anwendungsgeheimnis erstellen. Der geheime Clientschlüssel wird auch als Anwendungskennwort bezeichnet. Das Geheimnis wird von Ihrer Anwendung verwendet, um ein Zugriffstoken zu erhalten.
 
@@ -308,18 +310,19 @@ Für einen Clientanmeldeinformationenflow müssen Sie ein Anwendungsgeheimnis er
 Sie müssen die Client-ID und den geheimen Clientschlüssel speichern, den Sie zuvor in Ihrem Azure AD B2C-Mandanten notiert haben.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Mandanten enthält.
-3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-4. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
-5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
-6. Klicken Sie unter **Optionen** auf `Manual`.
-7. Geben Sie einen **Namen** für den Richtlinienschlüssel ein, `SecureRESTClientId`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
-8. Geben Sie im Feld **Geheimnis** die Client-ID ein, die Sie zuvor notiert haben.
-9. Wählen Sie für **Schlüsselverwendung** die Option `Signature` aus.
-10. Klicken Sie auf **Erstellen**.
-11. Erstellen Sie einen weiteren Richtlinienschlüssel mit den folgenden Einstellungen:
-    -   **Name**: `SecureRESTClientSecret`.
-    -   **Geheimnis**: Geben Sie den geheimen Clientschlüssel ein, den Sie zuvor notiert haben
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
+1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
+1. Klicken Sie unter **Optionen** auf `Manual`.
+1. Geben Sie einen **Namen** für den Richtlinienschlüssel ein, `SecureRESTClientId`. Dem Namen Ihres Schlüssels wird automatisch das Präfix `B2C_1A_` hinzugefügt.
+1. Geben Sie im Feld **Geheimnis** die Client-ID ein, die Sie zuvor notiert haben.
+1. Wählen Sie für **Schlüsselverwendung** die Option `Signature` aus.
+1. Klicken Sie auf **Erstellen**.
+1. Erstellen Sie einen weiteren Richtlinienschlüssel mit den folgenden Einstellungen:
+    - **Name**: `SecureRESTClientSecret`.
+    - **Geheimnis**: Geben Sie den geheimen Clientschlüssel ein, den Sie zuvor notiert haben
 
 Ersetzen Sie im „ServiceUrl“-Element den Platzhalter „your-tenant-name“ durch den Namen Ihres Azure AD-Mandanten. Alle verfügbaren Optionen finden Sie unter [Definieren eines technischen RESTful-Profils](restful-technical-profile.md).
 
@@ -402,7 +405,8 @@ Nachdem Sie den obigen Codeausschnitt hinzugefügt haben, sollte Ihr technisches
 Rufen Sie zum Konfigurieren eines technischen REST-API-Profils mit einem OAuth2-Bearertoken ein Zugriffstoken vom REST-API-Besitzer ab. Erstellen Sie dann den folgenden kryptografischen Schlüssel zum Speichern des Bearertokens.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den Filter **Verzeichnis und Abonnement** und dann Ihr Azure AD B2C-Verzeichnis aus.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 1. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
 1. Wählen Sie **Richtlinienschlüssel** aus, und wählen Sie dann **Hinzufügen** aus.
@@ -474,7 +478,8 @@ Ein API-Schlüssel ist ein eindeutiger Bezeichner, der zum Authentifizieren eine
 Um ein technisches REST-API-Profil für die Authentifizierung mit API-Schlüssel zu konfigurieren, müssen Sie den folgenden kryptografischen Schlüssel zum Speichern des API-Schlüssels erstellen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im Hauptmenü den Filter **Verzeichnis und Abonnement** und dann Ihr Azure AD B2C-Verzeichnis aus.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 1. Wählen Sie auf der Seite „Übersicht“ die Option **Framework für die Identitätsfunktion** aus.
 1. Wählen Sie **Richtlinienschlüssel** aus, und wählen Sie dann **Hinzufügen** aus.

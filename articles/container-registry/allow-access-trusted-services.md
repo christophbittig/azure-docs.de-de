@@ -3,12 +3,12 @@ title: Zugreifen auf eine Registrierung mit Netzwerkeinschränkungen mit einem v
 description: Aktivieren des sicheren Zugriffs einer vertrauenswürdigen Azure-Dienstinstanz auf eine Containerregistrierung mit Netzwerkeinschränkungen zum Pullen oder Pushen von Images
 ms.topic: article
 ms.date: 05/19/2021
-ms.openlocfilehash: f99215059308c6a2db1e7bce6b9f03580d2b53a4
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: da22d525bbe86403f26daf7c3505c5dadffe4b81
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114286267"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654146"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>Zulassen des sicheren Zugriffs vertrauenswürdiger Dienste auf eine Containerregistrierung mit Netzwerkeinschränkungen (Vorschau)
 
@@ -45,7 +45,7 @@ Wo dies angegeben ist, erfordert der Zugang für den vertrauenswürdigen Dienst 
 | Azure Security Center | Überprüfung auf Sicherheitsrisiken mit [Azure Defender für Containerregistrierungen](scan-images-defender.md). | Nein |
 |ACR-Aufgaben     | [Zugreifen auf die übergeordnete Registrierung oder eine andere Registrierung aus einer ACR-Aufgabe](container-registry-tasks-cross-registry-authentication.md)       | Ja |
 |Machine Learning | [Bereitstellen](../machine-learning/how-to-deploy-custom-container.md) oder [Trainieren](../machine-learning/how-to-train-with-custom-image.md) eines Modells in einem Machine Learning-Arbeitsbereich mithilfe eines benutzerdefinierten Docker-Containers | Ja |
-|Azure Container Registry | [Importieren von Images aus einer anderen Azure Container Registry-Instanz](container-registry-import-images.md#import-from-an-azure-container-registry-in-the-same-ad-tenant) | Nein |
+|Azure Container Registry | [Importieren von Images](container-registry-import-images.md) aus oder in eine netzwerkseitig eingeschränkte Azure-Containerregistrierung | Nein |
 
 > [!NOTE]
 > Wenn Sie die Einstellung „Vertrauenswürdige Dienste zulassen“ aktivieren,gilt dies nicht für bestimmte andere verwaltete Azure-Dienste, einschließlich App Service und Azure Container Instances.

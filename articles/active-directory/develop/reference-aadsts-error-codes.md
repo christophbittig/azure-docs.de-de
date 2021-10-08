@@ -12,12 +12,12 @@ ms.date: 07/28/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3b1d7d8b658e0a0ac01789ca8a13ce0a2f779767
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3a530dae026ffe87efe06fb413966df43ce32314
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339436"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588289"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
@@ -206,6 +206,7 @@ Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen 
 | AADSTS700054 | Response_type „id_token“ ist für die Anwendung nicht aktiviert.  Die Anwendung hat ein ID-Token vom Autorisierungsendpunkt angefordert, aber die implizite Gewährung des ID-Tokens war nicht aktiviert.  Wechseln Sie zu: Azure Portal > Azure Active Directory > App-Registrierungen > Ihre Anwendung auswählen > Authentifizierung. Stellen Sie unter „Implizite Genehmigung und hybride Flows“ sicher, das „ID-Token“ ausgewählt ist.|
 | AADSTS70007 | UnsupportedResponseMode: Die App hat beim Anfordern eines Tokens den nicht unterstützten Wert `response_mode` zurückgegeben.  |
 | AADSTS70008 | ExpiredOrRevokedGrant: Das Aktualisierungstoken ist aufgrund von Inaktivität abgelaufen. Das Token wurde auf XXX ausgestellt und war für einen bestimmten Zeitraum inaktiv. |
+| AADSTS700084 | Das Aktualisierungstoken wurde für eine Single-Page-App (SPA) ausgestellt und hat daher eine feste, begrenzte Lebensdauer von {time}, die nicht verlängert werden kann. Sie ist jetzt abgelaufen, und die SPA muss eine neue Anmeldeanforderung an die Anmeldeseite senden. Das Token wurde am {issueDate} ausgestellt.|
 | AADSTS70011 | InvalidScope: Der von der App angeforderte Bereich ist ungültig. |
 | AADSTS70012 | MsaServerError: Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Versuchen Sie es erneut. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), wenn der Fehler weiterhin auftritt. |
 | AADSTS70016 | AuthorizationPending: OAuth 2.0-Geräteflussfehler. Die Autorisierung steht aus. Das Gerät wird den Abruf der Anforderung wiederholen. |

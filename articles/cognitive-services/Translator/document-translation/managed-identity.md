@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
-ms.date: 07/08/2021
+ms.date: 09/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: 340121b40845369fe05e36a302556543078629eb
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 688fd2391d12f74b46a16954706b3c9e0ee1fb8a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289130"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771828"
 ---
-# <a name="create-and-use-managed-identity-for-document-translation"></a>Erstellen und Verwenden einer verwalteten Identität für die Dokumentübersetzung
+# <a name="create-and-use-managed-identity"></a>Erstellen und Verwenden einer verwalteten Identität
 
 > [!IMPORTANT]
 >
@@ -26,16 +26,7 @@ ms.locfileid: "114289130"
 
  Eine verwaltete Azure-Identität ist ein Dienstprinzipal, der eine Azure Active Directory-Identität und bestimmte Berechtigungen für von Azure verwaltete Ressourcen erstellt. Sie können eine verwaltete Identität verwenden, um Zugriff auf eine beliebige Ressource zu gewähren, die die Azure AD-Authentifizierung unterstützt. Zum Gewähren des Zugriffs weisen Sie einer verwalteten Identität mithilfe der [rollenbasierten Zugriffssteuerung von Azure](../../../role-based-access-control/overview.md) (Azure RBAC) eine Rolle zu.  Es entstehen keine zusätzlichen Kosten für die Verwendung der verwalteten Identität in Azure.
 
-Die verwaltete Identität unterstützt sowohl private als auch öffentlich zugängliche Azure Blob Storage-Konten.  Für Speicherkonten mit öffentlichem Zugriff können Sie eine Shared Access Signature (SAS) verwenden, um eingeschränkten Zugriff zu gewähren.  In diesem Artikel wird untersucht, wie Sie den Zugriff auf Übersetzungsdokumente in Ihrem Azure Blob Storage-Konto mithilfe der systemseitig zugewiesenen verwalteten Identität verwalten können.
-
-> [!NOTE]
->
-> Für alle Vorgänge, die ein im öffentlichen Internet verfügbares Azure Blob Storage-Konto verwenden, können Sie eine URL für eine Shared Access Signature (**SAS**) mit eingeschränkten Rechten für einen begrenzten Zeitraum bereitstellen und diese in Ihren POST-Anforderungen übergeben:
->
-> * Navigieren Sie zum Abrufen der SAS-URL zu Ihrer Speicherressource im Azure-Portal, und wählen Sie die Registerkarte **Storage-Explorer** aus.
-> * Wechseln Sie zum Container, klicken Sie mit der rechten Maustaste auf diesen, und wählen Sie **Shared Access Signature abrufen** aus. Achten Sie darauf, die SAS für den Container abzurufen, nicht für das Speicherkonto.
-> * Stellen Sie sicher, dass die Berechtigungen **Lesen**, **Schreiben**, **Löschen** und **Auflisten** aktiviert sind, und klicken Sie anschließend auf **Erstellen**.
-> * Kopieren Sie den Wert im Abschnitt **URL** dann an einen temporären Speicherort. Er muss das Format `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` aufweisen.
+Die verwaltete Identität unterstützt sowohl private als auch öffentlich zugängliche Azure Blob Storage-Konten.  Für Speicherkonten **mit öffentlichem Zugriff** können Sie eine Shared Access Signature (SAS) verwenden, um eingeschränkten Zugriff zu gewähren.  In diesem Artikel wird untersucht, wie Sie den Zugriff auf Übersetzungsdokumente in Ihrem Azure Blob Storage-Konto mithilfe der systemseitig zugewiesenen verwalteten Identität verwalten können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,11 +36,21 @@ Zunächst benötigen Sie Folgendes:
 
 * Eine [**Übersetzerressource für einen einzelnen Dienst**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) (keine Cognitive Services-Ressource für mehrere Dienste), die einer **nicht globalen** Region zugewiesen ist. Ausführliche Schritte _finden_ Sie unter [Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals](../../cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows).
 
-* Ein [**Azure Blob Storage-Konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) in derselben Region wie Ihre Übersetzerressource. Sie erstellen Container zum Speichern und Organisieren Ihrer Blobdaten unter Ihrem Speicherkonto. Wenn das Konto über eine Firewall verfügt, muss das Kontrollkästchen [Ausnahme für vertrauenswürdige Azure-Dienste](../../../storage/common/storage-network-security.md?tabs=azure-portal#manage-exceptions) aktiviert sein.
+* Eine kurze Übersicht über die [**rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)**](../../../role-based-access-control/role-assignments-portal.md) über das Azure-Portal.
+
+* Ein [**Azure Blob Storage-Konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) in derselben Region wie Ihre Übersetzerressource. Sie erstellen Container zum Speichern und Organisieren Ihrer Blobdaten unter Ihrem Speicherkonto. 
+
+* **Wenn sich Ihr Speicherkonto hinter einer Firewall befindet, müssen Sie die folgende Konfiguration aktivieren**: </br>
+
+  * Wählen Sie auf der Seite Ihres Speicherkontos im linken Menü **Sicherheit + Netzwerkbetrieb** → **Netzwerk** aus.
+    :::image type="content" source="../media/managed-identities/security-and-networking-node.png" alt-text="Screenshot: Registerkarte „Sicherheit + Netzwerkbetrieb“.":::
+
+  * Klicken Sie im Hauptfenster auf **Zugriff aus bestimmten Netzwerken zulassen**.
+  :::image type="content" source="../media/managed-identities/firewalls-and-virtual-networks.png" alt-text="Screenshot: aktiviertes Optionsfeld „Ausgewählte Netzwerke“.":::
+
+  * Navigieren Sie auf der Seite „Ausgewählte Netzwerke“ zur Kategorie **Ausnahmen**, und stellen Sie sicher, dass das Kontrollkästchen [**Azure-Diensten in der Liste der vertrauenswürdigen Dienste den Zugriff auf dieses Speicherkonto erlauben**](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions) aktiviert ist.
 
     :::image type="content" source="../media/managed-identities/allow-trusted-services-checkbox-portal-view.png" alt-text="Screenshot: Kontrollkästchen für das Zulassen vertrauenswürdiger Dienste, Portalansicht":::
-
-* Eine kurze Übersicht über die [**rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)** ](../../../role-based-access-control/role-assignments-portal.md) über das Azure-Portal.
 
 ## <a name="managed-identity-assignments"></a>Zuweisungen verwalteter Identitäten
 
@@ -81,11 +82,11 @@ In den folgenden Schritten aktivieren wir eine systemseitig zugewiesene verwalte
 
     :::image type="content" source="../media/managed-identities/azure-role-assignments-page-portal.png" alt-text="Screenshot: Seite „Azure-Rollenzuweisungen“ im Azure-Portal":::
 
->[!NOTE]
->
-> Wenn Sie im Azure-Portal keine Rolle zuweisen können, da die Option „Hinzufügen > Rollenzuweisung hinzufügen“ deaktiviert ist oder der Berechtigungsfehler „Sie verfügen nicht über die Berechtigung zum Hinzufügen einer Rollenzuweisung in diesem Bereich“ angezeigt wird, überprüfen Sie, ob Sie derzeit als Benutzer mit einer zugewiesenen Rolle angemeldet sind, die über Microsoft.Authorization/roleAssignments/write-Berechtigungen wie [**Besitzer**](../../../role-based-access-control/built-in-roles.md#owner) oder [**Benutzerzugriffsadministrator**](../../../role-based-access-control/built-in-roles.md#user-access-administrator) im Speicherbereich für die Speicherressource verfügt.
+    >[!NOTE]
+    >
+    > Wenn Sie im Azure-Portal keine Rolle zuweisen können, weil die Option „Hinzufügen > Rollenzuweisung hinzufügen“ deaktiviert ist oder der Berechtigungsfehler „Sie verfügen nicht über die Berechtigung zum Hinzufügen einer Rollenzuweisung in diesem Bereich“ angezeigt wird, überprüfen Sie, ob Sie derzeit als Benutzer mit einer zugewiesenen Rolle angemeldet sind, die über Microsoft.Authorization/roleAssignments/write-Berechtigungen wie [**Besitzer**](../../../role-based-access-control/built-in-roles.md#owner) oder [**Benutzerzugriffsadministrator**](../../../role-based-access-control/built-in-roles.md#user-access-administrator) im Speicherbereich für die Speicherressource verfügt.
 
-7. Als nächstes werden Sie Ihrer Übersetzerdienstressource eine **Mitwirkender an Storage-Blobdaten**-Rolle zuweisen. Füllen Sie im Popupfenster **Rollenzuweisung hinzufügen** die Felder wie folgt aus, und wählen Sie **Speichern** aus:
+1. Als nächstes werden Sie Ihrer Übersetzerdienstressource eine **Mitwirkender an Storage-Blobdaten**-Rolle zuweisen. Füllen Sie im Popupfenster **Rollenzuweisung hinzufügen** die Felder wie folgt aus, und wählen Sie **Speichern** aus:
 
     | Feld | Wert|
     |------|--------|

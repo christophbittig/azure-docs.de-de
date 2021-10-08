@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Be
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 4b20448896de05e888de33b2a680623b662b5e5a
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: ca99be06934c9eca8a762b4990e89d8818ac3f5c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122340578"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627233"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -155,6 +155,14 @@ Führen Sie die folgenden Schritte aus, um Azure Monitor-Warnungen in Szenarios 
 3. Klicken Sie auf **Registrieren**, um dieses Feature für Ihr Abonnement zu aktivieren.
     > [!NOTE]
     > Es kann bis zu 24 Stunden dauern, bis die Registrierung wirksam wird. Wenn Sie dieses Feature für mehrere Abonnements aktivieren möchten, wiederholen Sie den obigen Vorgang, indem Sie das relevante Abonnement oben im Bildschirm auswählen. Es wird außerdem empfohlen, das Vorschauflag noch mal zu registrieren, um weiterhin Warnungen zu erhalten, wenn im Abonnement nach der ersten Registrierung eine neue Ressource erstellt wurde.
+
+4. Als bewährte Methode wird auch empfohlen, den Ressourcenanbieter zu registrieren, um sicherzustellen, dass die Informationen zur Registrierung von Funktionen wie erwartet mit dem Azure Backup synchronisiert werden. Führen Sie zum Registrieren des Ressourcenanbieters den folgenden PowerShell-Befehl in dem Abonnement aus, für das Sie das Featureflag registriert haben.
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace <ProviderNamespace>
+```
+
+Verwenden Sie zum Empfangen von Warnungen für Recovery Services-Tresore den Wert _Microsoft.RecoveryServices_ für den _Parameter ProviderNamespace._ Um Warnungen für Backup-Tresore zu empfangen, verwenden Sie den Wert _Microsoft.DataProtection_.
 
 ### <a name="viewing-fired-alerts-in-the-azure-portal"></a>Anzeigen ausgelöster Warnungen im Azure-Portal 
 

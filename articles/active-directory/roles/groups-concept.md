@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 07/30/2021
+ms.date: 09/28/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bebba34e8d323bc60d83151e7b211388776b7b76
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5f85ab5960aea247a8b47b20d2552cec6e2e534f
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346854"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235324"
 ---
 # <a name="use-azure-ad-groups-to-manage-role-assignments"></a>Verwenden von Azure AD-Gruppen zum Verwalten von Rollenzuweisungen
 
@@ -41,7 +41,7 @@ Für Gruppen, denen Rollen zugewiesen werden können, gelten die folgenden Einsc
 - Sie können nur die `isAssignableToRole`-Eigenschaft oder die Option **Azure AD-Rollen können der Gruppe zugewiesen werden** für neue Gruppen festlegen.
 - Die `isAssignableToRole`-Eigenschaft ist **unveränderlich**. Sobald eine Gruppe mit dieser Eigenschaft erstellt wurde, kann diese nicht mehr geändert werden.
 - Sie können eine vorhandene Gruppe nicht zu einer Gruppe machen, der Rollen zugewiesen werden können.
-- In einer einzigen Azure AD-Organisation (Mandant) können maximal 300 Gruppen erstellt werden, denen Rollen zugewiesen werden können.
+- In einer einzigen Azure AD-Organisation (Mandant) können maximal 400 Gruppen erstellt werden, denen Rollen zugewiesen werden können.
 
 ## <a name="how-are-role-assignable-groups-protected"></a>Wie werden Gruppen, denen Rollen zugewiesen werden können, geschützt?
 
@@ -61,9 +61,6 @@ Gruppen, denen Rollen zugewiesen werden können, sollen potenzielle Sicherheitsv
 ## <a name="use-pim-to-make-a-group-eligible-for-a-role-assignment"></a>Verwenden von PIM, um eine Gruppe für eine Rollenzuweisung zu berechtigen
 
 Wenn Sie nicht möchten, dass Mitglieder der Gruppe dauerhaften Zugriff auf eine Rolle haben, können Sie [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) verwenden, um eine Gruppe für eine Rollenzuweisung zu berechtigen. Jedes Mitglied der Gruppe ist dann berechtigt, die Rollenzuweisung für einen festen Zeitraum zu aktivieren.
-
-> [!Note]
-> Sie müssen eine aktualisierte Version von PIM verwenden, um einer Gruppe eine Azure AD-Rolle zuweisen zu können. Möglicherweise verwenden Sie eine ältere PIM-Version, da Ihre Azure AD-Organisation die PIM-API nutzt. Senden Sie eine E-Mail an pim_preview@microsoft.com, um Ihre Organisation umzustellen und die API zu aktualisieren. Weitere Informationen finden Sie unter [Azure AD-Rollen und -Features in PIM](../privileged-identity-management/pim-configure.md).
 
 ## <a name="scenarios-not-supported"></a>Nicht unterstützte Szenarien
 

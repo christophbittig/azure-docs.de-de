@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MaraSteiu
 ms.author: masteiu
 ms.reviewer: mathoma
-ms.date: 08/20/2019
-ms.openlocfilehash: f0ec1d641fc78e4fde612f987ad319d62bd9eeaf
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.date: 09/09/2021
+ms.openlocfilehash: de90958966fed08b33cf7236384c082e332719fd
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112914227"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059490"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
 
@@ -61,7 +61,7 @@ Die Datensynchronisierung ist für folgende Szenarios nicht die beste Lösung:
 | Szenario | Einige empfohlene Lösungen |
 |----------|----------------------------|
 | Notfallwiederherstellung | [Georedundante Sicherungen in Azure](automated-backups-overview.md) |
-| Leseskalierung | [Verwenden von schreibgeschützten Replikaten für den Lastenausgleich schreibgeschützter Abfrageworkloads (Vorschau)](read-scale-out.md) |
+| Leseskalierung | [Verwenden von schreibgeschützten Replikaten für den Lastenausgleich schreibgeschützter Abfrageworkloads](read-scale-out.md) |
 | ETL (OLTP zu OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) oder [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
 | Migration von SQL Server zu Azure SQL-Datenbank. Mit der SQL-Datensynchronisierung kann jedoch nach Abschluss der Migration sichergestellt werden, dass Quelle und Ziel synchron bleiben.  | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
@@ -81,8 +81,8 @@ Die Datensynchronisierung ist für folgende Szenarios nicht die beste Lösung:
 | **Vorteile** | – Aktiv/Aktiv-Unterstützung<br/>– Bidirektional zwischen lokaler und Azure SQL-Datenbank | – Niedrigere Latenzzeiten<br/>– Transaktionskonsistenz<br/>– Wiederverwendung vorhandener Topologie nach der Migration <br/>– Unterstützung von Azure SQL Managed Instance |
 | **Nachteile** | – Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung aus Azure SQL-Datenbank <br/>– Hohe Wartungskosten |
 
-## <a name="private-link-for-data-sync-preview"></a>Private Link für Datensynchronisierung (Vorschau)
-Mit dem neuen Feature Private Link (Vorschau) können Sie einen von einem Dienst verwalteten privaten Endpunkt auswählen, um während des Datensynchronisierungsvorgangs eine sichere Verbindung zwischen dem Synchronisierungsdienst und Ihren Mitglieds-/Hub-Datenbanken herzustellen. Ein vom Dienst verwalteter privater Endpunkt ist eine private IP-Adresse in einem bestimmten virtuellen Netzwerk und Subnetz. Bei Datensynchronisierung wird der vom Dienst verwaltete private Endpunkt von Microsoft erstellt und exklusiv vom Dienst Datensynchronisierung für einen bestimmten Synchronisierungsvorgang verwendet. Lesen Sie vor dem Einrichten der privaten Verbindung die [allgemeinen Anforderungen](sql-data-sync-data-sql-server-sql-database.md#general-requirements) für das Feature. 
+## <a name="private-link-for-data-sync"></a>Private Link für Datensynchronisierung
+Mit dem neuen Feature für private Verbindungen können Sie einen von einem Dienst verwalteten privaten Endpunkt auswählen, um während des Datensynchronisierungsvorgangs eine sichere Verbindung zwischen dem Synchronisierungsdienst und Ihren Mitglieds-/Hubdatenbanken herzustellen. Ein vom Dienst verwalteter privater Endpunkt ist eine private IP-Adresse in einem bestimmten virtuellen Netzwerk und Subnetz. Bei Datensynchronisierung wird der vom Dienst verwaltete private Endpunkt von Microsoft erstellt und exklusiv vom Dienst Datensynchronisierung für einen bestimmten Synchronisierungsvorgang verwendet. Lesen Sie vor dem Einrichten der privaten Verbindung die [allgemeinen Anforderungen](sql-data-sync-data-sql-server-sql-database.md#general-requirements) für das Feature. 
 
 ![Private Link für Datensynchronisierung](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
 
@@ -137,7 +137,7 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 
 - Momentaufnahmeisolation muss sowohl für die Synchronisierungsmitglieder als auch den Hub aktiviert sein. Weitere Informationen finden Sie unter [Momentaufnahmeisolation in SQL Server](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
-- Damit Sie Private Link mit Datensynchronisierung verwenden können, müssen die Mitglieds- und Hub-Datenbanken in Azure (in derselben oder in verschiedenen Regionen) unter demselben Cloudtyp (z. B. beide in der öffentlichen Cloud oder beide in der Government-Cloud) gehostet werden. Außerdem müssen für Private Link die Microsoft.Network-Ressourcenanbieter für die Abonnements registriert werden, die die Hub- und Mitgliedsserver hosten. Schließlich müssen Sie die private Verbindung für Datensynchronisierung während der Synchronisierungskonfiguration im Abschnitt „Verbindungen mit privatem Endpunkt“ im Azure-Portal oder mit PowerShell manuell genehmigen. Weitere Informationen zum Genehmigen privater Verbindungen finden Sie unter [Einrichten der SQL-Datensynchronisierung](./sql-data-sync-sql-server-configure.md). Nachdem Sie den vom Dienst verwalteten privaten Endpunkt genehmigt haben, erfolgt die gesamte Kommunikation zwischen dem Synchronisierungsdienst und den Mitglieds-/Hub-Datenbanken über die private Verbindung. Dieses Feature kann auch für vorhandene Synchronisierungsgruppen aktiviert werden.
+- Damit die private Verbindung für die Datensynchronisierung verwendet werden kann, müssen die Mitglieds- und Hubdatenbanken in Azure (in derselben oder in verschiedenen Regionen) mit demselben Cloudtyp (z. B. beide in der öffentlichen Cloud oder beide in der Government-Cloud) gehostet werden. Außerdem müssen für Private Link die Microsoft.Network-Ressourcenanbieter für die Abonnements registriert werden, die die Hub- und Mitgliedsserver hosten. Schließlich müssen Sie die private Verbindung für Datensynchronisierung während der Synchronisierungskonfiguration im Abschnitt „Verbindungen mit privatem Endpunkt“ im Azure-Portal oder mit PowerShell manuell genehmigen. Weitere Informationen zum Genehmigen privater Verbindungen finden Sie unter [Einrichten der SQL-Datensynchronisierung](./sql-data-sync-sql-server-configure.md). Nachdem Sie den vom Dienst verwalteten privaten Endpunkt genehmigt haben, erfolgt die gesamte Kommunikation zwischen dem Synchronisierungsdienst und den Mitglieds-/Hub-Datenbanken über die private Verbindung. Dieses Feature kann auch für vorhandene Synchronisierungsgruppen aktiviert werden.
 
 ### <a name="general-limitations"></a>Allgemeine Einschränkungen
 
@@ -154,7 +154,6 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 - Das Verkürzen von Tabellen wird von der Datensynchronisierung nicht unterstützt (Änderungen werden nicht nachverfolgt).
 - Hyperscale-Datenbanken werden nicht unterstützt. 
 - Speicheroptimierte Tabellen werden nicht unterstützt.
-- Wenn sich die Hub- und Mitgliedsdatenbanken in einem virtuellen Netzwerk befinden, funktioniert die Datensynchronisierung nicht, da die Synchronisierungs-App, die für die Ausführung der Synchronisierung zwischen Hub und Mitgliedern zuständig ist, den Zugriff auf die Hub- oder Mitgliedsdatenbanken innerhalb der privaten Verbindung eines Kunden nicht unterstützt. Diese Einschränkung gilt auch, wenn der Kunde das Private Link-Feature für die Datensynchronisierung verwendet. 
 
 #### <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
 
@@ -188,7 +187,7 @@ Mit der Datensynchronisierung können keine schreibgeschützten oder vom System 
 ### <a name="network-requirements"></a>Netzwerkanforderungen
 
 > [!NOTE]
-> Wenn Sie Private Link verwenden, gelten diese Netzwerkanforderungen nicht. 
+> Wenn Sie die Synchronisierung für private Verbindungen verwenden, gelten diese Netzwerkanforderungen nicht. 
 
 Wenn die Synchronisierungsgruppe eingerichtet ist, muss der Datensynchronisierungsdienst eine Verbindung mit der Hub-Datenbank herstellen. Zu dem Zeitpunkt, an dem Sie die Synchronisierungsgruppe einrichten, muss der Azure SQL-Server in seinen Einstellungen für `Firewalls and virtual networks` die folgende Konfiguration aufweisen:
 
@@ -224,10 +223,10 @@ Nicht direkt. Sie können Daten zwischen SQL Server-Datenbanken jedoch indirekt 
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>Kann ich die Datensynchronisierung verwenden, um Datenbanken in SQL-Datenbank zu synchronisieren, die zu unterschiedlichen Abonnements gehören?
 
-Ja. Sie können Daten zwischen Datenbanken aus Ressourcengruppen synchronisieren, die zu unterschiedlichen Abonnements gehören.
+Ja. Sie können eine Synchronisierung zwischen Datenbanken ausführen, die zu Ressourcengruppen im Besitz verschiedener Abonnements gehören, auch wenn die Abonnements zu verschiedenen Mandanten gehören.
 
 - Wenn die Abonnements zum gleichen Mandanten gehören und Sie über Berechtigungen für alle Abonnements verfügen, können Sie die Synchronisierungsgruppe im Azure-Portal konfigurieren.
-- Andernfalls müssen die Synchronisierungsmitglieder unterschiedlicher Abonnements mithilfe von PowerShell hinzugefügt werden.
+- Andernfalls müssen Sie PowerShell verwenden, um die Mitglieder für die Synchronisierung hinzuzufügen.
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Kann ich die Datensynchronisierung zum Synchronisieren zwischen Datenbanken in SQL-Datenbank verwenden, die zu verschiedenen Clouds gehören (etwa zur öffentlichen Azure-Cloud und Azure China 21Vianet)?
 

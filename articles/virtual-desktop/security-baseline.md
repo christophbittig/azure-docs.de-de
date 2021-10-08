@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b9a0d2b785f98555d723c81c6beecaa85313881e
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 0adc8638eeffedf1f8b2b31357b43fc38e67773f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114728655"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546331"
 ---
 # <a name="azure-security-baseline-for-azure-virtual-desktop"></a>Azure-Sicherheitsbaseline für Azure Virtual Desktop
 
@@ -40,7 +40,7 @@ Für die Netzwerksicherheitsgruppen, die Ihren VM-Subnetzen zugeordnet sind (die
 
 - [Adaptive Netzwerkhärtung in Azure Security Center](../security-center/security-center-adaptive-network-hardening.md) 
 
-- [Azure Firewall für Azure Virtual Desktop](../firewall/protect-windows-virtual-desktop.md)
+- [Azure Firewall für Azure Virtual Desktop](../firewall/protect-azure-virtual-desktop.md)
 
 - [Tutorial: Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal](../virtual-network/tutorial-filter-network-traffic.md)
 
@@ -216,7 +216,7 @@ Diese Datenquellen können in Azure Monitor, Azure Sentinel oder SIEM-Systeme (S
 
 - [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -574,7 +574,7 @@ Darüber hinaus können Sie Daten in Azure Sentinel oder ein SIEM-System (Securi
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -640,9 +640,7 @@ Zu den zu untersuchenden Datenquellen gehören die zentralisierten Protokollieru
 
 Azure Sentinel bietet umfangreiche Datenanalysen über praktisch jede Protokollquelle sowie ein Fallverwaltungsportal zum Verwalten des gesamten Lebenszyklus von Vorfällen. Intelligenceinformationen während einer Untersuchung können zu Verfolgungs- und Berichtszwecken mit einem Vorfall verknüpft werden. 
 
-- [Momentaufnahme des Datenträgers eines Windows-Computers](../virtual-machines/windows/snapshot-copy-managed-disk.md)
-
-- [Momentaufnahme des Datenträgers eines Linux-Computers](../virtual-machines/linux/snapshot-copy-managed-disk.md)
+- [Momentaufnahme eines Datenträgers eines Computers](../virtual-machines/windows/snapshot-copy-managed-disk.md)
 
 - [Microsoft Azure-Supportdiagnoseinformationen und Speicherabbilderfassung](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) 
 

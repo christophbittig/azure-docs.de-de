@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: dda885d55f2102f1fae478c8d214f2bca44f52f2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e2a49fb9de3c4f63edc483724769c5c726d3a63c
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346570"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081850"
 ---
 # <a name="what-is-synapse-role-based-access-control-rbac"></a>Was ist die rollenbasierte Zugriffssteuerung (RBAC) in Synapse?
 
@@ -28,7 +28,7 @@ Synapse RBAC dient zum Verwalten der folgenden Zugriffsberechtigungen:
 - Überwachen oder Abbrechen von Auftragsausführungen, Überprüfen von Auftragsausgaben und Ausführungsprotokollen  
 
 >[!Note]
->Synapse RBAC wird zwar verwendet, um den Zugriff auf veröffentlichte SQL-Skripts zu verwalten, bietet jedoch nur eine eingeschränkte Zugriffssteuerung für serverlose SQL-Pools und wird _nicht_ zum Steuern des Zugriffs auf dedizierte SQL-Pools verwendet.  Der Zugriff auf SQL-Pools wird hauptsächlich mithilfe der SQL-Sicherheit gesteuert.
+>Synapse RBAC wird zwar verwendet, um den Zugriff auf veröffentlichte SQL-Skripts zu verwalten, bietet jedoch nur eine eingeschränkte Zugriffssteuerung für serverlose und dedizierte SQL-Pools. Der Zugriff auf SQL-Pools wird hauptsächlich mithilfe der SQL-Sicherheit gesteuert.
 
 ## <a name="what-can-i-do-with-synapse-rbac"></a>Wofür kann ich Synapse RBAC verwenden?
 

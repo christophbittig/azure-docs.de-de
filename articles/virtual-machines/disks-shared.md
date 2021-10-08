@@ -4,15 +4,15 @@ description: Hier erfahren Sie mehr über das Freigeben von verwalteten Azure-Da
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/16/2021
+ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0c72a263ff9d20f0cb70a0721625446b6a2e0ff9
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 56ba97d5a13744ee034024f510eac70d4f343877
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689351"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129052802"
 ---
 # <a name="share-an-azure-managed-disk"></a>Freigeben eines verwalteten Azure-Datenträgers
 
@@ -58,7 +58,7 @@ Die folgende Liste enthält einige beliebte Anwendungen, die unter WSFC ausgefü
 ### <a name="linux"></a>Linux
 
 Freigegebene Azure-Datenträger werden unter Folgendem unterstützt:
-- [SUSE SLE für SAP und SUSE SLE HA 15 SP1 und höher](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
+- [SUSE SLE Hochverfügbarkeit 15 SP1 und höher](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
 - [Ubuntu 18.04 und höher](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
 - [RHEL-Entwicklervorschau in jeder RHEL 8-Version](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/deploying_red_hat_enterprise_linux_8_on_public_cloud_platforms/index?lb_target=production#azure-configuring-shared-block-storage_configuring-rhel-high-availability-on-azure)
 - [Oracle Enterprise Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
@@ -152,6 +152,44 @@ Es folgt ein Beispiel für einen Linux-Cluster mit vier Knoten, einem einzelnen 
 #### <a name="ultra-pricing"></a>Preise für Ultra-Datenträger
 
 Die Preise für freigegebene Ultra-Datenträger basieren auf der bereitgestellten Kapazität, der Gesamtzahl zulässiger IOPS (diskIOPSReadWrite + diskIOPSReadOnly) und dem insgesamt zulässigen Durchsatz in MBit/s (diskMBpsReadWrite + diskMBpsReadOnly). Für zusätzliche VM-Einbindungen fallen keine weitere Gebühren an. Eine Beispiel: Ein freigegebener Ultra-Datenträger mit der folgenden Konfiguration (diskSizeGB: 1024, DiskIOPSReadWrite: 10000, DiskMBpsReadWrite: 600, DiskIOPSReadOnly: 100, DiskMBpsReadOnly: 1) wird mit 1024 GiB, 10100 IOPS und 601 MBit/s abgerechnet, unabhängig davon, ob er in zwei oder fünf VMs eingebunden ist.
+
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+**F: Wird die Funktion für gemeinsam genutzte Festplatten für nicht verwaltete Festplatten oder Seitenblobs unterstützt?**
+
+**A:** Nein. Diese Funktion wird nur für Ultra-Festplatten und Premium-SSD verwaltete Datenträger unterstützt.
+
+**F: Welche Regionen unterstützen gemeinsam genutzte Festplatten?**
+
+**A:** Regionale Informationen finden Sie in unserem [Konzeptionsartikel](/azure/virtual-machines/disks-shared).
+
+**F: Können gemeinsam genutzte Festplatten als Betriebssystemfestplatte verwendet werden?**
+
+**A:** Nein. Gemeinsam genutzte Festplatten werden nur für Datenfestplatten unterstützt.
+
+**F: Welche Festplattengrößen unterstützen gemeinsam genutzte Festplatten?**
+
+**A:** Für unterstützte Größen siehe unseren [Konzeptartikel](/azure/virtual-machines/disks-shared).
+
+**F: Wenn ich eine vorhandene Festplatte habe, kann ich darauf gemeinsame Laufwerke aktivieren?**
+
+**A:** Alle verwalteten Datenträger, die mit der API-Version 2019-07-01 oder einer späteren Version erstellt wurden, können gemeinsam genutzte Datenträger aktivieren. Dazu müssen Sie den Datenträger von allen VMs, an die er angeschlossen ist, aushängen. Bearbeiten Sie anschließend die maxShares-Eigenschaft des Datenträgers.
+
+**F: Wenn ich einen Datenträger nicht mehr im gemeinsamen Modus verwenden möchte, wie kann ich ihn deaktivieren?**
+
+**A:** Trennen Sie die Festplatte von allen VMs, mit denen sie verbunden ist. Ändern Sie dann die maxShare-Eigenschaft auf der Festplatte auf **1**.
+
+**F: Kann ich die Größe eines freigegebenen Datenträgers ändern?**
+
+**A:** Ja.
+
+**F: Kann ich die Schreibbeschleunigung auf einem Laufwerk aktivieren, auf dem auch gemeinsam genutzte Laufwerke aktiviert sind?**
+
+**A:** Nein. Sie können die Schreibbeschleunigung nicht auf einer Festplatte aktivieren, auf der auch gemeinsam genutzte Festplatten aktiviert sind.
+
+**F: Kann ich die Host-Zwischenspeicherung für eine Festplatte aktivieren, für die freigegebene Festplatten aktiviert sind?**
+
+**A:** Die einzige unterstützte Zwischenspeicheroption für den Host ist **Keine**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

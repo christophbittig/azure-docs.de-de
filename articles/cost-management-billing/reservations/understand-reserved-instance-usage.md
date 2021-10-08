@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: f6aad15d70157dda110fce233fbdafb7f3d896ad
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 0636e09e4dc955f887086085a5c0cc5c941d32ee
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99055058"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646192"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Informationen zur Azure-Reservierungsnutzung bei Ihrem einzelnen Abonnement mit nutzungsbasierter Bezahlung
 
@@ -54,7 +54,7 @@ Filtern Sie nach **Zusätzliche Informationen**, und geben Sie Ihre **Reservieru
 1. Die **ReservationId** im Feld **Zusätzliche Informationen** ist die Reservierung, die auf die VM angewendet wurde.
 2. **ConsumptionMeter** ist die Verbrauchseinheit-ID für die VM.
 3. Die Zeile **Unterkategorie der Verbrauchseinheit** mit dem Wert **Reservierte Basis-VM-Instanzen** stellt die Kosten von 0,00 USD im Abschnitt „Kostenaufstellung“ dar. Die Kosten für die Ausführung dieser VM werden bereits durch die Reservierung bezahlt.
-4. Die **Verbrauchseinheit-ID** ist die Verbrauchseinheit-ID für die Reservierung. Die Kosten für diese Verbrauchseinheit betragen 0,00 USD. Diese Verbrauchseinheit-ID wird für beliebige VMs angezeigt, die für den Reservierungsrabatt qualifiziert sind.
+4. Die **Verbrauchseinheit-ID** ist die Verbrauchseinheit-ID für die Reservierung. Die Kosten für diese Verbrauchseinheit betragen 0,00 USD. Diese Verbrauchseinheit-ID erscheint für jede VM, die für den Reservierungsrabatt qualifiziert ist.
 5. Standard_DS1_v2 ist eine vCPU-VM, und der virtuelle Computer wird ohne Azure-Hybridvorteil bereitgestellt. Diese Verbrauchseinheit deckt somit die zusätzlichen Kosten der Windows-Software ab. Die Verbrauchseinheit, die einer VM der D-Serie mit einem Kern entspricht, finden Sie unter [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](reserved-instance-windows-software-costs.md). Wenn Sie Anspruch auf den Azure-Hybridvorteil haben, werden diese zusätzlichen Kosten nicht angewendet.
 
 ## <a name="usage-for-sql-database--cosmos-db-reservations"></a>Nutzung für SQL-Datenbank- und Cosmos DB-Reservierungen

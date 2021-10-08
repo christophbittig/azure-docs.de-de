@@ -1,14 +1,14 @@
 ---
-title: Ändern der Größe eines virtuellen Computers in einem Lab in Azure DevTest Labs
+title: Ändern der Größe einer VM in einem Lab
 description: Erfahren Sie, wie Sie die Größe eines virtuellen Computers (Virtual Machine, VM) in Azure DevTest Labs basierend auf Ihren Anforderungen für CPU-, Netzwerk- oder Datenträgerleistung ändern.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 592be0862bc33ead86fe43d37753fb72fde120c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03339a1d500611bde31ebfa14101a0dbd7d1da08
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85482019"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649490"
 ---
 # <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Ändern der Größe eines virtuellen Computers in einem Lab in Azure DevTest Labs
 Eines der wichtigen Features von virtuellen Azure-Computern ist, dass Sie die Größe einer VM (virtueller Computer) basierend auf Ihren Anforderungen für CPU-, Netzwerk- oder Datenträgerleistung ändern können. Dieses Feature wird nun durch Azure DevTest Labs für VMs in einem Lab unterstützt. Das Feature zum Ändern der Größe entspricht der Labrichtlinie für zugelassene VM-Größen im Lab. Das heißt, Sie können die Größe einer VM nur in im Lab zugelassene Größen ändern. 
@@ -40,5 +40,3 @@ Führen Sie die folgenden Schritte aus, um die Größe einer VM in einem Lab in 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Ausführliche Informationen über das Feature zum Ändern der Größe, das von Azure-VMs unterstützt wird, finden Sie unter [Resize virtual machines (Ändern der Größe von virtuellen Computern)](https://azure.microsoft.com/blog/resize-virtual-machines/).
-
-

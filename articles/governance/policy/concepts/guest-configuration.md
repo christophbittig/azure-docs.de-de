@@ -3,12 +3,12 @@ title: Grundlegende Informationen zum Gastkonfigurationsfeature von Azure Policy
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurationsfeatures Einstellungen in VMs überwacht und konfiguriert.
 ms.date: 07/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12e23b8db546d2bc34bbe17871ac5fbebd7a2de8
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: d9da1454fa531bcc6526cc11dda3b341be0688df
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769642"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092621"
 ---
 # <a name="understand-the-guest-configuration-feature-of-azure-policy"></a>Grundlegende Informationen zum Gastkonfigurationsfeature von Azure Policy
 
@@ -78,8 +78,8 @@ Die Angabe „.x“ steht symbolisch für neue Nebenversionen von Linux-Distribu
 |Herausgeber|Name|Versionen|
 |-|-|-|
 |Amazon|Linux|2|
-|Canonical|Ubuntu Server|14.04 - 20.x|
-|Credativ|Debian|8 - 10.x|
+|Canonical|Ubuntu Server|16.04 – 20.x|
+|Credativ|Debian|9 – 10.x|
 |Microsoft|Windows Server|2012–2019|
 |Microsoft|Windows-Client|Windows 10|
 |Oracle|Oracle-Linux|7.x–8.x|
@@ -213,5 +213,5 @@ Beispiele für integrierte Gastkonfigurationsrichtlinien finden Sie unter:
 - [Erstellen Sie ein Paketartefakt](../how-to/guest-configuration-create.md) für Gastkonfigurationen.
 - [Testen Sie das Paketartefakt](../how-to/guest-configuration-create-test.md) in Ihrer Entwicklungsumgebung.
 - Verwenden Sie das Modul `GuestConfiguration` zum [Erstellen einer Azure Policy-Definition](../how-to/guest-configuration-create-definition.md) für die Verwaltung Ihrer Umgebung im großen Stil.
-- [Weisen Sie Ihre benutzerdefinierte Richtliniendefinition](../assign-policy-portal.md) über das Azure-Portal zu.
-- Informieren Sie sich darüber, wie Sie die [Konformitätsdetails für die Zuweisung von Gastkonfigurationsrichtlinien](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) ansehen können.
+- [Weisen Sie Ihre benutzerdefinierte Richtliniendefinition](../assign-policy-portal.md) mithilfe des Azure-Portals zu.
+- Informieren Sie sich, wie Sie die [Compliancedetails für die Richtlinienzuweisungen der Gastkonfiguration](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) anzeigen.

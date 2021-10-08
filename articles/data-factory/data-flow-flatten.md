@@ -1,7 +1,7 @@
 ---
 title: Vereinfachungstransformation im Zuordnungsdatenfluss
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Denormalisieren Sie hierarchische Daten mithilfe der Vereinfachungstransformation.
+description: Denormalisieren Sie hierarchische Daten mithilfe der Vereinfachungstransformation in Azure Data Factory- und Synapse Analytics-Pipelines.
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: e632260e8af6e4bac9fac9ec43f25bf636b98b4d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 17bac4e1efc514440943cb474f2f86a7148d2ef4
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639993"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060136"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>Vereinfachungstransformation im Zuordnungsdatenfluss
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 Verwenden Sie die Vereinfachungstransformation, um Arraywerte in hierarchischen Strukturen wie JSON auszuwählen und in einzelne Zeilen aufzulösen. Dieser Prozess wird als „Denormalisierung“ bezeichnet.
 
@@ -27,7 +29,7 @@ Verwenden Sie die Vereinfachungstransformation, um Arraywerte in hierarchischen 
 
 Die Vereinfachungstransformation enthält die folgenden Konfigurationseinstellungen:
 
-![Einstellungen vereinfachen](media/data-flow/flatten1.png "Vereinfachen von Einstellungen")
+:::image type="content" source="media/data-flow/flatten1.png" alt-text="Einstellungen vereinfachen":::
 
 ### <a name="unroll-by"></a>Auflösen
 
@@ -47,7 +49,7 @@ Wählen Sie ähnlich wie bei der Auswahltransformation die Projektion der neuen 
 
 Die Transformation zur Vereinfachung unterstützt die regelbasierte Zuordnung, sodass Sie dynamische und flexible Transformationen erstellen können, die Arrays basierend auf Regeln und Strukturen basierend auf Hierarchieebenen vereinfachen.
 
-![Muster vereinfachen](media/data-flow/flatten-pattern.png "Muster vereinfachen")
+:::image type="content" source="media/data-flow/flatten-pattern.png" alt-text="Muster vereinfachen":::
 
 ### <a name="matching-condition"></a>Vergleichsbedingung
 
@@ -55,7 +57,7 @@ Geben Sie eine Musterabgleichsbedingung für die Spalte oder Spalten ein, die mi
 
 ### <a name="deep-column-traversal"></a>Tiefer Spaltendurchlauf
 
-Mithilfe dieser optionalen Einstellung werden alle Unterspalten eines komplexen Objekts einzeln verarbeitet, statt das komplexe Objekt als ganze Spalte zu verarbeiten.
+Diese optionale Einstellung weist den Dienst an, alle Unterspalten eines komplexen Objekts einzeln zu verarbeiten, statt das komplexe Objekt als ganze Spalte zu behandeln.
 
 ### <a name="hierarchy-level"></a>Hierarchieebene
 

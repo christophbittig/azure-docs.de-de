@@ -16,12 +16,12 @@ ms.date: 06/30/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 936351dd9f2b19fab4ea95012b118d00d0c87299
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1c53899c8a513d623fc11d7494c3473cf2878d71
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349403"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609914"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell für Azure AD-Rollen in Privileged Identity Management (PIM)
 
@@ -49,7 +49,7 @@ Dieser Artikel enthält Anweisungen für die Verwendung von Azure Active Directo
     ![Suchen der Organisations-ID in den Eigenschaften für die Azure AD-Organisation](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> In den folgenden Abschnitten finden Sie einfache Beispiele, die Ihnen beim Start helfen. Unter [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management) finden Sie eine ausführlichere Dokumentation zu den folgenden Cmdlets. Sie müssen jedoch „azureResources“ im Parameter „providerID“ durch „aadRoles“ ersetzen. Sie müssen auch daran denken, die Mandanten-ID für Ihre Azure AD-Organisation als Parameter „ResourceId“ zu verwenden.
+> In den folgenden Abschnitten finden Sie einfache Beispiele, die Ihnen beim Start helfen. Eine ausführliche Dokumentation über die folgenden Cmdlets finden Sie unter [/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#privileged_role_management). Sie müssen jedoch „azureResources“ im Parameter „providerID“ durch „aadRoles“ ersetzen. Sie müssen auch daran denken, die Mandanten-ID für Ihre Azure AD-Organisation als Parameter „ResourceId“ zu verwenden.
 
 ## <a name="retrieving-role-definitions"></a>Abrufen von Rollendefinitionen
 
@@ -112,10 +112,16 @@ $schedule.endDateTime = "2020-07-25T20:49:11.770Z"
 
 ## <a name="activate-a-role-assignment"></a>Aktivieren einer Rollenzuweisung
 
-Verwenden Sie das folgende Cmdlet, um eine berechtigte Zuweisung zu aktivieren.
+Verwenden Sie das folgende Cmdlet, um eine berechtigte Zuweisung im Zusammenhang mit einem normalen Benutzer zu aktivieren:
 
 ```powershell
-Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -schedule $schedule -reason "dsasdsas"
+Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'UserAdd' -AssignmentState 'Active' -Schedule $schedule -Reason "Business Justification for the role assignment"
+``` 
+
+Wenn Sie eine berechtigte Zuweisung als Administrator aktivieren müssen, geben Sie für den `Type`-Parameter `adminAdd` an:
+
+```powershell
+Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId 'aadRoles' -ResourceId '926d99e7-117c-4a6a-8031-0cc481e9da26' -RoleDefinitionId 'f55a9a68-f424-41b7-8bee-cee6a442d418' -SubjectId 'f7d1887c-7777-4ba3-ba3d-974488524a9d' -Type 'adminAdd' -AssignmentState 'Active' -Schedule $schedule -Reason "Business Justification for the role assignment"
 ``` 
 
 Diese Cmdlet ist nahezu identisch mit dem Cmdlet zum Erstellen einer Rollenzuweisung. Der Hauptunterschied zwischen den Cmdlets besteht darin, dass für den Parameter „–Type“ die Aktivierung „userAdd“ und nicht „adminAdd“ lautet. Ein weiterer Unterschied besteht darin, das der Parameter „–AssignmentState“ den Wert „Active“ und nicht „Eligible“ aufweist.

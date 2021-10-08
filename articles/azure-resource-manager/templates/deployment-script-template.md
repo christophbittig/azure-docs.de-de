@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ece3693fa183ba31de569e7db632c3d294c10437
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: de462f24f05b93f40453cd74c85a41b5c11ac0d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187179"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656301"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Verwenden von Bereitstellungsskripts in ARM-Vorlagen
 
@@ -40,6 +40,10 @@ Die Bereitstellungsskriptressource ist nur in den Regionen verfügbar, in denen 
 
 > [!NOTE]
 > Wiederholungslogik für die Azure-Anmeldung ist jetzt in das Wrapperskript integriert. Wenn Sie Berechtigungen in derselben Vorlage wie Ihre Bereitstellungsskripts erteilen, wiederholt der Bereitstellungsskriptdienst die Anmeldung 10 Minuten lang mit einem Intervall von 10 Sekunden, bis die Rollenzuweisung für verwaltete Identitäten repliziert wird.
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen zum Toolkit für ARM-Vorlagentests und praktische Anleitungen finden Sie in **Microsoft Learn** unter [Erweitern von ARM-Vorlagen mithilfe von Bereitstellungsskripts](/learn/modules/extend-resource-manager-template-deployment-scripts).
 
 ## <a name="configure-the-minimum-permissions"></a>Konfigurieren der mindestens erforderlichen Berechtigungen
 

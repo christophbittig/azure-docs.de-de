@@ -4,13 +4,13 @@ description: Verwendung von Schleifen und Arrays in einer Bicep-Datei, um mehrer
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: 1b044b4ae3f5d73ad535d44153ea3d47023aeaaa
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/23/2021
+ms.openlocfilehash: adb05c5af042e0c9f54e925f82097a1721f40073
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225305"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662094"
 ---
 # <a name="resource-iteration-in-bicep"></a>Ressourceniteration in Bicep
 
@@ -19,6 +19,10 @@ In diesem Artikel erfahren Sie, wie Sie in einer Bicep-Datei mehrere Instanzen e
 Sie können eine Schleife auch mit [Modulen](loop-modules.md), [Eigenschaften](loop-properties.md), [Variablen](loop-variables.md) und [Ausgaben](loop-outputs.md) verwenden.
 
 Wenn Sie angeben müssen, ob eine Ressource überhaupt bereitgestellt wird, finden Sie die erforderlichen Informationen unter [Element „condition“](conditional-resource-deployment.md).
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen und praktische Anleitungen zu Schleifen finden Sie in **Microsoft Learn** unter [Erstellen flexibler Bicep-Vorlagen mithilfe von Bedingungen und Schleifen](/learn/modules/build-flexible-bicep-templates-conditions-loops/).
 
 ## <a name="syntax"></a>Syntax
 
@@ -56,7 +60,11 @@ Mit Schleifen können mehrere Ressourcen deklariert werden durch:
 
 ## <a name="loop-limits"></a>Schleifengrenzwerte
 
-Bicep-Dateien dürfen keine Schleifen mit einer Anzahl von unter 0 oder über 800 Iterationen enthalten.
+Bicep-Schleifen weisen die folgenden Einschränkungen auf:
+
+- Eine Ressource mit geschachtelten untergeordneten Ressourcen kann in einer Schleife nicht verwendet werden. Sie müssen die untergeordneten Ressourcen in Ressourcen der obersten Ebene ändern.  Weitere Informationen finden Sie unter [Iteration für eine untergeordnete Ressource](#iteration-for-a-child-resource).
+- Eine Schleife kann nicht auf mehreren Ebenen von Eigenschaften verwendet werden. Weitere Informationen finden Sie unter [Eigenschafteniteration in Bicep-Dateien](./loop-properties.md).
+- Es dürfen nicht weniger als 0 oder mehr als 800 Schleifeniterationen verwendet werden.
 
 ## <a name="loop-index"></a>Schleifenindex
 

@@ -4,15 +4,15 @@ description: In diesem Artikel werden die Schritte zum Erstellen und Verwalten v
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 1b2748664046c97258ee3414b741075627064bbc
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 09/27/2021
+ms.openlocfilehash: 1a51af8fd34516ca87d7ab98332221a308480193
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867480"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217137"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>Erstellen und Verwalten einer selbstgehosteten Integration Runtime
 
@@ -24,13 +24,36 @@ In diesem Artikel wird beschrieben, wie Sie eine selbstgehostete Integration Run
 > [!IMPORTANT]
 > Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, stellen Sie sicher, dass Sie die neueste Version der selbstgehosteten Integration Runtime aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) herunterladen und installieren.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Die unterstützten Versionen von Windows lauten:
+  - Windows 8.1
+  - Windows 10
+  - Windows Server 2012
+  - Windows Server 2012 R2
+  - Windows Server 2016
+  - Windows Server 2019
+
+Die Installation der selbstgehosteten Integration Runtime auf einem Domänencontroller wird nicht unterstützt.
+
+- Die selbstgehostete Integration Runtime erfordert ein 64-Bit-Betriebssystem mit .NET Framework 4.7.2 oder höher. Ausführlichere Informationen finden Sie unter [Systemanforderungen für .NET Framework](/dotnet/framework/get-started/system-requirements) .
+- Die empfohlene Mindestkonfiguration für den Computer mit der selbstgehosteten Integration Runtime ist ein 2-GHz-Prozessor mit 4 Kernen, 8 GB RAM und 80 GB verfügbarem Speicherplatz auf dem Datenträger. Details zu den Systemanforderungen finden Sie auf der [Downloadseite](https://www.microsoft.com/download/details.aspx?id=39717).
+- Wenn sich der Hostcomputer im Ruhezustand befindet, reagiert die selbstgehostete Integration Runtime nicht auf Datenanforderungen. Konfigurieren Sie vor der Installation der selbstgehosteten Integration Runtime einen entsprechenden Energiesparplan auf dem Computer. Wenn für den Computer der Ruhezustand konfiguriert ist, wird im Installationsprogramm für die selbstgehostete Integration Runtime eine Meldung angezeigt.
+- Sie müssen der Administrator des Computers sein, um die selbstgehostete Integration Runtime erfolgreich installieren und konfigurieren zu können.
+- Überprüfungen erfolgen in einer bestimmten Häufigkeit gemäß dem von Ihnen festgelegten Zeitplan. Die Prozessor- und RAM-Nutzung auf dem Computer folgt dem gleichen Muster mit Spitzen- und Leerlaufzeiten. Außerdem ist die Ressourcenverwendung auch stark von der Menge der Daten abhängig, die überprüft werden. Wenn mehrere Überprüfungsaufträge gleichzeitig ausgeführt werden, steigt der Ressourcenverbrauch zu Spitzenzeiten an.
+- Unter Umständen tritt für Aufgaben während der Extraktion von Daten in den Formaten Parquet, ORC oder Avro ein Fehler auf.
+
+## <a name="setting-up-a-self-hosted-integration-runtime"></a>Einrichten einer selbstgehosteten Integration Runtime
+
+Verwenden Sie die folgenden Verfahren, um eine selbstgehostete Integration Runtime zu erstellen und einzurichten.
+
 ## <a name="create-a-self-hosted-integration-runtime"></a>Erstellen einer selbstgehosteten Integration Runtime
 
-1. Wählen Sie auf der Startseite von Purview Studio im linken Navigationsbereich die Option **Verwaltungscenter** aus.
+1. Wählen Sie auf der Homepage von [Purview Studio](https://web.purview.azure.com/resource/) im linken Navigationsbereich die Option **Data Map** aus.
 
 2. Wählen Sie im linken Bereich unter **Sources and scanning** (Quellen und Überprüfung) die Option **Integration Runtimes** und dann **+ Neu** aus.
 
-   :::image type="content" source="media/manage-integration-runtimes/select-integration-runtimes.png" alt-text="Klicken auf „Integration Runtimes“":::
+   :::image type="content" source="media/manage-integration-runtimes/select-integration-runtimes.png" alt-text="Auswahl von Integration Runtimes.":::
 
 3. Wählen Sie auf der Seite **Integration Runtime-Setup** die Option **Selbstgehostet** aus, um eine selbstgehostete IR zu erstellen, und wählen Sie dann **Weiter** aus.
 
@@ -98,13 +121,13 @@ Basierend auf Ihren Quellen müssen Sie möglicherweise auch die Domänen andere
 
 ## <a name="manage-a-self-hosted-integration-runtime"></a>Verwalten einer selbstgehosteten Integration Runtime
 
-Sie können eine selbstgehostete Integration Runtime bearbeiten, indem Sie im **Verwaltungscenter** zu **Integration Runtimes** navigieren, die IR auswählen und dann auf „Bearbeiten“ klicken. Sie können die Beschreibung jetzt aktualisieren, den Schlüssel kopieren oder neue Schlüssel generieren.
+Sie können eine selbstgehostete Integration Runtime bearbeiten, indem Sie im **Verwaltungscenter** zu **Integration Runtimes** navigieren und die IR und dann „Bearbeiten“ auswählen. Sie können die Beschreibung jetzt aktualisieren, den Schlüssel kopieren oder neue Schlüssel generieren.
 
 :::image type="content" source="media/manage-integration-runtimes/edit-integration-runtime.png" alt-text="Bearbeiten der IR":::
 
 :::image type="content" source="media/manage-integration-runtimes/edit-integration-runtime-settings.png" alt-text="Bearbeiten von Details der IR":::
 
-Sie können eine selbstgehostete Integration Runtime löschen, indem Sie im Verwaltungscenter zu **Integration Runtimes** navigieren, die IR auswählen und dann auf **Löschen** klicken. Nachdem eine IR gelöscht wurde, treten für alle Überprüfungen, die darauf basieren, Fehler auf.
+Sie können eine selbstgehostete Integration Runtime löschen, indem Sie im Verwaltungscenter zu **Integration Runtimes** navigieren und die IR und dann **Löschen** auswählen. Nachdem eine IR gelöscht wurde, treten für alle Überprüfungen, die darauf basieren, Fehler auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

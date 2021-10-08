@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e21e22e231ea5998cf15c7b2982180da91fe49aa
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: e7d66bd74263bd23c02cf465b1483ffe610179ee
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733428"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657916"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor
 
@@ -41,7 +41,7 @@ Sie können Azure AD-Aktivitätsprotokolle (Azure Active Directory) zur langfris
 
 Mit diesem Feature können Sie Azure AD-Überwachungsprotokolle und -Anmeldeprotokolle an Ihr Azure-Speicherkonto, einen Event Hub, Azure Monitor-Protokolle oder eine benutzerdefinierte Lösung weiterleiten. 
 
-* **Überwachungsprotokolle**: Mit dem [Aktivitätsbericht zu Überwachungsprotokollen](concept-audit-logs.md) erhalten Sie Zugriff auf den Verlauf aller Aufgaben, die in Ihrem Mandanten durchgeführt werden.
+* **Überwachungsprotokolle**: Der [Aktivitätsbericht der Überwachungsprotokolle](concept-audit-logs.md) bietet Ihnen Zugriff auf Informationen über Änderungen, die auf Ihren Mandanten angewendet wurden, z. B. die Verwaltung von Benutzern und Gruppen oder Aktualisierungen, die auf die Ressourcen Ihres Mandanten angewendet wurden.
 * **Anmeldeprotokolle**: Mit dem [Aktivitätsbericht zu Anmeldungen](concept-sign-ins.md) können Sie ermitteln, von wem die Aufgaben durchgeführt wurden, die in den Überwachungsprotokollen aufgeführt sind.
 
 > [!NOTE]

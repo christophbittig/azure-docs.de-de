@@ -3,17 +3,17 @@ title: Konfigurieren von Runbookeingabeparametern in Azure Automation
 description: In diesem Artikel wird beschrieben, wie Sie Runbookeingabeparameter konfigurieren, die es ermöglichen, dass Daten beim Start an ein Runbook übergeben werden.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/14/2019
+ms.date: 09/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 95a6cc87471fcf2209d452f90e1e5f52cae122c5
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 61a5f24f66f9f7461b4993fcfba70f6be8bb9be1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831292"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644104"
 ---
-# <a name="configure-runbook-input-parameters"></a>Konfigurieren von Runbookeingabeparametern
+# <a name="configure-runbook-input-parameters-in-automation"></a>Konfigurieren von Runbookeingabeparametern in Automation
 
 Runbookeingabeparameter erhöhen die Flexibilität eines Runbooks, weil sie die Übergabe von Daten an das Runbook beim Startvorgang ermöglichen. Mit diesen Parametern können Runbookaktionen auf bestimmte Szenarien und Umgebungen abgestimmt werden. In diesem Artikel werden die Konfiguration und Verwendung von Eingabeparametern in Ihren Runbooks beschrieben.
 
@@ -71,7 +71,7 @@ In diesem Fall können Sie den folgenden Wert an den Parameter übergeben.
 
 ### <a name="configure-input-parameters-in-graphical-runbooks"></a>Konfigurieren von Eingabeparametern in grafischen Runbooks
 
-Um die Konfiguration von Eingabeparametern für ein grafisches Runbook zu illustrieren, erstellen wir ein grafisches Runbook, das Details zu virtuellen Computern – entweder eines einzelnen oder aller virtuellen Computer innerhalb einer Ressourcengruppe – ausgibt. Details finden Sie unter [Mein erstes grafisches Runbook](./learn/automation-tutorial-runbook-graphical.md).
+Um die Konfiguration von Eingabeparametern für ein grafisches Runbook zu illustrieren, erstellen wir ein grafisches Runbook, das Details zu virtuellen Computern – entweder eines einzelnen oder aller virtuellen Computer innerhalb einer Ressourcengruppe – ausgibt. Details finden Sie unter [Mein erstes grafisches Runbook](./learn/powershell-runbook-managed-identity.md).
 
 Ein grafisches Runbook verwendet diese wesentlichen Runbook-Aktivitäten:
 
@@ -113,7 +113,7 @@ Führen Sie zum Konfigurieren der Eingabeparameter diese Schritte aus.
 
 Im Gegensatz zu PowerShell, PowerShell-Workflow und grafischen Runbooks akzeptieren Python-Runbooks keine benannten Parameter. Der Runbook-Editor analysiert alle Eingabeparameter als Array von Argumentwerten. Sie können auf das Array zugreifen, indem Sie das `sys`-Modul in Ihr Python-Skript importieren und dann das `sys.argv`-Array verwenden. Wichtig: Das erste Element des Arrays (`sys.argv[0]`) ist der Name des Skripts. Somit ist `sys.argv[1]` der erste eigentliche Eingabeparameter.
 
-Ein Beispiel für die Verwendung von Eingabeparametern in einem Python-Runbook finden Sie unter [Mein erstes Python-Runbook in Azure Automation](./learn/automation-tutorial-runbook-textual-python2.md).
+Ein Beispiel für die Verwendung von Eingabeparametern in einem Python-Runbook finden Sie unter [Mein erstes Python-Runbook in Azure Automation](./learn/automation-tutorial-runbook-textual-python-3.md).
 
 ## <a name="assign-values-to-input-parameters-in-runbooks"></a>Eingabeparametern in Runbooks Werte zuweisen
 
@@ -288,7 +288,7 @@ Geben Sie den folgenden Code in eine Textdatei ein, und speichern Sie diese als 
 
 ### <a name="create-the-runbook"></a>Erstellen des Runbooks
 
-Erstellen Sie ein neues PowerShell-Runbook mit dem Namen **Test-Json** in Azure Automation. Siehe [Mein erstes PowerShell-Runbook](./learn/automation-tutorial-runbook-textual-powershell.md).
+Erstellen Sie ein neues PowerShell-Runbook mit dem Namen **Test-Json** in Azure Automation.
 
 Damit die JSON-Daten akzeptiert werden, muss das Runbook ein Objekt als Eingabeparameter annehmen. Das Runbook kann dann die in der JSON-Datei definierten Eigenschaften verwenden.
 
@@ -298,10 +298,10 @@ Param(
      [object]$json
 )
 
-# Connect to Azure account
-$Conn = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID `
-    -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+# Connect to Azure with user-assigned managed identity
+Connect-AzAccount -Identity
+$identity = Get-AzUserAssignedIdentity -ResourceGroupName <ResourceGroupName> -Name <UserAssignedManagedIdentity>
+Connect-AzAccount -Identity -AccountId $identity.ClientId
 
 # Convert object to actual JSON
 $json = $json | ConvertFrom-Json

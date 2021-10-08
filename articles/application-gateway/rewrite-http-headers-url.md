@@ -1,18 +1,17 @@
 ---
-title: Umschreiben von HTTP-Headern und URL mit Azure Application Gateway | Microsoft-Dokumentation
+title: Erneutes Generieren von HTTP-Headern und URLs mit Azure Application Gateway
 description: In diesem Artikel erhalten Sie eine Übersicht über das erneute Generieren von HTTP-Headern und einer URL in Azure Application Gateway.
-services: application-gateway
 author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: azhussai
-ms.openlocfilehash: b7cf7c98e71da215eb30dcab556a88d6d2701591
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c4e4af8fb14c48988a593261365dcfde6c7a0657
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789445"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577277"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Umschreiben von HTTP-Headern und einer URL mithilfe von Application Gateway
 
@@ -97,7 +96,7 @@ Wenn Sie den gesamten Wert verwenden möchten, sollten Sie die Nummer nicht ange
 
 ## <a name="server-variables"></a>Servervariablen
 
-Application Gateway speichert mit Servervariablen nützliche Informationen zum Server, zur Verbindung mit dem Client und zur momentanen Anforderung an die Verbindung. Beispiele für Informationen, die gespeichert werden, sind die IP-Adresse des Clients und der Webbrowsertyp. Servervariablen ändern sich dynamisch, wenn z.B. eine neue Seite geladen oder ein Formular gesendet wird. Anhand dieser Variablen können Sie Bedingungen für das erneute Generieren und Header für das erneute Generieren auswerten. Um den Wert von Servervariablen zum Umschreiben von Headern zu verwenden, müssen Sie diese Variablen in der Syntax {var_ *Servervariablenname*} angeben.
+Application Gateway speichert mit Servervariablen nützliche Informationen zum Server, zur Verbindung mit dem Client und zur momentanen Anforderung an die Verbindung. Beispiele für gespeicherte Informationen sind die IP-Adresse und der Webbrowsertyp des Clients. Servervariablen ändern sich dynamisch, wenn z.B. eine neue Seite geladen oder ein Formular gesendet wird. Anhand dieser Variablen können Sie Bedingungen für das erneute Generieren und Header für das erneute Generieren auswerten. Um den Wert von Servervariablen zum Umschreiben von Headern zu verwenden, müssen Sie diese Variablen in der Syntax {var_ *Servervariablenname*} angeben.
 
 Das Application Gateway unterstützt die folgenden Servervariablen:
 
@@ -123,7 +122,7 @@ Das Application Gateway unterstützt die folgenden Servervariablen:
 | sent_bytes                | Die Anzahl der an einen Client gesendeten Bytes.                        |
 | server_port               | Der Port des Servers, der eine Anforderung akzeptiert hat.              |
 | ssl_connection_protocol   | Das Protokoll einer hergestellten TLS-Verbindung.               |
-| ssl_enabled               | „Ein“, wenn die Verbindung im TLS-Modus ausgeführt wird. Andernfalls eine leere Zeichenfolge. |
+| ssl_enabled               | „On“, wenn die Verbindung im TLS-Modus ausgeführt wird. Andernfalls eine leere Zeichenfolge. |
 | uri_path                  | Identifiziert die spezifische Ressource auf dem Host, auf die der Webclient zugreifen möchte. Dies ist der Teil des Anforderungs-URI ohne die Argumente. Beispiel: In der Anforderung `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` lautet der Wert von „uri_path“ `/article.aspx`. |
 
 ### <a name="mutual-authentication-server-variables-preview"></a>Servervariablen für die gegenseitige Authentifizierung (Vorschau)
@@ -139,7 +138,7 @@ Application Gateway unterstützt die folgenden Servervariablen für Szenarien de
 | client_certificate_serial | Die Seriennummer des Clientzertifikats für eine hergestellte SSL-Verbindung.  |
 | client_certificate_start_date| Das Startdatum des Clientzertifikats. |
 | client_certificate_subject| Die Zeichenfolge „Antragsteller-DN“ des Clientzertifikats für eine hergestellte SSL-Verbindung. |
-| client_certificate_verification| Das Ergebnis der Überprüfung des Clientzertifikats: *SUCCESS*, *FAILED:<reason>* oder *NONE*, wenn kein Zertifikat vorhanden war. | 
+| client_certificate_verification| Das Ergebnis der Überprüfung des Clientzertifikats: *SUCCESS*, *FAILED:\<reason\>* oder *NONE*, wenn kein Zertifikat vorhanden war. | 
 
 ## <a name="rewrite-configuration"></a>Konfiguration für das erneute Generieren
 

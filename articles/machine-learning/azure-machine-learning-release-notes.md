@@ -8,19 +8,58 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 02/18/2021
-ms.openlocfilehash: 2c195111f6df96b5b8ec04f7aad3dace7ab8371f
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.date: 08/18/2021
+ms.openlocfilehash: f4c7c43c0406ed7a6c05c3d83e467bc335c43093
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429126"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628107"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
 In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](/python/api/overview/azure/ml/intro).
 
 __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wird, indem Sie die folgende URL kopieren und in Ihren Feedreader einfügen: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-09-07"></a>2021-09-07
+
+### <a name="azure-machine-learning-sdk-for-python-v1340"></a>Azure Machine Learning SDK für Python 1.34.0
+  + **azureml-automl-core**
+    + Unterstützung für das erneute Anpassen einer zuvor trainierten Vorhersagepipeline wurde hinzugefügt.
+    + Es wurde die Möglichkeit hinzugefügt, Vorhersagen zu den Trainingsdaten (Vorhersage in Beispielen) für Vorhersagen zu erhalten.
+  + **azureml-automl-runtime**
+    + Unterstützung für die Rückgabe vorhergesagter Wahrscheinlichkeiten von einem bereitgestellten Endpunkt eines AutoML-Klassifizierungsmodells wurde hinzugefügt.
+    + Es wurde eine Vorhersageoption für Benutzer hinzugefügt, um anzugeben, dass alle Vorhersagen ganze Zahlen sein müssen.
+    + Der Name der Zielspalte wurde aus den Namen der Features zur Erklärung des Modells für lokale Experimente mit „training_data_label_column_name“
+    + als Dataseteingaben entfernt.
+    + Unterstützung für das erneute Anpassen einer zuvor trainierten Vorhersagepipeline wurde hinzugefügt.
+    + Es wurde die Möglichkeit hinzugefügt, Vorhersagen zu den Trainingsdaten (Vorhersage in Beispielen) für Vorhersagen zu erhalten.
+  + **azureml-core**
+    + Unterstützung für das Festlegen des Streamspaltentyps sowie das Einbinden und Herunterladen von Streamspalten im Tabellendataset wurde hinzugefügt.
+    + Neue optionale Felder wurden zu „Kubernetes.attach_configuration(identity_type=None, identity_ids=None)“ hinzugefügt, die es ermöglichen, KubernetesCompute entweder mit einer SystemAssigned- oder einer UserAssigned-Identität anzufügen. Neue Identitätsfelder werden beim Aufruf von „print(compute_target)“ oder „compute_target.serialize()“ einbezogen: identity_type, identity_id, principal_id und tenant_id/client_id.
+  + **azureml-dataprep**
+    + Unterstützung für das Festlegen des Streamspaltentyps für Tabellendatasets wurde hinzugefügt. Unterstützung für das Einbinden und Herunterladen von Streamspalten im Tabellendataset wurde hinzugefügt.
+  + **azureml-defaults**
+    + Die Abhängigkeit `azureml-inference-server-http==0.3.1` wurde zu `azureml-defaults` hinzugefügt.
+  + **azureml-mlflow**
+    + Ermöglicht die Paginierung der list_experiments-API durch Hinzufügen der optionalen Parameter `max_results` und `page_token`. Eine Dokumentation finden Sie in den offiziellen MLflow-Dokumenten.
+  + **azureml-sdk**
+    + Abhängigkeit von veralteten Paketen (azureml-train) wurde in azureml-sdk ersetzt.
+    + Es wurde „azureml-responsibleai“ zu „azureml-sdk extras“ hinzugefügt.
+  + **azureml-train-automl-client**
+    + Machen Sie die Parameter `test_data` und `test_size` in `AutoMLConfig` verfügbar. Diese Parameter können verwendet werden, um eine Testausführung zu starten, nachdem die 
+    + Modelltrainingsphase abgeschlossen wurde. Die Testausführung berechnet Vorhersagen mit dem besten Modell und generiert anhand dieser Vorhersagen entsprechende Metriken.
+
+## <a name="2021-08-24"></a>2021-08-24
+
+### <a name="azure-machine-learning-experimentation-user-interface"></a>Benutzeroberfläche für das Azure Machine Learning-Experimentieren
+  + **Löschen der Ausführung**
+    + Das Löschen der Ausführung ist eine neue Funktion, mit der Benutzer mindestens eine Ausführung in ihrem Arbeitsbereich löschen können.
+    + Diese Funktionalität kann Benutzern helfen, Speicherkosten zu senken und die Speicherkapazität zu verwalten, indem sie regelmäßig Ausführungen und Experimente direkt über die Benutzeroberfläche löschen.
+  + **Batchabbruch für Ausführung**
+    + Der Batchabbruch für die Ausführung ist eine neue Funktion, mit der Benutzer mindestens eine Ausführung aus ihrer Ausführungsliste auswählen können, um sie abzubrechen. 
+    + Mit dieser Funktion können Benutzer mehrere in Warteschlangen befindliche Ausführungen abbrechen und Speicherplatz in ihrem Cluster freigeben.
 
 ## <a name="2021-08-18"></a>2021-08-18
 

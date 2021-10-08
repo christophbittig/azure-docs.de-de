@@ -3,12 +3,12 @@ title: Konfigurieren von Netzwerkeinstellungen für verwaltete Service Fabric-Cl
 description: Erfahren Sie, wie Sie Ihre verwalteten Service Fabric-Cluster für NSG-Regeln, RDP-Portzugriff, Lastenausgleichsregeln und vieles mehr konfigurieren.
 ms.topic: how-to
 ms.date: 8/23/2021
-ms.openlocfilehash: d953e9cd96c509a2410087588125b023613b380c
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 0299118a7715a566cccc0dd1fb7bc83aa9c5e06c
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867360"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545658"
 ---
 # <a name="configure-network-settings-for-service-fabric-managed-clusters"></a>Konfigurieren von Netzwerkeinstellungen für verwaltete Service Fabric-Cluster
 
@@ -38,62 +38,62 @@ Verwaltete Service Fabric-Cluster ermöglichen Ihnen die Zuweisung von NSG-Regel
 Verwenden Sie die Eigenschaft [networkSecurityRules](/azure/templates/microsoft.servicefabric/managedclusters#managedclusterproperties-object) Ihrer *Microsoft.ServiceFabric/managedclusters*-Ressource (Version `2021-05-01` oder höher), um NSG-Regeln zuzuweisen. Beispiel:
 
 ```json
-            "apiVersion": "2021-05-01",
-            "type": "Microsoft.ServiceFabric/managedclusters",
-            ...
-            "properties": {
-                ...
-                "networkSecurityRules" : [
-                    {
-                        "name": "AllowCustomers",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "Internet",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "33000-33499",
-                        "access": "Allow",
-                        "priority": 2001,
-                        "direction": "Inbound"
-                    },
-                    {
-                        "name": "AllowARM",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "AzureResourceManager",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "33500-33699",
-                        "access": "Allow",
-                        "priority": 2002,
-                        "direction": "Inbound"
-                    },
-                    {
-                        "name": "DenyCustomers",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "Internet",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "33700-33799",
-                        "access": "Deny",
-                        "priority": 2003,
-                        "direction": "Outbound"
-                    },
-                    {
-                        "name": "DenyRDP",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "*",
-                        "destinationAddressPrefix": "VirtualNetwork",
-                        "destinationPortRange": "3389",
-                        "access": "Deny",
-                        "priority": 2004,
-                        "direction": "Inbound",
-                        "description": "Override for optional SFMC_AllowRdpPort rule. This is required in tests to avoid Sev2 incident for security policy violation."
-                    }
-                ],
-                "fabricSettings": [
-                ...
-                ]
-            }
+{
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedclusters",
+  "properties": {
+    "networkSecurityRules": [
+      {
+        "name": "AllowCustomers",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "Internet",
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "33000-33499",
+        "access": "Allow",
+        "priority": 2001,
+        "direction": "Inbound"
+      },
+      {
+        "name": "AllowARM",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "AzureResourceManager",
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "33500-33699",
+        "access": "Allow",
+        "priority": 2002,
+        "direction": "Inbound"
+      },
+      {
+        "name": "DenyCustomers",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "Internet",
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "33700-33799",
+        "access": "Deny",
+        "priority": 2003,
+        "direction": "Outbound"
+      },
+      {
+        "name": "DenyRDP",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "*",
+        "destinationAddressPrefix": "VirtualNetwork",
+        "destinationPortRange": "3389",
+        "access": "Deny",
+        "priority": 2004,
+        "direction": "Inbound",
+        "description": "Override for optional SFMC_AllowRdpPort rule. This is required in tests to avoid Sev2 incident for security policy violation."
+      }
+    ],
+    "fabricSettings": [
+      "..."
+    ]
+  }
+}
 ```
 
 ## <a name="clientconnection-and-httpgatewayconnection-default-and-optional-rules"></a>ClientConnection- und HttpGatewayConnection-Standardregeln und optionale Regeln
@@ -199,7 +199,9 @@ Suchen Sie mithilfe des Azure-Portals nach den NAT-Regeln für eingehenden Daten
 
    ![Eingehende NAT-Regeln][Inbound-NAT-Rules]
 
-   Standardmäßig befindet sich der Front-End-Port für Windows-Cluster im Bereich von 50000 und höher, und der Zielport ist 3389. Dies ist dem RDP-Dienst auf dem Zielknoten zugeordnet.
+   Standardmäßig beginnt bei Windows-Clustern die Zuteilung zum Front-End-Port bei 50000 und der Zielport ist 3389. Dies ist dem RDP-Dienst auf dem Zielknoten zugeordnet.
+   >[!NOTE]
+   > Wenn Sie das BYOLB-Feature benutzen und RDP verwenden möchten, müssen Sie dafür einen NAT-Pool separat konfigurieren. Dadurch werden nicht automatisch NAT-Regeln für diese Knotentypen erstellt.
 
 4. Stellen Sie eine Remoteverbindung mit dem spezifischen Knoten (Skalierungsgruppeninstanz) her. Sie können den Benutzernamen und das Kennwort, die Sie beim Erstellen des Clusters erstellt haben, oder beliebige andere Anmeldeinformationen, die Sie konfiguriert haben, verwenden.
 
@@ -315,7 +317,7 @@ Verwaltete Cluster aktivieren IPv6 nicht standardmäßig. Dieses Feature ermögl
             }
    ```
 
-2. Stellen Sie Ihren IPv6-fähigen verwalteten Cluster bereit. Passen Sie die [Beispielvorlage](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/SF-Managed-Standard-SKU-2-NT-IPv6/AzureDeploy.json) nach Bedarf an oder erstellen Sie Ihre eigene Vorlage.
+2. Stellen Sie Ihren IPv6-fähigen verwalteten Cluster bereit. Passen Sie die [Beispielvorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-IPv6) nach Bedarf an oder erstellen Sie Ihre eigene Vorlage.
    Im folgenden Beispiel erstellen wir eine Ressourcengruppe namens `MyResourceGroup` in `westus` und stellen einen Cluster bereit, in der diese Funktion aktiviert ist.
    ```powershell
     New-AzResourceGroup -Name MyResourceGroup -Location westus
@@ -403,7 +405,7 @@ Mit diesem Feature können Kunden ein vorhandenes virtuelles Netzwerk verwenden,
    > [!NOTE]
    > VNetRoleAssignmentID muss eine [GUID](../azure-resource-manager/templates/template-functions-string.md#examples-16) sein. Wenn Sie eine Vorlage erneut bereitstellen, einschließlich dieser Rollenzuweisung, vergewissern Sie sich, dass die GUID die gleiche wie die ursprünglich verwendete ist. Wir empfehlen, dies isoliert auszuführen oder nach der Bereitstellung diese Ressource aus der Clustervorlage zu entfernen, da sie nur einmal erstellt werden muss.
 
-   Im Folgenden finden Sie eine vollständige [Azure Resource Manager(ARM)-Vorlage, mit der ein VNet-Subnetz erstellt und die Rollenzuweisung durchgeführt werden kann](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/SF-Managed-Standard-SKU-2-NT-BYOVNET/SFMC-VNet-RoleAssign.json) als Beispiel. Diese Vorlage können Sie für diesen Schritt verwenden.
+   Im Folgenden finden Sie eine vollständige [Azure Resource Manager(ARM)-Vorlage, mit der ein VNet-Subnetz erstellt und die Rollenzuweisung durchgeführt werden kann](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOVNET/createVNet-assign-role.json) als Beispiel. Diese Vorlage können Sie für diesen Schritt verwenden.
 
 3. Konfigurieren Sie die Eigenschaft `subnetId` für die Clusterbereitstellung, nachdem die Rolle wie unten gezeigt eingerichtet wurde:
 
@@ -419,7 +421,7 @@ Mit diesem Feature können Kunden ein vorhandenes virtuelles Netzwerk verwenden,
             ...
             }
    ```
-   Beziehen Sie sich auf die [Beispielvorlage zur Verwendung eines eigenen VNet-Clusters](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/SF-Managed-Standard-SKU-2-NT-BYOVNET/AzureDeploy.json) oder passen Sie Ihre eigene Vorlage an.
+   Beziehen Sie sich auf die [Beispielvorlage zur Verwendung eines eigenen VNet-Clusters](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOVNET) oder passen Sie Ihre eigene Vorlage an.
 
 4. Stellen Sie die konfigurierte Azure Resource Manager(ARM)-Vorlage für verwaltete Cluster bereit.
 
@@ -437,7 +439,7 @@ Verwaltete Cluster erstellen einen Azure Load Balancer und einen vollqualifizier
 
 * Einen vorkonfigurierte statische IP-Adresse für den Load Balancer für privaten oder öffentlichen Datenverkehr nutzen.
 * Einen Load Balancer einem bestimmten Knotentyp zuordnen.
-* NSG-Regeln pro Knotentyp konfigurieren, da jeder Knotentyp in einem eigenen VNet bereitgestellt wird.
+* Netzwerksicherheitsgruppenregeln pro Knotentyp konfigurieren, da jeder Knotentyp in einem eigenen Subnetz mit einer eindeutigen NSG bereitgestellt wird 
 * Eventuell vorhandene Richtlinien und Kontrollen verwalten.
 
 > [!NOTE]
@@ -445,7 +447,7 @@ Verwaltete Cluster erstellen einen Azure Load Balancer und einen vollqualifizier
 
 **Funktionsanforderungen**
  * SKU-Typen „Basic Azure Load Balancer“ und „Standard Azure Load Balancer“ werden unterstützt.
- * Back-End- und NAT-Pools müssen auf dem vorhandenen Azure Load Balancer konfiguriert werden. Ein Beispiel finden Sie im vollständigen [Beispiel zum Erstellen und Zuweisen einer Rolle hier](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role). 
+ * Back-End- und NAT-Pools müssen auf dem vorhandenen Azure Load Balancer konfiguriert werden. Ein Beispiel finden Sie im vollständigen [Beispiel zum Erstellen und Zuweisen einer Rolle hier](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/master/SF-Managed-Standard-SKU-2-NT-BYOLB/createlb-and-assign-role.json). 
 
 Hier sind einige Beispielszenarien, in denen Kunden dies verwenden können:
 
@@ -532,7 +534,7 @@ So konfigurieren Sie die Verwendung eines eigenen Lastenausgleichs:
 
 5. Konfigurieren Sie optional die NSG-Regeln des verwalteten Clusters, die auf den Knotentyp angewendet werden, um jeglichen erforderlichen Datenverkehr zu ermöglichen, den Sie auf dem Azure Load Balancer konfiguriert haben, oder der Datenverkehr wird blockiert.
 
-   Ein Beispiel zum Öffnen von Regeln für eingehenden Datenverkehr finden Sie in der [Azure Resource Manager(ARM)-Vorlage „Verwendung eines eigenen Lastenausgleichs“](https://raw.githubusercontent.com/Azure-Samples/service-fabric-cluster-templates/SF-Managed-Standard-SKU-2-NT-BYOLB/AzureDeploy.json).
+   Ein Beispiel zum Öffnen von Regeln für eingehenden Datenverkehr finden Sie in der [Azure Resource Manager(ARM)-Vorlage „Verwendung eines eigenen Lastenausgleichs“](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-2-NT-BYOLB).
 
 6. Bereitstellen der konfigurierten ARM-Vorlage für verwaltete Cluster
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, RBAC) auf einen Azure Machine Learning-Arbeitsbereich zugreifen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: Blackmist
-ms.author: nigup
-author: nishankgu
+ms.author: johwu
+author: johnwu0604
 ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 2e0b503cd305697a808c08a2fe903d0f27972448
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1089589dabd91d9f273b71f0b89bbf0ad3488e95
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339975"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427778"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 
@@ -34,19 +34,18 @@ In diesem Artikel erfahren Sie, wie Sie den Zugriff (Autorisierung) auf einen Az
 
 ## <a name="default-roles"></a>Standardrollen
 
-Ein Azure Machine Learning-Arbeitsbereich ist eine Azure-Ressource. Wie jede andere Azure-Ressource verfügt ein neu erstellter Azure Machine Learning-Arbeitsbereich über drei Standardrollen. Sie können dem Arbeitsbereich Benutzer hinzufügen und diesen eine dieser integrierten Rollen zuweisen.
+Azure Machine Learning-Arbeitsbereiche verfügen über vier integrierte Rollen, die standardmäßig verfügbar sind. Beim Hinzufügen von Benutzern zu einem Arbeitsbereich kann ihnen eine der unten beschriebenen integrierten Rollen zugewiesen werden.
 
 | Role | Zugriffsebene |
 | --- | --- |
+| **AzureML Data Scientist** | Kann alle Aktionen innerhalb eines Azure Machine Learning-Arbeitsbereichs ausführen, mit Ausnahme des Erstellens oder Löschens von Computeressourcen und des Änderns des Arbeitsbereichs selbst. |
 | **Leser** | Schreibgeschützte Aktionen im Arbeitsbereich. Leser können Ressourcen in einem Arbeitsbereich auflisten und anzeigen – einschließlich der Anmeldeinformationen für [Datenspeicher](how-to-access-data.md). Leser können diese Ressourcen weder erstellen noch aktualisieren. |
 | **Mitwirkender** | Anzeigen, Erstellen, Bearbeiten und Löschen (wo zutreffend) von Objekten in einem Arbeitsbereich. Mitwirkende können z.B. ein Experiment erstellen, einen Computecluster erstellen oder anfügen, eine Ausführung durchführen oder einen Webdienst bereitstellen. |
 | **Besitzer** | Vollzugriff auf den Arbeitsbereich, u.a. Anzeigen, Erstellen, Bearbeiten und Löschen (wo zutreffend) von Objekten in einem Arbeitsbereich. Zudem können Besitzer Rollenzuweisungen anpassen. |
-| **Benutzerdefinierte Rolle** | Hiermit können Sie den Zugriff auf bestimmte Vorgänge auf Steuerungs- oder Datenebene innerhalb eines Arbeitsbereichs anpassen. Bei diesen Vorgängen kann es sich beispielsweise um das Übermitteln einer Ausführung, das Erstellen einer Berechnung, das Bereitstellen eines Modells oder das Registrieren eines Datasets handeln. |
 
 > [!IMPORTANT]
 > Der Rollenzugriff kann für mehrere Ebenen in Azure gelten. Es kann z. B. sein, dass ein Benutzer mit Vollzugriff für einen Arbeitsbereich für die Ressourcengruppe, die diesen Arbeitsbereich enthält, keinen Vollzugriff hat. Weitere Informationen finden Sie unter [Funktionsweise von Azure RBAC](../role-based-access-control/overview.md#how-azure-rbac-works).
 
-Derzeit gibt es keine zusätzlichen integrierten Rollen, die speziell für Azure Machine Learning erstellt wurden. Weitere Informationen zu integrierten Rollen finden Sie unter [Integrierte Azure-Rollen](../role-based-access-control/built-in-roles.md).
 
 ## <a name="manage-workspace-access"></a>Verwalten des Arbeitsbereichszugriffs
 
@@ -56,21 +55,6 @@ Wenn Sie Besitzer eines Arbeitsbereichs sind, können Sie für den Arbeitsbereic
 - [Azure-Befehlszeilenschnittstelle](../role-based-access-control/role-assignments-cli.md)
 - [REST-API](../role-based-access-control/role-assignments-rest.md)
 - [Azure-Ressourcen-Manager-Vorlagen](../role-based-access-control/role-assignments-template.md)
-
-Wenn Sie die [Azure Machine Learning-CLI](reference-azure-machine-learning-cli.md) installiert haben, können Sie Benutzern Rollen auch über CLI-Befehle zuweisen:
-
-```azurecli-interactive 
-az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
-```
-
-Das Feld `user` ist die E-Mail-Adresse eines vorhandenen Benutzers in der Azure Active Directory-Instanz, in der sich das übergeordnete Abonnement des Arbeitsbereichs befindet. Im folgenden Ausschnitt wird die Verwendung des Befehls veranschaulicht:
-
-```azurecli-interactive 
-az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
-```
-
-> [!NOTE]
-> Der Befehl „az ml workspace share“ funktioniert nicht für Verbundkonten von Azure Active Directory B2B. Verwenden Sie das Azure UI-Portal anstelle des Befehls.
 
 ## <a name="create-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
 
@@ -118,11 +102,7 @@ Mit dem folgenden Azure CLI-Befehl können Sie die benutzerdefinierte Rolle bere
 az role definition create --role-definition data_scientist_role.json
 ```
 
-Nach der Bereitstellung ist die Rolle im angegebenen Arbeitsbereich verfügbar. Jetzt können Sie diese Rolle über das Azure-Portal hinzufügen und zuweisen. Alternativ können Sie diese Rolle einem Benutzer mit dem CLI-Befehl `az ml workspace share` zuweisen:
-
-```azurecli-interactive
-az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist Custom" --user jdoe@contoson.com
-```
+Nach der Bereitstellung ist die Rolle im angegebenen Arbeitsbereich verfügbar. Jetzt können Sie diese Rolle über das Azure-Portal hinzufügen und zuweisen.
 
 Weitere Informationen zu benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md). 
 

@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/13/2020
+ms.date: 09/15/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74d5bee95ae91eb11f249518f49b711d9649db01
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: aabb53a573ee8a3ccc5d98ab8316fee560dbf625
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467654"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603902"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – SAP ASE-DBMS-Bereitstellung für SAP-Workload
 
@@ -182,10 +182,14 @@ Es ist aus mehreren Gründen ratsam, die Komprimierung vor dem Hochladen in Azur
 Die Daten- und LOB-Komprimierung funktioniert auf einer VM, die auf einem virtuellen Azure-Computer gehostet wird, genauso wie in der lokalen Umgebung. Weitere Informationen zur Überprüfung, ob die Komprimierung bei einer bestehenden SAP ASE-Datenbank bereits verwendet wird, finden Sie im [SAP-Supporthinweis Nr. 1750510](https://launchpad.support.sap.com/#/notes/1750510). Weitere Informationen zur SAP ASE-Datenbankkomprimierung finden Sie im [SAP-Supporthinweis Nr. 2121797](https://launchpad.support.sap.com/#/notes/2121797).
 
 ## <a name="high-availability-of-sap-ase-on-azure"></a>Hochverfügbarkeit von SAP ASE in Azure 
-HADR Users Guide (HADR-Benutzerhandbuch, High Availability And Desaster Recovery, Hochverfügbarkeit und Notfallwiederherstellung) enthält detaillierte Informationen zum Setup und zur Konfiguration einer SAP ASE „Always On“-Lösung mit zwei Knoten.  Außerdem wird ein dritter Knoten für Notfallwiederherstellung ebenfalls unterstützt. SAP ASE unterstützt viele hochverfügbare Konfigurationen, darunter freigegebener Datenträger und natives Betriebssystem-Clustering (Floating IP). Die einzige unterstützte Konfiguration in Azure ist die Verwendung von Fehler-Manager ohne Floating IP.  Die Methode „Floating IP-Adresse“ funktioniert in Azure nicht.  Der SAP-Kernel ist eine "HA-basierte" (High Availability, Hochverfügbarkeit) Anwendung, die die primären und sekundären SAP ASE-Server kennt. Es gibt keine engen Integrationen zwischen SAP ASE und Azure; der interne Azure-Lastenausgleich wird nicht verwendet. Deshalb sollte die SAP ASE-Standarddokumentation befolgt werden, beginnend mit dem [SAP ASE HADR Users Guide](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html). 
+Das HADR-Benutzerhandbuch (High Availability And Desaster Recovery, Hochverfügbarkeit und Notfallwiederherstellung) enthält detaillierte Informationen zur Einrichtung und Konfiguration einer SAP ASE-Always On-Lösung mit zwei Knoten.  Außerdem wird ein dritter Knoten für Notfallwiederherstellung ebenfalls unterstützt. SAP ASE unterstützt viele [Hochverfügbarkeitskonfigurationen](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.4.1/en-US/9b40a3c038a34cbda1064312aa8d25a4.html), z. B. freigegebene Datenträger und natives Betriebssystemclustering (z. B. Pacemaker und Windows Server-Failovercluster). Es gibt zwei unterstützte Hochverfügbarkeitskonfigurationen für SAP ASE in Azure:
+
+- HA-orientiert mit Fehler-Manager: Der SAP-Kernel ist eine „HA-orientierte“ Anwendung, die die primären und sekundären SAP ASE-Server kennt. Es gibt keine engen Integrationen zwischen der „HA-orientierten“ SAP ASE-Anwendung und Azure; der interne Azure-Lastenausgleich wird nicht verwendet.  Die Lösung ist im [Users Guide von SAP ASE HADR](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html) dokumentiert.
+- Floating IP mit Fehler-Manager: Diese Lösung kann für SAP Business Suite- und Nicht-SAP Business Suite-Anwendungen verwendet werden.  Diese Lösung nutzt den internen Azure-Lastenausgleich, und die SAP ASE-Datenbank-Engine stellt einen Testport bereit.  Der Fehler-Manager ruft SAPHostAgent auf, um eine sekundäre Floating IP-Adresse auf den ASE-Hosts zu starten oder zu beenden.  Diese Lösung ist im [SAP-Hinweis #3086679 – SYB: Fehler-Manager: Floating IP-Adresse in Microsoft Azure](https://launchpad.support.sap.com/#/notes/3086679) dokumentiert.
+
 
 > [!NOTE]
-> Die einzige unterstützte Konfiguration in Azure ist die Verwendung von Fehler-Manager ohne Floating IP.  Die Methode „Floating IP-Adresse“ funktioniert in Azure nicht. 
+> Die Failoverzeiten und andere Merkmale von HA-orientierten Lösungen oder Floating IP-Lösungen sind ähnlich.  Bei der Entscheidung zwischen diesen beiden Lösungen sollten Kunden selbst Tests und Bewertungen durchführen und Faktoren wie geplante und ungeplante Failoverzeiten und andere betriebliche Verfahren einbeziehen.  
 
 ### <a name="third-node-for-disaster-recovery"></a>Dritter Knoten für Notfallwiederherstellung
 Neben der Verwendung von SAP ASE „Always On“ für lokale Hochverfügbarkeit möchten Sie möglicherweise die Konfiguration auf einen asynchron replizierten Knoten in einer anderen Azure-Region erweitern. Weitere Informationen finden Sie unter [Installationsverfahren für Sybase 16.3 Patch Level 3 Always-on + DR unter Suse 12.3](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199).

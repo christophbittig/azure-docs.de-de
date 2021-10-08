@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d4f48f8a8c573ac03f5637b74b740c5710af92b3
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 82f860b78a8c0c4114a2250912fb6ec22e040d71
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597681"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606074"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -116,6 +116,7 @@ Standardmäßige Netzwerkzugriffsregeln für Speicherkonten können über das Az
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Allow
     ```
+
 ---
 
 ## <a name="grant-access-from-a-virtual-network"></a>Gewähren des Zugriffs aus einem virtuellen Netzwerk
@@ -126,7 +127,7 @@ Aktivieren Sie einen [Dienstendpunkt](../../virtual-network/virtual-network-serv
 
 Jedes Speicherkonto unterstützt bis zu 200 VNET-Regeln, die mit [IP-Netzwerkregeln](#grant-access-from-an-internet-ip-range) kombiniert werden können.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Wenn Sie ein Subnetz löschen, das in einer Netzwerkregel enthalten ist, wird es aus den Netzwerkregeln für das Speicherkonto entfernt. Wenn Sie ein neues Subnetz mit dem gleichen Namen erstellen, hat es keinen Zugriff auf das Speicherkonto. Um den Zugriff zuzulassen, müssen Sie das neue Subnetz explizit in den Netzwerkregeln für das Speicherkonto autorisieren.
 
 ### <a name="available-virtual-network-regions"></a>Verfügbare Regionen für virtuelle Netzwerke
@@ -252,21 +253,21 @@ Sie können IP-Netzwerkregeln verwenden, um den Zugriff aus spezifischen öffent
 
 Die folgenden Einschränkungen gelten für IP-Adressbereiche.
 
-- IP-Netzwerkregeln sind nur für IP-Adressen des **öffentlichen Internet** zulässig. 
+- IP-Netzwerkregeln sind nur für IP-Adressen des **öffentlichen Internet** zulässig.
 
-  Für private Netzwerke reservierte IP-Adressbereiche (wie in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) definiert) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit _10.*_ , _172.16.*_  - _172.31.*_ und _192.168.*_ beginnen.
+  Für private Netzwerke reservierte IP-Adressbereiche (wie in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) definiert) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die folgendermaßen beginnen: *10.** *, 172.16.** - *172.31.** und *192.168.**.
 
-- Sie müssen zulässige Internetadressbereiche in der [CIDR-Notation](https://tools.ietf.org/html/rfc4632) im Format *16.17.18.0/24* oder als einzelne IP-Adressen (beispielsweise *16.17.18.19*) angeben. 
+- Sie müssen zulässige Internetadressbereiche in der [CIDR-Notation](https://tools.ietf.org/html/rfc4632) im Format *16.17.18.0/24* oder als einzelne IP-Adressen (beispielsweise *16.17.18.19*) angeben.
 
-- Kleine Adressbereiche mit der Präfixgröße „/ 31“ oder „/ 32“ werden nicht unterstützt. Diese Bereiche müssen mit einzelnen IP-Adressregeln konfiguriert werden. 
+- Kleine Adressbereiche mit der Präfixgröße „/ 31“ oder „/ 32“ werden nicht unterstützt. Diese Bereiche müssen mit einzelnen IP-Adressregeln konfiguriert werden.
 
 - Für die Konfiguration von Storage-Firewallregeln werden nur IPv4-Adressen unterstützt.
 
 IP-Netzwerkregeln können in den folgenden Fällen nicht verwendet werden:
 
 - Zum Einschränken des Zugriffs auf Clients in derselben Azure-Region wie das Speicherkonto
-  
-  IP-Netzwerkregeln haben keine Auswirkungen auf Anforderungen, die aus der Azure-Region stammen, in der sich auch das Speicherkonto befindet. Verwenden Sie [VNET-Regeln](#grant-access-from-a-virtual-network), um Anforderungen aus der gleichen Region zuzulassen. 
+
+  IP-Netzwerkregeln haben keine Auswirkungen auf Anforderungen, die aus der Azure-Region stammen, in der sich auch das Speicherkonto befindet. Verwenden Sie [VNET-Regeln](#grant-access-from-a-virtual-network), um Anforderungen aus der gleichen Region zuzulassen.
 
 - Zum Einschränken des Zugriffs auf Clients in einer [gekoppelten Region](../../best-practices-availability-paired-regions.md), die sich in einem VNet mit einem Dienstendpunkt befinden
 
@@ -388,7 +389,6 @@ Die Arten von Vorgängen, die von einer Ressourceninstanz für Speicherkontodate
 > [!NOTE]
 > Ressourceninstanzregeln werden zurzeit nur für Azure Synapse unterstützt. Die Unterstützung für andere Azure-Dienste, die im Abschnitt [Vertrauenswürdiger Zugriff auf der Grundlage einer systemseitig zugewiesenen verwalteten Identität](#trusted-access-system-assigned-managed-identity) dieses Artikels aufgeführt sind, wird in den nächsten Wochen verfügbar sein.
 
-
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Ressourcennetzwerkregeln können über das Azure-Portal hinzugefügt und entfernt werden.
@@ -399,11 +399,11 @@ Ressourcennetzwerkregeln können über das Azure-Portal hinzugefügt und entfern
 
 3. Wählen Sie **Netzwerk** aus, um die Konfigurationsseite für das Netzwerk anzuzeigen.
 
-4. Wählen Sie in der Dropdownliste **Ressourcentyp** den Ressourcentyp Ihrer Ressourceninstanz aus. 
+4. Wählen Sie in der Dropdownliste **Ressourcentyp** den Ressourcentyp Ihrer Ressourceninstanz aus.
 
 5. Wählen Sie in der Dropdownliste **Instanzname** die Ressourceninstanz aus. Sie können auch alle Ressourceninstanzen im aktiven Mandanten, im aktiven Abonnement oder in der aktiven Ressourcengruppe einschließen.
 
-6. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**. Die Ressourceninstanz wird auf der Seite mit den Netzwerkeinstellungen im Abschnitt **Resource instances** (Ressourceninstanzen) angezeigt. 
+6. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**. Die Ressourceninstanz wird auf der Seite mit den Netzwerkeinstellungen im Abschnitt **Resource instances** (Ressourceninstanzen) angezeigt.
 
 Wenn Sie die Ressourceninstanz entfernen möchten, wählen Sie das Löschsymbol (:::image type="icon" source="media/storage-network-security/delete-icon.png":::) neben der Ressourceninstanz aus.
 
@@ -551,7 +551,7 @@ az storage account network-rule list \
 <a id="exceptions"></a>
 <a id="trusted-microsoft-services"></a>
 
-## <a name="grant-access-to-trusted-azure-services"></a>Gewähren von Zugriff für vertrauenswürdige Azure-Dienste 
+## <a name="grant-access-to-trusted-azure-services"></a>Gewähren von Zugriff für vertrauenswürdige Azure-Dienste
 
 Einige Azure-Dienste werden in Netzwerken betrieben, die nicht in Ihre Netzwerkregeln eingeschlossen werden können. Sie können einer Teilmenge solcher vertrauenswürdiger Azure-Dienste Zugriff auf das Speicherkonto gewähren und gleichzeitig Netzwerkregeln für andere Apps beibehalten. Diese vertrauenswürdigen Dienste stellen dann unter Verwendung einer strengen Authentifizierung eine sichere Verbindung mit Ihrem Speicherkonto her.
 
@@ -566,7 +566,7 @@ Wenn Sie vertrauenswürdigen Azure-Diensten Zugriff gewähren, erteilen Sie folg
 
 ### <a name="trusted-access-for-resources-registered-in-your-subscription"></a>Vertrauenswürdiger Zugriff für Ressourcen, die in Ihrem Abonnement registriert sind
 
-Ressourcen einiger Dienste können, **sofern sie in Ihrem Abonnement registriert sind**, für bestimmte Vorgänge auf Ihr Speicherkonto **im gleichen Abonnement** zugreifen. Hierzu zählen beispielsweise Sicherungsvorgänge und das Schreiben von Protokollen.  In der folgenden Tabelle werden die einzelnen Dienste und die zulässigen Vorgänge beschrieben: 
+Ressourcen einiger Dienste können, **sofern sie in Ihrem Abonnement registriert sind**, für bestimmte Vorgänge auf Ihr Speicherkonto **im gleichen Abonnement** zugreifen. Hierzu zählen beispielsweise Sicherungsvorgänge und das Schreiben von Protokollen.  In der folgenden Tabelle werden die einzelnen Dienste und die zulässigen Vorgänge beschrieben:
 
 | Dienst                  | Name des Ressourcenanbieters     | Zulässige Vorgänge                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
@@ -595,7 +595,6 @@ Sie können dieselbe Methode für ein Konto verwenden, für das das Feature für
 > [!TIP]
 > Soll Zugriff auf bestimmte Ressourcen gewährt werden, empfiehlt sich die Verwendung von Ressourceninstanzregeln. Informationen zum Gewähren von Zugriff auf bestimmte Ressourceninstanzen finden Sie im Abschnitt [Gewähren von Zugriff über Azure-Ressourceninstanzen (Vorschau)](#grant-access-specific-instances) dieses Artikels.
 
-
 | Dienst                        | Name des Ressourcenanbieters                 | Zweck            |
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API Management           | Microsoft.ApiManagement/service        | Ermöglicht dem API Management-Dienst Zugriff auf Speicherkonten hinter der Firewall mithilfe von Richtlinien. [Weitere Informationen](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy) |
@@ -620,7 +619,7 @@ Sie können dieselbe Methode für ein Konto verwenden, für das das Feature für
 
 ## <a name="grant-access-to-storage-analytics"></a>Gewähren von Zugriffs für die Speicheranalyse
 
-In manchen Fällen ist der Lesezugriff auf Ressourcenprotokolle und -metriken von außerhalb des Netzwerks erforderlich. Wenn Sie für vertrauenswürdige Dienste den Zugriff auf das Speicherkonto konfigurieren, können Sie Lesezugriff für die Protokolldateien, für die Metriktabellen oder für beides erlauben, indem Sie eine Netzwerkregelausnahme erstellen. Eine ausführliche Anleitung finden Sie im Anschluss im Abschnitt **Verwalten von Ausnahmen**. Weitere Informationen zur Verwendung der Speicheranalyse finden Sie unter [Speicheranalyse](./storage-analytics.md). 
+In manchen Fällen ist der Lesezugriff auf Ressourcenprotokolle und -metriken von außerhalb des Netzwerks erforderlich. Wenn Sie für vertrauenswürdige Dienste den Zugriff auf das Speicherkonto konfigurieren, können Sie Lesezugriff für die Protokolldateien, für die Metriktabellen oder für beides erlauben, indem Sie eine Netzwerkregelausnahme erstellen. Eine ausführliche Anleitung finden Sie im Anschluss im Abschnitt **Verwalten von Ausnahmen**. Weitere Informationen zur Verwendung der Speicheranalyse finden Sie unter [Speicheranalyse](./storage-analytics.md).
 
 <a id="manage-exceptions"></a>
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/06/2021
+ms.date: 09/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 33e01466a3e0629af9a691e33eb9161bf8098611
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a37ce583e5392099c923e9bc0a7a3363fa7b97c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349683"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576851"
 ---
 # <a name="create-a-dual-protocol-volume-for-azure-netapp-files"></a>Erstellen eines Volumes mit dualem Protokoll für Azure NetApp Files
 
@@ -112,7 +112,7 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
 
     * Wenn Sie eine vorhandene Momentaufnahmerichtlinie auf das Volume anwenden möchten, klicken Sie auf **Abschnitt „Erweitert“ anzeigen**, um den Bereich zu erweitern, geben Sie an, ob Sie den Momentaufnahmepfad ausblenden möchten, und wählen Sie im Pulldownmenü eine Momentaufnahmerichtlinie aus. 
 
-        Informationen zum Erstellen einer Momentaufnahmenrichtlinie finden Sie unter [Verwalten von Momentaufnahmenrichtlinien](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
+        Informationen zum Erstellen einer Momentaufnahmenrichtlinie finden Sie unter [Verwalten von Momentaufnahmenrichtlinien](snapshots-manage-policy.md).
 
         ![Abschnitt „Erweitert“ anzeigen](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
@@ -203,16 +203,24 @@ Mit der Option **Lokale NFS-Benutzer mit LDAP zulassen** für Active Directory-V
 
 ## <a name="manage-ldap-posix-attributes"></a>Verwalten von LDAP-POSIX-Attributen
 
-Sie können POSIX-Attribute wie z. B. UID, Basisverzeichnis und andere Werte über das MMC-Snap-In „Active Directory-Benutzer und -Computer“ verwalten.  Im folgenden Beispiel ist der Active Directory-Attribut-Editor dargestellt:  
+Sie können POSIX-Attribute wie z. B. UID, Basisverzeichnis und andere Werte über das MMC-Snap-In „Active Directory-Benutzer und -Computer“ verwalten.  Im folgenden Beispiel ist der Active Directory-Attribut-Editor dargestellt: 
 
 ![Active Directory-Attribut-Editor](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
 Sie müssen die folgenden Attribute für LDAP-Benutzer und LDAP-Gruppen festlegen: 
 * Erforderliche Attribute für LDAP-Benutzer:   
-    `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: posixAccount`
+    `uid: Alice`,  
+    `uidNumber: 139`,  
+    `gidNumber: 555`,  
+    `objectClass: user, posixAccount`
 * Erforderliche Attribute für LDAP-Gruppen:   
-    `objectClass: posixGroup`, `gidNumber: 555`
+    `objectClass: group, posixGroup`,  
+    `gidNumber: 555`
 * Alle Benutzer und Gruppen müssen über eindeutige Werte für `uidNumber` und `gidNumber` verfügen. 
+
+Die für `objectClass` angegebenen Werte sind separate Einträge. Beispielsweise hätte `objectClass` im Editor für mehrwertige Zeichenfolgen getrennte Werte (`user` und `posixAccount`), die für LDAP-Benutzer wie folgt angegeben werden:   
+
+![Screenshot: Editor für mehrwertige Zeichenfolgen, der mehrere für objectClass angegebene Werte zeigt.](../media/azure-netapp-files/multi-valued-string-editor.png) 
 
 Azure Active Directory Domain Services (AADDS) ermöglicht es Ihnen nicht, POSIX-Attribute für Benutzer und Gruppen zu ändern, die in der Organisationseinheit AADDC-Benutzer erstellt wurden. Zur Umgehung können Sie eine benutzerdefinierte Organisationseinheit einrichten und Benutzer und Gruppen in dieser benutzerdefinierten Organisationseinheit erstellen.
 

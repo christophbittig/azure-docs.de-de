@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 4b7cd5c72beaf96e8ffbeb11960e27a5bd25adae
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 288a78ee3b3e8c0a3d32d72d289c2b3e4c3d4aff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272941"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619013"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Vorbereiten von lokalen Computern für die Migration zu Azure
 
@@ -80,16 +80,17 @@ Ermitteln Sie anhand der Tabellen, welche Änderungen erforderlich sind.
 
 ### <a name="windows-machines"></a>Windows-Computer
 
-Die erforderlichen Änderungen sind in der Tabelle zusammengefasst.
+Die vorgenommenen Änderungen sind in der Tabelle zusammengefasst.
 
 **Aktion** | **VMware (Migration ohne Agent)** | **VMware (Agent-basiert)/physische Computer** | **Windows mit Hyper-V**
 --- | --- | --- | ---
-**Konfigurieren der SAN-Richtlinie als „Online – Alle“**<br/><br/> | Wird für Computer unter Windows Server 2008 R2 oder höher automatisch festgelegt.<br/><br/> Bei älteren Betriebssystemen muss dieser Konfigurationsschritt manuell ausgeführt werden. | Wird in den meisten Fällen automatisch festgelegt. | Muss manuell konfiguriert werden.
+**Konfigurieren der SAN-Richtlinie als „Online – Alle“**<br/><br/> | Wird für Computer unter Windows Server 2008 R2 oder höher automatisch festgelegt.<br/><br/> Bei älteren Betriebssystemen muss dieser Konfigurationsschritt manuell ausgeführt werden. | Wird in den meisten Fällen automatisch festgelegt. | Wird für Computer unter Windows Server 2008 R2 oder höher automatisch festgelegt.
 **Installieren der Hyper-V-Gastintegration** | Muss auf Computern unter Windows Server 2003 [manuell installiert](prepare-windows-server-2003-migration.md#install-on-vmware-vms) werden. | Muss auf Computern unter Windows Server 2003 [manuell installiert](prepare-windows-server-2003-migration.md#install-on-vmware-vms) werden. | Muss auf Computern unter Windows Server 2003 [manuell installiert](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms) werden.
-**Aktivieren der seriellen Azure-Konsole**<br/><br/>[Aktivieren Sie die Konsole](/troubleshoot/azure/virtual-machines/serial-console-windows) auf virtuellen Azure-Computern, um die Problembehandlung zu erleichtern. Sie müssen den virtuellen Computer nicht neu starten. Der virtuelle Azure-Computer wird unter Verwendung des Datenträgerimages gestartet. Der Start mit dem Datenträgerimage entspricht einem Neustart für den neuen virtuellen Computer. | Muss manuell aktiviert werden. | Muss manuell aktiviert werden. | Muss manuell aktiviert werden.
+**Aktivieren der seriellen Azure-Konsole** <br/><br/>[Aktivieren Sie die Konsole](/troubleshoot/azure/virtual-machines/serial-console-windows) auf virtuellen Azure-Computern, um die Problembehandlung zu erleichtern. Sie müssen den virtuellen Computer nicht neu starten. Der virtuelle Azure-Computer wird unter Verwendung des Datenträgerimages gestartet. Der Start mit dem Datenträgerimage entspricht einem Neustart für den neuen virtuellen Computer. | Muss manuell aktiviert werden. | Muss manuell aktiviert werden. | Muss manuell aktiviert werden.
+**Installieren des Windows Azure-Gast-Agents** <br/><br/> Der Agent für virtuelle Computer (VM-Agent) ist ein sicherer, einfacher Prozess zur Verwaltung der VM-Interaktion mit dem Azure Fabric Controller. Der VM-Agent nimmt eine primäre Rolle beim Aktivieren und Ausführen von Azure-VM-Erweiterungen ein, die die Konfiguration der VM nach der Bereitstellung ermöglichen, z. B. das Installieren und Konfigurieren von Software. |  Wird für Computer unter Windows Server 2008 R2 oder höher automatisch festgelegt. <br/> Bei älteren Betriebssystemen muss dieser Konfigurationsschritt manuell ausgeführt werden. | Wird für Computer unter Windows Server 2008 R2 oder höher automatisch festgelegt. | Wird für Computer unter Windows Server 2008 R2 oder höher automatisch festgelegt.
 **Herstellen der Verbindung nach der Migration**<br/><br/> Für die Verbindungsherstellung nach der Migration müssen vor der Migration mehrere Schritte ausgeführt werden. | [Manuelle Einrichtung](#prepare-to-connect-to-azure-windows-vms) erforderlich | [Manuelle Einrichtung](#prepare-to-connect-to-azure-windows-vms) erforderlich | [Manuelle Einrichtung](#prepare-to-connect-to-azure-windows-vms) erforderlich
 
- [Erfahren Sie mehr](./prepare-for-agentless-migration.md#changes-performed-on-windows-servers) über auf Windows-Servern vorgenommene Änderungen.
+[Erfahren Sie mehr](/azure/migrate/prepare-for-agentless-migration#changes-performed-on-windows-servers) über die Änderungen, die auf Windows Servern für VMware-Migrationen ohne Agent ausgeführt werden.
 
 #### <a name="configure-san-policy"></a>Konfigurieren der SAN-Richtlinie
 
@@ -114,7 +115,7 @@ Für folgende Versionen werden diese Aktionen von Azure Migrate automatisch ausg
 
 - Red Hat Enterprise Linux 8, 7.9, 7.8, 7.7, 7.6, 7.5, 7.4, 7.0, 6.x (Der Azure Linux-VM-Agent wird während der Migration ebenfalls automatisch installiert.)
 - Cent OS 8, 7.7, 7.6, 7.5, 7.4, 6.x (Der Azure Linux-VM-Agent wird während der Migration ebenfalls automatisch installiert.)
-- SUSE Linux Enterprise Server 15 SP0, 15 SP1, 12, 11
+- SUSE Linux Enterprise Server 15 SP0, 15 SP1, 12
 - Ubuntu 20.04, 19.04, 19.10, 18.04LTS, 16.04LTS, 14.04LTS (der Azure Linux-VM-Agent wird während der Migration ebenfalls automatisch installiert.)
 - Debian 9, 8, 7
 - Oracle Linux 6, 7.7, 7.7-CI
@@ -131,21 +132,23 @@ Für andere Versionen müssen die Computer gemäß der Zusammenfassung in der Ta
 **Entfernen der udev-Regel** | Entfernen Sie alle udev-Regeln, mit denen Schnittstellennamen basierend auf der MAC-Adresse usw. reserviert werden. | Führen Sie die Entfernung für alle oben nicht angegebenen Versionen manuell durch.
 **Aktualisieren von Netzwerkschnittstellen** | Aktualisieren Sie die Netzwerkschnittstellen so, dass IP-Adressen basierend auf DHCP.nst empfangen werden. | Führen Sie die Aktualisierung für alle oben nicht angegebenen Versionen manuell durch.
 **Aktivieren von SSH** | Stellen Sie sicher, dass SSH aktiviert und für den SSHD-Dienst das Starten während des Neustartvorgangs festgelegt ist.<br/><br/> Stellen Sie sicher, dass eingehende SSH-Verbindungsanforderungen nicht durch die Firewall des Betriebssystems oder skriptfähige Regeln blockiert werden.| Führen Sie die Aktivierung für alle oben nicht angegebenen Versionen manuell durch.
+**Installieren des Linux-Azure-Gast-Agents** | Der Microsoft Azure Linux-Agent (waagent) ist ein sicherer, schlanker Prozess, der die Linux- und FreeBSD-Bereitstellung und die VM-Interaktion mit dem Azure Fabric Controller verwaltet.| Führen Sie die Aktivierung für alle oben nicht angegebenen Versionen manuell durch.  <br> Befolgen Sie die Anweisungen, um den Linux-Agent [manuell](../virtual-machines/extensions/agent-linux.md#installation) für andere Betriebssystemversionen zu installieren. Sehen Sie sich die Liste der [erforderlichen Pakete](../virtual-machines/extensions/agent-linux.md#requirements) zum Installieren des Linux-VM-Agents an. 
 
-[Erfahren Sie mehr](./prepare-for-agentless-migration.md#changes-performed-on-linux-servers) über auf Linux-Servern vorgenommene Änderungen
+[Erfahren Sie mehr](./prepare-for-agentless-migration.md#changes-performed-on-linux-servers) über die Änderungen, die auf Linux-Servern für VMware-Migrationen ohne Agent ausgeführt werden.
 
 In der folgenden Tabelle sind die Schritte zusammengefasst, die automatisch für die oben aufgeführten Betriebssysteme ausgeführt werden:
 
 
-| Aktion                                      | Agent\-basierte VMware-Migration | VMware-Migration ohne Agent | Hyper\-V   |
+| Aktion                                      | Agent\-basierte VMware-Migration | VMware-Migration ohne Agent | Hyper\-V-Migration ohne Agent   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|
-| Installieren von Linux Integration Services für Hyper\-V | Ja                           | Ja                        | Nicht erforderlich |
-| Aktivieren der Protokollierung der seriellen Azure-Konsole         | Ja                           | Ja                        | Nein         |
+| Aktualisieren Sie das Kernelimage mit Linux Integration Services für Hyper\-V. <br> (Die LIS-Treiber sollten im Kernel vorhanden sein.) | Ja                           | Ja                        | Ja |
+| Aktivieren der Protokollierung der seriellen Azure-Konsole         | Ja                           | Ja                        | Ja        |
 | Aktualisieren der Gerätezuordnungsdatei                      | Ja                           | Nein                         | Nein         |
-| Aktualisieren von fstab-Einträgen                        | Ja                           | Ja                        | Nein         |
-| Entfernen der udev-Regel                            | Ja                           | Ja                        | Nein         |
-| Aktualisieren von Netzwerkschnittstellen                   | Ja                           | Ja                        | Nein         |
-| Aktivieren von SSH                                  | Nein                            | Nein                         | Nein         |
+| Aktualisieren von fstab-Einträgen                        | Ja                           | Ja                        | Ja        |
+| Entfernen der udev-Regel                            | Ja                           | Ja                        | Ja        |
+| Aktualisieren von Netzwerkschnittstellen                   | Ja                           | Ja                        | Ja        |
+| Aktivieren von SSH                                  | Nein                            | Nein                         | Nein         |    
+| Installieren des Linux-Agents für virtuelle Azure-Computer                | Ja                           | Ja                        | Ja        |
 
 Machen Sie sich ausführlicher mit [Schritten zum Ausführen eines virtuellen Linux-Computers in Azure](../virtual-machines/linux/create-upload-generic.md) vertraut, und sehen Sie sich die Anleitungen für einige gängige Linux-Distributionen an.
 

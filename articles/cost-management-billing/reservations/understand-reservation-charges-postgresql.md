@@ -6,13 +6,13 @@ ms.author: sumuth
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: ace362872f0b7ba8e2f3d0302c887e2465c62982
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.date: 09/15/2021
+ms.openlocfilehash: b0ecadb5a7553b70cba5bf6572981ede1ebcaf42
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240340"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567625"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>Anwendung eines Reservierungsrabatts auf einen Azure Database for PostgreSQL-Einzelserver
 
@@ -20,7 +20,7 @@ Nachdem Sie eine reservierte Kapazität für einen Azure Database for PostgreSQL
 
 ## <a name="how-reservation-discount-is-applied"></a>Wie der Reservierungsrabatt angewendet wird
 
-Nicht in Anspruch genommener Reservierungsrabatt **geht verloren**. Das heißt, wenn Sie für eine Stunde nicht über die entsprechenden Ressourcen verfügen, verlieren Sie eine Reservierungsmenge für diese Stunde. Sie können ungenutzte reservierte Stunden nicht übertragen.</br>
+Nicht in Anspruch genommener Reservierungsrabatt ***geht verloren***. Das heißt, wenn Sie für eine Stunde nicht über die entsprechenden Ressourcen verfügen, verlieren Sie eine Reservierungsmenge für diese Stunde. Sie können ungenutzte reservierte Stunden nicht übertragen.</br>
 
 Wenn Sie eine Ressource beenden, wird der Reservierungsrabatt automatisch auf eine andere entsprechende Ressource im angegebenen Reservierungsumfang angewandt. Werden im angegebenen Reservierungsumfang keine entsprechenden Ressourcen gefunden, gehen die reservierten Stunden verloren.
 
@@ -30,7 +30,7 @@ Der Rabatt für reservierte Kapazität für Azure Database for PostgreSQL-Einzel
 
 Die folgenden Beispiele veranschaulichen, wie der Rabatt für reservierte Kapazität für Azure Database for PostgreSQL-Einzelserver angewendet wird – abhängig davon, wie viele Kerne Sie erworben haben und wann sie ausgeführt werden.
 
-**Beispiel 1** : Sie erwerben reservierte Kapazität für einen Azure Database for PostgreSQL-Einzelserver mit acht V-Kernen. Wenn Sie einen Azure Database for PostgreSQL-Einzelserver mit 16 V-Kernen ausführen, der den restlichen Attributen der Reservierung entspricht, werden Ihnen acht V-Kerne der Computenutzung Ihres PostgreSQL-Einzelservers zum Preis für die nutzungsbasierte Bezahlung in Rechnung gestellt, und Sie erhalten den Reservierungsrabatt für eine Stunde der Computenutzung von acht V-Kernen des PostgreSQL-Einzelservers.</br>
+* **Beispiel 1**: Sie erwerben reservierte Kapazität für einen Azure Database for PostgreSQL-Einzelserver mit 8 virtuellen Kernen. Wenn Sie einen Azure Database for PostgreSQL-Einzelserver mit 16 V-Kernen ausführen, der den restlichen Attributen der Reservierung entspricht, werden Ihnen acht V-Kerne der Computenutzung Ihres PostgreSQL-Einzelservers zum Preis für die nutzungsbasierte Bezahlung in Rechnung gestellt, und Sie erhalten den Reservierungsrabatt für eine Stunde der Computenutzung von acht V-Kernen des PostgreSQL-Einzelservers.</br>
 
 Bei den übrigen Beispielen wird davon ausgegangen, dass die reservierte Kapazität für Azure Database for PostgreSQL-Einzelserver, die Sie erwerben, für einen Azure Database for PostgreSQL-Einzelserver mit 16 V-Kernen gilt und die restlichen Reservierungsattribute den ausgeführten PostgreSQL-Einzelservern entsprechen.
 

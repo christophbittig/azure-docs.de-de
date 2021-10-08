@@ -3,14 +3,14 @@ title: Verwenden von Azure Policy zum Schützen Ihres Clusters
 description: Verwenden Sie Azure Policy, um einen AKS-Cluster (Azure Kubernetes Service) zu schützen.
 ms.service: container-service
 ms.topic: how-to
-ms.date: 02/17/2021
+ms.date: 09/01/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6462c2987155925b7df5241d8fb6aa13c1e37b89
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: eb2f85064413f3d4700fea01aa4ead81508dd8c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777723"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631493"
 ---
 # <a name="secure-your-cluster-with-azure-policy"></a>Schützen Ihres Clusters mit Azure Policy
 
@@ -35,6 +35,24 @@ Verwenden Sie das Azure-Portal, um eine Richtliniendefinition oder -initiative a
 1. Legen Sie **Bereich** auf die Ressourcengruppe des AKS-Clusters fest, für den das Azure Policy-Add-On aktiviert ist.
 1. Wählen Sie die Seite **Parameter** aus, und ändern Sie **Auswirkung** von `audit` in `deny`, um neue Bereitstellungen zu blockieren, die gegen die Baseline-Initiative verstoßen. Sie können auch zusätzliche Namespaces hinzufügen, die Sie von der Auswertung ausschließen möchten. Übernehmen Sie für dieses Beispiel die Standardwerte.
 1. Wählen Sie **Überprüfen und erstellen** und dann **Erstellen** aus, um die Richtlinienzuweisung zu übermitteln.
+
+## <a name="create-and-assign-a-custom-policy-definition-preview"></a>Erstellen und Zuweisen einer benutzerdefinierten Richtliniendefinition (Vorschau)
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+Mit benutzerdefinierten Richtlinien können Sie Regeln für die Verwendung von Azure definieren. Beispielsweise können Sie Folgendes erzwingen:
+- Sicherheitsmaßnahmen
+- Kostenverwaltung
+- Organisationsspezifische Regeln (z. B. Benennung oder Speicherorte)
+
+Überprüfen Sie vor dem Erstellen einer benutzerdefinierten Richtlinie die [Liste der gängigen Muster und Beispiele][azure-policy-samples], um zu überprüfen, ob Ihr Anwendungsfall bereits behandelt wurde.
+
+Benutzerdefinierte Richtliniendefinitionen werden in JSON geschrieben. Weitere Informationen zum Erstellen einer benutzerdefinierten Richtlinie finden Sie unter [Azure Policy-Definitionsstruktur][azure-policy-definition-structure] und [Erstellen einer benutzerdefinierten Richtliniendefinition][custom-policy-tutorial-create].
+
+> [!NOTE]
+> Azure Policy verwendet jetzt eine neue Eigenschaft, die als *templateInfo* bezeichnet wird und es Benutzern ermöglicht, den Quelltyp für die Einschränkungsvorlage zu definieren. Durch Definieren von *templateInfo* in Richtliniendefinitionen müssen Benutzer keine *constraintTemplate*- oder *constraint*-Eigenschaften mehr definieren. Benutzer müssen allerdings weiterhin *apiGroup*- und *kind*-Eigenschaften definieren. Weitere Informationen hierzu finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen][azure-policy-effects-audit].
+
+Nachdem Ihre benutzerdefinierte Richtliniendefinition erstellt wurde, finden Sie unter [Zuweisen einer Richtliniendefinition][custom-policy-tutorial-assign] eine exemplarische Vorgehensweise als Schrittanleitung zum Zuweisen der Richtlinie zu Ihrem Kubernetes-Cluster.
 
 ## <a name="validate-a-azure-policy-is-running"></a>Überprüfen, ob Azure Policy ausgeführt wird
 
@@ -174,6 +192,11 @@ Weitere Informationen zur Funktionsweise von Azure Policy finden Sie hier:
 [azure-policy]: ../governance/policy/overview.md
 [azure-policy-addon]: ../governance/policy/concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-aks
 [azure-policy-addon-remove]: ../governance/policy/concepts/policy-for-kubernetes.md#remove-the-add-on-from-aks
-[azure-policy-assign-policy]: ../governance/policy/concepts/policy-for-kubernetes.md#assign-a-built-in-policy-definition
+[azure-policy-assign-policy]: ../governance/policy/concepts/policy-for-kubernetes.md#assign-a-policy-definition
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md
+[azure-policy-effects-audit]: ../governance/policy/concepts/effects.md#audit-properties
+[custom-policy-tutorial-create]: ../governance/policy/tutorials/create-custom-policy-definition.md
+[custom-policy-tutorial-assign]: ../governance/policy/concepts/policy-for-kubernetes.md#assign-a-policy-definition
+[azure-policy-samples]: ../governance/policy/samples/index.md
+[azure-policy-definition-structure]: ../governance/policy/concepts/definition-structure.md

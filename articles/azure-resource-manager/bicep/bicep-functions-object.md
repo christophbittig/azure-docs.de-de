@@ -4,24 +4,17 @@ description: Hier werden die Funktionen beschrieben, die in Bicep-Dateien zum Ar
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: cc83fcce125a045bbff05147ad22be46a085fe22
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: fd65cc60412d46a734764d3566fa3606a48c7bf6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026358"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758444"
 ---
 # <a name="object-functions-for-bicep"></a>Objektfunktionen für Bicep
 
-Resource Manager bietet verschiedene Funktionen für das Arbeiten mit Objekten:
-
-* [contains](#contains)
-* [empty](#empty)
-* [intersection](#intersection)
-* [json](#json)
-* [length](#length)
-* [union](#union)
+In diesem Artikel werden die Bicep-Funktionen für die Arbeit mit Objekten beschrieben.
 
 ## <a name="contains"></a>contains
 
@@ -31,7 +24,7 @@ Resource Manager bietet verschiedene Funktionen für das Arbeiten mit Objekten:
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | Container |Ja |Array, Objekt oder Zeichenfolge |Der Wert, der den zu suchenden Wert enthält. |
 | itemToFind |Ja |Zeichenfolge oder ganze Zahl |Der zu suchende Wert. |
@@ -326,7 +319,7 @@ output arrayOutput array = union(firstArray, secondArray)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | Type | Wert |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |

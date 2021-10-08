@@ -3,18 +3,22 @@ title: Verwenden von Bicep zum Bereitstellen von Ressourcen in einer Verwaltungs
 description: Beschreibt das Erstellen einer Bicep-Datei, die Ressourcen im Verwaltungsgruppenbereich bereitstellt.
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: afa4a0f266eb7720a569df123c9828fd151d21e0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7c0e2f6682ff5da0e0cc2bd3b7f16b3ab23af476
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453598"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659890"
 ---
 # <a name="management-group-deployments-with-bicep-files"></a>Bereitstellung von Verwaltungsgruppen mit Bicep-Dateien
 
 In diesem Artikel wird beschrieben, wie Sie den Bereich mit Bicep bei der Bereitstellung in einer Verwaltungsgruppe festlegen.
 
 Wenn Ihre Organisation sich weiterentwickelt, können Sie eine Bicep-Datei bereitstellen, um Ressourcen auf Verwaltungsgruppenebene zu erstellen. Beispielsweise müssen Sie möglicherweise [Richtlinien](../../governance/policy/overview.md) oder die [rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure-RBAC)](../../role-based-access-control/overview.md) für eine Verwaltungsgruppe definieren und zuweisen. Mit Vorlagen auf Verwaltungsgruppenebene können Sie Richtlinien deklarativ anwenden und Rollen auf Verwaltungsgruppenebene zuweisen.
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen zu Bereitstellungsbereichen und praktische Anleitungen finden Sie unter [Bereitstellen von Ressourcen für Abonnements, Verwaltungsgruppen und Mandanten mithilfe von Bicep](/learn/modules/deploy-resources-scopes-bicep/) auf **Microsoft Learn**.
 
 ## <a name="supported-resources"></a>Unterstützte Ressourcen
 
@@ -269,7 +273,7 @@ param allowedLocations array = [
   'australiacentral'
 ]
 
-resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01' = {
+resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2020-09-01' = {
   name: 'locationRestriction'
   properties: {
     policyType: 'Custom'
@@ -289,7 +293,7 @@ resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01'
   }
 }
 
-resource policyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
+resource policyAssignment 'Microsoft.Authorization/policyAssignments@2020-09-01' = {
   name: 'locationAssignment'
   properties: {
     policyDefinitionId: policyDefinition.id

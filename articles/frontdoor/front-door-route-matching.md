@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1aaabce5dc13098d183ee595d27b5b45a3fd0caa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449209"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586286"
 ---
 # <a name="how-requests-are-matched-to-a-routing-rule"></a>Abgleichen von Anforderungen mit einer Routingregel
 
@@ -123,7 +123,8 @@ In dieser Konfiguration würde sich folgende Treffertabelle ergeben:
 > | profile.domain.com/other | Keine. Fehler 400: Ungültige Anforderung |
 
 ### <a name="routing-decision"></a>Routingentscheidung
-Nachdem der Abgleich mit einer einzelnen Front Door-Routingregel erfolgt ist, muss entschieden werden, wie die Anforderung verarbeitet werden soll. Wenn Front Door für die übereinstimmende Routingregel über eine zwischengespeicherte Antwort verfügt, wird diese an den Client gesendet. Andernfalls wird als Nächstes ausgewertet, ob für die übereinstimmende Routingregel ein [URL-Rewrite (benutzerdefinierter Weiterleitungspfad)](front-door-url-rewrite.md) konfiguriert wurde. Wenn kein benutzerdefinierter Weiterleitungspfad definiert wurde, wird die Anforderung unverändert an das entsprechende Back-End im konfigurierten Back-End-Pool weitergeleitet. Andernfalls wird der Anforderungspfad gemäß dem definierten [benutzerdefinierten Weiterleitungspfad](front-door-url-rewrite.md) aktualisiert, dann erfolgt die Weiterleitung an das Back-End.
+
+Nachdem Sie eine Zuordnung zu einer einzelnen Front Door-Routingregel vorgenommen haben, wählen Sie aus, wie die Anforderung verarbeitet werden soll. Wenn Front Door über eine zwischengespeicherte Antwort für die übereinstimmende Routingregel verfügt, wird die zwischengespeicherte Antwort an den Client zurückgesendet. Wenn Front Door keine zwischengespeicherte Antwort für die übereinstimmende Routingregel aufweist, wird als nächstes ausgewertet, ob Sie [URL-Rewrite (einen benutzerdefinierten Weiterleitungspfad)](front-door-url-rewrite.md) für die übereinstimmende Routingregel konfiguriert haben. Wenn kein benutzerdefinierter Weiterleitungspfad definiert wurde, wird die Anforderung unverändert an das entsprechende Back-End im konfigurierten Back-End-Pool weitergeleitet. Wenn ein benutzerdefinierter Weiterleitungspfad definiert wurde, wird der Anforderungspfad gemäß dem definierten [benutzerdefinierten Weiterleitungspfad](front-door-url-rewrite.md) aktualisiert und dann an das Back-End weitergeleitet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 862c21e162ce43e6d7de6aa6485b01925edbe465
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5edab35023afeca68cff20a82307afaf4bbad535
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114288188"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784240"
 ---
 # <a name="azure-security-baseline-for-virtual-network-nat"></a>Azure-Sicherheitsbaseline für Virtual Network NAT
 
@@ -28,9 +28,9 @@ Die gesamte Zuordnung zwischen Virtual Network NAT und dem Azure-Sicherheitsverg
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2: Überwachen und Protokollieren der Konfiguration und des Datenverkehrs von virtuellen Netzwerken, Subnetzen und Netzwerkkarten (NICs)
 
-**Leitfaden**: Virtual Network NAT unterstützt das Steuern von ausgehendem Datenverkehr mit Netzwerksicherheitsgruppen (NSG) nicht.  Eingehender Datenverkehr ist nur als Antwort auf einen ausgehenden ursprünglichen Flow zulässig.
+**Hinweis**: Virtual Network NAT unterstützt das Steuern von ausgehendem Datenverkehr mit Netzwerksicherheitsgruppen (NSGs).  Eingehender Datenverkehr ist nur als Antwort auf einen ausgehenden ursprünglichen Flow zulässig.
 
-Sie können jedoch Datenflussprotokolle für Netzwerksicherheitsgruppen (NSG) mit NAT-Gatewayressourcen verwenden, um diesen ursprünglichen ausgehenden Datenverkehr zu überwachen.
+Datenflussprotokolle für Netzwerksicherheitsgruppen (NSG) können auch mit NAT-Gatewayressourcen verwendet werden, um den ursprünglichen ausgehenden Datenverkehr zu überwachen.
 
 Verwenden Sie Azure Security Center, und befolgen Sie die Empfehlungen für den Netzwerkschutz, um Ihre Azure-Netzwerkressourcen abzusichern. Aktivieren Sie Netzwerksicherheitsgruppen-Datenflussprotokolle, und senden Sie Protokolle zur Überwachung an ein Azure Storage-Konto. Sie können die Datenflussprotokolle auch an einen Log Analytics-Arbeitsbereich senden und dann mithilfe von Traffic Analytics Einblicke in die Datenverkehrsmuster in Ihrer Azure-Cloud ermöglichen. Einige Vorteile von Traffic Analytics sind die Möglichkeit, die Netzwerkaktivität zu visualisieren, Hotspots und Sicherheitsbedrohungen zu erkennen, Datenverkehrsflussmuster zu verstehen und Netzwerkfehlkonfigurationen zu ermitteln. 
 

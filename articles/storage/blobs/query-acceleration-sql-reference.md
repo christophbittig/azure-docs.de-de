@@ -10,16 +10,16 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: f696a6b071d353c98e87387d5640e35ff579460e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b2a5a0f6f97d402c55cd47293ea668284e77363e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477808"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593133"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>Abfragebeschleunigung – SQL-Sprachreferenz
 
-Die Abfragebeschleunigung unterstützt eine ANSI SQL-ähnliche Sprache, um Abfragen für Blobinhalte zu schreiben.  Der SQL-Dialekt für die Abfragebeschleunigung stellt eine Teilmenge von ANSI SQL mit einer begrenzten Anzahl unterstützter Datentypen, Operatoren usw. dar, bietet aber gleichzeitig auch eine Erweiterung von ANSI SQL, um Abfragen für hierarchische teilstrukturierte Datenformate wie JSON zu unterstützen. 
+Die Abfragebeschleunigung unterstützt eine ANSI SQL-ähnliche Sprache, um Abfragen für Blobinhalte zu schreiben. Der SQL-Dialekt für die Abfragebeschleunigung stellt eine Teilmenge von ANSI SQL mit einer begrenzten Anzahl unterstützter Datentypen, Operatoren usw. dar, bietet aber gleichzeitig auch eine Erweiterung von ANSI SQL, um Abfragen für hierarchische teilstrukturierte Datenformate wie JSON zu unterstützen.
 
 ## <a name="select-syntax"></a>SELECT-Syntax
 
@@ -29,28 +29,26 @@ Die einzige von der Abfragebeschleunigung unterstützte SQL-Anweisung ist die SE
 SELECT * FROM table [WHERE expression] [LIMIT limit]
 ```
 
-Bei CSV-formatierten Daten muss *table* `BlobStorage` lauten.  Dies bedeutet, dass die Abfrage für jedes Blob ausgeführt wird, das im REST-Aufruf angegeben wurde.
-Bei JSON-formatierten Daten ist *table* ein „Tabellendeskriptor“.   Weitere Informationen finden Sie im Abschnitt [Tabellendeskriptoren](#table-descriptors) in diesem Artikel.
+Bei CSV-formatierten Daten muss *table* `BlobStorage` lauten. Dies bedeutet, dass die Abfrage für jedes Blob ausgeführt wird, das im REST-Aufruf angegeben wurde. Bei JSON-formatierten Daten ist *table* ein „Tabellendeskriptor“.   Weitere Informationen finden Sie im Abschnitt [Tabellendeskriptoren](#table-descriptors) in diesem Artikel.
 
 Im folgenden Beispiel gibt die Anweisung für jede Zeile, für die der WHERE-Ausdruck (*expression*) „true“ zurückgibt, eine neue Zeile zurück, die aus der Auswertung der einzelnen Projektionsausdrücke resultiert.
 
-
 ```sql
-SELECT expression [, expression …] FROM table [WHERE expression] [LIMIT limit]
+SELECT expression [, expression ...] FROM table [WHERE expression] [LIMIT limit]
 ```
 
-Sie können eine oder mehrere bestimmte Spalten als Teil des SELECT-Ausdrucks angeben (z. B. `SELECT Title, Author, ISBN`). 
+Sie können eine oder mehrere bestimmte Spalten als Teil des SELECT-Ausdrucks angeben (z. B. `SELECT Title, Author, ISBN`).
 
 > [!NOTE]
-> Maximal können Sie im SELECT-Ausdruck 49 bestimmte Spalten verwenden. Wenn Ihre SELECT-Anweisung mehr als 49 Spalten zurückgeben muss, verwenden Sie für den SELECT-Ausdruck ein Platzhalterzeichen (`*`) (Beispiel: `SELECT *`). 
+> Maximal können Sie im SELECT-Ausdruck 49 bestimmte Spalten verwenden. Wenn Ihre SELECT-Anweisung mehr als 49 Spalten zurückgeben muss, verwenden Sie für den SELECT-Ausdruck ein Platzhalterzeichen (`*`) (Beispiel: `SELECT *`).
 
-Im folgenden Beispiel wird eine aggregierte Berechnung (z. B. der Durchschnittswert einer bestimmten Spalte) für jede Zeile zurückgegeben, für die *expression* „true“ zurückgibt. 
+Im folgenden Beispiel wird eine aggregierte Berechnung (z. B. der Durchschnittswert einer bestimmten Spalte) für jede Zeile zurückgegeben, für die *expression* „true“ zurückgibt.
 
 ```sql
 SELECT aggregate_expression FROM table [WHERE expression] [LIMIT limit]
 ```
 
-Im folgenden Beispiel werden geeignete Offsets zum Aufteilen eines CSV-formatierten Blobs zurückgegeben.  Weitere Informationen finden Sie im Abschnitt [Sys.Split](#sys-split) dieses Artikels.
+Im folgenden Beispiel werden geeignete Offsets zum Aufteilen eines CSV-formatierten Blobs zurückgegeben. Weitere Informationen finden Sie im Abschnitt [Sys.Split](#sys-split) dieses Artikels.
 
 ```sql
 SELECT sys.split(split_size)FROM BlobStorage
@@ -68,15 +66,15 @@ SELECT sys.split(split_size)FROM BlobStorage
 |timestamp|Ein Zeitpunkt.                           |
 |BOOLEAN  |„true“ oder „false“.                             |
 
-Beim Lesen von Werten aus CSV-formatierten Daten werden alle Werte als Zeichenfolgen gelesen.  Zeichenfolgenwerte können mithilfe von CAST-Ausdrücken in andere Typen konvertiert werden.  Werte können abhängig vom Kontext implizit in andere Typen umgewandelt werden. Weitere Informationen finden Sie unter [Rangfolge der Datentypen (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql).
+Beim Lesen von Werten aus CSV-formatierten Daten werden alle Werte als Zeichenfolgen gelesen. Zeichenfolgenwerte können mithilfe von CAST-Ausdrücken in andere Typen konvertiert werden. Werte können abhängig vom Kontext implizit in andere Typen umgewandelt werden. Weitere Informationen finden Sie unter [Rangfolge der Datentypen (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
 ## <a name="expressions"></a>Ausdrücke
 
 ### <a name="referencing-fields"></a>Verweisen auf Felder
 
-Bei JSON-formatierten oder CSV-formatierten Daten mit einer Kopfzeile kann anhand des Namens auf Felder verwiesen werden.  Feldnamen können mit oder ohne Anführungszeichen angegeben werden. Feldnamen in Anführungszeichen werden in doppelte Anführungszeichen (") eingeschlossen und dürfen Leerzeichen enthalten. Außerdem wird die Groß-/Kleinschreibung beachtet.  Bei Feldnamen ohne Anführungszeichen wird die Groß-/Kleinschreibung nicht beachtet, und Sie dürfen keine Sonderzeichen enthalten.
+Bei JSON-formatierten oder CSV-formatierten Daten mit einer Kopfzeile kann anhand des Namens auf Felder verwiesen werden. Feldnamen können mit oder ohne Anführungszeichen angegeben werden. Feldnamen in Anführungszeichen werden in doppelte Anführungszeichen (`"`) eingeschlossen und dürfen Leerzeichen enthalten. Außerdem wird die Groß-/Kleinschreibung beachtet. Bei Feldnamen ohne Anführungszeichen wird die Groß-/Kleinschreibung nicht beachtet, und Sie dürfen keine Sonderzeichen enthalten.
 
-In CSV-formatierten Daten kann auch durch die Ordnungszahl auf Felder verwiesen werden, der ein Unterstrich (_) vorangestellt ist.  Beispielsweise kann auf das erste Feld mit „_1“ oder auf das elfte Feld mit „_11“ verwiesen werden.  Anhand der Ordnungszahl auf Felder zu verweisen, ist bei CSV-formatierten Daten hilfreich, die keine Kopfzeile enthalten. In diesem Fall bietet die Ordnungszahl die einzige Möglichkeit, auf ein bestimmtes Feld zu verweisen.
+In CSV-formatierten Daten kann auch durch eine Ordnungszahl, der ein Unterstrich (`_`) vorangestellt ist, auf Felder verwiesen werden. Beispielsweise kann auf das erste Feld mit `_1` oder auf das elfte Feld mit `_11` verwiesen werden. Anhand der Ordnungszahl auf Felder zu verweisen, ist bei CSV-formatierten Daten hilfreich, die keine Kopfzeile enthalten. In diesem Fall bietet die Ordnungszahl die einzige Möglichkeit, auf ein bestimmtes Feld zu verweisen.
 
 ### <a name="operators"></a>Operatoren
 
@@ -84,36 +82,36 @@ Folgende SQL-Standardoperatoren werden unterstützt:
 
 |Operator|Beschreibung|
 |--|--|
-|[=](/sql/t-sql/language-elements/equals-transact-sql)    |Vergleicht die Gleichwertigkeit von zwei Ausdrücken (ein Vergleichsoperator).|
-|[!=](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |Testet, ob zwei Ausdrücke ungleich sind (ein Vergleichsoperator).|
-|[<>](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |Vergleicht zwei Ausdrücke nach dem Kriterium „ungleich“ (ein Vergleichsoperator).|
-|[<](/sql/t-sql/language-elements/less-than-transact-sql)    |Vergleicht zwei Ausdrücke nach dem Kriterium „kleiner als“ (ein Vergleichsoperator).|
-|[<=](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |Vergleicht zwei Ausdrücke nach dem Kriterium „kleiner als oder gleich“ (ein Vergleichsoperator).|
-|[>](/sql/t-sql/language-elements/greater-than-transact-sql)    |Vergleicht zwei Ausdrücke nach dem Kriterium „größer als“ (ein Vergleichsoperator). |
-|[>=](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |Vergleicht zwei Ausdrücke nach dem Kriterium größer als oder gleich (ein Vergleichsoperator).|
-|[+](/sql/t-sql/language-elements/add-transact-sql)    |Addition zweier Zahlen. Mit diesem arithmetischen Operator für die Addition kann auch eine Anzahl von Tagen zu einem Datum addiert werden.|
-|[-](/sql/t-sql/language-elements/subtract-transact-sql)    |Subtrahiert zwei Zahlen (ein arithmetischer Subtraktionsoperator). |
-|[/](/sql/t-sql/language-elements/divide-transact-sql)    |Division einer Zahl durch eine andere (arithmetischer Operator für die Division).|
-|[*](/sql/t-sql/language-elements/multiply-transact-sql)    |Multiplikation zweier Ausdrücke (arithmetischer Operator für die Multiplikation).|
-|[%](/sql/t-sql/language-elements/modulo-transact-sql)    |Gibt den Rest der Division einer Zahl durch eine andere zurück.|
-|[AND](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Führt eine bitweise logische AND-Operation zwischen zwei ganzzahligen Werten aus.|
-|[OR](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Führt eine bitweise logische OR-Operation zwischen zwei gegebenen ganzzahligen Werten durch, die innerhalb von Transact-SQL-Anweisungen in binäre Ausdrücke umgewandelt wurden.|
-|[NOT](/sql/t-sql/language-elements/not-transact-sql)    |Negiert eine boolesche Eingabe.|
-|[CAST](/sql/t-sql/functions/cast-and-convert-transact-sql)    |Konvertiert einen Ausdruck von einem Datentyp in einen anderen.|
-|[BETWEEN](/sql/t-sql/language-elements/between-transact-sql)    |Gibt einen zu testenden Bereich an.|
-|[IN](/sql/t-sql/language-elements/in-transact-sql)    |Ermittelt, ob ein angegebener Wert mit einem Wert aus einer Unterabfrage oder Liste übereinstimmt.|
-|[NULLIF](/sql/t-sql/language-elements/nullif-transact-sql)    |Gibt einen NULL-Wert zurück, wenn die beiden angegebenen Ausdrücke gleich sind.|
-|[COALESCE](/sql/t-sql/language-elements/coalesce-transact-sql)    |Wertet die Argumente in der vorliegenden Reihenfolge aus und gibt den aktuellen Wert des ersten Ausdrucks zurück, der zuerst nicht als NULL ausgewertet wird.|
+|[`=`](/sql/t-sql/language-elements/equals-transact-sql)    |Vergleicht die Gleichwertigkeit von zwei Ausdrücken (ein Vergleichsoperator).|
+|[`!=`](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |Testet, ob zwei Ausdrücke ungleich sind (ein Vergleichsoperator).|
+|[`<>`](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |Vergleicht zwei Ausdrücke nach dem Kriterium „ungleich“ (ein Vergleichsoperator).|
+|[`<`](/sql/t-sql/language-elements/less-than-transact-sql)    |Vergleicht zwei Ausdrücke nach dem Kriterium „kleiner als“ (ein Vergleichsoperator).|
+|[`<=`](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |Vergleicht zwei Ausdrücke nach dem Kriterium „kleiner als oder gleich“ (ein Vergleichsoperator).|
+|[`>`](/sql/t-sql/language-elements/greater-than-transact-sql)    |Vergleicht zwei Ausdrücke nach dem Kriterium „größer als“ (ein Vergleichsoperator). |
+|[`>=`](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |Vergleicht zwei Ausdrücke nach dem Kriterium größer als oder gleich (ein Vergleichsoperator).|
+|[`+`](/sql/t-sql/language-elements/add-transact-sql)    |Addition zweier Zahlen. Mit diesem arithmetischen Operator für die Addition kann auch eine Anzahl von Tagen zu einem Datum addiert werden.|
+|[`-`](/sql/t-sql/language-elements/subtract-transact-sql)    |Subtrahiert zwei Zahlen (ein arithmetischer Subtraktionsoperator). |
+|[`/`](/sql/t-sql/language-elements/divide-transact-sql)    |Division einer Zahl durch eine andere (arithmetischer Operator für die Division).|
+|[`*`](/sql/t-sql/language-elements/multiply-transact-sql)    |Multiplikation zweier Ausdrücke (arithmetischer Operator für die Multiplikation).|
+|[`%`](/sql/t-sql/language-elements/modulo-transact-sql)    |Gibt den Rest der Division einer Zahl durch eine andere zurück.|
+|[`AND`](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Führt eine bitweise logische AND-Operation zwischen zwei ganzzahligen Werten aus.|
+|[`OR`](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Führt eine bitweise logische OR-Operation zwischen zwei gegebenen ganzzahligen Werten durch, die innerhalb von Transact-SQL-Anweisungen in binäre Ausdrücke umgewandelt wurden.|
+|[`NOT`](/sql/t-sql/language-elements/not-transact-sql)    |Negiert eine boolesche Eingabe.|
+|[`CAST`](/sql/t-sql/functions/cast-and-convert-transact-sql)    |Konvertiert einen Ausdruck von einem Datentyp in einen anderen.|
+|[`BETWEEN`](/sql/t-sql/language-elements/between-transact-sql)    |Gibt einen zu testenden Bereich an.|
+|[`IN`](/sql/t-sql/language-elements/in-transact-sql)    |Ermittelt, ob ein angegebener Wert mit einem Wert aus einer Unterabfrage oder Liste übereinstimmt.|
+|[`NULLIF`](/sql/t-sql/language-elements/nullif-transact-sql)    |Gibt einen NULL-Wert zurück, wenn die beiden angegebenen Ausdrücke gleich sind.|
+|[`COALESCE`](/sql/t-sql/language-elements/coalesce-transact-sql)    |Wertet die Argumente in der vorliegenden Reihenfolge aus und gibt den aktuellen Wert des ersten Ausdrucks zurück, der zuerst nicht als NULL ausgewertet wird.|
 
 Wenn sich die Datentypen auf der linken und rechten Seite eines Operators unterscheiden, wird eine automatische Konvertierung gemäß den hier angegebenen Regeln durchgeführt: [Rangfolge der Datentypen (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
-Die SQL-Sprache für die Abfragebeschleunigung unterstützt nur eine sehr kleine Teilmenge der Datentypen, die in diesem Artikel erläutert werden.  Weitere Informationen finden Sie im Abschnitt [Datentypen](#data-types) dieses Artikels.
+Die SQL-Sprache für die Abfragebeschleunigung unterstützt nur eine sehr kleine Teilmenge der Datentypen, die in diesem Artikel erläutert werden. Weitere Informationen finden Sie im Abschnitt [Datentypen](#data-types) dieses Artikels.
 
 ### <a name="casts"></a>Umwandlungen
 
-Die SQL-Sprache für die Abfragebeschleunigung unterstützt den CAST-Operator gemäß den folgenden Regeln: [Datentypkonvertierung (Datenbank-Engine)](/sql/t-sql/data-types/data-type-conversion-database-engine).  
+Die SQL-Sprache für die Abfragebeschleunigung unterstützt den CAST-Operator gemäß den folgenden Regeln: [Datentypkonvertierung (Datenbank-Engine)](/sql/t-sql/data-types/data-type-conversion-database-engine).
 
-Die SQL-Sprache für die Abfragebeschleunigung unterstützt nur eine kleine Teilmenge der Datentypen, die in diesem Artikel erläutert werden.  Weitere Informationen finden Sie im Abschnitt [Datentypen](#data-types) dieses Artikels.
+Die SQL-Sprache für die Abfragebeschleunigung unterstützt nur eine kleine Teilmenge der Datentypen, die in diesem Artikel erläutert werden. Weitere Informationen finden Sie im Abschnitt [Datentypen](#data-types) dieses Artikels.
 
 ### <a name="string-functions"></a>Zeichenfolgenfunktionen
 
@@ -145,22 +143,28 @@ Hier einige Beispiele:
 
 Die folgenden standardmäßigen SQL-Datumsfunktionen werden unterstützt:
 
-``DATE_ADD``, ``DATE_DIFF``, ``EXTRACT``, ``TO_STRING``, ``TO_TIMESTAMP``.
+- `DATE_ADD`
+- `DATE_DIFF`
+- `EXTRACT`
+- `TO_STRING`
+- `TO_TIMESTAMP`
 
-Derzeit werden alle [Datumsformate gemäß IS0-8601-Standard](https://www.w3.org/TR/NOTE-datetime) konvertiert. 
+Derzeit werden alle [Datumsformate der Norm IS08601](https://www.w3.org/TR/NOTE-datetime) konvertiert.
 
 #### <a name="date_add-function"></a>DATE_ADD-Funktion
 
-In der SQL-Sprache für die Abfragebeschleunigung können für die ``DATE_ADD``-Funktion „year“, „month“, „day“, „hour“, „minute“ und „second“ angegeben werden.
+In der SQL-Sprache für die Abfragebeschleunigung können für die `DATE_ADD`-Funktion „year“, „month“, „day“, „hour“, „minute“ und „second“ angegeben werden.
 
 Beispiele:
 
-``sql DATE_ADD(datepart, quantity, timestamp) DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
+```sql
+DATE_ADD(datepart, quantity, timestamp)
+DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
 ```
 
-#### DATE_DIFF function
+#### <a name="date_diff-function"></a>DATE_DIFF-Funktion
 
-The query acceleration SQL language supports year, month, day, hour, minute, second for the ``DATE_DIFF`` function.
+In der SQL-Sprache für die Abfragebeschleunigung können für die `DATE_DIFF`-Funktion „year“, „month“, „day“, „hour“, „minute“ und „second“ angegeben werden.
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -169,7 +173,7 @@ DATE_DIFF('hour','2018-11-09T00:00+05:30','2018-11-09T01:00:23-08:00')
 
 #### <a name="extract-function"></a>EXTRACT-Funktion
 
-Bei EXTRACT unterstützt die SQL-Sprache für die Abfragebeschleunigung im Gegensatz zum Datumsteil für die ``DATE_ADD``-Funktion „timezone_hour“ und „timezone_minute“ als Datumsteil.
+Bei EXTRACT unterstützt die SQL-Sprache für die Abfragebeschleunigung im Gegensatz zum Datumsteil für die `DATE_ADD`-Funktion „timezone_hour“ und „timezone_minute“ als Datumsteil.
 
 Beispiele:
 
@@ -187,17 +191,17 @@ TO_STRING(TimeStamp , format)
 TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 ```
 
-In dieser Tabelle werden Zeichenfolgen beschrieben, mit denen Sie das Ausgabeformat der ``TO_STRING``-Funktion angeben können.
+In dieser Tabelle werden Zeichenfolgen beschrieben, mit denen Sie das Ausgabeformat der `TO_STRING`-Funktion angeben können.
 
 |Formatzeichenfolge    |Output                               |
 |-----------------|-------------------------------------|
-|yy               |Jahr im zweistelligen Format – 1999 als 99|
+|yy               |Jahr im zweistelligen Format: 1999 als „99“|
 |y                |Jahr im vierstelligen Format               |
 |yyyy             |Jahr im vierstelligen Format               |
-|M                |Monat des Jahres – 1                    |
-|MM               |Monat mit Nullen aufgefüllt – 01               |
-|MMM              |Abkürzung für den Monat des Jahres – JAN            |
-|MMMM             |Vollständiger Monatsname – Mai                      |
+|M                |Monat des Jahres: 1                    |
+|MM               |Monat mit Nullen aufgefüllt: 01               |
+|MMM              |Abkürzung für den Monat des Jahres: JAN            |
+|MMMM             |Vollständiger Monatsname: April                      |
 |d                |Tag des Monats (1–31)                  |
 |dd               |Tag des Monats mit Nullen aufgefüllt (01–31)     |
 |a                |AM oder PM                             |
@@ -231,12 +235,11 @@ TO_TIMESTAMP('2007T')
 ```
 
 > [!NOTE]
-> Sie können auch die ``UTCNOW``-Funktion verwenden, um die Systemzeit abzurufen.
-
+> Sie können auch die `UTCNOW`-Funktion verwenden, um die Systemzeit abzurufen.
 
 ## <a name="aggregate-expressions"></a>Aggregatausdrücke
 
-Eine SELECT-Anweisung kann entweder einen oder mehrere Projektionsausdrücke oder einen einzelnen Aggregatausdruck enthalten.  Die folgenden Aggregatausdrücke werden unterstützt:
+Eine SELECT-Anweisung kann entweder einen oder mehrere Projektionsausdrücke oder einen einzelnen Aggregatausdruck enthalten. Die folgenden Aggregatausdrücke werden unterstützt:
 
 |Ausdruck|BESCHREIBUNG|
 |--|--|
@@ -249,13 +252,13 @@ Eine SELECT-Anweisung kann entweder einen oder mehrere Projektionsausdrücke ode
 
 ### <a name="missing"></a>MISSING
 
-``IS MISSING`` ist der einzige nicht standardmäßige Operator, der von der SQL-Sprache für die Abfragebeschleunigung unterstützt wird.  Wenn bei JSON-Daten in einem bestimmten Eingabedatensatz ein Feld fehlt, ergibt das Ausdrucksfeld ``IS MISSING`` den booleschen Wert „true“.
+`IS MISSING` ist der einzige nicht standardmäßige Operator, der von der SQL-Sprache für die Abfragebeschleunigung unterstützt wird. Wenn bei JSON-Daten in einem bestimmten Eingabedatensatz ein Feld fehlt, ergibt das Ausdrucksfeld `IS MISSING` den booleschen Wert „true“.
 
 <a id="table-descriptors"></a>
 
 ## <a name="table-descriptors"></a>Tabellendeskriptoren
 
-Bei CSV-Daten lautet der Tabellenname immer `BlobStorage`.  Beispiel:
+Bei CSV-Daten lautet der Tabellenname immer `BlobStorage`. Beispiel:
 
 ```sql
 SELECT * FROM BlobStorage
@@ -329,16 +332,16 @@ SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 Dies ist eine besondere Form der SELECT-Anweisung, die nur für CSV-formatierte Daten verfügbar ist.
 
 ```sql
-SELECT sys.split(split_size)FROM BlobStorage
+SELECT sys.split(split_size) FROM BlobStorage
 ```
 
-Verwenden Sie diese Anweisung, wenn Sie CSV-Datensätze in Batches herunterladen und verarbeiten möchten. Auf diese Weise können Datensätze parallel verarbeitet werden, anstatt alle Datensätze einzeln herunterladen zu müssen. Diese Anweisung gibt keine Datensätze aus der CSV-Datei zurück. Stattdessen wird eine Auflistung von Batchgrößen zurückgegeben. Anschließend können Sie jede Batchgröße verwenden, um einen Batch von Datensätzen abzurufen. 
+Verwenden Sie diese Anweisung, wenn Sie CSV-Datensätze in Batches herunterladen und verarbeiten möchten. Auf diese Weise können Datensätze parallel verarbeitet werden, anstatt alle Datensätze einzeln herunterladen zu müssen. Diese Anweisung gibt keine Datensätze aus der CSV-Datei zurück. Stattdessen wird eine Auflistung von Batchgrößen zurückgegeben. Anschließend können Sie jede Batchgröße verwenden, um einen Batch von Datensätzen abzurufen.
 
-Verwenden Sie den *split_size*-Parameter, um die Anzahl von Bytes anzugeben, die jeder Batch enthalten soll. Wenn Sie z. B. jeweils nur 10 MB an Daten verarbeiten möchten, sieht die Anweisung wie folgt aus: `SELECT sys.split(10485760)FROM BlobStorage`. Dabei entsprechen 10 MB 10.485.760 Bytes. Jeder Batch enthält so viele Datensätze, wie in diese 10 MB passen. 
+Verwenden Sie den *split_size*-Parameter, um die Anzahl von Bytes anzugeben, die jeder Batch enthalten soll. Wenn Sie z. B. jeweils nur 10 MB an Daten verarbeiten möchten, sieht die Anweisung wie folgt aus: `SELECT sys.split(10485760)FROM BlobStorage`. Dabei entsprechen 10 MB 10.485.760 Bytes. Jeder Batch enthält so viele Datensätze, wie in diese 10 MB passen.
 
 In den meisten Fällen ist die Größe jedes Batches etwas höher als der von Ihnen angegebene Wert. Dies liegt daran, dass ein Batch keinen Teildatensatz enthalten darf. Wenn der letzte Datensatz in einem Batch vor dem Ende Ihres Schwellenwerts beginnt, wird der Batch vergrößert, so dass er den vollständigen Datensatz aufnehmen kann. Die Größe des letzten Batches wird wahrscheinlich etwas unter der von Ihnen angegebenen Größe liegen.
 
->[!NOTE]
+> [!NOTE]
 > Die Größe für „split_size“ muss mindestens 10 MB (10485760) betragen.
 
 ## <a name="see-also"></a>Weitere Informationen

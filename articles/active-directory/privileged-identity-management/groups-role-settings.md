@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2020
+ms.date: 09/14/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cfb09f383d8425a644d3e2e87d190b350f5f41a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c47530e3fd7626674297a2d910ff9c39722c228b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564635"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650836"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Gruppen mit privilegiertem Zugriff (Vorschau) in Privileged Identity Management
 
@@ -30,7 +30,7 @@ Rolleneinstellungen sind die Standardeinstellungen, die auf Zuweisungen von priv
 
 Führen Sie die folgenden Schritte aus, um die Einstellungen für die Azure-Rolle einer Gruppe mit privilegiertem Zugriff zu öffnen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Benutzer mit der Rolle [Administrator für privilegierte Rollen](../roles/permissions-reference.md#privileged-role-administrator) an.
+1. Melden Sie sich mit einem Benutzer beim [Azure-Portal](https://portal.azure.com/) an, der die Rolle [Globaler Administrator](../roles/permissions-reference.md#global-administrator) innehat oder als Gruppenbesitzer zugewiesen ist.
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
@@ -90,23 +90,23 @@ Beim Typ **Aktiv** können Sie eine dieser Optionen für die Zuweisungsdauer wä
 > [!NOTE]
 > Alle Zuweisungen mit einem angegebenen Enddatum können von Ressourcenadministratoren erneuert werden. Zudem können Benutzer Self-Service-Anforderungen auslösen, um [Rollenzuweisungen zu verlängern oder zu erneuern](pim-resource-roles-renew-extend.md).
 
-## <a name="require-multi-factor-authentication"></a>Mehrstufige Authentifizierung erforderlich
+## <a name="require-multifactor-authentication"></a>Erzwingen der mehrstufigen Authentifizierung
 
 Privileged Identity Management ermöglicht die optionale Erzwingung der Azure AD Multi-Factor Authentication (MFA) für zwei bestimmte Szenarien.
 
-### <a name="require-multi-factor-authentication-on-active-assignment"></a>Multi-Factor Authentication bei aktiver Zuweisung erforderlich
+### <a name="require-multifactor-authentication-on-active-assignment"></a>Multi-Factor Authentication bei aktiver Zuweisung erforderlich
 
-In einigen Fällen sollten Sie einer Rolle für einen kurzen Zeitraum (z. B. einen Tag) einen Benutzer oder eine Gruppe zuweisen. In diesem Fall müssen die zugewiesenen Benutzer die Aktivierung nicht anfordern. In diesem Szenario kann Privileged Identity Management die Multi-Factor Authentication (MFA) nicht erzwingen, wenn der Benutzer seine Rollenzuweisung verwendet, weil die Rolle ab dem Moment der Zuweisung bereits aktiv ist.
+Diese Option erfordert, dass Administratoren eine mehrstufige Authentifizierung abschließen müssen, bevor sie eine aktive (im Gegensatz zu einer berechtigten) Rollenzuweisung erstellen. Privileged Identity Management kann die mehrstufige Authentifizierung nicht erzwingen, wenn Benutzer ihre Rollenzuweisung verwenden, weil die Rolle ab dem Zeitpunkt der Zuweisung bereits aktiv ist.
 
-Sie können sicherstellen, dass der Ressourcenadministrator, der die Zuweisung bearbeitet, auch wirklich die angegebene Person ist, indem Sie für die aktive Zuweisung MFA erzwingen. Aktivieren Sie dafür das Kontrollkästchen neben der Option **Multi-Factor Authentication bei aktiver Zuweisung erforderlich**.
+Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication bei aktiver Zuweisung erforderlich**, um die mehrstufige Authentifizierung beim Erstellen einer aktiven Rollenzuweisung als erforderlich festzulegen.
 
-### <a name="require-multi-factor-authentication-on-activation"></a>Bei Aktivierung Multi-Factor Authentication anfordern
+### <a name="require-multifactor-authentication-on-activation"></a>Bei Aktivierung Multi-Factor Authentication anfordern
 
-Sie können erzwingen, dass Benutzer, die für eine Rolle berechtigt sind, vor der Aktivierung ihre Identität über Azure AD MFA bestätigen müssen. Mithilfe von MFA kann mit hoher Wahrscheinlichkeit sichergestellt werden, dass es sich auch wirklich um den jeweiligen Benutzer handelt. Durch die Erzwingung dieser Option werden wichtige Ressourcen in Situationen geschützt, in denen das Benutzerkonto unter Umständen kompromittiert wurde.
+Sie können erzwingen, dass Benutzer, die für eine Rolle berechtigt sind, vor der Aktivierung ihre Identität über Azure AD MFA bestätigen müssen. Mithilfe von mehrstufiger Authentifizierung kann mit hoher Wahrscheinlichkeit sichergestellt werden, dass es sich auch wirklich um den jeweiligen Benutzer handelt. Durch die Erzwingung dieser Option werden wichtige Ressourcen in Situationen geschützt, in denen das Benutzerkonto unter Umständen kompromittiert wurde.
 
-Damit vor der Aktivierung MFA erzwungen wird, müssen Sie das Kontrollkästchen für die Option **Bei Aktivierung Multi-Factor Authentication anfordern** aktivieren.
+Damit vor der Aktivierung die mehrstufige Authentifizierung erzwungen wird, müssen Sie das Kontrollkästchen **Bei Aktivierung Multi-Factor Authentication anfordern** aktivieren.
 
-Weitere Informationen finden Sie unter [Multi-Factor Authentication und Privileged Identity Management](pim-how-to-require-mfa.md).
+Weitere Informationen finden Sie unter [Mehrstufige Authentifizierung und Privileged Identity Management](pim-how-to-require-mfa.md).
 
 ## <a name="activation-maximum-duration"></a>Maximale Aktivierungsdauer
 

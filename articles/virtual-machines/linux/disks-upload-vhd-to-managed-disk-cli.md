@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie per Azure-Befehlszeilenschnittstelle und
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 06/29/2021
+ms.date: 09/07/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: e78998d089ffe6446e9b7dbdf898b2d4ee4ba3a1
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 08c58a65a8801646d0dd6d0bd51bbab8d57d97e9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694929"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754612"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region – Azure-Befehlszeilenschnittstelle
 
@@ -51,10 +51,10 @@ Erstellen Sie für das Hochladen eine leere HDD Standard, indem Sie in einem [Da
 Ersetzen Sie `<yourdiskname>`, `<yourresourcegroupname>`, `<yourregion>` durch Werte Ihrer Wahl. Der Parameter `--upload-size-bytes` enthält einen Beispielwert von `34359738880`, ersetzen Sie ihn durch einen für Sie geeigneten Wert.
 
 > [!TIP]
-> Wenn Sie einen Betriebssystemdatenträger erstellen, fügen Sie „--hyper-v-generation <yourGeneration>„ zu `az disk create` hinzu.
+> Wenn Sie einen Betriebssystemdatenträger erstellen, fügen Sie `--hyper-v-generation <yourGeneration>` in `az disk create` hinzu.
 
 ```azurecli
-az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
+az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --os-type Linux --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
 Wenn Sie für den Upload einen SSD Premium- oder SSD Standard-Datenträger verwenden möchten, ersetzen Sie **standard_lrs** durch **premium_LRS** oder **standardSSD_lrs**. Ultra Disks werden derzeit nicht unterstützt.
@@ -107,7 +107,7 @@ Das folgende Skript führt dies für Sie aus. Der Vorgang ähnelt mit einigen Un
 Ersetzen Sie `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>` und `<yourTargetLocationHere>` (ein Beispiel für einen Standortwert ist „uswest2“) durch Ihre Werte, und führen Sie dann das folgende Skript aus, um einen verwalteten Datenträger zu kopieren.
 
 > [!TIP]
-> Wenn Sie einen Betriebssystemdatenträger erstellen, fügen Sie „--hyper-v-generation <yourGeneration>„ zu `az disk create` hinzu.
+> Wenn Sie einen Betriebssystemdatenträger erstellen, fügen Sie `--hyper-v-generation <yourGeneration>` in `az disk create` hinzu.
 
 ```azurecli
 sourceDiskName=<sourceDiskNameHere>
@@ -115,10 +115,12 @@ sourceRG=<sourceResourceGroupHere>
 targetDiskName=<targetDiskNameHere>
 targetRG=<targetResourceGroupHere>
 targetLocation=<yourTargetLocationHere>
+#Expected value for OS is either "Windows" or "Linux"
+targetOS=<yourOSTypeHere>
 
 sourceDiskSizeBytes=$(az disk show -g $sourceRG -n $sourceDiskName --query '[diskSizeBytes]' -o tsv)
 
-az disk create -g $targetRG -n $targetDiskName -l $targetLocation --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+az disk create -g $targetRG -n $targetDiskName -l $targetLocation --os-type $targetOS --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 
 targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
 

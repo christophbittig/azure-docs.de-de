@@ -11,16 +11,20 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e4976deea08b8d0edc9a484f8a8ad4c07ad4512c
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: a77fe42c1a828ef044f04ad4e292f14618f94f1f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070513"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757361"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrieren von Benutzern zu Azure AD B2C
 
 Bei der Migration von einem anderen Identitätsanbieter zu Azure Active Directory B2C (Azure AD B2C) müssen unter Umständen auch bereits vorhandene Benutzerkonten migriert werden. Hier werden zwei Migrationsmethoden behandelt: *Prämigration* und *nahtlose Migration*. Bei beiden Methoden muss eine Anwendung oder ein Skript geschrieben werden, um Benutzerkonten unter Verwendung der [Microsoft Graph-API](microsoft-graph-operations.md) in Azure AD B2C zu erstellen.
+
+Sehen Sie sich dieses Video an, um mehr über Migrationsstrategien für Azure AD B2C-Benutzer und die zu beachtenden Schritte zu erfahren.
+
+>[!Video https://www.youtube.com/embed/lCWR6PGUgz0]
 
 ## <a name="pre-migration"></a>Prämigration
 

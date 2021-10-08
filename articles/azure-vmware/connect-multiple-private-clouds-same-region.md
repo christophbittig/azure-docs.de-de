@@ -1,16 +1,16 @@
 ---
-title: Verbinden mehrerer privater Azure VMware Solution-Clouds in derselben Region (Vorschau)
+title: Verbinden mehrerer privater Azure VMware Solution-Clouds in derselben Region
 description: Hier erfahren Sie, wie Sie eine Netzwerkverbindung zwischen zwei oder mehr privaten Azure VMware Solution-Clouds erstellen, die sich in derselben Region befinden.
 ms.topic: how-to
-ms.date: 07/02/2021
-ms.openlocfilehash: 562980ce52216f892cb10689206211e23f3c8886
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.date: 09/20/2021
+ms.openlocfilehash: daa4b60c0e42c77f61054d6d9a77898cc0448c37
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586723"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567839"
 ---
-# <a name="connect-multiple-azure-vmware-solution-private-clouds-in-the-same-region-preview"></a>Verbinden mehrerer privater Azure VMware Solution-Clouds in derselben Region (Vorschau)
+# <a name="connect-multiple-azure-vmware-solution-private-clouds-in-the-same-region"></a>Verbinden mehrerer privater Azure VMware Solution-Clouds in derselben Region
 
 Mit dem Feature **AVS Interconnect** können Sie eine Netzwerkverbindung zwischen zwei oder mehr privaten Azure VMware Solution-Clouds erstellen, die sich in derselben Region befinden. Es wird eine Routingverbindung zwischen den Verwaltungs- und Workloadnetzwerken der privaten Clouds erstellt, um die Netzwerkkommunikation zwischen den Clouds zu ermöglichen.
 
@@ -18,14 +18,9 @@ Sie können eine private Cloud mit mehreren privaten Clouds verbinden, und die V
 
 Sie können nur private Clouds in derselben Region verbinden. Verwenden Sie zum Verbinden privater Clouds in verschiedenen Regionen [ExpressRoute Global Reach](tutorial-expressroute-global-reach-private-cloud.md), um Ihre privaten Clouds auf die gleiche Weise zu verbinden, wie Sie Ihre private Cloud mit Ihrer lokalen Umgebung verbinden. 
 
->[!IMPORTANT]
->Das Feature AVS Interconnect (Vorschau) ist derzeit als Public Preview verfügbar.  
->Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
->Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Das Feature AVS Interconnect (Vorschau) ist in allen Regionen verfügbar, mit Ausnahme der Regionen „USA, Süden-Mitte“ (SAT20), „Europa, Norden“ (DUB21), „Asien, Südosten“ (SG2) und „Vereinigtes Königreich, Westen“ (CWL20). 
+Das Feature AVS Interconnect ist in allen Regionen verfügbar, mit Ausnahme der Regionen „USA, Süden-Mitte“ (SAT20), „Europa, Norden“ (DUB21), „Asien, Südosten“ (SG2) und „Vereinigtes Königreich, Westen“ (CWL20). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

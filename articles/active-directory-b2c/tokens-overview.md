@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b4e268d35a2e31db0ce92ff61e66fd23bce68e38
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98ab4a660923f1a399317b9682a231774f310f3c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97516353"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546952"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Übersicht über Token in Azure Active Directory B2C
 
@@ -76,11 +76,11 @@ Die folgenden Eigenschaften werden zum [Verwalten der Gültigkeitsdauer von Sich
 
 - **Lebensdauer des Aktualisierungstokens (Tage):** Die maximale Dauer, während der ein Aktualisierungstoken zum Anfordern eines neuen Zugriffs- oder ID-Tokens verwendet werden kann. Der Zeitraum deckt auch das Abrufen eines neuen Aktualisierungstokens ab, falls Ihrer Anwendung der Bereich `offline_access` gewährt wurde. Der Standardwert ist 14 Tage. Der Mindestwert ist ein Tag (einschließlich). Der Höchstwert ist 90 Tage (einschließlich).
 
-- **Lebensdauer für gleitendes Fenster des Aktualisierungstokens (Tage):** Nach Ablauf dieses Zeitraums muss der Benutzer sich erneut authentifizieren (unabhängig von der Gültigkeitsdauer des zuletzt von der Anwendung abgerufenen Aktualisierungstokens). Es kann nur bereitgestellt werden, wenn die Option auf **Begrenzt** festgelegt ist. Sein Wert muss mindestens dem Wert **Lebensdauer des Aktualisierungstokens (Tage)** entsprechen. Wenn die Option auf **Unbegrenzt** festgelegt ist, können Sie keinen bestimmten Wert angeben. Der Standardwert ist 90 Tage. Der Mindestwert ist ein Tag (einschließlich). Der Höchstwert ist 365 Tage (einschließlich).
+- **Lebensdauer für gleitendes Fenster des Aktualisierungstokens (Tage):** Nach Ablauf dieses Zeitraums muss der Benutzer sich erneut authentifizieren (unabhängig von der Gültigkeitsdauer des zuletzt von der Anwendung abgerufenen Aktualisierungstokens). Es kann nur bereitgestellt werden, wenn die Option auf **Begrenzt** festgelegt ist. Sein Wert muss mindestens dem Wert **Lebensdauer des Aktualisierungstokens (Tage)** entsprechen. Wenn der Schalter auf **Unbegrenzt** festgelegt ist, können Sie keinen bestimmten Wert angeben. Der Standardwert ist 90 Tage. Der Mindestwert ist ein Tag (einschließlich). Der Höchstwert ist 365 Tage (einschließlich).
 
 Mit diesen Eigenschaften werden die folgenden Anwendungsfälle ermöglicht:
 
-- Ermöglichen Sie einem Benutzer, unbegrenzt bei einer mobilen Anwendung angemeldet zu bleiben, solange er ständig in der Anwendung aktiv ist. Sie können die Option **Lebensdauer für gleitendes Fenster des Aktualisierungstokens (Tage)** in Ihrem Benutzerflow für die Anmeldung auf **Unbegrenzt** festlegen.
+- Ermöglichen Sie einem Benutzer, unbegrenzt bei einer mobilen Anwendung angemeldet zu bleiben, solange er ständig in der Anwendung aktiv ist. Sie können die **Lebensdauer für gleitendes Fenster des Aktualisierungstokens (Tage)** in Ihrem Benutzerflow für die Anmeldung auf **Unbegrenzt** festlegen.
 - Erfüllen Sie die Sicherheits- und Complianceanforderungen Ihrer Branche durch Festlegung der entsprechenden Zugriffstoken-Gültigkeitsdauer.
 
 Diese Einstellungen sind für Benutzerflows zur Kennwortzurücksetzung nicht verfügbar.

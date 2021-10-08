@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c4f2da1bd955f9a0b47519c913f656aa6e8bdce4
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: c11604ae3fe486be6d471b0218b44eeab26da5c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342786"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588540"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -349,7 +349,7 @@ Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 
 1. Um die Protokolldatei des Windows-Gast-Agents zu überprüfen, sollten Sie die Aktivität bei der Bereitstellung der Erweiterung in *C:\WindowsAzure\Logs\WaAppAgent.log* näher betrachten.
 
-2. Überprüfen Sie die tatsächlichen Erweiterungsprotokolle unter *C:\WindowsAzure\Logs\Plugins\\<extensionName>* , um weitere Einzelheiten zu erhalten.
+2. Für weitere Einzelheiten überprüfen Sie die tatsächlichen Erweiterungsprotokolle unter `C:\WindowsAzure\Logs\Plugins\<extensionName>`
 
 3. Lesen Sie die Abschnitte zur Problembehandlung in der Dokumentation zu Erweiterungen für Fehlercodes, bekannte Probleme, etc.
 

@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/13/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: ccbee86e8f5ae2ab514c8ec7ece4d41e1e890e4e
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 4e5f474f08116cea39b565e76a9736b3e94eec9f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733284"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668790"
 ---
 # <a name="vnet-peering-and-azure-bastion"></a>VNET-Peering und Azure Bastion
 
@@ -45,17 +45,17 @@ In dieser Abbildung ist die Architektur einer Azure Bastion-Bereitstellung in ei
    * Rolle „Leser“ für den Netzwerkadapter mit privater IP-Adresse des virtuellen Computers
    * Rolle „Leser“ für die Azure Bastion-Ressource
    * Rolle „Leser“ im virtuellen Netzwerk (nicht erforderlich, wenn kein mittels Peering verbundenes virtuelles Netzwerk vorhanden ist)
-3. Damit Bastion im Dropdownmenü **Verbinden** angezeigt wird, müssen Sie unter **Subscription > global subscription** (Abonnement > Globales Abonnement) die Abonnements auswählen, auf die Sie Zugriff haben.
+3. Damit Bastion im Dropdownmenü **Verbinden** angezeigt wird, müssen Sie unter **Subscription > global subscription** (Abonnement > Globales Abonnement) das Abonnement auswählen, auf das Sie Zugriff haben.
 4. Wählen Sie die VM aus, mit der Sie eine Verbindung herstellen möchten.
 5. Azure Bastion wird nahtlos über das Peering-VNET erkannt.
 6. Mit nur einem Klick wird die RDP- oder SSH-Sitzung im Browser geöffnet.
 
-  :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Herstellen einer Verbindung":::
+Weitere Informationen zur Verbindung mit einer VM über Azure Bastion finden Sie unter:
 
-   Weitere Informationen zur Verbindung mit einer VM über Azure Bastion finden Sie unter:
-
-   * [Herstellen einer Verbindung mit einem virtuellen Windows-Computer mit Azure Bastion](bastion-connect-vm-rdp.md)
-   * [Herstellen einer SSH-Verbindung mit einem virtuellen Linux-Computer über Azure Bastion](bastion-connect-vm-ssh.md)
+   * [Herstellen einer Verbindung mit einem virtuellen Windows-Computer – RDP](bastion-connect-vm-rdp-windows.md)
+   * [Herstellen einer Verbindung mit einem virtuellen Windows-Computer – SSH](bastion-connect-vm-ssh-windows.md)
+   * [Herstellen einer Verbindung mit einem virtuellen Linux-Computer – SSH](bastion-connect-vm-ssh-linux.md)
+   * [Herstellen einer Verbindung mit einem virtuellen Linux-Computer – RDP](bastion-connect-vm-rdp-linux.md)
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

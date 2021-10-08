@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: f615cf25f30cc0bad6a8317b08126c05fe22f047
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 03b89b1b8c0221795f58ff28addd4fdeaad5053e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273346"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532589"
 ---
 # <a name="remove-a-virtual-machine-scale-set-association-from-a-capacity-reservation-group"></a>Entfernen einer Skalierungsgruppenzuordnung von einem virtuellen Computer aus einer Kapazitätsreservierungsgruppe 
 
@@ -28,14 +28,6 @@ Es gibt es zwei Möglichkeiten, eine Zuordnung zu ändern:
 > [!IMPORTANT]
 > Die Kapazitätsreservierung befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## <a name="register-for-capacity-reservation"></a>Registrieren Sie sich für die Kapazitätsreservierung 
-
-Bevor Sie die Funktion zur Kapazitätsreservierung verwenden können, müssen Sie [Ihr Abonnement für die Vorschauversion registrieren](capacity-reservation-overview.md#register-for-capacity-reservation). Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Funktionsregistrierung abzuschließen.
-
-> [!NOTE]
-> Die bedarfsbasierte Kapazitätsreservierung ist nur in ausgewählten Regionen für die Skalierungsgruppen virtueller Computer im einheitlichen Orchestrierungsmodus verfügbar. Um zu überprüfen, ob Ihre Region unterstützt wird, wechseln Sie zu [Bereitstellungsverfolgung für eine einheitliche Skalierungsgruppe für virtuelle Computer](https://aka.ms/vmssuniformdeploymenttracker).
-
 
 ## <a name="deallocate-the-virtual-machine-scale-set"></a>Aufheben der Zuordnung einer Skalierungsgruppe für virtuelle Computer
 
@@ -56,7 +48,7 @@ Navigieren Sie zu [Aktualisieren von Richtlinien](#upgrade-policies) um weitere 
     ```rest
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}/update?api-version=2021-04-01
     ```
-    Legen Sie im Anforderungstext die Eigenschaft `capacityReservationGroup` auf „leer“ fest, um die Gruppenzuordnung der Skalierungsgruppe für virtuelle Computer zu entfernen:
+    Legen Sie im Anforderungstext die Eigenschaft `capacityReservationGroup` auf null fest, um die Gruppenzuordnung der Skalierungsgruppe für virtuelle Computer zu entfernen:
 
     ```json
     {
@@ -65,7 +57,7 @@ Navigieren Sie zu [Aktualisieren von Richtlinien](#upgrade-policies) um weitere 
         "virtualMachineProfile": {
             "capacityReservation": {
                 "capacityReservationGroup":{
-                    "id":""    
+                    "id":null    
                 }
             }
         }
@@ -83,7 +75,7 @@ Navigieren Sie zu [Aktualisieren von Richtlinien](#upgrade-policies) um weitere 
     -VMScaleSetName "myVmss"
     ```
 
-1. Aktualisieren der Skalierungsgruppe für virtuelle Computer, um die Zuordnung zu der Kapazitätsreservierungsgruppe zu entfernen. Durch Festlegen der Eigenschaft `CapacityReservationGroupId` auf „leer“ wird die Zuordnung der Skalierungsgruppe zur Kapazitätsreservierungsgruppe entfernt: 
+1. Aktualisieren der Skalierungsgruppe für virtuelle Computer, um die Zuordnung zu der Kapazitätsreservierungsgruppe zu entfernen. Durch Festlegen der Eigenschaft `CapacityReservationGroupId` auf null wird die Zuordnung der Skalierungsgruppe zur Kapazitätsreservierungsgruppe entfernt: 
 
     ```powershell-interactive
     $vmss =
@@ -95,7 +87,7 @@ Navigieren Sie zu [Aktualisieren von Richtlinien](#upgrade-policies) um weitere 
     -ResourceGroupName "myResourceGroup"
     -VMScaleSetName "myvmss"
     -VirtualMachineScaleSet $vmss
-    -CapacityReservationGroupId ""
+    -CapacityReservationGroupId $null
     ```
 
 Weitere Informationen finden Sie unter Azure PowerShell [Beenden von AzVmss,](/powershell/module/az.compute/stop-azvmss), [Abrufen von AzVmss](/powershell/module/az.compute/get-azvmss)und [Aktualisieren von AzVmss](/powershell/module/az.compute/update-azvmss).
@@ -139,7 +131,7 @@ Navigieren Sie zu [Aktualisieren von Richtlinien](#upgrade-policies) um weitere 
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}/update?api-version=2021-04-01
     ```
 
-    Legen Sie im Anforderungstext die Eigenschaft `capacityReservationGroup` auf „leer“ fest, um die Zuordnung zu entfernen:
+    Legen Sie im Anforderungstext die Eigenschaft `capacityReservationGroup` auf null fest, um die Zuordnung zu entfernen:
     
     ```json
     {
@@ -148,7 +140,7 @@ Navigieren Sie zu [Aktualisieren von Richtlinien](#upgrade-policies) um weitere 
         "virtualMachineProfile": {
             "capacityReservation": {
                 "capacityReservationGroup":{
-                    "id":""
+                    "id":null
                 }
             }
         }
@@ -158,23 +150,17 @@ Navigieren Sie zu [Aktualisieren von Richtlinien](#upgrade-policies) um weitere 
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 
->[!NOTE]
-> Der Befehl `Update-AzCapacityReservation` ist während der Vorschauversion nicht verfügbar. Verwenden Sie `New-AzCapacityReservation`, um eine vorhandene Kapazitätsreservierung zu ändern.
-
 1. Aktualisieren Sie die reservierte Menge auf null:
 
     ```powershell-interactive
-    New-AzCapacityReservation
+    Update-AzCapacityReservation
     -ResourceGroupName "myResourceGroup"
-    -Location "eastus"
-    -Zone "1"
     -ReservationGroupName "myCapacityReservationGroup"
     -Name "myCapacityReservation"
-    -Sku "Standard_D2s_v3"
     -CapacityToReserve 0
     ```
 
-2. Aktualisieren Sie die Skalierungsgruppe, um die Zuordnung zur Kapazitätsreservierungsgruppe zu entfernen, indem Sie die Eigenschaft `CapacityReservationGroupId` auf „leer“ festlegen: 
+2. Aktualisieren Sie die Skalierungsgruppe, um die Zuordnung zur Kapazitätsreservierungsgruppe zu entfernen, indem Sie die Eigenschaft `CapacityReservationGroupId` auf null festlegen: 
 
     ```powershell-interactive
     $vmss =
@@ -186,7 +172,7 @@ Navigieren Sie zu [Aktualisieren von Richtlinien](#upgrade-policies) um weitere 
     -ResourceGroupName "myResourceGroup"
     -VMScaleSetName "myvmss"
     -VirtualMachineScaleSet $vmss
-    -CapacityReservationGroupId ""
+    -CapacityReservationGroupId $null
     ```
 
 Weitere Informationen finden Sie unter den Azure PowerShell-Befehlen [Neue AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation), [Abrufen von AzVmss](/powershell/module/az.compute/get-azvmss)und [Aktualisieren von AzVmss](/powershell/module/az.compute/update-azvmss).

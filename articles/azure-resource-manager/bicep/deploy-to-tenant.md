@@ -3,16 +3,20 @@ title: Verwenden von Bicep zum Bereitstellen von Ressourcen für den Mandanten
 description: Hier erfahren Sie, wie Sie Ressourcen im Mandantenbereich in einer Bicep-Datei bereitstellen.
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: 3f446670cd85daa5b541cc9b5858ab768ac8411d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: fe5b8a1a17af47570bb2399172866a1e720b0bab
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453407"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793719"
 ---
 # <a name="tenant-deployments-with-bicep-file"></a>Mandantenbereitstellungen mit Bicep-Datei
 
 Im Zuge der Entwicklung Ihrer Organisation müssen unter Umständen [Richtlinien](../../governance/policy/overview.md) oder die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) für Ihren Azure AD-Mandanten definiert und zugewiesen werden. Mit Vorlagen auf der Mandantenebene können Sie Richtlinien deklarativ anwenden und Rollen global zuweisen.
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen zu Bereitstellungsbereichen und praktische Anleitungen finden Sie unter [Bereitstellen von Ressourcen für Abonnements, Verwaltungsgruppen und Mandanten mithilfe von Bicep](/learn/modules/deploy-resources-scopes-bicep/) auf **Microsoft Learn**.
 
 ## <a name="supported-resources"></a>Unterstützte Ressourcen
 

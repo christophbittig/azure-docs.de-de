@@ -9,12 +9,12 @@ ms.subservice: pipeline
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/03/2020
-ms.openlocfilehash: 37696d2f4054e46125b39f3d5efa794ce54f94b5
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 481d4534f7213d55c795383d6112fd93f7997c9c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567722"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596864"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>Schnellstart: Transformieren von Daten mithilfe von Mapping Data Flow
 
@@ -109,11 +109,11 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
 
     In dieser Schnellstartanleitung soll nach Filmen aus dem Genre „Komödie“ gefiltert werden, die zwischen 1910 und 2000 erschienen sind. Da die Jahresangabe derzeit eine Zeichenfolge ist, müssen Sie sie mithilfe der Funktion ```toInteger()``` in eine ganze Zahl konvertieren. Verwenden Sie die Operatoren für größer als oder gleich (>=) und kleiner als oder gleich (<=) für einen Vergleich mit den Literalwerten für die Jahre 1910 und 2000. Verbinden Sie diese Ausdrücke mit dem Und-Operator (&&). Der Ausdruck sieht wie folgt aus:
 
-    ```toInteger(year) >= 1910 && toInteger(year) <= 2000```
+    `toInteger(year) >= 1910 && toInteger(year) <= 2000`
 
-    Um zu ermitteln, welche Filme Komödien sind, können Sie mithilfe der Funktion ```rlike()``` nach dem Muster „Comedy“ in der Spalte „genres“ suchen. Verbinden Sie den rlike-Ausdruck mit dem Jahresvergleich, um Folgendes zu erhalten:
+    Um zu ermitteln, welche Filme Komödien sind, können Sie mithilfe der Funktion `rlike()` nach dem Muster „Comedy“ in der Spalte „genres“ suchen. Verbinden Sie den `rlike`-Ausdruck mit dem Jahresvergleich, um Folgendes zu erhalten:
 
-    ```toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')```
+    `toInteger(year) >= 1910 && toInteger(year) <= 2000 && rlike(genres, 'Comedy')`
 
     ![Angeben der Filterbedingung](media/quickstart-data-flow/visual-expression-builder.png)
 
@@ -137,7 +137,7 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
 
 1. Verwenden Sie die Aggregatfunktion ```avg()```, um den Durchschnitt der Spalte **Rating** zu erhalten. Da **Rating** eine Zeichenfolge ist und ```avg()``` eine numerische Eingabe benötigt, muss der Wert über die Funktion ```toInteger()``` in eine Zahl konvertiert werden. Dieser Ausdruck sieht wie folgt aus:
 
-    ```avg(toInteger(Rating))```
+    `avg(toInteger(Rating))`
 
     Klicken Sie anschließend auf **Speichern und beenden**.
 

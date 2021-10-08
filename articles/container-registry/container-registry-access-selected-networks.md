@@ -3,12 +3,12 @@ title: Konfigurieren des öffentlichen Registrierungszugriffs
 description: Konfigurieren von IP-Regeln, um den Zugriff auf eine Azure-Containerregistrierung über ausgewählte öffentliche IP-Adressen oder -Adressbereiche zu ermöglichen.
 ms.topic: article
 ms.date: 07/30/2021
-ms.openlocfilehash: cb48a91190f352154a2f0af1e02dcd3e36f436d5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3a4a4a28dfbcd859cf97be6799e24a8110add436
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338868"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627005"
 ---
 # <a name="configure-public-ip-network-rules"></a>Konfigurieren von Netzwerkregeln für öffentliche IP-Adressen
 
@@ -18,7 +18,7 @@ IP-Netzwerkregeln werden auf dem öffentlichen Registrierungsendpunkt konfigurie
 
 Das Konfigurieren von IP-Zugriffsregeln steht im Tarif **Premium** der Containerregistrierung zur Verfügung. Weitere Informationen zu den Tarifen des Registrierungsdiensts und zu den Einschränkungen finden Sie unter [Azure Container Registry-Tarife](container-registry-skus.md).
 
-Pro Registrierung werden maximal 100 Netzwerkzugriffsregeln unterstützt.
+Pro Registrierung werden maximal 100 IP-Zugriffsregeln unterstützt.
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 

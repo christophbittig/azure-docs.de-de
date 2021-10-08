@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 2f5537ec3ad34e3f0ad7eff32d32762ed6fedef3
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 0ac1f38d65542ac6c8a892a6469cd8c9301dd463
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273345"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532605"
 ---
 # <a name="remove-a-vm-association-from-a-capacity-reservation-group-preview"></a>Entfernen einer VM-Zuordnung aus einer Kapazitätsreservierungsgruppe (Vorschauversion)
 
@@ -28,11 +28,6 @@ Es gibt es zwei Möglichkeiten, eine Zuordnung zu ändern:
 > [!IMPORTANT]
 > Die Kapazitätsreservierung befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## <a name="register-for-capacity-reservation"></a>Registrieren Sie sich für die Kapazitätsreservierung 
-
-Bevor Sie das Feature zur Kapazitätsreservierung verwenden können, müssen Sie [Ihr Abonnement für die Vorschauversion registrieren](capacity-reservation-overview.md#register-for-capacity-reservation). Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Featureregistrierung abzuschließen.
-
 
 ## <a name="deallocate-the-vm"></a>Aufheben der Zuordnung der VM
 
@@ -51,7 +46,7 @@ Als erste Option können Sie die Zuordnung des virtuellen Computers aufheben, di
     ```rest
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/update?api-version=2021-04-01
     ```
-    Legen Sie im Anforderungstext die Eigenschaft `capacityReservationGroup` auf „leer“ fest, um die VM-Zuordnung zur Gruppe zu entfernen:
+    Legen Sie im Anforderungstext die Eigenschaft `capacityReservationGroup` auf „Null“ fest, um die VM-Zuordnung zur Gruppe zu entfernen:
 
     ```json
      {
@@ -59,7 +54,7 @@ Als erste Option können Sie die Zuordnung des virtuellen Computers aufheben, di
     "properties": {
         "capacityReservation": {
             "capacityReservationGroup": {
-                "id":""
+                "id":null
             }
         }
     }
@@ -91,7 +86,7 @@ Als erste Option können Sie die Zuordnung des virtuellen Computers aufheben, di
 
     Nachdem sich der Status in **Beendet (Nicht zugewiesen)** ändert, wissen Sie, dass die VM nicht mehr zugewiesen ist.
 
-1. Aktualisieren Sie die VM, um die Zuordnung zur Kapazitätsreservierungsgruppe zu entfernen, indem Sie die Eigenschaft `CapacityReservationGroupId` auf „leer“ festlegen:
+1. Aktualisieren Sie die VM, um die Zuordnung zur Kapazitätsreservierungsgruppe zu entfernen, indem Sie die Eigenschaft `CapacityReservationGroupId` auf „Null“ festlegen:
 
     ```powershell-interactive
     $VirtualMachine =
@@ -102,7 +97,7 @@ Als erste Option können Sie die Zuordnung des virtuellen Computers aufheben, di
     Update-AzVM
     -ResourceGroupName "myResourceGroup"
     -VM $VirtualMachine
-    -CapacityReservationGroupId " "
+    -CapacityReservationGroupId $null
     ```
 
 Weitere Informationen finden Sie unter Azure PowerShell-Befehle: [Stop-AzVm](/powershell/module/az.compute/stop-azvm), [Get-AzVM](/powershell/module/az.compute/get-azvm) und [Update-AzVM](/powershell/module/az.compute/update-azvm).
@@ -144,7 +139,7 @@ Diese Option funktioniert gut, wenn die Zuordnung des virtuellen Computers nicht
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{VirtualMachineName}/update?api-version=2021-04-01
     ```
 
-    Legen Sie im Anforderungstext die Eigenschaft `capacityReservationGroup` auf „leer“ fest, um die Zuordnung zu entfernen:
+    Legen Sie im Anforderungstext die Eigenschaft `capacityReservationGroup` auf „Null“ fest, um die Zuordnung zu entfernen:
     
     ```json
     {
@@ -152,7 +147,7 @@ Diese Option funktioniert gut, wenn die Zuordnung des virtuellen Computers nicht
     "properties": {
         "capacityReservation": {
             "capacityReservationGroup": {
-                "id":""
+                "id":null
             }
         }
     }
@@ -176,23 +171,17 @@ Diese Option funktioniert gut, wenn die Zuordnung des virtuellen Computers nicht
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 
->[!NOTE]
-> Der Befehl `Update-AzCapacityReservation` ist während der Vorschauversion nicht verfügbar. Verwenden Sie `New-AzCapacityReservation`, um eine vorhandene Kapazitätsreservierung zu ändern.
-
 1. Aktualisieren der reservierten Menge auf null
 
     ```powershell-interactive
-    New-AzCapacityReservation
+    Update-AzCapacityReservation
     -ResourceGroupName "myResourceGroup"
-    -Location "eastus"
-    -Zone "1"
     -ReservationGroupName "myCapacityReservationGroup"
     -Name "myCapacityReservation"
-    -Sku "Standard_D2s_v3"
     -CapacityToReserve 0
     ```
 
-1. Aktualisieren Sie die VM, um die Zuordnung zur Kapazitätsreservierungsgruppe zu entfernen, indem Sie die Eigenschaft `CapacityReservationGroupId` auf „leer“ festlegen:
+1. Aktualisieren Sie die VM, um die Zuordnung zur Kapazitätsreservierungsgruppe zu entfernen, indem Sie die Eigenschaft `CapacityReservationGroupId` auf „Null“ festlegen:
 
     ```powershell-interactive
     $VirtualMachine =
@@ -203,7 +192,7 @@ Diese Option funktioniert gut, wenn die Zuordnung des virtuellen Computers nicht
     Update-AzVM
     -ResourceGroupName "myResourceGroup"
     -VM $VirtualMachine
-    -CapacityReservationGroupId " "
+    -CapacityReservationGroupId $null
     ```
 
 Weitere Informationen finden Sie unter den Azure PowerShell-Befehlen [New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation), [Get-AzVM](/powershell/module/az.compute/get-azvm)und [Update-AzVM](/powershell/module/az.compute/update-azvm).

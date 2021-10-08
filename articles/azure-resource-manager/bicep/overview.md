@@ -2,13 +2,13 @@
 title: Sprache „Bicep“ für das Bereitstellen von Azure-Ressourcen
 description: Hier wird die Sprache „Bicep“ für das Bereitstellen der Infrastruktur in Azure beschrieben. Bei der Entwicklung von Vorlagen vereinfacht sie im Vergleich zur Verwendung von JSON die Erstellung.
 ms.topic: conceptual
-ms.date: 08/18/2021
-ms.openlocfilehash: 93aea8ee92d1f15ac45bd5978e7cbf68261e5a69
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.date: 09/09/2021
+ms.openlocfilehash: ace417bb8a71a277bbcb4ef178c6aaf24b97533b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429108"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831939"
 ---
 # <a name="what-is-bicep"></a>Was ist Bicep?
 
@@ -112,8 +112,7 @@ Sie können die [JSON-Dateien umgehend in Bicep dekompilieren](./decompile.md).
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 
-- Keine Unterstützung für einzeilige Objekte und Arrays. `['a', 'b', 'c']` wird beispielsweise nicht unterstützt. Weitere Informationen finden Sie unter [Arrays](data-types.md#arrays) und [Objekte](data-types.md#objects).
-- Keine Unterstützung für den Umbruch langer Zeilen in mehrere Zeilen. Zum Beispiel:
+- Bicep reagiert empfindlich auf Zeilenvorschübe. Zum Beispiel:
 
     ```bicep
     resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {

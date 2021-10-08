@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 08/12/2021
+ms.date: 09/13/2021
 ms.author: absinh
 ms.reviewer: rolyon
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02c9e92d09ce929b47cd9a71559eabb4e7c40858
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 951431ca79bfeb182eb5d1252851edb767120039
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349856"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658239"
 ---
 # <a name="assign-azure-ad-roles-at-different-scopes"></a>Zuweisen von Azure AD-Rollen mit verschiedenen Gültigkeitsbereichen
 
-In diesem Artikel wird beschrieben, wie Sie Azure AD-Rollen mit verschiedenen Gültigkeitsbereichen zuweisen. Informationen zu Bereichen in Azure AD finden Sie in diesem Dokument: [Übersicht über RBAC in Azure AD](custom-overview.md). Im Allgemeinen müssen Sie sich in dem Bereich befinden, auf den die Rollenzuweisung beschränkt werden soll. Wenn Sie z. B. die Rolle „Helpdeskadministrator“ im Bereich einer [Verwaltungseinheit](administrative-units.md) zuweisen möchten, sollten Sie zu **Azure AD > Verwaltungseinheiten > {Verwaltungseinheit} > Rollen und Administratoren** wechseln und dann die Rollenzuweisung ausführen. Dadurch wird eine Rollenzuweisung für die Verwaltungseinheit und nicht für den gesamten Mandanten erstellt.
+In Azure Active Directory (Azure AD) weisen Sie in der Regel Azure AD-Rollen zu, sodass sie für den gesamten Mandanten gelten. Sie können jedoch auch Azure AD-Rollen für verschiedene Ressourcen zuweisen, z. B. Verwaltungseinheiten oder Anwendungsregistrierungen. Sie könnten z. B. die Rolle des Helpdeskadministrators so zuweisen, dass sie nur für eine bestimmte Verwaltungseinheit und nicht für den gesamten Mandanten gilt. Die Ressourcen, für die eine Rollenzuweisung gilt, werden auch als Bereich bezeichnet. In diesem Artikel wird beschrieben, wie Sie Azure AD-Rollen in Mandanten-, Verwaltungs- und Anwendungsregistrierungsbereichen zuweisen. Weitere Informationen zum Bereich finden Sie unter [Übersicht über RBAC in Azure AD](custom-overview.md#scope).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +38,7 @@ In diesem Abschnitt wird beschrieben, wie Sie Rollen im Mandantenbereich zuweise
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure AD Admin Center](https://aad.portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder bei [Azure AD Admin Center](https://aad.portal.azure.com) an.
 
 1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** aus, um die Liste mit allen verfügbaren Rollen anzuzeigen.
 
@@ -122,6 +122,8 @@ Befolgen Sie diese Anweisungen, um eine Rolle mithilfe der Microsoft Graph-API i
     ```
 
 ## <a name="assign-roles-scoped-to-an-administrative-unit"></a>Zuweisen von Rollen mit einer Verwaltungseinheit als Bereich
+
+In diesem Abschnitt wird beschrieben, wie Rollen im Bereich der [Verwaltungseinheit](administrative-units.md) zugewiesen werden.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -226,6 +228,8 @@ Befolgen Sie diese Anweisungen, um eine Rolle mithilfe der Microsoft Graph-API i
 >Hier wird directoryScopeId als */administrativeUnits/foo* anstelle von */foo* angegeben. Dies ist beabsichtigt. Der Bereich */administrativeUnits/foo* bedeutet, dass der Prinzipal die Mitglieder der Verwaltungseinheit (auf Grundlage der Rolle, die ihm zugewiesen ist) und nicht die Verwaltungseinheit selbst verwalten kann. Der Bereich */foo* bedeutet, dass der Prinzipal das Azure AD-Objekt selbst verwalten kann. Im folgenden Abschnitt sehen Sie, dass der Bereich */foo* ist, da eine Rolle mit dem Bereich einer App-Registrierung die Berechtigung zum Verwalten des Objekts selbst gewährt.
 
 ## <a name="assign-roles-scoped-to-an-app-registration"></a>Zuweisen von Rollen mit einer App-Registrierung als Bereich
+
+In diesem Abschnitt wird beschrieben, wie Sie Rollen im Registrierungsbereich der Anwendung zuweisen.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -340,6 +344,6 @@ Befolgen Sie diese Anweisungen, um eine Rolle mithilfe der Microsoft Graph-API i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Auflisten von Azure AD-Rollenzuweisungen](view-assignments.md).
-* [Zuweisen von Azure AD-Rollen zu Benutzern](manage-roles-portal.md).
+* [Auflisten von Azure AD-Rollenzuweisungen](view-assignments.md)
+* [Zuweisen von Azure AD-Rollen zu Benutzern](manage-roles-portal.md)
 * [Zuweisen von Azure AD-Rollen zu Gruppen](groups-assign-role.md)

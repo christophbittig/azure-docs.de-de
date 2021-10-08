@@ -4,15 +4,15 @@ description: Typen von Testversionen im kommerziellen Marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: b1ca1b1caa1da1c38e0a7af8ec714c3734ca1191
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.date: 09/09/2021
+ms.openlocfilehash: 7825dff873afaf223cab7b86c73083027caccc72
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110293"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363628"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
@@ -306,39 +306,46 @@ Im letzten Abschnitt werden die Eingaben vorgenommen, um die Testversionen durch
 
    Wenn Sie über keine Mandanten-ID verfügen, erstellen Sie eine neue in Azure Active Directory. Wenn Sie Hilfe bei der Einrichtung benötigen, finden Sie weitere Informationen unter [Schnellstart: Einrichten eines Mandanten](../active-directory/develop/quickstart-create-new-tenant.md).
 
-3. **Azure AD-App-ID**: Erstellen und registrieren Sie eine neue Anwendung. In dieser Anwendung werden Vorgänge in Ihrer Testversionsinstanz ausgeführt.
+3. Stellen Sie die Microsoft Test-Drive-Anwendung Ihrem Mandanten zur Verfügung. Wir nutzen diese Anwendung, um Vorgänge in den Ressourcen Ihrer Testversion durchzuführen.
+    1. Installieren Sie das [Azure Az PowerShell-Modul](/powershell/azure/install-az-ps), wenn Sie es noch nicht haben.
+    1. Fügen Sie den Dienstprinzipal für die Microsoft Test-Drive-Anwendung hinzu.
+        1. Führen Sie `Connect-AzAccount` aus und geben Sie Anmeldeinformationen zur Anmeldung bei Ihrem Azure-Konto an. Dazu ist die [eingebaute Rolle](/azure/active-directory/roles/permissions-reference#global-administrator) **Global Administrator** in Azure Active Directory erforderlich. 
+        1. Einen neuen Dienstprinzipal erstellen: `New-AzADServicePrincipal -ApplicationId d7e39695-0b24-441c-a140-047800a05ede -DisplayName 'Microsoft TestDrive' -SkipAssignment`.
+        1. Stellen Sie sicher, dass der Dienstprinzipal erstellt wurde: `Get-AzADServicePrincipal -DisplayName 'Microsoft TestDrive'`.
+      ![Zeigt den Code zum Überprüfen des Dienstprinzipals](media/test-drive/commands-to-verify-service-principal.png)
 
-   1. Navigieren Sie zu dem neu erstellten oder einem bereits vorhandenen Verzeichnis, und wählen Sie Azure Active Directory im Filterbereich aus.
-   2. Suchen Sie **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
-   3. Geben Sie einen Anwendungsnamen an.
-   4. Wählen Sie den **Typ** **Web-App/API** aus.
-   5. Geben Sie einen beliebigen Wert in der Anmelde-URL an. Dieses Feld wird nicht verwendet.
-   6. Klicken Sie auf **Erstellen**.
-   7. Wählen Sie nach der Erstellung der Anwendung **Eigenschaften** > **Set the application as multi-tenant** (Anwendung als mehrinstanzenfähig festlegen) und dann **Speichern** aus.
+4. Für **Azure AD-App-ID** fügen Sie diese Anwendungs-ID ein: `d7e39695-0b24-441c-a140-047800a05ede`.
+5. Beim **Azure AD-App-Schlüssel** ist kein Geheimnis erforderlich. Setzen Sie daher einen Platzhalter ein, wie etwa „Kein-Geheimnis“.
+6. Da wir die Anwendung zum Durchführen der Bereitstellung im Abonnement benutzen, müssen wir die Anwendung im Abonnement als Mitwirkender hinzufügen, und zwar vom Azure-Portal oder von der PowerShell aus:
 
-4. Wählen Sie **Speichern** aus.
+   1. Gehen Sie im Azure-Portal so vor:
 
-5. Kopieren Sie die Anwendungs-ID für diese registrierte App, und fügen Sie sie im Feld der Testversion ein.
+       1. Wählen Sie das **Abonnement** aus, das für das Testlaufwerk verwendet wird.
+       1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.<br>
 
-   ![ID der Azure AD-Anwendung](media/test-drive/azure-ad-application-id-detail.png)
+          ![Hinzufügen einer neuen Zugriffssteuerung (IAM) „Mitwirkender“](media/test-drive/access-control-principal.png)
 
-6. Da die Anwendung zum Durchführen der Bereitstellung im Abonnement verwendet wird, muss die Anwendung im Abonnement als Mitwirkender hinzugefügt werden:
+       1. Wählen Sie die Registerkarte **Rollenzuweisungen** aus und dann **+Rollenzuweisung hinzufügen**.
 
-   1. Wählen Sie den Typ von **Abonnement** aus, den Sie für die Testversion verwenden.
-   1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
-   1. Wählen Sie die Registerkarte **Rollenzuweisungen** und dann **Rollenzuweisung hinzufügen** aus.
+          ![Im Fenster „Zugriffssteuerung auswählen“ (IAM) wird angezeigt, wie Sie die Registerkarte Rollenzuweisungen und dann „+Rollenzuweisung hinzufügen“ auswählen.](media/test-drive/access-control-principal-add-assignments.jpg)
 
-      ![Hinzufügen eines neuen Zugriffssteuerungsprinzipals](media/test-drive/access-control-principal.jpg)
+       1. Geben Sie diesen Azure AD-Anwendungsnamen ein: `Microsoft TestDrive`. Wählen Sie die Anwendung aus, der Sie die Rolle **Mitwirkender** zuweisen möchten.
 
-   1. Legen Sie **Rolle** und **Zugriff zuweisen zu** wie dargestellt fest. Geben Sie im Feld **Auswählen** den Namen der Azure AD-Anwendung ein. Wählen Sie die Anwendung aus, der Sie die Rolle **Mitwirkender** zuweisen möchten.
+          ![Zeigt, wie man die Rolle „Mitwirkender" zuweist](media/test-drive/access-control-permissions.jpg)
 
-      ![Hinzufügen der Berechtigungen](media/test-drive/access-control-permissions.jpg)
+       1. Wählen Sie **Speichern** aus.
+   1. Bei Verwendung von PowerShell:
+      1. Führen Sie dies aus, um die Objekt-ID des Dienstprinzipals zu erhalten: `(Get-AzADServicePrincipal -DisplayName 'Microsoft TestDrive').id`.
+      1. Führen Sie dies mit der Objekt-ID und der Abonnement-ID aus: `New-AzRoleAssignment -ObjectId <objectId> -RoleDefinitionName Contributor -Scope /subscriptions/<subscriptionId>`.
 
-   1. Wählen Sie **Speichern** aus.
-
-7. Generieren Sie einen Authentifizierungsschlüssel für die **Azure AD-App**. Fügen Sie unter **Schlüssel** eine **Schlüsselbeschreibung** hinzu, legen Sie die Dauer auf **Läuft nie ab** fest (ein abgelaufener Schlüssel führt dazu, dass die Testversion in der Produktion nicht mehr funktioniert), und wählen Sie **Speichern** aus. Kopieren Sie diesen Wert, und fügen Sie ihn im entsprechenden Feld für die Testversion ein.
-
-![Schlüssel für die Azure AD-Anwendung](media/test-drive/azure-ad-app-keys.png)
+> [!NOTE]
+> Bevor Sie die alte appID löschen, wechseln Sie zum Azure-Portal, dann zu **Ressourcengruppen**,und suchen Sie nach `CloudTry_`. Überprüfen Sie Spalte **Ereignis initiiert von**.
+>
+> :::image type="content" source="media/test-drive/event-initiated-by-field.png" lightbox="media/test-drive/event-initiated-by-field.png" alt-text="Zeigt das Feld „Ereignis initiiert von“":::
+>
+> Löschen Sie die alte appID nur, wenn mindestens eine Ressource (**Vorgangsname**) auf **Microsoft TestDrive** festgelegt ist.
+>
+> Um die appID zu löschen, wählen Sie im linken Navigationsmenü **Azure Active Directory** > **App-Registrierungen**, dann die Registerkarte **Alle Anwendungen** Wählen Sie Ihre Anwendung und dann **Löschen**.
 
 ## <a name="republish"></a>Erneut veröffentlichen
 

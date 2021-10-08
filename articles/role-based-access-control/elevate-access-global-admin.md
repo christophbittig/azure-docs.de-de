@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/09/2020
+ms.date: 09/10/2021
 ms.author: rolyon
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9a7897590f8803be105eabb5cdee194e6574e8b9
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 96e2f7176f85d5571ce73c4efdd592dd3964400d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696654"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124781516"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 
@@ -327,6 +327,93 @@ Beim Aufruf von `elevateAccess` erstellen Sie eine Rollenzuweisung für sich sel
     ```http
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111?api-version=2015-07-01
     ```
+
+## <a name="view-elevate-access-logs"></a>Anzeigen von Protokollen zu erhöhten Zugriffsrechten
+
+Wenn das Zugriffsrecht erhöht wird, wird den Protokollen ein Eintrag hinzugefügt. Als globaler Administrator in Azure AD sollten Sie überprüfen, ob das Zugriffsrecht erhöht wurde und wer diesen Vorgang ausgeführt hat. Protokolleinträge zu erhöhten Zugriffsrechten werden nicht in den Standardaktivitätsprotokollen, sondern in den Aktivitätsprotokollen des Verzeichnisses angezeigt. In diesem Abschnitt werden verschiedene Möglichkeiten beschrieben, wie Sie die Protokolle zu erhöhten Zugriffsrechten anzeigen können.
+
+### <a name="view-elevate-access-logs-using-the-azure-portal"></a>Anzeigen von Protokollen zu erhöhten Zugriffsrechten im Azure-Portal
+
+1. Führen Sie die weiter oben in diesem Artikel beschriebenen Schritte aus, um Ihre Zugriffsrechte zu erhöhen.
+
+1. Melden Sie sich als globaler Administrator am [Azure-Portal](https://portal.azure.com) an.
+
+1. Öffnen Sie **Monitor** > **Aktivitätsprotokoll**.
+
+1. Ändern Sie die Liste **Aktivität** zu **Verzeichnisaktivität**.
+
+1. Suchen Sie nach dem folgenden Vorgang, der auf eine Aktion zum Erhöhen von Zugriffsrechten hinweist.
+
+    `Assigns the caller to User Access Administrator role`
+
+    ![Screenshot: Verzeichnisaktivitätsprotokolle im Monitor.](./media/elevate-access-global-admin/monitor-directory-activity.png)
+
+1. Führen Sie die weiter oben in diesem Artikel beschriebenen Schritte aus, um die erhöhten Zugriffsrechte wieder zu entfernen.
+
+### <a name="view-elevate-access-logs-using-azure-cli"></a>Anzeigen von Protokollen zu erhöhten Zugriffsrechten mithilfe der Azure CLI
+
+1. Führen Sie die weiter oben in diesem Artikel beschriebenen Schritte aus, um Ihre Zugriffsrechte zu erhöhen.
+
+1. Verwenden Sie den Befehl [az login](/cli/azure/reference-index#az_login), um sich als globaler Administrator anzumelden.
+
+1. Verwenden Sie den Befehl [az rest](/cli/azure/reference-index#az_rest), um folgenden Aufruf auszuführen. Dabei müssen Sie nach einem Datum filtern – wie im Beispielzeitstempel gezeigt – und einen Dateinamen angeben, unter dem die Protokolle gespeichert werden sollen.
+
+    `url` ruft eine API auf, mit der die Protokolle in Microsoft.Insights abgerufen werden. Die Ausgabe wird in Ihrer Datei gespeichert.
+
+    ```azurecli
+    az rest --url "https://management.azure.com/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2021-09-10T20:00:00Z'" > output.txt
+    ```
+
+1.  Suchen Sie in der Ausgabedatei nach `elevateAccess`.
+
+    Das Protokoll ähnelt der folgenden Ausgabe, in der Sie ablesen können, wann und durch wen die Aktion ausgeführt wurde.
+
+    ```json
+      "submissionTimestamp": "2021-08-27T15:42:00.1527942Z",
+      "subscriptionId": "",
+      "tenantId": "33333333-3333-3333-3333-333333333333"
+    },
+    {
+      "authorization": {
+        "action": "Microsoft.Authorization/elevateAccess/action",
+        "scope": "/providers/Microsoft.Authorization"
+      },
+      "caller": "user@example.com",
+      "category": {
+        "localizedValue": "Administrative",
+        "value": "Administrative"
+      },
+    ```
+
+1. Führen Sie die weiter oben in diesem Artikel beschriebenen Schritte aus, um die erhöhten Zugriffsrechte wieder zu entfernen.
+
+### <a name="delegate-access-to-a-group-to-view-elevate-access-logs-using-azure-cli"></a>Delegieren des Zugriffs an eine Gruppe zum Anzeigen von Protokollen zu erhöhten Zugriffsrechten mithilfe der Azure CLI
+
+Wenn Sie die Protokolle zu erhöhten Zugriffsrechten regelmäßig abrufen möchten, können Sie den Zugriff an eine Gruppe delegieren und dann die Azure CLI verwenden.
+
+1. Öffnen Sie **Azure Active Directory** > **Gruppen**.
+
+1. Erstellen Sie eine neue Sicherheitsgruppe, und notieren Sie sich die Gruppenobjekt-ID.
+
+1. Führen Sie die weiter oben in diesem Artikel beschriebenen Schritte aus, um Ihre Zugriffsrechte zu erhöhen.
+
+1. Verwenden Sie den Befehl [az login](/cli/azure/reference-index#az_login), um sich als globaler Administrator anzumelden.
+
+1. Verwenden Sie den Befehl [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um der Gruppe die Rolle [Leser](built-in-roles.md#reader) zuzuweisen. Diese kann nur Protokolle auf Verzeichnisebene lesen, die sich unter `Microsoft/Insights` befinden.
+
+    ```azurecli
+    az role assignment create --assignee "{groupId}" --role "Reader" --scope "/providers/Microsoft.Insights"
+    ```
+
+1. Fügen Sie einen Benutzer hinzu, der Protokolle für die zuvor erstellte Gruppe liest.
+
+1. Führen Sie die weiter oben in diesem Artikel beschriebenen Schritte aus, um die erhöhten Zugriffsrechte wieder zu entfernen.
+
+Ein Benutzer in der Gruppe kann jetzt regelmäßig den Befehl [az rest](/cli/azure/reference-index#az_rest) ausführen, um Protokolle zu erhöhten Zugriffsrechten anzuzeigen.
+
+```azurecli
+az rest --url "https://management.azure.com/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2021-09-10T20:00:00Z'" > output.txt
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

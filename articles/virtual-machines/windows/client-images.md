@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: mimckitt
-ms.openlocfilehash: 1fc0b3b628256f5ecbc0361ee2294e70e1619160
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: e75b06655fc6fe34be24b295be3d9255bc2b27fc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698347"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600245"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Verwenden des Windows-Clients in Azure für Entwicklungs-/Testszenarien
 
@@ -33,7 +33,7 @@ Bestimmte Windows-Clientimages sind im Azure Marketplace verfügbar. Visual Stud
 In der folgenden Tabelle werden die Angebots-IDs aufgeführt, die über den Azure Marketplace in Windows-Clientimages bereitgestellt werden können. Die Windows-Clientimages sind nur für die folgenden Angebote sichtbar. 
 
 > [!NOTE]
-> Imageangebote unter **Windows Client** im Azure Marketplace. Verwenden Sie den **Windows-Client** beim Suchen nach Clientimages für Visual Studio-Abonnenten. 
+> Imageangebote unter **Windows Client** im Azure Marketplace. Verwenden Sie den **Windows-Client** beim Suchen nach Clientimages für Visual Studio-Abonnenten. Wenn Sie ein Visual Studio-Abonnement erwerben müssen, sehen Sie sich die verschiedenen Optionen unter [Visual Studio kaufen](https://visualstudio.microsoft.com/vs/pricing/?tab=business) an
 
 | Angebotsname | Angebotsnummer | Verfügbare Client-images | 
 |:--- |:---:|:---:|
@@ -41,7 +41,6 @@ In der folgenden Tabelle werden die Angebots-IDs aufgeführt, die über den Azur
 | [Visual Studio Enterprise-Abonnenten (MPN)](https://azure.microsoft.com/offers/ms-azr-0029p/) |0029P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N mit SP1 (x64) |
 | [Visual Studio Professional-Abonnenten](https://azure.microsoft.com/offers/ms-azr-0059p/) |0059P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N mit SP1 (x64) |
 | [Visual Studio Test Professional-Abonnenten](https://azure.microsoft.com/offers/ms-azr-0060p/) |0060P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N mit SP1 (x64) |
-| [Visual Studio Premium mit MSDN (Vorteil)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N mit SP1 (x64) |
 | [Visual Studio Enterprise-Abonnenten](https://azure.microsoft.com/offers/ms-azr-0063p/) |0063P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N mit SP1 (x64) |
 | [Visual Studio Enterprise-Abonnenten (BizSpark)](https://azure.microsoft.com/offers/ms-azr-0064p/) |0064P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N mit SP1 (x64) |
 | [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N mit SP1 (x64) |

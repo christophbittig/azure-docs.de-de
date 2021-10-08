@@ -1,5 +1,5 @@
 ---
-title: Bewährte Methoden für die Azure Cache for Redis-Skalierung
+title: Die besten Methoden zum Skalieren
 titleSuffix: Azure Cache for Redis
 description: Erfahren Sie, wie Sie Azure Cache for Redis skalieren können.
 author: shpathak-msft
@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: 01fbebb06ba408232add1f0f05c5b715816e9e69
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 7aa65bbddc03eaf7c80717aa83fe41054617d116
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115408"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598668"
 ---
 # <a name="scaling"></a>Skalierung
 
@@ -33,3 +33,8 @@ Beginnen Sie mit der Skalierung, bevor die Server- oder Speicherauslastung zu ho
 Wenn Sie TLS verwenden und über eine hohe Anzahl von Verbindungen verfügen, sollten Sie eine Aufskalierung in Betracht ziehen, um die Last auf mehr Kerne zu verteilen. Einige Cachegrößen werden auf VMs mit mindestens vier Kernen gehostet.
 
 Verteilen Sie die Workloads der TLS-Verschlüsselung/-Entschlüsselung sowie der TLS-Verbindung/-Verbindungstrennung auf mehrere Kerne, um die CPU-Gesamtauslastung der Cache-VMs zu senken. Weitere Informationen finden Sie unter [Details zu VM-Größen und -Kernen.](./cache-planning-faq.yml#azure-cache-for-redis-performance)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Konfigurieren der Einstellung „maxmemory-reserved“](cache-best-practices-memory-management.md#configure-your-maxmemory-reserved-setting)
+- [Skalieren einer Azure Cache for Redis-Instanz](cache-how-to-scale.md)

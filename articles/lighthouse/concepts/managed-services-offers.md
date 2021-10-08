@@ -1,14 +1,14 @@
 ---
 title: Angebote für verwaltete Dienste im Azure Marketplace
 description: Bieten Sie Ihre Azure Lighthouse-Verwaltungsdienste für Kunden über Angebote für verwaltete Dienste im Azure Marketplace an.
-ms.date: 05/11/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 10b32445fcf6d014219dd8559c9c1ac9b2905044
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 5d96a23f1dbdba74eefbf4f483a441c25e2dd47b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114391674"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732936"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Angebote für verwaltete Dienste im Azure Marketplace
 
@@ -18,7 +18,7 @@ In diesem Artikel wird der neue Angebotstyp **Verwaltete Dienste** im [Azure Mar
 
 Angebote für verwaltete Dienste optimieren den Prozess des Onboardings von Kunden für Azure Lighthouse. Wenn ein Kunde ein Angebot im Azure Marketplace kauft, kann er angeben, welche Abonnements und/oder Ressourcengruppen integriert werden sollen.
 
-Danach können Benutzer in Ihrer Organisation entsprechend dem Zugriff, den Sie beim Erstellen des Angebots festgelegt haben, mithilfe der [delegierten Azure-Ressourcenverwaltung](architecture.md) mit diesen Ressourcen in Ihrem Verwaltungsmandanten arbeiten. Dazu wird ein Manifest verwendet, das die Azure Active Directory-Benutzer (Azure AD), -Gruppen und -Dienstprinzipale, die Zugriff auf Kundenressourcen erhalten, sowie die [Rollen](tenants-users-roles.md) für die jeweilige Zugriffsebene angibt.
+Für jedes Angebot definieren Sie den Zugriff, den Benutzer in Ihrer Organisation benötigen, um mit Ressourcen im Kundenmandanten arbeiten zu können. Dazu wird ein Manifest verwendet, das die Azure Active Directory-Benutzer (Azure AD), -Gruppen und -Dienstprinzipale, die Zugriff auf Kundenressourcen erhalten, sowie die [Rollen](tenants-users-roles.md) für die jeweilige Zugriffsebene angibt.
 
 > [!NOTE]
 > Verwaltete Dienste sind in der Azure Government-Cloud und anderen nationalen Clouds möglicherweise nicht verfügbar.

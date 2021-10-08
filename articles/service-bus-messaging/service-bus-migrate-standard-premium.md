@@ -2,13 +2,13 @@
 title: Migrieren von Azure Service Bus-Namespaces – von Standard zu Premium
 description: Anleitung zur Migration von vorhandenen Azure Service Bus-Standardnamespaces zu Premium
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: eea34edddf641e3ee1c07bea92b20364e7aeaf34
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85340747"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602067"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrieren von vorhandenen Azure Service Bus-Standardnamespaces zum Premium-Tarif
 
@@ -90,30 +90,38 @@ Führen Sie die Migration Ihres Service Bus-Standardnamespace zu Premium mit der
 Die Migration über das Azure-Portal hat den gleichen logischen Ablauf wie die Migration über die Befehle. Führen Sie die folgenden Schritte aus, um im Azure-Portal zu migrieren.
 
 1. Wählen Sie im Menü **Navigation** im linken Bereich **Zu Premium migrieren** aus. Klicken Sie auf die Schaltfläche **Erste Schritte**, um auf der nächsten Seite fortzufahren.
-    ![Landing Page für Migration][]
+    :::image type="content" source="./media/service-bus-standard-premium-migration/migrate-premium-page.png" alt-text="Das Bild zeigt die Seite Migrate to premium.":::
+1. Sie sehen die folgende Seite **Namensräume einrichten**.
 
-1. Schließen Sie das **Setup** ab.
-   ![Setup für Namespace][]
-   1. Erstellen Sie den Premiumnamespace, zu dem der vorhandene Standardnamespace migriert werden soll, und weisen Sie ihn zu.
-        ![Setup für Namespace: Erstellen des Premiumnamespace][]
-   1. Wählen Sie einen **Namen nach der Migration** aus. Mit diesem Namen greifen Sie nach Abschluss der Migration auf den Standardnamespace zu.
-        ![Setup für Namespace: Auswahl des Namens nach der Migration][]
-   1. Wählen Sie **Weiter** aus, um fortzufahren.
-1. Synchronisieren Sie die Entitäten zwischen dem Standard- und dem Premiumnamespace.
-    ![Setup für Namespace: Synchronisieren von Entitäten – Start][]
+    :::image type="content" source="./media/service-bus-standard-premium-migration/setup-namespaces-page.png" alt-text="Bild zeigt die Seite Namespaces einrichten.":::
+1. Führen Sie auf den Seiten **Namensräume einrichten** einen der folgenden Schritte aus: 
+    1. Wenn Sie **Neuen Premium-Namensraum erstellen** wählen:
+        1. Geben Sie auf der Seite **Namensraum erstellen** einen Namen für den Namensraum ein, und wählen Sie **Überprüfen + Erstellen**.
+        1. Wählen Sie auf der Seite **Überprüfen + erstellen** die Option **Erstellen** aus.
 
-   1. Wählen Sie **Synchronisierung starten** aus, um mit dem Synchronisieren von Entitäten zu beginnen.
-   1. Wählen Sie zur Bestätigung und zum Starten der Synchronisierung **Ja** im Dialogfeld aus.
-   1. Warten Sie, bis die Synchronisierung abgeschlossen ist. Der Status wird in der Statusleiste angezeigt.
-        ![Setup für Namespace: Synchronisieren von Entitäten – Fortschritt][]
-        >[!IMPORTANT]
-        > Wenn Sie die Migration aus irgendeinem Grund abbrechen müssen, lesen Sie bitte die entsprechende Anleitung im Abschnitt „FAQ“ dieses Dokuments.
-   1. Nachdem die Synchronisierung abgeschlossen ist, wählen Sie **Weiter** am unteren Rand der Seite aus.
+            :::image type="content" source="./media/service-bus-standard-premium-migration/create-premium-namespace.png" alt-text="Die Abbildung zeigt die Seite &quot;Namensraum erstellen&quot; ":::.
+    1. Wenn Sie **Wählen Sie einen bestehenden leeren Premium-Namensraum**:
+        1. Wählen Sie das Azure-Abonnement und die Ressourcengruppe, die den Namespace enthält.
+        1. Wählen Sie dann den Premium-Namespace.
+        1. Klicken Sie dann auf **Auswählen**.
+        
+            :::image type="content" source="./media/service-bus-standard-premium-migration/select-existing-namespace.png" alt-text="Das Bild zeigt die Auswahl eines bestehenden Premium-Namensraums.":::
+1. Geben Sie einen **Post-Migrationsnamen** ein, und wählen Sie dann **Weiter**. Mit diesem Namen greifen Sie nach Abschluss der Migration auf den Standardnamespace zu.
 
-1. Überprüfen Sie die Änderungen auf der Seite „Zusammenfassung“. Wählen Sie **Migration abschließen** aus, um den Namespace zu wechseln und die Migration abzuschließen.
-    ![Wechseln des Namespace: Menü zum Wechseln][]  
-    Die Bestätigungsseite wird angezeigt, wenn die Migration abgeschlossen ist.
-    ![Wechseln des Namespace: Erfolg][]
+    :::image type="content" source="./media/service-bus-standard-premium-migration/enter-post-migration-name.png" alt-text="Das Bild zeigt den Post-Migrationsnamen für den Standard-Namensraum.":::
+1. Wählen Sie **Synchronisation starten**, um Entitäten zwischen dem Standard- und dem Premium-Namensraum zu synchronisieren.
+
+    :::image type="content" source="./media/service-bus-standard-premium-migration/start-sync-button.png" alt-text="Die Abbildung zeigt die Schaltfläche &quot;Sync starten&quot;.":::
+1. Wählen Sie **Ja** im Dialogfeld, um die Synchronisierung zu bestätigen und zu starten. Warten Sie, bis die Synchronisierung abgeschlossen ist. Klicken Sie anschließend auf **Weiter**.
+
+    >[!IMPORTANT]
+    > Wenn Sie die Migration aus irgendeinem Grund abbrechen müssen, lesen Sie bitte die entsprechende Anleitung im Abschnitt „FAQ“ dieses Dokuments.    
+1. Wählen Sie **Migration abschließen** auf der Seite **Wechsel**. 
+
+    :::image type="content" source="./media/service-bus-standard-premium-migration/complete-migration.png" alt-text="Die Abbildung zeigt die Seite **Umschalten** des Migrationsassistenten.":::
+1. Wählen Sie **Ja**, um die Umstellung Ihres Standard-Namensraums auf Premium zu bestätigen. Sobald die Umstellung abgeschlossen ist, wird der DNS-Name Ihres Standard-Namensraums auf Ihren Premium-Namensraum verweisen. Dieser Vorgang kann nicht rückgängig gemacht werden. Wenn die Migration abgeschlossen ist, sehen Sie die Seite **Erfolg**.
+
+    :::image type="content" source="./media/service-bus-standard-premium-migration/success-page.png" alt-text="Bild der Erfolgsseite.":::
 
 ## <a name="caveats"></a>Vorbehalte
 
@@ -178,8 +186,13 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 
 #### <a name="azure-portal"></a>Azure-Portal
 
-![Abbruchablauf: Synchronisierung abbrechen][]
-![Abbruchablauf: Abbruch abgeschlossen][]
+Wählen Sie **Abbrechen** auf der Seite **Entitäten synchronisieren**. 
+
+:::image type="content" source="./media/service-bus-standard-premium-migration/abort1.png" alt-text="Die Abbildung zeigt die Seite Abbrechen":::.
+
+Wenn der Vorgang abgeschlossen ist, sehen Sie die folgende Seite: 
+
+:::image type="content" source="./media/service-bus-standard-premium-migration/abort3.png" alt-text="Das Bild zeigt die Seite &quot;Abbrechen abgeschlossen&quot;.":::
 
 Wenn der Migrationsprozess abgebrochen wird, wird das Kopieren der Entitäten (Themen, Abonnements und Filter) vom Standard- in den Premiumnamespace ab- und die Kopplung unterbrochen.
 
@@ -213,14 +226,3 @@ Wenn Sie jedoch während eines geplanten Wartungs-/Housekeepingfensters migriere
 * Erfahren Sie mehr über die [Unterschiede zwischen Standard- und Premiummessaging](./service-bus-premium-messaging.md).
 * Erfahren Sie mehr über [Aspekte der Hochverfügbarkeit und Geo-Notfallwiederhierstellung für Service Bus Premium](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).
 
-[Landing Page für Migration]: ./media/service-bus-standard-premium-migration/1.png
-[Setup für Namespace]: ./media/service-bus-standard-premium-migration/2.png
-[Setup für Namespace: Erstellen des Premiumnamespace]: ./media/service-bus-standard-premium-migration/3.png
-[Setup für Namespace: Auswahl des Namens nach der Migration]: ./media/service-bus-standard-premium-migration/4.png
-[Setup für Namespace: Synchronisieren von Entitäten – Start]: ./media/service-bus-standard-premium-migration/5.png
-[Setup für Namespace: Synchronisieren von Entitäten – Fortschritt]: ./media/service-bus-standard-premium-migration/8.png
-[Wechseln des Namespace: Menü zum Wechseln]: ./media/service-bus-standard-premium-migration/9.png
-[Wechseln des Namespace: Erfolg]: ./media/service-bus-standard-premium-migration/12.png
-
-[Abbruchablauf: Synchronisierung abbrechen]: ./media/service-bus-standard-premium-migration/abort1.png
-[Abbruchablauf: Abbruch abgeschlossen]: ./media/service-bus-standard-premium-migration/abort3.png

@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: 75ee1ca92fb687975dabe0011ce8a95b8c03172b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 47e9e221bd57453a0c799318f939de59b84feb86
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122353683"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356066"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurieren einer Java-App für Azure App Service
 
@@ -60,26 +60,111 @@ az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
 
 ## <a name="deploying-your-app"></a>Bereitstellen Ihrer App
 
-Sie können das [Azure-Web-App-Plug-In für Maven](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) verwenden, um Ihre WAR- oder JAR-Dateien bereitzustellen. Die Bereitstellung mit beliebten IDEs wird außerdem mit dem [Azure Toolkit für IntelliJ](/azure/developer/java/toolkit-for-intellij/) oder dem [Azure Toolkit für Eclipse](/azure/developer/java/toolkit-for-eclipse) unterstützt.
+### <a name="build-tools"></a>Build-Tools
 
-In allen anderen Fällen hängt Ihre Bereitstellungsmethode von Ihrem Archivtyp ab:
+#### <a name="maven"></a>Maven
+Mit dem[Maven Plugin für Azure Web Apps](https://github.com/microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)können Sie Ihr Maven-Java-Projekt auf einfache Weise für Azure-Web-Apps mit einem Befehl im Projektstamm vorbereiten:
 
-### <a name="java-se"></a>Java SE
+```shell
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
+```
 
-Um JAR-Dateien in Java SE bereitzustellen, verwenden Sie den `/api/zipdeploy/`-Endpunkt der Kudu-Website. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#rest). 
+Dieser Befehl fügt ein `azure-webapp-maven-plugin`-Plug-In und eine zugehörige Konfiguration hinzu, indem Sie aufgefordert werden, eine vorhandene Azure-Web-App auszuwählen oder eine neue zu erstellen. Dann können Sie Ihre Java-App mit dem folgenden Befehl in Azure bereitstellen:
+```shell
+mvn package azure-webapp:deploy
+```
+
+Nachfolgend eine Beispielkonfiguration in`pom.xml`:
+```xml
+<plugin> 
+  <groupId>com.microsoft.azure</groupId>  
+  <artifactId>azure-webapp-maven-plugin</artifactId>  
+  <version>2.2.0</version>  
+  <configuration>
+    <subscriptionId>111111-11111-11111-1111111</subscriptionId>
+    <resourceGroup>spring-boot-xxxxxxxxxx-rg</resourceGroup>
+    <appName>spring-boot-xxxxxxxxxx</appName>
+    <pricingTier>B2</pricingTier>
+    <region>westus</region>
+    <runtime>
+      <os>Linux</os>      
+      <webContainer>Java SE</webContainer>
+      <javaVersion>Java 11</javaVersion>
+    </runtime>
+    <deployment>
+      <resources>
+        <resource>
+          <type>jar</type>
+          <directory>${project.basedir}/target</directory>
+          <includes>
+            <include>*.jar</include>
+          </includes>
+        </resource>
+      </resources>
+    </deployment>
+  </configuration>
+</plugin> 
+```
+
+#### <a name="gradle"></a>Gradle
+1. Richten Sie das [Gradle-Plug-In für Azure-Web-Apps](https://github.com/microsoft/azure-gradle-plugins/tree/master/azure-webapp-gradle-plugin)ein, indem Sie das Plug-In ihrem `build.gradle` hinzufügen:
+    ```groovy
+    plugins {
+      id "com.microsoft.azure.azurewebapp" version "1.2.0"
+    }
+    ```
+
+1. Konfigurieren Sie Ihre Web-App-Details. Die entsprechenden Azure-Ressourcen werden erstellt, wenn sie nicht vorhanden sind.
+Hier ist eine Beispielkonfiguration. Weitere Informationen finden Sie in diesem [Dokument](https://github.com/microsoft/azure-gradle-plugins/wiki/Webapp-Configuration).
+    ```groovy
+    azurewebapp {
+        subscription = '<your subscription id>'
+        resourceGroup = '<your resource group>'
+        appName = '<your app name>'
+        pricingTier = '<price tier like 'P1v2'>'
+        region = '<region like 'westus'>'
+        runtime {
+          os = 'Linux'
+          webContainer = 'Tomcat 9.0' // or 'Java SE' if you want to run an executable jar
+          javaVersion = 'Java 8'
+        }
+        appSettings {
+            <key> = <value>
+        }
+        auth {
+            type = 'azure_cli' // support azure_cli, oauth2, device_code and service_principal
+        }
+    }
+    ```
+
+1. Installieren mit einem Befehl.
+    ```shell
+    gradle azureWebAppDeploy
+    ```
+    
+### <a name="ides"></a>IDEs
+Azure bietet nahtlose Java-App Service-Entwicklungserfahrung in beliebten Java-IDEs, einschließlich:
+- *VS Code*: [Java Web Apps mit Visual Studio Code](https://code.visualstudio.com/docs/java/java-webapp#_deploy-web-apps-to-the-cloud)
+- *IntelliJ IDEA*:[Erstellen einer „Hello World“-Web-App für Azure App Service mithilfe von IntelliJ](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)
+- *Eclipse*:[Erstellen einer „Hello World“-Web-App für Azure App Service mithilfe von Eclipse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)
+
+### <a name="kudu-api"></a>Kudu-API
+#### <a name="java-se"></a>Java SE
+
+Um JAR-Dateien in Java SE bereitzustellen, verwenden Sie den `/api/publish/`-Endpunkt der Kudu-Website. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-warjarear-packages). 
 
 > [!NOTE]
 >  Ihre JAR-Anwendung muss mit `app.jar` benannt werden, damit App Service die Anwendung identifizieren und ausführen kann. Das oben erwähnte Maven-Plug-In benennt Ihre Anwendung während der Bereitstellung automatisch für Sie um. Wenn Sie Ihre JAR-Datei nicht in *app.jar* umbenennen möchten, können Sie ein Shellskript mit dem Befehl zum Ausführen Ihrer JAR-App hochladen. Fügen Sie den absoluten Pfad zu diesem Skript im Abschnitt „Konfiguration“ des Portals in das Textfeld [Startdatei](/azure/app-service/faq-app-service-linux#built-in-images) ein. Das Startskript wird nicht aus dem Verzeichnis ausgeführt, in dem es abgelegt wurde. Verwenden Sie daher immer absolute Pfade, um auf Dateien in Ihrem Startskript zu verweisen (z. B.: `java -jar /home/myapp/myapp.jar`).
 
-### <a name="tomcat"></a>Tomcat
+#### <a name="tomcat"></a>Tomcat
 
-Um WAR-Dateien in Tomcat bereitzustellen, verwenden Sie den `/api/wardeploy/`-Endpunkt, um Ihre Archivdatei mit POST zu veröffentlichen. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-war-file).
+Um WAR-Dateien in Tomcat bereitzustellen, verwenden Sie den `/api/wardeploy/`-Endpunkt, um Ihre Archivdatei mit POST zu veröffentlichen. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-warjarear-packages).
 
 ::: zone pivot="platform-linux"
 
-### <a name="jboss-eap"></a>JBoss EAP
+#### <a name="jboss-eap"></a>JBoss EAP
 
-Um WAR-Dateien in JBoss bereitzustellen, verwenden Sie den `/api/wardeploy/`-Endpunkt, um Ihre Archivdatei mit POST zu veröffentlichen. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-war-file).
+Um WAR-Dateien in JBoss bereitzustellen, verwenden Sie den `/api/wardeploy/`-Endpunkt, um Ihre Archivdatei mit POST zu veröffentlichen. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-warjarear-packages).
 
 Zum Bereitstellen von EAR-Dateien [verwenden Sie FTP](deploy-ftp.md). Ihre EAR-Anwendung wird im Kontextstamm bereitgestellt, der in der Konfiguration Ihrer Anwendung definiert ist. Wenn der Kontextstamm Ihrer App beispielsweise `<context-root>myapp</context-root>` ist, können Sie die Site unter diesem `/myapp`-Pfad durchsuchen: `http://my-app-name.azurewebsites.net/myapp`. Wenn Sie möchten, dass Ihre Web-App im Stammpfad bedient wird, stellen Sie sicher, dass Ihre App den Kontextstamm auf den Stammpfad festlegt: `<context-root>/</context-root>`. Weitere Informationen finden Sie unter [Festlegen des Kontextstamms einer Webanwendung](https://docs.jboss.org/jbossas/guides/webguide/r2/en/html/ch06.html).
 

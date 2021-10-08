@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 08/16/2021
 ms.custom: template-how-to
-ms.openlocfilehash: e8f678db8b5df57ec716d80c9bde04a2ecc2b7a3
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 2472a3495b872a17b073a86a6d99c6ddbf218343
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122780050"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755349"
 ---
 # <a name="use-an-azure-free-account-to-try-azure-database-for-mysql---flexible-server-for-free"></a>Verwenden eines kostenlosen Azure-Kontos, um Azure Database for MySQL – Flexible Server kostenlos zu testen
 
@@ -31,10 +31,13 @@ In diesem Artikel erfahren Sie, wie Sie mit einem [kostenlosen Azure-Konto](http
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Ein kostenloses Azure-Konto. Wenn Sie keines haben, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen. 
+- ein kostenloses Azure-Konto. Wenn Sie keines haben, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen. 
 
 
-## <a name="create-an-instance-of-azure-database-for-mysql---flexible-server"></a>Erstellen einer Instanz von Azure Database for MySQL – Flexible Server
+## <a name="create-an-azure-database-for-mysql---flexible-server"></a>Erstellen einer Instanz von Azure Database for MySQL – Flexible Server
+
+In diesem Artikel verwenden Sie das Azure-Portal, um eine Flexible Server-Instanz mit einer Verbindungsmethode mit öffentlichem Zugriff zu erstellen. Alternativ dazu können Sie die entsprechenden Schnellstarts zum Erstellen einer Flexible Server-Instanz mit der [Azure CLI](./quickstart-create-server-cli.md) oder einer [ARM-Vorlage](./quickstart-create-arm-template.md) oder [in einem VNET](./quickstart-create-connect-server-vnet.md) verwenden.
+
 
 1. Melden Sie sich mit Ihrem kostenlosen Azure-Konto beim [Azure-Portal](https://portal.azure.com/) an. 
     
@@ -61,7 +64,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/basic-settings-all.PNG" alt-text="Screenshot: grundlegende Einstellungen zum Erstellen einer Flexible Server-Instanz.":::
 
 
-    |Einstellung    |Vorgeschlagener Wert    |BESCHREIBUNG  |
+    |Einstellung    |Vorgeschlagener Wert    |Beschreibung  |
     |---------|---------|---------|
     |Subscription    |Ihr Abonnement    |Wählen Sie die kostenlose Testversion des Azure-Abonnements aus.|
     |Resource group    |Ihre Ressourcengruppe    |Geben Sie eine neue Ressourcengruppe oder eine bereits vorhandene Gruppe aus Ihrem Abonnement ein.|
@@ -109,7 +112,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/review-and-create.png" alt-text="Screenshot des Blatts „Überprüfen und erstellen“.":::
 
     >[!IMPORTANT]
-    >Solange Sie Ihr kostenloses Azure-Konto verwenden und die Nutzung des kostenlosen Diensts innerhalb der monatlichen Grenzwerte liegt (Informationen zur Nutzung finden Sie weiter unten im Abschnitt [**Überwachen und Nachverfolgen der Nutzung kostenloser Dienste**](#monitor-and-track-free-services-usage)), werden Ihnen keine Gebühren für den Dienst in Rechnung gestellt. Wir arbeiten aktuell an einer Verbesserung der **Kostenzusammenfassung** für kostenlose Dienste. 
+    >Wenn Sie die flexible Serverinstanz über Ihr kostenloses Azure-Konto erstellen, sehen Sie weiterhin die **geschätzten Kosten pro Monat** auf dem Blatt **Compute und Speicher: Kostenübersicht** und der Registerkarte **Überprüfen und erstellen**. Solange Sie jedoch Ihr kostenloses Azure-Konto verwenden und die Nutzung des kostenlosen Dienstes innerhalb der monatlichen Grenzen liegt (Informationen zur Nutzung finden Sie im Abschnitt [**Überwachen und Verfolgen der Nutzung kostenloser Dienste**](#monitor-and-track-free-services-usage) weiter unten), werden Ihnen keine Kosten für den Dienst berechnet. Wir arbeiten aktuell an einer Verbesserung der **Kostenzusammenfassung** für kostenlose Dienste. 
     
 1. Wählen Sie **Erstellen** aus, um den Server bereitzustellen. 
  
@@ -166,7 +169,7 @@ Für Dienste von Azure Database for MySQL – Flexible Server, die im Rahmen Ihr
 
     >[!IMPORTANT]
     >Bei einem kostenlosen Azure-Konto erhalten Sie zudem ein Guthaben in Höhe von 200 US-Dollar, das Sie innerhalb von 30 Tagen nutzen können. Während dieser Zeit wird jegliche Nutzung, die über die kostenlosen monatlichen Dienste hinausgeht, von diesem Guthaben abgezogen.
-    >Am Ende Ihrer ersten 30 Tage, oder nachdem Sie Ihr Guthaben in Höhe von 200 US-Dollar aufgebraucht haben (je nachdem, was zuerst eintritt), zahlen Sie nur für das, was Sie über die kostenlosen monatlichen Dienste hinaus nutzen. Wenn Sie nach 30 Tagen weiterhin kostenlose Dienste nutzen möchten, wechseln Sie zu einem Preismodell mit nutzungsbasierter Bezahlung. Wenn Sie nicht zur nutzungsbasierten Bezahlung wechseln, können Sie keine weiteren Azure-Dienste erwerben, nachdem Sie Ihr Guthaben in Höhe von 200 US-Dollar aufgebraucht haben. Ihr Konto und die Dienste werden letztendlich deaktiviert.
+    >Am Ende Ihrer ersten 30 Tage, oder nachdem Sie Ihr Guthaben in Höhe von 200 US-Dollar aufgebraucht haben (was zuerst eintritt), zahlen Sie nur für das, was Sie über die kostenlosen monatlichen Dienste hinaus nutzen. Wenn Sie nach 30 Tagen weiterhin kostenlose Dienste nutzen möchten, wechseln Sie zu einem Preismodell mit nutzungsbasierter Bezahlung. Wenn Sie nicht zur nutzungsbasierten Bezahlung wechseln, können Sie keine weiteren Azure-Dienste erwerben, nachdem Sie Ihr Guthaben in Höhe von 200 US-Dollar aufgebraucht haben. Ihr Konto und die Dienste werden letztendlich deaktiviert.
     >Weitere Informationen finden Sie unter [**FAQ zum kostenlosen Azure-Konto**](https://azure.microsoft.com/free/free-account-faq/).
 
 

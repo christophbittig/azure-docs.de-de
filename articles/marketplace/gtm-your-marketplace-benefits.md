@@ -4,21 +4,24 @@ description: Go-To-Market-Dienste – Die Microsoft-Ressourcen, die Herausgeber 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/01/2021
+ms.date: 09/23/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: dcd7c7c64c0a686abe88b9e0d5810ff84aab27f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d957adf84bf6f9cf9b48c5d5554d27206d8c382
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339811"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708377"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
 Sie haben Ihr Angebot im kommerziellen Microsoft-Marketplace veröffentlicht und möchten nun natürlich, dass es auf Interesse stößt. Wir bieten Ihnen vom Vertrieb über die technische Umsetzung bis hin zum Marketing Vorteile, die Ihrem Angebot schneller zum Erfolg verhelfen können.
 
 Sobald Ihr Angebot in Microsoft AppSource oder im Azure Marketplace live geschaltet ist, wechseln Sie zum [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165457), um auf die Ihnen zustehenden Marketing- und Verkaufsvorteile sowie technischen Vorteile zuzugreifen und diese zu aktivieren. Marketplace-Prämienvorteile werden basierend auf Ihrem Engagement im kommerziellen Marketplace und Ihrem Umsatz angesammelt. Je mehr Sie sich engagieren, desto mehr erhalten Sie zurück.
+
+> [!NOTE]
+> Währungsangaben ($) auf den Abbildungen in diesem Artikel gelten für Marketplace Rewards-Bonustarife, die auf kumulierten abgerechneten Umsätzen oder Arbeitsplätzen basieren, die über Microsoft AppSource und Azure Marketplace verkauft werden.
 
 ## <a name="marketplace-rewards"></a>Marketplace-Prämien
 

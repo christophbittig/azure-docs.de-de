@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/27/2021
 ms.author: hirsin
 ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 301a386c9c9a21cf1f988ee62c19ca7cc60e7a39
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ecbb461e45b19630319622e978ad3bd49a376e74
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429998"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092735"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen
 
@@ -58,7 +58,7 @@ Diese Art der Autorisierung wird häufig für Daemons und Dienstkonten eingesetz
 
 Azure AD setzt nicht voraus, dass Anwendungen zum Abrufen von Token für eine andere Anwendung autorisiert sind, um dieses ACL-basierte Autorisierungsmuster zu aktivieren. Daher können nur für Apps gültige Token ohne einen `roles`-Anspruch ausgestellt werden. Bei Anwendungen, die APIs verfügbar machen, müssen zum Akzeptieren von Token Berechtigungsüberprüfungen implementiert werden.
 
-Wenn Sie verhindern möchten, dass Anwendungen nur für Apps gültige Zugriffstoken ohne Rollen abrufen, [sollten Sie sicherstellen, dass die Benutzerzuweisungsanforderungen für Ihre App aktiviert sind](../manage-apps/add-application-portal-configure.md#configure-app-properties). Dadurch wird verhindert, dass Benutzer und Anwendungen ohne zugewiesene Rollen ein Token für diese Anwendung abrufen können.
+Wenn Sie verhindern möchten, dass Anwendungen nur für Apps gültige Zugriffstoken ohne Rollen abrufen, [sollten Sie sicherstellen, dass die Benutzerzuweisungsanforderungen für Ihre App aktiviert sind](../manage-apps/assign-user-or-group-access-portal.md). Dadurch wird verhindert, dass Benutzer und Anwendungen ohne zugewiesene Rollen ein Token für diese Anwendung abrufen können. 
 
 ### <a name="application-permissions"></a>Anwendungsberechtigungen
 
@@ -69,13 +69,13 @@ Anstelle von Zugriffssteuerungslisten können Sie APIs verwenden, um einen Satz 
 * Senden von E-Mails als beliebiger Benutzer
 * Verzeichnisdaten lesen
 
-Wenn Sie Anwendungsberechtigungen mit Ihrer eigenen API (und nicht mit Microsoft Graph) verwenden möchten, müssen Sie zunächst die [API verfügbar machen](quickstart-configure-app-expose-web-apis.md), indem Sie im Azure-Portal in der App-Registrierung der API Bereiche definieren. [Konfigurieren Sie dann den Zugriff auf die API](quickstart-configure-app-access-web-apis.md), indem Sie diese Berechtigungen in der App-Registrierung Ihrer Clientanwendung auswählen. Wenn Sie in der App-Registrierung Ihrer API keine Bereiche verfügbar gemacht haben, können Sie im Azure-Portal in der App-Registrierung Ihrer Clientanwendung keine Anwendungsberechtigungen für diese API angeben.
+Wenn Sie Anwendungsberechtigungen mit Ihrer eigenen API (und nicht mit Microsoft Graph) verwenden möchten, müssen Sie zunächst die [API verfügbar machen](howto-add-app-roles-in-azure-ad-apps.md), indem Sie im Azure-Portal in der App-Registrierung der API Bereiche definieren. [Konfigurieren Sie dann den Zugriff auf die API](howto-add-app-roles-in-azure-ad-apps.md#assign-app-roles-to-applications), indem Sie diese Berechtigungen in der App-Registrierung Ihrer Clientanwendung auswählen. Wenn Sie in der App-Registrierung Ihrer API keine Bereiche verfügbar gemacht haben, können Sie im Azure-Portal in der App-Registrierung Ihrer Clientanwendung keine Anwendungsberechtigungen für diese API angeben.
 
-Bei der Authentifizierung als Anwendung (im Gegensatz zur Authentifizierung als Benutzer) können Sie keine *delegierten Berechtigungen* (Bereiche, die von einem Benutzer gewährt wurden) verwenden. Sie müssen Anwendungsberechtigungen verwenden, die auch als „Rollen“ bezeichnet und von einem Administrator (oder über die Vorautorisierung durch die Web-API) für die Anwendung gewährt werden.
+Wenn Sie sich als Anwendung authentifizieren (im Gegensatz zu einem Benutzer), können Sie keine *delegierten Berechtigungen* - Bereiche verwenden, die von einem Benutzer gewährt werden - weil es keinen Benutzer gibt, in dessen Namen die Anwendung agieren kann. Sie müssen Anwendungsberechtigungen verwenden, die auch als „Rollen“ bezeichnet und von einem Administrator (oder über die Vorautorisierung durch die Web-API) für die Anwendung gewährt werden.
 
 Weitere Informationen zu Anwendungsberechtigungen finden Sie unter [Berechtigungen und Einwilligung](v2-permissions-and-consent.md#permission-types).
 
-#### <a name="recommended-sign-the-user-into-your-app"></a>Empfohlen: Anmelden des Benutzers bei Ihrer App
+#### <a name="recommended-sign-the-admin-into-your-app-to-have-app-roles-assigned"></a>Empfohlen: Melden Sie den Administrator bei Ihrer App an, um App-Rollen zugewiesen zu bekommen
 
 Wenn Sie eine Anwendung erstellen, die Anwendungsberechtigungen verwendet, erfordert die App in der Regel eine Seite oder eine Sicht, auf der der Administrator Berechtigungen für die App genehmigt. Diese Seite kann Teil des Anmelde-Flows der App, Teil der App-Einstellungen oder ein dedizierter Flow „Verbinden“ sein. In vielen Fällen ist es sinnvoll, wenn die App diese Ansicht „Verbinden“ erst anzeigt, wenn ein Benutzer sich mit einem Geschäfts-, Schul- oder Unikonto von Microsoft angemeldet hat.
 
@@ -160,7 +160,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
-| Parameter | Bedingung | BESCHREIBUNG |
+| Parameter | Bedingung | Beschreibung |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | `client_id` | Erforderlich | Die Anwendungs-ID, die Ihrer App zugewiesen ist. Diese Informationen finden Sie in dem Portal, in dem Sie Ihre App registriert haben. |

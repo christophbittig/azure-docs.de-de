@@ -2,14 +2,14 @@
 title: Übersicht über private Endpunkte
 description: Erfahren Sie mehr über die Verwendung privater Endpunkte für Azure Backup und die Szenarien, in denen private Endpunkte dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 ms.topic: conceptual
-ms.date: 08/19/2021
+ms.date: 09/28/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 959929c92ecea5534930df5c23648062256c6ca4
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 3070cb72b6e5949b94972f9dad54d4e57e5bf591
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446824"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154962"
 ---
 # <a name="overview-and-concepts-of-private-endpoints-for-azure-backup"></a>Übersicht und Konzepte privater Endpunkte für Azure Backup
 
@@ -28,7 +28,7 @@ In diesem Artikel erfahren Sie, wie private Endpunkte für Azure Backup funktion
 - Virtuelle Netzwerke mit Netzwerkrichtlinien werden für private Endpunkte nicht unterstützt. Sie müssen [Netzwerkrichtlinien deaktivieren](../private-link/disable-private-endpoint-network-policy.md), ehe Sie fortfahren können.
 - Sie müssen den Recovery Services-Ressourcenanbieter erneut mit dem Abonnement registrieren, wenn Sie ihn vor dem 1. Mai 2020 registriert haben. Um den Anbieter erneut zu registrieren, wechseln Sie im Azure-Portal zu Ihrem Abonnement, navigieren Sie in der linken Navigationsleiste zu **Ressourcenanbieter** und wählen Sie **Microsoft.RecoveryServices** und dann **Erneut registrieren** aus.
 - [Regionsübergreifende Wiederherstellungen](backup-create-rs-vault.md#set-cross-region-restore) für SQL- und SAP HANA-Datenbanksicherungen werden nicht unterstützt, wenn für den Tresor private Endpunkte aktiviert sind.
-- Wenn Sie einen Recovery Services-Tresor, der bereits private Endpunkte verwendet, auf einen neuen Mandanten verschieben, müssen Sie den Recovery Services-Tresor aktualisieren, um die verwaltete Identität des Tresors neu zu erstellen und zu konfigurieren, und bei Bedarf neue private Endpunkte erstellen (die sich auf dem neuen Mandanten befinden sollen). Wenn dies nicht getan wird, kommt es zu Fehlern bei den Sicherungs- und Wiederherstellungsvorgängen. Außerdem müssen alle innerhalb des Abonnements eingerichteten Berechtigungen der rollenbasierten Zugriffssteuerung (RBAC) neu konfiguriert werden.
+- Wenn Sie einen Recovery Services-Tresor, der bereits private Endpunkte verwendet, auf einen neuen Mandanten verschieben, müssen Sie den Recovery Services-Tresor aktualisieren, um die verwaltete Identität des Tresors neu zu erstellen und zu konfigurieren, und bei Bedarf neue private Endpunkte erstellen (die sich auf dem neuen Mandanten befinden sollen). Wenn dies nicht getan wird, kommt es zu Fehlern bei den Sicherungs- und Wiederherstellungsvorgängen. Außerdem müssen alle Azure RBAC-Berechtigungen (Azure Role-based Access Control), die innerhalb des Abonnements eingerichtet wurden, neu konfiguriert werden.
 
 ## <a name="recommended-and-supported-scenarios"></a>Empfohlene und unterstützte Szenarien
 
@@ -65,8 +65,8 @@ Wenn die Workloaderweiterung oder der MARS-Agent für den Recovery Services-Tres
 >Im oben stehenden Text bezieht sich `<geo>` auf den Regionscode (z. B. **eus** für „USA, Osten“ und **ne** für „Europa, Norden“). In den folgenden Listen finden Sie die Regionscodes:
 >- [Alle öffentlichen Clouds](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
 >- [China](/azure/china/resources-developer-guide#check-endpoints-in-azure)
->- [Deutschland](/azure/germany/germany-developer-guide#endpoint-mapping)
->- [US Gov](/azure/azure-government/documentation-government-developer-guide)
+>- [Deutschland](../germany/germany-developer-guide.md#endpoint-mapping)
+>- [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 Die in beiden Szenarien betroffenen Speicher-FQDNs sind identisch. Bei einem Recovery Services-Tresor mit Einrichtung eines privaten Endpunkts sollte die Namensauflösung für diese jedoch eine private IP-Adresse zurückgeben. Dies kann erreicht werden, indem private DNS-Zonen verwendet, DNS-Einträge für das Speicherkonto in Hostdateien erstellt oder bedingte Weiterleitungen an das benutzerdefinierte DNS mit den entsprechenden DNS-Einträgen verwendet werden. Die privaten IP-Zuordnungen für das Speicherkonto sind auf dem Blatt „Privater Endpunkt“ für das Speicherkonto im Portal aufgeführt.
 
@@ -91,14 +91,14 @@ Die Workloadsicherungserweiterung und der MARS-Agent werden auf einem virtuellen
 >Im oben stehenden Text bezieht sich `<geo>` auf den Regionscode (z. B. **eus** für „USA, Osten“ und **ne** für „Europa, Norden“). In den folgenden Listen finden Sie die Regionscodes:
 >- [Alle öffentlichen Clouds](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
 >- [China](/azure/china/resources-developer-guide#check-endpoints-in-azure)
->- [Deutschland](/azure/germany/germany-developer-guide#endpoint-mapping)
->- [US Gov](/azure/azure-government/documentation-government-developer-guide)
+>- [Deutschland](../germany/germany-developer-guide.md#endpoint-mapping)
+>- [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 Die geänderten URLs sind spezifisch für einen Tresor.  Siehe `<vault_id>` im URL-Namen Nur bei diesem Tresor registrierte Erweiterungen und Agents können über diese Endpunkte mit Azure Backup kommunizieren. Dadurch wird der Zugriff auf die Clients in diesem VNET beschränkt. Die Erweiterung/der Agent kommuniziert über `*.privatelink.<geo>.backup.windowsazure.com`, was die entsprechende private IP-Adresse in der NIC auflösen muss.
 
 Wenn der private Endpunkt für Recovery Services-Tresore über Azure-Portal mit der Option **In private DNS-Zone integrieren** erstellt wird, werden die erforderlichen DNS-Einträge für private IP-Adressen für Azure Backup-Dienste (`*.privatelink.<geo>backup.windowsazure.com`) automatisch erstellt, wenn die Ressource zugeordnet wird. Andernfalls müssen Sie die DNS-Einträge für diese FQDNs manuell im benutzerdefinierten DNS oder in den Hostdateien erstellen.
 
-Informationen zur manuellen Verwaltung von DNS-Einträgen nach der VM-Ermittlung für den Kommunikationskanal – Blob/Warteschlange finden Sie unter [ DNS-Einträge für Blobs und Warteschlangen (nur für benutzerdefinierte DNS-Server/Hostdateien) nach der ersten Registrierung](/azure/backup/private-endpoints#dns-records-for-blobs-and-queues-only-for-custom-dns-servershost-files-after-the-first-registration). Informationen zur manuellen Verwaltung von DNS-Einträgen nach der ersten Sicherung für das Sicherungsspeicherkontoblob finden Sie unter [ DNS-Einträge für Blobs (nur für benutzerdefinierte DNS-Server/Hostdateien) nach der ersten Sicherung](/azure/backup/private-endpoints#dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup).
+Informationen zur manuellen Verwaltung von DNS-Einträgen nach der VM-Ermittlung für den Kommunikationskanal – Blob/Warteschlange finden Sie unter [ DNS-Einträge für Blobs und Warteschlangen (nur für benutzerdefinierte DNS-Server/Hostdateien) nach der ersten Registrierung](./private-endpoints.md#dns-records-for-blobs-and-queues-only-for-custom-dns-servershost-files-after-the-first-registration). Informationen zur manuellen Verwaltung von DNS-Einträgen nach der ersten Sicherung für das Sicherungsspeicherkontoblob finden Sie unter [ DNS-Einträge für Blobs (nur für benutzerdefinierte DNS-Server/Hostdateien) nach der ersten Sicherung](./private-endpoints.md#dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup).
 
 >Die privaten IP-Adressen für die FQDNs finden Sie auf dem Blatt „Privater Endpunkt“ für den privaten Endpunkt, der für den Recovery Services-Tresor erstellt wurde.
 
@@ -120,4 +120,4 @@ Das folgende Diagramm zeigt, wie die Namensauflösung für Speicherkonten funkti
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen und Verwenden privater Endpunkte](private-endpoints.md)
+- [Erstellen und verwenden Sie private Endpunkte](private-endpoints.md).

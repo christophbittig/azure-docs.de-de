@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 07/20/2021
 ms.author: mesrivas
 ms.reviewer: jrasnick, wiassaf
-ms.openlocfilehash: 7e54c654428d86e77f3bad3a92ade0c33a278856
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 55585013df7c0fde6cb2eea1a9598d494cb4b2cb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225049"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583635"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Verschlüsselung für Azure Synapse Analytics-Arbeitsbereiche
 
@@ -33,7 +33,7 @@ Die erste Verschlüsselungsebene für Azure-Dienste wird mit plattformseitig ver
 Dieser Abschnitt vermittelt Ihnen ein besseres Verständnis dafür, wie die Verschlüsselung mit einem vom Kunden verwalteten Schlüssel in Synapse-Arbeitsbereichen aktiviert und erzwungen wird. Bei dieser Verschlüsselung werden vorhandene Schlüssel oder neue Schlüssel verwendet, die in Azure Key Vault generiert wurden. Alle Daten in einem Arbeitsbereich werden mit einem einzigen Schlüssel verschlüsselt. Synapse-Arbeitsbereiche unterstützen RSH-Schlüssel mit 2048 und 3072 Bytes sowie RSA-HSM-Schlüssel.
 
 > [!NOTE]
-> Synapse-Arbeitsbereiche unterstützen nicht die Verwendung von EC-, EC-HSM-, RSA-HSM- und oct-HSM-Schlüsseln für die Verschlüsselung. 
+> Synapse-Arbeitsbereiche unterstützen nicht die Verwendung von EC-, EC-HSM- und oct-HSM-Schlüsseln für die Verschlüsselung. 
 
 Die Daten in den folgenden Synapse-Komponenten werden mit dem vom Kunden verwalteten Schlüssel verschlüsselt, der auf der Arbeitsbereichsebene konfiguriert wurde:
 * SQL-Pools
@@ -101,3 +101,4 @@ SQL Transparent Data Encryption (TDE) ist für dedizierte SQL-Pools in Arbeitsbe
 
 [Verwenden integrierter Azure Policy-Richtliniendefinitionen zum Implementieren von Verschlüsselungsschutz für Synapse-Arbeitsbereiche](../policy-reference.md)
 
+[Erstellen eines Azure-Schlüsseltresors und eines Schlüssels mithilfe einer ARM-Vorlage](../../key-vault/keys/quick-create-template.md)

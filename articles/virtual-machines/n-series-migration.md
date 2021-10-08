@@ -1,18 +1,16 @@
 ---
 title: Migrationshandbuch für GPU-Computeworkloads in Azure
 description: Migrationshandbuch für die NC-, ND- und NCv2-Serie.
-author: iafinder
 ms.service: virtual-machines
 ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 08/15/2020
-ms.author: iafinder
-ms.openlocfilehash: 7ba99bca79fe25a740d11cfe5d87937d13ccdfd0
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 1f148ad07137f6384a9752d2321836601a6bd996
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343490"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458773"
 ---
 # <a name="migration-guide-for-gpu-compute-workloads-in-azure"></a>Migrationshandbuch für GPU-Computeworkloads in Azure
 
@@ -50,7 +48,7 @@ Angesichts der relativ geringen Computeleistung der veralteten NVIDIA K80-GPU-Pl
 
 Im Allgemeinen sollten Kunden der NC-Serie direkt von NC-Größen zu [NC T4 v3](./nct4-v3-series.md)-Größen, d. h. der neuen GPU-beschleunigten, auf NVIDIA Tesla T4-GPUs basierenden Plattform von Azure für leichte Workloads, wechseln. Für Workloads, die auf InfiniBand-fähigen Größen der NC-Serie ausgeführt werden, sollten jedoch lieber andere VM-SKUs in Betracht gezogen werden.
 
-| Aktuelle VM-Größe | Größe der Ziel-VM | Unterschied bei der Spezifikation | 
+| Aktuelle VM-Größe | Zielgröße des virtuellen Computers | Unterschied bei der Spezifikation | 
 |---|---|---|
 Standard_NC6 <br> Standard_NC6_Promo | Standard_NC4as_T4_v3 <br>oder<br>Standard_NC8as_T4 | CPU: Intel Haswell vs. AMD Rome<br>GPU-Anzahl: 1 (identisch)< br>GPU-Generation: NVIDIA Keppler vs. Turing (+2 Generationen, ~2x FP32 FLOPs)<br>GPU-Arbeitsspeicher (GiB pro GPU): 16 (+4)<br>vCPU: 4 (-2) oder 8 (+2)<br>Arbeitsspeicher-GiB: 16 (-40) oder 56 (identisch)<br>Temporärer Speicher (SSD) GiB: 180 (-160) oder 360 (+20)<br>Max. Anzahl Datenträger: 8 (-4) oder 16 (+4)<br>Beschleunigter Netzwerkbetrieb: Ja (+)<br>Storage Premium: Ja (+)| 
 | Standard_NC24<br>Standard_NC24_Promo | Standard_NC64as_T4_v3* | CPU: Intel Haswell vs. AMD Rome<br>GPU-Anzahl: 4 (identisch)<br>GPU-Generation: NVIDIA Keppler vs. Turing (+2 Generationen, ~2x FP32 FLOPs)<br>GPU-Arbeitsspeicher (GiB pro GPU): 16 (+4)<br>vCPU: 64 (+40)<br>Arbeitsspeicher-GiB: 440 (+216)<br>Temporärer Speicher (SSD) GiB: 2880 (+1440)<br>Max. Anzahl Datenträger: 32 (-32)<br>Beschleunigter Netzwerkbetrieb: Ja (+)<br>Storage Premium: Ja (+) | 
@@ -61,7 +59,7 @@ Standard_NC6 <br> Standard_NC6_Promo | Standard_NC4as_T4_v3 <br>oder<br>Standard
 
 Bei den virtuellen Computern der ND-Serie handelt es sich um eine Midrange-Plattform, die ursprünglich für KI- und Deep Learning-Workloads entwickelt wurde. Sie bieten eine hervorragende Leistung für Batchrückschlüsse, vor allem durch die im Vergleich zu ihren Vorgängern verbesserten Gleitkommaoperationen mit einfacher Genauigkeit, und basieren auf NVIDIA Tesla P40-GPUs und Intel Xeon E5-2690 v4-CPUs (Broadwell). Genau wie die NC- und NC v2-Serie bietet auch die ND-Serie eine Konfiguration mit einem sekundären, RDMA-basierten Netzwerk mit geringer Wartezeit und hohem Durchsatz sowie InfiniBand-Konnektivität, sodass Sie umfangreiche Trainingsaufträge über mehrere GPUs hinweg ausführen können.
 
-| Aktuelle VM-Größe | Größe der Ziel-VM | Unterschied bei der Spezifikation | 
+| Aktuelle VM-Größe | Zielgröße des virtuellen Computers | Unterschied bei der Spezifikation | 
 |---|---|---|
 |Standard_ND6 | Standard_NC4as_T4_v3<br>oder<br>Standard_NC8as_T4 | CPU: Intel Broadwell vs. AMD Rome<br>GPU-Anzahl: 1 (identisch)<br>GPU-Generation: NVIDIA Pascal vs. Turing (+1 Generation)<br>GPU-Arbeitsspeicher (GiB pro GPU): 16 (-8)<br>vCPU: 4 (-2) oder 8 (+2)<br>Arbeitsspeicher-GiB: 16 (-40) oder 56 (-56)<br>Temporärer Speicher (SSD) GiB: 180 (-552) oder 360 (-372)<br>Max. Anzahl Datenträger: 8 (-4) oder 16 (+4)<br>Beschleunigter Netzwerkbetrieb: Ja (+)<br>Storage Premium: Ja (+) | 
 | Standard_ND12 | Standard_NC16as_T4_v3 | CPU: Intel Broadwell vs. AMD Rome<br>GPU-Anzahl: 1 (-1)<br>GPU-Generation: NVIDIA Pascal vs. Turing (+1 Generation)<br>GPU-Arbeitsspeicher (GiB pro GPU): 16 (-8)<br>vCPU: 16 (+4)<br>Arbeitsspeicher-GiB: 110 (-114)<br>Temporärer Speicher (SSD) GiB: 360 (-1,114)<br>Max. Anzahl Datenträger: 48 (+16)<br>Beschleunigter Netzwerkbetrieb: Ja (+)<br>Storage Premium: Ja (+) | 
@@ -72,7 +70,7 @@ Bei den virtuellen Computern der ND-Serie handelt es sich um eine Midrange-Platt
 
 Bei den virtuellen Computern der NC v2-Serie handelt es sich um eine führende Plattform, die ursprünglich für KI- und Deep Learning-Workloads entwickelt wurde. Sie basieren auf NVIDIA Tesla P100-GPUs und Intel Xeon E5-2690 v4-CPUs (Broadwell) und bieten eine hervorragende Leistung für Deep Learning-Training, mit einer Leistung pro GPU, die im Vergleich zur ursprünglichen NC-Serie ungefähr verdoppelt wurde. Genau wie die NC- und die ND-Serie bietet auch die NC v2-Serie eine Konfiguration mit einem sekundären, RDMA-basierten Netzwerk mit geringer Wartezeit und hohem Durchsatz sowie InfiniBand-Konnektivität, sodass Sie umfangreiche Trainingsaufträge über mehrere GPUs hinweg ausführen können.
 
-| Aktuelle VM-Größe | Größe der Ziel-VM | Unterschied bei der Spezifikation | 
+| Aktuelle VM-Größe | Zielgröße des virtuellen Computers | Unterschied bei der Spezifikation | 
 |---|---|---|
 | Standard_NC6s_v2 | Standard_NC6s_v3 | CPU: Intel Broadwell (identisch)<br>GPU-Anzahl: 1 (identisch)<br>GPU-Generation: NVIDIA Pascal vs. Volta (+1 Generation)<br>GPU-Arbeitsspeicher (GiB pro GPU): 16 (identisch)<br>vCPU: 6 (identisch)<br>Arbeitsspeicher-GiB: 112 (identisch)<br>Temporärer Speicher (SSD) GiB: 736 (identisch)<br>Max. Anzahl Datenträger: 12 (identisch)<br>Beschleunigter Netzwerkbetrieb: Nein (identisch)<br>Storage Premium: Ja (+) | 
 | Standard_NC12s_v2 | Standard_NC12s_v3 | CPU: Intel Broadwell (identisch)<br>GPU-Anzahl: 2 (identisch)<br>GPU-Generation: NVIDIA Pascal vs. Volta (+1 Generation)<br>GPU-Arbeitsspeicher (GiB pro GPU): 16 (identisch)<br>vCPU: 12 (identisch)<br>Arbeitsspeicher-GiB: 112 (identisch)<br>Temporärer Speicher (SSD) GiB: 1474 (identisch)<br>Max. Anzahl Datenträger: 24 (identisch)<br>Beschleunigter Netzwerkbetrieb: Nein (identisch)<br>Storage Premium: Ja (+) | 
@@ -110,9 +108,9 @@ Nachdem Sie Ihre aktuelle Nutzungsweise bewertet haben, können Sie entscheiden,
 
 Befolgen Sie die Anleitung zum [Anfordern einer Erhöhung des vCPU-Kontingents nach VM-Familie](../azure-portal/supportability/per-vm-quota-requests.md). Wählen Sie die Größe der Ziel-VM aus, die Sie für die Migration ausgewählt haben.
 
-#### <a name="resize-the-current-virtual-machine"></a>Ändern Sie die Größe der aktuellen VM.
+#### <a name="resize-the-current-virtual-machine"></a>Ändern Sie die Größe des aktuellen VM.
 
-Sie können [die Größe des virtuellen Computers über das Azure-Portal oder über PowerShell ändern](./windows/resize-vm.md). Sie können die Größe einer VM auch mit [Azure CLI](./linux/change-vm-size.md) anpassen.
+Sie können [die Größe des Virtuellen Computers ändern](resize-vm.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

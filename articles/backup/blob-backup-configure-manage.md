@@ -2,13 +2,13 @@
 title: Konfigurieren der operativen Sicherung für Azure-Blobs
 description: Informationen zum Konfigurieren und Verwalten der operativen Sicherung für Azure-Blobs
 ms.topic: conceptual
-ms.date: 08/06/2021
-ms.openlocfilehash: b437aa0df073267b07b3e74bc3a778e7aa274031
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/28/2021
+ms.openlocfilehash: 24a0f31a35342b53835563fdcca9754abd5d57ee
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122353672"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153898"
 ---
 # <a name="configure-operational-backup-for-azure-blobs"></a>Konfigurieren der operativen Sicherung für Azure-Blobs
 
@@ -139,7 +139,7 @@ So beginnen Sie mit dem Konfigurieren der Sicherung
 
     1. Wählen Sie **Überprüfen + erstellen** aus, um die Sicherungsrichtlinie zu erstellen.
 
-1. Wählen Sie die erforderlichen Speicherkonten zum Konfigurieren des Schutzes von Blobs aus. Sie können mehrere Speicherkonten auf einmal auswählen und dann auf Auswählen klicken.<br></br>Stellen Sie jedoch sicher, dass dem von Ihnen ausgewählten Tresor die erforderliche RBAC-Rolle zugewiesen ist, um die Sicherung für Speicherkonten zu konfigurieren. Erfahren Sie mehr über das [Erteilen von Berechtigungen für den Sicherungstresor auf Speicherkonten](#grant-permissions-to-the-backup-vault-on-storage-accounts).<br></br>Wenn die Rolle nicht zugewiesen ist, können Sie sie beim Konfigurieren der Sicherung weiterhin zuweisen. Weitere Informationen finden Sie unter Schritt 7.
+1. Wählen Sie die erforderlichen Speicherkonten zum Konfigurieren des Schutzes von Blobs aus. Sie können mehrere Speicherkonten auf einmal auswählen und dann auf Auswählen klicken.<br></br>Stellen Sie jedoch sicher, dass dem ausgewählten Tresor die erforderliche Azure RBAC-Rolle (rollenbasierte Zugriffssteuerung) zum Konfigurieren der Sicherung in Speicherkonten zugewiesen wurde. Erfahren Sie mehr über das [Erteilen von Berechtigungen für den Sicherungstresor auf Speicherkonten](#grant-permissions-to-the-backup-vault-on-storage-accounts).<br></br>Wenn die Rolle nicht zugewiesen ist, können Sie sie beim Konfigurieren der Sicherung weiterhin zuweisen. Weitere Informationen finden Sie unter Schritt 7.
 
     ![Überprüfen von Berechtigungen für den Tresor](./media/blob-backup-configure-manage/verify-vault-permissions.png)
 
