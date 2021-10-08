@@ -1,5 +1,5 @@
 ---
-title: Weiterleiten von Ereignissen mit einer verwalteten Identität (Vorschau)
+title: Weiterleiten von Ereignissen mit einer verwalteten Identität
 titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Sie eine systemseitig zugewiesene Identität für Azure Digital Twins aktivieren und zum Weiterleiten von Ereignissen mithilfe des Azure-Portals oder der Befehlszeilenschnittstelle verwenden.
 author: baanders
@@ -8,16 +8,16 @@ ms.date: 6/15/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: subject-rbac-steps, contperf-fy21q4
-ms.openlocfilehash: 8990536b4ddc09f5673fe00a70bc4f12f4f4a169
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4d50c40426d5fb687b28a965b9d921ef6fc4df38
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468791"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651914"
 ---
-# <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview"></a>Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau)
+# <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events"></a>Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen
 
-In diesem Artikel wird beschrieben, wie Sie eine [systemseitig zugewiesene Identität für eine Azure Digital Twins-Instanz](concepts-security.md#managed-identity-for-accessing-other-resources-preview) (derzeit in der Vorschauphase) aktivieren und die Identität zum Weiterleiten von Ereignissen an unterstützte Weiterleitungsziele verwenden. Das Einrichten einer verwalteten Identität ist für das Routing nicht erforderlich, aber es kann der Instanz helfen, einfach auf andere durch Azure AD geschützte Ressourcen wie [Event Hub](../event-hubs/event-hubs-about.md), [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)-Ziele und [Azure Storage-Container](../storage/blobs/storage-blobs-introduction.md) zuzugreifen.
+In diesem Artikel wird beschrieben, wie Sie eine [systemseitig zugewiesene Identität für eine Azure Digital Twins-Instanz](concepts-security.md#managed-identity-for-accessing-other-resources) aktivieren und die Identität zum Weiterleiten von Ereignissen an unterstützte Weiterleitungsziele verwenden. Das Einrichten einer verwalteten Identität ist für das Routing nicht erforderlich, aber es kann der Instanz helfen, einfach auf andere durch Azure AD geschützte Ressourcen wie [Event Hub](../event-hubs/event-hubs-about.md), [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)-Ziele und [Azure Storage-Container](../storage/blobs/storage-blobs-introduction.md) zuzugreifen.
 
 Die folgenden Schritte werden in diesem Artikel behandelt: 
 
@@ -45,7 +45,7 @@ Die Option für systemseitig verwaltete Identitäten befindet sich auf der Regis
 
 Wählen Sie auf dieser Registerkarte die Option **Ein** für **Systemseitig verwaltete Identität** aus, um dieses Feature zu aktivieren.
 
-:::image type="content" source="media/how-to-enable-managed-identities/create-instance-advanced.png" alt-text="Screenshot: Azure-Portal mit der Registerkarte „Erweitert“ des Dialogfelds „Ressource erstellen“ für Azure Digital Twins. Die systemseitig verwaltete Identität ist aktiviert.":::
+:::image type="content" source="media/how-to-route-with-managed-identity/create-instance-advanced.png" alt-text="Screenshot: Azure-Portal mit der Registerkarte „Erweitert“ des Dialogfelds „Ressource erstellen“ für Azure Digital Twins. Die systemseitig verwaltete Identität ist aktiviert.":::
 
 Anschließend können Sie die Navigationsschaltflächen unten verwenden, um mit der Einrichtung der Instanz fortzufahren.
    
@@ -71,13 +71,13 @@ In diesem Abschnitt fügen Sie eine systemseitig verwaltete Identität zu einer 
 
 1. Suchen Sie über die Suchleiste des Portals nach dem Namen Ihrer Instanz, und wählen Sie diesen aus, um die Details anzuzeigen.
 
-1. Klicken Sie im linken Menü auf **Identität (Vorschau)** .
+1. Klicken Sie im linken Menü auf **Identität**.
 
 1. Aktivieren Sie auf dieser Seite die Option **Ein**, um das Feature zu aktivieren.
 
 1. Wählen Sie **Speichern** und zum Bestätigen **Ja** aus.
 
-    :::image type="content" source="media/how-to-enable-managed-identities/identity-digital-twins.png" alt-text="Screenshot: Azure-Portal mit der Seite „Identität (Vorschau)“ für eine Azure Digital Twins-Instanz.":::
+    :::image type="content" source="media/how-to-route-with-managed-identity/identity-digital-twins.png" alt-text="Screenshot: Azure-Portal mit der Seite „Identität“ für eine Azure Digital Twins-Instanz.":::
 
 Nachdem die Änderungen gespeichert wurden, werden auf dieser Seite weitere Felder für die **Objekt-ID** und **Berechtigungen** der neuen Identität angezeigt.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/01/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9e16037c1fc0b2addc825718e4fecb13a270129
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 31759756a886093c53d1537db609bfc58fb4af8b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541565"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610463"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
@@ -153,7 +153,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 Für die Veröffentlichung von Audiodaten wird dringend das Hochladen per Streaming (segmentiert) empfohlen, da damit die Latenz deutlich reduziert werden kann. Weitere Informationen zum Aktivieren des Streamings finden Sie im [Beispielcode in verschiedenen Programmiersprachen](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment).
 
 >[!NOTE]
-> Die Funktion zur Beurteilung der Aussprache unterstützt `en-US` derzeit Sprache, die in allen [Sprache-in-Text-Regionen verfügbar ist](regions.md#speech-to-text). Die Unterstützung für die Sprachen `en-GB` und `zh-CN` befindet sich in der Vorschauphase, die in den Regionen `westus` `eastasia` und `centralindia` verfügbar ist.
+> Die Funktion zur Beurteilung der Aussprache unterstützt `en-US` derzeit Sprache, die in allen [Sprache-in-Text-Regionen verfügbar ist](regions.md#speech-to-text). Die Unterstützung für die Sprachen `en-GB` und `zh-CN` ist als Vorschauversion verfügbar.
 
 ### <a name="sample-request"></a>Beispiel für eine Anforderung
 

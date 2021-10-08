@@ -3,12 +3,12 @@ title: Azure Video Analyzer-Zugriffsrichtlinien
 description: Dieser Artikel erklärt, wie Azure Video Analyzer JWT-Tokens in Zugriffsrichtlinien verwendet, um Videos zu sichern.
 ms.topic: reference
 ms.date: 06/01/2021
-ms.openlocfilehash: 3cf450249567d07bf6855d115a0e39640074eeb0
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: fe421e429357000bf6380cdf18f3a029fea4f7c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604185"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670479"
 ---
 # <a name="access-policies"></a>Zugriffsrichtlinien
 
@@ -130,31 +130,84 @@ Kunden müssen ihre eigenen JWT-Tokens erstellen und sie werden anhand der folge
 > [!NOTE]  
 > Azure Video Analyzer unterstützt maximal 20 Richtlinien.  ${System.Runtime.BaseResourceUrlPattern} ermöglicht eine größere Flexibilität beim Zugriff auf bestimmte Ressourcen durch die Verwendung einer Zugriffsrichtlinie und mehrerer Token.  Diese Token ermöglichen wiederum den Zugriff auf verschiedene Azure Video Analyzer-Ressourcen, je nach Zielgruppe. 
 
+## <a name="creating-a-token"></a>Erstellen eines Tokens
+
+In diesem Abschnitt erstellen wir ein JWT-Token, das wir später im Artikel verwenden.  Wir verwenden eine Beispielanwendung, die das JWT-Token erstellt und Ihnen alle Felder zur Verfügung stellt, die zum Erstellen der Zugriffsrichtlinie erforderlich sind.
+
+> [!NOTE] 
+> Wenn Sie mit dem Generieren eines JWT-Tokens auf der Grundlage eines RSA- oder ECC-Zertifikats vertraut sind, können Sie diesen Abschnitt überspringen.
+
+1. Klonen Sie das [Repository mit AVA-C#-Beispielen](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp). Wechseln Sie dann zum JWTTokenIssuer-Anwendungsordner *src/jwt-token-issuer*, und suchen Sie die JWTTokenIssuer-Anwendung.
+2. Öffnen Sie Visual Studio Code, und wechseln Sie in den Ordner, in den Sie die Anwendung JWTTokenIssuer heruntergeladen haben. Dieser Ordner sollte die *\*CSPROJ*-Datei enthalten.
+3. Wechseln Sie im Explorer-Bereich zur Datei *program.cs*.
+4. Ändern Sie in Zeile 77 die Zielgruppe in Ihren Video Analyzer-Endpunkt, gefolgt von „/videos/\*“, sodass sie wie folgt aussieht:
+
+   ```
+   https://{Azure Video Analyzer Account ID}.api.{Azure Long Region Code}.videoanalyzer.azure.net/videos/*
+   ```
+
+   > [!NOTE] 
+   > Den Video Analyzer-Endpunkt finden Sie im Übersichtsabschnitt der Video Analyzer-Ressource im Azure-Portal.
+
+   :::image type="content" source="media/player-widget/client-api-url.png" alt-text="Screenshot: Endpunkt des Player-Widgets":::
+    
+5. Ändern Sie in Zeile 78 den Aussteller in den Ausstellerwert Ihres Zertifikats. Beispiel: `https://contoso.com`
+6. Speichern Sie die Datei .    
+
+   > [!NOTE]
+   > Möglicherweise wird die Meldung `Required assets to build and debug are missing from 'jwt token issuer'. Add them?` angezeigt. Wählen Sie `Yes` aus.
+   
+   :::image type="content" source="media/player-widget/visual-studio-code-required-assets.png" alt-text="Screenshot: Eingabeaufforderung für erforderliche Ressource in Visual Studio Code":::
+   
+7. Öffnen Sie ein Eingabeaufforderungsfenster, und wechseln Sie in den Ordner mit den JWTTokenIssuer-Dateien. Führen Sie die folgenden beiden Befehle aus: `dotnet build`, gefolgt von `dotnet run`. Wenn Sie über die C#-Erweiterung für Visual Studio Code verfügen, können Sie auch F5 auswählen, um die JWTTokenIssuer-Anwendung auszuführen.
+
+Die Anwendung wird erstellt und dann ausgeführt. Nach dem Erstellen erstellt es ein selbstsigniertes Zertifikat und generiert die JWT-Tokeninformationen aus diesem Zertifikat. Sie können auch die Datei JWTTokenIssuer.exe ausführen, die sich im Debugordner des Verzeichnisses befindet, aus dem JWTTokenIssuer erstellt wird. Der Vorteil der Ausführung der Anwendung besteht darin, dass Sie Eingabeoptionen wie folgt angeben können:
+
+- `JwtTokenIssuer [--audience=<audience>] [--issuer=<issuer>] [--expiration=<expiration>] [--certificatePath=<filepath> --certificatePassword=<password>]`
+
+JWTTokenIssuer erstellt das JWT-Token und die folgenden erforderlichen Komponenten:
+
+- `Issuer`, `Audience`, `Key Type`, `Algorithm`, `Key Id`, `RSA Key Modulus`, `RSA Key Exponent`, `Token`
+
+Stellen Sie sicher, dass Sie diese Werte zur späteren Verwendung kopieren.
+
+
 ## <a name="creating-an-access-policy"></a>Erstellen einer Azure-Zugriffs-Richtlinie
 
 Es gibt zwei Möglichkeiten, eine Zugriffsrichtlinie zu erstellen.
 
 ### <a name="in-the-azure-portal"></a>Im Azure-Portal
 
-1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu Ihrer Ressourcengruppe, in der sich Ihr Azure Video Analyzer-Konto befindet.
-2. Wählen Sie die Azure Video Analyzer-Ressource aus.
-3. Wählen Sie unter Azure Video Analyzer die Option Zugriffsrichtlinien aus
+1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zu Ihrer Ressourcengruppe, in der sich Ihr Video Analyzer-Konto befindet.
+1. Wählen Sie die Azure Video Analyzer-Ressource aus.
+1. Wählen Sie unter **Video Analyzer** die Option **Zugriffsrichtlinien** aus.
 
-   :::image type="content" source="./media/access-policies/access-policies-menu.png" alt-text="Zugriff auf das Richtlinien-Menü im Azure-Portal":::
-4. Klicken Sie auf neu, und geben Sie Folgendes ein:
+   :::image type="content" source="./media/player-widget/portal-access-policies.png" alt-text="Player-Widget: Portal-Zugriffsrichtlinien":::
+   
+1. Wählen Sie **Neu** aus, und geben Sie die folgenden Informationen ein:
+
+   > [!NOTE] 
+   > Diese Werte entstammen der JWTTokenIssuer-Anwendung, die im vorherigen Schritt erstellt wurde.
 
    - Name der Zugriffsrichtlinie – beliebiger Name
+
    - Aussteller – muss mit dem JWT-Token-Aussteller übereinstimmen 
-   - Zielgruppe – Zielgruppe für das JWT-Token -- ${System.Runtime.BaseResourceUrlPattern} ist die Standardeinstellung. 
-   - Schlüsseltyp – kty 
-   - Algorithmus – alg
-   - Schlüssel-ID – kid 
-   - N- / X-Wert 
-   - E- / Y- Wert 
 
-   :::image type="content" source="./media/access-policies/access-policies-portal.png" alt-text="Zugriffsrichtlinie im Azure-Portal":::
-5. Klicken Sie auf `Save`.
+   - Zielgruppe: Zielgruppe für das JWT-Token – `${System.Runtime.BaseResourceUrlPattern}` ist die Standardeinstellung.
 
+   - Schlüsseltyp: RSA 
+
+   - Algorithmus - die unterstützten Werte sind RS256, RS384, RS512
+
+   - Schlüssel-ID: aus Ihrem Zertifikat generiert. Weitere Informationen finden Sie unter [Erstellen eines Tokens](#creating-a-token).
+
+   - RSA-Schlüsselmodulus: Dieser Wert wird aus Ihrem Zertifikat generiert. Weitere Informationen finden Sie unter [Erstellen eines Tokens](#creating-a-token).
+
+   - RSA-Schlüsselexponent: Dieser Wert wird aus Ihrem Zertifikat generiert. Weitere Informationen finden Sie unter [Erstellen eines Tokens](#creating-a-token).
+
+   :::image type="content" source="./media/player-widget/access-policies-portal.png" alt-text="Player-Widget - Portal-Zugriffsrichtlinien"::: 
+   
+1. Wählen Sie **Speichern** aus.
 ### <a name="create-access-policy-via-api"></a>Erstellen Sie eine Zugriffsrichtlinie via API
 
 Siehe Azure Resource Manager (ARM) API 

@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 08/20/2021
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 3b6f6a0700915263187f4f31b60a4d2d8b72d9fd
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: dbeb1a776aa5d813806cec6622e1ad1e515ccfc5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634202"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623682"
 ---
 # <a name="automatically-renew-reservations"></a>Automatisches Verlängern von Reservierungen
 
@@ -44,7 +44,7 @@ Für das Erneuern einer Reservierung gelten folgende Bedingungen:
 
 - Sie müssen ein Besitzer der vorhandenen Reservierung sein.
 - Sie müssen ein Besitzer des Abonnements sein, wenn die Reservierung auf ein einzelnes Abonnement oder eine einzelne Ressourcengruppe beschränkt ist.
-- Sie müssen ein Besitzer des Abonnements sein, wenn es einen gemeinsamen Gültigkeitsbereich aufweist.
+- Sie müssen ein Besitzer des Abonnements sein, wenn es einen gemeinsam genutzten Bereich oder Verwaltungsgruppenbereich aufweist.
 
 ## <a name="default-renewal-settings"></a>Standardeinstellungen für die Verlängerung
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/17/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 5f130e2367ed2fa4c9095479e9ff9d9722b010e5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6bb24f33d93e58768af34359f4d803ca68cf4ac4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110098540"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645776"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimieren der Kosten für Blobspeicher mit reservierter Kapazität
 
@@ -34,7 +34,7 @@ Sie können reservierte Azure Storage-Kapazität in Einheiten von 100 TiB und 1
 
 ### <a name="reservation-scope"></a>Reservierungsumfang
 
-Reservierte Azure Storage-Kapazität ist für ein einzelnes Abonnement oder für mehrere Abonnements (freigegebener Bereich) verfügbar. Bei Zuordnung zu einem einzelnen Abonnement wird der Reservierungsrabatt nur auf das ausgewählte Abonnement angewendet. Bei Zuordnung zu mehreren Abonnements wird der Reservierungsrabatt auf diese Abonnements innerhalb des Abrechnungskontexts des Kunden aufgeteilt.
+Reservierte Azure Storage-Kapazität ist für ein einzelnes Abonnement, mehrere Abonnements (gemeinsam genutzter Bereich) und Verwaltungsgruppen verfügbar. Bei Zuordnung zu einem einzelnen Abonnement wird der Reservierungsrabatt nur auf das ausgewählte Abonnement angewendet. Bei Zuordnung zu mehreren Abonnements wird der Reservierungsrabatt auf diese Abonnements innerhalb des Abrechnungskontexts des Kunden aufgeteilt. Wenn eine Verwaltungsgruppe den Geltungsbereich bildet, wird der Reservierungsrabatt auf alle Abonnements aufgeteilt, die sowohl Teil der Verwaltungsgruppe als auch des Abrechnungsbereichs sind.
 
 Wenn Sie reservierte Azure Storage-Kapazität erwerben, können Sie Ihre Reservierung für Blockblob- und Azure Data Lake Storage Gen2-Daten verwenden. Die Reservierung gilt für Ihre Nutzung im erworbenen Umfang. Die Reservierung kann nicht auf ein bestimmtes Speicherkonto, einen bestimmten Container oder ein bestimmtes Objekt innerhalb des Abonnements beschränkt werden.
 
@@ -49,7 +49,7 @@ Für Reservierungen werden alle Zugriffsebenen (heiß, kalt und Archiv) unterst�
 Für Reservierungen werden alle Redundanztypen unterstützt. Weitere Informationen zu Redundanzoptionen finden Sie unter [Azure Storage-Redundanz](../common/storage-redundancy.md).
 
 > [!NOTE]
-> Reservierte Azure Storage-Kapazität steht für Storage Premium-Konten, universelle v1-Speicherkonten (GPv1), Azure Data Lake Storage Gen1, Seitenblobs, Azure Queue Storage oder Azure Table Storage nicht zur Verfügung. Weitere Informationen zu reservierter Kapazität für Azure Files finden Sie unter [Optimieren der Kosten für Azure Files mit reservierter Kapazität](../files/files-reserve-capacity.md).  
+> Reservierte Azure Storage-Kapazität steht für Storage Premium-Konten, universelle v1-Speicherkonten (GPv1), Azure Data Lake Storage Gen1, Seitenblobs, Azure Queue Storage oder Azure Table Storage nicht zur Verfügung. Weitere Informationen zu reservierter Kapazität für Azure Files finden Sie unter [Optimieren der Kosten für Azure Files mit reservierter Kapazität](../files/files-reserve-capacity.md).
 
 ### <a name="security-requirements-for-purchase"></a>Sicherheitsanforderungen für den Erwerb
 
@@ -61,7 +61,7 @@ So erwerben Sie reservierte Kapazität:
 
 ## <a name="determine-required-capacity-before-purchase"></a>Ermitteln der erforderlichen Kapazität vor dem Erwerb
 
-Wenn Sie eine Azure Storage-Reservierung erwerben, müssen Sie Region, Zugriffsebene und Redundanzoption für die Reservierung auswählen. Die Reservierung gilt nur für Daten, die in der betreffenden Region, Zugriffsebene und Redundanzebene gespeichert werden. Nehmen Sie beispielsweise an, dass Sie eine Reservierung für „USA, Westen“ für die heiße Zugriffsebene mit zonenredundantem Speicher (ZRS) erwerben. Sie können diese Reservierung nicht für Daten in „USA, Osten“, Daten in der Archivzugriffsebene oder Daten in georedundantem Speicher (GRS) verwenden. Sie können jedoch eine weitere Reservierung für die zusätzlichen Anforderungen erwerben.  
+Wenn Sie eine Azure Storage-Reservierung erwerben, müssen Sie Region, Zugriffsebene und Redundanzoption für die Reservierung auswählen. Die Reservierung gilt nur für Daten, die in der betreffenden Region, Zugriffsebene und Redundanzebene gespeichert werden. Nehmen Sie beispielsweise an, dass Sie eine Reservierung für „USA, Westen“ für die heiße Zugriffsebene mit zonenredundantem Speicher (ZRS) erwerben. Sie können diese Reservierung nicht für Daten in „USA, Osten“, Daten in der Archivzugriffsebene oder Daten in georedundantem Speicher (GRS) verwenden. Sie können jedoch eine weitere Reservierung für die zusätzlichen Anforderungen erwerben.
 
 Reservierungen sind heute für 100 TiB- oder 1 PB-Blöcke möglich (mit höheren Rabatten für 1 PiB-Blöcke). Wenn Sie eine Reservierung im Azure-Portal erwerben, kann Microsoft Ihnen Empfehlungen auf der Grundlage Ihrer bisherigen Nutzung geben, damit Sie die Reservierung bestimmen können, die Sie erwerben sollten.
 
@@ -73,13 +73,13 @@ Hilfe bei der Ermittlung der geeigneten Reservierungsbedingungen für Ihr Szenar
 
 Gehen Sie folgendermaßen vor, um reservierte Kapazität zu erwerben:
 
-1. Navigieren Sie zum Bereich [Reservierungen erwerben](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand) im Azure-Portal.  
-1. Wählen Sie **Azure Blob Storage** aus, um eine neue Reservierung zu erwerben.  
+1. Navigieren Sie zum Bereich [Reservierungen erwerben](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Browse_AddCommand) im Azure-Portal.
+1. Wählen Sie **Azure Blob Storage** aus, um eine neue Reservierung zu erwerben.
 1. Füllen Sie die Pflichtfelder aus, wie in der folgenden Tabelle beschrieben:
 
     ![Screenshot, der den Erwerb reservierter Kapazität veranschaulicht](media/storage-blob-reserved-capacity/select-reserved-capacity.png)
 
-   |Feld  |BESCHREIBUNG  |
+   |Feld  |Beschreibung  |
    |---------|---------|
    |**Umfang**   |  Zeigt an, wie viele Abonnements die mit der Reservierung verbundenen Abrechnungsvorteile nutzen können. Sie steuert auch, wie die Reservierung auf bestimmte Abonnements angewendet wird. <br/><br/> Wenn Sie **Gemeinsam** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität in einem beliebigen Abonnement innerhalb des Abrechnungskontexts. Der Abrechnungskontext basiert darauf, wie Sie sich für Azure registriert haben. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Bezahlung umfasst der freigegebene Umfang alle Abonnements mit Preisen für nutzungsbasierte Bezahlung, die vom Kontoadministrator erstellt wurden.  <br/><br/>  Wenn Sie **Einzelabonnement** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität im ausgewählten Abonnement. <br/><br/> Wenn Sie die Option **Einzelne Ressourcengruppe** wählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität im ausgewählten Abonnement und in der ausgewählten Ressourcengruppe in diesem Abonnement. <br/><br/> Sie können den Reservierungsumfang nach dem Erwerb der Reservierung ändern.  |
    |**Abonnement**  | Das Abonnement, das für die Bezahlung der Azure Storage-Reservierung verwendet wird. Die Zahlungsmethode für das ausgewählte Abonnement wird für das Inrechnungstellen der Kosten verwendet. Es muss einer der folgenden Abonnementtypen vorliegen: <br/><br/>  Enterprise Agreement (Angebotsnummer: MS-AZR-0017P oder MS-AZR-0148P): Bei einem Enterprise-Abonnement werden die Gebühren vom Saldo der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) der Reservierung abgezogen oder als Überschreitung belastet. <br/><br/> Einzelnes Abonnement mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P): Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Bezahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung berechnet.    |

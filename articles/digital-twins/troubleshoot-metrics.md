@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Azure Digital Twins-Metriken in Azure Monitor angezeigt werden.
 author: baanders
 ms.author: baanders
-ms.date: 8/4/2020
+ms.date: 9/16/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8dc18662431e750301db7e3d2c4e56d5fbaea674
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 107c9e5dd3d548e3e07cd9b037162cca36aa1c8a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770932"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637185"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Problembehandlung von Azure Digital Twins: Metriken
 

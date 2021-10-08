@@ -7,36 +7,35 @@ ms.author: normesta
 ms.date: 07/11/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 27a5a69bd6bcb4a8661799d6820cf9fdc6a38633
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 271d2ecd256525c5c3ecb9a3e292e295f7492292
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114606118"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606131"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-storage-insights"></a>Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage
 
-Storage Insights ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie können die Speicherkapazität und Leistung auf zwei Arten beobachten: direktes Anzeigen in einem Speicherkonto oder Anzeigen verschiedener Gruppen von Speicherkonten in Azure Monitor. 
+Storage Insights ermöglicht eine umfassende Überwachung Ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie können die Speicherkapazität und Leistung auf zwei Arten beobachten: direktes Anzeigen in einem Speicherkonto oder Anzeigen verschiedener Gruppen von Speicherkonten in Azure Monitor.
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Storage Insights verwertbare Informationen zu Integrität und Leistung von Storage-Konten im gewünschten Umfang erhalten, wobei Sie sich auf Hotspots sowie die Diagnose von Wartezeit, Drosselung und Verfügbarkeitsproblemen konzentrieren können.
 
 ## <a name="introduction-to-storage-insights"></a>Einführung in Storage Insights
 
-Bevor Sie sich mit der Oberfläche genauer befassen, sollten Sie nachvollziehen können, wie sie Informationen darstellt und visualisiert. Unabhängig davon, ob Sie das Storage-Feature direkt aus einem Speicherkonto oder in Azure Monitor auswählen, bietet Storage Insights eine einheitliche Oberfläche. 
+Bevor Sie sich mit der Oberfläche genauer befassen, sollten Sie nachvollziehen können, wie sie Informationen darstellt und visualisiert. Unabhängig davon, ob Sie das Storage-Feature direkt aus einem Speicherkonto oder in Azure Monitor auswählen, bietet Storage Insights eine einheitliche Oberfläche.
 
 In Kombination bietet sie Folgendes:
 
-* **Perspektive im gewünschten Umfang** mit einer Momentaufnahme von deren Verfügbarkeit, die auf Folgendem basiert: der Integrität des Speicherdiensts oder des API-Vorgangs, der Nutzung mit der Gesamtzahl der vom Speicherdienst empfangenen Anforderungen und der Latenz mit der durchschnittlichen Zeit, die der Speicherdienst oder der API-Vorgangstyp für die Verarbeitung von Anforderungen benötigt. Sie können auch die Kapazität nach Blob, Datei, Tabelle und Warteschlange anzeigen.
+- **Perspektive im gewünschten Umfang** mit einer Momentaufnahme von deren Verfügbarkeit, die auf Folgendem basiert: der Integrität des Speicherdiensts oder des API-Vorgangs, der Nutzung mit der Gesamtzahl der vom Speicherdienst empfangenen Anforderungen und der Latenz mit der durchschnittlichen Zeit, die der Speicherdienst oder der API-Vorgangstyp für die Verarbeitung von Anforderungen benötigt. Sie können auch die Kapazität nach Blob, Datei, Tabelle und Warteschlange anzeigen.
 
-* **Drilldownanalyse** für ein bestimmtes Speicherkonto als Hilfe bei der Diagnose von Problemen oder der Ausführung einer detaillierten Analyse nach Kategorie – Verfügbarkeit, Leistung, Fehler und Kapazität. Wenn Sie eine dieser Optionen auswählen, erhalten Sie eine detaillierte Übersicht über die Metriken.  
+- **Drilldownanalyse** für ein bestimmtes Speicherkonto als Hilfe bei der Diagnose von Problemen oder der Ausführung einer detaillierten Analyse nach Kategorie – Verfügbarkeit, Leistung, Fehler und Kapazität. Wenn Sie eine dieser Optionen auswählen, erhalten Sie eine detaillierte Übersicht über die Metriken.
 
-* **Anpassbar**. Hier können Sie ändern, welche Metriken Sie anzeigen oder abändern oder aber Schwellenwerte dafür festlegen möchten, die Ihren Grenzwerten entsprechen, und sie als Ihre eigene Arbeitsmappe speichern. Diagramme in der Arbeitsmappe können an das Azure-Dashboard angeheftet werden.  
+- **Anpassbar**. Hier können Sie ändern, welche Metriken Sie anzeigen oder abändern oder aber Schwellenwerte dafür festlegen möchten, die Ihren Grenzwerten entsprechen, und sie als Ihre eigene Arbeitsmappe speichern. Diagramme in der Arbeitsmappe können an das Azure-Dashboard angeheftet werden.
 
 Bei diesem Feature müssen Sie nichts aktivieren oder konfigurieren, weil die Speichermetriken aus Ihren Speicherkonten standardmäßig erfasst werden. Wenn Sie mit den in Azure Storage verfügbaren Metriken nicht vertraut sind, können Sie unter [Azure Storage-Metriken](../blobs/monitor-blob-storage.md) die jeweilige Beschreibung und Definition anzeigen.
 
->[!NOTE]
->Für den Zugriff auf dieses Feature fallen keine Gebühren an. Ihnen werden nur die grundlegenden Features von Azure Monitor in Rechnung gestellt, die Sie entsprechend der Beschreibung auf der Seite [Azure Monitor-Preisdetails](https://azure.microsoft.com/pricing/details/monitor/) konfigurieren oder aktivieren.
-
+> [!NOTE]
+> Für den Zugriff auf dieses Feature fallen keine Gebühren an. Ihnen werden nur die grundlegenden Features von Azure Monitor in Rechnung gestellt, die Sie entsprechend der Beschreibung auf der Seite [Azure Monitor-Preisdetails](https://azure.microsoft.com/pricing/details/monitor/) konfigurieren oder aktivieren.
 
 ## <a name="view-from-azure-monitor"></a>Anzeigen in Azure Monitor
 
@@ -54,35 +53,35 @@ Führen Sie die folgenden Schritte aus, um die Nutzung und Verfügbarkeit Ihrer 
 
 In der Arbeitsmappe **Übersicht** für das ausgewählte Abonnement werden in der Tabelle interaktive Speichermetriken und der Dienstverfügbarkeitsstatus für bis zu 5 Speicherkonten angezeigt, die innerhalb des Abonnements gruppiert sind. Sie können die Ergebnisse anhand der Optionen filtern, die Sie in den folgenden Dropdownlisten auswählen:
 
-* **Abonnements** – Es werden nur Abonnements mit Speicherkonten aufgelistet.  
+- **Abonnements** – Es werden nur Abonnements mit Speicherkonten aufgelistet.
 
-* **Speicherkonten** – standardmäßig sind 5 Speicherkonten vorab ausgewählt. Wenn Sie in der Bereichsauswahl alle oder mehrere Speicherkonten auswählen, werden bis zu 200 Speicherkonten zurückgegeben. Wenn Sie beispielsweise insgesamt 573 Speicherkonten in drei ausgewählten Abonnements haben, werden nur 200 Konten angezeigt. 
+- **Speicherkonten** – standardmäßig sind 5 Speicherkonten vorab ausgewählt. Wenn Sie in der Bereichsauswahl alle oder mehrere Speicherkonten auswählen, werden bis zu 200 Speicherkonten zurückgegeben. Wenn Sie beispielsweise insgesamt 573 Speicherkonten in drei ausgewählten Abonnements haben, werden nur 200 Konten angezeigt.
 
-* **Zeitbereich** – Standardmäßig werden die Informationen aus den letzten 4 Stunden basierend auf der entsprechenden Auswahl angezeigt.
+- **Zeitbereich** – Standardmäßig werden die Informationen aus den letzten 4 Stunden basierend auf der entsprechenden Auswahl angezeigt.
 
 Die Zählerkachel unter den Dropdownlisten führt ein Rollup der Gesamtanzahl der Speicherkonten im Abonnement durch und gibt an, wie viele davon ausgewählt sind. Für Spalten in der Arbeitsmappe, die Transaktionsmetriken oder-Fehler melden, gibt es eine bedingte Farbcodierung oder Wärmebilder. Die dunkelste Farbe hat den höchsten Wert, und eine hellere Farbe basiert auf den niedrigsten Werten. Der Wert für die fehlerbasierten Spalten ist „rot“, und für die metrikbasierten Spalten ist er „blau“.
 
-Wählen Sie einen Wert in den Spalten **Verfügbarkeit**, **E2E-Latenz**, **Serverlatenz** und **Transaktionsfehlertyp/Fehler** aus. Dann werden Sie zu einem Bericht weitergeleitet, der auf den spezifischen Typ von Speichermetriken zugeschnitten ist, die mit der für dieses Speicherkonto ausgewählten Spalte übereinstimmen. Weitere Informationen zu den Arbeitsmappen für die einzelnen Kategorien finden Sie weiter unten im Abschnitt [Detaillierte Speicherarbeitsmappen](#detailed-storage-workbooks). 
+Wählen Sie einen Wert in den Spalten **Verfügbarkeit**, **E2E-Latenz**, **Serverlatenz** und **Transaktionsfehlertyp/Fehler** aus. Dann werden Sie zu einem Bericht weitergeleitet, der auf den spezifischen Typ von Speichermetriken zugeschnitten ist, die mit der für dieses Speicherkonto ausgewählten Spalte übereinstimmen. Weitere Informationen zu den Arbeitsmappen für die einzelnen Kategorien finden Sie weiter unten im Abschnitt [Detaillierte Speicherarbeitsmappen](#detailed-storage-workbooks).
 
->[!NOTE]
->Ausführliche Informationen dazu, welche Fehler im Bericht angezeigt werden können, finden Sie unter [Response Type schema](../blobs/monitor-blob-storage-reference.md#metrics-dimensions) (Schema der Antworttypen). Suchen Sie dort nach Antworttypen wie **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. Abhängig von den ausgewählten Speicherkonten werden alle anderen Fehler unter der Kategorie **Andere** dargestellt, wenn mehr als drei Arten von Fehlern gemeldet werden.
+> [!NOTE]
+> Ausführliche Informationen dazu, welche Fehler im Bericht angezeigt werden können, finden Sie unter [Response Type schema](../blobs/monitor-blob-storage-reference.md#metrics-dimensions) (Schema der Antworttypen). Suchen Sie dort nach Antworttypen wie **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. Abhängig von den ausgewählten Speicherkonten werden alle anderen Fehler unter der Kategorie **Andere** dargestellt, wenn mehr als drei Arten von Fehlern gemeldet werden.
 
 Der Standardschwellenwert für **Verfügbarkeit** lautet:
 
-* Warnung – 99%
-* Kritisch – 90%
+- Warnung – 99%
+- Kritisch – 90%
 
-Wenn Sie einen Verfügbarkeitsschwellenwert basierend auf den Ergebnissen Ihrer Beobachtung oder Anforderungen festlegen möchten, lesen Sie [Ändern des Verfügbarkeitsschwellenwerts](#modify-the-availability-threshold). 
+Wenn Sie einen Verfügbarkeitsschwellenwert basierend auf den Ergebnissen Ihrer Beobachtung oder Anforderungen festlegen möchten, lesen Sie [Ändern des Verfügbarkeitsschwellenwerts](#modify-the-availability-threshold).
 
 ### <a name="capacity-workbook"></a>Arbeitsmappe „Kapazität“
 
 Wählen Sie oben auf der Seite die Option **Kapazität** aus. Dann wird die Arbeitsmappe **Kapazität** geöffnet. Sie zeigt Ihnen die Menge des im Konto genutzten gesamten Speichers und die Kapazität, die von den einzelnen Datendiensten im Konto genutzt wird. So können Sie zu stark und zu wenig genutzten Speicherplatz einfacher ermitteln.
 
-![Arbeitsmappe „Kapazität“ für mehrere Speicherkonten](./media/storage-insights-overview/storage-account-capacity-02.png) 
+![Arbeitsmappe „Kapazität“ für mehrere Speicherkonten](./media/storage-insights-overview/storage-account-capacity-02.png)
 
 Für Spalten in der Arbeitsmappe, die Kapazitätsmetriken mit einem blauen Wert melden, gibt es eine bedingte Farbcodierung oder Wärmebilder. Die dunkelste Farbe hat den höchsten Wert, und eine hellere Farbe basiert auf den niedrigsten Werten.
 
-Wenn Sie in einer der Spalten der Arbeitsmappe einen Wert auswählen, führen Sie einen Drilldown zur Arbeitsmappe **Kapazität** für das Speicherkonto aus. Weitere Details zum Drilldownbericht werden weiter unten im Abschnitt [Detaillierte Speicherarbeitsmappen](#detailed-storage-workbooks) beschrieben. 
+Wenn Sie in einer der Spalten der Arbeitsmappe einen Wert auswählen, führen Sie einen Drilldown zur Arbeitsmappe **Kapazität** für das Speicherkonto aus. Weitere Details zum Drilldownbericht werden weiter unten im Abschnitt [Detaillierte Speicherarbeitsmappen](#detailed-storage-workbooks) beschrieben.
 
 ## <a name="view-from-a-storage-account"></a>Anzeigen über ein Speicherkonto
 
@@ -96,35 +95,35 @@ So greifen Sie direkt über ein Speicherkonto auf VM Insights zu:
 
 In der Arbeitsmappe **Übersicht** für das Speicherkonto werden mehrere Leistungsmetriken für die Speicherung angezeigt, anhand derer Sie schnell Folgendes bewerten können:
 
-* Integrität des Speicherdiensts, um sofort festzustellen, ob ein Problem außerhalb ihrer Kontrolle den Speicherdienst in der Region beeinträchtigt, in der er bereitgestellt wird. Dies wird in der Spalte **Zusammenfassung** angegeben.
+- Integrität des Speicherdiensts, um sofort festzustellen, ob ein Problem außerhalb ihrer Kontrolle den Speicherdienst in der Region beeinträchtigt, in der er bereitgestellt wird. Dies wird in der Spalte **Zusammenfassung** angegeben.
 
-* Interaktive Leistungsdiagramme, die die wichtigsten Details im Zusammenhang mit Speicherkapazität, Verfügbarkeit, Transaktionen und Latenz zeigen.  
+- Interaktive Leistungsdiagramme, die die wichtigsten Details im Zusammenhang mit Speicherkapazität, Verfügbarkeit, Transaktionen und Latenz zeigen.
 
-* Metriken und Statuskacheln mit hervorgehobener Dienstverfügbarkeit, Gesamtzahl der Transaktionen für den Speicherdienst, E2E-Latenz und Serverlatenz.
+- Metriken und Statuskacheln mit hervorgehobener Dienstverfügbarkeit, Gesamtzahl der Transaktionen für den Speicherdienst, E2E-Latenz und Serverlatenz.
 
-Wenn Sie eine der Schaltflächen für **Fehler**, **Leistung**, **Verfügbarkeit** und **Kapazität** auswählen, wird die jeweilige Arbeitsmappe geöffnet. 
+Wenn Sie eine der Schaltflächen für **Fehler**, **Leistung**, **Verfügbarkeit** und **Kapazität** auswählen, wird die jeweilige Arbeitsmappe geöffnet.
 
 ![Seite „Übersicht“ für das ausgewählte Speicherkonto](./media/storage-insights-overview/storage-account-capacity-01.png)
 
 ## <a name="detailed-storage-workbooks"></a>Detaillierte Speicherarbeitsmappen
 
-Abhängig davon, ob Sie einen Wert in den Spalten **Verfügbarkeit**, **E2E-Latenz**, **Serverlatenz** und **Transaktionsfehlertyp/Fehler** in der Arbeitsmappe **Übersicht** für mehrere Speicherkonten ausgewählt haben oder eine der Schaltflächen für **Fehler**, **Leistung**, **Verfügbarkeit** und **Kapazität** in der Arbeitsmappe **Übersicht** eines bestimmten Speicherkontos auswählen, liefert jede dieser Möglichkeiten eine Reihe von interaktiven speicherbezogenen Informationen, die auf die jeweilige Kategorie zugeschnitten sind.  
+Abhängig davon, ob Sie einen Wert in den Spalten **Verfügbarkeit**, **E2E-Latenz**, **Serverlatenz** und **Transaktionsfehlertyp/Fehler** in der Arbeitsmappe **Übersicht** für mehrere Speicherkonten ausgewählt haben oder eine der Schaltflächen für **Fehler**, **Leistung**, **Verfügbarkeit** und **Kapazität** in der Arbeitsmappe **Übersicht** eines bestimmten Speicherkontos auswählen, liefert jede dieser Möglichkeiten eine Reihe von interaktiven speicherbezogenen Informationen, die auf die jeweilige Kategorie zugeschnitten sind.
 
-* **Verfügbarkeit** öffnet die Arbeitsmappe **Verfügbarkeit**. Sie zeigt den aktuellen Integritätsstatus des Azure Storage-Diensts, eine Tabelle mit dem verfügbaren Integritätsstatus jedes Objekts – kategorisiert nach dem im Speicherkonto definierten Datendienst – mit einer Trendlinie, die den ausgewählten Zeitbereich darstellt, und einem Verfügbarkeitstrenddiagramm für die einzelnen Datendienste im Konto.  
+- **Verfügbarkeit** öffnet die Arbeitsmappe **Verfügbarkeit**. Sie zeigt den aktuellen Integritätsstatus des Azure Storage-Diensts, eine Tabelle mit dem verfügbaren Integritätsstatus jedes Objekts – kategorisiert nach dem im Speicherkonto definierten Datendienst – mit einer Trendlinie, die den ausgewählten Zeitbereich darstellt, und einem Verfügbarkeitstrenddiagramm für die einzelnen Datendienste im Konto.
 
     ![Beispiel für Verfügbarkeitsbericht](./media/storage-insights-overview/storage-account-availability-01.png)
 
-* **E2E-Latenz** und **Serverlatenz** öffnet die Arbeitsmappe **Leistung**. Sie enthält eine Rollupstatuskachel mit E2E-Latenz und Serverlatenz, ein Leistungsdiagramm von E2E-Latenz im Vergleich zur Serverlatenz und eine Tabelle, in der die Latenz von erfolgreichen Aufrufen durch die API aufgeschlüsselt wird, kategorisiert nach dem im Speicherkonto definierten Datendienst.
+- **E2E-Latenz** und **Serverlatenz** öffnet die Arbeitsmappe **Leistung**. Sie enthält eine Rollupstatuskachel mit E2E-Latenz und Serverlatenz, ein Leistungsdiagramm von E2E-Latenz im Vergleich zur Serverlatenz und eine Tabelle, in der die Latenz von erfolgreichen Aufrufen durch die API aufgeschlüsselt wird, kategorisiert nach dem im Speicherkonto definierten Datendienst.
 
     ![Beispiel für einen Leistungsbericht](./media/storage-insights-overview/storage-account-performance-01.png)
 
-* Wenn Sie eine der im Raster aufgelisteten Fehlerkategorien auswählen, wird die Arbeitsmappe **Fehler** geöffnet. Der Bericht zeigt Folgendes an: Metrikkacheln für alle anderen clientseitigen Fehler (mit Ausnahme von beschriebenen und erfolgreichen Anforderungen), Clientdrosselungsfehler, ein Leistungsdiagramm für den **Antworttyp** der Transaktion, Dimensionsmetrik, die für das Attribut „ClientOtherError“ spezifisch ist, sowie zwei Tabellen – **Transaktionen nach API-Name** und **Transaktionen nach Antworttyp**.
+- Wenn Sie eine der im Raster aufgelisteten Fehlerkategorien auswählen, wird die Arbeitsmappe **Fehler** geöffnet. Der Bericht zeigt Folgendes an: Metrikkacheln für alle anderen clientseitigen Fehler (mit Ausnahme von beschriebenen und erfolgreichen Anforderungen), Clientdrosselungsfehler, ein Leistungsdiagramm für den **Antworttyp** der Transaktion, Dimensionsmetrik, die für das Attribut „ClientOtherError“ spezifisch ist, sowie zwei Tabellen – **Transaktionen nach API-Name** und **Transaktionen nach Antworttyp**.
 
    ![Beispiel für einen Fehlerbericht](./media/storage-insights-overview/storage-account-failures-01.png)
 
-* **Kapazität** öffnet die Arbeitsmappe **Kapazität**. Sie zeigt die Gesamtmenge des Speichers, der für die einzelnen Speicherdatenobjekte im Konto in den Kacheln und im Diagramm verwendet wird, sowie die Anzahl der Datenobjekte, die im Konto gespeichert sind.  
+- **Kapazität** öffnet die Arbeitsmappe **Kapazität**. Sie zeigt die Gesamtmenge des Speichers, der für die einzelnen Speicherdatenobjekte im Konto in den Kacheln und im Diagramm verwendet wird, sowie die Anzahl der Datenobjekte, die im Konto gespeichert sind.
 
-    ![Ausgewählte Seite „Kapazität“ für das Speicherkonto](./media/storage-insights-overview/storage-account-capacity-01.png) 
+    ![Ausgewählte Seite „Kapazität“ für das Speicherkonto](./media/storage-insights-overview/storage-account-capacity-01.png)
 
 ## <a name="pin-and-export"></a>Anheften und exportieren
 
@@ -140,10 +139,10 @@ Die Arbeitsmappen **Übersicht** oder **Kapazität** für Mehrfachabonnement und
 
 In diesem Abschnitt werden gängige Szenarien für die Bearbeitung der Arbeitsmappe erläutert, um sie zur Unterstützung Ihrer Datenanalyseanforderungen anzupassen:
 
-* Arbeitsmappe so festlegen, dass immer ein bestimmtes Abonnement oder ein bestimmtes Speicherkonto/bestimmte Speicherkonten ausgewählt wird/werden
-* Ändern von Metriken im Raster
-* Ändern des Verfügbarkeitsschwellenwerts
-* Ändern des Farbrendering
+- Arbeitsmappe so festlegen, dass immer ein bestimmtes Abonnement oder ein bestimmtes Speicherkonto/bestimmte Speicherkonten ausgewählt wird/werden
+- Ändern von Metriken im Raster
+- Ändern des Verfügbarkeitsschwellenwerts
+- Ändern des Farbrendering
 
 Die Anpassungen werden in einer benutzerdefinierten Arbeitsmappe gespeichert, um zu verhindern, dass die Standardkonfiguration in unserer veröffentlichten Arbeitsmappe überschrieben wird. Arbeitsmappen werden in einer Ressourcengruppe gespeichert, und zwar entweder im für Sie privaten Abschnitt **Meine Berichte** oder im Abschnitt **Freigegebene Berichte**, der für alle Benutzer mit Zugriff auf die Ressourcengruppe zugänglich ist. Nachdem Sie die benutzerdefinierte Arbeitsmappe gespeichert haben, müssen Sie zum Arbeitsmappenkatalog wechseln, um die Mappe zu starten.
 
@@ -157,11 +156,11 @@ Sie können die Arbeitsmappen **Übersicht** oder **Kapazität** für Mehrfachab
 
 2. Wählen Sie in der Arbeitsmappe **Übersicht** in der Befehlsleiste den Befehl **Bearbeiten** aus.
 
-3. Wählen Sie in der Dropdownliste **Abonnements** mindestens ein Abonnement aus, das standardmäßig ausgewählt werden soll. Beachten Sie, dass die Arbeitsmappe die Auswahl von bis zu 10 Abonnements unterstützt.  
+3. Wählen Sie in der Dropdownliste **Abonnements** mindestens ein Abonnement aus, das standardmäßig ausgewählt werden soll. Beachten Sie, dass die Arbeitsmappe die Auswahl von bis zu 10 Abonnements unterstützt.
 
-4. Wählen Sie in der Dropdownliste **Speicherkonten** mindestens ein Konto aus, das standardmäßig ausgewählt werden soll. Beachten Sie, dass die Arbeitsmappe die Auswahl von bis zu insgesamt 200 Speicherkonten unterstützt. 
+4. Wählen Sie in der Dropdownliste **Speicherkonten** mindestens ein Konto aus, das standardmäßig ausgewählt werden soll. Beachten Sie, dass die Arbeitsmappe die Auswahl von bis zu insgesamt 200 Speicherkonten unterstützt.
 
-5. Wählen Sie in der Befehlsleiste den Befehl **Speichern unter** aus, um eine Kopie der Arbeitsmappe mit Ihren Anpassungen zu speichern. Klicken Sie dann auf **Bearbeitung abgeschlossen**, um zum Lesemodus zurückzukehren.  
+5. Wählen Sie in der Befehlsleiste den Befehl **Speichern unter** aus, um eine Kopie der Arbeitsmappe mit Ihren Anpassungen zu speichern. Klicken Sie dann auf **Bearbeitung abgeschlossen**, um zum Lesemodus zurückzukehren.
 
 ### <a name="modify-metrics-and-colors-in-the-workbook"></a>Ändern von Metriken und Farben in der Arbeitsmappe
 
@@ -169,8 +168,8 @@ Die vorkonfigurierten Arbeitsmappen enthalten Metrikdaten, und Sie haben die Mö
 
 In unserem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ für Mehrfachabonnement und Speicherkonto, um Folgendes zu veranschaulichen:
 
-* Entfernen einer Metrik
-* Ändern des Farbrendering
+- Entfernen einer Metrik
+- Ändern des Farbrendering
 
 Sie können bei jeder der vordefinierten Arbeitsmappen **Fehler**, **Leistung**, **Verfügbarkeit** und **Kapazität** dieselben Änderungen ausführen.
 
@@ -200,17 +199,17 @@ Nun ändern wir das Farbdesign für die Kapazitätsmetriken im Bericht so, dass 
 
 3. Wählen Sie **Speichern und schließen** aus, um Ihre Änderung zu committen.
 
-4. Wählen Sie in der Befehlsleiste den Befehl **Speichern unter** aus, um eine Kopie der Arbeitsmappe mit Ihren Anpassungen zu speichern. Klicken Sie dann auf **Bearbeitung abgeschlossen**, um zum Lesemodus zurückzukehren.  
+4. Wählen Sie in der Befehlsleiste den Befehl **Speichern unter** aus, um eine Kopie der Arbeitsmappe mit Ihren Anpassungen zu speichern. Klicken Sie dann auf **Bearbeitung abgeschlossen**, um zum Lesemodus zurückzukehren.
 
 ### <a name="modify-the-availability-threshold"></a>Ändern des Verfügbarkeitsschwellenwerts
 
-In diesem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ des Speicherkontos und zeigen, wie der Verfügbarkeitsschwellenwert geändert wird. Standardmäßig werden die Kachel und das Raster, die bzw. das die prozentuale Verfügbarkeit meldet, mit einem minimalen Schwellenwert von „90“ und einem maximalen Schwellenwert von „99“ konfiguriert. Wir werden den minimalen Schwellenwert für **Verfügbarkeit %** im Raster **Verfügbarkeit nach API-Name** auf „85%“ ändern. Dies bedeutet, dass sich der Integritätszustand in „kritisch“ ändert, wenn der Schwellenwert kleiner als 85 Prozent ist. 
+In diesem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ des Speicherkontos und zeigen, wie der Verfügbarkeitsschwellenwert geändert wird. Standardmäßig werden die Kachel und das Raster, die bzw. das die prozentuale Verfügbarkeit meldet, mit einem minimalen Schwellenwert von „90“ und einem maximalen Schwellenwert von „99“ konfiguriert. Wir werden den minimalen Schwellenwert für **Verfügbarkeit %** im Raster **Verfügbarkeit nach API-Name** auf „85%“ ändern. Dies bedeutet, dass sich der Integritätszustand in „kritisch“ ändert, wenn der Schwellenwert kleiner als 85 Prozent ist.
 
 1. Wählen Sie im Portal **Speicherkonten** und dann ein Speicherkonto aus der Liste aus.
 
 2. Wählen Sie im linken Bereich **Insights** aus.
 
-3. Wählen Sie in der Arbeitsmappe **Verfügbarkeit** aus, um zur Arbeitsmappe „Verfügbarkeit“ zu wechseln. Wählen Sie dann in der Befehlsleiste den Befehl **Bearbeiten** aus. 
+3. Wählen Sie in der Arbeitsmappe **Verfügbarkeit** aus, um zur Arbeitsmappe „Verfügbarkeit“ zu wechseln. Wählen Sie dann in der Befehlsleiste den Befehl **Bearbeiten** aus.
 
 4. Scrollen Sie nach unten bis zum unteren Seitenrand, und wählen Sie links neben dem Raster **Verfügbarkeit nach API** die Option **Bearbeiten** aus.
 
@@ -232,7 +231,7 @@ Dieser Abschnitt unterstützt Sie bei der Diagnose und Behandlung einiger häufi
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Beheben von Leistungs-, Kapazitäts-oder Verfügbarkeitsproblemen
 
-Informationen zur Problembehandlung bei speicherbezogenen Problemen, die Sie im Zusammenhang mit Storage Insights ermitteln, finden Sie in den [Anleitungen zur Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance) für Azure Storage.  
+Informationen zur Problembehandlung bei speicherbezogenen Problemen, die Sie im Zusammenhang mit Storage Insights ermitteln, finden Sie in den [Anleitungen zur Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance) für Azure Storage.
 
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>Warum kann ich nur 200 Speicherkonten sehen?
 
@@ -267,8 +266,8 @@ Jede Arbeitsmappe wird in dem Speicherkonto gespeichert, in der Sie diese gespei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Konfigurieren Sie [Metrikwarnungen](../../azure-monitor/alerts/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sein können.
+- Konfigurieren Sie [Metrikwarnungen](../../azure-monitor/alerts/alerts-metric.md) und [Dienstintegritätsbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications-portal.md), um automatisierte Warnungen einzurichten, die beim Erkennen von Problemen hilfreich sein können.
 
-* Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../../azure-monitor/visualize/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
+- Informieren Sie sich unter [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../../azure-monitor/visualize/workbooks-overview.md) über die Szenarien, die Arbeitsmappen unterstützen sollen, wie Sie neue Berichte erstellen und vorhandene Berichte anpassen können, und vieles mehr.
 
-* Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).
+- Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).

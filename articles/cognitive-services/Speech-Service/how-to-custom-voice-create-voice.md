@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 83c3c4b9d3ab4f2497b919a2a929ad87f3cadbea
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 1f444ca13224c27918812c12f0a9e86a50e0b994
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535561"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644674"
 ---
 # <a name="create-and-use-your-voice-model"></a>Erstellen und Verwenden Ihres Sprachmodells
 
@@ -90,7 +90,7 @@ Unter **Datendetails** können Sie die Datendetails des Trainingssatzes überpr�
 
 Die Probleme sind in drei Typen unterteilt. Beziehen Sie sich auf die folgenden drei Tabellen, um die jeweiligen Fehlertypen zu überprüfen.
 
-Die erste Art von Fehlern, die in der folgenden Tabelle aufgeführt sind, muss manuell behoben werden. Andernfalls werden die Daten mit diesen Fehlern während des Trainings ausgeschlossen.
+Beheben Sie die erste Art von Fehlern, die in der folgenden Tabelle aufgeführt sind, manuell. Andernfalls werden die Daten mit diesen Fehlern während des Trainings ausgeschlossen.
 
 | Category | Name | BESCHREIBUNG |
 | --------- | ----------- | --------------------------- |
@@ -146,20 +146,37 @@ Nach der Überprüfung Ihrer Datendateien können Sie mit ihnen Ihr benutzerdefi
 
 Standardmäßig wird Ihr Stimmmodell in derselben Sprache wie Ihre Trainingsdaten trainiert. Sie können auch eine sekundäre Sprache (Vorschauversion) für Ihr Stimmmodell erstellen.  Überprüfen Sie die Sprachen, die für benutzerdefinierte neuronale Stimmen und sprachübergreifende Features unterstützt werden: [Sprache für die Anpassung](language-support.md#customization).
 
+Das Training von benutzerdefinierten neuronalen Stimmen ist nicht kostenlos. Ausführliche Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). Wenn Sie jedoch vor dem 31.03.2021 statistisch-parametrische oder verkettete Stimmmodelle mit S0 Speech-Ressourcen bereitgestellt haben, werden für Ihr Azure-Abonnement kostenlose neuronale Trainingsguthaben angeboten, und Sie können fünf verschiedene Versionen neuronaler Stimmen kostenlos trainieren.
+
 3. Wählen Sie als Nächstes die Daten aus, die Sie für das Training verwenden möchten, und geben Sie eine Sprecherdatei an.
 
 >[!NOTE]
 >- Sie müssen mindestens 300 Äußerungen auswählen, um eine benutzerdefinierte neuronale Stimme zu erstellen.
 >- Um eine neuronale Stimme zu trainieren, müssen Sie ein Sprecherprofil mit der Audiozustimmungsdatei des Sprechers angeben, in der dieser der Verwendung seiner Sprachdaten zum Trainieren eines benutzerdefinierten Sprachmodells zustimmt. Das Feature „Benutzerdefinierte neuronale Stimme“ ist mit eingeschränktem Zugriff verfügbar. Stellen Sie sicher, dass Sie die [Anforderungen für verantwortungsvolle KI](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) kennen, und [fordern Sie hier den Zugriff an](https://aka.ms/customneural).
->- Auf dieser Seite können Sie auch Ihr Manuskript zum Testen hochladen. Das Testmanuskript muss eine TXT-Datei von höchstens 1 MB sein. Unterstützte Codierungsformat sind z. B. ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE oder UTF-16-BE. Jeder Absatz der Äußerung ergibt eine separate Audiodatei. Wenn Sie alle Sätze in einer Audiodatei kombinieren möchten, fügen Sie sie zu einem einzigen Absatz zusammen.
 
-4. Geben Sie dann unter **Name** einen Namen und unter **Beschreibung** eine Beschreibung ein, um dieses Modell identifizieren zu können.
+4. Wählen Sie dann Ihr Testskript aus.
+
+Bei jedem Training werden 100 Beispielaudiodateien automatisch generiert, um Sie beim Testen des Modells mit einem Standardskript zu unterstützen. Sie können auch optional ein eigenes Testskript bereitstellen. Das Testskript muss die Dateinamen (die ID jeder Äußerung) ausschließen, andernfalls werden diese IDs gesprochen. Das folgende Beispiel zeigt, wie die Äußerungen in einer TXT-Datei strukturiert sind:
+
+```
+This is the waistline, and it's falling.
+We have trouble scoring.
+It was Janet Maslin.
+```
+
+Jeder Absatz der Äußerung ergibt eine separate Audiodatei. Wenn Sie alle Sätze in einer Audiodatei kombinieren möchten, fügen Sie sie zu einem einzigen Absatz zusammen.
+
+>[!NOTE]
+>- Das Testmanuskript muss eine TXT-Datei von höchstens 1 MB sein. Unterstützte Codierungsformat sind z. B. ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE oder UTF-16-BE.  
+>- Die generierten Audiodateien sind eine Kombination aus dem hochgeladenen Testskript und dem Standardtestskript.
+
+5. Geben Sie unter **Name** einen Namen und unter **Beschreibung** eine Beschreibung ein, um dieses Modell identifizieren zu können.
 
 Wählen Sie den Namen sorgfältig aus. Der hier eingegebene Name ist der Name, der zur Festlegung der Stimme in der Sprachsyntheseanforderung als Teil der SSML-Eingabe verwendet wird. Zulässig sind nur Buchstaben, Zahlen und einige wenige Satzzeichen wie -, _ und (', '). Verwenden Sie unterschiedliche Namen für unterschiedliche neuronale Stimmmodelle.
 
 Im Feld **Beschreibung** werden in der Regel die Namen der Daten erfasst, die zur Erstellung des Modells verwendet wurden.
 
-5. Überprüfen Sie die Einstellungen, und wählen Sie dann **Übermitteln** aus, um mit dem Trainieren des Modells zu beginnen.
+6. Überprüfen Sie die Einstellungen, und wählen Sie dann **Übermitteln** aus, um mit dem Trainieren des Modells zu beginnen.
 
 > [!NOTE]
 > Doppelte Audionamen werden aus dem Training entfernt. Achten Sie darauf, dass die ausgewählten Daten nicht in mehreren ZIP-Dateien die gleichen Audionamen enthalten.
@@ -177,17 +194,17 @@ Der angezeigte Status gibt Aufschluss über die Konvertierung Ihrer Daten in ein
 Die Trainingsdauer hängt davon ab, wie viele Daten Sie trainieren. Das Trainieren einer benutzerdefinierten neuronalen Stimme dauert im Durchschnitt etwa 40 Computestunden. 
 
 > [!NOTE]
-> Das Training von benutzerdefinierten neuronalen Stimmen ist nicht kostenlos. Eine Preisübersicht finden Sie [unter diesem Link](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). Benutzer mit einem Standard-Abonnement (S0) können drei Stimmen gleichzeitig trainieren. Wenn das Limit erreicht wurde, warten Sie, bis der Trainingsvorgang mindestens eines Voicefonts beendet wurde, und versuchen Sie es dann noch mal. 
+> Benutzer mit einem Standard-Abonnement (S0) können drei Stimmen gleichzeitig trainieren. Wenn das Limit erreicht wurde, warten Sie, bis der Trainingsvorgang mindestens eines Stimmmodells beendet wurde, und versuchen Sie es dann noch mal. 
 
-6. Nachdem Sie das Training des Modells erfolgreich abgeschlossen haben, können Sie die Modelldetails überprüfen.
+7. Nachdem Sie das Training des Modells erfolgreich abgeschlossen haben, können Sie die Modelldetails überprüfen.
 
-Bei jedem Training werden 100 Beispielaudiodateien automatisch generiert, um das Modell zu testen. Nach der erfolgreichen Erstellung des Stimmmodells können Sie es vor der Bereitstellung testen.
+Nach der erfolgreichen Erstellung des Stimmmodells können Sie die generierten Beispielaudiodateien verwenden, um es vor der Bereitstellung zur Nutzung zu testen.
 
 Die Qualität der Stimme hängt von vielen Faktoren ab, z. B. der Größe des Trainingsdatasets, der Qualität der Aufzeichnung, der Genauigkeit der Transkriptionsdatei sowie davon, wie gut die in den Trainingsdaten aufgezeichnete Stimme zu der Persönlichkeit der für Ihren vorgesehenen Anwendungsfall entworfenen Stimme passt. [Weitere Informationen zu den Funktionen und Beschränkungen dieser Technologie sowie bewährte Methoden zur Verbesserung der Modellqualität](/legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) 
 
 ## <a name="create-and-use-a-custom-neural-voice-endpoint"></a>Erstellen und Verwenden eines Endpunkts für eine benutzerdefinierte neuronale Stimme
 
-Nach dem erfolgreichen Erstellen und Testen des Sprachmodells können Sie es in einem benutzerdefinierten Text-to-Speech-Endpunkt bereitstellen. Diesen verwenden Sie anschließend anstelle des üblichen Endpunkts beim Senden von Text-to-Speech-Anforderungen über die REST-API. Der benutzerdefinierte Endpunkt kann nur von dem Abonnement aufgerufen werden, mit dem Sie den Voicefont bereitgestellt haben.
+Nach dem erfolgreichen Erstellen und Testen des Sprachmodells können Sie es in einem benutzerdefinierten Text-to-Speech-Endpunkt bereitstellen. Diesen verwenden Sie anschließend anstelle des üblichen Endpunkts beim Senden von Text-to-Speech-Anforderungen über die REST-API. Der benutzerdefinierte Endpunkt kann nur von dem Abonnement aufgerufen werden, mit dem Sie das Modell bereitgestellt haben.
 
 Gehen Sie wie folgt vor, um einen benutzerdefinierten Endpunkt für eine benutzerdefinierte neuronale Stimme zu erstellen.
 

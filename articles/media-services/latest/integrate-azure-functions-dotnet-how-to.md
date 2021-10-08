@@ -1,324 +1,169 @@
 ---
 title: Entwickeln von Azure Functions mit Media Services v3
-description: In diesem Thema wird gezeigt, wie Sie im Azure-Portal mit dem Entwickeln von Azure Functions mit Media Services v3 beginnen.
+description: In diesem Artikel wird gezeigt, wie Sie in Visual Studio Code mit dem Entwickeln von Azure Functions mit Media Services v3 beginnen.
 services: media-services
-author: IngridAtMicrosoft
-manager: femila
+author: xpouyat
 ms.service: media-services
 ms.workload: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/22/2021
-ms.author: inhenkel
+ms.date: 06/09/2021
+ms.author: xpouyat
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 389ad34bb856675dfabd761507ed07cc722c032a
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 523a5dbfb503f47f15e44e7be1b61bf6cf05c471
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281256"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661714"
 ---
 # <a name="develop-azure-functions-with-media-services-v3"></a>Entwickeln von Azure Functions mit Media Services v3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-In diesem Artikel wird veranschaulicht, wie Sie mit der Erstellung von Azure Functions beginnen, für die Media Services verwendet werden. Die in diesem Artikel definierte Azure Function überwacht einen Speicherkontocontainer mit dem Namen **input** für neue MP4-Dateien. Sobald eine Datei in den Speichercontainer abgelegt wird, führt der Blobtrigger die Funktion aus. Informationen zu Azure Functions finden Sie unter [Übersicht](../../azure-functions/functions-overview.md) und anderen Themen im Abschnitt **Azure Functions**.
+In diesem Artikel wird veranschaulicht, wie Sie mit der Erstellung von Azure Functions beginnen, für die Media Services verwendet werden. Die in diesem Artikel definierte Azure-Funktion codiert eine Videodatei mit Media Encoder Standard. Sobald der Codierungsauftrag erstellt wurde, gibt die Funktion den Auftragsnamen und den Namen des Ausgabeobjekts zurück. Informationen zu Azure Functions finden Sie unter [Übersicht](../../azure-functions/functions-overview.md) und anderen Themen im Abschnitt **Azure Functions**.
 
-Wenn Sie vorhandene Azure Functions-Instanzen, die Azure Media Services verwenden, erkunden und bereitstellen möchten, sehen Sie sich [Media Services mit Azure Functions](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration). Dieses Repository enthält Beispiele, in denen Media Services verwendet wird. Hiermit werden Workflows veranschaulicht, bei denen es um das Erfassen von Inhalten direkt aus Blob Storage, die Codierung und das Rückschreiben von Inhalt in Blob Storage geht.
+Wenn Sie vorhandene Azure Functions-Instanzen, die Azure Media Services verwenden, erkunden und bereitstellen möchten, sehen Sie sich [Media Services mit Azure Functions](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration). Dieses Repository enthält Beispiele, in denen Media Services verwendet wird, um Workflows zu veranschaulichen, bei denen es um das Erfassen von Inhalten direkt aus Blob Storage, die Codierung und Livestreamingvorgänge geht.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Bevor Sie Ihre erste Funktion erstellen können, müssen Sie über ein aktives Azure-Konto verfügen. Wenn Sie noch kein Azure-Konto haben, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/).
 - Es ist ratsam, wie [hier](account-create-how-to.md) beschrieben ein AMS-Konto zu erstellen, wenn Sie Azure Functions erstellen möchten, mit denen Aktionen in Ihrem AMS-Konto (Azure Media Services) durchgeführt werden oder auf von Media Services gesendete Ereignisse gelauscht wird.
+- Installieren Sie [Visual Studio Code](https://code.visualstudio.com/) auf einer der [unterstützten Plattformen](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
 
-## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
+In diesem Artikel wird erläutert, wie Sie eine C#-.NET 5-Funktion erstellen, die mit Azure Media Services kommuniziert. Informationen zum Erstellen einer Funktion in einer anderen Sprache finden Sie in diesem [Artikel](../../azure-functions/functions-develop-vs-code.md).
 
-1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
-2. Erstellen Sie wie [hier](../../azure-functions/functions-create-function-app-portal.md) beschrieben eine Funktionen-App.
+### <a name="run-local-requirements"></a>Anforderungen für die lokale Ausführung
 
->[!NOTE]
-> Ein von Ihnen angegebenes Speicherkonto sollte sich in derselben Region wie die App befinden.
+Diese Voraussetzungen sind nur erforderlich, wenn Sie Ihre Funktionen lokal ausführen und debuggen. Sie sind nicht für das Erstellen oder Veröffentlichen von Projekten in Azure Functions erforderlich.
 
-## <a name="configure-function-app-settings"></a>Konfigurieren von Einstellungen der Funktionen-App
+- [.NET Core 3.1 und .NET 5 SDKs](https://dotnet.microsoft.com/download/dotnet).
 
-Beim Entwickeln von Media Services-Funktionen ist es nützlich, Umgebungsvariablen hinzuzufügen, die in Ihren Funktionen verwendet werden. Klicken Sie zum Konfigurieren von App-Einstellungen auf den Link „App-Einstellungen konfigurieren“. Weitere Informationen finden Sie unter [Konfigurieren der Einstellungen der Azure Function-App](../../azure-functions/functions-how-to-use-azure-function-app-settings.md).
+- [Azure Functions Core Tools](../../azure-functions/functions-run-local.md#install-the-azure-functions-core-tools), Version 3 oder höher. Das Core Tools-Paket wird für Sie automatisch heruntergeladen und installiert, wenn Sie das Projekt lokal starten. Die Core Tools beinhalten die gesamte Azure Functions-Runtime, daher können Download und Installation einige Zeit in Anspruch nehmen.
 
-## <a name="create-a-function"></a>Erstellen einer Funktion
+- [C#-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) für Visual Studio Code
 
-Nachdem die Funktionen-App bereitgestellt wurde, wird sie unter den Azure Functions von **App Services** aufgeführt.
+## <a name="install-the-azure-functions-extension"></a>Installieren der Azure Functions-Erweiterung
 
-1. Wählen Sie Ihre Funktionen-App aus, und klicken Sie auf **Neue Funktion**.
-1. Wählen Sie die Sprache **C#** und das Szenario **Datenverarbeitung** aus.
-1. Wählen Sie die Vorlage **BlobTrigger** aus. Diese Funktion wird ausgelöst, wenn ein Blob in den **input**-Container hochgeladen wird. Der Name **input** wird unter **Path** im nächsten Schritt festgelegt.
-1. Nachdem Sie **BlobTrigger** ausgewählt haben, werden auf der Seite einige weitere Steuerelemente angezeigt.
-1. Klicken Sie auf **Erstellen**.
+Sie können die Azure Functions-Erweiterung verwenden, um Funktionen zu erstellen und zu testen und in Azure bereitzustellen.
 
-## <a name="files"></a>Dateien
+1. Öffnen Sie in Visual Studio Code die Option **Erweiterungen**, und suchen Sie nach **Azure Functions**, oder wählen Sie in Visual Studio Code diesen Link aus: [`vscode:extension/ms-azuretools.vscode-azurefunctions`](vscode:extension/ms-azuretools.vscode-azurefunctions).
 
-Ihre Azure-Funktion ist Codedateien und anderen Dateien zugeordnet, die in diesem Abschnitt beschrieben werden. Bei Verwendung des Azure-Portals zum Erstellen einer Funktion werden **function.json** und **run.csx** für Sie erstellt. Sie müssen die Datei **project.json** hinzufügen oder hochladen. Der restliche Teil dieses Abschnitts enthält eine kurze Erläuterung der einzelnen Dateien und zeigt ihre Definitionen.
+1. Wählen Sie **Installieren** aus, um die Erweiterung für Visual Studio Code zu installieren:
 
-### <a name="functionjson"></a>function.json
+    ![Installieren der Erweiterung für Azure Functions](./Media/integrate-azure-functions-dotnet-how-to/vscode-install-extension.png)
 
-Die Datei „function.json“ definiert die Funktionsbindungen und weitere Konfigurationseinstellungen. Die Laufzeit verwendet diese Datei, um zu ermitteln, welche Ereignisse überwacht werden sollen und wie Daten in die Funktionsausführung übergeben und aus dieser zurückgegeben werden. Weitere Informationen finden Sie unter [HTTP- und Webhookbindungen in Azure Functions](../../azure-functions/functions-reference.md#function-code).
+1. Wählen Sie nach der Installation auf der Aktivitätsleiste das Azure-Symbol aus. Auf der Seitenleiste sollte ein Azure Functions-Bereich angezeigt werden.
 
->[!NOTE]
->Legen Sie die **disabled**-Eigenschaft auf **true** fest, um die Ausführung der Funktion zu verhindern.
+    ![Azure Functions-Bereich auf der Seitenleiste](./Media/integrate-azure-functions-dotnet-how-to/azure-functions-window-vscode.png)
 
-Ersetzen Sie den Inhalt der vorhandenen Datei „function.json“ durch den folgenden Code:
+## <a name="create-an-azure-functions-project"></a>Erstellen eines Azure Functions-Projekts
+
+Mithilfe der Functions-Erweiterung können Sie zugleich mit Ihrer ersten Funktion ein Funktions-App-Projekt erstellen. Die folgenden Schritte zeigen, wie Sie eine über HTTP ausgelöste Funktion in einem neuen Functions-Projekt erstellen. HTTP-Trigger ist die einfachste Funktionstriggervorlage und eignet sich daher gut zur Veranschaulichung.
+
+1. Wählen Sie in **Azure Functions** das Symbol zum **Erstellen einer Funktion** aus:
+
+    ![Erstellen einer Funktion](./Media/integrate-azure-functions-dotnet-how-to/create-function.png)
+
+1. Wählen Sie den Ordner für Ihr Funktions-App-Projekt, und dann **wählen Sie C# für Ihr Funktions-App-Projekt** sowie **.NET 5 Isoliert** für die Runtime aus.
+
+1. Wählen Sie Funktionsvorlage **HTTP-Trigger** aus.
+
+    ![Auswählen der Vorlage für den HTTP-Trigger](./Media/integrate-azure-functions-dotnet-how-to/create-function-choose-template.png)
+
+1. Geben Sie **HttpTriggerEncode** für den Funktionsnamen und dann EINGABE ein, übernehmen Sie **Company.Function** als Wert für den Namespace, und wählen Sie dann für die Zugriffsrechte **Function** aus. Für diese Autorisierungsebene müssen Sie beim Aufrufen des Funktionsendpunkts einen [Funktionsschlüssel](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) angeben.
+
+    ![Auswählen von Funktionsautorisierung](./Media/integrate-azure-functions-dotnet-how-to/create-function-auth.png)
+
+    Eine Funktion wird in Ihrer gewählten Sprache und in der Vorlage für eine über HTTP ausgelöste Funktion erstellt.
+
+    ![Über HTTP ausgelöst Funktionsvorlage in Visual Studio Code](./Media/integrate-azure-functions-dotnet-how-to/new-function-full.png)
+
+## <a name="install-media-services-and-other-extensions"></a>Installieren von Media Services und anderen Erweiterungen
+
+Führen Sie den Befehl dotnet add package im Terminalfenster aus, um die Erweiterungspakete zu installieren, die Sie in Ihrem Projekt benötigen. Mit dem folgenden Befehl werden das Media Services-Paket und andere Erweiterungen installiert, die für das Beispiel erforderlich sind.
+
+```bash
+dotnet add package Azure.Storage.Blobs
+dotnet add package Microsoft.Azure.Management.Media
+dotnet add package Azure.Identity
+```
+
+## <a name="generated-project-files"></a>Generierte Projektdateien
+
+Die Projektvorlage erstellt ein Projekt in Ihrer gewählten Sprache und installiert die erforderlichen Abhängigkeiten. Das neue Projekt weist diese Dateien auf:
+
+* **host.json**: Ermöglicht das Konfigurieren des Functions-Hosts. Diese Einstellungen gelten, wenn Sie Funktionen lokal ausführen und sie in Azure ausführen. Weitere Informationen finden Sie in der [host.json-Referenz](./../../azure-functions/functions-host-json.md).
+
+* **local.settings.json**: Behält Einstellungen beim lokalen Ausführen von Funktionen bei. Diese Einstellungen werden nur beim lokalen Ausführen von Funktionen verwendet.
+
+    >[!IMPORTANT]
+    >Da die Datei „local.settings.json“ Geheimnisse enthalten kann, müssen Sie sie aus der Quellcodeverwaltung Ihres Projekts ausschließen.
+
+* **HttpTriggerEncode.cs**-Klassendatei, die die Funktion implementiert.
+
+### <a name="httptriggerencodecs"></a>HttpTriggerEncode.cs
+
+Dies ist der C#-Code für Ihre Funktion. Seine Rolle besteht darin, ein Media Services-Medienobjekt oder eine Quell-URL zu übernehmen und einen Codierungsauftrag in Media Services zu starten. Er verwendet eine Transformation, die erstellt wird, wenn sie nicht vorhanden ist. Falls sie erstellt wird, wird dazu die im Text der Eingabe angegebene Voreinstellung verwendet. 
+
+>[!IMPORTANT]
+>Ersetzen Sie den gesamten Inhalt der Datei HttpTriggerEncode.cs durch [`HttpTriggerEncode.cs` aus diesem Repository](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/blob/main/Tutorial/HttpTriggerEncode.cs).
+
+Nachdem Sie die Definition der Funktion abgeschlossen haben, wählen Sie **Speichern und ausführen** aus.
+
+Der Quellcode für die **Run**-Methode der Funktion lautet:
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-core-functions-integration/Tutorial/HttpTriggerEncode.cs#Run)]
+
+### <a name="localsettingsjson"></a>local.settings.json
+
+Aktualisieren Sie die Datei mit dem folgenden Inhalt (und ersetzen Sie die Werte).
 
 ```json
 {
-  "bindings": [
-    {
-      "name": "myBlob",
-      "type": "blobTrigger",
-      "direction": "in",
-      "path": "input/{filename}.mp4",
-      "connection": "ConnectionString"
-    }
-  ],
-  "disabled": false
-}
-```
-
-### <a name="projectjson"></a>project.json
-
-Die Datei „project.json“ enthält die Abhängigkeiten. Hier sehen Sie ein Beispiel für die Datei **project.json**, das die erforderlichen .NET Azure Media Services-Pakete aus NuGet enthält. Beachten Sie, dass sich die Versionsnummern mit den aktuellen Updates für die Pakete ändert, daher sollten Sie überprüfen, ob die aktuellste Version vorliegt.
-
-Fügen Sie die folgende Definition der Datei „project.json“ hinzu.
-
-```json
-{
-  "frameworks": {
-    "net46":{
-      "dependencies": {
-        "windowsazure.mediaservices": "4.0.0.4",
-        "windowsazure.mediaservices.extensions": "4.0.0.4",
-        "Microsoft.IdentityModel.Clients.ActiveDirectory": "3.13.1",
-        "Microsoft.IdentityModel.Protocol.Extensions": "1.0.2.206221351"
-      }
-    }
-   }
-}
-
-```
-
-### <a name="runcsx"></a>run.csx
-
-Dies ist der C#-Code für Ihre Funktion.  Die unten definierte Funktion überwacht einen Speicherkontocontainer mit dem Namen **input** (so wie im Pfad angegeben) für neue MP4-Dateien. Sobald eine Datei in den Speichercontainer abgelegt wird, führt der Blobtrigger die Funktion aus.
-
-Das in diesem Abschnitt definierte Beispiel veranschaulicht Folgendes:
-
-1. Erfassen eines Medienobjekts in einem Media Services-Konto (durch Kopieren eines Blobs in ein AMS-Medienobjekt)
-2. Übermitteln eines Codierungsauftrags, der die Voreinstellung „Adaptives Streaming“ von Media Encoder Standard verwendet
-
-Ersetzen Sie den Inhalt der vorhandenen Datei „run.csx“ durch folgenden Code: Wenn Sie mit der Definition Ihrer Funktion fertig sind, klicken Sie auf **Speichern und ausführen**.
-
-```csharp
-#r "Microsoft.WindowsAzure.Storage"
-#r "Newtonsoft.Json"
-#r "System.Web"
-
-using System;
-using System.Net;
-using System.Net.Http;
-using Newtonsoft.Json;
-using Microsoft.WindowsAzure.MediaServices.Client;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.IO;
-using System.Web;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.Azure.WebJobs;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-  
-// Read values from the App.config file.
-
-static readonly string _AADTenantDomain = Environment.GetEnvironmentVariable("AMSAADTenantDomain");
-static readonly string _RESTAPIEndpoint = Environment.GetEnvironmentVariable("AMSRESTAPIEndpoint");
- 
-static readonly string _mediaservicesClientId = Environment.GetEnvironmentVariable("AMSClientId");
-static readonly string _mediaservicesClientSecret = Environment.GetEnvironmentVariable("AMSClientSecret");
-
-static readonly string _connectionString = Environment.GetEnvironmentVariable("ConnectionString");  
-
-private static CloudMediaContext _context = null;
-private static CloudStorageAccount _destinationStorageAccount = null;
-
-public static void Run(CloudBlockBlob myBlob, string fileName, TraceWriter log)
-{
-    // NOTE that the variables {fileName} here come from the path setting in function.json
-    // and are passed into the  Run method signature above. We can use this to make decisions on what type of file
-    // was dropped into the input container for the function. 
-
-    // No need to do any Retry strategy in this function, By default, the SDK calls a function up to 5 times for a 
-    // given blob. If the fifth try fails, the SDK adds a message to a queue named webjobs-blobtrigger-poison.
-
-    log.Info($"C# Blob trigger function processed: {fileName}.mp4");
-    log.Info($"Media Services REST endpoint : {_RESTAPIEndpoint}");
-
-    try
-    {
-        AzureAdTokenCredentials tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain,
-                            new AzureAdClientSymmetricKey(_mediaservicesClientId, _mediaservicesClientSecret),
-                            AzureEnvironments.AzureCloudEnvironment);
- 
-        AzureAdTokenProvider tokenProvider = new AzureAdTokenProvider(tokenCredentials);
- 
-        _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
-
-        IAsset newAsset = CreateAssetFromBlob(myBlob, fileName, log).GetAwaiter().GetResult();
-
-        // Step 2: Create an Encoding Job
-
-        // Declare a new encoding job with the Standard encoder
-        IJob job = _context.Jobs.Create("Azure Function - MES Job");
-
-        // Get a media processor reference, and pass to it the name of the 
-        // processor to use for the specific task.
-        IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
-
-        // Create a task with the encoding details, using a custom preset
-        ITask task = job.Tasks.AddNew("Encode with Adaptive Streaming",
-            processor,
-            "Adaptive Streaming",
-            TaskOptions.None); 
-
-        // Specify the input asset to be encoded.
-        task.InputAssets.Add(newAsset);
-
-        // Add an output asset to contain the results of the job. 
-        // This output is specified as AssetCreationOptions.None, which 
-        // means the output asset is not encrypted. 
-        task.OutputAssets.AddNew(fileName, AssetCreationOptions.None);
-
-        job.Submit();
-        log.Info("Job Submitted");
-
-    }
-    catch (Exception ex)
-    {
-        log.Error("ERROR: failed.");
-        log.Info($"StackTrace : {ex.StackTrace}");
-        throw ex;
-    }
-}
-
-private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-{
-    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-
-    if (processor == null)
-    throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-
-    return processor;
-}
-
-public static async Task<IAsset> CreateAssetFromBlob(CloudBlockBlob blob, string assetName, TraceWriter log){
-    IAsset newAsset = null;
-
-    try{
-        Task<IAsset> copyAssetTask = CreateAssetFromBlobAsync(blob, assetName, log);
-        newAsset = await copyAssetTask;
-        log.Info($"Asset Copied : {newAsset.Id}");
-    }
-    catch(Exception ex){
-        log.Info("Copy Failed");
-        log.Info($"ERROR : {ex.Message}");
-        throw ex;
-    }
-
-    return newAsset;
-}
-
-/// <summary>
-/// Creates a new asset and copies blobs from the specifed storage account.
-/// </summary>
-/// <param name="blob">The specified blob.</param>
-/// <returns>The new asset.</returns>
-public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, string assetName, TraceWriter log)
-{
-     //Get a reference to the storage account that is associated with the Media Services account. 
-    _destinationStorageAccount = CloudStorageAccount.Parse(_connectionString);
-
-    // Create a new asset. 
-    var asset = _context.Assets.Create(blob.Name, AssetCreationOptions.None);
-    log.Info($"Created new asset {asset.Name}");
-
-    IAccessPolicy writePolicy = _context.AccessPolicies.Create("writePolicy",
-    TimeSpan.FromHours(4), AccessPermissions.Write);
-    ILocator destinationLocator = _context.Locators.CreateLocator(LocatorType.Sas, asset, writePolicy);
-    CloudBlobClient destBlobStorage = _destinationStorageAccount.CreateCloudBlobClient();
-
-    // Get the destination asset container reference
-    string destinationContainerName = (new Uri(destinationLocator.Path)).Segments[1];
-    CloudBlobContainer assetContainer = destBlobStorage.GetContainerReference(destinationContainerName);
-
-    try{
-    assetContainer.CreateIfNotExists();
-    }
-    catch (Exception ex)
-    {
-    log.Error ("ERROR:" + ex.Message);
-    }
-
-    log.Info("Created asset.");
-
-    // Get hold of the destination blob
-    CloudBlockBlob destinationBlob = assetContainer.GetBlockBlobReference(blob.Name);
-
-    // Copy Blob
-    try
-    {
-    using (var stream = await blob.OpenReadAsync()) 
-    {            
-        await destinationBlob.UploadFromStreamAsync(stream);          
-    }
-
-    log.Info("Copy Complete.");
-
-    var assetFile = asset.AssetFiles.Create(blob.Name);
-    assetFile.ContentFileSize = blob.Properties.Length;
-    assetFile.IsPrimary = true;
-    assetFile.Update();
-    asset.Update();
-    }
-    catch (Exception ex)
-    {
-    log.Error(ex.Message);
-    log.Info (ex.StackTrace);
-    log.Info ("Copy Failed.");
-    throw;
-    }
-
-    destinationLocator.Delete();
-    writePolicy.Delete();
-
-    return asset;
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "AadClientId": "00000000-0000-0000-0000-000000000000",
+    "AadEndpoint": "https://login.microsoftonline.com",
+    "AadSecret": "00000000-0000-0000-0000-000000000000",
+    "AadTenantId": "00000000-0000-0000-0000-000000000000",
+    "AccountName": "amsaccount",
+    "ArmAadAudience": "https://management.core.windows.net/",
+    "ArmEndpoint": "https://management.azure.com/",
+    "ResourceGroup": "amsResourceGroup",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
 }
 ```
 
 ## <a name="test-your-function"></a>Testen der Funktion
 
-Um die Funktion zu testen, müssen Sie eine MP4-Datei in den **input**-Container des Speicherkontos hochladen, das Sie in der Verbindungszeichenfolge angegeben haben.  
+Wenn Sie die Funktion lokal in VS Code ausführen, sollte die Funktion wie folgt verfügbar gemacht werden: 
 
-1. Wählen Sie das von Ihnen angegebene Speicherkonto aus.
-2. Klicken Sie auf **Blobs**.
-3. Klicken Sie auf **+ Container**. Geben Sie dem Container den Namen **input**.
-4. Wählen Sie **Hochladen** aus, und navigieren Sie zu einer MP4-Datei, die Sie hochladen möchten.
+```url
+http://localhost:7071/api/HttpTriggerEncode
+```
 
->[!NOTE]
-> Bei Verwendung eines Blobtriggers in einem Verbrauchsplan kann es bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktions-App in den Leerlauf gewechselt ist. Sobald die Funktions-App ausgeführt wird, werden die Blobs sofort verarbeitet. Weitere Informationen finden Sie unter [Blob Storage-Trigger und -Bindungen](../../azure-functions/functions-bindings-storage-blob.md).
+Zum Testen können Sie Postman verwenden, um einen POST-Code für diese URL mithilfe eines JSON-Eingabetexts zu erstellen.
+
+Beispiel für JSON-Eingabetext:
+
+```json
+{
+    "inputUrl":"https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4",
+    "transformName" : "TransformAS",
+    "builtInPreset" :"AdaptiveStreaming"
+ }
+```
+
+Die Funktion sollte 200 OK mit einem Ausgabetext zurückgeben, der die Namen des Auftrags und des Ausgabeobjekts enthält.
+
+![Testen der Funktion mit Postman](./Media/integrate-azure-functions-dotnet-how-to/postman.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nun können Sie mit der Entwicklung einer Mediendienste-Anwendung beginnen.
+An diesem Punkt können Sie mit der Entwicklung von Funktionen beginnen, die Media Services-APIs aufrufen.
 
-Weitere Details und umfassende Beispiele/Lösungen zur Verwendung von Azure Functions und Logic Apps mit Azure Media Services zum Erstellen von benutzerdefinierten Inhaltserstellungsworkflows finden Sie unter [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration).
+Weitere Informationen und ein vollständiges Beispiel für die Verwendung von Azure Functions mit Azure Media Services v3 finden Sie im [Media Services v3 Azure Functions-Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/main/Functions).

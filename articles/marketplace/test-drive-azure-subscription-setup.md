@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 03/16/2020
-ms.openlocfilehash: 3fe1862f951b83c6514bda061650b912e9230e46
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: ae8bbad9d99837bd1cd0d21b66a37c895b816f2a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350216"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642662"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>Einrichten eines Azure Marketplace-Abonnements für gehostete Testversionen
 
@@ -57,10 +57,13 @@ In diesem Artikel erfahren Sie, wie Sie ein Azure Marketplace-Abonnement und ein
     13. So generieren Sie ein Geheimnis für die Azure AD-App:
         1. Klicken Sie unter **Anwendung verwalten** auf **Zertifikate und Geheimnisse**.
         2. Wählen Sie unter „Geheime Clientschlüssel“ die Option **Neuer geheimer Clientschlüssel** aus.
-        3. Geben Sie eine Beschreibung ein (z. B. *Testversion*), und wählen Sie dann eine angemessene Dauer aus. Die Testversion funktioniert nicht mehr, sobald dieser Schlüssel abläuft. Dann müssen Sie einen neuen Schlüssel generieren und in AppSource angeben.
+
+             :::image type="content" source="./media/test-drive/new-client-secret.png" alt-text="Hinzufügen eines neuen geheimen Clientschlüssels":::
+
+        3. Geben Sie eine Beschreibung ein (z. B. *Testversion*), und wählen Sie dann eine angemessene Dauer aus. Da die Testversion nicht mehr funktioniert, sobald dieser Schlüssel abläuft, und Sie dann einen neuen Schlüssel generieren und für AppSource bereitstellen müssen, wird die maximale Dauer von 24 Monaten empfohlen.
         4. Klicken Sie auf **Hinzufügen**, um den geheimen Schlüssel für die Azure-App zu generieren. Kopieren Sie diesen Wert, da er ausgeblendet wird, sobald Sie dieses Blatt verlassen. Diesen Wert werden Sie später beim Konfigurieren Ihrer Testversion benötigen.
 
-            :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Hinzufügen eines geheimen Clientschlüssels":::
+            :::image type="content" source="./media/test-drive/add-client-secret-customer.png" alt-text="Hinzufügen eines geheimen Clientschlüssels":::
 
 5. Fügen Sie die Dienstprinzipalrolle zur Anwendung hinzu, um der Azure AD-App das Entfernen von Benutzern aus Ihrem Azure-Mandanten zu erlauben.
     1. Öffnen Sie eine PowerShell-Eingabeaufforderung auf Verwaltungsebene.
@@ -99,22 +102,20 @@ In diesem Artikel erfahren Sie, wie Sie ein Azure Marketplace-Abonnement und ein
             > - Öffnen Sie SharePoint, und geben Sie die Datentabelle für die Sicherheitsgruppe frei.
 
 7. Fügen Sie die soeben erstellte Azure-App als Anwendungsbenutzer zur Testversion Ihrer CRM-Instanz hinzu. Dieser Schritt gilt nur für Dynamics 365 Customer Engagement-Angebote.
-    1. Fügen Sie einen neuen Benutzer in **Azure Active Directory** hinzu. Nur die Werte **Name** und **Benutzername** (die zum selben Mandanten gehören) sind erforderlich, um diesen Benutzer zu erstellen. Behalten Sie für die anderen Felder die Standardwerte bei. Kopieren Sie den Wert für den Benutzernamen.
-    2. Melden Sie sich bei der **CRM-Instanz** an, und klicken Sie dann auf **Einstellungen** > **Sicherheit** > **Benutzer**.
-    3. Wechseln Sie zur Ansicht **Anwendungsbenutzer**.
+    1. Melden Sie sich bei der **CRM-Instanz** an, und klicken Sie dann auf **Einstellungen** > **Sicherheit** > **Benutzer**.
+    2. Wechseln Sie zur Ansicht **Anwendungsbenutzer**.
 
         :::image type="content" source="./media/test-drive/application-users.png" alt-text="Festlegen von Kontoinformationen für einen Benutzer":::
 
-    4. Fügen Sie einen neuen Benutzer hinzu (stellen Sie sicher, dass das Formular für APPLICATION USER (Anwendungsbenutzer) ist).
-    5. Geben Sie den gleichen Benutzernamen in die Felder **Primäre E-Mail-Adresse** und **Benutzername** ein. Fügen Sie die **Azure-Anwendungs-ID** unter **Anwendungs-ID** ein.
-    6. Geben Sie einen beliebigen **Vollständigen Namen** ein.
-    7. Wählen Sie **Speichern** aus.
-    8. Klicken Sie auf **Rollen verwalten**.
-    9. Weisen Sie eine benutzerdefinierte oder vorgefertigte Sicherheitsrolle zu, die über Berechtigungen zum Lesen, Schreiben und Zuweisen von Rollen verfügt, z. B. *Systemadministrator*.
+    3. Fügen Sie einen neuen Benutzer hinzu (stellen Sie sicher, dass das Formular für APPLICATION USER (Anwendungsbenutzer) ist).
+    4. Fügen Sie die oben erstellte **Azure-Anwendungs-ID** unter **Anwendungs-ID** ein.
+    5. Wählen Sie **Speichern** aus.
+    6. Klicken Sie auf **Rollen verwalten**.
+    7. Weisen Sie eine benutzerdefinierte oder vorgefertigte Sicherheitsrolle zu, die über Berechtigungen zum Lesen, Schreiben und Zuweisen von Rollen verfügt, z. B. *Systemadministrator*.
 
         :::image type="content" source="./media/test-drive/security-roles-selection.png" alt-text="Auswählen der Rollenberechtigungen":::
 
-    10. Aktivieren Sie außerdem die Berechtigung **Vorgänge im Namen anderer Benutzer ausführen**.
+    10. Aktivieren Sie die Berechtigung **Vorgänge im Namen anderer Benutzer ausführen**.
     11. Weisen Sie dem Anwendungsbenutzer die benutzerdefinierte Sicherheitsrolle zu, die Sie für Ihre Testversion erstellt haben.
 
 ## <a name="set-up-for-dynamics-365-for-operations"></a>Einrichten von Dynamics 365 for Operations
@@ -156,7 +157,7 @@ In diesem Artikel erfahren Sie, wie Sie ein Azure Marketplace-Abonnement und ein
         3. Geben Sie eine Beschreibung ein (z. B. *Testversion*), und wählen Sie dann eine angemessene Dauer aus. Die Testversion funktioniert nicht mehr, sobald dieser Schlüssel abläuft. Dann müssen Sie einen neuen Schlüssel generieren und in AppSource angeben.
         4. Klicken Sie auf **Hinzufügen**, um den geheimen Schlüssel für die Azure-App zu generieren. Kopieren Sie diesen Wert, da er ausgeblendet wird, sobald Sie dieses Blatt verlassen. Diesen Wert werden Sie später beim Konfigurieren Ihrer Testversion benötigen.
 
-            :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Hinzufügen eines geheimen Clientschlüssels":::
+            :::image type="content" source="./media/test-drive/add-client-secret-operations.png" alt-text="Hinzufügen eines geheimen Clientschlüssels":::
 
 4. Fügen Sie die Dienstprinzipalrolle zur Anwendung hinzu, um der Azure AD-App das Entfernen von Benutzern aus Ihrem Azure-Mandanten zu erlauben.
     1. Öffnen Sie eine PowerShell-Eingabeaufforderung auf Verwaltungsebene.

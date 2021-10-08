@@ -2,18 +2,18 @@
 title: Erwerben einer Azure-Reservierung
 description: Informieren Sie sich über wichtige Aspekte, wenn Sie eine Azure-Reservierung erwerben.
 author: bandersmsft
-ms.reviewer: yashar
+ms.reviewer: primattal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 04/12/2021
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: d9de6322ac84a86902b5ef218df9abe8528b95a9
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: bbd57ed54171785ab8f2aedea93fa8c56cc0319c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113231483"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653367"
 ---
 # <a name="buy-a-reservation"></a>Kaufen einer Reservierung
 
@@ -41,16 +41,18 @@ Ihnen stehen je nach Bedarf drei Optionen zur Verfügung, mit denen Sie den Bere
     - Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Der Reservierungsbereich für die gemeinsame Nutzung umfasst mehrere Active Directory-Mandanten in einer Registrierung.
     - Für Microsoft-Kundenvereinbarung-Kunden ist der Abrechnungsbereich das Abrechnungsprofil.
     - Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
+- **Verwaltungsgruppe**: Wendet den Reservierungsrabatt auf die entsprechende Ressource in der Liste der Abonnements an, die ein Teil des Verwaltungsgruppen- und Abrechnungsbereichs sind. Um eine Reservierung für eine Verwaltungsgruppe zu erwerben, müssen Sie mindestens über Leseberechtigungen für die Verwaltungsgruppe verfügen und ein Reservierungsbesitzer oder Reservierungskäufer für das Abrechnungsabonnement sein.
 
 Während Reservierungsrabatte auf Ihre Nutzung angewendet werden, verarbeitet Azure die Reservierung in der folgenden Reihenfolge:
 
 1. Reservierungen mit dem Bereich „Einzelne Ressourcengruppe“
 2. Reservierungen mit dem Bereich „Einzelabonnement“
-3. Reservierungen mit einem gemeinsam genutzten Bereich (mehrere Abonnements), wie weiter oben beschrieben
+3. Reservierungen mit einer Verwaltungsgruppe als Bereich
+4. Reservierungen mit einem gemeinsam genutzten Bereich (mehrere Abonnements), wie weiter oben beschrieben
 
 Sie können den Bereich nach dem Erwerb einer Reservierung immer aktualisieren. Navigieren Sie zu diesem Zweck zu der Reservierung, klicken Sie auf **Konfiguration**, und legen Sie den Bereich für die Reservierung erneut fest. Das Neuzuweisen eines Bereichs für eine Reservierung ist keine kommerzielle Transaktion. Die Reservierungsbedingungen ändern sich nicht. Weitere Informationen zum Aktualisieren des Bereichs finden Sie unter [Aktualisieren des Bereichs nach dem Erwerb einer Reservierung](manage-reserved-vm-instance.md#change-the-reservation-scope).
 
-![Beispiel für eine Änderung des Reservierungsbereichs](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
+:::image type="content" source="./media/prepare-buy-reservation/rescope-reservation-management-group.png" alt-text="Beispiel für eine Änderung des Reservierungsbereichs" lightbox="./media/prepare-buy-reservation/rescope-reservation-management-group.png" :::
 
 ## <a name="discounted-subscription-and-offer-types"></a>Abonnements und Angebotstypen mit Rabatt
 

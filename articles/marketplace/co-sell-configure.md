@@ -7,13 +7,13 @@ ms.topic: how-to
 author: sharath-satish-msft
 ms.author: shsatish
 ms.reviewer: stmummer
-ms.date: 09/03/2021
-ms.openlocfilehash: 39212b2e9ef5456ecc4f1343cc51fd83064a8840
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 09/27/2021
+ms.openlocfilehash: c01e7d909e3227fe672047bca897bfa9d9978f85
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535651"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082142"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>Konfigurieren von Co-Selling für ein Angebot im kommerziellen Marketplace
 
@@ -35,6 +35,30 @@ Die Co-Selling-Option ist für die folgenden Angebotstypen verfügbar.
 
 ## <a name="go-to-the-co-sell-with-microsoft-tab"></a>Wechseln Sie zur Registerkarte „Co-Selling mit Microsoft“.
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+
+1. Wählen Sie auf der Startseite die Kachel **Marketplace-Angebote** aus.
+
+     [ ![Screenshot der Startseite von Partner Center](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+    > [!TIP]
+    > Wenn die Kachel **Marketplace-Angebote** nicht angezeigt wird, [erstellen Sie ein Konto für den kommerziellen Marketplace in Partner Center](create-account.md), und stellen Sie sicher, dass Ihr Konto im kommerziellen Marketplace-Programm registriert ist.
+
+1. Wählen Sie auf der Seite „Marketplace-Angebote“ das Angebot aus, für das Sie Co-Selling-Aktivitäten ausführen möchten.
+
+    > [!NOTE]
+    > Sie können Co-Selling für ein neues, noch nicht veröffentlichtes Angebot oder für ein Angebot konfigurieren, das bereits veröffentlicht wurde.
+
+1. Wählen Sie im Menü auf der linken Seite **Co-Selling mit Microsoft** aus.
+
+    [ ![Screenshot der Seite „Co-Selling mit Microsoft“](./media/co-sell/co-sell-with-microsoft-tab-workspaces.png) ](./media/co-sell/co-sell-with-microsoft-tab-workspaces.png#lightbox)
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 1. Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Übersicht** aus.
     > [!TIP]
@@ -46,6 +70,8 @@ Die Co-Selling-Option ist für die folgenden Angebotstypen verfügbar.
 1. Wählen Sie im Menü auf der linken Seite **Co-Selling mit Microsoft** aus.
 
     [![Zeigt den Link „Co-Selling mit Microsoft“ im linken Navigationsbereich.](./media/co-sell/co-sell-with-microsoft-tab.png)](./media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
+
+---
 
 ## <a name="co-sell-listings"></a>Co-Selling-Listings
 

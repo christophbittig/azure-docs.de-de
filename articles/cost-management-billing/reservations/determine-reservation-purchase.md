@@ -2,18 +2,18 @@
 title: Ermitteln der zu erwerbenden Azure-Reservierung
 description: Dieser Artikel unterstützt Sie beim Erwerb der optimalen Reservierung.
 author: bandersmsft
-ms.reviewer: yashar
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: 80c0627cdc2169ce3301ee56a449442387d8f6e1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 7482835f09ec5de0beff6b97b190c5eedfb11b7f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481100"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604320"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>Ermitteln der zu erwerbenden Reservierung
 
@@ -86,6 +86,7 @@ Beachten Sie folgende Punkte:
 - Empfehlungen werden für einzelne Größen berechnet, nicht für die Instanzgrößenfamilie.
 - An dem Tag, an dem Sie Reservierungen für einen Bereich erwerben, verringert sich die empfohlene Menge für den Bereich.
     - Eine bereichsübergreifende Aktualisierung der empfohlenen Reservierungsmenge kann jedoch bis zu 25 Tage dauern. Ein Beispiel: Wenn Sie den Kaufempfehlungen für einen gemeinsamen Bereich folgen, kann es bis zu 25 Tage dauern, bis die Empfehlungen für den Einzelabonnementbereich nach unten korrigiert werden.
+- Derzeit generiert Azure keine Empfehlungen für den Verwaltungsgruppenbereich.
 
 ## <a name="recommendations-in-the-azure-portal"></a>Empfehlungen im Azure-Portal
 

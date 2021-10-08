@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 09/16/2021
 ms.author: pafarley
-ms.openlocfilehash: 79846dcb5acb50549231d247530512564ae1beea
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 046499f32050bf856e6eb39874f3f7b0f0fa2e51
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542517"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569490"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -153,7 +153,8 @@ Darüber hinaus sollten Sie die folgenden Einschränkungen beachten:
 
 ## <a name="pronunciation-data-for-training"></a>Aussprachedaten für das Training
 
-Wenn die Benutzer auf selten vorkommende Begriffe ohne Standardaussprache treffen oder diese verwenden werden, können Sie eine benutzerdefinierte Aussprachedatei bereitstellen, um die Erkennung zu verbessern. 
+Wenn die Benutzer auf selten vorkommende Begriffe ohne Standardaussprache treffen oder diese verwenden werden, können Sie eine benutzerdefinierte Aussprachedatei bereitstellen, um die Erkennung zu verbessern. Eine Liste der Sprachen, die benutzerdefinierte Aussprache unterstützen, finden Sie unter **Aussprache** in der Spalte **Anpassungen** in der [Spracherkennungstabelle](language-support.md#speech-to-text).
+
 > [!IMPORTANT]
 > Es wird davon abgeraten, benutzerdefinierte Aussprachedateien zu verwenden, um die Aussprache gebräuchlicher Wörter zu ändern.
 
@@ -166,13 +167,6 @@ Stellen Sie die Aussprache in einer einzelnen Textdatei bereit. Hier sehen Sie B
 | IEEE | i doppel e |
 
 Die gesprochene Form ist die jeweilige Lautfolge. Sie kann aus Buchstaben, Wörtern, Silben oder einer Kombination aus allen drei bestehen.
-
-Eine benutzerdefinierte Aussprache ist für Englisch (`en-US`) und Deutsch (`de-DE`) verfügbar. Die folgende Tabelle enthält die unterstützten Zeichen nach Sprache:
-
-| Sprache | Gebietsschema | Zeichen |
-|----------|--------|------------|
-| Englisch | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
-| Deutsch | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 
 Stellen Sie anhand der folgenden Tabelle sicher, dass die zugehörige Datendatei für Aussprache richtig formatiert ist. Aussprachedateien sind klein und sollten einige KB nicht übersteigen.
 

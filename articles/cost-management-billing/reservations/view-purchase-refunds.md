@@ -7,16 +7,16 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 06/14/2021
 ms.author: banders
-ms.openlocfilehash: 402f2b9b8d4e7528e6578f9735e0360b4a049878
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: f2b98768f10ad2c85a1808907e309a99bf685131
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112114512"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646775"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>Anzeigen von Transaktionen für Reservierungseinkäufe und -erstattungen
 
-Es gibt verschiedene Möglichkeiten zum Anzeigen von Transaktionen für Reservierungseinkäufe und -erstattungen. Sie können das Azure-Portal, Power BI und REST-APIs verwenden.
+Es gibt verschiedene Möglichkeiten zum Anzeigen von Transaktionen für Reservierungseinkäufe und -erstattungen. Sie können das Azure-Portal, Power BI und REST-APIs verwenden. Sie können eine umgetauschte Reservierung als Erstattung und Kauf in den Transaktionen anzeigen.
 
 ## <a name="view-reservation-purchases-in-the-azure-portal"></a>Anzeigen von Reservierungskäufen im Azure-Portal
 

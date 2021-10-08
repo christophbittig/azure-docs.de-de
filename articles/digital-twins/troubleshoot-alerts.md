@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Es wird beschrieben, wie Sie Warnungen in Azure Digital Twins-Metriken aktivieren.
 author: baanders
 ms.author: baanders
-ms.date: 7/28/2020
+ms.date: 9/15/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 55dcda4c323700caa030fb87768d36a702d1c501
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6a5397a2387b7fb55b0e03664ddb9f52ec8baf59
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476752"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642762"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Problembehandlung von Azure Digital Twins: Alerts
 
@@ -28,15 +28,19 @@ Hier ist beschrieben, wie Sie Warnungen für Ihre Azure Digital Twins-Instanz ak
 
 2. Wählen Sie im Menü die Option **Warnungen** und dann **+ Neue Warnungsregel** aus.
 
+   :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Screenshot von Azure-Portal-mit der Schaltfläche zum Erstellen einer neuen Warnungsregel im Abschnitt „Warnungen“ einer Azure Digital Twin-Instanz." lightbox="media/troubleshoot-alerts/alerts-pre.png":::
+
 3. Auf der Seite *Warnungsregel erstellen*, die als Nächstes angezeigt wird, können Sie die Anweisungen befolgen, um Bedingungen, die auszulösenden Aktionen und die Warnungsdetails zu definieren.     
     * Die Details unter **Bereich** sollten zusammen mit den Details für Ihre Instanz automatisch eingefügt werden.
     * Sie definieren die Details für **Bedingung** und **Aktionsgruppe**, um Warnungstrigger und die zugehörigen Antworten anzupassen.
-    * Geben Sie im Abschnitt **Details zur Warnungsregel** einen Namen und optional eine Beschreibung für Ihre Regel ein. Sie können das Kontrollkästchen _Warnungsregel bei Erstellung aktivieren_ aktivieren, wenn die Warnung aktiviert werden soll, sobald sie erstellt wird.
-        - Hier wählen Sie auch eine _Ressourcengruppe_ und einen _Schweregrad_ aus.
+    * Geben Sie im Abschnitt **Details zur Warnungsregel** einen Namen und optional eine Beschreibung für Ihre Regel ein. 
+        - Sie können das Kontrollkästchen _Warnungsregel bei Erstellung aktivieren_ aktivieren, wenn die Warnung aktiviert werden soll, sobald sie erstellt wird.
+        - Sie können das Kontrollkästchen _Warnungen automatisch auflösen_ aktivieren, falls Sie die Warnung auflösen möchten, wenn die Bedingung nicht mehr erfüllt ist.
+        - In diesem Abschnitt wählen Sie außerdem ein _Abonnement_, eine _Ressourcengruppe_ und einen _Schweregrad_ aus.
 
 4. Wählen Sie die Schaltfläche _Warnungsregel erstellen_ aus, um die Warnungsregel zu erstellen.
 
-:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Screenshot des Azure-Portals mit der Seite „Warnungsregel erstellen“ mit Abschnitten für Bereich, Bedingung, Aktionsgruppe und Details zur Warnungsregel." lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+   :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="Screenshot des Azure-Portals mit der Seite „Warnungsregel erstellen“ mit Abschnitten für Bereich, Bedingung, Aktionsgruppe und Details zur Warnungsregel." lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
 Eine Anleitung zum Ausfüllen dieser Felder finden Sie unter [Überblick über Warnungen in Microsoft Azure](../azure-monitor/alerts/alerts-overview.md). Unten sind einige Beispiele dafür angegeben, welche Schritte für Azure Digital Twins ausgeführt werden müssen.
 

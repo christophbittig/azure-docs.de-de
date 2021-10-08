@@ -1,14 +1,14 @@
 ---
 title: Anzeigen und Verwalten von Kunden und delegierten Ressourcen im Azure-Portal
 description: Als Dienstanbieter oder Unternehmen, der bzw. das Azure Lighthouse verwendet, können Sie alle Ihre delegierten Ressourcen und Abonnements anzeigen, indem Sie im Azure-Portal zu „Meine Kunden“ wechseln.
-ms.date: 08/12/2021
+ms.date: 09/17/2021
 ms.topic: how-to
-ms.openlocfilehash: a29f34983bc42d74efd65a45605bb99944897345
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 4cce38b435ee2613b885dfad959871579579ddce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349912"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673611"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources-in-the-azure-portal"></a>Anzeigen und Verwalten von Kunden und delegierten Ressourcen im Azure-Portal
 
@@ -72,14 +72,18 @@ Sie können direkt im Kontext eines delegierten Abonnements innerhalb des Azure-
 
 1. Klicken Sie auf **Verzeichnisse + Abonnements** oder auf das Symbol **Einstellungen** oben im Azure-Portal.
 1. Stellen Sie auf der Seite [Verzeichnisse + Abonnements](../../azure-portal/set-preferences.md#directories--subscriptions) für Einstellungen sicher, dass die Umschaltfläche **Erweiterte Filter** [deaktiviert](../../azure-portal/set-preferences.md#subscription-filters) ist.
-1. Wählen Sie im Abschnitt **Standardabonnementfilter** das entsprechende Verzeichnis und Abonnement aus.
+1. Wählen Sie im Abschnitt **Standardabonnementfilter** das entsprechende Verzeichnis und Abonnement aus. (Wenn Ihnen der Zugriff auf eine oder mehrere Ressourcengruppen anstelle des gesamten Abonnements erteilt wurde, wählen Sie das Abonnement aus, zu dem diese Ressourcengruppe gehört. Sie arbeiten dann im Kontext dieses Abonnements, können aber nur auf die vorgesehenen Ressourcengruppen zugreifen.)
 
-:::image type="content" source="../media/subscription-filter-delegated.png" alt-text="Screenshot: Filter mit einem delegierten Abonnement":::
+:::image type="content" source="../media/subscription-filter-delegated.png" alt-text="Screenshot: Standardabonnementfilter mit einem ausgewählten delegierten Abonnement.":::
 
-Wenn Sie dann auf einen Dienst zugreifen, der [mandantenübergreifende Verwaltungsfunktionen](../concepts/cross-tenant-management-experience.md) unterstützt, wird der Dienst standardmäßig den Kontext des delegierten Abonnements verwenden, das Sie in Ihren Filter eingeschlossen haben. Dies können Sie ändern, indem Sie die obigen Schritte ausführen und das Kontrollkästchen **Alle auswählen** aktivieren (oder indem Sie ein oder mehrere Abonnements auswählen, in denen Sie stattdessen arbeiten möchten).
+Wenn Sie anschließend auf einen Dienst zugreifen, der [mandantenübergreifende Verwaltungsfunktionen](../concepts/cross-tenant-management-experience.md) unterstützt, wird der Dienst standardmäßig den Kontext des delegierten Abonnements verwenden, das Sie in Ihren Filter eingeschlossen haben.
 
-> [!NOTE]
-> Wenn Ihnen der Zugriff auf eine oder mehrere Ressourcengruppen gewährt wurde, wählen Sie das Abonnement aus, zu dem diese Ressourcengruppe gehört, anstatt auf ein vollständiges Abonnement zuzugreifen. Dann arbeiten Sie im Kontext dieses Abonnements, können aber nur auf die vorgesehenen Ressourcengruppen zugreifen.
+Sie können das Standardabonnement jederzeit ändern, indem Sie die oben genannten Schritte ausführen und ein anderes Abonnement oder mehrere Abonnements auswählen. Sie können alternativ **Alle Verzeichnisse** auswählen und dann das Kontrollkästchen **Alle auswählen** aktivieren, wenn der Filter alle Abonnements enthalten soll, auf die Sie Zugriff haben.
+
+:::image type="content" source="../media/subscription-filter-all.png" alt-text="Screenshot des Standardabonnementfilters mit Auswahl aller Verzeichnisse und Abonnements":::
+
+> [!IMPORTANT]
+> Durch Aktivieren des Kontrollkästchens **Alle auswählen** wird der Filter dafür eingestellt, alle Abonnements anzuzeigen, auf die Sie *aktuell* Zugriff haben. Wenn Sie später Zugriff auf zusätzliche Abonnements erhalten – z. B. nachdem Sie einen neuen Kunden in Azure Lighthouse integriert haben –, werden diese Abonnements Ihrem Filter nicht automatisch hinzugefügt. Sie müssen zu **Verzeichnisse und Abonnements** zurückkehren und die zusätzlichen Abonnements auswählen (oder **Alle auswählen** deaktivieren und anschließend wieder aktivieren).
 
 Sie können auch auf Funktionen im Zusammenhang mit delegierten Abonnements oder Ressourcengruppen aus Diensten heraus zugreifen, die mandantenübergreifende Verwaltungsfunktionen unterstützen, indem Sie das Abonnement oder die Ressourcengruppe aus einem einzelnen Dienst heraus auswählen.
 

@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse-Architektur
 description: Erfahren Sie mehr über die Beziehung zwischen Mandanten in Azure Lighthouse und den Ressourcen, die im Mandanten des Kunden erstellt wurden, die diese Beziehung ermöglichen.
-ms.date: 05/11/2021
+ms.date: 09/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: bdcd1057d4ba2adfe8ab312228acd562b384b09d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 92890199b11da69fac58ec4ff2bccc1ab347d076
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109795437"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629121"
 ---
 # <a name="azure-lighthouse-architecture"></a>Azure Lighthouse-Architektur
 
@@ -51,7 +51,7 @@ Aktivitäten von Benutzern im Mandanten des Dienstanbieters werden im Aktivität
 
 ## <a name="how-azure-lighthouse-works"></a>Wie Azure Lighthouse funktioniert
 
-Im Großen und Im Großen funktioniert Azure Lighthouse folgendermaßen:
+Auf der allgemeinen Ebene funktioniert Azure Lighthouse aus Sicht des verwaltenden Mandanten folgendermaßen:
 
 1. Sie ermitteln die [Rollen](tenants-users-roles.md#role-support-for-azure-lighthouse), die Ihre Gruppen, Dienstprinzipale oder Benutzer benötigen, um die Azure-Ressourcen des Kunden zu verwalten.
 2. Geben Sie diesen Zugriff an, und integrieren Sie den Kunden in Azure Lighthouse, indem Sie entweder ein Angebot für verwaltete Dienste in [Azure Marketplace](../how-to/publish-managed-services-offers.md) veröffentlichen oder indem Sie [eine Azure Resource Manager Vorlage bereitstellen](../how-to/onboard-customer.md). Dieser Onboardingprozess erstellt die beiden oben beschriebenen Ressourcen (Registrierungsdefinition und Registrierungszuweisung) im Mandanten des Kunden.
@@ -61,6 +61,6 @@ Während in den meisten Fällen nur ein Dienstanbieter bestimmte Ressourcen für
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Azure CLI](/cli/azure/managedservices/assignment) und [Azure PowerShell](/powershell/module/az.managedservices/new-azmanagedservicesdefinition)-Befehle, um mit Registrierungsdefinitionen und Registrierungszuweisungen zu arbeiten.
+- Erfahren Sie mehr über die [Azure CLI](/cli/azure/managedservices) und [Azure PowerShell](/powershell/module/az.managedservices)-Befehle, um mit Registrierungsdefinitionen und Registrierungszuweisungen zu arbeiten.
 - Erfahren Sie mehr über [erweiterte Dienste und Szenarien](cross-tenant-management-experience.md#enhanced-services-and-scenarios) für Azure Lighthouse.
 - Erfahren Sie mehr über die Funktionsweise von [Mandanten, Benutzern und Rollen](tenants-users-roles.md) mit Azure Lighthouse.

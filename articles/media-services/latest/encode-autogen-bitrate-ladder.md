@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/21/2021
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5b973d17e10f3dbb75f5208d9003b4f8118b37c7
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 7fc9731769f568107a1ce6dacb5658fe164bd616
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111076"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657517"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Codieren mit einer automatisch generierten Reihe von Bitraten-/Auflösungspaaren
 
@@ -31,13 +31,13 @@ In diesem Artikel wird gezeigt, wie Sie in Media Services mit dem Standard-Encod
 
 ### <a name="encoding-for-streaming"></a>Codierung für Streaming
 
-Wenn Sie die Voreinstellung **AdaptiveStreaming** beim **Transformieren** verwenden, erhalten Sie eine Ausgabe, die für die Bereitstellung über Streamingprotokolle wie HLS und DASH geeignet ist. Bei Verwendung dieser Voreinstellung legt der Dienst intelligent fest, wie viele Videoebenen mit welcher Bitrate und Auflösung erzeugt werden sollen. Die Ausgabe enthält MP4-Dateien, in denen mit AAC codierte Audio- und mit H.264 codierte Videodaten sich nicht überlappen.
+Wenn Sie die Voreinstellung **AdaptiveStreaming** oder **H265AdaptiveStreaming** beim **Transformieren** verwenden, erhalten Sie eine Ausgabe, die für die Bereitstellung über Streamingprotokolle wie HLS und DASH geeignet ist. Bei Verwendung einer dieser zwei Voreinstellungen legt der Dienst intelligent fest, wie viele Videoebenen mit welcher Bitrate und Auflösung erzeugt werden sollen. Die Ausgabeinhalte enthalten MP4-Dateien, bei denen AAC-codierte Audiodaten und entweder H.264-codierte Videos (im Fall der Voreinstellung „AdaptiveStreaming“) oder H.265/HEVC (im Fall der Voreinstellung „H265AdaptiveStreaming“) verwendet werden. Die MP4-Ausgabedateien sind nicht im Zeilensprungverfahren codiert.
 
 Ein Beispiel für die Verwendung dieser Voreinstellung finden Sie unter [Streamen einer Datei](stream-files-dotnet-quickstart.md).
 
 ## <a name="output"></a>Output
 
-Dieser Abschnitt zeigt drei Beispiele von Ausgabevideoebenen, die vom Media Services-Encoder als Ergebnis der Codierung mit der Voreinstellung **Adaptives Streaming** erzeugt wurden. In allen Fällen enthält die Ausgabe eine reine MP4-Audiodatei, die mit 128 KBit/s codiertes Audio in Stereo enthält.
+Dieser Abschnitt zeigt drei Beispiele von Ausgabevideoebenen, die vom Media Services-Encoder als Ergebnis der Codierung mit der Voreinstellung **Adaptives Streaming** (H.264) oder der Voreinstellung **H265AdaptiveStreaming** (HEVC) erzeugt wurden. In allen Fällen enthält die Ausgabe eine reine MP4-Audiodatei, die mit 128 KBit/s codiertes Audio in Stereo enthält.
 
 ### <a name="example-1"></a>Beispiel 1
 Die Quelle mit der Höhe „1080“ und der Bildrate „29,970“ produziert 6 Videoebenen:
@@ -71,7 +71,15 @@ Die Quelle mit der Höhe „360“ und der Bildrate „29,970“ produziert 3 Vi
 |2|270|480|440|
 |3|180|320|230|
 
+
+## <a name="content-aware-encoding-comparison"></a>Vergleich mit den inhaltsbezogenen Codierungsoptionen
+
+Die [inhaltsbezogenen Codierungsvoreinstellungen](./encode-content-aware-concept.md) stellen gegenüber den Adaptive Streaming-Voreinstellungen die bessere Lösung dar, indem sie die Quellinhalte analysieren, bevor sie aus der Leiter der verfügbaren Optionen den richtigen Satz von Ausgabebitraten und Auflösungen auswählen.
+Es empfiehlt sich, zuerst die [inhaltsbezogenen Codierungsvoreinstellungen](./encode-content-aware-concept.md) auszuprobieren, bevor die Wahl auf die eher statische und feste Optionsleiter der Voreinstellungen für Streamiing mit adaptiver Bitrate fällt.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Streamen einer Datei](stream-files-dotnet-quickstart.md)
+> [Verwenden der inhaltsbezogenen Codierungsvoreinstellungen](./encode-content-aware-concept.md)
+> [Verwenden der inhaltsbezogenen Codierung](./encode-content-aware-how-to.md)

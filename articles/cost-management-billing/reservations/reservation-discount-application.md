@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 1dec8253d785973aa900434c10f85ec0a63e0599
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c2f8ab7f2f5dc392696cc9e887f401502e906c3b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574871"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559785"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>Anwendung eines Reservierungsrabatts
 
@@ -25,7 +25,7 @@ Wenn Sie eine Ressource beenden, wird der Reservierungsrabatt automatisch auf ei
 
 Beispielsweise können Sie später eine Ressource erstellen und über eine entsprechende Reservierung verfügen, die nicht ausgelastet ist. Der Reservierungsrabatt gilt automatisch für die neue übereinstimmende Ressource.
 
-Wenn die virtuellen Computer in verschiedenen Abonnements in Ihrer Registrierung/Ihrem Konto ausgeführt werden, wählen Sie den Bereich „Freigegeben“ aus. Der Bereich „Freigegeben“ ermöglicht die abonnementübergreifende Anwendung des Reservierungsrabatts. Sie können den Bereich nach dem Erwerb einer Reservierung ändern. Weitere Informationen finden Sie unter [Verwalten von Azure-Reservierungen](manage-reserved-vm-instance.md).
+Wenn die virtuellen Computer in verschiedenen Abonnements in Ihrer Registrierung/Ihrem Konto ausgeführt werden, wählen Sie den Bereich „Freigegeben“ aus. Der Bereich „Freigegeben“ ermöglicht die abonnementübergreifende Anwendung des Reservierungsrabatts. Sie können den Bereich nach dem Erwerb einer Reservierung ändern. Weitere Informationen finden Sie unter [Verwalten von Azure-Reservierungen](manage-reserved-vm-instance.md). Sie können auch den Verwaltungsgruppenbereich verwenden. Dieser wendet den Reservierungsrabatt auf die entsprechende Ressource in der Liste der Abonnements an, die ein Teil des Verwaltungsgruppen- und Abrechnungsbereichs sind.
 
 Der Rabatt auf Reservierungen gilt nur für Ressourcen, denen Enterprise, eine Microsoft-Kundenvereinbarung, CSP oder Abonnements mit nutzungsbasierter Bezahlung zugeordnet sind. Für Ressourcen, die in einem Abonnement mit anderen Angebotstypen ausgeführt werden, gilt der Reservierungsrabatt nicht.
 

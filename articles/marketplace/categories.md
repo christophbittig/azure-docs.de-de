@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 11/16/2020
-ms.openlocfilehash: 5042c6801678f94c749454dac28eec56fdcb7559
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5e462036e30a533d914f8e9420476f1604645d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94810904"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598084"
 ---
 # <a name="categories-and-subcategories-in-the-commercial-marketplace"></a>Kategorien und Unterkategorien im kommerziellen Marketplace
 
@@ -39,17 +39,16 @@ In dieser Tabelle sind die primären Kategorien und Unterkategorien aufgeführt,
 | Datenbank | Data Lakes<br>Data Warehouse<br>Ledger-/Blockchain-Datenbanken<br>NoSQL-Datenbanken<br>Relationale Datenbanken |
 | Entwicklertools | Entwicklerdienst<br>Skripts<br>Tools |
 | DevOps | – |
-| Entwicklerdienst | Nachrichten |
 | Identität | Zugriffsverwaltung |
 | IT- und Verwaltungstools | Verwaltungslösungen<br>Geschäftsanwendungen |
-| Internet der Dinge | Datenanalyse und Visualisierung<br>IoT-Konnektivität<br>IoT-Basisdienste<br>IoT Edge-Module<br>IoT-Lösungen |
+| Internet der Dinge | IoT-Analyse und -Daten<br>IoT-Konnektivität<br>IoT-Basisdienste<br>IoT Edge-Module<br>IoT- und IIoT-Plattformen<br>IoT-Sicherheit<br>IoT-Lösungen |
 | Medien | Content Protection<br>Live- und On-Demand-Streaming<br>Media Services |
 | Migration | Datenmigration |
 | Mixed Reality | – |
 | Überwachung und Diagnose | – |
 | Netzwerk | Appliance-Manager<br>Konnektivität<br>Firewalls<br>Load Balancer |
 | Sicherheit | Identitäts- und Zugriffsverwaltung<br>Information Protection<br>Threat Protection |
-| Storage | Sicherung und Wiederherstellung<br>Verwaltung des Datenlebenszyklus<br>Unternehmenshybridspeicher<br>Dateifreigabe |
+| Storage | Sicherung und Wiederherstellung<br>Blockdatei- und Objektfreigabe<br>Datenverwaltung<br>Unternehmenshybridspeicher |
 | Web | Blogs und CMS<br>E-Commerce<br>Web-Apps für Einsteiger<br>Web Apps<br>Web-App-Frameworks |
 |||
 
@@ -60,17 +59,19 @@ In dieser Tabelle sind die primären Kategorien und Unterkategorien aufgeführt,
 | Primäre Kategorie | Unterkategorie |
 | ------------ | ------------- |
 | KI + Machine Learning | KI für Unternehmen<br>Bot-Apps |
-| Analytics | Erweiterte Analyse<br>Visualisierung und Berichterstellung |
-| Zusammenarbeit | Kontakte und Personen<br>Besprechungsmanagement<br>Websitedesign und -verwaltung<br>Aufgaben- und Projektmanagement<br>Sprach- und Videokonferenzen |
+| Analytics | Erweiterte Analyse<br>Dashboard und Datenvisualisierung |
+| Zusammenarbeit | Chat<br>Kontaktverwaltung<br>Besprechungs- und Kalenderverwaltung<br>Websitedesign und -verwaltung<br>Sprach- und Videokonferenzen |
+| Commerce | E-Commerce, Social Commerce und Marketplaces <br>Treue und Geschenke<br>Produktinformationen und Content Management<br>Personalisierung, Bewertungen und Rezensionen <br>Store-Management<br>Abonnement und Dienste nach dem Kauf |
 | Compliance und rechtliche Angelegenheiten | Daten, Governance und Datenschutz<br>Integrität und Sicherheit<br>Rechtliche Hinweise<br>Steuern und Prüfungen |
 | Customer Service | Backoffice und Personaldienste<br>Kontaktcenter<br>Persönlicher Dienst<br>Wissens- und Fallmanagement<br>Soziale Medien und Omnichannel-Kundenbindung |
-| Finance | Buchhaltung<br>Analyse, Konsolidierung und Berichterstellung<br>Ressourcenverwaltung<br>Compliance- und Risikomanagement<br>Kredite und Inkasso |
-| Geolocation | Maps<br>Nachrichten und Wetter |
-| Human Resources | Personalverwaltung<br>Talentakquise<br>Talentmanagement<br>Personalplanung und Analyse |
+| Finance | Buchhaltung<br>Analyse, Konsolidierung und Berichterstellung<br>Ressourcenverwaltung<br>Compliance- und Risikomanagement<br>Zahlungen, Gutschriften und Inkasso |
+| Geolocation | Maps<br>Nachrichten und Wetter<br>Adressüberprüfung |
+| Human Resources | Personalverwaltung<br>Talentakquise<br>Talentmanagement<br>People Analytics und Insights |
 | Internet der Dinge | Asset-Management und Betriebsführung<br>Verbundene Produkte<br>Intelligente Lieferkette<br>Predictive Maintenance<br>Remoteüberwachung<br>Sicherheit<br>Intelligente Infrastruktur und Ressourcen<br>Fahrzeuge und Mobilität |
 | IT- und Verwaltungstools | Geschäftsanwendungen<br>Verwaltungslösungen |
-| Marketing | Werbung<br>Analytics<br>Kampagnenmanagement und -automatisierung<br>E-Mail-Marketing<br>Veranstaltungs- und Ressourcenmanagement<br>Forschung und Analyse<br>Soziale Medien |
+| Marketing | Werbung<br>Analytics<br>Kampagnenmanagement und -automatisierung<br>E-Mail-Marketing<br>Veranstaltungs- und Ressourcenmanagement<br>Preisoptimierung<br>Forschung und Analyse<br>Soziale Medien |
 | Betrieb und Lieferkette | Asset- und Produktionsmanagement<br>Bedarfsvorhersage<br>Informationsverwaltung und Konnektivität<br>Planung, Einkauf und Berichterstellung<br>Qualitäts- und Servicemanagement<br>Vertriebs- und Auftragsmanagement<br>Transport- und Lagerverwaltung |
-| Produktivität | Inhaltserstellung und -verwaltung<br>Dokumentverwaltung<br>E-Mail-Verwaltung<br>Gamification<br>Sprachen und Übersetzungen<br>Suche und Referenzierung |
-| Sales | Anreicherung von Geschäftsdaten<br>CPQ (Configure, Price, Quote)<br>Vertragsverwaltung<br>CRM<br>E-Commerce<br>Vertriebsoptimierung<br>Teleshopping |
+| Produktivität | Blogs<br>Inhaltserstellung und -verwaltung<br>Dokument- und Dateiverwaltung<br>E-Mail-Verwaltung<br>Gamification<br>Sprachen und Übersetzungen<br>Suche und Referenzierung<br>Workflowautomatisierung |
+| Projektverwaltung | Projektbuchhaltung und Umsatzrealisierung<br>Projektrechnungsstellung<br>Projektzeit- und Kostenberichterstellung<br>Projektressourcenplanung und Auslastungsmetriken <br>Projektplanung und -nachverfolgung <br>Projektverkaufsvorschläge und -angebote |
+| Sales | Geschäftsdatenverwaltung<br>CPQ (Configure, Price, Quote)<br>Vertragsverwaltung<br>CRM<br>Vertriebsoptimierung<br>Teleshopping |
 |||

@@ -9,31 +9,53 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/17/2021
+ms.date: 09/16/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f333b4ca86e24c845a8a91c621a2b3f7c8c984e
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: a34e2d16edb4a8ec9ba40a4426fcbbd9b2127b16
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429758"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590402"
 ---
-# <a name="content-aware-encoding-preset"></a>Die Voreinstellung für die inhaltsbezogene Codierung
+# <a name="content-aware-encoding"></a>Inhaltsbezogene Codierung
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Um Inhalte für die Übermittlung durch [Adaptive Bitrate Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) vorzubereiten, muss Video mit mehreren Bitraten (hoch bis niedrig) codiert werden. Dadurch wird eine gleichmäßige Qualitätsminderung gewährleistet, da mit abnehmender Bitrate auch die Auflösung des Videos verringert wird. Bei einer solchen Codierung mit Mehrfachbitrate wird eine sogenannte Codierungsleiter (Tabelle mit Auflösungen und Bitraten) verwendet. Weitere Informationen hierzu finden Sie in den [integrierten Codierungsvoreinstellungen](/rest/api/media/transforms/createorupdate#encodernamedpreset) von Media Services.
+## <a name="overview-of-the-content-aware-encoding-preset"></a>Übersicht zur Voreinstellung für die inhaltsbezogene Codierung
 
-Berücksichtigen Sie stets den Inhalt, den Sie verarbeiten, und passen Sie die Codierungsleiter an die Komplexität des jeweiligen Videos an, bzw. optimieren Sie sie entsprechend. Bei jeder Auflösung gibt es eine Bitrate, bei der eine Qualitätssteigerung nicht mehr wahrnehmbar ist. Der Encoder arbeitet dann mit diesem optimalen Bitratenwert. Die nächste Optimierungsstufe ist die Wahl der Auflösungen basierend auf dem Inhalt. Beispielsweise profitiert ein Video einer PowerPoint-Präsentation nicht von einem Wert unter 720p. Darüber hinaus kann der Encoder aufgefordert werden, die Einstellungen für jede Einstellung innerhalb des Videos zu optimieren. 
+Um Inhalte für die Übermittlung mithilfe von [Adaptive Bitrate Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) vorzubereiten, muss Video mit mehreren Bitraten (hoch bis niedrig) und in mehreren Auflösungen codiert werden. Diese Technik ermöglicht es den heutigen modernen Videoplayern unter Apple iOS, Android, Windows und Mac, Streamingprotokolle zu verwenden, die Inhalte ohne Pufferung reibungslos streamen. Diese in Anzeigegröße (Auflösung) und Qualität (Bitrate) verschiedenen Darstellungen ermöglichen es dem Player, die beste Version des Videos auszuwählen, die bei den aktuellen Netzwerkbedingungen unterstützt werden kann. Das Netzwerk kann zwischen LTE, 4G, 5G, öffentlichem WLAN oder Heimnetzwerk große Unterschiede aufweisen.
 
-Die Voreinstellung [Adaptives Streaming](encode-autogen-bitrate-ladder.md) von Microsoft löst das Problem der Variabilität bei der Qualität und Auflösung von Quellvideos zum Teil. Unsere Kunden verfügen über unterschiedlichste Inhalte – manche in 1080p, andere in 720p und einige wenige in SD und niedrigeren Auflösungen. Darüber hinaus handelt es sich nicht bei allen Quellinhalten um hochwertige Mezzanine von Film- oder Fernsehstudios. Die Adaptive Streaming-Voreinstellung löst diese Probleme, indem sichergestellt wird, dass die Bitratenleiter nicht die Auflösung oder die durchschnittliche Bitrate der Eingangs-Mezzanine überschreitet. Diese Voreinstellung untersucht jedoch nur die Quelleigenschaften „Auflösung“ und „Bitrate“.
+Der Prozess der Codierung von Inhalten in mehrere Darstellungen erfordert die Generierung einer „Codierungsleiter“. Dies ist eine Tabelle mit Auflösungen und Bitraten, die den Encoder anweist, was generiert werden soll. Ein Beispiel für eine solche Leiter finden Sie in den [integrierten Codierungsvoreinstellungen](/rest/api/media/transforms/createorupdate#encodernamedpreset) von Media Services.
 
-## <a name="the-content-aware-encoding-preset"></a>Verwenden der Voreinstellung für die inhaltsbezogene Codierung
+Unter idealen Bedingungen sollten Sie die Art des Inhalts kennen, den Sie codieren. Mithilfe dieser Informationen können Sie die Codierungsleiter so optimieren, dass sie zur Komplexität und dem Maß an Bewegung in Ihrem Quellvideo passt. Dies bedeutet, dass für jede Anzeigegröße (Auflösung) in der Leiter eine Bitrate enthalten sein sollte, ab der ein Qualitätsanstieg nicht mehr wahrnehmbar ist – der Encoder arbeitet mit diesem optimalen Wert für die Bitrate.
 
-Die Voreinstellung für die inhaltsbezogene Codierung erweitert den Adaptive Bitrate Streaming-Mechanismus. Hierzu wird benutzerdefinierte Logik integriert, die es dem Encoder ermöglicht, den optimalen Bitratenwert für eine bestimmte Auflösung ohne aufwendige Berechnungsanalyse zu ermitteln. Diese Voreinstellung generiert eine Reihe von MP4-Dateien mit GOP-Ausrichtung. Der Dienst führt eine einfache Erstanalyse für den Eingabeinhalt aus und ermittelt anhand der Ergebnisse die optimale Anzahl von Ebenen, die geeignete Bitrate und die Auflösungseinstellungen für die Bereitstellung durch adaptives Streaming. Diese Voreinstellung eignet sich insbesondere für Videos mit geringer bis mittlerer Komplexität, bei denen die Ausgabedateien zwar eine niedrigere Bitrate als die Adaptive Streaming-Voreinstellung, aber immer noch eine gute Qualität haben. Die Ausgabe enthält MP4-Dateien mit AVI (Audio Video Interleaved).
+Die nächste Stufe der erreichbaren Optimierung besteht in der Auswahl der Auflösungen auf der Grundlage des Inhalts. Beispielsweise würde ein Video einer PowerPoint-Präsentation mit kleinem Text unscharf aussehen, wenn es unterhalb von 720 Pixellinien in der Höhe codiert wird. Außerdem können sich Bewegung und Komplexität Ihres Videos im zeitlichen Verlauf ändern, je nachdem, wie es aufgenommen und bearbeitet wurde.  Dies gibt Ihnen die Möglichkeit, die Codierungseinstellungen für jede Szene oder an jeder Einstellungsgrenze zu optimieren und anzupassen. Ein intelligenter Encoder kann damit beauftragt werden, die Codierungseinstellungen für jede Einstellung innerhalb eines Videos zu optimieren.
 
-Die folgenden Beispieldiagramme enthalten eine Gegenüberstellung mit Qualitätsmetriken wie [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) und [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Die Quelle wurde durch das Verketten kurzer Clips mit hochkomplexen Einstellungen aus Filmen und Fernsehsendungen erstellt, die den Encoder auf eine harte Probe stellen sollten. Per Definition liefert diese Voreinstellung Ergebnisse, die je nach Inhalt variieren. Das bedeutet auch, dass es bei einigen Inhalten möglicherweise keine signifikante Reduzierung der Bitrate oder Verbesserung der Qualität gibt.
+Azure Media Services enthält eine Voreinstellung [Adaptive Streaming](encode-autogen-bitrate-ladder.md), die eine teilweise Lösung für das Problem der wechselnden Bitrate und Auflösung der Quellvideos darstellt. Diese Voreinstellung analysiert jedoch nicht die Quellinhalte, um zu sehen, wie komplex sie sind oder wie viel Bewegung sie enthalten. 
+
+Die Voreinstellung für inhaltsbezogene Codierung stellt gegenüber der eher statischen Codierungsvoreinstellung Adaptive Bitrate einen Fortschritt dar. Hierzu wird Logik integriert, die es dem Encoder ermöglicht, den optimalen Bitratenwert für eine bestimmte Auflösung zu bestimmen, ohne aufwendige Berechnungsanalyse zu erfordern. Diese Voreinstellung gibt ausgehend von der Quelldatei eine einmalige „Leiter“ von MP4-Dateien mit Orientierung an den GOPs aus. Bei einem Quellvideo führt die Voreinstellung eine erste schnelle Analyse der Eingabeinhalte durch und verwendet die Ergebnisse, um die optimale Anzahl von Stufen, Bitraten und Auflösungen zu bestimmen, die erforderlich sind, um das Streaming mit adaptiver Bitrate mit der höchsten Qualität zu ermöglichen. Diese Voreinstellung eignet sich insbesondere für Videos mit geringer bis mittlerer Komplexität, bei denen die Ausgabedateien zwar eine niedrigere Bitrate als bei der weniger flexiblen Adaptive Streaming-Voreinstellung aufweisen, Zuschauern aber immer noch den Eindruck guter Qualität vermitteln. Der Ausgabeordner enthält mehrere MP4-Dateien mit Video und Audio, die für das Streaming bereit sind.
+
+## <a name="configure-output-settings"></a>Konfigurieren von Ausgabeeinstellungen
+
+Darüber hinaus können Entwickler auch die Bandbreite der Ausgaben steuern, die von der inhaltsbezogenen Codierungsvoreinstellung verwendet werden, wenn sie in der Streamingleiter mit adaptiver Bitrate die optimalen Einstellungen für die Codierung festlegen.
+
+Mithilfe der **PresetConfigurations**-Klasse können Entwickler eine Reihe von Einschränkungen und Optionen an die inhaltsbezogene Codierungsvoreinstellung übergeben, um die vom Encoder generierten resultierenden Dateien zu steuern. Die Eigenschaften sind besonders nützlich in Situationen, in denen Sie die gesamte Codierung auf eine bestimmte maximale Auflösung beschränken möchten, um den vermittelten Eindruck oder die Kosten Ihrer Codierungsaufträge zu steuern.  Es ist außerdem nützlich, die maximale und minimale Bitrate steuern zu können, die Ihre Zielgruppe in einem Mobilfunknetz oder in einer globalen Region mit eingeschränkter Bandbreite unterstützen kann.
+
+## <a name="supported-codecs"></a>Unterstützte Codecs
+
+Die inhaltsbezogene Codierungsvoreinstellung steht für die Verwendung mit den folgenden Codecs zur Verfügung:
+-  H.264
+-  HEVC (H.265)
+
+## <a name="how-to-use"></a>Vorgehensweise
+
+Details zur Verwendung der Voreinstellung in Ihrem Code und Links zu vollständigen Beispielen finden Sie in der [Anleitung zur inhaltsbezogenen Codierung](./encode-content-aware-How-to.md).
+
+## <a name="technical-details-on-content-aware-preset"></a>Technische Details zur inhaltsbezogenen Voreinstellung
+
+Sehen wir uns nun etwas mehr im Detail an, wie die inhaltsbezogene Codierungsvoreinstellung funktioniert.  Die folgenden Beispieldiagramme enthalten eine Gegenüberstellung mit Qualitätsmetriken wie [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) und [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). Die Quelle wurde durch das Verketten kurzer Clips mit hochkomplexen Einstellungen aus Filmen und Fernsehsendungen erstellt, die den Encoder auf eine harte Probe stellen sollten. Per Definition liefert diese Voreinstellung Ergebnisse, die je nach Inhalt variieren. Das bedeutet auch, dass es bei einigen Inhalten möglicherweise keine signifikante Reduzierung der Bitrate oder Verbesserung der Qualität gibt.
 
 ![Rate-Distortion-Kurve (RD) unter Verwendung von PSNR](media/encode-content-aware-concept/msrv1.png)
 
@@ -43,7 +65,7 @@ Die folgenden Beispieldiagramme enthalten eine Gegenüberstellung mit Qualitäts
 
 **Abbildung 2: Rate-Distortion-Kurve (RD) unter Verwendung der Metrik VMAF für Quelle mit hoher Komplexität**
 
-Im Anschluss finden Sie die Ergebnisse für eine weitere Kategorie von Quellinhalten, bei denen der Encoder feststellen konnte, dass die Eingabe von schlechter Qualität war (viele Kompressionsartefakte aufgrund der niedrigen Bitrate). Beachten Sie, dass sich der Encoder mit der inhaltsbezogenen Voreinstellung dazu entschieden hat, nur eine einzelne Ausgabeschicht mit einer ausreichend niedrigen Bitrate zu erzeugen, sodass die meisten Clients den Stream ohne Verzögerung wiedergeben können.
+Im Anschluss finden Sie die Ergebnisse für eine weitere Kategorie von Quellinhalten, bei denen der Encoder feststellen konnte, dass die Eingabe von schlechter Qualität war (viele Kompressionsartefakte aufgrund der niedrigen Bitrate). Mit der inhaltsbezogenen Voreinstellung hat sich der Encoder dazu entschieden, nur eine einzelne Ausgabestufe zu erzeugen – mit einer ausreichend niedrigen Bitrate, sodass die meisten Clients den Stream ohne Verzögerung wiedergeben können.
 
 ![RD-Kurve mit PSNR](media/encode-content-aware-concept/msrv3.png)
 
@@ -53,16 +75,7 @@ Im Anschluss finden Sie die Ergebnisse für eine weitere Kategorie von Quellinha
 
 **Abbildung 4: RD-Kurve mit VMAF für Eingabe mit niedriger Qualität (bei 1080p)**
 
-## <a name="8-bit-hevc-h265-support"></a>Unterstützung für 8-Bit-HEVC (H.265)
-
-Der Standard-Encoder von Azure Media Services bietet jetzt Unterstützung für die 8-Bit-HEVC-Codierung (H.265). HEVC-Inhalte können mithilfe des hev1-Formats über die dynamische Paketerstellung übermittelt und gepackt werden.
-
-Ein neues Beispiel für eine benutzerdefinierte .NET-Codierung mit HEVC finden Sie im GitHub-Repository [media-services-v3-dotnet](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC). Zusätzlich zur benutzerdefinierten Codierung unterstützt AMS auch andere neue integrierte HEVC-Codierungsvoreinstellungen, die Sie in unseren [Versionshinweisen vom Februar 2021](https://docs.microsoft.com/azure/media-services/latest/release-notes#february-2021) anzeigen können.
   
 ## <a name="next-steps"></a>Nächste Schritte
-
+* [Verwenden der Voreinstellungen für die inhaltsbezogene Codierung](encode-content-aware-how-to.md)
 * [Tutorial: Hochladen, Codieren und Streamen von Videos mit Media Services v3](stream-files-tutorial-with-api.md)
-* [Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos über – REST](stream-files-tutorial-with-rest.md)
-* [Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos – CLI](stream-files-cli-quickstart.md)
-* [Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos – .NET](stream-files-dotnet-quickstart.md)
-* [Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos – Node.js](stream-files-nodejs-quickstart.md)

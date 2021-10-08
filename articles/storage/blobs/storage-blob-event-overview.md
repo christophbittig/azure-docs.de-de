@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: f07c249e3b7cb54283959df410d51ca18998f2cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b04cd87716bfcdeddd5c6d41b218788553a682f9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181515"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636817"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktion auf Blob Storage-Ereignisse
 
@@ -38,8 +38,8 @@ Ausführliche Beispiele für die Reaktion auf Blobspeicherereignisse mithilfe vo
 - [Tutorial: Verwenden von Azure Data Lake Storage Gen2-Ereignissen zum Aktualisieren einer Databricks Delta-Tabelle](data-lake-storage-events.md).
 - [Tutorial: Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid](../../event-grid/resize-images-on-storage-blob-upload-event.md?tabs=dotnet)
 
->[!NOTE]
-> Nur Speicherkonten vom Typ **StorageV2 (universell, Version 2)** , **BlockBlobStorage** und **BlobStorage** unterstützen die Ereignisintegration. **Storage (Universell V1)** unterstützt *nicht* die Integration in Event Grid.
+> [!NOTE]
+> **Storage (Universell V1)** unterstützt *nicht* die Integration in Event Grid.
 
 ## <a name="the-event-model"></a>Ereignismodell
 
@@ -52,9 +52,9 @@ Abonnieren Sie zunächst einen Endpunkt für ein Ereignis. Sobald ein Ereignis a
 Im Artikel zum [Blob Storage-Ereignisschema](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) finden Sie:
 
 > [!div class="checklist"]
-> * Eine vollständige Liste der Blob Storage-Ereignisse und Informationen dazu, wie jedes Ereignis ausgelöst wird
-> * Ein Beispiel dafür, welche Daten von Event Grid zu den einzelnen Ereignissen gesendet werden
-> * Angaben zum Zweck der jeweiligen Schlüssel-Wert-Paare, die in den Daten enthalten sind
+> - Eine vollständige Liste der Blob Storage-Ereignisse und Informationen dazu, wie jedes Ereignis ausgelöst wird
+> - Ein Beispiel dafür, welche Daten von Event Grid zu den einzelnen Ereignissen gesendet werden
+> - Angaben zum Zweck der jeweiligen Schlüssel-Wert-Paare, die in den Daten enthalten sind
 
 ## <a name="filtering-events"></a>Filtern von Ereignissen
 
@@ -94,16 +94,28 @@ Verwenden Sie zur Übereinstimmung mit Ereignissen aus Blobs, die in einem besti
 
 Anwendungen, die Blob Storage-Ereignisse behandeln, sollten einige bewährte Methoden nutzen:
 > [!div class="checklist"]
-> * Da mehrere Abonnements zum Weiterleiten von Ereignissen an den gleichen Ereignishandler konfiguriert werden können, ist es wichtig, nicht davon auszugehen, dass Ereignisse aus einer bestimmten Quelle stammen, sondern das Thema der Nachricht zu überprüfen, um sicherzustellen, dass es aus dem Speicherkonto stammt, das Sie erwarten.
-> * Überprüfen Sie auf ähnliche Weise, ob Sie auf die Verarbeitung des eventType vorbereitet sind, und gehen Sie nicht davon aus, dass alle Ereignisse, die Sie empfangen, den von Ihnen erwarteten Typen entsprechen.
-> * Da Nachrichten mit Verzögerung eintreffen können, verwenden Sie die etag-Felder, um zu verstehen, ob Ihre Informationen zu Objekten weiterhin auf dem neuesten Stand sind. Informationen zur Verwendung des etag-Felds finden Sie unter [Verwalten von Parallelität in Blob Storage](./concurrency-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage).
-> * Da Nachrichten in falscher Reihenfolge eintreffen können, verwenden Sie die sequencer-Felder, um die Reihenfolge der Ereignisse für ein bestimmtes Objekt zu verstehen. Das sequencer-Feld ist ein Zeichenfolgenwert, der die logische Reihenfolge von Ereignissen für einen bestimmten Blobnamen darstellt. Sie können anhand des standardmäßigen Zeichenfolgenvergleichs die relative Reihenfolge von zwei Ereignissen unter dem gleichen Blobnamen nachvollziehen.
-> * Storage-Ereignisse gewährleisten eine At-Least-Once-Zustellung an Abonnenten, wodurch sichergestellt wird, dass alle Nachrichten ausgegeben werden. Aufgrund von Wiederholungen zwischen Back-End-Knoten und Diensten oder abhängig von der Verfügbarkeit von Abonnements kommt es jedoch möglicherweise zu doppelten Nachrichten. Weitere Informationen zur Übermittlung und Wiederholung von Nachrichten finden Sie unter [Event Grid – Übermittlung und Wiederholung von Nachrichten](../../event-grid/delivery-and-retry.md).
-> * Verwenden Sie das blobType-Feld, um zu verstehen, welche Arten von Vorgängen für das Blob zulässig sind, und welche Typen von Clientbibliotheken Sie für den Zugriff auf das Blob verwenden sollten. Gültige Werte sind `BlockBlob` oder `PageBlob`. 
-> * Verwenden Sie das url-Feld mit `CloudBlockBlob`- und `CloudAppendBlob`-Konstruktor für den Zugriff auf das Blob.
-> * Ignorieren Sie Felder, die Sie nicht verstehen. So müssen Sie sich nicht mit neuen Features auseinandersetzen, die in der Zukunft hinzugefügt werden könnten.
-> * Wenn Sie sicherstellen möchten, dass das **Microsoft.Storage.BlobCreated**-Ereignis nur ausgelöst wird, nachdem ein Blockblob vollständig committed wurde, filtern Sie das Ereignis nach den REST-API-Aufrufen `CopyBlob`, `PutBlob`, `PutBlockList` oder `FlushWithClose`. Bei diesen API-Aufrufen wird das Ereignis **Microsoft.Storage.BlobCreated** erst ausgelöst, nachdem Daten vollständig in einem Blockblob committet wurden. Informationen zum Erstellen eines Filters finden Sie unter [Filtern von Ereignissen für Event Grid](../../event-grid/how-to-filter-events.md).
+> - Da mehrere Abonnements zum Weiterleiten von Ereignissen an den gleichen Ereignishandler konfiguriert werden können, ist es wichtig, nicht davon auszugehen, dass Ereignisse aus einer bestimmten Quelle stammen, sondern das Thema der Nachricht zu überprüfen, um sicherzustellen, dass es aus dem Speicherkonto stammt, das Sie erwarten.
+> - Überprüfen Sie auf ähnliche Weise, ob Sie auf die Verarbeitung des eventType vorbereitet sind, und gehen Sie nicht davon aus, dass alle Ereignisse, die Sie empfangen, den von Ihnen erwarteten Typen entsprechen.
+> - Da Nachrichten mit Verzögerung eintreffen können, verwenden Sie die etag-Felder, um zu verstehen, ob Ihre Informationen zu Objekten weiterhin auf dem neuesten Stand sind. Informationen zur Verwendung des etag-Felds finden Sie unter [Verwalten von Parallelität in Blob Storage](./concurrency-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage).
+> - Da Nachrichten in falscher Reihenfolge eintreffen können, verwenden Sie die sequencer-Felder, um die Reihenfolge der Ereignisse für ein bestimmtes Objekt zu verstehen. Das sequencer-Feld ist ein Zeichenfolgenwert, der die logische Reihenfolge von Ereignissen für einen bestimmten Blobnamen darstellt. Sie können anhand des standardmäßigen Zeichenfolgenvergleichs die relative Reihenfolge von zwei Ereignissen unter dem gleichen Blobnamen nachvollziehen.
+> - Storage-Ereignisse gewährleisten eine At-Least-Once-Zustellung an Abonnenten, wodurch sichergestellt wird, dass alle Nachrichten ausgegeben werden. Aufgrund von Wiederholungen zwischen Back-End-Knoten und Diensten oder abhängig von der Verfügbarkeit von Abonnements kommt es jedoch möglicherweise zu doppelten Nachrichten. Weitere Informationen zur Übermittlung und Wiederholung von Nachrichten finden Sie unter [Event Grid – Übermittlung und Wiederholung von Nachrichten](../../event-grid/delivery-and-retry.md).
+> - Verwenden Sie das blobType-Feld, um zu verstehen, welche Arten von Vorgängen für das Blob zulässig sind, und welche Typen von Clientbibliotheken Sie für den Zugriff auf das Blob verwenden sollten. Gültige Werte sind `BlockBlob` oder `PageBlob`.
+> - Verwenden Sie das url-Feld mit `CloudBlockBlob`- und `CloudAppendBlob`-Konstruktor für den Zugriff auf das Blob.
+> - Ignorieren Sie Felder, die Sie nicht verstehen. So müssen Sie sich nicht mit neuen Features auseinandersetzen, die in der Zukunft hinzugefügt werden könnten.
+> - Wenn Sie sicherstellen möchten, dass das **Microsoft.Storage.BlobCreated**-Ereignis nur ausgelöst wird, nachdem ein Blockblob vollständig committed wurde, filtern Sie das Ereignis nach den REST-API-Aufrufen `CopyBlob`, `PutBlob`, `PutBlockList` oder `FlushWithClose`. Bei diesen API-Aufrufen wird das Ereignis **Microsoft.Storage.BlobCreated** erst ausgelöst, nachdem Daten vollständig in einem Blockblob committet wurden. Informationen zum Erstellen eines Filters finden Sie unter [Filtern von Ereignissen für Event Grid](../../event-grid/how-to-filter-events.md).
 
+## <a name="feature-support"></a>Featureunterstützung
+
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
+
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png) <sup>2</sup>  | ![Nein](../media/icons/no-icon.png) |
+| Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png) <sup>2</sup> | ![Nein](../media/icons/no-icon.png) |
+
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
+
+<sup>2</sup>    Informationen finden Sie unter [Bekannte Probleme mit Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md). Diese Probleme treffen auf alle Konten zu, für die das Feature für hierarchische Namespaces aktiviert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

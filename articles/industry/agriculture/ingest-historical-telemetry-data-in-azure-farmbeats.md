@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
 ms.custom: ''
-ms.openlocfilehash: 1eb74fc900ebbf70f8938c31721f717117a4fdd6
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 0028bced72633c1544f6c53fa0f429ca570026c1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397494"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621621"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Erfassen historischer Telemetriedaten
 
@@ -192,7 +192,7 @@ access_token = token_response.get('access_token')
 Hier sind die gängigsten Anforderungsheader aufgeführt, die bei einem für den FarmBeats-Datenhub bestimmten API-Aufruf angegeben werden müssen:
 
 - **Content-Type:** application/json
-- **Autorisierung:** Bearer <Access-Token>
+- **Autorisierung**: Bearer\<Access-Token\>
 - **Accept:** application/json
 
 ### <a name="input-payload-to-create-metadata"></a>Eingabenutzlast für die Metadatenerstellung

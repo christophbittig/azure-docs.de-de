@@ -1,19 +1,19 @@
 ---
-title: Erstellen eines SAS-Tokens (Shared Access Signature) für Container und Blobs mit Microsoft Azure Storage-Explorer
+title: Erstellen von SAS-Token (Shared Access Signature) für Container und Blobs mit Microsoft Azure Storage-Explorer
 description: Es wird beschrieben, wie Sie ein SAS-Token (Shared Access Signature) für Container und Blobs erstellen, indem Sie Microsoft Azure Storage-Explorer und das Azure-Portal verwenden.
 ms.topic: how-to
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 03/05/2021
-ms.openlocfilehash: 8a91829ce79c5cd9e32efefc809dd23a19382f49
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.date: 09/16/2021
+ms.openlocfilehash: ecc62d7b45bfb3b0b108057d5e3e25b189297165
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360269"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653303"
 ---
-# <a name="create-sas-tokens-for-your-storage-containers"></a>Erstellen von SAS-Token für Ihre Speichercontainer
+# <a name="generate-sas-tokens-for-your-storage-containers"></a>Erstellen von SAS-Token für Ihre Speichercontainer
 
 In diesem Artikel wird beschrieben, wie Sie SAS-Token (Shared Access Signature) erstellen, indem Sie den Azure Storage-Explorer oder das Azure-Portal nutzen. Ein SAS-Token ermöglicht den sicheren, delegierten Zugriff auf Ressourcen in Ihrem Azure-Speicherkonto.
 
@@ -63,9 +63,6 @@ In diesem Artikel wird beschrieben, wie Sie SAS-Token (Shared Access Signature) 
 ---
 
 ## <a name="create-sas-tokens-for-blobs-in-the-azure-portal"></a>Erstellen von SAS-Token für Blobs im Azure-Portal
-
-> [!NOTE]
-> Das direkte Erstellen von SAS-Token für Container im Azure-Portal wird derzeit nicht unterstützt. Sie haben aber die Möglichkeit, ein SAS-Token mit [**Azure Storage-Explorer**](#create-your-sas-tokens-with-azure-storage-explorer) zu erstellen oder den Vorgang [programmgesteuert](../../../storage/blobs/sas-service-create.md) durchzuführen.
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="prerequisites"></a>Voraussetzungen

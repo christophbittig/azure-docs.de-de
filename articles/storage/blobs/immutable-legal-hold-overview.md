@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/22/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1434f689f8f629fd04ec0c0b059a1298b32d5ac9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 39108c5c5fd823e313ce616fbb4f6d6135e7d81e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349568"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645757"
 ---
 # <a name="legal-holds-for-immutable-blob-data"></a>Gesetzliche Aufbewahrungspflichten für unveränderliche Blobdaten
 
@@ -53,7 +53,7 @@ Eine Aufbewahrungsrichtlinie für juristische Zwecke auf Containerebene muss min
 
 #### <a name="audit-logging"></a>Überwachungsprotokollierung
 
-Jeder Container mit einer Aufbewahrungsrichtlinie für juristische Zwecke stellt ein Richtlinienüberwachungsprotokoll bereit.  Das Protokoll enthält Benutzer-ID, Befehlstyp, Zeitstempel und die Tags für die Aufbewahrungsrichtlinie für juristische Zwecke. Das Überwachungsprotokoll wird für die Lebensdauer der Richtlinie gemäß den SEC 17a-4(f)-Bestimmungsrichtlinien aufbewahrt.
+Jeder Container mit einer Aufbewahrungsrichtlinie für juristische Zwecke stellt ein Richtlinienüberwachungsprotokoll bereit. Das Protokoll enthält Benutzer-ID, Befehlstyp, Zeitstempel und die Tags für die Aufbewahrungsrichtlinie für juristische Zwecke. Das Überwachungsprotokoll wird für die Lebensdauer der Richtlinie gemäß den Richtlinien der Verordnung SEC 17a-4(f) aufbewahrt.
 
 Das [Azure-Aktivitätsprotokoll](../../azure-monitor/essentials/platform-logs-overview.md) ist ein umfassenderes Protokoll mit allen Verwaltungsdienstaktivitäten. [Azure-Ressourcenprotokolle](../../azure-monitor/essentials/platform-logs-overview.md) enthalten Informationen zu Datenvorgängen. Der Benutzer ist für die dauerhafte Speicherung dieser Protokolle verantwortlich, die aus gesetzlichen oder anderen Gründen ggf. erforderlich ist.
 
