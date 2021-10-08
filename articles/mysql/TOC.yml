@@ -13,6 +13,8 @@
       href: flexible-server/whats-new.md
     - name: Kostenloses Testen des flexiblen Servers
       href: flexible-server/how-to-deploy-on-azure-free-account.md
+    - name: Vorauszahlen für eine reservierte Kapazität
+      href: concept-reserved-pricing.md
     - name: Richtlinie zur Versionsunterstützung
       href: concepts-version-policy.md
       displayName: version policy
@@ -31,8 +33,6 @@
           items:
             - name: Tarife
               href: concepts-pricing-tiers.md
-            - name: Vorauszahlen für eine reservierte Kapazität
-              href: concept-reserved-pricing.md
     - name: Schnellstarts
       expanded: true
       items:

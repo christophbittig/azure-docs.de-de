@@ -30,6 +30,8 @@
       displayName: 'version, postgresql'
     - name: Upgrades von Hauptversionen
       href: how-to-upgrade-using-dump-and-restore.md
+    - name: Vorauszahlen für eine reservierte Kapazität
+      href: concept-reserved-pricing.md
     - name: Bekannte Probleme und Einschränkungen
       href: concepts-known-issues-limitations.md
       displayName: 'issues, limitations, postgresql'
@@ -133,8 +135,6 @@
           items:
             - name: Tarife
               href: concepts-pricing-tiers.md
-            - name: Vorauszahlen für eine reservierte Kapazität
-              href: concept-reserved-pricing.md
         - name: Sicherheit
           items:
             - name: Sicherheitsübersicht
