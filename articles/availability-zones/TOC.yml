@@ -4,14 +4,20 @@
       href: 'https://azure.microsoft.com/features/resiliency'
     - name: Entwickeln robuster Anwendungen für Azure
       href: /azure/architecture/framework/resiliency/app-design
+- name: Grundlagen zu Verfügbarkeitszonen
+  items:
+    - name: Regionen und Verfügbarkeitszonen in Azure
+      href: az-overview.md
+    - name: Azure-Dienste
+      href: region-types-service-categories-azure.md
+    - name: Azure-Dienste mit Unterstützung für Verfügbarkeitszonen
+      href: az-region.md
+    - name: Begriff
+      href: glossary.md
 - name: Hochverfügbarkeit
   items:
-    - name: Regionen und Verfügbarkeitszonen
-      href: az-overview.md
-    - name: Dokumentation zu Verfügbarkeitszonen
+    - name: Schnellstarthandbücher
       items:
-        - name: 'Azure-Dienste, die Verfügbarkeitszonen unterstützen'
-          href: az-region.md
         - name: Virtuelle Computer
           items:
             - name: Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit CLI

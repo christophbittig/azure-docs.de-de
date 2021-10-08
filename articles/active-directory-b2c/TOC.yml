@@ -7,6 +7,8 @@
       href: overview.md
     - name: Technische Übersicht und Funktionsübersicht
       href: technical-overview.md
+    - name: Unterstützte Azure AD-Features
+      href: supported-azure-ad-features.md
     - name: Neues in der Dokumentation
       href: whats-new-docs.md
 - name: Schnellstarts
@@ -26,7 +28,9 @@
       href: tutorial-register-applications.md
     - name: 3. Erstellen von Benutzerflows und benutzerdefinierten Richtlinien
       href: tutorial-create-user-flows.md
-    - name: Bereinigen und Löschen des Mandanten
+    - name: 4. Verwalten Ihres Mandanten
+      href: tenant-management.md
+    - name: 5. Bereinigen und Löschen des Mandanten
       href: tutorial-delete-tenant.md
 - name: Beispiele
   items:
@@ -82,14 +86,14 @@
       href: user-overview.md
     - name: Benutzerprofilattribute
       href: user-profile-attributes.md
+    - name: Rollen und Ressourcenzugriffssteuerung
+      href: roles-resource-access-control.md
     - name: Identity Protection und bedingter Zugriff
       href: conditional-access-identity-protection-overview.md
     - name: Richtlinienschlüssel
       href: policy-keys-overview.md
 - name: Anleitungen
   items:
-    - name: Verwalten Ihres Mandanten
-      href: tenant-management.md
     - name: App-Integration
       items:
         - name: ASP.NET Core-Webapp

@@ -132,7 +132,7 @@
           href: apply-security-baseline.md
         - name: Überprüfung auf Sicherheitsrisiken
           items:
-            - name: Überprüfen Ihrer Computer mit dem integrierten Sicherheitsrisikobewertungsscanner
+            - name: Überprüfen Ihrer Computer mit der integrierten Qualys-Überprüfung
               displayName: 'qualys, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
             - name: Scannen Ihrer VMs mit einer Lösung zur Sicherheitsrisikobewertung vom Typ BYOL
@@ -158,6 +158,9 @@
         - name: Definieren von Listen mit sicheren Anwendungen für Computer
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
           href: security-center-adaptive-application.md
+        - name: Überprüfen der auf Ihren Computern installierten Anwendungen und Softwarekomponenten
+          displayName: 'inventory, apps, software inventory, mde, tvm'
+          href: asset-inventory.md#access-a-software-inventory
         - name: Nachverfolgen von Änderungen an Dateien und Registrierungen
           items:
             - name: Übersicht über die Überwachung der Dateiintegrität

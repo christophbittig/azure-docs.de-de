@@ -420,6 +420,8 @@
           href: how-to-managed-cluster-app-deployment-template.md
         - name: Bereitstellen einer Anwendung mit verwalteter Identität in einem verwalteten Cluster
           href: how-to-managed-cluster-application-managed-identity.md
+        - name: Gewähren des Zugriffs auf andere Azure-Ressourcen in einem verwalteten Cluster
+          href: how-to-managed-cluster-grant-access-other-resources.md
         - name: Bereitstellen ausschließlich zustandsloser Knotentypen in einem verwalteten Cluster
           href: how-to-managed-cluster-stateless-node-type.md
         - name: Konfigurieren des sekundären Knotentyps für umfassende Skalierung in einem verwalteten Cluster

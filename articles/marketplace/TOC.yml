@@ -147,6 +147,8 @@
           href: azure-app-test-publish.md
         - name: Vermarkten Ihres Angebots
           href: azure-app-marketing.md
+        - name: Getaktete Abrechnung für verwaltete Apps
+          href: azure-app-metered-billing.md
         - name: Getaktete Abrechnung
           href: marketplace-metering-service-apis.md
         - name: Konfigurieren von Preisen für die nutzungsbasierte monatliche Abrechnung
