@@ -4,17 +4,16 @@ titleSuffix: An Azure Communication Services concept document
 description: Erfahren Sie mehr zur Architektur von Communication Services.
 author: probableprime
 manager: mikben
-services: azure-communication-services
 ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 1346c9f6505c03ccebb2d2e2dc33e899050bfe20
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6d1228ab412ff87f3004e6e1dd5ab1486cee67a0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128672018"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360093"
 ---
 # <a name="client-and-server-architecture"></a>Client- und Serverarchitektur
 
@@ -85,7 +84,7 @@ Azure Communication Service-Anwendungen können Teams-Anrufen beitreten. Dies is
 
 
 ### <a name="dataflows"></a>Dataflows
-1. Der Anrufverwaltungsdienst erstellt einen Gruppenanruf mit [Graph-APIs](/graph/api/resources/onlinemeeting?view=graph-rest-1.0). Ein anderes Muster sieht vor, dass die Benutzer den Gruppenanruf mithilfe von [Bookings](https://www.microsoft.com/microsoft-365/business/scheduling-and-booking-app), Outlook, Teams oder einer anderen Benutzeroberfläche für die Planung im Microsoft 365-Ökosystem erstellen.
+1. Der Anrufverwaltungsdienst erstellt einen Gruppenanruf mit [Graph-APIs](/graph/api/resources/onlinemeeting?view=graph-rest-1.0&preserve-view=true). Ein anderes Muster sieht vor, dass die Benutzer den Gruppenanruf mithilfe von [Bookings](https://www.microsoft.com/microsoft-365/business/scheduling-and-booking-app), Outlook, Teams oder einer anderen Benutzeroberfläche für die Planung im Microsoft 365-Ökosystem erstellen.
 2. Der Anrufverwaltungsdienst gibt die Teams-Anrufdetails für Azure Communication Service-Clients frei.
 3. In der Regel muss ein Teams-Benutzer dem Anruf beitreten und externen Benutzern die Teilnahme über die Lobby ermöglichen. Diese Erfahrung reagiert jedoch empfindlich auf die Konfiguration des Teams-Mandanten und die bestimmten Besprechungseinstellungen.
 4. Azure Communication Service-Benutzer initialisieren ihren Anrufclient und nehmen mithilfe der in Schritt 2 erhaltenen Daten an der Teams-Besprechung teil.

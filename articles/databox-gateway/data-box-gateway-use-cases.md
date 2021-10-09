@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 09/28/2021
 ms.author: alkohli
-ms.openlocfilehash: eec1c595119e225468bdbbe76f506b5b330a1beb
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 7dfc80ba0117e5481370bacd18941bf622a99edb
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212397"
+ms.locfileid: "129274347"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Anwendungsfälle für Azure Data Box Gateway
 
@@ -40,7 +40,7 @@ Während das Gerät mit Daten gefüllt wird, beginnt es mit der Drosselung der E
 
 Verwenden Sie Data Box Gateway, wenn Sie Ihre Daten langfristig in der Cloud aufbewahren möchten. Sie können für die Langzeitaufbewahrung die Archivspeicherebene verwenden.
 
-Die Archivspeicherebene ist für die Speicherung selten benötigter Daten für mindestens 180 Tage optimiert. Die Archivspeicherebene ermöglicht die niedrigsten Speicherkosten, ist gleichzeitig aber mit den höchsten Zugriffskosten verbunden. Weitere Informationen finden Sie unter [Archivspeicherebene](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier).
+Die Archivspeicherebene ist für die Speicherung selten benötigter Daten für mindestens 180 Tage optimiert. Die Archivspeicherebene ermöglicht die niedrigsten Speicherkosten, ist gleichzeitig aber mit den höchsten Zugriffskosten verbunden. Weitere Informationen finden Sie unter [Archivspeicherebene](../storage/blobs/access-tiers-overview.md#archive-access-tier).
 
 ### <a name="move-data-to-the-archive-tier"></a>Verschieben von Daten in die Archivspeicherebene
 
