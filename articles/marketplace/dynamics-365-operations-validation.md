@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: vamahtan
 ms.author: vamahtan
-ms.date: 05/19/2021
-ms.openlocfilehash: 05b7c223823522b7c511df7cfa66c7dffa2a8b4b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 09/27/2021
+ms.openlocfilehash: d2e6316485b1ad3676092e6e19dcc4c6b55d5d2b
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112281285"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080888"
 ---
 # <a name="dynamics-365-for-operations-functional-validation"></a>Funktionale Überprüfung eines Dynamics 365 for Operations-Angebots
 
@@ -33,11 +33,16 @@ Es gibt zwei Optionen für die funktionale Überprüfung:
 
 Das Microsoft-Zertifizierungsteam überprüft das Video und die Dateien und genehmigt dann entweder die Lösung oder sendet eine E-Mail mit den nächsten Schritten.
 
+> [!NOTE]
+> Wenn es sich bei der Lösung/dem Angebot, das Sie erstellen, nur um einen Konnektor handelt, demonstrieren Sie den funktionierenden Konnektor während des Anrufs oder verwenden Sie eine der unten aufgeführten Video-Upload-Optionen.  
+
 ### <a name="option-1-30-minute-conference-call"></a>Option 1: 30-minütiges Konferenzgespräch
 
 Wenden Sie sich für einen Termin für das finale Überprüfungsgespräch an [appsourceCRM@microsoft.com](mailto:appsourceCRM@microsoft.com), und halten Sie den Namen Ihres Angebots und potenzielle Termine zwischen 8:00 und 17:00 Uhr PST bereit.
 
 ### <a name="option-2-upload-a-demo-video-and-lcs-screenshots"></a>Option 2: Hochladen eines Demovideos und von LCS-Screenshots
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
 
 1. Nehmen Sie ein Video auf, und laden Sie die Adresse der Hostingsite Ihrer Wahl hoch. Beachten Sie diese Vorgaben:
 
@@ -49,6 +54,43 @@ Wenden Sie sich für einen Termin für das finale Überprüfungsgespräch an [ap
     > Sie können ein vorhandenes Marketingvideo verwenden, wenn es die Vorgaben erfüllt.
 
 2. Erstellen Sie die folgenden Screenshots der [LCS](https://lcs.dynamics.com/)-Umgebung für das Angebot oder die Lösung, die Sie veröffentlichen möchten. Die Screenshots müssen scharf genug sein, damit das Zertifizierungsteam den Text darauf lesen kann. Speichern Sie die Screenshots als JPG-Dateien. Sie müssen [appSourceCRM@microsoft.com](mailto:appSourceCRM@microsoft.com) möglicherweise die Berechtigung für Ihre LCS-Umgebung erteilen, damit wir das Setup auf diese Weise und nicht nur anhand der Screenshots überprüfen können.
+
+    1. Navigieren Sie zu **LCS** > **Business Process Modeler** > **Project library** (LCS > Geschäftsprozessmodellierer > Projektbibliothek). Erstellen Sie bei allen Prozessschritten Screenshots. Beachten Sie, dass die Spalten **Diagramme** und **Überprüft** wie hier gezeigt ebenfalls erfasst werden:
+
+       :::image type="content" source="media/dynamics-365-operations/project-library.png" alt-text="Abbildung des Projektbibliothekfensters":::
+
+    2. Wechseln Sie zu **LCS** > **Solution Management** > **Test Solution Package** (LCS > Lösungsverwaltung > Lösungspaket testen). Erstellen Sie Screenshots, die die Paketübersicht und die in den folgenden Beispielen gezeigten Inhalte enthalten:
+
+    | Feld | Image |
+    | --- | --- |
+    | Paketübersicht | [![Screenshot: Fenster „Paketübersicht“](media/dynamics-365-operations/package-overview-45.png)](media/dynamics-365-operations/package-overview.png#lightbox) |
+    | <ul><li>Lösungsgenehmiger</li></ul> | [![Bildschirm „Paketübersicht“](media/dynamics-365-operations/solution-approvers-45.png)](media/dynamics-365-operations/solution-approvers.png#lightbox) |
+    | Paketinhalt<ul><li>Modell</li><li>Bereitstellbares Softwarepaket</li></ul> | [![Paketinhalt (Bildschirm 1)](media/dynamics-365-operations/package-contents-1-45.png)](media/dynamics-365-operations/package-contents-1.png#lightbox) |
+    | <ul><li>GER-Konfiguration</li><li>Datenbanksicherung</li></ul><br>Artefakte sind im Abschnitt **GER-Konfiguration** nicht erforderlich. | [![Paketinhalt (Bildschirm 2)](media/dynamics-365-operations/package-contents-2-45.png)](media/dynamics-365-operations/package-contents-2.png#lightbox) |
+    | <ul><li>Power BI-Berichtsmodell</li><li>BPM-Artefakt</li></ul><br>Im Abschnitt **Power BI** sind keine Artefakte erforderlich. | [![Paketinhalt (Bildschirm 3)](media/dynamics-365-operations/package-contents-3-45.png)](media/dynamics-365-operations/package-contents-3.png#lightbox) |
+    | <ul><li>Prozessdatenpaket</li><li>Solution license agreement and privacy policy (Lösungslizenzvereinbarung und Datenschutzrichtlinie)</li></ul><br>Die Abschnitte **GER-Konfiguration** und **Power BI-Berichtsmodell** sind bei Operations-Angeboten optional. | [![Paketinhalt (Bildschirm 4)](media/dynamics-365-operations/package-contents-4-45.png)](media/dynamics-365-operations/package-contents-4.png#lightbox) |
+
+    Weitere Informationen zu den einzelnen Abschnitten des LCS-Portals finden Sie im [LCS-Benutzerhandbuch](/dynamics365/fin-ops-core/dev-itpro/lifecycle-services/lcs-user-guide).
+
+3. Laden Sie das Dokument in Partner Center hoch.
+
+    1. Erstellen Sie ein Textdokument, das die Adresse des Demovideos und die Screenshots enthält, oder speichern Sie die Screenshots als separate JPG-Dateien.
+    2. Fügen Sie in [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) auf der Registerkarte **Ergänzende Inhalte** des Angebots den Text und die Bilder zu einer ZIP-Datei hinzu.
+
+    [ ![Veranschaulicht eine Zip-Datei, die auf die Seite für ergänzende Inhalte hochgeladen wurde.](./media//dynamics-365-operations/supplemental-content-workspaces.png) ](./media//dynamics-365-operations/supplemental-content-workspaces.png#lightbox)
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+1. Nehmen Sie ein Video auf, und laden Sie die Adresse der Hostingsite Ihrer Wahl hoch. Beachten Sie diese Vorgaben:
+
+    - Verfügbarkeit für das Microsoft-Zertifizierungsteam
+    - kürzer als 20 Minuten
+    - enthält bis zu drei wichtige Kernfunktionen Ihrer Lösung in der Dynamics 365-Umgebung
+
+    > [!NOTE]
+    > Sie können ein vorhandenes Marketingvideo verwenden, wenn es die Vorgaben erfüllt.
+
+2. Erstellen Sie die folgenden Screenshots der [LCS](https://lcs.dynamics.com/)-Umgebung für das Angebot oder die Lösung, die Sie veröffentlichen möchten. Die Screenshots müssen scharf genug sein, damit das Zertifizierungsteam den Text darauf lesen kann. Speichern Sie die Screenshots als JPG-Dateien.
 
     1. Navigieren Sie zu **LCS** > **Business Process Modeler** > **Project library** (LCS > Geschäftsprozessmodellierer > Projektbibliothek). Erstellen Sie bei allen Prozessschritten Screenshots. Beachten Sie, dass die Spalten **Diagramme** und **Überprüft** wie hier gezeigt ebenfalls erfasst werden:
 
@@ -73,6 +115,8 @@ Wenden Sie sich für einen Termin für das finale Überprüfungsgespräch an [ap
     2. Fügen Sie in [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) auf der Registerkarte **Ergänzende Inhalte** des Angebots den Text und die Bilder zu einer ZIP-Datei hinzu.
 
     [![Abbildung des Projektbibliothekfensters](media/dynamics-365-operations/supplemental-content.png)](media/dynamics-365-operations/supplemental-content.png#lightbox)
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

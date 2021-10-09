@@ -3,16 +3,17 @@ title: Kopier-Assistent in Azure Data Factory
 description: Erfahren Sie, wie Sie den Kopier-Assistenten von Azure Data Factory verwenden, um Daten aus unterstützten Datenquellen in Senken zu kopieren.
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0f95b0d62bc81a8dddc72239491a05ca78945490
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82ad8dbec999b1e65eb5b9d866eacaf95c8647d2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393376"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649585"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Kopier-Assistent in Azure Data Factory
 
@@ -21,12 +22,12 @@ ms.locfileid: "100393376"
 
 Der Kopier-Assistent in Azure Data Factory vereinfacht den Datenerfassungsvorgang (üblicherweise der erste Schritt in einem Szenario mit End-to-End-Datenintegration). Zur Arbeit mit dem Kopier-Assistenten in Azure Data Factory sind Kenntnisse hinsichtlich der JSON-Definitionen für verknüpfte Dienste, Datasets und Pipelines nicht erforderlich. Der Assistent erstellt automatisch eine Pipeline, um Daten aus der ausgewählten Datenquelle in das gewünschte Ziel zu kopieren. Darüber hinaus können Sie mit dem Kopier-Assistenten die erfassten Daten zum Zeitpunkt der Erstellung überprüfen. Dies spart insbesondere dann Zeit, wenn Sie Daten zum ersten Mal aus der Datenquelle erfassen. Klicken Sie zum Starten des Kopier-Assistenten auf der Startseite Ihrer Data Factory auf die Kachel **Daten kopieren** .
 
-![Kopier-Assistent](./media/data-factory-copy-wizard/copy-data-wizard.png)
+:::image type="content" source="./media/data-factory-copy-wizard/copy-data-wizard.png" alt-text="Kopier-Assistent":::
 
 ## <a name="designed-for-big-data"></a>Für Big Data konzipiert
 Mit diesem Assistenten können Sie problemlos Daten in wenigen Minuten aus einer Vielzahl von Quellen an verschiedene Ziele verschieben. Nachdem Sie den Assistenten ausgeführt haben, werden eine Pipeline mit einer Kopieraktivität sowie einige davon abhängige Data Factory-Entitäten (verknüpfte Dienste und Datasets) automatisch erstellt. Keine weiteren Schritte sind erforderlich, um die Pipeline zu erstellen.   
 
-![Auswählen einer Datenquelle](./media/data-factory-copy-wizard/select-data-source-page.png)
+:::image type="content" source="./media/data-factory-copy-wizard/select-data-source-page.png" alt-text="Auswählen einer Datenquelle":::
 
 > [!NOTE]
 > Im [Tutorial zum Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie schrittweise Anweisungen zum Erstellen einer Beispielpipeline, um Daten aus einem Azure-Blob in eine Azure SQL-Datenbanktabelle zu kopieren.
@@ -36,7 +37,7 @@ Der Assistent wurde von Beginn an für Big Data konzipiert und bietet Unterstüt
 ## <a name="automatic-data-preview"></a>Automatische Datenvorschau
 Sie können eine Vorschau für einen Teil der Daten aus der ausgewählten Datenquelle anzeigen, um zu überprüfen, ob es tatsächlich die Daten sind, die Sie kopieren möchten. Wenn die Datenquelle eine Textdatei ist, analysiert der Kopier-Assistent darüber hinaus diese Datei und erfasst Trennzeichen für Zeilen und Spalten sowie das Schema automatisch.
 
-![Dateiformateinstellungen](./media/data-factory-copy-wizard/file-format-settings.png)
+:::image type="content" source="./media/data-factory-copy-wizard/file-format-settings.png" alt-text="Dateiformateinstellungen":::
 
 ## <a name="schema-capture-and-mapping"></a>Schemaerfassung und -zuordnung
 Das Schema der Eingabedaten stimmt nicht in jedem Fall mit dem Schema der Ausgabedaten überein. In diesem Szenario müssen die Spalten des Quellschemas den Spalten des Zielschemas zugeordnet werden.
@@ -46,7 +47,7 @@ Das Schema der Eingabedaten stimmt nicht in jedem Fall mit dem Schema der Ausgab
 
 Verwenden Sie eine Dropdownliste, um eine Spalte aus dem Quellschema auszuwählen, die einer Spalte im Zielschema zugeordnet werden soll. Der Kopier-Assistent versucht, das Muster für die Spaltenzuordnung zu verstehen. Er wendet das gleiche Muster auf die restlichen Spalten an, damit Sie nicht jede Spalte einzeln auswählen müssen, um die Schemazuordnung abzuschließen. Falls gewünscht, können Sie diese Zuordnungen überschreiben, indem Sie mithilfe der Dropdownlisten die Spalten einzeln zuordnen. Das Muster wird genauer, wenn Sie mehr Spalten zugeordnet haben. Der Kopier-Assistent aktualisiert das Muster ständig und erreicht letztlich das richtige Muster für die Spaltenzuordnung, die Sie erreichen möchten.     
 
-![Schemazuordnung](./media/data-factory-copy-wizard/schema-mapping.png)
+:::image type="content" source="./media/data-factory-copy-wizard/schema-mapping.png" alt-text="Schemazuordnung":::
 
 ## <a name="filtering-data"></a>Filtern von Daten
 Sie können Quelldaten filtern, wenn nur bestimmte Daten in den Senkendatenspeicher kopiert werden sollen. Durch Filtern wird das Datenvolumen der in den Senkendatenspeicher kopierten Daten verringert. Der Durchsatz des Kopiervorgangs steigt. Der Assistent bietet flexible Möglichkeiten, die Daten einer relationalen Datenbank mittels der SQL-Abfragesprache oder Dateien in einem Azure-Blobordner mittels [Data Factory-Funktionen und -Variablen](data-factory-functions-variables.md) zu filtern.   
@@ -54,7 +55,7 @@ Sie können Quelldaten filtern, wenn nur bestimmte Daten in den Senkendatenspeic
 ### <a name="filtering-of-data-in-a-database"></a>Filtern von Datenbankdaten
 Der folgende Screenshot zeigt eine SQL-Abfrage mit der Funktion `Text.Format` und der Variablen `WindowStart`.
 
-![Überprüfen von Ausdrücken](./media/data-factory-copy-wizard/validate-expressions.png)
+:::image type="content" source="./media/data-factory-copy-wizard/validate-expressions.png" alt-text="Überprüfen von Ausdrücken":::
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Filtern von Daten in einem Azure-Blobordner
 Sie können im Ordnerpfad Variablen verwenden, um Daten aus einem Ordner zu kopieren, der zur Laufzeit auf der Grundlage von [Systemvariablen](data-factory-functions-variables.md#data-factory-system-variables) bestimmt wird. Folgende Variablen werden unterstützt: **{year}** , **{month}** , **{day}** , **{hour}** , **{minute}** und **{custom}** . Beispiel: Eingabeordner/{year}/{month}/{day}.
@@ -70,25 +71,25 @@ Angenommen, Sie haben Eingabeordner im folgenden Format:
 
 Klicken Sie auf die Schaltfläche **Durchsuchen** für **Datei oder Ordner**, navigieren Sie zu einem der Ordner (z.B. 2016->03->01->02), und klicken Sie auf **Auswählen**. Das Textfeld sollte jetzt `2016/03/01/02` enthalten. Ersetzen Sie nun **2016** durch **{year}** , **03** durch **{month}** , **01** durch **{day}** , **02** durch **{hour}** , und drücken Sie die **TAB**-TASTE. Daraufhin werden Dropdownlisten zum Auswählen des Formats für diese vier Variablen angezeigt:
 
-![Verwenden von Systemvariablen](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
+:::image type="content" source="./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png" alt-text="Verwenden von Systemvariablen":::   
 
 Sie können auch eine **benutzerdefinierte** Variable und beliebige [unterstützte Formatzeichenfolgen](/dotnet/standard/base-types/custom-date-and-time-format-strings)verwenden (siehe Screenshot unten). Um einen Ordner mit dieser Struktur auszuwählen, verwenden Sie zunächst die Schaltfläche **Durchsuchen** . Ersetzen Sie dann einen Wert mit **{custom}** , und drücken Sie die **TAB**-TASTE, um das Textfeld anzuzeigen, in dem Sie die Formatzeichenfolge eingeben können.     
 
-![Verwenden von benutzerdefinierten Variablen](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
+:::image type="content" source="./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png" alt-text="Verwenden von benutzerdefinierten Variablen":::
 
 ## <a name="scheduling-options"></a>Planungsoptionen
 Sie können den Kopiervorgang einmal oder nach einem Zeitplan (stündlich, täglich usw.) ausführen. Beide Optionen können für die verschiedensten Connectors in unterschiedlichen Umgebungen verwendet werden, einschließlich lokaler Kopien, Cloudkopien und Kopien auf dem lokalen Desktop.
 
 Ein einmaliger Kopiervorgang ermöglicht nur einmal das Verschieben von Daten aus einer Quelle in ein Ziel. Er gilt für Daten jeder Größe in jedem unterstützten Format. Das Kopieren nach einem Zeitplan ermöglicht Ihnen das Kopieren von Daten nach einem vorgeschriebenen Wiederholungszyklus. Sie können umfangreiche Einstellungen (wie Wiederholen, Timeout, Warnungen usw.) nutzen, um das Kopieren nach einem Zeitplan zu konfigurieren.
 
-![Planen von Eigenschaften](./media/data-factory-copy-wizard/scheduling-properties.png)
+:::image type="content" source="./media/data-factory-copy-wizard/scheduling-properties.png" alt-text="Planen von Eigenschaften":::
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
 In diesem Abschnitt werden die gängigen Problembehandlungsmethoden für den Kopier-Assistenten in Azure Data Factory beschrieben.
 
 > [!NOTE] 
-> Diese Tipps zur Problembehandlung beziehen sich auf den Kopier-Assistenten in Version 1 von Data Factory. Informationen für Data Factory-Version 2 finden Sie im Leitfaden zur Problembehandlung unter [Problembehandlung für Azure Data Factory](../data-factory-ux-troubleshoot-guide.md).
+> Diese Tipps zur Problembehandlung beziehen sich auf den Kopier-Assistenten in Version 1 von Data Factory. Für Data Factory v2 siehe Anleitung zur Fehlerbehebung unter [Troubleshoot Azure Data Factory Studio](../data-factory-ux-troubleshoot-guide.md).
 
 ### <a name="error-code-unable-to-validate-in-copy-wizard"></a>Fehlercode: Unable to validate in Copy Wizard (Kann nicht im Kopier-Assistenten überprüft werden)
 

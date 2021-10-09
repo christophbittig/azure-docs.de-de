@@ -2,14 +2,14 @@
 title: Übersicht über die Transaktionsverarbeitung in Azure Service Bus
 description: In diesem Artikel erhalten Sie eine Übersicht über die Transaktionsverarbeitung und die Funktion „Senden über“ in Azure Service Bus.
 ms.topic: article
-ms.date: 03/03/2021
+ms.date: 09/21/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e2848f41d5557584b0f1a197b548a00a4aef1564
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5eb3bf6eef551fd13788f7659eb8becede8e250d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183742"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666210"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Übersicht über die Service Bus-Transaktionsverarbeitung
 
@@ -22,7 +22,7 @@ Dieser Artikel beschreibt die Transaktionsfunktionen von Microsoft Azure Service
 
 Eine *Transaktion* gruppiert zwei oder mehr Vorgänge in einem *Ausführungsbereich*. Solch eine Transaktion muss von sich aus sicherstellen, dass alle Vorgänge, die zu einer bestimmten Gruppe von Vorgängen gehören, entweder gemeinsam gelingen oder gemeinsam fehlschlagen. In dieser Hinsicht agieren Transaktionen als eine Einheit. Dieses Verhalten wird häufig als *Unteilbarkeit* bezeichnet.
 
-Service Bus ist ein Transaktionsnachrichtenbroker und gewährleistet die Transaktionsintegrität für alle internen Vorgänge in seinen Nachrichtenspeichern. Alle Nachrichtenübertragungen innerhalb von Service Bus wie das Verschieben von Nachrichten in eine [Warteschlange für unzustellbare Nachrichten](service-bus-dead-letter-queues.md) oder die [automatische Weiterleitung](service-bus-auto-forwarding.md) von Nachrichten zwischen Entitäten werden als Transaktionen bezeichnet. Wenn Service Bus also eine Meldung akzeptiert, wurde diese bereits gespeichert und mit einer Sequenznummer versehen. Alle darauf folgenden Nachrichtenübermittlungen innerhalb von Service Bus sind koordinierte Vorgänge zwischen Entitäten und führen weder zum Verlust (Quelle erfolgreich, Ziel schlägt fehl) noch zur Duplizierung (Quelle schlägt fehl, Ziel erfolgreich) der Nachricht.
+Service Bus ist ein Transaktionsnachrichtenbroker und gewährleistet die Transaktionsintegrität für alle internen Vorgänge in seinen Nachrichtenspeichern. Alle Übertragungen von Nachrichten im Service Bus, wie das Verschieben von Nachrichten in eine [Warteschlange für unzustellbare Nachrichten](service-bus-dead-letter-queues.md) oder die [automatische Weiterleitung](service-bus-auto-forwarding.md) von Nachrichten zwischen Entitäten, sind transaktional. Wenn Service Bus also eine Meldung akzeptiert, wurde diese bereits gespeichert und mit einer Sequenznummer versehen. Alle darauf folgenden Nachrichtenübermittlungen innerhalb von Service Bus sind koordinierte Vorgänge zwischen Entitäten und führen weder zum Verlust (Quelle erfolgreich, Ziel schlägt fehl) noch zur Duplizierung (Quelle schlägt fehl, Ziel erfolgreich) der Nachricht.
 
 Service Bus unterstützt Gruppierungsvorgänge für eine einzelne Nachrichtenentität (Warteschlange, Thema, Abonnement) innerhalb eines Transaktionsbereichs. Sie können beispielsweise mehrere Nachrichten aus einem Transaktionsbereich an eine Warteschlange senden. Die Nachrichten werden allerdings erst im Warteschlangenprotokoll committet, wenn die Transaktion erfolgreich abgeschlossen wurde.
 
@@ -30,10 +30,14 @@ Service Bus unterstützt Gruppierungsvorgänge für eine einzelne Nachrichtenent
 
 Die innerhalb eines Transaktionsbereichs ausführbaren Vorgänge sind:
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : `Send`, `SendAsync`, `SendBatch`, `SendBatchAsync`
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : `Complete`, `CompleteAsync`, `Abandon`, `AbandonAsync`, `Deadletter`, `DeadletterAsync`, `Defer`, `DeferAsync`, `RenewLock`, `RenewLockAsync` 
+- Send
+- Abgeschlossen
+- Abandon
+- Deadletter
+- Verzögern
+- Schloss erneuern
 
-Empfangsvorgänge sind nicht enthalten, da davon ausgegangen wird, dass die Anwendung Nachrichten mithilfe des Modus [ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) in einer Empfangsschleife oder über einen [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage)-Rückruf erhält. Erst dann öffnet die Anwendung einen Transaktionsbereich für die Verarbeitung der Nachricht.
+Empfangsoperationen sind nicht enthalten, da davon ausgegangen wird, dass die Anwendung Nachrichten im Peek-Lock-Modus, in einer Empfangsschleife oder mit einem Callback abruft und erst dann einen Transaktionsbereich für die Verarbeitung der Nachricht öffnet.
 
 Die Disposition der Nachricht (vollständig, verworfen, unzustellbar, zurückgestellt) tritt innerhalb des Bereichs und abhängig von dem Gesamtergebnis der Transaktion auf.
 
@@ -49,49 +53,25 @@ Wenn Sie Nachrichten von einem Themenabonnement empfangen und an eine Warteschla
 
 Erstellen Sie einen Nachrichtenabsender, der sich über die Übertragungswarteschlange an die Zielwarteschlange richtet, um solche Übertragungen einzurichten. Sie verfügen außerdem über einen Empfänger, der Nachrichten aus derselben Warteschlange abruft. Beispiel:
 
-```csharp
-var connection = new ServiceBusConnection(connectionString);
-
-var sender = new MessageSender(connection, QueueName);
-var receiver = new MessageReceiver(connection, QueueName);
-```
-
-Eine einfache Transaktion verwendet diese Elemente anschließend wie im folgenden Beispiel. Um das vollständige Beispiel zu sehen, sehen Sie sich den [Quellcode auf GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia) an:
+Eine einfache Transaktion verwendet diese Elemente anschließend wie im folgenden Beispiel. Um das vollständige Beispiel zu sehen, sehen Sie sich den [Quellcode auf GitHub](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/servicebus/Azure.Messaging.ServiceBus/samples/Sample06_Transactions.md#transactions-across-entities) an:
 
 ```csharp
-var receivedMessage = await receiver.ReceiveAsync();
+var options = new ServiceBusClientOptions { EnableCrossEntityTransactions = true };
+await using var client = new ServiceBusClient(connectionString, options);
+
+ServiceBusReceiver receiverA = client.CreateReceiver("queueA");
+ServiceBusSender senderB = client.CreateSender("queueB");
+
+ServiceBusReceivedMessage receivedMessage = await receiverA.ReceiveMessageAsync();
 
 using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 {
-    try
-    {
-        // do some processing
-        if (receivedMessage != null)
-            await receiver.CompleteAsync(receivedMessage.SystemProperties.LockToken);
-
-        var myMsgBody = new MyMessage
-        {
-            Name = "Some name",
-            Address = "Some street address",
-            ZipCode = "Some zip code"
-        };
-
-        // send message
-        var message = myMsgBody.AsMessage();
-        await sender.SendAsync(message).ConfigureAwait(false);
-        Console.WriteLine("Message has been sent");
-
-        // complete the transaction
-        ts.Complete();
-    }
-    catch (Exception ex)
-    {
-        // This rolls back send and complete in case an exception happens
-        ts.Dispose();
-        Console.WriteLine(ex.ToString());
-    }
+    await receiverA.CompleteMessageAsync(receivedMessage);
+    await senderB.SendMessageAsync(new ServiceBusMessage());
+    ts.Complete();
 }
 ```
+
 
 ## <a name="timeout"></a>Timeout
 Eine Transaktion weist nach zwei Minuten einen Timeout auf. Der Transaktionszeitgeber startet, wenn der erste Vorgang in der Transaktion gestartet wird. 

@@ -1,5 +1,5 @@
 ---
-title: Überwachung und Warnungen für Azure Key Vault | Microsoft-Dokumentation
+title: Azure Key Vault-Warnungen
 description: Erstellen Sie ein Dashboard zum Überwachen der Integrität Ihres Schlüsseltresors, und konfigurieren Sie Warnungen.
 services: key-vault
 author: msmbaldwin
@@ -9,14 +9,14 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 3229e8a3ee482067677cdd5af1fb98b120ef8dd0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4c1f63bdc13822b7eb48dc5410a990dc75f3453e
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110082106"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060780"
 ---
-# <a name="monitoring-and-alerting-for-azure-key-vault"></a>Überwachung und Warnungen für Azure Key Vault
+# <a name="alerting-for-azure-key-vault"></a>Warnmeldungen für Azure Key Vault
 
 ## <a name="overview"></a>Übersicht
 
@@ -27,63 +27,6 @@ Sobald Sie damit begonnen haben, Ihre Produktionsgeheimnisse im Schlüsseltresor
 + Erstellen von Warnungen bei angegebenen Schwellenwerten
 
 Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um eine globale Überwachungslösung bereitzustellen. [Erfahren Sie hier mehr über Azure Monitor für den Schlüsseltresor](../../azure-monitor/insights/key-vault-insights-overview.md#introduction-to-key-vault-insights)
-
-## <a name="basic-key-vault-metrics-to-monitor"></a>Grundlegende Key Vault-Metriken für die Überwachung
-
-+ Tresorverfügbarkeit  
-+ Tresorauslastung 
-+ Wartezeit für Dienst-API 
-+ Dienst-API-Treffer gesamt (Filter nach Aktivitätstyp) 
-+ Fehlercodes (Filter nach Statuscode) 
-
-**Tresorverfügbarkeit**: Diese Metrik sollte immer bei 100 % liegen. Es ist wichtig, diese Metrik zu überwachen, da sie schnell Aufschluss darüber gibt, ob Ihr Schlüsseltresor ausgefallen ist. 
-
-**Tresorauslastung**: Die Anzahl von Anforderungen pro Sekunde, die ein Schlüsseltresor verarbeiten kann, basiert auf der Art des ausgeführten Vorgangs. Für einige Tresorvorgänge gilt ein niedrigerer Schwellenwert für die Anforderungen pro Sekunde. Diese Metrik aggregiert die Gesamtnutzung Ihres Schlüsseltresors für alle Vorgangstypen, um einen Prozentwert bereitzustellen, der die aktuelle Auslastung des Schlüsseltresors angibt. Eine vollständige Liste der Limits für den Key Vault-Dienst finden Sie im folgenden Dokument. [Grenzwerte des Azure Key Vault-Diensts](service-limits.md)
-
-**Wartezeit für Dienst-API:** Diese Metrik zeigt die durchschnittliche Latenz eines Aufrufs des Schlüsseltresors gemessen vom Dienst. Sie umfasst nicht die Zeit, die vom Client oder vom Netzwerk zwischen Client und Dienst verbraucht wird.
-
-**API-Treffer gesamt**: Diese Metrik zeigt alle Aufrufe an Ihren Schlüsseltresor. Anhand dieses Werts können Sie ermitteln, welche Anwendungen Ihren Schlüsseltresor aufrufen. 
-
-**Fehlercodes**: Diese Metrik zeigt, ob für Ihren Schlüsseltresor eine ungewöhnliche Anzahl von Fehlern auftritt. Eine vollständige Liste der Fehlercodes und einen Leitfaden zur Problembehandlung finden Sie im folgenden Dokument. [Azure Key Vault: REST-API-Fehlercodes](rest-error-codes.md)
-
-## <a name="how-to-configure-metrics-and-create-a-dashboard"></a>Konfigurieren von Metriken und Erstellen eines Dashboards
-
-1. Melden Sie sich beim Azure-Portal an.
-2. Navigieren Sie zu Ihrem Schlüsseltresor.
-3. Klicken Sie unter **Überwachung** auf **Metriken**. 
-
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Abschnitt „Überwachung“ mit hervorgehobener Option „Metriken“](../media/alert-1.png)
-
-4. Aktualisieren Sie den Titel des Diagramms in den Namen, den Sie für Ihr Dashboard anzeigen möchten. 
-5. Wählen Sie den Bereich aus. In diesem Beispiel wählen wir einen einzelnen Schlüsseltresor aus. 
-6. Wählen Sie die Metrik **Tresorverfügbarkeit gesamt** aus, und legen Sie als Aggregation **Durchschnitt** fest. 
-7. Aktualisieren Sie den Zeitbereich auf „Letzte 24 Stunden“, und legen Sie die Granularität auf 1 Minute fest. 
-
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Metrik „Tresorverfügbarkeit gesamt“](../media/alert-2.png)
-
-8. Wiederholen Sie die Schritte oben für die Metriken „Tresorauslastung“ und „Wartezeit für Dienst-API“. Klicken Sie auf **An Dashboard anheften**, um Ihre Metriken in einem Dashboard zu speichern. 
-
-> [!IMPORTANT]
-> Auswählen von „An Dashboard anheften“ und Speichern der konfigurierten Metriken Wenn Sie die Seite verlassen und ohne Speicherung zur Seite zurückkehren, gehen Ihre Konfigurationsänderungen verloren. 
-
-9. Um alle Vorgangstypen für den Schlüsseltresor zu überwachen, verwenden Sie die Metrik **Dienst-API-Treffer gesamt**, und wählen Sie **Teilung anwenden: nach Aktivitätstyp** aus.
-
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Schaltfläche „Teilung anwenden“](../media/alert-3.png)
-
-10. Um auf Fehlercodes für den Schlüsseltresor zu überwachen, verwenden Sie die Metrik **Dienst-API-Ergebnisse gesamt**, und wählen Sie **Teilung anwenden: nach Aktivitätstyp** aus.
-
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Ausgewählte Metrik „Dienst-API-Ergebnisse gesamt“](../media/alert-4.png)
-
-Jetzt sieht Ihr Dashboard wie dieses aus. Sie können auf die 3 Punkte oben rechts neben jeder Kachel klicken und die Kacheln nach Bedarf neu anordnen und ihre Größe ändern. 
-
-Nachdem Sie das Dashboard gespeichert und veröffentlicht haben, wird eine neue Ressource in Ihrem Azure-Abonnement erstellt. Sie können diese jederzeit anzeigen, indem Sie nach „freigegebenes Dashboard“ suchen. 
-
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Veröffentlichtes Dashboard](../media/alert-5.png)
 
 ## <a name="how-to-configure-alerts-on-your-key-vault"></a>Konfigurieren von Warnungen für Ihren Schlüsseltresor 
 
@@ -210,4 +153,9 @@ Beachten Sie die folgenden Konfigurationsparameter.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Glückwunsch! Sie haben erfolgreich ein Überwachungsdashboard erstellt und Warnungen für Ihren Schlüsseltresor konfiguriert! Nachdem Sie alle oben aufgeführten Schritte ausgeführt haben, sollten Sie jetzt E-Mail-Benachrichtigungen erhalten, wenn Ihr Schlüsseltresor die konfigurierten Warnungskriterien erfüllt. Ein entsprechendes Beispiel ist nachfolgend dargestellt. Verwenden Sie die in diesem Artikel eingerichteten Tools, um die Integrität Ihres Schlüsseltresors zu überwachen.
+Glückwunsch! Sie haben erfolgreich ein Überwachungsdashboard erstellt und Warnungen für Ihren Schlüsseltresor konfiguriert!
+
+Nachdem Sie alle oben aufgeführten Schritte ausgeführt haben, sollten Sie jetzt E-Mail-Benachrichtigungen erhalten, wenn Ihr Schlüsseltresor die konfigurierten Warnungskriterien erfüllt. Ein entsprechendes Beispiel ist nachfolgend dargestellt. Verwenden Sie die in diesem Artikel eingerichteten Tools, um die Integrität Ihres Schlüsseltresors zu überwachen.
+
+- [Überwachen von Key Vault](monitor-key-vault.md)
+- [Überwachen von Key Vault-Datenverweisen](monitor-key-vault-reference.md)

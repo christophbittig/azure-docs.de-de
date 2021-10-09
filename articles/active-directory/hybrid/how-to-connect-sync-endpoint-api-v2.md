@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4434b59044aed8c9814431864e5c3c9b7d98254c
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 1f546ff8ccabb4ef865fe9e75678d7b1ab2c22df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575716"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614522"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect-Synchronisierung: V2-Endpunkt-API 
 Microsoft hat einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, mit dem die Leistung der Synchronisierungsdienstvorgänge für Azure Active Directory verbessert wird. Wenn Sie den neuen V2-Endpunkt verwenden, treten beim Exportieren aus und Importieren in Azure AD spürbare Leistungssteigerungen auf. Dieser neue Endpunkt unterstützt Folgendes:
@@ -29,7 +29,7 @@ Microsoft hat einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, m
 > Der neue Endpunkt verfügt derzeit nicht über eine konfigurierte Beschränkung der Gruppengröße für Microsoft 365-Gruppen, die zurückgeschrieben werden. Dies hat möglicherweise Auswirkungen auf Ihr Active Directory und Synchronisierungszykluslatenzen. Es wird empfohlen, die Gruppengröße inkrementell zu erhöhen.  
 
 >[!NOTE]
-> Die V2-Endpunkt-API für die Azure AD Connect-Synchronisierung ist derzeit nur in den folgenden Azure-Umgebungen verfügbar:
+> Die Azure AD Connect sync V2 Endpunkt-API ist allgemein verfügbar, kann aber derzeit nur in diesen Azure-Umgebungen verwendet werden:
 > - Azure Commercial
 > - Azure China
 > - Azure US Government. Wird nicht in Azure Deutschland zur Verfügung gestellt

@@ -9,18 +9,18 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 75ab8032d197b00516578f1e0a92f29122126249
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 1346c9f6505c03ccebb2d2e2dc33e899050bfe20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966621"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672018"
 ---
 # <a name="client-and-server-architecture"></a>Client- und Serverarchitektur
 
 Auf dieser Seite werden typische Architekturkomponenten und Dataflows in verschiedenen Azure Communication Service-Szenarien veranschaulicht. Zu den relevanten Komponenten gehören:
 
-1. **Clientanwendung**. Diese Website oder native Anwendung wird von Endbenutzern für die Kommunikation genutzt. Azure Communication Services bietet [SDK-Clientbibliotheken](sdk-options.md) für mehrere Browser und Anwendungsplattformen. Zusätzlich zu unseren Kern-SDKs steht [ein UI-Toolkit](https://aka.ms/acsstorybook) zur Verfügung, das die Entwicklung von Browser-Apps beschleunigt.
+1. **Clientanwendung**. Diese Website oder native Anwendung wird von Endbenutzern für die Kommunikation genutzt. Azure Communication Services bietet [SDK-Clientbibliotheken](sdk-options.md) für mehrere Browser und Anwendungsplattformen. Zusätzlich zu unseren Kern-SDKs ist [eine UI-Bibliothek](https://aka.ms/acsstorybook) verfügbar, um die Entwicklung von Browseranwendungen zu beschleunigen.
 1. **Identitätsverwaltungsdienst**.  Diese Dienstfunktion können Sie erstellen, um Benutzer und andere Konzepte in Ihrer Geschäftslogik zu Azure Communication Services zuzuordnen und bei Bedarf Token für diese Benutzer zu erstellen.
 1. **Anrufverwaltungsdienst**.  Diese Dienstfunktion erstellen Sie zum Verwalten und Überwachen von Sprach- und Videoanrufen.  Dieser Dienst kann über das Calling Automation SDK und die REST-APIs Anrufe erstellen, Benutzer einladen, Telefonnummern anrufen, Audio wiedergeben, DMTF-Töne anhören und viele andere Anruffeatures nutzen.
 

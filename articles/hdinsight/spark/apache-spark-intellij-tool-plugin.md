@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 21f815af73b264f7be6ffaf1e59909a7139ea022
-ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
+ms.openlocfilehash: aeb6c9e266bdb663b9a664c8509e9cafab8a5128
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2021
-ms.locfileid: "113297548"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743011"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Erstellen von Apache Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ
 
@@ -30,7 +30,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](apache-spark-jupyter-spark-sql.md). Nur HDinsight-Cluster in der öffentlichen Cloud werden unterstützt, andere sichere Cloudtypen (z. B. Clouds für Behörden) hingegen nicht.
+* Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](apache-spark-jupyter-spark-sql.md). Nur HDInsight-Cluster in öffentlichen Clouds werden unterstützt, während andere sichere Cloud-Typen (z. B. staatliche Clouds) nicht unterstützt werden.
 
 * [Oracle Java Development Kit.](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)  In diesem Artikel wird die Java-Version 8.0.202 verwendet.
 
@@ -236,7 +236,7 @@ Nachdem Sie eine Scala-Anwendung erstellt haben, können Sie diese an den Cluste
     |„Main class name“ (Name der Hauptklasse)|Der Standardwert ist die Hauptklasse der ausgewählten Datei. Sie können eine andere Klasse auswählen, indem Sie auf die Schaltfläche mit den Auslassungspunkten ( **…** ) klicken.|
     |Job configurations (Auftragskonfigurationen)|Sie können die Standardschlüssel und die Werte ändern. Weitere Informationen finden Sie unter [Apache Livy-REST-API](https://livy.incubator.apache.org/docs/latest/rest-api.html).|
     |Befehlszeilenargumente|Sie können bei Bedarf durch Leerzeichen getrennte Argumente für die Hauptklasse eingeben.|
-    |Referenced Jars and Referenced Files („Referenzierte JARs“ und „Referenzierte Dateien“)|Sie können bei Bedarf die Pfade für die JAR-Dateien und für die anderen Dateien eingeben, auf die verwiesen wird. Sie können auch Dateien im virtuellen Dateisystem von Azure durchsuchen, das derzeit nur ADLS Gen 2-Cluster unterstützt. Weitere Informationen finden Sie unter: [Apache Spark Configuration](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) (Apache Spark-Konfiguration).  Lesen Sie auch die Informationen zum [Hochladen von Ressourcen in einen Cluster](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md).|
+    |Referenced Jars and Referenced Files („Referenzierte JARs“ und „Referenzierte Dateien“)|Sie können bei Bedarf die Pfade für die JAR-Dateien und für die anderen Dateien eingeben, auf die verwiesen wird. Sie können auch Dateien im virtuellen Dateisystem von Azure durchsuchen, das derzeit nur ADLS Gen 2-Cluster unterstützt. Weitere Informationen finden Sie unter: [Apache Spark Configuration](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) (Apache Spark-Konfiguration).  Lesen Sie auch die Informationen zum [Hochladen von Ressourcen in einen Cluster](../../storage/blobs/quickstart-storage-explorer.md).|
     |Job Upload Storage (Speicher für Auftragsupload)|Erweitern Sie die Option, um zusätzliche Optionen anzuzeigen.|
     |Speichertyp|Wählen Sie **Use Azure Blob to upload** (Azure-Blob für Upload verwenden) aus der Dropdownliste aus.|
     |Speicherkonto|Geben Sie Ihr Speicherkonto ein.|

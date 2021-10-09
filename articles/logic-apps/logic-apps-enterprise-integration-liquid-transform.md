@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/25/2021
-ms.openlocfilehash: 01b5e9930353078406751001300a1baa3c23cf00
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: b6131e3ebe4ce7612d1a9c245605df2e29970257
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690570"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652394"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>Transformieren von JSON und XML mithilfe von Liquid-Vorlagen als Zuordnungen in Azure Logic Apps
 
@@ -36,7 +36,7 @@ In diesem Artikel wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
 * Ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* Grundlegende Kenntnisse über die [Liquid-Vorlagensprache](https://shopify.github.io/liquid/)
+* Grundlegende Kenntnisse der [Liquid Template Sprache](https://shopify.github.io/liquid/). Azure Logic Apps nutzen DotLiquid 2.0.361.
 
   > [!NOTE]
   > Die Aktion **Liquid – Von JSON in JSON transformieren** folgt der [DotLiquid-Implementierung für Liquid](https://github.com/dotliquid/dotliquid), die sich in bestimmten Fällen von der [Shopify-Implementierung für Liquid](https://shopify.github.io/liquid) unterscheidet. Weitere Informationen finden Sie unter [Überlegungen zur Liquid-Vorlage](#liquid-template-considerations).
@@ -86,7 +86,7 @@ In diesem Artikel wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
 1. Wählen Sie im Bereich **Zuordnungen** den Befehl **Hinzufügen** aus, und geben Sie die folgenden Details für Ihre Zuordnung an:
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | Wert | Beschreibung |
    |----------|-------|-------------|
    | **Name** | `JsonToJsonTemplate` | Der Name für Ihre Zuordnung, der in diesem Beispiel „JsonToJsonTemplate“ lautet. |
    | **Zuordnungstyp** | **Liquid** | Der Typ Ihrer Zuordnung. Bei JSON-zu-JSON-Transformationen müssen Sie **liquid** auswählen. |

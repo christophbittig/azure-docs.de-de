@@ -13,12 +13,12 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 3e2ffebf0b414d4b59178fe04fb109530365786b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68f4437ce75bfe2a9017133ed523bb5e9ce10a8c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98064707"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787128"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Instanziieren einer öffentlichen Clientanwendung mit Konfigurationsoptionen unter Verwendung von MSAL.NET
 
@@ -30,6 +30,25 @@ Vor der Initialisierung einer Anwendung müssen Sie diese zunächst [registriere
 - Die URL des Identitätsanbieters (Namensgeber der Instanz) und die Anmeldezielgruppe für Ihre Anwendung. Diese beiden Parameter werden zusammen als Autorität bezeichnet.
 - Die Mandanten-ID, wenn Sie eine Geschäftsanwendung ausschließlich für Ihre Organisation schreiben (auch als Einzelmandantenanwendung bezeichnet).
 - Für Web-Apps und gelegentlich auch für öffentliche Clientanwendungen (insbesondere, wenn Ihre App einen Broker verwenden muss) müssen Sie auch den Umleitungs-URI festlegen, mit dem der Identitätsanbieter Ihrer Anwendung die Sicherheitstoken sendet.
+
+## <a name="default-reply-uri"></a>Standardantwort-URI
+
+In MSAL.NET 4.1+ kann die Standardumleitungs-URI (Antwort-URI) jetzt mit der Methode `public PublicClientApplicationBuilder WithDefaultRedirectUri()` festgelegt werden. Diese Methode setzt die Eigenschaft Umleitungs-URI der öffentlichen Kundenanwendung auf den empfohlenen Standardwert.
+
+Das Verhalten dieser Methode ist abhängig von der Plattform, die Sie gerade verwenden. In der folgenden Tabelle wird beschrieben, welcher Umleitungs-URI auf bestimmten Plattformen festgelegt ist:
+
+Plattform  | Umleitungs-URI  
+---------  | --------------
+Desktop-App (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+UWP | Wert von `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`
+.NET Core | `http://localhost`
+
+Für die UWP-Plattform wird das Erlebnis durch die Aktivierung von SSO mit dem Browser verbessert, indem der Wert auf das Ergebnis von `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` gesetzt wird. 
+
+Für .NET Core setzt MSAL.Net den Wert auf den lokalen Host, damit der Benutzer den Systembrowser für die interaktive Authentifizierung verwenden kann.
+
+> [!NOTE]
+> Bei eingebetteten Browsern in Desktop-Szenarien wird die verwendete Umleitungs-URI von MSAL abgefangen, um zu erkennen, dass eine Antwort vom Identitätsanbieter zurückgegeben wird, dass ein Authentifizierungscode zurückgegeben wurde. Diese URI kann daher in jeder Cloud verwendet werden, ohne dass eine tatsächliche Weiterleitung zu dieser URI erfolgt. Das heißt, Sie können und sollten `https://login.microsoftonline.com/common/oauth2/nativeclient` in jeder Cloud verwenden. Wenn Sie möchten, können Sie auch jede andere URI verwenden, solange Sie die Umleitungs-URI in MSAL und in der App-Registrierung korrekt konfigurieren. Die Angabe der Standard-URI in der Anwendungsregistrierung bedeutet, dass der Aufwand für die Einrichtung in MSAL am geringsten ist.
 
 
 Eine .NET Core-Konsolenanwendung könnte beispielsweise die folgende *appsettings.json*-Konfigurationsdatei aufweisen:

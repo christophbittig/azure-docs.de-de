@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 67273a5e0c29a8a3ba7b7fdfcc3ccba2e5105c7c
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: c1d9c88825dc8460c619131b8f69b5e802a8758b
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429055"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080748"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Geltungsbereiche für eine Web-API, die v1.0-Token akzeptiert
 
@@ -83,4 +83,6 @@ var scopes = [ ResourceId + "/.default"];
 
 ## <a name="scopes-to-request-for-a-client-credential-flowdaemon-app"></a>Für Clientanmeldeinformationsflows/Daemon-Apps anzufordernde Geltungsbereiche
 
-Bei einem Clientanmeldeinformations-Flow lautet der zu übergebende Geltungsbereich ebenfalls `/.default`. Dies bedeutet für Azure AD: Alle Berechtigungen auf Anwendungsebene, denen der Administrator bei der Anwendungsregistrierung zugestimmt hat.
+Für den standardmäßigen Ablauf der Client-Anmeldeinformationen verwenden Sie `/.default`. Beispiel: `https://graph.microsoft.com/.default`.
+
+Azure AD fügt automatisch alle Berechtigungen auf Anwendungsebene, denen der Administrator zugestimmt hat, in das Zugriffstoken für den Client Credentials Flow ein.

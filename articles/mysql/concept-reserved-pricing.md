@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 1e64acd29e8b1e2e60b3ae1b855f8552e277e824
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 976ed2f1af2fe4481e8327e4e83b7ba6c5b61fa2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639706"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675780"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Database for MySQL-Computeressourcen mit reservierter Kapazität
 
@@ -50,10 +50,10 @@ Nehmen Sie beispielsweise an, Sie führen eine universelle Gen5-MySQL-Datenbank 
 
 In der folgenden Tabelle werden die erforderlichen Felder beschrieben.
 
-| Feld | BESCHREIBUNG |
+| Feld | Beschreibung |
 | :------------ | :------- |
 | Subscription   | Das Abonnement, das für die Zahlung der Reservierung von Azure Database for MySQL-Kapazitäten verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung von Azure Database for MySQL-Kapazitäten belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder eine einzelne Vereinbarung mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Bei einem Enterprise-Abonnement werden die Gebühren vom Saldo der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) der Reservierung abgezogen oder als Überschreitung belastet. Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung für das Abonnement in Rechnung gestellt.
-| `Scope` | Die Reservierung virtueller Kerne kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: </br></br> **Gemeinsam**: Der Rabatt auf die Reservierung virtueller Kerne wird auf Azure Database for MySQL-Server angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.</br></br> **Einzelabonnement**: Der Rabatt auf die Reservierung virtueller Kerne wird auf Azure Database for MySQL-Server in diesem Abonnement angewendet. </br></br> **Einzelne Ressourcengruppe**: Der Reservierungsrabatt wird auf Azure Database for MySQL-Server im ausgewählten Abonnement und die ausgewählte Ressourcengruppe in diesem Abonnement angewendet.
+| `Scope` | Die Reservierung virtueller Kerne kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: </br></br> **Gemeinsam**: Der Rabatt auf die Reservierung virtueller Kerne wird auf Azure Database for MySQL-Server angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.</br></br>**Verwaltungsgruppe** wird der Reservierungsrabatt auf Azure Database for MySQL-Server angewendet, die in allen Abonnements laufen, die sowohl Teil der Verwaltungsgruppe als auch des Abrechnungsbereichs sind.</br></br> **Einzelabonnement**: Der Rabatt auf die Reservierung virtueller Kerne wird auf Azure Database for MySQL-Server in diesem Abonnement angewendet. </br></br> **Einzelne Ressourcengruppe**: Der Reservierungsrabatt wird auf Azure Database for MySQL-Server im ausgewählten Abonnement und die ausgewählte Ressourcengruppe in diesem Abonnement angewendet.
 | Region | Die Azure-Region, die durch die Reservierung von Azure Database for MySQL-Kapazitäten abgedeckt wird.
 | Bereitstellungstyp | Der Azure Database for MySQL-Ressourcentyp, für den Sie die Reservierung erwerben möchten.
 | Leistungsstufe | Die Dienstebene für die Azure Database for MySQL-Server.

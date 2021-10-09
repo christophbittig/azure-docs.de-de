@@ -8,12 +8,12 @@ ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/16/2021
-ms.openlocfilehash: fd0fb07ad96d9897859281ef368452c96798d542
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 68c43d149da28f7a140ac4f4fd32d76fe53f3e2d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428648"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663305"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link für Azure Data Factory
 
@@ -241,7 +241,7 @@ Abschließend müssen Sie den privaten Endpunkt in Ihrer Data Factory erstellen.
 > Die Deaktivierung des Zugriffs auf öffentliche Netzwerke gilt nur für die selbstgehostete Integration Runtime, nicht für Azure Integration Runtime und SSIS Integration Runtime (SQL Server Integration Services).
 
 > [!NOTE]
-> Sie können nach dem Erstellen eines privaten Endpunkts für das Portal weiterhin über ein öffentliches Netzwerk auf das Azure Data Factory-Portal zugreifen.
+> Sie können weiterhin über ein öffentliches Netzwerk auf das Azure Data Factory-Portal zugreifen, nachdem Sie einen privaten Endpunkt für das Portal erstellt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

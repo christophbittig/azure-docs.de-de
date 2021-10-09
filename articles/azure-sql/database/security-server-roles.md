@@ -9,12 +9,12 @@ ms.author: anwolter
 ms.topic: conceptual
 ms.date: 09/02/2021
 ms.reviewer: vanto
-ms.openlocfilehash: 64c012373187059792174618920b797b2d081aa2
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: cfb24ee98bf00fa46f75b0bef321a7b1694e2113
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537200"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630260"
 ---
 # <a name="azure-sql-database-server-roles-for-permission-management"></a>Azure SQL-Datenbank-Serverrollen für die Berechtigungsverwaltung
 
@@ -56,7 +56,7 @@ In der folgenden Tabelle werden die festen Rollen auf Serverebene und deren Mög
 
 Jeder integrierten Rolle auf Serverebene sind bestimmte Berechtigungen zugewiesen. In der folgenden Tabelle sind die Berechtigungen angegeben, die den Rollen auf Serverebene zugewiesen sind. Darüber hinaus sind die Berechtigungen auf Datenbankebene angegeben, die geerbt werden, wenn in der Datenbank ein Benutzerkonto vorhanden ist.
   
-|Feste Rolle auf Serverebene|Berechtigungen auf Serverebene|Berechtigungen auf Datenbankebene (wenn ein Datenbankbenutzer vorhanden ist)  
+|Feste Rolle auf Serverebene|Berechtigungen auf Serverebene|Berechtigungen auf Datenbankebene (wenn ein dem Login entsprechender Datenbankbenutzer existiert)  
 |-------------|----------|-----------------|  
 |**##MS_DefinitionReader##**|VIEW ANY DATABASE, VIEW ANY DEFINITION, VIEW ANY SECURITY DEFINITION|VIEW DEFINITION, VIEW SECURITY DEFINITION|  
 |**##MS_ServerStateReader##**|VIEW SERVER STATE, VIEW SERVER PERFORMANCE STATE, VIEW SERVER SECURITY STATE|VIEW DATABASE STATE, VIEW DATABASE PERFORMANCE STATE, VIEW DATABASE SECURITY STATE|  
@@ -67,7 +67,7 @@ Jeder integrierten Rolle auf Serverebene sind bestimmte Berechtigungen zugewiese
 
 In der folgenden Tabelle sind die Systemsichten und Funktionen aufgeführt, die Sie beim Verwenden von Rollen auf Serverebene in Azure SQL-Datenbank nutzen können.  
   
-|Funktion|type|Beschreibung|  
+|Funktion|type|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
 |[IS_SRVROLEMEMBER &#40;Transact-SQL&#41;](/sql/t-sql/functions/is-srvrolemember-transact-sql)|Metadaten|Gibt an, ob ein SQL-Anmeldename Mitglied der angegebenen Rolle auf Serverebene ist.|  
 |[sys.server_role_members &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-server-role-members-transact-sql)|Metadaten|Gibt eine Zeile für jedes Mitglied jeder Rolle auf Serverebene zurück.|
@@ -187,7 +187,7 @@ SELECT * FROM sys.dm_exec_query_stats
 - `IS_SRVROLEMEMBER()` wird in der *Masterdatenbank* nicht unterstützt.
 
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 - [Rollen auf Datenbankebene](/sql/relational-databases/security/authentication-access/database-level-roles)   
 - [Sicherheitskatalogsichten &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/security-catalog-views-transact-sql)   

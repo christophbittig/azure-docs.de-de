@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 6205867cbcb65a3b5720fefd1356b36bcd8c6838
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 997bf9e2b88269985c85220c4960179d148a4190
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682721"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637470"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Begriffe auf dem Preisblatt Ihrer Microsoft-Kundenvereinbarung
 
@@ -45,13 +45,13 @@ Im folgenden Abschnitt werden wichtige Begriffe beschrieben, die auf dem Preisbl
 | meterSubCategory  | Name der Unterklassifizierungskategorie der Verbrauchseinheit.  |
 | meterType  |  Name des Verbrauchseinheitstyps. |
 | meterRegion  | Der Name der Region, in der die Verbrauchseinheit für den Dienst verfügbar ist. Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden.    |
-| Produkt  | Name des Produkts, für das die Gebühren anfallen, z. B.: SQL-Datenbank (Basic) oder SQL-Datenbank (Standard)  |
+| Produkt  | Name des Produkts, für das die Gebühren anfallen, z. B. Basic SQL DB vs. Standard SQL DB  |
 | productId  | Eindeutiger Bezeichner für das Produkt, dessen Verbrauchseinheit genutzt wird. |
 | productOrderName  | Name des erworbenen Produktplans. |
-| serviceFamily  | Typ des Azure-Diensts, z. B.: Compute, Analytics, Sicherheit |
+| serviceFamily  | Art des Azure-Dienstes, z. B. Compute, Analytics, Security |
 | tierMinimumUnits  | Definiert die untere Grenze des Tarifbereichs, für den Preise definiert sind. Bei einem Bereich von 0 bis 100 wäre der Wert von „tierMinimumUnits“ z. B. „0“.  |
 | unitOfMeasure  | Identifiziert die Abrechnungsmaßeinheiten für den Dienst. Computedienste werden beispielsweise pro Stunde abgerechnet. |
-| unitPrice  | Preis pro Einheit zum Zeitpunkt der Abrechnung (nicht der gültige Mischpreis), bezogen auf eine Verbrauchseinheit und einen Produktauftragsnamen.  Hinweis: Der Preis pro Einheit entspricht nicht dem gültigen Preis in Downloads von Nutzungsdetails bei Diensten mit unterschiedlichen Preisen in verschiedenen Stufen.  Bei Diensten mit mehrstufiger Preisgestaltung ist der gültige Preis eine stufenübergreifende Mischrate, und es wird dafür kein stufenspezifischer Einzelpreis angezeigt. Der Mischpreis oder der gültige Preis ist der Nettopreis für die verbrauchte Menge über mehrere Stufen hinweg (wobei für jede Stufe ein bestimmter Einzelpreis gilt). |
+| unitPrice  | Preis pro Einheit zum Zeitpunkt der Abrechnung (nicht der gültige Mischpreis), bezogen auf eine Verbrauchseinheit und einen Produktauftragsnamen.  Hinweis: Der Preis pro Einheit ist nicht identisch mit dem effektiven Preis in den Downloads der Nutzungsdetails, wenn es sich um Dienste mit unterschiedlichen Preisen für die verschiedenen Stufen handelt.  Bei Diensten mit mehrstufiger Preisgestaltung ist der gültige Preis eine stufenübergreifende Mischrate, und es wird dafür kein stufenspezifischer Einzelpreis angezeigt. Der Mischpreis oder der gültige Preis ist der Nettopreis für die verbrauchte Menge über mehrere Stufen hinweg (wobei für jede Stufe ein bestimmter Einzelpreis gilt). |
 
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung

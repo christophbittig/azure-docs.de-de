@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 570305de41d190852e5acaa178d838c21fba2347
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 092e42a5f9c1779fc5968b9fc733d260d405a90a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440687"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625903"
 ---
 # <a name="manage-an-existing-application-with-the-open-service-mesh-osm-azure-kubernetes-service-aks-add-on"></a>Verwalten einer vorhandenen Anwendung mit dem Open Service Mesh (OSM) Azure Kubernetes Service (AKS) Add-On
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Die in dieser Anleitung beschriebenen Schritte setzen voraus, dass Sie zuvor das OSM AKS-Add-on für Ihren AKS-Cluster aktiviert haben. Lesen Sie andernfalls den Artikel [Bereitstellen des OSM-AKS-Add-Ons](./open-service-mesh-deploy-add-on.md), bevor Sie fortfahren. Außerdem muss Ihr AKS-Cluster Version Kubernetes `1.19+` und höher sein, die Kubernetes RBAC muss aktiviert sein und eine `kubectl` Verbindung mit dem Cluster hergestellt haben (wenn Sie Hilfe zu diesen Elementen benötigen, sehen Sie sich den [AKS-Schnellstart](./kubernetes-walkthrough.md)an und haben das AKS OSM-Add-on installiert.
+Die in dieser Anleitung beschriebenen Schritte setzen voraus, dass Sie zuvor das OSM AKS Add-on für Ihren AKS-Cluster aktiviert haben. Lesen Sie andernfalls den Artikel [Bereitstellen des OSM-AKS-Add-Ons](./open-service-mesh-deploy-addon-az-cli.md), bevor Sie fortfahren. Außerdem muss Ihr AKS-Cluster Version Kubernetes `1.19+` und höher sein, die Kubernetes RBAC muss aktiviert sein und eine `kubectl` Verbindung mit dem Cluster hergestellt haben (wenn Sie Hilfe zu diesen Elementen benötigen, sehen Sie sich den [AKS-Schnellstart](./kubernetes-walkthrough.md)an und haben das AKS OSM-Add-on installiert.
 
 Die folgenden Ressourcen müssen installiert sein:
 
@@ -84,7 +84,7 @@ spec:
     useHTTPSIngress: false
 ```
 
-Wenn **enablePermissiveTrafficPolicyMode** auf **true** festgelegt ist, können Sie Ihre Namespaces ohne jegliche Unterbrechung der Dienst-zu-Dienst-Kommunikation sicher integrieren. Wenn **enablePermissiveTrafficPolicyMode** mit **false** konfiguriert ist, müssen Sie sicherstellen, dass die richtigen [SMI](https://smi-spec.io/)-Richtlinien für den Datenverkehrszugriff bereitgestellt werden und dass Sie über ein Dienstkonto verfügen, das jeden in Namespace bereitgestellten Dienst repräsentiert. Ausführlichere Informationen zum Modus „Permissive Traffic Policy“ finden Sie im Artikel [Permissive Traffic Policy Mode](https://docs.openservicemesh.io/docs/guides/traffic_management/permissive_mode/) (Modus „Permissive Traffic Policy“).
+Wenn **enablePermissiveTrafficPolicyMode** auf **true** festgelegt ist, können Sie Ihre Namespaces ohne jegliche Unterbrechung der Dienst-zu-Dienst-Kommunikation sicher integrieren. Wenn der **enablePermissiveTrafficPolicyMode** auf **false** konfiguriert ist, müssen Sie sicherstellen, dass Sie die richtigen [SMI-](https://smi-spec.io/)Verkehrszugriffsrichtlinienmanifeste bereitgestellt haben. Sie müssen auch sicherstellen, dass Sie ein Dienstkonto für jeden im Namensraum bereitgestellten Dienst haben. Ausführlichere Informationen zum toleranten Verkehrsmodus finden Sie im Artikel [Toleranter Verkehrsrichtlinienmodus](https://docs.openservicemesh.io/docs/guides/traffic_management/permissive_mode/).
 
 ## <a name="onboard-existing-deployed-applications-with-open-service-mesh-osm-permissive-traffic-policy-configured-as-true"></a>Onboarding bestehender bereitgestellter Anwendungen mit Open Service Mesh (OSM) Permissive Traffic-Richtlinie konfiguriert als True
 
@@ -94,13 +94,13 @@ Als Erstes fügen wir den/die bereitgestellten Namespace(s) der Anwendung dem OS
 osm namespace add bookstore
 ```
 
-Die folgende Ausgabe wird angezeigt.
+Die folgende Ausgabe wird angezeigt:
 
 ```Output
 Namespace [bookstore] successfully added to mesh [osm]
 ```
 
-Als nächstes sehen wir uns die aktuelle Pod-Bereitstellung in Namespace an. Führen Sie den folgenden Befehl aus, um die Pods im angegebenen Namespace anzuzeigen.
+Als Nächstes sehen wir uns die aktuelle Pod-Bereitstellung im Namespace an. Führen Sie den folgenden Befehl aus, um die Pods im Namespace `bookbuyer` anzuzeigen.
 
 ```azurecli-interactive
 kubectl get pod -n bookbuyer
@@ -113,7 +113,7 @@ NAME                         READY   STATUS    RESTARTS   AGE
 bookbuyer-78666dcff8-wh6wl   1/1     Running   0          43s
 ```
 
-Beachten Sie, dass die Spalte **BEREIT** mit dem Wert **1/1** angezeigt wird, was bedeutet, dass der Anwendungs-Pod nur einen Container hat. Als nächstes müssen wir Ihre Anwendungsbereitstellungen neu starten, damit OSM den Envoy-Sidecar-Proxy-Container mit Ihrem Anwendungs-Pod injizieren kann. Lassen Sie sich eine Liste der Bereitstellungen in dem Namespace anzeigen.
+Beachten Sie, dass die Spalte **BEREIT** mit dem Wert **1/1** angezeigt wird, was bedeutet, dass der Anwendungs-Pod nur einen Container hat. Als Nächstes müssen wir Ihre Anwendungsimplementierungen neu starten, damit OSM den Envoy-Sidecar-Proxy-Container mit Ihrem Anwendungs-Pod verbinden kann. Lassen Sie sich eine Liste der Bereitstellungen in dem Namespace anzeigen.
 
 ```azurecli-interactive
 kubectl get deployment -n bookbuyer
@@ -126,7 +126,7 @@ NAME        READY   UP-TO-DATE   AVAILABLE   AGE
 bookbuyer   1/1     1            1           23h
 ```
 
-Jetzt starten wir die Bereitstellung neu, um den Envoy-Sidecar-Proxy-Container mit Ihrem Anwendungs-Pod zu injizieren. Führen Sie den folgenden Befehl aus.
+Jetzt starten wir das Deployment neu, um den Envoy-Sidecar-Proxy-Container mit Ihrem Anwendungs-Pod zu verbinden. Führen Sie den folgenden Befehl aus.
 
 ```azurecli-interactive
 kubectl rollout restart deployment bookbuyer -n bookbuyer
@@ -188,7 +188,7 @@ Vergewissern Sie sich, dass Ihre Anwendung nach der Injektion des Envoy-Sidecar-
 
 ## <a name="onboard-existing-deployed-applications-with-open-service-mesh-osm-permissive-traffic-policy-configured-as-false"></a>Onboarding bestehender bereitgestellter Anwendungen mit Open Service Mesh (OSM) Permissive Traffic-Richtlinie konfiguriert als False
 
-Wenn die OSM-Konfiguration für die permissive Datenverkehrsrichtlinie auf gesetzt ist, benötigt`false`OSM explizite [SMI](https://smi-spec.io/)-Datenverkehrs-Zugriffsrichtlinien, die für die Dienst-zu-Dienst-Kommunikation innerhalb Ihres Clusters eingesetzt werden. Derzeit verwendet OSM auch Kubernetes-Dienstkonten als Teil der Autorisierung der Dienst-zu-Dienst-Kommunikation. Um sicherzustellen, dass Ihre vorhandenen bereitgestellten Anwendungen kommunizieren, wenn Sie vom OSM-Mesh verwaltet werden, müssen wir überprüfen, ob ein Dienstkonto vorhanden ist, um Sie zu verwenden, die Anwendungsbereitstellung mit den Dienst Kontoinformationen aktualisieren und die Richtlinien für den [SMI](https://smi-spec.io/) -Datenverkehr anwenden.
+Wenn die OSM-Konfiguration für die permissive Datenverkehrsrichtlinie auf gesetzt ist, benötigt`false`OSM explizite [SMI](https://smi-spec.io/)-Datenverkehrs-Zugriffsrichtlinien, die für die Dienst-zu-Dienst-Kommunikation innerhalb Ihres Clusters eingesetzt werden. Derzeit verwendet OSM auch Kubernetes-Dienstkonten als Teil der Autorisierung der Dienst-zu-Dienst-Kommunikation. Um sicherzustellen, dass Ihre vorhandenen Anwendungen kommunizieren, wenn sie vom OSM-Mesh verwaltet werden, überprüfen wir nun die Existenz eines zu verwendenden Dienstkontos, aktualisieren die Anwendungsbereitstellung mit den Informationen des Dienstkontos und wenden die [SMI](https://smi-spec.io/)-Zugangsrichtlinien an.
 
 ### <a name="verify-kubernetes-service-accounts"></a>Kubernetes-Dienstkonten verifizieren
 
@@ -198,7 +198,7 @@ Wenn die OSM-Konfiguration für die permissive Datenverkehrsrichtlinie auf geset
 kubectl get serviceaccounts -n bookbuyer
 ```
 
-Im Folgenden befindet sich ein Dienstkonto namens `bookbuyer` im Bookbuyer-Namespace.
+Im Folgenden wird ein Dienstkonto im Namespace `bookbuyer` `bookbuyer` genannt.
 
 ```Output
 NAME        SECRETS   AGE
@@ -218,7 +218,7 @@ serviceaccount/myserviceaccount created
 
 ### <a name="view-your-applications-current-deployment-specification"></a>Anzeigen der aktuellen Bereitstellungsspezifikation Ihrer Anwendung
 
-Wenn Sie ein Dienstkonto aus dem vorherigen Abschnitt erstellen mussten, ist Ihre Anwendungsbereitstellung wahrscheinlich nicht mit einem bestimmten `serviceAccountName` in der Bereitstellungsspezifikation konfiguriert. Sie können die Bereitstellungsspezifikation Ihrer Anwendung mit den folgenden Befehlen anzeigen:
+Wenn Sie ein Dienstkonto aus dem vorigen Abschnitt erstellen mussten, ist Ihre Anwendungsbereitstellung wahrscheinlich nicht mit einem spezifischen Konto `serviceAccountName`in den Bereitstellungsspezifikationen konfiguriert. Mit den folgenden Befehlen können wir die Einsatzspezifikation Ihrer Anwendung einsehen:
 
 ```azurecli-interactive
 kubectl get deployment -n bookbuyer
@@ -231,13 +231,13 @@ NAME        READY   UP-TO-DATE   AVAILABLE   AGE
 bookbuyer   1/1     1            1           25h
 ```
 
-Wir beschreiben nun die Bereitstellung als Überprüfung, ob ein Dienstkonto im Abschnitt Pod-Vorlage aufgeführt ist.
+Wir beschreiben die Bereitstellung als eine Prüfung, ob im Abschnitt Pod-Vorlage ein Dienstkonto aufgeführt ist.
 
 ```azurecli-interactive
 kubectl describe deployment bookbuyer -n bookbuyer
 ```
 
-In dieser speziellen Bereitstellung sehen Sie, dass ein Dienstkonto mit der im Abschnitt Pod-Vorlage aufgeführten Bereitstellung verknüpft ist. Bei dieser Bereitstellung wird das Dienstkonto „Buchkäufer“ verwendet. Wenn die Eigenschaft **Dienstkonto:** nicht angezeigt wird, ist die Bereitstellung nicht für die Verwendung eines Dienstkontos konfiguriert.
+In dieser speziellen Bereitstellung können Sie sehen, dass es ein Dienstkonto gibt, das mit der Bereitstellung verbunden ist und im Abschnitt Pod-Vorlage aufgeführt ist. Bei dieser Bereitstellung wird das Dienstkonto `bookbuyer`verwendet. Wenn Sie die Eigenschaft **Dienstkonto:** nicht sehen, ist Ihre Bereitstellung nicht für die Verwendung eines Dienstkontos konfiguriert.
 
 ```Output
 Pod Template:
@@ -255,9 +255,9 @@ Es gibt mehrere Verfahren zum Aktualisieren Ihrer Bereitstellung, um ein Kuberne
 
 ### <a name="deploy-the-necessary-service-mesh-interface-smi-policies"></a>Bereitstellen der erforderlichen SMI-Richtlinien
 
-Der letzte Schritt, den autorisierten Datenverkehr im Mesh zuzulassen, besteht darin, die erforderlichen [SMI](https://smi-spec.io/)-Richtlinien für den Datenverkehr für Ihre Anwendung bereitzustellen. Der Umfang der Konfiguration, die Sie mit Richtlinien für den [SMI](https://smi-spec.io/)-Datenverkehr erreichen können, geht über den Rahmen dieser exemplarischen Vorgehensweise hinaus, aber wir erläutern einige der allgemeinen Komponenten der Spezifikation und zeigen Ihnen, wie Sie sowohl eine einfache TrafficTarget-als auch eine HTTPRouteGroup-Richtlinie konfigurieren, um die Kommunikation zwischen Diensten für Ihre Anwendung zu ermöglichen.
+Der letzte Schritt, den autorisierten Datenverkehr im Mesh zuzulassen, besteht darin, die erforderlichen [SMI](https://smi-spec.io/)-Richtlinien für den Datenverkehr für Ihre Anwendung bereitzustellen. Der Umfang der Konfiguration, die Sie mit [SMI](https://smi-spec.io/)-Verkehrszugangsrichtlinien erreichen können, sprengt den Rahmen dieses Walkthroughs, aber wir werden einige der gemeinsamen Komponenten der Spezifikation detailliert beschreiben und zeigen, wie man sowohl eine einfache TrafficTarget- als auch eine HTTPRouteGroup-Richtlinie konfiguriert, um eine Service-to-Service-Kommunikation für Ihre Anwendung zu ermöglichen.
 
-Mithilfe der [SMI](https://smi-spec.io/) - [**Datenverkehr-Zugriffssteuerung**](https://github.com/servicemeshinterface/smi-spec/blob/main/apis/traffic-access/v1alpha3/traffic-access.md#traffic-access-control)-Spezifikation können Benutzer die Zugriffssteuerungs-Richtlinie für Ihre Anwendungen definieren. Wir werden uns auf die api-Ressourcen **TrafficTarget** und **HTTPRoutGroup** konzentrieren.
+Mithilfe der [SMI](https://smi-spec.io/) - [**Datenverkehr-Zugriffssteuerung**](https://github.com/servicemeshinterface/smi-spec/blob/main/apis/traffic-access/v1alpha3/traffic-access.md#traffic-access-control)-Spezifikation können Benutzer die Zugriffssteuerungs-Richtlinie für Ihre Anwendungen definieren. Wir konzentrieren uns auf die Ressourcen **TrafficTarget** und **HTTPRoutGroup** api.
 
 Die Ressource TrafficTarget besteht aus drei wesentlichen Konfigurationseinstellungen Ziel, Regeln und Quellen. Ein Beispiel für ein TrafficTarget ist unten dargestellt.
 
@@ -284,7 +284,7 @@ spec:
     namespace: bookbuyer
 ```
 
-In der obigen Spezifikation TrafficTarget bezeichnet das `destination` Dienstkonto, das für den Zielquellendienst konfiguriert ist. Merken Sie sich, dass das Dienstkonto, das der Bereitstellung hinzugefügt wurde, verwendet wird, um den Zugriff auf die Bereitstellung zu autorisieren. Der `rules` Abschnitt in diesem speziellen Beispiel definiert den Typ des HTTP-Datenverkehrs, der über die Verbindung zugelassen wird. Sie können feinkörnige Regex-Muster für die HTTP-Header konfigurieren, um genau festzulegen, welcher Datenverkehr über HTTP erlaubt ist. Der `sources` Abschnitt ist der Dienst, von dem die Kommunikation ausgeht. Diese Spezifikation liest Buchkäufer für die Kommunikation mit der Buchhandlung.
+In der obigen Spezifikation TrafficTarget bezeichnet das `destination` Dienstkonto, das für den Zielquellendienst konfiguriert ist. Merken Sie sich, dass das Dienstkonto, das der Bereitstellung hinzugefügt wurde, verwendet wird, um den Zugriff auf die Bereitstellung zu autorisieren. Der `rules` Abschnitt in diesem speziellen Beispiel definiert den Typ des HTTP-Datenverkehrs, der über die Verbindung zugelassen wird. Sie können feinkörnige Regex-Muster für die HTTP-Header konfigurieren, um genau festzulegen, welcher Datenverkehr über HTTP erlaubt ist. Der `sources` Abschnitt ist der Dienst, von dem die Kommunikation ausgeht. Diese Spezifikation `bookbuyer` muss der Buchhandlung mitgeteilt werden.
 
 Die HTTPRouteGroup-Ressource besteht aus einem oder einem Array von Übereinstimmungen von HTTP-Header Informationen und ist eine Voraussetzung für die Spezifikation-Traffictarget. Im folgenden Beispiel können Sie sehen, dass HTTPRouteGroup drei HTTP-Aktionen autorisiert: zwei GET-und ein POST-Vorgang.
 
@@ -313,7 +313,7 @@ spec:
     - POST
 ```
 
-Wenn Sie nicht wissen, welche Art von HTTP-Datenverkehr Ihre Front-End-Anwendung an andere Ebenen der Anwendung weiterleitet, können Sie, da die TrafficTarget-Spezifikation eine Regel erfordert, das Äquivalent einer "allow all"-Regel erstellen, indem Sie die unten stehende Spezifikation für HTTPRouteGroup verwenden.
+Wenn Sie nicht mit der Art des HTTP-Verkehrs vertraut sind, den Ihre Front-End-Anwendung auf anderen Ebenen der Anwendung verursacht, können Sie, da die TrafficTarget-Spezifikation eine Regel erfordert, das Äquivalent einer „allow all"-Regel erstellen, indem Sie die folgende Spezifikation für HTTPRouteGroup verwenden.
 
 ```HTTPRouteGroup Allow All Example
 apiVersion: specs.smi-spec.io/v1alpha4
@@ -383,7 +383,7 @@ Ausführlichere Informationen zur Spezifikation finden Sie auf der [SMI](https:/
 
 ## <a name="manage-the-applications-namespace-with-osm"></a>Verwalten des Namespace der Anwendung mit OSM
 
-Als Nächstes konfigurieren Sie OSM, um den Namespace zu verwalten und die Bereitstellungen neu zu starten, damit der Envoy Sidecar Proxy mit der Anwendung eingefügt wird.
+Als Nächstes stellen wir sicher, dass OSM den Namespace verwaltet, und starten die Bereitstellungen neu, damit der Envoy-Sidecar-Proxy in die Anwendung injiziert wird.
 
 Führen Sie den folgenden Befehl aus, um den `azure-vote` Namespace für die Verwaltung meines OSM zu konfigurieren.
 
@@ -407,4 +407,4 @@ deployment.apps/azure-vote-front restarted
 deployment.apps/azure-vote-back restarted
 ```
 
-Wenn wir die Pods für den `azure-vote` Namespace anzeigen, wird die **fertige** Phase von `azure-vote-front` und `azure-vote-back` als 2/2 angezeigt, was bedeutet, dass der Envoy Sidecar Proxy neben der Anwendung eingefügt wurde.
+Wenn wir uns die Pods für den `azure-vote`Namespace ansehen, sehen wir die **READY**-Stufe von `azure-vote-front`und `azure-vote-back`als 2/2, was bedeutet, dass der Envoy-Sidecar-Proxy neben der Anwendung injiziert wurde.

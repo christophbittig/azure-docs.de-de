@@ -1,17 +1,17 @@
 ---
 title: Hochverfügbarkeit für Azure Cache for Redis
 description: Informationen zu Hochverfügbarkeitsfunktionen und -optionen bei Azure Cache for Redis
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.author: yegu
-ms.openlocfilehash: e06ced47829beeab46edbc98ddeb92fa4e959ec0
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.author: cauribeg
+ms.openlocfilehash: 2fb0440ed6946f9595f1c78c5528fdb3c627de0b
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614760"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538535"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Hochverfügbarkeit für Azure Cache for Redis
 
@@ -38,7 +38,7 @@ Eine Azure Cache for Redis-Instanz im Tarif „Standard“ oder „Premium“ wi
 
 Wenn der primäre Knoten in einem Redis-Cache nicht verfügbar ist, wird der Replikatknoten automatisch zum primären Knoten höher gestuft. Dieser Prozess wird als *Failover* bezeichnet. Der Replikatknoten wartet vor dem Höherstufen ausreichend lange, für den Fall, dass der primäre Knoten schnell wiederhergestellt wird. Bei einem Failover stellt Azure Cache for Redis einen neuen virtuellen Computer bereit und verbindet ihn als Replikatknoten mit dem Cache. Der Replikatknoten führt eine vollständige Datensynchronisierung mit dem primären Knoten durch, sodass eine weitere Kopie der Cachedaten vorhanden ist.
 
-Ein primärer Knoten kann als Teil einer geplanten Wartungsaktivität (z. B. Redis-Softwareupdate oder Betriebssystemupdate) außer Betrieb genommen werden. Er kann auch aufgrund ungeplanter Ereignisse wie z. B. Fehlern in der zugrunde liegenden Hardware, Software oder im Netzwerk ausfallen. Unter [Failover und Patching für Azure Cache for Redis](cache-failover.md) finden Sie eine ausführliche Erläuterung zu den verschiedenen Redis-Failovertypen. Eine Azure Cache for Redis-Instanz durchläuft während ihrer Lebensdauer viele Failover. Die Hochverfügbarkeitsarchitektur ist so konzipiert, dass diese Änderungen in einem Cache für die Clients so transparent wie möglich sind.
+Ein primärer Knoten kann als Teil einer geplanten Wartungsaktivität (z. B. Redis-Softwareupdate oder Betriebssystemupdate) außer Betrieb genommen werden. Er kann auch aufgrund ungeplanter Ereignisse wie z. B. Fehlern in der zugrunde liegenden Hardware, Software oder im Netzwerk ausfallen. Unter [Failover und Patching für Azure Cache for Redis](cache-failover.md) finden Sie eine ausführliche Erläuterung zu den verschiedenen Redis-Failovertypen. Eine Azure Cache for Redis-Instanz durchläuft während ihrer Lebensdauer viele Failover. Das Design der Hochverfügbarkeitsarchitektur macht diese Änderungen innerhalb eines Caches für seine Kunden so transparent wie möglich.
 
 Azure Cache for Redis bietet außerdem im Tarif „Premium“ zusätzliche Replikatknoten. Ein [Cache mit mehreren Replikaten](cache-how-to-multi-replicas.md) kann mit bis zu drei Replikatknoten konfiguriert werden. Durch mehrere Replikate verbessert sich im Allgemeinen die Resilienz, da der primäre Knoten durch Knoten abgesichert wird. Auch bei mehreren Replikaten kann eine Azure Cache for Redis-Instanz dennoch durch einen Ausfall eines Rechenzentrums oder einen Ausfall auf Verfügbarkeitszonenebene beeinträchtigt werden. Sie können die Cacheverfügbarkeit erhöhen, indem Sie mehrere Replikate mit [Zonenredundanz](#zone-redundancy) verwenden.
 

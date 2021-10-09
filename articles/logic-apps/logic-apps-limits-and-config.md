@@ -1,26 +1,26 @@
 ---
 title: Referenzleitfaden zu Grenzwerten und zur Konfiguration
-description: Referenzhandbuch zu Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
+description: Referenzhandbuch zu Grenzwerten und Konfigurationsinformationen für Azure Logic Apps.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: rohithah, rarayudu, azla
 ms.topic: reference
-ms.date: 08/30/2021
-ms.openlocfilehash: da7c4b159111165b1dabb6ff3ca45715b442daba
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/16/2021
+ms.openlocfilehash: 77bbfb886f04c7917154ee5817b21ee1b2053d79
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219912"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675799"
 ---
 # <a name="limits-and-configuration-reference-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsreferenz für Azure Logic Apps
 
-> Informationen zu Power Automate finden Sie unter [Grenzwerte und Konfiguration in Microsoft Flow](/power-automate/limits-and-config).
+> Für Power Automate lesen Sie bitte den Abschnitt [Grenzwerte und Konfiguration in Power Automate](/power-automate/limits-and-config).
 
 In diesem Artikel werden die Grenzwert- und Konfigurationsinformationen für Azure Logic Apps und ähnliche Ressourcen beschrieben. Wählen Sie basierend auf Ihrem Szenario, den Lösungsanforderungen, den gewünschten Funktionen sowie der Umgebung, in der die Workflows ausgeführt werden sollen, den **Logik-App**-Ressourcentyp aus, um Logik-App-Workflows zu erstellen.
 
 > [!NOTE]
-> Viele Grenzwerte sind in diesen Hostumgebungen identisch, es gibt jedoch trotzdem Unterschiede. [Wenden Sie sich an das Logic Apps-Team](mailto://logicappspm@microsoft.com), wenn Ihr Szenario unterschiedliche Grenzwerte erfordert, um Ihre Anforderungen zu besprechen.
+> Viele Grenzwerte sind in den verfügbaren Umgebungen, in denen Azure Logic Apps ausgeführt wird, gleich, aber es gibt Unterschiede, auf die hingewiesen wird. 
 
 In der folgenden Tabelle werden die Unterschiede zwischen dem ursprünglichen Ressourcentyp **Logik-App (Verbrauch)** und dem Ressourcentyp **Logik-App (Standard)** kurz zusammengefasst. Außerdem lernen Sie die Unterschiede zwischen einer *Einzelmandantenumgebung* und einer *Umgebung mit mehreren Mandanten* sowie der *Integrationsdienstumgebung* (Integration Service Environment, ISE) in Hinblick auf Bereitstellung, Hosten und Ausführung Ihrer Logik-App-Workflows kennen.
 
@@ -359,13 +359,14 @@ In der folgenden Tabelle sind die Werte für eine einzelne Workflowdefinition au
 
 ## <a name="custom-connector-limits"></a>Grenzwerte für einen benutzerdefinierten Connector
 
-Nur für Umgebungen mit mehreren Mandanten und Integrationsdienst können Sie [benutzerdefinierte verwaltete Connectors](/connectors/custom-connectors) erstellen und verwenden, bei denen es sich um Wrapper um eine vorhandene REST-API oder SOAP-API handelt. Sie können nur für Einzelmandanten [benutzerdefinierte integrierte Connectors](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272) erstellen und verwenden.
+Nur in der mandantenfähigen Azure Logic Apps- und Integrationsdienstumgebung können Sie [benutzerdefinierte verwaltete Konnektoren](/connectors/custom-connectors) erstellen und verwenden, die eine vorhandene REST-API oder SOAP-API umhüllen. In Azure Logic Apps mit Einzelmandanten können Sie nur [benutzerdefinierte integrierte Konnektoren](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272) erstellen und verwenden.
 
 In der folgenden Tabelle werden die Werte für jeden benutzerdefinierten Connector aufgelistet:
 
 | Name | Mehrinstanzenfähig | Einzelmandant | Integrationsdienstumgebung | Notizen |
 |------|--------------|---------------|---------------------------------|-------|
 | Benutzerdefinierte Connectors | 1\.000 pro Azure-Abonnement | Unbegrenzt | 1\.000 pro Azure-Abonnement ||
+| Benutzerdefinierte Anschlüsse - Anzahl der APIs | SOAP-basiert: 50 | Nicht zutreffend | SOAP-basiert: 50 ||
 | Anforderungen pro Minute für einen benutzerdefinierten Connector | 500 Anforderungen pro Minute und Verbindung | Basierend auf Ihrer Implementierung | 2\.000 Anforderungen pro Minute und *benutzerdefiniertem Connector* ||
 | Verbindungstimeout | 2 Min. | Verbindung im Leerlauf: <br>4 min <p><p>Aktive Verbindung: <br>10 Min. | 2 Min. ||
 ||||||
@@ -507,7 +508,7 @@ Bevor Sie Ihre Firewall mit IP-Adressen einrichten, überprüfen Sie die folgend
 
 * Wenn Ihre Logik-Apps Probleme beim Zugriff auf Azure-Speicherkonten haben, die [Firewalls und Firewallregeln](../storage/common/storage-network-security.md) verwenden, stehen Ihnen [verschiedene weitere Optionen zum Ermöglichen des Zugriffs](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls) zur Verfügung.
 
-  Beispielsweise können Logik-Apps nicht direkt auf Speicherkonten zugreifen, für die Firewallregeln gelten und die sich in derselben Region befinden. Wenn Sie jedoch die [ausgehenden IP-Adressen für verwaltete Connectors in Ihrer Region](../logic-apps/logic-apps-limits-and-config.md#outbound) zulassen, können Ihre Logik-Apps auf Speicherkonten in einer anderen Region zugreifen, außer wenn Sie den Azure Table Storage- oder Azure Queue Storage-Connector verwenden. Um auf Ihren Table Storage oder Queue Storage zuzugreifen, können Sie stattdessen HTTP-Trigger und -Aktionen verwenden. Weitere Optionen finden Sie unter [Zugreifen auf Speicherkonten hinter Firewalls](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
+  Beispielsweise können Logik-Apps nicht direkt auf Speicherkonten zugreifen, für die Firewallregeln gelten und die sich in derselben Region befinden. Wenn Sie jedoch die [ausgehenden IP-Adressen für verwaltete Connectors in Ihrer Region](/connectors/common/outbound-ip-addresses) zulassen, können Ihre Logik-Apps auf Speicherkonten in einer anderen Region zugreifen, außer wenn Sie den Azure Table Storage- oder Azure Queue Storage-Connector verwenden. Um auf Ihren Table Storage oder Queue Storage zuzugreifen, können Sie stattdessen HTTP-Trigger und -Aktionen verwenden. Weitere Optionen finden Sie unter [Zugreifen auf Speicherkonten hinter Firewalls](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
 
 <a name="inbound"></a>
 
@@ -589,7 +590,10 @@ In diesem Abschnitt sind nur die IP-Adressen des Azure Logic Apps-Diensts für d
 
 ### <a name="outbound-ip-addresses"></a>IP-Adressen für die ausgehende Richtung
 
-In diesem Abschnitt sind die IP-Adressen des Azure Logic Apps-Diensts für die ausgehende Richtung aufgeführt. Informationen zur Vorgehensweise bei Verwendung von Azure Government finden Sie unter [Azure Government: Ausgehende IP-Adressen](#azure-government-outbound).
+In diesem Abschnitt sind die IP-Adressen des Azure Logic Apps-Diensts für die ausgehende Richtung aufgeführt. Informationen zur Vorgehensweise bei Verwendung von Azure Government finden Sie unter [Azure Government: Ausgehende IP-Adressen](#azure-government-outbound). Falls für Ihren Worfklow [verwaltete Connectors](../connectors/managed.md) (Office 365 Outlook-Connector oder SQL-Connector) oder [benutzerdefinierte Connectors](/connectors/custom-connectors/) verwendet werden, muss die Firewall in der Azure-Region Ihrer Logik-App zusätzlich den Zugriff für *alle* [ausgehenden IP-Adressen von verwalteten Connectors](/connectors/common/outbound-ip-addresses) zulassen. Wenn Ihr Workflow benutzerdefinierte Connectors verwendet, die über die [lokale Datengatewayressource in Azure](logic-apps-gateway-connection.md) auf lokale Ressourcen zugreifen, müssen Sie die Gatewayinstallation so einrichten, dass der Zugriff auf die [ausgehenden IP-Adressen des entsprechenden *verwalteten Connectors*](/connectors/common/outbound-ip-addresses) zugelassen wird. Weitere Informationen zum Einrichten von Kommunikationseinstellungen auf dem Gateway finden Sie in den folgenden Themen:
+
+* [Anpassen von Kommunikationseinstellungen für das lokale Datengateway](/data-integration/gateway/service-gateway-communication)
+* [Konfigurieren von Proxyeinstellungen für das lokale Datengateway](/data-integration/gateway/service-gateway-proxy)
 
 > [!TIP]
 > Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional das [Diensttag](../virtual-network/service-tags-overview.md) **LogicApps** verwenden, anstatt für jede Region Logic Apps-IP-Adresspräfixe für die ausgehende Richtung anzugeben. Optional können Sie auch das Diensttag **AzureConnectors** für verwaltete Connectors verwenden, die ausgehende Aufrufe an die entsprechenden Dienste wie Azure Storage oder Azure Event Hubs senden, anstatt für jede Region IP-Adresspräfixe des verwalteten Connectors für die ausgehende Richtung anzugeben. Diese Tags funktionieren in den Regionen, in denen der Logic Apps-Dienst verfügbar ist.

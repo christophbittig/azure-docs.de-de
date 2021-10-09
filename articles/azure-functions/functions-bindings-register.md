@@ -3,14 +3,14 @@ title: Registrieren von Bindungserweiterungen von Azure Functions
 description: Lernen Sie, wie Sie eine Azure Functions-Bindungserweiterung abhängig von Ihrer Umgebung registrieren.
 author: craigshoemaker
 ms.topic: reference
-ms.date: 08/16/2020
+ms.date: 09/14/2020
 ms.author: cshoe
-ms.openlocfilehash: bfcefb23fa68e2aa70d4680fcca2462b24322014
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 262e0fc02632465a03391dbfeaa0902d1b6b9ec3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355083"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609751"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrieren von Bindungserweiterungen von Azure Functions
 
@@ -20,7 +20,7 @@ Funktions-Apps mit .NET-Klassenbibliotheken verwenden Bindungen, die als NuGet-P
 
 In der folgenden Tabelle ist angegeben, wann und wie Sie Bindungen registrieren.
 
-| Entwicklungsumgebung |Registrierung<br/> in Functions 1.x  |Registrierung<br/> in Functions 3.x/2.x  |
+| Entwicklungsumgebung |Registrierung<br/> in Functions 1.x  |Registrierung<br/> in Funktionen 2.x oder höher  |
 |-------------------------|------------------------------------|------------------------------------|
 |Azure-Portal|Automatic|Automatic<sup>*</sup>|
 |Nicht-.NET-Sprachen|Automatic|Verwendung von [Erweiterungsbundles](#extension-bundles) (empfohlen) oder [explizite Installation von Erweiterungen](#explicitly-install-extensions)|

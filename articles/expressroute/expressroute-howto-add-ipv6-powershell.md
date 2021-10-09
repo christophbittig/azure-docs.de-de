@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 67010d698c51e0eb66abcfa35fc629ec58d28789
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 62616465b98feca1052ac3e45932120fdf0ffd42
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424220"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584506"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Hinzufügen von IPv6-Unterstützung für privates Peering mithilfe von Azure PowerShell (Vorschau)
 
@@ -154,7 +154,7 @@ Führen Sie die folgenden Schritte aus, wenn Sie vorhaben, über Ihr privates IP
 ## <a name="limitations"></a>Einschränkungen
 Obwohl IPv6-Unterstützung für Verbindungen mit Bereitstellungen in öffentlichen Azure-Regionen zur Verfügung steht, werden die folgenden Anwendungsfälle nicht unterstützt:
 
-* Verbindungen mit vorhandenen ExpressRoute-Gateways, die *nicht* zonenredundant sind
+* Verbindungen zu *bestehenden* ExpressRoute-Gateways, die nicht zonenredundant sind. Beachten Sie, dass *neu* erstellte ExpressRoute-Gateways jeder SKU (sowohl zonenredundant als auch nicht) mit einer statischen Standard-IP-Adresse für Dual-Stack-ExpressRoute-Verbindungen verwendet werden können.
 * Global Reach-Verbindungen zwischen ExpressRoute-Verbindungen
 * Verwendung von ExpressRoute mit virtuellem WAN
 * FastPath mit Verbindungen, die nicht ExpressRoute Direct-Verbindungen sind

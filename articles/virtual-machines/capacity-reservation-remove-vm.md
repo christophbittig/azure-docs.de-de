@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 0ac1f38d65542ac6c8a892a6469cd8c9301dd463
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 546215d70341402fcc66d2865d291211960cb4a1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532605"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557060"
 ---
 # <a name="remove-a-vm-association-from-a-capacity-reservation-group-preview"></a>Entfernen einer VM-Zuordnung aus einer Kapazitätsreservierungsgruppe (Vorschauversion)
 
@@ -28,6 +28,11 @@ Es gibt es zwei Möglichkeiten, eine Zuordnung zu ändern:
 > [!IMPORTANT]
 > Die Kapazitätsreservierung befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="register-for-capacity-reservation"></a>Registrieren für Kapazitätsreservierung 
+
+Bevor Sie das Feature zur Kapazitätsreservierung verwenden können, müssen Sie [Ihr Abonnement für die Vorschauversion registrieren](capacity-reservation-overview.md#register-for-capacity-reservation). Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Featureregistrierung abzuschließen.
+
 
 ## <a name="deallocate-the-vm"></a>Aufheben der Zuordnung der VM
 

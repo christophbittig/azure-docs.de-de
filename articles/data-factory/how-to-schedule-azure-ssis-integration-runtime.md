@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: dec61a586c744fd8a5f537bf5a593b7409a1636e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7ebb64ccdfaaefe517baf21c0996d49f0bdc1278
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339482"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760439"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden von Azure-SSIS Integration Runtimes nach einem Zeitplan
 
@@ -46,11 +46,11 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.    
 2. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
-   ![Neu -> Data Factory](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png" alt-text="Neu->DatenFabrik":::
    
 3. Geben Sie auf der Seite **Neue Data Factory** unter **Name** die Zeichenfolge **MyAzureSsisDataFactory** ein. 
       
-   ![Seite „Neue Data Factory“](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png" alt-text="Seite „Neue Data Factory“":::
  
    Der Name der ADF muss global eindeutig sein. Sollte der folgende Fehler auftreten, ändern Sie den Namen der ADF (z.B. in „<IhrName>MyAzureSsisDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für ADF-Artefakte finden Sie im Artikel [Data Factory – Benennungsregeln](naming-rules.md).
   
@@ -70,11 +70,11 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
 9. Klicken Sie auf **Erstellen**.
 10. Auf dem Azure-Dashboard sehen Sie die folgende Kachel mit dem Status: **Deploying Data Factory** (Data Factory wird bereitgestellt). 
 
-    ![Kachel „Die Data Factory wird bereitgestellt“](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
+    :::image type="content" source="media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png" alt-text="Kachel „Die Data Factory wird bereitgestellt“":::
    
 11. Nach Abschluss der Erstellung wird die ADF-Seite angezeigt, wie weiter unten dargestellt.
    
-    ![Data Factory-Startseite](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
+    :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png" alt-text="Data Factory-Startseite":::
    
 12. Klicken Sie auf **Erstellen und Überwachen**, um die ADF-UI/-App auf einer separaten Registerkarte zu starten.
 
@@ -82,20 +82,20 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
 
 1. Wählen Sie auf der Startseite die Option **Orchestrieren** aus. 
 
-   ![Screenshot, der die ADF-Startseite zeigt.](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Screenshot, der die ADF-Startseite zeigt.":::
    
 2. Erweitern Sie in der Toolbox **Aktivitäten** das Menü **Allgemein**, ziehen Sie die Aktivität **Web** auf die Oberfläche des Pipeline-Designers, und legen Sie sie dort ab. Ändern Sie im Fenster „Aktivitätseigenschaften“ auf der Registerkarte **Allgemein** den Namen der Aktivität in **startMyIR**. Wechseln Sie zur Registerkarte **Einstellungen**, und führen Sie die folgenden Aktionen aus.
 
     1. Geben Sie unter **URL** die folgende URL für die REST-API ein, die die Azure-SSIS IR startet, und ersetzen Sie dabei `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}` und `{integrationRuntimeName}` durch die tatsächlichen Werte für Ihre IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`. Alternativ können Sie auch die Ressourcen-ID Ihrer IR von der Überwachungsseite der ADF-Benutzeroberfläche/-App kopieren und einfügen, um den folgenden Teil der oben angegebenen URL zu ersetzen: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
     
-       ![ADF-SSIS IR-Ressourcen-ID](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
+       :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png" alt-text="ADF-SSIS IR-Ressourcen-ID":::
   
     2. Wählen Sie unter **Methode** die Option **POST** aus. 
     3. Geben Sie unter **Text** die Zeichenfolge `{"message":"Start my IR"}` ein. 
     4. Wählen Sie für **Authentifizierung** die Option **MSI** aus, um die verwaltete Identität für Ihre ADF zu verwenden. Weitere Informationen hierzu finden Sie in dem Artikel [Verwaltete Identität für Data Factory](./data-factory-service-identity.md).
     5. Geben Sie `https://management.azure.com/` als **Ressource** ein.
     
-       ![ADF-Webaktivität nach Zeitplan für SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
+       :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png" alt-text="ADF-Webaktivität nach Zeitplan für SSIS IR":::
   
 3. Klonen Sie die erste Pipeline, um eine zweite zu erstellen, wobei Sie den Aktivitätsnamen dabei in **stopMyIR** ändern und die folgenden Eigenschaften ersetzen.
 
@@ -105,7 +105,7 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
 
 4. Erstellen Sie eine dritte Pipeline, ziehen Sie eine Aktivität **SSIS-Paket ausführen** von der Toolbox **Aktivitäten** auf die Pipeline-Designer-Oberfläche, legen Sie sie dort ab, und konfigurieren Sie sie anhand der Anweisungen im Artikel [Aufrufen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in ADF](how-to-invoke-ssis-package-ssis-activity.md).  Alternativ können Sie eine Aktivität mit **gespeicherter Prozedur** verwenden und diese anhand der Anweisungen im Artikel [Aufrufen eines SSIS-Pakets mit der Aktivität einer gespeicherten Prozedur in Azure Data Factory](how-to-invoke-ssis-package-stored-procedure-activity.md) konfigurieren.  Verketten Sie als Nächstes die Aktivität „SSIS-Paket ausführen“ bzw. die Aktivität mit gespeicherter Prozedur zwischen zwei Webaktivitäten, die Ihre IR starten/beenden, ähnlich den Webaktivitäten in der ersten und der zweiten Pipeline.
 
-   ![ADF-Webaktivität nach Bedarf für SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png" alt-text="ADF-Webaktivität nach Bedarf für SSIS IR":::
 
 5. Weisen Sie der verwalteten Identität für Ihre ADF die Rolle **Mitwirkender** für sich selbst zu, sodass Webaktivitäten in den zugehörigen Pipelines die REST-API zum Starten/Beenden der darin bereitgestellten Azure-SSIS IRs aufrufen können.  Klicken Sie auf Ihrer ADF-Seite im Azure-Portal auf **Zugriffssteuerung (IAM)** und auf **+ Rollenzuweisung hinzufügen**, und führen Sie dann auf dem Blatt **Rollenzuweisung hinzufügen** die folgenden Aktionen aus.
 
@@ -114,17 +114,17 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
     3. Suchen Sie unter **Auswählen** nach dem Namen Ihrer ADF, und wählen Sie ihn aus. 
     4. Klicken Sie auf **Speichern**.
     
-   ![Rollenzuweisung für mit ADF verwaltete Identitäten](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png" alt-text="Rollenzuweisung für mit ADF verwaltete Identitäten":::
 
 6. Überprüfen Sie Ihre ADF und alle Pipelineeinstellungen, indem Sie auf der Symbolleiste der Factorypipeline auf **Alle überprüfen/Überprüfen** klicken. Schließen Sie die **Ausgabe der Factory-/Pipelineüberprüfung**, indem Sie auf die Schaltfläche **>>** klicken.  
 
-   ![Überprüfen der Pipeline](./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png" alt-text="Überprüfen der Pipeline":::
 
 ### <a name="test-run-your-pipelines"></a>Testlauf Ihrer Pipelines
 
 1. Wählen Sie auf der Symbolleiste für die einzelnen Pipelines **Testlauf** aus, und beachten Sie das Fenster **Ausgabe** im unteren Bereich. 
 
-   ![Testlauf](./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png" alt-text="Testlauf":::
     
 2. Um die dritte Pipeline zu testen, starten Sie SQL Server Management Studio (SSMS). Führen Sie im Fenster **Mit Server verbinden** die folgenden Aktionen aus. 
 
@@ -136,7 +136,7 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
     6. Klicken Sie mit der rechten Maustaste auf das auszuführende SSIS-Paket, und wählen Sie **Berichte** -> **Standardberichte** -> **Alle Ausführungen** aus. 
     7. Stellen Sie sicher, dass es ausgeführt wurde. 
 
-   ![Überprüfen der Ausführung des SSIS-Pakets](./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png" alt-text="Überprüfen der Ausführung des SSIS-Pakets":::
 
 ### <a name="schedule-your-pipelines"></a>Planen Ihrer Pipelines
 
@@ -144,11 +144,11 @@ Nachdem Ihre Pipelines nun wie erwartet funktioniert, können Sie Trigger erstel
 
 1. Wählen Sie auf der Symbolleiste für die Pipeline die Option **Trigger** und dann **Neu/Bearbeiten** aus. 
 
-   ![Screenshot, auf dem die Menüoption „Trigger“ > „Neu/Bearbeiten“ hervorgehoben ist](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png" alt-text="Screenshot, der die Menüoption Auslöser -> Neu/Bearbeiten hervorhebt.":::
 
 2. Wählen Sie unter **Trigger hinzufügen** die Option **+ Neu** aus.
 
-   ![„Add Triggers“ (Trigger hinzufügen) – „Neu“](./media/how-to-schedule-azure-ssis-integration-runtime/add-triggers-new.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/add-triggers-new.png" alt-text="„Add Triggers“ (Trigger hinzufügen) – „Neu“":::
 
 3. Führen Sie im Bereich **Neuer Trigger** die folgenden Aktionen durch: 
 
@@ -160,26 +160,26 @@ Nachdem Ihre Pipelines nun wie erwartet funktioniert, können Sie Trigger erstel
     6. Wählen Sie **Aktiviert** aus, um den Trigger sofort nach dem Veröffentlichen der gesamten ADF-Einstellungen zu aktivieren. 
     7. Wählen Sie **Weiter** aus.
 
-   ![Trigger -> „Neu/Bearbeiten“](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png" alt-text="Trigger -> „Neu/Bearbeiten“":::
     
 4. Überprüfen Sie auf der Seite **Trigger Run Parameters** (Ausführungsparameter für Trigger) etwaige Warnungen, und wählen Sie **Fertig stellen** aus. 
 5. Veröffentlichen Sie die gesamten ADF-Einstellungen, indem Sie auf der Symbolleiste der Factory **Alle veröffentlichen** auswählen. 
 
-   ![Alle veröffentlichen](./media/how-to-schedule-azure-ssis-integration-runtime/publish-all.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/publish-all.png" alt-text="Alle veröffentlichen":::
 
 ### <a name="monitor-your-pipelines-and-triggers-in-azure-portal"></a>Überwachen Ihrer Pipelines und Trigger im Azure-Portal
 
 1. Verwenden Sie zum Überwachen der Ausführung von Triggern und Pipelines die Registerkarte **Monitor** auf der linken Seite der ADF-Benutzeroberfläche/-App. Ausführliche Schritte finden Sie im Artikel [Überwachen der Pipeline](quickstart-create-data-factory-portal.md#monitor-the-pipeline).
 
-   ![Pipelineausführungen](./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png" alt-text="Pipelineausführungen":::
 
 2. Wenn Sie mit einer Pipelineausführung verbundene Aktivitätsausführungen anzeigen möchten, wählen Sie in der Spalte **Aktionen** den ersten Link (**View Activity Runs**, Aktivitätsausführungen anzeigen) aus. Für die dritte Pipeline werden drei Aktivitätsausführungen angezeigt, eine für jede verkettete Aktivität in der Pipeline (Webaktivität zum Starten Ihrer IR, Aktivität mit gespeicherter Prozedur zum Ausführen des Pakets und Webaktivität zum Beenden Ihrer IR). Wählen Sie den Link **Pipelines** ganz oben aus, um wieder die Pipelineausführungen anzuzeigen.
 
-   ![Aktivitätsausführungen](./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png" alt-text="Aktivitätsausführungen":::
 
 3. Wählen Sie zum Anzeigen der Triggerausführungen in der Dropdownliste ganz oben unter **Pipelineausführungen** die Option **Triggerausführungen** aus. 
 
-   ![Triggerausführungen](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png" alt-text="Triggerausführungen":::
 
 ### <a name="monitor-your-pipelines-and-triggers-with-powershell"></a>Überwachen Ihrer Pipelines und Trigger mit PowerShell
 
@@ -209,13 +209,13 @@ In diesem Abschnitt erfahren Sie, wie Sie ein Azure Automation-Runbook erstellen
 
 ### <a name="create-your-azure-automation-account"></a>Erstellen des Azure Automation-Kontos
 
-Wenn Sie noch kein Azure Automation-Konto haben, erstellen Sie eines anhand der Anweisungen in diesem Schritt. Eine ausführliche Anleitung finden Sie im Artikel [Erstellen eines Azure Automation-Kontos](../automation/automation-quickstart-create-account.md). Im Rahmen dieses Schritts erstellen Sie ein **ausführendes Azure-Konto** (einen Dienstprinzipal in Ihrem Azure Active Directory) und weisen ihm die Rolle **Mitwirkender** für Ihr Azure-Abonnement zu. Stellen Sie sicher, dass es sich um dasselbe Abonnement handelt, das auch Ihre ADF mit der Azure-SSIS IR enthält. Azure Automation verwendet dieses Konto für die Authentifizierung bei Azure Resource Manager und die Verarbeitung Ihrer Ressourcen. 
+Wenn Sie noch kein Azure Automation-Konto haben, erstellen Sie eines anhand der Anweisungen in diesem Schritt. Eine ausführliche Anleitung finden Sie im Artikel [Erstellen eines Azure Automation-Kontos](../automation/quickstarts/create-account-portal.md). Im Rahmen dieses Schritts erstellen Sie ein **ausführendes Azure-Konto** (einen Dienstprinzipal in Ihrem Azure Active Directory) und weisen ihm die Rolle **Mitwirkender** für Ihr Azure-Abonnement zu. Stellen Sie sicher, dass es sich um dasselbe Abonnement handelt, das auch Ihre ADF mit der Azure-SSIS IR enthält. Azure Automation verwendet dieses Konto für die Authentifizierung bei Azure Resource Manager und die Verarbeitung Ihrer Ressourcen. 
 
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die ADF-Benutzeroberfläche/-App wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.    
 3. Wählen Sie im linken Menü **Neu** aus, dann **Überwachung + Verwaltung** und schließlich **Automatisierung**. 
 
-   ![Screenshot, auf dem die Optionen „Überwachung + Verwaltung“ und „Automatisierung“ hervorgehoben sind](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png" alt-text="Screenshot, der die Option Überwachung + Verwaltung > Automatisierung hervorhebt.":::
     
 2. Führen Sie im Bereich **Automation-Konto hinzufügen** die folgenden Aktionen aus.
 
@@ -227,37 +227,37 @@ Wenn Sie noch kein Azure Automation-Konto haben, erstellen Sie eines anhand der 
     6. Wählen Sie **An Dashboard anheften** aus, um ihn dauerhaft auf dem Azure-Dashboard anzuzeigen. 
     7. Klicken Sie auf **Erstellen**. 
 
-   ![Neu -> Überwachung + Verwaltung -> Automatisierung](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png" alt-text="Neu -> Überwachung + Verwaltung -> Automatisierung":::
    
 3. Sie können den Bereitstellungsstatus des Azure Automation-Kontos auf dem Azure-Dashboard und unter den Benachrichtigungen einsehen. 
     
-   ![Bereitstellen von Automation](./media/how-to-schedule-azure-ssis-integration-runtime/deploying-automation.png) 
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/deploying-automation.png" alt-text="Bereitstellen von Automation"::: 
     
 4. Nachdem Ihr Azure Automation-Konto erfolgreich erstellt wurde, wird es auf der Startseite angezeigt. 
 
-   ![Automation-Startseite](./media/how-to-schedule-azure-ssis-integration-runtime/automation-home-page.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/automation-home-page.png" alt-text="Automation-Startseite":::
 
 ### <a name="import-adf-modules"></a>Importieren von ADF-Modulen
 
 1. Wählen Sie im Abschnitt **FREIGEGEBENE RESSOURCEN** im Menü links die Option **Module** aus, und überprüfen Sie, ob in der Liste der Module **Az.DataFactory** + **Az.Profile** enthalten ist.
 
-   ![Überprüfen der erforderlichen Module](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
+   :::image type="content" source="media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png" alt-text="Überprüfen der erforderlichen Module":::
 
 2.  Wenn **Az.DataFactory** nicht vorhanden ist, navigieren Sie zum PowerShell-Katalog für das Modul [Az.DataFactory](https://www.powershellgallery.com/packages/Az.DataFactory/), und wählen Sie **In Azure Automation bereitstellen**, danach Ihr Azure Automation-Konto und anschließend **OK** aus. Kehren Sie im Menü links zum Abschnitt **FREIGEGEBENE RESSOURCEN** zurück, und zeigen Sie **Module** an. Warten Sie, bis sich der **STATUS** des Moduls **Az.DataFactory** in **Verfügbar** ändert.
 
-    ![Überprüfen des Data Factory-Moduls](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
+    :::image type="content" source="media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png" alt-text="Überprüfen des Data Factory-Moduls":::
 
 3.  Wenn **Az.Profile** nicht vorhanden ist, navigieren Sie zum PowerShell-Katalog für das Modul [Az.Profile](https://www.powershellgallery.com/packages/Az.profile/), und wählen Sie **In Azure Automation bereitstellen**, danach Ihr Azure Automation-Konto und schließlich **OK** aus. Kehren Sie im Menü links zum Abschnitt **FREIGEGEBENE RESSOURCEN** zurück, und zeigen Sie **Module** an. Warten Sie, bis sich der **STATUS** des Moduls **Az.Profile** in **Verfügbar** ändert.
 
-    ![Überprüfen des Profile-Moduls](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
+    :::image type="content" source="media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png" alt-text="Überprüfen des Profile-Moduls":::
 
 ### <a name="create-your-powershell-runbook"></a>Erstellen des PowerShell-Runbooks
 
-Im folgenden Abschnitt finden Sie Schritte zum Erstellen eines PowerShell-Runbooks. Das mit dem Runbook verbundene Skript startet/beendet eine Azure-SSIS IR basierend auf dem für den **VORGANG**-Parameter angegebenen Befehl. Dieser Abschnitt enthält keine vollständigen Details zum Erstellen eines Runbooks. Weitere Informationen finden Sie im Artikel [Erstellen eines Runbooks](../automation/automation-quickstart-create-runbook.md).
+Im folgenden Abschnitt finden Sie Schritte zum Erstellen eines PowerShell-Runbooks. Das mit dem Runbook verbundene Skript startet/beendet eine Azure-SSIS IR basierend auf dem für den **VORGANG**-Parameter angegebenen Befehl. Dieser Abschnitt enthält keine vollständigen Details zum Erstellen eines Runbooks. Weitere Informationen finden Sie im Artikel [Erstellen eines Runbooks](../automation/learn/powershell-runbook-managed-identity.md).
 
 1. Wechseln Sie zur Registerkarte **Runbooks**, und wählen Sie auf der Symbolleiste **+ Runbook hinzufügen** aus. 
 
-   ![Screenshot, auf dem die Schaltfläche „+ Runbook hinzufügen“ hervorgehoben ist](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png" alt-text="Screenshot, auf dem die Schaltfläche „+ Runbook hinzufügen“ hervorgehoben ist":::
    
 2. Wählen Sie **Neues Runbook erstellen** aus, und führen Sie die folgenden Aktionen aus: 
 
@@ -265,7 +265,7 @@ Im folgenden Abschnitt finden Sie Schritte zum Erstellen eines PowerShell-Runboo
     2. Wählen Sie als **Runbooktyp** den Typ **PowerShell** aus.
     3. Klicken Sie auf **Erstellen**.
     
-   ![Schaltfläche „Runbook hinzufügen“](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png" alt-text="Schaltfläche „Runbook hinzufügen“":::
    
 3. Kopieren Sie das folgende PowerShell-Skript, und fügen Sie es in das Runbook-Skriptfenster ein. Speichern und veröffentlichen Sie das Runbook mithilfe der Schaltflächen **Speichern** und **Veröffentlichen** auf der Symbolleiste. 
 
@@ -322,11 +322,11 @@ Im folgenden Abschnitt finden Sie Schritte zum Erstellen eines PowerShell-Runboo
     "##### Completed #####"    
     ```
 
-   ![Bearbeiten eines PowerShell-Runbooks](./media/how-to-schedule-azure-ssis-integration-runtime/edit-powershell-runbook.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/edit-powershell-runbook.png" alt-text="Bearbeiten eines PowerShell-Runbooks":::
     
 4. Testen Sie das Runbook, indem Sie auf der Symbolleiste die Schaltfläche **Starten** auswählen. 
 
-   ![Schaltfläche zum Starten eines Runbooks](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png" alt-text="Schaltfläche zum Starten eines Runbooks":::
     
 5. Führen Sie im Bereich **Runbook starten** die folgenden Aktionen aus: 
 
@@ -336,11 +336,11 @@ Im folgenden Abschnitt finden Sie Schritte zum Erstellen eines PowerShell-Runboo
     4. Geben Sie unter **VORGANG** die Zeichenfolge **START** ein. 
     5. Klicken Sie auf **OK**.  
 
-   ![Fenster „Runbook starten“](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png" alt-text="Fenster „Runbook starten“":::
    
 6. Wählen Sie im Auftragsfenster die Kachel **Ausgabe** aus. Warten Sie im Ausgabefenster, bis die Meldung **##### Abgeschlossen #####** angezeigt wird, nachdem zuvor **##### Wird gestartet #####** angezeigt wurde. Das Starten einer Azure-SSIS IR dauert etwa 20 Minuten. Schließen Sie das Fenster **Auftrag**, und kehren Sie zum Fenster **Runbook** zurück.
 
-   ![Screenshot mit hervorgehobener Kachel „Ausgabe“](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png" alt-text="Screenshot mit hervorgehobener Kachel „Ausgabe“":::
     
 7. Wiederholen Sie die vorherigen beiden Schritte, wobei Sie als Wert für **VORGANG** dieses Mal **STOPP** verwenden. Starten Sie das Runbook erneut, indem Sie auf der Symbolleiste die Schaltfläche **Starten** auswählen. Geben Sie die Namen Ihrer Ressourcengruppe, Ihrer ADF und Ihrer Azure-SSIS IR ein. Geben Sie unter **VORGANG** die Zeichenfolge **STOPP** ein. Warten Sie im Ausgabefenster, bis die Meldung **##### Abgeschlossen #####** angezeigt wird, nachdem zuvor **##### Wird beendet #####** angezeigt wurde. Das Beenden einer Azure-SSIS IR dauert nicht so lange wie das Starten. Schließen Sie das Fenster **Auftrag**, und kehren Sie zum Fenster **Runbook** zurück.
 
@@ -352,7 +352,7 @@ Im vorherigen Abschnitt haben Sie ein Azure Automation-Runbook erstellt, das ein
 
 1. Wählen Sie im Fenster **Runbook** die Option **Zeitpläne** aus, und wählen Sie auf der Symbolleiste **+ Zeitplan hinzufügen** aus. 
 
-   ![Azure SSIS-IR – gestartet](./media/how-to-schedule-azure-ssis-integration-runtime/add-schedules-button.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/add-schedules-button.png" alt-text="Azure SSIS-IR – gestartet":::
    
 2. Führen Sie im Bereich **Runbook planen** die folgenden Aktionen aus: 
 
@@ -364,17 +364,17 @@ Im vorherigen Abschnitt haben Sie ein Azure Automation-Runbook erstellt, das ein
     6. Geben Sie für **Wiederholen alle** die Zahl **1** ein, und wählen Sie **Tag** aus. 
     7. Klicken Sie auf **Erstellen**. 
 
-   ![Zeitplan für den Start der Azure SSIS-IR](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png" alt-text="Zeitplan für den Start der Azure SSIS-IR":::
     
 3. Wechseln Sie zur Registerkarte **Parameter und Ausführungseinstellungen**. Geben Sie die Namen Ihrer Ressourcengruppe, Ihrer ADF und Ihrer Azure-SSIS IR an. Geben Sie unter **VORGANG** die Zeichenfolge **START** ein, und wählen Sie **OK** aus. Wählen Sie erneut **OK** aus, um den Zeitplan auf der Seite **Zeitpläne** des Runbooks anzuzeigen. 
 
-   ![Screenshot mit hervorgehobenem Feld „Vorgang“](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png" alt-text="Screenshot mit hervorgehobenem Feld „Vorgang“":::
     
 4. Wiederholen Sie die vorherigen beiden Schritte, um einen Zeitplan mit dem Namen **Stop IR daily** zu erstellen. Geben Sie als Uhrzeit eine Zeit ein, die mindestens 30 Minuten nach dem für den Zeitplan **Start IR daily** angegebenen liegt. Geben Sie unter **VORGANG** die Zeichenfolge **STOPP** ein, und wählen Sie **OK** aus. Wählen Sie erneut **OK** aus, um den Zeitplan auf der Seite **Zeitpläne** des Runbooks anzuzeigen. 
 
 5. Wählen Sie im Fenster **Runbook** im linken Menü **Aufträge** aus. Die über die Zeitpläne zu den angegebenen Zeitpunkten erstellten Aufträge sollten nun mit ihrem Status angezeigt werden. Es werden ähnlich dem Ablauf beim Testen des Runbooks Details zum Auftrag angezeigt, etwa die Ausgabe. 
 
-   ![Zeitplan zum Starten der Azure SSIS-IR](./media/how-to-schedule-azure-ssis-integration-runtime/schedule-jobs.png)
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/schedule-jobs.png" alt-text="Zeitplan zum Starten der Azure SSIS-IR":::
     
 6. Wenn Sie mit dem Testen fertig sind, deaktivieren Sie die Zeitpläne, indem Sie sie bearbeiten. Wählen Sie im linken Menü **Zeitpläne** aus, wählen Sie **Start IR daily/Stop IR daily** aus, und wählen Sie für **Aktiviert** die Option **Nein** aus. 
 

@@ -1,19 +1,19 @@
 ---
 title: Verringern der Kosten für Azure Databricks durch Vorauszahlung
 description: Hier erfahren Sie, wie Sie für Azure Databricks-Gebühren mit reservierter Kapazität vorauszahlen und so Geld sparen können.
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: 390a8b421a7b34391bde689e4b968fa98cdbaf76
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 8047c57c929deeffcb69943ce17fa5fe81d31af1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599158"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645054"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Verringern der Kosten für Azure Databricks durch Vorauszahlung
 
@@ -53,6 +53,7 @@ Sie können Databricks-Pläne im [Azure-Portal](https://portal.azure.com/#blade/
     - **Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
     - **Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
     - **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung.
+    - **Verwaltungsgruppe** – Wendet den Reservierungsrabatt auf die entsprechende Ressource in der Liste der Abonnements an, die sowohl Teil der Verwaltungsgruppe als auch des Abrechnungsbereichs sind.
 1. Wählen Sie aus, wie viele Azure Databricks-Commit-Einheiten Sie erwerben möchten, und schließen Sie den Kauf ab.
 
 

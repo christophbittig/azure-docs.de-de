@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 02/10/2021
 ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 11127453c67a41dd4b5f8677d02a10f749f516f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 103aaa913511c8d61e8e2a28ede81973fca98d1a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347018"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774638"
 ---
 # <a name="connect-to-a-secure-azure-storage-account-from-your-synapse-workspace"></a>Herstellen einer Verbindung mit einem sicheren Azure-Speicherkonto über Ihren Synapse-Arbeitsbereich
 
@@ -29,7 +29,13 @@ Wenn Sie einen Synapse-Arbeitsbereich erstellen, können Sie auswählen, dass di
 ## <a name="access-a-secured-storage-account"></a>Zugriff auf ein geschütztes Speicherkonto
 Synapse wird in Netzwerken betrieben, die nicht in Ihre Netzwerkregeln eingeschlossen werden können. Die folgenden Schritte müssen ausgeführt werden, um den Zugriff von Ihrem Arbeitsbereich auf Ihr geschütztes Speicherkonto zu ermöglichen.
 
-* Erstellen Sie einen Azure Synapse-Arbeitsbereich mit einem zugeordneten verwalteten virtuellen Netzwerk, und erstellen Sie dort verwaltete private Endpunkte für das geschützte Speicherkonto.
+* Erstellen Sie einen Azure Synapse-Arbeitsbereich mit einem damit verbundenen verwalteten virtuellen Netzwerk und erstellen Sie verwaltete private Endpunkte zum sicheren Speicherkonto. 
+
+    Wenn Sie Azure Portal verwenden, um Ihren Arbeitsbereich zu erstellen, können Sie das verwaltete virtuelle Netzwerk unter der Registerkarte **Networking** aktivieren, wie unten gezeigt. Wenn Sie ein verwaltetes virtuelles Netzwerk aktivieren oder Synapse feststellt, dass es sich bei dem primären Speicherkonto um ein sicheres Speicherkonto handelt, haben Sie die Möglichkeit, eine verwaltete private Endpunkt-Verbindungsanfrage für das sichere Speicherkonto zu erstellen (siehe unten). Der Inhaber des Speicherkontos muss die Verbindungsanfrage genehmigen, um die private Verbindung herzustellen. Alternativ wird Synapse diese Verbindungsanfrage genehmigen, wenn der Benutzer, der einen Apache Spark-Pool im Arbeitsbereich erstellt, über ausreichende Berechtigungen verfügt, um die Verbindungsanfrage zu genehmigen.
+![Verwaltetes VNet und verwalteter privater Endpunkt aktivieren](./media/connect-to-a-secure-storage-account/enable-managed-virtual-network-managed-private-endpoint.png) 
+    
+
+
 * Gewähren Sie Ihrem Azure Synapse-Arbeitsbereich als vertrauenswürdigem Azure-Dienst Zugriff auf Ihr geschütztes Speicherkonto. Als vertrauenswürdiger Dienst stellt Synapse dann unter Verwendung einer strengen Authentifizierung eine sichere Verbindung mit Ihrem Speicherkonto her.   
 
 ### <a name="create-a-synapse-workspace-with-a-managed-virtual-network-and-create-managed-private-endpoints-to-your-storage-account"></a>Erstellen Sie einen Synapse-Arbeitsbereich mit einem verwalteten virtuellen Netzwerk, und erstellen Sie verwaltete private Endpunkte für Ihr Speicherkonto

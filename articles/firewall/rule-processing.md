@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/07/2021
+ms.date: 09/28/2021
 ms.author: victorh
-ms.openlocfilehash: 30ae9e7bf915e558a806d9297fbcc35700b64ce1
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 2dbcb4d42372c97b12d4a71ef43ee1e10f1232bf
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111571079"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209545"
 ---
 # <a name="configure-azure-firewall-rules"></a>Konfigurieren von Azure Firewall-Regeln
 Sie können NAT-Regeln, Netzwerkregeln und Anwendungsregeln in Azure Firewall entweder mithilfe klassischer Regeln oder der Firewallrichtlinie konfigurieren. Azure Firewall verweigert standardmäßig jeglichen Datenverkehr, bis Regeln zum Zulassen von Datenverkehr manuell konfiguriert werden.
@@ -159,6 +159,14 @@ SSH-Verbindungen werden abgelehnt, da sie durch eine Netzwerkregelsammlung mit h
 ## <a name="rule-changes"></a>Regeländerungen
 
 Wenn Sie eine Regel ändern, um zuvor zugelassenen Datenverkehr abzulehnen, werden alle relevanten vorhandenen Sitzungen verworfen.
+
+## <a name="3-way-handshake-behavior"></a>3-Wege-Handshake-Verhalten
+
+Als zustandsbehafteter Dienst führt Azure Firewall einen TCP-3-Wege-Handshake für zulässigen Datenverkehr von einer Quelle zum Ziel durch.Beispiel: VNet-A zu VNet-B.
+
+Das Erstellen einer Zulassungsregel von VNet-A zu VNet-B bedeutet nicht, dass neue initiierte Verbindungen von VNet-B zu VNet-A zugelassen werden.
+
+Daher ist es nicht erforderlich, eine explizite Ablehnungsregel von VNet-B zu VNet-A zu erstellen. Wenn Sie diese Verweigerungsregel erstellen, unterbrechen Sie den 3-Wege-Handshake von der ursprünglichen Erlaubnisregel von VNet-A zu VNet-B. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

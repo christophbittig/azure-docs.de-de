@@ -7,13 +7,13 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/04/2021
-ms.openlocfilehash: 0eb7356542eb7016cd27cc76e048857e8d7f9955
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.date: 09/22/2021
+ms.openlocfilehash: 06bdd49df0f8a4d79ffece298fee2ea2691b0796
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598087"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129219209"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -27,7 +27,7 @@ Standardmäßig erfolgt die Erstellung mit der Azure Data Factory-Benutzeroberfl
 Um eine bessere Erstellung zu ermöglichen, können Sie mit Azure Data Factory ein Git-Repository mit Azure Repos oder GitHub konfigurieren. Git ist ein Versionskontrollsystem, das eine einfachere Änderungsnachverfolgung und Kollaboration ermöglicht. In diesem Artikel wird erläutert, wie Sie ein Git-Repository konfigurieren und in diesem arbeiten. Außerdem finden Sie hier Best Practices und eine Anleitung zur Problembehandlung.
 
 > [!NOTE]
-> Für Azure Government Cloud ist nur *GitHub Enterprise Server* verfügbar.
+> Wir haben die öffentliche Unterstützung von GitHub auf Azure Gov und Azure China hinzugefügt. Weitere Informationen finden Sie im [Ankündigungsblog](https://techcommunity.microsoft.com/t5/azure-data-factory/cicd-improvements-with-github-support-in-azure-government-and/ba-p/2686918).
 
 Um zu erfahren, wie die Integration von Azure Data Factory in Git funktioniert, sehen Sie sich das folgende 15-minütige Videotutorial an:
 
@@ -42,7 +42,7 @@ Im Folgenden finden Sie eine Liste einiger der Vorteile der Git-Integration für
     -   Möglichkeit zum Rückgängigmachen von Änderungen, die Fehler verursacht haben
 -   **Partielle Speicherungen:** Wenn Sie eine Erstellung für den Data Factory-Dienst durchführen, können Sie Änderungen nicht als Entwurf speichern, und alle Veröffentlichungen müssen die Data Factory-Validierung durchlaufen. Falls Ihre Pipelines noch nicht fertig sind oder Sie einfach im Fall eines Computerabsturzes keine Änderungen verlieren möchten, ermöglicht die Git-Integration inkrementelle Änderungen von Data Factory-Ressourcen unabhängig von ihrem Zustand. Durch das Konfigurieren eines Git-Repositorys können Sie Änderungen speichern und die Veröffentlichung erst dann durchführen, wenn Sie Ihre Änderungen zu Ihrer Zufriedenheit getestet haben.
 -   **Kollaboration und Steuerung:** Wenn mehrere Ihrer Teammitglieder Beiträge zur selben Factory liefern, empfiehlt es sich, Ihre Teamkollegen über einen Code Review-Prozess miteinander zusammenarbeiten zu lassen. Sie können die Factory auch so einrichten, dass nicht alle Mitwirkenden über die gleichen Berechtigungen verfügen. Einige Teammitglieder sind möglicherweise nur berechtigt, Änderungen über Git vorzunehmen, und nur bestimmte Personen im Team dürfen die Änderungen an der Factory veröffentlichen.
--   **Bessere CI/CD:**  Wenn Sie eine Bereitstellung in mehreren Umgebungen mit einem [Continuous Delivery-Prozess](continuous-integration-deployment.md) durchführen, werden bestimmte Aktionen durch die Git-Integration vereinfacht. Zu diesen Aktionen zählen beispielsweise folgende:
+-   **Bessere CI/CD:**  Wenn Sie eine Bereitstellung in mehreren Umgebungen mit einem [Continuous Delivery-Prozess](continuous-integration-delivery.md) durchführen, werden bestimmte Aktionen durch die Git-Integration vereinfacht. Zu diesen Aktionen zählen beispielsweise folgende:
     -   Konfigurieren Ihrer Releasepipeline, sodass sie automatisch ausgelöst wird, sobald Änderungen an der Entwicklungsfactory vorgenommen wurden.
     -   Anpassen der Eigenschaften in Ihrer Factory, die als Parameter in der Resource Manager-Vorlage verfügbar sind. Es kann hilfreich sein, nur die erforderlichen Eigenschaften als Parameter beizubehalten und alles andere fest zu codieren.
 -   **Höhere Leistung:** Im Durchschnitt wird eine Factory mit Git-Integration 10-mal schneller geladen als eine für die Erstellung für den Data Factory-Dienst. Diese Leistungsverbesserung liegt daran, dass Ressourcen über Git heruntergeladen werden.
@@ -58,19 +58,19 @@ Es gibt vier verschiedene Möglichkeiten, eine Verbindung zwischen einem Git-Rep
 
 Wählen Sie auf der Homepage von Azure Data Factory oben **Coderepository einrichten** aus.
 
-![Konfigurieren eines Coderepositorys auf der Homepage](media/doc-common-process/set-up-code-repository.png)
+:::image type="content" source="media/doc-common-process/set-up-code-repository.png" alt-text="Konfigurieren eines Coderepositorys auf der Homepage":::
 
 ### <a name="configuration-method-2-authoring-canvas"></a>Konfigurationsmethode 2: Erstellungsbereich
 
 Wählen Sie auf der Azure Data Factory-Benutzeroberfläche im Erstellungsbereich das Dropdownmenü **Data Factory** und dann **Coderepository einrichten** aus.
 
-![Konfigurieren der Coderepositoryeinstellungen im Erstellungsbereich](media/author-visually/configure-repo-2.png)
+:::image type="content" source="media/author-visually/configure-repo-2.png" alt-text="Konfigurieren der Coderepositoryeinstellungen im Erstellungsbereich":::
 
 ### <a name="configuration-method-3-management-hub"></a>Konfigurationsmethode 3: Verwaltungshub
 
 Wechseln Sie auf der ADF-Benutzeroberfläche zum Verwaltungshub. Wählen Sie **Git-Konfiguration** im Abschnitt **Quellcodeverwaltung** aus. Wenn kein Repository verbunden ist, klicken Sie auf **Konfigurieren**.
 
-![Konfigurieren der Coderepositoryeinstellungen im Verwaltungshub](media/author-visually/configure-repo-3.png)
+:::image type="content" source="media/author-visually/configure-repo-3.png" alt-text="Konfigurieren der Coderepositoryeinstellungen im Verwaltungshub":::
 
 ### <a name="configuration-method-4-during-factory-creation"></a>Konfigurationsmethode 4: Während der Erstellung einer Factory
 
@@ -79,7 +79,7 @@ Wenn Sie im Azure-Portal eine neue Data Factory erstellen, können Sie auf der R
 > [!NOTE]
 > Beim Konfigurieren von Git im Azure-Portal müssen Einstellungen wie Projektname und Repositoryname manuell eingegeben werden, da keine Dropdownliste zur Verfügung steht.
 
-![Konfigurieren der Coderepositoryeinstellungen im Azure-Portal](media/author-visually/configure-repo-4.png)
+:::image type="content" source="media/author-visually/configure-repo-4.png" alt-text="Konfigurieren der Coderepositoryeinstellungen im Azure-Portal":::
 
 ## <a name="author-with-azure-repos-git-integration"></a>Erstellen mit der Azure Repos Git-Integration
 
@@ -90,11 +90,11 @@ Das visuelle Erstellen mit der Azure Repos Git-Integration unterstützt die Quel
 
 ### <a name="azure-repos-settings"></a>Azure Repos-Einstellungen
 
-![Konfigurieren der Repositoryeinstellungen](media/author-visually/repo-settings.png)
+:::image type="content" source="media/author-visually/repo-settings.png" alt-text="Konfigurieren der Repositoryeinstellungen":::
 
 Im Konfigurationsbereich werden die folgenden Einstellungen für das Coderepository für Azure Repos angezeigt:
 
-| Einstellung | BESCHREIBUNG | Wert |
+| Einstellung | Beschreibung | Wert |
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des Coderepositorys für Azure Repos.<br/> | Azure DevOps Git oder GitHub |
 | **Azure Active Directory** | Ihr Name des Azure AD-Mandanten. | `<your tenant name>` |
@@ -140,7 +140,7 @@ Zum Konfigurieren eines GitHub-Repositorys müssen Sie über Administratorberech
 
 ### <a name="github-settings"></a>GitHub-Einstellungen
 
-![GitHub-Repositoryeinstellungen](media/author-visually/github-integration-image2.png)
+:::image type="content" source="media/author-visually/github-integration-image2.png" alt-text="GitHub-Repositoryeinstellungen":::
 
 Im Konfigurationsbereich werden die folgenden Einstellungen für das GitHub-Repository angezeigt:
 
@@ -176,15 +176,15 @@ Wenn Sie bereits mit GitHub verbunden sind und nur Berechtigungen zum Zugriff au
 
 1. Wechseln Sie zu GitHub, und öffnen Sie die **Einstellungen**.
 
-    ![Öffnen der GitHub-Einstellungen](media/author-visually/github-settings.png)
+    :::image type="content" source="media/author-visually/github-settings.png" alt-text="Öffnen der GitHub-Einstellungen":::
 
 1. Wählen Sie **Anwendungen** aus. Auf der Registerkarte **Autorisierte OAuth-Apps** sollte *AzureDataFactory* angezeigt werden.
 
-    ![Auswählen von OAuth-Apps](media/author-visually/github-organization-select-application.png)
+    :::image type="content" source="media/author-visually/github-organization-select-application.png" alt-text="Auswählen von OAuth-Apps":::
 
 1. Wählen Sie die Anwendung aus, und erteilen Sie ihr Zugriff auf Ihre Organisation.
 
-    ![Gewähren von Zugriff](media/author-visually/github-organization-grant.png)
+    :::image type="content" source="media/author-visually/github-organization-grant.png" alt-text="Gewähren von Zugriff":::
 
 Nachdem Sie diese Schritte ausgeführt haben, kann Ihre Factory eine Verbindung sowohl mit den privaten als auch mit den öffentlichen Repositorys in Ihrer Organisation herstellen. 
 
@@ -205,13 +205,17 @@ Versionskontrollsysteme (auch als _Quellcodeverwaltung_ bezeichnet) ermöglichen
 
 ### <a name="creating-feature-branches"></a>Erstellen von Featurebranches
 
-Jedes Azure Repos Git-Repository, das einer Data Factory zugeordnet ist, verfügt über einen Branch für die Kollaboration. (`main` ist der Standardbranch für die Kollaboration.) Benutzer können auch Featurebranches erstellen, indem sie im Dropdownmenü „Branch“ auf **+ Neuer Branch** klicken. Sobald der Bereich „Neuer Branch“ angezeigt wird, geben Sie den Namen Ihres Featurebranches ein.
+Jedes Azure Repos Git-Repository, das einer Data Factory zugeordnet ist, verfügt über einen Branch für die Kollaboration. (`main` ist der Standardbranch für die Kollaboration.) Benutzer können auch Featurebranches erstellen, indem sie im Dropdownmenü „Branch“ auf **+ Neuer Branch** klicken. 
 
-![Neuen Branch erstellen](media/author-visually/new-branch.png)
+:::image type="content" source="media/author-visually/new-branch.png" alt-text="Neuen Branch erstellen":::
+
+Sobald der neue Zweigbereich erscheint, geben Sie den Namen Ihres Feature-Zweiges ein und wählen einen Zweig aus, auf dem die Arbeit basieren soll.
+
+:::image type="content" source="media/author-visually/create-branch-from-private-branch.png" alt-text="Screenshot, der zeigt, wie man eine Verzweigung auf der Grundlage der privaten Verzweigung erstellt.":::
 
 Wenn Sie bereit sind, die Änderungen in Ihrem Featurebranch mit Ihrem Kollaborationsbranch zu mergen, klicken Sie auf das Dropdownmenü „Branch“ und dann auf **Pull Request erstellen**. Dann gelangen Sie zu Azure Repos Git und können Pull Requests auslösen, Codereviews durchführen und Änderungen an Ihrem Kollaborationsbranch zusammenführen. (`main` ist die Standardeinstellung.) Sie können nur Veröffentlichungen für den Data Factory-Dienst Ihres Kollaborationsbranchs durchführen. 
 
-![Erstellen eines neuen Pull Requests](media/author-visually/create-pull-request.png)
+:::image type="content" source="media/author-visually/create-pull-request.png" alt-text="Erstellen eines neuen Pull Requests":::
 
 ### <a name="configure-publishing-settings"></a>Konfigurieren von Veröffentlichungseinstellungen
 
@@ -232,11 +236,11 @@ In Azure Data Factory kann jeweils nur ein Veröffentlichungsbranch vorhanden se
 
 Nachdem Sie die Änderungen mit dem Kollaborationsbranch gemergt haben (`main` ist die Standardeinstellung), klicken Sie auf **Veröffentlichen**, um Ihre Codeänderungen manuell im Mainbranch im Data Factory-Dienst zu veröffentlichen.
 
-![Veröffentlichen von Änderungen für den Data Factory-Dienst](media/author-visually/publish-changes.png)
+:::image type="content" source="media/author-visually/publish-changes.png" alt-text="Veröffentlichen von Änderungen für den Data Factory-Dienst":::
 
 Ein Seitenbereich wird geöffnet, in dem Sie bestätigen, dass der Branch für die Veröffentlichung und ausstehende Änderungen korrekt sind. Nachdem Sie Ihre Änderungen überprüft haben, klicken Sie auf **OK**, um die Veröffentlichung zu bestätigen.
 
-![Überprüfen des Branch für die Veröffentlichung](media/author-visually/configure-publish-branch.png)
+:::image type="content" source="media/author-visually/configure-publish-branch.png" alt-text="Überprüfen des Branch für die Veröffentlichung":::
 
 > [!IMPORTANT]
 > Der Mainbranch ist nicht repräsentativ für das, was im Data Factory-Dienst bereitgestellt wird. Der Mainbranch *muss* manuell im Data Factory-Dienst veröffentlicht werden.
@@ -279,7 +283,7 @@ Der Code aus Ihrem Kollaborationsbranch wird im Livemodus veröffentlicht oder �
 
 <u>*Codeflow:*</u>***Kollaborationsbranch –> Livemodus***
 
-![Erzwingen der Veröffentlichung von Code aus dem Kollaborationsbranch](media/author-visually/force-publish-changes-from-collaboration-branch.png)
+:::image type="content" source="media/author-visually/force-publish-changes-from-collaboration-branch.png" alt-text="Erzwingen der Veröffentlichung von Code aus dem Kollaborationsbranch":::
 
 #### <a name="option-2-disconnect-and-reconnect-git-repository"></a>Option 2: Trennen und erneutes Verbinden des Git-Repository
 
@@ -297,11 +301,11 @@ Wählen Sie eine der beiden Methoden entsprechend nach Bedarf aus.
 
 Wenn Sie zu einem anderen Git-Repository wechseln möchten, navigieren Sie im Verwaltungshub unter **Quellcodeverwaltung** zur Seite mit der Git-Konfiguration. Wählen Sie **Trennen** aus. 
 
-![Git-Symbol](media/author-visually/remove-repository.png)
+:::image type="content" source="media/author-visually/remove-repository.png" alt-text="Git-Symbol":::
 
 Geben Sie Ihren Data Factory Namen ein, und klicken Sie auf **Bestätigen**, um das Git-Repository zu entfernen, das Ihrer Data Factory-Instanz zugeordnet ist.
 
-![Entfernen der Zuordnung zum aktuellen Git-Repository](media/author-visually/remove-repository-2.png)
+:::image type="content" source="media/author-visually/remove-repository-2.png" alt-text="Entfernen der Zuordnung zum aktuellen Git-Repository":::
 
 Nachdem Sie die Zuordnung zum aktuellen Repository entfernt haben, können Sie Ihre Git-Einstellungen zur Verwendung eines anderen Repositorys konfigurieren und dann vorhandene Data Factory-Ressourcen in das neue Repository importieren.
 
@@ -311,4 +315,4 @@ Nachdem Sie die Zuordnung zum aktuellen Repository entfernt haben, können Sie I
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Unter [Programmgesteuertes Überwachen und Verwalten von Pipelines](monitor-programmatically.md) erfahren Sie mehr über das Überwachen und Verwalten von Pipelines.
-* Informationen zum Implementieren von Continuous Integration und Deployment finden Sie unter [Continuous Integration und Delivery (CI/CD) in Azure Data Factory](continuous-integration-deployment.md).
+* Informationen zum Implementieren von Continuous Integration und Deployment finden Sie unter [Continuous Integration und Delivery (CI/CD) in Azure Data Factory](continuous-integration-delivery.md).

@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0d549190558f54137a410808967abc206ed43ad1
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 9ba814b4188984f3a0f6dbe16e866d6184d8cf2b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433366"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547659"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -66,7 +66,7 @@ Synchronisieren einer einzelnen Datei:
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-Wie oben, aber berechnen Sie außerdem einen MD5-Hash des Dateiinhalts, und speichern Sie diesen MD5-Hash als „Content-MD5“-Eigenschaft des Blobs. 
+Wie oben, aber berechnen Sie außerdem einen MD5-Hash des Dateiinhalts, und speichern Sie diesen MD5-Hash als „Content-MD5“-Eigenschaft des Blobs.
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
@@ -120,10 +120,10 @@ Synchronisieren eines virtuellen Verzeichnisses mit demselben Namen wie ein Blob
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/" --recursive=true
 ```
 
-Synchronisieren eines Azure-Dateiverzeichnisses (dieselbe Syntax wie bei einem Blob):
+Synchronisieren Sie ein Azure File-Verzeichnis:
 
 ```azcopy
-azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]" --recursive=true
+azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" --recursive=true
 ```
 
 > [!NOTE]
@@ -149,7 +149,7 @@ Zeichenfolge **--cpk-by-name**: Vom Client bereitgestellter Schlüssel nach Name
 
 **--exclude-pattern string**   Schließt Dateien aus, deren Name der Musterliste entspricht. Beispiel: `*.jpg;*.pdf;exactName`
 
-Zeichenfolge **--exclude-regex**: Schließt den relativen Pfad der Dateien aus, die regulären Ausdrücken entsprechen. Trennen Sie reguläre Ausdrücke durch ein Semikolon(;).
+Zeichenfolge **--exclude-regex**: Schließt den relativen Pfad der Dateien aus, die regulären Ausdrücken entsprechen. Reguläre Ausdrücke werden durch Semikolon (;) getrennt.
 
 **--help**  Hilfe zu „sync“.
 
@@ -157,19 +157,19 @@ Zeichenfolge **--exclude-regex**: Schließt den relativen Pfad der Dateien aus, 
 
 **--include-pattern** string   Schließt nur Dateien ein, deren Name der Musterliste entspricht. Beispiel: `*.jpg;*.pdf;exactName`
 
-**--log-level** string  Definiert die Ausführlichkeit des Protokolls für die Protokolldatei. Verfügbare Ebenen: `INFO`(alle Anforderungen und Antworten), `WARNING`(langsame Antworten), `ERROR`(nur fehlerhafte Anforderungen) und `NONE`(keine Ausgabeprotokolle). (Standardwert: `INFO`) 
+**--log-level** string  Definiert die Ausführlichkeit des Protokolls für die Protokolldatei. Verfügbare Ebenen: `INFO`(alle Anforderungen und Antworten), `WARNING`(langsame Antworten), `ERROR`(nur fehlerhafte Anforderungen) und `NONE`(keine Ausgabeprotokolle). (Standardwert: `INFO`)
 
 **--mirror-mode**          Deaktiviert den auf dem Zeitpunkt der letzten Änderung basierenden Vergleich und überschreibt die in Konflikt stehenden Dateien und Blobs am Ziel, wenn dieses Flag auf `true` festgelegt ist. Der Standardwert ist `false`.
 
 **--preserve-smb-info**: Standardmäßig TRUE. Behält SMB-Eigenschaftsinformationen ( letzte Schreibzeit, Erstellungszeit, Attributbits) zwischen SMB-fähigen Ressourcen (Windows und Azure Files) bei. Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B. „include-pattern“).  Die für Ordner übertragenen Informationen sind die gleichen wie die für Dateien, mit Ausnahme der letzten Schreibzeit, die für Ordner nicht gespeichert wird.
 
-**--preserve-smb-permissions**: standardmäßig FALSE. Behält ACLs zwischen kompatiblen Ressourcen (Windows und Azure Files oder Data Lake Storage Gen 2 zu Data Lake Storage Gen 2) bei. Für Konten mit einem hierarchischen Namespace benötigen Sie eine Container-SAS oder ein OAuth-Token mit den Berechtigungen „Besitz ändern“ und „Berechtigungen ändern“. Für Downloads müssen Sie auch das Flag „--backup“ verwenden, um Berechtigungen wiederherzustellen, bei denen der neue Besitzer nicht der Benutzer ist, der AzCopy ausführt. Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B. include-pattern).
+**--preserve-smb-permissions**: standardmäßig FALSE. Behält ACLs zwischen kompatiblen Ressourcen (Windows und Azure Files oder Data Lake Storage Gen 2 zu Data Lake Storage Gen 2) bei. Für Konten mit einem hierarchischen Namespace benötigen Sie eine Container-SAS oder ein OAuth-Token mit den Berechtigungen „Besitz ändern“ und „Berechtigungen ändern“. Für Downloads müssen Sie auch das --backup-Flag verwenden, um Berechtigungen wiederherzustellen, bei denen der neue Besitzer nicht der Benutzer ist, der AzCopy ausführt. Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B. include-pattern).
 
 **--put-md5:**  Erstellt einen MD5-Hash jeder Datei und speichert den Hash als „Content-MD5“-Eigenschaft des Zielblobs bzw. der Zieldatei. (Standardmäßig wird der Hash NICHT erstellt.) Nur beim Hochladen verfügbar.
 
-**--recursive**  Standardmäßig `True`; überprüfen Sie Unterverzeichnisse rekursiv, wenn Sie zwischen Verzeichnissen synchronisieren. (Standardwert: `True`) 
+**--recursive**  Standardmäßig `True`; überprüfen Sie Unterverzeichnisse rekursiv, wenn Sie zwischen Verzeichnissen synchronisieren. (Standardwert: `True`)
 
-**--s2s-preserve-access-tier**  Behält die Zugriffsebene beim Kopieren zwischen Diensten bei. Informationen zur Sicherstellung, dass das Zielspeicherkonto das Festlegen der Zugriffsebene unterstützt, finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md). Verwenden Sie in den Fällen, in denen das Festlegen der Zugriffsebene nicht unterstützt wird, „s2sPreserveAccessTier=false“, um das Kopieren der Zugriffsebene zu umgehen. (Standardwert: `true`) 
+**--s2s-preserve-access-tier**  Behält die Zugriffsebene beim Kopieren zwischen Diensten bei. Informationen zur Sicherstellung, dass das Zielspeicherkonto das Festlegen der Zugriffsebene unterstützt, finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md). Verwenden Sie in den Fällen, in denen das Festlegen der Zugriffsebene nicht unterstützt wird, „s2sPreserveAccessTier=false“, um das Kopieren der Zugriffsebene zu umgehen. (Standardwert: `true`)
 
 **--s2s-preserve-blob-tags**: Behält Indextags während der Synchronisierung zwischen Diensten von einem Blobspeicher zu einem anderen bei.
 

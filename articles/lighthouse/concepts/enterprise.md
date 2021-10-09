@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse in Unternehmensszenarien
 description: Die Funktionen von Azure Lighthouse können zum Vereinfachen der mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, verwendet werden.
-ms.date: 05/11/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12a6c2f03c06fbd69e77e32b236258bc6a6c8fbe
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f83e5d84eee0c3ed7f159778630e3598274e4916
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113768299"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768779"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse in Unternehmensszenarien
 
@@ -20,7 +20,7 @@ Für die meisten Organisationen ist die Verwaltung mit nur einem Azure AD-Mandan
 
 Einige Organisationen müssen möglicherweise mit mehreren Azure AD-Mandanten arbeiten. Dies kann vorübergehend erforderlich sein, wenn beispielsweise Übernahmen erfolgt sind und noch keine langfristige Konsolidierungsstrategie für Mandanten definiert wurde. Es kann auch sein, dass Organisationen aufgrund von unabhängigen Tochtergesellschaften, geografischen oder rechtlichen Anforderungen oder anderen Aspekten fortlaufend mehrere Mandanten verwalten müssen.
 
-Falls eine Architektur mit mehreren Mandanten benötigt wird, kann Azure Lighthouse zur Zentralisierung und Optimierung von Verwaltungsvorgängen beitragen. Durch Verwendung der [delegierten Azure-Ressourcenverwaltung](architecture.md) können Benutzer in einem verwalteten Mandanten [mandantenübergreifende Verwaltungsfunktionen](cross-tenant-management-experience.md) zentral und skalierbar ausführen.
+Falls eine Architektur mit mehreren Mandanten benötigt wird, kann Azure Lighthouse zur Zentralisierung und Optimierung von Verwaltungsvorgängen beitragen. Durch den Einsatz von Azure Lighthouse können Benutzer in einem Verwaltungsmandanten [mandantenübergreifende Verwaltungsfunktionen](cross-tenant-management-experience.md) auf zentrale, skalierbare Weise durchführen.
 
 ## <a name="tenant-management-architecture"></a>Architektur für die Mandantenverwaltung
 

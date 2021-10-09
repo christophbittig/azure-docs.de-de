@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/09/2021
+ms.date: 09/28/2021
 ms.author: ramakk
-ms.openlocfilehash: d002932bca51300fa6a031ce7ab0d69186afe9c3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 6d82310eea944d91124025c3d894f543448f82e1
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311684"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218677"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlinien für die Azure NetApp Files-Netzwerkplanung
 
@@ -37,7 +37,7 @@ Azure NetApp Files unterstützt derzeit die folgenden Features nicht:
 
 * Netzwerksicherheitsgruppen (NSGs), die auf das delegierte Subnetz angewendet werden
 * Auf das delegierte Subnetz angewendete benutzerdefinierte Routen (User-Defined Routes, UDRs)
-* Azure-Richtlinien (z.B. benutzerdefinierte Benennungsrichtlinien) für die Azure NetApp Files-Schnittstelle
+* Benutzerdefinierte Azure-Richtlinien (z. B. benutzerdefinierte Benennungsrichtlinien) auf der Azure NetApp Files-Schnittstelle
 * Lastenausgleichsmodule für den Azure NetApp Files-Datenverkehr
 * Azure Virtual WAN 
 * Zonenredundante Virtual Network-Gateways (Gateway-SKUs mit Az) 

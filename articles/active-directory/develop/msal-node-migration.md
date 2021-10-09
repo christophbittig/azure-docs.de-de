@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/26/2021
 ms.author: v-doeris
 ms.custom: has-adal-ref
-ms.openlocfilehash: 55cf58924bca9839225eafaa3e4084d60db5f898
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 663898ea4c1bc4a881a84956c227a4ca7719b55b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429120"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786862"
 ---
 # <a name="how-to-migrate-a-nodejs-app-from-adal-to-msal"></a>Migrieren einer Node.js-Anwendung von ADAL zu MSAL
 
@@ -125,7 +125,7 @@ const msalConfig = {
     auth: {
         clientId: "YOUR_CLIENT_ID",
         authority: "https://login.microsoftonline.com/YOUR_TENANT_ID",
-        clientSecret: "YOUR_TENANT_ID",
+        clientSecret: "YOUR_CLIENT_SECRET",
         knownAuthorities: [], 
     },
     cache: {
@@ -297,7 +297,7 @@ var authorityURI = "https://login.microsoftonline.com/common";
 var context = new AuthenticationContext(authorityURI, true, cache);
 ```
 
-In MSAL Node ist der In-Memory-Tokencache die Standardeinstellung. Er muss nicht explizit importiert werden, da er als Teil der Klassen `ConfidentialClientApplication` und `PublicClientApplication` verfügbar gemacht wird.
+In MSAL Node ist der In-Memory-Tokencache die Standardeinstellung. Sie brauchen ihn nicht explizit zu importieren; der speicherinterne Token-Cache wird als Teil der Klassen `ConfidentialClientApplication` und `PublicClientApplication` bereitgestellt.
 
 ```javascript
 const msalTokenCache = publicClientApplication.getTokenCache();

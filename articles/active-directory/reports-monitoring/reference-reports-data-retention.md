@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e240e8ec53ce007be1a858af7b6e41273ca8831
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b53333ff9d61e6ee5bbc98bb4756199ca07486d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97093637"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630070"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Wie lange speichert Azure AD die Berichtsdaten?
 
@@ -73,8 +73,11 @@ Sie können die Aktivitätsdaten zu Überwachung und Anmeldung länger als den o
 
 | Bericht         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--            | :--           | :--                 | :--                 |
-| Gefährdete Benutzer  | 7 Tage        | 30 Tage             | 90 Tage             |
+| Riskante Benutzer    | Keine Begrenzung      | Keine Begrenzung            | Keine Begrenzung            |
 | Riskante Anmeldungen | 7 Tage        | 30 Tage             | 90 Tage             |
+
+> [!NOTE]
+> Risikobehaftete Benutzer werden erst gelöscht, wenn das Risiko beseitigt ist.
 
 ---
 

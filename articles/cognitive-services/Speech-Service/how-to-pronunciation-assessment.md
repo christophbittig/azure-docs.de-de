@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: f9f787af8cad8dffa728e29fd3a13defc8e160ca
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 2335b1e85290cdea805c3a77754a5843da6cbbda
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110494867"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672360"
 ---
 # <a name="pronunciation-assessment"></a>Aussprachebewertung
 
@@ -28,7 +28,7 @@ Lehrkräfte können diese Funktion verwenden, um die Aussprache mehrerer Redner 
 In diesem Artikel erfahren Sie, wie Sie `PronunciationAssessmentConfig` einrichten und `PronunciationAssessmentResult` mit dem Speech SDK abrufen.
 
 > [!NOTE]
-> Die Funktion zur Beurteilung der Aussprache unterstützt `en-US` derzeit Sprache, die in allen [Sprache-in-Text-Regionen verfügbar ist](regions.md#speech-to-text-text-to-speech-and-translation). Die Unterstützung für die Sprachen `en-GB` und `zh-CN` befindet sich in der Vorschau Phase, die in den `westus` `eastasia` und `centralindia` Regionen, und verfügbar ist.
+> Die Funktion zur Beurteilung der Aussprache unterstützt `en-US` derzeit Sprache, die in allen [Sprache-in-Text-Regionen verfügbar ist](regions.md#speech-to-text-text-to-speech-and-translation). Die Unterstützung für die Sprachen `en-GB` und `zh-CN` ist in der Vorschau.
 
 ## <a name="pronunciation-assessment-with-the-speech-sdk"></a>Aussprachebewertung mit dem Speech SDK
 

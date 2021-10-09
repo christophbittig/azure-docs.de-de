@@ -9,12 +9,12 @@ ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: c0a64d5756895f18cbb1285586570ac72dd1c12e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 62442749ccff4a588daef57c7e3ecbc374ff5fde
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347110"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061730"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Herstellen einer Verbindung mit Azure Arc-fähigen SQL Managed Instance-Instanzen
 
@@ -56,6 +56,9 @@ Zum Beispiel:
 
 > [!NOTE]
 > Sie können Azure Data Studio zum [Anzeigen der SQL Managed Instance-Dashboards](azure-data-studio-dashboards.md#view-the-sql-managed-instance-dashboards) verwenden.
+
+> [!NOTE]
+> Um eine Verbindung zu einer verwalteten Instanz herzustellen, die mit einem Kubernetes-Manifest erstellt wurde, müssen der Benutzername und das Passwort in base64-kodierter Form an sqlcmd übermittelt werden.
 
 Um eine Verbindung mithilfe von SQLCMD, Linux oder Windows herzustellen, können Sie einen Befehl wie den folgenden verwenden. Geben Sie bei Aufforderung das SQL-Kennwort ein:
 

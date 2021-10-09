@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Azure Machine Learning-Computes und -Datenspeicher die Datenverschlüsselung ruhender und übertragener Daten bereitstellen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 08/02/2021
-ms.openlocfilehash: 8f4bb5279442abb10a9b19e5cb3e3666a1319bb2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e367f6685e73cb6cdfd9e777e6cb554c186c616c
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128621591"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429222"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Datenverschlüsselung mit Azure Machine Learning
 

@@ -3,16 +3,16 @@ title: Verwenden der REST-API zum Verwalten von Geräten in Azure IoT Central
 description: Verwenden der IoT Central-REST-API zur Steuerung von Geräten in einer Anwendung
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/01/2020
+ms.date: 08/28/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2e808ee2d36237a830877e7f043656ce9189bd89
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 052dc4d0d275c120d7bb9379937fadfe0e005bdd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461277"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656719"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-control-devices"></a>Verwenden der IoT Central-REST-API zur Steuerung von Geräten
 
@@ -30,6 +30,9 @@ Ein Gerät kann die von ihm unterstützten Eigenschaften, Telemetriedaten und Be
 Jeder IoT Central-REST-API-Aufruf erfordert einen Autorisierungsheader. Weitere Informationen finden Sie unter [Authentifizieren und Autorisieren von IoT Central-REST-API-Aufrufen](howto-authorize-rest-api.md).
 
 Die Referenzdokumentation für die IoT Central-REST-API finden Sie unter [Azure IoT Central: Referenz zur REST-API](/rest/api/iotcentral/).
+
+> [!TIP]
+> Die [Vorschau-API](/rest/api/iotcentral/1.1-previewdataplane/devices) enthält Unterstützung für die neue [Funktion „Organisationen“](howto-create-organizations.md).
 
 ## <a name="components-and-modules"></a>Komponenten und Module
 

@@ -16,12 +16,12 @@ ms.date: 08/09/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2415ad3109863a9cd80df413723b317e880a7063
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3ab5eba7cebe03ff59cfa442c454da855788ebad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349723"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768608"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: Verzeichniserweiterungen
 Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Erweiterungen](/graph/extensibility-overview
@@ -47,9 +47,8 @@ Bei der Installation werden folgenden Attribute als zulässige Kandidaten angeze
 * Einwertige Attribute: Zeichenfolge, Boolescher Wert, ganze Zahl, Binärwert
 * Mehrwertige Attribute: Zeichenfolge, Binärwert
 
-
->[!NOTE]
-> Nachdem Azure AD Connect mehrwertige Active Directory-Attribute in Form einer mehrwertigen Attributerweiterung mit Azure AD synchronisiert hat, ist es möglich, Attribute in den SAML-Anspruch einzuschließen. Es ist jedoch nicht möglich, diese Daten über einen API-Aufruf zu verwenden.
+> [!NOTE]
+> Nicht alle Funktionen in Azure Active Directory unterstützen mehrwertige Erweiterungsattribute. Bitte lesen Sie die Dokumentation des Merkmals, in dem Sie diese Attribute verwenden möchten, um sicherzustellen, dass sie unterstützt werden.
 
 Die Attributliste wird aus dem Schemacache gelesen, der im Zuge der Installation von Azure AD Connect erstellt wird. Wenn Sie das Active Directory-Schema um zusätzliche Attribute erweitert haben, müssen Sie [das Schema aktualisieren](how-to-connect-installation-wizard.md#refresh-directory-schema), damit die neuen Attribute angezeigt werden.
 

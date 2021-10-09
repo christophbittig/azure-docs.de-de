@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d9025038727c6f71022f30f80ee67db6ccc5289b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6ed309637c03fc4701f2b973f64b2473f43b0d2a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740319"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734895"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von Parquet-Dateien mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
 
@@ -42,7 +42,7 @@ Stellen Sie sicher, dass Sie auf diese Datei zugreifen können. Wenn Ihre Datei 
 > Ein Konflikt zwischen der Textcodierung in der Parquet-Datei und der Sortierung kann zu unerwarteten Konvertierungsfehlern führen.
 > Die Standardsortierung der aktuellen Datenbank kann mit der folgenden T-SQL-Anweisung problemlos geändert werden: `alter database current collate Latin1_General_100_BIN2_UTF8`'
 
-Wenn Sie eine _BIN2 Sortierung verwenden, erhalten Sie eine zusätzliche Leistungssteigerung. Die BIN2-Sortierung ist mit Sortierungsregeln für Parquet-Zeichenfolgen kompatibel, sodass einige Teile der Parquet-Dateien, die keine in den Abfragen benötigten Daten enthalten (Datei-/Spaltensegmentbereinigung), entfernt werden können. Wenn Sie eine Nicht-BIN2-Sortierung verwenden, werden alle Daten aus der Parquet-Füllung in Synapse SQL geladen, wobei die Filterung innerhalb des SQL-Prozesses erfolgt, die möglicherweise viel langsamer als die Dateientfernung der nicht benötigten Daten ist. Die BIN2-Sortierung verfügt über eine zusätzliche Leistungsoptimierung, die nur für Parquet und CosmosDB funktioniert. Der Nachteil ist, dass Sie differenzierte Vergleichsregeln wie die Groß-/Kleinschreibung nicht beachten.
+Wenn Sie die Sortierung `Latin1_General_100_BIN2_UTF8` verwenden, erhalten Sie einen zusätzlichen Leistungsschub im Vergleich zu den anderen Sortierungen. Die Sortierung `Latin1_General_100_BIN2_UTF8` ist mit den Sortierregeln für Parkettzeichenfolgen kompatibel. Der SQL-Pool ist in der Lage, einige Teile der Parkettdateien zu eliminieren, die keine für die Abfragen benötigten Daten enthalten (file/column-segment pruning). Wenn Sie andere Sortierungen verwenden, werden alle Daten aus den Parkettdateien in Synapse SQL geladen und die Filterung erfolgt innerhalb des SQL-Prozesses. Die Sortierung `Latin1_General_100_BIN2_UTF8` hat eine zusätzliche Leistungsoptimierung, die nur für Parquet und CosmosDB funktioniert. Der Nachteil ist, dass Sie differenzierte Vergleichsregeln wie die Groß-/Kleinschreibung nicht beachten.
 
 ### <a name="data-source-usage"></a>Datenquellennutzung
 

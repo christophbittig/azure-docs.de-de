@@ -2,14 +2,14 @@
 title: Bereitstellen von Ressourcen für einen Mandanten
 description: Hier erfahren Sie, wie Sie Ressourcen im Mandantenbereich in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 09/14/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: dfcdd4c9fdf758b0e07c2566c50b45f534133c3c
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 0e998c4c26afc456a83cdb0c06a5ccb3906364df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751489"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606568"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>Mandantenbereitstellungen mit ARM-Vorlagen
 
@@ -55,8 +55,8 @@ Verwenden Sie für Vorlagen Folgendes:
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    ...
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+  ...
 }
 ```
 
@@ -64,8 +64,8 @@ Das Schema für eine Parameterdatei ist für alle Bereitstellungsbereiche identi
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-    ...
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  ...
 }
 ```
 
@@ -193,5 +193,5 @@ Die folgende Vorlage dient zum Zuweisen einer Rolle im Mandantenbereich:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Zuweisen von Rollen finden Sie unter [Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
+* Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Zuweisen von Azure-Rollen mithilfe von Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
 * Vorlagen können auch auf der [Abonnementebene](deploy-to-subscription.md) oder auf der [Verwaltungsgruppenebene](deploy-to-management-group.md) bereitgestellt werden.

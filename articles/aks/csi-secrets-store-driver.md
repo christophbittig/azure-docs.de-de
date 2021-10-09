@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to, devx-track-azurecli
-ms.openlocfilehash: fd6ebf1534869fa96fe6249d302406583fe55e59
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 83895ebe6f8cf330650eef8167ee3bdd06660869
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339402"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656434"
 ---
 # <a name="use-the-secrets-store-csi-driver-for-kubernetes-in-an-azure-kubernetes-service-aks-cluster-preview"></a>Verwenden des Secrets Store CSI-Treibers für Kubernetes in einem AKS-Cluster (Azure Kubernetes Service) (Vorschau)
 
@@ -24,13 +24,17 @@ Der Secrets Store CSI-Treiber für Kubernetes ermöglicht, Azure Key Vault über
 
 - Bevor Sie beginnen, installieren Sie die neueste Version der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli-windows) und die Erweiterung *aks-preview*.
 
+### <a name="supported-kubernetes-versions"></a>Unterstützte Kubernetes-Versionen
+
+Die empfohlene Mindestversion von Kubernetes für diese Funktion ist 1.18. 
+
 ## <a name="features"></a>Features
 
 - Einbinden von Geheimnissen, Schlüsseln und Zertifikaten in einen Pod mithilfe eines CSI-Volumes
 - Unterstützung von CSI-Inlinevolumes (ab Kubernetes-Version 1.15)
 - Unterstützung für das Einbinden mehrerer Geheimnisspeicherobjekte als einzelnes Volume
 - Unterstützung der Podportabilität mit der SecretProviderClass-CRD
-- Unterstützung für Windows-Container (ab Kubernetes-Version 1.18)
+- Unterstützt Windows-Container
 - Synchronisieren mit Kubernetes-Geheimnissen (ab Secrets Store CSI-Treiber v0.0.10)
 - Unterstützung für die automatische Rotation eingebundener Inhalte und synchronisierter Kubernetes-Geheimnisse (ab Secrets Store CSI-Treiber v0.0.15)
 
@@ -195,7 +199,8 @@ spec:
     objects:  |
       array:
         - |
-          objectName: <secret-name>       # In this example, 'ExampleSecret'   
+          objectName: <secret-name>       # In this example, 'ExampleSecret' 
+          objectAlias: <secret-alias>     # [OPTIONAL] specify the filename of the object when written to disk - defaults to objectName if not provided
           objectType: secret              # Object types: secret, key or cert
           objectVersion: ""               # [OPTIONAL] object versions, default to latest if empty
     tenantId: "<tenant-id>"               # the tenant ID containing the Azure Key Vault instance

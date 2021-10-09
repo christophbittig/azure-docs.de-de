@@ -1,18 +1,18 @@
 ---
-title: Erstellen einer benutzerdefinierten Klassifizierung und Klassifizierungsregel (Vorschau)
+title: Erstellen Sie eine benutzerdefinierte Klassifizierung und Klassifizierungsregel
 description: Hier erfahren Sie, wie Sie benutzerdefinierte Klassifizierungen erstellen können, um Datentypen in ihrem Datenbestand zu definieren, die für Ihre Organisation in Azure Purview eindeutig sind.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 3/24/2021
-ms.openlocfilehash: fff9f128e6a533d8a8926093ca58a79ef2e974d3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 12af9165b8393291b67fd0cbe4cb2ced6ae77a17
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349320"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212124"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Benutzerdefinierte Klassifizierungen in Azure Purview
 
@@ -33,9 +33,9 @@ Sie haben auch die Möglichkeit, benutzerdefinierte Klassifizierungen zu erstell
 
 Führen Sie die folgenden Schritte aus, um eine benutzerdefinierten Klassifizierungsregel zu erstellen:
 
-1. Wählen Sie in Ihrem Katalog die Option **Verwaltungscenter** im linken Menü aus.
+1. Wählen Sie in Ihrem Katalog die Option **„Data Map“** aus dem linken Menü aus.
 
-2. Wählen Sie **Klassifizierungen** unter **Metadatenverwaltung** aus.
+2. Wählen Sie **Klassifizierungen** unter **Anmerkungsverwaltung**.
 
 3. Wählen Sie **+ Neu** aus.
 
@@ -85,19 +85,19 @@ So erstellen Sie eine benutzerdefinierte Klassifizierungsregel:
 
 1. Erstellen Sie eine benutzerdefinierte Klassifizierung, indem Sie die Anweisungen im vorherigen Abschnitt befolgen. Sie fügen diese benutzerdefinierte Klassifizierung in der Klassifizierungsregelkonfiguration hinzu, sodass das System die Klassifizierung anwendet, wenn es eine Entsprechung in der Spalte findet.
 
-2. Wählen Sie das **Verwaltungscenter**-Symbol aus.
+2. Wählen Sie das Symbol **„Data Map“** aus.
 
 3. Wählen Sie den Abschnitt **Klassifizierungsregeln** aus.
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/classificationrules.png" alt-text="Kachel mit Klassifizierungsregeln" border="true":::
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/classification-rules.png" alt-text="Kachel mit Klassifizierungsregeln" border="true":::
 
 4. Klicken Sie auf **Neu**.
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/newclassificationrule.png" alt-text="Neue Klassifizierungsregel hinzufügen" border="true":::
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/new-classification-rule.png" alt-text="Neue Klassifizierungsregel hinzufügen" border="true":::
 
 5. Das Dialogfeld **Neue Klassifizierungsregel** wird geöffnet. Füllen Sie die Felder aus, und entscheiden Sie, ob Sie eine Regel vom Typ **Regulärer Ausdruck** oder eine Regel vom Typ **Wörterbuch** erstellen möchten.
 
-   |Feld     |BESCHREIBUNG  |
+   |Feld     |Beschreibung  |
    |---------|---------|
    |Name   |    Erforderlich. Es sind maximal 100 Zeichen zulässig.    |
    |BESCHREIBUNG      |Optional. Es sind maximal 256 Zeichen zulässig.    |

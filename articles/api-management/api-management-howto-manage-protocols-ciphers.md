@@ -3,25 +3,28 @@ title: Verwalten von Protokollen und Verschlüsselungen in Azure API Management 
 description: Erfahren Sie, wie Sie Protokolle (TLS) und Verschlüsselungen (DES) in Azure API Management verwalten.
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/29/2019
-ms.author: apimpm
-ms.openlocfilehash: 043a3d0b63dfc74f587b58b3c2ac42f1a084cc4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/07/2021
+ms.author: danlep
+ms.openlocfilehash: 02442bf73d16486ce51b765e6922bbf434fb69f1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86250310"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609800"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Verwalten von Protokollen und Verschlüsselungen in Azure API Management
 
-Azure API Management unterstützt mehrere Versionen des TLS-Protokolls für die Client- und Back-End-Seite sowie die 3DES-Verschlüsselung.
+Azure API Management unterstützt mehrere Versionen des Transport Layer Security (TLS)-Protokolls für:
+* Clientseitig
+* Back-End-Seite
+* Die 3DES-Verschlüsselung
 
 Dieser Leitfaden zeigt Ihnen, wie Sie Protokoll- und Verschlüsselungskonfigurationen für eine Azure API Management-Instanz verwalten können.
 
@@ -29,18 +32,20 @@ Dieser Leitfaden zeigt Ihnen, wie Sie Protokoll- und Verschlüsselungskonfigurat
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Damit Sie den Schritten in diesem Artikel folgen können, benötigen Sie folgende Komponenten:
-
-* Eine API Management-Instanz
+* Eine API Management-Instanz. [Erstellen Sie eine, falls nicht schon geschehen](get-started-create-service-instance.md).
 
 ## <a name="how-to-manage-tls-protocols-and-3des-cipher"></a>Verwalten von TLS-Protokollen und 3DES-Verschlüsselungen
 
 1. Navigieren Sie im Azure-Portal zu Ihrer **API Management-Instanz**.
-2. Wählen Sie im Menü **Protokolleinstellungen** aus.  
-3. Aktivieren bzw. deaktivieren Sie die gewünschten Protokolle oder Verschlüsselungen.
-4. Klicken Sie auf **Speichern**. Die Änderungen werden innerhalb einer Stunde angewendet.  
+1. Scrollen Sie im Seitenmenü zum Abschnitt **Sicherheit.**
+1. Wählen Sie im Abschnitt „Sicherheit“ die Option **Protokolle + Verschlüsselungen** aus.  
+1. Aktivieren bzw. deaktivieren Sie die gewünschten Protokolle oder Verschlüsselungen.
+1. Klicken Sie auf **Speichern**. Die Änderungen werden innerhalb einer Stunde angewendet.  
+
+> [!NOTE]
+> Einige Protokolle oder Verschlüsselungssuiten (wie backend-seitiges TLS 1.2) können nicht über das Azure-Portal aktiviert oder deaktiviert werden. Stattdessen müssen Sie den REST-Aufruf anwenden. Verwenden Sie die `properties.customProperties`Struktur aus dem Artikel [API-Verwaltungsdienst REST-API erstellen/aktualisieren](/rest/api/apimanagement/2020-06-01-preview/api-management-service/create-or-update#request-body).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über [TLS (Transport Layer Security)](/dotnet/framework/network-programming/tls).
+* Erfahren Sie mehr über [TLS](/dotnet/framework/network-programming/tls).
 * Hier finden Sie weitere [Videos](https://azure.microsoft.com/documentation/videos/index/?services=api-management) zu API Management.

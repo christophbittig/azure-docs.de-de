@@ -2,18 +2,18 @@
 title: Exportieren von Daten aus Azure IoT Central | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie den neuen Datenexport verwenden, um Ihre IoT-Daten nach Azure und benutzerdefinierten Cloudzielen zu exportieren.
 services: iot-central
-author: viv-liu
-ms.author: viviali
+author: dominicbetts
+ms.author: dobett
 ms.date: 06/04/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 0435fece7394c0a1494e51581bce263cbf1e068a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4006a144dfba6a0332c69d160943294b3447ae7f
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461177"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153575"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports
 
@@ -140,14 +140,14 @@ Sie haben ein Ziel für den Export Ihrer Daten eingerichtet und richten jetzt de
     |--------------|------------------|
     |Telemetrie|<ul><li>Filtern nach Gerätename, Geräte-ID, Gerätevorlage und simulierten Geräten</li><li>Filtern des Datenstroms, sodass er nur Telemetriedaten enthält, die den Filterbedingungen entsprechen</li><li>Filtern des Datenstroms, sodass er nur Telemetriedaten von Geräten mit Eigenschaften enthält, die den Filterbedingungen entsprechen</li><li>Filtern des Datenstroms, sodass er nur Telemetriedaten mit *Nachrichteneigenschaften* enthält, die den Filterbedingungen entsprechen. *Nachrichteneigenschaften* (auch als *Anwendungseigenschaften* bezeichnet) werden in einer Sammlung von Schlüssel-Wert-Paaren für jede Telemetrienachricht gesendet, die optional von Geräten gesendet werden, die die Geräte-SDKs verwenden. Zum Erstellen eines Nachrichteneigenschaftenfilters geben Sie den gesuchten Nachrichteneigenschaftsschlüssel ein, und geben Sie eine Bedingung an. Nur Telemetrienachrichten mit Eigenschaften, die die angegebene Filterbedingung erfüllen, werden exportiert. Weitere Informationen zu Anwendungseigenschaften finden Sie in der [IoT Hub-Dokumentation](../../iot-hub/iot-hub-devguide-messages-construct.md). </li></ul>|
     |Eigenschaftsänderungen|<ul><li>Filtern nach Gerätename, Geräte-ID, Gerätevorlage und simulierten Geräten</li><li>Filtern des Datenstroms, sodass er nur Eigenschaftsänderungen enthält, die den Filterbedingungen entsprechen</li></ul>|
-    |Gerätekonnektivität|<ul><li>Filtern nach Gerätename, Geräte-ID, Gerätevorlage und simulierten Geräten</li><li>Filtern des Datenstroms, sodass er nur Änderungen von Geräten mit Eigenschaften enthält, die den Filterbedingungen entsprechen</li></ul>|
+    |Gerätekonnektivität|<ul><li>Filtern nach Gerätename, Geräte-ID, Gerätevorlage, Organisationen und ob das Gerät simuliert ist</li><li>Filtern des Datenstroms, sodass er nur Änderungen von Geräten mit Eigenschaften enthält, die den Filterbedingungen entsprechen</li></ul>|
     |Gerätelebenszyklus|<ul><li>Filtern nach Gerätename, Geräte-ID, Gerätevorlage und bereitgestellten, aktivierten oder simulierten Geräten</li><li>Filtern des Datenstroms, sodass er nur Änderungen von Geräten mit Eigenschaften enthält, die den Filterbedingungen entsprechen</li></ul>|
     |Gerätevorlagenlebenszyklus|<ul><li>Filtern nach Gerätevorlage</li></ul>|
     
 1. Reichern Sie optional exportierte Nachrichten mit zusätzlichen Metadaten für Schlüssel-Wert-Paare an. Die folgenden Anreicherungen stehen für die Datenexporttypen „Telemetrie“, „Eigenschaftsänderungen“, „Gerätekonnektivität“ und „Gerätelebenszyklus“ zur Verfügung: <a name="DataExportEnrichmnents"></a>
     - **Benutzerdefinierte Zeichenfolge:** Fügt jeder Nachricht eine benutzerdefinierte statische Zeichenfolge hinzu. Geben Sie einen beliebigen Schlüssel und einen beliebigen Zeichenfolgenwert ein.
     - **Eigenschaft**, die jeder Nachricht Folgendes hinzufügt:
-       - Gerätemetadaten wie „Gerätename“, „Gerätevorlagenname“, „aktiviert“, „bereitgestellt“ und „simuliert“
+       - Gerätemetadaten wie Gerätename, Gerätevorlagenname, aktiviert, Organisationen, bereitgestellt und simuliert.
        - Die aktuelle vom Gerät gemeldete Eigenschaft oder den Cloudeigenschaftswert Wenn die exportierte Nachricht aus einem Gerät stammt, das die angegebene Eigenschaft nicht hat, erhält die exportierte Nachricht die Anreicherung nicht.
 
 1. Fügen Sie ein neues Ziel oder ein Ziel hinzu, das Sie bereits erstellt haben. Wählen Sie den Link **Create a new one** (Neue erstellen) aus, und fügen Sie die folgenden Informationen hinzu:

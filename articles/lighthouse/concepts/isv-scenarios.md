@@ -1,18 +1,18 @@
 ---
 title: Azure Lighthouse in ISV-Szenarien
 description: Die Funktionen von Azure Lighthouse können von ISVs verwendet werden, um mit Angeboten flexibler auf Kundenwünsche zu reagieren.
-ms.date: 05/11/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9fc8c261f49e8a12189708ada1d0da31965e5159
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 9266b8d026446600cf25d2f141785c3a461ad0e8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788677"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768684"
 ---
 # <a name="azure-lighthouse-in-isv-scenarios"></a>Azure Lighthouse in ISV-Szenarien
 
-Ein häufiges Szenario für [Azure Lighthouse](../overview.md) ist ein Dienstanbieter, der Ressourcen in den Azure AD-Mandanten (Azure Active Directory) seiner Kunden verwaltet. Die Funktionen von Azure Lighthouse können auch von unabhängigen Software Anbietern (ISVs) verwendet werden, die Ihren Kunden SaaS-basierte Angebote machen. Azure Lighthouse ist besonders nützlich für ISVs, die verwaltete Dienste oder Support anbieten, für die Zugriff auf den Abonnementbereich erforderlich ist.
+Ein häufiges Szenario für [Azure Lighthouse](../overview.md) ist, wenn ein Service Provider Ressourcen in den Azure Active Directory (Azure AD) Tenants seiner Kunden verwaltet. Die Funktionen von Azure Lighthouse können auch von unabhängigen Software Anbietern (ISVs) verwendet werden, die Ihren Kunden SaaS-basierte Angebote machen. Azure Lighthouse ist besonders nützlich für ISVs, die verwaltete Dienste oder Support anbieten, für die Zugriff auf den Abonnementbereich erforderlich ist.
 
 ## <a name="managed-service-offers-in-azure-marketplace"></a>Angebote für verwaltete Dienste im Azure Marketplace
 
@@ -28,7 +28,7 @@ Weitere Informationen finden Sie unter [Gemeinsame Verwendung von Azure Lighthou
 
 ## <a name="saas-based-multi-tenant-offerings"></a>SaaS-basierte Angebote mit mehreren Mandanten
 
-In einem weiteren Szenario hostet ein ISV die Ressourcen in einem Abonnement in seinem eigenen Mandanten und verwendet Azure Lighthouse, um seinen Kunden Zugriff auf diese Ressourcen zu geben. Der Kunde kann sich dann bei seinem eigenen Mandanten anmelden und bei Bedarf auf diese Ressourcen zugreifen. ISVs behalten ihre IP-Adresse in ihrem eigenen Mandanten und können ihre eigenen Supportpläne verwenden, um Tickets für die in ihrem Mandanten gehostete Lösung zu nutzen, anstatt den Plan des Kunden zu verwenden. Da sich die Ressourcen im Mandanten des ISV befinden, können alle Aktionen direkt vom ISV ausgeführt werden, wie z. B. das Anmelden bei VMs, das Installieren von Apps und das Ausführen von Wartungsaufgaben.
+Ein weiteres Szenario ist, dass der ISV die Ressourcen in einem Abonnement in seinem eigenen Tenant hostet und dann Azure Lighthouse verwendet, um Kunden den Zugriff auf diese Ressourcen zu ermöglichen. Der Kunde kann sich dann bei seinem eigenen Mandanten anmelden und bei Bedarf auf diese Ressourcen zugreifen. Der ISV verwaltet seine IP in seinem eigenen Tenant und kann seinen eigenen Supportplan verwenden, um Tickets für die in seinem Tenant gehostete Lösung zu erstellen, und nicht den Plan des Kunden. Da sich die Ressourcen im Mandanten des ISV befinden, können alle Aktionen direkt vom ISV ausgeführt werden, wie z. B. das Anmelden bei VMs, das Installieren von Apps und das Ausführen von Wartungsaufgaben.
 
 In diesem Szenario wird im Grunde den Benutzern im Mandanten des Kunden der Zugriff als „verwaltender Mandant“ gewährt, auch wenn der Kunde die Ressourcen des ISV nicht verwaltet. Da sie direkt auf den Mandanten des ISV zugreifen, ist es wichtig, nur die erforderlichen Mindestberechtigungen zu erteilen, damit Kunden nicht versehentlich Änderungen an der Lösung oder an anderen ISV-Ressourcen vornehmen können.
 

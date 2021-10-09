@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: 835be5b867826d75732c9482743ad6a4ca2900e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2086351f1e66cbd2ef41ac98b2ab86fe7275823b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98231841"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621355"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Remotearbeit mit Azure-Netzwerkdiensten
 
@@ -52,7 +52,7 @@ Für den Zugriff auf Ihre in Azure bereitgestellten Ressourcen können Remoteent
 
 Zum Aggregieren umfangreicher VPN-Verbindungen, zur Unterstützung von Any-to-Any-Verbindungen zwischen Ressourcen an unterschiedlichen lokalen Standorten weltweit (in unterschiedlichen regionalen virtuellen Hub-and-Spoke-Netzwerken) und zum Optimieren der Nutzung mehrerer Breitbandnetzwerke im Heimbereich kann Azure Virtual WAN verwendet werden. Weitere Informationen finden Sie unter [Azure Virtual WAN und Remotearbeit](../virtual-wan/work-remotely-support.md).
 
-Eine weitere Möglichkeit, um Remotemitarbeiter zu unterstützen, ist die Bereitstellung einer Virtual Desktop Infrastructure (VDI), die in Ihrem virtuellen Azure-Netzwerk gehostet und mit Azure Firewall geschützt wird. Bei Windows Virtual Desktop (WVD) handelt es sich z. B. um einen in Azure ausgeführten Dienst für die Desktop- und App-Virtualisierung. Mit Windows Virtual Desktop können Sie eine skalierbare, flexible Umgebung in Ihrem Azure-Abonnement einrichten, ohne zusätzliche Gatewayserver ausführen zu müssen. Sie sind lediglich für die WVD-VMs in Ihrem virtuellen Netzwerk verantwortlich. Weitere Informationen finden Sie unter [Unterstützung von Remotearbeit in Azure Firewall](../firewall/remote-work-support.md). 
+Eine weitere Möglichkeit, um Remotemitarbeiter zu unterstützen, ist die Bereitstellung einer Virtual Desktop Infrastructure (VDI), die in Ihrem virtuellen Azure-Netzwerk gehostet und mit Azure Firewall geschützt wird. Azure Virtual Desktop (AVD) zum Beispiel ist ein Desktop- und Appvirtualisierungsdienst, der in Azure ausgeführt wird. Mit Azure Virtual Desktop können Sie eine skalierbare und flexible Umgebung in Ihrem Azure-Abonnement einrichten, ohne dass Sie zusätzliche Gateway-Server betreiben müssen. Sie sind lediglich für die virtuellen AVD-Maschinen in Ihrem virtuellen Netzwerk verantwortlich. Weitere Informationen finden Sie unter [Unterstützung von Remotearbeit in Azure Firewall](../firewall/remote-work-support.md). 
 
 Azure verfügt zudem über eine Vielzahl von Ökosystempartnern. Auch mit den virtuellen Netzwerkgeräten unserer Partner in Azure lässt sich die VPN-Konnektivität skalieren. Weitere Informationen finden Sie unter [Remotearbeit: Aspekte in Bezug auf virtuelle Netzwerkgeräte für die Remotearbeit](../vpn-gateway/nva-work-remotely-support.md).
 

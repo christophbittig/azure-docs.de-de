@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: 47e9e221bd57453a0c799318f939de59b84feb86
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c7cf2aaeaaf9907ff87ab4805aebe04c3098b8f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356066"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657137"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurieren einer Java-App für Azure App Service
 
@@ -66,7 +66,7 @@ az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
 Mit dem[Maven Plugin für Azure Web Apps](https://github.com/microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)können Sie Ihr Maven-Java-Projekt auf einfache Weise für Azure-Web-Apps mit einem Befehl im Projektstamm vorbereiten:
 
 ```shell
-mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
 ```
 
 Dieser Befehl fügt ein `azure-webapp-maven-plugin`-Plug-In und eine zugehörige Konfiguration hinzu, indem Sie aufgefordert werden, eine vorhandene Azure-Web-App auszuwählen oder eine neue zu erstellen. Dann können Sie Ihre Java-App mit dem folgenden Befehl in Azure bereitstellen:
@@ -74,12 +74,12 @@ Dieser Befehl fügt ein `azure-webapp-maven-plugin`-Plug-In und eine zugehörige
 mvn package azure-webapp:deploy
 ```
 
-Nachfolgend eine Beispielkonfiguration in`pom.xml`:
+Nachfolgend eine Beispielkonfiguration in`pom/xml`:
 ```xml
 <plugin> 
   <groupId>com.microsoft.azure</groupId>  
   <artifactId>azure-webapp-maven-plugin</artifactId>  
-  <version>2.2.0</version>  
+  <version>2.1.0</version>  
   <configuration>
     <subscriptionId>111111-11111-11111-1111111</subscriptionId>
     <resourceGroup>spring-boot-xxxxxxxxxx-rg</resourceGroup>
@@ -110,7 +110,7 @@ Nachfolgend eine Beispielkonfiguration in`pom.xml`:
 1. Richten Sie das [Gradle-Plug-In für Azure-Web-Apps](https://github.com/microsoft/azure-gradle-plugins/tree/master/azure-webapp-gradle-plugin)ein, indem Sie das Plug-In ihrem `build.gradle` hinzufügen:
     ```groovy
     plugins {
-      id "com.microsoft.azure.azurewebapp" version "1.2.0"
+      id "com.microsoft.azure.azurewebapp" version "1.1.0"
     }
     ```
 

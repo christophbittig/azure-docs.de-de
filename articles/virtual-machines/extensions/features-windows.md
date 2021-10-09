@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c11604ae3fe486be6d471b0218b44eeab26da5c6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8ab6b3d00f748fb5b3935988522191c749fa4fd9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588540"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275276"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -73,8 +73,8 @@ Der Windows-Gast-Agent unterstützt nicht das Umleiten von Datenverkehrsanforder
 Für die Verwendung mit virtuellen Azure-Computern stehen viele verschiedene VM-Erweiterungen zur Verfügung. Eine vollständige Liste finden Sie unter [Get-AzVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage). Im folgenden Beispiel werden alle verfügbaren Erweiterungen am Standort *WestUS* aufgelistet:
 
 ```powershell
-Get-AzVmImagePublisher -Location "WestUS" | `
-Get-AzVMExtensionImageType | `
+Get-AzVmImagePublisher -Location "WestUS" |
+Get-AzVMExtensionImageType |
 Get-AzVMExtensionImage | Select Type, Version
 ```
 

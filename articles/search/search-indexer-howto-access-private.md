@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/13/2021
-ms.openlocfilehash: 519181594bd98068cd66413a114a61d794b4d411
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 79bb517faffdda7e9d7ddef45e7b52f5e81dc201
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122350812"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589680"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>Erstellen von Indexerverbindungen über einen privaten Endpunkt
 
@@ -43,6 +43,7 @@ In der folgenden Tabelle sind die Azure-Ressourcen aufgeführt, für die Sie aus
 | Azure-Ressource | Gruppen-ID |
 | --- | --- |
 | Azure Storage: Blob | `blob`|
+| Azure Storage - Data Lake Storage Gen2 | `dfs` und `blob` |
 | Azure Storage: Tabellen | `table`|
 | Azure Cosmos DB: SQL-API | `Sql`|
 | Azure SQL-Datenbank | `sqlServer`|
@@ -53,6 +54,9 @@ In der folgenden Tabelle sind die Azure-Ressourcen aufgeführt, für die Sie aus
 Sie können die Azure-Ressourcen, bei denen ausgehende private Endpunktverbindungen unterstützt werden, auch anhand der [Liste unterstützter APIs](/rest/api/searchmanagement/2021-04-01-preview/private-link-resources/list-supported) abfragen.
 
 Im weiteren Verlauf dieses Artikels wird eine Mischung aus dem Azure-Portal (oder der [Azure CLI](/cli/azure/), wenn Sie diese bevorzugen) und [Postman](https://www.postman.com/) (oder einem anderen HTTP-Client wie [curl](https://curl.se/), wenn Sie diesen bevorzugen) verwendet, um die Aufrufe der REST-API zu demonstrieren.
+
+> [!NOTE]
+> Um eine private Endpunktverbindung zu Azure Data Lake Storage Gen2 zu erstellen, müssen Sie zwei private Endpunkte erstellen. Ein privater Endpunkt mit der groupID „dfs" und ein weiterer privater Endpunkt mit der groupID „blob".
 
 ## <a name="set-up-indexer-connection-through-private-endpoint"></a>Einrichten einer Indexerverbindung über einen privaten Endpunkt
 

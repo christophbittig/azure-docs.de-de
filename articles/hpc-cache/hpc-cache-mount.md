@@ -4,14 +4,14 @@ description: Herstellen einer Verbindung von Clients mit einem Azure HPC Cache-D
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 09/20/2021
 ms.author: v-erkel
-ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e3c2a336d58e90bc446c77b164148359f9588fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91651427"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675901"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Einbinden einer Azure HPC Cache-Instanz
 
@@ -91,6 +91,8 @@ Erstellen Sie anhand dieser Vorgehensweise den Einbindungsbefehl.
 
    ![Der Screenshot zum Prototyp des Felds „Einbindungsbefehl“ zeigt einen daraufhin eingeblendeten Text für die Schaltfläche „In die Zwischenablage kopieren“ an.](media/mount-command-copy.png)
 
+   Darunter werden alternative Mount-Befehle angezeigt, die den gleichen Client-Pfad und Namespace-Pfad haben, aber unterschiedliche Cache-Mount-Adressen verwenden. Um eine optimale Leistung zu erzielen, müssen Sie die Clients gleichmäßig auf alle verfügbaren Adressen des HPC-Cache verteilen.
+
 1. Verwenden Sie den kopierten mount-Befehl auf dem Clientcomputer, um eine Verbindung zwischen dem Clientcomputer und dem Azure HPC Cache herzustellen. Sie können den mount-Befehl direkt über die Befehlszeile auf dem Client ausgeben oder ihn in ein Setupskript oder eine -vorlage auf dem Client einfügen.
 
 ## <a name="understand-mount-command-syntax"></a>Grundlegendes zur Syntax des mount-Befehls
@@ -135,6 +137,13 @@ Die Pfade des virtuellen Namespace werden auf der Einstellungsseite **Namespace*
 
 ![Der Screenshot der Portalseite „Einstellungen > Namespace“ mit einem Hervorhebungsrahmen, der die erste Spalte der Tabelle umgibt: „Namespacepfad“](media/view-namespace-paths.png)
 
+## <a name="use-all-available-mount-addresses"></a>Alle verfügbaren Mount-Adressen verwenden
+
+Sie müssen den Client-Datenverkehr auf alle für den Cache aufgeführten IP-Adressen verteilen. Wenn Sie alle Ihre Clients an nur eine Adresse mounten, wird die Leistung des Cache beeinträchtigt.
+
+Sie können verschiedene Mount-Adressen für verschiedene Clients manuell oder durch Erstellung eines Skripts auswählen. Sie können auch einen DNS-Server verwenden, der für Round-Robin-DNS (RRDNS) konfiguriert ist, um Client-Mounts automatisch auf alle verfügbaren Adressen zu verteilen. Lesen Sie [Lastenausgleich für HPC Cache-Datenverkehr](client-load-balancing.md), um mehr zu erfahren.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Erfahren Sie mehr darüber, wie Sie den gesamten Durchsatz Ihres Caches nutzen können, indem Sie die [Client-Last ausgleichen](client-load-balancing.md).
 * Informationen zum Verschieben von Daten in die Speicherziele des Caches finden Sie unter [Auffüllen des neuen Azure-Blobspeichers](hpc-cache-ingest.md).

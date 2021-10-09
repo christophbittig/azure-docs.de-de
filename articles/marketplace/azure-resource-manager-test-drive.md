@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: trkeya
 author: trkeya
 ms.date: 09/09/2021
-ms.openlocfilehash: 7825dff873afaf223cab7b86c73083027caccc72
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 6c563b7661b62c81b6094f1a662faa1cdc28c57a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129363628"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632004"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
@@ -307,7 +307,7 @@ Im letzten Abschnitt werden die Eingaben vorgenommen, um die Testversionen durch
    Wenn Sie über keine Mandanten-ID verfügen, erstellen Sie eine neue in Azure Active Directory. Wenn Sie Hilfe bei der Einrichtung benötigen, finden Sie weitere Informationen unter [Schnellstart: Einrichten eines Mandanten](../active-directory/develop/quickstart-create-new-tenant.md).
 
 3. Stellen Sie die Microsoft Test-Drive-Anwendung Ihrem Mandanten zur Verfügung. Wir nutzen diese Anwendung, um Vorgänge in den Ressourcen Ihrer Testversion durchzuführen.
-    1. Installieren Sie das [Azure Az PowerShell-Modul](/powershell/azure/install-az-ps), wenn Sie es noch nicht haben.
+    1. Installieren Sie das [Azure Az PowerShell-Modul](/powershell/azure/install-az-ps?view=azps-6.3.0), wenn Sie es noch nicht haben.
     1. Fügen Sie den Dienstprinzipal für die Microsoft Test-Drive-Anwendung hinzu.
         1. Führen Sie `Connect-AzAccount` aus und geben Sie Anmeldeinformationen zur Anmeldung bei Ihrem Azure-Konto an. Dazu ist die [eingebaute Rolle](/azure/active-directory/roles/permissions-reference#global-administrator) **Global Administrator** in Azure Active Directory erforderlich. 
         1. Einen neuen Dienstprinzipal erstellen: `New-AzADServicePrincipal -ApplicationId d7e39695-0b24-441c-a140-047800a05ede -DisplayName 'Microsoft TestDrive' -SkipAssignment`.

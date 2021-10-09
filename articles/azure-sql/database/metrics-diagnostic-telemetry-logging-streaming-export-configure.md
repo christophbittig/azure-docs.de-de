@@ -9,13 +9,13 @@ ms.topic: how-to
 author: AlainDormehlMSFT
 ms.author: aldorme
 ms.reviewer: mathoma, wiassaf
-ms.date: 04/06/2020
-ms.openlocfilehash: 058e602568083471cc5e0053dea0ed77b0b9474f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/21/2021
+ms.openlocfilehash: 9452b12a8ad26ec2da5c488dc83f624863a4c647
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339749"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582561"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Konfigurieren des Streamingexports von Diagnosetelemetrie aus Azure SQL Database und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -462,7 +462,10 @@ In der folgenden Tabelle finden Sie Details zu den erweiterten Metriken.
 
 <sup>1</sup> Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens 2 virtuellen Kernen verwenden, oder für Datenbanken mit mindestens 200 DTUs (bei DTU-basierten Kaufmodellen).
 
-<sup>2</sup> Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens 2 virtuellen Kernen verwenden, oder für Datenbanken mit mindestens 200 DTUs (bei DTU-basierten Kaufmodellen). Diese Metrik ist derzeit nicht für Hyperscale-Datenbanken oder Data Warehouses verfügbar.
+<sup>2</sup> Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell mit mindestens 2 virtuellen Kernen verwenden, oder für Datenbanken mit mindestens 200 DTUs (bei DTU-basierten Kaufmodellen). Diese Metrik ist derzeit für Synapse Analytics SQL-Pools nicht verfügbar.
+
+> [!NOTE]
+> Sowohl die Basis- als auch die erweiterten Metriken sind für Datenbanken, die seit 7 Tagen oder länger inaktiv sind, möglicherweise nicht verfügbar.
 
 ### <a name="basic-logs"></a>Grundlegende-Protokolle
 

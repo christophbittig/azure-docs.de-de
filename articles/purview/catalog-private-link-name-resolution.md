@@ -7,17 +7,17 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 72d24309fdf122ea6aba8c74e11f511870290070
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 26667d513e0bd2bf849361f6c7e5cbce2ca5d245
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208999"
+ms.locfileid: "129277725"
 ---
 # <a name="configure-and-verify-dns-name-resolution-for-azure-purview-private-endpoints"></a>Konfigurieren und Überprüfen der DNS-Namensauflösung für private Azure Purview-Endpunkte
 
 > [!IMPORTANT]
-> Wenn Sie einen privaten _Portal_-Endpunkt für Ihr Purview-Konto **vor dem 27. September 2021 um 15:30 UTC** erstellt haben, müssen Sie die erforderlichen Maßnahmen ergreifen, wie unter [DNS für private Portal-Endpunkte neu konfigurieren](/catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints) beschrieben. **Diese Maßnahmen müssen vor dem 11. Oktober 2021 abgeschlossen sein. Andernfalls werden die vorhandenen privaten Portalendpunkte nicht mehr funktionieren**.
+> Wenn Sie einen privaten _Portal_-Endpunkt für Ihr Purview-Konto **vor dem 27. September 2021 um 15:30 UTC** erstellt haben, müssen Sie die erforderlichen Maßnahmen ergreifen, wie unter [DNS für private Portal-Endpunkte neu konfigurieren](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints) beschrieben. **Diese Maßnahmen müssen vor dem 11. Oktober 2021 abgeschlossen sein. Andernfalls werden die vorhandenen privaten Portalendpunkte nicht mehr funktionieren**.
 
 ## <a name="conceptual-overview"></a>Konzeptionelle Übersicht
 Eine genaue Namensauflösung ist eine wichtige Voraussetzung für die Einrichtung von privaten Endpunkten für Ihre Azure Purview-Konten. 

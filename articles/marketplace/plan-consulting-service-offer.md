@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 10c06f5b36de880302f17dc17c1d47d5209dd902
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ffca17efa59a0544e06bb3bd4fbae1d812f2823
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97588470"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819209"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Planen eines Angebots für einen Beratungsdienst im kommerziellen Marketplace
 
@@ -90,7 +90,7 @@ Der kommerzielle Marketplace unterstützt fünf Arten von Beratungsdiensten:
 * **Proof of Concept:** Dies bezieht sich auf eine Implementierung in einem begrenzten Umfang, um zu ermitteln, ob eine Lösung die Anforderungen des Kunden erfüllt.
 * **Workshop:** Dieses interaktive Angebot wird beim Kunden vor Ort durchgeführt. Dabei kann es sich um Schulungen, Einweisungen, Bewertungen oder Demos handeln, die auf den Daten oder der Umgebung des Kunden aufbauen.
 
-Ihr Beratungsdienst sollte eine feste und vorab festgelegte Dauer von bis zu 10 Wochen haben. Die Dauer des Diensts muss im Angebot explizit aufgeführt werden.
+Ihr Dienst sollte eine festgelegte Laufzeit von bis zu 12 Monaten haben. Die Dauer des Dienstes muss in der Angebotsliste ausdrücklich angegeben werden.
 
 ## <a name="customer-leads"></a>Kundenleads
 
@@ -160,7 +160,7 @@ Die Beschreibung kann mithilfe von HTML-Tags formatiert werden. Sie können bis 
 
 **Suchbegriffe** (optional): Geben Sie bis zu drei Suchbegriffe ein, mit denen Kunden in den Onlineshops nach Ihrem Angebot suchen können. Der **Name** und die **Beschreibung** des Angebots müssen nicht aufgenommen werden.
 
-**Dauer:** Ihr Angebot für einen Beratungsdienst muss eine vorab festgelegte Dauer von bis zu 10 Wochen aufweisen.
+**Dauer:** Ihr Beratungsangebot muss eine festgelegte Dauer von bis zu 12 Monaten haben.
 
 **Kontaktinformationen:** Sie werden in Partner Center aufgefordert, den Namen, die E-Mail-Adresse und die Telefonnummer von zwei Personen in Ihrem Unternehmen anzugeben (Sie können für einen der beiden Kontakte Ihre eigenen Kontaktinformationen verwenden.) Wir werden über diese Informationen bezüglich Ihres Angebots mit Ihnen kommunizieren. Diese Informationen werden Kunden nicht angezeigt, werden aber unter Umständen an Cloudlösungsanbieter weitergegeben.
 

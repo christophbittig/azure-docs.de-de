@@ -3,12 +3,12 @@ title: Dateibasierte Konfiguration von AuthN/AuthZ
 description: Konfigurieren der Authentifizierung und Autorisierung in App Service mithilfe einer Konfigurationsdatei, um bestimmte Vorschaufunktionen zu aktivieren.
 ms.topic: article
 ms.date: 07/15/2021
-ms.openlocfilehash: 54fa47055a1f0bba3075d6e77c4fa27d63caf2b6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2875c529e644b46d08251ae57ee9f424492a2433
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339262"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657213"
 ---
 # <a name="file-based-configuration-in-azure-app-service-authentication"></a>Dateibasierte Konfiguration in Azure App Service-Authentifizierung
 
@@ -21,7 +21,7 @@ Mit der [App Service-Authentifizierung](overview-authentication-authorization.md
 
 1. Erstellen Sie im Stammverzeichnis Ihres Projekts (bereitgestellt in D:\home\site\wwwroot in Ihrer Web-App bzw. Funktions-App) eine neue JSON-Datei für Ihre Konfiguration. Geben Sie die gewünschten Konfigurationsdetails entsprechend der [Referenz zur dateibasierten Konfiguration](#configuration-file-reference) an. Wenn Sie eine vorhandene Azure Resource Manager-Konfiguration ändern, stellen Sie sicher, dass Sie die in der `authsettings`-Sammlung aufgezeichneten Eigenschaften in die Konfigurationsdatei übersetzen.
 
-2. Ändern Sie die vorhandene Konfiguration, die in den [Azure Resource Manager](../azure-resource-manager/management/overview.md)-APIs unter `Microsoft.Web/sites/<siteName>/config/authsettingsV2` aufgezeichnet ist. Hierfür können Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) oder ein Tool wie den [Azure-Ressourcen-Explorer](https://resources.azure.com/) verwenden. In der „authsettings V2“-Sammlung müssen Sie drei Eigenschaften festlegen (und möglicherweise andere Eigenschaften entfernen):
+2. Ändern Sie die vorhandene Konfiguration, die in den [Azure Resource Manager](../azure-resource-manager/management/overview.md)-APIs unter `Microsoft.Web/sites/<siteName>/config/authsettingsV2` aufgezeichnet ist. Hierfür können Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) oder ein Tool wie den [Azure-Ressourcen-Explorer](https://resources.azure.com/) verwenden. In der Sammlung authsettingsV2 müssen Sie zwei Eigenschaften festlegen (und können andere entfernen):
 
     1. Legen Sie `platform.enabled` auf TRUE fest.
     2. Legen Sie `platform.configFilePath` auf den Namen der Zertifikatdatei fest (z. B. „auth.json“).

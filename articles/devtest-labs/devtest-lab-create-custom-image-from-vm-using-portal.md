@@ -1,14 +1,14 @@
 ---
-title: Erstellen eines benutzerdefinierten Azure DevTest Labs-Images aus einem virtuellen Computer | Microsoft Docs
+title: Erstellen eines benutzerdefinierten Azure DevTest Labs-Abbildes aus einer VM
 description: Erfahren Sie, wie Sie mit dem Azure-Portal aus einem bereitgestellten virtuellen Computer ein benutzerdefiniertes Image in Azure DevTest Labs erstellen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 8bc41f267709950a4ec6766b439ec1e6493b25ea
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 61d57b458151d2832b32917d39e7ab07953451c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355560"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673880"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Erstellen eines benutzerdefinierten Images von einem virtuellen Computer
 

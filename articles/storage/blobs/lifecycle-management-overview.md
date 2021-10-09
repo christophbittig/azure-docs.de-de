@@ -10,12 +10,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 1f7b4152bee090e39c598b559ffa9d2e8aea8e88
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 99fe642b2b18beef27238c7092c8fcbfab4164a2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123477742"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570871"
 ---
 # <a name="optimize-costs-by-automatically-managing-the-data-lifecycle"></a>Optimieren von Kosten durch automatisches Verwalten des Datenlebenszyklus
 
@@ -153,8 +153,8 @@ Die Lebenszyklusverwaltung unterstützt Ebenenverschiebung und Löschen von Blob
 | tierToArchive               | Unterstützt für `blockBlob`                  | Unterstützt     | Unterstützt     |
 | delete                      | Für `blockBlob` und `appendBlob` unterstützt | Unterstützt     | Unterstützt     |
 
->[!NOTE]
->Wenn für das gleiche Blob mehrere Aktionen definiert sind, wendet die Lebenszyklusverwaltung die am wenigsten teure Aktion auf das Blob an. Beispielsweise ist die Aktion `delete` kostengünstiger als die Aktion `tierToArchive`. Die Aktion `tierToArchive` ist kostengünstiger als die Option `tierToCool`.
+> [!NOTE]
+> Wenn für das gleiche Blob mehrere Aktionen definiert sind, wendet die Lebenszyklusverwaltung die am wenigsten teure Aktion auf das Blob an. Beispielsweise ist die Aktion `delete` kostengünstiger als die Aktion `tierToArchive`. Die Aktion `tierToArchive` ist kostengünstiger als die Option `tierToCool`.
 
 Die Ausführungsbedingungen basieren auf dem Alter. Basisblobs verwenden den Zeitpunkt der letzten Änderung, Blobversionen den Erstellungszeitpunkt und Blobmomentaufnahmen den Erstellungszeitpunkt der Momentaufnahme, um das Alter nachzuverfolgen.
 
@@ -162,7 +162,7 @@ Die Ausführungsbedingungen basieren auf dem Alter. Basisblobs verwenden den Zei
 |--|--|--|
 | daysAfterModificationGreaterThan | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Basisblobaktionen |
 | daysAfterCreationGreaterThan | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Aktionen für Blobversionen und Blobmomentaufnahmen |
-| daysAfterLastAccessTimeGreaterThan | Ganzzahliger Wert, der das Alter in Tagen angibt | Die Bedingung für Basisblobaktionen, wenn die Zugriffsüberwachung aktiviert ist |
+| daysAfterLastAccessTimeGreaterThan | Ganzzahliger Wert, der das Alter in Tagen angibt | Die Bedingung für Basis-Blob-Aktionen, wenn die Zugriffsverfolgung aktiviert ist. |
 
 ## <a name="examples-of-lifecycle-policies"></a>Beispiele für Richtlinien für den Lebenszyklus
 
@@ -364,14 +364,14 @@ Für Daten, die während ihrer gesamten Lebensdauer regelmäßig geändert werde
 
 ## <a name="feature-support"></a>Featureunterstützung
 
-Diese Tabelle zeigt, wie diese Funktion in Ihrem Konto unterstützt wird und welche Auswirkungen es auf den Support hat, wenn Sie bestimmte Funktionen aktivieren. 
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
 
-| Speicherkontotyp                | Blob-Speicher (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3,0 <sup>1</sup>    
+| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) | 
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) |
 | Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png)|![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 
-<sup>1</sup>    Data Lake Storage Gen2 und das Network File System (NFS) 3.0-Protokoll erfordern beide ein Speicherkonto mit einem aktivierten hierarchischen Namespace.
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
 
 ## <a name="regional-availability-and-pricing"></a>Regionale Verfügbarkeit und Preise
 
@@ -391,7 +391,7 @@ Die Plattform führt die Lebenszyklusrichtlinie ein Mal täglich aus. Nachdem Si
 
 **Wie lange dauert es nach dem Aktualisieren einer vorhandenen Richtlinie, bis die Aktionen ausgeführt werden?**
 
-Es dauert bis zu 24 Stunden, bis die aktualisierte Richtlinie in Kraft tritt. Sobald die Richtlinie gültig ist, kann es bis zu 24 Stunden dauern, bis die Aktionen ausgeführt werden. Daher kann der Abschluss von Richtlinieaktionen bis zu 48 Stunden dauern. Wenn das Update eine Regel deaktivieren oder löschen soll und „enableAutoTierToHotFromCool“ verwendet wurde, wird dennoch das automatische Tiering auf die heiße Speicherebene durchgeführt. Legen Sie beispielsweise basierend auf dem letzten Zugriff eine Regel einschließlich „enableAutoTierToHotFromCool“ fest. Wenn die Regel deaktiviert oder gelöscht wird, sich ein Blob derzeit auf der kalten Speicherebene befindet und dann darauf zugegriffen wird, wird er wieder auf die heiße Speicherebene zurückgesetzt, da diese für den Zugriff außerhalb der Lebenszyklusverwaltung verwendet wird. Das Blob wird dann nicht von der heißen auf die kalte Speicherebene verschoben, da die Regel für die Lebenszyklusverwaltung deaktiviert bzw. gelöscht wurde.  Die einzige Möglichkeit, „autoTierToHotFromCool“ zu verhindern, besteht darin, die Nachverfolgung des letzten Zugriffszeitpunkts zu deaktivieren.
+Es dauert bis zu 24 Stunden, bis die aktualisierte Richtlinie in Kraft tritt. Sobald die Richtlinie gültig ist, kann es bis zu 24 Stunden dauern, bis die Aktionen ausgeführt werden. Daher kann der Abschluss von Richtlinieaktionen bis zu 48 Stunden dauern. Wenn das Update eine Regel deaktivieren oder löschen soll und „enableAutoTierToHotFromCool“ verwendet wurde, wird dennoch das automatische Tiering auf die heiße Speicherebene durchgeführt. Legen Sie beispielsweise basierend auf dem letzten Zugriff eine Regel einschließlich „enableAutoTierToHotFromCool“ fest. Wenn die Regel deaktiviert oder gelöscht wird, sich ein Blob derzeit auf der kalten Speicherebene befindet und dann darauf zugegriffen wird, wird er wieder auf die heiße Speicherebene zurückgesetzt, da diese für den Zugriff außerhalb der Lebenszyklusverwaltung verwendet wird. Das Blob wird dann nicht von der heißen auf die kalte Speicherebene verschoben, da die Lebenszyklusverwaltungsregel deaktiviert bzw. gelöscht wurde. Die einzige Möglichkeit, „autoTierToHotFromCool“ zu verhindern, besteht darin, die Nachverfolgung des letzten Zugriffszeitpunkts zu deaktivieren.
 
 **Ich habe ein archiviertes Blob manuell wieder aktiviert. Wie kann ich vorübergehend verhindern, dass es zurück auf die Archivspeicherebene verschoben wird?**
 

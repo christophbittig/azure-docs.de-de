@@ -6,13 +6,13 @@ ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 04/02/2021
-ms.openlocfilehash: 6796a53ac05e8db606b29447a8792fa509c03d7e
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 09/27/2021
+ms.openlocfilehash: dfb522e5231072e427c14dfe1c8c16889dd3ff9e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284084"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214187"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Erstellen, Importieren und Exportieren von Glossarbegriffen
 
@@ -22,7 +22,9 @@ In diesem Artikel ist beschrieben, wie Sie einen Unternehmensglossarbegriff im A
 
 Führen Sie die folgenden Schritte aus, um einen neuen Glossarbegriff zu erstellen:
 
-1. Wählen Sie das Glossarsymbol im linken Navigationsbereich auf der Startseite aus, um zur Seite mit der Begriffsliste zu gelangen.
+1. Wählen Sie auf der Startseite in der linken Navigation die Option **„Datenkatalog“** und dann in der Mitte der Seite die Schaltfläche **„Glossar verwalten“** .
+
+    :::image type="content" source="media/how-to-create-import-export-glossary/find-glossary.png" alt-text="Screenshot des Datenkatalogs mit hervorgehobenem Glossar." border="true":::
 
 2. Wählen Sie auf der Seite **Glossarbegriffe** die Option **+ Neuer Begriff** aus. Es wird eine Seite geöffnet, auf der die Vorlage **Systemstandard** ausgewählt ist. Wählen Sie die Vorlage aus, mit der Sie den Glossarbegriff erstellen möchten, und wählen Sie **Weiter** aus.
 

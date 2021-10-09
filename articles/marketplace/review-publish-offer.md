@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/05/2021
-ms.openlocfilehash: a7dfe0b24143b9a92c10d1b1c876eabb200f2270
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.date: 09/27/2021
+ms.openlocfilehash: 0f0f5782f387b40a0ca4ee4ab17002b06698fffd
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113598250"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083503"
 ---
 # <a name="review-and-publish-an-offer-to-the-commercial-marketplace"></a>Überprüfen und Veröffentlichen eines Angebots im kommerziellen Marketplace
 
@@ -156,7 +156,7 @@ Wenn das Angebot für Ihre Prüfung und Genehmigung bereit ist, senden wir Ihnen
 
 Der folgende Screenshot zeigt die Seite **Angebotsübersicht** im Programm „Kommerzieller Marketplace“ in Partner Center. Die auf dieser Seite angezeigten Validierungsschritte variieren je nach Angebotstyp und der Auswahl, die Sie beim Erstellen des Angebots getroffen haben. Die Zertifizierungsphase kann je nach Angebotstyp während der Übermittlung zur Vorschau oder zur Liveschaltung erfolgen.
 
-![Veranschaulicht die Seite „Angebotsübersicht“ für ein Angebot im Partner Center. Die Schaltfläche „Live schalten“ und Vorschaulinks sind dargestellt.](./media/publish-status-publisher-signoff.png)
+[ ![Illustriert die Angebotsübersichtsseite für ein Angebot im Partner Center. Die Schaltfläche Live gehen und die Vorschaulinks werden angezeigt.](./media/publish-status-publisher-signoff.png) ](./media/publish-status-publisher-signoff.png#lightbox)
 
 ### <a name="previewing-and-approving-your-offer"></a>Vorschau und Genehmigung Ihres Angebots
 
@@ -200,14 +200,52 @@ Nachdem die Validierungsprüfungen abgeschlossen wurden, wird Ihr Angebot im Mar
 
 ## <a name="publishing-history"></a>Veröffentlichungsverlauf
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
 Auf der Seite **Verlauf** im Partner Center werden die Veröffentlichungsereignisse für Ihre Angebote im kommerziellen Marketplace angezeigt. Die Seite zeigt für jedes Ereignis den Benutzer, der die Aktion initiiert hat, den Ereignistyp sowie das Datum und die Uhrzeit des Ereignisses an. Die [Schritte für die Validierung und Veröffentlichung](#validation-and-publishing-steps) werden mit dem Datum und der Uhrzeit des Abschlusses aufgelistet.
 
 Zum Anzeigen des Verlaufs Ihres Angebots gehen Sie folgendermaßen vor:
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
-2. Wählen Sie im Navigationsmenü auf der linken Seite **Kommerzieller Marketplace** > **Übersicht** aus.
-3. Wählen Sie Ihr Angebot aus.
-4. Wählen Sie im Navigationsmenü auf der linken Seite die Registerkarte **Verlauf** aus. Die Seite enthält Details zu den folgenden Ereignissen, die für Ihr Angebot zutreffen:
+
+1. Wählen Sie auf der Startseite die Registerkarte **„Marktplatzangebote“** aus.
+
+    [ ![Veranschaulicht die Registerkarte „Marktplatzangebote“ auf der Startseite des Partner Centers.](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. Wählen Sie auf der Seite Marktplatzangebote Ihr Angebot aus.
+1. Wählen Sie im Navigationsmenü auf der linken Seite die Registerkarte **Verlauf** aus. Die Seite enthält Details zu den folgenden Ereignissen, die für Ihr Angebot zutreffen:
+
+|Ereignis    |Beschreibung    |
+|---------|---------------|
+|Angebot erstellt | Das Angebot wurde im Partner Center erstellt. Ein Benutzer hat den Angebotstyp, die Angebots-ID und den Angebotsalias auf der **Übersichtsseite** des gewerblichen Marktplatzes ausgewählt.    |
+|Plan erstellt: *Planname*    |Ein Benutzer hat einen neuen Plan erstellt, indem er die Plan-ID und den Plannamen auf der Registerkarte **Planübersicht** eingegeben hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
+|Plan gelöscht    |Ein Benutzer hat einen nicht veröffentlichten Planentwurf gelöscht, indem er auf der Seite **Planübersicht** die Option **Entwurf löschen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
+|Verteilungsende für Plan initiiert: *Planname*    |Ein Benutzer hat das Verteilungsende für den Plan initiiert, indem er auf der Seite **Planübersicht** die Option **Verteilung beenden** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
+|Verteilung fortsetzen: *Planname*    |Ein Benutzer hat das Verteilungsende für den Plan abgebrochen, indem er auf der Seite **Planübersicht** die Option **Verteilung fortsetzen** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die Pläne unterstützen*.    |
+|Angebot für die Vorschau übermittelt    |Ein Benutzer hat das Angebot für die Vorschau übermittelt, indem er auf der Seite **Überprüfen und veröffentlichen** die Option **Veröffentlichen** ausgewählt hat.    |
+|Abbruch der Übermittlung für die Vorschau initiiert    |Ein Benutzer hat einen Abbruch der Angebotsveröffentlichung für die Vorschau angefordert, indem er nach der Übermittlung für die Vorschau auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, während die Abbruchanforderung verarbeitet wird*.    |
+|Übermittlung für die Vorschau abgebrochen    |Ein Benutzer hat die Angebotsveröffentlichung für die Vorschau abgebrochen, indem er nach der Übermittlung für die Vorschau auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, nachdem die Abbruchanforderung erfolgreich verarbeitet wurde*.    |
+|Liveschaltung freigegeben    |Ein Benutzer hat das Angebot im kommerziellen Marketplace veröffentlicht, indem er auf der Seite **Angebotsübersicht** die Option **Live schalten** ausgewählt hat.    |
+|Abbruch der Veröffentlichung im Marketplace initiiert    |Ein Benutzer hat einen Abbruch der Angebotsveröffentlichung angefordert, indem er nach Freigabe der Liveschaltung auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, während die Abbruchanforderung verarbeitet wird*.    |
+|Veröffentlichung im kommerziellen Marketplace abgebrochen    |Ein Benutzer hat die Angebotsveröffentlichung abgebrochen, indem er nach Freigabe der Liveschaltung auf der Seite **Angebotsübersicht** die Option **Veröffentlichung abbrechen** ausgewählt hat.</br>*Dieses Ereignis wird angezeigt, nachdem die Abbruchanforderung erfolgreich verarbeitet wurde*.    |
+|Private Zielgruppe synchronisiert    |Ein Benutzer hat die private Zielgruppe aktualisiert und synchronisiert, indem er auf der Seite **Planübersicht** oder der Seite **Preise und Verfügbarkeit des Plans** die Option **Private Zielgruppe synchronisieren** ausgewählt hat.</br>*Dieses Ereignis trifft nur für Angebotstypen zu, die private Pläne unterstützen*.    |
+|Verteilungsende für Angebot    |Ein Benutzer hat den Verkauf des Angebots eingestellt, indem er auf der Seite **Angebotsübersicht** die Option **Verteilung beenden** ausgewählt hat.    |
+
+> [!NOTE]
+> Die Seite „Verlauf“ gibt nicht an, wann ein Angebotsentwurf gespeichert wurde.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+Auf der Seite **Verlauf** im Partner Center werden die Veröffentlichungsereignisse für Ihre Angebote im kommerziellen Marketplace angezeigt. Die Seite zeigt für jedes Ereignis den Benutzer, der die Aktion initiiert hat, den Ereignistyp sowie das Datum und die Uhrzeit des Ereignisses an. Die [Schritte für die Validierung und Veröffentlichung](#validation-and-publishing-steps) werden mit dem Datum und der Uhrzeit des Abschlusses aufgelistet.
+
+Zum Anzeigen des Verlaufs Ihres Angebots gehen Sie folgendermaßen vor:
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie im Navigationsmenü auf der linken Seite **Kommerzieller Marketplace** > **Übersicht** aus.
+1. Wählen Sie Ihr Angebot aus.
+1. Wählen Sie im Navigationsmenü auf der linken Seite die Registerkarte **Verlauf** aus. Die Seite enthält Details zu den folgenden Ereignissen, die für Ihr Angebot zutreffen:
 
 |Ereignis    |Beschreibung    |
 |---------|---------------|
@@ -227,6 +265,8 @@ Zum Anzeigen des Verlaufs Ihres Angebots gehen Sie folgendermaßen vor:
 
 > [!NOTE]
 > Die Seite „Verlauf“ gibt nicht an, wann ein Angebotsentwurf gespeichert wurde.
+
+---
 
 ### <a name="filter-options"></a>Filteroptionen
 

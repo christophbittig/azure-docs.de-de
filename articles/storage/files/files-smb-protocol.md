@@ -4,15 +4,15 @@ description: Informationen zu Dateifreigaben, die unter Verwendung des SMB-Proto
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/25/2021
+ms.date: 09/10/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 34f8cd4642a09434eef63db94b2151f013d0383f
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 5a1cc9d12e6a24820b5b84f8a1a275d8451d6247
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966909"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776935"
 ---
 # <a name="smb-file-shares-in-azure-files"></a>SMB-Dateifreigaben in Azure Files
 Azure Files unterstützt zwei Branchenstandardprotokolle für die Einbindung von Azure-Dateifreigaben: das [SMB-Protokoll (Server Message Block)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) und das [NFS-Protokoll (Network File System)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau). In Azure Files können Sie das Dateisystemprotokoll auswählen, das sich für Ihre Workload am besten eignet. Bei Azure-Dateifreigaben ist der Zugriff auf eine einzelne Azure-Dateifreigabe über das SMB- oder das NFS-Protokoll nicht möglich. Sie können jedoch SMB- und NFS-Dateifreigaben innerhalb desselben Speicherkontos erstellen. Für alle Dateifreigaben ermöglicht Azure Files Dateifreigaben in Unternehmensqualität, die entsprechend Ihren Speicheranforderungen hochskaliert werden können und auf die Tausende von Clients gleichzeitig zugreifen können.
@@ -45,7 +45,7 @@ Alle in Azure Files gespeicherten Daten werden im Ruhezustand mithilfe der Azure
 
 Standardmäßig ist in allen Azure-Speicherkonten die Verschlüsselung während der Übertragung aktiviert. Das bedeutet Folgendes: Wenn Sie eine Dateifreigabe über SMB einbinden (oder über das FileREST-Protokoll darauf zugreifen), lässt Azure Files die Verbindung nur dann zu, wenn sie über SMB 3.x mit Verschlüsselung oder über HTTPS hergestellt wird. Clients, die SMB 3.x mit SMB-Kanalverschlüsselung nicht unterstützen, können die Azure-Dateifreigabe nicht einbinden, wenn die Verschlüsselung während der Übertragung aktiviert ist. 
 
-Azure Files unterstützt die branchenführende Verschlüsselung AES-256-GCM mit SMB 3.1.1 bei Verwendung unter Windows 10 Version 21H1. SMB 3.1.1 unterstützt außerdem AES-128-GCM. SMB 3.0 unterstützt AES-128-CCM. AES-128-GCM wird aus Leistungsgründen standardmäßig unter Windows 10 Version 21H1 ausgehandelt.
+Azure Files unterstützt AES-256-GCM mit SMB 3.1.1 bei Verwendung mit Windows Server 2022 oder Windows 11. SMB 3.1.1 unterstützt außerdem AES-128-GCM. SMB 3.0 unterstützt AES-128-CCM. AES-128-GCM wird aus Leistungsgründen standardmäßig unter Windows 10 Version 21H1 ausgehandelt.
 
 Sie können die Verschlüsselung während der Übertragung für ein Azure-Speicherkonto deaktivieren. Wenn die Verschlüsselung deaktiviert ist, lässt Azure Files auch SMB 2.1 und SMB 3.x ohne Verschlüsselung zu. Der Hauptgrund für die Deaktivierung der Verschlüsselung während der Übertragung ist die Unterstützung einer älteren Anwendung, die unter einem älteren Betriebssystem wie z. B. Windows Server 2008 R2 oder einer älteren Linux-Distribution ausgeführt werden muss. Azure Files lässt nur SMB 2.1-Verbindungen innerhalb der gleichen Region zu, in der sich auch die Azure-Dateifreigabe befindet. Ein SMB 2.1-Client außerhalb der Azure-Region der Azure-Dateifreigabe – z. B. ein lokales System oder eine andere Azure-Region – kann nicht auf die Dateifreigabe zugreifen.
 
@@ -237,7 +237,7 @@ Get-AzStorageFileServiceProperty -StorageAccount $storageAccount | `
 Sie können die SMB-Protokolleinstellungen je nach den Sicherheits-, Leistungs- und Kompatibilitätsanforderungen Ihrer Organisation ändern. Mit dem folgenden PowerShell-Befehl werden Ihre SMB-Dateifreigaben auf die sichersten Optionen eingeschränkt.
 
 > [!Important]  
-> Die Einschränkung der SMB-Azure-Dateifreigaben auf die sichersten Optionen kann dazu führen, dass einige Clients keine Verbindung herstellen können, wenn sie die Anforderungen nicht erfüllen. Beispielsweise wurde AES-256-GCM ab Windows 10, Version 21H1 als Option für die SMB-Kanalverschlüsselung eingeführt. Das bedeutet, dass ältere Clients, die AES-256-GCM nicht unterstützen, keine Verbindung herstellen können.
+> Die Einschränkung der SMB-Azure-Dateifreigaben auf die sichersten Optionen kann dazu führen, dass einige Clients keine Verbindung herstellen können, wenn sie die Anforderungen nicht erfüllen. Zum Beispiel wurde AES-256-GCM als Option für die SMB-Kanalverschlüsselung ab Windows Server 2022 und Windows 11 eingeführt. Das bedeutet, dass ältere Clients, die AES-256-GCM nicht unterstützen, keine Verbindung herstellen können.
 
 ```PowerShell
 Update-AzStorageFileServiceProperty `
@@ -302,7 +302,7 @@ echo $protocolSettings
 Sie können die SMB-Protokolleinstellungen je nach den Sicherheits-, Leistungs- und Kompatibilitätsanforderungen Ihrer Organisation ändern. Mit dem folgenden Azure CLI-Befehl werden Ihre SMB-Dateifreigaben auf die sichersten Optionen eingeschränkt.
 
 > [!Important]  
-> Die Einschränkung der SMB-Azure-Dateifreigaben auf die sichersten Optionen kann dazu führen, dass einige Clients keine Verbindung herstellen können, wenn sie die Anforderungen nicht erfüllen. Beispielsweise wurde AES-256-GCM ab Windows 10, Version 21H1 als Option für die SMB-Kanalverschlüsselung eingeführt. Das bedeutet, dass ältere Clients, die AES-256-GCM nicht unterstützen, keine Verbindung herstellen können.
+> Die Einschränkung der SMB-Azure-Dateifreigaben auf die sichersten Optionen kann dazu führen, dass einige Clients keine Verbindung herstellen können, wenn sie die Anforderungen nicht erfüllen. Zum Beispiel wurde AES-256-GCM als Option für die SMB-Kanalverschlüsselung ab Windows Server 2022 und Windows 11 eingeführt. Das bedeutet, dass ältere Clients, die AES-256-GCM nicht unterstützen, keine Verbindung herstellen können.
 
 ```bash
 az storage account file-service-properties update \

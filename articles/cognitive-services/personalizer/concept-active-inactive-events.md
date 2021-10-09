@@ -8,44 +8,48 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: ba95c22a773a382a3c03aab18f8f885e6a2791d8
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 948d375c0f580a71dbd27fa10660c0c7e0046a10
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122831008"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129219152"
 ---
-# <a name="active-and-inactive-events"></a>Aktive und inaktive Ereignisse
+# <a name="defer-event-activation"></a>Ereignisaktivierung aufschieben
 
-Ein **aktives** Ereignis ist jeder Aufruf für die Rangfolge, bei dem Sie wissen, dass Sie dem Kunden das Ergebnis zeigen und den Relevanzwert bestimmen werden. Dies ist das Standardverhalten.
+Die aufgeschobene Aktivierung von Ereignissen ermöglicht es Ihnen, personalisierte Websites oder Mailing-Kampagnen zu erstellen, wobei Sie berücksichtigen, dass der Benutzer die Seite möglicherweise nie sieht oder die E-Mail nicht öffnet. In diesen Szenarien muss die Anwendung möglicherweise Rank aufrufen, bevor sie überhaupt weiß, ob das Ergebnis verwendet oder dem Benutzer angezeigt wird. Wenn der Inhalt dem Nutzer nie gezeigt wird, sollte keine Standardbelohnung (in der Regel Null) angenommen werden, aus der er lernen kann.
+Die aufgeschobene Aktivierung ermöglicht es Ihnen, die Ergebnisse eines Rank-Aufrufs zu einem bestimmten Zeitpunkt zu verwenden und zu entscheiden, ob das Ereignis zu einem späteren Zeitpunkt oder an anderer Stelle in Ihrem Code gelernt werden soll.
 
-Ein **inaktives** Ereignis ist ein Aufruf für die Rangfolge, bei dem Sie nicht sicher sind, ob der Benutzer die empfohlene Aktion aufgrund der Geschäftslogik jemals angezeigt bekommt. Dadurch können Sie das Ereignis verwerfen, sodass die Personalisierung nicht mit der Standardrelevanz trainiert wird. Inaktive Ereignisse sollten die Relevanz-API nicht aufrufen.
+## <a name="typical-scenarios-for-deferred-activation"></a>Typische Szenarien für eine aufgeschobene Aktivierung
 
-Es ist wichtig, dass die Lernschleife den eigentlichen Ereignistyp kennt. Ein inaktives Ereignis weist keinen Relevanzaufruf auf. Ein aktives Ereignis sollte einen Relevanzaufruf aufweisen, aber wenn der API-Aufruf nie erfolgt, wird die standardmäßige Relevanzbewertung angewendet. Ändern Sie den Status eines Ereignisses von „inaktiv“ zu „aktiv“, sobald Sie wissen, dass es die Benutzererfahrung beeinflusst.
+Das Aufschieben der Aktivierung von Ereignissen ist in den folgenden Beispielszenarien nützlich:
 
-## <a name="typical-active-events-scenario"></a>Typisches Szenario für aktive Ereignisse
+* Sie bereiten eine personalisierte Webseite für einen Benutzer vor, aber der Benutzer bekommt sie möglicherweise nie zu sehen, weil eine Geschäftslogik die Aktionsauswahl des Personalizers außer Kraft setzt.
+* Sie personalisieren Inhalte „below the fold“ auf einer Webseite, und es ist sehr wahrscheinlich, dass der Inhalt vom Benutzer nie gesehen wird.
+* Sie personalisieren Marketing-E-Mails und müssen vermeiden, dass E-Mails, die von den Nutzern nie geöffnet wurden, zu einer Schulung führen.
+* Sie haben einen dynamischen Medienkanal personalisiert und Ihre Benutzer hören möglicherweise auf, den Kanal abzuspielen, bevor er zu den von Personalizer ausgewählten Liedern oder Videos gelangt. 
 
-Wenn Ihre Anwendung die Rang-API aufruft, erhalten Sie die Angabe, welche Aktion die Anwendung im Feld **rewardActionId** anzeigen soll.  Von diesem Moment an erwartet die Personalisierung einen Relevanzaufruf mit einer Relevanzbewertung, die dieselbe Ereignis-ID aufweist. Die Relevanzbewertung wird zum Trainieren des Modells für zukünftige Rangaufrufe verwendet. Wenn für die Ereignis-ID kein Reward-Aufruf empfangen wird, wird eine Standardrelevanz angewandt. [Standardrelevanzen](how-to-settings.md#configure-rewards-for-the-feedback-loop) werden für Ihre Personalisierungsressource im Azure-Portal festgelegt.
+Im Allgemeinen treten diese Szenarien auf, wenn:
 
-## <a name="other-event-type-scenarios"></a>Sonstige Ereignistypenszenarien
+* Sie rendern die Benutzeroberfläche vor, die der Benutzer aufgrund von UI- oder Zeitbeschränkungen möglicherweise nicht zu sehen bekommt.
+* Ihre Anwendung führt eine prädiktive Personalisierung durch, bei der Sie Rangaufrufe tätigen, bevor Sie wissen, ob Sie die Ausgabe verwenden werden.
 
-In einigen Szenarien muss die Anwendung möglicherweise Rank aufrufen, bevor sie weiß, ob das Ergebnis verwendet oder dem Benutzer angezeigt wird. Dies kann beispielsweise geschehen, wenn das Seitenrendering von beworbenen Inhalten durch eine Marketingkampagne überschrieben wird. Wenn das Ergebnis des Rank-Aufrufs niemals verwendet und dem Benutzer niemals angezeigt wurde, übermitteln Sie keinen zugehörigen Reward-Aufruf.
+## <a name="how-to-defer-activation-and-later-activate-events"></a>Aufschieben der Aktivierung und spätere Aktivierung von Ereignissen
 
-In der Regel treten diese Szenarien in folgenden Fällen ein:
+Um die Aktivierung für ein Ereignis aufzuschieben, rufen Sie im Textkörper des Vermächtnisses den Befehl [Rang](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) mit `deferActivation = True` auf.
 
-* Sie rendern vorab die Benutzeroberfläche, die dem Benutzer möglicherweise gar nicht angezeigt wird.
-* Ihre Anwendung führt eine vorausschauende Personalisierung durch, bei der Rank-Aufrufe mit wenig Echtzeitkontext ausgeführt werden, und die Ausgabe wird von der Anwendung unter Umständen gar nicht genutzt.
+Sobald Sie wissen, dass Ihren Nutzern der personalisierte Inhalt oder die Medien gezeigt wurden und die Erwartung einer Belohnung angemessen ist, müssen Sie dieses Ereignis aktivieren. Rufen Sie dazu die [Activate API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Activate) mit der eventId auf.
 
-In diesen Fällen verwenden Sie die Personalisierung im Aufruf von Rank mit der Anforderung, dass das Ereignis _inaktiv_ sein muss. Die Personalisierung erwartet für dieses Ereignis keine Relevanz und wendet auch keine Standardrelevanz an.
 
-Wenn die Anwendung später in Ihrer Geschäftslogik die Informationen des Rank-Aufrufs verwendet, müssen Sie das Ereignis lediglich _aktivieren_. Sobald das Ereignis aktiv ist, erwartet die Personalisierung eine Ereignisrelevanz. Wenn kein expliziter Aufruf der Reward-API erfolgt, wendet die Personalisierung eine Standardrelevanz an.
+Der Aufruf [API aktivieren](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Activate) für diesen EventID-Aufruf muss empfangen werden, bevor das Zeitfenster für die Belohnungswartezeit abläuft.
 
-## <a name="inactive-events"></a>Inaktive Ereignisse
+### <a name="behavior-with-deferred-activation"></a>Verhalten bei aufgeschobener Aktivierung 
 
-Um das Training für ein Ereignis zu deaktivieren, rufen Sie Rank mit `learningEnabled = False` auf.
-
-Für ein inaktives Ereignis wird das Lernen implizit aktiviert, wenn Sie für die Ereignis-ID eine Relevanz senden oder die `activate`-API aufrufen.
+Der Personalizer lernt aus Ereignissen und Belohnungen wie folgt:
+* Wenn Sie den Rang mit `deferActivation = True` aufrufen, und *nicht* die `Activate`API für diese eventId aufrufen, und Reward aufrufen, lernt Personalizer nicht von dem Ereignis.
+* Wenn Sie den Rang mit `deferActivation = True` aufrufen, und die `Activate`API für diese eventId *aufrufen*, und Reward aufrufen, wird Personalizer von dem Ereignis mit der angegebenen Reward-Punktzahl lernen.
+* Wenn Sie den Rang mit `deferActivation = True` aufrufen und die `Activate`API für diese eventId *aufrufen*, aber den Aufruf von Reward unterlassen, lernt Personalizer aus dem Ereignis mit der in der Konfiguration eingestellten Standard-Belohnungspunktzahl.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
+* So konfigurieren Sie die [Standardbelohnungen](how-to-settings.md#configure-rewards-for-the-feedback-loop).
 * [Informationen zum Ermitteln der Relevanzbewertung und zu den zu berücksichtigenden Daten](concept-rewards.md).

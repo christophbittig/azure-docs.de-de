@@ -3,12 +3,12 @@ title: Verwalten des Agents für Azure Arc-fähige Server
 description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server ausführen.
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5e80d240c9b5ce8795de8baee3214d256d180e0f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: d8a8613a6fc97fd2510779715d392b9534598950
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769849"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807443"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -16,11 +16,11 @@ Nach der erstmaligen Bereitstellung des Connected Machine-Agents für Server mi
 
 ## <a name="before-uninstalling-agent"></a>Vor dem Deinstallieren des Agents
 
-Bevor Sie den Connected Machine-Agent von Ihrem Azure Arc-fähigen Server entfernen, sollten Sie Folgendes berücksichtigen, um unerwartete Probleme oder Kosten auf Ihrer Azure-Rechnung zu vermeiden:
+Bevor Sie den Connected Machine-Agent von Ihrem Azure Arc-fähigen Server entfernen, sollten Sie Folgendes beachten, um unerwartete Probleme oder zusätzliche Kosten auf Ihrer Azure-Rechnung zu vermeiden:
 
-* Wenn Sie Azure-VM-Erweiterungen für einen aktivierten Server bereitgestellt haben und den Connected Machine-Agent entfernen oder die Ressource löschen, die den Azure Arc-fähigen Server in der Ressourcengruppe darstellt, werden diese Erweiterungen weiterhin normal ausgeführt.
+* Wenn Sie Azure VM-Erweiterungen auf einem aktivierten Server bereitgestellt haben und den Connected Machine-Agenten entfernen oder die Ressource löschen, die den Azure Arc-aktivierten Server in der Ressourcengruppe repräsentiert, werden diese Erweiterungen weiterhin ausgeführt und führen ihren normalen Betrieb aus.
 
-* Wenn Sie die Ressource löschen, die den Azure Arc-fähigen Server in der Ressourcengruppe darstellt, ohne die VM-Erweiterungen zu deinstallieren, können Sie die installierten VM-Erweiterungen nicht verwalten, wenn Sie den Computer neu registrieren.
+* Wenn Sie die Ressource, die den Azure Arc-fähigen Server in Ihrer Ressourcengruppe repräsentiert, löschen, aber die VM-Erweiterungen nicht deinstallieren, können Sie die installierten VM-Erweiterungen nicht verwalten, wenn Sie die Maschine erneut registrieren.
 
 Für Server oder Computer, die nicht mehr über Azure Arc-fähige Server verwaltet werden sollen, müssen Sie folgende Schritte ausführen, um die Verwaltung erfolgreich zu beenden:
 
@@ -30,7 +30,7 @@ Für Server oder Computer, die nicht mehr über Azure Arc-fähige Server verwalt
 
     * Ausführen des Befehls `azcmagent disconnect` auf dem Computer oder dem Server
 
-    * Durch Auswählen des registrierten Servers im Azure-Portal und Klicken auf **Löschen** in der oberen Leiste.
+    * Durch Auswählen des registrierten Azure Arc-fähigen Servers im Azure-Portal und Klicken auf **Löschen** in der oberen Leiste.
 
     * Mithilfe der [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) oder mithilfe von [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource) Verwenden Sie `Microsoft.HybridCompute/machines` für den Parameter `ResourceType`.
 
@@ -40,7 +40,7 @@ Für Server oder Computer, die nicht mehr über Azure Arc-fähige Server verwalt
 
 Wenn Sie den Namen des mit Azure Arc-fähigen Servern verbundenen Linux- oder Windows-Computers ändern, wird der neue Name nicht automatisch erkannt, da der Ressourcenname in Azure unveränderlich ist. Wie bei anderen Azure-Ressourcen müssen Sie die Ressource löschen und neu erstellen, um den neuen Namen zu verwenden.
 
-Bei Azure Arc-fähigen Servern müssen vor dem Umbenennen des Computers die VM-Erweiterungen entfernt werden.
+Bei Azure Arc-fähigen Servern müssen Sie vor der Umbenennung der Maschine die VM-Erweiterungen entfernen, bevor Sie fortfahren.
 
 > [!NOTE]
 > Installierte Erweiterungen werden zwar weiterhin ausgeführt und setzen nach Abschluss dieses Verfahrens ihren normalen Betrieb fort, aber Sie können sie nicht mehr verwalten. Wenn Sie versuchen, die Erweiterungen auf dem Computer erneut bereitzustellen, tritt möglicherweise ein unvorhersehbares Verhalten auf.
@@ -56,13 +56,13 @@ Bei Azure Arc-fähigen Servern müssen vor dem Umbenennen des Computers die VM-E
 
 4. Benennen Sie den Computer um.
 
-5. Registrieren Sie den Connected Machine-Agent bei Arc-fähigen Servern erneut. Führen Sie das `azcmagent`-Tool mit dem Parameter [Connect](manage-agent.md#connect) aus, um diesen Schritt abzuschließen.
+5. Registrieren Sie den Connected Machine-Agenten erneut bei Azure Arc-aktivierten Servern. Führen Sie das `azcmagent`-Tool mit dem Parameter [Connect](manage-agent.md#connect) aus, um diesen Schritt abzuschließen.
 
-6. Stellen Sie die VM-Erweiterungen, die dem Computer ursprünglich bereitgestellt wurden, von Arc-fähigen Servern aus erneut bereit. Wenn Sie den Azure Monitor für VMs-Agent (Insights) oder den Log Analytics-Agent mithilfe einer Azure Policy-Definition bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) erneut bereitgestellt.
+6. Stellen Sie die VM-Erweiterungen, die ursprünglich für den Computer bereitgestellt wurden, von Azure Arc-fähigen Servern aus erneut bereit. Wenn Sie den Azure Monitor für VMs-Agent (Insights) oder den Log Analytics-Agent mithilfe einer Azure Policy-Definition bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) erneut bereitgestellt.
 
 ## <a name="upgrading-agent"></a>Aktualisierung des Agent
 
-Der Azure Connected Machine-Agent wird regelmäßig aktualisiert, um Fehlerbehebungen, Stabilitätsverbesserungen und neue Funktionen bereitzustellen. [Azure Advisor](../../advisor/advisor-overview.md) identifiziert Ressourcen, die nicht die aktuelle Version des Machine-Agents verwenden, und empfiehlt ein Upgrade auf die neueste Version. Wenn Sie den Server mit Arc-Unterstützung auswählen, werden Sie über ein Banner auf der Seite **Übersicht** oder beim Zugriff auf Advisor über das Azure-Portal benachrichtigt.
+Der Azure Connected Machine-Agent wird regelmäßig aktualisiert, um Fehlerbehebungen, Stabilitätsverbesserungen und neue Funktionen bereitzustellen. [Azure Advisor](../../advisor/advisor-overview.md) identifiziert Ressourcen, die nicht die aktuelle Version des Machine-Agents verwenden, und empfiehlt ein Upgrade auf die neueste Version. Sie werden benachrichtigt, wenn Sie den Azure Arc-aktivierten Server auswählen, indem ein Banner auf der **Übersichtsseite** angezeigt wird oder wenn Sie über das Azure-Portal auf Advisor zugreifen.
 
 Der Azure Connected Machine-Agent für Windows und Linux kann abhängig von Ihren Anforderungen manuell oder automatisch auf das neueste Release aktualisiert werden.
 
@@ -218,7 +218,7 @@ Führen Sie den folgenden Befehl aus, um eine Verbindung mit Ihren Anmeldeinform
 Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure gelöschten Computer darstellt. Der Agent wird nicht vom Computer entfernt. Sie deinstallieren den Agent separat. Nachdem die Verbindung des Computers getrennt wurde und Sie ihn neu bei Azure Arc-fähigen Servern registrieren möchten, führen Sie `azcmagent connect` aus, um eine neue Ressource in Azure zu erstellen.
 
 > [!NOTE]
-> Wenn Sie mindestens eine Azure-VM-Erweiterung für Ihren Azure-Arc-fähigen Server bereitgestellt haben und die VM-Registrierung in Azure löschen, sind die Erweiterungen weiterhin installiert. Es ist wichtig zu verstehen, dass der Computer je nach installierter Erweiterung seine Funktion aktiv ausführt. Auf Computern, die außer Betrieb genommen oder nicht mehr von Azure Arc-fähigen Servern verwaltet werden sollen, müssen zunächst die Erweiterungen entfernt werden, bevor die Registrierung aus Azure entfernt wird.
+> Wenn Sie eine oder mehrere der Azure VM-Erweiterungen auf Ihrem Azure Arc-fähigen Server installiert haben und dessen Registrierung in Azure löschen, werden die Erweiterungen weiterhin installiert. Es ist wichtig zu verstehen, dass der Computer je nach installierter Erweiterung seine Funktion aktiv ausführt. Bei Maschinen, die außer Betrieb genommen oder nicht mehr von Azure Arc-aktivierten Servern verwaltet werden sollen, sollten zunächst die Erweiterungen entfernt werden, bevor die Registrierung in Azure aufgehoben wird.
 
 Führen Sie den folgenden Befehl aus, um die Verbindung mithilfe des Dienstprinzipals zu trennen:
 
@@ -234,10 +234,10 @@ Führen Sie den folgenden Befehl aus, um die Verbindung mit Ihren Anmeldeinforma
 
 ## <a name="remove-the-agent"></a>Entfernen des Agents
 
-Führen Sie eine der folgenden Methoden aus, um den Conncected Machine-Agent für Windows oder Linux von dem Computer zu deinstallieren. Durch das Entfernen des Agents wird weder die Registrierung des Computers bei Azure Arc-fähigen Servern aufgehoben noch werden die installierten Azure-VM-Erweiterungen entfernt. Für Server oder Computer, die nicht mehr über Azure Arc-fähige Server verwaltet werden sollen, müssen Sie folgende Schritte ausführen, um die Verwaltung erfolgreich zu beenden: 
+Führen Sie eine der folgenden Methoden aus, um den Conncected Machine-Agent für Windows oder Linux von dem Computer zu deinstallieren. Durch das Entfernen des Agenten wird die Registrierung des Computers bei Azure Arc-fähigen Servern nicht aufgehoben und die installierten Azure VM-Erweiterungen werden nicht entfernt. Für Server oder Computer, die nicht mehr über Azure Arc-fähige Server verwaltet werden sollen, müssen Sie folgende Schritte ausführen, um die Verwaltung erfolgreich zu beenden: 
 
 1. Entfernen Sie mit der [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) oder [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) über das [Azure-Portal](manage-vm-extensions-portal.md#uninstall-extensions) installierte VM-Erweiterungen, die nicht auf dem Computer bleiben sollen.
-1. Heben Sie die Registrierung des Computers auf, indem Sie `azcmagent disconnect` ausführen, um die Arc-fähigen Serverressourcen in Azure zu löschen. Wenn hierbei ein Fehler auftritt, können Sie die Ressource auch manuell in Azure löschen. Andernfalls müssen Sie, wenn die Ressource in Azure gelöscht wurde, `azcmagent disconnect --force-local-only` auf dem Server ausführen, um die lokale Konfiguration zu entfernen.
+1. Heben Sie die Registrierung der Maschine auf, indem Sie `azcmagent disconnect` ausführen, um die Ressource Azure Arc-aktivierte Server in Azure zu löschen. Wenn hierbei ein Fehler auftritt, können Sie die Ressource auch manuell in Azure löschen. Andernfalls müssen Sie, wenn die Ressource in Azure gelöscht wurde, `azcmagent disconnect --force-local-only` auf dem Server ausführen, um die lokale Konfiguration zu entfernen.
 
 ### <a name="windows-agent"></a>Windows-Agent
 
@@ -306,7 +306,7 @@ Beim Deinstallieren des Linux-Agents ist der zu verwendende Befehl vom Linux-Bet
 
 ## <a name="unregister-machine"></a>Aufheben der Registrierung eines Computers
 
-Wenn Sie beabsichtigen, die Verwaltung des Computers mit unterstützenden Diensten in Azure zu beenden, führen Sie die folgenden Schritte aus, um die Registrierung des Computers bei Azure Arc-fähigen Servern aufzuheben. Sie können diese Schritte entweder vor oder nach dem Entfernen des Connected Machine-Agents von dem Computer ausführen.
+Wenn Sie planen, den Computer nicht mehr mit unterstützenden Diensten in Azure zu verwalten, führen Sie die folgenden Schritte aus, um die Registrierung des Computers bei Azure Arc-aktivierten Servern aufzuheben. Sie können diese Schritte entweder vor oder nach dem Entfernen des Connected Machine-Agents von dem Computer ausführen.
 
 1. Öffnen Sie die Azure Arc-fähigen Server, indem Sie zum [Azure-Portal](https://aka.ms/hybridmachineportal) navigieren.
 
@@ -317,7 +317,7 @@ Wenn Sie beabsichtigen, die Verwaltung des Computers mit unterstützenden Dienst
 Um den Agent für die Kommunikation mit dem Dienst über einen Proxyserver zu konfigurieren, entfernen Sie diese Konfiguration nach der Bereitstellung, oder führen Sie eine der folgenden Methoden aus, um diese Aufgabe durchzuführen. Der Agent kommuniziert in diesem Szenario mithilfe des HTTP-Protokolls ausgehend.
 
 > [!NOTE]
-> Azure Arc-fähige Server unterstützen die Verwendung eines [Log Analytics-Gateways](../../azure-monitor/agents/gateway.md) als Proxy für den Connected Machine-Agent nicht.
+> Azure Arc-fähige Server unterstützen nicht die Verwendung eines [Log Analytics-Gateways](../../azure-monitor/agents/gateway.md) als Proxy für den Connected Machine-Agent.
 >
 
 ### <a name="windows"></a>Windows

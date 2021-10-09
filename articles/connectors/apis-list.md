@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 09/13/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: f8db25d79784b1a2ca2b63ace57f729271271a43
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: cccd744e8c123cd9441ff9aca47d2341ea9d80fb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113218869"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679861"
 ---
 # <a name="about-connectors-in-azure-logic-apps"></a>Informationen zu Connectors in Azure Logic Apps
 
@@ -46,7 +46,7 @@ Eine *Aktion* ist ein Vorgang, der dem Trigger folgt und eine Art von Aufgabe in
 
 ## <a name="connector-categories"></a>Konnektorkategorien
 
-In Logic Apps sind die meisten Trigger und Aktionen entweder in einer *integrierten* Version oder in einer *verwalteten Connectorversion* verfügbar. In beiden Versionen sind einige Trigger und Aktionen verfügbar. Die vorhandenen Versionen hängen davon ab, ob Sie eine mehrstufige Logik-App oder eine Logik-App mit nur einem Mandanten erstellen, die derzeit nur in [Azure Logic Apps mit einem Mandanten](../logic-apps/single-tenant-overview-compare.md) verfügbar ist.
+In Azure Logic Apps sind die meisten Trigger und Aktionen entweder in einer *integrierten* Version oder einer *verwalteten Connector*-Version verfügbar. In beiden Versionen sind einige Trigger und Aktionen verfügbar. Die vorhandenen Versionen hängen davon ab, ob Sie eine mehrstufige Logik-App oder eine Logik-App mit nur einem Mandanten erstellen, die derzeit nur in [Azure Logic Apps mit einem Mandanten](../logic-apps/single-tenant-overview-compare.md) verfügbar ist.
 
 [Integrierte Trigger und Aktionen](built-in.md) werden nativ in der Logic Apps-Runtime ausgeführt, erfordern keine Verbindungen und führen diese Arten von Aufgaben aus:
 
@@ -61,13 +61,27 @@ In Logic Apps sind die meisten Trigger und Aktionen entweder in einer *integrier
 - [Integrationskonto-Connectors](managed.md#integration-account-connectors), die B2B-Kommunikationsszenarien (Business-to-Business) unterstützen.
 - [Connectors für die Integrationsdienstumgebung (ISE)](managed.md#ise-connectors), eine kleine Gruppe von [verwalteten Connectors, die nur für ISEs verfügbar sind](#ise-and-connectors).
 
+<a name="connection-configuration"></a>
+
 ## <a name="connection-configuration"></a>Verbindungskonfiguration
 
-Die meisten Connectors erfordern, dass Sie zunächst eine *Verbindung* zum Zieldienst oder -system herstellen, bevor Sie dessen Trigger oder Aktionen in Ihrem Workflow verwenden können. Um eine Verbindung herzustellen, müssen Sie Ihre Identität mit Kontoanmeldeinformationen und manchmal anderen Verbindungsinformationen authentifizieren. Bevor Ihr Workflow beispielsweise auf Ihr Office 365 Outlook-E-Mail-Konto zugreifen und damit arbeiten kann, müssen Sie eine Verbindung mit diesem Konto autorisieren.
+Um Ressourcen und Verbindungen von Logic Apps zu erstellen oder zu verwalten, benötigen Sie bestimmte Berechtigungen, die über Rollen mithilfe der rollenbasierten Zugriffskontrolle von [Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) bereitgestellt werden. Sie können Mitgliedern, die Zugriff auf Ihr Azure-Abonnement haben, integrierte oder angepasste Rollen zuweisen. Azure Logic Apps verfügt über diese spezifischen Rollen:
+
+* [Logik-App-Mitwirkender:](../role-based-access-control/built-in-roles.md#logic-app-contributor) Ermöglicht Ihnen die Verwaltung von Logik-Apps, aber nicht die Änderung des App-Zugriffs.
+
+* [Logik-App-Operator:](../role-based-access-control/built-in-roles.md#logic-app-operator) Ermöglicht Ihnen das Lesen, Aktivieren und Deaktivieren von Logik-Apps, die Sie aber nicht bearbeiten oder aktualisieren können.
+
+* [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor): Gewährt vollen Zugriff auf die Verwaltung aller Ressourcen, erlaubt aber nicht die Zuweisung von Rollen in Azure RBAC, die Verwaltung von Zuweisungen in Azure Blueprints oder die Freigabe von Bildergalerien.
+
+  Angenommen, Sie müssen mit einer Logik-App arbeiten, die Sie nicht erstellt und keine Verbindungen authentifiziert haben, die vom Workflow dieser Logik-App verwendet werden. Für Ihr Azure-Abonnement ist die Berechtigung „Mitwirkender“ für die Ressourcengruppe erforderlich, die diese Logik-App-Ressource enthält. Wenn Sie eine Logik-App-Ressource erstellen, haben Sie automatisch Zugriff als Mitwirkender.
+
+Bevor Sie den Trigger oder die Aktionen eines Konnektors in Ihrem Workflow verwenden können, müssen Sie bei den meisten Konnektoren zunächst eine *Verbindung* zum Zieldienst oder -system herstellen. Um eine Verbindung aus einem Logic-App-Workflow heraus zu erstellen, müssen Sie Ihre Identität mit Kontodaten und manchmal auch anderen Verbindungsinformationen authentifizieren. Bevor Ihr Workflow beispielsweise auf Ihr Office 365 Outlook-E-Mail-Konto zugreifen und damit arbeiten kann, müssen Sie eine Verbindung mit diesem Konto autorisieren. Für eine kleine Anzahl integrierter Operationen und verwalteter Konnektoren können Sie eine [verwaltete Identität für die Authentifizierung einrichten und verwenden](../logic-apps/create-managed-service-identity.md#triggers-actions-managed-identity), anstatt Ihre Anmeldedaten anzugeben.
+
+<a name="connection-security-encyrption"></a>
 
 ### <a name="connection-security-and-encryption"></a>Verbindungssicherheit und -Verschlüsselung
 
-Bei Connectors, die Azure AD-OAuth (Azure Active Directory) verwenden (z. B. Office 365, Salesforce oder GitHub), müssen Sie sich beim Dienst anmelden, wobei das Zugriffstoken [verschlüsselt](../security/fundamentals/encryption-overview.md) und sicher in einem Azure-Geheimnisspeicher gespeichert wird. Andere Connectors (z.B. FTP und SQL) erfordern eine Verbindung mit Konfigurationsdetails wie Serveradresse, Benutzername und Kennwort. Diese Verbindungskonfigurationsdetails werden ebenfalls [verschlüsselt und sicher in Azure gespeichert](../security/fundamentals/encryption-overview.md).
+Verbindungskonfigurationsdetails wie Serveradresse, Benutzername und Kennwort, Anmeldeinformationen und Geheimnisse werden[ verschlüsselt und in der sicheren Azure-Umgebung gespeichert](../security/fundamentals/encryption-overview.md). Diese Informationen können nur in logischen Anwendungsressourcen und von Clients verwendet werden, die über Berechtigungen für die Verbindungsressource verfügen, was durch verknüpfte Zugriffsprüfungen erzwungen wird. Verbindungen, die Azure Active Directory Open Authentication (Azure AD OAuth) verwenden, wie z. B. Office 365, Salesforce und GitHub, erfordern eine Anmeldung, aber Azure Logic Apps speichert nur Zugriffs- und Aktualisierungs-Tokens als Geheimnisse, keine Anmeldedaten.
 
 Hergestellte Verbindungen können solange auf den Zieldienst oder das Zielsystem zugreifen, wie der Dienst oder das System dies zulässt. Bei Diensten, die Azure AD-OAuth-Verbindungen verwenden (z. B. Office 365 und Dynamics), aktualisiert der Logic Apps-Dienst die Zugriffstoken unbegrenzt. Bei anderen Diensten gibt es unter Umständen eine zeitliche Begrenzung für die Verwendung eines Tokens durch Logic Apps, nach der eine Aktualisierung erforderlich ist. Durch einige Aktionen (z. B. Ändern des Kennworts) werden alle Zugriffstoken ungültig.
 
@@ -76,11 +90,13 @@ Obwohl Sie Verbindungen in einem Workflow erstellen, sind Verbindungen separate 
 > [!TIP]
 > Wenn Ihre Organisation den Zugriff auf bestimmte Ressourcen über Logic Apps-Konnektoren nicht zulässt, können Sie die [Möglichkeit, solche Verbindungen zu erstellen](../logic-apps/block-connections-connectors.md), mithilfe von [Azure Policy](../governance/policy/overview.md) blockieren.
 
+Weitere Informationen zum Sichern von Logic Apps und Verbindungen finden Sie unter [Sicherer Zugriff und Daten in Azure Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md).
+
 <a name="firewall-access"></a>
 
 ### <a name="firewall-access-for-connections"></a>Firewallzugriff für Verbindungen
 
-Falls Sie eine Firewall verwenden, die Datenverkehr beschränkt, und Ihr Logik-App-Workflow über diese Firewall kommunizieren muss, muss Folgendes sichergestellt sein: sie müssen die Firewall so einstellen, dass der Zugriff für IP-Adressen, die vom Logik-Apps-Dienst oder der Runtime in der Azure-Region Ihrer Logik-App genutzt werden, in [eingehender](../logic-apps/logic-apps-limits-and-config.md#inbound) und [ausgehender](../logic-apps/logic-apps-limits-and-config.md#outbound) Richtung zugelassen wird. Falls für Ihren Workflow auch verwaltete Connectors (z. B. Office 365 Outlook-Connector oder SQL-Connector) oder benutzerdefinierte Connectors verwendet werden, muss in der Firewall in der Azure-Region Ihrer Logik-App zusätzlich der Zugriff für *alle* ausgehenden IP-Adressen der [verwalteten Connectors](../logic-apps/logic-apps-limits-and-config.md#outbound) zulässig sein. Weitere Informationen finden Sie unter [Firewall-Konfiguration](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags).
+Falls Sie eine Firewall verwenden, die Datenverkehr beschränkt, und Ihr Logik-App-Workflow über diese Firewall kommunizieren muss, muss Folgendes sichergestellt sein: sie müssen die Firewall so einstellen, dass der Zugriff für IP-Adressen, die vom Logik-Apps-Dienst oder der Runtime in der Azure-Region Ihrer Logik-App genutzt werden, in [eingehender](../logic-apps/logic-apps-limits-and-config.md#inbound) und [ausgehender](../logic-apps/logic-apps-limits-and-config.md#outbound) Richtung zugelassen wird. Falls für Ihren Workflow auch verwaltete Connectors (z. B. Office 365 Outlook-Connector oder SQL-Connector) oder benutzerdefinierte Connectors verwendet werden, muss in der Firewall in der Azure-Region Ihrer Logik-App zusätzlich der Zugriff für *alle* ausgehenden IP-Adressen der [verwalteten Connectors](/connectors/common/outbound-ip-addresses#azure-logic-apps) zulässig sein. Weitere Informationen finden Sie unter [Firewall-Konfiguration](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags).
 
 ## <a name="recurrence-behavior"></a>Wiederholungsverhalten
 

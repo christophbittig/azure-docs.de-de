@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/25/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: d51ab96f0a9bc09f966890b848201df7091db621
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 6c202c3f192e9097eb3f861f53a384a60882dcd1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541421"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657080"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurieren eines benutzerdefinierten Containers für Azure App Service
 
@@ -337,7 +337,8 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
     EXPOSE 80 2222
     ```
 
-    Diese Konfiguration erlaubt keine externen Verbindungen zum Container. Auf Port 2222 des Containers kann nur im Brückennetzwerk eines privaten virtuellen Netzwerks zugegriffen werden, und Angreifer im Internet haben keinen Zugriff auf diesen Port.
+    > [!NOTE] 
+    > Das Root-Passwort muss exakt `Docker!` lauten, da es vom App Service verwendet wird, um Ihnen den Zugriff auf die SSH-Sitzung mit dem Container zu ermöglichen. Diese Konfiguration erlaubt keine externen Verbindungen zum Container. Port 2222 des Containers ist nur innerhalb des Brückennetzes eines privaten virtuellen Netzes zugänglich und für einen Angreifer aus dem Internet nicht erreichbar.
 
 - Starten Sie im Startskript für Ihren Container den SSH-Server.
 

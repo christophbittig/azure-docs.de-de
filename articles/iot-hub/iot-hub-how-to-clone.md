@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 7f5553cc51927d878487b0875e72873451a3de3c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4e66c71dd274f6096113992d9584645d5622f1c1
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059580"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211080"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Klonen eines Azure IoT Hubs in eine andere Region
 
@@ -113,25 +113,31 @@ Dieser Abschnitt enthält spezifische Anleitungen zur Migration des Hubs.
 
 1. Wählen Sie in der Liste der Eigenschaften und Einstellungen für den Hub **Vorlage exportieren** aus. 
 
-   ![Screenshot des Befehls zum Exportieren der Vorlage für den IoT Hub](./media/iot-hub-how-to-clone/iot-hub-export-template.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-export-template.png" alt-text="Screenshot des Befehls zum Exportieren der Vorlage für den IoT Hub" border="true":::
 
 1. Wählen Sie **Herunterladen** aus, um die Vorlage herunterzuladen. Speichern Sie die Datei an einem Ort, an dem Sie sie wiederfinden können. 
 
-   ![Screenshot des Befehls zum Herunterladen der Vorlage für den IoT Hub](./media/iot-hub-how-to-clone/iot-hub-download-template.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-download-template.png" alt-text="Screenshot des Befehls zum Herunterladen der Vorlage für den IoT Hub" border="true":::
 
 ### <a name="view-the-template"></a>Vorlage anzeigen 
 
-1. Wechseln Sie zum Ordner „Downloads“ (oder dem Ordner, den Sie beim Exportieren der Vorlage verwendet haben), und suchen Sie nach der ZIP-Datei. Öffnen Sie die ZIP-Datei, und suchen Sie die Datei `template.json`. Wählen Sie sie aus, und drücken Sie STRG+C, um die Vorlage zu kopieren. Wechseln Sie zu einem anderen Ordner, der in der ZIP-Datei nicht enthalten ist, und fügen Sie die Datei mit STRG+V ein. Jetzt können Sie sie bearbeiten.
+1. Wechseln Sie zum Ordner „Downloads“ (oder dem Ordner, den Sie beim Exportieren der Vorlage verwendet haben), und suchen Sie nach der ZIP-Datei. Entpacken Sie die Zip-Datei und suchen Sie die Datei mit dem Namen `template.json`. Markieren und kopieren Sie es. Wechseln Sie in einen anderen Ordner und fügen Sie die Vorlagendatei ein (Strg+V). Jetzt können Sie sie bearbeiten.
  
-    Das folgende Beispiel zeigt einen generischen Hub ohne Routingkonfiguration. Es handelt es sich dabei um einen Hub des S1-Tarifs (mit 1 Einheit) namens **ContosoTestHub29358** in der Region **USA, Westen**. Hier ist die exportierte Vorlage.
+    Das folgende Beispiel zeigt einen generischen Hub ohne Routingkonfiguration. Es ist ein S1-Tier-Hub (mit 1 Einheit) namens **ContosoHub** in der Region **WestUS**. Hier ist die exportierte Vorlage.
 
     ``` json
     {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
-            "IotHubs_ContosoTestHub29358_name": {
-                "defaultValue": "ContosoTestHub29358",
+            "IotHubs_ContosoHub_connectionString": {
+                "type": "SecureString"
+            },
+            "IotHubs_ContosoHub_containerName": {
+                "type": "SecureString"
+            },
+            "IotHubs_ContosoHub_name": {
+                "defaultValue": "ContosoHub",
                 "type": "String"
             }
         },
@@ -139,47 +145,23 @@ Dieser Abschnitt enthält spezifische Anleitungen zur Migration des Hubs.
         "resources": [
             {
                 "type": "Microsoft.Devices/IotHubs",
-                "apiVersion": "2018-04-01",
-                "name": "[parameters('IotHubs_ContosoTestHub29358_name')]",
+                "apiVersion": "2021-07-01",
+                "name": "[parameters('IotHubs_ContosoHub_name')]",
                 "location": "westus",
                 "sku": {
                     "name": "S1",
                     "tier": "Standard",
                     "capacity": 1
                 },
+                "identity": {
+                    "type": "None"
+                },
                 "properties": {
-                    "operationsMonitoringProperties": {
-                        "events": {
-                            "None": "None",
-                            "Connections": "None",
-                            "DeviceTelemetry": "None",
-                            "C2DCommands": "None",
-                            "DeviceIdentityOperations": "None",
-                            "FileUploadOperations": "None",
-                            "Routes": "None"
-                        }
-                    },
                     "ipFilterRules": [],
                     "eventHubEndpoints": {
                         "events": {
                             "retentionTimeInDays": 1,
-                            "partitionCount": 2,
-                            "partitionIds": [
-                                "0",
-                                "1"
-                            ],
-                            "path": "contosotesthub29358",
-                            "endpoint": "sb://iothub-ns-contosotes-2227755-92aefc8b73.servicebus.windows.net/"
-                        },
-                        "operationsMonitoringEvents": {
-                            "retentionTimeInDays": 1,
-                            "partitionCount": 2,
-                            "partitionIds": [
-                                "0",
-                                "1"
-                            ],
-                            "path": "contosotesthub29358-operationmonitoring",
-                            "endpoint": "sb://iothub-ns-contosotes-2227755-92aefc8b73.servicebus.windows.net/"
+                            "partitionCount": 4
                         }
                     },
                     "routing": {
@@ -203,8 +185,8 @@ Dieser Abschnitt enthält spezifische Anleitungen zur Migration des Hubs.
                     "storageEndpoints": {
                         "$default": {
                             "sasTtlAsIso8601": "PT1H",
-                            "connectionString": "",
-                            "containerName": ""
+                            "connectionString": "[parameters('IotHubs_ContosoHub_connectionString')]",
+                            "containerName": "[parameters('IotHubs_ContosoHub_containerName')]"
                         }
                     },
                     "messagingEndpoints": {
@@ -224,7 +206,9 @@ Dieser Abschnitt enthält spezifische Anleitungen zur Migration des Hubs.
                             "maxDeliveryCount": 10
                         }
                     },
-                    "features": "None"
+                    "features": "None",
+                    "disableLocalAuth": false,
+                    "allowedFqdnList": []
                 }
             }
         ]
@@ -237,63 +221,47 @@ Sie müssen einige Änderungen vornehmen, bevor Sie die Vorlage verwenden könne
 
 #### <a name="edit-the-hub-name-and-location"></a>Bearbeiten des Hubnamens und Standorts
 
-1. Entfernen Sie ganz oben den Abschnitt „Parameter“. Es ist viel einfacher, nur den Namen des Hubs zu verwenden, weil es in unserem Fall nicht mehrere Parameter geben wird. 
+1. Entfernen Sie den Abschnitt mit den Parametern für den Containernamen am oberen Rand. **ContosoHub** verfügt nicht über einen zugehörigen Container.
 
     ``` json
-        "parameters": {
-            "IotHubs_ContosoTestHub29358_name": {
-                "defaultValue": "ContosoTestHub29358",
-                "type": "String"
-            }
+    "parameters": {
+      ...
+        "IotHubs_ContosoHub_containerName": {
+            "type": "SecureString"
         },
+      ...
+    },
     ```
 
-1. Ändern Sie den Namen so, dass er den tatsächlichen (neuen) Namen verwendet, statt ihn aus einem Parameter abzurufen (den Sie im vorherigen Schritt entfernt haben). 
+1. Entfernen Sie die **storageEndpoints**-Eigenschaft.
 
-    Verwenden Sie für den neuen Hub den Namen des ursprünglichen Hubs und die Zeichenfolge *clone*, um den neuen Namen zu erstellen. Bereinigen Sie zuerst den Namen und den Standort des Hubs.
+    ```json
+    "properties": {
+      ...
+        "storageEndpoints": {
+        "$default": {
+            "sasTtlAsIso8601": "PT1H",
+            "connectionString": "[parameters('IotHubs_ContosoHub_connectionString')]",
+            "containerName": "[parameters('IotHubs_ContosoHub_containerName')]"
+        }
+      },
+      ...
     
+    ```
+
+1. Ändern Sie unter **Ressourcen** den Ort von westUS in eastUS.
+
     Alte Version:
 
     ``` json 
-    "name": "[parameters('IotHubs_ContosoTestHub29358_name')]",
     "location": "westus",
     ```
     
     Neue Version: 
 
     ``` json 
-    "name": "ContosoTestHub29358clone",
     "location": "eastus",
     ```
-
-    Als Nächstes werden Sie feststellen, dass die Werte für **path** den alten Namen des Hubs enthalten. Ändern Sie sie in den neuen Namen des Hubs. Dies sind die Werte für „path“ unter **eventHubEndpoints**. Sie lauten **events** und **OperationsMonitoringEvents**.
-
-    Wenn Sie damit fertig sind, sollte ihr Abschnitt mit den Event Hub-Endpunkten so aussehen:
-
-    ``` json
-    "eventHubEndpoints": {
-        "events": {
-            "retentionTimeInDays": 1,
-            "partitionCount": 2,
-            "partitionIds": [
-                "0",
-                "1"
-            ],
-            "path": "contosotesthub29358clone",
-            "endpoint": "sb://iothub-ns-contosotes-2227755-92aefc8b73.servicebus.windows.net/"
-        },
-        "operationsMonitoringEvents": {
-            "retentionTimeInDays": 1,
-            "partitionCount": 2,
-            "partitionIds": [
-                "0",
-                "1"
-            ],
-            "path": "contosotesthub29358clone-operationmonitoring",
-            "endpoint": "sb://iothub-ns-contosotes-2227755-92aefc8b73.servicebus.windows.net/"
-        }
-    ```
-
 #### <a name="update-the-keys-for-the-routing-resources-that-are-not-being-moved"></a>Aktualisieren der Schlüssel für die Routingressourcen, die nicht verschoben werden
 
 Wenn Sie die Resource Manager-Vorlage für einen Hub mit konfiguriertem Routing exportieren, werden Sie sehen, dass die Schlüssel für diese Ressourcen in der exportierten Vorlage nicht bereitgestellt werden; der Platz dafür ist durch Sternchen gekennzeichnet. Sie müssen sie ausfüllen, indem Sie im Portal zu diesen Ressourcen wechseln und die Schlüssel abrufen, **bevor** Sie die Vorlage für den neuen Hub importieren und den Hub erstellen. 
@@ -351,35 +319,41 @@ Erstellen Sie den neuen Hub am neuen Standort mithilfe der Vorlage. Wenn Sie Rou
 
 1. Wählen Sie **Ressource erstellen**. 
 
-1. Geben Sie im Suchfeld den Begriff „Vorlagenbereitstellung“ ein, und drücken Sie die EINGABETASTE.
+1. Geben Sie in das Suchfeld „Vorlagenbereitstellung“ ein und drücken Sie die Eingabetaste.
 
 1. Wählen Sie **Vorlagenbereitstellung (Bereitstellen mit benutzerdefinierten Vorlagen)** aus. Daraufhin wird ein Bildschirm für die Vorlagenbereitstellung geöffnet. Klicken Sie auf **Erstellen**. Sie sollten nun die folgende Anzeige sehen:
 
-   ![Screenshot des Befehls zum Erstellen Ihrer eigenen Vorlage](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png" alt-text="Screenshot des Befehls zum Erstellen Ihrer eigenen Vorlage":::
 
 1. Wählen Sie **Eigene Vorlage im Editor erstellen** aus, damit Sie Ihre Vorlage aus einer Datei hochladen können. 
 
-1. Wählen Sie **Datei laden** aus. 
+1. Wählen Sie **Datei laden** aus.
 
-   ![Screenshot des Befehls zum Hochladen einer Vorlagendatei](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-upload-file.png" alt-text="Screenshot des Befehls zum Hochladen einer Vorlagendatei":::
 
 1. Suchen Sie nach der von Ihnen bearbeiteten neuen Vorlage, wählen Sie sie und dann **Öffnen** aus. Dadurch wird Ihre Vorlage im Bearbeitungsfenster geladen. Wählen Sie **Speichern** aus. 
 
-   ![Screenshot, der das Laden der Vorlage zeigt](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-uploaded-file.png" alt-text="Screenshot, der das Laden der Vorlage zeigt":::
 
-1. Füllen Sie die folgenden Feldern aus:
+1. Füllen Sie die folgenden Felder auf der Seite für die benutzerdefinierte Bereitstellung aus.
 
-   **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten.
+   **Abonnement**: Wählen Sie das zu verwendende Abonnement aus.
 
-   **Ressourcengruppe**: Erstellen Sie eine neue Ressourcengruppe an einem neuen Standort. Wenn Sie bereits eine neue Gruppe eingerichtet haben, können Sie sie auswählen, statt eine neue zu erstellen.
+   **Ressourcengruppe**: Erstellen Sie eine neue Ressourcengruppe an einem neuen Ort. Wenn Sie bereits eine eingerichtet haben, können Sie diese auswählen, anstatt eine neue zu erstellen.
 
-   **Standort**: Wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben, wird sie automatisch ausgefüllt, damit sie mit ihrem Standort übereinstimmt. Wenn Sie aber eine neue Ressourcengruppe erstellt haben, wird diese zum Standort der Gruppe.
+   **Region**: Wenn Sie eine bestehende Ressourcengruppe ausgewählt haben, wird die Region für Sie ausgefüllt, damit sie dem Standort der Ressourcengruppe entspricht. Wenn Sie aber eine neue Ressourcengruppe erstellt haben, wird diese zum Standort der Gruppe.
 
-   Kontrollkästchen **Ich stimme zu**: Durch dessen Aktivierung stimmen Sie zu, dass Sie für die von Ihnen erstellte(n) Ressource(n) bezahlen werden.
+   **Verbindungszeichenfolge**: Geben Sie die Verbindungszeichenfolge für Ihren Hub ein.
 
-1. Klicken Sie auf die Schaltfläche **Kaufen**.
+   **Hub-Name**: Geben Sie dem neuen Hub in der neuen Region einen Namen.
 
-Das Portal überprüft jetzt Ihre Vorlage und stellt Ihren geklonten Hub bereit. Wenn Sie Routingkonfigurationsdaten haben, werden diese zwar in den neuen Hub einbezogen, verweisen aber weiterhin auf die Ressourcen am vorherigen Standort.
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-custom-deployment-create.png" alt-text="Screenshot der Seite für die benutzerdefinierte Bereitstellung":::
+
+1. Wählen Sie die Schaltfläche **Überprüfen + erstellen** aus.
+
+1. Wählen Sie die Schaltfläche **Erstellen**. Das Portal validiert Ihre Vorlage und stellt Ihren geklonten Hub bereit. Wenn Sie Routingkonfigurationsdaten haben, werden diese zwar in den neuen Hub einbezogen, verweisen aber weiterhin auf die Ressourcen am vorherigen Standort.
+
+   :::image type="content" source="./media/iot-hub-how-to-clone/iot-hub-custom-deployment-final.png" alt-text="Screenshot der endgültigen benutzerdefinierten Bereitstellungsseite":::
 
 ## <a name="managing-the-devices-registered-to-the-iot-hub"></a>Verwalten der Geräte, die beim IoT Hub registriert sind
 

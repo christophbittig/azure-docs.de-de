@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/10/2021
-ms.openlocfilehash: 8bd100826564ac865a17bf869ad54ce3f9ceef5d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8004ef319efc08610f9c1a5de16b7c430d51d666
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340144"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209177"
 ---
 # <a name="view-edit-and-delete-assets-in-purview-catalog"></a>Anzeigen, Bearbeiten und Löschen von Ressourcen im Purview-Katalog
 
@@ -71,7 +71,7 @@ Ressourcenspezifische Glossarbegriffe sind ein verwaltetes Vokabular für Gesch�
 
 ## <a name="editing-assets"></a>Bearbeiten von Ressourcen
 
-Sie können eine Ressource bearbeiten, indem Sie links oben in der Ressource auf das Bearbeitungssymbol klicken.
+Sie können ein Asset bearbeiten, indem Sie auf das Bearbeitungssymbol in der oberen linken Ecke des Assets klicken.
 
 :::image type="content" source="media/catalog-asset-details/asset-edit-delete.png" alt-text="Schaltflächen zum Bearbeiten und Löschen von Ressourcen":::
 
@@ -89,7 +89,7 @@ Wenn Sie eine Aktualisierung auf Spaltenebene vornehmen, wie z. B. Hinzufügen 
 
 ## <a name="deleting-assets"></a>Löschen von Ressourcen
 
-Sie können eine Ressource löschen, indem Sie unter dem Namen der Ressource auf das Löschsymbol klicken.
+Sie können ein Asset löschen, indem Sie auf das Löschsymbol unter dem Namen des Assets klicken.
 
 ### <a name="delete-behavior-explained"></a>Erläuterung des Löschverhaltens
 

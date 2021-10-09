@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: ayshak
 ms.reviewer: jushiman
-ms.openlocfilehash: c040c0d4d3c4d2492a866afbf86fdde52809cd45
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 5b27feeb6e185ce2ea4bd247a3251a6e3db7dc98
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691184"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153594"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4- und Easv4-Serie
 
@@ -64,17 +64,17 @@ Die Größen der Eav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 745
 
 Die Größen der Easv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und SSD Premium verwenden kann. Die Größen der Easv4-Serie sind ideal für arbeitsspeicherintensive Unternehmensanwendungen.
 
-| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Durchsatz des Datenträgers mit maximalem Burst ohne Cache: IOPS/MBit/s<sup>1</sup> | Maximale Anzahl NICs | Erwartete Netzwerkbandbreite (MBit/s) |
-|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| Standard_E2as_v4<sup>3</sup>|2|16|32|4|4000/32 (50)|3200/48| 4000/200 |2 | 800 |
-| Standard_E4as_v4 <sup>2</sup>|4|32|64|8|8000/64 (100)|6400/96| 8000/200 |2 | 1600 |
-| Standard_E8as_v4 <sup>2</sup>|8|64|128|16|16000/128 (200)|12800/192| 16000/400 |4 | 3200 |
-| Standard_E16as_v4 <sup>2</sup>|16|128|256|32|32.000/255 (400)|25600/384| 32000/800 |8 | 6400 |
-| Standard_E20as_v4|20|160|320|32|40.000/320 (500)|32000/480| 40000/1000 |8 | 8.000 |
-| Standard_E32as_v4<sup>2</sup>|32|256|512|32|64.000/510 (800)|51200/768| 64000/1600 |8 | 12800 |
-| Standard_E48as_v4|48|384|768|32|96.000/1.020 (1.200)|76.800/1.148| 80.000/2.000 |8 | 19200 |
-| Standard_E64as_v4<sup>2</sup>|64|512|1024|32|128.000/1.020 (1.600)|80000/1200| 80.000/2.000 |8 | 25600 |
-| Standard_E96as_v4 <sup>2</sup>|96|672|1344|32|192.000/1.020 (2.400)|80000/1200| 80.000/2.000 |8 | 32000 |
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Burst-Durchsatz für Cache- und temporären Speicher: IOPS / MBps <sup>1</sup> | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Durchsatz des Datenträgers mit maximalem Burst ohne Cache: IOPS/MBit/s<sup>1</sup> | Maximale Anzahl NICs | Erwartete Netzwerkbandbreite (MBit/s) |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| Standard_E2as_v4<sup>3</sup>|2|16|32|4|4000/32 (50)| 4000/100 |3200/48| 4000/200 |2 | 800 |
+| Standard_E4as_v4 <sup>2</sup>|4|32|64|8|8000/64 (100)| 8000/200 |6400/96| 8000/200 |2 | 1600 |
+| Standard_E8as_v4 <sup>2</sup>|8|64|128|16|16000/128 (200)| 16000/400 |12800/192| 16000/400 |4 | 3200 |
+| Standard_E16as_v4 <sup>2</sup>|16|128|256|32|32.000/255 (400)| 32000/800 |25600/384| 32000/800 |8 | 6400 |
+| Standard_E20as_v4|20|160|320|32|40.000/320 (500)| 40000/1000 |32000/480| 40000/1000 |8 | 8.000 |
+| Standard_E32as_v4<sup>2</sup>|32|256|512|32|64.000/510 (800)| 64000/1600 |51200/768| 64000/1600 |8 | 12800 |
+| Standard_E48as_v4|48|384|768|32|96.000/1.020 (1.200)| 96000/2000 |76.800/1.148| 80.000/2.000 |8 | 19200 |
+| Standard_E64as_v4<sup>2</sup>|64|512|1024|32|128.000/1.020 (1.600)| 128000/2000 |80000/1200| 80.000/2.000 |8 | 25600 |
+| Standard_E96as_v4 <sup>2</sup>|96|672|1344|32|192.000/1.020 (2.400)| 192.000/2.000 |80000/1200| 80.000/2.000 |8 | 32000 |
 
 <sup>1</sup> VMs der Easv4-Serie können mit einem [Burst](./disk-bursting.md) ihre Datenträgerleistung für jeweils bis zu 30 Minuten auf das maximale Bursting verbessern. <br>
 <sup>2</sup> [Eingeschränkte Kerngrößen verfügbar](./constrained-vcpu.md) <br>

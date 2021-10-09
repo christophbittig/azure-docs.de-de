@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 07/26/2021
 ms.author: mimckitt
-ms.openlocfilehash: c382954cf54779350e78fdadef7d0f4738dca48f
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: cfc30046d33ad9e6f91b866dc5653fbbcbdbd995
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634664"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577730"
 ---
 # <a name="av1-series-retirement"></a>Ausmusterung der Av1-Serie
 
@@ -24,7 +24,7 @@ Am 31. August 2024 werden die Basic- und Standard-VMs der A-Serie ausgemustert. 
 
 ## <a name="migrate-workloads-from-basic-and-standard-a-series-vms-to-av2-series-vms"></a>Migrieren von Workloads von Basic- und Standard-VMs der A-Serie auf VMs der Av2-Serie 
 
-Sie können die Größe Ihrer virtuellen Computer mithilfe des [Azure-Portals](https://portal.azure.com), mit [PowerShell](windows/resize-vm.md) und der [CLI](linux/change-vm-size.md) auf die Av2-Serie anpassen. Im Folgenden finden Sie Beispiele dafür, wie Sie die Größe Ihrer VM über das Azure-Portal und mithilfe von PowerShell ändern können. 
+Sie können die Größe Ihrer virtuellen Maschinen über das [Azure-Portal, die PowerShell oder die Befehlszeilenschnittstelle](resize-vm.md) auf die Av2-Serie umstellen. Im Folgenden finden Sie Beispiele dafür, wie Sie die Größe Ihrer VM über das Azure-Portal und mithilfe von PowerShell ändern können. 
 
 > [!IMPORTANT]
 > Die Größenänderung für den virtuellen Computer führt zu einem Neustart. Es wird empfohlen, Aktionen auszuführen, die außerhalb der Geschäftszeiten zu einem Neustart führen. 

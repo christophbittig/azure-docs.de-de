@@ -1,5 +1,6 @@
 ---
-title: Deaktivieren von Benutzeranmeldungen für eine Unternehmens-App in Azure AD
+title: Deaktivieren des Anmeldeverfahrens für Benutzer
+titleSuffix: Azure AD
 description: Deaktivieren einer Unternehmens-App in Azure Active Directory, damit sich Benutzer nicht mehr bei der App anmelden können
 services: active-directory
 author: davidmu1
@@ -8,33 +9,42 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/12/2019
+ms.date: 09/23/2021
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca695fc0e84f3db3b98c3e25333d58279ad53f1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e1c07d650ee3b04099a4e4e41cdd7ee7db200bff
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339629"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061806"
 ---
-# <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Deaktivieren von Benutzeranmeldungen für eine Unternehmens-App in Azure Active Directory
+# <a name="disable-how-a-user-signs-in-for-an-application-in-azure-active-directory"></a>Deaktivieren der Anmeldung eines Benutzers für eine Anwendung in Azure Active Directory
 
-In Azure Active Directory (Azure AD) können Sie auf einfache Weise eine Unternehmensanwendung deaktivieren, damit sich keine Benutzer mehr bei der Anwendung anmelden können. Sie müssen über die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App verfügen. Außerdem müssen Sie ein globaler Administrator für das Verzeichnis sein.
+In diesem Artikel deaktivieren Sie, wie sich ein Benutzer bei einer Anwendung in Azure Active Directory anmeldet.
 
-## <a name="how-do-i-disable-user-sign-ins"></a>Wie deaktiviere ich Benutzeranmeldungen?
+## <a name="prerequisites"></a>Voraussetzungen
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-1. Wählen Sie **Alle Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
-1. Wählen Sie im Bereich **Azure Active Directory** -  **_Verzeichnisname_ *_ (also dem Azure AD-Bereich für das Verzeichnis, das Sie verwalten) die Option _* Unternehmensanwendungen** aus.
-1. Im Bereich **Unternehmensanwendungen – Alle Anwendungen** wird eine Liste der Apps angezeigt, die Sie verwalten können. Wählen Sie eine App aus.
-1. Wählen Sie im Bereich ***App-Name** _ (dem Bereich mit dem Namen der ausgewählten App im Titel) die Option _*Eigenschaften** aus.
-1. Wählen Sie im Bereich ***App-Name** _ – _ *Eigenschaften** für die Option **Aktiviert für die Benutzeranmeldung?** die Einstellung **Nein** aus.
-1. Klicken Sie auf **Speichern** .
+Um zu deaktivieren, wie sich ein Benutzer anmeldet, müssen Sie:
+
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Eine der folgenden Rollen: Globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals.
+
+## <a name="disable-how-a-user-signs-in"></a>Deaktivieren der Benutzeranmeldung
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator für Ihr Verzeichnis an.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie **Unternehmensanwendungen**.
+1. Suchen Sie nach der Anwendung, die Sie für die Anmeldung eines Benutzers sperren möchten, und wählen Sie die Anwendung aus.
+1. Wählen Sie **Eigenschaften** aus.
+1. Wählen Sie **„Nein“** für **„Aktiviert für Benutzer zur Anmeldung?“**
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Deaktivieren einer nicht aufgelisteten App mit Azure AD PowerShell
+
+Stellen Sie sicher, dass Sie das AzureAD-Modul installiert haben (verwenden Sie den Befehl Install-Module -Name AzureAD). Falls Sie aufgefordert werden, ein NuGet-Modul oder das neue „Azure Active Directory V2 PowerShell“-Modul zu installieren, geben Sie Y ein und drücken Sie die Eingabetaste.
 
 Wenn Sie die App-ID einer App kennen, die nicht in der Liste der Unternehmens-Apps angezeigt wird (weil Sie z.B. die App gelöscht haben oder der Dienstprinzipal noch nicht erstellt wurde, da die App von Microsoft vorab autorisiert wurde), können Sie den Dienstprinzipal für die App manuell erstellen und die App dann mit einem [AzureAD PowerShell-Cmdlet](/powershell/module/azuread/New-AzureADServicePrincipal) deaktivieren.
 
@@ -55,7 +65,4 @@ if ($servicePrincipal) {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Alle meine Gruppen anzeigen](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](assign-user-or-group-access-portal.md)
-* [Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App](./assign-user-or-group-access-portal.md)
-* [Ändern des Namens oder Logos einer Unternehmens-App](./add-application-portal-configure.md)
+- [Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App](./assign-user-or-group-access-portal.md)

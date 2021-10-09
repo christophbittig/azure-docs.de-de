@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, has-adal-ref
-ms.openlocfilehash: d016d7b5a88aa5413652fa3ed032c04680030142
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: a5e4f3cb33451b8668b4212fca248d0b7d9c1438
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419161"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734839"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Authentifizierungsflows und Anwendungsszenarien
 
@@ -59,7 +59,7 @@ Es sind jedoch auch Daemon-Apps vorhanden. In diesen Szenarien rufen Anwendungen
 
 Sicherheitstoken können von verschiedenen Arten von Anwendungen abgerufen werden. Diese Anwendungen werden in der Regel in die folgenden drei Kategorien unterteilt. Jede wird mit unterschiedlichen Bibliotheken und Objekten verwendet.
 
-- **Single-Page-Webanwendungen:** Bei diesen auch als SPAs bezeichneten Web-Apps werden Token über eine im Browser ausgeführte JavaScript- oder TypeScript-App abgerufen. Viele moderne Apps verfügen über eine Single-Page-Webanwendung am Front-End, die hauptsächlich in JavaScript geschrieben ist. Die Anwendung nutzt häufig ein Framework wie Angular, React oder Vue. „MSAL.js“ ist die einzige Microsoft-Authentifizierungsbibliothek, die Single-Page-Webanwendungen unterstützt.
+- **Single-Page-Webanwendungen:** Bei diesen auch als SPAs bezeichneten Web-Apps werden Token über eine im Browser ausgeführte JavaScript- oder TypeScript-App abgerufen. Viele moderne Apps verfügen über eine Single-Page-Webanwendung am Front-End, die hauptsächlich in JavaScript geschrieben ist. Die Anwendung nutzt häufig ein Framework wie Angular, React oder Vue. MSAL.js ist die einzige Microsoft Authentication Library, die Single-Page-Anwendungen unterstützt.
 
 - **Öffentliche Clientanwendungen:** Mit Apps in dieser Kategorie, beispielsweise den folgenden Arten, werden Benutzer immer angemeldet:
   - Desktop-Apps, die Web-APIs im Namen angemeldeter Benutzer aufrufen
@@ -133,11 +133,11 @@ Anwendungen, die auf einem Gerät ohne Browser ausgeführt werden, können weite
 
 ![Gerätecodefluss](media/scenarios/device-code-flow-app.svg)
 
-Für öffentliche Clientanwendungen steht zwar auch der [Benutzername/Kennwort-Flow](scenario-desktop-acquire-token.md#username-and-password) zur Verfügung, allerdings wird von der Verwendung abgeraten. Er wird beispielsweise in DevOps-Szenarien benötigt.
+Für öffentliche Clientanwendungen steht zwar auch der [Benutzername/Kennwort-Flow](scenario-desktop-acquire-token-username-password.md) zur Verfügung, allerdings wird von der Verwendung abgeraten. Er wird beispielsweise in DevOps-Szenarien benötigt.
 
 Wenn Sie den Benutzername/Kennwort-Flow verwenden, werden Ihre Anwendungen eingeschränkt. Anwendungen können beispielsweise keine Benutzer anmelden, die eine mehrstufige Authentifizierung oder das Tool für bedingten Zugriff in Azure AD verwenden müssen. Auch einmaliges Anmelden steht für Ihre Anwendungen nicht zur Verfügung. Die Authentifizierung mit dem Benutzername/Kennwort-Flow widerspricht den Prinzipien der modernen Authentifizierung und wird lediglich aus Legacygründen bereitgestellt.
 
-Wenn Sie in Desktop-Apps den Tokencache dauerhaft beibehalten möchten, können Sie die [Serialisierung des Tokencaches](scenario-desktop-acquire-token.md#file-based-token-cache) anpassen. Die Implementierung einer [dualen Tokencacheserialisierung](scenario-desktop-acquire-token.md#dual-token-cache-serialization-msal-unified-cache--adal-v3) ermöglicht die Verwendung abwärts- und aufwärtskompatibler Tokencaches. Diese Token unterstützen frühere Generationen von Authentifizierungsbibliotheken. Zu den spezifischen Bibliotheken zählen die Versionen 3 und 4 der Azure AD-Authentifizierungsbibliothek für .NET (ADAL.NET).
+Wenn Sie in Desktop-Apps den Tokencache dauerhaft beibehalten möchten, können Sie die [Serialisierung des Tokencaches](msal-net-token-cache-serialization.md) anpassen. Die Implementierung einer [dualen Tokencacheserialisierung](msal-net-token-cache-serialization.md#dual-token-cache-serialization-msal-unified-cache-and-adal-v3) ermöglicht die Verwendung abwärts- und aufwärtskompatibler Tokencaches. Diese Token unterstützen frühere Generationen von Authentifizierungsbibliotheken. Zu den spezifischen Bibliotheken zählen die Versionen 3 und 4 der Azure AD-Authentifizierungsbibliothek für .NET (ADAL.NET).
 
 Weitere Informationen finden Sie unter [Szenario: Desktop-App, die Web-APIs aufruft](scenario-desktop-overview.md).
 
@@ -224,7 +224,7 @@ Szenarien mit Tokenabruf werden auch OAuth 2.0-Authentifizierungsflows zugeordne
  </tr>
 
   <tr>
-   <td rowspan="3"><a href="scenario-desktop-overview.md"><img alt=Desktop app that calls web APIs" src="media/scenarios/desktop-app.svg"></a></td>
+   <td rowspan="3"><a href="scenario-desktop-overview.md"><img alt="Desktop app that calls web APIs" src="media/scenarios/desktop-app.svg"></a></td>
    <td rowspan="4"><a href="scenario-desktop-overview.md">Desktop-App, die Web-APIs aufruft</a></td>
    <td>Interaktiv unter Verwendung eines <a href="v2-oauth2-auth-code-flow.md">Autorisierungscodes</a> mit PKCE</td>
    <td>Geschäfts-, Schul- oder Unikonten, persönliche Konten und Azure AD B2C</td>
@@ -241,7 +241,7 @@ Szenarien mit Tokenabruf werden auch OAuth 2.0-Authentifizierungsflows zugeordne
  </tr>
 
   <tr>
-   <td><a href="scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
+   <td><a href="scenario-desktop-acquire-token-device-code-flow.md"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
    <td><a href="v2-oauth2-device-code.md">Gerätecode</a></td>
    <td>Geschäfts-, Schul- oder Unikonten, persönliche Konten, jedoch nicht Azure AD B2C</td>
  </tr>
@@ -277,10 +277,10 @@ Szenarien mit Tokenabruf werden auch OAuth 2.0-Authentifizierungsflows zugeordne
 
 ## <a name="scenarios-and-supported-platforms-and-languages"></a>Szenarien und unterstützte Plattformen und Sprachen
 
-Microsoft-Authentifizierungsbibliotheken unterstützen verschiedene Plattformen:
+Die Microsoft-Authentifizierungsbibliotheken unterstützen mehrere Plattformen:
 
 - .NET Core
-- .NET Framework
+- .NET Framework
 - Java
 - JavaScript
 - macOS

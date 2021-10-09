@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 08/04/2021
-ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: b4b7f35173b4f1d6d83d9b7ffd937704750f5502
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.date: 09/24/2021
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
+ms.openlocfilehash: 1bb8066af887005848f711437d33257ae2118e46
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122603968"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093476"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken
 
@@ -50,7 +50,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen
 
 + Ihr Benutzerkonto muss über die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu den folgenden Aktionen berechtigt werden, um Ressourcen in einem virtuellen Netzwerk oder Subnetz bereitstellen zu können:
 
-    - „Microsoft.Network/virtualNetworks/*/read“ für die VNET-Ressource Dies ist für ARM-Vorlagenbereitstellungen nicht erforderlich.
+    - „Microsoft.Network/virtualNetworks/*/read“ für die VNET-Ressource Dies ist für Azure Resource Manager (ARM)-Vorlagenbereitstellungen nicht erforderlich.
     - „Microsoft.Network/virtualNetworks/subnet/join/action“ auf der Subnetzressource
 
     Weitere Informationen zur rollenbasierten Zugriffssteuerung von Azure in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](../role-based-access-control/built-in-roles.md#networking).
@@ -63,6 +63,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen
     * Ein Computecluster kann dynamisch skaliert werden. Wenn nicht ausreichend freie IP-Adressen vorhanden sind, wird der Cluster teilweise zugeordnet.
     * Eine Compute-Instanz erfordert nur eine IP-Adresse.
 
+* Um eine Compute-Instanz [ohne öffentliche IP-Adresse](#no-public-ip) zu erstellen (eine Vorschaufunktion), muss Ihr Arbeitsbereich einen privaten Endpunkt für die Verbindung mit dem VNet verwenden. Weitere Informationen finden Sie unter [„Konfigurieren eines privaten Endpunkts für Azure Machine Learning Workspace“](how-to-configure-private-link.md).
 * Stellen Sie sicher, dass keine Sicherheitsrichtlinien oder Sperren vorhanden sind, die Berechtigungen zum Verwalten des virtuellen Netzwerks einschränken. Wenn Sie auf Richtlinien oder Sperren prüfen, betrachten Sie sowohl das Abonnement als auch die Ressourcengruppe für das virtuelle Netzwerk.
 * Überprüfen Sie, ob Berechtigungen für die Verwaltung des virtuellen Netzwerks durch Ihre Sicherheitsrichtlinien oder -sperren für das Abonnement oder die Ressourcengruppe Ihres virtuellen Netzwerks eingeschränkt werden. 
 * Wenn Sie das virtuelle Netzwerk durch Einschränkung des Datenverkehrs sichern möchten, lesen Sie den Abschnitt [Erforderlicher öffentlicher Internetzugriff](#required-public-internet-access).
@@ -88,7 +89,13 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen
 
         :::image type="content" source="./media/how-to-secure-training-vnet/compute-instance-cluster-network-security-group.png" alt-text="Screenshot: NSG":::
 
-    * Eine öffentliche IP-Adresse. Sollte die Erstellung einer öffentlichen IP-Adresse durch Azure-Richtlinienzuweisungen verhindert werden, wird die Cluster-/Instanzenbereitstellung fehlschlagen.
+
+        > [!TIP]
+        > Wenn Ihre Compute-Instanz keine öffentliche IP-Adresse verwendet (eine Vorschaufunktion), sind diese eingehenden NSG-Regeln nicht erforderlich. Wenn Sie auch einen Compute-Cluster verwenden, sind diese Regeln auch für den Cluster erforderlich.
+    * Für Compute-Cluster eine öffentliche IP-Adresse. Wenn Sie Azure-Richtlinienzuweisungen haben, die die Erstellung von öffentlichen IPs verbieten, wird die Bereitstellung des Compute fehlschlagen.
+
+    * Bei Compute-Instanzen ist es jetzt möglich, die öffentliche IP-Adresse zu entfernen (eine Vorschaufunktion). Wenn Sie Azure-Richtlinienzuweisungen haben, die die Erstellung einer öffentlichen IP verbieten, wird die Bereitstellung der Compute-Instance erfolgreich sein.
+
     * Ein Lastenausgleichsmodul
 
     Bei Computeclustern werden diese Ressourcen bei jedem Herunterskalieren des Clusters auf 0 Knoten gelöscht und beim Hochskalieren erstellt.
@@ -109,6 +116,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen
 * Wenn Ihr Arbeitsbereich einen privaten Endpunkt verwendet, ist der Zugriff auf die Compute-Instanz nur innerhalb des virtuellen Netzwerks möglich. Wenn Sie eine benutzerdefinierte DNS- oder Hostsdatei verwenden, fügen Sie einen Eintrag für `<instance-name>.<region>.instances.azureml.ms` hinzu. Ordnen Sie diesen Eintrag der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs zu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md).
 * VNet-Dienstendpunktrichtlinien funktionieren für Systemspeicherkonten des Computeclusters/der Compute-Instanz nicht.
 * Wenn sich Speicher- und Compute-Instanzen in unterschiedlichen Regionen befinden, können zeitweilig Timeouts auftreten.
+* Wenn die Azure Container Registry für Ihren Arbeitsbereich einen privaten Endpunkt zur Verbindung mit dem virtuellen Netzwerk verwendet, können Sie keine verwaltete Identität für die Compute-Instanz verwenden. Um eine verwaltete Identität mit der Compute-Instanz zu verwenden, darf die Container-Registrierung nicht in das VNet aufgenommen werden.
 * Wenn Sie Jupyter Notebooks auf einer Compute-Instanz verwenden möchten:
 
     * Deaktivieren Sie die WebSocket-Kommunikation nicht. Vergewissern Sie sich, dass Ihr Netzwerk die Websocket-Kommunikation mit `*.instances.azureml.net` und `*.instances.azureml.ms` gestattet.
@@ -117,10 +125,12 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen
 * __Computecluster__ können in einer anderen Region als der Ihres Arbeitsbereichs erstellt werden. Diese Funktionalität befindet sich in der __Vorschau__ und ist nur für __Computecluster__ und nicht für Compute-Instanzen verfügbar. Wenn Sie eine andere Region für den Cluster verwenden, gelten die folgenden Einschränkungen:
 
     * Wenn sich Ihre mit dem Arbeitsbereich verbundenen Ressourcen, z. B. Speicher, in einem anderen virtuellen Netzwerk befinden als der Cluster, richten Sie ein globales Peering virtueller Netzwerke zwischen den Netzwerken ein. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](../virtual-network/virtual-network-peering-overview.md).
-    * Wenn Sie einen Arbeitsbereich mit privaten Endpunkten verwenden, wird das Erstellen des Clusters in einer anderen Region __nicht unterstützt__.
     * Es kann sein, dass sich die Netzwerklatenz und die Datenübertragungskosten erhöhen. Latenz und Kosten können beim Erstellen des Clusters und beim Anwenden von Aufträgen auf den Cluster anfallen.
 
     Anleitungen wie die Verwendung von NSG-Regeln, benutzerdefinierten Routen und Eingabe-/Ausgabeanforderungen werden ganz normal angewendet, wenn eine andere Region als für den Arbeitsbereich verwendet wird.
+
+    > [!WARNING]
+    > Wenn Sie einen privaten, __endpunktfähigen Arbeitsbereich__ verwenden, wird die Erstellung des Clusters in einer anderen Region __nicht unterstützt__.
 
 ### <a name="azure-databricks"></a>Azure Databricks
 
@@ -139,7 +149,7 @@ Weitere Informationen zur Verwendung von Azure Databricks mit einem virtuellen N
 
 Informationen zur Verwendung einer Firewalllösung finden Sie unter [Verwenden einer Firewall mit Azure Machine Learning](how-to-access-azureml-behind-firewall.md).
 
-## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>Computecluster und -instanzen 
+## <a name="compute-clusters"></a><a name="compute-cluster"></a>Compute-Cluster
 
 Verwenden Sie die folgenden Registerkarten, um auszuwählen, wie Sie einen Computecluster erstellen möchten:
 
@@ -158,10 +168,11 @@ Verwenden Sie die folgenden Schritte, um einen Computecluster im Azure Machine L
 
 1. Legen Sie im Abschnitt __Einstellungen konfigurieren__ den __Computenamen__, das __virtuelle Netzwerk__ und das __Subnetz__ fest.
 
+    :::image type="content" source="media/how-to-enable-virtual-network/create-compute-cluster-config.png" alt-text="Der Screenshot zeigt die Einstellung des Compute-Namens, des virtuellen Netzwerks und des Subnetzes.":::
+
     > [!TIP]
     > Wenn Ihr Arbeitsbereich einen privaten Endpunkt verwendet, um eine Verbindung mit dem virtuellen Netzwerk herzustellen, wird das Auswahlfeld __Virtuelles Netzwerk__ abgeblendet angezeigt.
-
-    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster-config.png" alt-text="Screenshot: Einstellungen des virtuellen Netzwerks":::
+    > 
 
 1. Wählen Sie __Erstellen__ aus, um den Computecluster zu erstellen.
 
@@ -210,7 +221,26 @@ Nach Abschluss des Erstellungsprozesses trainieren Sie Ihr Modell, indem Sie den
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
-### <a name="inbound-traffic"></a>Eingehender Datenverkehr
+## <a name="compute-instance"></a>Compute-Instanz
+
+Schritte zum Erstellen einer Compute-Instanz, die in einem virtuellen Netzwerk bereitgestellt wird, finden Sie unter [„Erstellen und Verwalten einer Azure Machine Learning-Recheninstanz“](how-to-create-manage-compute-instance.md).
+
+### <a name="no-public-ip-for-compute-instances-preview"></a><a name="no-public-ip"></a>Keine öffentliche IP für Compute-Instanzen (Vorschau)
+
+Wenn Sie **keine öffentliche IP** aktivieren, verwendet Ihre Compute-Instanz keine öffentliche IP für die Kommunikation mit anderen Abhängigkeiten. Stattdessen kommuniziert sie ausschließlich innerhalb des virtuellen Netzwerks über das Azure Private Link-Ökosystem sowie über Service-/Privat-Endpunkte, wodurch die Notwendigkeit einer öffentlichen IP vollständig entfällt. Keine öffentliche IP-Adresse verhindert den Zugang und die Auffindbarkeit des Knotenpunkts der Compute-Instanz aus dem Internet und eliminiert damit einen wichtigen Bedrohungsvektor. Compute-Instanzen führen auch eine Paketfilterung durch, um jeglichen Verkehr von außerhalb des virtuellen Netzwerks abzuweisen. **Keine öffentlichen IP-** Instanzen sind von [Azure Private Link](how-to-configure-private-link.md) für Azure Machine Learning Workspace abhängig. 
+
+Damit **ausgehende Verbindungen** funktionieren, müssen Sie eine Egress-Firewall wie die Azure-Firewall mit benutzerdefinierten Routen einrichten. Sie können beispielsweise eine Firewall mit [ein- und ausgehender Konfiguration](how-to-access-azureml-behind-firewall.md) verwenden und den Datenverkehr dorthin leiten, indem Sie eine Routentabelle in dem Teilnetz definieren, in dem die Compute-Instanz bereitgestellt wird. Der Eintrag in der Routentabelle kann den nächsten Hop der privaten IP-Adresse der Firewall mit dem Adresspräfix 0.0.0.0/0 einrichten.
+
+Eine Compute-Instanz, bei der **keine öffentliche IP** aktiviert ist, hat im Vergleich zu einer Compute-Instanz mit öffentlicher IP **keine Anforderungen an die eingehende Kommunikation** aus dem öffentlichen Internet. Insbesondere ist keine der beiden NSG-Regeln für den Eingang (`BatchNodeManagement`, `AzureMachineLearning`) erforderlich.
+
+Für eine Compute-Instanz mit **keiner öffentlichen IP** müssen Sie außerdem private Endpunkt-Netzwerkrichtlinien und private Link-Service-Netzwerkrichtlinien deaktivieren. Diese Anforderungen stammen von Azure Private Link Service und Private Endpoints und sind nicht Azure Machine Learning-spezifisch. Befolgen Sie die Anweisungen unter [„Deaktivieren der Netzwerkrichtlinien für die Quell-IP des Private Link-Dienstes“](../private-link/disable-private-link-service-network-policy.md), um die Parameter`disable-private-endpoint-network-policies` und `disable-private-link-service-network-policies`das virtuelle Netzwerk-Subnetz festzulegen.
+
+Um eine Compute-Instanz ohne öffentliche IP-Adresse (eine Vorschaufunktion) in Studio zu erstellen, aktivieren Sie das Kontrollkästchen **keine öffentliche IP** im Abschnitt „Virtuelles Netzwerk“.
+Sie können auch keine öffentliche IP-Compute-Instanz über eine ARM-Vorlage erstellen. Setzen Sie in der ARM-Vorlage den Parameter „enableNodePublicIP“ auf „false“.
+
+[!INCLUDE [no-public-ip-info](../../includes/machine-learning-no-public-ip-availibility.md)]
+
+## <a name="inbound-traffic"></a>Eingehender Datenverkehr
 
 [!INCLUDE [udr info for computes](../../includes/machine-learning-compute-user-defined-routes.md)]
 

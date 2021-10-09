@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 5cc264171c6c2dc5588156af2d3d0deb21e4fe94
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: e9a5b288976d375d9f773fee3dc1ea671ed902b4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228083"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786520"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web-App, die Web-APIs aufruft: Codekonfiguration
 
@@ -382,7 +382,7 @@ Die Verwendung von Clientassertionen ist ein erweitertes Szenario, das unter [Cl
 ## <a name="token-cache"></a>Tokencache
 
 > [!IMPORTANT]
-> Die Tokencache-Implementierung für Web-Apps oder Web-APIs unterscheidet sich von der Implementierung für Desktopanwendungen, die häufig [dateibasiert](scenario-desktop-acquire-token.md#file-based-token-cache) ist.
+> Die Tokencache-Implementierung für Web-Apps oder Web-APIs unterscheidet sich von der Implementierung für Desktopanwendungen, die häufig [dateibasiert](msal-net-token-cache-serialization.md) ist.
 > Aus Sicherheits- und Leistungsgründen ist es wichtig, sicherzustellen, dass es für Web-Apps und Web-APIs ein Tokencache pro Benutzerkonto gibt. Sie müssen den Tokencache für jedes Konto serialisieren.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
@@ -420,13 +420,13 @@ Ausführliche Informationen zu den Tokencacheanbietern finden Sie im Artikel [To
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Die Tokencache-Implementierung für Web-Apps oder Web-APIs unterscheidet sich von der Implementierung für Desktopanwendungen, die häufig [dateibasiert](scenario-desktop-acquire-token.md#file-based-token-cache) ist.
+Die Tokencache-Implementierung für Web-Apps oder Web-APIs unterscheidet sich von der Implementierung für Desktopanwendungen, die häufig [dateibasiert](msal-net-token-cache-serialization.md) ist.
 
 Die Web-App-Implementierung kann die ASP.NET-Sitzung oder den Serverarbeitsspeicher verwenden. Unter [MsalAppBuilder.cs#L39-L51](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/79e3e1f084cd78f9170a8ca4077869f217735a1a/WebApp/Utils/MsalAppBuilder.cs#L57-L58) können Sie beispielsweise sehen, wie die Implementierung des Caches nach der Erstellung der MSAL.NET-Anwendung verknüpft wird:
 
 
 Verwenden Sie zunächst diese Implementierungen:
-- Fügen Sie das Microsoft.Identity.Web-NuGet-Paket hinzu. Diese Tokencache-Serialisierungsmodule werden nicht direkt in MSAL.NET eingefügt, um unerwünschte Abhängigkeiten zu vermeiden. Zusätzlich zu einer höheren Ebene für ASP.NET stellt Microsoft.Identity.Web-Klassen bereit, die als Hilfsklassen für MSAL.NET fungieren. 
+- fügen Sie das „Microsoft.Identity.Web NuGet-Paket“ hinzu. Diese Tokencache-Serialisierungsmodule werden nicht direkt in MSAL.NET eingefügt, um unerwünschte Abhängigkeiten zu vermeiden. Zusätzlich zu einer höheren Ebene für ASP.NET stellt Microsoft.Identity.Web-Klassen bereit, die als Hilfsklassen für MSAL.NET fungieren. 
 - Verwenden Sie in Ihrem Code den Microsoft.Identity.Web-Namespace:
 
   ```csharp

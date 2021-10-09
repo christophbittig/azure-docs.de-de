@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom:
 - devx-track-azurecli
 - devx-track-azurepowershell
-ms.openlocfilehash: b2ba640fec6f9bf2cd09611456967e15ed8f7ade
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 05eca5bb95906ebb34e51f79d70a33cc003f2220
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339354"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091633"
 ---
 # <a name="manage-iot-central-from-azure-cli-or-powershell"></a>Verwalten von IoT Central über Azure CLI oder PowerShell
 
@@ -78,7 +78,7 @@ Diese Befehle erstellen zuerst für die Anwendung eine Ressourcengruppe in der R
 | Parameter         | BESCHREIBUNG |
 | ----------------- | ----------- |
 | resource-group    | Die Ressourcengruppe, die die Anwendung enthält. Diese Ressourcengruppe muss bereits in Ihrem Abonnement vorhanden sein. |
-| location          | Standardmäßig wird in diesem Befehl der Standort aus der Ressourcengruppe verwendet. Sie können eine IoT Central-Anwendung derzeit in den geografischen Regionen **Australien**, **Asien, Osten**, **Europa**, **USA**, **Vereinigtes Königreich** und **Japan** erstellen. |
+| location          | Standardmäßig wird in diesem Befehl der Standort aus der Ressourcengruppe verwendet. Derzeit können Sie eine IoT Central-Anwendung in den Regionen e **Australien Ost**, **Zentral-USA**, **Ost-USA**, **Ost-USA 2**, **Japan Ost**, **Nordeuropa**, **Südostasien**, **Großbritannien Süd**, **Westeuropa** und **West-USA** erstellen. |
 | name              | Der Name der Anwendung im Azure-Portal. Vermeiden Sie Sonderzeichen. Verwenden Sie stattdessen Kleinbuchstaben (a – z), Zahlen (0 – 9) und Bindestriche (-).|
 | subdomain         | Die Unterdomäne in der URL der Anwendung. Im Beispiel lautet die Anwendungs-URL `https://mysubdomain.azureiotcentral.com`. |
 | sku               | Derzeit können Sie **ST1** oder **ST2** verwenden. Weitere Informationen finden Sie unter [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/). |
@@ -108,7 +108,7 @@ Das Skript erstellt zuerst für die Anwendung eine Ressourcengruppe in der Regio
 |Parameter         |BESCHREIBUNG |
 |------------------|------------|
 |ResourceGroupName |Die Ressourcengruppe, die die Anwendung enthält. Diese Ressourcengruppe muss bereits in Ihrem Abonnement vorhanden sein. |
-|Location |Standardmäßig wird in diesem Cmdlet der Standort aus der Ressourcengruppe verwendet. Sie können eine IoT Central-Anwendung derzeit in den geografischen Regionen **Australien**, **Asien, Osten**, **Europa**, **USA**, **Vereinigtes Königreich** und **Japan** erstellen. |
+|Location |Standardmäßig wird in diesem Cmdlet der Standort aus der Ressourcengruppe verwendet. Derzeit können Sie eine IoT Central-Anwendung in den Regionen **Australien Ost**, **Zentral-USA**, **Ost-USA**, **Ost-USA 2**, **Japan Ost**, **Nordeuropa**, **Südostasien**, **Großbritannien Süd**, **Westeuropa** und **West-USA** erstellen. |
 |Name              |Der Name der Anwendung im Azure-Portal. Vermeiden Sie Sonderzeichen. Verwenden Sie stattdessen Kleinbuchstaben (a – z), Zahlen (0 – 9) und Bindestriche (-). |
 |Unterdomäne         |Die Unterdomäne in der URL der Anwendung. Im Beispiel lautet die Anwendungs-URL `https://mysubdomain.azureiotcentral.com`. |
 |Sku               |Derzeit können Sie **ST1** oder **ST2** verwenden. Weitere Informationen finden Sie unter [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/). |

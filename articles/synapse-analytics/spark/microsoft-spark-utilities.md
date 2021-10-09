@@ -11,12 +11,12 @@ ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 5e0590dd524c516b2c6b909184de1f2d65f0074c
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: f5dba6b81befd569523111b997c29e54b3e82881
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257046"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774612"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Einführung in Microsoft Spark-Hilfsprogramme
 
@@ -453,9 +453,17 @@ FS.Rm("file path", true) // Set the last parameter as True to remove all files a
 
 ::: zone-end
 
-:::zone pivot = "programming-language-python"
+
 
 ## <a name="notebook-utilities"></a>Notebook-Utilities 
+
+:::zone pivot = "programming-language-csharp"
+
+Wird nicht unterstützt.
+
+::: zone-end
+
+:::zone pivot = "programming-language-python"
 
 Sie können die MSSparkUtils Notebook Utilities verwenden, um ein Notebook auszuführen oder ein Notebook mit einem Wert zu beenden. Führen Sie den folgenden Befehl aus, um eine Übersicht über die verfügbaren Methoden zu erhalten:
 
@@ -472,8 +480,8 @@ run(path: String, timeoutSeconds: int, arguments: Map): String -> This method ru
 
 ```
 
-### <a name="run-a-notebook"></a>Ausführen eines Notebooks
-Führt ein Notebook aus und gibt dessen Exit-Wert zurück. Sie können Verschachtelungsfunktionsaufrufe in einem Notebook interaktiv oder in einer Pipeline ausführen. Das Notebook, auf das verwiesen wird, wird auf dem Spark-Pool ausgeführt, dessen Notebook diese Funktion aufruft.  
+### <a name="reference-a-notebook"></a>Verweis auf ein Notizbuch
+Verweist auf ein Notizbuch und gibt dessen Exit-Wert zurück. Sie können Verschachtelungsfunktionsaufrufe in einem Notebook interaktiv oder in einer Pipeline ausführen. Das Notebook, auf das verwiesen wird, wird auf dem Spark-Pool ausgeführt, dessen Notebook diese Funktion aufruft.  
 
 ```python
 
@@ -537,10 +545,7 @@ Sample1 run success with input is 20
 ```
 ::: zone-end
 
-
 :::zone pivot = "programming-language-scala"
-
-## <a name="notebook-utilities"></a>Notebook-Utilities 
 
 Sie können die MSSparkUtils Notebook Utilities verwenden, um ein Notebook auszuführen oder ein Notebook mit einem Wert zu beenden. Führen Sie den folgenden Befehl aus, um eine Übersicht über die verfügbaren Methoden zu erhalten:
 
@@ -557,8 +562,8 @@ run(path: String, timeoutSeconds: int, arguments: Map): String -> This method ru
 
 ```
 
-### <a name="run-a-notebook"></a>Ausführen eines Notebooks
-Führt ein Notebook aus und gibt dessen Exit-Wert zurück. Sie können Verschachtelungsfunktionsaufrufe in einem Notebook interaktiv oder in einer Pipeline ausführen. Das Notebook, auf das verwiesen wird, wird auf dem Spark-Pool ausgeführt, dessen Notebook diese Funktion aufruft.  
+### <a name="reference-a-notebook"></a>Verweis auf ein Notizbuch
+Verweist auf ein Notizbuch und gibt dessen Exit-Wert zurück. Sie können Verschachtelungsfunktionsaufrufe in einem Notebook interaktiv oder in einer Pipeline ausführen. Das Notebook, auf das verwiesen wird, wird auf dem Spark-Pool ausgeführt, dessen Notebook diese Funktion aufruft.  
 
 ```scala
 
@@ -675,7 +680,7 @@ Gibt das Azure AD-Token für eine bestimmte Zielgruppe (optional), Name (optiona
 |--|--|
 |Zielgruppenauflösungstyp|'Audience'|
 |Storage-Zielgruppenressource|'Storage'|
-|Data Warehouse-Zielgruppenressource|'DW'|
+|Dedizierte SQL-Pools (Datenlager)|'DW'|
 |Data Lake-Zielgruppenressource|'AzureManagement'|
 |Vault-Zielgruppenressource|'DataLakeStore'|
 |Azure OSSDB-Zielgruppenressource|'AzureOSSDB'|
@@ -1086,6 +1091,31 @@ mssparkutils.env.getClusterId()
 Env.GetClusterId()
 ```
 
+::: zone-end
+
+
+## <a name="runtime-context"></a>Laufzeitkontext
+
+„Mssparkutils runtime utils“ hat 3 Laufzeiteigenschaften aufgezeigt. Sie können den „mssparkutils“ Laufzeitkontext verwenden, um die Eigenschaften wie unten aufgeführt zu erhalten:
+- **Notebookname** - Der Name des aktuellen Notizbuchs, gibt sowohl im interaktiven Modus als auch im Pipelinemodus immer einen Wert zurück.
+- **Pipelinejobid** - Die ID des Pipelinelaufs, gibt im Pipelinemodus einen Wert und im interaktiven Modus einen leeren String zurück.
+- **Activityrunid** - Die Kennung des Aktivitätslaufs im Notebook, gibt im Pipeline-Modus einen Wert und im interaktiven Modus einen leeren String zurück.
+
+Derzeit unterstützt der Laufzeitkontext sowohl Python als auch Scala.
+
+:::zone pivot = "programming-language-python"
+
+```python
+mssparkutils.runtime.context
+```
+::: zone-end
+
+:::zone pivot = "programming-language-scala"
+
+```scala
+%%spark
+mssparkutils.runtime.context
+```
 ::: zone-end
 
 ## <a name="next-steps"></a>Nächste Schritte

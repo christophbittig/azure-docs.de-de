@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: c6dbfd0020598c280e006e863467a4dfa9b29a0c
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 57be98a76621d04ec14af04166117a5f62a40227
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114284510"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061863"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -251,14 +251,15 @@ Aktivieren Sie [TCP-Zeitstempel](https://tools.ietf.org/html/rfc1323) nicht.  Da
 
 ## <a name="monitoring"></a>Überwachung
 
-Öffentliche und interne [Load Balancer Standard](./load-balancer-overview.md) stellen pro Endpunkt und Back-End-Endpunkt den Integritätsteststatus als mehrdimensionale Metriken über Azure Monitor bereit. Diese Metriken können von anderen Azure-Diensten oder Anwendungen von Partnern genutzt werden. 
+Sowohl der öffentliche als auch der interne [Standard Load Balancer](./load-balancer-overview.md) zeigen den Status der Zustandsprüfung pro Endpunkt und Backend-Endpunkt als mehrdimensionale Metrik über [Azure Monitor](./monitor-load-balancer.md) an. Diese Metriken können von anderen Azure-Diensten oder Anwendungen von Partnern genutzt werden. 
 
-Der öffentliche Load Balancer Basic stellt den Integritätsteststatus zusammengefasst pro Back-End-Pool über Azure Monitor-Protokolle bereit.  Azure Monitor-Protokolle steht für interne Load Balancer Basic-Instanzen nicht zur Verfügung.  Mit [Azure Monitor-Protokolle](./monitor-load-balancer.md) können Sie den Testintegritätsstatus und die Testanzahl für den öffentlichen Lastenausgleich überprüfen. Die Protokollierung kann mit Power BI oder Azure Operational Insights verwendet werden, um Statistiken zum Integritätsstatus des Lastenausgleichs bereitzustellen.
+Azure Monitor-Protokolle sind sowohl für öffentliche als auch für interne Basic Load Balancer nicht verfügbar.
 
 ## <a name="limitations"></a>Einschränkungen
 
 - HTTPS-Tests bieten keine Unterstützung für die gegenseitige Authentifizierung mit einem Clientzertifikat.
 - Gehen Sie davon aus, dass bei Integritätstests ein Fehler auftritt, wenn TCP-Zeitstempel aktiviert sind.
+- Eine grundlegende SKU-Load-Balancer-Zustandsprüfung wird mit einem Skalierungssatz für virtuelle Maschinen nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

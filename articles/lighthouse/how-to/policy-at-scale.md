@@ -1,15 +1,15 @@
 ---
 title: Bereitstellen von Azure Policy für delegierte Abonnements in großem Umfang
 description: Hier erfahren Sie, wie Sie mit Azure Lighthouse eine Richtliniendefinition und eine Richtlinienzuweisung für mehrere Mandanten bereitstellen können.
-ms.date: 05/11/2021
+ms.date: 06/13/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d1a14a7f4db1fe70949f0e1caf41479b159ac86c
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e45feb45da482aa960516abec8c339d61016c758
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075527"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673576"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Bereitstellen von Azure Policy für delegierte Abonnements in großem Umfang
 
@@ -22,7 +22,7 @@ In diesem Thema erfahren Sie, wie Sie mithilfe von [Azure Policy](../../governan
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Verwenden von Azure Resource Graph zum Abfragen von Kundenmandanten
 
-Sie können [Azure Resource Graph](../../governance/resource-graph/index.yml) verwenden, um Abfragen bei allen Abonnements in den von Ihnen verwalteten Kundenmandanten auszuführen. In diesem Beispiel werden alle Speicherkonten in diesen Abonnements identifiziert, für die derzeit kein HTTPS-Datenverkehr erforderlich ist.  
+Sie können [Azure Resource Graph](../../governance/resource-graph/overview.md) verwenden, um alle Abonnements in den von Ihnen verwalteten Kunden-Tenants abzufragen. In diesem Beispiel werden alle Speicherkonten in diesen Abonnements identifiziert, für die derzeit kein HTTPS-Datenverkehr erforderlich ist.  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"

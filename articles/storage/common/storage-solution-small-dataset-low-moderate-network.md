@@ -8,15 +8,15 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 2ff426b335f250a0eceb7efe2cdbf6c25671f2d7
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: f5c20e8c026e81ab0aae5e648142a7c94ea8835a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112676297"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588616"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Datenübertragung kleiner Datasets mit geringer bis mittlerer Netzwerkbandbreite
- 
+
 Dieser Artikel bietet einen Überblick über die Datenübertragungslösungen, wenn Sie in Ihrer Umgebung eine geringe bis mittlere Netzwerkbandbreite nutzen und planen, kleine Datasets zu übertragen. Der Artikel beschreibt auch die empfohlenen Datenübertragungsoptionen sowie die jeweilige Schlüsselfunktionsmatrix für dieses Szenario.
 
 Eine Übersicht über alle verfügbaren Datenübertragungsoptionen finden Sie unter [Auswählen einer Azure-Datenübertragungslösung](storage-choose-data-transfer-solution.md).
@@ -25,7 +25,7 @@ Eine Übersicht über alle verfügbaren Datenübertragungsoptionen finden Sie un
 
 Kleine Datasets beziehen sich auf Datengrößen im GB- bis TB-Bereich. Geringe bis mittlere Netzwerkbandbreite bedeutet 45 MBit/s (T3-Verbindung im Datencenter) bis 1 GBit/s an.
 
-- Wenn Sie nur wenige Dateien übertragen und die Datenübertragung nicht automatisieren müssen, sollten Sie die Tools mit einer grafischen Benutzeroberfläche in Betracht ziehen.
+- Wenn Sie nur eine Handvoll Dateien übertragen und die Datenübertragung nicht automatisieren müssen, sollten Sie Tools mit einer grafischen Benutzeroberfläche in Betracht ziehen.
 - Wenn Sie mit Systemverwaltung vertraut sind, können Sie auch die Befehlszeile oder programmgesteuerte Tools bzw. Skripts verwenden.
 
 ## <a name="recommended-options"></a>Empfohlene Optionen
@@ -34,22 +34,21 @@ Die folgenden Optionen werden in diesem Szenario empfohlen:
 
 - **Tools mit grafischer Benutzeroberflächen** wie Azure Storage-Explorer und Azure Storage im Azure-Portal. Diese bieten eine einfache Möglichkeit zum Anzeigen von Daten und schnellen Übertragen einiger Dateien.
 
-    - **Azure Storage-Explorer** ist ein plattformübergreifendes Tool zur Verwaltung der Inhalte Ihrer Azure-Speicherkonten. Mit diesem Tool können Sie Blobs, Dateien, Warteschlangen, Tabellen und Azure Cosmos DB-Entitäten hochladen, herunterladen und verwalten. Verwenden Sie es zusammen mit Blob Storage, um Blobs und Ordner zu verwalten und Blobs zwischen Ihrem lokalen Dateisystem und Blob Storage oder zwischen Speicherkonten hoch- und herunterzuladen.
-    - **Azure-Portal**: Azure Storage im Azure-Portal bietet eine webbasierte Schnittstelle zum Durchsuchen von Dateien und Hochladen einzelner neuer Dateien. Diese Option empfiehlt sich, wenn Sie Ihre Dateien schnell erkunden möchten, ohne Tools zu installieren oder Befehle auszuführen, oder einfach einige neue Dateien hochladen möchten.
+  - **Azure Storage-Explorer** ist ein plattformübergreifendes Tool zur Verwaltung der Inhalte Ihrer Azure-Speicherkonten. Mit diesem Tool können Sie Blobs, Dateien, Warteschlangen, Tabellen und Azure Cosmos DB-Entitäten hochladen, herunterladen und verwalten. Verwenden Sie es zusammen mit Blob Storage, um Blobs und Ordner zu verwalten und Blobs zwischen Ihrem lokalen Dateisystem und Blob Storage oder zwischen Speicherkonten hoch- und herunterzuladen.
+  - **Azure-Portal**: Azure Storage im Azure-Portal bietet eine webbasierte Schnittstelle zum Durchsuchen von Dateien und Hochladen einzelner neuer Dateien. Diese Option empfiehlt sich, wenn Sie Ihre Dateien schnell erkunden möchten, ohne Tools zu installieren oder Befehle auszuführen, oder einfach einige neue Dateien hochladen möchten.
 
 - **Skripterstellung/programmgesteuerte Tools** wie AzCopy, PowerShell. Azure CLI und Azure Storage REST-APIs.
 
-    - **AzCopy**: Verwenden Sie dieses Befehlszeilentool, um Daten einfach und schnell in und aus Azure Blobs, Files und Table Storage mit optimaler Leistung zu kopieren. AzCopy unterstützt Nebenläufigkeit und Parallelität sowie die Fortsetzung unterbrochener Kopiervorgänge.
-    - **Azure PowerShell**: Benutzer, die mit Systemverwaltung vertraut sind, können das Azure Storage-Modul in Azure PowerShell zum Übertragen von Daten verwenden.
-    - **Azure CLI**: Verwenden Sie dieses plattformübergreifende Tool zur Verwaltung von Azure-Diensten und zum Hochladen von Daten in Azure Storage.
-    - **Azure Storage REST-APIs/SDKs**: Beim Erstellen einer Anwendung können Sie die Anwendung mithilfe von Azure Storage REST-APIs/SDKs entwickeln und die in mehreren Sprachen angebotenen Azure-Clientbibliotheken verwenden.
-
+  - **AzCopy**: Verwenden Sie dieses Befehlszeilentool, um Daten einfach und schnell in und aus Azure Blobs, Files und Table Storage mit optimaler Leistung zu kopieren. AzCopy unterstützt Nebenläufigkeit und Parallelität sowie die Fortsetzung unterbrochener Kopiervorgänge.
+  - **Azure PowerShell**: Benutzer, die mit Systemverwaltung vertraut sind, können das Azure Storage-Modul in Azure PowerShell zum Übertragen von Daten verwenden.
+  - **Azure CLI**: Verwenden Sie dieses plattformübergreifende Tool zur Verwaltung von Azure-Diensten und zum Hochladen von Daten in Azure Storage.
+  - **Azure Storage REST-APIs/SDKs**: Beim Erstellen einer Anwendung können Sie die Anwendung mithilfe von Azure Storage REST-APIs/SDKs entwickeln und die in mehreren Sprachen angebotenen Azure-Clientbibliotheken verwenden.
 
 ## <a name="comparison-of-key-capabilities"></a>Vergleich der Schlüsselfunktionen
 
 In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusammengefasst.
 
-| Komponente | Azure Storage-Explorer | Azure-Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST-APIs oder SDKs |
+| Merkmal | Azure Storage-Explorer | Azure-Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST-APIs oder SDKs |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Verfügbarkeit | Herunterladen und Installieren <br>Eigenständiges Tool | Webbasierte Tools zu Durchsuchen im Azure-Portal | Befehlszeilentool |Programmierbare Schnittstellen in .NET, Java, Python, JavaScript, C++, Go, Ruby und PHP |
 | Grafische Benutzeroberfläche | Ja | Ja | Nein | Nein |
@@ -59,7 +58,6 @@ In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusamm
 | Zulässige File Storage-Vorgänge<br>für Dateien und Verzeichnisse | Upload<br>Download<br>Verwalten | Upload<br>Download<br>Verwalten   |Upload<br>Download<br>Verwalten | Ja, anpassbar |
 | Zulässige Table Storage-Vorgänge<br>für Tabellen |Verwalten | Nein |Tabellenunterstützung in AzCopy v7 |Ja, anpassbar|
 | Zulässige Queue Storage-Vorgänge | Verwalten | Nein  |Nein | Ja, anpassbar|
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

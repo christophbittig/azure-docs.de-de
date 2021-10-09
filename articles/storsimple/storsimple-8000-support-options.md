@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69b24272d2a04d19eb8fc419a6a2cbda744f24ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87070338"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588578"
 ---
 # <a name="storsimple-solution-support"></a>Support für die StorSimple-Lösung
 
@@ -111,16 +111,9 @@ Support für StorSimple-Speicherarrays der Serie 8000 basiert auf der Art und We
 
 
 
-*<text> * Premium-Schutz ist nicht an allen Standorten verfügbar. Wenden Sie sich vor dem Erwerb von Premium-Support für StorSimple unter „SSSupOps\@microsoft.com“ an Microsoft, um sich über die geografische Verfügbarkeit zu informieren.*
+\* Die Prämienabdeckung ist nicht an allen Standorten verfügbar. Wenden Sie sich vor dem Erwerb von Premium-Support für StorSimple unter „SSSupOps\@microsoft.com“ an Microsoft, um sich über die geografische Verfügbarkeit zu informieren.
 
-***Die StorSimple-Appliance muss in einer Region bereitgestellt werden, in der der Kunde durch Premier-Support geschützt ist, um ein kostenloses Upgrade auf StorSimple Premium-Support zu erhalten.*
+\** Die StorSimple-Appliance muss in einer Region eingesetzt werden, in der der Kunde durch den Premiersupport abgedeckt ist, um für ein kostenloses Upgrade auf den Premiumsupport für StorSimple berechtigt zu sein.
 
 
 ASAP+-Kunden können auf ein Abonnementmodell umsteigen, in das Standard-Support eingeschlossen ist. Verwenden Sie den StorSimple-Preisrechner, um Abonnementpreise zu ermitteln, und wenden Sie sich mit Fragen an SSSupOps@microsoft.com. Der Wechsel von ASAP+ zu Abonnement ist nur in einer Richtung möglich.
-
-
-
-
-
-
- 

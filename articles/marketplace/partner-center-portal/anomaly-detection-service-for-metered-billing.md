@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
-ms.date: 06/10/2020
-ms.openlocfilehash: 8c0cba39c2fe299a2cc822309b0063d2d4fe2f71
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 09/27/2021
+ms.openlocfilehash: ff4600cd1b107fb041123191f80f9da4f50af5ac
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431517"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081173"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Anomalieerkennungsdienst für getaktete Abrechnung
 
@@ -67,7 +67,26 @@ Wenn einer der folgenden Fälle zutrifft, können Sie den Nutzungsbetrag in Part
 
 So übermitteln Sie ein Supportticket bezüglich Anomalien bei der getakteten Abrechnung:
 
-1. Melden Sie sich mit Ihrem Geschäftskonto bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2165290) an.
+#### <a name="workspaces-view"></a>[Ansicht der Arbeitsbereiche](#tab/workspaces-view)
+
+1. Melden Sie sich mit Ihrem Geschäftskonto bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie auf der Startseite die Kachel **„Hilfe + Support“** .
+
+    [ ![Veranschaulicht die Kachel „Hilfe und Support“ auf der Startseite des Partner Centers.](../media/workspaces/partner-center-help-support-tile.png) ](../media/workspaces/partner-center-help-support-tile.png#lightbox)
+
+1. Wählen Sie unter **Meine Supportanfragen** die Option **+ Neue Anfrage** aus.
+1. Geben Sie im Feld **„Problemzusammenfassung“** den Begriff **„Abrechnungszähler“** ein.
+1. Wählen Sie im Feld **Problemtyp** eine der folgenden Optionen aus:
+    - **Commercial Marketplace > Getaktete Abrechnung > Falsche Nutzung für Azure-Anwendungsangebot gesendet**
+    - **Commercial Marketplace > Getaktete Abrechnung > Falsche Nutzung für SaaS-Angebot gesendet**
+1. Wählen Sie unter **Nächster Schritt** die Option **Lösungen überprüfen** aus.
+1. Überprüfen Sie die empfohlenen Dokumente, sofern vorhanden, oder wählen Sie **Problemdetails angeben** aus, um ein Supportticket zu senden.
+
+Weitere Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](../support.md).
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+1. Melden Sie sich mit Ihrem Geschäftskonto bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 1. Wählen Sie im Menü oben rechts auf der Seite das Symbol **Support** aus. Der Bereich **Hilfe und Support** wird rechts auf der Seite angezeigt.
 1. Wenn Sie Hilfe zum kommerziellen Marketplace benötigen, wählen Sie **Kommerzieller Marketplace** aus.
    ![Veranschaulicht den Supportbereich](../media/support/commercial-marketplace-support-pane.png)
@@ -79,6 +98,8 @@ So übermitteln Sie ein Supportticket bezüglich Anomalien bei der getakteten Ab
 1. Überprüfen Sie die empfohlenen Dokumente, sofern vorhanden, oder wählen Sie **Problemdetails angeben** aus, um ein Supportticket zu senden.
 
 Weitere Supportoptionen für Herausgeber finden Sie unter [Support für das Programm „Kommerzieller Marketplace“ im Partner Center](../support.md).
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

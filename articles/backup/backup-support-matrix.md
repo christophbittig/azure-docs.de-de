@@ -2,14 +2,14 @@
 title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 08/23/2021
+ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: f6101485f7dfab8d956a552edc2e77d85a6e2d9e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 7448b8c5fa4882f9579b60d7d723d88e98ca7683
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425852"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658619"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -163,7 +163,7 @@ Die Ressourcenintegritätsprüfung funktioniert unter folgenden Bedingungen:
 |     |     |
 | --- | --- |
 | **Unterstützte Ressourcen** | Recovery Services-Tresor |
-| **Unterstützte Regionen** | USA, Osten 2; USA, Mitte; Europa, Norden; Frankreich, Mitte; Asien, Osten; Japan, Osten; Japan, Westen; Australien, Osten; Südafrika, Norden. |
+| **Unterstützte Regionen** | Ost-USA, Ost-USA 2, Zentral-USA, Süd-Zentral-USA, Nord-Zentral-USA, West-Zentral-USA, West-USA, West-USA 2, West-USA 3, Kanada Ost, Kanada Zentral, Nordeuropa, Westeuropa, Großbritannien West, Großbritannien Süd, Frankreich Zentral, Frankreich Süd, Schweden Zentral, Schweden Süd, Ostasien, Südostasien, Japan Ost, Japan West, Korea Zentral, Korea Süd, Australien Ost, Australien Zentral, Australien Zentral 2, Australien Süd Ost, Südafrika Nord, Südafrika West, VAE Nord, VAE Zentral, Brasilien Süd Ost, Brasilien Süd, Schweiz Nord, Schweiz West, Norwegen Ost, Norwegen West, Deutschland Nord, Deutschland West Zentral, West Indien, Zentral Indien, Süd Indien, Jio Indien West, Jio Indien Zentral. |
 | **Nicht unterstützte Regionen** | Der Ressourcenintegritätsstatus wird als „Unbekannt“ angezeigt. |
 
 

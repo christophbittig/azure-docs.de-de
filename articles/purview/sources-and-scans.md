@@ -4,16 +4,16 @@ description: Dieser Artikel enthält konzeptionelle Details zu den Datenquellen 
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 09/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: e5b2c5eaca13b26504c4229ef990abc4adce23c9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1d484bce594d5894052ffeb4f1ff4a1dbf202d50
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338940"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215242"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Unterstützte Datenquellen und Dateitypen in Azure Purview
 
@@ -35,7 +35,7 @@ Die folgenden Dateitypen werden für Überprüfungen, Schemaextraktion und Klass
 > Jede GZIP-Datei muss einer einzelnen enthaltenen CSV-Datei zugeordnet werden. GZIP-Dateien unterliegen System- und benutzerdefinierten Klassifizierungsregeln. Das Scannen einer GZIP-Datei, die mehreren enthaltenen Dateien oder einem anderen Dateityp als CSV zugeordnet ist, wird derzeit nicht unterstützt. Darüber hinaus unterstützt die Purview-Überprüfung das Überprüfen von mit Snappy komprimierten PARQUET-Dateitypen auf Schemaextraktion und -klassifizierung. 
 
 > [!Note]
-> Der Purview-Scanner unterstützt keine komplexen Datentypen in AVRO-, ORC- und PARQUET-Dateitypen für die Schemaextraktion.   
+> Der Purview-Scanner unterstützt keine komplexen Datentypen (z. B. MAP, LIST, STRUCT) in den Dateitypen AVRO, ORC und PARQUET für die Schemaextraktion.   
 
 ## <a name="sampling-within-a-file"></a>Sampling (Überprüfung) innerhalb einer Datei
 
@@ -69,5 +69,5 @@ Alle 206 Systemklassifizierungsregeln gelten für strukturierte Dateiformate. N
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Scannen von Daten mit Azure Purview (Vorschau)](tutorial-scan-data.md)
-- [Verwalten von Datenquellen in Azure Purview (Vorschau)](manage-data-sources.md).
+- [Scans und Einnahme in Übersicht](concept-scans-and-ingestion.md)
+- [Verwalten von Datenquellen in Azure Purview](manage-data-sources.md)

@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: 21dd554388616b2cd4882a5a550b4de74f5d9be3
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: f1ef5d40ccf6339d909f2cad6388186ddb5a0a04
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059208"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355952"
 ---
 # <a name="deploy-an-anomaly-detector-univariate-module-to-iot-edge"></a>Bereitstellen eines Moduls zur Erkennung von univariaten Anomalien in IoT Edge
 
@@ -58,7 +58,7 @@ Hier erfahren Sie, wie Sie das [Anomalieerkennungsmodul](../anomaly-detector-con
 
 6. Wählen Sie **Update** (Aktualisieren) aus.
 
-7. Klicken Sie auf **Weiter: Routen**, um Ihre Route zu definieren. Sie legen fest, dass alle Nachrichten von allen Modulen an Azure IoT Hub gesendet werden. Wie Sie eine Route deklarieren, erfahren Sie unter [Einrichten von Routen in IoT Edge](../../../iot-edge/module-composition.md?view=iotedge-2020-11).
+7. Klicken Sie auf **Weiter: Routen**, um Ihre Route zu definieren. Sie legen fest, dass alle Nachrichten von allen Modulen an Azure IoT Hub gesendet werden. Wie Sie eine Route deklarieren, erfahren Sie unter [Einrichten von Routen in IoT Edge](../../../iot-edge/module-composition.md?view=iotedge-2020-11&preserve-view=true).
 
 8. Klicken Sie auf **Weiter: Überprüfen + erstellen**. Sie können eine Vorschau der JSON-Datei anzeigen, die alle Module definiert, die auf Ihrem IoT Edge-Gerät bereitgestellt werden.
     

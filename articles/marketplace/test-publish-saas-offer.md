@@ -7,13 +7,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 03/25/2021
-ms.openlocfilehash: 7fed85abe42b0366ff2429ba923fc9a3cdf6190a
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 09/27/2021
+ms.openlocfilehash: 7836792245a9618e2ac8168af697c0151f8e123b
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536426"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080767"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>Testen und Veröffentlichen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -24,10 +24,19 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des Partner Centers Ihr SaaS-An
 
 ## <a name="submit-your-offer-for-publishing"></a>Übermitteln des Angebots für die Veröffentlichung
 
-1. Melden Sie sich im [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) beim Dashboard „Kommerzieller Marketplace“ an.
-1. Wählen Sie auf der Seite **Übersicht** das Angebot aus, das Sie veröffentlichen möchten.
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ Ansicht der Arbeitsbereiche](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2166002) an.
+
+1. Wählen Sie auf der Startseite die Kachel **Marketplace offers** (Marketplace-Angebote) aus.
+
+    [ ![Veranschaulicht die Registerkarte „Marktplatzangebote“ auf der Startseite des Partner Centers.](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. Wählen Sie auf der Seite Marktplatzangebote das Angebot aus, das Sie veröffentlichen möchten.
 1. Wählen Sie in der oberen rechten Ecke des Portals **Überprüfen und veröffentlichen** aus.
-2. Stellen Sie sicher, dass auf jeder Seite in der Spalte **Status** der Eintrag **Abgeschlossen** angezeigt wird. Die drei möglichen Statuswerte lauten wie folgt:
+1. Stellen Sie sicher, dass auf jeder Seite in der Spalte **Status** der Eintrag **Abgeschlossen** angezeigt wird. Die drei möglichen Statuswerte lauten wie folgt:
 
    - **Nicht gestartet**: Die Seite ist unvollständig.
    - **Unvollständig**: Auf der Seite fehlen erforderliche Informationen, oder sie enthält Fehler, die korrigiert werden müssen. Sie müssen zur Seite zurückkehren und diese aktualisieren.
@@ -39,13 +48,32 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des Partner Centers Ihr SaaS-An
 
 Der Veröffentlichungsstatus Ihres Angebots ändert sich, während es den Veröffentlichungsprozess durchläuft. Ausführliche Informationen zu diesem Prozess finden Sie unter [Schritte für die Validierung und Veröffentlichung](review-publish-offer.md#validation-and-publishing-steps).
 
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+1. Melden Sie sich im [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) beim Dashboard „Kommerzieller Marketplace“ an.
+1. Wählen Sie auf der Seite **Übersicht** das Angebot aus, das Sie veröffentlichen möchten.
+1. Wählen Sie in der oberen rechten Ecke des Portals **Überprüfen und veröffentlichen** aus.
+1. Stellen Sie sicher, dass auf jeder Seite in der Spalte **Status** der Eintrag **Abgeschlossen** angezeigt wird. Die drei möglichen Statuswerte lauten wie folgt:
+
+   - **Nicht gestartet**: Die Seite ist unvollständig.
+   - **Unvollständig**: Auf der Seite fehlen erforderliche Informationen, oder sie enthält Fehler, die korrigiert werden müssen. Sie müssen zur Seite zurückkehren und diese aktualisieren.
+   - **Abgeschlossen**: Die Seite ist vollständig. Alle erforderlichen Daten wurden angegeben, und es liegen keine Fehler vor.
+
+1. Wenn eine der Seiten einen anderen Status als **Abgeschlossen** aufweist, wählen Sie den Namen der Seite aus, beheben das Problem, speichern die Seite und wählen dann erneut **Überprüfen und veröffentlichen** aus, um zu dieser Seite zurückzukehren.
+1. Nachdem alle Seiten abgeschlossen sind, stellen Sie dem Zertifizierungsteam unter **Hinweise für Zertifizierung** Testanweisungen zur Verfügung, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird. Stellen Sie alle ergänzenden Anmerkungen bereit, die das Verständnis Ihrer App unterstützen.
+1. Wählen Sie **Veröffentlichen** aus, um den Veröffentlichungsprozess für Ihr Angebot zu starten. Die Seite **Angebotsübersicht** wird mit dem **Veröffentlichungsstatus** des Angebots angezeigt.
+
+Der Veröffentlichungsstatus Ihres Angebots ändert sich, während es den Veröffentlichungsprozess durchläuft. Ausführliche Informationen zu diesem Prozess finden Sie unter [Schritte für die Validierung und Veröffentlichung](review-publish-offer.md#validation-and-publishing-steps).
+
+---
+
 ## <a name="preview-and-test-your-offer"></a>Vorschau und Test Ihres Angebots
 
 Wenn das Angebot für Ihre Genehmigung bereit ist, senden wir Ihnen eine E-Mail mit der Bitte, Ihre Angebotsvorschau zu überprüfen und zu genehmigen. Sie können auch die Seite **Angebotsübersicht** in Ihrem Browser aktualisieren, um festzustellen, ob Ihr Angebot die Phase „Einholen der Genehmigung des Herausgebers“ erreicht hat. Wenn dies der Fall ist, sind die Schaltfläche **Live schalten** und Vorschaulinks verfügbar. Abhängig von den Optionen, die Sie beim Erstellen Ihres Angebots ausgewählt haben, ist ein Link für die Microsoft AppSource-Vorschau, die Azure Marketplace-Vorschau oder beide verfügbar. Wenn Sie sich für den Verkauf Ihres Angebots über Microsoft entschieden haben, können alle Mitglieder der Vorschauzielgruppe den Kauf und die Bereitstellung Ihres Angebots testen, um sicherzustellen, dass es Ihre Anforderungen in dieser Phase erfüllt.
 
 Der folgende Screenshot zeigt die Seite **Angebotsübersicht** für ein SaaS-Angebot mit zwei Vorschaulinks unter der Schaltfläche **Live schalten**. Die auf dieser Seite angezeigten Validierungsschritte variieren je nach der Auswahl, die Sie beim Erstellen des Angebots getroffen haben.
 
-![Veranschaulicht die Seite „Angebotsübersicht“ für ein Angebot im Partner Center. Die Schaltfläche „Live schalten“ und Vorschaulinks sind dargestellt. Der Link „Prüfbericht anzeigen“ wird auch unter „Automatisierte Validierung“ angezeigt.](./media/review-publish-offer/publish-status-saas.png)
+[ ![Veranschaulicht den Veröffentlichungsstatus für ein Angebot in Partner Center. Die Schaltfläche Live wechseln wird angezeigt. Der Link Überprüfungsbericht anzeigen wird auch unter Automatisierte Validierung angezeigt.](./media/review-publish-offer/publish-status-saas.png) ](./media/review-publish-offer/publish-status-saas.png#lightbox)
 
 Gehen Sie wie folgt vor, um Ihr Angebot in der Vorschau anzuzeigen.
 

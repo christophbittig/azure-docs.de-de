@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 06/21/2021
 ms.author: cherylmc
-ms.openlocfilehash: e3772f3583e4487c8c508136537ab213413865e7
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: adccd5873030adcc5c286ed8d23326796c27ab9c
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112464742"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080976"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Verwenden von NSG-Zugriff und Azure Bastion
 
@@ -52,7 +52,7 @@ Azure Bastion wird speziell im Azure Bastion-Subnetz (***AzureBastionSubnet***) 
 
 * **Ausgehender Datenverkehr:**
 
-   * **Ausgehender Datenverkehr für virtuelle Zielcomputer:** Azure Bastion erreicht die Ziel-VMs über die private IP-Adresse. Die Netzwerksicherheitsgruppen müssen ausgehenden Datenverkehr für andere Ziel-VM-Subnetze für die Ports 3389 und 22 zulassen.
+   * **Ausgehender Datenverkehr für virtuelle Zielcomputer:** Azure Bastion erreicht die Ziel-VMs über die private IP-Adresse. Die Netzwerksicherheitsgruppen müssen ausgehenden Datenverkehr für andere Ziel-VM-Subnetze für die Ports 3389 und 22 zulassen. Wenn Sie die benutzerdefinierte Port-Funktion als Teil der Standard-SKU verwenden, müssen die NSGs stattdessen den Egress-Verkehr zu anderen Ziel-VM-Subnetzen für den/die benutzerdefinierten Wert(e) zulassen, die Sie auf Ihren Ziel-VMs geöffnet haben.
    * **Ausgehender Datenverkehr an die Azure Bastion-Datenebene:** Aktivieren Sie für die Kommunikation auf Datenebene zwischen den zugrunde liegenden Komponenten von Azure Bastion die Ports 8080 und 5701 ausgehend vom Diensttag **VirtualNetwork** zum Diensttag **VirtualNetwork**. Dadurch können die Azure Bastion-Komponenten miteinander kommunizieren.
    * **Ausgehender Datenverkehr für andere öffentliche Endpunkte in Azure:** Azure Bastion muss eine Verbindung mit verschiedenen öffentlichen Endpunkten in Azure herstellen können, um beispielsweise Diagnose- und Messprotokolle zu speichern. Aus diesem Grund benötigt Azure Bastion ausgehende Konnektivität über den Port 443 mit dem Diensttag **AzureCloud**.
    * **Ausgehender Datenverkehr zum Internet:** Azure Bastion muss in der Lage sein, mit dem Internet zu kommunizieren, damit Sitzungen und Zertifikate überprüft werden können. Aus diesem Grund wird empfohlen, Port 80 ausgehend zum **Internet** zu aktivieren.
@@ -63,7 +63,7 @@ Azure Bastion wird speziell im Azure Bastion-Subnetz (***AzureBastionSubnet***) 
 ### <a name="target-vm-subnet"></a>Ziel-VM-Subnetz
 Dieses Subnetz enthält die Ziel-VM, mit der Sie eine RDP-/SSH-Verbindung herstellen möchten.
 
-   * **Eingehender Datenverkehr von Azure Bastion:** Azure Bastion erreicht die Ziel-VM über die private IP-Adresse. RDP-/SSH-Ports (Port 3389 bzw. 22) müssen aufseiten des virtuellen Zielcomputers für die private IP-Adresse geöffnet werden. Es empfiehlt sich, in dieser Regel den IP-Adressbereich des Azure Bastion-Subnetzes hinzuzufügen, damit diese Ports auf den virtuellen Zielcomputern in Ihrem Ziel-VM-Subnetz nur von Bastion geöffnet werden können.
+   * **Eingehender Datenverkehr von Azure Bastion:** Azure Bastion erreicht die Ziel-VM über die private IP-Adresse. RDP/SSH-Ports (Ports 3389/22 bzw. benutzerdefinierte Port-Werte, wenn Sie die benutzerdefinierte Port-Funktion als Teil der Standard-SKU verwenden) müssen auf der Seite der Ziel-VM über private IP geöffnet werden. Es empfiehlt sich, in dieser Regel den IP-Adressbereich des Azure Bastion-Subnetzes hinzuzufügen, damit diese Ports auf den virtuellen Zielcomputern in Ihrem Ziel-VM-Subnetz nur von Bastion geöffnet werden können.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

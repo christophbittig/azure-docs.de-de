@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 08/18/2021
-ms.openlocfilehash: 61dbf2f83ad135cfdef6fffcc3a8c162d0a4c0cd
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/13/2021
+ms.openlocfilehash: fa1ea33e2e7987daa79267fb197981931ce1c2fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111452"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606264"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>Vergleich zwischen Umgebungen mit einem Mandanten und mehreren Mandanten bzw. Integrationsdienstumgebung für Azure Logic Apps
 
@@ -121,12 +121,16 @@ Mit dem Ressourcentyp **Logik-App (Standard)** können Sie die folgenden Workflo
 
   Erstellen Sie einen zustandsbehafteten Workflow, wenn Sie Daten von vorherigen Ereignissen beibehalten, überprüfen oder referenzieren müssen. Diese Workflows behalten bei und übertragen sämtliche Ein- und Ausgaben für jede Aktion und deren Zustände im externen Speicher, sodass die Ausführungsdetails und der Ausführungsverlauf nach Abschluss der jeweiligen Ausführung überprüft werden können. Zustandsbehaftete Workflows bieten hohe Resilienz, falls es zu Ausfällen kommen sollte. Nachdem Dienste und Systeme wiederhergestellt wurden, können Sie unterbrochene Ausführungen aus dem gespeicherten Zustand rekonstruieren und die Workflows bis zum Abschluss erneut ausführen. Zustandsbehaftete Workflows können wesentlich länger ausgeführt werden als zustandslose Workflows.
 
+  Standardmäßig laufen zustandsbehaftete Workflows sowohl in multimandantenfähigen als auch in einzelmandantenfähigen Azure Logic Apps asynchron. Alle HTTP-basierten Aktionen folgen dem Standardmuster[ für asynchrone Operationen](/azure/architecture/patterns/async-request-reply). Laut diesem Muster gibt der Empfänger sofort eine [202 ACCEPTED](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)-Antwort zurück, wenn eine HTTP-Aktion einen Endpunkt, einen Dienst, das System oder die API aufruft oder eine Anforderung an ebendiese sendet. Dieser Code bestätigt, dass der Empfänger die Anforderung akzeptiert, aber die Verarbeitung noch nicht abgeschlossen hat. Die Antwort kann einen `location`Header enthalten, der den URI und eine Refresh-ID angibt, die die aufrufende Person verwenden kann, um den Status der asynchronen Anfrage abzufragen oder zu überprüfen, bis der Empfänger die Verarbeitung beendet und eine [„200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)-Erfolgsantwort oder eine andere Nicht-202-Antwort zurückgibt. Der Aufrufer muss jedoch nicht darauf warten, dass die Verarbeitung der Anforderung abgeschlossen wird, und kann mit der Ausführung der nächsten Aktion fortfahren. Weitere Informationen finden Sie unter [Gegenüberstellung von synchronem und asynchronem Messaging](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
+
 * *Zustandslos*
 
-  Erstellen Sie einen zustandslosen Workflow, wenn Sie Daten von vorherigen Ereignissen nicht zur späteren Überprüfung in externem Speicher sichern, überprüfen oder referenzieren müssen, nachdem jede Ausführung beendet wurde und einer Überprüfung unterzogen werden kann. Diese Workflows speichern sämtliche Ein- und Ausgaben für jede Aktion und deren Zustände nur *im Arbeitsspeicher* und nicht im externen Speicher. Daher sind die Ausführungen zustandsloser Workflows kürzer (in der Regel weniger als 5 Minuten), sie bieten eine höhere Leistung mit schnelleren Antwortzeiten, einen höheren Durchsatz und niedrigere Ausführungskosten, da die Ausführungsdetails und der Ausführungsverlauf nicht im externen Speicher gespeichert werden. Wenn es aber zu Ausfällen kommen sollte, werden unterbrochene Ausführungen nicht automatisch wiederhergestellt, sodass der Aufrufer unterbrochene Ausführungen manuell erneut übermitteln muss. Diese Workflows können nur synchron ausgeführt werden.
+  Erstellen Sie einen zustandslosen Workflow, wenn Sie Daten von vorherigen Ereignissen nicht zur späteren Überprüfung in externem Speicher sichern, überprüfen oder referenzieren müssen, nachdem jede Ausführung beendet wurde und einer Überprüfung unterzogen werden kann. Diese Workflows speichern sämtliche Ein- und Ausgaben für jede Aktion und deren Zustände nur *im Arbeitsspeicher* und nicht im externen Speicher. Daher sind die Ausführungen zustandsloser Workflows kürzer (in der Regel weniger als 5 Minuten), sie bieten eine höhere Leistung mit schnelleren Antwortzeiten, einen höheren Durchsatz und niedrigere Ausführungskosten, da die Ausführungsdetails und der Ausführungsverlauf nicht im externen Speicher gespeichert werden. Wenn es aber zu Ausfällen kommen sollte, werden unterbrochene Ausführungen nicht automatisch wiederhergestellt, sodass der Aufrufer unterbrochene Ausführungen manuell erneut übermitteln muss.
 
   > [!IMPORTANT]
   > Ein zustandsloser Workflow bietet die beste Leistung bei der Verarbeitung von Daten oder Inhalten, z. B. einer Datei, die *insgesamt* 64 KB nicht überschreitet. Größere Inhalte, z. B. mehrere große Anlagen, können die Leistung Ihres Workflows erheblich beeinträchtigen oder sogar dazu führen, dass Ihr Workflow aufgrund von Ausnahmen wegen nicht genügend Arbeitsspeicher abstürzt. Wenn Ihr Workflow möglicherweise größere Inhalte verarbeiten muss, verwenden Sie stattdessen einen zustandsbehafteten Workflow.
+
+  Zustandslose Workflows laufen nur synchron ab. Sie verwenden also nicht das standardmäßige [asynchrone Operationsmuster](/azure/architecture/patterns/async-request-reply), das von zustandsabhängigen Workflows verwendet wird. Stattdessen fahren alle HTTP-basierten Aktionen, die eine [„202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)-Antwort zurückgeben, mit dem nächsten Schritt der Workflow-Ausführung fort. Wenn die Antwort einen `location`Header enthält, wird ein zustandsloser Arbeitsablauf die angegebene URI nicht abfragen, um den Status zu überprüfen. Um dem Standardmuster für asynchrone Operationen zu folgen, verwenden Sie stattdessen einen zustandsabhängigen Workflow.
 
   Um das Debuggen zu vereinfachen, können Sie den Ausführungsverlauf für einen zustandslosen Workflow aktivieren und den Ausführungsverlauf wieder deaktivieren, wenn Sie fertig sind, da die Aktivierung die Leistung beeinträchtigt. Weitere Informationen finden Sie unter [Erstellen von Workflows für Instanzen mit einem Mandanten in Visual Studio Code](create-single-tenant-workflows-visual-studio-code.md#enable-run-history-stateless) oder [Erstellen von Workflows für Instanzen mit einem Mandanten im Azure-Portal](create-single-tenant-workflows-visual-studio-code.md#enable-run-history-stateless).
 
@@ -137,19 +141,19 @@ Mit dem Ressourcentyp **Logik-App (Standard)** können Sie die folgenden Workflo
 
 ### <a name="nested-behavior-differences-between-stateful-and-stateless-workflows"></a>Unterschiede im Verhalten von geschachtelten zustandsbehafteten und geschachtelten zustandslosen Workflows
 
-Sie können einen Workflow so erstellen, dass er aus anderen Workflows heraus, die in derselben Ressource vom Typ **Logik-App (Standard)** enthalten sind, [aufrufbar](../logic-apps/logic-apps-http-endpoint.md) ist. Verwenden Sie hierfür den [Anforderungstrigger](../connectors/connectors-native-reqres.md), den [HTTP-Webhooktrigger](../connectors/connectors-native-webhook.md) oder Trigger für verwaltete Connectors vom Typ [ApiConnectionWebhook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger), die HTTPS-Anforderungen empfangen können.
+Sie können einen Workflow so erstellen, dass er aus anderen Workflows heraus, die in derselben Ressource vom Typ **Logik-App (Standard)** enthalten sind, [aufrufbar](logic-apps-http-endpoint.md) ist. Verwenden Sie hierfür den [Anforderungstrigger](../connectors/connectors-native-reqres.md), den [HTTP-Webhooktrigger](../connectors/connectors-native-webhook.md) oder Trigger für verwaltete Connectors vom Typ [ApiConnectionWebhook](logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger), die HTTPS-Anforderungen empfangen können.
 
 Im Folgenden sind die Verhaltensmuster geschachtelter Workflows aufgeführt, nachdem ein übergeordneter Workflow einen untergeordneten Workflow aufruft:
 
 * Asynchrones Abrufmuster
 
-  Der übergeordnete Workflow wartet nicht auf eine Antwort auf seinen ursprünglichen Aufruf, sondern überprüft fortlaufend den Ausführungsverlauf Verlauf des untergeordneten Workflows, bis dessen Ausführung beendet wird. Standardmäßig halten zustandsbehaftete Workflows dieses Muster ein, das sich ideal für untergeordnete Workflows mit langer Laufzeit eignet, die [Anforderungstimeout-Limits](../logic-apps/logic-apps-limits-and-config.md) überschreiten können.
+  Der übergeordnete Workflow wartet nicht auf eine Antwort auf seinen ursprünglichen Aufruf, sondern überprüft fortlaufend den Ausführungsverlauf Verlauf des untergeordneten Workflows, bis dessen Ausführung beendet wird. Standardmäßig halten zustandsbehaftete Workflows dieses Muster ein, das sich ideal für untergeordnete Workflows mit langer Laufzeit eignet, die [Anforderungstimeout-Limits](logic-apps-limits-and-config.md) überschreiten können.
 
 * Synchrones Muster („Fire and Forget“)
 
   Der untergeordnete Workflow bestätigt den Aufruf durch sofortige Rückgabe einer `202 ACCEPTED`-Antwort, und der übergeordnete Workflow fährt mit der nächsten Aktion fort, ohne auf die Ergebnisse des untergeordneten Workflows zu warten. Stattdessen empfängt der übergeordnete Workflow die Ergebnisse, wenn der untergeordnete Workflow abgeschlossen ist. Untergeordnete zustandsbehaftete Workflows, die keine Antwortaktion enthalten, folgen immer dem synchronen Muster. Für untergeordnete zustandsbehaftete Workflows steht Ihnen der Ausführungsverlauf zur Prüfung zur Verfügung.
 
-  Um dieses Verhalten zu aktivieren, legen Sie in der JSON-Definition des Workflows die `operationOptions`-Eigenschaft auf `DisableAsyncPattern` fest. Weitere Informationen finden Sie unter [Trigger- und Aktionstypen: Optionen für Vorgänge](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options).
+  Um dieses Verhalten zu aktivieren, legen Sie in der JSON-Definition des Workflows die `operationOptions`-Eigenschaft auf `DisableAsyncPattern` fest. Weitere Informationen finden Sie unter [Trigger- und Aktionstypen: Optionen für Vorgänge](logic-apps-workflow-actions-triggers.md#operation-options).
 
 * Auslösen und Warten
 
@@ -173,7 +177,7 @@ Das Einzelmandantenmodell und der Ressourcentyp **Logik-App (Standard)** enthalt
 
 * Erstellen von Logik-Apps und deren Workflows mit [mehr als 400 verwalteten Connectors](/connectors/connector-reference/connector-reference-logicapps-connectors) für SaaS- (Software-as-a-Service) und PaaS-Apps (Platform-as-a-Service) und -Dienste sowie Connectors für lokale Systeme.
 
-  * Weitere verwaltete Connectors sind jetzt als integrierte Vorgänge verfügbar und werden ähnlich wie andere integrierte Vorgänge ausgeführt, wie z. B. Azure Functions. Integrierte Vorgänge werden nativ in der Runtime für Azure Logic Apps-Instanzen mit einem Mandanten ausgeführt. Zu den neuen integrierten Vorgängen gehören z. B. Azure Service Bus, Azure Event Hubs, SQL Server und MQ.
+  * Weitere verwaltete Connectors sind jetzt als integrierte Vorgänge verfügbar und werden ähnlich wie andere integrierte Vorgänge ausgeführt, wie z. B. Azure Functions. Integrierte Vorgänge werden nativ in der Runtime für Azure Logic Apps-Instanzen mit einem Mandanten ausgeführt. Zu den neuen integrierten Operationen gehören zum Beispiel Azure Service Bus, Azure Event Hubs, SQL Server, MQ, DB2 und IBM Host File.
 
     > [!NOTE]
     > Für die integrierte SQL Server-Version kann nur die Aktion **Abfrage ausführen** direkt eine Verbindung mit den virtuellen Azure-Netzwerken herstellen, ohne dass das [lokale Datengateway](logic-apps-gateway-connection.md) erforderlich ist.
@@ -191,10 +195,12 @@ Das Einzelmandantenmodell und der Ressourcentyp **Logik-App (Standard)** enthalt
     > [!NOTE]
     > Um diese Aktionen in einzelmandantenbasierten Azure Logic Apps (Standard) verwenden zu können, benötigen Sie Liquid-Zuordnungen, XML-Zuordnungen oder XML-Schemas. Sie können diese Artefakte im Azure-Portal über das Ressourcenmenü Ihrer Logik-App unter **Artifacts** hochladen, das die Abschnitte **Schemas** und **Karten** enthält. Sie können diese Artefakte auch dem Ordner **Artifacts** ihres Visual Studio Code-Projekts hinzufügen, indem Sie die entsprechenden Ordner **Karten** und **Schemas** verwenden. Sie können diese Artefakte dann in mehreren Workflows innerhalb *derselben Logik-App-Ressource* verwenden.
 
-  * Ressourcen vom Typ **Logik-App (Standard)** können überall ausgeführt werden, weil  Azure Logic Apps SAS-Verbindungszeichenfolgen (Shared Access Signature) generiert, die diese Logik-Apps zum Senden von Anforderungen an den Runtime-Endpunkt der Cloudverbindung verwenden können. Azure Logic Apps speichert diese Verbindungszeichenfolgen zusammen mit anderen Anwendungseinstellungen, sodass Sie diese Werte bei einer Bereitstellung in Azure problemlos in Azure Key Vault speichern können.
+  * **Logic App (Standard)** -Ressourcen können überall ausgeführt werden, da Azure Logic Apps SAS-Verbindungszeichenfolgen (Shared Access Signature) generiert, die diese Logic Apps zum Senden von Anforderungen an den Cloud-Verbindungslaufzeitendpunkt verwenden können. Azure Logic Apps speichert diese Verbindungszeichenfolgen zusammen mit anderen Anwendungseinstellungen, sodass Sie diese Werte bei einer Bereitstellung in Azure problemlos in Azure Key Vault speichern können.
 
     > [!NOTE]
-    > Standardmäßig wird die [systemseitig zugewiesene verwaltete Identität](../logic-apps/create-managed-service-identity.md) einer Ressource vom Typ **Logik-App (Standard)** automatisch aktiviert, um Verbindungen zur Laufzeit zu authentifizieren. Diese Identität unterscheidet sich von den Anmeldeinformationen für die Authentifizierung oder der Verbindungszeichenfolge, die Sie verwenden, wenn Sie eine Verbindung herstellen. Wenn Sie diese Identität deaktivieren, funktionieren Verbindungen zur Laufzeit nicht. Wählen Sie zum Anzeigen dieser Einstellung im Menü Ihrer Logik-App unter **Einstellungen** die Option **Identität** aus.
+    > Standardmäßig ist für den Ressourcentyp **Logic App (Standard)** die [systemseitig zugewiesene verwaltete Identität](create-managed-service-identity.md) automatisch aktiviert, um Verbindungen zur Laufzeit zu authentifizieren. Diese Identität unterscheidet sich von den Anmeldeinformationen für die Authentifizierung oder der Verbindungszeichenfolge, die Sie verwenden, wenn Sie eine Verbindung herstellen. Wenn Sie diese Identität deaktivieren, funktionieren Verbindungen zur Laufzeit nicht. Wählen Sie zum Anzeigen dieser Einstellung im Menü Ihrer Logik-App unter **Einstellungen** die Option **Identität** aus.
+    >
+    > Die benutzerseitig zugewiesene verwaltete Identität ist derzeit für den Ressourcentyp **Logic App (Standard)** nicht verfügbar.
 
 * Sie können Ihre Logik-Apps und die zugehörigen Workflows in der Visual Studio Code-Entwicklungsumgebung lokal ausführen, testen und debuggen.
 
@@ -218,7 +224,7 @@ Das Einzelmandantenmodell und der Ressourcentyp **Logik-App (Standard)** enthalt
 
 Für Ressourcen vom Typ **Logik-App (Standard)** wurden die folgenden Funktionen geändert, sind zurzeit eingeschränkt oder nicht verfügbar oder werden nicht unterstützt:
 
-* **Trigger und Aktionen**: Integrierte Trigger und Aktionen werden nativ in der Runtime für Azure Logic Apps-Instanzen mit einem Mandanten ausgeführt, während verwaltete Connectors in Azure gehostet und ausgeführt werden. Einige integrierte Trigger, wie z. B. gleitende Fenster und Batches, sind nicht verfügbar. Starten Sie einen zustandsbehafteten oder zustandslosen Workflow mithilfe der [integrierten Trigger „Wiederholung“, „Anforderung“, „HTTP“, „HTTP-Webhook“, „Event Hubs“ oder „Service Bus“](../connectors/apis-list.md). Im Designer werden integrierte Trigger und Aktionen auf der Registerkarte **Integriert** angezeigt.
+* **Auslöser und Aktionen**: Integrierte Auslöser und Aktionen laufen direkt in Azure Logic Apps, während verwaltete Konnektoren in Azure gehostet und ausgeführt werden. Einige integrierte Auslöser und Aktionen sind nicht verfügbar, z. B. Sliding Window, Batch, Azure App Services und Azure API Management. Starten Sie einen zustandsbehafteten oder zustandslosen Workflow mithilfe der [integrierten Trigger „Wiederholung“, „Anforderung“, „HTTP“, „HTTP-Webhook“, „Event Hubs“ oder „Service Bus“](../connectors/apis-list.md). Im Designer werden integrierte Trigger und Aktionen auf der Registerkarte **Integriert** angezeigt.
 
   Für *zustandsbehaftete* Workflows werden [Trigger und Aktionen für verwaltete Connectors](../connectors/managed.md) auf der Registerkarte **Azure** angezeigt, mit Ausnahme der unten aufgeführten nicht verfügbaren Vorgänge. Bei *zustandslosen* Workflows wird die Registerkarte **Azure** bei der Auswahl eines Triggers nicht angezeigt. Sie können nur [*Aktionen* für verwaltete Connectors auswählen, keine Trigger](../connectors/managed.md). Obwohl Sie in Azure gehostete, verwaltete Connectors für zustandslose Workflows aktivieren können, werden im Designer keine Trigger für verwaltete Connectors angezeigt, die Sie hinzufügen können.
 
@@ -242,11 +248,17 @@ Für Ressourcen vom Typ **Logik-App (Standard)** wurden die folgenden Funktionen
 
     * Die integrierte Aktion [Azure Logic Apps: Logik-App-Workflow auswählen](logic-apps-http-endpoint.md) heißt nun **Workflowvorgänge: Workflow in dieser Workflow-App aufrufen**.
 
-    * Einige [integrierte Trigger und -Aktionen für Integrationskonten](../connectors/managed.md#integration-account-connectors) sind nicht verfügbar. Dies betrifft z. B. die Aktionen für die Codierung und Decodierung von **Flatfiles**.
+    * Einige [Auslöser und Aktionen für Integrationskonten](../connectors/managed.md#integration-account-connectors) sind nicht verfügbar, z. B. die Flat File-Aktionen, AS2 (V2)-Aktionen und RosettaNet-Aktionen.
 
     * [Benutzerdefinierte verwaltete Connectors](../connectors/apis-list.md#custom-apis-and-connectors) werden derzeit nicht unterstützt. Mit Visual Studio Code können Sie jedoch *benutzerdefinierte integrierte Vorgänge* erstellen. Weitere Informationen finden Sie unter [Erstellen von Workflows für Instanzen mit einem Mandanten in Visual Studio Code](create-single-tenant-workflows-visual-studio-code.md#enable-built-in-connector-authoring).
 
-* Für die XML-Transformation ist die Unterstützung für das Verweisen auf Ansammlungen aus Zuordnungen derzeit nicht verfügbar. Außerdem wird derzeit nur XSLT 1.0 unterstützt.
+* **Authentifizierung**: Die folgenden Authentifizierungstypen sind derzeit für den Ressourcentyp **Logic App (Standard)** nicht verfügbar:
+
+  * Azure Active Directory Open Authentication (Azure AD OAuth) für eingehende Anrufe an anfragebasierte Auslöser, wie den Anfrageauslöser und den HTTP-Webhook-Auslöser.
+
+  * Dem Benutzer zugewiesene verwaltete Identität. Derzeit ist nur die vom System zugewiesene verwaltete Identität verfügbar und automatisch aktiviert.
+
+* **XML-Transformation**: Unterstützung für die Referenzierung von Zusammenstellungen aus Zuordnungen ist derzeit nicht verfügbar. Außerdem wird derzeit nur XSLT 1.0 unterstützt.
 
 * **Breakpoints für das Debuggen in Visual Studio Code:** Sie können zwar in der Datei **workflow.json** Breakpoints für einen Workflow hinzufügen und verwenden, aber diese Breakpoints werden derzeit nur für Aktionen unterstützt, nicht für Trigger. Weitere Informationen finden Sie unter [Erstellen von Workflows für Instanzen mit einem Mandanten in Visual Studio Code](create-single-tenant-workflows-visual-studio-code.md#manage-breakpoints).
 
@@ -254,7 +266,7 @@ Für Ressourcen vom Typ **Logik-App (Standard)** wurden die folgenden Funktionen
 
 * **Zoomsteuerelement:** Das Zoomsteuerelement ist im Designer derzeit nicht verfügbar.
 
-* **Bereitstellungsziele**: Sie können den Ressourcentyp **Logik-App (Standard)** weder in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) noch in Azure-Bereitstellungsslots bereitstellen.
+* **Bereitstellungsziele**: Sie können den Ressourcentyp **Logik-App (Standard)** weder in einer [Integrationsdienstumgebung (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) noch in Azure-Bereitstellungsslots bereitstellen.
 
 * **Azure API Management**: Sie können den Ressourcentyp **Logik-App (Standard)** derzeit nicht in Azure API Management importieren. Sie können jedoch den Ressourcentyp **Logik-App (Verbrauch)** importieren.
 

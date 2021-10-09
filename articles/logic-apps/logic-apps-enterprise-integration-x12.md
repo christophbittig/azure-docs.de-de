@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, divswa, azla
 ms.topic: how-to
 ms.date: 07/16/2021
-ms.openlocfilehash: 5328fad1530ee8dd7b4a2c79581d443488c44b28
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4b1c6d33146233882dd4ee0656c2d1ee7ee6ec79
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453839"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589718"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-using-azure-logic-apps-and-enterprise-integration-pack"></a>Austauschen von X12-Nachrichten für die B2B-Unternehmensintegration mit Azure Logic Apps und dem Enterprise Integration Pack
 
@@ -103,7 +103,7 @@ Nachdem Sie die Eigenschaften in Ihrer Vereinbarung festgelegt haben, können Si
 
 Wählen Sie für diesen Abschnitt ein [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) in Ihrem [Integrationskonto](./logic-apps-enterprise-integration-create-integration-account.md) für jeden Transaktionstyp (ST01) und jede Absenderanwendung (GS02) aus. Die EDI-Empfangspipeline disassembliert die eingehende Nachricht durch Abgleich der Werte und des Schemas, die Sie in diesem Abschnitt festgelegt haben, mit den Werten für ST01 und GS02 in der eingehenden Nachricht sowie mit dem Schema der eingehenden Nachricht. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |----------|-------------|
 | **Version** | Die X12-Version für das Schema. |
 | **Transaktionstyp (ST01)** | Der Transaktionstyp. |
@@ -226,7 +226,7 @@ Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigu
 
 Wählen Sie für diesen Abschnitt ein [Schema](../logic-apps/logic-apps-enterprise-integration-schemas.md) in Ihrem [Integrationskonto](./logic-apps-enterprise-integration-create-integration-account.md) für jeden Transaktionstyp (ST01) aus. Nach Abschluss aller einzelnen Zeilen wird automatisch eine neue leere Zeile angezeigt.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |----------|-------------|
 | **Version** | Die X12-Version für das Schema. |
 | **Transaktionstyp (ST01)** | Der Transaktionstyp für das Schema. |
@@ -348,7 +348,7 @@ Um diese Dokumentversionsnummern und Nachrichtentypen anzugeben, führen Sie die
 
    Um Ihr Schema zu aktualisieren, führen Sie die folgenden Schritte aus:
 
-   1. Wechseln Sie im Azure-Portal zu Ihrem Integrationskonto. Suchen Sie Ihr Schema, und laden Sie es herunter. Ersetzen Sie den Nachrichtentyp, benennen Sie die Schemadatei um, und laden Sie Ihr überarbeitetes Schema in Ihr Integrationskonto hoch. Weitere Informationen finden Sie unter [Bearbeiten von Schemas](../logic-apps/logic-apps-enterprise-integration-schemas.md#edit-schemas).
+   1. Wechseln Sie im Azure-Portal zu Ihrem Integrationskonto. Suchen Sie Ihr Schema, und laden Sie es herunter. Ersetzen Sie den Nachrichtentyp, benennen Sie die Schemadatei um, und laden Sie Ihr überarbeitetes Schema in Ihr Integrationskonto hoch. Weitere Informationen finden Sie unter [Bearbeiten eines Schemas](logic-apps-enterprise-integration-schemas.md#edit-schema).
 
    1. Wählen Sie in den Nachrichteneinstellungen Ihrer Vereinbarung das überarbeitete Schema aus.
 

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/04/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 32154904a78062f5e3afdb6217351f39151b36b8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab62cae223b60103043df0c9dd79acf64e552358
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339194"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588939"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webanmeldungen mit OpenID Connect in Azure Active Directory B2C
 
@@ -282,7 +282,7 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | Parameter | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
-| {policy} | Ja | Der Benutzerflow, den Sie zum Abmelden des Benutzers von der Anwendung verwenden möchten. |
+| {policy} | Ja | Der Benutzerfluss, der in der Berechtigungsanfrage verwendet wurde. Wenn sich der Benutzer beispielsweise mit dem Benutzerfluss `b2c_1_sign_in` anmeldet, geben Sie `b2c_1_sign_in` in der Abmeldeanforderung an. |
 | id_token_hint| Nein  | Ein zuvor ausgestelltes ID-Token, das an den Abmelde-Endpunkt als Hinweis bezüglich der aktuellen authentifizierten Sitzung des Endbenutzers mit dem Client übergeben werden soll. Der `id_token_hint` stellt sicher, dass der `post_logout_redirect_uri` eine registrierte Antwort-URL in Ihren Azure AD B2C-Anwendungseinstellungen darstellt. Weitere Informationen finden Sie unter [Sichern der Umleitung beim Abmelden](#secure-your-logout-redirect). |
 | client_id | Nein* | Die Anwendungs-ID, die das [Azure-Portal](https://portal.azure.com/) Ihrer Anwendung zugewiesen hat.<br><br>\**Dies ist erforderlich, wenn die `Application`-Isolation-SSO-Konfiguration verwendet wird und _ID-Token erforderlich_ in der Abmeldeanforderung auf `No` festgelegt ist.* |
 | post_logout_redirect_uri | Nein  | Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll. Wenn sie nicht angegeben ist, gibt Azure AD B2C eine generische Nachricht an den Benutzer aus. Wenn Sie keinen `id_token_hint` angeben, sollten Sie diese URL nicht als Antwort-URL in Ihren Azure AD B2C-Anwendungseinstellungen registrieren. |

@@ -4,12 +4,12 @@ description: Beschreibung der Funktionen, die in einer Azure Resource Manager-Vo
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 24bf175f6b6099a1265e411daf51913c3673d6f2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9961ea8cef41ffedaee76faf4f8415f33f347354
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128613040"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357016"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Ressourcenfunktionen für ARM-Vorlagen
 
@@ -36,7 +36,7 @@ Gibt die Ressourcen-ID für eine [Erweiterungsressource](../management/extension
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | baseResourceId |Ja |Zeichenfolge |Die Ressourcen-ID für die Ressource, auf die die Erweiterungsressource angewendet wird. |
 | resourceType |Ja |Zeichenfolge |Typ der Erweiterungsressource, einschließlich Namespace des Ressourcenanbieters. |
@@ -106,7 +106,7 @@ Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgän
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | resourceName oder resourceIdentifier |Ja |Zeichenfolge |Eindeutiger Bezeichner für die Ressource. |
 | apiVersion |Ja |Zeichenfolge |API-Version eines Ressourcen-Laufzeitstatus. In der Regel im Format **jjjj-mm-tt**. |
@@ -126,12 +126,12 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | ------------- | ------------- |
 | Microsoft.Addons/supportProviders | listsupportplaninfo |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/authorization-server/list-secrets) |
-| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2020-06-01-preview/gateway/list-keys) |
-| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/identity-provider/list-secrets) |
-| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2020-06-01-preview/named-value/list-value) |
-| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/openid-connect-provider/list-secrets) |
-| Microsoft.ApiManagement/service/subscriptions | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/subscription/list-secrets) |
+| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/authorization-server/list-secrets) |
+| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2021-04-01-preview/gateway/list-keys) |
+| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/identity-provider/list-secrets) |
+| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2021-04-01-preview/named-value/list-value) |
+| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/openid-connect-provider/list-secrets) |
+| Microsoft.ApiManagement/service/subscriptions | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/subscription/list-secrets) |
 | Microsoft.AppConfiguration/configurationStores | [ListKeys](/rest/api/appconfiguration/configurationstores/listkeys) |
 | Microsoft.AppPlatform/Spring | [listTestKeys](/rest/api/azurespringcloud/services/listtestkeys) |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
@@ -333,7 +333,7 @@ Bestimmt, ob ein Ressourcentyp Zonen für den angegebenen Standort oder die ange
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | Ja | Zeichenfolge | Der Ressourcenanbieternamespace für den Ressourcentyp, der auf Zonenunterstützung überprüft werden soll. |
 | resourceType | Ja | Zeichenfolge | Der Ressourcentyp, der auf Zonenunterstützung überprüft werden soll. |
@@ -382,7 +382,7 @@ Die folgende Vorlage zeigt drei Ergebnisse für die Verwendung der pickZones-Fun
 
 Die Ausgabe aus den vorherigen Beispielen gibt drei Arrays zurück.
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | Unterstützt | array | [ "1" ] |
 | notSupportedRegion | array | [] |
@@ -412,7 +412,7 @@ Gibt ein Objekt zurück, das den Laufzeitstatus einer Ressource darstellt.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | resourceName oder resourceIdentifier |Ja |Zeichenfolge |Name oder eindeutiger Bezeichner einer Ressource Wenn Sie auf eine Ressource in der aktuellen Vorlage verweisen, stellen Sie nur den Ressourcennamen als Parameter bereit. Wenn Sie auf eine zuvor bereitgestellte Ressource verweisen oder der Name der Ressource nicht eindeutig ist, geben Sie die Ressourcen-ID an. |
 | apiVersion |Nein |Zeichenfolge |API-Version der angegebenen Ressource. **Dieser Parameter ist erforderlich, wenn die Ressource nicht innerhalb derselben Vorlage bereitgestellt wird.** In der Regel im Format **jjjj-mm-tt**. Informationen zu gültigen API-Versionen für Ihre Ressource finden Sie in der [Vorlagenreferenz](/azure/templates/). |
@@ -670,7 +670,7 @@ Gibt den eindeutigen Bezeichner einer Ressource zurück. Diese Funktion wird ver
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nein |Zeichenfolge (im GUID-Format) |Der Standardwert ist das aktuelle Abonnement. Geben Sie diesen Wert an, wenn Sie eine Ressource in einem anderen Abonnement abrufen möchten. Geben Sie diesen Wert nur an, wenn die Bereitstellung im Bereich einer Ressourcengruppe oder eines Abonnements erfolgt. |
 | resourceGroupName |Nein |Zeichenfolge |Der Standardwert ist die aktuelle Ressourcengruppe. Geben Sie diesen Wert an, wenn Sie eine Ressource in einer anderen Ressourcengruppe abrufen möchten. Geben Sie diesen Wert nur an, wenn die Bereitstellung im Bereich einer Ressourcengruppe erfolgt. |
@@ -750,7 +750,7 @@ Im folgenden Beispiel wird die Ressourcen-ID für ein Speicherkonto in der Resso
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -794,7 +794,7 @@ Gibt den eindeutigen Bezeichner für eine Ressource zurück, die auf Abonnemente
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nein |Zeichenfolge (im GUID-Format) |Der Standardwert ist das aktuelle Abonnement. Geben Sie diesen Wert an, wenn Sie eine Ressource in einem anderen Abonnement abrufen möchten. |
 | resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
@@ -829,7 +829,7 @@ Gibt den eindeutigen Bezeichner für eine Ressource zurück, die auf Mandanteneb
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | resourceType |Ja |Zeichenfolge |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
 | resourceName1 |Ja |Zeichenfolge |Name der Ressource. |

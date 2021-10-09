@@ -7,23 +7,23 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 3a8a235e204826c26f20cc146003e9290331fe07
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.date: 09/08/2021
+ms.openlocfilehash: 082ece269fa0e07419ff44c736fdeb19aaf30bdc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113091535"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124735327"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Hinzufügen von Sprachanalysetools zu Zeichenfolgenfeldern in einem Azure Cognitive Search-Index
 
-Ein *Sprachanalysetool* ist eine bestimmte Art einer [Textanalyse](search-analyzers.md), die eine lexikalische Analyse mithilfe der linguistischen Regeln der Zielsprache durchführt. Jedes durchsuchbare Feld verfügt über die Eigenschaft **analyzer**. Wenn Ihr Inhalt aus übersetzten Zeichenfolgen besteht, wie z. B. separaten Feldern für englischen und chinesischen Text, können Sie für jedes Feld Sprachanalysetools angeben, um auf die umfangreichen linguistischen Funktionen dieser Sprachanalysetools zuzugreifen.
+Ein *Sprachanalysetool* ist eine bestimmte Art einer [Textanalyse](search-analyzers.md), die eine lexikalische Analyse mithilfe der linguistischen Regeln der Zielsprache durchführt. Jedes durchsuchbare Zeichenfolgenfeld hat eine **Analyzer**-Eigenschaft. Wenn Ihr Inhalt aus übersetzten Zeichenfolgen besteht, wie z. B. separaten Feldern für englischen und chinesischen Text, können Sie für jedes Feld Sprachanalysetools angeben, um auf die umfangreichen linguistischen Funktionen dieser Sprachanalysetools zuzugreifen.
 
 ## <a name="when-to-use-a-language-analyzer"></a>Anwendungsfälle für Sprachanalysetools
 
 Sie sollten ein Sprachanalysetool in Erwägung ziehen, wenn der Wert der Textanalyse durch Sensitivität für die Wort- oder Satzstruktur steigt. Ein häufiges Beispiel ist die Zuordnung unregelmäßiger Verbformen („bringt“ und „brachte“) oder Pluralformen („Sphinx“ und „Sphingen“). Ohne linguistische Sensitivität werden diese Zeichen nur nach ihren physischen Merkmalen analysiert, wodurch die Verbindung nicht erkannt wird. Da große Textabschnitte mit höherer Wahrscheinlichkeit solche Inhalte aufweisen, sind Felder, die Beschreibungen, Rezensionen oder Zusammenfassungen enthalten, gute Kandidaten für ein Sprachanalysetool.
 
-Sie sollten Sprachanalysetools außerdem in Erwägung ziehen, wenn die Inhalte aus Zeichenfolgen in nicht westlichen Sprachen bestehen. Die [Standardanalyse](search-analyzers.md#default-analyzer) ist zwar nicht sprachsensitiv, das Konzept der Verwendung von Leerzeichen und Sonderzeichen (Bindestriche und Schrägstriche) zum Trennen von Zeichenfolgen lässt sich tendenziell aber eher auf westliche Sprachen als auch nicht westliche Sprachen anwenden. 
+Sie sollten Sprachanalysetools außerdem in Erwägung ziehen, wenn die Inhalte aus Zeichenfolgen in nicht westlichen Sprachen bestehen. Der [Standard-Analysator (Standard Lucene)](search-analyzers.md#default-analyzer) ist zwar sprachunabhängig, aber das Konzept der Verwendung von Leerzeichen und Sonderzeichen (Bindestriche und Schrägstriche) zur Trennung von Zeichenketten ist eher auf westliche Sprachen anwendbar als auf nicht-westliche Sprachen. 
 
 Beispielsweise ist im Chinesischen, Japanischen, Koreanischen (CJK) und anderen asiatischen Sprachen ein Leerzeichen nicht zwangsläufig ein Trennzeichen für Wörter. Sehen Sie sich die folgende japanische Zeichenfolge an. Da sie keine Leerzeichen aufweist, wird die gesamte Zeichenfolge von einem nicht sprachsensitiven Analysetool wahrscheinlich als ein Token analysiert, während es sich bei dieser Zeichenfolge tatsächlich um einen Satz handelt.
 
@@ -54,9 +54,17 @@ Standardmäßig wird das Lucene-Standardanalysetool verwendet, das für Englisch
 
 ## <a name="how-to-specify-a-language-analyzer"></a>Festlegen einer Sprachanalyse
 
-Legen Sie während der Felddefinition eine Sprachanalyse für searchable-Felder vom Typ „Edm.String“ fest.
+Stellen Sie den Analyzer während der Indexerstellung ein, bevor er mit Daten geladen wird.
 
-Obwohl Felddefinitionen über mehrere Eigenschaften in Bezug auf das Analysetool verfügen, kann nur die Eigenschaft „analyzer“ für Sprachanalysetools verwendet werden. Der Wert von „analyzer“ muss einem der Sprachanalysetools aus der Liste unterstützter Analysetools entsprechen.
+1. Vergewissern Sie sich in der Felddefinition, dass das Feld als „durchsuchbar“ eingestuft ist und vom Typ Edm.String ist.
+
+1. Setzen Sie die Eigenschaft „Analyzer“ auf einen der Sprachanalysatoren aus der [Liste der unterstützten Analysatoren](#language-analyzer-list).
+
+   Die Eigenschaft „Analyzer“ ist die einzige Eigenschaft, die einen Sprachanalysator akzeptiert und sowohl für die Indizierung als auch für Abfragen verwendet wird. Andere Analysator-bezogene Eigenschaften („searchAnalyzer“ und „indexAnalyzer“) akzeptieren keinen Sprachanalysator.
+
+Sprachanalysatoren können nicht angepasst werden. Wenn ein Analysator nicht Ihren Anforderungen entspricht, können Sie versuchen, einen [benutzerdefinierten Analysator](cognitive-search-working-with-skillsets.md) mit dem microsoft_language_tokenizer oder microsoft_language_stemming_tokenizer zu erstellen und Filter für die Verarbeitung vor und nach der Tokenisierung hinzuzufügen.
+
+Das folgende Beispiel illustriert eine Sprachanalysator-Spezifikation in einem Index:
 
 ```json
 {

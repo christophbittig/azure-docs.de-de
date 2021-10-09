@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Softwarepläne im Voraus bezahlen und Geld ge
 author: bandersmsft
 manager: yashesvi
 ms.service: virtual-machines
-ms.subservice: reserved-instances
+ms.subservice: billing
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 6321058c863b6db190ec987887e61cf20ed8be50
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: c46215bde33f726aba61ad42bf27a14ac2edb4dc
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692683"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216493"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Vorauszahlen für Azure-Softwarepläne
 
@@ -39,6 +39,7 @@ Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reserv
 4. Wählen Sie einen Bereich aus. Der Bereich kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen.
     - Einzelabonnement: Der Rabatt für den Plan wird auf die übereinstimmende Nutzung im Abonnement angewandt.
     - Freigegeben: Der Rabatt für den Plan wird auf übereinstimmende Instanzen in jedem Abonnement in Ihrem Abrechnungskontext angewandt. Für Enterprise-Kunden entspricht der Abrechnungskontext der Registrierung und umfasst alle Abonnements in der Registrierung. Bei Kunden mit einem Einzelplan und nutzungsbasierter Bezahlung entspricht der Abrechnungskontext allen Einzelplanabonnements mit nutzungsbasierter Bezahlung, die vom Kontoadministrator erstellt wurden.
+    - Verwaltungsgruppe - Wendet den Reservierungsrabatt auf die entsprechende Ressource in der Liste der Abonnements an, die sowohl Teil der Verwaltungsgruppe als auch des Abrechnungsbereichs sind.
     - Einzelne Ressourcengruppe: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
 5. Wählen Sie ein Produkt aus, um die VM-Größe und den Imagetyp auszuwählen. Der Rabatt gilt nur für die ausgewählte VM-Größe.
 6. Wählen Sie als Laufzeit ein Jahr oder drei Jahre aus.

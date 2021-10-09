@@ -2,13 +2,13 @@
 title: Informationen zur SAP HANA-Datenbanksicherung in Azure Virtual Machines
 description: In diesem Artikel erfahren Sie mehr über das Sichern von SAP HANA-Datenbanken, die in Azure Virtual Machines ausgeführt werden.
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: efb9c3f786e429df404e261f053a9c9a9b032e11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: 053d57518e91292105475753279e6fefec19e7a4
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96296453"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081033"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Informationen zur SAP HANA-Datenbanksicherung in Azure Virtual Machines
 
@@ -29,13 +29,15 @@ Informationen zu den zurzeit unterstützten Sicherungs- und Wiederherstellungssz
 
 ## <a name="backup-architecture"></a>Sichern der Architektur
 
+Sie können SAP HANA-Datenbanken, die in einer Azure-VM ausgeführt werden, sichern und die Sicherungsdaten direkt in den Azure Recovery Services-Tresor streamen.
+
 ![Diagramm der Sicherungsarchitektur](./media/sap-hana-db-about/backup-architecture.png)
 
 * Der Sicherungsvorgang beginnt mit dem [Erstellen eines Recovery Services-Tresors](./tutorial-backup-sap-hana-db.md#create-a-recovery-services-vault) in Azure. Dieser Tresor dient zum Speichern der Sicherungen und Wiederherstellungspunkte, die im Laufe der Zeit erstellt werden.
-* Der virtuelle Azure-Computer, auf dem der SAP HANA-Server ausgeführt wird, ist beim Tresor registriert, und die zu sichernden Datenbanken werden [erkannt](./tutorial-backup-sap-hana-db.md#discover-the-databases). Um dem Azure Backup-Dienst das Ermitteln von Datenbanken zu ermöglichen, muss ein [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) auf dem HANA-Server als root-Benutzer ausgeführt werden.
-* Mit diesem Skript wird **AZUREWLBACKUPHANAUSER** DB-Benutzer und ein entsprechender Schlüssel mit demselben Namen in **hdbuserstore** erstellt. Weitere Informationen zu den Funktionen des Skripts finden Sie im Abschnitt [Aufgaben des Vorregistrierungsskripts](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
+* Der virtuelle Azure-Computer, auf dem der SAP HANA-Server ausgeführt wird, ist beim Tresor registriert, und die zu sichernden Datenbanken werden [erkannt](./tutorial-backup-sap-hana-db.md#discover-the-databases). Um dem Azure Backup-Dienst das Ermitteln von Datenbanken zu ermöglichen, muss ein [Vorregistrierungsskript](https://go.microsoft.com/fwlink/?linkid=2173610) auf dem HANA-Server als root-Benutzer ausgeführt werden.
+* Dieses Skript erstellt den Datenbankbenutzer **AZUREWLBACKUPHANAUSER** bzw. verwendet den benutzerdefinierten Backup-Benutzer, den Sie bereits erstellt haben, und erstellt dann einen entsprechenden Schlüssel mit demselben Namen in **hdbuserstore**. [Erfahren Sie mehr](/azure/backup/tutorial-backup-sap-hana-db#what-the-pre-registration-script-does) über die Funktionalität des Skripts.
 * Der Azure Backup Dienst installiert jetzt das **Azure Backup-Plug-In für HANA** auf dem registrierten SAP HANA-Server.
-* Der durch das Vorregistrierungsskript erstellte **AZUREWLBACKUPHANAUSER** DB-Benutzer wird vom **Azure Backup-Plug-In für HANA** verwendet, um alle Sicherungs- und Wiederherstellungsvorgänge auszuführen. Wenn Sie versuchen, die Sicherung für SAP HANA-Datenbanken zu konfigurieren, ohne dieses Skript auszuführen, wird möglicherweise der folgende Fehler angezeigt: **UserErrorHanaScriptNotRun**.
+* Der **AZUREWLBACKUPHANAUSER-** Datenbankbenutzer, der durch das Vorregistrierungsskript/den benutzerdefinierten Backup-Benutzer erstellt wurde, den Sie erstellt (und als Eingabe zum Vorregistrierungsskript hinzugefügt) haben, wird vom **Azure Backup Plugin für HANA** verwendet, um alle Sicherungs- und Wiederherstellungsvorgänge durchzuführen. Wenn Sie versuchen, die Sicherung für SAP HANA-Datenbanken zu konfigurieren, ohne dieses Skript auszuführen, erhalten Sie möglicherweise den Fehler **UserErrorHanaScriptNotRun**.
 * Um die [Sicherung der ermittelten Datenbanken zu konfigurieren](./tutorial-backup-sap-hana-db.md#configure-backup), wählen Sie die erforderliche Sicherungsrichtlinie aus, und aktivieren Sie Sicherungen.
 
 * Nachdem die Sicherung konfiguriert wurde, richtet der Azure Backup-Dienst die folgenden Backint-Parameter auf dem geschützten SAP HANA-Server auf DATABASE-Ebene ein:

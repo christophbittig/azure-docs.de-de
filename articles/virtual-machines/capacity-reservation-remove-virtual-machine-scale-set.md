@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 03b89b1b8c0221795f58ff28addd4fdeaad5053e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 2d8f9c7c73b4cb5d0f617893a7d981b94d30b344
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532589"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553095"
 ---
 # <a name="remove-a-virtual-machine-scale-set-association-from-a-capacity-reservation-group"></a>Entfernen einer Skalierungsgruppenzuordnung von einem virtuellen Computer aus einer Kapazitätsreservierungsgruppe 
 
@@ -28,6 +28,14 @@ Es gibt es zwei Möglichkeiten, eine Zuordnung zu ändern:
 > [!IMPORTANT]
 > Die Kapazitätsreservierung befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="register-for-capacity-reservation"></a>Registrieren für Kapazitätsreservierung 
+
+Bevor Sie das Feature zur Kapazitätsreservierung verwenden können, müssen Sie [Ihr Abonnement für die Vorschauversion registrieren](capacity-reservation-overview.md#register-for-capacity-reservation). Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Funktionsregistrierung abzuschließen.
+
+> [!NOTE]
+> Bedarfsbasierte Kapazitätsreservierung ist nur in ausgewählten Regionen für die Skalierungsgruppen virtueller Computer im einheitlichen Orchestrierungsmodus verfügbar. Um zu überprüfen, ob Ihre Region unterstützt wird, wechseln Sie zu [Bereitstellungsverfolgung für eine einheitliche Skalierungsgruppe für virtuelle Computer](https://aka.ms/vmssuniformdeploymenttracker).
+
 
 ## <a name="deallocate-the-virtual-machine-scale-set"></a>Aufheben der Zuordnung einer Skalierungsgruppe für virtuelle Computer
 

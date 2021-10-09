@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, azla
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 09/13/2021
 tags: connectors
-ms.openlocfilehash: 0266e1fd000640aa4931dcc86f3c91a7ab7cc898
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: d973276781a1664680a3dec08eb894fc362911a5
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123104786"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211174"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
@@ -30,7 +30,7 @@ In diesem Artikel wird erläutert, wie Sie von Azure Logic Apps aus auf Ihre SAP
 
   * Wenn Sie Ihren Logik-App-Workflow in einer mehrinstanzenfähigen Azure-Umgebung ausführen, lesen Sie die [Voraussetzungen für eine mehrinstanzenfähige Azure-Umgebung](#multi-tenant-azure-prerequisites).
 
-  * Wenn Sie Ihren Logik-App-Workflow in einer [Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) (Integration Service Environment, ISE) im Premium-Tarif ausführen, lesen Sie die [ISE-Voraussetzungen](#ise-prerequisites).
+  * Wenn Sie Ihren Logik-App-Workflow in einer [Integrationsdienstumgebung](connect-virtual-network-vnet-isolated-environment-overview.md) (Integration Service Environment, ISE) im Premium-Tarif ausführen, lesen Sie die [ISE-Voraussetzungen](#ise-prerequisites).
 
 * Ein [SAP-Anwendungsserver](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) oder ein [SAP-Nachrichtenserver](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm), auf den Sie aus Azure Logic Apps zugreifen möchten. Informationen zu den SAP-Servern, die diesen Connector unterstützen, finden Sie unter [SAP-Kompatibilität](#sap-compatibility).
 
@@ -146,7 +146,7 @@ Der verwaltete SAP-Connector kann über Ihr [lokales Datengateway](logic-apps-ga
 
 Eine ISE ermöglicht den Zugriff auf Ressourcen, die von einem virtuellen Azure-Netzwerk geschützt werden, und stellt weitere native ISE-Connectors bereit, mit denen Logik-App-Workflows direkt auf lokale Ressourcen zugreifen können, ohne das lokale Datengateway verwenden zu müssen.
 
-1. Wenn Sie noch nicht über ein Azure Storage-Konto mit einem Blobcontainer verfügen, erstellen Sie einen Container im [Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md) oder im [Azure Storage-Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md).
+1. Wenn Sie noch nicht über ein Azure Storage-Konto mit einem Blobcontainer verfügen, erstellen Sie einen Container im [Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md) oder im [Azure Storage-Explorer](../storage/blobs/quickstart-storage-explorer.md).
 
 1. [Laden Sie die neueste SAP-Clientbibliothek](#sap-client-library-prerequisites) auf Ihren lokalen Computer herunter, und installieren Sie sie. Sie sollten über die folgenden Assemblydateien verfügen:
 
@@ -320,9 +320,9 @@ Erstellen Sie abschließend neue Verbindungen, die SNC in allen Logik-Apps verwe
 
    1. Aktivieren Sie das Kontrollkästchen bei **SNC verwenden**.
 
-   1. Geben Sie bei **SNC-Bibliothek** den Namen Ihrer SNC-Bibliothek ein. Beispielsweise `sapcrypto.dll`.
+   1. Geben Sie bei **SNC-Bibliothek** den Namen Ihrer SNC-Bibliothek ein. Beispiel: `sapcrypto.dll`.
 
-   1. Geben Sie bei **SNC-Partnername** den SNC-Namen des Back-Ends ein. Beispielsweise `p:CN=DV3, OU=LA, O=MS, C=US`.
+   1. Geben Sie bei **SNC-Partnername** den SNC-Namen des Back-Ends ein. Beispiel: `p:CN=DV3, OU=LA, O=MS, C=US`.
 
    1. Geben Sie bei **SNC-Zertifikat** das öffentliche Zertifikat Ihres SNC-Clients in Base64-codiertem Format ein. Schließen Sie weder die PEM-Kopfzeile noch die PEM-Fußzeile ein.
 
@@ -479,14 +479,14 @@ Erstellen Sie als Nächstes eine Aktion zum Senden Ihrer IDoc-Nachricht an SAP, 
 
 Sie können IDocs mit einem Flatfile-Schema verwenden, wenn Sie sie mit einem XML-Umschlag umschließen. Um ein Flatfile-IDoc zu senden, verwenden Sie die generischen Anweisungen zum [Erstellen einer SAP-Aktion zum Senden Ihrer IDoc-Nachricht](#create-sap-action-to-send-message) mit den folgenden Änderungen.
 
-1. Verwenden Sie für die Aktion **Nachricht an SAP senden** den SAP-Aktions-URI`http://microsoft.lobservices.sap/2007/03/Idoc/SendIdoc`.
+1. Verwenden Sie für die Aktion **Nachricht an SAP senden** den SAP-Aktions-URI`http://Microsoft.LobServices.Sap/2007/03/Idoc/SendIdoc`.
 
 1. Formatieren Sie Ihre Eingabenachricht mit einem XML-Umschlag.
 
 Sehen Sie sich als Beispiel die folgende XML-Payload an:
 
 ```xml
-<ReceiveIdoc xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/">
+<SendIdoc xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/">
 <idocData>EDI_DC 3000000001017945375750 30INVOIC011BTSVLINV30KUABCABCFPPC LDCA X004010810 4 SAPMSX LSEDI ABCABCFPPC 000d3ae4-723e-1edb-9ca4-cc017365c9fd 20210217054521INVOICINVOIC01ZINVOIC2RE 20210217054520
 E2EDK010013000000001017945375000001E2EDK01001000000010 ABCABC1.00000 0060 INVO9988298128 298.000 298.000 LB Z4LR EN 0005065828 L
 E2EDKA1 3000000001017945375000002E2EDKA1 000000020 RS ABCABCFPPC 0005065828 ABCABCABC ABCABC Inc. Limited Risk Distributor ABCABC 1950 ABCABCABCA Blvd ABCABAABCAB L5N8L9 CA ABCABC E ON V-ABCABC LDCA
@@ -599,7 +599,7 @@ E2EDS01 3000000001017945375000108E2EDS01 000000020 EXT
 Z2XSK010003000000001017945375000109Z2XSK01000000108030 Z400 52269.20
 Z2XSK010003000000001017945375000110Z2XSK01000000108030 XR1 13.000 6795.00 CX
 </idocData>
-</ReceiveIdoc>
+</SendIdoc>
 ```
 
 ### <a name="create-http-response-action"></a>Erstellen einer HTTP-Antwortaktion
@@ -856,13 +856,13 @@ Vollständige Fehlermeldungen finden Sie in den erweiterten Protokolle Ihres SAP
 
     ```xml
     <setting name="SapTraceLevel" serializeAs="String">
-       <value>"Verbose"</value>
+       <value>Verbose</value>
     </setting>
     ```
 
 ### <a name="extended-sap-logging-in-on-premises-data-gateway"></a>Erweiterte SAP-Protokollierung im lokalen Datengateway
 
-Wenn Sie ein [lokales Datengateway für Azure Logic Apps](../logic-apps/logic-apps-gateway-install.md) verwenden, können Sie eine erweiterte Protokolldatei für den SAP-Connector konfigurieren. Sie können Ihr lokales Datengateway verwenden, um Ereignisse der Ereignisablaufverfolgung für Windows (Event Tracing for Windows, ETW) in rotierende Protokolldateien umzuleiten, die in die ZIP-Protokollierungsdateien Ihres Gateways eingeschlossen werden.
+Wenn Sie ein [lokales Datengateway für Azure Logic Apps](logic-apps-gateway-install.md) verwenden, können Sie eine erweiterte Protokolldatei für den SAP-Connector konfigurieren. Sie können Ihr lokales Datengateway verwenden, um Ereignisse der Ereignisablaufverfolgung für Windows (Event Tracing for Windows, ETW) in rotierende Protokolldateien umzuleiten, die in die ZIP-Protokollierungsdateien Ihres Gateways eingeschlossen werden.
 
 Sie können [alle Konfigurations- und Dienstprotokolle Ihres Gateways](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) aus den Einstellungen der Gateway-App in eine ZIP-Datei exportieren.
 
@@ -1649,7 +1649,7 @@ Wenn Ihre SAP-Vorgänge in Ihrem Logik-App-Workflow ausgeführt werden, können 
 
    [![Screenshot: Azure-Portal mit Application Insights, zum Erstellen von Abfragen geöffnet im Bereich „Protokolle“](./media/logic-apps-using-sap-connector/application-insights-query-panel.png)](./media/logic-apps-using-sap-connector/application-insights-query-panel.png#lightbox)
 
-1. Im Bereich **Protokolle** können Sie eine mithilfe der [Kusto-Abfragesprache](/data-explorer/kusto/concepts) (Kusto Query Language, KQL) [Abfrage](/data-explorer/kusto/query) erstellen, die auf Ihren spezifischen Anforderungen basiert.
+1. Im Bereich **Protokolle** können Sie eine mithilfe der [Kusto-Abfragesprache](/azure/data-explorer/kusto/concepts/) (Kusto Query Language, KQL) [Abfrage](/azure/data-explorer/kusto/query/) erstellen, die auf Ihren spezifischen Anforderungen basiert.
 
    Sie können ein Abfragemuster verwenden, das der folgenden Beispielabfrage ähnelt:
 
@@ -1818,7 +1818,9 @@ Zurzeit sind für den verwalteten SAP-Connector (Nicht-ISE) folgende Probleme un
 
 * Der SAP-Connector unterstützt derzeit keine SAP-Router-Zeichenfolgen. Das lokale Datengateway muss in demselben LAN wie das SAP-System vorhanden sein, mit dem eine Verbindung hergestellt werden soll.
 
-* Für [Logik-Apps in einer ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
+* In der Methode **\[BAPI] Call in einer SAP-Aktion** werden die BAPI-Änderungen von der Auto-Commit-Funktion nicht übernommen, wenn mindestens eine Warnung im **CallBapiResponse-Objekt** vorhanden ist, das von der Aktion zurückgegeben wird. Um BAPI-Änderungen trotz eventueller Warnungen festzuschreiben, erstellen Sie explizit eine Sitzung mit der Aktion **\[BAPI - RFC] „Erstellen einer zustandsbehafteten Sitzung“** , deaktivieren Sie die Auto-Commit-Funktion in der Aktion **\[BAPI] Aufrufmethode in SAP** und rufen Sie stattdessen die Aktion **\[„BAPI] Transaktion abschließen“** auf.
+
+* Für [Logik-Apps in einer ISE](connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](logic-apps-limits-and-config.md#message-size-limits).
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
@@ -2015,5 +2017,5 @@ Weitere Informationen zum SAP-Connector finden Sie in der [Referenz zu Connector
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Herstellen einer Verbindung von Azure Logic Apps mit lokalen Systemen](logic-apps-gateway-connection.md)
-* Informationen zur Validierung, Transformation und Verwendung anderer Nachrichtenvorgänge mit dem [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* Informationen zur Validierung, Transformation und Verwendung anderer Nachrichtenvorgänge mit dem [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
 * Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

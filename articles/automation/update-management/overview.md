@@ -3,14 +3,14 @@ title: 'Azure Automation-Updateverwaltung: Übersicht'
 description: Dieser Artikel bietet eine Übersicht über die Updateverwaltungsfunktion, die Updates für Ihre Windows- und Linux-Computer implementiert.
 services: automation
 ms.subservice: update-management
-ms.date: 06/24/2021
+ms.date: 09/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0190d5501b95c0c70606978586edf30ff3d39b79
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: fed1ce7f236b568458f1eb1b25ce5420c2ad5501
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112676606"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092154"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
@@ -30,19 +30,21 @@ Machen Sie sich mit den Informationen in den folgenden Abschnitten vertraut, bev
 
 Das folgende Diagramm veranschaulicht, wie die Updateverwaltung alle verbundenen Windows Server- und Linux-Server bewertet und Sicherheitsupdates darauf anwendet.
 
-![Updateverwaltungs-Workflow](./media/overview/update-mgmt-updateworkflow.png)
+![Updateverwaltungs-Workflow](./media/overview/update-mgmt-workflow.png)
 
-Die Updateverwaltung kann in Azure Monitor-Protokolle integriert werden, um Updatebewertungen und -bereitstellungsergebnisse als Protokolldaten von zugewiesenen Azure- und Nicht-Azure-Computern zu speichern. Um diese Daten zu sammeln, werden das Automation-Konto und der Log Analytics-Arbeitsbereich miteinander verknüpft. Darüber hinaus ist der Log Analytics-Agent für Windows und Linux auf dem Computer erforderlich, der so konfiguriert werden muss, dass er an diesen Arbeitsbereich meldet. Die Updateverwaltung unterstützt das Sammeln von Informationen über Systemupdates von Agents in einer System Center Operations Manager-Verwaltungsgruppe, die mit dem Arbeitsbereich verbunden ist. Die Registrierung eines Computers für die Updateverwaltung in mehreren Log Analytics-Arbeitsbereichen (auch als „Multi-Homing“ bezeichnet) wird nicht unterstützt.
+Die Updateverwaltung kann in Azure Monitor-Protokolle integriert werden, um Updatebewertungen und -bereitstellungsergebnisse als Protokolldaten von zugewiesenen Azure- und Nicht-Azure-Computern zu speichern. Um diese Daten zu sammeln, werden das Automation-Konto und der Log Analytics-Arbeitsbereich miteinander verknüpft. Darüber hinaus ist der Log Analytics-Agent für Windows und Linux auf dem Computer erforderlich, der so konfiguriert werden muss, dass er an diesen Arbeitsbereich meldet. 
+
+Die Updateverwaltung unterstützt das Sammeln von Informationen über Systemupdates von Agents in einer System Center Operations Manager-Verwaltungsgruppe, die mit dem Arbeitsbereich verbunden ist. Die Registrierung eines Computers für die Updateverwaltung in mehreren Log Analytics-Arbeitsbereichen (auch als „Multi-Homing“ bezeichnet) wird nicht unterstützt.
 
 In der folgenden Tabelle sind die von der Updateverwaltung unterstützten verbundenen Quellen zusammengefasst.
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
-| Windows |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates aus Windows-Computern mithilfe des Log Analytics-Agents und initiiert die Installation von erforderlichen Updates. |
-| Linux |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates aus Linux-Computern mithilfe des Log Analytics-Agents und initiiert die Installation von erforderlichen Updates auf unterstützten Distributionen. |
+| Windows |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates aus Windows-Computern mithilfe des Log Analytics-Agents und initiiert die Installation von erforderlichen Updates.<br> Die Rechner müssen sich bei Microsoft Update oder Windows Server Update Services (WSUS) melden. |
+| Linux |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates aus Linux-Computern mithilfe des Log Analytics-Agents und initiiert die Installation von erforderlichen Updates auf unterstützten Distributionen.<br> Die Rechner müssen an ein lokales oder entferntes Repository berichten. |
 | Operations Manager-Verwaltungsgruppe |Ja |Die Updateverwaltung sammelt Informationen zu Softwareupdates von Agents in einer verbundenen Verwaltungsgruppe.<br/><br/>Es ist keine direkte Verbindung zwischen dem Operations Manager-Agent und Azure Monitor-Protokollen erforderlich. Protokolldaten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
 
-Die Computer, die der Updateverwaltung zugeordnet sind, melden, auf welchem aktuellen Stand sie sind, und zwar basierend auf der Quelle, mit der sie sich synchronisieren sollen. Windows-Computer können so konfiguriert werden, dass sie an Windows Server Update Services oder an Microsoft Update melden. Linux-Computer können so konfiguriert werden, dass sie an ein lokales oder öffentliches Repository melden. Sie können die Updateverwaltung ebenfalls mit Microsoft Endpoint Configuration Manager verwenden. Weitere Informationen dazu finden Sie unter [Integrieren der Updateverwaltung mit Windows Endpoint Configuration Manager](mecmintegration.md). 
+Die Computer, die der Updateverwaltung zugeordnet sind, melden, auf welchem aktuellen Stand sie sind, und zwar basierend auf der Quelle, mit der sie sich synchronisieren sollen. Windows-Rechner müssen so konfiguriert werden, dass sie entweder an [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) oder [Microsoft Update](https://www.update.microsoft.com) berichten, und Linux-Rechner müssen so konfiguriert werden, dass sie an ein lokales oder öffentliches Repository berichten. Sie können die Updateverwaltung ebenfalls mit Microsoft Endpoint Configuration Manager verwenden. Weitere Informationen dazu finden Sie unter [Integrieren der Updateverwaltung mit Windows Endpoint Configuration Manager](mecmintegration.md). 
 
 Wenn der Windows Update Agent (WUA) für das Senden von Meldungen an WSUS konfiguriert ist, können sich die Ergebnisse von den angezeigten Microsoft Update-Ergebnissen unterscheiden. Dies hängt davon ab, wann WSUS zuletzt mit Microsoft Update synchronisiert wurde. Dasselbe gilt für Linux-Computer, die für Meldungen an ein lokales Repository konfiguriert sind (anstatt an ein öffentliches Repository). Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle 12 Stunden ausgeführt. Für einen Linux-Computer wird der Konformitätsscan standardmäßig jede Stunde durchgeführt. Wenn der Log Analytics-Agent neu gestartet wird, wird ein Konformitätsscan innerhalb von 15 Minuten gestartet. Wenn ein Computer einen Scanvorgang abgeschlossen hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Azure Monitor-Protokolle weiter. 
 
@@ -77,6 +79,14 @@ Nachdem Sie die Updateverwaltung aktiviert haben, werden alle direkt mit dem Log
 Jeder von der Updateverwaltung verwaltete Windows-Computer wird im Bereich „Hybrid Worker-Gruppen“ als Hybrid Worker-Systemgruppe für das Automation-Konto aufgeführt. Die Gruppen verwenden die Benennungskonvention `Hostname FQDN_GUID`. Es ist nicht möglich, diese Gruppen mit Runbooks in Ihrem Konto zu erreichen. Entsprechende Versuche sind nicht erfolgreich. Diese Gruppen sind nur für die ausschließliche Unterstützung der Updateverwaltung bestimmt. Weitere Informationen zur Anzeige der Liste von Windows-Computern, die als Hybrid Runbook Worker konfiguriert sind, finden Sie unter [Anzeigen von Hybrid Runbook Workern](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers).
 
 Sie können die Windows-Computer einer System Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzufügen, um Automation-Runbooks zu unterstützen, wenn Sie für die Updateverwaltung und die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde in Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
+
+### <a name="external-dependencies"></a>Externe Abhängigkeiten
+
+Azure Automation Update Management hängt von den folgenden externen Abhängigkeiten ab, um Software-Updates bereitzustellen.
+
+* Windows Server Update Services (WSUS) oder Microsoft Update wird für Software-Update-Pakete und für die Überprüfung der Anwendbarkeit von Software-Updates auf Windows-basierten Computern benötigt.
+* Der Windows Update Agent (WUA) Client wird auf Windows-basierten Rechnern benötigt, damit diese eine Verbindung zum WSUS-Server oder Microsoft Update herstellen können.
+* Ein lokales oder entferntes Repository zum Abrufen und Installieren von Betriebssystem-Updates auf Linux-basierten Rechnern.
 
 ### <a name="management-packs"></a>Management Packs
 

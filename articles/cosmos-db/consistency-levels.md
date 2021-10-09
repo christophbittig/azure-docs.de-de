@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: 4d0197e76659e864ab0f5553317b64b2d74b867d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/20/2021
+ms.openlocfilehash: ae45647369cde2cc0b427fe128f4fea44de79bf4
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354865"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058916"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -96,6 +96,7 @@ Für Clients außerhalb der Sitzung, die Schreibvorgänge ausführen, gelten fol
 - Konsistenz für Clients in unterschiedlichen Regionen für ein Konto mit einer einzelnen Schreibregion = Präfixkonsistenz
 - Konsistenz für Clients, die in nur einer Region schreiben, für ein Konto mit mehreren Schreibregionen = Präfixkonsistenz
 - Konsistenz für Clients, die in mehrere Region schreiben, für ein Konto mit mehreren Schreibregionen = Letztliche Konsistenz
+- Konsistenz für Clients, die den integrierten [Cache von Azure Cosmos DB](integrated-cache.md) verwenden = Letztlich
 
   Die Sitzungskonsistenz ist die gängigste Konsistenzebene für Anwendungen in einer einzelnen Region sowie für weltweit verteilte Anwendungen. Sie bietet Schreibwartezeiten, Verfügbarkeit und Lesedurchsatz, die mit der letztlichen Konsistenz vergleichbar sind. Darüber hinaus stellt sie die Konsistenzgarantien für Anwendungen bereit, die für den Betrieb im Benutzerkontext geschrieben wurden. In der folgenden Grafik wird die Sitzungskonsistenz anhand von Noten veranschaulicht. Für „USA, Westen 2“ (Schreiben) und „USA, Westen 2“ (Lesen) wird dieselbe Sitzung (Sitzung A) verwendet, sodass beide dieselben Daten zur gleichen Zeit lesen. Die Region „Australien, Osten“ dagegen verwendet „Sitzung B“ und empfängt Daten somit später, aber weiterhin in der Reihenfolge der Schreibvorgänge.
 
@@ -154,7 +155,7 @@ Die exakte RTT-Latenz richtet sich nach der physischen Entfernung und der Azure-
 
 - Für starke und begrenzte Veraltung werden Lesevorgänge für zwei Replikate in einer Gruppe mit vier Replikaten (Minderheitsquorum) durchgeführt, um die Konsistenz zu garantieren. Die Lesevorgänge werden in der Reihenfolge „Sitzung“, „Präfixkonsistenz“ und „Letztlich“ durchgeführt. Im Ergebnis ist der Lesedurchsatz für die gleiche Anzahl von Anforderungseinheiten für starke und begrenzte Veraltung halb so hoch wie bei anderen Konsistenzebenen.
 
-- Für bestimmte Schreibvorgänge (z.B. Einfügen, Ersetzen, Upsert, Löschen) ist der Schreibdurchsatz für RUs für alle Konsistenzebenen identisch.
+- Für bestimmte Schreibvorgänge (z.B. Einfügen, Ersetzen, Upsert, Löschen) ist der Schreibdurchsatz für RUs für alle Konsistenzebenen identisch. Für starke Konsistenz müssen Änderungen in jeder Region übertragen werden (globale Mehrheit), während für alle anderen Konsistenzstufen die lokale Mehrheit (drei Replikate in einem Satz von vier Replikaten) verwendet wird. 
 
 |**Konsistenzebene**|**Quorumlesevorgänge**|**Quorumschreibvorgänge**|
 |--|--|--|

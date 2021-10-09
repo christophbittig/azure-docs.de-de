@@ -2,18 +2,18 @@
 title: Herstellen einer Verbindung mit einem virtuellen Netzwerk mit Azure API Management
 description: Hier erfahren Sie, wie Sie eine Verbindung mit einem virtuellen Netzwerk in Azure API Management einrichten und darüber auf Webdienste zugreifen.
 services: api-management
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: how-to
 ms.date: 08/10/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 6eb89c069cb8ce1017b84f5c886231ae767a25a8
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 008e3874961af2c3e8ff8dfe3f162254fb9d5f5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537414"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669244"
 ---
 # <a name="connect-to-a-virtual-network-using-azure-api-management"></a>Herstellen einer Verbindung mit einem virtuellen Netzwerk mit Azure API Management
 
@@ -78,7 +78,7 @@ Einige Voraussetzungen unterscheiden sich abhängig von der Version (`stv2` oder
 
     Es kann zwischen 15 und 45 Minuten dauern, bis die API Management-Instanz aktualisiert wurde.
 
-### <a name="enable-connectivity-using-a-resource-manager-template"></a>Aktivieren von Konnektivität über eine Resource Manager-Vorlage
+### <a name="enable-connectivity-using-a-resource-manager-template"></a>Ermöglichen von Konnektivität über eine Resource Manager-Vorlage
 
 Verwenden Sie die folgenden Vorlagen, um eine API Management-Instanz bereitzustellen und eine Verbindung mit einem VNet herzustellen. Die Vorlagen unterscheiden sich abhängig von der Version (`stv2` oder `stv1`) der [Computeplattform](compute-infrastructure.md) für das Hosting Ihrer API Management-Instanz.
 
@@ -109,7 +109,8 @@ Nachdem Sie Ihren API Management-Dienst mit dem VNet verbunden haben, können S
 
 :::image type="content" source="media/api-management-using-with-vnet/api-management-using-vnet-add-api.png" alt-text="API über VNet hinzufügen":::
 
-## <a name="network-configuration"></a>Netzwerkkonfiguration
+## <a name="common-network-configuration-issues"></a><a name="network-configuration-issues"> </a>Allgemeine Probleme mit der Netzwerkkonfiguration
+
 Weitere Netzwerkkonfigurationseinstellungen sind in den folgenden Abschnitten enthalten. 
 
 In den Einstellungen werden gängige Konfigurationsprobleme aufgelistet, die beim Bereitstellen des API Management-Diensts in einem VNet auftreten können.
@@ -148,7 +149,7 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 | * / 25, 587, 25028                       | Ausgehend           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinden mit SMTP-Relay zum Senden von E-Mails                    | Extern & Intern  |
 | * / 6381 - 6383              | Ein- und ausgehend | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Zugreifen auf den Redis-Dienst für [Cache](api-management-caching-policies.md)richtlinien zwischen Computern         | Extern & Intern  |
 | * / 4290              | Ein- und ausgehend | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Synchronisieren von Zählern für [Ratenbegrenzung](api-management-access-restriction-policies.md#LimitCallRateByKey)srichtlinien zwischen Computern         | Extern & Intern  |
-| * / 6390                       | Eingehend            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Lastenausgleich von Azure-Infrastruktur                          | Extern & Intern  |
+| * / 6390                       | Eingehend            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | **Lastenausgleich von Azure-Infrastruktur**                          | Extern & Intern  |
 
 #### <a name="stv1"></a>[stv1](#tab/stv1)
 
@@ -166,7 +167,7 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 | * / 25, 587, 25028                       | Ausgehend           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinden mit SMTP-Relay zum Senden von E-Mails                    | Extern & Intern  |
 | * / 6381 - 6383              | Ein- und ausgehend | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Zugreifen auf den Redis-Dienst für [Cache](api-management-caching-policies.md)richtlinien zwischen Computern         | Extern & Intern  |
 | * / 4290              | Ein- und ausgehend | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Synchronisieren von Zählern für [Ratenbegrenzung](api-management-access-restriction-policies.md#LimitCallRateByKey)srichtlinien zwischen Computern         | Extern & Intern  |
-| * / *                         | Eingehend            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Lastenausgleich von Azure-Infrastruktur                          | Extern & Intern  |
+| * / *                         | Eingehend            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure Infrastructure Load Balancer (wichtig für Premium SKU)                         | Extern & Intern  |
 
 ---
 
@@ -207,10 +208,14 @@ Ausgehende Netzwerkverbindungen für das CAPTCHA des Entwicklerportals erlauben.
   Wenn Sie die API Management-Erweiterung in einem VNet verwenden, wird ausgehender Zugriff auf `dc.services.visualstudio.com` an `port 443` benötigt, um die Übermittlung von Diagnoseprotokollen aus dem Azure-Portal zu ermöglichen. Dieser Zugriff ermöglicht die Behandlung von Problemen, die bei der Verwendung von Erweiterungen auftreten können.
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer  
-  Sie müssen keine eingehenden Anforderungen vom Diensttag `AZURE_LOAD_BALANCER` für die SKU `Developer` zulassen, da hinter ihr nur eine Compute-Einheit bereitgestellt wird. Eingehender Datenverkehr von [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) wird jedoch bei der Skalierung auf eine höhere SKU (etwa `Premium`) kritisch, da ein Fehler beim Integritätstest des Lastenausgleichs dann dazu führt, dass die Bereitstellung nicht erfolgreich ist.
+  Sie müssen keine eingehenden Anforderungen vom Diensttag `AZURE_LOAD_BALANCER` für die SKU `Developer` zulassen, da hinter ihr nur eine Compute-Einheit bereitgestellt wird. Der Eingang von `AZURE_LOAD_BALANCER` wird jedoch **kritisch**, wenn die Skalierung auf eine höhere SKU wie `Premium` erfolgt, da ein Ausfall der Zustandsüberprüfung vom Load Balancer den gesamten eingehenden Zugriff auf die Steuerungsebene und die Datenebene blockiert.
 
 ### <a name="application-insights"></a>Application Insights  
   Wenn Sie [Azure Application Insights](api-management-howto-app-insights.md) für die Überwachung von API Management aktiviert haben, lassen Sie ausgehende Verbindungen mit dem [Telemetrieendpunkt](../azure-monitor/app/ip-addresses.md#outgoing-ports) des VNet zu.
+
+### <a name="kms-endpoint"></a>KMS-Endpunkt
+
+Wenn Sie dem VNET virtuelle Maschinen unter Windows hinzufügen, erlauben Sie die ausgehende Konnektivität auf Port 1688 zum [KMS-Endpunkt](/troubleshoot/azure/virtual-machines/custom-routes-enable-kms-activation#solution) in Ihrer Cloud. Diese Konfiguration leitet den Windows-VM-Datenverkehr an den Azure Key Management Services (KMS)-Server weiter, um die Windows-Aktivierung abzuschließen.
 
 ### <a name="force-tunneling-traffic-to-on-premises-firewall-using-expressroute-or-network-virtual-appliance"></a>Tunnelerzwingung für Datenverkehr zur lokalen Firewall per Express Route oder virtueller Netzwerkappliance  
   Im Allgemeinen konfigurieren und definieren Sie eine eigene Standardroute (0.0.0.0/0). Dadurch fließt der gesamte Datenverkehr aus dem per API Management delegierten Subnetz über eine lokale Firewall oder an ein virtuelles Netzwerkgerät. Bei diesem Datenverkehrsfluss funktioniert die Verbindung mit Azure API Management nicht mehr, da ausgehender Datenverkehr entweder lokal blockiert oder mittels NAT in eine nicht mehr nachvollziehbare Gruppe von Adressen übersetzt wird, die nicht mehr mit verschiedenen Azure-Endpunkten funktionieren. Für die Behebung dieses Problems gibt es mehrere Methoden: 
@@ -230,6 +235,7 @@ Ausgehende Netzwerkverbindungen für das CAPTCHA des Entwicklerportals erlauben.
       - Diagnose im Azure-Portal
       - SMTP-Relay
       - CAPTCHA des Entwicklerportals
+      - Azure KMS-Server
 
 ## <a name="routing"></a>Routing
 
@@ -335,7 +341,7 @@ Die folgenden IP-Adressen werden nach **Azure-Umgebung** unterteilt. Wenn eingeh
   | **Erforderlich** | Wählen Sie diese Option aus, um die Konnektivität erforderlicher Azure-Dienste für API Management zu überprüfen. Ein Fehler weist darauf hin, dass die Instanz keine Kernvorgänge zum Verwalten von APIs durchführen kann. |
   | **Optional** | Wählen Sie diese Option aus, um die Konnektivität optionaler Dienste zu überprüfen. Ein Fehler gibt nur an, dass die spezifische Funktion nicht ausgeführt wird (z. B. SMTP). Ein Fehler kann zu einer Beeinträchtigung bei der Verwendung und Überwachung der API Management-Instanz sowie bei der Erfüllung der verbindlichen SLA führen. |
 
-  Sehen Sie sich zum Beheben von Konnektivitätsproblemen die [Netzwerkkonfigurationseinstellungen](#network-configuration) an, und korrigieren Sie die entsprechenden Netzwerkeinstellungen.
+  Sehen Sie sich zum Beheben von Konnektivitätsproblemen die [Netzwerkkonfigurationseinstellungen](#network-configuration-issues) an, und korrigieren Sie die entsprechenden Netzwerkeinstellungen.
 
 * **Inkrementelle Updates**  
   Wenn Sie Änderungen an Ihrem Netzwerk vornehmen, sollten Sie sich mithilfe der [NetworkStatus-API](/rest/api/apimanagement/2020-12-01/network-status) vergewissern, dass der API Management-Dienst weiterhin Zugriff auf wichtige Ressourcen hat. Der Konnektivitätsstatus sollte alle 15 Minuten aktualisiert werden.
@@ -347,7 +353,7 @@ Die folgenden IP-Adressen werden nach **Azure-Umgebung** unterteilt. Wenn eingeh
 
 Weitere Informationen:
 
-* [Verbinden eines virtuellen Netzwerks mit dem Back-End über VPN Gateway](../vpn-gateway/design.md#s2smulti)
+* [Verbindung eines virtuellen Netzes mit dem Backend über VPN Gateway](../vpn-gateway/design.md#s2smulti)
 * [Herstellen einer Verbindung mit einem virtuellen Netzwerk in verschiedenen Bereitstellungsmodellen](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Debuggen von APIs mit der Anforderungsablaufverfolgung](api-management-howto-api-inspector.md)
 * [Virtual Network – häufig gestellte Fragen](../virtual-network/virtual-networks-faq.md)

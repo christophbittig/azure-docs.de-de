@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 07d89aab2f957b6161f81525cfd9ae703be65d48
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 0561e96d40ff5c37587101a2003f5a17addb5a30
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123476266"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609192"
 ---
 # <a name="understand-azure-files-billing"></a>Grundlegendes zur Abrechnung für Azure Files
 Für Azure Files gibt es zwei Abrechnungsmodelle: „Bereitgestellt“ und „Nutzungsbasierte Zahlung“. Das Modell „Bereitgestellt“ ist nur für Premium-Dateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **FileStorage** bereitgestellt werden. Das Modell „Nutzungsbasierte Zahlung“ ist nur für Standarddateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **Universell, Version 2** bereitgestellt werden. In diesem Artikel wird die Funktionsweise beider Modelle erklärt, um Ihnen zu helfen, Ihre monatliche Azure Files-Rechnung zu verstehen.
@@ -93,9 +93,9 @@ Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestel
 |-|-|-|-|-|-|
 | 100 | 500 | Bis zu 4.000 | 14.400.000 | 44 | 66 |
 | 500 | 900 | Bis zu 4.000 | 14.400.000 | 60 | 90 |
-| 1\.024 | 1\.424 | Bis zu 4.000 | 14.400.000 | 81 | 122 |
-| 5\.120 | 5\.520 | Bis zu 15.360 | 55.296.000 | 245 | 368 |
-| 10.240 | 10.640 | Bis zu 30.720 | 110.592.000 | 450 | 675 |
+| 1\.024 | 1\.424 | Bis zu 4.272 | 15,379,200 | 81 | 122 |
+| 5\.120 | 5\.520 | Bis zu 16.560 | 59,616,000 | 245 | 368 |
+| 10.240 | 10.640 | Bis zu 31.920 | 114,912,000 | 450 | 675 |
 | 33.792 | 34.192 | Bis zu 100.000 | 360.000.000 | 1\.392 | 2\.088 |
 | 51.200 | 51.600 | Bis zu 100.000 | 360.000.000 | 2\.088 | 3\.132 |
 | 102.400 | 100.000 | Bis zu 100.000 | 360.000.000 | 4\.136 | 6\.204 |

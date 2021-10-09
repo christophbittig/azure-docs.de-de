@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b6c2cbf04b0e68f86bd11b8295c54b8c65d0360
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 9d898bc4fe0afa268f9aef3ab4282ebb249e61b4
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352784"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081451"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse RBAC-Rollen
 
@@ -93,8 +93,8 @@ workspaces/pipelines/write, delete|Synapse-Administrator</br>Synapse-Mitwirkende
 workspaces/triggers/write, delete|Synapse-Administrator</br>Synapse-Mitwirkender</br>Herausgeber von Synapse-Artefakten
 workspaces/datasets/write, delete|Synapse-Administrator</br>Synapse-Mitwirkender</br>Herausgeber von Synapse-Artefakten
 workspaces/libraries/write, delete|Synapse-Administrator</br>Synapse Apache Spark-Administrator</br>Synapse-Mitwirkender</br>Herausgeber von Synapse-Artefakten
-workspaces/linkedServices/write, delete|Synapse-Administrator</br>Synapse Apache Spark-Administrator</br>Synapse SQL-Administrator</br>Synapse-Mitwirkender</br>Herausgeber von Synapse-Artefakten</br>Synapse-Manager für verknüpfte Daten
-workspaces/credentials/write, delete|Synapse-Administrator</br>Synapse Apache Spark-Administrator</br>Synapse SQL-Administrator</br>Synapse-Mitwirkender</br>Herausgeber von Synapse-Artefakten</br>Synapse-Manager für verknüpfte Daten
+workspaces/linkedServices/write, delete|Synapse-Administrator</br>Synapse-Mitwirkender</br>Herausgeber von Synapse-Artefakten</br>Synapse-Manager für verknüpfte Daten
+workspaces/credentials/write, delete|Synapse-Administrator</br>Synapse-Mitwirkender</br>Herausgeber von Synapse-Artefakten</br>Synapse-Manager für verknüpfte Daten
 workspaces/notebooks/viewOutputs/action|Synapse-Administrator</br>Synapse Apache Spark-Administrator</br>Synapse-Mitwirkender</br>Herausgeber von Synapse-Artefakten</br>Benutzer von Synapse-Artefakten
 workspaces/pipelines/viewOutputs/action|Synapse-Administrator</br>Synapse-Mitwirkender</br>Herausgeber von Synapse-Artefakten</br>Benutzer von Synapse-Artefakten
 workspaces/linkedServices/useSecret/action|Synapse-Administrator</br>Synapse-Anmeldeinformationsbenutzer

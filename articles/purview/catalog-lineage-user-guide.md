@@ -1,18 +1,17 @@
 ---
-title: Leitfaden zur Datenkatalogherkunft (Vorschauversion)
+title: Benutzerhandbuch Datenkatalog Lineage
 description: Dieser Artikel enthält eine Übersicht über das Feature für „Katalogherkunft“ von Azure Purview.
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 08/25/2021
-ms.openlocfilehash: 38f150a99b2145968569e986ea158b1aa552593a
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.date: 09/27/2021
+ms.openlocfilehash: e2923e29652a92de188366168140bf9def43c082
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968601"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209476"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview: Leitfaden zur Datenkatalogherkunft
 
@@ -112,7 +111,7 @@ Von der Datenverarbeitung können einzelne oder mehrere Datasets verwendet werde
 
    :::image type="content" source="./media/catalog-lineage-user-guide/select-switch-to-asset.png" alt-text="Screenshot: Auswählen von „Switch to asset“ (Zu Ressource wechseln) für eine Herkunftsdatenressource" lightbox="./media/catalog-lineage-user-guide/select-switch-to-asset.png":::
 
-2. Bei beliebten Datasets kann die Canvas für die Herkunft unübersichtlich werden. Aus Gründen der Übersichtlichkeit werden in der Standardansicht für eine Ressource jeweils nur fünf Herkunftsebenen angezeigt. Die restlichen Herkunftsinformationen können angezeigt werden, indem Sie in der Canvas für die Herkunft auf die Blasen klicken. Datenconsumer können in der Canvas Ressourcen, die nicht von Interesse sind, auch ausblenden. Zur weiteren Verbesserung der Übersichtlichkeit können Sie oben in der Canvas für die Herkunftsinformationen die Umschaltfläche **More Lineage** (Mehr Herkunftsdaten) auf „Aus“ festlegen. Dies bewirkt, dass in der Canvas für die Herkunftsinformationen alle Blasen ausgeblendet werden.
+2. Bei beliebten Datasets kann die Canvas für die Herkunft unübersichtlich werden. Aus Gründen der Übersichtlichkeit werden in der Standardansicht für eine Ressource jeweils nur fünf Herkunftsebenen angezeigt. Der Rest des Stammbaums kann durch Auswahl der Blasen im Stammbaum-Canvas erweitert werden. Datenconsumer können in der Canvas Ressourcen, die nicht von Interesse sind, auch ausblenden. Zur weiteren Verbesserung der Übersichtlichkeit können Sie oben in der Canvas für die Herkunftsinformationen die Umschaltfläche **More Lineage** (Mehr Herkunftsdaten) auf „Aus“ festlegen. Dies bewirkt, dass in der Canvas für die Herkunftsinformationen alle Blasen ausgeblendet werden.
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png" alt-text="Screenshot: Umschaltfläche „More lineage“ (Mehr Herkunftsdaten)" lightbox="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png":::
 

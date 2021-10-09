@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 10/05/2021
-ms.openlocfilehash: ca8ed4fa480bd394196f4ca5b37c52bcc06e41c1
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.date: 09/14/2021
+ms.openlocfilehash: bf37cfc156d45eb668a7f7da240e8a9437aa51d9
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546157"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216971"
 ---
 # <a name="maintenance-window-preview"></a>Wartungsfenster (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -78,8 +78,6 @@ Die Auswahl eines anderen Wartungsfensters anstelle des Standardwartungsfensters
 
 | Azure-Region | Verwaltete SQL-Instanz | SQL-Datenbank | SQL-Datenbank in einer [Azure-Verfügbarkeitszone](high-availability-sla.md) | 
 |:---|:---|:---|:---|
-| Australien, Mitte 1 | Ja | | |
-| Australien, Mitte 2 | Ja | | |
 | Australien (Osten) | Ja | Ja | Ja |
 | Australien, Südosten | Ja | Ja | |
 | Brasilien Süd | Ja | Ja |  |
@@ -95,7 +93,6 @@ Die Auswahl eines anderen Wartungsfensters anstelle des Standardwartungsfensters
 | Frankreich, Mitte | Ja | Ja | |
 | Frankreich, Süden | Ja | Ja | |
 | Deutschland, Westen-Mitte | Ja | Ja |  |
-| Deutschland, Norden | Ja |  |  |
 | Japan, Osten | Ja | Ja | Ja |
 | Japan, Westen | Ja | Ja | |
 | Korea, Mitte | Ja | | |
@@ -103,19 +100,15 @@ Die Auswahl eines anderen Wartungsfensters anstelle des Standardwartungsfensters
 | USA Nord Mitte | Ja | Ja | |
 | Nordeuropa | Ja | Ja | Ja |
 | Südafrika, Norden | Ja | | | 
-| Südafrika, Westen | Ja | | | 
 | USA Süd Mitte | Ja | Ja | Ja |
 | Indien (Süden) | Ja | Ja | |
 | Asien, Südosten | Ja | Ja | Ja |
 | Schweiz, Norden | Ja | Ja | |
-| Schweiz, Westen | Ja | | |
 | VAE, Mitte | Ja | | |
-| Vereinigte Arabische Emirate, Norden | Ja | | |
 | UK, Süden | Ja | Ja | Ja |
 | UK, Westen | Ja | Ja | |
 | USA, Westen-Mitte | Ja | Ja | |
 | Europa, Westen | Ja | Ja | Ja |
-| Indien, Westen | Ja | | |
 | USA (Westen) | Ja | Ja |  |
 | USA, Westen 2 | Ja | Ja | Ja |
 | | | | | 

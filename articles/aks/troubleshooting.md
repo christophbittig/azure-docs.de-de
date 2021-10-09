@@ -3,13 +3,13 @@ title: Problembehandlung bei allgemeinen Problemen mit Azure Kubernetes Service
 description: Erfahren Sie, wie Sie allgemeine Probleme bei der Verwendung von Azure Kubernetes Service (AKS) beheben und lösen können
 services: container-service
 ms.topic: troubleshooting
-ms.date: 06/20/2020
-ms.openlocfilehash: 6b115971104699775e9a58a7b25addefe4d12d1d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/24/2021
+ms.openlocfilehash: 10f30ccd5efbc612c3b51c273347c872bfae1c17
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346201"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058470"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -22,7 +22,7 @@ Es gibt auch einen [Leitfaden zur Problembehandlung](https://github.com/feiskyer
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Während der Erstellung oder Aktualisierung erhalte ich den Fehler `quota exceeded`. Wie sollte ich vorgehen? 
 
- [Fordern Sie weitere Kerne an](../azure-portal/supportability/resource-manager-core-quotas-request.md).
+ [Fordern Sie weitere Kerne an](../azure-portal/supportability/regional-quota-requests.md).
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Bei der Bereitstellung eines AKS-Clusters mit erweitertem Netzwerk erhalte ich den Fehler `insufficientSubnetSize`. Wie sollte ich vorgehen?
 
@@ -89,7 +89,7 @@ Eine Aktivierung der rollenbasierten Zugriffssteuerung in Kubernetes (Kubernetes
 
 Stellen Sie sicher, dass die Ports 22, 9000 und 1194 für die Verbindung mit dem API-Server offen sind. Überprüfen Sie mit dem `kubectl get pods --namespace kube-system`-Befehl, ob der `tunnelfront`- oder `aks-link`-Pod im *kube-system*-Namespace ausgeführt wird. Falls nicht, erzwingen Sie das Löschen des Pods. Er wird anschließend neu gestartet.
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`. Wie sollte ich vorgehen?
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`.   Wie sollte ich vorgehen?
 
 Die unterstützte TLS-Mindestversion in AKS ist TLS 1.2.
 
@@ -104,7 +104,7 @@ Möglicherweise erhalten Sie diese Fehlermeldung, da Sie die Tags in den Agent-K
 Dieser Fehler tritt auf, wenn Cluster aus mehreren Gründen in einen fehlerhaften Zustand übergehen. Führen Sie die folgenden Schritte aus, um den Fehlerzustand Ihres Clusters zu beheben, bevor Sie den zuvor fehlgeschlagenen Vorgang erneut versuchen:
 
 1. Bis der Cluster den `failed`-Zustand verlassen hat, schlagen `upgrade`- und `scale`-Vorgänge fehl. Häufige Probleme und Lösungen sind unter anderem:
-    * Skalieren mit einem **nicht ausreichenden Computekontingent (CRP)** . Um das Problem zu beheben, skalieren Sie zuerst Ihren Cluster wieder auf einen stabilen Zielzustand innerhalb des Kontingents. Befolgen Sie dann diese [Schritte, um eine Erhöhung des Computekontingents anzufordern](../azure-portal/supportability/resource-manager-core-quotas-request.md), bevor Sie versuchen, den Wert erneut über die anfänglichen Kontingentgrenzen hinaus hochzuskalieren.
+    * Skalieren mit einem **nicht ausreichenden Computekontingent (CRP)** . Um das Problem zu beheben, skalieren Sie zuerst Ihren Cluster wieder auf einen stabilen Zielzustand innerhalb des Kontingents. Befolgen Sie dann diese [Schritte, um eine Erhöhung des Computekontingents anzufordern](../azure-portal/supportability/regional-quota-requests.md), bevor Sie versuchen, den Wert erneut über die anfänglichen Kontingentgrenzen hinaus hochzuskalieren.
     * Skalieren eines Clusters mit erweiterter Netzwerkunterstützung und **nicht ausreichenden Subnetzressourcen (Netzwerk)** . Um das Problem zu beheben, skalieren Sie zuerst Ihren Cluster wieder auf einen stabilen Zielzustand innerhalb des Kontingents. Befolgen Sie dann diese [Schritte, um eine Erhöhung des Ressourcenkontingents anzufordern](../azure-resource-manager/templates/error-resource-quota.md#solution), bevor Sie versuchen, den Wert erneut über die anfänglichen Kontingentgrenzen hinaus hochzuskalieren.
 2. Sobald die zugrunde liegende Ursache für den Upgradefehler behoben wurde, sollte sich Ihr Cluster in einem erfolgreichen Zustand befinden. Nachdem ein erfolgreicher Zustand bestätigt wurde, wiederholen Sie den ursprünglichen Vorgang.
 
@@ -264,39 +264,15 @@ initContainers:
     mountPath: /data
 ```
 
-### <a name="azure-disk-detach-failure-leading-to-potential-race-condition-issue-and-invalid-data-disk-list"></a>Azure Disk-Trennungsfehler, der zu einem potenziellen Racebedingungs-Problem und einer ungültigen Datenträgerauflistung führt.
-
-Wenn das Trennen einer Azure Disk fehlschlägt, wird bis zu sechs Mal erneut versucht, den Datenträger mithilfe von exponentiellem Backout zu trennen. Außerdem wird die Datenträgerauflistung auf Knotenebene für ca. 3 Minuten gesperrt. Wenn die Datenträgerauflistung während dieses Zeitraums manuell aktualisiert wird, führt dies dazu, dass die auf Knotenebene gesperrte Datenträgerauflistung veraltet ist und zu Instabilität auf dem Knoten führt.
-
-Dieses Problem wurde in den folgenden Versionen von Kubernetes behoben:
-
-| Kubernetes-Version | Korrigierte Version |
-|--|:--:|
-| 1.12 | 1.12.9 oder höher |
-| 1.13 | 1.13.6 oder höher |
-| 1,14 | 1.14.2 oder höher |
-| 1.15 und höher | – |
-
-Wenn Sie eine Version von Kubernetes verwenden, die keine Korrektur für dieses Problem enthält, und Ihr Knoten besitzt eine veraltete Datenträgerauflistung, können Sie das Problem minimieren, indem Sie alle nicht vorhandenen Datenträger mit einem Massenvorgang von der VM trennen. **Trennen einzelner, nicht vorhandener Datenträger kann fehlschlagen.**
-
 ### <a name="large-number-of-azure-disks-causes-slow-attachdetach"></a>Eine große Anzahl von Azure Disks führt zu langsamem Anfügen/Trennen.
 
-Wenn die Anzahl von Azure Disk-Anfügungs-/Trennungsvorgängen für eine VM mit einem einzelnen Knoten größer als 10 ist – oder größer als 3, wenn ein einzelner VM-Skalierungsgruppenpool als Ziel festgelegt ist – sind sie möglicherweise langsamer als erwartet, da sie nacheinander ausgeführt werden. Diese Einschränkung ist ein bekanntes Problem, und zurzeit gibt es keine Problemumgehungen dafür. [Benutzerfeedback zur Unterstützung von parallelem Anfügen/Trennen über die Anzahl hinaus.](https://feedback.azure.com/forums/216843-virtual-machines/suggestions/40444528-vmss-support-for-parallel-disk-attach-detach-for).
+Wenn die Anzahl von Azure Disk-Anfügungs-/Trennungsvorgängen für eine VM mit einem einzelnen Knoten größer als 10 ist – oder größer als 3, wenn ein einzelner VM-Skalierungsgruppenpool als Ziel festgelegt ist – sind sie möglicherweise langsamer als erwartet, da sie nacheinander ausgeführt werden. Dieses Problem ist eine bekannte Einschränkung des bauminternen Azure-Disk-Treibers. Der [Azure Disk CSI-Treiber](https://github.com/kubernetes-sigs/azuredisk-csi-driver) hat dieses Problem mit dem Anhängen/Entfernen von Festplatten im Batchbetrieb gelöst.
 
 ### <a name="azure-disk-detach-failure-leading-to-potential-node-vm-in-failed-state"></a>Fehler beim Trennen von Azure Disks führt zu potenziellem Fehlerzustand von Knoten-VM.
 
 In einigen Randfällen kann es zu einem teilweisen Fehlschlagen des Trennens von Azure Disk kommen, wodurch die Knoten-VM in einem Fehlerzustand verbleibt.
 
-Dieses Problem wurde in den folgenden Versionen von Kubernetes behoben:
-
-| Kubernetes-Version | Korrigierte Version |
-|--|:--:|
-| 1.12 | 1.12.10 oder höher |
-| 1.13 | 1.13.8 oder höher |
-| 1,14 | 1.14.4 oder höher |
-| 1.15 und höher | – |
-
-Wenn Sie eine Version von Kubernetes verwenden, die keine Korrektur für dieses Problem enthält, und Ihr Knoten in einem Fehlerzustand ist, können Sie das Problem minimieren, indem Sie den VM-Status mit einer der folgenden Methoden manuell aktualisieren:
+Wenn sich Ihr Knoten in einem ausgefallenen Zustand befindet, können Sie den VM-Status mit einer der folgenden Methoden manuell aktualisieren:
 
 * Für einen auf Verfügbarkeitsgruppen basierenden Cluster:
     ```azurecli
@@ -310,21 +286,12 @@ Wenn Sie eine Version von Kubernetes verwenden, die keine Korrektur für dieses 
 
 ## <a name="azure-files-and-aks-troubleshooting"></a>Problembehandlung für Azure Files und AKS
 
-### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>Welche stabilen Versionen von Kubernetes werden für Azure Files empfohlen?
- 
-| Kubernetes-Version | Empfohlene Version |
-|--|:--:|
-| 1.12 | 1.12.6 oder höher |
-| 1.13 | 1.13.4 oder höher |
-| 1,14 | 1.14.0 oder höher |
-
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Wie lauten die standardmäßigen „mountOptions“ bei Verwendung von Azure Files?
 
 Empfohlene Einstellungen:
 
 | Kubernetes-Version | fileMode- und dirMode-Wert|
 |--|:--:|
-| 1.12.0 – 1.12.1 | 0755 |
 | 1.12.2 und höher | 0777 |
 
 Einfügeoptionen können für das Speicherklassenobjekt angegeben werden. Im folgenden Beispiel wird *0777* festgelegt:
@@ -387,24 +354,6 @@ Dieser Fehler ist darauf zurückzuführen, dass sich der *persistentvolume-contr
 
 Sie können das Problem minimieren, indem Sie [statische Bereitstellung mit Azure Files ](azure-files-volume.md) verwenden.
 
-### <a name="azure-files-fails-to-remount-in-windows-pod"></a>Azure Files kann in einem Windows-Pod nicht erneut bereitgestellt werden.
-
-Wenn ein Windows-Pod mit einer Azure Files-Einbindung gelöscht und dann für die Neuerstellung auf demselben Knoten geplant wird, wird diese Einbindung fehlschlagen. Dieser Fehler tritt auf, weil der `New-SmbGlobalMapping`-Befehl fehlschlägt, da die Azure Files-Bereitstellung bereits auf dem Knoten eingebunden ist.
-
-Beispielsweise wird eventuell ungefähr folgende Fehlermeldung angezeigt:
-
-```console
-E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (\"42c0ea39-1af9-11e9-8941-000d3af95268\")" failed. No retries permitted until 2019-01-18 08:15:53.0410149 +0000 GMT m=+732.446642701 (durationBeforeRetry 1s). Error: "MountVolume.SetUp failed for volume \"pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (UniqueName: \"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\") pod \"deployment-azurefile-697f98d559-6zrlf\" (UID: \"42c0ea39-1af9-11e9-8941-000d3af95268\") : azureMount: SmbGlobalMapping failed: exit status 1, only SMB mount is supported now, output: \"New-SmbGlobalMapping : Generic failure \\r\\nAt line:1 char:190\\r\\n+ ... ser, $PWord;New-SmbGlobalMapping -RemotePath $Env:smbremotepath -Cred ...\\r\\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\r\\n    + CategoryInfo          : NotSpecified: (MSFT_SmbGlobalMapping:ROOT/Microsoft/...mbGlobalMapping) [New-SmbGlobalMa \\r\\n   pping], CimException\\r\\n    + FullyQualifiedErrorId : HRESULT 0x80041001,New-SmbGlobalMapping\\r\\n \\r\\n\""
-```
-
-Dieses Problem wurde in den folgenden Versionen von Kubernetes behoben:
-
-| Kubernetes-Version | Korrigierte Version |
-|--|:--:|
-| 1.12 | 1.12.6 oder höher |
-| 1.13 | 1.13.4 oder höher |
-| 1.14 und höher | – |
-
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Bei der Azure Files-Einbindung tritt ein Fehler auf, weil sich der Speicherkontoschlüssel geändert hat.
 
 Wenn Ihr Speicherkontoschlüssel geändert wurde, kommt es möglicherweise zu Azure Files-Einbindungsfehlern.
@@ -435,10 +384,6 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 ```
 
 Dieser Fehler ist auf eine Upstream-Racebedingung der automatischen Clusterskalierung zurückzuführen. In einem solchen Fall endet die automatische Clusterskalierung mit einem anderen Wert als dem, der sich tatsächlich im Cluster befindet. Um aus diesem Zustand herauszukommen, deaktivieren und reaktivieren Sie die [automatische Clusterskalierung][cluster-autoscaler].
-
-### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Langsame Datenträgeranfügung, `GetAzureDiskLun` dauert zwischen zehn und 15 Minuten, und Sie erhalten eine Fehlermeldung
-
-In Kubernetes-Versionen **vor 1.15.0** erhalten Sie möglicherweise eine Fehlermeldung wie diese: **Error WaitForAttach Cannot find Lun for disk** (Fehler: WaitForAttach: LUN für Datenträger wurde nicht gefunden.).  Warten Sie zur Umgehung dieses Problems etwa 15 Minuten, und wiederholen Sie dann den Vorgang.
 
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Warum tritt bei Upgrades auf Kubernetes 1.16 ein Fehler auf, wenn Knotenbezeichnungen mit dem Präfix „kubernetes.io“verwendet werden?

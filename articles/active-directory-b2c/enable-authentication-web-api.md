@@ -11,12 +11,12 @@ ms.date: 06/25/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: cbbaf7d3698a1027ae310f73041e906a55117258
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a67cdd9ba92e3c78c5cb29a827cf537ba2e372ae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345823"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740201"
 ---
 # <a name="enable-authentication-in-your-own-web-api-by-using-azure-ad-b2c"></a>Aktivieren der Authentifizierung in Ihrer eigenen Web-API mit Azure AD B2C
 
@@ -533,6 +533,10 @@ Um das Programm zu beenden, wählen Sie in der Befehlsshell STRG+C aus. Sie kön
 Versuchen Sie, den geschützten Web-API-Endpunkt ohne Zugriffstoken aufzurufen. Öffnen Sie einen Browser, und wechseln Sie zu `http://localhost:6000/hello`. Die API gibt eine nicht autorisierte HTTP-Fehlermeldung zurück, die bestätigt, dass die Web-API mit einem Bearertoken geschützt ist.
 
 Fahren Sie mit dem Konfigurieren Ihrer App zum Aufrufen der Web-API fort. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites).
+
+Sehen Sie sich dieses Video an, um einige bewährte Verfahren für die Integration von Azure AD B2C mit einer API kennenzulernen.
+
+>[!Video https://www.youtube.com/embed/wuUu71RcsIo]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

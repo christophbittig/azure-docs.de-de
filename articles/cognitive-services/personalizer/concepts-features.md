@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 4ef7d0146d1636a863941f4deb317149aeb48faf
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: fb276979530fccfb95fd9d34655573a04391e524
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830936"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129219171"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Merkmale sind Informationen über Aktionen und Kontext.
 
@@ -68,10 +68,10 @@ Im Folgenden finden Sie Beispiele für Merkmalsnamespaces, die von Anwendungen v
 Sie können Merkmalsnamespaces nach Ihren eigenen Konventionen benennen, solange es sich dabei um gültige JSON-Schlüssel handelt. Namespaces werden zum Sortieren von Features in verschiedene Gruppen und zum Unterscheiden von Features mit ähnlichen Namen verwendet. Sie können sich Namespaces als „Präfix“ vorstellen, der zu Namen von Features hinzugefügt wird. Namespaces können nicht geschachtelt werden.
 
 
-Im folgenden JSON-Code sind `user`, `state` und `device` Merkmalsnamespaces. 
+In der folgenden JSON-Datei sind `user`, `environment`, `device`, and `activity` und Merkmalsnamespaces. 
 
 > [!Note]
-> Derzeit wird dringend empfohlen, UTF-8-basierte Namen mit verschiedenen Anfangsbuchstaben für Featurenamespaces zu verwenden. Beispielsweise Namen wie `user`, `state` und `device`, die jeweils mit `u`, `s` und `d` beginnen. Derzeit können Namespaces mit denselben Anfangsbuchstaben zu Konflikten in Indizes für maschinelles Lernen führen.
+> Derzeit wird dringend empfohlen, UTF-8-basierte Namen mit verschiedenen Anfangsbuchstaben für Featurenamespaces zu verwenden. Beispielsweise `user`, `environment`, `device` und `activity` beginnen mit `u`,`e`, `d` und `a`. Derzeit können Namespaces mit denselben Anfangsbuchstaben zu Konflikten in Indizes für maschinelles Lernen führen.
 
 JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte enthalten. Ein Array kann nur einbezogen werden, wenn die Arrayelemente Zahlen sind. 
 
@@ -99,7 +99,7 @@ JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte
             }
         },
         {
-            "userActivity" : {
+            "activity" : {
                 "itemsInCart": 3,
                 "cartValue": 250,
                 "appliedCoupon": true

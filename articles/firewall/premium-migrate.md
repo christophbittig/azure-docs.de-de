@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 09/13/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 53587cbc54b9e59268e6ee348bb8956a0b9ca993
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 580dcb11ae04aaae78d2c15f24c2c08d1df6158d
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343266"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061844"
 ---
 # <a name="migrate-to-azure-firewall-premium"></a>Migrieren zu Azure Firewall Premium
 
@@ -22,6 +22,8 @@ Sie können Azure Firewall Standard zu Azure Firewall Premium migrieren, um von 
 Die folgenden zwei Beispiele zeigen die Vorgehensweise:
 - Migrieren einer vorhandenen Standardrichtlinie mithilfe von Azure PowerShell
 - Migrieren Sie eine vorhandene Standardfirewall (mit klassischen Regeln) zu Azure Firewall Premium mit einer Premiumrichtlinie.
+
+Wenn Sie Terraform für die Bereitstellung der Azure Firewall verwenden, können Sie Terraform für die Migration zu Azure Firewall Premium nutzen. Weitere Informationen finden Sie unter [„Migrieren Sie Azure Firewall Standard zu Premium mit Terraform“](/azure/developer/terraform/firewall-upgrade-premium?toc=/azure/firewall/toc.json&bc=/azure/firewall/breadcrumb/toc.json).
 
 ## <a name="performance-considerations"></a>Überlegungen zur Leistung
 
@@ -37,7 +39,7 @@ Migrieren Sie Ihre Firewall während einer geplanten Wartung, da es während der
 
 `Transform-Policy.ps1` ist ein Azure PowerShell-Skript, das eine neue Premiumrichtlinie aus einer vorhandenen Standardrichtlinie erstellt.
 
-Angesichts einer Standard-Firewallrichtlinien-ID wandelt das Skript diese in eine Premiumrichtlinie für Azure Firewall um. Das Skript stellt zunächst eine Verbindung mit Ihrem Azure-Konto her, pullt die Richtlinie, transformiert verschiedene Parameter oder fügt diese hinzu und lädt dann eine neue Premiumrichtlinie hoch. Die neue Premiumrichtlinie hat den Namen `<previous_policy_name>_premium`.
+Angesichts einer Standard-Firewallrichtlinien-ID wandelt das Skript diese in eine Premiumrichtlinie für Azure Firewall um. Das Skript stellt zunächst eine Verbindung mit Ihrem Azure-Konto her, pullt die Richtlinie, transformiert verschiedene Parameter oder fügt diese hinzu und lädt dann eine neue Premiumrichtlinie hoch. Die neue Premiumrichtlinie hat den Namen `<previous_policy_name>_premium`. Im Falle einer Umwandlung der untergeordneten Richtlinie bleibt die Verknüpfung zur übergeordneten Richtlinie bestehen.
 
 Verwendungsbeispiel:
 
@@ -62,7 +64,7 @@ param (
     [string]
     $PolicyId,
 
-     #new firewallpolicy name, if not specified will be the previous name with the '_premium' suffix
+    #new filewallpolicy name, if not specified will be the previous name with the '_premium' suffix
     [Parameter(Mandatory=$false)]
     [string]
     $NewPolicyName = ""
@@ -123,7 +125,7 @@ function TransformPolicyToPremium {
                         ResourceGroupName = $Policy.ResourceGroupName 
                         Location = $Policy.Location 
                         ThreatIntelMode = $Policy.ThreatIntelMode 
-                        BasePolicy = $Policy.BasePolicy 
+                        BasePolicy = $Policy.BasePolicy.Id
                         DnsSetting = $Policy.DnsSettings 
                         Tag = $Policy.Tag 
                         SkuTier = "Premium" 
@@ -153,7 +155,7 @@ function TransformPolicyToPremium {
 function ValidateAzNetworkModuleExists {
     Write-Host "Validating needed module exists"
     $networkModule = Get-InstalledModule -Name "Az.Network" -ErrorAction SilentlyContinue
-    if (($null -eq $networkModule) -or ($networkModule.Version -lt 4.5)){
+    if (($null -eq $networkModule) -or ($networkModule.Version -lt 4.5.0)){
         Write-Host "Please install Az.Network module version 4.5.0 or higher, see instructions: https://github.com/Azure/azure-powershell#installation"
         exit(1)
     }
@@ -164,6 +166,7 @@ ValidateAzNetworkModuleExists
 $policy = Get-AzFirewallPolicy -ResourceId $script:PolicyId
 ValidatePolicy -Policy $policy
 TransformPolicyToPremium -Policy $policy
+
 ```
 
 ## <a name="migrate-an-existing-standard-firewall-using-the-azure-portal"></a>Migrieren einer vorhandenen Standardfirewall über das Azure-Portal

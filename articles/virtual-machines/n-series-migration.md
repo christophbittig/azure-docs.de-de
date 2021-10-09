@@ -1,16 +1,18 @@
 ---
 title: Migrationshandbuch für GPU-Computeworkloads in Azure
 description: Migrationshandbuch für die NC-, ND- und NCv2-Serie.
+author: iafinder
 ms.service: virtual-machines
 ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 08/15/2020
-ms.openlocfilehash: 1f148ad07137f6384a9752d2321836601a6bd996
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.author: iafinder
+ms.openlocfilehash: 574118d9bd8c400eccb48ed551d6059c0dfc7bf2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458773"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128551679"
 ---
 # <a name="migration-guide-for-gpu-compute-workloads-in-azure"></a>Migrationshandbuch für GPU-Computeworkloads in Azure
 
@@ -108,9 +110,9 @@ Nachdem Sie Ihre aktuelle Nutzungsweise bewertet haben, können Sie entscheiden,
 
 Befolgen Sie die Anleitung zum [Anfordern einer Erhöhung des vCPU-Kontingents nach VM-Familie](../azure-portal/supportability/per-vm-quota-requests.md). Wählen Sie die Größe der Ziel-VM aus, die Sie für die Migration ausgewählt haben.
 
-#### <a name="resize-the-current-virtual-machine"></a>Ändern Sie die Größe des aktuellen VM.
+#### <a name="resize-the-current-virtual-machine"></a>Ändern Sie die Größe der aktuellen VM.
 
-Sie können [die Größe des Virtuellen Computers ändern](resize-vm.md). 
+Sie können [die Größe des virtuellen Computers ändern](resize-vm.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

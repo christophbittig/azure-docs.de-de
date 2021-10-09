@@ -1,14 +1,14 @@
 ---
-title: Konfigurieren eines Labs für die Verwendung eines Remotedesktopgateways in Azure DevTest Labs
+title: Ein Lab zur Verwendung eines Remotedesktopgateways konfigurieren
 description: Erfahren Sie, wie Sie ein Lab in Azure DevTest Labs mit einem Remotedesktopgateway konfigurieren, um sicheren Zugriff auf die virtuellen Computer (VMs) des Labs ohne Offenlegung des RDP-Ports zu gewährleisten.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: b15d4d39199c1a30eae292ece67f4553b656f530
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fcafc9f035d57e7685ffc3646cecaf27b60684f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639596"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652413"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurieren Ihres Labs in Azure DevTest Labs zum Verwenden eines Remotedesktopgateways
 Sie können in Azure DevTest Labs ein Remotedesktopgateway für Ihr Lab konfigurieren, um sicheren Zugriff auf die virtuellen Computer (VMs) des Labs ohne Offenlegung des RDP-Ports zu gewährleisten. Das Lab bietet einen zentralen Ort für Ihre Lab-Benutzer zum Anzeigen aller virtuellen Computer, auf die sie Zugriff haben, sowie für den Zugriff auf diese. Die Schaltfläche **Verbinden** auf der Seite **Virtueller Computer** erstellt eine computerspezifische RDP-Datei, die Sie öffnen können, um eine Verbindung mit dem Computer herzustellen. Sie können die RDP-Verbindung weiter anpassen und sichern, indem Sie Ihr Lab mit einem Remotedesktopgateway verbinden. 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: 37e6573e1bc26bc79477cf532ef442964f760985
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 32d5602a4f71b1e66e135fe2478f2d9b10b8424d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226788"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129219190"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
 
@@ -115,7 +115,12 @@ Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere 
 
   Wenn Sie ein vorhandenes Azure Storage-Konto verwenden möchten, darf es sich nicht um ein Blob Storage- oder um ein Premium-Konto (Premium_LRS oder Premium_GRS) handeln. Es darf auch keinen hierarchischen Namespace aufweisen (mit Azure Data Lake Storage Gen2 verwendet). Weder Storage Premium noch hierarchische Namespaces werden mit dem _Standardspeicherkonto_ des Arbeitsbereichs unterstützt. Sie können Storage Premium noch hierarchische Namespaces mit _nicht standardmäßigen_ Speicherkonten verwenden.
   
-+ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Registriert die Docker-Container, die Sie während des Trainings und bei der Modellbereitstellung verwenden. Um Kosten zu minimieren, wird ACR **verzögert geladen**, bis Bereitstellungsimages erstellt sind.
++ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Registriert Docker-Container, die für die folgenden Komponenten verwendet werden:
+    * [Azure Machine Learning-Umgebungen](concept-environments.md) beim Trainieren und Bereitstellen von Modellen
+    * [AutoML](concept-automated-ml.md) bei der Bereitstellung
+    * [Datenprofilerstellung](how-to-connect-data-ui.md#data-profile-and-preview)
+
+    Um die Kosten zu minimieren, wird ACR **erst dann geladen**, wenn die Bilder benötigt werden.
 
     > [!NOTE]
     > Wenn Ihre Abonnementeinstellung das Hinzufügen von Tags zu darunter liegenden Ressourcen erfordert, wird die von Azure Machine Learning erstellte Azure Container Registry (ACR) zu einem Fehler führen, da wir keine Tags für ACR festlegen können.

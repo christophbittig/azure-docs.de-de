@@ -4,21 +4,24 @@ description: In diesem Artikel werden die Erkenntnisse in Azure Purview erläute
 author: SunetraVirdi
 ms.author: suvirdi
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-insights
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: bd2a8aa4a0296cf67cf754f0d921e2791abdbb4f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ff50729dee893caa7a1c38f57cbd23f0470fc84b
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110788791"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218848"
 ---
 # <a name="understand-insights-in-azure-purview"></a>Grundlegendes zu Erkenntnissen in Azure Purview
 
 Dieser Artikel bietet eine Übersicht über das Erkenntnisse-Feature in Azure Purview.
 
-Erkenntnisse zählen zu den tragenden Säulen von Purview. Diese Funktion bietet Kunden eine einzelne Ansicht in ihrem Katalog und soll darüber hinaus Datenquellenadministratoren, Geschäftsbenutzern, Data Stewards, Data Officers und Sicherheitsadministratoren spezifische Erkenntnisse vermitteln. Zurzeit bietet Purview die folgenden Erkenntnisse-Berichte, die Kunden in der öffentlichen Vorschau zur Verfügung gestellt werden.
+Erkenntnisse zählen zu den tragenden Säulen von Purview. Diese Funktion bietet Kunden eine einzelne Ansicht in ihrem Katalog und soll darüber hinaus Datenquellenadministratoren, Geschäftsbenutzern, Data Stewards, Data Officers und Sicherheitsadministratoren spezifische Erkenntnisse vermitteln. Derzeit verfügt Purview über die folgenden Insights-Berichte, die den Kunden während der öffentlichen Vorschau von Insight zur Verfügung stehen werden.
+
+> [!IMPORTANT]
+> Azure Purview-Erkenntnisse befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
 ## <a name="asset-insights"></a>Ressourcen-Erkenntnisse
 

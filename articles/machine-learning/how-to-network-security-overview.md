@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Schützen Sie Arbeitsbereichsressourcen und Compute-Umgebungen von Azure Machine Learning mithilfe eines isolierten Azure Virtual Network (VNet).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 09/24/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: 1844d9a84714231aac7cb399239c31a6af62661c
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 1d1389b5627f18c8772a55300a89dca9d0de4917
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093514"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423517"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>Schützen von Azure Machine Learning-Arbeitsbereichsressourcen mit virtuellen Netzwerken (VNets)
@@ -168,7 +168,7 @@ Informationen zur Aktivierung der vollen Studio-Funktionalität finden Sie unter
 
 ### <a name="limitations"></a>Einschränkungen
 
-Von der [ML-gestützten Datenbeschriftung](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling) werden keine Standardspeicherkonten hinter einem virtuellen Netzwerk unterstützt. Verwenden Sie daher für die ML-gestützte Datenbeschriftung ein anderes Speicherkonto als das Standardkonto. 
+Von der [ML-gestützten Datenbeschriftung](how-to-create-image-labeling-projects.md#use-ml-assisted-data-labeling) werden keine Standardspeicherkonten hinter einem virtuellen Netzwerk unterstützt. Verwenden Sie daher für die ML-gestützte Datenbeschriftung ein anderes Speicherkonto als das Standardkonto. 
 
 > [!TIP]
 > Solange es sich nicht um das Standardspeicherkonto handelt, kann das Konto für die Datenbeschriftung hinter dem virtuellen Netzwerk abgesichert werden. 

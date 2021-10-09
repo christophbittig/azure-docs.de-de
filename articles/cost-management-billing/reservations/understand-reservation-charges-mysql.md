@@ -6,13 +6,13 @@ ms.author: sumuth
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 85a8c59cce74787a7b1723850915ec133b34b3b0
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.date: 09/15/2021
+ms.openlocfilehash: 8816ed38e5662ad0bc1f26b7b022050476c7bca7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240374"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673861"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>Anwendung eines Reservierungsrabatts auf Azure Database for MySQL
 
@@ -20,7 +20,7 @@ Nachdem Sie eine reservierte Azure Database for MySQL-Kapazität erworben haben,
 
 ## <a name="how-reservation-discount-is-applied"></a>Wie der Reservierungsrabatt angewendet wird
 
-Nicht in Anspruch genommener Reservierungsrabatt **geht verloren**. Das heißt, wenn Sie für eine Stunde nicht über die entsprechenden Ressourcen verfügen, verlieren Sie eine Reservierungsmenge für diese Stunde. Sie können ungenutzte reservierte Stunden nicht übertragen.</br>
+Nicht in Anspruch genommener Reservierungsrabatt ***geht verloren***. Das heißt, wenn Sie für eine Stunde nicht über die entsprechenden Ressourcen verfügen, verlieren Sie eine Reservierungsmenge für diese Stunde. Sie können ungenutzte reservierte Stunden nicht übertragen.</br>
 
 Wenn Sie eine Ressource beenden, wird der Reservierungsrabatt automatisch auf eine andere entsprechende Ressource im angegebenen Reservierungsumfang angewandt. Werden im angegebenen Reservierungsumfang keine entsprechenden Ressourcen gefunden, gehen die reservierten Stunden verloren.
 
@@ -30,7 +30,7 @@ Der Rabatt für reservierte Azure Database for MySQL-Kapazität wird auf Stunden
 
 Die folgenden Beispiele veranschaulichen, wie der Rabatt für reservierte Azure Database for MySQL-Kapazität angewendet wird – abhängig davon, wie viele Kerne Sie erworben haben und wann sie ausgeführt werden.
 
-**Beispiel 1** : Sie erwerben reservierte Azure Database for MySQL-Kapazität für acht V-Kerne. Wenn Sie einen Azure Database for MySQL-Server mit 16 V-Kernen ausführen, der den restlichen Attributen der Reservierung entspricht, werden Ihnen acht V-Kerne der Computenutzung Ihres MySQL-Servers zum Preis für die nutzungsbasierte Bezahlung in Rechnung gestellt, und Sie erhalten den Reservierungsrabatt für eine Stunde der Computenutzung von acht V-Kernen des MySQL-Servers.</br>
+* **Beispiel 1**: Sie kaufen eine Azure Database für MySQL mit reservierter Kapazität für einen 8 vCore. Wenn Sie einen Azure Database for MySQL-Server mit 16 V-Kernen ausführen, der den restlichen Attributen der Reservierung entspricht, werden Ihnen acht V-Kerne der Computenutzung Ihres MySQL-Servers zum Preis für die nutzungsbasierte Bezahlung in Rechnung gestellt, und Sie erhalten den Reservierungsrabatt für eine Stunde der Computenutzung von acht V-Kernen des MySQL-Servers.</br>
 
 Bei den übrigen Beispielen wird davon ausgegangen, dass die reservierte Azure Database for MySQL-Kapazität, die Sie erwerben, für eine Azure Database for MySQL-Instanz mit 16 V-Kernen gilt und die restlichen Reservierungsattribute den ausgeführten MySQL-Servern entsprechen.
 

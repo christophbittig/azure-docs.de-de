@@ -8,12 +8,12 @@ ms.date: 10/28/2020
 ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 718a0aa96579b3234bfa242408565246602762a6
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 88eabcfa4b8b4eb4e3af4c366939693dc5c92ee1
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114795"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092013"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Diagnose und Problembehandlung bei Java v4 SDK-Anforderungstimeoutausnahmen in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -24,7 +24,7 @@ Der Fehler „HTTP-408“ tritt auf, wenn das SDK die Anforderung nicht abschlie
 Die folgende Liste enthält bekannte Gründe und Lösungen für Anforderungstimeoutausnahmen.
 
 ### <a name="existing-issues"></a>Vorhandene Probleme
-Wenn Sie feststellen, dass Anforderungen über längere Zeit nicht reagieren oder häufiger ein Timeout auftritt, führen Sie ein Upgrade des Java v4 SDK auf die neueste Version durch. HINWEIS: Es wird dringend empfohlen, Version 4.7.0 oder höher zu verwenden. Weitere Informationen finden Sie in den [Versionshinweisen zum Java v4 SDK](sql-api-sdk-java-v4.md).
+Wenn Sie feststellen, dass Anforderungen über längere Zeit nicht reagieren oder häufiger ein Timeout auftritt, führen Sie ein Upgrade des Java v4 SDK auf die neueste Version durch. HINWEIS: Wir empfehlen dringend, die Version 4.18.0 und höher zu verwenden. Weitere Informationen finden Sie in den [Versionshinweisen zum Java v4 SDK](sql-api-sdk-java-v4.md).
 
 ### <a name="high-cpu-utilization"></a>Hohe CPU-Auslastung
 Hohe CPU-Auslastung ist der häufigste Fall. Für optimale Latenz sollte die CPU-Auslastung ungefähr 40 Prozent betragen. Verwenden Sie 10 Sekunden als Intervall zur Überwachung der maximalen (nicht durchschnittlichen) CPU-Nutzung. CPU-Spitzenwerte treten bei partitionsübergreifenden Abfragen häufiger auf, wenn es möglicherweise erforderlich ist, mehrere Verbindungen für eine einzelne Abfrage herzustellen.
