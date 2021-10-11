@@ -737,6 +737,8 @@ items:
                 href: monitor-install-analytics.md
           - name: Überwachung mit SDKs
             href: monitor-programmatically.md
+          - name: Überwachen von Pipelines mit E-Mail-Benachrichtigungen
+            href: how-to-send-email.md
           - name: "Überwachen von Pipelines mit Microsoft\_Teams-Benachrichtigungen"
             href: how-to-send-notifications-to-teams.md
           - name: Überwachen der Azure-Integrationslaufzeit
@@ -876,7 +878,9 @@ items:
             href: how-to-discover-explore-purview-data.md
       - name: Szenarien
         items:
-          - name: "Überwachen von Pipelines mit Microsoft\_Teams-Benachrichtigungen"
+          - name: Senden einer E-Mail über eine Pipeline
+            href: how-to-send-email.md
+          - name: "Senden von Microsoft\_Teams-Benachrichtigungen über eine Pipeline"
             href: how-to-send-notifications-to-teams.md
           - name: Datenmigration für Data Lake und EDW
             items:

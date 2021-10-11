@@ -51,6 +51,12 @@
       href: marketplace-criteria-content-validation.md
     - name: Leadverwaltung
       href: partner-center-portal/commercial-marketplace-get-customer-leads.md
+    - name: Private Angebote
+      items:
+        - name: Für Cloudhandelspartner
+          href: isv-csp-reseller.md
+        - name: Häufig gestellte Fragen
+          href: isv-csp-faq.yml
     - name: Testversionen
       items:
         - name: Worum handelt es sich bei einer Testversion?
@@ -80,6 +86,8 @@
         - name: "Migrieren von Co-Selling-Lösungen von OCP\_GTM"
           href: co-sell-solution-migration.md
         - name: Verkaufen über CSP-Partner
+          href: cloud-solution-providers.md
+        - name: Private Angebote von ISV für Handelspartner
           href: cloud-solution-providers.md
         - name: Onboardingleitfaden zu Connect Program
           href: business-applications-isv-program.md

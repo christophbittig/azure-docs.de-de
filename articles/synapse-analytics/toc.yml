@@ -1165,7 +1165,9 @@ items:
             items:
               - name: Pipelineausführungen
                 href: monitoring/how-to-monitor-pipeline-runs.md
-              - name: "Überwachen von Pipelines mit Microsoft\_Teams-Benachrichtigungen"
+              - name: Senden einer E-Mail über eine Pipeline
+                href: ../data-factory/how-to-send-email.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+              - name: "Senden von Microsoft\_Teams-Benachrichtigungen über eine Pipeline"
                 href: ../data-factory/how-to-send-notifications-to-teams.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
           - name: Erstellen von Integrationslaufzeit
             items:

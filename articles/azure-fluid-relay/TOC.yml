@@ -1,0 +1,46 @@
+- name: Dokumentation zu Azure Fluid Relay
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Übersicht über Azure Fluid Relay
+      href: overview/overview.md
+- name: Schnellstarts
+  items:
+    - name: 'Schnellstart: Würfel-App'
+      href: quickstarts/quickstart-dice-roll.md
+- name: Konzepte
+  items:
+    - name: Aufbau
+      href: concepts/architecture.md
+    - name: Containerverwaltung
+      href: concepts/container-management.md
+    - name: Verteilte Datenstrukturen
+      href: concepts/data-structures.md
+    - name: Authentifizierung und Autorisierung in Ihrer App
+      href: concepts/authentication-authorization.md
+    - name: Versionskompatibilität
+      href: concepts/version-compatibility.md
+- name: Anleitungen
+  items:
+    - name: Bereitstellen eines Azure Fluid Relay-Diensts
+      href: how-tos/provision-fluid-azure-portal.md
+    - name: Herstellen einer Verbindung mit einem Azure Fluid Relay-Dienst
+      href: how-tos/connect-fluid-azure-service.md
+    - name: Verwenden von AzureClient für lokale Tests
+      href: how-tos/local-mode-with-azure-client.md
+    - name: Schreiben eines TokenProvider-Elements mit einer Azure-Funktion
+      href: how-tos/azure-function-token-provider.md
+    - name: Verwenden von JWT-Token
+      href: how-tos/fluid-json-web-token.md
+    - name: Verwenden der Testautomatisierung mit Azure Fluid Relay
+      href: how-tos/test-automation.md
+    - name: Löschen eines Fluid-Containers
+      href: how-tos/container-deletion.md
+- name: Verweis
+  items:
+    - name: API-Dokumentation
+      href: 'https://fluidframework.com/docs/apis/'
+- name: Ressourcen
+  items:
+    - name: Fluid Framework-Startseite
+      href: 'https://fluidframework.com'

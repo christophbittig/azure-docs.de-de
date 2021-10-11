@@ -398,15 +398,13 @@
           displayName: rest claims exchange
         - name: Schützen eines API-Connectors
           href: secure-rest-api.md
-    - name: Benutzerdefinierte Richtlinie
+    - name: Problembehandlung
       items:
-        - name: Problembehandlung
-          items:
-            - name: Erfassen von Protokollen mit Application Insights
-              href: troubleshoot-with-application-insights.md
-              displayName: 'troubleshooting, app insights'
-            - name: Behandeln von Problemen mit benutzerdefinierten Richtlinien
-              href: troubleshoot-custom-policies.md
+        - name: Erfassen von Protokollen mit Application Insights
+          href: troubleshoot-with-application-insights.md
+          displayName: 'troubleshooting, app insights'
+        - name: Problem- und Fehlerbehandlung
+          href: troubleshoot.md
     - name: UserInfo-Endpunkt
       href: userinfo-endpoint.md
     - name: Partnerintegration

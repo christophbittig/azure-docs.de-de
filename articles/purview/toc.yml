@@ -8,17 +8,17 @@ items:
   - name: Schnellstarts
     expanded: true
     items:
-      - name: Erstellen eines Purview-Kontos
+      - name: Erstellen eines Azure Purview-Kontos
         items:
-          - name: 'Erstellen eines Purview-Kontos: Portal'
+          - name: 'Erstellen eines Kontos: Azure-Portal'
             href: create-catalog-portal.md
-          - name: 'Erstellen eines Purview-Kontos: PowerShell'
+          - name: 'Erstellen eines Kontos: PowerShell/CLI'
             href: create-catalog-powershell.md
-          - name: "Erstellen eines Purview-Kontos: .NET\_SDK"
+          - name: 'Erstellen eines Kontos: .NET SDK'
             href: create-purview-dotnet.md
-          - name: 'Erstellen eines Purview-Kontos: Python'
+          - name: 'Erstellen eines Kontos: Python'
             href: create-purview-python.md
-      - name: 'Erstellen einer Sammlung: Portal'
+      - name: 'Erstellen einer Sammlung: Azure-Portal'
         href: quickstart-create-collection.md
   - name: Tutorials
     items:
@@ -26,17 +26,17 @@ items:
         items:
           - name: Azure-Quellbereitschaft im großen Stil
             href: tutorial-data-sources-readiness.md
-          - name: Purview MSI-Konfiguration im großen Stil
+          - name: Azure Purview MSI-Konfiguration im großen Stil
             href: tutorial-msi-configuration.md
-      - name: Onboarding einer lokalen SQL Server-Instanz
+      - name: "Durchführen des Onboardings für eine lokale SQL\_Server-Instanz"
         href: tutorial-register-scan-on-premises-sql-server.md
-      - name: Verwenden von REST-APIs für Purview-Datenebenen
+      - name: Verwenden von REST-APIs für Datenebenen
         href: tutorial-using-rest-apis.md
-      - name: Verwenden von REST-APIs für die Sammlungsverwaltung
+      - name: Verwenden von REST-APIs für Sammlungen
         href: tutorial-metadata-policy-collections-apis.md
   - name: Konzepte
     items:
-      - name: Verwenden von Purview Studio
+      - name: Verwenden von Azure Purview Studio
         href: use-purview-studio.md
       - name: Best Practices und Richtlinien
         items:
@@ -44,9 +44,11 @@ items:
             href: deployment-best-practices.md
           - name: Sammlungsarchitektur
             href: concept-best-practices-collections.md
-          - name: Richtlinien für Purview-Preise
+          - name: Richtlinien für Preise
             href: concept-guidelines-pricing.md
-      - name: Purview-Berechtigungen
+          - name: Netzwerkarchitektur
+            href: concept-best-practices-network.md
+      - name: "Azure\_Purview-Berechtigungen"
         href: catalog-permissions.md
       - name: Datenzuordnung
         items:
@@ -68,7 +70,7 @@ items:
             href: concept-asset-normalization.md
       - name: Datenerkenntnisse
         href: concept-insights.md
-      - name: Aktualisierte Purview-Konten
+      - name: Aktualisierte Azure Purview-Konten
         href: concept-account-upgrade.md
   - name: Anleitungen
     items:
@@ -80,9 +82,9 @@ items:
             href: purview-connector-overview.md
           - name: Datenquellen verwalten
             href: manage-data-sources.md
-          - name: Anmeldeinformationen verwalten
+          - name: Verwalten von Anmeldeinformationen
             href: manage-credentials.md
-            displayName: Create and manage Credentials
+            displayName: Create and manage credentials
       - name: Quellen
         items:
           - name: Mehrere Azure-Quellen
