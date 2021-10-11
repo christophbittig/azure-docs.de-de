@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 03/02/2021
-  ms.openlocfilehash: 2cdb36e2cc141c440ab933ea77e4ef2e480a691e
-  ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+  ms.openlocfilehash: d0fbe222a6128604e5ed98d467f60cecbeeeebcf
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/23/2021
-  ms.locfileid: "112518768"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129706837"
 landingContent:
 - title: Testen der kognitiven Suche
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
       url: semantic-search-overview.md
     - text: Was ist KI-Anreicherung?
       url: cognitive-search-concept-intro.md
-    - text: Was ist ein Indexer?
+    - text: Was sind Indexer?
       url: search-indexer-overview.md
     - text: Was sind Azure Applied AI Services?
       url: ../applied-ai-services/what-are-applied-ai-services.md
@@ -36,6 +36,38 @@ landingContent:
     links:
     - text: Verwenden von KI in Suchlösungen
       url: https://youtu.be/M4Rf1s0WcWQ?t=19
+- title: Entwickeln von Apps
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Hinzufügen von Suchfunktionen zu Web-Apps
+      url: tutorial-csharp-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Entwickeln in .NET
+      url: search-howto-dotnet-sdk.md
+    - text: Aufrufen von REST-APIs in Postman
+      url: search-get-started-rest.md
+  - linkListType: reference
+    links:
+    - text: Azure SDK für .NET
+      url: /dotnet/api/overview/azure/search.documents-readme
+    - text: Azure SDK für Python
+      url: /python/api/overview/azure/search-documents-readme
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen von Diensten
+      url: search-create-service-portal.md
+    - text: Erstellen eines Index
+      url: search-get-started-portal.md
+    - text: Erstellen einer Demo-App
+      url: search-create-app-portal.md
+    - text: Übersetzen von Text und Erkennen von Entitäten
+      url: cognitive-search-quickstart-blob.md
+    - text: Anwenden von OCR und Bildanalyse
+      url: cognitive-search-quickstart-ocr.md
 - title: Indizieren von Daten
   linkLists:
   - linkListType: overview
@@ -54,40 +86,6 @@ landingContent:
       url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
     - text: Indizieren in Cosmos DB
       url: search-howto-index-cosmosdb.md
-- title: Erste Schritte
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Erstellen von Diensten
-      url: search-create-service-portal.md
-    - text: Erstellen eines Index
-      url: search-get-started-portal.md
-    - text: Erstellen einer Demo-App
-      url: search-create-app-portal.md
-    - text: Extrahieren von Text aus Bildern und App-Dateien
-      url: cognitive-search-quickstart-blob.md
-- title: Entwickeln von Apps
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Hinzufügen von Suchfunktionen zu Web-Apps
-      url: tutorial-csharp-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: Entwickeln in .NET
-      url: search-howto-dotnet-sdk.md
-    - text: Aufrufen von REST-APIs in VS Code
-      url: search-get-started-vs-code.md
-    - text: Aufrufen von REST-APIs in Postman
-      url: search-get-started-rest.md
-  - linkListType: reference
-    links:
-    - text: Azure SDK für .NET
-      url: /dotnet/api/overview/azure/search.documents-readme
-    - text: Azure SDK für Python
-      url: /python/api/overview/azure/search-documents-readme
-    - text: REST-API-Referenz
-      url: /rest/api/searchservice/index
 - title: Anreichern mit KI
   linkLists:
   - linkListType: concept
@@ -106,10 +104,6 @@ landingContent:
       url: cognitive-search-defining-skillset.md
     - text: Erstellen von Wissensspeichern
       url: knowledge-store-create-portal.md
-  - linkListType: reference
-    links:
-    - text: Integrierte Skills
-      url: cognitive-search-predefined-skills.md
 - title: Daten abfragen
   linkLists:
   - linkListType: concept
@@ -132,13 +126,3 @@ landingContent:
       url: query-odata-filter-orderby-syntax.md
     - text: Durchsuchen von Dokumenten (REST)
       url: /rest/api/searchservice/search-documents
-- title: Hilfe und Feedback
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: Häufig gestellte Fragen
-      url: search-faq-frequently-asked-questions.yml
-    - text: Stellen von Fragen zu Stack Overflow
-      url: https://stackoverflow.com/questions/tagged/azure-search
-    - text: Anfordern eines Features
-      url: https://feedback.azure.com/forums/263029-azure-search

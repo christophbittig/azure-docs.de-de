@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 38567f89e550f5b97599f823e8963f603785c665
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 4f6255c0a59a57677c4ff4119611630a4169133f
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113650187"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400741"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Tutorial: Verwenden von Bedingungen in ARM-Vorlagen
 
@@ -45,11 +45,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 * Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Schnellstart: Erstellen von ARM-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
-* Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
+* Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Sie können die [Azure Cloud Shell](../../cloud-shell/overview.md) verwenden, um den folgenden Befehl in PowerShell oder der Bash auszuführen:
 
-    ```console
+    ```shell
     openssl rand -base64 32
     ```
+
+    Um mehr zu erfahren, führen Sie `man openssl rand` aus, um die Manpage zu öffnen.
 
     Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie im [Tutorial: Integrieren von Azure Key Vault in Ihre Bereitstellung einer ARM-Vorlage](./template-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.
 
@@ -137,7 +139,7 @@ Hier ist das Verfahren zum Vornehmen von Änderungen angegeben:
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
+1. Melden Sie sich bei [Cloud Shell](https://shell.azure.com) an.
 
 1. Wählen Sie Ihre bevorzugte Umgebung aus, indem Sie links oben **PowerShell** oder **Bash** (für die CLI) auswählen. Bei einem Wechsel ist ein Neustart der Shell erforderlich.
 

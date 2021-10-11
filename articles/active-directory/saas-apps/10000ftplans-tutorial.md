@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit 10,000ft Plans | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration mit 10,000ft Plans'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und 10,000ft Plans konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/23/2021
+ms.date: 09/29/2021
 ms.author: jeedes
-ms.openlocfilehash: b8d7e7045e76ceb193a0060a3c83db172f788f6d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1d4e4ce25a34e722b86d9bfa9824b81625f1aa69
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748295"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400383"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Tutorial: Azure Active Directory-Integration mit 10,000ft Plans
+# <a name="tutorial-azure-ad-sso-integration-with-10000ft-plans"></a>Tutorial: Azure AD-SSO-Integration mit 10,000ft Plans
 
 In diesem Tutorial erfahren Sie, wie Sie 10,000ft Plans in Azure Active Directory (Azure AD) integrieren. Die Integration von 10,000ft Plans in Azure AD ermöglicht Folgendes:
 
@@ -76,20 +76,18 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://app.10000ft.com`.
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** die folgende URL ein: `https://rm.smartsheet.com/saml/metadata`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** die folgende URL ein: `https://app.10000ft.com/saml/metadata`.
+    b. Geben Sie im Textfeld **Antwort-URL** die folgende URL ein: `https://rm.smartsheet.com/saml/acs`.
+    
+    c. Geben Sie im Textfeld **Anmelde-URL** die URL ein: ` https://rm.smartsheet.com`.
 
     > [!NOTE]
     > Der Wert für **Bezeichner** lautet anders, wenn Sie über eine benutzerdefinierte Domäne verfügen. Wenden Sie sich an das [Kundensupportteam von 10,000ft Plans](https://www.10000ft.com/plans/support), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende Zertifikat (**Zertifikat (Rohdaten)** ) aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** das Kopiersymbol aus, um die **App-Verbundmetadaten-URL** zu kopieren. Speichern Sie das Zertifikat auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](common/certificateraw.png)
-
-6. Kopieren Sie im Abschnitt **10,000ft Plans einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
-
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+    ![Screenshot: „SAML-Signaturzertifikat“ mit hervorgehobenem Kopiersymbol](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -117,7 +115,23 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-10000ft-plans-sso"></a>Konfigurieren des einmaliges Anmeldens für 10,000ft Plans
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **10,000ft Plans** müssen Sie das heruntergeladene **Zertifikat (Rohdaten)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von 10,000ft Plans](https://www.10000ft.com/plans/support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Melden Sie sich bei Ihrer 10,000ft Plans-Website als Administrator an.
+
+1. Klicken Sie auf **Settings** (Einstellungen), und wählen Sie in der Dropdownliste **Account Settings** (Kontoeinstellungen) aus.
+
+    ![Screenshot des Symbols „Settings“ (Einstellungen)](./media/10000ftplans-tutorial/settings.png)
+
+1. Klicken Sie im Menü auf der linken Seite auf **SSO**, und führen Sie die folgenden Schritte aus:
+
+    ![Screenshot der Einstellungsseite „SSO“](./media/10000ftplans-tutorial/setup-sso.png)
+
+    a. Wählen Sie im Abschnitt „Setup SSO“ (SSO einrichten) die Option **Automatic Configuration** (Automatische Konfiguration) aus.
+
+    b. Fügen Sie im Textfeld **IdP Metadata URL** (IdP-Metadaten-URL) den Wert der **Verbundmetadaten-URL der App** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    c. Aktivieren Sie das Kontrollkästchen **Auto-provision authenticated users not in account** (Authentifizierte Benutzer*innen automatisch bereitstellen, die nicht im Konto sind).
+
+    d. Klicken Sie auf **Speichern**.
 
 ### <a name="create-10000ft-plans-test-user"></a>Erstellen von 10,000ft Plans-Testbenutzern
 

@@ -4,14 +4,14 @@ description: Es wird beschrieben, wie Sie eine C#-ASP.NET-App in Azure mit Azure
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 03/18/2021
+ms.date: 10/05/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 533bd817b704db9976624b356a9950a9c48b8339
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 818ab11d64468a945d85f5b15f6b39dc1664a424
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104605976"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536219"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>Tutorial: Bereitstellen einer ASP.NET-App in Azure mit Azure SQL-Datenbank
 
@@ -74,7 +74,7 @@ Die App nutzt einen Datenbankkontext, um die Verbindung mit der Datenbank herzus
 
 #### <a name="sign-in-and-add-an-app"></a>Anmelden und Hinzufügen einer App
 
-1. Klicken Sie im Dialogfeld **Veröffentlichen** im Dropdownmenü des Konto-Managers auf **Konto hinzufügen**.
+1. Klicken Sie im Dialogfeld **Veröffentlichen** auf **Anmelden**.
 
 1. Melden Sie sich bei Ihrem Azure-Abonnement an. Falls Sie bereits bei einem Microsoft-Konto angemeldet sind, vergewissern Sie sich, dass dieses Konto Ihr Azure-Abonnement enthält. Wenn das Microsoft-Konto, bei dem Sie angemeldet sind, nicht Ihr Azure-Abonnement enthält, klicken Sie darauf, um das korrekte Konto hinzuzufügen.
 
@@ -130,6 +130,9 @@ Bevor Sie eine Datenbank erstellen, benötigen Sie einen [logischen SQL-Server](
 
 1. Scrollen Sie im Dialogfeld **Veröffentlichen** nach unten zum Abschnitt **Dienstabhängigkeiten**. Klicken Sie neben **SQL Server-Datenbank** auf **Konfigurieren**.
 
+    > [!NOTE]
+    > Stellen Sie sicher, dass Sie die SQL-Datenbank auf der Seite **Veröffentlichen** und nicht auf der Seite **Verbundene Dienste** konfigurieren.
+
    ![Konfigurieren der SQL-Datenbank-Abhängigkeit](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sqldb-dependency.png)
 
 1. Wählen Sie **Azure SQL-Datenbank** aus, und klicken Sie auf **Weiter**.
@@ -138,7 +141,7 @@ Bevor Sie eine Datenbank erstellen, benötigen Sie einen [logischen SQL-Server](
 
 1. Klicken Sie neben **Datenbankserver** auf **Neu**.
 
-   Ein Servername wird generiert. Dieser Name wird als Teil der Standard-URL für Ihren Server `<server_name>.database.windows.net` verwendet. Er muss in Azure SQL über alle Server hinweg eindeutig sein. Sie können den Servernamen ändern, aber behalten Sie den generierten Wert für dieses Tutorial bei.
+   Dieser Servername wird als Teil der Standard-URL für Ihren Server `<server_name>.database.windows.net` verwendet. Er muss in Azure SQL über alle Server hinweg eindeutig sein. Ändern Sie den Servernamen bei Bedarf.
 
 1. Fügen Sie den Benutzernamen und das Kennwort eines Administrators hinzu. Informationen zu den Anforderungen an die Komplexität von Kennwörtern finden Sie unter [Kennwortrichtlinie](/sql/relational-databases/security/password-policy).
 
@@ -164,6 +167,9 @@ Bevor Sie eine Datenbank erstellen, benötigen Sie einen [logischen SQL-Server](
 1. Geben Sie unter **Benutzername für Datenbankverbindung** und **Kennwort für Datenbankverbindung** den Benutzernamen und das Kennwort des Administrators ein, die Sie unter [Erstellen eines Servers](#create-a-server-and-database) verwendet haben.
 
 1. Vergewissern Sie sich, dass **Azure-App-Einstellungen** ausgewählt ist, und klicken Sie auf **Fertig stellen**.
+
+    > [!NOTE]
+    > Wenn stattdessen **Local user secrets files** (Dateien mit lokalen Benutzergeheimnissen) angezeigt wird, haben Sie SQL-Datenbank über die Seite **Verbundene Dienste** und nicht über die Seite **Veröffentlichen** konfiguriert.
 
     ![Konfigurieren der Datenbankverbindungszeichenfolge](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-connection.png)
 

@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: calling
-ms.openlocfilehash: 0dc539a5f649ed4a894e92e579fdbd15d4d2b4be
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 410b0926faf2e5c6b8885c91cdf08343c3000469
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635791"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362325"
 ---
 # <a name="calling-sdk-overview"></a>Übersicht über das Calling SDK
 
@@ -88,8 +88,8 @@ Das Communication Services Calling SDK unterstützt folgende Streamingkonfigura
 
 | Begrenzung                                                         | Web                         | Windows/Android/iOS        |
 | ------------------------------------------------------------- | --------------------------- | -------------------------- |
-| **Anzahl der ausgehenden Datenströme, die gleichzeitig gesendet werden können.**     | 1 Video- oder 1 Bildschirmfreigabe | 1 Video- und 1 Bildschirmfreigabe |
-| **Anzahl der eingehenden Datenströme, die gleichzeitig gerendert werden können.** | 1 Video- oder 1 Bildschirmfreigabe | 6 Video- und 1 Bildschirmfreigabe |
+| **Maximale Anzahl der ausgehenden Datenströme, die gleichzeitig gesendet werden können**     | 1 Video- oder 1 Bildschirmfreigabe | 1 Video- und 1 Bildschirmfreigabe |
+| **Maximale Anzahl der eingehenden Remotedatenströme, die gleichzeitig gerendert werden können** | 4 Videos und 1 Bildschirmfreigabe | 6 Videos und 1 Bildschirmfreigabe |
 
 Obwohl das Calling SDK diese Grenzwerte nicht erzwingt, kann es bei Ihren Benutzern zur Leistungsbeeinträchtigung führen, wenn sie überschritten werden.
 
@@ -119,7 +119,6 @@ Die folgende Tabelle enthält die unterstützten Browser, die derzeit verfügbar
 | Windows      | ✔️      | ❌      | ✔️           |
 | Ubuntu/Linux | ✔️      | ❌      | ❌           |    
 
-* 1:1-Aufrufe werden für Safari nicht unterstützt.
 * Die ausgehende Bildschirmfreigabe wird unter iOS oder Android nicht unterstützt.
 * [Mit einer iOS-App in Safari können keine Mikrofon- und Lautsprechergeräte (z. B. Bluetooth) aufgelistet bzw. ausgewählt werden.](../known-issues.md#enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados) Dies ist eine Einschränkung des Betriebssystems, und es ist immer nur ein Gerät vorhanden. Die Standardgeräteauswahl wird vom Betriebssystem gesteuert.
 

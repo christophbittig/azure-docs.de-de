@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie den Prozess der Beschriftung von Bildern so verwalten können, dass sie in mehrklassigen Bildklassifizierungsmodellen verwendet werden können.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: tutorial
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
-ms.date: 04/09/2020
+ms.date: 09/30/2021
 ms.custom: data4ml
-ms.openlocfilehash: 2dcd31493bf8ebc7c5096bfe7fda3e2b3f1641be
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 89d3a569a8e202ff2fbe43f697de3598b9b767ad
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112459548"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423932"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung 
 
@@ -65,7 +65,7 @@ Azure Machine Learning-Datenspeicher werden zum Speichern von Verbindungsinforma
 
 1. Füllen Sie das Formular mit den folgenden Einstellungen aus:
 
-    Feld|Beschreibung 
+    Feld|BESCHREIBUNG 
     ---|---
     Datenspeichername | Benennen Sie den Datenspeicher.  Hier verwenden wir **labeling_tutorial**.
     Datenspeichertyp | Wählen Sie den Speichertyp aus.  Hier verwenden wir **Azure Blob Storage**, den bevorzugten Speicher für Bilder.
@@ -90,12 +90,16 @@ Da Sie nun Zugriff auf die Daten haben, die Sie beschriften lassen möchten, ers
 
 1. Verwenden Sie die folgende Eingabe für das Formular **Projektdetails**:
 
-    Feld|Beschreibung 
+    Feld|BESCHREIBUNG 
     ---|---
     Projektname | Geben Sie dem Projekt einen Namen.  Hier verwenden wir **tutorial-cats-n-dogs**.
     Beschriftungsaufgabentyp | Wählen Sie **Bildklassifizierung mit mehreren Klassen** aus.  
     
     Wählen Sie **Weiter** aus, um die Erstellung des Projekts fortzusetzen.
+
+### <a name="add-workforce-optional"></a>Hinzufügen von Mitarbeiter*innen (optional)
+
+Klicken Sie auf **Weiter**, um fortzufahren.  Für dieses Tutorial verwenden Sie keine externen Mitarbeiter*innen.
 
 ### <a name="select-or-create-a-dataset"></a>Auswählen oder Erstellen eines Datasets
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 03/20/2021
-ms.openlocfilehash: 0e425cddea1adaec8bfb8f0055b55bb0c45fb168
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 43f1602b22a761461f84761ed3a3806397011ae2
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123097"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389512"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>Erstellen eines Azure Media Services-Livestreams mit OBS
 
@@ -63,7 +63,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
    ![Feld „Name des Liveereignisses“](media/live-events-obs-quickstart/live-event-name.png)
 1. Geben Sie im Feld **Beschreibung** eine optionale Beschreibung des Ereignisses ein.
-1. Aktivieren Sie die Option **Passthrough – keine Cloudcodierung**.
+1. Wählen Sie die Basic-Option **Passthrough – keine Cloudcodierung** aus.
 
    ![Option „Cloudcodierung“](media/live-events-obs-quickstart/cloud-encoding.png)
 1. Wählen Sie die Option **RTMP** aus.
@@ -151,7 +151,7 @@ In den nächsten Schritten kehren Sie zu Azure Media Services in Ihrem Browser z
 
 #### <a name="x264-encoder-settings"></a>Einstellungen für den X264-Encoder
 
-1. Aktivieren Sie bei Verwendung der Codierungsoption **X264** das Kontrollkästchen **Rescale Output** (Ausgabe neu skalieren). Wählen Sie „1920x1080“ für ein Premium-Liveereignis in Media Services oder „1280x720“ für ein Standard-Liveereignis (720p) aus.  Bei Verwendung eines Passthrough-Liveereignisses können Sie eine beliebige verfügbare Auflösung auswählen.
+1. Aktivieren Sie bei Verwendung der Codierungsoption **X264** das Kontrollkästchen **Rescale Output** (Ausgabe neu skalieren). Wählen Sie „1920x1080“ für ein Premium-Liveereignis in Media Services oder „1280x720“ für ein Standard-Liveereignis (720p) aus.  Bei Verwendung eines Passthrough-Liveereignisses der SKU „Basic“ oder „Standard“ können Sie eine beliebige verfügbare Auflösung auswählen.
 
 1. Legen Sie die **Bitrate** auf einen Wert zwischen 1.500 KBit/s und 4.000 KBit/s fest. Für ein Liveereignis mit Standardcodierung (720p) werden 2.500 KBit/s empfohlen. Für ein Premium-Liveereignis (1080p) werden 4.000 KBit/s empfohlen. Bei Bedarf können Sie die Bitrate auf der Grundlage der verfügbaren CPU-Funktionen und der Bandbreite im Netzwerk anpassen, um die gewünschte Qualitätseinstellung zu erhalten.
 
@@ -165,7 +165,7 @@ In den nächsten Schritten kehren Sie zu Azure Media Services in Ihrem Browser z
 
 #### <a name="nvidia-nvenc-encoder-settings"></a>Einstellungen für den Encoder „NVIDIA NVENC“
 
-1. Wenn Sie die GPU-Codierungsoption **NVENC** ausgewählt haben, aktivieren Sie das Kontrollkästchen **Rescale Output** (Ausgabe neu skalieren), und wählen Sie „1920x1080“ für ein Premium-Liveereignis in Media Services oder „1280x720“ für ein Standard-Liveereignis (720p) aus. Bei Verwendung eines Passthrough-Liveereignisses können Sie eine beliebige verfügbare Auflösung auswählen.
+1. Wenn Sie die GPU-Codierungsoption **NVENC** ausgewählt haben, aktivieren Sie das Kontrollkästchen **Rescale Output** (Ausgabe neu skalieren), und wählen Sie „1920x1080“ für ein Premium-Liveereignis in Media Services oder „1280x720“ für ein Standard-Liveereignis (720p) aus. Bei Verwendung eines Passthrough-Liveereignisses der SKU „Basic“ oder „Standard“ können Sie eine beliebige verfügbare Auflösung auswählen.
 
 1. Legen Sie die Ratensteuerung (**Rate Control**) auf „CBR“ (Constant Bit Rate, konstante Bitrate) fest.
 
@@ -189,7 +189,7 @@ In den nächsten Schritten kehren Sie zu Azure Media Services in Ihrem Browser z
 
 #### <a name="intel-quicksync-encoder-settings"></a>Einstellungen für den QuickSync-Encoder von Intel
 
-1. Wenn Sie die GPU-Codierungsoption **QuickSync** von Intel ausgewählt haben, aktivieren Sie das Kontrollkästchen **Rescale Output** (Ausgabe neu skalieren), und wählen Sie „1920x1080“ für ein Premium-Liveereignis in Media Services oder „1280x720“ für ein Standard-Liveereignis (720p) aus. Bei Verwendung eines Passthrough-Liveereignisses können Sie eine beliebige verfügbare Auflösung auswählen.
+1. Wenn Sie die GPU-Codierungsoption **QuickSync** von Intel ausgewählt haben, aktivieren Sie das Kontrollkästchen **Rescale Output** (Ausgabe neu skalieren), und wählen Sie „1920x1080“ für ein Premium-Liveereignis in Media Services oder „1280x720“ für ein Standard-Liveereignis (720p) aus. Bei Verwendung eines Passthrough-Liveereignisses der SKU „Basic“ oder „Standard“ können Sie eine beliebige verfügbare Auflösung auswählen.
 
 1. Legen Sie die Zielauslastung (**Target Usage**) auf „balanced“ (Ausgewogen) fest, oder passen Sie sie basierend auf Ihrer kombinierten CPU- und GPU-Auslastung an. Experimentieren Sie mit dieser Einstellung, um eine durchschnittliche maximale CPU-Auslastung von 80 Prozent mit der Qualität zu erzielen, die von Ihrer Hardware erzeugt werden kann. Versuchen Sie es im Falle von weniger leistungsfähiger Hardware sowie bei Leistungsproblemen mit „fast“ (schnell) oder „very fast“ (sehr schnell).
 

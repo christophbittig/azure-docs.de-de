@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-nodejs
 ms.date: 04/15/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5b7c080e532a7a8cb220a501fb7239300b3f2d3e
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 2b553548111c732ca778c439232e949b0abb4707
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109712872"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388601"
 ---
 # <a name="tutorial-stream-live-with-media-services-by-using-nodejs-and-typescript"></a>Tutorial: Livestreaming mit Media Services, Node.js und TypeScript
 
-In Azure Media Services sind [Liveereignisse](/rest/api/media/liveevents) für die Verarbeitung von Livestreaminginhalten zuständig. Ein Liveereignis stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann für einen Liveencoder bereitstellen. Das Liveereignis empfängt Eingabestreams aus dem Liveencoder und stellt diese zum Streamen durch einen oder mehrere [Streamingendpunkte](/rest/api/media/streamingendpoints) zur Verfügung. Zudem stellen Liveereignisse einen Vorschauendpunkt (Vorschau-URL) bereit, mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie ihn weiter verarbeiten und übermitteln. 
+In Azure Media Services sind [Liveereignisse](/rest/api/media/liveevents) für die Verarbeitung von Livestreaminginhalten zuständig. Bei einem Liveereignis wird ein Eingabeendpunkt (Erfassungs-URL) bereitgestellt, den Sie dann für einen Liveencoder bereitstellen. Das Liveereignis empfängt Eingabestreams aus dem Liveencoder und stellt diese zum Streamen über einen oder mehrere [Streamingendpunkte](/rest/api/media/streamingendpoints) zur Verfügung. Zudem stellen Liveereignisse einen Vorschauendpunkt (Vorschau-URL) bereit, mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie ihn weiter verarbeiten und übermitteln. 
 
 In diesem Tutorial erfahren Sie, wie Sie unter Verwendung von Node.js und TypeScript ein Liveereignis vom Typ *Passthrough* erstellen und mit [OBS Studio](https://obsproject.com/download) einen Livestream dafür übertragen.
 
@@ -57,7 +57,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 Sie benötigen diese zusätzlichen Elemente für Livestreamingsoftware:
 
 - Eine Kamera oder ein Gerät (beispielsweise ein Laptop) zum Übertragen eines Ereignisses.
-- Ein lokaler Softwareencoder, der Ihren Kameradatenstrom codiert und über das Real-Time Messaging Protocol (RTMP) an den Media Services-Livestreamingdienst sendet. Weitere Informationen finden Sie unter [Empfohlene lokale Liveencoder](encode-recommended-on-premises-live-encoders.md). Der Datenstrom muss das Format RTMP oder Smooth Streaming haben.
+- Einen lokalen Softwareencoder, der Ihren Kameradatenstrom codiert und über das Real-Time Messaging Protocol (RTMP) an den Media Services-Livestreamingdienst sendet. Weitere Informationen finden Sie unter [Empfohlene lokale Liveencoder](encode-recommended-on-premises-live-encoders.md). Der Datenstrom muss das Format RTMP oder Smooth Streaming haben.
 
   In diesem Beispiel wird davon ausgegangen, dass Sie OBS Studio (Open Broadcaster Software) verwenden, um RTMP an den Erfassungsendpunkt zu übertragen. [Installieren Sie OBS Studio](https://obsproject.com/download). 
 
@@ -145,22 +145,22 @@ In diesem Code ändern Sie die `longRunningOperationRetryTimeout`-Eigenschaft vo
 
 ### <a name="create-a-live-event"></a>Erstellen eines Liveereignisses
 
-In diesem Abschnitt wird das Erstellen eines Liveereignesses vom Typ *Pass-Through* (`LiveEventEncodingType` festgelegt auf `None`) beschrieben. Weitere Informationen zu den verfügbaren Typen finden Sie unter [Liveereignisse](live-event-outputs-concept.md#live-event-types). Neben Passthrough können Sie ein Liveereignis mit Liveencodierung für eine Cloudcodierung mit adaptiver Bitrate (720p oder 1080p) verwenden.
+In diesem Abschnitt wird das Erstellen eines Liveereignisses vom Typ *Passthrough* der SKU „Basic“ (`LiveEventEncodingType` auf `PassthroughBasic` festgelegt) beschrieben. Weitere Informationen zu den verfügbaren Typen finden Sie unter [Liveereignistypen](live-event-outputs-concept.md#live-event-types). Neben Passthrough der SKU „Basic“ oder „Standard“ können Sie ein Livecodierungsereignis für eine Cloudcodierung mit adaptiver Bitrate (720p oder 1080p) verwenden.
  
-Möglicherweise möchten Sie beim Erstellen des Liveereignisses Folgendes angeben:
+Beim Erstellen des Liveereignisses können Sie beispielsweise Folgendes angeben:
 
-* **Das Erfassungsprotokoll für das Liveereignis**. Derzeit werden die Protokolle RTMP, RTMPS und Smooth Streaming unterstützt. Die Protokolloption kann nicht geändert werden, während das Liveereignis oder die zugehörigen Liveausgaben aktiv sind. Sollten Sie verschiedene Protokolle benötigen, erstellen Sie für jedes Streamingprotokoll ein separates Liveereignis.  
-* **IP-Einschränkungen für Erfassung und Vorschau**. Sie können die IP-Adressen definieren, die ein Video für dieses Liveereignis erfassen dürfen. Zulässige IP-Adressen können als eine der folgenden Optionen angegeben werden:
+* **Erfassungsprotokoll für das Liveereignis**: Derzeit werden die Protokolle RTMP, RTMPS und Smooth Streaming unterstützt. Die Protokolloption kann nicht geändert werden, während das Liveereignis oder die zugehörigen Liveausgaben aktiv sind. Sollten Sie verschiedene Protokolle benötigen, erstellen Sie für jedes Streamingprotokoll ein separates Liveereignis.  
+* **IP-Einschränkungen für Erfassung und Vorschau**: Sie können die IP-Adressen definieren, die ein Video für dieses Liveereignis erfassen dürfen. Zulässige IP-Adressen können als eine der folgenden Optionen angegeben werden:
 
-  * Einzelne IP-Adresse (z. B. `10.0.0.1`)
-  * Ein IP-Adressbereich, der eine IP-Adresse und eine CIDR-Subnetzmaske (Classless Inter-Domain Routing) verwendet (z. B. `10.0.0.1/22`).
-  * IP-Adressbereich, für den eine IP-Adresse und Subnetzmaske in punktierter Dezimalschreibweise (z. B. `10.0.0.1(255.255.252.0)`) verwendet werden
+  * Einzelne IP-Adresse (z. B. `10.0.0.1`)
+  * Ein IP-Adressbereich, für den eine IP-Adresse und eine CIDR-Subnetzmaske (Classless Inter-Domain Routing) verwendet werden (z. B. `10.0.0.1/22`)
+  * Ein IP-Adressbereich, für den eine IP-Adresse und Subnetzmaske in Dezimalschreibweise mit Punkten (z. B. `10.0.0.1(255.255.252.0)`) verwendet werden
 
-  Wenn keine IP-Adressen angegeben sind und es keine Regeldefinition gibt, sind keine IP-Adressen zulässig. Um alle IP-Adressen zuzulassen, erstellen Sie eine Regel und legen Sie `0.0.0.0/0` fest. Die IP-Adressen müssen in einem der folgenden Formate vorliegen: IPv4-Adresse mit vier Ziffern oder CIDR-Adressbereich.
-* **Autostart für ein Ereignis, während Sie es erstellen**. Wenn für den automatischen Start `true` festgelegt ist, wird das Liveereignis nach der Erstellung gestartet. Dies bedeutet, dass die Abrechnung beginnt, sobald das Liveereignis startet. Sie müssen für die Liveereignisressource explizit `Stop` auswählen, damit keine weiteren Gebühren anfallen. Weitere Informationen finden Sie unter [Zustandswerte von Liveereignissen und Abrechnung](live-event-states-billing-concept.md).
+  Wenn keine IP-Adressen angegeben sind und es keine Regeldefinition gibt, sind keine IP-Adressen zulässig. Erstellen Sie eine Regel, und geben Sie `0.0.0.0/0` an, um alle IP-Adressen zuzulassen. Die IP-Adressen müssen in einem der folgenden Formate vorliegen: IPv4-Adresse mit vier Ziffern oder CIDR-Adressbereich.
+* **Autostart für ein Ereignis, während Sie es erstellen**: Wenn für den automatischen Start `true` festgelegt ist, wird das Liveereignis nach der Erstellung gestartet. Dies bedeutet, dass die Abrechnung beginnt, sobald die Ausführung des Liveereignisses startet. Sie müssen für die Liveereignisressource explizit `Stop` auswählen, damit keine weiteren Gebühren anfallen. Weitere Informationen finden Sie unter [Zustandswerte von Liveereignissen und Abrechnung](live-event-states-billing-concept.md).
 
-  Standbymodi sind verfügbar, um das Liveereignis in einem kostengünstigeren „zugeordneten“ Zustand zu starten, der den Wechsel in einen ausgeführten Zustand beschleunigt. Dies ist etwa im Falle von Pools der heißen Ebene hilfreich, die schnell Kanäle für Streamer bereitstellen müssen.
-* **Ein statischer Hostname und eine eindeutige GUID**. Legen Sie die Eigenschaft `useStaticHostname` auf `true` fest, um eine vorhersagbare Erfassungs-URL zu erhalten, die zudem einfacher in einem hardwarebasierten Liveencoder verwaltet werden kann. Verwenden Sie für `accessToken` eine benutzerdefinierte, eindeutige GUID. Ausführliche Informationen finden Sie unter [Erfassungs-URLs für Liveereignisse](live-event-outputs-concept.md#live-event-ingest-urls).
+  Standbymodi sind verfügbar, um das Liveereignis in einem kostengünstigeren „zugeordneten“ Zustand zu starten, der den Wechsel in einen Ausführungszustand beschleunigt. Dies ist etwa im Falle von Pools der heißen Ebene hilfreich, die schnell Kanäle für Streamer bereitstellen müssen.
+* **Ein statischer Hostname und eine eindeutige GUID**: Legen Sie die Eigenschaft `useStaticHostname` auf `true` fest, um eine vorhersagbare Erfassungs-URL zu erhalten, die zudem einfacher in einem hardwarebasierten Liveencoder verwaltet werden kann. Verwenden Sie für `accessToken` eine benutzerdefinierte, eindeutige GUID. Ausführliche Informationen finden Sie unter [Erfassungs-URLs für Liveereignisse](live-event-outputs-concept.md#live-event-ingest-urls).
 
 [!code-typescript[Main](../../../media-services-v3-node-tutorials/AMSv3Samples/Live/index.ts#CreateLiveEvent)]
 
@@ -168,7 +168,7 @@ Möglicherweise möchten Sie beim Erstellen des Liveereignisses Folgendes angebe
 
 Im folgenden Codeblock wird ein leeres Asset als „Videokassette“ zum Aufzeichnen Ihres Liveereignisarchivs erstellt.
 
-Beim Lernen dieser Konzepte ist es hilfreich, wenn Sie sich dieses Medienobjekt als „Videokassette“ vorstellen, wie sie früher einmal in einen Videorekorder eingelegt wurde. Die Liveausgabe ist der „Videorekorder“ selbst. Das Liveereignis ist das vom Computer ausgegebene „Videosignal“.
+Beim Lernen dieser Konzepte ist es hilfreich, wenn Sie sich dieses Medienobjekt als „Videokassette“ vorstellen, wie sie früher einmal in einen Videorekorder eingelegt wurde. Die Liveausgabe fungiert hierbei als „Videorekorder“. Das Liveereignis ist das vom Computer ausgegebene „Videosignal“.
 
 Das Medienobjekt (die „Videokassette“) kann zu einem beliebigen Zeitpunkt erstellt werden. Sie werden das leere Objekt an das Liveausgabeobjekt, den „Videorekorder“ in dieser Analogie, übertragen.
 
@@ -182,7 +182,7 @@ Im Beispielcode wird die Einrichtung eines Timeshift-Fensters von 1 Stunde gezei
 
 Die Liveausgabe (in dieser Analogie der „Videorekorder“) kann ebenfalls zu einem beliebigen Zeitpunkt erstellt werden. Sie können also eine Liveausgabe vor oder nach dem Starten der Signalübertragung erstellen. Wenn es schnell gehen muss, empfiehlt es sich häufig, die Ausgabe vor dem Starten der Signalübertragung zu erstellen.
 
-Liveausgaben beginnen, wenn sie erstellt werden, und werden beim Löschen angehalten.  Wenn Sie die Liveausgabe löschen, bleiben das zugrunde liegende Medienobjekt und dessen Inhalt erhalten. Der Vorgang ist mit dem „Auswerfen der Videokassette“ vergleichbar. Das Asset mit Aufzeichnung hält so lange wie Sie möchten. Wenn es ausgeworfen wird (d. h. wenn die Liveausgabe gelöscht wird), ist sie sofort für die bedarfsbasierte Anzeige verfügbar.
+Liveausgaben beginnen, wenn sie erstellt werden, und werden beim Löschen angehalten.  Wenn Sie die Liveausgabe löschen, bleiben das zugrunde liegende Medienobjekt und dessen Inhalt erhalten. Der Vorgang ist mit dem Auswerfen der Videokassette vergleichbar. Das Medienobjekt mit der Aufzeichnung bleibt so lange gespeichert, wie Sie möchten. Wenn es ausgeworfen wird (d. h. wenn die Liveausgabe gelöscht wird), ist sie sofort für die bedarfsbasierte Anzeige verfügbar.
 
 [!code-typescript[Main](../../../media-services-v3-node-tutorials/AMSv3Samples/Live/index.ts#CreateLiveOutput)]
 
@@ -195,7 +195,7 @@ Sobald das Liveereignis erstellt wurde, können Sie Erfassungs-URLs abrufen, die
 
 ### <a name="get-the-preview-url"></a>Abrufen der Vorschau-URL
 
-Rufen Sie mit `previewEndpoint` die Vorschau-URL ab und prüfen Sie, ob die Eingabe des Encoders empfangen wird.
+Rufen Sie mit `previewEndpoint` die Vorschau-URL ab, und überprüfen Sie, ob die Eingabe des Encoders empfangen wird.
 
 > [!IMPORTANT]
 > Vergewissern Sie sich vor dem Fortfahren, dass das Video an die Vorschau-URL übertragen wird.
@@ -217,7 +217,7 @@ Wenn Sie verhindern möchten, dass ein Client die archivierten Inhalte abspielen
 > [!NOTE]
 > Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein Standard-Streamingendpunkt im Zustand „Beendet“ hinzugefügt. Um mit dem Streamen Ihrer Inhalte zu beginnen und die [dynamische Paketerstellung](encode-dynamic-packaging-concept.md) und dynamische Verschlüsselung zu nutzen, muss sich der Streamingendpunkt, von dem Sie Inhalte streamen möchten, im Zustand „Wird ausgeführt“ befinden.
 
-Wenn Sie das Medienobjekt mit einem Streaminglocator veröffentlichen, ist das Liveereignis (bis zur DVR-Fensterlänge) weiterhin bis zum Ablaufen oder Löschen des Streaminglocators sichtbar (je nachdem, was zuerst eintritt). Auf diese Weise können Sie die virtuelle Aufzeichnung so verfügbar machen, dass sie von Ihrer Zielgruppe live und nach Bedarf angesehen werden kann. Mit der gleichen URL kann das Liveereignis, das DVR-Fenster oder das On-Demand-Medienobjekt angesehen werden, wenn die Aufzeichnung abgeschlossen ist (nach dem Löschen der Liveausgabe).
+Wenn Sie das Medienobjekt mit einem Streaminglocator veröffentlichen, kann das Liveereignis (maximal bis zur DVR-Fensterlänge) bis zum Ablaufen oder Löschen des Streaminglocators (je nachdem, was zuerst eintritt) weiterhin angezeigt werden. Auf diese Weise können Sie die virtuelle Aufzeichnung so verfügbar machen, dass sie von Ihrer Zielgruppe live und „On-Demand“ angesehen werden kann. Mit der gleichen URL kann das Liveereignis, das DVR-Fenster oder das On-Demand-Medienobjekt angesehen werden, wenn die Aufzeichnung abgeschlossen ist (nach dem Löschen der Liveausgabe).
 
 [!code-typescript[Main](../../../media-services-v3-node-tutorials/AMSv3Samples/Live/index.ts#CreateStreamingLocator)]
 
@@ -229,9 +229,9 @@ Die Methode `BuildManifestPaths` im Beispiel zeigt die deterministische Erstellu
 
 ## <a name="watch-the-event"></a>Ansehen des Ereignisses
 
-Kopieren Sie zur Wiedergabe des Ereignisses die Streaming-URL, die Sie beim Ausführen des Codes in „Erstellen eines Streaminglocators“ erhalten haben. Sie können einen Medienplayer Ihrer Wahl verwenden. [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) ist verfügbar, um Ihren Stream auf der [Media Player-Demowebsite](https://ampdemo.azureedge.net) zu testen.
+Kopieren Sie zum Wiedergeben des Ereignisses die Streaming-URL, die Sie beim Ausführen des Codes unter „Erstellen eines Streaminglocators“ erhalten haben. Sie können einen Medienplayer Ihrer Wahl verwenden. [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) ist verfügbar, um Ihren Datenstrom auf der [Media Player-Demowebsite](https://ampdemo.azureedge.net) zu testen.
 
-Ein Liveereignis konvertiert Ereignisse bei Beenden automatisch in bedarfsbasierte Inhalte. Auch nach dem Beenden und Löschen des Ereignisses können die Benutzer archivierte Inhalte als Video auf Abruf streamen, solange Sie das Medienobjekt nicht löschen. Ein Medienobjekt kann nicht gelöscht werden, wenn es ein Ereignis verwendet. Zuerst muss das betreffende Ereignis gelöscht werden.
+Für ein Liveereignis werden Ereignisse bei der Beendigung automatisch in On-Demand-Inhalte konvertiert. Auch nach dem Beenden und Löschen des Ereignisses können die Benutzer archivierte Inhalte als Video auf Abruf streamen, solange Sie das Medienobjekt nicht löschen. Ein Medienobjekt kann nicht gelöscht werden, wenn es ein Ereignis verwendet. Zuerst muss das betreffende Ereignis gelöscht werden.
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Bereinigen von Ressourcen in Ihrem Media Services-Konto
 
@@ -240,7 +240,7 @@ Wenn Sie die Anwendung bis zum Ende ausführen, werden in der Funktion `cleanUpR
 Sehen Sie sich im Beispielcode die Methode `cleanUpResources` an, um weitere Details zu erhalten.
 
 > [!IMPORTANT]
-> Wenn Sie das Liveereignis nicht beenden, fallen weiter Kosten dafür an. Beachten Sie, dass das Liveereignis möglicherweise im Abrechnungszustand bleibt, wenn das Projekt oder Programm nicht mehr reagiert oder aus irgendeinem Grund geschlossen wird.
+> Wenn Sie das Liveereignis nicht beenden, fallen weiter Kosten dafür an. Beachten Sie, dass das Liveereignis möglicherweise im Abrechnungszustand verbleibt, wenn das Projekt oder Programm nicht mehr reagiert oder aufgrund eines anderen Problems geschlossen wird.
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
 

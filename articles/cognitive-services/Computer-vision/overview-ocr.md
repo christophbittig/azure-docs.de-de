@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 06/21/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3c644a62dfd48f86fd21a39af57211ff7c20ae36
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 48b1eaa6e01bf25b11ca269e0771b4fd03530bba
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112520618"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533213"
 ---
 # <a name="what-is-optical-character-recognition"></a>Was ist Optische Zeichenerkennung?
 
@@ -45,20 +45,26 @@ Der Aufruf **Read** nimmt Bilder und Dokumente als Eingabe entgegen. Es bestehen
 * Die Dateigröße muss weniger als 50 MB (6 MB beim Free-Tarif) betragen und eine Größe von mindestens 50 x 50 Pixel und höchstens 10.000 × 10.000 Pixel aufweisen. 
 
 ## <a name="supported-languages"></a>Unterstützte Sprachen
-Die Lese-API unterstützt insgesamt 73 Sprachen für gedruckten Text. Eine vollständige Liste finden Sie unter [Sprachunterstützung für maschinelles Sehen](./language-support.md#optical-character-recognition-ocr). OCR für handgeschriebenen Text wird ausschließlich für Englisch unterstützt.
+Die Lese-API unterstützt 122 Sprachen bei gedrucktem Text und 7 Sprachen bei handschriftlichem Text, einschließlich Vorschausprachen und -features.
+
+Die optische Zeichenerkennung für gedruckten Text umfasst Unterstützung für Englisch, Französisch, Deutsch, Italienisch, Portugiesisch, Spanisch, Chinesisch, Japanisch, Koreanisch und Russisch (Vorschau) sowie mit dem neuesten Vorschauupdate noch weitere lateinische und kyrillische Sprachen.
+
+Bei handschriftlichem Text umfasst die OCR-Unterstützung Englisch sowie als Vorschauversion auch Unterstützung für Französisch, Deutsch, Italienisch, Portugiesisch, Spanisch und Chinesisch.
+
+Informationen zu den Sprachen und Features während der Vorschau finden Sie unter [Angeben der Modellversion](./Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional). Eine vollständige Liste finden Sie unter [Sprachunterstützung für maschinelles Sehen](./language-support.md#optical-character-recognition-ocr). Das Vorschaumodell enthält alle Verbesserungen an der derzeit allgemein verfügbaren Version.
 
 ## <a name="key-features"></a>Wichtigste Funktionen
 
-Die Lese-API umfasst die folgenden Funktionen: 
+Die Lese-API umfasst die folgenden Funktionen:
 
-* Extrahieren von Drucktext in 73 Sprachen
-* Extrahieren von handschriftlichem Text in englischer Sprache
+* Extrahieren von gedrucktem Text in 122 Sprachen
+* Extrahieren von handschriftlichem Text in 7 Sprachen
 * Textzeilen und Wörter mit Standort und Zuverlässigkeitsbewertungen
 * Keine Sprachenerkennung erforderlich
 * Unterstützung für gemischte Sprachen und gemischten Modus (gedruckter und handschriftlicher Text)
 * Auswählen von Seiten und Seitenbereichen aus großen, mehrseitigen Dokumenten
-* Natürliche Leserichtung für Textzeilen
-* Handschriftklassifizierung für Textzeilen
+* Option für die Textzeilenausgabe in natürlicher Leserichtung (nur lateinische Sprachen)
+* Handschriftklassifizierung für Textzeilen (nur Lateinisch)
 * Verfügbar als Docker-Container ohne Distribution für die lokale Bereitstellung
 
 [Hier](./vision-api-how-to-topics/call-read-api.md) erfahren Sie mehr über die Verwendung der OCR-Features.
@@ -78,4 +84,4 @@ Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Maschinel
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Beginnen Sie mit den [Schnellstartanleitungen für die OCR (Read)-REST-API oder für die Clientbibliothek](./quickstarts-sdk/client-library.md).
-- Erfahren Sie mehr über die [Read 3.2-REST-API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005).
+- Erfahren Sie mehr über die [Read 3.2-REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005).

@@ -12,18 +12,36 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/27/2021
+ms.date: 10/05/2021
 ms.author: b-juche
-ms.openlocfilehash: cae4e16f42d9031040060a33bb8a5795f7695f56
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 2dff42fcf855a41e2e907563b1aecccad0a1661a
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092127"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545923"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Neues in Azure NetApp Files
 
 Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Übersicht über die neuesten Features und Verbesserungen. 
+
+    
+## <a name="october-2021"></a>Oktober 2021
+
+* [Standard-Netzwerkfeatures](configure-network-features.md) (Vorschau)
+
+    Azure NetApp Files unterstützt jetzt **Standard**-Netzwerkfeatures für Volumes, die von der Kundschaft seit der Einführung gefordert wurden. Diese Funktion wurde durch innovative Hardware- und Softwareintegrationen ermöglicht. Standard-Netzwerkfeatures bieten eine erweiterte virtuelle Netzwerkumgebung über eine Vielzahl von Features für eine nahtlose und konsistente Umgebung sowie einen einheitlichen Sicherheitsstatus für alle Workloads, einschließlich Azure NetApp Files.
+    
+    Sie können jetzt *Standard*- oder *Basic*-Netzwerkfeatures auswählen, während Sie ein neues Azure NetApp Files-Volume erstellen. Wenn Sie Standard-Netzwerkfeatures auswählen, können Sie die folgenden unterstützten Features für Azure NetApp Files-Volumes und delegierte Subnetze nutzen:   
+    * Höhere IP-Grenzwerte für VNets mit Azure NetApp Files-Volumes im Vergleich zu VMs
+    * Verbesserte Netzwerksicherheit mit Unterstützung für [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md) im delegierten Azure NetApp Files-Subnetz
+    * Verbesserte Netzwerksteuerung mit Unterstützung für [benutzerdefinierte Routen](../virtual-network/virtual-networks-udr-overview.md#custom-routes) zum und vom delegierten Azure NetApp Files-Subnetz
+    * Konnektivität über die Einrichtung eines Aktiv/Aktiv-VPN-Gateways
+    * [ExpressRoute FastPath](../expressroute/about-fastpath.md)-Konnektivität mit Azure NetApp Files
+
+    Diese öffentliche Vorschauversion ist derzeit zunächst in der Region **USA, Norden-Mitte** verfügbar und wird nach und nach auch in anderen Regionen bereitgestellt.  Informieren Sie sich über [Azure Update](https://azure.microsoft.com/updates/), wann weitere Regionen und Features verfügbar gemacht werden.  
+ 
+    Weitere Informationen finden Sie unter [Konfigurieren von Netzwerkfeatures für ein Azure NetApp Files-Volume](configure-network-features.md).
 
 ## <a name="september-2021"></a>September 2021
 
@@ -31,7 +49,7 @@ Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Ü
 
     Azure NetApp Files Onlinemomentaufnahmen werden jetzt durch die Sicherung von Momentaufnahmen erweitert. Mit dieser neuen Sicherungsfunktion können Sie Ihre Azure NetApp Files-Momentaufnahmen schnell und kostengünstig in einen kostengünstigen und ZRS-fähigen Azure-Speicher tresor und so Ihre Daten vor versehentlichem Löschen schützen. Azure NetApp Files Backup erweitert die integrierte Momentaufnahmetechnologie von ONTAP. Wenn Momentaufnahmen im Tresor in Azure Storage gespeichert werden, werden nur geänderte Blöcke relativ zu zuvor tresorgespeicherten Momentaufnahmen in einem effizienten Format kopiert und gespeichert. Tresormomentaufnahmen werden jedoch weiterhin vollständig dargestellt und können einzeln und direkt auf einem neuen Volume wiederhergestellt werden, sodass kein iterativer, vollständig inkrementeller Wiederherstellungsprozess mehr benötigt wird. Diese erweiterte Technologie minimiert die Menge an Daten, die zum Speichern in und Abrufen aus Azure Storage erforderlich sind, und spart so Datenübertragungs- und Speicherkosten. Auch die Replikationszeit verkürzt sich dadurch, sodass Sie ein kürzeres Restore Point Objective (RPO) erreichen können. Sie können jetzt eine Mindestanzahl von Momentaufnahmen online im Azure NetApp Files-Dienst für die unmittelbarsten, nahezu sofortigen Datenwiederherstellungsanforderungen speichern und einen längeren Verlauf von Momentaufnahmen zu geringeren Kosten für die langfristige Aufbewahrung im Azure NetApp Files-Sicherungstresor erstellen. Weitere Informationen finden Sie unter [Funktionsweise von Azure NetApp Files-Momentaufnahmen](snapshots-introduction.md).
 
-* Option [**Administratoren"** ](create-active-directory-connections.md#create-an-active-directory-connection) in Active Directory-Verbindungen (Vorschau)
+* Option [**Administratoren"**](create-active-directory-connections.md#create-an-active-directory-connection) in Active Directory-Verbindungen (Vorschau)
 
     Die Seite Active Directory-Verbindungen enthält jetzt das Feld **Administratoren.** Sie können Benutzer oder Gruppen angeben, denen Administratorrechte auf dem Volume erteilt werden sollen.
 

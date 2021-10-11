@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von Tableau Online | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration mit Tableau Online'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Tableau Online konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 09/24/2021
 ms.author: jeedes
-ms.openlocfilehash: cb3efdc1bc03535abcf1f50ed4cd7a5c847ed957
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3f3aaf5f24a08fa2941701005a6c38957ee7a3da
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124751695"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402292"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Tableau Online
+# <a name="tutorial-azure-ad-sso-integration-with-tableau-online"></a>Tutorial: Azure AD-SSO-Integration mit Tableau Online
 
 In diesem Tutorial erfahren Sie, wie Sie Tableau Online in Azure Active Directory (Azure AD) integrieren. Die Integration von Tableau Online in Azure AD ermöglicht Folgendes:
 
@@ -33,14 +33,17 @@ Für die ersten Schritte benötigen Sie Folgendes:
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Ein Tableau Online-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
+
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Tableau Online unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Tableau Online unterstützt **SP-initiiertes** einmaliges Anmelden.
 * Tableau Online unterstützt die [**automatisierte Benutzerbereitstellung und Bereitstellungsaufhebung**](tableau-online-provisioning-tutorial.md) (empfohlen).
 
-## <a name="adding-tableau-online-from-the-gallery"></a>Hinzufügen von Tableau Online aus dem Katalog
+## <a name="add-tableau-online-from-the-gallery"></a>Hinzufügen von Tableau Online aus dem Katalog
 
 Zum Konfigurieren der Integration von Tableau Online in Azure AD müssen Sie Tableau Online aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -65,17 +68,17 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD i
     1. **[Erstellen eines Tableau Online-Testbenutzers](#create-tableau-online-test-user)** , um eine Entsprechung von B. Simon in Tableau Online zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Tableau Online** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
     a. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://sso.online.tableau.com/public/sp/login?alias=<entityid>`.
 
@@ -111,9 +114,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Tableau Online** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
@@ -132,15 +133,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wechseln Sie zu **Einstellungen** und dann zu **Authentifizierung**.
 
-    ![Screenshot, der die im Menü „Settings“ (Einstellungen) ausgewählte Option „Authentication“ (Authentifizierung) zeigt](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
+    ![Screenshot, der die im Menü „Settings“ (Einstellungen) ausgewählte Option „Authentication“ (Authentifizierung) zeigt](./media/tableauonline-tutorial/menu.png)
 
 2. Gehen Sie im Abschnitt **Authentifizierungstypen** zum Aktivieren von SAML wie folgt vor. Aktivieren Sie die Option **Enable an additional authentication method** (Zusätzliche Authentifizierungsmethode aktivieren) und anschließend das Kontrollkästchen **SAML**.
 
-    ![Screenshot: Abschnitt „Authentication types“ (Authentifizierungstypen), in dem Sie die beschriebenen Werte auswählen können](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
+    ![Screenshot: Abschnitt „Authentication types“ (Authentifizierungstypen), in dem Sie die beschriebenen Werte auswählen können](./media/tableauonline-tutorial/authentication.png)
 
 3. Scrollen Sie nach unten bis zum Abschnitt **Import metadata file into Tableau Online** (Metadatendatei in Tableau Online importieren).  Klicken Sie auf „Durchsuchen“, und importieren Sie die Metadatendatei, die Sie aus Azure AD heruntergeladen haben. Klicken Sie anschließend auf **Übernehmen**.
 
-   ![Screenshot: Abschnitt, in dem Sie die Metadatendatei importieren können](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
+   ![Screenshot: Abschnitt, in dem Sie die Metadatendatei importieren können](./media/tableauonline-tutorial/metadata.png)
 
 4. Fügen Sie im Abschnitt **Match assertions** (Assertionen abgleichen) den entsprechenden Identitätsanbieter-Assertionsnamen für **E-Mail-Adresse**, **Vorname** und **Nachname** ein. Gehen Sie wie folgt vor, um diese Informationen aus Azure AD abzurufen: 
   
@@ -148,17 +149,17 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     b. Klicken Sie im Abschnitt **Benutzerattribute und Ansprüche** auf das Bearbeitungssymbol.
 
-   ![Screenshot: Abschnitt „Benutzerattribute und Ansprüche“, in dem Sie das Bearbeitungssymbol auswählen können](./media/tableauonline-tutorial/attributesection.png)
+   ![Screenshot: Abschnitt „Benutzerattribute und Ansprüche“, in dem Sie das Bearbeitungssymbol auswählen können](./media/tableauonline-tutorial/attribute-section.png)
 
     c. Kopieren Sie den Namespacewert für die Attribute „givenname“, „email“ und „surname“ mithilfe der folgenden Schritte:
 
-   ![Screenshot: Attribute „Givenname“, „Surname“ und „Emailaddress“](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
+   ![Screenshot: Attribute „Givenname“, „Surname“ und „Emailaddress“](./media/tableauonline-tutorial/name.png)
 
     d. Klicken Sie auf den Wert **user.givenname**.
 
     e. Kopieren Sie den Wert aus dem Textfeld **Namespace**.
 
-    ![Screenshot: Abschnitt „Benutzeransprüche verwalten“, in dem Sie den Namespace eingeben können](./media/tableauonline-tutorial/attributesection2.png)
+    ![Screenshot: Abschnitt „Benutzeransprüche verwalten“, in dem Sie den Namespace eingeben können](./media/tableauonline-tutorial/attributes.png)
 
     f. Befolgen Sie die vorherigen Anweisungen, um die Namespacewerte für „email“ und „surname“ zu kopieren.
 
@@ -170,7 +171,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     * Nachname: **surname**
 
-    ![Screenshot: Abschnitt „Match attributes“ (Attribute abgleichen), in dem Sie die Werte eingeben können](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+    ![Screenshot: Abschnitt „Match attributes“ (Attribute abgleichen), in dem Sie die Werte eingeben können](./media/tableauonline-tutorial/claims.png)
 
 ### <a name="create-tableau-online-test-user"></a>Erstellen eines Tableau Online-Testbenutzers
 
@@ -178,15 +179,15 @@ In diesem Abschnitt erstellen Sie in Tableau Online einen Benutzer namens Britta
 
 1. Klicken Sie in **Tableau Online** auf **Settings** (Einstellungen) und dann auf den Abschnitt **Authentication** (Authentifizierung). Scrollen Sie nach unten zum Abschnitt **Manage Users** (Benutzer verwalten). Klicken Sie auf **Add Users** (Benutzer hinzufügen) und dann auf **Enter Email Addresses** (E-Mail-Adressen eingeben).
   
-    ![Screenshot: Abschnitt „Manage users“ (Benutzer verwalten), in dem Sie „Add users“ (Benutzer hinzufügen) auswählen können](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
+    ![Screenshot: Abschnitt „Manage users“ (Benutzer verwalten), in dem Sie „Add users“ (Benutzer hinzufügen) auswählen können](./media/tableauonline-tutorial/users.png)
 
 2. Wählen Sie **Add users for (SAML) authentication** (Benutzer für (SAML-)Authentifizierung auswählen). Fügen Sie im Textfeld **Enter Email Addresses** (E-Mail-Adressen eingeben) den Eintrag „britta.simon\@contoso.com“ hinzu.
   
-    ![Screenshot: Seite „Add Users“ (Benutzer hinzufügen), auf der Sie eine E-Mail-Adresse eingeben können](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
+    ![Screenshot: Seite „Add Users“ (Benutzer hinzufügen), auf der Sie eine E-Mail-Adresse eingeben können](./media/tableauonline-tutorial/add-users.png)
 
 3. Klicken Sie auf **Benutzer hinzufügen**.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 

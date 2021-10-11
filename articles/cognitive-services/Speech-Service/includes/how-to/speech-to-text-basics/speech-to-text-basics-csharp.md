@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5df77bcee69c07b8705b656ae7d4d44d921dcc08
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: e8475ffeefbc057f22e2c795da730528d3ff079a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542816"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378617"
 ---
 Die Funktion zum Erkennen und Transkribieren von menschlicher Sprache (Spracherkennung) ist eines der zentralen Features des Speech-Diensts. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Spracherkennungen durchzuführen.
 
@@ -313,7 +313,7 @@ Einer Begriffsliste können einzelne Wörter oder ganze Phrasen hinzugefügt wer
 >
 > Das Begriffslistenfeature sollte maximal mit ein paar hundert Begriffen verwendet werden. Wenn Sie über eine größere Liste verfügen oder Sprachen benötigen, die derzeit nicht unterstützt werden, ist das [Trainieren eines benutzerdefinierten Modells](../../../custom-speech-overview.md) wahrscheinlich die bessere Wahl, um die Genauigkeit zu verbessern.
 >
-> Verwenden Sie das Feature „Begriffsliste“ nicht mit benutzerdefinierten Endpunkten. Trainieren Sie stattdessen ein benutzerdefiniertes Modell, das die Begriffe enthält.
+> Das Begriffslistenfeature wird bei benutzerdefinierten Endpunkten nicht unterstützt. Verwenden Sie es nicht mit benutzerdefinierten Endpunkten. Trainieren Sie stattdessen ein benutzerdefiniertes Modell, das die Begriffe enthält.
 
 Wenn Sie eine Begriffsliste verwenden möchten, erstellen Sie zunächst ein Objekt vom Typ [`PhraseListGrammar`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar), und fügen Sie anschließend mithilfe von [`AddPhrase`](/dotnet/api/microsoft.cognitiveservices.speech.phraselistgrammar.addphrase) bestimmte Wörter und Begriffe hinzu.
 

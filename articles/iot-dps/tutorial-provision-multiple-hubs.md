@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 090d11866f3d3605a3703fd7ca39f820bbeb7187
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91315999"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273248"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Tutorial: Bereitstellen von Geräten für IoT-Hubs mit Lastausgleich
 
-In diesem Tutorial wird gezeigt, wie Sie mit Device Provisioning Service Geräte für mehrere IoT Hubs mit Lastausgleich bereitstellen. In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
+In diesem Tutorial wird gezeigt, wie Sie mit Device Provisioning Service Geräte für mehrere IoT Hubs mit Lastausgleich bereitstellen. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Bereitstellen eines zweiten Geräts für eine zweite IoT Hub-Instanz mit dem Azure-Portal 
@@ -67,7 +67,7 @@ Verknüpfen Sie Device Provisioning Service und die IoT Hub-Instanz, damit Devic
 4. Aktivieren Sie auf der Seite **Verknüpfung zu IoT Hub hinzufügen** die Optionsfelder, um anzugeben, ob sich der verknüpfte IoT Hub im aktuellen Abonnement oder in einem anderen Abonnement befindet. Wählen Sie dann im Feld **IoT Hub** den Namen von IoT Hub.
 5. Klicken Sie auf **Speichern**.
 
-In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
+In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Bereitstellen eines zweiten Geräts für eine zweite IoT Hub-Instanz mit dem Azure-Portal 

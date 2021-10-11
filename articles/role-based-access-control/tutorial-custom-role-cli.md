@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e3743697d58d0f5b167b123df59bc5638aa60489
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6fed28798e8e2f7795600b50c0121361ce54584b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771675"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358223"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Tutorial: Erstellen einer benutzerdefinierten Azure-Rolle mithilfe der Azure CLI
 
-Wenn die [integrierten Azure-Rollen](built-in-roles.md) die Anforderungen Ihrer Organisation nicht erfüllen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Tutorial erstellen Sie mithilfe der Azure CLI eine benutzerdefinierte Rolle namens „Reader Support Tickets“. Die benutzerdefinierte Rolle ermöglicht dem Benutzer, alle Inhalte der Verwaltungsebene eines Abonnement anzuzeigen und auch Supporttickets zu erstellen.
+Wenn die [integrierten Azure-Rollen](built-in-roles.md) die Anforderungen Ihrer Organisation nicht erfüllen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Tutorial erstellen Sie mithilfe der Azure CLI eine benutzerdefinierte Rolle namens „Reader Support Tickets“. Die benutzerdefinierte Rolle ermöglicht Benutzer*innen, alle Inhalte auf der Steuerungsebene eines Abonnements anzuzeigen und auch Supporttickets zu erstellen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -50,9 +50,9 @@ Melden Sie sich bei der [Azure-Befehlszeilenschnittstelle](/cli/azure/authentica
 
 Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer JSON-Vorlage, fügen Ihre Änderungen hinzu und erstellen dann eine neue Rolle.
 
-1. Überprüfen Sie die Liste der Vorgänge für den [Microsoft.Support-Ressourcenanbieter](resource-provider-operations.md#microsoftsupport). Es ist hilfreich, die Vorgänge zu kennen, die zum Erstellen der Berechtigungen verfügbar sind.
+1. Überprüfen Sie die Liste der Aktionen für den [Microsoft.Support-Ressourcenanbieter](resource-provider-operations.md#microsoftsupport). Es ist hilfreich, die Aktionen zu kennen, die zum Erstellen der Berechtigungen verfügbar sind.
 
-    | Vorgang | BESCHREIBUNG |
+    | Aktion | BESCHREIBUNG |
     | --- | --- |
     | Microsoft.Support/register/action | Führt die Registrierung beim Supportressourcenanbieter durch. |
     | Microsoft.Support/supportTickets/read | Ruft Details zu Supporttickets (einschließlich Status, Schweregrad, Kontaktdetails und Kommunikation) oder die Liste mit Supporttickets (abonnementübergreifend) ab. |
@@ -79,7 +79,7 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer J
     }
     ```
     
-1. Fügen Sie die folgenden Vorgänge zur Eigenschaft `Actions` hinzu. Diese Aktionen ermöglichen dem Benutzer, alle Inhalte des Abonnement anzuzeigen und Supporttickets zu erstellen.
+1. Fügen Sie der `Actions`-Eigenschaft die folgenden Aktionen hinzu. Diese Aktionen ermöglichen dem Benutzer, alle Inhalte des Abonnement anzuzeigen und Supporttickets zu erstellen.
 
     ```
     "*/read",
@@ -202,7 +202,7 @@ Wenn Sie die benutzerdefiniert Rolle aktualisieren möchten, aktualisieren Sie d
 
 1. Öffnen Sie die Datei „ReaderSupportRole.json“.
 
-1. Fügen Sie in `Actions` den Vorgang zum Erstellen und Verwalten von Ressourcengruppenbereitstellungen (`"Microsoft.Resources/deployments/*"`) hinzu. Achten Sie darauf, ein Komma nach dem vorherigen Vorgang einzufügen.
+1. Fügen Sie in `Actions` die Aktion zum Erstellen und Verwalten von Ressourcengruppenbereitstellungen (`"Microsoft.Resources/deployments/*"`) hinzu. Achten Sie darauf, ein Komma nach der vorherigen Aktion einzufügen.
 
     Ihre aktualisierte JSON-Datei sollte wie folgt aussehen:
 

@@ -13,12 +13,12 @@ ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8d8c4972653ddc70c7c0eb97e57b37479d52441b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c3b2cc9f3fa6656cf4d5e493f725c17b64f4d7d8
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616021"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233576"
 ---
 # <a name="what-is-single-sign-on-in-azure-active-directory"></a>Was ist einmaliges Anmelden in Azure Active Directory?
 
@@ -40,7 +40,7 @@ Die Auswahl einer Methode für einmaliges Anmelden hängt davon ab, wie die Anwe
 
     > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8]
 
-- **Kennwort**: Lokale Anwendungen können für einmaliges Anmelden die Methoden „Kennwort“, „Integrierte Windows-Authentifizierung“, „Header“ oder „Verknüpft“ verwenden. Die lokalen Optionen funktionieren, wenn Anwendungen für den [Anwendungsproxy](../app-proxy/what-is-application-proxy.md) konfiguriert wurden.
+- **Kennwort:** Lokale Anwendungen können für einmaliges Anmelden die Methoden „Kennwort“, „Integrierte Windows-Authentifizierung“, „Header“ oder „Verknüpft“ verwenden. Die lokalen Optionen funktionieren, wenn Anwendungen für den [Anwendungsproxy](../app-proxy/what-is-application-proxy.md) konfiguriert wurden.
 
     Bei kennwortbasierter einmaliger Anmeldung melden sich Benutzer mit einem Benutzernamen und einem Kennwort bei der Anwendung an, wenn sie erstmals auf sie zugreifen. Nach der ersten Anmeldung werden der Benutzername und das Kennwort von Azure AD für die Anwendung bereitgestellt. Kennwortbasiertes einmaliges Anmelden ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mit einer Webbrowsererweiterung oder einer mobilen App. Diese Option verwendet den von der Anwendung bereitgestellten vorhandenen Anmeldevorgang, ermöglicht es einem Administrator, die Kennwörter zu verwalten, und erfordert nicht, dass der Benutzer das Kennwort kennt.
 

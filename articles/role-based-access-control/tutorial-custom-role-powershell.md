@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 8b1815e7598410cd709572d93082d5dee5e0b0fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4fac2cde6f18e504dc2866cc479ce51e3b70b2a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97369241"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361999"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Tutorial: Erstellen einer benutzerdefinierten Azure-Rolle mithilfe von Azure PowerShell
 
-Wenn die [integrierten Azure-Rollen](built-in-roles.md) die Anforderungen Ihrer Organisation nicht erfüllen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Tutorial erstellen Sie mithilfe von Azure PowerShell eine benutzerdefinierte Rolle namens „Reader Support Tickets“. Die benutzerdefinierte Rolle ermöglicht dem Benutzer, alle Inhalte der Verwaltungsebene eines Abonnement anzuzeigen und auch Supporttickets zu erstellen.
+Wenn die [integrierten Azure-Rollen](built-in-roles.md) die Anforderungen Ihrer Organisation nicht erfüllen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Tutorial erstellen Sie mithilfe von Azure PowerShell eine benutzerdefinierte Rolle namens „Reader Support Tickets“. Die benutzerdefinierte Rolle ermöglicht Benutzer*innen, alle Inhalte auf der Steuerungsebene eines Abonnements anzuzeigen und auch Supporttickets zu erstellen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -93,7 +93,7 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer i
     }
     ```
     
-1. Bearbeiten Sie die JSON-Datei, um den Vorgang `"Microsoft.Support/*"` zur Eigenschaft `Actions` hinzuzufügen. Achten Sie darauf, ein Komma nach dem Lesevorgang einzufügen. Diese Aktion ermöglicht dem Benutzer das Erstellen von Supporttickets.
+1. Bearbeiten Sie die JSON-Datei, um der `Actions`-Eigenschaft die Aktion `"Microsoft.Support/*"` hinzuzufügen. Achten Sie darauf, ein Komma nach der Leseaktion einzufügen. Diese Aktion ermöglicht dem Benutzer das Erstellen von Supporttickets.
 
 1. Rufen Sie die ID Ihres Abonnements mithilfe des Befehls [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) ab.
 
@@ -179,7 +179,7 @@ Um die benutzerdefinierte Rolle zu aktualisieren, können Sie die JSON-Datei akt
 
 1. Öffnen Sie die Datei in einem Editor.
 
-1. Fügen Sie in `Actions` den Vorgang zum Erstellen und Verwalten von Ressourcengruppenbereitstellungen (`"Microsoft.Resources/deployments/*"`) hinzu.
+1. Fügen Sie in `Actions` die Aktion zum Erstellen und Verwalten von Ressourcengruppenbereitstellungen (`"Microsoft.Resources/deployments/*"`) hinzu.
 
     Ihre aktualisierte JSON-Datei sollte wie folgt aussehen:
 
@@ -227,7 +227,7 @@ Um die benutzerdefinierte Rolle zu aktualisieren, können Sie die JSON-Datei akt
     $role = Get-AzRoleDefinition "Reader Support Tickets"
     ```
     
-1. Rufen Sie die Methode `Add` auf, um den Vorgang zum Lesen der Diagnoseeinstellungen hinzuzufügen.
+1. Rufen Sie die `Add`-Methode auf, um die Aktion zum Lesen der Diagnoseeinstellungen hinzuzufügen.
 
     ```azurepowershell
     $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*/read")

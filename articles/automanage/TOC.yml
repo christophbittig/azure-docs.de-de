@@ -17,7 +17,7 @@
           href: automanage-windows-server-services-overview.md
         - name: Hotpatch für neue virtuelle Computer
           href: automanage-hotpatch.md
-    - name: Automanage für Server mit Arc-Unterstützung
+    - name: "Automanage für Server mit Azure\_Arc-Unterstützung"
       href: automanage-arc.md
     - name: Automanage-Konto
       href: automanage-account.md

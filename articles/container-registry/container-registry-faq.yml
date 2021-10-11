@@ -4,14 +4,14 @@ metadata:
   description: Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Container Registry-Dienst
   author: sajayantony
   ms.topic: article
-  ms.date: 03/15/2021
+  ms.date: 09/17/2021
   ms.author: sajaya
-  ms.openlocfilehash: ef541e23c2ad3142c4e5b50ccc5351a569727905
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: 9a1b4cdb33dc3499bdc027911dee5ac05c2f79b7
+  ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114438894"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129545414"
 title: 'Häufig gestellte Fragen: Azure Container Registry'
 summary: >
   Dieser Artikel behandelt häufig gestellte Fragen zu Azure Container Registry.
@@ -230,7 +230,7 @@ sections:
       Quarantäne von Images ist derzeit eine Previewfunktion von ACR. Sie können den Quarantänemodus einer Registry so aktivieren, dass nur die Images, die die Sicherheitsüberprüfung erfolgreich bestanden haben, für normale Benutzer sichtbar sind. Weitere Informationen finden Sie im [GitHub-Repository zu ACR](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
   - question: >
       Wie aktiviere ich den anonymen Zugriff per Pull?
-    answer: "Das Einrichten einer Azure-Containerregistrierung für den anonymen (nicht authentifizierten) Pullzugriff ist derzeit eine Previewfunktion, die in den [Tarifen](container-registry-skus.md) „Standard“ und „Premium“ verfügbar ist. \n\nUm den anonymen Pullzugriff zu aktivieren, aktualisieren Sie eine Registrierung mit der Azure CLI (Version 2.21.0 oder höher), und übergeben Sie den Parameter `--anonymous-pull-enabled` an den Befehl [az acr update](/cli/azure/acr#az_acr_update):\n\n```azurecli\naz acr update --name myregistry --anonymous-pull-enabled\n``` \n\nSie können den anonymen Pullzugriff jederzeit deaktivieren, indem Sie `--anonymous-pull-enabled` auf `false` festlegen.\n\n> [!NOTE]\n> * Führen Sie vor einem anonymen Pullvorgang den Befehl `docker logout` aus, um alle ggf. vorhandenen Docker-Anmeldeinformationen zu löschen.\n> * Für nicht authentifizierte Clients sind nur Datenebenenvorgänge verfügbar.\n> * Die Registrierung kann eine hohe Quote an nicht authentifizierten Anforderungen drosseln.\n> * Derzeit wird anonymer Pullzugriff in [georeplizierten](container-registry-geo-replication.md) Registrierungsregionen nicht unterstützt.\n\n> [!WARNING]\n> Der anonyme Pullzugriff gilt zurzeit für alle Repositorys in der Registrierung. Wenn Sie den Repositoryzugriff mithilfe von [Token mit Repositorygültigkeitsbereich](container-registry-repository-scoped-permissions.md) verwalten, beachten Sie, dass alle Benutzer aus diesen Repositorys in einer Registrierung, die für anonymes Pullen aktiviert ist, pullen können. Es wird empfohlen, Token zu löschen, wenn der anonyme Pullzugriff aktiviert ist.\n"
+    answer: "Weitere Informationen finden Sie unter [Öffentlich Verfügbarmachen von Registrierungsinhalten](anonymous-pull-access.md).          \n"
   - question: >
       Wie kann ich nicht verteilbare Ebenen an eine Registrierung pushen?
     answer: >

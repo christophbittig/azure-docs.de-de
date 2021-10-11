@@ -10,13 +10,13 @@ metadata:
   ms.author: wiassaf
   ms.reviewer: mathoma
   ms.custom: 
-  ms.date: 09/15/2021
-  ms.openlocfilehash: ba903b2ed34877a05b5993095b65d537416486ca
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.date: 09/30/2021
+  ms.openlocfilehash: 608c13253f93f18a8bb1ef59b7af1501077f2c95
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128677718"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129358451"
 title: Wartungsfenster – Häufig gestellte Fragen
 summary: In diesem Artikel werden häufig gestellte Fragen zum Wartungsfenster für [Azure SQL-Datenbank](sql-database-paas-overview.md) und [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) beantwortet.
 sections:
@@ -83,6 +83,8 @@ sections:
   - question: Ich habe das Standardwartungsfenster ausgewählt. Kann ich Vorabbenachrichtigungen für diese Wartung aktivieren?
     answer: >
       Nein, für das Standardwartungsfenster können keine Vorabbenachrichtigungen konfiguriert werden. Wenn Sie ein Wartungsfenster auswählen, müssen Sie eine andere Option als **Systemstandard** auswählen, um Vorabbenachrichtigungen zu konfigurieren und zu aktivieren.
+  - question: Ich kann keine Vorabbenachrichtigungen für die geplante Wartung einrichten. Wird auf dem Service Health-Dashboard trotzdem ein Ereignis für die geplante Wartung angezeigt?
+    answer: "Nein. Wenn keine Vorabbenachrichtigungen konfiguriert sind, werden in Service Health keine Ereignisse für geplante Wartungen angezeigt. \n"
 additionalContent: >-
   ## <a name="see-also"></a>Weitere Informationen
 

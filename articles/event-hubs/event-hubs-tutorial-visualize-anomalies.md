@@ -2,14 +2,14 @@
 title: 'Azure Event Hubs: Visualisieren von Datenanomalien in Echtzeitereignissen'
 description: 'Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Microsoft Azure Event Hubs gesendet werden'
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 09/29/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dc498398a164cb559cb243e46699f39a21ab3d50
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e89cf8f501576b18144e28b8b042948cdcb408ee
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698535"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276468"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Azure Event Hubs gesendet werden
 
@@ -25,127 +25,14 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Konfigurieren eines Stream Analytics-Auftrags zum Verarbeiten dieser Transaktionen
 > * Konfigurieren einer Power BI-Visualisierung zum Anzeigen der Ergebnisse
 
-Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen][], bevor Sie beginnen.
+## <a name="prerequisites"></a>Voraussetzungen
+Stellen Sie zunächst sicher, dass Sie folgende Schritte abgeschlossen haben:
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
-- Installieren Sie [Visual Studio](https://www.visualstudio.com/). 
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+- [Erstellen Sie einen Event Hubs-Namespace und einen Event Hub im Namespace](event-hubs-create.md).
+- Anweisungen finden Sie unter [Abrufen einer Event Hubs-Verbindungszeichenfolge](event-hubs-get-connection-string.md). Notieren Sie die Verbindungszeichenfolge für den Event Hubs-Namespace und den Namen des Event Hubs. 
+- Installieren Sie [Visual Studio](https://www.visualstudio.com/). Sie verwenden eine Visual Studio-Projektmappe, um eine App auszuführen und Testereignisdaten zu erstellen und an den Event Hub zu senden. 
 - Sie benötigen ein Power BI-Konto zum Analysieren der Ausgabe eines Stream Analytics-Auftrags. Sie können [Power BI kostenlos testen](https://app.powerbi.com/signupredirect?pbi_source=web).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="set-up-resources"></a>Einrichten von Ressourcen
-
-Für dieses Tutorial benötigen Sie einen Event Hubs-Namespace und einen Event Hub. Sie können diese Ressourcen über die Azure-Befehlszeilenschnittstelle oder mit Azure PowerShell erstellen. Verwenden Sie für alle Ressourcen die gleiche Ressourcengruppe und den gleichen Speicherort. Am Ende dieses Tutorials können Sie dann sämtliche Elemente in einem Schritt entfernen, indem Sie die Ressourcengruppe löschen.
-
-In den folgenden Abschnitten wird beschrieben, wie Sie diese erforderlichen Schritte ausführen. Befolgen Sie die Anleitung für die CLI *oder* für PowerShell, um die folgenden Schritte auszuführen:
-
-1. Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/management/overview.md). 
-
-2. Erstellen eines Event Hubs-Namespace 
-
-3. Erstellen einer Event Hub-Instanz
-
-> [!NOTE]
-> In jedem Skript sind Variablen festgelegt, die Sie später in diesem Tutorial benötigen. Hierzu gehören der Ressourcengruppenname ($resourceGroup), der Event Hub-Namespace ( **$eventHubNamespace**) und der Event Hub-Name ( **$eventHubName**). Hierauf wird später in diesem Artikel über die Dollarzeichen-Präfixe ($) verwiesen, damit Sie wissen, dass sie im Skript festgelegt wurden.
-
-<!-- some day they will approve the tab control; 
-  When that happens, put CLI and PSH in tabs. -->
-
-### <a name="set-up-your-resources-using-azure-cli"></a>Einrichten Ihrer Ressourcen per Azure CLI
-
-Kopieren Sie dieses Skript, und fügen Sie es in Cloud Shell ein. Sofern Sie bereits angemeldet sind, wird das Skript Zeile für Zeile ausgeführt.
-
-Die Variablen, die global eindeutig sein müssen, verfügen über den Zusatz `$RANDOM`. Wenn das Skript ausgeführt und die Variablen festgelegt werden, wird eine zufällige numerische Zeichenfolge generiert und am Ende der feststehenden Zeichenfolge angefügt, um sie eindeutig zu machen.
-
-```azurecli-interactive
-# Set the values for location and resource group name.
-location=westus
-resourceGroup=ContosoResourcesEH
-
-# Create the resource group to be used
-#   for all the resources for this tutorial.
-az group create --name $resourceGroup \
-    --location $location
-
-# The Event Hubs namespace name must be globally unique, so add a random number to the end.
-eventHubNamespace=ContosoEHNamespace$RANDOM
-echo "Event Hub Namespace = " $eventHubNamespace
-
-# Create the Event Hubs namespace.
-az eventhubs namespace create --resource-group $resourceGroup \
-   --name $eventHubNamespace \
-   --location $location \
-   --sku Standard
-
-# The event hub name must be globally unique, so add a random number to the end.
-eventHubName=ContosoEHhub$RANDOM
-echo "event hub name = " $eventHubName
-
-# Create the event hub.
-az eventhubs eventhub create --resource-group $resourceGroup \
-    --namespace-name $eventHubNamespace \
-    --name $eventHubName \
-    --message-retention 3 \
-    --partition-count 2
-
-# Get the connection string that authenticates the app with the Event Hubs service.
-connectionString=$(az eventhubs namespace authorization-rule keys list \
-   --resource-group $resourceGroup \
-   --namespace-name $eventHubNamespace \
-   --name RootManageSharedAccessKey \
-   --query primaryConnectionString \
-   --output tsv)
-echo "Connection string = " $connectionString 
-```
-
-### <a name="set-up-your-resources-using-azure-powershell"></a>Einrichten Ihrer Ressourcen per Azure PowerShell
-
-Kopieren Sie dieses Skript, und fügen Sie es in Cloud Shell ein. Sofern Sie bereits angemeldet sind, wird das Skript Zeile für Zeile ausgeführt.
-
-Die Variablen, die global eindeutig sein müssen, verfügen über den Zusatz `$(Get-Random)`. Wenn das Skript ausgeführt und die Variablen festgelegt werden, wird eine zufällige numerische Zeichenfolge generiert und am Ende der feststehenden Zeichenfolge angefügt, um sie eindeutig zu machen.
-
-```azurepowershell-interactive
-# Log in to Azure account.
-Login-AzAccount
-
-# Set the values for the location and resource group.
-$location = "West US"
-$resourceGroup = "ContosoResourcesEH"
-
-# Create the resource group to be used  
-#   for all resources for this tutorial.
-New-AzResourceGroup -Name $resourceGroup -Location $location
-
-# The Event Hubs namespace name must be globally unique, so add a random number to the end.
-$eventHubNamespace = "contosoEHNamespace$(Get-Random)"
-Write-Host "Event Hub Namespace is " $eventHubNamespace
-
-# The event hub name must be globally unique, so add a random number to the end.
-$eventHubName = "contosoEHhub$(Get-Random)"
-Write-Host "Event hub Name is " $eventHubName
-
-# Create the Event Hubs namespace.
-New-AzEventHubNamespace -ResourceGroupName $resourceGroup `
-     -NamespaceName $eventHubNamespace `
-     -Location $location
-
-# Create the event hub.
-$yourEventHub = New-AzEventHub -ResourceGroupName $resourceGroup `
-    -NamespaceName $eventHubNamespace `
-    -Name $eventHubName `
-    -MessageRetentionInDays 3 `
-    -PartitionCount 2
-
-# Get the event hub key, and retrieve the connection string from that object.
-# You need this to run the app that sends test messages to the event hub.
-$eventHubKey = Get-AzEventHubKey -ResourceGroupName $resourceGroup `
-    -Namespace $eventHubNamespace `
-    -AuthorizationRuleName RootManageSharedAccessKey
-
-# Save this value somewhere local for later use.
-Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
-```
 
 ## <a name="run-app-to-produce-test-event-data"></a>Ausführen der App zum Produzieren von Testereignisdaten
 
@@ -175,7 +62,7 @@ Sie können für Ihre Daten nun das Streamen in Ihren Event Hub durchführen. Um
 
    **Ressourcengruppe**: Verwenden Sie die Ressourcengruppe, die auch von Ihrem Event Hub (**ContosoResourcesEH**) verwendet wird.
 
-   **Standort**: Verwenden Sie den Standort, der auch im Einrichtungsskript verwendet wurde (**USA, Westen**).
+   **Standort:** Verwenden Sie dieselbe Azure-Region wie zuvor.
 
    ![Screenshot: Erstellen eines neuen Stream Analytics-Auftrags](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
@@ -187,35 +74,28 @@ Wenn Sie sich nicht im Bereich **Stream Analytics-Auftrag** des Portals befinden
 
 Die Eingaben für den Stream Analytics-Auftrag sind die Kreditkartentransaktionen vom Event Hub.
 
-> [!NOTE]
-> Die Werte für Variablen, die mit dem Dollarzeichen ($) beginnen, werden in den Startskripts in den vorherigen Abschnitten festgelegt. Sie müssen beim Angeben dieser Felder hier die gleichen Werte verwenden, also den Event Hubs-Namespace und den Event Hub-Namen.
 
-1. Klicken Sie unter **Auftragstopologie** auf **Eingaben**.
-
-2. Klicken Sie im Bereich **Eingaben** auf **Datenstromeingabe hinzufügen**, und wählen Sie die Option „Event Hubs“. Füllen Sie im angezeigten Fenster die folgenden Felder aus:
+1. Wählen Sie im Menü auf der linken Seite im Abschnitt **Auftragstopologie** die Option **Eingaben** aus.
+2. Klicken Sie im Bereich **Eingaben** auf **Datenstromeingabe hinzufügen**, und wählen Sie die **Event Hubs** aus. Füllen Sie im angezeigten Fenster die folgenden Felder aus:
 
    **Eingabealias**: Verwenden Sie **contosoinputs**. Dieses Feld ist der Name des Eingabestreams, der beim Definieren der Abfrage für die Daten verwendet wird.
 
-   **Abonnement**: Wählen Sie Ihr Abonnement aus.
+   **Abonnement**: Wählen Sie Ihr Azure-Abonnement.
 
-   **Event Hubs-Namespace**: Wählen Sie Ihren Event Hub-Namespace ($**eventHubNamespace**) aus. 
+   **Event Hubs-Namespace:** Wählen Sie Ihren Event Hub-Namespace aus. 
 
-   **Event Hub-Name**: Klicken Sie auf **Vorhandene verwenden**, und wählen Sie Ihren Event Hub ($**eventHubName**) aus.
-
-   **Event Hubs-Richtlinienname**: Wählen Sie **RootManageSharedAccessKey**.
+   **Event Hub-Name:** Klicken Sie auf **Vorhandene verwenden**, und wählen Sie Ihren Event Hub aus.
 
    **Event Hubs-Consumergruppe**: Lassen Sie dieses Feld leer, um die Standardconsumergruppe zu verwenden.
 
    Übernehmen Sie in den restlichen Feldern die Standardwerte.
 
    ![Screenshot: Hinzufügen eines Eingabestreams zum Stream Analytics-Auftrag](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
-
 5. Klicken Sie auf **Speichern**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Hinzufügen einer Ausgabe zum Stream Analytics-Auftrag
 
-1. Klicken Sie unter **Auftragstopologie** auf **Ausgaben**. Dieses Feld ist der Name des Ausgabestreams, der beim Definieren der Abfrage für die Daten verwendet wird.
-
+1. Wählen Sie im Menü auf der linken Seite im Abschnitt **Auftragstopologie** die Option **Ausgaben** aus. Dieses Feld ist der Name des Ausgabestreams, der beim Definieren der Abfrage für die Daten verwendet wird.
 2. Klicken Sie im Bereich **Ausgaben** auf **Hinzufügen**, und wählen Sie dann **Power BI** aus. Füllen Sie im angezeigten Fenster die folgenden Felder aus:
 
    **Ausgabealias**: Verwenden Sie **contosooutputs**. Dieses Feld enthält den eindeutigen Alias für die Ausgabe. 
@@ -227,11 +107,8 @@ Die Eingaben für den Stream Analytics-Auftrag sind die Kreditkartentransaktione
    Übernehmen Sie in den restlichen Feldern die Standardwerte.
 
    ![Screenshot: Einrichten der Ausgabe für einen Stream Analytics-Auftrag](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-outputs.png)
-
 3. Klicken Sie auf **Autorisieren**, und melden Sie sich an Ihrem Power BI-Konto an.
-
 4. Übernehmen Sie in den restlichen Feldern die Standardwerte.
-
 5. Klicken Sie auf **Speichern**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurieren der Abfrage des Stream Analytics-Auftrags
@@ -348,21 +225,8 @@ Wenn Sie alle von Ihnen erstellten Ressourcen entfernen möchten, können Sie di
 
 Melden Sie sich an Ihrem Power BI-Konto an. Navigieren Sie zu **Mein Arbeitsbereich**. Klicken Sie in der Zeile mit Ihrem Dashboardnamen auf das Papierkorbsymbol. Navigieren Sie als Nächstes zu **Datasets**, und klicken Sie auf das Papierkorbsymbol, um das Dataset (**contosoehdataset**) zu löschen.
 
-### <a name="clean-up-resources-using-azure-cli"></a>Bereinigen von Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle
-
-Um die Ressourcengruppe zu entfernen, verwenden Sie den Befehl [az group delete](/cli/azure/group#az_group_delete).
-
-```azurecli-interactive
-az group delete --name $resourceGroup
-```
-
-### <a name="clean-up-resources-using-powershell"></a>Bereinigen von Ressourcen über PowerShell
-
-Verwenden Sie zum Entfernen der Ressourcengruppe den Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
-
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name $resourceGroup
-```
+### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+Löschen Sie die Ressourcengruppe, die alle Ressourcen enthält, die Sie im Rahmen dieses Tutorials erstellt haben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -379,4 +243,4 @@ Fahren Sie mit dem nächsten Artikel fort, um mehr über Azure Event Hubs zu erf
 > [!div class="nextstepaction"]
 > [Erste Schritte beim Senden von Nachrichten an Azure Event Hubs in .NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
 
-[kostenloses Konto erstellen]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[create a free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 9/23/2021
 ms.author: stefanazaric
 ms.reviewer: jrasnick, wiassaf
-ms.openlocfilehash: 35803ad7d63e107f71e71c6ce8292c5608740eec
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e0380c4d1b4fe9c82d6e9b82922b1a509f7dcdf4
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128555252"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545601"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Selbsthilfe für serverlose SQL-Pools
 
@@ -495,7 +495,7 @@ Der in der `WITH`-Klausel angegebene Wert stimmt nicht mit den zugrunde liegende
 ### <a name="cosmosdb-performance-issues"></a>CosmosDB-Leistungsprobleme
 
 Wenn unerwartete Leistungsprobleme auftreten, vergewissern Sie sich, dass die bewährten Methoden angewandt wurden, z. B.:
-- Stellen Sie sicher, dass Sie die Clientanwendung, den serverlosen Pool und den Cosmos DB-Analysespeicher in [derselben Region](best-practices-serverless-sql-pool.md#colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool) platziert haben.
+- Stellen Sie sicher, dass Sie die Clientanwendung, den serverlosen Pool und den Cosmos DB-Analysespeicher in [derselben Region](best-practices-serverless-sql-pool.md#colocate-your-azure-cosmos-db-analytical-storage-and-serverless-sql-pool) platziert haben.
 - Stellen Sie sicher, dass Sie die `WITH`-Klausel mit den [optimalen Datentypen](best-practices-serverless-sql-pool.md#use-appropriate-data-types) verwenden.
 - Stellen Sie sicher, dass Sie die Sortierung [Latin1_General_100_BIN2_UTF8](best-practices-serverless-sql-pool.md#use-proper-collation-to-utilize-predicate-pushdown-for-character-columns) verwenden, wenn Sie Ihre Daten mithilfe von Zeichenfolgenprädikaten filtern.
 - Wenn Sie wiederholte Abfragen haben, die möglicherweise zwischengespeichert werden, versuchen Sie, [CETAS zum Speichern von Abfrageergebnissen in Azure Data Lake Storage](best-practices-serverless-sql-pool.md#use-cetas-to-enhance-query-performance-and-joins) zu verwenden.
@@ -644,10 +644,16 @@ Der serverlose SQL-Pool weist den Abfragen die Ressourcen auf der Grundlage der 
 ### <a name="query-duration-is-very-long"></a>Die Abfragezeit ist sehr lang 
 
 Wenn Sie Synapse Studio verwenden, versuchen Sie, einen Desktop-Client wie SQL Server Management Studio oder Azure Data Studio zu verwenden. Synapse Studio ist ein Web-Client, der über das HTTP-Protokoll mit dem serverlosen Pool verbunden ist, was im Allgemeinen langsamer ist als die nativen SQL-Verbindungen, die in SQL Server Management Studio oder Azure Data Studio verwendet werden.
+
 Wenn Sie Abfragen mit einer Abfragedauer von mehr als 30 Minuten haben, bedeutet dies, dass die Rückgabe der Ergebnisse an den Client langsam ist. Der serverlose SQL-Pool hat ein Ausführungslimit von 30 Minuten, und jede zusätzliche Zeit wird für das Ergebnis-Streaming verwendet.
+
+Überprüfen Sie die folgenden Probleme, wenn die Abfrageausführung langsam ist:
 -   Stellen Sie sicher, dass die Client-Anwendungen mit dem Endpunkt des serverlosen SQL-Pools verbunden sind. Die Ausführung einer Abfrage über die Region hinweg kann zusätzliche Wartezeit und langsames Streaming der Ergebnismenge verursachen.
 -   Stellen Sie sicher, dass Sie keine Netzprobleme haben, die ein langsames Streaming der Ergebnismenge verursachen können 
--   Vergewissern Sie sich, dass die Client-Anwendung über genügend Ressourcen verfügt (z. B. keine 100%ige CPU-Auslastung). Siehe die bewährten Praktiken für die [Zusammenfassung von Ressourcen](best-practices-serverless-sql-pool.md#client-applications-and-network-connections).
+-   Vergewissern Sie sich, dass die Client-Anwendung über genügend Ressourcen verfügt (z. B. keine 100%ige CPU-Auslastung). 
+-   Stellen Sie sicher, dass sich das Speicherkonto oder der analytische Cosmos DB-Speicher in derselben Region wie Ihr serverloser SQL-Endpunkt befindet.
+
+Siehe die bewährten Praktiken für die [Zusammenfassung von Ressourcen](best-practices-serverless-sql-pool.md#client-applications-and-network-connections).
 
 ### <a name="high-variations-in-query-durations"></a>Starke Schwankungen in der Abfragedauer
 

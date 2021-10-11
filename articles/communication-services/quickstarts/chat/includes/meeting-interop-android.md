@@ -5,12 +5,12 @@ ms.author: agiurg
 ms.date: 07/20/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 07a8af0c389b0b5c2216f45e0a3fb0ba053e5690
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: bb5ccb022b4bfeb90f7c50f27ce2a76d43386571
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114442888"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378260"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie mit dem Chat SDK für Android von Azure Communication Services an einer Teams-Besprechung teilnehmen.
 
@@ -386,11 +386,13 @@ Abschließend fügen wir die Methode hinzu, um alle zugänglichen Nachrichten im
     }
 ```
 
-Die Anzeigenamen der Chatthread-Teilnehmer werden nicht vom Teams-Client festgelegt. Beim Ereignis `participantsAdded` und `participantsRemoved` werden die Namen in der API für die Auflistung von Teilnehmern als NULL zurückgegeben. Die Anzeigenamen der Chatteilnehmer können aus dem `remoteParticipants`-Feld des `call`-Objekts abgerufen werden.
+Die Anzeigenamen der Chatthread-Teilnehmer werden nicht vom Teams-Client festgelegt. Beim Ereignis `participantsAdded` und beim Ereignis `participantsRemoved` werden die Namen in der API für die Auflistung von Teilnehmern als NULL zurückgegeben. Die Anzeigenamen der Chatteilnehmer können aus dem `remoteParticipants`-Feld des `call`-Objekts abgerufen werden.
 
 ## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>Abrufen eines Teams-Besprechungschatthreads für einen Communication Services-Benutzer
 
-Der Link und der Chat für die Teams-Besprechung können über Graph-APIs abgerufen werden, wie in der [Graph-Dokumentation](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) ausführlich erläutert. Das Communication Services-SDK für Telefonie akzeptiert einen vollständigen Teams-Besprechungslink. Dieser Link wird als Teil der `onlineMeeting`-Ressource zurückgegeben, auf die unter der [Eigenschaft `joinWebUrl`](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) zugegriffen werden kann. Mit den [Graph-APIs](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) können Sie auch die `threadId` abrufen. Die Antwort enthält ein `chatInfo`-Objekt, das die `threadID` enthält. 
+Die Details für die Teams-Besprechung können über Graph-APIs abgerufen werden, wie in der [Graph-Dokumentation](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) ausführlich erläutert. Das Communication Services Calling SDK akzeptiert einen vollständigen Teams-Besprechungslink oder eine Besprechungs-ID. Beide werden als Teil der `onlineMeeting`-Ressource zurückgegeben, auf die unter der [`joinWebUrl`-Eigenschaft](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true) zugegriffen werden kann.
+
+Sie können die `threadID` auch mit den [Graph-APIs](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) abrufen. Die Antwort enthält ein `chatInfo`-Objekt, das die `threadID` enthält.
 
 Sie können die erforderlichen Besprechungsinformationen und die Thread-ID auch über die URL unter **An Besprechung teilnehmen** in der Einladung zur Teams-Besprechung abrufen.
 Ein Teams-Besprechungslink sieht wie folgt aus: `https://teams.microsoft.com/l/meetup-join/meeting_chat_thread_id/1606337455313?context=some_context_here`. Die `threadId` befindet sich dort, wo im Link `meeting_chat_thread_id` steht. Stellen Sie sicher, dass vor der Verwendung Escapezeichen aus der `meeting_chat_thread_id` entfernt werden. Die ID sollte das folgende Format aufweisen: `19:meeting_ZWRhZDY4ZGUtYmRlNS00OWZaLTlkZTgtZWRiYjIxOWI2NTQ4@thread.v2`.

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: 27e8c108447a3e16a5e61854eb9d43c4a8efffee
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ce3587d0e70c2dec04e60bed5a23f16bd6c7688b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126902"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233029"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -232,7 +232,7 @@ Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Por
 
 1. Wählen Sie im Azure-Portal im linken Navigationsbereich *Ressourcengruppen* aus.
 1. Wählen Sie Ihre Ressourcengruppe (z. B. *myResourceGroup*) und Ihre Netzwerksicherheitsgruppe (z. B. *aaads-nsg*) aus.
-1. Die Liste der vorhandenen Sicherheitsregeln für eingehenden und ausgehenden Datenverkehr wird angezeigt. Wählen Sie auf der linken Seite des Fensters „Netzwerksicherheitsgruppe“ die Optionen **Einstellungen > Eingangssicherheitsregeln** aus.
+1. Die Liste der vorhandenen Sicherheitsregeln für eingehenden und ausgehenden Datenverkehr wird angezeigt. Wählen Sie auf der linken Seite des Fensters „Netzwerksicherheitsgruppe“ die Optionen **Einstellungen > Eingangssicherheitsregeln** aus.
 1. Klicken Sie auf **Hinzufügen**, und erstellen Sie eine Regel zum Zulassen von *TCP*-Port *636*. Wählen Sie zur Verbesserung der Sicherheit *IP-Adressen* als Quelle aus, und geben Sie die eigene gültige IP-Adresse oder den eigenen gültigen IP-Adressbereich für Ihre Organisation an.
 
     | Einstellung                           | Wert        |

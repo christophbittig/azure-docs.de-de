@@ -6,15 +6,15 @@ ms.service: synapse-analytics
 ms.subservice: machine-learning
 ms.topic: overview
 ms.reviewer: jrasnick, garye
-ms.date: 09/25/2020
+ms.date: 10/01/2021
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 68b113de63cfefde805c1c46e9303829c4eb33a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e092cf94e5126b5bfa7bd42cc2f362f6d7a9da96
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222138"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402091"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Machine Learning-Funktionen in Azure Synapse Analytics
 
@@ -25,24 +25,22 @@ In dieser Übersicht werden die verschiedenen Machine Learning-bezogenen Funktio
 Möglicherweise sind Sie damit vertraut, wie ein typischer Data Science-Prozess aussieht. Es handelt sich dabei um einen bekannten Prozess, den die meisten Machine Learning-Projekte einhalten.
 
 Generell umfasst der Prozess die folgenden Schritte:
-* (Geschäftliche Aspekte)
+* Geschäftsverständnis (in diesem Artikel nicht beschrieben)
 * Datenerfassung und -auswertung
 * Modellierung
 * Modellimplementierung und -bewertung
 
 In diesem Artikel werden die Machine Learning-Funktionen von Azure Synapse in verschiedenen Analyse-Engines aus Sicht eines Data Science-Prozesses behandelt. Für jeden Schritt im Data Science Prozess werden die Azure Synapse-Funktionen, die hilfreich sein können, zusammengefasst.
 
-## <a name="azure-synapse-machine-learning-capabilities"></a>Machine Learning-Funktionen von Azure Synapse
-
-### <a name="data-acquisition-and-understanding"></a>Datenerfassung und -auswertung
+## <a name="data-acquisition-and-understanding"></a>Datenerfassung und -auswertung
 
 Die meisten Machine Learning-Projekte umfassen etablierte Schritte, und einer dieser Schritte besteht darin, auf die Daten zuzugreifen und diese zu verstehen.
 
-#### <a name="data-source-and-pipelines"></a>Datenquelle und -pipelines
+### <a name="data-source-and-pipelines"></a>Datenquelle und -pipelines
 
 Dank [Azure Data Factory](../../data-factory/introduction.md), einem nativ integrierten Teil von Azure Synapse, steht ein leistungsfähiger Satz von Tools für Datenerfassungs- und Datenorchestrierungspipelines zur Verfügung. Auf diese Weise können Sie problemlos Datenpipelines erstellen, um auf die Daten zuzugreifen und sie in ein Format zu transformieren, das von Machine Learning verwendet werden kann. [Weitere Informationen zu Datenpipelines](../../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) in Synapse. 
 
-#### <a name="data-preparation-and-explorationvisualization"></a>Aufbereitung, Durchsuchen und Visualisierung von Daten
+### <a name="data-preparation-and-explorationvisualization"></a>Aufbereitung, Durchsuchen und Visualisierung von Daten
 
 Ein wichtiger Teil des Machine Learning-Prozesses ist es, die Daten mittels Durchsuchen und Visualisierungen zu verstehen.
 
@@ -52,21 +50,21 @@ Abhängig davon, wo die Daten gespeichert sind, bietet Synapse eine Reihe versch
 
 * [Serverlose SQL-Pools](../sql/on-demand-workspace-overview.md) bieten eine Möglichkeit, Daten mithilfe von TSQL direkt über den Data Lake zu durchsuchen. Serverlose SQL-Pools bieten auch einige integrierte Visualisierungen in Synapse Studio. [Weitere Informationen zur Vorgehensweise beim Durchsuchen von Daten mit serverlosen SQL-Pools](../get-started-analyze-sql-on-demand.md)
 
-### <a name="modeling"></a>Modellierung
+## <a name="modeling"></a>Modellierung
 
 In Azure Synapse kann das Training von Machine Learning-Modellen in den Apache Spark-Pools mithilfe von Tools wie PySpark/Python, Scala oder .NET erfolgen.
 
-#### <a name="train-models-on-spark-pools-with-mllib"></a>Trainieren von Modellen in Spark-Pools mit MLlib
+### <a name="train-models-on-spark-pools-with-mllib"></a>Trainieren von Modellen in Spark-Pools mit MLlib
 
-Machine Learning-Modelle können mithilfe verschiedener Algorithmen und Bibliotheken trainiert werden. [Spark MLlib](http://spark.apache.org/docs/latest/ml-guide.html) bietet skalierbare Machine Learning-Algorithmen, mit denen sich die meisten klassischen Machine Learning-Probleme lösen lassen. [In diesem Tutorial](../spark/apache-spark-machine-learning-mllib-notebook.md) wird erläutert, wie ein Modell mithilfe von MLlib in Synapse trainiert wird.
+Machine Learning-Modelle können mithilfe verschiedener Algorithmen und Bibliotheken trainiert werden. [Spark MLlib](http://spark.apache.org/docs/latest/ml-guide.html) bietet skalierbare Machine Learning-Algorithmen, mit denen sich die meisten klassischen Machine Learning-Probleme lösen lassen. Ein Tutorial zum Trainieren eines Modells mit MLlib in Synapse finden Sie unter [Erstellen einer Machine Learning-App mit Apache Spark MLlib und Azure Synapse Analytics](../spark/apache-spark-machine-learning-mllib-notebook.md).
 
 Neben MLlib können auch beliebte Bibliotheken wie [Scikit Learn](https://scikit-learn.org/stable/) zum Entwickeln von Modellen verwendet werden. Ausführliche Informationen zum Installieren von Bibliotheken in Synapse Spark-Pools finden Sie unter [Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics](../spark/apache-spark-azure-portal-add-libraries.md).
 
-#### <a name="train-models-with-azure-machine-learning-automated-ml"></a>Trainieren von Modellen mit automatisiertem ML (automatisiertem maschinellem Lernen) zu Azure Machine Learning
+### <a name="train-models-with-azure-machine-learning-automated-ml"></a>Trainieren von Modellen mit automatisiertem ML (automatisiertem maschinellem Lernen) zu Azure Machine Learning
 
-Eine andere Möglichkeit zum Trainieren von Machine Learning-Modellen, die nicht viel Erfahrung mit Machine Learning voraussetzt, ist die Verwendung von automatisiertem ML. [Automatisiertes ML](../../machine-learning/concept-automated-ml.md) ist ein Feature, das eine Gruppe von Machine Learning-Modellen automatisch trainiert und es dem Benutzer ermöglicht, auf Grundlage bestimmter Metriken das beste Modell auszuwählen. Dank einer nahtlosen Integration in Azure Machine Learning aus Azure Synapse Notebooks können Benutzer automatisiertes ML in Synapse mit Passthrough-Authentifizierung von Azure Active Directory problemlos nutzen.  Dies bedeutet, dass Sie nur auf Ihren Azure Machine Learning-Arbeitsbereich verweisen und keine Anmeldeinformationen eingeben müssen. Im Folgenden finden Sie ein [Tutorial zu automatisiertem ML](../spark/apache-spark-azure-machine-learning-tutorial.md), in dem beschrieben wird, wie Modelle mithilfe von automatisiertem ML zu Azure Machine Learning in Synapse Spark-Pools trainiert werden.
+Eine andere Möglichkeit zum Trainieren von Machine Learning-Modellen, die nicht viel Erfahrung mit Machine Learning voraussetzt, ist die Verwendung von automatisiertem ML. [Automatisiertes ML](../../machine-learning/concept-automated-ml.md) ist ein Feature, das eine Gruppe von Machine Learning-Modellen automatisch trainiert und es dem Benutzer ermöglicht, auf Grundlage bestimmter Metriken das beste Modell auszuwählen. Dank einer nahtlosen Integration in Azure Machine Learning aus Azure Synapse Notebooks können Benutzer automatisiertes ML in Synapse mit Passthrough-Authentifizierung von Azure Active Directory problemlos nutzen.  Dies bedeutet, dass Sie nur auf Ihren Azure Machine Learning-Arbeitsbereich verweisen und keine Anmeldeinformationen eingeben müssen. Im Tutorial [Trainieren eines Modells in Python mit automatisiertem maschinellen Lernen](../spark/apache-spark-azure-machine-learning-tutorial.md) wird beschrieben, wie Modelle mithilfe von automatisiertem maschinellen Lernen von Azure Machine Learning in Synapse Spark-Pools trainiert werden.
 
-### <a name="model-deployment-and-scoring"></a>Modellimplementierung und -bewertung
+## <a name="model-deployment-and-scoring"></a>Modellimplementierung und -bewertung
 
 Modelle, die entweder in Azure Synapse oder außerhalb von Azure Synapse trainiert wurden, können problemlos für die Batchbewertung verwendet werden. Derzeit gibt es in Synapse zwei Möglichkeiten, wie Sie die Batchbewertung ausführen können.
 

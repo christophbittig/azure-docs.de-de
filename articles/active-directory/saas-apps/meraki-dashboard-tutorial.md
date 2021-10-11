@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 09/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 0cc51035a8bdb0ee12d27763b1d03e6b08494b66
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5adf1f5c2c811bdc2b48e03c1e2892746d36da4b
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124795771"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402895"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Meraki Dashboard
 
@@ -37,7 +37,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-- Meraki Dashboard unterstützt **IDP-initiiertes** einmaliges Anmelden.
+- Meraki Dashboard unterstützt **IDP-initiiertes** einmaliges Anmelden.
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
@@ -63,7 +63,7 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Meraki Dashboard](#configure-meraki-dashboard-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-   1. **[Erstellen eines Meraki Dashboard-Testbenutzers](#create-meraki-dashboard-test-user)** , um eine Entsprechung von B. Simon in Meraki Dashboard zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+   1. **[Erstellen einer Meraki Dashboard-Testbenutzerin](#create-meraki-dashboard-admin-roles)** , um eine Entsprechung von B. Simon in Meraki Dashboard zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -169,7 +169,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
    ![Meraki Dashboard-Konfiguration](./media/meraki-dashboard-tutorial/configure-4.png)
 
-### <a name="create-meraki-dashboard-test-user"></a>Erstellen eines Meraki Dashboard-Testbenutzers
+### <a name="create-meraki-dashboard-admin-roles"></a>Erstellen von Meraki Dashboard-Administratorrollen
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Meraki Dashboard-Website als Administrator an.
 
@@ -184,6 +184,26 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Geben Sie die Rolle **meraki_full_admin** ein, legen Sie für **Organization access** (Organisationszugriff) die Option **Full** (Vollzugriff) fest, und klicken Sie dann auf **Create role** (Rolle erstellen). Wiederholen Sie den Vorgang für **meraki_readonly_admin**, legen Sie dieses Mal jedoch für **Organization access** (Organisationszugriff) die Option **Read-only** (Schreibgeschützt) fest.
 
    ![Meraki Dashboard: Erstellen eines Benutzers](./media/meraki-dashboard-tutorial/user-3.png)
+
+1. Führen Sie die folgenden Schritte aus, um die Meraki Dashboard-Rollen SAML-Rollen in Azure AD zuzuordnen:
+
+   ![Screenshot der App-Rollen](./media/meraki-dashboard-tutorial/app-role.png)
+
+   a. Klicken Sie im Azure-Portal auf **App-Registrierungen**.
+
+   b. Wählen Sie „Alle Anwendungen“ aus, und klicken Sie auf **Meraki Dashboard**.
+
+   c. Klicken Sie auf **App-Rollen** und dann auf **App-Rolle erstellen**.
+
+   d. Geben Sie den Anzeigenamen ein, z. B. `Meraki Full Admin`.
+   
+   e. Wählen Sie als zulässige Member `Users/Groups` aus.
+
+   f. Geben Sie als Wert `meraki_full_admin` ein.
+
+   g. Geben Sie als Beschreibung `Meraki Full Admin` ein.
+
+   h. Klicken Sie auf **Speichern**. 
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

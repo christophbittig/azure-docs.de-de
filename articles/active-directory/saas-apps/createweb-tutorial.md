@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Create!Webフロー | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration mit Create!Webフロー '
 description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Create!Webフロー konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/31/2021
+ms.date: 09/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 1aaabacff8e1512931aa18c7fe6db20708425096
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 38fab4d4e1dff8f9916693442926312d81409884
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124802846"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401995"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-createweb"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Create!Webフロー
+# <a name="tutorial-azure-ad-sso-integration-with-createweb"></a>Tutorial: Azure AD-SSO-Integration mit Create!Webフロー
 
 In diesem Tutorial erfahren Sie, wie Sie Create!Webフロー in Azure Active Directory (Azure AD) integrieren. Die Integration von Create!Webフロー in Azure AD ermöglicht Folgendes:
 
@@ -94,7 +94,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<user-hostname>:8443/XFV20`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte erhalten Sie vom [Supportteam für den Create!Webフロー-Client](mailto:solution-cwf@iftc.co.jp). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Diese Werte erhalten Sie vom [Supportteam für den Create!Webフロー-Client](https://support.createwebflow.jp/contact/). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -130,11 +130,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-createweb-sso"></a>Konfigurieren des einmaligen Anmeldens für Create!Webフロー
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Create!Webフロー** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Create!Webフロー](mailto:solution-cwf@iftc.co.jp) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Create!Webフロー** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Create!Webフロー](https://support.createwebflow.jp/contact/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-createweb-test-user"></a>Erstellen eines Testbenutzers für Create!Webフロー
 
-In diesem Abschnitt erstellen Sie in Create!Webフロー einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Supportteam von Create!Webフロー](mailto:solution-cwf@iftc.co.jp), um die Benutzer auf der Create!Webフロー-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Create!Webフロー einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Supportteam von Create!Webフロー](https://support.createwebflow.jp/contact/), um die Benutzer auf der Create!Webフロー-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

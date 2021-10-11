@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ice Contact Center | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration mit ice Contact Center'
 description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und ice Contact Center konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/09/2021
+ms.date: 09/24/2021
 ms.author: jeedes
-ms.openlocfilehash: cf9e228769531095ae4e8b6629b2377af2df3a0c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: df556e930bd570960080233bc17e77c0bcc5510f
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124790660"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401045"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ice-contact-center"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ice Contact Center
+# <a name="tutorial-azure-ad-sso-integration-with-ice-contact-center"></a>Tutorial: Azure AD-SSO-Integration mit ice Contact Center
 
 In diesem Tutorial erfahren Sie, wie Sie ice Contact Center in Azure Active Directory (Azure AD) integrieren. Die Integration von ice Contact Center in Azure AD ermöglicht Folgendes:
 
@@ -32,6 +32,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * ice Contact Center-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist.
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 

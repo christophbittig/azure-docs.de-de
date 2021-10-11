@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 08/11/2021
+ms.date: 10/05/2021
 ms.author: alkohli
-ms.openlocfilehash: ab133e05cd08be42b212e72f801ee59ffa104d4a
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 6bf565a2f7d2d08931ca32f34ac07de2e8cec9b5
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429640"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544752"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Was ist Azure Stack Edge Pro R?
 
@@ -30,15 +30,15 @@ Azure Stack Edge Pro R weist die folgenden Merkmale auf:
 |---------|---------|
 |Robuste Hardware| Robuste Hardware der Serverklasse, die für widrige Umgebungen ausgelegt ist Gerät in einer tragbaren Transportbox |
 |Von der Cloud verwaltet     |Das Gerät und der Dienst werden über das Azure-Portal verwaltet.|
-|Workloads für Edgecomputing   |Ermöglicht das Analysieren, Verarbeiten und Filtern von Daten. Unterstützt VMs und Workloads in Containern.|
-|Beschleunigte KI-Rückschlüsse| Ausgestattet mit einer Nvidia T4-GPU.|
+|Workloads für Edgecomputing   |Ermöglicht das Analysieren, Verarbeiten und Filtern von Daten. Unterstützt VMs und Workloads in Containern. <ul><li>Informationen zu VM-Workloads finden Sie in der [VM-Übersicht auf Azure Stack Edge](azure-stack-edge-gpu-virtual-machine-overview.md).</li> <li>Informationen Containerworkloads finden Sie in der [Übersicht über Kubernetes auf Azure Stack Edge](azure-stack-edge-gpu-kubernetes-overview.md).</li></ul> |
+|Beschleunigte KI-Rückschlüsse| Ausgestattet mit einer Nvidia T4-GPU. <br> Weitere Informationen finden Sie unter [GPU-Freigabe auf Ihrem Azure Stack Edge-Gerät](azure-stack-edge-gpu-sharing.md).|
 |Datenzugriff     | Direkter Datenzugriff aus Azure Storage-Blobs und Azure Files über Cloud-APIs zur zusätzlichen Datenverarbeitung in der Cloud. Lokaler Cache auf dem Gerät wird für schnellen Zugriff auf zuletzt verwendete Dateien verwendet.|
 |Modus „Getrennt“| Gerät und Dienst können optional über Azure Stack Hub verwaltet werden. Bereitstellen, Ausführen und Verwalten von Anwendungen im Offlinemodus. <br> Der Modus „Getrennt“ unterstützt Szenarien für das Hochladen von Daten im Offlinemodus.|
 |Unterstützte Dateiübertragungsprotokolle     |Unterstützung der standardmäßigen SMB-, NFS- und REST-Protokolle für die Datenerfassung. <br> Weitere Informationen zu den unterstützten Versionen finden Sie unter [Systemanforderungen für Azure Stack Edge Pro R](azure-stack-edge-gpu-system-requirements.md).|
-|Datenaktualisierung     | Möglichkeit, lokale Dateien mit den neuesten Informationen aus der Cloud zu aktualisieren.|
-|Doppelte Verschlüsselung    | Sich selbst verschlüsselnde Laufwerke stellen die erste Verschlüsselungsebene dar. VPN bietet die zweite Verschlüsselungsebene. BitLocker-Unterstützung zur lokalen Verschlüsselung von Daten und zur sicheren Datenübertragung in die Cloud über *HTTPS*.|
-|Bandbreiteneinschränkung| Drosselung, um die Bandbreitennutzung während der Spitzenzeiten einzuschränken.|
-|Einfaches Bestellen| Massenbestellung und Nachverfolgung des Geräts über Azure Edge Hardware Center (Vorschau)|
+|Datenaktualisierung     | Möglichkeit, lokale Dateien mit den neuesten Informationen aus der Cloud zu aktualisieren. <br> Weitere Informationen finden Sie unter [Aktualisieren einer Freigabe auf Ihrem Azure Stack Edge-Gerät](azure-stack-edge-gpu-manage-shares.md#refresh-shares).|
+|Doppelte Verschlüsselung    | Sich selbst verschlüsselnde Laufwerke stellen die erste Verschlüsselungsebene dar. VPN bietet die zweite Verschlüsselungsebene. BitLocker-Unterstützung zur lokalen Verschlüsselung von Daten und zur sicheren Datenübertragung in die Cloud über *HTTPS*. <br> Weitere Informationen finden Sie unter [Konfigurieren von VPN auf Ihrem Azure Stack Edge Pro R-Gerät](azure-stack-edge-mini-r-configure-vpn-powershell.md).|
+|Bandbreiteneinschränkung| Drosselung, um die Bandbreitennutzung während der Spitzenzeiten einzuschränken. <br> Weitere Informationen finden Sie unter [Verwalten von Bandbreitenzeitplänen auf Ihrem Azure Stack Edge-Gerät](azure-stack-edge-gpu-manage-bandwidth-schedules.md).|
+|Einfaches Bestellen| Massenbestellung und Nachverfolgung des Geräts über Azure Edge Hardware Center (Vorschau) <br> Weitere Informationen finden Sie unter [Bestellen eines Geräts über das Azure Edge Hardware Center](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource). |
 
 <!--|Scale out file server| Available as 1-node and 4-node cluster configurations|-->
 

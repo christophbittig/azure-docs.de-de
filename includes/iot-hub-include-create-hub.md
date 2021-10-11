@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: bfa5149cb9aea3ae8deea572abd86f5fb776e252
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 9de7b8c91b1dfdbf10b4e8f5e61e9c8cd9f68abf
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114671200"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129300326"
 ---
 In diesem Abschnitt wird beschrieben, wie Sie über das [Azure-Portal](https://portal.azure.com) einen IoT-Hub erstellen:
 
@@ -70,4 +70,4 @@ In diesem Abschnitt wird beschrieben, wie Sie über das [Azure-Portal](https://p
 
     :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-review-and-create.png" alt-text="Überprüfen von Informationen bei der Erstellung des neuen Hubs":::
 
-1. Wählen Sie die Option **Erstellen** aus, um die Bereitstellung Ihres neuen Hubs zu starten. Ihr Bereitstellungsvorgang dauert einige Minuten, während der Hub erstellt wird. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**, um den neuen Hub zu öffnen.
+1. Wählen Sie die Option **Erstellen** aus, um die Bereitstellung Ihres neuen Hubs zu starten. Ihr Bereitstellungsvorgang dauert einige Minuten, während der Hub erstellt wird. Wählen Sie nach Abschluss der Bereitstellung **Zu Ressource wechseln** aus, um den neuen Hub zu öffnen.

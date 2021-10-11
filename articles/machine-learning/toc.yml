@@ -290,6 +290,8 @@
             - name: Verwenden von Resource Manager-Vorlagen
               displayName: arm
               href: how-to-create-workspace-template.md
+            - name: Einsatz von Terraform
+              href: how-to-manage-workspace-terraform.md
             - name: Verwenden von REST
               href: how-to-manage-rest.md
             - name: "Verknüpfen mit Azure\_Synapse\_Analytics-Arbeitsbereich"
@@ -305,7 +307,7 @@
             - name: Upgraden des Hostbetriebssystems
               displayName: 'upgrade compute cluster, upgrade compute instance, upgrade ubuntu'
               href: how-to-compute-cluster-instance-os-upgrade.md
-            - name: "Maschinelles Lernen mit Azure\_Arc-Unterstützung"
+            - name: Machine Learning mit Azure Arc-Unterstützung
               displayName: 'Azure Arc, Kubernetes, on-premise, multi-cloud'
               href: how-to-attach-arc-kubernetes.md
             - name: Azure Kubernetes Service
@@ -569,11 +571,11 @@
               href: how-to-deploy-azure-container-instance.md
             - name: GPU-Rückschluss
               href: how-to-deploy-inferencing-gpus.md
+            - name: Azure Cognitive Search
+              href: how-to-deploy-model-cognitive-search.md
             - name: Azure-Funktionen
               displayName: functions app
               href: how-to-deploy-functions.md
-            - name: Azure Cognitive Search
-              href: how-to-deploy-model-cognitive-search.md
             - name: FPGA-Rückschluss
               href: how-to-deploy-fpga-web-service.md
         - name: Vordefinierte Docker-Images

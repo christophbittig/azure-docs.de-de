@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
-ms.date: 06/30/2021
+ms.topic: overview
+ms.date: 09/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 558b31262a74a351ef17e42eb79772645f9a4641
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: e082ae9343ff935ceeda168573be9648c6cee631
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290362"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358843"
 ---
 # <a name="what-are-certificates-on-azure-stack-edge-pro-gpu"></a>Was sind Zertifikate auf einem Azure Stack Edge Pro GPU-Gerät?
 
@@ -33,12 +33,12 @@ Sie können auf Ihrem Azure Stack Edge-Gerät die selbstsignierten Zertifikate v
 
 - **Bereitstellen eigener Zertifikate**: Optional können Sie Ihre eigenen Zertifikate bereitstellen. Es gibt Richtlinien, die Sie befolgen müssen, wenn Sie Ihre eigenen Zertifikate verwenden möchten.
 
-- Lernen Sie zunächst in diesem Artikel die Zertifikattypen kennen, die mit Ihrem Azure Stack Edge-Gerät verwendet werden können.
-- Dann überprüfen Sie die [Zertifikatanforderungen für die einzelnen Zertifikattypen](azure-stack-edge-gpu-certificate-requirements.md).  
-- Anschließend können Sie Ihre [Zertifikate über Azure PowerShell](azure-stack-edge-gpu-create-certificates-powershell.md) oder [über das Readiness Checker-Tool](azure-stack-edge-gpu-create-certificates-tool.md) erstellen.
-- Zum Schluss [konvertieren Sie die Zertifikate in ein geeignetes Format](azure-stack-edge-gpu-prepare-certificates-device-upload.md), damit sie auf Ihr Gerät hochgeladen werden können.
-- [Laden Sie Ihre Zertifikate auf das Gerät hoch](azure-stack-edge-gpu-manage-certificates.md#upload-certificates-on-your-device).
-- [Importieren Sie die Zertifikate auf den Client](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device), der auf das Gerät zugreift.
+    - Lernen Sie zunächst in diesem Artikel die Zertifikattypen kennen, die mit Ihrem Azure Stack Edge-Gerät verwendet werden können.
+    - Dann überprüfen Sie die [Zertifikatanforderungen für die einzelnen Zertifikattypen](azure-stack-edge-gpu-certificate-requirements.md).  
+    - Anschließend können Sie Ihre [Zertifikate über Azure PowerShell](azure-stack-edge-gpu-create-certificates-powershell.md) oder [über das Readiness Checker-Tool](azure-stack-edge-gpu-create-certificates-tool.md) erstellen.
+    - Zum Schluss [konvertieren Sie die Zertifikate in ein geeignetes Format](azure-stack-edge-gpu-prepare-certificates-device-upload.md), damit sie auf Ihr Gerät hochgeladen werden können.
+    - [Laden Sie Ihre Zertifikate auf das Gerät hoch](azure-stack-edge-gpu-manage-certificates.md#upload-certificates-on-your-device).
+    - [Importieren Sie die Zertifikate auf den Client](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device), der auf das Gerät zugreift.
 
 ## <a name="types-of-certificates"></a>Zertifikattypen
 
@@ -58,6 +58,9 @@ Die verschiedenen Zertifikattypen, die Sie für Ihre Gerät bereitstellen könne
 - IoT-Gerätezertifikate
     
 - Kubernetes-Zertifikate
+
+    - Zertifikat der Edgecontainerregistrierung
+    - Zertifikat des Kubernetes-Dashboards
     
 - WLAN-Zertifikate
 - VPN-Zertifikate  
@@ -155,19 +158,31 @@ Es gibt drei IoT Edge-Zertifikate, die Sie installieren müssen, um diese Vertra
 
 - Die IoT Edge-Zertifikate werden im Format `.pem` hochgeladen. 
 
-Weitere Informationen zu IoT Edge-Zertifikaten finden Sie unter [Details zu Azure IoT Edge-Zertifikaten](../iot-edge/iot-edge-certs.md#iot-edge-certificates) und [Erstellen von IoT Edge-Produktionszertifikaten](../iot-edge/how-to-manage-device-certificates.md?preserve-view=true&view=iotedge-2020-11#create-production-certificates).
+Weitere Informationen zu IoT Edge-Zertifikaten finden Sie unter [Details zu Azure IoT Edge-Zertifikaten](../iot-edge/iot-edge-certs.md#iot-edge-certificates) und [Erstellen von IoT Edge-Produktionszertifikaten](/azure/iot-edge/how-to-manage-device-certificates?view=iotedge-2020-11&preserve-view=true#create-production-certificates).
 
 ## <a name="kubernetes-certificates"></a>Kubernetes-Zertifikate
 
-Wenn Ihr Gerät über eine Edge-Containerregistrierung verfügt, benötigen Sie ein Edge-Containerregistrierungszertifikat für die sichere Kommunikation mit dem Client, der auf die Registrierung auf dem Gerät zugreift.
+Die folgenden Kubernetes-Zertifikate können mit Ihrem Azure Stack Edge-Gerät verwendet werden.
+
+- **Zertifikat der Edgecontainerregistrierung:** Wenn Ihr Gerät über eine Edgecontainerregistrierung verfügt, benötigen Sie für diese ein Zertifikat für die sichere Kommunikation mit dem Client, der auf die Registrierung auf dem Gerät zugreift.
+- **Zertifikat des Dashboardendpunkts:** Sie benötigen ein Zertifikat für den Dashboardendpunkt, um auf das Kubernetes-Dashboard auf Ihrem Gerät zuzugreifen.
+
 
 #### <a name="caveats"></a>Vorbehalte
 
-- Das Edge-Containerregistrierungszertifikat muss im *PFX*-Format mit einem privaten Schlüssel hochgeladen werden.
+- Für das Zertifikat der Edgecontainerregistrierung muss Folgendes gelten: 
+    - Es muss ein Zertifikat im PEM-Format sein.
+    - Es muss entweder den alternativen Antragstellernamen (Subject Alternative Name, SAN) oder den CName (CN) vom Typ `*.<endpoint suffix>` oder `ecr.<endpoint suffix>` enthalten. Beispiel: `*.dbe-1d6phq2.microsoftdatabox.com OR ecr.dbe-1d6phq2.microsoftdatabox.com`
+
+
+- Für das Dashboardzertifikat muss Folgendes gelten:
+    - Es muss ein Zertifikat im PEM-Format sein.
+    - Es muss entweder den alternativen Antragstellernamen (Subject Alternative Name, SAN) oder den CName (CN) vom Typ `*.<endpoint-suffix>` oder `kubernetes-dashboard.<endpoint-suffix>` enthalten. Beispiel: `*.dbe-1d6phq2.microsoftdatabox.com` oder `kubernetes-dashboard.dbe-1d6phq2.microsoftdatabox.com`. 
+
 
 ## <a name="vpn-certificates"></a>VPN-Zertifikate
 
-Wenn VPN (Point-to-Site) auf Ihrem Gerät konfiguriert ist, können Sie Ihr eigenes VPN-Zertifikat bereitstellen, um zu gewährleisten, dass die Kommunikation vertrauenswürdig ist. Das Stammzertifikat wird auf dem Azure-VPN-Gateway installiert, und die Clientzertifikate werden auf jedem Clientcomputer installiert, der eine Verbindung mit einem VNET über Point-to-Site herstellt.
+Wenn VPN (Point-to-Site) auf Ihrem Gerät konfiguriert ist, können Sie Ihr eigenes VPN-Zertifikat bereitstellen, um zu gewährleisten, dass die Kommunikation vertrauenswürdig ist. Das Stammzertifikat wird in Azure VPN Gateway installiert, und die Clientzertifikate werden auf jedem Clientcomputer installiert, der eine Point-to-Site-Verbindung mit einem virtuellen Netzwerk herstellt.
 
 #### <a name="caveats"></a>Vorbehalte
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 05/17/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: 9126b3a915f9d457b51a69a4cef9a79003597c31
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3b731b83264802884bba01ed3c32db6152d0a4f9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091130"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356128"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?
 
@@ -48,7 +48,7 @@ Ein *Sicherheitsprinzipal* ist ein Objekt, das einen Benutzer, eine Gruppe, eine
 
 ### <a name="role-definition"></a>Rollendefinition
 
-Eine *Rollendefinition* ist eine Sammlung von Berechtigungen. Sie wird in der Regel einfach *Rolle* genannt. Eine Rollendefinition listet die ausführbaren Vorgänge wie etwa Lesen, Schreiben und Löschen auf. Rollen können auf allgemeiner Ebene erteilt werden (z.B. Benutzer) oder spezifisch sein (z.B. Leser virtueller Computer).
+Eine *Rollendefinition* ist eine Sammlung von Berechtigungen. Sie wird in der Regel einfach *Rolle* genannt. Eine Rollendefinition listet die ausführbaren Aktionen wie etwa Lesen, Schreiben und Löschen auf. Rollen können auf allgemeiner Ebene erteilt werden (z.B. Benutzer) oder spezifisch sein (z.B. Leser virtueller Computer).
 
 ![Diagramm: Rollendefinitionsbeispiel für eine Rollenzuweisung](./media/shared/rbac-role-definition.png)
 
@@ -58,7 +58,7 @@ Dieses Video bietet eine schnelle Übersicht über integrierte Rollen und benutz
 
 >[!VIDEO https://www.youtube.com/embed/I1mefHptRgo]
 
-Mit Datenvorgängen in Azure können Sie Zugriff auf Daten in einem Objekt erteilen. Wenn ein Benutzer z.B. über Lesezugriff auf Daten in einem Speicherkonto verfügt, kann er die Blobs in diesem Speicherkonto lesen.
+Mit Datenaktionen in Azure können Sie Zugriff auf Daten in einem Objekt gewähren. Wenn ein Benutzer z.B. über Lesezugriff auf Daten in einem Speicherkonto verfügt, kann er die Blobs in diesem Speicherkonto lesen.
 
 Weitere Informationen finden Sie unter [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](role-definitions.md).
 

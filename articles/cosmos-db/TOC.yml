@@ -1303,6 +1303,8 @@
           href: graph/powershell-samples.md
         - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
           href: graph/cli-samples.md
+        - name: Lösung für die Nachverfolgbarkeit von Lieferketten
+          href: graph/supply-chain-traceability-solution.md
     - name: Verweis
       items:
         - name: Antwortheader

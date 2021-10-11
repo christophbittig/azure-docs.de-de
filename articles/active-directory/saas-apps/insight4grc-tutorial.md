@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration von Insight4GRC in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration mit Insight4GRC'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Insight4GRC konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/31/2021
+ms.date: 09/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 9c5de8d0444012d7c10f35740f524ae0621eee3c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 47356ee5c3c67b417db24325b2250e42cb7fb5d9
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676236"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402177"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>Tutorial: Integration von Insight4GRC in Azure Active Directory
+# <a name="tutorial-azure-ad-sso-integration-with-insight4grc"></a>Tutorial: Azure AD-SSO-Integration mit Insight4GRC
 
 In diesem Tutorial erfahren Sie, wie Sie Insight4GRC in Azure Active Directory (Azure AD) integrieren. Die Integration von Insight4GRC in Azure AD ermöglicht Folgendes:
 
@@ -33,6 +33,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Ein Insight4GRC-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist.
 
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
+
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
@@ -41,7 +44,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Insight4GRC unterstützt **Just-in-Time**-Benutzerbereitstellung.
 * Insight4GRC unterstützt [Automatisierte Benutzerbereitstellung](insight4grc-provisioning-tutorial.md).
 
-## <a name="adding-insight4grc-from-the-gallery"></a>Hinzufügen von Insight4GRC aus dem Katalog
+## <a name="add-insight4grc-from-the-gallery"></a>Hinzufügen von Insight4GRC aus dem Katalog
 
 Zum Konfigurieren der Integration von Insight4GRC in Azure AD müssen Sie Insight4GRC über den Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -51,7 +54,6 @@ Zum Konfigurieren der Integration von Insight4GRC in Azure AD müssen Sie Insigh
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Insight4GRC** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich den Eintrag **Insight4GRC** aus, und fügen Sie die App dann hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-insight4grc"></a>Konfigurieren und Testen von Azure AD-SSO für Insight4GRC
 

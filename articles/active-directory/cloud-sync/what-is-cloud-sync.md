@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 09/10/2021
+ms.date: 09/30/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76ebb7ecfb93de1943f9aa20619effd2804b4354
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: efa2c16f83fc0a85e3c2d346aed5d7fdf848c873
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771249"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355423"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>Worum handelt es sich bei der Azure AD Connect-Cloudsynchronisierung?
 Die Azure AD Connect-Cloudsynchronisierung ist ein neues Angebot von Microsoft, das entwickelt wurde, um Ihre Ziele in Bezug auf die Hybrididentität für die Synchronisierung von Benutzern, Gruppen und Kontakten mit Azure AD zu erreichen und die entsprechenden Anforderungen zu erfüllen.  Hierfür wird nicht die Azure AD Connect-Anwendung verwendet, sondern der Agent für die Azure AD-Cloudbereitstellung.  Die Azure AD Connect-Cloudbereitstellung kann aber zusammen mit der Azure AD Connect-Synchronisierung verwendet werden. Dies hat die folgenden Vorteile:
@@ -77,6 +77,7 @@ Die folgende Tabelle enthält einen Vergleich zwischen der Azure AD Connect-Sync
 | Große Gruppen mit bis zu 250.000 Mitgliedern |● |  |
 | Domänenübergreifende Verweise|● | |
 | Bedarfsorientierte Bereitstellung|● |● |
+| Unterstützung für US Government|● |● |
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

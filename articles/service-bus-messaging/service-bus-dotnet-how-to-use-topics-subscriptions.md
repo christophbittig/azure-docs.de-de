@@ -3,17 +3,20 @@ title: Erste Schritte mit Azure Service Bus-Themen und -Abonnements
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Nachrichten an Azure Service Bus-Themen senden, indem Sie das Paket „azure-messaging-servicebus“ verwenden.
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 06/29/2021
+ms.date: 09/16/2021
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 05772a7e4fbb2717dd34cbdaf82ae47162d4f149
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 330a69d437ffb58cb0e47ab6f9fe6a76fda9b8a6
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451725"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533524"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-its-subscriptions-net"></a>Senden von Nachrichten an ein Azure Service Bus-Thema und Empfangen von Nachrichten von Abonnements (.NET)
 In diesem Schnellstart erfahren Sie, wie mithilfe der .NET-Bibliothek [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) Nachrichten an ein Service Bus-Thema gesendet und von einem Abonnement dieses Themas empfangen werden.
+
+> [!NOTE]
+> Weitere .NET-Beispiele für Azure Service Bus finden Sie im [Azure SDK für das .NET-Repository auf GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Wenn Sie mit dem Dienst noch keine Erfahrung haben, informieren Sie sich über den Abschnitt [Was ist Azure Service Bus?](service-bus-messaging-overview.md), bevor Sie die Schritte in dieser Schnellstartanleitung durchführen. 
@@ -170,8 +173,7 @@ In diesem Abschnitt erstellen Sie eine .NET Core-Konsolenanwendung für den Empf
     ```
 
 ### <a name="add-code-to-receive-messages-from-the-subscription"></a>Hinzufügen von Code für das Empfangen von Nachrichten aus dem Abonnement
-1. Ersetzen Sie den Code in **Program.cs** durch den folgenden Code. Im Folgenden sind die wichtigsten Schritte aus dem Code aufgeführt.
-    Hier sind die wesentlichen Schritte aus dem Code aufgeführt:
+1. Ersetzen Sie den Code in **Program.cs** durch den folgenden Code. Hier sind die wesentlichen Schritte aus dem Code aufgeführt:
     1. Erstellen eines [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient)-Objekts unter Verwendung der Verbindungszeichenfolge für den Namespace 
     1. Aufrufen der [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor)-Methode für das `ServiceBusClient`-Objekt zum Erstellen eines [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)-Objekts für die angegebene Service Bus-Warteschlange 
     1. Angeben von Handlern für die Ereignisse [ProcessMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) und [ProcessErrorAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) des `ServiceBusProcessor`-Objekts 

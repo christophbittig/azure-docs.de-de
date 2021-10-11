@@ -130,19 +130,25 @@
         - name: Anwenden von Azure-Sicherheitsbaselines
           displayName: 'VM, guest configuration, vulnerabilities, ASB, benchmark'
           href: apply-security-baseline.md
-        - name: Überprüfung auf Sicherheitsrisiken
+        - name: Sicherheitsrisikobewertungen
           items:
-            - name: Überprüfen Ihrer Computer mit der integrierten Qualys-Überprüfung
-              displayName: 'qualys, vulnerability, arc, hybrid'
+            - name: Ermitteln von Sicherheitsrisiken mit Bedrohungs- und Sicherheitsrisikoverwaltung
+              displayName: 'mde, tvm, vulnerability, va, arc, hybrid'
+              href: deploy-vulnerability-assessment-tvm.md
+            - name: Ermitteln von Sicherheitsrisiken mit der integrierten Qualys-Überprüfung
+              displayName: 'qualys, va, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
-            - name: Scannen Ihrer VMs mit einer Lösung zur Sicherheitsrisikobewertung vom Typ BYOL
+            - name: Ermitteln von Sicherheitsrisiken mit einer Lösung zur Sicherheitsrisikobewertung vom Typ BYOL
               displayName: 'qualys, rapid7, vulnerability'
               href: deploy-vulnerability-assessment-byol-vm.md
+            - name: Automatisches Aktivieren einer Lösung zur Sicherheitsrisikobewertung
+              displayName: 'qualys, rapid7, vulnerability, auto provision'
+              href: auto-deploy-vulnerability-assessment.md
             - name: Überprüfen und Beseitigen von Sicherheitsrisiken
-              displayName: 'qualys, rapid7, vulnerability'
+              displayName: 'qualys, va, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
             - name: Deaktivieren bestimmter ermittelter Sicherheitsrisiken
-              displayName: 'qualys, rapid7'
+              displayName: 'qualys, rapid7, va'
               href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: Schützen von Verwaltungsports mit Just-In-Time-Zugriff für VMs
           items:

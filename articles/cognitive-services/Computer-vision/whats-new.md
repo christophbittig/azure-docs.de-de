@@ -10,16 +10,31 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: b7292206aacbbca5c8e76ce573dc6fd0b3e32578
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 1a27bfac347480591a67bf2c164b9ff41fe3b18d
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835754"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426433"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
+
+## <a name="september-2021"></a>September 2021
+
+### <a name="ocr-read-api-public-preview-supports-122-languages"></a>OCR-API (Lesen) in der Public Preview unterstützt 122 Sprachen
+Die [OCR-API (Lesen)](overview-ocr.md) für maschinelles Sehen erhöht die Anzahl [unterstützter Sprachen](language-support.md) in der neuesten Vorschauversion auf 122:
+* Die optische Zeichenerkennung für gedruckten Text wird in 49 neuen Sprachen unterstützt, einschließlich Russisch, Bulgarisch und anderen kyrillischen sowie weiteren lateinischen Sprachen.
+* Für handschriftlichen Text werden bei der optischen Zeichenerkennung 6 neue Sprachen unterstützt, einschließlich Englisch, Chinesisch (vereinfacht), Französisch, Deutsch, Italienisch, Portugiesisch und Spanisch.
+* Verbesserungen bei der Verarbeitung digitaler PDF-Dateien und Text in maschinenlesbaren Bereichen (Machine Readable Zone, MRZ) von Identitätsdokumenten.
+* Allgemeine Verbesserungen bei Leistung und KI-Qualität
+
+Informationen zur Verwendung der neuen Previewfunktionen finden Sie in der [OCR-Schrittanleitung](Vision-API-How-to-Topics/call-read-api.md).
+
+> [!div class="nextstepaction"]
+> [Erste Schritte mit der Lese-API](./quickstarts-sdk/client-library.md)
+
 
 ## <a name="august-2021"></a>August 2021
 

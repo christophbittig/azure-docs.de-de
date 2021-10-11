@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 06/07/2021
+ms.date: 10/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7fb3dcb07b8b868dda7bfef587b930765c4f661e
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 0aad268f8721d2f4747c4e3dec3860e52dd7112a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112199236"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352809"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technische und Funktionsübersicht für Azure Active Directory B2C
 
@@ -60,11 +60,14 @@ Mit einem *Consumerkonto* können sich Benutzer bei den mit Azure AD B2C gesiche
 Einem Consumerkonto kann den folgenden Identitätstypen zugeordnet werden:
 
 * **Lokale** Identität, wobei der Benutzername und das Kennwort lokal im Azure AD B2C-Verzeichnis gespeichert werden. Diese Identitäten werden häufig als „lokale Konten“ bezeichnet.
-* Identitäten für **soziale Netzwerke** oder **Unternehmen**, bei denen die Identität des Benutzers von einem Verbundidentitätsanbieter verwaltet wird. Beispiele: Facebook, Microsoft, ADFS oder Salesforce
+* Identitäten für **soziale Netzwerke** oder **Unternehmen**, bei denen die Identität des Benutzers von einem Verbundidentitätsanbieter verwaltet wird. Beispiele: Facebook, Google, Microsoft, AD FS oder Salesforce.
 
 Ein Benutzer mit einem Consumerkonto kann sich mit mehreren Identitäten anmelden. Er kann z. B. den Benutzernamen, die E-Mail-Adresse, die Mitarbeiter-ID, eine Behördenkennung und andere Daten verwenden. Ein einzelnes Konto kann über mehrere Identitäten verfügen. Dabei kann es sich um lokale Identitäten und Identitäten für soziale Netzwerke handeln.
 
-![Identitäten von Consumerkonten](media/technical-overview/identities.png)<br/>*Abbildung: Ein einzelnes Consumerkonto mit mehreren Identitäten in Azure AD B2C*
+
+
+:::image type="content" source="media/technical-overview/identities.png" alt-text="Identitäten von Consumerkonten":::
+<br/>*Abbildung: Ein einzelnes Consumerkonto mit mehreren Identitäten in Azure AD B2C*
 
 Weitere Informationen finden Sie unter [Übersicht über Benutzerkonten in Azure Active Directory B2C](user-overview.md).
 
@@ -87,13 +90,17 @@ Sie können auch das Azure AD-Schema erweitern, um zusätzliche Informationen zu
 
 Sie können Azure AD B2C so konfigurieren, dass Benutzer sich bei Ihrer Anwendung mit Anmeldeinformationen von Identitätsanbietern für soziale Netzwerke und Unternehmen anmelden können. Für Azure AD B2C kann ein Verbund mit Identitätsanbietern erstellt werden, die die Protokolle OAuth 1.0, OAuth 2.0, OpenID Connect und SAML unterstützen. Beispiele hierfür sind Facebook, Microsoft-Konto, Google, Twitter und AD FS.
 
-![Externe Identitätsanbieter](media/technical-overview/external-idps.png)
+
+
+:::image type="content" source="media/technical-overview/external-idps.png" alt-text="Externe Identitätsanbieter":::
 
 Mit dem Verbund für externe Identitätsanbieter können Sie Ihren Kunden die Möglichkeit bieten, sich mit ihren vorhandenen Konten für soziale Netzwerke oder Unternehmen anzumelden, ohne dass sie ein neues Konto nur für Ihre Anwendung erstellen müssen.
 
 Azure AD B2C bietet auf der Registrierungs- oder Anmeldeseite eine Liste externer Identitätsanbieter an, die der Benutzer für die Anmeldung auswählen kann. Nachdem sie einen der externen Identitätsanbieter ausgewählt haben, werden sie auf die Website des ausgewählten Anbieters weitergeleitet, um den Anmeldevorgang abzuschließen. Nachdem sich der Benutzer erfolgreich angemeldet hat, kehrt er zurück zu Azure AD B2C, um das Konto in Ihrer Anwendung zu authentifizieren.
 
-![Beispiel für die mobile Anmeldung mit einem Konto für soziale Netzwerke (Facebook)](media/technical-overview/external-idp.png)
+
+
+:::image type="content" source="media/technical-overview/external-idp.png" alt-text="Beispiel für die mobile Anmeldung mit einem Social Media-Konto (Facebook)":::
 
 Weitere Informationen zum Hinzufügen von Identitätsanbietern in Azure AD B2C finden Sie unter [Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C](add-identity-provider.md).
 
@@ -117,7 +124,9 @@ Lesen Sie den Artikel [Übersicht über Benutzerflows und benutzerdefinierte Ric
 
 In Azure AD B2C können Sie die Identitätsfunktionen für Benutzer so gestalten, dass sich die angezeigten Seiten nahtlos in das Design Ihrer Marke einfügen. Sie hab die fast vollständige Kontrolle über HTML- und CSS-Inhalte, die Ihren Benutzern beim Durchlaufen der Identitäts-User Journeys in Ihrer Anwendung angezeigt werden. Dank dieser Flexibilität können Sie die Konsistenz von Marken und visuellen Elementen zwischen Ihrer Anwendung und Azure AD B2C sicherstellen.
 
-![Screenshots einer an die Marke angepassten Registrierungs-/Anmeldeseite](media/technical-overview/seamless-ux.png)
+
+
+:::image type="content" source="media/technical-overview/seamless-ux.png" alt-text="Screenshots einer an die Marke angepassten Registrierungs-/Anmeldeseite":::
 
 Weitere Informationen zur Anpassung der Benutzeroberfläche:
 
@@ -165,7 +174,9 @@ Treueprogramme sind ein weiteres Szenario, das durch die Azure AD B2C-Unterstüt
 
 Die Rückgabedaten können in Azure AD B2C im Verzeichniskonto des Benutzers gespeichert werden. Anschließend können die Daten in den nachfolgenden Schritten der Richtlinie weiter ausgewertet oder in das Zugriffstoken eingebunden werden.
 
-![Branchenintegration in einer mobilen Anwendung](media/technical-overview/lob-integration.png)
+
+
+:::image type="content" source="media/technical-overview/lob-integration.png" alt-text="Branchenintegration in einer mobilen Anwendung":::
 
 Sie können einen Rest-API-Aufruf in jedem Schritt der User Journey hinzufügen, die durch eine benutzerdefinierte Richtlinie definiert ist. Beispielsweise können Sie in folgenden Schritten eine Rest-API aufrufen:
 
@@ -195,7 +206,7 @@ Das folgende Diagramm zeigt, wie Azure AD B2C mithilfe verschiedener Protokolle 
 
 Wenn sich ein Benutzer bei Ihrer Anwendung anmelden möchte, initiiert die Anwendung eine Autorisierungsanforderung an einen Benutzerflow-Endpunkt oder einen von der benutzerdefinierten Richtlinie bereitgestellten Endpunkt. Der Benutzerflow oder die benutzerdefinierte Richtlinie definiert und steuert die Funktionalität für die Benutzer. Wenn Sie einen Benutzerflow ausführen, z. B. den Flow für *Registrierung oder Anmeldung*, generiert Azure AD B2C ein Token und leitet den Benutzer dann wieder zurück zur Anwendung um.
 
-![Mobile App mit Pfeilen, die den Flow zur Azure AD B2C-Anmeldeseite darstellen](media/technical-overview/app-integration.png)
+:::image type="content" source="media/technical-overview/app-integration.png" alt-text="Mobile App mit Pfeilen, die den Flow zur Azure AD B2C-Anmeldeseite darstellen":::
 
 Mehrere Anwendungen können den gleichen Benutzerflow oder die gleiche benutzerdefinierte Richtlinie verwenden. Jede Anwendung kann mehrere Benutzerflows oder benutzerdefinierte Richtlinien verwenden.
 
@@ -229,7 +240,9 @@ Weitere Informationen finden Sie unter [Konfigurieren der Komplexitätsanforderu
 
 Als Administrator des Azure AD B2C-Mandanten können Sie [das Kennwort für einen Benutzer zurücksetzen](manage-users-portal.md#reset-a-users-password), wenn der Benutzer sein Kennwort vergessen hat. Es kann auch sein, dass Sie die regelmäßige Kennwortzurücksetzung erzwingen möchten. Weitere Informationen finden Sie unter [Einrichten eines Flows zum Erzwingen der Kennwortzurücksetzung in Azure Active Directory B2C](force-password-reset.md).
 
-![Flow zum Erzwingen der Kennwortzurücksetzung](media/technical-overview/force-password-reset-flow.png)
+
+
+:::image type="content" source="media/technical-overview/force-password-reset-flow.png" alt-text="Flow zum Erzwingen der Kennwortzurücksetzung":::
 
 ## <a name="smart-account-lockout"></a>Intelligente Kontosperrung
 
@@ -245,7 +258,8 @@ In Azure AD B2C werden die im [Microsoft Azure Trust Center](https://www.microso
 
 Sitzungen werden als verschlüsselte Daten modelliert, wobei der Entschlüsselungsschlüssel nur dem Azure AD B2C-Sicherheitstokendienst bekannt ist. Es wird ein starker Verschlüsselungsalgorithmus (AES-192) verwendet. Alle Kommunikationspfade werden für Vertraulichkeit und Integrität durch TLS geschützt. Unser Sicherheitstokendienst verwendet ein Zertifikat für die erweiterte Validierung (Extended Validation, EV) für TLS. Im Allgemeinen verringert der Sicherheitstokendienst die Möglichkeit von XSS-Angriffen (Cross-Site-Scripting), indem nicht vertrauenswürdigen Eingaben nicht gerendert werden.
 
-![Diagramm sicherer Daten während der Übertragung und im Ruhezustand](media/technical-overview/user-data.png)
+
+:::image type="content" source="media/technical-overview/user-data.png" alt-text="Diagramm sicherer Daten während der Übertragung und im Ruhezustand":::
 
 ### <a name="access-to-user-data"></a>Zugriff auf Benutzerdaten
 
@@ -286,6 +300,12 @@ Durch die Integration von Azure Application Insights in benutzerdefinierte Azure
 
 Weitere Informationen finden Sie unter [Verfolgen des Benutzerverhaltens in Azure AD B2C mithilfe von Application Insights](analytics-with-application-insights.md).
 
+## <a name="azure-ad-b2c-service-limits-and-restrictions"></a>Dienstlimits und -einschränkungen für Azure AD B2C
+Erfahren Sie mehr über [Dienstlimits und -einschränkungen für Azure AD B2C](service-limits.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich nun ausführlicher mit den Features und technischen Aspekten von Azure Active Directory B2C befasst haben, legen Sie mit dem [Tutorial zum Erstellen eines Azure Active Directory B2C-Mandanten](tutorial-create-tenant.md) los.
+Nachdem Sie sich nun ausführlicher mit den Features und technischen Aspekten von Azure Active Directory B2C befasst haben, fahren Sie mit Folgendem fort:
+- Machen Sie Ihre ersten Schritte, indem Sie im [Tutorial einen Azure Active Directory B2C-Mandanten erstellen](tutorial-create-tenant.md).
+- [Einrichten der Anmeldung für eine Single-Page-App mit Azure Active Directory B2C](quickstart-single-page-app.md)
+- [Azure Active Directory B2C – Konzepte](application-types.md) 

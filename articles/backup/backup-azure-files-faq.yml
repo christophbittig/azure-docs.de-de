@@ -5,12 +5,12 @@ metadata:
   ms.date: 04/22/2020
   ms.topic: article
   ms.service: backup
-  ms.openlocfilehash: ac3cc6f6fc6b6896e236fd28c4808c49616cf68a
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 22aeb3771f0a1c1d1f7baafc4ce4a2e5885aa4bc
+  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122252314"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129533117"
 title: Fragen zum Sichern von Azure Files
 summary: >
   In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Sie können auch auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-backup.html) Fragen zum Azure Backup-Dienst posten.
@@ -74,6 +74,10 @@ sections:
       Kann ich PowerShell zum Konfigurieren/Verwalten/Wiederherstellen von Sicherungen von Azure-Dateifreigaben verwenden?
     answer: >
       Ja. Informationen hierzu finden Sie in der ausführlichen Dokumentation unter [diesem Link](backup-azure-afs-automation.md).
+  - question: >
+      Warum repliziert Azure Files Sicherungen nicht basierend auf der Einstellung für den Speicherreplikationstyp des Tresors?
+    answer: >
+      Die Einstellung für die Speicherreplikation des Tresors ist für die Azure Files-Sicherung nicht relevant. Dies liegt daran, dass die aktuelle Lösung auf Momentaufnahmen basiert und keine Daten an den Tresor übertragen werden. Momentaufnahmen werden im gleichen Speicherkonto wie die gesicherte Dateifreigabe gespeichert und daher gemäß der Replikationseinstellung des Speicherkontos repliziert.
   - question: >
       Kann ich auf die von Azure Backup erstellten Momentaufnahmen zugreifen und sie einbinden?
     answer: >

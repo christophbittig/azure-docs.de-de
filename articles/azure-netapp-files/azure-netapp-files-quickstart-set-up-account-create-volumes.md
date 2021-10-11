@@ -6,14 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 08/10/2020
+ms.date: 10/04/2021
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: 3d97c10236391157dbf0a8d32110e3e1d540a3b3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bd8821c898c4fa94963bb240658aa8118a104905
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729266"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407891"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Schnellstart: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes
 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie, wie Sie auf schnelle Weise Azure NetApp Files ei
 
 In dieser Schnellstartanleitung wird Folgendes eingerichtet:
 
-- Registrierung für Azure NetApp Files und NetApp-Ressourcenanbieter
+- Registrierung für NetApp-Ressourcenanbieter
 - NetApp-Konto
 - Kapazitätspool
 - NFS-Volume für Azure NetApp Files
@@ -30,14 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Alle Features, die Sie für ein NFS-Volume aktivieren können, sowie relevante Überlegungen finden Sie unter [Erstellen eines NFS-Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md). 
 
-## <a name="before-you-begin"></a>Voraussetzungen
-
-> [!IMPORTANT]
-> Sie müssen Zugriff auf den Azure NetApp Files-Dienst erhalten. Informationen zum Anfordern des Zugriffs auf den Dienst finden Sie auf der Seite für die [Übermittlung der Azure NetApp Files-Warteliste](https://aka.ms/azurenetappfiles).  Sie müssen auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams warten, bevor Sie fortfahren können.
-
----
-
-## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Registrieren für Azure NetApp Files und NetApp-Ressourcenanbieter
+## <a name="register-for-netapp-resource-provider"></a>Registrieren für NetApp-Ressourcenanbieter
 
 > [!NOTE]
 > Der Registrierungsvorgang kann einige Zeit in Anspruch nehmen.
@@ -75,9 +68,7 @@ Bereiten Sie die Umgebung für die Azure CLI vor.
 
 Keine.
 
-Verwenden Sie das Azure-Portal, die PowerShell oder die Azure CLI, um sich für Azure NetApp Files und den NetApp-Ressourcenanbieter zu registrieren.
-
-Weitere Informationen finden Sie unter [Registrieren für Azure NetApp Files](azure-netapp-files-register.md).
+Verwenden Sie das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstelle, um sich [für den NetApp-Ressourcenanbieter zu registrieren](azure-netapp-files-register.md).
 
 ---
 
@@ -174,7 +165,7 @@ Der folgende Codeausschnitt zeigt, wie Sie ein NetApp-Konto in einer Azure Resou
 
 ---
 
-## <a name="set-up-a-capacity-pool"></a>Einrichten eines Kapazitätspools
+## <a name="create-a-capacity-pool"></a>Einrichten eines Kapazitätspools
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

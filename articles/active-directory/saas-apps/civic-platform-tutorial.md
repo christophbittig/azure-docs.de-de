@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Civic Platform | Microsoft-Dokumentation'
+title: 'Tutorial: Azure AD-SSO-Integration mit Civic Platform'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Civic Platform konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/25/2019
+ms.date: 09/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 83203a6fc7a0843ef91922ddd61c7b84195d2c74
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1a966c99cc167180cd47406c8909bfbd48a11422
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754025"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402442"
 ---
-# <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Tutorial: Integrieren von Civic Platform in Azure Active Directory
+# <a name="tutorial-azure-ad-sso-integration-with-civic-platform"></a>Tutorial: Azure AD-SSO-Integration mit Civic Platform
 
 In diesem Tutorial erfahren Sie, wie Sie Civic Platform in Azure Active Directory (Azure AD) integrieren. Bei der Integration von Civic Platform in Azure AD haben Sie folgende Möglichkeiten:
 
@@ -26,13 +26,11 @@ In diesem Tutorial erfahren Sie, wie Sie Civic Platform in Azure Active Director
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Civic Platform anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Falls Sie kein Abonnement besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige kostenlose Testversion erhalten.
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Ein Civic Platform-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
@@ -41,50 +39,48 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Civic Platform unterstützt **SP-initiiertes** einmaliges Anmelden.
 
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
-
-
-
-## <a name="adding-civic-platform-from-the-gallery"></a>Hinzufügen von Civic Platform aus dem Katalog
+## <a name="add-civic-platform-from-the-gallery"></a>Hinzufügen von Civic Platform aus dem Katalog
 
 Zum Konfigurieren der Integration von Civic Platform in Azure AD müssen Sie Civic Platform aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Civic Platform** in das Suchfeld ein.
 1. Wählen Sie **Civic Platform** im Ergebnisbereich aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+## <a name="configure-and-test-azure-ad-sso-for-civic-platform"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Civic Platform
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Civic Platform mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Civic Platform eingerichtet werden.
 
-Sie müssen die folgenden Aufgaben ausführen, um das einmalige Anmelden von Azure AD bei Civic Platform zu konfigurieren und zu testen:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Civic Platform die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Civic Platform](#configure-civic-platform-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-5. **[Erstellen eines Civic Platform-Testbenutzers](#create-civic-platform-test-user)** , um ein Pendant von B. Simon in Civic Platform zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Civic Platform](#configure-civic-platform-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines Civic Platform-Testbenutzers](#create-civic-platform-test-user)** , um ein Pendant von B. Simon in Civic Platform zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Civic Platform** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Civic Platform** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.accela.com`.
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** den folgenden Wert ein: `civicplatform.accela.com`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `civicplatform.accela.com`.
+    b. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.accela.com`.
 
     > [!NOTE]
     > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von Civic Platform](mailto:skale@accela.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -97,11 +93,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Kopieren Sie die **Verzeichnis-ID (Mandant)** , und speichern Sie sie im Editor.
 
-    ![Verzeichnis-ID (Mandanten-ID) kopieren und im Anwendungscode speichern](media/civic-platform-tutorial/directoryid.png)
+    ![Verzeichnis-ID (Mandanten-ID) kopieren und im Anwendungscode speichern](media/civic-platform-tutorial/directory.png)
 
 1. Kopieren Sie die **Anwendungs-ID**, und speichern Sie sie im Editor.
 
-   ![Anwendungs-ID (Client-ID) kopieren](media/civic-platform-tutorial/applicationid.png)
+   ![Anwendungs-ID (Client-ID) kopieren](media/civic-platform-tutorial/application.png)
 
 1. Navigieren Sie in Azure AD zu **Azure Active Directory** > **App-Registrierungen**, und wählen Sie Ihre Anwendung aus. Wählen Sie **Zertifikate & Geheimnisse** aus.
 
@@ -112,37 +108,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
    > [!NOTE]
    > Nachdem der geheime Clientschlüssel gespeichert wurde, wird dessen Wert angezeigt. Kopieren Sie diesen Wert jetzt, da Sie den Schlüssel später nicht mehr abrufen können.
 
-   ![Den geheimen Wert kopieren, weil er später nicht mehr abgerufen werden kann](media/civic-platform-tutorial/secretkey.png)
-
-### <a name="configure-civic-platform-sso"></a>Konfigurieren des einmaligen Anmeldens (SSO) für Civic Platform
-
-1. Melden Sie sich in einem neuen Webbrowserfenster bei der Atlassian Cloud-Unternehmenswebsite als Administrator an.
-
-1. Klicken Sie auf **Standard Choices** (Standardauswahl).
-
-    ![Screenshot der Atlassian Cloud-Website, auf der unter „Administrator Tools“ die Option „Standard Choices“ hervorgehoben ist](media/civic-platform-tutorial/standard-choices.png)
-
-1. Erstellen Sie die Standardauswahl **ssoconfig**.
-
-1. Suchen Sie nach **ssoconfig**, und übermitteln Sie diese.
-
-    ![Screenshot der Standard Choices-Suche mit der Eingabe „S S O Config“](media/civic-platform-tutorial/sso-config.png)
-
-1. Erweitern Sie SSOCONFIG, indem Sie auf den roten Punkt klicken.
-
-    ![Screenshot der Standard Choices-Auswahl, in der S S O CONFIG verfügbar ist](media/civic-platform-tutorial/sso-config01.png)
-
-1. Geben Sie im folgenden Schritt auf das einmalige Anmelden (SSO) bezogene Konfigurationsinformationen an:
-
-    ![Screenshot der Standard Choices-Elementbearbeitung für S S O CONFIG](media/civic-platform-tutorial/sso-config02.png)
-
-    1. Geben Sie im Feld **applicationid** den Wert für die **Anwendungs-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    1. Geben Sie im Feld **clientSecret** den Wert für das **Geheimnis** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    1. Geben Sie im Feld **directoryId** den Wert für die **Verzeichnis-ID (Mandant)** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    1. Geben Sie den „idpNamen“ ein. Beispiel:- `Azure`.
+   ![Den geheimen Wert kopieren, weil er später nicht mehr abgerufen werden kann](media/civic-platform-tutorial/secret-key.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -163,31 +129,55 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Civic Platform** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+## <a name="configure-civic-platform-sso"></a>Konfigurieren des einmaligen Anmeldens (SSO) für Civic Platform
+
+1. Melden Sie sich in einem neuen Webbrowserfenster bei der Atlassian Cloud-Unternehmenswebsite als Administrator an.
+
+1. Klicken Sie auf **Standard Choices** (Standardauswahl).
+
+    ![Screenshot der Atlassian Cloud-Website, auf der unter „Administrator Tools“ die Option „Standard Choices“ hervorgehoben ist](media/civic-platform-tutorial/standard-choices.png)
+
+1. Erstellen Sie die Standardauswahl **ssoconfig**.
+
+1. Suchen Sie nach **ssoconfig**, und übermitteln Sie diese.
+
+    ![Screenshot der Standard Choices-Suche mit der Eingabe „S S O Config“](media/civic-platform-tutorial/item.png)
+
+1. Erweitern Sie SSOCONFIG, indem Sie auf den roten Punkt klicken.
+
+    ![Screenshot der Standard Choices-Auswahl, in der S S O CONFIG verfügbar ist](media/civic-platform-tutorial/details.png)
+
+1. Geben Sie im folgenden Schritt auf das einmalige Anmelden (SSO) bezogene Konfigurationsinformationen an:
+
+    ![Screenshot der Standard Choices-Elementbearbeitung für S S O CONFIG](media/civic-platform-tutorial/values.png)
+
+    1. Geben Sie im Feld **applicationid** den Wert für die **Anwendungs-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    1. Geben Sie im Feld **clientSecret** den Wert für das **Geheimnis** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    1. Geben Sie im Feld **directoryId** den Wert für die **Verzeichnis-ID (Mandant)** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    1. Geben Sie den „idpNamen“ ein. Beispiel:- `Azure`.
 
 ### <a name="create-civic-platform-test-user"></a>Erstellen eines Civic Platform-Testbenutzers
 
 In diesem Abschnitt erstellen Sie in Civic Platform einen Benutzer namens B. Simon. Arbeiten Sie mit dem Civic Platform-Supportteam zusammen, um die Benutzer dem [Civic Platform Client-Supportteam](mailto:skale@accela.com) hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
-### <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Civic Platform“ klicken, sollten Sie automatisch bei der Civic Platform-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Civic Platform weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+* Navigieren Sie direkt zur Anmelde-URL für Civic Platform, und initiieren Sie dort den Anmeldeflow.
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Civic Platform“ klicken, werden Sie zur Anmelde-URL für Civic Platform weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
+Nach dem Konfigurieren von Civic Platform können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

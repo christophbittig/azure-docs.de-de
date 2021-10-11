@@ -5,16 +5,16 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 152494ef7d24d3e39af63fcb549a26c78bb27bc6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b7e4fa06db063538c801b01225818c4c9311e3d6
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959417"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400779"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen
 
-Hier erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen, um mehrere Ressourcen bereitzustellen und die Bereitstellungsreihenfolge zu konfigurieren. Nach der Erstellung der Vorlage stellen Sie sie mithilfe der Cloud Shell über das Azure-Portal bereit.
+Hier erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen, um mehrere Ressourcen bereitzustellen und die Bereitstellungsreihenfolge zu konfigurieren. Nach der Erstellung der Vorlage stellen Sie diese mithilfe der Azure Cloud Shell über das Azure-Portal bereit.
 
 In diesem Tutorial erstellen Sie ein Speicherkonto, eine VM, ein virtuelles Netzwerk und einige andere abhängigen Ressourcen. Einige der Ressourcen können erst bereitgestellt werden, wenn eine andere Ressource vorhanden ist. Sie können den virtuellen Computer beispielsweise erst erstellen, wenn sein Speicherkonto und seine Netzwerkschnittstelle vorhanden sind. Diese Beziehung definieren Sie, indem Sie eine Ressource von den anderen Ressourcen abhängig machen. Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der Reihenfolge ihrer Abhängigkeiten bereit. Wenn Ressourcen nicht voneinander abhängig sind, stellt Resource Manager sie parallel bereit. Weitere Informationen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen](./resource-dependency.md).
 
@@ -36,11 +36,13 @@ Ein Microsoft Learn-Modul, das Ressourcenabhängigkeiten behandelt, finden Sie u
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 * Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Schnellstart: Erstellen von ARM-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
-* Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
+* Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Sie können die [Azure Cloud Shell](../../cloud-shell/overview.md) verwenden, um den folgenden Befehl in PowerShell oder der Bash auszuführen:
 
-    ```console
+    ```shell
     openssl rand -base64 32
     ```
+
+    Um mehr zu erfahren, führen Sie `man openssl rand` aus, um die Manpage zu öffnen.
 
     Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie im [Tutorial: Integrieren von Azure Key Vault in Ihre Bereitstellung einer ARM-Vorlage](./template-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.
 
@@ -120,7 +122,7 @@ Durch die Angabe der Abhängigkeiten wird die Lösung von Resource Manager effiz
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
+1. Melden Sie sich bei [Cloud Shell](https://shell.azure.com) an.
 
 1. Wählen Sie Ihre bevorzugte Umgebung aus, indem Sie links oben **PowerShell** oder **Bash** (für die CLI) auswählen.  Bei einem Wechsel ist ein Neustart der Shell erforderlich.
 

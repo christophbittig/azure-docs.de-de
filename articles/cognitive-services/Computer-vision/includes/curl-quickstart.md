@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2f01b1d222470c49505638be64180948b6f7e046
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: ceeb1804c9332d9e0d3e11336ff92e8aacc8516c
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728252"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129584995"
 ---
 Verwenden Sie die optische Zeichen Erkennungs-REST-API, um gedruckten und handschriftlichen Text zu lesen.
 
@@ -32,10 +32,10 @@ Verwenden Sie die optische Zeichen Erkennungs-REST-API, um gedruckten und handsc
 * [cURL](https://curl.haxx.se/) muss installiert sein.
 
 
+## <a name="extract-printed-and-handwritten-text"></a>Extrahieren von gedrucktem und handschriftlichem Text
 
-## <a name="read-printed-and-handwritten-text"></a>Lesen von gedrucktem und handschriftlichem Text
+Der OCR-Dienst kann sichtbaren Text in einem Bild oder Dokument extrahieren und in einen Zeichendatenstrom konvertieren. Weitere Informationen zur Textextraktion finden Sie in der Übersicht [Optische Zeichenerkennung (OCR)](../overview-ocr.md).
 
-Der OCR-Dienst kann sichtbaren Text in einem Bild lesen und in eine Zeichenfolge konvertieren. Weitere Informationen zur Texterkennung finden Sie in der Übersicht [Optische Zeichenerkennung (OCR)](../overview-ocr.md).
 
 ### <a name="call-the-read-api"></a>Aufrufen der Lese-API
 
@@ -55,6 +55,9 @@ curl -v -X POST "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/r
 ```
 
 Die Antwort enthält einen Header vom Typ `Operation-Location`, bei dessen Wert es sich um eine eindeutige URL handelt. Diese URL wird verwendet, um die Ergebnisse des Lesevorgangs abzufragen. Die URL ist 48 Stunden lang gültig.
+
+### <a name="how-to-use-preview-features"></a>Verwenden von Previewfunktionen
+Informationen zu den Sprachen und Features während der Vorschau finden Sie unter [Angeben der Modellversion](../Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional) zur Verwendung der neuesten Vorschauversion. Das Vorschaumodell enthält alle Verbesserungen an den derzeit allgemein verfügbaren Sprachen und Features.
 
 ### <a name="get-read-results"></a>Abrufen der Leseergebnisse
 

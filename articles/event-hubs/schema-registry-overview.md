@@ -4,12 +4,12 @@ description: Dieser Artikel bietet eine Übersicht über die Unterstützung der 
 ms.topic: overview
 ms.date: 05/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 43380ccd4f20616676f4eeb53fb2231b4f76f4e9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6ac6361643d9baafb41259e6db69f816d747b1d8
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371203"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534828"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure-Schemaregistrierung in Event Hubs (Vorschau)
 In vielen Ereignisstreaming- und Messagingszenarien enthält die Ereignis- oder Nachrichtennutzlast strukturierte Daten, die entweder serialisiert oder mithilfe eines schemagesteuerten Formats wie Apache Avro deserialisiert werden. Absender und Empfänger können die Integrität der Daten mit einem Schemadokument wie bei einem JSON-Schema überprüfen. Bei schemagesteuerten Formaten ist die Bereitstellung des Schemas für den Nachrichtenconsumer eine Voraussetzung für den Consumer, und die Daten deserialisieren zu können. 

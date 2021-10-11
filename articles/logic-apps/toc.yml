@@ -87,11 +87,11 @@
           href: secure-single-tenant-workflow-virtual-network-private-endpoint.md
         - name: Schätzen der Speicherkosten für Workflows mit nur einem Mandanten
           href: estimate-storage-costs.md
-    - name: Azure Arc-fähige Logik-Apps
+    - name: Logik-Apps mit Azure Arc-Unterstützung
       items:
-        - name: Informationen zu Azure Arc-fähigen Logik-Apps
+        - name: Informationen zu Logik-Apps mit Azure Arc-Unterstützung
           href: azure-arc-enabled-logic-apps-overview.md
-        - name: Erstellen und Bereitstellen von Arc-fähigen Logik-Apps
+        - name: Erstellen und Bereitstellen von Logik-Apps mit Azure Arc-Unterstützung
           href: azure-arc-enabled-logic-apps-create-deploy-workflows.md
     - name: Entwickeln
       items:
