@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: concepts
 ms.topic: overview
 ms.date: 07/14/2021
-ms.openlocfilehash: 7509be190afd0354f730f72dd97c5b5a118f20dd
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 090b0eaca0e46969aa98e6ac7878da3333602ab6
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187341"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533497"
 ---
 # <a name="whats-new-in-azure-data-factory"></a>Neues in Azure Data Factory
 
@@ -25,6 +25,21 @@ Der Azure Data Factory-Dienst (ADF) wird laufend verbessert. Damit Sie bezügli
 - Pläne für Änderungen
 
 Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert. 
+
+## <a name="september-2021"></a>September 2021
+<br>
+<table>
+<tr><td><b>Dienstkategorie</b></td><td><b>Verbesserungen beim Dienst</b></td><td><b>Details</b></td></tr>
+  <tr><td><b>Continuous Integration and Continuous Delivery (CI/CD)</b></td><td>Erweiterte CI/CD-Funktionen</td><td>Sie können jetzt auf beliebigen anderen Branches in Azure Data Factory basierende neue Git-Branches erstellen.<br><a href="source-control.md#version-control">Weitere Informationen</a></td></tr>
+<tr><td rowspan=3><b>Datenverschiebung</b></td><td>Amazon Relational Database Service (RDS) für Oracle-Quellen</td><td>Der Connector für Amazon RDS für Oracle-Quellen ist jetzt sowohl in Azure Data Factory als auch in Azure Synapse verfügbar.<br><a href="connector-amazon-rds-for-oracle.md">Weitere Informationen</a></td></tr>
+<tr><td>Amazon RDS für SQL Server-Quellen</td><td>Der Connector für Amazon RDS für SQL Server-Quellen ist jetzt sowohl in Azure Data Factory als auch in Azure Synapse verfügbar.<br><a href="connector-amazon-rds-for-sql-server.md">Weitere Informationen</a></td></tr>
+<tr><td>Unterstützung für parallele Kopiervorgänge aus Azure Database for PostgreSQL</td><td>Der Connector für Azure Database for PostgreSQL unterstützt jetzt parallele Kopiervorgänge.<br><a href="connector-azure-database-for-postgresql.md">Weitere Informationen</a></td></tr>
+<tr><td rowspan=3><b>Datenfluss</b></td><td>Verwenden von Azure Data Lake Storage (ADLS) Gen2 zum Ausführen von Vor- und Nachverarbeitungsbefehlen</td><td>Vor- und Nachverarbeitungsbefehle von Hadoop Distributed File System (HDFS) können jetzt mithilfe von ADLS Gen2-Senken in Datenflüssen ausgeführt werden.<br><a href="connector-azure-data-lake-storage.md#pre-processing-and-post-processing-commands">Weitere Informationen</a></td></tr>
+<tr><td>Bearbeiten von Datenflusseigenschaften für vorhandene Instanzen der Azure Integration Runtime (IR)</td><td>Die Azure Integration Runtime (IR) wurde aktualisiert und ermöglicht jetzt die Bearbeitung von Datenflusseigenschaften für vorhandene IRs. Sie können jetzt Computeeigenschaften von Datenflüssen ändern, ohne eine neue Azure IR zu erstellen.<br><a href="concepts-integration-runtime.md">Weitere Informationen</a></td></tr>
+<tr><td>TTL-Einstellung für Azure Synapse zum Verbessern der Startzeit für die Ausführung von Pipelineaktivitäten</td><td>In Azure Synapse Analytics wurde eine TTL-Einstellung zur Azure Integration Runtime hinzugefügt, damit die Pipelineaktivitäten Ihrer Datenflüsse innerhalb weniger Sekunden gestartet werden können, wodurch die Laufzeit Ihrer Datenflusspipelines erheblich verkürzt wird.<br><a href="control-flow-execute-data-flow-activity.md#data-flow-integration-runtime">Weitere Informationen</a></td></tr>
+<tr><td><b>Integration Runtime</b></td><td>Von Azure Data Factory verwaltetes vNet in allgemeine Verfügbarkeit überführt</td><td>Sie können die Azure Integration Runtime jetzt als Teil eines verwalteten virtuellen Netzwerks bereitstellen und private Endpunkte nutzen, um eine sichere Verbindung mit unterstützten Datenspeichern herzustellen. Der Datenverkehr durchläuft private Azure-Links, die für eine sichere Konnektivität mit der Datenquelle sorgen. Darüber hinaus wird die Exfiltration von Daten in das öffentliche Internet verhindert.<br><a href="managed-virtual-network-private-endpoint.md">Weitere Informationen</a></td></tr>
+<tr><td><b>Orchestrierung</b></td><td>Operationalisieren und Bereitstellen einer SLA für Datenpipelines</td><td>Die neue Metrik für die verstrichene Zeit der Pipelineausführung in Kombination mit Data Factory-Warnungen ermöglicht Entwicklern von Datenpipelines die Bereitstellung besserer SLAs für ihre Kunden: Sie teilen uns mit, wie lange eine Pipeline ausgeführt werden soll, und wir benachrichtigen Sie proaktiv, wenn die Pipelineausführung länger dauert als erwartet.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/operationalize-and-provide-sla-for-data-pipelines/ba-p/2767768">Weitere Informationen</a></td></tr>
+</table>
 
 ## <a name="august-2021"></a>August 2021
 <br>

@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e32e6ecacb2de646314be237c6b7bce973a0ed4e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 5583596e399456461b2fc157a193b83b596180ee
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129213475"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387390"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informationen zu Azure Key Vault-Geheimnissen
 
@@ -81,49 +81,11 @@ Sie können zusätzliche anwendungsspezifische Metadaten in Form von Tags angebe
 >[!Note]
 >Tags sind für Aufrufer lesbar, die über die *list*- oder *get*-Berechtigung verfügen.
 
-## <a name="azure-storage-account-key-management"></a>Verwaltung eines Azure-Speicherkontoschlüssels
-
-Key Vault kann [Azure-Speicherkontoschlüssel](../../storage/common/storage-account-overview.md) verwalten:
-
-- Intern kann Key Vault die Schlüssel eines Azure-Speicherkontos auflisten (synchronisieren). 
-- Key Vault kann die Schlüssel in regelmäßigen Abständen erneut generieren (rotieren).
-- Schlüsselwerte werden nie als Antwort an den Aufrufer zurückgegeben.
-- Key Vault verwaltet Schlüssel von Speicherkonten und klassischen Speicherkonten.
-
-Weitere Informationen finden Sie unter
-- [Speicherkonto-Zugriffsschlüssel](../../storage/common/storage-account-keys-manage.md)
-- [Verwaltung von Speicherkontoschlüsseln in Azure Key Vault](../secrets/overview-storage-keys.md)
-
-
-## <a name="storage-account-access-control"></a>Speicherkonto-Zugriffssteuerung
-
-Die folgenden Berechtigungen können beim Autorisieren eines Benutzer- oder Anwendungsprinzipals zur Ausführung von Vorgängen in einem verwalteten Speicherkonto verwendet werden:  
-
-- Berechtigungen für Vorgänge in verwalteten Speicherkonten und SAS-Definitionen
-  - *get*: Abrufen von Informationen zu einem Speicherkonto 
-  - *list*: Auflisten der von einem Schlüsseltresor verwalteten Speicherkonten
-  - *update*: Aktualisieren eines Speicherkontos
-  - *delete*: Löschen von Speicherkonten  
-  - *recover*: Wiederherstellen eines gelöschten Speicherkontos
-  - *backup*: Sichern eines Speicherkontos
-  - *restore*: Wiederherstellen eines gesicherten Speicherkontos in einem Schlüsseltresor
-  - *set*: Erstellen oder Aktualisieren eines Speicherkontos
-  - *regeneratekey*: Erneutes Generieren eines angegebenen Schlüsselwerts für ein Speicherkonto
-  - *getsas*: Abrufen von Informationen über eine SAS-Definition für ein Speicherkonto
-  - *listsas*: Auflisten der Speicher-SAS-Definitionen für ein Speicherkonto
-  - *deletesas*: Löschen einer SAS-Definition aus einem Speicherkonto
-  - *setsas*: Erstellen oder Aktualisieren einer neuen SAS-Definition bzw. von neuen SAS-Attributen für ein Speicherkonto
-
-- Berechtigungen für privilegierte Vorgänge
-  - *purge*: Bereinigen (dauerhaftes Löschen) eines verwalteten Speicherkontos
-
-Weitere Informationen finden Sie in der [REST-API-Referenz für Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
-
 ## <a name="usage-scenarios"></a>Verwendungsszenarien
 
 | Verwendung | Beispiele |
 |--------------|-------------|
-|Sicheres Speichern, Verwalten des Lebenszyklus und Überwachen von Anmeldeinformationen (etwa Kennwörter, Zugriffsschlüssel und geheime Clientschlüssel für Dienstprinzipale) für die Kommunikation zwischen Diensten.  | - [Verwenden von Azure Key Vault mit einem virtuellen Computer](../general/tutorial-net-virtual-machine.md)<br> - [Verwenden von Azure Key Vault mit einer Azure-Web-App](../general/tutorial-net-create-vault-azure-web-app.md) |
+|Sicheres Speichern, Verwalten des Lebenszyklus und Überwachen von Anmeldeinformationen (z. B. Kennwörter, Zugriffsschlüssel und geheime Clientschlüssel für Dienstprinzipale) für die Kommunikation zwischen Diensten.  | - [Verwenden von Azure Key Vault mit einem virtuellen Computer](../general/tutorial-net-virtual-machine.md)<br> - [Verwenden von Azure Key Vault mit einer Azure-Web-App](../general/tutorial-net-create-vault-azure-web-app.md) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

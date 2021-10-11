@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 534ea1a7a4e1356f44c97dc69e1a6dabbf9cae12
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fc052deefeec9263d1f055c04381792c1ac0980b
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637140"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537009"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Ermitteln, Bewerten und Migrieren von GCP-VMs (Google Cloud Platform) zu Azure
 
@@ -315,14 +315,15 @@ Führen Sie die Testmigration wie folgt durch:
 
 2. Klicken Sie mit der rechten Maustaste auf die zu testende VM, und klicken Sie anschließend auf **Testmigration**.
 
-    ![Testmigration](./media/tutorial-migrate-physical-virtual-machines/test-migrate.png)
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/test-migrate-inline.png" alt-text="Screenshot: Ergebnis nach dem Klicken auf „Testmigration“" lightbox="./media/tutorial-migrate-physical-virtual-machines/test-migrate-expanded.png":::
 
 3. Wählen Sie unter **Testmigration** das Azure VNET aus, in dem sich die Azure-VM nach der Migration befindet. Es empfiehlt sich, ein nicht für die Produktion bestimmtes VNET zu verwenden.
 4. Der Auftrag **Testmigration** wird gestartet. Überwachen Sie den Auftrag anhand der Portalbenachrichtigungen.
 5. Zeigen Sie die migrierte Azure-VM nach Abschluss der Migration im Azure-Portal unter **Virtuelle Computer** an. Der Computername enthält das Suffix **-Test**.
 6. Klicken Sie nach Abschluss des Tests mit der rechten Maustaste unter **Aktuell replizierte Computer** auf die Azure-VM, und klicken Sie anschließend auf **Testmigration bereinigen**.
 
-    ![Bereinigen der Migration](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/clean-up-inline.png" alt-text="Screenshot: Ergebnis nach der Bereinigung der Testmigration" lightbox="./media/tutorial-migrate-physical-virtual-machines/clean-up-expanded.png":::
+
     > [!NOTE]
     > Sie können jetzt Ihre Server, auf denen SQL Server ausgeführt wird, bei SQL VM RP registrieren, um die Vorteile automatisierter Patches, der automatisierten Sicherung und vereinfachten Lizenzverwaltung mit der Erweiterung für den SQL-IaaS-Agent zu nutzen.
     >- Wählen Sie für die Registrierung bei SQL VM RP die Optionen **Verwaltung** > **Server werden repliziert** > **Computer mit SQL Server** > **Compute und Netzwerk** und dann **Ja** aus.

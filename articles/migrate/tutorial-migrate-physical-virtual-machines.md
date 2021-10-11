@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: 6c392d1af427c7a9837519ea8443efc5773aa6db
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 00d069257d25441f16fb82cae720bb49b8e0f15f
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154810"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536966"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrieren von Computern als physische Server zu Azure
 
@@ -308,14 +308,15 @@ Führen Sie die Testmigration wie folgt durch:
 
 2. Klicken Sie mit der rechten Maustaste auf die zu testende VM, und klicken Sie anschließend auf **Testmigration**.
 
-    ![Testmigration](./media/tutorial-migrate-physical-virtual-machines/test-migrate.png)
-
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/test-migrate-inline.png" alt-text="Screenshot: Ergebnis nach dem Klicken auf „Testmigration“" lightbox="./media/tutorial-migrate-physical-virtual-machines/test-migrate-expanded.png":::
+ 
 3. Wählen Sie unter **Testmigration** das Azure VNET aus, in dem sich die Azure-VM nach der Migration befindet. Es empfiehlt sich, ein nicht für die Produktion bestimmtes VNET zu verwenden.
 4. Der Auftrag **Testmigration** wird gestartet. Überwachen Sie den Auftrag anhand der Portalbenachrichtigungen.
 5. Zeigen Sie die migrierte Azure-VM nach Abschluss der Migration im Azure-Portal unter **Virtuelle Computer** an. Der Computername enthält das Suffix **-Test**.
 6. Klicken Sie nach Abschluss des Tests mit der rechten Maustaste unter **Aktuell replizierte Computer** auf die Azure-VM, und klicken Sie anschließend auf **Testmigration bereinigen**.
 
-    ![Bereinigen der Migration](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/clean-up-inline.png" alt-text="Screenshot: Ergebnis nach der Bereinigung der Testmigration" lightbox="./media/tutorial-migrate-physical-virtual-machines/clean-up-expanded.png":::
+
     > [!NOTE]
     > Sie können jetzt Ihre Server, auf denen SQL Server ausgeführt wird, bei SQL VM RP registrieren, um die Vorteile automatisierter Patches, der automatisierten Sicherung und vereinfachten Lizenzverwaltung mit der Erweiterung für den SQL-IaaS-Agent zu nutzen.
     >- Wählen Sie für die Registrierung bei SQL VM RP die Optionen **Verwaltung** > **Server werden repliziert** > **Computer mit SQL Server** > **Compute und Netzwerk** und dann **Ja** aus.

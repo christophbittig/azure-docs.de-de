@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/09/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, Cluster
-ms.openlocfilehash: bcc4d9183bf60e37c1d024462d7ab924df1f671e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 10c97945a78867d92b9ed4887e9655d49b195e33
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210768"
+ms.locfileid: "129273759"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Schnellstart: Herstellen einer Verbindung eines vorhandenen Kubernetes-Clusters mit Azure Arc
 
@@ -96,8 +96,8 @@ In diesem Schnellstart lernen Sie die Vorteile von Azure Arc-aktiviertem Kuberne
 | `https://<region>.dp.kubernetesconfiguration.azure.com` (für Azure Cloud), `https://<region>.dp.kubernetesconfiguration.azure.us` (für Azure US Government) | Endpunkt auf Datenebene, über den der Agent Statusinformationen mithilfe von Push übermitteln und Konfigurationsinformationen abrufen kann |
 | `https://login.microsoftonline.com`, `login.windows.net` (für Azure Cloud), `https://login.microsoftonline.us` (für Azure US Government) | Erforderlich zum Abrufen und Aktualisieren von Azure Resource Manager-Token. |
 | `https://mcr.microsoft.com`, `https://*.data.mcr.microsoft.com` | Erforderlich zum Pullen von Containerimages für Azure Arc-Agents.                                                                  |
-| `https://gbl.his.arc.azure.com` |  Erforderlich, um den regionalen Endpunkt zum Pullen vom System zugewiesener MSI-Zertifikate (Managed Service Identity) abzurufen |
-| `https://*.his.arc.azure.com` (für Azure Cloud) `https://usgv.his.arc.azure.us` und `https://gbl.his.arc.azure.us` (für Azure US Government) |  Erforderlich zum Pullen vom System zugewiesener Zertifikate für verwaltete Identitäten. |
+| `https://gbl.his.arc.azure.com` (für Azure Cloud), `https://gbl.his.arc.azure.us` (für Azure US Government) |  Erforderlich, um den regionalen Endpunkt zum Abrufen von Zertifikaten systemseitig zugewiesener verwalteter Identitäten per Pull zu erhalten. |
+| `https://*.his.arc.azure.com` (für Azure Cloud), `https://usgv.his.arc.azure.us` (für Azure US Government) |  Erforderlich zum Pullen vom System zugewiesener Zertifikate für verwaltete Identitäten. |
 |`*.servicebus.windows.net`, `guestnotificationservice.azure.com`, `*.guestnotificationservice.azure.com`, `sts.windows.net` | Für Szenarien, die auf [Cluster Connect](cluster-connect.md) und [benutzerdefinierten Speicherorten](custom-locations.md) basieren. |
 
 ## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. Registrieren von Anbietern für Kubernetes mit Azure Arc-Unterstützung

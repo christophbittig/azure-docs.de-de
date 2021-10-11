@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Holmes | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Holmes konfigurieren.
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit ContractS CLM'
+description: In diesem Artikel erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ContractS CLM konfigurieren.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/06/2021
+ms.date: 09/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 39d1854e13f58bc73fbe969aeaf44d8c36fd2d7d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 41c8727e2f79b01227cb33ed756132bda0bf163c
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124790869"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402793"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-holmes"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Holmes
+# <a name="tutorial-azure-ad-sso-integration-with-contracts-clm"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit ContractS CLM
 
-In diesem Tutorial erfahren Sie, wie Sie Holmes in Azure Active Directory (Azure AD) integrieren. Die Integration von Holmes in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie ContractS CLM in Azure Active Directory (Azure AD) integrieren. Die Integration von ContractS CLM in Azure AD ermöglicht Folgendes:
 
-* Steuern Sie in Azure AD, wer Zugriff auf Holmes hat.
-* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Holmes anzumelden.
+* Steuern Sie in Azure AD, wer Zugriff auf ContractS CLM hat.
+* Ermöglichen Sie Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei ContractS CLM anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -31,65 +31,68 @@ In diesem Tutorial erfahren Sie, wie Sie Holmes in Azure Active Directory (Azure
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein Holmes-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* ContractS CLM-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-## <a name="adding-holmes-from-the-gallery"></a>Hinzufügen von Holmes aus dem Katalog
+## <a name="add-contracts-clm-from-the-gallery"></a>Hinzufügen von ContractS CLM aus dem Katalog
 
-Zum Konfigurieren der Integration von Holmes in Azure AD müssen Sie Holmes aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von ContractS CLM in Azure AD müssen Sie ContractS CLM aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
-1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Holmes** in das Suchfeld ein.
-1. Wählen Sie im Ergebnisbereich **Holmes** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **ContractS CLM** in das Suchfeld ein.
+1. Wählen Sie **ContractS CLM** im Ergebnisbereich aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
+## <a name="configure-and-test-azure-ad-sso-for-contracts-clm"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für ContractS CLM
 
-## <a name="configure-and-test-azure-ad-sso-for-holmes"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Holmes
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit ContractS CLM mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in ContractS CLM eingerichtet werden.
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Holmes mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Holmes eingerichtet werden.
-
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Holmes die folgenden Schritte aus:
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit ContractS CLM zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Holmes](#configure-holmes-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Holmes-Testbenutzers](#create-holmes-test-user)** , um eine Entsprechung von B. Simon in Holmes zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Konfigurieren des einmaligen Anmeldens für ContractS CLM](#configure-contracts-clm-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. **[Erstellen eines ContractS CLM-Testbenutzers](#create-contracts-clm-test-user)** , um eine Entsprechung von B. Simon in ContractS CLM zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Holmes** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **ContractS CLM** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-2. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
    1. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein:
 
       `https://<WorkspaceID>.holmescloud.com`
       
-   1. Geben Sie im Textfeld **Antwort-URL (Assertionsverbraucherdienst-URL)** `https://holmescloud.com/sso/acs` ein.
+   1. Geben Sie im Textfeld **Antwort-URL (Assertionsverbraucherdienst-URL)** die folgende URL ein:
    
-   1. Geben Sie im Textfeld **Abmelde-URL** den Text `https://holmescloud.com/sso/logout` ein.
+       `https://holmescloud.com/sso/acs`.
+   
+   1. Geben Sie im Textfeld **Abmelde-URL** die folgende URL ein:
+   
+      `https://holmescloud.com/sso/logout`.
 
     > [!NOTE]
-    > Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner, der auf die Seite Holmes Admin verweist. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner, der auf die ContractS CLM-Administratorseite verweist. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 3. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-1. Kopieren Sie im Abschnitt **Holmes einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **ContractS CLM einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -107,23 +110,23 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Holmes gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf ContractS CLM gewähren.
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-1. Wählen Sie in der Anwendungsliste die Option **Holmes** aus.
+1. Wählen Sie in der Anwendungsliste **ContractS CLM** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen** aus.
 
-## <a name="configure-holmes-sso"></a>Konfigurieren des einmaligen Anmeldens für Holmes
+## <a name="configure-contracts-clm-sso"></a>Konfigurieren des einmaligen Anmeldens für Contracts CLM
 
-Um Single Sign-On auf der **Holmes**-Seite zu konfigurieren, müssen Sie das heruntergeladene **Zertifikat (Base64)** und die entsprechenden kopierten URLs aus dem Azure-Portal auf der Holmes-Admin-Seite registrieren. 
+Um Single Sign-On auf der **ContractS CLM**-Seite zu konfigurieren, müssen Sie das heruntergeladene **Zertifikat (Base64)** und die entsprechenden kopierten URLs aus dem Azure-Portal auf der ContractS CLM-Seite registrieren. 
 
-### <a name="create-holmes-test-user"></a>Erstellen eines Holmes-Testbenutzers
+### <a name="create-contracts-clm-test-user"></a>Erstellen eines ContractS CLM-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Holmes einen Benutzer namens B. Simon. Sie können einen Benutzer auf der Seite Mitgliederverwaltung erstellen/einladen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in ContractS CLM eine Benutzerin namens B. Simon. Sie können einen Benutzer auf der Mitgliederverwaltungsseite von ContractS CLM erstellen/einladen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
@@ -131,17 +134,16 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 #### <a name="sp-initiated"></a>SP-initiiert:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Holmes weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für ContractS CLM weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
 
-* Rufen Sie direkt die Holmes-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die Anmelde-URL von ContractS CLM auf, und initiieren Sie dort den Anmeldeflow.
 
 #### <a name="idp-initiated"></a>IDP-initiiert:
 
-* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der Holmes-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der ContractS CLM-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „Holmes“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der Holmes-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
-
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „ContractS CLM“ in „Meine Apps“ geschieht Folgendes: Wenn Sie die Anwendung im SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie die Anwendung im IDP-Modus konfiguriert haben, sollten Sie automatisch bei der ContractS CLM-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Holmes können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von ContractS CLM können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor Ex- und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

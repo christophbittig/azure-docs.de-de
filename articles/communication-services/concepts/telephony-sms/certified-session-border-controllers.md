@@ -9,12 +9,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: pstn
-ms.openlocfilehash: 9d9b08435f0f3a114a726acc26582a44b32b97ff
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 7a27e630490fe78023a9406f931c6066c5e9fb7f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129060970"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362349"
 ---
 # <a name="list-of-session-border-controllers-certified-for-azure-communication-services-direct-routing"></a>Liste der für das Direct Routing von Azure Communication Services zertifizierten Session Border Controller
 Dieses Dokument enthält eine Liste der für das Direct Routing von Azure Communication Services zertifizierten Session Border Controller. Es enthält außerdem bekannte Einschränkungen.
@@ -39,9 +39,9 @@ Wenn Sie Fragen zum SBC-Zertifizierungsprogramm für das Direct Routing von Comm
 |Hersteller|Produkt|Softwareversion|
 |:--- |:--- |:--- 
 |[AudioCodes](https://www.audiocodes.com/media/lbjfezwn/mediant-sbc-with-microsoft-azure-communication-services.pdf)|Mediant SBC|7.40A
-|Metaswitch|Perimeta SBC|4,9|
+|[Metaswitch](https://manuals.metaswitch.com/Perimeta/V4.9/AzureCommunicationServicesIntegrationGuide/Source/notices.html)|Perimeta SBC|4,9|
 |[Oracle](https://www.oracle.com/technical-resources/documentation/acme-packet.html)|Oracle Acme Packet SBC|8,4|
-|Ribbon Communications|SBC SWe / SBC 5400 / SBC 7000|9,02|
+|Ribbon Communications|[SBC SWe/SBC 5400/SBC 7000](https://support.sonus.net/display/ALLDOC/Ribbon+Configurations+with+Azure+Communication+Services+Direct+Routing)|9,02|
 ||SBC SWe Lite / SBC 1000 / SBC 2000|9.0
 
 Beachten Sie die Zertifizierung für eine Hauptversion. Das bedeutet, dass Firmware mit einer beliebigen Zahl in der SBC-Firmware nach der Hauptversion unterstützt wird.

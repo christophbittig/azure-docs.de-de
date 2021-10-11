@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 6b4b15362d1fe2371f181fb4ee46c30e8237dea0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7dc2a8e5701ba45e49d9be50d5a05727d01cda4d
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598107"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533313"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Ermitteln, Bewerten und Migrieren von virtuellen AWS-Computern (Amazon Web Services) zu Azure
 
@@ -329,7 +329,7 @@ Führen Sie die Testmigration wie folgt durch:
 5. Zeigen Sie die migrierte Azure-VM nach Abschluss der Migration im Azure-Portal unter **Virtuelle Computer** an. Der Computername enthält das Suffix **-Test**.
 6. Klicken Sie nach Abschluss des Tests mit der rechten Maustaste unter **Aktuell replizierte Computer** auf die Azure-VM, und klicken Sie anschließend auf **Testmigration bereinigen**.
 
-    ![Bereinigen der Migration](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/clean-up-inline.png" alt-text="Screenshot: Ergebnis nach der Bereinigung der Testmigration" lightbox="./media/tutorial-migrate-physical-virtual-machines/clean-up-expanded.png":::
 
     > [!NOTE]
     > Sie können jetzt Ihre Server, auf denen SQL Server ausgeführt wird, bei SQL VM RP registrieren, um die Vorteile automatisierter Patches, der automatisierten Sicherung und vereinfachten Lizenzverwaltung mit der Erweiterung für den SQL-IaaS-Agent zu nutzen.

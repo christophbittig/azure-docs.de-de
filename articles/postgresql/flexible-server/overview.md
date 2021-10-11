@@ -5,14 +5,14 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: overview
-ms.date: 08/24/2021
+ms.date: 10/04/2021
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 4f125035bdb71302681f84fd04b25767828f1490
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d1d33a526ef2dfff4709b994c77396a4db1b2a5e
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128589661"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457542"
 ---
 # <a name="overview---azure-database-for-postgresql---flexible-server"></a>Übersicht: Azure Database for PostgreSQL – Flexible Server
 
@@ -94,11 +94,11 @@ Der flexible Server verfügt über eine integrierte PgBouncer-Instanz, eine Verb
 
 Ein Vorteil der Ausführung Ihrer Workload in Azure ist die globale Reichweite. Flexible Server sind derzeit in den folgenden Azure-Regionen verfügbar:
 
-| Region | Verfügbarkeit | Zonenredundante Hochverfügbarkeit | 
+| Region | V3-/V4-Computeverfügbarkeit | Zonenredundante Hochverfügbarkeit | 
 | --- | --- | --- |
 | Australien (Osten) | :heavy_check_mark: | :heavy_check_mark: | 
 | Australien, Südosten | :heavy_check_mark: | :x: | 
-| Brasilien Süd | :heavy_check_mark: | :x: |
+| Brasilien Süd | :heavy_check_mark: (nur v3) | :x: |
 | Kanada, Mitte | :heavy_check_mark: | :heavy_check_mark: | 
 | Indien, Mitte | :heavy_check_mark: | :x: |
 | USA (Mitte) | :heavy_check_mark: | :heavy_check_mark: | 

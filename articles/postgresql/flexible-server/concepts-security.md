@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 09/08/2021
-ms.openlocfilehash: cf5c28d197aabf60d7e6ee36c2e724ffad435522
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2021
+ms.openlocfilehash: 8e474cd0ae6635034607a088aceee47a83c500de
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559207"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388772"
 ---
 # <a name="security-in-azure-database-for-postgresql---flexible-server"></a>Sicherheit in Azure Database for PostgreSQL – Flexible Server
 
@@ -24,7 +24,9 @@ Zum Schutz der Daten auf Ihrem Azure Database for PostgreSQL-Server gibt es mehr
 Azure Database for PostgreSQL verschlüsselt Daten auf zwei Arten:
 
 - **Daten während der Übertragung**: Azure Database for PostgreSQL verschlüsselt Daten während der Übertragung mit Secure Sockets Layer und Transport Layer Security (SSL/TLS). Verschlüsselung wird standardmäßig erzwungen. Ausführlichere Informationen finden Sie in [diesem Leitfaden](how-to-connect-tls-ssl.md). Zur Erhöhung der Sicherheit können Sie die [SCRAM-Authentifizierung](how-to-connect-scram.md) aktivieren.
- Obwohl dies nicht zu empfehlen ist, haben Sie bei Bedarf die Möglichkeit, TLS/SSL für Verbindungen mit Azure Database for PostgreSQL Flexible Server zu deaktivieren, indem Sie den Serverparameter **require_secure_transport** auf „OFF“ festlegen. Sie können auch die TLS-Version angeben, indem Sie die Serverparameter **ssl_min_protocol_version** und **ssl_max_protocol_version** festlegen.
+
+   Obwohl davon abgeraten wird, haben Sie bei Bedarf die Möglichkeit, TLS/SSL für Verbindungen mit Azure Database for PostgreSQL – Flexible Server zu deaktivieren, indem Sie den Serverparameter `require_secure_transport` auf OFF festlegen. Sie können die TLS-Version auch über die Serverparameter `ssl_min_protocol_version` und `ssl_max_protocol_version` festlegen.
+
 
 - **Ruhende Daten**: Azure Database for PostgreSQL nutzt für die Speicherverschlüsselung das FIPS 140-2-zertifizierte Kryptografiemodul. Daten werden auf dem Datenträger verschlüsselt, einschließlich Sicherungen und der temporären Dateien, die während der Ausführung von Abfragen erstellt wurden. 
 
@@ -47,7 +49,7 @@ Wenn Sie Azure Database for PostgreSQL – Flexible Server ausführen, haben Si
 
 Während Sie den Azure Database for PostgreSQL-Server erstellen, geben Sie Anmeldeinformationen für eine Administratorrolle ein. Diese Administratorrolle kann zum Erstellen weiterer [PostgreSQL-Rollen](https://www.postgresql.org/docs/current/user-manag.html) genutzt werden.
 
-Ein auf ein Objekt angewendeter
+Beispiel:
 
 ```SQL
 postgres=> create role demouser with password 'password123';
@@ -91,7 +93,7 @@ Befolgen Sie die [Anleitung](./how-to-manage-server-portal.md#reset-admin-passwo
 
 ### <a name="update-database-user-password"></a>Aktualisieren eines Kennworts für Datenbankbenutzer
 
-Sie können Clienttools verwenden, um die Kennwörter von Datenbankbenutzern zu aktualisieren. Ein auf ein Objekt angewendeter
+Sie können Clienttools verwenden, um die Kennwörter von Datenbankbenutzern zu aktualisieren. Beispiel:
 ```SQL
 postgres=> alter role demouser with password 'Password123!';
 ALTER ROLE

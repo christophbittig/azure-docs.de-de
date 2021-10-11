@@ -1,14 +1,14 @@
 ---
 title: 'Server mit Azure Arc-Unterstützung: Übersicht'
 description: Hier erfahren Sie, wie Sie außerhalb von Azure gehostete Server mithilfe von Servern mit Azure Arc-Unterstützung wie eine Azure-Ressource verwalten.
-ms.date: 08/27/2021
+ms.date: 09/30/2021
 ms.topic: overview
-ms.openlocfilehash: 5bca2ec2bdf46f27ca83c4747c5ecb5688fa1708
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c064abb4258f36207e8bd4f02f7cb68d8ce1fce1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124807153"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355390"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Was sind Server mit Azure Arc-Unterstützung?
 
@@ -32,8 +32,8 @@ Wenn Sie Ihren Computer mit Servern mit Azure Arc-Unterstützung verbinden, kön
 | Azure Security Center | Schützen Sie Azure-fremde Server mit [Microsoft Defender für Endpunkt](/microsoft-365/security/defender-endpoint), das über [Azure Defender](../../security-center/defender-for-servers-introduction.md) enthalten ist, um auch auf diese die Bedrohungserkennung, das Sicherheitsrisikomanagement und die proaktive Überwachung auf potenzielle Sicherheitsbedrohungen anzuwenden. Azure Security Center zeigt die Warnungen und Korrekturvorschläge aus den erkannten Bedrohungen an. |
 | Azure Sentinel | Computer, die mit Servern mit Arc- Unterstützung verbunden sind, können [mit Azure Sentinel konfiguriert](scenario-onboard-azure-sentinel.md) werden, um sicherheitsbezogene Ereignisse zu sammeln und sie mit anderen Datenquellen zu korrelieren. |
 |**Konfigurieren** ||
-| Azure-Automatisierung |Bewerten von Konfigurationsänderungen bei installierter Software, Microsoft-Diensten, Windows-Registrierung und -Dateien und Linux-Daemons mittels [Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md).<br> Verwalten Sie für die Verwaltung von Betriebssystemupdates für Ihre Windows- und Linux-Server die [Updateverwaltung](../../automation/update-management/overview.md). |
-| Automatische Azure-Verwaltung | Onboarding einer Reihe von Azure-Diensten, wenn Sie [Automanage von Computern für Server mit Arc-Unterstützung](../../automanage/automanage-arc.md) verwenden. |
+| Azure-Automatisierung |Automatisieren Sie häufige und zeitaufwändige Verwaltungsaufgaben mithilfe von PowerShell und Python-[Runbooks](../../automation/automation-runbook-execution.md).<br> Bewerten von Konfigurationsänderungen bei installierter Software, Microsoft-Diensten, Windows-Registrierung und -Dateien und Linux-Daemons mittels [Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md).<br> Verwalten Sie für die Verwaltung von Betriebssystemupdates für Ihre Windows- und Linux-Server die [Updateverwaltung](../../automation/update-management/overview.md). |
+| Azure Automanage (Vorschau) | Automatisieren Sie das Onboarding und die Konfiguration einer Reihe von Azure-Diensten, wenn Sie [Automanage für Server mit Arc-Unterstützung](../../automanage/automanage-arc.md) verwenden. |
 | VM-Erweiterungen | Stellt Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung mittels unterstützter [VM-Erweiterungen von Servern mit Arc-Unterstützung](manage-vm-extensions.md) für Ihren Nicht-Azure-Windows- oder Nicht-Linux-Computer zur Verfügung. |
 |**Überwachen**|
 | Azure Monitor | Überwachen Sie die Leistung des Gastbetriebssystems des verbundenen Computers, und ermitteln Sie Anwendungskomponenten, um deren Prozesse und Abhängigkeiten mit anderen Ressourcen über [Azure Insights](../../azure-monitor/vm/vminsights-overview.md) zu überwachen. Sammeln Sie andere Protokolldaten, z. B. Leistungsdaten und Ereignisse, vom Betriebssystem oder von Workloads, die auf dem Computer mit dem [Log Analytics-Agent](../../azure-monitor/agents/agents-overview.md#log-analytics-agent) ausgeführt werden. Diese Daten werden in einem [Log Analytics-Arbeitsbereich](../../azure-monitor/logs/design-logs-deployment.md) gespeichert. |

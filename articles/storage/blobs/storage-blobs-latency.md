@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 20a1fd8b222da14eb70206d4a9e3b087d4b20690
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e3ed432e1c0c6b9fbe602720935e5c549437587a
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662588"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277117"
 ---
 # <a name="latency-in-blob-storage"></a>Latenz im Blobspeicher
 
 Wartezeit wird gelegentlich auch als Antwortzeit bezeichnet und ist die Zeit, die eine Anwendung auf den Abschluss einer Anforderung warten muss. Die Wartezeit kann sich direkt auf die Leistung einer Anwendung auswirken. Eine kurze Wartezeit ist häufig wichtig in Szenarien mit menschlicher Interaktion – etwa bei Kreditkartentransaktionen oder beim Laden von Webseiten. Systeme, die eine hohe Verarbeitungsrate für Ereignisse benötigen (beispielsweise IoT-Ereignisse oder Protokollierung von Telemetriedaten) sind ebenfalls auf kurze Wartezeiten angewiesen. In diesem Artikel erfahren Sie, wie Sie die Wartezeit für Vorgänge in Blockblobs nachvollziehen und messen und wie Sie Anwendungen mit kurzer Wartezeit entwerfen.
 
-In Azure Storage stehen für Blockblobs zwei verschiedene Leistungsoptionen zur Verfügung: „Premium“ und „Standard“. Premium-Blockblobs bieten dank SSD-Hochleistungsdatenträgern eine deutlich kürzere und konsistentere Wartezeit als Standard-Blockblobs. Weitere Informationen finden Sie im Artikel [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md) unter **Blockblobspeicher mit Premium-Leistung**.
+In Azure Storage stehen für Blockblobs zwei verschiedene Leistungsoptionen zur Verfügung: „Premium“ und „Standard“. Premium-Blockblobs bieten dank SSD-Hochleistungsdatenträgern eine deutlich kürzere und konsistentere Wartezeit als Standard-Blockblobs. Weitere Informationen finden Sie im Abschnitt [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md) unter **Blockblobspeicher mit Premium-Leistung**.
 
 ## <a name="about-azure-storage-latency"></a>Informationen zur Azure Storage-Wartezeit
 
