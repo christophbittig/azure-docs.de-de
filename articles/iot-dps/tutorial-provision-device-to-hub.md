@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: b6dce9f84ff78a7caaf5f5f7ef702053640cee7a
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: eed3ff374850d4861c94fe79263c26a8f33760ac
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112519099"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271686"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Tutorial: Bereitstellen des Geräts für eine IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts
 
-Im vorherigen Tutorial haben Sie erfahren, wie ein Gerät eingerichtet wird, um eine Verbindung mit Ihrem Device Provisioning-Dienst herzustellen. In diesem Tutorial erfahren Sie, wie Sie mithilfe dieses Diensts Ihr Gerät durch automatische Bereitstellung und **_Registrierungslisten_** für eine einzelne IoT Hub-Instanz bereitstellen. Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
+Im vorherigen Tutorial haben Sie erfahren, wie ein Gerät eingerichtet wird, um eine Verbindung mit Ihrer Device Provisioning Service-Instanz herzustellen. In diesem Tutorial erfahren Sie, wie Sie mithilfe dieses Diensts Ihr Gerät durch automatische Bereitstellung und **_Registrierungslisten_** für eine einzelne IoT Hub-Instanz bereitstellen. Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 > [!div class="checklist"]
 > * Registrieren des Geräts
@@ -56,7 +56,7 @@ Es gibt zwei Möglichkeiten zum Registrieren des Geräts beim Device Provisionin
 
 Nun registrieren Sie das Gerät mithilfe der erforderlichen Sicherheitsartefakte basierend auf dem Nachweismechanismus des Geräts bei der Device Provisioning-Dienstinstanz: 
 
-1. Melden Sie sich beim Azure-Portal an, klicken Sie im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Device Provisioning-Dienst.
+1. Melden Sie sich am Azure-Portal an, klicken Sie im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Device Provisioning-Dienst.
 
 2. Wählen Sie auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Registrierungen verwalten** aus. Wählen Sie je nach Ihrer Geräteinstallation entweder die Registerkarte **Individuelle Registrierungen** oder **Registrierungsgruppen**. Klicken Sie ganz oben auf die Schaltfläche **Hinzufügen**. Wählen Sie **TPM** oder **X.509** als *Mechanismus* zum Identitätsnachweis aus, und geben Sie wie zuvor erläutert die entsprechenden Sicherheitsartefakte ein. Sie können eine neue **IoT Hub-Geräte-ID** eingeben. Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
 
@@ -64,13 +64,13 @@ Nun registrieren Sie das Gerät mithilfe der erforderlichen Sicherheitsartefakte
 
     ![Erfolgreiche TPM-Registrierung im Portal](./media/tutorial-provision-device-to-hub/tpm-enrollment-success.png)
 
-Nach der Registrierung wartet der Bereitstellungsdienst, bis das Gerät gestartet und zu einem beliebigen Zeitpunkt eine Verbindung mit diesem hergestellt wird. Wenn Ihr Gerät zum ersten Mal gestartet wird, interagiert die Client-SDK-Bibliothek zur Extraktion der Sicherheitsartefakte vom Gerät mit Ihrem Chip und überprüft die Registrierung bei Ihrem Device Provisioning-Dienst. 
+Nach der Registrierung wartet der Bereitstellungsdienst, bis das Gerät gestartet und zu einem beliebigen Zeitpunkt eine Verbindung mit diesem hergestellt wird. Wenn Ihr Gerät zum ersten Mal gestartet wird, interagiert die Client-SDK-Bibliothek zur Extraktion der Sicherheitsartefakte vom Gerät mit Ihrem Chip und überprüft die Registrierung bei Ihrer Device Provisioning Service-Instanz. 
 
 ## <a name="start-the-iot-device"></a>Starten des IoT-Geräts
 
-Bei Ihrem IoT-Gerät kann es sich um ein echtes Gerät oder ein simuliertes Gerät handeln. Da das IoT-Gerät jetzt bei einer Device Provisioning Service-Instanz registriert ist, kann es nun gestartet werden und zur Erkennung mithilfe des Nachweismechanismus den Bereitstellungsdienst aufrufen. Nach der Erkennung des Geräts durch den Bereitstellungsdienst wird es einem IoT-Hub hinzugefügt. 
+Bei Ihrem IoT-Gerät kann es sich um ein echtes Gerät oder ein simuliertes Gerät handeln. Da das IoT-Gerät jetzt bei einer Device Provisioning Service-Instanz registriert ist, kann es nun gestartet werden und zur Erkennung mithilfe des Nachweismechanismus den Bereitstellungsdienst aufrufen. Nach der Erkennung des Geräts durch den Bereitstellungsdienst wird es einem IoT-Hub hinzugefügt.
 
-Beispiele für simulierte Geräte, die sowohl TPM- als auch X.509-Nachweise nutzen, stehen für C, Java, C#, Node.js und Python zur Verfügung. Für ein simuliertes Gerät, das TPM und das [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) verwendet, wird beispielsweise der im Abschnitt [Simulieren der ersten Startsequenz für das Gerät](quick-create-simulated-device.md#simulate-first-boot-sequence-for-the-device) erläuterte Prozess ausgeführt. Das gleiche Gerät bezieht sich bei Verwendung des X.509-Zertifikats auf diesen Abschnitt zur [Startsequenz](quick-create-simulated-device-x509.md#simulate-first-boot-sequence-for-the-device).
+Beispiele für simulierte Geräte, die sowohl TPM- als auch X.509-Nachweise nutzen, stehen für C, Java, C#, Node.js und Python zur Verfügung.  Ein Beispiel für ein Gerät, das den TPM-Nachweis nutzt, finden Sie unter [Schnellstart: Bereitstellen eines simulierten TPM-Geräts](quick-create-simulated-device-tpm.md). Ein Beispiel für ein Gerät, das den X.509-Nachweis nutzt, finden Sie unter [Schnellstart: Bereitstellen eines simulierten X.509-Geräts mithilfe des Azure IoT C SDK](quick-create-simulated-device-x509.md#prepare-and-run-the-device-provisioning-code).
 
 Starten Sie das Gerät, damit die Clientanwendung Ihres Geräts mit der Registrierung bei Ihrer Device Provisioning Service-Instanz beginnen kann.  
 
@@ -86,7 +86,7 @@ Nach dem Starten Ihres Geräts sollten die folgenden Aktionen ausgeführt werden
 
     ![Erfolgreiche Herstellung einer Verbindung mit dem Hub im Portal](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-Weitere Informationen finden Sie unter dem Beispiel zur Bereitstellung eines Geräteclients: [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). In diesem Beispiel wird die Bereitstellung eines simulierten Geräts mit TPM, X.509-Zertifikaten und symmetrischen Schlüsseln veranschaulicht. Schritt-für-Schritt-Anleitungen zur Verwenden des Beispiels finden Sie in den Schnellstartanleitungen zu [TPM](./quick-create-simulated-device.md), zu [X.509](./quick-create-simulated-device-x509.md) und zu [symmetrischen Schlüsseln](./quick-create-simulated-device-symm-key.md).
+Weitere Informationen finden Sie unter dem Beispiel zur Bereitstellung eines Geräteclients: [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). In diesem Beispiel wird die Bereitstellung eines simulierten Geräts mit TPM, X.509-Zertifikaten und symmetrischen Schlüsseln veranschaulicht. Schritt-für-Schritt-Anleitungen zur Verwenden des Beispiels finden Sie in den Schnellstartanleitungen zu [TPM](./quick-create-simulated-device-tpm.md), zu [X.509](./quick-create-simulated-device-x509.md) und zu [symmetrischen Schlüsseln](./quick-create-simulated-device-symm-key.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie Folgendes gelernt:

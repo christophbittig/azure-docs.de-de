@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 27e17c5adeb7ab5a55b4783bac86301ba4237f45
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: cf15fd428c7e487b82823586be6edfd21f6cab48
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538199"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057396"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
@@ -70,12 +70,13 @@ Für das kostenlose Zertifikat gelten die folgenden Einschränkungen:
 - Platzhalterzertifikate werden nicht unterstützt.
 - Die Verwendung als Clientzertifikat nach Zertifikatfingerabdruck wird nicht unterstützt (das Entfernen des Zertifikatfingerabdrucks ist geplant).
 - Es kann nicht exportiert werden.
+- Wird in einer nicht öffentlich zugänglichen App Service-Instanz nicht unterstützt.
 - Es wird in einer App Service-Umgebung (App Service Environment, ASE) nicht unterstützt.
 - Es wird nicht mit Stammdomänen unterstützt, die in Traffic Manager integriert sind.
 - Wenn ein Zertifikat für eine CNAME-zugeordnete Domäne gilt, muss der CNAME direkt `<app-name>.azurewebsites.net` zugeordnet werden.
 
 > [!NOTE]
-> Das kostenlose Zertifikat wird von DigiCert ausgestellt. Bei einigen Domänen der obersten Ebene müssen Sie DigiCert explizit als Zertifikataussteller zulassen, indem Sie einen [CAA-Domäneneintrag](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) (Certification Authority Authorization) mit dem folgenden Wert erstellen: `0 issue digicert.com`.
+> Das kostenlose Zertifikat wird von DigiCert ausgestellt. Bei einigen Domänen müssen Sie DigiCert explizit als Zertifikataussteller zulassen, indem Sie einen [CAA-Domäneneintrag](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) mit dem folgenden Wert erstellen: `0 issue digicert.com`.
 > 
 
 Wählen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> im linken Menü **App Services** >  **\<app-name>** aus.
@@ -131,7 +132,7 @@ Die folgende Tabelle unterstützt Sie bei der Konfiguration des Zertifikats. Kli
 | Rechtliche Bedingungen | Klicken Sie auf diese Option, um zu bestätigen, dass Sie mit den rechtlichen Bedingungen einverstanden sind. Die Zertifikate werden von GoDaddy abgerufen. |
 
 > [!NOTE]
-> Von Azure erworbene App Service-Zertifikate werden von GoDaddy ausgestellt. Bei einigen Domänen der obersten Ebene müssen Sie GoDaddy explizit als Zertifikataussteller zulassen, indem Sie einen [CAA-Domäneneintrag](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) (Certification Authority Authorization) mit dem folgenden Wert erstellen: `0 issue godaddy.com`.
+> Von Azure erworbene App Service-Zertifikate werden von GoDaddy ausgestellt. Bei einigen Domänen müssen Sie GoDaddy explizit als Zertifikataussteller zulassen, indem Sie einen [CAA-Domäneneintrag](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) mit dem folgenden Wert erstellen: `0 issue godaddy.com`.
 > 
 
 ### <a name="store-in-azure-key-vault"></a>Speichern in Azure Key Vault
@@ -331,6 +332,9 @@ Beim Ersatz eines ablaufenden Zertifikats kann sich die Art der Aktualisierung d
 3. Löschen Sie das vorhandene Zertifikat.
 
 ### <a name="renew-an-app-service-certificate"></a>Verlängern eines App Service-Zertifikats
+
+> [!NOTE]
+> Ab dem 23. September 2021 ist für App Service-Zertifikate alle 395 Tage eine Domänenüberprüfung erforderlich. Im Gegensatz zu einem von App Service verwalteten Zertifikat wird die erneute Domänenüberprüfung für App Service Certificate NICHT automatisiert.
 
 > [!NOTE]
 > Der Verlängerungsprozess erfordert, dass [der bekannte Dienstprinzipal für App Service über die erforderlichen Berechtigungen für Ihren Schlüsseltresor verfügt](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault). Diese Berechtigung wird für Sie konfiguriert, wenn Sie eine App Service Certificate-Instanz über das Portal importieren. Sie sollte nicht aus Ihrem Schlüsseltresor entfernt werden.

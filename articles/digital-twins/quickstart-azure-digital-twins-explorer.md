@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/27/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 26063c9d0c02079b2c40eb85330be499b4bb624e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 92b1eeb5317f5a7535406d1b3781a4b0b66cad45
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461982"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272451"
 ---
 # <a name="quickstart---get-started-with-a-sample-scenario-in-azure-digital-twins-explorer"></a>Schnellstart: Erste Schritte mit einem Beispielszenario in Azure Digital Twins-Explorer
 
 Mit Azure Digital Twins können Sie Livemodelle Ihrer realen Umgebungen erstellen und mit ihnen interagieren. Zuerst modellieren Sie einzelne Elemente als **digitale Zwillinge**. Anschließend verbinden Sie sie mit einem **Wissensgraphen**, der auf Liveereignisse reagieren und nach Informationen abgefragt werden kann.
 
-In diesem Schnellstart untersuchen Sie einen vordefinierten Azure Digital Twins-Graphen mit [Azure Digital Twins-Explorer](concepts-azure-digital-twins-explorer.md). Mit diesem Tool können Sie Ihre Azure Digital Twins-Daten innerhalb des Azure-Portals visualisieren und mit ihnen interagieren.
+In diesem Schnellstart untersuchen Sie einen vordefinierten Azure Digital Twins-Graphen mit [Azure Digital Twins-Explorer](concepts-azure-digital-twins-explorer.md). Mit diesem Tool können Sie Ihre Azure Digital Twins-Daten innerhalb des Azure-Portals visualisieren und mit ihnen interagieren. 
 
 Sie führen die folgenden Schritte aus:
 
@@ -31,6 +31,9 @@ Sie führen die folgenden Schritte aus:
 Der Beispielgraph, den Sie verwenden, stellt ein Gebäude mit zwei Etagen und zwei Räumen dar. Floor0 enthält Room0, Floor1 enthält Room1. Der Graph sieht wie die folgende Abbildung aus:
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="Screenshot eines Graphen aus vier kreisförmigen Knoten, die in Azure Digital Twins-Explorer durch Pfeile verbunden sind":::
+
+>[!NOTE]
+>In dieser Schnellstartanleitung erfahren Sie anhand eines vordefinierten Graphen, wie Azure Digital Twins Daten darstellt. Der Einfachheit halber wird in der Schnellstartanleitung nicht das Einrichten von Verbindungen zwischen IoT Hub-Geräten und deren Graphdarstellungen behandelt. Informationen zum Einrichten eines verbundenen End-to-End-Flows für Ihren Graphen finden Sie unter [Tutorial: Erstellen einer End-to-End-Lösung](tutorial-end-to-end.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

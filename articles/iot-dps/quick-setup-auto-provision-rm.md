@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 8ec795e7ad54d2101573d857fa52b5aaad0ed71d
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 20a6ced453ca49c08131917f0d22c4c7d9f759a9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032391"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278745"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>Schnellstart: Einrichten von IoT Hub Device Provisioning Service (DPS) mithilfe einer ARM-Vorlage
 
@@ -170,4 +170,4 @@ Sie können auch Ressourcengruppen und einzelne Ressourcen löschen, indem Sie d
 In diesem Schnellstart haben Sie einen IoT-Hub und eine Instanz von Azure IoT Hub Device Provisioning Service bereitgestellt und die beiden Ressourcen verknüpft. In der Schnellstartanleitung zur Geräteerstellung erfahren Sie, wie Sie diese Einrichtung zum Bereitstellen eines Geräts verwenden.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Bereitstellen eines Geräts mit symmetrischen Schlüsseln](./quick-create-simulated-device-symm-key.md)
+> [Schnellstart: Bereitstellen eines simulierten Geräts mit symmetrischem Schlüssel](./quick-create-simulated-device-symm-key.md)

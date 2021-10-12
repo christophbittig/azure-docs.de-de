@@ -1,15 +1,15 @@
 ---
 title: 'Visual Studio Code: Erstellen von Bicep-Dateien'
 description: Hier erfahren Sie, wie Sie Visual Studio Code und die Bicep-Erweiterung für Bicep-Dateien zum Bereitstellen von Azure-Ressourcen verwenden.
-ms.date: 07/30/2021
+ms.date: 10/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4f76d18c756855798651e0c129fd4f0caec15984
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 95e7a601da5c8a9976d2341c2964df0f4d9718d0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750155"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354946"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>Schnellstart: Erstellen von Bicep-Dateien mit Visual Studio Code
 
@@ -30,6 +30,9 @@ Der VS Code mit der Bicep-Erweiterung vereinfacht die Entwicklung durch die Bere
 Geben Sie **vnet** in *main.bicep* ein. Wählen Sie **res-vnet** aus der Liste aus, und bestätigen Sie dann mit der Tabulator oder Eingabetaste.
 
 :::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/add-snippet.png" alt-text="Hinzufügen eines Ausschnitts für ein virtuelles Netzwerk":::
+
+> [!TIP]
+> Werden diese IntelliSense-Optionen in VS Code nicht angezeigt, vergewissern Sie sich, dass Sie die Bicep-Erweiterung wie unter [Voraussetzungen](#prerequisites) angegeben installiert haben. Wenn Sie die Erweiterung installiert haben, warten Sie nach dem Öffnen der Bicep-Datei einige Zeit, bis der Bicep-Sprachdienst gestartet wird. Er wird in der Regel schnell gestartet, die IntelliSense-Optionen werden aber erst nach dem Start angezeigt. Eine Benachrichtigung in der unteren rechten Ecke gibt an, dass der Dienst gestartet wird. Wenn diese Benachrichtigung nicht mehr angezeigt wird, wird der Dienst ausgeführt.
 
 Ihre Bicep-Datei enthält nun den folgenden Code:
 

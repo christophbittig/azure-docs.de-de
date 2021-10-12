@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 823c154a07fed2bc3734993c25accb37aa33a228
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 108e73334ec51e05530bd7b0fa7a273cff326bdc
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929919"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274707"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Tutorial: Verwenden von benutzerdefinierten Zuweisungsrichtlinien bei Device Provisioning Service (DPS)
 
@@ -342,9 +342,9 @@ In diesem Abschnitt aktualisieren Sie ein Bereitstellungsbeispiel mit dem Namen 
 
 Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellungsanforderung an die Instanz des Device Provisioning Service gesendet wird. Die Startsequenz bewirkt, dass der Toaster erkannt und mithilfe der benutzerdefinierten Zuweisungsrichtlinie dem IoT-Hub zugewiesen wird.
 
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning Service, und notieren Sie sich den Wert unter **_ID-Bereich_**.
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihre Device Provisioning Service-Instanz, und notieren Sie sich den Wert unter **_ID-Bereich_**.
 
-    ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
+    ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/copy-id-scope.png) 
 
 2. Öffnen Sie in Visual Studio die Projektmappendatei **azure_iot_sdks.sln**, die zuvor durch das Ausführen von CMake generiert wurde. Die Projektmappendatei befindet sich am folgenden Speicherort:
 

@@ -11,24 +11,24 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.custom: custom-portals-hub
-  ms.date: 08/28/2020
+  ms.date: 10/08/2021
 highlightedContent:
   items:
     - title: Was ist Cognitive Services?
       itemType: overview
       url: ./what-are-cognitive-services.md
-    - title: Neues in der Dokumentation
-      itemType: whats-new
-      url: whats-new-docs.md
+    - title: Lokale Cognitive Services-Container
+      itemType: concept
+      url: ./containers/index.yml
+    - title: Verantwortungsvolle Verwendung von KI
+      itemType: concept
+      url: responsible-use-of-ai-overview.md
     - title: Entwicklungsoptionen
       itemType: concept
       url: ./cognitive-services-development-options.md
     - title: Cognitive Services und maschinelles Lernen
       itemType: concept
       url: ./cognitive-services-and-machine-learning.md
-    - title: Lokale Cognitive Services-Container
-      itemType: concept
-      url: ./containers/index.yml
     - title: Cognitive Services mit Datenbanken
       itemType: concept
       url: ./big-data/cognitive-services-for-big-data.md
@@ -130,12 +130,6 @@ conceptualContent:
         - url: ./big-data/samples-python.md
           itemType: reference
           text: Beispiele für Python
-    - title: Verantwortungsvolle Verwendung von KI
-      summary: Azure Cognitive Services enthält Informationen und Richtlinien zur verantwortungsvollen Nutzung unserer KI-Dienste in Ihren Anwendungen.
-      links:
-        - url: responsible-use-of-ai-overview.md
-          itemType: overview
-          text: Verantwortungsvolle Verwendung von KI
 additionalContent:
   sections:
     - title: Zusätzliche Ressourcen

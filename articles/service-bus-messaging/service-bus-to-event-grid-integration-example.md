@@ -4,15 +4,15 @@ description: Dieser Artikel enthält Schritte zum Verarbeiten von Service Bus-Er
 documentationcenter: .net
 author: spelluru
 ms.topic: tutorial
-ms.date: 08/13/2021
+ms.date: 10/04/2021
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 013468d1b6e5ba6fccb1277f715b5a42a469f4a2
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 5e5089985b56ad271f3de41fc3c68f091beddffb
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182581"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457197"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-logic-apps"></a>Tutorial: Reagieren auf über Azure Event Grid empfangene Azure Service Bus-Ereignisse mit Azure Logic Apps
 In diesem Tutorial erfahren Sie, wie Sie mit Azure Logic Apps auf Azure Service Bus-Ereignisse reagieren, die über Azure Event Grid empfangen wurden. 
@@ -24,12 +24,14 @@ In diesem Schritt erstellen Sie eine Azure-Logik-App, die Service Bus-Ereignisse
 
 1. Erstellen Sie im Azure-Portal eine Logik-App.
     1. Wählen Sie **+Ressource erstellen**, dann **Integration** und schließlich **Logik-App** aus. 
-    2. Geben Sie auf der Seite **Logik-App – Erstellen** einen **Namen** für die Logik-App ein.
-    3. Wählen Sie Ihr Azure- **Abonnement** aus. 
-    4. Wählen Sie für die **Ressourcengruppe** **Vorhandene verwenden** aus, und wählen Sie die Ressourcengruppe aus, die Sie für andere Ressourcen (wie Azure-Funktion, Service Bus-Namespace) verwendet haben, die Sie zuvor erstellt haben. 
-    5. Wählen Sie den **Speicherort** für die Logik-App aus. 
-    6. Klicken Sie auf **Überprüfen + erstellen**. 
+    2. Wählen Sie Ihr Azure- **Abonnement** aus. 
+    3. Wählen Sie für die **Ressourcengruppe** **Vorhandene verwenden** aus, und wählen Sie die Ressourcengruppe aus, die Sie für andere Ressourcen (wie Azure-Funktion, Service Bus-Namespace) verwendet haben, die Sie zuvor erstellt haben. 
+    1. Wählen Sie unter **Typ** die Option **Verbrauch** aus. 
+    1. Geben Sie einen **Namen** für die Logik-App ein.
+    1. Wählen Sie die **Region** für die Logik-App aus. 
+    1. Klicken Sie auf **Überprüfen + erstellen**. 
     1. Wählen Sie auf der Seite **Überprüfen und erstellen** die Option **Erstellen** aus, um die Logik-App zu erstellen. 
+    1. Wählen Sie auf der Seite **Deployment complete** (Bereitstellung abgeschlossen) die Option **Zu Ressource wechseln** aus. 
 1. Wählen Sie auf der Seite **Designer für Logik-Apps** unter **Vorlagen** den Eintrag **Leere Logik-App** aus. 
 
 ### <a name="add-a-step-receive-messages-from-service-bus-via-event-grid"></a>Hinzufügen eines Schritts zum Empfangen von Nachrichten von Service Bus über Event Grid
@@ -43,10 +45,12 @@ In diesem Schritt erstellen Sie eine Azure-Logik-App, die Service Bus-Ereignisse
     1. Wählen Sie Ihr Azure-Abonnement. 
     2. Wählen Sie für **Ressourcentyp** den Wert **Microsoft.ServiceBus.Namespaces** aus. 
     3. Wählen Sie für **Ressourcenname** Ihren Service Bus-Namespace aus. 
-    4. Wählen Sie **Neuen Parameter hinzufügen** und dann **Suffixfilter** aus. 
-    5. Geben Sie für **Suffixfilter** den Namen Ihres Service Bus-Themenabonnements ein. 
+    4. Wählen Sie **Neuen Parameter hinzufügen** > **Suffixfilter** aus, und verschieben Sie dann den Fokus auf eine Stelle außerhalb der Dropdownliste.
+    
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/add-new-parameter-suffix-filter.png" alt-text="Abbildung: Hinzufügen eines Suffixfilters":::
+    1. Geben Sie für **Suffixfilter** den Namen Ihres Service Bus-Themenabonnements ein. 
         ![Designer für Logik-Apps: Ereignis konfigurieren](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
-6. Wählen Sie im Designer **+ Neuer Schritt** aus, und führen Sie die folgenden Schritte aus:
+1. Wählen Sie im Designer **+ Neuer Schritt** aus, und führen Sie die folgenden Schritte aus:
     1. Suchen Sie nach **Service Bus**.
     2. Wählen Sie in der Liste **Service Bus** aus. 
     3. Wählen Sie in der Liste **Aktionen** den Eintrag **Nachrichten abrufen** aus. 
@@ -86,16 +90,19 @@ In diesem Schritt fügen Sie Schritte hinzu, um die empfangene Nachricht in eine
 1. Geben Sie in das Textfeld **Connectors und Aktionen durchsuchen** den Eintrag **Office 365** ein. 
 1. Wählen Sie in den Suchergebnissen **Office 365 Outlook** aus. 
 1. Wählen Sie in der Liste der Aktionen **E-Mail senden (V2)** aus. 
+1. Gehen Sie im Fenster **E-Mail senden (V2)** wie folgt vor: 
 1. Wählen Sie innerhalb des Textfelds einen Text für **Body** (Text) aus, und führen Sie die folgenden Schritte aus:
+    1. Für **To** („An“) geben Sie eine E-Mail-Adresse ein. 
+    1. Für **Subject** („Betreff“) geben Sie **Vom Service Bus-Themenabonnement empfangene Nachricht** ein.  
     1. Wechseln Sie zu **Ausdruck**.
-    1. Geben Sie `base64ToString(items('For_each')?['ContentData'])` ein. 
+    1. Geben Sie den folgenden Ausdruck ein:
+    
+        ```
+        base64ToString(items('For_each')?['ContentData'])
+        ``` 
     1. Klicken Sie auf **OK**. 
     
-        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/specify-expression-email.png" alt-text="Abbildung des Ausdrucks für Text der Aktivität &quot;E-Mail senden&quot;":::
-1. Für **Subject** („Betreff“) geben Sie **Vom Service Bus-Themenabonnement empfangene Nachricht** ein.  
-1. Für **To** („An“) geben Sie eine E-Mail-Adresse ein. 
-
-    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/send-email-configured.png" alt-text="Abbildung der konfigurierten Aktivität „E-Mail senden“":::
+        :::image type="content" source="./media/service-bus-to-event-grid-integration-example/specify-expression-email.png" alt-text="Abbildung: Ausdruck für Text der Aktivität „E-Mail senden“":::
 
 #### <a name="add-another-action-in-the-foreach-loop-to-complete-the-message"></a>Hinzufügen einer weiteren Aktion in der ForEach-Schleife zum Abschließen der Nachricht         
 1. Wählen Sie innerhalb der **ForEach**-Schleife den Befehl **Aktion hinzufügen** aus. 
@@ -112,7 +119,7 @@ In diesem Schritt fügen Sie Schritte hinzu, um die empfangene Nachricht in eine
 
 ## <a name="test-the-app"></a>Testen der App
 1. Falls Sie noch keine Testnachrichten an das Thema gesendet haben, sollten Sie die Anleitung im Abschnitt [Senden von Nachricht an das Service Bus-Thema](#send-messages-to-the-service-bus-topic) befolgen. 
-1. Wechseln Sie zur Seite **Übersicht** Ihrer Logik-App. Sie sehen, dass die Logik-App ausgeführt wird, im **Ausführungsverlauf** für die gesendeten Nachrichten. Es kann einige Minuten dauern, bis die Ausführungen der Logik-App angezeigt werden. Wählen Sie in der Symbolleiste die Option **Aktualisieren** aus, um die Seite zu aktualisieren. 
+1. Wechseln Sie zur Seite **Übersicht** Ihrer Logik-App und dann im unteren Bereich zur Registerkarte **Ausführungsverlauf**. Sie sehen die an das Thema gesendeten Nachrichten zu Logik-App-Ausführungen. Es kann einige Minuten dauern, bis die Ausführungen der Logik-App angezeigt werden. Wählen Sie in der Symbolleiste die Option **Aktualisieren** aus, um die Seite zu aktualisieren. 
 
     ![Designer für Logik-Apps – Logik-App wird ausgeführt](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 1. Wählen Sie eine Ausführung der Logik-App aus, um die Details dafür anzuzeigen. Beachten Sie, dass in der for-Schleife fünf Nachrichten verarbeitet wurden. 

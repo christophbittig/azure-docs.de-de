@@ -1,15 +1,15 @@
 ---
 title: 'Schnellstart: Neue Richtlinienzuweisung mit Python'
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe von Python eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
-ms.date: 08/17/2021
+ms.date: 10/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 59f61e05afd9e3abb0aa6bb6a76f632187940412
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: fd9328fdc3f925756652853a81e8b9c77a0266e7
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323490"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350781"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe von Python
 
@@ -51,6 +51,9 @@ Damit Python mit Azure Policy verwendet werden kann, muss die Bibliothek hinzuge
 
    # Add the CLI Core library for Python for authentication (development only!)
    pip install azure-cli-core
+
+   # Add the Azure identity library for Python
+   pip install azure.identity
    ```
 
    > [!NOTE]
@@ -60,7 +63,7 @@ Damit Python mit Azure Policy verwendet werden kann, muss die Bibliothek hinzuge
 
    ```bash
    # Check each installed library
-   pip show azure-mgmt-policyinsights azure-mgmt-resource azure-cli-core
+   pip show azure-mgmt-policyinsights azure-mgmt-resource azure-cli-core azure.identity
    ```
 
 ## <a name="create-a-policy-assignment"></a>Erstellen einer Richtlinienzuweisung
@@ -71,16 +74,21 @@ Führen Sie den folgenden Code aus, um eine neue Richtlinienzuweisung zu erstell
 
 ```python
 # Import specific methods and models from other libraries
-from azure.common.credentials import get_azure_cli_credentials
-from azure.common.client_factory import get_client_from_cli_profile
 from azure.mgmt.resource.policy import PolicyClient
-from azure.mgmt.resource.policy.models import PolicyAssignment
+from azure.mgmt.resource.policy.models import PolicyAssignment, Identity, UserAssignedIdentitiesValue, PolicyAssignmentUpdate
+from azure.identity import AzureCliCredential
+
+# Set subscription
+subId = "{subId}"
+assignmentLocation = "westus2"
 
 # Get your credentials from Azure CLI (development only!) and get your subscription list
-policyClient = get_client_from_cli_profile(PolicyClient)
+credential = AzureCliCredential()
+policyClient = PolicyClient(credential, subId, base_url=none)
 
 # Create details for the assignment
-policyAssignmentDetails = PolicyAssignment(display_name="Audit VMs without managed disks Assignment", policy_definition_id="/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d", scope="{scope}", description="Shows all virtual machines not using managed disks")
+policyAssignmentIdentity = Identity(type="SystemAssigned")
+policyAssignmentDetails = PolicyAssignment(display_name="Audit VMs without managed disks Assignment", policy_definition_id="/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d", description="Shows all virtual machines not using managed disks", identity=policyAssignmentIdentity, location=assignmentLocation)
 
 # Create new policy assignment
 policyAssignment = policyClient.policy_assignments.create("{scope}", "audit-vm-manageddisks", policyAssignmentDetails)
@@ -92,6 +100,7 @@ print(policyAssignment)
 In diesen Befehlen werden folgende Informationen verwendet:
 
 Zuweisungsdetails:
+- **subId**: Ihr Abonnement. Für die Authentifizierung erforderlich. Ersetzen Sie `{subId}` durch Ihr Abonnement.
 - **display_name**: Der Anzeigename für die Richtlinienzuweisung. Verwenden Sie in diesem Fall _Zuweisung für die Überwachung virtueller Computer ohne verwaltete Datenträger_.
 - **policy_definition_id**: Der Pfad der Richtliniendefinition, auf dessen Grundlage Sie die Zuweisung erstellen. In diesem Fall ist es die ID der Richtliniendefinition _Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden_. In diesem Beispiel ist die Richtliniendefinition integriert, und der Pfad enthält keine Verwaltungsgruppen- oder Abonnementinformationen.
 - **scope**: Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird. Ein solcher Bereich kann eine Verwaltungsgruppe oder auch nur eine einzelne Ressource sein. Ersetzen Sie `{scope}` unbedingt durch eins der folgenden Muster:
@@ -115,24 +124,28 @@ Verwenden Sie folgende Informationen, um Ressourcen zu identifizieren, die mit d
 
 ```python
 # Import specific methods and models from other libraries
-from azure.common.client_factory import get_client_from_cli_profile
 from azure.mgmt.policyinsights._policy_insights_client import PolicyInsightsClient
 from azure.mgmt.policyinsights.models import QueryOptions
+from azure.identity import AzureCliCredential
+
+# Set subscription
+subId = "{subId}"
 
 # Get your credentials from Azure CLI (development only!) and get your subscription list
-policyInsightsClient = get_client_from_cli_profile(PolicyInsightsClient)
+credential = AzureCliCredential()
+policyClient = PolicyInsightsClient(credential, subId, base_url=none)
 
 # Set the query options
 queryOptions = QueryOptions(filter="IsCompliant eq false and PolicyAssignmentId eq 'audit-vm-manageddisks'",apply="groupby((ResourceId))")
 
 # Fetch 'latest' results for the subscription
-results = policyInsightsClient.policy_states.list_query_results_for_subscription(policy_states_resource="latest", subscription_id="{subscriptionId}", query_options=queryOptions)
+results = policyInsightsClient.policy_states.list_query_results_for_subscription(policy_states_resource="latest", subscription_id=subId, query_options=queryOptions)
 
 # Show results
 print(results)
 ```
 
-Ersetzen Sie `{subscriptionId}` durch das Abonnement, für das Sie die Konformitätsergebnisse für diese Richtlinienzuweisung anzeigen möchten. Eine Liste anderer Bereiche und Möglichkeiten zum Zusammenfassen der Daten finden Sie im Artikel zu [Richtlinienstatusmethoden](/python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights.operations.policystatesoperations#methods).
+Ersetzen Sie `{subId}` durch das Abonnement, für das Sie die Konformitätsergebnisse für diese Richtlinienzuweisung anzeigen möchten. Eine Liste anderer Bereiche und Möglichkeiten zum Zusammenfassen der Daten finden Sie im Artikel zu [Richtlinienstatusmethoden](/python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights.operations.policystatesoperations#methods).
 
 Ihre Ergebnisse sollten in etwa wie im folgenden Beispiel aussehen:
 
@@ -155,11 +168,15 @@ Führen Sie den folgenden Befehl aus, um die Richtlinienzuweisung zu entfernen:
 
 ```python
 # Import specific methods and models from other libraries
-from azure.common.client_factory import get_client_from_cli_profile
 from azure.mgmt.resource.policy import PolicyClient
+from azure.identity import AzureCliCredential
+
+# Set subscription
+subId = "{subId}"
 
 # Get your credentials from Azure CLI (development only!) and get your subscription list
-policyClient = get_client_from_cli_profile(PolicyClient)
+credential = AzureCliCredential()
+policyClient = PolicyClient(credential, subId, base_url=none)
 
 # Delete the policy assignment
 policyAssignment = policyClient.policy_assignments.delete("{scope}", "audit-vm-manageddisks")
@@ -168,7 +185,7 @@ policyAssignment = policyClient.policy_assignments.delete("{scope}", "audit-vm-m
 print(policyAssignment)
 ```
 
-Ersetzen Sie `{scope}` durch den gleichen Bereich, den Sie auch für die Erstellung der Richtlinienzuweisung verwendet haben.
+Ersetzen Sie `{subId}` durch Ihr Abonnement und `{scope}` durch den gleichen Bereich, den Sie auch für die Erstellung der Richtlinienzuweisung verwendet haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

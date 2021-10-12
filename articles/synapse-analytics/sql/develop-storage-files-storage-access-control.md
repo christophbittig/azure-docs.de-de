@@ -10,12 +10,12 @@ ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d3a1fe8f4b06601ed6b3e77ffa5743506e923ec4
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 9e610e7ec02ec16d077087dab4742721c4209bfa
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771748"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234849"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -36,7 +36,7 @@ Alternativ können Sie Ihre Dateien öffentlich verfügbar machen, indem Sie ano
 
 ## <a name="supported-storage-authorization-types"></a>Unterstützte Autorisierungstypen für den Speicherzugriff
 
-Ein bei einem serverlosen SQL-Pool angemeldeter Benutzer muss für den Zugriff auf und die Abfrage von Dateien in Azure Storage autorisiert sein, wenn die Dateien nicht öffentlich verfügbar sind. Sie können drei Autorisierungstypen für den Zugriff auf nicht öffentlichen Speicher verwenden: [Benutzeridentität](?tabs=user-identity), [Shared Access Signature](?tabs=shared-access-signature) und [Verwaltete Identität](?tabs=managed-identity).
+Ein bei einem serverlosen SQL-Pool angemeldeter Benutzer muss für den Zugriff auf und die Abfrage von Dateien in Azure Storage autorisiert sein, wenn die Dateien nicht öffentlich verfügbar sind. Sie können vier Autorisierungstypen für den Zugriff auf nicht öffentlichen Speicher verwenden: [Benutzeridentität](?tabs=user-identity), [Shared Access Signature](?tabs=shared-access-signature), [Dienstprinzipal](?tab/service-principal) und [Verwaltete Identität](?tabs=managed-identity).
 
 > [!NOTE]
 > **Azure AD-Pass-Through** ist das Standardverhalten, wenn Sie einen Arbeitsbereich erstellen.
@@ -46,7 +46,7 @@ Ein bei einem serverlosen SQL-Pool angemeldeter Benutzer muss für den Zugriff a
 Die **Benutzeridentität** (auch „Azure AD-Passthrough“ genannt) ist ein Autorisierungstyp, bei dem die Identität des bei einem serverlosen SQL-Pool angemeldeten Azure AD-Benutzers verwendet wird, um den Datenzugriff zu autorisieren. Vor dem Zugriff auf die Daten muss der Azure Storage-Administrator dem Azure AD-Benutzer die erforderlichen Berechtigungen erteilen. Wie Sie der Tabelle unten entnehmen können, wird diese Art der Autorisierung für den Typ „SQL-Benutzer“ nicht unterstützt.
 
 > [!IMPORTANT]
-> Das AAD-Authentifizierungstoken wird von den Client-Anwendungen möglicherweise zwischengespeichert. Beispielsweise speichert PowerBI das AAD-Token zwischen und verwendet genau dieses Token noch eine Stunde lang. Die zeitintensiven Abfragen können fehlschlagen, wenn das Token während der Ausführung der Abfrage abläuft. Wenn durch ein während der Abfrage ablaufendes AAD-Zugriffstoken Abfragefehler auftreten, sollten Sie eine Umstellung auf [Verwaltete Identität](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) oder [Shared Access Signature](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types)in Erwägung ziehen.
+> Das AAD-Authentifizierungstoken wird von den Client-Anwendungen möglicherweise zwischengespeichert. Beispielsweise speichert PowerBI das AAD-Token zwischen und verwendet genau dieses Token noch eine Stunde lang. Die zeitintensiven Abfragen können fehlschlagen, wenn das Token während der Ausführung der Abfrage abläuft. Wenn durch ein während der Abfrage ablaufendes AAD-Zugriffstoken Abfragefehler auftreten, sollten Sie eine Umstellung auf [Dienstprinzipal](develop-storage-files-storage-access-control.md?tabs=service-principal#supported-storage-authorization-types), [Verwaltete Identität](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) oder [Shared Access Signature](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types) in Erwägung ziehen.
 
 Sie müssen über eine Rolle als Besitzer, Mitwirkender oder Leser für Storage-Blobdaten verfügen, um mithilfe Ihrer Identität auf die Daten zugreifen zu können. Alternativ können Sie differenzierte ACL-Regeln für den Zugriff auf Dateien und Ordner angeben. Auch wenn Sie Besitzer eines Speicherkontos sind, müssen Sie sich selbst zu einer der Rollen für den Zugriff auf Storage-Blobdaten hinzufügen.
 Weitere Informationen zur Zugriffssteuerung in Azure Data Lake Storage Gen2 finden Sie im Artikel [Zugriffssteuerung in Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md).
@@ -69,6 +69,14 @@ Um Zugriff über ein SAS-Token zu ermöglichen, müssen Sie datenbankbezogene od
 > [!IMPORTANT]
 > Sie haben mit dem SAS-Token keinen Zugriff auf private Speicherkonten. Ziehen Sie, um auf geschützten Speicher zuzugreifen, einen Wechsel zu Authentifizierung mit [Verwalteter Identität](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) oder [Azure AD Passthrough](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) im Betracht.
 
+
+### <a name="service-principal"></a>[Dienstprinzipal](#tab/service-principal)
+**Dienstprinzipal** ist die lokale Darstellung eines globalen Anwendungsobjekts in einem bestimmten Azure AD-Mandanten. Diese Authentifizierungsmethode eignet sich für den Fall, dass der Speicherzugriff für eine Benutzeranwendung, einen Dienst oder ein Automatisierungstool autorisiert werden soll. 
+
+Die Anwendung muss in Azure Active Directory registriert sein. Informationen zum Registrierungsprozess finden Sie unter [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](../../active-directory/develop/quickstart-register-app.md). Sobald die Anwendung registriert ist, kann ihr Dienstprinzipal für die Autorisierung verwendet werden. 
+
+Dem Dienstprinzipal muss Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ für Speicherblobdaten zugewiesen werden, damit die Anwendung auf die Daten zugreifen kann. Auch wenn der Dienstprinzipal Besitzer eines Speicherkontos ist, muss ihm eine entsprechende Rolle für Speicherblobdaten zugewiesen werden. Als Alternative zur Gewährung des Zugriffs auf Speicherdateien und -ordner können differenzierte ACL-Regeln für den Dienstprinzipal definiert werden. Weitere Informationen zur Zugriffssteuerung in Azure Data Lake Storage Gen2 finden Sie im Artikel [Zugriffssteuerung in Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-access-control.md).
+
 ### <a name="managed-identity"></a>[Verwaltete Identität](#tab/managed-identity)
 
 Eine **verwaltete Identität** wird auch als MSI bezeichnet. Hierbei handelt es sich um ein Feature von Azure Active Directory (Azure AD), das Azure-Dienste für einen serverlosen SQL-Pool bereitstellt. Es stellt außerdem eine automatisch verwaltete Identität in Azure AD bereit. Diese Identität kann verwendet werden, um eine Anforderung für den Datenzugriff in Azure Storage zu autorisieren.
@@ -81,15 +89,19 @@ Sie können auf öffentlich verfügbare Dateien in Azure-Speicherkonten zugreife
 
 ---
 
+#### <a name="cross-tenant-scenarios"></a>Mandantenübergreifende Szenarios
+Wenn sich Azure Storage in einem anderen Mandanten als der serverlose Synapse-SQL-Pool befindet, wird die Autorisierung über den **Dienstprinzipal** empfohlen. **SAS**-Autorisierung ist ebenfalls möglich, während die **verwaltete Identität** nicht unterstützt wird. 
+
 ### <a name="supported-authorization-types-for-databases-users"></a>Unterstützte Autorisierungstypen für Datenbankbenutzer
 
-In der folgenden Tabelle sind die verfügbaren Autorisierungstypen aufgeführt:
+In der folgenden Tabelle finden Sie die verfügbaren Autorisierungstypen für verschiedene Methoden zur Anmeldung beim serverlosen Synapse-SQL-Endpunkt:
 
-| Autorisierungstyp                    | *SQL-Benutzer*    | *Azure AD-Benutzer*     |
-| ------------------------------------- | ------------- | -----------    |
-| [Benutzeridentität](?tabs=user-identity#supported-storage-authorization-types)       | Nicht unterstützt | Unterstützt      |
-| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | Unterstützt     | Unterstützt      |
-| [Verwaltete Identität](?tabs=managed-identity#supported-storage-authorization-types) | Unterstützt | Unterstützt      |
+| Autorisierungstyp                    | *SQL-Benutzer*    | *Azure AD-Benutzer*     | *Dienstprinzipal* |
+| ------------------------------------- | ------------- | -----------    | -------- |
+| [Benutzeridentität](?tabs=user-identity#supported-storage-authorization-types)       |  Nicht unterstützt | Unterstützt      | Unterstützt|
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | Unterstützt     | Unterstützt      | Unterstützt|
+| [Dienstprinzipal](?tabs=service-principal#supported-storage-authorization-types) | Unterstützt | Unterstützt      | Unterstützt|
+| [Verwaltete Identität](?tabs=managed-identity#supported-storage-authorization-types) | Unterstützt | Unterstützt      | Unterstützt|
 
 ### <a name="supported-storages-and-authorization-types"></a>Unterstützte Speicher- und Autorisierungstypen
 
@@ -98,6 +110,7 @@ Sie können die folgenden Kombinationen aus Autorisierungstypen und Azure Storag
 | Autorisierungstyp  | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
 | [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | Unterstützt      | Nicht unterstützt   | Unterstützt     |
+| [Dienstprinzipal](?tabs=managed-identity#supported-storage-authorization-types) | Unterstützt   | Unterstützt      | Unterstützt  |
 | [Verwaltete Identität](?tabs=managed-identity#supported-storage-authorization-types) | Unterstützt      | Unterstützt        | Unterstützt     |
 | [Benutzeridentität](?tabs=user-identity#supported-storage-authorization-types)    | Unterstützt      | Unterstützt        | Unterstützt     |
 
@@ -109,6 +122,15 @@ Beim Zugriff auf Speicher, der mit der Firewall geschützt ist, kann die **Benut
 > [!NOTE]
 > Das Firewallfeature für Storage befindet sich in der Public Preview-Phase und ist in allen öffentlichen Cloudregionen verfügbar. 
 
+
+In der folgenden Tabelle finden Sie die verfügbaren Autorisierungstypen für verschiedene Methoden zur Anmeldung beim serverlosen Synapse-SQL-Endpunkt:
+
+| Autorisierungstyp                    | *SQL-Benutzer*    | *Azure AD-Benutzer*     | *Dienstprinzipal* |
+| ------------------------------------- | ------------- | -----------    | -------- |
+| [Benutzeridentität](?tabs=user-identity#supported-storage-authorization-types)       |  Nicht unterstützt | Unterstützt      | Unterstützt|
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | Nicht unterstützt     | Nicht unterstützt      | Nicht unterstützt|
+| [Dienstprinzipal](?tabs=service-principal#supported-storage-authorization-types) | Nicht unterstützt | Nicht unterstützt      | Nicht unterstützt|
+| [Verwaltete Identität](?tabs=managed-identity#supported-storage-authorization-types) | Unterstützt | Unterstützt      | Unterstützt|
 
 ### <a name="user-identity"></a>[Benutzeridentität](#tab/user-identity)
 
@@ -193,6 +215,10 @@ Führen Sie diese Schritte aus, um die Speicherkontofirewall zu konfigurieren un
 
 Shared Access Signatures können nicht für den Zugriff auf Speicher verwendet werden, der per Firewall geschützt ist.
 
+### <a name="service-principal"></a>[Dienstprinzipal](#tab/service-principal)
+
+Ein Dienstprinzipal kann nicht für den Zugriff auf Speicher verwendet werden, der per Firewall geschützt ist. Verwenden Sie stattdessen eine verwaltete Identität.
+
 ### <a name="managed-identity"></a>[Verwaltete Identität](#tab/managed-identity)
 
 Sie müssen [vertrauenswürdige Microsoft-Dienste zulassen](../../storage/common/storage-network-security.md#trusted-microsoft-services) und der [systemseitig zugewiesenen Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine Azure-Rolle zuweisen](../../storage/blobs/authorize-access-azure-active-directory.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist.
@@ -263,8 +289,18 @@ GO
 
 Optional können Sie einfach nur die Basis-URL des Speicherkontos ohne den Containernamen verwenden.
 
-### <a name="managed-identity"></a>[Verwaltete Identität](#tab/managed-identity)
+### <a name="service-principal"></a>[Dienstprinzipal](#tab/service-principal)
 
+Mit dem folgenden Skript werden Anmeldeinformationen auf Serverebene erstellt, die für den Zugriff auf Dateien in einem Speicher mithilfe des Dienstprinzipals für die Authentifizierung und Autorisierung verwendet werden können. Die **App-ID** finden Sie in den App-Registrierungen im Azure-Portal. Wählen Sie dazu die Anwendung aus, die Speicherzugriff anfordert. Das **Geheimnis** wird während der App-Registrierung abgerufen. **AuthorityUrl** ist die URL der autoritativen AAD-Oauth2.0-Stelle.
+
+```sql
+CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
+WITH IDENTITY = '<AppID>@<AuthorityUrl>' 
+, SECRET = '<Secret>'
+```
+
+### <a name="managed-identity"></a>[Verwaltete Identität](#tab/managed-identity)
+ 
 Mit dem folgenden Skript wird eine Anmeldeinformation auf Serverebene erstellt, die von der `OPENROWSET`-Funktion für den Zugriff auf eine beliebige Datei im Azure-Speicher mit der verwalteten Identität eines Arbeitsbereichs verwendet werden kann.
 
 ```sql
@@ -313,6 +349,24 @@ GO
 CREATE EXTERNAL DATA SOURCE mysample
 WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
           CREDENTIAL = SasToken
+)
+```
+
+
+### <a name="service-principal"></a>[Dienstprinzipal](#tab/service-principal)
+Mit dem folgenden Skript werden Anmeldeinformationen auf Datenbankebene erstellt, die für den Zugriff auf Dateien in einem Speicher mithilfe des Dienstprinzipals für die Authentifizierung und Autorisierung verwendet werden können. Die **App-ID** finden Sie in den App-Registrierungen im Azure-Portal. Wählen Sie dazu die Anwendung aus, die Speicherzugriff anfordert. Das **Geheimnis** wird während der App-Registrierung abgerufen. **AuthorityUrl** ist die URL der autoritativen AAD-Oauth2.0-Stelle.
+
+```sql
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>
+
+CREATE DATABASE SCOPED CREDENTIAL [<CredentialName>] WITH
+IDENTITY = '<AppID>@<AuthorityUrl>' 
+, SECRET = '<Secret>'
+GO
+CREATE EXTERNAL DATA SOURCE MyDataSource
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = CredentialName
 )
 ```
 
@@ -394,14 +448,18 @@ GO
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Y*********0'
 GO
 
--- Create databases scoped credential that use Managed Identity or SAS token. User needs to create only database-scoped credentials that should be used to access data source:
+-- Create databases scoped credential that use Managed Identity, SAS token or Service Principal. User needs to create only database-scoped credentials that should be used to access data source:
 
 CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity
 WITH IDENTITY = 'Managed Identity'
 GO
 CREATE DATABASE SCOPED CREDENTIAL SasCredential
 WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
-
+GO
+CREATE DATABASE SCOPED CREDENTIAL SPNCredential WITH
+IDENTITY = '**44e*****8f6-ag44-1890-34u4-22r23r771098@https://login.microsoftonline.com/**do99dd-87f3-33da-33gf-3d3rh133ee33/oauth2/token' 
+, SECRET = '.7OaaU_454azar9WWzLL.Ea9ePPZWzQee~'
+GO
 -- Create data source that one of the credentials above, external file format, and external tables that reference this data source and file format:
 
 CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
@@ -412,6 +470,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 -- Uncomment one of these options depending on authentication method that you want to use to access data source:
 --,CREDENTIAL = WorkspaceIdentity 
 --,CREDENTIAL = SasCredential 
+--,CREDENTIAL = SPNCredential
 )
 
 CREATE EXTERNAL TABLE dbo.userData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 06/16/2021
 ms.author: cshoe
-ms.openlocfilehash: b543831ceead6d386de0617b02db93a99d9507a6
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 167d6a2fbe6ec782a83c8dc3cb7f3ea57832a594
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609127"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275903"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Schnellstart: Erstellen Ihrer ersten statischen Website mit Azure Static Web Apps
 
@@ -62,17 +62,20 @@ Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kost
 
     :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="Erstellen einer statischen Web-App":::
 
+1. Wählen Sie eine Region in Ihrer Nähe aus.
+
+    > [!NOTE]
+    > Azure Static Web Apps verteilt die statischen Ressourcen global. Die von Ihnen ausgewählte Region bestimmt, wo sich Ihre optionalen Stagingumgebungen und die API-Funktions-App befinden werden.
+
 1. Wählen Sie die Voreinstellungen aus, die dem Anwendungstyp entsprechen.
 
     # <a name="no-framework"></a>[Kein Framework](#tab/vanilla-javascript)
 
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="Anwendungsvoreinstellungen: kein Framework":::
 
-    Geben Sie **./src** als Speicherort für die Anwendungsdateien ein, und drücken Sie die <kbd>EINGABETASTE</kbd>.
+    Geben Sie **/src** als Speicherort für die Anwendungsdateien ein, und drücken Sie die <kbd>EINGABETASTE</kbd>.
 
-    :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="Ausgabespeicherort des Anwendungsbuilds":::
-
-    Geben Sie **./src** als Speicherort für die Buildausgabe ein, und drücken Sie die <kbd>EINGABETASTE</kbd>.
+    Diese App erzeugt keine Buildausgabe. Vergewissern Sie sich, dass der Speicherort der Buildausgabe leer ist, und drücken Sie die <kbd>EINGABETASTE</kbd>.
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
@@ -80,7 +83,7 @@ Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kost
 
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="Anwendungsvoreinstellungen: Angular":::
 
-    Geben Sie **./** als Speicherort für die Anwendungsdateien ein.
+    Geben Sie **/** als Speicherort für die Anwendungsdateien ein.
 
     :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="Speicherort der Anwendungsdateien: Angular":::
 
@@ -92,9 +95,17 @@ Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kost
 
     :::image type="content" source="media/getting-started/extension-presets-react.png" alt-text="Anwendungsvoreinstellungen: React":::
 
+    Geben Sie **/** als Speicherort für die Anwendungsdateien ein.
+
+    Geben Sie **build** als Ausgabespeicherort für den Build ein.
+
     # <a name="vue"></a>[Vue](#tab/vue)
 
     :::image type="content" source="media/getting-started/extension-presets-vue.png" alt-text="Anwendungsvoreinstellungen: Vue":::
+
+    Geben Sie **/** als Speicherort für die Anwendungsdateien ein.
+
+    Geben Sie **dist** als Ausgabespeicherort für den Build ein.
 
     ---
 

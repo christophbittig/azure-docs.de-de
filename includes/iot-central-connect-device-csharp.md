@@ -4,14 +4,14 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: d9625e59396111eeecbd0f2ff12d945c3e717c7e
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 32afd7c4fff650e41d04a4ed809ad700cacc4e36
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114407464"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516767"
 ---
-[![Code durchsuchen](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/PnpDeviceSamples/Thermostat)
+[![Code durchsuchen](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Samples/device/PnpDeviceSamples/Thermostat)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -21,11 +21,11 @@ Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen
 
 - Einen Entwicklungscomputer mit [Visual Studio (Community, Professional oder Enterprise)](https://visualstudio.microsoft.com/downloads/)
 
-- Eine lokale Kopie des GitHub-Repositorys mit [Microsoft Azure IoT-Beispielen für C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp), das den Beispielcode enthält. Laden Sie über den folgenden Link eine Kopie des Repositorys herunter: [ZIP herunterladen](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Entzippen Sie anschließend die Datei an einem geeigneten Speicherort auf Ihrem lokalen Computer.
+- Eine lokale Kopie des GitHub-Repositorys mit [Microsoft Azure IoT-Beispielen für C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp), das den Beispielcode enthält. Laden Sie über den folgenden Link eine Kopie des Repositorys herunter: [ZIP herunterladen](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip). Entzippen Sie anschließend die Datei an einem geeigneten Speicherort auf Ihrem lokalen Computer.
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
-Öffnen Sie in der Kopie des zuvor heruntergeladenen Repositorys mit Microsoft Azure IoT-Beispielen für C# die Projektmappendatei *azure-iot-samples-csharp-master\iot-hub\Samples\device\IoTHubDeviceSamples.sln"* in Visual Studio. Erweitern Sie im **Projektmappen-Explorer** den Ordner *PnpDeviceSamples > TemperatureController*, und öffnen Sie die Dateien *Program.cs* und *TemperatureControllerSample.cs*, um den Code für dieses Beispiel anzuzeigen.
+Öffnen Sie in der Kopie des zuvor heruntergeladenen Repositorys mit Microsoft Azure IoT-Beispielen für C# die Projektmappendatei *azure-iot-samples-csharp-main\iot-hub\Samples\device\IoTHubDeviceSamples.sln"* in Visual Studio. Erweitern Sie im **Projektmappen-Explorer** den Ordner *PnpDeviceSamples > TemperatureController*, und öffnen Sie die Dateien *Program.cs* und *TemperatureControllerSample.cs*, um den Code für dieses Beispiel anzuzeigen.
 
 Wenn Sie das Beispiel ausführen, um eine Verbindung mit IoT Central herzustellen, wird Device Provisioning Service (DPS) zum Registrieren des Geräts und zum Generieren einer Verbindungszeichenfolge verwendet. Das Beispiel ruft die erforderlichen DPS-Verbindungsinformationen aus der Umgebung ab.
 

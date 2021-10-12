@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: db445dee705c47b557916f7b6d69de4668a7eaa5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8b2fc0f070ba5a07a1ac51a314f08873860e852d
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618151"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229675"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Tutorial: Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (UWP = Universelle Windows-Plattform)
 
@@ -30,7 +30,7 @@ Dieses Tutorial umfasst folgende Punkte:
 > [!div class="checklist"]
 > * Erstellen eines Projekts namens *Universelle Windows-Plattform (UWP)* in Visual Studio
 > * Registrieren der Anwendung im Azure-Portal
-> * Hinzufügen von Code zum Unterstützen der Benutzeranmeldung und -abmeldung
+> * Hinzufügen von Code zur Unterstützung der Benutzeranmeldung und -abmeldung
 > * Hinzufügen von Code zum Aufrufen der Microsoft Graph-API
 > * Testen der App
 
@@ -48,7 +48,7 @@ In diesem Leitfaden wird eine UWP-Beispielanwendung erstellt, von der die Micros
 
 In dieser Anleitung wird das folgende NuGet-Paket verwendet:
 
-|Bibliothek|Beschreibung|
+|Bibliothek|BESCHREIBUNG|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsoft Authentication Library (MSAL)|
 |[Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph-Clientbibliothek|
@@ -346,7 +346,7 @@ private async Task DisplayMessageAsync(string message)
 Registrieren Sie nun Ihre Anwendung:
 
 1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
-1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, in dem Sie die Anwendung registrieren möchten.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie die Anwendung registrieren möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
 1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `UWP-App-calling-MSGraph`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
@@ -465,7 +465,7 @@ Es werden Benutzerprofilinformationen angezeigt, die vom Microsoft Graph-API-Auf
 
 Grundlegende Informationen zum Token, das über `AcquireTokenInteractive` oder `AcquireTokenSilent` abgerufen wurde, werden im Feld **Tokeninformationen** angezeigt:
 
-|Eigenschaft  |Format  |Beschreibung |
+|Eigenschaft  |Format  |BESCHREIBUNG |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |Der zur Identifizierung des Benutzers verwendete Benutzername|
 |`Token Expires` |`DateTime` |Die Uhrzeit, zu der das Token abläuft. Das Token wird bei Bedarf von der Microsoft-Authentifizierungsbibliothek verlängert, um die Ablauffrist zu verlängern.|

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c5d3b5c1838883f3e12114f348c73bed246e0c2d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6befd620da91b569d5bd72a4d0165e81c93583ac
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079569"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235647"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Was ist SQL Server auf Azure Virtual Machines (Windows)?
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Wenn Sie noch nicht mit SQL Server auf Azure-VMs vertraut sind, sehen Sie sich d
 
 ## <a name="automated-updates"></a>Automatische Updates
 
-Für SQL Server auf Azure Virtual Machines kann [automatisiertes Patchen](automated-patching.md) verwendet werden, um ein Wartungsfenster zum automatischen Installieren wichtiger Windows- und SQL Server-Updates zu planen.
+Für SQL Server auf Azure Virtual Machines kann [automatisiertes Patchen](automated-patching.md) verwendet werden, um ein Wartungsfenster zum automatischen Installieren wichtiger Windows- und SQL Server-Updates zu planen.
 
 ## <a name="automated-backups"></a>Automatisierte Sicherungen
 

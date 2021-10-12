@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 47e913fad36c518fb46e708d1370d054c312cdf6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ceb5200f716a00d0c8599ab596b29c727dff486e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124745313"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232487"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workplace by Facebook
 
@@ -169,7 +169,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     g. Kopieren Sie den Wert unter **ACS (Assertion Consumer Service) URL** (ACS-URL (Assertion Consumer Service, Assertionsverbraucherdienst)) für Ihre Instanz, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Antwort-URL** ein.
 
-    h. Scrollen Sie im Abschnitt nach unten, und klicken Sie auf die Schaltfläche **Test SSO** (SSO testen). Ein Popupfenster mit der Azure AD-Anmeldeseite wird angezeigt. Geben Sie Ihre Anmeldeinformationen ein, wie Sie es von der Authentifizierung kennen.
+    h. Scrollen Sie im Abschnitt nach unten, und klicken Sie auf die Schaltfläche **Test SSO** (SSO testen). Ein Popupfenster mit der Azure AD-Anmeldeseite wird angezeigt. Geben Sie Ihre Anmeldeinformationen ein, wie Sie es von der Authentifizierung kennen.
 
     **Problembehandlung:** Stellen Sie sicher, das die E-Mail-Adresse, die von Azure AD zurückgegeben wird, mit dem Workplace-Konto übereinstimmt, mit dem Sie angemeldet sind.
 

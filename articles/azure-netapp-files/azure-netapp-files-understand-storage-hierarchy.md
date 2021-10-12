@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: fd96a8c2002bc22a0e4ef2c5a19fa06bf10b5565
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 41ccd31a5e42b2765ffa778dc347cc848090ffee
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071891"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407511"
 ---
 # <a name="storage-hierarchy-of-azure-netapp-files"></a>Speicherhierarchie von Azure NetApp Files
 
@@ -68,7 +68,7 @@ Der QoS-Typ (Quality of Service, Servicequalität) ist ein Attribut eines Kapazi
 
     Bei einem Kapazitätspool mit dem QoS-Typ „Manuell“ können Sie die Kapazität und den Durchsatz für ein Volume separat zuweisen. Der Gesamtdurchsatz aller Volumes, die mit einem Kapazitätspool mit dem QoS-Typ „Manuell“ erstellt werden, ist durch den Gesamtdurchsatz des Pools begrenzt.  Dieser wird anhand der Kombination von Poolgröße und Serviceleveldurchsatz ermittelt. 
 
-    Ein Kapazitätspool mit 4 TiB und dem Servicelevel „Ultra“ verfügt beispielsweise über einen Gesamtdurchsatz von 512 MiB/s (4 TiB · 128 MiB/s/TiB), der für die Volumes verfügbar ist.
+    Ein Kapazitätspool mit 4 TiB und dem Servicelevel „Ultra“ verfügt beispielsweise über eine Gesamtdurchsatzkapazität von 512 MiB/s (4 TiB x 128 MiB/s/TiB), die für die Volumes verfügbar ist.
 
 
 ## <a name="volumes"></a><a name="volumes"></a>Volumes
@@ -86,7 +86,6 @@ Das folgende Beispiel zeigt die Beziehungen zwischen Azure-Abonnement, NetApp-Ko
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)
-- [Registrieren für Azure NetApp Files](azure-netapp-files-register.md)
 - [Dienstebenen für Azure NetApp Files](azure-netapp-files-service-levels.md)
 - [Überlegungen zur Leistung für Azure NetApp Files](azure-netapp-files-performance-considerations.md)
 - [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)

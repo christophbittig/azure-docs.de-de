@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc, references_regions
-ms.openlocfilehash: e4c9ff1585be0545e93a23772ebd0d05156e1351
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f9b307aeba76f3d5c5ef43ad88f86163b7fc2f57
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728005"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273854"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
@@ -24,8 +24,8 @@ Azure Maps ist eine Sammlung von Geodiensten und SDKs, bei denen aktuelle Karten
 * Suchdienste für die Suche nach Adressen, Orten und Points of Interest auf der ganzen Welt
 * Verschiedene Routenplanungsoptionen – beispielsweise von A nach B, mehrere Punkte, Optimierung bei Verwendung mehrerer Punkte, Isochrone, Elektrofahrzeuge, gewerbliche Fahrzeuge, Berücksichtigung der Verkehrslage und Matrixroutenplanung
 * Anzeige von Verkehrsfluss und -störungen für Anwendungen, die Verkehrsinformationen in Echtzeit benötigen
-* Mobilitätsdienste (Vorschauversion) zum Anfordern von Informationen zum öffentlichen Nahverkehr und Planen von Routen durch Kombinieren verschiedener Transportmittel und Ankunftszeiten in Echtzeit.
-* Dienste für Zeitzonen und Geolocation (Vorschauversion).
+* Mobilitätsdienste (Vorschauversion) zum Anfordern von Informationen zum öffentlichen Nahverkehr und Planen von Routen durch Kombinieren verschiedener Transportmittel und Ankunftszeiten in Echtzeit
+* Zeitzonen- und Geolocationdienste
 * Höhenangabendienste mit digitalem Höhenmodell
 * Geofencingdienst und Speicher für Kartendaten mit in Azure gehosteten Standortinformationen
 * Location Intelligence mittels Geoanalysen
@@ -62,13 +62,13 @@ Azure Maps besteht aus den folgenden Diensten, die für Ihre Azure-Anwendungen g
 
 Daten sind für Karten unverzichtbar. Mit dem Datendienst können Sie räumliche Daten zur Verwendung mit räumlichen Vorgängen oder mit der Bildkomposition hochladen und speichern.  Durch die Einbindung von Kundendaten in den Azure Maps-Dienst verringern Sie die Wartezeit und steigern die Produktivität und können neue Szenarien in Ihren Anwendungen erstellen. Ausführliche Informationen zu diesem Dienst finden Sie in der [Dokumentation zum Datendienst](/rest/api/maps/data-v2).
 
-### <a name="geolocation-service-preview"></a>Geolocation-Dienst (Vorschauversion)
+### <a name="geolocation-service"></a>Geolocation-Dienst
 
-Mit dem Geolocationdienst können Sie eine Vorschau für den abgerufenen zweistelligen Länder-/Regionscode für eine IP-Adresse erstellen. Mithilfe dieses Diensts können Sie die Benutzeroberfläche verbessern, indem Sie angepasste Anwendungsinhalte auf der Grundlage des geografischen Standorts bereitstellen.
+Mit dem Geolocationdienst können Sie den zweistelligen Länder-/Regionscode für eine IP-Adresse abrufen. Mithilfe dieses Diensts können Sie die Benutzeroberfläche verbessern, indem Sie angepasste Anwendungsinhalte auf der Grundlage des geografischen Standorts bereitstellen.
 
 Weitere Informationen finden Sie in der [Dokumentation zum Geolocationdienst](/rest/api/maps/geolocation).
 
-### <a name="mobility-services-preview"></a>Mobilitätsdienste (Vorschauversion) 
+### <a name="mobility-services-preview"></a>Vorschauversion der Mobilitätsdienste
 
 Die Mobilitätsdienste für Azure Maps verbessern die Entwicklungszeit für Anwendungen mit Features für den öffentlichen Nahverkehr, z. B. Verkehrsroutenplanung und Suche nach nahe gelegenen Haltestellen des öffentlichen Nahverkehrs. Benutzer können ausführliche Informationen zu Haltestellen, Linien und Fahrplänen abrufen. Der Mobilitätsdienst ermöglicht Benutzern außerdem das Abrufen von Geometrien für Haltestellen und Fahrpläne, Warnungen für Haltestellen, Linien und Betriebsbereiche sowie Ankunfts- und Betriebsbenachrichtigungen in Echtzeit für den öffentlichen Nahverkehr. Darüber hinaus bieten die Mobilitätsdienste Routenplanungsfunktionen mit Optionen für eine multimodale Routenplanung. Bei der multimodalen Routenplanung werden Optionen für Fußgänger und Fahrradfahrer sowie öffentliche Verkehrsmittel für eine Strecke berücksichtigt. Benutzer können auf detaillierte und multimodale ausführliche Routen zugreifen.
 
@@ -76,7 +76,7 @@ Weitere Informationen zu diesem Dienst finden Sie in der [Dokumentation zu Mobil
 
 ### <a name="render-service"></a>Renderingdienst
 
-Mit dem [Renderingdienst V2 (Vorschauversion)](/rest/api/maps/renderv2) wird eine neue Version der [Get Map Tile V2-API](/rest/api/maps/render-v2/get-map-tile) eingeführt. Mit der Get Map Tile V2-API können Kunden nun Azure Maps-Straßenkacheln, Wetterkacheln oder die mit Azure Maps Creator erstellten Kartenkacheln anfordern. Die Verwendung der neuen Get Map Tile V2-API wird empfohlen.  
+Mit dem [Renderingdienst V2](/rest/api/maps/renderv2) wird eine neue Version der [Get Map Tile V2-API](/rest/api/maps/render-v2/get-map-tile) eingeführt. Mit der Get Map Tile V2-API können Kunden nun Azure Maps-Straßenkacheln, Wetterkacheln oder die mit Azure Maps Creator erstellten Kartenkacheln anfordern. Die Verwendung der neuen Get Map Tile V2-API wird empfohlen.  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Beispiel für eine Karte vom Renderingdienst V2":::
 
@@ -206,16 +206,11 @@ Mit dem Höhenangabendienst können Höhendaten in zwei Formaten abgerufen werde
 
 :::image type="content" source="./media/about-azure-maps/elevation.png" alt-text="Beispiel einer Karte mit Höhendaten":::
 
-
 ## <a name="programming-model"></a>Programmiermodell
 
 Azure Maps ist auf Mobilität ausgelegt und kann zum Entwickeln plattformübergreifender Anwendungen eingesetzt werden. Es wird ein Programmiermodell genutzt, das sprachunabhängig ist und die JSON-Ausgabe über [REST-APIs](/rest/api/maps/) unterstützt.
 
 Darüber hinaus bietet Azure Maps ein praktisches [JavaScript-Kartensteuerelement](/javascript/api/azure-maps-control) mit einem einfachen Programmiermodell. Dies ermöglicht eine schnelle und einfache Entwicklung für webbasierte und mobile Anwendungen.
-
-
-
-
 
 ## <a name="power-bi-visual"></a>Power BI-Visualisierung
 
@@ -231,7 +226,8 @@ Für den Zugriff auf Azure Maps-Dienste wechseln Sie zum [Azure-Portal](https://
 
 Für Azure Maps wird ein schlüsselbasiertes Authentifizierungsschema verwendet. Wenn Sie Ihr Konto erstellen, werden zwei Schlüssel generiert. Für die Authentifizierung bei Azure Maps-Diensten können Sie beide Schlüssel verwenden.
 
-Hinweis: Azure Maps gibt vom Kunden bereitgestellte Adress- oder Standortabfragen („Abfragen“) für die Zuordnungsfunktionalität an den Drittanbieter TomTom weiter. Abfragen werden nicht mit Kunden oder Endbenutzern verknüpft, wenn sie für TomTom bereitgestellt werden, und können nicht für die Identifikation von Personen verwendet werden. Die Mobilitäts- und Wetterinfodienste, die die Integration in Moovit und AccuWeather beinhalten, befinden sich derzeit in der [VORSCHAUPHASE](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> [!NOTE]
+> Azure Maps gibt vom Kunden bereitgestellte Adress- oder Standortabfragen („Abfragen“) für die Zuordnungsfunktionalität an den Drittanbieter TomTom weiter. Abfragen werden nicht mit Kunden oder Endbenutzern verknüpft, wenn sie für TomTom bereitgestellt werden, und können nicht für die Identifikation von Personen verwendet werden. Die Mobilitätsdienste, die die Integration in Moovit beinhalten, befinden sich derzeit in der [Vorschauphase](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Microsoft ist derzeit dabei, TomTom, Moovit und AccuWeather zur Liste der Onlinedienstzulieferer hinzuzufügen.
 

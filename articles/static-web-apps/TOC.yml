@@ -108,6 +108,8 @@
       href: publish-azure-resource-manager.md
     - name: Hinzufügen von Azure Front Door
       href: front-door-manual.md
+    - name: Programmgesteuertes Festlegen von Benutzerrollen
+      href: assign-roles-microsoft-graph.md
 - name: Verweis
   items:
     - name: Azure CLI

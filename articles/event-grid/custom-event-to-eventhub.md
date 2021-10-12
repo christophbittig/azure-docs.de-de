@@ -1,15 +1,15 @@
 ---
 title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen an Event Hubs – Event Grid, Azure CLI'
 description: 'Schnellstart: Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Ein Event Hub wird für den Endpunkt verwendet.'
-ms.date: 07/07/2020
+ms.date: 09/28/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 37523e907eb891a326c8dbe975593554958a44b9
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: f725af009f8c2b8f8c4595865d6d746ff9f55849
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897917"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230157"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Schnellstart: Weiterleiten benutzerdefinierter Ereignisse an Azure Event Hubs mit der Azure CLI und Event Grid
 
@@ -37,6 +37,9 @@ Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die 
 
 ```azurecli-interactive
 topicname=<your-topic-name>
+```
+
+```azurecli-interactive
 az eventgrid topic create --name $topicname -l westus2 -g gridResourceGroup
 ```
 
@@ -46,6 +49,9 @@ Vor dem Abonnieren des benutzerdefinierten Themas erstellen wir zunächst den En
 
 ```azurecli-interactive
 namespace=<unique-namespace-name>
+```
+
+```azurecli-interactive
 hubname=demohub
 
 az eventhubs namespace create --name $namespace --resource-group gridResourceGroup
@@ -94,7 +100,7 @@ done
 
 Navigieren Sie zum Event Hub im Portal, und beachten Sie, dass Event Grid diese drei Ereignisse an den Event Hub gesendet hat.
 
-![Anzeigen von Meldungen](./media/custom-event-to-eventhub/show-result.png)
+:::image type="content" source="./media/custom-event-to-eventhub/show-result.png" lightbox="./media/custom-event-to-eventhub/show-result.png" alt-text="Abbildung: Portalseite mit 3 als Anzahl eingehender Nachrichten":::
 
 In der Regel erstellen Sie eine Anwendung, die die Ereignisse vom Event Hub abruft. Wenn Sie eine Anwendung erstellen möchten, die Nachrichten von einem Event Hub empfängt, lesen Sie die Informationen in den folgenden Artikeln:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ADP | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit ADP'
 description: Erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und ADP konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/24/2020
+ms.date: 09/30/2021
 ms.author: jeedes
-ms.openlocfilehash: ab53dc218bee83476811e6d42dec76479559b50b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b0ee99863c0ba0287d3fd192ed04145fd3a3c69f
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803234"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402677"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ADP
+# <a name="tutorial-azure-ad-sso-integration-with-adp"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit ADP
 
 In diesem Tutorial erfahren Sie, wie Sie ADP in Azure Active Directory (Azure AD) integrieren. Die Integration von ADP in Azure AD ermöglicht Folgendes:
 
@@ -26,13 +26,15 @@ In diesem Tutorial erfahren Sie, wie Sie ADP in Azure Active Directory (Azure AD
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei ADP anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * ADP-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -43,7 +45,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
-## <a name="adding-adp-from-the-gallery"></a>Hinzufügen von ADP über den Katalog
+## <a name="add-adp-from-the-gallery"></a>Hinzufügen von ADP über den Katalog
 
 Zum Konfigurieren der Integration von ADP in Azure AD müssen Sie ADP aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -73,7 +75,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **ADP** auf die Registerkarte **Eigenschaften**, und führen Sie die folgenden Schritte aus: 
 
-    ![Eigenschaften für das einmalige Anmelden](./media/adpfederatedsso-tutorial/tutorial_adp_prop.png)
+    ![Eigenschaften für das einmalige Anmelden](./media/adpfederatedsso-tutorial/properties.png)
 
     a. Legen Sie den Wert im Feld **Aktiviert für die Benutzeranmeldung** auf **Ja** fest.
 
@@ -91,13 +93,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `https://fed.adp.com`.
+    Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** die URL ein: `https://fed.adp.com`.
 
-4. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-6. Kopieren Sie im Abschnitt **ADP einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **ADP einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -146,7 +148,7 @@ Nach der Bestätigung durch Ihren ADP-Vertriebsbeauftragten konfigurieren Sie Ih
 1. Wählen Sie im Ergebnisbereich **ADP** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 1. Klicken Sie im Azure-Portal auf Ihrer Anwendungsintegrationsseite für **ADP** auf die Registerkarte **Eigenschaften**, und führen Sie die folgenden Schritte aus:  
 
-    ![Eigenschaften für SSO über Link](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
+    ![Registerkarte „Eigenschaften“ für einmaliges Anmelden](./media/adpfederatedsso-tutorial/application.png)
 
     1. Legen Sie den Wert im Feld **Aktiviert für die Benutzeranmeldung** auf **Ja** fest.
 
@@ -158,11 +160,11 @@ Nach der Bestätigung durch Ihren ADP-Vertriebsbeauftragten konfigurieren Sie Ih
 
 1. Wählen Sie im Dialogfeld **SSO-Methode auswählen** unter **Modus** die Option **Verknüpft**, um Ihre Anwendung mit **ADP** zu verknüpfen.
 
-    ![SSO über Link](./media/adpfederatedsso-tutorial/tutorial_adp_linked.png)
+    ![SSO über Link](./media/adpfederatedsso-tutorial/linked.png)
 
 1. Navigieren Sie zum Abschnitt **Anmelde-URL konfigurieren**, und führen Sie die folgenden Schritte aus:
 
-    ![Eigenschaften für einmaliges Anmelden](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
+    ![Konfigurieren des einmaligen Anmeldens](./media/adpfederatedsso-tutorial/users.png)
 
     1. Fügen Sie die **URL für den Benutzerzugriff** ein, die Sie oben aus der Registerkarte **Eigenschaften** (aus der Haupt-ADP-App) kopiert haben.
 
@@ -209,7 +211,6 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 * Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der ADP-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
 * Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „ADP“ klicken, sollten Sie automatisch bei der ADP-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

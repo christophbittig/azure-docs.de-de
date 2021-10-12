@@ -11,12 +11,12 @@ ms.date: 08/24/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe1da3615d835b6a2d828fdbca989c805a9f9b17
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: cae6f7285618771f2486c62bfbd3d532db146c8a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122823078"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350619"
 ---
 # <a name="troubleshoot-ecma-connector-host-issues"></a>Problembehandlung für den ECMA-Connectorhost
 
@@ -187,7 +187,7 @@ Möglicherweise erhalten Sie während der Installation des Cloudbereitstellungs-
 
 Dieses Problem wird in der Regel dadurch verursacht, dass der Agent die PowerShell-Registrierungsskripts aufgrund von lokalen PowerShell-Ausführungsrichtlinien nicht ausführen kann.
 
-Ändern Sie zur Lösung dieses Problems die PowerShell-Ausführungsrichtlinien auf dem Server. Sie müssen die Computer- und Benutzerrichtlinien auf *Undefined* oder *RemoteSigned* festlegen. Wenn sie auf *Unrestricted* festgelegt sind, wird diese Fehlermeldung angezeigt. Weitere Informationen finden Sie unter [PowerShell-Ausführungsrichtlinien](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
+Ändern Sie zur Lösung dieses Problems die PowerShell-Ausführungsrichtlinien auf dem Server. Sie müssen die Computer- und Benutzerrichtlinien auf *Undefined* oder *RemoteSigned* festlegen. Wenn sie auf *Unrestricted* festgelegt sind, wird diese Fehlermeldung angezeigt. Weitere Informationen finden Sie unter [PowerShell-Ausführungsrichtlinien](/powershell/module/microsoft.powershell.core/about/about_execution_policies). 
 
 ### <a name="log-files"></a>Protokolldateien
 
@@ -227,7 +227,4 @@ Weitere Informationen finden Sie unter [Grundlegendes zu Ankerattributen und DNs
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure AD-ECMA-Connectorhost: Installation](on-premises-ecma-install.md)
-- [Azure AD-ECMA-Connectorhost: Konfiguration](on-premises-ecma-configure.md)
-- [Generischer SQL-Connector](on-premises-sql-connector-configure.md)
 - [Tutorial: Generischer SQL-Connector mit ECMA-Connectorhost](tutorial-ecma-sql-connector.md)

@@ -1,7 +1,6 @@
 ---
-title: FortiGate-Bereitstellungshandbuch | Microsoft-Dokumentation
+title: FortiGate-Bereitstellungshandbuch
 description: Es wird beschrieben, wie Sie die FortiGate-Firewall der nächsten Generation von Fortinet einrichten und verwenden.
-services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.reviewer: celested
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: jeedes
-ms.openlocfilehash: cdaa6a9601452100ab90ef8b0f2191002f256b74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1b3a2dca9e11e12a72ec99685ff71beb279473e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95025466"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353938"
 ---
 # <a name="fortigate-azure-virtual-machine-deployment-guide"></a>FortiGate als virtueller Azure-Computer: Bereitstellungshandbuch
 
@@ -217,4 +216,4 @@ Bei mehrfach vernetzten Azure-VMs befinden sich alle Netzwerkschnittstellen in d
 
 ## <a name="configure-fortigate-ssl-vpn"></a>Konfigurieren des FortiGate SSL VPN
 
-Führen Sie die Schritte aus, die unter https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial beschrieben sind.
+Führen Sie die Schritte unter [Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit FortiGate SSL VPN](../../fortigate-ssl-vpn-tutorial.md) aus.

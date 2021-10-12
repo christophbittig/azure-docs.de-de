@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Zero Networks | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Zero Networks'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Zero Networks konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/26/2021
+ms.date: 09/20/2021
 ms.author: jeedes
-ms.openlocfilehash: c6c7baf2a1ff899e7604aa65fb3e24c2b7816712
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 533e1dee16a303931987bc83f15f929d89d38b4f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123077566"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669365"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zero-networks"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Zero Networks
+# <a name="tutorial-azure-ad-sso-integration-with-zero-networks"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Zero Networks
 
 In diesem Tutorial erfahren Sie, wie Sie Zero Networks in Azure Active Directory (Azure AD) integrieren. Die Integration von Zero Networks in Azure AD ermöglicht Folgendes:
 
@@ -35,7 +35,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren Sie das einmalige Anmelden von Azure AD für das Zero Networks-Verwaltungsportal und das Zugriffsportal.
 
 * Zero Networks unterstützt das **SP**-initiierte einmalige Anmelden.
 
@@ -46,25 +46,12 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Zero Networks in Azure AD müssen Sie Zero Networks aus dem Katalog zu Ihrer Liste mit verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto von Microsoft beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Zero Networks** in das Suchfeld ein.
 1. Wählen Sie **Zero Networks** aus dem Ergebnisbereich aus, und fügen Sie die App dann hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
-## <a name="configure-and-test-azure-ad-sso-for-zero-networks"></a>Konfigurieren und Testen von Azure AD-SSO für Zero Networks
-
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD für Zero Networks mithilfe einer Testbenutzerin mit dem Namen **B. Simon**. Damit das einmalige Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Zero Networks eingerichtet werden.
-
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Zero Networks die folgenden Schritte aus:
-
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Zero Networks](#configure-zero-networks-sso)** , um die Einstellungen für das einmalige Anmelden auf der Anwendungsseite zu konfigurieren.
-    1. **[Erstellen einer Zero Networks-Testbenutzerin](#create-zero-networks-test-user)** , um ein Pendant von B. Simon in Zero Networks zu erstellen, das mit ihrer Azure AD-Darstellung verknüpft ist.
-1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
@@ -88,33 +75,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
-
-1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
-1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
-   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Erstellen**.
-
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-
-In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf Zero Networks gewähren.
-
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
-1. Wählen Sie in der Anwendungsliste den Eintrag **Zero Networks** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
-
 ## <a name="configure-zero-networks-sso"></a>Konfigurieren des einmaligen Anmeldens für Zero Networks
 
-1. Melden Sie sich als Administrator bei Ihrer Zero Networks-Unternehmenswebsite an.
+1. Melden Sie sich als Administrator beim Zero Networks-Verwaltungsportal an.
 
 1. Navigieren Sie zu **Settings** > **Identity Providers** (Einstellungen > Identitätsanbieter).
 
@@ -134,9 +97,12 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     1. Klicken Sie auf **Speichern**.
 
-### <a name="create-zero-networks-test-user"></a>Erstellen einer Zero Networks-Testbenutzerin
+## <a name="configure-user-assignment-requirement"></a>Konfigurieren der Benutzerzuweisungsanforderung
 
-In diesem Abschnitt erstellen Sie in Zero Networks eine Benutzerin mit dem Namen Britta Simon. Arbeiten Sie mit dem [Zero Networks-Supportteam](mailto:support@zeronetworks.com) zusammen, um Benutzer auf der Zero Networks-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Zero Networks** zum Abschnitt **Verwalten**, und wählen Sie **Eigenschaften** aus.
+1. Ändern Sie die Option **Benutzerzuweisung erforderlich?** in **Nein**.
+
+![Screenshot: Benutzerzuweisung erforderlich?](./media/zero-networks-tutorial/user-assignment.png)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
@@ -147,7 +113,3 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 * Rufen Sie direkt die Zero Networks-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
 * Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Zero Networks“ klicken, werden Sie zur Anmelde-URL von Zero Networks weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Nach dem Konfigurieren von Zero Networks können Sie die Sitzungssteuerung erzwingen, die Echtzeitschutz vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten bietet. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

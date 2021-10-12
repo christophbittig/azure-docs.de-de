@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/16/2021
 ms.author: jamesmantu
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 1b8e822c72bdf2af8b20950944fb93686524b797
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 3be99d0d9b22a4a52c4e6003d073324b40db3120
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072341"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231784"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-react-single-page-app-spa-using-auth-code-flow"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API über eine React-Single-Page-Webanwendung (SPA) unter Verwendung des Autorisierungscodeflows
 
@@ -27,7 +27,7 @@ In diesem Tutorial wird Folgendes durchgeführt:
 > [!div class="checklist"]
 > * Erstellen eines React-Projekts mit `npm`
 > * Registrieren der Anwendung im Azure-Portal
-> * Hinzufügen von Code zum Unterstützen der Benutzeranmeldung und -abmeldung
+> * Hinzufügen von Code zur Unterstützung der Benutzeranmeldung und -abmeldung
 > * Hinzufügen von Code zum Aufrufen der Microsoft Graph-API
 > * Testen der App
 

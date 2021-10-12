@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 84fe935c1122d3d5c65423341b8760643257f992
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 19f36e926ada75f36ddb34f1ad8d98cdf531fd22
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868569"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457428"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Tutorial: Registrieren des Geräts für eine IoT Hub-Instanz mithilfe des Azure IoT Hub-Bereitstellungsdienstclients (.NET)
 
-Im vorherigen Tutorial haben Sie erfahren, wie ein Gerät eingerichtet wird, um eine Verbindung mit Ihrem Device Provisioning-Dienst herzustellen. In diesem Tutorial wird beschrieben, wie Sie diesen Dienst zum Bereitstellen Ihres Geräts auf einem einzelnen IoT Hub verwenden, indem Sie sowohl die **_Individuelle Registrierung_** als auch **_Registrierungsgruppen_** nutzen. Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
+Im vorherigen Tutorial haben Sie erfahren, wie ein Gerät eingerichtet wird, um eine Verbindung mit Ihrer Device Provisioning Service-Instanz herzustellen. In diesem Tutorial wird beschrieben, wie Sie diesen Dienst zum Bereitstellen Ihres Geräts auf einem einzelnen IoT Hub verwenden, indem Sie sowohl die **_Individuelle Registrierung_** als auch **_Registrierungsgruppen_** nutzen. Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 > [!div class="checklist"]
 > * Registrieren des Geräts
@@ -221,15 +221,15 @@ Wenn das Gerät erfolgreich registriert ist, sollte es wie folgt im Portal angez
 
 An dieser Stelle ist Folgendes für die Geräteregistrierung eingerichtet:
 
-1. Ihr Gerät oder eine Gruppe von Geräten ist bei Ihrem Device Provisioning-Dienst registriert, und 
+1. Ihr Gerät oder eine Gruppe von Geräten ist bei Ihrem Device Provisioning-Dienst registriert. 
 2. Für Ihr Gerät wurde die Sicherheit konfiguriert, und über die Anwendung kann mithilfe des Client-SDK des Device Provisioning-Diensts darauf zugegriffen werden.
 
-Starten Sie das Gerät, damit Ihre Clientanwendung die Registrierung bei Ihrem Device Provisioning-Dienst starten kann.  
+Starten Sie das Gerät, damit Ihre Clientanwendung mit der Registrierung bei Ihrem Device Provisioning-Dienst beginnen kann.  
 
 
 ## <a name="verify-the-device-is-registered"></a>Sicherstellen, dass das Gerät registriert ist
 
-Nachdem Ihr Gerät gestartet wurde, sollten folgende Aktionen durchgeführt werden. Weitere Details finden Sie im [Beispiel für die Bereitstellung eines Geräteclients](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device). 
+Nachdem Ihr Gerät gestartet wurde, sollten folgende Aktionen durchgeführt werden. Weitere Details finden Sie im [Beispiel für die Bereitstellung eines Geräteclients](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/provisioning/Samples/device). 
 
 1. Das Gerät sendet eine Registrierungsanforderung an Ihren Device Provisioning-Dienst.
 2. Bei TPM-Geräten sendet der Device Provisioning-Dienst eine Registrierungsherausforderung zurück, auf die Ihr Gerät antwortet. 

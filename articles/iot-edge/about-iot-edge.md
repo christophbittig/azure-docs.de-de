@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: d2ec1be20c7453d64b3255f9756676d06b023d38
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3cf44d5ebe1ea643f588f1f63e0f5695240b1c95
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747312"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233160"
 ---
 # <a name="what-is-azure-iot-edge"></a>Was ist Azure IoT Edge?
 
@@ -65,7 +65,7 @@ Die Azure IoT Edge-Runtime kann auf einem umfangreichen IoT-Gerätesatz ausgefü
 
 Es ist schwierig, den Softwarelebenszyklus für Millionen von IoT-Geräten zu verwalten, da es sich häufig um verschiedene Fabrikate und Modelle handelt, die unter Umständen auch geografisch verstreut sind. Workloads sind für einen bestimmten Typ von Gerät erstellt und konfiguriert und werden für alle Ihre Geräte bereitgestellt und überwacht, um Geräte mit Fehlfunktionen zu ermitteln. Diese Aktivitäten können nicht pro Gerät durchgeführt werden und müssen bedarfsabhängig erfolgen.
 
-Azure IoT Edge kann nahtlos in Azure IoT Solution Accelerators integriert werden, um als Steuerungsebene für die Anforderungen Ihrer Lösung zu dienen. Mit Clouddiensten haben Sie folgende Möglichkeiten:
+Azure IoT Edge kann nahtlos in Azure IoT Central integriert werden, um als Steuerungsebene für die Anforderungen Ihrer Lösung zu dienen. Mit Clouddiensten haben Sie folgende Möglichkeiten:
 
 * Erstellen und konfigurieren Sie eine Workload, die auf einem bestimmten Typ von Gerät ausgeführt wird.
 * Senden Sie eine Workload an eine Gruppe von Geräten.

@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 06/10/2021
-ms.openlocfilehash: 52ecc8a66dfa13747daf2b4b7fd227ef7ab5a3b2
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.date: 09/19/2021
+ms.openlocfilehash: 3e76d298d30d2e191edf218e85a8fc64758f8359
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237163"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560786"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center Free und Azure Defender-Aktivierung
 Azure Defender ist in den ersten 30 Tagen kostenlos. Nach Ablauf der 30 Tage wird Ihnen die Nutzung automatisch in Rechnung gestellt, sofern Sie sich dafür entscheiden, den Dienst weiterhin zu nutzen.
@@ -31,6 +31,7 @@ Security Center wird in zwei Modi angeboten:
     - **Überprüfung auf Sicherheitsrisiken für virtuelle Computer und Containerregistrierungen:** Stellen Sie problemlos einen Scanner auf allen virtuellen Computern bereit, der die branchenweit fortgeschrittenste Lösung zum Umgang mit Sicherheitsrisiken bietet. Sie können die Ergebnisse direkt in Security Center anzeigen, untersuchen und behandeln. 
     - **Hybridsicherheit:** Verschaffen Sie sich einen einheitlichen Überblick über die Sicherheit sämtlicher lokaler und cloudbasierter Workloads. Wenden Sie Sicherheitsrichtlinien an, und bewerten Sie kontinuierlich die Sicherheit Ihrer Hybridcloud-Workloads, um die Einhaltung von Sicherheitsstandards zu gewährleisten. Sammeln, durchsuchen und analysieren Sie Sicherheitsdaten aus zahlreichen Quellen (einschließlich Firewalls und Partnerlösungen).
     - **Bedrohungsschutzwarnungen:** Mit erweiterten Verhaltensanalysen und Microsoft Intelligent Security Graph sind Sie neuen Arten von Cyberangriffen immer einen Schritt voraus. Mit integrierten Verhaltensanalysen und Machine Learning können Angriffe und Zero-Day-Exploits erkannt werden. Überwachen Sie Netzwerke, Computer und Clouddienste auf neue Angriffe und auf Aktivitäten nach einer Sicherheitsverletzung. Optimieren Sie die Untersuchung mit interaktiven Tools und kontextbezogenen Informationen zu Bedrohungen.
+    - **Nachverfolgen der Konformität mit verschiedenen Standards:** Von Security Center wird Ihre Hybrid Cloud-Umgebung kontinuierlich bewertet, um die Risikofaktoren gemäß den Kontrollen und bewährten Methoden im [Azure-Sicherheitsvergleichstest](/security/benchmark/azure/introduction) zu analysieren. Wenn Sie Azure Defender aktivieren, können Sie verschiedene andere Branchenstandards, gesetzliche Standards und Benchmarks gemäß den Anforderungen Ihrer Organisation anwenden. Über das [Dashboard zur Einhaltung gesetzlicher Bestimmungen](update-regulatory-compliance-packages.md) können Sie Standards hinzufügen und die Konformität nachverfolgen.
     - **Zugriffs- und Anwendungskontrollen (Access and Application Controls, AAC):** Blockieren Sie Schadsoftware und andere unerwünschte Anwendungen, indem Sie durch Machine Learning unterstützte Empfehlungen anwenden, die auf Ihre spezifischen Workloads abgestimmt sind, um Zulassungs- und Verweigerungslisten zu erstellen. Verringern Sie die Angriffsfläche im Netzwerk mit kontrolliertem Just-in-Time-Zugriff auf Verwaltungsports auf Azure Virtual Machines. Mit den Zugriffs- und Anwendungskontrollen wird das Risiko von Brute-Force- und anderen Netzwerkangriffen drastisch reduziert.
     - **Containersicherheitsfeatures**: Profitieren Sie in Ihren Containerumgebungen von der Handhabung von Sicherheitsrisiken und des Schutzes vor Bedrohungen in Echtzeit. Beim Aktivieren von **Azure Defender für Containerregistrierungen** kann es bis zu zwölf Stunden dauern, bis alle Features aktiviert wurden. Die Gebühren basieren auf der Anzahl der eindeutigen Containerimages, die in Ihre verbundene Registrierung gepusht werden. Nachdem ein Image ein Mal gescannt wurde, wird es nicht mehr in Rechnung gestellt, es sei denn, es wird geändert und noch einmal gepusht.
     - **Breit gefächerter Bedrohungsschutz für Ressourcen, die mit der Azure-Umgebung verbunden sind**: Azure Defender beinhaltet Azure-nativen, breit gefächerten Bedrohungsschutz für die Azure-Dienste, die von allen Ihren Ressourcen genutzt werden: Azure Resource Manager, Azure DNS, Azure-Netzwerkebene und Azure Key Vault. Azure Defender verfügt über einen einzigartigen Einblick in die Azure-Verwaltungsebene und in die Azure DNS-Ebene, was den Schutz von Cloudressourcen ermöglicht, die mit diesen Ebenen verbunden sind.
@@ -106,7 +107,7 @@ Nein. Wenn Sie für ein Abonnement [Azure Defender für Server](defender-for-ser
 :::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="Computer mit aufgehobener Zuordnung in Azure Virtual Machines":::
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>Werden mir für Computer, auf denen der Log Analytics-Agent nicht installiert ist, Kosten berechnet?
-Ja. Wenn Sie für ein Abonnement [Azure Defender für Server](defender-for-servers-introduction.md) aktivieren, werden für die Computer dieses Abonnements auch dann einige Schutzmaßnahmen getroffen, wenn Sie den Log Analytics-Agent nicht installiert haben.
+Ja. Wenn Sie für ein Abonnement [Azure Defender für Server](defender-for-servers-introduction.md) aktivieren, werden für die Computer dieses Abonnements auch dann einige Schutzmaßnahmen getroffen, wenn Sie den Log Analytics-Agent nicht installiert haben. Dies gilt für virtuelle Azure-Computer, Azure-VM-Skalierungsgruppeninstanzen und Server mit Azure Arc-Unterstützung.
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice"></a>Wenn ein Log Analytics-Agent Daten an mehrere Arbeitsbereiche meldet, werden mir dann zweimal Kosten berechnet? 
 Ja. Wenn Sie Ihren Log Analytics-Agent so konfiguriert haben, dass Daten an zwei oder mehr unterschiedliche Log Analytics-Arbeitsbereiche gesendet werden (Multi-Homing), werden Ihnen für jeden Arbeitsbereich Kosten in Rechnung gestellt, für den Lösungen vom Typ „Sicherheit“ oder „Antischadsoftware“ installiert sind. 

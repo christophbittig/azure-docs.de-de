@@ -5,17 +5,17 @@ services: synapse-analytics
 author: saveenr
 ms.author: saveenr
 manager: julieMSFT
-ms.reviewer: jrasnick
+ms.reviewer: jrasnick, wiassaf
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 03/24/2021
-ms.openlocfilehash: 56115e977603e1f2148f84569373dcf4d351e0c4
-ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
+ms.date: 09/29/2021
+ms.openlocfilehash: cf1aabdef95a58c4bdd5a14e3714da37295ed790
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113038208"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387732"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Analysieren von Daten mit dedizierten SQL-Pools
 
@@ -23,9 +23,9 @@ In diesem Tutorial werden die NYC Taxi-Daten verwendet, um die Analysefunktione
 
 ## <a name="create-a-dedicated-sql-pool"></a>Erstellen eines dedizierten SQL-Pools
 
-1. Wählen Sie in Synapse Studio im linken Bereich **Verwalten** > **SQL-Pools** aus.
+1. Wählen Sie in Synapse Studio im linken Bereich unter **Analytics pools** (Analysepools) die Optionen **Verwalten** > **SQL-Pools** aus.
 1. Wählen Sie **Neu** aus.
-1. Wählen Sie unter **Name des SQL-Pools** den Namen **SQLPOOL1** aus.
+1. Wählen Sie unter **Dedicated SQL pool name** (Name des dedizierten SQL-Pools) den Namen **SQLPOOL1** aus.
 1. Wählen Sie für **Leistungsebene** die Option **DW100C** aus.
 1. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr dedizierter SQL-Pool steht in wenigen Minuten zur Verfügung. 
 
@@ -37,12 +37,14 @@ Ein dedizierter SQL-Pool nutzt abrechenbare Ressourcen, solange er aktiv ist. Si
 
 > [!NOTE] 
 > Wenn Sie in Ihrem Arbeitsbereich einen neuen dedizierten SQL-Pool (ehemals SQL DW) erstellen, wird die Bereitstellungsseite für den dedizierten SQL-Pool geöffnet. Die Bereitstellung erfolgt auf dem logischen SQL-Server.
+
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>Laden der NYC Taxi-Daten in SQLPOOL1
 
 1. Navigieren Sie in Synapse Studio zum Hub **Entwickeln**, klicken Sie auf die Schaltfläche **+** , um eine neue Ressource hinzuzufügen, und erstellen Sie dann ein neues SQL-Skript.
-1. Wählen Sie in der Dropdownliste „Verbinden mit“ oberhalb des Skripts den Pool „SQLPOOL1“ (der Pool wurde in [SCHRITT 1](./get-started-create-workspace.md) dieses Tutorials erstellt) aus.
+1. Wählen Sie in der Dropdownliste **Verbinden mit** oberhalb des Skripts den Pool „SQLPOOL1“ (der Pool wurde in [SCHRITT 1](./get-started-create-workspace.md) dieses Tutorials erstellt) aus.
 1. Geben Sie den folgenden Code ein:
-    ```
+
+    ```sql
     IF NOT EXISTS (SELECT * FROM sys.objects O JOIN sys.schemas S ON O.schema_id = S.schema_id WHERE O.NAME = 'NYCTaxiTripSmall' AND O.TYPE = 'U' AND S.NAME = 'dbo')
     CREATE TABLE dbo.NYCTaxiTripSmall
         (
@@ -93,8 +95,8 @@ Ein dedizierter SQL-Pool nutzt abrechenbare Ressourcen, solange er aktiv ist. Si
         ,IDENTITY_INSERT = 'OFF'
     )
     ```
-1. Klicken Sie auf die Schaltfläche „Ausführen“, um das Skript auszuführen.
-1. Dieses Skript wird weniger als 60 Sekunden abgeschlossen. Es lädt zwei Millionen Zeilen NYC Taxi-Daten in eine Tabelle mit dem Namen **dbo.NYCTaxiTripSmall**.
+1. Klicken Sie auf die Schaltfläche **Ausführen**, um das Skript auszuführen.
+1. Dieses Skript wird weniger als 60 Sekunden abgeschlossen. Es lädt zwei Millionen Zeilen NYC Taxi-Daten in eine Tabelle mit dem Namen `dbo.NYCTaxiTripSmall`.
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>Untersuchen der NYC Taxi-Daten im dedizierten SQL-Pool
 

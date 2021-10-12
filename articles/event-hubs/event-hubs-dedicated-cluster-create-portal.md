@@ -2,13 +2,13 @@
 title: Erstellen eines dedizierten Event Hubs-Clusters mithilfe des Azure-Portals
 description: In diesem Schnellstart erfahren Sie, wie Sie einen Azure Event Hubs-Cluster im Azure-Portal erstellen.
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: 9fd43423d8928768f46f4c1c10f14a2ca0a7fc4e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 09/28/2021
+ms.openlocfilehash: 758110a0dcffc8f9ea8a802ac5cbac2c6ffb39b8
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375039"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231189"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Schnellstart: Erstellen eines dedizierten Event Hubs-Clusters mithilfe des Azure-Portals 
 Event Hubs-Cluster bieten Bereitstellungen mit einem einzelnen Mandanten für Kunden mit äußerst anspruchsvollen Streaminganforderungen. Dieses Angebot umfasst eine SLA mit einer garantierten Verfügbarkeit von 99,99 % und ist nur in unserem Dedicated-Tarif verfügbar. Ein [Event Hubs-Cluster](event-hubs-dedicated-overview.md) kann Millionen Ereignisse pro Sekunde mit garantierter Kapazität und einer Latenz im Sekundenbruchteilbereich erfassen. Namespaces und Event Hubs, die innerhalb eines Clusters erstellt werden, bieten alle Funktionen des Premium-Angebots und mehr, aber ohne jegliche Einschränkung bei eingehenden Daten. Das Dedicated-Angebot umfasst ferner das beliebte [Event Hubs Capture](event-hubs-capture-overview.md)-Feature ohne zusätzliche Kosten, die es Ihnen ermöglicht, Datenströme zu Batches zusammenzufassen und in [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) oder [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md) zu protokollieren.
@@ -35,29 +35,31 @@ Ein Event Hubs-Cluster bietet einen Container mit einem eindeutigen Bereich, in 
 
 Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Cluster in Ihrer Ressourcengruppe zu erstellen:
 
-1. Folgen Sie [diesem Link](https://aka.ms/eventhubsclusterquickstart), um einen Cluster im Azure-Portal zu erstellen. Wählen Sie **Alle Dienste** im linken Navigationsbereich aus, geben Sie dann „Event Hubs-Cluster“ in der Suchleiste ein, und wählen Sie „Event Hubs-Cluster“ aus der Ergebnisliste aus.
-2. Konfigurieren Sie auf der Seite **Cluster erstellen** die folgenden Einstellungen:
+1. Folgen Sie [diesem Link](https://aka.ms/eventhubsclusterquickstart), um einen Cluster im Azure-Portal zu erstellen. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, geben Sie dann **Event Hubs-Cluster** in die Suchleiste ein, und wählen Sie in der Ergebnisliste **Event Hubs-Cluster** aus.
+1. Wählen Sie auf der Seite **Event Hubs-Cluster** auf der Symbolleiste die Option **+ Erstellen** aus. 
+1. Konfigurieren Sie auf der Seite **Cluster erstellen** die folgenden Einstellungen:
     1. Geben Sie einen **Namen für den Cluster** ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
     2. Wählen Sie das **Abonnement** aus, in dem Sie den Cluster erstellen möchten.
     3. Wählen Sie die **Ressourcengruppe** aus, in der Sie den Cluster erstellen möchten.
     4. Wählen Sie einen **Standort** für den Cluster aus. Wenn Ihre bevorzugte Region abgeblendet dargestellt wird, steht vorübergehend keine Kapazität zur Verfügung, und Sie können eine [Supportanfrage](#submit-a-support-request) an das Event Hubs-Team senden.
     5. Wählen Sie unten auf der Seite die Schaltfläche **Next: Tags** (Weiter: Tags) aus. Möglicherweise müssen Sie ein paar Minuten warten, bis das System die Ressourcen vollständig bereitgestellt hat.
 
-        ![Seite „Event Hubs-Cluster erstellen: Grundlagen“](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-basics-page.png)
+        :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-basics-page.png" alt-text="Abbildung: Seite „Event Hubs-Cluster erstellen: Grundlagen“":::
 3. Konfigurieren Sie auf der Seite **Tags** die folgenden Einstellungen:
     1. Geben Sie einen **Namen** und einen **Wert** für das Tag ein, das Sie hinzufügen möchten. Dieser Schritt ist **optional**.  
     2. Wählen Sie die Schaltfläche **Überprüfen + erstellen** aus.
 
-        ![Seite „Event Hubs-Cluster erstellen: Tags“](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-tags-page.png)
+        :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-tags-page.png" alt-text="Abbildung: Seite „Event Hubs-Cluster erstellen: Tags“":::
 4. Überprüfen Sie auf der Seite **Überprüfen + erstellen** die Details, und wählen Sie **Erstellen** aus. 
 
-    ![Seite „Event Hubs-Cluster erstellen: Überprüfen + erstellen“](./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-review-create-page.png)
+    :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/create-event-hubs-clusters-review-create-page.png" alt-text="Abbildung: Seite „Event Hubs-Cluster erstellen: Überprüfen + erstellen“":::
+5. Wenn die Erstellung erfolgreich war, wählen Sie **Zu Ressource wechseln** aus, um zur Startseite Ihres Event Hubs-Clusters zu navigieren. 
 
 ## <a name="create-a-namespace-and-event-hub-within-a-cluster"></a>Erstellen eines Namespace und eines Event Hubs innerhalb eines Clusters
 
 1. Um einen Namespace in einem Cluster zu erstellen, wählen Sie auf der Seite **Event Hubs-Cluster** für Ihren Cluster im oberen Menü **+Namespace** aus.
 
-    ![Seite „Clusterverwaltung – Schaltfläche ‚Namespace hinzufügen‘“](./media/event-hubs-dedicated-cluster-create-portal/cluster-management-page-add-namespace-button.png)
+    :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/cluster-management-page-add-namespace-button.png" alt-text="Abbildung: Seite „Clusterverwaltung – Schaltfläche ‚Namespace hinzufügen‘“":::
 2. Führen Sie auf der Seite **Namespace erstellen** die folgenden Schritte aus:
     1. Geben Sie einen **Namen für den Namespace** ein.  Das System überprüft, ob der Name verfügbar ist.
     2. Der Namespace erbt die folgenden Eigenschaften:
@@ -67,7 +69,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Cluster in Ihre
         4. Clustername
     3. Klicken Sie auf **Erstellen**, um den Namespace zu erstellen. Jetzt können Sie Ihren Cluster verwalten.  
 
-        ![Seite „Namespace in Cluster erstellen“](./media/event-hubs-dedicated-cluster-create-portal/create-namespace-cluster-page.png)
+        :::image type="content" source="./media/event-hubs-dedicated-cluster-create-portal/create-namespace-cluster-page.png" alt-text="Abbildung: Seite „Namespace in Cluster erstellen“":::
 3. Nachdem Ihr Namespace erstellt wurde, können Sie [einen Event Hub erstellen](event-hubs-create.md#create-an-event-hub), wie Sie normalerweise einen Event Hub in einem Namespace erstellen würden. 
 
 

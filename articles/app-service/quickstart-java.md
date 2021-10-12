@@ -14,12 +14,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
-ms.openlocfilehash: 54ca249d1b89eb90b636da72e1378eadfd5fe0c1
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 2fb7a97f1efb50f76b91cbc49a189deda7cde9c8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681387"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357104"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Schnellstart: Erstellen einer Java-App in Azure App Service
 
@@ -98,7 +98,7 @@ Der Prozess zur Bereitstellung in Azure App Service verwendet automatisch Ihre A
 Führen Sie den folgenden Maven-Befehl aus, um die Bereitstellung zu konfigurieren. Dieser Befehl unterstützt Sie beim Einrichten des App Service-Betriebssystems, der Java-Version und der Tomcat-Version.
 
 ```azurecli-interactive
-mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
 ```
 
 ::: zone pivot="platform-windows"
@@ -107,9 +107,9 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
 
 1. Wenn die Eingabeaufforderung für die Option **Abonnement** angezeigt wird, wählen Sie das richtige `Subscription` aus, indem Sie die Ziffer am Zeilenanfang eingeben.
 2. Wenn die Eingabeaufforderung für die Option **Web-App** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken.
-3. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Windows** aus, indem Sie `2` eingeben.
+3. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Windows** aus, indem Sie `1` eingeben.
 4. Wenn die Eingabeaufforderung für die Option **javaVersion** angezeigt wird, wählen Sie **Java 8** aus, in dem Sie `1` eingeben.
-5. Wenn die Eingabeaufforderung für die Option **Tarif** angezeigt wird, wählen Sie **P1v2** aus, in dem Sie `7` eingeben.
+5. Wenn die Eingabeaufforderung für die Option **Tarif** angezeigt wird, wählen Sie **P1v2** aus, in dem Sie `10` eingeben.
 6. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     Die Zusammenfassungsausgabe sieht in etwa wie der unten gezeigte Codeausschnitt aus.
@@ -119,11 +119,11 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
     Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007390755
     ResourceGroup : spring-boot-1599007390755-rg
-    Region : westeurope
-    PricingTier : Basic_B2
+    Region : centralus
+    PricingTier : P1v2
     OS : Windows
-    Java : 1.8
-    WebContainer : java 8
+    Java : Java 8
+    WebContainer : Java SE
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -139,10 +139,10 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
 
 1. Wenn die Eingabeaufforderung für die Option **Abonnement** angezeigt wird, wählen Sie das richtige `Subscription` aus, indem Sie die Ziffer am Zeilenanfang eingeben.
 2. Wenn die Eingabeaufforderung für die Option **Web-App** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken.
-3. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Windows** aus, indem Sie `2` eingeben.
+3. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Windows** aus, indem Sie `1` eingeben.
 4. Wenn die Eingabeaufforderung für die Option **javaVersion** angezeigt wird, wählen Sie **Java 8** aus, in dem Sie `1` eingeben.
-5. Wenn die Eingabeaufforderung für die Option **webContainer** angezeigt wird, wählen Sie **Tomcat 8.5** aus, in dem Sie `3` eingeben.
-6. Wenn die Eingabeaufforderung für die Option **Tarif** angezeigt wird, wählen Sie **P1v2** aus, in dem Sie `7` eingeben.
+5. Wenn die Eingabeaufforderung für die Option **webContainer** angezeigt wird, wählen Sie **Tomcat 8.5** aus, in dem Sie `1` eingeben.
+6. Wenn die Eingabeaufforderung für die Option **Tarif** angezeigt wird, wählen Sie **P1v2** aus, in dem Sie `10` eingeben.
 7. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     Die Zusammenfassungsausgabe sieht in etwa wie der unten gezeigte Codeausschnitt aus.
@@ -152,10 +152,10 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
     Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003152123
     ResourceGroup : helloworld-1599003152123-rg
-    Region : westeurope
-    PricingTier : Basic_B2
+    Region : centralus
+    PricingTier : P1v2
     OS : Windows
-    Java : 1.8
+    Java : Java 8
     WebContainer : tomcat 8.5
     Deploy to slot : false
     Confirm (Y/N)? : Y
@@ -183,7 +183,7 @@ JBoss EAP ist nur in der Linux-Version von App Service verfügbar. Wählen Sie o
 1. Wenn die Eingabeaufforderung für die Option **Web-App** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken.
 1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Linux** aus, indem Sie die EINGABETASTE drücken.
 2. Wenn die Eingabeaufforderung für die Option **javaVersion** angezeigt wird, wählen Sie **Java 8** aus, in dem Sie `1` eingeben.
-3. Wenn die Eingabeaufforderung für die Option **Tarif** angezeigt wird, wählen Sie **P1v2** aus, in dem Sie `6` eingeben.
+3. Wenn die Eingabeaufforderung für die Option **Tarif** angezeigt wird, wählen Sie **P1v2** aus, in dem Sie `10` eingeben.
 4. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     ```
@@ -191,10 +191,10 @@ JBoss EAP ist nur in der Linux-Version von App Service verfügbar. Wählen Sie o
     Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007116351
     ResourceGroup : spring-boot-1599007116351-rg
-    Region : westeurope
-    PricingTier : Basic_B2
+    Region : centralus
+    PricingTier : P1v2
     OS : Linux
-    RuntimeStack : JAVA 8-jre8
+    Web server stack : JAVA SE
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -212,8 +212,8 @@ JBoss EAP ist nur in der Linux-Version von App Service verfügbar. Wählen Sie o
 1. Wenn die Eingabeaufforderung für die Option **Web-App** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken.
 1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Linux** aus, indem Sie die EINGABETASTE drücken.
 1. Wenn die Eingabeaufforderung für die Option **javaVersion** angezeigt wird, wählen Sie **Java 8** aus, in dem Sie `1` eingeben.
-1. Wenn die Eingabeaufforderung für die Option **runtimeStack** angezeigt wird, wählen Sie **Tomcat 8.5** aus, in dem Sie `3` eingeben.
-1. Wenn die Eingabeaufforderung für die Option **Tarif** angezeigt wird, wählen Sie **P1v2** aus, in dem Sie `6` eingeben.
+1. Wenn die Eingabeaufforderung für die Option **webcontainer** angezeigt wird, wählen Sie **Tomcat 8.5** aus, in dem Sie `3` eingeben.
+1. Wenn die Eingabeaufforderung für die Option **Tarif** angezeigt wird, wählen Sie **P1v2** aus, in dem Sie `10` eingeben.
 1. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     ```
@@ -221,10 +221,10 @@ JBoss EAP ist nur in der Linux-Version von App Service verfügbar. Wählen Sie o
     Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003744223
     ResourceGroup : helloworld-1599003744223-rg
-    Region : westeurope
-    PricingTier : Basic_B2
+    Region : centralus
+    PricingTier : P1v2
     OS : Linux
-    RuntimeStack : TOMCAT 8.5-jre8
+    Web server stack : TOMCAT 8.5
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -242,8 +242,8 @@ JBoss EAP ist nur in der Linux-Version von App Service verfügbar. Wählen Sie o
 1. Wenn eine Eingabeaufforderung für die **Web-App-Optionen** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken.
 1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Linux** aus, indem Sie die EINGABETASTE drücken.
 1. Wenn die Eingabeaufforderung für die Option **javaVersion** angezeigt wird, wählen Sie **Java 8** aus, in dem Sie `1` eingeben.
-1. Wenn die Eingabeaufforderung für die Option **runtimeStack** angezeigt wird, wählen Sie **Jbosseap 7** aus, in dem Sie `2` eingeben.
-1. Wenn die Eingabeaufforderung für die Option **pricingTier** angezeigt wird, wählen Sie **P1v3** aus, in dem Sie `3` eingeben.
+1. Wenn die Eingabeaufforderung für die Option **webContainer** angezeigt wird, wählen Sie **Jbosseap 7** aus, in dem Sie `1` eingeben.
+1. Wenn die Eingabeaufforderung für die Option **pricingTier** angezeigt wird, wählen Sie **P1v3** aus, in dem Sie `1` eingeben.
 1. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     ```
@@ -251,11 +251,11 @@ JBoss EAP ist nur in der Linux-Version von App Service verfügbar. Wählen Sie o
     Subscription Id : ********-****-****-****-************
     AppName : petstoreee7-1623451825408
     ResourceGroup : petstoreee7-1623451825408-rg
-    Region : westeurope
+    Region : centralus
     PricingTier : P1v3
     OS : Linux
     Java : Java 8
-    Web server stack: Jbosseap 7.2
+    Web server stack: Jbosseap 7
     Deploy to slot : false
     Confirm (Y/N) [Y]: y
     [INFO] Saving configuration to pom.
@@ -279,8 +279,8 @@ Eigenschaft | Erforderlich | BESCHREIBUNG | Version
 `<subscriptionId>` | false | Geben Sie die Abonnement-ID an. | 0.1.0+
 `<resourceGroup>` | true | Azure-Ressourcengruppe für Ihre Web-App. | 0.1.0+
 `<appName>` | true | Der Name Ihrer Web-App. | 0.1.0+
-`<region>` | true | Gibt die Region an, in der Ihre Web-App gehostet wird. Der Standardwert ist **westeurope**. Alle gültigen Regionen finden Sie im Abschnitt [Unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=app-service). | 0.1.0+
-`<pricingTier>` | true | Der Tarif für Ihre Web-App. Für Produktionsworkloads lautet der Standardwert **P1V2**, für Entwicklungs- und Testworkloads in Java ist der empfohlene Mindestwert hingegen **B2**. [Weitere Informationen](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
+`<region>` | true | Gibt die Region an, in der Ihre Web-App gehostet wird. Der Standardwert ist **centralus**. Alle gültigen Regionen finden Sie im Abschnitt [Unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=app-service). | 0.1.0+
+`<pricingTier>` | true | Der Tarif für Ihre Web-App. Für Produktionsworkloads lautet der Standardwert **P1v2**, für Entwicklungs- und Testworkloads in Java ist der empfohlene Mindestwert hingegen **B2**. [Weitere Informationen](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
 `<runtime>` | true | Details zur Konfiguration der Laufzeitumgebung finden Sie [hier](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0+
 `<deployment>` | true | Details zur Konfiguration der Bereitstellung finden Sie [hier](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0+
 

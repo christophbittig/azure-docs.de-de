@@ -3,14 +3,14 @@ title: Erstellen eines PowerShell-Runbooks mithilfe einer verwalteten Identität
 description: In diesem Tutorial erfahren Sie, wie Sie verwaltete Identitäten mit einem PowerShell-Runbook in Azure Automation verwenden.
 services: automation
 ms.subservice: process-automation
-ms.date: 08/16/2021
+ms.date: 09/28/2021
 ms.topic: tutorial
-ms.openlocfilehash: 0620aacb1b4f2a6cb7c6214c1ce92add3bec8f63
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f335df520b8d47a9439575a5d2f337d28a9bebc6
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610672"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357548"
 ---
 # <a name="tutorial-create-automation-powershell-runbook-using-managed-identity"></a>Tutorial: Erstellen eines Automation PowerShell-Runbooks mithilfe einer verwalteten Identität
 
@@ -28,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 * Ein Azure Automation-Konto mit mindestens einer benutzerseitig zugewiesenen verwalteten Identität. Weitere Informationen finden Sie unter [Verwenden einer benutzerseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto](../add-user-assigned-identity.md).
 * Az-Module: `Az.Accounts`, `Az.Automation`, `Az.ManagedServiceIdentity` und `Az.Compute`, importiert in das Automation-Konto. Weitere Informationen finden Sie unter [Importieren von Az-Modulen](../shared-resources/modules.md#import-az-modules).
-* Das auf Ihrem Computer installierte [PowerShell-Modul „Azure Az“](/powershell/azure/new-azureps-module-az). Informationen zur einer Installation oder einem Upgrade finden Sie unter [Installieren des PowerShell-Moduls „Azure Az“](/powershell/azure/install-az-ps).
+* Das auf Ihrem Computer installierte [PowerShell-Modul „Azure Az“](/powershell/azure/new-azureps-module-az). Informationen zur einer Installation oder einem Upgrade finden Sie unter [Installieren des PowerShell-Moduls „Azure Az“](/powershell/azure/install-az-ps). `Az.ManagedServiceIdentity` ist ein Vorschaumodul und wird nicht als Teil des Az-Moduls installiert. Führen Sie zur Installation `Install-Module -Name Az.ManagedServiceIdentity` aus.
 * Von eine [virtuellen Azure-Computer](../../virtual-machines/windows/quick-create-powershell.md). Da Sie diesen Computer starten und beenden, sollte es sich nicht um eine Produktions-VM handeln.
 * Allgemeine Vertrautheit mit [Automation-Runbooks](../manage-runbooks.md).
 
@@ -122,7 +122,7 @@ Erstellen Sie ein Runbook, das die Ausführung durch eine der beiden verwalteten
     
     # Connect using a Managed Service Identity
     try {
-            Connect-AzAccount -Identity -ErrorAction stop -WarningAction SilentlyContinue | Out-Null
+            $AzureContext = (Connect-AzAccount -Identity).context
         }
     catch{
             Write-Output "There is no system-assigned user identity. Aborting."; 
@@ -130,8 +130,8 @@ Erstellen Sie ein Runbook, das die Ausführung durch eine der beiden verwalteten
         }
     
     # set and store context
-    $subID = (Get-AzContext).Subscription.Id
-    $AzureContext = Set-AzContext -SubscriptionId $subID
+    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+        -DefaultProfile $AzureContext
     
     if ($method -eq "SA")
         {
@@ -142,15 +142,18 @@ Erstellen Sie ein Runbook, das die Ausführung durch eine der beiden verwalteten
             Write-Output "Using user-assigned managed identity"
     
             # Connects using the Managed Service Identity of the named user-assigned managed identity
-            $identity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $UAMI -DefaultProfile $AzureContext
+            $identity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup `
+                -Name $UAMI -DefaultProfile $AzureContext
     
             # validates assignment only, not perms
-            if ((Get-AzAutomationAccount -ResourceGroupName $resourceGroup -Name $automationAccount -DefaultProfile $AzureContext).Identity.UserAssignedIdentities.Values.PrincipalId.Contains($identity.PrincipalId))
+            if ((Get-AzAutomationAccount -ResourceGroupName $resourceGroup `
+                    -Name $automationAccount `
+                    -DefaultProfile $AzureContext).Identity.UserAssignedIdentities.Values.PrincipalId.Contains($identity.PrincipalId))
                 {
-                    Connect-AzAccount -Identity -AccountId $identity.ClientId | Out-Null
+                    $AzureContext = (Connect-AzAccount -Identity -AccountId $identity.ClientId).context
     
                     # set and store context
-                    $AzureContext = Set-AzContext -SubscriptionId ($identity.id -split "/")[2]
+                    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
                 }
             else {
                     Write-Output "Invalid or unassigned user-assigned managed identity"
@@ -163,7 +166,8 @@ Erstellen Sie ein Runbook, das die Ausführung durch eine der beiden verwalteten
          }
     
     # Get current state of VM
-    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status -DefaultProfile $AzureContext).Statuses[1].Code
+    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName `
+        -Status -DefaultProfile $AzureContext).Statuses[1].Code
     
     Write-Output "`r`n Beginning VM status: $status `r`n"
     
@@ -178,7 +182,8 @@ Erstellen Sie ein Runbook, das die Ausführung durch eine der beiden verwalteten
         }
     
     # Get new state of VM
-    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status -DefaultProfile $AzureContext).Statuses[1].Code  
+    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status `
+        -DefaultProfile $AzureContext).Statuses[1].Code  
     
     Write-Output "`r`n Ending VM status: $status `r`n `r`n"
     

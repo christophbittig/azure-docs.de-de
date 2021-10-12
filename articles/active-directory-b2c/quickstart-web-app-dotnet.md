@@ -8,21 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
-ms.date: 09/12/2019
+ms.date: 10/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 22a2f0a73992bd829d150243974701d07321f26b
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 3c39780f1f8e84ed3fe58973f46274bad727d10e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613315"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351376"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine ASP.NET-Anwendung unter Verwendung von Azure Active Directory B2C
 
-Azure Active Directory B2C (Azure AD B2C) ermöglicht die Cloudidentitätsverwaltung zum Schützen Ihrer Anwendung, Ihres Unternehmens und Ihrer Kunden. Mit Azure AD B2C können sich Ihre Anwendungen über offene Standardprotokolle bei Konten für soziale Netzwerke und bei Unternehmenskonten authentifizieren. In dieser Schnellstartanleitung verwenden Sie eine ASP.NET-Anwendung und ein soziales Netzwerk als Identitätsanbieter, um sich anzumelden und eine durch Azure AD B2C geschützte Web-API aufzurufen.
+Azure Active Directory B2C (Azure AD B2C) ermöglicht die Cloudidentitätsverwaltung zum Schützen Ihrer Anwendung, Ihres Unternehmens und Ihrer Kunden. Mit Azure AD B2C können sich Ihre Anwendungen über offene Standardprotokolle bei Konten für soziale Netzwerke und bei Unternehmenskonten authentifizieren. 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+In dieser Schnellstartanleitung verwenden Sie eine ASP.NET-Anwendung und ein soziales Netzwerk als Identitätsanbieter, um sich anzumelden und eine durch Azure AD B2C geschützte Web-API aufzurufen.
+
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,13 +54,13 @@ Azure Active Directory B2C (Azure AD B2C) ermöglicht die Cloudidentitätsverwal
 
 ## <a name="sign-in-using-your-account"></a>Anmelden mit Ihrem Konto
 
-1. Klicken Sie in der ASP.NET-Webanwendung auf **Registrieren/Anmelden**, um den Workflow zu starten.
+1. Wählen Sie in der ASP.NET-Webanwendung **Registrieren/Anmelden** aus, um den Workflow zu starten.
 
     ![Beispiel für ASP.NET-Web-App im Browser mit hervorgehobenem Link „Registrieren/Anmelden“](./media/quickstart-web-app-dotnet/web-app-sign-in.png)
 
     In der Beispielanwendung werden mehrere Registrierungsoptionen unterstützt, z.B. die Nutzung eines sozialen Netzwerks als Identitätsanbieter oder die Erstellung eines lokalen Kontos per E-Mail-Adresse. Verwenden Sie für diese Schnellstartanleitung ein Konto bei einem sozialen Netzwerk als Identitätsanbieter (etwa Facebook, Google oder Microsoft).
 
-2. Azure AD B2C zeigt für die Beispielwebanwendung eine Anmeldeseite für ein fiktives Unternehmen namens „Fabrikam“ an. Um sich mit einem Social Media-Konto als Identitätsanbieter zu registrieren, klicken Sie auf die Schaltfläche des Identitätsanbieters, den Sie verwenden möchten.
+2. Azure AD B2C zeigt für die Beispielwebanwendung eine Anmeldeseite für ein fiktives Unternehmen namens „Fabrikam“ an. Um sich mit einem Social Media-Konto als Identitätsanbieter zu registrieren, wählen Sie die Schaltfläche des Identitätsanbieters aus, den Sie verwenden möchten.
 
     ![Anmelde-oder Registrierungsseite mit Schaltflächen für die Auswahl von Identitätsanbietern](./media/quickstart-web-app-dotnet/sign-in-or-sign-up-web.png)
 
@@ -70,19 +72,19 @@ Azure Active Directory B2C (Azure AD B2C) ermöglicht die Cloudidentitätsverwal
 
 Azure Active Directory B2C bietet Funktionen, mit denen Benutzer ihre Profile aktualisieren können. Die Beispiel-Web-App nutzt einen Azure AD B2C-Bearbeitungsprofil-Benutzerflow für den Workflow.
 
-1. Klicken Sie auf der Menüleiste der Anwendung auf Ihren Profilnamen, und wählen Sie **Profil bearbeiten** aus, um das von Ihnen erstellte Profil zu bearbeiten.
+1. Wählen Sie auf der Menüleiste der Anwendung Ihren Profilnamen und dann **Profil bearbeiten** aus, um das von Ihnen erstellte Profil zu bearbeiten.
 
     ![Beispiel für ASP.NET-Web-App im Browser mit hervorgehobenem Link „Profil bearbeiten“](./media/quickstart-web-app-dotnet/edit-profile-web.png)
 
-2. Ändern Sie den Wert für **Anzeigename** oder **Ort**, und klicken Sie dann auf **Weiter**, um Ihr Profil zu aktualisieren.
+2. Ändern Sie den Wert für **Anzeigename** oder **Ort**, und wählen Sie dann **Weiter** aus, um Ihr Profil zu aktualisieren.
 
     Die Änderung wird rechts oben auf der Startseite der Webanwendung angezeigt.
 
 ## <a name="access-a-protected-api-resource"></a>Zugreifen auf eine geschützte API-Ressource
 
-1. Klicken Sie auf **Aufgabenliste**, um Ihre Aufgabenlistenelemente einzugeben und zu ändern.
+1. Wählen Sie **Aufgabenliste** aus, um Ihre Aufgabenlistenelemente einzugeben und zu ändern.
 
-2. Geben Sie Text in das Textfeld **Neues Element** ein. Klicken Sie auf **Hinzufügen**, um die mit Azure AD B2C geschützte Web-API aufzurufen, die ein Aufgabenlistenelement hinzufügt.
+2. Geben Sie Text in das Textfeld **Neues Element** ein. Wählen Sie **Hinzufügen** aus, um die mit Azure AD B2C geschützte Web-API aufzurufen, die ein Aufgabenlistenelement hinzufügt.
 
     ![Beispiel für Web-App in einem Browser mit „Hinzufügen“ für ein Aufgabenlistenelement](./media/quickstart-web-app-dotnet/add-todo-item-web.png)
 
@@ -90,20 +92,7 @@ Azure Active Directory B2C bietet Funktionen, mit denen Benutzer ihre Profile ak
 
 Sie haben Ihr Azure AD B2C-Benutzerkonto verwendet, um einen autorisierten Aufruf einer geschützten Azure AD B2C-Web-API durchzuführen.
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Sie können Ihren Azure AD B2C-Mandanten für weitere Azure AD B2C-Schnellstarts oder -Tutorials verwenden. Wenn Sie ihn nicht mehr benötigt, können Sie [Ihren Azure AD B2C-Mandanten löschen](faq.yml#how-do-i-delete-my-azure-ad-b2c-tenant-).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mithilfe einer ASP.NET-Beispielanwendung folgende Aktionen durchgeführt:
-
-* Anmelden mit einer benutzerdefinierten Anmeldeseite
-* Anmelden mit einem sozialen Netzwerk als Identitätsanbieter
-* Erstellen eines Azure AD B2C-Kontos
-* Aufrufen einer durch Azure AD B2C geschützten Web-API
-
-Machen Sie sich als Nächstes mit der Erstellung Ihres eigenen Azure AD B2C-Mandanten vertraut.
-
-> [!div class="nextstepaction"]
-> [Erstellen eines Azure Active Directory B2C-Mandanten im Azure-Portal](tutorial-create-tenant.md)
+[Erstellen eines Azure Active Directory B2C-Mandanten im Azure-Portal](tutorial-create-tenant.md)

@@ -8,14 +8,12 @@
 - name: Tutorials
   expanded: true
   items:
-    - name: 'Erste Schritte: Nachweise'
-      href: get-started-verifiable-credentials.md
-    - name: Konfigurieren von Nachweisen in Ihrem Mandanten
-      items:
-        - name: "1. Einrichten des Nachweisausstellers in Ihrer eigenen Azure\_AD-Instanz"
-          href: enable-your-tenant-verifiable-credentials.md
-        - name: "2. Verbinden Ihres Nachweisausstellers mit Ihrer eigenen Azure\_AD-Instanz"
-          href: issue-verify-verifiable-credentials-your-tenant.md
+    - name: Einrichten des Nachweisdiensts
+      href: verifiable-credentials-configure-tenant.md
+    - name: Ausstellen eines Nachweises
+      href: verifiable-credentials-configure-issuer.md
+    - name: Überprüfen eines Nachweises
+      href: verifiable-credentials-configure-verifier.md
 - name: Konzepte
   expanded: true
   items:
@@ -32,6 +30,8 @@
           href: plan-issuance-solution.md
         - name: Planen Ihrer Überprüfungslösung
           href: plan-verification-solution.md
+    - name: Verwenden der Anforderungsdienst-REST-API
+      href: get-started-request-api.md
     - name: Vorgehensweise beim Anpassen Ihrer Anmeldeinformationen
       href: credential-design.md
     - name: Verwalten des Nachweiswiderrufs
@@ -49,6 +49,15 @@
       href: 'https://didvc-issuer-sample.azurewebsites.net/'
     - name: Beispielüberprüfung
       href: 'https://didvc-verifier-sample.azurewebsites.net/'
+- name: Verweis
+  expanded: true
+  items:
+    - name: Neues
+      href: whats-new.md
+    - name: Spezifikation der Ausstellungs-API
+      href: issuance-request-api.md
+    - name: Spezifikation der Darstellungs-API
+      href: presentation-request-api.md
 - name: Ressourcen
   expanded: true
   items:

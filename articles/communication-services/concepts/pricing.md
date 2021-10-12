@@ -9,12 +9,12 @@ ms.author: nmurav
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: d8938a437db42a2d1cb5dd88f6102ce7f5facb3a
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: d2ea2c510aa9e6225de215da128670514f1dba3b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259069"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360443"
 ---
 # <a name="pricing-scenarios"></a>Preisszenarien
 
@@ -190,10 +190,10 @@ Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Geb�
 
 ### <a name="sms"></a>sms
 
-SMS bietet nutzungsbasierte Preise. Der Preis ist eine auf dem Ziel der Nachricht basierende Gebühr pro Nachricht. Nachrichten können über gebührenfreie Telefonnummern an Telefonnummern innerhalb der USA gesendet werden. Beachten Sie, dass lokale (geografische) Telefonnummern nicht zum Senden von SMS-Nachrichten verwendet werden können.
+SMS bietet nutzungsbasierte Preise. Der Preis ist eine auf dem Ziel der Nachricht basierende Gebühr pro Nachrichtensegment. Weitere Informationen zu Nachrichtensegmenten finden Sie [hier](./telephony-sms/sms-faq.md#what-is-the-sms-character-limit). Nachrichten können über gebührenfreie Telefonnummern an Telefonnummern innerhalb der USA gesendet werden. Beachten Sie, dass lokale (geografische) Telefonnummern nicht zum Senden von SMS-Nachrichten verwendet werden können.
 
 Die folgenden Preise enthalten die erforderlichen Kommunikationssteuern und Gebühren:
 
 |Land   |Senden von Nachrichten|Empfangen von Nachrichten|
 |-----------|------------|------------|
-|USA (gebührenfrei)    |0,0075 USD/Nachricht   | 0,0075 USD/Nachricht |
+|USA (gebührenfrei)    |0,0075 USD/Nachrichtensegment  | 0,0075 USD/Nachrichtensegment |

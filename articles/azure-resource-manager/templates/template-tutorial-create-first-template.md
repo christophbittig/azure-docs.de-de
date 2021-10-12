@@ -2,16 +2,16 @@
 title: 'Tutorial: Erstellen und Bereitstellen einer Vorlage'
 description: Erstellen Sie Ihre erste Azure Resource Manager-Vorlage (ARM-Vorlage). In diesem Tutorial lernen Sie die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
-ms.date: 12/17/2020
+ms.date: 10/01/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 83a043084af78d382e06b3f860addb986423e9cb
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 7263a72f19d9dfea8044e55451a52ebdec29ec7d
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187125"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390233"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage
 
@@ -100,18 +100,18 @@ az login
 
 ---
 
-Wenn Sie über mehrere Azure-Abonnements verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten. Ersetzen Sie `[SubscriptionID/SubscriptionName]` und die eckigen Klammern `[]` durch Ihre Abonnementinformationen:
+Wenn Sie über mehrere Azure-Abonnements verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten. Ersetzen Sie `SubscriptionName` durch den Abonnementnamen. Sie können auch die Abonnement-ID anstelle des Abonnementnamens verwenden.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-Set-AzContext [SubscriptionID/SubscriptionName]
+Set-AzContext SubscriptionName
 ```
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli
-az account set --subscription [SubscriptionID/SubscriptionName]
+az account set --subscription SubscriptionName
 ```
 
 ---

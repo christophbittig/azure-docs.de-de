@@ -6,12 +6,12 @@ ms.date: 03/01/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: e2136e70f45fa909a306e1af2c25cb6e5c6a85d0
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: a352015437437ef47b076b487710018e7ef8e2d9
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081909"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402128"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Tutorial: Integrieren von Azure Key Vault in Ihre Bereitstellung einer ARM-Vorlage
 
@@ -40,11 +40,13 @@ Ein Microsoft Learn-Modul, das einen sicheren Wert aus einem Schlüsseltresor ve
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 * Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Schnellstart: Erstellen von ARM-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
-* Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
+* Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Sie können [Azure Cloud Shell](../../cloud-shell/overview.md) verwenden, um den folgenden Befehl in PowerShell oder Bash auszuführen:
 
-    ```console
+    ```shell
     openssl rand -base64 32
     ```
+
+    Wenn Sie mehr erfahren möchten, führen Sie `man openssl rand` aus, um die Handbuchseite zu öffnen.
 
     Vergewissern Sie sich, dass das generierte Kennwort die Kennwortanforderungen für den virtuellen Computer erfüllt. Jeder Azure-Dienst hat bestimmte Kennwortanforderungen. Informationen zu den Kennwortanforderungen für virtuelle Computer finden Sie unter [Welche Anforderungen an das Kennwort gelten beim Erstellen eines virtuellen Computers?](../../virtual-machines/windows/faq.yml#what-are-the-password-requirements-when-creating-a-vm-).
 
@@ -58,7 +60,7 @@ In diesem Abschnitt erstellen Sie einen Schlüsseltresor und fügen ihm ein Gehe
 > [!NOTE]
 > Wenn Sie als Benutzer, der die Vorlage für virtuelle Maschinen bereitstellt, nicht Besitzer oder ein Mitwirkender für den Schlüsseltresor sind, muss der Besitzer oder ein Mitwirkender Ihnen Zugriff auf die Berechtigung `Microsoft.KeyVault/vaults/deploy/action` für den Schlüsseltresor gewähren. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./key-vault-parameter.md).
 
-Wählen Sie zum Ausführen des folgenden Azure PowerShell-Skripts die Option **Testen Sie es.** aus, um Azure Cloud Shell zu öffnen. Klicken Sie zum Einfügen des Skripts mit der rechten Maustaste auf den Shellbereich, und wählen Sie **Einfügen** aus.
+Wählen Sie zum Ausführen des folgenden Azure PowerShell-Skripts die Option **Jetzt ausprobieren** aus, um Cloud Shell zu öffnen. Klicken Sie zum Einfügen des Skripts mit der rechten Maustaste auf den Shellbereich, und wählen Sie **Einfügen** aus.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -171,7 +173,7 @@ Bei der Methode mit statischer ID muss die Vorlagendatei nicht geändert werden.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
+1. Melden Sie sich bei [Cloud Shell](https://shell.azure.com) an.
 
 1. Wählen Sie Ihre bevorzugte Umgebung aus, indem Sie links oben **PowerShell** oder **Bash** (für die CLI) auswählen.  Bei einem Wechsel ist ein Neustart der Shell erforderlich.
 

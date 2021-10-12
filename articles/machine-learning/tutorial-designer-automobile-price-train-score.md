@@ -10,18 +10,18 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/11/2021
 ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: f8e544681f940e649e1d04d148caafb875c69952
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d1d6ee6b7baf930dbe38ca143cdfd1cc61b4758a
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472918"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129430058"
 ---
 # <a name="tutorial-designer---train-a-no-code-regression-model"></a>Tutorial: Designer – Trainieren eines Regressionsmodells ohne Code
 
 Trainieren Sie ein lineares Regressionsmodell, das die Autopreise mithilfe des Azure Machine Learning Designers vorhersagt. Dieses Tutorial ist der erste Teil einer zweiteiligen Reihe.
 
-In diesem Tutorial wird der Azure Machine Learning Designer verwendet. Weitere Informationen dazu finden Sie unter [Was ist Azure Machine Learning Designer](concept-designer.md).
+In diesem Tutorial wird der Azure Machine Learning-Designer verwendet. Weitere Informationen dazu finden Sie unter [Was ist der Azure Machine Learning-Designer?](concept-designer.md).
 
 In dem ersten Teil des Tutorials lernen Sie Folgendes:
 

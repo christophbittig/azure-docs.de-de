@@ -2,13 +2,13 @@
 title: 'Event Hubs: Erfassen von Streamingereignissen über das Azure-Portal'
 description: In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal die Erfassung von über Azure Event Hubs gestreamten Ereignissen aktivieren.
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: b603af17ca4e46b8004b7b2550cddd87164da157
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.date: 09/16/2021
+ms.openlocfilehash: e11eb8aedce9d0ae447e7b6908d17e4c70671f7d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253636"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273047"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Aktivieren der Erfassung von über Azure Event Hubs gestreamten Ereignissen
 
@@ -81,18 +81,16 @@ Capture kann für vorhandene Event Hubs in Event Hubs-Namespaces konfiguriert we
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-![Konfigurieren von Azure Blob Storage][2]
+:::image type="content" source="./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png" alt-text="Konfigurieren von Capture in einem Azure-Speicher für einen vorhandenen Event Hub":::
 
 ### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
-
-![Konfigurieren von Azure Data Lake Storage Gen 2](./media/event-hubs-capture-enable-through-portal/configure-data-lake-storage-gen2.png)
+Hier werden die gleichen Angaben wie oben (für Azure Blob Storage) verwendet, mit der Ausnahme, dass Sie einen Container aus einem Azure Data Lake Storage Gen 2-Konto auswählen. 
 
 ### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1 
 
 ![Konfigurieren von Azure Data Lake Storage][4]
 
 [1]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture1.png
-[2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
 

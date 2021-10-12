@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 302d7edff9f4ed815dd4e0fd09675ae59777e27a
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: c15a2e525cfe614a3cced41a905f0c25762553c1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113288570"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272602"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Tutorial: Erstellen und Bereitstellen eines simulierten X.509-Geräts per Java-Gerät und Dienst-SDK sowie Gruppenregistrierungen für IoT Hub Device Provisioning Service
 
@@ -251,7 +251,7 @@ Führen Sie zunächst die Schritte unter [Einrichten des IoT Hub Device Provisio
 Wenn Sie das Geräteclientbeispiel weiter verwenden und erkunden möchten, überspringen Sie die Bereinigung der in dieser Schnellstartanleitung erstellten Ressourcen. Falls Sie nicht fortfahren möchten, führen Sie die folgenden Schritte aus, um alle erstellten Ressourcen zu löschen, die im Rahmen dieser Schnellstartanleitung erstellt wurden:
 
 1. Schließen Sie auf Ihrem Computer das Ausgabefenster des Geräteclientbeispiels.
-1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Alle Ressourcen**, und wählen Sie Ihren Device Provisioning-Dienst aus. Öffnen Sie das Blatt **Registrierungen verwalten** für Ihren Dienst, und klicken Sie auf die Registerkarte **Individuelle Registrierungen**. Wählen Sie die *REGISTRIERUNGS-ID* für das Gerät aus, das Sie in diesem Schnellstart registriert haben, und klicken Sie oben auf die Schaltfläche **Löschen**. 
+1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Alle Ressourcen**, und wählen Sie Ihre Device Provisioning Service-Instanz aus. Öffnen Sie das Blatt **Registrierungen verwalten** für Ihren Dienst, und klicken Sie auf die Registerkarte **Individuelle Registrierungen**. Wählen Sie die *REGISTRIERUNGS-ID* für das Gerät aus, das Sie in diesem Schnellstart registriert haben, und klicken Sie oben auf die Schaltfläche **Löschen**. 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Alle Ressourcen**, und wählen Sie Ihre IoT Hub-Instanz aus. Öffnen Sie das Blatt **IoT-Geräte** für Ihren Hub, wählen Sie die *GERÄTE-ID* des Geräts aus, die Sie in dieser Schnellstartanleitung registriert haben, und klicken Sie dann im oberen Bereich auf **Löschen**.
 
 

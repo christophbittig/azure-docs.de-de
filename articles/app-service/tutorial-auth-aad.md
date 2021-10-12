@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/23/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0c07d17269911043c71fc0d89a5a290f053e39a4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e7ee0deb84b6b7ef7c10c296eab236524a3ee487
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639734"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357341"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -299,42 +299,36 @@ Nachdem Sie die Authentifizierung und Autorisierung für beide Apps aktiviert ha
 
 Die Front-End-App verfügt jetzt über die erforderlichen Berechtigungen für den Zugriff auf die Back-End-App als angemeldeter Benutzer. In diesem Schritt konfigurieren Sie die App Service-Authentifizierung und -Autorisierung, um ein verwendbares Zugriffstoken für den Zugriff auf das Back-End zu erhalten. Für diesen Schritt benötigen Sie die Client-ID des Back-Ends, die Sie unter [Aktivieren der Authentifizierung und Autorisierung für die Back-End-App](#enable-authentication-and-authorization-for-back-end-app) kopiert haben.
 
-1. Navigieren Sie zu [Azure-Ressourcen-Explorer](https://resources.azure.com), und suchen Sie in der Ressourcenstruktur nach Ihrer Front-End-Web-App.
+Führen Sie in der Cloud Shell den folgenden Befehl auf der Front-End-App aus, um den Parameter `scope` der Authentifizierungseinstellung `identityProviders.azureActiveDirectory.login.loginParameters` hinzuzufügen. Ersetzen Sie *\<front-end-app-name>* und *\<back-end-client-id>* .
 
-1. Der [Azure-Ressourcen-Explorer](https://resources.azure.com) wird nun mit der in der Ressourcenstruktur ausgewählten Front-End-App geöffnet. Klicken Sie am oberen Rand der Seite auf **Lesen/Schreiben**, um die Bearbeitung Ihrer Azure-Ressourcen zu ermöglichen.
+```azurecli-interactive
+az webapp auth set --resource-group myAuthResourceGroup --name <front-end-app-name> --body '{"identityProviders":{"azureActiveDirectory":{"login":{"loginParameters":["scope=openid profile email offline_access api://<back-end-client-id>/user_impersonation"]}}}}'
+```
 
-    :::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="Screenshot: Schaltflächen „Schreibgeschützt“ und „Lesen/Schreiben“ oben auf der Seite des Azure-Ressourcen-Explorers mit der ausgewählten Schaltfläche „Lesen/Schreiben“":::
+Hier ist eine Beschreibung der angeforderten Bereiche angegeben:
 
-1. Führen Sie im Browser links einen Drilldown für **config** > **authsettingsV2** aus.
+- `openid`, `profile` und `email` werden von App Service bereits standardmäßig angefordert. Weitere Informationen finden Sie unter [OpenID Connect-Bereiche](../active-directory/develop/v2-permissions-and-consent.md#openid-connect-scopes).
+- `api://<back-end-client-id>/user_impersonation` ist eine API, die unter Ihrer Back-End-App-Registrierung verfügbar gemacht wird. Dies ist der Bereich, über den Sie ein JWT-Token erhalten, in dem die Back-End-App als [Tokenzielgruppe](https://wikipedia.org/wiki/JSON_Web_Token) enthalten ist. 
+- [offline_access](../active-directory/develop/v2-permissions-and-consent.md#offline_access) ist hier als Hilfe angegeben (falls Sie [Token aktualisieren](#when-access-tokens-expire) möchten).
 
-1. Klicken Sie in der Ansicht **authsettingsV2** auf **Bearbeiten**. Gehen Sie zu `properties.identityProviders.azureActiveDirectory.login` und fügen Sie `loginParameters` mit der folgenden JSON-Zeichenfolge hinzu, indem Sie die kopierte Client-ID verwenden. 
+> [!TIP]
+> - Um den Bereich `api://<back-end-client-id>/user_impersonation` im Azure-Portal anzuzeigen, wechseln Sie zur Seite **Authentifizierung** für die Back-End-App, klicken auf den Link unter **Identitätsanbieter** und klicken dann im linken Menü auf **API verfügbar machen**.
+> - Falls Sie die erforderlichen Bereiche stattdessen per Weboberfläche konfigurieren möchten, helfen Ihnen die Microsoft-Schritte unter [Aktualisieren von Authentifizierungstoken](configure-authentication-oauth-tokens.md#refresh-auth-tokens) weiter.
+> - Für einige Bereiche ist die Einwilligung des Administrators oder Benutzers erforderlich. Diese Anforderung bewirkt, dass die Zustimmungsanforderungsseite angezeigt wird, wenn sich ein Benutzer bei der Front-End-App im Browser anknappt. Um diese Zustimmungsseite zu vermeiden, fügen Sie die App-Registrierung des Front-End als autorisierte Clientanwendung auf der Seite **API verfügbar machen** hinzu, indem Sie auf **Clientanwendung** hinzufügen klicken und die Client-ID der App-Registrierung des Front-Ends übergeben.
 
-    ```json
-    "loginParameters": ["response_type=code id_token","scope=openid api://<back-end-client-id>/user_impersonation"],
-    ```
+::: zone pivot="platform-linux"
 
-    :::image type="content" source="./media/tutorial-auth-aad/add-loginparameters.png" alt-text="Screenshot: Codebeispiel in der Ansicht „authsettingsV2“ mit der Zeichenfolge „additionalLoginParams“ und einem Beispiel einer Client-ID":::
+> [!NOTE]
+> Für Linux-Apps ist es vorübergehend erforderlich, eine Einstellung für die Versionseinstellungen für die Back-End-App-Registrierung zu konfigurieren. Konfigurieren Sie Cloud Shell mit den folgenden Befehlen. Achten Sie darauf, dass *\<back-end-client-id>* Sie durch die Client-ID Ihres Back-End ersetzen.
+>
+> ```azurecli-interactive
+> id=$(az ad app show --id <back-end-client-id> --query objectId --output tsv)
+> az rest --method PATCH --url https://graph.microsoft.com/v1.0/applications/$id --body "{'api':{'requestedAccessTokenVersion':2}}" 
+> ```    
 
-    > [!TIP]
-    > Der Bereich `api://<back-end-client-id>/user_impersonation` wird standardmäßig der App-Registrierung für die Back-End-App hinzugefügt. Um es im Azure-Portal anzuzeigen, wechseln Sie zur Seite **Authentifizierung** für die Back-End-App, klicken Sie auf den Link unter **Identitätsanbieter**, und klicken Sie dann im linken Menü auf **API verfügbar machen**.
-    >
-    > Beachten Sie, dass für den Bereich die Zustimmung des Administrators oder Benutzers erforderlich ist. Diese Anforderung bewirkt, dass die Zustimmungsanforderungsseite angezeigt wird, wenn sich ein Benutzer bei der Front-End-App im Browser anknappt. Um diese Zustimmungsseite zu vermeiden, fügen Sie die App-Registrierung des Front-End als autorisierte Clientanwendung auf der Seite **API verfügbar machen** hinzu, indem Sie auf **Clientanwendung** hinzufügen klicken und die Client-ID der App-Registrierung des Front-Ends übergeben.
-
-1. Speichern Sie Ihre Einstellungen, indem Sie auf **PUT** klicken.
-
-    ::: zone pivot="platform-linux"
+::: zone-end
     
-    > [!NOTE]
-    > Für Linux-Apps ist es vorübergehend erforderlich, eine Einstellung für die Versionseinstellungen für die Back-End-App-Registrierung zu konfigurieren. Konfigurieren Sie Cloud Shell mit den folgenden Befehlen. Achten Sie darauf, dass *\<back-end-client-id>* Sie durch die Client-ID Ihres Back-End ersetzen.
-    >
-    > ```azurecli-interactive
-    > id=$(az ad app show --id <back-end-client-id> --query objectId --output tsv)
-    > az rest --method PATCH --url https://graph.microsoft.com/v1.0/applications/$id --body "{'api':{'requestedAccessTokenVersion':2}}" 
-    > ```    
-
-    ::: zone-end
-    
-    Ihre Apps sind nun konfiguriert. Das Front-End kann jetzt mit einem geeigneten Zugriffstoken auf das Back-End zugreifen.
+Ihre Apps sind nun konfiguriert. Das Front-End kann jetzt mit einem geeigneten Zugriffstoken auf das Back-End zugreifen.
 
 Informationen dazu, wie Sie das Zugriffstoken für andere Anbieter konfigurieren, finden Sie unter [Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service](configure-authentication-oauth-tokens.md#refresh-auth-tokens).
 

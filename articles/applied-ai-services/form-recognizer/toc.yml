@@ -16,19 +16,19 @@ items:
     items:
       - name: Formularerkennung v2.1
         items:
-          - name: 'Erste Schritte: Formularerkennungstool für die Bezeichnung'
+          - name: Formularerkennungstool für die Bezeichnung
             href: quickstarts/try-sample-label-tool.md
-          - name: 'Erste Schritte: Clientbibliotheken und REST-API'
+          - name: Clientbibliotheken und REST-API
             href: quickstarts/try-sdk-rest-api.md
       - name: Formularerkennung v3.0 | Vorschau
         items:
-          - name: 'Erste Schritte: Formularerkennung Studio (Vorschau)'
+          - name: Formularerkennung Studio (Vorschau)
             href: quickstarts/try-v3-form-recognizer-studio.md
-          - name: 'Erste Schritte: REST-API (Vorschau)'
+          - name: REST-API (Vorschau)
             href: quickstarts/try-v3-rest-api.md
-          - name: 'Erste Schritte: C# SDK (Vorschau)'
+          - name: C# SDK (Vorschau)
             href: quickstarts/try-v3-csharp-sdk.md
-          - name: 'Erste Schritte: Python SDK (Vorschau)'
+          - name: Python SDK (Vorschau)
             href: quickstarts/try-v3-python-sdk.md
   - name: Beispiele
     items:
@@ -133,6 +133,8 @@ items:
         href: tutorial-azure-function.md
   - name: Verweis
     items:
+      - name: Fehlercodes und Meldungen v3.0 (Vorschau)
+        href: preview-error-guide.md
       - name: "REST-API\_v2.1 für die Azure-Formularerkennung"
         items:
           - name: "Referenz zu REST-API\_v2.1"

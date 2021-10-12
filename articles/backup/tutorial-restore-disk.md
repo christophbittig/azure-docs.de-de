@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Backup und Recovery Services einen Datent
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7f4d70f43f76c3a72cd8e53037d06d32e61c3cdb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0de37086f3b7a968b69318ebe7bb73689812373a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768496"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537212"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Wiederherstellen eines virtuellen Computers mit der Azure CLI
 
@@ -163,6 +163,12 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 ```
 
 Wenn der *Status* des Wiederherstellungsauftrags *Abgeschlossen* lautet, wurden die erforderlichen Informationen (VM-Konfiguration und Bereitstellungsvorlage) im Speicherkonto wiederhergestellt.
+
+#### <a name="using-managed-identity-to-restore-disks"></a>Verwenden der verwalteten Identität zum Wiederherstellen von Datenträgern
+
+Mit Azure Backup können Sie auch eine verwaltete Identität (Managed Identity, MSI) während des Wiederherstellungsvorgang verwenden, um auf Speicherkonten zuzugreifen, in denen Datenträger wiederhergestellt werden müssen. Diese Option wird derzeit nur für die Wiederherstellung verwalteter Datenträger unterstützt.
+
+Wenn Sie die systemseitig zugewiesene verwaltete Identität des Tresors zum Wiederherstellen von Datenträgern verwenden möchten, übergeben Sie ein zusätzliches Flag (* **--mi-system-assigned** _) an den Befehl [az backup restore restore-disks](/cli/azure/backup/restore#az_backup_restore_restore_disks). Wenn Sie eine benutzerseitig zugewiesene verwaltete Identität verwenden möchten, übergeben Sie den Parameter _*_ --mi-user-assigned_** mit der ARM-ID der verwalteten Identität des Tresors als Wert des Parameters. In [diesem Artikel](encryption-at-rest-with-cmk.md#enable-managed-identity-for-your-recovery-services-vault) erfahren Sie, wie Sie eine verwaltete Identität für Ihre Tresore aktivieren. 
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>Erstellen virtueller Computer von wiederhergestellten Datenträgern
 

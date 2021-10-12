@@ -12,12 +12,12 @@ metadata:
   ms.date: 04/17/2019
   ms.author: kefre
   ms.custom: seodec18
-  ms.openlocfilehash: b344ae378bc299a737e212205b2d85f6106424a6
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 5b13040c02d72a2cfd423f014f4f89ffba11d627
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124824825"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129350710"
 title: Häufig gestellte Fragen zur Maschinelles Sehen-API
 summary: >
   > [!TIP]
@@ -29,7 +29,7 @@ sections:
   - question: >
       Wie kann ich die vom Dienst zugelassenen Transaktionen pro Sekunde (TPS) erhöhen?
     answer: >
-      Der Free-Tarif (S0) lässt nur 20 Transaktionen pro Minute zu. Führen Sie ein Upgrade auf den Tarif S1 durch, um bis zu 10 Transaktionen pro Sekunde zu erhalten. Wenn der Fehlercode 429 und die Fehlermeldung „Zu viele Anforderungen“ angezeigt werden, [senden Sie ein Azure-Supportticket](https://azure.microsoft.com/support/create-ticket/), um Ihre TPS mit einer kurzen geschäftlichen Begründung auf 50 oder höher zu erhöhen. [Preise für maschinelles Sehen](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/#pricing).
+      Der Free-Tarif (S0) lässt nur 20 Transaktionen pro Minute zu. Führen Sie ein Upgrade auf den Tarif S1 durch, um bis zu 30 Transaktionen pro Sekunde zu erhalten. Wenn der Fehlercode 429 und die Fehlermeldung „Zu viele Anforderungen“ angezeigt werden, [senden Sie ein Azure-Supportticket](https://azure.microsoft.com/support/create-ticket/), um Ihre TPS mit einer kurzen geschäftlichen Begründung auf 50 oder höher zu erhöhen. [Preise für maschinelles Sehen](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/#pricing).
   - question: "Der Dienst löst einen Fehler aus, weil meine Bilddatei zu groß ist. Wie kann ich dieses Problem umgehen? \n"
     answer: >
       Die Dateigrößenbeschränkung für die meisten Features des maschinellen Sehens beträgt 4 MB, aber die Clientbibliotheks-SDKs können Dateien bis zu 6 MB verarbeiten. Für die optische Zeichenerkennung (Optical Character Recognition, OCR), die mehrseitige Dokumente verarbeitet, beträgt die maximale Dateigröße 50 MB. Weitere Informationen finden Sie unter [Bildanforderungen](overview-image-analysis.md#image-requirements) und [Eingabeanforderungen](overview-ocr.md#input-requirements).

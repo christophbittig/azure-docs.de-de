@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/24/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 7c52a14ce1115be6efcaf99a29f9ee7ca1836c71
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f21c120374a7e6a42c5bb98a1db8687f00aba548
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110452668"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778474"
 ---
 # <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>Tutorial: Integrieren von Soloinsight-CloudGate SSO in Azure Active Directory
 
@@ -38,6 +38,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Soloinsight-CloudGate SSO unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Soloinsight-CloudGate SSO unterstützt die [automatische Benutzerbereitstellung](soloinsight-cloudgate-sso-provisioning-tutorial.md).
 
 ## <a name="add-soloinsight-cloudgate-sso-from-the-gallery"></a>Hinzufügen von Soloinsight-CloudGate SSO aus dem Katalog
 
@@ -67,13 +68,13 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens mit Soloinsigh
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Soloinsight-CloudGate SSO** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Soloinsight-CloudGate SSO** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie auf der Seite **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie auf der Seite **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
     1. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.sigateway.com/login`.
 
@@ -172,6 +173,9 @@ Wählen Sie zum Erstellen eines Testbenutzers im Hauptmenü Ihres CloudGate-Webp
 
 ![Mitarbeitertest](./media/soloinsight-cloudgate-sso-tutorial/employee-test.png)
 
+> [!NOTE]
+> Außerdem unterstützt Soloinsight-CloudGate SSO die automatische Benutzerbereitstellung. Weitere Informationen zum Konfigurieren der automatischen Benutzerbereitstellung finden Sie [hier](./soloinsight-cloudgate-sso-provisioning-tutorial.md).
+
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
@@ -180,7 +184,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Navigieren Sie direkt zur Anmelde-URL für Soloinsight-CloudGate SSO, und initiieren Sie dort den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Soloinsight-CloudGate SSO“ klicken, werden Sie an die Anmelde-URL von Soloinsight-CloudGate SSO umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Soloinsight-CloudGate SSO“ klicken, werden Sie an die Anmelde-URL von Soloinsight-CloudGate SSO umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: ca68ecca217399db8a570b2d7ba063276b4d61bb
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 64551f24d3273f757511a0727779073026fb11c1
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124801997"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232503"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Netskope Administrator Console
 
@@ -163,7 +163,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden von Azure,
 
    ![Screenshot: Abschnitt „SSO/SLO Settings“ (SSO/SLO-Einstellungen), in dem Sie „EDIT SETTINGS“ (EINSTELLUNGEN BEARBEITEN) auswählen können](./media/netskope-cloud-security-tutorial/settings.png)
 
-1. Führen Sie im Popupfenster **Settings** die folgenden Schritte aus:
+1. Führen Sie im Popupfenster **Settings** (Einstellungen) die folgenden Schritte aus:
 
    ![Screenshot: Dialogfeld „Settings“ (Einstellungen), in dem Sie die beschriebenen Werte eingeben können](./media/netskope-cloud-security-tutorial/configuration.png)
 

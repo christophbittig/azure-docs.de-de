@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 05/24/2021
+ms.date: 09/28/2021
 ms.author: aahi
-ms.openlocfilehash: f8913bc75688184d30711e4ee33b5d3601557ee7
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 5998ccdfa48a700ac8789954246f6b7bcec60543
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113303668"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360506"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migration zu den Read v3.x OCR-Containern
 
@@ -39,7 +39,7 @@ Ausführliche Informationen zum Aktualisieren Ihrer Anwendungen für die Verwend
 
 ## <a name="memory-requirements"></a>Speicheranforderungen
 
-Die Anforderungen und Empfehlungen basieren auf Benchmarks mit einer einzelnen Anforderung pro Sekunde, wobei ein 8 MB großes Bild eines gescannten Geschäftsbriefs mit 29 Zeilen und insgesamt 803 Zeichen verwendet wird. In der folgenden Tabelle werden die minimale und empfohlene Zuordnung von Ressourcen für jeden OCR-Container für das Lesen beschrieben.
+Die Anforderungen und Empfehlungen basieren auf Benchmarks mit einer einzelnen Anforderung pro Sekunde, wobei ein 8 MB großes Bild eines gescannten Geschäftsbriefs mit 29 Zeilen und insgesamt 803 Zeichen verwendet wird. In der folgenden Tabelle werden die minimalen und empfohlenen Zuordnungen von Ressourcen für jeden OCR-Container für das Lesen beschrieben:
 
 |Container  |Minimum | Empfohlen  |
 |---------|---------|------|

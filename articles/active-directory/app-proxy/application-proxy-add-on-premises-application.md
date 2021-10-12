@@ -12,12 +12,12 @@ ms.date: 02/17/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3-portal
-ms.openlocfilehash: 5734d7a1f889c6e7334d0a088fecdfdcd39936c5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 60c0eefea2b141a76445837e1031f73e593520f6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964917"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235837"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -213,7 +213,7 @@ Nun haben Sie Ihre Umgebung vorbereitet, einen Connector installiert und sind be
 4. Wählen Sie die Schaltfläche **Lokale Anwendung hinzufügen** aus, die etwa in der Mitte der Seite im Abschnitt **Lokale Anwendungen** angezeigt wird. Alternativ können Sie oben auf der Seite die Option **Eigene Anwendung erstellen** und dann **Anwendungsproxy für sicheren Remotezugriff auf eine lokale Anwendung konfigurieren** auswählen.
 5. Geben Sie im Abschnitt **Fügen Sie Ihre eigene lokale Anwendung hinzu** die folgenden Informationen zu Ihrer Anwendung an:
 
-    | Feld  | Beschreibung |
+    | Feld  | BESCHREIBUNG |
     | :--------------------- | :----------------------------------------------------------- |
     | **Name** | Der Name der Anwendung, der in „Meine Apps“ und im Azure-Portal angezeigt wird |
     | **Interne URL** | Die URL zum Zugreifen auf die Anwendung innerhalb Ihres privaten Netzwerks. Sie können einen bestimmten Pfad auf dem Back-End-Server für die Veröffentlichung angeben, während der Rest des Servers nicht veröffentlicht wird. Auf diese Weise können Sie unterschiedliche Websites auf demselben Server als unterschiedliche Apps veröffentlichen und jeweils einen eigenen Namen und Zugriffsregeln vergeben.<br><br>Stellen Sie beim Veröffentlichen eines Pfads sicher, dass er alle erforderlichen Bilder, Skripts und Stylesheets für Ihre Anwendung enthält. Wenn sich die App beispielsweise unter „https:\//yourapp/app“ befindet und Bilder unter „https:\//yourapp/media“ genutzt werden, sollten Sie „https:\//yourapp/“ als Pfad veröffentlichen. Diese interne URL verfügt nicht über die Zielseite, die den Benutzern angezeigt wird. Weitere Informationen finden Sie unter [Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps](application-proxy-configure-custom-home-page.md). |

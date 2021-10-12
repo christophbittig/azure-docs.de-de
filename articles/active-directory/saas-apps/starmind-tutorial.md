@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Starmind | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Starmind'
 description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Starmind konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/25/2020
+ms.date: 09/20/2021
 ms.author: jeedes
-ms.openlocfilehash: ecccc0bf05dfc4e27835a676748ca144c6bcc6c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 535abbd360ffb3bbc2d07c8cc23491874679b813
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92521984"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669320"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-starmind"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Starmind
+# <a name="tutorial-azure-ad-sso-integration-with-starmind"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Starmind
 
 In diesem Tutorial erfahren Sie, wie Sie Starmind in Azure Active Directory (Azure AD) integrieren. Die Integration von Starmind in Azure AD ermöglicht Folgendes:
 
@@ -38,9 +38,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Starmind unterstützt **SP-initiiertes** einmaliges Anmelden.
-* Starmind unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* Starmind unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
-## <a name="adding-starmind-from-the-gallery"></a>Hinzufügen von Starmind aus dem Katalog
+## <a name="add-starmind-from-the-gallery"></a>Hinzufügen von Starmind aus dem Katalog
 
 Um die Integration von Starmind in Azure AD zu konfigurieren, müssen Sie Starmind über den Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
@@ -50,7 +50,6 @@ Um die Integration von Starmind in Azure AD zu konfigurieren, müssen Sie Starm
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Starmind** im Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Starmind** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-starmind"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Starmind
 
@@ -71,23 +70,22 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Starmind** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.starmind.com`
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>`.
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>/broker/saml/endpoint`
 
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>/broker/saml/endpoint`
+    c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.starmind.com`
 
     d. Geben Sie im Textfeld **Abmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.starmind.com/auth/realms/<ID>/broker/saml/endpoint`.
 
-
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit den tatsächlichen Werten für Anmelde-URL, Bezeichner, Antwort-URL und Abmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den Starmind-Client](mailto:support@starmind.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit den tatsächlichen Werten für Bezeichner, Antwort-URL, Anmelde-URL und Abmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den Starmind-Client](mailto:support@starmind.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -133,11 +131,11 @@ In diesem Abschnitt wird in Starmind ein Benutzer mit dem Namen Britta Simon er
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Starmind weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Starmind weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-2. Rufen Sie direkt die Starmind-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die Starmind-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-3. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „Starmind“ klicken, werden Sie zur Anmelde-URL für Starmind umgeleitet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Starmind“ klicken, werden Sie zur Anmelde-URL für Starmind umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

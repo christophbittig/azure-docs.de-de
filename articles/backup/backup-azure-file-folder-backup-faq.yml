@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: backup
   ms.date: 04/05/2021
-  ms.openlocfilehash: ff157a3d8e744dffd314525a053b8c3ca1ab8999
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: d4877b7346e9854748f6106ca881732c549e98a1
+  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122252496"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129271667"
 title: Häufig gestellte Fragen – Microsoft Azure Recovery Services-Agent (MARS)
 summary: >
   Dieser Artikel beantwortet häufige Fragen zur Sicherung von Daten mit dem Microsoft Azure Recovery Services-Agent (MARS) im [Azure Backup](backup-overview.md)-Dienst.
@@ -84,6 +84,10 @@ sections:
   - question: >
       Welche Auswirkung hat das Übertragen des Tresorabonnements in ein anderes Azure AD-Verzeichnis auf MARS-Agent-Sicherungen?
     answer: "Die Änderung des Azure AD-Verzeichnisses hat keine Auswirkung auf MARS-Agent-Sicherungen. \n"
+  - question: >
+      Was geschieht, wenn bei der erwarteten wöchentlichen, monatlichen oder jährlichen Sicherung ein Fehler auftritt?
+    answer: >
+      Wenn bei der Sicherung ein Fehler auftritt, wird die nächste erfolgreiche Sicherung nach der erwarteten wöchentlichen, monatlichen oder jährlichen Sicherung je nach Aufbewahrungsdauer für wöchentliche, monatliche und jährliche Wiederherstellungspunkte (Langzeitaufbewahrungspunkte) gemäß der Sicherungsrichtlinie beibehalten. Bei dieser erfolgreichen Sicherung kann es sich um eine Ad-hoc-Sicherung oder im Fall des MARS-Agents um eine geplante Sicherung handeln.
 - name: Verwalten von Sicherungen
   questions:
   - question: >

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3cff113ffd6a37406a88eb5ad5a4e3d5e85e10c5
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: abf39ce59bec57d765ab981eae94b1b49b41e4b1
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039420"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390081"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Tutorial: Entwickeln von IoT Edge-Modulen mit Linux-Containern
 
@@ -154,13 +154,13 @@ Nehmen Sie sich nach dem Laden Ihrer neuen Projektmappe im Visual Studio Code-Fe
 
 ### <a name="set-iot-edge-runtime-version"></a>Festlegen der IoT Edge-Runtimeversion
 
-Die IoT Edge-Erweiterung verwendet beim Erstellen der Bereitstellungsressourcen standardmäßig die neueste stabile Version der IoT Edge-Runtime. Derzeit ist Version 1.2 die neueste stabile Version. Wenn Sie Module für Geräte entwickeln, auf denen die Version 1.1 mit langfristigem Support (Long-Term Support, LTS) oder die frühere Version 1.0 ausgeführt wird, aktualisieren Sie die IoT Edge-Runtimeversion in Visual Studio Code entsprechend.
+Die IoT Edge-Erweiterung verwendet beim Erstellen Ihrer Bereitstellungsressourcen standardmäßig die neueste stabile Version der IoT Edge-Runtime. Zurzeit ist Version 1.2 die neueste stabile Version. Wenn Sie Module für Geräte entwickeln, auf denen die Version 1.1 mit langfristigem Support (Long-Term Support, LTS) oder die frühere Version 1.0 ausgeführt wird, aktualisieren Sie die IoT Edge-Runtimeversion in Visual Studio Code entsprechend.
 
 1. Wählen Sie **Ansicht** > **Befehlspalette** aus.
 
-1. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: Set default IoT Edge runtime version** ein, und führen Sie ihn aus.
+1. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: Set default IoT Edge runtime version** (Azure IoT Edge: IoT Edge-Runtime-Standardversion festlegen) ein, und führen Sie ihn aus.
 
-1. Wählen Sie in der Liste die Runtimeversion aus, die auf Ihren IoT Edge-Geräten ausgeführt wird.
+1. Wählen Sie in der Liste die Runtimeversion aus, die auf Ihren IoT Edge-Geräten ausgeführt wird.
 
 Nachdem Sie eine neue Runtimeversion ausgewählt haben, wird Ihr Bereitstellungsmanifest dynamisch aktualisiert, um die Änderung an den Runtimemodulimages widerzuspiegeln.
 
@@ -178,7 +178,7 @@ Die IoT Edge-Erweiterung versucht, Ihre Anmeldeinformationen für die Containerr
 3. Speichern Sie die Änderungen an der ENV-Datei.
 
 >[!NOTE]
->In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für die Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten, z. B. Dienstprinzipale, auszuwählen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
+>In diesem Tutorial werden die Administratoranmeldeinformationen für die Azure Container Registry verwendet, die für Entwicklungs- und Testszenarien geeignet sind. Wenn Sie für Produktionsszenarien bereit sind, empfehlen wir Ihnen, eine Authentifizierungsoption mit den geringstmöglichen Rechten auszuwählen, z. B. Dienstprinzipale oder Token mit Repositorygültigkeitsbereich. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf die Containerregistrierung](production-checklist.md#manage-access-to-your-container-registry).
 
 ### <a name="select-your-target-architecture"></a>Auswählen Ihrer Zielarchitektur
 

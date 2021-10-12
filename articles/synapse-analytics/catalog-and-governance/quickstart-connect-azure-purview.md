@@ -5,15 +5,15 @@ author: Jejiang
 ms.service: synapse-analytics
 ms.subservice: purview
 ms.topic: quickstart
-ms.date: 09/02/2021
+ms.date: 09/29/2021
 ms.author: jejiang
 ms.reviewer: jrasnick
-ms.openlocfilehash: b7d729234244302e648a2d3a0bf9c8dc94f10d5a
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 894df32142cf29e59e40b1e9218f4090bbda93f0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450357"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351607"
 ---
 # <a name="quickstartconnect-a-synapse-workspace-to-an-azure-purview-account"></a>Schnellstart: Verbinden eines Synapse-Arbeitsbereichs mit einem Azure Purview-Konto
 
@@ -71,13 +71,24 @@ Die verwaltete Identität des Synapse-Arbeitsbereichs wird verwendet, um Pushvor
 
     Wenn Sie einen Synapse-Arbeitsbereich mit Purview in Synapse Studio verbinden, wird von Synapse automatisch versucht, eine solche Rollenzuweisung hinzuzufügen. Wenn Sie die Rolle **Sammlungsadministratoren** für die Purview-Stammsammlung innehaben und über Ihr Netzwerk Zugriff auf das Purview-Konto haben, wird dieser Vorgang erfolgreich ausgeführt.
 
-- Erteilen Sie für Purview-Konten, die **vor dem 18. August 2021** erstellt wurden, der verwalteten Identität des Synapse-Arbeitsbereichs die in Azure integrierte Rolle [**Datenkurator für Purview**](../../role-based-access-control/built-in-roles.md#purview-data-curator) für Ihr Purview-Konto. Weitere Informationen zu Legacyberechtigungen für die Zugriffssteuerung in Azure Purview finden Sie [hier](../../purview/catalog-permissions.md#legacy-permission-guide).
+- Erteilen Sie für Purview-Konten, die **vor dem 18. August 2021** erstellt wurden, der verwalteten Identität des Synapse-Arbeitsbereichs die in Azure integrierte Rolle [**Purview Data Curator (Legacy)** ](../../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) (Datenkurator für Purview (Legacy)) für Ihr Purview-Konto. Weitere Informationen zu Legacyberechtigungen für die Zugriffssteuerung in Azure Purview finden Sie [hier](../../purview/catalog-permissions.md#legacy-permission-guide).
 
     Wenn Sie einen Synapse-Arbeitsbereich mit Purview in Synapse Studio verbinden, wird von Synapse automatisch versucht, eine solche Rollenzuweisung hinzuzufügen. Wenn Sie für das Purview-Konto über die in Azure integrierte Rolle **Besitzer** oder **Benutzerzugriffsadministrator** verfügen, ist dieser Vorgang erfolgreich.
 
-Unter Umständen wird die folgende Warnung angezeigt, wenn Sie über die Berechtigung zum Lesen von Purview-Rollenzuweisungsinformationen verfügen und die erforderliche Rolle nicht erteilt wird. Vergewissern Sie sich, dass die Verbindung für das pipelinebasierte Pushen von Herkunftsinformationen ordnungsgemäß festgelegt ist. Navigieren Sie hierzu zu Ihrem Purview-Konto, und überprüfen Sie, ob der verwalteten Identität des Synapse-Arbeitsbereichs die Rolle **Datenkurator für Purview** erteilt wurde. Falls nicht, fügen Sie die Rollenzuweisung manuell hinzu.
+## <a name="monitor-purview-connection"></a>Überwachen der Purview-Verbindung
 
-:::image type="content" source="./media/register-purview-account-warning.png" alt-text="Screenshot der Warnung beim Registrieren eines Purview-Kontos":::
+Sobald der Synapse-Arbeitsbereich mit einem Purview-Konto verbunden wurde, wird die folgende Seite mit Details zu den aktivierten Integrationsfunktionen angezeigt.
+
+:::image type="content" source="./media/monitor-purview-connection-status.png" alt-text="Screenshot: Überwachen des Integrationsstatus zwischen Azure Synapse und Purview":::
+
+Für **Data Lineage - Synapse Pipeline** (Datenherkunft: Synapse-Pipeline) kann einer der folgenden Status angezeigt werden:
+
+- **Verbunden**: Der Synapse-Arbeitsbereich wurde erfolgreich mit dem Purview-Konto verbunden. Das bedeutet, dass der Synapse-Arbeitsbereich einem Purview-Konto zugeordnet ist und über die Berechtigung zum Pushen der Herkunft verfügt. Wenn Ihr Purview-Konto durch eine Firewall geschützt ist, müssen Sie auch sicherstellen, dass die Integration Runtime, die zum Ausführen der Aktivitäten und Pushvorgänge für die Herkunft verwendet wird, das Purview-Konto erreichen kann. Weitere Informationen finden Sie unter [Zugreifen auf ein geschütztes Azure Purview-Konto](how-to-access-secured-purview-account.md).
+- **Getrennt**: Der Synapse-Arbeitsbereich kann die Herkunft nicht an Purview pushen, da der verwalteten Identität des Synapse-Arbeitsbereichs nicht die Rolle als Purview-Datenkurator gewährt wurde. Wechseln Sie zum Beheben dieses Problems zu Ihrem Purview-Konto, um die Rollenzuweisungen zu überprüfen, und gewähren Sie die Rolle ggf. manuell. Weitere Informationen finden Sie im Abschnitt zum [Einrichten der Authentifizierung](#set-up-authentication).
+- **Unbekannt**: Azure Synapse kann den Status nicht feststellen. Mögliche Gründe:
+
+    - Das Purview-Konto ist von Ihrem aktuellen Netzwerk aus nicht erreichbar, da das Konto durch eine Firewall geschützt ist. Sie können Synapse Studio stattdessen über ein privates Netzwerk mit Konnektivität zu Ihrem Purview-Konto aufrufen.
+    - Sie haben keine Berechtigung zum Überprüfen von Rollenzuweisungen für das Purview-Konto. Sie können sich an den Purview-Kontoadministrator wenden, um die Rollenzuweisungen für Sie überprüfen zu lassen. Weitere Informationen zur benötigten Purview-Rolle finden Sie im Abschnitt zum [Einrichten der Authentifizierung](#set-up-authentication).
 
 ## <a name="report-lineage-to-azure-purview"></a>Melden der Herkunft an Azure Purview
 

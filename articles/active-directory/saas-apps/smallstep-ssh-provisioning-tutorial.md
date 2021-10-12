@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/21/2021
 ms.author: thwimmer
-ms.openlocfilehash: f08ee68a3ee51e7d42b1939cf3e4ecee03808f93
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 16f9124abf34892f00ebb1dadde229ef6d140e55
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122327574"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355160"
 ---
 # <a name="tutorial-configure-smallstep-ssh-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Smallstep SSH für die automatische Benutzerbereitstellung
 
@@ -54,7 +54,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 2. Navigieren Sie zur Registerkarte **Users** (Benutzer), und wählen Sie **Azure AD** als Identitätsanbieter aus.
 
-3. Geben Sie auf der nächsten Seite Ihre **Azure AD-Mandanten-ID** und die **Whitelist für Domänen** an, um OIDC zu konfigurieren.
+3. Geben Sie auf der nächsten Seite Ihre **Azure AD-Mandanten-ID** und die Positivliste an, um OIDC zu konfigurieren.
 
 4. Kopieren und speichern Sie unter „SCIM Details“ die **Mandanten-URL** für SCIM und das **geheime Token**. Diese Werte werden in das Feld **Mandanten-URL** und **Geheimes Token** auf der Registerkarte „Bereitstellung“ Ihrer Smallstep SSH-Anwendung im Azure-Portal eingegeben.
 
