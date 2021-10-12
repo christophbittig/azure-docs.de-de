@@ -43,7 +43,7 @@
 - name: Beispiele
   expanded: true
   items:
-    - name: Beispiel-App (Node)
+    - name: Beispielanwendungen
       href: 'https://github.com/Azure-Samples/active-directory-verifiable-credentials'
     - name: Beispielaussteller
       href: 'https://didvc-issuer-sample.azurewebsites.net/'

@@ -1036,6 +1036,8 @@
         - name: Ermitteln der Gebühr für Anforderungseinheiten
           displayName: 'request units, RUs, RU, charge, consumption'
           href: cassandra/find-request-unit-charge-cassandra.md
+        - name: Vermeiden von Ratenbegrenzungsfehlern
+          href: cassandra/prevent-rate-limiting-errors.md
         - name: Speichern und Verwalten von Spring-Daten
           href: cassandra/access-data-spring-data-app.md
         - name: Häufig auftretende Probleme und Problembehandlung

@@ -222,6 +222,8 @@
           href: authenticate-playbooks-to-sentinel.md
         - name: Verwenden von Triggern und Aktionen in Playbooks
           href: playbook-triggers-actions.md
+        - name: Anpassen von Playbooks aus Vorlagen
+          href: use-playbook-templates.md
     - name: Verwalten von Azure Sentinel
       items:
         - name: Azure Sentinel für MSSPs

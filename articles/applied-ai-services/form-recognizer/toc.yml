@@ -98,6 +98,8 @@ items:
     items:
       - name: Übersicht über das Modell
         href: concept-model-overview.md
+      - name: Formularerkennung Studio | Vorschau
+        href: concept-form-recognizer-studio.md
       - name: Allgemeines Dokumentmodell | Vorschau
         href: concept-general-document.md
       - name: Layoutmodell

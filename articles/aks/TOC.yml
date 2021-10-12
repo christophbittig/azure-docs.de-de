@@ -237,6 +237,8 @@
           href: load-balancer-standard.md
         - name: Verwenden einer statischen IP-Adresse und einer DNS-Bezeichnung
           href: static-ip.md
+        - name: Verwenden eines HTTP-Proxys (Vorschau)
+          href: http-proxy.md
         - name: Eingehende Daten
           items:
             - name: Erstellen eines einfachen Controllers
