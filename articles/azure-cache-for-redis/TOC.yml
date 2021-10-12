@@ -168,6 +168,8 @@
           href: cache-how-to-monitor.md
         - name: Festlegen von Warnungen für Ausnahmen
           href: cache-how-to-monitor.md#operations-and-alerts
+        - name: Überwachen mit Diagnoseprotokollen
+          href: cache-monitor-diagnostic-settings.md
         - name: Häufig gestellte Fragen zur Überwachung
           href: cache-monitor-troubleshoot-faq.yml
     - name: Skalieren
