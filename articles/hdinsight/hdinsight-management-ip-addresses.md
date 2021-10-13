@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 617624fe3ae3ea5c0dc7bb3f34145f0aadf4ac4b
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 65e2e90f82794fa36c7e33a9eb1859e260034f71
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113219211"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857518"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-Verwaltungs-IP-Adressen
 
@@ -23,7 +23,7 @@ Dieser Artikel enthält die IP-Adressen, die von den Integritäts- und Verwaltun
 
 Wenn Sie Netzwerksicherheitsgruppen (NSG) oder benutzerdefinierte Routen (User-Defined Routes, UDRs) zum Steuern von eingehendem Datenverkehr auf Ihrem HDInsight-Cluster verwenden, müssen Sie sicherstellen, dass der Cluster mit kritischen Integritäts- und Verwaltungsdiensten von Azure kommunizieren kann.  Einige der IP-Adressen für diese Dienste sind regionsspezifisch, und einige gelten für alle Azure-Regionen. Unter Umständen müssen Sie auch Datenverkehr über den Azure DNS-Dienst zulassen, wenn Sie kein benutzerdefiniertes DNS verwenden.
 
-Wenn Sie IP-Adressen für eine hier nicht aufgeführte Region benötigen, können Sie die [Ermittlungs-API für Diensttags](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) verwenden, um IP-Adressen für Ihre Region zu finden. Wenn Sie die API nicht verwenden können, laden Sie die [JSON-Datei mit Diensttags](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) herunter, und suchen Sie nach der gewünschten Region.
+Wenn Sie IP-Adressen für eine hier nicht aufgeführte Region benötigen, können Sie die [Ermittlungs-API für Diensttags](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) verwenden, um IP-Adressen für Ihre Region zu finden. Wenn Sie die API nicht verwenden können, laden Sie die [JSON-Datei mit Diensttags](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) herunter, und suchen Sie nach der gewünschten Region.
 
 HDInsight führt die Überprüfung für diese Regeln mit Clustererstellung und -skalierung durch, um weitere Fehler zu vermeiden. Wenn die Überprüfung nicht bestanden wird, tritt bei Erstellung und Skalierung ein Fehler auf.
 

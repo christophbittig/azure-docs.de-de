@@ -7,20 +7,16 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: 3022b2d4954ffaef71e17ed28dd9b6f141d4da70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ced0213a155bee2926a77d0b8f4126b7b97232fb
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99980489"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618950"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Unterstützung für das Verschieben von virtuellen Azure-Computern zwischen Azure-Regionen
 
 Dieser Artikel enthält Informationen zur Unterstützung und zu den Voraussetzungen für das Verschieben von virtuellen Computern und der entsprechenden Netzwerkressourcen in Azure-Regionen mithilfe von Resource Mover.
-
-> [!IMPORTANT]
-> Azure Resource Mover ist derzeit als Vorschauversion verfügbar.
-
 
 ## <a name="windows-vm-support"></a>Unterstützung von virtuellen Computern unter Windows
 

@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 00a3fa397bf88520fa4923b6fbe7495c0aa0b8a2
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 37535361222a1c2e476e2cde24304ee4cc3f218c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277401"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657357"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Signalisieren beschreibender Audiospuren
 
@@ -45,7 +45,7 @@ In Media Services v3 verwenden Sie Azure Storage-APIs zum Hochladen von Dateien.
 Die folgende Funktion führt diese Aktionen aus:
 
 * Erstellen eines **Objekts** 
-* Abrufen einer nicht schreibgeschützten [SAS-URL](../../storage/common/storage-sas-overview.md) für den [Container](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container) des Objekts im Speicher
+* Abrufen einer nicht schreibgeschützten [SAS-URL](../../storage/common/storage-sas-overview.md) für den [Container](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-a-blob-to-a-container) des Objekts im Speicher
 * Die Datei in den Container im Speicher mithilfe der SAS-URL hochladen
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]

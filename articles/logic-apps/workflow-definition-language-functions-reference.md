@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: reference
 ms.date: 09/09/2021
-ms.openlocfilehash: f1b4efafd7868d4c42528ce7de5eae56051dcb83
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 99d642a1cd534691e5089ac6956dc023d3a207d0
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736643"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388848"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
@@ -355,7 +355,7 @@ action()
 action().outputs.body.<property>
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*property*> | Nein | String | Der Name der Aktionsobjekteigenschaft, deren Wert Sie abrufen möchten: **name**, **startTime**, **endTime**, **inputs**, **outputs**, **status**, **code**, **trackingId** und **clientTrackingId**. Im Azure-Portal finden Sie diese Eigenschaften, indem Sie die Details eines bestimmten Ausführungsverlaufs überprüfen. Weitere Informationen hierzu finden Sie unter [REST-API - Workflowausführungsaktionen](/rest/api/logic/workflowrunactions/get). |
 |||||
@@ -1005,9 +1005,7 @@ In diesem Beispiel wird die base64-codierte Zeichenfolge „aGVsbG8“ in eine B
 base64ToBinary('aGVsbG8=')
 ```
 
-Dies ist das zurückgegebene Ergebnis:
-
-`"0110000101000111010101100111001101100010010001110011100000111101"`
+Angenommen, Sie verwenden eine HTTP-Aktion, um eine Anforderung zu senden. Sie können `base64ToBinary()` verwenden, um eine Base64-codierte Zeichenfolge in Binärdaten zu konvertieren, und diese Daten mit dem Inhaltstyp `application/octet-stream` in der Anforderung senden.
 
 <a name="base64ToString"></a>
 
@@ -1065,6 +1063,7 @@ binary('<value>')
 *Beispiel*
 
 Sie verwenden beispielsweise eine HTTP-Aktion, die eine Bild- oder Videodatei zurückgibt. Sie können `binary()` verwenden, um den Wert in ein Base64-codiertes Inhaltsumschlagsmodell zu konvertieren. Dann können Sie den Inhaltsumschlag erneut für andere Aktionen verwenden (z. B. `Compose`).
+Sie können diesen Funktionsausdruck verwenden, um die Zeichenfolgebytes mit dem Inhaltstyp `application/octet-stream` in der Anforderung zu senden.
 
 <a name="body"></a>
 
@@ -1128,7 +1127,7 @@ bool(<value>)
 
 Wenn Sie `bool()` mit einem Objekt verwenden, muss der Wert des Objekts eine Zeichenfolge oder eine ganze Zahl sein, die in einen booleschen Wert konvertiert werden kann.
 
-| Rückgabewert | type | Beschreibung |
+| Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
 | `true` oder `false` | Boolean | Die boolesche Version des angegebenen Werts |
 ||||
@@ -1277,7 +1276,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*destinationTimeZone*> | Ja | String | Der Name für die Zielzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Standardzeitzonen](/windows-hardware/manufacture/desktop/default-time-zones). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
+| <*destinationTimeZone*> | Ja | String | Der Name für die Zielzeitzone. Informationen zu Zeitzonennamen finden Sie unter: [Microsoft Windows Standardzeitzonen](/windows-hardware/manufacture/desktop/default-time-zones). |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
@@ -3716,7 +3715,7 @@ split('<text>', '<delimiter>')
 | [<*substring1*>,<*substring2*>,...] | Array | Ein Array mit Teilzeichenfolgen aus der ursprünglichen Zeichenfolge, das durch Trennzeichen getrennt ist |
 ||||
 
-*Beispiel*
+*Beispiel 1*
 
 Dieses Beispiel erstellt ein Array mit Teilzeichenfolgen aus der angegebenen Zeichenfolge basierend auf dem angegebenen Zeichen als Trennzeichen:
 
@@ -3725,6 +3724,16 @@ split('a_b_c', '_')
 ```
 
 Dieses Array wird als Ergebnis zurückgegeben: `["a","b","c"]`
+
+*Beispiel 2*
+  
+In diesem Beispiel wird ein Array mit einem einzelnen Element erstellt, wenn kein Trennzeichen in der Zeichenfolge vorhanden ist:
+
+```
+split('a_b_c', ' ')
+```
+
+Dieses Array wird als Ergebnis zurückgegeben: `["a_b_c"]`
 
 <a name="startOfDay"></a>
 
@@ -4804,7 +4813,7 @@ Dies ist das zurückgegebene XML-Objekt:
 xpath('<xml>', '<xpath>')
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*xml*> | Ja | Any | Die XML-Zeichenfolge, in der nach Knoten oder Werten gesucht werden soll, die mit einem XPath-Ausdruckswert übereinstimmen |
 | <*xpath*> | Ja | Any | Der XPath-Ausdruck, der für die Suche nach übereinstimmenden XML-Knoten oder -Werten verwendet wird |

@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/04/2021
-ms.openlocfilehash: 662faef8b7a3afbf3d3d3b021c52754af3a3c0bc
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 10/01/2021
+ms.openlocfilehash: 526a06c1ffd110fa02fd3d412ab62882bd74f9fa
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559912"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387371"
 ---
 # <a name="server-parameters-in-azure-database-for-postgresql---flexible-server"></a>Serverparameter in Azure Database for PostgreSQL – Flexible Server
 
@@ -39,6 +39,7 @@ Liste mit einigen der Parameter:
 | **shared_buffers**    | Die Einstellung shared_buffers ändert sich abhängig von der ausgewählten SKU. (Die SKU bestimmt den verfügbaren Arbeitsspeicher.) Universelle Server verfügen über 2 GB an „shared_buffers“ für zwei V-Kerne. Speicheroptimierte Server verfügen über 4 GB an „shared_buffers“ für zwei V-Kerne. Die Einstellung „shared_buffers“ wird linear (ungefähr) skaliert, wenn sich die Anzahl von V-Kernen in einem Tarif erhöht. | 
 | **shared_preload_libraries** | Dieser Parameter ist für die Konfiguration mit einem vordefinierten Satz unterstützter Erweiterungen verfügbar. Beachten Sie, dass wir stets die Erweiterung `azure` (die für Wartungsaufgaben verwendet wird) sowie die Erweiterung `pg_stat_statements` laden  (Sie können den Parameter pg_stat_statements.track verwenden, um zu kontrollieren, ob die Erweiterung aktiv ist). |
 | **connection_throttling** | Diese Einstellung aktiviert die temporäre Verbindungsdrosselung für einzelne IP-Adressen bei zu vielen Anmeldefehlern durch ungültige Kennwörter. |
+| **require_secure_transport** | Wenn Ihre Anwendung keine SSL-Konnektivität mit dem Server unterstützt, können Sie optional den gesicherten Transport von Ihrem Client deaktivieren, indem Sie diesen Parameterwert auf `OFF` setzen. |
  
 ## <a name="next-steps"></a>Nächste Schritte
 

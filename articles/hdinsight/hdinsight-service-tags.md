@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 06/23/2021
-ms.openlocfilehash: 419feaf3102ba9db4335718131281481821fe6a9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 988e3249580408147b74409856bea1e45df4e966
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338858"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857111"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Diensttags von Netzwerksicherheitsgruppen für Azure HDInsight
 
@@ -18,7 +18,7 @@ Azure HDInsight-Diensttags für Netzwerksicherheitsgruppen (NSGs) sind Gruppen v
 
 Der HDInsight-Dienst verwaltet diese Diensttags. Sie können kein eigenes Diensttag erstellen oder ein vorhandenes Tag ändern. Microsoft verwaltet die Adresspräfixe, die dem Diensttag entsprechen, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern.
 
-Wenn Sie eine bestimmte Region verwenden möchten und das Diensttag noch nicht auf dieser Seite dokumentiert ist, können Sie mithilfe der [Ermittlungs-API für Diensttags](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) Ihr Diensttag finden. Sie können auch die [JSON-Datei mit Diensttags](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) herunterladen und nach Ihrer gewünschten Region durchsuchen.
+Wenn Sie eine bestimmte Region verwenden möchten und das Diensttag noch nicht auf dieser Seite dokumentiert ist, können Sie mithilfe der [Ermittlungs-API für Diensttags](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) Ihr Diensttag finden. Sie können auch die [JSON-Datei mit Diensttags](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) herunterladen und nach Ihrer gewünschten Region durchsuchen.
 
 ## <a name="get-started-with-service-tags"></a>Erste Schritte mit Diensttags
 

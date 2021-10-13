@@ -6,20 +6,17 @@ ms.author: jaawasth
 ms.service: virtual-machines-sap
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 7f5f554f6563c2d0275bca7b6db48f2521379b11
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 199d38a4c6ddca96c745342bcef0b07dc78b48bd
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626606"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401292"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>Hohe Verfügbarkeit von Azure (große Instanzen) für SAP auf RHEL
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff *Blacklist*, der von Microsoft nicht mehr verwendet wird. Sobald dieser Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
-
-> [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf die Begriffe *Blacklist* und *Slave*, die von Microsoft nicht mehr verwendet werden. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
 
 In diesem Artikel erfahren Sie, wie Sie den Pacemaker-Cluster in RHEL 7 konfigurieren, um ein SAP HANA-Datenbankfailover zu automatisieren. Sie müssen mit Linux, SAP HANA und Pacemaker vertraut sein, um die Schritte in dieser Anleitung ausführen zu können.
 
@@ -192,7 +189,7 @@ In diesem Abschnitt lernen Sie, Watchdog zu konfigurieren. In diesem Abschnitt w
 
     ```
 
-2. Der Standard-Linux-Watchdog, der während der Installation installiert wird, ist der itco-Watchdog, der von UCS- und HPE SDFlex-Systemen nicht unterstützt wird. Daher muss dieser Watchdog deaktiviert werden.
+2. Der Standard-Linux-Watchdog, der während der Installation installiert wird, ist der iTCO-Watchdog, der von UCS- und HPE SDFlex-Systemen nicht unterstützt wird. Daher muss dieser Watchdog deaktiviert werden.
     1. Der falsche Watchdog ist auf dem System installiert und geladen:
        ```
        sollabdsm35:~ # lsmod |grep iTCO

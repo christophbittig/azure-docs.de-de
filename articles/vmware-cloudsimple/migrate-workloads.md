@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple – Migrieren von Workload-VMs zur privaten Cloud
 description: In diesem Artikel wird beschrieben, wie Sie virtuelle Computer aus einem lokalen vCenter zum CloudSimple-vCenter in einer privaten Cloud migrieren.
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d95257d0b3c031747ca7ff4f359398938f9bde61
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 52215b4353fff540f5c1b1a7abd4dd3c6bd65584
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181920"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616586"
 ---
 # <a name="migrate-workload-vms-from-on-premises-vcenter-to-private-cloud-vcenter-environment"></a>Migrieren von Workload-VMs aus einem lokalen vCenter zur vCenter-Umgebung in einer privaten Cloud
 

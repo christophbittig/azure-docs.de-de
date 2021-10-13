@@ -4,12 +4,12 @@ description: Leistungsüberwachung für Anwendungen auf Azure-VMs und in Azure-V
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2fc5057826eda1856b5b3671b6a995e9e80468f5
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: d3f1d1a8a2e3262ba91339c7335fadda92d90cac
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720646"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856104"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Bereitstellen des Azure Monitor Application Insights-Agents auf virtuellen Azure-Computern und in Azure-VM-Skalierungsgruppen
 
@@ -57,7 +57,7 @@ Es gibt zwei Methoden, um die Überwachung von Anwendungen zu aktivieren, die au
 
 #### <a name="java"></a>Java 
 
-Wenn Sie zusätzliche benutzerdefinierte Telemetriedaten für Java-Anwendungen benötigen, informieren Sie sich über weitere [verfügbare Optionen](./java-in-process-agent.md#send-custom-telemetry-from-your-application), fügen Sie [benutzerdefinierte Dimensionen](./java-standalone-config.md#custom-dimensions) hinzu, oder verwenden Sie [Telemetrieprozessoren](./java-standalone-telemetry-processors.md). 
+Wenn Sie zusätzliche benutzerdefinierte Telemetriedaten für Java-Anwendungen benötigen, informieren Sie sich über weitere [verfügbare Optionen](./java-in-process-agent.md#custom-telemetry), fügen Sie [benutzerdefinierte Dimensionen](./java-standalone-config.md#custom-dimensions) hinzu, oder verwenden Sie [Telemetrieprozessoren](./java-standalone-telemetry-processors.md). 
 
 #### <a name="nodejs"></a>Node.js
 

@@ -1,6 +1,7 @@
 ---
 title: Was ist die Anwendungsverwaltung in Azure Active Directory?
 description: Eine Übersicht über die Verwendung von Azure Active Directory (AD) als Identitäts- und Zugriffsverwaltungssystem (Identity and Access Management, IAM) für Ihre cloudbasierten und lokalen Anwendungen.
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 01/22/2021
 ms.author: davidmu
 ms.reviewer: sureshja, napuri
-ms.openlocfilehash: a02dc16f95a736015e19be8d662e99c2aaa92aec
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cb5cb0e5d1e2f86abac70826edc8fa3ebbc04ad6
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738738"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613527"
 ---
 # <a name="what-is-application-management"></a>Worum handelt es sich bei der Anwendungsverwaltung?
 

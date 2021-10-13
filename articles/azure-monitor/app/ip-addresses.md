@@ -3,12 +3,12 @@ title: Von Azure Monitor verwendete IP-Adressen
 description: Für Application Insights erforderliche Serverfirewallausnahmen
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: e6f0eb2de43f3ee6a9be61089a22d57f8cfe8116
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7516cdc5fcb605415ef009e7b5f1d5da195ba1c9
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124815781"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858365"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>Von Azure Monitor verwendete IP-Adressen
 
@@ -196,7 +196,7 @@ East US
 ```
 
 ### <a name="discovery-api"></a>Ermittlungs-API
-Sie können die aktuelle Liste der Diensttags zusammen mit Details zum IP-Adressbereich auch [programmgesteuert abrufen](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview).
+Sie können die aktuelle Liste der Diensttags zusammen mit Details zum IP-Adressbereich auch [programmgesteuert abrufen](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api).
 
 ## <a name="application-insights--log-analytics-apis"></a>Application Insights- und Log Analytics-APIs
 

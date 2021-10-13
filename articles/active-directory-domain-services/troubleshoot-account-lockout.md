@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 3341f290a5a5bb169b6e70ea22459a2afafedbbc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 487befb0e0d48a1ccf61a38af29c17c596fa70b8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103198961"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350090"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Beheben von Problemen mit gesperrten Konten bei einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -97,9 +97,12 @@ Beispiel: Wenn Sie über einen RADIUS-Server verfügen, der die Authentifizierun
 
 „03/04 19:07:35 [LOGON] [10753] contoso: SamLogon: Transitive Network logon of contoso\Nagappan.Veerappan from (via LOB11-RADIUS)“ gibt 0xC000006A zurück.
 
-Aktivieren Sie RDP für Ihre Rechenzentren in Netzwerksicherheitsgruppen für das Back-End, um die Erfassung von Diagnosedaten zu konfigurieren (d. h. Netlogon). Informationen dazu finden Sie unter https://docs.microsoft.com/azure/active-directory-domain-services/alert-nsg#inbound-security-rules. Wenn Sie die Standard-Netzwerksicherheitsgruppe bereits geändert haben, führen Sie zur Aktivierung die Anweisungen unter https://docs.microsoft.com/azure/active-directory-domain-services/network-considerations#port-3389---management-using-remote-desktop aus.
+Aktivieren Sie RDP für Ihre Rechenzentren in Netzwerksicherheitsgruppen für das Back-End, um die Erfassung von Diagnosedaten zu konfigurieren (d. h. Netlogon).
+[Eingangssicherheitsregeln](alert-nsg.md#inbound-security-rules)
 
-Informationen zum Aktivieren der Netlogon-Anmeldung auf jedem Server finden Sie unter https://docs.microsoft.com/troubleshoot/windows-client/windows-security/enable-debug-logging-netlogon-service.
+Wenn Sie die Standard-NSG bereits geändert haben, führen Sie die folgenden Schritte aus: [Port 3389 – Verwaltung über Remotedesktop](network-considerations.md#port-3389---management-using-remote-desktop)
+
+Um die Netlogon-Anmeldung auf einem beliebigen Server zu aktivieren, führen Sie die folgenden Schritte aus: [Aktivieren der Debugprotokollierung für den Netlogon-Dienst](/troubleshoot/windows-client/windows-security/enable-debug-logging-netlogon-service)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

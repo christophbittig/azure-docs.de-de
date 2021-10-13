@@ -10,12 +10,12 @@ author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 601b31aa4941ba3a971ebbc9be03178593b5f565
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: fcd2b4adf6387398d05a26abefd567c1375c92f2
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129055284"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619291"
 ---
 # <a name="migrate-a-data-warehouse-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Migrieren Sie ein Data Warehouse zu einem dedizierten SQL-Pool in Azure Synapse Analytics
 
@@ -111,7 +111,6 @@ Weitere Unterstützung bei der Durchführung dieses Migrationsszenarios finden S
 | [Data Workload Assessment Model and Tool](https://www.microsoft.com/download/details.aspx?id=103130) | Dieses Tool stellt für eine bestimmte Arbeitsauslastung Informationen zu empfohlenen optimalen Zielplattformen, zur Cloudbereitschaft und zum Korrekturbedarf für Anwendungen oder Datenbanken bereit. Es bietet eine einfache Berechnung und Berichterstellung mit nur einem Klick, die Ihnen durch einen automatisierten und einheitlichen Entscheidungsprozess für die Zielplattform dabei helfen, Bewertungen von umfangreichen Datenbeständen zu beschleunigen. |
 | [Behandeln von Datencodierungsproblemen beim Laden von Daten in Azure Synapse Analytics](https://azure.microsoft.com/blog/handling-data-encoding-issues-while-loading-data-to-sql-data-warehouse/) | Dieser Blogbeitrag bietet Einblicke in einige der Datencodierungsprobleme, die möglicherweise auftreten, wenn Sie PolyBase zum Laden von Daten in SQL Data Warehouse verwenden. Außerdem werden in diesem Artikel einige Möglichkeiten genannt, wie Sie solche Probleme lösen und die Daten erfolgreich laden können. |
 | [Abrufen von Tabellengrößen in einem dedizierten SQL-Pool in Azure Synapse Analytics](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Getting%20table%20sizes%20in%20SQL%20DW.pdf) | Eine der wichtigsten Aufgaben, die ein Architekt ausführen muss, besteht darin, Metriken zu einer neuen Umgebung nach der Migration zu erhalten. Beispiele hierfür sind das Erfassen von Ladezeiten von der lokalen zur cloudbasierten Lösung und das Erfassen von PolyBase-Ladezeiten. Eine der wichtigsten dieser Aufgaben besteht darin, die Speichergröße in SQL Data Warehouse im Vergleich zur aktuellen Plattform des Kunden zu ermitteln. |
-| [Hilfsprogramm zum Verschieben lokaler SQL Server-Anmeldungen zu Azure Synapse Analytics](https://github.com/Microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins) | Ein PowerShell-Skript erstellt ein T-SQL-Befehlsskript, um Anmeldungen und ausgewählte Datenbankbenutzer aus einer lokalen SQL Server-Instanz in einem Azure SQL-Plattform as a Service (PaaS)-Dienst neu zu erstellen. Das Tool ermöglicht die automatische Zuordnung von Windows Server Active Directory-Konten zu Azure Active Directory-Konten. Alternativ können UPN-Lookups für jede Anmeldung in der lokalen Windows Server Active Directory-Instanz durchgeführt werden. Das Tool kann optional auch native SQL Server-Anmeldeinformationen verschieben. Benutzerdefinierte Server- und Datenbankrollen sowie Rollenmitgliedschaften, Datenbankrollen und Benutzerberechtigungen werden erstellt. Eigenständige Datenbanken werden noch nicht unterstützt, und nur eine Teilmenge der möglichen SQL Server-Berechtigungen werden erstellt. Weitere Informationen finden Sie im Hilfsdokument. Das Skript enthält außerdem Kommentare mit Erläuterungen. |
 
 Das Data SQL Engineering-Team hat diese Ressourcen entwickelt. Die Hauptanwendung dieses Teams besteht darin, die komplexe Modernisierung für Datenplattform-Migrationsprojekte auf der Azure-Datenplattform von Microsoft freizugeben und zu beschleunigen.
 

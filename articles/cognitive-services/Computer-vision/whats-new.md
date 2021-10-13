@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: 1a27bfac347480591a67bf2c164b9ff41fe3b18d
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 395b9d2670a488ab0743a987b1e8b857f6f2fb2f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426433"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708308"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
@@ -30,7 +30,7 @@ Die [OCR-API (Lesen)](overview-ocr.md) für maschinelles Sehen erhöht die Anzah
 * Verbesserungen bei der Verarbeitung digitaler PDF-Dateien und Text in maschinenlesbaren Bereichen (Machine Readable Zone, MRZ) von Identitätsdokumenten.
 * Allgemeine Verbesserungen bei Leistung und KI-Qualität
 
-Informationen zur Verwendung der neuen Previewfunktionen finden Sie in der [OCR-Schrittanleitung](Vision-API-How-to-Topics/call-read-api.md).
+Informationen zur Verwendung der neuen Previewfunktionen finden Sie in der [OCR-Schrittanleitung](Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional).
 
 > [!div class="nextstepaction"]
 > [Erste Schritte mit der Lese-API](./quickstarts-sdk/client-library.md)

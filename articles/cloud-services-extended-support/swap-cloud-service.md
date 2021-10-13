@@ -7,13 +7,12 @@ author: surbhijain
 ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/01/2021
-ms.custom: ''
-ms.openlocfilehash: 3321152d5d7b753ddca23a8810f0d1ae1b3d4399
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: cd13a7f69d3085786407a405598df4bc7b8e0ef9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967020"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358440"
 ---
 # <a name="swap-or-switch-deployments-in-azure-cloud-services-extended-support"></a>Austauschen oder Wechseln von Bereitstellungen in Azure Cloud Services (erweiterter Support)
 
@@ -31,7 +30,6 @@ Sie können die Bereitstellungen mithilfe einer ARM-Vorlage (Azure Resource Mana
 Bei der Bereitstellung des zweiten Clouddiensts ist für beide Clouddienste die SwappableCloudService-Eigenschaft so festgelegt, dass sie aufeinander verweisen. In einem kommenden Update dieser Clouddienste muss angegeben werden, dass diese Eigenschaft fehlerhaft ist, wobei eine Fehlermeldung zurückgegeben wird, die angibt, dass die SwappableCloudService-Eigenschaft nicht gelöscht oder aktualisiert werden kann.
 
 Nach dem Festlegen wird die SwappableCloudService-Eigenschaft als schreibgeschützte Eigenschaft behandelt. Sie kann nicht gelöscht oder in einen anderen Wert geändert werden. Das Löschen eines der Clouddienste (des austauschbaren Paars) führt dazu, dass die SwappableCloudService-Eigenschaft des verbleibenden Clouddiensts gelöscht wird.
-
 
 ## <a name="arm-template"></a>ARM-Vorlage
 
@@ -65,7 +63,7 @@ Um Computekosten zu sparen, können Sie einen der (als Stagingumgebung für Ihre
 
 ## <a name="rest-api"></a>REST-API
 
-Verwenden Sie den folgenden Befehl und die nachstehend gezeigte JSON-Konfiguration, um mithilfe der [REST-API](https://review.docs.microsoft.com/rest/api/compute/load-balancers/swap-public-ip-addresses?branch=net202102) zu einer neuen Clouddienstbereitstellung in Azure Cloud Services (erweiterter Support) zu wechseln:
+Verwenden Sie den folgenden Befehl und die nachstehend gezeigte JSON-Konfiguration, um mithilfe der [REST-API](/rest/api/compute/load-balancers/swap-public-ip-addresses) zu einer neuen Clouddienstbereitstellung in Azure Cloud Services (erweiterter Support) zu wechseln:
 
 ```http
 POST https://management.azure.com/subscriptions/subid/providers/Microsoft.Network/locations/westus/setLoadBalancerFrontendPublicIpAddresses?api-version=2021-02-01

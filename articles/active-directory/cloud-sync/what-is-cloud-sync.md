@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 09/30/2021
+ms.date: 10/07/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa2c16f83fc0a85e3c2d346aed5d7fdf848c873
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a4bda35abff8bed8795d9cc6257b45bb22ef961c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355423"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709879"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>Worum handelt es sich bei der Azure AD Connect-Cloudsynchronisierung?
 Die Azure AD Connect-Cloudsynchronisierung ist ein neues Angebot von Microsoft, das entwickelt wurde, um Ihre Ziele in Bezug auf die Hybrididentität für die Synchronisierung von Benutzern, Gruppen und Kontakten mit Azure AD zu erreichen und die entsprechenden Anforderungen zu erfüllen.  Hierfür wird nicht die Azure AD Connect-Anwendung verwendet, sondern der Agent für die Azure AD-Cloudbereitstellung.  Die Azure AD Connect-Cloudbereitstellung kann aber zusammen mit der Azure AD Connect-Synchronisierung verwendet werden. Dies hat die folgenden Vorteile:
@@ -34,7 +34,7 @@ Bei der Azure AD Connect-Cloudsynchronisierung wird die Bereitstellung von AD zu
 ## <a name="azure-ad-connect-cloud-sync-video"></a>Video zur Azure AD Connect-Cloudsynchronisierung
 Im folgenden kurzen Video erhalten Sie einen guten Überblick über die Azure AD Connect-Cloudsynchronisierung:
 
-> [!VIDEO https://youtube.com/embed/mOT3ID02_YQ]
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWJ8l5]
 
 
 ## <a name="comparison-between-azure-ad-connect-and-cloud-sync"></a>Vergleich zwischen Azure AD Connect und der Cloudsynchronisierung

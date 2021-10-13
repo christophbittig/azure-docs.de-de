@@ -12,12 +12,12 @@ ms.date: 04/04/2019
 ms.author: davidmu
 ms.reviewer: saumadan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5217f358e7977d8414204c48d82dd6b4f1554b1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9da004c30de9cf1bc9f0d5aec7c9e766003dba45
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349411"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545320"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory
 
@@ -30,6 +30,8 @@ Dieser Artikel gilt nur für Apps, die für die Verwendung von Azure AD-SSO übe
 Wenn Sie eine neue Anwendung aus dem Katalog hinzufügen und eine SAML-basierte Anmeldung konfigurieren (indem Sie auf der Anwendungsübersichtsseite die Optionen **Einmaliges Anmelden** > **SAML** auswählen), generiert Azure AD ein drei Jahre lang gültiges Zertifikat für die Anwendung. Wenn Sie das aktive Zertifikat als Sicherheitszertifikatsdatei (**CER-Datei**) herunterladen möchten, kehren Sie zu dieser Seite (**SAML-basierte Anmeldung**) zurück, und wählen Sie unter der Überschrift **SAML-Signaturzertifikat** einen Downloadlink aus. Sie können zwischen dem binären Zertifikat, der Option „Zertifikat (Rohdaten)“, und dem Zertifikat im Base64-codierten Textformat, der Option „Zertifikat (Base64)“, auswählen. Bei Kataloganwendungen wird in diesem Abschnitt möglicherweise auch ein Link angezeigt, über den Sie je nach Anforderung der Anwendung das Zertifikat als Verbundmetadaten-XML (**XML-Datei**) herunterladen können.
 
 ![Downloadoptionen für aktives SAML-Signaturzertifikat](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
+
+SAML-Signaturzertifikate, die von Azure beim Erstellen der Anwendung generiert werden, sind App-spezifisch. Daher ist jedes Zertifikat für jede App-Instanz eindeutig. Die Verwendung desselben SAML-Zertifikats für alle Anwendungsinstanzen wird nicht unterstützt. Falls Sie dasselbe SAML-Zertifikat für alle App-Instanzen verwenden möchten, müssen Sie Ihr eigenes SAML-Zertifikat mit einem privaten Schlüssel generieren und auf alle App-Instanzen hochladen. Für die von Azure generierten SAML-Signaturzertifikate ist kein privater Schlüssel vorhanden (auch nicht bei einem Export des Rohzertifikats). 
 
 Sie können auch ein aktives oder inaktives Zertifikat herunterladen, indem Sie neben der Überschrift **SAML-Signaturzertifikat** das Symbol **Bearbeiten** (Stiftsymbol) auswählen, wodurch die Seite **SAML-Signaturzertifikat** angezeigt wird. Wählen Sie die Auslassungspunkte (**...**) neben dem Zertifikat aus, das Sie herunterladen möchten, und wählen Sie dann das gewünschte Zertifikatformat aus. Als zusätzliche Option können Sie das Zertifikat im Privacy Enhanced Mail-Format (PEM) herunterladen. Dieses Format ist mit Base64 identisch, weist jedoch die Dateinamenerweiterung **PEM** auf, die in Windows nicht als Zertifikatformat erkannt wird.
 

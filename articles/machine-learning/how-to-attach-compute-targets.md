@@ -1,7 +1,7 @@
 ---
 title: Einrichten von Computezielen für das Training und für Rückschlüsse
 titleSuffix: Azure Machine Learning
-description: So fügen Sie Computeressourcen (Computeziele) zu Ihrem Arbeitsbereich hinzu, um damit Machine Learning-Modelle zu trainieren und Rückschlüsse zu ziehen
+description: Fügen Sie Computeressourcen (Computeziele) Ihrem Arbeitsbereich hinzu, um damit Machine Learning-Modelle zu trainieren und Rückschlüsse zu ziehen.
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 8d9910755162ea1da593f2e9ee50183c0a3eaa60
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: af5d5914d0a90c2c142582e5cdf2105982205f04
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339974"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427683"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Einrichten von Computezielen für das Training und die Bereitstellung von Modellen
 

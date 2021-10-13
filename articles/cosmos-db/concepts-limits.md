@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2021
-ms.openlocfilehash: 80cc94941331a024a183e19c383ee20b900251ea
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: befd0daa9926f96411e1f870efb29ab68b0a8d15
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128707634"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387770"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -102,7 +102,7 @@ Sie können mithilfe von Azure-Portal, Azure PowerShell, der Azure-Befehlszeilen
 
 | Resource | Standardlimit |
 | --- | --- |
-| Maximale Anzahl von Datenbankkonten pro Abonnement | Standardmäßig 50. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md).|
+| Maximale Anzahl von Datenbankkonten pro Abonnement | Standardmäßig 50. Sie können die Anzahl auf max. 1.000 erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md).|
 | Maximale Anzahl von regionalen Failovern | Standardmäßig 1/Stunde. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](create-support-request-quota-increase.md).|
 
 > [!NOTE]

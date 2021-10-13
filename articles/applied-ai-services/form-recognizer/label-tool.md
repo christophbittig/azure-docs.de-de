@@ -11,12 +11,12 @@ ms.date: 05/11/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Verarbeiten von Dokumenten
-ms.openlocfilehash: d463a45064a9f6b342a7cb735372a3c5098539c4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 43e7da4eea864bf0ac2767718ff8ed04ed58c54e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431746"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715177"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -24,7 +24,7 @@ ms.locfileid: "123431746"
 <!-- markdownlint-disable MD034 -->
 # <a name="train-a-custom-model-using-the-sample-labeling-tool"></a>Trainieren eines benutzerdefinierten Modells mithilfe des Tools für die Beschriftung von Beispielen
 
-In diesem Artikel verwenden Sie die Formularerkennungs-REST-API zusammen mit dem Tool für die Beschriftung von Beispielen, um ein benutzerdefiniertes Modell für die Dokumentverarbeitung mit manuell beschrifteten Daten zu trainieren. Weitere Informationen zum überwachten Lernen mit der Formularerkennung finden Sie im Abschnitt [Trainieren mit Beschriftungen](overview.md#train-with-labels) der Übersicht.
+In diesem Artikel verwenden Sie die Formularerkennungs-REST-API zusammen mit dem Tool für die Beschriftung von Beispielen, um ein benutzerdefiniertes Modell für die Dokumentverarbeitung mit manuell beschrifteten Daten zu trainieren. 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 

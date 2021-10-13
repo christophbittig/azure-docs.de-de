@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8b53f906eed0df4c6dddbaa64f460cb7a8898a5e
-ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+ms.openlocfilehash: 34938a6d5e52912db8d82b39bed3fdbad9f4814c
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113492647"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859018"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure
 
@@ -28,6 +28,21 @@ Azure RBAC ermöglicht Benutzern das Verwalten von Berechtigungen für Schlüsse
 Das Azure RBAC-Modell bietet die Möglichkeit, Berechtigungen für verschiedene Bereichsebenen festzulegen: Verwaltungsgruppe, Abonnement, Ressourcengruppe oder Einzelressourcen.  Azure RBAC für Key Vault bietet außerdem die Möglichkeit, separate Berechtigungen für einzelne Schlüssel, Geheimnisse und Zertifikate zu verwalten.
 
 Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md).
+
+## <a name="best-practices-for-individual-keys-secrets-and-certificates"></a>Bewährte Methoden für einzelne Schlüssel, Geheimnisse und Zertifikate
+
+Es wird empfohlen, einen Schlüsseltresor pro Anwendung und Umgebung (Entwicklung, Präproduktion und Produktion) zu verwenden.
+
+Die Berechtigungen für einzelne Schlüssel, Geheimnisse und Zertifikate sollten nur in bestimmten Szenarien verwendet werden:
+
+-   Anwendungen mit mehreren Ebenen, die die Zugriffssteuerung zwischen den Ebenen trennen müssen
+
+-   Freigeben einzelner Geheimnisse zwischen mehreren Anwendungen
+
+Weitere Informationen zu Azure Key Vault-Verwaltungsrichtlinien finden Sie unter:
+
+- [Bewährte Methoden bei Azure Key Vault](best-practices.md)
+- [Grenzwerte des Azure Key Vault-Diensts](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>In Azure integrierte Rollen für Key Vault-Vorgänge auf Datenebene
 

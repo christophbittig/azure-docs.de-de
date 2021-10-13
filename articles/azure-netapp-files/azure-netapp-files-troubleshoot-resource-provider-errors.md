@@ -13,14 +13,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 02/10/2021
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: ac83e5a9366a12c5adce0e08f04f2bb28a7d788d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a3e97096109ce89f481b2abca2dc7b5a3a237e6
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374880"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407872"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Beheben von Fehlern mit Azure NetApp Files-Ressourcenanbietern 
 
@@ -30,13 +30,13 @@ In diesem Artikel werden häufige Fehler von Azure NetApp Files-Ressourcenanbiet
 
 ***Die Erstellung von `netAppAccounts` wurde in dieser Region eingeschränkt.***
 
-Diese Situation tritt auf, wenn das Abonnement für Azure NetApp Files auf der Warteliste steht und der Benutzer versucht, ein NetApp-Konto zu erstellen.
+Diese Situation tritt auf, wenn der Benutzer versucht, ein NetApp-Konto zu erstellen.
 
 * Ursache:   
 Der Azure-Ressourcenanbieter für Azure NetApp Files wurde nicht erfolgreich registriert. 
  
 * Lösung:   
-Führen Sie alle Schritte aus, die unter [Registrierung des Azure NetApp-Ressourcenanbieters](azure-netapp-files-register.md#resource-provider) beschrieben sind, nachdem Ihr Abonnement auf die Warteliste gesetzt wurde.
+Führen Sie alle Schritte aus, die in [Registrieren des NetApp-Ressourcenanbieters](azure-netapp-files-register.md) beschrieben werden.
 
 ***„BaremetalTenantId“ kann nicht geändert werden.***  
 
@@ -317,7 +317,7 @@ Stellen Sie sicher, dass der Vorgang richtig eingegeben wurde und für die Resso
 
 ***OwnerId kann nicht geändert werden.***
 
-Dieser Fehler tritt auf, wenn Sie versuchen, die „OwnerId“-Eigenschaft des Volumes zu ändern. Das Ändern der OwnerId ist kein unterstützter Vorgang. 
+Dieser Fehler tritt auf, wenn Sie versuchen, die `OwnerId`-Eigenschaft des Volumes zu ändern. Das Ändern von `OwnerId` ist kein unterstützter Vorgang. 
 
 * Ursache:   
 Die `OwnerId`-Eigenschaft wird beim Erstellen des Volumes festgelegt. Die Eigenschaft kann nachträglich nicht mehr geändert werden.

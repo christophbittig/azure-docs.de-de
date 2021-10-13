@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 867d4b380266c5cbfbae68ca61d83ab3fd28aee3
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 9b144af348a13ae3673ccf2a5f2f11810fd3e296
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216591"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728112"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Anwendung des Azure-Hybridvorteils auf virtuelle Linux-Computer
 
@@ -188,12 +188,13 @@ Weitere Informationen zur Konformität von Red Hat-Abonnements, Softwareupdates 
 
 ### <a name="suse"></a>SUSE
 
+Wenn Sie den Azure-Hybridvorteil für Ihre SLES-VMs verwenden möchten oder wenn Sie Informationen zum Umstieg von der nutzungsbasierten Bezahlung für SLES auf BYOS oder umgekehrt benötigen, lesen Sie unter [SUSE Linux Enterprise and Azure Hybrid Benefit](https://aka.ms/suse-ahb) (SUSE Linux Enterprise und der Azure-Hybridvorteil) nach. 
+
 Kunden, die den Azure-Hybridvorteil verwenden, müssen die Infrastruktur für Cloudupdates auf eine der drei Optionen umstellen, die Softwareupdates und Patches für jene VMs bereitstellen:
 - [SUSE Customer Center](https://scc.suse.com)
 - SUSE Manager
 - SUSE Repository Mirroring Tool (RMT) 
 
-Wenn Sie den Azure-Hybridvorteil für Ihre SLES-VMs verwenden möchten oder wenn Sie Informationen zum Umstieg von der nutzungsbasierten Bezahlung für SLES auf BYOS oder umgekehrt benötigen, lesen Sie unter [SUSE Linux Enterprise and Azure Hybrid Benefit](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/) (SUSE Linux Enterprise und der Azure-Hybridvorteil) nach. 
 
 ## <a name="azure-hybrid-benefit-on-reserved-instances"></a>Azure-Hybridvorteil auf reservierten Instanzen 
 

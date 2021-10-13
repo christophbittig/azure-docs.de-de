@@ -1,6 +1,6 @@
 ---
-title: Einrichten eines Kapazitätspools für Azure NetApp Files | Microsoft-Dokumentation
-description: Beschreibt die Vorgehensweise zum Einrichten eines Kapazitätspools für die Volumeerstellung.
+title: Erstellen eines Kapazitätspools für Azure NetApp Files | Microsoft-Dokumentation
+description: Beschreibt die Vorgehensweise zum Erstellen eines Kapazitätspools für die Volumeerstellung.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: e49a68ee4c4e4f60d8af6919e4eaec33ac0086aa
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 3488b6807982f97cd5feef9b07a6dc7cbe180dcd
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071909"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407549"
 ---
-# <a name="set-up-a-capacity-pool"></a>Einrichten eines Kapazitätspools
+# <a name="create-a-capacity-pool-for-azure-netapp-files"></a>Erstellen eines Kapazitätspools für Azure NetApp Files
 
-Nach dem Einrichten eines Kapazitätspools können Sie Volumes in diesem Pool erstellen.  
+Nach dem Erstellen eines Kapazitätspools können Sie Volumes in diesem Pool erstellen.  
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
 

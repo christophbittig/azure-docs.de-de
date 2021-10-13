@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 06/30/2021
 ms.author: v-erkel
-ms.openlocfilehash: e0100c9e184d1704d127e1ef5a33c2144e721a89
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 151186d3d42ad799707f4a352e76cd154d3443bb
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113587089"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276187"
 ---
 # <a name="edit-storage-targets"></a>Bearbeiten von Speicherzielen
 
@@ -73,7 +73,7 @@ Verwenden Sie den Befehl [az hpc-cache blob-storage-target update](/cli/azure/hp
 
 Bei NFS-Speicherzielen können Sie virtuelle Namespacepfade ändern oder hinzufügen, die Werte für den NFS-Export oder das Unterverzeichnis ändern, auf den ein Namespacepfad verweist, und das Nutzungsmodell ändern.
 
-Speicherziele in Caches mit bestimmten Typen von benutzerdefinierten DNS-Einstellungen verfügen auch über ein Steuerelement zum Aktualisieren Ihrer IP-Adressen. (Diese Art von Konfiguration ist selten.) Erfahren Sie, wie Sie die DNS-Einstellungen unter [Verwalten von Speicherzielen](manage-storage-targets.md#update-ip-address-custom-dns-configurations-only) aktualisieren.
+Speicherziele in Caches mit bestimmten Typen von benutzerdefinierten DNS-Einstellungen verfügen auch über ein Steuerelement zum Aktualisieren Ihrer IP-Adressen. (Diese Art von Konfiguration ist selten.) Erfahren Sie unter [Aktualisieren der IP-Adresse (nur benutzerdefinierte DNS-Konfigurationen)](manage-storage-targets.md#update-ip-address-custom-dns-configurations-only), wie Sie die DNS-Einstellungen aktualisieren.
 
 Details finden Sie unten:
 

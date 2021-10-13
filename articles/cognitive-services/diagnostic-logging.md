@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/19/2021
 ms.author: erhopf
-ms.openlocfilehash: deb5db6f205c02812330539c403fbe7b80d4784c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 804d56309cf7f97c93b2f404b1f7a11360c26fd0
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347195"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660132"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Aktivieren der Diagnoseprotokollierung für Azure Cognitive Services
 
@@ -118,5 +118,4 @@ by bin(TimeGenerated, 10s), OperationName
 * Lesen Sie diese Artikel durch, um sich über Event Hubs zu informieren:
   * [Was ist Azure Event Hubs?](../event-hubs/event-hubs-about.md)
   * [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
-* Lesen Sie [Herunterladen von Metrik- und Diagnoseprotokollen aus Azure Storage](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs).
 * Lesen Sie [Grundlegendes zu Protokollsuchvorgängen in Azure Monitor-Protokolle](../azure-monitor/logs/log-query-overview.md).

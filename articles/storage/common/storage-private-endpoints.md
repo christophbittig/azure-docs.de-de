@@ -10,16 +10,16 @@ ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: a52460db452d519c51fb7a1b191766b21da67f88
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 908c313da4343798faedf614e8356e511ab0b4dd
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592278"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458641"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Verwenden privater Endpunkte für Azure Storage
 
-Sie können [private Endpunkte](../../private-link/private-endpoint-overview.md) für Ihre Azure Storage-Konten verwenden, um Clients in einem virtuellen Netzwerk (VNET) den sicheren Zugriff auf Daten über [Private Link](../../private-link/private-link-overview.md) zu ermöglichen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihren Speicherkontodienst. Der Netzwerkdatenverkehr zwischen den Clients im VNET und dem Speicherkonto wird über das VNET und eine private Verbindung im Microsoft-Backbone-Netzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt.
+Sie können [private Endpunkte](../../private-link/private-endpoint-overview.md) für Ihre Azure Storage-Konten verwenden, um Clients in einem virtuellen Netzwerk (VNET) den sicheren Zugriff auf Daten über [Private Link](../../private-link/private-link-overview.md) zu ermöglichen. Der private Endpunkt verwendet eine separate IP-Adresse aus dem VNet-Adressraum für jeden Speicherkontodienst. Der Netzwerkdatenverkehr zwischen den Clients im VNET und dem Speicherkonto wird über das VNET und eine private Verbindung im Microsoft-Backbone-Netzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt.
 
 Die Verwendung privater Endpunkte für Ihr Speicherkonto bietet Ihnen folgende Möglichkeiten:
 
@@ -92,7 +92,7 @@ Wenn Sie die Speicherendpunkt-URL von außerhalb des VNET mit dem privaten Endpu
 
 Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für das Speicherkonto „StorageAccountA“ bei Auflösung von außerhalb des VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name                                                  | type  | Wert                                                 |
+| Name                                                  | Typ  | Wert                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | `StorageAccountA.blob.core.windows.net`             | CNAME | `StorageAccountA.privatelink.blob.core.windows.net` |
 | `StorageAccountA.privatelink.blob.core.windows.net` | CNAME | \<storage service public endpoint\>                   |
@@ -102,7 +102,7 @@ Wie bereits erwähnt, können Sie den Zugriff für Clients außerhalb des VNET �
 
 Die DNS-Ressourceneinträge für „StorageAccountA“ lauten nach dem Auflösen durch einen Client im VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name  | type | Wert |
+| Name  | Typ | Wert |
 | :--- | :---: | :--- |
 | `StorageAccountA.blob.core.windows.net` | CNAME | `StorageAccountA.privatelink.blob.core.windows.net` |
 | `StorageAccountA.privatelink.blob.core.windows.net` | Ein | `10.1.1.5` |

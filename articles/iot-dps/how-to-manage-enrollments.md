@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: 6ec146a05df1b896f8ca594d29cf13341b70765a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5e9caea0ff8514c633f20f7baa7c501f0ac379d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96010961"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276338"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Verwalten von Geräteregistrierungen mit dem Azure-Portal
 
@@ -67,7 +67,7 @@ Sie haben zwei Möglichkeiten, Ihre Geräte beim Bereitstellungsdienst zu regist
         | Feld | Beschreibung |
         | :--- | :--- |
         | **Mechanismus** | Wählen Sie je nach der von Ihren Geräten verwendeten Nachweismethode **X.509**, **TPM** oder **Symmetrischer Schlüssel** für den Nachweismechanismus aus. |
-        | Nachweiseinstellungen | Schrittweise Anleitungen zum Erstellen und Verwenden von individuellen Registrierungen mit symmetrischen Schlüsseln oder X.509-Zertifikaten finden Sie in einem der Schnellstarts [Bereitstellen eines Geräts mit symmetrischem Schlüssel](quick-create-simulated-device-symmetric-key-java.md#create-a-device-enrollment) bzw. [Bereitstellen eines Geräts mit X.509-Zertifikat](quick-create-simulated-device-x509-java.md#create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry).<br><br>Schrittweise Anleitungen zum Erstellen und Verwenden von individuellen Registrierungen mithilfe des TPM-Nachweises finden Sie in einem der Beispiele für [Bereitstellen eines simulierten TPM-Geräts](quick-create-simulated-device-tpm-java.md#create-a-device-enrollment-entry).|
+        | Nachweiseinstellungen | Schrittweise Anleitungen zum Erstellen und Verwenden von individuellen Registrierungen mit symmetrischen Schlüsseln oder X.509-Zertifikaten finden Sie in den Schnellstarts [Bereitstellen eines Geräts mit symmetrischem Schlüssel](quick-create-simulated-device-symm-key.md#create-a-device-enrollment) bzw. [Bereitstellen eines Geräts mit X.509-Zertifikat](quick-create-simulated-device-x509.md#create-a-device-enrollment).<br><br>Schrittweise Anleitungen zum Erstellen und Verwenden von individuellen Registrierungen mithilfe des TPM-Nachweises finden Sie in einem der Beispiele für [Bereitstellen eines simulierten TPM-Geräts](quick-create-simulated-device-tpm.md#create-a-device-enrollment-entry).|
         | **IoT Hub-Geräte-ID** |  Diese ID steht für Ihr Gerät. Sie muss den Regeln für eine Geräte-ID entsprechen. Weitere Informationen finden Sie unter [Geräteidentitätseigenschaften](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties).<br><br>Bei der Verwendung von X.509-Zertifikaten muss dieser Text der Antragstellername auf dem Gerätezertifikat sein, das Sie für die Registrierung hochladen. Dieser Antragstellername muss den Regeln für eine Geräte-ID entsprechen.|
             
 

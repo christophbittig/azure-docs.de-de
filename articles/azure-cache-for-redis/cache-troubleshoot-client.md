@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: a41329da9171014b0495498f8757007dbef008ef
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: bd0ca3b20cc37ecf2107e03eea5d6e4a62633f16
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537412"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807178"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Behandeln von clientseitigen Problemen bei Azure Cache for Redis
 
@@ -21,7 +21,7 @@ In diesem Abschnitt wird das Behandeln von Problemen beschrieben, die wegen eine
 - [Sprunghafter Anstieg des Datenverkehrsvolumens](#traffic-burst)
 - [Hohe Auslastung der Client-CPU](#high-client-cpu-usage)
 - [Clientseitige Bandbreitenbegrenzung](#client-side-bandwidth-limitation)
-- [Große Anforderungen oder große Antworten](#large-request-or-response-size)
+<!-- [Large request or response size](#large-request-or-response-size) -->
 
 ## <a name="memory-pressure-on-redis-client"></a>Hohe Arbeitsspeicherauslastung auf dem Redis-Client
 
@@ -78,11 +78,12 @@ Je nach Architektur der Clientcomputer bestehen möglicherweise Einschränkungen
 
 Verringern Sie zur Minderung den Netzwerkbandbreitenverbrauch, oder vergrößern Sie die Client-VM auf eine mit höherer Netzwerkkapazität.
 
-## <a name="large-request-or-response-size"></a>Große Anforderungen oder große Antworten
+<!-- 
+## Large request or response Size
 
-Eine große Anforderung oder eine große Antwort kann Timeouts verursachen. Nehmen Sie beispielsweise an, dass auf Ihrem Client ein Timeoutwert von einer Sekunde konfiguriert ist. Ihre Anwendung fordert (unter Verwendung derselben physischen Verbindung) zwei Schlüssel gleichzeitig an (z.B. „A“ und „B“). Die meisten Clients unterstützen das „Pipelining“ für Anforderungen, wobei bei Anforderungen „A“ und „B“ nacheinander gesendet werden, ohne dass auf ihre Antworten gewartet wird. Der Server sendet die Antworten in der gleichen Reihenfolge zurück. Wenn die Antwort „A“ groß ist, kann sie den Großteil der Timeoutzeit für spätere Anforderungen verbrauchen.
+A large request/response can cause timeouts. As an example, suppose your timeout value configured on your client is 1 second. Your application requests two keys (for example, 'A' and 'B') at the same time (using the same physical network connection). Most clients support request "pipelining", where both requests 'A' and 'B' are sent one after the other without waiting for their responses. The server sends the responses back in the same order. If response 'A' is large, it can eat up most of the timeout for later requests.
 
-Im folgenden Beispiel werden die Anforderungen „A“ und „B“ schnell an den Server gesendet. Der Server beginnt schnell mit dem Senden der Antworten „A“ und „B“. Aufgrund der Datenübertragungszeiten muss Antwort „B“ hinter Antwort „A“ warten und hat ein Timeout, obwohl der Server schnell geantwortet hat.
+In the following example, request 'A' and 'B' are sent quickly to the server. The server starts sending responses 'A' and 'B' quickly. Because of data transfer times, response 'B' must wait behind response 'A' times out even though the server responded quickly.
 
 ```console
 |-------- 1 Second Timeout (A)----------|
@@ -93,19 +94,20 @@ Im folgenden Beispiel werden die Anforderungen „A“ und „B“ schnell an de
                                        |- Read Response B-| (**TIMEOUT**)
 ```
 
-Dieses Anforderungs-/Antwortszenario ist schwer zu messen. Sie könnten Ihren Clientcode für die Nachverfolgung von großen Anforderungen und Antworten instrumentieren.
+This request/response is a difficult one to measure. You could instrument your client code to track large requests and responses.
 
-Lösungen für große Antworten variieren, umfass aber unter anderem:
+Resolutions for large response sizes are varied but include:
 
-1. Optimieren Sie Ihre Anwendung für eine große Anzahl von kleinen Werten, statt für wenige große Werte.
-    - Die bevorzugte Lösung besteht darin, Ihre Daten in verknüpfte kleinere Werte aufzuteilen.
-    - Ausführliche Informationen, warum kleinere Werte empfohlen werden, finden Sie im Beitrag [What is the ideal value size range for redis? Is 100 KB too large?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) (Welche Größe ist für Werte bei Redis ideal? Sind 100 KB zu viel?).
-1. Erhöhen Sie die Größe Ihres virtuellen Computers, um höhere Bandbreitenkapazitäten zu erhalten.
-    - Mehr Bandbreite auf ihrer Client- oder Server-VM kann die Datenübertragungszeiten für größere Antworten verringern.
-    - Vergleichen Sie Ihre aktuelle Netzwerknutzung auf beiden Computern mit den Limits Ihrer aktuellen VM-Größe. Mehr Bandbreite nur auf dem Server oder nur auf dem Client ist möglicherweise nicht ausreichend.
-1. Erhöhen Sie die Anzahl von Verbindungsobjekten, die Ihre Anwendung verwendet.
-    - Verwenden Sie einen Roundrobinansatz, um Anforderungen über verschiedene Verbindungsobjekte auszuführen.
+1. Optimize your application for a large number of small values, rather than a few large values.
+    - The preferred solution is to break up your data into related smaller values.
+    - See the post [What is the ideal value size range for redis? Is 100 KB too large?](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) for details on why smaller values are recommended.
+1. Increase the size of your VM to get higher bandwidth capabilities
+    - More bandwidth on your client or server VM may reduce data transfer times for larger responses.
+    - Compare your current network usage on both machines to the limits of your current VM size. More bandwidth on only the server or only on the client may not be enough.
+1. Increase the number of connection objects your application uses.
+    - Use a round-robin approach to make requests over different connection objects.
 
+ -->
 ## <a name="additional-information"></a>Zusätzliche Informationen
 
 - [Behandeln von serverseitigen Problemen bei Azure Cache for Redis](cache-troubleshoot-server.md)

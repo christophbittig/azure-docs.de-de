@@ -4,23 +4,24 @@ description: Erfahren Sie, wie Sie den Unterschied zwischen Gruppen mit privileg
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/02/2021
+ms.date: 10/10/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5f9d968c114c28dcff8e247435c40960040c4e9
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 6d903f3aa1e46005ad848a5f63139ce5fd17c8c5
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396780"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129668198"
 ---
 # <a name="whats-the-difference-between-privileged-access-groups-and-role-assignable-groups"></a>Worin besteht der Unterschied zwischen Gruppen mit privilegiertem Zugriff und Gruppen, denen Rollen zugewiesen werden können?
 

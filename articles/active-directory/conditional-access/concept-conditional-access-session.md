@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 09/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f97d2c7ac7026032344f7f08f80cb28bcb0d3d71
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a30dc564dced8d3306c4645ca48b6331e1f6959b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618956"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355764"
 ---
 # <a name="conditional-access-session"></a>Bedingter Zugriff: Sitzung
 
@@ -26,7 +26,7 @@ In einer Richtlinie für bedingten Zugriff kann ein Administrator Sitzungssteuer
 
 ## <a name="application-enforced-restrictions"></a>Durch die Anwendung erzwungene Einschränkungen
 
-Organisationen können dieses Steuerelement verwenden, um zu erzwingen, dass Azure AD die Geräteinformationen an die ausgewählten Cloud-Apps übergibt. Mithilfe der Geräteinformationen können Cloud-Apps herausfinden, ob eine Verbindung von einem konformen oder einem in die Domäne eingebundenen Gerät initiiert wird. Diese Steuermöglichkeit unterstützt nur SharePoint Online und Exchange Online als ausgewählte Cloud-Apps. Bei Auswahl werden die Geräteinformationen von der Cloud-App dazu verwendet, Benutzern je nach Gerätezustand eine eingeschränkte oder vollständige Benutzeroberfläche zur Verfügung zu stellen.
+Organisationen können dieses Steuerelement verwenden, um zu erzwingen, dass Azure AD die Geräteinformationen an die ausgewählten Cloud-Apps übergibt. Mithilfe der Geräteinformationen können Cloud-Apps herausfinden, ob eine Verbindung von einem konformen oder einem in die Domäne eingebundenen Gerät initiiert wird, und die Sitzungserfahrung ändern. Diese Steuermöglichkeit unterstützt nur SharePoint Online und Exchange Online als ausgewählte Cloud-Apps. Wenn diese Option ausgewählt ist, verwendet die Cloud-App die Geräteinformationen, um Benutzern je nach Gerätestatus eine eingeschränkte (wenn das Gerät nicht verwaltet wird) oder eine vollständige Erfahrung (wenn das Gerät verwaltet wird und kompatibel ist) zu bieten.
 
 Weitere Informationen zum Verwenden und Konfigurieren von durch die App erzwungenen Einschränkungen finden Sie in den folgenden Artikeln:
 

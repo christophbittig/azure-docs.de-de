@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 426fe2bee411b5db40314ba6ff4087c37aad657c
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85202958"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544847"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -115,7 +115,7 @@ Das **OutputClaim**-Element enthält die folgenden Attribute:
 | ClaimTypeReferenceId | Ja | Ein Verweis auf ein ClaimType-Element, das bereits im ClaimsSchema-Abschnitt der Richtlinie definiert wurde.
 | TransformationClaimType | Ja | Ein Bezeichner zum Verweisen auf den Anspruchstransformationstyp. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#claims-transformations-reference). |
 
-Wenn die Typen des Eingabeanspruchs und des Ausgabeanspruchs übereinstimmen (String oder Boolean), können Sie den Eingabeanspruch auch als Ausgabeanspruch verwenden. In diesem Fall ändert die Anspruchstransformation den Eingabeanspruch mit dem Ausgabewert.
+In der Anspruchstransformation verwendete Eingabe- und Ausgabeansprüche müssen unterschiedlich sein. Derselbe Eingabeanspruch kann nicht als Ausgabeanspruch verwendet werden.
 
 ## <a name="example"></a>Beispiel
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie mit Azure Machine Learning-Datenspeichern und -Datasets eine sichere Verbindung mit Ihrem Datenspeicher in Azure herstellen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 601be8409db22162a410d481e6609d378718a7b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b439f65f2807d2d076363938169631651b85d20
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503588"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129430153"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Sicherer Datenzugriff in Azure Machine Learning
 
@@ -116,7 +116,7 @@ Das Beschriften großer Datenmengen bereitet in Projekten für maschinelles Lern
 
 Azure Machine Learning ist Ihr zentraler Ort zum Erstellen, Verwalten und Überwachen von Beschriftungsprojekten. Beschriftungsprojekte helfen dabei, Daten, Beschriftungen und Teammitglieder zu koordinieren, sodass Sie die Beschriftungsaufgaben effizienter verwalten können. Zu den zurzeit unterstützten Aufgaben gehören die Bildklassifizierung – mit mehreren Beschriftungen oder mehreren Klassen – und die Objektidentifikation mithilfe von Begrenzungsrahmen.
 
-Erstellen Sie ein [Datenbeschriftungsprojekt](how-to-create-labeling-projects.md), und geben Sie ein Dataset aus, das in Machine Learning-Experimenten verwendet werden kann.
+Erstellen Sie ein [Bildbeschriftungsprojekt](how-to-create-image-labeling-projects.md) oder [Textbeschriftungsprojekt](how-to-create-text-labeling-projects.md), und geben Sie ein Dataset aus, das in Machine Learning-Experimenten verwendet werden kann.
 
 <a name="drift"></a>
 

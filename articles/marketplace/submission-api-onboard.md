@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 09/22/2021
-ms.openlocfilehash: 5c6431fef8c91b41f19d27d19b59efca14986b7f
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: e75b85ea7557e4eb6688e8a549e92820d580359b
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058750"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614743"
 ---
 # <a name="partner-center-submission-api-onboarding"></a>Einführung in die Partner Center-Übermittlungs-API
 
@@ -64,7 +64,7 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-Geben Sie die Mandanten-ID, die Client-ID und den Schlüssel für die Anwendung, die Sie im vorherigen Abschnitt aus Partner Center abgerufen haben, für den Wert „tenant_id“ im POST-URI sowie die Parameter „client_id“ und „client_secret“ an. Für den Parameter resource müssen Sie https://api.partner.microsoft.com angeben.
+Geben Sie die Mandanten-ID, die Client-ID und den Schlüssel für die Anwendung, die Sie im vorherigen Abschnitt aus Partner Center abgerufen haben, für den Wert „tenant_id“ im POST-URI sowie die Parameter „client_id“ und „client_secret“ an. Für den Parameter resource müssen Sie `https://api.partner.microsoft.com` angeben.
 
 ### <a name="step-3-use-the-partner-center-submission-api"></a>Schritt 3: Verwenden der Partner Center-Übermittlungs-API
 

@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0b41880bea25c1b833ab2a996a50edcf557f37b8
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: f2392484c8ee7c72daa0da7c3ff9632a981a52ec
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161661"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619688"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>Konfigurieren der Ausgabe und Meldungsdatenströme von Runbooks
 
@@ -30,7 +30,7 @@ In der folgenden Tabelle werden die einzelnen Datenströme kurz beschrieben und 
 
 ## <a name="use-the-output-stream"></a>Verwenden des Ausgabedatenstroms
 
-Der Ausgabedatenstrom wird zur Ausgabe von Objekten verwendet, die bei korrekter Ausführung von einem Skript oder Workflow erstellt werden. Azure Automation verwendet diesen Datenstrom hauptsächlich für Objekte, die von übergeordneten Runbooks, die das [aktuelle Runbook](automation-child-runbooks.md) aufrufen, genutzt werden sollen. Wenn ein übergeordnetes Runbook [ein Runbook inline aufruft](automation-child-runbooks.md#invoke-a-child-runbook-using-inline-execution), gibt das untergeordnete Runbook Daten aus dem Ausgabedatenstrom an das übergeordnete Runbook zurück.
+Der Ausgabedatenstrom wird zur Ausgabe von Objekten verwendet, die bei korrekter Ausführung von einem Skript oder Workflow erstellt werden. Azure Automation verwendet diesen Datenstrom hauptsächlich für Objekte, die von übergeordneten Runbooks, die das [aktuelle Runbook](automation-child-runbooks.md) aufrufen, genutzt werden sollen. Wenn ein übergeordnetes Runbook [ein Runbook inline aufruft](automation-child-runbooks.md#call-a-child-runbook-by-using-inline-execution), gibt das untergeordnete Runbook Daten aus dem Ausgabedatenstrom an das übergeordnete Runbook zurück.
 
 Ihr Runbook verwendet den Ausgabedatenstrom nur dann zum Übermitteln allgemeiner Informationen an den Client, wenn es nie von einem anderen Runbook aufgerufen wird. In der Regel empfiehlt es sich jedoch als bewährte Methode, dass Ihre Runbooks den [ausführlichen Datenstrom](#write-output-to-verbose-stream) verwenden, um allgemeine Informationen für den Benutzer bereitzustellen.
 

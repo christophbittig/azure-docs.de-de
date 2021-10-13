@@ -3,12 +3,12 @@ title: Problembehandlung der Sicherung von Azure-Dateifreigaben
 description: Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz Ihrer Azure-Dateifreigaben.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 86324c80f0df70713c6ea76a43e4b9da50c1fae6
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 942574fafe6a68b601f3ed4c428dc74fb02719a5
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555018"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532511"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
 
@@ -25,8 +25,10 @@ Dieser Artikel enthält Informationen zur Problembehandlung, mit denen Sie event
   >Alle Dateifreigaben in einem Speicherkonto können nur unter einem einzelnen Recovery Services-Tresor geschützt werden. Mithilfe [dieses Skripts](scripts/backup-powershell-script-find-recovery-services-vault.md) können Sie nach dem Recovery Services-Tresor suchen, bei dem Ihr Speicherkonto registriert ist.
 
 - Vergewissern Sie sich, dass sich die Dateifreigabe nicht in einem nicht unterstützten Speicherkonto befindet. Sie können die [Unterstützungsmatrix für Sicherungen von Azure-Dateifreigaben](azure-file-share-support-matrix.md) verwenden, um unterstützte Speicherkonten zu finden.
+- Stellen Sie sicher, dass das Speicherkonto und der Recovery Services-Tresor in derselben Region vorhanden sind.
 - Sorgen Sie dafür, dass die Kombination aus Speicherkontoname und Ressourcengruppenname eine Gesamtlänge von 84 Zeichen bei neuen Speicherkonten und 77 Zeichen bei klassischen Speicherkonten nicht überschreitet.
-- Überprüfen Sie die Firewalleinstellungen des Speicherkontos, um sicherzustellen, dass die Option zum Erlauben des Zugriffs auf das Speicherkonto durch vertrauenswürdige Microsoft-Dienste aktiviert ist.
+- Überprüfen Sie die Firewalleinstellungen des Speicherkontos, um sicherzustellen, dass die Ausnahme _Azure-Diensten in der Liste der vertrauenswürdigen Dienste den Zugriff auf dieses Speicherkonto erlauben_ gewährt wird. Unter [diesem](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions) Link finden Sie die Schritte zur Gewährung einer Ausnahme.
+
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Im Portal tritt ein Fehler mit dem Hinweis auf, dass die Speicherkonten nicht erfolgreich erkannt wurden.
 

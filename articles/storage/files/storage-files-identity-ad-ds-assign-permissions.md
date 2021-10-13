@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/13/2021
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell, subject-rbac-steps
-ms.openlocfilehash: 4c69a8bcd3acb559de3674dd7012220f4c7868e4
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: cf2d9c2921599680781695631eae9c5276ff53c2
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113687153"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400642"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>Teil 2: Zuweisen von Berechtigungen auf Freigabeebene für eine Identität
 
@@ -55,11 +55,14 @@ In der folgenden Tabelle sind die Berechtigungen auf Freigabeebene und deren Aus
 
 ## <a name="share-level-permissions-for-specific-azure-ad-users-or-groups"></a>Berechtigungen auf Freigabeebene für bestimmte Azure AD-Benutzer oder -Gruppen
 
-Wenn Sie beabsichtigen, einen bestimmten Azure AD-Benutzer oder eine bestimmte Gruppe für den Zugriff auf Azure-Dateifreigaberessourcen zu verwenden, muss diese Identität eine Hybrididentität sein, die sowohl in lokalen AD DS als auch in Azure AD vorhanden ist. Beispiel: Ein Benutzer user1@onprem.contoso.com in Ihrem AD ist über die Azure AD Connect-Synchronisierung als user1@contoso.com mit Azure AD synchronisiert. Damit dieser Benutzer auf Azure Files zugreifen kann, müssen Sie user1@contoso.com die Berechtigungen auf Freigabeebene zuweisen. Dasselbe Konzept gilt für Gruppen oder Dienstprinzipale. Aus diesem Grund müssen Sie die Benutzer und Gruppen aus Ihrem AD mithilfe der Azure AD Connect-Synchronisierung mit Azure AD synchronisieren. 
+Wenn Sie beabsichtigen, einen bestimmten Azure AD-Benutzer oder eine bestimmte Gruppe für den Zugriff auf Azure-Dateifreigaberessourcen zu verwenden, muss diese Identität eine **Hybrididentität sein, die sowohl in lokalen AD DS als auch in Azure AD vorhanden ist**. Beispiel: Ein Benutzer user1@onprem.contoso.com in Ihrem AD ist über die Azure AD Connect-Synchronisierung als user1@contoso.com mit Azure AD synchronisiert. Damit dieser Benutzer auf Azure Files zugreifen kann, müssen Sie user1@contoso.com die Berechtigungen auf Freigabeebene zuweisen. Dasselbe Konzept gilt für Gruppen oder Dienstprinzipale. Aus diesem Grund müssen Sie die Benutzer und Gruppen aus Ihrem AD mithilfe der Azure AD Connect-Synchronisierung mit Azure AD synchronisieren. 
 
 Der Azure AD-Identität, die für denselben Benutzer oder dieselbe Gruppe in Ihrer AD DS-Instanz steht, müssen Berechtigungen auf Freigabeebene zugewiesen werden, um die AD DS-Authentifizierung für Ihre Dateifreigabe in Azure zu unterstützen. Die Authentifizierung und Autorisierung mit Identitäten, die nur in Azure AD vorhanden sind, z. B. verwaltete Identitäten in Azure, wird bei der AD DS-Authentifizierung nicht unterstützt.
 
 Sie können das Azure-Portal, Azure PowerShell-Modul oder die Azure-Befehlszeilenschnittstelle verwenden, um die integrierten Rollen der Azure AD-Identität eines Benutzers zuzuweisen und damit Berechtigungen auf Freigabeebene zu erteilen.
+
+> [!IMPORTANT]
+> Es dauert bis zu drei Stunden nach Abschluss, bis die Berechtigungen auf Freigabeebene wirksam werden. Warten Sie, bis die Berechtigungen synchronisiert wurden, bevor Sie mit Ihren Anmeldeinformationen eine Verbindung mit Ihrer Dateifreigabe herstellen.   
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

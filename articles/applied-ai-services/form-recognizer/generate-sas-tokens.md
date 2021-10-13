@@ -6,19 +6,19 @@ author: laujan
 manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
-ms.date: 09/16/2021
+ms.date: 09/23/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 22fe82425285a27d224ea5375bfe209e7ac779da
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6e1b145c5efa9135a198cd6623c450f5965a6c2c
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700433"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387941"
 ---
 # <a name="generate-sas-tokens-for-storage-containers"></a>Generieren von SAS-Tokens für Speichercontainer
 
- In diesem Artikel lernen Sie, wie Sie Token für die Benutzerdelegation mit gemeinsamer Zugriffssignatur (SAS) generieren können. Ein SAS-Token für die Benutzerdelegation wird mit Azure Active Directory (Azure AD)-Anmeldeinformationen anstelle von Azure-Speicherschlüsseln signiert. Es bietet einen besonders sicheren und delegierten Zugriff auf Ressourcen in Ihrem Azure-Storage-Konto.
+ In diesem Artikel lernen Sie, wie Sie Token für die Benutzerdelegation mit gemeinsamer Zugriffssignatur (SAS) für Azure Blob Storage-Container generieren können. Ein SAS-Token für die Benutzerdelegation wird mit Azure Active Directory (Azure AD)-Anmeldeinformationen anstelle von Azure-Speicherschlüsseln signiert. Es bietet einen besonders sicheren und delegierten Zugriff auf Ressourcen in Ihrem Azure-Storage-Konto.
 Im Großen und Ganzen funktioniert es folgendermaßen: Ihre Anwendung stellt das SAS-Token als Teil einer Anforderung an Azure Storage bereit. Wenn der Speicherdienst prüft, ob das SAS gültig ist, wird die Anforderung autorisiert. Wird das SAS als ungültig erachtet, wird die Anforderung mit dem Fehlercode 403 (Verboten) abgelehnt.
 
 Azure Blob Storage bietet drei Arten von Ressourcen:
@@ -68,7 +68,7 @@ Zunächst benötigen Sie Folgendes:
     :::image type="content" source="media/sas-tokens/upload-blob-window.png" alt-text="Screenshot: Fenster Blob hochladen im Azure-Portal.":::
 
 > [!NOTE]
-> Standardmäßig verwendet die REST-API Formulardokumente, die sich im Stammverzeichnis Ihres Containers befinden. Sie können jedoch in Unterordnern organisierte Daten verwenden, wenn dies im API-Aufruf angegeben ist. *Siehe* [**Organisieren Sie Ihre Daten in Unterordnern**](/azure/applied-ai-services/form-recognizer/build-training-data-set.md#organize-your-data-in-subfolders-optional)
+> Standardmäßig verwendet die REST-API Formulardokumente, die sich im Stammverzeichnis Ihres Containers befinden. Sie können jedoch in Unterordnern organisierte Daten verwenden, wenn dies im API-Aufruf angegeben ist. *Siehe* [**Organisieren Sie Ihre Daten in Unterordnern**](/azure/applied-ai-services/form-recognizer/build-training-data-set#organize-your-data-in-subfolders-optional)
 
 ## <a name="create-a-sas-with-the-azure-portal"></a>Erstellen Sie ein SAS mit dem Azure-Portal
 
@@ -97,7 +97,7 @@ Zunächst benötigen Sie Folgendes:
     >
     >     :::image type="content" source="media/sas-tokens/need-permissions.png" alt-text="Screenshot: Warnung vor fehlenden Berechtigungen.":::
     >
-     > * [**Azure rollenbasierte Zugriffskontrolle** ](/azure/role-based-access-control/overview) (Azure RBAC) ist das Autorisierungssystem, mit dem der Zugriff auf Azure-Ressourcen verwaltet wird. Azure RBAC hilft Ihnen, den Zugriff und die Berechtigungen für Ihre Azure-Ressourcen zu verwalten.
+     > * [**Azure rollenbasierte Zugriffskontrolle**](/azure/role-based-access-control/overview) (Azure RBAC) ist das Autorisierungssystem, mit dem der Zugriff auf Azure-Ressourcen verwaltet wird. Azure RBAC hilft Ihnen, den Zugriff und die Berechtigungen für Ihre Azure-Ressourcen zu verwalten.
     > * Folgen Sie unserer Führungslinie [**Zuweisen einer Azure-Rolle für den Zugriff auf Blob Daten**](/azure/role-based-access-control/role-assignments-portal?tabs=current), um eine Rolle zuzuweisen, die Lese-, Schreib- und Löschberechtigungen für Ihren Azure-Speichercontainer ermöglicht, z. B. [**Speicher Blob-Daten Mitwirkender**](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor).
 
 1. Geben Sie die Zeiten für den **Start** und **Ablauf** des signierten Schlüssels an. **Der Wert für die Ablaufzeit beträgt maximal sieben Tage ab dem Start des SAS**.

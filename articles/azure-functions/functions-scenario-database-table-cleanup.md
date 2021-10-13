@@ -4,13 +4,13 @@ description: Verwenden Sie Azure Functions, um eine Aufgabe zu planen, die eine 
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 10/02/2019
-ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/04/2021
+ms.openlocfilehash: d1e98f180579ec7dd070fcbb9adf2e7ede7b15fe
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88207262"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418816"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
 
@@ -44,9 +44,15 @@ Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Als bewähr
 
 Zuvor müssen Sie Ihre App in Azure veröffentlicht haben. Wenn dies noch nicht erfolgt ist, [veröffentlichen Sie die Funktions-App in Azure](functions-develop-vs.md#publish-to-azure).
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Funktions-App-Projekt, und wählen Sie **Veröffentlichen** > **Azure App Service-Einstellungen bearbeiten** aus. Wählen Sie **Einstellung hinzufügen** aus, geben Sie in **Name der neuen App-Einstellung** den Namen `sqldb_connection` ein, und wählen Sie **OK** aus.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Funktions-App-Projekt, und wählen Sie **Veröffentlichen** aus.
 
-    ![Anwendungseinstellungen für Funktions-App](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
+1. Wählen Sie auf der Seite **Veröffentlichen** im Bereich **Hosting** die Auslassungspunkte (`...`) und dann **Azure App Service-Einstellungen verwalten** aus. 
+
+    ![Verwalten Sie App Service-Einstellungen für die Funktions-App.](./media/functions-scenario-database-table-cleanup/publish-new-resource.png)
+
+1. Wählen Sie in **Anwendungseinstellungen** die Option **Einstellung hinzufügen** aus, geben Sie in **Name der neuen App-Einstellung** den Namen `sqldb_connection` ein, und wählen Sie **OK** aus.
+
+    ![Fügen Sie eine App-Einstellung für die Funktions-App hinzu.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
 1. Fügen Sie in der neuen Einstellung **sqldb_connection** die Verbindungszeichenfolge, die Sie im vorherigen Abschnitt kopiert haben, im Feld **Lokal** ein, und ersetzen Sie die Platzhalter `{your_username}` und `{your_password}` durch die tatsächlichen Werte. Wählen Sie **Wert aus lokaler Quelle einfügen** aus, um den aktualisierten Wert in das Feld **Remote** zu kopieren, und wählen Sie dann **OK** aus.
 

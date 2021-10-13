@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2079905f81b770039a9b71b2e8e4f21553da099f
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 49963f7c2625a0aa454d8a1bac5ff001cb4debe9
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114202988"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230910"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory 
 
@@ -47,8 +47,8 @@ Organisationen müssen auch die folgenden Softwareanforderungen erfüllen.
 - Sie müssen [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) 1.4.32.0 oder eine höhere Version verwenden.
   - Weitere Informationen zu den verfügbaren Authentifizierungsoptionen für Ihre Azure AD-Hybridlösung finden Sie unter [Auswählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung](../hybrid/choose-ad-authn.md) und [Auswählen des Installationstyps für Azure AD Connect](../hybrid/how-to-connect-install-select-installation.md).
 - Auf Ihren Windows Server-Domänencontrollern müssen die folgenden Patches installiert sein:
-    - Für Windows Server 2016: https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
-    - Für Windows Server 2019: https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
+    - Für [Windows Server 2016](https://support.microsoft.com/help/4534307/windows-10-update-kb4534307)
+    - Für [Windows Server 2019](https://support.microsoft.com/help/4534321/windows-10-update-kb4534321)
 
 ### <a name="supported-scenarios"></a>Unterstützte Szenarios
 
@@ -201,7 +201,8 @@ Wenn Sie einen in Hybrid-Azure AD eingebundenen Computer neu installieren, danac
 
 Stellen Sie sicher, dass genügend Domänencontroller gepatcht sind, damit sie rechtzeitig reagieren können, um Ihre Ressourcenanforderung zu bearbeiten. Wenn Sie überprüfen möchten, ob ein Domänencontroller angezeigt wird, auf dem die Funktion ausgeführt wird, sehen Sie sich die Ausgabe von `nltest /dsgetdc:contoso /keylist /kdc` an.
 
-Hinweis: dieser/Keylist-Schalter im Befehl Nltest finden Sie unter Client Windows 10 V2004 und höher.
+> [!NOTE]
+> Der `/keylist`-Schalter im `nltest`-Befehl ist im Windows 10 v2004-Client und höher verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: sms
-ms.openlocfilehash: 7b10040aa8aabd16d84326c73bd422f9b66ef04e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 658e13aa888e448de723a97bf9cc89c162a774b5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635981"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356312"
 ---
 # <a name="sms-faq"></a>SMS FAQ
 
@@ -46,6 +46,9 @@ Abmeldungen für gebührenfreie Nummern in den USA werden von US-Netzbetreibern 
 
 Azure Communication Services-Kunden können Azure Event Grid verwenden, um eingehende Nachrichten zu empfangen. Führen Sie diese [Schnellstart](../../quickstarts/telephony-sms/handle-sms-events.md) Anleitung aus, um Ihr Event Grid für den Empfang von Nachrichten einzurichten.
 
+## <a name="what-is-the-sms-character-limit"></a>Wie lautet der Grenzwert für SMS-Zeichen?
+Der Zeichengrenzwert für eine einzelne SMS beträgt 160 Zeichen. Beim Senden von Nachrichten werden alle Nachrichten mit mehr als 160 Zeichen in einzeln übermittelte, vom Gerät des Empfängers verkettete Segmente aufgeteilt. Auf ähnliche Weise werden beim Empfangen langer Nachrichten mehrere Segmente einer langen Nachricht automatisch verkettet und als eine Nachricht an den in Azure Event Grid angegebenen Endpunkt übermittelt. 
+
 ## <a name="can-i-sendreceive-long-messages-2048-chars"></a>Kann ich lange Nachrichten senden/empfangen (>2048 Zeichen)?
 
 Azure Communication Services unterstützt das Senden und empfangen von langen Nachrichten über SMS. Allerdings können einige drahtlos Träger oder Geräte beim Empfang von langen Nachrichten anders agieren.
@@ -55,7 +58,6 @@ Azure Communication Services unterstützt das Senden und empfangen von langen Na
 In Nordamerika prüft Azure Communication Services nicht auf Festnetznummern und versucht, die Zustellung an Carrier zu senden. Kunden werden in Rechnung gestellt, dass Nachrichten an die Festnetznummern gesendet werden. 
 
 ## <a name="can-i-send-messages-to-multiple-recipients"></a>Kann ich Nachrichten an mehrere Empfänger senden?
-
 
 Ja, Sie können eine Anfrage mit mehreren Empfängern stellen. Befolgen Sie diese [Schnellstart](../../quickstarts/telephony-sms/send.md?pivots=programming-language-csharp)-Anleitung, um Nachrichten an mehrere Empfänger zu senden.
 

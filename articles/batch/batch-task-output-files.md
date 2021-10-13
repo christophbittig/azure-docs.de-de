@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Verwendung der Batch-Dienst-API zur Bei
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 6669d6d4ae3a1aba0be6300869d17c0791d3734d
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 0a089637c68e218799e36cda0bcfa2dc7b1600a1
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445108"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658517"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Beibehalten von Taskdaten mithilfe der Batch-Dienst-API in Azure Storage
 
@@ -166,7 +166,7 @@ https://myaccount.blob.core.windows.net/mycontainer/task1/output.txt
 https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 ```
 
-Weitere Informationen zu virtuellen Verzeichnissen in Azure Storage finden Sie unter [Auflisten der Blobs in einem Container](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container).
+Weitere Informationen zu virtuellen Verzeichnissen in Azure Storage finden Sie unter [Auflisten der Blobs in einem Container](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-blobs-in-a-container).
 
 ## <a name="diagnose-file-upload-errors"></a>Diagnostizieren von Fehlern beim Dateiupload
 

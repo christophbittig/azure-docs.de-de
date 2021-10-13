@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple – Erweitern eines lokalen Layer-2-Netzwerks in die private Cloud
 description: Erfahren Sie, wie Sie ein Layer-2-VPN zwischen NSX-T in einer privaten CloudSimple-Cloud und einem lokalen, eigenständigen NSX Edge-Client einrichten.
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7f327e0eecbfe51095f3f533dc787cc9aeedfb1e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5156be86fdaf2830abc66ed270edd1217be13bfb
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128638309"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614230"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrieren von Workloads unter Verwendung von Layer-2-Stretchingnetzwerken
 

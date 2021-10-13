@@ -1,6 +1,7 @@
 ---
-title: Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden bei Azure Active Directory
+title: Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden
 description: Hier erfahren Sie, wie Sie Probleme mit einer Azure AD-App beheben, die für kennwortbasiertes einmaliges Anmelden konfiguriert wurde.
+titleSuffix: Azure AD
 author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
@@ -10,14 +11,14 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: 0c3f95559b891cfff9e704883365ca6b7bc1630b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1b33398a9188b55eae3d0ec54fcfe1acc6b6a589
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128658201"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613693"
 ---
-# <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden in Azure AD
+# <a name="troubleshoot-password-based-single-sign-on-in-azure-active-directory"></a>Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden bei Azure Active Directory
 
 Wenn Sie kennwortbasiertes einmaliges Anmelden (Single Sign-on, SSO) in „Meine Apps“ verwenden möchten, muss die Browsererweiterung installiert sein. Die Erweiterung wird automatisch heruntergeladen, wenn Sie eine App auswählen, die für kennwortbasiertes SSO konfiguriert ist. Informationen zur Verwendung von „Meine Apps“ aus der Sicht eines Endbenutzers finden Sie unter [Hilfe zum Portal „Meine Apps“](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
 
