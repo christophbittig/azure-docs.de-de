@@ -10,12 +10,12 @@ ms.date: 08/16/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5b561e233deb5478be89f965bb059e68cfb7134f
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 47445520e92f6c7f4a8e5eb78c404b6875dbe017
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351196"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274062"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändern der Replikation eines Speicherkontos
 
@@ -151,7 +151,7 @@ Folgen Sie diesen Schritten, um eine Live-Migration anzufordern:
 > [!NOTE]
 > Premium-Dateifreigaben sind nur für LRS und ZRS verfügbar.
 >
-> GZRS-Speicherkonten unterstützen die Archivebene derzeit nicht. Unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md) finden Sie weitere Details.
+> GZRS-Speicherkonten unterstützen die Archivebene derzeit nicht. Weitere Informationen finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](../blobs/access-tiers-overview.md).
 >
 > Verwaltete Datenträger sind nur für LRS verfügbar und können nicht zu ZRS migriert werden. Sie können Momentaufnahmen und Images für verwaltete SSD Standard-Datenträger in einem HDD Standard-Speicher speichern und [zwischen LRS- und ZRS-Optionen wählen](https://azure.microsoft.com/pricing/details/managed-disks/). Informationen zur Integration in Verfügbarkeitsgruppen finden Sie unter [Einführung in verwaltete Azure-Datenträger](../../virtual-machines/managed-disks-overview.md#integration-with-availability-sets).
 

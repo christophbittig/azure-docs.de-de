@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei der Azure Active Directory-Anwendungsbereitstellung
 description: Neue und aktualisierte Dokumentation für die Azure Active Directory-Anwendungsbereitstellung
-ms.date: 09/08/2021
+ms.date: 10/05/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: mtillman
-ms.openlocfilehash: 1cd99265954671084b37bcf0f11606a1e334223e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a5b870bb2c0e8021320bf03d990e5d7b636c5422
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124759793"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535829"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory-Anwendungsbereitstellung: Neues
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Active Directory-Anwendungsbereitstellung. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Bereitstellungsdienst finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="september-2021"></a>September 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Aktivieren des Features zum Verhindern versehentlicher Löschungen im Azure AD-Bereitstellungsdienst (Vorschau)](accidental-deletions.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Funktionsweise der Anwendungsbereitstellung in Azure Active Directory](how-provisioning-works.md)
+
 
 ## <a name="august-2021"></a>August 2021
 

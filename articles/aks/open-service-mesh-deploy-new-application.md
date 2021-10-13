@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 5ff554193f40f8a4d80038e9786c454845f7febe
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 77728c7b61fc6b76cb5ecb51ff1d90e0c0a93e99
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440680"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535538"
 ---
 # <a name="manage-a-new-application-with-the-open-service-mesh-osm-azure-kubernetes-service-aks-add-on"></a>Verwalten einer neuen Anwendung mit dem Open Service Mesh (OSM) Azure Kubernetes Service (AKS) Add-on
 
@@ -420,4 +420,4 @@ trafficsplit.split.smi-spec.io/bookstore-split created
 
 Richten Sie einen Port-Forward-Tunnel zum `bookbuyer`-Pod ein und Sie sollten nun sehen, dass Bücher vom `bookstore` v2-Dienst gekauft werden. Wenn Sie die Zunahme der Käufe weiter beobachten, sollten Sie eine schnellere Zunahme der Käufe über den `bookstore` v2-Dienst feststellen.
 
-![OSM-Bookbuyer-Bücher boough UI](./media/aks-osm-addon/osm-bookbuyer-traffic-split-ui.png)
+![OSM-Bookbuyer-Benutzeroberfläche zu verkauften Büchern](./media/aks-osm-addon/osm-bookbuyer-traffic-split-ui.png)

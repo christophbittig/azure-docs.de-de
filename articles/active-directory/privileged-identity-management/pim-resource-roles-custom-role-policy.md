@@ -4,22 +4,23 @@ description: Hier erfahren Sie, wie Sie benutzerdefinierte Azure-Rollen in Azure
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24b7845ec66a85e6ced4f1df9caec409a94016bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a114c233372636ca26c847d819103651ad455e97
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88782599"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129668787"
 ---
 # <a name="use-azure-custom-roles-in-privileged-identity-management"></a>Verwenden von benutzerdefinierten Azure-Rollen in Privileged Identity Management
 

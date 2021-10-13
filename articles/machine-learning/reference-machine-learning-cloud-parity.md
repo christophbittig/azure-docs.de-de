@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 07/16/2021
+ms.date: 08/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1c26761fe23fb1a7558100dea3cb74d7b078550d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8c05b77a77bbcbfc977dadb22151f0086001b859
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349464"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359453"
 ---
 # <a name="azure-machine-learning-feature-availability-across-clouds-regions"></a>Verfügbarkeit von Azure Machine Learning-Features über Cloudregionen hinweg
 
@@ -62,7 +62,7 @@ Die Informationen im übrigen Teil dieses Dokuments enthalten Informationen dazu
 | VNET-Unterstützung (virtuelles Netzwerk) zu Trainingszwecken                                | Allgemein verfügbar                   | YES                | YES         |
 | VNET-Unterstützung (virtuelles Netzwerk) für Rückschlüsse                               | Allgemein verfügbar                   | YES                | YES         |
 | Bewerten der Endpunktauthentifizierung                                            | Öffentliche Vorschau       | YES                | YES         |
-| Privater Endpunkt am Arbeitsplatz                                                 | Allgemein verfügbar  |  Öffentliche Vorschau  |  Öffentliche Vorschau |
+| Privater Endpunkt am Arbeitsplatz                                                 | Allgemein verfügbar  |  Allgemein verfügbar  |  Allgemein verfügbar |
 | ACI hinter VNET                                                            | Öffentliche Vorschau       | Nein                 | Nein          |
 | ACR hinter VNET                                                            | Allgemein verfügbar       | YES                 | YES          |
 | Private IP-Adresse des AKS-Clusters                                                  | Öffentliche Vorschau       | Nein                 | Nein          |
@@ -80,7 +80,7 @@ Die Informationen im übrigen Teil dieses Dokuments enthalten Informationen dazu
 | [Visual Studio Code-Integration](how-to-setup-vs-code.md)                                             | Öffentliche Vorschau       | Nein                 | Nein          |
 | [Event Grid-Integration](how-to-use-event-grid.md)                                                     | Öffentliche Vorschau       | Nein                 | Nein          |
 | [Integrieren von Azure Stream Analytics in Azure Machine Learning](../stream-analytics/machine-learning-udf.md)               | Öffentliche Vorschau       | Nein                 | Nein          |
-| **[Bezeichnung](how-to-create-labeling-projects.md)** |   | | |
+| **Beschriften von [Bildern](how-to-create-image-labeling-projects.md) und [Text](how-to-create-text-labeling-projects.md)** |   | | |
 | Verwaltungsportal für Beschriftungsprojekte                                        | Allgemein verfügbar                   | YES                | YES         |
 | Portal für Beschriftungsersteller                                                            | Allgemein verfügbar                   | YES                | YES         |
 | Beschriften mithilfe privater Mitarbeiter                                          | Allgemein verfügbar                   | YES                | YES         |

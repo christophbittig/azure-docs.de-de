@@ -14,12 +14,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
-ms.openlocfilehash: 2fb7a97f1efb50f76b91cbc49a189deda7cde9c8
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 5be4133f23764ab87e8c1fca3b176d680e1eeae1
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129357104"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855610"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Schnellstart: Erstellen einer Java-App in Azure App Service
 
@@ -123,7 +123,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
     PricingTier : P1v2
     OS : Windows
     Java : Java 8
-    WebContainer : Java SE
+    Web server stack : Java SE
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -156,7 +156,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
     PricingTier : P1v2
     OS : Windows
     Java : Java 8
-    WebContainer : tomcat 8.5
+    Web server stack : Tomcat 8.5
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -183,7 +183,7 @@ JBoss EAP ist nur in der Linux-Version von App Service verfügbar. Wählen Sie o
 1. Wenn die Eingabeaufforderung für die Option **Web-App** angezeigt wird, übernehmen Sie die Standardoption `<create>`, indem Sie die EINGABETASTE drücken.
 1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Linux** aus, indem Sie die EINGABETASTE drücken.
 2. Wenn die Eingabeaufforderung für die Option **javaVersion** angezeigt wird, wählen Sie **Java 8** aus, in dem Sie `1` eingeben.
-3. Wenn die Eingabeaufforderung für die Option **Tarif** angezeigt wird, wählen Sie **P1v2** aus, in dem Sie `10` eingeben.
+3. Wenn die Eingabeaufforderung für die Option **Tarif** angezeigt wird, wählen Sie **P1v2** aus, in dem Sie `9` eingeben.
 4. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     ```
@@ -194,7 +194,7 @@ JBoss EAP ist nur in der Linux-Version von App Service verfügbar. Wählen Sie o
     Region : centralus
     PricingTier : P1v2
     OS : Linux
-    Web server stack : JAVA SE
+    Web server stack : Java SE
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -213,7 +213,7 @@ JBoss EAP ist nur in der Linux-Version von App Service verfügbar. Wählen Sie o
 1. Wenn die Eingabeaufforderung für die **Betriebssystemoption** angezeigt wird, wählen Sie **Linux** aus, indem Sie die EINGABETASTE drücken.
 1. Wenn die Eingabeaufforderung für die Option **javaVersion** angezeigt wird, wählen Sie **Java 8** aus, in dem Sie `1` eingeben.
 1. Wenn die Eingabeaufforderung für die Option **webcontainer** angezeigt wird, wählen Sie **Tomcat 8.5** aus, in dem Sie `3` eingeben.
-1. Wenn die Eingabeaufforderung für die Option **Tarif** angezeigt wird, wählen Sie **P1v2** aus, in dem Sie `10` eingeben.
+1. Wenn die Eingabeaufforderung für die Option **Tarif** angezeigt wird, wählen Sie **P1v2** aus, in dem Sie `9` eingeben.
 1. Drücken Sie abschließend in der letzten Eingabeaufforderung die EINGABETASTE, um die Auswahl zu bestätigen.
 
     ```
@@ -224,7 +224,7 @@ JBoss EAP ist nur in der Linux-Version von App Service verfügbar. Wählen Sie o
     Region : centralus
     PricingTier : P1v2
     OS : Linux
-    Web server stack : TOMCAT 8.5
+    Web server stack : Tomcat 8.5
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -279,10 +279,10 @@ Eigenschaft | Erforderlich | BESCHREIBUNG | Version
 `<subscriptionId>` | false | Geben Sie die Abonnement-ID an. | 0.1.0+
 `<resourceGroup>` | true | Azure-Ressourcengruppe für Ihre Web-App. | 0.1.0+
 `<appName>` | true | Der Name Ihrer Web-App. | 0.1.0+
-`<region>` | true | Gibt die Region an, in der Ihre Web-App gehostet wird. Der Standardwert ist **centralus**. Alle gültigen Regionen finden Sie im Abschnitt [Unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=app-service). | 0.1.0+
-`<pricingTier>` | true | Der Tarif für Ihre Web-App. Für Produktionsworkloads lautet der Standardwert **P1v2**, für Entwicklungs- und Testworkloads in Java ist der empfohlene Mindestwert hingegen **B2**. [Weitere Informationen](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
-`<runtime>` | true | Details zur Konfiguration der Laufzeitumgebung finden Sie [hier](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0+
-`<deployment>` | true | Details zur Konfiguration der Bereitstellung finden Sie [hier](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0+
+`<region>` | false | Gibt die Region an, in der Ihre Web-App gehostet wird. Der Standardwert ist **centralus**. Alle gültigen Regionen finden Sie im Abschnitt [Unterstützten Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=app-service). | 0.1.0+
+`<pricingTier>` | false | Der Tarif für Ihre Web-App. Für Produktionsworkloads lautet der Standardwert **P1v2**, für Entwicklungs- und Testworkloads in Java ist der empfohlene Mindestwert hingegen **B2**. [Weitere Informationen](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
+`<runtime>` | false | Details zur Konfiguration der Laufzeitumgebung finden Sie [hier](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0+
+`<deployment>` | false | Details zur Konfiguration der Bereitstellung finden Sie [hier](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details). | 0.1.0+
 
 Notieren Sie sich die Werte `<appName>` und `<resourceGroup>` (`helloworld-1590394316693` und `helloworld-1590394316693-rg` in der Demo). Sie werden später verwendet.
 

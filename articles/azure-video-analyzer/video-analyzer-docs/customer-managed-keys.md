@@ -5,12 +5,12 @@ author: anilmur
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: d24ddd090f9acffc3dd19643d4004dbb58fc344d
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: e86d2eb8883efb887a598f93d191ae9070ef2b67
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603846"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402991"
 ---
 # <a name="customer-managed-keys-with-azure-video-analyzer"></a>Vom Kunden verwaltete Schlüssel mit Azure Video Analyzer
 
@@ -20,7 +20,7 @@ ms.locfileid: "114603846"
 
 Für alle Video Analyzer-Konten wird ein Kontoschlüssel erstellt. Standardmäßig wird dieser Kontoschlüssel mit einem Systemschlüssel verschlüsselt, der sich im Besitz von Video Analyzer befindet (d. h. ein vom System verwalteter Schlüssel). Stattdessen können Sie ihren eigenen Schlüssel mit Azure Video Analyzer verwenden. In diesem Fall wird Ihr Kontoschlüssel mit Ihrem Schlüssel verschlüsselt. Zugriffsrichtlinien und Metadaten von Videoressourcen werden mithilfe des Kontoschlüssels verschlüsselt.
 
-Video Analyzer verwendet eine vom Benutzer zugewiesene verwaltete Identität, um Ihren Schlüssel aus einem Schlüsseltresor zu lesen, dessen Besitzer Sie sind. Sie müssen die vom Benutzer zugewiesene verwaltete Identität beim Erstellen oder Aktualisieren des Video Analyzer-Kontos bereitstellen und die entsprechende [rollenbasierte Zugriffssteuerung in Azure]../../role-based-access-control/overview.md) für den Schlüsseltresor zuweisen. Für Video Analyzer ist es erforderlich, dass sich der Schlüsseltresor im gleichen Bereich wie das Konto befindet und dass vorläufiges Löschen und Schutz vor Bereinigung aktiviert sind.
+Video Analyzer verwendet eine vom Benutzer zugewiesene verwaltete Identität, um Ihren Schlüssel aus einem Schlüsseltresor zu lesen, dessen Besitzer Sie sind. Sie müssen die vom Benutzer zugewiesene verwaltete Identität beim Erstellen oder Aktualisieren des Video Analyzer-Kontos bereitstellen und die entsprechende [rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/overview.md) dem Schlüsseltresor zuweisen. Für Video Analyzer ist es erforderlich, dass sich der Schlüsseltresor im gleichen Bereich wie das Konto befindet und dass vorläufiges Löschen und Schutz vor Bereinigung aktiviert sind.
 
 Bei Ihrem Schlüssel kann es sich um einen 2048-, 3072- oder 4096-RSA-Schlüssel handeln, und sowohl HSM- als auch Softwareschlüssel werden unterstützt.
 

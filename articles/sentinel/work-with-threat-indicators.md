@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 0ce6c7ced310fa467adbdc707d25bb5efc0f02bc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 05aa211d5a96b712862fbb8c81e10ba313ef3b74
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763308"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278788"
 ---
 # <a name="work-with-threat-indicators-in-azure-sentinel"></a>Arbeiten mit Bedrohungsindikatoren in Azure Sentinel
 
@@ -33,10 +33,6 @@ Sie können Threat Intelligence (TI) mithilfe der folgenden Aktivitäten in Azur
 - **Erkennen Sie Bedrohungen**, und generieren Sie Sicherheitswarnungen und Incidents mit den integrierten **Analytics**-Regelvorlagen, die auf Ihren importierten Threat Intelligence-Daten basieren.
 
 - **Visualisieren Sie wichtige Informationen** zu Ihren Threat Intelligence-Daten in Azure Sentinel mithilfe der **Threat Intelligence-Arbeitsmappe**.
-
-> [!IMPORTANT]
-> Entsprechend gekennzeichnete Features sind derzeit als VORSCHAUVERSION verfügbar. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
->
 
 ## <a name="view-your-threat-indicators-in-azure-sentinel"></a>Anzeigen von Bedrohungsindikatoren in Azure Sentinel
 
@@ -139,6 +135,10 @@ Gemäß den Standardeinstellungen wird jedes Mal, wenn die Regel nach dem Zeitpl
 In Azure Sentinel generieren Warnungen, die nach Analyseregeln generiert wurden, auch Sicherheitsincidents, die Sie in **Incidents** unter **Bedrohungsmanagement** im Azure Sentinel-Menü finden. Teams für Sicherheitsvorgänge können die Incidents selektieren und untersuchen, um angemessene Reaktionen zu ermitteln. Ausführliche Informationen hierzu finden Sie in diesem [Tutorial: Untersuchen von Incidents mit Azure Sentinel](./investigate-cases.md).
 
 ## <a name="detect-threats-using-matching-analytics-public-preview"></a>Erkennen von Bedrohungen mithilfe von Abgleichsanalysen (Public Preview)
+
+> [!IMPORTANT]
+> Die Abgleichsanalyse befindet sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+>
 
 [Erstellen Sie eine Regel](detect-threats-built-in.md#use-built-in-analytics-rules) mithilfe der integrierten Analyseregelvorlage für die **Microsoft Threat Intelligence-Abgleichsanalyse**, damit Azure Sentinel von Microsoft generierte Threat Intelligence-Daten mit den Protokollen abgleicht, die Sie in Azure Sentinel erfasst haben.
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 11/06/2020
-ms.openlocfilehash: 5ad3560cccb0cd87191f103d435776ce401beb90
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 04bd20e233bac44194c66e772db19f022458383d
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340048"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615522"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>Migrationsübersicht: SQL Server zu Azure SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -186,7 +186,6 @@ Weitere Unterstützung finden Sie in den folgenden Ressourcen, die für reale Mi
 |[Massenerstellung von Datenbanken mit PowerShell](https://www.microsoft.com/download/details.aspx?id=103107)|Diese Ressource enthält drei PowerShell-Skripts, mit denen eine Ressourcengruppe (create_rg.ps1), der [logische Server in Azure](../../database/logical-servers.md) (create_sqlserver.ps1) und eine SQL-Datenbank (create_sqldb.ps1) erstellt werden können. Die Skripts enthalten Schleifenfunktionen, sodass Sie Iterationen durchführen und beliebig viele Server und Datenbanken erstellen können.|
 |[Massenbereitstellung von Schemas mit MSSQL-Scripter und PowerShell](https://www.microsoft.com/download/details.aspx?id=103032)|Mit dieser Ressource wird eine Ressourcengruppe sowie mindestens ein [logischer Server in Azure](../../database/logical-servers.md) zum Hosten der Azure SQL-Datenbank-Instanz erstellt. Außerdem exportiert sie jedes Schema aus einer lokalen SQL Server-Instanz (oder mehreren SQL Server-Instanzen (2005 und höher)) und importiert diese in Azure SQL-Datenbank.|
 |[Konvertieren von SQL Server-Agent-Aufträgen in Aufträge für elastische Datenbanken](https://www.microsoft.com/download/details.aspx?id=103123)|Dieses Skript migriert die SQL Server-Agent-Aufträge Ihrer Quelldatenbank zu Aufträgen für elastische Datenbanken.|
-|[Senden von E-Mails aus Azure SQL-Datenbank](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/AF%20SendMail)|Dies ist eine alternative Lösung zur Funktion „SendMail“, die in der lokalen Version von SQL Server verfügbar ist. Diese Lösung sendet E-Mails mithilfe von Azure-Funktionen und dem SendGrid-Dienst aus Azure SQL-Datenbank.|
 |[Hilfsprogramm zum Verschieben lokaler SQL Server-Anmeldungen zu Azure SQL-Datenbank](https://www.microsoft.com/download/details.aspx?id=103111)|Hierbei handelt es sich um ein PowerShell-Skript, das ein T-SQL-Befehlsskript erstellt, um Anmeldungen und ausgewählte Datenbankbenutzer aus der lokalen SQL Server-Instanz in Azure SQL-Datenbank neu zu erstellen. Das Tool ermöglicht die automatische Zuordnung von Windows Server Active Directory-Konten zu Azure AD-Konten, zusammen mit der optionalen Migration nativer SQL Server-Logins.|
 |[Automatisierung der PerfMon-Datensammlung mithilfe von Logman](https://www.microsoft.com/download/details.aspx?id=103114)|Sie können das Logman-Tool verwenden, um PerfMon-Daten zu erfassen (damit Sie die grundlegende Leistung besser verstehen können) und Empfehlungen für die Migration der virtuellen Maschine zu erhalten. Das Tool verwendet die ausführbare Datei „logman.exe“, um den Befehl zu erstellen, der die Leistungsindikatoren für eine SQL Server-Remoteinstanz erstellt, startet, beendet und löscht.|
 

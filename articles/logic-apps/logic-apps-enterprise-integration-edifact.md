@@ -1,261 +1,316 @@
 ---
-title: EDIFACT-Nachrichten für die B2B-Integration
-description: Austauschen von EDIFACT-Nachrichten im EDI-Format für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
+title: Austauschen von EDIFACT-Nachrichten in B2B-Workflows
+description: Tauschen Sie EDIFACT-Nachrichten zwischen Partnern aus, indem Sie Workflows mithilfe von Azure Logic Apps und dem Enterprise Integration Pack erstellen.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
-ms.topic: article
-ms.date: 04/22/2020
-ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 09/29/2021
+ms.openlocfilehash: 19fea6a0405d1fcc4cfbc9b1aa7647c52b4459b6
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006522"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401556"
 ---
-# <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von EDIFACT-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
+# <a name="exchange-edifact-messages-using-workflows-in-azure-logic-apps"></a>Austauschen von EDIFACT-Nachrichten mithilfe von Workflows in Azure Logic Apps
 
-Bevor Sie EDIFACT-Nachrichten für Azure Logic Apps austauschen können, müssen Sie eine EDIFACT-Vereinbarung erstellen und in Ihrem Integrationskonto speichern. Hier erfahren Sie, wie Sie eine EDIFACT-Vereinbarung erstellen.
+Wenn Sie EDIFACT-Nachrichten in Workflows, die Sie mit Azure Logic Apps erstellen, senden und empfangen möchten, können Sie den **EDIFACT**-Connector verwenden. Dieser stellt Trigger und Aktionen bereit, die die EDIFACT-Kommunikation unterstützen und verwalten.
 
-> [!NOTE]
-> Auf dieser Seite werden die EDIFACT-Features für Azure Logic Apps beschrieben. Weitere Informationen finden Sie unter [X12](logic-apps-enterprise-integration-x12.md).
+In diesem Artikel wird gezeigt, wie Sie einem bestehenden Logik-App-Workflow die EDIFACT-Aktionen für die Codierung und Decodierung hinzufügen. Sie können zwar einen beliebigen Trigger verwenden, um Ihren Workflow zu starten, in den Beispielen wird jedoch der [Anforderungstrigger](../connectors/connectors-native-reqres.md) verwendet. Weitere Informationen zu den Triggern, Aktionen und Grenzwerten des **EDIFACT**-Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/edifact/) gemäß der Dokumentation in der Swagger-Datei des Connectors.
 
-## <a name="before-you-start"></a>Vorbereitung
+![Screenshot: Übersicht über den Vorgang "EDIFACT-Nachricht decodieren" mit den Eigenschaften der Nachrichtendecodierung](./media/logic-apps-enterprise-integration-edifact/overview-edifact-message-consumption.png)
 
-Sie benötigen Folgendes:
+## <a name="edifact-encoding-and-decoding"></a>EDIFACT-Codierung und -Decodierung
 
-* Ein bereits definiertes und mit Ihrem Azure-Abonnement verknüpftes [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md)  
-* Mindestens zwei [Partner](logic-apps-enterprise-integration-partners.md), die bereits in Ihrem Integrationskonto definiert sind.
+In den folgenden Abschnitten werden die Aufgaben beschrieben, die Sie mithilfe der EDIFACT-Aktionen für die Codierung und Decodierung ausführen können.
 
-> [!NOTE]
-> Beim Erstellen einer Vereinbarung muss der Inhalt in den Nachrichten, die Sie an den Partner senden oder vom Partner empfangen, zum Vereinbarungstyp passen.
+### <a name="encode-to-edifact-message-action"></a>Aktion „In EDIFACT-Nachricht codieren“
 
-Nachdem Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) und [Partner hinzugefügt](logic-apps-enterprise-integration-partners.md) haben, können Sie eine EDIFACT-Vereinbarung erstellen. Gehen Sie dazu wie folgt vor:
+* Lösen Sie die Vereinbarung durch Abgleich von Senderqualifizierer und -bezeichner sowie von Empfängerqualifizierer und -bezeichner auf.
 
-## <a name="create-an-edifact-agreement"></a>Erstellen einer EDIFACT-Vereinbarung 
+* Serialisieren Sie den elektronischen Datenaustausch (Electronic Data Interchange, EDI), der XML-codierte Nachrichten im Austausch in EDI-Transaktionssätze konvertiert.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com "Azure-Portal") an. 
+* Wenden Sie Header- und Nachspannsegmente für den Transaktionssatz an.
 
-2. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.
+* Generieren Sie eine Austauschkontrollnummer, eine Gruppenkontrollnummer und eine Transaktionssatz-Kontrollnummer für jeden ausgehenden Austausch.
 
-   ![Suchen Ihres Integrationskontos](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
+* Ersetzen Sie Trennzeichen in den Nutzlastdaten.
 
-   > [!TIP]
-   > Falls **Alle Dienste** nicht angezeigt wird, müssen Sie das Menü möglicherweise zunächst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Beschriftungen anzeigen** aus.
+* Überprüfen Sie EDI- und partnerspezifische Eigenschaften, z. B. das Schema für Transaktionssatz-Datenelemente anhand des Nachrichtenschemas, Transaktionssatz-Datenelemente und die erweiterte Überprüfung für Transaktionssatz-Datenelemente.
 
-3. Wählen Sie unter **Integrationskonten** das Integrationskonto aus, in dem Sie die Vereinbarung erstellen möchten.
+* Generieren Sie ein XML-Dokument für jeden Transaktionssatz.
 
-   ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
+* Fordern Sie eine technische Bestätigung, Funktionsbestätigung oder beides an, sofern konfiguriert.
 
-4. Klicken Sie auf **Vereinbarungen**. Sollte die Kachel „Vereinbarungen“ nicht angezeigt werden, fügen Sie sie hinzu.   
+  * Als technische Bestätigung kennzeichnet die CONTRL-Nachricht den Empfang für einen Austauschvorgang.
 
-   ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
+  * Als Funktionsbestätigung kennzeichnet die CONTRL-Nachricht die Annahme oder Ablehnung für den empfangenen Austausch, die Gruppe oder Nachricht, einschließlich einer Liste von Fehlern oder nicht unterstützten Funktionen.
 
-5. Klicken Sie auf der Seite „Vereinbarungen“ auf **Hinzufügen**.
+### <a name="decode-edifact-message-action"></a>Aktion „EDIFACT-Nachricht decodieren“
 
-   ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
+* Überprüfen Sie den Umschlag anhand der Handelspartnervereinbarung.
 
-6. Geben Sie unter **Hinzufügen** im Feld **Name** einen Namen für Ihre Vereinbarung ein. Wählen Sie unter **Vertragstyp** die Option **EDIFACT** aus. Wählen Sie den **Hostpartner**, die **Hostidentität**, den **Gastpartner** und die **Gastidentität** für Ihre Vereinbarung aus.
+* Lösen Sie die Vereinbarung durch Abgleich von Senderqualifizierer und -bezeichner sowie von Empfängerqualifizierer und -bezeichner auf.
 
-   ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
+* Teilen Sie einen Austausch in mehrere Transaktionssätze auf, wenn der Austausch entsprechend der **Empfangseinstellungen** der Vereinbarung mehr als eine Transaktion aufweist.
 
-   | Eigenschaft | BESCHREIBUNG |
-   | --- | --- |
-   | Name |Name der Vereinbarung |
-   | Vereinbarungstyp | Muss EDIFACT lauten. |
-   | Hostpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Hostpartner stellt die Organisation dar, die die Vereinbarung konfiguriert. |
-   | Hostidentität |Ein Bezeichner für den Hostpartner. |
-   | Gastpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Gastpartner stellt die Organisation dar, die Geschäfte mit dem Hostpartner tätigt. |
-   | Gastidentität |Ein Bezeichner für den Gastpartner. |
-   | Empfangseinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung empfangen werden. |
-   | Sendeeinstellungen |Diese Eigenschaften gelten für alle Nachrichten, die von einer Vereinbarung gesendet werden. |
-   ||| 
+* Disassemblieren des Austauschs
 
-## <a name="configure-how-your-agreement-handles-received-messages"></a>Konfigurieren der Behandlung empfangener Nachrichten durch die Vereinbarung
+* Überprüfen Sie EDI- (Electronic Data Interchange) und partnerspezifische Eigenschaften, z. B. die Struktur des Austauschumschlags, das Umschlagschema anhand des Kontrollschemas, das Schema für Transaktionssatz-Datenelemente anhand des Nachrichtenschemas und die erweiterte Überprüfung für Transaktionssatz-Datenelemente.
 
-Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigurieren, wie die Vereinbarung eingehende Nachrichten identifizieren und behandeln soll, die im Rahmen dieser Vereinbarung von Ihrem Partner gesendet werden.
+* Stellen Sie sicher, dass die Austausch-, Gruppen- und Transaktionssatz-Kontrollnummern keine Duplikate sind, falls konfiguriert, beispielsweise:
 
-> [!IMPORTANT]
-> Der EDIFACT-Connector unterstützt nur UTF-8-Zeichen.
-> Wenn Ihre Ausgabe unerwartete Zeichen enthält, überprüfen Sie, ob Ihre EDIFACT-Nachrichten den UTF-8-Zeichensatz verwenden.
+  * Gleicht die Austauschkontrollnummer mit zuvor empfangenen Austauschvorgängen ab.
 
-1. Wählen Sie unter **Hinzufügen** die Option **Empfangseinstellungen** aus.
-Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in den Tabellen in diesem Abschnitt beschrieben.
+  * Überprüfen Sie die Gruppenkontrollnummer anhand anderer Gruppenkontrollnummern im Austausch.
 
-   **Empfangseinstellungen** ist in die folgenden Abschnitte unterteilt: „Bezeichner“, „Bestätigung“, „Schemas“, „Kontrollnummern“, „Überprüfung“ und „Interne Einstellungen“.
+  * Überprüfen Sie die Transaktionssatz-Kontrollnummer anhand anderer Transaktionssatz-Kontrollnummern in dieser Gruppe.
 
-   ![Empfangseinstellungen konfigurieren](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
+* Trennen Sie den Austausch in Transaktionssätze, oder behalten Sie den gesamten Austausch bei, z. B.:
 
-2. Klicken Sie abschließend auf **OK**, um die Einstellungen zu speichern.
+  * Trennen des Austauschs in Transaktionssätze – Transaktionssätze bei Fehler anhalten
 
-Ihre Vereinbarung kann nun eingehende Nachrichten verarbeiten, die den ausgewählten Einstellungen entsprechen.
+    Die Decodierungsaktion trennt den Austausch in Transaktionssätze und analysiert die einzelnen Transaktionssätze. Die Aktion gibt nur die Transaktionssätze, die die Überprüfung nicht bestehen, in `badMessages` und die restlichen Transaktionssätze in `goodMessages` aus.
 
-### <a name="identifiers"></a>Bezeichner
+  * Trennen des Austauschs in Transaktionssätze – Austausch bei Fehler anhalten
 
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| UNB6.1 (Empfängerverweiskennwort) |Geben Sie einen alphanumerischen Wert mit 1 bis 14 Zeichen ein. |
-| UNB6.2 (Empfängerverweisqualifizierer) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal zwei Zeichen ein. |
+    Die Decodierungsaktion trennt den Austausch in Transaktionssätze und analysiert die einzelnen Transaktionssätze. Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, gibt die Aktion alle Transaktionssätze in diesem Austausch in `badMessages` aus.
 
-### <a name="acknowledgments"></a>Danksagungen
+  * Austausch beibehalten – Transaktionssätze bei Fehler anhalten
 
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Nachrichtenquittung (CONTRL) |Wählen Sie dieses Kontrollkästchen, um eine technische Bestätigung (CONTRL) an den Austauschabsender zurückzugeben. Die Bestätigung wird anhand der Sendeeinstellungen für die Vereinbarung an den Austauschabsender gesendet. |
-| Bestätigung (CONTRL) |Aktivieren Sie dieses Kontrollkästchen, um eine funktionale Bestätigung (CONTRL) an den Austauschabsender zurückzugeben. Die Bestätigung wird anhand der Sendeeinstellungen für die Vereinbarung an den Austauschabsender gesendet. |
+    Die Decodierungsaktion behält den Austausch bei und verarbeitet den gesamten Batchaustausch. Die Aktion gibt nur die Transaktionssätze, die die Überprüfung nicht bestehen, in `badMessages` und die restlichen Transaktionssätze in `goodMessages` aus.
 
-### <a name="schemas"></a>Schemas
+  * Austausch beibehalten – Austausch bei Fehler anhalten
 
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| UNH2.1 (TYP) |Wählen Sie einen Transaktionssatztyp aus. |
-| UNH2.2 (VERSION) |Geben Sie die Nachrichtenversionsnummer ein. (Mindestens ein Zeichen, maximal drei Zeichen.) |
-| UNH2.3 (FREIGABE) |Geben Sie die Nachrichtenfreigabenummer ein. (Mindestens ein Zeichen, maximal drei Zeichen.) |
-| UNH2.5 (ZUGEWIESENER CODE FÜR ZUORDNUNG) |Geben Sie den zugewiesenen Code ein. (Maximal sechs Zeichen. Muss alphanumerisch sein.) |
-| UNG2.1 (ID FÜR APP-SENDER) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 35 Zeichen ein. |
-| UNG2.2 (CODEQUALIFIZIERER FÜR APP-SENDER) |Geben Sie einen alphanumerischen Wert mit maximal vier Zeichen ein. |
-| SCHEMA |Wählen Sie im zugeordneten Integrationskonto das gewünschte Schema aus, das Sie zuvor hochgeladen haben. |
-
-### <a name="control-numbers"></a>Kontrollnummern
+    Die Decodierungsaktion behält den Austausch bei und verarbeitet den gesamten Batchaustausch. Wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht, gibt die Aktion alle Transaktionssätze in diesem Austausch in `badMessages` aus.
 
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Doppelte Austauschkontrollnummern nicht zulassen |Wählen Sie diese Eigenschaft aus, um doppelte Austauschvorgänge zu blockieren. Bei Aktivierung wird mit der EDIFACT-Decodierungsaktion sichergestellt, dass die Austauschkontrollnummer (UNB5) für den empfangenen Austausch nicht mit einer zuvor verarbeiteten Austauschkontrollnummer übereinstimmt. Wenn eine Übereinstimmung erkannt wird, wird der Austausch nicht verarbeitet. |
-| Innerhalb der folgenden Anzahl von Tagen auf UNB5-Duplikate prüfen |Wenn Sie sich gegen das Zulassen von doppelten Austauschkontrollnummern entschieden haben, können Sie die Anzahl von Tagen angeben, nach denen die Überprüfung durchgeführt werden soll. Geben Sie hierzu einen geeigneten Wert für diese Einstellung an. |
-| Doppelte Gruppenkontrollnummern nicht zulassen |Wählen Sie diese Eigenschaft aus, um Austauschvorgänge mit doppelten Gruppenkontrollnummern (UNG5) zu blockieren. |
-| Doppelte Transaktionssatz-Kontrollnummern nicht zulassen |Wählen Sie diese Eigenschaft aus, um Austauschvorgänge mit doppelten Transaktionssatz-Kontrollnummern (UNH1) zu blockieren. |
-| EDIFACT-Bestätigungskontrollnummer |Geben Sie einen Wert für das Präfix, einen Bereich von Verweisnummern und ein Suffix ein, um die Transaktionssatz-Verweisnummern für die Verwendung in einer Bestätigung anzugeben. |
+* Generieren Sie eine technische Bestätigung, Funktionsbestätigung oder beides, sofern konfiguriert.
 
-### <a name="validation"></a>Überprüfen
+  * Eine technische Bestätigung oder die CONTRL-Bestätigung, die die Ergebnisse einer Syntaxüberprüfung des vollständig empfangenen Austauschs meldet.
 
-Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine weitere hinzugefügt. Wenn Sie keine Regeln angeben, verwendet die Überprüfung die Standardzeile.
-
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Nachrichtentyp |Wählen Sie den EDI-Nachrichtentyp aus. |
-| EDI-Überprüfung |Die EDI-Überprüfung erfolgt für Datentypen gemäß den EDI-Eigenschaften des Schemas, Längenbeschränkungen, leeren Datenelementen und nachfolgenden Trennzeichen. |
-| Erweiterte Überprüfung |Wenn der Datentyp nicht EDI ist, werden die Datenelementanforderung sowie zulässige Wiederholung, Enumerationen und Datenelementlänge (Min./Max.) überprüft. |
-| Führende/nachfolgende Nullen zulassen |Behält alle zusätzlichen führenden oder nachfolgenden Nullen und Leerzeichen bei. Diese Zeichen werden nicht entfernt. |
-| Führende/nachgestellte Nullen abschneiden |Entfernt führende oder nachfolgende Nullen und Leerzeichen. |
-| Richtlinie für nachgestellte Trennzeichen |Generiert nachfolgende Trennzeichen. <p>Wählen Sie **Nicht zulässig** aus, wenn der empfangene Austauschvorgang keine nachfolgenden Trennzeichen enthalten darf. Wenn der Austauschvorgang nachfolgende Trennzeichen enthält, wird er als ungültig deklariert. <p>Wählen Sie **Optional** , um Austauschvorgänge mit oder ohne nachgestellte Trennzeichen zu akzeptieren. <p>Wählen Sie **Erforderlich** aus, wenn der empfangene Austauschvorgang nachfolgende Trennzeichen enthalten muss. |
-
-### <a name="internal-settings"></a>Interne Einstellungen
-
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Leere XML-Tags erstellen, wenn nachfolgende Trennzeichen zulässig sind |Aktivieren Sie dieses Kontrollkästchen, damit der Austauschabsender leere XML-Tags für nachfolgende Trennzeichen einbezieht. |
-| Austausch in Transaktionssätze trennen – Transaktionssätze bei Fehler anhalten|Analysiert jeden Transaktionssatz in einem Austausch in ein separates XML-Dokument, indem der geeignete Umschlag auf den Transaktionssatz angewendet wird. Hält nur die Transaktionssätze an, die die Überprüfung nicht bestehen. |
-| Austausch in Transaktionssätze trennen – Austausch bei Fehler anhalten|Analysiert jeden Transaktionssatz in einem Austausch in ein separates XML-Dokument, indem der geeignete Umschlag angewendet wird. Hält den gesamten Austausch an, wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht. | 
-| Austausch beibehalten – Transaktionssätze bei Fehler anhalten |Behält den Austausch bei und erstellt ein XML-Dokument für den gesamten Batchaustausch. Hält nur die Transaktionssätze an, die die Überprüfung nicht bestehen. Alle anderen Transaktionssätze werden verarbeitet. |
-| Austausch beibehalten – Austausch bei Fehler anhalten |Behält den Austausch bei und erstellt ein XML-Dokument für den gesamten Batchaustausch. Hält den gesamten Austausch an, wenn mindestens ein Transaktionssatz im Austausch die Überprüfung nicht besteht. |
-
-## <a name="configure-how-your-agreement-sends-messages"></a>Konfigurieren des Nachrichtenversands Ihrer Vereinbarung
-
-Sie können konfigurieren, wie Ihre Vereinbarung ausgehende Nachrichten identifizieren und behandeln soll, die Sie im Rahmen dieser Vereinbarung an Ihre Partner senden.
-
-1.  Wählen Sie unter **Hinzufügen** die Option **Sendeeinstellungen** aus.
-Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in den Tabellen in diesem Abschnitt beschrieben.
-
-    **Sendeeinstellungen** sind in die folgenden Abschnitte unterteilt: „Bezeichner“, „Bestätigung“, „Schemas“, „Umschläge“, „Zeichensätze und Trennzeichen“, „Kontrollnummern“ und „Überprüfungen“.
-
-    ![Sendeeinstellungen konfigurieren](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
-
-2. Klicken Sie abschließend auf **OK**, um die Einstellungen zu speichern.
-
-Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewählten Einstellungen entsprechen.
-
-### <a name="identifiers"></a>Bezeichner
-
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| UNB1.2 (Syntaxversion) |Wählen Sie einen Wert zwischen **1** und **4** aus. |
-| UNB2.3 (Adresse für Rückmeldung des Absenders) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 14 Zeichen ein. |
-| UNB3.3 (Adresse für Rückmeldung des Empfängers) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 14 Zeichen ein. |
-| UNB6.1 (Empfängerverweiskennwort) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 14 Zeichen ein. |
-| UNB6.2 (Empfängerverweisqualifizierer) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal zwei Zeichen ein. |
-| UNB7 (Anwendungsverweis-ID) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 14 Zeichen ein. |
-
-### <a name="acknowledgment"></a>Bestätigung
-
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Nachrichtenquittung (CONTRL) |Aktivieren Sie dieses Kontrollkästchen, wenn der gehostete Partner den Empfang einer technischen Bestätigung (CONTRL) erwartet. Diese Einstellung gibt an, dass der gehostete Partner, der die Nachricht sendet, eine Bestätigung vom Gastpartner anfordert. |
-| Bestätigung (CONTRL) |Aktivieren Sie dieses Kontrollkästchen, wenn der gehostete Partner den Empfang einer funktionalen Bestätigung (CONTRL) erwartet. Diese Einstellung gibt an, dass der gehostete Partner, der die Nachricht sendet, eine Bestätigung vom Gastpartner anfordert. |
-| SG1/SG4-Schleife für akzeptierte Transaktionssätze generieren |Wenn Sie sich für die Anforderung einer funktionalen Bestätigung entschieden haben, können Sie dieses Kontrollkästchen aktivieren, um die Generierung von SG1/SG4-Schleifen in funktionalen CONTRL-Bestätigungen für akzeptierte Transaktionssätze zu erzwingen. |
-
-### <a name="schemas"></a>Schemas
-
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| UNH2.1 (TYP) |Wählen Sie einen Transaktionssatztyp aus. |
-| UNH2.2 (VERSION) |Geben Sie die Nachrichtenversionsnummer ein. |
-| UNH2.3 (FREIGABE) |Geben Sie die Nachrichtenfreigabenummer ein. |
-| SCHEMA |Wählen Sie das zu verwendende Schema aus. Schemas befinden sich in Ihrem Integrationskonto. Um auf Ihre Schemas zuzugreifen, verknüpfen Sie zuerst Ihr Integrationskonto mit Ihrer Logik-App. |
-
-### <a name="envelopes"></a>Umschläge
-
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| UNB8 (Verarbeitungsprioritätscode) |Geben Sie einen alphabetischen Wert mit einer Länge von maximal einem Zeichen ein. |
-| UNB10 (Kommunikationsvereinbarung ) |Geben Sie einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 40 Zeichen ein. |
-| UNB11 (Testindikator) |Aktivieren Sie dieses Kontrollkästchen, um anzugeben, dass es sich beim generierten Austausch um Testdaten handelt. |
-| UNA-Segment übernehmen (Zeichenfolgedienstanweisung) |Aktivieren Sie dieses Kontrollkästchen, um ein UNA-Segment für den zu sendenden Austausch zu generieren. |
-| UNG-Segmente übernehmen (Funktionsgruppenheader) |Aktivieren Sie dieses Kontrollkästchen, um Gruppierungssegmente im Funktionsgruppenheader in den Nachrichten zu erstellen, die an den Gastpartner gesendet werden. Die folgenden Werte werden verwendet, um die UNG-Segmente zu erstellen: <p>Geben Sie für **UNG1** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal sechs Zeichen ein. <p>Geben Sie für **UNG2.1** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 35 Zeichen ein. <p>Geben Sie für **UNG2.2** einen alphanumerischen Wert mit maximal vier Zeichen ein. <p>Geben Sie für **UNG3.1** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 35 Zeichen ein. <p>Geben Sie für **UNG3.2** einen alphanumerischen Wert mit maximal vier Zeichen ein. <p>Geben Sie für **UNG6** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal drei Zeichen ein. <p>Geben Sie für **UNG7.1** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal drei Zeichen ein. <p>Geben Sie für **UNG7.2** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal drei Zeichen ein. <p>Geben Sie für **UNG7.3** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal sechs Zeichen ein. <p>Geben Sie für **UNG8** einen alphanumerischen Wert mit einer Länge von mindestens einem und maximal 14 Zeichen ein. |
-
-### <a name="character-sets-and-separators"></a>Zeichensätze und Trennzeichen
-
-Anders als beim Zeichensatz können Sie für jeden Nachrichtentyp einen anderen Satz zu verwendender Trennzeichen eingeben. Wenn ein Zeichensatz nicht für ein bestimmtes Nachrichtenschema angegeben ist, wird der Standardzeichensatz verwendet.
-
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| UNB1.1 (Systembezeichner) |Wählen Sie den EDIFACT-Zeichensatz aus, der auf den ausgehenden Austauschvorgang angewendet werden soll. |
-| Schema |Wählen Sie in der Dropdownliste ein Schema aus. Nach Abschluss der einzelnen Zeilen wird jeweils automatisch eine neue Zeile hinzugefügt. Wählen Sie für das ausgewählte Schema den gewünschten Trennzeichensatz aus. Orientieren Sie sich dabei an den folgenden Trennzeichenbeschreibungen. |
-| Eingabetyp |Wählen Sie in der Dropdownliste einen Eingabetyp aus. |
-| Komponententrennzeichen |Geben Sie ein einzelnes Zeichen zum Trennen zusammengesetzter Datenelemente ein. |
-| Datenelementtrennzeichen |Geben Sie ein einzelnes Zeichen zum Trennen einfacher Datenelemente in zusammengesetzten Datenelementen ein. |
-| Segmentabschlusszeichen |Geben Sie ein einzelnes Zeichen ein, um das Ende eines EDI-Segments anzugeben. |
-| Suffix |Wählen Sie das Zeichen, das mit dem Segmentbezeichner verwendet wird. Wenn Sie ein Suffix angeben, kann das Segmentabschlusszeichen-Datenelement leer sein. Wenn das Segmentabschlusszeichen leer gelassen wird, müssen Sie ein Suffix angeben. |
-
-### <a name="control-numbers"></a>Kontrollnummern
-
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| UNB5 (Austauschkontrollnummer) |Geben Sie ein Präfix, einen Bereich mit Werten für die Austauschkontrollnummer und ein Suffix ein. Diese Werte werden verwendet, um einen ausgehenden Austausch zu generieren. Präfix und Suffix sind optional. Die Kontrollnummer ist erforderlich. Die Kontrollnummer wird für jede neue Nachricht um den Wert 1 erhöht. Das Präfix und das Suffix bleibt jeweils gleich. |
-| UNG5 (Gruppenkontrollnummer) |Geben Sie ein Präfix, einen Bereich mit Werten für die Austauschkontrollnummer und ein Suffix ein. Diese Werte werden verwendet, um die Gruppenkontrollnummer zu generieren. Präfix und Suffix sind optional. Die Kontrollnummer ist erforderlich. Die Kontrollnummer wird für jede neue Nachricht um den Wert 1 erhöht, bis der Maximalwert erreicht ist. Das Präfix und das Suffix bleiben gleich. |
-| UNH1 (Verweisnummer des Nachrichtenheaders) |Geben Sie ein Präfix, einen Bereich mit Werten für die Austauschkontrollnummer und ein Suffix ein. Diese Werte werden verwendet, um die Verweisnummer des Nachrichtenheaders zu generieren. Präfix und Suffix sind optional. Die Verweisnummer ist erforderlich. Die Verweisnummer wird für jede neue Nachricht um den Wert 1 erhöht. Das Präfix und das Suffix bleibt jeweils gleich. |
-
-### <a name="validation"></a>Überprüfen
-
-Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine weitere hinzugefügt. Wenn Sie keine Regeln angeben, verwendet die Überprüfung die Standardzeile.
-
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| Nachrichtentyp |Wählen Sie den EDI-Nachrichtentyp aus. |
-| EDI-Überprüfung |Die EDI-Überprüfung erfolgt für Datentypen gemäß den EDI-Eigenschaften des Schemas, Längenbeschränkungen, leeren Datenelementen und nachfolgenden Trennzeichen. |
-| Erweiterte Überprüfung |Wenn der Datentyp nicht EDI ist, werden die Datenelementanforderung sowie zulässige Wiederholung, Enumerationen und Datenelementlänge (Min./Max.) überprüft. |
-| Führende/nachfolgende Nullen zulassen |Behält alle zusätzlichen führenden oder nachfolgenden Nullen und Leerzeichen bei. Diese Zeichen werden nicht entfernt. |
-| Führende/nachgestellte Nullen abschneiden |Entfernt führende oder nachfolgende Nullen. |
-| Richtlinie für nachgestellte Trennzeichen |Generiert nachfolgende Trennzeichen. <p>Wählen Sie **Nicht zulässig** aus, wenn der gesendete Austauschvorgang keine nachfolgenden Trennzeichen enthalten darf. Wenn der Austauschvorgang nachfolgende Trennzeichen enthält, wird er als ungültig deklariert. <p>Wählen Sie **Optional** aus, um Austauschvorgänge mit und ohne nachgestellte Trennzeichen zu senden. <p>Wählen Sie **Erforderlich** aus, wenn der gesendete Austauschvorgang nachfolgende Trennzeichen enthalten muss. |
-
-## <a name="find-your-created-agreement"></a>Suchen der erstellten Vereinbarung
-
-1.  Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf der Seite **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zu Ihrem Integrationskonto zurückzukehren.
-
-    Die neu hinzugefügte Vereinbarung ist nun in der Liste **Vereinbarungen** enthalten.
-
-2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie im Menü Ihres Integrationskontos die Option **Übersicht** aus, und wählen Sie dann die Kachel **Vereinbarungen** aus. 
-
-    ![Screenshot: Kachel „Vereinbarungen“](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+  * Eine Funktionsbestätigung, die die Annahme oder Ablehnung für den empfangenen Austausch oder die empfangene Gruppe bestätigt.
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Weitere technische Details zu diesem Connector, z. B. Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/edifact/).
+Technische Informationen zum **EDIFACT**-Connector finden Sie auf der [Referenzseite des Connectors](/connectors/edifact/), auf der die Trigger, Aktionen und Grenzwerte wie in der Swagger-Datei des Connectors dokumentiert beschrieben werden. Lesen Sie auch die [B2B-Protokollgrenzwerte für Nachrichtengrößen](logic-apps-limits-and-config.md#b2b-protocol-limits) für Workflows, die in [mehrinstanzenfähigen Azure Logic Apps-Instanzen, einzelinstanzfähigen Azure Logic Apps-Instanzen oder der Integrationsdienstumgebung (Integration Service Environment, ISE)](logic-apps-overview.md#resource-environment-differences) ausgeführt werden. In einer [Integrationsdienstumgebung (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) zum Beispiel verwendet die ISE-Version dieses Connectors die [B2B-Nachrichtengrenzwerte für ISE](logic-apps-limits-and-config.md#b2b-protocol-limits).
 
-> [!NOTE]
-> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors die [B2B-Nachrichtengrenzwerte für ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ein Azure-Konto und ein Azure-Abonnement. Sollten Sie noch kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+* Eine [Integrationskontoressource](logic-apps-enterprise-integration-create-integration-account.md), in der Sie Artefakte wie Handelspartner, Vereinbarungen, Zertifikate usw. für die Verwendung in Ihrer Unternehmensintegration und in B2B-Workflows definieren und speichern. Diese Ressource muss die folgenden Anforderungen erfüllen:
+
+  * Sie muss demselben Azure-Abonnement zugeordnet sein wie Ihre Logik-App-Ressource.
+
+  * Sie muss sich am selben Standort oder in derselben Azure-Region wie Ihre Logik-App-Ressource befinden.
+
+  * Wenn Sie den [Ressourcentyp **Logik-App (Verbrauch)**](logic-apps-overview.md#resource-environment-differences) und die **EDIFACT**-Vorgänge verwenden, benötigt Ihre Logik-App-Ressource keine Verbindung mit Ihrem Integrationskonto. Sie benötigen dieses Konto jedoch weiterhin, um Artefakte wie Partner, Vereinbarungen und Zertifikate zu speichern und die EDIFACT-, [X12](logic-apps-enterprise-integration-x12.md)- oder [AS2](logic-apps-enterprise-integration-as2.md)-Vorgänge zu verwenden. Ihr Integrationskonto muss noch andere Anforderungen erfüllen, z.B. dass es dasselbe Azure-Abonnement verwendet und sich am selben Ort befindet wie Ihre Logic-App-Ressource.
+
+  * Wenn Sie den [Ressourcentyp **Logik-App (Standard)**](logic-apps-overview.md#resource-environment-differences) und die **EDIFACT**-Vorgänge verwenden, benötigt Ihr Workflow eine Verbindung mit Ihrem Integrationskonto. Diese erstellen Sie direkt aus Ihrem Workflow heraus, wenn Sie den AS2-Vorgang hinzufügen.
+
+* Mindestens zwei [Parteien](logic-apps-enterprise-integration-partners.md) (Handelspartner) in Ihrem Integrationskonto. Die Definitionen für beide Partner müssen denselben Qualifizierer für die *Geschäftsidentität* verwenden, der für dieses Szenario **ZZZ - Mutually Defined** lautet.
+
+* Eine [EDIFACT-Vereinbarung](logic-apps-enterprise-integration-agreements.md) in Ihrem Integrationskonto zwischen den Parteien, die an Ihrem Workflow teilnehmen. Jede Vereinbarung erfordert sowohl einen Host- als auch einen Gastpartner. Der Inhalt in den Nachrichten zwischen Ihnen und dem Partner muss mit dem Vereinbarungstyp übereinstimmen.
+
+  > [!IMPORTANT]
+  > Der EDIFACT-Connector unterstützt nur UTF-8-Zeichen. Wenn Ihre Ausgabe unerwartete Zeichen enthält, überprüfen Sie, ob Ihre EDIFACT-Nachrichten den UTF-8-Zeichensatz verwenden.
+
+* Die Logik-App-Ressource und der Workflow, in der bzw. dem Sie die EDIFACT-Vorgänge verwenden möchten.
+
+  Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](quickstart-create-first-logic-app-workflow.md).
+
+<a name="encode"></a>
+
+## <a name="encode-edifact-messages"></a>Codierung von EDIFACT-Nachrichten
+
+### <a name="consumption"></a>[Verbrauch](#tab/consumption)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre Logik-App-Ressource und den Workflow im Designer.
+
+1. Wählen Sie im Designer unter dem Trigger oder der Aktion, dem bzw. der Sie die EDIFACT-Aktion hinzufügen möchten, die Option **Neuer Schritt** aus.
+
+1. Wählen Sie unter dem Suchfeld **Vorgang auswählen** die Option **Alle** aus. Geben Sie im Suchfeld `edifact encode`ein. Wählen Sie für dieses Beispiel die Aktion **In EDIFACT-Nachricht nach Vereinbarungsname codieren** aus.
+
+   ![Screenshot, der das Azure-Portal, den Workflow-Designer und die ausgewählte Aktion „In EDIFACT-Nachricht nach Vereinbarungsname codieren“ zeigt.](./media/logic-apps-enterprise-integration-edifact/select-encode-edifact-message-consumption.png)
+
+   > [!NOTE]
+   > Sie können stattdessen die Aktion **In EDIFACT-Nachricht nach Identitäten codieren** auswählen, Sie müssen jedoch später andere Werte angeben, z. B. **Senderbezeichner** und **Empfängerbezeichner**, der in Ihrer EDIFACT-Vereinbarung angegeben ist. Sie müssen auch die **zu codierende XML-Nachricht** angeben, bei der es sich um die Ausgabe des Triggers oder einer vorherigen Aktion handeln kann.
+
+1. Wenn Sie aufgefordert werden, eine Verbindung mit Ihrem Integrationskonto herzustellen, geben Sie die folgenden Informationen an:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Verbindungsname** | Ja | Ein Name für die Verbindung |
+   | **Integrationskonto** | Ja | Wählen Sie in der Liste der verfügbaren Integrationskonten das Konto aus, das Sie nutzen möchten. |
+   ||||
+
+   Beispiel:
+
+   ![Screenshot des Verbindungsbereichs „In EDIFACT-Nachricht nach Vereinbarungsname codieren“](./media/logic-apps-enterprise-integration-edifact/create-edifact-encode-connection-consumption.png)
+
+1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
+
+1. Wenn der EDIFACT-Vorgang im Designer angezeigt wird, geben Sie Informationen für die folgenden Eigenschaften an, die für diesen Vorgang spezifisch sind:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Name der EDIFACT-Vereinbarung** | Ja | Die zu verwendende EDIFACT-Vereinbarung. |
+   | **Zu codierende XML-Nachricht** | Ja | Der Geschäftsbezeichner für den Absender der Nachricht, wie in Ihrer EDIFACT-Vereinbarung angegeben |
+   | Weitere Parameter | Nein | Dieser Vorgang umfasst die folgenden weiteren Parameter: <p>- **Datenelementtrennzeichen** <br>- **Freigabeindikator** <br>- **Komponententrennzeichen** <br>- **Wiederholungstrennzeichen** <br>- **Segmentabschlusszeichen** <br>- **Segmentabschlusszeichensuffix** <br>- **Dezimalindikator** <p>Weitere Informationen finden Sie unter [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact-message-settings.md). |
+   ||||
+
+   Die XML-Nachrichtennutzdaten können beispielsweise der **Textteil** der Inhaltsausgabe vom Anforderungstrigger sein:
+
+   ![Screenshot des Vorgangs „In EDIFACT-Nachricht nach Vereinbarungsname codieren“ mit den Nachrichtencodierungseigenschaften](./media/logic-apps-enterprise-integration-edifact/encode-edifact-message-agreement-consumption.png)
+
+### <a name="standard"></a>[Standard](#tab/standard)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre Logik-App-Ressource und den Workflow im Designer.
+
+1. Wählen Sie im Designer unter dem Trigger oder der Aktion, dem bzw. der Sie die EDIFACT-Aktion hinzufügen möchten, die Option **Neuen Schritt einfügen** (das Pluszeichen) und dann **Aktion hinzufügen** aus.
+
+1. Wählen Sie unter dem Suchfeld **Vorgang auswählen** die Option **Azure** aus. Geben Sie im Suchfeld `edifact encode`ein. Wählen Sie die Aktion **In EDIFACT-Nachricht nach Vereinbarungsname codieren** aus.
+
+   ![Screenshot, der das Azure-Portal, den Workflow-Designer und den ausgewählten Vorgang „In EDIFACT-Nachricht nach Vereinbarungsname codieren“ zeigt.](./media/logic-apps-enterprise-integration-edifact/select-encode-edifact-message-standard.png)
+
+   > [!NOTE]
+   > Sie können stattdessen die Aktion **In EDIFACT-Nachricht nach Identitäten codieren** auswählen, Sie müssen jedoch später andere Werte angeben, z. B. **Senderbezeichner** und **Empfängerbezeichner**, der in Ihrer EDIFACT-Vereinbarung angegeben ist. Sie müssen auch die **zu codierende XML-Nachricht** angeben, bei der es sich um die Ausgabe des Triggers oder einer vorherigen Aktion handeln kann.
+
+1. Wenn Sie aufgefordert werden, eine Verbindung mit Ihrem Integrationskonto herzustellen, geben Sie die folgenden Informationen an:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Verbindungsname** | Ja | Ein Name für die Verbindung |
+   | **Integrationskonto** | Ja | Wählen Sie in der Liste der verfügbaren Integrationskonten das Konto aus, das Sie nutzen möchten. |
+   ||||
+
+   Beispiel:
+
+   ![Screenshot des Verbindungsbereichs „In EDIFACT-Nachricht nach Parametername codieren“](./media/logic-apps-enterprise-integration-edifact/create-edifact-encode-connection-standard.png)
+
+1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
+
+1. Wenn der EDIFACT-Detailbereich im Designer angezeigt wird, geben Sie Informationen für die folgenden Eigenschaften an:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Name der EDIFACT-Vereinbarung** | Ja | Die zu verwendende EDIFACT-Vereinbarung. |
+   | **Zu codierende XML-Nachricht** | Ja | Der Geschäftsbezeichner für den Absender der Nachricht, wie in Ihrer EDIFACT-Vereinbarung angegeben |
+   | Weitere Parameter | Nein | Dieser Vorgang umfasst die folgenden weiteren Parameter: <p>- **Datenelementtrennzeichen** <br>- **Freigabeindikator** <br>- **Komponententrennzeichen** <br>- **Wiederholungstrennzeichen** <br>- **Segmentabschlusszeichen** <br>- **Segmentabschlusszeichensuffix** <br>- **Dezimalindikator** <p>Weitere Informationen finden Sie unter [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact-message-settings.md). |
+   ||||
+
+   Die Nachrichtennutzdaten sind beispielsweise der **Textteil** der Inhaltsausgabe vom Anforderungstrigger:
+
+   ![Screenshot des Vorgangs „In EDIFACT-Nachricht nach Parametername codieren“ mit den Nachrichtencodierungseigenschaften](./media/logic-apps-enterprise-integration-edifact/encode-edifact-message-agreement-standard.png)
+
+---
+
+<a name="decode"></a>
+
+## <a name="decode-edifact-messages"></a>Decodierung von EDIFACT-Nachrichten
+
+### <a name="consumption"></a>[Verbrauch](#tab/consumption)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre Logik-App-Ressource und den Workflow im Designer.
+
+1. Wählen Sie im Designer unter dem Trigger oder der Aktion, dem bzw. der Sie die EDIFACT-Aktion hinzufügen möchten, die Option **Neuer Schritt** aus.
+
+1. Wählen Sie unter dem Suchfeld **Vorgang auswählen** die Option **Alle** aus. Geben Sie im Suchfeld `edifact encode`ein. Wählen Sie die Aktion **EDIFACT-Nachricht decodieren** aus.
+
+1. Wenn Sie aufgefordert werden, eine Verbindung mit Ihrem Integrationskonto herzustellen, geben Sie die folgenden Informationen an:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Verbindungsname** | Ja | Ein Name für die Verbindung |
+   | **Integrationskonto** | Ja | Wählen Sie in der Liste der verfügbaren Integrationskonten das Konto aus, das Sie nutzen möchten. |
+   ||||
+
+   Beispiel:
+
+   ![Screenshot des Verbindungsbereichs „EDIFACT-Nachricht decodieren“](./media/logic-apps-enterprise-integration-edifact/create-edifact-decode-connection-consumption.png)
+
+1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
+
+1. Wenn der EDIFACT-Vorgang im Designer angezeigt wird, geben Sie Informationen für die folgenden Eigenschaften an, die für diesen Vorgang spezifisch sind:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Zu decodierende EDIFACT-Flatfilenachricht** | Ja | Die zu decodierende XML-Flatfilenachricht. |
+   | Weitere Parameter | Nein | Dieser Vorgang umfasst die folgenden weiteren Parameter: <p>- **Komponententrennzeichen** <br>- **Datenelementtrennzeichen** <br>- **Freigabeindikator** <br>- **Wiederholungstrennzeichen** <br>- **Segmentabschlusszeichen** <br>- **Segmentabschlusszeichensuffix** <br>- **Dezimalindikator** <br>- **Nutzdatenzeichensatz** <br>- **Segmentabschlusszeichensuffix** <br>- **Austausch beibehalten** <br>- **Austausch bei Fehler anhalten** <p>Weitere Informationen finden Sie unter [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact-message-settings.md). |
+   ||||
+
+   Die zu decodierenden XML-Nachrichtennutzdaten können beispielsweise der **Textteil** der Inhaltsausgabe vom Anforderungstrigger sein:
+
+   ![Screenshot des Vorgangs „EDIFACT-Nachricht decodieren“ mit den Eigenschaften der Nachrichtendecodierung](./media/logic-apps-enterprise-integration-edifact/decode-edifact-message-consumption.png)
+
+### <a name="standard"></a>[Standard](#tab/standard)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihre Logik-App-Ressource und den Workflow im Designer.
+
+1. Wählen Sie im Designer unter dem Trigger oder der Aktion, dem bzw. der Sie die EDIFACT-Aktion hinzufügen möchten, die Option **Neuen Schritt einfügen** (das Pluszeichen) und dann **Aktion hinzufügen** aus.
+
+1. Wählen Sie unter dem Suchfeld **Vorgang auswählen** die Option **Azure** aus. Geben Sie im Suchfeld `edifact encode`ein. Wählen Sie die Aktion **EDIFACT-Nachricht decodieren** aus.
+
+   ![Screenshot, der das Azure-Portal, den Workflow-Designer und den ausgewählten Vorgang „EDIFACT-Nachricht decodieren“ zeigt.](./media/logic-apps-enterprise-integration-edifact/select-decode-edifact-message-standard.png)
+
+1. Wenn Sie aufgefordert werden, eine Verbindung mit Ihrem Integrationskonto herzustellen, geben Sie die folgenden Informationen an:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Verbindungsname** | Ja | Ein Name für die Verbindung |
+   | **Integrationskonto** | Ja | Wählen Sie in der Liste der verfügbaren Integrationskonten das Konto aus, das Sie nutzen möchten. |
+   ||||
+
+   Beispiel:
+
+   ![Screenshot des Verbindungsbereichs „EDIFACT-Nachricht decodieren“](./media/logic-apps-enterprise-integration-edifact/create-edifact-decode-connection-standard.png)
+
+1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
+
+1. Wenn der EDIFACT-Detailbereich im Designer angezeigt wird, geben Sie Informationen für die folgenden Eigenschaften an:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Name der EDIFACT-Vereinbarung** | Ja | Die zu verwendende EDIFACT-Vereinbarung. |
+   | **Zu codierende XML-Nachricht** | Ja | Der Geschäftsbezeichner für den Absender der Nachricht, wie in Ihrer EDIFACT-Vereinbarung angegeben |
+   | Weitere Parameter | Nein | Dieser Vorgang umfasst die folgenden weiteren Parameter: <p>- **Datenelementtrennzeichen** <br>- **Freigabeindikator** <br>- **Komponententrennzeichen** <br>- **Wiederholungstrennzeichen** <br>- **Segmentabschlusszeichen** <br>- **Segmentabschlusszeichensuffix** <br>- **Dezimalindikator** <p>Weitere Informationen finden Sie unter [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact-message-settings.md). |
+   ||||
+
+   Die Nachrichtennutzdaten sind beispielsweise der **Textteil** der Inhaltsausgabe vom Anforderungstrigger:
+
+   ![Screenshot des Vorgangs „EDIFACT-Nachricht decodieren“ mit den Eigenschaften der Nachrichtendecodierung](./media/logic-apps-enterprise-integration-edifact/decode-edifact-message-standard.png)
+
+---
+
+## <a name="handle-unh25-segments-in-edifact-documents"></a>Behandeln von UNH2.5-Segmenten in EDIFACT-Dokumenten
+
+In einem EDIFACT-Dokument wird das [UNH2.5-Segment](logic-apps-enterprise-integration-edifact-message-settings.md#receive-settings-schemas) für die Schemasuche verwendet. In der folgenden exemplarischen EDIFACT-Nachricht ist das UNH-Feld beispielsweise `EAN008`:
+
+`UNH+SSDD1+ORDERS:D:03B:UN:EAN008`
+
+Führen Sie die folgenden Schritte aus, um ein EDIFACT-Dokument zu behandeln oder eine EDIFACT-Nachricht zu verarbeiten, das bzw. die über ein UN2.5-Segment verfügt:
+
+1. Aktualisieren Sie ein Schema, oder stellen Sie ein Schema bereit, das über den UNH2.5-Stammknotennamen verfügt.
+
+   Angenommen, der Schemastammname für das exemplarische UNH-Feld lautet beispielsweise `EFACT_D03B_ORDERS_EAN008`. Für jedes Element vom Typ `D03B_ORDERS`, das über ein anderes UNH2.5-Segment verfügt, muss ein eigenes Schema bereitgestellt werden.
+
+1. Fügen Sie im [Azure-Portal](https://portal.azure.com) das Schema Ihrer Integrationskontoressource oder Logik-App-Ressource hinzu, abhängig davon, ob Sie mit dem Ressourcentyp **Logik-App (Verbrauch)** oder **Logik-App (Standard)** arbeiten.
+
+1. Laden Sie unabhängig davon, ob Sie die EDIFACT-Aktion für die Decodierung oder Codierung verwenden, Ihr Schema hoch, und richten Sie die Schemaeinstellungen in den Abschnitten **Empfangseinstellungen** bzw. **Sendeeinstellungen** Ihrer EDIFACT-Vereinbarung ein.
+
+1. Zur Bearbeitung Ihrer EDIFACT-Vereinbarung wählen Sie im Bereich **Vereinbarungen** Ihre Vereinbarung aus. Wählen Sie in der Symbolleiste des Bereichs **Vereinbarungen** die Option **Als JSON bearbeiten** aus.
+
+   * Suchen Sie im Abschnitt `receiveAgreement` der Vereinbarung den Abschnitt `schemaReferences`, und fügen Sie den UNH2.5-Wert hinzu.
+
+     ![Screenshot, der das Azure-Portal mit dem Abschnitt „receiveAgreement“ einer EDIFACT-Vereinbarung im JSON-Editor zeigt, wobei der Abschnitt „schemaReferences“ hervorgehoben ist.](./media/logic-apps-enterprise-integration-edifact/agreement-receive-schema-references.png)
+
+   * Suchen Sie im Abschnitt `sendAgreement` der Vereinbarung den Abschnitt `schemaReferences`, und fügen Sie den UNH2.5-Wert hinzu.
+
+     ![Screenshot, der das Azure-Portal mit dem Abschnitt „sendAgreement“ einer EDIFACT-Vereinbarung im JSON-Editor zeigt, wobei der Abschnitt „schemaReferences“ hervorgehoben ist.](./media/logic-apps-enterprise-integration-edifact/agreement-send-schema-references.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
+* [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact-message-settings.md)

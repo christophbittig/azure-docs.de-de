@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: b652b2c7b3f1fd14e401381b5a83a5cf4a987fde
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 529b43fdf23eebb46bf7cc194bab1508afa0f7ca
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129378099"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129679883"
 ---
 Die Funktion zum Erkennen und Transkribieren von menschlicher Sprache (Spracherkennung) ist eines der zentralen Features des Speech-Diensts. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Spracherkennungen durchzuführen.
 
@@ -202,7 +202,7 @@ Rufen Sie nach Abschluss der Einrichtung [`startContinuousRecognitionAsync`](/ja
 recognizer.startContinuousRecognitionAsync();
 
 // make the following call at some point to stop recognition.
-// recognizer.StopContinuousRecognitionAsync();
+// recognizer.stopContinuousRecognitionAsync();
 ```
 
 ### <a name="dictation-mode"></a>Diktiermodus

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: ca8e0f2303ed31660e92f084c0f6760a60f40c22
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c2a08059de275efcfb3e65c6a316566a6a081830
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128659474"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357942"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>Schritt 3: Einrichten der Migration zur V3-REST-API oder zum Client-SDK
 
@@ -39,7 +39,7 @@ Bisher nutzten Entwickler die Client-ID und den geheimen Clientschlüssel eines 
 
 Bei der V3-API bildet Azure Resource Manager (ARM) die Basis. Die API verwendet die IDs und Schlüssel des Azure Active Directory-Dienstprinzipals (Azure AD), um eine Verbindung mit der API herzustellen. Entwickler müssen Dienstprinzipale oder verwaltete Identitäten erstellen, um eine Verbindung mit der API herzustellen. In der V3-API verwendet die API Standard-ARM-Endpunkte und damit ein ähnliches (und somit konsistentes) Modell wie alle anderen Azure-Dienste.
 
-Kunden, die zuvor Version 2015-10-01 der ARM-Verwaltungs-API zum Verwalten Ihrer V2-Konten verwendet haben, sollten auf Version 2020-05-01 der ARM-Verwaltungs-API umsteigen, die für den Zugriff auf die V3-API unterstützt wird.
+Kunden, die zuvor Version 2015-10-01 der ARM-Verwaltungs-API zum Verwalten Ihrer V2-Konten verwendet haben, sollten auf Version 2020-05-01 (oder höher) der ARM-Verwaltungs-API umsteigen, die für den Zugriff auf die V3-API unterstützt wird.
 
 ## <a name="create-a-new-media-services-account-for-testing"></a>Erstellen eines neuen Media Services-Konto für Tests
 
@@ -69,7 +69,7 @@ Befolgen Sie die Schritte im Schnellstart zum [Einrichten Ihrer Umgebung](setup-
 Verwenden Sie [Postman](./setup-postman-rest-how-to.md) für Aufrufe der REST-API von Media Services V3.
 Lesen Sie die [REST-API-Referenzseiten](/rest/api/media/).
 
-Sie sollten die Versionszeichenfolge „2020-05-01“ in der Postman-Sammlung verwenden.
+Sie sollten die Versionszeichenfolge „2020-05-01“ (oder höher) in der Postman-Sammlung verwenden.
 
 ## <a name="net"></a>[.NET](#tab/net)
 

@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58924d8ea9aef9e5c5faa5771572acec99587cdd
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88612468"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234811"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Aufgaben nach der Konfiguration für die Hybrid-Azure AD-Einbindung
 
@@ -63,7 +63,7 @@ Wenn Ihre Organisation einen Verbunddienst verwendet, um sich an Azure AD anzume
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Aktivieren des nahtlosen einmaligen Anmeldens mit Azure AD für kompatible Windows-Geräte
 
-Wenn Sie in Ihrer Organisation die Kennworthashsynchronisierung oder die Passthrough-Authentifizierung nutzen, um sich an Azure AD anzumelden, können Sie das nahtlose einmalige Anmelden mit Azure AD mit diesem Anmeldeverfahren aktivieren, um kompatible Windows-Geräte zu authentifizieren: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso. 
+Wenn Sie in Ihrer Organisation die Kennworthashsynchronisierung oder die Passthrough-Authentifizierung nutzen, um sich bei Azure AD anzumelden, können Sie das [nahtlose einmalige Anmelden mit Azure AD](/azure/active-directory/connect/active-directory-aadconnect-sso) mit diesem Anmeldeverfahren aktivieren, um kompatible Windows-Geräte zu authentifizieren.
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Festlegen der Azure AD-Richtlinie für kompatible Windows-Geräte
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/09/2020
+ms.date: 10/05/2021
 ms.author: justinha
-ms.openlocfilehash: 8fbde10ccf5a7f083f5fbddaadd6668d880a1fac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 955d37144220ec455f6f95bab2102123b54cd0c1
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619826"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536197"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Konfigurieren von Azure Active Directory Domain Services für die Unterstützung der Benutzerprofilsynchronisierung für SharePoint Server
 
@@ -37,8 +37,7 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Eine Windows Server-Verwaltungs-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
     * Führen Sie bei Bedarf das Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] aus.
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
-* Ein SharePoint-Dienstkonto für den Benutzerprofil-Synchronisierungsdienst.
-    * Bei Bedarf finden Sie weitere Informationen unter [Planen von Administrator- und Dienstkonten in SharePoint Server][sharepoint-service-account].
+* Der Name des SharePoint-Dienstkontos für den Benutzerprofil-Synchronisierungsdienst. Weitere Informationen zum *Profilsynchronisierungskonto* finden Sie unter [Planen von Administrator- und Dienstkonten in SharePoint Server][sharepoint-service-account]. Um den Namen des *Profilsynchronisierungskontos* von der Website der SharePoint-Zentraladministration abzurufen, klicken Sie auf **Anwendungsverwaltung** > **Dienstanwendungen verwalten** > **Benutzerprofildienstanwendung**. Weitere Informationen finden Sie unter [Konfigurieren der Profilsynchronisierung mit SharePoint Active Directory-Import in SharePoint Server](/SharePoint/administration/configure-profile-synchronization-by-using-sharepoint-active-directory-import).
 
 ## <a name="service-accounts-overview"></a>Übersicht über Dienstkonten
 
@@ -69,9 +68,6 @@ Führen Sie auf der VM für die Azure AD DS-Verwaltung die folgenden Schritte au
 
     ![Hinzufügen des SharePoint-Dienstkontos zur Sicherheitsgruppe „AAD DC-Dienstkonten“](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
 
-## <a name="next-steps"></a>Nächste Schritte
-
-Weitere Informationen finden Sie unter [Verwalten der Benutzerprofilsynchronisierung in SharePoint Server](/SharePoint/administration/manage-profile-synchronization).
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/07/2021
-ms.openlocfilehash: 2d145e62392ee95189a212c1cd0b294134ce1109
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dda75aedab0c17f14d2725ff9759d7ab30203474
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339649"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712933"
 ---
 # <a name="create-rich-interactive-reports-of-security-center-data"></a>Erstellen umfassender, interaktiver Berichte zu Security Center-Daten
 
@@ -95,7 +95,7 @@ Security Center umfasst Sicherheitsrisikoüberprüfungen für Ihre Computer, Con
 
 Weitere Informationen zur Verwendung dieser Überprüfungen:
 
-- [Überprüfen Ihrer Computer mit dem integrierten Sicherheitsrisikobewertungsscanner](deploy-vulnerability-assessment-vm.md)
+- [Überprüfen Ihrer Computer mit der integrierten Qualys-Überprüfung](deploy-vulnerability-assessment-vm.md)
 - [Überprüfen Ihrer Registrierungsimages auf Sicherheitsrisiken](defender-for-container-registries-usage.md)
 - [Überprüfen der SQL-Ressourcen auf Sicherheitsrisiken](defender-for-sql-on-machines-vulnerability-assessment.md)
 

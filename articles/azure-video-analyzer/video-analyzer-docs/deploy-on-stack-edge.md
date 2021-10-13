@@ -3,12 +3,12 @@ title: Bereitstellen von Azure Video Analyzer unter Azure Stack Edge
 description: In diesem Artikel sind die Schritte aufgelistet, mit denen Sie Azure Video Analyzer unter Azure Stack Edge bereitstellen können.
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 1cfcd7956cd14d0c687c8619732523a5d7bba4c0
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: da14368846cd87d5d4e231933cec0068a4e558f9
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605205"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546615"
 ---
 # <a name="deploy-azure-video-analyzer-on-azure-stack-edge"></a>Bereitstellen von Azure Video Analyzer unter Azure Stack Edge
 
@@ -175,6 +175,40 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
     "allowUnsecuredEndpoints": true,
     "telemetryOptOut": false
     ```
+1. Wählen Sie **Hinzufügen** aus.  
+
+Hinzufügen des Edgemoduls RTSP-Simulator
+
+1. Klicken Sie im Abschnitt **IoT Edge-Module** auf das Dropdownmenü **Hinzufügen**, und wählen Sie **IoT Edge-Modul** aus, um die Seite **IoT Edge-Modul hinzufügen** anzuzeigen.
+1. Geben Sie auf der Registerkarte **Moduleinstellungen** einen Namen für das Modul und den URI für das Containerimage an:   
+    Beispiele:
+    
+    * **Name des IoT Edge-Moduls**: rtspsim
+    * **Image URI**: mcr.microsoft.com/lva-utilities/rtspsim-live555:1.2  
+
+
+1. Öffnen Sie die Registerkarte **Optionen für Containererstellung**.
+ 
+    Kopieren Sie den folgenden JSON-Code, und fügen Sie ihn in das Feld ein.
+    
+    ```
+    {
+        "HostConfig": {
+            "Binds": [
+               "/home/localedgeuser/samples/input/:/live/mediaServer/media/"
+            ],
+            "PortBindings": {
+                    "554/tcp": [
+                        {
+                        "HostPort": "554"
+                        }
+                    ]
+            }
+        }
+    }
+    ```
+1. Wählen Sie **Hinzufügen** aus.  
+
 1. Klicken Sie auf **Weiter: Routen**, um mit dem Abschnitt über Routen fortzufahren. Geben Sie Routen an.
 
     Geben Sie unter „NAME“ den Namen **AVAToHub** und unter „VALUE“ den Wert **FROM /messages/modules/avaedge/outputs/ INTO $upstream** ein.
@@ -193,6 +227,8 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/deploy-on-stack-edge/copy-provisioning-token.png" alt-text="Kopieren des Tokens":::
+
+
 
 #### <a name="optional-setup-docker-volume-mounts"></a>(Optional) Einrichten von Docker-Volumebereitstellungen
 
@@ -268,7 +304,7 @@ Diese Schritte umfassen das Erstellen eines Gatewaybenutzers und das Einrichten 
                     "Mounts": 
                     [
                         {
-                            "Target": "/var/media",
+                            "Target": "/live/mediaServer/media",
                             "Source": "media",
                             "Type": "volume"
                         }

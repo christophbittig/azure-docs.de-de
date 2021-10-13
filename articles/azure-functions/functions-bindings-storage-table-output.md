@@ -6,19 +6,19 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f793f96f55a258b2d7cb11f214984416557618df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b30fbbca1bfabfdbf9836e00ee2b2d585308774a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453001"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611765"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Azure Table Storage-Ausgabebindungen für Azure Functions
 
 Verwenden Sie eine Azure Table Storage-Ausgabebindung, um Entitäten in eine Tabelle in einem Azure Storage-Konto zu schreiben.
 
 > [!NOTE]
-> Das Aktualisieren vorhandener Entitäten wird von dieser Ausgabebindung nicht unterstützt. Verwenden Sie den `TableOperation.Replace`-Vorgang [aus dem Azure Storage-SDK](../cosmos-db/tutorial-develop-table-dotnet.md#delete-an-entity) zum Aktualisieren einer vorhandenen Entität.
+> Das Aktualisieren vorhandener Entitäten wird von dieser Ausgabebindung nicht unterstützt. Verwenden Sie den `TableOperation.Replace`-Vorgang [aus dem Azure Storage-SDK](../cosmos-db/table/table-support.md) zum Aktualisieren einer vorhandenen Entität.
 
 ## <a name="example"></a>Beispiel
 

@@ -9,12 +9,12 @@ ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: 6c204308cff285860c0e887d41eca56ecc220226
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: c65cd9e9e6d80222f60a3ee060ba697743713738
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039053"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362721"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Entwickeln und Debuggen von Modulen für Azure IoT Edge
 
@@ -64,14 +64,13 @@ Um Ihr Modulimage zu erstellen und bereitzustellen, müssen Sie Docker das Modul
     > [!TIP]
     > Sie können anstelle einer Cloudregistrierung auch eine lokale Docker-Registrierung für Prototyp- bzw. Testzwecke verwenden.
 
-Sofern Sie Ihr Modul nicht in C entwickeln, benötigen Sie außerdem das Python-basierte [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/), um Ihre lokale Entwicklungsumgebung für das Debuggen, Ausführen und Testen Ihrer IoT Edge-Lösung einzurichten. Wenn dies noch nicht erfolgt ist, installieren Sie [Python (2.7/3.6/3.7 oder höher) und Pip](https://www.python.org/), und installieren Sie anschließend **iotedgehubdev**, indem Sie diesen Befehl in Ihrem Terminal ausführen.
+Sofern Sie Ihr Modul nicht in C entwickeln, benötigen Sie außerdem das Python-basierte [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/), um Ihre lokale Entwicklungsumgebung für das Debuggen, Ausführen und Testen Ihrer IoT Edge-Lösung einzurichten. Wenn dies noch nicht erfolgt ist, installieren Sie [Python (2.7/3.6/3.7/3.8) und Pip](https://www.python.org/), und installieren Sie anschließend **iotedgehubdev**, indem Sie diesen Befehl in Ihrem Terminal ausführen.
 
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
 
 > [!NOTE]
-> „iotedgehubdev“ verwendet derzeit eine docker-py-Bibliothek, die nicht mit Python 3.8 kompatibel ist.
 >
 > Wenn Sie über mehrere Versionen von Python verfügen, einschließlich Python 2.7 (z. B. für Ubuntu oder macOS), sollten Sie sicherstellen, dass Sie das richtige `pip`- oder `pip3`-Programm zum Installieren von **iotedgehubdev** verwenden.
 

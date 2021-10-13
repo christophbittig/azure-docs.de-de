@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: fb68ea362c5b91e5c60578f63c752d1982495efb
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: ee4acc6e8e7abf8ece1c6808a810b022745fb66a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538072"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612330"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis"></a>Aktivieren der Zonenredundanz für Azure Cache for Redis
 In diesem Artikel erfahren Sie, wie Sie eine zonenredundante Azure Cache-Instanz über das Azure-Portal konfigurieren.
@@ -74,7 +74,7 @@ Führen Sie die folgenden Schritte aus, um einen Cache zu erstellen:
 
 ### <a name="why-cant-i-enable-zone-redundancy-when-creating-a-premium-cache"></a>Warum kann ich die Zonenredundanz beim Erstellen eines Premium-Caches nicht aktivieren?
 
-Zonenredundanz ist nur in Azure-Regionen verfügbar, die über Verfügbarkeitszonen verfügen. Eine aktuelle Liste finden Sie unter [Azure-Regionen mit Verfügbarkeitszonen](../availability-zones/az-region.md#azure-services-supporting-availability-zones).
+Zonenredundanz ist nur in Azure-Regionen verfügbar, die über Verfügbarkeitszonen verfügen. Eine aktuelle Liste finden Sie unter [Azure-Regionen mit Verfügbarkeitszonen](../availability-zones/az-region.md#azure-regions-with-availability-zones).
 
 ### <a name="why-cant-i-select-all-three-zones-during-cache-create"></a>Warum kann ich während der Cacheerstellung nicht alle drei Zonen auswählen?
 

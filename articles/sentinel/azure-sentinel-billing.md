@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.custom: subject-cost-optimization
 ms.topic: how-to
 ms.date: 09/02/2021
-ms.openlocfilehash: 3e814541ecf43d8f9d12c028e8bebc8ac31fe411
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: bd3ff870952701901f432660ec0069afa5151916
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433474"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275352"
 ---
 # <a name="plan-and-manage-costs-for-azure-sentinel"></a>Planen und Verwalten von Kosten für Azure Sentinel
 
@@ -321,7 +321,7 @@ Wenn Sie Bedrohungen in Azure Sentinel suchen oder untersuchen, müssen Sie mög
 
 ### <a name="optimize-log-analytics-costs-with-dedicated-clusters"></a>Optimieren der Log Analytics-Kosten mithilfe dedizierter Cluster
 
-Wenn Sie in Ihrem Azure Sentinel-Arbeitsbereich bzw. in Arbeitsbereichen in derselben Region mindestens 1 TB pro Tag erfassen, sollten Sie zur Kostensenkung einen Umstieg auf einen dedizierten Log Analytics-Cluster in Betracht ziehen. Eine Mindestabnahme für einen dedizierten Log Analytics-Cluster aggregiert das Datenvolumen mehrerer Arbeitsbereiche, die zusammen mindestens 1 TB pro Tag erfassen.
+Wenn Sie in Ihrem Azure Sentinel-Arbeitsbereich bzw. in Arbeitsbereichen in derselben Region mindestens 500 GB pro Tag erfassen, sollten Sie zur Kostensenkung einen Umstieg auf einen dedizierten Log Analytics-Cluster in Betracht ziehen. Eine Mindestabnahme für einen dedizierten Log Analytics-Cluster aggregiert das Datenvolumen mehrerer Arbeitsbereiche, die zusammen mindestens 500 GB pro Tag erfassen.
 
 Für dedizierte Log Analytics-Cluster gelten nicht die Azure Sentinel-Mindestabnahmen. Azure Sentinel-Kosten fallen im dedizierten Cluster weiter arbeitsbereichsbezogen an.
 
@@ -329,7 +329,7 @@ Sie können einem dedizierten Log Analytics-Cluster mehrere Azure Sentinel-Arbei
 
 - Arbeitsbereichsübergreifende Abfragen erfolgen schneller, wenn sich alle an der Abfrage beteiligten Arbeitsbereiche im dedizierten Cluster befinden. Es empfiehlt sich nach wie vor, so wenig Arbeitsbereiche wie möglich in Ihrer Umgebung zu betreiben, und für einen dedizierten Cluster gilt unverändert die [Obergrenze von 100 Arbeitsbereichen](../azure-monitor/logs/cross-workspace-query.md) für die Einbeziehung in eine einzelne arbeitsbereichsübergreifende Abfrage.
 
-- Alle Arbeitsbereiche im dedizierten Cluster können die für den Cluster festgelegten Log Analytics-Mindestabnahme gemeinsam nutzen. Dadurch, dass keine separaten Log Analytics-Mindestabnahmen für jeden Arbeitsbereich verpflichtend sind, lassen sich Kosten einsparen und mehr Effizienz erzielen. Durch Aktivieren eines dedizierten Clusters verpflichten Sie sich zu einer Mindestabnahme für Log Analytics von 1 TB pro Tag.
+- Alle Arbeitsbereiche im dedizierten Cluster können die für den Cluster festgelegten Log Analytics-Mindestabnahme gemeinsam nutzen. Dadurch, dass keine separaten Log Analytics-Mindestabnahmen für jeden Arbeitsbereich verpflichtend sind, lassen sich Kosten einsparen und mehr Effizienz erzielen. Durch Aktivieren eines dedizierten Clusters verpflichten Sie sich zu einer Mindestabnahme für Log Analytics von 500 GB pro Tag.
 
 Im Folgenden finden Sie einige weitere Überlegungen zum Umstieg auf einen dedizierten Cluster zur Kostenoptimierung:
 

@@ -1,6 +1,7 @@
 ---
 title: 'Schnellstart: Anzeigen von Unternehmensanwendungen'
 description: Zeigen Sie die Unternehmensanwendungen an, die für die Verwendung Ihres Azure Active Directory-Mandanten registriert sind.
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2021
 ms.author: davidmu
 ms.reviewer: arvinh
-ms.openlocfilehash: eb1a2a2359ed8c59c5de605977362307de5821b1
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 0f744176e3a1472cadd740f94e34839bb7a8a09d
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061073"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613717"
 ---
 # <a name="quickstart-view-enterprise-applications-in-azure-active-directory"></a>Schnellstart: Anzeigen von Unternehmensanwendungen in Azure Active Directory
 

@@ -1,30 +1,29 @@
 ---
 title: Beschriften von Bildern und Textdokumenten
 title.suffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie die Datenbeschriftungstools verwenden, um Daten schnell für Machine Learning in einem Datenbeschriftungsprojekt vorzubereiten.
+description: Verwenden Sie Datenbeschriftungstools, um Text oder Bilder für Machine Learning in einem Datenbeschriftungsprojekt schnell zu beschriften.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 09/24/2021
 ms.custom: data4ml
-ms.openlocfilehash: 491ee8134d17eac9e0abb54780f2aa39e1323e6c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d07a48267effa51a721d1b64c79bc0a6ba7d439f
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446253"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429640"
 ---
 # <a name="labeling-images-and-text-documents"></a>Beschriften von Bildern und Textdokumenten
 
-Nachdem Ihr Projektadministrator ein [Datenbeschriftungsobjekt](./how-to-create-labeling-projects.md#create-a-data-labeling-project) in Azure Machine Learning erstellt hat, können Sie mit dem Beschriftungstool schnell Daten für ein Machine Learning-Projekt vorbereiten. Dieser Artikel beschreibt Folgendes:
+Nachdem Ihr Projektadministrator ein [Bilddatenbeschriftungsprojekt](./how-to-create-image-labeling-projects.md) oder ein [Textdatenbeschriftungsprojekt](./how-to-create-text-labeling-projects.md) in Azure Machine Learning erstellt hat, können Sie mit dem Beschriftungstool schnell Daten für ein Machine Learning-Projekt vorbereiten. Dieser Artikel beschreibt Folgendes:
 
 > [!div class="checklist"]
 > * Zugreifen auf Ihre Bezeichnungsprojekte
 > * Die Bezeichnungstools
 > * Verwenden der Tools für bestimmte Bezeichnungsaufgaben
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,7 +62,7 @@ Machine-Learning-Algorithmen können während der Beschriftung ausgelöst werden
 
 Insbesondere in der Anfangsphase eines Bezeichnungsprojekts ist die Genauigkeit des Machine Learning-Modells möglicherweise nur für die Kennzeichnung einer kleinen Teilmenge von Bildern ausreichend. Sobald diese Bilder gekennzeichnet wurden, kehrt das Bezeichnungsprojekt zur manuellen Kennzeichnung zurück, um mehr Daten für das nächste Modelltraining zu erfassen. Im Laufe der Zeit erhöht sich die Zuverlässigkeit des Modells für einen größeren Teil von Bildern, was im weiteren Projektverlauf zu mehr Vorabbeschriftungsaufgaben führt.
 
-## <a name="image-tasks"></a>Bildaufgaben
+## <a name="image-tasks"></a><a name="image-tasks"></a> Bildaufgaben
 
 Bei Bildklassifizierungsaufgaben können Sie auswählen, dass mehrere Bilder gleichzeitig angezeigt werden sollen. Verwenden Sie die Symbole über dem Bildbereich, um das Layout auszuwählen.
 
@@ -163,13 +162,13 @@ Wenn Sie *alle* Polygone im aktuellen Bild löschen möchten, wählen Sie das To
 
 Wählen Sie nach Erstellung der Polygone für ein Bild die Option **Übermitteln** aus, um Ihre Arbeit zu speichern. Andernfalls geht Ihre Arbeit verloren.
 
-## <a name="annotate-text-preview"></a>Änderungsverlauf einblenden für Text (Vorschau)
+## <a name="label-text-preview"></a><a name="label-text"></a>Beschriften von Text (Vorschau)
 
 > [!IMPORTANT]
 > Die Textbeschriftung befindet sich in der öffentlichen Vorschau.
 > Die Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Verwenden Sie beim Einblenden des Änderungsverlaufs von Text die Symbolleiste zum:
+Verwenden Sie beim Taggen von Text die Symbolleiste zum:
 
 * Erhöhen oder Verringern der Textgröße
 * Ändern der Schriftart

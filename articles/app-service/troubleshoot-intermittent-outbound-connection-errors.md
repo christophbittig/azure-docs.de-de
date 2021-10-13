@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: dc6a56cff3492011a4717d867f08a580cf5a198c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fe746ed4fe8c24afa0667d8c2559d9c46fee5211
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355469"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660075"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Beheben zeitweiliger Fehler bei ausgehenden Verbindungen in Azure App Service
 
@@ -165,14 +165,6 @@ TCP-Verbindungen und SNAT-Ports stehen in keinem direkten Zusammenhang. Eine Aus
  
 Wenn WebJobs wegen erschöpfter SNAT-Ports keine Verbindung mehr mit der SQL-Datenbank herstellen können, gibt es keine Metrik, die anzeigt, wie viele Verbindungen von den einzelnen Webanwendungsprozessen geöffnet sind. Um den problematischen WebJob zu finden, verschieben Sie mehrere WebJobs in einen anderen App Service-Plan, um festzustellen, ob sich die Situation verbessert, oder ob ein Problem in einem der Pläne bestehen bleibt. Wiederholen Sie den Vorgang, bis Sie den problematischen WebJob gefunden haben.
 
-### <a name="using-snat-ports-sooner"></a>Früheres Verwenden von SNAT-Ports
-
-Sie können keine Azure-Einstellungen dahingehend ändern, dass die verwendeten SNAT-Ports früher freigegeben werden, da alle SNAT-Ports gemäß den folgenden Bedingungen freigegeben werden, wobei dieses Verhalten entwurfsbedingt ist.
- 
-* Wenn entweder der Server oder der Client FINACK sendet, wird der [SNAT-Port nach 240 Sekunden freigegeben](../load-balancer/load-balancer-outbound-connections.md).
-* Tritt ein RST auf, wird der SNAT-Port nach 15 Sekunden freigegeben.
-* Wird das Leerlauftimeout erreicht, wird der Port freigegeben.
- 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 
 * [SNAT mit App Service](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)

@@ -7,25 +7,22 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: ssambare
 author: shivanissambare
-ms.date: 05/25/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: c4a1b52f87f0c5053e357fcb67a2e90962dc37c1
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b772db78ebdcbede50b3decc4edd235c336471a6
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433528"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713209"
 ---
-# <a name="extend-a-prebuilt-docker-image-preview"></a>Erweitern eines vorgefertigten Docker-Images (Vorschau)
+# <a name="extend-a-prebuilt-docker-image"></a>Erweitern eines vordefinierten Docker-Images
 
 Es kann vorkommen, dass die [vordefinierten Docker-Images für Modellrückschlüsse](concept-prebuilt-docker-images-inference.md) und die [Erweiterbarkeitslösungen](./how-to-prebuilt-docker-images-inference-python-extensibility.md) für Azure Machine Learning Ihre Anforderungen an den Rückschlussdienst nicht vollständig erfüllen.
 
 In diesem Fall können Sie ein Dockerfile verwenden, um ein neues Image zu erstellen, indem Sie eines der vordefinierten Images als Ausgangspunkt verwenden. Durch die Erweiterung eines vordefinierten Docker-Images können Sie den Netzwerkstapel und die Bibliotheken von Azure Machine Learning nutzen, ohne ein Image von Grund auf neu zu erstellen.
-
-> [!IMPORTANT]
-> Die Verwendung von vordefinierten Docker-Images mit Azure Machine Learning befindet sich derzeit in der Vorschauphase. Die Vorschaufunktionalität wird „wie besehen“ zur Verfügung gestellt, ohne Garantien hinsichtlich Support oder Vereinbarung zum Servicelevel (Service Level Agreement, SLA). Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 **Vor- und Nachteile**
 

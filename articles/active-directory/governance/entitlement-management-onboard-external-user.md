@@ -13,12 +13,12 @@ ms.subservice: compliance
 ms.date: 08/18/2021
 ms.author: sama
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e0a0d9bf53192249b50f03df508e86cc88b91e
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 0a68a523a2a5ce14c9fccd2750eb9523b4c5281d
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129155964"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807224"
 ---
 # <a name="tutorial---onboard-external-users-to-azure-ad-through-an-approval-process"></a>Tutorial: Onboarding externer Benutzer in Azure AD über einen Genehmigungsprozess
 
@@ -130,4 +130,4 @@ In diesem Schritt können Sie das Zugriffspaket für **Externen Benutzerpaketzug
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über das Erstellen von Zugriffspaketen, um den Zugriff auf andere Arten von Ressourcen wie Anwendungen und Sites zu verwalten. [Tutorial: Verwalten des Zugriffs auf Ressourcen in der Azure AD-Berechtigungsverwaltung](/active-directory/governance/entitlement-management-access-package-first.md)
+Informieren Sie sich über das Erstellen von Zugriffspaketen, um den Zugriff auf andere Arten von Ressourcen wie Anwendungen und Sites zu verwalten. [Tutorial: Verwalten des Zugriffs auf Ressourcen in der Azure AD-Berechtigungsverwaltung](/azure/active-directory/governance/entitlement-management-access-package-first)

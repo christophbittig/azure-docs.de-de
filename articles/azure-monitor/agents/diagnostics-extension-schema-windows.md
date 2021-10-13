@@ -5,12 +5,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 70b27fec07d074dadb413d1debb098e23b4d33b3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f0a2fed2a7dc2fae62005d1f00fdb688a4f52ebe
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102428727"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232739"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schema der Diagnoseerweiterung für Windows
 Die Azure-Diagnoseerweiterung ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und den Workloads von Azure-Computeressourcen sammelt. In diesem Artikel wird das Schema erläutert, das zur Konfiguration der Diagnoseerweiterung auf virtuellen Windows-Computern und anderen Computeressourcen verwendet wird.

@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 4aa60a5433f13ca6b942204bbdb8eb4425d0ddf7
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 11dbe95a63ce22602985cb7ff9b4db11f5e8f8dc
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983210"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856750"
 ---
 # <a name="indexer-connections-to-sql-server-on-an-azure-virtual-machine"></a>Indexerverbindungen mit SQL Server auf einem virtuellen Azure-Computer
 
@@ -83,7 +83,7 @@ Wir empfehlen dringend, den Zugriff auf die IP-Adresse Ihres Suchdiensts und den
 
 Sie können die IP-Adresse herausfinden, indem Sie den vollqualifizierten Domänennamen (z. B. `<your-search-service-name>.search.windows.net`) Ihres Suchdiensts pingen. Es ist zwar möglich, aber unwahrscheinlich, dass sich die IP-Adresse des Suchdiensts ändert. Die IP-Adresse ist in der Regel während der gesamten Lebensdauer des Diensts statisch.
 
-Sie können den IP-Adressbereich des [Diensttags](../virtual-network/service-tags-overview.md#available-service-tags) `AzureCognitiveSearch` ermitteln, indem Sie entweder [herunterladbare JSON-Dateien](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) oder die [Diensttagermittlungs-API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) verwenden. Der IP-Adressbereich wird wöchentlich aktualisiert.
+Sie können den IP-Adressbereich des [Diensttags](../virtual-network/service-tags-overview.md#available-service-tags) `AzureCognitiveSearch` ermitteln, indem Sie entweder [herunterladbare JSON-Dateien](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) oder die [Diensttagermittlungs-API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) verwenden. Der IP-Adressbereich wird wöchentlich aktualisiert.
 
 ### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Einbeziehen der IP-Adressen des Portals für die kognitive Azure-Suche
 

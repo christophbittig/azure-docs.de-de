@@ -2,22 +2,20 @@
 title: Netzwerktopologien für Migrationen von verwalteten SQL-Instanzen
 titleSuffix: Azure Database Migration Service
 description: Lernen Sie die Quell- und Zielkonfigurationen für Migrationen von verwalteten Azure SQL-Instanzen mithilfe von Azure Database Migration Service kennen.
-services: database-migration
 author: pochiraju
 ms.author: rajpo
-manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: reference
 ms.date: 01/08/2020
-ms.openlocfilehash: 0799e8c76bc5d3969943d766aa83de40659a236a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a4cdce5ae20147bbf25a82401c9993a620320e5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093308"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363043"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Netzwerktopologien für Migrationen von verwalteten Azure SQL-Instanzen mithilfe von Azure Database Migration Service
 
@@ -46,7 +44,7 @@ Verwenden Sie diese Netzwerktopologie, wenn Ihre Umgebung mindestens eines der f
 
 **Anforderungen**
 
-- Das virtuelle Netzwerk, das Azure Database Migration Service für dieses Szenario verwendet, muss über ExpressRoute (https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) auch mit dem lokalen Netzwerk verbunden sein.
+- Das virtuelle Netzwerk, das Azure Database Migration Service für dieses Szenario verwendet, muss über [ExpressRoute](../expressroute/expressroute-introduction.md) oder [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) auch mit dem lokalen Netzwerk verbunden sein.
 - Richten Sie ein [VNET-Netzwerkpeering](../virtual-network/virtual-network-peering-overview.md) zwischen dem virtuellen Netzwerk für die verwaltete SQL-Instanz und Azure Database Migration Service ein.
 
 ## <a name="cloud-to-cloud-migrations-shared-virtual-network"></a>Cloud-zu-Cloud-Migrationen: gemeinsam genutztes virtuelles Netzwerk

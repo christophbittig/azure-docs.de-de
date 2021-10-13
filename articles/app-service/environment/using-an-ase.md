@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 8/5/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: da32a2bbd4824e589a6673b043551dce67c32e70
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 6d32e0f19ca37243fa0dbaca9bc04369bfd974b2
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446317"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354126"
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung
 > [!NOTE]
@@ -174,10 +174,10 @@ Sie können Ihre ASE in Azure Monitor integrieren, um Protokolle zur ASE an Azur
 
 | Situation | `Message` |
 |---------|----------|
-| ASE ist fehlerhaft | Die angegebene ASE ist aufgrund einer ungültigen VNET-Konfiguration fehlerhaft. Die ASE wird angehalten, falls der Fehlerzustand weiter besteht. Stellen Sie sicher, dass die folgenden Richtlinien befolgt werden: https://docs.microsoft.com/azure/app-service/environment/network-info. |
+| ASE ist fehlerhaft | Die angegebene ASE ist aufgrund einer ungültigen VNET-Konfiguration fehlerhaft. Die ASE wird angehalten, falls der Fehlerzustand weiter besteht. Stellen Sie sicher, dass die hier definierten Richtlinien befolgt werden: [Überlegungen zum Netzwerkbetrieb für eine App Service-Umgebung](network-info.md). |
 | Speicherplatz im ASE-Subnetz ist nahezu erschöpft | Die angegebene ASE befindet sich in einem Subnetz, dessen Speicherplatz nahezu erschöpft ist. Es sind {0} verbleibende Adressen vorhanden. Nachdem diese Adressen ausgeschöpft wurden, kann die ASE nicht mehr skaliert werden.  |
 | ASE nähert sich dem Limit für die Höchstmenge der Instanzen | Für die angegebene ASE wird in Kürze das Limit für die Höchstmenge der Instanzen erreicht. Derzeit sind {0} App Service-Planinstanzen bei einer maximalen Anzahl von 201 Instanzen vorhanden. |
-| ASE kann eine Abhängigkeit nicht erreichen | Die angegebene ASE kann {0} nicht erreichen.  Stellen Sie sicher, dass die folgenden Richtlinien befolgt werden: https://docs.microsoft.com/azure/app-service/environment/network-info. |
+| ASE kann eine Abhängigkeit nicht erreichen | Die angegebene ASE kann {0} nicht erreichen.  Stellen Sie sicher, dass die hier definierten Richtlinien befolgt werden: [Überlegungen zum Netzwerkbetrieb für eine App Service-Umgebung](network-info.md). |
 | ASE wurde angehalten | Die angegebene ASE wurde angehalten. Der Grund für das Anhalten der ASE kann ein Kontoausfall oder eine ungültige Konfiguration des virtuellen Netzwerks sein. Beseitigen Sie die Grundursache, und setzen Sie die Ausführung der ASE fort, damit die Bereitstellung von Datenverkehr erfolgen kann. |
 | ASE-Upgrade wurde gestartet | Ein Plattformupgrade für die angegebene ASE wurde gestartet. Es ist mit Verzögerungen bei den Skalierungsvorgängen zu rechnen. |
 | ASE-Upgrade wurde abgeschlossen | Ein Plattformupgrade für die angegebene ASE wurde abgeschlossen. |
@@ -210,13 +210,13 @@ Anleitungen zum Erstellen einer Warnung für Ihre Protokolle befolgen Sie die An
 
 ## <a name="upgrade-preference"></a>Upgradeeinstellung
 
-Bei Verwendung von mehreren ASEs kann es sein, dass einige ASEs vor anderen ASEs aktualisiert werden sollen. Dieses Verhalten kann in Ihrem ASE-Portal aktiviert werden.  Unter **Konfiguration** können Sie eine Option für die **Upgradepriorität** festlegen. Es gibt drei mögliche Werte:
+Bei Verwendung von mehreren ASEs kann es sein, dass einige ASEs vor anderen ASEs aktualisiert werden sollen. Dieses Verhalten kann in Ihrem ASE-Portal aktiviert werden.  Unter **Konfiguration** können Sie die Option für die **Aktualisierungseinstellung** festlegen. Es gibt drei mögliche Werte:
 
 - **Keine:** Azure führt das Upgrade Ihrer ASE in keinem bestimmten Batch durch. Dies ist der Standardwert.
 - **Early**: Ihre ASE wird in der ersten Hälfte der App Service-Upgrades aktualisiert.
 - **Late**: Ihre ASE wird in der zweiten Hälfte der App Service-Upgrades aktualisiert.
 
-Wählen Sie den gewünschten Wert und wählen Sie **Speichern**.  Der Standardwert aller ASEs ist **Keine**.
+Wählen Sie den gewünschten Wert und dann **Speichern** aus.  Der Standardwert aller Azure App Service-Umgebungen ist **Keine**.
 
 ![ASE-Konfigurationsportal][5]
 

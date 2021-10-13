@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 11/23/2020
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: ea5e49cf6a61ad89d182637c11b969ee80c754e6
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: b541c19f3a3bd129e81723df7b1b58ba75e4a540
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122327279"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714445"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Tutorial: Erstellen einer Formularverarbeitungs-App mit AI Builder
 
@@ -57,7 +57,7 @@ Auf der Seite **Dokumente hinzufügen** müssen Beispieldokumente bereitgestellt
 > - PDF-Dokumente mit mehr als 50 Seiten
 > - Ausfüllbare PDF-Dokumente
 >
-> Weitere Informationen zu Anforderungen für Eingabedokumente finden Sie unter [Eingabeanforderungen](./overview.md#input-requirements).
+> Weitere Informationen zu Anforderungen für Eingabedokumente finden Sie unter [Eingabeanforderungen](concept-model-overview.md#input-requirements).
 
 ### <a name="upload-your-documents"></a>Hochladen Ihrer Dokumente
 
@@ -78,7 +78,7 @@ Im Rahmen des Analyseschritts werden die hochgeladenen Dokumente von AI Builder
 Wählen Sie nach Abschluss der Analyse die Miniaturansicht aus, um die Feldauswahl zu öffnen.
 
 > [!IMPORTANT]
-> War die Analyse nicht erfolgreich, konnte von AI Builder wahrscheinlich kein strukturierter Text in Ihren Dokumenten erkannt werden. Vergewissern Sie sich, dass die von Ihnen hochgeladenen Dokumente den [Eingabeanforderungen](./overview.md#input-requirements) entsprechen.
+> War die Analyse nicht erfolgreich, konnte von AI Builder wahrscheinlich kein strukturierter Text in Ihren Dokumenten erkannt werden. Vergewissern Sie sich, dass die von Ihnen hochgeladenen Dokumente den [Eingabeanforderungen](concept-model-overview.md#input-requirements) entsprechen.
 
 ## <a name="select-your-form-fields"></a>Auswählen Ihrer Formularfelder
 

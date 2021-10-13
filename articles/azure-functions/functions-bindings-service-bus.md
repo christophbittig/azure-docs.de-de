@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 45c7f5a8d6e2c227e07765f6147e58242ffe3d6c
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: dc0e424e36d67cd25fc93e950e5758c6378c1b7d
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122356462"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660588"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-Bindungen für Azure Functions
 
@@ -66,7 +66,7 @@ Functions 1.x-Apps enthalten automatisch einen Verweis auf das NuGet-Paket, Ver
 
 ## <a name="hostjson-settings"></a>Einstellungen für „host.json“
 
-In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen für diese Bindung in Version 2.x und höheren Versionen beschrieben. Die nachfolgende Beispieldatei „host.json“ enthält nur die Einstellungen für diese Bindung. Weitere Informationen zu globalen Konfigurationseinstellungen finden Sie unter [host.json-Referenz für Azure Functions 2.x](functions-host-json.md).
+[!INCLUDE [functions-host-json-section-intro](../../includes/functions-host-json-section-intro.md)]
 
 > [!NOTE]
 > Eine Referenz für „host.json“ in Functions 1.x finden Sie unter [host.json-Referenz für Azure Functions 1.x](functions-host-json-v1.md).
@@ -120,7 +120,7 @@ Das Beispieldatei host.json unten enthält nur die Einstellungen für Version 5.
     "version": "2.0",
     "extensions": {
         "serviceBus": {
-            "retryOptions":{
+            "clientRetryOptions":{
                 "mode": "exponential",
                 "tryTimeout": "00:01:00",
                 "delay": "00:00:00.80",

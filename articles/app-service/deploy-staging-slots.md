@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 925c468ff744df8b543618e4282ec9b6a9dda78a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 77e374e43722554a215675fd09d0317899d7992f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338887"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709061"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -274,9 +274,6 @@ Damit Benutzer Ihre Beta-App nutzen können, müssen Sie den gleichen Abfragepar
 ```
 
 Standardmäßig erhalten neue Slots eine Routingregel von `0%`, die in grau dargestellt. Wenn Sie diesen Wert explizit auf `0%` festlegen (als schwarzer Text dargestellt), können Ihre Benutzer manuell unter Verwendung des Abfrageparameters `x-ms-routing-name` auf den Stagingslot zugreifen. Sie werden jedoch nicht automatisch an den Slot weitergeleitet, da der Prozentsatz für die Weiterleitung auf „0“ festgelegt ist. Dies ist ein erweitertes Szenario, in dem Sie Ihren Stagingslot vor der Öffentlichkeit verbergen können, während Sie gleichzeitig zulassen, dass interne Teams Änderungen am Slot testen.
-
-> [!NOTE]
-> Es gibt eine bekannte Einschränkung, die sich auf private Endpunkte und das Datenverkehrsrouting mit Slots auswirkt. Ab April 2021 führt das automatische und manuelle Anforderungsrouting zwischen Slots zu „403 Zugriff verweigert“. Diese Einschränkung wird in einer späteren Version aufgehoben. 
 
 <a name="Delete"></a>
 

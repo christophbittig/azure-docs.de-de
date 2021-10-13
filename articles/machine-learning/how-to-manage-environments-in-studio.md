@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Umgebungen im Studio (Vorschau)
+title: Verwalten von Umgebungen im Studio
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie Umgebungen im Azure Machine Learning Studio erstellen und verwalten können.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: sagopal
 ms.date: 5/25/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 8015152a7888df86128aaff31d4b8c6dd9179cf2
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: afa72add9b4fe6014b03331e8ee520669edb29b1
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112460592"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426054"
 ---
-# <a name="manage-software-environments-in-azure-machine-learning-studio-preview"></a>Verwalten von Softwareumgebungen in Azure Machine Learning Studio (Vorschau)
+# <a name="manage-software-environments-in-azure-machine-learning-studio"></a>Verwalten von Softwareumgebungen in Azure Machine Learning Studio
 
 In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-[Umgebungen](/python/api/azureml-core/azureml.core.environment.environment) im Azure Machine Learning Studio erstellen und verwalten können. Verwenden Sie die Umgebungen, um die Softwareabhängigkeiten Ihrer Projekte in ihrem zeitlichen Ablauf nachzuverfolgen und zu reproduzieren.
 
@@ -37,7 +37,7 @@ Eine allgemeine Übersicht zur Funktionsweise von Umgebungen in Azure Machine Le
 
 ## <a name="browse-curated-environments"></a>Durchsuchen zusammengestellter Umgebungen
 
-Zusammengestellte Umgebungen enthalten Sammlungen mit Python-Paketen und sind standardmäßig in Ihrem Arbeitsbereich verfügbar. Diese Umgebungen werden durch zwischengespeicherte Docker-Images unterstützt, wodurch die Kosten für die Vorbereitung der Ausführung reduziert werden. 
+Zusammengestellte Umgebungen enthalten Sammlungen mit Python-Paketen und sind standardmäßig in Ihrem Arbeitsbereich verfügbar. Diese Umgebungen werden durch zwischengespeicherte Docker-Images unterstützt, wodurch die Kosten für die Vorbereitung der Ausführung reduziert und Trainings- und Rückschlussszenarios unterstützt werden. 
 
 Klicken Sie auf eine Umgebung, um detaillierte Informationen über deren Inhalt zu erhalten. Weitere Informationen finden Sie unter [Azure Machine Learning – zusammengestellte Umgebungen](resource-curated-environments.md). 
 

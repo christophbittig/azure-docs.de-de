@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/01/2021
 ms.author: cshoe
-ms.openlocfilehash: 5d3513ea7c7e44afde70765bed668c93cf4096bb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dbeec528e22d3622b374d6cfee2d51a61b989aac
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582599"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129661158"
 ---
 # <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Übersicht über Azure Cosmos DB-Trigger und -Bindungen für Azure Functions 2.x oder höher
 
@@ -74,7 +74,7 @@ Functions 1.x-Apps enthalten automatisch einen Verweis auf das NuGet-Paket, Ver
 
 ## <a name="hostjson-settings"></a>Einstellungen für „host.json“
 
-In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen für diese Bindung in Azure Functions Version 2.x beschrieben. Weitere Informationen zu globalen Konfigurationseinstellungen in Azure Functions Version 2.x finden Sie unter [host.json-Referenz für Azure Functions 2.x](functions-host-json.md).
+[!INCLUDE [functions-host-json-section-intro](../../includes/functions-host-json-section-intro.md)]
 
 ```json
 {
@@ -94,8 +94,8 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
 |Eigenschaft  |Standard |BESCHREIBUNG |
 |----------|--------|------------|
 |GatewayMode|Gateway|Der von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsmodus. Die Optionen sind `Direct` und `Gateway`.|
-|Protocol|HTTPS|Das von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsprotokoll. Hier finden Sie [eine Erläuterung der beiden Modi](../cosmos-db/performance-tips.md#networking). <br><br> Diese Einstellung ist in [Version 4.x der Erweiterung nicht verfügbar](#cosmos-db-extension-4x-and-higher). |
-|leasePrefix|–|Lease-Präfix, das durchgängig für alle Funktionen in einer App verwendet wird. <br><br> Diese Einstellung ist in [Version 4.x der Erweiterung nicht verfügbar](#cosmos-db-extension-4x-and-higher).|
+|Protocol|HTTPS|Das von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsprotokoll. Hier finden Sie [eine Erläuterung der beiden Modi](../cosmos-db/performance-tips.md#networking). <br><br> Diese Einstellung ist in [Version 4.x der Erweiterung](#cosmos-db-extension-4x-and-higher) nicht verfügbar. |
+|leasePrefix|–|Lease-Präfix, das durchgängig für alle Funktionen in einer App verwendet wird. <br><br> Diese Einstellung ist in [Version 4.x der Erweiterung](#cosmos-db-extension-4x-and-higher) nicht verfügbar.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

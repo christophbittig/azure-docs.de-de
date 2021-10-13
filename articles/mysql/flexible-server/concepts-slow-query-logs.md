@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 7550fafa0a1fdf67baca4f9c777a4a064f522728
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: bf3aa8b675e242952f32678059b8b2c89d5b95e0
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639697"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612425"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Protokolle für langsame Abfragen für Azure Database for MySQL Flexible Server (Vorschau)
 
@@ -41,7 +41,7 @@ Vollständige Beschreibungen der Parameter des Protokolls für langsame Abfragen
 
 ## <a name="access-slow-query-logs"></a>Zugreifen auf Protokolle für langsame Abfragen
 
-Protokolle zu langsamen Abfragen sind in die Azure Monitor-Diagnoseeinstellungen integriert. Nachdem Sie Protokolle zu langsamen Abfragen auf Ihrem flexiblen MySQL-Server aktiviert haben, können Sie sie an Azure Monitor-Protokolle, Event Hubs oder Azure Storage senden. Weitere Informationen über Diagnoseeinstellungen finden Sie in der [Dokumentation zu Diagnoseprotokollen](../../azure-monitor/essentials/platform-logs-overview.md). Weitere Informationen zum Aktivieren von Diagnoseeinstellungen im Azure-Portal finden Sie im Artikel zum [Portal für Protokolle für langsame Abfragen](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics).
+Protokolle zu langsamen Abfragen sind in die Azure Monitor-Diagnoseeinstellungen integriert. Nachdem Sie Protokolle zu langsamen Abfragen auf Ihrem flexiblen MySQL-Server aktiviert haben, können Sie sie an Azure Monitor-Protokolle, Event Hubs oder Azure Storage senden. Weitere Informationen über Diagnoseeinstellungen finden Sie in der [Dokumentation zu Diagnoseprotokollen](../../azure-monitor/essentials/platform-logs-overview.md). Weitere Informationen zum Aktivieren von Diagnoseeinstellungen im Azure-Portal finden Sie im Artikel zum [Portal für Protokolle für langsame Abfragen](tutorial-query-performance-insights.md#set-up-diagnostics).
 
 In der folgenden Tabelle wird die Ausgabe des Protokolls für langsame Abfragen beschrieben. Je nach Ausgabemethode können die enthaltenen Felder und ihre Reihenfolge variieren.
 
@@ -133,5 +133,5 @@ Sobald die Protokolle für langsamen Abfragen an Azure Monitor-Protokolle über 
     
 ## <a name="next-steps"></a>Nächste Schritte
 - Informieren Sie sich über [Überwachungsprotokolle](concepts-audit-logs.md).
-- Konfigurieren von Protokollen für langsame Abfragen im [Azure-Portal](how-to-configure-slow-query-logs-portal.md)
+- [Query Performance Insight](tutorial-query-performance-insights.md)
 <!-- - [How to configure slow query logs from the Azure CLI](howto-configure-server-logs-in-cli.md). -->

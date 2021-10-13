@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/16/2021
-ms.openlocfilehash: 186fa5fe490541ce465eca37cf21a6a63923e2ee
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.openlocfilehash: 986bc72d135cbbfceeb4b7e60556673a8dd8edbc
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112321858"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275846"
 ---
 # <a name="add-scoring-profiles-to-a-search-index"></a>Hinzufügen von Bewertungsprofilen zu einem Suchindex
 

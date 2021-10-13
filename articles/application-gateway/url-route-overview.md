@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7a24b9631362618ee3be5e94066ac5267ac85962
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: e84ee56b57c4e97e2fd77e38acf45fc0d426fb58
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113504871"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277079"
 ---
 # <a name="url-path-based-routing-overview"></a>Routing auf URL-Pfadbasis – Übersicht
 
@@ -64,7 +64,7 @@ Mit dem urlPathMap-Element werden Pfadmuster für Zuordnungen zu Back-End-Server
 
 ### <a name="pathpattern"></a>PathPattern
 
-Eine Liste der Pfadmuster für den Abgleich. Jedes muss mit „/“ beginnen, und ein „*“ ist nur am Ende nach „/“ zulässig. Die Zeichenfolge, die in den Pfadabgleich eingegeben wird, enthält keinen Text nach dem ersten Fragezeichen (?) oder der ersten Raute (#), und diese Zeichen sind hier nicht zulässig. Ansonsten sind in PathPattern alle Zeichen zulässig, die auch in einer URL zulässig sind.
+Eine Liste der Pfadmuster für den Abgleich. Jeder Pfad muss mit / beginnen und kann \* als Platzhalterzeichen verwenden. Die Zeichenfolge, die in den Pfadabgleich eingegeben wird, enthält keinen Text nach dem ersten Fragezeichen (?) oder der ersten Raute (#), und diese Zeichen sind hier nicht zulässig. Ansonsten sind in PathPattern alle Zeichen zulässig, die auch in einer URL zulässig sind.
 
 Die unterstützten Muster sind davon abhängig, ob Sie Application Gateway v1 oder v2 bereitgestellt haben:
 
@@ -75,10 +75,10 @@ Bei den Pfadregeln wird die Groß-/Kleinschreibung nicht beachtet.
 |v1-Pfadmuster  |Unterstützt?  |
 |---------|---------|
 |`/images/*`     |ja|
-|`/images*`     |Ja|
-|`/images/*.jpg`     |Nein|
-|`/*.jpg`     |Nein|
-|`/Repos/*/Comments/*`     |Nein|
+|`/images*`     |ja|
+|`/images/*.jpg`     |nein|
+|`/*.jpg`     |nein|
+|`/Repos/*/Comments/*`     |nein|
 |`/CurrentUser/Comments/*`     |ja|
 
 #### <a name="v2"></a>V2
@@ -88,10 +88,10 @@ Bei den Pfadregeln wird die Groß-/Kleinschreibung nicht beachtet.
 |v2-Pfadmuster  |Unterstützt?  |
 |---------|---------|
 |`/images/*`     |ja|
-|`/images*`     |Ja|
-|`/images/*.jpg`     |Nein|
-|`/*.jpg`     |Nein|
-|`/Repos/*/Comments/*`     |Nein|
+|`/images*`     |ja|
+|`/images/*.jpg`     |nein|
+|`/*.jpg`     |nein|
+|`/Repos/*/Comments/*`     |nein|
 |`/CurrentUser/Comments/*`     |ja|
 
 Weitere Informationen erhalten Sie in einer [Resource Manager-Vorlage mit URL-basiertem Routing](https://azure.microsoft.com/resources/templates/application-gateway-url-path-based-routing) .

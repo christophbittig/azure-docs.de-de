@@ -6,12 +6,12 @@ ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: 7f10654e1c96f1756e5864d20fa2a6817385e994
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a90d9a82ff26c62423651d8d1b16173300147a1c
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98629792"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536784"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>Replizieren von lokalen Computern mit privaten Endpunkten
 
@@ -39,6 +39,9 @@ Auf der folgenden Abbildung sehen Sie den Replikationsworkflow für eine hybride
   Bei Bedarf können Sie das Netzwerksicherheitsgruppentag „Azure Active Directory“ und die Azure Firewall-Tags verwenden, um den Zugriff auf Azure Active Directory zuzulassen.
 - In dem Umgehungsnetzwerk, in dem Ihr privater Endpunkt erstellt wird, sind fünf IP-Adressen erforderlich. Wenn Sie einen privaten Endpunkt für den Tresor erstellen, erstellt Site Recovery fünf private Links für den Zugriff auf die zugehörigen Microservices.
 - Für die Konnektivität privater Endpunkte mit einem Cachespeicherkonto ist eine zusätzliche IP-Adresse im Umgehungsnetzwerk erforderlich. Sie können zwischen einem lokalen und Ihrem Speicherkontoendpunkt eine beliebige Konnektivitätsmethode verwenden. Sie können beispielsweise das Internet oder Microsoft Azure [ExpressRoute](../expressroute/index.yml) verwenden. Das Einrichten eines privaten Links ist optional. Sie können private Endpunkte als Speicher nur für Speicherkonten des Typs „Universell v2“ erstellen. Unter [Azure-Seitenblobs: Preise](https://azure.microsoft.com/pricing/details/storage/page-blobs/) finden Sie Informationen zu den Preisen für die Datenübertragung für Speicherkonten des Typs „Universell v2“.
+
+> [!NOTE]
+> Beim Einrichten privater Endpunkte zum Schutz von VMware und physischen Computern müssen Sie MySQL manuell auf dem Konfigurationsserver installieren. Führen Sie die [hier](https://docs.microsoft.com/azure/site-recovery/vmware-azure-deploy-configuration-server#configure-settings) beschriebenen Schritte aus, um die manuelle Installation durchzuführen. 
 
  ## <a name="create-and-use-private-endpoints-for-site-recovery"></a>Erstellen und Verwenden privater Endpunkte für Site Recovery
 

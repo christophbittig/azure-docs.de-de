@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/27/2021
-ms.openlocfilehash: 675c90218f456fc0f238fcf3b1fb93d2e5a7bc44
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 83bee24ca8da03f6a6896bb47cc298860f941f4c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296304"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711976"
 ---
 # <a name="onboard-on-premises-servers-in-vmware-virtual-environment-to-azure-arc"></a>Onboarding lokaler Server in der virtuellen VMware-Umgebung in Azure Arc   
 
@@ -37,7 +37,7 @@ Mit Azure Arc können Sie Ihre Hybrid-IT-Infrastruktur auf einer zentralen Benut
     - Stellen Sie sicher, das dem Azure-Konto die [erforderlichen Azure-Rollen](../azure-arc/servers/agent-overview.md#required-permissions) zugewiesen sind.
     - Achten Sie darauf, dass die [erforderlichen URLs](../azure-arc/servers/agent-overview.md#networking-configuration) nicht blockiert werden, wenn die ermittelten Server eine Verbindung über eine Firewall oder einen Proxyserver herstellen, um über das Internet zu kommunizieren.
     - Sehen Sie sich die für Azure Arc [unterstützten Regionen](../azure-arc/servers/overview.md#supported-regions) an. 
-    - Azure Arc-fähige Server unterstützen bis zu 5.000 Computerinstanzen in einer Ressourcengruppe.
+    - Server mit Azure Arc-Unterstützung unterstützen bis zu 5.000 Computerinstanzen in einer Ressourcengruppe.
 
 
 ## <a name="set-up-the-azure-migrate-project"></a>Einrichten des Azure Migrate-Projekts  

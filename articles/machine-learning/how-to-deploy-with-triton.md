@@ -9,12 +9,12 @@ ms.date: 05/17/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: b6bccf2dd24e557c2d5cdbb5fa6134f8c0dc904d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 64166d398fe488abf7e3820d780bd11699fbb70a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598135"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705371"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Bereitstellung mit hoher Leistung mit Triton Inference Server (Vorschau) 
 
@@ -198,15 +198,6 @@ az ml service delete -n triton-densenet-onnx
 [!notebook-python[] (~/Azureml-examples-main/python-sdk/experimental/deploy-triton/1.bidaf-ncd-local.ipynb?name=delete-service)]
 
 ---
-
-## <a name="how-to-use-azure-machine-learning-triton-inference-server-container-image"></a>Verwenden des Azure Machine Learning-Containerimages für Triton Inference Server
-
-Erfahren Sie, wie Sie das Azure Machine Learning-Containerimage für Triton Inference Server mit der neuen [Befehlszeilenschnittstelle (V2)](/cli/azure/ml?view=azure-cli-latest&preserve-view=true) verwenden. In den folgenden Beispielen wird das Konzept von [Onlineendpunkten und -bereitstellungen](concept-endpoints.md#what-are-online-endpoints-preview) angewandt. 
-
-1. [Bereitstellen eines einzelnen Triton-Modells](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-managed-online-endpoint.sh)
-1. [Bereitstellen mehrerer Triton-Modelle](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-multiple-models-online-endpoint.sh)
-1. [Bereitstellen eines Triton-Ensemblemodells](https://github.com/Azure/azureml-examples/blob/main/cli/deploy-triton-ensemble-managed-online-endpoint.sh)
-1. Auschecken der [Triton-Beispiele](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/triton)
 
 ## <a name="troubleshoot"></a>Problembehandlung
 

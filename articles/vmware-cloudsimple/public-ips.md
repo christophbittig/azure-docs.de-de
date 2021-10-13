@@ -1,19 +1,19 @@
 ---
 title: 'Azure VMware Solution by CloudSimple: Zuordnen öffentlicher IP-Adressen'
 description: Beschreibt, wie öffentliche IP-Adressen für virtuelle Computer in der privaten Cloudumgebung zugeordnet werden.
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 75378ba712a1e71dcd0e16af661672df76c6a9e3
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 121baac8c8a5e881c63f16376f947fce315bd238
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108185304"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616149"
 ---
 # <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Zuordnen von öffentlichen IP-Adressen für die private Cloudumgebung
 

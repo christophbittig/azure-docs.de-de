@@ -1,19 +1,19 @@
 ---
 title: 'Azure VMware Solution by CloudSimple: Konfigurieren von Hochverfügbarkeit zwischen einem lokalen Standort und einem CloudSimple VPN-Gateway'
 description: Beschreibt, wie eine Hochverfügbarkeitsverbindung zwischen einer lokalen Umgebung und einem CloudSimple VPN-Gateway konfiguriert wird, das für Hochverfügbarkeit ausgelegt ist.
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f2ea74aa319bd3cf736a50542e2e8d0285a13646
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e0ccebc3f60ad8a83ea787ef77113d296301845e
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577749"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612026"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurieren einer Hochverfügbarkeitsverbindung zwischen einem lokalen Standort und einem CloudSimple VPN-Gateway
 

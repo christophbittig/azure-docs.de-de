@@ -1,26 +1,26 @@
 ---
-title: Kopieren von Daten aus Drill mithilfe von Azure Data Factory
+title: Kopieren von Daten aus Drill
+description: Erfahren Sie, wie Sie mithilfe einer Kopieraktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline Daten aus Drill in unterstützte Senkendatenspeicher kopieren.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Daten aus Drill mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 4584dc7977cdb9772b8e6b6cfdf0f180a5b528f6
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: f01bb384ae6f49bf6996f5549323e3e506bef7a6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312975"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778018"
 ---
-# <a name="copy-data-from-drill-using-azure-data-factory"></a>Kopieren von Daten aus Drill mithilfe von Azure Data Factory
+# <a name="copy-data-from-drill-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus Drill mithilfe von Azure Data Factory oder Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Drill zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline verwenden, um Daten aus Drill zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -31,7 +31,7 @@ Der Drill-Connector wird für die folgenden Aktivitäten unterstützt:
 
 Sie können Daten aus Drill in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Konnektivität. Daher müssen Sie mit diesem Connector keinen Treiber manuell installieren.
+Der Dienst enthält einen integrierten Treiber zum Herstellen der Konnektivität. Daher müssen Sie keinen Treiber manuell installieren, wenn dieser Connector verwendet wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,7 +49,7 @@ Führen Sie die folgenden Schritte aus, um über die Benutzeroberfläche des Azu
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts mithilfe der Azure Data Factory-Benutzeroberfläche":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Screenshot: Erstellen eines neuen verknüpften Diensts über die Azure Data Factory-Benutzeroberfläche":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -203,4 +203,4 @@ Legen Sie zum Kopieren von Daten aus Drill den Quelltyp in der Kopieraktivität 
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quelles und Senken für die Kopieraktivität unterstützt werden, finden Sie in der Dokumentation für [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

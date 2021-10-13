@@ -1,19 +1,19 @@
 ---
 title: Sicherstellen der Hochverfügbarkeit von Anwendungen bei Ausführung in VMware in Azure
 description: In diesem Artikel werden CloudSimple-Hochverfügbarkeitsfunktionen für die Behandlung häufiger Anwendungsfehlerszenarien von Anwendungen beschrieben, die in einer privaten CloudSimple-Cloud ausgeführt werden.
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 20cd474c36749cfbe9848dd54f2a38892bd80ec0
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 3ef9c852370052f5613d7395c7518c6a3f15b8d0
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177744"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614686"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Sicherstellen der Hochverfügbarkeit von Anwendungen bei Ausführung in VMware in Azure
 

@@ -13,12 +13,12 @@ ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 72537e46d7d249190585552e0a8ee11c43e40340
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2148aa8deaa698c10918ee7a6b667c7d90286448
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128566556"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355081"
 ---
 # <a name="migrate-confidential-client-applications-from-adalnet-to-msalnet"></a>Migrieren vertraulicher Clientanwendungen von ADAL.NET zu MSAL.NET
 
@@ -38,7 +38,7 @@ Für App-Registrierungen gilt:
    - Eine `resourceId`-Zeichenfolge. Diese Variable ist der App-ID-URI der Web-API, die Sie aufrufen möchten.
    - Eine Instanz von `IClientAssertionCertificate` oder von `ClientAssertion`. Diese Instanz stellt die Clientanmeldeinformationen für Ihre App bereit, um die Identität Ihrer App nachzuweisen.
 
-1. Nachdem Sie festgestellt haben, dass Sie über Apps mit Verwendung von ADAL.NET verfügen, installieren Sie das MSAL.NET-NuGet-Paket [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) und aktualisieren Ihre Projektbibliotheksverweise. Weitere Informationen finden Sie unter [Installieren eines NuGet-Pakets](https://www.bing.com/search?q=install+nuget+package). Wenn Sie Tokencacheserialisierungsmodule verwenden möchten, installieren Sie auch [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web).
+1. Nachdem Sie festgestellt haben, dass Sie über Apps mit Verwendung von ADAL.NET verfügen, installieren Sie das MSAL.NET-NuGet-Paket [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) und aktualisieren Ihre Projektbibliotheksverweise. Weitere Informationen finden Sie unter [Installieren eines NuGet-Pakets](https://www.bing.com/search?q=install+nuget+package). Wenn Sie Module zur Serialisierung des Tokencaches verwenden möchten, installieren Sie auch [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache).
 
 1. Aktualisieren Sie den Code gemäß dem Szenario für vertrauliche Clients. Einige der erforderlichen Schritte gelten für alle Szenarien mit vertraulichen Clients. Andere Schritte gelten jeweils nur für ein einzelnes Szenario. 
 

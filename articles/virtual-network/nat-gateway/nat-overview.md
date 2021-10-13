@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: conceptual
 ms.date: 06/29/2021
 ms.author: allensu
-ms.openlocfilehash: afaee074fcfda1713031468a18039aac8aa398ca
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: dfd00b0eb924c13cc68dbf0d6d1b1833c3ad7893
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297062"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236613"
 ---
 # <a name="what-is-virtual-network-nat"></a>Was ist Virtual Network NAT?
 
@@ -120,6 +120,7 @@ Wir möchten wissen, wie wir den Dienst verbessern können. Unter [UserVoice fü
 * NAT ist mit öffentlichen IP-Adressen, Präfixen für öffentliche IP-Adressen und Lastenausgleichsressourcen der Standard-SKU kompatibel. Basic-Ressourcen, z. B. Load Balancer im Tarif „Basic“, und alle davon abgeleiteten Produkte sind nicht mit NAT kompatibel.  Basic-Ressourcen müssen in einem Subnetz angeordnet sein, für das NAT nicht konfiguriert ist.
 * Die Familie der IPv4-Adressen wird unterstützt.  NAT interagiert nicht mit der Familie der IPv6-Adressen.  Die NAT kann nicht in einem Subnetz mit IPv6-Präfix bereitgestellt werden.
 * NAT kann übergreifend für mehrere virtuelle Netzwerke genutzt werden.
+* NAT kann nicht in einem [Gatewaysubnetz](../../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsub) bereitgestellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

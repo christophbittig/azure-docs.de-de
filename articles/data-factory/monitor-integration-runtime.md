@@ -8,12 +8,12 @@ ms.date: 08/11/2020
 author: minhe-msft
 ms.author: hemin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8633ee6f76319afcd9c62a3aa5d70db77113f235
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9e0136fe9ec7274a1788b11134527c8625c2cace
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124750601"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400456"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory
 
@@ -43,7 +43,7 @@ Die Computeressource für eine Azure-Integrationslaufzeit wird in Azure vollstä
 
 Die folgende Tabelle enthält Beschreibungen für Eigenschaften, die vom Cmdlet für eine Azure-Integrationslaufzeit zurückgegeben werden:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 -------- | ------------- | 
 | Name | Name der Azure-Integrationslaufzeit. |  
 | State | Status der Azure-Integrationslaufzeit. | 
@@ -72,7 +72,7 @@ Dieser Abschnitt enthält Beschreibungen für Eigenschaften, die vom Get-AzDataF
 
 Die folgende Tabelle enthält Beschreibungen von Überwachungseigenschaften für **jeder Knoten**:
 
-| Eigenschaft | Beschreibung | 
+| Eigenschaft | BESCHREIBUNG | 
 | -------- | ----------- | 
 | Name | Name der selbstgehosteten Integrationslaufzeit und die ihr zugeordneten Knoten. Der Knoten ist ein lokaler Windows-Computer, auf dem sich die selbstgehostete Integrationslaufzeit befindet. |  
 | Status | Der Status der allgemeinen selbstgehosteten Integrationslaufzeit und der einzelnen Knoten. Beispiel: Online/Offline/Eingeschränkt usw. Informationen zu diesen Status finden Sie im nächsten Abschnitt. | 
@@ -270,7 +270,7 @@ Auf der Kachel **DIAGNOSE DER KONNEKTIVITÄT** der Azure-SSIS IR-Überwachungsse
 
 #### <a name="static-public-ip-addresses-tile"></a>Kachel „STATISCHE ÖFFENTLICHE IP-ADRESSEN“
 
-Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwenden, wird die Kachel **STATISCHE ÖFFENTLICHE IP-ADRESSEN** auf Ihrer Azure-SSIS IR-Überwachungsseite angezeigt (siehe [Nutzung der eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR](./join-azure-ssis-integration-runtime-virtual-network.md#publicIP)). Auf dieser Kachel können Sie Links auswählen, die Ihre erste/zweite statische öffentliche IP-Adresse für Azure-SSIS IR bezeichnen, um ein Fenster zu öffnen, in dem Sie deren Ressourcen-ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`) aus einem Textfeld kopieren können. Im Popupfenster können Sie auch den Link  **für Ihre erste/zweite statische öffentliche IP-Adresse anzeigen** auswählen, um Ihre erste/zweite statische öffentliche IP-Adresse im Azure-Portal zu verwalten.
+Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwenden, wird die Kachel **STATISCHE ÖFFENTLICHE IP-ADRESSEN** auf Ihrer Azure-SSIS IR-Überwachungsseite angezeigt (siehe [Nutzung der eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR](azure-ssis-integration-runtime-virtual-network-configuration.md#publicIP)). Auf dieser Kachel können Sie Links auswählen, die Ihre erste/zweite statische öffentliche IP-Adresse für Azure-SSIS IR bezeichnen, um ein Fenster zu öffnen, in dem Sie deren Ressourcen-ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`) aus einem Textfeld kopieren können. Im Popupfenster können Sie auch den Link  **für Ihre erste/zweite statische öffentliche IP-Adresse anzeigen** auswählen, um Ihre erste/zweite statische öffentliche IP-Adresse im Azure-Portal zu verwalten.
 
 :::image type="content" source="media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png" alt-text="Überwachen der Azure-SSIS IR – Kachel „STATISCHE ÖFFENTLICHE IP-ADRESSEN“":::
 

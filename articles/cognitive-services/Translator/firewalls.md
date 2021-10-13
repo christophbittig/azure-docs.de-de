@@ -10,24 +10,23 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: lajanuar
-ms.openlocfilehash: f5dd72328180574809c812d670f8165ad84963ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afb0e616f01342c94734155e96367f0b453e313a
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98897746"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401862"
 ---
 # <a name="how-to-translate-behind-ip-firewalls-with-translator"></a>Übersetzung hinter IP-Firewalls mithilfe von Translator
 
-Translator kann hinter Firewalls entweder mithilfe der Domänennamen- oder der IP-Filterung Übersetzungen durchführen. Die Domänennamenfilterung ist hierbei die bevorzugte Methode. Es wird **nicht empfohlen**, Microsoft Translator hinter einer IP-gefilterten Firewall auszuführen. Die Unterstützung für dieses Setup wird in Zukunft möglicherweise ohne Vorankündigung eingestellt.
+Translator kann hinter Firewalls entweder mithilfe der Domänennamen- oder der IP-Filterung Übersetzungen durchführen. Die Domänennamenfilterung ist hierbei die bevorzugte Methode. Wenn Sie weiterhin IP-Filter benötigen, sollten Sie die [Details der IP-Adressen mithilfe des Diensttags](../../virtual-network/service-tags-overview.md#service-tags-on-premises) erhalten. Translator befindet sich unter dem Diensttag „CognitiveServicesManagement“. 
 
-## <a name="translator-ip-addresses"></a>IP-Adressen für Translator
-Die IP-Adressen für Translator (api.cognitive.microsofttranslator.com) lauten ab dem 21. August 2019 wie folgt:
+Sie sollten Microsoft Translator **nicht** hinter einer spezifischen IP-gefilterten Firewall ausführen. Die Unterstützung für dieses Setup wird in Zukunft möglicherweise ohne Vorankündigung eingestellt.
 
-* **Asien-Pazifik:** 20.40.125.208, 20.43.88.240, 20.184.58.62, 40.90.139.163, 104.44.89.44
-* **Europa:** 40.90.138.4, 40.90.141.99, 51.105.170.64, 52.155.218.251
-* **Nordamerika:** 40.90.139.36, 40.90.139.2, 40.119.2.134, 52.224.200.129, 52.249.207.163
+Die IP-Adressen für geografische Translator-Endpunkte sind ab dem 21. September 2021:
 
-## <a name="next-steps"></a>Nächste Schritte
-> [!div class="nextstepaction"]
-> [Übersetzung hinter IP-Firewalls in Translator](reference/v3-0-translate.md)
+|Gebiet|Basis-URL (geografischer Endpunkt)|IP-Adressen|
+|:--|:--|:--|
+|USA|api-nam.cognitive.microsofttranslator.com|20.42.6.144, 20.49.96.128, 40.80.190.224, 40.64.128.192|
+|Europa|api-eur.cognitive.microsofttranslator.com|20.50.1.16, 20.38.87.129|
+|Asien-Pazifik|api-apc.cognitive.microsofttranslator.com|40.80.170.160, 20.43.132.96, 20.37.196.160, 20.43.66.16|

@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 1e46bb0fad37e1a6da3676578f6cd92af912cb3f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 798f381ef067af174370fb21893c32386390449a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963899"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617281"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen
 
@@ -80,10 +80,6 @@ Diese Liste enthält Fehler, die bei Ihren Endbenutzern möglicherweise auftrete
 | Auf diese Unternehmens-App kann nicht zugegriffen werden. Sie haben keine Befugnis, auf diese Anwendung zuzugreifen. Fehler bei der Autorisierung. Stellen Sie sicher, dass der Benutzer über eine Lizenz für Azure Active Directory Premium verfügt. | Möglicherweise erhält der Benutzer diese Fehlermeldung beim Zugriff auf die von Ihnen veröffentlichte App, wenn ihm nicht explizit eine Premium-Lizenz vom Administrator des Abonnenten zugewiesen wurde. Wechseln Sie zur Active Directory-Registerkarte **Lizenzen** des Abonnenten, und stellen Sie sicher, dass diesem Benutzer oder dieser Benutzergruppe eine Premium-Lizenz zugewiesen ist. |
 | Ein Server mit dem angegebenen Hostnamen konnte nicht gefunden werden. | Der Benutzer erhält unter Umständen beim Versuch, auf die von Ihnen veröffentlichte App zuzugreifen, diese Fehlermeldung, wenn die benutzerdefinierte Domäne der Anwendung nicht ordnungsgemäß konfiguriert wurde. Stellen Sie sicher, dass Sie ein Zertifikat für die Domäne hochgeladen und den DNS-Eintrag ordnungsgemäß konfiguriert haben, indem Sie die Schritte unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](./application-proxy-configure-custom-domain.md) ausführen. |
 |Verboten: Auf diese Unternehmens-App kann nicht zugegriffen werden, ODER der Benutzer konnte nicht autorisiert werden. Stellen Sie sicher, dass der Benutzer in Ihrem lokalen AD definiert ist und dass er Zugriff auf die App in Ihrem lokalen AD hat. | Hier kann ein Problem beim Zugriff auf Autorisierungsinformationen vorliegen. Weitere Informationen finden Sie unter [Einige Anwendungen und APIs benötigen Zugriff auf Autorisierungsinformationen für Kontoobjekte]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information). Kurz gesagt: Fügen Sie das Computerkonto des App-Proxyconnectors zur Gruppe „Windows-Autorisierungszugriffsgruppe“ hinzu, um das Problem zu beheben. |
-
-## <a name="my-error-wasnt-listed-here"></a>Mein Fehler wurde hier nicht aufgelistet
-
-Wenn ein Fehler oder ein Problem mit dem Azure AD-Anwendungsproxy auftritt, der in diesem Handbuch zur Problembehandlung nicht aufgeführt ist, möchten wir gerne davon erfahren. Senden Sie eine E-Mail mit Details zum aufgetretenen Fehler an unser [Feedbackteam](mailto:aadapfeedback@microsoft.com).
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Aktivieren des Azure AD-Anwendungsproxys](application-proxy-add-on-premises-application.md)

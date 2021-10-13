@@ -3,12 +3,12 @@ title: Sichern von Azure-Dateifreigaben im Azure-Portal
 description: Erfahren Sie, wie Sie das Azure-Portal zum Sichern von Azure-Dateifreigaben im Recovery Services-Tresor verwenden.
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: e236980310889e84fe905861c5843f5a7b7039a2
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 807a173112d0bb85c008403028ab76000a3096db
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109516756"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427968"
 ---
 # <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
 
@@ -60,6 +60,9 @@ In den folgenden Schritten wird erläutert, wie Sie die Sicherung für mehrere D
 1. Wählen Sie aus der Liste der ermittelten Speicherkonten ein Speicherkonto und dann **OK** aus.
 
    ![In den erkannten Speicherkonten eine Wahl treffen](./media/backup-afs/select-discovered-storage-account.png)
+   
+   >[!NOTE]
+   > Wenn ein Speicherkonto in einer anderen Region als der Tresor vorhanden ist, ist es nicht in der Liste der ermittelten Speicherkonten enthalten.
 
 1. Der nächste Schritt ist das Auswählen der zu sichernden Dateifreigaben. Wählen Sie im Abschnitt **FileShares to Backup** (Zu sichernde Dateifreigaben) die Schaltfläche **Hinzufügen** aus.
 
@@ -100,8 +103,6 @@ In den folgenden Schritten wird erläutert, wie Sie die Sicherung für mehrere D
 
 Nachdem Sie eine Sicherungsrichtlinie festgelegt haben, wird zum geplanten Zeitpunkt eine Momentaufnahme der Dateifreigaben erstellt. Der Wiederherstellungspunkt wird ebenfalls für den gewählten Zeitraum beibehalten.
 
->[!NOTE]
->Azure Backup unterstützt jetzt Richtlinien mit täglicher/wöchentlicher/monatlicher oder jährlicher Aufbewahrung für die Sicherung von Azure-Dateifreigaben.
 
 ## <a name="configure-backup-from-the-file-share-pane"></a>Konfigurieren der Sicherung über den Bereich „Dateifreigabe“
 

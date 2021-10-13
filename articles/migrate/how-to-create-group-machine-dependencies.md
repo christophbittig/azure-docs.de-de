@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 757a10473c2f6776ef3a84310b42209ddd12ed45
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1ad8f9496bd781d6ed33927b4056073a50e0b5a2
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643648"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535064"
 ---
 # <a name="set-up-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung
 
@@ -65,9 +65,13 @@ Installieren Sie die Agents auf jedem Server, den Sie analysieren möchten.
 > Bei Servern, die von System Center Operations Manager 2012 R2 oder höher überwacht werden, müssen Sie den MMA-Agent nicht installieren. Die Dienstzuordnung ist in den Operations Manager integriert. [Befolgen Sie](../azure-monitor/vm/service-map-scom.md#prerequisites) die Anleitung zur Integration.
 
 1. Klicken Sie unter **Azure Migrate: Ermittlung und Bewertung** auf **Ermittelte Server**.
-2. Klicken Sie für jeden Server, den Sie mit der Abhängigkeitsvisualisierung analysieren möchten, in der Spalte **Abhängigkeiten** auf **Agent-Installation erforderlich**.
-3. Laden Sie auf der Seite **Abhängigkeiten** MMA und Dependency-Agent für Windows oder Linux herunter.
-4. Kopieren Sie unter „**MMA-Agent konfigurieren“** die Arbeitsbereichs-ID und den Schlüssel. Sie benötigen diese Angaben für die Installation des MMA-Agents.
+1. Klicken Sie auf **Spalten**, um **Abhängigkeiten (Agent-basiert)** auszuwählen, um die Spalte auf der Seite „Ermittelte Server“ anzuzeigen.
+
+    :::image type="content" source="./media/how-to-create-group-machine-dependencies/columns-inline.png" alt-text="Screenshot, der das Ergebnis nach dem Klicken auf Spalten anzeigt." lightbox="./media/how-to-create-group-machine-dependencies/columns-expanded.png":::
+
+1. Klicken Sie für jeden Server, den Sie mit der Abhängigkeitsvisualisierung analysieren möchten, in der Spalte **Abhängigkeiten** auf **Agent-Installation erforderlich**.
+1. Laden Sie auf der Seite **Abhängigkeiten** MMA und Dependency-Agent für Windows oder Linux herunter.
+1. Kopieren Sie unter „**MMA-Agent konfigurieren“** die Arbeitsbereichs-ID und den Schlüssel. Sie benötigen diese Angaben für die Installation des MMA-Agents.
 
     ![Installieren der Agents](./media/how-to-create-group-machine-dependencies/dependencies-install.png)
 

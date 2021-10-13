@@ -4,13 +4,13 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei zu
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 23d205f44b23b71f476f86d8d589f5d99a417a85
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 4cfbac80e9783dd9424a4b2ee63607fb6f2a7f17
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827543"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361898"
 ---
 # <a name="resource-functions-for-bicep"></a>Ressourcenfunktionen für Bicep
 
@@ -23,6 +23,8 @@ Informationen zum Abrufen von Werten aus der aktuellen Bereitstellung finden Sie
 `extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)`
 
 Gibt die Ressourcen-ID für eine [Erweiterungsressource](../management/extension-resource-types.md) zurück. Hierbei handelt es sich um einen Ressourcentyp, der auf eine andere Ressource angewendet wird, um deren Funktionen zu erweitern.
+
+Namespace: [az](bicep-functions.md#namespaces-for-functions).
 
 Die extensionResourceId-Funktion ist zwar in Bicep-Dateien verfügbar, Sie werden sie aber in der Regel nicht benötigen. Verwenden Sie stattdessen den symbolischen Namen für die Ressource, und greifen Sie auf die `id`-Eigenschaft zu.
 
@@ -110,6 +112,8 @@ Gibt ein Geheimnis aus Azure Key Vault zurück. Die `getSecret`-Funktion kann nu
 
 Für den Schlüsseltresor muss `enabledForTemplateDeployment` auf `true` gesetzt sein. Der Benutzer, der die Bicep-Datei bereitstellt, muss über Zugriff auf das Geheimnis verfügen. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bicep-Bereitstellung](key-vault-parameter.md).
 
+Ein [Namespacequalifizierer](bicep-functions.md#namespaces-for-functions) ist nicht erforderlich, da die Funktion mit einem Ressourcentyp verwendet wird.
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | Beschreibung |
@@ -168,11 +172,13 @@ module sql './sql.bicep' = {
 
 `resourceName.list([apiVersion], [functionValues])`
 
-Sie können eine Listenfunktion für jeden Ressourcentyp mit einem Vorgang aufrufen, der mit `list` beginnt. Häufig werden `list`, `listKeys`, `listKeyValue` und `listSecrets` verwendet. 
+Sie können eine Listenfunktion für jeden Ressourcentyp mit einem Vorgang aufrufen, der mit `list` beginnt. Häufig werden `list`, `listKeys`, `listKeyValue` und `listSecrets` verwendet.
 
 Die Syntax für diese Funktion variiert je nach dem Namen des Auflistungsvorgangs. Die zurückgegebenen Werte variieren auch je nach Vorgang. Bicep unterstützt derzeit keine Vervollständigungen und Validierungen für `list*`-Funktionen.
 
-**Ab Bicep-Version 0.4.412** rufen Sie die Listenfunktion mit dem [Accessor-Operator](operators-access.md#function-accessor) auf. Beispiel: `stg.listKeys()`. 
+**Ab Bicep-Version 0.4.412** rufen Sie die Listenfunktion mit dem [Accessor-Operator](operators-access.md#function-accessor) auf. Beispiel: `stg.listKeys()`.
+
+Ein [Namespacequalifizierer](bicep-functions.md#namespaces-for-functions) ist nicht erforderlich, da die Funktion mit einem Ressourcentyp verwendet wird.
 
 ### <a name="parameters"></a>Parameter
 
@@ -264,12 +270,12 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | ------------- | ------------- |
 | Microsoft.Addons/supportProviders | listsupportplaninfo |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/authorization-server/list-secrets) |
-| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2020-06-01-preview/gateway/list-keys) |
-| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/identity-provider/list-secrets) |
-| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2020-06-01-preview/named-value/list-value) |
-| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/openid-connect-provider/list-secrets) |
-| Microsoft.ApiManagement/service/subscriptions | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/subscription/list-secrets) |
+| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/authorization-server/list-secrets) |
+| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2021-04-01-preview/gateway/list-keys) |
+| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/identity-provider/list-secrets) |
+| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2021-04-01-preview/named-value/list-value) |
+| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/openid-connect-provider/list-secrets) |
+| Microsoft.ApiManagement/service/subscriptions | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/subscription/list-secrets) |
 | Microsoft.AppConfiguration/configurationStores | [ListKeys](/rest/api/appconfiguration/configurationstores/listkeys) |
 | Microsoft.AppPlatform/Spring | [listTestKeys](/rest/api/azurespringcloud/services/listtestkeys) |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
@@ -411,6 +417,8 @@ Um zu bestimmen, welche Ressourcentypen einen list-Vorgang aufweisen, stehen die
 
 Bestimmt, ob ein Ressourcentyp Zonen für eine Region unterstützt.
 
+Namespace: [az](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -472,11 +480,15 @@ Sie können anhand der Antwort von pickZones bestimmen, ob NULL für Zonen berei
 
 **Die providers-Funktion wurde als veraltet markiert.** Ihre Verwendung wird nicht mehr empfohlen. Wenn Sie diese Funktion verwendet haben, um eine API-Version für den Ressourcenanbieter abzurufen, empfehlen wir, dass Sie eine bestimmte API-Version in Ihrer Vorlage bereitstellen. Die Verwendung einer dynamisch zurückgegebenen API-Version kann Ihre Vorlage beschädigen, wenn sich die Eigenschaften zwischen Versionen ändern.
 
+Namespace: [az](bicep-functions.md#namespaces-for-functions).
+
 ## <a name="reference"></a>Referenz
 
 `reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
 Gibt ein Objekt zurück, das den Laufzeitstatus einer Ressource darstellt.
+
+Namespace: [az](bicep-functions.md#namespaces-for-functions).
 
 Die reference-Funktion ist zwar in Bicep-Dateien verfügbar, Sie werden sie aber in der Regel nicht benötigen. Verwenden Sie stattdessen den symbolischen Namen für die Ressource.
 
@@ -519,6 +531,8 @@ Weitere Informationen finden Sie unter [Referenzressourcen](./compare-template-s
 
 Gibt den eindeutigen Bezeichner einer Ressource zurück.
 
+Namespace: [az](bicep-functions.md#namespaces-for-functions).
+
 Die resourceId-Funktion ist zwar in Bicep-Dateien verfügbar, Sie werden sie aber in der Regel nicht benötigen. Verwenden Sie stattdessen den symbolischen Namen für die Ressource, und greifen Sie auf die `id`-Eigenschaft zu.
 
 Diese Funktion wird verwendet, wenn der Ressourcenname zweideutig ist oder nicht innerhalb der gleichen Bicep-Datei zur Verfügung gestellt wird. Das Format des zurückgegebenen Bezeichners variiert abhängig davon, ob die Bereitstellung im Bereich einer Ressourcengruppe, eines Abonnements, einer Verwaltungsgruppe oder eines Mandanten erfolgt.
@@ -559,6 +573,8 @@ Weitere Informationen finden Sie unter der [resourceId-Funktion für JSON-Vorlag
 `subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)`
 
 Gibt den eindeutigen Bezeichner für eine Ressource zurück, die auf Abonnementebene bereitgestellt wird.
+
+Namespace: [az](bicep-functions.md#namespaces-for-functions).
 
 Die subscriptionResourceId-Funktion ist zwar in Bicep-Dateien verfügbar, Sie werden sie aber in der Regel nicht benötigen. Verwenden Sie stattdessen den symbolischen Namen für die Ressource, und greifen Sie auf die `id`-Eigenschaft zu.
 
@@ -619,6 +635,8 @@ resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-pr
 `tenantResourceId(resourceType, resourceName1, [resourceName2], ...)`
 
 Gibt den eindeutigen Bezeichner für eine Ressource zurück, die auf Mandantenebene bereitgestellt wird.
+
+Namespace: [az](bicep-functions.md#namespaces-for-functions).
 
 Die tenantResourceId-Funktion ist zwar in Bicep-Dateien verfügbar, Sie werden sie aber in der Regel nicht benötigen. Verwenden Sie stattdessen den symbolischen Namen für die Ressource, und greifen Sie auf die `id`-Eigenschaft zu.
 

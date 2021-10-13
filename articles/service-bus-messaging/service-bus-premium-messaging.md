@@ -2,13 +2,13 @@
 title: Azure Service Bus-Tarife Premium und Standard
 description: Dieser Artikel beschreibt die Tarife Standard und Premium von Azure Service Bus. Er vergleicht diese Tarife und erläutert technische Unterschiede.
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: c6c520219c383a21d8d2e134d0798f3cb5058c2d
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.date: 10/06/2021
+ms.openlocfilehash: e3899dec34a8c39de0bede60e7cc520989a3239f
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114202420"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620225"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
 

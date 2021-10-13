@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: 601b3659cd23cbd12d96f4e73c24a3a4a6c3fe55
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3684c038ab96fe16d28802012293357c0a8f4e5b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128602259"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232012"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Lesereplikate in Azure Database for MySQL – Flexible Server
 
@@ -27,6 +27,9 @@ Auf der Anwendungsseite wird die Anwendung typischerweise in Java oder PHP entwi
 Mithilfe des Lesereplikatfeatures können Sie Daten von einer Azure Database for MySQL Flexible Server-Instanz auf einem schreibgeschützten Server replizieren. Sie können vom Quellserver auf bis zu **10** Replikate replizieren. Replikate werden asynchron mithilfe des auf der Position der nativen, binären Protokolldatei (binlog) basierenden Replikationsverfahrens der MySQL-Engine aktualisiert. Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
 
 Replikate sind neue Server, die Sie ähnlich wie Ihre flexiblen Azure Database for MySQL-Quellserver verwalten. Für jedes gelesene Replikat fallen Gebühren an, die auf der bereitgestellten Compute-Instanz hinsichtlich der virtuellen Kerne und dem Speicherplatz in GB/Monat basieren. Weitere Informationen finden Sie unter [Azure Data Lake Storage – Preise](./concepts-compute-storage.md#pricing).
+
+> [!NOTE]
+> Das Feature für Lesereplikate ist nur für flexible Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Quellserver einer der folgenden Tarife festgelegt ist.
 
 Weitere Informationen zu Features und Problemen der MySQL-Replikation finden Sie in der [Dokumentation zur MySQL-Replikation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
@@ -141,7 +144,8 @@ Wenn GTID auf einem Quellserver aktiviert ist (`gtid_mode` = ON), wird für neu 
 
 | Szenario | Einschränkung/Überlegung |
 |:-|:-|
-| Replikat auf Server mit aktivierter zonenredundanter Hochverfügbarkeit | Nicht unterstützt |
+| Replikat auf Server mit aktivierter Hochverfügbarkeit | Nicht unterstützt |
+| Replikat auf Server im Tarif „Burstfähig“| Nicht unterstützt |
 | Regionsübergreifende Lesereplikation | Nicht unterstützt |
 | Preise | Die Kosten für den Betrieb des Replikatservers richten sich nach der Region, in der der Replikatserver betrieben wird. |
 | Quellserverneustart | Wenn Sie ein Replikat für eine Quelle erstellen, die keine vorhandenen Replikate hat, startet die Quelle zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch. |

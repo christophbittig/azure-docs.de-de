@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/27/2021
 ms.custom: mqtt, devx-track-js
-ms.openlocfilehash: 505366205793bbbb95798088f5bc47c205b01468
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a95737cd9d15b0ee21249f0db8d1bbb96fb8a3b2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346931"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710083"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub (Node.js)
 
@@ -66,7 +66,7 @@ Am Ende dieses Artikels führen Sie zwei Node.js-Konsolen-Apps aus:
 
 ## <a name="upload-a-file-from-a-device-app"></a>Hochladen einer Datei von einer Geräte-App
 
-In diesem Abschnitt erstellen Sie eine Geräte-App zum Hochladen einer Datei in IoT-Hub. Der Code basiert auf Code, der in den [Azure IoT node.js SDK](https://github.com/Azure/azure-iot-sdk-node)-Gerätebeispielen im Beispiel [upload_to_blob_advanced.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/upload_to_blob_advanced.js) zur Verfügung steht.
+In diesem Abschnitt erstellen Sie eine Geräte-App zum Hochladen einer Datei in IoT-Hub. Der Code basiert auf Code, der in den [Azure IoT node.js SDK](https://github.com/Azure/azure-iot-sdk-node)-Gerätebeispielen im Beispiel [upload_to_blob_advanced.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/javascript/upload_to_blob_advanced.js) zur Verfügung steht.
 
 1. Erstellen Sie einen leeren Ordner mit dem Namen `fileupload`.  Erstellen Sie im Ordner `fileupload` die Datei „package.json“, indem Sie an der Eingabeaufforderung den unten angegebenen Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
 

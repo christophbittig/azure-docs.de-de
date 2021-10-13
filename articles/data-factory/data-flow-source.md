@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/09/2021
-ms.openlocfilehash: a95bfe8ed978a0d67381d0be1f15038c847ab36b
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.date: 10/11/2021
+ms.openlocfilehash: 1c37fdc73b226c003208e02b019ddf4e23b53374
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061217"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129812331"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Quelltransformation in einem Zuordnungsdatenfluss
 
@@ -67,6 +67,7 @@ Der Zuordnungsdatenfluss folgt einem Ansatz zum Extrahieren, Laden und Transform
 | [Hive](connector-hive.md#mapping-data-flow-properties) | | -/✓ |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 | [SQL Server](connector-sql-server.md) | | ✓/✓ |
+| [REST](connector-rest.md#mapping-data-flow-properties) | | ✓/✓ |
 
 Die für diese Connectors spezifischen Einstellungen befinden sich auf der Registerkarte **Quelloptionen**. Informationen und Beispiele zu Datenflussskripts zu diesen Einstellungen finden Sie in der Connectordokumentation.
 

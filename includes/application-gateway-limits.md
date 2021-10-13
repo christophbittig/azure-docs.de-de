@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 03/04/2020
+ms.date: 09/09/2021
 ms.author: victorh
-ms.openlocfilehash: 3e2b9ab4eaf794e5cf64861d7c641b82f18b64dc
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f106ca51487e1c4c306d51161110062ad3582fcd
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "114201217"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129440097"
 ---
 | Resource | Begrenzung | Hinweis |
 | --- | --- | --- |
@@ -18,8 +18,8 @@ ms.locfileid: "114201217"
 | Front-End-Ports |100<sup>1</sup> | |
 | Back-End-Adresspools |100<sup>1</sup> | |
 | Back-End-Server pro Pool |1\.200 | |
-| HTTP-Listener |200<sup>1</sup> |Beschränkt auf 100 aktive Listener, die Datenverkehr weiterleiten. Aktive Listener = Gesamtanzahl von Listenern - nicht aktive Listener.<br>Wenn eine Standardkonfiguration innerhalb einer Routingregel zur Weiterleitung von Datenverkehr (z. B. mit einem Listener, einem Back-End-Pool und HTTP-Einstellungen) festgelegt ist, dann zählt dies ebenfalls als Listener.|
-| HTTP-Lastenausgleichsregeln |100<sup>1</sup> | |
+| HTTP-Listener |200<sup>1</sup> |Beschränkt auf 100 aktive Listener, die Datenverkehr weiterleiten. Aktive Listener = Gesamtanzahl von Listenern - nicht aktive Listener.<br>Wenn eine Standardkonfiguration innerhalb einer Routingregel zur Weiterleitung von Datenverkehr (z. B. mit einem Listener, einem Back-End-Pool und HTTP-Einstellungen) festgelegt ist, dann zählt dies ebenfalls als Listener. Weitere Informationen finden Sie in den [Häufig gestellten Fragen zu Application Gateway](../articles/application-gateway/application-gateway-faq.yml#what-is-considered-an-active-listener-versus-inactive-listener).|
+| HTTP-Lastenausgleichsregeln |400<sup>1</sup> | |
 | Back-End-HTTP-Einstellungen |100<sup>1</sup> | |
 | Instanzen pro Gateway |V1 SKU – 32<br>V2 SKU – 125 | |
 | SSL-Zertifikate |100<sup>1</sup> |1 pro HTTP-Listener |

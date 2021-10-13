@@ -6,14 +6,14 @@ ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 10/05/2021
 ms.author: banders
-ms.openlocfilehash: 0c278256c952fce12833a8f4c5fe55e18c3b40b0
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 797aff6fed0cf2eda46bcf5371e57e18df466f00
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099897"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546960"
 ---
 # <a name="permissions-to-view-and-manage-azure-reservations"></a>Berechtigungen zum Anzeigen und Verwalten von Azure-Reservierungen
 
@@ -31,6 +31,8 @@ Die folgenden Benutzer können Reservierungen standardmäßig anzeigen und verwa
 - Reservierungsadministrator*innen für Reservierungen in Azure Active Directory-Mandanten (Azure AD) (Verzeichnis)
 - Reservierungsleser*innen mit schreibgeschütztem Zugriff auf Reservierungen in Azure Active Directory-Mandanten (Verzeichnis)
 
+Derzeit können die Rollen „Reservierungsadministrator“ und „Reservierungsleser“ nur mithilfe von PowerShell zugewiesen werden. Sie können im Azure-Portal nicht angezeigt oder zugewiesen werden. Weitere Informationen finden Sie unter [Gewähren des Zugriffs mit PowerShell](#grant-access-with-powershell).
+
 Der Reservierungslebenszyklus ist unabhängig von einem Azure-Abonnement. Daher handelt es sich bei der Reservierung nicht um eine Ressource unter dem Azure-Abonnement. Stattdessen ist es eine Ressource auf Mandantenebene mit eigener Azure RBAC-Berechtigung, die von Abonnements getrennt ist. Reservierungen erben nach dem Kauf keine Berechtigungen von Abonnements.
 
 ## <a name="view-and-manage-reservations"></a>Anzeigen und Verwalten von Reservierungen
@@ -42,7 +44,7 @@ Führen Sie als Abrechnungsadministrator*in die folgenden Schritte aus, um alle 
     - Wenn Sie Besitzer eines Abrechnungsprofils für eine Microsoft-Kundenvereinbarung sind, wählen Sie im linken Menü **Abrechnungsprofile** aus. Wählen Sie in der Liste der Abrechnungsprofile ein Profil aus.
 1. Wählen Sie im Menü auf der linken Seite **Produkte und Dienste** > **Reservierungen** aus.
 1. Die vollständige Liste der Reservierungen für Ihr EA-Registrierungsprofil oder -Abrechnungsprofil wird angezeigt.
-1. Abrechnungsadministratoren können den Besitz einer Reservierung übernehmen, indem sie sie auswählen und dann im angezeigten Fenster die Option **Zugriff gewähren** auswählen.
+1. Abrechnungsadministratoren können den Besitz einer Reservierung übernehmen, indem sie mindestens eine Reservierung auswählen, auf **Zugriff gewähren** klicken und dann im angezeigten Fenster die Option **Zugriff gewähren** auswählen.
 
 ### <a name="add-billing-administrators"></a>Hinzufügen von Abrechnungsadministrator*innen
 

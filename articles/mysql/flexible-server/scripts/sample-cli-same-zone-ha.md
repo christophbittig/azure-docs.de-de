@@ -8,16 +8,16 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: f254cc5b8835bb0430d4c2d3ecd0bd2f7d9fa013
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 115baa8d181bd7ebef125e7a666216efe50680d2
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701304"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740782"
 ---
 # <a name="configure-same-zone-high-availability-in-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Konfigurieren der Hochverfügbarkeit in gleicher Zone in einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau) mithilfe der Azure CLI
 
-Dieses CLI-Beispielskript konfiguriert und verwaltet die [Hochverfügbarkeit in gleicher Zone](../concepts-high-availability.md) in einer Instanz von Azure Database for MySQL – Flexible Server. Sie können die Hochverfügbarkeit in gleicher Zone nur bei der Erstellung einer Flexible Server-Instanz aktivieren und sie jederzeit wieder deaktivieren. Gegenwärtig wird die Hochverfügbarkeit in gleicher Zone nur für die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
+Dieses CLI-Beispielskript konfiguriert und verwaltet die [Hochverfügbarkeit in gleicher Zone](../concepts-high-availability.md) in einer Instanz von Azure Database for MySQL – Flexible Server. Gegenwärtig wird die Hochverfügbarkeit in gleicher Zone nur für die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
 
 
 [!INCLUDE [flexible-server-free-trial-note](../../includes/flexible-server-free-trial-note.md)]

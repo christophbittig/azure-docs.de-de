@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple – Verwenden der privaten Cloud als Notfallstandort für lokale Workloads
 description: Hier wird beschrieben, wie Sie Ihre private CloudSimple-Cloud als Notfallwiederherstellungsstandort für lokale VMware-Workloads einrichten.
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e7305557944e00121c54112704f67f861d2aa789
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: f9700b5d25a7d564c72bf959d48ad7cf1afce4e7
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177780"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612387"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Einrichten der privaten CloudSimple-Cloud als Notfallwiederherstellungsstandort für lokale VMware-Workloads
 
@@ -35,7 +35,7 @@ Für die Lösung ist Folgendes erforderlich:
 
 Die folgende Abbildung zeigt die Architektur der Zerto-Lösung.
 
-![Aufbau](media/cloudsimple-zerto-architecture.png)
+![Architektur](media/cloudsimple-zerto-architecture.png)
 
 ## <a name="how-to-deploy-the-solution"></a>Bereitstellen der Lösung
 

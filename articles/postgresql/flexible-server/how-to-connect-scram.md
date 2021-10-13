@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/23/2021
-ms.openlocfilehash: 7fc67ab7162c7fe62df226fd39aefcd350bbdf82
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.date: 10/01/2021
+ms.openlocfilehash: ad7cbfc7c06a86cca79930c9745160cc9af4697f
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112897244"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388867"
 ---
 # <a name="scram-authentication-in-azure-database-for-postgresql---flexible-server"></a>SCRAM-Authentifizierung in Azure Database for PostgreSQL :Flexibler Server
 
@@ -84,6 +84,9 @@ Um mit der SCRAM-Authentifizierungsmethode auf den PostgreSQL-Datenbankserver zu
     ```
 
 8. Anschließend können Sie vom Client, der die SCRAM-Authentifizierung unterstützt, eine Verbindung mit Ihrem Server herstellen.
+
+> [!Note] 
+> Die SCRAM-Authentifizierung wird nicht unterstützt, wenn eine Verbindung mit dem integrierten verwalteten [PgBouncer](concepts-pgbouncer.md) besteht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen und Verwalten von virtuellen Netzwerken für Azure Database for PostgreSQL Flexible Server mithilfe der Azure CLI](./how-to-manage-virtual-network-cli.md)

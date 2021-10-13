@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4276311163134b428fe9d616bf1e6bc23fdedfaf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 11572f957fc2d305f5d6f17303bb8386345abc7b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128638366"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714070"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -57,7 +57,6 @@ Diese Blob-Rest-APIs werden nicht unterstützt:
 - [Get Page Ranges](/rest/api/storageservices/get-page-ranges)
 - [Incremental Copy Blob](/rest/api/storageservices/incremental-copy-blob)
 - [Put Page from URL](/rest/api/storageservices/put-page-from-url)
-- [Put Block List](/rest/api/storageservices/put-block-list)
 
 Nicht verwaltete VM-Datenträger werden für Konten, die über einen hierarchischen Namespace verfügen, nicht unterstützt. Wenn Sie einen hierarchischen Namespace für ein Speicherkonto aktivieren möchten, sollten Sie verwaltete VM-Datenträger in einem Speicherkonto anordnen, für das die Funktion für hierarchische Namespaces nicht aktiviert ist.
 

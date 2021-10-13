@@ -3,12 +3,12 @@ title: Schema für arbeitsbereichsbasierte Application Insights-Ressourcen in Az
 description: Erfahren Sie mehr über die neue Tabellenstruktur und das neue Tabellenschema für arbeitsbereichsbasierte Application Insights-Ressourcen in Azure Monitor.
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: ef9d22cd2b45679928ee54778b2a521ea9ecab03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 040f53836466dec446da6fcd312910ca7ad600e4
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575607"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615503"
 ---
 # <a name="workspace-based-resource-changes"></a>Änderungen bei arbeitsbereichsbasierten Ressourcen
 
@@ -28,7 +28,7 @@ Bei arbeitsbereichsbasierten Application Insights-Ressourcen werden Daten in ein
 | pageViews | AppPageViews| Daten über jede Websiteansicht mit Browserinformationen. |
 | performanceCounters | AppPerformanceCounters | Leistungsmessungen der Computeressourcen, die die Anwendung unterstützen, z. B. Windows-Leistungsindikatoren. |
 | requests | AppRequests | Von Ihrer Anwendung empfangene Anforderungen. Beispielsweise wird für jede HTTP-Anforderung, die Ihre Web-App empfängt, ein separater Anforderungsdatensatz protokolliert.  |
-| Ausnahmen | AppSystemEvents | Ausnahmen, die von der Anwendungslaufzeit ausgelöst werden, erfassen sowohl server- als auch clientseitige (Browser) Ausnahmen. |
+| Ausnahmen | AppExceptions | Ausnahmen, die von der Anwendungslaufzeit ausgelöst werden, erfassen sowohl server- als auch clientseitige (Browser) Ausnahmen. |
 | traces | AppTraces | Ausführliche Protokolle (Ablaufverfolgungen), die über Anwendungscode-/Protokollierungsframeworks ausgegeben und mithilfe von TrackTrace() aufgezeichnet werden. |
 
 ## <a name="table-schemas"></a>Tabellenschemas

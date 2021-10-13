@@ -7,30 +7,30 @@ ms.topic: include
 ms.date: 09/17/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: e19743a7ae754296992f4cb281c10c1d44cbe25c
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: d4ff330662cab9c9ef573af3ea834d15ac3426a5
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094059"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725470"
 ---
-[![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp)
+[![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript/pnp)
 
 In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Sie verwenden die Azure CLI und den loT Explorer, um einen Azure loT-Hub und ein Gerät zu erstellen. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen simulierten Temperaturregler auszuführen, ihn sicher mit dem Hub zu verbinden und Telemetriedaten zu senden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Dieser Schnellstart läuft auf Windows, Linux und Raspberry Pi. Er wurde mit den folgenden Betriebssystemen und Geräteversionen getestet:
+Diese Schnellstartanleitung wird unter Windows, Linux und Raspberry Pi ausgeführt. Sie wurde mit den folgenden Betriebssystem- und Geräteversionen getestet:
 
 - Windows 10
-- Ubuntu 20.04 LTS auf dem Windows-Subsystem für Linux (WSL)
-- Raspberry Pi OS Version 10 (Raspian) auf einem Raspberry Pi 3 Model B+
+- Ubuntu 20.04 LTS, das unter Windows-Subsystem für Linux (WSL) ausgeführt wird
+- Raspberry Pi OS Version 10 (Raspian), das auf einem Raspberry Pi 3 Model B+ ausgeführt wird
 
-Installieren Sie die folgenden Voraussetzungen auf Ihrem Entwicklungscomputer, außer wenn für den Raspberry Pi gekennzeichnet:
+Installieren Sie die folgenden Voraussetzungen auf Ihrem Entwicklungscomputer – es sei denn, dass dies für Raspberry Pi angegeben ist:
 
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 - [Git](https://git-scm.com/downloads).
 - [Node.js](https://nodejs.org)-Version 10 oder höher. Führen Sie zum Überprüfen der Node-Version `node --version` aus.
-- [Azure loT Explorer](https://github.com/Azure/azure-iot-explorer/releases): Plattformübergreifendes, GUI-basiertes Dienstprogramm zur Überwachung und Verwaltung von Azure loT. Wenn Sie Raspberry Pi als Entwicklungsplattform verwenden, empfehlen wir Ihnen, loT Explorer auf einem anderen Computer zu installieren. Wenn Sie loT Explorer nicht installieren möchten, können Sie Azure CLI verwenden, um die gleichen Schritte durchzuführen. 
+- [Azure loT Explorer](https://github.com/Azure/azure-iot-explorer/releases): Plattformübergreifendes, GUI-basiertes Dienstprogramm zur Überwachung und Verwaltung von Azure loT. Wenn Sie Raspberry Pi als Ihre Entwicklungsplattform verwenden, empfehlen wir, IoT Explorer auf einem anderen Computer zu installieren. Wenn Sie IoT Explorer nicht installieren möchten, können Sie mithilfe der Azure CLI die gleichen Schritte ausführen. 
 - Azure-Befehlszeilenschnittstelle. In dieser Schnellstartanleitung gibt es zwei Möglichkeiten zum Ausführen von Azure CLI-Befehlen:
     - Verwenden Sie Azure Cloud Shell. Dabei handelt es sich um eine interaktive Shell, mit der CLI-Befehle im Browser ausgeführt werden. Diese Option wird empfohlen, da Sie nichts installieren müssen. Wenn Sie Cloud Shell zum ersten Mal verwenden, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Führen Sie in der [Cloud Shell-Schnellstartanleitung](../articles/cloud-shell/quickstart.md) die Schritte zum **Starten von Cloud Shell** und **Auswählen der Bash-Umgebung** aus.
     - Führen Sie optional die Azure CLI auf dem lokalen Computer aus. Wenn die Azure CLI bereits installiert ist, führen Sie `az upgrade` aus, um die CLI und die Erweiterungen auf die aktuelle Version zu aktualisieren. Informationen zur Installation der Azure CLI finden Sie unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). Wenn Sie Raspberry Pi als Entwicklungsplattform verwenden, empfehlen wir Ihnen, Azure Cloud Shell zu verwenden oder Azure CLI auf einem anderen Computer zu installieren.
@@ -55,12 +55,12 @@ In diesem Abschnitt verwenden Sie das Node.js SDK zum Senden von Nachrichten von
 
     **Windows**
     ```console
-    cd azure-iot-sdk-node\device\samples\pnp
+    cd azure-iot-sdk-node\device\samples\javascript\pnp
     ```
 
-    **Linux oder Raspberry Pi OS**
+    **Linux oder Raspberry Pi OS**
     ```console
-    cd azure-iot-sdk-node/device/samples/pnp
+    cd azure-iot-sdk-node/device/samples/javascript/pnp
     ```
 
 1. Installieren Sie das Node.js SDK von Azure IoT sowie die erforderlichen Abhängigkeiten:

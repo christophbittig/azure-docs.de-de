@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: f0cac775870345ae298672c2af5dad8277c592e6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 671fa1a8c9e0a9c29cfd5d2f93acd1aa7f3a8c4c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639784"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658954"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Übersicht über RabbitMQ-Trigger für Azure Functions
 
@@ -264,7 +264,7 @@ Warteschlangen für unzustellbare Nachrichten und Austauschvorgänge können nic
 
 ## <a name="hostjson-settings"></a>Einstellungen für „host.json“
 
-In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen für diese Bindung in Version 2.x und höheren Versionen beschrieben. Die nachfolgende Beispieldatei *host.json* enthält nur die Einstellungen für diese Bindung. Weitere Informationen zu globalen Konfigurationseinstellungen finden Sie unter [host.json-Referenz für Azure Functions 2.x](functions-host-json.md).
+[!INCLUDE [functions-host-json-section-intro](../../includes/functions-host-json-section-intro.md)]
 
 ```json
 {

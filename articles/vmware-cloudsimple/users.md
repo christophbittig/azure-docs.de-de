@@ -1,19 +1,19 @@
 ---
 title: Anzeigen von Benutzern des Azure VMware CloudSimple-Portals – Azure VMware Solution by CloudSimple
 description: Beschreibt, wie die Liste der Benutzer mit Zugriff auf das CloudSimple-Portal über das Azure-Portal angezeigt wird.
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 84e5e57e323689355cf6758e1748db040d2ac577
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 95735c2366e86df81e8020597798d3dde54a7eab
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181038"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614116"
 ---
 # <a name="view-the-list-of-cloudsimple-portal-users"></a>Anzeigen der Liste der CloudSimple-Portalbenutzer
 

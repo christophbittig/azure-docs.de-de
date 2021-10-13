@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 08/25/2021
+ms.date: 09/26/2021
 ms.author: daberry
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 66907bcaef5818990d5a4e855f4cbc98624e2b90
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: b13ac1d3d72a28538a2bdbdc149017848105562c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081090"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619669"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Tabellen-API-App per .NET SDK und Azure Cosmos DB
 
@@ -619,7 +619,7 @@ Wählen Sie im oberen Menü das Element **Filter Results** (Filterergebnisse) au
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Beispielanwendung abgeschlossen haben, sollten Sie alle Azure-Ressourcen im Zusammenhang mit diesem Artikel aus Ihrem Azure-Konto entfernen.  Sie können dies durch Löschen der Ressourcengruppe erreichen.
+Wenn Sie die Beispielanwendung beendet haben, sollten Sie alle Azure-Ressourcen im Zusammenhang mit diesem Artikel aus Ihrem Azure-Konto entfernen.  Sie können dazu die Ressourcengruppe löschen.
 
 ### <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
 
@@ -633,7 +633,7 @@ Eine Ressourcengruppe kann über das [Azure-Portal](https://portal.azure.com/) w
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Um eine Ressourcengruppe mithilfe der Azure CLI zu löschen, verwenden Sie den Befehl [az group delete](/cli/azure/group#az_group_delete) mit dem Namen der zu löschenden Ressourcengruppe.  Wenn Sie eine Ressourcengruppe löschen, werden auch alle in der Ressourcengruppe enthaltenen Azure-Ressourcen entfernt.
+Um eine Ressourcengruppe über die Azure-Befehlszeilenschnittstelle zu löschen, verwenden Sie den Befehl [az group delete](/cli/azure/group#az_group_delete) mit dem Namen der zu löschenden Ressourcengruppe.  Wenn Sie eine Ressourcengruppe löschen, werden auch alle in der Ressourcengruppe enthaltenen Azure-Ressourcen entfernt.
 
 ```azurecli
 az group delete --name $RESOURCE_GROUP_NAME

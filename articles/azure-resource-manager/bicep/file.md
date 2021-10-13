@@ -2,13 +2,13 @@
 title: BICEP-Dateistruktur und-Syntax
 description: Beschreibt die Struktur und die Eigenschaften einer BICEP-Datei mithilfe von deklarativer Syntax.
 ms.topic: conceptual
-ms.date: 09/21/2021
-ms.openlocfilehash: f0fb7214d261c686273e275cb0d3d18b1d393f6b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2021
+ms.openlocfilehash: e627821f80f76ff536859fd643bd01c55d50ab7e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128654326"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350410"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -175,6 +175,17 @@ In der folgenden Tabelle werden die verfügbaren Decorator-Elemente und deren Ve
 | minValue | INT | INT | Der minimale Wert für den ganzzahligen Parameter. Der Stop-Wert ist inklusiv. |
 | secure | String-Objekt | none | Markiert den Parameter als sicher. Der Wert eines sicheren Parameters wird weder im Bereitstellungsverlauf gespeichert noch protokolliert. Weitere Informationen finden Sie unter Sichern von [Zeichenfolgen und Objekten](data-types.md#secure-strings-and-objects). |
 
+Decorators befinden sich im [sys-Namespace](bicep-functions.md#namespaces-for-functions). Wenn Sie diesen Decorator von einem anderen Element gleichen Namens unterscheiden müssen, stellen Sie dem Decorator `sys` voran. Wenn Ihre Bicep-Datei z. B. einen Parameter mit dem Namen `description` enthält, müssen Sie den sys-Namespace hinzufügen, wenn Sie den Decorator **description** verwenden.
+
+```bicep
+@sys.description('The name of the instance.')
+param name string
+@sys.description('The description of the instance to display.')
+param description string
+```
+
+Weitere Informationen finden Sie unter [Decorators](parameters.md#decorators).
+
 ## <a name="variables"></a>Variablen
 
 Verwenden Sie Variablen für komplexe Ausdrücke, die in einer BICEP-Datei wiederholt werden. Beispielsweise können Sie eine Variable für einen Ressourcennamen hinzufügen, der durch Verkettung mehrerer Werte erstellt wird.
@@ -281,6 +292,8 @@ resource storageAccountResources 'Microsoft.Storage/storageAccounts@2019-06-01' 
   ...
 }]
 ```
+
+Der `batchSize`-Decorator befindet sich im [sys-Namespace](bicep-functions.md#namespaces-for-functions). Wenn Sie diesen Decorator von einem anderen Element gleichen Namens unterscheiden müssen, stellen Sie dem Decorator **sys** voran: `@sys.batchSize(2)`
 
 Weitere Informationen finden Sie unter [Bereitstellung in Batches](loop-resources.md#deploy-in-batches).
 

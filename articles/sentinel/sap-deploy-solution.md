@@ -2,18 +2,18 @@
 title: Bereitstellen der kontinuierlichen Bedrohungsüberwachung in SAP | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Azure Sentinel-Lösung für SAP-Umgebungen bereitstellen.
 author: batamig
-ms.author: bagold
+ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: how-to
 ms.custom: mvc
 ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 7b6f68eea2c177ad4e6776723ae0387c0e0da6a1
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: fb8d75b9dbf4fd2e6c0fd82ecbc0dce2ce2447c0
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361830"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857821"
 ---
 #  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>Bereitstellen der kontinuierlichen Bedrohungsüberwachung in SAP (öffentliche Vorschau)
 
@@ -314,7 +314,7 @@ Prüfen Sie unbedingt, ob weitere Updates verfügbar sind:
 
 Wenn die SAP HANA-Datenbanküberwachungsprotokolle mit Syslog konfiguriert sind, müssen Sie auch Ihren Log Analytics-Agent zum Erfassen der Syslog-Dateien konfigurieren.
 
-1. Stellen Sie sicher, dass der SAP HANA-Überwachungsprotokollpfad wie auf der [Launchpad-Website des SAP-Support](https://launchpad.support.sap.com/#/notes/0002624117) im *SAP-Hinweis 0002624117* beschrieben so konfiguriert ist, dass Syslog verwendet wird. Weitere Informationen finden Sie unter
+1. Stellen Sie sicher, dass der SAP HANA-Überwachungsprotokollpfad wie auf der [Launchpad-Website des SAP-Support](https://launchpad.support.sap.com/#/notes/0002624117) im *SAP-Hinweis 0002624117* beschrieben so konfiguriert ist, dass Syslog verwendet wird. Weitere Informationen finden Sie unter:
 
     - [SAP HANA-Überwachungspfad – Bewährte Methode](https://archive.sap.com/documents/docs/DOC-51098)
     - [Empfehlungen für die Überwachung](https://help.sap.com/viewer/742945a940f240f4a2a0e39f93d3e2d4/2.0.05/en-US/5c34ecd355e44aa9af3b3e6de4bbf5c1.html)

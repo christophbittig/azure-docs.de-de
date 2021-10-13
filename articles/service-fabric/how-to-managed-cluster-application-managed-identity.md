@@ -3,12 +3,12 @@ title: Konfigurieren und Verwenden von Anwendungen mit einer verwalteten Identit
 description: Erfahren Sie, wie Sie eine Anwendung mit einer verwalteten Identität in einer ARM-Vorlage (Azure Resource Manager) konfigurieren und verwenden, die in einem verwalteten Azure Service Fabric-Cluster bereitgestellt wird.
 ms.topic: how-to
 ms.date: 8/23/2021
-ms.openlocfilehash: 5007f17754572c03ff820ecda1bb09f6e8a8020e
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: e3fcae9a77a4fb559d8109dd2cdd1b2a9be77b73
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864749"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615256"
 ---
 # <a name="deploy-an-application-with-managed-identity-to-a-service-fabric-managed-cluster"></a>Bereitstellen einer Anwendung mit verwalteter Identität in einem verwalteten Service Fabric-Cluster
 
@@ -195,5 +195,5 @@ Diese Eigenschaft deklariert (gegenüber Azure Resource Manager sowie gegenüber
     Dies ist die gleiche Zuordnung einer Identität zu einem Dienst, die oben beschrieben wurde, diesmal allerdings aus der Perspektive der Dienstdefinition. Auf die Identität wird hier anhand ihres im Anwendungsmanifest deklarierten Anzeigenamens (`WebAdmin`) verwiesen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+* [Gewähren des Zugriffs auf Azure-Ressourcen für die verwaltete Identität einer Service Fabric-Anwendung in einem verwalteten Service Fabric-Cluster](how-to-managed-cluster-grant-access-other-resources.md)
 * [Nutzen der verwalteten Identität einer Service Fabric-Anwendung aus dem Dienstcode](how-to-managed-identity-service-fabric-app-code.md)
-* [Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Azure Service Fabric-Anwendung](how-to-grant-access-other-resources.md)

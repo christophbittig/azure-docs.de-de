@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 5f6b5eb64de1e904805446f731158443205d6b68
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cbfdc8c7e07a68335083c529e545143a513b1808
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110082428"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858270"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Upgrade des Application Insights Java 2.x SDK
 
@@ -115,31 +115,6 @@ Die Telemetrieprozessoren führen die folgenden Aktionen aus (in der angegebenen
 }
 ```
 
-## <a name="dependency-names"></a>Abhängigkeitsnamen
-
-Die Abhängigkeitsnamen in Application Insights Java 3.x haben sich ebenfalls geändert, um allgemein eine bessere aggregierte Ansicht auf der Benutzeroberfläche des Application Insights-Portals zu bieten.
-
-Auch hier bevorzugen Sie bei einigen Anwendungen möglicherweise immer noch die aggregierte Ansicht auf der Benutzeroberfläche, die durch die vorherigen Abhängigkeitsnamen bereitgestellt wurde. In diesem Fall können Sie ähnliche Vorgehensweisen wie oben verwenden, um das vorherige Verhalten zu replizieren.
-
-## <a name="operation-name-on-dependencies"></a>Vorgangsname für Abhängigkeiten
-
-Zuvor wurde im Application Insights Java 2.x SDK der Vorgangsname aus der Anforderungstelemetrie auch für die Abhängigkeitstelemetrie festgelegt.
-In Application Insights Java 3.x wird der Vorgangsname für die Abhängigkeitstelemetrie nicht mehr aufgefüllt.
-Wenn Sie den Vorgangsnamen für die Anforderung anzeigen möchten, die der Abhängigkeitstelemetrie übergeordnet ist, können Sie eine Protokollabfrage (Kusto) zur Verknüpfung der Abhängigkeitstabelle mit der Anforderungstabelle schreiben. Hier ein Beispiel:
-
-```
-let start = datetime('...');
-let end = datetime('...');
-dependencies
-| where timestamp between (start .. end)
-| project timestamp, type, name, operation_Id
-| join (requests
-    | where timestamp between (start .. end)
-    | project operation_Name, operation_Id)
-    on $left.operation_Id == $right.operation_Id
-| summarize count() by operation_Name, type, name
-```
-
 ## <a name="2x-sdk-logging-appenders"></a>2.x SDK-Protokollierungs-Appender
 
 Application Insights Java 3.x [erfasst die Protokollierung automatisch](./java-standalone-config.md#auto-collected-logging), ohne dass Protokollierungs-Appender konfiguriert werden müssen.
@@ -148,7 +123,7 @@ Wenn Sie 2.x SDK-Protokollierungs-Appender verwenden, können Sie diese entferne
 ## <a name="2x-sdk-spring-boot-starter"></a>2.x SDK Spring Boot Starter
 
 Es gibt keinen Application Insights Java 3.x Spring Boot Starter.
-Bei der Einrichtung und Konfiguration von 3.x gelten dieselben [einfachen Schritte](./java-in-process-agent.md#quickstart), unabhängig davon, ob Sie Spring Boot verwenden.
+Bei der Einrichtung und Konfiguration von 3.x gelten dieselben [einfachen Schritte](./java-in-process-agent.md#get-started), unabhängig davon, ob Sie Spring Boot verwenden.
 
 Beachten Sie beim Upgrade vom Application Insights Java 2.x SDK Spring Boot Starter, dass der Name der Cloudrolle nicht mehr standardmäßig `spring.application.name` lautet.
 Informationen zum Festlegen des Cloudrollennamens in 3.x über die JSON-Konfiguration oder die Umgebungsvariable finden Sie in der [Dokumentation zur 3.x-Konfiguration](./java-standalone-config.md#cloud-role-name).

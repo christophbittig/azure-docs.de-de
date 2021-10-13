@@ -2,13 +2,13 @@
 title: Service Bus-Warteschlangen und -Themen als Ereignishandler für Azure Event Grid-Ereignisse
 description: Hier wird beschrieben, wie Sie Service Bus-Warteschlangen und -Themen als Ereignishandler für Azure Event Grid-Ereignisse verwenden können.
 ms.topic: conceptual
-ms.date: 09/28/2021
-ms.openlocfilehash: 5ea44f33bffa0f7158c8e3d1ae4e1cf0776f294e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 09/30/2021
+ms.openlocfilehash: 676a9fcc6e260f2226e103ede26398b384e046ca
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214957"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354382"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus-Warteschlangen und -Themen als Ereignishandler für Azure Event Grid-Ereignisse
 Ein Ereignishandler ist der Ort, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Mehrere Azure-Dienste werden automatisch für die Behandlung von Ereignissen konfiguriert. **Azure Service Bus** ist einer dieser Dienste. 
@@ -150,6 +150,29 @@ Die interne System-ID für die Nachricht wird bei der erneuten Übermittlung des
     }
 }
 ```
+
+## <a name="delivery-properties"></a>Übermittlungseigenschaften
+Mit Ereignisabonnements können Sie HTTP-Header einrichten, die in übermittelte Ereignisse eingeschlossen werden. Diese Funktion ermöglicht es Ihnen, benutzerdefinierte Header festzulegen, die für ein Ziel erforderlich sind. Sie können benutzerdefinierte Header für die Ereignisse festlegen, die an Azure Service Bus-Warteschlangen und -Themen übermittelt werden.
+
+Von Azure Service Bus wird die Verwendung der folgenden Nachrichteneigenschaften beim Senden einzelner Nachrichten unterstützt. 
+
+| Headername | Headertyp |
+| :-- | :-- |
+| `MessageId` | Dynamisch |  
+| `PartitionKey` | Statisch oder dynamisch |
+| `SessionId` | Statisch oder dynamisch |
+| `CorrelationId` | Statisch oder dynamisch |
+| `Label` | Statisch oder dynamisch |
+| `ReplyTo` | Statisch oder dynamisch | 
+| `ReplyToSessionId` | Statisch oder dynamisch |
+| `To` |Statisch oder dynamisch |
+| `ViaPartitionKey` | Statisch oder dynamisch |
+
+> [!NOTE]
+> - Der Standardwert von `MessageId` ist die interne ID des Event Grid Ereignisses. Sie kann außer Kraft gesetzt werden. Beispielsweise `data.field`.
+> - Sie können nur `SessionId` oder `MessageId` festlegen. 
+
+Weitere Informationen finden Sie unter [Benutzerdefinierte Übermittlungseigenschaften](delivery-properties.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der unterstützten Ereignishandler finden Sie im Artikel zu [Ereignishandlern](event-handlers.md). 

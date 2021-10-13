@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77a0a8f1a02fa970965d3393dada2a7720ab3e4
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: f3f8d5fb55d547a1c0602843fb36f19ad45dbc2a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821374"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536586"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Schützen von Benutzerkonten vor Angriffen mithilfe von Smart Lockout von Azure Active Directory
 
@@ -24,7 +24,7 @@ Smart Lockout unterstützt Sie dabei, Angreifer auszusperren, die versuchen, Ben
 
 ## <a name="how-smart-lockout-works"></a>Funktionsweise von Smart Lockout
 
-Standardmäßig blockiert Smart Lockout Anmeldungsversuche für das Konto für eine Minute, wenn zehn Versuche bei öffentlichen Azure-Mandanten oder drei Versuche bei Azure Government-Mandanten für US-Behörden fehlgeschlagen sind. Das Konto wird nach jedem weiteren fehlgeschlagenen Anmeldeversuch zuerst für eine Minute und bei anschließenden Versuchen länger gesperrt. Um die Möglichkeiten eines Angreifers zum Umgehen dieses Verhaltens auf ein Minimum zu beschränken, geben wir nicht bekannt, mit welcher Rate der Sperrzeitraum bei weiteren erfolglosen Anmeldeversuchen ausgeweitet wird.
+Standardmäßig blockiert Smart Lockout Anmeldungsversuche für das Konto für eine Minute, wenn zehn Versuche bei öffentlichen Azure- and Azure China 21Vianet-Mandanten oder drei Versuche bei Azure Government-Mandanten für US-Behörden erfolglos sind. Das Konto wird nach jedem weiteren fehlgeschlagenen Anmeldeversuch zuerst für eine Minute und bei anschließenden Versuchen länger gesperrt. Um die Möglichkeiten eines Angreifers zum Umgehen dieses Verhaltens auf ein Minimum zu beschränken, geben wir nicht bekannt, mit welcher Rate der Sperrzeitraum bei weiteren erfolglosen Anmeldeversuchen ausgeweitet wird.
 
 Smart Lockout verfolgt die letzten drei fehlerhaften Kennworthashes, um zu vermeiden, dass der Sperrungszähler für dasselbe Kennwort erhöht wird. Wenn eine Person mehrmals das falsche Kennwort eingibt, hat dies keine Sperrung des Kontos zur Folge.
 
@@ -65,7 +65,7 @@ Führen Sie auf einem in die Domäne eingebundenen System mit Administratorrecht
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Verwalten der Werte für Azure AD Smart Lockout
 
-Die Werte für Werte für Azure AD Smart Lockout können auf die Anforderungen Ihrer Organisation abgestimmt werden. Wenn Sie die Smart Lockout-Einstellungen mit spezifischen Werten für Ihre Organisation konfigurieren möchten, benötigen Sie mindestens Azure AD Premium P1-Lizenzen für Ihre Benutzer.
+Die Werte für Werte für Azure AD Smart Lockout können auf die Anforderungen Ihrer Organisation abgestimmt werden. Wenn Sie die Smart Lockout-Einstellungen mit spezifischen Werten für Ihre Organisation konfigurieren möchten, benötigen Sie mindestens Azure AD Premium P1-Lizenzen für Ihre Benutzer. Die Anpassung der Smart Lockout-Einstellungen ist für Azure China 21Vianet-Mandanten nicht verfügbar.
 
 Gehen Sie wie folgt vor, um die Smart Lockout-Werte zu überprüfen und ggf. für Ihre Organisation anzupassen:
 
@@ -84,13 +84,19 @@ Gehen Sie wie folgt vor, um die Smart Lockout-Werte zu überprüfen und ggf. f�
 
 ![Anpassen Azure AD Smart Lockout-Richtlinie über das Azure-Portal](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>Ermitteln, ob das Smart Lockout-Feature funktioniert
+## <a name="testing-smart-lockout"></a>Testen von Smart Lockout
 
 Wenn der Schwellenwert von Smart Lockout ausgelöst wird, wird das Konto gesperrt und die folgende Meldung angezeigt:
 
 *Ihr Konto wurde vorübergehend gesperrt, um eine unbefugte Nutzung zu verhindern. Versuchen Sie es später noch mal. Wenden Sie sich an Ihren Administrator, wenn das Problem weiterhin besteht.*
 
 Wenn Sie Smart Lockout testen, werden Ihre Anmeldeanforderungen möglicherweise von unterschiedlichen Rechenzentren verarbeitet, da der Azure AD-Authentifizierungsdienst geografisch verteilt ist und über einen Lastenausgleich verfügt. Da in diesem Szenario jedes Azure AD-Rechenzentrum die Sperre unabhängig nachverfolgt, kann es mehr Versuche erfordern, als durch den Sperrschwellenwert festgelegt sind, bis eine Sperre ausgelöst wird. Ein Benutzer hat eine maximale Anzahl von (*threshold_limit * datacenter_count*) fehlerhafter Versuche, bevor er vollständig gesperrt wird.
+
+Smart Lockout verfolgt die letzten drei fehlerhaften Kennworthashes, um zu vermeiden, dass der Sperrungszähler für dasselbe Kennwort erhöht wird. Wenn eine Person mehrmals das falsche Kennwort eingibt, hat dies keine Sperrung des Kontos zur Folge.
+
+
+## <a name="default-protections"></a>Standardschutz
+Zusätzlich zu Smart Lockout schützt Azure AD auch durch Analysieren von Signalen einschließlich IP-Datenverkehr und Identifizierung anomaler Verhaltensweisen vor Angriffen. Azure AD blockiert diese schädlichen Anmeldungen standardmäßig und gibt unabhängig von der Gültigkeit des Kennworts den [Fehlercode AADSTS50053 – IdsLocked](../develop/reference-aadsts-error-codes.md) zurück.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

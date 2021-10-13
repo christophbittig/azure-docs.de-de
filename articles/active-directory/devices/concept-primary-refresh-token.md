@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf76e5ffc7b3eabae7366805ed1a87d262854992
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9927232ca01473d8c51ac034f6c0ed24b07a2b39
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630108"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707221"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Was ist ein primäres Aktualisierungstoken (Primary Refresh Token, PRT)?
 
@@ -67,9 +67,12 @@ In Szenarien für in Azure AD registrierte Geräte ist das Azure AD-WAM-Plug-I
 > [!NOTE]
 > Identitätsanbieter von Drittanbietern müssen das WS-Trust-Protokoll unterstützen, damit die PRT-Ausstellung auf Windows 10-Geräten ermöglicht wird. Ohne WS-Trust kann PRT nicht für Benutzer auf in Azure AD Hybrid oder in Azure AD eingebunden Geräten ausgestellt werden. Für AD FS sind nur „usernamemixed“-Endpunkte erforderlich. Die Endpunkte „adfs/services/trust/2005/windowstransport“ und „adfs/services/trust/13/windowstransport“ dürfen nur als Endpunkte mit Intranetzugriff aktiviert und **NICHT** als Endpunkte mit Extranetzugriff über den Webanwendungsproxy verfügbar gemacht werden.
 
+> [!NOTE]
+> Azure AD-Richtlinien für bedingten Zugriff werden nicht ausgewertet, wenn PRTs ausgegeben werden.
+
 ## <a name="what-is-the-lifetime-of-a-prt"></a>Welche Lebensdauer hat ein PRT?
 
-Nach der Ausstellung ist ein PRT 90 Tage lang gültig und wird fortlaufend verlängert, solange das Gerät vom Benutzer aktiv genutzt wird.  
+Nach der Ausstellung ist ein PRT 14 Tage lang gültig und wird fortlaufend verlängert, solange das Gerät vom Benutzer aktiv genutzt wird.  
 
 ## <a name="how-is-a-prt-used"></a>Wie wird ein PRT verwendet?
 
@@ -90,6 +93,9 @@ Es gibt zwei Verfahren, um ein PRT zu verlängern:
 In einer ADFS-Umgebung ist keine direkte Sichtlinie zum Domänencontroller erforderlich, um das PRT zu verlängern. Für die PRT-Verlängerung müssen lediglich die Endpunkte „/adfs/services/trust/2005/usernamemixed“ und „/adfs/services/trust/13/usernamemixed“ mithilfe des WS-Trust-Protokolls für den Proxy aktiviert werden.
 
 Windows-Transportendpunkte werden nur für die Kennwortauthentifizierung benötigt, wenn ein Kennwort geändert wird, nicht aber für die PRT-Verlängerung.
+
+> [!NOTE]
+> Azure AD-Richtlinien für bedingten Zugriff werden nicht ausgewertet, wenn PRTs verlängert werden.
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 
@@ -203,4 +209,4 @@ Im folgenden Diagramm sind die zugrunde liegenden Details für das Ausstellen, V
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Behandlung von PRT-Problemen finden Sie im Artikel [Beheben von Problemen mit Geräten unter Windows 10 und Windows Server 2016 mit Hybrideinbindung in Azure Active Directory](troubleshoot-hybrid-join-windows-current.md).
+Weitere Informationen zur Behandlung von PRT-Problemen finden Sie im Artikel [Beheben von Problemen mit Geräten unter Windows 10 und Windows Server 2016 mit Hybrideinbindung in Azure Active Directory](troubleshoot-hybrid-join-windows-current.md#troubleshoot-post-join-authentication-issues).

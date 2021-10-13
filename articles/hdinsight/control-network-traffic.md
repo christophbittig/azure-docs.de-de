@@ -4,12 +4,12 @@ description: Lernen Sie Verfahren zum Steuern von ein- und ausgehendem Datenverk
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 66b078e8dfa1daa100978f04283e9bba7158bddf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 78d61c1d775b2e710448283e283252b1cb85c802
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867031"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857890"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Steuern des Netzwerkdatenverkehrs in Azure HDInsight
 
@@ -31,7 +31,7 @@ Wenn Sie planen, **Netzwerksicherheitsgruppen** zum Steuern des Netzwerkdatenver
 
 2. Identifizieren Sie die von HDInsight für Ihre Region benötigten Diensttags. Es gibt mehrere Möglichkeiten zum Abrufen dieser Diensttags:
     1. Konsultieren Sie die Liste der veröffentlichten Diensttags unter [Diensttags von Netzwerksicherheitsgruppen für Azure HDInsight](hdinsight-service-tags.md). 
-    2. Wenn Ihre Region nicht in der Liste enthalten ist, verwenden Sie die [Ermittlungs-API für Diensttags](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview), um ein Diensttag für Ihre Region zu finden.
+    2. Wenn Ihre Region nicht in der Liste enthalten ist, verwenden Sie die [Ermittlungs-API für Diensttags](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api), um ein Diensttag für Ihre Region zu finden.
     3. Wenn Sie die API nicht verwenden können, laden Sie die [JSON-Datei mit Diensttags](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) herunter, und suchen Sie nach der gewünschten Region.
 
 

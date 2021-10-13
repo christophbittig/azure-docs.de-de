@@ -10,15 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 04/06/2021
+ms.date: 10/01/2021
 ms.author: rolyon
 ms.custom: seohack1, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b364e74df7e6069407b0bcc3a6cfccd2ead09eae
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 3273285aeee7497c43fc4002b2bdabe0b6ef13de
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690862"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390062"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Behandeln von Problemen bei Azure RBAC
 
@@ -26,7 +26,7 @@ In diesem Artikel werden häufig gestellte Fragen über die rollenbasierte Zugri
 
 ## <a name="azure-role-assignments-limit"></a>Azure-Rollenzuweisungslimit
 
-Azure unterstützt pro Abonnement bis zu **2.000** Rollenzuweisungen. Dieser Grenzwert schließt Rollenzuweisungen im Abonnement, in der Ressourcengruppe und im Ressourcenbereich ein. Wenn beim Zuweisen einer Rolle die Fehlermeldung „No more role assignments can be created (code: RoleAssignmentLimitExceeded)“ (Es können keine weiteren Rollenzuweisungen erstellt werden (Code: RoleAssignmentLimitExceeded)) auftritt, verringern Sie die Anzahl der Rollenzuweisungen im Abonnement.
+Azure unterstützt pro Abonnement bis zu **2.000** Rollenzuweisungen. Dieser Grenzwert schließt Rollenzuweisungen im Abonnement, in der Ressourcengruppe und im Ressourcenbereich, aber nicht im Verwaltungsgruppenbereich ein. Wenn beim Zuweisen einer Rolle die Fehlermeldung „No more role assignments can be created (code: RoleAssignmentLimitExceeded)“ (Es können keine weiteren Rollenzuweisungen erstellt werden (Code: RoleAssignmentLimitExceeded)) auftritt, verringern Sie die Anzahl der Rollenzuweisungen im Abonnement.
 
 > [!NOTE]
 > Das Rollenzuweisungslimit **2.000** pro Abonnement ist fest und kann nicht erweitert werden.
@@ -46,6 +46,13 @@ $scope = "/subscriptions/<subscriptionId>"
 $ras = Get-AzRoleAssignment -Scope $scope | Where-Object {$_.scope.StartsWith($scope)}
 $ras.Count
 ```
+
+## <a name="azure-role-assignments-limit-for-management-groups"></a>Grenzwert für Azure-Rollenzuweisungen für Verwaltungsgruppen
+
+Azure unterstützt pro Verwaltungsgruppe bis zu **500** Rollenzuweisungen. Dieser Grenzwert unterscheidet sich vom Grenzwert für Rollenzuweisungen pro Abonnement.
+
+> [!NOTE]
+> Das Rollenzuweisungslimit **500** pro Verwaltungsgruppe ist fest und kann nicht erweitert werden.
 
 ## <a name="problems-with-azure-role-assignments"></a>Probleme bei RBAC-Rollenzuweisungen
 

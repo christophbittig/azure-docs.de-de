@@ -1,5 +1,6 @@
 ---
-title: Unerwartete Aufforderung zur Genehmigung bei der Anmeldung bei einer Anwendung | Microsoft-Dokumentation
+title: Unerwartete Aufforderung zur Genehmigung bei der Anmeldung bei einer Anwendung
+titleSuffix: Azure AD
 description: Informationen zum Behandeln von Problemen, wenn einem Benutzer eine Aufforderung zu einer von Ihnen nicht erwarteten Genehmigung für eine Anwendung angezeigt wird, die Sie in Azure AD integriert haben.
 services: active-directory
 author: davidmu1
@@ -12,12 +13,12 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81640356eb60167e8cdefc67b962bf7f38783556
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7d10368a6225fe1e5d09e7d6088b500febd6b1ff
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346644"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620752"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>Unerwartete Aufforderung zur Genehmigung bei der Anmeldung bei einer Anwendung
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/02/2021
 ms.author: nitinme
-ms.openlocfilehash: f4730a963a669af970362542ecf7868b20438f02
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 29336a19906d36fb8fea7f0b8fceeb55e97e15cf
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112296153"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728644"
 ---
 # <a name="responsible-use-of-ai-with-cognitive-services"></a>Verantwortungsvolle Verwendung von KI mit Cognitive Services
 
@@ -71,3 +71,10 @@ Azure Cognitive Services enthält Informationen und Richtlinien zur verantwortun
 * [Merkmale und Einschränkungen](/legal/cognitive-services/anomaly-detector/characteristics-and-limitations?context=/azure/cognitive-services/anomaly-detector/context/context)
 * [Integration und verantwortungsvolle Verwendung](/legal/cognitive-services/anomaly-detector/guidance-integration-responsible-use?context=/azure/cognitive-services/anomaly-detector/context/context)
 * [Daten, Datenschutz und Sicherheit](/legal/cognitive-services/anomaly-detector/data-privacy-security?context=/azure/cognitive-services/anomaly-detector/context/context)
+
+## <a name="language-understanding"></a>Language Understanding
+
+* [Transparenzhinweis und Anwendungsfälle](/legal/cognitive-services/luis/luis-transparency-note?context=/azure/cognitive-services/LUIS/context/context)
+* [Merkmale und Einschränkungen](/legal/cognitive-services/luis/characteristics-and-limitations?context=/azure/cognitive-services/LUIS/context/context)
+* [Integration und verantwortungsvolle Verwendung](/legal/cognitive-services/luis/guidance-integration-responsible-use?context=/azure/cognitive-services/LUIS/context/context)
+* [Daten, Datenschutz und Sicherheit](/legal/cognitive-services/luis/data-privacy-security?context=/azure/cognitive-services/LUIS/context/context)

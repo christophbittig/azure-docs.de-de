@@ -1,15 +1,15 @@
 ---
 title: Integrierte Richtliniendefinitionen für Server mit Azure Arc-Unterstützung
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Server mit Azure Arc-Unterstützung (Vorschauversion). Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 09/17/2021
+ms.date: 10/11/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ccb453c4c376d3af546d58cf38597fb8a184f9bc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c3d1eecde5c47dc66964a7ef46687b8ce3ae685b
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645270"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808398"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-servers"></a>Integrierte Azure Policy-Definitionen für Azure Arc-fähige Server
 

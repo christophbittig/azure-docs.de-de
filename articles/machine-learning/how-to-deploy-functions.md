@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie Azure Machine Learning zum Packen und Bereitstellen eines Modells als Webdienst in einer Azure Functions-App verwenden.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
-ms.author: vaidyas
-author: vaidya-s
+ms.subservice: mlops
+ms.author: ssambare
+author: shivanissambare
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.custom: racking-python, devx-track-azurecli
-ms.openlocfilehash: bdeecf02e81ba3c8143f707896bbf3e5c36cf212
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 736568527f629b0552b3829815e02c288edeead1
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885396"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714712"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure Functions (Vorschauversion)
 

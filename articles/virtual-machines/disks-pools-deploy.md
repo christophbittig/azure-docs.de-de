@@ -4,15 +4,15 @@ description: Hier wird beschrieben, wie Sie einen Azure-Datenträgerpool bereits
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 09/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f0f648f7f8c04aeb6ed97a0c58fa157e743da5f1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 72a25b6bc51732ac9b598cbcb6b45f9ac84fc21b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114436968"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351061"
 ---
 # <a name="deploy-an-azure-disk-pool-preview"></a>Bereitstellen eines Azure-Datenträgerpools (Vorschau)
 
@@ -35,7 +35,7 @@ Für eine erfolgreiche Bereitstellung eines Datenträgerpools benötigen Sie Fol
 
 Wenn Sie das Azure PowerShell-Modul verwenden möchten, installieren Sie [Version 6.1.0 oder höher](/powershell/module/az.diskpool/?view=azps-6.1.0&preserve-view=true).
 
-Falls Sie die Azure CLI verwenden möchten, installieren Sie [die aktuelle Version](/cli/azure/disk-pool?view=azure-cli-latest).
+Falls Sie die Azure CLI verwenden möchten, installieren Sie [die aktuelle Version](/cli/azure/disk-pool).
 
 ## <a name="register-your-subscription-for-the-preview"></a>Registrieren Ihres Abonnements für die Vorschau
 
@@ -71,7 +71,7 @@ Damit ein Datenträger in einem Datenträgerpool verwendet werden kann, muss er 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Suchen Sie nach der Ressourcengruppe mit den Datenträgern, und wählen Sie sie aus, oder wählen Sie die einzelnen Datenträger aus.
 1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
-1. Wählen Sie in der Rollenauflistung **Rollenzuweisung hinzufügen (Vorschau)** und dann **Mitwirkender für virtuelle Computer** aus.
+1. Wählen Sie in der Rollenauflistung **Rollenzuweisung hinzufügen (Vorschau)** und dann **Datenträgerpooloperator** aus.
 
     Alternativ können Sie auch eine benutzerdefinierte Rolle erstellen. Benutzerdefinierte Rollen für Datenträgerpools benötigen die folgenden RBAC-Berechtigungen: **Microsoft.Compute/disks/write** und **Microsoft.Compute/disks/read**.
 

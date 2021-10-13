@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 08b730b0196aa5b78ebafc0208accd51e544e8d7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 08782f57ecf82924f48e25a1e8f1a62a1a94264b
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787488"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613831"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-active-directory-application-proxy"></a>Umleiten von hartcodierte Links für Apps, die mit dem Azure Active Directory-Anwendungsproxy veröffentlicht wurden.
 
@@ -142,10 +142,6 @@ Die ersten Schritte mit der Linkübersetzung sind einfache Klicks auf Schaltflä
 4. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
 Wenn Ihre Benutzer auf diese Anwendung zugreifen, scannt der Proxy nun automatisch auf interne URLs, die über Anwendungsproxy für Ihren Mandanten veröffentlicht wurden.
-
-## <a name="send-feedback"></a>Feedback senden
-
-Wir sind auf Ihre Hilfe angewiesen, damit dieses Feature für alle Ihre Apps funktioniert. Wir durchsuchen über 30 Tags in HTML und CSS. Wenn Sie ein Beispiel für generierte Links haben, die nicht übersetzt werden, senden Sie einen Codeausschnitt an [Anwendungsproxy-Feedback](mailto:aadapfeedback@microsoft.com). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Verwenden von benutzerdefinierten Domänen mit Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md), damit diese dieselbe interne und externe URL aufweisen

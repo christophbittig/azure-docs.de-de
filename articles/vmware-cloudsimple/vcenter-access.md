@@ -1,25 +1,25 @@
 ---
 title: Azure VMware Solution by CloudSimple – Zugreifen auf den vSphere-Client
 description: Hier wird beschrieben, wie Sie auf das vCenter-Portal Ihrer privaten Cloud zugreifen.
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/30/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e3f827bbd1e500c9cea809939194757bb9fe7881
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: a11567f18e2c62cfac67b6c5fde7e9c6ed1ce26a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181056"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618665"
 ---
 # <a name="access-your-private-cloud-vcenter-portal"></a>Zugreifen auf das vCenter-Portal Ihrer privaten Cloud
 
 Sie können das vCenter-Portal Ihrer privaten Cloud über das Azure-Portal oder das CloudSimple-Portal starten.  Das vCenter-Portal ermöglicht Ihnen die Verwaltung der VMware-Infrastruktur für Ihre private Cloud.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Vorbereitung
 
 Für den Zugriff auf das vCenter-Portal muss eine Netzwerkverbindung hergestellt und eine DNS-Namensauflösung aktiviert werden.  Sie können eine der folgenden Optionen verwenden, um eine Netzwerkverbindung mit Ihrer privaten Cloud herzustellen.
 

@@ -3,12 +3,12 @@ title: Private Verfügbarkeitstests – Azure Monitor Application Insights
 description: Erfahren Sie, wie Sie private Verfügbarkeitstests auf internen Servern verwenden, die hinter einer Firewall ausgeführt werden.
 ms.topic: conceptual
 ms.date: 05/14/2021
-ms.openlocfilehash: dca75f6497567c5c6855fc1b5b12aa17a41b3dec
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 713a57db66042c562e212d65c6dd265c2aab47cd
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103948"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858441"
 ---
 # <a name="private-testing"></a>Private Tests
 
@@ -32,7 +32,7 @@ Konfigurieren Sie die Firewall so, dass eingehende Anforderungen von unserem Die
 
         :::image type="content" source="media/availability-private-test/service-tag.png" alt-text="Screenshot der Registerkarte „Eingangssicherheitsregel hinzufügen“ mit einem Diensttag als Quelle":::
 
-- Wenn Ihre Endpunkte außerhalb von Azure gehostet werden oder Diensttags für Ihr Szenario nicht verfügbar sind, müssen Sie die [IP-Adressen unserer Webtest-Agents](ip-addresses.md) einzeln zur Positivliste hinzufügen. Sie können die IP-Adressbereiche direkt über PowerShell, die Azure CLI oder einen REST-Aufruf mithilfe der [Diensttag-API](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) abfragen. Sie können auch eine [JSON-Datei](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) herunterladen, um eine Liste der aktuellen Diensttags mit IP-Adressendetails zu erhalten.
+- Wenn Ihre Endpunkte außerhalb von Azure gehostet werden oder Diensttags für Ihr Szenario nicht verfügbar sind, müssen Sie die [IP-Adressen unserer Webtest-Agents](ip-addresses.md) einzeln zur Positivliste hinzufügen. Sie können die IP-Adressbereiche direkt über PowerShell, die Azure CLI oder einen REST-Aufruf mithilfe der [Diensttag-API](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) abfragen. Sie können auch eine [JSON-Datei](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) herunterladen, um eine Liste der aktuellen Diensttags mit IP-Adressendetails zu erhalten.
     1. Wählen Sie in Ihrer Ressource für Netzwerksicherheitsgruppen unter *Einstellungen* die Option **Eingangssicherheitsregeln** und dann **Hinzufügen** aus.
     1. Wählen Sie dann *IP-Adressen* als Quelle aus, und fügen Sie anschließend Ihre IP-Adressen in einer durch Kommas getrennten Liste unter „Quell-IP-Adress-/CIRD-Bereiche“ hinzu.
 

@@ -1,26 +1,26 @@
 ---
 title: Kopieren von Daten aus Dynamics AX
+description: Erfahren Sie, wie Sie Daten aus Dynamics AX mithilfe einer Kopieraktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline in unterstützte Senkendatenspeicher kopieren.
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Daten aus Dynamics AX mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: d6cb93951877e40be1d6cc73b76e9e9b183e6b9a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 249feb6b906db9c89b9b77dff022effe5bce4e83
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123313109"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777999"
 ---
-# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Kopieren von Daten aus Dynamics AX mithilfe von Azure Data Factory
+# <a name="copy-data-from-dynamics-ax-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus Dynamics AX mithilfe von Azure Data Factory oder Synapse Analytics
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Dynamics AX-Quelle zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory- und Synapse Analytics-Pipelines verwenden, um Daten aus der Dynamics AX-Quelle zu kopieren. Dieser Artikel baut auf dem Artikel zur [Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -87,7 +87,7 @@ Folgende Eigenschaften werden für den mit Dynamics AX verknüpften Dienst unter
 | type | Die Eigenschaft **type** muss auf **DynamicsAX** festgelegt werden. |Ja |
 | url | Der OData-Endpunkt für die Dynamics AX-Instanz (oder Dynamics 365 Finance and Operations). |Ja |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
-| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie den Mauszeiger über den rechten oberen Bereich im Azure-Portal bewegen. | Ja |
 | aadResourceId | Geben Sie die AAD-Ressource an, für die Sie eine Autorisierung anfordern. Wenn Ihre Dynamics URL z. B. `https://sampledynamics.sandbox.operations.dynamics.com/data/` lautet, ist die entsprechende AAD-Ressource normalerweise `https://sampledynamics.sandbox.operations.dynamics.com`. | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime auswählen (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
@@ -205,4 +205,4 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Liste der Datenspeicher, die von der Kopieraktivität als Quellen und Senken in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die die Kopieraktivität als Quellen und Senken unterstützt, finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).

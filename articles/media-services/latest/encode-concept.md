@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7b4b3806ed00955096939c4b996c9a9d3daec004
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: a1f0fe56af1faaf9b743bf752f75c6dcb6aad881
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343615"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351256"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Codieren von Video- und Audiodaten mit Media Services
 
@@ -148,7 +148,7 @@ In Media Services v3 sind Voreinstellungen stark typisierte Entitäten in der AP
 ## <a name="scaling-encoding-in-v3"></a>Skalieren der Codierung in v3
 
 Informationen zum Skalieren der Medienverarbeitung finden Sie unter [Skalieren mit CLI](media-reserved-units-cli-how-to.md).
-Für Konten, die in der Version **2020-05-01** der API oder über das Azure-Portal erstellt werden, sind Skalierungseinheiten und reservierte Einheiten für Medien nicht mehr erforderlich. Die Skalierung erfolgt automatisch und erfolgt intern durch den Dienst.
+Für Konten, die in der Version **2020-05-01** oder höher der API über das Azure-Portal erstellt werden, sind Skalierungseinheiten und reservierte Einheiten für Medien nicht mehr erforderlich. Die Skalierung erfolgt automatisch und erfolgt intern durch den Dienst.
 
 ## <a name="billing"></a>Abrechnung
 

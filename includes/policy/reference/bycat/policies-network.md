@@ -1,20 +1,20 @@
 ---
-author: DCtheGeek
+author: georgewallace
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/17/2021
-ms.author: dacoulte
+ms.date: 10/11/2021
+ms.author: gwallace
 ms.custom: generated
-ms.openlocfilehash: 31511661ec095e74bdbe0a211545fd749297b172
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4bada8d70e72633c9d24b93c1cf72d87af1ff549
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559175"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808168"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Eine benutzerdefinierte IPSec-/IKE-Richtlinie muss auf alle Gatewayverbindungen in virtuellen Azure-Netzwerken angewendet werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Mit dieser Richtlinie wird sichergestellt, dass alle Gatewayverbindungen in virtuellen Azure-Netzwerken eine benutzerdefinierte Richtlinie für IPsec (Internetprotokollsicherheit) und IKE (Internetschlüsselaustausch) verwenden. Informationen zu unterstützten Algorithmen und Schlüsselstärken finden Sie unter [https://aka.ms/AA62kb0](../../../../articles/vpn-gateway/vpn-gateway-about-compliance-crypto.md). |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json) |
+|[Eine benutzerdefinierte IPSec-/IKE-Richtlinie muss auf alle Gatewayverbindungen in virtuellen Azure-Netzwerken angewendet werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Mit dieser Richtlinie wird sichergestellt, dass alle Gatewayverbindungen in virtuellen Azure-Netzwerken eine benutzerdefinierte Richtlinie für IPsec (Internetprotokollsicherheit) und IKE (Internetschlüsselaustausch) verwenden. Informationen zu unterstützten Algorithmen und Schlüsselstärken finden Sie unter [https://aka.ms/AA62kb0](/azure/vpn-gateway/vpn-gateway-about-compliance-crypto#what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy). |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json) |
 |[\[Vorschau:\] Gesamten Internetdatenverkehr über Ihre bereitgestellte Azure Firewall-Instanz leiten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |Azure Security Center hat festgestellt, dass einige Ihrer Subnetze nicht durch eine Firewall der nächsten Generation geschützt werden. Schützen Ihrer Subnetze vor möglichen Bedrohungen durch Einschränken des Zugriffs auf die Subnetze mit Azure Firewall oder einer unterstützten Firewall der nächsten Generation |AuditIfNotExists, Disabled |[3.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |
 |[App Service sollte einen VNET-Dienstendpunkt verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d21331d-a4c2-4def-a9ad-ee4e1e023beb) |Diese Richtlinie überwacht alle App Service-Instanzen, die nicht für die Verwendung eines VNET-Dienstendpunkts konfiguriert sind. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_AppService_AuditIfNotExists.json) |
 |[Azure-VPN-Gateways dürfen nicht die SKU „Basic“ verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345b6c3-24bd-4c93-9bbb-7e5e49a17b78) |Diese Richtlinie stellt sicher, dass für VPN-Gateways nicht die SKU „Basic“ verwendet wird. |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_BasicSKU_Audit.json) |

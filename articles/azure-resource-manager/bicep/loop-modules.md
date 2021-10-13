@@ -4,13 +4,13 @@ description: Verwenden Sie Schleifen und Arrays in einer Bicep-Datei, um mehrere
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/27/2021
-ms.openlocfilehash: f8893fa6716d1b106e54f7eb76002622ce5a4bc3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 8c679eda4de1a3e29719a1518166e214b57b37c3
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124793434"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357805"
 ---
 # <a name="module-iteration-in-bicep"></a>Moduliteration in Bicep
 
@@ -149,6 +149,8 @@ module stgModule './storageAccount.bicep' = [for i in range(0, 4): {
 ```
 
 Legen Sie für eine rein sequenzielle Bereitstellung die Batchgröße auf „1“ fest.
+
+Der `batchSize`-Decorator befindet sich im [sys-Namespace](bicep-functions.md#namespaces-for-functions). Wenn Sie diesen Decorator von einem anderen Element gleichen Namens unterscheiden müssen, stellen Sie dem Decorator **sys** voran: `@sys.batchSize(2)`
 
 ## <a name="next-steps"></a>Nächste Schritte
 

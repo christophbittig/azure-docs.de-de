@@ -8,16 +8,16 @@ ms.author: psrivas
 ms.reviewer: estfan, divswa, azla
 ms.topic: reference
 ms.date: 07/25/2021
-ms.openlocfilehash: 056538b5a6b52fcae646f5f03c6e39c8fce6429f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 8fe32a9ce7fc6d02e32c31a2e698df81857b541e
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768076"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401368"
 ---
 # <a name="contrl-acknowledgments-and-error-codes-for-edifact-messages-in-azure-logic-apps"></a>CONTRL-Bestätigungen und -Fehlercodes für EDIFACT-Nachrichten in Azure Logic Apps
 
-Sie können in Azure Logic Apps Workflows erstellen, die EDIFACT-Nachrichten für die EDI-Kommunikation (Electronic Data Interchange) verarbeiten, wenn Sie **EDIFACT**-Vorgänge verwenden. Beim EDI-Messaging geben Bestätigungen den Status der Verarbeitung eines EDI-Austauschs an. Beim Empfang eines Austauschs kann die [**EDIFACT-Decodierungsaktion**](logic-apps-enterprise-integration-edifact-decode.md) Bestätigungen mehrerer Typen an den Absender zurückgeben. Dies hängt davon ab, welche Bestätigungstypen aktiviert sind und welche Überprüfungsebene angegeben wurde.
+Sie können in Azure Logic Apps Workflows erstellen, die EDIFACT-Nachrichten für die EDI-Kommunikation (Electronic Data Interchange) verarbeiten, wenn Sie **EDIFACT**-Vorgänge verwenden. Beim EDI-Messaging geben Bestätigungen den Status der Verarbeitung eines EDI-Austauschs an. Beim Empfang eines Austauschs kann die [**EDIFACT-Decodierungsaktion**](logic-apps-enterprise-integration-edifact.md) Bestätigungen mehrerer Typen an den Absender zurückgeben. Dies hängt davon ab, welche Bestätigungstypen aktiviert sind und welche Überprüfungsebene angegeben wurde.
 
 In diesem Thema finden Sie eine kurze Übersicht über die CONTRL-Bestätigung von EDIFACT, einschließlich der Segmente von CONTRL-Bestätigungen bei einem Austausch und der in diesen Segmenten verwendeten Fehlercodes.
 
@@ -30,7 +30,7 @@ Die CONTRL-Bestätigung (ACK) dient als technische *und* als Funktionsbestätigu
 >
 > Fehler in empfangenen CONTRL-Nachrichten müssen auf andere Weise als durch eine CONTRL-Nachricht gemeldet werden. Enthält ein Austausch neben Datennachrichten auch CONTRL-Nachrichten, wird die in Reaktion auf diesen Austausch generierte CONTRL-Nachricht so generiert, als ob keine CONTRL-Nachrichten im empfangenen Austausch enthalten sind.
 
-Als technische Bestätigung gibt die CONTRL-Nachricht an, dass der Austauschempfänger den Betreffaustausch sowie Folgendes empfangen hat:
+Als technische Bestätigung gibt die CONTRL-Nachricht an, dass der Austauschempfänger den Betreffaustausch empfangen hat und die folgenden Verantwortungen hat:
 
 * Überprüfte Teile des Austauschs, um die Syntaxgenauigkeit der Datenelemente zu bestätigen, die in das Berichtssegment der UCI-Austauschantwort kopiert wurden
 * Übernahme der Verantwortung für die Benachrichtigung des Absenders über die Annahme oder Ablehnung der anderen Teile im Austausch
@@ -206,7 +206,7 @@ In der folgenden Tabelle sind die unterstützten Fehlercodes gemäß EDIFACT-Spe
 | 19 | Ungültige Dezimalschreibweise. | Benachrichtigung, dass das als Dezimalschreibweise in UNA angegebene Zeichen ungültig ist, dass die in einem Datenelement verwendete Dezimalschreibweise nicht konsistent mit der in UNA angegebenen ist. | Nein |
 | 20 | Zeichen als Dienstzeichen ungültig. | Benachrichtigung, dass ein in UNA angegebenes Zeichen als Dienstzeichen ungültig ist. | Nein |
 | 21 | Ungültige(s) Zeichen. | Benachrichtigung, dass mindestens ein im Austausch verwendetes Zeichen kein gültiges Zeichen wie durch den im UNB-Segment angegebenen Syntaxbezeichner definiert ist. Das ungültige Zeichen ist Teil der Ebene, auf die verwiesen wird, oder es folgt unmittelbar auf den Bezeichnerteil des Austauschs. | Ja |
-| 22 | Ungültige(s) Dienstzeichen. | Benachrichtigung, dass mindestens ein im Austausch verwendetes Dienstzeichen kein gültiges Dienstzeichen wie im UNA-Segment angegeben oder kein Standarddienstzeichen ist. Wenn der Code im UCS- oder UCD-Segment verwendet wird, folgte das ungültige Zeichen unmittelbar auf den identifizierten Teil des Austauschs. | Nein |
+| 22 | Ungültige(s) Dienstzeichen. | Benachrichtigung, dass die im Austausch verwendeten Dienstzeichen keine gültigen Dienstzeichen wie im UNA-Segment angegeben oder keine Standarddienstzeichen sind. Wenn der Code im UCS- oder UCD-Segment verwendet wird, folgte das ungültige Zeichen unmittelbar auf den identifizierten Teil des Austauschs. | Nein |
 | 23 | Unbekannter Austauschabsender. | Benachrichtigung, dass der Austauschabsender (S002) unbekannt ist. | Nein |
 | 24 | Zu alt. | Benachrichtigung, dass der empfangene Austausch oder die Gruppe älter als ein in einem IA oder durch einen Empfänger festgelegter Grenzwert ist. | Nein |
 | 25 | Testindikator wird nicht unterstützt. | Benachrichtigung, dass die Testverarbeitung für den angegebenen Austausch, die Gruppe, die Nachricht oder das Paket nicht ausgeführt werden kann. | Nein |

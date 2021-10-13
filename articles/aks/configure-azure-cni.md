@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d26459080e57f8998b40c181306ca10508ad4749
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: cde36aaa5946519533d4e68eb31da48af08be689
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099224"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546290"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Dieser Artikel veranschaulicht die Verwendung von *Azure CNI*-Netzwerken zum Ers
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 * Das Subnetz, das dem AKS-Knotenpool zugewiesen ist, darf kein [delegiertes Subnetz](../virtual-network/subnet-delegation-overview.md) sein.
-* Wenn Sie Ihr eigenes Subnetz bereitstellen, müssen Sie die Netzwerksicherheitsgruppen (NSG) verwalten, die diesem Subnetz zugeordnet sind. AKS ändert keine der NSGs, die diesem Subnetz zugeordnet sind. Sie müssen außerdem sicherstellen, dass die Sicherheitsregeln in den Netzwerksicherheitsgruppen Datenverkehr zwischen den CIDR-Bereichen der Knoten und Pods zulassen.
+* AKS wendet keine Netzwerksicherheitsgruppen (NSGs) auf sein Subnetz an und ändert keine der NSGs, die diesem Subnetz zugeordnet sind. Wenn Sie Ihr eigenes Subnetz bereitstellen und NSGs hinzufügen, die diesem Subnetz zugeordnet sind, müssen Sie sicherstellen, dass die Sicherheitsregeln in den NSGs Datenverkehr zwischen den CIDR-Bereichen der Knoten und Pods zulassen. Weitere Details finden Sie unter [Netzwerksicherheitsgruppen][aks-network-nsg].
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>Planen der IP-Adressierung für Ihren Cluster
 
@@ -358,6 +358,7 @@ Weitere Informationen zu Netzwerken in AKS finden Sie in den folgenden Artikeln:
 [aks-ssh]: ssh.md
 [ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object
 [aks-network-concepts]: concepts-network.md
+[aks-network-nsg]: concepts-network.md#network-security-groups
 [aks-ingress-basic]: ingress-basic.md
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-static-tls]: ingress-static-ip.md

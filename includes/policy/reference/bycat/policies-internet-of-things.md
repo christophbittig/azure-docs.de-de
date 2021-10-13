@@ -1,18 +1,18 @@
 ---
-author: DCtheGeek
+author: georgewallace
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/17/2021
-ms.author: dacoulte
+ms.date: 10/11/2021
+ms.author: gwallace
 ms.custom: generated
-ms.openlocfilehash: 3c863facc6e1eb0bd381936164dc1cdae54e9caf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3ed9e49e9fbf03b045494b53ff7f3fbc4e2f52ec
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128654895"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129810598"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Für Azure IoT Hub sollten die lokalen Authentifizierungsmethoden für Dienst-APIs deaktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F672d56b3-23a7-4a3c-a233-b77ed7777518) |Das Deaktivieren lokaler Authentifizierungsmethoden verbessert die Sicherheit, da hierdurch sichergestellt wird, dass Azure IoT Hub ausschließlich Azure Active Directory-Identitäten für die Dienst-API-Authentifizierung anfordert. Weitere Informationen finden Sie unter [https://aka.ms/iothubdisablelocalauth](../../../../articles/iot-hub/iot-hub-dev-guide-azure-ad-rbac.md). |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTHub_DisableLocalAuth_AuditDeny.json) |
 |[\[Vorschau:\] Azure IoT Hub muss einen kundenseitig verwalteten Schlüssel zum Verschlüsseln ruhender Daten verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Durch die Verschlüsselung ruhender IoT Hub-Daten mithilfe eines kundenseitig verwalteten Schlüssels wird zusätzlich zur Standardverschlüsselung mit dienstseitig verwalteten Schlüsseln eine weitere Verschlüsselungsebene bereitgestellt. Der Kunde erhält die Kontrolle über die Schlüssel, kann benutzerdefinierte Richtlinien für die Rotation festlegen und durch eine Schlüsselzugriffskontrolle den Zugriff auf die Daten steuern. Kundenseitig verwaltete Schlüssel müssen während der Erstellung des IoT-Hubs konfiguriert werden. Weitere Informationen zum Konfigurieren kundenseitig verwalteter Schlüssel finden Sie unter [https://aka.ms/iotcmk](../../../../articles/iot-hub/iot-hub-customer-managed-keys.md). |Audit, Deny, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |

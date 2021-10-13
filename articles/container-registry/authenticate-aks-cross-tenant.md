@@ -4,17 +4,20 @@ description: Konfigurieren des Dienstprinzipals eines AKS-Clusters mit Berechtig
 ms.topic: article
 author: dlepow
 ms.author: danlep
-ms.date: 05/21/2021
-ms.openlocfilehash: 154ef93ca89c6d117d23a80986fe30ef2e14a426
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.date: 09/13/2021
+ms.openlocfilehash: da7a03e1f46523b67666a4a0ab7ab53fba909720
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111442056"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545470"
 ---
 # <a name="pull-images-from-a-container-registry-to-an-aks-cluster-in-a-different-azure-ad-tenant"></a>Pullen von Images aus einer Containerregistrierung in einen AKS-Cluster in einem anderen Azure AD-Mandanten
 
 Es kann vorkommen, dass sich Ihr Azure AKS-Cluster in einem Azure Active Directory-Mandanten und Ihre Azure-Containerregistrierung in einem anderen Mandanten befindet. Dieser Artikel beschreibt das Vorgehen für die mandantenübergreifende Authentifizierung mit den Anmeldeinformationen des AKS-Dienstprinzipals zum Pullen aus der Containerregistrierung.
+
+> [!NOTE]
+> Sie können nicht die Registrierung anfügen und sich mithilfe einer verwalteten AKS-Identität authentifizieren, wenn sich der Cluster und die Containerregistrierung in unterschiedlichen Mandanten befinden.
 
 ## <a name="scenario-overview"></a>Übersicht über das Szenario
 Annahmen für dieses Beispiel:
@@ -79,5 +82,6 @@ Das Aktualisieren des Dienstprinzipals kann einige Minuten dauern.
 * Erfahren Sie mehr: [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](container-registry-auth-service-principal.md)
 * Weitere Informationen zu Geheimnissen für Imagepullvorgänge finden Sie in der [Kubernetes-Dokumentation](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod).
 - Informationen zu [Anwendungs- und Dienstprinzipalobjekten in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md)
+- Weitere Informationen zu [Szenarien zum Authentifizieren per Azure Container Registry](authenticate-kubernetes-options.md) über einen Kubernetes-Cluster
 
 

@@ -55,10 +55,10 @@
           href: my-apps-deployment-plan.md
     - name: Einmaliges Anmelden
       items:
-        - name: Planen für die Bereitstellung
-          href: plan-sso-deployment.md
         - name: Worum handelt es sich beim einmaligen Anmelden?
           href: what-is-single-sign-on.md
+        - name: Planen für die Bereitstellung
+          href: plan-sso-deployment.md
     - name: Anwendungssicherheit
       items:
         - name: Optionen für den App-Zugriff
@@ -118,14 +118,14 @@
           href: prevent-domain-hints-with-home-realm-discovery.md
     - name: Migrieren von Anwendungen
       items:
-        - name: Migrationsressourcen
-          href: migration-resources.md
         - name: "Migrieren einer AD\_FS-App zu Azure"
           href: migrate-adfs-apps-to-azure.md
         - name: Migrieren der Anwendungsauthentifizierung zu Azure Active Directory
           href: migrate-application-authentication-to-azure-active-directory.md
         - name: "Verwenden des AD\_FS-Anwendungsaktivitätsberichts"
           href: migrate-adfs-application-activity.md
+        - name: Migrationsressourcen
+          href: migration-resources.md
         - name: "Migrieren von Anwendungen von Okta zu Azure\_AD"
           items:
             - name: "Migrieren von Anwendungen von Okta zu Azure\_AD"

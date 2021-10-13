@@ -1,6 +1,6 @@
 ---
-title: Festlegen des Azure Virtual Desktop-Ausgleichsmodus – Azure
-description: Konfigurieren und Verwenden des Ausgleichsmodus in Azure Virtual Desktop.
+title: 'Verwenden des Ausgleichsmodus zum Isolieren von Sitzungshosts: Azure Virtual Desktop'
+description: Verwenden des Ausgleichsmodus zum Isolieren von Sitzungshosts für die Wartung in Azure Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,14 +9,14 @@ ms.date: 04/14/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 2ff90e2800da857dd5c82cd3b9402fa2454575ac
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 4bacff4ecef6762a4e08760c463531392a71245f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757839"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352011"
 ---
-# <a name="set-drain-mode"></a>Festlegen des Ausgleichsmodus
+# <a name="use-drain-mode-to-isolate-session-hosts-and-apply-patches"></a>Verwenden des Ausgleichsmodus zum Isolieren von Sitzungshosts und Anwenden von Patches
 
 Der Ausgleichsmodus isoliert einen Sitzungshost, wenn Sie Patches anwenden und Wartungsarbeiten ohne Unterbrechung der Benutzersitzungen ausführen möchten. Bei Isolation akzeptiert der Sitzungshost keine neuen Benutzersitzungen. Alle neuen Verbindungen werden an den nächsten verfügbaren Sitzungshost umgeleitet. Vorhandene Verbindungen im Sitzungshost funktionieren weiterhin, bis sich der Benutzer abmeldet oder der Administrator die Sitzung beendet. Wenn sich der Sitzungshost im Ausgleichsmodus befindet, können Administratoren auch eine Remoteverbindung mit dem Server herstellen, ohne Azure Virtual Desktop zu verwenden. Sie können diese Einstellung sowohl auf gepoolte als auch auf persönliche Desktops anwenden.
 

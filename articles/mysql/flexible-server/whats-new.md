@@ -6,13 +6,13 @@ ms.service: mysql
 ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
-ms.date: 08/17/2021
-ms.openlocfilehash: cfbff4be8048090ec606fd8640281dccd17fe084
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/29/2021
+ms.openlocfilehash: 377c9fc994c4d26b67791e3eb525c7fba75a9d78
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128598004"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388886"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Neuerungen in Azure Database for MySQL Flexible Server (Vorschauversion)
 
@@ -21,6 +21,40 @@ ms.locfileid: "128598004"
 [Azure Database for MySQL Flexible Server](./overview.md#azure-database-for-mysql---flexible-server-preview) ist ein Bereitstellungsmodus, der mehr Kontrolle und Flexibilität bei der Datenbankverwaltung und den Konfigurationseinstellungen als der Single Server-Bereitstellungsmodus bietet. Der Dienst unterstützt derzeit die Community-Version von MySQL 5.7 und 8.0.
 
 In diesem Artikel werden neue Releases und Features in Azure Database for MySQL Flexible Server ab Januar 2021 zusammengefasst. Auflistungen werden in umgekehrter chronologischer Reihenfolge angezeigt, die neuesten Updates zuerst.
+## <a name="october-2021"></a>Oktober 2021
+- **Auswahl der Verfügbarkeitszonen bei der Erstellung von Lesereplikaten**
+
+    Bei der Erstellung von Lesereplikaten haben Sie die Möglichkeit, den Ort der Verfügbarkeitszonen Ihrer Wahl auszuwählen. Eine Verfügbarkeitszone ist ein Hochverfügbarkeitsangebot, das Ihre Anwendungen und Daten vor Fehlschlägen im Rechenzentrum schützt. Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. [Weitere Informationen](../flexible-server/concepts-read-replicas.md)
+
+- **Lesereplikate in Azure Database for MySQL – Flexible Server werden auf burstfähigen SKUs nicht mehr verfügbar sein**
+    
+    Sie werden nicht in der Lage sein, neue Lesereplikate auf dem Server der burstfähigen Ebene zu erstellen oder bestehende zu pflegen. Im Interesse einer guten Abfrage- und Entwicklungserfahrung für burstfähige SKU-Ebenen wird die Unterstützung für die Erstellung und Pflege von Lesereplikaten für Server in der Burstable-Ebene eingestellt. 
+
+    Wenn Sie einen bestehenden Azure Database for MySQL – Flexible Server mit aktiviertem Lesereplikat besitzen, müssen Sie Ihren Server innerhalb von 60 Tagen entweder auf die Preisebenen „universell“ oder „arbeitsspeicheroptimiert“ hochskalieren oder das Lesereplikat löschen. Nach Ablauf der 60 Tage können Sie zwar weiterhin den Primärserver für Ihre Schreib-Lese-Vorgänge verwenden, die Replikation auf Lesereplikat-Server wird jedoch gestoppt. Bei neu erstellten Servern ist die Option Lesereplikat nur für die Preisstufen „universell“ und „arbeitsspeicheroptimiert“ verfügbar.  
+
+ 
+
+## <a name="september-2021"></a>September 2021
+
+Dieses Release von Azure Database for MySQL Flexible Server enthält die folgenden Updates.
+
+- **Verfügbarkeit in drei weiteren Azure-Regionen**
+
+  Die öffentliche Vorschau von Azure Database for MySQL – Flexible Server ist jetzt in den folgenden Azure-Regionen verfügbar:
+
+  - UK, Westen
+  - Kanada, Osten
+  - Japan, Westen
+
+- **Fehlerbehebungen**
+
+  Die Erstellung von Selbe-Zone Hochverfügbarkeit wurde in den folgenden Regionen behoben:
+
+  - Indien, Mitte
+  - Asien, Osten
+  - Korea, Mitte
+  - Südafrika, Norden
+  - Schweiz, Norden
 
 ## <a name="august-2021"></a>August 2021
 
@@ -32,7 +66,7 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Auswahl der Standbyzone mit zonenredundanter Hochverfügbarkeit**
 
-  Der Dienst bietet Kund*innen jetzt die Möglichkeit, den Standort der Standbyserverzone zu wählen. Mit diesem Feature können Kund*innen ihren Standbyserver in der Zone ihrer Wahl bereitstellen. Durch das Bereitstellen der Standby-Datenbankserver und Standbyanwendungen in derselben Zone werden Latenzen reduziert, und Kund*innen können sich besser auf Notfallwiederherstellungen und Zonenausfälle vorbereiten. [Weitere Informationen](/azure/mysql/flexible-server/concepts-high-availability#standby-zone-selection)
+  Der Dienst bietet Kund*innen jetzt die Möglichkeit, den Standort der Standbyserverzone zu wählen. Mit diesem Feature können Kund*innen ihren Standbyserver in der Zone ihrer Wahl bereitstellen. Die Unterbringung der Standby-Datenbankserver und der Standby-Anwendungen in derselben Zone verringert die Latenzzeiten und ermöglicht es den Kunden, sich besser auf Notfallwiederherstellung-Situationen und Zonenausfall-Szenarien vorzubereiten. [Weitere Informationen](/azure/mysql/flexible-server/concepts-high-availability#standby-zone-selection)
 
 - **Integration in private DNS-Zonen**
 
@@ -44,11 +78,11 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Zeitpunktwiederherstellung für einen Server in einer Verfügbarkeitszone**
 
-  Dank der Zeitpunktwiederherstellung im Dienst können Kund*innen jetzt Verfügbarkeitszonen konfigurieren und dabei die Datenbankserver und die Standbyanwendungen in derselben Zone bereitstellen, um die Latenz zu reduzieren. Dadurch können Kund*innen sich besser auf Notfallwiederherstellungen und Zonenausfälle vorbereiten. [Weitere Informationen](/azure/mysql/flexible-server/concepts-high-availability#standby-zone-selection)
+  Die Zeitpunktwiederherstellung für den Dienst aktiviert jetzt die Konfiguration von Verfügbarkeitszonen. Die Unterbringung von Datenbankservern und Standby-Anwendungen in derselben Zone verringert die Latenzzeiten und ermöglicht es den Kunden, sich besser auf Notfallwiederherstellung-Situationen und Zonenausfall-Szenarien vorzubereiten. [Weitere Informationen](/azure/mysql/flexible-server/concepts-high-availability#standby-zone-selection)
 
 - **Plug-Ins „validate_password“ und „caching_sha2_password“ in der privaten Vorschau verfügbar**
 
-  Flexible Server unterstützt jetzt die Aktivierung der Plug-Ins „validate_password“ und „caching_sha2_password“ in der privaten Vorschau. Senden Sie uns eine E-Mail unter AskAzureDBforMySQL@service.microsoft.com.
+  Flexible Server unterstützt jetzt die Aktivierung der Plug-Ins „validate_password“ und „caching_sha2_password“ in der privaten Vorschau. Senden Sie uns eine E-Mail: AskAzureDBforMySQL@service.microsoft.com.
 
 - **Verfügbarkeit in vier zusätzlichen Azure-Regionen**
 
@@ -64,7 +98,7 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
   - Direkt nach dem Failover des zonenredundanten Hochverfügbarkeitsservers kann der Client keine Verbindung mit dem Server herstellen, wenn SSL mit der auf VERIFY_IDENTITY festgelegten Eigenschaft ssl_mode verwendet wird. Dieses Problem kann umgangen werden, indem ssl_mode auf VERIFY_CA festgelegt wird.
   - In den folgenden Regionen kann kein Server mit Hochverfügbarkeit in gleicher Zone erstellt werden: „Indien, Mitte“, „Asien, Osten“, „Südkorea, Mitte“, „Südafrika, Norden“ und „Schweiz, Norden“.
   - Nach einem Hochverfügbarkeitsfailover kann es selten vorkommen, dass der primäre Server den Modus read_only annimmt. Sie können dieses Problem beheben, indem Sie den Wert read_only auf dem Blatt für Serverparameter in OFF ändern.
-  - Nachdem Sie die Rechenleistung auf dem Blatt „Compute und Speicher“ erfolgreich skaliert haben, werden die IOPS auf den SKU-Standardwert zurückgesetzt. Kund*innen können das Problem umgehen, indem sie die IOPS auf dem Blatt „Compute und Speicher“ nach der Computebereitstellung und der konsequenten IOPS-Zurücksetzung auf den (zuvor festgelegten) gewünschten Wert neu skalieren.
+  - Nachdem Sie die Rechenleistung auf dem Blatt „Compute und Speicher“ erfolgreich skaliert haben, werden die IOPS auf den SKU-Standardwert zurückgesetzt. Kunden können das Problem umgehen, indem sie die IOPs auf dem Blatt Compute+Storage nach der Bereitstellung und dem anschließenden Zurücksetzen der IOPS auf den gewünschten Wert skalieren (der zuvor festgelegt wurde).
 
 ## <a name="july-2021"></a>Juli 2021
 
@@ -97,7 +131,7 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Automatische Speichervergrößerung**
 
-  Die automatische Speichervergrößerung verhindert, dass ein Server nicht mehr über genügend Speicherplatz verfügt und schreibgeschützt wird. Wenn die automatische Speichervergrößerung aktiviert ist, wird der Speicher automatisch ohne Beeinträchtigung der Workload vergrößert. Ab dem 21. Juni 2021 ist für alle neu erstellten Server die automatische Speichervergrößerung standardmäßig aktiviert. [Weitere Informationen](concepts-compute-storage.md#storage-auto-grow)
+  Die automatische Speichervergrößerung verhindert, dass ein Server nicht mehr über genügend Speicherplatz verfügt und schreibgeschützt wird. Wenn die automatische Speichervergrößerung aktiviert ist, wird der Speicher automatisch ohne Beeinträchtigung der Workload vergrößert. Ab dem 21. Juni 2021 wird bei allen neu erstellten Servern die automatische Speichervergrößerung standardmäßig aktiviert sein. [Weitere Informationen](concepts-compute-storage.md#storage-auto-grow)
 
 - **Datenreplikation**
 
@@ -204,7 +238,7 @@ Wenn Sie Fragen oder Vorschläge zur Arbeit mit Azure Database for MySQL haben, 
 
 - Wenn Sie den Azure-Support kontaktieren möchten, [fordern Sie im Azure-Portal ein Ticket an](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Um ein Problem mit Ihrem Konto zu beheben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-- Wenn Sie Feedback geben oder neue Features anfordern möchten, senden Sie uns eine E-Mail an AskAzureDBforMySQL@service.microsoft.com.
+- Wenn Sie uns Feedback geben oder Wünsche zu neuen Funktionen äußern möchten, senden Sie uns eine E-Mail an AskAzureDBforMySQL@service.microsoft.com.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

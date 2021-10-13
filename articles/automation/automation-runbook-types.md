@@ -3,15 +3,15 @@ title: Azure Automation-Runbooktypen
 description: In diesem Artikel werden die Runbooktypen beschrieben, die Sie in Azure Automation verwenden können, sowie Aspekte, die Sie bei der Auswahl des geeigneten Typs berücksichtigen sollten.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/10/2021
+ms.date: 10/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 44923cd63676a6eb2fa589c66726f1c14c76896c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 58bc105a088e2ed06fb710d9a2e38e406e375bd9
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124744808"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534323"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-Runbooktypen
 
@@ -69,8 +69,8 @@ PowerShell-Runbooks basieren auf Windows PowerShell. Sie bearbeiten den Code des
 * Erfordern Kenntnisse zu PowerShell-Skripts
 * Können keine [parallele Verarbeitung](automation-powershell-workflow.md#use-parallel-processing) zum gleichzeitigen Ausführen mehrerer Aktionen nutzen
 * Können keine [Prüfpunkte](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) zum Fortsetzen des Runbooks bei einem Fehler nutzen
-* Sie können nur PowerShell-Workflow- und grafische Runbooks mithilfe des Cmdlets [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) als untergeordnete Runbooks einfügen, wobei ein neuer Auftrag erstellt wird.
-* Für Runbooks kann die PowerShell-Anweisung [#Requires](/powershell/module/microsoft.powershell.core/about/about_requires) nicht verwendet werden. Sie wird in der Azure-Sandbox und für Hybrid Runbook Workers nicht unterstützt und führt dazu, dass für den Auftrag ein Fehler auftritt.
+* Sie können nur PowerShell-, PowerShell-Workflow- und grafische Runbooks mithilfe des Cmdlets [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) als untergeordnete Runbooks einfügen, wobei ein neuer Auftrag erstellt wird.
+* Für Runbooks kann die PowerShell-Anweisung [#Requires](/powershell/module/microsoft.powershell.core/about/about_requires) nicht verwendet werden. Sie wird in der Azure-Sandbox und für Hybrid Runbook Workers nicht unterstützt und führt möglicherweise dazu, dass für den Auftrag ein Fehler auftritt.
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
@@ -124,6 +124,14 @@ Python 3-Runbooks werden in den folgenden globalen Azure-Infrastrukturen unterst
 * Erfordern für die Verwendung von Bibliotheken von Drittanbietern das [Importieren der Pakete](python-packages.md) in das Automation-Konto
 * Das Verwenden des Cmdlets **Start-AutomationRunbook** in PowerShell oder einem PowerShell-Workflow zum Starten eines Python 3-Runbooks (Vorschau) funktioniert nicht. Sie können das Cmdlet  **Start-AzAutomationRunbook** aus dem Modul Az.Automation oder das Cmdlet  **Start-AzureRmAutomationRunbook** aus dem Modul AzureRm.Automation verwenden, um diese Einschränkung zu umgehen.  
 * Azure Automation unterstützt  **sys.stderr** nicht.
+
+### <a name="multiple-python-versions"></a>Mehrere Python-Versionen
+
+Ein Windows Runbook Worker sucht beim Ausführen eines Python 2-Runbooks zuerst nach der Umgebungsvariable `PYTHON_2_PATH` und überprüft, ob sie auf eine gültige ausführbare Datei verweist. Wenn der Installationsordner beispielsweise `C:\Python2` lautet, wird überprüft, ob `C:\Python2\python.exe` ein gültiger Pfad ist. Wenn er nicht gefunden wird, sucht der Worker nach der Umgebungsvariable `PATH`, um eine ähnliche Überprüfung durchzuführen.
+
+Für Python 3 sucht er zuerst nach der Umgebungsvariable `PYTHON_3_PATH` und greift dann auf die Umgebungsvariable `PATH` zurück.
+
+Wenn Sie nur eine Version von Python verwenden, können Sie der Variable den Installationspfad `PATH` hinzufügen. Wenn Sie beide Versionen auf dem Runbook Worker verwenden möchten, legen Sie für `PYTHON_2_PATH` und `PYTHON_3_PATH` den Speicherort des Moduls für diese Versionen fest.
 
 ### <a name="known-issues"></a>Bekannte Probleme
 

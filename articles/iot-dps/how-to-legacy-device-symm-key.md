@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: lizross
-ms.openlocfilehash: 754db21fa8e14045696f1af2bcfe375fb1161d94
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: c2330203ce2617bf7cc42b8c7549d11a73185f12
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930567"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458243"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Bereitstellen von Geräten mit symmetrischen Schlüsseln für Registrierungsgruppen
 
-In diesem Artikel wird gezeigt, wie Sie mehrere Geräte mit symmetrischen Schlüsseln für eine Gruppe von IoT-Hubs mithilfe einer Registrierungsgruppe auf sichere Weise bereitstellen.
+In diesem Artikel wird gezeigt, wie Sie mehrere simulierte Geräte mit symmetrischen Schlüsseln für eine Gruppe von IoT-Hubs mithilfe einer Registrierungsgruppe auf sichere Weise bereitstellen.
 
 Einige Geräte verfügen unter Umständen nicht über ein Zertifikat, TPM oder ein anderes Sicherheitsfeature, über das das Gerät sicher identifiziert werden kann. Der Device Provisioning Service bietet ein Verfahren zum [Nachweis mit symmetrischen Schlüsseln](concepts-symmetric-key-attestation.md). Der Nachweis mit symmetrischen Schlüsseln kann genutzt werden, um ein Gerät anhand von eindeutigen Informationen wie der MAC-Adresse oder der Seriennummer zu identifizieren.
 
@@ -28,7 +28,7 @@ Weiterhin wird in diesem Artikel davon ausgegangen, dass das Geräteupdate in ei
 In diesem Artikel wird von der Nutzung einer Windows-Arbeitsstation ausgegangen. Allerdings können Sie die Verfahren auch unter Linux ausführen. Ein Beispiel für Linux finden Sie unter [Bereitstellen für Mehrinstanzenfähigkeit](how-to-provision-multitenant.md).
 
 > [!NOTE]
-> Das in diesem Artikel verwendete Beispiel ist in C geschrieben. Es gibt auch ein [C#-Beispiel für einen symmetrischen Schlüssel zum Bereitstellen von Geräten](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample). Wenn Sie dieses Beispiel verwenden möchten, laden Sie das Repository [azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) herunter, oder klonen Sie es, und befolgen Sie die Anweisungen im Beispielcode. Befolgen Sie die Anweisungen in diesem Artikel, um über das Portal eine Registrierungsgruppe von symmetrischen Schlüsseln zu erstellen sowie den ID-Bereich und die primären und sekundären Schlüssel der Registrierungsgruppe zu ermitteln, die für die Ausführung des Beispiels erforderlich sind. Sie können mithilfe des Beispiels auch individuelle Registrierungen erstellen.
+> Das in diesem Artikel verwendete Beispiel ist in C geschrieben. Es gibt auch ein [C#-Beispiel für einen symmetrischen Schlüssel zum Bereitstellen von Geräten](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/provisioning/Samples/device/SymmetricKeySample). Wenn Sie dieses Beispiel verwenden möchten, laden Sie das Repository [azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) herunter, oder klonen Sie es, und befolgen Sie die Anweisungen im Beispielcode. Befolgen Sie die Anweisungen in diesem Artikel, um über das Portal eine Registrierungsgruppe von symmetrischen Schlüsseln zu erstellen sowie den ID-Bereich und die primären und sekundären Schlüssel der Registrierungsgruppe zu ermitteln, die für die Ausführung des Beispiels erforderlich sind. Sie können mithilfe des Beispiels auch individuelle Registrierungen erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -222,9 +222,9 @@ In diesem Abschnitt aktualisieren Sie ein Bereitstellungsbeispiel mit dem Namen 
 
 Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellungsanforderung an die Instanz des Device Provisioning Service gesendet wird. Die Startsequenz bewirkt, dass das Gerät erkannt und dem IoT-Hub zugewiesen wird, den Sie in der Registrierungsgruppe konfiguriert haben. Dies wird für jedes Gerät durchgeführt, das mithilfe der Registrierungsgruppe bereitgestellt wird.
 
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning Service, und notieren Sie sich den Wert unter **_ID-Bereich_** .
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihre Device Provisioning Service-Instanz, und notieren Sie sich den Wert unter **_ID-Bereich_**.
 
-    ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
+    ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/copy-id-scope.png) 
 
 2. Öffnen Sie in Visual Studio die Projektmappendatei **azure_iot_sdks.sln**, die zuvor durch das Ausführen von CMake generiert wurde. Die Projektmappendatei befindet sich am folgenden Speicherort:
 
@@ -305,7 +305,7 @@ Beachten Sie, dass der abgeleitete Geräteschlüssel hierbei als Teil des Images
 > [IoT Hub Device-Konzepte für die erneute Bereitstellung](concepts-device-reprovision.md)
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Bereitstellen eines simulierten Geräts mit symmetrischen Schlüsseln](quick-create-simulated-device-symm-key.md)
+> [Schnellstart: Bereitstellen eines simulierten Geräts mit symmetrischem Schlüssel](quick-create-simulated-device-symm-key.md)
 
 * Weitere Informationen zum Aufheben der Bereitstellung finden Sie unter
 

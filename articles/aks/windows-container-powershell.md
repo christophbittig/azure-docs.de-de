@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 03/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ea0f36cb50cd124386e877d443a665d91b2d2a47
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bd419902055758a089772a2ee99c40c4e66ff750
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346200"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235210"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster mit PowerShell
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: ae7da354b16dbea3e84f8d75fbf97e805387c4b0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 066690f69922ba8df7e7df8739d4c4bf521eb5c3
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952100"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230929"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -30,10 +30,10 @@ Bei Connectors handelt es sich um einfache Agents, die lokal eingerichtet sind u
 
 Für die erfolgreiche Bereitstellung des Anwendungsproxys benötigen Sie mindestens einen Connector, aber es wird empfohlen, für größere Resilienz über mindestens zwei zu verfügen. Installieren Sie den Connector auf einem Computer mit Windows Server 2012 R2 oder höher. Der Connector muss mit dem Anwendungsproxydienst und mit den lokalen Anwendungen, die Sie veröffentlichen, kommunizieren können.
 
-### <a name="windows-server"></a>Windows-Server
+### <a name="windows-server"></a>Windows Server
 Sie benötigen einen Server, auf dem Windows Server 2012 R2 oder höher ausgeführt wird und auf dem Sie den Anwendungsproxy-Connector installieren können. Der Server muss eine Verbindung mit den Anwendungsproxydiensten in Azure sowie mit den lokalen Anwendungen herstellen können, die Sie veröffentlichen.
 
-Auf dem Windows-Server muss TLS 1.2 aktiviert werden, bevor Sie den Anwendungsproxy-Connector installieren. So aktivieren Sie TLS 1.2 auf dem Server
+Auf dem Server muss TLS 1.2 aktiviert werden, bevor Sie den Anwendungsproxy-Connector installieren. So aktivieren Sie TLS 1.2 auf dem Server
 
 1. Legen Sie die folgenden Registrierungsschlüssel fest:
 
