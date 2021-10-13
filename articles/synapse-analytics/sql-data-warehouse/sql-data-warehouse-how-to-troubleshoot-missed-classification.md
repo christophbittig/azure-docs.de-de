@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 10/01/2021
 ms.custom: template-how-to
 ms.reviewer: wiassaf
-ms.openlocfilehash: 1fa0394f3e711ec172f5a3ad32288f63bcf55dce
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 6cf1564ccc62d6429da56bc8116b124b44b58653
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390556"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728397"
 ---
 # <a name="troubleshooting-a-misclassified-workload-in-azure-synapse-analytics"></a>Problembehandlung eines falsch klassifizierten Workloads in Azure Synapse Analytics
 
@@ -102,7 +102,7 @@ Der erste Schritt bei der Problembehandlung bei einer falsch klassifizierten Wor
 SELECT * FROM sys.dm_pdw_exec_requests;
 ```
 
-Weitere Informationen finden Sie unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-catalog-views/sys-dm-pdw-exec-requests-transact-sql).
+Weitere Informationen finden Sie unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql).
 
 ## <a name="common-scenarios-of-misclassified-workloads"></a>Häufige Szenarien falsch klassifizierter Workloads
 

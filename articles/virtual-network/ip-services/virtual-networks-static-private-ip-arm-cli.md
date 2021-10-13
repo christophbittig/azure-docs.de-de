@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 10/01/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 1129b4cf06a2de01438f2c83500eee84240183fc
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 900010fd454e356b43eb7cb5b2ee0379bdf90beb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129705252"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129368026"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-the-azure-cli"></a>Erstellen einer VM mit einer statischen privaten IP-Adresse mithilfe der Azure CLI
 
@@ -57,7 +57,7 @@ Mit dem folgenden Befehl wird ein virtueller Windows Server-Computer erstellt. G
 
 In diesem Abschnitt ändern Sie die private IP-Adresse für den zuvor erstellten virtuellen Computer von **dynamisch** in **statisch**. 
 
-Verwenden Sie [az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update), um die Konfiguration der Netzwerkschnittstelle zu aktualisieren.
+Verwenden Sie [az network nic ip-config update](/cli/azure/network/nic/ipconfig#az_network_nic_ip_config_update), um die Konfiguration der Netzwerkschnittstelle zu aktualisieren.
 
 Mit dem folgenden Befehl wird die private IP-Adresse des virtuellen Computers in statisch geändert:
 
