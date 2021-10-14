@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: security
 author: nabhishek
 ms.author: abnarain
-ms.openlocfilehash: 285b4c4fb9fae46ed7549352a93553b15a518e36
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 2138c1947fd6d068bfc4d171595cf818ecf5dd77
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419304"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708046"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen und Berechtigungen für Azure Data Factory
 
@@ -27,6 +27,10 @@ Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit 
 
 Für das Erstellen und Verwalten von untergeordneten Ressourcen für Data Factory – z.B. Datasets, verknüpfte Dienste, Pipelines, Trigger und Integration Runtimes – gelten die folgenden Anforderungen:
 - Für das Erstellen und Verwalten von untergeordneten Ressourcen im Azure-Portal müssen Sie auf **Ressourcengruppenebene** oder höher Mitglied der Rolle **Mitwirkender von Data Factory** sein.
+  
+  > [!NOTE]
+  > Wenn Ihnen bereits die Rolle **Mitwirkender** auf Ebene der **Ressourcengruppe** oder höher zugewiesen wurde, benötigen Sie die Rolle **Data Factory-Mitwirkender** nicht. Die Rolle [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor) ist eine übergeordnete Rolle, die alle Berechtigungen umfasst, die der Rolle [Data Factory-Mitwirkender](../role-based-access-control/built-in-roles.md#data-factory-contributor) erteilt wurden.
+
 - Zum Erstellen und Verwalten von untergeordneten Ressourcen mit PowerShell oder dem SDK auf Ressourcenebene oder höher ist die Rolle **Mitwirkender** ausreichend.
 
 Eine Beispielanleitung zum Hinzufügen eines Benutzers zu einer Rolle finden Sie im Artikel [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](../cost-management-billing/manage/add-change-subscription-administrator.md).

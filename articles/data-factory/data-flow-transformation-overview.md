@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: 393e6dbc0f30e4a541408119db6f606f24023d5d
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.date: 10/07/2021
+ms.openlocfilehash: 56a6a521eb648a1ad49baf2bf206ef84aa084731
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059737"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714124"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Zuordnungsdatenfluss – Übersicht über Transformationen
 
@@ -43,6 +43,7 @@ In der nachstehenden Liste sind die Transformationen aufgeführt, die im Zuordnu
 | [Senke](data-flow-sink.md) | - | Ein endgültiges Ziel für Ihre Daten |
 | [Sort](data-flow-sort.md) | Zeilenmodifizierer | Sortieren von eingehenden Zeilen im aktuellen Datenstrom |
 | [Quelle](data-flow-source.md) | - | Eine Datenquelle für den Datenfluss |
+| [Stringify](data-flow-stringify.md) | - | Umwandeln komplexer Typen in einfache Zeichenfolgen |
 | [Ersatzschlüssel](data-flow-surrogate-key.md) | Schemamodifizierer | Hinzufügen eines inkrementellen, nicht geschäftlichen beliebigen Schlüsselwerts |
 | [Union](data-flow-union.md) | Mehrere Eingaben/Ausgaben | Vertikales Kombinieren mehrerer Datenströme |
 | [Entpivotieren](data-flow-unpivot.md) | Schemamodifizierer | Pivotieren von Spalten in Zeilenwerte |

@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/24/2021
+ms.date: 09/28/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: ad107daa5d1a90e3416777375f47640359f10f37
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: bfa9e8a767167d7ae31dae3269be6cad2a1c1d07
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867264"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709381"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Anzeigen des Status von Azure Import/Export-Aufträgen
 
@@ -42,7 +42,7 @@ Je nachdem, an welchem Punkt des Prozesses sich Ihre Festplatte befindet, wird e
 | Auftragsstatus | BESCHREIBUNG |
 |:--- |:--- |
 | Wird erstellt | Nachdem ein Auftrag erstellt wurde, ist sein Status auf **Wird erstellt** festgelegt. Während sich der Auftrag im Status **Wird erstellt** befindet, geht der Import/Export-Dienst davon aus, dass die Laufwerke noch nicht an das Rechenzentrum versendet wurden. Ein Auftrag verbleibt bis zu zwei Wochen in diesem Status. Anschließend wird er automatisch vom Dienst gelöscht. |
-| Versand | Nachdem Sie Ihr Paket gesendet haben, sollten Sie die Nachverfolgungsinformationen im Azure-Portal aktualisieren.  Hierdurch wird der Auftrag in den Zustand **Wird versendet** versetzt. Der Auftrag verbleibt bis zu zwei Wochen im Status **Wird versendet**. 
+| Versand | Nachdem Sie Ihr Paket gesendet haben, sollten Sie die Nachverfolgungsinformationen im Azure-Portal aktualisieren. Hierdurch wird der Auftrag in den Zustand **Wird versendet** versetzt. Der Auftrag verbleibt bis zu zwei Wochen im Status **Wird versendet**.<br>Wenn ein Auftrag den Status „Wird versendet“ erreicht, kann er nicht mehr abgebrochen werden.
 | Empfangen | Nachdem das Rechenzentrum alle Laufwerke empfangen hat, wird der Status des Auftrags auf **Empfangen** gesetzt.</br>Der Auftragsstatus kann sich innerhalb von einem bis drei Tagen ändern, nachdem der Betreiber das Gerät bereitgestellt hat und die Auftragsverarbeitung im Rechenzentrum abgeschlossen wurde. |
 | Übertragung wird ausgeführt | Nachdem die Verarbeitung mindestens eines Laufwerks begonnen hat, wird der Status des Auftrags auf **Übertragung wird ausgeführt** festgelegt. Weitere Informationen finden Sie unter [Laufwerkstatus](#view-drive-status). |
 | Verpackung | Nachdem die Verarbeitung aller Laufwerke abgeschlossen ist, wird der Auftrag in den Status **Verpackung** gesetzt, bis die Laufwerke an den Kunden zurückgesendet werden. |
