@@ -1,15 +1,14 @@
 ---
 title: Aktualisieren des Linux-Betriebssystems für Azure Service Fabric
 description: Erfahren Sie mehr über Optionen zum Migrieren Ihres Azure Service Fabric-Clusters zu einem anderen Linux-Betriebssystem.
-manager: tassb
 ms.topic: conceptual
 ms.date: 09/14/2021
-ms.openlocfilehash: 4a5b1a97fde977fa4ba64a4a23d0c57725595c37
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8f52481e7c457445dc842e86f7b05c3568502da4
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700229"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278009"
 ---
 # <a name="upgrading-linux-os-for-azure-service-fabric"></a>Aktualisieren des Linux-Betriebssystems für Azure Service Fabric
 
@@ -31,7 +30,7 @@ Die allgemeine Vorgehensweise sieht wie folgt aus:
 
     * Stellen Sie nach dem Erstellen des neuen Knotentyps des Zielbetriebssystem sicher, dass vorhandene Workloads weiterhin ordnungsgemäß funktionieren. Wenn Probleme festgestellt werden, beheben Sie die Änderungen, die in der App oder in vorinstallierten Computerpaketen erforderlich sind, bevor Sie mit dem Entfernen des alten Knotentyps fortfahren.
 3. Markieren Sie den alten primären Knotentyp wie folgt: „isPrimary“: false. Dies führt zu einer Reihe von Upgrades mit langer Ausführungszeit, um für alle Seedknoten den Übergang durchzuführen.
-4. (NUR für Dauerhaftigkeitsknoten vom Typ „Bronze“): Stellen Sie die Verbindung mit dem Cluster über [sfctl](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl) / [PowerShell](https://docs.microsoft.com/powershell/module/ServiceFabric/?view=azureservicefabricps) / [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient?view=azure-dotnet) her, und deaktivieren Sie alle Knoten des alten Knotentyps.
+4. (NUR für Dauerhaftigkeitsknoten vom Typ „Bronze“): Stellen Sie die Verbindung mit dem Cluster über [sfctl](service-fabric-sfctl.md) / [PowerShell](/powershell/module/ServiceFabric) / [FabricClient](/dotnet/api/system.fabric.fabricclient) her, und deaktivieren Sie alle Knoten des alten Knotentyps.
 5. Entfernen Sie die alten Knotentypen.
 
 > [!NOTE]
@@ -43,9 +42,9 @@ Die allgemeine Vorgehensweise sieht wie folgt aus:
 > [!NOTE]
 > Die folgenden Schritte veranschaulichen, wie Sie schnell einen Prototyp der Knotentypmigration über Az PowerShell-Cmdlets in einem Nur-TEST-Cluster erstellen. Für Produktionscluster mit echtem Geschäftsdatenverkehr werden die gleichen Schritte erwartet, indem ARM-Upgrades durchgeführt werden, um die Wiederholbarkeit und eine konsistente deklarative Quelle der Wahrheit zu erhalten.
 
-1. Aktualisieren Sie die vmImage-Einstellung auf der Service Fabric-Clusterressource mit [Update-AzServiceFabricVmImage](https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricvmimage):
+1. Aktualisieren Sie die vmImage-Einstellung auf der Service Fabric-Clusterressource mit [Update-AzServiceFabricVmImage](/powershell/module/az.servicefabric/update-azservicefabricvmimage):
 
-    [Azure PowerShell:](https://docs.microsoft.com/powershell/azure/install-az-ps)
+    [Azure PowerShell:](/powershell/azure/install-az-ps)
     ```powershell
     # Replace subscriptionId, resourceGroup, clusterName with ones corresponding to your cluster.
     $subscriptionId="cea219db-0593-4b27-8bfa-a703332bf433"
