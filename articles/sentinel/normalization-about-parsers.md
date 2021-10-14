@@ -15,19 +15,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: a08fff90197315edbfb78cb76a1c41bc84f90d69
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: b3dc1575258c495a2be63eced6aa141c60bb6631
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538343"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659436"
 ---
 # <a name="azure-sentinel-information-model-asim-parsers-public-preview"></a>Azure Sentinel Informationsmodell (ASIM) Parsers (Öffentliche Vorschau)
 
 In Azure Sentinel erfolgen das Parsing und die [Normalisierung](normalization.md) zur Abfragezeit. Parser werden als [benutzerdefinierte KQL-Funktionen](/azure/data-explorer/kusto/query/functions/user-defined-functions) erstellt, die Daten in vorhandenen Tabellen (wie etwa **CommonSecurityLog**, benutzerdefinierte Protokolltabellen, Syslog) in das normalisierte Schema transformieren. Sobald der Parser als Arbeitsbereich-Funktion gespeichert ist, kann er wie jede Azure Sentinel-Tabelle verwendet werden.
 
+> [!TIP]
+> Informieren Sie sich auch über das [ausführliche Webinar zu normalisierten Parsern und Inhalten in Azure Sentinel](https://www.youtube.com/watch?v=zaqblyjQW6k), oder sehen Sie sich die [Folien](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM) an. Weitere Informationen finden Sie in den [nächsten Schritten](#next-steps).
+>
+
 > [!IMPORTANT]
-> ASIM befindet sich derzeit in PREVIEW. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> ASIM befindet sich derzeit in der Vorschauphase. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 >
 
 ## <a name="source-agnostic-and-source-specific-parsers"></a>Quellenunabhängige und quellenspezifische Parser
@@ -277,12 +281,13 @@ Weitere Informationen finden Sie in der [ARM-Vorlage des generischen Parsers](ht
 >
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel werden die Parser des Azure Sentinel Informationsmodells (ASIM) diskutiert.
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
-- [ Azure Sentinel Informationsmodell Übersicht](normalization.md)
-- [ Azure Sentinel Informationsmodell Schema](normalization-about-schemas.md)
-- [ Azure Sentinel Informationsmodell Inhalt](normalization-content.md)
+- Informieren Sie sich über das [ausführliche Webinar zu normalisierten Parsern und Inhalten in Azure Sentinel](https://www.youtube.com/watch?v=zaqblyjQW6k), oder sehen Sie sich die [Folien](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM) an.
+- [ Azure Sentinel-Informationsmodell Übersicht](normalization.md)
+- [Schemas des Azure Sentinel-Informationsmodells](normalization-about-schemas.md)
+- [ Azure Sentinel-Informationsmodell Inhalt](normalization-content.md)

@@ -1,16 +1,16 @@
 ---
 title: Bereitstellen von Azure Blockchain Workbench Preview
 description: 'Vorgehensweise: Bereitstellen von Azure Blockchain Workbench Preview'
-ms.date: 07/16/2020
+ms.date: 09/15/2021
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: references_regions
-ms.openlocfilehash: b46a35b45a51d0cc76942c4ca142c4c7792a28b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09767c1270593738efaf00ea6fc0b8e35f529239
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87077026"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128581075"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Bereitstellen von Azure Blockchain Workbench Preview
 
@@ -74,27 +74,14 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
 
 1. Wählen Sie **OK**, um die Konfiguration der Grundeinstellungen fertig zu stellen.
 
-1. Wählen Sie unter **Erweiterte Einstellungen**, ob Sie ein neues Blockchainnetzwerk erstellen oder ein bestehendes Blockchainnetzwerk mit Proof-of-Authority (PoA) verwenden möchten.
+1. Wählen Sie unter **Erweiterte Einstellungen** das vorhandene Ethereum-Proof-of-Authority-Blockchainnetzwerk, Active Directory-Einstellungen und die bevorzugte VM-Größe für Blockchain Workbench Komponenten aus.
 
-    Für **Neues Element erstellen**:
-
-    Mit der Option *Neues Element erstellen* wird ein Quorum-Ledger im Azure Blockchain-Dienst mit der Standard-SKU „Basic“ bereitgestellt.
-
-    ![Erweiterte Einstellungen für ein neues Blockchainnetzwerk](media/deploy/advanced-blockchain-settings-new.png)
-
-    | Einstellung | BESCHREIBUNG  |
-    |---------|--------------|
-    | Azure Blockchain-Diensttarif | Wählen Sie für Blockchain Workbench den Azure Blockchain-Diensttarif **Basic** oder **Standard** aus. |
-    | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
-    | VM-Auswahl | Wählen Sie die bevorzugte Speicherleistung und VM-Größe für Ihr Blockchainnetzwerk aus. Wählen Sie eine kleinere VM-Größe wie *Standard DS1 v2* aus, wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. den Azure-Free-Tarif. |
-
-    Für **Vorhandene verwenden**:
-
-    Die Option *Vorhandene verwenden* ermöglicht Ihnen, ein Ethereum-PoA-Blockchainnetzwerk festzulegen. Endpunkte haben die folgenden Anforderungen:
+    Der Ethereum-RPC-Endpunkt hat die folgenden Anforderungen:
 
    * Beim Endpunkt muss es sich um ein Ethereum-PoA-Blockchainnetzwerk handeln.
    * Der Endpunkt muss öffentlich über das Netzwerk zugänglich sein.
    * Für das PoA-Blockchainnetzwerk sollte der Gaspreis auf 0 (null) gesetzt sein.
+   * Der Endpunkt startet mit `https://` oder `http://` und endet mit einer Portnummer. Zum Beispiel, `http<s>://<network-url>:<port>` 
 
      > [!NOTE]
      > Blockchain Workbench-Konten werden nicht finanziert. Wenn Geldmittel erforderlich sind, tritt ein Fehler bei der Transaktion auf.
@@ -103,7 +90,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
 
      | Einstellung | BESCHREIBUNG  |
      |---------|--------------|
-     | Ethereum-RPC-Endpunkt | Geben Sie den RPC-Endpunkt eines bestehenden PoA-Blockchainnetzwerks an. Der Endpunkt beginnt mit „https://“ oder „http://“ und endet mit einer Portnummer. Zum Beispiel, `http<s>://<network-url>:<port>` |
+     | Ethereum-RPC-Endpunkt | Geben Sie den RPC-Endpunkt eines bestehenden PoA-Blockchainnetzwerks an. |
      | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
      | VM-Auswahl | Wählen Sie die bevorzugte Speicherleistung und VM-Größe für Ihr Blockchainnetzwerk aus. Wählen Sie eine kleinere VM-Größe wie *Standard DS1 v2* aus, wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. den Azure-Free-Tarif. |
 

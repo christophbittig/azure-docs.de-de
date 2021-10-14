@@ -2,21 +2,21 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 06/24/2021
+ms.date: 09/14/2021
 ms.author: larryfr
-ms.openlocfilehash: 99d885ab35eb04963d9d2b0c6c9c14dbd10f2e2c
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 757179959035c6bfce77b1feaaf5bfeff5aab001
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113559661"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621590"
 ---
 > [!IMPORTANT]
 > Diese Cosmos DB-Instanz wird in einer von Microsoft verwalteten Ressourcengruppe in __Ihrem Abonnement__ erstellt. Die folgenden Dienste werden ebenfalls in dieser Ressourcengruppe erstellt und von der Konfiguration des kundenseitig verwalteten Schlüssels verwendet:
 > * Azure Storage-Konto
 > * Azure Search
 >
-> Da diese Dienste in Ihrem Azure-Abonnement erstellt werden, bedeutet dies, dass Ihnen diese Dienstinstanzen in Rechnung gestellt werden. 
+> Da diese Dienste in Ihrem Azure-Abonnement erstellt werden, bedeutet dies, dass Ihnen diese Dienstinstanzen in Rechnung gestellt werden. Wenn Ihr Abonnement nicht über ein ausreichendes Kontingent für den Azure Cosmos DB-Dienst verfügt, tritt ein Fehler auf. Weitere Informationen zu Kontingenten finden Sie unter [Kontingente im Azure Cosmos DB-Dienst](/azure/cosmos-db/concepts-limits).
 >
 > Die verwaltete Ressourcengruppe wird im Format `<AML Workspace Resource Group Name><GUID>` benannt. Wenn im Azure Machine Learning-Arbeitsbereich ein privater Endpunkt verwendet wird, wird in dieser Ressourcengruppe auch ein virtuelles Netzwerk erstellt. Dieses VNet wird verwendet, um die Kommunikation zwischen den Diensten in dieser Ressourcengruppe und Ihrem Azure Machine Learning-Arbeitsbereich zu sichern.
 > 

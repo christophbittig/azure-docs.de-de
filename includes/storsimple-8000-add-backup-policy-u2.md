@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 09/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 23ce17844a0113f63931c6ece7d36bfefedc2de5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88ef9534c1a0048ef113ce0666ddcdd47171c234
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100552831"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589372"
 ---
 #### <a name="to-add-a-storsimple-backup-policy"></a>So fügen Sie eine StorSimple-Sicherungsrichtlinie hinzu
 
@@ -42,6 +42,9 @@ ms.locfileid: "100552831"
        4. Geben Sie Startzeit und -datum für die Sicherungsrichtlinie ein.
 
        5. Klicken Sie auf **OK**, um den Zeitplan zu definieren.
+       
+       > [!NOTE]
+       > Wenn Sie 64 Sicherungen für einen Zeitplan erreichen und diese Sicherungen beibehalten möchten, können Sie den [Zeitplan deaktivieren](..\articles\storsimple\storsimple-8000-manage-backup-policies-u2.md#disable-a-schedule) und dann einen neuen Zeitplan mit einer maximalen Aufbewahrung von 64 Sicherungen hinzufügen. Diese Problemumgehung funktioniert, bis Sie den Grenzwert von 256 Sicherungen pro Volume erreichen. An diesem Punkt müssen Sie ältere Sicherungen löschen, bevor Sie neue Sicherungen erstellen können.
 
    5. Klicken Sie auf **Erstellen**, um eine Sicherungsrichtlinie zu erstellen.
    

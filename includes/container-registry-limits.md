@@ -1,5 +1,5 @@
 ---
-title: Datei einfügen
+title: include file
 description: include file
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/12/2021
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 5e633bc71da050f3d580a6f0d0a4db25102ac360
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 43baf554bda4c2b3ae9bda9d79b46035e073cead
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122262963"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582331"
 ---
 | Resource | Basic | Standard | Premium |
 |---|---|---|---|
@@ -33,6 +33,7 @@ ms.locfileid: "122262963"
 | &bull; Private Endpunkte | – | – | 10 |
 | Netzwerkregeln für öffentliche IP-Adressen | – | – | 100 |
 | Dienstendpunkt-VNET-Zugriff | – | – | [Vorschau][vnet] |
+| &bull; VNet-Regeln | – | – | 100 |
 | Vom Kunden verwaltete Schlüssel | – | – | [Unterstützt][cmk] |
 | Repositorybezogene Berechtigungen | – | – | [Vorschau][token]|
 | &bull; Token | – | – | 20.000 |

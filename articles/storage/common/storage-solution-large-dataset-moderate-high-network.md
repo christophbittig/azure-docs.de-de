@@ -8,15 +8,15 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: cf0e423648db174433f0717f2e5971ac49697b42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c06de5c1d466db26e756029d2046286bd55d4e7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704622"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674526"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Datenübertragung für große Datasets mit mittlerer bis hoher Netzwerkbandbreite
- 
+
 Dieser Artikel bietet einen Überblick über die Datenübertragungslösungen, wenn Sie in Ihrer Umgebung eine mittlere bis hohe Netzwerkbandbreite nutzen und planen, große Datasets zu übertragen. Der Artikel beschreibt auch die empfohlenen Datenübertragungsoptionen sowie die jeweilige Schlüsselfunktionsmatrix für dieses Szenario.
 
 Eine Übersicht über alle verfügbaren Datenübertragungsoptionen finden Sie unter [Auswählen einer Azure-Datenübertragungslösung](storage-choose-data-transfer-solution.md).
@@ -33,17 +33,16 @@ Die in diesem Szenario empfohlenen Optionen hängen davon ab, ob Sie eine mittle
 
 Bei mittlerer Netzwerkbandbreite müssen Sie die Zeit für die Datenübertragung über das Netzwerk projizieren.
 
-Schätzen Sie anhand der folgenden Tabelle die Zeit, und wählen Sie danach zwischen einer Offlineübertragung oder einer Übertragung über das Netzwerk. Die Tabelle zeigt die voraussichtliche Zeit für die Übertragung von Daten über das Netzwerk für verschiedene verfügbare Netzwerkbandbreiten (bei einer Auslastung von 90 %).  
+Schätzen Sie anhand der folgenden Tabelle die Zeit, und wählen Sie danach zwischen einer Offlineübertragung oder einer Übertragung über das Netzwerk. Die Tabelle zeigt die voraussichtliche Zeit für die Übertragung von Daten über das Netzwerk für verschiedene verfügbare Netzwerkbandbreiten (bei einer Auslastung von 90 %).
 
 ![Netzwerkübertragung oder Offlineübertragung](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
 
 - Wenn die Netzwerkübertragung als zu langsam eingestuft wird, sollten Sie ein physisches Gerät verwenden. Die empfohlenen Optionen in diesem Fall sind die Offlineübertragungsgeräte aus der Azure Data Box-Produktfamilie oder Azure Import/Export mit eigenen Datenträgern.
 
-    - **Azure Data Box-Produktfamilie für Offlineübertragungen**: Verwenden Sie von Microsoft bereitgestellte Data Box-Geräte, um große Datenmengen in Azure zu übertragen, wenn Sie aufgrund von Zeit, Netzwerkverfügbarkeit oder Kosten eingeschränkt sind. Kopieren Sie lokale Daten mithilfe von Tools wie Robocopy. Abhängig von der für die Übertragung vorgesehenen Datengröße können Sie zwischen Data Box Disk, Data Box oder Data Box Heavy wählen.
-    - **Azure Import/Export**: Verwenden Sie den Azure Import/Export-Dienst, indem Sie Ihre eigenen Festplattenlaufwerke versenden, um große Datenmengen sicher in Azure Blob Storage und Azure Files zu importieren. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage auf Festplattenlaufwerke und zum Versand an lokale Standorte nutzen.
+  - **Azure Data Box-Produktfamilie für Offlineübertragungen:** Verwenden Sie von Microsoft bereitgestellte Data Box-Geräte, um große Datenmengen an Azure zu übertragen, wenn Sie aufgrund von Zeit, Netzwerkverfügbarkeit oder Kosten eingeschränkt sind. Kopieren Sie lokale Daten mithilfe von Tools wie Robocopy. Abhängig von der für die Übertragung vorgesehenen Datengröße können Sie zwischen Data Box Disk, Data Box oder Data Box Heavy wählen.
+  - **Azure Import/Export**: Verwenden Sie den Azure Import/Export-Dienst, indem Sie Ihre eigenen Festplattenlaufwerke versenden, um große Datenmengen sicher in Azure Blob Storage und Azure Files zu importieren. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage auf Festplattenlaufwerke und zum Versand an lokale Standorte nutzen.
 
 - Wenn die Netzwerkübertragung als sinnvoll erachtet wird, können Sie eines der folgenden Tools verwenden, die unter [Hohe Netzwerkbandbreite](#high-network-bandwidth) beschrieben werden.
-
 
 ### <a name="high-network-bandwidth-1-gbps---100-gbps"></a>Hohe Netzwerkbandbreite (1 GBit/s bis 100 GBit/s)
 
@@ -78,7 +77,6 @@ Wenn Sie die Offlinedatenübertragung nutzen, verwenden Sie die folgende Tabelle
 | **Verwendung bei Datenbewegungen**     |Innerhalb einer kommerziellen Grenze|Innerhalb einer kommerziellen Grenze|Innerhalb einer kommerziellen Grenze|Über geografische Grenzen hinweg, z.B. aus den USA in die EU|
 |    **Preise**                          |    [Preise](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Preise](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Preise](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Preise](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
-
 Bei Nutzung von Onlinedatenübertragung verwenden Sie die Tabelle im folgenden Abschnitt für hohe Netzwerkbandbreite.
 
 ### <a name="high-network-bandwidth"></a>Hohe Netzwerkbandbreite
@@ -96,16 +94,16 @@ Bei Nutzung von Onlinedatenübertragung verwenden Sie die Tabelle im folgenden A
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Informationen zum Übertragen von Daten mit Import/Export](../../import-export/storage-import-export-data-to-blobs.md).
-- Informationen zum
 
-    - [Übertragen von Daten mit Data Box Disk](../../databox/data-box-disk-quickstart-portal.md).
-    - [Übertragen von Daten mit Data Box](../../databox/data-box-quickstart-portal.md).
-- [Übertragen von Daten mit AzCopy](./storage-use-azcopy-v10.md).
 - Informationen zum
-    - [Übertragen von Daten mit Data Box Gateway](../../databox-gateway/data-box-gateway-deploy-add-shares.md)
-    - [Transformieren von Daten mit Data Box Edge vor dem Senden an Azure](../../databox-online/azure-stack-edge-deploy-configure-compute.md).
+  - [Übertragen von Daten mit Data Box Disk](../../databox/data-box-disk-quickstart-portal.md).
+  - [Übertragen von Daten mit Data Box](../../databox/data-box-quickstart-portal.md).
+  - [Übertragen von Daten mit AzCopy](./storage-use-azcopy-v10.md).
+  - [Übertragen von Daten mit Data Box Gateway](../../databox-gateway/data-box-gateway-deploy-add-shares.md)
+  - [Transformieren von Daten mit Data Box Edge vor dem Senden an Azure](../../databox-online/azure-stack-edge-deploy-configure-compute.md).
+
 - [Informationen zum Übertragen von Daten mit Azure Data Factory](../../data-factory/quickstart-create-data-factory-portal.md).
-- Verwenden der REST-APIs zum Übertragen von Daten
 
-    - [In .NET](/dotnet/api/overview/azure/storage)
-    - [In Java](/java/api/overview/azure/storage)
+- Verwenden der REST-APIs zum Übertragen von Daten:
+  - [In .NET](/dotnet/api/overview/azure/storage)
+  - [In Java](/java/api/overview/azure/storage)

@@ -3,13 +3,13 @@ author: dominicbetts
 ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
-ms.date: 11/19/2020
-ms.openlocfilehash: 451a6f1e4b90b2e307125c6aae6d2ac03ae90c83
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.date: 09/07/2021
+ms.openlocfilehash: 0ef257d82d892f2b8eb620c96744fb5bf26d9b5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397947"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580456"
 ---
 ## <a name="model-id-announcement"></a>Modell-ID-Ankündigung
 
@@ -41,11 +41,11 @@ Geräte, die [Device Provisioning Service (DPS)](../articles/iot-dps/about-iot-d
 
 ## <a name="use-components"></a>Verwenden von Komponenten
 
-Wie unter [Verstehen der Komponenten in IoT Plug & Play-Modellen](../articles/iot-develop/concepts-modeling-guide.md) beschrieben, müssen Geräteentwickler entscheiden, ob sie Komponenten zum Beschreiben ihrer Geräte verwenden möchten. Bei der Verwendung von Komponenten müssen Geräte den in den folgenden Abschnitten beschriebenen Regeln entsprechen.
+Wie unter [Verstehen der Komponenten in IoT Plug & Play-Modellen](../articles/iot-develop/concepts-modeling-guide.md) beschrieben, müssen Geräteentwickler entscheiden, ob sie Komponenten zum Beschreiben ihrer Geräte verwenden möchten. Bei der Verwendung von Komponenten müssen Geräte den in den folgenden Abschnitten beschriebenen Regeln entsprechen:
 
 ## <a name="telemetry"></a>Telemetrie
 
-Für eine Standardkomponente ist keine besondere Eigenschaft erforderlich.
+Für eine Standardkomponente ist keine spezielle Eigenschaft erforderlich, die der Telemetrienachricht hinzugefügt wird.
 
 Bei Verwendung von geschachtelten Komponenten müssen Geräte eine Nachrichteneigenschaft mit dem Komponentennamen festlegen:
 
@@ -108,7 +108,7 @@ IOTHUB_CLIENT_RESULT iothubClientResult = IoTHubDeviceClient_LL_SendReportedStat
     strlen(maxTemperatureSinceRebootProperty), NULL, NULL));
 ```
 
-Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
+Der Gerätezwilling wird mit der folgenden gemeldeten Eigenschaft aktualisiert:
 
 ```json
 {
@@ -118,7 +118,7 @@ Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
 }
 ```
 
-Bei Verwendung von geschachtelten Komponenten müssen Eigenschaften innerhalb des Komponentennamens erstellt werden:
+Bei Verwendung von geschachtelten Komponenten müssen Eigenschaften innerhalb des Komponentennamens erstellt werden und einen Marker enthalten:
 
 ```c
 STRING_HANDLE PnP_CreateReportedProperty(
@@ -199,7 +199,7 @@ void PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(
 PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(g_thermostatHandle1, deviceClient);
 ```
 
-Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
+Der Gerätezwilling wird mit der folgenden gemeldeten Eigenschaft aktualisiert:
 
 ```json
 {
@@ -215,6 +215,8 @@ Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
 ## <a name="writable-properties"></a>Schreibbare Eigenschaften
 
 Diese Eigenschaften können vom Gerät festgelegt oder von der Lösung aktualisiert werden. Wenn die Lösung eine Eigenschaft aktualisiert, empfängt der Client eine Benachrichtigung als Rückruf im `DeviceClient` oder `ModuleClient`. Um den IoT Plug & Play-Konventionen zu entsprechen, muss das Gerät den Dienst informieren, dass die Eigenschaft erfolgreich empfangen wurde.
+
+Wenn der Eigenschaftstyp `Object` ist, muss der Dienst ein vollständiges Objekt an das Gerät senden, auch wenn nur eine Teilmenge der Felder des Objekts aktualisiert wird. Die Bestätigung, die das Gerät sendet, kann ebenfalls ein vollständiges Objekt sein.
 
 ### <a name="report-a-writable-property"></a>Melden einer schreibbaren Eigenschaft
 
@@ -238,7 +240,7 @@ iothubClientResult = IoTHubDeviceClient_LL_SendReportedState(
     strlen(targetTemperatureResponseProperty), NULL, NULL);
 ```
 
-Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
+Der Gerätezwilling wird mit der folgenden gemeldeten Eigenschaft aktualisiert:
 
 ```json
 {
@@ -315,7 +317,7 @@ iothubClientResult = IoTHubDeviceClient_LL_SendReportedState(
 STRING_delete(jsonToSend);
 ```
 
-Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
+Der Gerätezwilling wird mit der folgenden gemeldeten Eigenschaft aktualisiert:
 
 ```json
 {
@@ -335,7 +337,7 @@ Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
 
 ### <a name="subscribe-to-desired-property-updates"></a>Abonnieren von Aktualisierungen der gewünschten Eigenschaften
 
-Dienste können gewünschte Eigenschaften aktualisieren, die eine Benachrichtigung auf den verbundenen Geräten auslösen. Diese Benachrichtigung enthält die aktualisierten gewünschten Eigenschaften, einschließlich der Versionsnummer zum Identifizieren der Aktualisierung. Geräte müssen mit der gleichen `ack`-Nachricht wie gemeldete Eigenschaften antworten.
+Dienste können gewünschte Eigenschaften aktualisieren, die eine Benachrichtigung auf den verbundenen Geräten auslösen. Diese Benachrichtigung enthält die aktualisierten gewünschten Eigenschaften, einschließlich der Versionsnummer zum Identifizieren der Aktualisierung. Geräte müssen diese Versionsnummer in der `ack`-Nachricht enthalten, die zurück an den Dienst gesendet wird.
 
 Eine Standardkomponente sieht die einzelne Eigenschaft und erstellt die gemeldete `ack` mit der empfangenen Version:
 
@@ -384,7 +386,7 @@ iothubResult = IoTHubDeviceClient_LL_SetDeviceTwinCallback(
     deviceHandle, Thermostat_DeviceTwinCallback, (void*)deviceHandle))
 ```
 
-Der Gerätezwilling zeigt die Eigenschaft in den Abschnitten für gewünschte und gemeldete Eigenschaften:
+Der Gerätezwilling für eine geschachtelte Komponente zeigt die Abschnitte für gewünschte und gemeldete Eigenschaften wie folgt an:
 
 ```json
 {
@@ -590,7 +592,9 @@ deviceClient = PnP_CreateDeviceClientLLHandle(&g_pnpDeviceConfiguration);
 
 ### <a name="request-and-response-payloads"></a>Anforderungs- und Antwortnutzlasten
 
-Befehle verwenden Typen zum Definieren ihrer Anforderungs- und Antwortnutzlasten. Ein Gerät muss den eingehenden Eingabeparameter deserialisieren und die Antwort serialisieren. Im folgenden Beispiel wird gezeigt, wie ein Befehl mit komplexen Typen implementiert wird, die in den Nutzlasten definiert sind:
+Befehle verwenden Typen zum Definieren ihrer Anforderungs- und Antwortnutzlasten. Ein Gerät muss den eingehenden Eingabeparameter deserialisieren und die Antwort serialisieren.
+
+Im folgenden Beispiel wird gezeigt, wie ein Befehl mit komplexen Typen implementiert wird, die in den Nutzlasten definiert sind:
 
 ```json
 {

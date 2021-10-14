@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: 0fdee151d746e19323921dddbb409e0816cb014b
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 14522e6395e40e93c0eb558597ad090521a480a3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397933"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580484"
 ---
 ## <a name="model-id-announcement"></a>Modell-ID-Ankündigung
 
@@ -46,7 +46,7 @@ Wie unter [Verstehen der Komponenten in IoT Plug & Play-Modellen](../articles/io
 
 ## <a name="telemetry"></a>Telemetrie
 
-Für eine Standardkomponente ist keine besondere Eigenschaft erforderlich.
+Für eine Standardkomponente ist keine spezielle Eigenschaft erforderlich, die der Telemetrienachricht hinzugefügt wird.
 
 Bei Verwendung von geschachtelten Komponenten müssen Geräte eine Nachrichteneigenschaft mit dem Komponentennamen festlegen:
 
@@ -69,7 +69,7 @@ Zum Melden einer Eigenschaft aus der Standardkomponente ist kein besonderes Kons
 await device_client.patch_twin_reported_properties({"maxTempSinceLastReboot": 38.7})
 ```
 
-Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
+Der Gerätezwilling wird mit der folgenden gemeldeten Eigenschaft aktualisiert:
 
 ```json
 {
@@ -79,7 +79,7 @@ Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
 }
 ```
 
-Bei Verwendung von geschachtelten Komponenten müssen Eigenschaften innerhalb des Komponentennamens erstellt werden:
+Bei Verwendung von geschachtelten Komponenten müssen Eigenschaften innerhalb des Komponentennamens erstellt werden und einen Marker enthalten:
 
 ```python
 inner_dict = {}
@@ -91,7 +91,7 @@ prop_dict["thermostat1"] = inner_dict
 await device_client.patch_twin_reported_properties(prop_dict)
 ```
 
-Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
+Der Gerätezwilling wird mit der folgenden gemeldeten Eigenschaft aktualisiert:
 
 ```json
 {
@@ -107,6 +107,8 @@ Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
 ## <a name="writable-properties"></a>Schreibbare Eigenschaften
 
 Diese Eigenschaften können vom Gerät festgelegt oder von der Lösung aktualisiert werden. Wenn die Lösung eine Eigenschaft aktualisiert, empfängt der Client eine Benachrichtigung als Rückruf im `IoTHubDeviceClient` oder `IoTHubModuleClient`. Um den IoT Plug & Play-Konventionen zu entsprechen, muss das Gerät den Dienst informieren, dass die Eigenschaft erfolgreich empfangen wurde.
+
+Wenn der Eigenschaftstyp `Object` ist, muss der Dienst ein vollständiges Objekt an das Gerät senden, auch wenn nur eine Teilmenge der Felder des Objekts aktualisiert wird. Die Bestätigung, die das Gerät sendet, muss ebenfalls ein vollständiges Objekt sein.
 
 ### <a name="report-a-writable-property"></a>Melden einer schreibbaren Eigenschaft
 
@@ -126,7 +128,7 @@ prop_dict["targetTemperature"] = {
 await device_client.patch_twin_reported_properties(prop_dict)
 ```
 
-Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
+Der Gerätezwilling wird mit der folgenden gemeldeten Eigenschaft aktualisiert:
 
 ```json
 {
@@ -158,7 +160,7 @@ prop_dict["thermostat1"] = inner_dict
 await device_client.patch_twin_reported_properties(prop_dict)
 ```
 
-Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
+Der Gerätezwilling wird mit der folgenden gemeldeten Eigenschaft aktualisiert:
 
 ```json
 {
@@ -178,7 +180,7 @@ Der Gerätezwilling wird mit der nächsten gemeldeten Eigenschaft aktualisiert:
 
 ### <a name="subscribe-to-desired-property-updates"></a>Abonnieren von Aktualisierungen der gewünschten Eigenschaften
 
-Dienste können gewünschte Eigenschaften aktualisieren, die eine Benachrichtigung auf den verbundenen Geräten auslösen. Diese Benachrichtigung enthält die aktualisierten gewünschten Eigenschaften, einschließlich der Versionsnummer zum Identifizieren der Aktualisierung. Geräte müssen mit der gleichen `ack`-Nachricht wie gemeldete Eigenschaften antworten.
+Dienste können gewünschte Eigenschaften aktualisieren, die eine Benachrichtigung auf den verbundenen Geräten auslösen. Diese Benachrichtigung enthält die aktualisierten gewünschten Eigenschaften, einschließlich der Versionsnummer zum Identifizieren der Aktualisierung. Geräte müssen diese Versionsnummer in der `ack`-Nachricht enthalten, die zurück an den Dienst gesendet wird.
 
 Eine Standardkomponente sieht die einzelne Eigenschaft und erstellt die gemeldete `ack` mit der empfangenen Version:
 
@@ -205,7 +207,7 @@ async def execute_property_listener(device_client):
         await device_client.patch_twin_reported_properties(prop_dict)
 ```
 
-Der Gerätezwilling zeigt die Eigenschaft in den Abschnitten für gewünschte und gemeldete Eigenschaften:
+Der Gerätezwilling für eine geschachtelte Komponente zeigt die Abschnitte für gewünschte und gemeldete Eigenschaften wie folgt an:
 
 ```json
 {

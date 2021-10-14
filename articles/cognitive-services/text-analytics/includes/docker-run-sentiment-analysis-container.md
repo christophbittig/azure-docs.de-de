@@ -10,23 +10,24 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 96b41c27b282bdc05dafa8c69398a11e8dbf3b1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ece961054c945ce949886976dc45e1178a616b6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91779696"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677542"
 ---
 Zum Ausführen des Containers für *Standpunktanalyse v3* führen Sie den folgenden `docker run`-Befehl aus: Ersetzen Sie die folgenden Platzhalter durch Ihre eigenen Werte:
 
 | Platzhalter | Wert | Format oder Beispiel |
 |-------------|-------|---|
+| **{LANGUAGE}** | Die Sprache des Containers, den Sie ausführen möchten. Vergewissern Sie sich, dass dies mit dem von Ihnen verwendeten `docker pull`-Befehl übereinstimmt. Beachten Sie den Bindestrich (`-`), der vor der Sprache im folgenden Beispiel verwendet wurde. | `en` |
 | **{API_KEY}** | Der Schlüssel für Ihre Textanalyseressource. Sie finden ihn im Azure-Portal auf der Seite **Key and endpoint** (Schlüssel und Endpunkt) Ihrer Ressource. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
 | **{ENDPOINT_URI}** | Der Endpunkt für den Zugriff auf die Textanalyse-API. Sie finden ihn im Azure-Portal auf der Seite **Key and endpoint** (Schlüssel und Endpunkt) Ihrer Ressource. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 1 \
-mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment \
+mcr.microsoft.com/azure-cognitive-services/textanalytics/sentiment-{LANGUAGE} \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

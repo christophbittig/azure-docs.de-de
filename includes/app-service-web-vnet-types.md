@@ -1,15 +1,15 @@
 ---
-author: ccompy
+author: madsd
 ms.service: app-service-web
 ms.topic: include
 ms.date: 10/01/2020
-ms.author: ccompy
-ms.openlocfilehash: 1c3542332fbdad13d56a141d677e91b68f7e99d0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: madsd
+ms.openlocfilehash: 8d4c2968e3b21269d233f584747856804f8ff9c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339144"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641926"
 ---
 * Mehrinstanzenfähige Systeme, die den gesamten Bereich der Tarife unterstützen, mit Ausnahme von „Isoliert“.
 * Die App Service-Umgebung, die in Ihrem VNET bereitgestellt wird und Apps im Tarif „App Service (isoliert)“ unterstützt.
@@ -19,7 +19,7 @@ Das VNET-Integrationsfeature wird in mehrinstanzenfähigen Apps verwendet. In de
 Die VNET-Integration ermöglicht Ihrer App den Zugriff auf Ressourcen in Ihrem VNET, gewährt aber keinen eingehenden privaten Zugriff auf Ihre App aus dem VNET. Privater Websitezugriff bezieht sich darauf, den Zugriff auf eine App nur über ein privates Netzwerk zuzulassen, z. B. über ein virtuelles Azure-Netzwerk. Die VNET-Integration wird nur für ausgehende Aufrufe aus Ihrer App an Ihr VNET verwendet. Die VNET-Integrationsfunktion verhält sich bei Verwendung mit VNETs in derselben Region und mit VNETs in anderen Regionen unterschiedlich. Die VNET-Integrationsfunktion weist zwei Variationen auf:
 
 * **Regionale VNET-Integration**: Wenn Sie eine Verbindung mit virtuellen Azure Resource Manager-Netzwerken in derselben Region herstellen, benötigen Sie ein dediziertes Subnetz in dem VNET, das Sie integrieren.
-* **VNET-Integration, die ein Gateway erfordert**: Wenn Sie eine Verbindung mit VNETs in anderen Regionen oder mit einem klassischen virtuellen Netzwerk in derselben Region herstellen, benötigen Sie ein Azure Virtual Network-Gateway, das im Ziel-VNET bereitgestellt ist.
+* **VNet-Integration, die ein Gateway erfordert**: Wenn Sie eine Verbindung mit VNets in anderen Regionen oder mit einem klassischen virtuellen Netzwerk in derselben Region direkt herstellen, benötigen Sie ein Azure Virtual Network-Gateway, das im Ziel-VNet bereitgestellt ist.
 
 Für die Funktionen für die VNET-Integration gilt Folgendes:
 

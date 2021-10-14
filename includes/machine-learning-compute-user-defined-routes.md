@@ -2,23 +2,27 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 08/12/2021
+ms.date: 08/26/2021
 ms.author: larryfr
-ms.openlocfilehash: c2ad7408f00d8abf4cb5afdbdba44af5e0779380
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: e8f3a2b9fbca1a0b0756a4e1ec2e98212d4f0399
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122603967"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633968"
 ---
-Wenn Sie eine Azure Machine Learning-__Compute-Instanz__ oder einen -__Computecluster__ verwenden, gestatten Sie den eingehenden Datenverkehr von Azure Batch Management- und Azure Machine Learning-Diensten. Wenn Sie die benutzerdefinierten Routen für diesen Datenverkehr erstellen, können Sie entweder **IP-Adressen** oder **Diensttags** verwenden, um den Datenverkehr weiterzuleiten.
+Wenn Sie eine Azure Machine Learning-__Compute-Instanz__ (mit öffentlicher IP-Adresse) oder einen -__Computecluster__ verwenden, gestatten Sie den eingehenden Datenverkehr von Azure Batch Management- und Azure Machine Learning-Diensten. Compute-Instanzen ohne öffentliche IP-Adresse (Vorschau) erfordern diese eingehende Kommunikation nicht. Eine Netzwerksicherheitsgruppe, die diesen Datenverkehr zulässt, wird dynamisch für Sie erstellt. Sie müssen jedoch möglicherweise auch benutzerdefinierte Routen (UDR) erstellen, wenn Sie über eine Firewall verfügen. Wenn Sie eine benutzerdefinierte Route für diesen Datenverkehr erstellen, können Sie entweder **IP-Adressen** oder **Diensttags** verwenden, um den Datenverkehr weiterzuleiten.
 
 > [!IMPORTANT]
-> Die Verwendung von Diensttags mit benutzerdefinierten Routen ist derzeit in der Vorschauversion und wird möglicherweise nicht vollständig unterstützt. Weitere Informationen finden Sie unter [Routing in virtuellen Netzwerken](/azure/virtual-network/virtual-networks-udr-overview#service-tags-for-user-defined-routes-preview).
+> Die Verwendung von Diensttags mit benutzerdefinierten Routen ist derzeit in der Vorschauversion und wird möglicherweise nicht vollständig unterstützt. Weitere Informationen finden Sie unter [Routing in virtuellen Netzwerken](../articles/virtual-network/virtual-networks-udr-overview.md#service-tags-for-user-defined-routes-preview).
+
+> [!TIP]
+> Während eine Compute-Instanz ohne öffentliche IP-Adresse (eine Previewfunktion) für diesen eingehenden Datenverkehr keine UDR erfordert, benötigen Sie diese UDRs weiterhin, wenn Sie auch einen Computecluster oder eine Compute-Instanz mit einer öffentlichen IP-Adresse verwenden.
+
 
 # <a name="ip-address-routes"></a>[IP-Adressrouten](#tab/ipaddress)
 
-Für den Azure Machine Learning Service müssen Sie die IP-Adresse sowohl den __primären__ als auch den __sekundären__ Regionen hinzufügen. Informationen zum Auffinden der sekundären Region finden Sie im Abschnitt [Sicherstellen von Geschäftskontinuität und Notfallwiederherstellung mit Azure-Regionspaaren](/azure/best-practices-availability-paired-regions#azure-regional-pairs). Wenn sich Ihr Azure Machine Learning Service z. B. in „USA, Osten 2“ befindet, ist die sekundäre Region „USA, Mitte“. 
+Für den Azure Machine Learning Service müssen Sie die IP-Adresse sowohl den __primären__ als auch den __sekundären__ Regionen hinzufügen. Informationen zum Auffinden der sekundären Region finden Sie im Abschnitt [Sicherstellen von Geschäftskontinuität und Notfallwiederherstellung mit Azure-Regionspaaren](../articles/best-practices-availability-paired-regions.md#azure-regional-pairs). Wenn sich Ihr Azure Machine Learning Service z. B. in „USA, Osten 2“ befindet, ist die sekundäre Region „USA, Mitte“. 
 
 Über die folgenden Methoden können Sie eine Liste der IP-Adressen des Batch-Diensts und von Azure Machine Learning Service abrufen:
 
