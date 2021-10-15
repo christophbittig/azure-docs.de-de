@@ -3,19 +3,19 @@ title: Verwalten von Python 3-Paketen in Azure Automation
 description: In diesem Artikel wird erläutert, wie Sie Python 3-Pakete (Vorschau) in Azure Automation verwalten.
 services: automation
 ms.subservice: process-automation
-ms.date: 08/13/2021
+ms.date: 08/25/2021
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: b7393f06df77b0057925e20a7cf055fddb0a7bf2
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: d3ec338b6d6edac2c56c8b42f877a1095aace2a0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965289"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349605"
 ---
 # <a name="manage-python-3-packages-preview-in-azure-automation"></a>Verwalten von Python 3-Paketen (Vorschau) in Azure Automation
 
-Mit Azure Automation können Sie Python 3-Runbooks (Vorschau) in einer Azure Sandbox-Umgebung und auf Hybrid Runbook Workern unter Linux ausführen. Um die Runbooks zu vereinfachen, können Sie mithilfe von Python-Paketen die erforderlichen Module importieren. Informationen zum Importieren eines einzelnen Pakets finden Sie unter [Importieren eines Pakets](#import-a-package). Informationen zum Importieren eines Pakets mit mehreren Paketen finden Sie unter [Importieren eines Pakets mit Abhängigkeiten](#import-a-package-with-dependencies). In diesem Artikel wird beschrieben, wie Sie Python 3-Pakete (Vorschau) in Azure Automation verwalten und verwenden.
+Mit Azure Automation können Sie Python 3-Runbooks (Vorschau) in einer Azure Sandbox-Umgebung und auf Hybrid Runbook Workern unter Linux ausführen. Um die Runbooks zu vereinfachen, können Sie mithilfe von Python-Paketen die erforderlichen Module importieren. Das Azure-Paket 4.0.0 wird standardmäßig in der Automation-Umgebung von Python 3 installiert. Die Standardversion kann überschrieben werden, indem die Python-Pakete in das Automation-Konto importiert werden. Die importierte Version im Automation-Konto wird bevorzugt. Informationen zum Importieren eines einzelnen Pakets finden Sie unter [Importieren eines Pakets](#import-a-package). Informationen zum Importieren eines Pakets mit mehreren Paketen finden Sie unter [Importieren eines Pakets mit Abhängigkeiten](#import-a-package-with-dependencies). In diesem Artikel wird beschrieben, wie Sie Python 3-Pakete (Vorschau) in Azure Automation verwalten und verwenden.
 
 ## <a name="packages-as-source-files"></a>Pakete als Quelldateien
 
@@ -131,6 +131,22 @@ for group in groups:
 
 > [!NOTE]
 > Da das Python-Paket `automationassets` auf pypi.org nicht verfügbar ist, kann es nicht auf einen Windows-Computer importiert werden.
+
+## <a name="identify-available-packages-in-sandbox"></a>Identifizieren verfügbarer Pakete in der Sandbox
+
+Verwenden Sie den folgenden Code, um die installierten Standardmodule aufzulisten:
+
+```python
+#!/usr/bin/env python3
+
+import pkg_resources
+installed_packages = pkg_resources.working_set
+installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
+   for i in installed_packages])
+
+for package in installed_packages_list:
+    print(package)
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

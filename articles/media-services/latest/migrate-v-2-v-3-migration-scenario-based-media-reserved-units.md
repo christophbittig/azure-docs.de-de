@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 01d62055de8e8327b518bc3638cab85426917247
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 98fd879cb8d960f2f688b3aa002fa86832981744
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864641"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353071"
 ---
 # <a name="media-reserved-units-migration-guidance"></a>Migrationsleitfaden für reservierte Einheiten für Medien
 

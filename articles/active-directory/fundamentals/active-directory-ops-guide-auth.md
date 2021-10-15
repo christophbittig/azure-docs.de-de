@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 197b04a659ff2635742907339ba9b48e00668cff
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e3fd54dba324ddd8e7340e47d6b7f63ee6b2ea5b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732740"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233364"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenzleitfaden zur Authentifizierungsverwaltung von Azure Active Directory-Vorgänge
 
@@ -115,7 +115,7 @@ Außerdem wird von Microsoft empfohlen, dass Sie Anwendungsbesitzer kontaktieren
 
 ### <a name="on-premises-authentication"></a>Lokale Authentifizierung
 
-Verbundauthentifizierung mit der integrierten Windows-Authentifizierung oder der verwalteten Authentifizierung mit nahtlosem einmaligen Anmelden mit Kennworthashsynchronisierung oder Pass-Through-Authentifizierung sind am benutzerfreundlichsten, wenn im Unternehmensnetzwerk mit Sichtverbindung mit den lokalen Domänencontrollern gearbeitet wird. Dadurch werden die Komplexität der Eingabeaufforderungen für Anmeldeinformationen und das Risiko reduziert, dass Benutzer auf Phishingangriffe hereinfallen. Wenn Sie bereits eine in der Cloud verwaltete Authentifizierung mit Kennworthashsynchronisierung oder Pass-Through-Authentifizierung verwenden, die Benutzer aber weiterhin ihre Kennwörter bei der lokalen Authentifizierung eingeben müssen, sollten Sie umgehend [nahtloses SSO bereitstellen](../hybrid/how-to-connect-sso.md). Wenn Sie jedoch derzeit im Verbund mit Plänen für eine eventuelle Migration zu einer in der Cloud verwalteten Authentifizierung sind, sollten Sie das nahtlose SSO im Rahmen des Migrationsprojekts implementieren.
+Verbundauthentifizierung mit der integrierten Windows-Authentifizierung oder der verwalteten Authentifizierung mit nahtlosem einmaligen Anmelden mit Kennworthashsynchronisierung oder Passthrough-Authentifizierung sind am benutzerfreundlichsten, wenn im Unternehmensnetzwerk mit Sichtverbindung mit den lokalen Domänencontrollern gearbeitet wird. Dadurch werden die Komplexität der Eingabeaufforderungen für Anmeldeinformationen und das Risiko reduziert, dass Benutzer auf Phishingangriffe hereinfallen. Wenn Sie bereits eine in der Cloud verwaltete Authentifizierung mit Kennworthashsynchronisierung oder Pass-Through-Authentifizierung verwenden, die Benutzer aber weiterhin ihre Kennwörter bei der lokalen Authentifizierung eingeben müssen, sollten Sie umgehend [nahtloses SSO bereitstellen](../hybrid/how-to-connect-sso.md). Wenn Sie jedoch derzeit im Verbund mit Plänen für eine eventuelle Migration zu einer in der Cloud verwalteten Authentifizierung sind, sollten Sie das nahtlose SSO im Rahmen des Migrationsprojekts implementieren.
 
 ### <a name="device-trust-access-policies"></a>Zugriffsrichtlinien für Geräte mit Vertrauensstellung
 

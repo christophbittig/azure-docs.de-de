@@ -5,15 +5,15 @@ author: anastasia-ms
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/22/2021
 ms.author: v-stharr
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cf2934c57441176034d28a7b60e33c639977e62d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dc33bf659785419619afe4f393a8a1ed09142452
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779595"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272527"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Steuern des Zugriffs auf den Azure IoT Hub Device Provisioning-Dienst
 
@@ -63,7 +63,7 @@ Das Sicherheitstoken wird im HTTP-Anforderungsheader  **Authorization**  im 
 
 Die folgenden Werte werden erwartet:
 
-| Wert  | Beschreibung |
+| Wert  | BESCHREIBUNG |
 |:-------|:------------|
 | `{signature}`  | Eine HMAC-SHA256-Signaturzeichenfolge der Form: `{URL-encoded-resourceURI} + "\n" + expiry`. **Wichtig**: Der Schlüssel wird aus Base64 decodiert und als Schlüssel für die HMAC-SHA256-Berechnung (Hashed Message Authentication Code, Hashbasierter Nachrichtenauthentifizierungscode) verwendet. |
 | `{expiry}`  | UTF8-Zeichenfolge, dargestellt als die Anzahl von Sekunden seit dem 1. Januar 1970 um 00:00:00 UTC.  |
@@ -122,13 +122,9 @@ Wenn Sie eine auf einem symmetrischen Schlüssel basierende Registrierungsgruppe
 
 Wenn Sie eine individuelle Registrierung oder eine Registrierungsgruppe für die X.509-zertifikatbasierte Authentifizierung eingerichtet haben, muss das Gerät sein ausgestelltes X.509-Zertifikat verwenden, um die Geräte-API zu bestätigen. In den folgenden Artikeln erfahren Sie, wie Sie die Registrierung einrichten und das Gerätezertifikat generieren können.
 
-* Schnellstart – [Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe von Python](quick-create-simulated-device-x509-python.md?tabs=linux)
+* Schnellstart - [Simuliertes X.509-Gerät für Azure IoT Hub bereitstellen](quick-create-simulated-device-x509.md)
 
-* Schnellstart – [Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe von Node.js](quick-create-simulated-device-x509-node.md)
-
-* Schnellstart – [Registrieren von X.509-Geräten bei Azure Device Provisioning Service mithilfe von Python](quick-enroll-device-x509-python.md)
-
-* Schnellstart – [Registrieren von X.509-Geräten bei Azure Device Provisioning Service mithilfe von Node.js](quick-enroll-device-x509-node.md)
+* Schnellstart - [Registrieren Sie X.509-Geräte bei Azure Gerätebereitstellung-Service](quick-enroll-device-x509.md)
 
 Nachdem die Registrierung eingerichtet und das Gerätezertifikat ausgestellt wurde, wird im folgenden Beispiel gezeigt, wie Sie sich mit dem X.509-Zertifikat des Geräts bei der Geräte-API authentifizieren können.
 
@@ -268,7 +264,7 @@ Beispielsweise würde ein Dienst, der mit einer vorab erstellten SAS-Richtlinie 
 * Richtlinienname: `enrollmentread`
 * Eine Ablaufzeit
 
-![Erstellen einer SAS-Richtlinie für Ihre Instanz von Device Provisioning Service im Portal][img-add-shared-access-policy]
+![Erstellen Sie eine gemeinsame Zugriffsrichtlinie für Ihre Gerätebereitstellung-Service-Instanz im Portal][img-add-shared-access-policy]
 
 ```javascript
 var endpoint ="mydps.azure-devices-provisioning.net";

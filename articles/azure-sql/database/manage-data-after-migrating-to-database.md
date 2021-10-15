@@ -12,12 +12,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: mathoma
 ms.date: 02/13/2019
-ms.openlocfilehash: 7a7cd071d9b1a2f0a359c11a123914f451a35569
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a8b0e2d0183f29ebf9ecdee576abeca6acc1827c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690072"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229729"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Neuer DBA in der Cloud – Verwalten von Azure SQL-Datenbank nach der Migration
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -104,7 +104,7 @@ SQL-Datenbank bietet zwei Authentifizierungsmethoden:
 - [Azure Active Directory-Authentifizierung](authentication-aad-overview.md)
 - [SQL-Authentifizierung](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-Die herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (Azure AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitern Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für alle Azure-Dienste gemeinsam genutzt werden. 
+Herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (Azure AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitenden Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für Azure-Dienste gemeinsam genutzt werden.
 
 Azure AD unterstützt [Azure AD Multi-Factor Authentication](authentication-mfa-ssms-overview.md) und lässt sich mit [wenigen Klicks](../../active-directory/hybrid/how-to-connect-install-express.md) mit Windows Server Active Directory integrieren. Die SQL-Authentifizierung funktioniert genau so, wie Sie es aus der Vergangenheit gewohnt sind. Benutzer können sich mit ihrem Benutzernamen und Kennwort bei beliebigen Datenbanken auf einem bestimmten Server authentifizieren. Dadurch können SQL-Datenbank und Azure Synapse Analytics außerdem eine mehrstufige Authentifizierung und Benutzerkonten für Gäste innerhalb einer Azure AD-Domäne anbieten. Wenn Sie bereits über eine lokale Active Directory verfügen, können Sie dieses Verzeichnis mit Azure Active Directory verbinden und es auf Azure erweitern.
 

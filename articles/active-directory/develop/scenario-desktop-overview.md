@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ea6ecf456bbcea01bf4c1eef5377d918bf0918fd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3440fef53d0c133223439830769c916f782fce23
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798951"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231894"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Szenario: Desktop-App, die Web-APIs aufruft
 
@@ -42,7 +42,7 @@ Sie schreiben eine Desktopanwendung und möchten Benutzer bei Ihrer Anwendung an
   - Wenn es sich um eine .NET Core-Anwendung handelt, und Sie zustimmen, dass die Authentifizierungsinteraktion mit Azure Active Directory (Azure AD) im Systembrowser erfolgt.
   - Wenn es sich um eine Node.js Electron-Anwendung handelt, die in einer Chromium-Instanz ausgeführt wird.
 
-- Bei Anwendungen, die von Windows gehostet werden, kann ein Token mithilfe der integrierten Windows-Authentifizierung automatisch abgerufen werden, wenn die Anwendungen auf Computern ausgeführt werden, die zu einer Windows-Domäne gehören oder in Azure AD eingebunden sind.
+- Bei Anwendungen, die von Windows gehostet werden, kann ein Token mithilfe der integrierten Windows-Authentifizierung automatisch abgerufen werden, wenn die Anwendungen auf Computern ausgeführt werden, die zu einer Windows-Domäne gehören oder in Azure AD eingebunden sind.
 - Schließlich können Sie, obwohl dies nicht empfohlen wird, in öffentlichen Clientanwendungen Benutzername und Kennwort verwenden. Dies wird noch bei einigen Szenarien (z. B. DevOps) benötigt. Die Verwendung ist allerdings mit Einschränkungen für Ihre Anwendung verbunden. Beispielsweise kann sich ein Benutzer, der die [mehrstufige Authentifizierung](../authentication/concept-mfa-howitworks.md) (bedingter Zugriff) durchführen muss, nicht darüber anmelden. Auch einmaliges Anmelden wäre für Ihre Anwendung dann nicht möglich.
 
   Diese Möglichkeit widerspricht außerdem den Prinzipien moderner Authentifizierung und steht nur aus Legacygründen zur Auswahl.

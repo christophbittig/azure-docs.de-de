@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8f11c6d02649f85eddc39aa151ab7df3d8b72ab6
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 0916439ef75c73d59ada1f9a832b95e733520c9c
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110797672"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401026"
 ---
 # <a name="live-event-types-comparison"></a>Vergleich von Liveereignistypen
 
@@ -32,38 +32,37 @@ In diesem Artikel werden die Features der Liveereignistypen verglichen.
 
 In der folgenden Tabelle werden die Features der Liveereignistypen verglichen. Die Typen werden während der Erstellung mit [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
 
-* **LiveEventEncodingType.None**: Ein lokaler Liveencoder sendet einen Datenstrom mit mehreren Bitraten. Der erfasste Datenstrom durchläuft das Liveereignis ohne weitere Verarbeitung. Auch als Pass-Through-Liveereignis bezeichnet.
+* **LiveEventEncodingType.PassthroughBasic:** Ein lokaler Liveencoder sendet einen Datenstrom mit mehreren Bitraten. Basic-Passthrough ist auf einen maximalen Eingangswert von 5 MBit/s und ein DVR-Fenster von bis zu 8 Stunden beschränkt. Außerdem wird die Livetranskription nicht unterstützt.
+* **LiveEventEncodingType.PassthroughStandard:** Ein lokaler Liveencoder sendet einen Datenstrom mit mehreren Bitraten. Standard-Passthrough verfügt über höhere Erfassungsgrenzwerte, ein DVR-Fenster von bis zu 25 Stunden und Unterstützung für Livetranskriptionen.
 * **LiveEventEncodingType.Standard**: Ein lokaler Liveencoder sendet einen Datenstrom mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt Datenströme mit mehreren Bitraten. Wenn der Beitragsfeed eine Auflösung von 720p oder höher hat, bewirkt die Voreinstellung **Default720p**, dass eine Reihe von 6 Auflösung/Bitrate-Paaren codiert wird (weitere Informationen folgen später in diesem Artikel).
 * **LiveEventEncodingType.Premium1080p**: Ein lokaler Liveencoder sendet einen Datenstrom mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt Datenströme mit mehreren Bitraten. Die Voreinstellung „Default1080p“ gibt den Ausgabesatz von Auflösung/Bitrate-Paaren an (weitere Informationen folgen später in diesem Artikel). 
 
-| Funktion | Liveereignis vom Typ „Pass-Through“ | Liveereignis vom Typ „Standard“ oder „Premium1080p“ |
-| --- | --- | --- |
-| Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein |Ja |
-| Maximale Videoauflösung für Beitragsfeeds |4K (4096 × 2160 bei 60 Frames/Sekunde) |1080p (1920 x 1088 bei 30 Frames/Sekunde)|
-| Empfohlene maximale Anzahl von Ebenen für Beitragsfeeds|Bis zu 12|Eine Audioebene|
-| Maximale Anzahl von Ebenen in der Ausgabe| Identisch mit der Eingabe|Bis zu 6 (siehe unten „Systemvoreinstellungen“)|
-| Maximale aggregierte Bandbreite von Beitragsfeeds|60 MBit/s|–|
-| Maximale Bitrate für eine einzelne Ebene im Beitrag |20 MBit/s|20 MBit/s|
-| Unterstützung von Audiotiteln mit mehreren Sprachen|Ja|Nein|
-| Unterstützte Codecs für Videoeingang |H.264/AVC (RTMP und Smooth) oder H.265/HEVC (nur Smooth Streaming-Erfassung)|H.264/AVC (RTMP und Smooth Streaming-Erfassung)|
-| Unterstützte Codecs für Videoausgang|Identisch mit der Eingabe|H.264/AVC|
-| Unterstützte Videobittiefe, -eingang und -ausgang|Bis zu 10 Bit, einschließlich HDR 10/HLG|8 Bit|
-| Unterstützte Codecs für Audioeingang|AAC-LC, HE-AAC v1, HE-AAC v2|AAC-LC, HE-AAC v1, HE-AAC v2|
-| Unterstützte Codecs für Audioausgang|Identisch mit der Eingabe|AAC-LC|
-| Maximale Videoauflösung des Ausgabevideos|Identisch mit der Eingabe|Standard (720p), Premium1080p (1080p)|
-| Maximale Bildfrequenz eines Eingangsvideos|60 Frames/Sekunde|Standard oder Premium1080p: 30 Frames/Sekunde|
-| Eingabeprotokolle|RTMP, fragmentiertes MP4 (Smooth Streaming)|RTMP, fragmentiertes MP4 (Smooth Streaming)|
-| Preis|Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“.|Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“.|
-| Maximale Laufzeit| 24 Stunden × 365 Tage, live linear | 24 Stunden × 365 Tage, live linear (Vorschauversion)|
-| Möglichkeit zum Übergeben von eingebetteten CEA-608/708-Untertiteldaten|Ja|Ja|
-| Möglichkeit zum Aktivieren der Livetranskription|Ja|Ja|
-| Unterstützung für das Einfügen von Slates|Nein|Nein|
-| Unterstützung für Werbeeinblendungen über API| Nein|Nein|
-| Unterstützung für Werbeeinblendungen über SCTE-35 Inband|Ja|Ja|
-| Möglichkeit zum Wiederherstellen nach kurzen Unterbrechungen im Beitrag|Ja|Teilweise|
-| Unterstützung für nicht einheitliche Eingabe-GOPs|Ja|Nein, Eingabe erfordert feste GOP-Dauer|
-| Unterstützung für Eingaben mit variable Bildwiederholrate|Ja|Nein, Eingabe muss eine feste Bildfrequenz aufweisen. Kleinere Abweichungen, beispielsweise bei Szenen mit viel Bewegung, werden toleriert. Der Beitragsfeed kann die Bildfrequenz jedoch nicht verringern (z.B. auf 15 Frames/Sekunde).|
-| Automatische Abschaltung des Liveereignisses, wenn der Eingabefeed verloren geht|Nein|Nach 12 Stunden, wenn kein LiveOutput erfolgt|
+| Funktion                                                                           | Basic-Passthrough                                                                                                | Standard-Passthrough                                                                                             | Standard- (720p) oder Premium-Codierungsereignis (1080p)                                                                                                                          |
+| --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Eingaben mit Einzelbitrate werden in mehrere Bitraten in der Cloud codiert.            | Nein                                                                                                                | Nein                                                                                                                | Ja                                                                                                                                                          |
+| Maximale Videoauflösung für Beitragsfeeds                                    | 4K (4096 × 2160 bei 60 Frames/Sekunde)                                                                                   | 4K (4096 × 2160 bei 60 Frames/Sekunde)                                                                                   | 1080p (1920 x 1088 bei 30 Frames/Sekunde)                                                                                                                           |
+| Empfohlene maximale Ebenen im Beitragsfeed (innerhalb der Grenzwerte für die Erfassungsbandbreite) | Beschränkt auf eine maximale aggregierte Bandbreite von 5 MBit/s                                                                                              | Beschränkt auf eine maximale aggregierte Bandbreite von 60 MBit/s                                                                                                       | 1 Videospur und 1 Audiospur (alle zusätzlichen Spuren werden im Hintergrund getrennt)                                                                                                                                                    |
+| Maximale Anzahl von Ebenen in der Ausgabe                                                          | Identisch mit der Eingabe                                                                                                     | Identisch mit der Eingabe                                                                                                     | Bis zu 6 (siehe unten „Systemvoreinstellungen“)                                                                                                                           |
+| Maximale aggregierte Bandbreite von Beitragsfeeds                                  | Unterstützt kombinierte Eingaben mit bis zu 5 MBit/s, Einzelbitraten dürfen 4 MBit/s nicht überschreiten. Keine Einschränkung der Bildfrequenz von Videos.                                                                                                     | Unterstützt kombinierte Eingaben mit bis zu 60 MBit/s, Einzelbitraten dürfen 20 MBit/s nicht überschreiten. Keine Einschränkung der Bildfrequenz von Videos.                                                                                                    | Unterstützt Eingaben mit Einzelbitrate. Die Bandbreite einzelner Eingaben darf 20 MBit/s nicht überschreiten. Die Bildfrequenz von Videos darf 60 Frames/s nicht überschreiten.                                                                                                                                                         |
+| Maximal zulässige Dauer des DVR-Fensters (Zeitverschiebung)                                  | Bis zu 8 Stunden                                                                                                     | Bis zu 25 Stunden                                                                                                    | Bis zu 25 Stunden                                                                                                                                               |
+| Maximale Anzahl zulässiger Liveausgaben                                            | Nur 1 Liveausgabe                                                                                                | Bis zu 3 Liveausgaben                                                                                              | Bis zu 3 Liveausgaben                                                                                                                                         |
+| Maximale Bitrate für eine einzelne Ebene im Beitrag                            | Bis zu 4 MBit/s                                                                                                      | 20 MBit/s                                                                                                           | 20 MBit/s                                                                                                                                                      |
+| Unterstützung von Audiotiteln mit mehreren Sprachen                                        | Ja                                                                                                               | Ja                                                                                                               | Nein                                                                                                                                                           |
+| Unterstützte Codecs für Videoeingang                                                      | H.264/AVC (RTMP und Smooth) oder H.265/HEVC (nur Smooth Streaming-Erfassung)                                         | H.264/AVC (RTMP und Smooth) oder H.265/HEVC (nur Smooth Streaming-Erfassung)                                         | H.264/AVC (RTMP und Smooth Streaming-Erfassung)                                                                                                                 |
+| Unterstützte Codecs für Videoausgang                                                     | Identisch mit der Eingabe                                                                                                     | Identisch mit der Eingabe                                                                                                     | H.264/AVC                                                                                                                                                    |
+| Unterstützte Videobittiefe, -eingang und -ausgang                                      | Bis zu 10 Bit, einschließlich HDR 10/HLG                                                                                 | Bis zu 10 Bit, einschließlich HDR 10/HLG                                                                                 | 8 Bit                                                                                                                                                        |
+| Unterstützte Codecs für Audioeingang                                                      | AAC-LC, HE-AAC v1, HE-AAC v2                                                                                      | AAC-LC, HE-AAC v1, HE-AAC v2                                                                                      | AAC-LC, HE-AAC v1, HE-AAC v2                                                                                                                                 |
+| Unterstützte Codecs für Audioausgang                                                     | Identisch mit der Eingabe                                                                                                     | Identisch mit der Eingabe                                                                                                     | AAC-LC                                                                                                                                                       |
+| Maximale Videoauflösung des Ausgabevideos                                          | Identisch mit der Eingabe                                                                                                     | Identisch mit der Eingabe                                                                                                     | Standard (720p), Premium1080p (1080p)                                                                                                                        |
+| Maximale Bildfrequenz eines Eingangsvideos                                                 | 60 Frames/Sekunde                                                                                                  | 60 Frames/Sekunde                                                                                                  | Standard oder Premium (1080p) – 60 Frames/s – Die transcodierte Ausgabe wird abhängig von der Quellbildrate auf 23,98, 24, 25, 29,97 oder 30 fps reduziert. |
+| Eingabeprotokolle                                                                   | RTMP, fragmentiertes MP4 (Smooth Streaming)                                                                           | RTMP, fragmentiertes MP4 (Smooth Streaming)                                                                           | RTMP, fragmentiertes MP4 (Smooth Streaming)                                                                                                                      |
+| Preis                                                                             | Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“. | Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“. | Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“.                                            |
+| Maximale Laufzeit                                                                  | 24 Stunden × 365 Tage, live linear                                                                                    | 24 Stunden × 365 Tage, live linear                                                                                    | 24 Stunden × 365 Tage, live linear (Vorschauversion)                                                                                                                     |
+| Möglichkeit zum Übergeben von eingebetteten CEA-608/708-Untertiteldaten                        | Ja                                                                                                               | Ja                                                                                                               | Ja                                                                                                                                                          |
+| Unterstützung für Livetranskription                                            | Nein. Livetranskriptionen werden bei Basic-Passthrough nicht unterstützt.                                                 | Ja                                                                                                               | Ja                                                                                                                                                          |
+| Unterstützung für Werbeeinblendungen über SCTE-35 Inband | Ja | Ja | Ja                                                                                                                                                                                                   |
+| Unterstützung für nicht einheitliche Eingabe-GOPs                    | Ja | Ja | Ja Dauer                                               |
+| Automatische Abschaltung des Liveereignisses, wenn der Eingabefeed verloren geht    | Nein  | Nein  | Nach 12 Stunden, wenn kein LiveOutput erfolgt                                                                                                                                                     |
 
 ## <a name="system-presets"></a>Systemvoreinstellungen
 
@@ -76,14 +75,17 @@ Die Auflösungen und Bitraten, die in der Ausgabe vom Liveencoder enthalten sind
 
 Hat der Beitragsfeed eine Auflösung von 720p oder höher, bewirkt die Voreinstellung **Default720p**, dass der Feed in den folgenden 6 Ebenen codiert wird. In der folgenden Tabelle ist die „Bitrate“ in KBit/s angegeben, entspricht „Max. Bilder/s“ der maximal zulässigen Bildfrequenz (in Frames/Sekunde), und entspricht „Profil“ dem verwendeten H.264-Profil.
 
+Wenn die Quellbildrate für die Eingabe mehr als 30 fps beträgt, wird die Bildfrequenz auf die Hälfte der Eingabebildrate reduziert.  60 fps würden beispielsweise auf 30 fps reduziert werden.  50 fps werden auf 25 fps reduziert usw.
+
+
 | Bitrate | Breite | Höhe | Max. Bilder/s | Profil |
-| --- | --- | --- | --- | --- |
-| 3500 |1280 |720 |30 |High |
-| 2200 |960 |540 |30 |High |
-| 1350 |704 |396 |30 |High |
-| 850 |512 |288 |30 |High |
-| 550 |384 |216 |30 |High |
-| 200 |340 |192 |30 |High |
+| ------- | ----- | ------ | ------ | ------- |
+| 3500    | 1280  | 720    | 30     | High    |
+| 2200    | 960   | 540    | 30     | High    |
+| 1350    | 704   | 396    | 30     | High    |
+| 850     | 512   | 288    | 30     | High    |
+| 550     | 384   | 216    | 30     | High    |
+| 200     | 340   | 192    | 30     | High    |
 
 > [!NOTE]
 > Wenn Sie die Voreinstellung für Livecodierung anpassen müssen, öffnen Sie ein Supportticket über das Azure-Portal. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Videoauflösung und zu den Bitraten an. Die Anpassung der Bitrate der Audiocodierung wird nicht unterstützt. Vergewissern Sie sich, dass nur eine Ebene mit 720p und maximal sechs Ebenen vorhanden sind. Geben Sie außerdem an, dass Sie eine Voreinstellung anfordern.
@@ -92,14 +94,16 @@ Hat der Beitragsfeed eine Auflösung von 720p oder höher, bewirkt die Voreinste
 
 Hat der Beitragsfeed eine Auflösung von 1080p oder höher, bewirkt die Voreinstellung **Default1080p**, dass der Feed in den folgenden 6 Ebenen codiert wird.
 
+Wenn die Quellbildrate für die Eingabe mehr als 30 fps beträgt, wird die Bildfrequenz auf die Hälfte der Eingabebildrate reduziert.  60 fps würden beispielsweise auf 30 fps reduziert werden.  50 fps werden auf 25 fps reduziert usw.
+
 | Bitrate | Breite | Höhe | Max. Bilder/s | Profil |
-| --- | --- | --- | --- | --- |
-| 5500 |1920 |1080 |30 |High |
-| 3000 |1280 |720 |30 |High |
-| 1600 |960 |540 |30 |High |
-| 800 |640 |360 |30 |High |
-| 400 |480 |270 |30 |High |
-| 200 |320 |180 |30 |High |
+| ------- | ----- | ------ | ------ | ------- |
+| 5500    | 1920  | 1080   | 30     | High    |
+| 3000    | 1280  | 720    | 30     | High    |
+| 1600    | 960   | 540    | 30     | High    |
+| 800     | 640   | 360    | 30     | High    |
+| 400     | 480   | 270    | 30     | High    |
+| 200     | 320   | 180    | 30     | High    |
 
 > [!NOTE]
 > Wenn Sie die Voreinstellung für Livecodierung anpassen müssen, öffnen Sie ein Supportticket über das Azure-Portal. Geben Sie hierbei die gewünschte Tabelle mit den Angaben zur Auflösung und zu den Bitraten an. Vergewissern Sie sich, dass nur eine Ebene mit 1080p und maximal sechs Ebenen vorhanden sind. Geben Sie außerdem an, dass Sie eine Voreinstellung für einen „Premium1080p“-Liveencoder anfordern. Die speziellen Werte der Bitraten und Auflösungen können im Laufe der Zeit angepasst werden.
@@ -116,9 +120,11 @@ Im vorherigen Abschnitt sind die Eigenschaften des Liveencoders beschrieben, die
 
 Der Liveencoder folgt der [GOP](https://en.wikipedia.org/wiki/Group_of_pictures)-Struktur des Beitragsfeeds, d. h., die Ausgabeebenen haben dieselbe GOP-Dauer. Daher sollten Sie den lokalen Encoder so konfigurieren, dass er einen Beitragsfeed erzeugt, der eine feste GOP-Dauer hat (üblicherweise 2 Sekunden). Dadurch ist sichergestellt, dass die aus dem Dienst ausgehenden HLS- und MPEG DASH-Datenströme ebenfalls feste GOP-Dauern haben. Kleine Abweichungen der GOP-Dauern werden von den meisten Geräten wahrscheinlich toleriert.
 
-### <a name="frame-rate"></a>Bildfrequenz
+### <a name="frame-rate-limits"></a>Grenzwerte bei der Bildfrequenz
 
 Der Liveencoder folgt auch den Dauern der einzelnen Videoframes im Beitragsfeed. Dies bedeutet, dass die Ausgabeebenen Frames mit denselben Dauern haben. Daher sollten Sie den lokalen Encoder so konfigurieren, dass er einen Beitragsfeed erzeugt, der eine feste Bildfrequenz hat (meistens 30 Frames/Sekunde). Dadurch ist sichergestellt, dass die aus dem Dienst ausgehenden HLS- und MPEG DASH-Datenströme ebenfalls feste Dauern für die Bildfrequenz haben. Kleine Abweichungen bei den Bildfrequenzen werden von den meisten Geräten möglicherweise toleriert, es gibt aber keine Garantie, dass der Liveencoder eine Ausgabe erzeugt, die korrekt wiedergegeben wird. Ihr lokaler Liveencoder sollte weder in irgendeiner Weise Frames verwerfen (z.B. bei niedriger Akkuladung) noch in irgendeiner Weise die Bildfrequenz variieren.
+
+Wenn die Quellbildrate für die Eingabe mehr als 30 fps beträgt, wird die Bildfrequenz auf die Hälfte der Eingabebildrate reduziert.  60 fps würden beispielsweise auf 30 fps reduziert werden.  50 fps werden auf 25 fps reduziert usw.
 
 ### <a name="resolution-of-contribution-feed-and-output-layers"></a>Auflösung von Beitragsfeed und Ausgabeebenen
 

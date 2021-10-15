@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 3b8351c94fb7c9ace6dbf0e31a50f2ed3d8789a3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 53f12eed1e39eb035f5ec69c825ab5658b207b03
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128666626"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400513"
 ---
 # <a name="data-factory-metrics-and-alerts"></a>Data Factory-Metriken und -Warnungen
 
@@ -23,7 +23,7 @@ Azure Data Factory stellt die folgenden Metriken und Warnungen zur Verfügung, u
 
 ## <a name="data-factory-metrics"></a>Data Factory-Metriken
 
-Mit Monitor erhalten Sie Einblicke in die Leistung und Integrität ihrer Azure-Workloads. Metriken sind die wichtigsten Monitor-Datentypen. Sie werden auch als Leistungsindikatoren bezeichnet. Metriken werden von den meisten Azure-Ressourcen ausgegeben. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese Metriken für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen.
+Mit Azure Monitor erhalten Sie Einblicke in die Leistung und Integrität ihrer Azure-Workloads. Metriken sind die wichtigsten Monitor-Datentypen. Sie werden auch als Leistungsindikatoren bezeichnet. Metriken werden von den meisten Azure-Ressourcen ausgegeben. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese Metriken für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen.
 
 Hier sind einige Metriken aufgeführt, die von Azure Data Factory Version 2 ausgegeben werden:
 
@@ -51,44 +51,44 @@ Hier sind einige Metriken aufgeführt, die von Azure Data Factory Version 2 aus
 Folgen Sie den Anweisungen unter [Azure Monitor-Datenplattform](../azure-monitor/data-platform.md), um auf die Metriken zuzugreifen.
 
 > [!NOTE]
-> Mit Ausnahme von _PipelineElapsedTimeRuns_ werden nur Ereignisse von abgeschlossenen, ausgelösten Aktivitäts- und Pipelineausführungen ausgegeben. Aktive Ausführungen und Debugausführungen werden **nicht** ausgegeben. Andererseits werden unabhängig von den Aufrufmethoden Ereignisse für **alle** SSIS-Paketausführungen ausgegeben, einschließlich abgeschlossener und in Bearbeitung befindlicher. Beispielsweise können Sie Paketausführungen in den für Azure aktivierten SQL Server Data Tools (SSDT), über T-SQL für SSMS, SQL Server-Agent oder andere festgelegte Tools und als ausgelöste oder Debugausführungen von SSIS-Paketausführungsaktivitäten in ADF-Pipelines aufrufen.
+> Mit Ausnahme von _PipelineElapsedTimeRuns_ werden nur Ereignisse von abgeschlossenen, ausgelösten Aktivitäts- und Pipelineausführungen ausgegeben. Aktive Ausführungen und Debugausführungen werden *nicht* ausgegeben. Andererseits werden unabhängig von den Aufrufmethoden Ereignisse für *alle* SSIS-Paketausführungen ausgegeben, einschließlich abgeschlossener und in Bearbeitung befindlicher. Beispielsweise können Sie Paketausführungen in den für Azure aktivierten SQL Server Data Tools, über T-SQL für SQL Server Management Studio, SQL Server-Agent oder andere festgelegte Tools und als ausgelöste oder Debugausführungen von SSIS-Paketausführungsaktivitäten in Data Factory-Pipelines aufrufen.
 
 ## <a name="data-factory-alerts"></a>Data Factory-Warnungen
 
 Melden Sie sich beim Azure-Portal an, und wählen Sie **Überwachen** > **Warnungen** aus, um Warnungen zu erstellen.
 
-:::image type="content" source="media/monitor-using-azure-monitor/alerts_image3.png" alt-text="Warnungen im Portalmenü":::
+:::image type="content" source="media/monitor-using-azure-monitor/alerts_image3.png" alt-text="Screenshot mit Warnungen im Portalmenü":::
 
 ### <a name="create-alerts"></a>Erstellen von Warnungen
 
 1. Wählen Sie **+ Neue Warnungsregel** aus, um eine neue Warnung zu erstellen.
 
-    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image4.png" alt-text="Neue Warnungsregel":::
+    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image4.png" alt-text="Screenshot, der das Erstellen einer neuen Warnungsregel zeigt.":::
 
 1. Definieren Sie die Warnungsbedingung.
 
     > [!NOTE]
     > Achten Sie darauf, dass in der Dropdownliste **Nach Ressourcentyp filtern** die Option **Alle** ausgewählt ist.
 
-    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image5.png" alt-text="&quot;Warnungsbedingung definieren&quot; > &quot;Ziel auswählen&quot; öffnet den Bereich &quot;Ressource auswählen&quot; ":::
+    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image5.png" alt-text="Screenshot, der die Auswahl zum Öffnen des Bereichs für die Auswahl einer Ressource zeigt.":::
 
-    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image6.png" alt-text="&quot;Warnungsbedingung definieren&quot; > &quot;Kriterien hinzufügen&quot; öffnet den Bereich &quot;Signallogik konfigurieren&quot; ":::
+    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image6.png" alt-text="Screenshot: Auswahl zum Öffnen des Bereichs zum Konfigurieren der Signallogik":::
 
-    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image7.png" alt-text="Bereich &quot;Configure signal type&quot; (Signaltyp konfigurieren)":::
+    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image7.png" alt-text="Screenshot: Konfigurieren der Signallogik":::
 
 1. Definieren Sie die Warnungsdetails.
 
-    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image8.png" alt-text="Warnungsdetails":::
+    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image8.png" alt-text="Screenshot der Warnungsregeln":::
 
 1. Definieren Sie die Aktionsgruppe.
 
-    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image9.png" alt-text="Erstellen einer Regel, mit hervorgehobener Option &quot;Neue Aktionsgruppe&quot; ":::
+    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image9.png" alt-text="Screenshot: Erstellen einer Regel mit hervorgehobener „Neue Aktionsgruppe“":::
 
-    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image10.png" alt-text="Erstellen einer neuen Aktionsgruppe":::
+    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image10.png" alt-text="Screenshot, der das Erstellen eines neuen Aktionsgruppe zeigt.":::
 
-    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image11.png" alt-text="Konfigurieren von E-Mail, SMS, Push und Voice":::
+    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image11.png" alt-text="Screenshot des Konfigurationsvorgangs für E-Mail, SMS, Pushbenachrichtigung und Sprachnachricht":::
 
-    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image12.png" alt-text="Definieren einer Aktionsgruppe":::
+    :::image type="content" source="media/monitor-using-azure-monitor/alerts_image12.png" alt-text="Screenshot: Definieren einer Aktionsgruppe":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

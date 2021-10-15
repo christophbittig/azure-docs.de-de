@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 08/24/2021
+ms.date: 10/01/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 687e23c7267991eee171e205a537a45546da73b2
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 510e2207a2c25c5da5f4de08f3bf16fbf6cf4c7d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864578"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354211"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
 
@@ -31,7 +31,7 @@ Durch die Einrichtung eines Verbunds mit Google können Sie eingeladenen Benutze
 > [!IMPORTANT]
 >
 > - Wenn Azure AD B2B-Kunden **ab dem 12. Juli 2021** neue Google-Integrationen zur Verwendung mit Self-Service-Registrierung oder zum Einladen externer Benutzer für ihre benutzerdefinierten oder branchenspezifischen Anwendungen einrichten, kann die Authentifizierung für Gmail-Benutzer blockiert werden (im folgenden Fehlerbildschirm unter [Was ist zu erwarten?](#what-to-expect)). Dieses Problem tritt nur auf, wenn Sie Benutzerflows für die Google-Integration zur Self-Service-Registrierung oder Einladungen nach dem 12. Juli 2021 erstellen und Gmail-Authentifizierungen in Ihren benutzerdefinierten oder branchenspezifischen Anwendungen nicht in Systemwebansichten verschoben wurden. Da Systemwebansichten standardmäßig aktiviert sind, sind die meisten Apps nicht betroffen. Um das Problem zu vermeiden, sollten Sie unbedingt Gmail-Authentifizierungen in Systembrowser verschieben, bevor Sie neue Google-Integrationen zur Self-Service-Registrierung erstellen. Weitere Informationen finden Sie unter [Für eingebettete Webansichten erforderliche Aktion](#action-needed-for-embedded-frameworks).
-> - Ab dem **30. September 2021** wird Google die [Unterstützung für die Anmeldung in der Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Ihre Apps Benutzer mit einer eingebetteter Webansicht authentifizieren und Sie den Google-Verbund mit [ Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) oder Azure AD B2B für externe Benutzereinladungen oder die [Self-Service-Registrierung](identity-providers.md) verwenden, werden sich Google Gmail-Benutzer nicht authentifizieren können. [Weitere Informationen](#deprecation-of-web-view-sign-in-support)
+> - Ab dem **30. September 2021** wird Google die [Unterstützung für die Anmeldung in der Webansicht einstellen](https://developers.googleblog.com/2021/06/upcoming-security-changes-to-googles-oauth-2.0-authorization-endpoint.html). Wenn Ihre Apps Benutzer mit einer eingebetteter Webansicht authentifizieren und Sie den Google-Verbund mit [ Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) oder Azure AD B2B für externe Benutzereinladungen oder die [Self-Service-Registrierung](identity-providers.md) verwenden, werden sich Google Gmail-Benutzer nicht authentifizieren können. [Weitere Informationen](#deprecation-of-web-view-sign-in-support)
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Wie läuft der Vorgang für Google-Benutzer ab?
 
@@ -58,7 +58,7 @@ Sie können Google-Gastbenutzern auch einen direkten Link zu einer Anwendung ode
 
 ## <a name="deprecation-of-web-view-sign-in-support"></a>Einstellung der Unterstützung für die WebView-Anmeldung
 
-Ab dem 30. September 2021 wird Google die [Unterstützung für die Anmeldung in der eingebetteten Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Ihre Apps Benutzer mit einer eingebetteter Webansicht authentifizieren und Sie den Google-Verbund mit [ Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) oder Azure AD B2B für [externe Benutzereinladungen](google-federation.md) oder die [Self-Service-Registrierung](identity-providers.md) verwenden, werden sich Google Gmail-Benutzer nicht authentifizieren können.
+Ab dem 30. September 2021 wird Google die [Unterstützung für die Anmeldung in der eingebetteten Webansicht einstellen](https://developers.googleblog.com/2021/06/upcoming-security-changes-to-googles-oauth-2.0-authorization-endpoint.html). Wenn Ihre Apps Benutzer mit einer eingebetteter Webansicht authentifizieren und Sie den Google-Verbund mit [ Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) oder Azure AD B2B für [externe Benutzereinladungen](google-federation.md) oder die [Self-Service-Registrierung](identity-providers.md) verwenden, werden sich Google Gmail-Benutzer nicht authentifizieren können.
 
 Im Folgenden finden Sie bekannte Szenarien mit Auswirkungen auf Gmail-Benutzer:
 - Microsoft-Apps (z. B. Teams und Power Apps) unter Windows 
@@ -72,11 +72,7 @@ Diese Änderung wirkt sich nicht auf Folgendes aus:
 - Microsoft 365-Dienste, auf die über eine Website zugegriffen wird (z. B. SharePoint Online, Office-Web-Apps und Teams-Web-App)
 - Mobile Apps, die Systemwebansichten für die Authentifizierung verwenden ([SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) unter iOS, [Benutzerdefinierte Registerkarten](https://developer.chrome.com/docs/android/custom-tabs/overview/) unter Android).  
 - Google Workspace-Identitäten, z. B. bei Verwendung eines [SAML-basierten Verbunds](direct-federation.md) mit Google Workspace
-
-Wir ermitteln derzeit in Rücksprache mit Google, ob diese Änderung Folgendes betrifft:
 - Windows-Apps, die WAM (Web Account Manager) oder WAB (Web Authentication Broker) verwenden.  
-
-Wir testen weiterhin verschiedene Plattformen und Szenarien und werden diesen Artikel auf dem neuesten Stand halten.
 
 ### <a name="action-needed-for-embedded-web-views"></a>Für eingebettete Webansichten erforderliche Aktion
 
@@ -84,20 +80,55 @@ Wir testen weiterhin verschiedene Plattformen und Szenarien und werden diesen Ar
 
 ### <a name="what-to-expect"></a>Ausblick
 
-Bevor Google diese Änderungen am 30. September 2021 einführt, stellt Microsoft eine Problemumgehung für Apps zur Verfügung, die noch eingebettete Webansichten verwenden, um sicherzustellen, dass die Authentifizierung nicht blockiert wird. Benutzer, die sich mit einem Gmail-Konto in einer eingebetteten Webansicht anmelden, werden aufgefordert, einen Code in einem separaten Browser einzugeben, um die Anmeldung abzuschließen.
+Seit dem 30. September führt Microsoft global einen Geräteanmeldungsflow als Problemumgehung für Apps ein, die noch immer eingebettete Webansichten verwenden, um sicherzustellen, dass die Authentifizierung nicht blockiert wird.
+
+### <a name="how-to-sign-in-with-the-device-sign-in-flow"></a>Anmelden mit dem Geräteanmeldungsflow
+
+Der Geräteanmeldungsflow fordert Benutzer, die sich über ein Gmail-Konto in einer eingebetteten Webansicht anmelden, zur Eingabe eines Code in einem separaten Browser auf, um die Anmeldung abzuschließen. Wenn sich Benutzer zum ersten Mal mit ihrem Gmail-Konto anmelden, ohne dass Sitzungen im Browser aktiv sind, wird die folgende Abfolge von Bildschirmen angezeigt. Wenn ein vorhandenes Gmail-Konto bereits angemeldet ist, können einige dieser Schritte möglicherweise entfallen.
+
+1. Im Bildschirm **Anmelden** gibt der Benutzer seine Gmail-Adresse ein und klickt auf **Weiter**.
+
+   ![Screenshot: Anmeldebildschirm](media/google-federation/1-sign-in.png)
+
+1. Der folgende Bildschirm wird angezeigt, in dem der Benutzer aufgefordert wird, ein neues Fenster zu öffnen, zu https://microsoft.com/devicelogin zu navigieren und den angezeigten neunstelligen Code aus Ziffern und Buchstaben einzugeben.
+
+   ![Screenshot: neunstelliger Code](media/google-federation/2-sign-in-code.png)
+
+1. Die Seite für die Geräteanmeldung wird geöffnet, auf der der Benutzer den Code eingeben kann. 
+
+   ![Screenshot: Seite für Geräteanmeldung](media/google-federation/3-enter-code.png)
+
+1. Wenn die Codes übereinstimmen, wird der Benutzer aus Sicherheitsgründen aufgefordert, seine E-Mail-Adresse erneut einzugeben, um die App und den Anmeldeort zu bestätigen.
+
+   ![Screenshot: Bildschirm zum erneuten Eingeben der E-Mail-Adresse](media/google-federation/4-sign-in-reenter-email.png)
+
+1. Der Benutzer meldet sich mit seiner E-Mail-Adresse und dem Kennwort bei Google an.
+
+   ![Screenshot: Google-Anmeldebildschirm](media/google-federation/5-sign-in-with-google.png)
+
+1. Er wird erneut aufgefordert, die App zu bestätigen, bei der er sich anmelden möchte.
+
+   ![Screenshot: Bildschirm „Anwendungsbestätigung“](media/google-federation/6-confirm-sign-in.png)
+
+1. Der Benutzer klickt auf **Weiter**. Eine Meldung bestätigt die Anmeldung. Der Benutzer schließt die Registerkarte oder das Fenster und kehrt zum ersten Bildschirm zurück, auf dem er nun bei der App angemeldet ist.
+
+   ![Screenshot: Bestätigung der Anmeldung](media/google-federation/7-app-sign-in-confirmed.png)
 
 Alternativ können Sie ihre vorhandenen und neuen Gmail-Benutzer mit Einmalkennung anmelden. So lassen Sie Ihre Gmail-Benutzer eine Einmalkennung verwenden:
+
 1. [Aktivieren der Einmalkennung per E-Mail](one-time-passcode.md#enable-email-one-time-passcode)
 2. [Entfernen eines Verbunds mit Google](google-federation.md#how-do-i-remove-google-federation)
 3. [Setzen Sie den Einlösungsstatus Ihrer Gmail-Benutzer zurück](reset-redemption-status.md), damit sie in Zukunft eine Einmalkennung verwenden können.
+
+Wenn Sie eine Verlängerung anfordern möchten, sollten Kunden mit betroffenen OAuth-Client-IDs eine E-Mail von Google Developers mit den folgenden Informationen zu einer einmaligen Verlängerung der Richtlinienerzwingung erhalten haben, die bis zum 31. Januar 2022 abgeschlossen sein muss:
+
+- „Bei Bedarf können Sie für jede aufgelistete OAuth-Client-ID eine einmalige **Verlängerung der Richtlinienerzwingung für eingebettete Webansichten** bis zum 31. Januar 2022 anfordern. Wir möchten darauf hinweisen, dass die Richtlinie für eingebettete Webansichten am 1. Februar 2022 ohne Ausnahmen oder weitere Verlängerung durchgesetzt wird.“
 
 Anwendungen, die zu einer zulässigen Webansicht für die Authentifizierung migriert werden, sind nicht betroffen, und Benutzer können sich wie gewohnt über Google authentifizieren.
 
 Wenn Anwendungen nicht zu einer zulässigen Webansicht für die Authentifizierung migriert werden, wird den betroffenen Gmail-Benutzern der folgende Bildschirm angezeigt.
 
 ![Google-Anmeldefehler, wenn Apps nicht zu Systembrowsern migriert werden](media/google-federation/google-sign-in-error-ewv.png)
-
-Wir werden dieses Dokument aktualisieren, sobald Google uns Datumsangaben und weitere Details mitteilt.
 
 ### <a name="distinguishing-between-cefelectron-and-embedded-web-views"></a>Unterscheiden zwischen CEF/Electron und eingebetteten Webansichten
 

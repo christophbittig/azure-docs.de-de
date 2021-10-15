@@ -1,14 +1,14 @@
 ---
 title: Überwachen von delegierten Ressourcen in beliebigem Umfang
 description: Azure Lighthouse unterstützt Sie dabei, Azure Monitor-Protokolle für alle Kundenmandanten auf skalierbare Weise zu verwenden.
-ms.date: 08/12/2021
+ms.date: 09/30/2021
 ms.topic: how-to
-ms.openlocfilehash: d261fd41c300f317e34ff7cacafa53911b7bbc12
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7ae54918ffad64e6b9790c4458717807cacd09ad
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736620"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363235"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Überwachen von delegierten Ressourcen in beliebigem Umfang
 
@@ -23,7 +23,7 @@ In diesem Thema erfahren Sie, wie Sie [Azure Monitor-Protokolle](../../azure-mon
 
 Um Daten zu sammeln, müssen Sie Log Analytics-Arbeitsbereiche erstellen. Diese Log Analytics-Arbeitsbereiche sind einzigartige Umgebungen für Daten, die von Azure Monitor gesammelt werden. Jeder Arbeitsbereich verfügt über ein eigenes Datenrepository und eine eigene Konfiguration. Datenquellen und Lösungen sind so konfiguriert, dass die zugehörigen Daten in einem bestimmten Arbeitsbereich gespeichert werden.
 
-Es wird empfohlen, diese Arbeitsbereiche direkt in den Kundenmandanten zu erstellen. Auf diese Weise verbleiben die Daten in den Mandanten und werden nicht in Ihren Mandanten exportiert. Dies ermöglicht auch eine zentrale Überwachung aller Ressourcen und Dienste, die von Log Analytics unterstützt werden, sodass Sie flexibler auswählen können, welche Arten von Daten Sie überwachen möchten.
+Es wird empfohlen, diese Arbeitsbereiche direkt in den Kundenmandanten zu erstellen. Auf diese Weise verbleiben die Daten in den Mandanten und werden nicht in Ihren Mandanten exportiert. Das Erstellen von Arbeitsbereichen in Kundenmandanten ermöglicht auch eine zentrale Überwachung aller Ressourcen und Dienste, die von Log Analytics unterstützt werden, sodass Sie flexibler auswählen können, welche Datentypen Sie überwachen möchten. Arbeitsbereiche sind in Kundenmandanten erforderlich, um Informationen gemäß den [Diagnoseeinstellungen](../..//azure-monitor/essentials/diagnostic-settings.md) zu sammeln.
 
 > [!TIP]
 > Alle Automation-Konten, die für den Zugriff auf Daten aus einem Log Analytics-Arbeitsbereich verwendet werden, müssen im gleichen Mandanten wie der Arbeitsbereich erstellt werden.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 741a7a73fc7ac4ac468febfd9beec77c3a8c9946
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 47d99e87e788c833e5793a1e4e3b7d517d90909b
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216522"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535006"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Verwalten von Plattformupdates mit der Wartungssteuerung 
 
@@ -34,6 +34,7 @@ Mit der Wartungssteuerung können Sie folgende Aktionen ausführen:
 - Virtuelle Computer müssen sich auf einem [dedizierten Host](./dedicated-hosts.md) befinden oder mithilfe einer [isolierten VM-Größe](isolation.md) erstellt werden.
 - Die Dauer des Wartungsfensters kann monatlich variieren, und manchmal kann es bis zu zwei Stunden dauern, bis die ausstehenden Updates angewendet werden, nachdem sie vom Benutzer oder von der Benutzerin initiiert wurden.  
 - Nach 35 Tagen wird automatisch ein Update angewendet.
+- Wartungsaktivitäten auf Rackebene sind noch nicht Teil dieser Wartungssteuerung.
 - Der Benutzer muss über einen **Ressourcenmitwirkender**-Zugriff verfügen.
 
 ## <a name="management-options"></a>Verwaltungsoptionen

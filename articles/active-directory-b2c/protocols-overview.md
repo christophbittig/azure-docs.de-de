@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed393f721d4461ebadea41f8dad707d4881865cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a79322439db33620b67ff568387a5750f7ee5c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "78183904"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350579"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C: Authentifizierungsprotokolle
 Azure Active Directory B2C (Azure AD B2C) bietet Identity-as-a-Service (IDaaS) für Ihre Apps durch die Unterstützung zweier gängiger Standardprotokolle: OpenID Connect und OAuth 2.0. Auch wenn der Dienst standardkonform ist, kann es feine Unterschiede zwischen zwei Implementierungen dieser Protokolle geben.
@@ -40,7 +40,10 @@ https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token
 
 In fast allen OAuth- und OpenID Connect-Abläufen gibt es beim Austausch vier Beteiligte:
 
-![Diagramm mit den vier OAuth 2.0-Rollen](./media/protocols-overview/protocols_roles.png)
+
+
+
+:::image type="content" source="./media/protocols-overview/protocols_roles.png" alt-text="Diagramm mit den vier OAuth 2.0-Rollen":::
 
 * Der **Autorisierungsserver** ist der Azure AD-Endpunkt. Er kümmert sich um die sichere Verwaltung rund um Benutzerinformationen und Zugriff. Zudem verarbeitet er die Vertrauensstellungen zwischen den Parteien in einem Ablauf. Er ist verantwortlich für das Überprüfen der Identität des Benutzers, das Erteilen und Widerrufen des Zugriffs auf Ressourcen und das Ausstellen von Token. Er wird auch als Identitätsanbieter bezeichnet.
 

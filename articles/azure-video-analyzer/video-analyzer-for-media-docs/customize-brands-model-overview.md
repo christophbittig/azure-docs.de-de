@@ -4,12 +4,12 @@ description: Dieser Artikel vermittelt einen Überblick darüber, was ein Marken
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: juliako
-ms.openlocfilehash: b698bce219468ee44a78aea7b8e449b603ecd975
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b8516ca1d1d5d7020d645f54b1962076e9792f36
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128665661"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232625"
 ---
 # <a name="customize-a-brands-model-in-video-analyzer-for-media"></a>Anpassen eines Markenmodells in Video Analyzer for Media
 
@@ -19,11 +19,11 @@ Die Markenerkennung ist in einer Vielzahl von Geschäftsszenarien nützlich, z. 
 
 ## <a name="out-of-the-box-detection-example"></a>Beispiel zur vorkonfigurierten Erkennung
 
-In der Präsentation „Microsoft Build 2017 Day 2“ wird die Marke „Microsoft Windows“ mehrfach verwendet. Gelegentlich im Transkript, manchmal als sichtbarer Text, aber nie buchstäblich. Video Analyzer for Media erkennt mit hoher Genauigkeit auf der Grundlage des Kontexts, dass ein Begriff tatsächlich eine Marke ist, wobei über 90.000 Marken vorkonfiguriert sind und ständig aktualisiert werden. Video Analyzer for Media erkennt die Marke bei 02:25 in den Sprachinhalten und dann erneut bei 02:40 im sichtbaren Text, der Teil des Windows-Logos ist.
+In der Präsentation „Microsoft Build 2017 Day 2“ wird die Marke „Microsoft Windows“ mehrfach verwendet. Gelegentlich im Transkript, manchmal als sichtbarer Text, aber nie buchstäblich. Video Analyzer for Media erkennt mit hoher Genauigkeit auf der Grundlage des Kontexts, dass ein Begriff tatsächlich eine Marke ist, wobei über 90.000 Marken vorkonfiguriert sind und ständig aktualisiert werden. Um 02:25 Uhr erkennt Video Analyzer for Media die Marke anhand von Sprache und um 02:40 Uhr anhand von visuellem Text, der Teil des Windows-Logos ist.
 
 ![Markenübersicht](./media/content-model-customization/brands-overview.png)
 
-Beim Erwähnen von Fenstern (windows) im Kontext des Bauwesens wird das Wort „Windows“ nicht als Marke erkannt. Dasselbe gilt basierend auf fortschrittlichen Machine Learning-Algorithmen auch für „Box“, „Apple“, „Fox“ usw., da diese Algorithmen wissen, wie diese Wörter eindeutig anhand des Kontexts unterschieden werden. Die Markenerkennung funktioniert für alle unterstützten Sprachen.  
+Wenn man über Windows im Zusammenhang mit dem Bauwesen spricht, wird das Wort "Windows" nicht als Marke erkannt, und das Gleiche gilt für Box, Apple, Fox usw., basierend auf fortschrittlichen Algorithmen des maschinellen Lernens, die wissen, wie man aus dem Kontext disambiguiert. Die Markenerkennung funktioniert für alle unterstützten Sprachen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

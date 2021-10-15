@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 98ae81626db637f5b0bd6bfe9e294c32293d09e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7709877fe88e5580e938176bd6340590cc36169b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755077"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231385"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Abrufen und Zwischenspeichern von Token mithilfe der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL)
 
@@ -93,7 +93,7 @@ Welche Methode zum Tokenabruf verwendet wird, hängt normalerweise davon ab, ob 
 Die Vorgehensweise bei öffentlichen Clientanwendungen (Desktopanwendung oder mobile App):
 
 - Häufig werden Token interaktiv abgerufen, indem sich der Benutzer über eine Benutzeroberfläche oder ein Popupfenster anmeldet.
-- Über die integrierte Windows-Authentifizierung (IWA/Kerberos) können [Token automatisch für den angemeldeten Benutzer abgerufen werden](msal-authentication-flows.md#integrated-windows-authentication), wenn die Desktopanwendung auf einem Windows-Computer ausgeführt wird, der mit einer Domäne oder mit Azure verknüpft ist.
+- Über die integrierte Windows-Authentifizierung (IWA/Kerberos) können [Token automatisch für angemeldete Benutzer*innen abgerufen werden](msal-authentication-flows.md#integrated-windows-authentication), wenn die Desktopanwendung auf einem Windows-Computer ausgeführt wird, der mit einer Domäne oder mit Azure verknüpft ist.
 - In .NET Framework-Desktopclientanwendungen können [Token über einen Benutzernamen und ein Kennwort abgerufen werden](msal-authentication-flows.md#usernamepassword). Dies wird jedoch nicht empfohlen. Es wird davon abgeraten, Benutzernamen/Kennwörter in vertraulichen Clientanwendungen zu verwenden.
 - In Anwendungen, die auf Geräten ohne Webbrowser ausgeführt werden, können Token über den [Gerätecodeflow](msal-authentication-flows.md#device-code) abgerufen werden. Der Benutzer erhält eine URL und einen Code, den er auf einem anderen Gerät in einen Webbrowser eingeben kann, um sich anzumelden. Azure AD sendet daraufhin ein Token zurück an das browserlose Gerät.
 

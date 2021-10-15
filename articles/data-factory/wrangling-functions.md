@@ -7,21 +7,18 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: e3f310fb7544ed92dcf096dcf0d6e276a01fa7de
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2af1e7f9e1b787e73247d9537b4a8876cc4f7220
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732982"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361211"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Transformationsfunktionen in Power Query für Data Wrangling
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Data Wrangling in Azure Data Factory ermöglicht codefreie agile Datenaufbereitung und Data Wrangling für die Cloud durch Übersetzen von Power Query ```M```-Skripts in Datenflussskripts. ADF wird in [Power Query Online](/powerquery-m/power-query-m-reference) integriert und stellt Power Query ```M```-Funktionen für Data Wrangling über die Spark-Ausführung mithilfe der Datenfluss-Spark-Infrastruktur bereit. 
-
-> [!NOTE]
-> Power Query in ADF ist zurzeit in der Public Preview verfügbar.
 
 Derzeit werden nicht alle Power Query M-Funktionen für Data Wrangling unterstützt, obwohl sie während der Erstellung verfügbar sind. Beim Erstellen Ihrer Mash-Ups wird die folgende Fehlermeldung angezeigt, wenn eine Funktion nicht unterstützt wird:
 
@@ -104,19 +101,42 @@ Verwenden Sie [Table.Sort](/powerquery-m/table-sort), um Werte zu sortieren.
 
 ## <a name="m-script-workarounds"></a>Problemumgehungen bei M-Skripts
 
-### <a name="for-splitcolumn-there-is-an-alternate-for-split-by-length-and-by-position"></a>Für ```SplitColumn``` gibt es eine Alternative zum Teilen nach Länge und Position.
+### ```SplitColumn```
+
+Eine Alternative für die Aufteilung nach Länge und Position ist unten aufgeführt
 
 * Table.AddColumn(Source, "First characters", each Text.Start([Email], 7), type text)
 * Table.AddColumn(#"Inserted first characters", "Text range", each Text.Middle([Email], 4, 9), type text)
 
 Auf diese Option kann über die Option „Extrahieren“ auf dem Menüband zugegriffen werden.
 
-:::image type="content" source="media/wrangling-data-flow/pq-split.png" alt-text="Power Query: Spalte hinzufügen":::
+:::image type="content" source="media/wrangling-data-flow/power-query-split.png" alt-text="Power Query: Spalte hinzufügen":::
 
-### <a name="for-tablecombinecolumns"></a>Für ```Table.CombineColumns```
+### ```Table.CombineColumns```
 
 * Table.AddColumn(RemoveEmailColumn, "Name", each [FirstName] & " " & [LastName])
 
+### <a name="pivots"></a>Pivots
+
+* Wählen Sie Pivot-Transformation aus dem PQ-Editor und wählen Sie Ihre Pivot-Spalte
+
+![Power Query Pivot Allgemein](media/wrangling-data-flow/power-query-pivot-1.png)
+
+* Wählen Sie dann die Wertespalte und die Aggregatfunktion
+
+![Power Query Pivot-Selektor](media/wrangling-data-flow/power-query-pivot-2.png)
+
+* Wenn Sie auf OK klicken, werden die Daten im Editor mit den gepivoteten Werten aktualisiert
+* Es wird auch eine Warnmeldung angezeigt, dass die Transformation möglicherweise nicht unterstützt wird
+* Um diese Warnung zu beheben, erweitern Sie die geschwenkte Liste manuell mit dem PQ-Editor
+* Wählen Sie in der Multifunktionsleiste die Option Erweiterter Editor
+* Erweitern Sie die Liste der geschwenkten Werte manuell
+* Ersetzen Sie List.Distinct() durch die Liste der Werte wie folgt:
+```
+#"Pivoted column" = Table.Pivot(Table.TransformColumnTypes(#"Changed column type 1", {{"genres", type text}}), {"Drama", "Horror", "Comedy", "Musical", "Documentary"}, "genres", "Rating", List.Average)
+in
+  #"Pivoted column"
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

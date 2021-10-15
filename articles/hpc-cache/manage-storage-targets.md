@@ -1,25 +1,34 @@
 ---
 title: Verwalten von Azure HPC Cache-Speicherzielen
-description: Vorgehensweise zum Anhalten, Entfernen, Erzwingen des Löschens und Leerens von Azure HPC Cache-Speicherzielen
+description: Anhalten, Entfernen, Erzwingen des Löschens und Leeren von Azure HPC Cache Speicherzielen und Verstehen des Speicherzielzustands
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/12/2021
+ms.date: 09/27/2021
 ms.author: v-erkel
-ms.openlocfilehash: 6c747c4a79cb0413d7a96ca7b0148912eef89f84
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5b6127a43ebd93b89ea3a648533c2b739fc58691
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296685"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274292"
 ---
-# <a name="manage-storage-targets"></a>Verwalten von Speicherzielen
+# <a name="view-and-manage-storage-targets"></a>Anzeigen und Verwalten von Speicherzielen
+
+Auf der Einstellungsseite für Speicherziele werden Informationen zu den einzelnen Speicherzielen für Ihre HPC Cache sowie Optionen zum Verwalten einzelner Speicherziele angezeigt.
+
+> [!TIP]
+> Anweisungen zum Auflisten von Speicherzielen mit der Azure CLI finden Sie im Artikel [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#view-storage-targets). Andere hier aufgeführte Aktionen sind möglicherweise noch nicht in der Azure CLI verfügbar.
+
+![Screenshot der Seite Einstellungen > Speicherkonto im Azure-Portal Es gibt mehrere Speicherziele in der Liste, und Spaltenüberschriften zeigen Name, Typ, Status, Bereitstellungsstatus, Adresse/Container und Nutzungsmodell für jedes Modell an.](media/storage-targets-list-states.png)
+
+## <a name="manage-storage-targets"></a>Verwalten von Speicherzielen
 
 Sie können Verwaltungsaktionen für einzelne Speicherziele ausführen. Diese Aktionen ergänzen die Optionen auf Cacheebene, die unter [Verwalten Ihres Caches](hpc-cache-manage.md) besprochen werden.
 
 Diese Kontrollen können Sie bei der Wiederherstellung nach einer unerwarteten Situation (z. B. einem nicht reagierenden Speicherziel) unterstützen und ihnen auch die Möglichkeit geben, einige automatische Cacheaktionen außer Kraft zu setzen (z. B. das Zurückschreiben geänderter Dateien in das langfristige Speichersystem).
 
-Öffnen Sie die Seite **Speicherziele** im Azure-Portal. Klicken Sie weit rechts in der Speicherzielliste auf den Text **...** , um die Liste der Aufgaben zu öffnen.
+Öffnen Sie die Seite **Speicherziele** im Azure-Portal. Klicken Sie weit rechts in der Speicherzielliste auf das Bild **...** , um die Liste der Aufgaben zu öffnen.
 
 ![Screenshot der Seite „Speicherziele“ im Azure-Portal, wobei der Cursor über dem Menü angezeigt wird, das durch Klicken auf das Symbol mit den drei Punkten (...) weit rechts neben der Zeile des Speicherziels in der Liste verfügbar gemacht wird.](media/storage-target-manage-options.png)
 
@@ -35,7 +44,7 @@ Einige Speicherziele verfügen in diesem Menü auch über die Option **DNS aktua
 
 Weitere Informationen zu diesen Optionen finden Sie im weiteren Verlauf dieses Artikels.
 
-## <a name="write-cached-files-to-the-storage-target"></a>Schreiben zwischengespeicherter Dateien in das Speicherziel
+### <a name="write-cached-files-to-the-storage-target"></a>Schreiben zwischengespeicherter Dateien in das Speicherziel
 
 Die Option **Leeren** weist den Cache an, alle geänderten Dateien, die im Cache gespeichert sind, sofort in das Back-End-Speichersystem zu kopieren. Wenn Ihre Clientcomputer beispielsweise eine bestimmte Datei wiederholt aktualisieren, wird sie für einen schnelleren Zugriff im Cache gespeichert und über einen Zeitraum von mehreren Minuten bis zu mehr als einer Stunde nicht in Langzeit-Speichersystem geschrieben.
 
@@ -47,15 +56,15 @@ Sie können diese Option verwenden, um sicherzustellen, dass der Back-End-Speich
 
 Diese Option gilt hauptsächlich für Verwendungsmodelle, die das Zwischenspeichern von Schreibzugriffen umfassen. Weitere Informationen zum Zwischenspeichern von Lese- und Schreibvorgängen finden Sie unter [Verstehen von Cachenutzungsmodellen](cache-usage-models.md).
 
-## <a name="suspend-a-storage-target"></a>Anhalten eines Speicherziels
+### <a name="suspend-a-storage-target"></a>Anhalten eines Speicherziels
 
 Das Feature „Anhalten“ deaktiviert den Clientzugriff auf ein Speicherziel, entfernt das Speicherziel aber nicht endgültig aus Ihrem Cache. Sie können diese Option verwenden, wenn Sie ein Back-End-Speichersystem zum Zwecke der Wartung, Reparatur oder des Austauschs deaktivieren müssen.
 
-## <a name="put-a-suspended-storage-target-back-in-service"></a>Reaktivieren eines angehaltenen Speicherziels
+### <a name="put-a-suspended-storage-target-back-in-service"></a>Reaktivieren eines angehaltenen Speicherziels
 
 Verwenden Sie **Fortsetzen**, um das Anhalten eines Speicherziels aufzuheben.
 
-## <a name="force-remove-a-storage-target"></a>Erzwungenes Entfernen eines Speicherziels
+### <a name="force-remove-a-storage-target"></a>Erzwungenes Entfernen eines Speicherziels
 
 > [!NOTE]
 > Diese Option kann zu Datenverlusten beim betroffenen Speicherziel führen.
@@ -67,9 +76,8 @@ Diese Aktion überspringt den Schritt, der Dateien im Cache mit den Dateien im B
 Es gibt auch keine Garantie, dass auf das Back-End-Speichersystem zugegriffen werden kann, nachdem es aus dem Cache entfernt wurde.
 
 In der Regel wird „Entfernen erzwingen“ nur verwendet, wenn ein Speicherziel nicht mehr reagiert oder sich anderweitig in einem fehlerhaften Zustand befindet. Mit dieser Option können Sie das ungültige Speicherziel entfernen, anstatt drastischere Maßnahmen ergreifen zu müssen.
-<!-- https://msazure.visualstudio.com/One/_workitems/edit/8267141 -->
 
-## <a name="delete-a-storage-target"></a>Löschen eines Speicherziels
+### <a name="delete-a-storage-target"></a>Löschen eines Speicherziels
 
 Sie können das Azure-Portal oder die Azure CLI verwenden, um ein Speicherziel zu löschen.
 
@@ -79,11 +87,11 @@ Durch das Löschen eines Speicherziels wird die Zuordnung des Speichersystems zu
 
 Wenn eine große Menge geänderter Daten im Cache gespeichert ist, kann das Löschen eines Speicherziels einige Minuten dauern. Warten Sie, bis die Aktion abgeschlossen ist, um sicherzustellen, dass die Daten sicher in Ihrem Langzeit-Speichersystem gespeichert sind.
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Wenn Sie ein Speicherziel entfernen möchten, öffnen Sie die Seite **Speicherziele**. Klicken Sie auf neben dem Speicherziel auf „...“, und wählen Sie im Menü **Löschen** aus.
 
-### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+#### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 [Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
@@ -102,7 +110,7 @@ $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-
 
 ---
 
-## <a name="update-ip-address-custom-dns-configurations-only"></a>Aktualisieren der IP-Adresse (nur benutzerdefinierte DNS-Konfigurationen)
+### <a name="update-ip-address-custom-dns-configurations-only"></a>Aktualisieren der IP-Adresse (nur benutzerdefinierte DNS-Konfigurationen)
 
 Wenn im Cache eine nicht standardmäßige DNS-Konfiguration verwendet wird, wird möglicherweise die IP-Adresse Ihres NFS-Speicherziels aufgrund von Back-End-DNS-Änderungen geändert. Wenn die IP-Adresse des Back-End-Speichersystems vom DNS-Server geändert wird, verliert Azure HPC Cache möglicherweise den Zugriff auf das Speichersystem.
 
@@ -110,9 +118,23 @@ Im Idealfall sollten Sie mit dem Manager des benutzerdefinierten DNS-Systems fü
 
 Wenn Sie die vom DNS bereitgestellte IP-Adresse eines Speicherziels aktualisieren müssen, verwenden Sie die Seite **Speicherziele**. Klicken Sie in der rechten Spalte auf das Symbol **...** , um das Kontextmenü zu öffnen. Klicken Sie auf **DNS aktualisieren**, um beim benutzerdefinierten DNS-Server eine neue IP-Adresse abzufragen.
 
-![Screenshot der Liste der Speicherziele. Bei einem Speicherziel ist das Menü mit den drei Punkten in der letzten Spalte geöffnet und enthält die beiden Optionen „Löschen“ und „DNS aktualisieren“.](media/refresh-dns.png) <!-- update screenshot if possible -->
+![Screenshot der Liste der Speicherziele. Für ein Speicherziel ist das "..."-Menü in der Spalte ganz rechts ist geöffnet, und die folgenden Optionen werden angezeigt: Leeren, Anhalten, DNS aktualisieren, Entfernen erzwingen, Fortsetzen (diese Option ist deaktiviert) und Löschen.](media/refresh-dns.png)
 
 Bei erfolgreicher Ausführung sollte das Update weniger als zwei Minuten dauern. Es kann immer nur ein Speicherziel gleichzeitig aktualisiert werden. Warten Sie, bis der vorherige Vorgang beendet wurde, bevor Sie den nächsten starten.
+
+## <a name="understand-storage-target-state"></a>Grundlegendes zum Speicherzielstatus
+
+In der Speicherzielliste werden zwei Statustypen angezeigt: **Status** und **Bereitstellungsstatus**.
+
+* Der **Status** gibt den Betriebszustand des Speicherziels an. Dieser Wert wird regelmäßig aktualisiert und hilft Ihnen zu verstehen, ob das Speicherziel für Clientanforderungen verfügbar ist und welche Verwaltungsoptionen verfügbar sind.
+* Der **Bereitstellungsstatus** gibt an, ob die letzte Aktion zum Hinzufügen oder Bearbeiten des Speicherziels erfolgreich war. Dieser Wert wird nur aktualisiert, wenn Sie das Speicherziel bearbeiten.
+
+Der Wert **Status** wirkt sich darauf aus, welche Verwaltungsoptionen Sie verwenden können. Im Folgenden finden Sie eine kurze Erläuterung der Werte und ihrer Auswirkungen.
+
+* **Bereit**: Das Speicherziel funktioniert normal und ist für Clients verfügbar. Sie können eine der Verwaltungsoptionen für dieses Speicherziel verwenden (mit Ausnahme von **Fortsetzen**, das nur für angehaltene Speicherziele gültig ist).
+* **Ausgelastet**: Das Speicherziel verarbeitet einen weiteren Vorgang. Sie können das Speicherziel löschen oder erzwungen entfernen.
+* **Angehalten**: Das Speicherziel wurde offline geschaltet. Sie können dieses Speicherziel weiterhin leeren, löschen oder erzwungen entfernen. Wählen Sie **Fortsetzen** aus, um ein angehaltenes Speicherziel wieder zu reaktivieren.
+* **Leeren**: Das Speicherziel schreibt Daten in den Back-End-Speicher. Das Ziel kann Clientanforderungen beim Leeren nicht verarbeiten, aber es wird automatisch wieder in den vorherigen Zustand zurückversetzt, nachdem das Schreiben von Daten abgeschlossen ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

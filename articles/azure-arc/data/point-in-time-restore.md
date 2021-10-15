@@ -1,6 +1,6 @@
 ---
-title: Wiederherstellen einer Datenbank zu einem Zeitpunkt
-description: Erfahren Sie, wie Sie eine Zeitpunktwiederherstellung durchführen.
+title: Wiederherstellen einer Datenbank in einer Azure Arc-fähigen SQL Managed Instance zu einem früheren Zeitpunkt
+description: Erklärt, wie man eine Datenbank zu einem bestimmten Zeitpunkt auf einer Azure Arc-fähigen SQL Managed Instance wiederherstellt.
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
@@ -9,124 +9,169 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: fe4d250035c58bde2ba52e71046ea2f88854ff78
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0d091e9c90217ff9df6fba45d308296a80970053
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346950"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401094"
 ---
-#  <a name="perform-a-point-in-time-restore"></a>Durchführen einer Zeitpunktwiederherstellung
+#  <a name="perform-a-point-in-time-restore"></a>Eine zeitpunktbezogene Wiederherstellung durchführen
+
+Verwenden Sie die Point-in-Time Restore (PITR), um eine Datenbank als Kopie einer anderen Datenbank zu einem früheren Zeitpunkt zu erstellen. Dieser Artikel beschreibt, wie Sie eine Point-in-Time-Wiederherstellung einer Datenbank in einer Azure Arc-fähigen SQL Managed Instance durchführen.
+
+Mit der Point-in-Time-Wiederherstellung kann eine Datenbank wiederhergestellt werden:
+
+- Von einer bestehenden Datenbank
+- in eine neue Datenbank auf derselben Azure Arc-fähigen SQL-Manager-Instanz
+
+Sie können eine Datenbank zu einem bestimmten Zeitpunkt innerhalb einer vorkonfigurierten Aufbewahrungseinstellung wiederherstellen.
+
+Die Point-in-Time-Wiederherstellung ist eine Einstellung auf Instanzebene mit zwei Eigenschaften - Wiederherstellungspunktziel (RPO) und Aufbewahrungszeitraum. RPO bestimmt, wie oft die Transaktionsprotokollsicherungen durchgeführt werden. RPO ist die Zeitspanne, in der ein Datenverlust zu erwarten ist. RPO wird in Minuten angegeben. Die Aufbewahrungsfrist bestimmt, wie lange (in Tagen) die Datenbank-Backups von Azure Arc-fähigen Datendiensten gespeichert werden sollen. Die Aufbewahrungsfrist gilt für Voll-, Differenz- und Transaktionsprotokoll-Backups.  
+
+Derzeit kann eine Datenbank mit Point-in-Time Restore wiederhergestellt werden:
+
+- Von einer bestehenden Datenbank auf einer Instanz
+- In eine neue Datenbank auf der gleichen Instanz
+
+## <a name="limitations"></a>Einschränkungen
+
+Die Point-in-Time-Wiederherstellung auf eine SQL Managed Instance mit Azure Arc-Unterstützung unterliegt den folgenden Einschränkungen:
+
+- Eine punktuelle Wiederherstellung einer gesamten SQL Managed Instance mit Azure Arc-Unterstützung ist nicht möglich. 
+- Eine Azure Arc-aktivierte SQL Managed Instance, die mit Hochverfügbarkeit (Preview) bereitgestellt wird, unterstützt derzeit keine Point-in-Time-Wiederherstellung.
+- Sie können nur auf dieselbe Azure Arc-fähige SQL Managed Instance wiederherstellen.
+- Point-in-Time Restore kann nur über eine yaml-Datei durchgeführt werden.
+- Ältere Sicherungsdateien, die den vorkonfigurierten Aufbewahrungszeitraum überschritten haben, müssen manuell bereinigt werden.
+- Das Umbenennen einer Datenbank startet eine neue Sicherungskette in einem neuen Ordner.
+- Das Löschen und Erstellen verschiedener Datenbanken mit gleichem Namen wird derzeit nicht korrekt gehandhabt.
+
+## <a name="description"></a>BESCHREIBUNG
+
+Point-in-Time Restore stellt eine Datenbank zu einem bestimmten Zeitpunkt wieder her. Um eine Datenbank zu einem bestimmten Zeitpunkt wiederherzustellen, wenden Azure Arc-fähige Datendienste die Backup-Dateien in einer bestimmten Reihenfolge an. Beispiel:
+
+1. Vollständige Sicherung
+2. Differenzielle Sicherung 
+3. Eine oder mehrere Transaktionsprotokollsicherungen
+
+:::image type="content" source="media/point-in-time-restore/point-in-time-restore.png" alt-text="Point-in-Time-Wiederherstellung":::
+
+SQL Managed Instance mit Azure Arc-Unterstützung verfügt über eine integrierte Funktion zur Wiederherstellung zu einem bestimmten Zeitpunkt. Jedes Mal, wenn eine neue Datenbank auf einer SQL Managed Instance mit Azure Arc-Unterstützung erstellt oder wiederhergestellt wird, werden automatisch Backups erstellt. 
+
+Es gibt zwei Parameter, die sich auf die Möglichkeit der zeitpunktbezogenen Wiederherstellung auswirken:
+
+- RPO (Recovery Point Objective) 
+- Beibehaltungsdauer
+
+## <a name="create-a-database-from-a-point-in-time"></a>Erstellen einer Datenbank ab einem bestimmten Zeitpunkt
+
+Nachfolgend sind die Schritte zur Wiederherstellung einer Datenbank auf derselben Azure Ar-aktivierten SQL Managed Instance unter Verwendung der `kubectl`:
+
+1. Erstellen Sie eine Aufgabe für den Wiederherstellungsvorgang. Erstellen Sie eine .yaml-Datei mit den Wiederherstellungsparametern.
+
+   Beispiel:
+
+   ```json
+   apiVersion: tasks.sql.arcdata.microsoft.com/v1beta1
+      kind: SqlManagedInstanceRestoreTask
+   metadata:
+     name: sql01-restore-20210909
+   namespace: arc
+   spec:
+     source:
+       name: sql01
+       database: db01
+     restorePoint: "2021-09-09T02:00:00Z"
+     destination:
+       name: sql01
+       database: db02
+   ```
+
+   Bearbeiten Sie die obige yaml-Datei:
+
+   - `metadata` > `name` - Name für die benutzerdefinierte Ressource (CR) der Aufgabe
+   - `metadata` > `namespace` - Namespace der SQL Managed Instance mit Azure Arc-Unterstützung
+   - `source` > `name` - Name der SQL Managed Instance mit Azure Arc-Unterstützung
+   - `source` > `database` - Name der **source** auf der SQL Managed Instance mit Azure Arc-Unterstützung, von der wiederhergestellt werden soll
+   - `restorePoint` - Zeitpunkt der Wiederherstellung, in "UTC" Datumszeit.
+   - `destination` > `name` - Name der SQL Managed Instance mit Azure Arc-Unterstützung
+   - `destination` > `database` - Name der **destination** auf der SQL Managed Instance mit Azure Arc-Unterstützung
 
 
-SQL Managed Instance mit Azure Arc-Unterstützung bietet viele PaaS-ähnliche Funktionen. Eine solche Funktion ist die Möglichkeit, eine Datenbank zu einem Zeitpunkt innerhalb des vorkonfigurierten Aufbewahrungszeitraums wiederherzustellen. In diesem Artikel erfahren Sie, wie Sie eine Zeitpunktwiederherstellung einer Datenbank in SQL Managed Instance mit Azure Arc-Unterstützung durchführen.
+   > [!NOTE] 
+   > Der Name der Azure Arc-fähigen SQL Managed Instance sollte mit dem Namen des Ziels übereinstimmen.
 
-Die Zeitpunktwiederherstellung ist eine Einstellung auf Instanzebene mit zwei Eigenschaften: Recovery Point Objective (RPO) und Aufbewahrungsdauer (Retention Time, RT). Die Einstellung für Recovery Point Objective legt fest, wie oft Sicherungen der Transaktionsprotokolle erstellt werden. Dies ist auch die Zeitspanne, in der Datenverluste zu erwarten sind. Die Aufbewahrungsdauer (RT) gibt an, wie lange die Sicherungen (vollständig, differenziell und Transaktionsprotokoll) aufbewahrt werden.  
+2. Erstellen Sie eine Aufgabe, um die Point-in-Time-Restore-Operation zu initiieren
 
-Derzeit kann mit der Zeitpunktwiederherstellung eine Datenbank wie folgt wiederhergestellt werden:
+   ```console
+   kubectl apply -f sql-restore-task.yaml
+   ```
 
-- aus einer vorhandenen Datenbank einer SQL Instanz
-- in eine neue Datenbank derselben SQL Instanz
+3. Überprüfen Sie den Status der Wiederherstellung
 
-### <a name="limitations"></a>Einschränkungen
+   Führen Sie den folgenden Befehl aus, um den Status des Wiederherstellungsvorgangs zu überprüfen.
 
-Die Zeitpunktwiederherstellung in SQL Managed Instance mit Azure Arc-Unterstützung ist mit folgenden Einschränkungen verbunden:
+   ```console
+   kubectl get sqlmirestoretask -n <namespace>
+   ```
 
-- Sie können nur eine Wiederherstellung in dieselbe Instanz von SQL Managed Instance mit Azure Arc-Unterstützung durchführen.
-- Die Zeitpunktwiederherstellung kann nur über eine YAML-Datei ausgeführt werden. 
-- Ältere Sicherungsdateien, die über den vorkonfigurierten Aufbewahrungszeitraum hinausgehen, müssen manuell bereinigt werden.
-- Durch das Umbenennen einer Datenbank wird eine neue Sicherungskette in einem neuen Ordner gestartet.
-- Das Löschen und Erstellen verschiedener Datenbanken mit demselben Namen wird derzeit nicht ordnungsgemäß verarbeitet.
+   Ersetzen Sie `<namespace>` durch den Namespace, in dem sich die SQL-Instanz befindet.
 
-### <a name="edit-pitr-settings"></a>Bearbeiten von Einstellungen für die Zeitpunktwiederherstellung
+Sobald der Status der Wiederherstellungsaufgabe **Erledigt** anzeigt, sollte die neue Datenbank verfügbar sein. 
 
-##### <a name="enabledisable-automated-backups"></a>Aktivieren/Deaktivieren automatisierter Sicherungen
+## <a name="troubleshoot-failed-restore-operations"></a>Fehlerbehebung bei fehlgeschlagenen Wiederherstellungsvorgängen
 
-Der Dienst für die Zeitpunktwiederherstellung (Point-In-Time Restore, PITR) ist standardmäßig mit den folgenden Einstellungen aktiviert:
+Wenn der Status der Wiederherstellungsaufgabe **Fehlgeschlagen** anzeigt, führen Sie den folgenden Befehl aus, um in den Ereignissen nach der Ursache zu suchen.
+
+```console
+kubectl describe sqlmirestoretask <taskname> -n <namespace>
+```
+
+Beispiel:
+```console
+kubectl describe sqlmirestoretask sql01-restore-20210909 -n arc
+```
+
+## <a name="enabledisable-automated-backups"></a>Aktivieren/Deaktivieren automatisierter Sicherungen
+
+Der Dienst Point-in-Time-Restore (PITR) ist standardmäßig mit den folgenden Einstellungen aktiviert:
 
 - Recovery Point Objective (RPO) von 300 Minuten. Neben 0 (null) sind Werte zwischen 300 und 600 (in Sekunden) zulässig.
 
-Dies bedeutet, dass Protokollsicherungen für alle Datenbanken in der Instanz von SQL Managed Instance mit Azure Arc-Unterstützung standardmäßig alle 300 Sekunden (5 Minuten) erstellt werden. Dieser Wert kann in 0 geändert werden, um das Erstellen von Sicherungen zu deaktivieren, oder in einen höheren Wert in Sekunden, abhängig von der RPO-Anforderung für die Datenbanken auf der SQL-Instanz. 
+Mit dem RPO wird der Dienst so eingestellt, dass er standardmäßig alle 300 Sekunden oder 5 Minuten Log-Backups für alle Datenbanken auf der Azure Arc-fähigen verwalteten SQL-Instanz erstellt. Dieser Wert kann in 0 geändert werden, um das Erstellen von Sicherungen zu deaktivieren, oder in einen höheren Wert in Sekunden, abhängig von der RPO-Anforderung für die Datenbanken auf der SQL-Instanz. 
 
-Der Dienst für die Zeitpunktwiederherstellung selbst kann nicht deaktiviert werden, aber die automatisierten Sicherungen für eine bestimmte Instanz von SQL Managed Instance mit Azure Arc-Unterstützung können entweder deaktiviert werden, oder Sie passen die Standardeinstellungen an.
+Sie können die automatischen Backups für eine bestimmte Instanz einer Azure Arc-fähigen SQL-Managerinstanz deaktivieren oder die Standardeinstellungen ändern. Der PITR-Dienst selbst kann nicht deaktiviert werden.
 
-Das RPO kann bearbeitet werden, indem der Wert für die ```recoveryPointObjectiveInSeconds```-Eigenschaft wie folgt geändert wird:
+Sie können das RPO bearbeiten, indem Sie den Wert für die Eigenschaft `recoveryPointObjectiveInSeconds` wie folgt ändern:
 
-```
+```console
 kubectl edit sqlmi <sqlinstancename>  -n <namespace> -o yaml
 ```
 
-Dadurch sollte die Spezifikation für benutzerdefinierte Ressourcen für SQL Managed Instance mit Azure Arc-Unterstützung in Ihrem Standard-Editor geöffnet werden. Suchen Sie unter ```spec``` nach ```backup```:
+Dieser Befehl öffnet die benutzerdefinierte Ressourcenspezifikation für die Azure Arc-fähige SQL Managed Instance in Ihrem Standard-Editor. Suchen Sie die Einstellung `backup` unter `spec`:
 
-```
+```json
 backup:
   recoveryPointObjectiveInSeconds: 300
 ```
 
-Bearbeiten Sie den Wert für ```recoveryPointObjectiveInSeconds``` im Editor, und speichern Sie die Änderungen, damit die neue Einstellung wirksam wird. 
+Bearbeiten Sie den Wert für `recoveryPointObjectiveInSeconds` im Editor, und speichern Sie die Änderungen, damit die neue Einstellung wirksam wird. 
 
 > [!NOTE]
 > Wenn Sie die RPO-Einstellung bearbeiten, wird der Pod mit SQL Managed Instance mit Azure Arc-Unterstützung neu gestartet. 
 
-### <a name="restore-a-database-to-a-point-in-time"></a>Wiederherstellen einer Datenbank zu einem Zeitpunkt
+## <a name="monitor-backups"></a>Backups überwachen
 
-Ein Wiederherstellungsvorgang kann für eine Instanz von SQL Managed Instance mit Azure Arc-Unterstützung ausgeführt werden, um eine Wiederherstellung von einer Quelldatenbank zu einem Zeitpunkt innerhalb des Aufbewahrungszeitraums durchzuführen. 
-**(1) Erstellen Sie die YAML-Datei wie unten in Ihrem Editor:**
-
-```
-apiVersion: tasks.sql.arcdata.microsoft.com/v1beta1
-kind: SqlManagedInstanceRestoreTask
-metadata:
-  name: sql01-restore-20210707
-  namespace: arc
-spec:
-  source:
-    name: sql01
-    database: db01
-  restorePoint: "2021-07-01T02:00:00Z"
-  destination:
-    name: sql01
-    database: db02
-```
-
-- name: eindeutige Zeichenfolge für jede benutzerdefinierte Ressource, die für Kubernetes erforderlich ist
-- namespace: Namespace, in dem die Instanz von SQL Managed Instance mit Azure Arc-Unterstützung ausgeführt wird
-- source > name: Name der Instanz von SQL Managed Instance mit Azure Arc-Unterstützung
-- source > database: Name der Quelldatenbank in SQL Managed Instance mit Azure Arc-Unterstützung
-- restorePoint: Zeitpunkt für den Wiederherstellungsvorgang in UTC
-- destination > name: Name des Ziels für die Wiederherstellung von SQL Managed Instance mit Azure Arc-Unterstützung. Derzeit werden nur Wiederherstellungen auf denselben Instanzen unterstützt.
-- destination > database: Name der neuen Datenbank, auf die die Wiederherstellung angewandt wird
-
-**(2) Wenden Sie die YAML-Datei an, um einen Task zum Initiieren des Wiederherstellungsvorgangs zu erstellen:**
-
-Führen Sie den Befehl wie folgt aus, um den Wiederherstellungsvorgang zu initiieren:
-
-```
-kubectl apply -f sql01-restore-task.yaml
-```
-
-> [!NOTE]
-> Der Name des Tasks innerhalb der benutzerdefinierten Ressource und der Dateiname müssen nicht identisch sein.
-
-
-**Überprüfen des Status der Wiederherstellung**
-
-- Der Status des Wiederherstellungstasks wird etwa alle 10 Sekunden aktualisiert, er ändert sich von „Warten“ in „Wiederherstellung“ in „Abgeschlossen“ (bzw. „Fehlerhaft“). 
-- Während der Wiederherstellung einer Datenbank wird der Status „Wiederherstellung“ angezeigt.
-
-Der Status des Tasks kann wie folgt abgerufen werden:
-
-```
-kubectl get sqlmirestoretask -n arc
-``` 
-
-### <a name="monitor-your-backups"></a>Überwachen Ihrer Sicherungen
-
-Die Sicherungen werden im Ordner ```/var/opt/mssql/backups/archived/<dbname>/<datetime>``` gespeichert. Dabei ist ```<dbname>``` der Name der Datenbank und ```<datetime>``` ein Zeitstempel im UTC-Format für den Anfang jeder vollständigen Sicherung. Jedes Mal, wenn eine vollständige Sicherung initiiert wird, wird ein neuer Ordner mit der vollständigen Sicherung und allen nachfolgenden differenziellen und Transaktionsprotokollsicherungen in diesem Ordner erstellt. Die aktuellste vollständige Sicherung und die nachfolgenden differenziellen und Transaktionsprotokollsicherungen werden im Ordner ```/var/opt/mssql/backups/current/<dbname><datetime>``` gespeichert.
-
+Die Sicherungen werden im Ordner `/var/opt/mssql/backups/archived/<dbname>/<datetime>` gespeichert. Dabei ist `<dbname>` der Name der Datenbank und `<datetime>` ein Zeitstempel im UTC-Format für den Anfang jeder vollständigen Sicherung. Jedes Mal, wenn eine vollständige Sicherung initiiert wird, wird ein neuer Ordner mit der vollständigen Sicherung und allen nachfolgenden differenziellen und Transaktionsprotokollsicherungen in diesem Ordner erstellt. Die aktuellste vollständige Sicherung und die nachfolgenden differenziellen und Transaktionsprotokollsicherungen werden im Ordner `/var/opt/mssql/backups/current/<dbname><datetime>` gespeichert.
 
 ### <a name="clean-up"></a>Bereinigen 
 
-Wenn Sie ältere Sicherungen löschen möchten, um Speicherplatz freizugeben oder weil Sie sie nicht mehr benötigen, können Sie alle Ordner im Ordner ```/var/opt/mssql/backups/archived/``` entfernen. Das Entfernen von Ordnern in der Mitte einer Zeitachse kann sich auf die Möglichkeit auswirken, eine Wiederherstellung zu einem Zeitpunkt während dieses Zeitfensters durchzuführen. Es wird empfohlen, zuerst die ältesten Ordner zu löschen, um eine kontinuierliche Zeitachse für die Wiederherstellung zu behalten. 
+Wenn Sie ältere Sicherungen löschen möchten, um Speicherplatz freizugeben oder weil Sie sie nicht mehr benötigen, können Sie alle Ordner im Ordner `/var/opt/mssql/backups/archived/` entfernen. Das Entfernen von Ordnern in der Mitte einer Zeitachse kann sich auf die Möglichkeit auswirken, eine Wiederherstellung zu einem Zeitpunkt während dieses Zeitfensters durchzuführen. Löschen Sie zuerst die ältesten Ordner, um eine kontinuierliche Wiederherstellbarkeit zu gewährleisten. 
 
+## <a name="next-steps"></a>Nächste Schritte
 
+[Erfahren Sie mehr über Features und Funktionen von Azure Arc-fähigen SQL Managed Instance-Instanzen](managed-instance-features.md).
+
+[Beginnen Sie mit der Erstellung eines Datencontrollers](create-data-controller.md)
+
+[Wurde bereits ein Datencontroller erstellt? Erstellen von Azure Arc-fähigen SQL Managed Instance-Instanzen](create-sql-managed-instance.md)

@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/14/2021
-ms.openlocfilehash: fa900b7df1db1efbc8fe28a96cd2048113d7390d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c140c8495b1179298d6ca0029f430896aab55f7f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128550382"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360849"
 ---
-# <a name="create-and-manage-integration-accounts-for-b2b-workflows-in-azure-logic-apps-using-the-enterprise-integration-pack"></a>Erstellen und Verwalten von Integrationskonten für B2B-Workflows in Azure Logic Apps mithilfe des Enterprise Integration Pack
+# <a name="create-and-manage-integration-accounts-for-b2b-workflows-in-azure-logic-apps-with-the-enterprise-integration-pack"></a>Erstellen und Verwalten von Integrationskonten für B2B-Workflows in Azure Logic Apps mit dem Enterprise Integration Paket
 
 Bevor Sie B2B (Business-to-Business)- und Unternehmensintegrations-Workflows mithilfe von Azure Logic Apps erstellen können, müssen Sie eine *Integrationskonto* ressource erstellen. Dieses Konto ist ein skalierbarer, cloudbasierter Container in Azure, der das Speichern und Verwalten von B2B-Artefakten vereinfacht, die Sie in Ihren Workflows für B2B-Szenarien definieren und verwenden. Solche Artefakte umfassen [Handelspartner](logic-apps-enterprise-integration-partners.md), [Vereinbarungen](logic-apps-enterprise-integration-agreements.md), [Zuordnungen](logic-apps-enterprise-integration-maps.md), [Schemas](logic-apps-enterprise-integration-schemas.md), [Zertifikate](logic-apps-enterprise-integration-certificates.md) usw. Sie benötigen außerdem ein Integrationskonto, um B2B-Nachrichten auf elektronischem Wege mit anderen Organisationen austauschen zu können. Wenn andere Organisationen Protokolle und Nachrichtenformate verwenden, die von denen Ihrer Organisation abweichen, müssen Sie diese Formate konvertieren, damit das System Ihrer Organisation diese Nachrichten verarbeiten kann. Zu den unterstützten Branchenstandardprotokollen gehören [AS2](logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md), [EDIFACT](logic-apps-enterprise-integration-edifact.md) und [RosettaNet](logic-apps-enterprise-integration-rosettanet.md).
 
@@ -66,7 +66,7 @@ Für diese Aufgabe können Sie das Azure-Portal, die [Azure CLI](/cli/azure/reso
 
 1. Geben Sie im Bereich **Integrationskonto erstellen** die folgenden Informationen zu Ihrem Integrationskonto an:
 
-   | Eigenschaft | Erforderlich | Wert | Beschreibung |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md), die zum Organisieren verwandter Ressourcen verwendet werden soll. Erstellen Sie für dieses Beispiel eine neue Ressourcengruppe namens `FabrikamIntegration-RG`. |

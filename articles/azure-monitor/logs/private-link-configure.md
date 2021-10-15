@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: 936a8393f21d71cfb2fd1dd4cd2c249f0d13689c
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 9f0b1a3f51a5eae7b10ed74880c8abe1c92aae7a
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432574"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278992"
 ---
 # <a name="configure-your-private-link"></a>Konfigurieren von Private Link
 Zum Konfigurieren von Private Link sind einige Schritte erforderlich: 
@@ -156,11 +156,12 @@ $scope = New-AzResource -Location "Global" -Properties $scopeProperties -Resourc
 
 #### <a name="create-ampls---azure-resource-manager-template-arm-template"></a>Erstellen von AMPLS: Azure Resource Manager-Beispielvorlage (ARM-Vorlage)
 Mit der nachstehenden Azure Resource Manager-Vorlage werden folgende Aufgaben ausgeführt:
-* Erstellen eines Private Link-Bereichs (AMPLS) mit dem Namen „my-scope“
+* Erstellen eines Private Link-Bereichs (AMPLS) mit dem Namen „my-scope“, bei dem die Zugriffsmodi für Abfrage und Erfassung auf „Öffnen“ festgelegt sind
 * Erstellen eines Log Analytics-Arbeitsbereichs mit dem Namen „my-workspace“
 * Hinzufügen einer bereichsspezifischen Ressource für den AMPLS „my-scope“ mit dem Namen „my-workspace-connection“
+
 > [!NOTE]
-> Die folgende ARM-Vorlage verwendet eine alte API-Version, die das Festlegen der AMPLS-Zugriffsmodi nicht unterstützt. Wenn Sie die folgende Vorlage verwenden, wird die resultierende AMPLS mit QueryAccessMode="Open" und IngestionAccessMode="PrivateOnly" festgelegt. Dies bedeutet, dass Abfragen sowohl für Ressourcen in als auch aus der AMPLS ausgeführt werden können, aber die Erfassung auf Private Link-Ressourcen beschränkt ist.
+> Stellen Sie sicher, dass Sie eine neue API-Version (2021-07-01-preview oder höher) für die Erstellung des Objekts für den Private Link-Bereich verwenden (geben Sie unten „microsoft.insights/privatelinkscopes“ ein). Die in der Vergangenheit dokumentierten ARM-Vorlagen nutzten eine alte API-Version. Dies führt zur Festlegung eines AMPLS mit „QueryAccessMode="Open"“ und „IngestionAccessMode="PrivateOnly"“.
 
 ```
 {
@@ -180,10 +181,15 @@ Mit der nachstehenden Azure Resource Manager-Vorlage werden folgende Aufgaben au
     "resources": [
         {
             "type": "microsoft.insights/privatelinkscopes",
-            "apiVersion": "2019-10-17-preview",
+            "apiVersion": "2021-07-01-preview",
             "name": "[parameters('private_link_scope_name')]",
             "location": "global",
-            "properties": {}
+            "properties": {
+                "accessModeSettings":{
+                    "queryAccessMode":"Open",
+                    "ingestionAccessMode":"Open"
+                }
+            }
         },
         {
             "type": "microsoft.operationalinsights/workspaces",

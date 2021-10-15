@@ -2,13 +2,13 @@
 title: Datentypen in Bicep
 description: In diesem Artikel werden die Datentypen beschrieben, die in Bicep verfügbar sind.
 ms.topic: conceptual
-ms.date: 09/22/2021
-ms.openlocfilehash: 936f17273a95ceb77030497b27f7f73defc37896
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/30/2021
+ms.openlocfilehash: e2dffac58c3fec1b6c29d2c5e1542c9fec7ec0e4
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624396"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357920"
 ---
 # <a name="data-types-in-bicep"></a>Datentypen in Bicep
 
@@ -83,9 +83,7 @@ Gleitkomma-, Dezimal- oder Binärformate werden derzeit nicht unterstützt.
 
 ## <a name="objects"></a>Objekte
 
-Objekte beginnen mit einer linken geschweiften Klammer (`{`) und enden mit einer rechten geschweiften Klammer (`}`). In Bicep muss ein Objekt in mehreren Zeilen deklariert werden. Jede Eigenschaft in einem Objekt besteht aus einem Schlüssel und einem Wert. Der Schlüssel und der Wert werden durch einen Doppelpunkt (`:`) getrennt. Ein Objekt lässt beliebige Eigenschaften jedes Typs zu.
-
-In Bicep ist der Schlüssel nicht in Anführungszeichen eingeschlossen. Verwenden Sie keine Kommas zwischen Eigenschaften.
+Objekte beginnen mit einer linken geschweiften Klammer (`{`) und enden mit einer rechten geschweiften Klammer (`}`). In Bicep muss ein Objekt in mehreren Zeilen deklariert werden. Jede Eigenschaft in einem Objekt besteht aus einem Schlüssel und einem Wert. Der Schlüssel und der Wert werden durch einen Doppelpunkt (`:`) getrennt. Ein Objekt lässt beliebige Eigenschaften jedes Typs zu. Verwenden Sie keine Kommas zwischen Eigenschaften.
 
 ```bicep
 param exampleObject object = {
@@ -93,6 +91,23 @@ param exampleObject object = {
   id: '123-abc'
   isCurrent: true
   tier: 1
+}
+```
+
+In Bicep sind Anführungszeichen für die Schlüssel von Objekteigenschaften optional zulässig:
+
+```bicep
+var test = {
+  'my - special. key': 'value'
+}
+```
+
+Im vorangegangenen Beispiel werden Anführungszeichen verwendet, wenn die Objektschlüssel Sonderzeichen enthalten.  Zum Beispiel Leerzeichen, '-' oder '.'. Das folgende Beispiel zeigt, wie Sie die Interpolation in Objekt-Eigenschaftsschlüsseln verwenden können.
+
+```bicep
+var stringVar = 'example value'
+var objectVar = {
+  '${stringVar}': 'this value'
 }
 ```
 

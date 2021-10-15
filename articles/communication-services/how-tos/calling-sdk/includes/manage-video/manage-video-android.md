@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 09/08/2021
 ms.author: rifox
-ms.openlocfilehash: c8683ae7275c9cff9e3035a0ad4b0e1cdc6015d3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d77857152ad381bb12e5bacc9889c10ca633948
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128700124"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129585161"
 ---
 [!INCLUDE [Install SDK](../install-sdk/install-sdk-android.md)]
 
@@ -19,8 +19,6 @@ Um Video mit Calling verwenden zu können, müssen Sie wissen, wie Geräte verwa
 `DeviceManager` ermöglicht Ihnen das Aufzählen lokaler Geräte, die in einem Anruf zur Übertragung Ihrer Audio-/Videostreams verwendet werden können. DeviceManager erlaubt Ihnen auch, von einem Benutzer die Berechtigung für den Zugriff auf sein Mikrofon und seine Kamera über die native Browser-API anzufordern.
 
 Sie können auf `deviceManager` zugreifen, indem Sie die `callClient.getDeviceManager()`-Methode aufrufen.
-> [!WARNING]
-> Derzeit muss zuerst ein `callAgent`-Objekt instanziiert werden, um Zugriff auf DeviceManager zu erhalten.
 
 ```java
 Context appContext = this.getApplicationContext();
@@ -41,15 +39,20 @@ List<VideoDeviceInfo> localCameras = deviceManager.getCameras(); // [VideoDevice
 Sie können `DeviceManager` und `Renderer` verwenden, um mit dem Rendern von Streams über Ihre lokale Kamera zu beginnen. Dieser Stream wird nicht an andere Teilnehmer gesendet. Es handelt sich um einen lokalen Vorschaufeed. Dies ist ein asynchroner Vorgang.
 
 ```java
-VideoDeviceInfo videoDevice = <get-video-device>;
+VideoDeviceInfo videoDevice = <get-video-device>; // See the `Enumerate local devices` topic above
 Context appContext = this.getApplicationContext();
-currentVideoStream = new LocalVideoStream(videoDevice, appContext);
+
+LocalVideoStream currentVideoStream = new LocalVideoStream(videoDevice, appContext);
+
 LocalVideoStream[] localVideoStreams = new LocalVideoStream[1];
 localVideoStreams[0] = currentVideoStream;
-videoOptions = new VideoOptions(localVideoStreams);
 
+VideoOptions videoOptions = new VideoOptions(localVideoStreams);
+
+RenderingOptions renderingOptions = new RenderingOptions(ScalingMode.Fit);
 VideoStreamRenderer previewRenderer = new VideoStreamRenderer(currentVideoStream, appContext);
-VideoStreamRendererView uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+
+VideoStreamRendererView uiView = previewRenderer.createView(renderingOptions);
 
 // Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
@@ -59,28 +62,35 @@ layout.addView(uiView);
 > [!WARNING]
 > Derzeit wird nur ein ausgehender lokaler Videostream unterstützt. Um einen Anruf mit Video zu tätigen, müssen Sie die lokalen Kameras mit der `getCameras`-API von `deviceManager` aufzählen.
 Sobald Sie eine gewünschte Kamera ausgewählt haben, erzeugen Sie damit eine `LocalVideoStream`-Instanz und übergeben diese an `videoOptions` als Element im `localVideoStream`-Array an eine `call`-Methode.
-Sobald die Anrufverbindung hergestellt ist, wird automatisch ein Videostream von der ausgewählten Kamera an andere Teilnehmer gesendet.
+Nachdem die Anrufverbindung hergestellt ist, wird automatisch ein Videostream von der ausgewählten Kamera an andere Teilnehmende gesendet.
 
 > [!NOTE]
 > Aus Gründen des Datenschutzes wird das Video nicht für den Anruf freigegeben, wenn es nicht lokal in der Vorschau angezeigt wird.
 Weitere Informationen finden Sie unter [Vorschau auf lokaler Kamera](#local-camera-preview).
+
 ```java
+VideoDeviceInfo desiredCamera = <get-video-device>; // See the `Enumerate local devices` topic above
 Context appContext = this.getApplicationContext();
-VideoDeviceInfo desiredCamera = callClient.getDeviceManager(appContext).get().getCameras().get(0);
+
 LocalVideoStream currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
+
 LocalVideoStream[] localVideoStreams = new LocalVideoStream[1];
 localVideoStreams[0] = currentVideoStream;
+
 VideoOptions videoOptions = new VideoOptions(localVideoStreams);
 
 // Render a local preview of video so the user knows that their video is being shared
 Renderer previewRenderer = new VideoStreamRenderer(currentVideoStream, appContext);
 View uiView = previewRenderer.createView(new CreateViewOptions(ScalingMode.FIT));
+
 // Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
 
 CommunicationUserIdentifier[] participants = new CommunicationUserIdentifier[]{ new CommunicationUserIdentifier("<acs user id>") };
+
 StartCallOptions startCallOptions = new StartCallOptions();
 startCallOptions.setVideoOptions(videoOptions);
+
 Call call = callAgent.startCall(context, participants, startCallOptions);
 ```
 
@@ -89,10 +99,13 @@ Call call = callAgent.startCall(context, participants, startCallOptions);
 Um ein Video zu starten, müssen Sie die Kameras mit der `getCameraList`-API für das `deviceManager`-Objekt aufzählen. Erstellen Sie dann eine neue Instanz von `LocalVideoStream` zur Übergabe der gewünschten Kamera, und übergeben Sie sie in der `startVideo`-API als Argument:
 
 ```java
-VideoDeviceInfo desiredCamera = <get-video-device>;
+VideoDeviceInfo desiredCamera = <get-video-device>; // See the `Enumerate local devices` topic above
 Context appContext = this.getApplicationContext();
+
 LocalVideoStream currentLocalVideoStream = new LocalVideoStream(desiredCamera, appContext);
+
 VideoOptions videoOptions = new VideoOptions(currentLocalVideoStream);
+
 Future startVideoFuture = call.startVideo(appContext, currentLocalVideoStream);
 startVideoFuture.get();
 ```
@@ -100,7 +113,8 @@ startVideoFuture.get();
 Sobald Sie erfolgreich mit dem Senden von Video beginnen, wird eine `LocalVideoStream`-Instanz der `localVideoStreams`-Sammlung für die Anrufinstanz hinzugefügt.
 
 ```java
-currentLocalVideoStream == call.getLocalVideoStreams().get(0);
+List<LocalVideoStream> videoStreams = call.getLocalVideoStreams();
+LocalVideoStream currentLocalVideoStream = videoStreams.get(0); // Please make sure there are VideoStreams in the list before calling get(0).
 ```
 
 Um das lokale Video anzuhalten, übergeben Sie die `LocalVideoStream`-Instanz, die in der `localVideoStreams`-Sammlung verfügbar ist:
@@ -115,10 +129,16 @@ currentLocalVideoStream.switchSource(source).get();
 ```
 
 ## <a name="render-remote-participant-video-streams"></a>Rendern von Videostreams von Remoteteilnehmern
+
 Um die Video- und Bildschirmübertragungs-Streams der Remoteteilnehmer aufzulisten, sehen Sie sich die `videoStreams`-Sammlungen an:
+
 ```java
-RemoteParticipant remoteParticipant = call.getRemoteParticipants().get(0);
-RemoteVideoStream remoteParticipantStream = remoteParticipant.getVideoStreams().get(0);
+List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants();
+RemoteParticipant remoteParticipant = remoteParticipants.get(0); // Please make sure there are remote participants in the list before calling get(0).
+
+List<RemoteVideoStream> remoteStreams = remoteParticipant.getVideoStreams();
+RemoteVideoStream remoteParticipantStream = remoteStreams.get(0); // Please make sure there are video streams in the list before calling get(0).
+
 MediaStreamType streamType = remoteParticipantStream.getType(); // of type MediaStreamType.Video or MediaStreamType.ScreenSharing
 ```
  

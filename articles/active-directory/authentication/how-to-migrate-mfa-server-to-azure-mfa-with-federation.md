@@ -1,7 +1,6 @@
 ---
 title: Migrieren zu Azure AD MFA mit Verbunden – Azure Active Directory
 description: Detaillierte Anleitung für den Wechsel vom lokalen Azure MFA-Server zu Azure AD MFA mit Verbund
-services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
@@ -11,12 +10,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b34538fb4d0c9dc7beb0defd22f0aa78207f0a3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0c5d92d16f5ac9fcd8aa69ce9fd71f4844a77d28
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355091"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352717"
 ---
 # <a name="migrate-to-azure-ad-mfa-with-federation"></a>Migrieren zu Azure AD MFA mit Verbund
 
@@ -65,7 +64,7 @@ Get-AdfsAdditionalAuthenticationRule
 Führen Sie zum Anzeigen vorhandener Vertrauensstellungen der vertrauenden Seite den folgenden Befehl aus, und ersetzen Sie „RPTrustName“ durch den Namen der Anspruchsregel für die Vertrauensstellung der vertrauenden Seite: 
 
 ```powershell
-(Get-AdfsRelyingPartyTrust -Name “RPTrustName”).AdditionalAuthenticationRules 
+(Get-AdfsRelyingPartyTrust -Name "RPTrustName").AdditionalAuthenticationRules 
 ```
 
 #### <a name="access-control-policies"></a>Zugriffssteuerungsrichtlinien
@@ -92,13 +91,13 @@ Sie benötigen eine bestimmte Gruppe, in der Sie Benutzer platzieren, für die A
 
 Um die Gruppen-SID zu ermitteln, verwenden Sie den folgenden Befehl mit dem Namen der Gruppe:
 
-`Get-ADGroup “GroupName”`
+`Get-ADGroup "GroupName"`
 
 ![Screenshot mit den Ergebnissen des Get-ADGroup-Skripts.](./media/how-to-migrate-mfa-server-to-azure-mfa-user-authentication/find-the-sid.png)
 
 #### <a name="setting-the-claims-rules-to-call-azure-mfa"></a>Festlegen der Anspruchsregeln zum Aufrufen von Azure MFA
 
-Die folgenden PowerShell-Cmdlets rufen Azure AD MFA für Benutzer in der Gruppe auf, sofern sie sich nicht im Unternehmensnetzwerk befinden. Ersetzen Sie „YourGroupSid“ durch die SID, die Sie mit dem genannten Cmdlet ermittelt haben.
+Die folgenden PowerShell-Cmdlets rufen Azure AD MFA für Benutzer in der Gruppe auf, sofern sie sich nicht im Unternehmensnetzwerk befinden. Ersetzen Sie „YourGroupSid“ durch die SID, die Sie mit obigem Cmdlet ermittelt haben.
 
 Lesen Sie unbedingt die Informationen unter [Auswählen zusätzlicher Authentifizierungsanbieter in 2019](/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server). 
 
@@ -112,7 +111,7 @@ Lesen Sie unbedingt die Informationen unter [Auswählen zusätzlicher Authentifi
 Führen Sie das folgende PowerShell-Cmdlet aus: 
 
 ```powershell
-(Get-AdfsRelyingPartyTrust -Name “RPTrustName”).AdditionalAuthenticationRules
+(Get-AdfsRelyingPartyTrust -Name "RPTrustName").AdditionalAuthenticationRules
 ```
 
  
@@ -126,7 +125,7 @@ Value = "AzureMfaAuthentication");
 not exists([Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", 
 Value=="YourGroupSid"]) => issue(Type = 
 "https://schemas.microsoft.com/claims/authnmethodsproviders", Value = 
-"AzureMfaServerAuthentication");’
+"AzureMfaServerAuthentication");'
 ```
 
 Im folgenden Beispiel wird davon ausgegangen, dass Ihre aktuellen Anspruchsregeln so konfiguriert sind, dass sie zur MFA aufgefordert werden, wenn Benutzer eine Verbindung von außerhalb Ihres Netzwerks herstellen. Dieses Beispiel enthält die zusätzlichen Regeln, die Sie anfügen müssen.
@@ -137,12 +136,12 @@ Set-AdfsAdditionalAuthenticationRule -AdditionalAuthenticationRules 'c:[type ==
 "https://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod", value = 
 "https://schemas.microsoft.com/claims/multipleauthn" );
  c:[Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value == 
-“YourGroupSID"] => issue(Type = "https://schemas.microsoft.com/claims/authnmethodsproviders", 
+"YourGroupSID"] => issue(Type = "https://schemas.microsoft.com/claims/authnmethodsproviders", 
 Value = "AzureMfaAuthentication");
 not exists([Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", 
-Value==“YourGroupSid"]) => issue(Type = 
+Value=="YourGroupSid"]) => issue(Type = 
 "https://schemas.microsoft.com/claims/authnmethodsproviders", Value = 
-"AzureMfaServerAuthentication");’
+"AzureMfaServerAuthentication");'
 ```
 
 
@@ -156,12 +155,12 @@ Set-AdfsRelyingPartyTrust -TargetName AppA -AdditionalAuthenticationRules 'c:[ty
 "https://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod", value = 
 "https://schemas.microsoft.com/claims/multipleauthn" );
 c:[Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value == 
-“YourGroupSID"] => issue(Type = "https://schemas.microsoft.com/claims/authnmethodsproviders", 
+"YourGroupSID"] => issue(Type = "https://schemas.microsoft.com/claims/authnmethodsproviders", 
 Value = "AzureMfaAuthentication");
 not exists([Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", 
-Value==“YourGroupSid"]) => issue(Type = 
+Value=="YourGroupSid"]) => issue(Type = 
 "https://schemas.microsoft.com/claims/authnmethodsproviders", Value = 
-"AzureMfaServerAuthentication");’
+"AzureMfaServerAuthentication");'
 ```
 
 
@@ -183,7 +182,7 @@ Bei Verbunddomänen kann MFA durch bedingten Azure AD-Zugriff oder durch den lok
 
 Wenn das SupportsMFA-Flag auf „False“ festgelegt ist, verwenden Sie Azure MFA wahrscheinlich nicht. Sie verwenden wahrscheinlich Anspruchsregeln auf AD FS vertrauenden Seiten, um MFA aufzurufen.
 
-Sie können den Status Ihres SupportsMFA-Flags mit dem folgenden [Windows PowerShell-Cmdlet](/powershell/module/msonline/get-msoldomainfederationsettings?view=azureadps-1.0) überprüfen:
+Sie können den Status Ihres SupportsMFA-Flags mit dem folgenden [Windows PowerShell-Cmdlet](/powershell/module/msonline/get-msoldomainfederationsettings) überprüfen:
 
 ```powershell
 Get-MsolDomainFederationSettings –DomainName yourdomain.com
@@ -328,12 +327,12 @@ Entfernen Sie beispielsweise Folgendes aus den Regeln:
  
 ```console
 c:[Type == &quot;https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid&quot;, Value ==
-“**YourGroupSID**&quot;] => issue(Type = &quot;https://schemas.microsoft.com/claims/authnmethodsproviders&quot;,
+&quot;**YourGroupSID**&quot;] => issue(Type = &quot;https://schemas.microsoft.com/claims/authnmethodsproviders&quot;,
 Value = &quot;AzureMfaAuthentication");
 not exists([Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid",
 Value=="YourGroupSid"]) => issue(Type =
 "https://schemas.microsoft.com/claims/authnmethodsproviders", Value =
-"AzureMfaServerAuthentication");’
+"AzureMfaServerAuthentication");'
 ```
 
 ### <a name="disable-mfa-server-as-an-authentication-provider-in-ad-fs"></a>Deaktivieren von MFA-Server als Authentifizierungsanbieter in AD FS

@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 45b9fa1fb96f45b5b24d7a0b823b11f89a471bd4
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d17f370739acf5280850beb1eb14ad8cdc0268a6
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752313"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424934"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Sichern und Wiederherstellen in einem dedizierten Azure Synapse SQL-Pool
 
@@ -74,7 +74,7 @@ Eine Geosicherung wird einmal täglich in einem [gekoppelten Rechenzentrum](../.
 Wenn Sie keine Geosicherungen für Ihren dedizierten SQL-Pool benötigen, können Sie sie deaktivieren und die Speicherkosten für die Notfallwiederherstellung einsparen. Informationen hierzu finden Sie unter [Schrittanleitung: Deaktivieren von Geosicherungen für einen dedizierten SQL-Pool (früher SQL Data Warehouse)](disable-geo-backup.md). Beachten Sie: Wenn Sie Geosicherungen deaktivieren, können Sie Ihren dedizierten SQL-Pool nicht in der gekoppelten Azure-Region wiederherstellen, wenn Ihr primäres Azure-Rechenzentrum nicht verfügbar ist. 
 
 > [!NOTE]
-> Wenn Sie eine kürzere RPO für Geosicherungen benötigen, stimmen Sie [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse) für diese Funktion ab. Sie können auch einen benutzerdefinierten Wiederherstellungspunkt erstellen und auf der Grundlage dieses neuen Wiederherstellungspunkts ein neues Data Warehouse in einer anderen Region wiederherstellen. Nach der Wiederherstellung ist das Data Warehouse online, und Sie können es unbegrenzt anhalten, um Computekosten zu sparen. Für die angehaltene Datenbank fallen Speichergebühren nach dem Azure Storage Premium-Tarif an. Falls Sie eine aktive Kopie des Data Warehouse benötigen, können Sie die Datenbank fortsetzen. Dies sollte nur wenige Minuten dauern.
+> Wenn Sie eine kürzere RPO für Geosicherungen benötigen, stimmen Sie [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse) für diese Funktion ab. Sie können auch einen benutzerdefinierten Wiederherstellungspunkt erstellen und auf der Grundlage dieses neuen Wiederherstellungspunkts ein neues Data Warehouse in einer anderen Region wiederherstellen. Nach der Wiederherstellung ist das Data Warehouse online, und Sie können es unbegrenzt anhalten, um Computekosten zu sparen. Für die angehaltene Datenbank fallen Speichergebühren nach dem Azure Storage Premium-Tarif an. Ein weiteres gängiges Muster für einen kürzeren Wiederherstellungspunkt ist die parallele Erfassung von Daten in primären und sekundären Instanzen eines Data Warehouse. In diesem Szenario werden Daten aus einer (oder mehreren) Quelle(n) in zwei separaten Instanzen des Data Warehouse (primär und sekundär) gespeichert. Sie können die sekundäre Instanz des Warehouse anhalten, um Computekosten zu sparen. Falls Sie eine aktive Kopie des Data Warehouse benötigen, können Sie die Datenbank fortsetzen. Dies sollte nur wenige Minuten dauern.
 
 ## <a name="data-residency"></a>Datenresidenz 
 

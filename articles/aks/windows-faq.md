@@ -2,15 +2,14 @@
 title: FAQ zu Windows Server-Knotenpools
 titleSuffix: Azure Kubernetes Service
 description: Hier finden Sie häufig gestellte Fragen zum Ausführen von Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS).
-services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: c11ca69e11ee3f9b429414c2caf5b71a947d6a31
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dd83803069f83233915c0baae0656346008a3814
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595292"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354622"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Häufig gestellte Fragen zu Windows Server-Knotenpools in AKS
 
@@ -68,7 +67,7 @@ Ja. Informationen zu den Auswirkungen und verfügbaren Optionen finden Sie unter
 
 Wenn Sie Ihren Cluster vor Februar 2020 erstellt und noch kein Clusterupgrade durchgeführt haben, verwendet der Cluster immer noch ein altes Windows-Image. Möglicherweise wurde Ihnen dann bereits eine Fehlermeldung angezeigt, die in etwa wie folgt lautet:
 
-"The following list of images referenced from the deployment template is not found: Herausgeber: MicrosoftWindowsServer, Offer: WindowsServer, Sku: 2019-datacenter-core-smalldisk-2004, Version: latest. Please refer to https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage for instructions on finding available images." (Die folgende Liste von Images, auf die von der Bereitstellungsvorlage verwiesen wird, wurden nicht gefunden: Herausgeber: MicrosoftWindowsServer, Angebot: WindowsServer, SKU: 2019-datacenter-core-smalldisk-2004, Version: neuste. Unter https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage finden Sie Informationen dazu, wie Sie verfügbare Images finden.)
+"The following list of images referenced from the deployment template is not found: Herausgeber: MicrosoftWindowsServer, Offer: WindowsServer, Sku: 2019-datacenter-core-smalldisk-2004, Version: latest. Weitere Informationen zu verfügbaren Images finden Sie unter [Suchen und Verwenden von VM-Images im Azure Marketplace mit Azure PowerShell](../virtual-machines/windows/cli-ps-findimage.md).
 
 So beheben Sie diesen Fehler
 

@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: Datei einfügen
 services: expressroute
 author: duongau
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 83835941ae2ec1f45eab7de25d862034069770f2
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: f65b925bf9546c179f0c420a56911ac37b451a7c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123213881"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792548"
 ---
 ## <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a><a name="locations"></a>Azure-Regionen mit ExpressRoute-Standorten in einer geopolitischen Region.
 Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit ExpressRoute-Standorten in einer geopolitischen Region.
@@ -22,7 +22,7 @@ Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit Express
 | --- | --- | --- |
 | **Australische Behörden** |Australien, Mitte; Australien, Mitte 2 |Canberra, Canberra2 |
 | **Europa** | Frankreich, Mitte; Frankreich, Süden; Deutschland, Norden; Deutschland, Westen-Mitte; Europa, Norden; Norwegen, Osten; Norwegen, Westen; Schweiz, Norden; Schweiz, Westen; Vereinigtes Königreich, Westen; Vereinigtes Königreich, Süden; Europa, Westen |Amsterdam, Amsterdam2, Berlin, Kopenhagen, Dublin, Dublin2, Frankfurt, Frankfurt2, Geneva, London, London2, Madrid, Marseille, Mailand, München, Newport(Wales), Oslo, Paris, Stavanger, Stockholm, Zürich |
-| **Nordamerika** |USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Chicago2, Dallas, Denver, Las Vegas, Los Angeles, Los Angeles2, Miami, Minneapolis, Montreal, New York, Phoenix, Quebec City, Queretaro (Mexiko), Quincy, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Toronto, Toronto2, Vancouver, Washington DC, Washington DC2 |
+| **Nordamerika** |USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Westen 3, USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Chicago2, Dallas, Denver, Las Vegas, Los Angeles, Los Angeles2, Miami, Minneapolis, Montreal, New York, Phoenix, Quebec City, Queretaro (Mexiko), Quincy, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Toronto, Toronto2, Vancouver, Washington DC, Washington DC2 |
 | **Asien** | Ostasien, Südostasien | Bangkok, Hongkong, Hongkong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipeh |
 | **Indien** | Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Chennai2, Mumbai, Mumbai2, Pune |
 | **Japan** | Japan West, Japan Ost |Osaka, Tokio, Tokio2 |

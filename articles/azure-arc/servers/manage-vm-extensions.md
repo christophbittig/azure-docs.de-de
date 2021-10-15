@@ -1,14 +1,14 @@
 ---
 title: Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern
 description: Mit Azure Arc-fähigen Servern kann die Bereitstellung von Erweiterungen für virtuelle Computer verwaltet werden, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
-ms.date: 08/24/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: bc19255d7e234b3ca4ada1bc2f9356dc52b3e4dc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d79bae8b84a9e776e64dbe5d93038f88db5bb04c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124807265"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354511"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc-fähigen Servern
 
@@ -64,6 +64,7 @@ Arc-fähige Server unterstützen das Verschieben von Computern, auf denen eine o
 |Azure Monitor für VMs (Insights) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentWindows | [VM-Erweiterung für den Dependency-Agent für Windows](../../virtual-machines/extensions/agent-dependency-windows.md)|
 |Azure Key Vault-Zertifikatsynchronisierung | Microsoft.Azure.Key.Vault |KeyVaultForWindows | [Key Vault-VM-Erweiterung für Windows](../../virtual-machines/extensions/key-vault-windows.md) |
 |Azure Monitor-Agent |Microsoft.Azure.Monitor |AzureMonitorWindowsAgent |[Installieren des Azure Monitor-Agents (Vorschau)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
+|Azure Automation: Hybrid Runbook Worker-Erweiterung (Vorschau) |Microsoft.Compute |HybridWorkerForWindows |[Stellen Sie einen erweiterungsbasierten Benutzer-Hybrid Runbook Worker](../../automation/extension-based-hybrid-runbook-worker-install.md) bereit, um Runbooks lokal auszuführen. |
 
 ### <a name="linux-extensions"></a>Linux-Erweiterungen
 
@@ -75,6 +76,7 @@ Arc-fähige Server unterstützen das Verschieben von Computern, auf denen eine o
 |Azure Monitor für VMs (Insights) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[VM-Erweiterung für den Dependency-Agent für Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
 |Azure Key Vault-Zertifikatsynchronisierung | Microsoft.Azure.Key.Vault |KeyVaultForLinux | [Key Vault-VM-Erweiterung für Linux](../../virtual-machines/extensions/key-vault-linux.md) |
 |Azure Monitor-Agent |Microsoft.Azure.Monitor |AzureMonitorLinuxAgent |[Installieren des Azure Monitor-Agents (Vorschau)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
+|Azure Automation: Hybrid Runbook Worker-Erweiterung (Vorschau) |Microsoft.Compute |HybridWorkerForLinux |[Stellen Sie einen erweiterungsbasierten Benutzer-Hybrid Runbook Worker](../../automation/extension-based-hybrid-runbook-worker-install.md) bereit, um Runbooks lokal auszuführen.|
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -91,7 +93,7 @@ Lesen Sie unbedingt die Dokumentation zu jeder VM-Erweiterung, auf die in der vo
 
 Für die Log Analytics-Agent-VM-Erweiterung für Linux muss Python 2.x auf dem Zielcomputer installiert sein.
 
-### <a name="azure-key-vault-vm-extension"></a>Azure Key Vault-VM-Erweiterung 
+### <a name="azure-key-vault-vm-extension"></a>Azure Key Vault-VM-Erweiterung
 
 Die folgenden Linux-Betriebssysteme werden von der Key Vault-VM-Erweiterung nicht unterstützt:
 

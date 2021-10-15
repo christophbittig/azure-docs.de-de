@@ -2,14 +2,14 @@
 title: Wiederherstellen von Azure Database for PostgreSQL
 description: Weitere Informationen zum Wiederherstellen von Azure Database for PostgreSQL-Sicherungen.
 ms.topic: how-to
-ms.date: 09/22/2021
+ms.date: 10/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0b4c2bd566be2ac19de5533006c5b9e5d206850c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a5de8e74fb05eea45e5cb730515b3280c4952951
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700372"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359501"
 ---
 # <a name="restore-azure-database-for-postgresql-backups-preview"></a>Wiederherstellen von Azure Database for PostgreSQL-Sicherungen (Vorschau)
 
@@ -43,7 +43,7 @@ Sie können eine Datenbank auf jedem beliebigen Azure PostgreSQL-Server innerhal
 
      1. Wählen Sie in der Dropdownliste **Schlüsseltresor und Geheimnis auswählen** einen Tresor aus, in dem die Anmeldeinformationen für die Verbindung mit dem Zielserver gespeichert sind.
 
-     1. Wählen Sie **Überprüfen + wiederherstellen** aus, um die Überprüfung auszulösen und zu überprüfen, ob der Dienst über [Wiederherstellungsberechtigungen auf dem Zielserver]backup-azure-database-postgresql(backup-azure-database-postgresql-overview.md#set-of-permissions-needed-for-azure-postgresql-database-restore) verfügt. Diese Berechtigungen müssen [manuell erteilt werden](backup-azure-database-postgresql-overview.md#grant-access-on-the-azure-postgresql-server-and-key-vault-manually).
+     1. Wählen Sie **Überprüfen + wiederherstellen** aus. Dadurch wird überprüft, ob der Dienst über die [Berechtigungen zur Wiederherstellung auf dem Zielserver](backup-azure-database-postgresql-overview.md#set-of-permissions-needed-for-azure-postgresql-database-restore) verfügt. Diese Berechtigungen müssen [manuell erteilt werden](backup-azure-database-postgresql-overview.md#grant-access-on-the-azure-postgresql-server-and-key-vault-manually).
 
      :::image type="content" source="./media/restore-azure-database-postgresql/restore-as-database-inline.png" alt-text="Screenshot: ausgewählter Wiederherstellungstyps „Als Datenbank wiederherstellen“." lightbox="./media/restore-azure-database-postgresql/restore-as-database-expanded.png":::
 
@@ -73,7 +73,7 @@ Erteilen Sie der MSI des Azure Backup-Tresors die Berechtigung für den Zugriff 
 
    :::image type="content" source="./media/restore-azure-database-postgresql/assign-vault-msi-permission-to-access-storage-account-containers-azure-portal-inline.png" alt-text="Screenshot: Prozess der Zuweisung der Berechtigung für den Zugriff auf die Speicherkontocontainer über das Azure-Portal an die MSI des Azure Backup-Tresors." lightbox="./media/restore-azure-database-postgresql/assign-vault-msi-permission-to-access-storage-account-containers-azure-portal-expanded.png":::
 
-Außerdem können Sie mit dem Azure CLI-Befehl [az role assignment create](/cli/azure/role/assignment&preserve-view=true) differenzierte Berechtigungen für den bestimmten Container erteilen, auf dem Sie die Wiederherstellung durchführen.
+Außerdem können Sie mit dem Azure CLI-Befehl [az role assignment create](/cli/azure/role/assignment) differenzierte Berechtigungen für den bestimmten Container erteilen, auf dem Sie die Wiederherstellung durchführen.
 
 ```azurecli
 az role assignment create --assignee $VaultMSI_AppId  --role "Storage Blob Data Contributor"   --scope $id

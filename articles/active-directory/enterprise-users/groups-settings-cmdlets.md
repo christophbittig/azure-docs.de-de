@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e45101caec9127c39837d015d6a5117c7e2ae775
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: cdd7eb4acf93270ece6215492d79dd12e5d6d0dc
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472041"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272337"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
@@ -33,6 +33,9 @@ Weitere Informationen, wie Sie Benutzer ohne Administratorrechte am Erstellen vo
 Microsoft 365-Gruppeneinstellungen werden mithilfe eines „Settings“- und eines „SettingsTemplate“-Objekts konfiguriert. Zu Beginn werden keine Einstellungsobjekte in Ihrem Verzeichnis angezeigt, da Ihr Verzeichnis mit den Standardeinstellungen konfiguriert ist. Um die Standardeinstellungen zu ändern, erstellen Sie mithilfe einer Einstellungsvorlage ein neues Einstellungsobjekt. Einstellungsvorlagen werden von Microsoft definiert. Es werden verschiedene Einstellungsvorlagen unterstützt. Zum Konfigurieren von Microsoft 365-Gruppeneinstellungen für Ihr Verzeichnis verwenden Sie die Vorlage „Group.Unified“. Zum Konfigurieren von Microsoft 365-Gruppeneinstellungen für eine einzelne Gruppe verwenden Sie die Vorlage „Group.Unified.Guest“. Diese Vorlage dient zum Verwalten des Gastzugriffs auf eine Microsoft 365-Gruppe. 
 
 Die Cmdlets gehören zum Modul Azure Active Directory PowerShell V2. Weitere Anweisungen zum Herunterladen und Installieren des Moduls auf Ihrem Computer finden Sie im Artikel [Azure Active Directory PowerShell Version 2](/powershell/azure/active-directory/overview). Sie können die Version 2 des Moduls über den [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureAD/) installieren.
+
+>[!Note]
+>Wenn die Einstellungen zum Einschränken des Hinzufügens von Gästen zu Microsoft 365-Gruppen verwendet werden, fügen Administrator*innen weiterhin Gastbenutzer*innen in Microsoft 365 hinzu. Die Einstellung verhindert, dass Benutzer*innen ohne Administratorrechte in Microsoft 365 Gastbenutzer*innen hinzufügen.
 
 ## <a name="install-powershell-cmdlets"></a>Installieren von PowerShell-Cmdlets
 

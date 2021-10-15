@@ -8,12 +8,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 021616e8d45eb4eb93f679915309a702ab1dca5a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7a3039b800c47f84ac41bdbfcf7abf7506bde6cd
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354921"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208037"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Verwenden von Azure Data Factory zum Migrieren von Daten von Amazon S3 zu Azure Storage 
 
@@ -34,7 +34,7 @@ ADF verfügt über eine serverlose Architektur, die Parallelität auf unterschie
 
 Kunden haben erfolgreiche Migrationen von Daten im Petabyte-Bereich durchgeführt, bei denen mit einem dauerhaften Durchsatz von mindestens 2 GBit/s Hunderte Millionen Dateien aus Amazon S3 in Azure Blob Storage verschoben wurden. 
 
-![Abbildung: Verschiedene Dateipartitionen in einem AWS S3-Speicher mit verknüpften Kopieraktionen an Azure Blob Storage ADLS Gen2.](media/data-migration-guidance-s3-to-azure-storage/performance.png)
+:::image type="content" source="media/data-migration-guidance-s3-to-azure-storage/performance.png" alt-text="Abbildung: Verschiedene Dateipartitionen in einem AWS S3-Speicher mit verknüpften Kopieraktionen an Azure Blob Storage ADLS Gen2.":::
 
 In der obigen Abbildung ist dargestellt, wie Sie für unterschiedliche Parallelitätsebenen hohe Geschwindigkeiten bei der Datenverschiebung erzielen:
  
@@ -58,7 +58,7 @@ Falls Sie nicht möchten, dass Daten über das öffentliche Internet übertragen
 
 Migrieren von Daten über das öffentliche Internet:
 
-![Abbildung: Migration über das Internet mithilfe von HTTP von einem AWS S3-Speicher über Azure Integration Runtime in ADF Azure zu Azure Storage Die Runtime verfügt über einen Steuerungskanal mit Data Factory.](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png)
+:::image type="content" source="media/data-migration-guidance-s3-to-azure-storage/solution-architecture-public-network.png" alt-text="Diagramm: Migration über das Internet mithilfe von HTTP von einem AWS S3-Speicher über Azure Integration Runtime in ADF Azure zu Azure Storage. Die Runtime weist einen Steuerungskanal mit Data Factory auf.":::
 
 - Bei dieser Architektur werden Daten auf sichere Weise per HTTPS über das öffentliche Internet übertragen. 
 - Sowohl die Amazon S3-Quelle als auch das Azure Blob Storage- bzw. Azure Data Lake Storage Gen2-Ziel sind so konfiguriert, dass Datenverkehr von allen IP-Netzwerkadressen zulässig ist.  Unten unter der zweiten Architektur ist beschrieben, wie Sie den Netzwerkzugriff auf einen bestimmten IP-Bereich beschränken können. 
@@ -67,7 +67,7 @@ Migrieren von Daten über das öffentliche Internet:
 
 Migrieren von Daten über einen privaten Link: 
 
-![Abbildung: Migration über eine private Peeringverbindung von einem AWS S3-Speicher und über eine selbstgehostete Integration Runtime auf virtuellen Azure-Computern zu V Net-Dienstendpunkten zu Azure Storage. Die Runtime verfügt über einen Steuerungskanal mit Data Factory.](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
+:::image type="content" source="media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png" alt-text="Diagramm: Migration über eine private Peeringverbindung von einem AWS S3-Speicher über eine selbstgehostete Integration Runtime auf Azure-VMs zu VNet-Dienstendpunkten zu Azure Storage. Die Runtime weist einen Steuerungskanal mit Data Factory auf.":::
 
 - Bei dieser Architektur wird die Datenmigration über einen privaten Peeringlink zwischen AWS Direct Connect und Azure ExpressRoute durchgeführt, damit Daten niemals über das öffentliche Internet übertragen werden.  Hierfür ist die Verwendung von AWS VPC und eines virtuellen Azure-Netzwerks erforderlich. 
 - Sie müssen die selbstgehostete Integration Runtime von ADF auf einer Windows-VM in Ihrem virtuellen Azure-Netzwerk installieren, um diese Architektur zu erhalten.  Sie können Ihre VMs mit selbstgehosteter IR manuell hochskalieren oder auf mehrere VMs aufskalieren (bis zu vier Knoten), um IOPS und Bandbreite für Netzwerk und Speicher vollständig zu nutzen. 
@@ -81,7 +81,7 @@ Migrieren von Daten über einen privaten Link:
 - Zum Durchführen der Authentifizierung für das Amazon S3-Konto müssen Sie den [Zugriffsschlüssel für das IAM-Konto](./connector-amazon-simple-storage-service.md#linked-service-properties) verwenden. 
 - Für die Verbindungsherstellung mit Azure Blob Storage werden mehrere Authentifizierungstypen unterstützt.  Die Verwendung von [verwalteten Identitäten für Azure-Ressourcen](./connector-azure-blob-storage.md#managed-identity) wird dringend empfohlen: Sie basieren auf einer automatisch verwalteten ADF-Identität in Azure AD und ermöglichen Ihnen die Konfiguration von Pipelines, ohne dass in der Definition des verknüpften Diensts Anmeldeinformationen angegeben werden müssen.  Alternativ können Sie die Authentifizierung für Azure Blob Storage auch per [Dienstprinzipal](./connector-azure-blob-storage.md#service-principal-authentication), [Shared Access Signature](./connector-azure-blob-storage.md#shared-access-signature-authentication) oder [Speicherkontoschlüssel](./connector-azure-blob-storage.md#account-key-authentication) durchführen. 
 - Auch für die Verbindungsherstellung mit Azure Data Lake Storage Gen2 werden mehrere Authentifizierungstypen unterstützt.  Die Verwendung von [verwalteten Identitäten für Azure-Ressourcen](./connector-azure-data-lake-storage.md#managed-identity) wird dringend empfohlen. Es können aber auch ein [Dienstprinzipal](./connector-azure-data-lake-storage.md#service-principal-authentication) oder ein [Speicherkontoschlüssel](./connector-azure-data-lake-storage.md#account-key-authentication) verwendet werden. 
-- Wenn Sie keine verwalteten Identitäten für Azure-Ressourcen nutzen, ist das [Speichern der Anmeldeinformationen in Azure Key Vault](./store-credentials-in-key-vault.md) dringend zu empfehlen, um das zentrale Verwalten und Rotieren von Schlüsseln ohne Änderung der verknüpften ADF-Dienste zu vereinfachen.  Dies ist auch eine der [bewährten Methoden für CI/CD](./continuous-integration-deployment.md#best-practices-for-cicd). 
+- Wenn Sie keine verwalteten Identitäten für Azure-Ressourcen nutzen, ist das [Speichern der Anmeldeinformationen in Azure Key Vault](./store-credentials-in-key-vault.md) dringend zu empfehlen, um das zentrale Verwalten und Rotieren von Schlüsseln ohne Änderung der verknüpften ADF-Dienste zu vereinfachen.  Dies ist auch eine der [bewährten Methoden für CI/CD](./continuous-integration-delivery.md#best-practices-for-cicd). 
 
 ### <a name="initial-snapshot-data-migration"></a>Migration der Daten der Anfangsmomentaufnahme 
 
@@ -119,7 +119,7 @@ Wenn für die ADF-Kopieraktivität Drosselungsfehler gemeldet werden, sollten Si
 
 Sehen Sie sich die folgende Pipeline für die Migration von Daten aus S3 zu Azure Blob Storage an: 
 
-![Abbildung: Pipeline für die Migration von Daten, bei der für jede Partition ein manueller Auslöser an Lookup übertragen, das an ForEach übertragen, das an eine Subpipeline übertragen wird, eine Kopieraktivität enthält, die an eine gespeicherte Prozedur übertragen wird. Außerhalb der Pipeline werden gespeicherte Prozeduren an Azure SQL DB übertragen, das an Lookup übertragen wird, und AWS S3 wird an die Kopieraktivität übertragen, die an Blob Storage übertragen wird.](media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png)
+:::image type="content" source="media/data-migration-guidance-s3-to-azure-storage/pricing-pipeline.png" alt-text="Diagramm: Pipeline zum Migrieren von Daten, die nach manuellem Auslösen an Lookup, an ForEach und für jede Partition mit Copy an eine Unterpipeline und schließlich an die gespeicherte Prozedur übertragen werden. Außerhalb der Pipeline wird die gespeicherte Prozedur an Azure SQL-Datenbank übertragen, die wiederum an Lookup übertragen wird, AWS S3 wird an Copy und Copy an Blob Storage übertragen.":::
 
 Wir nehmen Folgendes an: 
 
@@ -132,7 +132,7 @@ Wir nehmen Folgendes an:
 
 Hier ist der geschätzte Preis basierend auf den obigen Annahmen angegeben: 
 
-![Screenshot: Tabelle mit geschätztem Preis](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
+:::image type="content" source="media/data-migration-guidance-s3-to-azure-storage/pricing-table.png" alt-text="Screenshot: Tabelle mit geschätztem Preis":::
 
 ### <a name="additional-references"></a>Zusätzliche Verweise 
 - [Amazon Simple Storage Service-Connector](./connector-amazon-simple-storage-service.md)

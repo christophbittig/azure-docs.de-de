@@ -4,15 +4,15 @@ description: In diesem Tutorial wird beschrieben, wie Sie Daten aus Azure Data L
 author: shsandeep123
 ms.author: sandeepshah
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 05/08/2021
-ms.openlocfilehash: 1c4801814e77efdb681f32ea35d4dfb68618900b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 093375e30fa9f9a3d6a558c5e230a8bc81a701ad
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346502"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215774"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen1"></a>Registrieren und Überprüfen von Azure Data Lake Storage Gen1
 
@@ -62,16 +62,16 @@ Sie können die Katalog-MSI auf der Ebene des Abonnements, der Ressourcengruppe 
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) das Abonnement, die Ressourcengruppe oder die Ressource (z. B. ein Azure Data Lake Storage Gen1-Speicherkonto), das den Katalog überprüfen soll.
 
-2. Klicken Sie auf **Übersicht**, und wählen Sie dann **Daten-Explorer** aus.
+2. Wählen Sie **Übersicht** und dann **Daten-Explorer** aus.
 
    :::image type="content" source="./media/register-scan-adls-gen1/access-control.png" alt-text="Zugriffssteuerung auswählen":::
 
-3. Klicken Sie auf der oberen Navigationsleiste auf **Zugriff**.
+3. Wählen Sie auf der oberen Navigationsleiste **Zugriff** aus.
 
-   :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="Klicken auf „Zugriff“":::
+   :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="Wählen Sie Zugriff aus.":::
 
-4. Klicken Sie auf **Hinzufügen**. Fügen Sie den **Purview-Katalog** unter „Benutzer oder Gruppen auswählen“ aus. Wählen Sie die Berechtigungen **Lesen** und **Ausführen** aus. Achten Sie darauf, dass Sie in den Hinzufügeoptionen **Diesen Ordner und alle untergeordneten Ordner** sowie **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** auswählen, wie im folgenden Screenshot zu sehen. Klicken Sie auf **OK**.
-   :::image type="content" source="./media/register-scan-adls-gen1/gen1-managed-service-identity-authentication.png" alt-text="MSI-Authentifizierungsdetails":::
+4. Wählen Sie **Hinzufügen**. Fügen Sie den **Purview-Katalog** unter „Benutzer oder Gruppen auswählen“ aus. Wählen Sie die Berechtigungen **Lesen** und **Ausführen** aus. Achten Sie darauf, dass Sie in den Hinzufügeoptionen **Diesen Ordner und alle untergeordneten Ordner** sowie **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** auswählen, wie im folgenden Screenshot zu sehen. Wählen Sie **OK**
+   :::image type="content" source="./media/register-scan-adls-gen1/gen1-managed-service-identity-authentication.png" alt-text="MSI-Authentifizierungsdetails"::: aus.
    
 > [!Tip]
 > Ein **Zugriffsberechtigungseintrag** ist ein Berechtigungseintrag für *aktuelle* Dateien und Ordner.
@@ -118,16 +118,16 @@ Wenn Sie einen Dienstprinzipal verwenden möchten, müssen Sie zunächst anhand 
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) das Abonnement, die Ressourcengruppe oder die Ressource (z. B. ein Azure Data Lake Storage Gen1-Speicherkonto), das den Katalog überprüfen soll.
 
-2. Klicken Sie auf **Übersicht**, und wählen Sie dann **Daten-Explorer** aus.
+2. Wählen Sie **Übersicht** und dann **Daten-Explorer** aus.
 
    :::image type="content" source="./media/register-scan-adls-gen1/access-control.png" alt-text="Zugriffssteuerung auswählen":::
 
-3. Klicken Sie auf der oberen Navigationsleiste auf **Zugriff**.
+3. Wählen Sie auf der oberen Navigationsleiste **Zugriff** aus.
 
-   :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="Klicken auf „Zugriff“":::
+   :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="Wählen Sie Zugriff aus.":::
 
-4. Klicken Sie auf **Hinzufügen**. Fügen Sie unter „Benutzer oder Gruppe auswählen“ die **Dienstprinzipalanwendung** hinzu. Wählen Sie die Berechtigungen **Lesen** und **Ausführen** aus. Achten Sie darauf, dass Sie in den Hinzufügeoptionen **Diesen Ordner und alle untergeordneten Ordner** sowie **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** auswählen, wie im folgenden Screenshot zu sehen. Klicken Sie auf **OK**.
-   :::image type="content" source="./media/register-scan-adls-gen1/gen1-service-principal-permissions.png" alt-text="Details zur Dienstprinzipalauthentifizierung":::
+4. Wählen Sie **Hinzufügen**. Fügen Sie unter „Benutzer oder Gruppe auswählen“ die **Dienstprinzipalanwendung** hinzu. Wählen Sie die Berechtigungen **Lesen** und **Ausführen** aus. Achten Sie darauf, dass Sie in den Hinzufügeoptionen **Diesen Ordner und alle untergeordneten Ordner** sowie **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** auswählen, wie im folgenden Screenshot zu sehen. Wählen Sie **OK**
+   :::image type="content" source="./media/register-scan-adls-gen1/gen1-service-principal-permissions.png" alt-text="Details zur Dienstprinzipalauthentifizierung"::: aus.
 
 > [!Tip]
 > Ein **Zugriffsberechtigungseintrag** ist ein Berechtigungseintrag für *aktuelle* Dateien und Ordner.
@@ -167,7 +167,7 @@ Führen Sie auf dem Bildschirm „Register sources (Azure Data Lake Storage Gen1
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
-1. Wählen Sie im linken Bereich in Purview Studio die Registerkarte **Data Map** aus.
+1. Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
 
 1. Wählen Sie die Azure Data Lake Storage Gen1-Quelle aus, die Sie registriert haben.
 

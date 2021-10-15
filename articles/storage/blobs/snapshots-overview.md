@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 5eaefbe835d7660de8bd0712d55c75149cc588a8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 437211ae50404443dee30e5a9c8141ea09d69244
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591081"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278555"
 ---
 # <a name="blob-snapshots"></a>Blobmomentaufnahmen
 
@@ -71,7 +71,7 @@ Die folgenden Szenarien veranschaulichen, wie Gebühren für ein Block-BLOB und 
 
 Durch das Erstellen einer Momentaufnahme, die eine schreibgeschützte Kopie eines BLOBs darstellt, können auf Ihrem Konto zusätzliche Gebühren für die Datenspeicherung anfallen. Wenn Sie beim Entwurf Ihrer Anwendung berücksichtigen, wie diese Gebühren auflaufen, können Sie die Kosten minimieren.
 
-Für Blobmomentaufnahmen und Blobversionen fallen die gleichen Gebühren an wie für aktive Daten. Die Abrechnung von Momentaufnahmen hängt davon ab, ob Sie die Ebene explizit für das Basisblob oder für eine seiner Momentaufnahmen (oder Versionen) festgelegt haben. Weitere Informationen zu Blobebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md).
+Für Blobmomentaufnahmen und Blobversionen fallen die gleichen Gebühren an wie für aktive Daten. Die Abrechnung von Momentaufnahmen hängt davon ab, ob Sie die Ebene explizit für das Basisblob oder für eine seiner Momentaufnahmen (oder Versionen) festgelegt haben. Weitere Informationen zu Blobebenen finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md).
 
 Wenn Sie die Ebene eines Blobs oder einer Momentaufnahme nicht geändert haben, werden Ihnen eindeutige Datenblöcke in diesem Blob, in den zugehörigen Momentaufnahmen und in allen ggf. vorhandenen Versionen in Rechnung gestellt. Weitere Informationen finden Sie unter [Abrechnung bei nicht explizit festgelegter Blobebene](#billing-when-the-blob-tier-has-not-been-explicitly-set).
 

@@ -3,12 +3,12 @@ title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
 ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: e285ca8c47d73f8b9a23c005be8c8b88d38db879
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 7665d2b3855765c0d3c60cdb9c7181720835a963
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436102"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456972"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -774,6 +774,8 @@ Azure Policy unterstützt die folgenden Auswirkungstypen:
 Ausführliche Informationen zu den einzelnen Auswirkungen, der Reihenfolge der Auswertung, den Eigenschaften und Beispielen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](effects.md).
 
 ### <a name="policy-functions"></a>Richtlinienfunktionen
+
+Funktionen können verwendet werden, um zusätzliche Logik in eine Richtlinienregel einzubauen. Sie werden innerhalb der [Richtlinienregel](#policy-rule) einer Richtliniendefinition und innerhalb von [Parameterwerten aufgelöst, die Richtliniendefinitionen in einer Initiative zugewiesen sind](initiative-definition-structure.md#passing-a-parameter-value-to-a-policy-definition).
 
 Alle [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/templates/template-functions.md) stehen innerhalb einer Richtlinienregel zur Verfügung, mit Ausnahme der folgenden Funktionen und benutzerdefinierten Funktionen:
 

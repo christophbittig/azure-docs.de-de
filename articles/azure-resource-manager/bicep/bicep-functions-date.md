@@ -4,13 +4,13 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei f�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 45e0180a11209b39b4c37f16f9940686c042ee89
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 0eb995db6584dd056fa0b1563aec8c117fddeb66
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794118"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357260"
 ---
 # <a name="date-functions-for-bicep"></a>Datumsfunktionen für Bicep
 
@@ -21,6 +21,8 @@ In diesem Artikel werden die Bicep-Funktionen für die Arbeit mit Datumsangaben 
 `dateTimeAdd(base, duration, [format])`
 
 Hiermit wird einem Basiswert eine Dauer hinzugefügt. ISO 8601-Format wird erwartet.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -85,6 +87,8 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 `utcNow(format)`
 
 Gibt den aktuellen datetime-Wert (UTC) im festgelegten Format zurück. Wenn kein Format angegeben wird, wird das ISO 8601-Format (`yyyyMMddTHHmmssZ`) verwendet. **Diese Funktion kann nur für den Standardwert eines Parameters verwendet werden.**
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 

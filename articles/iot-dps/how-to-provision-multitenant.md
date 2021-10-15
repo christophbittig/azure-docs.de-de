@@ -7,16 +7,16 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0b88923ff6447785a4ef5a7c80e1ff44d1a2b9cb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e1c8734b6adcf478216aa8d5d123e95e369d5b58
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777340"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274722"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Bereitstellen für Mehrinstanzenfähigkeit 
 
-In diesem Artikel wird gezeigt, wie Sie mehrere symmetrische Schlüsselgeräte für eine Gruppe von IoT Hubs mithilfe einer [Zuordnungsrichtlinie](concepts-service.md#allocation-policy) auf sichere Weise bereitstellen. Bei den vom Bereitstellungsdienst definierten Zuordnungsrichtlinien werden verschiedene Zuordnungsszenarien unterstützt. Zwei häufige Szenarien sind:
+In diesem Artikel wird gezeigt, wie Sie mehrere simulierte symmetrische Schlüsselgeräte für eine Gruppe von IoT-Hubs mithilfe einer [Zuordnungsrichtlinie](concepts-service.md#allocation-policy) auf sichere Weise bereitstellen. Bei den vom Bereitstellungsdienst definierten Zuordnungsrichtlinien werden verschiedene Zuordnungsszenarien unterstützt. Zwei häufige Szenarien sind:
 
 * **Geolocation oder Geolatenz**: Wenn ein Gerät von einem Standort an einen anderen verlagert wird, lässt sich die Netzwerklatenz verbessern, indem das Gerät jeweils auf dem IoT Hub bereitgestellt wird, der dem jeweiligen Standort am nächsten liegt. In diesem Szenario wird eine Gruppe mit regionsübergreifenden IoT Hubs für Registrierungen ausgewählt. Für diese Registrierungen wird die Zuordnungsrichtlinie **Niedrigste Latenz** ausgewählt. Diese Richtlinie bewirkt, dass der Device Provisioning Service die Gerätelatenz auswertet und aus der Gruppe mit den IoT Hubs den nächstgelegenen IoT Hub ermittelt. 
 
@@ -298,9 +298,9 @@ In diesem Abschnitt aktualisieren Sie ein Bereitstellungsbeispiel im Azure IoT C
 
 Der Beispielcode simuliert eine Gerätestartsequenz, über die die Bereitstellungsanforderung an die Instanz des Device Provisioning-Diensts gesendet wird. Die Startsequenz bewirkt, dass das Gerät erkannt und dem IoT Hub zugewiesen wird, der bezogen auf die Latenz am nächsten liegt.
 
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning Service, und notieren Sie sich den Wert unter **_ID-Bereich_**.
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihre Device Provisioning Service-Instanz, und notieren Sie sich den Wert unter **_ID-Bereich_**.
 
-    ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
+    ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/copy-id-scope.png) 
 
 1. Öffnen Sie **~/azure-iot-sdk-c/provisioning\_client/samples/prov\_dev\_client\_sample/prov\_dev\_client\_sample.c** auf beiden VMs für die Bearbeitung.
 

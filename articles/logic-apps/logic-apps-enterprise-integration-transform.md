@@ -8,18 +8,18 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.openlocfilehash: 027c1f44d756494432a076ec32f06e627f916b99
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 84d0e0b509505e6d56e39294b3e2819e4b03e024
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128553730"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350012"
 ---
-# <a name="transform-xml-for-workflows-in-azure-logic-apps"></a>Transformieren von XML für Workflows in Azure Logic Apps
+# <a name="transform-xml-in-workflows-with-azure-logic-apps"></a>Transformieren von XML in Workflows mit Azure Logic Apps
 
 In B2B-Szenarios (Business-to-Business) für die Unternehmensintegration müssen Sie möglicherweise XML in ein anderes Format konvertieren. Ihr Logik-App-Workflow kann XML mithilfe der Aktion **XML transformieren** und einer vordefinierten [*Zuordnung*](logic-apps-enterprise-integration-maps.md) transformieren. Angenommen, Sie erhalten von einem Kunden regelmäßig B2B-Aufträge oder -Rechnungen im Datumsformat „JJJJMMTT“ (Jahr/Monat/Tag). In Ihrer Organisation wird jedoch das Datumsformat „MMTTJJJJ“ (Monat/Tag/Jahr) verwendet. Mithilfe einer Zuordnung können Sie das Format „JJJJMMTT“ in das Format „MMTTJJJJ“ transformieren, bevor Auftrags- oder Rechnungsdetails in Ihrer Datenbank für Kundenaktivitäten gespeichert werden.
 
-Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](logic-apps-overview.md). Weitere Informationen zur B2B-Unternehmensintegration finden Sie unter [Workflows für die B2B-Unternehmensintegration mit Azure Logic Apps und dem Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md).
+Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](logic-apps-overview.md). Weitere Informationen zur B2B-Unternehmensintegration finden Sie in [B2B-Unternehmensintegrations-Workflows mit Azure Logic Apps und Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,18 +33,18 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
   * Sie muss sich am selben Standort oder in derselben Azure-Region wie Ihre Logik-App-Ressource befinden, für die Sie die Aktion **XML transformieren** verwenden möchten.
 
-  * Wenn Sie den [Ressourcentyp **Logik-App (Verbrauch)** ](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigen Sie ein Integrationskonto mit den folgenden Elementen:
+  * Wenn Sie den [Ressourcentyp **Logik-App (Verbrauch)**](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigen Sie ein Integrationskonto mit den folgenden Elementen:
 
     * Der [Zuordnung](logic-apps-enterprise-integration-maps.md) zum Transformieren von XML-Inhalten
 
     * Einer [Verbindung mit Ihrer Logik-App-Ressource](logic-apps-enterprise-integration-create-integration-account.md#link-account)
 
-  * Wenn Sie den [Ressourcentyp **Logik-App (Standard)** ](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, müssen Sie keine Zuordnungen in Ihrem Integrationskonto speichern. In diesem Fall können Sie [Ihrer Logik-App-Ressource Zuordnungen direkt im Azure-Portal oder in Visual Studio Code hinzufügen](logic-apps-enterprise-integration-maps.md). Derzeit wird nur XSLT 1.0 unterstützt. Sie können diese Zuordnungen dann in mehreren Workflows innerhalb *derselben Logik-App-Ressource* verwenden.
+  * Wenn Sie den [Ressourcentyp **Logik-App (Standard)**](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, müssen Sie keine Zuordnungen in Ihrem Integrationskonto speichern. In diesem Fall können Sie [Ihrer Logik-App-Ressource Zuordnungen direkt im Azure-Portal oder in Visual Studio Code hinzufügen](logic-apps-enterprise-integration-maps.md). Derzeit wird nur XSLT 1.0 unterstützt. Sie können diese Zuordnungen dann in mehreren Workflows innerhalb *derselben Logik-App-Ressource* verwenden.
 
-    Sie benötigen dieses Konto jedoch, um Artefakte wie Partner, Vereinbarungen und Zertifikate zusammen mit den [AS2](logic-apps-enterprise-integration-as2.md)-, [X12](logic-apps-enterprise-integration-x12.md)- und [EDIFACT](logic-apps-enterprise-integration-edifact.md)-Vorgängen zu speichern. Sie müssen Ihre Logik-App-Ressource jedoch nicht mit Ihrem Integrationskonto verknüpfen. Daher ist die Verknüpfungsfunktion nicht verfügbar. Ihr Integrationskonto muss darüber hinaus weitere Anforderungen erfüllen. So muss es z. B. dasselbe Azure-Abonnement und denselben Standort wie Ihre Logik-App-Ressource verwenden.
+    Sie benötigen weiterhin ein Integrationskonto, um andere Artefakte wie Partner, Vereinbarungen und Zertifikate zu speichern und um die [AS2](logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md) und [EDIFACT](logic-apps-enterprise-integration-edifact.md)-Vorgänge zu verwenden. Allerdings brauchen Sie Ihre Logic-App-Ressource nicht mit Ihrem Integrationskonto verknüpfen, so dass die Verknüpfungsfunktionalität nicht besteht. Ihr Integrationskonto muss noch andere Anforderungen erfüllen, z.B. dass es dasselbe Azure-Abonnement verwendet und sich am selben Ort befindet wie Ihre Logic-App-Ressource.
 
     > [!NOTE]
-    > Derzeit unterstützt nur der Ressourcentyp **Logik-App (Verbrauch)** [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge. Der Ressourcentyp **Logik-App (Standard)** umfasst keine [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge.
+    > Derzeit unterstützt nur der **Logic App (Verbrauch)** Ressourcentyp [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge. Der Ressourcentyp **Logik-App (Standard)** umfasst keine [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge.
 
 ## <a name="add-transform-xml-action"></a>Hinzufügen der Aktion „XML transformieren“
 

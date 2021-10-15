@@ -10,12 +10,12 @@ ms.date: 05/10/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1feb78c381a189ae2db1d2aa658f8d0782769f99
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2fa724f139881f7647468684f5ad97d80a80baf2
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664787"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274423"
 ---
 # <a name="blob-versioning"></a>Blobversionsverwaltung
 
@@ -109,7 +109,7 @@ Wenn neue Daten in das Blob geschrieben werden, wird eine neue aktuelle Version 
 
 ### <a name="access-tiers"></a>Zugriffsebenen
 
-Sie können jede beliebige Version eines Blockblobs (einschließlich der aktuellen Version) in eine andere Blobzugriffsebene verschieben, indem Sie den Vorgang [Set Blob Tier](/rest/api/storageservices/set-blob-tier) aufrufen. Sie können niedrigere Kapazitätspreise nutzen, indem Sie ältere Versionen eines Blobs in die kalte Ebene oder die Archivebene verschieben. Weitere Informationen finden Sie unter [Azure Blob Storage: Archivzugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md).
+Sie können jede beliebige Version eines Blockblobs (einschließlich der aktuellen Version) in eine andere Blobzugriffsebene verschieben, indem Sie den Vorgang [Set Blob Tier](/rest/api/storageservices/set-blob-tier) aufrufen. Sie können niedrigere Kapazitätspreise nutzen, indem Sie ältere Versionen eines Blobs in die kalte Ebene oder die Archivebene verschieben. Weitere Informationen finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md).
 
 Verwenden Sie Bloblebenszyklusverwaltung, um den Prozess des Verschiebens von Blockblobs in die entsprechende Ebene zu automatisieren. Weitere Informationen zur Lebenszyklusverwaltung finden Sie unter [Verwalten des Lebenszyklus von Azure Blob Storage](./lifecycle-management-overview.md).
 
@@ -209,7 +209,7 @@ In der folgenden Tabelle werden die Berechtigungen aufgeführt, die für eine SA
 
 Wenn Sie Blobversionsverwaltung aktivieren, kann dies zu zusätzlichen Kosten für Datenspeicher für Ihr Konto führen. Wenn Sie beim Entwurf Ihrer Anwendung berücksichtigen, wie diese Gebühren auflaufen, können Sie die Kosten minimieren.
 
-Blobversionen werden wie Blobmomentaufnahmen mit den gleichen Gebühren abgerechnet wie aktive Daten. Die Abrechnung von Versionen hängt davon ab, ob Sie die Dienstebene explizit für das Basisblob oder für eine seiner Versionen (oder Momentaufnahmen) festgelegt haben. Weitere Informationen zu Blobebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md).
+Blobversionen werden wie Blobmomentaufnahmen mit den gleichen Gebühren abgerechnet wie aktive Daten. Die Abrechnung von Versionen hängt davon ab, ob Sie die Dienstebene explizit für das Basisblob oder für eine seiner Versionen (oder Momentaufnahmen) festgelegt haben. Weitere Informationen zu Blobebenen finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md).
 
 Wenn Sie die Dienstebene eines Blobs oder einer Version nicht geändert haben, werden Ihnen die eindeutigen Datenblöcke in diesem Blob, seinen Versionen und allen ggf. vorhandenen Momentaufnahmen in Rechnung gestellt. Weitere Informationen finden Sie unter [Abrechnung bei nicht explizit festgelegter Blobebene](#billing-when-the-blob-tier-has-not-been-explicitly-set).
 

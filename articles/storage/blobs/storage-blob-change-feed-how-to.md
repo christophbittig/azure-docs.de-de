@@ -1,20 +1,21 @@
 ---
-title: Verarbeiten des Änderungsfeeds in Azure Blob Storage | Microsoft-Dokumentation
+title: Verarbeiten des Änderungsfeeds in Azure Blob Storage
+titleSuffix: Azure Storage
 description: Erfahren Sie, wie Änderungsfeedprotokolle in einer .NET-Clientanwendung verarbeitet werden.
 author: tamram
 ms.author: tamram
-ms.date: 09/08/2020
+ms.date: 10/01/2021
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d43b91fcebff017d6d18ee736cfddc858650fc7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cbd15bdc337bdb4a7221f634e6f9a66d4d503fe6
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620196"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400798"
 ---
 # <a name="process-change-feed-in-azure-blob-storage"></a>Verarbeiten des Änderungsfeeds in Azure Blob Storage
 
@@ -31,7 +32,6 @@ Weitere Informationen zum Änderungsfeed finden Sie unter [Änderungsfeed in Azu
 dotnet add package Azure.Storage.Blobs --version 12.5.1
 dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
-
 
 ## <a name="read-records"></a>Lesen von Datensätzen
 
@@ -218,4 +218,5 @@ Die von Ihnen angegebene Startzeit wird auf die volle Stunde abgerundet, und die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über Änderungsfeedprotokolle. Sehen Sie sich den Artikel [Änderungsfeed in Azure Blob Storage](storage-blob-change-feed.md) an.
+- [Übersicht zum Datenschutz](data-protection-overview.md)
+- [Änderungsfeed in Azure Blob Storage](storage-blob-change-feed.md)

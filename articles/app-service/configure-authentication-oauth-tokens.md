@@ -3,12 +3,12 @@ title: OAuth-Token in AuthN/AuthZ
 description: Erfahren Sie, wie Sie Token abrufen und aktualisieren sowie Sitzungen erweitern, wenn Sie die integrierte Authentifizierung und Autorisierung in App Service verwenden.
 ms.topic: article
 ms.date: 03/29/2021
-ms.openlocfilehash: 820ab9fe75bf960c5991187cfef25ace32b6995c
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: f158f9f76820635a65737b75f3c016ff67a3a92a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114371181"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352080"
 ---
 # <a name="work-with-oauth-tokens-in-azure-app-service-authentication"></a>Arbeiten mit OAuth-Token bei der Azure App Service-Authentifizierung
 
@@ -41,7 +41,7 @@ Wenn das Zugriffstoken Ihres Anbieters (nicht das [Sitzungstoken](#extend-sessio
 - **Google**: Fügen Sie einen Abfragezeichenfolgen-Parameter vom Typ `access_type=offline` an Ihren `/.auth/login/google`-API-Aufruf an. Bei Verwendung des Mobile Apps SDK können Sie den Parameter einer der `LogicAsync`-Überladungen hinzufügen (siehe [Google-Aktualisierungstoken](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: Stellt keine Aktualisierungstoken bereit. Langlebige Token laufen nach 60 ab (siehe [Verlängern von Zugriffsschlüsseln für Seiten](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
 - **Twitter**: Zugriffstoken laufen nicht ab (siehe [Häufig gestellte Fragen zu OAuth für Twitter](https://developer.twitter.com/en/docs/authentication/faq)).
-- **Azure Active Directory:** Führen Sie in [https://resources.azure.com](https://resources.azure.com) folgende Schritte aus:
+- **Microsoft**: Führen Sie in [https://resources.azure.com](https://resources.azure.com) folgende Schritte aus:
     1. Wählen Sie am oberen Seitenrand die Option **Lesen/Schreiben** aus.
     2. Navigieren Sie im linken Browser zu **subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name>_** > **config** > **authsettingsV2**.
     3. Klicken Sie auf **Bearbeiten**.
@@ -51,16 +51,16 @@ Wenn das Zugriffstoken Ihres Anbieters (nicht das [Sitzungstoken](#extend-sessio
         "identityProviders": {
           "azureActiveDirectory": {
             "login": {
-              "loginParameters": ["scope=openid offline_access"]
+              "loginParameters": ["scope=openid profile email offline_access"]
             }
           }
         }
         ```
 
     5. Klicken Sie auf **Put**.
-
-> [!NOTE]
-> Wenn Sie Ihre Anwendung über das Blatt „Authentifizierung (klassisch)“ konfiguriert haben, navigieren Sie in [https://resources.azure.com](https://resources.azure.com) nicht zum Abschnitt **authSettingsV2**, sondern zu **authsettings**. Bearbeiten Sie dann die Einstellung ```"additionalLoginParams": ["scope=openid offline_access"]```.
+    
+    > [!NOTE]
+    > Der Bereich, der Ihnen ein Aktualisierungstoken bietet, ist [offline_access](../active-directory/develop/v2-permissions-and-consent.md#offline_access). Die Vorgehensweise dazu finden Sie in [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](tutorial-auth-aad.md). Die anderen Bereiche werden standardmäßig von App Service angefordert. Informationen zu diesen Standardbereich finden Sie unter [OpenID Connect-Bereiche](../active-directory/develop/v2-permissions-and-consent.md#openid-connect-scopes).
 
 Sobald Ihr Anbieter konfiguriert ist, können Sie im Tokenspeicher [das Aktualisierungstoken und die Ablaufzeit für das Zugriffstoken suchen](#retrieve-tokens-in-app-code). 
 

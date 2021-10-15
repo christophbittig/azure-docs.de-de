@@ -1,15 +1,15 @@
 ---
 title: Onboarding eines Kunden in Azure Lighthouse durchführen
 description: Hier erfahren Sie, wie Sie das Onboarding eines Kunden in Azure Lighthouse durchführen, sodass Benutzer in Ihrem Mandanten auf dessen Ressourcen zugreifen und sie verwalten können.
-ms.date: 08/26/2021
+ms.date: 09/30/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1d060a7e1a6f9b0ae17e90b1094ec0a5da744e5f
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 3dbd3eb285a0135ca1b86294c5d3a41ef88a8472
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469678"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353296"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding eines Kunden in Azure Lighthouse durchführen
 
@@ -338,6 +338,7 @@ Wenn Sie das Onboarding Ihres Kunden nicht erfolgreich durchführen können oder
 - Der **Microsoft.ManagedServices**-Ressourcenanbieter muss für das delegierte Abonnement registriert sein. Dies sollte während der Bereitstellung automatisch erfolgen, aber wenn dies nicht der Fall ist, können Sie es [manuell registrieren](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 - Die Autorisierungen dürfen keine Benutzer mit der integrierten Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) und keine integrierten Rollen mit [DataActions](../../role-based-access-control/role-definitions.md#dataactions) enthalten.
 - Gruppen müssen so erstellt werden, dass der [**Gruppentyp**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) auf **Sicherheit** und nicht **Microsoft 365** festgelegt ist.
+- Wenn einer Gruppe Zugriff gewährt wurde, überprüfen Sie, ob die Benutzer*innen Mitglieder dieser Gruppe sind. Falls nicht, können Sie [sie der Gruppe mit Azure AD hinzufügen](../../active-directory/fundamentals/active-directory-groups-members-azure-portal.md), ohne eine weitere Bereitstellung ausführen zu müssen. Beachten Sie, dass [Gruppenbesitzer*innen](../../active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners.md) nicht unbedingt Mitglieder der von ihnen verwalteten Gruppen sind und möglicherweise hinzugefügt werden müssen, um Zugriff zu erhalten.
 - Es kann zu einer zusätzlichen Verzögerung kommen, bevor der Zugriff für [geschachtelte Gruppen](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md) aktiviert wird.
 - Die [integrierten Azure-Rollen](../../role-based-access-control/built-in-roles.md), die Sie in Autorisierungen einschließen, dürfen keine veralteten Rollen enthalten. Wenn eine integrierte Azure-Rolle veraltet ist, verlieren alle Benutzer, die mit dieser Rolle integriert wurden, den Zugriff, und Sie können keine weiteren Delegierungen mehr integrieren. Um dies zu korrigieren, aktualisieren Sie Ihre Vorlage so, dass nur unterstützte integrierte Rollen verwendet werden, und führen Sie dann eine neue Bereitstellung aus.
 

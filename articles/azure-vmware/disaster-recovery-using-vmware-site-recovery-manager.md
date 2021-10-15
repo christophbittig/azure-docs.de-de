@@ -2,13 +2,13 @@
 title: Bereitstellen der Notfallwiederherstellung mit VMware Site Recovery Manager
 description: Stellen Sie die Notfallwiederherstellung mit VMware Site Recovery Manager (SRM) in Ihrer privaten Azure VMware Solution Cloud bereit.
 ms.topic: how-to
-ms.date: 08/18/2021
-ms.openlocfilehash: d9a224f0aba33420359d50441fe44e6602df7fb0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/04/2021
+ms.openlocfilehash: 2cefe85f71c770ce29a14fb4aad7a91efd91651c
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128668921"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129430096"
 ---
 # <a name="deploy-disaster-recovery-with-vmware-site-recovery-manager"></a>Bereitstellen der Notfallwiederherstellung mit VMware Site Recovery Manager
 
@@ -59,6 +59,8 @@ Das Workflowdiagramm zeigt den Workflow von der primären Azure VMware Solution 
 :::image type="content" source="media/vmware-srm-vsphere-replication/site-recovery-manager-workflow.png" alt-text="Diagramm des Bereitstellungsworkflows für VMware Site Recovery Manager auf Azure VMware Solution." border="false":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+Stellen Sie sicher, dass Sie dem Remotebenutzer explizit die Rollen VRM-Administrator und SRM-Administrator im Remote-vCenter bereitgestellt haben.
 
 ### <a name="scenario-on-premises-to-azure-vmware-solution"></a>Szenario: Datenverkehr von lokalen Workloads zu Azure VMware Solution 
 

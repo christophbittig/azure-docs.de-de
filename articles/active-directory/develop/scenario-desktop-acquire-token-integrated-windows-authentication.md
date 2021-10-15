@@ -1,7 +1,7 @@
 ---
-title: Abrufen eines Tokens zum Aufrufen einer Web-API mithilfe der integrierten Windows-Authentifizierung (Desktop-App) | Azure
+title: Erwerben eines Tokens zum Aufrufen einer Web-API mit integrierter Windows-Authentifizierung (Desktop-App) | Azure
 titleSuffix: Microsoft identity platform
-description: Hier erfahren Sie, wie Sie mithilfe der integrierten Windows-Authentifizierung eine Desktop-App erstellen, die Web-APIs aufruft, um ein Token für die App abzurufen.
+description: Erfahren Sie, wie Sie eine Desktop-Anwendung erstellen, die Web-APIs aufruft, um ein Token für die Anwendung mit integrierter Windows-Authentifizierung zu erwerben
 services: active-directory
 author: maliksahil
 manager: CelesteDG
@@ -12,20 +12,20 @@ ms.workload: identity
 ms.date: 08/25/2021
 ms.author: sahmalik
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 182bed366dd59b99232608042bbe96aefaa6a8fa
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 67b2c1ac6b9a73444639bb174eacfbf5d685ce92
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124838189"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234830"
 ---
-# <a name="desktop-app-that-calls-web-apis-acquire-a-token-using-integrated-windows-authentication"></a>Aufrufen von Web-APIs mit einer Desktop-App: Abrufen eines Tokens mithilfe der integrierten Windows-Authentifizierung
+# <a name="desktop-app-that-calls-web-apis-acquire-a-token-using-integrated-windows-authentication"></a>Desktop-Anwendung, die Web-APIs aufruft: Erwerben Sie ein Token mit integrierter Windows-Authentifizierung
 
-Wenn Sie einen Domänenbenutzer in einer Domäne oder einen in Azure AD eingebundenen Computer anmelden möchten, müssen Sie die integrierte Windows-Authentifizierung verwenden.
+Verwenden Sie die integrierte Windows-Authentifizierung (IWA), um einen Domänenbenutzer auf einer Domäne oder einem mit Azure AD verbundenen Computer anzumelden.
 
 ## <a name="constraints"></a>Einschränkungen
 
-- Die integrierte Windows-Authentifizierung kann nur für Benutzer des Typs *Federated+* verwendet werden, d. h. für Benutzer, die in Azure Active Directory erstellt und von Azure AD unterstützt werden. Direkt in Azure AD erstellte Benutzer ohne Azure Active Directory-Unterstützung (d. h. *verwaltete* Benutzer) können diesen Authentifizierungsflow nicht verwenden. Diese Einschränkung wirkt sich nicht auf den Flow mit Benutzername und Kennwort aus.
+- Die integrierte Windows-Authentifizierung ist nur für *federated+* Benutzer verfügbar, d. h. für Benutzer, die in Active Directory erstellt wurden und von Azure AD unterstützt werden. Direkt in Azure AD erstellte Benutzer ohne Azure Active Directory-Unterstützung (d. h. *verwaltete* Benutzer) können diesen Authentifizierungsflow nicht verwenden. Diese Einschränkung wirkt sich nicht auf den Flow mit Benutzername und Kennwort aus.
 - Die [mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)](../authentication/concept-mfa-howitworks.md) wird von der IWA nicht umgangen. Wenn MFA konfiguriert ist, kann IWA fehlschlagen, wenn eine MFA-Abfrage erforderlich ist, da bei MFA eine Benutzerinteraktion benötigt wird.
 
     IWA ist nicht interaktiv, die mehrstufige Authentifizierung erfordert jedoch eine Benutzerinteraktion. Wann der Identitätsanbieter eine mehrstufige Authentifizierung anfordert, wird nicht von Ihnen gesteuert, sondern vom Mandantenadministrator. Nach unserer Erfahrung ist die mehrstufige Authentifizierung erforderlich, wenn Sie sich aus einem anderen Land/einer anderen Region anmelden, nicht über ein VPN mit einem Unternehmensnetzwerk verbunden sind und gelegentlich sogar dann, wenn eine VPN-Verbindung besteht. Erwarten Sie keinen deterministischen Satz von Regeln. Azure AD greift auf KI zurück, um kontinuierlich zu lernen, wann MFA erforderlich ist. Greifen Sie beim Fehlschlagen von IWA auf eine Eingabeaufforderung für Benutzer wie die interaktive Authentifizierung oder den Gerätecodeflow zurück.
@@ -35,7 +35,7 @@ Wenn Sie einen Domänenbenutzer in einer Domäne oder einen in Azure AD eingebun
   - Sie muss für ein Geschäfts-, Schul- oder Unikonto bestimmt sein: `https://login.microsoftonline.com/organizations/`.
   - Persönliche Microsoft-Konten werden nicht unterstützt. Sie können keine Mandanten vom Typ „/common“ oder „/consumers“ verwenden.
 
-- Da die integrierte Windows-Authentifizierung einen automatischen Flow darstellt:
+- Denn die integrierte Windows-Authentifizierung ist ein stiller Fluss:
   - Der Benutzer muss vorher in die Nutzung Ihrer Anwendung eingewilligt haben.
   - Oder der Mandantenadministrator muss zuvor für alle Benutzer im Mandanten zugestimmt haben, die Anwendung zu nutzen.
   - Anders gesagt:

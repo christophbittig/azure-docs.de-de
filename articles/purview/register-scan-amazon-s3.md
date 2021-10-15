@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 738ee7b01831574af32c44dd00c8b1d9b56513c3
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: b57e8f4725e1f6d97cd86406f95c26fbbf7b47e7
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210170"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358599"
 ---
 # <a name="amazon-s3-multi-cloud-scanning-connector-for-azure-purview"></a>Amazon S3 Multi-Cloud Scanning Connector für Azure Purview
 
@@ -94,13 +94,13 @@ In diesem Verfahren wird beschrieben, wie Sie die Werte für Ihre Azure-Konto-ID
 
 **So suchen Sie Ihre Microsoft-Konto-ID und externe ID:**
 
-1. Navigieren Sie in Purview zum **Verwaltungscenter** > **Sicherheit und Zugriff** > **Anmeldeinformationen**.
+1. Gehen Sie in Purview zum **Verwaltungszentrum** > **Sicherheit und greifen Sie auf** > **Zugangsdaten** zu.
 
 1. Wählen Sie **Neu** aus, um neue Anmeldeinformationen zu erstellen.
 
-    Kopieren Sie im Bereich **Neue Anmeldeinformationen**, der rechts angezeigt wird, die Werte für **Microsoft-Konto-ID** und **Externe ID** in eine separate Datei, oder halten Sie sie bereit, um Sie in das entsprechende Feld in AWS einzugeben.
-
-    Beispiel:
+    Wählen Sie im Fenster **Neue Berechtigung**, das rechts erscheint, im Dropdown-Menü **Authentifizierungsmethode** die Option **Rolle ARN**. 
+    
+    Kopieren Sie dann die angezeigten Werte **Microsoft-Konto-ID** und **Externe ID** in eine separate Datei, oder halten Sie diese bereit, um sie in das entsprechende Feld in AWS einzufügen. Beispiel:
 
     [ ![Suche nach den Werten der Microsoft-Konto-ID und der externen ID](./media/register-scan-amazon-s3/locate-account-id-external-id.png) ](./media/register-scan-amazon-s3/locate-account-id-external-id.png#lightbox)
 
@@ -163,23 +163,21 @@ In diesem Verfahren wird beschrieben, wie Sie neue Purview-Anmeldeinformationen 
 > Sie können im Verlauf des Prozesses auch neue Anmeldeinformationen erstellen, während Sie [Ihre Überprüfung konfigurieren](#create-a-scan-for-one-or-more-amazon-s3-buckets). Wählen Sie in diesem Fall im Feld **Anmeldeinformationen** die Option **Neu** aus.
 >
 
-1. Navigieren Sie in Purview zum **Verwaltungscenter**, und wählen Sie unter **Sicherheit und Zugriff** die Option **Anmeldeinformationen** aus.
+1. Gehen Sie in Purview zum **Verwaltungszentrum**, und wählen Sie unter **Sicherheit und Zugriff** die Option **Zugangsdaten**.
 
 1. Wählen Sie **Neu** aus, und verwenden Sie im rechts angezeigten Bereich **Neue Anmeldeinformationen** die folgenden Felder, um Ihre Purview-Anmeldeinformationen zu erstellen:
 
-    |Feld |Beschreibung  |
+    |Feld |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen für diese Anmeldeinformationen ein.        |
     |**Beschreibung**     |Geben Sie eine optionale Beschreibung für diese Anmeldeinformationen ein, z. B. `Used to scan the tutorial S3 buckets` (Zum Überprüfen der Tutorial-S3-Buckets).         |
     |**Authentifizierungsmethode**     |Wählen Sie **Rollen-ARN** aus, da Sie für den Zugriff auf Ihren Bucket einen Rollen-ARN verwenden.         |
-    |**Microsoft-Konto-ID**     |Wählen Sie diesen Wert aus, um ihn in die Zwischenablage zu kopieren. Verwenden Sie diesen Wert als **Microsoft-Konto ID**, wenn [Sie Ihren Rollen-ARN in AWS erstellen](#create-a-new-aws-role-for-purview).           |
-    |**Externe ID**     |Wählen Sie diesen Wert aus, um ihn in die Zwischenablage zu kopieren. Verwenden Sie diesen Wert als **Externe ID**, wenn [Sie Ihren Rollen-ARN in AWS erstellen](#create-a-new-aws-role-for-purview).        |
     |**Rollen-ARN**     | Nachdem Sie [Ihre Amazon IAM-Rolle erstellt haben](#create-a-new-aws-role-for-purview), navigieren Sie im AWS IAM-Bereich zu Ihrer Rolle, kopieren Sie den **Rollen-ARN**-Wert, und geben Sie ihn hier ein. Beispiel: `arn:aws:iam::181328463391:role/S3Role`. <br><br>Weitere Informationen finden Sie unter [Abrufen Ihres neuen Rollen-ARN](#retrieve-your-new-role-arn). |
     | | |
+    
+    Die **Microsoft-Konto-ID** und die **Externe ID** werden bei der [Erstellung Ihres Rollen-ARN in AWS verwendet.](#create-a-new-aws-role-for-purview).
 
-    Wählen Sie **Erstellen** aus, wenn Sie fertig sind, um die Erstellung der Anmeldeinformationen abzuschließen.
-
-1. Kopieren Sie die Werte der **Microsoft-Konto-ID** sowie der **externen ID**, und fügen Sie sie ein (sofern noch nicht geschehen), um [eine neue AWS-Rolle für Purview zu erstellen](#create-a-new-aws-role-for-purview), was Ihr nächster Schritt ist.
+1. Wählen Sie **Erstellen** aus, wenn Sie fertig sind, um die Erstellung der Anmeldeinformationen abzuschließen.
 
 Weitere Informationen zu Purview-Anmeldeinformationen finden Sie unter [Anmeldeinformationen für die Quellenauthentifizierung in Azure Purview](manage-credentials.md).
 
@@ -300,11 +298,7 @@ Verwenden Sie dieses Verfahren, wenn Sie nur über einen einzigen S3-Bucket verf
 
 **So fügen Sie Ihren Bucket hinzu:**
 
-1. Starten Sie das Purview-Portal mithilfe des dedizierten Purview-Connectors für die Amazon S3-URL. Diese URL wurde Ihnen vom Amazon S3 Purview-Connector-Produktverwaltungsteam bereitgestellt.
-
-    ![Starten Sie das Purview-Portal.](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
-
-1. Navigieren Sie zur Azure Purview-Seite **Datenzuordnung**, und wählen Sie **Registrieren** ![Symbol „Registrieren“](./media/register-scan-amazon-s3/register-button.png) aus. > **Amazon S3** > **Weiter**.
+1. Gehen Sie in Azure Purview auf die Seite **Data Map** und wählen Sie **Registrieren** ![Symbol registrieren.](./media/register-scan-amazon-s3/register-button.png) > **Amazon S3** > **Weiter**.
 
     ![Fügen Sie einen Amazon AWS-Bucket als Purview-Datenquelle hinzu.](./media/register-scan-amazon-s3/add-s3-datasource-to-purview.png)
 
@@ -314,7 +308,7 @@ Verwenden Sie dieses Verfahren, wenn Sie nur über einen einzigen S3-Bucket verf
 
 1. Geben Sie im Bereich **Quellen registrieren (Amazon S3)** , der geöffnet wird, die folgenden Details ein:
 
-    |Feld  |Beschreibung  |
+    |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen ein, oder verwenden Sie den bereitgestellten Standardwert.         |
     |**Bucket-URL**     | Geben Sie Ihre AWS-Bucket-URL mit der folgenden Syntax ein: `s3://<bucketName>`     <br><br>**Hinweis**: Achten Sie darauf, dass Sie nur die Stammebene Ihres Buckets verwenden. Weitere Informationen finden Sie unter [Abrufen Ihres Amazon S3-Bucketnamens](#retrieve-your-amazon-s3-bucket-name). |
@@ -325,18 +319,15 @@ Verwenden Sie dieses Verfahren, wenn Sie nur über einen einzigen S3-Bucket verf
 
 Fahren Sie fort mit [Erstellen einer Überprüfung für einen oder mehrere Amazon S3-Buckets](#create-a-scan-for-one-or-more-amazon-s3-buckets).
 
-## <a name="add-an-amazon-account-as-a-purview-resource"></a>Fügen Sie ein Amazon-Konto als Purview-Ressource hinzu.
+## <a name="add-an-aws-account-as-a-purview-resource"></a>Hinzufügen eines AWS-Kontos als Purview-Ressource
 
 Verwenden Sie dieses Verfahren, wenn Sie über mehrere S3-Buckets in Ihrem Amazon-Konto verfügen und alle als Purview-Datenquellen registrieren möchten.
 
 Wenn Sie [Ihre Überprüfung konfigurieren](#create-a-scan-for-one-or-more-amazon-s3-buckets), können Sie die bestimmten zu überprüfenden Buckets auswählen, wenn Sie nicht alle zusammen überprüfen möchten.
 
 **So fügen Sie Ihr Amazon-Konto hinzu:**
-1. Starten Sie das Purview-Portal mithilfe des dedizierten Purview-Connectors für die Amazon S3-URL. Diese URL wurde Ihnen vom Amazon S3 Purview-Connector-Produktverwaltungsteam bereitgestellt.
 
-    ![Starten des Connectors für das dedizierte Purview-Portal von Amazon S3](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
-
-1. Navigieren Sie zur Azure Purview-Seite **Datenzuordnung**, und wählen Sie **Registrieren** ![Symbol „Registrieren“](./media/register-scan-amazon-s3/register-button.png) aus. > **Amazon-Konten** > **Weiter**.
+1. Gehen Sie in Azure Purview auf die Seite **Data Map** und wählen Sie **Registrieren** ![Symbol registrieren.](./media/register-scan-amazon-s3/register-button.png) > **Amazon-Konten** > **Weiter**.
 
     ![Fügen Sie ein Amazon-Konto als Purview-Datenquelle hinzu.](./media/register-scan-amazon-s3/add-s3-account-to-purview.png)
 
@@ -346,7 +337,7 @@ Wenn Sie [Ihre Überprüfung konfigurieren](#create-a-scan-for-one-or-more-amazo
 
 1. Geben Sie im Bereich **Quellen registrieren (Amazon S3)** , der geöffnet wird, die folgenden Details ein:
 
-    |Feld  |Beschreibung  |
+    |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |Geben Sie einen aussagekräftigen Namen ein, oder verwenden Sie den bereitgestellten Standardwert.         |
     |**AWS-Konto-ID**     | Geben Sie Ihre AWS-Konto-ID ein. Weitere Informationen finden Sie unter [Auffinden Ihrer AWS-Konto-ID](#locate-your-aws-account-id).|
@@ -368,7 +359,7 @@ Nachdem Sie Ihre Buckets als Purview-Datenquellen hinzugefügt haben, können Si
 
 1. Definieren Sie im rechts angezeigten Bereich **Überprüfen** die folgenden Felder, und wählen Sie dann **Weiter** aus:
 
-    |Feld  |Beschreibung  |
+    |Feld  |BESCHREIBUNG  |
     |---------|---------|
     |**Name**     |  Geben Sie einen aussagekräftigen Namen für Ihre Überprüfung ein, oder verwenden Sie den Standardwert.       |
     |**Type** |Wird nur angezeigt, wenn Sie Ihr AWS-Konto hinzugefügt haben, einschließlich aller Buckets. <br><br>Die aktuellen Optionen umfassen nur **Alle** > **Amazon S3**. Bleiben Sie dran, um über weitere auswählbare Optionen auf dem Laufenden zu bleiben, die mit der sich erweiternden Unterstützungsmatrix von Purview entwickelt werden. |

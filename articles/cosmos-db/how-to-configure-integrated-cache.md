@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/20/2021
+ms.date: 09/28/2021
 ms.author: tisande
-ms.openlocfilehash: dea28832bb607da722653c398cc234d54d2ffcc9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 251f534669333c17a4bb408a23b33f73c79c9e9f
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618626"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229703"
 ---
 # <a name="how-to-configure-the-azure-cosmos-db-integrated-cache-preview"></a>Konfigurieren des integrierten Azure Cosmos DB-Caches (Vorschau)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -66,7 +66,7 @@ Wenn Sie das Java SDK verwenden, müssen Sie [contentResponseOnWriteEnabled](/ja
 
 ## <a name="adjust-request-consistency"></a>Anpassen der Anforderungskonsistenz
 
-Sie müssen die Anforderungskonsistenz auf „Letztliche Konsistenz“ festlegen. Andernfalls wird der integrierte Cache immer von der Anforderung umgangen. Die einfachste Vorgehensweise zum Konfigurieren der letztlichen Konsistenz für alle Lesevorgänge besteht darin, [diese auf Kontoebene festzulegen](consistency-levels.md#configure-the-default-consistency-level). Sie können die Konsistenz auch auf [Anforderungsebene](how-to-manage-consistency.md#override-the-default-consistency-level) konfigurieren. Dies wird empfohlen, wenn der integrierte Cache nur von einem Teil Ihrer Lesezugriffe verwendet werden soll.
+Sie müssen die Anforderungskonsistenz auf „Session-Konsistenz“ oder „Letztliche Konsistenz“ festlegen. Andernfalls wird der integrierte Cache immer von der Anforderung umgangen. Die einfachste Vorgehensweise zum Konfigurieren der spezifischen Konsistenz für alle Lesevorgänge besteht darin, [diese auf Kontoebene festzulegen](consistency-levels.md#configure-the-default-consistency-level). Sie können die Konsistenz auch auf [Anforderungsebene](how-to-manage-consistency.md#override-the-default-consistency-level) konfigurieren. Dies wird empfohlen, wenn der integrierte Cache nur von einem Teil Ihrer Lesezugriffe verwendet werden soll.
 
 > [!NOTE]
 > Wenn Sie das Python SDK verwenden, **müssen** Sie die Konsistenzebene für jede Anforderung explizit festlegen. Die Standardeinstellung auf Kontoebene wird nicht automatisch angewandt.

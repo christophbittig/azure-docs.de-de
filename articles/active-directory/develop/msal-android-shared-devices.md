@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 09/30/2021
 ms.author: marsma
-ms.reviewer: hahamil
+ms.reviewer: brandwe
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: 7b1c87c67413f8240746f2a793c913cd4add4865
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3a1539f80556afa9a3dbeb73edcd4d38380db33a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787280"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357657"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Modus für gemeinsam genutzte Geräte für Android-Geräte
 
@@ -33,11 +33,13 @@ Bei der Erstellung einer App für den Modus für gemeinsam genutzte Geräte arbe
 - Entwickler schreiben eine App für ein einzelnes Konto (Apps für mehrere Konten werden im Modus für gemeinsam genutzte Geräte nicht unterstützt), fügen `"shared_device_mode_supported": true` in der Konfiguration der App hinzu und schreiben Code zum Ausführen von Vorgängen wie z. B. das Abmelden bei dem gemeinsam genutzten Gerät.
 - Geräteadministratoren bereiten das gemeinsam zu nutzende Gerät vor, indem sie die Authenticator-App installieren und das Gerät mithilfe der Authenticator-App auf den Modus für gemeinsam genutzte Geräte festlegen. Nur Benutzer mit der Rolle [Cloudgeräteadministrator](../roles/permissions-reference.md#cloud-device-administrator) können mithilfe der [Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc) für ein Gerät den Modus für gemeinsam genutzte Geräte festlegen. Sie können die Mitgliedschaft der Organisationsrollen im Azure-Portal über **Azure Active Directory** > **Rollen und Administratoren** > **Cloudgeräteadministrator** konfigurieren.
 
- Dieser Artikel konzentriert sich hauptsächlich darauf, was Entwickler berücksichtigen sollten.
+Dieser Artikel konzentriert sich hauptsächlich darauf, was Entwickler berücksichtigen sollten.
 
 ## <a name="single-vs-multiple-account-applications"></a>Anwendungen für einzelne Konten und Anwendungen für mehrere Konten
 
-In Anwendungen, die mit dem Microsoft Authentication Library SDK (MSAL) geschrieben wurden, können ein einzelnes Konto oder mehrere Konten verwaltet werden. Weitere Informationen finden Sie unter [Modus für einzelne und mehrere Konten](single-multi-account.md). Die in Ihrer App verfügbaren Microsoft Identity Platform-Funktionen hängen davon ab, ob die Anwendung im Einzelkontomodus oder im Modus für mehrere Konten ausgeführt wird.
+In Anwendungen, die mit dem Microsoft Authentication Library (MSAL) SDK geschrieben wurden, können ein einzelnes Konto oder mehrere Konten verwaltet werden. Weitere Informationen finden Sie unter [Modus für einzelne und mehrere Konten](single-multi-account.md).
+
+Die in Ihrer App verfügbaren Microsoft Identity Platform-Funktionen hängen davon ab, ob die Anwendung im Einzelkontomodus oder im Modus für mehrere Konten ausgeführt wird.
 
 **Apps mit dem Modus für gemeinsam genutzte Geräte können nur im Modus für einzelne Konten verwendet werden**.
 
@@ -76,12 +78,12 @@ private IPublicClientApplication mApplication;
 
 Folgende Unterschiede gelten in Abhängigkeit davon, ob die App auf einem gemeinsam genutzten oder einem persönlichen Gerät ausgeführt wird:
 
-|  | Gerät im Modus für gemeinsam genutzte Geräte  | Persönliches Gerät |
-|---------|---------|---------|
-| **Konten**     | Einzelnes Konto | Mehrere Konten |
-| **Anmeldung** | Global | Global |
-| **Abmeldung** | Global | In jeder Anwendung kann gesteuert werden, ob die Abmeldung lokal für die Anwendung oder für die Anwendungsfamilie erfolgt. |
-| **Unterstützte Kontotypen** | Nur Geschäftskonten | Persönliche Konten und Geschäftskonten werden unterstützt.  |
+|                             | Gerät im Modus für gemeinsam genutzte Geräte | Persönliches Gerät                                                                                     |
+| --------------------------- | ------------------ | --------------------------------------------------------------------------------------------------- |
+| **Konten**                | Einzelnes Konto     | Mehrere Konten                                                                                   |
+| **Anmeldung**                 | Global             | Global                                                                                              |
+| **Abmeldung**                | Global             | In jeder Anwendung kann gesteuert werden, ob die Abmeldung lokal für die Anwendung oder für die Anwendungsfamilie erfolgt. |
+| **Unterstützte Kontotypen** | Nur Geschäftskonten | Persönliche Konten und Geschäftskonten werden unterstützt.                                                                |
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>Gründe für die alleinige Unterstützung des Modus für einzelne Konten
 
@@ -93,7 +95,7 @@ Wenn die Anwendung im Modus für mehrere Konten ausgeführt wird und ein Adminis
 
 ## <a name="shared-device-sign-out-and-the-overall-app-lifecycle"></a>Abmeldung bei gemeinsam genutzten Geräten und der allgemeine App-Lebenszyklus
 
-Im Hinblick auf die Abmeldung von Benutzern müssen Maßnahmen zum Schutz der Privatsphäre und der Daten der Benutzer getroffen werden. Wenn Sie z. B. eine App für Patientendaten erstellen, müssen Sie sicherstellen, dass beim Abmelden des Benutzers die zuvor angezeigten Patientendaten entfernt werden. Die Anwendung muss dafür vorbereitet werden und dies jedes Mal überprüfen, wenn sie im Vordergrund ausgeführt wird.
+Im Hinblick auf die Abmeldung von Benutzern müssen Maßnahmen zum Schutz der Privatsphäre und der Daten der Benutzer getroffen werden. Wenn Sie z. B. eine App für Patientendaten erstellen, müssen Sie sicherstellen, dass beim Abmelden des Benutzers die zuvor angezeigten Patientendaten entfernt werden. Die Anwendung muss auf Privacy- und Datenschutzgesetze vorbereitet werden und deren Einhaltung jedes Mal überprüfen, wenn sie im Vordergrund ausgeführt wird.
 
 Bei Verwendung der MSAL in der App zum Abmelden eines Benutzers von einer App, die auf einem Gerät mit dem Modus für gemeinsam genutzte Geräte ausgeführt wird, werden das angemeldete Konto und die zwischengespeicherten Token sowohl in der App als auch auf dem Gerät entfernt.
 
@@ -103,4 +105,6 @@ Im folgenden Diagramm sind der gesamte App-Lebenszyklus und allgemeine Ereigniss
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im Tutorial [Verwenden des Modus für gemeinsam genutzte Geräte in Ihrer Android-Anwendung](tutorial-v2-shared-device-mode.md) wird beschrieben, wie eine App für Mitarbeiter in Service und Produktion auf einem Android-Gerät im Modus für gemeinsam genutzte Geräte ausgeführt wird.
+Weitere Informationen zum Ausführen einer Frontline Worker-App in einem freigegebenen Modus auf einem Android-Gerät finden Sie unter:
+
+- [Verwenden des Modus für gemeinsam genutzte Geräte in Ihrer Android-Anwendung](tutorial-v2-shared-device-mode.md)

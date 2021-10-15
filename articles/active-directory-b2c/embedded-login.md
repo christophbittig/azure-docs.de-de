@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 44b7d541809bc3bd8657fcc4ec626e35ef0b19c1
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 164e6060f9f317dfec02028d02552f82d196cdf8
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122829451"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545018"
 ---
 # <a name="embedded-sign-up-or-sign-in-experience"></a>Eingebettetes Registrierungs- oder Anmeldeverfahren
 
@@ -32,7 +32,7 @@ ms.locfileid: "122829451"
 
 ::: zone pivot="b2c-custom-policy"
 
-Um die Registrierung oder Anmeldung zu vereinfachen, können Sie verhindern, dass Benutzer zu einer separaten Registrierungs- oder Anmeldeseite umgeleitet werden oder aber dass ein Popupfenster generiert wird. Mithilfe des HTML-Inlineframe-Elements &lt;iframe&gt; können Sie die Azure AD B2C-Anmeldebenutzeroberfläche direkt in Ihre Webanwendung einbetten. 
+Um die Anmeldung zu vereinfachen, können Sie es vermeiden, Benutzer auf eine separate Anmelde- oder Anmeldeseite umzuleiten oder ein Popup-Fenster zu erzeugen. Mithilfe des HTML-Inlineframe-Elements &lt;iframe&gt; können Sie die Azure AD B2C-Anmeldebenutzeroberfläche direkt in Ihre Webanwendung einbetten. 
 
 > [!TIP]
 > Mithilfe des HTML-Elements &lt;iframe&gt; können Sie die [Registrierung oder Anmeldung](add-sign-up-and-sign-in-policy.md) einbetten, [ein Profil bearbeiten ](add-profile-editing-policy.md) oder aber bei benutzerdefinierten Richtlinien in Ihrer Web- oder Single-Page-App [das Kennwort ändern](add-password-change-policy.md).

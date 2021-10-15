@@ -1,32 +1,33 @@
 ---
 title: Verwalten der Standardzugriffsebene für ein Azure Storage-Konto
-description: Hier erfahren Sie, wie Sie die Standardzugriffsebene für ein GPv2- oder Blob Storage-Konto ändern können.
+titleSuffix: Azure Storage
+description: Erfahren Sie, wie Sie die Standardzugriffsebene für ein Universell v2- oder Blob Storage-Konto ändern können.
 author: tamram
 ms.author: tamram
-ms.date: 01/11/2021
+ms.date: 09/23/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee009c47188e104cfe1d5430be6e68a1c80132cb
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a9cb4a119447188202036cca4ed4d8580329d0cc
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666739"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272564"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>Verwalten der Standardzugriffsebene für ein Azure Storage-Konto
 
 Bei jedem Azure Storage-Konto gibt es eine Standardzugriffsebene („Heiß“ oder „Kalt“). Sie weisen die Zugriffsebene beim Erstellen eines Speicherkontos zu. Die Standardzugriffsebene ist „Heiß“.
 
-Sie können die Standardkontoebene ändern, indem Sie für das Speicherkonto das Attribut **Zugriffsebene** festlegen. Die Änderung der Zugriffsebene gilt für alle im Konto gespeicherten Objekte, für die keine explizite Ebene festgelegt wurde. Wenn Sie die Kontoebene von „Heiß“ in „Kalt“ ändern, fallen Gebühren für Schreibvorgänge (pro 10.000) nur für alle Blobs ohne festgelegte Ebene in GPv2-Konten an. Bei der Umstellung von „Kalt“ auf „Heiß“ fallen Gebühren für Lesevorgänge (pro 10.000) und den Datenabruf (pro GB) für alle Blobs in Blob Speicher- und GPv2-Konten an.
+Sie können die Standardkontoebene ändern, indem Sie für das Speicherkonto das Attribut **Zugriffsebene** festlegen. Die Änderung der Zugriffsebene gilt für alle im Konto gespeicherten Objekte, für die keine explizite Ebene festgelegt wurde. Wenn Sie die Kontoebene von „Heiß“ in „Kalt“ ändern, fallen Gebühren für Schreibvorgänge (pro 10.000) nur für alle Blobs ohne festgelegte Ebene in Universell v2-Konten an. Bei der Umstellung von „Kalt“ auf „Heiß“ fallen Gebühren für Lesevorgänge (pro 10.000) und den Datenabruf (pro GB) für alle Blobs in Blob Speicher- und Universell v2-Konten an.
 
 Für Blobs, bei denen die Ebene auf Objektebene festgelegt wurde, gilt die Kontoebene nicht. Die Archivebene kann nur auf Objektebene angewendet werden. Sie können jederzeit zwischen Zugriffsebenen wechseln.
 
 Nachdem ein Speicherkonto erstellt wurde, können Sie die Standardzugriffsebene ändern, indem Sie die Schritte unten ausführen.
 
-## <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Ändern der Standard-Kontozugriffsebene für ein GPv2- oder Blob Storage-Konto
+## <a name="change-the-default-account-access-tier-of-a-general-purpose-v2-or-blob-storage-account"></a>Ändern der Standard-Kontozugriffsebene für ein Universell v2- oder Blob Storage-Konto
 
 In den folgenden Szenarien wird das Azure-Portal oder PowerShell verwendet:
 
@@ -51,11 +52,11 @@ In den folgenden Szenarien wird das Azure-Portal oder PowerShell verwendet:
 Das folgende PowerShell-Skript kann zum Ändern der Kontoebene verwendet werden. Die Variable `$rgName` muss mit Ihrem Ressourcengruppennamen initialisiert werden. Die Variable `$accountName` muss mit Ihrem Speicherkontonamen initialisiert werden.
 
 ```powershell
-#Initialize the following with your resource group and storage account names
+# Initialize the following with your resource group and storage account names
 $rgName = ""
 $accountName = ""
 
-#Change the storage account tier to hot
+# Change the storage account tier to hot
 Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier Hot
 ```
 

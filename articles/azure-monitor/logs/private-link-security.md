@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: e175439cacb75fc50574f172d9e1e34cba4cdbd7
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: e0c9a1d640a4ac1596370cace9cd657e082aee48
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426398"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275751"
 ---
 # <a name="use-azure-private-link-to-connect-networks-to-azure-monitor"></a>Verwenden von Azure Private Link zum Verbinden von Netzwerken mit Azure Monitor
 
@@ -78,7 +78,7 @@ Für Private Link-Instanzen, die ab September 2021 erstellt werden, gelten daher
 * Modus „Offen“: Verwendet Private Link, um mit Ressourcen im AMPLS zu kommunizieren, gestattet aber auch, dass der Datenverkehr mit anderen Ressourcen fortgesetzt wird. Weitere Informationen finden Sie unter [Steuern der Anwendung von Private Links auf Ihre Netzwerke](./private-link-design.md#control-how-private-links-apply-to-your-networks).
 
 > [!NOTE]
-> Die Log Analytics-Erfassung verwendet ressourcenspezifische Endpunkte. Daher entspricht sie nicht den AMPLS-Zugriffsmodi. Die Erfassung in Arbeitsbereichen im AMPLS wird über die private Verbindung gesendet, während die Erfassung in Arbeitsbereichen, die sich nicht im AMPLS befinden, die öffentlichen Standardendpunkte verwendet. Um sicherzustellen, dass Erfassungsanforderungen nicht auf Ressourcen außerhalb des AMPLS zugreifen können, blockieren Sie den Zugriff des Netzwerks auf öffentliche Endpunkte.
+> Die Log Analytics-Erfassung verwendet ressourcenspezifische Endpunkte. Daher entspricht sie nicht den AMPLS-Zugriffsmodi. **Legen Sie die Netzwerkfirewall so fest, dass Datenverkehr an öffentliche Endpunkte blockiert wird, unabhängig von den AMPLS-Zugriffsmodi, um sicherzustellen, dass Log Analytics-Erfassungsanforderungen nicht über die AMPLS auf Arbeitsbereiche zugreifen können.**
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Entwerfen Ihres Private Link-Setups](private-link-design.md)

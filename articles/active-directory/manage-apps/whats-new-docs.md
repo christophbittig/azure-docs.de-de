@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei der Azure Active Directory-Anwendungsverwaltung
 description: Neue und aktualisierte Dokumentation für die Azure Active Directory-Anwendungsverwaltung
-ms.date: 09/08/2021
+ms.date: 10/05/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,52 @@ ms.author: davidmu
 author: davidmu1
 manager: CelesteDG
 reviewer: napuri
-ms.openlocfilehash: a5de6a248d389c90cbc67f59b0b94f53c35821f2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 260473c428e7bdc2bfd968aa2ba5469e578c1005
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810029"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533142"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory-Anwendungsverwaltung: Neues
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Active Directory-Anwendungsverwaltung. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Anwendungsverwaltungsdienst finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="september-2021"></a>September 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Home Realm Discovery für eine Anwendung in Azure Active Directory](home-realm-discovery-policy.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](assign-user-or-group-access-portal.md)
+- [Konfigurieren Sie das Anmeldeverhalten für eine Anwendung mithilfe einer Richtlinie zur Erkennung des Heimatbereichs](configure-authentication-for-federated-users-portal.md)
+- [Deaktivieren, wie sich ein Benutzer für eine Anwendung in Azure Active Directory anmeldet](disable-user-sign-in-portal.md)
+- [Eine Unternehmensanwendung in Azure Active Directory ausblenden](hide-application-from-user-portal.md)
+- [Selbstbedienungsanwendungszuweisung in Azure Active Directory aktivieren](manage-self-service-access.md)
+- [Deaktivieren der automatischen Anmeldebeschleunigung an einen Verbundidentitätsanbieter während der Benutzeranmeldung per Richtlinie zur Startbereichsermittlung (Home Realm Discovery, HRD)](prevent-domain-hints-with-home-realm-discovery.md)
+- [Verwaltung des Zugriffs auf Anwendungen in Azure Active Directory](what-is-access-management.md)
+- [Tutorial: Migrieren Sie Ihre Anwendungen von Okta zu Azure Active Directory](migrate-applications-from-okta-to-azure-active-directory.md)
+- [Tutorial: Migrieren Sie Okta-Verbund zu Azure Active Directory-verwalteter Authentifizierung](migrate-okta-federation-to-azure-active-directory.md)
+- [Tutorial: Migrieren von Okta-Anmelderichtlinien zu Azure AD Conditional Access](migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access.md)
+- [Tutorial: Okta-Synchronisierungsbereitstellung auf Azure AD Connect-basierte Synchronisierung migrieren](migrate-okta-sync-provisioning-to-azure-active-directory.md)
+- [Sicherer Hybridzugriff über Azure Active Directory Partnerintegrationen](secure-hybrid-access-integrations.md)
+- [Azure Active Directory-Anwendungsverwaltung: Neues](whats-new-docs.md)
+- [Schnellstart: Erstellen und Zuweisen eines Benutzerkontos in Azure Active Directory](add-application-portal-assign-users.md)
+- [Schnellstart: Konfigurieren von Eigenschaften für eine Unternehmensanwendung in Azure Active Directory](add-application-portal-configure.md)
+- [Hinzufügen einer OpenID Connect-basierten Single Sign-On-Anwendung in Azure Active Directory](add-application-portal-setup-oidc-sso.md)
+- [Schnellstart: Aktivieren von Single Sign-On für eine Unternehmensanwendung in Azure Active Directory](add-application-portal-setup-sso.md)
+- [Schnellstart: Hinzufügen einer Unternehmensanwendung in Azure Active Directory](add-application-portal.md)
+- [Schnellstart: Löschen einer Unternehmensanwendung in Azure Active Directory](delete-application-portal.md)
+- [Schnellstart: Anzeigen von Unternehmensanwendungen in Azure Active Directory](view-applications-portal.md)
+- [Erstellen von Sammlungen im Portal „Meine Apps“](access-panel-collections.md)
+- [Verwalten von Richtlinien zur Einwilligung für die App](manage-app-consent-policies.md)
+- [Hinzufügen von verknüpftem Single Sign-On zu einer Anwendung in Azure Active Directory](configure-linked-sign-on.md)
+- [Hinzufügen des kennwortbasierten einmaligen Anmeldens zu einer Anwendung in Azure Active Directory](configure-password-single-sign-on-non-gallery-applications.md)
+- [Planen einer Bereitstellung für einmaliges Anmelden in Azure Active Directory](plan-sso-deployment.md)
+- [Was ist einmaliges Anmelden in Azure Active Directory?](what-is-single-sign-on.md)
+
 
 ## <a name="august-2021"></a>August 2021
 

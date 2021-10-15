@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 08/27/2021
 ms.author: cshoe
-ms.openlocfilehash: f2dacc8a0ed551fd92b916e25dfd87695e2576d3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 25358033e88fbfb1590289e6fbad8e4109e0dbbf
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570835"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399582"
 ---
 # <a name="configure-azure-static-web-apps"></a>Konfigurieren von Azure Static Web Apps
 
@@ -59,22 +59,22 @@ Die Standarddatei für statische Inhalte ist _index.html_.
 
 Jede Regel besteht aus einem Routenmuster und einer oder mehreren optionalen Regeleigenschaften. Routenregeln werden im `routes`-Array definiert. Beispiele der Nutzung finden Sie unter [Beispielkonfigurationsdatei](#example-configuration-file).
 
-| Regeleigenschaft                       | Erforderlich | Standardwert                        | Comment                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ----------------------------------- | -------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `route`                             | Ja      | –                                  | Das vom Aufrufer angeforderte Routenmuster.<ul><li>[Platzhalter](#wildcards) am Ende der Routenpfade werden unterstützt.<ul><li>Für die Route _admin/\*_ ergeben sich beispielsweise Übereinstimmungen mit allen Routen unter dem Pfad _admin_.</ul></ul>                                                                                                                                                                                                                                                                                                                                                                                                        |
-| `rewrite`                           | Nein       | –                                  | Definiert die Datei oder den Pfad, die bzw. der von der Anforderung zurückgegeben wird.<ul><li>Ist sich gegenseitig ausschließend mit einer `redirect`-Regel<li>Neuschreibungsregeln ändern nicht den Speicherort des Browsers.<li>Werte müssen relativ zum Stamm der App sein</ul>                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `redirect`                          | Nein       | –                                  | Legt das Ziel der Datei- oder Pfadumleitung für eine Anforderung fest.<ul><li>Ist sich gegenseitig ausschließend mit einer `rewrite`-Regel.<li>Umleitungsregeln ändern den Speicherort des Browsers.<li>Der Standardantwortcode ist [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (temporäre Umleitung), aber Sie können ihn mit [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) überschreiben (permanente Umleitung).</ul>                                                                                                                                                                                                              |
-| `allowedRoles`                      | Nein       | anonymous                            | Definiert eine Liste von Rollennamen, die für den Zugriff auf eine Route erforderlich sind. <ul><li>Gültige Zeichen sind `a-z`, `A-Z`, `0-9` und `_`.<li>Die integrierte Rolle [`anonymous`](./authentication-authorization.md) gilt für alle nicht authentifizierten Benutzer.<li>Die integrierte Rolle [`authenticated`](./authentication-authorization.md) gilt für alle angemeldeten Benutzer.<li>Benutzern muss mindestens eine Rolle zugewiesen sein.<li>Rollen werden nach dem Muster _OR_ (ODER) abgeglichen.<ul><li>Wenn einem Benutzer eine beliebige aufgelistete Rolle zugewiesen ist, wird der Zugriff gewährt.</ul><li>Einzelne Benutzer werden Rollen mithilfe von [Einladungen](authentication-authorization.md) zugeordnet.</ul> |
-| `headers`<a id="route-headers"></a> | Nein       | –                                  | Gruppe von [HTTP-Headern](https://developer.mozilla.org/docs/Web/HTTP/Headers), die der Antwort hinzugefügt werden. <ul><li>Routenspezifische Header überschreiben [`globalHeaders`](#global-headers), wenn der routenspezifische Header dem globalen Header in der Antwort entspricht.<li>Um einen Header zu entfernen, legen Sie den Wert auf eine leere Zeichenfolge fest.</ul>                                                                                                                                                                                                                                                                                          |
-| `statusCode`                        | Nein       | `200`, `301` oder `302` für Umleitungen | Der [HTTP-Statuscode](https://developer.mozilla.org/docs/Web/HTTP/Status) der Antwort.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| `methods`                           | Nein       | Alle Methoden                          | Liste der Anforderungsmethoden, die einer Route entsprechen. Verfügbare Methoden: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE` und `PATCH`.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Regeleigenschaft | Erforderlich | Standardwert | Comment |
+|--|--|--|--|
+| `route` | Ja | – | Das vom Aufrufer angeforderte Routenmuster.<ul><li>[Platzhalter](#wildcards) am Ende der Routenpfade werden unterstützt.<ul><li>Für die Route _admin/\*_ ergeben sich beispielsweise Übereinstimmungen mit allen Routen unter dem Pfad _admin_.</ul></ul> |
+| `rewrite` | Nein | – | Definiert die Datei oder den Pfad, die bzw. der von der Anforderung zurückgegeben wird.<ul><li>Ist sich gegenseitig ausschließend mit einer `redirect`-Regel<li>Neuschreibungsregeln ändern nicht den Speicherort des Browsers.<li>Werte müssen relativ zum Stamm der App sein</ul> |
+| `redirect` | Nein | – | Legt das Ziel der Datei- oder Pfadumleitung für eine Anforderung fest.<ul><li>Ist sich gegenseitig ausschließend mit einer `rewrite`-Regel.<li>Umleitungsregeln ändern den Speicherort des Browsers.<li>Der Standardantwortcode ist [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (temporäre Umleitung), aber Sie können ihn mit [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) überschreiben (permanente Umleitung).</ul> |
+| `allowedRoles` | Nein | anonymous | Definiert eine Liste von Rollennamen, die für den Zugriff auf eine Route erforderlich sind. <ul><li>Gültige Zeichen sind `a-z`, `A-Z`, `0-9` und `_`.<li>Die integrierte Rolle [`anonymous`](./authentication-authorization.md) gilt für alle nicht authentifizierten Benutzer.<li>Die integrierte Rolle [`authenticated`](./authentication-authorization.md) gilt für alle angemeldeten Benutzer.<li>Benutzern muss mindestens eine Rolle zugewiesen sein.<li>Rollen werden nach dem Muster _OR_ (ODER) abgeglichen.<ul><li>Wenn einem Benutzer eine beliebige aufgelistete Rolle zugewiesen ist, wird der Zugriff gewährt.</ul><li>Einzelne Benutzer werden Rollen mithilfe von [Einladungen](authentication-authorization.md) zugeordnet.</ul> |
+| `headers`<a id="route-headers"></a> | Nein | – | Gruppe von [HTTP-Headern](https://developer.mozilla.org/docs/Web/HTTP/Headers), die der Antwort hinzugefügt werden. <ul><li>Routenspezifische Header überschreiben [`globalHeaders`](#global-headers), wenn der routenspezifische Header dem globalen Header in der Antwort entspricht.<li>Um einen Header zu entfernen, legen Sie den Wert auf eine leere Zeichenfolge fest.</ul> |
+| `statusCode` | Nein | `200`, `301` oder `302` für Umleitungen | Der [HTTP-Statuscode](https://developer.mozilla.org/docs/Web/HTTP/Status) der Antwort. |
+| `methods` | Nein | Alle Methoden | Liste der Anforderungsmethoden, die einer Route entsprechen. Verfügbare Methoden: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE` und `PATCH`. |
 
 Jede Eigenschaft hat in der Anforderungs-/Antwortpipeline einen bestimmten Zweck.
 
-| Zweck                                        | Eigenschaften                                                                                   |
-| ---------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| Routen abgleichen                                   | `route`, `methods`                                                                           |
-| Autorisieren, nachdem für eine Route eine Übereinstimmung gefunden wurde             | `allowedRoles`                                                                               |
+| Zweck | Eigenschaften |
+|--|--|
+| Routen abgleichen | `route`, `methods` |
+| Autorisieren, nachdem für eine Route eine Übereinstimmung gefunden wurde | `allowedRoles` |
 | Verarbeiten, nachdem für eine Route eine Übereinstimmung gefunden und sie autorisiert wurde | `rewrite` (ändert Anforderung) <br><br>`redirect`, `headers`, `statusCode` (ändert Antwort) |
 
 ## <a name="securing-routes-with-roles"></a>Schützen von Routen mit Rollen
@@ -187,15 +187,15 @@ Die nachstehende Beispieldateistruktur zeigt, dass die folgenden Ergebnisse mit 
 └── index.html
 ```
 
-| Anforderungen an                                         | Rückgabe                                                                                                    | Mit dem Status |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ------------------ |
-| _/about/_                                              | Die Datei _/index.html_                                                                                        | `200`              |
-| _/images/logo.png_                                     | Die Bilddatei                                                                                                | `200`              |
-| _/images/icon.svg_                                     | Die Datei _/index.html_, da die Dateierweiterung _svg_ nicht im Filter `/images/*.{png,jpg,gif}` aufgeführt ist | `200`              |
-| _/images/unknown.png_                                  | Fehler „Datei nicht gefunden“                                                                                          | `404`              |
-| _/css/unknown.css_                                     | Fehler „Datei nicht gefunden“                                                                                          | `404`              |
-| _/css/global.css_                                      | Die Stylesheetdatei                                                                                           | `200`              |
-| Alle anderen Dateien außerhalb der Ordner _/images_ und _/css_ | Die Datei _/index.html_                                                                                        | `200`              |
+| Anforderungen an | Rückgabe | Mit dem Status |
+|--|--|--|
+| _/about/_ | Die Datei _/index.html_ | `200` |
+| _/images/logo.png_ | Die Bilddatei | `200` |
+| _/images/icon.svg_ | Die Datei _/index.html_, da die Dateierweiterung _svg_ nicht im Filter `/images/*.{png,jpg,gif}` aufgeführt ist | `200` |
+| _/images/unknown.png_ | Fehler „Datei nicht gefunden“ | `404` |
+| _/css/unknown.css_ | Fehler „Datei nicht gefunden“ | `404` |
+| _/css/global.css_ | Die Stylesheetdatei | `200` |
+| Alle anderen Dateien außerhalb der Ordner _/images_ und _/css_ | Die Datei _/index.html_ | `200` |
 
 > [!IMPORTANT]
 > Schließen Sie im Falle einer Migration von der veralteten Datei [_routes.json_](https://github.com/Azure/static-web-apps/wiki/routes.json-reference-(deprecated)) die Legacyfallbackroute (`"route": "/*"`) nicht in die [Routingregeln](#routes) ein.
@@ -220,12 +220,12 @@ Der Abschnitt `responseOverrides` bietet die Möglichkeit, eine benutzerdefinier
 
 Die folgenden HTTP-Codes sind zur Außerkraftsetzung verfügbar:
 
-| Statuscode                                                   | Bedeutung      | Mögliche Ursache                                                                                                                                                                                                                                                                                     |
-| ------------------------------------------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [400](https://developer.mozilla.org/docs/Web/HTTP/Status/400) | Ungültige Anforderung  | Link zu ungültiger Einladung                                                                                                                                                                                                                                                                            |
-| [401](https://developer.mozilla.org/docs/Web/HTTP/Status/401) | Nicht autorisiert | Anforderung eingeschränkter Seiten bei fehlender Authentifizierung                                                                                                                                                                                                                                                  |
-| [403](https://developer.mozilla.org/docs/Web/HTTP/Status/403) | Verboten    | <ul><li>Benutzer ist angemeldet, verfügt aber nicht über die erforderlichen Rollen, um die Seite anzuzeigen.<li>Benutzer ist angemeldet, aber die Laufzeit kann die Benutzerdetails nicht aus seinen Identitätsansprüchen abrufen.<li>Es sind zu viele Benutzer mit benutzerdefinierten Rollen bei der Website angemeldet, daher kann die Laufzeit den Benutzer nicht anmelden.</ul> |
-| [404](https://developer.mozilla.org/docs/Web/HTTP/Status/404) | Nicht gefunden    | Datei nicht gefunden                                                                                                                                                                                                                                                                                     |
+| Statuscode | Bedeutung | Mögliche Ursache |
+|--|--|--|
+| [400](https://developer.mozilla.org/docs/Web/HTTP/Status/400) | Ungültige Anforderung | Link zu ungültiger Einladung |
+| [401](https://developer.mozilla.org/docs/Web/HTTP/Status/401) | Nicht autorisiert | Anforderung eingeschränkter Seiten bei fehlender Authentifizierung |
+| [403](https://developer.mozilla.org/docs/Web/HTTP/Status/403) | Verboten | <ul><li>Benutzer ist angemeldet, verfügt aber nicht über die erforderlichen Rollen, um die Seite anzuzeigen.<li>Benutzer ist angemeldet, aber die Laufzeit kann die Benutzerdetails nicht aus seinen Identitätsansprüchen abrufen.<li>Es sind zu viele Benutzer mit benutzerdefinierten Rollen bei der Website angemeldet, daher kann die Laufzeit den Benutzer nicht anmelden.</ul> |
+| [404](https://developer.mozilla.org/docs/Web/HTTP/Status/404) | Nicht gefunden | Datei nicht gefunden |
 
 Die folgende Beispielkonfiguration zeigt, wie Sie einen Fehlercode überschreiben können.
 
@@ -272,10 +272,61 @@ Definieren Sie jeden IPv4-Adressblock in CIDR-Notation (Classless Inter-Domain R
 
 Bei Angabe mindestens eines IP-Adressblocks wird Anforderungen, die von IP-Adressen stammen, die keinem Wert in `allowedIpRanges` entsprechen, der Zugriff verweigert.
 
-## <a name="authentication"></a>Authentifizierung 
+Neben IP-Adressblöcken können Sie auch [Diensttags](../virtual-network/service-tags-overview.md) im `allowedIpRanges`-Array angeben, um Datenverkehr auf bestimmte Azure-Dienste zu beschränken.
+
+```json
+"networking": {
+  "allowedIpRanges": ["AzureFrontDoor.Backend"]
+}
+```
+
+## <a name="authentication"></a>Authentifizierung
 
 * [Standard-Authentifizierungsanbieter](authentication-authorization.md#login) erfordern keine Einstellungen in der Konfigurationsdatei. 
-* [Benutzerdefinierte Authentifizierungsanbieter](authentication-custom.md) verwenden die `authentication`-Eigenschaft der Einstellungsdatei. 
+* [Benutzerdefinierte Authentifizierungsanbieter](authentication-custom.md) verwenden den `auth`-Abschnitt der Einstellungsdatei.
+
+## <a name="forwarding-gateway"></a>Weiterleitungsgateway
+
+Der Abschnitt `forwardingGateway` konfiguriert, wie der Zugriff auf eine statische Webanwendung von einem Weiterleitungsgateway wie einem CDN oder Azure Front Door erfolgt.
+
+> [!NOTE]
+> Die Konfiguration des Weiterleitungsgateways ist nur im Standardplan für Azure Static Web Apps verfügbar.
+
+### <a name="allowed-forwarded-hosts"></a>Zulässige weitergeleitete Hosts
+  
+Die `allowedForwardedHosts` Liste gibt an, welche Hostnamen im Header [X-Forwarded-Host](https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Forwarded-Host) akzeptiert werden. Wenn eine übereinstimmende Domäne in der Liste enthalten ist, verwendet Static Web Apps den `X-Forwarded-Host`-Wert beim Erstellen von Umleitungs-URLs, z. B. nach einer erfolgreichen Anmeldung.
+
+Damit Static Web Apps hinter einem Weiterleitungsgateway korrekt funktionieren, muss die Anforderung des Gateways den korrekten Hostnamen im `X-Forwarded-Host`-Header enthalten, und derselbe Hostname muss in `allowedForwardedHosts` aufgeführt sein.
+
+```json
+"forwardingGateway": {
+  "allowedForwardedHosts": [
+    "example.org",
+    "www.example.org",
+    "staging.example.org"
+  ]
+}
+```
+
+Wenn der `X-Forwarded-Host`-Header nicht mit einem Wert in der Liste übereinstimmt, sind die Anforderungen trotzdem erfolgreich, aber der Header wird nicht in der Antwort verwendet.
+
+### <a name="required-headers"></a>Erforderliche Header
+
+Erforderliche Header sind HTTP-Header, die bei jeder Anforderung an Ihre Website gesendet werden müssen. Eine Verwendung der erforderlichen Header besteht darin, den Zugriff auf eine Website zu verweigern, wenn nicht alle erforderlichen Header in jeder Anforderung vorhanden sind.
+
+Die folgende Konfiguration zeigt beispielsweise, wie Sie einen eindeutigen Bezeichner für [Azure Front Door](../frontdoor/front-door-overview.md) hinzufügen können, der den Zugriff auf Ihre Website über eine bestimmte Azure Front Door-Instanz einschränkt. Ausführliche Informationen finden Sie im [Tutorial zum Konfigurieren von Azure Front Door](front-door-manual.md).
+
+```json
+"forwardingGateway": {
+  "requiredHeaders": {
+    "X-Azure-FDID" : "692a448c-2b5d-4e4d-9fcc-2bc4a6e2335f"
+  }
+}
+```
+
+- Schlüssel-Wert-Paare können beliebige Zeichenfolgen sein.
+- Bei Schlüsseln wird nicht zwischen Groß- und Kleinschreibung unterschieden.
+- Bei Werten wird zwischen Groß- und Kleinschreibung unterschieden.
 
 ## <a name="example-configuration-file"></a>Beispielkonfigurationsdatei
 
@@ -366,21 +417,21 @@ Bei Angabe mindestens eines IP-Adressblocks wird Anforderungen, die von IP-Adres
 
 Überprüfen Sie auf Grundlage der obigen Konfiguration die folgenden Szenarien.
 
-| Anforderungen an                                                    | Ergebnis                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| _/profile_                                                        | Für authentifizierte Benutzer wird die Datei _/profile/index.html_ bereitgestellt. Nicht authentifizierte Benutzer werden zu _/login_ umgeleitet.                                                                                                                                                                                                                                                                                                                              |
-| _/admin/_                                                         | Für authentifizierte Benutzer mit der Rolle _administrator_ wird die Datei _/admin/index.html_ bereitgestellt. Für authentifizierte Benutzer ohne die Rolle _administrator_ wird ein `403`-Fehler <sup>1</sup> angezeigt. Nicht authentifizierte Benutzer werden zu _/login_ umgeleitet.                                                                                                                                                                                                          |
-| _/logo.png_                                                       | Stellt das Image mit einer benutzerdefinierten Cacheregel bereit, deren maximales Alter bei etwas mehr als 182 Tagen (15.770.000 Sekunden) liegt.                                                                                                                                                                                                                                                                                                                                   |
-| _/api/admin_                                                      | `GET`-Anforderungen von authentifizierten Benutzern in der Rolle _registeredusers_ werden an die API gesendet. Authentifizierte Benutzer ohne die Rolle _registeredusers_ und nicht authentifizierte Benutzer erhalten den Fehler `401`.<br/><br/>Die Anforderungen `POST`, `PUT`, `PATCH` und `DELETE` von authentifizierten Benutzern mit der Rolle _administrator_ werden an die API gesendet. Für authentifizierte Benutzer ohne die Rolle _administrator_ und nicht authentifizierte Benutzer wird der Fehler `401` angezeigt. |
-| _/customers/contoso_                                              | Für authentifizierte Benutzer mit der Rolle _administrator_ oder _customers_contoso_ wird die Datei _/customers/contoso/index.html_ bereitgestellt. Für authentifizierte Benutzer ohne die Rolle _administrator_ oder _customers_contoso_ wird der Fehler`403`<sup>1</sup> angezeigt. Nicht authentifizierte Benutzer werden zu _/login_ umgeleitet.                                                                                                                            |
-| _/login_                                                          | Nicht authentifizierte Benutzer werden aufgefordert, sich bei GitHub zu authentifizieren.                                                                                                                                                                                                                                                                                                                                                                             |
-| _/.auth/login/twitter_                                            | Da die Autorisierung bei Twitter durch die Routenregel deaktiviert ist, wird der Fehler `404` zurückgegeben, wodurch ein Fallback mit Bereitstellung von _/index.html_ mit dem Statuscode `200` erfolgt.                                                                                                                                                                                                                                                                                     |
-| _/logout_                                                         | Benutzer werden von allen Authentifizierungsanbietern abgemeldet.                                                                                                                                                                                                                                                                                                                                                                                          |
-| _/calendar/2021/01_                                               | Für den Browser wird die Datei _/calendar.html_ bereitgestellt.                                                                                                                                                                                                                                                                                                                                                                                              |
-| _/specials_                                                       | Der Browser wird dauerhaft zu _/deals_ umgeleitet.                                                                                                                                                                                                                                                                                                                                                                                            |
-| _/data.json_                                                      | Die mit dem MIME-Typ `text/json` bereitgestellte Datei.                                                                                                                                                                                                                                                                                                                                                                                               |
-| _/about_ oder ein beliebiger Ordner, der mit clientseitigen Routingmustern übereinstimmt | Die Datei _/index.html_ wird mit dem Statuscode `200` bereitgestellt.                                                                                                                                                                                                                                                                                                                                                                                    |
-| Eine nicht vorhandene Datei im Ordner _/images/_ .                     | Ein `404`-Fehler.                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| Anforderungen an | Ergebnis |
+|--|--|
+| _/profile_ | Für authentifizierte Benutzer wird die Datei _/profile/index.html_ bereitgestellt. Nicht authentifizierte Benutzer werden zu _/login_ umgeleitet. |
+| _/admin/_ | Für authentifizierte Benutzer mit der Rolle _administrator_ wird die Datei _/admin/index.html_ bereitgestellt. Für authentifizierte Benutzer ohne die Rolle _administrator_ wird ein `403`-Fehler <sup>1</sup> angezeigt. Nicht authentifizierte Benutzer werden zu _/login_ umgeleitet. |
+| _/logo.png_ | Stellt das Image mit einer benutzerdefinierten Cacheregel bereit, deren maximales Alter bei etwas mehr als 182 Tagen (15.770.000 Sekunden) liegt. |
+| _/api/admin_ | `GET`-Anforderungen von authentifizierten Benutzern in der Rolle _registeredusers_ werden an die API gesendet. Authentifizierte Benutzer ohne die Rolle _registeredusers_ und nicht authentifizierte Benutzer erhalten den Fehler `401`.<br/><br/>Die Anforderungen `POST`, `PUT`, `PATCH` und `DELETE` von authentifizierten Benutzern mit der Rolle _administrator_ werden an die API gesendet. Für authentifizierte Benutzer ohne die Rolle _administrator_ und nicht authentifizierte Benutzer wird der Fehler `401` angezeigt. |
+| _/customers/contoso_ | Für authentifizierte Benutzer mit der Rolle _administrator_ oder _customers_contoso_ wird die Datei _/customers/contoso/index.html_ bereitgestellt. Für authentifizierte Benutzer ohne die Rolle _administrator_ oder _customers_contoso_ wird der Fehler`403`<sup>1</sup> angezeigt. Nicht authentifizierte Benutzer werden zu _/login_ umgeleitet. |
+| _/login_ | Nicht authentifizierte Benutzer werden aufgefordert, sich bei GitHub zu authentifizieren. |
+| _/.auth/login/twitter_ | Da die Autorisierung bei Twitter durch die Routenregel deaktiviert ist, wird der Fehler `404` zurückgegeben, wodurch ein Fallback mit Bereitstellung von _/index.html_ mit dem Statuscode `200` erfolgt. |
+| _/logout_ | Benutzer werden von allen Authentifizierungsanbietern abgemeldet. |
+| _/calendar/2021/01_ | Für den Browser wird die Datei _/calendar.html_ bereitgestellt. |
+| _/specials_ | Der Browser wird dauerhaft zu _/deals_ umgeleitet. |
+| _/data.json_ | Die mit dem MIME-Typ `text/json` bereitgestellte Datei. |
+| _/about_ oder ein beliebiger Ordner, der mit clientseitigen Routingmustern übereinstimmt | Die Datei _/index.html_ wird mit dem Statuscode `200` bereitgestellt. |
+| Eine nicht vorhandene Datei im Ordner _/images/_ . | Ein `404`-Fehler. |
 
 <sup>1</sup> Sie können eine benutzerdefinierte Fehlerseite bereitstellen, indem Sie eine [Antwortüberschreibungsregel](#response-overrides) verwenden.
 

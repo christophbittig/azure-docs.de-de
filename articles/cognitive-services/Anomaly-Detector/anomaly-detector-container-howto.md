@@ -12,12 +12,12 @@ ms.date: 09/28/2020
 ms.author: mbullwin
 ms.custom: cog-serv-seo-aug-2020
 keywords: lokal, Docker, Container, Streaming, Algorithmen
-ms.openlocfilehash: 70e5950f6577ce2cca2f28be070f3ba372d46a7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a2481705ef1bed5a4b6d20bdfcbe68022c5f9e2
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97862314"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057377"
 ---
 # <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Installieren und Ausführen von Docker-Containern für die Anomalieerkennungs-API 
 
@@ -124,7 +124,7 @@ Wenn Sie beabsichtigen, mehrere Container mit offengelegten Ports auszuführen, 
 
 Ersetzen Sie `<container-registry>` und `<container-name>` durch die Werte der von Ihnen verwendeten Container. Dabei muss es sich nicht um die gleichen Container handeln. Sie können den Container für die Anomalieerkennung und den LUIS-Container zusammen auf dem Host ausführen, oder Sie können mehrere Container für die Anomalieerkennung ausführen.
 
-Führen Sie den ersten Container an Port 5000 aus.
+Führen Sie den ersten Container am Hostport 5000 aus.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -134,11 +134,11 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Führen Sie den zweiten Container an Port 5001 aus.
+Führen Sie den zweiten Container am Hostport 5001 aus.
 
 
 ```bash
-docker run --rm -it -p 5000:5001 --memory 4g --cpus 1 \
+docker run --rm -it -p 5001:5000 --memory 4g --cpus 1 \
 <container-registry>/microsoft/<container-name> \
 Eula=accept \
 Billing={ENDPOINT_URI} \

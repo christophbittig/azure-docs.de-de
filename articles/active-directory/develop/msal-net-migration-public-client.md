@@ -13,12 +13,12 @@ ms.date: 08/31/2021
 ms.author: sahmalik
 ms.reviewer: saeeda, shermanouko, jmprieur
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 153ac3b3ae141815246326d42b3959ae4d981081
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1ccd2acaaec8c49de761511ebd3d4a5ad86f4095
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124838196"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233652"
 ---
 # <a name="migrate-public-client-applications-from-adalnet-to-msalnet"></a>Migrieren öffentlicher Clientanwendungen von ADAL.NET zu MSAL.NET
 
@@ -40,10 +40,10 @@ In diesem Artikel wird beschrieben, wie Sie eine öffentliche Clientanwendung vo
    Die öffentlichen Clientszenarios sind:
 
    - [Webauthentifizierungs-Manager](scenario-desktop-acquire-token-wam.md), die bevorzugte brokerbasierte Authentifizierung auf Windows.
-   - [Interaktive Authentifizierung](scenario-desktop-acquire-token-interactive.md), bei der dem Benutzer/der Benutzerin eine webbasierte Schnittstelle angezeigt wird, um den Anmeldevorgang abzuschließen.
-   - [Integrierte Windows-Authentifizierung](scenario-desktop-acquire-token-integrated-windows-authentication.md), bei der sich ein*e Benutzer*in mit der gleichen Identität anmeldet, die er bzw. sie für die Anmeldung bei der Windows-Domäne verwendet hat (für in die Domäne eingebundene oder in AAD eingebundene Computer).
-   - [Benutzername/Kennwort](scenario-desktop-acquire-token-username-password.md), bei dem die Anmeldung erfolgt, indem Benutzername/Kennwort-Anmeldeinformationen angegeben werden.
-   - [Gerätecodeflow](scenario-desktop-acquire-token-device-code-flow.md), bei dem ein Gerät mit eingeschränkter Benutzeroberfläche einen Gerätecode anzeigt, um den Authentifizierungsablauf auf einem alternativen Gerät abzuschließen.
+   - [Interaktive Authentifizierung](scenario-desktop-acquire-token-interactive.md), bei der dem Benutzer eine webbasierte Schnittstelle angezeigt wird, um den Anmeldevorgang abzuschließen.
+   - [Integrierte Windows-Authentifizierung](scenario-desktop-acquire-token-integrated-windows-authentication.md), bei der sich ein Benutzer mit derselben Identität anmeldet, die er auch für die Anmeldung in einer Windows-Domäne verwendet (für domänenverbundene oder Azure AD-verbundene Computer).
+   - [Benutzername/Passwort](scenario-desktop-acquire-token-username-password.md), bei dem die Anmeldung durch Angabe eines Benutzernamens/Passworts erfolgt.
+   - [Gerätecodefluss](scenario-desktop-acquire-token-device-code-flow.md), bei dem ein Gerät mit eingeschränkter UX Ihnen einen Gerätecode anzeigt, um den Authentifizierungsfluss auf einem alternativen Gerät abzuschließen.
 
 
 ## <a name="interactive"></a>[Interactive](#tab/interactive)
@@ -124,23 +124,23 @@ Im oben angezeigten MSAL-Code wird WAM (Webauthentifizierungs-Manager) verwendet
 
 ## <a name="integrated-windows-authentication"></a>[Integrierte Windows-Authentifizierung](#tab/iwa)
 
-Integrierte Windows-Authentifizierung, bei der sich ein*e Benutzer*in mit der gleichen Identität anmeldet, die er für die Anmeldung bei der Windows-Domäne verwendet hat (für in die Domäne eingebundene oder in AAD eingebundene Computer).
+Bei der integrierten Windows-Authentifizierung meldet sich Ihre öffentliche Client-Anwendung mit derselben Identität an, mit der sie sich bei einer Windows-Domäne angemeldet hat (für domänenverbundene oder Azure AD-verbundene Computer).
 
-#### <a name="find-out-if-your-code-uses-integrated-windows-authentication"></a>Finden Sie heraus, ob Ihr Code die integrierte Windows-Authentifizierung verwendet.
+#### <a name="find-out-if-your-code-uses-integrated-windows-authentication"></a>Finden Sie heraus, ob Ihr Code integrierte Windows-Authentifizierung verwendet
 
-Der ADAL-Code für Ihre App verwendet integrierte Windows-Authentifizierungsszenarios, wenn er einen Aufruf von `AcquireTokenAsync` enthält, der als Erweiterungsmethode der Klasse`AuthenticationContextIntegratedAuthExtensions` mit den folgenden Parametern verfügbar ist:
+Der ADAL-Code für Ihre Anwendung verwendet integrierte Windows-Authentifizierungsszenarien, wenn er einen Aufruf an `AcquireTokenAsync` enthält, der als Erweiterungsmethode der Klasse `AuthenticationContextIntegratedAuthExtensions` mit den folgenden Parametern verfügbar ist:
 
 - Eine `resource`, die die Ressource angibt, für die Sie das Token anfordern
 - Eine `clientId`, bei der es sich um eine GUID handelt, stellt Ihre Anwendungsregistrierung dar
 - Ein Objekt `UserCredential`, das den*die Benutzer*in darstellt, für den Sie das Token anfordern möchten
 
-#### <a name="update-the-code-for-integrated-windows-auth-scenarios"></a>Aktualisieren des Codes für integrierte Windows-Authentifizierungsszenarios
+#### <a name="update-the-code-for-integrated-windows-authentication-scenarios"></a>Aktualisierung des Codes für integrierte Windows-Authentifizierungsszenarien
 
  [!INCLUDE [Common steps](includes/msal-net-adoption-steps-public-clients.md)]
 
 In diesem Fall ersetzen wir den Aufruf von `AuthenticationContext.AcquireTokenAsync` durch einen Aufruf von `IPublicClientApplication.AcquireTokenByIntegratedWindowsAuth`.
 
-Im Folgenden sehen Sie eine Gegenüberstellung des ADAL.NET- und MSAL.NET-Codes für integrierte Windows-Authentifizierungsszenarios:
+Hier ist ein Vergleich von ADAL.NET- und MSAL.NET-Code für integrierte Windows-Authentifizierungsszenarien:
 
 :::row:::
 :::column span="":::

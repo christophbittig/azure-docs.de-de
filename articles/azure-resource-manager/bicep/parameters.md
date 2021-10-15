@@ -4,13 +4,13 @@ description: Anleitung zum Definieren von Parametern in Bicep-Dateien.
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/13/2021
-ms.openlocfilehash: b53402dfaa274c57d40ef7814b7920dc7eb0a8c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2021
+ms.openlocfilehash: b90fb108df58c41578bf9472390574b4bc174111
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128619512"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363507"
 ---
 # <a name="parameters-in-bicep"></a>Parameter in Bicep
 
@@ -54,9 +54,32 @@ Sie können einen anderen Parameterwert verwenden, um einen Standardwert zu erst
 
 :::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/parameters/parameterswithfunctions.bicep" highlight="2":::
 
-## <a name="secure-parameters"></a>Sichere Parameter
+## <a name="decorators"></a>Decorator-Elemente
 
-Parameter verwenden Decorators für Einschränkungen oder Metadaten. Die Decorators haben das Format `@expression` und werden über der Deklaration des Parameters platziert.
+Parameter verwenden Decorators für Einschränkungen oder Metadaten. Die Decorators haben das Format `@expression` und werden über der Deklaration des Parameters platziert. Sie können einen Parameter als sicher markieren, zulässige Werte angeben, die minimale und maximale Länge für eine Zeichenkette festlegen, den minimalen und maximalen Wert für eine ganze Zahl festlegen und eine Beschreibung des Parameters angeben.
+
+Das folgende Beispiel zeigt zwei gängige Verwendungen für Dekoratoren.
+
+```bicep
+@secure()
+param demoPassword string
+
+@description('Must be at least Standard_A3 to support 2 NICs.')
+param virtualMachineSize string = 'Standard_DS1_v2'
+```
+
+Dekoratoren sind im [sys Namensraum](bicep-functions.md#namespaces-for-functions). Wenn Sie einen Dekorator von einem anderen Element mit dem gleichen Namen unterscheiden müssen, stellen Sie dem Dekorator `sys` voran. Zum Beispiel, wenn Ihre Bicep Datei einen Parameter mit dem Namen `description` enthält, müssen Sie den sys Namespace hinzufügen, wenn Sie den **description** Dekorator verwenden.
+
+```bicep
+@sys.description('The name of the instance.')
+param name string
+@sys.description('The description of the instance to display.')
+param description string
+```
+
+Die verfügbaren Dekoratoren werden in den folgenden Abschnitten beschrieben.
+
+### <a name="secure-parameters"></a>Sichere Parameter
 
 Sie können Zeichenfolgen- oder Objektparameter als sicher kennzeichnen. Der Wert eines sicheren Parameters wird weder im Bereitstellungsverlauf gespeichert noch protokolliert.
 
@@ -68,7 +91,7 @@ param demoPassword string
 param demoSecretObject object
 ```
 
-## <a name="allowed-values"></a>Zulässige Werte
+### <a name="allowed-values"></a>Zulässige Werte
 
 Sie können für einen Parameter zulässige Werte definieren. Diese werden in einem Array bereitgestellt. Wenn für den Parameter ein Wert übergeben wird, der nicht zu den zulässigen Werten gehört, schlägt die Bereitstellung während der Überprüfung fehl.
 
@@ -80,7 +103,7 @@ Sie können für einen Parameter zulässige Werte definieren. Diese werden in ei
 param demoEnum string
 ```
 
-## <a name="length-constraints"></a>Längenbeschränkungen
+### <a name="length-constraints"></a>Längenbeschränkungen
 
 Sie können die minimale und maximale Länge von Zeichenfolgen- und Arrayparametern angeben. Sie können eine oder beide Einschränkungen festlegen. Bei Zeichenfolgen gibt die Länge die Anzahl der Zeichen an. Bei Arrays gibt die Länge die Anzahl der Elemente im Array an.
 
@@ -96,7 +119,7 @@ param storageAccountName string
 param appNames array
 ```
 
-## <a name="integer-constraints"></a>Ganzzahlige Einschränkungen
+### <a name="integer-constraints"></a>Ganzzahlige Einschränkungen
 
 Sie können die minimalen und maximalen Werte für ganzzahlige Parameter festlegen. Sie können eine oder beide Einschränkungen festlegen.
 
@@ -106,7 +129,7 @@ Sie können die minimalen und maximalen Werte für ganzzahlige Parameter festleg
 param month int
 ```
 
-## <a name="description"></a>BESCHREIBUNG
+### <a name="description"></a>BESCHREIBUNG
 
 Fügen Sie dem Parameter eine Beschreibung hinzu, damit Benutzer verstehen, welchen Wert sie angeben sollen. Wenn Sie die Vorlage über das Portal bereitstellen, wird der in der Beschreibung angegebene Text automatisch als Tipp für diesen Parameter verwendet. Beschreibungen sollten nur hinzugefügt werden, wenn der Text mehr Informationen bietet, als aus dem Parameternamen abgeleitet werden können.
 

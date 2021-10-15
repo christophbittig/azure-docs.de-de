@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ac4a35b5a73cb87e3e7962729fdccd89c5f82c57
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2d7b5505092e2dfe32624545128be4ce4dbb3459
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355069"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278935"
 ---
 # <a name="symmetric-key-attestation"></a>Nachweis des symmetrischen Schlüssels
 
@@ -182,6 +182,6 @@ Falls die Geräteschlüssel nicht werkseitig installiert wurden, sollte ein [Har
 
 Nachdem Sie sich mit dem Nachweis des symmetrischen Schlüssels vertraut gemacht haben, können Sie nun die folgenden Artikel lesen, um mehr zu erfahren:
 
-* [Schnellstart: Bereitstellen eines simulierten Geräts mit symmetrischen Schlüsseln](quick-create-simulated-device-symm-key.md)
+* [Schnellstart: Bereitstellen eines simulierten Geräts mit symmetrischem Schlüssel](quick-create-simulated-device-symm-key.md)
 * [Konzepte für die Bereitstellung](about-iot-dps.md#provisioning-process)
 * [Erste Schritte mit der automatischen Bereitstellung](./quick-setup-auto-provision.md) 

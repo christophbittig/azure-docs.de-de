@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.date: 09/13/2021
 tags: connectors
-ms.openlocfilehash: 1c894c6162a8c9e24794f5c52ce1f6cefb6fa85a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c1352fe61b8a663371719100aa86806da0791f20
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128563707"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359347"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps
 
@@ -104,7 +104,7 @@ Diese integrierte Aktion führt einen HTTP-Aufruf der angegebenen URL für einen
 
 Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Trigger oder einer -Aktion, die diese Informationen zurückgeben:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | BESCHREIBUNG |
 |----------|------|-------------|
 | `headers` | JSON-Objekt | Die Header aus der Anforderung |
 | `body` | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
@@ -128,19 +128,19 @@ Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Trigger ode
 
 Wenn Sie über eine **Logik-App-Ressource (Standard)** in Azure Logic Apps mit nur einem Mandanten verfügen und einen HTTP-Vorgang mit einem der folgenden Authentifizierungstypen verwenden möchten, stellen Sie sicher, dass Sie die zusätzlichen Einrichtungsschritte für den entsprechenden Authentifizierungstyp ausführen. Andernfalls schlägt der Aufruf fehl.
 
-* [TSL/SSL-Zertifikat](#tsl-ssl-certificate-authentication): Fügen Sie die App-Einstellung `WEBSITE_LOAD_ROOT_CERTIFICATES` hinzu, und geben Sie den Ihren Fingerabdruck für Ihr TSL/SSL-Zertifikat an.
+* [TLS/SSL-Zertifikat](#tls-ssl-certificate-authentication): Fügen Sie die App-Einstellung `WEBSITE_LOAD_ROOT_CERTIFICATES` hinzu und geben Sie den Fingerabdruck für Ihr TLS/SSL-Zertifikat an.
 
 * [Clientzertifikat oder Azure Active Directory Open Authentication (Azure AD OAuth) mit dem Anmeldeinformationstyp „Certificate“](#client-certificate-authentication): Fügen Sie die App-Einstellung `WEBSITE_LOAD_USER_PROFILE` hinzu, und legen Sie den Wert auf `1` fest.
 
-<a name="tsl-ssl-certificate-authentication"></a>
+<a name="tls-ssl-certificate-authentication"></a>
 
-### <a name="tslssl-certificate-authentication"></a>TSL/SSL-Zertifikatauthentifizierung
+### <a name="tlsssl-certificate-authentication"></a>TLS/SSL-Zertifikat-Authentifizierung
 
 1. In den App-Einstellungen Ihrer Logic App-Ressource [fügen Sie die App-Einstellung `WEBSITE_LOAD_ROOT_CERTIFICATES` hinzu, oder aktualisieren Sie sie](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings).
 
-1. Geben Sie als Wert für die Einstellung den Fingerabdruck für Ihr TSL/SSL-Zertifikat als vertrauenswürdiges Stammzertifikat an.
+1. Geben Sie als Einstellungswert den Thumbprint für Ihr TLS/SSL-Zertifikat als vertrauenswürdiges Stammzertifikat an.
 
-   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>"`
+   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TLS/SSL-certificate>"`
 
 Wenn Sie z. B. in Visual Studio Code arbeiten, führen Sie die folgenden Schritte aus:
 
@@ -154,7 +154,7 @@ Wenn Sie z. B. in Visual Studio Code arbeiten, führen Sie die folgenden Schritt
       "Values": {
          <...>
          "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>",
+         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TLS/SSL-certificate>",
          <...>
       }
    }

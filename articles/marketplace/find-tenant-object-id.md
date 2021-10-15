@@ -6,12 +6,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 10/09/2020
-ms.openlocfilehash: 2b1ba0779649c4955987c7dae9802cefaba89b79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92819c28002c79ff905174e5b2f94779050237fd
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97109339"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356720"
 ---
 # <a name="find-tenant-id-object-id-and-partner-association-details"></a>Suchen der Mandanten-ID, der Objekt-ID und der Partnerzuordnungsdetails
 
@@ -57,14 +57,15 @@ Wenn Sie Screenshots dieser Elemente in Azure Cloud Shell für die Unterstützun
 1. Melden Sie sich im [Office 365-Verwaltungsportal](https://portal.office.com/adminportal/home) mit einem Konto im gewünschten Mandanten mit den entsprechenden Administratorrechten an.
 2. Erweitern Sie im linken Menü den Abschnitt **Admin Center** am unteren Rand, und wählen Sie dann die Option „Azure Active Directory“ aus, um die Verwaltungskonsole in einem neuen Browserfenster zu starten.
 3. Wählen Sie **Benutzer** aus.
-4. Navigieren Sie zum gewünschten Benutzer oder suchen Sie ihn, und wählen Sie dann den Kontonamen aus, um die Profilinformationen des Benutzerkontos anzuzeigen.
+4. Navigieren Sie zum gewünschten Benutzer, oder suchen Sie ihn, und wählen Sie dann den Kontonamen aus, um die Profilinformationen des Benutzerkontos anzuzeigen.
 5. Die Objekt-ID befindet sich im Abschnitt „Identität“ auf der rechten Seite.
 
     :::image type="content" source="media/tenant-and-object-id/azure-ad-admin-center.png" alt-text="Azure Active Directory Admin Center.":::
 
 6. Suchen Sie **Rollenzuweisungen**, indem Sie im linken Menü **Zugriffssteuerung (IAM)** und dann **Rollenzuweisungen** auswählen.
 
-    :::image type="content" source="https://docs.microsoft.com/azure/role-based-access-control/media/role-assignments-portal/role-assignments.png" alt-text="Rollenzuweisungen für Azure-Ressourcen":::
+    :::image type="content" source="../role-based-access-control/media/role-assignments-portal/rg-role-assignments.png" alt-text="Rollenzuweisungen für Azure-Ressourcen":::
+
 
 ## <a name="find-ids-for-debugging"></a>Suchen von IDs zum Debuggen
 

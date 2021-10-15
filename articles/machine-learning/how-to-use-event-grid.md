@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Richten Sie in Azure Machine Learning ereignisgesteuerte Anwendungen, Prozesse oder CI/CD-Machine Learning-Workflows ein.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.author: cgronlun
 author: cjgronlund
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 0f5cdc9acd68f67c57027d6b68e6c79a8ab1a24e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2ffeb5c5b369ed99042635342a59d6e19721ee15
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124767297"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424178"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Auslösen von Anwendungen, Prozessen oder CI/CD-Workflows basierend auf Azure Machine Learning-Ereignissen (Vorschau)
 
@@ -39,7 +39,7 @@ Azure Event Grid liest Ereignisse aus Quellen, z. B. Azure Machine Learning und 
 
 ![Azure Event Grid – funktionales Modell](./media/concept-event-grid-integration/azure-event-grid-functional-model.png)
 
-Weitere Informationen zu Ereignisquellen und Ereignishandlern finden Sie unter [Was ist Event Grid?](../event-grid/overview.md).
+Weitere Informationen über Ereignisquellen und Ereignisbehandler finden Sie unter [Was ist ein Ereignisraster?](../event-grid/overview.md)
 
 ### <a name="event-types-for-azure-machine-learning"></a>Ereignistypen für Azure Machine Learning
 

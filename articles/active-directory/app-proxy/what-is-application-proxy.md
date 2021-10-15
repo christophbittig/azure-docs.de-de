@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9a21ae719a6e89819cb6841f69ff48e17cc0bec6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: cb6241443f4ec7aa9d60501aab50ca21ed1d147d
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779519"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235856"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy
 
@@ -92,7 +92,7 @@ Es gibt mehrere Möglichkeiten, eine Anwendung für einmaliges Anmelden zu konfi
 
 Der Anwendungsproxy eignet sich für Apps, die das folgende Protokoll für die native Authentifizierung verwenden:
 
-* **[Integrierte Windows-Authentifizierung (IWA)](./application-proxy-configure-single-sign-on-with-kcd.md).** Bei IWA verwenden die Anwendungsproxyconnectors die eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD), um Benutzer für die Kerberos-Anwendung zu authentifizieren.
+* [**Integrierte Windows-Authentifizierung (IWA)** ](./application-proxy-configure-single-sign-on-with-kcd.md) Bei IWA verwenden die Anwendungsproxyconnectors die eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD), um Benutzer für die Kerberos-Anwendung zu authentifizieren.
 
 Der Anwendungsproxy unterstützt auch die folgenden Authentifizierungsprotokolle mit Drittanbieterintegration oder in bestimmten Konfigurationsszenarien:
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/27/2021
 ms.author: larryfr
 ms.custom: include file
-ms.openlocfilehash: 18d6da8c9156a66a16be7590603ae71b85abb9a4
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: e144756e65c0ae4d202333cd2972d9c5a1e3fdc8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105499"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740675"
 ---
 Azure Machine Learning erfordert sowohl eingehenden als auch ausgehenden Zugriff auf das öffentliche Internet. Die folgenden Tabellen geben Aufschluss darüber, welcher Zugriff wofür erforderlich ist. Das __Protokoll__ für alle Elemente ist __TCP__. Ersetzen Sie bei Diensttags, die auf `.region` enden, `region` durch die Azure-Region, die Ihren Arbeitsbereich enthält. Zum Beispiel `Storage.westus`:
 
@@ -28,6 +28,7 @@ Azure Machine Learning erfordert sowohl eingehenden als auch ausgehenden Zugriff
 | Ausgehend | 443 | AzureFrontDoor.FrontEnd</br>* In Azure China nicht erforderlich. | Globaler Einstiegspunkt für [Azure Machine Learning Studio](https://ml.azure.com). | 
 | Ausgehend | 443 | ContainerRegistry.region | Auf Docker-Images zugreifen, die von Microsoft bereitgestellt werden. |
 | Ausgehend | 443 | MicrosoftContainerRegistry.region | Auf Docker-Images zugreifen, die von Microsoft bereitgestellt werden. Einrichten des Azure Machine Learning Routers für Azure Kubernetes Service. |
+| Ausgehend | 443 | Keyvault.region | Greifen Sie auf den Schlüsseltresor für den Azure Batch-Dienst zu. Dieser Parameter ist nur erforderlich, wenn Ihr Arbeitsbereich mit aktiviertem [hbi_workspace](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)-Flag erstellt wurde. |
 
 > [!TIP]
 > Falls Sie anstelle von Diensttags die IP-Adressen benötigen, verwenden Sie eine der folgenden Optionen:
@@ -52,6 +53,6 @@ Unter Umständen muss auch __ausgehender__ Datenverkehr für Visual Studio Code 
 
 Wenn Sie Azure Kubernetes Service (AKS) mit Azure Machine Learning verwenden, lassen Sie den folgenden Datenverkehr an das AKS-VNET zu:
 
-* Allgemeine Anforderungen für eingehenden/ausgehenden Datenverkehr für AKS, wie im Artikel [Einschränken des ausgehenden Datenverkehrs in Azure Kubernetes Service](/azure/aks/limit-egress-traffic) beschrieben.
+* Allgemeine Anforderungen für eingehenden/ausgehenden Datenverkehr für AKS, wie im Artikel [Einschränken des ausgehenden Datenverkehrs in Azure Kubernetes Service](../articles/aks/limit-egress-traffic.md) beschrieben.
 * __Ausgehend__ an mcr.microsoft.com.
-* Wenn Sie ein Modell in einem AKS-Cluster bereitstellen, beziehen Sie sich auf den Leitfaden im Artikel [Bereitstellen von ML-Modellen in Azure Kubernetes Service](/azure/machine-learning/how-to-deploy-azure-kubernetes-service#connectivity).
+* Wenn Sie ein Modell in einem AKS-Cluster bereitstellen, beziehen Sie sich auf den Leitfaden im Artikel [Bereitstellen von ML-Modellen in Azure Kubernetes Service](../articles/machine-learning/how-to-deploy-azure-kubernetes-service.md#connectivity).

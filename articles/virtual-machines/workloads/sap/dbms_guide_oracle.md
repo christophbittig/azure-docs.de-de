@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2021
+ms.date: 10/01/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd4b8ccf3147e349b9625d5912e5d603415ec39a
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 3c04c2824b005adfc3e04d710b0e55c7f52c99b1
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112297501"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402990"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Oracle-DBMS-Bereitstellung für SAP-Workload auf Azure Virtual Machines
 
@@ -415,6 +415,7 @@ Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR*Tools fü
 Sie können auch mit Azure Backup eine anwendungskonsistente VM-Sicherung ausführen. Der Artikel [Planen der Sicherungsinfrastruktur für VMs in Azure](../../../backup/backup-azure-vms-introduction.md) erläutert, wie Azure Backup die Windows VSS-Funktionalität zur Ausführung einer anwendungskonsistenten Sicherung verwendet. Die Oracle-DBMS-Releases, die in Azure von SAP unterstützt werden, können die VSS-Funktionalität zum Sichern nutzen. Weitere Informationen finden Sie in der Oracle-Dokumentation [Grundkonzepte der Datenbanksicherung und -wiederherstellung mit VSS](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701).
 
 
+
 ### <a name="high-availability"></a>Hochverfügbarkeit
 Oracle Data Guard wird aus Gründen der Hochverfügbarkeit und der Notfallwiederherstellung unterstützt. Um ein automatisches Failover in Data Guard zu erreichen, muss Fast Start-Failover (FSFA) verwendet werden. Der Beobachter (FSFA) löst das Failover aus. Wenn Sie FSFA nicht verwenden, können Sie nur eine Konfiguration für manuelles Failover verwenden.
 
@@ -517,6 +518,9 @@ Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in Onlinewiederholungsp
 Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR*Tools für Oracle genauso unterstützt wie auf Bare-Metal-Systemen und Hyper-V. Auch Oracle Recovery Manager (RMAN) wird für Sicherungen auf einen Datenträger und Wiederherstellungen von einem Datenträger unterstützt.
 
 Weitere Informationen zur Verwendung von Azure Backup und Azure Recovery Services zum Sichern und Wiederherstellen von Oracle-Datenbanken finden Sie unter [Sichern und Wiederherstellen einer Oracle Database 12c-Datenbank auf einem virtuellen Azure Linux-Computer](../oracle/oracle-overview.md).
+
+Der [Azure Backup-Dienst](../../../backup/backup-overview.md) unterstützt auch Oracle-Sicherungen, wie im Artikel [Sichern und Wiederherstellen einer Oracle Database 19c-Datenbank auf einer Azure-Linux-VM mithilfe von Azure Backup](../oracle/oracle-database-backup-azure-backup.md) beschrieben.
+
 
 ### <a name="high-availability"></a>Hochverfügbarkeit
 Oracle Data Guard wird aus Gründen der Hochverfügbarkeit und der Notfallwiederherstellung unterstützt. Um ein automatisches Failover in Data Guard zu erreichen, muss Fast Start-Failover (FSFA) verwendet werden. Die Beobachterfunktion (FSFA) löst das Failover aus. Wenn Sie FSFA nicht verwenden, können Sie nur eine Konfiguration für manuelles Failover verwenden. Weitere Informationen finden Sie unter [Implementieren von Oracle Data Guard auf einer Linux-VM in Azure](../oracle/configure-oracle-dataguard.md).

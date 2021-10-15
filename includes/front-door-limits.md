@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: include
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: b64cf919c0197ccc8e7128a045db0eee27356c78
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 6f950725e0cb889a55f39cd4fe1dd00760274880
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123355212"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778843"
 ---
 | Resource | Begrenzung |
 | --- | --- |
@@ -89,3 +89,5 @@ ms.locfileid: "123355212"
 * Maximale Zeichenlänge des Headerwerts für Regel-Engine-Aktion: 640 Zeichen
 * Maximale Zeichenlänge des Headerwerts für Regel-Engine-Bedingung: 256 Zeichen
 * Maximale ETag-Headergröße: 128 Byte
+
+Weitere Informationen zu den Grenzwerten für Regel-Engine-Konfigurationen finden Sie unter [Regel-Engine: Terminologie](../articles/frontdoor/front-door-rules-engine.md#terminology).

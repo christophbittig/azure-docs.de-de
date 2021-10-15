@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: bb7baa20b5bc7e47e231e3e15937dde941ac0e03
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 5e1d4675e7e99410471951c21d7e8112cf6839c5
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608258"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275010"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning?
 
@@ -93,10 +93,13 @@ In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Seri
 | [EAv4](../virtual-machines/eav4-easv4-series.md) | Keine. | Arbeitsspeicheroptimiert | Computecluster und -instanzen |
 | [Ev3](../virtual-machines/ev3-esv3-series.md) | Keine. | Arbeitsspeicheroptimiert | Computecluster und -instanzen |
 | [FSv2](../virtual-machines/fsv2-series.md) | Keine. | Computeoptimiert | Computecluster und -instanzen |
+| [FX](../virtual-machines/fx-series.md) | Genehmigung erforderlich. | Für Compute optimiert | Computecluster |
 | [H](../virtual-machines/h-series.md) | Keine. | High Performance Computing | Computecluster und -instanzen |
 | [HB](../virtual-machines/hb-series.md) | Genehmigung erforderlich. | High Performance Computing | Computecluster und -instanzen |
 | [HBv2](../virtual-machines/hbv2-series.md) | Genehmigung erforderlich. |  High Performance Computing | Computecluster und -instanzen |
+| [HBv3](../virtual-machines/hbv3-series.md) | Genehmigung erforderlich. |  High Performance Computing | Computecluster und -instanzen |
 | [HC](../virtual-machines/hc-series.md) | Genehmigung erforderlich. |  High Performance Computing | Computecluster und -instanzen |
+| [LSv2](../virtual-machines/lsv2-series.md) | Keine. |  Speicheroptimiert | Computecluster und -instanzen |
 | [M](../virtual-machines/m-series.md) | Genehmigung erforderlich. | Arbeitsspeicheroptimiert | Computecluster und -instanzen |
 | [NC](../virtual-machines/nc-series.md) | Keine. |  GPU | Computecluster und -instanzen |
 | [NC Promo](../virtual-machines/nc-series.md) | Keine. | GPU | Computecluster und -instanzen |

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/06/2021
 ms.author: v-doeris
 ms.custom: has-adal-ref
-ms.openlocfilehash: a67f493666c458637a2cd48b7e0d78e0bcf59862
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 541200501fd9bd3cc1883283bc308445d0e4115e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418768"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232241"
 ---
 # <a name="how-to-migrate-a-javascript-app-from-adaljs-to-msaljs"></a>Gewusst wie: Migrieren einer JavaScript-App von ADAL.js zu MSAL.js
 
@@ -98,7 +98,7 @@ Sowohl in ADAL.js als auch MSAL.js wird der Autoritäts-URI standardmäßig auf 
 
 Einige der [Konfigurationsoptionen in ADAL.js](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context), die bei der Initialisierung von [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) verwendet werden, sind in MSAL.js veraltet, während einige neue Optionen eingeführt wurden. Weitere Informationen finden Sie in der [vollständigen Liste der verfügbaren Optionen](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md). Wichtig ist, dass viele dieser Optionen mit Ausnahme von `clientId` während des Tokenerwerbs außer Kraft gesetzt werden können, so dass Sie sie für *jede Anforderung individuell* festlegen können. Sie können zum Beispiel einen anderen **Autoritäts-URI** oder **Umleitungs-URI** verwenden als den, den Sie während der Initialisierung beim Erwerb von Token festgelegt haben.
 
-Darüber hinaus müssen Sie die Anmeldebenutzeroberfläche (d. h. ob Popupfenster verwendet werden oder die Seite umgeleitet wird) nicht mehr über die Konfigurationsoptionen festlegen. Stattdessen stellt MSAL.js `loginPopup`- und `loginRedirect`-Methoden über die `PublicClientApplication`-Instanz zur Verfügung.
+Darüber hinaus müssen Sie die Anmeldebenutzeroberfläche (d. h., ob Popupfenster verwendet werden oder die Seite umgeleitet wird) nicht mehr über die Konfigurationsoptionen festlegen. Stattdessen stellt `MSAL.js` `loginPopup`- und `loginRedirect`-Methoden über die `PublicClientApplication`-Instanz zur Verfügung.
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 

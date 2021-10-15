@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2021
-ms.openlocfilehash: 768645614035afa852e5d9195666748df9116368
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3a0ce42cf32e218f3debaf6f3e84bb8f27a81c82
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577952"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129279030"
 ---
 # <a name="networking-overview-for-azure-database-for-postgresql---flexible-server-preview"></a>Übersicht über den Netzwerkbetrieb bei Azure Database for PostgreSQL – Flexibler Server (Vorschau)
 
@@ -74,7 +74,7 @@ Nachstehend werden einige Konzepte erläutert, die Sie kennen sollten, wenn Sie 
   Derzeit werden keine NSGs unterstützt, bei denen eine ASG Teil der Regel mit Azure Database for PostgreSQL – Flexibler Server ist. Es wird derzeit empfohlen, die [IP-basierte Filterung von Quelle oder Ziel](../../virtual-network/network-security-groups-overview.md#security-rules) in einer NSG zu verwenden. 
 
   > [!IMPORTANT]
-  > Hochverfügbarkeitsfeatures von Azure Database for PostgreSQL (Flexible Server) erfordern die Fähigkeit, den Datenverkehr an die Zielports 5432 und 6432 innerhalb des Subnetzes des virtuellen Azure-Netzwerks, in dem Azure Database for PostgreSQL (Flexible Server) bereitgestellt wird, sowie zur Protokollarchivierung an Azure Storage zu senden und zu empfangen. Wenn Sie [Netzwerksicherheitsgruppen (Network Security Groups, NSG)](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) erstellen, um den Datenverkehrsfluss zu oder von Ihrer Azure Database for PostgreSQL Flexible Server-Instanz innerhalb des Subnetzes zu verweigern, in dem diese Instanz bereitgestellt wurde, müssen Sie sicherstellen, dass der Datenverkehr an die Zielports 5432 und 6432 innerhalb des Subnetzes sowie an Azure Storage zugelassen wird, indem Sie das [Diensttag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) Azure Storage als Ziel verwenden. 
+  > Hochverfügbarkeitsfeatures von Azure Database for PostgreSQL (Flexible Server) erfordern die Fähigkeit, den Datenverkehr an die Zielports 5432 und 6432 innerhalb des Subnetzes des virtuellen Azure-Netzwerks, in dem Azure Database for PostgreSQL (Flexible Server) bereitgestellt wird, sowie zur Protokollarchivierung an Azure Storage zu senden und zu empfangen. Wenn Sie [Netzwerksicherheitsgruppen (NSG)](../../virtual-network/network-security-groups-overview.md) erstellen, um den Datenverkehr zu oder von Ihrer Azure Database for PostgreSQL - Flexible Server innerhalb des Subnetzes, in dem sie eingesetzt wird, zu unterbinden, stellen Sie bitte sicher, dass der Datenverkehr zu den Zielports 5432 und 6432 innerhalb des Subnetzes und auch zu Azure Storage durch Verwendung des [Servicetags](../../virtual-network/service-tags-overview.md) Azure Storage als Ziel.
 
 * **Integration privater DNS-Zonen:** Mit der Integration privater Azure-DNS-Zonen können Sie das private DNS innerhalb des aktuellen VNet oder eines beliebigen Peer-VNet in derselben Region auflösen, in dem die private DNS-Zone verknüpft ist. 
 

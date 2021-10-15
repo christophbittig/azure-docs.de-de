@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 309b900f6c5f2ffe8cc0fd9101e7aa0408cb2dd2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a78d3e68841e4463d4f66f24821b5e42c7650f44
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124838247"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400437"
 ---
-# <a name="setup-diagnostic-logs-via-the-azure-monitor-rest-api"></a>Einrichten von Diagnoseprotokollen über die Azure Monitor-REST-API
+# <a name="set-up-diagnostic-logs-via-the-azure-monitor-rest-api"></a>Einrichten von Diagnoseprotokollen über die Azure Monitor-REST-API
 
 In diesem Artikel wird beschrieben, wie Sie Diagnoseprotokolle für Azure Data Factory mithilfe der Azure Monitor-REST-API einrichten.
 
@@ -27,10 +27,12 @@ Verwenden Sie Diagnoseeinstellungen, um Diagnoseprotokolle für Nicht-Computeres
 * Sie geben an, welche Protokollkategorien gesendet werden.
 * Sie geben an, wie lange die einzelnen Protokollkategorien in einem Speicherkonto aufbewahrt werden.
 * Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
-* Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist, werden die Aufbewahrungsrichtlinien ignoriert. Diese Bedingung kann z.B. auftreten, wenn nur die Optionen „Event Hubs“ oder „Überwachungsprotokolle“ ausgewählt sind.
+* Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist, werden die Aufbewahrungsrichtlinien ignoriert. Diese Bedingung kann z. B. auftreten, wenn nur die Optionen „Event Hubs“ oder „Überwachungsprotokolle“ ausgewählt sind.
 * Aufbewahrungsrichtlinien werden pro Tag angewendet. Die Grenze zwischen Tagen liegt um Mitternacht (Koordinierte Weltzeit, UTC). Jeweils am Ende eines Tages werden die Protokolle der Tage gelöscht, deren Aufbewahrungsdauer abgelaufen ist. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht.
 
-## <a name="enable-diagnostic-logs-via-the-azure-monitor-rest-api"></a>Aktivieren von Diagnoseprotokollen über die Azure Monitor-REST-API
+## <a name="enable-diagnostic-logs-via-the-monitor-rest-api"></a>Aktivieren von Diagnoseprotokollen über die Monitor-REST-API
+
+Verwenden Sie die Monitor-REST-API, um Diagnoseprotokolle zu aktivieren.
 
 ### <a name="create-or-update-a-diagnostics-setting-in-the-monitor-rest-api"></a>Erstellen oder Aktualisieren einer Diagnoseeinstellung in der REST-API von Azure Monitor
 
@@ -89,7 +91,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Eigenschaft | Type | BESCHREIBUNG |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
 | **storageAccountId** |String | Die Ressourcen-ID des Speicherkontos, an das Diagnoseprotokolle gesendet werden sollen. |
 | **serviceBusRuleId** |String | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID weist das Format `{service bus resource ID}/authorizationrules/{key name}` auf.|

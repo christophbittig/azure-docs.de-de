@@ -1,15 +1,15 @@
 ---
 title: Arbeiten mit großen Datasets
 description: Erfahren Sie, wie Sie bei der Verwendung von Azure Resource Graph Datensätze in großen Datasets abrufen, formatieren, paginieren und überspringen.
-ms.date: 08/17/2021
+ms.date: 09/29/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b306b52c02a251abf1d781ccce586e4b94c8264b
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 142effe9a4d4d46f04b1a9a018fc366fba69428c
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356641"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274840"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
@@ -38,10 +38,7 @@ In der [REST-API](/rest/api/azureresourcegraph/resourcegraph(2021-03-01)/resourc
 
 Das jeweils _restriktivste_ Steuerelement hat Vorrang. Wenn in einer Abfrage beispielsweise die Operatoren **top** oder **limit** verwendet werden und sich dabei mehr Datensätze als bei **First** ergeben, entspricht die maximale Anzahl der zurückgegebenen Datensätze der durch **First** vorgegebenen Anzahl. Wenn **top** oder **limit** kleiner ist als **First**, wird als Datensatzgruppe jeweils der kleinere Wert der durch **top** oder **limit** konfigurierten Werte zurückgegeben.
 
-**First** weist derzeit einen maximal zulässigen Wert von _5000_ auf, der durch [Auslagerungsergebnisse](#paging-results) mit jeweils _1000_ Datensätzen erreicht wird.
-
-> [!IMPORTANT]
-> Wenn **First** für einen größeren Wert als _1000_ Datensätze konfiguriert ist, muss die Abfrage das **id**-Feld **projizieren**, damit die Paginierung funktioniert. Wenn es in der Abfrage fehlt, wird die Antwort nicht [ausgelagert](#paging-results), und die Ergebnisse sind auf _1000_ Datensätze beschränkt.
+Für **First** ist _1.000_ als maximal zulässiger Wert festgelegt.
 
 ## <a name="skipping-records"></a>Überspringen von Datensätzen
 

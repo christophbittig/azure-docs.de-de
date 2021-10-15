@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 36d36101cc7a7a4efff66e680f47431933ddf569
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 58509ca09bc17911d4a1a16955f97396c082e7de
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630829"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273115"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Übersicht über Azure-Seitenblobs
 
@@ -27,7 +27,7 @@ Schlüsselfeatures von Azure-Seitenblobs sind die REST-Schnittstelle, die Dauerh
 
 ## <a name="restrictions"></a>Beschränkungen
 
-Seitenblobs können nur die **heiße Zugriffsebene** verwenden. Die Verwendung der **kalten Ebene** oder der **Archivebene** ist nicht möglich. Weitere Informationen zu Zugriffsebenen finden Sie unter [Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md).
+Seitenblobs können nur die **heiße Zugriffsebene** verwenden. Die Verwendung der **kalten Ebene** oder der **Archivebene** ist nicht möglich. Weitere Informationen zu Zugriffsebenen finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md).
 
 ## <a name="sample-use-cases"></a>Beispiele für Anwendungsfälle
 

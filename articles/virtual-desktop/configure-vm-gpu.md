@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: e55564ab1534b145958e128f58d50911ae9c51fa
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2ace40157681b250b56fcd595486260f07ec80c3
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746283"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400703"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-azure-virtual-desktop"></a>Konfigurieren der Beschleunigung durch Graphics Processing Units (GPUs) für Azure Virtual Desktop
 
@@ -23,10 +23,11 @@ Anhand der Anweisungen in diesem Artikel können Sie eine GPU-optimierte Azure-V
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>Auswählen einer geeigneten GPU-optimierten Größe für virtuelle Azure-Computer
 
-Wählen Sie eine der VM-Größen von Azure der [NV-Serie](../virtual-machines/nv-series.md), [NVv3-Serie](../virtual-machines/nvv3-series.md) oder [NVv4-Serie](../virtual-machines/nvv4-series.md) aus. Diese sind auf die App- und Desktopvirtualisierung ausgerichtet und ermöglichen es, die meisten Apps und die Windows-Benutzeroberfläche über die GPU zu beschleunigen. Welche VM-Größe sich am besten für Ihren Hostpool eignet, hängt von mehreren Faktoren ab, z. B. von den Workloads Ihrer App, der gewünschten Benutzerfreundlichkeit und den Kosten. Im Allgemeinen bieten größere und leistungsfähigere GPUs ein besseres Benutzererlebnis bei einer gegebenen Benutzerdichte, während kleinere und fraktionierte GPU-Größen eine differenziertere Kontrolle über Kosten und Qualität ermöglichen.
+Wählen Sie eine der VM-Größen von Azure der [NV-Serie](../virtual-machines/nv-series.md), [NVv3-Serie](../virtual-machines/nvv3-series.md) oder [NVv4-Serie](../virtual-machines/nvv4-series.md) aus. Diese sind auf die App- und Desktopvirtualisierung ausgerichtet und ermöglichen es, die meisten Apps und die Windows-Benutzeroberfläche über die GPU zu beschleunigen. Welche VM-Größe sich am besten für Ihren Hostpool eignet, hängt von mehreren Faktoren ab, z. B. von den Workloads Ihrer App, der gewünschten Benutzerfreundlichkeit und den Kosten. Im Allgemeinen bieten größere und leistungsfähigere GPUs ein besseres Benutzererlebnis bei einer gegebenen Benutzerdichte, während kleinere und fraktionierte GPU-Größen eine differenziertere Kontrolle über Kosten und Qualität ermöglichen. Beachten Sie bei der Auswahl der VM, dass VMs der NV-Serie eingestellt werden. Details finden Sie im Artikel zur [Einstellung der NV-Serie](../virtual-machines/nv-series-retirement.md).
 
 >[!NOTE]
 >Die VMs der NC-, NCv2-, NCv3-, ND- und NDv2-Serien von Azure sind im Allgemeinen nicht für Azure Virtual Desktop-Sitzungshosts geeignet. Diese VMs sind auf spezialisierte, hochleistungsfähige Compute- oder Machine Learning-Tools ausgerichtet, wie die mit NVIDIA CUDA erstellten. Sie unterstützen keine GPU-Beschleunigung für die meisten Anwendungen oder die Windows-Benutzeroberfläche.
+
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Erstellen eines Hostpools, Bereitstellen der VM und Konfigurieren einer App-Gruppe
 
@@ -37,7 +38,10 @@ Azure Virtual Desktop unterstützt das durch GPU beschleunigte Rendern und Codie
 * Windows 10, Version 1511 und höher
 * Windows Server 2016 oder höher
 
-Außerdem müssen Sie eine App-Gruppe konfigurieren oder die Standarddesktop-App-Gruppe „Desktop Application Group“ verwenden, die automatisch erstellt wird, wenn Sie einen neuen Hostpool erstellen. Anweisungen finden Sie unter [Tutorial: Verwalten von App-Gruppen für Azure Virtual Desktop (klassisch)](./manage-app-groups.md)
+>[!NOTE]
+>Das Betriebssystem für mehrere Sitzungen wird zwar nicht speziell aufgeführt, die GRID-Lizenz unterstützt für NV-Instanzen jedoch 25 gleichzeitige Benutzer*innen. Weitere Informationen finden Sie unter [NV-Serie](../virtual-machines/nv-series.md).
+
+Außerdem müssen Sie eine App-Gruppe konfigurieren oder die Standarddesktop-App-Gruppe „Desktop Application Group“ verwenden, die automatisch erstellt wird, wenn Sie einen neuen Hostpool erstellen. Anweisungen finden Sie unter [Tutorial: Verwalten von App-Gruppen für Azure Virtual Desktop](./manage-app-groups.md).
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Installieren unterstützter Grafiktreiber auf Ihrer VM
 

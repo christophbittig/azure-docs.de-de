@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: mathoma, wiassaf
-ms.date: 7/29/2021
-ms.openlocfilehash: ac1241b28ae85f19aa4bfdbc1a92310b64d88462
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 9/28/2021
+ms.openlocfilehash: cc9c0f35be998e8ef3947946c84bc67a94f125cb
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347096"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235628"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -50,7 +50,7 @@ Serverlos ist preis-/leistungsoptimiert für Einzeldatenbanken mit zeitweiligen,
 
 ### <a name="scenarios-well-suited-for-serverless-compute"></a>Ideal geeignete Szenarien für serverloses Computing
 
-- Einzeldatenbanken mit wechselnden, unvorhersehbaren Nutzungsmustern, Perioden der Inaktivität und geringerer durchschnittlicher Computenutzung im Zeitverlauf.
+- Einzeldatenbanken mit wechselnden, unvorhersehbaren Nutzungsmustern, Perioden der Inaktivität und geringerer durchschnittlicher Computenutzung im Zeitverlauf
 - Einzeldatenbanken in der bereitgestellten Computeebene, die häufig neu skaliert werden, und Kunden, die die Neuskalierung des Computings an den Dienst delegieren möchten.
 - Neue Einzeldatenbanken ohne Nutzungsverlauf, bei denen das Schätzen der Computegröße vor der Bereitstellung in SQL-Datenbank schwierig oder gar nicht möglich ist.
 
@@ -161,7 +161,7 @@ Wenn das Ergebnisset nicht leer ist, bedeutet dies, dass derzeit Sitzungen das A
 
 Wenn das Ergebnisset leer ist, ist es dennoch möglich, dass Sitzungen zu einem bestimmten Zeitpunkt während des Verzögerungszeitraums beim AutoAnhalten geöffnet waren, möglicherweise für kurze Zeit. Sie können [Azure SQL Auditing](auditing-overview.md) verwenden und Überwachungsdaten für den relevanten Zeitraum untersuchen, um zu überprüfen, ob solche Aktivitäten während des Verzögerungszeitraums aufgetreten sind.
 
-Das Vorhandensein von offenen Sitzungen mit oder ohne gleichzeitige CPU-Auslastung im Benutzerressourcenpool ist der häufigste Grund dafür, dass eine serverlose Datenbank nicht wie erwartet automatisch angehalten wird. Einige [Features](#auto-pausing) unterstützen AutoAnhalten nicht, sondern nur automatische Skalierung.
+Das Vorhandensein von offenen Sitzungen mit oder ohne gleichzeitige CPU-Auslastung im Benutzerressourcenpool ist der häufigste Grund dafür, dass eine serverlose Datenbank nicht wie erwartet automatisch angehalten wird.
 
 ### <a name="auto-resuming"></a>Automatisches Fortsetzen
 
@@ -190,7 +190,7 @@ Automatisches Fortsetzen wird ebenfalls während der Bereitstellung bestimmter D
 
 ### <a name="connectivity"></a>Konnektivität
 
-Wenn eine serverlose Datenbank angehalten wird, wird die Datenbank bei der ersten Anmeldung fortgesetzt, und es wird ein Fehler (Fehlercode 40613) mit dem Hinweis zurückgegeben, dass die Datenbank nicht verfügbar ist. Sobald die Datenbank fortgesetzt wird, muss die Anmeldung wiederholt werden, um die Verbindung herzustellen. Datenbankclients mit Wiederholungslogik für Verbindungen dürfen nicht geändert werden.
+Wenn eine serverlose Datenbank angehalten wird, wird die Datenbank bei der ersten Anmeldung fortgesetzt, und es wird ein Fehler (Fehlercode 40613) mit dem Hinweis zurückgegeben, dass die Datenbank nicht verfügbar ist. Sobald die Datenbank fortgesetzt wird, muss die Anmeldung wiederholt werden, um die Verbindung herzustellen. Datenbankclients mit Wiederholungslogik für Verbindungen dürfen nicht geändert werden.  Informationen zu den Optionen für die Verbindungswiederholungslogik, die in den SqlClient-Treiber integriert sind, finden Sie unter [Konfigurierbare Wiederholungslogik in SqlClient](/sql/connect/ado-net/configurable-retry-logic).
 
 ### <a name="latency"></a>Latency
 
@@ -377,7 +377,7 @@ Der [Preisrechner für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/
 
 ### <a name="example-scenario"></a>Beispielszenario
 
-Erwägen Sie die Verwendung einer serverlosen Datenbank, für die für virtuelle Kerne ein Mindestwert von 1 und ein Höchstwert von 4 konfiguriert ist.  Dies entspricht ungefähr einem Arbeitsspeicher von mindestens 3 GB und maximal 12 GB.  Angenommen, die Verzögerung für automatisches Anhalten ist auf sechs Stunden festgelegt, und die Datenbankworkload ist während der ersten beiden Stunden eines Zeitraums von 24 Stunden aktiv und ansonsten inaktiv.    
+Erwägen Sie die Verwendung einer serverlosen Datenbank, für die für virtuelle Kerne ein Mindestwert von 1 und ein Höchstwert von 4 konfiguriert ist.  Diese Konfiguration entspricht ungefähr einem Arbeitsspeicher von mindestens 3 GB und maximal 12 GB.  Angenommen, die Verzögerung für automatisches Anhalten ist auf sechs Stunden festgelegt, und die Datenbankworkload ist während der ersten beiden Stunden eines Zeitraums von 24 Stunden aktiv und ansonsten inaktiv.    
 
 In diesem Fall werden für die Datenbank Compute- und Speicherkosten während der ersten acht Stunden berechnet.  Die Datenbank ist zwar nach der zweiten Stunde inaktiv, aber für die nachfolgenden sechs Stunden werden basierend auf der minimalen bereitgestellten Computeleistung trotzdem noch Computekosten berechnet, während die Datenbank online ist.  Während die Datenbank angehalten ist, werden in der restlichen Zeit des 24-Stunden-Zeitraums nur Kosten für den Speicher berechnet.
 

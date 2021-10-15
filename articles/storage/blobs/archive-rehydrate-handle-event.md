@@ -10,12 +10,12 @@ ms.date: 08/11/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3ce2f92f88e24eb634222db5ffab45acaf1a5820
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 06239708293be94f13c62cab7004c7a57d00eea1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577990"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275504"
 ---
 # <a name="run-an-azure-function-in-response-to-a-blob-rehydration-event"></a>Ausführen einer Azure-Funktion als Reaktion auf ein Blobaktivierungsereignis
 
@@ -303,7 +303,7 @@ Weitere Informationen zum Filtern von Ereignissen in Event Grid finden Sie unter
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md)
+- [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md)
 - [Übersicht über die Aktivierung von Blobs aus der Archivebene](archive-rehydrate-overview.md)
 - [Aktivieren eines archivierten Blobs auf einer Onlineebene](archive-rehydrate-to-online-tier.md)
 - [Reacting to Blob storage events (preview)](storage-blob-event-overview.md) (Reagieren auf Blob Storage-Ereignisse (Vorschauversion))

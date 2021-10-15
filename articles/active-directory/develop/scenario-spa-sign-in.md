@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: fd160749fef327efa21094ba69daf2db88449918
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 858234982aa4a148fe6af71ba8993923e80044dd
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113357479"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230185"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Single-Page-Webanwendung: An- und Abmeldung
 
@@ -454,7 +454,7 @@ function App() {
 
 ---
 
-## <a name="sign-out-with-a-popup-window"></a>Abmelden mit einem Popupfenster
+## <a name="sign-out-with-a-pop-up-window"></a>Abmelden mit einem Popupfenster
 
 MSAL.js v2 bietet eine `logoutPopup`-Methode, die den Cache im Browserspeicher löscht und ein Popupfenster für die Abmeldeseite von Azure Active Directory (Azure AD) öffnet. Nach der Abmeldung leitet Azure AD das Popup zurück zu Ihrer Anwendung, und MSAL.js schließt das Popup.
 
@@ -512,7 +512,7 @@ logout() {
 
 # <a name="angular-msaljs-v1"></a>[Angular (MSAL.js v1)](#tab/angular1)
 
-Die Abmeldung mit einem Popupfenster wird in MSAL Angular v1 nicht unterstützt.
+Die Abmeldung mit einem Popupfenster wird in MSAL Angular v1 nicht unterstützt.
 
 # <a name="react"></a>[React](#tab/react)
 

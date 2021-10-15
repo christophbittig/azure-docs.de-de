@@ -4,13 +4,13 @@ description: In diesem Artikel erfahren Sie, wie Sie die Updateverwaltung verwen
 services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: c86c9049bc0afc81f5dfd8553d2aa98cfd4b1a46
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/25/2021
+ms.openlocfilehash: 932f5d93c5fa67de486ddb9cabaafd68384f0db8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98915981"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357473"
 ---
 # <a name="manage-updates-and-patches-for-your-vms"></a>Verwalten von Updates und Patches für Ihre VMs
 
@@ -49,6 +49,22 @@ Weitere Informationen zum Anzeigen von Kompatibilitätsergebnissen finden Sie un
 Nach Überprüfung der Kompatibilitätsergebnisse ist die Softwareupdate-Bereitstellungsphase der Vorgang der Bereitstellung von Softwareupdates. Planen Sie zum Installieren von Updates eine Bereitstellung, die Ihrem Releasezeitplan und Wartungsfenster entspricht. Sie können auswählen, welche Updatetypen in die Bereitstellung eingeschlossen werden sollen. Beispielsweise können Sie kritische oder Sicherheitsupdates einschließen und Updaterollups ausschließen.
 
 Lesen Sie [Bereitstellen von Updates und Überprüfen von Ergebnissen](deploy-updates.md), um zu erfahren, wie Sie eine Updatebereitstellung planen.
+
+## <a name="exclude-updates"></a>Ausschließen von Updates
+
+Bei einigen Linux-Varianten (z. B. Red Hat Enterprise Linux) werden unter Umständen Upgrades auf Betriebssystemebene über Pakete durchgeführt. Dies kann ggf. zur Ausführung der Updateverwaltung und so zu einer Änderung der Versionsnummer des Betriebssystems führen. Dieses Verhalten ist beabsichtigt, da die Updateverwaltung die gleichen Methoden für Updatepakete verwendet, die auch ein Administrator lokal auf dem Linux-Computer nutzt.
+
+Um zu vermeiden, dass die Betriebssystemversion durch Updateverwaltungsbereitstellungen aktualisiert wird, verwenden Sie das Feature **Ausschluss**.
+
+In Red Hat Enterprise Linux lautet der Name des auszuschließenden Pakets `redhat-release-server.x86_64`.
+
+## <a name="linux-update-classifications"></a>Linux-Updateklassifizierungen
+
+Beim Bereitstellen von Updates für einen Linux-Computer können Sie Updateklassifizierungen auswählen. Durch diese Option werden die Updates gefiltert, die die definierten Kriterien erfüllen. Dieser Filter wird lokal auf dem Computer angewendet, wenn das Update bereitgestellt wird.
+
+Da die Updateverwaltung die Updateanreicherung in der Cloud durchführt, können Sie einige Updates in der Updateverwaltung als Update mit Sicherheitsauswirkung kennzeichnen, auch wenn der lokale Computer nicht über diese Informationen verfügt. Es kann beim Anwenden kritischer Updates auf einem Linux-Computer möglicherweise Updates geben, die für diesen Computer nicht als Update mit Sicherheitsauswirkung gekennzeichnet sind und somit nicht angewandt werden. Es kann allerdings sein, dass der Computer von der Updateverwaltung weiterhin als nicht konform gemeldet wird, da sie über zusätzliche Informationen zum relevanten Update verfügt.
+
+Das Bereitstellen von Updates nach Updateklassifizierung funktioniert unter RTM-Versionen von CentOS nicht. Wählen Sie zum ordnungsgemäßen Bereitstellen von Updates für CentOS alle Klassifizierungen aus, um sicherzustellen, dass die Updates angewendet werden. Wenn für SUSE als Klassifizierung NUR die Option **Weitere Updates** ausgewählt wird, kann dies dazu führen, dass durch die Klassifizierung andere Sicherheitsupdates installiert werden, wenn diese mit zypper (Paket-Manager) im Zusammenhang stehen oder dessen Abhängigkeiten zuerst erforderlich sind. Dieses Verhalten ist eine Einschränkung von zypper. In einigen Fällen müssen Sie die Updatebereitstellung u. U. erneut ausführen und dann die Bereitstellung über das Updateprotokoll überprüfen.
 
 ## <a name="review-update-deployments"></a>Überprüfen von Updatebereitstellungen
 

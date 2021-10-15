@@ -4,12 +4,12 @@ description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Az
 ms.topic: conceptual
 ms.date: 05/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 612493d55adddea82e3e8d1e3d169eee963bfda2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fdccee2795a4e1b2c967c53dc17d15a6520f4402
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345883"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546518"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -289,8 +289,7 @@ FIPS-fähige Knoten stehen zurzeit in der Vorschauversion für Linux-basierte Kn
 
 ## <a name="can-i-configure-nsgs-with-aks"></a>Kann ich Netzwerksicherheitsgruppen mit AKS konfigurieren?
 
-Wenn Sie Ihr eigenes Subnetz bereitstellen, müssen Sie die Netzwerksicherheitsgruppen (NSG) verwalten, die diesem Subnetz zugeordnet sind. AKS ändert nur die Netzwerksicherheitsgruppen auf NIC-Ebene und keine der Netzwerksicherheitsgruppen, die diesem Subnetz zugeordnet sind. Wenn Sie CNI verwenden, müssen Sie außerdem sicherstellen, dass die Sicherheitsregeln in den Netzwerksicherheitsgruppen Datenverkehr zwischen den CIDR-Bereichen der Knoten und Pods zulassen. Wenn Sie kubenet verwenden, müssen Sie außerdem sicherstellen, dass die Sicherheitsregeln in den Netzwerksicherheitsgruppen Datenverkehr zwischen dem CIDR der Knoten und Pods zulassen.
-
+AKS wendet keine Netzwerksicherheitsgruppen (NSGs) auf sein Subnetz an und ändert keine der NSGs, die diesem Subnetz zugeordnet sind. AKS ändert nur die Netzwerksicherheitsgruppen auf NIC-Ebene. Wenn Sie CNI verwenden, müssen Sie außerdem sicherstellen, dass die Sicherheitsregeln in den Netzwerksicherheitsgruppen Datenverkehr zwischen den CIDR-Bereichen der Knoten und Pods zulassen. Wenn Sie kubenet verwenden, müssen Sie außerdem sicherstellen, dass die Sicherheitsregeln in den Netzwerksicherheitsgruppen Datenverkehr zwischen dem CIDR der Knoten und Pods zulassen. Weitere Details finden Sie unter [Netzwerksicherheitsgruppen](concepts-network.md#network-security-groups).
 
 <!-- LINKS - internal -->
 

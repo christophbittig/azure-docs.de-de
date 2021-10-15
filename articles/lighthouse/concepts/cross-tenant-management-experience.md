@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Azure Lighthouse ermöglicht und verbessert mandantenübergreifende Funktionen in vielen Azure-Diensten.
-ms.date: 07/20/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: c57afabe5f3aaf49ef1f1868c04c60af4298381d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a6ad75df4e22f56c8bcb0f28586c736fc6b04a49
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440908"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349786"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -101,7 +101,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - [Protokollanalyse](../../azure-monitor/logs/service-providers.md): Abfragen von Daten aus Remotearbeitsbereichen in mehreren Mandanten. (Beachten Sie, dass Automation-Konten, die für den Zugriff auf Daten aus Arbeitsbereichen in Kundenmandanten verwendet werden, im selben Mandanten erstellt werden müssen.)
 - Erstellen, Anzeigen und Verwalten von [Metrikwarnungen](../../azure-monitor/alerts/alerts-metric.md), [Protokollwarnungen](../../azure-monitor/alerts/alerts-log.md) und [Aktivitätsprotokollwarnungen](../../azure-monitor/alerts/alerts-activity-log.md) in Kundenmandanten
 - Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im verwaltenden Mandanten über Webhooks
-- Erstellen von [Diagnoseeinstellungen](../..//azure-monitor/essentials/diagnostic-settings.md) in Kundenmandanten zum Senden von Ressourcenprotokollen an Arbeitsbereiche im verwaltenden Mandanten
+- Erstellen von [Diagnoseeinstellungen](../..//azure-monitor/essentials/diagnostic-settings.md) in Arbeitsbereichen in Kundenmandanten zum Senden von Ressourcenprotokollen an Arbeitsbereiche im verwaltenden Mandanten
 - Für SAP-Workloads sollten Sie [die Metriken von SAP-Lösungen mit einer aggregierten Sicht über Kundenmandanten hinweg überwachen](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293).
 
 [Azure-Netzwerkoptionen](../../networking/fundamentals/networking-overview.md):

@@ -7,25 +7,25 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 10/01/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: f2473955db5439911280360b169f469b8c93eb93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4a21ba7191bab596818324f23235a9dc610ade1e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043596"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351331"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
-In Azure Active Directory B2C (Azure AD B2C) gibt es mehrere Kontoarten, die erstellt werden können. Azure Active Directory, Azure Active Directory B2B und Azure Active Directory B2C verwenden dieselben Arten von Benutzerkonten.
+In Azure Active Directory B2C (Azure AD B2C) gibt es mehrere Kontoarten, die erstellt werden können. In Azure Active Directory (Azure AD), Azure Active Directory B2B (Azure AD B2B) und Azure Active Directory B2C (Azure AD B2C) können dieselben Arten von Benutzerkonten verwendet werden.
 
 Die folgenden Arten von Konten sind verfügbar:
 
 - **Geschäftskonto**: Ein Geschäftskonto kann auf Ressourcen in einem Mandanten zugreifen und mit einer Administratorrolle Mandanten verwalten.
-- **Gastkonto**: Ein Gastkonto kann nur ein Microsoft-Konto oder ein Azure Active Directory-Benutzerkonto sein, das für den Zugriff auf Anwendungen oder die Verwaltung von Mandanten verwendet werden kann.
+- **Gastkonto:** Ein Gastkonto kann nur ein Microsoft-Konto oder ein Azure AD-Benutzerkonto sein, das für den Zugriff auf Anwendungen oder die Verwaltung von Mandanten verwendet werden kann.
 - **Consumerkonto**: Ein Consumerkonto wird von einem Benutzer der Anwendungen verwendet, die Sie bei Azure AD B2C registriert haben. Consumerkonten können wie folgt erstellt werden:
   - Durch den Benutzer, der einen Benutzeranmeldeflow in einer Azure AD B2C-Anwendung durchläuft
   - Mithilfe der Microsoft Graph-API
@@ -74,7 +74,7 @@ Sie können in Ihrem Mandanten externe Benutzer als Gastbenutzer einladen. Ein t
 
 Wenn Sie Gastbenutzer in Ihren Mandanten eingeladen haben, geben Sie die E-Mail-Adresse des Empfängers und eine Nachricht ein, die die Einladung beschreibt. Über den Einladungslink gelangt der Benutzer zur Zustimmungsseite. Wenn an die E-Mail-Adresse kein Posteingang angefügt ist, kann der Benutzer zur Zustimmungsseite navigieren, indem er mit den Anmeldeinformationen der Einladung zu einer Microsoft-Seite wechselt. Der Benutzer ist dann gezwungen, die Einladung in gleicher Weise wie beim Klicken auf den Link in der E-Mail einzulösen. Beispiel: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-Sie können auch mit der [Microsoft Graph-API](/graph/api/invitation-post?view=graph-rest-beta) Gastbenutzer einladen.
+Sie können auch mit der [Microsoft Graph-API](/graph/api/invitation-post) Gastbenutzer einladen.
 
 ## <a name="consumer-user"></a>Consumerbenutzer
 

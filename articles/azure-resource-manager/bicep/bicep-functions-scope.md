@@ -2,13 +2,13 @@
 title: 'Bicep-Funktionen: Bereiche'
 description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei zum Abrufen von Werten zu Bereitstellungsbereichen verwendet werden.
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 4432aa528dbdd565128a15eb79d4b4c01572c924
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: ee7ea8efbb19048ff5aa6b6ead2bf9d2495ad23a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827452"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360230"
 ---
 # <a name="scope-functions-for-bicep"></a>Bereichsfunktionen für Bicep
 
@@ -22,6 +22,8 @@ Dieser Artikel beschreibt die Bicep-Funktionen zum Abrufen von Scope-Werten.
 
 Gibt ein Objekt zurück, das zum Festlegen des Bereichs in einer Verwaltungsgruppe verwendet wird
 
+Namespace: [az](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="remarks"></a>Hinweise
 
 `managementGroup()` kann nur für [Bereitstellungen von Verwaltungsgruppen](deploy-to-management-group.md) verwendet werden. Gibt die aktuelle Verwaltungsgruppe für den Bereitstellungsvorgang zurück
@@ -30,7 +32,7 @@ Gibt ein Objekt zurück, das zum Festlegen des Bereichs in einer Verwaltungsgrup
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | name |Nein |Zeichenfolge |Eindeutiger Bezeichner für die Verwaltungsgruppe zur Bereitstellung Verwenden Sie nicht den Anzeigenamen für die Verwaltungsgruppe. Wenn Sie keinen Wert angeben, wird die aktuelle Verwaltungsgruppe ausgegeben. |
 
@@ -64,6 +66,8 @@ Gibt ein Objekt zurück, das zum Festlegen des Bereichs in einer Ressourcengrupp
 oder
 
 Gibt ein Objekt zurück, das die aktuelle Ressourcengruppe darstellt.
+
+Namespace: [az](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="remarks"></a>Hinweise
 
@@ -156,6 +160,8 @@ oder
 
 Gibt Details zum Abonnement für die aktuelle Bereitstellung zurück.
 
+Namespace: [az](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="remarks"></a>Hinweise
 
 Die Funktion subscription hat zwei spezielle Verwendungszwecke. Ein Zweck ist das Festlegen des Bereichs bei einem [Modul](modules.md#configure-module-scopes) oder einem [Erweiterungsressourcentyp](scope-extension-resources.md). Der andere Zweck ist das Abrufen von Details zum aktuellen Abonnement. Die Platzierung der Funktion bestimmt die Verwendung. Wenn die Funktion zum Festlegen der `scope`-Eigenschaft verwendet wird, gibt sie ein Bereichsobjekt zurück.
@@ -207,6 +213,8 @@ output subscriptionOutput object = subscription()
 `tenant()`
 
 Gibt ein Objekt zurück, das zum Festlegen des Bereichs für einen Mandanten verwendet wird
+
+Namespace: [az](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="remarks"></a>Hinweise
 

@@ -4,12 +4,12 @@ description: Application Insights-Datenmodell für Metriktelemetrie
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: f8e787b8a94987e7d68e12a0e4e69f4c63e21e19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df3ce8715134aa51ee819210cad4caf126f0e492
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87320577"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229599"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metriktelemetrie: Application Insights-Datenmodell
 
@@ -59,7 +59,7 @@ Standardabweichung der aggregierten Metrik. Darf nicht für eine Messung festgel
 
 ## <a name="custom-properties"></a>Benutzerdefinierte Eigenschaften
 
-Metrik, deren benutzerdefinierte Eigenschaft `CustomPerfCounter` auf `true` festgelegt ist, um anzugeben, dass die Metrik den Windows-Leistungsindikator darstellt. Diese Metriken werden in der Tabelle „performanceCounters“ platziert. Nicht in „customMetrics“. Der Name dieser Metrik wird außerdem analysiert, um Kategorie, Anzahl und Instanznamen zu extrahieren.
+Metrik, deren benutzerdefinierte `CustomPerfCounter`-Eigenschaft auf `true` festgelegt ist, um anzugeben, dass die Metrik den Windows-Leistungsindikator darstellt. Diese Metriken werden in der Tabelle „performanceCounters“ platziert. Nicht in „customMetrics“. Der Name dieser Metrik wird außerdem analysiert, um Kategorie, Anzahl und Instanznamen zu extrahieren.
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
@@ -68,4 +68,3 @@ Metrik, deren benutzerdefinierte Eigenschaft `CustomPerfCounter` auf `true` fest
 - Erfahren Sie, wie Sie die [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](./api-custom-events-metrics.md#trackmetric) nutzen.
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](data-model.md).
 - Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](./platforms.md).
-

@@ -1,34 +1,34 @@
 ---
-title: Von Azure Data Factory unterstützte Compute-Umgebungen
+title: Compute-Umgebungen
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Compute-Umgebungen, die in Azure Data Factory-Pipelines (wie z. B. Azure HDInsight) für die Transformation oder Verarbeitung von Daten verwendet werden können.
+description: Erfahren Sie mehr über Compute-Umgebungen, die in Azure Data Factory- und Synapse Analytics-Pipelines (wie z. B. Azure HDInsight) für die Transformation oder Verarbeitung von Daten verwendet werden können.
 ms.service: data-factory
 ms.subservice: concepts
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
-ms.date: 05/08/2019
+ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: 55b089b7deea167ca14a83a21e7c8d166edc519b
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: c6e2491c5c57ca8ebbde287f58fad6d6429b5ee4
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598392"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236707"
 ---
-# <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
+# <a name="compute-environments-supported-by-azure-data-factory-and-synapse-pipelines"></a>Von Azure Data Factory- und Synapse-Pipelines unterstützte Compute-Umgebungen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel werden verschiedene Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung). Diese beiden Konfigurationen werden von Data Factory unterstützt, wenn Sie verknüpfte Dienste konfigurieren, um diese Compute-Umgebungen mit Azure Data Factory zu verknüpfen.
+In diesem Artikel werden verschiedene Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung). Diese beiden Konfigurationen werden unterstützt, wenn Sie verknüpfte Dienste zum Verknüpfen dieser Compute-Umgebungen konfigurieren.
 
-Die folgende Tabelle enthält eine Liste von Compute-Umgebungen, die von Data Factory unterstützt werden, und die Aktivitäten, die darin ausgeführt werden können. 
+Die folgende Tabelle enthält eine Liste unterstützter Compute-Umgebungen und die Aktivitäten, die darin ausgeführt werden können. 
 
 | Compute-Umgebung                                          | activities                                                   |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Bedarfsgesteuerter HDInsight-Cluster](#azure-hdinsight-on-demand-linked-service) oder [Eigener HDInsight-Cluster](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md), [Pig](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), [Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Benutzerdefiniert](transform-data-using-dotnet-custom-activity.md)     |
-| [ML Studio (klassisch)](#ml-studio-classic-linked-service) | [Aktivitäten in ML Studio (klassisch): Batchausführung und Ressourcenaktualisierung](transform-data-using-machine-learning.md) |
+| [ML Studio (klassisch)](#azure-machine-learning-studio-classic-linked-service) | [Aktivitäten in ML Studio (klassisch): Batchausführung und Ressourcenaktualisierung](transform-data-using-machine-learning.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning-Pipelineausführung](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure Synapse Analytics](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Gespeicherte Prozedur](transform-data-using-stored-procedure.md) |
@@ -43,20 +43,20 @@ In der folgenden Tabelle finden Sie ausführliche Informationen zu den unterstü
 | In Compute verknüpfter Dienst | Eigenschaftenname                | BESCHREIBUNG                                                  | Blob | ADLS Gen2 | Azure SQL-Datenbank | ADLS Gen 1 |
 | ------------------------- | ---------------------------- | ------------------------------------------------------------ | ---- | --------- | ------------ | ---------- |
 | Bei Bedarf                 | linkedServiceName            | Der verknüpfte Azure Storage-Dienst, den der bedarfsgesteuerte Cluster zum Speichern und Verarbeiten von Daten nutzen soll. | Ja  | Ja       | Nein           | Nein         |
-|                           | additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Data Factory-Dienst diese für Sie registrieren kann. | Ja  | Nein        | Nein           | Nein         |
+|                           | additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Dienst diese für Sie registrieren kann. | Ja  | Nein        | Nein           | Nein         |
 |                           | hcatalogLinkedServiceName    | Der Name des mit Azure SQL verknüpften Diensts, der auf die HCatalog-Datenbank verweist. Der bedarfsgesteuerte HDInsight-Cluster wird mithilfe der Azure SQL-Datenbank als Metastore erstellt. | Nein   | Nein        | Ja          | Nein         |
 | BYOC                      | linkedServiceName            | Der Verweis auf den mit Azure Storage verknüpften Dienst.                | Ja  | Ja       | Nein           | Nein         |
-|                           | additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Data Factory-Dienst diese für Sie registrieren kann. | Nein   | Nein        | Nein           | Nein         |
+|                           | additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Dienst diese für Sie registrieren kann. | Nein   | Nein        | Nein           | Nein         |
 |                           | hcatalogLinkedServiceName    | Ein Verweis auf den verknüpften Azure SQL-Dienst, der wiederum auf die HCatalog-Datenbank verweist. | Nein   | Nein        | Nein           | Nein         |
 
 ### <a name="azure-hdinsight-on-demand-linked-service"></a>Bedarfsgesteuerter verknüpfter Azure HDInsight-Dienst
 
-Bei dieser Konfiguration wird die Compute-Umgebung vollständig vom Azure Data Factory-Dienst verwaltet. Der Data Factory-Dienst erstellt diese Umgebung automatisch, bevor ein Auftrag zur Verarbeitung von Daten übermittelt wird. Sobald der Auftrag abgeschlossen wurde, wird die Umgebung entfernt. Sie können einen verknüpften Dienst für die bedarfsgesteuerte Compute-Umgebung erstellen, diesen konfigurieren und differenzierte Einstellungen für Auftragsausführung, Clusterverwaltung und Bootstrappingaktionen festlegen.
+Bei dieser Konfiguration wird die Compute-Umgebung vollständig vom Dienst verwaltet. Der Dienst erstellt diese Umgebung automatisch, bevor ein Auftrag zur Verarbeitung von Daten übermittelt wird. Sobald der Auftrag abgeschlossen wurde, wird die Umgebung entfernt. Sie können einen verknüpften Dienst für die bedarfsgesteuerte Compute-Umgebung erstellen, diesen konfigurieren und differenzierte Einstellungen für Auftragsausführung, Clusterverwaltung und Bootstrappingaktionen festlegen.
 
 > [!NOTE]
 > Die bedarfsgesteuerte Konfiguration wird gegenwärtig nur für Azure HDInsight-Cluster unterstützt. Azure Databricks unterstützt auch bedarfsgesteuerte Aufträge mithilfe von Auftragsclustern. Weitere Informationen finden Sie unter [Mit Azure Databricks verknüpfter Dienst](#azure-databricks-linked-service).
 
-Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen bedarfsgesteuerten HDInsight-Cluster erstellen. Der Cluster wird in derselben Region erstellt wie das Speicherkonto (Eigenschaft „linkedServiceName“ in JSON), das dem Cluster zugeordnet ist. Das Speicherkonto `must` (muss) ein allgemeines Azure Storage-Standardkonto sein. 
+Der Dienst kann zum Verarbeiten von Daten automatisch einen bedarfsgesteuerten HDInsight-Cluster erstellen. Der Cluster wird in derselben Region erstellt wie das Speicherkonto (Eigenschaft „linkedServiceName“ in JSON), das dem Cluster zugeordnet ist. Das Speicherkonto `must` (muss) ein allgemeines Azure Storage-Standardkonto sein. 
 
 Beachten Sie die folgenden **wichtigen** Hinweise zum bedarfsgesteuerten verknüpften HDInsight-Dienst:
 
@@ -70,7 +70,7 @@ Beachten Sie die folgenden **wichtigen** Hinweise zum bedarfsgesteuerten verknü
 
 #### <a name="example"></a>Beispiel
 
-Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsight verknüpften Dienst. Der Data Factory-Dienst erstellt automatisch einen **Linux-basierten** HDInsight-Cluster zur Verarbeitung der angeforderten Aktivität. 
+Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsight verknüpften Dienst. Der Dienst erstellt automatisch einen **Linux-basierten** HDInsight-Cluster zur Verarbeitung der angeforderten Aktivität. 
 
 ```json
 {
@@ -107,7 +107,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 > [!IMPORTANT]
 > Der HDInsight-Cluster erstellt einen **Standardcontainer** im Blobspeicher, den Sie im JSON-Code angegeben haben (**linkedServiceName**). HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dieses Verhalten ist beabsichtigt. Durch den bedarfsgesteuerten, mit HDInsight verknüpften Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet werden muss, es sei denn, ein aktiver Cluster (**timeToLive**) ist vorhanden und wird gelöscht, nachdem die Verarbeitung abgeschlossen ist. 
 >
-> Wenn weitere Aktivitäten ausgeführt werden, werden in Azure Blob Storage viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container folgen einem Muster: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Verwenden Sie Tools wie den [Microsoft Azure Storage-Explorer](https://storageexplorer.com/), um Container in Ihrem Azure-Blobspeicher zu löschen.
+> Wenn weitere Aktivitäten ausgeführt werden, werden in Azure Blob Storage viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container folgen einem Muster: `adf**yourfactoryorworkspacename**-**linkedservicename**-datetimestamp`. Verwenden Sie Tools wie den [Microsoft Azure Storage-Explorer](https://storageexplorer.com/), um Container in Ihrem Azure-Blobspeicher zu löschen.
 
 #### <a name="properties"></a>Eigenschaften
 
@@ -117,13 +117,13 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 | clusterSize                  | Anzahl der Worker-/Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten sowie der Anzahl der Workerknoten erstellt, die Sie für diese Eigenschaft angeben. Die Knoten haben die Größe Standard_D3, die vier Kerne aufweist. Ein Cluster mit vier Workerknoten nutzt also 24 Kerne (4 \* 4 = 16 für die Workerknoten + 2 \* 4 = 8 für die Hauptknoten). Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) | Ja      |
 | linkedServiceName            | Der verknüpfte Azure Storage-Dienst, den der bedarfsgesteuerte Cluster zum Speichern und Verarbeiten von Daten nutzt. Der HDInsight-Cluster wird in der gleichen Region wie das Azure Storage-Konto erstellt. Die Gesamtanzahl von Kernen, die Sie in jeder von Azure HDInsight unterstützten Azure-Region verwenden können, ist begrenzt. Stellen Sie sicher, dass Sie über genügend Kernekontingente in dieser Azure-Region verfügen, um die Anforderungen von clusterSize zu erfüllen. Nähere Informationen finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw.](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>Derzeit können Sie keinen bedarfsgesteuerten HDInsight-Cluster erstellen, der einen Azure Data Lake Storage (Gen 2) als Speicher verwendet. Wenn Sie die Ergebnisdaten der HDInsight-Verarbeitung in einem Azure Data Lake Storage (Gen 2) speichern möchten, kopieren Sie die Daten mittels einer Kopieraktivität aus dem Azure Blob Storage in den Azure Data Lake Storage (Gen 2). </p> | Ja      |
 | clusterResourceGroup         | Der HDInsight-Cluster wird in dieser Ressourcengruppe erstellt. | Ja      |
-| timetolive                   | Die zulässige Leerlaufzeit für den bedarfsgesteuerten HDInsight-Cluster. Gibt an, wie lange der bedarfsgesteuerte HDInsight-Cluster nach dem Abschluss einer Aktivitätsausführung aktiv bleibt, wenn keine anderen aktiven Aufträge im Cluster vorhanden sind. Der minimal zulässige Wert beträgt 5 Minuten (00:05:00).<br/><br/>Beispiel: Wenn eine Aktivitätsausführung 6 Minuten dauert und „timetolive“ auf 5 Minuten festgelegt ist, bleibt der Cluster für 5 Minuten nach den 6 Minuten für die Verarbeitung der Aktivitätsausführung aktiv. Wenn eine weitere Aktivitätsausführung mit einem Zeitfenster von 6 Minuten ausgeführt wird, wird sie von demselben Cluster verarbeitet.<br/><br/>Das Erstellen eines bedarfsgesteuerten HDInsight-Clusters ist ein aufwändiger Vorgang (er kann eine Weile dauern). Verwenden Sie daher diese Einstellung bei Bedarf, um die Leistung einer Data Factory zu verbessern, indem Sie einen bedarfsgesteuerten HDInsight-Cluster wiederverwenden.<br/><br/>Wenn der timetolive-Wert auf 0 festgelegt wird, wird der Cluster gelöscht, sobald die Aktivitätsausführung abgeschlossen ist. Wenn Sie hingegen einen hohen Wert festlegen, könnte der Cluster im Leerlauf bleiben, damit Sie sich zur Problembehandlung anmelden können, aber dies könnte hohe Kosten verursachen. Aus diesem Grund ist es wichtig, dass Sie den entsprechenden Wert basierend auf Ihren Anforderungen festlegen.<br/><br/>Wenn der Wert der Eigenschaft „timetolive“ ordnungsgemäß festgelegt wird, können mehrere Pipelines die Instanz des bedarfsgesteuerten HDInsight-Clusters verwenden. | Ja      |
+| timetolive                   | Die zulässige Leerlaufzeit für den bedarfsgesteuerten HDInsight-Cluster. Gibt an, wie lange der bedarfsgesteuerte HDInsight-Cluster nach dem Abschluss einer Aktivitätsausführung aktiv bleibt, wenn keine anderen aktiven Aufträge im Cluster vorhanden sind. Der minimal zulässige Wert beträgt 5 Minuten (00:05:00).<br/><br/>Beispiel: Wenn eine Aktivitätsausführung 6 Minuten dauert und „timetolive“ auf 5 Minuten festgelegt ist, bleibt der Cluster für 5 Minuten nach den 6 Minuten für die Verarbeitung der Aktivitätsausführung aktiv. Wenn eine weitere Aktivitätsausführung mit einem Zeitfenster von 6 Minuten ausgeführt wird, wird sie von demselben Cluster verarbeitet.<br/><br/>Das Erstellen eines bedarfsgesteuerten HDInsight-Clusters ist ein aufwändiger Vorgang (er kann eine Weile dauern). Verwenden Sie daher diese Einstellung bei Bedarf, um die Leistung des Diensts zu verbessern, indem Sie einen bedarfsgesteuerten HDInsight-Cluster wiederverwenden.<br/><br/>Wenn der timetolive-Wert auf 0 festgelegt wird, wird der Cluster gelöscht, sobald die Aktivitätsausführung abgeschlossen ist. Wenn Sie hingegen einen hohen Wert festlegen, könnte der Cluster im Leerlauf bleiben, damit Sie sich zur Problembehandlung anmelden können, aber dies könnte hohe Kosten verursachen. Aus diesem Grund ist es wichtig, dass Sie den entsprechenden Wert basierend auf Ihren Anforderungen festlegen.<br/><br/>Wenn der Wert der Eigenschaft „timetolive“ ordnungsgemäß festgelegt wird, können mehrere Pipelines die Instanz des bedarfsgesteuerten HDInsight-Clusters verwenden. | Ja      |
 | clusterType                  | Der Typ des zu erstellenden HDInsight-Clusters. Zulässige Werte sind „hadoop“ und „spark“. Wenn Sie hier nichts angeben, lautet der Standardwert „hadoop“. Ein für das Enterprise-Sicherheitspaket aktivierter Cluster kann nicht bedarfsweise erstellt werden. Verwenden Sie stattdessen einen [vorhandenen Cluster/eine eigene Compute-Umgebung](#azure-hdinsight-linked-service). | Nein       |
 | version                      | Version des HDInsight-Clusters. Wenn nichts angegeben wird, ist dies die aktuelle definierte HDInsight-Standardversion. | Nein       |
 | hostSubscriptionId           | Die Azure-Abonnement-ID, die zum Erstellen des HDInsight-Clusters verwendet wird. Wenn nicht angegeben, wird die Abonnement-ID Ihres Azure-Anmeldungskontexts verwendet. | Nein       |
 | clusterNamePrefix           | Das Präfix des HDI-Clusternamens, ein Zeitstempel, wird am Ende des Clusternamens automatisch angefügt.| Nein       |
 | sparkVersion                 | Die Spark-Version, wenn der Clustertyp „Spark“ ist. | Nein       |
-| additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Data Factory-Dienst diese für Sie registrieren kann. Diese Speicherkonten müssen sich in der gleichen Region befinden wie der HDInsight-Cluster, der in der gleichen Region erstellt wird wie das von „linkedServiceName“ angegebene Speicherkonto. | Nein       |
+| additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an, damit der Dienst diese für Sie registrieren kann. Diese Speicherkonten müssen sich in der gleichen Region befinden wie der HDInsight-Cluster, der in der gleichen Region erstellt wird wie das von „linkedServiceName“ angegebene Speicherkonto. | Nein       |
 | osType                       | Typ des Betriebssystems. Zulässige Werte sind: Linux und Windows (nur für HDInsight 3.3). Der Standardwert ist „Linux“. | Nein       |
 | hcatalogLinkedServiceName    | Der Name des mit Azure SQL verknüpften Diensts, der auf die HCatalog-Datenbank verweist. Der bedarfsgesteuerte HDInsight-Cluster wird mit der Azure SQL-Datenbank als Metastore erstellt. | Nein       |
 | connectVia                   | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften HDInsight-Dienst zugeteilt werden. Für einen bedarfsgesteuerten verknüpften HDInsight-Dienst wird nur Azure Integration Runtime unterstützt. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein       |
@@ -131,7 +131,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 | clusterPassword                   | Das Kennwort als sichere Zeichenfolge zum Zugriff auf den Cluster. | Nein       |
 | clusterSshUserName         | Der Benutzername zum Herstellen einer SSH-Remoteverbindung mit dem Knoten des Clusters (für Linux). | Nein       |
 | clusterSshPassword         | Das Kennwort als sichere Zeichenfolge zum Herstellen einer SSH-Remoteverbindung mit dem Knoten des Clusters (für Linux). | Nein       |
-| scriptActions | Geben Sie beim Erstellen bedarfsgesteuerter Cluster Skripts für [HDInsight-Clusteranpassungen](../hdinsight/hdinsight-hadoop-customize-cluster-linux.md) an. <br />Derzeit unterstützt das Erstellungstool für die Benutzeroberfläche der Azure Data Factory die Angabe von nur einer Skriptaktion. Sie können diese Einschränkung jedoch durch die Angabe mehrerer Skriptaktionen im JSON-Code beseitigen. | Nein |
+| scriptActions | Geben Sie beim Erstellen bedarfsgesteuerter Cluster Skripts für [HDInsight-Clusteranpassungen](../hdinsight/hdinsight-hadoop-customize-cluster-linux.md) an. <br />Derzeit unterstützt das Erstellungstool für die Benutzeroberfläche die Angabe von nur einer Skriptaktion. Sie können diese Einschränkung jedoch durch die Angabe mehrerer Skriptaktionen im JSON-Code beseitigen. | Nein |
 
 
 > [!IMPORTANT]
@@ -255,7 +255,7 @@ Wenn Sie Hauptknoten und Workerknoten der Größe D4 erstellen möchten, geben S
 Wenn Sie einen falschen Wert für diese Eigenschaften angeben, erhalten Sie möglicherweise den folgenden **Fehler**: Der Cluster wurde nicht erstellt. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: 'Error'. Meldung: 'PreClusterCreationValidationFailure'. Wenn Sie diesen Fehler erhalten, achten Sie darauf, dass Sie den Namen der **Cmdlets und APIs** aus der Tabelle im Artikel [Größen für virtuelle Computer](../virtual-machines/sizes.md) verwenden.
 
 ### <a name="bring-your-own-compute-environment"></a>Eigene Compute-Umgebung
-Bei dieser Konfiguration können Benutzer eine bereits vorhandene Compute-Umgebung als verknüpften Dienst in Data Factory registrieren. Die Compute-Umgebung wird vom Benutzer verwaltet und von Data Factory zum Ausführen von Aktivitäten verwendet.
+Bei dieser Konfiguration können Benutzer eine bereits vorhandene Compute-Umgebung als verknüpften Dienst registrieren. Die Compute-Umgebung wird vom Benutzer verwaltet und vom Dienst zum Ausführen von Aktivitäten verwendet.
 
 Diese Art von Konfiguration wird für die folgenden Compute-Umgebungen unterstützt:
 
@@ -266,7 +266,7 @@ Diese Art von Konfiguration wird für die folgenden Compute-Umgebungen unterstü
 * Azure SQL DB, Azure Synapse Analytics, SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Mit Azure HDInsight verknüpfter Dienst
-Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigenen HDInsight-Cluster für Data  Factory zu registrieren.
+Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigenen HDInsight-Cluster für einen Data Factory- oder Synapse-Arbeitsbereich zu registrieren.
 
 ### <a name="example"></a>Beispiel
 
@@ -318,7 +318,7 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Sie können einen verknüpften Azure Batch-Dienst erstellen, um einen Batch-Pool mit virtuellen Computern für Data Factory zu registrieren. Sie können benutzerdefinierte Aktivität mithilfe von Azure Batch ausführen.
+Sie können einen verknüpften Azure Batch-Dienst erstellen, um einen Batch-Pool mit VMs für einen Daten- oder Synapse-Arbeitsbereich zu registrieren. Sie können benutzerdefinierte Aktivität mithilfe von Azure Batch ausführen.
 
 Lesen Sie die folgenden Artikel, wenn Sie noch nicht mit dem Azure Batch-Dienst vertraut sind:
 
@@ -369,8 +369,8 @@ Lesen Sie die folgenden Artikel, wenn Sie noch nicht mit dem Azure Batch-Dienst 
 | linkedServiceName | Der Name des verknüpften Azure Storage-Diensts, der diesem verknüpften Azure Batch-Dienst zugeordnet ist. Dieser verknüpfte Dienst wird für Stagingdateien verwendet, die für die Ausführung der Aktivität benötigt werden. | Ja      |
 | connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein       |
 
-## <a name="ml-studio-classic-linked-service"></a>Verknüpfter Dienst von ML Studio (classic)
-Sie erstellen einen mit ML Studio (classic) verknüpften Dienst, um einen Endpunkt für die Batch-Bewertung von Machine Learning Studio (classic) in einer Data Factory zu registrieren.
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Verknüpfter Azure Machine Learning Studio (Classic)-Dienst
+Sie können einen verknüpften Azure Machine Learning Studio (Classic)-Dienst erstellen, um einen Batchbewertungsendpunkt von Machine Learning Studio (Classic) für einen Data Factory- oder Synapse-Arbeitsbereich zu registrieren.
 
 ### <a name="example"></a>Beispiel
 
@@ -407,7 +407,7 @@ Sie erstellen einen mit ML Studio (classic) verknüpften Dienst, um einen Endpun
 | connectVia             | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein                                       |
 
 ## <a name="azure-machine-learning-linked-service"></a>Mit Azure Machine Learning verknüpfter Dienst
-Sie können einen mit Azure Machine Learning verknüpften Dienst erstellen, um einen Azure Machine Learning-Arbeitsbereich mit einer Data Factory zu verbinden.
+Sie können einen verknüpften Azure Machine Learning-Dienst erstellen, um einen Azure Machine Learning-Arbeitsbereich mit einem Data Factory- oder Synapse-Arbeitsbereich zu verbinden.
 
 > [!NOTE]
 > Derzeit wird nur die Dienstprinzipalauthentifizierung für den mit Azure Machine Learning verknüpften Dienst unterstützt.
@@ -452,7 +452,7 @@ Sie können einen mit Azure Machine Learning verknüpften Dienst erstellen, um e
 | connectVia             | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Mit Azure Data Lake Analytics verknüpfter Dienst
-Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um einen Azure Data Lake Analytics-Computedienst mit einer Azure Data Factory zu verknüpfen. Die Data Lake Analytics-U-SQL-Aktivität in der Pipeline verweist auf diesen verknüpften Dienst. 
+Sie erstellen einen verknüpften **Azure Data Lake Analytics**-Dienst, um einen Azure Data Lake Analytics-Computedienst mit einem Data Factory- oder Synapse-Arbeitsbereich zu verknüpfen. Die Data Lake Analytics-U-SQL-Aktivität in der Pipeline verweist auf diesen verknüpften Dienst. 
 
 ### <a name="example"></a>Beispiel
 
@@ -550,8 +550,8 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 | name                 | Name des verknüpften Diensts               | Ja   |
 | type                 | Legen Sie die type-Eigenschaft auf **Azure Databricks**: | Ja                                      |
 | Domäne               | Geben Sie die Azure-Region entsprechend der Region des Databricks-Arbeitsbereichs an. Beispiel: https://eastus.azuredatabricks.net | Ja                                 |
-| accessToken          | Für die Authentifizierung bei Azure Databricks ist ein Zugriffstoken erforderlich. Das Zugriffstoken muss im Databricks-Arbeitsbereich generiert werden. Ausführlichere Informationen zum Auffinden des Zugriffstokens finden Sie [hier](/azure/databricks/dev-tools/api/latest/authentication#generate-token).  | Nein                                       |
-| MSI          | Verwenden Sie die verwaltete Identität von Data Factory (systemseitig zugewiesen) zur Authentifizierung bei Azure Databricks. Wenn Sie die MSI-Authentifizierung verwenden, benötigen Sie kein Zugriffstoken.  | Nein                                       |
+| accessToken          | Für die Authentifizierung bei Azure Databricks benötigt der Dienst ein Zugriffstoken. Das Zugriffstoken muss im Databricks-Arbeitsbereich generiert werden. Ausführlichere Informationen zum Auffinden des Zugriffstokens finden Sie [hier](/azure/databricks/dev-tools/api/latest/authentication#generate-token).  | Nein                                       |
+| MSI          | Verwenden Sie die verwaltete Identität des Diensts (systemseitig zugewiesen) zur Authentifizierung bei Azure Databricks. Wenn Sie die MSI-Authentifizierung verwenden, benötigen Sie kein Zugriffstoken. Weitere Informationen zur Authentifizierung mit verwalteter Identität finden Sie [hier](https://techcommunity.microsoft.com/t5/azure-data-factory/azure-databricks-activities-now-support-managed-identity/ba-p/1922818).  | Nein                                       |
 | existingClusterId    | Cluster-ID eines vorhandenen Clusters, in dem alle Aufträge ausgeführt werden. Dabei sollte es sich um einen bereits erstellten interaktiven Cluster handeln. Möglicherweise müssen Sie den Cluster manuell neu starten, falls er nicht mehr reagiert. Databricks empfiehlt, Aufträge in neuen Clustern auszuführen, um die Zuverlässigkeit zu erhöhen. Sie finden die Cluster-ID eines interaktiven Clusters unter: Databricks-Arbeitsbereich -> Cluster -> Name des interaktiven Clusters -> Konfiguration -> Tags. [Weitere Informationen](https://docs.databricks.com/user-guide/clusters/tags.html) | Nein 
 | instancePoolId    | Instanzenpool-ID eines vorhandenen Pools im Databricks-Arbeitsbereich.  | Nein  |
 | newClusterVersion    | Die Spark-Version des Clusters. Damit wird ein Auftragscluster in Databricks erstellt. | Nein  |
@@ -563,19 +563,19 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 
 ## <a name="azure-sql-database-linked-service"></a>Mit Azure SQL-Datenbank verknüpfter Dienst
 
-Sie erstellen einen mit Azure SQL verknüpften Dienst und verwenden ihn mit der [Aktivität "Gespeicherte Prozedur"](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [Azure SQL-Connector](connector-azure-sql-database.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
+Sie erstellen einen verknüpften Azure SQL-Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur über eine Pipeline. Im Artikel [Azure SQL-Connector](connector-azure-sql-database.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
 
 ## <a name="azure-synapse-analytics-linked-service"></a>Mit Azure Synapse Analytics verknüpfter Dienst
 
-Sie erstellen einen mit Azure Synapse Analytics verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md), um eine gespeicherte Prozedur in einer Data Factory-Pipeline aufzurufen. Im Artikel zum [-Connector](connector-azure-sql-data-warehouse.md#linked-service-properties) finden Sie weitere Informationen über diesen verknüpften Dienst.
+Sie erstellen einen verknüpften Azure Synapse Analytics-Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md), um eine gespeicherte Prozedur über eine Pipeline aufzurufen. Im Artikel zum [-Connector](connector-azure-sql-data-warehouse.md#linked-service-properties) finden Sie weitere Informationen über diesen verknüpften Dienst.
 
 ## <a name="sql-server-linked-service"></a>Mit SQL Server verknüpfter Dienst
 
-Sie erstellen einen mit SQL Server verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [SQL Server-Connector](connector-sql-server.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
+Sie erstellen einen verknüpften SQL Server-Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur über eine Pipeline. Im Artikel [SQL Server-Connector](connector-sql-server.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
 
 ## <a name="azure-function-linked-service"></a>Verknüpfter Dienst der Azure-Funktion
 
-Sie erstellen einen verknüpften Dienst der Azure-Funktion und verwenden ihn mit der [Aktivität „Azure Function“](control-flow-azure-function-activity.md), um Azure Functions in einer Data Factory-Pipeline auszuführen. Der Rückgabetyp der Azure-Funktion muss ein gültiges `JObject` sein. (Beachten Sie, dass [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm)*kein*`JObject` ist.) Jeder andere Rückgabetyp als `JObject` führt zu dem Benutzerfehler *Antwortinhalt ist kein gültiges JObject*.
+Sie erstellen einen verknüpften Azure Functions-Dienst und verwenden ihn mit der [Aktivität „Azure Functions“](control-flow-azure-function-activity.md), um Azure Functions in einer Pipeline auszuführen. Der Rückgabetyp der Azure-Funktion muss ein gültiges `JObject` sein. (Beachten Sie, dass [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm)*kein*`JObject` ist.) Jeder andere Rückgabetyp als `JObject` führt zu dem Benutzerfehler *Antwortinhalt ist kein gültiges JObject*.
 
 | **Eigenschaft** | **Beschreibung** | **Erforderlich** |
 | --- | --- | --- |
@@ -586,4 +586,4 @@ Sie erstellen einen verknüpften Dienst der Azure-Funktion und verwenden ihn mit
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Liste der Transformationsaktivitäten, die von Azure Data Factory unterstützt werden, finden Sie unter [Transform data in Azure Data Factory](transform-data.md) (Transformieren von Daten in Azure Data Factory).
+Eine Liste der unterstützten Transformationsaktivitäten finden Sie unter [Transformieren von Daten](transform-data.md).

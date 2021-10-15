@@ -8,55 +8,55 @@ ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 4ae7015c575dc10c9f8c2ec2b896e75e1a2a2a91
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7c93ae2808629bf7b4413e6cb703e2c42863c0f7
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124838153"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400551"
 ---
 # <a name="install-azure-data-factory-analytics-solution-from-azure-marketplace"></a>Installieren der Lösung „Azure Data Factory-Analyse“ über den Azure Marketplace
 
-Diese Lösung liefert Ihnen eine Zusammenfassung der Gesamtintegrität Ihrer Data Factory-Instanz mit Optionen zum Durchführen eines Drilldowns zu den Details und zum Beheben von Problemen mit unerwarteten Verhaltensmustern. Anhand von umfassenden Ansichten, die standardmäßig vorhanden sind, können Sie Erkenntnisse zu wichtigen Verarbeitungsschritten gewinnen, z. B.:
+Diese Lösung gibt Ihnen einen Überblick über den Gesamtzustand Ihrer Datenfabrik, mit Optionen zum Aufschlüsseln von Details und zur Fehlerbehebung bei unerwarteten Verhaltensmustern. Mit umfangreichen, sofort einsatzbereiten Ansichten erhalten Sie Einblicke in wichtige Verarbeitungen, darunter:
 
-* Zentrale Übersicht über Pipeline-, Aktivitäts- und Triggerausführungen einer Data Factory-Instanz
-* Drilldown in Data Factory-Aktivitätsausführungen nach Typ
-* Zusammenfassung mit Informationen zur wichtigsten Data Factory-Pipeline und zu Aktivitätsfehlern
+* Zusammenfassung der Pipeline, der Aktivität und der Triggerläufe der Data Factory auf einen Blick.
+* Möglichkeit der Aufschlüsselung der Datenfabrik-Aktivitätsausführungen nach Art.
+* Zusammenfassung der wichtigsten Pipeline-Aktivitätsfehler der Datenfabrik.
 
-1. Navigieren Sie zu **Azure Marketplace**, wählen Sie den Filter **Analysen** aus, und suchen Sie nach **Azure Data Factory-Analyse (Vorschau)** .
+1. Gehen Sie zu **Azure Marketplace**, wählen Sie den Filter **Analytics**, und suchen Sie nach **Azure Data Factory Analytics (Preview)** .
 
-   :::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image3.png" alt-text="Navigieren Sie zu &quot;Azure Marketplace&quot;, geben Sie &quot;Analytics-Filter&quot; ein, und wählen Sie &quot;Azure Data Factory-Analytics (Vorschau)&quot;"::: aus.
+   :::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image3.png" alt-text="Screenshot, der zeigt, wie Sie zum Azure Marketplace gehen, den Analytics-Filter auswählen und Azure Data Factory Analytics (Preview) auswählen ":::.
 
-1. Details zu **Azure Data Factory-Analyse (Vorschau)**
+1. Überprüfen Sie die Details zu **Azure Data Factory Analytics (Preview)** .
 
-   :::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image4.png" alt-text="Details zu &quot;Azure Data Factory-Analytics (Vorschau)&quot;":::
+   :::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image4.png" alt-text="Screenshot mit Details zu Azure Data Factory Analytics (Preview).":::
 
-1. Wählen Sie **Erstellen** aus, und erstellen Sie dann den **Log Analytics-Arbeitsbereich**.
+1. Wählen Sie **Erstellen**, und erstellen oder wählen Sie dann **Log Analytics Workspace**.
 
-   :::image type="content" source="media/data-factory-monitor-oms/monitor-log-analytics-image-5.png" alt-text="Erstellen einer neuen Lösung":::
+   :::image type="content" source="media/data-factory-monitor-oms/monitor-log-analytics-image-5.png" alt-text="Screenshot, der die Erstellung einer neuen Lösung zeigt.":::
 
 ## <a name="monitor-data-factory-metrics"></a>Überwachen von Data Factory-Metriken
 
-Beim Installieren dieser Lösung wird im Arbeitsmappenabschnitt des ausgewählten Log Analytics-Arbeitsbereichs ein Standardsatz von Sichten erstellt. Dadurch werden die folgenden Metriken aktiviert:
+Beim Installieren dieser Lösung wird im Arbeitsmappenabschnitt des ausgewählten Log Analytics-Arbeitsbereichs ein Standardsatz von Sichten erstellt. Infolgedessen werden die folgenden Metriken aktiviert:
 
-* ADF-Ausführungen – 1) Pipelineausführungen nach Data Factory
-* ADF-Ausführungen – 2) Aktivitätsausführungen nach Data Factory
-* ADF-Ausführungen – 3) Triggerausführungen nach Data Factory
-* ADF-Fehler – 1) Top 10-Pipelinefehler nach Data Factory
-* ADF-Fehler – 2) Top 10-Aktivitätsausführungen nach Data Factory
-* ADF-Fehler – 3) Top 10-Triggerfehler nach Data Factory
-* ADF-Statistik – 1) Aktivitätsausführungen nach Typ
-* ADF-Statistik – 2) Triggerausführungen nach Typ
-* ADF-Statistik – 3) Höchstdauer der Pipelineausführungen
+* Datenläufe - 1) Pipeline-Läufe nach Data Factory
+* ADF läuft - 2) Aktivitätsausführung durch Data Factory
+* ADF-Läufe - 3) Trigger-Läufe nach Data Factory
+* ADF-Fehler - 1) Top 10 Pipeline-Fehler nach Data Factory
+* ADF-Fehler - 2) Top 10 Aktivitätsläufe nach Data Factory
+* ADF-Fehler - 3) Top 10 Trigger-Fehler nach Data Factory
+* ADF-Statistiken - 1) Aktivitätsausführungen nach Art
+* ADF-Statistiken - 2) Auslöserläufe nach Typ
+* ADF-Statistiken - 3) Maximale Dauer der Pipeline-Läufe
 
-:::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image6.png" alt-text="Fenster mit den hervorgehobenen Optionen &quot;Arbeitsmappen (Vorschau)&quot; und &quot;AzureDataFactoryAnalytics&quot;":::
+:::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image6.png" alt-text="Screenshot, der ein Fenster mit Workbooks (Vorschau) und AzureDataFactoryAnalytics hervorgehoben zeigt. ":::
 
 Sie können u.a. die voranstehenden Metriken visualisieren, die Abfragen hinter diesen Metriken betrachten, die Abfragen bearbeiten Benachrichtigungen erstellen oder andere Aktionen ausführen.
 
-:::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image8.png" alt-text="Grafische Darstellung von Pipelineausführungen durch Data Factory":::
+:::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image8.png" alt-text="Screenshot, der eine grafische Darstellung der Pipeline-Läufe durch Data Factory zeigt.":::
 
 > [!NOTE]
-> Azure Data Factory Analytics (Vorschau) sendet Diagnoseprotokolle an _ressourcenspezifische_ Zieltabellen. Sie können Abfragen für die folgenden Tabellen schreiben: _ADFPipelineRun_, _ADFTriggerRun_ und _ADFActivityRun_.
+> Azure Data Factory Analytics (Preview) sendet Diagnoseprotokolle an _Ressourcen-spezifische_ Zieltabellen. Sie können Abfragen für die folgenden Tabellen schreiben: _ADFPipelineRun_, _ADFTriggerRun_ und _ADFActivityRun_.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

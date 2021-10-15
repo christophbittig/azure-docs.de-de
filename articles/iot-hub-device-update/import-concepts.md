@@ -6,26 +6,18 @@ ms.author: andbrown
 ms.date: 2/10/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d01aa7f81d954183fcf487985e887bc81fa6c70c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 07e5b78b5ae9029ed4ab33f37e35105dfb5e5f26
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128638646"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358394"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub"></a>Importieren von Updates in Device Update für IoT Hub
 Wenn Sie ein Update aus Device Update für IoT Hub auf Geräten bereitstellen möchten, müssen Sie es zuerst in den Device Update-Dienst _importieren_. Hier ist eine Übersicht über einige wichtige Konzepte, die Sie beim Importieren von Updates verstehen müssen.
 
 ## <a name="limits-on-importing-updates"></a>Grenzwerte für den Import von Updates
-Für jede Device Update for IoT Hub-Instanz werden die folgenden Grenzwerte erzwungen:
-
-* 5 Anbieter pro ADU-Instanz
-* 5 Namen pro Anbieter
-* 25 Versionen pro Name
-
-Es gilt außerdem ein Limit von 100 Updateversionen insgesamt (für alle Anbieter und Namen).
-
-Die maximal zulässige Dateigröße für jede einzelne Datei in einer Updateübermittlung beträgt 2 GB. Die _kombinierte_ Gesamtgröße aller Dateien in einer einzigen Updateübermittlung darf ebenfalls nicht über 2 GB liegen.
+Für jede Device Update for IoT Hub-Instanz werden bestimmte Grenzwerte erzwungen. Wenn Sie diese noch nicht überprüft haben, lesen Sie [Grenzwerte für Device Update](./device-update-limits.md).
 
 ## <a name="import-manifest"></a>Importmanifest
 

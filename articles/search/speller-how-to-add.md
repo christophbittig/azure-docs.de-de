@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/27/2021
+ms.date: 09/29/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3da9051a1f089d487be7021bf9341a95bae62b08
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 98aec7fc2a3857ac50125e7e49c5f9ab105a49d7
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614369"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535933"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>Hinzufügen der Rechtschreibprüfung zu Abfragen in Azure Cognitive Search
 
@@ -23,19 +23,27 @@ ms.locfileid: "110614369"
 
 Sie können die Trefferquote (Recall) verbessern, indem Sie die Rechtschreibung einzelner Suchbegriffe der Abfrage korrigieren, bevor sie an die Suchmaschine übergeben werden. Der Parameter **speller** (Rechtschreibprüfung) wird für alle Abfragetypen unterstützt: [simple](query-simple-syntax.md) (einfach), [full](query-lucene-syntax.md) (vollständig) sowie die neue Option [semantic](semantic-how-to-query-request.md) (semantisch), die sich derzeit in der öffentlichen Vorschau befindet.
 
+Die Rechtschreibprüfung wurde zusammen mit der [Vorschauversion der semantischen Suche](semantic-search-overview.md) veröffentlicht und nutzt den queryLanguage-Parameter gemeinsam, ist aber ansonsten ein unabhängiges Feature mit eigenen Voraussetzungen. Für die Nutzung dieses Features ist keine Anmeldung erforderlich, und es fallen keine zusätzlichen Gebühren an.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Rechtschreibprüfung wurde zusammen mit der [Vorschauversion der semantischen Suche](semantic-search-overview.md) veröffentlicht. Es ist zwar eine [Registrierung](https://aka.ms/SemanticSearchPreviewSignup) erforderlich, für die Nutzung fallen aber keine Gebühren an, und es gelten keine Tarifeinschränkungen. Die Rechtschreibprüfung ist in den [gleichen Regionen](semantic-search-overview.md#availability-and-pricing) verfügbar wie die semantische Suche.
+Um die Rechtschreibprüfung verwenden zu können, ist Folgendes erforderlich:
 
-Nachdem die Registrierung verarbeitet wurde, benötigen Sie Folgendes:
++ Ein Suchdienst im Basic-Tarif oder höher in einer beliebigen Region.
 
-+ Ein vorhandener Suchindex mit Inhalt in einer [unterstützten Sprache](#supported-languages) Derzeit funktioniert die Rechtschreibkorrektur nicht mit [Synonymen](search-synonyms.md). Vermeiden Sie deren Verwendung in Indizes mit Synonymzuordnungen in beliebigen Felddefinitionen.
++ Ein vorhandener Suchindex mit Inhalt in einer [unterstützten Sprache](#supported-languages)
 
-+ Ein Suchclient zum Senden von Abfragen
++ [Eine Abfrageanforderung](/rest/api/searchservice/preview-api/search-documents), in der „speller=lexicon“ enthalten und „queryLanguage“ auf eine [unterstützte Sprache](#supported-languages) festgelegt ist. Die Rechtschreibprüfung funktioniert für Zeichenfolgen, die im Parameter „search“ übergeben werden. Für Filter wird sie nicht unterstützt.
 
-  Der Suchclient muss in der Abfrageanforderung Vorschau-REST-APIs unterstützen. Sie können [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md) oder Code verwenden, den Sie geändert haben, um REST-Aufrufe an die Vorschau-APIs zu senden.
+Verwenden Sie einen Suchclient, der Vorschau-APIs für die Abfrageanforderung unterstützt. Für REST können Sie [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md) oder Code verwenden, den Sie geändert haben, um REST-Aufrufe an die Vorschau-APIs zu senden. Sie können auch Betaversionen der Azure SDKs verwenden.
 
-+ [Für eine Abfrageanforderung](/rest/api/searchservice/preview-api/search-documents), die die Rechtschreibkorrektur aufruft, müssen „api-version=2020-06-30-Preview“, „speller=lexicon“ und „queryLanguage“ auf eine [unterstützte Sprache](#supported-languages) festgelegt sein.
+| Clientbibliothek | Versionen |
+|----------|----------|
+| REST-API | [2021-04-30-Preview](/rest/api/searchservice/index-preview) oder 2020-06-30-Preview |
+| Azure SDK für .NET | [version 11.3.0-beta.2](https://www.nuget.org/packages/Azure.Search.Documents/11.3.0-beta.2) | 
+| Azure SDK für Java |  [version 11.4.0-beta.2](https://search.maven.org/artifact/com.azure/azure-search-documents/11.4.0-beta.2/jar) |
+| Azure SDK für JavaScript | [version 11.2.0-beta.2](https://www.npmjs.com/package/@azure/search-documents/v/11.2.0-beta.2) |
+| Azure SDK für Python | [version 11.2.0b3](https://pypi.org/project/azure-search-documents/11.2.0b3/) |
 
 ## <a name="spell-correction-with-simple-search"></a>Rechtschreibkorrektur mit einfacher Suche
 
@@ -55,7 +63,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="spell-correction-with-full-lucene"></a>Rechtschreibkorrektur mit Lucene-Abfragen vom Typ „full“ (vollständig)
 
-Die Rechtschreibkorrektur erfolgt für einzelne Abfragebegriffe, die einer Analyse unterzogen werden, weshalb Sie den Parameter „speller“ bei einigen Lucene-Abfragen verwenden können, bei anderen jedoch nicht.
+Die Rechtschreibkorrektur erfolgt für einzelne Abfragebegriffe, die einer Textanalyse unterzogen werden, weshalb Sie den Parameter „speller“ bei einigen Lucene-Abfragen verwenden können, bei anderen jedoch nicht.
 
 + Nicht kompatible Abfrageformulare, die die Textanalyse umgehen, sind: Platzhalter, Regex, Fuzzy
 + Kompatible Abfrageformulare umfassen Folgendes: feldbezogene Suche, NEAR-Suche, Term Boosting
@@ -93,7 +101,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="supported-languages"></a>Unterstützte Sprachen
 
-Gültige Werte für die Rechtschreibprüfung für queryLanguage finden Sie in der folgenden Tabelle. Diese Liste ist eine Teilmenge der [unterstützten Sprachen (REST-API-Referenz)](/rest/api/searchservice/preview-api/search-documents#queryLanguage). Wenn Sie semantische Beschriftungen und Antworten ohne Rechtschreibprüfung verwenden, können Sie aus der größeren Liste von Sprachen und Varianten auswählen.
+Gültige Werte für „queryLanguage“ finden Sie in der folgenden Tabelle, die aus der [Liste unterstützter Sprachen (REST-API-Referenz)](/rest/api/searchservice/preview-api/search-documents#queryLanguage) kopiert wurde.
 
 | Sprache | queryLanguage |
 |----------|---------------|
@@ -101,18 +109,25 @@ Gültige Werte für die Rechtschreibprüfung für queryLanguage finden Sie in de
 | Spanisch [ES] | ES, ES-ES (Standard)|
 | Französisch [FR] | FR, FR-FR (Standard) |
 | Deutsch [DE] | DE, DE-DE (Standard) |
+| Niederländisch [NL] | NL, NL-BE, NL-NL (Standard) |
 
-## <a name="language-considerations"></a>Sprachbezogene Überlegungen
+### <a name="querylanguage-considerations"></a>Überlegungen zu „queryLanguage“
 
-Der für eine Semantikabfrage erforderliche queryLanguage-Parameter muss mit den [Sprachanalysetools](index-add-language-analyzers.md) übereinstimmen, die den Felddefinitionen im Index zugewiesen sind. Wenn beispielsweise der Inhalt eines Felds mit dem Sprachanalyseprogramm „fr.microsoft“ indiziert wurde, sollten Abfragen, Rechtschreibprüfung, semantische Untertitel und semantische Antworten alle eine französische Sprachbibliothek in irgendeiner Form verwenden.
+Wie an anderer Stelle erwähnt, kann eine Abfrageanforderung nur einen queryLanguage-Parameter aufweisen, aber dieser Parameter wird von mehreren Features gemeinsam genutzt, von denen jedes eine andere Kohorte von Sprachen unterstützt. Wenn Sie nur die Rechtschreibprüfung verwenden, ist die Liste der unterstützten Sprachen in der obigen Tabelle vollständig. 
+
+### <a name="language-analyzer-considerations"></a>Überlegungen zum Sprachanalysetool
+
+Indizes, die nicht englischsprachige Inhalte enthalten, verwenden häufig [Sprachanalysetools](index-add-language-analyzers.md) für nicht englischsprachige Felder, um die linguistischen Regeln der nativen Sprache anzuwenden.
+
+Wenn Sie jetzt eine Rechtschreibprüfung zu Inhalten hinzufügen, die auch einer Sprachanalyse unterzogen werden, erzielen Sie bessere Ergebnisse, wenn Sie bei jedem Schritt der Indizierung und Abfrageverarbeitung dieselbe Sprache verwenden. Wenn beispielsweise der Inhalt eines Felds mit dem Sprachanalysetool „fr.microsoft“ indiziert wurde, sollten Abfragen, Rechtschreibprüfung, semantische Beschriftungen und semantische Antworten alle ein französisches Lexikon oder eine Art französischer Sprachbibliothek verwenden.
 
 So verwenden Sie Sprachbibliotheken in Cognitive Search:
 
-+ Sprachanalysetools können während der Indizierung und Abfrageausführung aufgerufen werden, und können entweder vollständig Lucene (z. B. „de.lucene“) oder Microsoft („de.microsoft“) sein.
++ Sprachanalysetools können während der Indizierung und Abfrageausführung aufgerufen werden und entsprechen entweder Apache Lucene (z. B. „de.lucene“) oder Microsoft („de.microsoft“).
 
 + Sprachlexikone, die während der Rechtschreibprüfung aufgerufen werden, werden mit einem der Sprachcodes in der obigen Tabelle angegeben.
 
-In einer Abfrageanforderung gilt der festgelegte queryLanguage-Wert gleichermaßen für Rechtschreibprüfung, [Antworten](semantic-answers.md) und Beschriftungen. Es gibt keine Außerkraftsetzung für einzelne Teile einer semantischen Antwort. 
+In einer Abfrageanforderung gilt der zugewiesene queryLanguage-Wert gleichermaßen für Rechtschreibprüfung, [Antworten](semantic-answers.md) und Beschriftungen. 
 
 > [!NOTE]
 > Sprachkonsistenz über verschiedene Eigenschaftswerte hinweg ist nur dann ein Problem, wenn Sie Sprachanalysetools verwenden. Wenn Sie sprachunabhängige Analysetools verwenden (z. B. Schlüsselwort, einfach, Standard, Stop, Leerzeichen oder `standardasciifolding.lucene`), können Sie den queryLanguage-Wert frei festlegen.

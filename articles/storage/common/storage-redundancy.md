@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/18/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 064a3749577e3e50d6a0d63eda2a944a30788614
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 72b8df5a79ae1d4da9821d6d7d275dc5744ebb17
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128569454"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272735"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -221,7 +221,7 @@ In der folgenden Tabelle wird dargestellt, welche Redundanzoptionen von den einz
 |:-|:-|:-|:-|
 | General Purpose v2<br /> General Purpose v1<br /> Premium, Blockblob<br /> Legacy-Blob<br /> Premium-Dateifreigaben | General Purpose v2<br /> Premium-Blockblobs<br /> Premium-Dateifreigaben | General Purpose v2<br /> General Purpose v1<br /> Legacy-Blob | General Purpose v2 |
 
-Alle Daten eines Speicherkontos werden gemäß der Redundanzoption für das Speicherkonto kopiert. Es werden Objekte einschließlich Blockblobs, Anfügeblobs, Seitenblobs, Warteschlangen, Tabellen und Dateien kopiert. Die Daten aller Ebenen werden kopiert, einschließlich der Archivebene. Weitere Informationen zu Blobebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md).
+Alle Daten eines Speicherkontos werden gemäß der Redundanzoption für das Speicherkonto kopiert. Es werden Objekte einschließlich Blockblobs, Anfügeblobs, Seitenblobs, Warteschlangen, Tabellen und Dateien kopiert. Die Daten aller Ebenen werden kopiert, einschließlich der Archivebene. Weitere Informationen zu Blobebenen finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](../blobs/access-tiers-overview.md).
 
 Die Preise für die verschiedenen Redundanzoptionen finden Sie unter [Azure Storage – Preise](https://azure.microsoft.com/pricing/details/storage/).
 

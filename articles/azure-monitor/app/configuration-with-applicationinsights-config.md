@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: 1e9f3a07d08579314a47db7ecf9ad1b9cef947c6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: e1ea1a1e02b4b09e64054e9369caee4202a0b1b5
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289864"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235685"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurieren des Application Insights-SDK mit "ApplicationInsights.config" oder XML
 Das Application Insights .NET-SDK umfasst eine Reihe von NuGet-Paketen. Das [Kernpaket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) stellt die API für das Senden von Telemetriedaten an Application Insights bereit. [Zusätzliche Pakete](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) bieten *Telemetriemodule* und *-initialisierer* für die automatische Nachverfolgung von Telemetriedaten von Ihrer Anwendung und deren Kontext. Durch Anpassen der Konfigurationsdatei können Sie Telemetriemodule und -initialisierer aktivieren oder deaktivieren sowie Parameter für einige von ihnen festlegen.
@@ -71,7 +71,7 @@ Meldet die [Antwortzeit und den Ergebniscode](../../azure-monitor/app/asp-net.md
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) -NuGet-Paket
 * `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` verfolgt nicht überwachte Taskausnahmen.
-* `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` – Verfolgt nicht behandelte Ausnahmen für Workerrollen, Windows-Dienste und Konsolenanwendungen.
+* `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` verfolgt nicht behandelte Ausnahmen für Workerrollen, Windows-Dienste und Konsolenanwendungen.
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) .
 
 ### <a name="eventsource-tracking"></a>EventSource-Nachverfolgung

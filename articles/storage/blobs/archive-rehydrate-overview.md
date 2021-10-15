@@ -1,22 +1,22 @@
 ---
-title: Übersicht über die Aktivierung von Blobs aus der Archivebene
+title: Rehydrierung von Klecksen aus der Archivebene
 description: Während ein Blob sich auf der Archivzugriffsebene befindet, wird es als offline betrachtet und kann nicht gelesen oder geändert werden. Wenn Daten in einem archivierten Blob gelesen oder geändert werden sollen, muss das Blob zunächst auf einer Onlineebene (heiße oder kalte Ebene) aktiviert werden.
 services: storage
 author: tamram
 ms.author: tamram
-ms.date: 08/31/2021
+ms.date: 09/29/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: 2c4eac524ecda8a2b90036748fd2a6f2a389a3cd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 195238c6ef4191266a0f4b5dd481fbf24b70528f
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823724"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271819"
 ---
-# <a name="overview-of-blob-rehydration-from-the-archive-tier"></a>Übersicht über die Aktivierung von Blobs aus der Archivebene
+# <a name="blob-rehydration-from-the-archive-tier"></a>Rehydrierung von Klecksen aus der Archivebene
 
 Während ein Blob sich auf der Archivzugriffsebene befindet, wird es als offline betrachtet und kann nicht gelesen oder geändert werden. Wenn Daten in einem archivierten Blob gelesen oder geändert werden sollen, muss das Blob zunächst auf einer Onlineebene (heiße oder kalte Ebene) aktiviert werden. Es gibt zwei Möglichkeiten, ein auf der Archivebene gespeichertes Blob zu aktivieren:
 
@@ -28,7 +28,7 @@ Die Aktivierung eines Blobs aus der Archivebene kann mehrere Stunden dauern. Mic
 
 Sie können [Azure Event Grid](../../event-grid/overview.md) so konfigurieren, dass ein Ereignis ausgelöst wird, wenn ein Blob aus der Archivebene in einer Onlineebene aktiviert wird, und dass das Ereignis an einen Ereignishandler gesendet wird. Weitere Informationen hierzu finden Sie unter [Behandeln eines Ereignisses bei der Blobaktivierung](#handle-an-event-on-blob-rehydration).
 
-Weitere Informationen zu Zugriffsebenen in Azure Storage finden Sie unter [Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md).
+Weitere Informationen über Zugriffsebenen in Azure Storage finden Sie unter [Heiße, kühle und Archiv-Zugriffsebenen für Blobdaten](access-tiers-overview.md).
 
 ## <a name="rehydration-priority"></a>Aktivierungspriorität
 
@@ -51,7 +51,7 @@ Das archivierte Blob muss in ein neues Blob mit einem anderen Namen oder in eine
 
 Microsoft empfiehlt in den meisten Fällen, in denen ein Blob aus der Archivebene in eine Onlineebene verschoben werden muss, aus folgenden Gründen einen Kopiervorgang durchzuführen:
 
-- Durch einen Kopiervorgang wird die Gebühr für vorzeitiges Löschen vermieden, die erhoben wird, wenn die Ebene für das Blob aus der Archivebene vor Ablauf der vorgesehenen Frist von 180 Tagen gewechselt wird. Weitere Informationen finden Sie unter [Zugriffsebene „Archiv“](storage-blob-storage-tiers.md#archive-access-tier).
+- Durch einen Kopiervorgang wird die Gebühr für vorzeitiges Löschen vermieden, die erhoben wird, wenn die Ebene für das Blob aus der Archivebene vor Ablauf der vorgesehenen Frist von 180 Tagen gewechselt wird. Weitere Informationen finden Sie unter [Zugriffsebene „Archiv“](access-tiers-overview.md#archive-access-tier).
 - Wenn für das Speicherkonto eine Lebenszyklusverwaltungsrichtlinie gilt, kann die Aktivierung eines Blobs mit [Set Blob Tier](/rest/api/storageservices/set-blob-tier) dazu führen, dass das Blob aufgrund der Lebenszyklusrichtlinie nach der Aktivierung auf die Archivebene zurück verschoben wird, weil der Zeitpunkt der letzten Änderung nach dem für die Richtlinie festgelegten Schwellenwert liegt. Bei einem Kopiervorgang bleibt das Quellblob auf der Archivebene und es wird ein neues Blob mit einem anderen Namen und einem neuen Wert für den Zeitpunkt der letzten Änderung erstellt, sodass keine Gefahr besteht, dass das aktivierte Blob aufgrund der Lebenszyklusrichtlinie auf die Archivebene zurück verschoben wird.
 
 Das Kopieren eines Blobs aus dem Archiv kann je nach ausgewählter Aktivierungspriorität mehrere Stunden dauern. Im Hintergrund wird beim Vorgang „Copy Blob“ das archivierte Quellblob gelesen und so auf der ausgewählten Zielebene ein neues Onlineblob erstellt. Das neue Blob wird möglicherweise bereits vor Abschluss der Aktivierung in der Liste der Blobs im übergeordneten Container angezeigt, wobei die Ebene des Blobs jedoch auf Archiv festgelegt ist. Die Daten sind erst verfügbar, wenn der Lesevorgang aus dem Quellblob in die Archivebene abgeschlossen ist und der Inhalt des Blobs in das Zielblob auf einer Onlineebene geschrieben wurde. Beim neuen Blob handelt es sich um eine unabhängige Kopie, sodass es keine Auswirkungen auf das Quellblob auf der Archivebene hat, wenn das neue Blob geändert oder gelöscht wird.
@@ -107,13 +107,13 @@ Ein Aktivierungsvorgang mit [Set Blob Tier](/rest/api/storageservices/set-blob-t
 
 Das Kopieren eines archivierten Blobs in eine Onlineebene mit [Copy Blob](/rest/api/storageservices/copy-blob) oder [Copy Blob from URL](/rest/api/storageservices/copy-blob-from-url) wird pro Datenlesetransaktion und je nach Datenabrufgröße berechnet. Das Erstellen des Zielblobs in einer Onlineebene wird pro Datenschreibtransaktion berechnet. Gebühren für frühes Löschen fallen beim Kopieren in ein Onlineblob nicht an, weil das Quellblob auf der Archivzugriffsebene unverändert bleibt. Für einen Abruf mit hoher Priorität werden Gebühren berechnet, sofern dieser ausgewählt ist.
 
-Blobs auf Archivzugriffsebene müssen mindestens 180 Tage lang gespeichert werden. Für das Löschen oder Ändern der Ebene eines archivierten Blobs vor Ablauf der 180-Tage-Frist wird eine Gebühr für vorzeitiges Löschen berechnet. Weitere Informationen finden Sie unter [Zugriffsebene „Archiv“](storage-blob-storage-tiers.md#archive-access-tier).
+Blobs auf Archivzugriffsebene müssen mindestens 180 Tage lang gespeichert werden. Für das Löschen oder Ändern der Ebene eines archivierten Blobs vor Ablauf der 180-Tage-Frist wird eine Gebühr für vorzeitiges Löschen berechnet. Weitere Informationen finden Sie unter [Zugriffsebene „Archiv“](access-tiers-overview.md#archive-access-tier).
 
 Weitere Informationen zu den Preisen für Blockblobs und Datenaktivierung finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/). Weitere Informationen zu den Kosten für ausgehende Datenübertragungen finden Sie unter [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/).
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md)
+- [Hot-, Cool- und Archivzugriffsebenen für Blobdaten](access-tiers-overview.md).
 - [Aktivieren eines archivierten Blobs auf einer Onlineebene](archive-rehydrate-to-online-tier.md)
 - [Ausführen einer Azure-Funktion als Reaktion auf ein Blob-Aktivierungsereignis](archive-rehydrate-handle-event.md)
 - [Reacting to Blob storage events (preview)](storage-blob-event-overview.md) (Reagieren auf Blob Storage-Ereignisse (Vorschauversion))

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6d4d0f355d48532c43e9180f2c819e45d45737b4
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: dc516c9631eda2904ff311af6ca779872d9802f0
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572195"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537191"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Konfigurieren einer SQL Server Always On-Verfügbarkeitsgruppe in verschiedenen Azure-Regionen
 
@@ -150,6 +150,8 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
 1. Aktivieren Sie in der neuen SQL Server-Instanz mithilfe des SQL Server-Konfigurations-Managers die AlwaysOn-Verfügbarkeitsgruppen. (Informationen hierzu finden Sie [hier](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server).)
 
+1. [Konfigurieren Sie die Systemkontoberechtigungen](availability-group-manually-configure-prerequisites-tutorial.md#configure-system-account-permissions) auf dem neuen SQL Server in SQL Server Management Studio.
+
 1. [Öffnen Sie Firewallports in der neuen SQL Server-Instanz.](availability-group-manually-configure-prerequisites-tutorial.md#endpoint-firewall)
 
    Welche Portnummern geöffnet werden müssen, hängt von Ihrer Umgebung ab. Öffnen Sie Ports für den Spiegelungsendpunkt und den Integritätstest der Azure Load Balancer-Instanz.
@@ -158,12 +160,13 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 1. [Fügen Sie der Verfügbarkeitsgruppe in der neuen SQL Server-Instanz ein Replikat hinzu.](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio)
 
    Konfigurieren Sie ein Replikat in einer Azure-Remoteregion für die asynchrone Replikation mit manuellem Failover.  
+   
 
 ## <a name="set-connection-for-multiple-subnets"></a>Festlegen der Verbindung für mehrere Subnetze
 
 Das Replikat im Remoterechenzentrum ist Teil der Verfügbarkeitsgruppe, befindet sich aber in einem anderen Subnetz. Wenn dieses Replikat zum primären Replikat wird, treten unter Umständen Verbindungstimeouts für Anwendungen auf. Dieses Verhalten entspricht dem Verhalten einer lokalen Verfügbarkeitsgruppe in einer Bereitstellung mit mehreren Subnetzen. Aktualisieren Sie entweder die Clientverbindung, oder konfigurieren Sie den Namensauflösungs-Cache für die Clusternetzwerknamen-Ressource, um Verbindungen von Clientanwendungen zu ermöglichen.
 
-Aktualisieren Sie vorzugsweise die Clientverbindungszeichenfolgen, um `MultiSubnetFailover=Yes` festzulegen. Weitere Informationen finden Sie unter [Verbinden mit MultiSubnetFailover](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#Anchor_0).
+Aktualisieren Sie vorzugsweise die Clusterkonfiguration auf `RegisterAllProvidersIP=1` und die Clientverbindungszeichenfolgen auf `MultiSubnetFailover=Yes`. Weitere Informationen finden Sie unter [Verbinden mit MultiSubnetFailover](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#Anchor_0).
 
 Falls Sie die Verbindungszeichenfolgen nicht ändern können, können Sie den Namensauflösungs-Cache konfigurieren. Weitere Informationen finden Sie unter [Timeoutfehler, und Sie können keine Verbindung mit einem SQL Server 2012 AlwaysOn-Verfügbarkeitsgruppenlistener in einer Umgebung mit mehreren Subnetzen herstellen](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av).
 
@@ -203,7 +206,7 @@ Weitere Informationen finden Sie in den folgenden Themen:
 
 Weitere Informationen finden Sie unter:
 
-- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
 - [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
 - [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)

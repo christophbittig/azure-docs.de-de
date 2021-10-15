@@ -25,6 +25,8 @@
           href: container-registry-get-started-bicep.md
         - name: 'Senden von Ereignissen an Event Grid: CLI'
           href: container-registry-event-grid-quickstart.md
+        - name: Verwalten von Inhalten mit Clientbibliotheken
+          href: quickstart-client-libraries.md
         - name: 'Erstellen und Pushen von Java-Images: CLI'
           href: container-registry-java-quickstart.md
     - name: Tutorials

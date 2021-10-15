@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 23960e112dd03a711027c2364f648f60f23d0c8e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: aab3c66a76e22e17e5e5d6c0cd03ebca4562734d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355604"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277649"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -59,7 +59,7 @@ Datenflussprotokolle sind die Quelle der Wahrheit für alle Netzwerkaktivitäten
 **Wichtige Konzepte**
 
 - Softwaredefinierte Netzwerke werden um virtuelle Netzwerke (VNETs) und Subnetze herum organisiert. Die Sicherheit dieser VNETs und Subnetze kann über eine Netzwerksicherheitsgruppe (NSG) verwaltet werden.
-- Eine Netzwerksicherheitsgruppe (NSG) enthält eine Liste mit _Sicherheitsregeln_, mit denen Netzwerkdatenverkehr in verbundenen Ressourcen zugelassen oder verweigert wird. NSGs können Subnetzen, einzelnen VMs oder einzelnen Netzwerkschnittstellen (NICs) zugeordnet werden, die mit virtuellen Computern (Resource Manager) verbunden sind. Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheit](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- Eine Netzwerksicherheitsgruppe (NSG) enthält eine Liste mit _Sicherheitsregeln_, mit denen Netzwerkdatenverkehr in verbundenen Ressourcen zugelassen oder verweigert wird. Netzwerksicherheitsgruppen können jedem Subnetz eines virtuellen Netzwerks und jeder Netzwerkschnittstelle einer VM zugeordnet werden. Weitere Informationen finden Sie unter [Übersicht über Netzwerksicherheit](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - Alle Datenverkehrsflüsse in Ihrem Netzwerk werden mithilfe der Regeln in der entsprechenden NSG ausgewertet.
 - Das Ergebnis dieser Auswertungen sind NSG-Datenflussprotokolle. Datenflussprotokolle werden über die Azure-Plattform erfasst und erfordern keine Änderung an den Kundenressourcen.
 - Hinweis: Es gibt zwei Arten von Regeln: beendende und nicht beendende, mit jeweils unterschiedlichem Protokollierungsverhalten.

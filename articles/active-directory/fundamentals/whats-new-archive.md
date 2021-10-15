@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc57addda6b2e94307aecb5715cd0d3e51a0b745
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8f0dcffa6c027fb520d8a3a4551223ea28e5d09b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748566"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230207"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv für Neuerungen in Azure Active Directory
 
@@ -931,7 +931,7 @@ Der risikobasierte bedingte Zugriff und die Risikoerkennungsfunktionen von Ident
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---october-2020"></a>Neue Verbund-Apps im Azure AD-Anwendungskatalog verfügbar – Oktober 2020
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
+**Dienstkategorie**: Unternehmens-Apps  
 **Produktfunktion:** Integration von Drittanbieterprodukten
  
 Im Oktober 2020 haben wir die folgenden 27 neuen Anwendungen mit Verbundunterstützung in unseren App-Katalog aufgenommen:
@@ -1881,7 +1881,7 @@ Wir sind zurzeit in der Public Preview und bitten um Feedback. Bitte senden Sie 
 ### <a name="configure-saml-based-single-sign-on-using-microsoft-graph-api-beta"></a>Konfigurieren von SAML-basiertem einmaligem Anmelden unter Verwendung von Microsoft Graph-APIs (Beta)
 
 **Typ:** Neues Feature  
-**Dienstkategorie**: Unternehmens-Apps  
+**Dienstkategorie:** Unternehmens-Apps  
 **Produktfunktion:** SSO
  
 Unterstützung für das Erstellen und Konfigurieren einer Anwendung aus dem Azure AD-Katalog mithilfe von MS Graph-APIs in der Betaversion ist jetzt verfügbar. Wenn Sie SAML-basiertes einmaliges Anmelden für mehrere Instanzen einer Anwendung einrichten müssen, sparen Sie Zeit, indem Sie die Microsoft Graph-APIs verwenden, um die [Konfiguration von SAML-basiertem einmaligem Anmelden zu automatisieren](/graph/application-saml-sso-configure-api).
@@ -1909,7 +1909,7 @@ Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte B
 ### <a name="saml-token-encryption-is-generally-available"></a>SAML-Tokenverschlüsselung ist allgemein verfügbar
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
+**Dienstkategorie**: Unternehmens-Apps  
 **Produktfunktion:** SSO
  
 [Die SAML-Tokenverschlüsselung](../manage-apps/howto-saml-token-encryption.md) ermöglicht die Konfiguration von Anwendungen für den Empfang verschlüsselter SAML-Assertionen. Die Funktion ist nun in allen Clouds allgemein verfügbar.
@@ -2393,7 +2393,7 @@ Bisher waren Änderungen an der [HomeRealmDiscovery-Richtlinie](../manage-apps/c
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---march-2020"></a>Neue Verbund-Apps im Azure AD-App-Katalog verfügbar – März 2020
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
+**Dienstkategorie**: Unternehmens-Apps  
 **Produktfunktion:** Integration von Drittanbieterprodukten
  
 Im März 2020 haben wir die folgenden 51 neuen Apps mit Verbundunterstützung in den App-Katalog aufgenommen: 
@@ -2863,7 +2863,7 @@ Weitere Informationen finden Sie unter [Was ist die Azure AD-Berechtigungsverwal
 ### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>Automatisieren der Bereitstellung von Benutzerkonten für diese neu unterstützten SaaS-Apps
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
+**Dienstkategorie**: Unternehmens-Apps  
 **Produktfunktion:** Integration von Drittanbieterprodukten  
 
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:

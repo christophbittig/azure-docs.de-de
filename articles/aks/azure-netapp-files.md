@@ -1,21 +1,29 @@
 ---
-title: Integrieren von Azure NetApp Files in Azure Kubernetes Service
-description: Erfahren Sie, wie Sie Azure NetApp Files in Azure Kubernetes Service integrieren.
+title: Integrieren von Azure NetApp Files in Azure Kubernetes Service | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure NetApp Files in Azure Kubernetes Service bereitstellen.
 services: container-service
 ms.topic: article
-ms.date: 10/23/2020
-ms.openlocfilehash: 28c5b77f06bc48bf06575e45194adfaed068b30f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 10/04/2021
+ms.openlocfilehash: 177526fa98ada37341fadc90e183f224e1aa0830
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776049"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544790"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integrieren von Azure NetApp Files in Azure Kubernetes Service
 
-[Azure NetApp Files][anf] ist ein leistungsstarker Dateispeicherdienst auf Unternehmensniveau, der in Azure ausgeführt wird. Dieser Artikel zeigt Ihnen, wie Sie Azure NetApp Files in Azure Kubernetes Service (AKS) integrieren.
+Ein persistentes Volume stellt ein Speicherelement dar, das für die Verwendung in Kubernetes-Pods bereitgestellt wurde. Ein persistentes Volume kann von einem oder mehreren Pods verwendet und dynamisch oder statisch bereitgestellt werden. Dieser Artikel zeigt die Erstellung von [Azure NetApp Files][anf]-Volumes, die von Pods in einem AKS-Cluster (Azure Kubernetes Service) verwendet werden sollen.
+
+[Azure NetApp Files][anf] ist ein leistungsstarker Dateispeicherdienst auf Unternehmensniveau, der in Azure ausgeführt wird. Im Hinblick auf die Verwendung von Azure NetApp Files-Volumes für Kubernetes-Workloads stehen Kubernetes-Benutzern zwei Optionen zur Verfügung:
+
+* **Statisches** Erstellen von Azure NetApp Files-Volumes: In diesem Szenario erfolgt die Erstellung von Volumes außerhalb von AKS. Volumes werden mithilfe der `az`/Azure-Benutzeroberfläche erstellt und dann durch die Erstellung eines `PersistentVolume` für Kubernetes verfügbar gemacht.
+* Erstellen von Azure NetApp Files-Volumes **nach Bedarf** mit Orchestrierung über Kubernetes: Diese Methode ist die **bevorzugte** Verfahrensweise zum Erstellen mehrerer Volumes direkt über Kubernetes. Sie wird über [Astra Trident](https://netapp-trident.readthedocs.io/) umgesetzt.
+
+Ein produktionsbereiter CSI-Treiber für Kubernetes-Benutzer wird **dringend empfohlen**, um Azure NetApp Files-Volumes direkt über AKS zu nutzen. Diese Anforderung wird mithilfe von Astra Trident erfüllt, einem Open-Source-Orchestrator für dynamischen Speicher für Kubernetes. Hierbei handelt es sich um einen Speicherorchestrator auf Unternehmensniveau, der speziell für Kubernetes entwickelt wurde und vollständig von NetApp unterstützt wird. Er vereinfacht den Zugriff auf Speicher in Kubernetes-Umgebungen durch die Automatisierung der Speicherbereitstellung. Consumer können den CSI-Treiber von Astra Trident für Azure NetApp Files nutzen, um zugrunde liegende Details zu abstrahieren und bedarfsorientierte Volumes zu erstellen, zu erweitern und Momentaufnahmen zu erstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
+
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
 > [!IMPORTANT]
@@ -23,19 +31,15 @@ Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen 
 
 Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
-### <a name="limitations"></a>Einschränkungen
+### <a name="prerequisites"></a>Voraussetzungen
 
-Bei Verwendung von Azure NetApp Files gelten folgende Einschränkungen:
+Bei Verwendung von Azure NetApp Files ist Folgendes zu beachten:
 
 * Azure NetApp Files ist nur [in ausgewählten Azure-Regionen][anf-regions] verfügbar.
-* Bevor Sie Azure NetApp Files verwenden können, muss Ihnen der Zugriff auf den Azure NetApp Files-Dienst gewährt werden. Zum Beantragen des Zugriffs können Sie das [Formular für die Übermittlung einer Azure NetApp Files-Warteliste][anf-waitlist] verwenden oder zu https://azure.microsoft.com/services/netapp/#getting-started navigieren. Sie können erst auf den Azure NetApp Files-Dienst zugreifen, wenn Sie die offizielle Bestätigungs-E-Mail vom Azure NetApp Files-Team erhalten haben.
-* Nach der ersten Bereitstellung eines AKS-Clusters wird nur die statische Bereitstellung für Azure NetApp Files unterstützt.
-* Wenn Sie die dynamische Bereitstellung mit Azure NetApp Files verwenden möchten, installieren und konfigurieren Sie [NetApp Trident](https://netapp-trident.readthedocs.io/) Version 19.07 oder höher.
+* Nach der ersten Bereitstellung eines AKS-Clusters können Sie Azure NetApp Files-Volumes entweder statisch oder dynamisch bereitstellen.
+* Wenn Sie die dynamische Bereitstellung für Azure NetApp Files verwenden möchten, installieren und konfigurieren Sie [Astra Trident](https://netapp-trident.readthedocs.io/), Version 19.07 oder höher.
 
 ## <a name="configure-azure-netapp-files"></a>Konfigurieren von Azure NetApp Files
-
-> [!IMPORTANT]
-> Bevor Sie den *Microsoft.NetApp*-Ressourcenanbieter registrieren können, müssen Sie für Ihr Abonnement das [Formular für die Übermittlung einer Azure NetApp Files-Warteliste][anf-waitlist] ausfüllen oder zu https://azure.microsoft.com/services/netapp/#getting-started navigieren. Sie können die Ressource erst registrieren, nachdem Sie die offizielle Bestätigungs-E-Mail vom Azure NetApp Files-Team erhalten haben.
 
 Registrieren des *Microsoft NetApp*-Ressourcenanbieters:
 
@@ -92,6 +96,10 @@ az network vnet subnet create \
     --address-prefixes 10.0.0.0/28
 ```
 
+Volumes können entweder statisch oder dynamisch bereitgestellt werden. Beide Optionen werden im Folgenden ausführlich behandelt.
+
+## <a name="provision-azure-netapp-files-volumes-statically"></a>Statisches Bereitstellen von Azure NetApp Files-Volumes
+
 Erstellen Sie ein Volume mithilfe von [az netappfiles volume create][az-netappfiles-volume-create].
 
 ```azurecli
@@ -105,7 +113,7 @@ VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAM
 SUBNET_NAME=MyNetAppSubnet
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP --vnet-name $VNET_NAME --name $SUBNET_NAME --query "id" -o tsv)
 VOLUME_SIZE_GiB=100 # 100 GiB
-UNIQUE_FILE_PATH="myfilepath2" # Please note that file path needs to be unique within all ANF Accounts
+UNIQUE_FILE_PATH="myfilepath2" # Note that file path needs to be unique within all ANF Accounts
 
 az netappfiles volume create \
     --resource-group $RESOURCE_GROUP \
@@ -121,7 +129,7 @@ az netappfiles volume create \
     --protocol-types "NFSv3"
 ```
 
-## <a name="create-the-persistentvolume"></a>Erstellen von PersistentVolume
+### <a name="create-the-persistentvolume"></a>Erstellen von PersistentVolume
 
 Listen Sie die Details Ihres Volumes mithilfe von [az netappfiles volume show][az-netappfiles-volume-show] auf.
 
@@ -177,7 +185,7 @@ Vergewissern Sie sich, dass der *Status* von PersistentVolume *Verfügbar* ist, 
 kubectl describe pv pv-nfs
 ```
 
-## <a name="create-the-persistentvolumeclaim"></a>Erstellen von PersistentVolumeClaim
+### <a name="create-the-persistentvolumeclaim"></a>Erstellen von PersistentVolumeClaim
 
 Erstellen Sie eine Datei `pvc-nfs.yaml`, die ein PersistentVolume definiert. Beispiel:
 
@@ -207,7 +215,7 @@ Vergewissern Sie sich, dass der *Status* von PersistentVolumeClaim *Gebunden* is
 kubectl describe pvc pvc-nfs
 ```
 
-## <a name="mount-with-a-pod"></a>Einbinden mit einem Pod
+### <a name="mount-with-a-pod"></a>Einbinden mit einem Pod
 
 Erstellen Sie eine Datei `nginx-nfs.yaml`, die einen Pod definiert, der einen PersistentVolumeClaim verwendet. Beispiel:
 
@@ -259,10 +267,257 @@ Filesystem             Size  Used Avail Use% Mounted on
 ...
 ```
 
+## <a name="provision-azure-netapp-files-volumes-dynamically"></a>Dynamisches Bereitstellen von Azure NetApp Files-Volumes
+
+### <a name="install-and-configure-astra-trident"></a>Installieren und Konfigurieren von Astra Trident
+
+Um Volumes dynamisch bereitstellen zu können, müssen Sie Astra Trident installieren. Astra Trident ist der dynamische Speicherbereitstellungsdienst von NetApp, der speziell für Kubernetes entwickelt wurde. Vereinfachen Sie die Speichernutzung für Kubernetes-Anwendungen mithilfe von [CSI-Treibern (Container Storage Interface)](https://kubernetes-csi.github.io/docs/) nach Industriestandard. Astra Trident wird in Kubernetes-Clustern als Pods bereitgestellt und bietet dynamische Speicherorchestrierungsdienste für Ihre Kubernetes-Workloads.
+
+Weitere Informationen finden Sie in der [Dokumentation](https://netapp-trident.readthedocs.io/en/latest/index.html).
+
+Bevor Sie mit dem nächsten Schritt fortfahren, müssen Sie Folgendes durchführen:
+
+1. **Installieren Sie Astra Trident**. Trident kann über den Operator/Helm-Chart/`tridentctl` installiert werden. In den unten angegebenen Anweisungen wird erläutert, wie Astra Trident über den Operator installiert werden kann. Informationen zur Funktionsweise der anderen Installationsmethoden finden Sie im [Installationshandbuch](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/deploying.html).
+
+2. **Erstellen Sie ein Back-End**. Um Astra Trident über das Azure NetApp Files-Abonnement und den Ort zu informieren, an dem Volumes erstellt werden müssen, wird ein Back-End erstellt. Für diesen Schritt sind Details zum Konto erforderlich, das im vorherigen Schritt erstellt wurde.
+
+#### <a name="install-astra-trident-using-the-operator"></a>Installieren von Astra Trident über den Operator
+
+In diesem Abschnitt werden Sie durch die Installation von Astra Trident über den Operator geleitet. Sie können die Installation auch über eine der anderen Methoden durchführen:
+
+* [Helm-Chart](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/operator-deploy.html#deploy-trident-operator-by-using-helm).
+* [tridentctl](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/tridentctl-deploy.html).
+
+Informationen zur Funktionsweise der einzelnen Optionen und zum Ermitteln der für Sie am besten geeigneten Option finden Sie unter [Bereitstellen von Trident](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/deploying.html).
+
+Laden Sie Astra Trident aus dem [GitHub-Repository](https://github.com/NetApp/trident/releases) herunter. Wählen Sie die gewünschte Version aus, und laden Sie das Installationspaket herunter.
+
+```console
+#Download Astra Trident
+
+$  wget https://github.com/NetApp/trident/releases/download/v21.07.1/trident-installer-21.07.1.tar.gz
+$  tar xzvf trident-installer-21.07.1.tar.gz
+```
+Stellen Sie den Operator über `deploy/bundle.yaml` bereit.
+
+```console
+$  kubectl create ns trident
+
+namespace/trident created
+
+$  kubectl apply -f trident-installer/deploy/bundle.yaml -n trident
+
+serviceaccount/trident-operator created
+clusterrole.rbac.authorization.k8s.io/trident-operator created
+clusterrolebinding.rbac.authorization.k8s.io/trident-operator created
+deployment.apps/trident-operator created
+podsecuritypolicy.policy/tridentoperatorpods created
+```
+
+Erstellen Sie einen `TridentOrchestrator` zum Installieren von Astra Trident.
+
+```console
+$ kubectl apply -f trident-installer/deploy/crds/tridentorchestrator_cr.yaml
+
+tridentorchestrator.trident.netapp.io/trident created 
+```
+
+Der Operator wird anhand der Parameter installiert, die in der `TridentOrchestrator`-Spezifikation bereitgestellt werden. Informationen zu den Konfigurationsparametern und Beispiel-Back-Ends finden Sie in den ausführlichen Leitfäden für [Installation](https://netapp-trident.readthedocs.io/en/latest/kubernetes/deploying/deploying.html) und [Back-End](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/backends/index.html).
+
+Vergewissern Sie sich, dass Astra Trident installiert wurde. 
+
+```console
+$  kubectl describe torc trident
+Name:         trident
+Namespace:
+Labels:       <none>
+Annotations:  <none>
+API Version:  trident.netapp.io/v1
+Kind:         TridentOrchestrator
+...
+Spec:
+  Debug:      true
+  Namespace:  trident
+Status:
+  Current Installation Params:
+    IPv6:                       false
+    Autosupport Hostname:
+    Autosupport Image:          netapp/trident-autosupport:21.01
+    Autosupport Proxy:
+    Autosupport Serial Number:
+    Debug:                      true
+    Enable Node Prep:           false
+    Image Pull Secrets:
+    Image Registry:
+    k8sTimeout:           30
+    Kubelet Dir:          /var/lib/kubelet
+    Log Format:           text
+    Silence Autosupport:  false
+    Trident Image:        netapp/trident:21.07.1
+  Message:                Trident installed
+  Namespace:              trident
+  Status:                 Installed
+  Version:                v21.07.1
+Events:
+  Type    Reason      Age   From                        Message
+  ----    ------      ----  ----                        -------
+  Normal  Installing  74s   trident-operator.netapp.io  Installing Trident
+  Normal  Installed   67s   trident-operator.netapp.io  Trident installed
+```
+
+### <a name="create-a-backend"></a>Erstellen eines Back-Ends
+
+Erstellen Sie nach der Installation von Astra Trident ein Back-End, das auf Ihr Azure NetApp Files-Abonnement verweist.
+
+```console
+$  kubectl apply -f trident-installer/sample-input/backends-samples/azure-netapp-files/backend-anf.yaml -n trident
+
+secret/backend-tbc-anf-secret created
+tridentbackendconfig.trident.netapp.io/backend-tbc-anf created
+```
+
+Vor dem Ausführen des Befehls müssen Sie `backend-anf.yaml` mit Details zum Azure NetApp Files-Abonnement aktualisieren:
+
+* `subscriptionID` für das Azure-Abonnement, in dem Azure NetApp Files aktiviert ist. The 
+* `tenantID`, `clientID` und `clientSecret` aus einer [App-Registrierung](../active-directory/develop/howto-create-service-principal-portal.md) in Azure Active Directory (AD) mit ausreichenden Berechtigungen für den Azure NetApp Files-Dienst. Die App-Registrierung muss die in Azure vordefinierte Rolle `Owner` oder `Contributor` aufweisen.
+* Azure-Standort, der mindestens ein delegiertes Subnetz enthält.
+
+Darüber hinaus können Sie einen anderen Servicelevel angeben. Azure NetApp Files stellt drei [Servicelevel](../azure-netapp-files/azure-netapp-files-service-levels.md) bereit: Standard, Premium und Ultra.
+
+### <a name="create-a-storageclass"></a>Erstellen einer StorageClass
+
+Mit einer Speicherklasse wird festgelegt, wie eine Speichereinheit dynamisch in einem persistenten Volume erstellt wird. Um Azure NetApp Files-Volumes zu nutzen, muss eine Speicherklasse erstellt werden. Erstellen Sie eine Datei namens `anf-storageclass.yaml`, und kopieren Sie das unten angegebene Manifest.
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: azure-netapp-files
+provisioner: csi.trident.netapp.io
+parameters:
+  backendType: "azure-netapp-files"
+  fsType: "nfs"
+```
+
+Verwenden Sie den Befehl [kubectl apply][kubectl-apply] zum Erstellen der Speicherklasse:
+
+```console
+$  kubectl apply -f anf-storageclass.yaml
+
+storageclass/azure-netapp-files created
+
+$  kubectl get sc
+NAME                 PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+azure-netapp-files   csi.trident.netapp.io   Delete          Immediate           false                  3s
+```
+
+### <a name="create-a-persistentvolumeclaim"></a>Erstellen eines PersistentVolumeClaim
+
+Ein PersistentVolumeClaim (PVC) ist eine Speicheranforderung von einem Benutzer. Nach der Erstellung eines PersistentVolumeClaim erstellt Astra Trident automatisch ein Azure NetApp Files-Volume und macht es für Kubernetes-Workloads verfügbar.
+
+Erstellen Sie eine Datei namens `anf-pvc.yaml`, und geben Sie das folgende Manifest an. In diesem Beispiel wird ein 1-TiB-Volume mit *ReadWriteMany* erstellt.
+
+```yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: anf-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Ti
+  storageClassName: azure-netapp-files
+```
+
+Erstellen Sie mit dem Befehl [kubectl apply][kubectl-apply] einen Anspruch auf ein persistentes Volume:
+
+```console
+$  kubectl apply -f anf-pvc.yaml
+
+persistentvolumeclaim/anf-pvc created
+
+$  kubectl get pvc
+kubectl get pvc -n trident
+NAME      STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS         AGE
+anf-pvc   Bound    pvc-bffa315d-3f44-4770-86eb-c922f567a075   1Ti        RWO            azure-netapp-files   62s
+```
+
+### <a name="use-the-persistent-volume"></a>Verwenden des persistenten Volumes
+
+Nachdem der PVC erstellt wurde, kann ein Pod für den Zugriff auf das Azure NetApp Files-Volume gestartet werden. Mithilfe des folgenden Manifests kann ein NGINX-Pod definiert werden, der das im vorherigen Schritt erstellte Azure NetApp Files-Volume einbindet. In diesem Beispiel wird das Volume unter `/mnt/data` eingebunden.
+
+Erstellen Sie eine Datei namens `anf-nginx-pod.yaml`, die das folgende Manifest enthält:
+
+```yml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx
+    image: mcr.microsoft.com/oss/nginx/nginx:latest1.15.5-alpine
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+    - mountPath: "/mnt/data"
+      name: volume
+  volumes:
+    - name: volume
+      persistentVolumeClaim:
+        claimName: anf-pvc
+```
+
+Erstellen Sie den Pod mit dem Befehl [kubectl apply][kubectl-apply].
+
+```console
+$  kubectl apply -f anf-nginx-pod.yaml
+
+pod/nginx-pod created
+```
+
+Kubernetes hat nun einen Pod mit dem eingebundenen Volume erstellt, auf das im Container `nginx` unter `/mnt/data` zugegriffen werden kann. Bestätigen Sie dies durch Überprüfen der Ereignisprotokolle für den Pod über `kubectl describe`:
+
+```console
+$  kubectl describe pod nginx-pod
+
+[...]
+Volumes:
+  volume:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  anf-pvc
+    ReadOnly:   false
+  default-token-k7952:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-k7952
+    Optional:    false
+[...]
+Events:
+  Type    Reason                  Age   From                     Message
+  ----    ------                  ----  ----                     -------
+  Normal  Scheduled               15s   default-scheduler        Successfully assigned trident/nginx-pod to brameshb-non-root-test
+  Normal  SuccessfulAttachVolume  15s   attachdetach-controller  AttachVolume.Attach succeeded for volume "pvc-bffa315d-3f44-4770-86eb-c922f567a075"
+  Normal  Pulled                  12s   kubelet                  Container image "mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine" already present on machine
+  Normal  Created                 11s   kubelet                  Created container nginx
+  Normal  Started                 10s   kubelet                  Started container nginx
+```
+
+Astra Trident unterstützt zahlreiche Features für Azure NetApp Files, darunter Folgende:
+
+* [Erweitern von Volumes](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/volumes/vol-expansion.html)
+* [Bedarfsbasierte Volumemomentaufnahmen](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/volumes/snapshots.html)
+* [Importieren von Volumes](https://netapp-trident.readthedocs.io/en/latest/kubernetes/operations/tasks/volumes/import.html)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure NetApp Files finden Sie unter [Was ist Azure NetApp Files?][anf]. Weitere Informationen zum Verwenden von NFS mit AKS finden Sie unter [Manuelles Erstellen und Verwenden eines Volumes eines Linux-NFS-Servers (Network File System) mit Azure Kubernetes Service (AKS)][aks-nfs].
-
+* Weitere Informationen zu Azure NetApp Files finden Sie unter [Was ist Azure NetApp Files?][anf].
 
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
@@ -274,6 +529,7 @@ Weitere Informationen zu Azure NetApp Files finden Sie unter [Was ist Azure NetA
 [anf-waitlist]: https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u
 [az-aks-show]: /cli/azure/aks#az_aks_show
 [az-netappfiles-account-create]: /cli/azure/netappfiles/account#az_netappfiles_account_create
+[az-netapp-files-dynamic]: azure-netapp-files-dynamic.md
 [az-netappfiles-pool-create]: /cli/azure/netappfiles/pool#az_netappfiles_pool_create
 [az-netappfiles-volume-create]: /cli/azure/netappfiles/volume#az_netappfiles_volume_create
 [az-netappfiles-volume-show]: /cli/azure/netappfiles/volume#az_netappfiles_volume_show

@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: 8210efe9c17a6edcb18fe114b7f6165d8cbd8360
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 6b5bec7006fa7bea7c887286d9cdc1a7b51a3d5c
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281293"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389853"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>Überprüfte lokale Livestreamingencoder
 
@@ -28,6 +28,7 @@ In Azure Media Services stellt ein [Liveereignis](/rest/api/media/liveevents) (K
 
   > [!TIP]
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings.
+  > Der Dienst unterstützt abhängig von Ihren Erfassungsanforderungen die Passthrough-Modi „Basic“ und „Standard“. Basic-Passthrough ist kostengünstiger, jedoch im Funktionsumfang eingeschränkt. 
  
 * Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an das Liveereignis, das zum Ausführen der Livecodierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Liveereignis wird dann eine Livecodierung des Eingabestreams mit Einzelbitrate in einen (adaptiven) Videostream mit Mehrfachbitrate ausgeführt.
 

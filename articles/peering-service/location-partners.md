@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: 954b4deb6a095ee862e46cb13d177d9b66cf0dca
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 11a9eac39a672848eee2ea966e5a819d6c771c7b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129053856"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360997"
 ---
 # <a name="peering-service-partners"></a>Peering Service-Partner
 
@@ -47,6 +47,7 @@ Die Tabelle in diesem Artikel enthält Informationen zu den Peering Service-Konn
 | [CMC Networks](https://www.cmcnetworks.net/products/microsoft-azure-peering-services.html) |Afrika|
 | [MainOne](https://www.mainone.net/connectivity-services/microsoft-azure-peering-service/) |Afrika|
 | [BICS](https://www.bics.com/services/capacity-solutions/cloud-connect/microsoft-azure-cloud-connect/) |Europa|
+| [Telstra International](https://www.telstra.com.sg/en/products/global-networks/global-internet/global-internet-direct) |Asia |
 
 > [!NOTE]
 >Weitere Informationen zum Beitreten zum Peering Service Partnerprogramm erhalten Sie bei peeringservice@microsoft.com.

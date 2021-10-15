@@ -10,12 +10,12 @@ ms.date: 05/18/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0bac6465ec392ac8d397f1210299c27c3a25c81e
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: a843952e05d71a13a26d56e1588fd10bea0e50c8
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113552314"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275865"
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -104,7 +104,7 @@ az login
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Ein Speicherkonto ist eine Azure Resource Manager Ressource. Resource Manager ist der Bereitstellungs- und Verwaltungsdienst für Azure. Weitere Informationen finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/management/overview.md).
+Ein Speicherkonto ist eine Azure Resource Manager Ressource. Resource Manager ist der Bereitstellungs- und Verwaltungsdienst für Azure. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md).
 
 Jede Resource Manager-Ressource, einschließlich eines Azure-Speicherkontos, muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In dieser Anleitung wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
 
@@ -151,7 +151,7 @@ In der folgenden Tabelle werden die Felder der Registerkarte **Erweitert** besch
 | Sicherheit | TLS-Mindestversion | Erforderlich | Wählen Sie die erforderliche Mindestversion der Transport Layer Security (TLS) für eingehende Anforderungen an ein Speicherkonto. Der Standardwert ist TLS-Version 1.2. Wenn dieser Wert auf den Standardwert festgelegt ist, werden eingehende Anforderungen mit TLS 1.0 oder TLS 1.1 abgelehnt. Weitere Informationen finden Sie unter [Erzwingen der erforderliche Mindestversion der Transport Layer Security (TLS) für Anforderungen an ein Speicherkonto](transport-layer-security-configure-minimum-version.md). |
 | Data Lake Storage Gen2 | Aktivieren Sie hierarchische Namespace | Optional | Wenn Sie dieses Speicherkonto für Azure Data Lake Storage Gen2 verwenden möchten, müssen Sie einen hierarchischen Namespace konfigurieren. Weitere Informationen hierzu finden Sie unter [Einführung in Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md). |
 | Blobspeicher | Aktivieren der Netzwerkdateifreigabe v3 (NFS) | Optional | NFS v3 bietet Linux-Dateisystemkompatibilität bei Objektspeicherskalierung und ermöglicht es Linux-Clients, einen Container aus einem virtuellen Azure-Computer (VM) oder einem lokalen Computer in Blob Storage einzubinden. Weitere Informationen finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage](../blobs/network-file-system-protocol-support.md). |
-| Blobspeicher | Zugriffsebene | Erforderlich | Mit Blobzugriffsebenen können Sie Blobdaten basierend auf der Nutzung auf die kostengünstigste Weise speichern. Wählen Sie die heiße Zugriffsebene (Standard) für Daten aus, auf die häufig zugegriffen wird. Wählen Sie die kalte Zugriffsebene für Daten aus, auf die selten zugegriffen wird. Weitere Informationen finden Sie unter [Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md). |
+| Blobspeicher | Zugriffsebene | Erforderlich | Mit Blobzugriffsebenen können Sie Blobdaten basierend auf der Nutzung auf die kostengünstigste Weise speichern. Wählen Sie die heiße Zugriffsebene (Standard) für Daten aus, auf die häufig zugegriffen wird. Wählen Sie die kalte Zugriffsebene für Daten aus, auf die selten zugegriffen wird. Weitere Informationen finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](../blobs/access-tiers-overview.md). |
 | Azure Files | Aktivieren großer Dateifreigaben | Optional | Nur für Standarddateifreigaben mit LRS- oder ZRS-Redundanzen verfügbar. |
 | Tabellen und Warteschlangen | Unterstützung für kundenseitig verwaltete Schlüssel aktivieren | Optional | Um den Support für kundenseitig verwaltete Schlüssel für Tabellen und Warteschlangen zu aktivieren, müssen Sie diese Einstellung zum Zeitpunkt der Erstellung des Speicherkontos auswählen. Weitere Informationen finden Sie unter [Erstellen eines Kontos, das kundenseitig verwaltete Schlüssel für Tabellen und Warteschlangen unterstützt](account-encryption-key-create.md). |
 

@@ -1,6 +1,6 @@
 ---
 title: Überprüfung von XML in Unternehmensintegrationsworkflows
-description: Überprüfen von XML mithilfe von Schemas in Azure Logic Apps mit Enterprise Integration Packs.
+description: Überprüfen von XML mithilfe von Schemas in Workflows, die Azure Logic Apps und das Enterprise Integration Pack nutzen.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.openlocfilehash: 842b26502dcfa073bca21891eed44fe990037f06
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f295054913dbf275533d4d14f39497071c6984a8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128660802"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353219"
 ---
-# <a name="validate-xml-for-workflows-in-azure-logic-apps"></a>XML-Überprüfung für Workflows in Azure Logic Apps
+# <a name="validate-xml-in-workflows-with-azure-logic-apps"></a>Überprüfen von XML in Workflows mithilfe von Azure Logic Apps
 
 In B2B-Szenarien für die Unternehmensintegration müssen die beteiligten Parteien per Vereinbarung häufig sicherstellen, dass die ausgetauschten Nachrichten gültig sind, bevor eine Datenverarbeitung gestartet werden kann. Ihr Logik-App-Workflow kann XML-Nachrichten und Dokumente mithilfe der Aktion **XML-Überprüfung** und eines vordefinierten [Schemas](logic-apps-enterprise-integration-schemas.md) überprüfen.
 
@@ -35,11 +35,11 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
   * Das Konto befindet sich am selben Standort oder in derselben Azure-Region wie Ihre Logik-App-Ressource, in der Sie die Aktion **XML-Überprüfung*** verwenden möchten.
 
-  * Wenn Sie den [Ressourcentyp **Logik-App (Verbrauch)** ](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigen Sie ein Integrationskonto mit den folgenden Elementen:
+  * Wenn Sie den [Ressourcentyp **Logik-App (Verbrauch)**](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigen Sie ein Integrationskonto mit den folgenden Elementen:
 
     * Dem [Schema](logic-apps-enterprise-integration-schemas.md), das zum Validieren von XML-Inhalt verwendet werden soll.
 
-    * Einer [Verbindung mit Ihrer Logik-App-Ressource](logic-apps-enterprise-integration-create-integration-account.md#link-account).
+    * Einer [Verbindung mit Ihrer Logik-App-Ressource](logic-apps-enterprise-integration-create-integration-account.md#link-account)
 
   * Wenn Sie den [Ressourcentyp **Logik-App (Standard)** ](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, müssen Sie keine Schemas in Ihrem Integrationskonto speichern. Stattdessen können Sie [Ihrer Logik-App-Ressource Schemas direkt im Azure-Portal oder in Visual Studio Code hinzufügen](logic-apps-enterprise-integration-schemas.md). Sie können diese Schemas dann in mehreren Workflows innerhalb *derselben Logik-App-Ressource* verwenden.
 

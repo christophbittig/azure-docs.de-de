@@ -3,12 +3,12 @@ title: Bicep-Funktionen - any
 description: Beschreibt die any-Funktion, die in Bicep zum Konvertieren von Typen verfügbar ist.
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: 00d99a9329f48b089563b4366ae9683ce2874901
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2826f6180bc8ba4c476fd067a19db25b52f5d65b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827583"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353713"
 ---
 # <a name="any-function-for-bicep"></a>any-Funktion für Bicep
 
@@ -24,6 +24,8 @@ Diese Funktion ist in der Azure Resource Manager-Vorlagenlaufzeit nicht vorhande
 `any(value)`
 
 Gibt einen Wert zurück, der mit einem beliebigen Datentyp kompatibel ist.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 

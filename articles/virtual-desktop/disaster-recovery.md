@@ -1,6 +1,6 @@
 ---
-title: 'Einrichten eines Plans für die Notfallwiederherstellung für Azure Virtual Desktop: Azure'
-description: Anleitung zum Einrichten eines Plans für Geschäftskontinuität und Notfallwiederherstellung für Ihre Azure Virtual Desktop-Bereitstellung.
+title: Planen der Notfallwiederherstellung für Azure Virtual Desktop
+description: Erstellen Sie einen Notfallwiederherstellungsplan für Ihre Azure Virtual Desktop-Bereitstellung, um Ihre Daten zu schützen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 91795dbe4e648f12e9a088a5aeffb68bffb46a65
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 54202b49e2881d1d128136b876cbf88c2bc87400
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757893"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359751"
 ---
-# <a name="set-up-a-business-continuity-and-disaster-recovery-plan"></a>Einrichten eines Plans für Geschäftskontinuität und Notfallwiederherstellung
+# <a name="azure-virtual-desktop-disaster-recovery"></a>Notfallwiederherstellung für Azure Virtual Desktop
 
 Zum Schützen der Daten Ihrer Organisation müssen Sie möglicherweise eine Strategie für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) einführen. Eine solide BCDR-Strategie sorgt dafür, dass Ihre Apps und Workloads während geplanter und ungeplanter Wartungen oder Azure-Ausfälle weiter in Betrieb bleiben.
 

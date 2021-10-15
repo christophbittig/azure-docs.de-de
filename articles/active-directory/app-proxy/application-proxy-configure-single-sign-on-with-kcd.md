@@ -12,18 +12,18 @@ ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ba29c7577bd725cf0c165e0cae8374d3c4bb647c
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 5a13171d234664ca09508f2404acb95e468f9d7c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186418"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232316"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>Eingeschränkte Kerberos-Delegierung für einmaliges Anmelden (SSO) bei Ihren Apps mit dem Anwendungsproxy
 
-Sie können das einmalige Anmelden für lokale Anwendungen, die über den Anwendungsproxy veröffentlicht und mit der integrierte Windows-Authentifizierung gesichert werden, bereitstellen. Diese Anwendungen erfordern ein Kerberos-Ticket für den Zugriff. Der Anwendungsproxy verwendet die eingeschränkte Kerberos-Delegierung (KCD), um diese Anwendungen zu unterstützen. 
+Sie können das einmalige Anmelden für lokale Anwendungen bereitstellen, die über den Anwendungsproxy veröffentlicht und mit der integrierte Windows-Authentifizierung geschützt werden. Diese Anwendungen erfordern ein Kerberos-Ticket für den Zugriff. Der Anwendungsproxy verwendet die eingeschränkte Kerberos-Delegierung (KCD), um diese Anwendungen zu unterstützen. 
 
-Sie können für Anwendungen, die die integrierte Windows-Authentifizierung (IWA) verwenden, einmaliges Anmelden wie folgt aktivieren: Erteilen Sie einem Anwendungsproxy-Connector in Active Directory die Berechtigung, die Identität von Benutzern anzunehmen. Die Connectors verwenden diese Berechtigung zum Senden und Empfangen von Token im Auftrag dieser.
+Sie können für Anwendungen, die die integrierte Windows-Authentifizierung (IWA) verwenden, einmaliges Anmelden wie folgt aktivieren: Erteilen Sie einem Anwendungsproxy-Connector in Active Directory die Berechtigung, die Identität von Benutzer*innen anzunehmen. Die Connectors verwenden diese Berechtigung zum Senden und Empfangen von Token im Auftrag dieser.
 
 ## <a name="how-single-sign-on-with-kcd-works"></a>So funktioniert das einmalige Anmelden mit KCD
 Dieses Diagramm erläutert die Vorgänge, die beim Zugriff eines Benutzers auf eine lokale Anwendung mit IWA ablaufen.
@@ -88,7 +88,7 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
 1. Veröffentlichen Sie Ihre Anwendung entsprechend den Anweisungen unter [Veröffentlichen von Anwendungen mit einem Anwendungsproxy](../app-proxy/application-proxy-add-on-premises-application.md). Stellen Sie sicher, dass **Azure Active Directory** als **Präauthentifizierungsmethode** ausgewählt ist.
 2. Wenn Ihre Anwendung in der Liste der Unternehmensanwendungen angezeigt wird, wählen Sie sie aus, und klicken auf **Einmaliges Anmelden**.
 3. Legen Sie den Modus für einmaliges Anmelden auf **Integrierte Windows-Authentifizierung** fest.  
-4. Geben Sie den Wert für **Interner Anwendungs-SPN** des Anwendungsservers ein. In diesem Beispiel ist der SPN für unsere veröffentlichte Anwendung http//www.contoso.com. Dieser SPN muss sich in der Liste mit Diensten befinden, an die der Connector delegierte Anmeldeinformationen ausgeben kann. 
+4. Geben Sie den Wert für **Interner Anwendungs-SPN** des Anwendungsservers ein. In diesem Beispiel ist der SPN für die veröffentlichte Anwendung `http/www.contoso.com`. Dieser SPN muss sich in der Liste mit Diensten befinden, an die der Connector delegierte Anmeldeinformationen ausgeben kann.
 5. Wählen Sie die **delegierte Identität für die Anmeldung** für den zu verwendenden Connector im Auftrag Ihrer Benutzer. Weitere Informationen finden Sie unter [Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](#working-with-different-on-premises-and-cloud-identities).
 
    ![Erweiterte Anwendungskonfiguration](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  

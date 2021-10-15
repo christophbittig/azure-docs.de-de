@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: 1671b0c4ba57faa6dc631c50cc273678c72b379b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 188e40f9bc3d2d23035549578cdc6440af60a3e5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124730138"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359246"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>Migrieren von Java-Anwendungen zu JBoss EAP in Azure-VMs und -VM-Skalierungsgruppen
 
@@ -248,7 +248,7 @@ Sie können die Anwendung mit den folgenden Methoden verfügbar machen, die für
 Nachdem Sie die Migrationsziele erreicht haben, die Sie unter Vor der Migration definiert haben, führen Sie einige End-to-End-Akzeptanztests durch. Hiermit soll sichergestellt werden, dass alles wie gewünscht funktioniert. Hier sind einige Themenbereiche für Verbesserungen nach der Migration aufgeführt (keine umfassende Liste):
 
 * Verwenden von Azure Storage zum Bereitstellen von statischem Inhalt auf den VMs. Weitere Informationen finden Sie unter [Anfügen oder Trennen eines Datenträgers an einen oder von einem virtuellen Computer](../../../devtest-labs/devtest-lab-attach-detach-data-disk.md).
-* Stellen Sie Ihre Anwendungen mit Azure DevOps in Ihrem migrierten JBoss-Cluster bereit. Weitere Informationen finden Sie in der [Azure DevOps-Dokumentation zu den ersten Schritten](/azure/devops/get-started/?view=azure-devops).
+* Stellen Sie Ihre Anwendungen mit Azure DevOps in Ihrem migrierten JBoss-Cluster bereit. Weitere Informationen finden Sie in der [Azure DevOps-Dokumentation zu den ersten Schritten](/azure/devops/get-started).
 * Erwägen Sie die Verwendung von [Application Gateway](../../../application-gateway/index.yml).
 * Verbessern Sie Ihre Netzwerktopologie mit erweiterten Diensten für den Lastenausgleich. Weitere Informationen finden Sie unter [Verwenden von Lastenausgleichsdiensten in Azure](../../../traffic-manager/traffic-manager-load-balancing-azure.md).
 * Nutzen Sie verwaltete Azure-Identitäten, um Geheimnisse zu verwalten und Azure-Ressourcen die rollenbasierte Zugriffssteuerung (RBAC) zuzuweisen. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../../active-directory/managed-identities-azure-resources/overview.md)

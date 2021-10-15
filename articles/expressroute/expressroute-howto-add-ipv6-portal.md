@@ -7,16 +7,19 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: ffb713ac2a2f60b6ea046691169f4775bff726e3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 645b936b5c8c550e9a71d33c079721d897aab0e3
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128647478"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233538"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Hinzufügen der IPv6-Unterstützung für privates Peering mithilfe des Azure-Portal (Vorschau)
 
-In diesem Artikel wird beschrieben, wie Sie die IPv6-Unterstützung zum Herstellen einer Verbindung mit Ihren Ressourcen in Azure über ExpressRoute mithilfe des Azure-Portal hinzufügen. 
+In diesem Artikel wird beschrieben, wie Sie die IPv6-Unterstützung zum Herstellen einer Verbindung mit Ihren Ressourcen in Azure über ExpressRoute mithilfe des Azure-Portal hinzufügen.
+
+>[!NOTE]
+> Einige Aspekte der Portalumgebung werden noch implementiert. Befolgen Sie daher die genaue Reihenfolge der Anweisungen in diesem Dokument, um die IPv6-Unterstützung über das Portal erfolgreich hinzuzufügen. Stellen Sie insbesondere sicher, dass Sie Ihr virtuelles Netzwerk und Subnetz erstellen oder Ihrem vorhandenen virtuellen Netzwerk und Gatewaysubnetz einen IPv6-Adressraum hinzufügen, *bevor* Sie ein neues Gateway für virtuelle Netzwerke im Portal erstellen.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 

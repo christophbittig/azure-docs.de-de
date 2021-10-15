@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie Protokollierungs- und Verbindungsrichtli
 author: ealsur
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 10/04/2021
 ms.author: maquaran
-ms.openlocfilehash: 44e738cc50feb66fc8806236be388b6baa18a17f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 409cf65dc9b79707a7508590b370b63325101f67
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115358"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427379"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>Konfigurieren der Protokollierung und Konnektivität mit dem Azure Functions-Trigger für Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -68,7 +68,7 @@ Für die Konfiguration der Clientverbindungsrichtlinie stehen zwei wichtige Konf
 }
 ```
 
-Dabei muss für `connectionMode` der gewünschte Verbindungsmodus (direkte Verbindung oder Gatewayverbindung) und für `protocol` das gewünschte Verbindungsprotokoll (TCP oder HTTPS) angegeben werden. 
+Dabei muss für `connectionMode` der gewünschte Verbindungsmodus (direkte Verbindung oder Gatewayverbindung) und für `protocol` das gewünschte Verbindungsprotokoll (TCP für Direktmodus oder HTTPS für Gatewaymodus) angegeben werden.
 
 Bei Azure Functions-Projekten mit Version 1 der Azure Functions-Runtime hat die Konfiguration einen geringfügig anderen Namen. Verwenden Sie `documentDB` anstelle von `cosmosDB`:
 

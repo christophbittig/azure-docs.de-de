@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: d49b587262bfceb8072761cec6981ab908abb21e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 996b91040d16a3c2b966bb1b68e83f578d42f583
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732943"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354970"
 ---
 # <a name="what-is-data-wrangling"></a>Was ist Data Wrangling?
 
@@ -23,9 +23,6 @@ Organisationen müssen in der Lage sein, Ihre wichtigen Geschäftsdaten für die
 Data Factory ermöglicht Ihnen das iterative Vorbereiten von Daten ohne Code für die Cloud mithilfe von Power Query. Data Factory kann in [Power Query Online](/power-query/) integriert werden und stellt Power Query M-Funktionen als eine Pipelineaktivität bereit.
 
 Data Factory übersetzt M-Code, der vom Power Query Online-Mashup-Editor generiert wird, in Spark-Code für die Cloudskalierungsausführung. Dazu wird M-Code in Azure Data Factory-Datenflüsse übersetzt. Das Wrangling von Daten mit Power Query und Datenflüsse sind besonders nützlich für Datentechniker oder für Datenintegratoren ohne Programmiererfahrung.
-
-> [!NOTE]
-> Die Power Query-Aktivität in Azure Data Factory ist zurzeit in der öffentlichen Vorschau verfügbar.
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
@@ -47,11 +44,11 @@ Die Datenintegratoren ohne Programmiererfahrung verbringen mehr als 60 % ihrer 
 
 | Connector | Datenformat | Authentifizierungsart |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, Parquet | Kontoschlüssel |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Dienstprinzipal |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parquet | Kontoschlüssel, Dienstprinzipal |
-| [Azure SQL-Datenbank](connector-azure-sql-database.md) | - | SQL-Authentifizierung |
-| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL-Authentifizierung |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, Parquet, Excel | Kontoschlüssel, Dienstprinzipal, MSI |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV, Parquet, Excel | Dienstprinzipal, MSI |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parquet, Excel | Kontoschlüssel, Dienstprinzipal, MSI |
+| [Azure SQL-Datenbank](connector-azure-sql-database.md) | - | SQL-Authentifizierung, MSI, Dienstprinzipal |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL-Authentifizierung, MSI, Dienstprinzipal |
 
 ## <a name="the-mashup-editor"></a>Mashup-Editor
 

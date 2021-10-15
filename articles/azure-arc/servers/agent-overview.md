@@ -1,15 +1,15 @@
 ---
 title: Übersicht über den Connected Machine-Agent
 description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent für Server mit Azure Arc-Unterstützung, der die Überwachung von VMs unterstützt, die in Hybridumgebungen gehostet werden.
-ms.date: 09/14/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e8d29e230819e6fa141df0f99460b67fe4a2eb0e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 36dc64a28cd0199e7fba3ab2b5f3f6765eef489d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662284"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455605"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Server mit Azure Arc-Unterstützung
 
@@ -97,9 +97,8 @@ Für den Azure Connected Machine-Agent werden offiziell folgende Windows- und 
 
 > [!NOTE]
 > Während Azure Arc-fähige Server Amazon Linux unterstützen, wird diese Verteilung von folgenden nicht unterstützt:
-> * Agents, die von Azure Monitor verwendet werden (d. h. dem Log Analytics- und Abhängigkeits-Agent)
+> * Der Abhängigkeit-Agent, der von Azure Monitor VM Insights verwendet wird
 > * Azure Automation-Updateverwaltung
-> * VM Insights
 
 ### <a name="software-requirements"></a>Softwareanforderungen
 
@@ -120,6 +119,34 @@ Bevor Sie Ihre Computer für Server mit Azure Arc-Unterstützung konfigurieren, 
 
 Server mit Azure Arc-Unterstützung unterstützen bis zu 5.000 Computerinstanzen in einer Ressourcengruppe.
 
+### <a name="register-azure-resource-providers"></a>Registrieren von Azure-Ressourcenanbietern
+
+Azure Arc-fähige Server benötigen folgende Azure-Ressourcenanbieter in Ihrem Abonnement, um diesen Dienst nutzen zu können:
+
+* **Microsoft.HybridCompute**
+* **Microsoft.GuestConfiguration**
+
+Sollten sie nicht registriert sein, können Sie sie mithilfe der folgenden Befehle registrieren:
+
+Azure PowerShell:
+
+```azurepowershell-interactive
+Login-AzAccount
+Set-AzContext -SubscriptionId [subscription you want to onboard]
+Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+```
+
+Azure CLI:
+
+```azurecli-interactive
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
+```
+
+Sie können die Ressourcenanbieter auch über das Azure-Portal registrieren, indem Sie die Schritte unter [Azure-Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) ausführen.
+
 ### <a name="transport-layer-security-12-protocol"></a>Transport Layer Security 1.2-Protokoll (TLS)
 
 Um die Sicherheit von Daten bei der Übertragung an Azure zu gewährleisten, wird dringend empfohlen, den Computer so zu konfigurieren, dass er TLS 1.2 (Transport Layer Security) verwendet. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**.
@@ -129,9 +156,11 @@ Um die Sicherheit von Daten bei der Übertragung an Azure zu gewährleisten, wir
 |Linux | Linux-Distributionen greifen zur Unterstützung von TLS 1.2 tendenziell auf [OpenSSL](https://www.openssl.org) zurück. | Überprüfen Sie anhand des [OpenSSL-Änderungsprotokolls](https://www.openssl.org/news/changelog.html), ob Ihre Version von OpenSSL unterstützt wird.|
 | Windows Server 2012 R2 und höhere Versionen | Wird unterstützt und ist standardmäßig aktiviert. | Zur Bestätigung, dass Sie weiterhin die [Standardeinstellungen](/windows-server/security/tls/tls-registry-settings) verwenden.|
 
-### <a name="networking-configuration"></a>Netzwerkkonfiguration
+## <a name="networking-configuration"></a>Netzwerkkonfiguration
 
 Der Connected Machine-Agent für Linux und Windows kommuniziert ausgehend auf sichere Weise über den TCP-Port 443 mit Azure Arc. Wenn der Computer eine Verbindung über eine Firewall oder einen Proxyserver herstellen muss, um über das Internet zu kommunizieren, kommuniziert der Agent ausgehend und verwendet stattdessen das HTTP-Protokoll. Proxyserver machen den Connected Machine-Agent nicht sicherer, da der Datenverkehr bereits verschlüsselt ist.
+
+Um Ihre Netzwerkkonnektivität mit Azure Arc zu schützen, können Sie anstelle von öffentlichen Netzwerken und Proxyservern einen [Azure Arc Private Link (Vorschau)](private-link-security.md) implementieren.
 
 > [!NOTE]
 > Azure Arc-fähige Server unterstützen nicht die Verwendung eines [Log Analytics-Gateways](../../azure-monitor/agents/gateway.md) als Proxy für den Connected Machine-Agent.
@@ -169,34 +198,6 @@ Vorschau-Agents (Version 0.11 und niedriger) benötigen außerdem Zugriff auf di
 Eine Liste der IP-Adressen für die einzelnen Diensttags/Regionen finden Sie in der JSON-Datei unter [Azure-IP-Bereiche und -Diensttags – öffentliche Cloud](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft veröffentlicht wöchentliche Updates zu den einzelnen Azure-Diensten und den dafür genutzten IP-Adressbereichen. Bei diesen Informationen in der JSON-Datei handelt es sich um die zum jetzigen Zeitpunkt gültige Liste der IP-Adressbereiche, die den einzelnen Diensttags entsprechen. Die IP-Adressen können sich ändern. Falls IP-Adressbereiche für Ihre Firewallkonfiguration erforderlich sind, sollte das Diensttag **AzureCloud** verwendet werden, um den Zugriff auf alle Azure-Dienste zuzulassen. Deaktivieren Sie weder die Sicherheitsüberwachung noch die Überprüfung dieser URLs. Lassen Sie sie wie anderen Internetdatenverkehr zu.
 
 Weitere Informationen finden Sie in der [Übersicht über Diensttags](../../virtual-network/service-tags-overview.md).
-
-### <a name="register-azure-resource-providers"></a>Registrieren von Azure-Ressourcenanbietern
-
-Azure Arc-fähige Server benötigen folgende Azure-Ressourcenanbieter in Ihrem Abonnement, um diesen Dienst nutzen zu können:
-
-* **Microsoft.HybridCompute**
-* **Microsoft.GuestConfiguration**
-
-Sollten sie nicht registriert sein, können Sie sie mithilfe der folgenden Befehle registrieren:
-
-Azure PowerShell:
-
-```azurepowershell-interactive
-Login-AzAccount
-Set-AzContext -SubscriptionId [subscription you want to onboard]
-Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
-Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
-```
-
-Azure CLI:
-
-```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
-```
-
-Sie können die Ressourcenanbieter auch über das Azure-Portal registrieren, indem Sie die Schritte unter [Azure-Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) ausführen.
 
 ## <a name="installation-and-configuration"></a>Installation und Konfiguration
 

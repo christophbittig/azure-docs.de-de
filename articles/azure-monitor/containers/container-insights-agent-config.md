@@ -3,12 +3,12 @@ title: Konfigurieren der Datensammlung durch den Container Insights-Agent | Micr
 description: In diesem Artikel wird beschrieben, wie Sie den Container Insights-Agent so konfigurieren, dass dieser die Protokollsammlung von stdout-/stderr- sowie Umgebungsvariablen steuert.
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: bd818d03d74042e7f58cbc8889ce862279706bec
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c24b87cb35339cb0e400878579b35d5f6b963718
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346813"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388055"
 ---
 # <a name="configure-agent-data-collection-for-container-insights"></a>Konfigurieren der Datensammlung des Container Insights-Agents
 
@@ -41,7 +41,7 @@ In der folgenden Tabelle werden die Einstellungen beschrieben, die Sie zum Steue
 | `[log_collection_settings.stderr] exclude_namespaces =` | String | Durch Trennzeichen getrenntes Array | Array aus Kubernetes-Namespaces, für die keine stderr-Protokolle gesammelt werden.<br> Diese Einstellung gilt nur im folgenden Fall:<br> `log_collection_settings.stdout.enabled` ist auf `true` festgelegt.<br> Wenn keine Festlegung in ConfigMap erfolgt, lautet der Standardwert<br> `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.env_var] enabled =` | Boolean | true oder false | Diese Einstellung steuert die Umgebungsvariablensammlung<br> auf allen Pods/Knoten im Cluster.<br> Der Standardwert ist `enabled = true`, wenn keine andere Festlegung in<br> ConfigMaps erfolgt.<br> Wenn die Umgebungsvariablensammlung global aktiviert wird, können Sie diese Einstellung für einen bestimmten Container deaktivieren,<br> indem Sie die Umgebungsvariable<br> `AZMON_COLLECT_ENV` entweder über eine Dockerfile-Einstellung oder in der [Konfigurationsdatei für den Pod](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) im Bereich **env:** auf **False** festlegen.<br> Wenn die Erfassung von Umgebungsvariablen global deaktiviert ist, können Sie die Erfassung für einen bestimmten Container nicht aktivieren (d. h., die einzige Außerkraftsetzung, die auf der Containerebene angewendet werden kann, besteht im Deaktivieren der Erfassung, wenn diese bereits global aktiviert ist). |
 | `[log_collection_settings.enrich_container_logs] enabled =` | Boolean | true oder false | Diese Einstellung steuert die Containerprotokollanreicherung zum Auffüllen der Eigenschaftswerte „Name“ und „Image“<br> für die einzelnen Protokolldatensätze, die in die ContainerLog-Tabelle für alle Containerprotokolle im Cluster geschrieben werden.<br> Die Standardeinstellung ist `enabled = false`, wenn sie nicht in ConfigMap angegeben ist. |
-| `[log_collection_settings.collect_all_kube_events]` | Boolean | true oder false | Diese Einstellung ermöglicht die Erfassung von Kube-Ereignissen jeder Art.<br> Standardmäßig werden Kube-Ereignisse mit dem Typ *Normal* nicht erfasst. Wenn diese Einstellung auf `true` festgelegt wird, werden die Ereignisse des Typs *Normal* nicht mehr gefiltert, und alle Ereignisse werden erfasst.<br> Sie ist standardmäßig auf `false` festgelegt. |
+| `[log_collection_settings.collect_all_kube_events] enabled =` | Boolean | true oder false | Diese Einstellung ermöglicht die Erfassung von Kube-Ereignissen jeder Art.<br> Standardmäßig werden Kube-Ereignisse mit dem Typ *Normal* nicht erfasst. Wenn diese Einstellung auf `true` festgelegt wird, werden die Ereignisse des Typs *Normal* nicht mehr gefiltert, und alle Ereignisse werden erfasst.<br> Die Standardeinstellung ist `enabled = false`, wenn sie nicht in der ConfigMap angegeben ist. |
 
 ### <a name="metric-collection-settings"></a>Einstellungen für Metriksammlung
 

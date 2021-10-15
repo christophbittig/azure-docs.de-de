@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Advisor
 description: Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindigkeit und Reaktionszeit Ihrer unternehmenskritischen Anwendungen verbessern.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: a2813699e082afbc263775821839ed6946e26c1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7229f4a786fc0afc43793ffe730470427ca2b107
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345892"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234924"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -155,7 +155,7 @@ Azure Advisor ermittelt Azure Cosmos DB-Container, die eine Abfrageseitengröße
 ## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>Verwenden Sie zum Verbessern der Clusterleistung ggf. die Funktion für beschleunigte Schreibvorgänge in Ihrem HBase-Cluster.
 Azure Advisor analysiert die Systemprotokolle aus den letzten 7 Tagen und identifiziert, ob in Ihrem Cluster die folgenden Szenarien aufgetreten sind:
 1. Hohe Latenz bei der WAL-Synchronisierung 
-2. Hohe Anzahl von Schreibanforderungen (mindestens 3 Ein-Stunden-Fenster mit mehr als 1.000 avg_write_requests/s/Knoten)
+2. Hohe Anzahl von Schreibanforderungen (mindestens 3 Ein-Stunden-Fenster mit mehr als 1000 avg_write_requests/s/Knoten)
 
 Diese Umstände sind Hinweise darauf, dass der Cluster eine hohe Schreiblatenz aufweist. Dies kann auf eine hohe Arbeitsauslastung in Ihrem Cluster zurückzuführen sein. Zur Leistungsverbesserung beim Cluster empfiehlt es sich, die von Azure HDInsight HBase bereitgestellte Funktion für beschleunigte Schreibvorgänge zu nutzen. Mit der Funktion für beschleunigte Schreibvorgänge für HDInsight-Apache HBase-Cluster werden jedem RegionServer (Workerknoten) verwaltete SSD Premium-Datenträger hinzugefügt, anstatt auf Cloudspeicher zurückzugreifen. Dies führt zu einer niedrigen Schreiblatenz und höherer Resilienz für Ihre Anwendungen. Weitere Informationen zu dieser Funktion finden Sie [hier](../hdinsight/hbase/apache-hbase-accelerated-writes.md#how-to-enable-accelerated-writes-for-hbase-in-hdinsight).
 

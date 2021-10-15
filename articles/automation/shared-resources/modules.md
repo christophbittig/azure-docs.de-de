@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 04/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9fc7a8d5b27da251f13f2c9dfeffa03f7cdbd149
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f10c1f70026b905521193a0dd511ba1e65de6849
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114452557"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274024"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Verwalten von Modulen in Azure Automation
 
@@ -30,9 +30,6 @@ Beim Erstellen eines Automation-Kontos importiert Azure Automation standardmäß
 
 Wenn Automation Runbook- und DSC-Kompilierungsaufträge ausführt, werden die Module in Sandboxes geladen, in denen die Runbooks ausgeführt und die DSC-Konfigurationen kompiliert werden können. DSC-Ressourcen in Modulen werden ebenfalls automatisch auf dem DSC-Pullserver platziert. Computer können die Ressourcen beim Anwenden von DSC-Konfigurationen per Pull abrufen.
 
->[!NOTE]
->Importieren Sie nur Module, die Ihre Runbooks und DSC-Konfigurationen wirklich benötigen. Es wird nicht empfohlen, das Az-Stammmodul zu importieren. Es enthält viele andere Module, die Sie möglicherweise nicht benötigen, die aber zu Leistungsproblemen führen können. Importieren Sie stattdessen einzelne Module, z. B. Az.Compute.
-
 Eine Cloudsandbox unterstützt maximal 48 Systemaufrufe und schränkt alle anderen Aufrufe aus Sicherheitsgründen ein. Andere Funktionen, etwa die Verwaltung von Anmeldeinformationen und einige Netzwerkfunktionen, werden in einer Cloudsandbox nicht unterstützt.
 
 Aufgrund der Anzahl der enthaltenen Module und Cmdlets ist es schwierig, vorab zu wissen, welche der Cmdlets nicht unterstützte Aufrufe durchführen. Im Allgemeinen treten Probleme bei Cmdlets auf, für die erhöhte Zugriffsrechte erforderlich sind oder die Anmeldeinformationen als Parameter erfordern, oder bei Cmdlets für Netzwerkfunktionen. Cmdlets, die umfassende Netzwerkvorgänge ausführen, werden in der Sandbox nicht unterstützt. Dies schließt auch [Connect-AipService](/powershell/module/aipservice/connect-aipservice) aus dem PowerShell-Modul AIPService und [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname) aus dem Modul DNSClient ein.
@@ -44,19 +41,28 @@ Dabei handelt es sich um bekannte Einschränkungen bei einer Sandbox. Zur Umgehu
 
 ## <a name="default-modules"></a>Standardmodule
 
-In der folgenden Tabelle sind Module aufgeführt, die Azure Automation standardmäßig importiert, wenn Sie Ihr Automation-Konto erstellen. Automation kann neuere Versionen dieser Module importieren. Sie können jedoch die ursprüngliche Version nicht aus Ihrem Automation-Konto entfernen, selbst wenn Sie eine neuere Version löschen. Beachten Sie, dass diese Standardmodule mehrere AzureRM-Module enthalten.
+In allen neuen Automation-Konten wird standardmäßig die neueste Version des PowerShell-Az-Moduls importiert. Das Az-Modul ersetzt AzureRM und wird für die Interaktion mit Azure empfohlen. Zu den **Standardmodulen** im neuen Automation-Konto gehören die vorhandenen 24 AzureRM-Module und mehr als 60 Az-Module.
+
+Es gibt eine native Option zum Aktualisieren von Modulen auf das neueste Az-Modul durch Benutzer*innen für Automation-Konten. Der Vorgang verarbeitet alle Modulabhängigkeiten am Back-End, sodass die Module nicht aufwendig [manuell](../automation-update-azure-modules.md#update-az-modules) aktualisiert oder Runbooks zum [Aktualisieren von Azure-Modulen](../automation-update-azure-modules.md#obtain-a-runbook-to-use-for-updates) ausgeführt werden müssen.  
+
+Wenn das vorhandene Automation-Konto ausschließlich über AzureRM-Module verfügt, wird mit der Option [Az-Module aktualisieren](../automation-update-azure-modules.md#update-az-modules) das Automation-Konto mit der ausgewählten Version des Az-Moduls aktualisiert.  
+
+Wenn das vorhandene Automation-Konto über AzureRM-Module und einige Az-Module verfügt, werden mit dieser Option die verbleibenden Az-Module in das Automation-Konto importiert. Die vorhandenen Az-Module haben dabei höhere Priorität und werden vom Updatevorgang nicht aktualisiert. Damit wird sichergestellt, dass der Updatevorgang für die Module nicht zu Ausführungsfehlern bei Runbooks führt, indem versehentlich ein Modul aktualisiert wird, das von einem Runbook verwendet wird. Für dieses Szenario wird empfohlen, zuerst die vorhandenen Az-Module zu löschen und dann die Updatevorgänge durchzuführen, um das neueste Az-Modul in das Automation-Konto zu importieren. Modultypen, die nicht standardmäßig importiert werden, werden als **benutzerdefiniert** bezeichnet.  **Benutzerdefinierte** Module haben immer Vorrang gegenüber **Standardmodulen**.  
+
+Beispiel: Sie haben bereits das Modul `Az.Aks` in Version 2.3.0 importiert, die vom Az-Modul 6.3.0 bereitgestellt wird, und versuchen, das Az-Modul auf die neueste Version 6.4.0 zu aktualisieren. Beim Updatevorgang werden alle Az-Module aus dem Paket 6.4.0 mit Ausnahme von `Az.Aks` importiert. Um die neueste Version von `Az.Aks` zu erhalten, löschen Sie zunächst das vorhandene Modul und führen dann den Updatevorgang aus. Sie können dieses Modul auch separat aktualisieren, wie unter [Importieren von Az-Modulen](#import-az-modules) beschrieben, um eine andere Version eines bestimmten Moduls zu importieren.  
+
+In der folgenden Tabelle sind Module aufgeführt, die Azure Automation standardmäßig importiert, wenn Sie Ihr Automation-Konto erstellen. Automation kann neuere Versionen dieser Module importieren. Sie können jedoch die ursprüngliche Version nicht aus Ihrem Automation-Konto entfernen, selbst wenn Sie eine neuere Version löschen.
 
 Die Standardmodule werden auch als globale Module bezeichnet. Im Azure-Portal ist die Eigenschaft **Globales Modul** **true**, wenn Sie ein Modul anzeigen, das beim Erstellen des Kontos importiert wurde.
 
 ![Screenshot der Eigenschaft „Globales Modul“ im Azure-Portal.](../media/modules/automation-global-modules.png)
-
-Automation importiert das Az-Stammmodul nicht automatisch in neue oder vorhandene Automation-Konten. Weitere Informationen zum Arbeiten mit diesen Modulen finden Sie unter [Migrieren zu Az-Modulen](#migrate-to-az-modules).
 
 > [!NOTE]
 > Es wird nicht empfohlen, Module und Runbooks in Automation-Konten zu ändern, die für die Bereitstellung des Features [VMs außerhalb der Geschäftszeiten starten/beenden](../automation-solution-vm-management.md) verwendet werden.
 
 |Modulname|Version|
 |---|---|
+|Az.* | Die vollständige Liste finden Sie unter **Paketdetails** im [PowerShell-Katalog](https://www.powershellgallery.com/packages/Az).|
 | AuditPolicyDsc | 1.1.0.0 |
 | Azure | 1.0.3 |
 | Azure.Storage | 1.0.3 |
@@ -81,10 +87,6 @@ Automation importiert das Az-Stammmodul nicht automatisch in neue oder vorhanden
 | xDSCDomainjoin | 1.1 |
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
-
-## <a name="az-modules"></a>Az-Module
-
-Für Az.Automation weist die Mehrzahl der Cmdlets denselben Namen auf wie bei den AzureRM-Modulen, mit der Ausnahme, dass das Präfix `AzureRM` in `Az` geändert wurde. Eine Liste der Az-Module, die nicht dieser Namenskonvention folgen, finden Sie in der [Liste der Ausnahmen](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters).
 
 ## <a name="internal-cmdlets"></a>Interne Cmdlets
 
@@ -122,8 +124,8 @@ In diesem Abschnitt erfahren Sie, wie Sie zu den Az-Modulen in Automation migrie
 
 Die Ausführung von AzureRM-Modulen und Az-Modulen im selben Automation-Konto wird nicht empfohlen. Wenn Sie sicher sind, dass Sie von AzureRM zu Az migrieren möchten, ist es am besten, sich in vollem Umfang zu einer vollständige Migration zu entschließen. Automation-Sandboxes werden häufig im Automation-Konto wiederverwendet, um die Startzeiten zu verkürzen. Wenn Sie keine vollständige Modulmigration durchführen, starten Sie möglicherweise einen Auftrag, der ausschließlich AzureRM-Module nutzt, und dann einen anderen Auftrag nur mit Az-Modulen. Die Sandbox stürzt dann bald ab, und Sie erhalten einen schwerwiegenden Fehler, da die Module nicht kompatibel sind. Diese Situation führt zu zufällig auftretenden Abstürzen bei beliebigen Runbooks oder Konfigurationen.
 
->[!NOTE]
->Beim Erstellen eines neuen Automation-Kontos, installiert Automation selbst nach der Migration zu Az-Modulen standardmäßig die AzureRM-Module. Sie können die Runbooks von Tutorials weiterhin mit den AzureRM-Cmdlets aktualisieren. Sie sollten diese Runbooks jedoch nicht ausführen.
+> [!NOTE]
+> Beim Erstellen eines neuen Automation-Kontos installiert Automation selbst nach der Migration zu Az-Modulen standardmäßig die AzureRM-Module.
 
 ### <a name="test-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>Testen Ihrer Runbooks und DSC-Konfigurationen vor der Modulmigration
 
@@ -148,7 +150,7 @@ Beim Importieren eines Az-Moduls in Ihr Automation-Konto wird das Modul nicht au
 * Wenn ein Runbook das Modul explizit mit der [using module](/powershell/module/microsoft.powershell.core/about/about_using#module-syntax)-Anweisung importiert. Die using-Anweisung wird ab Windows PowerShell 5.0 unterstützt und unterstützt Klassen und den Enumerationstyp „import“.
 * Wenn ein Runbook ein anderes abhängiges Modul importiert
 
-Sie können die Az-Module aus dem Azure-Portal in das Automation-Konto importieren. Denken Sie daran, nur die benötigten Az-Module zu importieren und nicht alle verfügbaren Az-Module. Da [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) eine Abhängigkeit für die anderen Az-Module darstellt, muss dieses Modul vor den anderen Modulen importiert werden.
+Sie können die Az-Module aus dem Azure-Portal in das Automation-Konto importieren. Da [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) eine Abhängigkeit für die anderen Az-Module darstellt, muss dieses Modul vor den anderen Modulen importiert werden.
 
 1. Melden Sie sich beim Azure-[Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Automation-Konten**, und wählen Sie diese Option aus.

@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 69d6cae5ccb26ef35fd121c32a9f111ff64b7a11
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: b131d20122ca2440698fed301768d1fe961ac286
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215280"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390347"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -362,7 +362,7 @@ Bevor Sie Module auf IoT Edge-Geräten in der Produktion bereitstellen, legen Si
 
 In den Tutorials und anderen Dokumentationen werden Sie dazu aufgefordert, für die Containerregistrierung auf Ihrem IoT Edge-Gerät die gleichen Anmeldeinformationen zu verwenden wie auf Ihrem Entwicklungscomputer. Dieses Vorgehen dient nur der vereinfachten Einrichtung von Test- und Entwicklungsumgebungen und soll nicht für Produktionsszenarien verwendet werden.
 
-Um den sicheren Zugriff auf Ihre Registrierung zu schützen, stehen Ihnen verschiedene [Authentifizierungsoptionen](../container-registry/container-registry-authentication.md) zur Verfügung. Eine verbreitete und empfohlene Authentifizierungsmethode ist die Verwendung eines Active Directory-Dienstprinzipals. Dieser eignet sich sehr gut für Anwendungen oder Dienste, die Containerimages automatisiert oder auf anderweitig unbeaufsichtigte Weise (ohne Monitor) pullen, wie etwa bei IoT Edge-Geräten.
+Um den sicheren Zugriff auf Ihre Registrierung zu schützen, stehen Ihnen verschiedene [Authentifizierungsoptionen](../container-registry/container-registry-authentication.md) zur Verfügung. Eine verbreitete und empfohlene Authentifizierungsmethode ist die Verwendung eines Active Directory-Dienstprinzipals. Dieser eignet sich sehr gut für Anwendungen oder Dienste, die Containerimages automatisiert oder auf anderweitig unbeaufsichtigte Weise (ohne Monitor) pullen, wie etwa bei IoT Edge-Geräten. Eine weitere Option ist die Verwendung von Tokens aus dem Repositorybereich, mit denen Sie lang- oder kurzlebige Identitäten erstellen können. Diese bestehen nur in dem Azure Container Registry, in dem sie erstellt wurden, und bieten Zugriff auf die Repositoryebene.
 
 Um einen Dienstprinzipal zu erstellen, führen Sie die beiden Skripts wie in [Erstellen eines Dienstprinzipals](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal) beschrieben aus. Diese Skripts führen folgende Aufgaben aus:
 
@@ -375,6 +375,16 @@ Geben Sie zum Authentifizieren mithilfe eines Dienstprinzipals die Dienstprinzip
 * Geben Sie als Benutzernamen oder Client-ID die Dienstprinzipal-ID an.
 
 * Geben Sie als Kennwort oder geheimen Clientschlüssel das Dienstprinzipalkennwort an.
+
+<br>
+
+Zum Erstellen von Tokens aus dem Repositorybereich, folgen Sie den Anweisungen unter [Ein Token aus dem Repositorybereich erstellen](../container-registry/container-registry-repository-scoped-permissions.md).
+
+Geben Sie für die Authentifizierung mit Tokens aus dem Repositorybereich den Tokennamen und das Kennwort ein, die Sie nach dem Erstellen des Tokens aus dem Repositorybereich erhalten haben. Geben Sie diese Anmeldeinformationen im Bereitstellungsmanifest an.
+
+* Geben Sie als Benutzernamen den Benutzernamen des Tokens an.
+
+* Geben Sie als Kennwort eines der Kennwörter des Tokens an.
 
 > [!NOTE]
 > Nachdem Sie eine erweiterte Sicherheitsauthentifizierung implementiert haben, deaktivieren Sie die Einstellung **Administratorbenutzer**, damit der Standardzugriff über Benutzername und Kennwort nicht mehr verfügbar ist. Wählen Sie in Ihrer Containerregistrierung im Azure-Portal im Menü im linken Bereich unter **Einstellungen** die Option **Zugriffsschlüssel** aus.

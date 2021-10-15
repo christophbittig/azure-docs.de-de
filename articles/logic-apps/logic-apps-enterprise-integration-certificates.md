@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen von Zertifikaten zum Schützen von B2B-Nachrichten in Workflows
-description: Fügen Sie Zertifikate zum Schutz von B2B-Nachrichten in Azure Logic Apps-Workflows mit dem Enterprise Integration Pack hinzu.
+description: Fügen Sie Ihrem Integrationskonto Zertifikate hinzu, um B2B-Nachrichten in Workflows mit Azure Logic Apps und dem Enterprise Integration Pack zu schützen.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/23/2021
-ms.openlocfilehash: e2d2bc58c5a523667eef62b21791e953701f7bc1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b68bc9f1f77c6ad5b60cd5b2ea9c4b644acb4c5b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128550090"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361054"
 ---
-# <a name="secure-messages-using-certificates-for-workflows-in-azure-logic-apps"></a>Schützen von Nachrichten mithilfe von Zertifikaten für Workflows in Azure Logic Apps
+# <a name="add-certificates-to-integration-accounts-for-securing-messages-in-workflows-with-azure-logic-apps"></a>Hinzufügen von Zertifikaten zu Integrationskonten zum Sichern von Nachrichten in Workflows mit Azure Logic Apps
 
 Wenn Sie vertrauliche Nachrichten in einem B2B-Workflow (Business-to-Business) einer Logik-App austauschen möchten, können Sie die Sicherheit dieser Kommunikation durch die Verwendung von Zertifikaten erhöhen. Ein Zertifikat ist ein digitales Dokument, das die Kommunikation auf folgende Weise schützt:
 
@@ -31,7 +31,7 @@ Sie können in Ihren Workflows die folgenden Zertifikattypen verwenden:
 
 * Private Zertifikate oder [*selbstsignierte Zertifikate*](https://en.wikipedia.org/wiki/Self-signed_certificate), die Sie selbst erstellen und ausstellen. Für diese Zertifikate sind jedoch private Schlüssel erforderlich.
 
-Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](logic-apps-overview.md). Weitere Informationen zur B2B-Unternehmensintegration finden Sie unter [Workflows für die B2B-Unternehmensintegration mit Azure Logic Apps und dem Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md).
+Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](logic-apps-overview.md). Weitere Informationen zur B2B-Unternehmensintegration finden Sie in [B2B-Unternehmensintegrations-Workflows mit Azure Logic Apps und Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,14 +43,14 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
   * Sie muss sich am selben Standort oder in derselben Azure-Region wie Ihre Logik-App-Ressource befinden.
 
-  * Wenn Sie den [Ressourcentyp **Logik-App (Verbrauch)** ](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, müssen Sie [Ihr Integrationskonto mit Ihrer Logik-App-Ressource verknüpfen](logic-apps-enterprise-integration-create-integration-account.md#link-account), bevor Sie Ihre Artefakte in Ihrem Workflow verwenden können.
+  * Wenn Sie den [Ressourcentyp **Logik-App (Verbrauch)**](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, müssen Sie [Ihr Integrationskonto mit Ihrer Logik-App-Ressource verknüpfen](logic-apps-enterprise-integration-create-integration-account.md#link-account), bevor Sie Ihre Artefakte in Ihrem Workflow verwenden können.
 
     Zum Erstellen und Hinzufügen von Zertifikaten für die Verwendung in **Logik-App (Verbrauch)** -Workflows benötigen Sie noch keine Logik-App-Ressource. Wenn Sie jedoch bereit sind, diese Zertifikate in Ihren Workflows zu verwenden, benötigt Ihre Logik-App-Ressource ein verknüpftes Integrationskonto, das diese Zertifikate speichert.
 
-  * Wenn Sie den [Ressourcentyp **Logik-App (Standard)** ](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigt Ihr Integrationskonto keine Verbindung mit Ihrer Logik-App-Ressource. Sie ist aber trotzdem erforderlich, um andere Artefakte wie Partner, Vereinbarungen und Zertifikate zusammen mit den [AS2](logic-apps-enterprise-integration-as2.md)-, [X12](logic-apps-enterprise-integration-x12.md)- und [EDIFACT](logic-apps-enterprise-integration-edifact.md)-Vorgängen zu speichern. Ihr Integrationskonto muss darüber hinaus weitere Anforderungen erfüllen. So muss es z. B. dasselbe Azure-Abonnement und denselben Standort wie Ihre Logik-App-Ressource verwenden.
+  * Wenn Sie den [Ressourcentyp **Logik-App (Standard)**](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigt Ihr Integrationskonto keine Verbindung mit Ihrer Logik-App-Ressource. Sie ist aber trotzdem erforderlich, um andere Artefakte wie Partner, Vereinbarungen und Zertifikate zusammen mit den [AS2](logic-apps-enterprise-integration-as2.md)-, [X12](logic-apps-enterprise-integration-x12.md)- und [EDIFACT](logic-apps-enterprise-integration-edifact.md)-Vorgängen zu speichern. Ihr Integrationskonto muss darüber hinaus weitere Anforderungen erfüllen. So muss es z. B. dasselbe Azure-Abonnement und denselben Standort wie Ihre Logik-App-Ressource verwenden.
 
     > [!NOTE]
-    > Derzeit unterstützt nur der Ressourcentyp **Logik-App (Verbrauch)** [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge. Der Ressourcentyp **Logik-App (Standard)** umfasst keine [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge.
+    > Derzeit unterstützt nur der **Logic App (Verbrauch)** Ressourcentyp [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge. Der Ressourcentyp **Logik-App (Standard)** umfasst keine [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge.
 
 * Für private Zertifikate müssen die folgenden Voraussetzungen erfüllt sein:
 
@@ -115,7 +115,7 @@ Um ein *privates Zertifikat* in Ihrem Workflow zu verwenden, müssen Sie Ihrem I
 
 1. Geben Sie im Bereich **Zertifikat hinzufügen** die folgenden Informationen zu dem Zertifikat an:
 
-   | Eigenschaft | Erforderlich | Wert | Beschreibung |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Name** | Ja | <*certificate-name*> (Zertifikatname) | Der Name Ihres Zertifikats (in diesem Beispiel `privateCert`) |
    | **Zertifikattyp** | Ja | **Privat** | Der Typ Ihres Zertifikats |

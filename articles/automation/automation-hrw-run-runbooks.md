@@ -3,17 +3,17 @@ title: Ausführen von Azure Automation-Runbooks in einem Hybrid Runbook Worker
 description: In diesem Artikel wird beschrieben, wie Sie Runbooks auf Computern in Ihrem lokalen Rechenzentrum oder bei anderen Cloudanbietern mit dem Hybrid Runbook Worker ausführen.
 services: automation
 ms.subservice: process-automation
-ms.date: 08/12/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5f27f9366b388c090ca689a2011c777973b8a894
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 702fcc816bac95345fca8c701be504e4eaa3a1fe
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968052"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354752"
 ---
-# <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks in einer Hybrid Runbook Worker-Instanz
+# <a name="run-automation-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Automation-Runbooks in einem Hybrid Runbook Worker
 
 Von Runbooks, die in einem [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) ausgeführt werden, werden in der Regel Ressourcen auf dem lokalen Computer oder in der lokalen Umgebung verwaltet, in der der Worker bereitgestellt ist. Runbooks in Azure Automation verwalten üblicherweise Ressourcen in der Azure-Cloud. Auch wenn sie unterschiedlich verwendet werden, sind Runbooks, die in Azure Automation ausgeführt werden, und Runbooks, die auf einem Hybrid Runbook Worker ausgeführt werden, von der Struktur her identisch.
 
@@ -21,18 +21,30 @@ Wenn Sie ein Runbook zur Ausführung auf einem Hybrid Runbook Worker erstellen, 
 
 ## <a name="plan-for-azure-services-protected-by-firewall"></a>Planen von Azure-Diensten mit Firewallschutz
 
-Durch das Aktivieren von Azure Firewall für [Azure Storage](../storage/common/storage-network-security.md), [Azure Key Vault](../key-vault/general/network-security.md) oder [Azure SQL](../azure-sql/database/firewall-configure.md) wird der Zugriff von Azure Automation-Runbooks für diese Dienste blockiert. Der Zugriff wird auch dann blockiert, wenn die Firewallausnahme zum Zulassen vertrauenswürdiger Microsoft-Dienste aktiviert ist, da Automation nicht zur Liste der vertrauenswürdigen Dienste gehört. Bei aktivierter Firewall kann der Zugriff nur mithilfe eines Hybrid Runbook Workers und eines [VNT-Dienstendpunkts](../virtual-network/virtual-network-service-endpoints-overview.md) erfolgen.
+Durch das Aktivieren von Azure Firewall für [Azure Storage](../storage/common/storage-network-security.md), [Azure Key Vault](../key-vault/general/network-security.md) oder [Azure SQL](../azure-sql/database/firewall-configure.md) wird der Zugriff von Azure Automation-Runbooks für diese Dienste blockiert. Der Zugriff wird auch dann blockiert, wenn die Firewallausnahme zum Zulassen vertrauenswürdiger Microsoft-Dienste aktiviert ist, da Automation nicht zur Liste der vertrauenswürdigen Dienste gehört. Bei aktivierter Firewall kann der Zugriff nur mithilfe eines Hybrid Runbook Workers und eines [VNet-Dienstendpunkts](../virtual-network/virtual-network-service-endpoints-overview.md) erfolgen.
 
 ## <a name="plan-runbook-job-behavior"></a>Planen des Verhaltens von Runbookaufträgen
 
 Azure Automation behandelt Aufträge in Hybrid Runbook Workern anders als Aufträge, die in Azure-Sandboxes ausgeführt werden. Bei einem zeitintensiven Runbook müssen Sie sicherstellen, dass das Runbook auch nach einem möglichen Neustart stabil läuft. Ausführliche Informationen zum Auftragsverhalten finden Sie unter [Hybrid Runbook Worker-Aufträge](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs).
 
-Aufträge für Hybrid Runbook Worker werden unter Windows mit dem lokalen Konto **System** oder unter Linux mit dem Konto **nxautomation** ausgeführt. Stellen Sie unter Linux sicher, dass das Konto **nxautomation** Zugriff auf den Speicherort der Runbookmodule hat. So stellen Sie den Zugriff auf das **nxautomation**-Konto sicher:
+## <a name="service-accounts"></a>Dienstkonten
 
-- Wenn Sie das Cmdlet [Install-Module](/powershell/module/powershellget/install-module) verwenden, stellen Sie sicher, dass Sie `AllUsers` für den Parameter `Scope` angeben.
+### <a name="windows"></a>Windows 
+
+Aufträge für Hybrid Runbook Worker werden mit dem lokalen Konto **System** ausgeführt.
+
+### <a name="linux"></a>Linux
+
+Die Dienstkonten **nxautomation** und **omsagent** werden erstellt. Das Erstellungs- und Berechtigungszuweisungsskript kann unter [https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/installer/datafiles/linux.data](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/installer/datafiles/linux.data) angezeigt werden. Die Konten mit den entsprechenden sudo-Berechtigungen müssen bei der [Installation eines Linux-Hybrid Runbook Workers](automation-linux-hrw-install.md) vorhanden sein. Wenn Sie versuchen, den Worker zu installieren, und das Konto nicht vorhanden ist oder nicht über die entsprechenden Berechtigungen verfügt, tritt bei der Installation ein Fehler auf. Ändern Sie keine Berechtigungen oder Besitzeinstellungen für den Ordner `sudoers.d`. Die Berechtigung vom Typ „sudo“ ist für die Konten erforderlich, und die Berechtigungen sollten nicht entfernt werden. Eine Beschränkung auf bestimmte Ordner oder Befehle kann ggf. eine grundlegende Änderung (Breaking Change) bewirken. Der Benutzer **nxautomation**, der im Rahmen der Updateverwaltung aktiviert wurde, führt nur signierte Runbooks aus.
+
+So stellen Sie sicher, dass die Dienstkonten Zugriff auf die gespeicherten Runbookmodule haben:
+
 - Wenn Sie `pip install`, `apt install` oder eine andere Methode zum Installieren von Paketen unter Linux verwenden, stellen Sie sicher, dass das Paket für alle Benutzer installiert ist. Beispiel: `sudo -H pip install <package_name>`.
+- Wenn Sie [PowerShell auf Linux](/powershell/scripting/whats-new/what-s-new-in-powershell-70) und das Cmdlet [Install-Module](/powershell/module/powershellget/install-module) verwenden, stellen Sie sicher, dass Sie `AllUsers` für den Parameter `Scope` angeben.
 
-Weitere Informationen zu PowerShell unter Linux finden Sie unter [Bekannte Probleme bei PowerShell auf anderen Plattformen als Windows](/powershell/scripting/whats-new/what-s-new-in-powershell-70).
+Das Automation-Workerprotokoll befindet sich unter `/var/opt/microsoft/omsagent/run/automationworker/worker.log`.
+
+Die Dienstkonten werden entfernt, wenn der Computer als Hybrid Runbook Worker entfernt wird.
 
 ## <a name="configure-runbook-permissions"></a>Konfigurieren von Runbookberechtigungen
 
@@ -72,15 +84,23 @@ Führen Sie die folgenden Schritte aus, um eine verwaltete Identität für Azure
 1. Aktualisieren Sie das Runbook so, dass das Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) mit dem Parameter `Identity` zur Authentifizierung bei Azure-Ressourcen verwendet wird. Diese Konfiguration reduziert die Notwendigkeit, ein ausführendes Konto zu verwenden und die zugehörige Kontoverwaltung durchzuführen.
 
     ```powershell
-    # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
-    Connect-AzAccount -Identity
+    # Ensures you do not inherit an AzContext in your runbook
+    Disable-AzContextAutosave -Scope Process
+    
+    # Connect to Azure with system-assigned managed identity
+    $AzureContext = (Connect-AzAccount -Identity).context
+    
+    # set and store context
+    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 
     # Get all VM names from the subscription
-    Get-AzVM | Select Name
+    Get-AzVM -DefaultProfile $AzureContext | Select Name
     ```
 
-    > [!NOTE]
-    > `Connect-AzAccount -Identity` funktioniert für einen Hybrid Runbook Worker mit einer vom System und einer einzelnen vom Benutzer zugewiesenen Identität. Wenn Sie auf dem Hybrid Runbook Worker mehrere vom Benutzer zugewiesene Identitäten verwenden, muss Ihr Runbook für `Connect-AzAccount` den Parameter `AccountId` angeben, um eine bestimmte vom Benutzer zugewiesene Identität auszuwählen.
+    Wenn Sie möchten, dass das Runbook mit der systemseitig zugewiesenen verwalteten Identität ausgeführt wird, lassen Sie den Code unverändert. Wenn Sie lieber eine benutzerseitig zugewiesene verwaltete Identität verwenden möchten, gehen Sie wie folgt vor:
+    1. Entfernen Sie `$AzureContext = (Connect-AzAccount -Identity).context` aus Zeile 5.
+    1. Fügen Sie stattdessen `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` ein.
+    1. Geben Sie die Client-ID ein.
 
 ### <a name="use-runbook-authentication-with-run-as-account"></a>Verwenden der Runbookauthentifizierung mit ausführendem Konto
 

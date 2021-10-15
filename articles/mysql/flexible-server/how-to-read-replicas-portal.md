@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/17/2021
-ms.openlocfilehash: 61e2f33511e6a200258ed16b5ef191e153553db8
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 711b35ec11d42ae16a4b4db08d17e85b5217d41f
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639746"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387511"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten auf flexiblen Azure Database for MySQL-Servern mithilfe des Azure-Portals
 
@@ -25,8 +25,9 @@ In diesem Artikel erfahren Sie, wie Sie Lesereplikate auf flexiblen Azure Databa
 > [!Note]
 >
 > * Auf Servern mit Hochverfügbarkeit werden keine Replikate unterstützt. 
->
-> * Wenn GTID auf einem primären Server aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Weitere Informationen finden Sie unter [Globaler Transaktionsbezeichner (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
+> 
+> * Das Feature für Lesereplikate ist nur für flexible Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Quellserver einer der folgenden Tarife festgelegt ist.
+> * Wenn GTID auf einem primären Server aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert, und es wird die GTID-Replikation verwendet. Weitere Informationen finden Sie unter [Globaler Transaktionsbezeichner (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,7 +50,7 @@ Ein Lesereplikatserver kann mit den folgenden Schritten erstellt werden:
 
    :::image type="content" source="./media/how-to-read-replica-portal/add-replica.png" alt-text="Azure Database for MySQL: Replikation":::
 
-5. Geben Sie einen Namen für den Replikatserver ein.
+5. Geben Sie einen Namen für den Replikatserver ein. Wenn in Ihrer Region Verfügbarkeitszonen unterstützt werden, können Sie eine beliebige Verfügbarkeitszone auswählen.
 
     :::image type="content" source="./media/how-to-read-replica-portal/replica-name.png" alt-text="Azure Database for MySQL – Replikatname":::
 

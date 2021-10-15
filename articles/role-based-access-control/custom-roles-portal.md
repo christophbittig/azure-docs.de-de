@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/27/2021
 ms.author: rolyon
-ms.openlocfilehash: de888e76e9ba27fa653905084193e6f8e25d2a81
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: dddcbef1b43866a7cba631cd565856aef787ec8b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123315259"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360947"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Erstellen oder Aktualisieren von benutzerdefinierten Azure-Rollen über das Azure-Portal
 
@@ -184,7 +184,7 @@ Führen Sie diese Schritte aus, um Berechtigungen für Ihre benutzerdefinierte R
 
     ![Die Liste „Berechtigungen hinzufügen“](./media/shared/add-permissions-list.png)
 
-1. Wenn Sie nach Berechtigungen suchen, die sich auf die Datenebene beziehen, klicken Sie auf **Datenaktionen**. Anderenfalls behalten Sie die Einstellung **Aktionen** bei, um Berechtigungen aufzulisten, die sich auf die Verwaltungsebene beziehen. Weitere Informationen zu den Unterschieden zwischen der Verwaltungsebene und der Datenebene finden Sie unter [Verwaltungs- und Datenvorgänge](role-definitions.md#management-and-data-operations).
+1. Wenn Sie nach Berechtigungen suchen, die sich auf die Datenebene beziehen, klicken Sie auf **Datenaktionen**. Anderenfalls behalten Sie die Einstellung **Aktionen** bei, um Berechtigungen aufzulisten, die sich auf die Steuerungsebene beziehen. Weitere Informationen zu den Unterschieden zwischen der Steuerungsebene und der Datenebene finden Sie unter [Steuerungs- und Datenvorgänge](role-definitions.md#control-and-data-actions).
 
 1. Aktualisieren Sie bei Bedarf die Suchzeichenfolge, um die Suche weiter einzuschränken.
 

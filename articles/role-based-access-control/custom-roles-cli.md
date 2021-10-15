@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d3d05ba65e0d3918f1651c36cd17700ebf74de76
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0a090f7a4ba00c9a7d55f06acc74556b604d6b7e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778335"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363330"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -146,7 +146,7 @@ Zum Erstellen einer benutzerdefinierten Rolle verwenden Sie [az role definition 
 az role definition create --role-definition {roleDefinition}
 ```
 
-Im folgenden Beispiel wird eine benutzerdefinierte Rolle mit dem Namen *Virtual Machine Operator* erstellt. Diese benutzerdefinierte Rolle weist den Zugriff auf alle Lesevorgänge der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* sowie den Zugriff zum Starten, Neustarten und Überwachen virtueller Computer zu. Diese benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden. In diesem Beispiel wird eine JSON-Datei als Eingabe genutzt.
+Im folgenden Beispiel wird eine benutzerdefinierte Rolle mit dem Namen *Virtual Machine Operator* erstellt. Diese benutzerdefinierte Rolle weist den Zugriff auf alle Leseaktionen der Ressourcenanbieter *Microsoft.Compute*, *Microsoft.Storage* und *Microsoft.Network* sowie den Zugriff zum Starten, Neustarten und Überwachen virtueller Computer zu. Diese benutzerdefinierte Rolle kann in zwei Abonnements verwendet werden. In diesem Beispiel wird eine JSON-Datei als Eingabe genutzt.
 
 vmoperator.json
 
@@ -189,7 +189,7 @@ Zum Aktualisieren einer benutzerdefinierten Rolle verwenden Sie zuerst [az role 
 az role definition update --role-definition {roleDefinition}
 ```
 
-Das folgende Beispiel fügt den Vorgang *Microsoft.Insights/diagnosticSettings/* zu `Actions` und eine Verwaltungsgruppe zu `AssignableScopes` für die benutzerdefinierte Rolle *Virtual Machine Operator* hinzu. Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
+Das folgende Beispiel fügt die Aktion *Microsoft.Insights/diagnosticSettings/* zu `Actions` und eine Verwaltungsgruppe zu `AssignableScopes` für die benutzerdefinierte Rolle *Virtual Machine Operator* hinzu. Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
 
 vmoperator.json
 

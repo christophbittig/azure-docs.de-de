@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/14/2021
 ms.author: rolyon
-ms.openlocfilehash: f0fc0611e48f25c8faec415b8702a420402280c5
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 1f1b8f627a60a6e9f9b866ffb48324ecd146ffbe
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483837"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362087"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Schritte zum Zuweisen einer Azure-Rolle
 
@@ -50,7 +50,7 @@ Die verbleibenden integrierten Rollen ermöglichen die Verwaltung bestimmter Azu
 
 1. Navigieren Sie in diesem Artikel zur Dienstkategorie (z. B. Compute, Speicher, Datenbanken) für die Ressource, der Sie Berechtigungen erteilen möchten. Die einfachste Möglichkeit, das Gesuchte zu finden, ist die Suche nach einem relevanten Schlüsselwort, etwa „Blob“, „virtueller Computer“ usw.
 
-1. Überprüfen Sie die Rollen, die für die Dienstkategorie aufgeführt werden, und identifizieren Sie die jeweils erforderlichen Vorgänge. Beginnen Sie auch hier immer mit der restriktivsten Rolle.
+1. Überprüfen Sie die Rollen, die für die Dienstkategorie aufgeführt werden, und identifizieren Sie die jeweils erforderlichen Aktionen. Beginnen Sie auch hier immer mit der restriktivsten Rolle.
 
     Wenn ein Sicherheitsprinzipal z. B. Blobs in einem Azure Storage-Konto lesen muss, aber keinen Schreibzugriff benötigt, wählen Sie [Storage-Blobdatenleser](built-in-roles.md#storage-blob-data-reader) anstelle von [Mitwirkender an Storage-Blobdaten](built-in-roles.md#storage-blob-data-contributor) (und definitiv nicht die Rolle [Besitzer von Speicherblobdaten](built-in-roles.md#storage-blob-data-owner) auf Administratorebene) aus. Sie können die Rollenzuweisungen später jederzeit nach Bedarf aktualisieren.
 

@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: 3b7316bf7d21a117c80eb49978a807b085db004b
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 39a89fbaf72a78bad1c9a0ebca4ce068f6c65cae
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432538"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272888"
 ---
 # <a name="design-your-private-link-setup"></a>Entwerfen Ihres Private Link-Setups
 
@@ -70,7 +70,7 @@ Die Wahl des richtigen Zugriffsmodus wirkt sich nachteilig auf Ihren Netzwerkdat
 Seien Sie vorsichtig, wenn Sie Ihren Zugriffsmodus auswählen. Die Verwendung des Zugriffsmodus „Nur privat“ blockiert den Datenverkehr zu Ressourcen, die nicht im AMPLS enthalten sind, in allen Netzwerken, die dasselbe DNS nutzen, unabhängig von Abonnement oder Mandant (mit Ausnahme von Log Analytics-Erfassungsanforderungen, wie nachfolgend erläutert). Wenn Sie nicht alle Azure Monitor-Ressourcen zum AMPLS hinzufügen können, beginnen Sie mit dem Hinzufügen ausgewählter Ressourcen und der Anwendung des Zugriffsmodus „Offen“. Erst nachdem Sie *alle* Azure Monitor-Ressourcen zu Ihrem AMPLS hinzugefügt haben, wechseln Sie in den Modus „Nur privat“, um maximale Sicherheit zu gewährleisten.
 
 > [!NOTE]
-> Die Log Analytics-Erfassung verwendet ressourcenspezifische Endpunkte. Daher entspricht sie nicht den AMPLS-Zugriffsmodi. Die Erfassung in Arbeitsbereichen im AMPLS wird über die private Verbindung gesendet, während die Erfassung in Arbeitsbereichen, die sich nicht im AMPLS befinden, die öffentlichen Standardendpunkte verwendet. Um sicherzustellen, dass Erfassungsanforderungen nicht auf Ressourcen außerhalb des AMPLS zugreifen können, blockieren Sie den Zugriff des Netzwerks auf öffentliche Endpunkte.
+> Die Log Analytics-Erfassung verwendet ressourcenspezifische Endpunkte. Daher entspricht sie nicht den AMPLS-Zugriffsmodi. **Legen Sie die Netzwerkfirewall so fest, dass Datenverkehr an öffentliche Endpunkte blockiert wird, unabhängig von den AMPLS-Zugriffsmodi, um sicherzustellen, dass Log Analytics-Erfassungsanforderungen nicht über die AMPLS auf Arbeitsbereiche zugreifen können.**
 
 ### <a name="setting-access-modes-for-specific-networks"></a>Festlegen von Zugriffsmodi für bestimmte Netzwerke
 Die in der AMPLS-Ressource festgelegten Zugriffsmodi gelten für alle Netzwerke, aber Sie können diese Einstellungen für bestimmte Netzwerke außer Kraft setzen.

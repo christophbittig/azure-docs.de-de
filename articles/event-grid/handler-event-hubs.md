@@ -2,13 +2,13 @@
 title: Event Hub als Ereignishandler für Azure Event Grid-Ereignisse
 description: Hier wird beschrieben, wie Sie Event Hubs als Ereignishandler für Azure Event Grid-Ereignisse verwenden können.
 ms.topic: conceptual
-ms.date: 09/28/2021
-ms.openlocfilehash: 6ba4dec31a93b01804779cd9f614e64854fe6cce
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 09/30/2021
+ms.openlocfilehash: 590364d759fe6f628cfaa306d162d00f575c0622
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215033"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354431"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Event Hub als Ereignishandler für Azure Event Grid-Ereignisse
 Ein Ereignishandler ist der Ort, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses eine Maßnahme. Mehrere Azure-Dienste werden automatisch für die Behandlung von Ereignissen konfiguriert. **Azure Event Hubs** ist einer dieser Dienste. 
@@ -72,6 +72,17 @@ Hierzu folgende Beispiele:
   }
 }
 ```
+
+## <a name="delivery-properties"></a>Übermittlungseigenschaften
+Mit Ereignisabonnements können Sie HTTP-Header einrichten, die in übermittelte Ereignisse eingeschlossen werden. Diese Funktion ermöglicht es Ihnen, benutzerdefinierte Header festzulegen, die für ein Ziel erforderlich sind. Sie können benutzerdefinierte Header für die Ereignisse festlegen, die an Azure Event Hubs übermittelt werden.
+
+Wenn Sie Ereignisse für eine bestimmte Partition innerhalb eines Event Hub veröffentlichen müssen, legen Sie die `ParitionKey`-Eigenschaft für Ihr Ereignisabonnement fest, um den Partitionsschlüssel zur Identifizierung der Event Hub-Zielpartition anzugeben.
+
+| Headername | Headertyp |
+| :-- | :-- |
+|`PartitionKey` | statischen |
+
+Weitere Informationen finden Sie unter [Benutzerdefinierte Übermittlungseigenschaften](delivery-properties.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der unterstützten Ereignishandler finden Sie im Artikel zu [Ereignishandlern](event-handlers.md). 

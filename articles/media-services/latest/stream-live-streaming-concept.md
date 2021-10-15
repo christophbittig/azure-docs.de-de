@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 08108de86c5c64d50e86e3a83faa58db4fd607e2
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 9f62afe8a8f1c5c9f05a335ae049b3f2a39763d4
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129060572"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388620"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
 
@@ -57,7 +57,7 @@ Mithilfe der dynamischen Filterung kann die Anzahl von Spuren, Formaten, Bitrate
 
 ![Diagramm, das zeigt, wie die Video- und Audiofeeds von einem Passthrough-Liveereignis erfasst und verarbeitet werden.](./media/live-streaming/pass-through.svg)
 
-Wenn Sie das **Liveereignis** vom Typ „Pass-Through“ verwenden, stützen Sie sich auf Ihren lokalen Liveencoder, um einen Videostream mit mehreren Bitraten zu erzeugen und als Beitragsfeed an das Liveereignis zu senden (über RTMP oder das Eingabeprotokoll für fragmentiertes MP4). Das Liveereignis wird dann ohne jede weitere Transcodierung über die eingehenden Videostreams an die dynamische Paketerstellung (Streamingendpunkt) übertragen. Ein Liveereignis vom Typ „Pass-Through“ ist für Liveereignisse mit langer Laufzeit oder für ein lineares 24x365-Livestreaming optimiert. 
+Wenn Sie das **Liveereignis** vom Typ „Passthrough“ (Basic oder Standard) verwenden, stützen Sie sich auf Ihren lokalen Liveencoder, um einen Videostream mit mehreren Bitraten zu erzeugen und als Beitragsfeed an das Liveereignis zu senden (über RTMP oder das Eingabeprotokoll für fragmentiertes MP4). Das Liveereignis wird dann ohne jede weitere Transcodierung über die eingehenden Videostreams an die dynamische Paketerstellung (Streamingendpunkt) übertragen. Ein Liveereignis vom Typ „Pass-Through“ ist für Liveereignisse mit langer Laufzeit oder für ein lineares 24x365-Livestreaming optimiert. 
 
 ### <a name="live-encoding"></a>Live Encoding  
 

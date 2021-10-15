@@ -8,12 +8,12 @@ ms.date: 08/20/2021
 ms.author: dech
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: c9ec0f3eb2846a6d5eb281202ebd9f9c278bdd70
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c8a2ab0b904c60e2d1d1c44a9d596cf62d0403d6
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798976"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546010"
 ---
 # <a name="best-practices-for-scaling-provisioned-throughput-rus"></a>Bewährte Methoden für das Skalieren des bereitgestellten Durchsatzes (RU/Sekunde) 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,9 +33,13 @@ Wenn Sie eine Anforderung zum Erhöhen der RU/Sekunde Ihrer Datenbank oder Ihres
 - **Asynchrone Hochskalierung**
     - Wenn der Wert der angeforderten RU/Sekunde höher ist als der vom Layout der physischen Partitionen unterstützte Wert, teilt Azure Cosmos DB vorhandene physische Partitionen. Dies geschieht, bis die Ressource über die Mindestanzahl von Partitionen verfügt, die für die Unterstützung der angeforderten RU/Sekunde erforderlich sind. 
     - Daher kann die Ausführung des Vorgangs einige Zeit dauern, in der Regel 4 bis 6 Stunden.
- 
 Jede physische Partition kann einen Durchsatz von maximal 10.000 RU/Sekunde (dies gilt für alle APIs) und eine Speichergröße von 50 GB unterstützen (dies gilt für alle APIs, mit Ausnahme von Cassandra mit 30 GB Speicher). 
 
+- **Sofortige Herunterskalierung**
+    - Um einen Herunterskalierungsvorgang durchzuführen, muss Azure Cosmos DB keine Partitionen teilen oder neue hinzufügen. 
+    - Daher wird der Vorgang sofort abgeschlossen, und die RU/Sekunde stehen zur Verwendung zur Verfügung. 
+    - Das wichtigste Ergebnis dieses Vorgangs ist, dass RUs pro Partitionsbereich reduziert werden.
+    
 ## <a name="how-to-scale-up-rus-without-changing-partition-layout"></a>Hochskalieren von RU/Sekunde ohne Änderung des Partitionslayouts
 
 ### <a name="step-1-find-the-current-number-of-physical-partitions"></a>Schritt 1: Ermitteln der aktuellen Anzahl physischer Partitionen 

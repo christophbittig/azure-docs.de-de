@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 065a06955adc9c157134e138a25aaee9f54f5bea
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: c7c4c28218d1cf6e1c55523d926fd3691a8c13a8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340390"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356304"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
@@ -268,7 +268,7 @@ In Studio greifen Sie auch auf die interaktiven Tools zu, die Teil von Azure Mac
 + [Azure Machine Learning-Designer](concept-designer.md) zur Ausführung der Workflowschritte ohne Programmierung
 + Weboberfläche für [automatisiertes maschinelles Lernen](concept-automated-ml.md)
 + [Azure Machine Learning-Notebooks](how-to-run-jupyter-notebooks.md) zum Schreiben und Ausführen Ihres eigenen Code in integrierten Jupyter Notebook-Servern
-+ [Datenbezeichnungsprojekte](how-to-create-labeling-projects.md) zum Erstellen, Verwalten und Überwachen von Projekten zur Bezeichnung Ihrer Daten
++ Datenbeschriftungsprojekte zum Erstellen, Verwalten und Überwachen von Projekten zum Beschriften von [Bildern](how-to-create-image-labeling-projects.md) oder [Text](how-to-create-text-labeling-projects.md).
 
 ### <a name="programming-tools"></a>Programmiertools
 

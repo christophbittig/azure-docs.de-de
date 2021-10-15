@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 05/26/2021
+ms.date: 09/28/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e4543af78b173632e3374567e9a199f182679e8f
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e3c1da0e21f13357c5c537da2530e012101423dd
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701722"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215698"
 ---
 # <a name="azure-firewall-dns-settings"></a>DNS-Einstellungen für Azure Firewall
 
@@ -21,7 +21,7 @@ Sie können einen benutzerdefinierten DNS-Server konfigurieren und den DNS-Proxy
 
 ## <a name="dns-servers"></a>DNS-Server
 
-Ein DNS-Server verwaltet Domänennamen und löst diese in IP-Adressen auf. Azure Firewall verwendet standardmäßig Azure DNS für die Namensauflösung. Mit der Einstellung **DNS-Server** können Sie eigene DNS-Server für die Namensauflösung von Azure Firewall konfigurieren. Sie können einen einzelnen Server oder mehrere Server konfigurieren.
+Ein DNS-Server verwaltet Domänennamen und löst diese in IP-Adressen auf. Azure Firewall verwendet standardmäßig Azure DNS für die Namensauflösung. Mit der Einstellung **DNS-Server** können Sie eigene DNS-Server für die Namensauflösung von Azure Firewall konfigurieren. Sie können einen einzelnen Server oder mehrere Server konfigurieren. Wenn Sie mehrere DNS-Server konfigurieren, wird der verwendete Server nach dem Zufallsprinzip ausgewählt.
 
 > [!NOTE]
 > Bei über Azure Firewall Manager verwalteten Azure Firewall-Instanzen werden die DNS-Einstellungen in der zugehörigen Azure Firewall-Richtlinie konfiguriert.
@@ -80,6 +80,8 @@ Wenn Azure Firewall ein DNS-Proxy ist, können zwei Arten von Zwischenspeicherun
 - **Negativer Cache**: Die DNS-Auflösung führt zu keiner Antwort oder keiner Auflösung. Die Firewall speichert diese Information eine Stunde lang zwischen.
 
 Der DNS-Proxy speichert alle aufgelösten IP-Adressen von FQDNs in Netzwerkregeln. Als Best Practice sollten Sie FQDNs verwenden, die in eine einzige IP-Adresse aufgelöst werden.
+
+Wenn eine Verbindung nicht hergestellt werden kann, führt der DNS-Proxy keine Wiederholungen oder Failover auf andere DNS-Server durch, einschließlich Azure DNS.
 
 ### <a name="policy-inheritance"></a>Richtlinienvererbung
 

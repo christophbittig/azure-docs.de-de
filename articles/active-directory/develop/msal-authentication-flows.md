@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: ff8a97afa39f4db6892402c334aacb903d2cb4c2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 67ac453bb70c6889e1a69e7c0c40a88f623813ff
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787242"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235115"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 
@@ -167,7 +167,7 @@ Im obigen Diagramm führt die Anwendung folgende Vorgänge aus:
 > [!WARNING]
 > Von diesem Fluss wird abgeraten. Er erfordert ein hohes Maß an Vertrauenswürdigkeit und die Offenlegung vieler Benutzerinformationen. Verwenden Sie diesen Flow *nur*, wenn kein anderer Flow verfügbar ist, der mehr Sicherheit bietet. Weitere Informationen finden Sie unter [What's the solution to the growing problem of passwords? (Wie sich das zunehmende Problem der Passwörter lösen lässt.)](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/).
 
-Der bevorzugte Fluss für das automatische Abrufen eines Tokens auf Computern in Windows-Domänen ist die [integrierte Windows-Authentifizierung](#integrated-windows-authentication). Verwenden Sie in anderen Fällen den [Gerätecodeflow](#device-code).
+Der bevorzugte Ablauf für die Beschaffung eines Tokens im Hintergrund auf Computern, die in eine Windows-Domäne eingebunden sind, ist die [integrierte Windows-Authentifizierung](#integrated-windows-authentication). Verwenden Sie in anderen Fällen den [Gerätecodeflow](#device-code).
 
 Der Benutzername/Kennwort-Flow ist zwar in einigen Szenarien wie DevOps hilfreich, vermeiden Sie ihn jedoch, wenn Sie Benutzernamen und Kennwörter in interaktiven Szenarien verwenden möchten, in denen Sie eine eigene Benutzeroberfläche bereitstellen.
 

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
-ms.openlocfilehash: 2ccff72be66a88b9bf0a5e9eb9c29ade8397804b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 740f1e3bd8c08ae7d1684613d1920cffd1bba619
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96356192"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129237307"
 ---
 In Azure Functions auftretende Fehler können einen der folgenden Ursprünge haben:
 
@@ -297,9 +297,9 @@ Wiederholungsrichtlinie in der Datei *function.json*:
 |---------|---------|---------| 
 |strategy|–|Erforderlich. Die Wiederholungsstrategie, die verwendet werden soll. Gültige Werte sind `fixedDelay` und `exponentialBackoff`.|
 |maxRetryCount|–|Erforderlich. Die maximale Anzahl zulässiger Wiederholungen pro Funktionsausführung. `-1` bedeutet unbegrenzte Wiederholungen.|
-|delayInterval|–|Die Verzögerung, die zwischen Wiederholungsversuchen bei Verwendung der Strategie `fixedDelay`.|
-|MinimumIntervall|–|Die geringste Wiederholungsverzögerung bei Verwendung der Strategie `exponentialBackoff`.|
-|Maximumintervall|–|Die höchste Wiederholungsverzögerung bei Verwendung der Strategie `exponentialBackoff`.| 
+|delayInterval|–|Die Verzögerung, die zwischen Wiederholungsversuchen bei Verwendung der Strategie `fixedDelay` angewandt wird. Sie geben den Wert als Zeichenfolge im Format `HH:mm:ss` an.|
+|MinimumIntervall|–|Die geringste Wiederholungsverzögerung bei Verwendung der Strategie `exponentialBackoff`. Sie geben den Wert als Zeichenfolge im Format `HH:mm:ss` an.|
+|Maximumintervall|–|Die höchste Wiederholungsverzögerung bei Verwendung der Strategie `exponentialBackoff`. Sie geben den Wert als Zeichenfolge im Format `HH:mm:ss` an.| 
 
 ### <a name="retry-limitations-during-preview"></a>Einschränkungen bei Wiederholungen in der Vorschauversion
 

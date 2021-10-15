@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 3f8c288f950f34e1764c50e8eb74a8a73b39b3d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 946741c8aa70040dd0186deceab0fb090cf38c11
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94698528"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271743"
 ---
 # <a name="azure-load-balancer-algorithm"></a>Azure Load Balancer-Algorithmus
 
@@ -24,9 +24,9 @@ Load Balancer verfügt über mehrere Funktionen für UDP- und TCP-Anwendungen.
 
 ## <a name="load-balancing-algorithm"></a>Lastenausgleichsalgorithmus
 
-Sie können eine Lastenausgleichsregel erstellen, um die Verteilung des Datenverkehrs vom Front-End zu einem Back-End-Pool durchzuführen. Azure Load Balancer nutzt einen Hashalgorithmus für die Verteilung von eingehenden Datenflüssen (nicht von Bytes). Load Balancer schreibt die Header von Datenflüssen für Instanzen des Back-End-Pools um. Wenn der Integritätstest einen fehlerfreien Back-End-Endpunkt angibt, ist ein Server verfügbar, der neue Flows empfangen kann.
+Indem Sie eine Lastenausgleichsregel erstellen, können Sie eingehende Datenverkehrsflüsse vom Front-End eines Lastenausgleichs an die Back-End-Pools verteilen. Azure Load Balancer nutzt einen Fünf-Tupel-Hashalgorithmus für die Verteilung eingehender Datenflüsse (keine Bytes).  Beim Lastenausgleich werden die Header von TCP-/UDP-Headern umgeschrieben, wenn Datenverkehr an die Back-End-Poolinstanzen geleitet wird. (HTTP-/HTTPS-Header werden nicht umgeschrieben). Wenn der Integritätstest des Lastenausgleichs auf einen fehlerfreien Back-End-Endpunkt hinweist, stehen Back-End-Instanzen zum Empfangen neuer Datenverkehrsflüsse zur Verfügung.
 
-Standardmäßig wird für Load Balancer ein Fünf-Tupel-Hash verwendet.
+Standardmäßig wird für den Lastenausgleich ein Fünf-Tupel-Hash verwendet.
 
 Der Hash umfasst Folgendes:
 
@@ -36,10 +36,11 @@ Der Hash umfasst Folgendes:
 - **Zielport**
 - **IP-Protokollnummer zum Zuordnen von Flows zu verfügbaren Servern**
 
-Die Affinität zu einer IP-Quelladresse wird hergestellt, indem ein Zwei- oder Drei-Tupel-Hash verwendet wird. Pakete desselben Datenflusses treffen bei derselben Instanz hinter dem Front-End mit Lastenausgleich ein.
+## <a name="session-persistence"></a>Sitzungspersistenz
 
-Der Quellport ändert sich, wenn ein Client einen neuen Datenfluss über dieselbe IP-Quelladresse initiiert. Dies kann dazu führen, dass der Datenverkehr aufgrund des Fünf-Tupel-Hashs an einen anderen Back-End-Endpunkt gesendet wird.
-Weitere Informationen finden Sie unter [Konfigurieren des Verteilungsmodus für Azure Load Balancer](./load-balancer-distribution-mode.md).
+Pakete desselben Datenflusses gehen bei derselben Back-End-Poolinstanz ein. Wenn ein Client jedoch einen neuen Datenfluss über dieselbe IP-Quelladresse initiiert, ändert sich der Quellport. Dies kann dazu führen, dass der Datenverkehr aufgrund des Fünf-Tupel-Hashs an einen anderen Back-End-Endpunkt gesendet wird. 
+
+Sitzungspersistenz zu einer IP-Quelladresse wird anhand eines Zwei- oder Drei-Tupel-Hashs hergestellt. Wenn Sitzungspersistenz aktiviert ist, werden aufeinanderfolgende Anforderungen von derselben Client-IP-Adresse von derselben VM verarbeitet. Weitere Informationen zu Load Balancer-Verteilungsmodi finden Sie unter [Konfigurieren des Verteilungsmodus für Azure Load Balancer](./load-balancer-distribution-mode.md).
 
 In der folgenden Abbildung wird die hashbasierte Verteilung angezeigt:
 
@@ -49,11 +50,18 @@ In der folgenden Abbildung wird die hashbasierte Verteilung angezeigt:
 
 ## <a name="application-independence-and-transparency"></a>Anwendungsunabhängigkeit und -transparenz
 
-Load Balancer interagiert nicht direkt mit TCP oder UDP oder der Anwendungsschicht. Alle TCP- oder UDP-Anwendungsszenarien können unterstützt werden. Von Load Balancer werden keine Datenflüsse geschlossen oder initiiert, und es erfolgt keine Interaktion mit der Nutzlast des Datenflusses. Load Balancer verfügt nicht über Gatewayfunktionen auf der Anwendungsschicht. Protokollhandshakes werden immer direkt zwischen dem Client und der Back-End-Poolinstanz durchgeführt. Bei einer Antwort auf einen eingehenden Flow handelt es sich immer um die Antwort eines virtuellen Computers. Wenn der Flow auf dem virtuellen Computer eingeht, wird auch die IP-Adresse der ursprünglichen Quelle gespeichert.
+Load Balancer unterstützt jedes TCP-/UDP-Anwendungsszenario, aber schließt oder startet keine Datenflüsse. Außerdem interagiert Load Balancer nicht mit den Nutzdaten eines Datenflusses. 
+
+- Anwendungsnutzlasten sind für das Lastenausgleichsmodul transparent. Alle UDP- oder TCP-Anwendungen können unterstützt werden.
+
+Load Balancer wird auf Schicht 4 betrieben und bietet keine Gatewayfunktionalität auf Anwendungsebene. Protokollhandshakes werden immer direkt zwischen dem Client und der Back-End-Poolinstanz durchgeführt. 
+
+- Da Load Balancer nicht mit den TCP-Nutzdaten interagiert und keine TLS-Auslagerung bereitstellt, können Sie umfassende verschlüsselte Szenarien erstellen. Die Verwendung eines Lastenausgleichsmoduls ermöglicht ein hohes Maß an Aufskalierung für TLS-Anwendungen, indem die TLS-Verbindung auf dem virtuellen Computer selbst beendet wird. Beispielsweise ist die TLS-Funktion zum erstellen von Sitzungsschlüsseln vom Typ und der Nummer der VMs beschränkt, die Sie zum Back-End-Pool hinzufügen.
+
+Bei einer Antwort auf einen eingehenden Flow handelt es sich immer um die Antwort eines virtuellen Computers. Wenn der Flow auf dem virtuellen Computer eingeht, wird auch die IP-Adresse der ursprünglichen Quelle gespeichert.
 
 - Jeder Endpunkt erhält über eine VM eine Antwort. Zum Beispiel wird ein TCP-Handshake zwischen dem Client und der ausgewählten Back-End-VM durchgeführt. Eine Antwort auf eine Anforderung, die an ein Front-End gesendet wird, wird von einer Back-End-VM generiert. Wenn Sie eine erfolgreiche Überprüfung der Konnektivität für ein Front-End durchführen, bedeutet dies, dass Sie den Konnektivitätsdurchsatz für mindestens eine Back-End-VM überprüfen.
-- Anwendungsnutzlasten sind für das Lastenausgleichsmodul transparent. Alle UDP- oder TCP-Anwendungen können unterstützt werden.
-- Da das Lastenausgleichsmodul nicht mit der TCP-Nutzlast interagiert und keine TLS-Abladung bereitstellt, können Sie umfassende verschlüsselte Szenarien erstellen. Die Verwendung eines Lastenausgleichsmoduls ermöglicht ein hohes Maß an Aufskalierung für TLS-Anwendungen, indem die TLS-Verbindung auf dem virtuellen Computer selbst beendet wird. Beispielsweise ist die TLS-Funktion zum erstellen von Sitzungsschlüsseln vom Typ und der Nummer der VMs beschränkt, die Sie zum Back-End-Pool hinzufügen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

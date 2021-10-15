@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 6778394fa152f22002ef48681942edde4b4ed460
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 5ea3b24cbdbd4a4c9a1f11883e8a2231467a7ee3
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219092"
+ms.locfileid: "129278572"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Verbinden von Azure Data Factory und Azure Purview
 
@@ -73,7 +73,7 @@ Die verwaltete Identität für die Data Factory wird verwendet, um Pushvorgänge
 
 - Weisen Sie für Purview-Konten, die **am oder nach dem 18. August 2021** erstellt wurden, der verwalteten Identität der Data Factory die Rolle **Datenkurator** für die Purview-**Stammsammlung** zu. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Purview](../purview/catalog-permissions.md) und unter [Hinzufügen von Rollen und Einschränken des Zugriffs über Sammlungen](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
 
-- Weisen Sie für Purview-Konten, die **vor dem 18. August 2021** erstellt wurden, der verwalteten Identität für die Data Factory die in Azure integrierte Rolle [**Datenkurator für Purview**](../role-based-access-control/built-in-roles.md#purview-data-curator) für das Purview-Konto zu. Weitere Informationen zu Legacyberechtigungen für die Zugriffssteuerung in Azure Purview finden Sie [hier](../purview/catalog-permissions.md#legacy-permission-guide).
+- Weisen Sie für Purview-Konten, die **vor dem 18. August 2021** erstellt wurden, der verwalteten Identität für die Data Factory die in Azure integrierte Rolle [**Datenkurator für Purview (Legacy)** ](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) für das Purview-Konto zu. Weitere Informationen zu Legacyberechtigungen für die Zugriffssteuerung in Azure Purview finden Sie [hier](../purview/catalog-permissions.md#legacy-permission-guide).
 
 ### <a name="remove-data-factory-connections"></a>Entfernen von Data Factory-Verbindungen
 

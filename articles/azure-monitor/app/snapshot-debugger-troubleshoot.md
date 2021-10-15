@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: bd83367ae073e03f03188cdf62cb60faaad7ac97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ae4a7d070419aae974742802ec5b6b3ae958c87
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026452"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355528"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen
 Wenn Sie den Application Insights-Momentaufnahmedebugger für Ihre Anwendung aktiviert haben, aber keine Momentaufnahmen für Ausnahmen angezeigt werden, können Sie diese Anweisungen zur Problembehandlung verwenden.
@@ -92,7 +92,7 @@ Um die Einstellung zu überprüfen, öffnen Sie die Datei „web.config“, und 
    ```
 
 > [!NOTE]
-> Das Ändern des Werts „httpRuntime targetFramework“ wirkt sich auf das Verhalten Ihrer Anwendung zur Laufzeit aus und kann zu anderen, geringfügigen Verhaltensänderungen führen. Testen Sie Ihre Anwendung nach dieser Änderung unbedingt gründlich. Eine vollständige Liste der Kompatibilitätsänderungen finden Sie unter https://docs.microsoft.com/dotnet/framework/migration-guide/application-compatibility#retargeting-changes
+> Das Ändern des Werts „httpRuntime targetFramework“ wirkt sich auf das Verhalten Ihrer Anwendung zur Laufzeit aus und kann zu anderen, geringfügigen Verhaltensänderungen führen. Testen Sie Ihre Anwendung nach dieser Änderung unbedingt gründlich. Eine vollständige Liste der Kompatibilitätsänderungen finden Sie unter [Änderungen durch Neuausrichtung](/dotnet/framework/migration-guide/application-compatibility#retargeting-changes).
 
 > [!NOTE]
 > Wenn „targetFramework“ 4.7 oder höher ist, bestimmt Windows die verfügbaren Protokolle. In Azure App Service ist TLS 1.2 verfügbar. Wenn Sie jedoch Ihren eigenen virtuellen Computer verwenden, müssen Sie möglicherweise TLS 1.2 im Betriebssystem aktivieren.

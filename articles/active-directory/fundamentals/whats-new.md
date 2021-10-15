@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59597fefe4d3cb0032f8c9ccfbf317c593fd34a9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7eb9dc44cb84a432b78ebe1740c7cee35c978fbe
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748507"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272292"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -68,7 +68,7 @@ Wir unterstützen jetzt native SSO-Unterstützung (Single Sign-On) und geräteba
 **Produktfunktion:** Identity Governance
  
 
-Wir haben die Beta-Version der MS Graph-API für Azure AD-Zugriffsüberprüfungen veröffentlicht. Die API verfügt über Methoden, um neben dem Gutachtertyp auch eine Liste der Namen der kontaktierten Gutachter zurückzugeben. [Weitere Informationen](/graph/api/resources/accessreviewinstance?view=graph-rest-beta)
+Wir haben die Beta-Version der MS Graph-API für Azure AD-Zugriffsüberprüfungen veröffentlicht. Die API verfügt über Methoden, um neben dem Gutachtertyp auch eine Liste der Namen der kontaktierten Gutachter zurückzugeben. [Weitere Informationen](/graph/api/resources/accessreviewinstance?view=graph-rest-beta&preserve-view=true)
  
 ---
 
@@ -186,7 +186,7 @@ Benutzer, denen die Rolle des Benutzeradministrators zugewiesen wurde, können k
 **Dienstkategorie:** Microsoft Identity Manager  
 **Produktfunktion:** Identity Lifecycle Management
  
-Der Windows Azure AD Connector für FIM ist eingefroren und wird nicht mehr weiterentwickelt. Die Lösung, FIM und den Azure AD Connector zu verwenden, wurde ersetzt. Bestehende Bereitstellungen sollten auf [Azure AD Connect](../hybrid/whatis-hybrid-identity.md), Azure AD Connect Sync oder den [Microsoft Graph Connector](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-connector-graph) migrieren, da die vom Azure AD Connector für FIM verwendeten internen Schnittstellen aus Azure AD entfernt werden. [Weitere Informationen](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-deprecated-features)
+Der Windows Azure AD Connector für FIM ist eingefroren und wird nicht mehr weiterentwickelt. Die Lösung, FIM und den Azure AD Connector zu verwenden, wurde ersetzt. Bestehende Bereitstellungen sollten auf [Azure AD Connect](../hybrid/whatis-hybrid-identity.md), Azure AD Connect Sync oder den [Microsoft Graph Connector](/microsoft-identity-manager/microsoft-identity-manager-2016-connector-graph) migrieren, da die vom Azure AD Connector für FIM verwendeten internen Schnittstellen aus Azure AD entfernt werden. [Weitere Informationen](/microsoft-identity-manager/microsoft-identity-manager-2016-deprecated-features)
 
 ---
 
@@ -212,7 +212,7 @@ Siehe [Azure Active Directory Connect V2.0](../hybrid/whatis-azure-ad-connect-v2
  
 Die Bereitstellung von MIM Sync, Service, Portal oder CM auf Windows Server 2008 R2 oder die Verwendung von SQL Server 2008 R2 als zugrunde liegende Datenbank wird nicht mehr empfohlen, da diese Plattformen nicht mehr unterstützt werden. Die Installation von MIM Sync und anderen Komponenten auf Windows Server 2016 oder höher und mit SQL Server 2016 oder höher wird empfohlen.
 
-Der Einsatz von MIM für Privileged Access Management mit einem Windows Server 2012 R2-Domänencontroller in der PRIV-Gesamtstruktur ist veraltet. Verwenden Sie Windows Server 2016 oder höher Active Directory mit der Funktionsebene Windows Server 2016 für Ihre PRIV-Gesamtstruktur-Domäne. Die Funktionsstufe Windows Server 2012 R2 ist für die Domäne einer CORP-Gesamtstruktur weiterhin zulässig. [Weitere Informationen](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-supported-platforms)
+Der Einsatz von MIM für Privileged Access Management mit einem Windows Server 2012 R2-Domänencontroller in der PRIV-Gesamtstruktur ist veraltet. Verwenden Sie Windows Server 2016 oder höher Active Directory mit der Funktionsebene Windows Server 2016 für Ihre PRIV-Gesamtstruktur-Domäne. Die Funktionsstufe Windows Server 2012 R2 ist für die Domäne einer CORP-Gesamtstruktur weiterhin zulässig. [Weitere Informationen](/microsoft-identity-manager/microsoft-identity-manager-2016-supported-platforms)
 
 ---
 
@@ -229,7 +229,7 @@ Wir haben bereits angekündigt, dass [die Ausnahme für eingebettete Webansichte
 
 Am 7. Juli 2021 haben wir von Google erfahren, dass einige dieser Einschränkungen ab dem **12. Juli 2021** gelten. Für Azure AD B2B- und Azure AD B2C-Kunden, die in ihren benutzerdefinierten Anwendungen oder Branchenanwendungen eine neue Google-ID-Anmeldung eingerichtet haben, um externe Benutzer einzuladen oder die Self-Service-Registrierung zu aktivieren, gelten die Einschränkungen sofort. Daher wird Endbenutzern eine Fehlermeldung angezeigt, die ihre Gmail-Anmeldung blockiert, wenn keine Systemwebansicht für die Authentifizierung verwendet wird. Einzelheiten hierzu finden Sie in den unten verlinkten Dokumenten. 
 
-Die meisten Apps verwenden standardmäßig die Systemwebansicht und sind von dieser Änderung nicht betroffen. Dies gilt nur für Kunden, die eingebettete Webansichten (die nicht standardmäßige Einstellung) verwenden. Wir empfehlen Kunden, die Authentifizierung ihrer Anwendung stattdessen auf Systembrowser zu verlagern, bevor sie neue Google-Integrationen erstellen. Informationen zum Umstellen von Gmail-Authentifizierungen auf Systembrowser finden Sie im Abschnitt „Eingebettete Webbenutzeroberfläche im Vergleich zur System-Webbenutzeroberfläche“ in der Dokumentation [Verwenden von Webbrowsern (MSAL.NET)](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui). Alle MSAL-SDKs verwenden standardmäßig die Systemwebansicht. [Weitere Informationen](../external-identities/google-federation.md#deprecation-of-web-view-sign-in-support)
+Die meisten Apps verwenden standardmäßig die Systemwebansicht und sind von dieser Änderung nicht betroffen. Dies gilt nur für Kunden, die eingebettete Webviews verwenden (die nicht standardmäßige Einstellung). Wir empfehlen Kunden, die Authentifizierung ihrer Anwendung stattdessen auf Systembrowser zu verlagern, bevor sie neue Google-Integrationen erstellen. Informationen zum Umstellen von Gmail-Authentifizierungen auf Systembrowser finden Sie im Abschnitt „Eingebettete Webbenutzeroberfläche im Vergleich zur System-Webbenutzeroberfläche“ in der Dokumentation [Verwenden von Webbrowsern (MSAL.NET)](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui). Alle MSAL-SDKs verwenden standardmäßig die Systemwebansicht. [Weitere Informationen](../external-identities/google-federation.md#deprecation-of-web-view-sign-in-support)
 
 ---
 
@@ -273,7 +273,7 @@ Weitere Informationen zu „Meine Apps“ finden Sie unter [Anmelden beim Portal
 **Dienstkategorie:** MS Graph  
 **Produktfunktion:** Entwickleroberfläche
  
-Richtlinien für Anwendungsauthentifizierungsmethoden in Microsoft Graph, mit denen IT-Administratoren die Gültigkeitsdauer von Anmeldeinformationen für geheime Anwendungskennwörter erzwingen oder die Verwendung von Geheimnissen vollständig blockieren können. Die Richtlinien können für einen gesamten Mandanten als Standardkonfiguration erzwungen und auf bestimmte Anwendungen oder Dienstprinzipale festgelegt werden. [Weitere Informationen](/graph/api/resources/policy-overview?view=graph-rest-beta)
+Richtlinien für Anwendungsauthentifizierungsmethoden in Microsoft Graph, mit denen IT-Administratoren die Gültigkeitsdauer von Anmeldeinformationen für geheime Anwendungskennwörter erzwingen oder die Verwendung von Geheimnissen vollständig blockieren können. Die Richtlinien können für einen gesamten Mandanten als Standardkonfiguration erzwungen und auf bestimmte Anwendungen oder Dienstprinzipale festgelegt werden. [Weitere Informationen](/graph/api/resources/policy-overview?view=graph-rest-beta&preserve-view=true)
  
 ---
 
@@ -315,7 +315,7 @@ Sie können jetzt die Protokolle für Risikobenutzer und Risikoerkennungen an Az
 **Dienstkategorie:** Anwendungsproxy  
 **Produktfunktion:** Zugriffssteuerung
  
-Der Ressourcentyp „onPremisesPublishing“ enthält jetzt die Eigenschaft „isBackendCertificateValidationEnabled“, die angibt, ob die Back-End-SSL-Zertifikatüberprüfung für die Anwendung aktiviert ist. Für alle neuen Anwendungsproxy-Apps wird die Eigenschaft standardmäßig auf „true“ festgelegt. Für alle vorhandenen Apps wird die Eigenschaft auf „false“ festgelegt. Weitere Informationen finden Sie unter [onPremisesPublishing-Ressourcentyp](/graph/api/resources/onpremisespublishing?view=graph-rest-beta).
+Der Ressourcentyp „onPremisesPublishing“ enthält jetzt die Eigenschaft „isBackendCertificateValidationEnabled“, die angibt, ob die Back-End-SSL-Zertifikatüberprüfung für die Anwendung aktiviert ist. Für alle neuen Anwendungsproxy-Apps wird die Eigenschaft standardmäßig auf „true“ festgelegt. Für alle vorhandenen Apps wird die Eigenschaft auf „false“ festgelegt. Weitere Informationen finden Sie unter [onPremisesPublishing-Ressourcentyp](/graph/api/resources/onpremisespublishing?view=graph-rest-beta&preserve-view=true).
  
 ---
 
@@ -474,7 +474,7 @@ Wenn Administratoren Zugriffsüberprüfungen von Zuweisungen privilegierter Roll
 **Dienstkategorie:** Sonstige  
 **Produktfunktion:** Lebenszyklusverwaltung für Geräte
  
-Die Microsoft Graph-Unterstützung für die Konfiguration von Mobility (MDM/MAM) in Azure AD befindet sich in der öffentlichen Vorschau. Administratoren können den Benutzerbereich und URLs für MDM-Anwendungen wie Intune mithilfe von Microsoft Graph v1.0 konfigurieren. Weitere Informationen finden Sie unter [mobilityManagementPolicy-Ressourcentyp](/graph/api/resources/mobilitymanagementpolicy?view=graph-rest-beta).
+Die Microsoft Graph-Unterstützung für die Konfiguration von Mobility (MDM/MAM) in Azure AD befindet sich in der öffentlichen Vorschau. Administratoren können den Benutzerbereich und URLs für MDM-Anwendungen wie Intune mithilfe von Microsoft Graph v1.0 konfigurieren. Weitere Informationen finden Sie unter [mobilityManagementPolicy-Ressourcentyp](/graph/api/resources/mobilitymanagementpolicy?view=graph-rest-beta&preserve-view=true).
 
 ---
 
@@ -548,7 +548,7 @@ Mit dem Windows 10 21H1-Update unterstützt Windows Hello jetzt mehrere Kamer
 **Dienstkategorie**: Zugriffsüberprüfungen  
 **Produktfunktion:** Identity Governance
  
-Microsoft Graph-APIs für Azure Active Directory-Zugriffsüberprüfungen sind jetzt in Version 1.0 enthalten und unterstützen vollständig konfigurierbare Funktionen für Zugriffsüberprüfungen. [Weitere Informationen](/graph/api/resources/accessreviewsv2-root?view=graph-rest-1.0)
+Microsoft Graph-APIs für Azure Active Directory-Zugriffsüberprüfungen sind jetzt in Version 1.0 enthalten und unterstützen vollständig konfigurierbare Funktionen für Zugriffsüberprüfungen. [Weitere Informationen](/graph/api/resources/accessreviewsv2-root?view=graph-rest-1.0&preserve-view=true)
  
 ---
 
@@ -667,7 +667,7 @@ Azure AD-Kunden können jetzt problemlos Nachweise entwerfen und ausgeben. Nach
  
 Zur Verbesserung der Sicherheit wurde der [Gerätecodeflow](../develop/v2-oauth2-device-code.md) aktualisiert und um eine weitere Eingabeaufforderung ergänzt, mit der überprüft wird, ob sich der Benutzer bei der erwarteten App anmeldet. Der Rollout soll im Juni beginnen und voraussichtlich bis zum 30. Juni abgeschlossen sein.
 
-Zur Vermeidung von Phishingangriffen, bei denen ein Angreifer den Benutzer dazu verleitet, sich bei einer schädlichen Anwendung anzumelden, wird die folgende Eingabeaufforderung hinzugefügt: „Möchten Sie sich bei [Anzeigename der Anwendung] anmelden?". Diese Aufforderung wird allen Benutzern beim Anmelden mit dem Gerätecodeflow angezeigt. Da es sich um eine Sicherheitsmaßnahme handelt, kann sie nicht entfernt oder umgangen werden. [Weitere Informationen](../develop/reference-breaking-changes.md#the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt)
+Um Phishing-Angriffe zu verhindern, bei denen ein Angreifer den Benutzer dazu verleitet, sich bei einer bösartigen Anwendung anzumelden, wird die folgende Aufforderung hinzugefügt: "Versuchen Sie, sich bei [Anzeigename der Anwendung] anzumelden?". Diese Aufforderung wird allen Benutzern beim Anmelden mit dem Gerätecodeflow angezeigt. Da es sich um eine Sicherheitsmaßnahme handelt, kann sie nicht entfernt oder umgangen werden. [Weitere Informationen](../develop/reference-breaking-changes.md#the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt)
 
 ---
 
@@ -799,7 +799,7 @@ Administratoren können jetzt weitere Einschränkungen für den Zugriff externer
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---may-2021"></a>Neue Verbund-Apps im Azure AD-Anwendungskatalog verfügbar – Mai 2021
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
+**Dienstkategorie**: Unternehmens-Apps  
 **Produktfunktion:** Integration von Drittanbieterprodukten
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
@@ -817,7 +817,7 @@ Weitere Informationen dazu, wie Sie Ihre Organisation durch automatisierte Berei
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---may-2021"></a>Neue Verbund-Apps im Azure AD-Anwendungskatalog verfügbar – Mai 2021
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
+**Dienstkategorie**: Unternehmens-Apps  
 **Produktfunktion:** Integration von Drittanbieterprodukten
  
 Im Mai 2021 haben wir die folgenden 29 neuen Anwendungen mit Verbundunterstützung in unseren App-Katalog aufgenommen:
@@ -839,9 +839,9 @@ Informationen zum Auflisten Ihrer Anwendung im Azure AD-App-Katalog finden Sie 
 
 Die Formulierung auf dem Bildschirm für bedingten Zugriff wurde aktualisiert, der Benutzern angezeigt wird, wenn ihr Zugriff auf Unternehmensressourcen blockiert wird. Die Benutzer werden blockiert, bis sie ihr Gerät bei der Verwaltung mobiler Geräte (Mobile Device Management, MDM) registrieren. Diese Verbesserungen gelten für die Android- und iOS-/iPadOS-Plattformen. Die folgenden Änderungen wurden vorgenommen:
 
-- „Help us keep your device secure“ wurde in „Set up your device to get access“ geändert.
-- „Your sign-in was successful but your admin requires your device to be managed by Microsoft to access this resource.“ wurde in „[Name der Organisation] requires you to secure this device before you can access [organization’s name] email, files, and data.“ geändert. 
-- „Enroll Now“ wurde in „Continue“ geändert.
+- "Helfen Sie uns, Ihr Gerät sicher zu halten" hat sich geändert in "Richten Sie Ihr Gerät ein, um Zugriff zu erhalten"
+- "Ihre Anmeldung war erfolgreich, aber Ihr Administrator verlangt, dass Ihr Gerät von Microsoft verwaltet wird, um auf diese Ressource zugreifen zu können." zu "[Name der Organisation] erfordert, dass Sie dieses Gerät sichern, bevor Sie auf E-Mails, Dateien und Daten von [Name der Organisation] zugreifen können." 
+- Von "Jetzt anmelden" zu "fortfahren"
 
 Die Informationen unter [Registrieren Ihres Android Enterprise-Geräts](https://support.microsoft.com/topic/enroll-your-android-enterprise-device-d661c82d-fa28-5dfd-b711-6dff41ae83bb) sind veraltet.
 
@@ -1087,7 +1087,7 @@ Derzeit können Sie mit dieser Benutzeraktion MFA nur als Steuerelement aktivier
 **Dienstkategorie:** Anwendungsproxy  
 **Produktfunktion:** Zugriffssteuerung
  
-Mit dieser neuen Funktion können Connectorgruppen dem nächstgelegenen regionalen Anwendungsproxydienst zugewiesen werden, in dem eine Anwendung gehostet wird. Dadurch kann die App-Leistung in Szenarien verbessert werden, in denen Apps in anderen Regionen als der Region des Basismandanten gehostet werden. [Weitere Informationen](../app-proxy/application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview) 
+Mit dieser neuen Funktion können Connectorgruppen dem nächstgelegenen regionalen Anwendungsproxydienst zugewiesen werden, in dem eine Anwendung gehostet wird. Dies kann die Anwendungsleistung in Szenarien verbessern, in denen Anwendungen in anderen Regionen als der Region des Heimatmieters gehostet werden. [Weitere Informationen](../app-proxy/application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview) 
  
 ---
 

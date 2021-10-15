@@ -3,13 +3,13 @@ title: Verwalten einer Azure-Supportanfrage
 description: In diesem Artikel werden das Anzeigen von Supportanfragen, das Senden von Nachrichten, das Ändern des Schweregrads von Anfragen, das Freigeben von Diagnoseinformationen mit Azure-Support, das erneute Öffnen einer geschlossenen Supportanfrage und das Hochladen von Dateien erläutert.
 tags: billing
 ms.topic: how-to
-ms.date: 09/01/2021
-ms.openlocfilehash: f1930402c0f458962c95f8f4fe0f1011f1dcca49
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/30/2021
+ms.openlocfilehash: 8e7b074883fe2dcfb79913e54cf7180e26f29c2a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426380"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353201"
 ---
 # <a name="manage-an-azure-support-request"></a>Verwalten einer Azure-Supportanfrage
 
@@ -52,7 +52,7 @@ Auf dieser Seite können Sie Supportanfragen durchsuchen, filtern und sortieren.
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>Teilen von Diagnoseinformationen mit dem Azure-Support
 
-Wenn Sie eine Supportanfrage erstellen, können Sie im Abschnitt **Diagnoseinformationen teilen** entweder **Ja** oder **Nein** auswählen. Diese Option bestimmt, ob der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) zu Ihrer Azure-Ressourcen erfassen kann, die möglicherweise zur Behebung Ihres Problems beitragen.
+Wenn Sie eine Supportanfrage erstellen, können Sie im Abschnitt **Diagnoseinformationen teilen** entweder **Ja** oder **Nein** auswählen. Diese Option bestimmt, ob der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) zu Ihrer Azure-Ressourcen, zum Beispiel [Protokolldateien](how-to-create-azure-support-request.md#advanced-diagnostic-information-logs), erfassen kann, die möglicherweise zur Behebung Ihres Problems beitragen.
 
 So ändern Sie Ihre Auswahl bei **Diagnoseinformationen teilen** nachdem die Anforderung erstellt wurde:
 

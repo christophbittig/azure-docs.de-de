@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 05/25/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: d4e383b1bb0287d0a5fc9d8b72d3af4440dab4ae
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 051d9b0f3f2d4a2d100f27f80e095431b2837fd8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091287"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361447"
 ---
 # <a name="azure-front-door-edge-locations-by-metro"></a>Azure Front Door-Edgestandorte nach Metro
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "129091287"
 > * [Edgestandorte nach Abkürzung](edge-locations-abbreviation.md)
 > 
 
-In diesem Artikel werden die aktuellen Metros mit Edgestandorten nach Region für Azure Front Door aufgeführt. Jedes Metro kann mehrere Edgestandorte enthalten. Derzeit verfügt Azure Front Door über 117 Edge-Standorte in 100 Großstädten.
+In diesem Artikel werden die aktuellen Metros mit Edgestandorten nach Region für Azure Front Door aufgeführt. Jedes Metro kann mehrere Edgestandorte enthalten. Derzeit verfügt Azure Front Door über 118 Edgestandorte in 100 Großstädten.
 
 ## <a name="microsoft-edge-locations"></a>Microsoft Edgestandorte
 

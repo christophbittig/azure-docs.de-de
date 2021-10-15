@@ -6,12 +6,12 @@ ms.date: 07/23/2021
 ms.topic: article
 author: mayurigupta13
 ms.author: mayg
-ms.openlocfilehash: 1909b6efc46e40de0b0e4a864e8a5e3d852da366
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 16e13238ffd471678eab9bdd0245aa708b7c4419
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637836"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389359"
 ---
 # <a name="azure-arc-enabled-open-service-mesh-preview"></a>Open Service Mesh mit Azure Arc-Unterstützung (Vorschauversion)
 
@@ -52,7 +52,7 @@ Stellen Sie sicher, dass Ihre KUBECONFIG-Umgebungsvariable auf die kubeconfig de
 Legen Sie die folgenden Umgebungsvariablen fest:
 
 ```azurecli-interactive
-export VERSION=0.8.4
+export VERSION=<osm-arc-version>
 export CLUSTER_NAME=<arc-cluster-name>
 export RESOURCE_GROUP=<resource-group-name>
 ```
@@ -92,7 +92,7 @@ Sie sollten eine Ausgabe ähnlich wie die unten angezeigte sehen. Es kann 3 bis 
   },
   "statuses": [],
   "type": "Microsoft.KubernetesConfiguration/extensions",
-  "version": "0.8.4"
+  "version": "x.x.x"
 }
 ```
 
@@ -126,7 +126,7 @@ Stellen Sie sicher, dass die Einstellung des privilegierten Init-Containers nich
 
 ### <a name="install-azure-arc-enabled-osm-using-arm-template"></a>Installieren von OSM mit Azure Arc-Unterstützung mithilfe einer ARM-Vorlage
 
-Nachdem Sie Ihren Cluster mit Azure Arc verbunden haben, erstellen Sie eine JSON-Datei mit dem folgenden Format, und aktualisieren Sie dabei unbedingt den \<cluster-name\>-Wert:
+Nachdem Sie Ihren Cluster mit Azure Arc verbunden haben, erstellen Sie eine json-Datei mit folgendem Format, wobei Sie darauf achten müssen, die Werte \<cluster-name\> und \<osm-arc-version\> zu aktualisieren:
 
 ```json
 {
@@ -148,7 +148,7 @@ Nachdem Sie Ihren Cluster mit Azure Arc verbunden haben, erstellen Sie eine JSON
             }
         },
         "ExtensionVersion": {
-            "defaultValue": "0.8.4",
+            "defaultValue": "<osm-arc-version>",
             "type": "String",
             "metadata": {
                 "description": "The extension type version."
@@ -238,7 +238,7 @@ Sie sollten eine JSON-Ausgabe ähnlich wie die nachfolgende sehen:
   },
   "statuses": [],
   "type": "Microsoft.KubernetesConfiguration/extensions",
-  "version": "0.8.4"
+  "version": "x.x.x"
 }
 ```
 ## <a name="osm-controller-configuration"></a>Die OSM-Controllerkonfiguration

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: f17c2fcd5793412716c72f02c7cfbe670360fa33
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 961c563a12a3edf4df5c898f0c8ee8f1a5b2daf0
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123116"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390119"
 ---
 # <a name="live-event-states-and-billing"></a>Status und Abrechnung von Liveereignissen
 
@@ -29,7 +29,7 @@ In Azure Media Services fallen für ein Liveereignis Gebühren an, sobald der Zu
 Wenn **LiveEventEncodingType** für Ihr [Liveereignis](/rest/api/media/liveevents) auf „Standard“ oder „Premium1080p“ festgelegt ist, schaltet Media Services jedes Liveereignis, das sich noch im Zustand **Wird ausgeführt** befindet, 12 Stunden nach dem Verlust des Eingangsfeeds automatisch ab. Es werden keine **Liveausgaben** mehr ausgeführt. Allerdings wird Ihnen die Zeit in Rechnung gestellt, in der das Liveereignis den Zustand **Wird ausgeführt** hatte.
 
 > [!NOTE]
-> Passthrough-Liveereignisse werden nicht automatisch heruntergefahren und müssen explizit über die API gestoppt werden, um eine übermäßige Abrechnung zu vermeiden.
+> (Basic oder Standard) Passthrough-Liveereignisse werden NICHT automatisch heruntergefahren und müssen explizit über die API gestoppt werden, um eine übermäßige Abrechnung zu vermeiden.
 
 ## <a name="states"></a>Zustände
 

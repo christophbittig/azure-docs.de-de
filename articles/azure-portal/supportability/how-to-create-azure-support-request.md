@@ -3,13 +3,13 @@ title: 'Gewusst wie: Erstellen einer Azure-Supportanfrage'
 description: Kunden, die Unterstützung benötigen, können das Azure-Portal verwenden, um Self-Service-Lösungen zu finden und Supportanfragen zu erstellen und zu verwalten.
 ms.topic: how-to
 ms.custom: support-help-page
-ms.date: 09/01/2021
-ms.openlocfilehash: 768c778926024288b0d331b5cb6b60c8e9c16a57
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/30/2021
+ms.openlocfilehash: 4598cc16173100749ad3f1bdefd3165020554465
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429459"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358279"
 ---
 # <a name="create-an-azure-support-request"></a>Erstellen einer Azure-Supportanfrage
 
@@ -18,9 +18,9 @@ Azure ermöglicht das Erstellen und Verwalten von Supportanfragen (auch Supportt
 > [!NOTE]
 > Die Azure-Portal-URL ist für die Azure-Cloud spezifisch, in der Ihre Organisation bereitgestellt ist.
 >
->* Azure-Portal zur kommerziellen Verwendung: [https://portal.azure.com](https://portal.azure.com)
->* Azure-Portal für Deutschland: [https://portal.microsoftazure.de](https://portal.microsoftazure.de).
->* Azure-Portal für die US-Regierung: [https://portal.azure.us](https://portal.azure.us).
+>- Azure-Portal zur kommerziellen Verwendung: [https://portal.azure.com](https://portal.azure.com)
+>- Azure-Portal für Deutschland: [https://portal.microsoftazure.de](https://portal.microsoftazure.de).
+>- Azure-Portal für die US-Regierung: [https://portal.azure.us](https://portal.azure.us).
 
 In Azure wird unbegrenzter Support für die Abonnementverwaltung bereitgestellt, einschließlich Abrechnung, Kontingentanpassungen und Kontenübertragungen. Für technischen Support benötigen Sie einen Supportplan. Weitere Informationen finden Sie unter [Supportpläne vergleichen](https://azure.microsoft.com/support/plans).
 
@@ -78,7 +78,9 @@ Als Nächstes sammeln wir zusätzliche Details über das Problem. Wenn Sie in di
 
 1. Füllen Sie die **Problemdetails** aus, um uns weitere Informationen zu Ihrem Problem bereitzustellen. Teilen Sie uns wenn möglich mit, wann das Problem begonnen hat und durch welche Schritte es hervorgerufen wird. Sie können eine Datei hochladen, z. B. eine Protokolldatei oder eine Ausgabe der Diagnose. Weitere Informationen zu Dateiuploads finden Sie unter [Richtlinien für den Dateiupload](how-to-manage-azure-support-request.md#file-upload-guidelines).
 
-1. Wählen Sie im Abschnitt **Diagnoseinformationen freigeben** die Option **Ja** oder **Nein** aus. Wenn Sie **Ja** auswählen, kann der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) aus Ihren Azure-Ressourcen erfassen. Wenn Sie diese Informationen nicht freigeben möchten, wählen Sie **Nein** aus. In einigen Fällen stehen zusätzliche Optionen zur Auswahl, z. B. ob der Zugriff auf den Arbeitsspeicher eines virtuellen Computers zugelassen werden soll.
+1. Wählen Sie im Abschnitt **Diagnoseinformationen freigeben** die Option **Ja** oder **Nein** aus. Wenn Sie **Ja** auswählen, kann der Azure-Support [Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) aus Ihren Azure-Ressourcen erfassen. Wenn Sie diese Informationen nicht freigeben möchten, wählen Sie **Nein** aus. Weitere Informationen zu den Dateitypen, die gesammelt werden können, finden Sie im Abschnitt [Erweiterte Diagnoseinformationsprotokolle](#advanced-diagnostic-information-logs).
+
+  In einigen Fällen stehen zusätzliche Optionen zur Auswahl. Beispielsweise können Sie für bestimmte VM-Problemtypen auswählen, ob Sie den [Zugriff auf den Arbeitsspeicher einer VM zulassen](#memory-dump-collection) möchten.
 
 1. Wählen Sie im Abschnitt **Supportmethode** den Schweregrad der Auswirkungen aus. Der maximale Schweregrad richtet sich nach Ihrem [Supportplan](https://azure.microsoft.com/support/plans).
 
@@ -93,6 +95,29 @@ Klicken Sie auf **Weiter**, wenn Sie alle erforderlichen Informationen angegeben
 Bevor Sie Ihre Anfrage erstellen, überprüfen Sie alle Details, die Sie an den Support senden. Sie können auf **Zurück** klicken, um zu einer beliebigen Registerkarte zurückzukehren und Änderungen vorzunehmen. Wenn Sie damit zufrieden sind und die Supportanfrage vollständig ist, wählen Sie **Erstellen** aus.
 
 Ein Supporttechniker setzt sich mit Ihnen mithilfe der von Ihnen angeführten Methode in Verbindung. Informationen zur anfänglichen Reaktionszeit finden Sie unter [Supportumfang und Reaktionszeiten](https://azure.microsoft.com/support/plans/response/).
+
+### <a name="advanced-diagnostic-information-logs"></a>Erweiterte Diagnoseinformationsprotokolle
+
+Wenn Sie die Sammlung [erweiterter Diagnoseinformationen](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) zulassen, kann der Microsoft-Support Informationen sammeln, mit denen Sie Ihr Problem schneller lösen können. Diese unvollständige Liste enthält Beispiele für die am häufigsten als erweiterte Diagnoseinformationen für verschiedene Dienste oder Umgebungen gesammelten Dateien.
+
+- [Microsoft Azure-PaaS-VM-Protokolle](/troubleshoot/azure/virtual-machines/sdp352ef8720-e3ee-4a12-a37e-cc3b0870f359-windows-vm)
+- [Microsoft Azure-IaaS-VM-Protokolle](https://github.com/azure/azure-diskinspect-service/blob/master/docs/manifest_by_file.md)
+- [Microsoft Azure Service Fabric-Protokolle](/troubleshoot/azure/general/fabric-logs)
+- [StorSimple-Supportpakete und -Geräteprotokolle](https://support.microsoft.com/topic/storsimple-support-packages-and-device-logs-cb0a1c7e-6125-a5a7-f212-51439781f646)
+- [Protokolle von SQL Server auf Azure Virtual Machines](/troubleshoot/azure/general/sql-vm-logs)
+- [Azure Active Directory-Protokolle](/troubleshoot/azure/active-directory/support-data-collection-diagnostic-logs)
+- [Azure Stack Edge-Supportpaket und -Geräteprotokolle](/troubleshoot/azure/general/azure-stack-edge-support-package-device-logs)
+- [Azure Synapse Analytics-Protokolle](/troubleshoot/azure/general/synapse-analytics-apache-spark-pools-diagnostic-logs)
+
+### <a name="memory-dump-collection"></a>Speicherabbildsammlung
+
+Wenn Sie einen Supportfall für bestimmte VM-Problemtypen erstellen, werden Sie gefragt, ob Sie dem Support den Zugriff auf den Arbeitsspeicher Ihrer VM erlauben. Wenn Sie dies tun, wird möglicherweise ein Speicherabbild erfasst, um das Problem zu diagnostizieren.
+
+Ein vollständiges Speicherabbild ist die größte Speicherabbilddatei im Kernelmodus. Diese Datei enthält den gesamten physischen Speicher, der von Windows verwendet wird. Ein vollständiges Speicherabbild enthält standardmäßig keinen physischen Speicher, der von der Plattformfirmware verwendet wird.
+
+Das Speicherabbild wird zum Debuggen vom Serverknoten (Azure-Host) auf einen anderen Server innerhalb desselben Rechenzentrums kopiert. Die Daten der Kundschaft sind geschützt, da sie die sicheren Grenzen von Azure nicht verlassen.
+
+Zur Erstellung der Speicherabbilddatei wird ein Hyper-V-Speicherstatus der VM generiert. Dazu wird die VM für bis zu 10 Minuten angehalten und danach wieder fortgesetzt. Die VM wird im Rahmen dieses Prozesses nicht neu gestartet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

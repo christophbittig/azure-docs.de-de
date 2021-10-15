@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: d044ddbde293721e26ed491e237aa5b89075f72a
-ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
+ms.openlocfilehash: c0502b880d23e9f0a63564f11473f48e1c01b096
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122455836"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236553"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
 
@@ -74,7 +74,7 @@ So zeigen Sie die Metriken für Ihre Standard Load Balancer-Ressourcen an
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Programmgesteuertes Abrufen von mehrdimensionalen Metriken über APIs
 
-Eine API-Anleitung zum Abrufen von Definitionen und Werten für multidimensionale Metriken finden Sie unter [Exemplarische Vorgehensweise für die Azure Monitor-REST-API](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api). Diese Metriken können in ein Speicherkonto geschrieben werden, indem Sie eine [Diagnoseeinstellung](../azure-monitor/essentials/diagnostic-settings.md) für die Kategorie „Alle Metriken“ hinzufügen. 
+Eine API-Anleitung zum Abrufen von Definitionen und Werten für multidimensionale Metriken finden Sie unter [Exemplarische Vorgehensweise für die Azure Monitor-REST-API](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions). Diese Metriken können in ein Speicherkonto geschrieben werden, indem Sie eine [Diagnoseeinstellung](../azure-monitor/essentials/diagnostic-settings.md) für die Kategorie „Alle Metriken“ hinzufügen. 
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Allgemeine Diagnoseszenarien und empfohlene Ansichten
 
@@ -152,7 +152,7 @@ Wenn Ihre Metriken auf das Risiko eines [ausgehenden Flowfehlers](./load-balance
 So zeigen Sie die Verwendung und Zuordnung von SNAT-Ports an
 1. Legen Sie die Zeitaggregation des Diagramms auf eine Minute fest, um sicherzustellen, dass die gewünschten Daten angezeigt werden.
 1. Wählen Sie **Verwendete SNAT-Ports** und/oder **Zugeordnete SNAT-Ports** als Metriktyp und **Durchschnitt** als Aggregation aus.
-    * Standardmäßig stellen diese Metriken die durchschnittliche Anzahl der SNAT-Ports dar, die den einzelnen Back-End-VM- oder VMSS-Instanzen zugewiesen sind oder von diesen verwendet werden, entsprechend aller öffentlichen Front-End-IP-Adressen, die der Load Balancer-Instanz zugeordnet sind, aggregiert über TCP und UDP.
+    * Standardmäßig stellen diese Metriken die durchschnittliche Anzahl der SNAT-Ports dar, die den einzelnen Back-End-VMs oder VM-Skalierungsgruppen zugewiesen sind oder von diesen verwendet werden, entsprechend aller öffentlichen Front-End-IP-Adressen, die der Load Balancer-Instanz zugeordnet sind, aggregiert über TCP und UDP.
     * Verwenden Sie zum Anzeigen der gesamten SNAT-Ports, die von der Load Balancer-Instanz verwendet oder ihr zugeordnet wurden, die Metrikaggregation **Summe**.
 1. Filtern Sie nach einem bestimmten **Protokolltyp**, einer Reihe von **Back-End-IP-Adressen** und/oder **Front-End-IP-Adressen**.
 1. Um die Integrität pro Back-End- oder Front-End-Instanz zu überwachen, wenden Sie die Teilung an. 

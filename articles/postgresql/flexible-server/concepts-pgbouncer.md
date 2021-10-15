@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.openlocfilehash: 86543f160a9ffc725a9512069bac39e6e222d543
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/01/2021
+ms.openlocfilehash: d49deec6a782e0b36f110b7c2046b89e314e4011
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339961"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387333"
 ---
 # <a name="pgbouncer-in-azure-database-for-postgresql---flexible-server"></a>PgBouncer in Azure Database for PostgreSQL – Flexible Server
 
@@ -25,7 +25,7 @@ PgBouncer verwendet ein leichtgewichtiges Modell, das asynchrone E/A nutzt und n
 Wenn aktiviert, läuft PgBouncer auf Port 6432 auf Ihrem Datenbankserver. Sie können die Datenbankverbindungskonfiguration Ihrer Anwendung so ändern, dass derselbe Hostname verwendet wird, aber der Port auf 6432 geändert wird, um PgBouncer zu verwenden und von der verbesserten Skalierung der Leerlaufverbindungen zu profitieren.
 
 > [!Note]
-> PgBouncer wird auf den Computeebenen „Universell“ und „Arbeitsspeicheroptimiert“ sowohl in Netzwerken mit öffentlichem als auch mit privatem Zugriff unterstützt.
+> PgBouncer wird auf den Computeebenen „Universell“ und „Arbeitsspeicheroptimiert“ sowohl in Netzwerken mit öffentlichem als auch mit privatem Zugriff unterstützt. 
 
 ## <a name="enabling-and-configuring-pgbouncer"></a>Aktivieren und Konfigurieren von Protokollen
 
@@ -46,7 +46,7 @@ Sie können PgBouncer und Einstellungen mit den folgenden Parametern konfigurier
 Weitere Informationen zu den PgBouncer-Konfigurationen finden Sie unter [pgbouncer.ini](https://www.pgbouncer.org/config.html).
 
 > [!Note] 
-> Das Upgrade von PgBouncer wird von Azure verwaltet.
+> Das Upgraden von PgBouncer wird von Azure verwaltet.
 
 ## <a name="switching-your-application-to-use-pgbouncer"></a>Umschalten Ihrer Anwendung auf die Verwendung von PgBouncer
 
@@ -77,6 +77,7 @@ Die Verwendung eines anwendungsseitigen Pools zusammen mit PgBouncer auf dem Dat
 * Wenn Sie die Berechnungsschicht von "General Purpose" oder „arbeitsspeicheroptimiert“ auf „burstfähig“ ändern, verlieren Sie die PgBouncer-Funktion.
 * Immer wenn der Server während Skalierungsvorgängen, HA-Failover oder einem Neustart neu gestartet wird, wird auch der PgBouncer zusammen mit der virtuellen Maschine des Servers neu gestartet. Daher müssen die vorhandenen Verbindungen erneut hergestellt werden.
 * Aufgrund eines bekannten Problems zeigt das Portal nicht alle PgBouncer-Parameter an. Nachdem Sie PgBouncer aktiviert und den Parameter gespeichert haben, müssen Sie den Bildschirm „Parameter“ verlassen (z. B. durch Klicken auf „Übersicht“) und dann zur Seite „Parameter“ zurückkehren. 
+* Die [SCRAM-Authentifizierung](how-to-connect-scram.md) wird nicht von PgBouncer unterstützt.
   
 ## <a name="next-steps"></a>Nächste Schritte
 

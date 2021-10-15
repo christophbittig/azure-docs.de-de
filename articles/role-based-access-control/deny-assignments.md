@@ -15,12 +15,12 @@ ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38427b0686e830939025075536ac79c95ebde4cd
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82733770"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362969"
 ---
 # <a name="understand-azure-deny-assignments"></a>Verstehen von Azure-Ablehnungszuweisungen
 
@@ -54,14 +54,14 @@ Ablehnungszuweisungen folgen einem ähnlichen Muster wie Rollenzuweisungen, weis
  Eine Ablehnungszuweisungen hat folgende Eigenschaften:
 
 > [!div class="mx-tableFixed"]
-> | Eigenschaft | Erforderlich | type | BESCHREIBUNG |
+> | Eigenschaft | Erforderlich | Typ | BESCHREIBUNG |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | Ja | String | Der Anzeigename der Ablehnungszuweisung. Namen müssen für einen bestimmten Bereich eindeutig sein. |
 > | `Description` | Nein | String | Die Beschreibung der Ablehnungszuweisung. |
-> | `Permissions.Actions` | Mindestens ein Actions- oder ein DataActions-Element | String[] | Ein Array von Zeichenfolgen, welche die Verwaltungsvorgänge angeben, auf die die Ablehnungszuweisung den Zugriff blockiert. |
-> | `Permissions.NotActions` | Nein | String[] | Ein Array von Zeichenfolgen, welche die Verwaltungsvorgänge angeben, die von der Ablehnungszuweisung auszuschließen sind. |
-> | `Permissions.DataActions` | Mindestens ein Actions- oder ein DataActions-Element | String[] | Ein Array von Zeichenfolgen, welche die Datenvorgänge angeben, auf die die Ablehnungszuweisung den Zugriff blockiert. |
-> | `Permissions.NotDataActions` | Nein | String[] | Ein Array von Zeichenfolgen, welche die Datenvorgänge angeben, die von der Ablehnungszuweisung auszuschließen sind. |
+> | `Permissions.Actions` | Mindestens ein Actions- oder ein DataActions-Element | String[] | Ein Array von Strings, die die Aktionen der Kontrollebene angeben, auf die durch die Deny-Zuweisung der Zugriff gesperrt wird. |
+> | `Permissions.NotActions` | Nein | String[] | Ein Array von Strings, die angeben, welche Aktion der Kontrollebene von der Deny-Zuweisung ausgeschlossen werden soll. |
+> | `Permissions.DataActions` | Mindestens ein Actions- oder ein DataActions-Element | String[] | Ein Array von Strings, die angeben, auf welche Aktionen der Datenebene die Deny-Zuweisung den Zugriff blockiert. |
+> | `Permissions.NotDataActions` | Nein | String[] | Ein Array von Strings, die angeben, welche Datenebenen-Aktionen von der Deny-Zuweisung ausgeschlossen werden sollen. |
 > | `Scope` | Nein | String | Eine Zeichenfolge, die den Bereich festlegt, für den die Ablehnungszuweisung gilt. |
 > | `DoNotApplyToChildScopes` | Nein | Boolean | Gibt an, ob die Ablehnungszuweisung für untergeordnete Bereiche gilt. Der Standardwert ist „false“. |
 > | `Principals[i].Id` | Ja | String[] | Ein Array aus Azure AD-Prinzipalobjekt-IDs (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität), für die die Ablehnungszuweisung gilt. Die Festlegung einer leeren GUID `00000000-0000-0000-0000-000000000000` repräsentiert alle Prinzipale. |

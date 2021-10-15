@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
-ms.date: 08/07/2019
-ms.openlocfilehash: f73091552a78760024189b173897913edca724bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/29/2021
+ms.openlocfilehash: e5d5104e0f2215e81b5539296ff18572375a8a28
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593410"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362399"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Testempfehlungen von Leistungsbenchmarks für Azure NetApp Files
 
@@ -20,7 +20,9 @@ Dieser Artikel bietet Benchmarktestempfehlungen für Volumeleistung und -metrike
 
 ## <a name="overview"></a>Übersicht
 
-Um die Leistungsmerkmale eines Azure NetApp Files-Volumes zu verstehen, können Sie mit dem Open-Source-Tool [FIO](https://github.com/axboe/fio) eine Reihe von Benchmarktests ausführen, um eine Vielzahl von Workloads zu simulieren. FIO kann sowohl auf Linux- als auch auf Windows-basierten Betriebssystemen installiert werden.  Dieses hervorragende Tool bietet sowohl über IOPS als auch Durchsatz eines Volumes einen schnellen Überblick.
+Um die Leistungsmerkmale eines Azure NetApp Files-Volumes zu verstehen, können Sie mit dem Open-Source-Tool [FIO](https://github.com/axboe/fio) eine Reihe von Benchmarktests ausführen, um verschiedene Workloads zu simulieren. FIO kann sowohl auf Linux- als auch auf Windows-basierten Betriebssystemen installiert werden.  Dieses hervorragende Tool bietet sowohl über IOPS als auch Durchsatz eines Volumes einen schnellen Überblick.
+
+Es wird *nicht* empfohlen, Azure NetApp Files mit dem Hilfsprogramm `dd` als Baseline-Benchmarktool zu verwenden. Sie sollten eine tatsächliche Anwendungsworkload, Workloadsimulation, Benchmarktests und Analysetools (z. B. Oracle AWR mit Oracle oder das IBM-Äquivalent für DB2) verwenden, um eine optimale Infrastrukturleistung zu erzielen und analysieren zu können. Tools wie FIO, vdbench und iometer dienen zur Bestimmung der Speichergrenzwerte von VMs. Sie vergleichen die Parameter des Tests mit den tatsächlichen kombinierten Anwendungsworkloads, um hilfreiche Ergebnisse zu erzielen. Es ist jedoch immer am besten, mit der tatsächlichen Anwendung zu testen.  
 
 ### <a name="vm-instance-sizing"></a>Dimensionierung einer VM-Instanz
 

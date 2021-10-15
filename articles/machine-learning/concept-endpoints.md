@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Es wird beschrieben, wie Sie Azure Machine Learning-Endpunkte (Vorschau) verwenden, um Machine Learning-Bereitstellungen zu vereinfachen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 ms.author: seramasu
 author: rsethur
 ms.reviewer: laobri
 ms.custom: devplatv2
 ms.date: 06/17/2021
-ms.openlocfilehash: 8ce9241e11bd9aa259c8b7a1bf3114be677a01bd
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4a4cc34b3f3bb77e0c2405d3b0a29b40fa1cd616
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447650"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426999"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>Was sind Azure Machine Learning-Endpunkte (Vorschau)? 
 
@@ -39,7 +39,7 @@ Nach dem Trainieren eines Machine Learning-Modells müssen Sie das Modell so ber
 :::image type="content" source="media/concept-endpoints/endpoint-concept.png" alt-text="Diagramm: Endpunkt, bei dem Datenverkehr auf zwei Bereitstellungen aufgeteilt wird":::
 
 Ein **Endpunkt** ist ein HTTPS-Endpunkt, der von Clients aufgerufen werden kann, um die Rückschlussausgabe (Bewertung) eines trainierten Modells zu empfangen. Sie bietet: 
-- Auf „Schlüssel und Token“ basierende Authentifizierung 
+- Authentifizierung mit "Schlüssel & Token"-basierter Authentifizierung 
 - SSL-Terminierung 
 - Datenverkehrszuordnung zwischen Bereitstellungen 
 - Stabilen Bewertungs-URI (endpoint-name.region.inference.ml.azure.com)

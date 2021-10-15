@@ -1,19 +1,18 @@
 ---
 title: Datei einfügen
 description: include file
-services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: 928c4669ec7b1a04874f760cc14234cfa874e99a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 17a98a50f4c6e6d0723b62f1ea402c78f653bf4c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437890"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378078"
 ---
 | Resource                                                                                                           | Begrenzung                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -25,14 +24,14 @@ ms.locfileid: "123437890"
 | Maximale Pods pro Knoten: [Erweiterte Netzwerkunterstützung][advanced-networking] mit Azure Container Networking Interface        | Maximal: 250 <br /> Standardwert: 30                                                      |
 | Vorschau des OSM-AKS-Add-Ons (Open Service Mesh)                                                                          | Kubernetes-Clusterversion: 1.19+<sup>1</sup><br />OSM-Controller pro Cluster: 1<sup>1</sup><br />Pods pro OSM-Controller: 500<sup>1</sup><br />Von OSM verwaltete Kubernetes-Dienstkonten: 50<sup>1</sup> |
 
-<sup>1</sup>Das OSM-Add-On für AKS befindet sich in der Vorschauphase und wird noch weiter optimiert, bevor es allgemein verfügbar wird. Während der Vorschauphase wird empfohlen, die angezeigten Grenzwerte nicht zu überschreiten.<br />
+<sup>1</sup> Das OSM-Add-On für AKS befindet sich in der Vorschauphase und wird noch weiter optimiert, bevor es allgemein verfügbar wird. Während der Vorschauphase wird empfohlen, die angezeigten Grenzwerte nicht zu überschreiten.<br />
 
 <br />
 
-| Grenzwerte der Kubernetes-Steuerungsebene                                                                                                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Kostenpflichtiger Tarif                                                                                  | Automatisches Aufskalieren basierend auf der Last                                                                                                                                                                                                        |
-| Free-Tarif                       | Eingeschränkte Ressourcen mit einem [Grenzwert von ](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) 50 Mutierungs- und 100 schreibgeschützten Aufrufen von In-Flight-Anforderungen                                                                                                                                                                                                         |
+| Kubernetes-Steuerungsebene | Begrenzung |  
+| -------------- | :--------------------------------------------- |
+| Kostenpflichtiger Tarif      | Automatisches Aufskalieren basierend auf der Last     |
+| Free-Tarif      | Eingeschränkte Ressourcen mit einem [Grenzwert von ](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) 50 Mutierungs- und 100 schreibgeschützten Aufrufen von In-Flight-Anforderungen   |
 
 <!-- LINKS - Internal -->
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 'Erfahren Sie mehr über die Modellverwaltung mit Azure Machine Learning (MLOps). Stellen Sie Modelle bereit,verwalten und überwachen Sie diese und verfolgen Sie die Herkunft nach, um sie kontinuierlich zu verbessern. '
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 author: jpe316
 ms.author: jordane
 ms.date: 07/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: 0ef4715bb854905f8076ee116f672eee2d33a059
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: e58e820471bbde5d56996958b82c573c69d332b8
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349880"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427170"
 ---
 # <a name="mlops-model-management-deployment-lineage-and-monitoring-with-azure-machine-learning"></a>MLOps: Verwaltung, Bereitstellung, Nachverfolgung der Herkunft und Überwachung von Modellen mit Azure Machine Learning
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1e644d81c2a47ec07833010ae93f4dbb0c57474b
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 1581139a2bd941f32afbcd4f0ecbefc60c068d80
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077838"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353481"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Auflisten von Ablehnungszuweisungen über das Azure-Portal
 
@@ -92,14 +92,14 @@ Führen Sie die folgenden Schritte aus, um zusätzliche Details zu einer Ablehnu
 
     | Aktionstyp | BESCHREIBUNG |
     | --- | --- |
-    | **Aktionen**  | Verweigerte Verwaltungsvorgänge. |
-    | **NotActions** | Verwaltungsvorgänge, die von den verweigerten Verwaltungsvorgängen ausgeschlossen wurden. |
-    | **DataActions**  | Verweigerte Datenvorgänge. |
-    | **NotDataActions** | Datenvorgänge, die von den verweigerten Datenvorgängen ausgeschlossen wurden. |
+    | **Aktionen**  | Verweigerte Aktionen auf Steuerungsebene |
+    | **NotActions** | Aktionen auf Steuerungsebene, die von verweigerten Aktionen der Steuerungsebene ausgeschlossen sind |
+    | **DataActions**  | Verweigerte Aktionen auf Datenebene |
+    | **NotDataActions** | Aktionen auf Datenebene, die von verweigerten Aktionen der Datenebene ausgeschlossen sind |
 
     Für das im vorstehenden Screenshot gezeigte Beispiel gelten die folgenden effektiven Berechtigungen:
 
-    - Alle Speichervorgänge für die Datenebene bis auf Computevorgänge wurden verweigert.
+    - Alle Speicheraktionen für die Datenebene bis auf Computeaktionen wurden verweigert.
 
 1. Um die Eigenschaften für eine Ablehnungszuweisung anzuzeigen, klicken Sie auf **Eigenschaften**.
 

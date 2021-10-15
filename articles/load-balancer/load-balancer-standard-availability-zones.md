@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 87a7d10c9748a2e173d8f43dcca3611666277792
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 06b8e193f48a4e1d3956c8c40ee03dfd11a4a088
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128653703"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276017"
 ---
 # <a name="load-balancer-and-availability-zones"></a>Load Balancer und Verfügbarkeitszonen
 
@@ -59,7 +59,7 @@ Für ein internes Load Balancer-Front-End fügen Sie der internen Load Balancer-
 
 ## <a name="non-zonal"></a>Nicht zonal
 
-Load Balancer können auch in einer nicht zonalen Konfiguration mithilfe eines Front-Ends ohne Zone (öffentliche IP-Adresse oder öffentliches IP-Adressenpräfix) erstellt werden.  Diese Option bietet keine Garantie für Redundanz. Beachten Sie, dass alle öffentlichen IP-Adressen, die von der Basic-SKU auf die Standard-SKU [geupgradet](https://docs.microsoft.com/azure/virtual-network/public-ip-upgrade-portal) werden, den Typ „no-zone“ haben.
+Load Balancer können auch in einer nicht zonalen Konfiguration mithilfe eines Front-Ends ohne Zone (öffentliche IP-Adresse oder öffentliches IP-Adressenpräfix) erstellt werden.  Diese Option bietet keine Garantie für Redundanz. Beachten Sie, dass alle öffentlichen IP-Adressen, die [aufgerüstet](../virtual-network/public-ip-upgrade-portal.md) werden, vom Typ "no-zone" sind.
 
 ## <a name="design-considerations"></a><a name="design"></a> Überlegungen zum Entwurf
 
@@ -78,7 +78,7 @@ Mithilfe mehrerer Front-Ends können Sie einen Lastenausgleich für Datenverkehr
 
 ### <a name="transition-between-regional-zonal-models"></a>Übergang zwischen regionalen zonalen Modellen
 
-Wenn eine Region um [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) erweitert wird, bleiben alle vorhandenen Front-End-IP-Adressen nicht zonal. Um sicherzustellen, dass Ihre Architektur die neuen Zonen nutzen kann, wird empfohlen, neue Front-End-IP-Adressen zu erstellen und die entsprechenden Regeln und Konfigurationen zu replizieren, um diese neuen öffentlichen IP-Adressen zu nutzen.
+Wenn eine Region so erweitert wird, dass sie [Verfügbarkeitszonen hat, bleiben ](../availability-zones/az-overview.md) nicht-zonale Zonen. Um sicherzustellen, dass Ihre Architektur die neuen Zonen nutzen kann, wird empfohlen, neue Front-End-IP-Adressen zu erstellen und die entsprechenden Regeln und Konfigurationen zu replizieren, um diese neuen öffentlichen IP-Adressen zu nutzen.
 
 ### <a name="control-vs-data-plane-implications"></a>Auswirkungen auf Steuerungsebene und Datenebene
 

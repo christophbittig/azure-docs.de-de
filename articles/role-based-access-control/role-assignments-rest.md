@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 3baf44a4240b23b41ce2e80dc22dbda4c7d0672a
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 0c59db98f3f38a7e715c0dce77c397f0e2562343
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363715"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356664"
 ---
 # <a name="assign-azure-roles-using-the-rest-api"></a>Zuweisen von Azure-Rollen mithilfe der REST-API
 
@@ -28,7 +28,7 @@ ms.locfileid: "107363715"
 
 ## <a name="assign-an-azure-role"></a>Zuweisen einer Azure-Rolle
 
-Um eine Rolle zuzuweisen, verwenden Sie die REST-API [Assignments - Create](/rest/api/authorization/roleassignments/create) (Rollenzuweisungen – Erstellen), und geben Sie den Sicherheitsprinzipal, die Rollendefinition und den Bereich an. Zum Aufrufen dieser API benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/write`. Von den integrierten Rollen verfügen nur [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) über Zugriff auf diesen Vorgang.
+Um eine Rolle zuzuweisen, verwenden Sie die REST-API [Assignments - Create](/rest/api/authorization/roleassignments/create) (Rollenzuweisungen – Erstellen), und geben Sie den Sicherheitsprinzipal, die Rollendefinition und den Bereich an. Zum Aufrufen dieser API benötigen Sie Zugriff auf die Aktion `Microsoft.Authorization/roleAssignments/write`. Von den integrierten Rollen verfügen nur [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) über Zugriff auf diese Aktion.
 
 1. Verwenden Sie die REST API unter [Rollendefinitionen – Auflisten](/rest/api/authorization/roledefinitions/list) oder lesen Sie [Integrierte Rollen in Azure](built-in-roles.md), um den Bezeichner für die zuzuweisende Rollendefinition zu ermitteln.
 

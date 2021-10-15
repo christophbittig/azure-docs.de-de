@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/28/2021
+ms.date: 09/30/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 216fd3f132464b9866bc1f3b1b61b143de117019
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 5452f6bd6adc4693b74a20d174b6efe42346226d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129083465"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351841"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisierung des Tokencaches in MSAL.NET
 
@@ -27,15 +27,15 @@ Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) 
 ## <a name="quick-summary"></a>Kurze Zusammenfassung
 
 Empfehlung:
-- Verwenden Sie in Web-Apps und Web-APIs die [Tokencacheserialisierer von „Microsoft.Identity.Web“](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization). Diese stellen sogar ein verteiltes Datenbank- oder Cachesystem bereit, um Token zu speichern.
-  - Verwenden Sie Microsoft.Identity.Web in [Web-Apps](scenario-web-app-call-api-overview.md) und [Web-APIs](scenario-web-api-call-api-overview.md) von ASP.NET Core als allgemeinere API in ASP.NET Core.
-  - Verwenden Sie in ASP.NET Classic, .NET Core und .NET Framework MSAL.NET direkt mit [Tokencacheserialisierungs-Adaptern für MSAL](), die in Microsoft.Identity.Web bereitgestellt sind. 
+- Verwenden Sie in Web-Apps und Web-APIs die [Tokencacheserialisierer von „Microsoft.Identity.Web.TokenCache“](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization). Diese stellen sogar ein verteiltes Datenbank- oder Cachesystem bereit, um Token zu speichern.
+  - Verwenden Sie Microsoft.Identity.Web in [Web-Apps](scenario-web-app-call-api-overview.md) und [Web-APIs](scenario-web-api-call-api-overview.md) von ASP.NET Core [Microsoft.Identity.Web](microsoft-identity-web.md) als allgemeinere API in ASP.NET Core.
+  - Verwenden Sie in ASP.NET Classic, .NET Core und .NET Framework MSAL.NET direkt mit [Tokencacheserialisierungs-Adaptern für MSAL](msal-net-token-cache-serialization.md?tabs=aspnet), die im NuGet-Paket Microsoft.Identity.Web.TokenCache bereitgestellt sind. 
 - Verwenden Sie in Desktopanwendungen (die ein Dateisystem zum Speichern von Token verwenden können) [Microsoft.Identity.Client.Extensions.Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/wiki/Cross-platform-Token-Cache) mit MSAL.Net.
 - In mobilen Anwendungen (Xamarin.iOS, Xamarin.Android, Universelle Windows-Plattform) ist keine Aktion Ihrerseits erforderlich, da MSAL.NET den Cache für Sie verarbeitet: Diese Plattformen verfügen über einen sicheren Speicher.
 
 ## <a name="aspnet-core-web-apps-and-web-apis"></a>[ASP.NET Core-Web-Apps und -Web-APIs](#tab/aspnetcore)
 
-Die Bibliothek [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web) stellt das NuGet-Paket [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) bereit, das die Tokencacheserialisierung enthält:
+Die Bibliothek [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web) stellt das NuGet-Paket [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache) bereit, das die Tokencacheserialisierung enthält:
 
 | Erweiterungsmethode | BESCHREIBUNG  |
 | ---------------- | ------------ |
@@ -119,11 +119,11 @@ Die Nutzung wird im [Tutorial zum Erstellen einer Web-App mit ASP.NET Core](/asp
 
 ## <a name="non-aspnet-core-web-apps-and-web-apis"></a>[Nicht-ASP.NET Core-Web-Apps und -Web-APIs](#tab/aspnet)
 
-Auch wenn Sie MSAL.NET verwenden, können Sie von den Tokencacheserialisierern von Microsoft.Identity.Web profitieren. 
+Auch wenn Sie MSAL.NET verwenden, können Sie von den Tokencacheserialisierern von Microsoft.Identity.Web.TokenCache profitieren. 
 
 ### <a name="referencing-the-nuget-package"></a>Verweisen auf das NuGet-Paket
 
-Fügen Sie das NuGet-Paket [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) zusätzlich zu MSAL.NET zu Ihrem Projekt hinzu.
+Fügen Sie das NuGet-Paket [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache) zusätzlich zu MSAL.NET zu Ihrem Projekt hinzu.
 
 ### <a name="configuring-the-token-cache"></a>Konfigurieren des Tokencaches
 
@@ -148,7 +148,7 @@ public static async Task<AuthenticationResult> GetTokenAsync(string clientId, X5
        .Build();
 
      // Add a static in-memory token cache. Other options available: see below
-     app.AddInMemoryTokenCache();  // Microsoft.Identity.Web 1.16+
+     app.AddInMemoryTokenCache();  // Microsoft.Identity.Web.TokenCache 1.17+
    
      // Make the call to get a token for client_credentials flow (app to app scenario) 
      return await app.AcquireTokenForClient(scopes).ExecuteAsync();
@@ -282,18 +282,6 @@ var app = ConfidentialClientApplicationBuilder
     .WithCacheSynchronization(false)
     .Build();
 ```
-
-### <a name="monitor-cache-hit-ratios-and-cache-performance"></a>Überwachen von Cachetrefferverhältnissen und Cacheleistung
-
-MSAL macht wichtige Metriken als Teil des [AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata)-Objekts verfügbar: 
-
-| Metrik       | Bedeutung     | Wann soll ein Alarm ausgelöst werden?    |
-| :-------------: | :----------: | :-----------: |
-|  `DurationTotalInMs` | Gesamtzeit in MSAL, einschließlich Netzwerkaufrufen und Cache   | Alarm bei hoher Gesamtlatenz (> 1 s). Der Wert hängt von der Tokenquelle ab. Aus dem Cache: ein Cachezugriff. Aus AAD: zwei Cachezugriffe + ein HTTP-Aufruf. Der allererste Aufruf (pro Prozess) dauert aufgrund eines zusätzlichen HTTP-Aufrufs länger. |
-|  `DurationInCacheInMs` | Zeitbedarf für Lade- oder Speichervorgang des Tokencaches, der vom App-Entwickler angepasst wird (z. B. Speichern in Redis).| Alarm bei Spitzen. |
-|  `DurationInHttpInMs`| Zeitbedarf für HTTP-Aufrufe an AAD.  | Alarm bei Spitzen.|
-|  `TokenSource` | Gibt die Quelle der Tokens an. Token werden viel schneller aus dem Cache abgerufen (z. B. ~100 ms im Vergleich zu ~700 ms). Kann verwendet werden, um das Cachetrefferverhältnis zu überwachen und zu alarmieren. | Verwendung mit `DurationTotalInMs` |
-
 ### <a name="samples"></a>Beispiele
 
 - Die Verwendung der Tokencacheserialisierer in .NET Framework- und .NET Core-Anwendungen wird in diesem Beispiel veranschaulicht: [ConfidentialClientTokenCache](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/tree/master/ConfidentialClientTokenCache). 
@@ -340,6 +328,23 @@ var cacheHelper = await MsalCacheHelper.CreateAsync(storageProperties );
 cacheHelper.RegisterCache(pca.UserTokenCache);
          
 ```
+
+
+##### <a name="plain-text-fallback-mode"></a>Nur-Text-Fallbackmodus
+
+Mit dem plattformübergreifenden Tokencache können Sie unverschlüsselte Token in Klartext speichern. Dies ist nur für die Verwendung in Entwicklungsumgebungen zu Debugzwecken vorgesehen. Sie können den Nur-Text-Fallbackmodus mit dem folgenden Codemuster verwenden.
+
+```csharp
+storageProperties =
+    new StorageCreationPropertiesBuilder(
+        Config.CacheFileName + ".plaintext",
+        Config.CacheDir)
+    .WithUnprotectedFile()
+    .Build();
+
+var cacheHelper = await MsalCacheHelper.CreateAsync(storageProperties).ConfigureAwait(false);
+```
+
 
 ## <a name="mobile-apps"></a>[Mobile Apps](#tab/mobile)
 
@@ -594,20 +599,17 @@ namespace CommonCacheMsalV3
 
 ---
 
-## <a name="plain-text-fallback-mode"></a>Nur-Text-Fallbackmodus
+## <a name="monitor-cache-hit-ratios-and-cache-performance"></a>Überwachen von Cachetrefferverhältnissen und Cacheleistung
 
-MIT MSAL können Sie unverschlüsselte Token in Klartext speichern. Dies ist nur für die Verwendung in Entwicklungsumgebungen zu Debugzwecken vorgesehen. Sie können den Nur-Text-Fallbackmodus mit dem folgenden Codemuster verwenden.
+MSAL macht wichtige Metriken als Teil des [AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata)-Objekts verfügbar. Sie können diese Metriken protokollieren, um die Integrität Ihrer Anwendung zu bewerten.
 
-```csharp
-storageProperties =
-    new StorageCreationPropertiesBuilder(
-        Config.CacheFileName + ".plaintext",
-        Config.CacheDir)
-    .WithUnprotectedFile()
-    .Build();
+| Metrik       | Bedeutung     | Wann soll ein Alarm ausgelöst werden?    |
+| :-------------: | :----------: | :-----------: |
+|  `DurationTotalInMs` | Gesamtzeit in MSAL, einschließlich Netzwerkaufrufen und Cache   | Alarm bei hoher Gesamtlatenz (> 1 s). Der Wert hängt von der Tokenquelle ab. Aus dem Cache: ein Cachezugriff. Aus AAD: zwei Cachezugriffe + ein HTTP-Aufruf. Der allererste Aufruf (pro Prozess) dauert aufgrund eines zusätzlichen HTTP-Aufrufs länger. |
+|  `DurationInCacheInMs` | Zeitbedarf für Lade- oder Speichervorgang des Tokencaches, der vom App-Entwickler angepasst wird (z. B. Speichern in Redis).| Alarm bei Spitzen. |
+|  `DurationInHttpInMs`| Zeitbedarf für HTTP-Aufrufe an AAD.  | Alarm bei Spitzen.|
+|  `TokenSource` | Gibt die Quelle der Tokens an. Token werden viel schneller aus dem Cache abgerufen (z. B. ~100 ms im Vergleich zu ~700 ms). Kann verwendet werden, um das Cachetrefferverhältnis zu überwachen und zu alarmieren. | Verwendung mit `DurationTotalInMs` |
 
-var cacheHelper = await MsalCacheHelper.CreateAsync(storageProperties).ConfigureAwait(false);
-```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

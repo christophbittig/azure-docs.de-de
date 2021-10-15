@@ -13,12 +13,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 24d62e282258a92826b6e5226ab342d890099c18
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1b83acb31d903a08302b70c53a22b65dfbb4ca71
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124773624"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235704"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect: Archiv des Versionsfreigabeverlaufs
 
@@ -48,7 +48,7 @@ Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelm�
 - Es wurde ein Upgrade auf ADAL 3.19.8 durchgeführt, um eine WS-Trust-Lösung für Ping-Signale auszuwählen und Unterstützung für neue Azure-Instanzen hinzuzufügen. 
 - Die Gruppensynchronisierungsregeln wurden geändert, um „SamAccountName“, „DomainNetbios“ und „DomainFQDN“ an die Cloud zu übergeben – erforderlich für Ansprüche 
 - Die Standardbehandlung von Synchronisierungsregeln wurde geändert. [Hier](how-to-connect-fix-default-rules.md) erfahren Sie mehr.
-- Ein neuer Agent wurde hinzugefügt, der als Windows-Dienst ausgeführt wird. Dieser Agent namens „Admin-Agent“ ermöglicht eine umfassendere Remotediagnose des Azure AD Connect-Servers, um Microsoft-Techniker bei der Problembehandlung zu unterstützen, wenn Sie eine Supportanfrage öffnen. Dieser Agent ist standardmäßig nicht installiert und aktiviert.  Weitere Informationen zum Installieren und Aktivieren des Agents finden Sie unter [Was ist der Azure AD Connect-Administrator-Agent?](whatis-aadc-admin-agent.md) 
+- Es wurde ein neuer Agent hinzugefügt, der als Windows-Dienst läuft. Dieser Agent namens „Admin-Agent“ ermöglicht eine umfassendere Remotediagnose des Azure AD Connect-Servers, um Microsoft-Techniker bei der Problembehandlung zu unterstützen, wenn Sie eine Supportanfrage öffnen. Dieser Agent ist standardmäßig nicht installiert und aktiviert.  Weitere Informationen zum Installieren und Aktivieren des Agents finden Sie unter [Was ist der Azure AD Connect-Administrator-Agent?](whatis-aadc-admin-agent.md) 
 - Die Software-Lizenzbedingungen wurden aktualisiert. 
 - Die automatische Upgrade-Unterstützung für Bereitstellungen, die AD FS als Anmeldetyp verwenden, wurde hinzugefügt.  Dadurch entfällt auch die Notwendigkeit, im Rahmen des Upgradeprozesses die Azure AD-Vertrauensstellung der Active Directory Federation Services (AD FS) zu aktualisieren. 
 - Eine Verwaltungsaufgabe für Azure AD-Vertrauensstellung wurde hinzugefügt, die zwei Optionen bereitstellt: Vertrauensstellung analysieren/aktualisieren und Vertrauensstellung zurücksetzen. 

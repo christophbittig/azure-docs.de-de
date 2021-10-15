@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: e08823861e0b1a197313c8311cc13ac972d61a25
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 052e82f0bb1aa7c5b0b3dad7808bd46839fb95ad
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122603708"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387789"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurieren und Übermitteln von Trainingsausführungen
 
@@ -61,7 +61,7 @@ Alternative:
 
 ## <a name="create-an-experiment"></a>Erstellen eines Experiments
 
-Erstellen Sie ein Experiment in Ihrem Arbeitsbereich.
+Erstellen Sie ein [Experiment](concept-azure-machine-learning-architecture.md#experiments) in Ihrem Arbeitsbereich. Ein Experiment ist ein einfacher Container, mit dem Sie Ausführungsübermittlungen organisieren und Code nachverfolgen können.
 
 ```python
 from azureml.core import Experiment

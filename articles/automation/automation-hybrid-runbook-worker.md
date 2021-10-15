@@ -3,19 +3,40 @@ title: 'Azure Automation: Übersicht über Hybrid Runbook Worker'
 description: Dieser Artikel enthält eine Übersicht über Hybrid Runbook Worker, mit denen Sie Runbooks auf Computern in Ihrem lokalen Rechenzentrum oder beim Cloudanbieter ausführen können.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/22/2021
+ms.date: 09/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9600a4c38fa2a6f4956e9b1bceb730580c6ce382
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: bcc115e2eb8e380217246b2a401cea93f922aa81
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653077"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272149"
 ---
-# <a name="hybrid-runbook-worker-overview"></a>Übersicht über Hybrid Runbook Worker
+# <a name="automation-hybrid-runbook-worker-overview"></a>Automation: Übersicht über Hybrid Runbook Worker
 
 Runbooks in Azure Automation haben möglicherweise keinen Zugriff auf Ressourcen in anderen Clouds oder in Ihrer lokalen Umgebung, da sie auf der Azure-Cloudplattform ausgeführt werden. Sie können Runbooks mit dem Azure Automation-Feature „Hybrid Runbook Worker“ direkt auf dem Computer, der die Rolle hostet, und für Ressourcen in der Umgebung ausführen, um diese lokalen Ressourcen zu verwalten. Runbooks werden in Azure Automation gespeichert und verwaltet und an einzelne oder mehrere zugewiesene Computer übermittelt.
+
+Azure Automation bietet eine native Integration der Hybrid Runbook Worker-Rolle über das Erweiterungsframework für Azure-VMs. Der Azure-VM-Agent ist für die Verwaltung der Erweiterung auf Azure-VMs mit Windows und Linux sowie auf Nicht-Azure-Computern über den Connected Machine-Agent mit Arc-fähigen Servern verantwortlich. Es gibt nun zwei Hybrid Runbook Worker-Installationsplattformen, die von Azure Automation unterstützt werden.
+
+| Plattform | BESCHREIBUNG |
+|---|---|
+|Agent-basiert (V1)  |Die Installation erfolgt, nachdem der [Log Analytics-Agent](../azure-monitor/agents/log-analytics-agent.md) Meldungen an einen [Log Analytics-Arbeitsbereich](../azure-monitor/logs/design-logs-deployment.md) von Azure Monitor gesendet hat.|
+|Erweiterungsbasiert (V2)  |Die Installation erfolgt mithilfe der [Hybrid Runbook Worker-VM-Erweiterung](./extension-based-hybrid-runbook-worker-install.md). Sie ist nicht davon abhängig, ob der Log Analytics-Agent Berichte an einen Log Analytics-Arbeitsbereich in Azure Monitor übermittelt. Dies ist die empfohlene Plattform.|
+
+:::image type="content" source="./media/automation-hybrid-runbook-worker/hybrid-worker-group-platform.png" alt-text="Hybrid Worker-Gruppe mit Plattformfeld":::
+
+Im Folgenden finden Sie eine Liste der Vorteile der erweiterungsbasierten Hybrid Runbook Worker-Rolle: 
+
+| Vorteil | BESCHREIBUNG |
+|---|---|
+|Nahtloses Onboarding| Es ist keine Log Analytics-Lösung für das Onboarding von Hybrid Runbook Workern erforderlich. Dies ist ein mehrstufiger Prozess, der zeitaufwendig und fehleranfällig ist. |
+|Einheitliche Onboardingumgebung| Die Installation wird für Azure- und Nicht-Azure-Computer mit den gleichen unterstützten Methoden verwaltet. |
+|Einfache Verwaltbarkeit| Die ARM-Identität ist für Hybrid Worker nativ integriert und bietet die Flexibilität für Governance im großen Stil über Richtlinien und Vorlagen. |
+|Azure AD-basierte Authentifizierung| Es werden die vom VM-System zugewiesenen Identitäten verwendet, die von Azure AD bereitgestellt werden. Damit wird die Steuerung und Verwaltung von Identitäten und Ressourcenanmeldeinformationen zentralisiert.|
+
+Bei Hybrid Runbook Worker-Vorgängen nach der Installation ist der Prozess der Ausführung von Runbooks auf Hybrid Runbook Workern identisch. Der erweiterungsbasierte Ansatz dient dazu, die Installation und Verwaltung der Hybrid Runbook Worker-Rolle zu vereinfachen und die Komplexität gegenüber der Arbeit mit der Agent-basierten Version zu verringern. Die neue erweiterungsbasierte Installation wirkt sich nicht auf die Installation oder Verwaltung einer Agent-basierten Hybrid Runbook Worker-Rolle aus. Beide Typen können auf demselben Computer gleichzeitig vorhanden sein.
+Erweiterungsbasierte Hybrid Runbook Worker unterstützen nur den benutzerbasierten Hybrid Runbook Worker-Typ und enthalten nicht den System-Hybrid Runbook Worker, der für die Updateverwaltung erforderlich ist. PowerShell wird für die Installation von erweiterungsbasierten Hybrid Runbook Workern derzeit nicht unterstützt.
 
 ## <a name="runbook-worker-types"></a>Runbook Worker-Typen
 
@@ -23,12 +44,12 @@ Es gibt zwei Arten von Runbook Workern – System und Benutzer. In der folgenden
 
 |type | Beschreibung |
 |-----|-------------|
-|**System** |Unterstützt einen Satz ausgeblendeter Runbooks, die von der Updateverwaltungsfunktion verwendet werden, die für die Installation von benutzerdefinierten Updates auf Windows- und Linux-Computern vorgesehen sind.<br> Diese Art von Hybrid Runbook Worker ist kein Mitglied einer Hybrid Runbook Worker-Gruppe und führt daher keine Runbooks aus, die auf eine Runbook Worker-Gruppe abzielen. |
+|**System** |Unterstützt einen Satz ausgeblendeter Runbooks, die von der Updateverwaltungsfunktion verwendet werden, die für die Installation von benutzerdefinierten Updates auf Windows- und Linux-Computern vorgesehen sind.<br> Dieser Typ von Hybrid Runbook Workern ist kein Mitglied einer Hybrid Runbook Worker-Gruppe und führt daher keine Runbooks aus, die auf eine Runbook Worker-Gruppe abzielen. |
 |**Benutzer** |Unterstützt benutzerdefinierte Runbooks, die direkt auf dem Windows- und Linux-Computer ausgeführt werden sollen, die Mitglieder einer oder mehrerer Runbook Worker-Gruppen sind. |
 
-Ein Hybrid Runbook Worker kann unter dem Betriebssystem Windows oder Linux ausgeführt werden, und diese Rolle basiert darauf, dass der [Log Analytics-Agent](../azure-monitor/agents/log-analytics-agent.md) an einen [Log Analytics-Arbeitsbereich](../azure-monitor/logs/design-logs-deployment.md) von Azure Monitor Bericht erstattet. Der Arbeitsbereich kann nicht nur den Computer für das unterstützte Betriebssystem überwachen, sondern auch die Komponenten herunterladen, die für die Installation des Hybrid Runbook Workers benötigt werden.
+Agent-basierte (V1) Hybrid Runbook Worker erfordern den [Log Analytics-Agent](../azure-monitor/agents/log-analytics-agent.md), der Meldungen an einen [Log Analytics-Arbeitsbereich](../azure-monitor/logs/design-logs-deployment.md) in Azure Monitor sendet. Der Arbeitsbereich kann nicht nur den Computer für das unterstützte Betriebssystem überwachen, sondern auch die Komponenten herunterladen, die für die Installation des Hybrid Runbook Workers benötigt werden.
 
-Wenn die Azure Automation-[Updateverwaltung](./update-management/overview.md) aktiviert ist, werden alle mit dem Log Analytics-Arbeitsbereich verbundenen Computer automatisch als System-Hybrid Runbook Worker konfiguriert. Informationen zur Konfiguration als Windows Hybrid Runbook Worker-Benutzer finden Sie unter [Bereitstellen eines Windows Hybrid Runbook Worker](automation-windows-hrw-install.md) und für Linux unter [Bereitstellen eines Linux Hybrid Runbook Worker](automation-linux-hrw-install.md).
+Wenn die Azure Automation-[Updateverwaltung](./update-management/overview.md) aktiviert ist, werden alle mit dem Log Analytics-Arbeitsbereich verbundenen Computer automatisch als System-Hybrid Runbook Worker konfiguriert. Informationen zur Konfiguration als benutzerbasierter Windows-Hybrid Runbook Worker finden Sie unter [Bereitstellen eines Agent-basierten Windows-Hybrid Runbook Workers](automation-windows-hrw-install.md) und für Linux unter [Bereitstellen eines Agent-basierten Linux-Hybrid Runbook Workers](./automation-linux-hrw-install.md).
 
 ## <a name="runbook-worker-limits"></a>Grenzwerte für Runbook Worker
 
@@ -43,7 +64,7 @@ Die folgende Tabelle zeigt die maximale Anzahl hybrider Runbook Worker für Syst
 
 ![Übersicht über Hybrid Runbook Worker](media/automation-hybrid-runbook-worker/automation.png)
 
-Jeder Benutzer-Hybrid Runbook Worker ist Mitglied einer Hybrid Runbook Worker-Gruppe, die Sie beim Installieren des Workers angeben. Eine Gruppe kann einen einzelnen Worker umfassen, aber für Hochverfügbarkeit können Sie mehrere Worker in eine Gruppe aufnehmen. Jeder Computer kann eine Hybrid Runbook Worker-Berichterstellung an ein Automation-Konto hosten. Sie können den Hybrid Worker nicht bei mehreren Automation-Konten registrieren. Ein Hybrid Worker kann nur auf Aufträge eines einzelnen Automation-Kontos lauschen. Computer, auf denen der von der Updateverwaltung verwaltete System-Hybrid Runbook Worker gehostet wird, können einer Hybrid Runbook Worker-Gruppe hinzugefügt werden. Sie müssen aber für die Updateverwaltung und die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Automation-Konto verwenden.
+Jeder Benutzer-Hybrid Runbook Worker ist Mitglied einer Hybrid Runbook Worker-Gruppe, die Sie beim Installieren des Workers angeben. Eine Gruppe kann einen einzelnen Worker umfassen, aber für Hochverfügbarkeit können Sie mehrere Worker in eine Gruppe aufnehmen. Jeder Computer kann eine Hybrid Runbook Worker-Berichterstellung für ein Automation-Konto hosten. Sie können den Hybrid Worker nicht bei mehreren Automation-Konten registrieren. Ein Hybrid Worker kann nur auf Aufträge eines einzelnen Automation-Kontos lauschen. Computer, auf denen der von der Updateverwaltung verwaltete System-Hybrid Runbook Worker gehostet wird, können einer Hybrid Runbook Worker-Gruppe hinzugefügt werden. Sie müssen aber für die Updateverwaltung und die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Automation-Konto verwenden.
 
 Wenn Sie ein Runbook auf einen Hybrid Runbook Worker starten, geben Sie die Gruppe an, in der das Runbook ausgeführt werden soll. Jeder Worker in der Gruppe ruft Azure Automation ab, um festzustellen, ob Aufträge verfügbar sind. Wenn ein Auftrag verfügbar ist, übernimmt ihn der erste verfügbare Worker. Die Verarbeitungszeit der Auftragswarteschlange hängt vom Hybrid Worker-Hardwareprofil und der Auslastung ab. Sie können keinen bestimmten Worker angeben. Ein Hybrid Worker arbeitet an einem Abrufmechanismus (alle 30 Sekunden) und folgt der Reihenfolge „wer zuerst kommt, wird zuerst bedient“ (first-come, first-serve). Je nachdem, wann ein Auftrag gepusht wurde, wird der Auftrag von dem Hybrid Worker übernommen, der den Automation-Dienst anpingt. Ein einzelner Hybrid Worker kann generell vier Aufträge pro Ping abrufen (d. h. alle 30 Sekunden). Wenn Ihre Rate von Pushaufträgen höher als vier in 30 Sekunden ist, besteht eine hohe Wahrscheinlichkeit, dass ein anderer Hybrid Worker in der Hybrid Runbook Worker-Gruppe den Auftrag übernommen hat.
 
@@ -57,10 +78,9 @@ Der Vorgang zum Installieren eines Benutzer-Hybrid Runbook Workers ist vom Betri
 
 |Betriebssystem  |Bereitstellungstypen  |
 |---------|---------|
-|Windows     | [Automatisiert](automation-windows-hrw-install.md#automated-deployment)<br>[Manuell](automation-windows-hrw-install.md#manual-deployment)        |
-|Linux     | [Manuell](automation-linux-hrw-install.md#install-a-linux-hybrid-runbook-worker)        |
-
-Die empfohlene Installationsmethode für einen Windows-Computer besteht darin, mithilfe eines Azure Automation-Runbooks den Konfigurationsprozess vollständig zu automatisieren. Falls dies nicht möglich ist, können Sie die Rolle Schritt für Schritt manuell installieren und konfigurieren. Bei Linux-Computern führen Sie zur Installation des Agents auf dem Computer ein Python-Skript aus.
+|Windows | [Automatisiert](automation-windows-hrw-install.md#automated-deployment)<br>[Manuell](automation-windows-hrw-install.md#manual-deployment) |
+|Linux   | [Manuell](automation-linux-hrw-install.md#install-a-linux-hybrid-runbook-worker) |
+|Sowohl als auch  | Informationen zu benutzerbasierten Hybrid Runbook Workern finden Sie unter [Bereitstellen von erweiterungsbasierten Windows- oder Linux-Hybrid Runbook Workern in Automation](./extension-based-hybrid-runbook-worker-install.md). Dies ist die empfohlene Methode. |
 
 ## <a name="network-planning"></a><a name="network-planning"></a>Netzwerkplanung
 

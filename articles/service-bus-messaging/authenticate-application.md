@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Informationen zur Authentifizierung einer A
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 8a28b13a8cde8c908d01d2f0eb2160ba7decb6f6
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: cf9e65468567764e5fe7c91455f010dd6d46831f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112122622"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359943"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Authentifizieren und Autorisieren einer Anwendung mit Azure Active Directory für den Zugriff auf Azure Service Bus-Entitäten
 Azure Service Bus unterstützt die Verwendung von Azure Active Directory (Azure AD), um Anforderungen an Service Bus-Entitäten (Warteschlangen, Themen, Abonnements oder Filter) zu autorisieren. Mit Azure AD können Sie die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer, eine Gruppe oder einen Anwendungsdienstprinzipal handeln kann. Weitere Informationen zu Rollen und Rollenzuweisungen finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../role-based-access-control/overview.md).
@@ -52,7 +52,7 @@ In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff 
 > [!NOTE]
 > Denken Sie daran, dass die Weitergabe von Azure-Rollenzuweisungen bis zu fünf Minuten dauern kann. 
 
-Weitere Informationen dazu, wie integrierte Rollen definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../role-based-access-control/role-definitions.md#management-and-data-operations). Informationen zum Erstellen von benutzerdefinierten Azure-Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md).
+Weitere Informationen dazu, wie integrierte Rollen definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../role-based-access-control/role-definitions.md#control-and-data-actions). Informationen zum Erstellen von benutzerdefinierten Azure-Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md).
 
 
 ## <a name="assign-azure-roles-using-the-azure-portal"></a>Zuweisen von Azure-Rollen über das Azure-Portal  
@@ -109,20 +109,14 @@ Nachdem Sie Ihre Anwendung registriert und ihr Berechtigungen zum Senden/Empfang
 
 Eine Liste der Szenarien, für die das Abrufen von Token unterstützt wird, finden Sie im GitHub-Repository [Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) im Bereich [Scenarios](https://aka.ms/msal-net-scenarios).
 
-<!-- TAB -- # [.NET](#tab/dotnet) -  -->
-
-Wenn Sie die neueste Bibliothek vom Typ [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) verwenden, können Sie [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) mit [ClientSecretCredential](/dotnet/api/azure.identity.clientsecretcredential) authentifizieren (definiert in der Bibliothek [Azure.Identity](https://www.nuget.org/packages/Azure.Identity)).
+Mithilfe der neuesten [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus)-Bibliothek können Sie [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) mit [ClientSecretCredential](/dotnet/api/azure.identity.clientsecretcredential) authentifizieren (in der [Azure.Identity](https://www.nuget.org/packages/Azure.Identity)-Bibliothek definiert).
 
 ```cs
 TokenCredential credential = new ClientSecretCredential("<tenant_id>", "<client_id>", "<client_secret>");
 var client = new ServiceBusClient("<fully_qualified_namespace>", credential);
 ```
 
-Wenn Sie die älteren .NET-Pakete verwenden, sehen Sie sich die folgenden Beispiele an:
-- [RoleBasedAccessControl in Microsoft.Azure.ServiceBus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/RoleBasedAccessControl)
-- [RoleBasedAccessControl in WindowsAzure.ServiceBus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)
-
-<!-- CLOSE TAB --- -->
+Wenn Sie die älteren .NET-Pakete verwenden, sehen Sie sich die Beispiele für RoleBasedAccessControl im [Repository mit Beispielen für „azure-service-bus“](https://github.com/Azure/azure-service-bus) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zur Azure RBAC finden Sie im Artikel [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md).

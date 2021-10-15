@@ -5,23 +5,45 @@ description: Neue und aktualisierte Dokumentation für die Microsoft Identity Pl
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 09/01/2021
+ms.date: 10/01/2021
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1e639cfe0b3c86e2a2f422250979a292020e7fbf
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 9383c05ed797e4a00470240ce9a25541988d9b6d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433123"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349559"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Dokumentation zur Microsoft Identity Platform: Neues
 
 Willkommen bei den Neuerungen in der Dokumentation zu Microsoft Identity Platform. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden.
+
+## <a name="september-2021"></a>September 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Web-APIs aufrufende Desktop-App – Interaktiver Aufruf eines Tokens](scenario-desktop-acquire-token-interactive.md)
+- [Desktop-Anwendung, die Web-APIs aufruft: Erwerben Sie ein Token mit dem Gerätecodefluss](scenario-desktop-acquire-token-device-code-flow.md)
+- [Aufrufen von Web-APIs mit einer Desktop-App: Abrufen eines Tokens mithilfe der integrierten Windows-Authentifizierung](scenario-desktop-acquire-token-integrated-windows-authentication.md)
+- [Desktop-Anwendung, die Web-APIs aufruft: Erwerben Sie ein Token mit Benutzername und Passwort](scenario-desktop-acquire-token-username-password.md)
+- [Web-APIs aufrufende Desktop-App – Abrufen eines Tokens mithilfe von WAM](scenario-desktop-acquire-token-wam.md)
+- [Implementierung einer rollenbasierten Zugriffskontrolle in Anwendungen](howto-implement-rbac-for-apps.md)
+- [Migrieren öffentlicher Clientanwendungen von ADAL.NET zu MSAL.NET](msal-net-migration-public-client.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Erhöhen der Sicherheit nach dem Prinzip der geringsten Rechte](secure-least-privileged-access.md)
+- [Migrieren vertraulicher Clientanwendungen von ADAL.NET zu MSAL.NET](msal-net-migration-confidential-client.md)
+- [Videos zu Microsoft Identity Platform](identity-videos.md)
+- [Nationale Clouds](authentication-national-cloud.md)
+- [Modus für gemeinsam genutzte Geräte für Android-Geräte](msal-android-shared-devices.md)
+- [Serialisierung des Tokencaches in MSAL.NET](msal-net-token-cache-serialization.md)
+- [Validierungsunterschiede nach unterstützten Kontotypen (signInAudience)](supported-accounts-validation.md)
 
 ## <a name="august-2021"></a>August 2021
 
@@ -54,22 +76,3 @@ Willkommen bei den Neuerungen in der Dokumentation zu Microsoft Identity Platfor
 - [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](v2-permissions-and-consent.md)
 - [Geschützte Web-API: Überprüfen von Bereichen und App-Rollen](scenario-protected-web-api-verification-scope-app-roles.md)
 - [Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App](quickstart-v2-aspnet-core-webapp.md)
-
-## <a name="june-2021"></a>Juni 2021
-
-### <a name="new-articles"></a>Neue Artikel
-
-- [Best Practices für den Zugriff mit den geringsten Berechtigungen für Anwendungen](secure-least-privileged-access.md)
-- [Unterschiede zwischen ADAL.NET- und MSAL.NET-Apps](msal-net-differences-adal-net.md)
-- [How to: Get a complete list of apps using ADAL in your tenant](howto-get-list-of-all-active-directory-auth-library-apps.md) (Gewusst wie: Abrufen einer vollständigen Liste von Apps mithilfe von ADAL in Ihrem Mandanten)
-- [Migrieren vertraulicher Clientanwendungen von ADAL.NET zu MSAL.NET](msal-net-migration-confidential-client.md)
-
-### <a name="updated-articles"></a>Aktualisierte Artikel
-
-- [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](app-objects-and-service-principals.md)
-- [Web-App, die Web-APIs aufruft: Codekonfiguration](scenario-web-app-call-api-app-configuration.md)
-- [Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten](active-directory-claims-mapping.md)
-- [Codebeispiele für die Microsoft Identity Platform](sample-v2-code.md)
-- [Migrieren von Anwendungen zu MSAL.NET oder Microsoft.Identity.Web](msal-net-migration.md)
-- [Serialisierung des Tokencaches in MSAL.NET](msal-net-token-cache-serialization.md)
-- [Neuerungen bei der Authentifizierung](reference-breaking-changes.md)

@@ -3,15 +3,15 @@ title: Verwalten von Runbooks in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie Runbooks in Azure Automation verwalten.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/13/2021
+ms.date: 09/22/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f30f2ea398404821face86470a43bbf6f86ffd7f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 88122af7da4472db497713b4f417092cca7e87df
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652014"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351453"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Verwalten von Runbooks in Azure Automation
 
@@ -167,30 +167,43 @@ Sie können den Fortschritt eines Runbooks mithilfe einer externen Quelle verfol
 Einige Runbooks verhalten sich möglicherweise merkwürdig, wenn sie in mehreren Aufträgen gleichzeitig ausgeführt werden. In diesem Fall ist es wichtig, dass ein Runbook Logik implementiert, um festzustellen, ob bereits ein laufender Auftrag vorhanden ist. Hier ist ein einfaches Beispiel.
 
 ```powershell
-# Connect to Azure with user-assigned managed identity
-Connect-AzAccount -Identity
-$identity = Get-AzUserAssignedIdentity -ResourceGroupName <ResourceGroupName> -Name <UserAssignedManagedIdentity>
-Connect-AzAccount -Identity -AccountId $identity.ClientId
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
 
-$AzureContext = Set-AzContext -SubscriptionId ($identity.id -split "/")[2]
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+    -DefaultProfile $AzureContext
 
 # Check for already running or new runbooks
-$runbookName = "RunbookName"
-$rgName = "ResourceGroupName"
-$accountName = "AutomationAccountName"
-$jobs = Get-AzAutomationJob -ResourceGroupName $rgName -AutomationAccountName $accountName -RunbookName $runbookName -AzContext $AzureContext
+$runbookName = "runbookName"
+$resourceGroupName = "resourceGroupName"
+$automationAccountName = "automationAccountName"
+
+$jobs = Get-AzAutomationJob -ResourceGroupName $resourceGroupName `
+    -AutomationAccountName $automationAccountName `
+    -RunbookName $runbookName `
+    -DefaultProfile $AzureContext
 
 # Check to see if it is already running
 $runningCount = ($jobs.Where( { $_.Status -eq 'Running' })).count
 
 if (($jobs.Status -contains 'Running' -and $runningCount -gt 1 ) -or ($jobs.Status -eq 'New')) {
     # Exit code
-    Write-Output "Runbook [$runbookName] is already running"
+    Write-Output "Runbook $runbookName is already running"
     exit 1
 } else {
     # Insert Your code here
+    Write-Output "Runbook $runbookName is not running"
 }
 ```
+
+Wenn Sie möchten, dass das Runbook mit der vom System zugewiesenen verwalteten Identität ausgeführt wird, lassen Sie den Code so, wie er ist. Wenn Sie es vorziehen, eine vom Benutzer zugewiesene verwaltete Identität zu verwenden, dann:
+1. Entfernen Sie in Zeile 5 `$AzureContext = (Connect-AzAccount -Identity).context`,
+1. Ersetzen Sie es durch `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context`, und
+1. Geben Sie die Client-ID ein.
 
 ## <a name="handle-transient-errors-in-a-time-dependent-script"></a>Behandeln vorübergehender Fehler in einem zeitabhängigen Skript
 
@@ -206,25 +219,33 @@ Wenn Ihr Runbook normalerweise innerhalb einer bestimmten Zeitspanne ausgeführt
 Ihr Runbook muss in der Lage sein, mit [Abonnements](automation-runbook-execution.md#subscriptions) zu arbeiten. Für den Umgang mit mehreren Abonnements verwendet Ihr Runbook z. B. das Cmdlet [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave). Mit diesem Cmdlet wird sichergestellt, dass der Authentifizierungskontext nicht von einem anderen Runbook abgerufen wird, das in derselben Sandbox ausgeführt wird. 
 
 ```powershell
+# Ensures you do not inherit an AzContext in your runbook
 Disable-AzContextAutosave -Scope Process
 
-# Connect to Azure with user-assigned managed identity
-Connect-AzAccount -Identity
-$identity = Get-AzUserAssignedIdentity -ResourceGroupName <ResourceGroupName> -Name <UserAssignedManagedIdentity>
-Connect-AzAccount -Identity -AccountId $identity.ClientId
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
 
-$childRunbookName = 'ChildRunbookDemo'
-$accountName = 'MyAutomationAccount'
-$rgName = 'MyResourceGroup'
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+    -DefaultProfile $AzureContext
+
+$childRunbookName = 'childRunbookDemo'
+$resourceGroupName = "resourceGroupName"
+$automationAccountName = "automationAccountName"
 
 $startParams = @{
-    ResourceGroupName     = $rgName
-    AutomationAccountName = $accountName
+    ResourceGroupName     = $resourceGroupName
+    AutomationAccountName = $automationAccountName
     Name                  = $childRunbookName
     DefaultProfile        = $AzureContext
 }
 Start-AzAutomationRunbook @startParams
 ```
+
+Wenn Sie möchten, dass das Runbook mit der vom System zugewiesenen verwalteten Identität ausgeführt wird, lassen Sie den Code so, wie er ist. Wenn Sie es vorziehen, eine vom Benutzer zugewiesene verwaltete Identität zu verwenden, dann:
+1. Entfernen Sie in Zeile 5 `$AzureContext = (Connect-AzAccount -Identity).context`,
+1. Ersetzen Sie es durch `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context`, und
+1. Geben Sie die Client-ID ein.
 
 ## <a name="work-with-a-custom-script"></a>Verwenden eines benutzerdefinierten Skripts
 

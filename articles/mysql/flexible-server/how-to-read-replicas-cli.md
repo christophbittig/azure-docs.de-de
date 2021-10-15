@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 06/17/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adffb4edf7f689002cab7eae86388ff18ac04027
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 77e9d66af8a03f9d1a55a59d9a355499a3019f29
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639747"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233899"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Erstellen und Verwalten von Lesereplikaten auf flexiblen Azure Database for MySQL-Servern mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -26,8 +26,9 @@ In diesem Artikel erfahren Sie, wie Sie Lesereplikate auf flexiblen Azure Databa
 > [!Note]
 >
 > * Auf Servern mit Hochverfügbarkeit werden keine Replikate unterstützt. 
+>* Das Feature für Lesereplikate ist nur für flexible Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Quellserver einer der folgenden Tarife festgelegt ist.
 >
-> * Wenn GTID auf einem primären Server aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Weitere Informationen finden Sie unter [Globaler Transaktionsbezeichner (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
+> * Wenn GTID auf einem primären Server aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert, und es wird die GTID-Replikation verwendet. Weitere Informationen finden Sie unter [Globaler Transaktionsbezeichner (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
 
 ## <a name="azure-cli"></a>Azure CLI
 

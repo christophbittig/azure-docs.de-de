@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 32fbdae5719e2f8e379b39076f8557b3db0d61ca
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 10/01/2021
+ms.openlocfilehash: 0f4ce35a43702f958656b1ad077e6c0f84bc88bb
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020023"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418706"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>.NET-Codebeispiele (C#) für Azure Cognitive Search
 
@@ -66,6 +66,7 @@ Die folgenden Beispiele werden ebenfalls vom Cognitive Search-Team veröffentlic
 
 | Beispiele | BESCHREIBUNG |
 |---------|-------------|
+| [Index Data Lake Gen2 mit Azure AD](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md) | Quellcode zur Demonstration von Indexer-Verbindungen und Indizierung von Azure Data Lake Gen2-Dateien und -Ordnern, die durch Azure AD und rollenbasierte Zugriffskontrollen gesichert sind. |
 | [azure-search-power-skills](https://github.com/Azure-Samples/azure-search-power-skills)  | Quellcode für nutzbare benutzerdefinierte Skills, die Sie in Ihre eigenen Lösungen integrieren können.  |
 | [Solution Accelerator für Knowledge Mining](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | Umfasst Vorlagen, Unterstützungsdateien und Analyseberichte, die Sie bei der Erstellung eines Prototyps einer End-to-End-Lösung für Knowledge Mining unterstützen.  |
 | [Repository für Covid-19-Such-App](https://github.com/liamca/covid19search) | Quellcoderepository für die auf Cognitive Search basierende [Covid-19-Such-App](https://covid19search.azurewebsites.net/) |

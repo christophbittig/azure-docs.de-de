@@ -4,23 +4,23 @@ titleSuffix: Azure Machine Learning
 description: Verwenden Sie einen privaten Endpunkt, um sicher von einem virtuellen Netzwerk aus auf Ihren Azure Machine Learning-Arbeitsbereich zuzugreifen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/07/2021
-ms.openlocfilehash: df1f492824503c6ab8c63091c93e3d048107cb48
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 9bb40b02df8de4bbd5fc7e59f55c7f31052b3480
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129052137"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429887"
 ---
 # <a name="configure-a-private-endpoint-for-an-azure-machine-learning-workspace"></a>Konfigurieren eines privaten Endpunkts für einen Azure Machine Learning-Arbeitsbereich
 
-Hier erfahren Sie, wie Sie einen privaten Endpunkt für Ihren Azure Machine Learning-Arbeitsbereich konfigurieren. Informationen zum Erstellen eines virtuellen Netzwerks für Azure Machine Learning finden Sie unter [Übersicht über die Isolation virtueller Netzwerke und Datenschutz](how-to-network-security-overview.md).
+Hier erfahren Sie, wie Sie einen privaten Endpunkt für Ihren Azure Machine Learning-Arbeitsbereich konfigurieren. Informationen zur Erstellung eines virtuellen Netzwerks für Azure Machine Learning finden Sie unter [Übersicht über die Isolierung und den Datenschutz für virtuelle Netzwerke](how-to-network-security-overview.md).
 
 Azure Private Link ermöglicht Ihnen das Herstellen einer Verbindung mit Ihrem Arbeitsbereich über einen privaten Endpunkt. Bei einem privaten Endpunkt handelt es sich um eine Gruppe privater IP-Adressen in Ihrem virtuellen Netzwerk. Sie können dann den Zugriff auf Ihren Arbeitsbereich so einschränken, dass er nur über die privaten IP-Adressen erfolgt. Private Endpunkte helfen dabei, das Risiko einer Datenexfiltration zu verringern. Weitere Informationen zu privaten Endpunkten finden Sie im Artikel zu [Azure Private Link](../private-link/private-link-overview.md).
 

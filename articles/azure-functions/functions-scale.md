@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4463659077943507651ddd2ad30ee2a1af9cf7a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: a2c760e4b1ca923496d11002f2e30b72672f32df
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110785211"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778398"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions-Hostingoptionen
 
@@ -34,8 +34,8 @@ Im Folgenden finden Sie eine Zusammenfassung der Vorteile der drei wichtigsten H
 | Planen | Vorteile |
 | --- | --- |  
 |**[Verbrauchsplan](consumption-plan.md)**| Skalieren Sie Ihre Computeressourcen automatisch, und zahlen Sie nur dann für diese Ressourcen, wenn Ihre Funktionen tatsächlich ausgeführt werden.<br/><br/>Im Verbrauchsplan werden Instanzen des Functions-Hosts basierend auf der Anzahl von eingehenden Ereignissen dynamisch hinzugefügt und entfernt.<br/><br/> ✔ Standardhostingplan.<br/>✔ Sie bezahlen nur, wenn Ihre Funktionen ausgeführt werden.<br/>✔ Die Skalierung erfolgt automatisch – selbst in Zeiten hoher Last.|  
-|**[Premium-Plan](functions-premium-plan.md)**|In diesem Plan werden Ressourcen automatisch nach Bedarf skaliert. Nutzen Sie vorab aufgewärmte (also betriebsbereite) Worker, um Anwendungen nach einem Leerlauf ohne jede Verzögerung auszuführen, profitieren Sie von leistungsstärkeren Instanzen für die Ausführung, und stellen Sie Verbindungen mit virtuellen Netzwerken her. <br/><br/>Ziehen Sie den Premium-Plan für Azure Functions in folgenden Situationen in Betracht: <br/><br/>✔ Ihre Funktions-Apps werden kontinuierlich oder nahezu kontinuierlich ausgeführt.<br/>✔ Sie verfügen über eine hohe Anzahl kleiner Ausführungen und haben im Verbrauchstarif hohe Ausführungskosten, aber geringe Kosten für Gigabytesekunden.<br/>✔ Sie benötigen weitere CPU- oder Arbeitsspeicheroptionen zusätzlich zu den vom Verbrauchsplan bereitgestellten.<br/>✔ Ihr Code muss länger ausgeführt werden, als im Verbrauchsplan als maximal zulässige Ausführungsdauer angegeben ist.<br/>✔ Sie benötigen Features, die im Rahmen des Verbrauchstarifs nicht zur Verfügung stehen, z. B. Konnektivität mit virtuellen Netzwerken.|  
-|**[Dedizierter Plan](dedicated-plan.md)** |Führen Sie Ihre Funktionen in einem App Service-Plan zu den regulären [Preisen dieses Plans](https://azure.microsoft.com/pricing/details/app-service/windows/) aus.<br/><br/>Dieser Plan eignet sich am besten in zeitintensiven Szenarien, in denen [Durable Functions](durable/durable-functions-overview.md) nicht verwendet werden kann. Ziehen Sie einen App Service-Plan in folgenden Situationen in Betracht:<br/><br/>✔ Sie verfügen über nicht ausgelastete virtuelle Computer, auf denen bereits andere App Service-Instanzen ausgeführt werden.<br/>✔ Sie möchten ein benutzerdefiniertes Image bereitstellen, auf dem Ihre Funktionen ausgeführt werden sollen. <br/>✔ Sie benötigen vorhersagbare Skalierung und Kosten.|  
+|**[Premium-Plan](functions-premium-plan.md)**|In diesem Plan werden Ressourcen automatisch nach Bedarf skaliert. Nutzen Sie vorab aufgewärmte (also betriebsbereite) Worker, um Anwendungen nach einem Leerlauf ohne jede Verzögerung auszuführen, profitieren Sie von leistungsstärkeren Instanzen für die Ausführung, und stellen Sie Verbindungen mit virtuellen Netzwerken her. <br/><br/>Ziehen Sie den Premium-Plan für Azure Functions in folgenden Situationen in Betracht: <br/><br/>✔ Ihre Funktions-Apps werden kontinuierlich oder nahezu kontinuierlich ausgeführt.<br/>✔ Sie verfügen über eine hohe Anzahl kleiner Ausführungen und haben im Verbrauchstarif hohe Ausführungskosten, aber geringe Kosten für Gigabytesekunden.<br/>✔ Sie benötigen weitere CPU- oder Arbeitsspeicheroptionen zusätzlich zu den vom Verbrauchsplan bereitgestellten.<br/>✔ Ihr Code muss länger ausgeführt werden, als im Verbrauchsplan als maximal zulässige Ausführungsdauer angegeben ist.<br/>✔ Sie benötigen Features, die im Rahmen des Verbrauchstarifs nicht zur Verfügung stehen, z. B. Konnektivität mit virtuellen Netzwerken.<br/>✔ Sie möchten ein benutzerdefiniertes Linux-Image bereitstellen, auf dem Ihre Funktionen ausgeführt werden sollen. |  
+|**[Dedizierter Plan](dedicated-plan.md)** |Führen Sie Ihre Funktionen in einem App Service-Plan zu den regulären [Preisen dieses Plans](https://azure.microsoft.com/pricing/details/app-service/windows/) aus.<br/><br/>Dieser Plan eignet sich am besten in zeitintensiven Szenarien, in denen [Durable Functions](durable/durable-functions-overview.md) nicht verwendet werden kann. Ziehen Sie einen App Service-Plan in folgenden Situationen in Betracht:<br/><br/>✔ Sie verfügen über nicht ausgelastete virtuelle Computer, auf denen bereits andere App Service-Instanzen ausgeführt werden.<br/>✔ Sie benötigen vorhersagbare Skalierung und Kosten.|  
 
 Die Vergleichstabellen in diesem Artikel enthalten auch die folgenden Hostingoptionen, die die größtmögliche Kontrolle und Isolation bereitstellen, in denen Sie Ihre Funktions-Apps ausführen können.  
 

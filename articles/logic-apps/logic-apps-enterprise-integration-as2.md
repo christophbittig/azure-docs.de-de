@@ -1,19 +1,19 @@
 ---
 title: Austauschen von AS2-Nachrichten in B2B-Workflows
-description: Tauschen Sie AS2-Nachrichten zwischen Handelspartnern aus, indem Sie Workflows mithilfe von Azure Logic Apps und dem Enterprise Integration Pack erstellen.
+description: Tauschen Sie AS2-Nachrichten zwischen Partner*innen aus, indem Sie Workflows mit Azure Logic Apps und Enterprise Integration Pack erstellen.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, azla
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 8b42987055ca2e2b6533ae2f9d45b4bb62fbe016
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 8023073aecae3a1f97c82a16a5be952df7425186
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129082463"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399646"
 ---
 # <a name="exchange-as2-messages-using-workflows-in-azure-logic-apps"></a>Austauschen von AS2-Nachrichten mithilfe von Workflows in Azure Logic Apps
 
@@ -23,7 +23,9 @@ Wenn Sie AS2-Nachrichten in Workflows, die Sie mit Azure Logic Apps erstellen, s
 
   Mit Ausnahme der Nachverfolgung bietet der Connector **AS2 (v2)** eine bessere Leistung, die gleichen Funktionen wie die ursprüngliche Version, ist in der Azure Logic Apps-Runtime nativ und sorgt für erhebliche Leistungsverbesserungen in Bezug auf Nachrichtengröße, -durchsatz und -wartezeit. Außerdem erfordert der v2-Connector keine Verbindung mit Ihrem Integrationskonto. Stellen Sie stattdessen sicher, dass Sie, wie in den Voraussetzungen beschrieben, Ihr Integrationskonto mit der Logik-App-Ressource verbinden, in der Sie den Connector verwenden möchten.
 
-* Wenn Sie mit dem Ressourcentyp **Logik-App (Standard)** arbeiten, ist derzeit nur der ursprüngliche **AS2**-Connector verfügbar. Weitere Informationen zu dieser Version finden Sie auf der [Referenzseite des Connectors](/connectors/as2/), auf der die Trigger, Aktionen und Grenzwerte wie in der Swagger-Datei des Connectors dokumentiert beschrieben werden.
+* Wenn Sie mit dem Ressourcentyp **Logik-App (Standard)** arbeiten, ist derzeit nur der ursprüngliche **AS2**-Connector verfügbar.
+
+  Technische Informationen zur ursprünglichen Version des **AS2**-Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/as2/), auf der die Trigger, Aktionen und Grenzwerte wie in der Swagger-Datei des Connectors dokumentiert beschrieben werden.
 
 ### <a name="consumption"></a>[Verbrauch](#tab/consumption)
 
@@ -82,7 +84,7 @@ Informationen zu den Grenzwerten des AS2-Connectors für Workflows, die in [mehr
 
 * Mindestens zwei [Parteien](logic-apps-enterprise-integration-partners.md) (Handelspartner) in Ihrem Integrationskonto. Die Definitionen für beide Partner müssen denselben Qualifizierer für die *Geschäftsidentität* verwenden, der für dieses Szenario **AS2Identity** lautet.
 
-* Eine [AS2-Vereinbarung](logic-apps-enterprise-integration-agreements.md) in Ihrem Integrationskonto zwischen den Parteien, die an Ihrem Workflow teilnehmen. Jede Vereinbarung erfordert sowohl einen Host- als auch einen Gastpartner.
+* Eine [AS2-Vereinbarung](logic-apps-enterprise-integration-agreements.md) in Ihrem Integrationskonto zwischen den Parteien, die an Ihrem Workflow teilnehmen. Jede Vereinbarung erfordert sowohl einen Host- als auch einen Gastpartner. Der Inhalt der Nachrichten zwischen Ihnen und dem*der Partner*in muss mit dem Vereinbarungstyp übereinstimmen.
 
 * Die Logik-App-Ressource und der Workflow, in der bzw. dem Sie die AS2-Vorgänge verwenden möchten.
 

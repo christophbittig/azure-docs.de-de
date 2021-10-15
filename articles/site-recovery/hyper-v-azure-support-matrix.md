@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 7/14/2020
 author: Sharmistha-Rai
 ms.author: sharrai
-ms.openlocfilehash: 7c64aee5177adf7ee1d5f5d47ba80c5e25a53002
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: b8771e26f51dd54595ebefdb5ad5230c7257907a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444798"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536653"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -146,7 +146,7 @@ Import/Export-Dienst | Nein | Nein
 Azure-Speicherkonten mit aktivierter Firewall | Ja. Für Zielspeicher und Cache | Ja. Für Zielspeicher und Cache
 Speicherkonto ändern | Nein. Das betreffende Azure-Zielspeicherkonto kann nach Aktivieren der Replikation nicht geändert werden. Zum Ändern muss die Notfallwiederherstellung deaktiviert und anschließend erneut aktiviert werden. | Nein
 Option für die sichere Übertragung | Ja | Ja
-
+UEFI: Sicherer Start | Nein | Nein
 
 ## <a name="azure-compute-features"></a>Azure-Computefeatures
 

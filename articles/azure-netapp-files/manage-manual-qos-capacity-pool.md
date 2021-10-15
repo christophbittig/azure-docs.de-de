@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 18333b7c9fded73d330cacd6322b0869bf65f9d9
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: dd92472ff810a46743ffa08b1ea2fdd8f9e01da7
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071081"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407587"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>Verwalten eines manuellen QoS-Kapazitätspools
 
@@ -31,7 +31,7 @@ Informationen zu den Überlegungen zu den QoS-Typen finden Sie unter [Speicherhi
 
 So erstellen Sie einen neuen Kapazitätspool mit dem QoS-Typ „Manuell“:
 
-1. Führen Sie die Schritte unter [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md) durch.  
+1. Führen Sie die Schritte unter [Erstellen eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md) durch.  
 
 2. Wählen Sie im Fenster „Neuer Kapazitätspool“ den QoS-Typ **Manuell** aus.  
 

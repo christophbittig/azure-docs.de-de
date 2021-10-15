@@ -2,7 +2,6 @@
 title: Anpassen der App-Ansprüche von Azure AD-Mandanten (PowerShell)
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie Ansprüche anpassen, die in Token für eine Anwendung in einem bestimmten Azure Active Directory-Mandanten ausgegeben werden.
-services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -13,12 +12,12 @@ ms.topic: how-to
 ms.date: 06/16/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 302ab2b6f3060213a79b88ce6358cd842f74a425
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 71677a085627f46a995530c522a3a480be188042
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425552"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350989"
 ---
 # <a name="customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant"></a>Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten
 
@@ -47,7 +46,7 @@ Beim Erstellen einer Richtlinie für die Anspruchszuordnung können Sie auch ein
 Führen Sie die folgenden Schritte aus, um zu beginnen:
 
 1. Laden Sie die aktuelle [Public Preview des Azure AD PowerShell-Moduls](https://www.powershellgallery.com/packages/AzureADPreview) herunter.
-1. Führen Sie den Befehl [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0-preview) aus, um sich in Ihrem Azure AD-Administratorkonto anzumelden. Führen Sie diesen Befehl bei jedem Start einer neuen Sitzung aus.
+1. Führen Sie den Befehl [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0-preview&preserve-view=true) aus, um sich in Ihrem Azure AD-Administratorkonto anzumelden. Führen Sie diesen Befehl bei jedem Start einer neuen Sitzung aus.
 
    ``` powershell
    Connect-AzureAD -Confirm
@@ -225,7 +224,7 @@ Sie benötigen folgende Komponenten, um das Skript auszuführen:
     - Kennwort für den privaten Schlüssel (PFX-Datei)
 
 > [!IMPORTANT]
-> Der private Schlüssel muss im PKCS #12 sein, da Azure AD keine anderen Formattypen unterstützt. Die Verwendung des falschen Formats kann zum Fehler „Invalid certificate: Key value is invalid certificate“ (Ungültiges Zertifikat: Schlüsselwert ist ungültiges Zertifikat) führen, wenn Microsoft Graph verwendet wird, um den Dienstprinzipal mit einer `keyCredentials`-Klasse mit den Zertifikatinformationen zu patchen (PATCH).
+> Der private Schlüssel muss im PKCS #12 sein, da Azure AD keine anderen Formattypen unterstützt. Die Verwendung des falschen Formats kann zum Fehler „Invalid certificate: Key value is invalid certificate“ (Ungültiges Zertifikat: Schlüsselwert ist ungültiges Zertifikat) führen, wenn Microsoft Graph verwendet wird, um den Dienstprinzipal mit `keyCredentials` mit den Zertifikatinformationen zu patchen (PATCH).
 
 ```powershell
 

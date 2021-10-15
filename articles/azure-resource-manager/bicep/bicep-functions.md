@@ -2,13 +2,13 @@
 title: Bicep-Funktionen
 description: Es werden die Funktionen beschrieben, die in einer Bicep-Datei zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: bd697d6c1a1eaac7877341ffbbc10b1027882dd6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 6fabd0bdbe6341382344c0e63ca711519275a3f4
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794024"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351685"
 ---
 # <a name="bicep-functions"></a>Bicep-Funktionen
 
@@ -16,13 +16,28 @@ In diesem Artikel werden alle Funktionen beschrieben, die Sie in einer Bicep-Dat
 
 Die meisten Funktionen funktionieren auf die gleiche Weise, wenn sie in einer Ressourcengruppe, einem Abonnement, einer Verwaltungsgruppe oder einem Mandanten bereitgestellt werden. Einige Funktionen können nicht in allen Bereichen verwendet werden. Diese sind in den folgenden Listen aufgeführt.
 
+## <a name="namespaces-for-functions"></a>Namespaces für Funktionen
+
+Alle Bicep-Funktionen sind in zwei Namespaces enthalten: `az` und `sys`. In der Regel müssen Sie den Namespace nicht angeben, wenn Sie die Funktion verwenden. Sie geben den Namespace nur an, wenn der Funktionsname mit einem anderen Element identisch ist, das Sie in der Bicep-Datei definiert haben. Wenn Sie beispielsweise einen Parameter mit dem Namen `range` erstellen, müssen Sie die Funktion `range` unterscheiden, indem Sie den Namespace `sys` hinzufügen.
+
+```bicep
+// Parameter contains the same name as a function
+param range int
+
+// Must use sys namespace to call the function. 
+// The second use of range refers to the parameter.
+output result array = sys.range(1, range)
+```
+
+Der `az`-Namespace enthält Funktionen, die für eine Azure-Bereitstellung spezifisch sind. Der `sys`-Namespace enthält Funktionen, die zum Erstellen von Werten genutzt werden. Der `sys`-Namespace enthält auch Decorators für Parameter und Ressourcenschleifen. Die Namespaces sind in diesem Artikel beschrieben.
+
 ## <a name="any-function"></a>Beliebige Funktion
 
-Die [any-Funktion](./bicep-functions-any.md) wird in Bicep zur Unterstützung bei der Lösung von Problemen in Zusammenhang mit Datentypwarnungen bereitgestellt.
+Die [any-Funktion](./bicep-functions-any.md) wird in Bicep zur Unterstützung bei der Lösung von Problemen in Zusammenhang mit Datentypwarnungen bereitgestellt. Diese Funktion wird im `sys`-Namespace definiert.
 
 ## <a name="array-functions"></a>Arrayfunktionen
 
-Die folgenden Funktionen sind für die Arbeit mit Arrays verfügbar.
+Die folgenden Funktionen sind für die Arbeit mit Arrays verfügbar. All diese Funktion werden im `sys`-Namespace definiert.
 
 * [array](./bicep-functions-array.md#array)
 * [concat](./bicep-functions-array.md#concat)
@@ -41,34 +56,34 @@ Die folgenden Funktionen sind für die Arbeit mit Arrays verfügbar.
 
 ## <a name="date-functions"></a>Datumsfunktionen
 
-Die folgenden Funktionen sind für die Arbeit mit Datumsangaben verfügbar.
+Die folgenden Funktionen sind für die Arbeit mit Datumsangaben verfügbar. All diese Funktion werden im `sys`-Namespace definiert.
 
 * [dateTimeAdd](./bicep-functions-date.md#datetimeadd)
 * [utcNow](./bicep-functions-date.md#utcnow)
 
 ## <a name="deployment-value-functions"></a>Funktionen für Bereitstellungswerte
 
-Die folgenden Funktionen sind zum Abrufen von Werten im Zusammenhang mit der Bereitstellung zur verfügbar:
+Die folgenden Funktionen sind zum Abrufen von Werten im Zusammenhang mit der Bereitstellung zur verfügbar: All diese Funktion werden im `az`-Namespace definiert.
 
 * [deployment](./bicep-functions-deployment.md#deployment)
 * [Umgebung](./bicep-functions-deployment.md#environment)
 
 ## <a name="file-functions"></a>Dateifunktionen
 
-Die folgenden Funktionen stehen zum Laden des Inhalts aus externen Dateien in Ihre Bicep-Datei zur Verfügung.
+Die folgenden Funktionen stehen zum Laden des Inhalts aus externen Dateien in Ihre Bicep-Datei zur Verfügung. All diese Funktion werden im `sys`-Namespace definiert.
 
 * [loadFileAsBase64](bicep-functions-files.md#loadfileasbase64)
 * [loadTextContent](bicep-functions-files.md#loadtextcontent)
 
 ## <a name="logical-functions"></a>Logische Funktionen
 
-Die folgende Funktion ist für die Arbeit mit logischen Bedingungen verfügbar:
+Die folgende Funktion ist für die Arbeit mit logischen Bedingungen verfügbar: Diese Funktion wird im `sys`-Namespace definiert.
 
 * [bool](./bicep-functions-logical.md#bool)
 
 ## <a name="numeric-functions"></a>Numerische Funktionen
 
-Die folgenden Funktionen sind für die Arbeit mit ganzen Zahlen verfügbar:
+Die folgenden Funktionen sind für die Arbeit mit ganzen Zahlen verfügbar. All diese Funktion werden im `sys`-Namespace definiert.
 
 * [int](./bicep-functions-numeric.md#int)
 * [min](./bicep-functions-numeric.md#min)
@@ -76,7 +91,7 @@ Die folgenden Funktionen sind für die Arbeit mit ganzen Zahlen verfügbar:
 
 ## <a name="object-functions"></a>Objektfunktionen
 
-Die folgenden Funktionen sind für die Arbeit mit Objekten verfügbar.
+Die folgenden Funktionen sind für die Arbeit mit Objekten verfügbar. All diese Funktion werden im `sys`-Namespace definiert.
 
 * [contains](./bicep-functions-object.md#contains)
 * [empty](./bicep-functions-object.md#empty)
@@ -87,7 +102,7 @@ Die folgenden Funktionen sind für die Arbeit mit Objekten verfügbar.
 
 ## <a name="resource-functions"></a>Ressourcenfunktionen
 
-Die folgenden Funktionen sind zum Abrufen von Ressourcenwerten verfügbar:
+Die folgenden Funktionen sind zum Abrufen von Ressourcenwerten verfügbar. Die meisten dieser Funktion werden im `az`-Namespace definiert. Die List-Funktionen und die getSecret-Funktion werden direkt für den Ressourcentyp aufgerufen, sodass sie keinen Namespacequalifizierer haben.
 
 * [extensionResourceId](./bicep-functions-resource.md#extensionresourceid)
 * [getSecret](./bicep-functions-resource.md#getsecret)
@@ -104,7 +119,7 @@ Die folgenden Funktionen sind zum Abrufen von Ressourcenwerten verfügbar:
 
 ## <a name="scope-functions"></a>Bereichsfunktionen
 
-Die folgenden Funktionen sind zum Abrufen von Bereichswerten verfügbar.
+Die folgenden Funktionen sind zum Abrufen von Bereichswerten verfügbar. All diese Funktion werden im `az`-Namespace definiert.
 
 * [managementGroup](./bicep-functions-scope.md#managementgroup)
 * [resourceGroup](./bicep-functions-scope.md#resourcegroup): Kann nur in Bereitstellungen in einer Ressourcengruppe verwendet werden.
@@ -113,7 +128,7 @@ Die folgenden Funktionen sind zum Abrufen von Bereichswerten verfügbar.
 
 ## <a name="string-functions"></a>Zeichenfolgenfunktionen
 
-Bicep stellt die folgenden Funktionen für das Arbeiten mit Zeichenfolgen bereit:
+Bicep stellt die folgenden Funktionen für das Arbeiten mit Zeichenfolgen bereit. All diese Funktion werden im `sys`-Namespace definiert.
 
 * [base64](./bicep-functions-string.md#base64)
 * [base64ToJson](./bicep-functions-string.md#base64tojson)

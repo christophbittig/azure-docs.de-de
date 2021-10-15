@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 4d61bc5d608b865802d216c0a056867a79eacb90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c59ac22889375604b6cc289ad578c41f7c2eb7a5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91377307"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126056610"
 ---
-<Token>**GILT FÜR:** :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL Single Server :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL Flexible Server :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL Hyperscale</Token>
+**GILT FÜR:** :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL Single Server :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL Flexible Server :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Database for PostgreSQL Hyperscale

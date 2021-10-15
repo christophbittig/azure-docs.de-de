@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 07/26/2021
-ms.openlocfilehash: eb94adfa104b68f515374090cfd07f300896a163
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 9994e37d747419bd42820bd4c3c4c5ed1e147708
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708812"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360187"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>Erstellen von Plänen für ein VM-Angebot
 
@@ -159,7 +159,17 @@ Geben Sie die Images und andere technische Eigenschaften an, die diesem Plan zug
 
 ### <a name="reuse-technical-configuration"></a>Wiederverwenden der technischen Konfiguration
 
-Wenn Sie über mehrere Pläne desselben Typs verfügen und deren Pakete identisch sind, können Sie **This plan reuses the technical configuration from another plan** (In diesem Plan wird die technische Konfiguration aus einem anderen Plan wiederverwendet) auswählen. Mit dieser Option können Sie einen der anderen Pläne desselben Typs für dieses Angebot auswählen und seine technische Konfiguration wiederverwenden.
+Mit dieser Option können Sie die gleichen technischen Konfigurationseinstellungen planübergreifend innerhalb desselben Angebots verwenden und daher dieselben Images nutzen. Wenn Sie die Option „Technische Konfiguration wiederverwenden“ aktivieren, erbt Ihr Plan die gleichen technischen Konfigurationseinstellungen wie der ausgewählte Basisplan.  Wenn Sie den Basisplan ändern, werden die Änderungen auf dem Plan widergespiegelt, der die Konfiguration wiederverwendet.
+
+Einige häufige Gründe für die erneute Verwendung der technischen Konfigurationseinstellungen aus einem anderen Plan sind die folgenden:
+
+1. Die gleichen Images sind sowohl für die *nutzungsbasierte Bezahlung* als auch für *BYOL* verfügbar.
+2. Die gleiche technische Konfiguration aus einem öffentlichen Plan wird für einen privaten Plan mit einem anderen Preis wiederverwendet. 
+3. Das Verhalten Ihrer Lösung basiert auf dem Plan, den ein*e Benutzer*in auswählt. Beispielsweise ist die Software identisch, aber die Features variieren je nach Plan.
+
+Nutzen Sie [Azure Instance Metadata Service](/azure/virtual-machines/windows/instance-metadata-service) (IMDS), um zu ermitteln, in welchem Plan Ihre Lösung bereitgestellt wird, um die Lizenz zu überprüfen oder geeignete Features zu aktivieren.
+
+Wenn Sie später verschiedene Änderungen zwischen Ihren Plänen veröffentlichen möchten, können Sie sie trennen. Trennen Sie den Plan, indem Sie die technische Konfiguration wiederverwendbar machen, indem Sie diese Option mit Ihrem Plan deaktivieren. Nach der Trennung hat Ihr Plan die gleichen technischen Konfigurationseinstellungen an der Stelle ihrer letzten Einstellung, und Ihre Pläne können in der Konfiguration abweichen. Ein Plan, der in der Vergangenheit unabhängig veröffentlicht wurde, kann später keine technische Konfiguration wiederverwenden. 
 
 ### <a name="operating-system"></a>Betriebssystem
 

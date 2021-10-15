@@ -1,20 +1,23 @@
 ---
 title: Auswerten von Servern mit Azure Arc-Unterstützung mit einem virtuellen Azure-Computer
 description: Erfahren Sie, wie Sie Server mit Azure Arc-Unterstützung mithilfe eines virtuellen Azure-Computers auswerten.
-ms.date: 09/20/2021
+ms.date: 10/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8f32fee62e98730a391c3f025a96259358b027d1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 54656e0701857fd3badbcec619b2185917935857
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645301"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389815"
 ---
 # <a name="evaluate-azure-arc-enabled-servers-on-an-azure-virtual-machine"></a>Auswerten von Servern mit Azure Arc-Unterstützung auf einem virtuellen Azure-Computer
 
 Server mit Azure Arc-Unterstützung sollen Ihnen helfen, Server, die lokal oder in anderen Clouds ausgeführt werden, mit Azure zu verbinden. Normalerweise würden Sie keine Server mit Azure Arc-Unterstützung auf einem virtuellen Azure-Computer verwenden, da all dieselben Funktionen nativ für diese VMs verfügbar sind, einschließlich einer Darstellung des virtuellen Computers in Azure Resource Manager, VM-Erweiterungen, verwalteten Identitäten und Azure Policy. Wenn Sie versuchen, Server mit Azure Arc-Unterstützung auf einem virtuellen Azure-Computer zu installieren, erhalten Sie die Fehlermeldung, dass dies nicht unterstützt und die Agent-Installation abgebrochen wird.
 
 Sie können keine Server mit Azure Arc-Unterstützung auf einem virtuellen Azure-Computer für Produktionsszenarien installieren, es ist jedoch möglich, Server mit Azure Arc-Unterstützung so zu konfigurieren, dass sie *nur zu Auswertungs- und Testzwecken* auf einem virtuellen Azure-Computer ausgeführt werden. Dieser Artikel hilft Ihnen beim Einrichten eines virtuellen Azure-Computers, bevor Sie Server mit Azure Arc-Unterstützung darauf aktivieren können.
+
+> [!NOTE]
+> Die Schritte in diesem Artikel sind für virtuelle Computer vorgesehen, die in der Azure-Cloud gehostet werden. Azure Arc-fähige Server werden auf virtuellen Computern, die auf Azure Stack Hub oder Azure Stack Edge ausgeführt werden, nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

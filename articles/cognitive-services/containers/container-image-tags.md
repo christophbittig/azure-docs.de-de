@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 09/09/2021
 ms.author: aahi
-ms.openlocfilehash: ef022368a2dd15b2a1651affd9f54d94a05adc6b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3d6466f97e3126bb20028f1e99e75c2b365a6033
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124750677"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533865"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure Cognitive Services-Containerimagetags und -Versionshinweise
 
@@ -137,19 +137,25 @@ Das Containerimage [Benutzerdefinierte Spracherkennung][sp-cstt] befindet sich i
 
 # <a name="latest-version"></a>[Aktuelle Version](#tab/current)
 
-Versionshinweise für `2.14.0-amd64`:
+Versionshinweise für `2.15.0-amd64`:
 
-Regelmäßiges monatliches Release
+**Fehlerbehebungen**
+* Behebung eines Problems beim Starten von Containern, das auftreten kann, wenn der Kunde bzw. die Kundin ihn in RHEL-Umgebungen ausführt
+* Behebung eines Nullfehlers beim Herunterladen eines Modells, der in einigen Fällen auftritt, wenn der Kunde bzw. die Kundin benutzerdefinierte Modelle herunterlädt
 
 Beachten Sie, dass dieses Containerimage aufgrund des Ausdruckslistenfeatures größer geworden ist.
 
 | Imagetags                    | Notizen | Digest                                                                   |
 |-------------------------------|:------|:-------------------------------------------------------------------------|
-| `latest`                      |       | `sha256:c83c4691f89dfcad9c92d8c73e24b23946706936e2c8a76b1cb278260448ebb9`|
-| `2.14.0-amd64`                |       | `sha256:c83c4691f89dfcad9c92d8c73e24b23946706936e2c8a76b1cb278260448ebb9`|
+| `latest`                      |       | `sha256:0f40d4cb0c22b3df49854272fcc69765e061519889804ad6105e5ce721b4094f`|
+| `2.15.0-amd64`                |       | `sha256:0f40d4cb0c22b3df49854272fcc69765e061519889804ad6105e5ce721b4094f`|
 
 
 # <a name="previous-version"></a>[Vorherige Version](#tab/previous)
+
+Versionshinweise für `2.14.0-amd64`:
+
+Regelmäßiges monatliches Release
 
 Versionshinweise für `2.13.0-amd64`:
 
@@ -213,6 +219,8 @@ Versionshinweise für `2.5.0-amd64`:
 
 | Imagetags                    | Notizen               |
 |-------------------------------|:--------------------|
+| `2.14.0-amd64`                |                     |
+| `2.13.0-amd64`                |                     |
 | `2.12.1-amd64`                |                     |
 | `2.11.0-amd64`                |                     |
 | `2.10.0-amd64`                |                     |
@@ -293,16 +301,204 @@ Seit Spracherkennung v2.5.0 werden Images in der Region *US Government Virginia
 
 # <a name="latest-version"></a>[Aktuelle Version](#tab/current)
 
-Versionshinweise für `2.14.0-amd64-<locale>`:
+Versionshinweise für `2.15.0-amd64-<locale>`:
 
-Regelmäßiges monatliches Release
+**Fehlerbehebungen**
+* Behebung eines Problems beim Starten von Containern, das auftreten kann, wenn der Kunde bzw. die Kundin ihn in RHEL-Umgebungen ausführt
 
 Beachten Sie, dass dieses Containerimage aufgrund des Ausdruckslistenfeatures größer geworden ist. 
 
 | Imagetags                    | Notizen                                                                                                |
 |-------------------------------|:-----------------------------------------------------------------------------------------------------|
 | `latest`                      | Containerimage mit dem Gebietsschema `en-US`.                                                             |
-| `2.14.0-amd64-<locale>`       | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.14.0-amd64-en-us`.|
+| `2.15.0-amd64-<locale>`       | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.15.0-amd64-en-us`.|
+
+Für diesen Container sind die folgenden Gebietsschemas verfügbar.
+
+| Gebietsschema für v2.15.0          | Notizen                                    | Digest                                                                    |
+|-----------------------------|:-----------------------------------------|:--------------------------------------------------------------------------|
+| `ar-ae`                     | Containerimage mit dem Gebietsschema `ar-AE`. | `sha256:d2c650631f10bb3d13b90ac13cc8f9780a791b6b6eae4d3663703d61d4fcfa0b` |
+| `ar-bh`                     | Containerimage mit dem Gebietsschema `ar-BH`. | `sha256:7dddd89b8b4bf37ab90d1940344ffea2058234328bca2b549cd37e4343f553f3` |
+| `ar-eg`                     | Containerimage mit dem Gebietsschema `ar-EG`. | `sha256:b7efc1801d4d3f04349495ac7d22bf33a497fd1a84bfffeb410acb159c533aef` |
+| `ar-iq`                     | Containerimage mit dem Gebietsschema `ar-IQ`. | `sha256:4979c5c0081efa70c6fc8dcd332a832eee97a4b04b0cbfc384764fe0d86567e1` |
+| `ar-jo`                     | Containerimage mit dem Gebietsschema `ar-JO`. | `sha256:770b2986c9563d980b4558502799d3b8250a7d7219b57c57ed9d7184f9022b90` |
+| `ar-kw`                     | Containerimage mit dem Gebietsschema `ar-KW`. | `sha256:d2c650631f10bb3d13b90ac13cc8f9780a791b6b6eae4d3663703d61d4fcfa0b` |
+| `ar-lb`                     | Containerimage mit dem Gebietsschema `ar-LB`. | `sha256:51f5cd8e34df11675da0c4f7fd4e13c00cecbbede60437fefc038e3a21137558` |
+| `ar-om`                     | Containerimage mit dem Gebietsschema `ar-OM`. | `sha256:c34b2659629285e82f1bed7e50c6f6ee80f6c9ddb1ed6962af4875303fe0b11f` |
+| `ar-qa`                     | Containerimage mit dem Gebietsschema `ar-QA`. | `sha256:d2c650631f10bb3d13b90ac13cc8f9780a791b6b6eae4d3663703d61d4fcfa0b` |
+| `ar-sa`                     | Containerimage mit dem Gebietsschema `ar-SA`. | `sha256:d2c650631f10bb3d13b90ac13cc8f9780a791b6b6eae4d3663703d61d4fcfa0b` |
+| `ar-sy`                     | Containerimage mit dem Gebietsschema `ar-SY`. | `sha256:b3d3da168b41f08156b9df8e9dd5030e73edb49be71d05f8e7af0e6e8ed9f706` |
+| `bg-bg`                     | Containerimage mit dem Gebietsschema `bg-BG`. | `sha256:1dd1a311b7e4b7e10dc91836b0d211f1545e6437e6a7814624684c5d71491cc1` |
+| `ca-es`                     | Containerimage mit dem Gebietsschema `ca-ES`. | `sha256:e0f7df4badc9ccd4b6cdd08eec7c88258a7e09e0647abbb900bd4df114599473` |
+| `cs-cz`                     | Containerimage mit dem Gebietsschema `cs-CZ`. | `sha256:5dab3f7de27f841c2f7ca8a6829eb6ad8f28ab3af62b60fa7e306132b87c7621` |
+| `da-dk`                     | Containerimage mit dem Gebietsschema `da-DK`. | `sha256:bd35ad26cba823f99d917a726ce5d915fb9dfa6c50d522c23904b7e4236ac4d8` |
+| `de-de`                     | Containerimage mit dem Gebietsschema `de-DE`. | `sha256:2ce791d2e99c9a7b2ea74978d97f3d433bf6069a2f3f664f98154afef211182e` |
+| `el-gr`                     | Containerimage mit dem Gebietsschema `el-GR`. | `sha256:5be44216c88ad990592205d01249f5cec661e96409ea56099126c5d7c94ced21` |
+| `en-au`                     | Containerimage mit dem Gebietsschema `en-AU`. | `sha256:2a038ff2195b76e461ad06de8b402e24394a1f00147853aab148517614c21d5e` |
+| `en-ca`                     | Containerimage mit dem Gebietsschema `en-CA`. | `sha256:9cc83d8d00d6ab436f2bf8a8094b6e12d8770ea7383db034a46a32e16ce1fbd2` |
+| `en-gb`                     | Containerimage mit dem Gebietsschema `en-GB`. | `sha256:561e476e9a65446adf7faa5a4966ee9533ce0d24c4543a21347f7f3b3fb25198` |
+| `en-hk`                     | Containerimage mit dem Gebietsschema `en-HK`. | `sha256:f13e37cb642c93734839136779357aed562d738f1029e0f724950a79e241b954` |
+| `en-ie`                     | Containerimage mit dem Gebietsschema `en-IE`. | `sha256:375d0abe0627959e11f496b889f227b13b021d7509573e5e0d5c7854be684000` |
+| `en-in`                     | Containerimage mit dem Gebietsschema `en-IN`. | `sha256:45c88bbe82902d192ed5acff707a26e9d2e126a3f75b982a9871a56c5d6a88b3` |
+| `en-nz`                     | Containerimage mit dem Gebietsschema `en-NZ`. | `sha256:43e8e036d51ce9cd717d12fecff0e8cbe6d3380484132def9150dc28d28a2367` |
+| `en-ph`                     | Containerimage mit dem Gebietsschema `en-PH`. | `sha256:b90ce831b16ae8c19b2cabbb100ef934e5123ae55ff655b5d05ae56d47cc6ca9` |
+| `en-sg`                     | Containerimage mit dem Gebietsschema `en-SG`. | `sha256:2a4559e4fe9b69642e84cf9a349d2183bba5704c095a8ab8f418774d6cdc6dd9` |
+| `en-us`                     | Containerimage mit dem Gebietsschema `en-US`. | `sha256:bcad8e08c3309e8386d2cdabbbaa940dc438f15ef981fd2f458bd75167f3ab54` |
+| `en-za`                     | Containerimage mit dem Gebietsschema `en-ZA`. | `sha256:7b083e13cc36621d80b8909a5497cd245693be7ea08bf6504b570f0842db5be2` |
+| `es-ar`                     | Containerimage mit dem Gebietsschema `es-AR`. | `sha256:4334226f55e2545705c6d7ba0ce844a06c2c92added3997e611a72dec1a4f2c3` |
+| `es-bo`                     | Containerimage mit dem Gebietsschema `es-BO`. | `sha256:0975691a18470ff69c12e1ef8a644447dad11da057c19e554f5f7b4db72ca5fc` |
+| `es-cl`                     | Containerimage mit dem Gebietsschema `es-CL`. | `sha256:c44bdff4174fc83959511e64dd8ed2bdb6806d12a3ff5d5c70b94c3fee7ee2f8` |
+| `es-co`                     | Containerimage mit dem Gebietsschema `es-CO`. | `sha256:15e046b7ae1b47b32258bd80c5d609c148a5c1d2d01ba319c49df834e1e8f193` |
+| `es-cr`                     | Containerimage mit dem Gebietsschema `es-CR`. | `sha256:8706ca92a56c6a32cec7d7c0d490d3ce16d52888518df93bae9ed0ad6981632c` |
+| `es-cu`                     | Containerimage mit dem Gebietsschema `es-CU`. | `sha256:99f6fec4002825e9e4e6dafafe1347e3ffd75f313c4db35d6b3bac3616bf4e30` |
+| `es-do`                     | Containerimage mit dem Gebietsschema `es-DO`. | `sha256:44cf6984f82f0eb286fec16dcd142c21d3f86b36ba9fc364e305c9ce15b723b4` |
+| `es-ec`                     | Containerimage mit dem Gebietsschema `es-EC`. | `sha256:079808b43605b7386a4af22b18e295cbb377dce83c3a81dbae7aba980a022c3e` |
+| `es-es`                     | Containerimage mit dem Gebietsschema `es-ES`. | `sha256:f678a5dd24dd4ffbea1872ec545de0e1ec2cd4326b9383ba6b1c041a375693ff` |
+| `es-gt`                     | Containerimage mit dem Gebietsschema `es-GT`. | `sha256:b541dd582365e727f0deccbf50ed7ae1ad11f525b02a5e9d97c8fe796f5f4054` |
+| `es-hn`                     | Containerimage mit dem Gebietsschema `es-HN`. | `sha256:859cff274dac5370c00c279b003b4cbcd194e982e3e5d26c65fda7fb71cbdc8d` |
+| `es-mx`                     | Containerimage mit dem Gebietsschema `es-MX`. | `sha256:01dc0b5cb4effba99d071292d7fbc709ed4a64f89eadc809f86ea97501f6e411` |
+| `es-ni`                     | Containerimage mit dem Gebietsschema `es-NI`. | `sha256:7f4572b7dd89ac1b5376050f6b35226fb9aec52eea9405969cc684175487e699` |
+| `es-pa`                     | Containerimage mit dem Gebietsschema `es-PA`. | `sha256:da29fe62e9e32de8d954d2bd9ee739dd8d24b31cd4943df79dda5f10f5814b08` |
+| `es-pe`                     | Containerimage mit dem Gebietsschema `es-PE`. | `sha256:cefd94d4b3fbdfd2b66994e970024922dcba2edf8b8b9da6f66affe540b24ee6` |
+| `es-pr`                     | Containerimage mit dem Gebietsschema `es-PR`. | `sha256:1622652a17e67d9cf28a407bc37067c0d06b496fef4bfc121566a054b5529613` |
+| `es-py`                     | Containerimage mit dem Gebietsschema `es-PY`. | `sha256:18b729556bafdcd42e6c71e52b2dde4f50a358cbbafb8774b565f157744bbd50` |
+| `es-sv`                     | Containerimage mit dem Gebietsschema `es-SV`. | `sha256:6192e1752fe67d6fad7ee977899847616e20612d13fe62d869591e0bbaa9b98c` |
+| `es-us`                     | Containerimage mit dem Gebietsschema `es-US`. | `sha256:05268165b9192848af5c20b66d0dd36ab6f32eb4d8f14be05cbb99e82c02bef6` |
+| `es-uy`                     | Containerimage mit dem Gebietsschema `es-UY`. | `sha256:cacc39fa400e40d92530d90e4ce266fb33251f771b9809c48814c30b98bc0631` |
+| `es-ve`                     | Containerimage mit dem Gebietsschema `es-VE`. | `sha256:2607efa555ab788fc6e8065e70c853a4aafcfd544d3b83964604f4de4a1a698d` |
+| `et-ee`                     | Containerimage mit dem Gebietsschema `et-EE`. | `sha256:ed9c87c68be413dbd37f166906a81ca195ac13a176b77ee05a6fcc74a5d7c4aa` |
+| `fi-fi`                     | Containerimage mit dem Gebietsschema `fi-FI`. | `sha256:d68902cf6ae127401d3b76deff8977e2570a7c93ed1ea412991b5a24258a4ecc` |
+| `fr-ca`                     | Containerimage mit dem Gebietsschema `fr-CA`. | `sha256:73af6f6cc0c199509f7f36c4ce3745f9f098f215e76d3bc6186c0afad169e590` |
+| `fr-fr`                     | Containerimage mit dem Gebietsschema `fr-FR`. | `sha256:2f6627d46f11f78fb60681edd80646f274a90950735e29b75cf0bacf2ff1977e` |
+| `ga-ie`                     | Containerimage mit dem Gebietsschema `ga-IE`. | `sha256:51baee622521baabf97df36ee0855158a57795b0af25081656afec59edbc9586` |
+| `gu-in`                     | Containerimage mit dem Gebietsschema `gu-IN`. | `sha256:41d74cef7c62996b51c179ff523a6a81fdb9dfecbc818386d703633176802a7b` |
+| `hi-in`                     | Containerimage mit dem Gebietsschema `hi-IN`. | `sha256:6bd7ecadd5031c66f798c0307eb85bdf98b912c5d3ffd81dd93a7325e164dbba` |
+| `hr-hr`                     | Containerimage mit dem Gebietsschema `hr-HR`. | `sha256:bab0220a4968a23bea4616421b81199cf5eb195e041c1ba78b23c7fee12473c7` |
+| `hu-hu`                     | Containerimage mit dem Gebietsschema `hu-HU`. | `sha256:5aaaaf0a65790dcf57adf8bc6647b8bfb86d0d287d0a9d7a04efb8ec793fe750` |
+| `it-it`                     | Containerimage mit dem Gebietsschema `it-IT`. | `sha256:aa4c24a470b246bb77d00c11aed16042e8e7516fd1fe9df294e7c1337e4ecaaf` |
+| `ja-jp`                     | Containerimage mit dem Gebietsschema `ja-JP`. | `sha256:ff2ede2432a62a40237f6a72a6e60884f14b70bfbf22fc5c304e5491e57a163d` |
+| `ko-kr`                     | Containerimage mit dem Gebietsschema `ko-KR`. | `sha256:5208472ce238b2a71390564535c077bafd9ca8333bb05e89d23e95462d6930f9` |
+| `lt-lt`                     | Containerimage mit dem Gebietsschema `lt-LT`. | `sha256:27ccc4ed68df0ac08c5cca4b365904292f2dc0294dd35f507aba7228ed6184ac` |
+| `lv-lv`                     | Containerimage mit dem Gebietsschema `lv-LV`. | `sha256:238141d56fcd9ed45462dfd6189f252c2ef82f9d2c78b2d31ec1d35d4006b2b1` |
+| `mr-in`                     | Containerimage mit dem Gebietsschema `mr-IN`. | `sha256:80015aea35aee6bdf9fd0dfcc07ed944b971e2910cb5f87f659df5a699d4ea4a` |
+| `mt-mt`                     | Containerimage mit dem Gebietsschema `mt-MT`. | `sha256:e92f28a42dc7f78042cf232662a0f6841c6eee7eba1c2df7a98b11b68bffb146` |
+| `nb-no`                     | Containerimage mit dem Gebietsschema `nb-NO`. | `sha256:9263f969b4305f11954c38b1fce443f7c4f0b258fdd376d2446a0d0146decc69` |
+| `nl-nl`                     | Containerimage mit dem Gebietsschema `nl-NL`. | `sha256:2ad8e5d741723d5457f5698c5f6c2bdbbca9d8e405582aa68ea86bad60e88ff7` |
+| `pl-pl`                     | Containerimage mit dem Gebietsschema `pl-PL`. | `sha256:d872ae9cbfbc7baf76c21144fdda28ef908922d14cd2b76c527eb0af24a72bf6` |
+| `pt-br`                     | Containerimage mit dem Gebietsschema `pt-BR`. | `sha256:881a2b767b0cbc0fe5f5960a83f6126bff0f3adff8d9aefe85dbba00a0f0b586` |
+| `pt-pt`                     | Containerimage mit dem Gebietsschema `pt-PT`. | `sha256:df48b6c13b55f483dff794110e47f9735accfa84ec025028f5334954dbb6f947` |
+| `ro-ro`                     | Containerimage mit dem Gebietsschema `ro-RO`. | `sha256:058482ae932fde66ecfb990c23d5c49d2cffb4c47c99f4a1551b582aa0a26af4` |
+| `ru-ru`                     | Containerimage mit dem Gebietsschema `ru-RU`. | `sha256:27b9215c6034cae40be0b3b7b19a366cd134b0ec51ade33d90245cdf32205fc4` |
+| `sk-sk`                     | Containerimage mit dem Gebietsschema `sk-SK`. | `sha256:544686ad0e4a7ab4e33735dba769b5ce11057bf81e6714d124f0230389c473c0` |
+| `sl-si`                     | Containerimage mit dem Gebietsschema `sl-SI`. | `sha256:bf6e5d3e2536de160a79957b063935627d98f15359f673f89b4a55934ca06209` |
+| `sv-se`                     | Containerimage mit dem Gebietsschema `sv-SE`. | `sha256:7cf5498bab1a5b28131d12c72a0ea107f2d00e562c51f37cbb87032dbcf50f17` |
+| `ta-in`                     | Containerimage mit dem Gebietsschema `ta-IN`. | `sha256:0ea488d1dec874d527938e622ec61406ac3d79e99cb7d905042b55bbc6d675c9` |
+| `te-in`                     | Containerimage mit dem Gebietsschema `te-IN`. | `sha256:8030a1ee3d71b857f1138be2357c4b82113813899e35a0a01a7f465b4f17dd2f` |
+| `th-th`                     | Containerimage mit dem Gebietsschema `th-TH`. | `sha256:fabe5868e4cb793e6ff0b7dd24bfe1aa2a5f8f833e44b0b414cf2a11531a37bc` |
+| `tr-tr`                     | Containerimage mit dem Gebietsschema `tr-TR`. | `sha256:eef963f3fc2ea78f806f233c2eb3500dd74e9f82e54a37a7a21ab294ea8adb83` |
+| `zh-cn`                     | Containerimage mit dem Gebietsschema `zh-CN`. | `sha256:e9f280bf51858e332cdb6a0cc0609ff89c4092e21053249125700efa85d543de` |
+| `zh-hk`                     | Containerimage mit dem Gebietsschema `zh-HK`. | `sha256:73a5f5553c64af018ba7e3202668ca7964143b0fc25d60e33b0c76a60687add8` |
+| `zh-tw`                     | Containerimage mit dem Gebietsschema `zh-TW`. | `sha256:8254191226a38235eedaacf603958b66b24e560d3fb56e1e40b5b0c8bae5b520` |
+
+
+# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
+
+Versionshinweise für `2.14.0-amd64-<locale>`:
+
+Regelmäßiges monatliches Release
+
+Versionshinweise für `2.13.0-amd64-<locale>`:
+
+Regelmäßiges monatliches Release
+
+Versionshinweise für `2.12.1-amd64-<locale>`:
+
+**Feature**
+* Führen Sie ein Upgrade auf die aktuellen Modelle durch.
+
+Versionshinweise für `2.11.0-amd64-<locale>`:
+
+**Feature**
+* Führen Sie ein Upgrade auf die aktuellen Modelle durch.
+
+**Fehlerbehebungen**
+* Bei Benutzereingaben wird die Groß-/Kleinschreibung beibehalten.
+
+Versionshinweise für `2.10.0-amd64-<locale>`:
+
+**Feature**
+* Führen Sie ein Upgrade auf die aktuellen Modelle durch.
+
+Versionshinweise für `2.9.0-amd64-<locale>`:
+
+**Feature**
+* Weitere Fehlerdetails zu Problemen beim Abrufen von benutzerdefinierten Modellen nach ID.
+* Die Hypothese wird in den Konversationsergebnissen standardmäßig unterstützt.
+
+Versionshinweise für `2.7.0-amd64-<locale>`:
+
+**Funktionen**
+* Unterstützung für die folgenden neuen Gebietsschemas:
+    * ar-bh, ar-iq, ar-jo, ar-lb, ar-om, ar-sy
+    * bg-BG
+    * el-GR
+    * en-hk, en-ie, en-ph, en-sg, en-za
+    * es-ar, es-bo, es-cl, es-co, es-cr, es-cu, es-do, es-ec, es-gt, es-pa, es-pe, es-pr, es-py, es-sv, es-us, es-uy, es-ve
+    * et-EE
+    * ga-IE
+    * hr-HR
+    * hu-hu
+    * lt-LT
+    * lv-LV
+    * mt-MT
+    * ro-RO
+    * sk-SK
+    * sl-SL
+* Interpunktion ist standardmäßig aktiviert.
+
+Beachten Sie, dass dieses Containerimage aufgrund der enthaltenen Ausdruckslisten größer geworden ist. 
+
+Versionshinweise für `2.6.0-amd64-<locale>`:
+
+**Funktionen**
+* Upgrade auf die neuesten Modelle erfolgt und vollständig migriert zu .NET 3.1
+* Unterstützung für PhraseList v2
+* Ausdruckslisten werden in folgenden Gebietsschemas unterstützt:
+    * en-au
+    * en-ca
+    * en-gb
+    * en-in
+    * de-de
+    * zh-cn
+* Unterstützung für das neue Gebietsschema `cs-CZ` 
+    * Groß-/Kleinschreibung und Satzzeichen werden zurzeit nicht unterstützt.
+
+**Fehlerbehebungen**
+* Ein Problem wurde behoben, bei dem der Konfidenzscore im Diarisierungsmodus immer 1 war.
+* Migriert zur TextAnalytics 3.0-API
+
+Beachten Sie, dass dieses Containerimage aufgrund der enthaltenen Ausdruckslisten größer geworden ist. 
+
+Versionshinweise für `2.5.0-amd64-<locale>`:
+
+**Funktionen**
+* Unterstützung für Azure US Government Cloud
+
+**Fehlerbehebungen**
+* Behebt ein Problem mit „Ausführen als Nicht-Root-Benutzer“ im Diarisierungsmodus
+
+| Imagetags                  | Notizen                                    |
+|-----------------------------|:-----------------------------------------|
+| `2.14.0-amd64-<locale>`     | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.14.0-amd64-en-us`.|
+| `2.13.0-amd64-<locale>`     | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.13.0-amd64-en-us`.|
+| `2.12.1-amd64-<locale>`     | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.12.1-amd64-en-us`.|
+| `2.11.0-amd64-<locale>`     | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.11.0-amd64-en-us`.|
+| `2.10.0-amd64-<locale>`     | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.10.0-amd64-en-us`.|
+| `2.9.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.9.0-amd64-en-us`. |
+| `2.7.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.7.0-amd64-en-us`. |
+| `2.6.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.6.0-amd64-en-us`. |
+| `2.5.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.5.0-amd64-en-us`. |
+
 
 Für diesen Container sind die folgenden Gebietsschemas verfügbar.
 
@@ -390,103 +586,6 @@ Für diesen Container sind die folgenden Gebietsschemas verfügbar.
 | `zh-cn`                     | Containerimage mit dem Gebietsschema `zh-CN`. | `sha256:2ec742699abb843b91f9516cb863d66ecf5f38d5350c3c23c693dcb2f5804c66` |
 | `zh-hk`                     | Containerimage mit dem Gebietsschema `zh-HK`. | `sha256:34f21fed7129dbeaef6476b286e5d6741b635f034ea038b8fe467512ee0092e2` |
 | `zh-tw`                     | Containerimage mit dem Gebietsschema `zh-TW`. | `sha256:f2e2dc638ac2e58177302947df30bea7448563a012deb3e4f48f345c09902bb0` |
-
-
-# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
-
-Versionshinweise für `2.13.0-amd64-<locale>`:
-
-Regelmäßiges monatliches Release
-
-Versionshinweise für `2.12.1-amd64-<locale>`:
-
-**Feature**
-* Führen Sie ein Upgrade auf die aktuellen Modelle durch.
-
-Versionshinweise für `2.11.0-amd64-<locale>`:
-
-**Feature**
-* Führen Sie ein Upgrade auf die aktuellen Modelle durch.
-
-**Fehlerbehebungen**
-* Bei Benutzereingaben wird die Groß-/Kleinschreibung beibehalten.
-
-Versionshinweise für `2.10.0-amd64-<locale>`:
-
-**Feature**
-* Führen Sie ein Upgrade auf die aktuellen Modelle durch.
-
-Versionshinweise für `2.9.0-amd64-<locale>`:
-
-**Feature**
-* Weitere Fehlerdetails zu Problemen beim Abrufen von benutzerdefinierten Modellen nach ID.
-* Die Hypothese wird in den Konversationsergebnissen standardmäßig unterstützt.
-
-Versionshinweise für `2.7.0-amd64-<locale>`:
-
-**Funktionen**
-* Unterstützung für die folgenden neuen Gebietsschemas:
-    * ar-bh, ar-iq, ar-jo, ar-lb, ar-om, ar-sy
-    * bg-BG
-    * el-GR
-    * en-hk, en-ie, en-ph, en-sg, en-za
-    * es-ar, es-bo, es-cl, es-co, es-cr, es-cu, es-do, es-ec, es-gt, es-pa, es-pe, es-pr, es-py, es-sv, es-us, es-uy, es-ve
-    * et-EE
-    * ga-IE
-    * hr-HR
-    * hu-hu
-    * lt-LT
-    * lv-LV
-    * mt-MT
-    * ro-RO
-    * sk-SK
-    * sl-SL
-* Interpunktion ist standardmäßig aktiviert.
-
-Beachten Sie, dass dieses Containerimage aufgrund der enthaltenen Ausdruckslisten größer geworden ist. 
-
-Versionshinweise für `2.6.0-amd64-<locale>`:
-
-**Funktionen**
-* Upgrade auf die neuesten Modelle erfolgt und vollständig migriert zu .NET 3.1
-* Unterstützung für PhraseList v2
-* Ausdruckslisten werden in folgenden Gebietsschemas unterstützt:
-    * en-au
-    * en-ca
-    * en-gb
-    * en-in
-    * de-de
-    * zh-cn
-* Unterstützung für das neue Gebietsschema `cs-CZ` 
-    * Groß-/Kleinschreibung und Satzzeichen werden zurzeit nicht unterstützt.
-
-**Fehlerbehebungen**
-* Ein Problem wurde behoben, bei dem der Konfidenzscore im Diarisierungsmodus immer 1 war.
-* Migriert zur TextAnalytics 3.0-API
-
-Beachten Sie, dass dieses Containerimage aufgrund der enthaltenen Ausdruckslisten größer geworden ist. 
-
-Versionshinweise für `2.5.0-amd64-<locale>`:
-
-**Funktionen**
-* Unterstützung für Azure US Government Cloud
-
-**Fehlerbehebungen**
-* Behebt ein Problem mit „Ausführen als Nicht-Root-Benutzer“ im Diarisierungsmodus
-
-| Imagetags                  | Notizen                                    |
-|-----------------------------|:-----------------------------------------|
-| `2.13.0-amd64-<locale>`     | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.13.0-amd64-en-us`.|
-| `2.12.1-amd64-<locale>`     | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.12.1-amd64-en-us`.|
-| `2.11.0-amd64-<locale>`     | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.11.0-amd64-en-us`.|
-| `2.10.0-amd64-<locale>`     | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.10.0-amd64-en-us`.|
-| `2.9.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.9.0-amd64-en-us`. |
-| `2.7.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.7.0-amd64-en-us`. |
-| `2.6.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.6.0-amd64-en-us`. |
-| `2.5.0-amd64-<locale>`      | Ersetzen Sie `<locale>` durch eins der unten aufgeführten, verfügbaren Gebietsschemas. Beispiel: `2.5.0-amd64-en-us`. |
-
-
-Für diesen Container sind die folgenden Gebietsschemas verfügbar.
 
 | Gebietsschema für v2.13.0          | Notizen                                    | Digest                                                                    |
 |-----------------------------|:-----------------------------------------|:--------------------------------------------------------------------------|

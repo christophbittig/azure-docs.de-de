@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.author: qpetraroia
 author: qpetraroia
-ms.openlocfilehash: 1c0a7768c0f5e30d9d5ab3b0fa32b0eb6f4946c3
-ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
+ms.openlocfilehash: 24c81290bce53e1399379103ac3d17ea735222a4
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112428415"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235286"
 ---
 # <a name="use-planned-maintenance-to-schedule-maintenance-windows-for-your-azure-kubernetes-service-aks-cluster-preview"></a>Verwenden der geplanten Wartung, um Wartungsfenster für AKS-Cluster (Azure Kubernetes Service) zu planen (Vorschau)
 
@@ -131,7 +131,7 @@ az aks maintenanceconfiguration update -g MyResourceGroup --cluster-name myAKSCl
 
 ## <a name="list-all-maintenance-windows-in-an-existing-cluster"></a>Auflisten aller Wartungsfenster in einem vorhandenen Cluster
 
-Um alle derzeit konfigurierten Wartungsfenster in Ihrem AKS-Cluster anzuzeigen, verwenden Sie den Befehl `az aks maintenanceconfiguration list`.
+Verwenden Sie den Befehl `az aks maintenanceconfiguration list`, um alle derzeit konfigurierten Wartungsfenster in Ihrem AKS-Cluster anzuzeigen.
 
 ```azurecli-interactive
 az aks maintenanceconfiguration list -g MyResourceGroup --cluster-name myAKSCluster

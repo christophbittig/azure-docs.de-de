@@ -3,14 +3,14 @@ title: Erstellen von Updatebereitstellungen für die Azure Automation-Updateverw
 description: In diesem Artikel wird beschrieben, wie Sie Updatebereitstellungen planen und deren Status anzeigen.
 services: automation
 ms.subservice: update-management
-ms.date: 06/24/2021
+ms.date: 08/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: de148858ba5c88e8dbbf2693dadc818b8c66e833
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1d8ad9b41f9d193624d9c3501493c525777832eb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768328"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350634"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Bereitstellen von Updates und Überprüfen von Ergebnissen
 
@@ -169,6 +169,36 @@ Wählen Sie **Alle Protokolle** aus, um alle von der Bereitstellung erstellten P
 Wählen Sie **Ausgabe** aus, um den Auftragsdatenstrom des Runbooks anzuzeigen, das für die Verwaltung der Updatebereitstellung auf den Ziel-VMs verantwortlich ist.
 
 Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern bei der Bereitstellung anzuzeigen.
+
+## <a name="deploy-updates-across-azure-tenants"></a>Bereitstellen von Updates für Azure-Mandanten
+
+Wenn Sie Computer in einem anderen Azure-Mandanten patchen müssen, der der Updateverwaltung unterliegt, müssen Sie wie folgt vorgehen, um sie in die Planung aufzunehmen. Sie können das Cmdlet [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule) mit dem Parameter `ForUpdateConfiguration` verwenden, um einen Zeitplan zu erstellen. Sie können das Cmdlet [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration) verwenden und die Computer im anderen Mandanten an den Parameter `NonAzureComputer` übergeben. Das folgende Beispiel zeigt die erforderliche Vorgehensweise.
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$sched = New-AzAutomationSchedule `
+    -ResourceGroupName mygroup `
+    -AutomationAccountName myaccount `
+    -Name myupdateconfig `
+    -Description test-OneTime `
+    -OneTime `
+    -StartTime $startTime `
+    -ForUpdateConfiguration
+
+New-AzAutomationSoftwareUpdateConfiguration  `
+    -ResourceGroupName $rg `
+    -AutomationAccountName <automationAccountName> `
+    -Schedule $sched `
+    -Windows `
+    -NonAzureComputer $nonAzurecomputers `
+    -Duration (New-TimeSpan -Hours 2) `
+    -IncludedUpdateClassification Security,UpdateRollup `
+    -ExcludedKbNumber KB01,KB02 `
+    -IncludedKbNumber KB100
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

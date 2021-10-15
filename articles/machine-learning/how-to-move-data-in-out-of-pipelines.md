@@ -4,22 +4,22 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Azure Machine Learning-Pipelines Daten erfassen und wie Sie Daten verwalten und zwischen Pipelineschritten verschieben.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.author: laobri
 author: lobrien
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 86bdbd1588c14ad03cca6544e341599a446c35e9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: cfbb7d9d5144c0e91b9bf68e332300317dc2f76f
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124767259"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425940"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)
 
-Dieser Artikel enthält Code zum Importieren, Transformieren und Verschieben von Daten zwischen Schritten in einer Azure Machine Learning-Pipeline. Eine Übersicht über die Funktionsweise von Daten in Azure Machine Learning finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](how-to-access-data.md). Informationen zu den Vorteilen und zur Struktur von Azure Machine Learning-Pipelines finden Sie unter [Beschreibung von Azure Machine Learning-Pipelines](concept-ml-pipelines.md).
+Dieser Artikel enthält Code zum Importieren, Transformieren und Verschieben von Daten zwischen Schritten in einer Azure Machine Learning-Pipeline. Eine Übersicht über die Funktionsweise von Daten in Azure Machine Learning finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](how-to-access-data.md). Zu den Vorteilen und der Struktur von Azure Machine Learning Pipelines siehe [Was sind Azure Machine Learning Pipelines?](concept-ml-pipelines.md)
 
 In diesem Artikel wird Folgendes gezeigt:
 

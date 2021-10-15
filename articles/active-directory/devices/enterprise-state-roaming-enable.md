@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f960e737f4623e90761dce17b6ad5b13ee47ee88
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8ed5291ee08d990d563d1ac3e2c3648d6a975280
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624594"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458508"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Aktivieren von Enterprise State Roaming in Azure Active Directory
 
@@ -58,13 +58,8 @@ Führen Sie diese Schritte aus, um einen Bericht zum Gerätesynchronisierungssta
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com/) an.
 1. Wählen Sie **Azure Active Directory** > **Benutzer** > **Alle Benutzer**.
 1. Wählen Sie den Benutzer und dann **Geräte** aus.
-1. Wählen Sie unter **Anzeigen** die Option **Einstellungen für Gerätesynchronisierung und App-Daten**, um den Synchronisierungsstatus anzuzeigen.
-  
-   ![Bild der Gerätesynchronisierungsdaten-Einstellung](./media/enterprise-state-roaming-enable/sync-status.png)
-  
-1. Wenn für diese Benutzer Geräte synchronisiert werden, werden die Geräte hier angezeigt.
-  
-   ![Bild der Spaltendarstellung von Gerätesynchronisierungsdaten](./media/enterprise-state-roaming-enable/device-status-row.png)
+1. Wählen Sie **Geräte-Synchronisierungseinstellungen und App-Daten** anzeigen, um den Synchronisierungsstatus anzuzeigen.
+1. Für den Benutzer synchronisierte Geräte werden angezeigt und können heruntergeladen werden.
 
 ## <a name="data-retention"></a>Beibehaltung von Daten
 

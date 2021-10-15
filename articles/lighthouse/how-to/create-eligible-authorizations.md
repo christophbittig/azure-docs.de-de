@@ -1,14 +1,14 @@
 ---
 title: Erstellen von berechtigten Autorisierungen
 description: Beim Onboarding von Kunden in Azure Lighthouse können Sie es Benutzern in Ihrem Verwaltungsmandanten ermöglichen, ihre Rolle JIT-basiert (Just-In-Time) zu erhöhen.
-ms.date: 08/26/2021
+ms.date: 09/08/2021
 ms.topic: how-to
-ms.openlocfilehash: 1754a7d43f184e340badb7adb29de8caa3901372
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: b36c3a91c780c2d374ceafe14a671aaa135a2d3c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038684"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777828"
 ---
 # <a name="create-eligible-authorizations"></a>Erstellen von berechtigten Autorisierungen
 
@@ -58,11 +58,11 @@ Sie können berechtigte Autorisierungen nicht mit Dienstprinzipalen verwenden, d
 > [!NOTE]
 > Stellen Sie für jede berechtigte Autorisierung sicher, dass Sie auch eine permanente (aktive) Autorisierung für dieselbe Prinzipal-ID mit einer anderen Rolle erstellen, z. B. Leser (oder eine andere integrierte Azure-Rolle, die über Lesezugriff verfügt). Wenn Sie keine permanente Berechtigung für den Lesezugriff einbeziehen, kann der Benutzer seine Rolle nicht im Azure-Portal erhöhen.
 
-### <a name="role"></a>Role
+### <a name="role"></a>Rolle
 
 Jede berechtigte Autorisierung muss eine [integrierte Azure-Rolle](../../role-based-access-control/built-in-roles.md) enthalten, die der Benutzer auf Just-In-Time-Basis nutzen kann.
 
-Die Rolle kann eine beliebige integrierte Azure-Rolle sein, die für die delegierte Azure-Ressourcenverwaltung unterstützt wird (mit Ausnahme des Benutzerzugriffsadministrators).
+Die Rolle kann eine beliebige integrierte Azure-Rolle sein, die [für die delegierte Azure-Ressourcenverwaltung unterstützt](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse) wird (mit Ausnahme des Benutzerzugriffsadministrators).
 
 > [!IMPORTANT]
 > Wenn Sie mehrere berechtigte Autorisierungen einbeziehen, die dieselbe Rolle verwenden, müssen für jede der berechtigten Autorisierungen die gleichen Zugriffsrichtlinieneinstellungen gelten.

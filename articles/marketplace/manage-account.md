@@ -1,27 +1,27 @@
 ---
-title: Verwalten eines Kontos im kommerziellen Marketplace in Microsoft Partner Center – Azure Marketplace
-description: Erfahren Sie, wie Sie ein Konto im kommerziellen Marketplace in Microsoft Partner Center verwalten.
+title: Verwalten eines kommerziellen Marktplatzkontos im Partner Center
+description: Verwalten Sie ein kommerzielles Marktplatz-Konto im Partner Center.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 09/27/2021
-ms.openlocfilehash: 9e30cc845fbc4ec2aefc062780f53e3bb0f02161
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: f6730ad58491fb24dbc025eaa44fbc7d7bdade58
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129082611"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359817"
 ---
-# <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
+# <a name="manage-a-commercial-marketplace-account-in-partner-center"></a>Verwalten eines kommerziellen Marktplatzkontos im Partner Center
 
 **Geeignete Rollen**
 
 - Besitzer
 - Manager
 
-Nachdem Sie [ein Partner Center-Konto erstellt](./create-account.md) haben, können Sie das [Dashboard des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) verwenden, um Ihr Konto und Ihre Angebote zu verwalten.
+Sobald Sie [ein Partner-Center-Konto](./create-account.md) erstellt haben, können Sie Ihr Konto und Ihre Angebote über das [Dashboard des kommerziellen Marktplatzes](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) verwalten.
 
 ## <a name="access-your-account-settings"></a>Zugreifen auf Ihre Kontoeinstellungen
 
@@ -33,11 +33,11 @@ Wenn nicht bereits geschehen, sollten Sie (oder der Administrator Ihrer Organisa
 
 1. Melden Sie sich beim [Dashboard des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/home) in Partner Center mit dem Konto an, auf das Sie zugreifen möchten. Wenn Sie mehreren Konten angehören und sich mit einem anderen Konto angemeldet haben, können Sie die [Konten wechseln](switch-accounts.md).
 
-1. Wählen Sie oben rechts **Einstellungen** (Zahnradsymbol) und dann **Kontoeinstellungen** aus.
+1. Wählen Sie oben rechts **Einstellungen** (Zahnradsymbol), dann **Kontoeinstellungen**.
 
     [ ![Screenshot des Menüs „Kontoeinstellungen“ in Partner Center](./media/manage-accounts/settings-account-workspaces.png) ](./media/manage-accounts/settings-account-workspaces.png#lightbox)
 
-1. Wählen Sie unter **Kontoeinstellungen** die Option **Rechtliche Hinweise** aus. Wählen Sie dann die Registerkarte **Entwickler** aus, um Details zu Ihrem Konto im kommerziellen Marketplace anzuzeigen.
+1. Wählen Sie unter **Kontoeinstellungen** die Option **Recht** und dann die Registerkarte **Entwickler**, um Details zu Ihrem kommerziellen Marktplatzkonto anzuzeigen.
 
     [ ![Screenshot der Registerkarte „Entwickler“ auf der Seite „Rechtliche Hinweise“ unter „Kontoeinstellungen“](./media/manage-accounts/developer-tab-workspaces.png) ](./media/manage-accounts/developer-tab-workspaces.png#lightbox)
 
@@ -50,7 +50,7 @@ Wenn nicht bereits geschehen, sollten Sie (oder der Administrator Ihrer Organisa
 
    :::image type="content" source="media/manage-accounts/settings-account.png" alt-text="Screenshot der Option „Kontoeinstellungen“ in Partner Center":::
 
-1. Wählen Sie unter **Kontoeinstellungen** die Option **Rechtliche Hinweise** aus. Wählen Sie dann die Registerkarte **Entwickler** aus, um Details zu Ihrem Konto im kommerziellen Marketplace anzuzeigen.
+1. Wählen Sie unter **Kontoeinstellungen** die Option **Recht** und dann die Registerkarte **Entwickler**, um Details zu Ihrem kommerziellen Marktplatzkonto anzuzeigen.
 
    :::image type="content" source="media/manage-accounts/developer-tab.png" alt-text="Screenshot: Registerkarte „Entwickler“" lightbox="media/manage-accounts/developer-tab.png":::
 
@@ -137,6 +137,8 @@ Um auf die Seite „Vereinbarungen“ zuzugreifen, gehen Sie folgendermaßen vor
 Möglicherweise wird am oberen Rand dieser Seite **Aktionen erforderlich** angezeigt, wenn Vertragsaktualisierungen vorliegen, die Ihre Aufmerksamkeit erfordern. Um einen aktualisierten Vertrag zu akzeptieren, müssen Sie zunächst die verknüpfte Vertragsversion lesen. Wählen Sie dann **Verträge akzeptieren** aus.
 
 ## <a name="set-up-a-payout-profile"></a>Einrichten eines Auszahlungsprofils
+
+Um ein transaktionsfähiges Angebot im Azure Marketplace zu haben, müssen ein Steuerprofil und ein Zahlungsprofil eingereicht und im Partner Center validiert werden.  Ein Steuerprofil muss zuerst eingereicht werden, bevor ein Auszahlungsprofil erstellt werden kann. Die Validierung eines eingereichten Steuerprofils kann bis zu 48 Stunden dauern.
 
 Ein Auszahlungsprofil ist das Bankkonto, auf das Ihre Verkaufserlöse überwiesen werden. Dieses Bankkonto muss sich in demselben Land oder derselben Region befinden, in dem bzw. der Sie Ihr Partner Center-Konto registriert haben. Weitere Informationen zu einem Auszahlungsprofil finden Sie unter [Einrichten Ihres Auszahlungskontos und Steuerformulars](/partner-center/set-up-your-payout-account).
 

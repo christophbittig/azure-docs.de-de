@@ -4,15 +4,15 @@ description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokale
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/12/2021
+ms.date: 09/22/2021
 ms.custom: subject-rbac-steps
 ms.author: v-erkel
-ms.openlocfilehash: 3ea51d88d65b8016e68673703ee823df19bcf608
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 016a62bc7713b389e8baf7d0a5b5aeefceb81f2b
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294959"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271959"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
@@ -401,7 +401,7 @@ Sie können das Azure-Portal oder die Azure CLI verwenden, um die bereits für I
 
 Klicken Sie auf den Namen eines Speicherziels, um seine zugehörige Detailseite zu öffnen.
 
-Weitere Informationen finden Sie unter [Bearbeiten von Speicherzielen](hpc-cache-edit-storage.md).
+Weitere Informationen finden Sie unter [Ansehen und Verwalten von Speicherzielen](hpc-cache-edit-storage.md) und [Hinzufügen von Speicherzielen](manage-storage-targets.md).
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

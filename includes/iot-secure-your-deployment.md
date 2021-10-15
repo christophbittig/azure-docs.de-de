@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: iot-fundamentals
 author: robinsh
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 597bcf9d7654b88cb4a3f9b7df32ea1c7b770da2
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: f1256eb3be414679a84701c6ea96ac9a72d9caa2
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109508473"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236356"
 ---
 Dieser Artikel bietet weitere Details zum Schützen Ihrer auf Azure IoT basierenden IoT-Infrastruktur (Internet of Things, Internet der Dinge). Geboten werden Links zu Details auf Implementierungsebene für die Konfiguration und Bereitstellung der einzelnen Komponenten. Darüber hinaus finden Sie Vergleiche, um aus verschiedenen konkurrierenden Methoden die gewünschte zu wählen.
 
@@ -29,7 +29,7 @@ Der Schutz der Azure IoT-Bereitstellung kann in die folgenden drei Bereiche unte
 
 ## <a name="secure-device-provisioning-and-authentication"></a>Sichere Gerätebereitstellung und -authentifizierung
 
-Die IoT Solution Accelerators schützen IoT-Geräte mithilfe der beiden folgenden Methoden:
+IoT-Lösungen sichern IoT-Geräte mit den folgenden zwei Methoden:
 
 * Durch Bereitstellen eines eindeutigen Identitätsschlüssels (Sicherheitstokens) für jedes Gerät, der vom Gerät für die Kommunikation mit dem IoT Hub verwendet werden kann.
 

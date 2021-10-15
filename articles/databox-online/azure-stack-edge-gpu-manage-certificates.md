@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 06/01/2021
 ms.author: alkohli
-ms.openlocfilehash: d39b1f1b4220c0899cb649f0544bc7da94f20c09
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 15cfd2b7188f84e14aa12824f8d5fab06d226330
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113361601"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363999"
 ---
 # <a name="upload-import-and-export-certificates-on-azure-stack-edge-pro-gpu"></a>Hochladen, Importieren und Exportieren von Zertifikaten auf Azure Stack Edge Pro GPU-Geräte
 
@@ -40,24 +40,81 @@ Bevor Sie Ihre Stammzertifikate und Endpunktzertifikate auf das Gerät hochladen
 
 Um das Stamm- und die Endpunktzertifikate auf das Gerät hochzuladen, verwenden Sie die Option **+ Zertifikat hinzufügen** auf der Seite **Zertifikate** der lokalen Webbenutzeroberfläche. Führen Sie die folgenden Schritte aus:
 
-1. Laden Sie zuerst die Stammzertifikate hoch. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Zertifikate > + Zertifikat hinzufügen**.
+1. Laden Sie zuerst die Stammzertifikate hoch. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Zertifikate**.
+1. Wählen Sie **+ Zertifikat hinzufügen** aus.
 
-    ![Hinzufügen des Signaturkettenzertifikats 1](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
+    ![Hinzufügen des Signaturkettenzertifikats 1](media/azure-stack-edge-gpu-manage-certificates/add-cert-1.png)
 
-2. Laden Sie als nächstes die Endpunktzertifikate hoch. 
+1. Speichern Sie das Zertifikat.
 
-    ![Hinzufügen des Signaturkettenzertifikats 2](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
+#### <a name="upload-endpoint-certificate"></a>Hochladen des Endpunktzertifikats
+
+1. Laden Sie als nächstes die Endpunktzertifikate hoch. 
+
+    ![Hinzufügen des Signaturkettenzertifikats 2](media/azure-stack-edge-gpu-manage-certificates/add-cert-2.png)
 
     Wählen Sie die Zertifikatsdateien im *PFX*-Format aus, und geben Sie das Kennwort ein, das Sie beim Exportieren des Zertifikats angegeben haben. Das Anwenden des Azure Resource Manager-Zertifikats kann einige Minuten dauern.
 
     Wenn die Signaturkette nicht zuerst aktualisiert wird und Sie versuchen, die Endpunktzertifikate hochzuladen, erhalten Sie einen Fehler.
 
-    ![Anwenden von Zertifikatfehlern](media/azure-stack-edge-series-manage-certificates/apply-cert-error-1.png)
+    ![Anwenden von Zertifikatfehlern](media/azure-stack-edge-gpu-manage-certificates/apply-cert-error-1.png)
 
     Wechseln Sie zurück, und laden Sie das Signaturkettenzertifikat hoch. Anschließend laden Sie die Endpunktzertifikate hoch und wenden sie an.
 
 > [!IMPORTANT]
 > Wenn der Gerätename oder die DNS-Domäne geändert wird, müssen neue Zertifikate erstellt werden. Die Clientzertifikate und die Gerätezertifikate sollten dann mit dem neuen Gerätenamen und der DNS-Domäne aktualisiert werden. 
+
+#### <a name="upload-kubernetes-certificates"></a>Hochladen von Kubernetes-Zertifikaten
+
+Kubernetes-Zertifikate können für Edge-Containerregistrierung oder für Kubernetes-Dashboards verwendet werden. In jedem Fall müssen ein Zertifikat und eine Schlüsseldatei hochgeladen werden. Führen Sie die folgenden Schritte aus, um Kubernetes-Zertifikate zu erstellen und hochzuladen:
+
+
+1. Sie verwenden `openssl`, um das Kubernetes-Dashboardzertifikat oder Edge-Containerregistrierung zu erstellen. Stellen Sie sicher, dass Sie openssl auf dem System installieren, das Sie zum Erstellen der Zertifikate verwenden würden. Auf einem Windows-System können Sie Chocolatey verwenden, um `openssl` zu installieren. Nachdem Sie Chocolatey installiert haben, öffnen Sie PowerShell, und geben Sie Folgendes ein:
+    
+    ```powershell
+    choco install openssl
+    ```
+1. Verwenden Sie `openssl`, um diese Zertifikate zu erstellen. Eine `cert.pem`-Zertifikatsdatei und eine `key.pem`-Schlüsseldatei werden erstellt.  
+
+    - Verwenden Sie für die Edge-Containerregistrierung den folgenden Befehl:
+    
+        ```powershell
+        openssl req -newkey rsa:4096 -nodes -sha256 -keyout key.pem -x509 -days 365 -out cert.pem -subj "/CN=<ecr.endpoint-suffix>"
+        ``` 
+        Beispielausgabe: 
+
+        ```powershell
+        PS C:\WINDOWS\system32> openssl req -newkey rsa:4096 -nodes -sha256 -keyout key.pem -x509 -days 365 -out cert.pem -subj "/CN=ecr.dbe-1d6phq2.microsoftdatabox.com"
+        Generating a RSA private key
+        .....................++++....++++
+        writing new private key to 'key.pem'
+        -----
+        PS C:\WINDOWS\system32>
+        ```    
+    - Verwenden Sie für das Kubernetes-Dashboardzertifikat den folgenden Befehl:  
+     
+        ```powershell
+        openssl req -newkey rsa:4096 -nodes -sha256 -keyout key.pem -x509 -days 365 -out cert.pem -subj "/CN=<<kubernetes-dashboard.endpoint-suffix> OR <endpoint-suffix>>"
+        ```
+        Beispielausgabe: 
+
+        ```powershell
+        PS C:\WINDOWS\system32> openssl req -newkey rsa:4096 -nodes -sha256 -keyout key.pem -x509 -days 365 -out cert.pem -subj "/CN=kubernetes-dashboard.dbe-1d8phq2.microsoftdatabox.com"
+        Generating a RSA private key
+        .....................++++....++++
+        writing new private key to 'key.pem'
+        -----
+        PS C:\WINDOWS\system32>
+        ```          
+1. Laden Sie das Kubernetes-Zertifikat und die entsprechende Schlüsseldatei hoch, die Sie zuvor generiert haben.
+    
+    - Für Edge-Containerregistrierung
+    
+        ![Screenshot: Hinzufügen eines Edge-Containerregistrierungszertifikats und einer Schlüsseldatei](media/azure-stack-edge-gpu-manage-certificates/add-cert-3.png)      
+
+    - Für Kubernetes-Dashboard     
+
+        ![Screenshot: Hinzufügen eines Kubernetes-Dashboardzertifikats und einer Schlüsseldatei](media/azure-stack-edge-gpu-manage-certificates/add-cert-4.png) 
 
 ## <a name="import-certificates-on-the-client-accessing-the-device"></a>Importieren von Zertifikaten auf den Client, der auf das Gerät zugreift
 
@@ -75,22 +132,22 @@ Führen Sie die folgenden Schritte aus, um Zertifikate auf einem Windows-Client 
 
 1. Klicken Sie mit der rechten Maustaste auf die Datei, und wählen Sie **Zertifikat installieren** aus. Mit dieser Aktion wird der Zertifikatimport-Assistent gestartet.
 
-    ![Importieren des Zertifikats 1](media/azure-stack-edge-series-manage-certificates/import-cert-1.png)
+    ![Importieren des Zertifikats 1](media/azure-stack-edge-gpu-manage-certificates/import-cert-1.png)
 
 2. Wählen Sie für **Speicherort** die Option **Lokaler Computer** und dann **Weiter** aus.
 
-    ![Importieren des Zertifikats 2](media/azure-stack-edge-series-manage-certificates/import-cert-2.png)
+    ![Importieren des Zertifikats 2](media/azure-stack-edge-gpu-manage-certificates/import-cert-2.png)
 
 3. Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** und dann **Durchsuchen** aus. 
 
     - Um in den persönlichen Speicher zu importieren, navigieren Sie zum persönlichen Speicher Ihres Remotehosts, und wählen Sie dann **Weiter** aus.
 
-        ![Importieren des Zertifikats 4](media/azure-stack-edge-series-manage-certificates/import-cert-4.png)
+        ![Importieren des Zertifikats 4](media/azure-stack-edge-gpu-manage-certificates/import-cert-4.png)
 
 
     - Um in einen vertrauenswürdigen Speicher zu importieren, navigieren Sie zu der vertrauenswürdigen Stammzertifizierungsstelle, und wählen Sie dann **Weiter** aus.
 
-        ![Importieren des Zertifikats 3](media/azure-stack-edge-series-manage-certificates/import-cert-3.png)
+        ![Importieren des Zertifikats 3](media/azure-stack-edge-gpu-manage-certificates/import-cert-3.png)
 
  
 4. Wählen Sie **Fertig stellen** aus. Eine Meldung wird angezeigt, die besagt, dass der Import erfolgreich war.

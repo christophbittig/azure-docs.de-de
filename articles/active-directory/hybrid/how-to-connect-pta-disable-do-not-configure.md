@@ -11,12 +11,12 @@ ms.date: 04/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26112b1e799cbde3145e7137c686b4b336db4bab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acabc2cf177ec81ecc293398f9b43f42e71c2862
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919934"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234906"
 ---
 # <a name="disable-pta-when-using-azure-ad-connect"></a>Deaktivieren der PTA bei Verwendung von Azure AD Connect
 
@@ -29,7 +29,7 @@ Zum Deaktivieren der PTA können Sie die folgenden Cmdlets verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Die folgenden Voraussetzungen müssen erfüllt sein:
-- Ein Windows-Computer, auf dem der PTA-Agent installiert ist. 
+- Ein Windows-Computer, auf dem der PTA-Agent installiert ist 
 - Der Agent muss die Version 1.5.1742.0 oder höher aufweisen. 
 - Ein globales Azure-Administratorkonto, um die PowerShell-Cmdlets zum Deaktivieren der PTA auszuführen.
 

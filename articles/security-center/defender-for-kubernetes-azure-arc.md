@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/14/2021
 ms.author: memildin
-ms.openlocfilehash: fa7076882370b404ea7b1e04cb5c364f22c35fae
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2fc8c04cbe86737d924a1e61e8a2b3808082b7c9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128648466"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351711"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>Schützen von Kubernetes-Clustern mit Azure Arc-Unterstützung, die in lokalen und Multicloud-Umgebungen ausgeführt werden
 
@@ -49,6 +49,7 @@ Dieses Diagramm zeigt die Interaktion zwischen Azure Defender für Kubernetes un
 Stellen Sie vor der Bereitstellung der Erweiterung Folgendes sicher:
 - [Die Kubernetes-Cluster sind mit Azure Arc verbunden.](../azure-arc/kubernetes/quickstart-connect-cluster.md)
 - Vergewissern Sie sich, [dass die in der Dokumentation zu generischen Clustererweiterungen aufgeführten Voraussetzungen erfüllt sind](../azure-arc/kubernetes/extensions.md#prerequisites).
+- [Helm 3](https://helm.sh/docs/intro/install), Version 3.7.0 und höher
 - Konfigurieren Sie **Port 443** auf den folgenden Endpunkten für ausgehenden Zugriff:
     - Für Cluster in Azure Government Cloud:
         - *.ods.opinsights.azure.us
@@ -112,7 +113,7 @@ Eine dedizierte Empfehlung in Azure Security Center bietet Folgendes:
 
     Im Folgenden werden alle unterstützten Konfigurationseinstellungen für den Azure Defender-Erweiterungstyp beschrieben:
 
-    | Eigenschaft | Beschreibung |
+    | Eigenschaft | BESCHREIBUNG |
     |----------|-------------|
     | logAnalyticsWorkspaceResourceID | **Optional:** Vollständige Ressourcen-ID Ihres eigenen Log Analytics-Arbeitsbereichs.<br>Wenn keine Angabe vorliegt, wird der Standardarbeitsbereich der Region verwendet.<br><br>Um die vollständige Ressourcen-ID zu erhalten, zeigen Sie die Liste der Arbeitsbereiche in Ihren Abonnements im JSON-Standardformat an, indem Sie den folgenden Befehl ausführen:<br>```az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json```<br><br>Die Ressourcen-ID des Log Analytics Arbeitsbereichs weist folgende Syntax auf:<br>/subscriptions/{Ihre-Abonnement-ID}/resourceGroups/{Ihre-Ressourcengruppe}/providers/Microsoft.OperationalInsights/workspaces/{Ihr-Arbeitsbereichsname}. <br>Weitere Informationen finden Sie unter [Log Analytics-Arbeitsbereiche](../azure-monitor/logs/data-platform-logs.md#log-analytics-and-workspaces). |
     | auditLogPath |**Optional:** Der vollständige Pfad zu den Überwachungsprotokolldateien.<br>Wenn nicht angegeben, wird der Standardpfad ``/var/log/kube-apiserver/audit.log`` verwendet.<br>Für die AKS-Engine lautet der Standardpfad ``/var/log/kubeaudit/audit.log``. |
@@ -150,7 +151,7 @@ Um die REST-API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, b
 
     Hierbei gilt:
 
-    | Name            | Geben Sie in   | Erforderlich | type   | BESCHREIBUNG                                  |
+    | Name            | Geben Sie in   | Erforderlich | Typ   | BESCHREIBUNG                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | Abonnement-ID | path | True     | Zeichenfolge | Abonnement-ID Ihrer Kubernetes-Ressource mit Azure Arc-Unterstützung |
     | Ressourcengruppe  | path | True     | Zeichenfolge | Name der Ressourcengruppe, in der Ihre Kubernetes-Ressource mit Azure Arc-Unterstützung enthalten ist |
@@ -333,7 +334,7 @@ Um die Erweiterung mit der REST-API zu entfernen, führen Sie den folgenden DELE
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| Name            | Geben Sie in   | Erforderlich | type   | BESCHREIBUNG                                           |
+| Name            | Geben Sie in   | Erforderlich | Typ   | BESCHREIBUNG                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | Abonnement-ID | path | True     | Zeichenfolge | Abonnement-ID Ihres Kubernetes-Clusters mit Arc-Unterstützung |
 | Ressourcengruppe  | path | True     | Zeichenfolge | Ressourcengruppe Ihres Kubernetes-Clusters mit Arc-Unterstützung  |

@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie Ausnahmen diagnostizieren und beheben, die au
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 07/13/2020
+ms.date: 09/29/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d180e955fda4074fa2115b26f363b2c1350dab98
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: acd3393471e8a58247ad366dcc8b816965ba8045
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115448"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273493"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>Diagnostizieren und Behandeln von Problemen im Zusammenhang mit der Azure Cosmos DB-Meldung, dass der Anforderungsheader zu groß ist
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -37,7 +37,7 @@ Starten Sie Ihre Clientanwendung neu, um alle Sitzungstoken zurückzusetzen. Das
 
 #### <a name="solution"></a>Lösung:
 > [!IMPORTANT]
-> Upgraden Sie mindestens auf .NET [v3.20.1](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) oder [v2.15.0](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md). Diese Nebenversionen enthalten Optimierungen, die die Größe des Sitzungstokens verringern, um zu verhindern, dass der Header das Größenlimit erreicht.
+> Upgraden Sie mindestens auf .NET [v3.20.1](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) oder [v2.16.1](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md). Diese Nebenversionen enthalten Optimierungen, die die Größe des Sitzungstokens verringern, um zu verhindern, dass der Header das Größenlimit erreicht.
 1. Befolgen Sie die Anweisungen in den Artikeln zu Leistungstipps für [.NET Version 3](performance-tips-dotnet-sdk-v3-sql.md) oder [.NET Version 2](performance-tips.md). Konvertieren Sie die Anwendung so, dass der Direktverbindungsmodus mit TCP (Transmission Control Protocol) verwendet wird. Im Direktverbindungsmodus mit TCP besteht keine Headergrößenbeschränkung wie bei HTTP, sodass dieses Problem vermieden wird. Verwenden Sie die neueste Version des SDK. Diese enthält eine Korrektur für Abfragevorgänge, wenn die Dienstinteroperabilität nicht verfügbar ist.
 1. Sollte der Direktverbindungsmodus mit TCP für Ihre Workload nicht in Frage kommen, ändern Sie die [Konsistenzebene des Clients](how-to-manage-consistency.md). Das Sitzungstoken wird nur für die Sitzungskonsistenz verwendet. Dies ist die Standardkonsistenzebene für Azure Cosmos DB. Von anderen Konsistenzebenen wird das Sitzungstoken nicht verwendet.
 

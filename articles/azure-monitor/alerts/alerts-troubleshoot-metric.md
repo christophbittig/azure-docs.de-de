@@ -4,13 +4,13 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 08/15/2021
-ms.openlocfilehash: 5aa39240b87f86dfaa1fbd44de8b6889939ec64f
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.date: 09/30/2021
+ms.openlocfilehash: df925bd149c8516f4c6af8b49a65969737aaffa2
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122343142"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352385"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -140,6 +140,8 @@ Um zu vermeiden, dass bei der Bereitstellung Fehler auftreten, wenn Sie versuche
         ]
     }
 ```
+> [!NOTE] 
+> Die Verwendung des Parameters *skipMetricValidation* ist auch erforderlich, wenn sie eine Warnungsregel für eine vorhandene benutzerdefinierte Metrik definiert, die nicht mehr als drei Tage ausgegeben wurde.
 
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Exportieren der Azure Resource Manager-Vorlage einer Metrikwarnungsregel über das Azure-Portal
 

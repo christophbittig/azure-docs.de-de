@@ -1,17 +1,17 @@
 ---
-title: Einrichten der mehrstufigen Authentifizierung von Azure für Azure Virtual Desktop – Azure
-description: So richten Sie die mehrstufige Authentifizierung von Azure ein, um die Sicherheit in Azure Virtual Desktop zu erhöhen.
+title: 'Azure Multifactor Authentication für Azure Virtual Desktop: Azure'
+description: Erfahren Sie, wie Sie die mehrstufige Azure-Authentifizierung einrichten, um Azure Virtual Desktop sicherer zu machen.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 12/10/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 6e01b132dd68fd711af30f816df15795991efd41
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2e86597f0307699c2fc4cac9f48eac5b884e8df3
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754185"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363608"
 ---
 # <a name="enable-azure-multifactor-authentication-for-azure-virtual-desktop"></a>Aktivieren der mehrstufigen Authentifizierung von Azure für Azure Virtual Desktop
 

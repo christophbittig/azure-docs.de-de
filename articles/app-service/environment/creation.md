@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/07/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0ed8291fd038f49e079bc3851b340bd7c9af5538
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fdf74a88a34f9d497bc23b9fed00c8fa55b6875a
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836357"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236084"
 ---
 # <a name="create-an-app-service-environment"></a>Erstellen einer App Service-Umgebung
 > [!NOTE]
@@ -51,7 +51,7 @@ Es gibt drei verschiedene Bereitstellungstypen:
 - Zonenredundant
 - Hostgruppe
 
-Die Einzelzonen-ASE ist in allen Regionen verfügbar, in denen ASEv3 verfügbar ist. Wenn Sie über eine Einzelzonen-ASE verfügen, unterliegen Sie einer Mindestgebühr für eine App Service-Planinstanz von „Windows Isoliert v2“. Sobald Sie über eine oder mehrere Instanzen verfügen, wird diese Gebühr entfernt. Es handelt sich nicht um eine zusätzliche Gebühr. 
+Die Einzelzonen-ASE ist in allen Regionen verfügbar, in denen ASEv3 verfügbar ist. Wenn Sie über eine Einzelzonen-ASE verfügen, unterliegen Sie einer Mindestgebühr für eine App Service-Planinstanz von „Windows Isolated v2“. Sobald Sie über eine oder mehrere Instanzen verfügen, wird diese Gebühr entfernt. Es handelt sich nicht um eine zusätzliche Gebühr. 
 
 In einer zonenredundanten ASE verteilen sich Ihre Apps auf drei Zonen in derselben Region. Die zonenredundante ASE ist in einer Teilmenge der ASE-fähigen Regionen verfügbar, die hauptsächlich durch die Regionen eingeschränkt wird, die Verfügbarkeitszonen unterstützen. Wenn Sie über eine zonenredundante ASE verfügen, ist die kleinste Größe für Ihren App Service-Plan drei Instanzen. Dadurch wird sichergestellt, dass in jeder Verfügbarkeitszone eine Instanz vorhanden ist. App Service-Pläne können eine oder mehrere Instanzen gleichzeitig hochskaliert werden. Die Skalierung muss nicht in Einheiten von drei erfolgen, aber die App wird nur über alle Verfügbarkeitszonen ausgeglichen verteilt, wenn die Gesamtzahl der Instanzen ein Vielfaches von drei ist. Eine zonenredundante ASE verfügt über das Dreifache an Infrastruktur und wird mit zonenredundanten Komponenten hergestellt, sodass Ihre Workloads verfügbar bleiben, auch wenn zwei der drei Zonen aus irgendeinem Grund ausfallen. Aufgrund der erhöhten Systemanforderungen beträgt die Mindestgebühr für eine zonenredundante ASE neun Instanzen. Wenn Sie über weniger als neun App Service-Planinstanzen in Ihrer ASEv3 verfügen, wird die Differenz als „Windows I1v2“ berechnet. Wenn Sie über neun oder mehr Instanzen verfügen, fallen für eine zonenredundante ASE keine zusätzlichen Gebühren an. Weitere Informationen zur Zonenredundanz finden Sie unter [Regionen und Verfügbarkeitszonen][AZoverview].
 

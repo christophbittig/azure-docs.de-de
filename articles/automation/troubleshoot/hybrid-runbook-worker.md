@@ -1,23 +1,23 @@
 ---
-title: Behandeln von Problemen bei Hybrid Runbook Workern in Azure Automation
-description: In diesem Artikel erfahren Sie, wie Sie Probleme beheben, die bei Hybrid Runbook Workern in Azure Automation auftreten.
+title: Problembehandlung bei Agent-basierten Hybrid Runbook Workern in Azure Automation
+description: In diesem Artikel erfahren Sie, wie Sie Probleme beheben, die bei Agent-basierten Hybrid Runbook Workern in Azure Automation auftreten.
 services: automation
 ms.subservice: ''
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/11/2021
+ms.date: 09/24/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9b06213416241f671dd0e6ef56a7660a3af5f6e8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 824925f4c3616b91f10fc3bae4bdaa1f5a0bb5ee
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123895"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277155"
 ---
-# <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Beheben von Hybrid Runbook Worker-Problemen
+# <a name="troubleshoot-agent-based-hybrid-runbook-worker-issues-in-automation"></a>Problembehandlung bei Agent-basierten Hybrid Runbook Workern in Automation
 
-Dieser Artikel enthält Informationen zum Troubleshooting für Hybrid Runbook Worker in Azure Automation. Allgemeine Informationen finden Sie unter [Übersicht über Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md).
+Dieser Artikel enthält Informationen zur Problembehandlung bei Agent-basierten Hybrid Runbook Workern in Azure Automation. Informationen zur Problembehandlung bei erweiterungsbasierten Workern finden Sie unter [Problembehandlung bei erweiterungsbasierten Hybrid Runbook Workern in Automation](./extension-based-hybrid-runbook-worker.md). Allgemeine Informationen finden Sie unter [Übersicht über Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md).
 
 ## <a name="general"></a>Allgemein
 
@@ -147,7 +147,7 @@ Das Runbook schlägt fehl, wenn es versucht, `Set-AzStorageBlobContent` auszufü
 
 #### <a name="cause"></a>Ursache
 
- Dieser Fehler wird durch das Verhalten bei langen Dateinamen von Aufrufen von `[System.IO.Path]::GetFullPath()` verursacht, das UNC-Pfade hinzufügt.
+ Dieser Fehler wird durch das Verhalten bei langen Dateinamen in Aufrufen von `[System.IO.Path]::GetFullPath()` verursacht, bei denen UNC-Pfade hinzugefügt werden.
 
 #### <a name="resolution"></a>Lösung
 
@@ -180,7 +180,7 @@ Wenn Sie den Befehl `sudo` für einen Linux-Hybrid Runbook Worker ausführen, wi
 
 #### <a name="cause"></a>Ursache
 
-Das **nxautomationuser**-Konto für den Log Analytics-Agent für Linux ist in der **sudoers**-Datei nicht ordnungsgemäß konfiguriert. Der Hybrid Runbook Worker benötigt die entsprechende Konfiguration der Kontobenachrichtigungen und anderer Daten, damit Runbooks auf dem Linux-Runbook Worker signiert werden können.
+Das Konto **nxautomationuser** für den Log Analytics-Agent für Linux ist in der Datei **sudoers** nicht ordnungsgemäß konfiguriert. Der Hybrid Runbook Worker benötigt die entsprechende Konfiguration der Kontobenachrichtigungen und anderer Daten, damit Runbooks auf dem Linux-Runbook Worker signiert werden können.
 
 #### <a name="resolution"></a>Lösung
 
@@ -264,7 +264,7 @@ Hybrid Worker senden [Runbookausgabe und -meldungen](../automation-runbook-outpu
 
 Ein auf einem Windows-Hybrid Runbook Worker ausgeführtes Skript kann nicht erwartungsgemäß mit Microsoft 365 in einer Orchestrator-Sandbox verbunden werden. Das Skript verwendet für die Verbindung [Connect-MsolService](/powershell/module/msonline/connect-msolservice). 
 
-Wenn Sie **Orchestrator.Sandbox.exe.config** anpassen und den Proxy und die Umgehungsliste festlegen, wird weiterhin keine ordnungsgemäße Verbindung mit der Sandbox hergestellt. Eine Datei **Powershell_ise.exe.config** mit denselben Einstellungen für Proxy und Umgehungsliste scheint erwartungsgemäß zu funktionieren. SMA- (Service Management Automation) und PowerShell-Protokolle bieten keine Informationen zum Proxy.
+Wenn Sie **Orchestrator.Sandbox.exe.config** anpassen und den Proxy und die Umgehungsliste festlegen, wird weiterhin keine ordnungsgemäße Verbindung mit der Sandbox hergestellt. Eine Datei **Powershell_ise.exe.config** mit denselben Einstellungen für Proxy und Umgehungsliste scheint erwartungsgemäß zu funktionieren. SMA- (Service Management Automation) und PowerShell-Protokolle enthalten keine Informationen zum Proxy.
 
 #### <a name="cause"></a>Ursache
 
@@ -372,7 +372,7 @@ So lösen Sie das Problem:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihr Problem hier nicht aufgeführt wird, oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
+Wenn Ihr Problem hier nicht aufgeführt wird oder Sie es nicht lösen können, besuchen Sie einen der folgenden Kanäle, um weitere Unterstützung zu erhalten:
 
 * Erhalten Sie Antworten von Azure-Experten über [Azure-Foren](https://azure.microsoft.com/support/forums/).
 * Stellen Sie eine Verbindung mit [@AzureSupport](https://twitter.com/azuresupport) her, dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Der Azure-Support verbindet die Azure-Community mit Antworten, Support und Experten.

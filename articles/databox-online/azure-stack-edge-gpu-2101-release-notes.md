@@ -1,19 +1,18 @@
 ---
 title: Versionshinweise zu Azure Stack Edge Pro 2101
 description: In diesem Artikel werden schwerwiegende ungelöste Probleme und Lösungen für das Release 2101 von Azure Stack Edge Pro beschrieben.
-services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 84bf14caeec163c31004a430fa954fc36f4be68b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9fd07c6a5ec49d2251173d68c28cf18806312a36
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562782"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356829"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Versionshinweise zu Azure Stack Edge 2101
 
@@ -61,7 +60,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der bereits aus früheren Rel
 
 | Nein. | Funktion | Problem | Problemumgehung/Kommentare |
 | --- | --- | --- | --- |
-| **1.** |Azure Stack Edge Pro + Azure SQL | Zum Erstellen einer SQL-Datenbank ist Administratorzugriff erforderlich.   |Führen Sie statt der Schritte 1 und 2 unter [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) die folgenden Schritte aus. <ul><li>Aktivieren Sie in der lokalen Benutzeroberfläche des Geräts die Computeschnittstelle. Wählen Sie **Compute > Portnr. > Für Compute aktivieren > Anwenden** aus.</li><li>Laden Sie `sqlcmd` von https://docs.microsoft.com/sql/tools/sqlcmd-utility auf den Clientcomputer herunter. </li><li>Stellen Sie eine Verbindung mit der IP-Adresse der Computeschnittstelle (dem aktivierten Port) her, und fügen Sie am Ende der Adresse „,1401“ hinzu.</li><li>Der endgültige Befehl sieht wie folgt aus: sqlcmd -S {IP-Adresse-der-Schnittstelle},1401 -U SA -P "Starkes!Kennw0rt".</li>Danach sollten die Schritte 3 und 4 aus der aktuellen Dokumentation identisch sein. </li></ul> |
+| **1.** |Azure Stack Edge Pro + Azure SQL | Zum Erstellen einer SQL-Datenbank ist Administratorzugriff erforderlich.   |Führen Sie anstelle der Schritte 1-2 unter [Tutorial: Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database) die folgenden Schritte aus. <ul><li>Aktivieren Sie in der lokalen Benutzeroberfläche des Geräts die Computeschnittstelle. Wählen Sie **Compute > Portnr. > Für Compute aktivieren > Anwenden** aus.</li><li>Herunterladen von `sqlcmd` aus dem [SQLCMD-Hilfsprogramm](/sql/tools/sqlcmd-utility) auf Ihren Clientcomputer </li><li>Stellen Sie eine Verbindung mit der IP-Adresse der Computeschnittstelle (dem aktivierten Port) her, und fügen Sie am Ende der Adresse „,1401“ hinzu.</li><li>Der endgültige Befehl sieht wie folgt aus: sqlcmd -S {IP-Adresse-der-Schnittstelle},1401 -U SA -P "Starkes!Kennw0rt".</li>Danach sollten die Schritte 3 und 4 aus der aktuellen Dokumentation identisch sein. </li></ul> |
 | **2.** |Aktualisieren| Inkrementelle Änderungen an Blobs, die über **Aktualisieren** wiederhergestellt werden, sind NICHT möglich. |Bei Blobendpunkten können Teilaktualisierungen von Blobs nach dem erneuten Laden dazu führen, dass die Aktualisierungen nicht in die Cloud hochgeladen werden. Dies betrifft beispielsweise eine Sequenz folgender Aktionen:<ul><li>Erstellen eines Blobs in der Cloud. Oder Löschen eines zuvor hochgeladenen Blobs auf dem Gerät.</li><li>Aktualisieren des Blobs mithilfe der Aktualisierungsfunktion aus der Cloud auf der Appliance.</li><li>Aktualisieren nur eines Teils des Blobs mithilfe von Azure SDK-REST-APIs.</li></ul>Diese Aktionen können dazu führen, dass die aktualisierten Abschnitte des Blobs nicht in der Cloud aktualisiert werden. <br>**Problemumgehung**: Verwenden Sie Tools wie Robocopy, oder führen Sie reguläre Dateikopiervorgänge über Explorer oder die Befehlszeile durch, um ganze Blobs zu ersetzen.|
 |**3.**|Drosselung|Wenn während der Drosselung neue Schreibvorgänge auf das Gerät nicht zulässig sind, tritt für Schreibvorgänge des NFS-Clients der Fehler „Zugriff verweigert“ auf.| Der Fehler wird wie folgt angezeigt:<br>`hcsuser@ubuntu-vm:~/nfstest$ mkdir test`<br>mkdir: Verzeichnis „test“ kann nicht erstellt werden: Zugriff verweigert|
 |**4.**|Blob Storage-Erfassung|Wenn Sie AzCopy Version 10 für die Erfassung von Blob Storage verwenden, führen Sie AzCopy mit folgendem Argument aus: `Azcopy <other arguments> --cap-mbps 2000`| Wenn diese Grenzwerte für AzCopy nicht angegeben werden, wird möglicherweise eine große Anzahl von Anforderungen an das Gerät gesendet. Dies kann zu Problemen mit dem Dienst führen.|

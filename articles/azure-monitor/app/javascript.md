@@ -4,12 +4,12 @@ description: Rufen Sie die Anzahl der Seitenaufrufe und Sitzungen, Webclientdate
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 4ce6481a35b8a214a2203a165161183d384b4ea0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6e3b7601605eecafa969eec78b82b863580ecc2e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662170"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235742"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -171,7 +171,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguration
 Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf „false“ festgelegt werden können. Alle Felder mit Ausnahme von `instrumentationKey` sind optional.
 
-| Name | Beschreibung | Standard |
+| Name | BESCHREIBUNG | Standard |
 |------|-------------|---------|
 | instrumentationKey | **Erforderlich**<br>Instrumentierungsschlüssel, den Sie aus dem Azure-Portal abgerufen haben. | Zeichenfolge<br/>NULL |
 | accountId | Eine optionale Konto-ID, wenn Ihre App Benutzer in Konten gruppiert. Keine Leerzeichen, Kommas, Semikolons, Gleichheitszeichen oder senkrechten Striche | Zeichenfolge<br/>NULL |
@@ -218,7 +218,7 @@ Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf
 | enable&#8203;AjaxErrorStatusText | Bei TRUE wird der Text zu Antwortfehlerdaten im Abhängigkeitsereignis für fehlerhafte AJAX-Anforderungen aufgeführt. | boolean<br/> false |
 | enable&#8203;AjaxPerfTracking |Flag, das die Suche nach und das Aufnehmen von zusätzlichen „window.performance“-Timings von Browsern in gemeldeten `ajax`-Metriken (XHR und fetch) ermöglicht. | boolean<br/> false |
 | maxAjaxPerf&#8203;LookupAttempts | Die maximale Anzahl von Malen, die nach „window.performance“-Timings gesucht werden kann (falls vorhanden). Dies ist erforderlich, weil nicht alle Browser „window.performance“ befüllen, bevor das Ende der XHR-Anforderung gemeldet wird. Bei fetch-Anforderungen wird dies nach der Fertigstellung hinzugefügt.| NUMERIC<br/> 3 |
-| ajaxPerfLookupDelay | Die Zeitdauer, die gewartet werden muss, bevor noch einmal versucht werden kann, die „windows.performance“-Timings für eine `ajax`-Anforderung zu suchen. Die Zeit wird in Millisekunden angegeben und direkt an setTimeout() übergeben. | NUMERIC<br/> 25 ms |
+| ajaxPerfLookupDelay | Die Zeitdauer, die gewartet werden muss, bevor noch einmal versucht werden kann, die „window.performance“-Timings für eine `ajax`-Anforderung zu suchen. Die Zeit wird in Millisekunden angegeben und direkt an setTimeout() übergeben. | NUMERIC<br/> 25 ms |
 | enableUnhandled&#8203;PromiseRejection&#8203;Tracking | Bei TRUE werden unverarbeitete Ablehnungen von Zusagen automatisch erfasst und als JavaScript-Fehler gemeldet. Wenn disableExceptionTracking TRUE ist (Ausnahmen werden nicht nachverfolgt), wird der Konfigurationswert ignoriert, und unverarbeitete Ablehnungen von Zusagen werden nicht gemeldet. | boolean<br/> false |
 | disable&#8203;InstrumentationKey&#8203;Validation | Bei „wahr“ wird die Validierungsprüfung des Instrumentierungsschlüssels umgangen. | boolean<br/>false |
 | enablePerfMgr | Wenn dies aktiviert ist (true), werden lokale PerfEvents für Code erzeugt, der so instrumentiert wurde, dass er PerfEvents ausgibt (über den doPerf()-Helper). Dies kann verwendet werden, um Performance-Probleme innerhalb des SDKs basierend auf Ihrer Nutzung oder optional innerhalb Ihres eigenen instrumentierten Codes zu identifizieren. [Weitere Informationen finden Sie in der grundlegenden Dokumentation](https://github.com/microsoft/ApplicationInsights-JS/blob/master/docs/PerformanceMonitoring.md). Seit v2.5.7 | boolean<br/>false |

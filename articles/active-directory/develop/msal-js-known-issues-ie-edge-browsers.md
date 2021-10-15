@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 91ef36a5dbbfb7e0edb7fe1d75d77d2f2dc4870b
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: ef1cce7905e07c1fa407c0194d585bb196ecdfd6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113357605"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232202"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Bekannte Probleme in den Browsern Internet Explorer und Microsoft Edge (MSAL.js)
 
@@ -36,7 +36,7 @@ Die meisten Probleme haben folgende Ursache. Der Sitzungsspeicher und lokale Spe
 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
-- **Ein bei der Anmeldung für die Authentifizierung verwendetes Popupfenster wird nicht geschlossen oder bleibt hängen**: Wenn sich ein Benutzer in Microsoft Edge oder IE (InPrivate) über ein Popupfenster authentifiziert, wird das Popupfenster nach der Eingabe der Anmeldeinformationen und der Anmeldung nicht geschlossen, wenn sich die Navigation über mehrere Domänen in unterschiedlichen Sicherheitszonen erstreckt. Dies liegt daran, dass MSAL.js das Handle für das Popupfenster verliert.
+- **Ein bei der Anmeldung für die Authentifizierung verwendetes Popupfenster wird nicht geschlossen oder bleibt hängen**. Wenn sich ein Benutzer in Microsoft Edge oder IE (InPrivate) über ein Popupfenster authentifiziert, wird das Popupfenster nach der Eingabe der Anmeldeinformationen und der Anmeldung nicht geschlossen, wenn sich die Navigation über mehrere Domänen in unterschiedlichen Sicherheitszonen erstreckt. Dies liegt daran, dass `MSAL.js` das Handle für das Popupfenster verliert.
 
 ### <a name="update-fix-available-in-msaljs-023"></a>Aktualisieren: Fix in MSAL.js 0.2.3 verfügbar
 In [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) wurden Fixes für die Umleitungsschleife bei der Authentifizierung veröffentlicht. Aktivieren Sie das Flag `storeAuthStateInCookie` in der Konfiguration von MSAL.js, um diesen Fix zu nutzen. Dieses Flag ist standardmäßig auf „false“ festgelegt.
@@ -44,7 +44,7 @@ In [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-f
 Wenn das Flag `storeAuthStateInCookie` aktiviert ist, nutzt MSAL.js die Browsercookies, um den Anforderungsstatus zu speichern, der für die Überprüfung der Authentifizierungsflows erforderlich ist.
 
 > [!NOTE]
-> Für den msal-angular- und msal-angularjs-Wrapper ist dieser Fix noch nicht verfügbar. Das Problem mit den Popupfenstern wird durch diesen Fix nicht behoben.
+> Dieser Fix ist noch nicht für die Wrapper `msal-angular` und `msal-angularjs` verfügbar. Das Problem mit den Popupfenstern wird durch diesen Fix nicht behoben.
 
 Nutzen Sie die unten beschriebenen Problemumgehungen.
 

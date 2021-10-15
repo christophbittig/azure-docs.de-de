@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e27ac47426e8c3d8ff7b4b02fcdbfcf06d3a3453
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89320255"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231290"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Konfigurieren von „Angemeldet bleiben?“ Eingabeaufforderung für Azure AD-Konten
 

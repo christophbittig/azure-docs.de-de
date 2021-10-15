@@ -6,13 +6,13 @@ ms.author: esarroyo
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/26/2021
-ms.openlocfilehash: 9ee782734baaf8947aa4e4f930cac874e32a5df6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/04/2021
+ms.openlocfilehash: 58ea7624b32b7730863fe3d29f6d9245c4199d25
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124788190"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535300"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>Migrieren einer Anwendung für die Verwendung des Azure Cosmos DB .NET SDK v3
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -55,8 +55,7 @@ Bei den meisten Netzwerken, der Retry-Logik und den unteren Ebenen des SDK gibt 
 ## <a name="why-migrate-to-the-net-v3-sdk"></a>Gründe für das Migrieren auf das .NET v3 SDK
 
 Neben den zahlreichen Verbesserungen der Benutzerfreundlichkeit und der Leistung werden beim neuesten SDK getätigte Investitionen in neue Funktionen nicht auf ältere Versionen zurückportiert.
-
-Obwohl es keine unmittelbaren Pläne gibt, den [Support für die SDKs der Version 2.0 einzustellen](sql-api-sdk-dotnet.md), werden diese SDKs in Zukunft durch neuere Versionen ersetzt, und das SDK wechselt in den Wartungsmodus. Für eine optimale Entwicklungserfahrung wird empfohlen, stets mit der neuesten unterstützten Version des SDK zu beginnen.
+Das SDK v2 befindet sich derzeit im Wartungsmodus. Für eine optimale Entwicklungserfahrung wird empfohlen, stets mit der neuesten unterstützten Version des SDK zu beginnen.
 
 ## <a name="major-name-changes-from-v2-sdk-to-v3-sdk"></a>Wichtige Namensänderungen vom v2 SDK zum v3 SDK
 
@@ -196,7 +195,7 @@ Einige Einstellungen in `ConnectionPolicy` wurden umbenannt oder ersetzt:
 | .NET v2 SDK | .NET v3 SDK |
 |-------------|-------------|
 |`EnableEndpointRediscovery`|`LimitToEndpoint` – Der Wert wird jetzt invertiert; wenn `EnableEndpointRediscovery` auf `true` festgelegt wurde, sollte `LimitToEndpoint` auf `false` festgelegt werden. Bevor Sie diese Einstellung verwenden, müssen Sie verstehen, [wie sie sich auf den Client auswirkt](troubleshoot-sdk-availability.md).|
-|`ConnectionProtocol`|Entfernt. Das Protokoll ist an den Modus gebunden – entweder „Gateway“ (HTTPS) oder „Direct“ (TCP).|
+|`ConnectionProtocol`|Entfernt. Das Protokoll ist an den Modus gebunden – entweder „Gateway“ (HTTPS) oder „Direct“ (TCP). Der direkte Modus mit dem HTTPS-Protokoll wird von V3 SDK nicht mehr unterstützt. Die Empfehlung lautet, das TCP-Protokoll zu verwenden. |
 |`MediaRequestTimeout`|Entfernt. Anlagen werden nicht mehr unterstützt.|
 
 ### <a name="session-token"></a>Sitzungstoken
@@ -710,5 +709,5 @@ private static async Task DeleteItemAsync(DocumentClient client)
 * [Erstellen einer Konsolen-App](sql-api-get-started.md) zum Verwalten von Azure Cosmos DB-SQL-API-Daten mit dem v3 SDK
 * Erfahren Sie mehr darüber, [was Sie mit dem v3 SKD tun können](sql-api-dotnet-v3sdk-samples.md).
 * Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen?
-    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md). 
+    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
     * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)

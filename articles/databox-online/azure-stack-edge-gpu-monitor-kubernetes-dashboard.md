@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 08/31/2021
 ms.author: alkohli
-ms.openlocfilehash: 6b50169586ef29e579d52985ee8b7822a63560d0
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 30e46f9425f4015893c08b94382e87cfa93c8be8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982428"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363115"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>Überwachen Ihres Azure Stack Edge Pro-GPU-Geräts über das Kubernetes-Dashboard
 
@@ -44,15 +44,31 @@ Auf Ihrem Azure Stack Edge Pro-Gerät können Sie das Kubernetes-Dashboard im *s
 Das Kubernetes-Dashboard ist *schreibgeschützt* und wird auf dem Kubernetes-Masterknoten an Port 31000 ausgeführt. Gehen Sie wie folgt vor, um auf das Dashboard zuzugreifen: 
 
 1. Wechseln Sie in der lokalen Benutzeroberfläche des Geräts zu **Gerät** und dann zu **Device endpoints** (Geräteendpunkte). 
-1. Wählen Sie **Konfiguration herunterladen** aus, um die Datei `kubeconfig` herunterzuladen, über die Sie auf das Dashboard zugreifen können. Speichern Sie die Datei `config.json` auf Ihrem lokalen System.
-1. Wählen Sie die Kubernetes-Dashboard-URL zum Öffnen des Dashboards in einem Browser aus.
+1. Kopieren Sie den Endpunkt **Kubernetes-Dashboard**. Erstellen Sie einen DNS-Eintrag in der Datei `C:\Windows\System32\Drivers\etc\hosts` Ihres Clients, um eine Verbindung mit dem Kubernetes-Dashboard herzustellen. 
 
-    ![Kubernetes-Dashboard-URL auf der Seite „Gerät“ der lokalen Benutzeroberfläche](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-url-local-ui-1.png)
+    `<IP address of the Kubernetes dashboard>    <Kubernetes dashboard endpoint suffix>` 
+        
+    ![Hinzufügen eines DNS-Eintrags für den Endpunkt „Kubernetes-Dashboard“](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/add-domain-name-service-entry-hosts-1.png) 
 
-1. Auf der Anmeldeseite des **Kubernetes-Dashboards**:
+1. Wählen Sie in der Zeile für den Endpunkt **Kubernetes-Dashboard** die Option **Konfiguration herunterladen** aus. Durch diese Aktion wird eine `kubeconfig` heruntergeladen, mit der Sie auf das Dashboard zugreifen können. Speichern Sie die Datei `config.json` auf Ihrem lokalen System.   
+
+1. Laden Sie das Kubernetes-Dashboardzertifikat von der lokalen Benutzeroberfläche herunter. 
+    1. Wechseln Sie auf der lokalen Benutzeroberfläche des Geräts zu **Zertifikate**.
+    1. Suchen Sie den Eintrag für das **Zertifikat des Endpunkts „Kubernetes-Dashboard“** . Wählen Sie rechts neben diesem Eintrag den Link **Herunterladen** aus, um das Zertifikat auf Ihr Clientsystem herunterzuladen, das Sie für den Zugriff auf das Dashboard verwenden möchten. 
+
+    ![Herunterladen des Zertifikats für den Endpunkt „Kubernetes-Dashboard“](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/download-kubernetes-dashboard-endpoint-certificate-1.png)  
+
+1. Installieren Sie das heruntergeladene Zertifikat auf dem Client. Wenn Sie einen Windows-Client verwenden, führen Sie die folgenden Schritte aus: 
+    1. Wählen Sie das Zertifikat und dann im **Zertifikatimport-Assistenten** als Speicherort **Lokaler Computer** aus. 
+
+        ![Installieren des Zertifikats auf Client 1](media/azure-stack-edge-gpu-edge-container-registry/install-certificate-1.png) 
+    
+    1. Installieren Sie das Zertifikat auf dem lokalen Computer im vertrauenswürdigen Stammspeicher. 
+
+        ![Installieren des Zertifikats auf Client 2](media/azure-stack-edge-gpu-edge-container-registry/install-certificate-2.png) 
+1. Kopieren und verwenden Sie die Kubernetes-Dashboard-URL, um das Dashboard in einem Browser zu öffnen. Auf der Anmeldeseite des **Kubernetes-Dashboards**:
     
     1. Wählen Sie **kubeconfig** aus. 
-        ![Auswählen der Option „kubeconfig“](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-1.png) 
     1. Wählen Sie die Auslassungspunkte ( **...** ) aus. Navigieren Sie zu der Datei `kubeconfig`, die Sie zuvor auf das lokale System heruntergeladen haben, und zeigen Sie auf sie. Wählen Sie **Anmelden** aus.
         ![Navigieren zur Datei „kubeconfig“](./media/azure-stack-edge-gpu-monitor-kubernetes-dashboard/kubernetes-dashboard-sign-in-2.png)    
 

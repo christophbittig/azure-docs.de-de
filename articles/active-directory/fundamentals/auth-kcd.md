@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 453779c1289bb64749e7f3632c02d79d1522c88f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 2c12ab8421b578a0c1bf60f5d901d5d9223fc685
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966099"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231271"
 ---
 # <a name="windows-authentication---kerberos-constrained-delegation-with-azure-active-directory"></a>Windows-Authentifizierung – Eingeschränkte Kerberos-Delegierung mit Azure Active Directory
 

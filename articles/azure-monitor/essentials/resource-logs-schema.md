@@ -1,95 +1,97 @@
 ---
-title: 'Azure-Ressourcenprotokolle: Unterstützte Dienste und Schemas'
-description: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.
+title: Unterstützte Dienste und Schemas für Azure-Ressourcenprotokolle
+description: Erfahren Sie mehr über die unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.
 ms.topic: reference
 ms.date: 05/10/2021
-ms.openlocfilehash: 621c606313fa68de24100e8c6214b56ee42b2f03
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 99746b8f392d8afc5df9aa14ac7e1c7f19069151
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355626"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129454979"
 ---
-# <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle
+# <a name="common-and-service-specific-schemas-for-azure-resource-logs"></a>Allgemeine und dienstspezifische Schemas für Azure-Ressourcenprotokolle
 
 > [!NOTE]
-> Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet. Der Name wurde im Oktober 2019 geändert, da die Typen der von Azure Monitor gesammelten Protokolle nicht mehr nur die Azure-Ressource umfassen. Außerdem war bisher die Liste der Ressourcenprotokollkategorien, die von Ihnen gesammelt werden können, in diesem Artikel enthalten. Sie befinden sich jetzt unter [Ressourcenprotokollkategorien.](resource-logs-categories.md) 
+> Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet. Der Name wurde im Oktober 2019 geändert, da die Typen der von Azure Monitor gesammelten Protokolle nicht mehr nur die Azure-Ressource umfassen. 
+>
+> In diesem Artikel wurden ursprünglich Ressourcenprotokollkategorien aufgeführt, die Sie sammeln können. Diese Liste befindet sich jetzt unter [Ressourcenprotokollkategorien](resource-logs-categories.md). 
 
-[Azure Monitor-Ressourcenprotokolle](../essentials/platform-logs-overview.md) sind von Azure-Diensten ausgegebene Protokolle, die die Vorgänge der jeweiligen Dienste oder Ressourcen beschreiben. Für alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben.
+[Azure Monitor-Ressourcenprotokolle](../essentials/platform-logs-overview.md) sind von Azure-Diensten ausgegebene Protokolle, die die Vorgänge der jeweiligen Dienste oder Ressourcen beschreiben. Alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, verwenden ein gemeinsames Schema der obersten Ebene. Jeder Dienst kann flexibel eindeutige Eigenschaften für seine eigenen Ereignisse ausgeben.
 
-Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und dem `category`-Element eindeutig identifiziert. In diesem Artikel wird das Schema der obersten Ebene für Ressourcenprotokolle beschrieben, und es sind Links zu den Schemas für jeden Dienst vorhanden.
+Ein Schema wird anhand einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und der Kategorie eindeutig identifiziert. In diesem Artikel werden die Schemas der obersten Ebene für Ressourcenprotokolle beschrieben und Links zu den Schemas für die einzelnen Dienste bereitgestellt.
 
 
 ## <a name="top-level-common-schema"></a>Allgemeines Schema der obersten Ebene
 
-| Name | Erforderlich/Optional | BESCHREIBUNG |
+| Name | Erforderlich oder optional | BESCHREIBUNG |
 |---|---|---|
-| time | Erforderlich | Der Zeitstempel (UTC) des Ereignisses. |
-| resourceId | Erforderlich | Die Ressourcen-ID der Ressource, die das Ereignis ausgegeben hat. Für Mandantendienste sieht das Format folgendermaßen aus: /tenants/tenant-id/providers/provider-name. |
-| tenantId | Erforderlich für Mandantenprotokolle | Die Mandanten-ID des Active Directory-Mandanten, mit dem dieses Ereignis verknüpft ist. Diese Eigenschaft wird nur für Protokolle auf Mandantenebene verwendet. Sie erscheint nicht in Protokollen auf Ressourcenebene. |
-| operationName | Erforderlich | Der Name des Vorgangs, für den dieses Ereignis steht. Wenn das Ereignis einen Azure RBAC-Vorgang repräsentiert, ist dies der Azure RBAC-Vorgangsname (z. B. Microsoft.Storage/storageAccounts/blobServices/blobs/Read). Ist normalerweise in Form eines Resource Manager-Vorgangs modelliert, auch wenn es sich nicht tatsächlich um dokumentierte Resource Manager-Vorgänge handelt (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`). |
-| operationVersion | Optional | Die API-Version, die dem Vorgang zugeordnet ist, wenn für „operationName“ eine API verwendet wurde (z. B. `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Wenn keine API für diesen Vorgang vorhanden ist, entspricht die Version der Version dieses Vorgangs für den Fall, dass sich die dem Vorgang zugeordneten Eigenschaften in Zukunft ändern. |
-| category | Erforderlich | Die Protokollkategorie des Ereignisses. „category“ ist die Granularität, mit der Sie Protokolle für eine bestimmte Ressource aktivieren oder deaktivieren können. Die Eigenschaften, die im Eigenschaftenblob eines Ereignisses angezeigt werden, sind für eine bestimmte Protokollkategorie und einen Ressourcentyp gleich. Häufige Protokollkategorien sind „Audit“, „Operational“, „Execution“ und „Request“ (Überwachung, Betrieb, Ausführung, Anforderung). |
-| resultType | Optional | Der Status des Ereignisses. Häufige Werte sind „Started“, „In Progress“, „Succeeded“, „Failed“, „Active“ und „Resolved“ (Gestartet, In Bearbeitung, Erfolgreich, Fehler, Aktiv, Gelöst). |
-| resultSignature | Optional | Der Unterstatus des Ereignisses. Wenn dieser Vorgang einem REST-API-Aufruf entspricht, ist dieses Feld der HTTP-Statuscode des entsprechenden REST-Aufrufs. |
-| resultDescription | Optional | Die statische Textbeschreibung dieses Vorgangs, z. B. „Get storage file“ (Speicherdatei abrufen). |
-| durationMs | Optional | Die Dauer des Vorgangs in Millisekunden. |
-| callerIpAddress | Optional | Die IP-Adresse des Aufrufers, wenn der Vorgang einem API-Aufruf entspricht, der von einer Entität mit einer öffentlich verfügbaren IP-Adresse stammt. |
-| correlationId | Optional | Eine GUID, die zum Gruppieren eines Satzes mit verwandten Ereignissen verwendet wird. Wenn zwei Ereignisse über denselben „operationName“, aber zwei verschiedene Status (z. B. „Started“ und „Succeeded“) verfügen, verwenden sie in der Regel dieselbe Korrelations-ID. Hiermit können auch andere Beziehungen zwischen Ereignissen dargestellt werden. |
-| identity | Optional | Ein JSON-Blob zum Beschreiben der Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat. Normalerweise sind in diesem Feld auch die Autorisierung und die Ansprüche bzw. das JWT-Token aus Active Directory enthalten. |
-| Ebene | Optional | Der Schweregrad des Ereignisses. Er kann „Informational“ (Information), „Warning“ (Warnung), „Error“ (Fehler) oder „Critical“ (Kritisch) lauten. |
-| location | Optional | Die Region der Ressource, die das Ereignis ausgibt, z. B „USA, Osten“ oder „Frankreich, Süden“. |
-| properties | Optional | Alle erweiterten Eigenschaften, die sich auf die jeweilige Kategorie der Ereignisse beziehen. Alle benutzerdefinierten bzw. eindeutigen Eigenschaften müssen in diesem „Teil B“ des Schemas angeordnet werden. |
+| `time` | Erforderlich | Der Zeitstempel (UTC) des Ereignisses. |
+| `resourceId` | Erforderlich | Die Ressourcen-ID der Ressource, die das Ereignis ausgegeben hat. Für Mandantendienste weist sie das Format */tenants/tenant-id/providers/provider-name* auf. |
+| `tenantId` | Erforderlich für Mandantenprotokolle | Die Mandanten-ID des Active Directory-Mandanten, mit dem dieses Ereignis verknüpft ist. Diese Eigenschaft wird nur für Protokolle auf Mandantenebene verwendet. In Protokollen auf Ressourcenebene kommt sie nicht vor. |
+| `operationName` | Erforderlich | Der Name des Vorgangs, den dieses Ereignis darstellt. Wenn das Ereignis einen Azure-RBAC-Vorgang (Role-Based Access Control, rollenbasierte Zugriffssteuerung) darstellt, ist dies der Name des Azure-RBAC-Vorgangs (Beispiel: `Microsoft.Storage/storageAccounts/blobServices/blobs/Read`). Dieser Name wird normalerweise in Form eines Azure Resource Manager-Vorgangs modelliert, auch wenn es sich nicht um einen dokumentierten Resource Manager-Vorgang handelt: (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`). |
+| `operationVersion` | Optional | Die dem Vorgang zugeordnete API-Version, wenn `operationName` über eine API durchgeführt wurde (Beispiel: `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Wenn keine API für diesen Vorgang vorhanden ist, entspricht die Version der Version dieses Vorgangs für den Fall, dass sich die dem Vorgang zugeordneten Eigenschaften in Zukunft ändern. |
+| `category` | Erforderlich | Die Protokollkategorie des Ereignisses. „category“ ist die Granularität, mit der Sie Protokolle für eine bestimmte Ressource aktivieren oder deaktivieren können. Die Eigenschaften, die im Eigenschaftenblob eines Ereignisses angezeigt werden, sind für eine bestimmte Protokollkategorie und einen Ressourcentyp gleich. Typische Protokollkategorien sind `Audit`, `Operational`, `Execution` und `Request`. |
+| `resultType` | Optional | Der Status des Ereignisses. Typische Werte sind `Started`, `In Progress`, `Succeeded`, `Failed`, `Active` und `Resolved`. |
+| `resultSignature` | Optional | Der Unterstatus des Ereignisses. Wenn dieser Vorgang einem REST-API-Aufruf entspricht, ist dieses Feld der HTTP-Statuscode des entsprechenden REST-Aufrufs. |
+| `resultDescription `| Optional | Die statische Textbeschreibung dieses Vorgangs, z. B. `Get storage file`. |
+| `durationMs` | Optional | Die Dauer des Vorgangs in Millisekunden. |
+| `callerIpAddress` | Optional | Die IP-Adresse des Aufrufers, wenn der Vorgang einem API-Aufruf entspricht, der von einer Entität mit einer öffentlich verfügbaren IP-Adresse stammt. |
+| `correlationId` | Optional | Eine GUID, die zum Gruppieren einer Reihe verwandter Ereignisse verwendet wird. Wenn zwei Ereignisse über denselben `operationName`-Wert, aber zwei verschiedene Status (z. B. `Started` und `Succeeded`) verfügen, verwenden sie in der Regel denselben `correlationID`-Wert. Hiermit können auch andere Beziehungen zwischen Ereignissen dargestellt werden. |
+| `identity` | Optional | Ein JSON-Blob zum Beschreiben der Identität des Benutzers oder der Anwendung, der bzw. die den Vorgang durchgeführt hat. Normalerweise sind in diesem Feld auch die Autorisierung und die Ansprüche bzw. das JWT-Token aus Active Directory enthalten. |
+| `Level` | Optional | Der Schweregrad des Ereignisses. Muss `Informational`, `Warning`, `Error` oder `Critical` sein. |
+| `location` | Optional | Die Region der Ressource, die das Ereignis ausgibt, z. B. `East US` oder `France South`. |
+| `properties` | Optional | Erweiterte Eigenschaften, die sich auf diese Kategorie von Ereignissen beziehen. Alle benutzerdefinierten bzw. eindeutigen Eigenschaften müssen in diesem „Teil B“ des Schemas angeordnet werden. |
 
 ## <a name="service-specific-schemas"></a>Dienstspezifische Schemas
 
-Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und der Protokollkategorie. In dieser Liste sind Dienste aufgeführt, über die Ressourcenprotokolle und Links zum Dienst und zum kategoriespezifischen Schema (falls zutreffend) verfügbar gemacht werden. Diese Liste ändert sich ständig, da neue Dienste hinzugefügt werden. Wenn Sie also den gewünschten Dienst unten nicht finden, verwenden Sie eine Suchmaschine, um nach weiteren Dokumentationen zu suchen. Sie können auch ein GitHub-Problem für diesen Artikel öffnen, damit wir ihn aktualisieren können.
+Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und der Protokollkategorie. In der folgenden Liste sind Azure-Dienste aufgeführt, über die Ressourcenprotokolle und Links zum Dienst und zum kategoriespezifischen Schema (falls zutreffend) verfügbar gemacht werden. Die Liste ändert sich, wenn neue Dienste hinzugefügt werden. Wenn die von Ihnen benötigten Dienste nicht aufgeführt sind, können Sie ein GitHub-Issue zu diesem Artikel erstellen, damit wir ihn aktualisieren können.
 
-| Dienst | Schema und Dokumente |
+| Dienst oder Feature | Schema und Dokumentation |
 | --- | --- |
-| Azure Active Directory | [Übersicht](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [Überwachungsprotokollschema](../../active-directory/reports-monitoring/overview-reports.md) und [Anmeldeschema](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
-| Analysis Services | [Azure Analysis Services: Einrichten der Diagnoseprotokollierung](../../analysis-services/analysis-services-logging.md) |
-| API Management | [API Management-Ressourcenprotokolle](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
-| App Service | [App Service-Protokolle](../../app-service/troubleshoot-diagnostic-logs.md)
-| Anwendungsgateways |[Protokollierung für Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
-| Azure-Automatisierung |[Protokollanalysen für Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
+| Azure Active Directory | [Übersicht](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [Überwachungsprotokollschema](../../active-directory/reports-monitoring/overview-reports.md), [Anmeldeschema](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
+| Azure Analysis Services | [Azure Analysis Services: Einrichten der Diagnoseprotokollierung](../../analysis-services/analysis-services-logging.md) |
+| Azure API Management | [API Management-Ressourcenprotokolle](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
+| Azure App Service | [App Service-Protokolle](../../app-service/troubleshoot-diagnostic-logs.md)
+| Azure Application Gateway |[Protokollierung für Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
+| Azure-Automatisierung |[Log Analytics für Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch-Protokollierung](../../batch/batch-diagnostics.md) |
-| Cognitive Services | [Protokollierung für Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
-| Container Instances | [Protokollierung für Azure Container Instances](../../container-instances/container-instances-log-analytics.md#log-schema) |
-| Containerregistrierung | [Protokollierung für Azure Container Registry](../../container-registry/monitor-service.md) |
-| Content Delivery Network | [Azure-Protokolle für CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
-| CosmosDB | [Azure Cosmos DB-Protokollierung](../../cosmos-db/monitor-cosmos-db.md) |
-| Data Factory | [Überwachen von Data Factorys mit Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
-| Data Lake Analytics |[Zugreifen auf Protokolle für Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
-| Data Lake Store |[Zugreifen auf Protokolle für Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Azure Cognitive Services | [Protokollierung für Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
+| Azure Container Instances | [Protokollierung für Azure Container Instances](../../container-instances/container-instances-log-analytics.md#log-schema) |
+| Azure Container Registry | [Protokollierung für Azure Container Registry](../../container-registry/monitor-service.md) |
+| Azure Content Delivery Network | [Diagnoseprotokolle für Azure Content Delivery Network](../../cdn/cdn-azure-diagnostic-logs.md) |
+| Azure Cosmos DB | [Azure Cosmos DB-Protokollierung](../../cosmos-db/monitor-cosmos-db.md) |
 | Azure-Daten-Explorer | [Azure Data Explorer-Protokolle](/azure/data-explorer/using-diagnostic-logs) |
+| Azure Data Factory | [Überwachen von Data Factorys mit Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
+| Azure Data Lake Analytics |[Zugreifen auf Protokolle für Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
+| Azure Data Lake Storage |[Zugreifen auf Protokolle für Azure Data Lake Storage](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Azure Database for MySQL | [Azure Database for MySQL-Diagnoseprotokolle](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL-Protokolle](../../postgresql/concepts-server-logs.md#resource-logs) |
 | Azure Databricks | [Diagnoseprotokollierung in Azure Databricks](/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
-| Azure Machine Learning | [Diagnoseprotokollierung in Azure Machine Learning](../../machine-learning/monitor-resource-reference.md) |
-| DDoS Protection | [Protokollierung für Azure DDoS Protection Standard](../../ddos-protection/diagnostic-logging.md#log-schemas) |
+| Azure DDoS Protection | [Protokollierung für Azure DDoS Protection Standard](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Azure Digital Twins | [Einrichten der Azure Digital Twins-Diagnose](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
-| Event Hubs |[Azure Event Hubs-Protokolle](../../event-hubs/event-hubs-diagnostic-logs.md) |
-| ExpressRoute | Schema nicht verfügbar. |
+| Azure Event Hubs |[Azure Event Hubs-Protokolle](../../event-hubs/event-hubs-diagnostic-logs.md) |
+| Azure ExpressRoute | Schema nicht verfügbar |
 | Azure Firewall | [Protokollierung für Azure Firewall](../../firewall/logs-and-metrics.md#diagnostic-logs) |
-| Front Door | [Protokollierung für Front Door](../../frontdoor/front-door-diagnostics.md) |
-| IoT Hub | [IoT Hub-Vorgänge](../../iot-hub/monitor-iot-hub-reference.md#resource-logs) |
-| Key Vault |[Azure-Schlüsseltresor-Protokollierung](../../key-vault/general/logging.md) |
-| Kubernetes Service |[Azure Kubernetes-Protokollierung](../../aks/monitor-aks-reference.md#resource-logs) |
-| Load Balancer |[Protokollanalysen für den Azure Load Balancer](../../load-balancer/monitor-load-balancer.md) |
-| Logic Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
-| Media Services | [Media Services-Überwachungsschemas](../../media-services/latest/monitoring/monitor-media-services-data-reference.md#schemas) |
-| Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| Power BI Dedicated | [Protokollierung für Power BI Embedded in Azure](/power-bi/developer/azure-pbie-diag-logs) |
+| Azure Front Door | [Protokollierung für Azure Front Door](../../frontdoor/front-door-diagnostics.md) |
+| Azure IoT Hub | [IoT Hub-Vorgänge](../../iot-hub/monitor-iot-hub-reference.md#resource-logs) |
+| Azure Key Vault |[Azure Key Vault-Protokollierung](../../key-vault/general/logging.md) |
+| Azure Kubernetes Service |[Azure Kubernetes Service-Protokollierung](../../aks/monitor-aks-reference.md#resource-logs) |
+| Azure Load Balancer |[Log Analytics für Azure Load Balancer](../../load-balancer/monitor-load-balancer.md) |
+| Azure Logic Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
+| Azure Machine Learning | [Diagnoseprotokollierung in Azure Machine Learning](../../machine-learning/monitor-resource-reference.md) |
+| Azure Media Services | [Media Services-Überwachungsschemas](../../media-services/latest/monitoring/monitor-media-services-data-reference.md#schemas) |
+| Netzwerksicherheitsgruppen |[Log Analytics für Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/virtual-network-nsg-manage-log.md) |
+| Azure Power BI Embedded | [Protokollierung für Power BI Embedded in Azure](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datenmodell für Azure Backup](../../backup/backup-azure-reports-data-model.md)|
-| Suchen, |[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](../../search/search-traffic-analytics.md) |
-| Service Bus |[Azure Service Bus-Protokolle](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL-Datenbank | [Azure SQL-Datenbank-Protokollierung](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
-| Stream Analytics |[Auftragsprotokolle](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
-| Storage | [Blobs](../../storage/blobs/monitor-blob-storage-reference.md#resource-logs-preview), [Dateien](../../storage/files/storage-files-monitoring-reference.md#resource-logs-preview), [Warteschlangen](../../storage/queues/monitor-queue-storage-reference.md#resource-logs-preview), [Tabellen](../../storage/tables/monitor-table-storage-reference.md#resource-logs-preview) |
-| Traffic Manager | [Traffic Manager-Protokollschema](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
-| Virtuelle Netzwerke | Schema nicht verfügbar. |
-| Gateways für virtuelle Netzwerke | Schema nicht verfügbar. |
+| Durchsuchen der Datenverkehrsanalyse |[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](../../search/search-traffic-analytics.md) |
+| Azure-Servicebus |[Azure Service Bus-Protokolle](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
+| Azure SQL-Datenbank | [Azure SQL-Datenbank-Protokollierung](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
+| Azure Storage | [Blobs](../../storage/blobs/monitor-blob-storage-reference.md#resource-logs-preview), [Dateien](../../storage/files/storage-files-monitoring-reference.md#resource-logs-preview), [Warteschlangen](../../storage/queues/monitor-queue-storage-reference.md#resource-logs-preview), [Tabellen](../../storage/tables/monitor-table-storage-reference.md#resource-logs-preview) |
+| Azure Stream Analytics |[Auftragsprotokolle](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| Azure Traffic Manager | [Traffic Manager-Protokollschema](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
+| Azure Virtual Network | Schema nicht verfügbar |
+| Gateways des virtuellen Netzwerks | Schema nicht verfügbar |
 
 
 
@@ -97,6 +99,6 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 
 * [Anzeigen der Ressourcenprotokollkategorien, die Sie sammeln können](resource-logs-categories.md)
 * [Weitere Informationen zu Ressourcenprotokollen](../essentials/platform-logs-overview.md)
-* [Streamen von Ressourcenprotokollen an **Event Hubs**](./resource-logs.md#send-to-azure-event-hubs)
+* [Streamen von Ressourcenprotokollen an Event Hubs](./resource-logs.md#send-to-azure-event-hubs)
 * [Ändern der Diagnoseeinstellungen für Ressourcenprotokolle mithilfe der Azure Monitor-REST-API](/rest/api/monitor/diagnosticsettings)
 * [Analysieren von Protokollen aus Azure Storage mit Log Analytics](./resource-logs.md#send-to-log-analytics-workspace)

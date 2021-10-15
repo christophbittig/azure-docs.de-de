@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/15/2021
 ms.author: bagol
-ms.openlocfilehash: 21775c8d6e9743b65a791abb946c571862b68156
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4bdb65fddfe7f72407c432fd03cce0558637ab39
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128617562"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129419010"
 ---
 # <a name="azure-sentinel-dns-normalization-schema-reference-public-preview"></a>Referenz zum DNS-Normalisierungsschema von Azure Sentinel (Public Preview)
 
@@ -93,7 +93,7 @@ Die Parser `im` und `vim*` unterstützen [Filterparameter](normalization-about-p
 
 Die folgenden Filterparameter sind verfügbar:
 
-| Name     | type      | Beschreibung |
+| Name     | Typ      | Beschreibung |
 |----------|-----------|-------------|
 | **StartTime** | datetime | Filtert nur DNS-Abfragen, die zu oder nach dieser Zeit ausgeführt wurden. |
 | **EndTime** | datetime | Filtert nur DNS-Abfragen, deren Ausführung zu oder vor diesem Zeitpunkt beendet wurde. |
@@ -105,7 +105,18 @@ Die folgenden Filterparameter sind verfügbar:
 | **EventType**| Zeichenfolge | Filtert nur DNS-Abfragen des angegebenen Typs. Wenn kein Wert angegeben wird, werden nur Lookup-Abfragen zurückgegeben. |
 ||||
 
-Um Ergebnisse mit Hilfe eines Parameters zu filtern, müssen Sie den Parameter in Ihrem Parser angeben. 
+Verwenden Sie zum Beispiel Folgendes, um nur DNS-Abfragen vom letzten Tag zu filtern, die den Domänennamen nicht auflösen konnten:
+
+```kql
+imDns (responsecodename = 'NXDOMAIN', starttime = ago(1d), endtime=now())
+```
+
+Verwenden Sie Folgendes, um nur DNS-Abfragen nach einer angegebenen Liste von Domänennamen zu filtern:
+
+```kql
+let torProxies=dynamic(["tor2web.org", "tor2web.com", "torlink.co",...]);
+imDns (domain_has_any = torProxies)
+```
 
 ## <a name="normalized-content"></a>Normalisierter Inhalt
 
@@ -187,7 +198,7 @@ Die folgenden Felder gelten speziell für DNS-Ereignisse. Viele von ihnen haben 
 
 | **Feld** | **Klasse** | **Typ** | **Hinweise** |
 | --- | --- | --- | --- |
-| **SrcIpAddr** | Obligatorisch. | IP-Adresse | Die IP-Adresse des Clients, der die DNS-Anforderung sendet. Bei einer rekursiven DNS-Anforderung ist dieser Wert in der Regel das meldende Gerät und in den meisten Fällen auf `127.0.0.1` festgelegt.<br><br>Beispiel: `192.168.12.1` |
+| **SrcIpAddr** | Empfohlen | IP-Adresse | Die IP-Adresse des Clients, der die DNS-Anforderung sendet. Bei einer rekursiven DNS-Anforderung ist dieser Wert in der Regel das meldende Gerät und in den meisten Fällen auf `127.0.0.1` festgelegt.<br><br>Beispiel: `192.168.12.1` |
 | **SrcPortNumber** | Optional | Integer | Quellport der DNS-Abfrage.<br><br>Beispiel: `54312` |
 | **DstIpAddr** | Optional | IP-Adresse | Die IP-Adresse des Servers, der die DNS-Anforderung empfängt. Bei einer herkömmlichen DNS-Anforderung ist dieser Wert in der Regel das meldende Gerät und in den meisten Fällen auf `127.0.0.1` festgelegt.<br><br>Beispiel: `127.0.0.1` |
 | **DstPortNumber** | Optional | Integer  | Zielportnummer.<br><br>Beispiel: `53` |
@@ -195,7 +206,7 @@ Die folgenden Felder gelten speziell für DNS-Ereignisse. Viele von ihnen haben 
 | <a name=query></a>**DnsQuery** | Obligatorisch. | FQDN | Die aufzulösende Domäne. <br><br>**Hinweis**: Einige Quellen senden diese Abfrage in unterschiedlichen Formaten. Beispielsweise im DNS-Protokoll selbst enthält die Abfrage einen Punkt ( **.** ) am Ende, der entfernt werden muss.<br><br>Das DNS-Protokoll lässt zwar mehrere Abfragen in einer einzigen Anforderung zu, aber dieses Szenario ist, wenn überhaupt, nur selten anzutreffen. Wenn die Anforderung mehrere Abfragen enthält, speichern Sie die erste in diesem Feld und die übrigen optional im Feld [AdditionalFields](#additionalfields).<br><br>Beispiel: `www.malicious.com` |
 | **Domain** | Alias | | Alias für [Abfrage](#query). |
 | **DnsQueryType** | Optional | Integer | Dieses Feld kann [Codes von DNS-Ressourcendatensatztypen](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml) enthalten. <br><br>Beispiel: `28`|
-| **DnsQueryTypeName** | Obligatorisch. | Enumerated | Das Feld kann [Namen von DNS-Ressourcendatensatztypen](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml) enthalten. <br><br>**Hinweis**: IANA legt keine Groß-/Kleinschreibung für die Werte fest, sodass Groß-/Kleinschreibung für Analysen nach Bedarf normalisiert werden muss. Wenn die Quelle nur einen numerischen Code für den Abfragetyp und keinen Namen dafür angibt, muss der Parser zum Anreichern mit diesem Wert eine Nachschlagetabelle enthalten.<br><br>Beispiel: `AAAA`|
+| **DnsQueryTypeName** | Empfohlen | Enumerated | Das Feld kann [Namen von DNS-Ressourcendatensatztypen](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml) enthalten. <br><br>**Hinweis**: IANA legt keine Groß-/Kleinschreibung für die Werte fest, sodass Groß-/Kleinschreibung für Analysen nach Bedarf normalisiert werden muss. Wenn die Quelle nur einen numerischen Code für den Abfragetyp und keinen Namen dafür angibt, muss der Parser zum Anreichern mit diesem Wert eine Nachschlagetabelle enthalten.<br><br>Beispiel: `AAAA`|
 | <a name=responsename></a>**DnsResponseName** | Optional | String | Der Inhalt der Antwort, wie im Datensatz enthalten.<br> <br> Die DNS-Antwortdaten sind auf den meldenden Geräten inkonsistent, schwierig zu analysieren und von weniger Nutzen für quellagnostische Analysen. Daher muss das Informationsmodell nicht analysiert und normalisiert werden. Azure Sentinel stellt Antwortinformationen mit einer Hilfsfunktion bereit. Weitere Informationen finden Sie unter [Behandeln der DNS-Antwort](#handling-dns-response).|
 | <a name=responsecodename></a>**DnsResponseCodeName** |  Obligatorisch. | Enumerated | Der [DNS-Antwortcode](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml). <br><br>**Hinweis**: IANA legt keine Groß-/Kleinschreibung für die Werte fest, sodass Groß-/Kleinschreibung für Analysen normalisiert werden muss. Wenn die Quelle nur einen numerischen Antwortcode und keinen Namen dafür angibt, muss der Parser zum Anreichern mit diesem Wert eine Nachschlagetabelle enthalten. <br><br> Wenn dieser Datensatz eine Anforderung und keine Antwort darstellt, legen Sie ihn auf **NA** fest. <br><br>Beispiel: `NXDOMAIN` |
 | **DnsResponseCode** | Optional | Integer | Der [numerische DNS-Antwortcode](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml). <br><br>Beispiel: `3`|

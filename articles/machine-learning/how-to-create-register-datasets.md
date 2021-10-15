@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie Azure Machine Learning-Datasets erstellen, um auf Ihre Daten für Machine Learning-Experimentausführungen zuzugreifen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
 ms.custom: contperf-fy21q1, data4ml
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 07/06/2021
-ms.openlocfilehash: 5443386a8e62d6576d73161519546e368f41ad82
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: f640165420f06a85633d4db30d6338f4bfa205c4
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349896"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428367"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
 
@@ -223,7 +223,7 @@ file_dataset = file_dataset.filter(file_dataset.file_metadata['Size'] < 100000)
 file_dataset = file_dataset.filter((file_dataset.file_metadata['CreatedTime'] < datetime(2020,1,1)) | (file_dataset.file_metadata['CanSeek'] == False))
 ```
 
-**Bezeichnete Datasets**, die mit [Datenbezeichnungsprojekten](how-to-create-labeling-projects.md) erstellt wurden, sind ein Sonderfall. Diese Datasets sind vom Typ „TabularDataset“ und bestehen aus Bilddateien. Für diese Datasettypen können Sie die [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-)-Methode zum Filtern von Bildern nach Metadaten und nach Spaltenwerten wie `label` und `image_details` verwenden.
+**Bezeichnete Datasets**, die mit [Bildbezeichnungsprojekten](how-to-create-image-labeling-projects.md) erstellt wurden, sind ein Sonderfall. Diese Datasets sind vom Typ „TabularDataset“ und bestehen aus Bilddateien. Für diese Datasettypen können Sie die [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-)-Methode zum Filtern von Bildern nach Metadaten und nach Spaltenwerten wie `label` und `image_details` verwenden.
 
 ```python
 # Dataset that only contains records where the label column value is dog

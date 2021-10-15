@@ -9,12 +9,12 @@ ms.date: 06/21/2021
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 5c50cffb561076dd7d9c4af8e5b4654784cc3a01
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 51335fe48208423883706796fe4812ec0e0af5fe
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128555358"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275713"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Planen und Verwalten von Kosten für Azure Blob Storage
 
@@ -117,7 +117,7 @@ Weitere Informationen finden Sie unter [Optimieren der Kosten für Blob Storage 
 
 Sie können Kosten senken, indem Sie Blobdaten in den kostengünstigsten Zugriffsebenen ablegen. Wählen Sie aus drei Ebenen aus, die zur Optimierung ihrer Kosten für die Datennutzung konzipiert sind. Beispielsweise hat die *heiße Ebene* höhere Speicherkosten, aber geringere Zugriffskosten. Wenn Sie also häufig auf Daten zugreifen möchten, ist die heiße Ebene möglicherweise die kostengünstigste Wahl. Wenn Sie weniger häufig auf Daten zugreifen möchten, ist die *kalte Ebene* oder die *Archivebene* möglicherweise am sinnvollsten, weil dabei zwar höhere Kosten für den Datenzugriff entstehen, gleichzeitig aber die Kosten für das Speichern von Daten gesenkt werden.
 
-Weitere Informationen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md?tabs=azure-portal).
+Weitere Informationen finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](../blobs/access-tiers-overview.md?tabs=azure-portal).
 
 #### <a name="automatically-move-data-between-access-tiers"></a>Automatisches Verschieben von Daten zwischen Zugriffsebenen
 

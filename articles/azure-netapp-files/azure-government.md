@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files für Azure Government | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt, wie Sie eine Verbindung zu Azure Government US herstellen, um Azure NetApp Files zu verwenden
+description: Erfahren Sie, wie Sie eine Verbindung mit Azure Government herstellen, um Azure NetApp Files und Azure NetApp Files-Features in Azure Government zu verwenden.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,22 +12,33 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 09/28/2021
 ms.author: b-juche
-ms.openlocfilehash: b76895fdd82122413c83ebc017944578001ce0b9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4dbdc8086b59553474d05297cdaf030d897d441e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700211"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234070"
 ---
 # <a name="azure-netapp-files-for-azure-government"></a>Azure NetApp Files für Azure Government 
 
 [Microsoft Azure Government](../azure-government/documentation-government-welcome.md) bietet eine dedizierte Cloud, die es Behörden und ihren Partnern ermöglicht, geschäftskritische Workloads in die Cloud zu transformieren.  
 
-Dieser Artikel zeigt Ihnen, wie Sie innerhalb von Azure Government auf den Dienst Azure NetApp Files zugreifen können. 
+In diesem Artikel wird die Verfügbarkeit von Azure NetApp Files-Features in Azure Government beschrieben. Außerdem wird gezeigt, wie Sie innerhalb von Azure Government auf den Dienst Azure NetApp Files zugreifen können.
 
-## <a name="portal"></a>Portal 
+## <a name="feature-availability"></a>Verfügbarkeit von Funktionen
+
+Informationen zu den Azure Government-Regionen, die von Azure NetApp Files unterstützt werden, finden Sie auf der Seite *[Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia)* .  
+
+Alle in der öffentlichen Azure-Cloud verfügbaren [Azure NetApp Files-Features](whats-new.md) sind auch in unterstützten Azure Government-Regionen verfügbar, ***mit Ausnahme der in der folgenden Tabelle aufgeführten Features***: 
+
+| Azure NetApp Files-Features | Verfügbarkeit in der öffentlichen Azure-Cloud |  Verfügbarkeit in der Azure Government-Cloud |
+|:--- |:--- |:--- |
+| Regionsübergreifende Replikation in Azure NetApp Files | Public Preview | [Eingeschränkt](cross-region-replication-introduction.md#supported-region-pairs) |
+| Azure NetApp Files-Sicherung | Public Preview | Nein |
+
+## <a name="portal-access"></a>Portalzugriff
 
 Benutzer von Azure Government können auf Azure NetApp Files zugreifen, indem sie ihren Browser auf **portal.azure.us**.  Der Name der Portalsite lautet **Microsoft Azure Government**. Siehe [Verbinden mit Azure Government über das Portal](../azure-government/documentation-government-get-started-connect-with-portal.md)für Einzelheiten.   
 
@@ -37,7 +48,7 @@ Benutzer von Azure Government können auf Azure NetApp Files zugreifen, indem si
 
 Weitere Informationen zur Verwendung des Dienstes finden Sie in der [Azure NetApp Files](/azure/azure-netapp-files/)-Dokumentation.
 
-## <a name="azure-cli"></a>Azure CLI 
+## <a name="azure-cli-access"></a>Azure CLI-Zugriff
 
 Sie können eine Verbindung zu Azure Government herstellen, indem Sie den Cloud-Namen auf `AzureUSGovernment` setzen und dann mit der Anmeldung fortfahren, wie Sie es normalerweise mit dem Befehl `az login` tun würden. Nach der Ausführung des Anmeldebefehls wird ein Browser gestartet, in den Sie die entsprechenden Azure Government-Anmeldedaten eingeben.  
 
@@ -59,11 +70,11 @@ Mit diesem Befehl wird eine Tabelle mit den Azure-Cloud-Speicherorten erstellt. 
 
 Weitere Informationen finden Sie unter [Verbinden zu Azure Government mit Azure CLI](../azure-government/documentation-government-get-started-connect-with-cli.md).
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api-access"></a>REST-API-Zugriff
 
 Die Endpunkte für Azure Government unterscheiden sich von den kommerziellen Azure-Endpunkten. Eine Liste der verschiedenen Endpunkte finden Sie unter [Leitfaden für Entwickler](../azure-government/compare-azure-government-global-azure.md#guidance-for-developers) von Azure Government.
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershell-access"></a>PowerShell-Zugriff
 
 Wenn Sie sich über PowerShell mit Azure Government verbinden, müssen Sie einen Umgebungsparameter angeben, um sicherzustellen, dass Sie mit den richtigen Endpunkten verbunden sind. Von dort aus können Sie Azure NetApp Files wie gewohnt mit PowerShell verwenden. 
 
@@ -78,6 +89,7 @@ Weitere Informationen finden Sie [unter Verbinden zum Azure Government mit Power
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Was ist Azure Government?](../azure-government/documentation-government-welcome.md)
+* [Neues in Azure NetApp Files](whats-new.md)
 * [Vergleichen von Azure Government und globales Azure](../azure-government/compare-azure-government-global-azure.md)
 * [Azure NetApp Files: REST-API](azure-netapp-files-develop-with-rest-api.md)
 * [Azure NetApp Files REST-API mit PowerShell](develop-rest-api-powershell.md)

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: alkohli
-ms.openlocfilehash: a2aa8d3cecab71b354df2ff258bfa47ee77c97f9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 67cddd1839e666d4908706a1bbdaccbbd3565704
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128619588"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351441"
 ---
 # <a name="manage-azure-stack-edge-secrets-using-azure-key-vault"></a>Verwalten von Azure Stack Edge-Geheimnissen mithilfe von Azure Key Vault 
 
@@ -37,7 +37,7 @@ Für den Azure Stack Edge-Dienst bringt die Integration in Key Vault die folgend
 
 ## <a name="generate-activation-key-and-create-key-vault"></a>Generieren eines Aktivierungsschlüssels und Erstellen eines Schlüsseltresors
 
-Bei der Generierung von Aktivierungsschlüsseln wird eine Key Vault-Instanz für eine Azure Stack Edge-Ressource erstellt. Der Schlüsseltresor wird in der gleichen Ressourcengruppe erstellt, in der sich die Azure Stack Edge-Ressource befindet. Für den Schlüsseltresor sind Berechtigungen als Mitwirkender erforderlich. 
+Bei der Generierung von Aktivierungsschlüsseln wird eine Key Vault-Instanz für eine Azure Stack Edge-Ressource erstellt. Der Schlüsseltresor wird in der gleichen Ressourcengruppe erstellt, in der sich die Azure Stack Edge-Ressource befindet. Für den Schlüsseltresor ist eine Berechtigung für Mitwirkende erforderlich. 
 
 ### <a name="prerequisites-for-key-vault"></a>Key Vault-Voraussetzungen
 

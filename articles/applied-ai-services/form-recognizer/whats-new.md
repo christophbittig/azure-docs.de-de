@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 09/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: d575af739fa299cc32576bd2798eeb8165fe37c2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3adffbac5641c2791c5ef683b5c4d687331a1c3b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590029"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350142"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
@@ -24,11 +24,15 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. Speichern Sie ein Le
 
 ## <a name="september-2021"></a>September 2021
 
-„Behebung der ungenauen Namensextraktion in vordefinierten IDs (Führerschein), wenn der Name ein Suffix oder einen Punkt enthält.“
+[Erweiterte Funktionen des Azure-Metrik-Explorers](/azure/azure-monitor/essentials/metrics-charts) sind in Ihrer Ressourcenübersicht der Formularerkennung im Azure-Portal verfügbar.
 
-[Erweiterte Funktionen des Azure-Metrik-Explorers](/azure/azure-monitor/essentials/metrics-charts) in Ihrer Ressourcenübersicht der Formularerkennung im Azure-Portal verfügbar. 
+### <a name="monitoring-menu"></a>Menü „Überwachung“
 
-:::image type="content" source="media/portal-metrics.png" alt-text="Screenshot: Metrikdiagramme im Azure-Portal.":::
+:::image type="content" source="media/portal-metrics.png" alt-text="Screenshot des Menüs „Überwachung“ im Azure-Portal":::
+
+### <a name="charts"></a>Diagramme
+
+:::image type="content" source="media/portal-metrics-charts.png" alt-text="Screenshot eines Beispieldiagramms für Metriken im Azure-Portal":::
 
 ## <a name="july-2021"></a>Juli 2021
 

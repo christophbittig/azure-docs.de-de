@@ -4,16 +4,20 @@ description: In diesem Artikel wird beschrieben, wie Sie ein Ereignis in einem b
 ms.topic: conceptual
 ms.date: 08/19/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3c3be5c11341ddd7bb381134a0d0b50ba8745709
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 489ad5ab07a411612bdbce1a2dc71dc1a3441f3c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515424"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361507"
 ---
-# <a name="post-to-azure-event-grid-custom-topics-using-access-keys"></a>Posten eines Ereignisses in einem benutzerdefinierten Azure Event Grid-Thema mithilfe von Zugriffsschlüsseln
+# <a name="publish-events-to-azure-event-grid-custom-topics-using-access-keys"></a>Veröffentlichen von Ereignissen in einem benutzerdefinierten Azure Event Grid-Thema mithilfe von Zugriffsschlüsseln
 
 In diesem Artikel wird beschrieben, wie Sie unter Verwendung eines Zugriffsschlüssels ein Ereignis in einem benutzerdefinierten Thema posten. Es wird außerdem das Format von Postings und Ereignisdaten gezeigt. Die [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) gilt nur für Postings, die dem erwarteten Format entsprechen.
+
+
+> [!NOTE]
+> Azure AD-Authentifizierung bietet eine bessere Authentifizierungsunterstützung als Authentifizierung mit Zugriffsschlüsseln oder SAS-Token (Shared Access Signature). Bei Azure AD-Authentifizierung wird die Identität anhand des Azure AD-Identitätsanbieters überprüft. Als Entwickler müssen Sie keine Schlüssel in Ihrem Code verwalten, wenn Sie Azure AD-Authentifizierung verwenden. Sie profitieren auch von allen Sicherheitsfeatures, die in die Microsoft Identity-Plattform integriert sind, z. B. von bedingtem Zugriff. Diese Features können Ihnen helfen, die Sicherheit Ihrer Anwendung zu verbessern. Weitere Informationen finden Sie unter [Authentifizieren von Veröffentlichungsclients mit Azure Active Directory](authenticate-with-active-directory.md).
 
 ## <a name="endpoint"></a>Endpunkt
 

@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 937bffb649619392cdd293ebea16761578dbdd8c
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 5df5f2c0cd7e56131149c9e155590a30677291f2
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186217"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235818"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der Anwendungsproxyanwendung
 
@@ -90,7 +90,7 @@ Sie können auch direkt auf die Connectorprotokolle zugreifen, um Fehler zu ermi
 
 Wenn die oben genannten Schritte das Problem nicht beheben konnten, können einige andere Ursachen vorliegen. So identifizieren Sie das Problem
 
-Wenn Ihre Anwendung für die integrierte Windows-Authentifizierung (IWA) konfiguriert ist, testen Sie die Anwendung ohne einmaliges Anmelden. Wenn dies nicht der Fall ist, lesen Sie im nächsten Absatz weiter. Öffnen Sie die Anwendung zum Überprüfen ohne einmaliges Anmelden über **Unternehmensanwendungen**, und wechseln Sie zum Menü **Einmaliges Anmelden**. Ändern Sie die Auswahl in der Dropdownliste von „Integrierte Windows-Authentifizierung“ in „Azure AD-SSO deaktiviert“.
+Wenn Ihre Anwendung für die integrierte Windows-Authentifizierung (IWA) konfiguriert ist, testen Sie die Anwendung ohne Single Sign-On. Wenn dies nicht der Fall ist, lesen Sie im nächsten Absatz weiter. Öffnen Sie die Anwendung zum Überprüfen ohne einmaliges Anmelden über **Unternehmensanwendungen**, und wechseln Sie zum Menü **Einmaliges Anmelden**. Ändern Sie die Dropdown-Liste von "Integrierte Windows-Authentifizierung" in "Azure AD Single Sign-On deaktiviert".
 
 Öffnen Sie einen Browser, und versuchen Sie erneut, auf die Anwendung zuzugreifen. Es sollte eine Authentifizierungsaufforderung angezeigt und anschließend die Anwendung geöffnet werden. Wenn eine Authentifizierung möglich ist, wird das Problem durch die Konfiguration der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) verursacht, die das einmalige Anmelden ermöglicht. Weitere Informationen finden Sie auf der Seite zur Problembehandlung bei der KCD.
 

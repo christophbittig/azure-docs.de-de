@@ -3,14 +3,14 @@ title: Konfigurieren von Windows Update-Einstellungen für die Azure Automation-
 description: In diesem Artikel wird beschrieben, wie Sie die Windows Update-Einstellungen für die Azure Automation-Updateverwaltung konfigurieren.
 services: automation
 ms.subservice: update-management
-ms.date: 05/04/2020
+ms.date: 10/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: a1f95ca856223628974a9519b7c4811bde43965e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d9d95c826af2d9448b296a69a815af26ab4fda4
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92221602"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546658"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Konfigurieren von Windows Update-Einstellungen für die Azure Automation-Updateverwaltung
 
@@ -23,17 +23,22 @@ Die Azure Automation-Updateverwaltung verwendet den [Windows Update-Client](/win
 
 Die Updateverwaltung berücksichtigt viele der Einstellungen, die zum Steuern des Windows Update-Clients angegeben werden. Wenn Sie Einstellungen für die Aktivierung Windows-fremder Updates verwenden, verwaltet die Updateverwaltung diese Updates ebenfalls. Wenn Sie das Herunterladen von Updates vor der Updatebereitstellung ermöglichen, können Bereitstellungen schneller, effizienter und in der Regel innerhalb des Wartungsfensters durchgeführt werden.
 
-Weitere Empfehlungen zum Einrichten von WSUS in Ihrem Azure-Abonnement und wie Sie Ihre virtuellen Windows-Computer auf sichere Weise auf dem neuesten Stand halten, finden Sie unter [Planen Ihrer Bereitstellung für die Aktualisierung von virtuellen Windows-Computern in Azure mithilfe von WSUS](/azure/architecture/example-scenario/wsus/).
+Weitere Empfehlungen zum Einrichten von WSUS in Ihrem Azure-Abonnement und zum sicheren Aktualisieren Ihrer virtuellen Windows-Maschinen finden Sie unter [Planen Sie Ihre Bereitstellung für die Aktualisierung virtueller Windows-Maschinen in Azure mit WSUS](/azure/architecture/example-scenario/wsus/).
 
 ## <a name="pre-download-updates"></a>Vorzeitiges Herunterladen von Updates
 
-Um zu konfigurieren, dass Updates automatisch heruntergeladen werden, ohne sie automatisch zu installieren, können Sie mithilfe der Gruppenrichtlinie [die Einstellung „Automatische Updates“](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) auf „3“ festlegen. Diese Einstellung ermöglicht das Herunterladen der erforderlichen Updates im Hintergrund und benachrichtigt Sie, dass die Updates zur Installation bereit sind. Dadurch behält die Updateverwaltung die Kontrolle über die Zeitpläne, und die Updates können außerhalb des Wartungsfensters der Updateverwaltung heruntergeladen werden. Dieses Verhalten verhindert `Maintenance window exceeded`-Fehler in der Updateverwaltung.
+Um das automatische Herunterladen von Updates zu konfigurieren, ohne sie automatisch zu installieren, können Sie mithilfe der Gruppenrichtlinie [die Einstellung "Automatische Updates"](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates) konfigurieren. Je nach Version des Betriebssystems gibt es zwei empfohlene Werte:
+
+* Windows Server 2016 und höher, eingestellt auf einen Wert von **7**.
+* Windows Server 2012 R2 und früher, eingestellt auf den Wert von **3**.
+
+Diese Einstellung ermöglicht das Herunterladen der erforderlichen Updates im Hintergrund und benachrichtigt Sie, dass die Updates zur Installation bereit sind. Dadurch behält die Updateverwaltung die Kontrolle über die Zeitpläne, und die Updates können außerhalb des Wartungsfensters der Updateverwaltung heruntergeladen werden. Dieses Verhalten verhindert `Maintenance window exceeded`-Fehler in der Updateverwaltung.
 
 Sie können diese Einstellung in PowerShell aktivieren:
 
 ```powershell
 $WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
-$WUSettings.NotificationLevel = 3
+$WUSettings.NotificationLevel = <3 or 7>
 $WUSettings.Save()
 ```
 

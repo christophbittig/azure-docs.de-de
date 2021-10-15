@@ -8,12 +8,12 @@ author: ejarvi
 ms.author: ejarvi
 ms.date: 03/19/2020
 ms.collection: linux
-ms.openlocfilehash: 2b589f24c5338dde503d21a71fcbb9863f8da5b4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e49b017980fa918be57d4dcc8f9c880bc73c6226
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355268"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275143"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption für Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -41,6 +41,9 @@ Zum Auswählen eines Zielschemas muss die Eigenschaft `typeHandlerVersion` auf d
 ### <a name="schema-v11-no-aad-recommended"></a>Schema v1.1: ohne AAD (empfohlen)
 
 Das v1.1-Schema wird empfohlen und erfordert keine Azure Active Directory (AAD)-Eigenschaften.
+
+> [!NOTE]
+> Der `DiskFormatQuery`-Parameter ist veraltet. Die Funktionalität wurde durch die EncryptFormatAll-Option ersetzt, die zum Formatieren von Datenträgern zum Zeitpunkt der Verschlüsselung empfohlen wird.
 
 ```json
 {

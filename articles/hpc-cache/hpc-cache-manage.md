@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: cd4dcb4bac5f2876db9af194abc5835c1d0f5a3c
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 4fb5bcc0ae5be35f740bc39bc0cf4a9221363358
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586975"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274366"
 ---
 # <a name="manage-your-cache"></a>Verwalten Ihres Caches
 
@@ -35,7 +35,7 @@ Um die Übersichtsseite zu öffnen, wählen Sie die Cacheressource im Azure-Port
 Nachfolgend finden Sie weitere Informationen zu diesen Optionen.
 
 > [!TIP]
-> Sie können auch einzelne Speicherziele verwalten. Weitere Informationen finden Sie unter [Verwalten von Speicherzielen](manage-storage-targets.md).
+> Sie können auch einzelne Speicherziele verwalten. Weitere Informationen finden Sie unter [Anzeigen und Verwalten von Speicherzielen](manage-storage-targets.md).
 
 Klicken Sie auf das Bild unten, um ein [Video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) abzuspielen, in dem Cacheverwaltungsaufgaben veranschaulicht werden.
 

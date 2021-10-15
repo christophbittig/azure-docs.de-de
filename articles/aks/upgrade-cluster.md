@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Upgrade eines Azure Kubernetes Service-Cl
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 2b839350b8f993d107bce67266600d2f4b2386fd
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 0f4e364cd3de9093b84e3ae02c4337361985959a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217370"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350988"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -176,6 +176,13 @@ az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrad
 ## <a name="using-cluster-auto-upgrade-with-planned-maintenance"></a>Verwenden von automatischem Clusterupgrade mit geplanter Wartung
 
 Wenn Sie geplante Wartung und automatisches Upgrade verwenden, wird Ihr Upgrade während Ihres angegebenen Wartungsfensters gestartet. Weitere Informationen zur geplanten Wartung finden Sie unter [Verwenden der geplanten Wartung, um Wartungsfenster für AKS-Cluster (Azure Kubernetes Service) zu planen (Vorschau)][planned-maintenance].
+
+## <a name="special-considerations-for-node-pools-that-span-multiple-availability-zones"></a>Besondere Überlegungen für Knotenpools, die sich über mehrere Verfügbarkeitszonen erstrecken
+
+AKS verwendet Best-Effort-Zonenausgleich in Knotengruppen. Während eines Upgrade-Surges ist die Zone(n) für den/die Surge-Knoten in VMSS im Voraus unbekannt. Dies kann vorübergehend zu einer unausgewogenen Zonenkonfiguration während eines Upgrades führen. AKS löscht jedoch den/die Surge-Knoten, sobald das Upgrade abgeschlossen ist, und bewahrt das ursprüngliche Zonengleichgewicht. Wenn Sie möchten, dass Ihre Zonen während des Upgrades ausgeglichen bleiben, erhöhen Sie den Surge auf ein Vielfaches von 3 Knoten. VMSS gleicht dann Ihre Knoten über Verfügbarkeitszonen mit Best-Effort-Zonenausgleich aus.
+
+Wenn Sie PVCs haben, die durch Azure LRS-Disks gesichert sind, sind diese an eine bestimmte Zone gebunden und werden möglicherweise nicht sofort wiederhergestellt, wenn der Surge-Knoten nicht mit der Zone des PVCs übereinstimmt. Dies kann zu Ausfallzeiten in Ihrer Anwendung führen, wenn der Upgrade-Vorgang weiterhin Knoten entleert, die PVs aber an eine Zone gebunden sind. Um diesen Fall zu bewältigen und eine hohe Verfügbarkeit aufrechtzuerhalten, konfigurieren Sie ein [Pod Disruption Budget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) für Ihre Anwendung. Dadurch kann Kubernetes Ihre Verfügbarkeitsanforderungen während des Entleerungsvorgangs von Upgrade einhalten. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

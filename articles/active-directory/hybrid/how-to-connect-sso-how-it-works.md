@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 883bef7f38765d45bab0f505e4ce0184dfa59356
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 2a8fd99528e9f744a69533caa5a6009203a5f4de
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110455"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232934"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Technischer Einblick
 
@@ -49,7 +49,7 @@ Das nahtlose einmalige Anmelden wird mithilfe von Azure AD Connect wie [hier](ho
 >[!IMPORTANT]
 > Nahtloses einmaliges Anmelden unterstützt die Verschlüsselungstypen `AES256_HMAC_SHA1`, `AES128_HMAC_SHA1` und `RC4_HMAC_MD5` für Kerberos. Um die Sicherheit zu erhöhen, wird empfohlen, den Verschlüsselungstyp für das Konto `AzureADSSOAcc$` auf `AES256_HMAC_SHA1` oder einen der AES-Typen und nicht auf RC4 festzulegen. Der Verschlüsselungstyp wird im Attribut `msDS-SupportedEncryptionTypes` des Kontos in Ihrer Active Directory-Instanz gespeichert.  Wenn der Verschlüsselungstyp des Kontos `AzureADSSOAcc$` auf `RC4_HMAC_MD5` festgelegt ist und Sie ihn in einen der AES-Verschlüsselungstypen ändern möchten, stellen Sie sicher, dass Sie zuerst einen Rollover für den Kerberos-Entschlüsselungsschlüssel des Kontos `AzureADSSOAcc$` (wie im [FAQ-Dokument](how-to-connect-sso-faq.yml) unter der relevanten Frage erläutert) ausführen, weil andernfalls kein nahtloses einmaliges Anmelden erfolgt.
 
-Nach der Einrichtung funktioniert das nahtlose einmalige Anmelden genauso wie jede andere Anmeldung, die die integrierte Windows-Authentifizierung (IWA) verwendet.
+Sobald die Einrichtung abgeschlossen ist, funktioniert Seamless SSO wie jede andere Anmeldung, bei der die integrierte Windows-Authentifizierung (IWA) verwendet wird.
 
 ### <a name="how-does-sign-in-on-a-web-browser-with-seamless-sso-work"></a>Wie funktioniert die Anmeldung in einem Webbrowser mit dem nahtlosen einmaligen Anmelden?
 

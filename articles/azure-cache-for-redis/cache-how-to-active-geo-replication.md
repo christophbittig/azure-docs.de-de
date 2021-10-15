@@ -1,23 +1,23 @@
 ---
 title: Konfigurieren der aktiven Georeplikation für Azure Cache for Redis-Enterprise-Instanzen
 description: Erfahren Sie, wie Ihre Azure Cache for Redis-Enterprise-Instanzen über Azure-Regionen hinweg repliziert werden.
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.author: yegu
-ms.openlocfilehash: 5f7bd55cfbdd0e38e2c53784dd24760fb051c0f1
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.author: cauribeg
+ms.openlocfilehash: 99169aaacf0ddd39fb4213ee6c1d83c05a71d532
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112233581"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538489"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>Konfigurieren der aktiven Georeplikation für Azure Cache for Redis-Enterprise-Instanzen (Vorschau)
 
 In diesem Artikel erfahren Sie, wie Sie einen aktiven georeplizierten Azure Cache über das Azure-Portal konfigurieren.
 
-Die aktive Georeplikation gruppiert zwei Azure Cache for Redis-Enterprise-Instanzen in einem einzelnen Cache, der mehrere Azure-Regionen umfasst. Beide Instanzen fungieren als lokale primäre Replikate. Eine Anwendung entscheidet, welche Instanzen für Lese- und Schreibanforderungen verwendet werden sollen.
+Die aktive Georeplikation gruppiert bis zu fünf Azure Cache for Redis-Enterprise-Instanzen in einem einzelnen Cache, der mehrere Azure-Regionen umfasst. Alle Instanzen fungieren als lokale primäre Replikate. Eine Anwendung entscheidet, welche Instanz bzw. Instanzen für Lese- und Schreibanforderungen verwendet werden sollen.
 
 > [!NOTE]
 > Die Datenübertragung zwischen Azure-Regionen wird mit den [Standardbandbreitensätzen](https://azure.microsoft.com/pricing/details/bandwidth/) abgerechnet.
@@ -47,7 +47,7 @@ Die aktive Georeplikation gruppiert zwei Azure Cache for Redis-Enterprise-Instan
 
 ## <a name="remove-from-an-active-geo-replication-group"></a>Entfernen aus einer aktiven Georeplikationsgruppe
 
-Um eine Cache-Instanz aus einer aktiven Georeplikationsgruppe zu entfernen, löschen Sie einfach die Instanz. Die verbleibenden Instanzen konfigurieren sich automatisch selbst neu.
+Löschen Sie einfach die Instanz, um eine Cache-Instanz aus einer aktiven Georeplikationsgruppe zu entfernen. Die verbleibenden Instanzen konfigurieren sich automatisch selbst neu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

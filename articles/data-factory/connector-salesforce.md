@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/03/2021
-ms.openlocfilehash: 0a7bca44ccee4e836fd5aa8e0ef44412e1fc6985
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/29/2021
+ms.openlocfilehash: 6a1c13d8557b49b1481e94bc95eef10fd5e658f6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836214"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230236"
 ---
 # <a name="copy-data-from-and-to-salesforce-using-azure-data-factory-or-azure-synapse-analytics"></a>Kopieren von Daten aus und nach Salesforce mit Azure Data Factory oder Azure Synapse Analytics
 
@@ -41,6 +41,9 @@ Dieser Salesforce-Connector unterstützt insbesondere Folgendes:
 - Datenkopiervorgänge aus der und in die Produktionsumgebung, den Sandkasten und die benutzerdefinierte Domäne von Salesforce.
 
 Der Salesforce-Connector baut auf der Salesforce REST/Bulk-API auf. Beim Kopieren von Daten aus Salesforce wählt der Connector basierend auf dem Datenumfang automatisch die REST-API oder die Bulk-API aus. Bei einem großen Resultset wird die Bulk-API verwendet, um eine bessere Leistung zu erzielen. Beim Lesen/Schreiben von Daten können Sie die verwendete API-Version über die [`apiVersion`-Eigenschaft](#linked-service-properties) im verknüpften Dienst explizit festlegen.
+
+>[!NOTE]
+>Der Connector legt die Standardversion für die Salesforce-API nicht mehr fest. Aus Gründen der Abwärtskompatibilität funktioniert er weiterhin, wenn zuvor eine API-Standardversion festgelegt wurde. Der Standardwert ist 45.0 für die Quelle und 40.0 für die Senke.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -7,12 +7,12 @@ ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 8a39c2b06ca8a0f852891acb60ba199fc2c6db5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26d81a492b12cd2dd7f1d4de260aa22ac4e73a3e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96024128"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234450"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung
 
@@ -20,7 +20,7 @@ Mit der automatischen Geräteverwaltung in Azure IoT Hub werden viele häufig wi
 
 * **IoT-Hardwarehersteller/-integrator:** Hersteller von IoT-Hardware, Integratoren, die Hardware von verschiedenen Herstellern zusammenstellen, oder die Lieferanten, die Hardware für eine von anderen Lieferanten hergestellte oder integrierte IoT-Bereitstellung liefern. Beteiligt an der Entwicklung und Integration von Firmware, eingebetteten Betriebssystemen und eingebetteter Software.
 
-* **IoT-Lösungsentwickler:** IoT-Lösungen werden normalerweise von einem Lösungsentwickler entwickelt. Dieser Entwickler kann zu einem internen Team oder zu einem auf diese Aktivität spezialisierten Systemintegrator gehören. Der IoT-Lösungsentwickler kann verschiedene Komponenten der IoT-Lösung von Grund auf neu entwickeln, verschiedene Standard- oder Open Source-Komponenten integrieren oder Anpassungen an einem [IoT Solution Accelerator](../iot-accelerators/index.yml) vornehmen.
+* **IoT-Lösungsentwickler:** IoT-Lösungen werden normalerweise von einem Lösungsentwickler entwickelt. Dieser Entwickler kann zu einem internen Team oder zu einem auf diese Aktivität spezialisierten Systemintegrator gehören. IoT-Lösungsentwickler*innen können verschiedene Komponenten der IoT-Lösung von Grund auf neu entwickeln oder verschiedene Standard- bzw. Open-Source-Komponenten integrieren.
 
 * **IoT-Lösungsoperator:** Nachdem die IoT-Lösung bereitgestellt wurde, muss sie längerfristig betrieben, überwacht, aktualisiert und gewartet werden. Diese Aufgaben können durch ein internes Team aus IT-Experten, Hardwarebetriebs- und Wartungsteams sowie Fachspezialisten erfolgen, die das richtige Verhalten der gesamten IoT-Infrastruktur überwachen.
 

@@ -8,12 +8,12 @@ ms.date: 07/29/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 62f2491bdd1d3b24be50410a88dcb2114e867913
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1f8622b37055cf8585e9c43f2e822756ac06d1de
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349515"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352198"
 ---
 # <a name="restore-an-azure-cosmos-db-account-that-uses-continuous-backup-mode"></a>Wiederherstellen eines Azure Cosmos DB-Kontos, das den fortlaufenden Sicherungsmodus verwendet
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -49,6 +49,8 @@ Sie können über das Azure-Portal ein gesamtes aktives Konto oder ausgewählte 
    :::image type="content" source="./media/restore-account-continuous-backup/restore-live-account-portal.png" alt-text="Stellen Sie ein aktives Konto nach einer versehentlichen Änderung über das Azure-Portal wieder her." border="true" lightbox="./media/restore-account-continuous-backup/restore-live-account-portal.png":::
 
 1. Nachdem Sie die obengenannten Parameter ausgewählt haben, wählen Sie die Schaltfläche **Senden** aus, um eine Wiederherstellung zu starten. Die Wiederherstellungskosten sind eine einmalige Gebühr, die auf der Datengröße und den Kosten für den Sicherungsspeicher in der ausgewählten Region basiert. Weitere Informationen finden Sie im Abschnitt [Preise](continuous-backup-restore-introduction.md#continuous-backup-pricing).
+
+Das Löschen des Quellkontos während der Wiederherstellung kann zu einem Fehler bei der Wiederherstellung führen.
 
 ### <a name="use-event-feed-to-identify-the-restore-time"></a><a id="event-feed"></a>Verwenden des Ereignisfeeds zum Identifizieren der Wiederherstellungszeit
 

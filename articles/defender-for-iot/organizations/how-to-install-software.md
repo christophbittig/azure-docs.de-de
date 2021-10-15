@@ -1,14 +1,14 @@
 ---
 title: Installation von Defender für IoT
 description: Hier erfahren Sie, wie Sie einen Sensor und die lokale Verwaltungskonsole für Azure Defender für IoT installieren.
-ms.date: 09/23/2021
+ms.date: 10/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 88c8b75d7ba466a96559d265a16ddd8959b00a42
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a5b4beff2d01896082974bf761cb7544d439af9e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128628708"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537298"
 ---
 # <a name="defender-for-iot-installation"></a>Installation von Defender für IoT
 
@@ -62,7 +62,7 @@ Die folgenden virtuellen Geräte stehen zur Verfügung:
 
 ### <a name="hardware-specifications-for-the-on-premises-management-console"></a>Hardwarespezifikationen für die lokale Verwaltungskonsole
 
- | Element | Beschreibung |
+ | Element | BESCHREIBUNG |
  |----|--|
  **Beschreibung** | In einer Architektur mit mehreren Ebenen bietet die lokale Verwaltungskonsole Transparenz und Kontrolle über geografisch verteilte Standorte. Sie ist in SOC-Sicherheitsstapel integriert, darunter SIEMs, Ticketsysteme, Firewalls der nächsten Generation, Plattformen für sicheren Remotezugriff und Defender für IoT ICS Malware-Sandbox. |
  **Bereitstellungstyp** | Enterprise |
@@ -1397,7 +1397,7 @@ Ein vSwitch enthält keine Spiegelungsfunktionen, aber Sie können einen SPAN-Po
 
 Bevor Sie beginnen, müssen Sie Folgendes sicherstellen:
 
-- Es wird keine Instanz der virtuellen ClearPass-Appliance ausgeführt.
+- Es wird keine Instanz eines virtuellen Geräts ausgeführt.
 
 - SPAN ist für den Datenport und nicht für den Verwaltungsport aktiviert.
 
@@ -1421,11 +1421,11 @@ Bevor Sie beginnen, müssen Sie Folgendes sicherstellen:
 
 1. Klicken Sie auf **OK**.
 
-#### <a name="attach-a-clearpass-span-virtual-interface-to-the-virtual-switch"></a>Anfügen einer virtuellen ClearPass-SPAN-Schnittstelle an den virtuellen Switch
+#### <a name="attach-a-span-virtual-interface-to-the-virtual-switch"></a>Anfügen einer virtuellen SPAN-Schnittstelle an den virtuellen Switch
 
-Sie können über Windows PowerShell oder den Hyper-V-Manager eine virtuelle ClearPass-SPAN-Schnittstelle an den virtuellen Switch anfügen.
+Sie können über Windows PowerShell oder den Hyper-V-Manager eine virtuelle SPAN-Schnittstelle an den virtuellen Switch anfügen.
 
-**So fügen Sie mit PowerShell eine virtuelle ClearPass-SPAN-Schnittstelle an den virtuellen Switch an:**
+**So fügen Sie über PowerShell eine virtuelle SPAN-Schnittstelle an den virtuellen Switch an**:
 
 1. Wählen Sie den neu hinzugefügten virtuellen SPAN-Switch aus, und fügen Sie mit dem folgenden Befehl einen neuen Netzwerkadapter hinzu:
 
@@ -1449,7 +1449,7 @@ Sie können über Windows PowerShell oder den Hyper-V-Manager eine virtuelle Cle
 
 Mit diesen Befehlen wird der Name der neu hinzugefügten Adapterhardware auf `Monitor` festgelegt. Bei Verwendung des Hyper-V-Managers wird der Name der neu hinzugefügten Adapterhardware auf `Network Adapter` festgelegt.
 
-**So fügen Sie mit dem Hyper-V-Manager eine virtuelle ClearPass-SPAN-Schnittstelle an den virtuellen Switch an:**
+**So fügen Sie über den Hyper-V-Manager eine virtuelle SPAN-Schnittstelle an den virtuellen Switch an**:
 
 1. Wählen Sie in der Hardwareliste die Option **Netzwerkadapter** aus.
 

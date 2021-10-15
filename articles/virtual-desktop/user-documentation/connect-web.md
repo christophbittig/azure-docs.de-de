@@ -3,15 +3,15 @@ title: Herstellen einer Verbindung mit Azure Virtual Desktop über den Webclient
 description: Informationen zum Herstellen einer Verbindung mit Azure Virtual Desktop mithilfe des Webclients.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/20/2021
+ms.date: 09/30/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0c6e616b63587f46d9dfe73066147de428d0ee0c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3804714a1a21a482166fbf7d592f5ee094ce6a06
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469187"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359723"
 ---
 # <a name="connect-to-azure-virtual-desktop-with-the-web-client"></a>Herstellen einer Verbindung mit Azure Virtual Desktop über den Webclient
 
@@ -24,15 +24,15 @@ Mit dem Webclient können Sie über einen Webbrowser auf Ihre Ressourcen von Azu
 >Der Webclient verfügt derzeit nicht über Unterstützung für Mobilgerät-Betriebssysteme.
 
 ## <a name="supported-operating-systems-and-browsers"></a>Unterstützte Betriebssysteme und Browser
+
 >[!IMPORTANT]
->Ab dem 30. September 2021 wird Internet Explorer 11 vom Azure Virtual Desktop-Webclient nicht mehr unterstützt. Es wird empfohlen, anstelle von Internet Explorer 11 auf die Verwendung des Microsoft Edge-Browsers umzusteigen. Weitere Informationen finden Sie in unserem [Tech Community-Blogbeitrag](https://aka.ms/WVDSupportIE11).
+>Seit dem 30 September 2021 wird Internet Explorer vom Azure Virtual Desktop-Webclient nicht mehr unterstützt. Es wird empfohlen, stattdessen Microsoft Edge zu verwenden, um Verbindungen mit dem Webclient herzustellen. Weitere Informationen finden Sie in [diesem Blogbeitrag](https://aka.ms/WVDSupportIE11).
 
 Es sollten alle HTML5-fähigen Browser funktionieren, aber hier sind die Betriebssysteme und Browser angegeben, die offiziell unterstützt werden.
 
 | Browser           | Unterstütztes Betriebssystem                     | Notizen               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
-| Internet Explorer | Windows                          | Version 11 oder höher |
 | Apple Safari      | macOS                            |                     |
 | Mozilla Firefox   | Windows, macOS, Linux            | Version 55 oder höher |
 | Google Chrome     | Windows, macOS, Linux, Chrome OS |                     |

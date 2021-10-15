@@ -1,6 +1,6 @@
 ---
 title: Erreichen von Resilienz in einer IAM-Infrastruktur mit Azure Active Directory
-description: Eine Anleitung für Architekten und IT-Administratoren zum Erreichen von Resilienz bei einer Unterbrechung ihrer IAM-Infrastruktur.
+description: Ein Leitfaden für Architekt*innen und IT-Administrator*innen zum Erreichen von Resilienz bei einer Unterbrechung ihrer IAM-Infrastruktur.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64fe4b8c217ec46cbb6dd046339c3ac65eebb121
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fc12433a187f030a0349247680c731c04a76274
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98724676"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402809"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>Erzielen von Resilienz in einer Identitäts- und Zugriffsverwaltungsinfrastruktur
 

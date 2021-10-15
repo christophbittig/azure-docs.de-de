@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: allensu
-ms.openlocfilehash: f7af65c111659a1794fbdedb89d541009d269b66
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0d613d7d207da8632fe7a2767d6440ee62378866
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791877"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359407"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -158,7 +158,7 @@ Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verw
 | Der Datenverkehr, der über eine benutzerdefinierte Route an einen privaten Endpunkt geleitet wird, ist möglicherweise asymmetrisch. | Rückgabedatenverkehr von einem privaten Endpunkt umgeht ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) und versucht, zurück zur Quell-VM zu gelangen. | Die Quellnetzwerkadressenübersetzung (Source Network Address Translation, SNAT) wird verwendet, um symmetrisches Routing sicherzustellen. Für den gesamten Datenverkehr, der über eine benutzerdefinierte Route an einen privaten Endpunkt gesendet wird, wird empfohlen, die SNAT für den Datenverkehr am NVA zu verwenden. |
 
 > [!IMPORTANT]
-> Die NSG- und UDR-Unterstützung für private Endpunkte befindet sich in der öffentlichen Vorschau.
+> Die NSG- und UDR-Unterstützung für private Endpunkte befindet sich in ausgewählten Regionen in der öffentlichen Vorschau. Weitere Informationen finden Sie unter [Öffentliche Vorschauversion von Private Link UDR-Unterstützung](https://azure.microsoft.com/updates/public-preview-of-private-link-udr-support/) und [Öffentliche Vorschauversion der Unterstützung von Netzwerksicherheitsgruppen](https://azure.microsoft.com/updates/public-preview-of-private-link-network-security-group-support/).
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="public-preview-limitations"></a>Einschränkungen der öffentlichen Vorschauversion
@@ -175,10 +175,10 @@ Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verw
 | Flag AllowVirtualNetworkAccess | Kund*innen, die das VNet-Peering für ihr VNet (VNet A) so einstellen, dass das Flag **AllowVirtualNetworkAccess** für die Peeringverbindung mit einem anderen VNet (VNet B) auf „false“ festgelegt ist, können das Tag **VirtualNetwork** nicht verwenden, um Datenverkehr von VNet B abzulehnen, der auf Ressourcen für private Endpunkte zugreift. Sie müssen explizit einen Block für das Adresspräfix von VNet B einfügen, um Datenverkehr an den privaten Endpunkt abzulehnen. | September |
 | Dualport-NSG-Regeln werden nicht unterstützt. | Wenn bei NSG-Regeln mehrere Portbereiche verwendet werden, wird bei Zulassungs- und Ablehnungsregeln nur der erste Portbereich berücksichtigt. Regeln mit mehreren Portbereichen sind standardmäßig so konfiguriert, dass alle Ports abgelehnt werden statt nur bestimmte Ports. </br> **Weitere Informationen finden Sie im folgenden Regelbeispiel.** | September |
 
-| Priority | Quellport | Zielport | Aktion | Effektive Aktion |
+| Priorität | Quellport | Zielport | Aktion | Effektive Aktion |
 | -------- | ----------- | ---------------- | ------ | ---------------- |
 | 10 | 10–12 | 10–12 | Allow/Deny | Ein einzelner Portbereich für Quell- und Zielports funktioniert erwartungsgemäß. |
-| 10 | 10–12, 13–14 | 14–15, 16–17 | Allow | Nur die Quellports 10–12 und die Zielports 14–15 sind zulässig. |
+| 10 | 10–12, 13–14 | 14–15, 16–17 | Zulassen | Nur die Quellports 10–12 und die Zielports 14–15 sind zulässig. |
 | 10 | 10–12, 13–14 | 120–130, 140–150 | Verweigern | Datenverkehr von allen Quellports an alle Zielports wird abgelehnt, da mehrere Quell- und Zielportbereiche angegeben sind. |
 | 10 | 10–12, 13–14 | 120–130 | Verweigern | Datenverkehr von allen Quellports wird nur für die Zielports 120–130 abgelehnt. Es gibt mehrere Quellportbereiche und einen einzelnen Zielportbereich. |
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 6f5b3cc109d3583defce78c3ae52848188fca900
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: d0b24d902c808f06e49f2c132629484d22921b4b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114284542"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351311"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Voraussetzungen und Checkliste für ExpressRoute
 Zum Herstellen einer Verbindung mit den Microsoft-Clouddiensten über ExpressRoute müssen Sie sicherstellen, dass die unten in den Abschnitten genannten Voraussetzungen erfüllt sind.
@@ -29,7 +29,7 @@ Zum Herstellen einer Verbindung mit den Microsoft-Clouddiensten über ExpressRou
 * Wenn Ihr Anbieter kein ExpressRoute-Konnektivitätspartner ist, können Sie die Verbindung zur Microsoft Cloud über einen [Cloud-Exchange-Anbieter](expressroute-locations.md#connectivity-through-exchange-providers)herstellen.
 
 ## <a name="network-requirements"></a>Netzwerkanforderungen
-* **Redundanz an jedem Peeringstandort**: Für Microsoft ist es erforderlich, dass zwischen den Routern von Microsoft und den Peeringroutern redundante BGP-Sitzungen für jede ExpressRoute-Verbindung eingerichtet werden, (auch wenn [zum Cloud-Exchange nur eine physische Verbindung](expressroute-faqs.md#onep2plink) besteht).
+* **Redundanz an jedem Peeringstandort:** Für Microsoft ist es erforderlich, dass zwischen den Routern von Microsoft und den Peeringroutern redundante BGP-Sitzungen für jede ExpressRoute-Leitung eingerichtet werden, (auch wenn [zum Cloud-Exchange nur eine physische Leitung](expressroute-faqs.md#onep2plink) besteht).
 * **Redundanz für die Notfallwiederherstellung**: Microsoft empfiehlt dringend, mindestens zwei ExpressRoute-Verbindungen an verschiedenen Peeringstandorten einzurichten, um einen Single Point of Failure zu vermeiden.
 * **Routing**: Je nachdem, wie Sie die Verbindung mit Microsoft Cloud herstellen, müssen Sie oder Ihr Anbieter die BGP-Sitzungen für [Routingdomänen](expressroute-circuit-peerings.md)einrichten und verwalten. Einige Ethernet-Konnektivitätsanbieter oder Cloud-Exchange-Anbieter bieten BGP-Verwaltung als Dienst an, der einen Mehrwert schafft.
 * **NAT**: Microsoft akzeptiert nur öffentliche IP-Adressen über Microsoft-Peering. Wenn Sie private IP-Adressen in Ihrem lokalen Netzwerk verwenden, müssen Sie oder Ihr Anbieter die privaten IP-Adressen [mithilfe der NAT](expressroute-nat.md)in öffentliche IP-Adressen übersetzen.
@@ -46,7 +46,7 @@ Wenn Sie Microsoft 365 für ExpressRoute aktivieren möchten, helfen Ihnen die 
 * [Netzwerkplanung und Leistungsoptimierung für Microsoft 365](/microsoft-365/enterprise/network-planning-and-performance)
 * [Netzwerk- und Migrationsplanung für Microsoft 365](/microsoft-365/enterprise/network-and-migration-planning)
 * [Microsoft 365-Integration mit lokalen Umgebungen](/microsoft-365/enterprise/microsoft-365-integration)
-* [Über Office 365-IP-Adressänderungen auf dem neuesten Stand bleiben](/microsoft-365/enterprise/microsoft-365-ip-web-service?view=o365-worldwide)
+* [Über Office 365-IP-Adressänderungen auf dem neuesten Stand bleiben](/microsoft-365/enterprise/microsoft-365-ip-web-service)
 * [ExpressRoute unter Office 365 – Schulungsvideos für Fortgeschrittene](https://channel9.msdn.com/series/aer/)
 
 ## <a name="next-steps"></a>Nächste Schritte

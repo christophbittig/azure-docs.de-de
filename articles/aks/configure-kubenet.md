@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: d206e92eeea06b8e8a95a74c7a253eae5280eb5f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d78616830c47cb2a50292a226cf1d79e0ece58ba
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128607803"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545075"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -54,7 +54,7 @@ Mit *Azure CNI* empfängt jeder Pod eine IP-Adresse im IP-Subnetz und kann direk
 * Routingtabellen und benutzerdefinierte Routen sind für die Verwendung von kubenet erforderlich, wodurch die Vorgänge komplexer werden.
 * Direkte Pod-Adressierung wird aufgrund des kubenet-Designs für kubenet nicht unterstützt.
 * Im Gegensatz zu Azure CNI-Clustern können mehrere kubenet-Clustern Subnetze nicht gemeinsam verwenden.
-* Wenn Sie Ihr eigenes Subnetz bereitstellen, müssen Sie die Netzwerksicherheitsgruppen (NSG) verwalten, die diesem Subnetz zugeordnet sind. AKS ändert keine der NSGs, die diesem Subnetz zugeordnet sind. Sie müssen außerdem sicherstellen, dass die Sicherheitsregeln in den Netzwerksicherheitsgruppen Datenverkehr zwischen den CIDR-Adressen der Knoten und Pods zulassen.
+* AKS wendet keine Netzwerksicherheitsgruppen (NSGs) auf sein Subnetz an und ändert keine der NSGs, die diesem Subnetz zugeordnet sind. Wenn Sie Ihr eigenes Subnetz bereitstellen und NSGs hinzufügen, die diesem Subnetz zugeordnet sind, müssen Sie sicherstellen, dass die Sicherheitsregeln in den NSGs Datenverkehr zwischen den CIDR-Knoten und -Pods zulassen. Weitere Details finden Sie unter [Netzwerksicherheitsgruppen][aks-network-nsg].
 * Zu den **in kubenet nicht unterstützten** Funktionen gehören:
    * [Azure-Netzwerkrichtlinien](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), aber Calico-Netzwerkrichtlinien werden in kubenet unterstützt.
    * [Windows-Knotenpools](./windows-faq.md)
@@ -254,6 +254,7 @@ Da jetzt ein AKS-Cluster in Ihrem vorhandenen Subnetz des virtuellen Netzwerks b
 <!-- LINKS - Internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
 [aks-network-concepts]: concepts-network.md
+[aks-network-nsg]: concepts-network.md#network-security-groups
 [az-group-create]: /cli/azure/group#az_group_create
 [az-network-vnet-create]: /cli/azure/network/vnet#az_network_vnet_create
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac

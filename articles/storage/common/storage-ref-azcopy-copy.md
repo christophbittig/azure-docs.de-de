@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 4cb943230c0211c67caf5d7a074d21077358c143
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d6256fdb15fd4e1e5674ab9aa24002027ed712d9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605447"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273531"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -348,7 +348,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--preserve-smb-info**: Standardmäßig TRUE. Behält SMB-Eigenschaftsinformationen ( letzte Schreibzeit, Erstellungszeit, Attributbits) zwischen SMB-fähigen Ressourcen (Windows und Azure Files) bei. Es werden nur die von Azure Files unterstützten Attributbits übertragen. Alle anderen werden ignoriert. Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B. „include-pattern“). Die für Ordner übertragenen Informationen sind die gleichen wie die für Dateien, mit Ausnahme der letzten Schreibzeit, die für Ordner nicht gespeichert wird.
 
-**--preserve-permissions**: Standardmäßig FALSE. Behält ACLs zwischen kompatiblen Ressourcen (Windows und Azure Files oder Data Lake Storage Gen 2 zu Data Lake Storage Gen 2) bei. Für Konten mit einem hierarchischen Namespace benötigen Sie eine Container-SAS oder ein OAuth-Token mit den Berechtigungen „Besitz ändern“ und „Berechtigungen ändern“. Für Downloads müssen Sie auch das --backup-Flag verwenden, um Berechtigungen wiederherzustellen, bei denen der neue Besitzer nicht der Benutzer ist, der AzCopy ausführt. Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B. include-pattern).
+**--preserve-permissions**: Standardmäßig FALSE. Behält ACLs zwischen kompatiblen Ressourcen (Windows und Azure Files oder Data Lake Storage Gen 2 zu Data Lake Storage Gen 2) bei. Für Konten mit einem hierarchischen Namespace benötigen Sie eine Container-SAS oder ein OAuth-Token mit den Berechtigungen „Besitz ändern“ und „Berechtigungen ändern“. Für Downloads müssen Sie auch das Flag „--backup“ verwenden, um Berechtigungen wiederherzustellen, bei denen der neue Besitzer nicht der Benutzer ist, der AzCopy ausführt. Dieses Flag gilt sowohl für Dateien als auch für Ordner, es sei denn, ein reiner Dateifilter ist angegeben (z. B. include-pattern).
 
 **--put-md5:** erstellt einen MD5-Hash jeder Datei und speichert den Hash als „Content-MD5“-Eigenschaft des Zielblobs bzw. der Zieldatei. (Standardmäßig wird der Hash NICHT erstellt.) Nur beim Hochladen verfügbar.
 
@@ -358,7 +358,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--s2s-handle-invalid-metadata** string   Gibt an, wie ungültige Metadatenschlüssel behandelt werden. Verfügbare Optionen: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (Standardwert: `ExcludeIfInvalid`)
 
-**--s2s-preserve-access-tier:** behält die Zugriffsebene beim Kopieren zwischen Diensten bei. Informationen zur Sicherstellung, dass das Zielspeicherkonto das Festlegen der Zugriffsebene unterstützt, finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md). Verwenden Sie in den Fällen, in denen das Festlegen der Zugriffsebene nicht unterstützt wird, „s2sPreserveAccessTier=false“, um das Kopieren der Zugriffsebene zu umgehen. (Standardwert: `true`)
+**--s2s-preserve-access-tier:** behält die Zugriffsebene beim Kopieren zwischen Diensten bei. Informationen zur Sicherstellung, dass für das Zielspeicherkonto das Festlegen der Zugriffsebene unterstützt wird, finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](../blobs/access-tiers-overview.md). Verwenden Sie in den Fällen, in denen das Festlegen der Zugriffsebene nicht unterstützt wird, „s2sPreserveAccessTier=false“, um das Kopieren der Zugriffsebene zu umgehen. (Standardwert: `true`)
 
 **--s2s-preserve-blob-tags**: Behält Indextags während der Übertragung zwischen Diensten von einem Blobspeicher zu einem anderen bei.
 

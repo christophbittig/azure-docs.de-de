@@ -1,28 +1,22 @@
 ---
 title: Kryptografie – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
 description: Erfahren Sie mehr über kryptografiebasierte Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Bedrohungen. Lesen Sie die Informationen zur Risikominderung, und sehen Sie sich die Codebeispiele an.
-services: security
-documentationcenter: na
 author: jegeib
 manager: jegeib
 editor: jegeib
-ms.assetid: na
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 6af4fba8ddf50b795d847a2c7b4e2fbc02fe593f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2072500fd1f10f05359d8310b18b531293bd1885
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587178"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357368"
 ---
-# <a name="security-frame-cryptography--mitigations"></a>Sicherheitsrahmen: Kryptografie | Gegenmaßnahmen 
+# <a name="security-frame-cryptography--mitigation"></a>Sicherheitsrahmen: Kryptografie | Risikominderung
 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
@@ -170,12 +164,12 @@ ms.locfileid: "97587178"
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Komponente**               | IoT-Gerät | 
+| **Komponente**               | IoT-Gerät |
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | Gerätebetriebssystem: Windows IoT Core, Gerätekonnektivität: Azure IoT-Geräte-SDKs |
 | **Referenzen**              | [TPM on Windows IoT Core](/windows/iot-core/secure-your-device/TPM) (TPM unter Windows IoT Core), [Set up TPM on Windows IoT Core](/windows/iot-core/secure-your-device/setuptpm) (Einrichten von TPM unter Windows IoT Core), [Azure IoT Device SDK TPM](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) (Azure IoT-Geräte-SDK – TPM) |
-| **Schritte** | Legen Sie private symmetrische oder Zertifikatschlüssel sicher in einem per Hardware geschützten Speicher ab, z.B. TPM oder Smartcardchips. Windows 10 IoT Core unterstützt die Verwendung eines TPM, und Sie können mehrere kompatible TPMs nutzen: https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm. Es wird empfohlen, ein Firmware-TPM oder diskretes TPM zu verwenden. Ein Software-TPM sollte nur zu Entwicklungs- und Testzwecken eingesetzt werden. Nachdem ein TPM verfügbar ist und die Schlüssel darin bereitgestellt wurden, sollte der Code zum Generieren des Tokens geschrieben werden, ohne dass darin enthaltene sensible Informationen hartcodiert werden. | 
+| **Schritte** | Legen Sie private symmetrische oder Zertifikatschlüssel sicher in einem per Hardware geschützten Speicher ab, z.B. TPM oder Smartcardchips. Windows 10 IoT Core unterstützt die Verwendung eines TPM, und Sie können mehrere kompatible TPMs nutzen: [diskretes TPM (dTPM)](/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm). Es wird empfohlen, ein Firmware-TPM oder diskretes TPM zu verwenden. Ein Software-TPM sollte nur zu Entwicklungs- und Testzwecken eingesetzt werden. Nachdem ein TPM verfügbar ist und die Schlüssel darin bereitgestellt wurden, sollte der Code zum Generieren des Tokens geschrieben werden, ohne dass darin enthaltene sensible Informationen hartcodiert werden. |
 
 ### <a name="example"></a>Beispiel
 ```

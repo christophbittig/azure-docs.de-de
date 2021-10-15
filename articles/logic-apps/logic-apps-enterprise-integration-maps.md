@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen von XSLT-Zuordnungen für XML-Transformationen in Workflows
-description: Erstellen und Hinzufügen von XSLT-Zuordnungen zum Transformieren von XML für Workflows in Azure Logic Apps mit dem Enterprise Integration Pack.
+title: Hinzufügen von XSLT-Maps zur Transformation von XML in Workflows
+description: Fügen Sie XSLT-Maps hinzu, um XML in Workflows mit Azure Logic Apps und dem Unternehmensintegration Pack zu transformieren.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/14/2021
-ms.openlocfilehash: 71083bf7eaddb04f322245ca5e33971ff2d79c53
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 55c6d6c20b98415fa09725d4101317ae6c43e23f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128549869"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359480"
 ---
-# <a name="add-xslt-maps-for-xml-transformation-in-azure-logic-apps"></a>Hinzufügen von XSLT-Zuordnungen für XML-Transformationen in Azure Logic Apps
+# <a name="add-xslt-maps-to-transform-xml-in-workflows-with-azure-logic-apps"></a>Hinzufügen von XSLT-Maps zur Transformation von XML in Workflows mit Azure Logic Apps
 
 Um XML zwischen Formaten zu konvertieren, kann Ihr Logic-App-Workflow Zuordnungen mit der **Transform XML**-Aktion verwenden. Eine Zuordnung ist ein XML-Dokument, das die Extensible Stylesheet Language Transformation (XSLT) Sprache verwendet, um zu beschreiben, wie Daten von XML in ein anderes Format transformiert werden können. Die Zuordnung besteht aus einem XML-Quellschema als Eingabe und einem XML-Zielschema als Ausgabe. Sie können eine einfache Transformation definieren, z.B. das Kopieren eines Namens und einer Adresse von einem Dokument in ein anderes. Oder Sie können mithilfe der standardmäßigen Zuordnungsvorgänge komplexere Transformationen erstellen. Sie können Daten mit Hilfe verschiedener integrierter Funktionen manipulieren oder steuern, z.B. mit String-Manipulationen, bedingten Zuweisungen, arithmetischen Ausdrücken, Datums- und Zeitformatierungen und sogar Schleifenkonstrukten.
 
@@ -59,7 +59,7 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
     Um Zuordnungen zur Verwendung in **Logic App (Verbrauch)** -Workflows zu erstellen und hinzuzufügen, benötigen Sie noch keine Logic App-Ressource. Wenn Sie jedoch bereit sind, diese Zuordnungen in Ihren Workflows zu verwenden, benötigt Ihre Logik-App-Ressource ein verknüpftes Integrationskonto, das diese Zuordnungen speichert.
 
-  * Wenn Sie die Ressource [**Logic App (Standard)** vom Typ ](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigen Sie eine vorhandene Logic-App-Ressource, da Sie keine Zuordnungen in Ihrem Integrationskonto speichern. Stattdessen können Sie Ihrer Logic-App-Ressource Zuordnungen entweder über das Azure-Portal oder über Visual Studio Code direkt hinzufügen. Derzeit wird nur XSLT 1.0 unterstützt. Sie können diese Zuordnungen dann in mehreren Workflows innerhalb *derselben Logik-App-Ressource* verwenden.
+  * Wenn Sie die Ressource [**Logic App (Standard)** vom Typ](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigen Sie eine vorhandene Logic-App-Ressource, da Sie keine Zuordnungen in Ihrem Integrationskonto speichern. Stattdessen können Sie Ihrer Logic-App-Ressource Zuordnungen entweder über das Azure-Portal oder über Visual Studio Code direkt hinzufügen. Derzeit wird nur XSLT 1.0 unterstützt. Sie können diese Zuordnungen dann in mehreren Workflows innerhalb *derselben Logik-App-Ressource* verwenden.
 
     Sie benötigen weiterhin ein Integrationskonto, um andere Artefakte wie Partner, Vereinbarungen und Zertifikate zu speichern und um die [AS2](logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md) und [EDIFACT](logic-apps-enterprise-integration-edifact.md)-Vorgänge zu verwenden. Allerdings brauchen Sie Ihre Logic-App-Ressource nicht mit Ihrem Integrationskonto verknüpfen, so dass die Verknüpfungsfunktionalität nicht besteht. Ihr Integrationskonto muss noch andere Anforderungen erfüllen, z.B. dass es dasselbe Azure-Abonnement verwendet und sich am selben Ort befindet wie Ihre Logic-App-Ressource.
 

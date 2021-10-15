@@ -4,16 +4,16 @@ description: Zur Erstellung hoch verfügbarer und robuster Anwendungen in Azure 
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 10/05/2021
 ms.author: prsandhu
 ms.reviewer: cnthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 26d4464d67634d5660796ce24dc9b9dc2505e0ef
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 22b6f4570736d891b7cbcb9c0d2c10d6847ee83f
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218240"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533663"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-Dienste mit Unterstützung für Verfügbarkeitszonen
 
@@ -49,13 +49,13 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 
 | Amerika           | Europa               | Afrika              | Asien-Pazifik   |
 |--------------------|----------------------|---------------------|----------------|
-| Brasilien Süd       | Frankreich, Mitte       | Südafrika, Norden* | Australien (Osten) |
+| Brasilien Süd       | Frankreich, Mitte       | Südafrika, Norden  | Australien (Osten) |
 | Kanada, Mitte     | Deutschland, Westen-Mitte |                     | Indien, Mitte* |
 | USA (Mitte)         | Nordeuropa         |                     | Japan, Osten     |
-| East US            | Norwegen, Osten          |                     | Südkorea, Mitte* |
+| East US            | Norwegen, Osten          |                     | Korea, Mitte  |
 | USA (Ost) 2          | UK, Süden             |                     | Asien, Südosten |
 | USA Süd Mitte   | Europa, Westen          |                     |                |
-| US Government, Virginia    |                      |                     |                |
+| US Government, Virginia    | Schweden*              |                     |                |
 | USA, Westen 2          |                      |                     |                |
 | USA, Westen 3          |                      |                     |                |
 

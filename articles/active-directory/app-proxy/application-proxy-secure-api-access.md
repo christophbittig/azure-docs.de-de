@@ -12,12 +12,12 @@ ms.date: 05/06/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7f4404e3e9b09bcabfc97f0419c230e932a31815
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 5bcdfdd3a56807db967d6be1a8bde540b88c17ca
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419227"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230948"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-active-directory-application-proxy"></a>Sicherer Zugriff auf lokale Apps mit dem Azure Active Directory-Anwendungsproxy
 
@@ -97,7 +97,7 @@ Sie haben Ihre Web-API über den Azure AD-Anwendungsproxy veröffentlicht. Füge
 1. Wählen Sie auf der Seite **Zuweisung hinzufügen** die Option **Zuweisen** aus.
 
 > [!NOTE]
-> Für APIs, die integrierte Windows-Authentifizierung verwenden, sind möglicherweise [zusätzliche Schritte](./application-proxy-configure-single-sign-on-with-kcd.md) erforderlich.
+> Für APIs, die die integrierte Windows-Authentifizierung verwenden, sind möglicherweise [zusätzliche Schritte](./application-proxy-configure-single-sign-on-with-kcd.md) erforderlich.
 
 ## <a name="register-the-native-app-and-grant-access-to-the-api"></a>Registrieren der nativen App und Gewähren des Zugriffs auf die API
 

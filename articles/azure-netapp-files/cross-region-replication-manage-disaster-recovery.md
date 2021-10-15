@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 09/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 5b1c1a5216b7a1ad5b23167e776f2b0bbb0a578f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4f1f766fbec4c9e09d1ebd5e982254cdcbd85403
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590992"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273323"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>Verwalten der Notfallwiederherstellung mithilfe der regionsübergreifenden Replikation 
 
@@ -59,7 +59,12 @@ Zur Aktivierung des Zielvolumes (wenn Sie etwa ein Failover zur Zielregion ausf�
 Nach der Notfallwiederherstellung können Sie das Quellvolume reaktivieren, indem Sie einen Neusynchronisierungsvorgang ausführen.  Bei einem Neusynchronisierungsvorgang wird der Replikationsprozess umgekehrt, und die Daten aus dem Zielvolume werden mit denen des Quellvolumes synchronisiert.  
 
 > [!IMPORTANT] 
-> Bei einem Neusynchronisierungsvorgang werden die Daten des Quellvolumes mit denen des Zielvolumes überschrieben.  Sie werden über die Benutzeroberfläche vor einem möglichen Datenverlust gewarnt. Bevor der Neusynchronisierungsvorgang gestartet wird, werden Sie zu einer Bestätigung aufgefordert.
+> Der Neusynchronisierungsvorgang synchronisiert die Quell- und Zielvolumes, indem das Quellvolume basierend auf den letzten verfügbaren allgemeinen Momentaufnahmen inkrementell mit den neuesten Updates vom Zielvolume aktualisiert wird. Durch diesen Vorgang wird vermieden, dass in den meisten Fällen das gesamte Volume synchronisiert werden muss, da nur Änderungen am Zielvolumen *nach* der letzten allgemeinen Momentaufnahme auf das Quellvolumen repliziert werden müssen.  
+> 
+> Der Neusynchronisierungsvorgang überschreibt alle neueren Daten (neuer als die häufigste Momentaufnahme) auf dem Quellvolumen mit den aktualisierten Zielvolumedaten. Sie werden über die Benutzeroberfläche vor einem möglichen Datenverlust gewarnt. Bevor der Neusynchronisierungsvorgang gestartet wird, werden Sie zu einer Bestätigung aufgefordert.  
+> 
+> Falls das Quellvolume den Notfall nicht übersteht und daher keine gemeinsame Momentaufnahme vorhanden ist, werden alle Daten im Ziel erneut mit einem neu erstellten Quellvolumen synchronisiert.
+
 
 1. Wählen Sie zur erneuten Synchronisierung der Replikation das Volume *Quelle* aus. Klicken Sie unter „Speicherdienst“ auf **Replikation**. Klicken Sie anschließend auf **Erneut synchronisieren**.  
 

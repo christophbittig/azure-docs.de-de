@@ -12,22 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/28/2018
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 994af6291f55e9f1dd44f2f522f9273639531257
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006592"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407055"
 ---
 # <a name="create-a-netapp-account"></a>Erstellen eines NetApp-Kontos
 Nach der Erstellung eines NetApp-Kontos können Sie einen Kapazitätspool einrichten und anschließend ein Volume erstellen. Neue NetApp-Konten werden über das Blatt „Azure NetApp Files“ erstellt.
 
 ## <a name="before-you-begin"></a>Vorbereitung
-Sie müssen eine E-Mail vom Azure NetApp Files-Team erhalten haben, in der bestätigt wird, dass Sie Zugriff auf den Dienst erhalten haben. Siehe [Übermitteln einer Wartelistenanforderung für den Zugriff auf den Dienst](azure-netapp-files-register.md#waitlist).
 
-Sie müssen außerdem Ihr Abonnement registriert haben, um den NetApp-Ressourcenanbieter zu nutzen. Siehe [Registrieren des NetApp-Ressourcenanbieters](azure-netapp-files-register.md#resource-provider).
+Sie müssen Ihr Abonnement registriert haben, um den NetApp-Ressourcenanbieter zu nutzen. Siehe [Registrieren des NetApp-Ressourcenanbieters](azure-netapp-files-register.md).
 
 ## <a name="steps"></a>Schritte 
 

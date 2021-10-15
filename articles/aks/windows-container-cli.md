@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstel
 services: container-service
 ms.topic: article
 ms.date: 08/06/2021
-ms.openlocfilehash: 29f010bd9067236e1e07ab79f7a8fbec436ffd85
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 284114ef1f9c8759eaec061b32282154fe72859c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346376"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235305"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster mit der Azure-Befehlszeilenschnittstelle
 

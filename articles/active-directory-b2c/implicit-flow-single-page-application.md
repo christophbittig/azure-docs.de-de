@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7c3197a8eb9f6734cdd04d609ea0f59465ffa86d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 31dd0096140544db9c1265999b8c0c709def9cda
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535509"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350058"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Single-Page-Anmeldung mithilfe des impliziten OAuth 2.0-Flusses in Azure Active Directory B2C
 
-Viele moderne Anwendungen verfügen über ein Single-Page-App-Front-End, das hauptsächlich in JavaScript geschrieben ist. Häufig wird zum Schreiben der App ein Framework wie Angular, React oder Vue.js verwendet. Bei einseitigen Apps und anderen JavaScript-Apps, die hauptsächlich in einem Browser ausgeführt werden, gibt es in Bezug auf die Authentifizierung einige zusätzliche Herausforderungen:
+Viele moderne Anwendungen verfügen über ein Single-Page-App-Front-End (SPA), das hauptsächlich in JavaScript geschrieben ist. Häufig wird zum Schreiben der App ein Framework wie Angular, React oder Vue.js verwendet. Bei SPAs und anderen JavaScript-Apps, die hauptsächlich in einem Browser ausgeführt werden, gibt es in Bezug auf die Authentifizierung einige zusätzliche Herausforderungen:
 
 - Die Sicherheitsmerkmale dieser Apps unterscheiden sich von herkömmlichen serverbasierten Webanwendungen.
 - Zahlreiche Autorisierungsserver und Identitätsanbieter unterstützen keine CORS-Anforderungen (CORS = Cross-Origin Resource Sharing).
 - Umleitungen auf ganzseitige Browserseiten können die Benutzererfahrung stören.
 
-Die empfohlene Methode zur Unterstützung von Single-Page-Webanwendungen ist [OAuth 2.0-Autorisierungscodefluss (mit PKCE)](./authorization-code-flow.md).
+Die empfohlene Methode zur Unterstützung von SPAs ist der [OAuth 2.0-Autorisierungscodeflow (mit PKCE)](./authorization-code-flow.md).
 
 Einige Frameworks, z. B. [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core), unterstützen nur den Fluss für implizite Genehmigung. In diesen Fällen unterstützt Azure Active Directory B2C (Azure AD B2C) den Fluss für implizite Genehmigung für OAuth 2.0-Autorisierung. Dieser Ablauf wird in [Abschnitt 4.2 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749) beschrieben. Beim impliziten Ablauf empfängt die App Token direkt vom Azure AD-Autorisierungsendpunkt (Azure Active Directory), ohne dass eine Kommunikation zwischen Servern stattfindet. Die gesamte Authentifizierungslogik und Sitzungsverarbeitung wird vollständig im JavaScript-Client abgewickelt – entweder mit einer Seitenumleitung oder mit einem Popupfeld.
 
@@ -68,7 +68,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 An diesem Punkt wird der Benutzer aufgefordert, den Workflow der Richtlinie abzuschließen. Der Benutzer muss möglicherweise seinen Benutzernamen und sein Kennwort eingeben, sich mit einer Social-Media-Identität anmelden, sich für das Verzeichnis registrieren oder andere Schritte ausführen. Die Benutzeraktionen hängen davon ab, wie der Benutzerflow definiert ist.
 
-Nachdem der Benutzer den Benutzerflow abgeschlossen hat, gibt Azure AD über den für `redirect_uri` verwendeten Wert eine Antwort an Ihre App zurück. Hierzu wird die im Parameter `response_mode` angegebene Methode verwendet. Die Antwort ist in den Benutzeraktionsszenarien immer gleich, unabhängig vom ausgeführten Benutzerflow.
+Nachdem der Benutzer den Benutzerflow abgeschlossen hat, gibt Azure AD B2C über den für `redirect_uri` verwendeten Wert eine Antwort an Ihre App zurück. Hierzu wird die im Parameter `response_mode` angegebene Methode verwendet. Die Antwort ist in den Benutzeraktionsszenarien immer gleich, unabhängig vom ausgeführten Benutzerflow.
 
 ### <a name="successful-response"></a>Erfolgreiche Antwort
 Eine erfolgreiche Antwort mithilfe von `response_mode=fragment` und `response_type=id_token+token` sieht wie folgt aus, wobei die Zeilenumbrüche der Lesbarkeit dienen:
@@ -126,7 +126,9 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
 ```
 
-Es gibt zwei Möglichkeiten zum Ermitteln, welcher Benutzerflow zum Signieren eines ID-Tokens verwendet wurde (und wo die Metadaten abgerufen werden können). Zunächst einmal ist der Benutzerflowname im `acr`-Anspruch in `id_token` enthalten. Informationen zum Analysieren von Ansprüchen nach einem ID-Token finden Sie im [Azure AD B2C-Tokenverweis](tokens-overview.md). Die andere Möglichkeit besteht darin, den Benutzerflow beim Übermitteln der Anforderung im Wert des Parameters `state` zu verschlüsseln. Anschließend kann der Parameter `state` entschlüsselt werden, um zu bestimmen, welcher Benutzerflow verwendet wurde. Beide Methoden sind gültig.
+Es gibt zwei Möglichkeiten zum Ermitteln, welcher Benutzerflow zum Signieren eines ID-Tokens verwendet wurde (und wo die Metadaten abgerufen werden können):
+-  Der Benutzerflowname ist im `acr`-Anspruch in `id_token` enthalten. Informationen zum Analysieren von Ansprüchen nach einem ID-Token finden Sie im [Azure AD B2C-Tokenverweis](tokens-overview.md). 
+- Sie codieren den Benutzerflow beim Übermitteln der Anforderung im Wert des Parameters `state`. Anschließend kann der Parameter `state` entschlüsselt werden, um zu bestimmen, welcher Benutzerflow verwendet wurde. Beide Methoden sind gültig.
 
 Nachdem Sie das Metadatendokument aus dem OpenID Connect-Metadatenendpunkt erhalten haben, können Sie die öffentlichen RSA-256-Schlüssel (die sich an diesem Endpunkt befinden) zum Überprüfen der Signatur des ID-Tokens verwenden. Es gibt möglicherweise zu einem bestimmten Zeitpunkt mehrere Schlüssel an diesem Endpunkt. Sie werden jeweils durch eine `kid` identifiziert. Der Header der `id_token` enthält auch einen `kid`-Anspruch. Er gibt an, mit welchem dieser Schlüssel das ID-Token signiert wurde. Weitere Informationen finden Sie im [Azure AD B2C-Tokenverweis](tokens-overview.md). Dort finden Sie auch Einzelheiten zum [Überprüfen von Token](tokens-overview.md).
 <!--TODO: Improve the information on this-->
@@ -150,7 +152,7 @@ Nachdem Sie das ID-Token vollständig überprüft haben, können Sie eine Sitzun
 ## <a name="get-access-tokens"></a>Abrufen von Zugriffstoken
 Wenn Ihre Web-Apps lediglich Benutzerflows ausführen müssen, können Sie die nächsten Abschnitte überspringen. Die Informationen in diesen Abschnitten gelten nur für Web-Apps, die authentifizierte Aufrufe an eine Web-API durchführen müssen und die auch von Azure AD B2C geschützt werden.
 
-Nachdem Sie den Benutzer bei der Single-Page-App angemeldet haben, können Sie Zugriffstoken zum Aufrufen der durch Azure AD gesicherten Web-APIs abrufen. Auch wenn Sie mithilfe des Antworttyps `token` bereits ein Token erhalten haben, können Sie diese Methode zum Abrufen von Token für zusätzliche Ressourcen verwenden, ohne den Benutzer zur erneuten Anmeldung umzuleiten.
+Nachdem Sie den Benutzer bei der SPA angemeldet haben, können Sie Zugriffstoken zum Aufrufen der durch Azure AD geschützten Web-APIs abrufen. Auch wenn Sie mithilfe des Antworttyps `token` bereits ein Token erhalten haben, können Sie diese Methode zum Abrufen von Token für zusätzliche Ressourcen verwenden, ohne den Benutzer zur erneuten Anmeldung umzuleiten.
 
 In einem typischen Web-App-Fluss senden Sie eine Anforderung an den `/token`-Endpunkt. Der Endpunkt unterstützt jedoch keine CORS-Anforderungen, daher kommen AJAX-Aufrufe zum Abrufen eines Aktualisierungstokens nicht infrage. Stattdessen können Sie den impliziten Fluss in einem ausgeblendeten HTML-IFrame-Element verwenden, um neue Token für andere Web-APIs zu erhalten. Hier sehen Sie ein Beispiel, mit Zeilenumbrüchen für bessere Lesbarkeit:
 
@@ -245,4 +247,4 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie im Codebeispiel: [Anmeldung bei einer JavaScript-Single-Page-Anwendung mit Azure AD B2C](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-core-samples/VanillaJSTestApp/app/b2c).
+Weitere Informationen finden Sie im Codebeispiel: [Anmelden bei einer JavaScript-SPA mit Azure AD B2C](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-core-samples/VanillaJSTestApp/app/b2c).

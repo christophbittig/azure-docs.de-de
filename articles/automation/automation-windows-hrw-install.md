@@ -1,23 +1,23 @@
 ---
-title: Bereitstellen eines Hybrid Runbook Workers unter Windows in Azure Automation
-description: In diesem Artikel erfahren Sie, wie Sie einen Hybrid Runbook Worker bereitstellen, mit dem Sie Runbooks auf Windows-basierten Computern in Ihrem lokalen Rechenzentrum oder einer Cloudumgebung ausführen können.
+title: Bereitstellen eines Agent-basierten Windows Hybrid Runbook Workers in Automation
+description: In diesem Artikel erfahren Sie, wie Sie einen Agent-basierten Hybrid Runbook Worker bereitstellen, mit dem Sie Runbooks auf Windows-basierten Computern in Ihrem lokalen Rechenzentrum oder einer Cloudumgebung ausführen können.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/02/2021
+ms.date: 09/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f79fddb5f3855afd27152945a571840f5680be0f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 59d3b78ac09c253270279612598b2d42ac6a2204
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769399"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272065"
 ---
-# <a name="deploy-a-windows-hybrid-runbook-worker"></a>Bereitstellen eines Windows Hybrid Runbook Workers
+# <a name="deploy-an-agent-based-windows-hybrid-runbook-worker-in-automation"></a>Bereitstellen eines Agent-basierten Windows Hybrid Runbook Workers in Automation
 
 Sie können die Benutzerfunktion Hybrid Runbook Worker von Azure Automation verwenden, um Runbooks direkt auf einem Azure- oder Nicht-Azure-Computer auszuführen, einschließlich der Server, die bei [Server mit Azure Arc-Unterstützung](../azure-arc/servers/overview.md) registriert sind. Von dem Computer oder Server aus, der die Rolle hostet, können Sie Runbooks direkt auf dem Computer und mit Ressourcen in der Umgebung ausführen, um diese lokalen Ressourcen zu verwalten.
 
-Azure Automation speichert und verwaltet Runbooks und übermittelt sie dann an dafür festgelegte Computer. Dieser Artikel beschreibt, wie Sie einen Benutzer-Hybrid Runbook Worker auf einem Windows-Computer bereitstellen, den Worker entfernen und eine Hybrid Runbook Worker-Gruppe entfernen.
+Azure Automation speichert und verwaltet Runbooks und übermittelt sie dann an dafür ausgewählte Computer. Dieser Artikel beschreibt, wie Sie einen Benutzer-Hybrid Runbook Worker auf einem Windows-Computer bereitstellen, den Worker entfernen und eine Hybrid Runbook Worker-Gruppe entfernen. Informationen zu benutzerbasierten Hybrid Runbook Workern finden Sie auch unter [Bereitstellen von erweiterungsbasierten Windows- oder Linux-Hybrid Runbook Workern in Automation](./extension-based-hybrid-runbook-worker-install.md).
 
 Lesen Sie nach dem erfolgreichen Bereitstellen eines Runbook Workers [Running runbooks on a Hybrid Runbook Worker (Ausführen von Runbooks auf einem Hybrid Runbook Worker)](automation-hrw-run-runbooks.md), um zu erfahren, wie Sie Ihre Runbooks für die Automatisierung von Prozessen in Ihrem lokalen Datencenter oder in einer anderen Cloudumgebung konfigurieren.
 
@@ -103,7 +103,7 @@ Von dem Runbook werden folgende Parameter verwendet:
 | `CreateVM` | Obligatorisch. | Bei „true“ wird der Wert von `VMName` als Name eines neuen virtuellen Computers verwendet. Bei „false“ wird `VMName` verwendet, um einen vorhandenen virtuellen Computer zu suchen und zu registrieren. |
 | `VMName` | Optional | Der Name des virtuellen Computers, der entweder erstellt oder registriert wird (je nach Wert von `CreateVM`). |
 | `VMImage` | Optional | Der Name des zu erstellenden VM-Images. |
-| `VMlocation` | Optional | Der Speicherort des virtuellen Computers, der erstellt oder registriert wird. Ohne Angabe dieses Speicherorts wird der Wert von `LAlocation` verwendet. |
+| `VMlocation` | Optional | Der Speicherort des virtuellen Computers, der erstellt oder registriert wird. Ohne Angabe dieses Orts wird der Wert von `LAlocation` verwendet. |
 | `RegisterHW` | Obligatorisch. | Bei „true“ wird der virtuelle Computer als Hybrid Worker registriert. |
 | `WorkerGroupName` | Obligatorisch. | Der Name der Hybrid Worker-Gruppe. |
 
@@ -184,7 +184,7 @@ Zum Installieren und Konfigurieren eines Windows Hybrid Runbook Workers führen 
         
         - Verwenden von Azure Policy.
         
-            Bei dieser Vorgehensweise verwenden Sie die integrierte Azure Policy-Richtliniendefinition zum [Bereitstellen des Log Analytics Agent auf Linux- oder Windows-Azure Arc-Computern](../governance/policy/samples/built-in-policies.md#monitoring), um zu überwachen, ob der Log Analytics-Agent auf dem Server mit Arc-Unterstützung installiert ist. Wenn der Agent nicht installiert ist, wird er automatisch über einen Wartungstask bereitgestellt. Wenn Sie alternativ die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Methode [Azure Monitor für VMs aktivieren](../governance/policy/samples/built-in-initiatives.md#monitoring), um den Log Analytics-Agent zu installieren und zu konfigurieren.
+            Bei dieser Vorgehensweise verwenden Sie die integrierte Azure Policy-Richtliniendefinition zum [Bereitstellen des Log Analytics Agent auf Linux- oder Windows-Azure Arc-Computern](../governance/policy/samples/built-in-policies.md#monitoring), um zu überwachen, ob der Log Analytics-Agent auf dem Server mit Arc-Unterstützung installiert ist. Wenn der Agent nicht installiert ist, wird er automatisch über einen Wartungstask bereitgestellt. Wenn Sie die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Initiative [Azure Monitor für VMs aktivieren](../governance/policy/samples/built-in-initiatives.md#monitoring), um den Log Analytics-Agent zu installieren und zu konfigurieren.
 
     Es wird empfohlen, den Log Analytics-Agent für Windows oder Linux mit Azure Policy zu installieren.
 
@@ -229,7 +229,7 @@ Zum Installieren und Konfigurieren eines Windows Hybrid Runbook Workers führen 
 
     * Verwenden Sie für den Parameter `GroupName` den Namen der Hybrid Runbook Worker-Gruppe. Wenn diese Gruppe bereits im Automation-Konto vorhanden ist, wird ihr der aktuelle Computer hinzugefügt. Wenn diese Gruppe nicht vorhanden ist, wird sie hinzugefügt.
 
-    * Legen Sie bei Bedarf den Parameter `Verbose`fest, um Details zur Installation zu erhalten.
+    * Legen Sie bei Bedarf den Parameter `Verbose` fest, um Details zur Installation zu erhalten.
 
 1. Überprüfen Sie die Bereitstellung, nachdem der Befehl abgeschlossen wurde. Auf der Seite **Hybrid-Runbook-Workergruppen** in Ihrem Automation-Konto werden unter der Registerkarte **Benutzer-Hybrid Runbook Worker-Gruppe** die neue oder vorhandene Gruppe sowie die Anzahl der Mitglieder angezeigt. Wenn die Gruppe bereits vorhanden ist, wird die Anzahl der Mitglieder erhöht. Sie können die Gruppe in der Liste auf der Seite auswählen. Wählen Sie im Menü auf der linken Seite **Hybrid Worker** aus. Auf der Seite **Hybrid Worker** werden die einzelnen Mitglieder der Gruppe aufgelistet.
 

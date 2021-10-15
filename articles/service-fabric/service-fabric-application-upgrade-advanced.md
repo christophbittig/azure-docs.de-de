@@ -3,12 +3,12 @@ title: 'Anwendungsupgrade: Weiterführende Themen'
 description: Dieser Artikel behandelt einige weiterführende Themen in Bezug auf Upgrades von Service Fabric-Anwendungen.
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 6604300328f2d243077ba341a9028221438dce9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dca3ec669fde61be86f2424d9b314b4b26546c55
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98792047"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363309"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric-Anwendungsupgrade: Erweiterte Themen
 
@@ -48,11 +48,11 @@ Es gibt mehrere Möglichkeiten, die Verzögerung auf der Dienstseite zu konfigur
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
     ```
 
- * **Geben Sie beim Erstellen oder Aktualisieren eines vorhandenen Diensts über die ARM-Vorlage** den `InstanceCloseDelayDuration`-Wert an (unterstützte API-Mindestversion: 2019-11-01-preview):
+ * **Geben Sie beim Erstellen oder Aktualisieren eines vorhandenen Diensts über die ARM-Vorlage** den `InstanceCloseDelayDuration`-Wert an (unterstützte API-Mindestversion: 2020-03-01):
 
     ```ARM template to define InstanceCloseDelayDuration of 30seconds
     {
-      "apiVersion": "2019-11-01-preview",
+      "apiVersion": "2020-03-01",
       "type": "Microsoft.ServiceFabric/clusters/applications/services",
       "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
       "location": "[variables('clusterLocation')]",

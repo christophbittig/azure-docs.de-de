@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/21/2021
-ms.openlocfilehash: 9501c49bec8d2a632387ecb9b620dcbdc5a0ac1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5505350cffbda3b84e800b34be7094818fdb125c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356014"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230587"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Erste Schritte bei der Azure SQL Managed Instance-Überwachung
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

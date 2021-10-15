@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 07/06/2021
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: b7bf1d7353917808fca222a7027dda74f89aff70
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ac47322f33ac8f2efd08e5b04e639f09959dee28
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346490"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352033"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -70,6 +70,10 @@ Wählen Sie die **Ebene** oder die zu protokollierende Detailebene aus. Die folg
 
 Wenn Sie fertig sind, wählen Sie **Speichern** aus.
 
+> [!NOTE]
+> Falls Sie Protokolle in Blobs schreiben, gilt die Aufbewahrungsrichtlinie nicht mehr, wenn Sie die App löschen, aber die Protokolle in den Blobs beibehalten. Weitere Informationen finden Sie unter [Nach dem Löschen von Ressourcen möglicherweise anfallende Kosten](overview-manage-costs.md#costs-that-might-accrue-after-resource-deletion).
+>
+
 ## <a name="enable-application-logging-linuxcontainer"></a>Aktivieren der Anwendungsprotokollierung (Linux/Container)
 
 Um Anwendungsprotokollierung für Linux-Apps oder benutzerdefinierte Container-Apps im [Azure-Portal](https://portal.azure.com) zu aktivieren, navigieren Sie zu Ihrer App und wählen **App Service-Protokolle** aus.
@@ -97,6 +101,10 @@ Legen Sie unter **Aufbewahrungszeitraum (Tage)** die Anzahl der Tage fest, die d
 >
 
 Wenn Sie fertig sind, wählen Sie **Speichern** aus.
+
+> [!NOTE]
+> Falls Sie Protokolle in Blobs schreiben, gilt die Aufbewahrungsrichtlinie nicht mehr, wenn Sie die App löschen, aber die Protokolle in den Blobs beibehalten. Weitere Informationen finden Sie unter [Nach dem Löschen von Ressourcen möglicherweise anfallende Kosten](overview-manage-costs.md#costs-that-might-accrue-after-resource-deletion).
+>
 
 ## <a name="log-detailed-errors"></a>Protokollieren ausführlicher Fehler
 

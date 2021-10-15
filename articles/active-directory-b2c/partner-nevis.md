@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 42e244249ecb0539637918ae2439bdb4f5da4b38
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 0bbbe80a9f4c743fb658aa313641ab790e194509
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588478"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234336"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Tutorial zum Konfigurieren von Nevis mit Azure Active Directory B2C für die kennwortlose Authentifizierung
 
@@ -46,7 +46,7 @@ Diagramm der Implementierung
 
 ![Allgemeiner Ablauf bei der Anmeldung per Kennwort mit Azure AD B2C und Nevis](./media/partner-nevis/nevis-architecture-diagram.png)
 
-|Schritt | Beschreibung |
+|Schritt | BESCHREIBUNG |
 |:-----| :-----------|
 | 1. | Ein Benutzer versucht, sich über eine Azure AD B2C-Richtlinie für die Anmeldung und Registrierung bei einer Anwendung anzumelden oder zu registrieren.
 | 2. | Während der Registrierung wird die Nevis Access-App mithilfe eines QR-Codes auf dem Benutzergerät registriert. Ein privater Schlüssel wird auf dem Benutzergerät generiert und zum Signieren der Benutzeranforderungen verwendet.

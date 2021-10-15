@@ -6,14 +6,14 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 10/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: ad59bae5d0d5309dea15effefd29a23e8029cd5b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c3cb2a64cd2981c73a673776c01ec98bf44c8041
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128587706"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458186"
 ---
 # <a name="availability-and-business-continuity-in-azure-cognitive-search"></a>Verfügbarkeit und Geschäftskontinuität in Azure Cognitive Search
 
@@ -120,12 +120,12 @@ Andernfalls ist Ihr Anwendungscode, der zum Erstellen und Auffüllung eines Inde
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Tarifen und den Grenzwerte für jeden Tarif finden Sie unter [Grenzwerte des Diensts](search-limits-quotas-capacity.md). Weitere Informationen zu Partitions- und Replikatkombinationen finden Sie unter [Planen der Kapazität](search-capacity-planning.md).
+Weitere Informationen zu den Tarifen und den Grenzwerte für jeden Tarif finden Sie unter [Grenzwerte des Diensts](search-limits-quotas-capacity.md). Unter [Planen der Kapazität](search-capacity-planning.md) erfahren Sie mehr über Partitions- und Replikatkombinationen, und die [Fallstudie: Verwenden von Cognitive Search zur Unterstützung komplexer KI-Szenarien](https://techcommunity.microsoft.com/t5/azure-ai/case-study-effectively-using-cognitive-search-to-support-complex/ba-p/2804078) enthält Tipps aus der Praxis.
 
 Eine Diskussion über die Leistung und Demonstration der in diesem Artikel besprochenen Techniken erhalten Sie im folgenden Video:
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
-> 
+>
 
 <!--Image references-->
 [1]: ./media/search-performance-optimization/geo-redundancy.png

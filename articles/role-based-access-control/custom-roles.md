@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/27/2021
 ms.author: rolyon
-ms.openlocfilehash: 9553e53cda41a4fe4d926923bdd71d7d7c5ebb15
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 31da46a7eb6a021a14641d13f9c76ab7406f9b94
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123308392"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363410"
 ---
 # <a name="azure-custom-roles"></a>Benutzerdefinierte Azure-Rollen
 
@@ -33,7 +33,7 @@ Dies sind die grundlegenden Schritte zum Erstellen einer benutzerdefinierten Rol
 
 1. Bestimmen Sie die Berechtigungen, die Sie benötigen.
 
-    Wenn Sie eine benutzerdefinierte Rolle erstellen, müssen Sie die Vorgänge kennen, die zum Definieren der Berechtigungen verfügbar sind. In der Regel beginnen Sie mit einer vorhandenen integrierten Rolle und ändern sie Ihren Anforderungen entsprechend. Sie fügen die Vorgänge der `Actions`- oder `NotActions`-Eigenschaft der [Rollendefinition](role-definitions.md) hinzu. Wenn Sie über Datenvorgänge verfügen, fügen Sie diese der `DataActions`- oder `NotDataActions`-Eigenschaft hinzu.
+    Wenn Sie eine benutzerdefinierte Rolle erstellen, müssen Sie die Aktionen kennen, die zum Definieren Ihrer Berechtigungen verfügbar sind. In der Regel beginnen Sie mit einer vorhandenen integrierten Rolle und ändern sie Ihren Anforderungen entsprechend. Sie fügen die Aktionen der `Actions`- oder `NotActions`-Eigenschaft der [Rollendefinition](role-definitions.md) hinzu. Wenn Sie über Datenaktionen verfügen, fügen Sie diese der `DataActions`- oder `NotDataActions`-Eigenschaft hinzu.
 
     Weitere Informationen finden Sie im nächsten Abschnitt [Ermitteln der erforderlichen Berechtigungen](#how-to-determine-the-permissions-you-need).
 
@@ -157,10 +157,10 @@ In der folgenden Tabelle wird erläutert, was die Eigenschaften der benutzerdefi
 | `Id`</br>`name` | Ja | String | Die eindeutige ID der benutzerdefinierten Rolle. Für Azure PowerShell und Azure CLI wird diese ID automatisch generiert, wenn Sie eine neue Rolle erstellen. |
 | `IsCustom`</br>`roleType` | Ja | String | Gibt an, ob dies eine benutzerdefinierte Rolle ist. Legen Sie die Eigenschaft für benutzerdefinierte Rollen auf `true` oder `CustomRole` fest. Legen Sie die Eigenschaft für integrierte Rollen auf `false` oder `BuiltInRole` fest. |
 | `Description`</br>`description` | Ja | String | Die Beschreibung der benutzerdefinierten Rolle. Er kann Buchstaben, Ziffern, Leerzeichen und Sonderzeichen enthalten. Die maximale Anzahl von Zeichen ist 1.024. |
-| `Actions`</br>`actions` | Ja | String[] | Ein Array von Zeichenfolgen, das die Verwaltungsvorgänge angibt, deren Ausführung die Rolle zulässt. Weitere Informationen finden Sie unter [Aktionen](role-definitions.md#actions). |
-| `NotActions`</br>`notActions` | Nein | String[] | Ein Array von Zeichenfolgen, das die Verwaltungsvorgänge angibt, die von den zulässigen `Actions` ausgeschlossen sind. Weitere Informationen finden Sie unter [NotActions](role-definitions.md#notactions). |
-| `DataActions`</br>`dataActions` | Nein | String[] | Ein Array von Zeichenfolgen, das die Datenvorgänge angibt, deren Ausführung für Ihre Daten innerhalb des Objekts die Rolle zulässt. Wenn Sie eine benutzerdefinierte Rolle mit `DataActions`erstellen, kann diese Rolle im Verwaltungsgruppenbereich nicht zugewiesen werden. Weitere Informationen finden Sie unter [DataActions](role-definitions.md#dataactions). |
-| `NotDataActions`</br>`notDataActions` | Nein | String[] | Ein Array von Zeichenfolgen, das die Datenvorgänge angibt, die von den zulässigen `DataActions` ausgeschlossen sind. Weitere Informationen finden Sie unter [NotDataActions](role-definitions.md#notdataactions). |
+| `Actions`</br>`actions` | Ja | String[] | Ein Array von Zeichenfolgen, das die Aktionen auf Steuerungsebene angibt, deren Ausführung die Rolle zulässt. Weitere Informationen finden Sie unter [Aktionen](role-definitions.md#actions). |
+| `NotActions`</br>`notActions` | Nein | String[] | Ein Array von Zeichenfolgen, das die Aktionen auf Steuerungsebene angibt, die von den zulässigen `Actions` ausgeschlossen sind. Weitere Informationen finden Sie unter [NotActions](role-definitions.md#notactions). |
+| `DataActions`</br>`dataActions` | Nein | String[] | Ein Array von Zeichenfolgen, das die Aktionen auf Datenebene angibt, deren Ausführung die Rolle für Ihre Daten innerhalb des Objekts zulässt. Wenn Sie eine benutzerdefinierte Rolle mit `DataActions`erstellen, kann diese Rolle im Verwaltungsgruppenbereich nicht zugewiesen werden. Weitere Informationen finden Sie unter [DataActions](role-definitions.md#dataactions). |
+| `NotDataActions`</br>`notDataActions` | Nein | String[] | Ein Array von Zeichenfolgen, das die Aktionen auf Datenebene angibt, die von den zulässigen `DataActions` ausgeschlossen sind. Weitere Informationen finden Sie unter [NotDataActions](role-definitions.md#notdataactions). |
 | `AssignableScopes`</br>`assignableScopes` | Ja | String[] | Ein Array von Zeichenfolgen, das die Bereiche angibt, in denen die benutzerdefinierte Rolle zur Zuweisung verfügbar ist. Sie können in den `AssignableScopes` einer benutzerdefinierten Rolle nur eine einzige Verwaltungsgruppe definieren. Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase. Weitere Informationen finden Sie unter [AssignableScopes](role-definitions.md#assignablescopes). |
 
 Bei Berechtigungszeichenfolgen wird die Groß-/Kleinschreibung nicht beachtet. Beim Erstellen Ihrer benutzerdefinierten Rollen sollten Sie sich an die vorgegebene Groß-/Kleinschreibung halten, die für Berechtigungen unter [Vorgänge für Azure-Ressourcenanbieter](resource-provider-operations.md) beschrieben ist.
@@ -187,11 +187,11 @@ Microsoft.CostManagement/exports/*
 
 Wie integrierte Rollen legt die `AssignableScopes`-Eigenschaft die Bereiche fest, in denen die Rolle zur Zuweisung verfügbar ist. Die `AssignableScopes`-Eigenschaft für eine benutzerdefinierte Rolle steuert auch, wer zum Erstellen, Löschen, Aktualisieren oder Anzeigen der benutzerdefinierten Rolle berechtigt ist.
 
-| Aufgabe | Vorgang | BESCHREIBUNG |
+| Aufgabe | Aktion | BESCHREIBUNG |
 | --- | --- | --- |
-| Erstellen/Löschen einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinitions/write` | Benutzer, die für alle `AssignableScopes` der benutzerdefinierten Rolle zu diesem Vorgang berechtigt sind, können benutzerdefinierte Rollen für die Verwendung in diesen Bereichen erstellen (oder löschen). Hierzu gehören beispielsweise [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministratoren](built-in-roles.md#user-access-administrator) von Verwaltungsgruppen, Abonnements und Ressourcengruppen. |
-| Aktualisieren einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinitions/write` | Benutzer, die für alle `AssignableScopes` der benutzerdefinierten Rolle zu diesem Vorgang berechtigt sind, können benutzerdefinierte Rollen in diesen Bereichen aktualisieren. Hierzu gehören beispielsweise [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministratoren](built-in-roles.md#user-access-administrator) von Verwaltungsgruppen, Abonnements und Ressourcengruppen. |
-| Anzeigen einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinitions/read` | Benutzer, die in einem Bereich zu diesem Vorgang berechtigt sind, können die benutzerdefinierten Rollen anzeigen, die für die Zuweisung in diesem Bereich verfügbar sind. Benutzerdefinierte Rollen können bei allen integrierten Rollen für die Zuweisung verfügbar sein. |
+| Erstellen/Löschen einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinitions/write` | Benutzer, die für alle `AssignableScopes` der benutzerdefinierten Rolle zu dieser Aktion berechtigt sind, können benutzerdefinierte Rollen für die Verwendung in diesen Bereichen erstellen (oder löschen). Hierzu gehören beispielsweise [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministratoren](built-in-roles.md#user-access-administrator) von Verwaltungsgruppen, Abonnements und Ressourcengruppen. |
+| Aktualisieren einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinitions/write` | Benutzer, die für alle `AssignableScopes` der benutzerdefinierten Rolle zu dieser Aktion berechtigt sind, können benutzerdefinierte Rollen in diesen Bereichen aktualisieren. Hierzu gehören beispielsweise [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministratoren](built-in-roles.md#user-access-administrator) von Verwaltungsgruppen, Abonnements und Ressourcengruppen. |
+| Anzeigen einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinitions/read` | Benutzer, die in einem Bereich zu dieser Aktion berechtigt sind, können die benutzerdefinierten Rollen anzeigen, die für die Zuweisung in diesem Bereich verfügbar sind. Benutzerdefinierte Rollen können bei allen integrierten Rollen für die Zuweisung verfügbar sein. |
 
 ## <a name="custom-role-limits"></a>Grenzwerte bei benutzerdefinierten Rollen
 

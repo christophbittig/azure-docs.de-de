@@ -5,22 +5,22 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 293dcb57ec25fb4e6f3cc15e64f4b49b2d6ccb5f
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 121e302708fecd20934f6ba57bd08590e45a7429
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091310"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233198"
 ---
 # <a name="context-switching-in-azure-automation"></a>Kontextwechsel in Azure Automation
 
 Kontextwechsel bedeutet, dass der Kontext in einem Prozess den Kontext in einem anderen Prozess ändert. Bei einem Azure-Kontext handelt es sich um einen Satz von Informationen, die das Ziel von Azure PowerShell-Cmdlets definieren. Der Kontext besteht aus den folgenden Eigenschaften:
 
-|Eigenschaft | Beschreibung |
+|Eigenschaft | BESCHREIBUNG |
 |---|---|
 |Name | Der Name des Kontexts.|
 |Konto | Dies ist der Benutzername oder Dienstprinzipal, der verwendet wird, um die Kommunikation mit Azure zu authentifizieren.|
-|Umgebung | Hiermit wird die globale Azure-Cloud oder eine der nationalen Azure-Clouds dargestellt (z. B. Azure Government). Sie können auch eine Hybrid-Cloud-Plattform wie Azure Stack angeben.|
+|Environment | Hiermit wird die globale Azure-Cloud oder eine der nationalen Azure-Clouds dargestellt (z. B. Azure Government). Sie können auch eine Hybrid-Cloud-Plattform wie Azure Stack angeben.|
 |Subscription | Hiermit wird das Azure-Abonnement dargestellt, das die Ressourcen enthält, die Sie verwalten möchten.|
 |Tenant | Dies ist eine dedizierte und vertrauenswürdige Azure Active Directory-Instanz, die eine einzelne Organisation darstellt.|
 |Anmeldeinformationen | Dies sind die Informationen, die von Azure verwendet werden, um Ihre Identität zu überprüfen und die Autorisierung des Zugriffs auf Ressourcen in Azure zu bestätigen.|
@@ -35,7 +35,7 @@ Lesen Sie die folgenden Empfehlungen, um zu verhindern, dass Ihre Runbooks für 
 1. Die Azure PowerShell-Cmdlets unterstützen den `-DefaultProfile`-Parameter. Dieser Parameter wurde zu allen Az- und Azure Resource Manager-Cmdlets (AzureRM) hinzugefügt, um das Ausführen mehrerer Skripte in demselben Vorgang zu unterstützen, sodass Sie für jedes Cmdlet angeben können, welcher Kontext verwendet werden soll. Speichern Sie Ihr Kontextobjekt in Ihrem Runbook, wenn es erstellt wird und jedes Mal, wenn es geändert wird. Verweisen Sie dann in jedem Aufruf, der mithilfe des Az- oder AzureRM-Cmdlets erfolgt, auf dieses Objekt. Beispiel: `$AzureContext = Set-AzContext -SubscriptionId $subID`.
 1. Übergeben Sie das Kontextobjekt an das PowerShell-Cmdlet (z. B. `Get-AzVM -ResourceGroupName "myGroup" -DefaultProfile $AzureContext`).
 
-Hier sehen Sie einen PowerShell-Runbookcodeausschnitt, der eine systemseitig zugewiesene verwaltete Identität verwendet und die Empfehlungen berücksichtigt, einen Kontextwechsel zu vermeiden.
+Hier ist ein PowerShell-Runbook-Codeausschnitt, der eine vom System zugewiesene verwaltete Identität verwendet und den Empfehlungen zur Vermeidung von Kontextwechseln folgt.
 
 ```powershell
 # Ensures you do not inherit an AzContext in your runbook

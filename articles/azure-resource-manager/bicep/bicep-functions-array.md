@@ -4,13 +4,13 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei f�
 author: mumian
 ms.topic: conceptual
 ms.author: jgao
-ms.date: 09/10/2021
-ms.openlocfilehash: 69a937a68e2f73eaf911f2cb80cf09bab7d78eed
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 69e1e3c9574d6a32663186d46c1af3dceb422f4a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794099"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357628"
 ---
 # <a name="array-functions-for-bicep"></a>Arrayfunktionen für Bicep
 
@@ -21,6 +21,8 @@ In diesem Artikel werden die Bicep-Funktionen für die Arbeit mit Arrays beschri
 `array(convertToArray)`
 
 Konvertiert den Wert in ein Array.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 
@@ -62,6 +64,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `concat(arg1, arg2, arg3, ...)`
 
 Kombiniert mehrere Arrays und gibt das verkettete Array zurück.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 
@@ -107,9 +111,11 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Überprüft, ob ein Array einen Wert enthält, ein Objekt einen Schlüssel enthält oder eine Zeichenfolge eine Teilzeichenfolge enthält. Die Groß-/Kleinschreibung wird beim Zeichenfolgenvergleich beachtet. Wenn Sie jedoch testen, ob ein Objekt einen Schlüssel enthält, wird die Groß-/Kleinschreibung beim Vergleich nicht beachtet.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | Container |Ja |Array, Objekt oder Zeichenfolge |Der Wert, der den zu suchenden Wert enthält. |
 | itemToFind |Ja |Zeichenfolge oder ganze Zahl |Der zu suchende Wert. |
@@ -160,6 +166,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Bestimmt, ob ein Array, Objekt oder eine Zeichenfolge leer ist.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -198,6 +206,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt das erste Element des Arrays oder das erste Zeichen der Zeichenfolge zurück.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -235,6 +245,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `intersection(arg1, arg2, arg3, ...)`
 
 Gibt ein einzelnes Array oder ein Objekt mit den gemeinsamen Elementen aus den Parametern zurück.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 
@@ -327,6 +339,8 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
 Gibt das letzte Element des Arrays bzw. das letzte Zeichen der Zeichenfolge zurück.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -364,6 +378,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `length(arg1)`
 
 Gibt die Anzahl von Elementen in einem Array, Zeichen in einer Zeichenfolge oder Eigenschaften auf Stammebene in einem Objekt zurück.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 
@@ -415,6 +431,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt den größten Wert aus einem Array mit ganzen Zahlen oder einer durch Trennzeichen getrennten Liste mit ganzen Zahlen zurück.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -454,6 +472,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `min(arg1)`
 
 Gibt den kleinsten Wert aus einem Array mit ganzen Zahlen oder einer durch Trennzeichen getrennten Liste mit ganzen Zahlen zurück.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 
@@ -495,6 +515,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Erstellt ein Array aus ganzen Zahlen, das mit einer ganzen Zahl beginnt und die Anzahl der Elemente enthält.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -528,6 +550,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `skip(originalValue, numberToSkip)`
 
 Gibt ein Array mit allen Elementen gemäß der angegebenen Anzahl im Array bzw. eine Zeichenfolge mit allen Zeichen gemäß der angegebenen Anzahl in der Zeichenfolge zurück.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 
@@ -571,6 +595,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt ein Array mit der angegebenen Anzahl von Elementen ab dem Anfang des Arrays bzw. eine Zeichenfolge mit der angegebenen Anzahl von Zeichen ab dem Anfang der Zeichenfolge zurück.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -612,6 +638,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `union(arg1, arg2, arg3, ...)`
 
 Gibt ein einzelnes Array oder Objekt mit allen Elementen aus den Parametern zurück. Doppelte Werte oder Schlüssel sind nur einmal enthalten.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 

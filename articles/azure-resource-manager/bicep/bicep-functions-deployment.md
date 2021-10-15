@@ -4,13 +4,13 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei zu
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: e909ea77da32675beec6d5117430717acf274ab1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 9d06bd78d7ba6dcf0f73326f744e975a9c4e3f53
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124731097"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352401"
 ---
 # <a name="deployment-functions-for-bicep"></a>Bereitstellungsfunktionen für Bicep
 
@@ -21,6 +21,8 @@ In diesem Artikel werden die Bicep-Funktionen zum Abrufen von Werten im Zusammen
 `deployment()`
 
 Gibt Informationen zum aktuellen Bereitstellungsvorgang zurück.
+
+Namespace: [az](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -110,6 +112,8 @@ Im vorherigen Beispiel wird das folgende Objekt zurückgegeben:
 `environment()`
 
 Gibt Informationen zur für die Bereitstellung verwendeten Azure-Umgebung zurück.
+
+Namespace: [az](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="return-value"></a>Rückgabewert
 

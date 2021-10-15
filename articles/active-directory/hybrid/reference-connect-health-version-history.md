@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44ef48fe75d7070d3f471b06d548c06dc5d972b6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 21d59036677a9a62d366e03bcdedb3a2f5d44abe
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479785"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351708"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßig mit neuen Features und Funktionen. In diesem Artikel werden die veröffentlichten Versionen und Features beschrieben.  
@@ -31,6 +31,13 @@ Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßi
 >
 
 Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-Installation integriert. Weitere Informationen zum Releaseverlauf von Azure AD Connect finden Sie [hier](./reference-connect-version-history.md). Featurefeedback können Sie über den [Benutzerfeedbackkanal für Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) abgeben.
+
+## <a name="september-2021"></a>September 2021
+**Agent-Aktualisierung**
+- Der Azure AD Connect Health-Agent für die AD FS (Version 3.1.113.0)
+  - Fix zum Extrahieren von Geräteinformationen wie Gerätekonformität und verwaltetem Status, Gerätebetriebssystem und Gerätebetriebssystemversion aus AD FS-Prüfungen in bestimmten gerätebasierten Authentifizierungsszenarios
+  - Fix zum Ausfüllen von OAuth-Anwendungsinformationen in Fehlerfällen und Kategorisieren von OAuth-Fehlern mit spezifischeren Fehlercodes
+  - Fix für Warnungen bei fehlerhaften WMI-Aufrufen auf dem Kundencomputer Jetzt würden solche Aufrufe das Ergebnis/den Status auf „notRun“ festlegen.
 
 ## <a name="may-2021"></a>Mai 2021
 **Agent-Aktualisierung**

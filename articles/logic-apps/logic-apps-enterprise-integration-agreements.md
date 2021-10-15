@@ -1,6 +1,6 @@
 ---
 title: Definieren von Vereinbarungen zwischen Partnern in Workflows
-description: Fügen Sie Ihrem Integrationskonto Vereinbarungen für Workflows in Azure Logic Apps mithilfe des Enterprise Integration Pack hinzu.
+description: Fügen Sie Ihrem Integrationskonto Vereinbarungen zwischen Partner*innen für Workflows in Azure Logic Apps mithilfe des Enterprise Integration Pack hinzu.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.openlocfilehash: 3a1b714be1f6eb70a4780c7abf58f13a45eb3f3f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7b634da15248513ee782967eb1c86092e940ec9b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584161"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361299"
 ---
-# <a name="add-agreements-between-partners-to-integration-accounts-for-workflows-in-azure-logic-apps"></a>Hinzufügen von Vereinbarungen zwischen den Partnern zu den Integrationskonten für Workflows in Azure Logic Apps
+# <a name="add-agreements-between-partners-in-integration-accounts-for-workflows-in-azure-logic-apps"></a>Hinzufügen von Vereinbarungen zwischen den Partner*innen in Integrationskonten für Workflows in Azure Logic Apps
 
 Nachdem Sie Ihrem Integrationskonto Partner hinzugefügt haben, geben Sie an, wie Partner Nachrichten austauschen, indem Sie [*Vereinbarungen*](logic-apps-enterprise-integration-agreements.md) in Ihrem Integrationskonto definieren. Vereinbarungen unterstützen Organisationen bei der nahtlosen Kommunikation, indem sie das spezifische Branchenstandardprotokoll für den Austausch von Nachrichten definieren. Außerdem bieten sie die folgenden gemeinsamen Vorteile:
 
@@ -29,7 +29,7 @@ Eine Vereinbarung erfordert einen *Hostpartner*, der immer Ihre Organisation ist
 
 In diesem Artikel erfahren Sie, wie Sie eine Vereinbarung, mit der Sie B2B-Nachrichten mit einem anderen Partner über AS2-, X12-, EDIFACT- oder RosettaNet-Vorgänge austauschen können, erstellen und verwalten.
 
-Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](logic-apps-overview.md). Weitere Informationen zur B2B-Unternehmensintegration finden Sie unter [Workflows für die B2B-Unternehmensintegration mit Azure Logic Apps und dem Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md).
+Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](logic-apps-overview.md). Weitere Informationen zur B2B-Unternehmensintegration finden Sie in [B2B-Unternehmensintegrations-Workflows mit Azure Logic Apps und Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,12 +41,12 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
   * Sie muss sich am selben Standort oder in derselben Azure-Region wie Ihre Logik-App-Ressource befinden.
 
-  * Wenn Sie den [Ressourcentyp **Logik-App (Verbrauch)** ](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigt Ihr Integrationskonto eine [Verbindung mit Ihrer Logik-App-Ressource](logic-apps-enterprise-integration-create-integration-account.md#link-account), bevor Sie Artefakte in Ihrem Workflow verwenden können.
+  * Wenn Sie den [Ressourcentyp **Logik-App (Verbrauch)**](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigt Ihr Integrationskonto eine [Verbindung mit Ihrer Logik-App-Ressource](logic-apps-enterprise-integration-create-integration-account.md#link-account), bevor Sie Artefakte in Ihrem Workflow verwenden können.
 
-  * Wenn Sie den [Ressourcentyp **Logik-App (Standard)** ](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigt Ihr Integrationskonto keine Verbindung mit Ihrer Logik-App-Ressource. Sie ist aber trotzdem erforderlich, um andere Artefakte wie Partner, Vereinbarungen und Zertifikate zusammen mit den [AS2](logic-apps-enterprise-integration-as2.md)-, [X12](logic-apps-enterprise-integration-x12.md)- und [EDIFACT](logic-apps-enterprise-integration-edifact.md)-Vorgängen zu speichern. Ihr Integrationskonto muss darüber hinaus weitere Anforderungen erfüllen. So muss es z. B. dasselbe Azure-Abonnement und denselben Standort wie Ihre Logik-App-Ressource verwenden.
+  * Wenn Sie den [Ressourcentyp **Logik-App (Standard)**](logic-apps-overview.md#resource-type-and-host-environment-differences) verwenden, benötigt Ihr Integrationskonto keine Verbindung mit Ihrer Logik-App-Ressource. Sie ist aber trotzdem erforderlich, um andere Artefakte wie Partner, Vereinbarungen und Zertifikate zusammen mit den [AS2](logic-apps-enterprise-integration-as2.md)-, [X12](logic-apps-enterprise-integration-x12.md)- und [EDIFACT](logic-apps-enterprise-integration-edifact.md)-Vorgängen zu speichern. Ihr Integrationskonto muss darüber hinaus weitere Anforderungen erfüllen. So muss es z. B. dasselbe Azure-Abonnement und denselben Standort wie Ihre Logik-App-Ressource verwenden.
 
   > [!NOTE]
-  > Derzeit unterstützt nur der Ressourcentyp **Logik-App (Verbrauch)** [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge. Der Ressourcentyp **Logik-App (Standard)** umfasst keine [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge.
+  > Derzeit unterstützt nur der **Logic App (Verbrauch)** Ressourcentyp [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge. Der Ressourcentyp **Logik-App (Standard)** umfasst keine [RosettaNet](logic-apps-enterprise-integration-rosettanet.md)-Vorgänge.
 
 * Mindestens zwei [Parteien](logic-apps-enterprise-integration-partners.md) (Handelspartner) in Ihrem Integrationskonto. Eine Vereinbarung erfordert sowohl einen Host- als auch einen Gastpartner. Außerdem erfordert eine Vereinbarung, dass beide Partner denselben oder einen kompatiblen Qualifizierer für die *Geschäftsidentität* verwenden, der für eine AS2-, X12-, EDIFACT- oder RosettaNet-Vereinbarung geeignet ist.
 
@@ -66,7 +66,7 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
 1. Geben Sie im Bereich **Hinzufügen** die folgenden Informationen zu der Vereinbarung an:
 
-   | Eigenschaft | Erforderlich | Wert | Beschreibung |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Name** | Ja | <*agreement-name*> | Der Name für Ihre Vereinbarung. |
    | **Vereinbarungstyp** | Ja | **AS2**, **X12**, **EDIFACT** oder **RosettaNet** | Der Protokolltyp für Ihre Vereinbarung. Wenn Sie Ihre Vereinbarungsdatei erstellen, muss der Inhalt dieser Datei mit dem Vereinbarungstyp übereinstimmen. |

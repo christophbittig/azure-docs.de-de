@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 741f20a19c4bfe842ed2c14cee51c1ae19c1d9da
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: c4429e0410fb9511d511ce5841876d5fbca173f5
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258461"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388094"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 
@@ -209,7 +209,9 @@ Anhand eines Beispiels wird veranschaulicht, wie Sie den auf Ihrem lokalen Daten
 In diesem Fall würde die Azure-Dateisynchronisierung etwa 209.500.000 KiB (209,5 GiB) Speicherplatz für diesen Namespace benötigen. Fügen Sie diese Speicherplatzmenge zu jedem gewünschten zusätzlichen freien Speicherplatz hinzu, um herauszufinden, wie viel freier Speicherplatz für diesen Datenträger erforderlich ist.
 
 ### <a name="failover-clustering"></a>Failoverclustering
-Windows Server-Failoverclustering wird von der Azure-Dateisynchronisierung für die Bereitstellungsoption „Dateiserver zur allgemeinen Verwendung“ unterstützt. Failoverclustering wird auf einem „Dateiserver mit horizontaler Skalierung für Anwendungsdaten“ (SOFS) oder auf freigegebenen Volumes (CSV) nicht unterstützt.
+1. Windows Server-Failoverclustering wird von der Azure-Dateisynchronisierung für die Bereitstellungsoption „Dateiserver zur allgemeinen Verwendung“ unterstützt. 
+2. Das einzige von der Azure-Dateisynchronisierung unterstützte Szenario ist ein Windows Server-Failovercluster mit gruppierten Datenträgern.
+3. Failoverclustering wird auf einem „Dateiserver mit horizontaler Skalierung für Anwendungsdaten“ (Scale-Out File Server, SOFS), auf freigegebenen Clustervolumes (Clustered Shared Vomlume, CSV) und lokalen Datenträgern nicht unterstützt.
 
 > [!Note]  
 > Der Azure-Dateisynchronisierungs-Agent muss auf jedem Knoten in einem Failovercluster installiert sein, damit die Synchronisierung ordnungsgemäß funktioniert.

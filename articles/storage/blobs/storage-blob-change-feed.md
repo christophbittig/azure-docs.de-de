@@ -1,20 +1,21 @@
 ---
-title: Änderungsfeed in Azure Blob Storage | Microsoft-Dokumentation
+title: Änderungsfeed im Blob Storage
+titleSuffix: Azure Storage
 description: Erfahren Sie mehr über Änderungsfeedprotokolle in Azure Blob Storage und deren Verwendung.
 author: tamram
 ms.author: tamram
-ms.date: 05/17/2021
+ms.date: 10/01/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 67ecaac43885b76071a6bc71268edb811db7cbbd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bed39bd544ac1b586dcefefb890927fe1ce472b2
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680279"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402149"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Änderungsfeed in Azure Blob Storage
 
@@ -55,7 +56,7 @@ Folgende Aspekte müssen Sie berücksichtigen, wenn Sie den Änderungsfeed aktiv
 
 - Der Änderungsfeed zeichnet *alle* Änderungen für alle verfügbaren Ereignisse auf, die im Konto auftreten. Clientanwendungen können Ereignistypen nach Bedarf herausfiltern. (Informationen hierzu finden Sie in den [Bedingungen](#conditions) für das aktuelle Release.)
 
-- Nur Konten vom Typ „Universell V2“ und Blobspeicherkonten können den Änderungsfeed aktivieren. Premium-Blockblobkonten und Konten mit aktivierten hierarchischen Namespaces werden zurzeit nicht unterstützt. Speicherkonten vom Typ „Universell V1“ werden zwar nicht unterstützt, können aber ohne Downtime auf „Universell V2“ aktualisiert werden. Weitere Informationen finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Universell V2“](../common/storage-account-upgrade.md).
+- Nur Konten vom Typ „Standard Universell V2“, „Premium Blockblob“ und Blob-Speicherkonten können den Änderungsfeed aktivieren. Konten mit einem aktivierten hierarchischen Namespace werden derzeit nicht unterstützt. Speicherkonten vom Typ „Universell V1“ werden zwar nicht unterstützt, können aber ohne Downtime auf „Universell V2“ aktualisiert werden. Weitere Informationen finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Universell V2“](../common/storage-account-upgrade.md).
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -302,12 +303,12 @@ Dieser Abschnitt enthält Informationen zu bekannten Problemen und Bedingungen i
 
 In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
 
-| Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
-|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Nein](../media/icons/no-icon.png)              | ![Nein](../media/icons/no-icon.png) |
-| Premium-Blockblobs          | ![Nein](../media/icons/no-icon.png)|![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Speicherkontotyp | Blob Storage (Standardunterstützung) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> |
+|--|--|--|--|
+| Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
+| Premium-Blockblobs | ![Ja](../media/icons/yes-icon.png) | ![Nein](../media/icons/no-icon.png) | ![Nein](../media/icons/no-icon.png) |
 
-<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
+<sup>1</sup> Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) erfordern beide ein Speicherkonto mit einem aktivierten hierarchischen Namespace.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

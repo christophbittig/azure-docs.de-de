@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: fb80374976752961b5c199fc06a8acba572c4d89
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: c5684a3e3949ca2bf119a4c81d7096726a441da6
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129054469"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390138"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Liveereignisse und Liveausgaben in Media Services
 
@@ -35,9 +35,10 @@ Mit Azure Media Services können Sie Ihren Kunden Liveereignisse in der Azure Cl
 
 ## <a name="live-event-types"></a>Liveereignistypen
 
-Ein [Liveereignis](/rest/api/media/liveevents) kann entweder auf *Passthrough* (ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten) oder *Livecodierung* (ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate) festgelegt werden. Die Typen werden während der Erstellung mit [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
+Ein [Liveereignis](/rest/api/media/liveevents) kann entweder auf Basic- oder Standard-*Passthrough* (ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten) oder *Livecodierung* (ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate) festgelegt werden. Die Typen werden während der Erstellung mit [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
 
-* **LiveEventEncodingType.None**: Ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten. Der erfasste Stream durchläuft das Liveereignis ohne weitere Verarbeitung. Wird auch als Pass-Through-Modus bezeichnet.
+* **LiveEventEncodingType.PassthroughBasic**: Ein lokaler Liveencoder sendet einen Datenstrom mit mehreren Bitraten Basic-Passthrough ist auf einen maximalen Eingangswert von 5 MBit/s und ein DVR-Fenster von 8 Stunden beschränkt. Außerdem wird die Livetranskription nicht unterstützt.
+* **LiveEventEncodingType.PassthroughStandard**: Ein lokaler Liveencoder sendet einen Datenstrom mit mehreren Bitraten Standard-Passthrough verfügt über höhere Erfassungsgrenzwerte, ein DVR-Fenster von 25 Stunden und Unterstützung für Livetranskriptionen.
 * **LiveEventEncodingType.Standard**: Ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate an das Liveereignis, und Media Services erstellt Streams mit mehreren Bitraten. Wenn der Beitragsfeed eine Auflösung von 720p oder höher hat, bewirkt die Voreinstellung **Default720p**, dass eine Reihe von 6 Auflösungs-/Bitrate-Paaren codiert wird.
 * **LiveEventEncodingType.Premium1080p**: Ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate an das Liveereignis, und Media Services erstellt Streams mit mehreren Bitraten. Die Voreinstellung „Default1080p“ gibt den Ausgabesatz von Auflösungs-/Bitrate-Paaren an.
 
@@ -45,7 +46,7 @@ Ein [Liveereignis](/rest/api/media/liveevents) kann entweder auf *Passthrough* (
 
 ![Beispieldiagramm für Passthrough-Liveereignis mit Media Services](./media/live-streaming/pass-through.svg)
 
-Wenn Sie das Passthrough-**Liveereignis** verwenden, erzeugen Sie mit Ihrem lokalen Liveencoder einen Videostream mit mehreren Bitraten und senden diesen als Beitragsfeed an das Liveereignis (über RTMP oder das Protokoll für fragmentiertes MP4). Das Liveereignis leitet dann die eingehenden Videostreams ohne weitere Verarbeitung weiter. Ein solches Passthrough-Liveereignis ist für lang andauernde Liveereignisse oder lineares Livestreaming rund um die Uhr optimiert. Geben Sie beim Erstellen dieser Art von Liveereignis „None“ an (LiveEventEncodingType.None).
+Wenn Sie das Basic- oder Standard-Passthrough-**Liveereignis** verwenden, erzeugen Sie mit Ihrem lokalen Liveencoder einen Videostream mit mehreren Bitraten und senden diesen als Beitragsfeed an das Liveereignis (über RTMP oder das Protokoll für fragmentiertes MP4). Das Liveereignis leitet dann die eingehenden Videostreams ohne weitere Verarbeitung weiter. Ein solches Passthrough-Liveereignis ist für lang andauernde Liveereignisse oder lineares Livestreaming rund um die Uhr optimiert. Geben Sie beim Erstellen dieser Art von Liveereignis pass-through „basic“ oder „standard“ an. (LiveEventEncodingType.PassThroughStandard)
 
 Sie können den Beitragsfeed mit einer Auflösung von bis zu 4K und einer Bildrate von 60 Bildern/Sekunde senden, entweder mit H.264/AVC- oder H.265/HEVC-Videocodecs (nur Smooth-Erfassung) und AAC-Audiocodec (AAC-LC, HE-AACv1 oder HE-AACv2). Weitere Informationen finden Sie unter [Vergleich von Liveereignistypen](live-event-types-comparison-reference.md).
 

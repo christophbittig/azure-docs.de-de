@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
-ms.openlocfilehash: 67bd943028ba321aa4fa3a5acca30e80cfc36a32
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ace430aa1e48d7e769f82d7258da241a0716a16d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615565"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455643"
 ---
 # <a name="enable-azure-storage-blob-inventory-reports"></a>Aktivieren von Berichten zur Azure Storage-Blobinventur
 
@@ -63,7 +63,7 @@ Sie aktivieren Blobinventurberichte, indem Sie Ihrem Speicherkonto eine Richtlin
 
 <a id="powershell"></a>
 
-Sie können das Hosting statischer Websites über das Azure PowerShell-Modul aktivieren.
+Sie können eine Richtlinie über das Azure PowerShell-Modul hinzufügen, bearbeiten oder entfernen.
 
 1. Öffnen Sie ein Windows PowerShell-Befehlsfenster.
 
@@ -75,7 +75,7 @@ Sie können das Hosting statischer Websites über das Azure PowerShell-Modul akt
    Connect-AzAccount
    ```
 
-4. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, auf dem Ihre statische Website gehostet wird.
+4. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement fest.
 
    ```powershell
    $context = Get-AzSubscription -SubscriptionId <subscription-id>
@@ -123,11 +123,11 @@ Sie können das Hosting statischer Websites über das Azure PowerShell-Modul akt
 
 <a id="cli"></a>
 
-Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/) aktivieren.
+Sie können eine Richtlinie über die [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/) hinzufügen, bearbeiten oder entfernen.
 
 1. Öffnen Sie zunächst [Azure Cloud Shell](../../cloud-shell/overview.md), oder falls Sie die Azure-CLI lokal [installiert](/cli/azure/install-azure-cli) haben, öffnen Sie eine Befehlskonsolenanwendung wie Windows PowerShell.
 
-2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, auf dem Ihre statische Website gehostet wird.
+2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement fest.
 
    ```azurecli
       az account set --subscription <subscription-id>

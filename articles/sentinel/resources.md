@@ -1,26 +1,21 @@
 ---
-title: Nützliche Ressourcen für das Arbeiten mit Azure Sentinel | Microsoft-Dokumentation
+title: Nützliche Ressourcen für die Arbeit mit Azure Sentinel
 description: Dieses Dokument enthält eine Liste von Ressourcen, die nützlich sind, wenn mit Azure Sentinel gearbeitet wird.
 services: sentinel
-documentationcenter: na
 author: yelevin
 manager: rkarlin
-editor: ''
 ms.assetid: 9b4c8e38-c986-4223-aa24-a71b01cb15ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 247b025524a029fcb68fbe0682b365e9b7f240b5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 47ccfea5b666e3c600454fec5d2e8dc801b78bc2
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128565171"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358104"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Nützliche Ressourcen für das Arbeiten mit Azure Sentinel
 
@@ -45,13 +40,13 @@ Weitere Informationen finden Sie unter [Connectordokumentation](/connectors/).
 
 In der folgenden Tabelle werden die Unterschiede zwischen Playbooks, Arbeitsmappen und Notebooks in Azure Sentinel beschrieben:
 
-|  |Playbooks  |Arbeitsmappen  |Notebooks  |
+| Category |Playbooks  |Arbeitsmappen  |Notebooks  |
 |---------|---------|---------|---------|
 |**Personas**     |   <ul><li>SOC-Ingenieure</li><li>Analysten aller Ebenen</li></ul>      | <ul><li> SOC-Ingenieure</li><li>Analysten aller Ebenen</li></ul>       | <ul><li>Bedrohungssucher und Ebene-2/Ebene-3-Analysten</li><li>Zwischenfallermittler</li><li>Datenanalysten</li><li>Sicherheitsforscher</li></ul>       |
 |**Verwendung**     | Automatisierung von einfachen, wiederholbaren Aufgaben:<ul><li>Erfassung externer Daten </li><li>Datenanreicherung mit Tl, GeoIP-Lookups und mehr </li><li> Untersuchung </li><li>Behebung </li></ul>       | <ul><li>Visualisierung</li></ul>        |   <ul><li>Abfrage von Azure Sentinel-Daten und externen Daten </li><li>Datenanreicherung mit Tl, GeoIP-Lookups und Whois-Lookups und mehr </li><li> Untersuchung </li><li> Visualisierung </li><li> Suche </li><li>Maschinelles Lernen und Big-Data-Analyse </li></ul>      |
 |**Vorteile**     |<ul><li> Am besten geeignet für einzelne, wiederholbare Aufgaben </li><li>Keine Kodierungskenntnisse erforderlich  </li></ul>      |<ul><li>Am besten geeignet für einen Überblick über Azure Sentinel-Daten auf hoher Ebene </li><li>Keine Kodierungskenntnisse erforderlich</li></ul>       | <ul><li>Am besten für komplexe Ketten von wiederholbaren Aufgaben </li><li>Ad-hoc, mehr prozedurale Kontrolle</li><li>Leichteres Pivotieren mit interaktiven Funktionen </li><li>Umfangreiche Python-Bibliotheken für die Datenmanipulation und -visualisierung </li><li>Maschinelles Lernen und benutzerdefinierte Analysen </li><li>Einfaches Dokumentieren und Freigeben von Analysebeweisen </li></ul>       |
 |**Herausforderungen**     | <ul><li>Nicht geeignet für ad-hoc und komplexe Aufgabenketten </li><li>Nicht ideal zum Dokumentieren und Freigeben von Beweisen</li></ul>        |   <ul><li>Eine Integration mit externen Daten ist nicht möglich </li></ul>     |    <ul><li> Hohe Lernkurve und erfordert Programmierkenntnisse </li></ul>   |
-|  **Weitere Informationen**   | [Automatisieren der Bedrohungsabwehr mit Playbooks in Azure Sentinel](automate-responses-with-playbooks.md)        | [Visualisieren gesammelter Daten](get-visibility.md)        | [Verwendung von Jupyter Notebooks für die Suche nach Sicherheitsbedrohungen](notebooks.md)        |
+|  **Weitere Informationen**   | [Automatisieren der Bedrohungsabwehr mit Playbooks in Azure Sentinel](automate-responses-with-playbooks.md)        | [Visualisieren gesammelter Daten](get-visibility.md)        | [Aufspüren von Sicherheitsrisiken mit Jupyter Notebooks](notebooks.md)        |
 |     |         |         |         |
 
 ## <a name="comment-on-our-blogs-and-forums"></a>Kommentieren Sie unsere Blogs und Foren

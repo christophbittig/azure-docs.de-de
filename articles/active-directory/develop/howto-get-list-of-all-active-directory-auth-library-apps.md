@@ -13,12 +13,12 @@ ms.date: 07/22/2021
 ms.author: shermanouko
 ms.custom: aaddev, has-adal-ref
 ms.reviewer: aiwang, marsma
-ms.openlocfilehash: 07f6c7f481e815e788b22782f01ad9369bd2c9f6
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 1f4a710beba53987ce555aad5526298f81d0a43c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039695"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232297"
 ---
 # <a name="get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>Abrufen einer vollständigen Liste von Apps, die in Ihrem Mandanten die ADAL verwenden
 
@@ -28,9 +28,13 @@ Die Unterstützung der Active Directory-Authentifizierungsbibliothek (ADAL) ende
 
 Arbeitsmappen sind eine Reihe von Abfragen, die in Azure AD-Protokollen (Azure Active Directory) verfügbare Informationen sammeln und visualisieren. [Weitere Informationen zum Anmeldeprotokollschema finden Sie hier.](../reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) Die Arbeitsmappe „Anmeldungen“ im Azure AD-Verwaltungsportal enthält nun eine Tabelle, mit der Sie ermitteln können, welche Anwendungen die ADAL verwenden, und wie oft sie verwendet werden. Zunächst erfahren Sie, wie Sie auf die Arbeitsmappe zugreifen, bevor Sie die Visualisierung für die Anwendungsliste anzeigen.
 
-## <a name="step-1-integrate-audit-logs-with-azure-monitor"></a>Schritt 1: Integrieren von Überwachungsprotokollen in Azure Monitor
+## <a name="step-1-send-azure-ad-sign-in-events-to-azure-monitor"></a>Schritt 1: Senden von Azure AD-Anmeldeereignissen an Azure Monitor
 
-Befolgen Sie die Schritte unter [Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), bevor Sie auf die Arbeitsmappe zugreifen. Nur nach der Azure Monitor-Integration erstellte Anmelde- und Überwachungsereignisse werden gespeichert.
+Azure AD sendet standardmäßig keine Anmeldeereignisse an Azure Monitor. Dies ist für die Arbeitsmappe Anmeldungen in Azure Monitor erforderlich.
+
+Konfigurieren Sie AD so, dass Anmeldeereignisse an Azure Monitor gesendet werden, indem Sie die Schritte unter [Integrieren Ihrer Azure AD-Anmelde- und Überwachungsprotokolle in Azure Monitor](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) ausführen. Wählen Sie im Konfigurationsschritt **Diagnoseeinstellungen** das Kontrollkästchen **SignInLogs** aus.
+
+In der Arbeitsmappe Anmeldungen wird kein aufgetretenes Anmeldeereignis angezeigt, *bevor* Sie Azure AD zum Senden der Ereignisse an Azure Monitor konfigurieren.
 
 ## <a name="step-2-access-sign-ins-workbook-in-azure-portal"></a>Schritt 2: Zugreifen auf die Arbeitsmappe für Anmeldungen im Azure-Portal
 

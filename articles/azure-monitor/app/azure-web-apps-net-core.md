@@ -4,12 +4,12 @@ description: Überwachung der Anwendungsleistung für Azure-Anwendungsdienste mi
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: bf474ff535a9292fbadfd023830d15973bf39ad1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d31f8e59b297c16995482826414d07ab8cf5774f
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700138"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233218"
 ---
 # <a name="application-monitoring-for-azure-app-service-and-aspnet-core"></a>Anwendungsüberwachung für Azure App Service und ASP.NET Core 
 
@@ -20,7 +20,7 @@ Die Aktivierung der Überwachung IhrerASP.NET Core-basierten Webanwendungen, die
 # <a name="windows"></a>[Windows](#tab/Windows)
 
 > [!IMPORTANT]
-> Die folgenden Versionen vonASP.NET Core werden für die automatische Instrumentierung unter Windows unterstützt: ASP.NET Core 3.1, und 5.0. Die Versionen 2.0, 2.1, 2.2 und 3.0 wurden eingestellt und werden nicht mehr unterstützt. Führen Sie ein Upgrade auf eine [unterstützte Version](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) von .NET Core aus, damit die automatische Instrumentierung funktioniert.
+> Die folgenden Versionen von ASP.NET Core werden für die automatische Instrumentierung unter Windows unterstützt: ASP.NET Core 3.1 und 5.0. Die Versionen 2.0, 2.1, 2.2 und 3.0 wurden eingestellt und werden nicht mehr unterstützt. Führen Sie ein Upgrade auf eine [unterstützte Version](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) von .NET Core aus, damit die automatische Instrumentierung funktioniert.
 
 Die Ausrichtung auf das vollständige Framework von ASP.NET Core wird unter Windows **nicht unterstützt**. Verwenden Sie stattdessen die [manuelle Instrumentierung](./asp-net-core.md) über Code.
 

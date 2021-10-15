@@ -4,13 +4,13 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei f�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 8df0aec96001aa5b1a7cdd7342fe663f0bfa2da0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: b5230d9fd7f228981c3ac3ec899ae8b641cc74fb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758482"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355336"
 ---
 # <a name="numeric-functions-for-bicep"></a>Numerische Funktionen für Bicep
 
@@ -23,6 +23,8 @@ Einige der numerischen JSON-Funktionen in Azure Resource Manager werden durch [n
 `int(valueToConvert)`
 
 Konvertiert den angegebenen Wert in eine ganze Zahl (Integer).
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 
@@ -46,7 +48,7 @@ output inResult int = int(stringToConvert)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Type | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
@@ -55,6 +57,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `max (arg1)`
 
 Gibt den größten Wert aus einem Array mit ganzen Zahlen oder einer durch Trennzeichen getrennten Liste mit ganzen Zahlen zurück.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 
@@ -85,7 +89,7 @@ output intOutput int = max(0,3,2,5,4)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Type | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -95,6 +99,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `min (arg1)`
 
 Gibt den kleinsten Wert aus einem Array mit ganzen Zahlen oder einer durch Trennzeichen getrennten Liste mit ganzen Zahlen zurück.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions)
 
 ### <a name="parameters"></a>Parameter
 
@@ -125,7 +131,7 @@ output intOutput int = min(0,3,2,5,4)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Type | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: cc681d843d1fc68b3da6918724c7ad3e3ca5e37e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3901f624f5df8770a235c6cd184aca4a3409c26b
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339111"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129547131"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Senden von C2D-Nachrichten von einem IoT-Hub
 
@@ -97,9 +97,9 @@ Der Nachrichtenkörper ist ein serialisiertes JSON-Array aus Datensätzen, von d
 | Eigenschaft           | BESCHREIBUNG |
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Ein Zeitstempel, der angibt, wann das Ergebnis der Nachricht zustande gekommen ist (z.B. hat der Hub die Feedbacknachricht erhalten, oder die ursprüngliche Nachricht ist abgelaufen) |
-| OriginalMessageId  | Die *MessageId* der C2D-Nachricht, auf die sich das Feedback bezieht |
-| StatusCode         | Eine in Feedbacknachrichten verwendete erforderliche Zeichenfolge, die vom IoT-Hub generiert wird: <br/> *Erfolgreich* <br/> *Abgelaufen* <br/> *DeliveryCountExceeded* <br/> *Rejected (Abgelehnt)* <br/> *Gelöscht* |
-| BESCHREIBUNG        | Zeichenfolgenwerte für *StatusCode* |
+| originalMessageId  | Die *MessageId* der C2D-Nachricht, auf die sich das Feedback bezieht |
+| statusCode         | Eine in Feedbacknachrichten verwendete erforderliche Zeichenfolge, die vom IoT-Hub generiert wird: <br/> *Erfolgreich* <br/> *Abgelaufen* <br/> *DeliveryCountExceeded* <br/> *Rejected (Abgelehnt)* <br/> *Gelöscht* |
+| description        | Zeichenfolgenwerte für *StatusCode* |
 | deviceId           | Die *DeviceId* des Zielgeräts für die C2D-Nachricht, auf die sich das Feedback bezieht |
 | DeviceGenerationId | Die *DeviceGenerationId* des Zielgeräts für die C2D-Nachricht, auf die sich das Feedback bezieht |
 
@@ -110,12 +110,12 @@ Der folgende Code zeigt den Text einer Feedbacknachricht:
 ```json
 [
   {
-    "OriginalMessageId": "0987654321",
-    "EnqueuedTimeUtc": "2015-07-28T16:24:48.789Z",
-    "StatusCode": 0,
-    "Description": "Success",
-    "DeviceId": "123",
-    "DeviceGenerationId": "abcdefghijklmnopqrstuvwxyz"
+    "originalMessageId": "0987654321",
+    "enqueuedTimeUtc": "2015-07-28T16:24:48.789Z",
+    "statusCode": "Success",
+    "description": "Success",
+    "deviceId": "123",
+    "deviceGenerationId": "abcdefghijklmnopqrstuvwxyz"
   },
   {
     ...

@@ -2,7 +2,6 @@
 title: Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
 description: Hier erfahren Sie, wie Sie den Netzwerkdurchsatz von lokalen Ressourcen zu einem virtuellen Azure-Computer überprüfen.
 titleSuffix: Azure VPN Gateway
-services: vpn-gateway
 author: cherylmc
 manager: dcscontentpm
 ms.service: vpn-gateway
@@ -10,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: b5c3853ca2849590b0338c3f82b3e8606cd35d2d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 52d928762d64ce0612ed8e7063c1b2fb2028e870
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643667"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273380"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
 
@@ -217,7 +216,7 @@ Von der bash-Befehlszeile (sofern Git installiert ist)
 
 > [!Note]
 > Stellen Sie sicher, dass es während des Durchsatztests zwischen VM und Gateway keine Zwischenhops (z. B. virtuelle Geräte) gibt.
-> Wenn die Ergebnisse der obigen iPERF/NTTTCP-Tests (in Bezug auf den Gesamtdurchsatz) nicht zufriedenstellend sind, lesen Sie bitte den folgenden Artikel, um die Schlüsselfaktoren hinter den möglichen Ursachen des Problems zu verstehen: https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+> Wenn die Ergebnisse der obigen iPERF/NTTTCP-Tests (in Bezug auf den Gesamtdurchsatz) nicht zufriedenstellend sind, lesen Sie [diesen Artikel](../virtual-network/virtual-network-tcpip-performance-tuning.md), um die Schlüsselfaktoren hinter den möglichen Ursachen des Problems zu verstehen: 
 
 Insbesondere die Analyse von Paketerfassungsverfolgungen (Wireshark/Netzwerkmonitor), die während dieser Tests parallel vom Client und Server gesammelt werden, wird bei der Beurteilung schlechter Leistung helfen. Diese Ablaufverfolgungen können Paketverlust, hohe Latenzzeiten, MTU-Größe, Fragmentierung, TCP 0 Window, Fragmente in falscher Reihenfolge usw. beinhalten.
 

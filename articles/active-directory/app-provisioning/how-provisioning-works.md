@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 415824041c8e721c96ad9a9d480d5e50436310e4
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 957ee0b5a7301fa1959b3a88450dd047bfacaad5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112964768"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353672"
 ---
 # <a name="how-application-provisioning-works-in-azure-active-directory"></a>Funktionsweise der Anwendungsbereitstellung in Azure Active Directory
 
@@ -81,7 +81,10 @@ Sie können Bereichsdefinitionsfilter verwenden, um attributbasierte Regeln zu d
 
 Der Azure AD-Benutzerbereitstellungsdienst kann zum Bereitstellen von B2B-Benutzern (oder Gastbenutzern) in Azure AD für SaaS-Anwendungen verwendet werden. Damit B2B-Benutzer sich bei der SaaS-Anwendung mithilfe von Azure AD anmelden können, muss die Funktion „SAML-basiertes einmaliges Anmelden“ der SaaS-Anwendung jedoch auf bestimmte Weise konfiguriert sein. Weitere Informationen zum Konfigurieren von SaaS-Anwendungen, sodass sie Anmeldungen von B2B-Benutzern unterstützen, finden Sie unter [Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit](../external-identities/configure-saas-apps.md).
 
-Beachten Sie, dass der Benutzerprinzipalname (userPrincipalName) für einen Gastbenutzer häufig als „alias#EXText#@domain.com“ gespeichert wird. Wenn „userPrincipalName“ in den Attributzuordnungen als Quellattribut enthalten ist, wird „#EXT#“ vom Benutzerprinzipalnamen entfernt. Wenn #EXT# erhalten bleiben soll, ersetzen Sie „userPrincipalName“ durch „originalUserPrincipalName“ als Quellattribut. 
+> [!NOTE]
+Der Benutzerprinzipalname (userPrincipalName) für einen Gastbenutzer wird häufig als „alias#EXText#@domain.com“ angezeigt. Wenn „userPrincipalName“ in den Attributzuordnungen als Quellattribut enthalten ist, wird „#EXT#“ vom Benutzerprinzipalnamen entfernt. Wenn #EXT# erhalten bleiben soll, ersetzen Sie „userPrincipalName“ durch „originalUserPrincipalName“ als Quellattribut. 
+
+userPrincipalName = alias@domain.com originalUserPrincipalName = alias#EXT#@domain.com
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Bereitstellungszyklen: Startzyklus und Inkrementell
 

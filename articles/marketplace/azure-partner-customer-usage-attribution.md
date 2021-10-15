@@ -4,14 +4,14 @@ description: Verschaffen Sie sich einen Überblick über die Nachverfolgung der 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 04/12/2021
+ms.date: 10/04/2021
 ms.custom: devx-track-terraform, devx-track-azurepowershell
-ms.openlocfilehash: 9536002cb5c3e30f32479b74e761d7128090af26
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4c6eaf47035d78a283b4e27bf86e1550ad7279d1
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339222"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457048"
 ---
 # <a name="azure-customer-usage-attribution"></a>Zuordnung der Azure-Nutzung durch Kunden
 
@@ -263,7 +263,7 @@ Eine ausführliche Anleitung mit Screenshots finden Sie unter [Verwenden von tec
 Im Anschluss werden Sie von einem technischen Berater eines Microsoft-Partners kontaktiert, der mit Ihnen einen passenden Termin für einen Anruf festlegt.
 
 ## <a name="report"></a>Bericht
-Die Berichterstellung für den Azure-Verbrauch, die über die Zuordnung der Nutzung durch Kunden nachverfolgt wird, ist heute für ISV-Partner nicht verfügbar. Die Berichterstellung für das Programm „Kommerzieller Marketplace“ in Partner Center zur Abdeckung der Kundennutzung soll in der zweiten Hälfte des Jahres 2021 hinzugefügt werden.
+Die Berichterstellung für den Azure-Verbrauch, die über die Zuordnung der Nutzung durch Kunden nachverfolgt wird, ist heute für ISV-Partner nicht verfügbar. Die Berichterstellung für das Programm „Kommerzieller Marketplace“ in Partner Center zur Abdeckung der Kundennutzung soll in der zweiten Hälfte des Jahres 2022 hinzugefügt werden.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

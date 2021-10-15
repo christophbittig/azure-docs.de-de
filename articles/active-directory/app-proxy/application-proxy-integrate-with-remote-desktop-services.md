@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: aa5c8ae942bb48c78526867eb44cc2084c056d48
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 1f35dfff5c9c29766abf97d32496ca3056ed7e40
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113649675"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456991"
 ---
 # <a name="publish-remote-desktop-with-azure-active-directory-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure Active Directory-Anwendungsproxy
 
@@ -61,6 +61,7 @@ Führen Sie nach der Einrichtung von RDS und des Azure AD-Anwendungsproxys für 
    - Externe URL: Dieses Feld wird automatisch basierend auf dem Namen der Anwendung aufgefüllt. Sie können das Feld jedoch ändern. Ihre Benutzer werden beim Zugriff auf RDS an diese URL weitergeleitet.
    - Präauthentifizierungsmethode: Azure Active Directory
    - URL-Header übersetzen: Nein
+   - Nur-HTTP-Cookie verwenden: Nein
 2. Weisen Sie Benutzern die veröffentlichte RD-Anwendung zu. Stellen Sie sicher, dass alle Benutzer auch Zugriff auf RDS haben.
 3. Legen Sie für die Methode zur einmaligen Anmeldung für die Anwendung **Azure AD-SSO deaktiviert** fest.
 

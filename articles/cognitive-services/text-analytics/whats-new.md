@@ -8,19 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/21/2021
+ms.date: 09/30/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 35b4d70ae5e1b7e93b08c7ebe16e5707172ed792
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 64ac913bb8f3e29dd3a99ab5abde5db3326a1a29
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128672341"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423856"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
 Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu neuen Releases und Funktionen.
+
+## <a name="october-2021"></a>Oktober 2021
+
+* Qualitätsverbesserungen für das Feature der [extraktiven Zusammenfassung](how-tos/extractive-summarization.md) in der Modellversion `2021-08-01`.
 
 ## <a name="september-2021"></a>September 2021
 

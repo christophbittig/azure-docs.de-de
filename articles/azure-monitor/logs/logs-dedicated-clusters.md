@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3aafeacbd07e386a23b289db0452a7425e18f567
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a1236e1b68b90e9a1e48d61fa1b425ba26ead14b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128632612"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351397"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Dedizierte Azure Monitor-Protokollcluster
 
@@ -30,7 +30,7 @@ Folgende Funktionen erfordern dedizierte Cluster:
 
 ## <a name="management"></a>Verwaltung 
 
-Dedizierte Cluster werden mit einer Azure-Ressource verwaltet, die Azure Monitor-Protokollcluster darstellt. Vorgänge werden programmgesteuert mit der [CLI](/cli/azure/monitor/log-analytics/cluster?view=azure-cli-latest), mit [PowerShell](/powershell/module/az.operationalinsights) oder [REST](/rest/api/loganalytics/clusters) ausgeführt.
+Dedizierte Cluster werden mit einer Azure-Ressource verwaltet, die Azure Monitor-Protokollcluster darstellt. Vorgänge werden programmgesteuert mit der [CLI](/cli/azure/monitor/log-analytics/cluster), mit [PowerShell](/powershell/module/az.operationalinsights) oder [REST](/rest/api/loganalytics/clusters) ausgeführt.
 
 Nachdem ein Cluster erstellt wurde, können Arbeitsbereiche mit ihm verknüpft werden, und in ihnen neu erfasste Daten werden im Cluster gespeichert. Die Verknüpfung von Arbeitsbereichen mit einem Cluster kann jederzeit aufgehoben werden, und neue Daten werden in freigegebenen Log Analytics-Clustern gespeichert. Der Vorgang zum Verknüpfen und Aufheben der Verknüpfung wirkt sich nicht auf Ihre Abfragen und den Zugriff auf Daten vor und nach dem Vorgang mit Aufbewahrung in Arbeitsbereichen aus. Der Cluster und die Arbeitsbereiche müssen sich in derselben Region befinden, um Verknüpfungen zu ermöglichen.
 
@@ -627,7 +627,7 @@ Authorization: Bearer <token>
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-- Wenn beim Erstellen eines Clusters ein Konfliktfehler auftritt, haben Sie Ihren Cluster möglicherweise in den letzten 14 Tagen gelöscht und dieser befindet sich nun im Zustand des vorläufigen Löschens. Der Clustername bleibt während des Zeitraums des vorläufigen Löschens reserviert, und Sie können keinen neuen Cluster mit diesem Namen erstellen. Der Name wird nach Ablauf des Zeitraums des vorläufigen Löschens freigegeben, wenn der Cluster dauerhaft gelöscht wird.
+- Wenn beim Erstellen eines Clusters ein Konfliktfehler auftritt, haben Sie Ihren Cluster möglicherweise in den letzten 14 Tagen gelöscht und dieser befindet sich nun im vorläufig gelöschten Zustand. Der Clustername bleibt während des Zeitraums des vorläufigen Löschens reserviert, und Sie können keinen neuen Cluster mit diesem Namen erstellen. Der Name wird nach Ablauf des Zeitraums des vorläufigen Löschens freigegeben, wenn der Cluster dauerhaft gelöscht wird.
 
 - Wenn Sie den Cluster aktualisieren, während der Cluster bereitgestellt oder bereits aktualisiert wird, tritt bei der Aktualisierung ein Fehler auf.
 
@@ -673,7 +673,7 @@ Authorization: Bearer <token>
 
 -  404 – Arbeitsbereich nicht gefunden. Der von Ihnen angegebene Arbeitsbereich ist nicht vorhanden oder wurde gelöscht.
 -  409 – Arbeitsbereichverknüpfung oder Aufheben der Verknüpfung in Bearbeitung.
--  400 – Der Cluster wurde nicht gefunden, der angegebene Cluster ist nicht vorhanden, oder er wurde gelöscht. Wenn Sie versuchen, einen Cluster mit diesem Namen zu erstellen, und es zu einem Konflikt kommt, ist der Cluster 14 Tage lang im Zustand „Vorläufig gelöscht“. Sie können den Support kontaktieren, um ihn wiederherzustellen.
+-  400 – Der Cluster wurde nicht gefunden, der angegebene Cluster ist nicht vorhanden, oder er wurde gelöscht. Wenn Sie versuchen, einen Cluster mit diesem Namen zu erstellen, und es zu einem Konflikt kommt, ist der Cluster 14 Tage lang im Zustand „Vorläufig gelöscht“. Sie können den Support kontaktieren, um ihn wiederherzustellen.
 
 ### <a name="workspace-unlink"></a>Aufheben der Arbeitsbereichverknüpfung
 -  404 – Arbeitsbereich nicht gefunden. Der von Ihnen angegebene Arbeitsbereich ist nicht vorhanden oder wurde gelöscht.

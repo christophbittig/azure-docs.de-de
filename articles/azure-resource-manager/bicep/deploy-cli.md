@@ -4,22 +4,29 @@ description: Verwenden Sie Azure Resource Manager und Azure CLI, um Ressourcen i
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/17/2021
+ms.date: 10/01/2021
 ms.custom: devx-track-azurecli, seo-azure-cli
-ms.openlocfilehash: 0c474a7bf1d74b44b85f108b6a7fa28bcdc48902
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ab371ec2f4cb59b602e953be0043f4dbe49dfb9e
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128625618"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389056"
 ---
 # <a name="how-to-deploy-resources-with-bicep-and-azure-cli"></a>Bereitstellen von Ressourcen mit Bicep und Azure CLI
 
 In diesem Artikel wird erläutert, wie Ihre Ressourcen mithilfe der Azure CLI und Bicep-Dateien in Azure bereitgestellt werden. Wenn Sie nicht mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen vertraut sind, informieren Sie sich in der [Bicep-Übersicht](./overview.md).
 
-Zum Bereitstellen von Bicep-Dateien benötigen Sie [Version 2.20.0 oder höher der Azure CLI](/cli/azure/install-azure-cli).
+## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+Sie benötigen eine einfache Bicep-Datei zum Bereitstellen. Die Datei muss lokal vorliegen.
+
+Sie müssen die Azure CLI besitzen und mit Azure verbunden sein:
+
+- **Befehl zur Installation der Azure-Befehlszeilenschnittstelle auf Ihrem lokalen Computer.** Um Bicep-Dateien bereitzustellen, benötigen Sie die [Azure CLI](/cli/azure/install-azure-cli)-Version **2.20.0 oder höher**.
+- **Stellen Sie mithilfe von [az login](/cli/azure/reference-index#az_login) eine Verbindung mit Azure her.** Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie möglicherweise auch [az account set](/cli/azure/account#az_account_set) ausführen.
+
+Beispiele für die Azure-Befehlszeilenschnittstelle sind für die `bash`-Shell geschrieben. Wenn Sie dieses Beispiel in Windows PowerShell oder an der Eingabeaufforderung ausführen möchten, müssen Sie unter Umständen Elemente des Skripts ändern.
 
 Wenn die Azure-Befehlszeilenschnittstelle nicht installiert ist, können Sie Azure Cloud Shell verwenden. Weitere Informationen finden Sie unter [Bereitstellen von Bicep-Dateien über Azure Cloud Shell](./deploy-cloud-shell.md).
 
@@ -183,11 +190,11 @@ Vor dem Bereitstellen der Bicep-Datei können Sie die Änderungen, die von der B
 
 ## <a name="deploy-template-specs"></a>Bereitstellen von Vorlagenspezifikationen
 
-Azure CLI unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von Bicep-Dateien derzeit nicht. Sie können jedoch eine Bicep-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Das [Beispiel für das Erstellen einer Vorlagenspezifikation](https://github.com/Azure/azure-docs-bicep-samples/blob/main/samples/create-template-spec/azuredeploy.bicep) zeigt, wie Sie eine Vorlagenspezifikation in einer Bicep-Datei erstellen. Sie können Ihre Bicep-Datei auch mithilfe der Bicep-Befehlszeilenschnittstelle in Form einer ARM-Vorlagen-JSON-Datei erstellen und dann eine Vorlagenspezifikation mit der JSON-Vorlage erstellen.
+Azure CLI unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von Bicep-Dateien derzeit nicht. Sie können jedoch eine Bicep-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Das [Beispiel für das Erstellen einer Vorlagenspezifikation](https://github.com/Azure/azure-docs-bicep-samples/blob/main/samples/create-template-spec/azuredeploy.bicep) zeigt, wie Sie eine Vorlagenspezifikation in einer Bicep-Datei erstellen. Sie können Ihre Bicep-Datei auch mithilfe der Bicep-Befehlszeilenschnittstelle in Form einer JSON-Datei erstellen, und dann eine Vorlagenspezifikation mit der JSON-Vorlage erstellen.
 
 ## <a name="deployment-name"></a>„Deployment name“ (Bereitstellungsname)
 
-Wenn Sie eine Bicep-Datei bereitstellen, können Sie der Bereitstellung einen Namen geben. Dieser Name kann das Abrufen der Bereitstellung aus dem Bereitstellungsverlauf vereinfachen. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Bicep-Datei verwendet. Wenn Sie beispielsweise eine Bicep-Datei mit dem Namen `azuredeploy.bicep` bereitstellen und keinen Bereitstellungsnamen angeben, erhält die Bereitstellung den Namen `azuredeploy`.
+Wenn Sie eine Bicep-Datei bereitstellen, können Sie der Bereitstellung einen Namen geben. Dieser Name kann das Abrufen der Bereitstellung aus dem Bereitstellungsverlauf vereinfachen. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Bicep-Datei verwendet. Wenn Sie beispielsweise eine Bicep-Datei mit dem Namen `main.bicep` bereitstellen und keinen Bereitstellungsnamen angeben, erhält die Bereitstellung den Namen `main`.
 
 Bei jedem Ausführen einer Bereitstellung wird dem Bereitstellungsverlauf der Ressourcengruppe ein Eintrag mit dem Bereitstellungsnamen hinzugefügt. Wenn Sie eine andere Bereitstellung ausführen und denselben Namen vergeben, wird der vorherige Eintrag durch die aktuelle Bereitstellung ersetzt. Wenn Sie eindeutige Einträge im Bereitstellungsverlauf beibehalten möchten, müssen Sie jeder Bereitstellung einen eindeutigen Namen geben.
 
@@ -213,6 +220,4 @@ Geben Sie jeder Bereitstellung einen eindeutigen Namen, um Konflikte mit gleichz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Rollback zu einer erfolgreiche Bereitstellung, wenn ein Fehler auftritt, finden Sie unter [Rollback bei Fehler zu erfolgreicher Bereitstellung](../templates/rollback-on-error.md).
-- Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von ARM-Vorlagen](file.md).
-* Tipps zum Beheben gängiger Azure-Bereitstellungsfehler finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../templates/common-deployment-errors.md).
+* Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von ARM-Vorlagen](file.md).

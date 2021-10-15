@@ -12,12 +12,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5f3c6526139389da3bfdbc3c43cf8b6d2a1dbccf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 594f4d68669b216e4606806a9ac3ef9a5b2f0b5c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567966"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358311"
 ---
 # <a name="api-access-differences-between-azure-media-services-v2-to-v3-api"></a>Unterschiede beim API-Zugriff zwischen Azure Media Services V2 und V3
 
@@ -49,4 +49,4 @@ Sie können während der Migration ein V3-Konto erstellen, das weiterhin Zugriff
 Alle .NET-, Befehlszeilenschnittstellen- und sonstigen SDKs zielen auf die neueste API der Version 2020-05-01 ab, Sie müssen ältere API-Versionen also suchen oder konfigurieren.
 
 > [!NOTE]
-> Neue Konten, die mit der API 2020-05-01 erstellt wurden, können keine V2-APIs verwenden.
+> Neue Konten, die mit der API-Version 2020-05-01 (oder einer späteren) erstellt wurden, können keine V2-APIs verwenden.

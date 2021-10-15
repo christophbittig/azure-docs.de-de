@@ -1,6 +1,6 @@
 ---
-title: Registrieren für Azure NetApp Files | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie sich für Azure NetApp Files registrieren, indem Sie eine Wartelistenanforderung übermitteln und den Azure-Ressourcenanbieter für Azure NetApp Files registrieren.
+title: Registrierung für NetApp Resource Provider zur Verwendung mit Azure NetApp Files | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den NetApp Resource Provider für Azure NetApp Files registrieren.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,40 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: e37b0a2657c3e3f388ad94eb7da864c1b03023bb
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: b8b70a06a6bda9757f9019a6f753af226235a985
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790017"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407739"
 ---
-# <a name="register-for-azure-netapp-files"></a>Registrieren für Azure NetApp Files
+# <a name="register-for-netapp-resource-provider"></a>Registrieren für NetApp-Ressourcenanbieter
 
-> [!IMPORTANT] 
-> Sie müssen eine E-Mail vom Azure NetApp Files-Team erhalten haben, in der Ihnen der Zugriff auf den Dienst bestätigt wird, bevor Sie den Ressourcenanbieter für Azure NetApp Files registrieren können. 
-
-In diesem Artikel erfahren Sie, wie Sie sich für Azure NetApp Files registrieren, um den Dienst verwenden zu können.
-
-## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>Übermitteln einer Wartelistenanforderung für den Zugriff auf den Dienst
-
-1. Wechseln Sie zur folgenden Seite, und senden Sie eine Wartelistenanforderung für den Zugriff auf den Azure NetApp Files-Dienst:  
-    [**Seite zum Senden einer Azure NetApp Files-Warteliste**](https://aka.ms/azurenetappfiles) 
-
-    Wenn Sie sich auf die Warteliste setzen lassen, ist das noch keine Garantie dafür, dass Sie sofort Zugriff auf den Dienst erhalten. 
-
-2. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie andere Aufgaben ausführen. 
-
-## <a name="register-the-netapp-resource-provider"></a><a name="resource-provider"></a>Registrieren des NetApp-Ressourcenanbieters
-
-Um den Dienst zu verwenden, müssen Sie den Azure-Ressourcenanbieter für Azure NetApp Files registrieren.
-
-> [!NOTE] 
-> Sie können sich auch für den NetApp-Ressourcenanbieter registrieren, wenn Sie noch keinen Zugriff auf den Dienst haben. Ohne Zugriffsautorisierung wird allerdings ein Fehler mit der folgenden Fehlermeldung angezeigt, wenn Sie über das Azure-Portal oder eine API eine Anforderung zum Erstellen eines NetApp-Kontos oder einer anderen Azure NetApp Files-Ressource übermitteln:  
->
-> `{"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"NotFound","message":"{\r\n \"error\": {\r\n \"code\": \"InvalidResourceType\",\r\n \"message\": \"The resource type could not be found in the namespace 'Microsoft.NetApp' for api version '2017-08-15'.\"\r\n }\r\n}"}]}`
-
+Um den Azure NetApp Files Service zu nutzen, müssen Sie den NetApp Resource Provider registrieren.
 
 1. Klicken Sie im Azure-Portal in der rechten oberen Ecke auf das Symbol für die Azure Cloud Shell:
 
@@ -72,7 +50,7 @@ Um den Dienst zu verwenden, müssen Sie den Azure-Ressourcenanbieter für Azure 
        
    `<SubID>` ist Ihre Abonnement-ID.
 
-    Wenn Ihnen nicht der Featurename `Microsoft.NetApp/ANFGA` angezeigt wird, haben Sie keinen Zugriff auf den Dienst. Sie sollten dann zuerst die unter [Übermitteln einer Wartelistenanforderung für den Zugriff auf den Dienst](#waitlist) beschriebenen Anweisungen befolgen, um Zugriff auf den Dienst anzufordern, bevor Sie fortfahren. 
+
 
 4. Geben Sie in der Azure Cloud Shell-Konsole den folgenden Befehl ein, um den Azure-Ressourcenanbieter zu registrieren: 
     
@@ -109,4 +87,5 @@ Um den Dienst zu verwenden, müssen Sie den Azure-Ressourcenanbieter für Azure 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen eines NetApp-Kontos](azure-netapp-files-create-netapp-account.md)
+* [Erstellen eines NetApp-Kontos](azure-netapp-files-create-netapp-account.md)
+* [Erstellen einer Azure-Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md)
