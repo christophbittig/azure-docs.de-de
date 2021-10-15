@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/19/2021
 ms.author: msangapu
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 3efac96949d701bbc0147abf8712d4995f781d47
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 37b876b177b7879c57255619d3f5e7e113a2a284
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771844"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278065"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Überwachen von App Service-Instanzen mit der Integritätsprüfung
 
@@ -29,8 +29,8 @@ In diesem Artikel wird die Integritätsprüfung im Azure-Portal verwendet, um Ap
 - Beim zentralen Hoch- oder Herunterskalieren pingt App Service außerdem den Pfad der Integritätsüberprüfung, um sicherzustellen, dass neue Instanzen bereit sind.
 
 > [!NOTE]
-> Die Integritätsprüfung folgt keinen 302-Umleitungen. Pro Stunde wird höchstens eine Instanz ersetzt, wobei der Maximalwert bei drei Instanzen pro Tag und App Service-Plan liegt.
->
+>- Die Integritätsprüfung folgt keinen 302-Umleitungen. Pro Stunde wird höchstens eine Instanz ersetzt, wobei der Maximalwert bei drei Instanzen pro Tag und App Service-Plan liegt.
+>- Beachten Sie, dass bei Ausgabe des Status `Waiting for health check response` bei der Integritätsprüfung wahrscheinlich ein Fehler aufgrund eines HTTP-Statuscodes 307 vorliegt. Dies kann passieren, wenn Sie die HTTPS-Umleitung aktiviert, aber `HTTPS Only` deaktiviert haben.
 
 ## <a name="enable-health-check"></a>Aktivieren der Integritätsprüfung
 

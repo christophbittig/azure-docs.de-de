@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: bf8b1e04e11dee4e636826430838a467fe034e3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b03564c293a5c12dca2a52f3afd5f3347b6c8186
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94951127"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278196"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Rollen von X.509-Gerätezertifikaten
 
@@ -45,7 +45,7 @@ Wenn Sie Ihre eigenen Gerätezertifikate verwalten, müssen Sie eine eigene Pipe
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>Rollen des Zertifikats im IoT Hub
 
-Das Gerätezertifikat kann einem IoT Hub manuell hinzugefügt werden. Das Zertifikat kann auch mithilfe einer Device Provisioning Service-Instanz automatisiert werden. In diesem Artikel gehen wir davon aus, dass zur Unterstützung der automatischen Bereitstellung eine Device Provisioning Service-Instanz verwendet wird.
+Das Gerätezertifikat kann einem IoT Hub manuell hinzugefügt werden. Das Zertifikat kann auch mithilfe einer Device Provisioning Service-Instanz automatisiert werden. In diesem Artikel wird davon ausgegangen, dass zur Unterstützung der automatischen Bereitstellung eine Device Provisioning Service-Instanz verwendet wird.
 
 Wenn ein Gerät zunächst mittels automatischer Bereitstellung bereitgestellt wird, wird es gestartet und stellt eine Verbindung mit Provisioning Service her. Provisioning Service antwortet, indem er vor dem Erstellen einer Geräteidentität in einem IoT Hub eine Identitätsüberprüfung ausführt, bei der das untergeordnete Zertifikat des Geräts als Anmeldeinformation verwendet wird. Provisioning Service teilt dem Gerät anschließend mit, welchem IoT Hub es zugewiesen ist. Das Gerät verwendet dann sein untergeordnetes Zertifikat, um sich zu authentifizieren und eine Verbindung mit dem IoT Hub herzustellen. 
 
@@ -188,7 +188,7 @@ Wenn später auch das sekundäre Zertifikat bald abläuft und gerollt werden mus
 
 ## <a name="reprovision-the-device"></a>Erneutes Bereitstellen des Geräts
 
-Nachdem das Zertifikat auf dem Gerät und in Device Provisioning Service gerollt wurde, kann das Gerät sich selbst erneut bereitstellen, indem es eine Verbindung mit Device Provisioning Service herstellt. 
+Nachdem das Zertifikat auf das Gerät und in Device Provisioning Service gerollt wurde, kann das Gerät sich selbst erneut bereitstellen, indem es eine Verbindung mit Device Provisioning Service herstellt. 
 
 Eine einfache Möglichkeit zum Programmieren von Geräten zur erneuten Bereitstellung besteht darin, dass Gerät so zu programmieren, dass es zum Durchführen des Bereitstellungsablaufs eine Verbindung mit Provisioning Service herstellt, wenn es beim Verbindungsversuch mit dem IoT Hub einen Fehler vom Typ „nicht autorisiert“ empfängt.
 

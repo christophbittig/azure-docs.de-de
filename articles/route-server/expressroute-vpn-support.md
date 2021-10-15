@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: conceptual
-ms.date: 09/01/2021
+ms.date: 10/01/2021
 ms.author: duau
-ms.openlocfilehash: aa109544ce890c4a8fae4775010a722791fbe5a7
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 61a712fa747252b07a513cfa6e18e3f3b4a67e6c
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426074"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400722"
 ---
 # <a name="about-azure-route-server-support-for-expressroute-and-azure-vpn"></a>Informationen zur Azure Route Server-Unterstützung für ExpressRoute und Azure-VPN
 
@@ -34,7 +34,7 @@ Ein Beispiel sehen Sie im folgenden Diagramm:
 Sie können das SDWAN-Gerät auch durch das Azure-VPN-Gateway ersetzen. Da das Azure-VPN-Gateway und ExpressRoute vollständig verwaltet werden, müssen Sie nur den Routenaustausch für die beiden lokalen Netzwerke aktivieren, damit diese miteinander kommunizieren.
 
 > [!IMPORTANT] 
-> Das Azure-VPN-Gateway muss im [**Aktiv/Aktiv**](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md)-Modus konfiguriert sein.
+> Das Azure-VPN-Gateway muss im [**Aktiv/Aktiv**](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md)-Modus konfiguriert und die ASN auf 65515 festgelegt sein.
 >
 
 ![Diagramm der mit Route Server konfigurierten ExpressRoute und des VPN-Gateways](./media/expressroute-vpn-support/expressroute-and-vpn-with-route-server.png)

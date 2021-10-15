@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 1ad358c428f80e2e8bebcecf73cc89ddd5c37bc7
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ce91f89e8974517d56aa7f1de55d01b9353106e7
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454413"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358579"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Bring Your Own Key (vom Kunden verwaltete Schlüssel) in Media Services
 
@@ -21,7 +21,7 @@ ms.locfileid: "110454413"
 
 ## <a name="keys-and-key-management"></a>Schlüssel und Schlüsselverwaltung
 
-Sie können eigene Schlüssel in Media Services verwenden, wenn Sie die Media Services-API 2020-05-01 einsetzen. Für alle Konten wird ein Standard-Kontoschlüssel erstellt, der mit einem Systemschlüssel verschlüsselt wird, der im Besitz von Media Services ist. Wenn Sie Ihren eigenen Schlüssel verwenden, wird der Kontoschlüssel mit Ihrem Schlüssel verschlüsselt. Inhaltsschlüssel werden mit dem Kontoschlüssel verschlüsselt. JobInputHttp-URLs und symmetrische Schlüssel zur Tokenüberprüfung werden ebenfalls verschlüsselt.
+Sie können eigene Schlüssel in Media Services verwenden, wenn Sie die Media Services-API 2020-05-01 oder eine höhere Version einsetzen. Für alle Konten wird ein Standard-Kontoschlüssel erstellt, der mit einem Systemschlüssel verschlüsselt wird, der im Besitz von Media Services ist. Wenn Sie Ihren eigenen Schlüssel verwenden, wird der Kontoschlüssel mit Ihrem Schlüssel verschlüsselt. Inhaltsschlüssel werden mit dem Kontoschlüssel verschlüsselt. JobInputHttp-URLs und symmetrische Schlüssel zur Tokenüberprüfung werden ebenfalls verschlüsselt.
 
 :::image type="content" source="./media/customer-managed-key/customer-managed-key.svg" alt-text="Ein vom System verwalteter Schlüssel wird durch einen vom Kunden verwalteten Schlüssel ersetzt":::
 

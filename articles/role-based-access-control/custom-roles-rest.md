@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ab64765fc4e329c8edbf7a4db813113d20d476b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c7e816f15400a28e8b10f4aea7a2315c89048be
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100557509"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352922"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Erstellen oder Aktualisieren von benutzerdefinierten Rollen in Azure über die REST-API
 
@@ -185,9 +185,9 @@ Um eine benutzerdefinierte Rolle zu erstellen, verwenden Sie die [Rollendefiniti
 
 1. Wenn `assignableScopes` eine Verwaltungsgruppe ist, ersetzen Sie die *{GroupID}* Instanz durch ihren Verwaltungsgruppenbezeichner. Das Hinzufügen von Verwaltungsgruppen zu `assignableScopes` befindet sich derzeit in der Vorschauphase.
 
-1. Fügen Sie in der `actions`-Eigenschaft die Vorgänge hinzu, deren Ausführung die Rolle zulässt.
+1. Fügen Sie in der `actions`-Eigenschaft die Aktionen hinzu, deren Ausführung die Rolle zulässt.
 
-1. Fügen Sie in der `notActions`-Eigenschaft die Vorgänge hinzu, die von den zulässigen `actions` ausgeschlossen sind.
+1. Fügen Sie in der `notActions`-Eigenschaft die Aktionen hinzu, die von den zulässigen `actions` ausgeschlossen sind.
 
 1. Geben Sie in den Eigenschaften `roleName` und `description` einen eindeutigen Rollennamen und eine Beschreibung an. Weitere Informationen zu den Eigenschaften finden Sie unter [Benutzerdefinierte Rollen in Azure](custom-roles.md).
 

@@ -5,16 +5,16 @@ description: Erfahren Sie, wie Sie Sichern und Wiederherstellen zur Notfallwiede
 services: api-management
 author: dlepow
 ms.service: api-management
-ms.topic: article
-ms.date: 08/20/2021
-ms.author: danlep
+ms.topic: how-to
+ms.date: 10/03/2021
+ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e00882764283fec7ec9ab3252b5997f682411557
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b356d18c1a0c6a29d4fce142fc05e449f08f70d2
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652661"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129419143"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -29,7 +29,7 @@ Diese Anleitung zeigt, wie Sie Sicherungs- und Wiederherstellungsvorgänge autom
 > [!IMPORTANT]
 > Die benutzerdefinierte Hostnamenkonfiguration des Zieldiensts wird durch den Wiederherstellungsvorgang nicht geändert. Wir empfehlen, den gleichen benutzerdefinierten Hostnamen und das gleiche TLS-Zertifikat sowohl für aktive Dienste als auch für Standbydienste zu verwenden, sodass der Datenverkehr nach Abschluss der Wiederherstellung durch eine einfache DNS-CNAME-Änderung an die Standbyinstanz umgeleitet werden kann.
 >
-> Der Sicherungsvorgang erfasst keine voraggregierten Protokolldaten, die in Berichten auf dem Analytics-Blatt im Azure-Portal verwendet werden.
+> Der Sicherungsvorgang erfasst keine voraggregierten Protokolldaten, die in Berichten auf dem **Analytics**-Blatt im Azure-Portal verwendet werden.
 
 > [!WARNING]
 > Jede Sicherung läuft nach 30 Tagen ab. Wenn Sie versuchen, eine Sicherung nach dem Ablaufzeitraum von 30 Tagen wiederherzustellen, erhalten Sie die Fehlermeldung `Cannot restore: backup expired`.
@@ -41,7 +41,7 @@ Diese Anleitung zeigt, wie Sie Sicherungs- und Wiederherstellungsvorgänge autom
 ## <a name="authenticating-azure-resource-manager-requests"></a>Authentifizieren von Anforderungen des Azure-Ressourcen-Managers
 
 > [!IMPORTANT]
-> Die REST-API für die Sicherung und Wiederherstellung verwendet den Azure-Ressourcen-Manager und weist eine andere Authentifizierungsmethode als die REST-APIs für die Verwaltung von API Management-Entitäten auf. In den Schritten in diesem Abschnitt wird beschrieben, wie Anforderungen des Azure-Ressourcen-Managers authentifiziert werden. Weitere Informationen finden Sie unter [Authentifizieren von Anforderungen des Azure-Ressourcen-Managers](/rest/api/index).
+> Die REST-API für die Sicherung und Wiederherstellung verwendet den Azure-Ressourcen-Manager und weist eine andere Authentifizierungsmethode als die REST-APIs für die Verwaltung von API Management-Entitäten auf. In den Schritten in diesem Abschnitt wird beschrieben, wie Anforderungen des Azure-Ressourcen-Managers authentifiziert werden. Weitere Informationen finden Sie unter [Authentifizieren von Anforderungen des Azure-Ressourcen-Managers](/rest/api/azure).
 
 Alle Aufgaben, die Sie mithilfe von Azure Resource Manager für Ressourcen ausführen, müssen entsprechend den folgenden Schritten mit Azure Active Directory authentifiziert werden:
 
@@ -122,6 +122,25 @@ Ersetzen Sie `{tenant id}`, `{application id}` und `{redirect uri}` entsprechend
     > [!NOTE]
     > Das Token kann nach einer bestimmten Zeit ablaufen. Führen Sie das Codebeispiel erneut aus, um ein neues Token zu generieren.
 
+## <a name="accessing-azure-storage"></a>Zugreifen auf Azure Storage
+
+API Management verwendet ein Azure Storage-Konto, das Sie für Sicherungs- und Wiederherstellungsvorgänge angeben. Beim Ausführen eines Sicherungs- oder Wiederherstellungsvorgangs müssen Sie den Zugriff auf das Speicherkonto konfigurieren. API Management unterstützt zwei Speicherzugriffsmechanismen: einen Azure Storage-Zugriffsschlüssel (Standardmethode) oder eine verwaltete API Management-Identität.
+
+### <a name="configure-storage-account-access-key"></a>Konfigurieren eines Speicherkonto-Zugriffsschlüssels
+
+Die einzelnen Schritte finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md?tabs=azure-portal).
+
+### <a name="configure-api-management-managed-identity"></a>Konfigurieren einer verwalteten API Management-Identität
+
+> [!NOTE]
+> Zur Verwendung einer verwalteten API Management-Identität für Speichervorgänge während der Sicherung und Wiederherstellung ist mindestens API Management-REST-API-Version `2021-04-01-preview` erforderlich.
+
+1. Aktivieren Sie eine system- oder benutzerseitig zugewiesene [verwaltete Identität für API Management](api-management-howto-use-managed-service-identity.md) in Ihrer API Management-Instanz.
+
+    * Wenn Sie eine benutzerseitig zugewiesene verwaltete Identität aktivieren, notieren Sie sich die **Client-ID** der Identität.
+    * Wenn Sie Sicherungs- und Wiederherstellungsvorgänge in verschiedenen API Management-Instanzen durchführen, aktivieren Sie eine verwaltete Identität sowohl in der Quell- als auch in der Zielinstanz.
+1. Weisen Sie der Identität die Rolle **Mitwirkender an Storage-Blobdaten** beschränkt auf das Speicherkonto zu, das zur Sicherung und Wiederherstellung verwendet wird. Verwenden Sie zum Zuweisen der Rolle das [Azure-Portal](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md) oder andere Azure-Tools.
+
 ## <a name="calling-the-backup-and-restore-operations"></a>Aufrufen der Sicherungs- und Wiederherstellungsvorgänge
 
 Die REST-APIs sind [API Management-Dienst – Backup](/rest/api/apimanagement/2020-12-01/api-management-service/backup) und [API Management-Dienst – Restore](/rest/api/apimanagement/2020-12-01/api-management-service/restore).
@@ -148,22 +167,53 @@ Dabei gilt:
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, den Sie sichern möchten
 -   `resourceGroupName` – der Name der Ressourcengruppe Ihres Azure API Management-Diensts
 -   `serviceName` – der Name des zu sichernden API Management-Diensts zum Zeitpunkt seiner Erstellung
--   `api-version` – Ersetzen Sie den Wert durch eine unterstützte REST-API-Version, z. B. `2020-12-01`.
+-   `api-version` – eine gültige REST-API-Version wie `2020-12-01` oder `2021-04-01-preview`
 
-Geben Sie im Hauptteil der Anforderung das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
+Geben Sie im Hauptteil der Anforderung den Namen des Zielspeicherkontos, den Blobcontainernamen, den Sicherungsnamen und den Speicherzugriffstyp an. Wenn der Speichercontainer nicht vorhanden ist, wird er beim Sicherungsvorgang erstellt.
+
+#### <a name="access-using-storage-access-key"></a>Zugriff mithilfe eines Speicherzugriffsschlüssels
 
 ```json
 {
     "storageAccount": "{storage account name for the backup}",
-    "accessKey": "{access key for the account}",
     "containerName": "{backup container name}",
-    "backupName": "{backup blob name}"
+    "backupName": "{backup blob name}",
+    "accessKey": "{access key for the account}"
 }
 ```
 
+#### <a name="access-using-managed-identity"></a>Zugriff mithilfe einer verwalteten Identität
+
+> [!NOTE]
+> Zur Verwendung einer verwalteten API Management-Identität für Speichervorgänge während der Sicherung und Wiederherstellung ist mindestens API Management-REST-API-Version `2021-04-01-preview` erforderlich.
+
+**Zugriff mithilfe einer systemseitig zugewiesenen verwalteten Identität**
+
+```json
+{
+    "storageAccount": "{storage account name for the backup}",
+    "containerName": "{backup container name}",
+    "backupName": "{backup blob name}",
+    "accessType": "SystemAssignedManagedIdentity"
+}
+```
+
+**Zugriff mithilfe einer benutzerseitig zugewiesenen verwalteten Identität**
+
+```json
+{
+    "storageAccount": "{storage account name for the backup}",
+    "containerName": "{backup container name}",
+    "backupName": "{backup blob name}",
+    "accessType": "UserAssignedManagedIdentity",
+    "clientId": "{client ID of user-assigned identity}"
+}
+```
+
+
 Legen Sie für den `Content-Type`-Anforderungsheader den Wert `application/json` fest.
 
-Die Sicherung ist ein länger anhaltender Vorgang, der bis zum Abschluss mehrere Minuten dauern kann. Falls die Anforderung erfolgreich war und der Sicherungsvorgang eingeleitet wurde, erhalten Sie den `202 Accepted` Antwortstatuscode mit einem `Location`-Header. Senden Sie GET-Anforderungen der URL im `Location` -Header, um den Status des Vorgangs zu ermitteln. Während der Sicherung erhalten Sie weiterhin den Statuscode „202 Accepted“. Mit dem Antwortcode `200 OK` wird der erfolgreiche Abschluss des Sicherungsvorgangs angezeigt.
+Die Sicherung ist ein zeitintensiver Vorgang, der bis zum Abschluss mehrere Minuten dauern kann. Falls die Anforderung erfolgreich war und der Sicherungsvorgang eingeleitet wurde, erhalten Sie den `202 Accepted` Antwortstatuscode mit einem `Location`-Header. Senden Sie `GET`-Anforderungen der URL im `Location`-Header, um den Status des Vorgangs zu ermitteln. Während der Sicherung erhalten Sie weiterhin den Statuscode `202 Accepted`. Mit dem Antwortcode `200 OK` wird der erfolgreiche Abschluss des Sicherungsvorgangs angezeigt.
 
 ### <a name="restore-an-api-management-service"></a><a name="step2"> </a>Wiederherstellen eines API Management-Diensts
 
@@ -178,22 +228,52 @@ Dabei gilt:
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, in den Sie eine Sicherung erstellen
 -   `resourceGroupName` – Name der Ressourcengruppe mit dem Azure-API Management-Dienst, in dem Sie eine Sicherung wiederherstellen
 -   `serviceName` – der Name des wiederherzustellenden API Management-Diensts zum Zeitpunkt seiner Erstellung
--   `api-version` – durch `api-version=2020-12-01` ersetzen
+-   `api-version` – eine gültige REST-API-Version wie `2020-12-01` oder `2021-04-01-preview`
 
-Geben Sie im Anforderungstext den Speicherort der Sicherungsdatei an. Fügen Sie das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
+Geben Sie im Hauptteil der Anforderung den Namen des vorhandenen Speicherkontos, den Blobcontainernamen, den Sicherungsnamen und den Speicherzugriffstyp an. 
+
+#### <a name="access-using-storage-access-key"></a>Zugriff mithilfe eines Speicherzugriffsschlüssels
 
 ```json
 {
     "storageAccount": "{storage account name for the backup}",
-    "accessKey": "{access key for the account}",
     "containerName": "{backup container name}",
-    "backupName": "{backup blob name}"
+    "backupName": "{backup blob name}",
+    "accessKey": "{access key for the account}"
+}
+```
+
+#### <a name="access-using-managed-identity"></a>Zugriff mithilfe einer verwalteten Identität
+
+> [!NOTE]
+> Zur Verwendung einer verwalteten API Management-Identität für Speichervorgänge während der Sicherung und Wiederherstellung ist mindestens API Management-REST-API-Version `2021-04-01-preview` erforderlich.
+
+**Zugriff mithilfe einer systemseitig zugewiesenen verwalteten Identität**
+
+```json
+{
+    "storageAccount": "{storage account name for the backup}",
+    "containerName": "{backup container name}",
+    "backupName": "{backup blob name}",
+    "accessType": "SystemAssignedManagedIdentity"
+}
+```
+
+**Zugriff mithilfe einer benutzerseitig zugewiesenen verwalteten Identität**
+
+```json
+{
+    "storageAccount": "{storage account name for the backup}",
+    "containerName": "{backup container name}",
+    "backupName": "{backup blob name}",
+    "accessType": "UserAssignedManagedIdentity",
+    "clientId": "{client ID of user-assigned identity}"
 }
 ```
 
 Legen Sie für den `Content-Type`-Anforderungsheader den Wert `application/json` fest.
 
-Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss bis zu 30 Minuten dauern kann. Falls die Anforderung erfolgreich war und der Wiederherstellungsvorgang eingeleitet wurde, erhalten Sie den `202 Accepted` Antwortstatuscode mit einem `Location`-Header. Senden Sie GET-Anforderungen der URL im `Location` -Header, um den Status des Vorgangs zu ermitteln. Während der Wiederherstellung erhalten Sie weiterhin den Statuscode „202 Accepted“. Mit dem Antwortcode `200 OK` wird der erfolgreiche Abschluss des Wiederherstellungsvorgangs angezeigt.
+Die Wiederherstellung ist ein zeitintensiver Vorgang, der bis zum Abschluss 30 Minuten oder länger dauern kann. Falls die Anforderung erfolgreich war und der Wiederherstellungsvorgang eingeleitet wurde, erhalten Sie den `202 Accepted` Antwortstatuscode mit einem `Location`-Header. Senden Sie GET-Anforderungen der URL im `Location` -Header, um den Status des Vorgangs zu ermitteln. Während der Wiederherstellung erhalten Sie weiterhin den Statuscode `202 Accepted`. Mit dem Antwortcode `200 OK` wird der erfolgreiche Abschluss des Wiederherstellungsvorgangs angezeigt.
 
 > [!IMPORTANT]
 > **Die SKU** des wiederherzustellenden Diensts **muss** mit der SKU des gesicherten Diensts übereinstimmen.
@@ -205,14 +285,24 @@ Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss
 -   Vermeiden Sie während der Sicherung **Verwaltungsänderungen im Dienst** wie beispielsweise SKU-Upgrades oder Herabstufungen, Änderungen am Domänennamen usw.
 -   Die Wiederherstellung einer Sicherung nach ihrer Erstellung **wird nur 30 Tage lange garantiert**.
 -   **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen verloren**.
--   Wenn das Azure Storage-Konto für die [Firewall][azure-storage-ip-firewall] aktiviert ist, muss der Kunde die Gruppe von [Azure API Management-IP-Adressen der Steuerungsebene][control-plane-ip-address] in seinem Speicherkonten für Sicherungen oder Wiederherstellungen **zulassen**, damit es funktioniert. Das Azure Storage-Konto kann sich in einer beliebigen Azure-Region befinden, mit Ausnahme derjenigen, in der sich der API Management-Dienst befindet. Wenn sich der API Management-Dienst beispielsweise in der Region „USA, Westen“ befindet, kann sich das Azure Storage-Konto in der Region „USA, Westen 2“ befinden, und der Kunde muss die IP-Adresse 13.64.39.16 der Steuerungsebene (API Management-IP-Adresse der Steuerungsebene für „USA, Westen“) in der Firewall öffnen. Der Grund dafür ist, dass für Anforderungen an Azure Storage keine Übersetzung in eine öffentliche IP-Adresse über „Compute“ (Azure API Management-Steuerungsebene) in derselben Azure-Region erfolgt. Bei regionsübergreifenden Speicheranforderungen wird eine Übersetzung in die öffentliche IP-Adresse durchgeführt.
+
 -   [Ursprungsübergreifende Ressourcenfreigabe (CORS, Cross-Origin Resource Sharing)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) sollte für den BLOB-Dienst im Azure Storage-Konto **nicht** aktiviert sein.
 -   **Die SKU** des wiederherzustellenden Diensts **muss** mit der SKU des gesicherten Diensts übereinstimmen.
+
+## <a name="storage-networking-constraints"></a>Einschränkungen des Speichernetzwerks
+
+### <a name="access-using-storage-access-key"></a>Zugriff mithilfe eines Speicherzugriffsschlüssels
+
+Wenn das Speicherkonto für die **[Firewall][azure-storage-ip-firewall] aktiviert** ist und ein Speicherschlüssel für den Zugriff verwendet wird, muss der Kunde die Gruppe von [Azure API Management-IP-Adressen der Steuerungsebene][control-plane-ip-address] in seinem Speicherkonto für Sicherungen oder Wiederherstellungen **zulassen**, damit es funktioniert. Das Speicherkonto kann sich in einer beliebigen Azure-Region befinden, mit Ausnahme derjenigen, in der sich der API Management-Dienst befindet. Wenn sich der API Management-Dienst beispielsweise in der Region „USA, Westen“ befindet, kann sich das Azure Storage-Konto in der Region „USA, Westen 2“ befinden, und der Kunde muss die IP-Adresse 13.64.39.16 der Steuerungsebene (API Management-IP-Adresse der Steuerungsebene für „USA, Westen“) in der Firewall öffnen. Der Grund dafür ist, dass die Anforderungen an Azure Storage nicht per SNAT in eine öffentliche IP-Adresse von Compute (Azure API Management-Steuerungsebene) in derselben Azure-Region übersetzt werden. Bei regionsübergreifenden Speicheranforderungen wird eine Übersetzung per SNAT in die öffentliche IP-Adresse durchgeführt.
+
+### <a name="access-using-managed-identity"></a>Zugriff mithilfe einer verwalteten Identität
+
+Wenn eine systemseitig zugewiesene verwaltete API Management-Identität für den Zugriff auf ein Speicherkonto mit aktivierter Firewall verwendet wird, stellen Sie sicher, dass das Speicherkonto [Zugriff für vertrauenswürdige Azure-Dienste gewährt](../storage/common/storage-network-security.md?tabs=azure-portal#grant-access-to-trusted-azure-services).
 
 ## <a name="what-is-not-backed-up"></a>Nicht gesicherte Elemente
 -   **Nutzungsdaten** zum Erstellen von Analyseberichten sind in der Sicherung **nicht enthalten**. Verwenden Sie [Azure API Management REST API][azure api management rest api] , um regelmäßig Analyseberichte zur Aufbewahrung abzurufen.
 -   [TLS/SSL-Zertifikate für die benutzerdefinierte Domäne](configure-custom-domain.md).
--   [Benutzerdefiniertes Zertifizierungsstellenzertifikat](api-management-howto-ca-certificates.md), wozu Zwischen- oder Stammzertifikate gehören, die vom Kunden hochgeladen wurden.
+-   [Benutzerdefinierte Zertifizierungsstellenzertifikate](api-management-howto-ca-certificates.md), wozu Zwischen- oder Stammzertifikate gehören, die vom Kunden hochgeladen wurden.
 -   Integrationseinstellungen für [virtuelle Netzwerke](api-management-using-with-vnet.md)
 -   Konfiguration der [verwalteten Identität](api-management-howto-use-managed-service-identity.md)
 -   [Azure Monitor-Diagnosekonfiguration](api-management-howto-use-azure-monitor.md)
@@ -223,12 +313,12 @@ Die Häufigkeit, mit der Sie Dienstsicherungen durchführen, wirkt sich auf das 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die folgenden Ressourcen für verschiedene Vorgehensweisen für den Sicherungs- und Wiederherstellungsvorgang an.
+Sehen Sie sich die folgenden zugehörigen Ressourcen für den Sicherungs- und Wiederherstellungsvorgang an:
 
--   [Replicate Azure API Management Accounts (in englischer Sprache)](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 -   [Automating API Management Backup and Restore with Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps) (Automatisieren der Sicherung und Wiederherstellung von API Management mit Logic Apps)
--   [Azure API Management: Sichern und Wiederherstellen der Konfiguration](/archive/blogs/stuartleeks/azure-api-management-backing-up-and-restoring-configuration)
-     _–der Ansatz von Stuart entspricht nicht der offiziellen Anleitung, ist aber sehr interessant._
+- [Regionsübergreifendes Verschieben von Azure API Management](api-management-howto-migrate.md)
+
+Der API Management-**Premium**-Tarif unterstützt außerdem [Zonenredundanz](zone-redundancy.md), die Resilienz und Hochverfügbarkeit für eine Dienstinstanz in einer bestimmten Azure-Region (Standort) bietet.
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2

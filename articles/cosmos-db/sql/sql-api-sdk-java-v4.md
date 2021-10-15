@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 0157a01178c9efcefe03b839a968ba02b04e7ca2
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 48988392c1961d6878ccfc0d6c40d86dbe8fd237
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115277"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389132"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Versionshinweise und Ressourcen zu Azure Cosmos DB Java SDK v4 für die Core (SQL)-API
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -69,10 +69,11 @@ Das Azure Cosmos DB Java SDK v4 für Core (SQL) kombiniert eine asynchrone API u
 | **Azure Cosmos DB-Workshops und -Labs** |[Homepage der Cosmos DB-Workshops](https://aka.ms/cosmosworkshop)
 
 > [!IMPORTANT]
-> * Release 4.18.0: Es wird dringend empfohlen, Version 4.18.0 oder höher zu verwenden.
+> * Release 4.18.0: Es wird dringend empfohlen, Version 4.18.0 oder höher zu verwenden.
 > * Mit Release 4.13.0 werden die Hauptversionen von `reactor-core` und `reactor-netty` auf Releasetrain `2020.0.4 (Europium)` aktualisiert.
 
-[!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-cosmos/CHANGELOG.md)]
+## <a name="release-history"></a>Releaseverlauf
+Der Releaseverlauf wird im Repository „azure-sdk-for-java“ verwaltet. Eine ausführliche Liste der Releases finden Sie in der [Datei „changelog“](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos/CHANGELOG.md).
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)] 

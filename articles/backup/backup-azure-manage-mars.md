@@ -3,13 +3,13 @@ title: Verwalten und Überwachen von MARS-Agent-Sicherungen
 description: Erfahren Sie etwas über das Verwalten und Überwachen von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst.
 ms.reviewer: srinathv
 ms.topic: conceptual
-ms.date: 06/08/2021
-ms.openlocfilehash: c7a696c4059ebc7cc28a34a299060039ac1c0c62
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.date: 10/05/2021
+ms.openlocfilehash: 525bdff82c224b02b941354983276747b483ae56
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902938"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535211"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst
 
@@ -94,7 +94,7 @@ Sie haben zwei Möglichkeiten, den Schutz von Dateien und Ordnern durch Sicherun
   - Sie können die gesicherten Daten für nicht abgelaufene Wiederherstellungspunkte wiederherstellen.
   - Mit der Option *Aktivieren Sie den Sicherungszeitplan erneut* können Sie bei Bedarf den Schutz fortsetzen. Anschließend werden die Daten basierend auf der neuen Aufbewahrungsrichtlinie aufbewahrt.
 - **Schutz beenden und Sicherungsdaten löschen**.
-  - Mit dieser Option werden alle zukünftigen Sicherungsaufträge zum Schutz Ihrer Daten alle beendet. Wenn die Tresorsicherheitsfeatures nicht aktiviert sind, werden alle Wiederherstellungspunkte sofort gelöscht.<br>Wenn die Sicherheitsfeatures aktiviert sind, wird die Löschung um 14 Tage verzögert, und Sie erhalten eine Warn-E-Mail zur Löschung der Sicherungsdaten mit dem Inhalt *Die Sicherungsdaten für dieses Sicherungselement wurden gelöscht. Gelöschte Daten werden 14 Tage lang aufbewahrt und anschließend dauerhaft gelöscht* und der empfohlenen Aktion *Schützen Sie das Sicherungselement innerhalb von 14 Tagen erneut, um die Daten wiederherzustellen*.<br>In diesem Zustand wird die Aufbewahrungsrichtlinie weiterhin angewendet, und die Sicherungsdaten bleiben abrechenbar. [Erfahren Sie mehr](backup-azure-security-feature.md#enable-security-features) über das Aktivieren von Tresorsicherheitsfeatures.
+  - Mit dieser Option werden alle zukünftigen Sicherungsaufträge zum Schutz Ihrer Daten alle beendet. Wenn die Tresorsicherheitsfeatures nicht aktiviert sind, werden alle Wiederherstellungspunkte sofort gelöscht.<br>Wenn die Sicherheitsfeatures aktiviert sind, wird die Löschung um 14 Tage verzögert, und Sie erhalten eine Warn-E-Mail mit dem Inhalt *Die Sicherungsdaten für dieses Sicherungselement wurden gelöscht. Gelöschte Daten werden 14 Tage lang aufbewahrt und anschließend dauerhaft gelöscht* und der empfohlenen Aktion *Schützen Sie das Sicherungselement innerhalb von 14 Tagen erneut, um die Daten wiederherzustellen*.<br>In diesem Zustand wird die Aufbewahrungsrichtlinie weiterhin angewendet, und die Sicherungsdaten bleiben abrechenbar. [Erfahren Sie mehr](backup-azure-security-feature.md#enable-security-features) über das Aktivieren von Tresorsicherheitsfeatures.
   - Um den Schutz fortzusetzen, stellen Sie den Server innerhalb von 14 Tagen nach dem Löschvorgang wieder her. Innerhalb dieses Zeitraums können Sie die Daten auch auf einem anderen Server wiederherstellen.
 
 ### <a name="stop-protection-and-retain-backup-data"></a>Schutz beenden und Sicherungsdaten beibehalten
@@ -167,6 +167,62 @@ Eine Passphrase wird zum Verschlüsseln und Entschlüsseln von Daten während de
 
     ![Einfügen der Sicherheits-PIN](./media/backup-azure-manage-mars/passphrase2.png)
 1. Stellen Sie sicher, dass die Passphrase an einem alternativen Speicherort (nicht auf dem Quellcomputer) sicher gespeichert wird, vorzugsweise im Azure Key Vault. Halten Sie alle Passphrasen nach, wenn Sie über mehrere mit den MARS-Agents gesicherte Computer verfügen.
+
+## <a name="validate-passphrase"></a>Überprüfen der Passphrase
+
+Ab MARS-Agent-Version 2.0.9190.0 müssen Sie Ihre Passphrase überprüfen, um sicherzustellen, dass sie den [aktualisierten Anforderungen](/azure/backup/backup-azure-file-folder-backup-faq#what-characters-are-allowed-for-the-passphrase-) entspricht.
+
+Führen Sie die folgenden Schritte aus, um Ihre Passphrase zu überprüfen:
+
+1. Öffnen Sie die MARS-Konsole.
+
+   Am oberen Rand wird eine Meldung angezeigt, die Sie zum Überprüfen der Passphrase auffordert. 
+
+1. Klicken Sie auf **Überprüfen**.
+
+   :::image type="content" source="./media/backup-azure-manage-mars/validate-passphrase-prompt-inline.png" alt-text="Screenshot: Aufforderung zum Überprüfen der Passphrase" lightbox="./media/backup-azure-manage-mars/validate-passphrase-prompt-expanded.png":::
+
+   Die Passphrasenüberprüfung wird geöffnet und fordert Sie zur Eingabe der aktuellen Passphrase auf. Wenn die Passphrase den aktualisierten Anforderungen nicht entspricht, wird eine Option zum erneuten Generieren der Passphrase angezeigt.
+
+1. Generieren Sie die Passphrase mit den folgenden Details:
+
+   - Neue Passphrase, die den Anforderungen entspricht
+   - Sicherheits-PIN (siehe [Schritte zum Generieren der Sicherheits-PIN](#generate-security-pin))
+   - Sicherer Speicherort auf dem Server zum Speichern der neu generierten Passphrase
+
+   :::image type="content" source="./media/backup-azure-manage-mars/generate-passphrase.png" alt-text="Screenshot: Prozess zum Generieren der Passphrase mit den erforderlichen Details":::
+
+### <a name="validate-passphrase-for-dpmmabs-agent"></a>Überprüfen der Passphrase für den DPM/MABS-Agent
+
+Für DPM/MABS führen Sie das Tool zur Überprüfung der Passphrase über eine Eingabeaufforderung mit erhöhten Rechten aus.
+   
+Sie finden das Tool an einem der folgenden Speicherorte:
+
+- **System Center Data Protection Manager**
+     
+  %ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\PassphraseValidator.exe
+
+- **Microsoft Azure Backup Server**
+      
+  %ProgramFiles%\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\PassphraseValidator.exe
+
+Die Passphrasenüberprüfung wird geöffnet und fordert Sie zur Eingabe der aktuellen Passphrase auf. Wenn die Passphrase den aktualisierten Anforderungen nicht entspricht, generieren Sie die Passphrase erneut.
+   
+:::image type="content" source="./media/backup-azure-manage-mars/passphrase-validator-prompts-for-current-passphrase.png" alt-text="Screenshot: Aufforderung der Passphrasenüberprüfung zur Eingabe der aktuellen Passphrase":::
+
+Führen Sie die folgenden Schritte durch:
+
+1. Navigieren Sie in der Verwaltungskonsole zur Registerkarte **Verwaltung**, und wählen Sie **Online** -> **Konfigurieren** aus.
+1. Folgen Sie den Anweisungen im **Assistenten zum Konfigurieren von Abonnementeinstellungen**,und geben Sie im Schritt **Verschlüsselungseinstellung** die aktualisierte Passphrase an.
+
+:::image type="content" source="./media/backup-azure-manage-mars/configure-subscription-settings-wizard.png" alt-text="Screenshot: Prozess zum Bereitstellen der Passphrase mithilfe des Assistenten zum Konfigurieren von Abonnementeinstellungen":::
+
+## <a name="generate-security-pin"></a>Generieren der Sicherheits-PIN
+
+1. Navigieren Sie zu **Recovery Services-Tresor** -> **Einstellungen** -> **Eigenschaften**.
+1. Wählen Sie unter **Sicherheits-PIN** die Option **Generieren** aus.
+ 
+Kopieren Sie die PIN. Die PIN ist nur fünf Minuten lang gültig.
 
 ## <a name="managing-backup-data-for-unavailable-machines"></a>Verwalten von Sicherungsdaten für nicht verfügbare Computer
 

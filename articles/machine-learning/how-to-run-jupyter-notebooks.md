@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 07/22/2021
-ms.openlocfilehash: 447398acc918dc830769b6b5e227f2ea87eb33c4
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 1a4fbbb84eb296acabd383461e01e90cbf570d9d
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545376"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657376"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
@@ -311,7 +311,7 @@ Mithilfe der folgenden Tastenkombinationen können Sie in Azure Machine Learning
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-* Wenn Sie keine Verbindung mit einem Notebook herstellen können, stellen Sie sicher, dass die WebSocket-Kommunikation **nicht** deaktiviert ist. Damit die Jupyter-Funktionen für Compute-Instanzen eingesetzt werden können, muss die WebSocket-Kommunikation aktiviert sein. Stellen Sie sicher, dass Ihr [Netzwerk Websocket-Verbindungen](https://docs.microsoft.com/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress#microsoft-hosts) zu *.instances.azureml.net und *.instances.azureml.ms erlaubt. 
+* Wenn Sie keine Verbindung mit einem Notebook herstellen können, stellen Sie sicher, dass die WebSocket-Kommunikation **nicht** deaktiviert ist. Damit die Jupyter-Funktionen für Compute-Instanzen eingesetzt werden können, muss die WebSocket-Kommunikation aktiviert sein. Stellen Sie sicher, dass Ihr [Netzwerk Websocket-Verbindungen](how-to-access-azureml-behind-firewall.md?tabs=ipaddress#microsoft-hosts) zu *.instances.azureml.net und *.instances.azureml.ms erlaubt. 
 
 * Wenn eine Compute-Instanz in einem Arbeitsbereich mit einem privaten Endpunkt bereitgestellt wird, kann [nur im virtuellen Netzwerk darauf zugegriffen werden](./how-to-secure-training-vnet.md). Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für „<Instanzname>.<Region>.instances.azureml.ms“ mit der privaten IP-Adresse des privaten Endpunkts Ihres Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md?tabs=azure-cli).
 

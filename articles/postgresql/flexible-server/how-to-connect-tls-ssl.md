@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: cd9a74e9a05dad68a5d05fd8b9c92ed566c21766
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 065ffe56e2868cce00bd92c612beb987d9372e38
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227431"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388791"
 ---
 # <a name="encrypted-connectivity-using-transport-layer-security-in-azure-database-for-postgresql---flexible-server"></a>Verschlüsselte Konnektivität mit Transport Layer Security in Azure Database for PostgreSQL: Flexible Server
 
@@ -20,7 +20,10 @@ ms.locfileid: "107227431"
 
 Azure Database for PostgreSQL: Flexible Server unterstützt das Herstellen einer Verbindung zwischen Ihren Clientanwendungen und dem PostgreSQL-Dienst über TLS (Transport Layer Security), ehemals als SSL (Secure Sockets Layer) bezeichnet. TLS ist ein Standardprotokoll der Branche, das verschlüsselte Netzwerkverbindungen zwischen dem Datenbankserver und Clientanwendungen gewährleistet, sodass Sie Konformitätsanforderungen einhalten können.
 
-Azure Database for PostgreSQL: Flexible Server unterstützt verschlüsselte Verbindungen mit Transport Layer Security (TLS 1.2+), und alle eingehenden Verbindungen mit TLS 1.0 und TLS 1.1 werden verweigert. Für alle Flexible Server-Instanzen ist die Durchsetzung von TLS-Verbindungen aktiviert, und Sie können TLS/SSL für die Verbindung zur Flexible Server-Instanz nicht deaktivieren.
+Azure Database for PostgreSQL: Flexible Server unterstützt verschlüsselte Verbindungen mit Transport Layer Security (TLS 1.2+), und alle eingehenden Verbindungen mit TLS 1.0 und TLS 1.1 werden verweigert. Für alle Flexible Server-Instanzen ist das Erzwingen von TLS-Verbindungen aktiviert. 
+
+>[!Note]
+> Standardmäßig wird eine sichere Konnektivität zwischen dem Client und dem Server erzwungen. Wenn Sie TLS/SSL für die Verbindung mit der Flexible Server-Instanz deaktivieren möchten, können Sie den Serverparameter `require_secure_transport` in `OFF` ändern. 
 
 ## <a name="applications-that-require-certificate-verification-for-tlsssl-connectivity"></a>Anwendungen, die eine Zertifikatüberprüfung für TLS/SSL-Verbindungen erfordern
 In einigen Fällen erfordern Anwendungen eine lokale Zertifikatdatei, die auf der Grundlage der Zertifikatdatei einer vertrauenswürdigen Zertifizierungsstelle (Certificate Authority, CA) generiert wurde, um eine sichere Verbindung herzustellen. Azure Database for PostgreSQL: Flexible Server verwendet *DigiCert Global Root CA*. Laden Sie dieses für die Kommunikation über SSL erforderliche Zertifikat von [DigiCert Global Root CA](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) herunter, und speichern Sie die Zertifikatsdatei an Ihrem bevorzugten Speicherort. In diesem Tutorial wird beispielsweise `c:\ssl` verwendet.

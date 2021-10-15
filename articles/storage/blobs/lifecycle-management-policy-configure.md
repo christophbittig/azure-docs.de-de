@@ -10,12 +10,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 507077913a672da6f9572a283367c5713a9d5e39
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e940db4a16963b236fa5230893373da935532761
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603503"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273211"
 ---
 # <a name="configure-a-lifecycle-management-policy"></a>Konfigurieren einer Richtlinie für die Lebenszyklusverwaltung
 
@@ -220,4 +220,4 @@ Eine Richtlinie für das Lebenszyklusmanagement muss vollständig gelesen oder g
 ## <a name="see-also"></a>Siehe auch
 
 - [Optimieren von Kosten durch automatisches Verwalten des Datenlebenszyklus](lifecycle-management-overview.md)
-- [Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md)
+- [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md)

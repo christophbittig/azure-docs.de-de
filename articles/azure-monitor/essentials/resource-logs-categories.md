@@ -1,31 +1,31 @@
 ---
-title: 'Azure Monitor-Ressourcenprotokolle: unterstützte Dienste und Kategorien'
-description: 'Referenz zu Azure Monitor: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.'
+title: Unterstützte Kategorien für Azure Monitor-Ressourcenprotokolle
+description: Hier finden Sie Erläuterungen zu den unterstützten Diensten und Ereignisschemas für Azure Monitor-Ressourcenprotokolle.
 ms.topic: reference
 ms.date: 09/10/2021
-ms.openlocfilehash: c92f20d4a757ef69d334345619bdc2d585648d5d
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 9c41c714d2913247a6b0d00e3b242da9c59e038e
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129211250"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457751"
 ---
-# <a name="supported-categories-for-azure-resource-logs"></a>Unterstützte Kategorien für Azure-Ressourcenprotokolle
+# <a name="supported-categories-for-azure-monitor-resource-logs"></a>Unterstützte Kategorien für Azure Monitor-Ressourcenprotokolle
 
 > [!NOTE]
 > Diese Liste wird größtenteils automatisch generiert. Jegliche Änderungen, die über GitHub an dieser Liste vorgenommen werden, können ohne Warnung überschrieben werden. Informationen dazu, wie die Liste dauerhaft aktualisiert werden kann, erhalten Sie beim Autor dieses Artikels.
 
-[Azure Monitor-Ressourcenprotokolle](../essentials/platform-logs-overview.md) sind von Azure-Diensten ausgegebene Protokolle, die die Vorgänge der jeweiligen Dienste oder Ressourcen beschreiben. Für alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, wird ein Schema der obersten Ebene gemeinsam genutzt. Auf diese Weise kann jeder Dienst für seine eigenen Ereignisse flexibel eindeutige Eigenschaften ausgeben.
+[Azure Monitor-Ressourcenprotokolle](../essentials/platform-logs-overview.md) sind von Azure-Diensten ausgegebene Protokolle, die die Vorgänge der jeweiligen Dienste oder Ressourcen beschreiben. Alle Ressourcenprotokolle, die über Azure Monitor verfügbar sind, verwenden ein gemeinsames Schema der obersten Ebene. Jeder Dienst kann flexibel eindeutige Eigenschaften für seine eigenen Ereignisse ausgeben.
 
 Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet. Der Name wurde im Oktober 2019 geändert, da die Typen der von Azure Monitor gesammelten Protokolle nicht mehr nur die Azure-Ressource umfassen.
 
-Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und dem `category`-Element eindeutig identifiziert. Es gibt ein allgemeines Schema für alle Ressourcenprotokolle mit dienstspezifischen Feldern, die dann für verschiedene Protokollkategorien hinzugefügt werden. Weitere Informationen finden Sie unter [Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle](/azure/azure-monitor/essentials/resource-logs-schema).
+Ein Schema wird anhand einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und der Kategorie eindeutig identifiziert. Es gibt ein allgemeines Schema für alle Ressourcenprotokolle mit dienstspezifischen Feldern, die dann für verschiedene Protokollkategorien hinzugefügt werden. Weitere Informationen finden Sie unter [Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle](/azure/azure-monitor/essentials/resource-logs-schema).
 
 ## <a name="costs"></a>Kosten
 
-Bei [Azure Monitor Log Analytics](https://azure.microsoft.com/pricing/details/monitor/), [Azure Storage](https://azure.microsoft.com/product-categories/storage/), [Event Hub](https://azure.microsoft.com/pricing/details/event-hubs/) und Partnern, die direkt mit Azure Monitor integrieren ([z. B. Datadog](../../partner-solutions/datadog/overview.md)), fallen Kosten für das Erfassen und Speichern von Daten an. Nutzen Sie die vorherigen Links zu Preisseiten für diese Dienste, um die Kosten nachvollziehen zu können. Ressourcenprotokolle sind nur ein Datentyp, den Sie an diese Speicherorte senden können. 
+Bei [Azure Monitor Log Analytics](https://azure.microsoft.com/pricing/details/monitor/), [Azure Storage](https://azure.microsoft.com/product-categories/storage/), [Azure Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/) und Partnerdiensten, die direkt in Azure Monitor integriert werden ([z. B. Datadog](../../partner-solutions/datadog/overview.md)), fallen Kosten für das Erfassen und Speichern von Daten an. Informieren Sie sich auf den Preisseiten, die über die Links im vorherigen Satz aufgerufen werden können, über die Kosten für diese Dienste. Ressourcenprotokolle sind nur ein Datentyp, den Sie an diese Speicherorte senden können. 
 
-Zusätzlich fallen möglicherweise Kosten für den Export von einigen Kategorien von Ressourcenprotokollen in diese Speicherorte an. Die Protokolle, die eventuell Exportkosten verursachen, sind in der folgenden Tabelle aufgeführt. Weitere Informationen zu den Preisen für das Exportieren finden Sie im Abschnitt *Plattformprotokolle* auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
+Zusätzlich können Kosten für den Export einiger Kategorien von Ressourcenprotokollen in diese Speicherorte anfallen. Protokolle, die möglicherweise Exportkosten verursachen, sind in der Tabelle im nächsten Abschnitt aufgeführt. Weitere Informationen zu den Preisen für das Exportieren finden Sie im Abschnitt **Plattformprotokolle** auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
 
 ## <a name="supported-log-categories-per-resource-type"></a>Unterstützte Protokollkategorien pro Ressourcentyp
 
@@ -33,7 +33,7 @@ Es folgt eine Liste der Arten von Protokollen, die für jeden Ressourcentyp verf
 
 Einige Kategorien werden möglicherweise nur für bestimmte Ressourcentypen unterstützt. Wenn Sie der Meinung sind, dass eine Ressource fehlt, lesen Sie die ressourcenspezifische Dokumentation. Beispielsweise sind Kategorien des Typs „Microsoft.Sql/servers/databases“ nicht für alle Datenbanktypen verfügbar. Weitere Informationen finden Sie unter den [Informationen zur SQL-Datenbank-Diagnoseprotokollierung](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
-Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Artikel einen GitHub-Kommentar öffnen.
+Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-Kommentar öffnen.
 
 
 ## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/DomainServices

@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: db2c4e50b4de7a680b114582baf1361ee4d75fb8
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 017e1ce50c121860038594279a339a03f17bc180
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768814"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363057"
 ---
 # <a name="speech-service-release-notes"></a>Versionshinweise zum Speech-Dienst
 
@@ -40,7 +40,7 @@ ms.locfileid: "122768814"
 - **C++/C#/Java**: Wir haben der `VoiceProfileClient`-Klasse eine neue API `GetActivationPhrasesAsync()` hinzugefügt, die den Empfang einer Liste gültiger Aktivierungsausdrücke in der Registrierungsphase der Sprechererkennung für unabhängige Erkennungsszenarien ermöglicht. 
     - **Wichtig**: Das Feature zur Sprechererkennung befindet sich in der Vorschauphase. 90 Tage nach der Freigabe für die allgemeine Verfügbarkeit werden alle in der Vorschauversion des Features erstellten Sprachprofile nicht mehr unterstützt. Die Sprachprofile aus der Vorschauversion funktionieren dann nicht mehr.
 - **Python**: Den vorhandenen `SpeechRecognizer`- und `TranslationRecognizer`-Objekten wurde [Unterstützung für die kontinuierliche Sprachidentifikation (Continuous Language Identification, LID)](./how-to-automatic-language-detection.md?pivots=programming-language-python) hinzugefügt. 
-- **Python**: Ein [neues Python-Objekt](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.sourcelanguagerecognizer?view=azure-python) namens `SourceLanguageRecognizer` für die einmalige oder kontinuierliche Sprachidentifikation (ohne Erkennung oder Übersetzung) wurde hinzugefügt. 
+- **Python**: Ein [neues Python-Objekt](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.sourcelanguagerecognizer) namens `SourceLanguageRecognizer` für die einmalige oder kontinuierliche Sprachidentifikation (ohne Erkennung oder Übersetzung) wurde hinzugefügt. 
 - **JavaScript**: Der `VoiceProfileClient`-Klasse wurde eine API `getActivationPhrasesAsync` hinzugefügt, die den Empfang einer Liste gültiger Aktivierungsausdrücke in der Registrierungsphase der Sprechererkennung für unabhängige Erkennungsszenarien ermöglicht. 
 - Die `enrollProfileAsync`-API der `VoiceProfileClient`-Klasse von **JavaScript** ist jetzt asynchron „awaitable“. Ein Beispiel zur Verwendung finden Sie in diesem [unabhängigen Identifikationscode.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/javascript/node/speaker-recognition/identification/independent-identification.js)
 
@@ -58,7 +58,7 @@ ms.locfileid: "122768814"
 - **JavaScript**: Es wurde ein Problem behoben, aufgrund dessen das Erkennungsmodul bei der kontinuierlichen Erkennung erneut eine Verbindung mit einem Pushstream hergestellt hat. Ausführlichere Informationen finden Sie [hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/399).
 - **JavaScript**: Die Offsetberechnung auf Wortebene in detaillierten Erkennungsergebnissen wurde korrigiert. Ausführlichere Informationen finden Sie [hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/394).
 
-#### <a name="samples"></a>Proben
+#### <a name="samples"></a>Beispiele
 
 - Aktualisierte Java-Schnellstartbeispiele finden Sie [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java).
 - Die Beispiele zur JavaScript-Sprechererkennung wurden aktualisiert, um die neue Verwendung der `enrollProfileAsync()`-Methode zu veranschaulichen. Beispiele finden Sie [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/js/node).
@@ -219,7 +219,7 @@ Mit dem [Lesezeichenelement](speech-synthesis-markup.md#bookmark-element) könne
 - **C++/C#/Java/Python/Objective-C/Go**: Das Problem wurde behoben, dass gelegentlich ein Absturz erfolgt, wenn die Erkennung unmittelbar nach dem Starten einer Erkennung zerstört wurde.
 - **C++/C#/Java**: Das Problem wurde behoben, dass bei der Zerstörung der Sprechererkennung gelegentlich ein Absturz erfolgt.
 
-#### <a name="samples"></a>Proben
+#### <a name="samples"></a>Beispiele
 
 - **JavaScript**: [Browserbeispiele](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/js/browser) erfordern nicht mehr einen speziellen Download von JavaScript-Bibliotheksdateien.
 
@@ -246,7 +246,7 @@ Bleiben Sie gesund!
 **Allgemeine Verfügbarkeit der benutzerdefinierten neuronalen Stimme**
 
 Die benutzerdefinierte neuronale Stimme ist im Februar in 13 Sprachen allgemein verfügbar: Chinesisch (Mandarin, vereinfacht), Englisch (Australien), Englisch (Indien), Englisch (Vereinigtes Königreich), Englisch (Nordamerika), Französisch (Kanada), Französisch (Frankreich), Deutsch (Deutschland), Italienisch (Italien), Japanisch (Japan), Koreanisch (Korea), Portugiesisch (Brasilien), Spanisch (Mexico) und Spanisch (Spanien). Erfahren Sie mehr darüber, [was die benutzerdefinierte neuronale Stimme ist](custom-neural-voice.md) und [wie Sie sie verantwortungsbewusst verwenden](concepts-guidelines-responsible-deployment-synthetic.md).
-Das Feature Benutzerdefinierte neuronale Stimme erfordert eine Registrierung, und Microsoft kann den Zugriff auf der Grundlage der Microsoft-Berechtigungskriterien einschränken. Weitere Informationen zum [eingeschränkten Zugriff](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context).
+Das Feature „Benutzerdefinierte neuronale Stimme“ erfordert eine Registrierung, und Microsoft kann den Zugriff auf Grundlage der Microsoft-Berechtigungskriterien einschränken. Weitere Informationen zum [eingeschränkten Zugriff](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context).
 
 ## <a name="speech-sdk-1150-2021-january-release"></a>Speech-SDK 1.15.0: Release von Januar 2021
 
@@ -602,7 +602,7 @@ Bleiben Sie gesund!
     | `es-MX` | 1,58 USD | un peso cincuenta y ocho centavos |
     | `es-ES` | 1,58 USD | un dólar cincuenta y ocho centavos |
 
-    * Negative Währungen (z. B. „–325 €“) werden für folgende Sprachen unterstützt: `en-US`, `en-GB`, `fr-FR`, `it-IT`, `en-AU`, `en-CA`.
+    * Negative Währungen (z. B. „–325 &euro;“) werden für folgende Sprachen unterstützt: `en-US`, `en-GB`, `fr-FR`, `it-IT`, `en-AU`, `en-CA`.
 
 * Das Lesen von Adressen in `pt-PT` wurde verbessert.
 * Die Ausspracheprobleme der Wörter „for“ und „four“ bei Natasha (`en-AU`) und Libby (`en-UK`) wurden behoben.

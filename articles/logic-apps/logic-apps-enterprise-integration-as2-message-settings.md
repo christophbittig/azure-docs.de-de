@@ -1,23 +1,23 @@
 ---
 title: AS2-Nachrichteneinstellungen
-description: Referenzhandbuch für AS2-Sende- und -Empfangseinstellungen in Azure Logic Apps mit Enterprise Integration Pack
+description: Referenzleitfaden für AS2-Nachrichteneinstellungen in Vereinbarungen für Azure Logic Apps mit Enterprise Integration Pack.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
-ms.topic: article
+ms.reviewer: estfan, azla
+ms.topic: reference
 ms.date: 07/20/2021
-ms.openlocfilehash: af13306598db75e89064507b9a2fad80d8d33542
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2bec9c598c0f08e9e114fcf5a83bfb0d238dd2b1
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453169"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400989"
 ---
-# <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Referenz für AS2-Nachrichteneinstellungen in Azure Logic Apps mit Enterprise Integration Pack
+# <a name="reference-for-as2-message-settings-in-agreements-for-azure-logic-apps"></a>Referenz für AS2-Nachrichteneinstellungen in Vereinbarungen für Azure Logic Apps
 
-In dieser Referenz werden die Eigenschaften beschrieben, die Sie zum Angeben festlegen können, wie eine AS2-Vereinbarung die Nachrichten behandelt, die zwischen Parteien gesendet und empfangen werden. Richten Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner ein, der Nachrichten mit Ihnen austauscht.
+In dieser Referenz werden die Eigenschaften beschrieben, mit denen Sie in einer AS2-Vereinbarung festlegen können, wie Nachrichten zwischen [Handelspartnern](logic-apps-enterprise-integration-partners.md) gehandhabt werden sollen. Richten Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner ein, der Nachrichten mit Ihnen austauscht.
 
 <a name="AS2-incoming-messages"></a>
 

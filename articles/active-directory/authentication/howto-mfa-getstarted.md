@@ -1,7 +1,6 @@
 ---
 title: Überlegungen zur Bereitstellung von Azure AD Multi-Factor Authentication
 description: Erfahren Sie mehr über die Überlegungen zur Bereitstellung und über die Strategie für eine erfolgreiche Implementierung von Azure AD Multi-Factor Authentication.
-services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
@@ -11,12 +10,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01044f9d03b911bfb6939023dfb4fd5d3b0a3cd3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 42ce13335c3bab4a853de5001760eca0d85fdf7b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124773795"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352628"
 ---
 # <a name="plan-an-azure-active-directory-multi-factor-authentication-deployment"></a>Planen einer Azure Active Directory Multi-Factor Authentication-Bereitstellung 
 
@@ -58,19 +57,19 @@ Weitere Informationen zur Leistungsfähigkeit und Sicherheit dieser Methoden und
 - [Welche Authentifizierungs- und Prüfmethoden stehen in Azure Active Directory zur Verfügung?](concept-authentication-methods.md)
 - [Video: Choose the right authentication methods to keep your organization safe (Auswählen der geeigneten Authentifizierungsmethoden zum Schutz Ihrer Organisation)](https://youtu.be/LB2yj4HSptc)
 
-Sie können dieses [PowerShell-Skript](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/) verwenden, um die MFA-Konfigurationen der Benutzer zu analysieren und eine geeignete Authentifizierungsmethode vorzuschlagen. 
+Sie können dieses [PowerShell-Skript](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/) verwenden, um die MFA-Konfigurationen der Benutzer zu analysieren und eine geeignete MFA-Authentifizierungsmethode vorzuschlagen. 
 
 Ein optimales Maß an Flexibilität und Benutzerfreundlichkeit bietet die Microsoft Authenticator-App. Diese Authentifizierungsmethode bietet die bestmögliche Benutzererfahrung und verfügt über mehrere Modi, z. B. kennwortlose Authentifizierung, MFA-Pushbenachrichtigungen und OATH-Codes. Die Microsoft Authenticator-App erfüllt auch die Anforderungen für den [Authenticator-Vertrauensgrad 2 des National Institute of Standards and Technology](../standards/nist-authenticator-assurance-level-2.md).
 
 Sie können die in Ihrem Mandanten verfügbaren Authentifizierungsmethoden steuern. So sollten Sie beispielsweise besonders unsichere Methoden wie SMS blockieren.
 
-| Authentifizierungsmethode | Verwalten über | Bereichsdefinition |
+| Authentifizierungsmethode    | Verwalten über | Bereichsdefinition |
 |-----------------------|-------------|---------|
 | Microsoft Authenticator (Pushbenachrichtigung und kennwortlose Anmeldung per Telefon)    | MFA-Einstellungen oder
 Richtlinien für Authentifizierungsmethoden | Die in Authenticator verfügbare kennwortlose Anmeldung per Telefon kann auf Benutzer und Gruppen beschränkt werden. |
 | FIDO2-Sicherheitsschlüssel | Richtlinien für Authentifizierungsmethoden | Kann auf Benutzer und Gruppen beschränkt werden |
 | OATH-Token für Software oder Hardware | MFA-Einstellungen |     |
-| SMS-Verifizierung | MFA-Einstellungen | Verwalten der SMS-Anmeldung für die primäre Authentifizierung in der Authentifizierungsrichtlinie Die SMS-Anmeldung kann auf Benutzer und Gruppen beschränkt werden. |
+| SMS-Verifizierung | MFA-Einstellungen | Verwalten der SMS-Anmeldung für die primäre Authentifizierung in der Authentifizierungsrichtlinie    Die SMS-Anmeldung kann auf Benutzer und Gruppen beschränkt werden. |
 | Sprachanrufe | Richtlinien für Authentifizierungsmethoden |       |
 
 
@@ -117,7 +116,7 @@ Folgende Risikorichtlinien sind verfügbar:
 
 Wenn für Ihre Benutzer die Azure AD Multi-Factor Authentication pro Benutzer aktiviert und erzwungen wurde, können Sie mithilfe des folgenden PowerShell-Codes eine Konvertierung in die Azure AD Multi-Factor Authentication mit bedingtem Zugriff vornehmen.
 
-Führen Sie diese PowerShell-Instanz in einem ISE-Fenster aus, oder speichern Sie sie zur lokalen Ausführung als `.PS1`-Datei. Der Vorgang kann nur mithilfe des Moduls [MSOnline](/powershell/module/msonline/?view=azureadps-1.0#msonline) ausgeführt werden. 
+Führen Sie diese PowerShell-Instanz in einem ISE-Fenster aus, oder speichern Sie sie zur lokalen Ausführung als `.PS1`-Datei. Der Vorgang kann nur mithilfe des Moduls [MSOnline](/powershell/module/msonline#msonline) ausgeführt werden. 
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -170,7 +169,7 @@ Azure AD Identity Protection trägt sowohl eine Registrierungsrichtlinie als au
 Wenn Sie Azure AD Identity Protection verwenden, [konfigurieren Sie die Azure AD MFA-Registrierungsrichtlinie](../identity-protection/howto-identity-protection-configure-mfa-policy.md), um Ihre Benutzer aufzufordern, sich bei ihrer nächsten Anmeldung interaktiv zu registrieren.
 
 ### <a name="registration-without-identity-protection"></a>Registrierung ohne Identity Protection
-Wenn Sie keine Lizenzen zum Aktivieren von Azure AD Identity Protection haben, werden Benutzer aufgefordert, sich das nächste Mal zu registrieren, wenn MFA bei der Anmeldung erforderlich ist. Wenn Sie festlegen möchten, dass Benutzer MFA verwenden müssen, können Sie Richtlinien für bedingten Zugriff verwenden und häufig verwendete Anwendungen wie HR-Systeme als Ziel verwenden. Wenn das Kennwort eines Benutzers kompromittiert wird, könnte es zum Registrieren für MFA verwendet und dabei die Kontrolle über das Konto übernommen werden. Daher wird empfohlen, [die Sicherheitsregistrierung mit Richtlinien für bedingten Zugriff zu schützen](../conditional-access/howto-conditional-access-policy-registration.md), indem verlangt wird, dass vertrauenswürdige Geräte und Standorte angegeben werden. Sie können den Prozess weiter schützen, indem Sie zusätzlich einen [befristeten Zugriffspass](howto-authentication-temporary-access-pass.md) verlangen. Ein von einem Administrator ausgegebener zeitlich begrenzter Passcode, der strenge Authentifizierungsanforderungen erfüllt und zum Integrieren anderer Authentifizierungsmethoden wie kennwortloser Methoden verwendet werden kann.
+Wenn Sie keine Lizenzen zum Aktivieren von Azure AD Identity Protection haben, werden Benutzer aufgefordert, sich das nächste Mal zu registrieren, wenn MFA bei der Anmeldung erforderlich ist. Wenn Sie festlegen möchten, dass Benutzer MFA verwenden müssen, können Sie Richtlinien für bedingten Zugriff verwenden und häufig verwendete Anwendungen wie HR-Systeme als Ziel verwenden. Wenn das Kennwort eines Benutzers kompromittiert wird, könnte es zum Registrieren für MFA verwendet und dabei die Kontrolle über das Konto übernommen werden. Daher wird empfohlen, [die Sicherheitsregistrierung mit Richtlinien für bedingten Zugriff zu schützen](../conditional-access/howto-conditional-access-policy-registration.md), indem verlangt wird, dass vertrauenswürdige Geräte und Standorte angegeben werden. Sie können den Prozess weiter schützen, indem Sie zusätzlich einen [befristeten Zugriffspass](howto-authentication-temporary-access-pass.md) verlangen. Ein von einem Administrator ausgegebener zeitlich begrenzter Passcode, der strenge Authentifizierungsanforderungen erfüllt und zum Integrieren anderer Authentifizierungsmethoden wie kennwortloser Methoden verwendet werden kann.
 
 ### <a name="increase-the-security-of-registered-users"></a>Erhöhen der Sicherheit registrierter Benutzer
 Wenn Sie Benutzer für MFA per SMS oder Sprachanrufe registriert haben, sollten Sie diese auf sicherere Methoden wie die Microsoft Authenticator-App umstellen. Microsoft bietet jetzt eine öffentliche Vorschau der Funktionalität, mit der Sie Benutzer auffordern können, die Microsoft Authenticator-App während der Anmeldung einzurichten. Sie können diese Eingabeaufforderungen nach Gruppen festlegen und auf diese Weise bestimmen, wer zur Eingabe aufgefordert wird, sowie gezielte Kampagnen zur Umstellung von Benutzern auf sicherere Methoden durchführen. 

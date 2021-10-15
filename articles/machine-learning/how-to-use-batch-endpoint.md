@@ -4,23 +4,23 @@ titleSuffix: Azure Machine Learning
 description: In diesem Artikel erfahren Sie, wie Sie einen Batchendpunkt für die kontinuierliche Batchbewertung großer Datenmengen erstellen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 author: tracych
 ms.author: tracych
 ms.reviewer: laobri
 ms.date: 8/11/2021
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: b68ba3f0221aa97307e746d192de65b2915d2e4b
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: e113fdebb7c6cf11b486bb958ab04af8e37a5e89
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419551"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428044"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>Verwenden von Batchendpunkten (Vorschau) für die Batchbewertung
 
-In diesem Artikel erfahren Sie, wie Sie Batchendpunkte (Vorschau) für die Batchbewertung verwenden. Batchendpunkte vereinfachen das Hosten Ihrer Modelle für die Batchbewertung, sodass Sie sich auf maschinelles Lernen konzentrieren können, anstatt sich mit der Infrastruktur zu befassen. Nachdem Sie einen Batchendpunkt erstellt haben, können Sie Batchbewertungsaufträge mit der Azure CLI oder über eine beliebige Plattform unter Verwendung einer HTTP-Bibliothek und der REST-API auslösen. Weitere Informationen finden Sie unter [Was sind Azure Machine Learning-Endpunkte (Vorschau)?](concept-endpoints.md).
+In diesem Artikel erfahren Sie, wie Sie Batchendpunkte (Vorschau) für die Batchbewertung verwenden. Batchendpunkte vereinfachen das Hosten Ihrer Modelle für die Batchbewertung, sodass Sie sich auf maschinelles Lernen konzentrieren können, anstatt sich mit der Infrastruktur zu befassen. Nachdem Sie einen Batchendpunkt erstellt haben, können Sie Batchbewertungsaufträge mit der Azure CLI oder über eine beliebige Plattform unter Verwendung einer HTTP-Bibliothek und der REST-API auslösen. Weitere Informationen finden Sie unter [Was sind Azure Machine Learning-Endpunkte (Vorschau)?](concept-endpoints.md)
 
 In diesem Artikel lernen Sie Folgendes:
 

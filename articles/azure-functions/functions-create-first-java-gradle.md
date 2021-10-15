@@ -6,12 +6,12 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: be1d54007017ce9b5abb774e75ddfd799f83c612
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: d47de5dd9af7b6d769c31d4909103616293a5a60
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113287292"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361657"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Erstellen und Veröffentlichen einer Funktion für Azure mithilfe von Java und Gradle
 
@@ -27,7 +27,7 @@ Um Funktionen mit Java zu entwickeln, muss Folgendes installiert sein:
 - [Java Developer Kit](/azure/developer/java/fundamentals/java-support-on-azure), Version 8
 - [Azure-Befehlszeilenschnittstelle]
 - [Azure Functions Core Tools](./functions-run-local.md#v2), Version 2.6.666 oder höher
-- [Gradle](https://gradle.org/) ab Version 4.10
+- [Gradle](https://gradle.org/) ab Version 6.8
 
 Außerdem benötigen Sie ein aktives Azure-Abonnement. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -126,7 +126,7 @@ Dadurch werden die folgenden Ressourcen in Azure erstellt, basierend auf den Wer
 
 + Ressourcengruppe – benannt mit der angegebenen Ressourcengruppe (_resourceGroup_).
 + Speicherkonto – von Functions benötigt. Der Name wird nach dem Zufallsprinzip basierend auf den Anforderungen für den Speicherkontonamen generiert.
-+ App Service-Plan. Serverloses Hosting mit Verbrauchsplan für Ihre Funktions-App in der angegebenen App-Region (_appRegion_). Der Name wird nach dem Zufallsprinzip generiert.
++ App Service-Plan. Serverloses Hosting mit Verbrauchsplan für Ihre Funktions-App in der angegebenen _Region_. Der Name wird nach dem Zufallsprinzip generiert.
 + Funktions-App – die Bereitstellungs-und Ausführungseinheit für Ihre Funktionen. Der Name ist Ihr App-Name (_appName_) mit angefügter Zufallszahl. 
 
 Bei der Bereitstellung werden mithilfe von [zip deployment](functions-deployment-technologies.md#zip-deploy) auch die Projektdateien gepackt und für die neue Funktions-App bereitgestellt (mit aktiviertem Modus für die paketbasierte Ausführung).
@@ -142,7 +142,7 @@ Die erforderliche URL zum Auslösen Ihrer Funktion können Sie mit dem Funktions
 
 1. Navigieren Sie zum [Azure portal], melden Sie sich an, geben Sie im oberen Seitenbereich unter **Suche** den App-Namen (_appName_) Ihrer Funktions-App ein, und drücken Sie die EINGABETASTE.
  
-1. Klicken Sie in Ihrer Funktions-App auf **Funktionen**, wählen Sie Ihre Funktion aus, und klicken Sie anschließend rechts oben auf **</> Funktions-URL abrufen**. 
+1. Klicken Sie in Ihrer Funktions-App auf **Funktionen**, wählen Sie Ihre Funktion aus, und klicken Sie anschließend rechts oben auf **Funktions-URL abrufen**. 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="Kopieren der Funktions-URL aus dem Azure-Portal":::
 

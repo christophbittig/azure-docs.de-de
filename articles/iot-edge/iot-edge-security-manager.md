@@ -9,12 +9,12 @@ ms.reviewer: eustacea
 ms.date: 09/17/2021
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: fedb06a23a71dbe30954154daa6d314267268551
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: d07f0073141632477a64b2c1cc4bc3a9b8e8d458
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659676"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233507"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge-Sicherheits-Manager
 
@@ -269,11 +269,11 @@ Der IoT Edge-Sicherheits-Manager versucht, die Komponenten, die bei benutzerdefi
 
 Informieren Sie sich, wie Sie den Azure IoT-Sicherheits-Manager mit dem Trusted Platform Module (TPM) mithilfe von Software oder virtuellen TPMs härten können:  
 
-Erstellen und Bereitstellen eines [IoT Edge-Geräts mit einem virtuellen TPM auf einem virtuellen Linux-Computer](how-to-provision-devices-at-scale-linux-tpm.md)
+Erstellen und Bereitstellen eines [IoT Edge-Geräts mit einem virtuellen TPM auf einem virtuellen Linux-Computer](how-to-auto-provision-simulated-device-linux.md)
 
 <!--1.1-->
 :::moniker range="iotedge-2018-06"
-Erstellen und Bereitstellen eines [IoT Edge-Geräts mit simuliertem TPM unter Windows](how-to-provision-devices-at-scale-windows-tpm.md)
+Erstellen und Bereitstellen eines [IoT Edge-Geräts mit simuliertem TPM unter Windows](how-to-auto-provision-simulated-device-windows.md)
 :::moniker-end
 
 ## <a name="next-steps"></a>Nächste Schritte

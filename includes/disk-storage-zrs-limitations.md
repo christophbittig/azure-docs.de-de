@@ -5,17 +5,18 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/01/2021
+ms.date: 09/29/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 714544c42d197aef6f17fa94530c052e17c95522
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: a5f45fb6aca70ef0038a32f692e47bafff0e251d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426729"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129300272"
 ---
 Für ZRS für verwaltete Datenträger gelten die folgenden Einschränkungen:
 
 - Wird nur für SSD Premium- und SSD Standard-Datenträger unterstützt.
 - Derzeit nur in den Regionen „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“ und „Frankreich, Mitte“ verfügbar.
+- Kann derzeit nicht mit Azure Backup oder Azure Site Recovery verwendet werden.

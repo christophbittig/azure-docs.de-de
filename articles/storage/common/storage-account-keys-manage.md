@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cfea2bd15bceb7d1478059d9ef80f4eb33337dc6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a0f95f78b8ca84175be185088316209ea5eb1e97
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664749"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546816"
 ---
 # <a name="manage-storage-account-access-keys"></a>Verwalten von Speicherkonto-Zugriffsschlüsseln
 
@@ -32,15 +32,17 @@ Sie können Ihre Kontozugriffsschlüssel mit dem Azure-Portal, PowerShell oder d
 
 Führen Sie folgende Schritte durch, um die Zugriffsschlüssel oder Verbindungszeichenfolge Ihres Speicherkontos aus dem Azure-Portal anzuzeigen oder zu kopieren:
 
-1. Navigieren Sie zum Speicherkonto im [Azure-Portal](https://portal.azure.com).
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 
-2. Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
+2. Wählen Sie unter **Sicherheit + Netzwerk** die Option **Zugriffsschlüssel** aus. Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
 
-3. Suchen Sie unter **key1** nach dem Wert für **Schlüssel**, und klicken Sie dann auf die Schaltfläche zum **Kopieren**, um den Kontoschlüssel zu kopieren.
+3. Wählen Sie **Schlüssel anzeigen** aus, um Ihre Zugriffsschlüssel und Verbindungszeichenfolgen anzuzeigen und Schaltflächen zum Kopieren der Werte zu aktivieren.
 
-4. Alternativ können Sie die gesamte Verbindungszeichenfolge kopieren. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge**, und klicken Sie dann auf die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zu kopieren.
+4. Suchen Sie unter **key1** nach dem Wert für **Schlüssel**. Wählen Sie die Schaltfläche **Kopieren** aus, um den Kontoschlüssel zu kopieren.
 
-    :::image type="content" source="media/storage-account-keys-manage/portal-connection-string.png" alt-text="Screenshot, der zeigt, wie Sie Zugriffsschlüssel im Azure-Portal anzeigen":::
+5. Alternativ können Sie die gesamte Verbindungszeichenfolge kopieren. Suchen Sie unter **key1** nach dem Wert für **Verbindungszeichenfolge**. Wählen Sie die Schaltfläche **Kopieren** aus, um die Verbindungszeichenfolge zu kopieren.
+
+    :::image type="content" source="./media/storage-account-keys-manage/portal-connection-string.png" alt-text="Screenshot, der zeigt, wie Sie Zugriffsschlüssel im Azure-Portal anzeigen":::
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -50,7 +52,7 @@ Im folgenden Beispiel wird der erste Schlüssel abgerufen. Verwenden Sie `Value[
 
 ```powershell
 $storageAccountKey = `
-    (Get-AzStorageAccountKey `
+    (Get-AzStorageAccountKey
     -ResourceGroupName <resource-group> `
     -Name <storage-account>).Value[0]
 ```
@@ -93,7 +95,19 @@ Wenn Sie Zugriffsschlüssel manuell rotieren möchten, empfiehlt Microsoft, eine
 
 #### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Bisher kann eine Schlüsselablaufrichtlinie noch nicht mithilfe des Azure-Portals festgelegt werden. Sie können dazu entweder PowerShell oder die Azure CLI verwenden.
+Zum Erstellen einer Richtlinie für den Schlüsselablauf im Azure-Portal gehen Sie folgendermaßen vor:
+
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
+
+2. Wählen Sie unter **Sicherheit + Netzwerk** die Option **Zugriffsschlüssel** aus. Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
+
+3. Wählen Sie den Link **Rotationserinnerung festlegen** aus.
+
+4. Aktivieren Sie unter **Eine Erinnerung an die Zugriffsschlüsselrotation festlegen** das Kontrollkästchen **Die Erinnerung an die Schlüsselrotation aktivieren**, und legen Sie eine Häufigkeit für die Erinnerung fest.
+
+5. Wählen Sie **Speichern** aus.
+
+:::image type="content" source="media/storage-account-keys-manage/portal-key-expiration-policy.png" alt-text="Screenshot: Erstellen einer Richtlinie für den Schlüsselablauf im Azure-Portal":::
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -202,7 +216,7 @@ Gehen Sie wie folgt vor, um Ihre Speicherkonto-Zugriffsschlüssel im Azure-Porta
 
 2. Navigieren Sie zum Speicherkonto im [Azure-Portal](https://portal.azure.com).
 
-3. Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
+3. Wählen Sie unter **Sicherheit + Netzwerk** die Option **Zugriffsschlüssel** aus.
 
 4. Klicken Sie auf die Schaltfläche **Neu generieren** neben dem primären Zugriffsschlüssel, um den primären Zugriffsschlüssel für Ihr Speicherkonto neu zu generieren.
 

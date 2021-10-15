@@ -2,21 +2,21 @@
 title: Einschränkungen für Umleitungs-URI/Antwort-URL | Azure AD
 titleSuffix: Microsoft identity platform
 description: Beschrieben werden die Einschränkungen, die für das Format des Umleitungs-URIs (Antwort-URL) gelten, das von der Microsoft Identity-Plattform erzwungen wird.
-author: SureshJa
-ms.author: sureshja
+author: madansr7
+ms.author: saumadan
 manager: CelesteDG
-ms.date: 08/06/2021
+ms.date: 09/03/2021
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: contperf-fy21q4-portal, aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: 96fe21b4f1df662e72ec88abc68d74db25257de1
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: d20d14619111515332b6aa5aec9239d0a6d50283
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662037"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353052"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Einschränkungen für Umleitungs-URI/Antwort-URL
 
@@ -54,6 +54,11 @@ Die folgende Tabelle zeigt die maximale Anzahl von Umleitungs-URIs, die Sie eine
 ## <a name="maximum-uri-length"></a>Maximale URI-Länge
 
 Für jeden Umleitungs-URI, den Sie einer App-Registrierung hinzufügen, können Sie maximal 256 Zeichen verwenden.
+
+## <a name="redirect-uris-in-application-vs-service-principal-objects"></a>Umleitungs-URIs in Anwendungsobjekten und Dienstprinzipalobjekten
+
+* Fügen Sie Umleitungs-URIs immer nur dem Anwendungsobjekt hinzu.
+* Einem Dienstprinzipal sollten Sie keine Umleitungs-URI-Werte hinzufügen, da diese Werte entfernt werden können, wenn das Dienstprinzipalobjekt mit dem Anwendungsobjekt synchronisiert wird. Dies kann durch einen Aktualisierungsvorgangs geschehen, der eine Synchronisierung zwischen den beiden Objekten auslöst.
 
 ## <a name="supported-schemes"></a>Unterstützte Schemas
 

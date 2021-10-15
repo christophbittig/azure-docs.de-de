@@ -8,12 +8,12 @@ ms.date: 07/29/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: a8862f0b71a6b3f8bba21bdd4ab40290a00d0959
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: e7d46d1680e11307eb873383e91e6e682f545549
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356619"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546537"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-in-azure-cosmos-db"></a>Fortlaufende Sicherung mit der Zeitpunktwiederherstellung von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -111,7 +111,9 @@ Für die Zeitpunktwiederherstellungsfunktion gelten derzeit die folgenden Einsch
 
 * Konten für Schreibvorgänge in mehreren Regionen werden nicht unterstützt.
 
-* Bei Konten mit aktiviertem Azure Synapse Link sind Analysespeicherdaten nicht in den Sicherungen und Wiederherstellungen enthalten. Wenn Synapse Link aktiviert ist, erstellt Azure Cosmos DB weiterhin automatisch im geplanten Sicherungsintervall Sicherungen Ihrer Daten im Transaktionsspeicher. Die automatische Sicherung und Wiederherstellung Ihrer Daten im Analysespeicher wird derzeit nicht unterstützt.
+* Azure Synapse Link und der regelmäßige Sicherungsmodus können in demselben Datenbankkonto gleichzeitig vorhanden sein. Analysespeicherdaten sind jedoch nicht in den Sicherungen und Wiederherstellungen enthalten. Wenn Synapse Link aktiviert ist, erstellt Azure Cosmos DB weiterhin automatisch im geplanten Sicherungsintervall Sicherungen Ihrer Daten im Transaktionsspeicher. 
+
+* Azure Synapse Link und der fortlaufende Sicherungsmodus können nicht in demselben Datenbankkonto gleichzeitig vorhanden sein. Derzeit können Datenbankkonten mit Synapse Link-Aktivierung den fortlaufenden Sicherungsmodus nicht verwenden und umgekehrt.
 
 * Das wiederhergestellte Konto wird in derselben Region erstellt, in der sich Ihr Quellkonto befindet. Es ist für Sie nicht möglich, ein Konto in einer Region wiederherzustellen, in der das Quellkonto nicht vorhanden war.
 

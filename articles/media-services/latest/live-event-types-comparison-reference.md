@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0916439ef75c73d59ada1f9a832b95e733520c9c
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 09bd0cf6a43934ea7a0e973b64c434b705d9ea36
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129401026"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129716043"
 ---
 # <a name="live-event-types-comparison"></a>Vergleich von Liveereignistypen
 
@@ -135,6 +135,7 @@ Wenn Sie beispielsweise einen Beitragsfeed mit 720p an ein Liveereignis senden, 
 ### <a name="bitrate-of-contribution-feed-and-output-layers"></a>Bitrate von Beitragsfeed und Ausgabeebenen
 
 Der Liveencoder ist so konfiguriert, dass er sich an die Bitrateninstellungen in der Voreinstellung hält, unabhängig von der Bitrate des Beitragsfeeds. Daraus folgt, dass die Bitrate der Ausgabeebenen größer sein kann als die Bitrate des Beitragsfeeds. Wenn Sie beispielsweise einen Beitragsfeed mit einer Auflösung von 720p bei 1 MBit/s senden, bleiben die Ausgabeebenen dieselben wie in der obigen [Tabelle](live-event-types-comparison-reference.md#output-video-streams-for-default720p).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

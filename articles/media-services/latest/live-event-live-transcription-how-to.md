@@ -59,7 +59,7 @@ Zum Erstellen eines Liveereignisses mit aktivierter Transkription senden Sie den
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-Der Vorgang weist den folgenden Funktionskörper auf (wobei ein Pass-Through-Liveereignis mit RTMP als Erfassungsprotokoll erstellt wird). Beachten Sie das Hinzufügen einer transcriptions-Eigenschaft.
+Der Vorgang weist den folgenden Funktionskörper auf (wobei ein Pass-Through-Liveereignis vom Typ „Basic“ mit RTMP als Erfassungsprotokoll erstellt wird). Beachten Sie das Hinzufügen einer transcriptions-Eigenschaft.
 
 ```
 {
@@ -93,7 +93,7 @@ Der Vorgang weist den folgenden Funktionskörper auf (wobei ein Pass-Through-Liv
       }
     },
     "encoding": {
-      "encodingType": "None"
+      "encodingType": "PassthroughBasic"
     },
     "transcriptions": [
       {

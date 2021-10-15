@@ -1,18 +1,17 @@
 ---
 title: DRS-Regelgruppen und -Regeln von Azure Web Application Firewall für Azure Front Door
 description: Dieser Artikel bietet Informationen zu DRS-Regelgruppen und -Regeln von Web Application Firewall.
-services: web-application-firewall
-author: vhorne
 ms.service: web-application-firewall
-ms.date: 07/29/2021
+author: vhorne
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 401a6bd003e592d1b53aa91ac24f062688da7a3b
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 07/29/2021
+ms.openlocfilehash: 95839937f2356f74d29499bb45e7cd0e1159b02c
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435742"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546347"
 ---
 # <a name="web-application-firewall-drs-rule-groups-and-rules"></a>DRS-Regelgruppen und -Regeln von Web Application Firewall
 
@@ -62,6 +61,9 @@ Im Anomaliebewertungsmodus wird Datenverkehr, der einer beliebigen Regel entspri
 |Hinweis       |2|
 
 Ab einem Schwellenwert von 5 blockiert die Anomaliebewertung den Datenverkehr. Eine Übereinstimmung mit einer einzelnen *kritischen* Regel reicht also aus, damit WAF auch im Schutzmodus eine Anforderung blockiert. Aber eine Übereinstimmung mit einer *Warnungsregel* setzt die Anomaliebewertung nur um 3 herauf, was allein nicht ausreicht, um den Datenverkehr zu blockieren.
+
+> [!NOTE]
+> Textüberprüfung ist nur in DRS 2.0 verfügbar.
 
 ### <a name="drs-20"></a>DRS 2.0
 
@@ -288,6 +290,9 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |941370|Globale JavaScript-Variable gefunden|
 |941380|Einschleusung clientseitiger AngularJS-Vorlagen erkannt|
 
+>[!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Blacklist*, der von Microsoft nicht mehr verwendet wird. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
+
 
 ### <a name="sqli---sql-injection"></a><a name="drs942-20"></a> SQLI – Einschleusung von SQL-Befehlen
 |RuleId|BESCHREIBUNG|
@@ -470,6 +475,9 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |941340|IE-XSS-Filter – Angriff erkannt|
 |941350|UTF-7-Codierung – IE XSS – Angriff erkannt|
 
+>[!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Blacklist*, der von Microsoft nicht mehr verwendet wird. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
+
 ### <a name="sqli---sql-injection"></a><a name="drs942-11"></a> SQLI – Einschleusung von SQL-Befehlen
 |RuleId|BESCHREIBUNG|
 |---|---|
@@ -647,6 +655,9 @@ Die folgenden Regelgruppen und Regeln sind bei Verwendung von Web Application Fi
 |941330|IE-XSS-Filter – Angriff erkannt|
 |941340|IE-XSS-Filter – Angriff erkannt|
 |941350|UTF-7-Codierung – IE XSS – Angriff erkannt|
+
+>[!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Blacklist*, der von Microsoft nicht mehr verwendet wird. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
 
 ### <a name="sqli---sql-injection"></a><a name="drs942-10"></a> SQLI – Einschleusung von SQL-Befehlen
 |RuleId|BESCHREIBUNG|

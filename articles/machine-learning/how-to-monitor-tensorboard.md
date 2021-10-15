@@ -1,20 +1,20 @@
 ---
 title: Visualisieren von Experimenten mit TensorBoard
 titleSuffix: Azure Machine Learning
-description: Starten Sie TensorBoard, um die Historie der Experimentläufe zu visualisieren und potenzielle Bereiche für Hyperparameter-Tuning und -Training zu identifizieren.
+description: Starten Sie TensorBoard, um die Historie der Experimentläufe zu visualisieren und potenzielle Bereiche für die Optimierung und das erneute Training von Hyperparametern zu identifizieren.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: minxia
 ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: a8e1c85bf2284eb2dd5a2bc87c2a60b89478e928
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 29c79d53ded02ab4648359210b8b18ea04f5965b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760605"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429013"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Visualisieren von Experimentausführungen und -metriken mit TensorBoard und Azure Machine Learning
 

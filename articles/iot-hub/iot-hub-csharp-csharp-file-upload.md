@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/24/2021
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: 18055232714914456ec2db51891edc70ac89057e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 91637d6f508eb198345add5ad40fed52a67ec952
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779633"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457713"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub (.NET)
 
@@ -59,7 +59,7 @@ Am Ende dieses Tutorials führen Sie zwei .NET-Konsolen-Apps aus:
     dotnet --version
     ```
 
-* Laden Sie unter [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) die Azure IoT-C#-Beispiele herunter, und extrahieren Sie das ZIP-Archiv.
+* Laden Sie unter [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip) die Azure IoT-C#-Beispiele herunter, und extrahieren Sie das ZIP-Archiv.
 
 * Stellen Sie sicher, dass Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispiel in diesem Artikel wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -77,7 +77,7 @@ Am Ende dieses Tutorials führen Sie zwei .NET-Konsolen-Apps aus:
 
 In diesem Artikel verwenden Sie ein Beispiel aus dem Repository mit Azure IoT C#-Beispielen, das Sie zuvor als Geräte-App heruntergeladen haben. Sie können die unten aufgeführten Dateien mithilfe von Visual Studio, Visual Studio Code oder eines Text-Editors Ihrer Wahl öffnen.  
 
-Das Beispiel ist in **azure-iot-samples-csharp-master\iot-hub\Samples\device\FileUploadSample** unter dem Ordner zu finden, in den Sie die Azure IoT C#-Beispiele extrahiert haben.
+Das Beispiel ist in **azure-iot-samples-csharp-main\iot-hub\Samples\device\FileUploadSample** unter dem Ordner zu finden, in den Sie die Azure IoT C#-Beispiele extrahiert haben.
 
 Untersuchen Sie den Code in **FileUpLoadSample.cs**. Diese Datei enthält die Haupt-Beispiellogik. Nach dem Erstellen eines IoT Hub-Geräteclients wird das dreiteilige Standardverfahren zum Hochladen von Dateien von einem Gerät ausgeführt:
 
@@ -225,7 +225,7 @@ Jetzt können Sie die Anwendungen ausführen.
 
 
 
-1. Führen Sie als Nächstes die Geräte-App aus, um die Datei in Azure Storage hochzuladen. Öffnen Sie eine neue Eingabeaufforderung, und ändern Sie die Ordner unter dem Ordner, in den Sie die Azure IoT C#-Beispiele extrahiert haben, in **azure-iot-samples-csharp-master\iot-hub\Samples\device\FileUploadSample**. Führen Sie die folgenden Befehle aus: Ersetzen Sie den Platzhalterwert `{Your device connection string}` im zweiten Befehl durch die Geräteverbindungszeichenfolge, die Sie vorher im Abschnitt [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) kopiert haben.
+1. Führen Sie als Nächstes die Geräte-App aus, um die Datei in Azure Storage hochzuladen. Öffnen Sie eine neue Eingabeaufforderung, und ändern Sie die Ordner unter dem Ordner, in den Sie die Azure IoT C#-Beispiele extrahiert haben, in **azure-iot-samples-csharp-main\iot-hub\Samples\device\FileUploadSample**. Führen Sie die folgenden Befehle aus: Ersetzen Sie den Platzhalterwert `{Your device connection string}` im zweiten Befehl durch die Geräteverbindungszeichenfolge, die Sie vorher im Abschnitt [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) kopiert haben.
 
     ```cmd/sh
     dotnet restore

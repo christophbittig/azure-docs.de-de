@@ -3,12 +3,12 @@ title: Verwalten der Sicherungen von Azure-Dateifreigaben
 description: In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung der Azure-Dateifreigaben beschrieben, die durch Azure Backup gesichert werden.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 784b22f11b57fb025f6d9401e10d527c83751898
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 973c28b2c8caac4d2acda9e2cd976f9ceb8c387c
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88757624"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534045"
 ---
 # <a name="manage-azure-file-share-backups"></a>Verwalten der Sicherungen von Azure-Dateifreigaben
 
@@ -27,6 +27,10 @@ So öffnen Sie die Seite **Sicherungsaufträge**
 1. Nachdem Sie **OK** ausgewählt haben, wird im Bereich **Sicherungsaufträge** der Status aller Aufträge aufgelistet. Wählen Sie den Namen der Workload aus, die der Dateifreigabe entspricht, die Sie überwachen möchten.
 
    ![Workloadname](./media/manage-afs-backup/workload-name.png)
+
+## <a name="monitor-using-azure-backup-reports"></a>Überwachen mit Azure Backup-Berichten
+
+Azure Backup stellt eine Lösung zur Berichterstellung bereit, die [Azure Monitor-Protokolle](../azure-monitor/logs/log-analytics-tutorial.md) und [Azure-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) verwendet. Diese Ressourcen unterstützen Sie bei der Bereitstellung umfassender Erkenntnisse zu Ihren Sicherungen. Anhand dieser Berichte können Sie Einblicke in Azure Files-Sicherungselemente, Aufträge auf Elementebene und Details aktiver Richtlinien erhalten. Mit dem in Sicherungsberichten verfügbaren Feature „Bericht per E-Mail senden“ können Sie automatisierte Aufgaben zum Empfangen regelmäßiger Berichte per E-Mail erstellen. Weitere Informationen zum Konfigurieren und Anzeigen von Azure Backup-Berichten finden Sie [hier](/azure/backup/configure-reports#get-started).
 
 ## <a name="create-a-new-policy"></a>Erstellen einer neuen Richtlinie
 

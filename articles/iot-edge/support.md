@@ -3,16 +3,16 @@ title: Unterstützte Betriebssysteme, Container-Engines (Azure IoT Edge)
 description: Erfahren Sie, welche Betriebssysteme zur Ausführung von Azure IoT Edge-Daemon und -Runtime verwendet werden können, und welche Containerengines für Ihre Produktionsgeräte unterstützt werden.
 author: kgremban
 ms.author: kgremban
-ms.date: 06/09/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2ce05950cc77e41d55be1a957c5f3985addcc99
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: fd970e80f2b091d17c40b15d6c55699721fb1025
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437020"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349660"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Von Azure IoT Edge unterstützte Systeme
 
@@ -175,21 +175,21 @@ In der folgenden Tabelle sind die in den einzelnen Releases enthaltenen Komponen
 
 | Release | aziot-edge | edgeHub<br>edgeAgent | aziot-identity-service |
 | ------- | ---------- | -------------------- | ---------------------- |
-| **1.2** | 1.2.0<br>1.2.1 | 1.2.0<br>1.2.1   | 1.2.0<br><br> |
+| **1.2** | 1.2.0<br>1.2.1<br>1.2.2<br>1.2.3 | 1.2.0<br>1.2.1<br>1.2.2<br> 1.2.3  | 1.2.0<br>1.2.1<br>1.2.2<br><br> |
 
 In der folgenden Tabelle sind die in den einzelnen Releases enthaltenen Komponenten aufgeführt (bis 1.1 LTS): Die in dieser Tabelle angegebenen Komponenten können einzeln installiert oder aktualisiert werden und sind mit älteren Versionen kompatibel.
 
+IoT Edge 1.1 ist der erste Releasekanal mit langfristigem Support (Long-Term Support, LTS). In dieser Version wurden keine neuen Features eingeführt, allerdings enthält sie Sicherheitsupdates und Fixes für Regressionen. IoT Edge 1.1 LTS verwendet .NET Core 3.1 und wird bis zum 3. December 2022 unterstützt, um dem [Releaselebenszyklus für .NET Core und .NET 5](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) gerecht zu werden.
+
 | Release | iotedge | edgeHub<br>edgeAgent | libiothsm | moby |
 |--|--|--|--|--|
-| **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1<br><br>1.1.3 | 1.1.0<br>1.1.1<br>1.1.2<br>1.1.3 | 1.1.0<br>1.1.1<br><br>1.1.3 |   |
+| **1.1 LTS** | 1.1.0<br>1.1.1<br><br>1.1.3<br>1.1.4<br>1.1.5<br>1.1.6 | 1.1.0<br>1.1.1<br>1.1.2<br>1.1.3<br>1.1.4<br>1.1.5<br><br> | 1.1.0<br>1.1.1<br><br>1.1.3<br>1.1.4<br>1.1.5<br>1.1.6 |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
 | **1.0.9** | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 |  |
 | **1.0.8** | 1.0.8 | 1.0.8<br>1.0.8.1<br>1.0.8.2<br>1.0.8.3<br>1.0.8.4<br>1.0.8.5 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7<br>1.0.7.1 | 1.0.7<br>1.0.7.1 | 1.0.7<br>1.0.7.1 | 3.0.4 (ARMv7hl, CentOS)<br>3.0.5 |
 | **1.0.6** | 1.0.6<br>1.0.6.1 | 1.0.6<br>1.0.6.1 | 1.0.6<br>1.0.6.1 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
-
-<sup>1</sup>IoT Edge 1.1 ist the erste Releasekanal mit langfristigem Support (Long-Term Support, LTS). In dieser Version wurden keine neuen Features eingeführt, allerdings enthält sie Sicherheitsupdates und Fixes für Regressionen. IoT Edge 1.1 LTS verwendet .NET Core 3.1 und wird bis zum 3. December 2022 unterstützt, um dem [Releaselebenszyklus für .NET Core und .NET 5](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) gerecht zu werden.
 
 >[!IMPORTANT]
 >Beim Release eines langfristigen Supportkanals empfehlen wir, dass alle aktuellen Kunden, die zurzeit 1.0.x ausführen, ihre Geräte auf 1.1.x aktualisieren, um fortlaufenden Support zu erhalten.

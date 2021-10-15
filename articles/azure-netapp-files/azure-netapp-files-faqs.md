@@ -1,25 +1,18 @@
 ---
 title: Häufig gestellte Fragen zu Azure NetApp Files | Microsoft-Dokumentation
 description: Häufig gestellte Fragen zu Azure NetApp Files, z. B. Netzwerk, Sicherheit, Leistung, Kapazitätsverwaltung und Datenmigration und -schutz.
-services: azure-netapp-files
-documentationcenter: ''
-author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/27/2021
+author: b-juche
 ms.author: b-juche
-ms.openlocfilehash: 01a483e43429f45562cbb464e2b595023bd2ad5f
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.date: 10/04/2021
+ms.openlocfilehash: 3d0d43dc795dfc729d006fa629382fe35b433983
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091025"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535659"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -83,10 +76,6 @@ Unterstützung von kundenseitig verwalteten Schlüsseln (Bring Your Own Key) mit
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Kann ich Regeln für NFS-Exportrichtlinien konfigurieren, um den Zugriff auf das Azure NetApp Files-Diensteinbindungsziel zu steuern?
 
 Ja, Sie können bis zu fünf Regeln in einer einzigen NFS-Exportrichtlinie konfigurieren.
-
-### <a name="does-azure-netapp-files-support-network-security-groups"></a>Unterstützt Azure NetApp Files Netzwerksicherheitsgruppen?
-
-Nein, Sie können derzeit keine Netzwerksicherheitsgruppen auf das delegierte Azure NetApp Files-Subnetz oder die vom Dienst erstellten Netzwerkschnittstellen anwenden.
 
 ### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Kann ich Azure RBAC mit Azure NetApp Files verwenden?
 
@@ -365,7 +354,50 @@ Azure NetApp Files verwendet während der Codierung der empfangenen Sicherungsda
 
 Das System unternimmt bei der Verarbeitung eines geplanten Sicherungsauftrags zehn Wiederholungsversuche. Wenn der Auftrag fehlschlägt, gibt das System einen Fehler für den Sicherungsvorgang aus. Bei geplanten Sicherungen (basierend auf der konfigurierten Richtlinie) versucht das System, die Daten einmal pro Stunde zu sichern. Wenn neue Momentaufnahmen verfügbar sind, die nicht übertragen wurden (oder bei denen beim letzten Versuch ein Fehler aufgetreten ist), werden diese Momentaufnahmen bei der Übertragung berücksichtigt. 
 
+## <a name="application-resilience-faqs"></a>Häufig gestellte Fragen zur App-Resilienz
+
+In diesem Abschnitt werden Fragen zur App-Resilienz beantwortet.
+
+### <a name="what-do-you-generally-recommend-for-application-timeouts-to-best-handle-potential-application-disruptions-due-to-storage-service-maintenance-events"></a>Was wird im Allgemeinen für App-Timeouts empfohlen, um bestmöglich mit potenziellen App-Unterbrechungen aufgrund von Wartungsereignissen des Speicherdiensts umzugehen?
+
+Azure NetApp Files kann gelegentlich geplant gewartet werden (z. B. Plattformupdates, Dienst- oder Softwareupgrades). Aus der Perspektive eines Dateiprotokolls (NFS/SMB) gelten Wartungsvorgänge gewöhnlich als unterbrechungsfrei, solange die App die E/A-Pausen verarbeiten kann, die während dieser Ereignisse kurzzeitig auftreten können. Die E/A-Pausen sind für gewöhnlich kurz, zwischen ein paar Sekunden bis zu 30 Sekunden. Das NFS-Protokoll ist besonders robust, und Client-Server-Dateivorgänge werden normal fortgesetzt. Einige Anwendungen erfordern möglicherweise eine Optimierung, um E/A-Pausen von 30 bis 45 Sekunden zu verarbeiten. Stellen Sie daher sicher, dass Sie die Resilienzeinstellungen der Anwendung kennen, um mit den Wartungsereignissen des Speicherdiensts umgehen zu können. Für interaktive Apps, die das SMB-Protokoll nutzen, reichen die Standardprotokolleinstellungen in der Regel aus. 
+
+### <a name="do-i-need-to-take-special-precautions-for-specific-smb-based-applications"></a>Muss ich besondere Vorsichtsmaßnahmen für bestimmte SMB-basierte Apps treffen?
+
+Ja, für bestimmte SMB-basierte Apps ist SMB Transparent Failover erforderlich. SMB Transparent Failover ermöglicht Wartungsvorgänge für den Azure NetApp Files-Dienst ohne Unterbrechung der Verbindung mit Serveranwendungen, die Daten auf SMB-Volumes speichern und auf diese Daten zugreifen. Zur Unterstützung von SMB Transparent Failover für bestimmte Apps unterstützt Azure NetApp Files jetzt die [Freigabe-Option für SMB Continuous Availability](azure-netapp-files-create-volumes-smb.md#continuous-availability). 
+
+### <a name="i-am-running-ibm-mq-on-azure-netapp-files-i-have-experienced-application-disruptions-due-to-storage-service-maintenance-despite-using-the-nfs-protocol-do-i-need-to-take-special-precautions"></a>Ich nutze IBM MQ auf Azure NetApp Files. Es gab App-Unterbrechungen aufgrund von Speicherdienstwartungen, obwohl ich das NFS-Protokoll verwendet habe. Muss ich besondere Vorsichtsmaßnahmen treffen?
+
+Ja. Wenn Sie die [IBM MQ-App in einer Konfiguration mit freigegebenen Dateien](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-sharing-mq-files) nutzen, in der die IBM MQ-Daten und -Protokolle auf einem Azure NetApp Files-Volume gespeichert werden, folgen Sie diesen Empfehlungen, um die Resilienz bei Wartungsereignissen des Speicherdiensts zu verbessern:
+
+* Sie dürfen nur das NFS V4.1-Protokoll verwenden.
+* Sie sollten eine [IBM MQ-Konfiguration mit mehreren Instanzen, die freigegebene NFS V4.1-Volumes nutzt](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=manager-create-multi-instance-queue-linux), für Hochverfügbarkeit verwenden. 
+* Sie sollten die Funktionalität der [IBM-Konfiguration mit mehreren Instanzen, die freigegebene NFS V4.1-Volumes nutzt](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-verifying-shared-file-system-behavior), überprüfen. 
+* Sie sollten eine IBM MQ-Architektur mit horizontaler Skalierung einführen, anstatt eine große IBM MQ-Konfiguration mit mehreren Instanzen zu verwenden. Durch das Verteilen der Nachrichtenverarbeitungslast auf mehrere IBM MQ-Paare mit mehreren Instanzen kann die Wahrscheinlichkeit von Dienstunterbrechungen verringert werden, da jedes MQ-Paar mit mehreren Instanzen weniger Nachrichten verarbeiten muss.
+
+> [!NOTE] 
+> Die Anzahl der Nachrichten, die jedes MQ-Paar mit mehreren Instanzen verarbeiten sollte, hängt stark von Ihrer spezifischen Umgebung ab. Sie müssen entscheiden, wie viele MQ-Paare mit mehreren Instanzen benötigt werden, oder wie die Regeln zum Hoch- oder Herunterskalieren lauten werden.
+
+Die Architektur für die horizontale Skalierung besteht aus mehreren IBM MQ-Paaren mit mehreren Instanzen, die hinter einem Azure Load Balancer bereitgestellt werden. Apps, die für die Kommunikation mit IBM MQ konfiguriert sind, werden dann für die Kommunikation mit den IBM MQ-Instanzen über Azure Load Balancer konfiguriert. Um Unterstützung im Zusammenhang mit IBM MQ auf freigegebenen NFS-Volumes zu erhalten, wenden Sie sich an den Anbietersupport bei IBM.
+
+### <a name="i-am-running-apache-activemq-with-leveldb-or-kahadb-on-azure-netapp-files-i-have-experienced-disruptions-due-to-storage-service-maintenance-events-despite-using-the-nfs-protocol-do-i-need-to-take-special-precautions"></a>Ich nutze Apache ActiveMQ mit LevelDB oder KahaDB auf Azure NetApp Files. Es gab App-Unterbrechungen aufgrund von Wartungsereignissen des Speicherdiensts, obwohl ich das *NFS*-Protokoll verwendet habe. Muss ich besondere Vorsichtsmaßnahmen treffen?
+
+Ja. Wenn Sie Apache ActiveMQ nutzen, wird empfohlen, [ActiveMQ High Availability mit Pluggable Storage Lockers](https://www.openlogic.com/blog/pluggable-storage-lockers-activemq) bereitzustellen. 
+
+ActiveMQ-Hochverfügbarkeitsmodelle (HA-Modelle) stellen sicher, dass stets eine Brokerinstanz online ist und den Nachrichtendatenverkehr verarbeiten kann. Bei den beiden häufigsten ActiveMQ-HA-Modellen muss ein Dateisystem über ein Netzwerk geteilt werden. Der Zweck ist die Bereitstellung von LevelDB oder KahaDB für die aktiven und passiven Brokerinstanzen. Diese HA-Modelle erfordern, dass eine Sperre für eine Datei in den LevelDB- oder KahaDB-Verzeichnissen auf Betriebssystemebene, einfach „Lock“ genannt, eingesetzt und verwaltet wird. Mit diesem ActiveMQ-HA-Modell gibt es ein paar Probleme. Es kann zu einer „No Master“-Situation führen, in der der „Slave“ nicht weiß, dass er die Datei sperren kann.  Es kann auch zu einer „Master-Master“-Konfiguration kommen, die zu einer Beschädigung des Indexes oder Journals und letztendlich zu Nachrichtenverlusten führt. Die meisten dieser Probleme sind auf Faktoren zurückzuführen, auf die ActiveMQ keinen Einfluss hat. Zum Beispiel kann ein schlecht optimierter NFS-Client dafür sorgen, dass Sperrdaten unter Last veralten, was während dem Failover zu „No Master“-Downtime führt. 
+
+Da die meisten Probleme mit dieser HA-Lösung auf ungenaue Dateisperren auf Betriebssystemebene zurückzuführen sind, hat die ActiveMQ-Community [das Konzept eines Pluggable Storage Lockers](https://www.openlogic.com/blog/pluggable-storage-lockers-activemq) in Version 5.7 des Brokers eingeführt. Dieser Ansatz ermöglicht es Benutzer*innen, eine andere Art gemeinsame Sperre zu nutzen, und zwar eine JDBC-Datenbanksperre auf Zeilenebene anstatt einer Dateisystemsperre auf Betriebssystemebene. Wenn Sie Unterstützung bei ActiveMQ-HA-Architekturen und -Bereitstellungen erhalten möchten, [wenden Sie sich an OpenLogic von Perforce](https://www.openlogic.com/contact-us).
+
+>[!NOTE]
+> Dieser Abschnitt enthält Verweise auf die Begriffe *Slave* und *Master*, die von Microsoft nicht mehr verwendet werden. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+
+### <a name="i-am-running-apache-activemq-with-leveldb-or-kahadb-on-azure-netapp-files-i-have-experienced-disruptions-due-to-storage-service-maintenance-event-despite-using-the-smb-protocol-do-i-need-to-take-special-precautions"></a>Ich nutze Apache ActiveMQ mit LevelDB oder KahaDB auf Azure NetApp Files. Es gab App-Unterbrechungen aufgrund von Wartungsereignissen des Speicherdiensts, obwohl ich das *SMB*-Protokoll verwendet habe. Muss ich besondere Vorsichtsmaßnahmen treffen?
+
+Die allgemeine Branchenempfehlung ist, Ihren [freigegebenen KahaDB-Speicher nicht unter CIFS/SMB zu nutzen](https://www.openlogic.com/blog/activemq-community-deprecates-leveldb-what-you-need-know). Wenn Sie Probleme beim Aufrechterhalten eines genauen Sperrzustands haben, sehen Sie sich den JDBC Pluggable Storage Locker an, der über einen zuverlässigeren Sperrmechanismus verfügt. Wenn Sie Unterstützung bei ActiveMQ-HA-Architekturen und -Bereitstellungen erhalten möchten, [wenden Sie sich an OpenLogic von Perforce](https://www.openlogic.com/contact-us).
+
 ## <a name="product-faqs"></a>Häufig gestellte Fragen (FAQs) zu Produkten
+
+Dieser Abschnitt enthält Informationen zu Produkten im Zusammenhang mit Azure NetApp Files. 
 
 ### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Kann ich NFS- oder SMB-Volumes von Azure NetApp Files mit Azure VMware Solution (AVS) verwenden?
 

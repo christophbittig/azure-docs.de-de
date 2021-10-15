@@ -4,12 +4,12 @@ description: Beschreibt das Sichern und Wiederherstellen von virtuellen Azure-Co
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 89514bad58633727b5189c7d0daecccf5372efea
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 6f669a7382cfe7dad4c1a58186ce3c6a30f49063
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214989"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533955"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
@@ -529,6 +529,12 @@ Nachdem der Wiederherstellungsauftrag abgeschlossen ist, verwenden Sie das Cmdle
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetail -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="using-managed-identity-to-restore-disks"></a>Verwenden der verwalteten Identität zum Wiederherstellen von Datenträgern
+
+Mit Azure Backup können Sie auch eine verwaltete Identität (Managed Service Identity, MSI) während des Wiederherstellungsvorgang verwenden, um auf Speicherkonten zuzugreifen, in denen Datenträger wiederhergestellt werden müssen. Diese Option wird derzeit nur für die Wiederherstellung verwalteter Datenträger unterstützt.
+
+Wenn Sie die systemseitig zugewiesene verwaltete Identität des Tresors zum Wiederherstellen von Datenträgern verwenden möchten, übergeben Sie ein zusätzliches Flag (* **-UseSystemAssignedIdentity** _) an den Befehl „Restore-AzRecoveryServicesBackupItem“. Wenn Sie eine benutzerseitig zugewiesene verwaltete Identität verwenden möchten, übergeben Sie den Parameter _*_ -UserAssignedIdentityId_** mit der ARM-ID der verwalteten Identität des Tresors als Wert des Parameters. In [diesem Artikel](encryption-at-rest-with-cmk.md#enable-managed-identity-for-your-recovery-services-vault) erfahren Sie, wie Sie eine verwaltete Identität für Ihre Tresore aktivieren. 
 
 #### <a name="restore-selective-disks"></a>Selektives Wiederherstellen von Datenträgern
 
