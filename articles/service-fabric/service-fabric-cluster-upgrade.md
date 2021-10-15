@@ -3,12 +3,12 @@ title: Upgrade von Azure Service Fabric-Clustern
 description: Erfahren Sie mehr über die Optionen zum Aktualisieren Ihres Azure Service Fabric-Clusters.
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 9af6a9b4d515fcede5bc0444a93ae8118077e7dd
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7fad28e0357b26b0b8753496310c7788f6dbb0c8
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738750"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401146"
 ---
 # <a name="upgrading-and-updating-azure-service-fabric-clusters"></a>Upgrade und Update von Azure Service Fabric-Clustern
 
@@ -27,6 +27,9 @@ Sie können für Ihren Cluster festlegen, dass er automatische Service Fabric-Up
 Sie können auch Upgrademodus Ihres Clusters festlegen und eine Runtime-Version auswählen, indem Sie [eine Resource Manager-Vorlage verwenden](service-fabric-cluster-upgrade-version-azure.md#resource-manager-template).
 
 Automatische Upgrades sind der empfohlene Upgrademodus, da diese Option sicherstellt, dass Ihr Cluster in einem unterstützten Zustand bleibt, von den neuesten Fixes und Features profitiert und Ihnen gleichzeitig erlaubt, Updates auf eine Weise zu planen, bei der Ihre Workloads dank einer [Bereitstellungsstrategie in Zyklen](#wave-deployment-for-automatic-upgrades) am wenigsten gestört werden.
+
+> [!NOTE]
+> Wenn Sie einen bestehenden Cluster in den automatischen Modus ändern, wird der Cluster für den nächsten Upgrade-Zeitraum, der mit einer neuen Version beginnt, registriert. Neue Releases werden im [Blog des Service Fabric-Teams](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) angekündigt. Pro Upgrade-Periode wird der höchstmögliche Upgrade-Pfad gewählt, siehe [unterstützte Versionen](service-fabric-versions.md). Der manuelle Upgrade-Modus löst ein sofortiges Upgrade aus. 
 
 ## <a name="wave-deployment-for-automatic-upgrades"></a>Bereitstellung in Zyklen für automatische Upgrades
 

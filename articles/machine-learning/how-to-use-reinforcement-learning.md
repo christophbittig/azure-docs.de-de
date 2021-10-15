@@ -1,7 +1,7 @@
 ---
-title: Trainieren und Bereitstellen eines Modells für das Lernen durch Bestärkung (Vorschau).
+title: Training und Bereitstellen eines Modells für das Lernen durch Bestärkung (Vorschau)
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie das Lernen durch Bestärkung (Reinforcement Learning, RL) von Azure Machine Learning nutzen, um einen RL-Agent so zu trainieren, dass er Pong spielen kann.
+description: Lernen Sie, wie Sie das Lernen durch Bestärkung (Reinforcement Learning, RL) von Azure Machine Learning einsetzen, um einen RL-Agent so zu trainieren, dass er Pong spielen kann.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 84fbea3d7d38e16a2069c40a459d5f86e7412a09
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ca8f0349692b8a72d8a8b5953723249934a6f672
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739041"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428614"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Lernen durch Bestärkung (Vorschau) mit Azure Machine Learning
 
 
 
 > [!NOTE]
-> Das Lernen durch Bestärkung von Azure Machine Learning ist derzeit eine Previewfunktion. Momentan werden nur Ray- und RLlib-Frameworks unterstützt.
+> Das vertiefende Lernen von Azure Machine Learning ist derzeit eine Previewfunktion. Momentan werden nur Ray- und RLlib-Frameworks unterstützt.
 
 In diesem Artikel erfahren Sie, wie Sie einen RL-Agent (Reinforcement Learning, Lernen durch Bestärkung) trainieren, damit er das Videospiel Pong spielen kann. Sie verwenden dabei die Open-Source-Python-Bibliothek [Ray RLlib](https://ray.readthedocs.io/en/master/rllib.html) mit Azure Machine Learning, um komplexe verteilte RL-Aufträge zu verwalten.
 
@@ -214,6 +214,7 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Erstellen eines Estimators für Lernen durch Bestärkung
+
 Übermitteln Sie mit dem [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator) einen Trainingsauftrag an Azure Machine Learning.
 
 Azure Machine Learning verwendet Schätzklassen, um Informationen zur Ausführungskonfiguration zu kapseln. So können Sie festlegen, wie eine Skriptausführung konfiguriert werden soll. 

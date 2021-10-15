@@ -1,47 +1,59 @@
 ### YamlMime:Landing
-title: Dokumentation zu Azure Active Directory-Nachweisen
+title: Dokumentation zu Azure Active Directory-Nachweisen (Vorschau)
 summary: Nachweise helfen Ihnen beim Erstellen von Lösungen, mit denen Kunden ihre eigenen Daten verwalten können.
 metadata:
   author: barclayn
   description: Hier erfahren Sie, wie Sie Nachweise in Ihre Lösungen integrieren, mit denen Kunden Informationen über sich selbst steuern können.
-  manager: daveba
+  manager: karenh444
   ms.author: barclayn
   ms.collection: na
-  ms.date: 03/30/2021
+  ms.date: 10/13/2021
   ms.service: active-directory
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: 13eb88e8e8613c913f66185eba751a1fe3c36e1e
-  ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+  ms.openlocfilehash: 8a69a36231d2eb47307537da0e39ab4306942669
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/01/2021
-  ms.locfileid: "106176207"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "130006791"
 landingContent:
-- title: Informationen zu Nachweisen
+- title: Wichtige Konzepte
   linkLists:
   - linkListType: overview
     links:
     - text: Einführung in Azure Active Directory-Nachweise
       url: decentralized-identifier-overview.md
+  - linkListType: overview
+    links:
+    - text: Leitprinzipien für dezentralisierte Identitäten
+      url: https://www.microsoft.com/security/blog/2021/10/06/microsofts-5-guiding-principles-for-decentralized-identities/
   - linkListType: video
     links:
     - text: Steuern des Zugriffs auf Ihre Ressourcen
       url: https://www.youtube.com/watch?v=r20hCF9NbTo
-- title: Kontrolle über persönliche Informationen dank Nachweisen
+- title: Informationen zum Azure Active Directory-Nachweisdienst
   linkLists:
   - linkListType: tutorial
     links:
     - text: 'Erste Schritte: Nachweise'
-      url: get-started-verifiable-credentials.md
+      url: enable-your-tenant-verifiable-credentials.md
+  - linkListType: tutorial
+    links:
+    - text: Ausstellen von Nachweisen
+      url: verifiable-credentials-configure-issuer.md
+- title: Erstellen von Nachweislösungen
+  linkLists:
   - linkListType: concept
     links:
-    - text: Beispiele für die Kommunikation des Ausstellerdiensts
-      url: issuer-openid.md
-- title: Verknüpfen Ihrer DID
-  linkLists:
+    - text: Planen der Architektur
+      url: introduction-to-verifiable-credentials-architecture.md
   - linkListType: how-to-guide
     links:
-    - text: Verknüpfen Ihrer Domäne mit Ihrer dezentralisierten Identität
-      url: how-to-dnsbind.md
+    - text: Die Anforderungsdienst-API für Aussteller
+      url: issuance-request-api.md
+  - linkListType: how-to-guide
+    links:
+    - text: Anforderungsdienst-API für Prüfer
+      url: presentation-request-api.md

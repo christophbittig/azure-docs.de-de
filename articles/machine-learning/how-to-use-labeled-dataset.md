@@ -5,16 +5,16 @@ description: Erfahren Sie, wie Sie Datasetbezeichnungen aus Ihren Azure Machine 
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
 ms.custom: data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: e46d088180666523c27d86a98d740fa49f5214f2
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 2af916866aa78a081f8769322a80f4d846c89d3e
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112460484"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424083"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Erstellen und Untersuchen eines Azure Machine Learning-Datasets mit Bezeichnungen
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie die Datenbezeichnungen aus einem Azure M
 
 ## <a name="what-are-datasets-with-labels"></a>Was sind Datasets mit Bezeichnungen? 
 
-Azure Machine Learning-Datasets mit Bezeichnungen sind ein spezieller Typ von Dataset. Datasets dieses Typs werden nur als Ausgabe von Azure Machine Learning-Datenbezeichnungsprojekten erstellt. Erstellen Sie ein Datenbezeichnungsprojekt mit [den folgenden Schritten](how-to-create-labeling-projects.md). Machine Learning unterstützt Datenbezeichnungsprojekte für die Bildklassifizierung – mit mehreren Bezeichnungen oder mehreren Klassen – und die Objektidentifikation mit Begrenzungsrahmen.
+Azure Machine Learning-Datasets mit Bezeichnungen sind ein spezieller Typ von Dataset. Datasets dieses Typs werden nur als Ausgabe von Azure Machine Learning-Datenbezeichnungsprojekten erstellt. Erstellen Sie ein Datenbeschriftungsprojekt [für Bildbeschriftung](how-to-create-image-labeling-projects.md) oder [Textbeschriftung](how-to-create-text-labeling-projects.md). Machine Learning unterstützt Datenbezeichnungsprojekte für die Bildklassifizierung – mit mehreren Bezeichnungen oder mehreren Klassen – und die Objektidentifikation mit Begrenzungsrahmen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,7 +30,7 @@ Azure Machine Learning-Datasets mit Bezeichnungen sind ein spezieller Typ von Da
 * Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro), oder greifen Sie auf [Azure Machine Learning-Studio](https://ml.azure.com/) zu.
     * Installieren des Pakets [azure-contrib-dataset](/python/api/azureml-contrib-dataset/)
 * Ein Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
-* Zugriff auf ein Azure Machine Learning-Datenbezeichnungsprojekt. Wenn Sie nicht über ein Bezeichnungsprojekt verfügen, erstellen Sie eines mit [den folgenden Schritten](how-to-create-labeling-projects.md).
+* Zugriff auf ein Azure Machine Learning-Datenbezeichnungsprojekt. Wenn Sie kein Bezeichnungsprojekt haben, erstellen Sie zunächst ein Projekt für [Bildbeschriftung](how-to-create-image-labeling-projects.md) oder [Textbeschriftung](how-to-create-text-labeling-projects.md).
 
 ## <a name="export-data-labels"></a>Exportieren von Datenbezeichnungen 
 

@@ -2,13 +2,13 @@
 title: Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Arc
 description: Erfahren Sie, wie Sie Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Arc verwenden.
 ms.topic: conceptual
-ms.date: 09/14/2021
-ms.openlocfilehash: 53bd9310c193d4fad1d550fbf33446754c30ecd6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2021
+ms.openlocfilehash: 10b306ef659903524c5a6a62c24ffe36e074666a
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128631512"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399791"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-arc"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Arc
 
@@ -44,10 +44,12 @@ Private Link-Bereich für Azure Arc (Vorschau) verbindet private Endpunkte (und 
 
 :::image type="content" source="./media/private-link-security/private-link-topology.png" alt-text="Diagramm der grundlegenden Ressourcentopologie" border="true":::
 
-Für Konnektivität zwischen den anderen Azure-Ressourcen und einem zuvor aufgeführten Azure Arc-fähigen Server muss Private Link für jeden Dienst konfiguriert werden. Weitere Informationen finden Sie in den folgenden Artikeln zum Konfigurieren von Private Link für [Azure Automation](../../automation/how-to/private-link-security.md), [Azure Monitor](../../azure-monitor/logs/private-link-security.md), [Azure Key Vault](../../key-vault/general/private-link-service.md) und [Azure Blob Storage](../../private-link/tutorial-private-endpoint-storage-portal.md).
+Die Konnektivität zu einer anderen Azure-Ressource von einem Azure Arc-fähigen Server aus erfordert die Konfiguration von Private Link für jeden Dienst, was optional ist, aber empfohlen wird. Azure Private Link muss für jeden Dienst separat konfiguriert werden.
+
+Weitere Informationen zur Konfiguration von Private Link für die oben aufgeführten Azure-Dienste finden Sie in den Artikeln [Azure Automation](../../automation/how-to/private-link-security.md), [Azure Monitor](../../azure-monitor/logs/private-link-security.md), [Azure Key Vault](../../key-vault/general/private-link-service.md) oder [Azure Blob Speicher](../../private-link/tutorial-private-endpoint-storage-portal.md).
 
 > [!IMPORTANT]
-> Azure Private Link ist jetzt allgemein verfügbar. Sowohl der Dienst für private Endpunkte als auch der Dienst „Private Link“ (Dienst im Hintergrund von Load Balancer Standard) ist allgemein verfügbar. Für unterschiedliche Azure PaaS-Instanzen wird das Onboarding für Azure Private Link basierend auf verschiedenen Zeitplänen durchgeführt. Den genauen Azure PaaS-Status für Private Link finden Sie unter [Verfügbarkeit von Azure Private Link](../../private-link/availability.md). Weitere Informationen zu bekannten Einschränkungen finden Sie unter [Privater Endpunkt](../../private-link/private-endpoint-overview.md#limitations) und [Private Link-Dienst](../../private-link/private-link-service-overview.md#limitations).
+> Azure Private Link ist jetzt allgemein verfügbar. Sowohl der Dienst für private Endpunkte als auch der Dienst „Private Link“ (Dienst im Hintergrund von Load Balancer Standard) ist allgemein verfügbar. Verschiedene Azure PaaS werden nach unterschiedlichen Zeitplänen in Azure Private Link eingebunden. Siehe [Private Link Verfügbarkeit](../../private-link/availability.md) für einen aktualisierten Status von Azure PaaS auf Private Link. Weitere Informationen zu bekannten Einschränkungen finden Sie unter [Privater Endpunkt](../../private-link/private-endpoint-overview.md#limitations) und [Private Link-Dienst](../../private-link/private-link-service-overview.md#limitations).
 
 * Der private Endpunkt in Ihrem VNet ermöglicht, Azure Arc-fähige Server über private IP-Adressen im Pool Ihres Netzwerks zu erreichen, anstatt die öffentlichen IP-Adressen dieser Endpunkte zu verwenden. Auf diese Weise können Sie Ihre Azure Arc-fähigen Serverressourcen weiterhin nutzen, ohne das VNet für nicht angeforderten ausgehenden Datenverkehr zu öffnen.
 

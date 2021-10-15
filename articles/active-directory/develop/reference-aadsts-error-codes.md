@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/11/2021
+ms.date: 07/28/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 55a640be9eacf2feaf3852cf14f3181b924373b6
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 8492b35fae2d2c2d716330002d5f889ec693f8c5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856696"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353363"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
@@ -27,11 +27,6 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 > Diese Informationen sind vorläufig und können sich ändern. Haben Sie eine Frage, oder können Sie nicht finden, was Sie suchen? Erstellen Sie ein GitHub-Problem, oder lesen Sie [Support- und Hilfeoptionen für Entwickler](./developer-support-help-options.md), um mehr über andere Möglichkeiten zu erfahren, wie Sie Hilfe und Unterstützung erhalten können.
 >
 > Diese Dokumentation dient als Leitfaden für Entwickler und Administratoren, sollte aber niemals vom Kunden selbst verwendet werden. Fehlercodes können jederzeit geändert werden, um detailliertere Fehlermeldungen zu erhalten, die den Entwickler bei der Erstellung seiner Anwendung unterstützen sollen. Apps, die von Text- oder Fehlercodenummern abhängig sind, funktionieren im Lauf der Zeit nicht mehr.
-
-## <a name="lookup-current-error-code-information"></a>Nachschlagen aktueller Fehlercodeinformationen
-Fehlercodes und Meldungen unterliegen Änderungen.  Die aktuellen Informationen finden Sie auf der Seite [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error). Sie enthält AADSTS-Fehlerbeschreibungen, Fehlerbehebungen und einige Vorschläge für Problemumgehungen.  
-
-Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen Sie unter [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) nach „50058“.  Sie können auch einen direkten Link zu einem bestimmten Fehler einrichten, indem Sie die Nummer des Fehlercodes der URL hinzufügen: [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058).
 
 ## <a name="handling-error-codes-in-your-application"></a>Problembehandlung bei Fehlercodes in Ihrer Anwendung
 
@@ -75,6 +70,11 @@ Für das Feld `error` gibt es mehrere mögliche Werte. Unter den Protokolldokume
 | `invalid_resource` | Die Zielressource ist ungültig, da sie nicht vorhanden ist, Azure AD sie nicht findet oder sie nicht ordnungsgemäß konfiguriert ist. | Dies gibt an, dass die Ressource, falls vorhanden, im Mandanten nicht konfiguriert wurde. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern.  Während der Entwicklung deutet dies in der Regel auf einen falsch eingerichteten Testmandanten oder einen Tippfehler im Namen des angeforderten Bereichs hin. |
 | `interaction_required` | Die Anforderung erfordert eine Benutzerinteraktion. Beispielsweise ist ein zusätzlicher Schritt zur Authentifizierung erforderlich. | Wiederholen Sie die Anforderung mit der gleichen Ressource (interaktiv), damit der Benutzer alle erforderlichen Aufgaben abschließen kann.  |
 | `temporarily_unavailable` | Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. | Wiederholen Sie die Anforderung. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist. |
+
+## <a name="lookup-current-error-code-information"></a>Nachschlagen aktueller Fehlercodeinformationen
+Fehlercodes und Meldungen unterliegen Änderungen.  Die aktuellen Informationen finden Sie auf der Seite [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error). Sie enthält AADSTS-Fehlerbeschreibungen, Fehlerbehebungen und einige Vorschläge für Problemumgehungen.  
+
+Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen Sie unter [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) nach „50058“.  Sie können auch einen direkten Link zu einem bestimmten Fehler einrichten, indem Sie die Nummer des Fehlercodes der URL hinzufügen: [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058).
 
 ## <a name="aadsts-error-codes"></a>AADSTS-Fehlercodes
 

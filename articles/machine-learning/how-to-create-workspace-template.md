@@ -10,17 +10,14 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 04/21/2021
-ms.openlocfilehash: 7714adf00a40953301cf3f13eb8d6e403cd8c7a3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c0220070d6b377212099a67c4328bc080afc1648
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339533"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544619"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning
-
-
-<br>
 
 In diesem Artikel erlernen Sie verschiedene Möglichkeiten zum Erstellen eines Azure Machine Learning-Arbeitsbereichs mithilfe von Azure Resource Manager-Vorlagen. Eine Resource Manager-Vorlage erleichtert das Erstellen von Ressourcen in einem einzelnen, koordinierten Vorgang. Eine Vorlage ist ein JSON-Dokument, das die Ressourcen definiert, die für eine Bereitstellung erforderlich sind. Es kann außerdem bestimmte Bereitstellungsparameter angeben. Parameter werden verwendet, um Eingabewerte bereitzustellen, wenn die Vorlage verwendet wird.
 
@@ -38,7 +35,7 @@ Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer 
 
 ## <a name="workspace-resource-manager-template"></a>Verwenden von Arbeitsbereich-Resource Manager-Vorlagen
 
-Die in diesem Dokument verwendete Azure Resource Manager-Vorlage finden Sie im GitHub-Repository für Azure-Schnellstartvorlagen im Verzeichnis [machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json).
+Die in diesem Dokument verwendete Azure Resource Manager-Vorlage befindet sich im Verzeichnis [microsoft.machineleaerningservices/machine-learning-workspace-vnet](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-workspace-vnet/azuredeploy.json) des Azure Quickstart Templates GitHub Repository.
 
 Diese Vorlage erstellt die folgenden Azure-Dienste:
 
@@ -276,9 +273,6 @@ Wenn Sie den `vnetOption`-Parameterwert entweder auf `new` oder `existing`festle
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>Bereitstellen des Arbeitsbereichs nur hinter einem privatem Endpunkt
 
 Wenn sich ihre zugeordneten Ressourcen nicht hinter einem virtuellen Netzwerk befinden, können Sie den Parameter **privateEndpointType** auf `AutoAproval` oder `ManualApproval` festlegen, um den Arbeitsbereich hinter einem privaten Endpunkt bereitzustellen. Dies kann für neue und vorhandene Arbeitsbereiche erfolgen. Wenn Sie einen vorhandenen Arbeitsbereich aktualisieren, geben Sie die Vorlagenparameter anhand der Informationen aus dem vorhandenen Arbeitsbereich ein.
-
-> [!IMPORTANT]
-> Die Verwendung eines Azure Machine Learning-Arbeitsbereichs mit einem privaten Endpunkt ist in den Regionen vom Typ „Azure Government“ nicht verfügbar.
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
 

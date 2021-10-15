@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 04/14/2021
 ms.author: banders
-ms.openlocfilehash: d45682a3ccdc67cdbff8ef0c1edd542817875fbc
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 56ebba760defcb47d336874294255e2e97e5a151
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111891552"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546226"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 
@@ -80,6 +80,7 @@ Wenn der ursprüngliche Kauf als Überschreitung erfolgte, werden die Ursprungsr
 ### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>Nutzungsbasierte Bezahlung und das CSP-Programm
 
 Die ursprüngliche Rechnung für den Kauf der Reservierung wird storniert, und anschließend wird eine neue Rechnung für die Erstattung erstellt. Bei einem Umtausch werden für die neue Rechnung die Erstattung und der neue Kauf angezeigt. Der Erstattungsbetrag wird anhand des Kaufbetrags angepasst. Falls Sie nur eine Erstattung für eine Reservierung durchgeführt haben, verbleibt der anteilige Betrag bei Microsoft, und die Anpassung wird bei einem zukünftigen Kauf einer Reservierung vorgenommen. Wenn Sie eine Reservierung zu Tarifen für die nutzungsbasierte Bezahlung gekauft haben und später zu CSP wechseln, kann die Reservierung zurückgegeben und ohne Strafgebühr erneut erworben werden.
+Es ist nicht möglich, selbst eine Rückerstattung im CSP vorzunehmen. Wenden Sie sich an den Support Ihres CSP, wenn Sie eine Anforderung zur Rückerstattung haben.
 
 ### <a name="pay-as-you-go-credit-card-customers"></a>Kreditkartenkunden mit nutzungsbasierter Bezahlung
 

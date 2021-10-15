@@ -1,26 +1,26 @@
 ---
-title: Preise für reserviertes Compute – Azure Database for PostgreSQL (Einzelserver)
+title: Preise für reserviertes Compute – Azure Database for PostgreSQL
 description: Vorauszahlung für Azure Database for PostgreSQL-Computeressourcen mit reservierter Kapazität
 author: mksuni
 ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.openlocfilehash: 958663ffc0b05b55d837ae565ee48ee03a54b0ba
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2021
+ms.openlocfilehash: 9d8c0a4f550442b59a65993aceba37a1672ce078
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674735"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389492"
 ---
-# <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Database for PostgreSQL – Einzelserver-Computeressourcen mit reservierter Kapazität
+# <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Database for PostgreSQL-Computeressourcen mit reservierter Kapazität
 
 Mit Azure Database for PostgreSQL können Sie jetzt Geld im Vergleich zur nutzungsbasierten Bezahlung sparen, indem Sie Computeressourcen im Voraus bezahlen. Mit reservierten Azure Database for PostgreSQL-Kapazitäten leisten Sie eine Vorauszahlung für PostgreSQL-Server für einen Zeitraum von einem oder drei Jahren und erhalten dafür einen immensen Rabatt auf die Computekosten. Um reservierte Azure Database for PostgreSQL-Kapazität zu erwerben, müssen Sie die Azure-Region, den Bereitstellungstyp, die Leistungsstufe und die Laufzeit angeben. </br>
 
 Sie müssen die Reservierung nicht bestimmten Azure Database for PostgreSQL-Servern zuweisen. Azure Database for PostgreSQL-Server, die bereits ausgeführt oder neu bereitgestellt werden, profitieren automatisch von dem Reservierungspreisvorteil. Beim Kauf einer Reservierung bezahlen Sie im Voraus die Computekosten für einen Zeitraum von einem oder drei Jahren. Sobald Sie eine Reservierung gekauft haben, werden die Azure Database for PostgreSQL-Computegebühren, die den Reservierungsattributen entsprechen, nicht mehr zu den Preisen der nutzungsbasierten Bezahlung abgerechnet. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für den PostgreSQL-Datenbankserver ab. Nach Ablauf der Reservierungslaufzeit erlischt der Abrechnungsvorteil, und die Azure Database for PostgreSQL-Server werden mit den Preisen für die nutzungsbasierte Bezahlung in Rechnung gestellt. Reservierungen werden nicht automatisch verlängert. Weitere Informationen zu den Preisen finden Sie unter [Azure Database for PostgreSQL – Preise](https://azure.microsoft.com/pricing/details/postgresql/). </br>
 
 > [!IMPORTANT]
-> Die Preise für reservierte Kapazitäten sind für Azure Database for PostgreSQL in den Bereitstellungsoptionen [Einzelserver](./overview.md#azure-database-for-postgresql---single-server) und [Hyperscale Citus](./overview.md#azure-database-for-postgresql--hyperscale-citus) verfügbar. Informationen zu den RI-Preisen für Hyperscale (Citus) finden Sie auf [dieser Seite](concepts-hyperscale-reserved-pricing.md).
+> Preise für reservierte Kapazität sind für die Azure Database for PostgreSQL in den Bereitstellungsoptionen [Single Server](./overview.md#azure-database-for-postgresql---single-server), [Flexible Server](flexible-server/overview.md) und [Hyperscale Citus](./overview.md#azure-database-for-postgresql--hyperscale-citus) verfügbar. Informationen zu den RI-Preisen für Hyperscale (Citus) finden Sie auf [dieser Seite](concepts-hyperscale-reserved-pricing.md).
 
 Sie können die reservierte Azure Database for PostgreSQL-Kapazität über das [Azure-Portal](https://portal.azure.com/) erwerben. Bezahlen Sie die Reservierung [im Voraus oder monatlich](../cost-management-billing/reservations/prepare-buy-reservation.md). So erwerben Sie reservierte Kapazität:
 

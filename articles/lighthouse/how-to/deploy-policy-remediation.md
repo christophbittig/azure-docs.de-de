@@ -1,14 +1,14 @@
 ---
 title: Bereitstellen einer Richtlinie, die gewartet werden kann
 description: Zum Bereitstellen von Richtlinien, die einen Wartungstask über Azure Lighthouse verwenden, müssen Sie eine verwaltete Identität im Mandanten des Kunden erstellen.
-ms.date: 09/13/2021
+ms.date: 09/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 2270644a2d3e841a40046743bd6092a3ba44105d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5783d753fabb7246914056139fb9a081b7684b9c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128611451"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362270"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Bereitstellen einer Richtlinie, die innerhalb eines delegierten Abonnements gewartet werden kann
 
@@ -19,11 +19,14 @@ Mit [Azure Lighthouse](../overview.md) können Dienstanbieter Richtliniendefinit
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Erstellen eines Benutzers, der einer verwalteten Identität im Kundenmandanten Rollen zuweisen kann
 
-Beim Onboarding eines Kunden für Azure Lighthouse verwenden Sie eine [Azure Resource Manager-Vorlage](onboard-customer.md#create-an-azure-resource-manager-template) zusammen mit einer Parameterdatei, um Autorisierungen zu definieren, mit denen der Zugriff auf delegierte Ressourcen auf dem Kundenmandanten gewährt wird. Bei jeder Autorisierung wird eine **principalId** angegeben, die für einen Benutzer, eine Gruppe oder einen Dienstprinzipal von Azure AD auf dem verwaltenden Mandanten steht. Darüber hinaus wird eine **roleDefinitionId** für die [integrierte Azure-Rolle](../../role-based-access-control/built-in-roles.md) angegeben, die gewährt wird.
+Beim Onboarding eines Kunden für Azure Lighthouse verwenden Sie eine [Azure Resource Manager-Vorlage](onboard-customer.md#create-an-azure-resource-manager-template) zusammen mit einer Parameterdatei, um Autorisierungen zu definieren, mit denen der Zugriff auf delegierte Ressourcen auf dem Kundenmandanten gewährt wird. Bei jeder Autorisierung wird eine **principalId** angegeben, die einem Benutzer, einer Gruppe oder einem Dienstprinzipal von Azure AD auf dem verwaltenden Mandanten entspricht, sowie eine **roleDefinitionId** für die [integrierte Azure-Rolle](../../role-based-access-control/built-in-roles.md) angegeben, die gewährt wird.
 
 Damit von einer Prinzipal-ID (**principalId**) eine verwaltete Identität im Kundenmandanten erstellt werden kann, muss die zugehörige Rollendefinitions-ID (**roleDefinitionId**) auf **Benutzerzugriffsadministrator** festgelegt werden. Diese Rolle wird zwar nicht allgemein unterstützt, kann aber in diesem speziellen Szenario verwendet werden. Benutzerkonten mit dieser Berechtigung können verwalteten Identitäten spezifische integrierte Rollen zuweisen. Diese Rollen sind in der Eigenschaft **delegatedRoleDefinitionIds** definiert und können eine beliebige [unterstützte integrierte Azure-Rolle](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse) enthalten (mit Ausnahme von „Benutzerzugriffsadministrator“ und „Besitzer“).
 
 Nach Abschluss des Kunden-Onboardings kann die in dieser Autorisierung erstellte Prinzipal-ID (**principalId**) verwalteten Identitäten im Kundenmandanten diese integrierten Rollen zuweisen. Sie verfügen jedoch über keine der anderen Berechtigungen, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind.
+
+> [!NOTE]
+> [Rollenzuweisungen](../../role-based-access-control/role-assignments-steps.md#step-5-assign-role) zwischen Mandanten müssen derzeit über APIs erfolgen und nicht im Azure-Portal.
 
 Das folgende Beispiel zeigt eine Prinzipal-ID (**principalId**), die über die Rolle „Benutzerzugriffsadministrator“ verfügt. Dieser Benutzer kann verwalteten Identitäten im Kundenmandanten zwei integrierte Rollen zuweisen: „Mitwirkender“ und „Log Analytics-Mitwirkender“.
 
@@ -45,7 +48,7 @@ Nachdem Sie gemäß der obigen Beschreibung den Benutzer mit den erforderlichen 
 
 Nehmen wir beispielsweise an, Sie möchten Diagnosen für Azure Key Vault-Ressourcen im Kundenmandanten aktivieren, wie in [diesem Beispiel](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring) veranschaulicht. In diesem Fall würde ein Benutzer im Verwaltungsmandanten mit entsprechenden Berechtigungen (wie oben beschrieben) eine [Azure Resource Manager-Vorlage](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) bereitstellen.
 
-Hinweis: Die Richtlinienzuweisung zur Verwendung mit einem delegierten Abonnement muss aktuell über APIs erstellt werden (nicht über das Azure-Portal). Dabei muss die API-Version (**apiVersion**) auf **2019-04-01-preview** festgelegt werden, die die neue Eigenschaft **delegatedManagedIdentityResourceId** beinhaltet. Diese Eigenschaft ermöglicht es Ihnen, eine verwaltete Identität einzuschließen, die sich im Kundenmandanten befindet (in einem Abonnement oder in einer Ressourcengruppe, das bzw. die mittels Onboarding in Azure Lighthouse integriert wurde).
+Hinweis: Die Richtlinienzuweisung zur Verwendung mit einem delegierten Abonnement muss aktuell über APIs erstellt werden (nicht über das Azure-Portal). Dabei muss die **apiVersion** auf **2020-10-01-preview** festgelegt werden, die die neue Eigenschaft **delegatedManagedIdentityResourceId** enthält. Diese Eigenschaft ermöglicht es Ihnen, eine verwaltete Identität einzufügen, die sich im Kundenmandanten befindet (in einem Abonnement oder in einer Ressourcengruppe, das bzw. die mittels Onboarding in Azure Lighthouse integriert wurde).
 
 Das folgende Beispiel zeigt eine Rollenzuweisung mit **delegatedManagedIdentityResourceId**:
 

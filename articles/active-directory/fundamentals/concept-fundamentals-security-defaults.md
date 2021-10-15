@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: lvandenende
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 83a2c5bca5837919015125d6c421dccfef5bf58c
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: b88cb7baa3c8eb8d40bd23d8697f563406bd1fdb
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129079445"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535013"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -58,7 +58,7 @@ Alle Benutzer in Ihrem Mandanten müssen sich für mehrstufige Authentifizierung
 
 Benutzer mit privilegiertem Zugriff besitzen erweiterten Zugriff auf Ihre Umgebung. Aufgrund der weitreichenden Befugnisse, die diese Konten haben, sollten Sie sie mit Bedacht verwalten. Eine gängige Methode zur Verbesserung des Schutzes von privilegierten Konten ist eine strengere Form der Kontoüberprüfung für die Anmeldung. In Azure AD können Sie eine striktere Kontoüberprüfung erreichen, indem Sie mehrstufige Authentifizierung verlangen.
 
-Nach Abschluss der Azure AD Multi-Factor Authentication-Registrierung ist für die folgenden 9 Azure AD-Administratorrollen bei jeder Anmeldung eine zusätzliche Authentifizierung erforderlich:
+Nachdem die Registrierung mit Azure AD Multi-Faktor-Authentifizierung abgeschlossen ist, wird von den folgenden Azure AD-Administratorrollen bei jeder Anmeldung eine zusätzliche Authentifizierung erfordert:
 
 - Globaler Administrator
 - Anwendungsadministrator

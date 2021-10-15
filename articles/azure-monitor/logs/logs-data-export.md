@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: eb5766214fff67bf7e45998c9f89c640433bbe99
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 04662b734f86905f0064bad43ecbecd84bc48042
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652451"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401387"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
@@ -32,16 +32,45 @@ Mit dem Datenexport im Log Analytics-Arbeitsbereich werden kontinuierlich Daten 
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Die Konfiguration kann zurzeit mithilfe der Befehlszeilenschnittstelle oder über REST-Anforderungen vorgenommen werden. Azure-Portal oder PowerShell werden noch nicht unterstützt.
+- Die Konfiguration kann derzeit über CLI- oder REST-Anfragen erfolgen. Azure-Portal oder PowerShell werden noch nicht unterstützt.
 - Die Option `--export-all-tables` in CLI und REST wird nicht unterstützt und entfernt. Sie müssen die Liste der Tabellen in den Exportregeln explizit angeben.
-- Unterstützte Tabellen sind zurzeit auf diejenigen beschränkt, die weiter unten im Abschnitt [Unterstützte Tabellen](#supported-tables) aufgeführt werden. Beispielsweise werden benutzerdefinierte Protokolltabellen derzeit nicht unterstützt.
-- Wenn die Datenexportregel eine nicht unterstützte Tabelle umfasst, wird der Vorgang erfolgreich ausgeführt. Es werden jedoch für diese Tabelle keine Daten exportiert, bis die Tabelle unterstützt wird. 
+- Es werden nur die Tabellen unterstützt, die im Abschnitt [unterstützte Tabellen](#supported-tables) unten angegeben sind. 
+- Die vorhandenen benutzerdefinierten Protokolltabellen werden beim Export nicht unterstützt. Eine neue benutzerdefinierte Protokollversion, die im März 2022 verfügbar sein wird, wird unterstützt.
+- Wenn die Datenexportregel eine nicht unterstützte Tabelle enthält, ist der Vorgang erfolgreich, aber es werden keine Daten für diese Tabelle exportiert, bis die Tabelle unterstützt wird. 
 - Wenn die Datenexportregel eine nicht vorhandene Tabelle enthält, verursacht sie den Fehler `Table <tableName> does not exist in the workspace`.
-- Der Datenexport wird in allen Regionen verfügbar sein. In den folgenden Regionen ist er jedoch noch nicht verfügbar: „Schweiz, Norden“, „Schweiz, Westen“, „Deutschland, Westen-Mitte“, „Australien, Mitte 2“, „VAE, Mitte“, „VAE, Norden“, „Japan, Westen“, „Brasilien, Südosten“, „Norwegen, Osten“, „Norwegen, Westen“, „Frankreich, Süden“, „Indien, Süden“, „Südkorea, Süden“, „Jio, Indien, Mitte“, „Jio, Indien, Westen“, „Kanada, Osten“, „USA, Westen 3“, „Schweden, Mitte“, „Schweden, Süden“, Government-Clouds, China.
-- In Ihrem Arbeitsbereich können bis zu 10 aktivierte Regeln definiert werden. Zusätzliche Regeln sind zulässig, werden jedoch deaktiviert. 
+- In Ihrem Arbeitsbereich können bis zu 10 aktivierte Regeln definiert werden. Zusätzliche Regeln sind zulässig, wenn sie deaktiviert sind. 
 - Ein Ziel muss für alle Exportregeln in Ihrem Arbeitsbereich eindeutig sein.
-- Das Zielspeicherkonto oder der Ziel-Event Hub muss sich in derselben Region wie der Log Analytics-Arbeitsbereich befinden.
-- Die Namen der zu exportierenden Tabellen dürfen bei einem Speicherkonto nicht mehr als 60 Zeichen und bei einem Event Hub nicht mehr als 47 Zeichen umfassen. Tabellen mit längeren Namen werden nicht exportiert.
+- Die Ziele müssen sich in derselben Region befinden wie der Log Analytics-Arbeitsbereich.
+- Tabellennamen dürfen nicht länger als 60 Zeichen sein, wenn sie in ein Speicherkonto exportiert werden, und nicht länger als 47 Zeichen, wenn sie in ein Event Hub exportiert werden. Tabellen mit längeren Namen werden nicht exportiert.
+- Der Datenexport wird in allen Regionen verfügbar sein, wird aber derzeit nur in folgenden Regionen unterstützt: 
+    - Australien, Mitte
+    - Australien (Osten)
+    - Australien, Südosten
+    - Brasilien Süd
+    - Kanada, Mitte
+    - Indien, Mitte
+    - USA (Mitte)
+    - Asien, Osten
+    - East US
+    - USA (Ost) 2
+    - Frankreich, Mitte
+    - Deutschland, Westen-Mitte
+    - Japan, Osten
+    - Korea, Mitte
+    - USA Nord Mitte
+    - Nordeuropa
+    - Südafrika, Norden
+    - USA Süd Mitte
+    - Asien, Südosten
+    - Schweiz, Norden
+    - Schweiz, Westen
+    - Vereinigte Arabische Emirate, Norden
+    - UK, Süden
+    - UK, Westen
+    - USA, Westen-Mitte
+    - Europa, Westen
+    - USA (Westen)
+    - USA, Westen 2
 
 ## <a name="data-completeness"></a>Datenvollständigkeit
 Der Datenexport versucht bis zu 30 Minuten lang, Daten zu senden, wenn das Ziel nicht verfügbar ist. Wenn es nach 30 Minuten immer noch nicht verfügbar ist, werden die Daten verworfen, bis das Ziel wieder verfügbar ist.
@@ -703,7 +732,7 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | NWConnectionMonitorTestResult |  |
 | OfficeActivity | In Government-Clouds teilweise unterstützt: Einige der Daten werden über Webhooks von O365 in LA erfasst. Dieser Teil fehlt derzeit im Export. |
 | Vorgang | Teilweise unterstützt: Einige Daten werden durch interne Dienste erfasst, die für den Export nicht unterstützt werden. Dieser Teil fehlt derzeit im Export. |
-| Perf | Teilweise unterstützt: Zurzeit werden nur Windows-Leistungsdaten unterstützt. Linux-Leistungsdaten fehlen derzeit im Export. |
+| Perf | Partieller Support: Zurzeit werden nur Windows-Leistungsdaten unterstützt. Linux-Leistungsdaten fehlen derzeit im Export. |
 | PowerBIDatasetsWorkspace |  |
 | PurviewScanStatusLogs |  |
 | SCCMAssessmentRecommendation |  |

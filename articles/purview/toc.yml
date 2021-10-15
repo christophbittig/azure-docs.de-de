@@ -42,6 +42,8 @@ items:
         items:
           - name: Best Practices für die Bereitstellung
             href: deployment-best-practices.md
+          - name: Kontoarchitektur
+            href: concept-best-practices-accounts.md
           - name: Sammlungsarchitektur
             href: concept-best-practices-collections.md
           - name: Richtlinien für Preise
@@ -279,6 +281,8 @@ items:
         href: /python/api/azure-mgmt-purview/
       - name: REST
         href: /rest/api/purview/
+      - name: Azure Purview-Hilfsprogramme für Open-Source-Tools
+        href: tutorial-purview-tools.md
       - name: Leitfaden zur ABAP-Funktionsbereitstellung
         href: abap-functions-deployment-guide.md
       - name: Häufig gestellte Fragen (FAQ)

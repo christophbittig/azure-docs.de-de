@@ -3,12 +3,12 @@ title: Neuerungen in Azure Site Recovery
 description: Enthält eine Übersicht über die neuen Features und die neuesten Updates im Azure Site Recovery-Dienst.
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 0058078e04e14e6e8c823490f8c6e09a123d40f8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1e5c74d34d85fed9fff86dba92398c8cd57287bd
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124804768"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356265"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
@@ -22,6 +22,7 @@ Für Site Recovery-Komponenten werden N-4 Versionen unterstützt, wobei N die zu
 
 **Aktualisieren** |  **Einheitliches Setup** | **OVA-Datei des Konfigurationsservers** | **Mobilitätsdienst-Agent** | **Site Recovery-Anbieter** | **Recovery Services-Agent**
 --- | --- | --- | --- | --- | ---
+[Rollup 58](https://support.microsoft.com/topic/update-rollup-58-for-azure-site-recovery-kb5007075-37ba21c3-47d9-4ea9-9130-a7d64f517d5d) | 9.45.6096.1 | 5.1.6952.0 | 9.45.6096.1 | 5.1.6952.0 | 2.0.9237.0
 [Rollup 57](https://support.microsoft.com/topic/update-rollup-57-for-azure-site-recovery-kb5006172-9fccc879-6e0c-4dc8-9fec-e0600cf94094) | 9.44.6068.1 | 5.1.6899.0 | 9.44.6068.1 | 5.1.6899.0 | 2.0.9236.0
 [Rollup 56](https://support.microsoft.com/topic/update-rollup-56-for-azure-site-recovery-kb5005376-33f27950-1a07-43e5-bf40-4b380a270ef6)  | 9.43.6040.1  | 5.1.6853.0 | 9.43.6040.1| 5.1.6853.0 | 2.0.9226.0
 [.Rollup 55](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | .9.42.5941.1 | .5.1.6692.0 | .9.42.5941.1 | .5.1.6692.0  | .2.0.9208.0
@@ -31,6 +32,17 @@ Für Site Recovery-Komponenten werden N-4 Versionen unterstützt, wobei N die zu
 
 
 [Weitere Informationen](service-updates-how-to.md) zur Updateinstallation und -unterstützung
+
+## <a name="updates-september-2021"></a>Updates (September 2021)
+
+### <a name="update-rollup-58"></a>Update Rollup 58
+
+[Update Rollup 58](https://support.microsoft.com/topic/update-rollup-58-for-azure-site-recovery-kb5007075-37ba21c3-47d9-4ea9-9130-a7d64f517d5d) stellt die folgenden Updates bereit:
+
+**Aktualisieren** | **Details**
+--- | ---
+**Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im KB-Artikel zum Rollup beschrieben).
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen, wie im KB-Artikel zum Rollup beschrieben.
 
 ## <a name="updates-august-2021"></a>Updates (August 2021)
 
