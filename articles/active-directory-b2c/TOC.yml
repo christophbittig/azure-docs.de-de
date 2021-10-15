@@ -205,8 +205,6 @@
         - name: Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers
           href: add-ropc-policy.md
           displayName: ROPC
-        - name: Einrichten einer Richtlinie für die Self-Service-Kennwortzurücksetzung (veraltet)
-          href: user-flow-self-service-password-reset.md
         - name: Registrieren und melden Sie sich per Telefon an
           href: phone-authentication-user-flows.md
     - name: Identitätsanbieter

@@ -3,12 +3,12 @@ title: Öffentliche Endpunkte und Netzwerke
 description: Azure Video Analyzer macht eine Reihe von öffentlichen Netzwerkendpunkten verfügbar, die verschiedene Produktszenarien ermöglichen, einschließlich Verwaltung, Erfassung und Wiedergabe. In diesem Artikel wird erläutert, wie Sie auf öffentliche Endpunkte und Netzwerke zugreifen.
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 4a15893e718f716f4d3858ad6823ab0c3aa0e46c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0debf9b00bc8c3d78810fb377aa6e065589e6f96
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700156"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389644"
 ---
 # <a name="public-endpoints-and-networking"></a>Öffentliche Endpunkte und Netzwerke
 
@@ -41,7 +41,7 @@ Dieser Abschnitt enthält eine Liste der Video Analyzer-Endpunkte.
 * **Authentifizierung und Autorisierung**: Die erste Authentifizierung erfolgt über ein kurzlebiges Bereitstellungstoken, das von den Video Analyzer-Verwaltungs-APIs ausgegeben wird. Sobald der anfängliche Handshake abgeschlossen ist, tauschen das Modul und der Dienst einen Satz automatisch rotierender Autorisierungsschlüssel aus, die ab diesem Zeitpunkt verwendet werden.
 * **Anforderung**: Der Zugriff auf diesen Endpunkt ist für die ordnungsgemäße Funktionsweise des Video Analyzer Edge-Moduls erforderlich. Das Edgemodul funktioniert nicht mehr, wenn dieser Endpunkt innerhalb eines Zeitraums von 36 Stunden nicht erreicht werden kann.
 
-## <a name="telemetry"></a>Telemetrie:
+## <a name="telemetry"></a>Telemetrie
 
 * **Zweck**: Optionale regelmäßige Übermittlung von Telemetriedaten, die Microsoft ermöglicht, besser zu verstehen, wie das Video Analyzer-Edgemodul verwendet wird, und proaktiv mögliche Verbesserungen in Bezug auf Kompatibilität, Leistung und andere Produktbereiche zu erkennen.
 * **Authentifizierung und Autorisierung**: Die Autorisierung basiert auf einem vorab festgelegten Schlüssel.
@@ -51,6 +51,31 @@ Dieser Abschnitt enthält eine Liste der Video Analyzer-Endpunkte.
 
 > [!NOTE]
 > Die in diesem Artikel beschriebene Liste der Endpunkte ist nicht als umfassende Liste der zugeordneten Dienstendpunkte gedacht. Es handelt sich um eine informative Liste der Endpunkte, die für den normalen Betrieb von Video Analyzer erforderlich sind. Eine vollständige Liste der Endpunkte, die von den einzelnen Diensten verfügbar gemacht werden, finden Sie in der Dokumentation zu den einzelnen Azure-Diensten.
+
+## <a name="azure-storage"></a>Azure Storage
+
+* **Zweck**: Aufzeichnen von Audio-, Video- und Rückschlussdaten, wenn Pipelines(TODO: Link) für die Speicherung von Videodaten in der Cloud über den Knoten der Videosenke (TODO: Link zum Abschnitt in „pipeline.md“) konfiguriert sind.
+* **Authentifizierung und Autorisierung**: Die Autorisierung wird durchgeführt, indem die Standardvorgänge für die Authentifizierung und Autorisierung von Azure Storage-Diensten erzwungen werden. In diesem Fall erfolgt der Zugriff auf den Speicher über containerspezifische SAS-URLs.
+* **Anforderung**: Der Zugriff auf diesen Endpunkt ist nur erforderlich, wenn eine Video Analyzer-Edgepipeline für die Archivierung des Videos in der Cloud konfiguriert ist.
+
+## <a name="iot-hub"></a>IoT Hub
+
+* **Zweck**: Steuerungs- und Datenebene für Azure IoT Hub- und Edgegeräte.
+* **Authentifizierung und Autorisierung**: Weitere Informationen finden Sie in der Azure IoT Hub-Dokumentation.
+* **Anforderung**: Ein richtig konfiguriertes und funktionierendes Edgegerät mit Azure IoT Edge Runtime ist erforderlich, um sicherzustellen, dass das Edgemodul von Azure Video Analyzer korrekt funktioniert.
+
+## <a name="114----tls-encryption"></a>1.1.4 TLS-Verschlüsselung 
+
+* **Verschlüsselung und Serverauthentifizierung**: Alle Video Analyzer-Endpunkte werden über TLS 1.2-konforme Endpunkte verfügbar gemacht.
+
+## <a name="115----references"></a>1.1.5 Verweise 
+
+Öffentlich:
+
+* [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md)
+* [Informationen zu Azure IoT Hub-Endpunkten](../../iot-hub/iot-hub-devguide-endpoints.md)
+* [Was ist Azure Private Link?](../../private-link/private-link-overview.md)
+* [Übersicht über Azure-Diensttags](../../virtual-network/service-tags-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

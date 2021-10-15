@@ -167,6 +167,8 @@
           href: security-best-practices-for-app-registration.md
     - name: Automatische Benutzerbereitstellung (SCIM)
       href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+    - name: Verwenden der Microsoft Graph-API
+      href: microsoft-graph-intro.md
 - name: Vorgehensweise
   items:
     - name: Integrieren Ihres App-Szenarios
@@ -560,8 +562,6 @@
           href: howto-add-app-roles-in-azure-ad-apps.md
         - name: Implementieren der rollenbasierten Zugriffssteuerung in Ihrer Anwendung
           href: howto-implement-rbac-for-apps.md
-    - name: Verwenden der Microsoft Graph-API
-      href: microsoft-graph-intro.md
     - name: Erstellen resilienter Lösungen
       items:
         - name: Entwicklungsübersicht

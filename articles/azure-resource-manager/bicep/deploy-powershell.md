@@ -4,27 +4,25 @@ description: Verwenden Sie Azure Resource Manager und Azure PowerShell, um Resso
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 3058265fee62143f88bbd87e69c58dd4ff597920
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/01/2021
+ms.openlocfilehash: cc6c8e05f5e6f37a8ac832ac5ee8fae386a627f1
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124793795"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387713"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-powershell"></a>Bereitstellen von Ressourcen mit Bicep und Azure PowerShell
 
 In diesem Artikel wird erläutert, wie Ihre Ressourcen mithilfe von Azure PowerShell und Bicep-Dateien in Azure bereitgestellt werden. Wenn Sie nicht mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen vertraut sind, informieren Sie sich in der [Bicep-Übersicht](overview.md).
 
-Zum Bereitstellen von BICEP-Dateien benötigen Sie [Version 5.6.0 oder höher von Azure PowerShell](/powershell/azure/install-az-ps).
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen eine einfache Bicep-Datei zum Bereitstellen. Der Name der lokalen Datei in diesem Artikel lautet _C:\MyTemplates\azuredeploy.bicep_.
+Sie benötigen eine einfache Bicep-Datei zum Bereitstellen. Die Datei muss lokal vorliegen.
 
-Sie müssen Azure PowerShell installieren und eine Verbindung zu Azure herstellen:
+Sie müssen über Azure PowerShell verfügen und mit Azure verbunden sein:
 
-- **Installieren Sie Azure PowerShell-Cmdlets auf Ihrem lokalen Computer.** Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps).
+- **Installieren Sie Azure PowerShell-Cmdlets auf Ihrem lokalen Computer.** Zum Bereitstellen von Bicep-Dateien benötigen Sie Version **5.6.0 oder höher** von [Azure PowerShell](/powershell/azure/install-az-ps). Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps).
 - **Stellen Sie mithilfe von [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Azure her**. Wenn Sie über mehrere Azure-Abonnements verfügen, müssen Sie möglicherweise auch [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) ausführen. Weitere Informationen finden Sie unter [Verwenden mehrerer Azure-Abonnements](/powershell/azure/manage-subscriptions-azureps).
 
 Wenn PowerShell nicht installiert ist, können Sie Azure Cloud Shell verwenden. Weitere Informationen finden Sie unter [Bereitstellen von Bicep-Dateien über Azure Cloud Shell](./deploy-cloud-shell.md).
@@ -139,15 +137,15 @@ Um eine lokale Parameterdatei zu übergeben, verwenden Sie den Parameter `Templa
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile <path-to-bicep> `
-  -TemplateParameterFile c:\MyTemplates\storage.parameters.json
+  -TemplateFile c:\BicepFiles\storage.bicep `
+  -TemplateParameterFile c:\BicepFiles\storage.parameters.json
 ```
 
 Um eine externe Parameterdatei zu übergeben, verwenden Sie den `TemplateParameterUri`-Parameter:
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile <path-to-bicep> `
+  -TemplateFile c:\BicepFiles\storage.bicep `
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.parameters.json
 ```
 
@@ -157,11 +155,11 @@ Vor dem Bereitstellen der Bicep-Datei können Sie die Änderungen, die von der B
 
 ## <a name="deploy-template-specs"></a>Bereitstellen von Vorlagenspezifikationen
 
-Azure PowerShell unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von BICEP-Dateien derzeit nicht. Sie können jedoch eine Bicep-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Das [Beispiel für das Erstellen einer Vorlagenspezifikation](https://github.com/Azure/azure-docs-bicep-samples/blob/main/samples/create-template-spec/azuredeploy.bicep) zeigt, wie Sie eine Vorlagenspezifikation in einer Bicep-Datei erstellen. Sie können Ihre Bicep-Datei auch mithilfe der Bicep-Befehlszeilenschnittstelle in Form einer ARM-Vorlagen-JSON-Datei erstellen und dann eine Vorlagenspezifikation mit der JSON-Vorlage erstellen.
+Azure PowerShell unterstützt das Erstellen von Vorlagenspezifikationen durch Bereitstellen von BICEP-Dateien derzeit nicht. Sie können jedoch eine Bicep-Datei mit der [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs)-Ressource erstellen, um eine Vorlagenspezifikation bereitzustellen. Das [Beispiel für das Erstellen einer Vorlagenspezifikation](https://github.com/Azure/azure-docs-bicep-samples/blob/main/samples/create-template-spec/azuredeploy.bicep) zeigt, wie Sie eine Vorlagenspezifikation in einer Bicep-Datei erstellen. Sie können Ihre Bicep-Datei auch über die Bicep-Befehlszeilenschnittstelle im JSON-Format erstellen und dann eine Vorlagenspezifikation mit der JSON-Vorlage erstellen.
 
 ## <a name="deployment-name"></a>„Deployment name“ (Bereitstellungsname)
 
-Wenn Sie eine Bicep-Datei bereitstellen, können Sie der Bereitstellung einen Namen geben. Dieser Name kann das Abrufen der Bereitstellung aus dem Bereitstellungsverlauf vereinfachen. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Bicep-Datei verwendet. Wenn Sie beispielsweise eine Bicep-Datei mit dem Namen `azuredeploy.bicep` bereitstellen und keinen Bereitstellungsnamen angeben, erhält die Bereitstellung den Namen `azuredeploy`.
+Wenn Sie eine Bicep-Datei bereitstellen, können Sie der Bereitstellung einen Namen geben. Dieser Name kann das Abrufen der Bereitstellung aus dem Bereitstellungsverlauf vereinfachen. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Bicep-Datei verwendet. Wenn Sie beispielsweise eine Bicep-Datei mit dem Namen `main.bicep` bereitstellen und keinen Bereitstellungsnamen angeben, erhält die Bereitstellung den Namen `main`.
 
 Bei jedem Ausführen einer Bereitstellung wird dem Bereitstellungsverlauf der Ressourcengruppe ein Eintrag mit dem Bereitstellungsnamen hinzugefügt. Wenn Sie eine andere Bereitstellung ausführen und denselben Namen vergeben, wird der vorherige Eintrag durch die aktuelle Bereitstellung ersetzt. Wenn Sie eindeutige Einträge im Bereitstellungsverlauf beibehalten möchten, müssen Sie jeder Bereitstellung einen eindeutigen Namen geben.
 
@@ -189,6 +187,4 @@ Geben Sie jeder Bereitstellung einen eindeutigen Namen, um Konflikte mit gleichz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Rollback zu einer erfolgreiche Bereitstellung, wenn ein Fehler auftritt, finden Sie unter [Rollback bei Fehler zu erfolgreicher Bereitstellung](../templates/rollback-on-error.md).
 - Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von ARM-Vorlagen](file.md).
-- Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token erfordert, finden Sie unter [Bereitstellen einer privaten ARM-Vorlage mit SAS-Token](../templates/secure-template-with-sas-token.md).

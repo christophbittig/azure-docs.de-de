@@ -2,18 +2,17 @@
 title: Häufige Schlüsseltresorfehler in Application Gateway
 titleSuffix: Azure Application Gateway
 description: In diesem Artikel werden die wichtigsten Probleme im Zusammenhang mit dem Schlüsseltresor identifiziert, und Sie erhalten Hilfe bei der Behebung dieser Probleme, um einen reibungslosen Betrieb von Application Gateway sicherzustellen.
-services: application-gateway
 author: jaesoni
 ms.service: application-gateway
 ms.topic: reference
 ms.date: 07/12/2021
 ms.author: jaysoni
-ms.openlocfilehash: 4f873e6fb751f3b368d86413c201b70634d9c7ce
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cfcacf84b5a35862c3ef1423ed58ff4d5d7f3142
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644085"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272318"
 ---
 # <a name="common-key-vault-errors-in-azure-application-gateway"></a>Häufige Schlüsseltresorfehler in Azure Application Gateway
 
@@ -24,7 +23,7 @@ Dieser Artikel hilft Ihnen, die Details der Fehlercodes des Schlüsseltresors zu
 
 ## <a name="list-of-error-codes-and-their-details"></a>Liste der Fehlercodes und ihrer Details
 
-In den folgenden Abschnitten werden verschiedene Fehler behandelt, die auftreten können. Sie können die Details in Azure Advisor finden und diesen Artikel zur Problembehandlung verwenden. Weitere Informationen finden Sie unter [Erstellen von Azure Advisor-Warnungen zu neuen Empfehlungen mithilfe des Azure-Portals](https://docs.microsoft.com/azure/advisor/advisor-alerts-portal).
+In den folgenden Abschnitten werden verschiedene Fehler behandelt, die auftreten können. Sie können die Details in Azure Advisor finden und diesen Artikel zur Problembehandlung verwenden. Weitere Informationen finden Sie unter [Erstellen von Azure Advisor-Warnungen zu neuen Empfehlungen mithilfe des Azure-Portals](../advisor/advisor-alerts-portal.md).
 
 > [!NOTE]
 > Azure Application Gateway generiert alle vier Stunden Protokolle für die Schlüsseltresordiagnose. Wenn die Diagnose weiterhin den Fehler anzeigt, nachdem Sie die Konfiguration korrigiert haben, müssen Sie möglicherweise warten, bis die Protokolle aktualisiert werden.
@@ -92,7 +91,7 @@ Weitere Informationen finden Sie unter [Funktionsweise der Integration](./key-va
 **Lösung**: Dieser Fehler tritt auf, wenn Sie die Key Vault-Firewall für eingeschränkten Zugriff aktivieren. Sie können Application Gateway auch in einem eingeschränkten Netzwerk von Key Vault konfigurieren, indem Sie die folgenden Schritte ausführen:
 1. Öffnen Sie in Key Vault den Bereich **Netzwerk**.
 1. Wählen Sie auf der Registerkarte **Firewalls und virtuelle Netzwerke** die Option **Privater Endpunkt und ausgewählte Netzwerke** aus.
-1. Verwenden Sie dann „Virtuelle Netzwerke“, und fügen Sie das virtuelle Netzwerk und Subnetz Ihrer Application Gateway-Instanz hinzu. Konfigurieren Sie während des Prozesses auch den Dienstendpunkt „Microsoft.KeyVault“, indem Sie das zugehörige Kontrollkästchen aktivieren.
+1. Fügen Sie dann über „Virtuelle Netzwerke“ das virtuelle Netzwerk und das Subnetz Ihrer Application Gateway-Instanz hinzu. Konfigurieren Sie während des Prozesses auch den Dienstendpunkt „Microsoft.KeyVault“, indem Sie das zugehörige Kontrollkästchen aktivieren.
 1. Wählen Sie abschließend **Ja** aus, damit vertrauenswürdige Dienste die Key Vault-Firewall umgehen können.
 
 :::image type="content" source="./media/application-gateway-key-vault-common-errors/key-vault-restricted-access.png" alt-text="Screenshot: Vorgehensweise beim Umgehen des Fehlers aufgrund des eingeschränkten Netzwerks":::
@@ -120,5 +119,5 @@ Wählen Sie **Verwaltete gelöschte Tresore** aus. Von hier aus können Sie die 
 
 Diese Artikel zur Problembehandlung können hilfreich sein, wenn Sie weiterhin Application Gateway verwenden:
 
-- [Übersicht über Resource Health für Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/resource-health-overview)
-- [Behandeln von Problemen mit der Azure Application Gateway-Sitzungsaffinität](https://docs.microsoft.com/azure/application-gateway/how-to-troubleshoot-application-gateway-session-affinity-issues)
+- [Übersicht über Resource Health für Azure Application Gateway](resource-health-overview.md)
+- [Behandeln von Problemen mit der Azure Application Gateway-Sitzungsaffinität](how-to-troubleshoot-application-gateway-session-affinity-issues.md)

@@ -4,13 +4,13 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei zu
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: e3a811102c31301386135042c79c205eeb9f7f9a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 4ab5f0382d320e31c650dcb6ebee68f39d6e43b1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758425"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362990"
 ---
 # <a name="logical-functions-for-bicep"></a>Logische Funktionen für Bicep
 
@@ -23,6 +23,8 @@ Die meisten Logikfunktionen in Resource Manager-Vorlagen werden in Bicep durch [
 `bool(arg1)`
 
 Konvertiert den Parameter in einen booleschen Wert.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -47,7 +49,7 @@ output falseInt bool = bool(0)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Type | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |

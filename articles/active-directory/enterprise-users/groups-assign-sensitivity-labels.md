@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/01/2021
+ms.date: 09/28/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05ea462d08c50e6483aeb0968b00b6b18d0e7397
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: b3285c18394c8c59d17e41b3a3eb3fd43428cd61
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092674"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229580"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Zuweisen von Vertraulichkeitsbezeichnungen zu Microsoft 365-Gruppen in Azure Active Directory
 
@@ -117,7 +117,7 @@ Die Option „Vertraulichkeitsbezeichnung“ wird nur für Gruppen angezeigt, we
 
 1. Für diese Azure AD-Organisation werden die Bezeichnungen im Microsoft 365 Compliance Center veröffentlicht.
 1. Das Feature ist aktiviert, „EnableMIPLabels“ ist im Azure AD PowerShell-Modul auf „True“ festgelegt.
-1. Die Bezeichnungen werden im Security & Compliance PowerShell-Modul mit dem Cmdlet „Execute-AzureAdLabelSync“ mit Azure AD synchronisiert.
+1. Die Bezeichnungen werden im PowerShell-Modul „Security & Compliance“ mit dem Cmdlet „Execute-AzureAdLabelSync“ mit Azure AD synchronisiert.
 1. Bei der Gruppe handelt es sich um eine Microsoft 365-Gruppe.
 1. Die Organisation verfügt über eine Active Azure Active Directory Premium P1-Lizenz.
 1. Der aktuell angemeldete Benutzer verfügt über ausreichende Berechtigungen, um Bezeichnungen zuzuweisen. Der Benutzer muss entweder ein globaler Administrator, ein Gruppenadministrator oder der Gruppenbesitzer sein.

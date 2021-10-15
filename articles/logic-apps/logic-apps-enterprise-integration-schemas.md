@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen von Schemata für die XML-Validierung in Arbeitsabläufen
-description: Hinzufügen von Schemata zur Validierung von XML-Dokumenten für Workflows in Azure Logic Apps unter Verwendung des Enterprise Integration Pack.
+title: Hinzufügen von Schemas für die Validierung von XML-Dokumenten in Workflows
+description: Es wird beschrieben, wie Sie Schemas zur Validierung von XML-Dokumenten in Workflows mit Azure Logic Apps und dem Enterprise Integration Pack hinzufügen.
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/14/2021
-ms.openlocfilehash: f80ed9c7fa9aa2d291e4f045b6cfc7da695cb22b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2c64deb35d89d6e1381fd3b296c7c73d82567ade
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128611432"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363848"
 ---
-# <a name="add-schemas-to-validate-xml-documents-for-workflows-in-azure-logic-apps"></a>Hinzufügen von Schemata zur Validierung von XML-Dokumenten für Workflows in Azure Logic Apps
+# <a name="add-schemas-to-validate-xml-in-workflows-with-azure-logic-apps"></a>Hinzufügen von Schemas für die Validierung von XML-Dokumenten in Workflows mit Azure Logic Apps
 
 Um zu prüfen, ob Dokumente gültiges XML verwenden und die erwarteten Daten im vordefinierten Format enthalten, kann Ihr Logic-App-Workflow XML-Schemata mit der **XML-Validierungsaktion** verwenden. Ein XML-Schema beschreibt ein Geschäftsdokument, das mit Hilfe der [XML Schema Definition (XSD)](https://www.w3.org/TR/xmlschema11-1/) in XML dargestellt wird.
 
@@ -29,7 +29,7 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
   * Visual Studio 2019 und die [Microsoft Azure Logic Apps Unternehmensintegration Tools Extension](https://aka.ms/vsenterpriseintegrationtools).
 
-  * Visual Studio 2015 und die Erweiterung [Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas).
+  * Visual Studio 2015 und die [Microsoft Azure Logic Apps Unternehmensintegration Tools für Visual Studio 2015 2.0 Erweiterung](https://aka.ms/vsmapsandschemas).
 
    > [!IMPORTANT]
    > Installieren Sie die Erweiterung nicht zusammen mit der BizTalk Server-Erweiterung. Sind beide Erweiterungen installiert, kann dies zu unerwartetem Verhalten führen. Stellen Sie sicher, dass nur eine dieser Erweiterungen installiert ist.

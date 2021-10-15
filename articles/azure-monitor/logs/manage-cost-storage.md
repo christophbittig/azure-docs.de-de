@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/23/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8cedd159c1c4c8a7d5309024d66ddc104c07506b
-ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
+ms.openlocfilehash: 0e894fc6c6e210249e591ed7f9b9b662ff5ae187
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129062084"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272925"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen    
 
@@ -229,7 +229,7 @@ Wenn Sie die Aufbewahrung für einen bestimmten Datentyp (in diesem Beispiel Sec
     }
 ```
 
-Die gültigen Werte für `retentionInDays` sind 30 bis 730.
+Die gültigen Werte für `retentionInDays` sind 4 bis 730.
 
 Für die Datentypen `Usage` und `AzureActivity` kann keine benutzerdefinierte Aufbewahrung festgelegt werden. Für sie gilt die maximale Standardaufbewahrungsdauer des Arbeitsbereichs bzw. eine Dauer von 90 Tagen. 
 

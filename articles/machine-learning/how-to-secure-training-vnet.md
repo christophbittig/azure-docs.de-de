@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Verwenden Sie eine isolierte Azure Virtual Network-Instanz, um Ihre Azure Machine Learning-Trainingsumgebung zu schützen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
 ms.date: 09/24/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
-ms.openlocfilehash: 1bb8066af887005848f711437d33257ae2118e46
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 4fe1a4f9966e5342ee4f8a12d2b24b3a449efbae
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093476"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424329"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken
 
@@ -231,7 +231,7 @@ Wenn Sie **keine öffentliche IP** aktivieren, verwendet Ihre Compute-Instanz ke
 
 Damit **ausgehende Verbindungen** funktionieren, müssen Sie eine Egress-Firewall wie die Azure-Firewall mit benutzerdefinierten Routen einrichten. Sie können beispielsweise eine Firewall mit [ein- und ausgehender Konfiguration](how-to-access-azureml-behind-firewall.md) verwenden und den Datenverkehr dorthin leiten, indem Sie eine Routentabelle in dem Teilnetz definieren, in dem die Compute-Instanz bereitgestellt wird. Der Eintrag in der Routentabelle kann den nächsten Hop der privaten IP-Adresse der Firewall mit dem Adresspräfix 0.0.0.0/0 einrichten.
 
-Eine Compute-Instanz, bei der **keine öffentliche IP** aktiviert ist, hat im Vergleich zu einer Compute-Instanz mit öffentlicher IP **keine Anforderungen an die eingehende Kommunikation** aus dem öffentlichen Internet. Insbesondere ist keine der beiden NSG-Regeln für den Eingang (`BatchNodeManagement`, `AzureMachineLearning`) erforderlich.
+Eine Compute-Instanz, bei der **keine öffentliche IP** aktiviert ist, hat im Vergleich zu einer Compute-Instanz mit öffentlicher IP **keine Anforderungen an die eingehende Kommunikation** aus dem öffentlichen Internet. Insbesondere ist keine der beiden NSG-Regeln für den Eingang (`BatchNodeManagement`, `AzureMachineLearning`) erforderlich. Sie müssen den Eingang von der **VirtualNetwork**-Quelle, beliebigen Portquellen, vom **VirtualNetwork**-Ziel und von den Zielports **29876, 29877 und 44224** zulassen.
 
 Für eine Compute-Instanz mit **keiner öffentlichen IP** müssen Sie außerdem private Endpunkt-Netzwerkrichtlinien und private Link-Service-Netzwerkrichtlinien deaktivieren. Diese Anforderungen stammen von Azure Private Link Service und Private Endpoints und sind nicht Azure Machine Learning-spezifisch. Befolgen Sie die Anweisungen unter [„Deaktivieren der Netzwerkrichtlinien für die Quell-IP des Private Link-Dienstes“](../private-link/disable-private-link-service-network-policy.md), um die Parameter`disable-private-endpoint-network-policies` und `disable-private-link-service-network-policies`das virtuelle Netzwerk-Subnetz festzulegen.
 

@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f546ff8ccabb4ef865fe9e75678d7b1ab2c22df
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a0a3e8476ae567c0e7d35ab53e1a5c57a52ad2e7
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128614522"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233690"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect-Synchronisierung: V2-Endpunkt-API 
 Microsoft hat einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, mit dem die Leistung der Synchronisierungsdienstvorgänge für Azure Active Directory verbessert wird. Wenn Sie den neuen V2-Endpunkt verwenden, treten beim Exportieren aus und Importieren in Azure AD spürbare Leistungssteigerungen auf. Dieser neue Endpunkt unterstützt Folgendes:
@@ -134,7 +134,7 @@ Die folgenden Schritte können verwendet werden, um die Mitgliedschaftsbeschrän
  `Set-ADSyncScheduler -SyncCycleEnabled $true` 
  
 >[!NOTE]
-> Wenn Azure AD Connect Health nicht aktiviert ist, ändern Sie die Einstellungen des Windows-Anwendungsereignisprotokolls, um die Protokolle zu archivieren, anstatt sie zu überschreiben. Die Protokolle können zur Unterstützung bei der zukünftigen Problembehandlung verwendet werden. 
+> Wenn Azure AD Connect Health nicht aktiviert ist, ändern Sie die Einstellungen des Windows-Anwendungsereignisprotokolls so, dass die Protokolle nicht überschrieben, sondern archiviert werden. Die Protokolle können zur Unterstützung bei der zukünftigen Problembehandlung verwendet werden. 
 
 >[!NOTE]
 > Nachdem Sie den neuen Endpunkt aktiviert haben, werden möglicherweise zusätzliche Exportfehler für den AAD-Connector mit dem Namen „dn-attributes-failure“ angezeigt. Für jeden Fehler wird ein entsprechender Ereignisprotokolleintrag mit der ID 6949 angezeigt. Die Fehler sind informativ und weisen nicht auf ein Problem mit Ihrer Installation hin, sondern geben an, dass der Synchronisierungsprozess bestimmte Mitglieder nicht zu einer Gruppe in Azure AD hinzufügen konnte, weil das Mitgliedsobjekt selbst nicht mit Azure AD synchronisiert wurde. 

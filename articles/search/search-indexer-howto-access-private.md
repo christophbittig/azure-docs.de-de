@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/13/2021
-ms.openlocfilehash: 79bb517faffdda7e9d7ddef45e7b52f5e81dc201
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 484f52656c5e49113d50f25a94a33b94ed886ab0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128589680"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359199"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>Erstellen von Indexerverbindungen über einen privaten Endpunkt
 
@@ -56,7 +56,13 @@ Sie können die Azure-Ressourcen, bei denen ausgehende private Endpunktverbindun
 Im weiteren Verlauf dieses Artikels wird eine Mischung aus dem Azure-Portal (oder der [Azure CLI](/cli/azure/), wenn Sie diese bevorzugen) und [Postman](https://www.postman.com/) (oder einem anderen HTTP-Client wie [curl](https://curl.se/), wenn Sie diesen bevorzugen) verwendet, um die Aufrufe der REST-API zu demonstrieren.
 
 > [!NOTE]
-> Um eine private Endpunktverbindung zu Azure Data Lake Storage Gen2 zu erstellen, müssen Sie zwei private Endpunkte erstellen. Ein privater Endpunkt mit der groupID „dfs" und ein weiterer privater Endpunkt mit der groupID „blob".
+> Es gibt Azure Cognitive Search-Datenquellen und andere Konfigurationen, für die mehrere freigegebene private Verbindungen erforderlich sind, um ordnungsgemäß zu funktionieren. Im Anschluss finden Sie eine Liste der Konfigurationen mit dieser Anforderung und den jeweils erforderlichen Gruppen-IDs:
+> * **Datenquelle vom Typ „Azure Data Lake Storage Gen2“:** Erstellen Sie zwei freigegebene private Verbindungen: eine freigegebene private Verbindung mit dem groupID-Wert „dfs“ und eine andere mit dem groupID-Wert „blob“.
+> * **Skillset mit konfiguriertem Wissensspeicher:** Abhängig von den für den Wissensspeicher festgelegten Projektionen sind ein oder zwei private Verbindungen erforderlich:
+>   * Erstellen Sie bei Verwendung von Blob- und/oder Dateiprojektionen eine freigegebene private Verbindung mit dem groupID-Wert „blob“. 
+>   * Erstellen Sie bei Verwendung von Tabellenprojektionen eine freigegebene private Verbindung mit dem groupID-Wert „table“. 
+>   * Für den Fall, dass sowohl Blob-/Dateiprojektionen als auch Tabellenprojektionen verwendet werden, erstellen Sie zwei freigegebene private Verbindungen: eine mit dem groupID-Wert „blob“ und eine mit dem groupID-Wert „table“. 
+> * **Indexer mit aktiviertem Cache:** Erstellen Sie zwei freigegebene private Verbindungen: eine freigegebene private Verbindung mit dem groupID-Wert „table“ und eine andere mit dem groupID-Wert „blob“.
 
 ## <a name="set-up-indexer-connection-through-private-endpoint"></a>Einrichten einer Indexerverbindung über einen privaten Endpunkt
 
@@ -70,25 +76,25 @@ Die Beispiele in diesem Artikel basieren auf den folgenden Annahmen:
 
 Die Schritte zum Einschränken des Zugriffs unterscheiden sich je nach Ressource. In den folgenden Szenarios werden drei der gängigsten Ressourcentypen gezeigt.
 
-- Szenario 1: Datenquelle
+- Szenario 1: Azure Storage
 
-    Im Folgenden finden Sie ein Beispiel für die Konfiguration eines Azure-Speicherkontos. Wenn Sie diese Option auswählen und die Seite leer lassen, bedeutet dies, dass kein Datenverkehr aus virtuellen Netzwerken zulässig ist.
+    Im Folgenden finden Sie ein Beispiel für die Konfiguration einer Firewall für ein Azure-Speicherkonto. Wenn Sie diese Option auswählen und die Seite leer lassen, bedeutet dies, dass kein Datenverkehr aus virtuellen Netzwerken zulässig ist.
 
     ![Der Screenshot des Bereichs „Firewalls und virtuelle Netzwerke“ für Azure-Speicher zeigt die Option zum Zulassen des Zugriffs auf ausgewählte Netzwerke.](media\search-indexer-howto-secure-access\storage-firewall-noaccess.png)
 
 - Szenario 2: Azure Key Vault
 
-    Im Folgenden finden Sie ein Beispiel für die Konfiguration von Azure Key Vault.
+    Im Folgenden finden Sie ein Beispiel für die Konfiguration einer Azure Key Vault-Firewall:
  
     ![Der Screenshot des Bereichs „Firewalls und virtuelle Netzwerke“ für Azure Key Vault zeigt die Option zum Zulassen des Zugriffs auf ausgewählte Netzwerke.](media\search-indexer-howto-secure-access\key-vault-firewall-noaccess.png)
     
 - Szenario 3: Azure Functions
 
-    Für Azure Functions müssen keine Änderungen an der Netzwerkeinstellung vorgenommen werden. Wenn Sie später in den folgenden Schritten den freigegebenen privaten Endpunkt erstellen, lässt die Funktion automatisch nur den Zugriff über den privaten Link zu, nachdem Sie einen freigegebenen privaten Endpunkt für die Funktion erstellt haben.
+    Für Azure Functions-Firewalls müssen keine Änderungen an der Netzwerkeinstellung vorgenommen werden. Wenn Sie später in den folgenden Schritten den freigegebenen privaten Endpunkt erstellen, lässt die Funktion automatisch nur den Zugriff über die private Verbindung zu, nachdem Sie einen freigegebenen privaten Endpunkt für die Funktion erstellt haben.
 
 ### <a name="step-2-create-a-shared-private-link-resource-to-the-azure-resource"></a>Schritt 2: Erstellen einer freigegebenen Private Link-Ressource für die Azure-Ressource
 
-Im folgenden Abschnitt wird beschrieben, wie Sie eine freigegebene Private Link-Ressource entweder mithilfe des Microsoft Azure-Portals oder der Azure CLI erstellen.
+Im folgenden Abschnitt wird beschrieben, wie Sie eine freigegebene Private Link-Ressource entweder mithilfe des Microsoft Azure-Portals oder der Azure CLI erstellen. 
 
 #### <a name="option-1-portal"></a>Option 1: Portal
 

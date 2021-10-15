@@ -8,12 +8,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/22/2021
-ms.openlocfilehash: 06bdd49df0f8a4d79ffece298fee2ea2691b0796
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 24e6157ce585914229a3b65a20feba4640ca272a
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219209"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458811"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -94,7 +94,7 @@ Das visuelle Erstellen mit der Azure Repos Git-Integration unterstützt die Quel
 
 Im Konfigurationsbereich werden die folgenden Einstellungen für das Coderepository für Azure Repos angezeigt:
 
-| Einstellung | Beschreibung | Wert |
+| Einstellung | BESCHREIBUNG | Wert |
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des Coderepositorys für Azure Repos.<br/> | Azure DevOps Git oder GitHub |
 | **Azure Active Directory** | Ihr Name des Azure AD-Mandanten. | `<your tenant name>` |
@@ -102,6 +102,7 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das Codereposit
 | **Projektname** | Der Name Ihres Azure Repos-Projekts. Sie können den Namen Ihres Azure Repos-Projekts unter `https://{organization name}.visualstudio.com/{project name}` finden. | `<your Azure Repos project name>` |
 | **Repositoryname** | Der Name Ihres Azure Repos-Coderepositorys. Azure Repos-Projekte enthalten Git-Repositorys zum Verwalten Ihres Quellcodes, wenn Ihr Projekt umfangreicher wird. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Projekt befindet. | `<your Azure Repos code repository name>` |
 | **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die Azure Repos-Kollaboration, der für die Veröffentlichung verwendet wird. Dieser lautet standardmäßig `main`. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | `<your collaboration branch name>` |
+| **Branch für die Veröffentlichung** | Der Branch für die Veröffentlichung ist der Branch in Ihrem Repository, unter dem ARM-Vorlagen für Veröffentlichungsaufgaben gespeichert und aktualisiert werden. Dieser lautet standardmäßig `adf_publish`. | `<your publish branch name>` |
 | **Stammordner** | Ihr Stammordner im Branch für die Azure Repos-Kollaboration. | `<your root folder name>` |
 | **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus dem **Dokumenterstellungsbereich** in ein Azure Repos Git-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
 | **Branch zum Importieren der Ressource** | Gibt an, in welchen Branch die Data Factory-Ressourcen (Pipelines, Datasets, verknüpfte Dienste usw.) importiert werden. Sie können Ressourcen in einen der folgenden Branches importieren: a. Kollaboration b. Neu erstellen c. Vorhandene verwenden |  |
@@ -296,6 +297,12 @@ Der Code wird aus dem Livemodus in den Kollaborationsbranch importiert. Er betra
 1. Erstellen eines Pull Request zum Mergen der Änderungen in den Kollaborationsbranch 
 
 Wählen Sie eine der beiden Methoden entsprechend nach Bedarf aus. 
+
+### <a name="all-resources-showing-as-new-on-publish"></a>Alle Ressourcen werden bei der Veröffentlichung als neu angezeigt
+
+Bei der Veröffentlichung werden alle Ressourcen ggf. auch dann als neu angezeigt, wenn sie bereits zuvor veröffentlicht wurden. Dies kann passieren, wenn die *lastCommitId*-Eigenschaft für die *repoConfiguration*-Eigenschaft der Factory zurückgesetzt wird, indem entweder eine ARM-Vorlage der Factory erneut bereitgestellt oder die *repoConfiguration*-Eigenschaft der Factory über PowerShell oder die REST-API aktualisiert wird. Das Problem wird behoben, wenn Sie mit dem Veröffentlichen der Ressourcen fortfahren. Sie sollten es aber vermeiden, die *repoConfiguration*-Eigenschaft der Factory zu aktualisieren, um das erneute Auftreten des Problems zu verhindern. 
+
+
 
 ## <a name="switch-to-a-different-git-repository"></a>Wechseln zu einem anderen Git-Repository
 

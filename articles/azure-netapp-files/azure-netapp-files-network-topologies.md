@@ -12,20 +12,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/28/2021
+ms.date: 10/04/2021
 ms.author: ramakk
-ms.openlocfilehash: 6d82310eea944d91124025c3d894f543448f82e1
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 09f09b5c50dd04f39f95405df9875d458a258b25
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218677"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545961"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlinien für die Azure NetApp Files-Netzwerkplanung
 
 Die Planung der Netzwerkarchitektur ist ein Schlüsselelement beim Entwerfen von Anwendungsinfrastrukturen. Dieser Artikel hilft Ihnen, eine effektive Netzwerkarchitektur für Ihre Workloads zu entwickeln, um von den umfangreichen Möglichkeiten von Azure NetApp Files zu profitieren.
 
-Azure NetApp Files-Volumes sind so konzipiert, dass sie in einem speziellen Subnetz, das als [delegiertes Subnetz](../virtual-network/virtual-network-manage-subnet.md) bezeichnet wird, innerhalb Ihrer Azure Virtual Network-Instanz enthalten sind. Daher können Sie bei Bedarf direkt aus Ihrem VNET, auf mit Peering verknüpften VNETs in der gleichen Region oder an lokalen Standorten über ein Gateway von Virtual Network (ExpressRoute oder VPN Gateway) auf die Volumes zugreifen. Das Subnetz ist Azure NetApp Files dediziert zugeordnet, ohne dass eine Verbindung mit anderen Azure-Diensten oder dem Internet besteht.
+Azure NetApp Files-Volumes sind so konzipiert, dass sie in einem speziellen Subnetz, das als [delegiertes Subnetz](../virtual-network/virtual-network-manage-subnet.md) bezeichnet wird, innerhalb Ihrer Azure Virtual Network-Instanz enthalten sind. Daher können Sie bei Bedarf direkt aus Azure per VNET-Peering oder aus der lokalen Umgebung über ein Gateway für virtuelle Netzwerke (ExpressRoute oder VPN Gateway) auf die Volumes zugreifen. Das Subnetz ist Azure NetApp Files dediziert zugeordnet, und es besteht keine Verbindung mit dem Internet. 
+
+## <a name="configurable-network-features"></a>Konfigurierbare Netzwerkfeatures  
+
+ Die Konfiguration der [**Standard-Netzwerkfeatures**](configure-network-features.md) für Azure NetApp Files ist jetzt als öffentliche Vorschauversion verfügbar. Nachdem Sie sich über Ihr Abonnement für dieses Feature registriert haben, können Sie neue Volumes erstellen und die Option *Standard* oder *Basic* für die Netzwerkfeatures in den unterstützten Regionen auswählen. In Regionen, in denen die Standard-Netzwerkfeatures nicht unterstützt werden, werden für das Volume standardmäßig die Basic-Netzwerkfeatures verwendet.  
+
+* ***Standard***  
+    Bei Auswahl dieser Einstellung können Sie höhere Grenzwerte für IP-Adressen und VNET-Standardfeatures nutzen, z. B. [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md) und [benutzerdefinierte Routen](../virtual-network/virtual-networks-udr-overview.md#user-defined) in delegierten Subnetzen, sowie zusätzliche Konnektivitätsmuster (wie in diesem Artikel beschrieben).
+
+* ***Grundlegend***  
+    Bei Auswahl dieser Einstellung können Sie bestimmte Konnektivitätsmuster und einen eingeschränkten IP-Adressbereich nutzen. Dies ist im Abschnitt [Überlegungen](#considerations) beschrieben. Bei dieser Einstellung gelten alle [Einschränkungen](#constraints). 
 
 ## <a name="considerations"></a>Überlegungen  
 
@@ -33,37 +43,38 @@ Zum Planen eines Azure NetApp Files-Netzwerks müssen Sie zunächst verschiedene
 
 ### <a name="constraints"></a>Einschränkungen
 
-Azure NetApp Files unterstützt derzeit die folgenden Features nicht: 
+In der folgenden Tabelle ist beschrieben, was für die einzelnen Konfigurationen der Netzwerkfeatures jeweils unterstützt wird:
 
-* Netzwerksicherheitsgruppen (NSGs), die auf das delegierte Subnetz angewendet werden
-* Auf das delegierte Subnetz angewendete benutzerdefinierte Routen (User-Defined Routes, UDRs)
-* Benutzerdefinierte Azure-Richtlinien (z. B. benutzerdefinierte Benennungsrichtlinien) auf der Azure NetApp Files-Schnittstelle
-* Lastenausgleichsmodule für den Azure NetApp Files-Datenverkehr
-* Azure Virtual WAN 
-* Zonenredundante Virtual Network-Gateways (Gateway-SKUs mit Az) 
-* Gateways für virtuelle Aktiv/Aktiv-Netzwerke 
-* Doppelstapel-VNet (IPv4 und IPv6)
-
-Für Azure NetApp Files gelten die folgenden Netzwerkeinschränkungen:
-
-* Es dürfen nicht mehr als 1000 IP-Adressen innerhalb eines VNets mit Azure NetApp Files (einschließlich VNets mit *sofortigem* Peering) verwendet werden. Wir arbeiten an der Erhöhung dieses Limits, um den Skalierungsanforderungen von Kunden gerecht zu werden. 
-* In jedem Azure Virtual Network (VNET) kann nur ein Subnetz an Azure NetApp Files delegiert werden.
-
+|      Features     |      Standard-Netzwerkfeatures     |      Basic-Netzwerkfeatures     |
+|---|---|---|
+|     Anzahl von aktiv genutzten IP-Adressen in einem VNET mit Azure NetApp Files (einschließlich VNETs mit sofortigem Peering)    |     [Standardgrenzwerte für VMs](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)    |     1000    |
+|     Delegierte ANF-Subnetze pro VNET    |     1    |     1    |
+|     [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md) (NSGs) in delegierten Azure NetApp Files-Subnetzen    |     Ja    |     Nein    |
+|     [Benutzerdefinierte Routen](../virtual-network/virtual-networks-udr-overview.md#user-defined) (User-Defined Routes, UDRs) in delegierten Azure NetApp Files-Subnetzen    |     Ja    |     Nein    |
+|     Verbindung mit [privaten Endpunkten](../private-link/private-endpoint-overview.md)    |     Nein    |     Nein    |
+|     Verbindung mit [Dienstendpunkten](../virtual-network/virtual-network-service-endpoints-overview.md)    |     Nein    |     Nein    |
+|     Azure-Richtlinien (z. B. benutzerdefinierte Benennungsrichtlinien) für die Azure NetApp Files-Schnittstelle    |     Nein    |     Nein    |
+|     Lastenausgleichsmodule für Azure NetApp Files-Datenverkehr    |     Nein    |     Nein    |
+|     VNET mit dualem Stapel (IPv4 und IPv6)    |     Nein <br> (nur IPv4 wird unterstützt)    |     Nein <br> (nur IPv4 wird unterstützt)    |
 
 ### <a name="supported-network-topologies"></a>Unterstützte Netzwerktopologien
 
-In der folgenden Tabelle werden die von Azure NetApp Files unterstützten Netzwerktopologien beschrieben.  Es werden auch die Problemumgehungen für die nicht unterstützten Topologien beschrieben. 
+In der folgenden Tabelle sind die Netzwerktopologien beschrieben, die von den einzelnen Konfigurationen der Netzwerkfeatures von Azure NetApp Files unterstützt werden. 
 
-|    Topologien    |    Unterstützt    |     Problemumgehung    |
-|-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Verbindung mit Volume in einem lokalen VNET    |    Ja    |         |
-|    Verbindung mit Volume in einem mittels Peering verknüpften VNET (in derselben Region)    |    Ja    |         |
-|    Verbindung mit Volume in einem mittels Peering verknüpften VNET (regionsübergreifend oder globales Peering)    |    Nein    |    Keine    |
-|    Verbindung mit einem Volume über ExpressRoute-Gateway    |    Ja    |         |
-|    Verbindung zwischen lokalem Standort mit einem Volume in einem Spoke-VNET über ExpressRoute-Gateway und VNET-Peering mit Gatewaytransit    |    Ja    |        |
-|    Verbindung zwischen lokalem Standort mit einem Volume in einem Spoke-VNET über VPN-Gateway    |    Ja    |         |
-|    Verbindung zwischen lokalem Standort mit einem Volume in einem Spoke-VNET über VPN-Gateway und VNET-Peering mit Gatewaytransit    |    Ja    |         |
-
+|      Topologien     |      Standard-Netzwerkfeatures     |      Basic-Netzwerkfeatures     |
+|---|---|---|
+|     Verbindung mit Volume in einem lokalen VNET    |     Ja    |     Ja    |
+|     Verbindung mit Volume in einem mittels Peering verknüpften VNET (in derselben Region)    |     Ja    |     Ja    |
+|     Verbindung mit Volume in einem mittels Peering verknüpften VNET (regionsübergreifend oder globales Peering)    |     Nein    |     Nein    |
+|     Verbindung mit einem Volume über ExpressRoute-Gateway    |     Ja    |     Ja    |
+|     ExpressRoute (ER) FastPath    |     Ja    |     Nein    |
+|     Verbindung einer lokalen Umgebung mit einem Volume in einem Spoke-VNET über ExpressRoute-Gateway und VNET-Peering mit Gatewaytransit    |     Ja    |     Ja    |
+|     Verbindung einer lokalen Umgebung mit einem Volume in einem Spoke-VNET über VPN-Gateway    |     Ja    |     Ja    |
+|     Verbindung einer lokalen Umgebung mit einem Volume in einem Spoke-VNET über VPN-Gateway und VNET-Peering mit Gatewaytransit    |     Ja    |     Ja    |
+|     Verbindung über Aktiv/Passiv-VPN-Gateways    |     Ja    |     Ja    |
+|     Verbindung über Aktiv/Aktiv-VPN-Gateways    |     Ja    |     Nein    |
+|     Verbindung über zonenredundante Aktiv/Aktiv-Gateways    |     Nein    |     Nein    |
+|     Verbindung über Virtual WAN (vWAN)    |     Nein    |     Nein    |
 
 ## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Virtuelles Netzwerk für Azure NetApp Files-Volumes
 
@@ -85,10 +96,14 @@ Wenn das VNET per Peering mit einem anderen VNET verknüpft ist, können Sie den
 
 ### <a name="udrs-and-nsgs"></a>Benutzerdefinierte Routen und Netzwerksicherheitsgruppen
 
-Benutzerdefinierte Routen (User-defined Route, UDR) und Netzwerksicherheitsgruppen (Network Security Group, NSG) werden auf delegierten Subnetzen für Azure NetApp Files nicht unterstützt. Sie können UDRs und NSGs jedoch auf andere Subnetze anwenden, die sich sogar im gleichen VNET befinden wie das an Azure NetApp Files delegierte Subnetz.
+Benutzerdefinierte Routen (User-Defined Routes, UDRs) und Netzwerksicherheitsgruppen (NSGs) werden nur in delegierten Azure NetApp Files-Subnetzen unterstützt, für die mindestens ein Volume mit den Standard-Netzwerkfeatures erstellt wurde.  
 
-* UDRs definieren dann die Datenverkehrsflüsse aus den anderen Subnetzen an das delegierte Azure NetApp Files-Subnetz. Dadurch wird erreicht, dass dieser Datenfluss mit dem Datenverkehrsfluss von Azure NetApp Files an die anderen Subnetze über die Systemrouten in Einklang steht.  
-* NSGs lassen dann den Datenverkehr zu und von dem delegierten Azure NetApp Files-Subnetz zu oder verweigern ihn. 
+> [!NOTE]
+> Die Zuordnung von NSGs auf Netzwerkschnittstellenebene wird für die Azure NetApp Files-Netzwerkschnittstellen nicht unterstützt. 
+
+Wenn das Subnetz über eine Kombination aus Volumes mit den Standard- und Basic-Netzwerkfeatures verfügt (oder für vorhandene Volumes, die nicht für die Featurevorschau registriert sind), gelten die auf die delegierten Subnetze angewendeten UDRs und NSGs nur für die Volumes mit den Standard-Netzwerkfeatures.
+
+Das Konfigurieren von benutzerdefinierten Routen (User-Defined Routes, UDRs) in den Subnetzen der Quell-VM mit dem Adresspräfix des delegierten Subnetzes und „NVA“ als nächstem Hop wird für Volumes mit Basic-Netzwerkfeatures nicht unterstützt. Eine Einstellung dieser Art führt zu Konnektivitätsproblemen.
 
 ## <a name="azure-native-environments"></a>Native Azure-Umgebungen
 
@@ -125,7 +140,7 @@ Abhängig von der Konfiguration können Sie lokale Ressourcen mit Ressourcen im 
 In der oben dargestellten Topologie ist das lokale Netzwerk mit einem Hub-VNET in Azure verbunden, und es gibt zwei Spoke-VNETs in derselben Region, die per Peering mit dem Hub-VNet verbunden sind.  In diesem Szenario werden folgende Verbindungsoptionen für Azure NetApp Files-Volumes unterstützt:
 
 * Lokale Ressourcen auf VM 1 und VM 2 können sich über ein Site-to-Site-VPN oder eine ExpressRoute-Verbindung mit Volume 1 im Hub verbinden. 
-* Lokale Ressourcen auf VM 1 und VM 2 können sich über ein Site-to-Site-VPN oder regionales VNet-Peering mit Volume 2 oder 3 verbinden.
+* Lokale Ressourcen auf VM 1 und VM 2 können über ein Site-to-Site-VPN oder regionales VNET-Peering eine Verbindung mit Volume 2 oder 3 herstellen.
 * VM 3 im Hub-VNET kann sich mit Volume 2 in Spoke-VNET 1 und Volume 3 in Spoke-VNET 2 verbinden.
 * VM 4 in Spoke-VNET 1 und VM 5 in Spoke-VNET 2 können sich mit Volume 1 im Hub-VNET verbinden.
 * VM 4 in Spoke-VNET 1 kann sich nicht mit Volume 3 in Spoke-VNET 2 verbinden. Auch VM 5 in Spoke-VNET 2 kann sich nicht mit Volume 2 in Spoke-VNET 1 verbinden. Der Grund dafür ist, dass die Spoke-VNETs nicht per Peering verknüpft sind und _Transitrouting über VNET-Peering_ nicht unterstützt wird.
@@ -133,4 +148,5 @@ In der oben dargestellten Topologie ist das lokale Netzwerk mit einem Hub-VNET i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Delegieren eines Subnetzes für Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+* [Delegieren eines Subnetzes für Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+* [Konfigurieren von Netzwerkfeatures für ein Azure NetApp Files-Volume](configure-network-features.md) 

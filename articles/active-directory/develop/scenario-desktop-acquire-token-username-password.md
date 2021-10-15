@@ -1,7 +1,7 @@
 ---
-title: Erwerben Sie ein Token, um eine Web-API mit einem Benutzernamen und einem Passwort aufzurufen (Desktop-App) | Azure
+title: Beziehen eines Tokens zum Aufrufen einer Web-API mit Benutzername und Kennwort (Desktop-App) | Azure
 titleSuffix: Microsoft identity platform
-description: Erfahren Sie, wie Sie eine Desktop-Anwendung erstellen, die Web-APIs aufruft, um ein Token für die Anwendung mit einem Benutzernamen und einem Passwort zu erhalten.
+description: Es wird beschrieben, wie Sie eine Desktop-App zum Aufrufen von Web-APIs entwickeln, um mit Benutzername und Kennwort ein Token für die App zu beziehen.
 services: active-directory
 author: maliksahil
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/25/2021
 ms.author: sahmalik
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ae84fd2fb25a78687f3103a193e584efc14614ca
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 08c14161ea5a108c1c6205f352485c348871bae5
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124838186"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234868"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token-using-username-and-password"></a>Desktop-Anwendung, die Web-APIs aufruft: Erwerben Sie ein Token mit Benutzername und Passwort
 
@@ -25,7 +25,7 @@ Sie können ein Token auch abrufen, indem Sie Benutzername und Kennwort angeben.
 
 ## <a name="this-flow-isnt-recommended"></a>Dieser Flow wird nicht empfohlen.
 
-Der Benutzername- und Kennwortflow wird *nicht empfohlen*, da es nicht sicher ist, wenn die Anwendung das Kennwort des Benutzers abfragt. Weitere Informationen finden Sie unter [What's the solution to the growing problem of passwords? (Wie sich das zunehmende Problem der Kennwörter lösen lässt.)](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Der bevorzugte Flow für das automatische Abrufen eines Tokens auf Computern in Windows-Domänen ist die [integrierte Windows-Authentifizierung](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Sie können auch den [Gerätecodeflow](https://aka.ms/msal-net-device-code-flow) verwenden.
+Der Benutzername- und Kennwortflow wird *nicht empfohlen*, da es nicht sicher ist, wenn die Anwendung das Kennwort des Benutzers abfragt. Weitere Informationen finden Sie unter [What's the solution to the growing problem of passwords? (Wie sich das zunehmende Problem der Kennwörter lösen lässt.)](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Der bevorzugte Ablauf für die Beschaffung eines Tokens im Hintergrund auf Computern, die in eine Windows-Domäne eingebunden sind, ist die [integrierte Windows-Authentifizierung](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Sie können auch den [Gerätecodeflow](https://aka.ms/msal-net-device-code-flow) verwenden.
 
 In manchen Fällen ist auch die Verwendung eines Benutzernamens und Kennworts hilfreich, z. B. in DevOps-Szenarien. Wenn Sie jedoch Benutzernamen und Kennwort in interaktiven Szenarien verwenden möchten, in denen Sie Ihre eigene Benutzeroberfläche bereitstellen, sollten Sie sich Gedanken darüber machen, wie Sie das ändern können. Durch die Verwendung von Benutzername und Kennwort geben Sie eine Reihe von Vorteilen auf:
 

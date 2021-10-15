@@ -118,4 +118,4 @@
     - name: "PowerShell-Beispiele für Azure\_AD-Rollen"
       href: powershell-for-azure-ad-roles.md
     - name: Azure AD-Diensteinschränkungen
-      href: ../users-groups-roles/directory-service-limits-restrictions.md
+      href: ../enterprise-users/directory-service-limits-restrictions.md

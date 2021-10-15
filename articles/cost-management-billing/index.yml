@@ -1,8 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentation zur Azure-Kostenverwaltung und -Abrechnung
+title: Dokumentation zu Cost Management + Billing
 summary: Dank Cost Management + Billing können Sie Ihre Azure-Rechnung nachvollziehen, Ihr Abrechnungskonto und Ihre Abonnements verwalten, Azure-Ausgaben überwachen und kontrollieren sowie die Ressourcennutzung optimieren. Erfahren Sie, wie Sie Kosten analysieren, Budgets erstellen und verwalten, Daten exportieren und Empfehlungen prüfen und darauf reagieren.
 metadata:
   title: Kostenverwaltung + Abrechnung
+  titleSuffix: Azure Cost Management + Billing documentation
   description: Dank Cost Management + Billing können Sie Ihre Azure-Rechnung nachvollziehen, Ihr Abrechnungskonto und Ihre Abonnements verwalten, Azure-Ausgaben überwachen und kontrollieren sowie die Ressourcennutzung optimieren. Erfahren Sie, wie Sie Kosten analysieren, Budgets erstellen und verwalten, Daten exportieren und Empfehlungen prüfen und darauf reagieren.
   ms.service: cost-management-billing
   ms.subservice: common
@@ -10,13 +11,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 10/07/2021
-  ms.openlocfilehash: 4dab44a6129c2e6bb6d810ec820cfb459ddb89df
-  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+  ms.date: 10/13/2021
+  ms.openlocfilehash: 50e8782d70e2c8d783c8079e7bd3fb48fcf9bb94
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/09/2021
-  ms.locfileid: "129711256"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "130000383"
 landingContent:
 - title: Analysieren Ihrer Kosten
   linkLists:

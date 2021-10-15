@@ -3,12 +3,12 @@ title: Verwalten von gesicherten SAP HANA-Datenbanken für Azure-VMs
 description: In diesem Artikel erfahren Sie mehr über allgemeine Aufgaben zum Verwalten und Überwachen von SAP HANA-Datenbanken, die auf virtuellen Azure-Computern ausgeführt werden.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: d514a8f790f906a4830672dc726c03ad2cf41a2c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2e793cddeb4e751c47ffa82786f24e65a0873faf
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662246"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231366"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Verwalten und Überwachen gesicherter SAP HANA-Datenbanken
 
@@ -84,7 +84,8 @@ Diese bedarfsgesteuerten Sicherungen werden auch in der Liste der Wiederherstell
 
 #### <a name="restore"></a>Restore
 
-Von nativen HANA-Clients (unter Verwendung von **Backint**) ausgelöste Wiederherstellungen auf denselben Computer können von der Seite **Sicherungsaufträge** aus [überwacht](#monitor-manual-backup-jobs-in-the-portal) werden.
+Von nativen HANA-Clients (unter Verwendung von **Backint**) ausgelöste Wiederherstellungen **auf demselben Computer** können über die Seite **Sicherungsaufträge** [überwacht](#monitor-manual-backup-jobs-in-the-portal) werden.
+Wiederherstellungen, die von nativen HANA-Clients für einen Wiederherstellungsvorgang auf einem anderen Computer ausgelöst werden, sind nicht zulässig. Der Grund ist, dass es für den Azure Backup-Dienst nicht möglich ist, den Zielserver gemäß den Azure RBAC-Regeln für die Wiederherstellung zu authentifizieren.
 
 #### <a name="delete"></a>Löschen
 

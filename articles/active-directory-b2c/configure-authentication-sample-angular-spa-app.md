@@ -11,12 +11,12 @@ ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 3d7a519a982653693254288e02ffdb867e70f78f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 65190ed6f79a72f59c4329b6f413428ea8e7bb35
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128572616"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426546"
 ---
 # <a name="configure-authentication-in-a-sample-angular-single-page-application-by-using-azure-active-directory-b2c"></a>Konfigurieren der Authentifizierung in einem Beispiel einer Angular-Single-Page-Anwendung mit Azure Active Directory B2C
 
@@ -64,7 +64,7 @@ Bevor Sie die Verfahren in diesem Artikel befolgen, stellen Sie sicher, dass auf
 
 * [Visual Studio Code](https://code.visualstudio.com/) oder ein anderer Code-Editor
 * [Node.js-Runtime](https://nodejs.org/en/download/) und [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-* [Angular LCI](https://angular.io/cli)
+* [Angular-CLI](https://angular.io/cli)
 
 ## <a name="step-1-configure-your-user-flow"></a>Schritt 1: Konfigurieren Ihres Benutzerflows
 

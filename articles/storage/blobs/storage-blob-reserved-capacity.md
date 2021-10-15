@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/17/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6bb24f33d93e58768af34359f4d803ca68cf4ac4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 14f8cc665ef1d7335116a2e5b68ea3f58424063a
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645776"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274442"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimieren der Kosten für Blobspeicher mit reservierter Kapazität
 
@@ -44,7 +44,7 @@ Eine Azure Storage-Reservierung deckt nur die Menge der Daten ab, die in einem A
 
 Reservierte Azure Storage-Kapazität ist für Ressourcen in Standardspeicherkonten verfügbar, einschließlich universellen v2- (GPv2) und Blobspeicherkonten.
 
-Für Reservierungen werden alle Zugriffsebenen (heiß, kalt und Archiv) unterstützt. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md).
+Für Reservierungen werden alle Zugriffsebenen (heiß, kalt und Archiv) unterstützt. Weitere Informationen zu Zugriffsebenen finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md).
 
 Für Reservierungen werden alle Redundanztypen unterstützt. Weitere Informationen zu Redundanzoptionen finden Sie unter [Azure Storage-Redundanz](../common/storage-redundancy.md).
 
@@ -79,12 +79,12 @@ Gehen Sie folgendermaßen vor, um reservierte Kapazität zu erwerben:
 
     ![Screenshot, der den Erwerb reservierter Kapazität veranschaulicht](media/storage-blob-reserved-capacity/select-reserved-capacity.png)
 
-   |Feld  |Beschreibung  |
+   |Feld  |BESCHREIBUNG  |
    |---------|---------|
    |**Umfang**   |  Zeigt an, wie viele Abonnements die mit der Reservierung verbundenen Abrechnungsvorteile nutzen können. Sie steuert auch, wie die Reservierung auf bestimmte Abonnements angewendet wird. <br/><br/> Wenn Sie **Gemeinsam** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität in einem beliebigen Abonnement innerhalb des Abrechnungskontexts. Der Abrechnungskontext basiert darauf, wie Sie sich für Azure registriert haben. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Bezahlung umfasst der freigegebene Umfang alle Abonnements mit Preisen für nutzungsbasierte Bezahlung, die vom Kontoadministrator erstellt wurden.  <br/><br/>  Wenn Sie **Einzelabonnement** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität im ausgewählten Abonnement. <br/><br/> Wenn Sie die Option **Einzelne Ressourcengruppe** wählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität im ausgewählten Abonnement und in der ausgewählten Ressourcengruppe in diesem Abonnement. <br/><br/> Sie können den Reservierungsumfang nach dem Erwerb der Reservierung ändern.  |
    |**Abonnement**  | Das Abonnement, das für die Bezahlung der Azure Storage-Reservierung verwendet wird. Die Zahlungsmethode für das ausgewählte Abonnement wird für das Inrechnungstellen der Kosten verwendet. Es muss einer der folgenden Abonnementtypen vorliegen: <br/><br/>  Enterprise Agreement (Angebotsnummer: MS-AZR-0017P oder MS-AZR-0148P): Bei einem Enterprise-Abonnement werden die Gebühren vom Saldo der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) der Reservierung abgezogen oder als Überschreitung belastet. <br/><br/> Einzelnes Abonnement mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P): Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Bezahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung berechnet.    |
    | **Region** | Die Region, in der die Reservierung wirksam ist. |
-   | **Zugriffsebene** | Die Zugriffsebene, für die die Reservierung wirksam ist. Die Optionen umfassen *Heiß*, *Kalt* und *Archiv*. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](storage-blob-storage-tiers.md). |
+   | **Zugriffsebene** | Die Zugriffsebene, für die die Reservierung wirksam ist. Die Optionen umfassen *Heiß*, *Kalt* und *Archiv*. Weitere Informationen zu Zugriffsebenen finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md). |
    | **Redundanz** | Die Redundanzoption für die Reservierung. Die Optionen umfassen *LRS*, *ZRS*, *GRS*, *GZRS*, *RA-GRS* und *RA-GZRS*. Weitere Informationen zu Redundanzoptionen finden Sie unter [Azure Storage-Redundanz](../common/storage-redundancy.md). |
    | **Fakturierungsintervall** | Gibt an, wie oft das Konto für die Reservierung belastet wird. Die Optionen umfassen *Monatlich* oder *Im Voraus*. |
    | **Größe** | Die Menge der zu reservierenden Kapazität |

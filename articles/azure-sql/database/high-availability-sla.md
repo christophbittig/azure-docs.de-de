@@ -11,18 +11,20 @@ ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma, emlisa
-ms.date: 10/28/2020
-ms.openlocfilehash: a12036994371517238d98481b5c88e3f653ab833
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.date: 09/24/2021
+ms.openlocfilehash: 0dc5dbec29cf8c1ac6a91777f0c67f0645e7a87d
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708831"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057301"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hochverfügbarkeit für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Die Architektur für Hochverfügbarkeit in Azure SQL-Datenbank und SQL Managed Instance sorgt dafür, dass Ihre Datenbank mindestens 99,99 Prozent der Zeit betriebsbereit ist, ohne dass Sie sich Gedanken über Auswirkungen von Wartungsarbeiten und Ausfällen machen müssen. (Weitere Informationen zur spezifischen SLA für verschiedene Tarife finden Sie unter [SLA für Azure SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/azure-sql-database) und [SLA für Azure SQL Managed Instance](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance/).) Azure verarbeitet automatisch wichtige Wartungsaufgaben, z.B. Patches, Sicherungen, Windows- und Azure SQL-Upgrades, aber auch ungeplante Ereignisse wie Ausfälle der zugrunde liegenden Hardware oder Software oder Netzwerkfehler.  Wenn die zugrunde liegende Datenbank in Azure SQL-Datenbank gepatcht oder ein Failover ausgeführt wird, ist im Allgemeinen keine Ausfallzeit festzustellen, wenn Sie in Ihrer App [Wiederholungslogik nutzen](develop-overview.md#resiliency). SQL-Datenbank und SQL Managed Instance können auch unter den kritischsten Umständen schnell wiederhergestellt werden. So wird sichergestellt, dass Ihre Daten immer verfügbar sind.
+Mit der Architektur für Hochverfügbarkeit in Azure SQL-Datenbank und SQL Managed Instance soll garantiert werden, dass Ihre Datenbank mindestens 99,99 % der Zeit betriebsbereit ist und ausgeführt wird, ohne dass Sie sich Gedanken über die Auswirkungen von Wartungsarbeiten und Ausfällen machen müssen. Weitere Informationen zu bestimmten SLAs für die unterschiedlichen Tarife finden Sie unter [SLA für Azure SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/azure-sql-database) und [SLA für Azure SQL Managed Instance](https://azure.microsoft.com/support/legal/sla/azure-sql-sql-managed-instance/). 
+
+Azure verarbeitet automatisch wichtige Wartungsaufgaben, z.B. Patches, Sicherungen, Windows- und Azure SQL-Upgrades, aber auch ungeplante Ereignisse wie Ausfälle der zugrunde liegenden Hardware oder Software oder Netzwerkfehler.  Wenn die zugrunde liegende Datenbank in Azure SQL-Datenbank gepatcht oder ein Failover ausgeführt wird, ist im Allgemeinen keine Ausfallzeit festzustellen, wenn Sie in Ihrer App [Wiederholungslogik nutzen](develop-overview.md#resiliency). SQL-Datenbank und SQL Managed Instance können auch unter den kritischsten Umständen schnell wiederhergestellt werden. So wird sichergestellt, dass Ihre Daten immer verfügbar sind.
 
 Die Hochverfügbarkeitslösung soll sicherstellen, dass Daten, für die ein Commit ausgeführt wurde, nie aufgrund von Fehlern verloren gehen, dass sich Wartungsvorgänge nicht auf Ihre Workload auswirken und dass die Datenbank keinen Single Point of Failure in der Softwarearchitektur darstellt. Es gibt keine Wartungsfenster oder Ausfallzeiten, aufgrund derer Sie die Workload während der Aktualisierung oder Wartung der Datenbank beenden müssen.
 

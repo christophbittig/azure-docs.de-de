@@ -4,13 +4,13 @@ description: Verwendung von Schleifen und Arrays in einer Bicep-Datei, um mehrer
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/23/2021
-ms.openlocfilehash: adb05c5af042e0c9f54e925f82097a1721f40073
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/30/2021
+ms.openlocfilehash: fadd3cfac94889a187409e95331190b7d7b98b73
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662094"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363003"
 ---
 # <a name="resource-iteration-in-bicep"></a>Ressourceniteration in Bicep
 
@@ -193,7 +193,9 @@ resource storageAcct 'Microsoft.Storage/storageAccounts@2021-02-01' = [for i in 
 }]
 ```
 
-Legen Sie für eine rein sequenzielle Bereitstellung die Batchgröße auf 1 fest.
+Legen Sie für eine rein sequenzielle Bereitstellung die Batchgröße auf „1“ fest.
+
+Der `batchSize`-Decorator befindet sich im [sys-Namespace](bicep-functions.md#namespaces-for-functions). Wenn Sie diesen Decorator von einem anderen Element gleichen Namens unterscheiden müssen, stellen Sie dem Decorator **sys** voran: `@sys.batchSize(2)`
 
 ## <a name="iteration-for-a-child-resource"></a>Iteration für eine untergeordnete Ressource
 

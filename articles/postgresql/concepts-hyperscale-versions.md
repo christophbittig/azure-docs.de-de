@@ -6,19 +6,23 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 08/03/2021
-ms.openlocfilehash: 8dd0929d56bac0b2f825d976ba07bd0956c0d063
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/01/2021
+ms.openlocfilehash: 63f9cf024101fee3049eddc5f91497ab978d2821
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124755189"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399686"
 ---
 # <a name="supported-database-versions-in-azure-database-for-postgresql--hyperscale-citus"></a>Unterstützte Datenbankversionen in Azure Database for PostgreSQL – Hyperscale (Citus)
 
 ## <a name="postgresql-versions"></a>PostgreSQL-Versionen
 
 Die PostgreSQL-Version, die in einer Hyperscale (Citus)-Servergruppe ausgeführt wird, kann während der Erstellung angepasst werden. Hyperscale (Citus) unterstützt zurzeit die folgenden Hauptversionen:
+
+### <a name="postgresql-version-14"></a>PostgreSQL-Version 14
+
+Die aktuelle Nebenversion ist 14.0. Informationen zu Verbesserungen und Fehlerbehebungen in diesem Nebenrelease finden Sie in der [Dokumentation zu PostgreSQL](https://www.postgresql.org/docs/14/release-14.html).
 
 ### <a name="postgresql-version-13"></a>PostgreSQL Version 13
 
@@ -38,7 +42,7 @@ Die PostgreSQL-Version 10 und frühere Versionen werden für Azure Database for
 
 ## <a name="citus-and-other-extension-versions"></a>Citus und andere Erweiterungsversionen
 
-Je nachdem, welche PostgreSQL-Version in einer Servergruppe ausgeführt wird, werden auch verschiedene [Versionen von Postgres-Erweiterungen](concepts-hyperscale-extensions.md) installiert.  Insbesondere enthält Postgres 13 Citus 10, und frühere Postgres-Versionen enthalten Citus 9.5.
+Je nachdem, welche PostgreSQL-Version in einer Servergruppe ausgeführt wird, werden auch verschiedene [Versionen von Postgres-Erweiterungen](concepts-hyperscale-extensions.md) installiert. Die Postgres-Versionen 12 bis 14 enthalten Citus 10, und frühere Postgres-Versionen enthalten Citus 9.5.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

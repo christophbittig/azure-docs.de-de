@@ -1,18 +1,17 @@
 ---
 title: Azure Virtual WAN – häufig gestellte Fragen | Microsoft-Dokumentation
 description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Netzwerken, Clients, Gateways, Geräten, Partnern und Verbindungen im Zusammenhang mit Azure Virtual WAN.
-services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: c4c31314ca8e559748425518258e0eec965d9c09
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: eaeefcfc48492686abc88215e80bc6d74a836f4f
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754433"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545037"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN – Häufig gestellte Fragen
 
@@ -34,9 +33,9 @@ Virtual WAN ist in zwei Varianten verfügbar: Basic und Standard. In Virtual WAN
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Wie werden Verfügbarkeitszonen und Resilienz in Virtual WAN gehandhabt?
 
-Virtual WAN ist eine Sammlung von Hubs und Diensten, die innerhalb des Hubs zur Verfügung gestellt werden. Der Benutzer kann gemäß seinen Anforderungen beliebig viele Virtual WAN-Instanzen besitzen. In einem Virtual WAN-Hub gibt es mehrere Dienste wie VPN, ExpressRoute usw. Jeder dieser Dienste wird über Verfügbarkeitszonen hinweg bereitgestellt (mit Ausnahme von Azure Firewall), sofern die Region Verfügbarkeitszonen unterstützt. Wenn eine Region nach der anfänglichen Bereitstellung im Hub zu einer Verfügbarkeitszone wird, kann der Benutzer die Gateways neu erstellen, wodurch eine Bereitstellung der Verfügbarkeitszone ausgelöst wird. Alle Gateways werden in einem Hub als „Aktiv/Aktiv“ zur Verfügung gestellt, was bedeutet, dass in einem Hub die Resilienz integriert ist. Benutzer können Verbindungen mit mehreren Hubs herstellen, wenn sie eine regionsübergreifende Resilienz wünschen. 
+Virtual WAN ist eine Sammlung von Hubs und Diensten, die innerhalb des Hubs zur Verfügung gestellt werden. Der Benutzer kann gemäß seinen Anforderungen beliebig viele Virtual WAN-Instanzen besitzen. In einem Virtual WAN-Hub gibt es mehrere Dienste wie VPN, ExpressRoute usw. Jeder dieser Dienste wird für Verfügbarkeitszonen übergreifend bereitgestellt (mit Ausnahme von Azure Firewall), sofern für die Region Verfügbarkeitszonen unterstützt werden. Wenn eine Region nach der anfänglichen Bereitstellung im Hub zu einer Verfügbarkeitszone wird, kann der Benutzer die Gateways neu erstellen, wodurch eine Bereitstellung der Verfügbarkeitszone ausgelöst wird. Alle Gateways werden in einem Hub als „Aktiv/Aktiv“ zur Verfügung gestellt, was bedeutet, dass in einem Hub die Resilienz integriert ist. Benutzer können Verbindungen mit mehreren Hubs herstellen, wenn sie eine regionsübergreifende Resilienz wünschen. 
 
-Derzeit kann Azure Firewall zur Unterstützung von Verfügbarkeitszonen über das Azure Firewall Manager-Portal, über [PowerShell](/powershell/module/az.network/new-azfirewall?view=azps-6.3.0#example-6--create-a-firewall-with-no-rules-and-with-availability-zones) oder die CLI bereitgestellt werden. Es gibt derzeit keine Möglichkeit, eine bestehende Firewall für die Bereitstellung über Verfügbarkeitszonen hinweg zu konfigurieren. Sie müssen Ihre Azure Firewall löschen und erneut bereitstellen. 
+Derzeit kann Azure Firewall zur Unterstützung von Verfügbarkeitszonen über das Azure Firewall Manager-Portal, über [PowerShell](/powershell/module/az.network/new-azfirewall#example-6--create-a-firewall-with-no-rules-and-with-availability-zones) oder die CLI bereitgestellt werden. Es gibt derzeit keine Möglichkeit, eine bestehende Firewall für die Bereitstellung über Verfügbarkeitszonen hinweg zu konfigurieren. Sie müssen Ihre Azure Firewall löschen und erneut bereitstellen. 
 
 Obwohl das Konzept von Virtual WAN global ist, basiert die eigentliche virtuelle WAN-Ressource auf dem Resource Manager und wird regional bereitgestellt. Falls die virtuelle WAN-Region selbst ein Problem aufweisen sollte, werden alle Hubs in diesem virtuellen WAN weiterhin unverändert funktionieren, aber der Benutzer kann keine neuen Hubs erstellen, bis die virtuelle WAN-Region verfügbar ist.
 
@@ -192,7 +191,7 @@ Eine einfache Konfiguration eines Virtual WAN mit einem Hub und einem VPN-Stando
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Können Spoke-VNETs, die über einen virtuellen Hub verbunden sind, miteinander kommunizieren (V2V-Transit)?
 
-Ja. Eine Virtual WAN-Instanz vom Typ „Standard“ unterstützt die transitive VNET-zu-VNET-Konnektivität über den Virtual WAN-Hub, mit dem die VNETs verbunden sind. Im Virtual WAN-Kontext werden diese Pfade für VNETs, die mit einem Virtual WAN-Hub in einer einzelnen Region verbunden sind, als „lokale Virtual WAN-VNET-Übertragung“ bezeichnet. Für VNETs, die über mehrere Virtual WAN-Hubs in mindestens zwei Regionen verbunden sind, werden sie als „globale Virtual WAN-VNET-Übertragung“ bezeichnet.
+Ja. Eine Virtual WAN-Instanz vom Typ „Standard“ unterstützt die transitive VNET-zu-VNET-Konnektivität über den Virtual WAN-Hub, mit dem die VNETs verbunden sind. Im Virtual WAN-Kontext werden diese Pfade für VNETs, die mit einem Virtual WAN-Hub in nur einer Region verbunden sind, als „lokaler VNET-Transit für Virtual WANs“ bezeichnet. Für VNETs, die über mehrere Virtual WAN-Hubs in mindestens zwei Regionen verbunden sind, werden sie als „globaler VNET-Transit für Virtual WAN“ bezeichnet.
 
 In einigen Szenarien können Spoke-VNETs auch mittels direktem Peering miteinander verbunden werden. Dazu wird zusätzlich zu lokaler oder globaler Virtual WAN-VNET-Übertragung das [Peering virtueller Netzwerke](../virtual-network/virtual-network-peering-overview.md) verwendet. In diesem Fall hat das VNET-Peering Vorrang vor der transitiven Verbindung über den Virtual WAN-Hub.
 
@@ -253,10 +252,10 @@ Der Ursprung der Standardroute liegt nicht auf dem Virtual WAN-Hub. Sie wird wei
 Wenn ein virtueller Hub von mehreren Remotehubs die gleichen Routeninformationen erhält, wird folgende Entscheidungsreihenfolge verwendet:
 
 1. Längste Präfixübereinstimmung
-1. Lokale Routen zwischen Hubs. (Der virtuelle Hub weist 65520 bis 65520 für AS zwischen Hubs zu.)
+1. Lokale Routen zwischen Hubs
 1. Statische Routen über BGP Dies steht im Zusammenhang mit der Entscheidung, die der virtuelle Hubrouter trifft. Wenn der Entscheidungsträger jedoch das VPN-Gateway ist, bei dem ein Standort Routen über BGP ankündigt oder statische Adresspräfixe bereitstellt, können statische Routen gegenüber BGP-Routen bevorzugt werden.
 1. ExpressRoute (ER) über VPN: ER wird gegenüber VPN bevorzugt, wenn der Kontext ein lokaler Hub ist. Transitkonnektivität zwischen ExpressRoute-Leitungen ist nur über Global Reach verfügbar. Daher kann in Szenarien, in denen die ExpressRoute-Leitung mit einem Hub verbunden und eine weitere ExpressRoute-Leitung mit einem anderen Hub mit VPN-Verbindung verbunden ist, VPN für Szenarien mit Übertragungen zwischen Hubs bevorzugt werden.
-1. AS-Pfadlänge
+1. AS-Pfadlänge (bei virtuellen Hubs wird Routen der AS-Pfad 65520 bis 65520 vorangestellt, wenn Routen untereinander angekündigt werden).
 
 ### <a name="does-the-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>Ermöglicht der Virtual WAN-Hub Konnektivität zwischen ExpressRoute-Leitungen?
 

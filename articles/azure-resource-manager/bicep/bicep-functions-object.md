@@ -4,13 +4,13 @@ description: Hier werden die Funktionen beschrieben, die in Bicep-Dateien zum Ar
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: fd65cc60412d46a734764d3566fa3606a48c7bf6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 38dfdee2dbe40b40631b45b8d0f9e157f5efc7ae
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758444"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349832"
 ---
 # <a name="object-functions-for-bicep"></a>Objektfunktionen für Bicep
 
@@ -22,9 +22,11 @@ In diesem Artikel werden die Bicep-Funktionen für die Arbeit mit Objekten besch
 
 Überprüft, ob ein Array einen Wert enthält, ein Objekt einen Schlüssel enthält oder eine Zeichenfolge eine Teilzeichenfolge enthält. Die Groß-/Kleinschreibung wird beim Zeichenfolgenvergleich beachtet. Wenn Sie jedoch testen, ob ein Objekt einen Schlüssel enthält, wird die Groß-/Kleinschreibung beim Vergleich nicht beachtet.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | Container |Ja |Array, Objekt oder Zeichenfolge |Der Wert, der den zu suchenden Wert enthält. |
 | itemToFind |Ja |Zeichenfolge oder ganze Zahl |Der zu suchende Wert. |
@@ -60,7 +62,7 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -75,9 +77,11 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Bestimmt, ob ein Array, Objekt oder eine Zeichenfolge leer ist.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | itemToTest |Ja |Array, Objekt oder Zeichenfolge |Der Wert, für den überprüft werden soll, ob er leer ist. |
 
@@ -101,7 +105,7 @@ output stringEmpty bool = empty(testString)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -113,9 +117,11 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt ein einzelnes Array oder ein Objekt mit den gemeinsamen Elementen aus den Parametern zurück.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Objekt |Der erste Wert für die Suche nach gemeinsamen Elementen. |
 | arg2 |Ja |Array oder Objekt |Der zweite Wert für die Suche nach gemeinsamen Elementen. |
@@ -156,7 +162,7 @@ output arrayOutput array = intersection(firstArray, secondArray)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
@@ -169,9 +175,11 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Konvertiert eine gültige JSON-Zeichenfolge in einen JSON-Datentyp.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge |Der in JSON zu konvertierende Wert. Die Zeichenfolge muss eine ordnungsgemäß formatierte JSON-Zeichenfolge sein. |
 
@@ -207,7 +215,7 @@ output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | emptyObjectOutput | Boolesch | True |
 | objectOutput | Object | {"a": "b"} |
@@ -223,9 +231,11 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt die Anzahl von Elementen in einem Array, Zeichen in einer Zeichenfolge oder Eigenschaften auf Stammebene in einem Objekt zurück.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array, Zeichenfolge oder Objekt |Das Array, von dem die Anzahl der Elemente ermittelt werden soll, die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll, oder das Objekt, von dem die Anzahl der Eigenschaften auf Stammebene ermittelt werden soll. |
 
@@ -261,7 +271,7 @@ output objectLength int = length(objectToTest)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | arraylength | Int | 3 |
 | stringLength | Int | 13 |
@@ -273,9 +283,11 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt ein einzelnes Array oder Objekt mit allen Elementen aus den Parametern zurück. Doppelte Werte oder Schlüssel sind nur einmal enthalten.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Objekt |Der erste zum Verknüpfen von Elementen zu verwendende Wert. |
 | arg2 |Ja |Array oder Objekt |Der zweite zum Verknüpfen von Elementen zu verwendende Wert. |
@@ -319,7 +331,7 @@ output arrayOutput array = union(firstArray, secondArray)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Type | Wert |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |

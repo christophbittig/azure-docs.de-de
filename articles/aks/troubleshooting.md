@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie allgemeine Probleme bei der Verwendung von Az
 services: container-service
 ms.topic: troubleshooting
 ms.date: 09/24/2021
-ms.openlocfilehash: 10f30ccd5efbc612c3b51c273347c872bfae1c17
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 28807736cf6f58334eb4e6cf674e2c514df9c427
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058470"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235267"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -147,7 +147,7 @@ Benennungseinschränkungen werden sowohl von der Azure-Plattform als auch AKS im
 * Clusternamen müssen zwischen 1 und 63 Zeichen lang sein. Die einzigen zulässigen Zeichen sind Buchstaben, Ziffern, Bindestriche und Unterstriche. Das erste und das letzte Zeichen müssen ein Buchstabe oder eine Zahl sein.
 * Der Name der AKS-Knoten-/*MC_* -Ressourcengruppe ist eine Kombination aus Ressourcengruppenname und Ressourcenname. Die automatisch generierte Syntax von `MC_resourceGroupName_resourceName_AzureRegion` darf nicht mehr als 80 Zeichen umfassen. Kürzen Sie bei Bedarf Ihren Ressourcengruppennamen oder AKS-Clusternamen. Sie können auch [den Namen der Knotenressourcengruppe anpassen](cluster-configuration.md#custom-resource-group-name).
 * Das *dnsPrefix* muss mit alphanumerischen Werten beginnen und enden und zwischen 1 und 54 Zeichen lang sein. Gültige Zeichen sind alphanumerische Werte und Bindestriche (-). Das *dnsPrefix* darf keine Sonderzeichen wie z.B. einen Punkt (.) enthalten.
-* AKS-Knotenpoolnamen müssen aus Kleinbuchstaben bestehen und für Linux-Knotenpools und 1-11 Zeichen und für Windows-Knotenpools 1-6 Zeichen lang sein. Der Name muss mit einem Buchstaben beginnen, und die einzigen zulässigen Zeichen sind Buchstaben und Ziffern.
+* In den Namen von AKS-Knotenpools dürfen nur Kleinbuchstaben verwendet werden, und Linux-Knotenpools dürfen 1 bis 11 Zeichen und Windows-Knotenpools 1 bis 6 Zeichen lang sein. Der Name muss mit einem Buchstaben beginnen, und die einzigen zulässigen Zeichen sind Buchstaben und Ziffern.
 * Der *admin-username*, der den Administratorbenutzernamen für Linux-Knoten festlegt, muss mit einem Buchstaben beginnen, darf nur Buchstaben, Ziffern, Bindestriche und Unterstriche enthalten und maximal 64 Zeichen lang sein.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Wenn ich versuche, einen Cluster zu erstellen, zu aktualisieren, zu skalieren, zu löschen oder zu aktualisieren, erhalte ich die Fehlermeldung, dass dieser Vorgang nicht erlaubt ist, da ein anderer Vorgang ausgeführt wird.

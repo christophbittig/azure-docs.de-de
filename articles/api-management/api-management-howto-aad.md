@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/20/2021
 ms.author: danlep
-ms.openlocfilehash: 769c67557b6e9d6947e8ffd0fffa71765cf397c4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 03ac79a70a1725fd6d1ceca6d79d4cdb325a8c51
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601822"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428462"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -90,7 +90,7 @@ In diesem Artikel lernen Sie Folgendes:
 
     > [!NOTE]
     > Sie können im Abschnitt **Zulässige Mandanten** mehrere Domänen angeben. Ein globaler Administrator muss der Anwendung Zugriff auf Verzeichnisdaten gewähren, bevor Benutzer sich aus einer anderen Domäne als der ursprünglichen App-Registrierungsdomäne anmelden können. Um Berechtigungen zu erteilen, müssen Sie als globaler Administrator folgendermaßen vorgehen:
-    > 1. Wechseln Sie zu `https://<URL of your developer portal>/aadadminconsent` (z. B. https://contoso.portal.azure-api.net/aadadminconsent).
+    > 1. Wechseln Sie zu `https://<URL of your developer portal>/aadadminconsent` (z. B. `https://contoso.portal.azure-api.net/aadadminconsent`).
     > 1. Geben Sie den Domänennamen des Azure AD-Mandanten ein, auf den Zugriff gewährt werden soll.
     > 1. Klicken Sie auf **Submit** (Senden). 
 

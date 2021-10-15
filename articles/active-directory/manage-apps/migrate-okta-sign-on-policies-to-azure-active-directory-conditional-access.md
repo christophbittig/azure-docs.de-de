@@ -1,7 +1,7 @@
 ---
 title: Anleitung zur Migration von Okta-Anmelderichtlinien zu Azure Active Directory Conditional Access
 titleSuffix: Active Directory
-description: Erfahren Sie, wie Sie Okta-Anmelderichtlinien zu Azure Active Directory Conditional Access migrieren können.
+description: In diesem Tutorial wird beschrieben, wie Sie von der Nutzung von Okta-Anmelderichtlinien zum bedingten Azure Active Directory-Zugriff migrieren.
 services: active-directory
 author: gargi-sinha
 manager: martinco
@@ -11,213 +11,202 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: c36ad9b56ce49234d2ee28f53073267944152db0
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 840d2cfd64f6384c8c503e472f7557ababd0d08e
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080433"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389189"
 ---
 # <a name="tutorial-migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access"></a>Anleitung: Migrieren Sie Okta-Anmelderichtlinien zu Azure Active Directory Conditional Access
 
-In diesem Tutorial erfahren Sie, wie Unternehmen von globalen oder anwendungsbezogenen Anmeldungsrichtlinien in Okta zu Azure Active Directory (AD) Conditional Access (CA)-Richtlinien migrieren können, um den Benutzerzugriff in Azure AD und verbundenen Anwendungen zu sichern.
+In diesem Tutorial wird beschrieben, wie Ihr Unternehmen von globalen oder anwendungsbezogenen Anmelderichtlinien in Okta zu Richtlinien für den bedingten Azure AD-Zugriff (Azure Active Directory Conditional Access) migrieren kann, um den Benutzerzugriff in Azure AD und für die verbundenen Anwendungen zu schützen.
 
-In diesem Tutorial wird davon ausgegangen, dass Sie über einen Office 365-Tenant verfügen, der für die Anmeldung und Multifaktor-Authentifizierung (MFA) mit Okta föderiert ist. Außerdem sollten Sie Azure AD Connect Server oder Azure AD Connect Cloud Provisioning Agents für die Bereitstellung von Benutzern in Azure AD konfiguriert haben.
+In diesem Tutorial wird davon ausgegangen, dass Sie über einen Office 365-Mandanten verfügen, für den ein Verbund mit Okta besteht, um die Anmeldung und die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) durchzuführen. Außerdem sollten Sie Azure AD Connect Server oder Azure AD Connect Cloud Provisioning Agents für die Bereitstellung von Benutzern in Azure AD konfiguriert haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Beim Wechsel von Okta sign on zu Azure AD CA ist es wichtig, die Lizenzierungsanforderungen zu verstehen. Azure AD CA erfordert, dass Benutzern eine Azure AD Premium P1-Lizenz zugewiesen wird, bevor sie sich für Azure AD Multi-Faktor-Authentifizierung registrieren.
+Wenn Sie von der Okta-Anmeldung zum bedingten Azure AD-Zugriff wechseln, ist es wichtig, dass Sie mit den Lizenzierungsanforderungen vertraut sind. Für den bedingten Azure AD-Zugriff ist es erforderlich, dass Benutzern eine Azure AD Premium P1-Lizenz zugewiesen wird, bevor die Registrierung für die mehrstufige Azure AD-Authentifizierung durchgeführt wird.
 
-Bevor Sie einen der Schritte für den hybriden Azure AD-Beitritt ausführen, benötigen Sie eine Unternehmensadministrator-Anmeldeinformation in der lokalen Gesamtstruktur, um den SCP-Datensatz (Service Connection Point) zu konfigurieren.
+Bevor Sie einen der Schritte für Azure AD Hybrid Join ausführen, benötigen Sie Unternehmensadministrator-Anmeldeinformationen für die lokale Gesamtstruktur, um den Eintrag für den Dienstverbindungspunkt (Service Connection Point, SCP) zu konfigurieren.
 
-## <a name="step-1---catalog-current-okta-sign-on-policies"></a>Schritt 1 - Katalogisieren der aktuellen Okta-Anmeldungsrichtlinien
+## <a name="catalog-current-okta-sign-on-policies"></a>Katalogisieren der aktuellen Okta-Anmelderichtlinien
 
-Für eine erfolgreiche Umstellung auf CA sollten die bestehenden Okta-Anmelderichtlinien ausgewertet werden, um die Anwendungsfälle und Anforderungen zu ermitteln, die auf Azure AD übertragen werden sollen.
+Gehen Sie wie folgt vor, damit die Umstellung auf den bedingten Zugriff erfolgreich ist: Evaluieren Sie die vorhandenen Okta-Anmelderichtlinien, um die Anwendungsfälle und Anforderungen zu ermitteln, die auf Azure AD umgestellt werden sollen.
 
-1. Überprüfen Sie die globalen Anmeldungsrichtlinien, indem Sie zu **Sicherheit** navigieren, **Authentifizierung** auswählen und dann **Anmeldung**.
+1. Überprüfen Sie die globalen Anmelderichtlinien, indem Sie zu **Sicherheit** > **Authentifizierung** > **Anmelden** navigieren.
 
-   ![Bild zeigt globale Anmeldungsrichtlinien](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/global-sign-on-policies.png)
+   ![Screenshot: Globale Anmelderichtlinien](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/global-sign-on-policies.png)
 
-   In diesem Beispiel erzwingt unsere globale Anmeldungsrichtlinie MFA für alle Sitzungen außerhalb unserer konfigurierten Netzwerkzonen.
+   In diesem Beispiel wird mit der globalen Anmelderichtlinie MFA für alle Sitzungen außerhalb unserer konfigurierten Netzwerkzonen erzwungen.
 
-   ![Abbildung zeigt globale Anmeldungsrichtlinien, die MFA erzwingen](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/global-sign-on-policies-enforce-mfa.png)
+   ![Screenshot: Globale Anmelderichtlinien zur Erzwingung von MFA](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/global-sign-on-policies-enforce-mfa.png)
 
-2. Navigieren Sie als Nächstes zu **Anwendungen**, und überprüfen Sie die Anmeldungsrichtlinien auf Anwendungsebene. Wählen Sie **Anwendungen** aus dem Untermenü, und wählen Sie dann Ihre mit Office 365 verbundene Instanz aus der Liste **Aktive Anwendungen**.
+2. Navigieren Sie zu **Anwendungen**, und überprüfen Sie die Anmelderichtlinien für die Anwendungsebene. Wählen Sie **Anwendungen** aus dem Untermenü, und wählen Sie dann Ihre mit Office 365 verbundene Instanz aus der Liste **Aktive Anwendungen**.
 
-3. Wählen Sie schließlich **Anmelden** und scrollen Sie bis zum Ende der Seite.
+3. Wählen Sie **Anmelden** aus, und scrollen Sie bis zum Ende der Seite.
 
-Im folgenden Beispiel hat unsere Office 365-Anmeldungsrichtlinie vier separate Regeln.
+Im folgenden Beispiel verfügt die Anmelderichtlinie der Office 365-Anwendung über vier separate Regeln:
 
-- **Erzwinge MFA für mobile Sitzungen** - Erfordert MFA von jeder modernen Authentifizierungs- oder Browsersitzung auf iOS oder Android.
+- **Erzwingen von MFA für mobile Sitzungen**: Macht MFA für jede moderne Authentifizierung oder Browsersitzung unter iOS oder Android obligatorisch.
+- **Zulassen von vertrauten Windows-Geräten**: Verhindert, dass für Ihre vertrauenswürdigen Okta-Geräte weitere Verifizierungen bzw. Verifizierungsstufen angefordert werden.
+- **Verlangen von MFA von nicht vertrauenswürdigen Windows-Geräten**: Macht MFA für jede moderne Authentifizierung oder Browsersitzung auf nicht vertrauenswürdigen Windows-Geräten obligatorisch.
+- **Blockieren von Legacy-Authentifizierung**: Verhindert, dass Clients mit Legacy-Authentifizierung eine Verbindung mit dem Dienst herstellen.
 
-- **Vertraute Windows-Geräte zulassen** - Verhindert, dass Ihre vertrauenswürdigen Okta-Geräte zu einer zusätzlichen Verifizierung oder zu Faktoren aufgefordert werden.
+  ![Screenshot: Office 365-Anmelderegeln](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/sign-on-rules.png)
 
-- **MFA von nicht vertrauenswürdigen Windows-Geräten verlangen** - Erfordert MFA bei jeder modernen Authentifizierung oder Browser-Sitzung auf nicht vertrauenswürdigen Windows-Geräten.
+## <a name="configure-condition-prerequisites"></a>Konfigurieren von Bedingungsvoraussetzungen
 
-- **Blockieren von Legacy-Authentifizierung** - Verhindert, dass sich Clients mit Legacy-Authentifizierung mit dem Dienst verbinden.
+Richtlinien für den bedingten Azure AD-Zugriff können für die meisten Szenarien ohne zusätzliche Konfigurationsschritte so konfiguriert werden, dass die Okta-Bedingungen erfüllt sind.
 
-  ![Abbildung zeigt o365-Anmelderegeln](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/sign-on-rules.png)
+Bei einigen Szenarien müssen Sie unter Umständen weitere Einrichtungsschritte ausführen, bevor Sie die Richtlinien für bedingten Zugriff konfigurieren. Zum Zeitpunkt der Erstellung dieses Artikels sind folgende zwei Szenarien bekannt:
 
-## <a name="step-2---configure-condition-pre-requisites"></a>Schritt 2 - Konfigurieren der Bedingungsvoraussetzungen
+- **Von Okta-Netzwerkadressen zu benannten Standorten in Azure AD**: Befolgen Sie die Anleitung unter [Verwenden der Standortbedingung in einer Richtlinie für bedingten Zugriff](../conditional-access/location-condition.md#named-locations), um benannte Standorte in Azure AD zu konfigurieren.
+- **Von Okta-Gerätevertrauensstellung zu gerätebasiertem bedingtem Zugriff**: Beim bedingten Zugriff haben Sie zwei Optionen zum Evaluieren des Geräts eines Benutzers:
 
-Azure AD CA-Richtlinien können für die meisten Szenarien ohne zusätzliche Konfiguration so konfiguriert werden, dass sie mit den Bedingungen von Okta übereinstimmen.
+  - [Verwenden von Azure AD Hybrid Join](#hybrid-azure-ad-join-configuration): Dies ist ein auf dem Azure AD Connect-Server aktivierbares Feature, mit dem aktuelle Windows-Geräte, z. B. mit Windows 10, Windows Server 2016 und Windows Server 2019, mit Azure AD synchronisiert werden können.
 
-In einigen Szenarien müssen Sie möglicherweise zusätzliche Einstellungen vornehmen, bevor Sie die CA-Richtlinien konfigurieren. Zum Zeitpunkt der Erstellung dieses Artikels sind folgende zwei Szenarien bekannt:
-
-- **Okta-Netzwerkstandorte zu benannten Standorten in Azure AD** - Folgen Sie [diesem Artikel](../conditional-access/location-condition.md#named-locations), um benannte Standorte in Azure AD zu konfigurieren.
-
-- **Okta Gerätevertrauen zu gerätebasierter CA** - CA bietet zwei mögliche Optionen bei der Bewertung des Geräts eines Benutzers.
-
-  - [Azure AD Hybrid-Verbindung](#hybrid-azure-ad-join-configuration) - Eine Funktion, die innerhalb des Azure AD Connect-Servers aktiviert ist und aktuelle Windows-Geräte, wie Windows 10, Server 2016 und 2019, mit Azure AD synchronisiert.
-
-  - [Registrieren Sie das Gerät in Microsoft Endpoint Manager](#configure-device-compliance) und weisen Sie eine Compliance-Richtlinie zu.
+  - [Registrieren des Geräts bei Endpoint Manager](#configure-device-compliance): Führen Sie die Registrierung durch, und weisen Sie eine Konformitätsrichtlinie zu.
 
 ### <a name="hybrid-azure-ad-join-configuration"></a>Azure AD Hybrid-Verbindungskonfiguration
 
-Die Aktivierung des hybriden Azure AD Join kann auf Ihrem Azure AD Connect Server erfolgen, indem Sie den Konfigurationsassistenten ausführen. Nach der Konfiguration müssen Schritte unternommen werden, um Geräte automatisch zu registrieren.
+Führen Sie den Konfigurations-Assistenten aus, um Azure AD Hybrid Join auf Ihrem Azure AD Connect-Server zu aktivieren. Sie müssen nach der Konfiguration die entsprechenden Schritte ausführen, damit Geräte automatisch registriert werden.
 
 >[!NOTE]
->Azure AD Hybrid Join wird von den Azure AD Connect Cloud Provisioning Agents nicht unterstützt.
+>Azure AD Hybrid Join wird von den Agents für die Azure AD Connect-Cloudbereitstellung nicht unterstützt.
 
-1. Befolgen Sie diese [Anweisungen](../devices/hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join), um Azure AD Hybrid Join zu aktivieren.
+1. Befolgen Sie [diese Anleitung](../devices/hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join), um Azure AD Hybrid Join zu aktivieren.
 
-2. Wählen Sie auf der SCP-Konfigurationsseite das Dropdown-Menü **Authentifizierungsdienst**. Wählen Sie die URL Ihres Okta-Verbundanbieters, gefolgt von **Hinzufügen**. Geben Sie die Anmeldedaten Ihres lokalen Unternehmensadministrators ein und wählen Sie dann **Weiter**.
+1. Wählen Sie auf der Seite **SCP-Konfiguration** das Dropdownmenü **Authentifizierungsdienst** aus. Wählen Sie die URL Ihres Okta-Verbundanbieters und dann die Option **Hinzufügen** aus. Geben Sie die Anmeldeinformationen Ihres lokalen Unternehmensadministrators ein, und wählen Sie dann **Weiter** aus.
 
-   ![Abbildung zeigt scp-Konfiguration](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/scp-configuration.png)
+   ![Screenshot: SCP-Konfiguration](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/scp-configuration.png)
 
-3. Wenn Sie die Legacy-Authentifizierung auf Windows-Clients entweder in der globalen oder der App-Anmelderichtlinie blockiert haben, erstellen Sie eine Regel, um den Abschluss des hybriden Azure AD-Beitrittsprozesses zu ermöglichen.
+1. Wenn Sie die Legacy-Authentifizierung auf Windows-Clients entweder in der globalen oder der App-Anmelderichtlinie blockiert haben, sollten Sie eine Regel erstellen, um den Abschluss des Azure AD Hybrid Join-Prozesses zuzulassen.
 
-4. Sie können entweder den gesamten Legacy-Authentifizierungsstapel für alle Windows-Clients zulassen oder sich an den Okta-Support wenden, um die benutzerdefinierte Client-Zeichenfolge für Ihre bestehenden Anwendungsrichtlinien zu aktivieren.
+1. Lassen Sie den gesamten Legacy-Authentifizierungsstapel für alle Windows-Clients zu. Sie können sich auch an den Okta-Support wenden, um die entsprechende benutzerdefinierte Clientzeichenfolge für Ihre vorhandenen App-Richtlinien aktivieren zu lassen.
 
 ### <a name="configure-device-compliance"></a>Konfigurieren Sie die Gerätekonformität
 
-Während der hybride Azure AD-Beitritt ein direkter Ersatz für das Okta-Gerätevertrauen unter Windows ist, können CA-Richtlinien auch die Gerätekonformität für Geräte prüfen, die sich vollständig beim Microsoft Endpoint Manager angemeldet haben.
+Azure AD Hybrid Join ist ein direkter Ersatz für die Okta-Gerätevertrauensstellung unter Windows. Mit Richtlinien für bedingten Zugriff kann auch die Gerätekonformität für Geräte überprüft werden, die vollständig bei Endpoint Manager registriert sind:
 
-- **Übersicht über die Konformität** - Siehe [Geräte-Compliance-Richtlinien in Microsoft Intune](/mem/intune/protect/device-compliance-get-started#:~:text=Reference%20for%20non-compliance%20and%20Conditional%20Access%20on%20the,applicable%20%20...%20%203%20more%20rows).
+- **Konformitätsübersicht**: Informationen hierzu finden Sie unter den [Konformitätsrichtlinien für Geräte in Intune](/mem/intune/protect/device-compliance-get-started#:~:text=Reference%20for%20non-compliance%20and%20Conditional%20Access%20on%20the,applicable%20%20...%20%203%20more%20rows).
+- **Gerätekonformität**: Erstellen Sie [Richtlinien in Intune](/mem/intune/protect/create-compliance-policy).
+- **Windows-Registrierung**: Wenn Sie sich für die Bereitstellung von Azure AD Hybrid Join entschieden haben, können Sie eine weitere Gruppenrichtlinie bereitstellen, um den [Prozess für die automatische Registrierung dieser Geräte in Intune](/windows/client-management/mdm/enroll-a-windows-10-device-automatically-using-group-policy) durchzuführen.
+- **iOS/iPadOS-Registrierung**: Vor dem Registrieren eines iOS-Geräts müssen Sie auf der Endpoint Manager-Konsole [weitere Konfigurationen](/mem/intune/enrollment/ios-enroll) vornehmen.
+- **Android-Registrierung**: Vor dem Registrieren eines Android-Geräts müssen Sie auf der Endpoint Manager-Konsole [weitere Konfigurationen](/mem/intune/enrollment/android-enroll) vornehmen.
 
-- **Gerätekonformität** - Erstellen Sie [Richtlinien in Microsoft Intune](/mem/intune/protect/create-compliance-policy).
+## <a name="configure-azure-ad-multi-factor-authentication-tenant-settings"></a>Konfigurieren der Einstellungen des Mandanten für die mehrstufige Azure AD-Authentifizierung
 
-- **Windows-Registrierung** - Wenn Sie sich für eine hybride Azure AD-Verbindung entschieden haben, kann eine zusätzliche Gruppenrichtlinie bereitgestellt werden, um den [Autoregistrierungsprozess dieser Geräte in Microsoft Intune](/windows/client-management/mdm/enroll-a-windows-10-device-automatically-using-group-policy) abzuschließen.
+Bestätigen Sie vor der Umstellung auf den bedingten Zugriff, dass die Grundeinstellungen des Mandanten für die mehrstufige Azure AD-Authentifizierung für Ihre Organisation stimmen.
 
-- **iOS/iPadOS-Registrierung** - Vor der Registrierung eines iOS-Geräts müssen [zusätzliche Konfigurationen](/mem/intune/enrollment/ios-enroll) in der Endpoint Management Console vorgenommen werden.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich mit dem Konto eines globalen Administrators an.
 
-- **Android-Registrierung** - Vor der Registrierung eines Android-Geräts müssen [zusätzliche Konfigurationen](/mem/intune/enrollment/android-enroll) in der Endpoint Management-Konsole vorgenommen werden.
+1. Wählen Sie **Azure Active Directory** > **Benutzer** > **Mehrstufige Authentifizierung** aus, um zum Legacy-Portal für die mehrstufige Azure AD-Authentifizierung zu navigieren.
 
-## <a name="step-3---configure-azure-ad-multi-factor-authentication-tenant-settings"></a>Schritt 3 - Konfigurieren der Azure AD Multi-Faktor-Authentifizierungs-Mandanteneinstellungen
+   ![Screenshot: Legacy-Portal für die mehrstufige Azure AD-Authentifizierung](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/legacy-azure-ad-portal.png)
 
-Bestätigen Sie vor der Umstellung auf CA die Grundeinstellungen des Azure AD-Multifaktorauthentifizierungs-Mandanten für Ihre Organisation.
+   Sie können auch den Legacy-Link verwenden, um zum [Portal für die mehrstufige Azure AD-Authentifizierung](https://aka.ms/mfaportal) zu navigieren.
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com) und melden Sie sich mit einem globalen Administratorkonto an.
+1. Nehmen Sie im Legacy-Menü für die **mehrstufige Authentifizierung** Änderungen im Statusmenü bis zu den Optionen **Aktiviert** und **Erzwungen** vor, um sicherzustellen, dass bei Ihnen Legacy-MFA nicht für Benutzer aktiviert ist. Wenn Ihr Mandant über Benutzer in den folgenden Ansichten verfügt, müssen Sie diese im Legacy-Menü deaktivieren. Erst dann werden Richtlinien für bedingten Zugriff für die jeweiligen Konten wirksam.
 
-1. Wählen Sie **Azure Active Directory**, gefolgt von **Benutzer** und dann **Multi-Faktor-Authentifizierung**. Dadurch gelangen Sie zum Legacy Azure MFA-Portal.
-
-   ![Das Bild zeigt das alte Azure AD Multi-Factor-Authentifizierungsportal.](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/legacy-azure-ad-portal.png)
-
-   Stattdessen können Sie **<https://aka.ms/mfaportal>** verwenden.
-
-1. Ändern Sie im Menü **Legacy Azure MFA** das Statusmenü durch **enabled** und **enforced**, um zu bestätigen, dass Sie keine Benutzer für Legacy MFA aktiviert haben. Wenn Ihr Mandant Benutzer in den unten aufgeführten Ansichten hat, müssen Sie diese im Legacy-Menü deaktivieren. Erst dann werden die CA-Richtlinien für ihr Konto wirksam.
-
-   ![Das Bild zeigt einen deaktivierten Benutzer im alten Azure AD Multi-Faktor-Authentifizierungsportal](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/disable-user-legacy-azure-ad-portal.png)
+   ![Screenshot: Deaktivieren eines Benutzers im Legacy-Portal für die mehrstufige Azure AD-Authentifizierung](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/disable-user-legacy-azure-ad-portal.png)
 
    Das Feld **Erzwungen** sollte ebenfalls leer sein.
 
-   ![Das Bild zeigt, dass das Feld Erzwungen im Azure AD Multi-Faktor-Authentifizierungsportal leer ist.](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/enforced-empty-legacy-azure-ad-portal.png)
+   ![Screenshot: Leeres Feld „Erzwungen“ im Legacy-Portal für die mehrstufige Azure AD-Authentifizierung](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/enforced-empty-legacy-azure-ad-portal.png)
 
-1. Nachdem Sie bestätigt haben, dass keine Benutzer für Legacy-MFA konfiguriert sind, wählen Sie die Option **Diensteinstellungen**. Ändern Sie die Auswahl **App-Passwörter** auf **Nicht zulassen, dass Benutzer App-Passwörter erstellen, um sich bei Nicht-Browser-Apps anzumelden**.
+1. Wählen Sie die Option **Diensteinstellungen** aus. Ändern Sie die Auswahl **App-Passwörter** auf **Nicht zulassen, dass Benutzer App-Passwörter erstellen, um sich bei Nicht-Browser-Apps anzumelden**.
 
-1. Stellen Sie sicher, dass die Kontrollkästchen **Multifaktorauthentifizierung für Anforderungen von Verbundbenutzern in meinem Intranet überspringen** und **Benutzern erlauben, sich die Multifaktorauthentifizierung auf Geräten, denen sie vertrauen, zu merken (zwischen einem und 365 Tagen)** nicht markiert sind, und wählen Sie dann **Speichern**.
+1. Stellen Sie sicher, dass die Kontrollkästchen **Für Anforderungen von Partnerbenutzern in meinem Intranet die mehrstufige Authentifizierung überspringen** und **Benutzern das Speichern der mehrstufigen Authentifizierung auf vertrauenswürdigen Geräten ermöglichen (zwischen 1 und 365 Tagen)** nicht aktiviert sind, und wählen Sie dann die Option **Speichern** aus.
 
-   >[!NOTE]
-   >Siehe [Best Practices für die Konfiguration von MFA-Aufforderungseinstellungen](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
+  >[!NOTE]
+   >Informieren Sie sich über die [bewährten Methoden für die Konfiguration der Einstellungen zur MFA-Aufforderung](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
+   ![Screenshot: Deaktivierte Kontrollkästchen im Legacy-Portal für die mehrstufige Azure AD-Authentifizierung](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/uncheck-fields-legacy-azure-ad-portal.png)
 
-   ![Das Bild zeigt die nicht aktivierten Felder im Azure AD Multi-Faktor-Authentifizierungsportal](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/uncheck-fields-legacy-azure-ad-portal.png)
+## <a name="configure-conditional-access-policies"></a>Konfigurieren von Richtlinien für bedingten Zugriff
 
-## <a name="step-4---configure-ca-policies"></a>Schritt 4 - Konfigurieren Sie CA-Richtlinien
+Nachdem Sie die Voraussetzungen konfiguriert und die Grundeinstellungen festgelegt haben, können Sie die erste Richtlinie für bedingten Zugriff erstellen.
 
-Nachdem Sie die Voraussetzungen konfiguriert und die Grundeinstellungen festgelegt haben, ist es an der Zeit, die erste CA-Richtlinie zu erstellen.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um in Azure AD Richtlinien für bedingten Zugriff zu konfigurieren. Wählen Sie unter **Azure Active Directory verwalten** die Option **Ansicht** aus.
 
-1. Um CA-Richtlinien in Azure AD zu konfigurieren, navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie **Ansicht** auf Azure Active Directory verwalten.
+   Konfigurieren Sie Richtlinien für bedingten Zugriff, indem Sie die [bewährten Methoden für die Bereitstellung und den Entwurf des bedingten Zugriffs](../conditional-access/plan-conditional-access.md#understand-conditional-access-policy-components) verwenden.
 
-2. Bei der Konfiguration von CA-Richtlinien sollten Sie die [Best Practices für die Bereitstellung und Gestaltung von CA](../conditional-access/plan-conditional-access.md#understand-conditional-access-policy-components) berücksichtigen.
+1. [Erstellen Sie eine Richtlinie](../conditional-access/howto-conditional-access-policy-all-users-mfa.md), um die globale MFA-Anmelderichtlinie von Okta zu imitieren.
 
-3. Um die globale Anmelde-MFA-Richtlinie von Okta zu imitieren, [erstellen Sie eine Richtlinie](../conditional-access/howto-conditional-access-policy-all-users-mfa.md).
+1. Erstellen Sie eine [Regel für bedingten Zugriff, die auf der Gerätevertrauensstellung basiert](../conditional-access/require-managed-devices.md).
 
-4. Erstellen Sie eine [auf Gerätevertrauen basierende CA-Regel](../conditional-access/require-managed-devices.md).
+   Diese Richtlinie kann wie alle anderen in diesem Tutorial auf eine bestimmte Anwendung, eine Testgruppe mit Benutzern oder beides ausgerichtet werden.
 
-5. Diese Richtlinie kann wie alle anderen in diesem Tutorial auf eine bestimmte Anwendung, eine Testgruppe von Benutzern oder beides ausgerichtet werden.
+   ![Screenshot: Testen eines Benutzers](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/test-user.png)
 
-   ![Bild zeigt Testbenutzer](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/test-user.png)
+   ![Screenshot: Erfolgreicher Test eines Benutzers](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/success-test-user.png)
 
-   ![Das Bild zeigt den Erfolg beim Testbenutzer](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/success-test-user.png)
+1. Nachdem Sie die standortbasierte Richtlinie und die Richtlinie für die Gerätevertrauensstellung konfiguriert haben, können Sie die entsprechende Richtlinie zum [Blockieren der Legacy-Authentifizierung](../conditional-access/howto-conditional-access-policy-block-legacy.md) konfigurieren.
 
-6. Nachdem Sie die standortbasierte Richtlinie und die Richtlinie für Gerätevertrauen konfiguriert haben, ist es an der Zeit, die entsprechende Richtlinie [**Block Legacy Authentication**](../conditional-access/howto-conditional-access-policy-block-legacy.md) zu konfigurieren.
+Mit diesen drei Richtlinien für bedingten Zugriff wird die ursprüngliche Umgebung mit den Okta-Anmelderichtlinien in Azure AD repliziert. Die nächsten Schritte umfassen das Registrieren des Benutzers über die mehrstufige Azure AD-Authentifizierung und das Testen der Richtlinien.
 
-Mit diesen drei CA-Richtlinien wurde die ursprüngliche Okta-Anmelderichtlinienerfahrung in Azure AD repliziert. Die nächsten Schritte umfassen die Anmeldung des Benutzers bei Azure MFA und das Testen der Richtlinien.
+## <a name="enroll-pilot-members-in-azure-ad-multi-factor-authentication"></a>Registrieren von Pilotmitgliedern für die mehrstufige Azure AD-Authentifizierung
 
-## <a name="step-5---enroll-pilot-members-in-azure-ad-multi-factor-authentication"></a>Schritt 5 - Registrierung von Pilotmitgliedern in Azure AD Multi-Faktor-Authentifizierung
+Nachdem Sie die Richtlinien für bedingten Zugriff konfiguriert haben, müssen sich Benutzer für die Methoden der mehrstufigen Azure AD-Authentifizierung registrieren. Die Benutzer können sich über verschiedene Methoden registrieren lassen.
 
-Sobald die CA-Richtlinien konfiguriert sind, müssen sich die Benutzer für Azure MFA-Methoden registrieren. Die Benutzer können sich über verschiedene Methoden registrieren lassen.
+1. Wenn Sie die individuelle Registrierung ermöglichen möchten, leiten Sie Benutzer an den [Bereich für die Microsoft-Anmeldung](https://aka.ms/mfasetup) weiter, in dem diese ihre Registrierungsinformationen manuell eingeben können.
 
-1. Für eine individuelle Registrierung können Sie die Benutzer zu <https://aka.ms/mfasetup> leiten, um die Registrierungsinformationen manuell einzugeben.
-
-2. Benutzer können zu <https://aka.ms/mysecurityinfo> gehen, um Informationen einzugeben oder die Form der MFA-Registrierung zu verwalten.
+1. Benutzer können auf die [Seite mit den Microsoft-Sicherheitsinformationen](https://aka.ms/mysecurityinfo) zugreifen, um Informationen einzugeben oder die MFA-Registrierung zu verwalten.
 
 Siehe [diesen Leitfaden](../authentication/howto-registration-mfa-sspr-combined.md), um den MFA-Registrierungsprozess vollständig zu verstehen.  
 
-Navigieren Sie zu <https://aka.ms/mfasetup>, nachdem Sie sich mit Okta MFA angemeldet haben, werden Sie angewiesen, sich für MFA mit Azure AD zu registrieren.
+Navigieren Sie zum [Bereich für die Microsoft-Anmeldung](https://aka.ms/mfasetup). Nachdem Sie sich über die mehrstufige Okta-Authentifizierung angemeldet haben, werden Sie angewiesen, sich für MFA mit Azure AD zu registrieren.
 
 >[!NOTE]
->Wenn die Registrierung für diesen Benutzer bereits in der Vergangenheit stattgefunden hat, wird er nach Beantwortung der MFA-Aufforderung zur Informationsseite **Meine Sicherheit** weitergeleitet.
+>Wenn die Registrierung für einen Benutzer bereits durchgeführt wurde, wird er nach Beantwortung der MFA-Aufforderung zur Informationsseite **Meine Sicherheit** weitergeleitet.
+Weitere Informationen finden Sie in der [Benutzerdokumentation zur MFA-Registrierung](../user-help/security-info-setup-signin.md).
 
-Siehe die [Endbenutzer-Dokumentation zur MFA-Registrierung](../user-help/security-info-setup-signin.md).
-
-## <a name="step-6---enable-ca-policies"></a>Schritt 6 - Aktivieren von CA-Richtlinien
+## <a name="enable-conditional-access-policies"></a>Aktivieren von Richtlinien für bedingten Zugriff
 
 1. Um den Testbetrieb aufzunehmen, ändern Sie die in den früheren Beispielen erstellten Richtlinien in **Aktivierte Testbenutzeranmeldung**. 
 
-   ![Bild zeigt aktivierten Testbenutzer](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/enable-test-user.png)
+   ![Screenshot: Aktivieren eines Testbenutzers](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/enable-test-user.png)
 
-2. Bei der nächsten Anmeldung bei Office 365 wird der Testbenutzer John Smith aufgefordert, sich mit Okta MFA und Azure AD Multi-Factor-Authentifizierung anzumelden.
+1. Beim nächsten Zugriff auf den Bereich **Anmelden** von Office 365 wird der Testbenutzer John Smith aufgefordert, sich per mehrstufiger Okta-Authentifizierung und mehrstufiger Azure AD-Authentifizierung anzumelden.
 
-   ![Bild zeigt die Anmeldung über Okta](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/sign-in-through-okta.png)
+   ![Screenshot: Azure-Bereich für die Anmeldung](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/sign-in-through-okta.png)
 
-3. Schließen Sie die MFA-Verifizierung über Okta ab.
+1. Schließen Sie die MFA-Verifizierung über Okta ab.
 
-   ![Bild zeigt die MFA-Verifizierung durch Okta](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/mfa-verification-through-okta.png)
+   ![Screenshot: MFA-Verifizierung über Okta](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/mfa-verification-through-okta.png)
 
-4. Nachdem der Benutzer die MFA-Aufforderung von Okta abgeschlossen hat, wird er aufgefordert, eine CA anzugeben. Stellen Sie sicher, dass die Richtlinien ordnungsgemäß konfiguriert wurden und die Bedingungen für die Auslösung von MFA erfüllt sind.
+1. Nachdem der Benutzer die MFA-Aufforderung von Okta abgeschlossen hat, wird er zum Durchführen des bedingten Zugriffs aufgefordert. Stellen Sie sicher, dass die Richtlinien richtig konfiguriert wurden und die Bedingungen erfüllen, die für die MFA-Auslösung erforderlich sind.
 
-   ![Das Bild zeigt die MFA-Verifizierung durch Okta mit der Aufforderung zur Eingabe einer CA](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/mfa-verification-through-okta-prompted-ca.png)
+   ![Screenshot: MFA-Verifizierung über Okta mit Aufforderung für bedingten Zugriff](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/mfa-verification-through-okta-prompted-ca.png)
 
-## <a name="step-7---cutover-from-sign-on-to-ca-policies"></a>Schritt 7 - Umstellung von der Anmeldung auf CA-Richtlinien
+## <a name="cut-over-from-sign-on-to-conditional-access-policies"></a>Umstellen von der Anmeldung auf Richtlinien für bedingten Zugriff
 
-Nach der Durchführung gründlicher Tests mit den Pilotmitgliedern, um sicherzustellen, dass CA wie erwartet funktioniert, können die verbleibenden Organisationsmitglieder nach Abschluss der Registrierung zu CA-Richtlinien hinzugefügt werden.
+Nachdem Sie für die Pilotmitglieder sorgfältig getestet und sichergestellt haben, dass der bedingte Zugriff wie erwartet funktioniert, können nach Abschluss des Registrierungsvorgangs die restlichen Mitglieder der Organisation hinzugefügt werden.
 
-Um eine doppelte Eingabeaufforderung zwischen Azure MFA und Okta MFA zu vermeiden, sollten Sie Okta MFA abwählen, indem Sie die Anmeldungsrichtlinien ändern.
+Um eine doppelte Aufforderung für Azure MFA und Okta MFA zu vermeiden, sollten Sie die Nutzung von Okta MFA deaktivieren, indem Sie die Anmelderichtlinien ändern.
 
-Der abschließende Migrationsschritt zu CA kann schrittweise oder in einem Übergang erfolgen.
+Der abschließende Schritt der Migration zum bedingten Zugriff kann in Phasen oder als einmaliger Umstellungsvorgang erfolgen.
 
-1. Navigieren Sie zur Okta-Verwaltungskonsole, wählen Sie **Sicherheit**, gefolgt von **Authentifizierung**, und navigieren Sie dann zu **Anmelderichtlinien**.
+1. Navigieren Sie zur Okta-Verwaltungskonsole, wählen Sie **Sicherheit** > **Authentifizierung** aus, und greifen Sie dann auf **Anmelderichtlinie** zu.
 
->[!NOTE]
->Globale Richtlinien sollten nur dann auf inaktiv gesetzt werden, wenn alle Anwendungen von Okta durch ihre eigenen Anwendungsanmeldungsrichtlinien geschützt sind.
+   >[!NOTE]
+   > Legen Sie globale Richtlinien nur dann auf **Inaktiv** fest, wenn alle Anwendungen von Okta durch eigene Anmelderichtlinien für Anwendungen geschützt sind.
+1. Legen Sie die Richtlinie **MFA erzwingen** auf **Inaktiv** fest. Sie können die Richtlinie auch einer neuen Gruppe zuweisen, die nicht die Azure AD-Benutzer enthält.
 
-2. Setzen Sie die Richtlinie Enforce MFA auf **Inaktiv** oder weisen Sie die Richtlinie einer neuen Gruppe zu, die unsere Azure AD-Nutzer nicht enthält.
+   ![Screenshot: Globale Richtlinie für Anmeldung per MFA ist „Inaktiv“](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/mfa-policy-inactive.png)
 
-   ![Bild zeigt MFA-Richtlinie auf inaktiv](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/mfa-policy-inactive.png)
+1. Legen Sie im Bereich für die Anmelderichtlinien auf Anwendungsebene die Richtlinien auf **Inaktiv** fest, indem Sie die Option **Regel deaktivieren** auswählen. Sie können die Richtlinie auch einer neuen Gruppe zuweisen, die nicht die Azure AD-Benutzer enthält.
 
-3. Aktualisieren Sie in der Anmeldungsrichtlinie auf Anwendungsebene die Richtlinien auf inaktiv, indem Sie die Option **Regel deaktivieren** wählen. Sie können die Richtlinie auch einer neuen Gruppe zuweisen, die nicht die Azure AD-Benutzer enthält.
+1. Stellen Sie sicher, dass mindestens eine anwendungsbezogene Anmelderichtlinie für die Anwendung aktiviert ist, für die der Zugriff ohne MFA zulässig ist.
 
-4. Stellen Sie sicher, dass es mindestens eine Anmeldungsrichtlinie auf Anwendungsebene gibt, die für die Anwendung aktiviert ist, die den Zugriff ohne MFA erlaubt.
+   ![Screenshot: Anwendungszugriff ohne MFA](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/application-access-without-mfa.png)
 
-   ![Bild zeigt Anwendungszugriff ohne MFA](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/application-access-without-mfa.png)
-
-5. Nach der Deaktivierung der Okta-Anmelderichtlinien oder dem Ausschluss der migrierten Azure AD-Benutzer aus den Erzwingungsgruppen sollten die Benutzer bei ihrer nächsten Anmeldung zur Eingabe der CA aufgefordert werden **nur**.
+1. Nachdem Sie die Okta-Anmelderichtlinien deaktiviert oder die migrierten Azure AD-Benutzer aus den Erzwingungsgruppen ausgeschlossen haben, werden Benutzer bei der nächsten Anmeldung *nur* zum Durchführen des bedingten Zugriffs aufgefordert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Weitere Informationen zur Migration von Okta zu Azure AD finden Sie unter:
+
 - [Migrieren von Anwendungen von Okta zu Azure AD](migrate-applications-from-okta-to-azure-active-directory.md)
-
 - [Migration von Okta-Verbund zu Azure AD](migrate-okta-federation-to-azure-active-directory.md)
-
-- [Migrieren der Okta-Synchronisierungsbereitstellung zu Azure AD Connect-basierter Synchronisierung](migrate-okta-sync-provisioning-to-azure-active-directory.md)
+- [Migrieren der Okta-Synchronisierungsbereitstellung zu Azure AD Connect-basierter Synchronisierung](migrate-okta-sync-provisioning-to-azure-active-directory.md)

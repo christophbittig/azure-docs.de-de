@@ -2,13 +2,13 @@
 title: 'Bicep-Funktionen: Dateien'
 description: Beschreibt die Funktionen, die in einer Bicep-Datei zum Laden von Inhalten aus einer Datei verwendet werden.
 ms.topic: conceptual
-ms.date: 09/13/2021
-ms.openlocfilehash: 10c4bb501945bdcd5b502797e8383dbea1d0f63c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/30/2021
+ms.openlocfilehash: 28b28086986eb4e871cc6ed8c315c3802e721840
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128552674"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359835"
 ---
 # <a name="file-functions-for-bicep"></a>Dateifunktionen für Bicep
 
@@ -18,11 +18,13 @@ In diesem Artikel werden die Bicep-Funktionen zum Laden von Inhalten aus externe
 
 `loadFileAsBase64(filePath)`
 
-Lädt die Datei als Base64-Zeichenfolge. 
+Lädt die Datei als Base64-Zeichenfolge.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | filePath | Ja | Zeichenfolge | Der Pfad zur Datei, die geladen werden soll. Der Pfad ist relativ zur bereitgestellten Bicep-Datei. |
 
@@ -44,9 +46,11 @@ Die Datei als Base64-Zeichenfolge.
 
 Lädt den Inhalt der angegebenen Datei als Zeichenfolge. 
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | filePath | Ja | Zeichenfolge | Der Pfad zur Datei, die geladen werden soll. Der Pfad ist relativ zur bereitgestellten Bicep-Datei. |
 | encoding | Nein | Zeichenfolge | Die Codierung der Datei. Standardwert: `utf-8`. Verfügbare Optionen: `iso-8859-1`, `us-ascii`, `utf-16`, `utf-16BE` oder `utf-8`.  |

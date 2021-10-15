@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 03/16/2020
-ms.openlocfilehash: ae8bbad9d99837bd1cd0d21b66a37c895b816f2a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2020
+ms.openlocfilehash: 3aa0ddf4a9013d5f64584fbe93a795f6420dc410
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642662"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389926"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>Einrichten eines Azure Marketplace-Abonnements für gehostete Testversionen
 
@@ -65,7 +65,32 @@ In diesem Artikel erfahren Sie, wie Sie ein Azure Marketplace-Abonnement und ein
 
             :::image type="content" source="./media/test-drive/add-client-secret-customer.png" alt-text="Hinzufügen eines geheimen Clientschlüssels":::
 
-5. Fügen Sie die Dienstprinzipalrolle zur Anwendung hinzu, um der Azure AD-App das Entfernen von Benutzern aus Ihrem Azure-Mandanten zu erlauben.
+5. Fügen Sie die Dienstprinzipalrolle zur Anwendung hinzu, um der Azure AD-App das Entfernen von Benutzern aus Ihrem Azure-Mandanten zu erlauben. Es gibt zwei Möglichkeiten, diesen Schritt auszuführen.
+
+    **Option 1:**
+
+    1. Suchen Sie nach **Azure AD-Rollen und -Administratoren**, und wählen Sie den Dienst aus.
+
+        :::image type="content" source="./media/test-drive/active-ad-roles.png" alt-text="Suchen nach Azure AD-Rollen und -Administratoren":::
+
+    2. Suchen Sie auf der Seite **Alle Rollen** nach der Rolle **Benutzeradministrator**, und doppelklicken Sie auf **Benutzeradministrator**.
+
+        :::image type="content" source="./media/test-drive/user-administrator.png" alt-text="Suchen nach und Auswählen von „Benutzeradministrator“":::
+
+    3. Wählen Sie **Zuweisungen hinzufügen** aus.
+
+        :::image type="content" source="./media/test-drive/add-assignments-1.png" alt-text="Schaltfläche „Zuweisungen hinzufügen“":::
+
+    4. Suchen Sie nach der oben erstellten App, wählen Sie sie aus, und wählen Sie dann die Option **Hinzufügen** aus.
+
+        :::image type="content" source="./media/test-drive/add-assignments-2.png" alt-text="Erfolgreiche App-Zuweisung":::
+
+    5. Sie sehen, dass die Zuweisung der Dienstprinzipalrolle zur Anwendung erfolgreich war:
+
+        :::image type="content" source="./media/test-drive/successful-assignment.png" alt-text="Zuweisung der Dienstprinzipalrolle zur Anwendung war erfolgreich":::
+
+    **Option 2:**
+
     1. Öffnen Sie eine PowerShell-Eingabeaufforderung auf Verwaltungsebene.
     2. Führen Sie den Befehl „Install-Module MSOnline“ aus, wenn MSOnline noch nicht installiert ist.
     3. Führen Sie „Connect-MsolService“ aus (dadurch wird ein Popupfenster angezeigt, über das Sie sich mit dem neu erstellten Organisationsmandanten anmelden).
@@ -73,7 +98,7 @@ In diesem Artikel erfahren Sie, wie Sie ein Azure Marketplace-Abonnement und ein
     5. Führen Sie „$SP = Get-msolserviceprincipal-appprincipalid $ApplicationId“ aus.
     6. Führen Sie „Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId $sp.ObjectId -RoleMemberType servicePrincipal.“ aus.
 
-        :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="Anmelden mit Ihrem Konto":::
+         :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="Anmelden mit Ihrem Konto":::
 
 6. Erstellen Sie eine neue Sicherheitsgruppe, und fügen Sie sie der Canvas-App (Power Apps) hinzu. Dieser Schritt gilt nur für Canvas-App-Angebote (Power Apps).
     1. Erstellen Sie eine neue Sicherheitsgruppe.

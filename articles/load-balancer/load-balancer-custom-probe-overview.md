@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 57be98a76621d04ec14af04166117a5f62a40227
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: bb7505fe23079b13e702dec70bc9cc362cd7b848
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061863"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388259"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -47,7 +47,6 @@ Integritätstests unterstützen mehrere Protokolle. Die Verfügbarkeit eines bes
 Die Integritätstestkonfiguration umfasst folgende Elemente:
 
 - Dauer des Intervalls zwischen einzelnen Tests
-- Anzahl der Testantworten, die beobachtet werden müssen, bevor der Test in einen anderen Zustand übergeht.
 - Protokoll des Tests
 - Port des Tests
 - HTTP-Pfad, der für HTTP GET bei Verwendung von HTTP(S)-Tests verwendet werden soll.
@@ -57,25 +56,20 @@ Die Integritätstestkonfiguration umfasst folgende Elemente:
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Verstehen des Anwendungssignals, Erkennen des Signals und Reaktion der Plattform
 
-Anzahl der Testantworten, die auf beides angewendet wird
+Der Intervallwert bestimmt, wie häufig der Integritätstest eine Überprüfung auf eine Antwort von Ihren Back-End-Poolinstanzen durchführt. Wenn der Integritätstest nicht erfolgreich ist, werden Ihre Back-End-Poolinstanzen sofort als „Fehlerhaft“ gekennzeichnet. Entsprechend werden Ihre Back-End-Poolinstanzen beim nächsten erfolgreichen Integritätstest auch sofort wieder als „Fehlerfrei“ gekennzeichnet.
 
-- Anzahl der erfolgreichen Tests, bei der eine Instanz als online gekennzeichnet werden kann und
-- Anzahl der Tests mit einem Timeout, bei der eine Instanz als offline gekennzeichnet wird.
+Wir können das Verhalten anhand eines Beispiels, bei dem das Intervall Ihres Integritätstests auf „5 Sekunden“ festgelegt wurde, weiter verdeutlichen. Da der Zeitpunkt, zu dem ein Test gesendet wird, nicht mit dem möglichen Zeitpunkt einer Zustandsänderung Ihrer Anwendung synchronisiert ist, gibt es zwei mögliche Gesamtdauern, die für die Widerspiegelung Ihres Anwendungszustands durch den Integritätstest ggf. benötigt werden:
 
-Die angegebenen Werte für das Timeout und das Intervall bestimmen, ob eine Instanz als online oder offline markiert wird.  Die Dauer des Intervalls multipliziert mit der Anzahl der Testantworten bestimmt die Zeitspann, in der die Testantworten erkannt werden müssen.  Und der Dienst reagiert, nachdem die erforderlichen Tests erreicht wurden.
+1. Wenn Ihre Anwendung kurz vor dem Eintreffen des nächsten Tests mit der Generierung einer Testantwort aufgrund eines Timeouts beginnt, dauert die Erkennung dieser Ereignisse nicht nur fünf Sekunden. Es kommt der Zeitraum hinzu, der von der Anwendung benötigt wird, um beim Eintreffen des Tests einen Timeout zu signalisieren.  Sie können davon ausgehen, dass diese Erkennung etwas länger als fünf Sekunden dauert.
+2. Wenn Ihre Anwendung unmittelbar nach dem Eintreffen des nächsten Tests mit der Generierung einer Testantwort aufgrund eines Timeouts beginnt, startet die Erkennung dieser Ereignisse erst, nachdem der Test eingetroffen (und der Timeout abgelaufen) ist und weitere fünf Sekunden verstrichen sind.  Sie können davon ausgehen, dass diese Erkennung knapp zehn Sekunden dauert.
 
-Wir können das Verhalten anhand eines Beispiels weiter veranschaulichen. Wenn Sie die Anzahl der Testantworten auf 2 und das Intervall auf 5 Sekunden festgelegt haben, bedeutet dies, dass 2 Testfehler durch Timeouts innerhalb eines Intervalls von 10 Sekunden beobachtet werden müssen.  Da der Zeitpunkt, zu dem ein Test gesendet wird, nicht synchronisiert ist, wenn Ihre Anwendung den Zustand ggf. ändert, können wir die Zeit bis zur Erkennung an zwei Szenarien festmachen:
-
-1. Wenn Ihre Anwendung kurz vor dem Eintreffen des ersten Tests mit der Generierung einer Testantwort aufgrund eines Timeouts beginnt, dauert die Erkennung dieser Ereignisse 10 Sekunden (Intervalle von 2 × 5 Sekunden) plus die Dauer der Anwendung, die beginnt, ein Timeout zu signalisieren, wenn der erste Test eintrifft.  Sie können davon ausgehen, dass diese Erkennung etwas länger als 10 Sekunden dauert.
-2. Wenn Ihre Anwendung unmittelbar nach dem Eintreffen des ersten Tests mit der Generierung einer Testfehlerantwort aufgrund eines Timeouts beginnt, startet die Erkennung dieser Ereignisse erst mit dem Eintreffen des nächsten Tests (mit Timeout) plus weiteren 10 Sekunden (Intervalle von 2 × 5 Sekunden).  Sie können davon ausgehen, dass diese Erkennung fast 15 Sekunden in Anspruch nimmt.
-
-In diesem Beispiel benötigt die Plattform nach der Erkennung eine kurze Zeit, um auf diese Änderung zu reagieren.  Dies bedeutet eine Abhängigkeit von mehreren Faktoren: 
+In diesem Beispiel benötigt die Plattform nach der Erkennung eine kurze Zeit, um auf diese Änderung zu reagieren.  Hierbei sind die folgenden Faktoren relevant: 
 
 1. Wann die Anwendung mit der Zustandsänderung beginnt und
-2. wann diese Änderung erkannt wird und die erforderlichen Kriterien erfüllt sind (Anzahl der im angegebenen Intervall gesendeten Tests) und
+2. Wann diese Änderung erkannt wird (beim Senden des nächsten Integritätstests) und
 3. wann die Erkennung über die Plattform kommuniziert wurde. 
 
-Sie können davon ausgehen, dass die Reaktion auf eine Testantwort aufgrund eines Timeouts zwischen einem Minimum von etwas mehr als 10 Sekunden und einem Maximum von etwas mehr als 15 Sekunden dauert, um auf eine Änderung des Signals von der Anwendung zu reagieren.  Dieses Beispiel dient der Veranschaulichung des Geschehens, jedoch ist es nicht möglich, eine genaue Dauer über die in diesem Beispiel dargestellte grobe Orientierung hinaus vorherzusagen.
+Sie können davon ausgehen, dass die Reaktion auf eine Testantwort aufgrund eines Timeouts mindestens etwas mehr als 5 Sekunden und höchstens etwas mehr als 10 Sekunden dauert. Diese Zeit wird benötigt, um auf eine Änderung des Signals aus der Anwendung zu reagieren.  Dieses Beispiel dient der Veranschaulichung des Geschehens, jedoch ist es nicht möglich, eine genaue Dauer über die in diesem Beispiel dargestellte grobe Orientierung hinaus vorherzusagen.
 
 >[!NOTE]
 >Der Integritätstest testet alle ausgeführten Instanzen im Back-End-Pool. Wenn eine Instanz beendet wird, wird sie erst nach ihrem erneuten Start wieder getestet.
@@ -114,7 +108,7 @@ Im Folgenden wird veranschaulicht, wie Sie diese Art von Testkonfiguration in ei
         "protocol": "Tcp",
         "port": 1234,
         "intervalInSeconds": 5,
-        "numberOfProbes": 2
+        "numberOfProbes": 1
       },
 ```
 
@@ -147,7 +141,7 @@ Im Folgenden wird veranschaulicht, wie Sie diese Art von Testkonfiguration in ei
         "port": 80,
         "requestPath": "/",
         "intervalInSeconds": 5,
-        "numberOfProbes": 2
+        "numberOfProbes": 1
       },
 ```
 
@@ -159,7 +153,7 @@ Im Folgenden wird veranschaulicht, wie Sie diese Art von Testkonfiguration in ei
         "port": 443,
         "requestPath": "/",
         "intervalInSeconds": 5,
-        "numberOfProbes": 2
+        "numberOfProbes": 1
       },
 ```
 
@@ -183,7 +177,6 @@ Wenn Sie eine Webrolle verwenden, wird der Websitecode in der Regel in „w3wp.e
 TCP-, HTTP- und HTTPS-Integritätstests werden in den folgenden Fällen als fehlerfrei eingestuft und markieren den Back-End-Endpunkt als fehlerfrei:
 
 * Der Integritätstest ist nach dem Starten der VM erfolgreich.
-* Die angegebene Anzahl von Tests, die erforderlich ist, um den Back-End-Endpunkt als fehlerfrei zu markieren, wurde erreicht.
 
 Jeder Back-End-Endpunkt, der einen fehlerfreien Zustand erreicht hat, ist berechtigt, neue Streams zu empfangen.  
 

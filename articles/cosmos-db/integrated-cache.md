@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/20/2021
+ms.date: 09/28/2021
 ms.author: tisande
-ms.openlocfilehash: 39b385096fadb5d410520889c0aa8f1a07f1a67a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ebf9eb5e06b98bdd573d91f0a57daeb9d81b1f50
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616553"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230568"
 ---
 # <a name="azure-cosmos-db-integrated-cache---overview-preview"></a>Übersicht: Integrierter Azure Cosmos DB-Cache (Vorschauversion)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -90,7 +90,7 @@ Abfragefortsetzungstoken werden ggf. automatisch im Abfragecache zwischengespeic
 
 Der integrierte Cache unterstützt nur die sitzungsbasierte und die letztliche [Konsistenz](consistency-levels.md). Wenn ein Lesevorgang über ein konsistentes Präfix, begrenzte Veraltung oder starke Konsistenz verfügt, umgeht der Vorgang den integrierten Cache immer.
 
-Die einfachste Vorgehensweise zum Konfigurieren der Sitzungskonsistenz oder letztlichen Konsistenz für alle Lesevorgänge besteht darin, [diese auf Kontoebene festzulegen](consistency-levels.md#configure-the-default-consistency-level). Wenn Sie die letztliche Konsistenz jedoch nur für einige Ihrer Lesevorgänge festlegen möchten, können Sie die Konsistenz auch auf [Anforderungsebene](how-to-manage-consistency.md#override-the-default-consistency-level) konfigurieren.
+Die einfachste Vorgehensweise zum Konfigurieren der Sitzungskonsistenz oder letztlichen Konsistenz für alle Lesevorgänge besteht darin, [diese auf Kontoebene festzulegen](consistency-levels.md#configure-the-default-consistency-level). Falls Sie eine bestimmte Konsistenz aber nur für einige Ihrer Lesevorgänge festlegen möchten, können Sie die Konsistenz auch auf [Anforderungsebene](how-to-manage-consistency.md#override-the-default-consistency-level) konfigurieren.
 
 ### <a name="session-consistency"></a>Sitzungskonsistenz
 
@@ -139,8 +139,8 @@ Bei Verwendung des integrierten Caches ist es hilfreich, einige wichtige Metrike
 - `IntegratedCacheEvictedEntriesSize`: Die durchschnittliche Datenmenge, die aufgrund von LRU aus dem integrierten Cache über dedizierte Gatewayknoten hinweg entfernt wurde. Dieser Wert enthält keine Daten, die aufgrund einer `MaxIntegratedCacheStaleness`-Zeitüberschreitung abgelaufen sind.
 - `IntegratedCacheItemExpirationCount`: Die Anzahl der Elemente, die aus dem integrierten Cache entfernt werden, weil zwischengespeicherte Punktlesezugriffe die `MaxIntegratedCacheStaleness`-Zeit überschritten haben. Dieser Wert ist ein Durchschnitt der integrierten Cacheinstanzen auf allen dedizierten Gatewayknoten.
 - `IntegratedCacheQueryExpirationCount`: Die Anzahl der Abfragen, die aus dem integrierten Cache entfernt werden, weil zwischengespeicherte Abfragen die `MaxIntegratedCacheStaleness`-Zeit überschritten haben. Dieser Wert ist ein Durchschnitt der integrierten Cacheinstanzen auf allen dedizierten Gatewayknoten.
-- `IntegratedCacheItemHitRate`: Der Anteil der Punktlesevorgänge, die den integrierten Cache verwendet haben (aus allen Punktlesevorgängen, die mit letztlicher Konsistenz über das dedizierte Gateway weitergeleitet wurden). Dieser Wert ist ein Durchschnitt der integrierten Cacheinstanzen auf allen dedizierten Gatewayknoten.
-- `IntegratedCacheQueryHitRate`: Der Anteil der Abfragen, die den integrierten Cache verwendet haben (aus allen Abfragen, die mit letztlicher Konsistenz über das dedizierte Gateway weitergeleitet wurden). Dieser Wert ist ein Durchschnitt der integrierten Cacheinstanzen auf allen dedizierten Gatewayknoten.
+- `IntegratedCacheItemHitRate`: Der Anteil der Punktlesevorgänge, für die der integrierte Cache verwendet wurde (von allen Punktlesevorgängen, die mit Sitzungs- oder letztlicher Konsistenz über das dedizierte Gateway weitergeleitet wurden). Dieser Wert ist ein Durchschnitt der integrierten Cacheinstanzen auf allen dedizierten Gatewayknoten.
+- `IntegratedCacheQueryHitRate`: Der Anteil der Abfragen, für die der integrierte Cache verwendet wurde (von allen Abfragen, die mit Sitzungs- oder letztlicher Konsistenz über das dedizierte Gateway weitergeleitet wurden). Dieser Wert ist ein Durchschnitt der integrierten Cacheinstanzen auf allen dedizierten Gatewayknoten.
 
 Alle vorhandenen Metriken sind standardmäßig über das Blatt **Metriken** verfügbar (nicht über das Blatt „Metriken (klassisch)“):
 

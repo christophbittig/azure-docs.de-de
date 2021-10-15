@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5a89c2dd574c1910d2c35c78aee4f5ee8b561dfc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2b7e51bc2837cdb068f0f9d6704e80d3f41c396e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592791"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538856"
 ---
 # <a name="troubleshoot-hybrid-azure-ad-joined-devices"></a>Beheben von Problemen bei in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -30,7 +30,7 @@ Informationen zur Problembehandlung bei anderen Windows-Clients finden Sie unter
 In diesem Artikel wird vorausgesetzt, dass Sie [in Azure AD eingebundene Hybridgeräte konfiguriert haben](hybrid-azuread-join-plan.md), um die folgenden Szenarios zu unterstützen:
 
 - Gerätebasierter bedingter Zugriff
-- [Roaming im Unternehmensstatus](./enterprise-state-roaming-overview.md)
+- [Enterprise State Roaming](./enterprise-state-roaming-overview.md)
 - [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 
@@ -233,7 +233,7 @@ Dieser Inhalt gilt nur für Verbunddomänenkonten.
 Fehlerursachen:
 
 - Es kann kein Zugriffstoken für die DRS-Ressource im Hintergrund abgerufen werden.
-   - Windows&nbsp;10-Geräte erhalten das Authentifizierungstoken vom Verbunddienst über Integrierte Windows-Authentifizierung bei einem aktiven WS-Trust-Endpunkt. Weitere Informationen finden Sie unter [Verbunddienstkonfiguration](hybrid-azuread-join-manual.md#set-up-issuance-of-claims).
+   - Für Windows&nbsp;10-Geräte wird das Authentifizierungstoken über den Verbunddienst beschafft, indem die integrierte Windows-Authentifizierung über einen aktiven WS-Trust-Endpunkt genutzt wird. Weitere Informationen finden Sie unter [Verbunddienstkonfiguration](hybrid-azuread-join-manual.md#set-up-issuance-of-claims).
 
 **Häufige Fehlercodes**:
 
@@ -384,7 +384,7 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um die Phase und den Fehlercod
    > [!NOTE] 
    > Um den Status des primären Aktualisierungstokens (Primary Refresh Token, PRT) abzurufen, öffnen Sie das Eingabeaufforderungsfenster im Kontext des angemeldeten Benutzers. 
 
-1. Führen Sie `dsregcmd /status` aus. 
+1. `dsregcmd /status` ausführen. 
 
    Im Abschnitt „SSO-Status" wird der aktuelle PRT-Status angezeigt. 
 
@@ -443,7 +443,7 @@ Das Feld „Versuchsstatus“ unter dem Feld „AzureAdPrt“ gibt den Status de
 
 Über die Ereignisanzeige können Sie nach den Protokolleinträgen suchen, die während der PRT-Erfassung vom Azure AD-CloudAP-Plug-In protokolliert werden. 
 
-1. Öffnen Sie in der Ereignisanzeige die Azure AD-Ereignisprotokolle. Sie sind unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **Benutzergeräteregistrierung** gespeichert. 
+1. Öffnen Sie in der Ereignisanzeige die Azure AD-Ereignisprotokolle für den Betrieb. Sie sind unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows** > **AAD** gespeichert. 
 
    > [!NOTE]
    > Das CloudAP-Plug-In protokolliert die Fehlerereignisse in den Betriebsprotokollen und die Informationsereignisse in den Analyseprotokollen. Sowohl Analyse- als auch Betriebsprotokollereignisse sind zur Behebung von Problemen erforderlich. 
@@ -484,7 +484,7 @@ Das Feld „Versuchsstatus“ unter dem Feld „AzureAdPrt“ gibt den Status de
 
 | Fehlercode | `Reason` | Lösung |
 | --- | --- | --- |
-| **ERROR_WINHTTP_TIMEOUT** (12002)<br>**ERROR_WINHTTP_NAME_NOT_RESOLVED** (12007)<br>**ERROR_WINHTTP_CANNOT_CONNECT** (12029)<br>**ERROR_WINHTTP_CONNECTION_ERROR** (12030) | Häufige allgemeine Probleme im Zusammenhang mit dem Netzwerk. | <li>Die Ereignisse 1022 (Azure AD-Analyseprotokolle) und 1084 (Azure AD Betriebsprotokolle) enthalten die URL, auf die zugegriffen wird.<li>Wenn die lokale Umgebung einen Proxy für den ausgehenden Datenverkehr erfordert, muss der IT-Administrator sicherstellen, dass das Computerkonto des Geräts in der Lage ist, den Proxy zu ermitteln und sich im Hintergrund zu authentifizieren.<br><br>[Hier](/windows/win32/winhttp/error-messages) finden Sie weitere Netzwerkfehlercodes. |
+| **ERROR_WINHTTP_TIMEOUT** (12002)<br>**ERROR_WINHTTP_NAME_NOT_RESOLVED** (12007)<br>**ERROR_WINHTTP_CANNOT_CONNECT** (12029)<br>**ERROR_WINHTTP_CONNECTION_ERROR** (12030) | Häufige allgemeine Probleme im Zusammenhang mit dem Netzwerk. | <li>Die Ereignisse 1022 (Azure AD-Analyseprotokolle) und 1084 (Azure AD Betriebsprotokolle) enthalten die URL, auf die zugegriffen wird.<li>Wenn die lokale Umgebung einen Proxy für den ausgehenden Datenverkehr erfordert, muss der IT-Administrator sicherstellen, dass das Computerkonto des Geräts in der Lage ist, den Proxy zu ermitteln und sich im Hintergrund zu authentifizieren.<br><br>Weitere Netzwerkfehlercodes finden Sie [hier](/windows/win32/winhttp/error-messages). |
 | | |
 
 
@@ -504,9 +504,9 @@ Das Feld „Versuchsstatus“ unter dem Feld „AzureAdPrt“ gibt den Status de
 > [!NOTE]
 > Wenn Sie Netzwerkablaufverfolgungen sammeln, ist es wichtig, Fiddler während der Reproduktion *nicht* zu verwenden.
 
-1.  Führen Sie `netsh trace start scenario=internetClient_dbg capture=yes persistent=yes` aus.
+1.  `netsh trace start scenario=internetClient_dbg capture=yes persistent=yes` ausführen.
 1. Sperren und entsperren Sie das Gerät. Warten Sie bei eingebundenen Hybridgeräten mindestens eine Minute, bis die PRT-Erfassungsaufgabe abgeschlossen ist.
-1. Führen Sie `netsh trace stop` aus.
+1. `netsh trace stop` ausführen.
 1. Geben Sie die Datei *nettrace.cab* für den Support frei.
 
 ---

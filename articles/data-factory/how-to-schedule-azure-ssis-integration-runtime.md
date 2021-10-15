@@ -5,15 +5,15 @@ ms.service: data-factory
 ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 06/04/2021
+ms.date: 10/04/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 7ebb64ccdfaaefe517baf21c0996d49f0bdc1278
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a7a520ba1b95b412cbc068ad045a6b022e15306f
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124760439"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535387"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden von Azure-SSIS Integration Runtimes nach einem Zeitplan
 
@@ -46,7 +46,7 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.    
 2. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
-   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png" alt-text="Neu->DatenFabrik":::
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png" alt-text="Neu -> Data Factory":::
    
 3. Geben Sie auf der Seite **Neue Data Factory** unter **Name** die Zeichenfolge **MyAzureSsisDataFactory** ein. 
       
@@ -84,39 +84,55 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
 
    :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Screenshot, der die ADF-Startseite zeigt.":::
    
-2. Erweitern Sie in der Toolbox **Aktivitäten** das Menü **Allgemein**, ziehen Sie die Aktivität **Web** auf die Oberfläche des Pipeline-Designers, und legen Sie sie dort ab. Ändern Sie im Fenster „Aktivitätseigenschaften“ auf der Registerkarte **Allgemein** den Namen der Aktivität in **startMyIR**. Wechseln Sie zur Registerkarte **Einstellungen**, und führen Sie die folgenden Aktionen aus.
+2. Erweitern Sie in der Toolbox **Aktivitäten** das Menü **Allgemein**, ziehen Sie die Aktivität **Web** auf die Oberfläche des Pipeline-Designers, und legen Sie sie dort ab. Ändern Sie im Fenster „Aktivitätseigenschaften“ auf der Registerkarte **Allgemein** den Namen der Aktivität in **startMyIR**. Wechseln Sie zur Registerkarte **Einstellungen**, und führen Sie die folgenden Aktionen aus:
 
-    1. Geben Sie unter **URL** die folgende URL für die REST-API ein, die die Azure-SSIS IR startet, und ersetzen Sie dabei `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}` und `{integrationRuntimeName}` durch die tatsächlichen Werte für Ihre IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`. Alternativ können Sie auch die Ressourcen-ID Ihrer IR von der Überwachungsseite der ADF-Benutzeroberfläche/-App kopieren und einfügen, um den folgenden Teil der oben angegebenen URL zu ersetzen: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
+   1. Geben Sie unter **URL** die folgende URL für die REST-API ein, die die Azure-SSIS IR startet, und ersetzen Sie dabei `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}` und `{integrationRuntimeName}` durch die tatsächlichen Werte für Ihre IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`. . Alternativ können Sie auch die Ressourcen-ID Ihrer IR von der Überwachungsseite der ADF-Benutzeroberfläche/-App kopieren und einfügen, um den folgenden Teil der oben angegebenen URL zu ersetzen: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`.
     
-       :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png" alt-text="ADF-SSIS IR-Ressourcen-ID":::
+      :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png" alt-text="ADF-SSIS IR-Ressourcen-ID":::
   
-    2. Wählen Sie unter **Methode** die Option **POST** aus. 
-    3. Geben Sie unter **Text** die Zeichenfolge `{"message":"Start my IR"}` ein. 
-    4. Wählen Sie für **Authentifizierung** die Option **MSI** aus, um die verwaltete Identität für Ihre ADF zu verwenden. Weitere Informationen hierzu finden Sie in dem Artikel [Verwaltete Identität für Data Factory](./data-factory-service-identity.md).
-    5. Geben Sie `https://management.azure.com/` als **Ressource** ein.
+   2. Wählen Sie unter **Methode** die Option **POST** aus. 
+   3. Geben Sie unter **Text** die Zeichenfolge `{"message":"Start my IR"}` ein.
+   4. Wählen Sie für **Authentifizierung** die Option **Verwaltete Identität** aus, um die angegebene systemseitig verwaltete Identität für Ihre ADF zu verwenden. Weitere Informationen hierzu finden Sie in dem Artikel [Verwaltete Identität für Data Factory](./data-factory-service-identity.md).
+   5. Geben Sie `https://management.azure.com/` als **Ressource** ein.
     
-       :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png" alt-text="ADF-Webaktivität nach Zeitplan für SSIS IR":::
+      :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png" alt-text="ADF-Webaktivität nach Zeitplan für SSIS IR":::
   
 3. Klonen Sie die erste Pipeline, um eine zweite zu erstellen, wobei Sie den Aktivitätsnamen dabei in **stopMyIR** ändern und die folgenden Eigenschaften ersetzen.
 
-    1. Geben Sie unter **URL** die folgende URL für die REST-API ein, die die Azure-SSIS IR beendet, und ersetzen Sie dabei `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}` und `{integrationRuntimeName}` durch die tatsächlichen Werte für Ihre IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`.
-    
-    2. Geben Sie unter **Text** die Zeichenfolge `{"message":"Stop my IR"}` ein. 
+   1. Geben Sie unter **URL** die folgende URL für die REST-API ein, die die Azure-SSIS IR beendet, und ersetzen Sie dabei `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}` und `{integrationRuntimeName}` durch die tatsächlichen Werte für Ihre IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`.
+   2. Geben Sie unter **Text** die Zeichenfolge `{"message":"Stop my IR"}` ein. 
 
-4. Erstellen Sie eine dritte Pipeline, ziehen Sie eine Aktivität **SSIS-Paket ausführen** von der Toolbox **Aktivitäten** auf die Pipeline-Designer-Oberfläche, legen Sie sie dort ab, und konfigurieren Sie sie anhand der Anweisungen im Artikel [Aufrufen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in ADF](how-to-invoke-ssis-package-ssis-activity.md).  Alternativ können Sie eine Aktivität mit **gespeicherter Prozedur** verwenden und diese anhand der Anweisungen im Artikel [Aufrufen eines SSIS-Pakets mit der Aktivität einer gespeicherten Prozedur in Azure Data Factory](how-to-invoke-ssis-package-stored-procedure-activity.md) konfigurieren.  Verketten Sie als Nächstes die Aktivität „SSIS-Paket ausführen“ bzw. die Aktivität mit gespeicherter Prozedur zwischen zwei Webaktivitäten, die Ihre IR starten/beenden, ähnlich den Webaktivitäten in der ersten und der zweiten Pipeline.
+4. Erstellen Sie eine dritte Pipeline, ziehen Sie eine Aktivität **SSIS-Paket ausführen** von der Toolbox **Aktivitäten** auf die Pipeline-Designer-Oberfläche, legen Sie sie dort ab, und konfigurieren Sie sie anhand der Anweisungen im Artikel [Aufrufen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in ADF](how-to-invoke-ssis-package-ssis-activity.md).  Verketten Sie als Nächstes die Aktivität „SSIS-Paket ausführen“ zwischen zwei Webaktivitäten, die Ihre IR starten/beenden, ähnlich den Webaktivitäten in der ersten und der zweiten Pipeline.
 
    :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png" alt-text="ADF-Webaktivität nach Bedarf für SSIS IR":::
 
-5. Weisen Sie der verwalteten Identität für Ihre ADF die Rolle **Mitwirkender** für sich selbst zu, sodass Webaktivitäten in den zugehörigen Pipelines die REST-API zum Starten/Beenden der darin bereitgestellten Azure-SSIS IRs aufrufen können.  Klicken Sie auf Ihrer ADF-Seite im Azure-Portal auf **Zugriffssteuerung (IAM)** und auf **+ Rollenzuweisung hinzufügen**, und führen Sie dann auf dem Blatt **Rollenzuweisung hinzufügen** die folgenden Aktionen aus.
+5. Sie können die dritte Pipeline auch automatisch auf der Grundlage einer Vorlage statt manuell erstellen. Wählen Sie dazu neben **Pipeline** das Symbol **...** aus, um ein Dropdownmenü mit Pipelineaktionen anzuzeigen. Wählen Sie die Aktion **Pipeline über Vorlage** aus, aktivieren Sie unter **Kategorie** das Kontrollkästchen **SSIS**, und wählen Sie die Vorlage **ADF-Pipeline für das rechtzeitige Starten und Beenden der Azure-SSIS IR vor und nach dem Ausführen des SSIS-Pakets planen** aus. Wählen Sie anschließend im Dropdownmenü **Azure-SSIS Integration Runtime** Ihre IR und schließlich die Schaltfläche **Diese Vorlage verwenden** aus. Ihre Pipeline wird automatisch erstellt. Dabei bleibt nur noch das SSIS-Paket übrig, das Sie der Aktivität „SSIS-Paket ausführen“ zuweisen müssen.
 
-    1. Wählen Sie als **Rolle** die Option **Mitwirkender**. 
-    2. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus. 
-    3. Suchen Sie unter **Auswählen** nach dem Namen Ihrer ADF, und wählen Sie ihn aus. 
-    4. Klicken Sie auf **Speichern**.
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-on-demand-ssis-ir-template.png" alt-text="ADF nach Bedarf für SSIS IR-Vorlage":::
+
+6. Um die dritte Pipeline stabiler zu machen, können Sie sicherstellen, dass die Webaktivitäten zum Starten/Beenden Ihrer IR bei vorübergehenden Fehlern aufgrund von Netzwerkkonnektivitätsproblemen oder anderen Problemen wiederholt und erst abgeschlossen werden, wenn Ihre IR tatsächlich gestartet/beendet wurde. Dazu können Sie jede Webaktivität durch eine Until-Aktivität ersetzen, die wiederum zwei Webaktivitäten enthält: eine zum Starten/Beenden der IR und eine andere zum Überprüfen des IR-Status. Rufen Sie die Until-Aktivitäten *Start SSIS IR* (SSIS IR starten) und *Stop SSIS IR* (SSIS IR beenden) auf.  Die Until-Aktivität *Start SSIS IR* (SSIS IR starten) enthält die Webaktivitäten *Try Start SSIS IR* (Starten der SSIS IR versuchen) und *Get SSIS IR Status* (SSIS IR-Status abrufen). Die Until-Aktivität *Stop SSIS IR* (SSIS IR beenden) enthält die Webaktivitäten *Try Stop SSIS IR* (Beenden der SSIS IR versuchen) und *Get SSIS IR Status* (SSIS IR-Status abrufen). Geben Sie auf der Registerkarte **Einstellungen** der Until-Aktivitäten *Start SSIS IR*/*Stop SSIS IR* (SSIS IR starten/SSIS IR beenden) unter **Ausdruck** die Zeichenfolge `@equals('Started', activity('Get SSIS IR Status').output.properties.state)`/`@equals('Stopped', activity('Get SSIS IR Status').output.properties.state)` ein.
+
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-until-activity-on-demand-ssis-ir.png" alt-text="ADF-Until-Aktivität nach Bedarf für SSIS IR":::
+
+   In den beiden Until-Aktivitäten ähneln die Webaktivitäten *Try Start SSIS IR*/*Try Stop SSIS IR* (Starten der SSIS IR versuchen/Beenden der SSIS IR versuchen) den Webaktivitäten in der ersten bzw. zweiten Pipeline. Führen Sie auf der Registerkarte **Einstellungen** der Webaktivität *Get SSIS IR Status* (SSIS IR-Status abrufen) die folgenden Aktionen aus:
+
+   1. Geben Sie unter **URL** die folgende URL für die REST-API ein, die den Azure-SSIS IR-Status abruft, und ersetzen Sie dabei `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}` und `{integrationRuntimeName}` durch die tatsächlichen Werte für Ihre IR: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}?api-version=2018-06-01`.
+   2. Wählen Sie unter **Methode** die Option **GET** aus. 
+   3. Wählen Sie für **Authentifizierung** die Option **Verwaltete Identität** aus, um die angegebene systemseitig verwaltete Identität für Ihre ADF zu verwenden. Weitere Informationen hierzu finden Sie in dem Artikel [Verwaltete Identität für Data Factory](./data-factory-service-identity.md).
+   4. Geben Sie `https://management.azure.com/` als **Ressource** ein.
+    
+      :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-until-activity-on-demand-ssis-ir-open.png" alt-text="ADF-Until-Aktivität nach Bedarf für SSIS IR geöffnet":::
+
+7. Weisen Sie der verwalteten Identität für Ihre ADF die Rolle **Mitwirkender** für sich selbst zu, sodass Webaktivitäten in den zugehörigen Pipelines die REST-API zum Starten/Beenden der darin bereitgestellten Azure-SSIS IRs aufrufen können.  Klicken Sie auf Ihrer ADF-Seite im Azure-Portal auf **Zugriffssteuerung (IAM)** und auf **+ Rollenzuweisung hinzufügen**, und führen Sie dann auf dem Blatt **Rollenzuweisung hinzufügen** die folgenden Aktionen aus:
+
+   1. Wählen Sie als **Rolle** die Option **Mitwirkender**. 
+   2. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus. 
+   3. Suchen Sie unter **Auswählen** nach dem Namen Ihrer ADF, und wählen Sie ihn aus. 
+   4. Klicken Sie auf **Speichern**.
     
    :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png" alt-text="Rollenzuweisung für mit ADF verwaltete Identitäten":::
 
-6. Überprüfen Sie Ihre ADF und alle Pipelineeinstellungen, indem Sie auf der Symbolleiste der Factorypipeline auf **Alle überprüfen/Überprüfen** klicken. Schließen Sie die **Ausgabe der Factory-/Pipelineüberprüfung**, indem Sie auf die Schaltfläche **>>** klicken.  
+8. Überprüfen Sie Ihre ADF und alle Pipelineeinstellungen, indem Sie auf der Symbolleiste der Factorypipeline auf **Alle überprüfen/Überprüfen** klicken. Schließen Sie die **Ausgabe der Factory-/Pipelineüberprüfung**, indem Sie auf die Schaltfläche **>>** klicken.  
 
    :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png" alt-text="Überprüfen der Pipeline":::
 
@@ -126,7 +142,7 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
 
    :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png" alt-text="Testlauf":::
     
-2. Um die dritte Pipeline zu testen, starten Sie SQL Server Management Studio (SSMS). Führen Sie im Fenster **Mit Server verbinden** die folgenden Aktionen aus. 
+2. Wenn Sie das SSIS-Paket im SSIS-Katalog (SSISDB) speichern, können Sie zum Testen der dritten Pipeline SQL Server Management Studio (SSMS) starten, um die Ausführung zu überprüfen. Führen Sie im Fenster **Mit Server verbinden** die folgenden Aktionen aus. 
 
     1. Geben Sie unter **Servername** die Zeichenfolge **&lt;Ihr Servername&gt;.database.windows.net** ein.
     2. Wählen Sie **Optionen >>** aus.
@@ -173,7 +189,7 @@ Nachdem Ihre Pipelines nun wie erwartet funktioniert, können Sie Trigger erstel
 
    :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png" alt-text="Pipelineausführungen":::
 
-2. Wenn Sie mit einer Pipelineausführung verbundene Aktivitätsausführungen anzeigen möchten, wählen Sie in der Spalte **Aktionen** den ersten Link (**View Activity Runs**, Aktivitätsausführungen anzeigen) aus. Für die dritte Pipeline werden drei Aktivitätsausführungen angezeigt, eine für jede verkettete Aktivität in der Pipeline (Webaktivität zum Starten Ihrer IR, Aktivität mit gespeicherter Prozedur zum Ausführen des Pakets und Webaktivität zum Beenden Ihrer IR). Wählen Sie den Link **Pipelines** ganz oben aus, um wieder die Pipelineausführungen anzuzeigen.
+2. Wenn Sie mit einer Pipelineausführung verbundene Aktivitätsausführungen anzeigen möchten, wählen Sie in der Spalte **Aktionen** den ersten Link (**View Activity Runs**, Aktivitätsausführungen anzeigen) aus. Für die dritte Pipeline werden drei Aktivitätsausführungen angezeigt, eine für jede verkettete Aktivität in der Pipeline (Webaktivität zum Starten Ihrer IR, Aktivität „SSIS-Paket ausführen“ zum Ausführen des Pakets und Webaktivität zum Beenden Ihrer IR). Wählen Sie den Link **Pipelines** ganz oben aus, um wieder die Pipelineausführungen anzuzeigen.
 
    :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png" alt-text="Aktivitätsausführungen":::
 

@@ -2,14 +2,14 @@
 title: Richten Sie die Bicep-Entwicklungs- und Einsatzumgebungen ein
 description: Konfigurieren von Bicep-Entwicklungs- und -Bereitstellungsumgebungen
 ms.topic: conceptual
-ms.date: 09/10/2021
+ms.date: 10/01/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 545ed61de0499904c728293e472ce3101f4e7350
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: db0fe243dea09a431adc47f064d87c5e9a2ee7a8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124793662"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363638"
 ---
 # <a name="install-bicep-tools"></a>Installieren von Bicep-Tools
 
@@ -40,7 +40,7 @@ Informationen zum Bereitstellen von Bicep-Dateien aus Azure Pipelines finden Sie
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Sie müssen mindestens Version 2.20.0 der Azure CLI installiert haben. Informationen zum Installieren oder Aktualisieren der Azure-Befehlszeilenschnittstelle:
+Sie müssen **mindestens Version 2.20.0** der Azure CLI installiert haben. Informationen zum Installieren oder Aktualisieren der Azure-Befehlszeilenschnittstelle:
 
 - [Installieren der Azure CLI unter Windows](/cli/azure/install-azure-cli-windows)
 - [Installieren der Azure CLI unter Linux](/cli/azure/install-azure-cli-linux)
@@ -52,7 +52,7 @@ Führen Sie zum Überprüfen Ihrer aktuellen Version Folgendes aus:
 az --version
 ```
 
-Sie verfügen nun über alles, was Sie zum [Bereitstellen](deploy-cli.md) und [Dekompilieren](decompile.md) von Bicep-Dateien benötigen. Sie verfügen über alle erforderlichen Komponenten, da Azure CLI 2.20.0 oder höher automatisch die Bicep-Befehlszeilenschnittstelle installiert, wenn ein Befehl ausgeführt wird, der diese benötigt.
+Sie verfügen nun über alles, was Sie zum [Bereitstellen](deploy-cli.md) und [Dekompilieren](decompile.md) von Bicep-Dateien benötigen. Sie verfügen über alle erforderlichen Komponenten, da von der Azure CLI automatisch die Bicep-Befehlszeilenschnittstelle installiert wird, wenn diese für die Ausführung eines Befehls benötigt wird.
 
 Verwenden Sie zum manuellen Starten der Installation der Bicep-Befehlszeilenschnittstelle Folgendes:
 
@@ -79,7 +79,7 @@ Weitere Befehle finden Sie unter [Befehle der Bicep-Befehlszeilenschnittstelle](
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Sie müssen mindestens Azure PowerShell-Version 5.6.0 installiert haben. Informationen zur Aktualisierung oder Installation finden Sie unter [Installieren des Azure Az PowerShell-Moduls](/powershell/azure/install-az-ps).
+Sie müssen **mindestens Azure PowerShell-Version 5.6.0** installiert haben. Informationen zur Aktualisierung oder Installation finden Sie unter [Installieren des Azure Az PowerShell-Moduls](/powershell/azure/install-az-ps).
 
 Von Azure PowerShell wird die Bicep-Befehlszeilenschnittstelle nicht automatisch installiert. Stattdessen müssen Sie die [Bicep-Befehlszeilenschnittstelle manuell installieren](#install-manually).
 
@@ -88,7 +88,7 @@ Von Azure PowerShell wird die Bicep-Befehlszeilenschnittstelle nicht automatisch
 
 Wenn Sie die Bicep-Befehlszeilenschnittstelle manuell installieren, führen Sie die Bicep-Befehle mit der `bicep`-Syntax anstelle der `az bicep`-Syntax für die Azure CLI aus.
 
-Verwenden Sie zum Bereitstellen von Bicep-Dateien Version 0.3.1 oder höher der Bicep-Befehlszeilenschnittstelle. Führen Sie zum Überprüfen der Version der Bicep-Befehlszeilenschnittstelle Folgendes aus:
+Führen Sie zum Überprüfen der Version der Bicep-Befehlszeilenschnittstelle Folgendes aus:
 
 ```cmd
 bicep --version

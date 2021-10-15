@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Be
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: ca99be06934c9eca8a762b4990e89d8818ac3f5c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f3d353f7d42baf1f9cc968cb37baac1077a35085
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128627233"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231670"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -59,6 +59,8 @@ Die folgenden Szenarios werden vom Dienst als solche definiert, in denen Warnung
 - Fehler bei der Sicherung/Wiederherstellung
 - Sicherung für den Microsoft Azure Recovery Services-Agent (MARS) mit Warnungen abgeschlossen
 - Beenden des Schutzes unter Beibehaltung der Daten/Beenden des Schutzes inklusive Löschung der Daten
+- Funktion für vorläufiges Löschen für Tresor deaktiviert
+- Nicht unterstützter Sicherungstyp für Datenbankworkloads
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Hier sehen Sie die Warnungen der folgenden Azure Backup-Lösungen:
 
@@ -72,7 +74,7 @@ Die folgenden Szenarios werden vom Dienst als solche definiert, in denen Warnung
 
 ### <a name="consolidated-alerts"></a>Konsolidierte Warnungen
 
-Für Azure-Workloadsicherungslösungen wie SQL und SAP Hana können Protokollsicherungen sehr häufig generiert werden (gemäß der Richtlinie bis zu alle 15 Minuten). Es ist also auch möglich, dass die Fehler bei der Protokollsicherung sehr häufig auftreten (bis zu alle 15 Minuten). In diesem Szenario ist der Endbenutzer überfordert, wenn für jeden auftretenden Fehler eine Warnung ausgelöst wird. Daher wird für das erste Vorkommen eine Warnung gesendet, und wenn spätere Fehler aufgrund derselben Grundursache auftreten, werden keine weiteren Warnungen generiert. Die erste Warnung wird mit der Fehleranzahl aktualisiert. Wenn die Warnung jedoch vom Benutzer deaktiviert wird, löst das nächste Vorkommen eine andere Warnung aus, und diese wird als erste Warnung für dieses Vorkommen behandelt. Auf diese Weise führt Azure Backup eine Warnungskonsolidierung für SQL- und SAP Hana-Sicherungen durch.
+Für Azure-Workloadsicherungslösungen wie SQL und SAP Hana können Protokollsicherungen sehr häufig generiert werden (gemäß der Richtlinie bis zu alle 15 Minuten). Es ist also auch möglich, dass die Fehler bei der Protokollsicherung sehr häufig auftreten (bis zu alle 15 Minuten). In diesem Szenario ist der Endbenutzer überfordert, wenn für jeden auftretenden Fehler eine Warnung ausgelöst wird. Daher wird für das erste Vorkommen eine Warnung gesendet, und wenn spätere Fehler aufgrund derselben Grundursache auftreten, werden keine weiteren Warnungen generiert. Die erste Warnung wird mit der Fehleranzahl aktualisiert. Wenn die Warnung jedoch vom Benutzer deaktiviert wird, löst das nächste Vorkommen eine andere Warnung aus, und diese wird als erste Warnung für dieses Vorkommen behandelt. Auf diese Weise führt Azure Backup eine Warnungskonsolidierung für SQL- und SAP Hana-Sicherungen durch. Bedarfsgesteuerte Sicherungsaufträge werden nicht konsolidiert.
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Ausnahmen, bei denen keine Warnung ausgelöst wird
 

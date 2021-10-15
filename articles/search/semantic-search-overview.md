@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 057afd588193a8fdfba020e25d086dc915bb9eaa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9df6e2c1bd937f275fb3b35db8cd6ac2e3909502
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128612831"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532876"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Semantische Suche in Azure Cognitive Search
 
@@ -89,14 +89,14 @@ Die semantische Suche ist nach der [Registrierung](https://aka.ms/SemanticSearch
 
 | Komponente | Tarif | Region | Registrieren | Preise |
 |---------|------|--------|---------------------|-------------------|
-| Semantische Suche (Titel, Hervorhebungen, Antworten) | Standardebene (S1, S2, S3) | „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten 2“, „Europa, Norden“, „Europa, Westen“ | Erforderlich | [Preisübersicht für Cognitive Search](https://azure.microsoft.com/pricing/details/search/)  |
-| Rechtschreibprüfung | Any | „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten 2“, „Europa, Norden“, „Europa, Westen“ | Erforderlich | Keine (kostenlos) |
+| Semantische Suche (Rang, Titel, Hervorhebungen, Antworten) | Standardebene (S1, S2, S3) | „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten 2“, „Europa, Norden“, „Europa, Westen“ | Erforderlich | [Preisübersicht für Cognitive Search](https://azure.microsoft.com/pricing/details/search/)  |
+| Rechtschreibprüfung | Basic und höher | All | Keine | Keine (kostenlos) |
 
-Sie können die Rechtschreibprüfung ohne semantische Suche kostenlos verwenden. Gebühren für die semantische Suche werden erhoben, wenn Abfrageanforderungen `queryType=semantic` enthalten und die Suchzeichenfolge nicht leer ist (z. B. `search=pet friendly hotels in new york`). Leere Suchen (Abfragen der Form `search=*`) werden nicht in Rechnung gestellt, selbst wenn „queryType“ auf `semantic` festgelegt ist.
+Gebühren für die semantische Suche werden erhoben, wenn Abfrageanforderungen „queryType=semantic“ enthalten und die Suchzeichenfolge nicht leer ist (z. B. „search=pet friendly hotels in new york“). Wenn Ihre Suchzeichenfolge leer ist („search=*“), werden Ihnen auch dann keine Gebühren berechnet, wenn „queryType“ auf „semantic“ festgelegt ist.
 
 ## <a name="disable-semantic-search"></a>Deaktivieren der semantischen Suche
 
-Gebühren fallen nur für einen Suchdienst an, in dem das Feature aktiviert ist. Wenn Sie sich jedoch vollständig vor einer versehentlichen Verwendung schützen möchten, legen Sie die Option als [deaktiviert](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#searchsemanticsearch) fest.
+Um den vollständigen Schutz vor einer versehentlichen Nutzung und den entsprechenden Gebühren sicherzustellen, können Sie die [semantische Suche deaktivieren](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#searchsemanticsearch). Verwenden Sie hierfür die API zum Erstellen oder Aktualisieren von Diensten in Ihrem Suchdienst. Nachdem das Feature deaktiviert wurde, werden alle Anforderungen abgelehnt, die den Typ „Semantikabfrage“ enthalten.
 
 * Version 2021-04-01-Preview der Verwaltungs-REST-API bietet diese Option.
 

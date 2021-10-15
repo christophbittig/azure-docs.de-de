@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2021
-ms.openlocfilehash: 8542f3e39669135295073f4f937c6edfdd5127cf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8a6a2b7acc4f627bb871520ee6a82be920d1135e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128566537"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215907"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -44,7 +44,7 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 | **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken<sup>1</sup> | Azure Storage<br>Event Hub | Azure Monitor-Metriken | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
 | **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | | Metrik-Explorer | VM Insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM Insights<br>Dienstzuordnung |
 
-<sup>1</sup> [Klicken Sie hier,](../essentials/metrics-custom-overview.md#quotas-and-limits) um weitere Einschränkungen bei der Verwendung von Azure Monitor-Metriken zu überprüfen. Unter Linux wird die Verwendung von Azure Monitor-Metriken als einziges Ziel in v.1.10.9.0 oder höher unterstützt. 
+<sup>1</sup> [Klicken Sie hier,](../essentials/metrics-custom-overview.md#quotas-and-limits) um weitere Einschränkungen bei der Verwendung von Azure Monitor Metrics zu überprüfen. Unter Linux wird die Verwendung von Azure Monitor-Metriken als einziges Ziel in v.1.10.9.0 oder höher unterstützt. 
 
 ## <a name="azure-monitor-agent"></a>Azure Monitor-Agent
 
@@ -129,6 +129,7 @@ Beachten Sie bei der Verwendung des Dependency-Agents Folgendes:
 
 - Für den Dependency-Agent muss der Log Analytics-Agent auf demselben Computer installiert sein.
 - Auf Linux-Computern muss der Log Analytics-Agent vor der Azure-Diagnoseerweiterung installiert werden.
+- Sowohl in der Windows- als auch in der Linux-Version des Dependency-Agents erfolgt die Datensammlung über einen Benutzerbereichsdienst und einen Kerneltreiber. 
 
 ## <a name="virtual-machine-extensions"></a>VM-Erweiterungen
 
@@ -157,6 +158,7 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | Windows 10 Enterprise<br>(einschließlich Multisession) und Pro<br>(Nur Serverszenarien<sup>1</sup>)  | X | X | X | X |
 | Windows 8 Enterprise und Pro<br>(Nur Serverszenarien<sup>1</sup>)  |   | X | X |   |
 | Windows 7 SP1<br>(Nur Serverszenarien<sup>1</sup>)                 |   | X | X |   |
+| Azure Stack HCI                                          |   | X |   |   |
 
 <sup>1</sup> Wenn das Betriebssystem auf Server-Hardware läuft, das bedeutet, die Computer sind immer angeschlossen, immer eingeschaltet, und es laufen nicht gleichzeitig andere Workloads darauf (PC, Office, Browser usw.)
 
@@ -165,6 +167,7 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | Betriebssystem | Azure Monitor-Agent<sup>1</sup> | Log Analytics-Agent<sup>1</sup> | Abhängigkeits-Agent | Diagnoseerweiterung<sup>2</sup>| 
 |:---|:---:|:---:|:---:|:---:
 | Amazon Linux 2017.09                                        |   | X |   |   |
+| Amazon Linux 2                                              |   | X |   |   |
 | CentOS Linux 8                                              | X<sup>3</sup> | X | X |   |
 | CentOS Linux 7                                              | X | X | X | X |
 | CentOS Linux 6                                              |   | X |   |   |
@@ -189,7 +192,7 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | SUSE Linux Enterprise Server 15                             | X | X | X |   |
 | SUSE Linux Enterprise Server 12 SP5                         | X | X | X | X |
 | SUSE Linux Enterprise Server 12                             | X | X | X | X |
-| Ubuntu 20.04 LTS                                            | X | X | X |   |
+| Ubuntu 20.04 LTS                                            | X | X | X | X |
 | Ubuntu 18.04 LTS                                            | X | X | X | X |
 | Ubuntu 16.04 LTS                                            | X | X | X | X |
 | Ubuntu 14.04 LTS                                            |   | X |   | X |

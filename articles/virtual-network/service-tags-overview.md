@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 9/20/2021
+ms.date: 9/30/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 79785c82e06c9dc1621b3278ef886866ae9695ab
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 39262b40cc320152bcbf2e9e5c0947e52234a019
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590288"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400228"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
@@ -68,6 +68,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **AzureDatabricks** | Azure Databricks | Beide | Nein | Nein |
 | **AzureDataExplorerManagement** | Azure Data Explorer-Verwaltung | Eingehend | Nein | Nein |
 | **AzureDataLake** | Azure Data Lake Storage Gen1. | Ausgehend | Nein | Ja |
+| **AzureDeviceUpdate** | Device Update for IoT Hub | Beide | Nein | Ja |
 | **AzureDevSpaces** | Azure Dev Spaces | Ausgehend | Nein | Nein |
 | **AzureDevOps** | Azure Dev Ops.<br/><br/>*Hinweis: Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar.*| Eingehend | Nein | Ja |
 | **AzureDigitalTwins** | Azure Digital Twins.<br/><br/>*Hinweis:* Dieses Tag oder die von diesem Tag abgedeckten IP-Adressen können verwendet werden, um den Zugriff auf Endpunkte einzuschränken, die für Ereignisrouten konfiguriert sind. *Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar.* | Eingehend | Nein | Ja |

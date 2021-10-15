@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jlu, shreyamalik
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 431124d79307c305ebb589a72a0608347de8a2c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 93d44065255dcb9f4977e93dd596eb3b80c1faa2
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598441"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533160"
 ---
-# <a name="monitor-and-troubleshoot-continuous-access-evaluation"></a>Überwachung und Problembehandlung für die fortlaufende Zugriffsevaluierung
+# <a name="monitor-and-troubleshoot-continuous-access-evaluation"></a>Überwachung und Problembehandlung von fortlaufender Zugriffsevaluierung
 
 Administratoren können Anmeldeereignisse überwachen und Probleme beheben, bei denen die [fortlaufende Zugriffsevaluierung (Continuous Access Evaluation, CAE)](concept-continuous-access-evaluation.md) auf verschiedene Weise angewendet wird.
 
@@ -42,7 +42,7 @@ Verwenden Sie Filter, um Ihre Suche einzugrenzen. Wenn sich z. B. ein Benutzer 
 
 ## <a name="continuous-access-evaluation-workbooks"></a>Arbeitsmappen für die fortlaufende Zugriffsevaluierung
 
-Mit der Arbeitsmappe zu Erkenntnissen der fortlaufenden Zugriffsevaluierung können Administratoren Erkenntnisse zur CAE-Nutzung für ihre Mandanten anzeigen und überwachen. In der ersten Tabelle werden Authentifizierungsversuche mit IP-Konflikt angezeigt. In der zweiten Tabelle wird der Supportstatus von CAE für verschiedene Anwendungen angezeigt. Diese Arbeitsmappe befindet sich als Vorlage unter der Kategorie „Bedingter Zugriff“. 
+Mit der Arbeitsmappe zu Erkenntnissen der fortlaufenden Zugriffsevaluierung können Administratoren Erkenntnisse zur CAE-Nutzung für ihre Mandanten anzeigen und überwachen. In der Tabelle werden Authentifizierungsversuche mit IP-Konflikten angezeigt. Diese Arbeitsmappe befindet sich als Vorlage unter der Kategorie „Bedingter Zugriff“. 
 
 ### <a name="accessing-the-cae-workbook-template"></a>Zugreifen auf die CAE-Arbeitsmappenvorlage
 
@@ -54,7 +54,7 @@ Die Log Analytics-Integration muss abgeschlossen sein, bevor Arbeitsmappen angez
 
 [ ![Suchen Sie die Arbeitsmappe für CAE-Erkenntnisse im Katalog, um die Überwachung fortzusetzen.](./media/howto-continuous-access-evaluation-troubleshoot/azure-ad-workbooks-continuous-access-evaluation.png) ](./media/howto-continuous-access-evaluation-troubleshoot/azure-ad-workbooks-continuous-access-evaluation.png#lightbox)
 
-Die Arbeitsmappe für **Erkenntnisse zur fortlaufenden Zugriffsevaluierung** enthält zwei Tabellen:
+Die Arbeitsmappe **Erkenntnisse zur fortlaufenden Zugriffsevaluierung** enthält die folgende Tabelle:
 
 ### <a name="potential-ip-address-mismatch-between-azure-ad-and-resource-provider"></a>Potenzielle IP-Adresskonflikte zwischen Azure AD und Ressourcenanbieter  
 

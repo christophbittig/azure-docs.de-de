@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2021
 ms.author: monicar
-ms.openlocfilehash: e57dd133a9145356c64faa3854a121834fbdb2ae
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0f0b624097fdb159fd52adae7ae57830833662f2
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645149"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272944"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -28,7 +28,7 @@ Das Microsoft Azure-Glossar ist ein kompaktes Wörterbuch der Cloudterminologie 
 
 * [Microsoft Azure und Amazon Web Services:](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) Definitionen von Azure-Diensten und ihre AWS-Entsprechungen<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
 * [Cloud Computing-Terminologie:](https://azure.microsoft.com/overview/cloud-computing-dictionary/) Allgemeine branchenübliche Cloudbegriffe.
-* [Grundlegende Azure-Konzepte](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/considerations/fundamental-concepts) – Microsoft Cloud Adoption Framework für Azure.
+* [Grundlegende Azure-Konzepte](/azure/cloud-adoption-framework/ready/considerations/fundamental-concepts) – Microsoft Cloud Adoption Framework für Azure.
 
 ## <a name="account"></a>account
 Ein Konto für den Zugriff auf ein Azure-Abonnement und dessen Verwaltung. Es wird häufig als Azure-Konto bezeichnet, kann aber ein vorhandenes Geschäfts-, Schul- oder Unikonto oder ein persönliches Microsoft-Konto sein. Sie können auch ein Konto für die Verwaltung eines Azure-Abonnements erstellen, wenn Sie sich für die [kostenlose Testversion](https://azure.microsoft.com) registrieren.  

@@ -6,55 +6,58 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 09/10/2021
 ms.author: robb
-ms.openlocfilehash: c08644242bc811bfce8be2883bc2dec95f83f13d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 15e8ea8c1622ec846d9ab36452d8982c1a64a084
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616724"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458148"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
 > [!NOTE]
 > Diese Liste wird größtenteils automatisch generiert. Jegliche Änderungen, die über GitHub an dieser Liste vorgenommen werden, können ohne Warnung überschrieben werden. Informationen dazu, wie die Liste dauerhaft aktualisiert werden kann, erhalten Sie beim Autor dieses Artikels.
 
-Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. 
+Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z. B. die Diagrammdarstellung im Azure-Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder die Azure CLI. 
 
-Dieser Artikel ist eine vollständige Liste aller Plattformmetriken (d. h. der automatisch erfassten), die derzeit mit der konsolidierten Metrikpipeline von Azure Monitor zur Verfügung stehen. Nach dem am Anfang dieses Artikels angegebenen Datum geänderte oder hinzugefügte Metriken werden möglicherweise unten nicht aufgeführt. Verwenden Sie die [API-Version 2018-01-01](/rest/api/monitor/metricdefinitions), um diese Metriken programmgesteuert abzufragen und auf die Liste zuzugreifen. Andere Metriken, die nicht in dieser Liste enthalten sind, stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung.
+Dieser Artikel ist eine vollständige Liste aller Plattformmetriken (d. h. der automatisch erfassten), die derzeit mit der konsolidierten Metrikpipeline in Azure Monitor zur Verfügung stehen. Nach dem am Anfang dieses Artikels angegebenen Datum geänderte oder hinzugefügte Metriken werden möglicherweise in der Liste nicht aufgeführt. Verwenden Sie die [API-Version 2018-01-01](/rest/api/monitor/metricdefinitions), um diese Metriken programmgesteuert abzufragen und auf die Liste zuzugreifen. Andere Metriken, die nicht in dieser Liste enthalten sind, stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung.
 
-Die Metriken sind nach Ressourcenanbietern und Ressourcentyp geordnet. Eine Liste der Dienste und der Ressourcenanbieter und Ressourcentypen, die zu diesen gehören, finden Sie unter [Ressourcenanbieter für Azure-Dienste](../../azure-resource-manager/management/azure-services-resource-providers.md).  
+Die Metriken sind nach Ressourcenanbieter und Ressourcentyp geordnet. Eine Liste der Dienste und der Ressourcenanbieter und Ressourcentypen, die zu diesen gehören, finden Sie unter [Ressourcenanbieter für Azure-Dienste](../../azure-resource-manager/management/azure-services-resource-providers.md).  
 
 ## <a name="exporting-platform-metrics-to-other-locations"></a>Exportieren von Plattformmetriken an andere Speicherorte
 
-Sie können die Plattformmetriken auf eine von zwei Arten aus der Azure Monitor-Pipeline an andere Speicherorte exportieren.
-1. Sie können die [REST-API für Metriken](/rest/api/monitor/metrics/list) verwenden.
-2. Verwenden Sie [Diagnoseeinstellungen](../essentials/diagnostic-settings.md), um Plattformmetriken an folgende Dienste weiterzuleiten: 
-    - Azure Storage
-    - Azure Monitor Logs (und somit Log Analytics)
+Sie können die Plattformmetriken auf eine von zwei Arten aus der Azure Monitor-Pipeline an andere Speicherorte exportieren:
+
+- Sie können die [REST-API für Metriken](/rest/api/monitor/metrics/list) verwenden.
+- Verwenden Sie [Diagnoseeinstellungen](../essentials/diagnostic-settings.md), um Plattformmetriken an folgende Dienste weiterzuleiten: 
+    - Azure Storage.
+    - Azure Monitor-Protokolle (und somit Log Analytics)
     - Event Hubs (zur Übertragung an nicht von Microsoft stammende Systeme) 
 
 Die Verwendung von Diagnoseeinstellungen ist die einfachste Möglichkeit, um Metriken weiterzuleiten. Es gibt jedoch einige Einschränkungen: 
 
-- **Nicht alle sind exportierbar:** Über die REST-API können zwar alle Metriken exportiert werden, doch einige können aufgrund von Feinheiten im Back-End von Azure Monitor nicht mithilfe von Diagnoseeinstellungen exportiert werden. Die Spalte *Über Diagnoseeinstellungen exportierbar?* in den folgenden Tabellen enthält die Metriken, die auf diese Weise exportiert werden können.  
+- **Exportierbarkeit:** Alle Metriken können über die REST-API exportiert werden. Einige können jedoch aufgrund von Feinheiten im Azure Monitor-Back-End nicht über Diagnoseeinstellungen exportiert werden. Die Spalte „Über Diagnoseeinstellungen exportierbar?“ in den folgenden Tabellen enthält die Metriken, die auf diese Weise exportiert werden können.  
 
-- **Mehrdimensionale Metriken:** Das Senden mehrdimensionaler Metriken an andere Speicherorte über Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert. *Beispiel*: Die Metrik „Eingehende Nachrichten“ in einem Event Hub kann auf Warteschlangenebene untersucht und in einem Diagramm dargestellt werden. Wenn Sie die Metrik allerdings über die Diagnoseeinstellungen exportieren, umfasst die Darstellung alle eingehenden Nachrichten für alle Warteschlangen im Event Hub.
+- **Mehrdimensionale Metriken:** Das Senden mehrdimensionaler Metriken an andere Speicherorte über Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert. 
+
+  Beispiel: Die Metrik *Eingehende Nachrichten* eines Event Hubs kann auf einer warteschlangenspezifischen Ebene untersucht und in einem Diagramm dargestellt werden. Wenn die Metrik allerdings über die Diagnoseeinstellungen exportiert wird, umfasst die Darstellung alle eingehenden Nachrichten für alle Warteschlangen im Event Hub.
 
 ## <a name="guest-os-and-host-os-metrics"></a>Metriken für Gast- und Hostbetriebssysteme
 
-> [!WARNING]
-> Metriken für das Gastbetriebssystem (Gast-BS), das in Azure Virtual Machines, Service Fabric und Cloud Services ausgeführt wird, werden hier **nicht** aufgeführt. Die Metriken für das Gastbetriebssystem müssen stattdessen über einen oder mehrere Agents erfasst werden, die auf dem oder als Teil des Gastbetriebssystems ausgeführt werden.  Zu den Metriken für das Gastbetriebssystem zählen Leistungsindikatoren, mit denen die prozentuale CPU-Auslastung oder die Arbeitsspeicherauslastung des Gastbetriebssystems nachverfolgt wird. Diese werden häufig für die automatische Skalierung oder für Warnungen verwendet. 
->
-> **Für Hostbetriebssysteme sind Metriken verfügbar. Diese werden weiter unten aufgeführt.** Diese Metriken sind nicht identisch. Die Hostbetriebssystem-Metriken beziehen sich auf die Hyper-V-Sitzung, die die Gastbetriebssystem-Sitzung hosten. 
+Metriken für das Gastbetriebssystem (Gast-BS), das in Azure Virtual Machines, Service Fabric und Cloud Services ausgeführt wird, werden hier *nicht* aufgeführt. Die Metriken für das Gastbetriebssystem müssen stattdessen über einen oder mehrere Agents erfasst werden, die auf dem oder als Teil des Gastbetriebssystems ausgeführt werden. Zu den Metriken des Gastbetriebssystems gehören Leistungszähler, die den Gast-CPU-Prozentsatz oder die Speichernutzung verfolgen, die beide häufig für die automatische Skalierung oder Alarmierung verwendet werden. 
+
+Für Hostbetriebssysteme *sind* Metriken verfügbar. Diese werden in den Tabellen aufgeführt. Die Hostbetriebssystem-Metriken beziehen sich auf die Hyper-V-Sitzung, die die Gastbetriebssystem-Sitzung hosten. 
 
 > [!TIP]
-> Eine bewährte Methode besteht darin, den Azure Monitor-Agent zu verwenden und so zu konfigurieren, dass er Leistungsmetriken für das Gastbetriebssystem an dieselbe Azure Monitor-Metrikdatenbank sendet, in der auch Plattformmetriken gespeichert werden. Der Agent leitet Gastbetriebssystemmetriken über die API für [benutzerdefinierte Metriken](../essentials/metrics-custom-overview.md) weiter. Sie können dann Gastbetriebssystemmetriken als Diagramm darstellen, mit Warnungen verknüpfen und anderweitig wie Plattformmetriken verwenden. Alternativ oder zusätzlich dazu können Sie die Gastbetriebssystemmetriken mit demselben Agent an Azure Monitor-Protokolle senden. Dort können Sie diese Metriken in Kombination mit anderen Daten mithilfe von Log Analytics abfragen. 
+> Eine bewährte Methode besteht darin, den Azure Monitor-Agent zu verwenden und so zu konfigurieren, dass er Leistungsmetriken für das Gastbetriebssystem an dieselbe Azure Monitor-Metrikdatenbank sendet, in der auch Plattformmetriken gespeichert werden. Der Agent leitet Gastbetriebssystemmetriken über die API für [benutzerdefinierte Metriken](../essentials/metrics-custom-overview.md) weiter. Sie können dann Gastbetriebssystemmetriken als Diagramm darstellen, mit Warnungen verknüpfen und anderweitig wie Plattformmetriken verwenden. 
+>
+> Alternativ oder zusätzlich dazu können Sie die Gastbetriebssystemmetriken mit demselben Agent an Azure Monitor-Protokolle senden. Dort können Sie diese Metriken in Kombination mit anderen Daten mithilfe von Log Analytics abfragen. 
 
-Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analytics-Agent, die zuvor für dieses Routing verwendet wurden. Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-Agents](../agents/agents-overview.md).
+Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analytics-Agent, die zuvor für das Routing des Gastbetriebssystems verwendet wurden. Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-Agents](../agents/agents-overview.md).
 
 ## <a name="table-formatting"></a>Tabellenformatierung
 
-> [!IMPORTANT] 
-> Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken werden alphabetisch sortiert. Das bedeutet, dass je nach Größe Ihres Browserfensters ggf. eine horizontale Scrollleiste bei den unten aufgeführten Tabellen vorhanden ist. Wenn Sie bestimmte Informationen nicht finden könnten, können Sie mithilfe der Scrollleiste die gesamte Tabelle anzeigen.
+Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken werden alphabetisch sortiert. Das bedeutet, dass je nach Größe Ihres Browserfensters am unteren Rand ggf. eine horizontale Scrollleiste bei den Tabellen vorhanden ist. Wenn Sie bestimmte Informationen nicht finden könnten, zeigen Sie mithilfe der Scrollleiste die gesamte Tabelle an.
 
 
 ## <a name="microsoftaadiamazureadmetrics"></a>microsoft.aadiam/azureADMetrics
@@ -171,14 +174,14 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |gen-1-size|Ja|gen-1-size|Byte|Average|Heapgröße: Gen 1|Deployment, AppName, Pod|
 |gen-2-gc-count|Ja|gen-2-gc-count|Anzahl|Average|Anzahl von Gen: 2 GCs|Deployment, AppName, Pod|
 |gen-2-size|Ja|gen-2-size|Byte|Average|Heapgröße: Gen 2|Deployment, AppName, Pod|
-|IngressBytesReceived|Ja|Empfangene Bytes|Byte|Average|Anzahl der Bytes, die in Azure Spring Cloud von den Clients empfangen wurden|Hostname, HttpStatus|
-|IngressBytesReceivedRate|Ja|Durchsatz eingehend (Bytes/Sek.)|Bytes pro Sekunde|Average|Anzahl der Bytes, die in Azure Spring Cloud von den Clients empfangen wurden|Hostname, HttpStatus|
+|IngressBytesReceived|Ja|Empfangene Bytes|Byte|Average|Anzahl der Bytes, die von Azure Spring Cloud von den Clients empfangen wurden|Hostname, HttpStatus|
+|IngressBytesReceivedRate|Ja|Durchsatz eingehend (Bytes/Sek.)|Bytes pro Sekunde|Average|Anzahl der Bytes, die von Azure Spring Cloud von den Clients empfangen wurden|Hostname, HttpStatus|
 |IngressBytesSent|Ja|Gesendete Bytes|Byte|Average|Anzahl der Bytes, die von Azure Spring Cloud an Clients gesendet wurden|Hostname, HttpStatus|
 |IngressBytesSentRate|Ja|Durchsatz ausgehend (Bytes/Sek.)|Bytes pro Sekunde|Average|Anzahl der Bytes, die von Azure Spring Cloud pro Sekunde an Clients gesendet wurden|Hostname, HttpStatus|
-|IngressFailedRequests|Ja|Anforderungsfehler|Anzahl|Average|Anzahl der fehlerhaften Anforderungen in Azure Spring Cloud von den Clients|Hostname, HttpStatus|
-|IngressRequests|Ja|Requests|Anzahl|Average|Anzahl der Anforderungen in Azure Spring Cloud von den Clients|Hostname, HttpStatus|
-|IngressResponseStatus|Ja|Antwortstatus|Anzahl|Average|Von Azure Spring Cloud zurückgegebener HTTP-Antwortstatus; die Antwortstatuscode-Verteilung kann weiter kategorisiert werden, um Antworten in 2xx-, 3xx-, 4xx- und 5xx-Kategorien anzuzeigen|Hostname, HttpStatus|
-|IngressResponseTime|Ja|Antwortzeit|Sekunden|Average|Von Azure Spring Cloud zurückgegebene HTTP-Antwortzeit|Hostname, HttpStatus|
+|IngressFailedRequests|Ja|Anforderungsfehler|Anzahl|Average|Anzahl der fehlgeschlagenen Anforderungen von Azure Spring Cloud von den Clients|Hostname, HttpStatus|
+|IngressRequests|Ja|Requests|Anzahl|Average|Anzahl der Anforderungen von Azure Spring Cloud von den Clients|Hostname, HttpStatus|
+|IngressResponseStatus|Ja|Antwortstatus|Anzahl|Average|Der von Azure Spring Cloud zurückgegebene HTTP-Antwortstatus. die Antwortstatuscode-Verteilung kann weiter kategorisiert werden, um Antworten in 2xx-, 3xx-, 4xx- und 5xx-Kategorien anzuzeigen|Hostname, HttpStatus|
+|IngressResponseTime|Ja|Antwortzeit|Sekunden|Average|Rückgabe der HTTP-Antwortzeit durch Azure Spring Cloud|Hostname, HttpStatus|
 |jvm.gc.live.data.size|Ja|jvm.gc.live.data.size|Byte|Average|Größe des Arbeitsspeicherpools der alten Generation nach einer vollständigen Garbage Collection|Deployment, AppName, Pod|
 |jvm.gc.max.data.size|Ja|jvm.gc.max.data.size|Byte|Average|Maximale Größe des Arbeitsspeicherpools der alten Generation|Deployment, AppName, Pod|
 |jvm.gc.memory.allocated|Ja|jvm.gc.memory.allocated|Byte|Maximum|Inkrementiert zur Erhöhung der Größe des Speicherpools der neuen Generation nach einer Garbage Collection gegenüber dem Zeitpunkt vor der nächsten|Deployment, AppName, Pod|
@@ -1580,7 +1583,7 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |---|---|---|---|---|---|---|
 |AddRegion|Ja|Region hinzugefügt|Anzahl|Anzahl|Region hinzugefügt|Region|
 |AutoscaleMaxThroughput|Nein|Autoskalierung – Maximaler Durchsatz|Anzahl|Maximum|Maximaler Durchsatz für Autoskalierung|DatabaseName, CollectionName|
-|AvailableStorage|Nein|Verfügbarer Speicher (veraltet)|Byte|Gesamt|Die Metrik „Verfügbarer Speicher“ wird Ende September 2023 aus Azure Monitor entfernt. Die Speichergröße für Cosmos DB-Sammlungen ist jetzt unbegrenzt. Die einzige Einschränkung besteht darin, dass die Speichergröße für jeden logischen Partitionsschlüssel 20 GB beträgt. Sie können PartitionKeyStatistics im Diagnoseprotokoll aktivieren, um den Speicherverbrauch der wichtigsten Partitionsschlüssel zu ermitteln. Weitere Informationen zum Speicherkontingent für Cosmos DB finden Sie unter https://docs.microsoft.com/azure/cosmos-db/concepts-limits. Nach diesem Datum werden verbleibende Warnungsregeln, die noch für die veraltete Metrik definiert sind, automatisch deaktiviert.|CollectionName, DatabaseName, Region|
+|AvailableStorage|Nein|Verfügbarer Speicher (veraltet)|Byte|Gesamt|Die Metrik „Verfügbarer Speicher“ wird Ende September 2023 aus Azure Monitor entfernt. Die Speichergröße für Cosmos DB-Sammlungen ist jetzt unbegrenzt. Die einzige Einschränkung besteht darin, dass die Speichergröße für jeden logischen Partitionsschlüssel 20 GB beträgt. Sie können PartitionKeyStatistics im Diagnoseprotokoll aktivieren, um den Speicherverbrauch der wichtigsten Partitionsschlüssel zu ermitteln. Weitere Informationen zum Speicherkontingent für Cosmos DB finden Sie im Dokument [Kontingente im Azure Cosmos DB-Dienst](../../cosmos-db/concepts-limits.md). Nach diesem Datum werden verbleibende Warnungsregeln, die noch für die veraltete Metrik definiert sind, automatisch deaktiviert.|CollectionName, DatabaseName, Region|
 |CassandraConnectionClosures|Nein|Abschluss von Cassandra-Verbindungen|Anzahl|Gesamt|Anzahl von Cassandra-Verbindungen, die geschlossen wurden, gemeldet mit einer Granularität von einer Minute|APIType, Region, ClosureReason|
 |CassandraConnectorAvgReplicationLatency|Nein|Cassandra-Connector – Durchschnittliche Replikationslatenz|Millisekunden|Average|Durchschnittliche Replikationslatenz im Cassandra-Connector|Keine Dimensionen|
 |CassandraConnectorReplicationHealthStatus|Nein|Cassandra-Connector – Integritätsstatus|Anzahl|Anzahl|Integritätsstatus des Cassandra-Connectors|NotStarted, ReplicationInProgress, Error|
@@ -1925,7 +1928,7 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Analyt
 |exceptions/server|Nein|Serverausnahmen|Anzahl|Anzahl|Anzahl nicht erfasster Ausnahmen, die in der Serveranwendung ausgelöst wurden.|cloud/roleName, cloud/roleInstance|
 |pageViews/count|Ja|Seitenaufrufe|Anzahl|Anzahl|Anzahl der Seitenaufrufe|operation/synthetic, cloud/roleName|
 |pageViews/duration|Ja|Ladezeit der Seitenansicht|Millisekunden|Average|Ladezeit der Seitenansicht|operation/synthetic, cloud/roleName|
-|performanceCounters/exceptionsPerSecond|Ja|Ausnahmerate|Anzahl pro Sekunde|Average|Die Anzahl der behandelten Ausnahmen und Ausnahmefehler, die an Windows gemeldet werden, einschließlich .NET-Ausnahmen und nicht verwalteten Ausnahmen, die in .NET-Ausnahmen konvertiert werden.|cloud/roleInstance|
+|performanceCounters/exceptionsPerSecond|Ja|Ausnahmerate|Anzahl pro Sekunde|Average|Die Anzahl der behandelten Ausnahmen und Ausnahmefehler, die an Windows gemeldet werden, einschließlich .NET-Ausnahmen und nicht verwalteten Ausnahmen, die in .NET-Ausnahmen konvertiert werden|cloud/roleInstance|
 |performanceCounters/memoryAvailableBytes|Ja|Verfügbarer Arbeitsspeicher|Byte|Average|Physischer Speicher ist sofort für die Zuordnung zu einem Prozess oder für die Systemnutzung verfügbar.|cloud/roleInstance|
 |performanceCounters/processCpuPercentage|Ja|Prozess-CPU|Percent|Average|Der Prozentsatz der verstrichenen Zeit für alle Prozessthreads, die den Prozessor zur Ausführung von Anweisungen verwendet haben. Dies kann zwischen 0 und 100 variieren. Diese Metrik gibt ausschließlich die Leistung des w3wp-Prozesses an.|cloud/roleInstance|
 |performanceCounters/processIOBytesPerSecond|Ja|E/A-Rate für Prozess|Bytes pro Sekunde|Average|Gesamtanzahl von pro Sekunde in Dateien, im Netzwerk und auf Geräten gelesenen und geschriebenen Bytes.|cloud/roleInstance|

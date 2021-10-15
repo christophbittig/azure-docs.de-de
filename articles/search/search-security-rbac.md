@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2021
-ms.openlocfilehash: 3a9669b2c569947c76f4f2b92fa316f3b09ab517
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1968bb34d124fa37a51b296071ee24b3eae47772
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577903"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273721"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Verwenden der rollenbasierten Autorisierung in Azure Cognitive Search
 
@@ -49,7 +49,7 @@ Es gibt keine regions-, ebenen- oder preisbezogenen Einschränkungen für die Nu
 | [Besitzer](../role-based-access-control/built-in-roles.md#owner) | Dienstbetrieb (allgemein verfügbar) | Vollzugriff auf die Suchressource, einschließlich Fähigkeit zum Zuweisen von Azure-Rollen. Abonnementadministratoren sind standardmäßig Mitglieder. |
 | [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor) | Dienstbetrieb (allgemein verfügbar) | Gleiche Zugriffsebene wie Besitzer, jedoch ohne die Fähigkeit, Rollen zuzuweisen oder Autorisierungsoptionen zu ändern. |
 | [Leser](../role-based-access-control/built-in-roles.md#reader) | Dienstbetrieb (allgemein verfügbar) | Eingeschränkter Zugriff auf partielle Dienstinformationen. Im Portal kann die Rolle „Leser“ auf der Seite „Übersicht“ des Diensts im Abschnitt „Zusammenfassung“ und auf der Registerkarte „Monitor“ auf Informationen zugreifen. Der Zugriff auf alle anderen Registerkarten und Seiten ist nicht möglich. </br></br>Diese Rolle hat Zugriff auf Dienstinformationen: Ressourcengruppe, Dienststatus, Abonnementname und -ID, Tags, URL, Tarif, Replikate, Partitionen und Sucheinheiten. </br></br>Diese Rolle hat auch Zugriff auf Dienstmetriken: Suchlatenz, Prozentsatz der gedrosselten Anforderungen, durchschnittliche Abfragen pro Sekunde. </br></br>Sie hat keinen Zugriff auf API-Schlüssel, Rollenzuweisungen, Inhalte (Indizes oder Synonymzuordnungen) oder Inhaltsmetriken (verbrauchter Speicher, Anzahl von Objekten). |
-| [Mitwirkender von Suchdienst](../role-based-access-control/built-in-roles.md#search-service-contributor) | Dienstbetrieb (allgemein verfügbar) und Objekte und Inhalte der obersten Ebene (Vorschau) | Diese Rolle ist eine Kombination aus Mitwirkenden auf Dienstebene, aber mit Vollzugriff auf alle Aktionen für Indizes, Synonymzuordnungen, Indexer, Datenquellen und Skillsets über [`Microsoft.Search/searchServices/*`](/azure/role-based-access-control/resource-provider-operations#microsoftsearch) auf Inhaltsebene. Diese Rolle ist für Suchdienstadministratoren vorgesehen, die den Dienst und dessen Inhalt vollständig verwalten müssen. Zur Inhaltsverwaltung müssen Sie sich für die Vorschauversion registrieren. </br></br>Ebenso wie Mitwirkende können Mitglieder dieser Rolle keine Rollenzuweisungen vornehmen oder verwalten oder Autorisierungsoptionen ändern. |
+| [Mitwirkender von Suchdienst](../role-based-access-control/built-in-roles.md#search-service-contributor) | Dienstbetrieb (allgemein verfügbar) und Objekte der obersten Ebene (Vorschau) | Diese Rolle ist eine Kombination aus den Berechtigungen für „Mitwirkender“ auf Dienstebene und dem Vollzugriff auf alle Aktionen für Indizes, Synonymzuordnungen, Indexer, Datenquellen und Skillsets über [`Microsoft.Search/searchServices/*`](/azure/role-based-access-control/resource-provider-operations#microsoftsearch). Diese Rolle ist für Suchdienstadministratoren vorgesehen, die die Möglichkeit haben müssen, den Dienst vollständig zu verwalten. </br></br>Ebenso wie Mitwirkende können Mitglieder dieser Rolle keine Rollenzuweisungen vornehmen oder verwalten oder Autorisierungsoptionen ändern. |
 | [Mitwirkender an Suchindexdaten](../role-based-access-control/built-in-roles.md#search-index-data-contributor) | Dokumentensammlung (Vorschau) | Bietet Vollzugriff auf Inhalte in allen Indizes des Suchdiensts. Diese Rolle ist für Entwickler oder Indexbesitzer gedacht, die die Dokumentsammlung eines Index importieren, aktualisieren oder abfragen müssen. |
 | [Suchindexdatenleser](../role-based-access-control/built-in-roles.md#search-index-data-reader) | Dokumentsammlung (Vorschau) | Bietet schreibgeschützten Zugriff auf Suchindizes im Suchdienst. Diese Rolle ist für Apps und Benutzer gedacht, die Abfragen ausführen. |
 
@@ -238,6 +238,8 @@ Beispiel der Verwendung von [Anmeldeinformationen für geheimen Clientschlüssel
 var tokenCredential =  new ClientSecretCredential(aadTenantId, aadClientId, aadSecret);
 SearchClient srchclient = new SearchClient(serviceEndpoint, indexName, tokenCredential);
 ```
+
+Weitere Informationen zur Verwendung der [AAD-Authentifizierung mit dem Azure SDK für .NET](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/identity/Azure.Identity) finden Sie im GitHub-Repository des SDK.
 
 > [!NOTE]
 > Wenn Sie den Fehler 403 erhalten, prüfen Sie, ob Ihr Suchdienst beim Vorschauprogramm registriert und ob Ihr Dienst für Zuweisungen von Vorschaurollen konfiguriert ist.

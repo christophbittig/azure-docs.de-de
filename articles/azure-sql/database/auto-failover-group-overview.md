@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 09/14/2021
-ms.openlocfilehash: 71b2e494d8a570c38180f4dfc86bda87b23f4e95
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/04/2021
+ms.openlocfilehash: 403f3c82bbb5a387e7611a6d98ce808ded599146
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128554583"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456288"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -79,7 +79,7 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
   
 - **Anfängliches Seeding**
 
-  Beim Hinzufügen von Datenbanken, Pools für elastische Datenbanken oder verwalteten Instanzen zu einer Failovergruppe gibt es eine anfängliche Seedingphase, bevor die Datenreplikation startet. Die anfängliche Seedingphase ist der längste und aufwendigste Vorgang. Sobald das anfängliche Seeding abgeschlossen ist, werden die Daten synchronisiert, und anschließend werden nur nachfolgende Datenänderungen repliziert. Die Zeit, die für das anfängliche Seeding benötigt wird, hängt von der Größe Ihrer Daten, der Anzahl der replizierten Datenbanken und der Geschwindigkeit der Verbindung zwischen den Entitäten in der Failovergruppe ab. Unter normalen Umständen beträgt die mögliche Seedinggeschwindigkeit bis zu 500 GB pro Stunde für SQL-Datenbank und bis zu 360 GB pro Stunde für SQL Managed Instance. Das Seeding wird für alle Datenbanken parallel ausgeführt.
+  Beim Hinzufügen von Datenbanken, Pools für elastische Datenbanken oder verwalteten Instanzen zu einer Failovergruppe gibt es eine anfängliche Seedingphase, bevor die Datenreplikation startet. Die anfängliche Seedingphase ist der längste und aufwendigste Vorgang. Sobald das anfängliche Seeding abgeschlossen ist, werden die Daten synchronisiert, und anschließend werden nur nachfolgende Datenänderungen repliziert. Die Zeit, die für das anfängliche Seeding benötigt wird, hängt von der Größe Ihrer Daten, der Anzahl der replizierten Datenbanken, der Last für primäre Datenbanken und der Geschwindigkeit der Verbindung zwischen der primären und der sekundären Datenbank ab. Unter normalen Umständen beträgt die mögliche Seedinggeschwindigkeit bis zu 500 GB pro Stunde für SQL-Datenbank und bis zu 360 GB pro Stunde für SQL Managed Instance. Das Seeding wird für alle Datenbanken parallel ausgeführt.
 
   Bei SQL Managed Instance muss zum Abschätzen der Zeit für die anfängliche Seedingphase auch die Geschwindigkeit der ExpressRoute-Verbindung zwischen den beiden Instanzen berücksichtigt werden. Wenn die Geschwindigkeit der Verbindung zwischen den beiden Instanzen langsamer als erforderlich ist, wirkt sich dies wahrscheinlich erheblich auf die Zeit für das Seeding aus. Anhand der angegebenen Seedinggeschwindigkeit, der Anzahl der Datenbanken, der Gesamtgröße der Daten und der Verbindungsgeschwindigkeit können Sie abschätzen, wie lange die anfängliche Seedingphase vor dem Starten der Datenreplikation dauern wird. Beispielsweise würde für eine einzelne Datenbank mit 100 GB die anfängliche Seedingphase etwa 1,2 Stunden dauern, wenn die Verbindung eine Pushübertragung von 84 GB pro Stunde ermöglicht und für keine anderen Datenbanken ein Seeding ausgeführt wird. Können über die Verbindung nur 10 GB pro Stunde übertragen werden, dauert das Seeding einer 100-GB-Datenbank ungefähr 10 Stunden. Wenn mehrere Datenbanken zu replizieren sind, wird das Seeding parallel ausgeführt, und in Kombination mit einer niedrigen Verbindungsgeschwindigkeit kann die anfängliche Seedingphase erheblich länger dauern, insbesondere dann, wenn das parallele Seeding von Daten aus allen Datenbanken die verfügbare Verbindungsbandbreite überschreitet. Wenn die Netzwerkbandbreite zwischen zwei Instanzen begrenzt ist und Sie einer Failovergruppe mehrere verwaltete Instanzen hinzufügen, sollten Sie der Failovergruppe mehrere verwaltete Instanzen ggf. einzeln nacheinander hinzufügen. Wenn eine Gateway-SKU mit entsprechender Größe zwischen den beiden verwalteten Instanzen vorhanden ist und die Bandbreite des Unternehmensnetzwerks dies zulässt, können Geschwindigkeiten von bis zu 360 GB pro Stunde erreicht werden.  
 
@@ -100,21 +100,21 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Richtlinie für automatisches Failover**
 
-  Standardmäßig wird eine Failovergruppe mit einer Richtlinie für automatisches Failover konfiguriert. Azure löst das Failover aus, nachdem der Fehler erkannt und die Toleranzperiode abgelaufen ist. Das System muss sicherstellen, dass der Ausfall aufgrund des Ausmaßes der Auswirkungen nicht durch die integrierte [Hochverfügbarkeitsinfrastruktur](high-availability-sla.md) gemildert werden kann. Wenn Sie den Failoverworkflow über die Anwendung oder manuell steuern möchten, können Sie automatisches Failover deaktivieren.
+  Standardmäßig wird eine Failovergruppe mit einer Richtlinie für automatisches Failover konfiguriert. Das System löst ein Failover aus, nachdem der Fehler erkannt wurde und die Toleranzperiode abgelaufen ist. Das System muss sicherstellen, dass der Ausfall aufgrund des Ausmaßes der Auswirkungen nicht durch die integrierte [Hochverfügbarkeitsinfrastruktur](high-availability-sla.md) gemildert werden kann. Wenn Sie den Failoverworkflow über die Anwendung oder manuell steuern möchten, können Sie automatisches Failover deaktivieren.
   
   > [!NOTE]
-  > Da das Betriebsteam Maßnahmen ergreifen muss, um das Ausmaß des Ausfalls zu überprüfen und festzustellen, wie schnell dieser minimiert werden kann, kann die Toleranzperiode nicht auf einen Wert unter einer Stunde festgelegt werden. Diese Einschränkung gilt unabhängig vom jeweiligen Datensynchronisierungsstatus für alle Datenbanken in der Failovergruppe.
+  > Da Maßnahmen ergriffen werden müssen, um das Ausmaß des Ausfalls zu überprüfen und festzustellen, wie schnell dieser minimiert werden kann, kann die Toleranzperiode nicht auf einen Wert unter einer Stunde festgelegt werden. Diese Einschränkung gilt unabhängig vom jeweiligen Datensynchronisierungsstatus für alle Datenbanken in der Failovergruppe.
 
 - **Schreibgeschützte Failoverrichtlinie**
 
   Standardmäßig ist das Failover des schreibgeschützten Listeners deaktiviert. Dadurch wird sichergestellt, dass die Leistung der primären Datenbank nicht beeinträchtigt wird, wenn die sekundäre Datenbank offline ist. Es bedeutet jedoch auch, dass die schreibgeschützten Sitzungen erst dann eine Verbindung herstellen können, nachdem die sekundäre Datenbank wiederhergestellt wurde. Wenn Sie keine Downtime für die schreibgeschützten Sitzungen tolerieren und die primäre Datenbank sowohl für schreibgeschützten Datenverkehr als auch für Lese-/Schreibdatenverkehr verwenden können (auf Kosten der möglichen Leistungseinbußen für die primäre Datenbank), können Sie das Failover für den schreibgeschützten Listener aktivieren, indem Sie die Eigenschaft `AllowReadOnlyFailoverToPrimary` konfigurieren. In diesem Fall wird der schreibgeschützte Datenverkehr automatisch zur primären Datenbank umgeleitet, wenn die sekundäre Datenbank nicht verfügbar ist.
 
   > [!NOTE]
-  > Die Eigenschaft `AllowReadOnlyFailoverToPrimary` ist nur wirksam, wenn die Richtlinie für automatisches Failover aktiviert ist und von Azure ein automatisches Failover ausgelöst wurde. Ist die Eigenschaft in diesem Fall auf „True“ festgelegt, werden von der primären Datenbank sowohl Sitzung mit Lese-/Schreibzugriff als auch schreibgeschützte Sitzungen bedient.
+  > Die Eigenschaft `AllowReadOnlyFailoverToPrimary` ist nur wirksam, wenn die Richtlinie für automatisches Failover aktiviert ist und ein automatisches Failover ausgelöst wurde. Ist die Eigenschaft in diesem Fall auf „True“ festgelegt, werden von der primären Datenbank sowohl Sitzung mit Lese-/Schreibzugriff als auch schreibgeschützte Sitzungen bedient.
 
 - **Geplantes Failover**
 
-   Beim geplanten Failover wird eine vollständige Synchronisierung zwischen primärer und sekundärer Datenbank ausgeführt, bevor die sekundäre Datenbank die Rolle der primären Datenbank übernimmt. Dadurch ist sichergestellt, dass keine Daten verloren gehen. Ein geplantes Failover wird in den folgenden Szenarien verwendet:
+   Beim geplanten Failover wird eine vollständige Datensynchronisierung zwischen primärer und sekundärer Datenbank ausgeführt, bevor die sekundäre Datenbank die Rolle der primären Datenbank übernimmt. Dadurch ist sichergestellt, dass keine Daten verloren gehen. Ein geplantes Failover wird in den folgenden Szenarien verwendet:
 
   - Ausführen von DR-Drills (Notfallwiederherstellung) in der Produktion, wenn ein Datenverlust nicht akzeptabel ist
   - Verschieben der Datenbanken in eine andere Region
@@ -122,15 +122,15 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Nicht geplantes Failover**
 
-   Beim ungeplanten oder erzwungenen Failover übernimmt die sekundäre Datenbank sofort die Rolle der primären Datenbank, ohne dass eine Synchronisierung mit der primären Datenbank stattfindet. Bei diesem Vorgang gehen Daten verloren. Ein ungeplantes Failover wird als Wiederherstellungsmethode bei Ausfällen verwendet, wenn auf die primäre Datenbank nicht zugegriffen werden kann. Wenn die ursprüngliche primäre Datenbank wieder online ist, stellt sie automatisch wieder eine Verbindung ohne Synchronisierung her und wird zur neuen sekundären Datenbank.
+   Beim ungeplanten oder erzwungenen Failover übernimmt die sekundäre Datenbank sofort die Rolle der primären Datenbank, ohne dass auf die Weitergabe kürzlicher Änderungen von der primären Datenbank gewartet wird. Dieser Vorgang kann zu Datenverlust führen. Ein ungeplantes Failover wird als Wiederherstellungsmethode bei Ausfällen verwendet, wenn auf die primäre Datenbank nicht zugegriffen werden kann. Wenn der Ausfall behoben wird, stellt die alte primäre Datenbank automatisch wieder eine Verbindung her und wird zu einer neuen sekundären Datenbank. Ein geplantes Failover kann ausgeführt werden, um ein Failback durchzuführen und die Replikate an ihre ursprünglichen primären und sekundären Rollen zurückzugeben.
 
 - **Manuelles Failover**
 
-  Sie können ein Failover zu einem beliebigen Zeitpunkt unabhängig von der Konfiguration für automatisches Failover manuell initiieren. Wenn die Richtlinie für automatisches Failover nicht konfiguriert ist, müssen die Datenbanken in der Failovergruppe mit manuellem Failover auf dem sekundären Server wiederhergestellt werden. Sie können ein erzwungenes oder freundliches Failover (mit vollständiger Datensynchronisierung) initiieren. Mit Letzterem könnte die primäre Datenbank in die sekundäre Region verschoben werden. Nach Abschluss des Failovers werden die DNS-Einträge automatisch aktualisiert, um die Konnektivität mit der neuen primären Datenbank sicherzustellen.
+  Sie können ein Failover zu einem beliebigen Zeitpunkt unabhängig von der Konfiguration für automatisches Failover manuell initiieren. Wenn bei einem Ausfall, der sich auf die primäre Datenbank auswirkt, keine Richtlinie für automatisches Failover konfiguriert ist, ist ein manuelles Failover erforderlich, um die sekundäre Datenbank auf die Rolle der primären Datenbank heraufzustufen. Sie können ein erzwungenes (ungeplantes) oder ein freundliches (geplantes) Failover initiieren. Ein freundliches Failover ist nur möglich, wenn auf die alte primäre Datenbank zugegriffen werden kann. Dieses Failover kann verwendet werden, um die primäre Datenbank ohne Datenverlust in die sekundäre Region zu verschieben. Nach Abschluss des Failovers werden die DNS-Einträge automatisch aktualisiert, um die Konnektivität mit der neuen primären Datenbank sicherzustellen.
 
 - **Toleranzperiode mit Datenverlust**
 
-  Da die primären und sekundären Datenbanken mithilfe der asynchronen Replikation synchronisiert werden, kann das Failover zu Datenverlust führen. Sie können die Richtlinie für automatisches Failover entsprechend der Toleranz Ihrer Anwendung gegenüber Datenverlust anpassen. Durch Konfiguration von `GracePeriodWithDataLossHours` können Sie steuern, wie lange das System wartet, bevor das Failover initiiert wird, das wahrscheinlich zu Datenverlust führt.
+  Da die sekundären Datenbanken mithilfe der asynchronen Replikation synchronisiert werden, kann ein automatisches Failover zu Datenverlust führen. Sie können die Richtlinie für automatisches Failover entsprechend der Toleranz Ihrer Anwendung gegenüber Datenverlust anpassen. Durch Konfiguration von `GracePeriodWithDataLossHours` können Sie steuern, wie lange das System wartet, bevor ein erzwungenes Failover initiiert wird, das zu Datenverlust führen kann.
 
 - **Mehrere Failovergruppen**
 

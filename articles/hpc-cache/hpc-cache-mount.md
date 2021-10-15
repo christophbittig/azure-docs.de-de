@@ -4,14 +4,14 @@ description: Herstellen einer Verbindung von Clients mit einem Azure HPC Cache-D
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 09/27/2021
 ms.author: v-erkel
-ms.openlocfilehash: 4e3c2a336d58e90bc446c77b164148359f9588fd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ab66fc29a29461e6808686aa53b520144b39a1e1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128675901"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274195"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Einbinden einer Azure HPC Cache-Instanz
 
@@ -85,7 +85,7 @@ Erstellen Sie anhand dieser Vorgehensweise den Einbindungsbefehl.
 
    Weitere Informationen zur aggregierten Namespacefunktion von Azure HPC Cache finden Sie unter [Planen des aggregierten Namespace](hpc-cache-namespace.md).
 
-1. Das Feld **Einbindungsbefehl** in Schritt 3 wird automatisch mit einem angepassten Einbindungsbefehl aufgefüllt, der die Einbindungsadresse, den virtuellen Namespacepfad und den Clientpfad verwendet, die Sie in den vorherigen Feldern festgelegt haben.
+1. In das Feld **Einbindungsbefehl** wird automatisch ein angepasster Einbindungsbefehl eingefügt, für den die Einbindungsadresse, der virtuelle Namespacepfad und der Clientpfad verwendet werden, die Sie in den vorherigen Feldern festgelegt haben.
 
    Klicken Sie auf das Kopiersymbol auf der rechten Seite des Felds, um den Befehl automatisch in die Zwischenablage zu kopieren.
 

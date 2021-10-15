@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2021
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: a37ce583e5392099c923e9bc0a7a3363fa7b97c0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4fc34329ec7f318d79dd04e271db7b37b7e1cc59
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128576851"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533614"
 ---
 # <a name="create-a-dual-protocol-volume-for-azure-netapp-files"></a>Erstellen eines Volumes mit dualem Protokoll für Azure NetApp Files
 
@@ -30,7 +30,7 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
 ## <a name="before-you-begin"></a>Voraussetzungen 
 
 * Sie müssen bereits einen Kapazitätspool erstellt haben.  
-    Siehe [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md).   
+    Informationen hierzu finden Sie unter [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md).   
 * Ein Subnetz muss an Azure NetApp Files delegiert werden.  
     Siehe [Delegieren eines Subnetzes an Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
 
@@ -109,6 +109,9 @@ Informationen zum Erstellen von NFS-Volumes finden Sie unter [Erstellen eines NF
         ![Erstellen eines Volumes](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Erstellen eines Subnetzes](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * **Netzwerkfunktionen**  
+        In unterstützten Regionen können Sie angeben, ob Sie für das Volume **Basic**- oder **Standard**-Netzwerkfeatures verwenden möchten. Ausführlichere Informationen finden Sie unter [Konfigurieren von Netzwerkfeatures für ein Volume](configure-network-features.md) und [Richtlinien für die Azure NetApp Files-Netzwerkplanung](azure-netapp-files-network-topologies.md).
 
     * Wenn Sie eine vorhandene Momentaufnahmerichtlinie auf das Volume anwenden möchten, klicken Sie auf **Abschnitt „Erweitert“ anzeigen**, um den Bereich zu erweitern, geben Sie an, ob Sie den Momentaufnahmepfad ausblenden möchten, und wählen Sie im Pulldownmenü eine Momentaufnahmerichtlinie aus. 
 
@@ -218,7 +221,7 @@ Sie müssen die folgenden Attribute für LDAP-Benutzer und LDAP-Gruppen festlege
     `gidNumber: 555`
 * Alle Benutzer und Gruppen müssen über eindeutige Werte für `uidNumber` und `gidNumber` verfügen. 
 
-Die für `objectClass` angegebenen Werte sind separate Einträge. Beispielsweise hätte `objectClass` im Editor für mehrwertige Zeichenfolgen getrennte Werte (`user` und `posixAccount`), die für LDAP-Benutzer wie folgt angegeben werden:   
+Die für `objectClass` angegebenen Werte sind separate Einträge. Beispielsweise hätte im mehrwertigen String Editor `objectClass` getrennte Werte (`user` und `posixAccount`), für Benutzer von LDAP wie folgt bestimmt:   
 
 ![Screenshot: Editor für mehrwertige Zeichenfolgen, der mehrere für objectClass angegebene Werte zeigt.](../media/azure-netapp-files/multi-valued-string-editor.png) 
 

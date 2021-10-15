@@ -8,12 +8,12 @@ ms.subservice: spark
 ms.author: yanacai
 author: yanancai
 ms.date: 09/08/2021
-ms.openlocfilehash: 9a2d822d84d6356fbf34b45e24501e4426f1b06d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 805987eb38df3979904fc8b9f3bebfc7fdb1fdca
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700190"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276376"
 ---
 # <a name="use-external-hive-metastore-for-synapse-spark-pool-preview"></a>Verwenden eines externen Hive-Metastores für Azure Synapse Spark-Pool (Vorschau)
 
@@ -36,21 +36,21 @@ Das Merkmal funktioniert sowohl mit Spark 2.4 als auch mit Spark 3.0. Die folg
 
 Führen Sie die folgenden Schritte aus, um einen verknüpften Dienst zum externen Hive-Metastore im Synapse-Arbeitsbereich einzurichten.
 
-1.  Öffnen Sie Synapse Studio, navigieren Sie links zu **„Verwalten“ > „Verknüpfte Dienste“** , und klicken Sie dann auf **Neu**, um einen neuen verknüpften Dienst zu erstellen.
+1. Öffnen Sie Synapse Studio, navigieren Sie links zu **„Verwalten“ > „Verknüpfte Dienste“** , und klicken Sie dann auf **Neu**, um einen neuen verknüpften Dienst zu erstellen.
 
-    :::image type="content" source="./media/use-external-metastore/set-up-hive-metastore-linked-service.png" alt-text="Einrichten eines verknüpften Diensts für den Hive-Metastore" border="true":::
+   :::image type="content" source="./media/use-external-metastore/set-up-hive-metastore-linked-service.png" alt-text="Einrichten eines verknüpften Diensts für den Hive-Metastore" border="true":::
 
-2.  Wählen Sie **Azure SQL-Datenbank** aus, und klicken Sie auf **Weiter**.
+2. Wählen Sie **Azure SQL-Datenbank** aus, und klicken Sie auf **Weiter**.
 
-3.  Geben Sie den **Namen** des verknüpften Dienstes an. Notiere Sie sich den Namen des verknüpften Dienstes. Diese Informationen werden in Kürze zum Konfigurieren von Spark verwendet.
+3. Geben Sie den **Namen** des verknüpften Dienstes an. Notiere Sie sich den Namen des verknüpften Dienstes. Diese Informationen werden in Kürze zum Konfigurieren von Spark verwendet.
 
-4.  Sie können entweder die Azure SQL-Datenbank für den externen Hive-Metastore aus der Azure-Abonnementliste auswählen oder die Informationen manuell eingeben.
+4. Sie können entweder die Azure SQL-Datenbank für den externen Hive-Metastore aus der Azure-Abonnementliste auswählen oder die Informationen manuell eingeben.
 
-5.  Derzeit wird nur die SQL-Authentifizierung als Authentifizierungstyp unterstützt. Geben Sie den **Benutzernamen** und das **Kennwort** an, um die Verbindung einzurichten.
+5. Derzeit wird nur die SQL-Authentifizierung als Authentifizierungstyp unterstützt. Geben Sie den **Benutzernamen** und das **Kennwort** an, um die Verbindung einzurichten.
 
-6.  Klicken Sie auf **Verbindung testen**, um den Benutzernamen und das Kennwort zu überprüfen.
+6. Klicken Sie auf **Verbindung testen**, um den Benutzernamen und das Kennwort zu überprüfen.
 
-7.  Klicken Sie auf **Erstellen**, um den verknüpften Dienst zu erstellen. 
+7. Klicken Sie auf **Erstellen**, um den verknüpften Dienst zu erstellen. 
 
 ### <a name="test-connection-and-get-the-metastore-version-in-notebook"></a>Testen Sie die Verbindung rufen Sie die Metastore-Version in Notebook ab
 Einige Einstellungen für die Netzwerksicherheitsregel können den Zugriff vom Spark-Pool auf die externe Hive-Metastore-Datenbank blockieren. Führen Sie vor dem Konfigurieren des Spark-Pools den folgenden Code in einem beliebigen Notebook des Spark-Pools aus, um die Verbindung mit der externen Hive-Metastore-Datenbank zu testen. 
@@ -78,9 +78,9 @@ Nachdem Sie den verknüpften Dienst erfolgreich für den externen Hive-Metastore
 Hier finden Sie die Konfigurationen und Beschreibungen:
 
 > [!NOTE]
-> Die Standardversion des Hive-Metastore ist Version 2.3. Sie müssen `spark.sql.hive.metastore.version` und `spark.sql.hive.metastore.jars` nicht festlegen, wenn Sie Hive-Metastore Version 2.3 verwenden. Nur `spark.hadoop.hive.synapse.externalmetastore.linkedservice.name` ist erforderlich.
+> Die Standardversion des Hive-Metastores ist Version 2.3. Sie müssen `spark.sql.hive.metastore.version` und `spark.sql.hive.metastore.jars` nicht festlegen, wenn Sie Version 2.3 des Hive-Metastores verwenden. Nur `spark.hadoop.hive.synapse.externalmetastore.linkedservice.name` ist erforderlich.
 
-|Spark-Konfiguration|Beschreibung|
+|Spark-Konfiguration|BESCHREIBUNG|
 |--|--|
 |`spark.sql.hive.metastore.version`|Unterstützte Versionen: <ul><li>`1.2`</li><li>`2.1`</li><li>`3.1`</li></ul> Stellen Sie sicher, dass Sie die ersten zwei Teile ohne den dritten Teil verwenden|
 |`spark.sql.hive.metastore.jars`|<ul><li>Version 1.2: `/opt/hive-metastore/lib-1.2/*:/usr/hdp/current/hadoop-client/lib/*` </li><li>Version 2.1: `/opt/hive-metastore/lib-2.1/*:/usr/hdp/current/hadoop-client/lib/*` </li><li>Version 3.1: `/opt/hive-metastore/lib-3.1/*:/usr/hdp/current/hadoop-client/lib/*`</li></ul>|
@@ -91,7 +91,7 @@ Wenn Sie den Spark-Pool erstellen, geben Sie auf der Registerkarte **Zusätzlich
 
    :::image type="content" source="./media/use-external-metastore/config-spark-pool.png" alt-text="Konfigurieren des Spark-Pools":::
 
-Aktualisieren Sie die Metastoreversion und den Namen des verknüpften Dienstes und speichern Sie die folgenden Konfigurationen in einer Textdatei für die Spark-Poolkonfiguration:
+Aktualisieren Sie die Version des Metastores und den Namen des verknüpften Diensts, und speichern Sie die folgenden Konfigurationen in einer Textdatei für die Spark-Poolkonfiguration:
 
 ```
 spark.sql.hive.metastore.version <your hms version, Make sure you use the first 2 parts without the 3rd part>
@@ -108,7 +108,7 @@ spark.sql.hive.metastore.jars /opt/hive-metastore/lib-2.1/*:/usr/hdp/current/had
 ```
 
 ### <a name="configure-a-spark-session"></a>Konfigurieren einer Spark-Sitzung
-Wenn Sie Ihren Spark-Pool nicht konfigurieren möchten, können Sie mithilfe des Magic-Befehls „%%configure“ auch die Spark-Sitzung in Notebook konfigurieren. Hier ist der Code angegeben. Dieselbe Konfiguration kann auch auf einen Spark-Batchauftrag angewendet werden. 
+Wenn Sie Ihren Spark-Pool nicht konfigurieren möchten, können Sie mit dem Magic-Befehl „%%configure“ auch die Spark-Sitzung im Notebook konfigurieren. Hier ist der Code angegeben. Dieselbe Konfiguration kann auch auf einen Spark-Batchauftrag angewendet werden. 
 
 ```
 %%configure -f
@@ -140,15 +140,15 @@ Wenn die zugrunde liegenden Daten Ihrer Hive-Kataloge in einem anderen ADLS Gen 
 ### <a name="set-up-connection-to-blob-storage"></a>Einrichten der Verbindung mit Blob Storage
 Wenn die zugrunde liegenden Daten Ihrer Hive-Tabellen im Azure Blob-Speicherkonto gespeichert sind, führen Sie die folgenden Schritte aus, um die Verbindung einzurichten:
 
-1.  Öffnen Sie Synapse Studio, navigieren Sie zu **„Daten“ > Registerkarte „Verknüpft“ > Schaltfläche „Hinzufügen“**  > **Verbindung mit externen Daten herstellen**.
+1. Öffnen Sie Synapse Studio, navigieren Sie zu **„Daten“ > Registerkarte „Verknüpft“ > Schaltfläche „Hinzufügen“**  > **Verbindung mit externen Daten herstellen**.
 
-    :::image type="content" source="./media/use-external-metastore/connect-to-storage-account.png" alt-text="Herstellen einer Verbindung mit dem Speicherkonto" border="true":::
+   :::image type="content" source="./media/use-external-metastore/connect-to-storage-account.png" alt-text="Herstellen einer Verbindung mit dem Speicherkonto" border="true":::
 
-2.  Wählen Sie **Azure Blob Storage** aus, und klicken Sie auf **Weiter**.
-3.  Geben Sie den **Namen** des verknüpften Dienstes an. Notieren Sie sich den Namen des verknüpften Dienstes. Diese Informationen werden in Kürze in der Spark-Sitzungskonfiguration verwendet.
-4.  Wählen Sie das Azure Blob Storage-Konto aus. Stellen Sie sicher, dass **Kontoschlüssel** als Authentifizierungsmethode ausgewählt ist. Derzeit kann Spark Pool nur über den Kontoschlüssel auf das Blob Storage-Konto zugreifen.
-5.  Klicken Sie auf **Verbindung testen** und dann auf **Erstellen**.
-6.  Nachdem Sie den verknüpften Dienst für das Blob Storage-Konto erstellt haben, stellen Sie beim Ausführen von Spark-Abfragen sicher, dass Sie den folgenden Spark-Code im Notebook ausführen, um Zugriff auf das Blob Storage-Konto für die Spark-Sitzung zu erhalten. Weitere Informationen dazu, warum dies erforderlich ist, finden Sie [hier](./apache-spark-secure-credentials-with-tokenlibrary.md).
+2. Wählen Sie **Azure Blob Storage** aus, und klicken Sie auf **Weiter**.
+3. Geben Sie den **Namen** des verknüpften Dienstes an. Notieren Sie sich den Namen des verknüpften Diensts. Diese Informationen werden in Kürze bei der Spark-Sitzungskonfiguration verwendet.
+4. Wählen Sie das Azure Blob Storage-Konto aus. Stellen Sie sicher, dass **Kontoschlüssel** als Authentifizierungsmethode ausgewählt ist. Derzeit kann Spark Pool nur über den Kontoschlüssel auf das Blob Storage-Konto zugreifen.
+5. Klicken Sie auf **Verbindung testen** und dann auf **Erstellen**.
+6. Nachdem Sie den verknüpften Dienst für das Blob Storage-Konto erstellt haben, stellen Sie beim Ausführen von Spark-Abfragen sicher, dass Sie den folgenden Spark-Code im Notebook ausführen, um Zugriff auf das Blob Storage-Konto für die Spark-Sitzung zu erhalten. Weitere Informationen dazu, warum dies erforderlich ist, finden Sie [hier](./apache-spark-secure-credentials-with-tokenlibrary.md).
 
 ```
 %%pyspark
@@ -165,10 +165,10 @@ Nach dem Einrichten von Speicherverbindungen können Sie die vorhandenen Tabelle
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 
-- Der Synapse Studio-Objekt-Explorer zeigt weiterhin Objekte im verwalteten Synapse-Metastore anstelle des externen HMS an. Wir arbeiten an einer Verbesserung hierfür.
-- [SQL <-> Spark Synchronisierung](../sql/develop-storage-files-spark-tables.md) funktioniert nicht, wenn Sie externen HMS benutzen.  
+- Der Synapse Studio-Objekt-Explorer zeigt weiterhin Objekte im verwalteten Synapse-Metastore anstelle des externen HMS an. Diese Funktion wird aktuell weiter optimiert.
+- Die [Synchronisierung zwischen SQL und Spark](../sql/develop-storage-files-spark-tables.md) funktioniert bei Verwendung des externen HMS nicht.  
 - Nur Azure SQL-Datenbank wird als externe Datenbank des Hive-Metastores unterstützt. Nur die SQL-Autorisierung wird unterstützt.
-- Spark funktioniert derzeit nur mit externen Hive-Tabellen sowie nicht transaktionalen bzw. nicht mit ACID verwalteten Hive-Tabellen. Aktuell werden transaktionale bzw. mit Hive ACID verwaltete Tabellen nicht unterstützt.
+- Spark funktioniert derzeit nur mit externen Hive-Tabellen sowie nicht transaktionalen bzw. nicht mit ACID verwalteten Hive-Tabellen. Derzeit werden transaktionale bzw. mit Hive ACID verwaltete Tabellen nicht unterstützt.
 - Die Apache Ranger-Integration wird derzeit nicht unterstützt.
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -206,17 +206,17 @@ spark.hadoop.datanucleus.fixedDatastore true
 spark.hadoop.datanucleus.schema.autoCreateAll false 
 ```
 
-Wenn Ihre HMS-Version 1.2.1 oder 1.2.2 lautet, liegt in Hive ein Problem vor, wo ausschließlich 1.2.0 verlangt wird, wenn Sie spark.hadoop.hive.metastore.schema.verification auf „true“ festlegen. Ein Vorschlag ist, entweder Ihre HMS-Version in Version 1.2.0 zu ändern oder die folgenden beiden Konfigurationen zu überschreiben, um dieses Problem zu umgehen:
+Wenn Ihre HMS-Version 1.2.1 oder 1.2.2 lautet, liegt in Hive ein Problem vor, das besagt, dass nur 1.2.0 erforderlich ist, wenn Sie „spark.hadoop.hive.metastore.schema.verification“ auf „true“ festlegen. Ein Vorschlag ist, entweder Ihre HMS-Version in Version 1.2.0 zu ändern oder die folgenden beiden Konfigurationen zu überschreiben, um dieses Problem zu umgehen:
 
 ```
 spark.hadoop.hive.metastore.schema.verification false 
 spark.hadoop.hive.synapse.externalmetastore.schema.usedefault false
 ```
 
-Wenn Sie Ihre HMS-Version migrieren müssen, wird die Verwendung des [Hive-Schematools](https://cwiki.apache.org/confluence/display/Hive/Hive+Schema+Tool) empfohlen. Wenn der HMS von HDInsight-Clustern verwendet wurde, sollten Sie die [bereitgestellte HDI-Version](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-migrate-workloads) verwenden. 
+Wenn Sie Ihre HMS-Version migrieren müssen, wird die Verwendung des [Hive-Schematools](https://cwiki.apache.org/confluence/display/Hive/Hive+Schema+Tool) empfohlen. Wenn der HMS von HDInsight-Clustern verwendet wurde, sollten Sie die [bereitgestellte HDI-Version](../../hdinsight/interactive-query/apache-hive-migrate-workloads.md) verwenden. 
 
 ### <a name="when-sharing-the-metastore-with-hdinsight-40-spark-clusters-i-cannot-see-the-tables"></a>Beim Freigeben des Metastores für Spark-Cluster in HDInsight 4.0 kann ich die Tabellen nicht sehen
 Wenn Sie den Hive-Katalog für einen Spark-Cluster in HDInsight 4.0 freigeben möchten, stellen Sie sicher, dass Ihre Eigenschaft `spark.hadoop.metastore.catalog.default` in Synapse Spark dem Wert in HDInsight Spark entspricht. Standardwert: `Spark`.
 
 ### <a name="when-sharing-the-hive-metastore-with-hdinsight-40-hive-clusters-i-can-list-the-tables-successfully-but-only-get-empty-result-when-i-query-the-table"></a>Beim Freigeben des Hive-Metastores für Hive-Cluster in HDInsight 4.0 kann ich die Tabellen erfolgreich auflisten, erhalten beim Abfragen der Tabelle aber nur ein leeres Ergebnis
-Wie im Abschnitt zu den Einschränkungen erwähnt, unterstützt der Synapse Spark-Pool nur externe Hive-Tabellen sowie nicht transaktionale bzw. nicht mit ACID verwaltete Tabellen. Transaktionale bzw. mit ACID verwaltete Hive-Tabellen werden derzeit nicht unterstützt. Standardmäßig werden bei Hive-Clustern in HDInsight 4.0 alle verwalteten Tabellen als transaktionale bzw. mit ACID verwaltete Tabellen erstellt, weshalb Sie leere Ergebnisse erhalten, wenn Sie diese Tabellen abfragen. 
+Wie im Abschnitt zu den Einschränkungen erwähnt, unterstützt der Synapse Spark-Pool nur externe Hive-Tabellen sowie nicht transaktionale bzw. nicht mit ACID verwaltete Tabellen. Transaktionale bzw. mit ACID verwaltete Hive-Tabellen werden derzeit nicht unterstützt. Standardmäßig werden bei Hive-Clustern in HDInsight 4.0 alle verwalteten Tabellen als transaktionale bzw. mit ACID verwaltete Tabellen erstellt. Daher erhalten Sie eine leere Ergebnisanzeige, wenn Sie diese Tabellen abfragen. 

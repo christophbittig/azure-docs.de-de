@@ -14,14 +14,14 @@ ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e064afb3adc296df136c730834da70d591d73ba4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d6daa398c560bf7112539291f76fe4188abb76a1
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618925"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231613"
 ---
-# <a name="plan-a-single-sign-on-deployment-in-azure-active-directory"></a>Planen einer Single Sign-On-Bereitstellung in Azure Active Directory
+# <a name="plan-a-single-sign-on-deployment-in-azure-active-directory"></a>Planen einer Bereitstellung für einmaliges Anmelden in Azure Active Directory
 
 Dieser Artikel enthält Informationen, die Sie für die Planung Ihrer [SSO-Bereitstellung (Single Sign-On)](what-is-single-sign-on.md) in Azure Active Directory (Azure AD) verwenden können. Wenn Sie Ihre SSO-Bereitstellung mit Ihren Anwendungen in Azure AD planen, müssen Sie diese Fragen berücksichtigen:
 
@@ -90,9 +90,9 @@ Aus Sicht der Anmeldung unterscheiden sich Anwendungen mit gemeinsam genutzten K
 
 ## <a name="single-sign-on-options"></a>Optionen für einmaliges Anmelden
 
-Es gibt mehrere Möglichkeiten, wie Sie eine Anwendung für SSO konfigurieren können. Die Wahl einer SSO-Methode hängt davon ab, wie die Anwendung für die Authentifizierung konfiguriert ist.
+Es gibt mehrere Möglichkeiten, wie Sie eine Anwendung für SSO konfigurieren können. Die Auswahl einer Methode für einmaliges Anmelden hängt davon ab, wie die Anwendung für Authentifizierung konfiguriert ist.
 - Cloud-Anwendungen können OpenID Connect, OAuth, SAML, passwortbasiert oder verknüpft für SSO verwenden. Single Sign-On kann auch deaktiviert werden.
-- Lokale Anwendungen können passwortbasierte, integrierte Windows-Authentifizierung, Header-basierte, verknüpfte für SSO verwenden. Die Auswahlmöglichkeiten vor Ort funktionieren, wenn Anwendungen für [Anwendungsproxy](../app-proxy/what-is-application-proxy.md) konfiguriert sind.
+- Für lokale Anwendungen können das kennwortbasierte Verfahren, die integrierte Windows-Authentifizierung, das headerbasierte Verfahren oder die Verknüpfung mit SSO verwendet werden. Die lokalen Optionen funktionieren, wenn Anwendungen für den [Anwendungsproxy](../app-proxy/what-is-application-proxy.md) konfiguriert wurden.
 
 Dieses Flussdiagramm kann Ihnen bei der Entscheidung helfen, welche SSO-Methode für Ihre Situation am besten geeignet ist.
 
@@ -114,7 +114,7 @@ Die folgenden SSO-Protokolle können verwendet werden:
 
 - **Deaktiviert** - Wählen Sie „SSO deaktiviert“, wenn die Anwendung nicht für SSO konfiguriert werden kann.
 
-- **Integrierte Windows-Authentifizierung (IWA)** - Wählen Sie IWA-Einzelanmeldung für Anwendungen, die IWA verwenden, oder für anspruchssensitive Anwendungen. Weitere Informationen finden Sie unter [Kerberos Constrained Delegation für die einmalige Anmeldung bei Ihren Anwendungen mit Application Proxy](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md).
+- **Integrierte Windows-Authentifizierung (IWA)** : Wählen Sie das einmalige Anmelden per IWA für Anwendungen, für die IWA genutzt wird, oder für Anwendungen mit Unterstützung von Ansprüchen aus. Weitere Informationen finden Sie unter [Kerberos Constrained Delegation für die einmalige Anmeldung bei Ihren Anwendungen mit Application Proxy](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md).
 
 - **Header-basiert** - Wählen Sie Header-basiertes Single Sign-On, wenn die Anwendung „Header“ für die Authentifizierung verwendet. Weitere Informationen finden Sie unter [Header-basiertes SSO](../app-proxy/application-proxy-configure-single-sign-on-with-headers.md).
 

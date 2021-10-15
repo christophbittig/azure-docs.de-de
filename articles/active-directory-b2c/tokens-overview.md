@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/1/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 98ab4a660923f1a399317b9682a231774f310f3c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 391c9adc9b79c5263121cb3827aeec7f5f520338
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128546952"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350319"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Übersicht über Token in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) stellt bei der Verarbeitung der einzelnen [Authentifizierungsflüsse](application-types.md) verschiedene Arten von Sicherheitstoken aus. In diesem Dokument sind das Format, die Sicherheitsmerkmale und der Inhalt aller Tokentypen beschrieben.
+Azure Active Directory B2C (Azure AD B2C) stellt bei der Verarbeitung der einzelnen [Authentifizierungsflüsse](application-types.md) verschiedene Arten von Sicherheitstoken aus. In diesem Artikel werden das Format, die Sicherheitsmerkmale und der Inhalt der einzelnen Tokentypen beschrieben.
 
 ## <a name="token-types"></a>Tokentypen
 
@@ -29,9 +29,9 @@ Azure AD B2C unterstützt [das OAuth 2.0-Protokoll und das OpenID Connect-Pr
 
 Bei der Kommunikation mit Azure AD B2C werden folgende Token verwendet:
 
-- *ID-Token:* Ein JWT mit Ansprüchen, die Sie zur Identifizierung von Benutzern in Ihrer Anwendung verwenden können. Dieses Token wird sicher in HTTP-Anforderungen für die Kommunikation zwischen zwei Komponenten der gleichen Anwendung oder des gleichen Diensts gesendet. Sie können die Ansprüche nach Bedarf in einem ID-Token verwenden. Im Allgemeinen werden sie in einer Anwendung zum Anzeigen von Kontoinformationen oder zum Treffen von Entscheidungen hinsichtlich der Zugriffssteuerung genutzt. ID-Token sind zwar signiert, aber nicht verschlüsselt. Wenn Ihre Anwendung oder API ein ID-Token empfängt, muss sie die Signatur überprüfen, um die Authentizität des Tokens nachzuweisen. Ihre Anwendung oder API muss außerdem einige Ansprüche im Token überprüfen, um seine Gültigkeit zu belegen. Je nach Szenarioanforderungen können die von einer Anwendung überprüften Ansprüche variieren. Einige allgemeine Anspruchsüberprüfungen muss Ihre Anwendung aber in jedem Szenario durchführen.
-- *Zugriffstoken:* Ein JWT mit Ansprüchen, die Sie zur Identifizierung der erteilten Berechtigungen für Ihre APIs verwenden können. Zugriffstoken sind zwar signiert, aber nicht verschlüsselt. Zugriffstoken dienen zum Gewähren von Zugriff auf APIs und Ressourcenserver.  Wenn Ihre API ein Zugriffstoken empfängt, muss sie die Signatur überprüfen, um die Authentizität des Tokens nachzuweisen. Ihre API muss außerdem einige Ansprüche im Token überprüfen, um seine Gültigkeit zu belegen. Je nach Szenarioanforderungen können die von einer Anwendung überprüften Ansprüche variieren. Einige allgemeine Anspruchsüberprüfungen muss Ihre Anwendung aber in jedem Szenario durchführen.
-- *Aktualisierungstoken:* Aktualisierungstoken dienen zum Abrufen neuer ID-Token und Zugriffstoken in einem OAuth 2.0-Ablauf. Sie ermöglichen Ihrer Anwendung langfristig Zugriff auf Ressourcen im Auftrag von Benutzern, ohne dass eine Interaktion mit den Benutzern erforderlich ist. Der Inhalt von Aktualisierungstoken ist für Ihre Anwendung nicht zugänglich. Sie werden von Azure AD B2C ausgestellt und können nur von Azure AD B2C untersucht und interpretiert werden. Obwohl sie lange gültig sind, darf beim Schreiben Ihrer Anwendung nicht von der bestimmten Gültigkeitsdauer eines Aktualisierungstokens ausgegangen werden. Aktualisierungstoken können jederzeit aus unterschiedlichen Gründen ungültig werden. Um Gültigkeit eines Aktualisierungstokens zu überprüfen, muss Ihre Anwendung versuchen, das Token einzulösen, indem sie eine Tokenanforderung an Azure AD B2C sendet. Wenn Sie ein Aktualisierungstoken für ein neues Token einlösen, erhalten Sie in der Tokenantwort ein neues Aktualisierungstoken. Speichern Sie das neue Aktualisierungstoken. Es ersetzt das Aktualisierungstoken, das zuvor in der Anforderung verwendet wurde. Dadurch wird sichergestellt, dass Ihre Aktualisierungstoken möglichst lange gültig bleiben. Beachten Sie, dass bei Single-Page-Webanwendungen, die den Autorisierungscodeflow mit PKCE verwenden, das Aktualisierungstoken immer eine Lebensdauer von 24 Stunden hat. [Weitere Informationen zu Sicherheitsaspekten von Aktualisierungstoken im Browser](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)
+- **ID-Token:** Ein JWT mit Ansprüchen, die Sie zur Identifizierung von Benutzern in Ihrer Anwendung verwenden können. Dieses Token wird sicher in HTTP-Anforderungen für die Kommunikation zwischen zwei Komponenten der gleichen Anwendung oder des gleichen Diensts gesendet. Sie können die Ansprüche nach Bedarf in einem ID-Token verwenden. Im Allgemeinen werden sie in einer Anwendung zum Anzeigen von Kontoinformationen oder zum Treffen von Entscheidungen hinsichtlich der Zugriffssteuerung genutzt. ID-Token sind zwar signiert, aber nicht verschlüsselt. Wenn Ihre Anwendung oder API ein ID-Token empfängt, muss sie die Signatur überprüfen, um die Authentizität des Tokens nachzuweisen. Ihre Anwendung oder API muss außerdem einige Ansprüche im Token überprüfen, um seine Gültigkeit zu belegen. Je nach Szenarioanforderungen können die von einer Anwendung überprüften Ansprüche variieren. Einige allgemeine Anspruchsüberprüfungen muss Ihre Anwendung aber in jedem Szenario durchführen.
+- **Zugriffstoken:** Ein JWT mit Ansprüchen, die Sie zur Identifizierung der erteilten Berechtigungen für Ihre APIs verwenden können. Zugriffstoken sind zwar signiert, aber nicht verschlüsselt. Zugriffstoken dienen zum Gewähren von Zugriff auf APIs und Ressourcenserver.  Wenn Ihre API ein Zugriffstoken empfängt, muss sie die Signatur überprüfen, um die Authentizität des Tokens nachzuweisen. Ihre API muss außerdem einige Ansprüche im Token überprüfen, um seine Gültigkeit zu belegen. Je nach Szenarioanforderungen können die von einer Anwendung überprüften Ansprüche variieren. Einige allgemeine Anspruchsüberprüfungen muss Ihre Anwendung aber in jedem Szenario durchführen.
+- **Aktualisierungstoken:** Aktualisierungstoken dienen zum Abrufen neuer ID-Token und Zugriffstoken in einem OAuth 2.0-Ablauf. Sie ermöglichen Ihrer Anwendung langfristig Zugriff auf Ressourcen im Auftrag von Benutzern, ohne dass eine Interaktion mit den Benutzern erforderlich ist. Der Inhalt von Aktualisierungstoken ist für Ihre Anwendung nicht zugänglich. Sie werden von Azure AD B2C ausgestellt und können nur von Azure AD B2C untersucht und interpretiert werden. Obwohl sie lange gültig sind, darf beim Schreiben Ihrer Anwendung nicht von der bestimmten Gültigkeitsdauer eines Aktualisierungstokens ausgegangen werden. Aktualisierungstoken können jederzeit aus unterschiedlichen Gründen ungültig werden. Um Gültigkeit eines Aktualisierungstokens zu überprüfen, muss Ihre Anwendung versuchen, das Token einzulösen, indem sie eine Tokenanforderung an Azure AD B2C sendet. Wenn Sie ein Aktualisierungstoken für ein neues Token einlösen, erhalten Sie in der Tokenantwort ein neues Aktualisierungstoken. Speichern Sie das neue Aktualisierungstoken. Es ersetzt das Aktualisierungstoken, das zuvor in der Anforderung verwendet wurde. Dadurch wird sichergestellt, dass Ihre Aktualisierungstoken möglichst lange gültig bleiben. Beachten Sie, dass bei Single-Page-Webanwendungen, die den Autorisierungscodeflow mit PKCE verwenden, das Aktualisierungstoken immer eine Lebensdauer von 24 Stunden hat. [Weitere Informationen zu Sicherheitsaspekten von Aktualisierungstoken im Browser](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)
 
 ## <a name="endpoints"></a>Endpunkte
 
@@ -40,7 +40,9 @@ Eine [registrierte Anwendung](tutorial-register-applications.md) empfängt Token
 - `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize`
 - `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token`
 
-Sicherheitstoken, die Ihre Anwendung von Azure AD B2C empfängt, können von den Endpunkten `/authorize` oder `/token` stammen. Wenn ID-Token vom Endpunkt `/authorize` bezogen werden, kommt der [implizite Fluss](implicit-flow-single-page-application.md) zur Anwendung. Dieser wird häufig für Benutzer verwendet, die sich bei JavaScript-basierten Webanwendungen anmelden. Wenn ID-Token vom Endpunkt `/token` bezogen werden, kommt der [Autorisierungscodefluss](openid-connect.md#get-a-token) zur Anwendung, bei dem das Token dem Browser verborgen bleibt.
+Sicherheitstoken, die Ihre Anwendung von Azure AD B2C empfängt, können von den Endpunkten `/authorize` oder `/token` stammen. ID-Token können über zwei Endpunkte bezogen werden:
+-  `/authorize`-Endpunkt: Hierfür wird der [implizite Fluss](implicit-flow-single-page-application.md) genutzt, der häufig für Benutzer verwendet wird, die sich bei JavaScript-basierten Webanwendungen anmelden. 
+-  `/token`-Endpunkt: Hierfür wird der [Autorisierungscodefluss](openid-connect.md#get-a-token) genutzt, bei dem das Token dem Browser verborgen bleibt.
 
 ## <a name="claims"></a>Ansprüche
 

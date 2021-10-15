@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a48a9f4ded6386b4b5a4ea2d02d796b8e5ed4f7
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: a1a6ff8a64ac82b27df6e49ef7f500af3fd65316
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129213912"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352728"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Funktionsweise des Rückschreibens von Self-Service-Kennwortzurücksetzungen in Azure Active Directory
 
@@ -51,7 +51,7 @@ Nutzen Sie das folgende Tutorial, um sich mit dem SSPR-Rückschreiben vertraut z
 
 ## <a name="how-password-writeback-works"></a>Funktionsweise der Kennwortrückschreibung
 
-Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung versuchen, ihr Kennwort in der Cloud zurückzusetzen oder zu ändern, geschieht Folgendes:
+Wenn Benutzer mit konfigurierter Kennwort-Hashsynchronisierung und Passthrough-Authentifizierung oder ein Verbundbenutzer versucht, sein Kennwort in der Cloud zurückzusetzen oder zu ändern, werden die folgenden Aktionen durchgeführt:
 
 1. Es wird überprüft, über welche Art von Kennwort der Benutzer verfügt. Wenn das Kennwort des Benutzers lokal verwaltet wird:
    * Es wird überprüft, ob der Dienst für Rückschreiben aktiviert ist und ausgeführt wird. Wenn dies der Fall ist, kann der Benutzer fortfahren.
