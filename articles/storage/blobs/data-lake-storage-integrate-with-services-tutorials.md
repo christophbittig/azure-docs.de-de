@@ -4,15 +4,15 @@ description: Finden Sie Tutorials, in denen Sie erfahren, wie Sie Azure-Dienste 
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
-ms.date: 02/17/2021
+ms.date: 10/06/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: bbe99ced7a4d0110ac9ff709201a16017b45ec15
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1c1849117b2e27198d7fb0c76590cb1cf14f0891
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128562474"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619348"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>Tutorials zur Verwendung von Azure-Diensten mit Azure Data Lake Storage Gen2
 
@@ -37,8 +37,8 @@ Dieser Artikel enthält Links zu Tutorials, die Ihnen zeigen, wie Sie verschiede
 | Azure Cognitive Search | [Indizieren von Dokumenten in Azure Data Lake Storage Gen2](../../search/search-howto-index-azure-data-lake-storage.md) |
 
 > [!NOTE]
-> Diese Tabelle enthält nicht die komplette Liste der Azure-Dienste, die Data Lake Storage Gen2 unterstützen. Eine Liste der unterstützten Azure-Dienste mit dem Unterstützungsgrad finden Sie unter [Azure-Dienste, die Azure Data Lake Storage Gen2 unterstützen](data-lake-storage-supported-azure-services.md).
+> Diese Tabelle enthält nicht die komplette Liste der Azure-Dienste, die Data Lake Storage Gen2 unterstützen. Eine Liste der unterstützten Azure-Dienste mit deren Unterstützungsgrad finden Sie unter [Azure-Dienste, die Azure Data Lake Storage Gen2 unterstützen](data-lake-storage-supported-azure-services.md). Informationen dazu, wie Dienste in Kategorien wie „Erfassung“, „Download“, „Verarbeitung“ und „Visualisierung“ organisiert sind, finden Sie unter [Erfassung, Verarbeitung und Analyse](data-lake-storage-data-scenarios.md#ingest-process-and-analyze).
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Siehe auch
 
-- Erfahren Sie, wie diese Dienste zum Erstellen von Workloads verwendet werden können, die Daten erfassen, herunterladen, verarbeiten und visualisieren. [Verwenden von Azure Data Lake Storage Gen2 für Big Data-Anforderungen](data-lake-storage-data-scenarios.md).
+[Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2](data-lake-storage-best-practices.md)

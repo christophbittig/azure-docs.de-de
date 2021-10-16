@@ -916,7 +916,7 @@
         - name: Übersicht
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: availability-set-overview.md
-        - name: CLI
+        - name: Befehlszeilenschnittstelle (CLI)
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: ./linux/tutorial-availability-sets.md
         - name: PowerShell
@@ -930,7 +930,7 @@
         - name: Übersicht
           displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
-        - name: CLI
+        - name: Befehlszeilenschnittstelle (CLI)
           displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ./linux/create-cli-availability-zone.md
         - name: PowerShell
@@ -944,7 +944,7 @@
         - name: Übersicht
           displayName: 'proximity placement groups, ppg'
           href: co-location.md
-        - name: CLI
+        - name: Befehlszeilenschnittstelle (CLI)
           displayName: 'proximity placement groups, ppg'
           href: ./linux/proximity-placement-groups.md
         - name: PowerShell
@@ -987,7 +987,7 @@
     - name: Übersicht
       displayName: 'managed disks, introduction to managed disks'
       href: managed-disks-overview.md
-    - name: Auswählen eines Datenträgertyps für virtuelle IaaS-Computer
+    - name: Datenträgertypen
       href: disks-types.md
     - name: Optionen für die Datenträgerredundanz
       href: disks-redundancy.md
@@ -1634,7 +1634,7 @@
             - name: Übersicht
               displayName: Maintenance control
               href: maintenance-control.md
-            - name: CLI
+            - name: Befehlszeilenschnittstelle (CLI)
               displayName: Maintenance control
               href: maintenance-control-cli.md
             - name: PowerShell

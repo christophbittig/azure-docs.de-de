@@ -630,12 +630,17 @@
           items:
             - name: Sharddaten in Workerknoten
               href: tutorial-hyperscale-shard.md
-        - name: Entwerfen einer mehrinstanzenfähigen Datenbank
-          href: tutorial-design-database-hyperscale-multi-tenant.md
-          displayName: 'hyperscale, tutorial, multi-tenant'
-        - name: Entwerfen eines Echtzeitdashboards
-          href: tutorial-design-database-hyperscale-realtime.md
-          displayName: 'hyperscale, tutorial, real-time'
+            - name: Entwerfen einer mehrinstanzenfähigen Datenbank
+              href: tutorial-design-database-hyperscale-multi-tenant.md
+              displayName: 'hyperscale, tutorial, multi-tenant'
+            - name: Entwerfen eines Echtzeitdashboards
+              href: tutorial-design-database-hyperscale-realtime.md
+              displayName: 'hyperscale, tutorial, real-time'
+        - name: Verwalten
+          items:
+            - name: Privater Zugriff
+              href: tutorial-hyperscale-private-access.md
+              displayName: 'hyperscale, tutorial, private'
     - name: Konzepte
       items:
         - name: Basic-Tarif
@@ -651,11 +656,16 @@
               href: concepts-hyperscale-choose-distribution-column.md
             - name: Tabellenzusammenstellung
               href: concepts-hyperscale-colocation.md
-        - name: Sicherheit
+        - name: Datenzugriff und -sicherheit
           items:
-            - name: Firewallregeln
+            - name: Übersicht
+              href: concepts-hyperscale-security-overview.md
+            - name: Öffentlicher Zugriff
               href: concepts-hyperscale-firewall-rules.md
               displayName: 'firewall, rules, hyperscale'
+            - name: Privater Zugriff
+              href: concepts-hyperscale-private-access.md
+              displayName: 'private, link, hyperscale'
             - name: Konfigurieren von SSL
               href: concepts-hyperscale-ssl-connection-security.md
               displayName: 'hyperscale, ssl'
@@ -702,11 +712,18 @@
               href: howto-hyperscale-scale-grow.md
             - name: Ausgleichen von Shards
               href: howto-hyperscale-scale-rebalance.md
-        - name: Firewallregeln
+        - name: Datenzugriff und -sicherheit
           items:
-            - name: Azure-Portal
-              href: howto-hyperscale-manage-firewall-using-portal.md
-              displayName: 'firewall rule, hyperscale'
+            - name: Öffentlicher Zugriff
+              items:
+                - name: Azure-Portal
+                  href: howto-hyperscale-manage-firewall-using-portal.md
+                  displayName: 'firewall rule, hyperscale'
+            - name: Privater Zugriff
+              items:
+                - name: Azure-Portal
+                  href: howto-hyperscale-private-access.md
+                  displayName: 'network, private link'
         - name: Erstellen von Benutzern
           href: howto-hyperscale-create-users.md
         - name: Verteilte Daten

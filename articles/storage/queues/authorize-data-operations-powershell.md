@@ -10,12 +10,12 @@ ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 862c576ae86cd7d91a1bd73243caa0a68e3689c1
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: bcf8d828bb20296a27b9288a2ba604bce1b7aef9
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900537"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855439"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Warteschlangendaten
 
@@ -86,4 +86,4 @@ Im folgenden Beispiel sehen Sie, wie Sie in einem neuen Speicherkonto mithilfe I
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Zuweisen einer Azure-Rolle für den Zugriff auf Warteschlangendaten](assign-azure-role-data-access.md)
-- [Autorisieren des Zugriffs auf Blob- und Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen](../common/storage-auth-aad-msi.md)
+- [Autorisieren des Zugriffs auf Blobdaten mit verwalteten Identitäten für Azure-Ressourcen](../blobs/authorize-managed-identity.md)

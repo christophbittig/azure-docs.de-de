@@ -220,8 +220,6 @@
   items:
     - name: 'Problembehandlung: Übersicht, Feedback und Support'
       href: troubleshoot-set-up-overview.md
-    - name: Identifizieren und Diagnostizieren von Problemen
-      href: diagnostics-role-service.md
     - name: Feature „Erste Schritte“
       href: troubleshoot-getting-started.md
     - name: Hostpoolerstellung

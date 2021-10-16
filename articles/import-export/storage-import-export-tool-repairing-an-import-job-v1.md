@@ -5,17 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 10/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: b0eeb73ffb5436284f4f23cef943db0a3307a2b2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 63394c71642917c37bd0383682b64b70f3b870ee
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564567"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709262"
 ---
 # <a name="repairing-an-import-job"></a>Reparieren eines Importauftrags
+
+> [!IMPORTANT]
+> Die Auftragsreparatur wird vom Azure Import/Export-Tool nicht mehr unterstützt. In Version 1.5.0.300 und höher müssen Sie die Probleme in Ihrem Blobimport beheben und dann [ einen neuen Importauftrag](storage-import-export-data-to-blobs.md?tabs=azure-portal#step-2-create-an-import-job) erstellen.
+
 Der Microsoft Azure Import/Export-Dienst kann möglicherweise einige Ihrer Dateien oder Teile einer Datei nicht in den Windows Azure-Blobdienst kopieren. Mögliche Fehlerursachen sind:  
   
 -   Beschädigte Dateien  
@@ -24,13 +28,13 @@ Der Microsoft Azure Import/Export-Dienst kann möglicherweise einige Ihrer Datei
   
 -   Der Speicherkontoschlüssel wurde während der Übertragung der Datei geändert.  
   
-Sie können das Microsoft Azure Import/Export-Tool mit den Kopierprotokolldateien des Importauftrags ausführen. Das Tool lädt die fehlenden Dateien bzw. fehlenden Dateiteile in Ihr Microsoft Azure Storage-Konto hoch, um den Importauftrag abzuschließen.  
+Sie können das Microsoft Azure Import/Export-Tool mit den Kopierprotokolldateien des Importauftrags ausführen. Das Tool lädt die fehlenden Dateien bzw. fehlenden Dateiteile in Ihr Microsoft Azure Storage-Konto hoch, um den Importauftrag abzuschließen.
   
 ## <a name="repairimport-parameters"></a>RepairImport-Parameter
 
 Die folgenden Parameter können mit **RepairImport** angegeben werden: 
   
-| Parameter | Beschreibung |  
+| Parameter | BESCHREIBUNG |  
 |-|-|  
 |**/r:** &lt;Reparaturdatei\>|**Erforderlich.** Pfad zur Reparaturdatei, die den Status der Reparatur verfolgt und das Fortsetzen einer unterbrochenen Reparatur ermöglicht. Jedes Laufwerk muss über genau eine Reparaturdatei verfügen. Wenn Sie mit der Reparatur eines bestimmten Laufwerks beginnen, übergeben Sie den Pfad zu einer noch nicht vorhandenen Reparaturdatei. Zum Fortsetzen einer unterbrochenen Reparatur müssen Sie den Namen einer vorhandenen Reparaturdatei übergeben. Geben Sie immer die Reparaturdatei für das entsprechende Ziellaufwerk an.|  
 |**/logdir:** &lt;Protokollverzeichnis\>|**Optional.** Das Protokollverzeichnis In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
@@ -99,7 +103,7 @@ Nachdem Sie die erforderlichen Dateien für das Tool zur Verfügung gestellt ode
   
 ## <a name="next-steps"></a>Nächste Schritte
  
-* [Einrichten des Azure Import/Export-Tools](storage-import-export-tool-setup-v1.md)   
+<!--* [Setting Up the Azure Import/Export Tool](storage-import-export-tool-setup-v1.md)- ARCHIVED-->   
 * [Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-data-to-blobs.md#step-1-prepare-the-drives)   
 * [Überprüfen des Auftragsstatus mit Protokollkopiedateien](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Reparieren eines Exportauftrags](./storage-import-export-tool-repairing-an-export-job-v1.md)

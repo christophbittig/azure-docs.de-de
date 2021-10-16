@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 08/10/2021
+ms.date: 10/11/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d1a46cd010f0a629e787a7ebabcfe002837b7ad3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c6cc19bd688dd2c38210fae8d77a036f2ba5be7e
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124811183"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754309"
 ---
 # <a name="azure-firewall-premium-features"></a>Azure Firewall Premium-Features
 
@@ -103,6 +103,8 @@ Azure Firewall mit Premium-Tarif wird aktuell in den folgenden Regionen unterst�
 - Indien, Mitte (Öffentlich/Indien)
 - USA, Mitte (Öffentlich/USA)
 - USA, Mitte EUAP (Öffentlich/Canary (US))
+- China, Norden 2 (Mooncake/China)
+- China, Osten 2 (Mooncake/China)
 - Asien, Osten (Öffentlich/Asien-Pazifik)
 - USA, Osten (Öffentlich/USA)
 - USA, Osten 2 (Öffentlich/USA)
@@ -125,6 +127,9 @@ Azure Firewall mit Premium-Tarif wird aktuell in den folgenden Regionen unterst�
 - VAE, Norden (Öffentlich/VAE)
 - Vereinigtes Königreich, Süden (Öffentlich/Vereinigtes Königreich)
 - Vereinigtes Königreich, Westen (Öffentlich/Vereinigtes Königreich)
+- USGov Arizona (Fairfax/USGov)
+- USGov Texas (Fairfax/USGov)
+- USGov Virginia (Fairfax/USGov)
 - USA, Westen-Mitte (Öffentlich/USA)
 - Europa, Westen (Öffentlich/Europa)
 - Indien, Westen (Öffentlich/Indien)

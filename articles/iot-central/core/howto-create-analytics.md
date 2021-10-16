@@ -7,12 +7,12 @@ ms.date: 08/16/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ad16a831b22097e98bd02b606e3a6596cf4e48f5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f8f399ec557bbddd031b386d69436f3376ee42b1
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810939"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808519"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Analysieren von Gerätedaten mithilfe von Analytics
 
@@ -42,7 +42,7 @@ Wählen Sie zuerst eine **Gerätegruppe** und dann die Telemetriedaten aus, die 
 - **Telemetrie:** Wählen Sie die Telemetriedaten aus, die Sie analysieren und untersuchen möchten. Sie können mehrere Telemetrietypen zum gemeinsamen Analysieren auswählen. Die Standardaggregationsmethode für den Datentyp „Numeric“ (Numerisch) ist auf **Average** (Durchschnitt) und für den Datentyp „String“ (Zeichenfolge) auf **Count** (Anzahl) festgelegt. Die Aggregationsmethoden für den Datentyp „Numeric“ sind **Average**, **Maximum**, **Minimum**, **Count** und **Sum** (Summe). **Count** ist die einzige Aggregationsmethode für Zeichenfolgen.
 
     > [!NOTE]
-    > Historische Datenpunkte werden nur angezeigt, wenn die Bedingungen der Abfrage erfüllt sind. Beispiel: Gestern wurde ein Gerät von **Vorlage1** auf **Vorlage2** aktualisiert. Wenn Sie heute Gerätegruppen mit Geräten des Typs **Vorlage1** abfragen, werden Gerätedaten von gestern und davor angezeigt. Wenn Sie Gerätegruppen mit Geräten des Typs **Vorlage2** abfragen, werden das Gerät und die Daten ab dem Zeitpunkt der Aktualisierung angezeigt.
+    > Verlaufsdatenpunkte werden nur angezeigt, wenn die Bedingungen der Abfrage erfüllt sind. Beispiel: Gestern wurde ein Gerät von **Vorlage1** auf **Vorlage2** aktualisiert. Wenn Sie heute Gerätegruppen mit Geräten des Typs **Vorlage1** abfragen, werden Gerätedaten von gestern und davor angezeigt. Wenn Sie Gerätegruppen mit Geräten des Typs **Vorlage2** abfragen, werden das Gerät und die Daten ab dem Zeitpunkt der Aktualisierung angezeigt.
 
 - **Gruppieren nach**: Mit dem Steuerelement **Gruppieren nach** können Sie die Daten gruppieren, indem Sie die Geräteeigenschaften als Dimensionen verwenden. Gerätetelemetrie und -eigenschaften werden mit Cloudeigenschaften kombiniert, wenn das Gerät Daten sendet. Wenn die Cloud- oder Geräteeigenschaft aktualisiert wird, werden die Telemetriedaten – nach verschiedenen Werten gruppiert – im Diagramm angezeigt.
 
@@ -52,6 +52,8 @@ Wählen Sie zuerst eine **Gerätegruppe** und dann die Telemetriedaten aus, die 
 ## <a name="interact-with-your-data"></a>Interagieren Sie mit Ihren Daten
 
 Nachdem Sie Ihre Daten abgefragt haben, können Sie sie im Liniendiagramm visualisieren. Sie können Telemetriedaten ein- oder ausblenden, die Dauer ändern oder die Daten in einem Raster anzeigen.
+
+Wählen Sie **Speichern** aus, um eine Analyseabfrage zu speichern. Zu einem späteren Zeitpunkt können Sie alle Abfragen abrufen, die Sie gespeichert haben.
 
 - **Editor-Bereich für Zeiten:** Standardmäßig werden Daten ab dem vorherigen Tag angezeigt. Sie können eines der Enden des Schiebereglers ziehen, um die Zeitdauer zu ändern. Außerdem können Sie mithilfe des Kalendersteuerelements einen der vordefinierten Zeitrahmen oder einen benutzerdefinierten Zeitbereich auswählen. Das Zeitsteuerelement enthält auch den Schieberegler **Intervallgröße**, über den die Intervallgröße zum Aggregieren der Daten gesteuert wird.
 

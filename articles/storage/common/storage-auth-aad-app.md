@@ -1,23 +1,23 @@
 ---
-title: Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung
+title: Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten aus einer nativen Anwendung oder einer Webanwendung
 titleSuffix: Azure Storage
 description: Verwenden Sie Azure Active Directory zum Authentifizieren aus einer Clientanwendung, zum Abrufen eines OAuth 2.0-Tokens und zum Autorisieren von Anforderungen an den Azure-Blob- und -Warteschlangenspeicher.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 10/11/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 746d908065523651f9147a721531514d1a0f84c0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0eb9c51f112af25356023ea0483440cea1831e3e
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128673272"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856447"
 ---
-# <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung
+# <a name="authorize-access-to-blob-or-queue-data-from-a-native-or-web-application"></a>Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten aus einer nativen Anwendung oder einer Webanwendung
 
 Ein wesentlicher Vorteil bei der Verwendung von Azure Active Directory (Azure AD) mit dem Azure-Blob- und -Warteschlangenspeicher besteht darin, dass Ihre Anmeldeinformationen nicht mehr im Code gespeichert werden müssen. Stattdessen können Sie ein OAuth 2.0-Zugriffstoken von der Microsoft Identity Platform anfordern. Azure AD übernimmt die Authentifizierung des Sicherheitsprinzipals (Benutzer, Gruppe oder Dienstprinzipal), der die Anwendung ausführt. Wenn die Authentifizierung erfolgreich ist, gibt Azure AD das Zugriffstoken an die Anwendung zurück, und die Anwendung kann dann das Zugriffstoken zum Autorisieren von Anforderungen an den Azure-Blob- oder -Warteschlangenspeicher verwenden.
 
@@ -294,4 +294,4 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 
 - [Microsoft Identity Platform](../../active-directory/develop/index.yml)
 - [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](../blobs/assign-azure-role-data-access.md)
-- [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen](storage-auth-aad-msi.md)
+- [Autorisieren des Zugriffs auf Blobdaten mit verwalteten Identitäten für Azure-Ressourcen](../blobs/authorize-managed-identity.md)

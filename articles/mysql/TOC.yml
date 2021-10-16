@@ -211,9 +211,9 @@
             - name: Abfragespeicher
               href: concepts-query-store.md
               displayName: 'performance, query store'
-            - name: Statistik zur Abfrageleistung
+            - name: Query Performance Insight
               href: concepts-query-performance-insight.md
-              displayName: query performance insights
+              displayName: Query Performance Insight
             - name: Empfehlungen zur Leistung
               href: concepts-performance-recommendations.md
               displayName: recommendation

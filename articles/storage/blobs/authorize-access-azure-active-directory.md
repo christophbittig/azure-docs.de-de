@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: aefbd7c64ba243166a2122426a31f8a3996dd97d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: fe6397b79ff37074342b40880aa5284e020cd8a1
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361361"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859188"
 ---
 # <a name="authorize-access-to-blobs-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Blobs mithilfe von Azure Active Directory
 
@@ -30,7 +30,7 @@ Blob Storage unterstützt zudem das Erstellen von Shared Access Signatures (SAS)
 
 Wenn ein Sicherheitsprinzipal (ein Benutzer, eine Gruppe oder eine Anwendung) versucht, auf eine Blobressource zuzugreifen, muss die Anforderung autorisiert werden, sofern es sich nicht um ein Blob für den anonymen Zugriff handelt. Mit Azure AD ist der Zugriff auf eine Ressource ein zweistufiger Prozess. Zunächst wird die Identität des Sicherheitsprinzipals authentifiziert, und ein OAuth 2.0-Token wird zurückgegeben. Anschließend wird das Token als Teil einer Anforderung an den Blob-Dienst übergeben und von diesem verwendet, um den Zugriff auf die angegebene Ressource zu autorisieren.
 
-Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendung zur Laufzeit ein OAuth 2.0-Zugriffstoken anfordert. Wenn eine Anwendung in einer Azure-Entität, z. B. einer Azure-VM, einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf Blobdaten über eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) erfolgen. Informationen zur Autorisierung von Anforderungen über eine verwaltete Identität an den Azure Blob-Dienst finden Sie unter [Autorisieren des Zugriffs auf Blobs mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen](../common/storage-auth-aad-msi.md).
+Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendung zur Laufzeit ein OAuth 2.0-Zugriffstoken anfordert. Wenn eine Anwendung in einer Azure-Entität, z. B. einer Azure-VM, einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf Blobdaten über eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) erfolgen. Informationen zur Autorisierung von Anforderungen über eine verwaltete Identität an den Azure Blob-Dienst finden Sie unter [Autorisieren des Zugriffs auf Blobdaten mit verwalteten Identitäten für Azure-Ressourcen](authorize-managed-identity.md).
 
 Der Autorisierungsschritt erfordert, dass dem Sicherheitsprinzipal mindestens eine Azure-Rolle zugewiesen wird. Azure Storage umfasst Azure-Rollen mit gängigen Gruppen von Berechtigungen für Blobdaten. Die möglichen Berechtigungen eines Sicherheitsprinzipals sind durch die Rollen vorgegeben, die dem Prinzipal zugewiesen sind. Weitere Informationen zum Zuweisen von Azure-Rollen für den Blobzugriff finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](../blobs/assign-azure-role-data-access.md).
 

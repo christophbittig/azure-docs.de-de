@@ -10,12 +10,12 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cf0a84d97a291850b6e89164befce8e4da2308b3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a9a7c822d6a88d9108a3d933ac3b8321eb856f05
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477670"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855401"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>Erstellen und Verwalten einer Blobmomentaufnahme in .NET
 
@@ -32,7 +32,7 @@ Verwenden Sie eine der folgenden Methoden, um eine Momentaufnahme eines Blockblo
 - [CreateSnapshot](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.createsnapshot)
 - [CreateSnapshotAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.createsnapshotasync)
 
-Das folgende Codebeispiel zeigt, wie Sie eine Momentaufnahme mit Version 12.x erstellen. Schließen Sie einen Verweis auf die [Azure.Identity](https://www.nuget.org/packages/azure.identity)-Bibliothek ein, um Ihre Azure AD-Anmeldeinformationen zu verwenden, um Anforderungen an den Dienst zu autorisieren.
+Das folgende Codebeispiel zeigt, wie Sie eine Momentaufnahme mit Version 12.x erstellen. Schließen Sie einen Verweis auf die [Azure.Identity](https://www.nuget.org/packages/azure.identity)-Bibliothek ein, um Ihre Azure AD-Anmeldeinformationen zu verwenden, um Anforderungen an den Dienst zu autorisieren. Weitere Informationen zur Verwendung der Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) zum Autorisieren einer verwalteten Identität für den Zugriff auf Azure Storage finden Sie unter [Azure Identity-Clientbibliothek für .NET](/dotnet/api/overview/azure/identity-readme).
 
 ```csharp
 private static async Task CreateBlockBlobSnapshot(string accountName, string containerName, string blobName, Stream data)

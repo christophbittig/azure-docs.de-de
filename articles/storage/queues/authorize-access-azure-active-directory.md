@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 410d5daf67d590d84801a23627b5ce46e26367f5
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: bd9224537be7559a325b30a71fb72eab07a71bd0
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129357576"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855363"
 ---
 # <a name="authorize-access-to-queues-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Warteschlangen mithilfe von Azure Active Directory
 
@@ -28,7 +28,7 @@ Die Autorisierung mit Azure AD ist für alle universellen Speicherkonten sowie 
 
 Wenn ein Sicherheitsprinzipal (ein Benutzer, eine Gruppe oder eine Anwendung) versucht, auf eine Warteschlangenressource zuzugreifen, muss die Anforderung autorisiert werden. Mit Azure AD ist der Zugriff auf eine Ressource ein zweistufiger Prozess. Zunächst wird die Identität des Sicherheitsprinzipals authentifiziert, und ein OAuth 2.0-Token wird zurückgegeben. Anschließend wird das Token als Teil einer Anforderung an den Warteschlangendienst übergeben und vom Dienst verwendet, um den Zugriff auf die angegebene Ressource zu autorisieren.
 
-Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendung zur Laufzeit ein OAuth 2.0-Zugriffstoken anfordert. Wenn eine Anwendung in einer Azure-Entität, z. B. auf einem virtuellen Azure-Computer, in einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf Warteschlangen über eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) erfolgen. Informationen zur Autorisierung von Anforderungen über eine verwaltete Identität finden Sie unter [Autorisieren des Zugriffs auf Blob- und Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen](../common/storage-auth-aad-msi.md).
+Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendung zur Laufzeit ein OAuth 2.0-Zugriffstoken anfordert. Wenn eine Anwendung in einer Azure-Entität, z. B. auf einem virtuellen Azure-Computer, in einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf Warteschlangen über eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) erfolgen. Informationen zur Autorisierung von Anforderungen über eine verwaltete Identität finden Sie unter [Autorisieren des Zugriffs auf Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen](authorize-managed-identity.md).
 
 Der Autorisierungsschritt erfordert, dass dem Sicherheitsprinzipal mindestens eine Azure-Rolle zugewiesen wird. Azure Storage umfasst Azure-Rollen mit gängigen Gruppen von Berechtigungen für Warteschlangendaten. Die Berechtigungen dieses Sicherheitsprinzipals sind durch die Rollen vorgegeben, die dem Prinzipal zugewiesen sind. Weitere Informationen zum Zuweisen von Azure-Rollen für Warteschlangenzugriff finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Warteschlangendaten](../queues/assign-azure-role-data-access.md).
 

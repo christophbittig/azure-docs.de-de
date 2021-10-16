@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 3e60815b2361f4ba14b6a40ded2734c748f8d4ae
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 95a09a19a4bf569680ba3c16214bc10c6be37cd9
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633695"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616415"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Übertragen von Daten mit AzCopy und Dateispeicher
 
@@ -423,7 +423,7 @@ azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt
 Sie können den Inhalt eines lokalen Dateisystems mit einer Dateifreigabe oder den Inhalt einer Dateifreigabe mit einer anderen Dateifreigabe synchronisieren. Sie können auch den Inhalt eines Verzeichnisses in einer Dateifreigabe mit dem Inhalt eines Verzeichnisses synchronisieren, das sich in einer anderen Dateifreigabe befindet. Die Synchronisierung erfolgt unidirektional. Anders gesagt: Sie wählen aus, welcher der beiden Endpunkte die Quelle und welcher das Ziel ist. Bei der Synchronisierung werden auch Server-zu-Server-APIs verwendet.
 
 > [!NOTE]
-> Dieses Szenario wird derzeit nur für Konten unterstützt, die keinen hierarchischen Namespace besitzen. Mit der aktuellen Version von AzCopy wird keine Synchronisierung zwischen Azure Files und Blob Storage ausgeführt.
+> Zurzeit wird dieses Szenario bei Konten unterstützt, die hierarchische Namespaces über den Blobendpunkt aktiviert haben.
 
 ### <a name="guidelines"></a>Richtlinien
 

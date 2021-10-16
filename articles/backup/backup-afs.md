@@ -2,13 +2,13 @@
 title: Sichern von Azure-Dateifreigaben im Azure-Portal
 description: Erfahren Sie, wie Sie das Azure-Portal zum Sichern von Azure-Dateifreigaben im Recovery Services-Tresor verwenden.
 ms.topic: conceptual
-ms.date: 05/07/2021
-ms.openlocfilehash: 807a173112d0bb85c008403028ab76000a3096db
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/08/2021
+ms.openlocfilehash: 8e50cee7e177375fae41ef6fb3a27f871427342c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427968"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714408"
 ---
 # <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
 
@@ -85,9 +85,9 @@ In den folgenden Schritten wird erläutert, wie Sie die Sicherung für mehrere D
 
          ![Erstellen Sie eine neue Richtlinie.](./media/backup-afs/create-new-policy.png)
 
-      1. Der Kontextbereich **Sicherungsrichtlinie** wird auf der rechten Seite geöffnet. Geben Sie einen Richtliniennamen in das Textfeld ein, und wählen Sie den Aufbewahrungszeitraum entsprechend Ihren Anforderungen. Nur die Aufbewahrungsoption „Täglich“ ist standardmäßig aktiviert. Wenn Sie eine wöchentliche, monatliche oder jährliche Aufbewahrung wünschen, aktivieren Sie das entsprechende Kontrollkästchen, und geben Sie die gewünschte Aufbewahrungsdauer an.
+      1. Führen Sie die Schritte 3–7 im Abschnitt [Erstellen einer neuen Richtlinie](manage-afs-backup.md#create-a-new-policy) aus.
 
-      1. Wählen Sie **OK** aus, nachdem Sie die Aufbewahrungsdauer und einen gültigen Richtliniennamen angegeben haben.<br>
+      1. Klicken Sie nach dem Definieren aller Attribute der Richtlinie auf **OK**.
 
          ![Richtliniennamen und Aufbewahrungsdauer angeben](./media/backup-afs/policy-name.png)
 
@@ -147,9 +147,9 @@ In den folgenden Schritten wird erläutert, wie Sie die Sicherung für einzelne 
 
          1. Wählen Sie den Linktext **Neue Richtlinie erstellen** aus.
 
-         2. Der Kontextbereich **Sicherungsrichtlinie** wird auf der rechten Seite geöffnet. Geben Sie einen Richtliniennamen in das Textfeld ein, und wählen Sie den Aufbewahrungszeitraum entsprechend Ihren Anforderungen. Nur die Aufbewahrungsoption „Täglich“ ist standardmäßig aktiviert. Wenn Sie eine wöchentliche, monatliche oder jährliche Aufbewahrung wünschen, aktivieren Sie das entsprechende Kontrollkästchen, und geben Sie die gewünschte Aufbewahrungsdauer an.
+         2. Führen Sie die Schritte 3–7 im Abschnitt [Erstellen einer neuen Richtlinie](manage-afs-backup.md#create-a-new-policy) aus.
 
-         3. Wählen Sie **OK** aus, nachdem Sie die Aufbewahrungsdauer und einen gültigen Richtliniennamen angegeben haben.
+         3. Klicken Sie nach dem Definieren aller Attribute der Richtlinie auf **OK**.
 
             ![Erstellen einer neuen Sicherungsrichtlinie](./media/backup-afs/create-new-backup-policy.png)
 
