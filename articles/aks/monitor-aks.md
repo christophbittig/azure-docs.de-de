@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/29/2021
-ms.openlocfilehash: 68f0d94482d65f261b40095ac715ad65f76fe7af
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 464e848814da046600b05a1feea632a1ceaa141a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124772199"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713828"
 ---
 # <a name="monitoring-azure-kubernetes-service-aks-with-azure-monitor"></a>Überwachen von Azure Kubernetes Service (AKS) mit Azure Monitor
 In diesem Szenario erfahren Sie, wie Sie mithilfe von Azure Monitor die Integrität und Leistung von Azure Kubernetes Service (AKS) überwachen. Es umfasst die Sammlung wichtiger Telemetriedaten für die Überwachung, die Analyse und Visualisierung der gesammelten Daten, um Trends zu identifizieren, sowie die Konfiguration von Warnungen, um proaktiv über kritische Probleme informiert zu werden.
@@ -21,7 +21,7 @@ Im [Leitfaden zur Cloudüberwachung](/azure/cloud-adoption-framework/manage/moni
 ## <a name="scope-of-the-scenario"></a>Umfang des Szenarios
 Dieses Szenario richtet sich an Kunden, die Azure Monitor zur Überwachung von AKS verwenden. Folgendes wird nicht behandelt, aber möglicherweise bei späteren Szenarioaktualisierungen hinzugefügt:
 
-- Überwachen von Kubernetes-Clustern außerhalb von Azure (mit Ausnahme von Verweisen auf vorhandene Inhalte für Kubernetes mit Azure Arc-Unterstützung) 
+- Überwachen von Kubernetes-Clustern außerhalb von Azure (mit Ausnahme von Verweisen auf vorhandene Inhalte für Kubernetes mit Azure Arc-Unterstützung). 
 - Überwachen von AKS mit anderen Tools als Azure Monitor (außer zur Schließung von Lücken in Azure Monitor und Containererkenntnissen)
 
 > [!NOTE]

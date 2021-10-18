@@ -5,14 +5,14 @@ author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 10/06/2021
 ms.author: shants
-ms.openlocfilehash: 0f1d65c7caa9073fa66fe3920b2b39bc9c5a5d11
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: cb1a4cc1e0c1539ab56b986a35084fa761d85438
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122687705"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657528"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Wartung für VMs in Azure
 
@@ -35,7 +35,7 @@ In einer VM können Sie [mithilfe von Scheduled Events für Windows](./windows/s
 
 Die meisten Plattformupdates wirken sich nicht auf Kunden-VMs aus. Ist es nicht möglich, ein Update ohne Auswirkungen durchzuführen, wählt Azure den Updatemechanismus aus, der die geringsten Auswirkungen auf die Kunden-VMs hat. 
 
-Bei der Wartung mit den geringsten Auswirkungen wird der virtuelle Computer für weniger als 10 Sekunden angehalten. In bestimmten Fällen verwendet Azure Wartungsmechanismen, die den Arbeitsspeicherinhalt beibehalten. Diese Mechanismen halten den virtuellen Computer bis zu 30 Sekunden lang an und behalten den Inhalt des RAM-Speichers bei. Anschließend wird der Betrieb des virtuellen Computers fortgesetzt, und seine Uhr wird automatisch synchronisiert. 
+Bei der Wartung mit den geringsten Auswirkungen wird der virtuelle Computer für weniger als 10 Sekunden angehalten. In bestimmten Fällen verwendet Azure Wartungsmechanismen, die den Arbeitsspeicherinhalt beibehalten. Diese Mechanismen halten die VM in der Regel 30 Sekunden lang an und behalten den Inhalt des RAM-Speichers bei. Anschließend wird der Betrieb des virtuellen Computers fortgesetzt, und seine Uhr wird automatisch synchronisiert. 
 
 Wartung mit Speicherbeibehaltung funktioniert für mehr als 90% der virtuellen Azure-Computer. Ausnahmen sind lediglich die G-, M-, N- und H-Serie. Azure verwendet in zunehmendem Maß Technologien zur Livemigration und bessere Mechanismen zur Erhaltung des Arbeitsspeichers, um die Anhaltedauer zu verringern.  
 

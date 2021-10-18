@@ -9,22 +9,22 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 0461228678762adbc4db936c35849f16a482c1a9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 616376d034fd32fae23d24a3a6e12f329604d376
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605504"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858960"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Bewährte Methoden zum Verwenden von Key Vault
 
 ## <a name="use-separate-key-vaults"></a>Verwenden separater Key Vault-Instanzen
 
-Es wird empfohlen, einen Schlüsseltresor pro Anwendung und Umgebung (Entwicklung, Präproduktion und Produktion) zu verwenden. Dadurch können Sie die Geheimnisse nicht umgebungsübergreifend freigegeben und es verringert auch die Bedrohung im Falle einer Sicherheitsverletzung.
+Es wird empfohlen, einen Schlüsseltresor pro Anwendung und Umgebung (Entwicklung, Präproduktion und Produktion) pro Region zu verwenden. Dadurch können Sie Geheimnisse nicht umgebungs- oder regionsübergreifend freigegeben, und die Bedrohung im Falle einer Sicherheitsverletzung wird ebenfalls verringert.
 
 ### <a name="why-we-recommend-separate-key-vaults"></a>Warum wir separate Schlüsseltresore empfehlen
 
-Zugriffsrichtlinien sind ein "Alles-oder-Nichts"-Konzept im Azure Key Vault. Wenn eine Identität über eine bestimmte Berechtigung verfügt (z.B. **Get**), kann die Identität ein *beliebiges* Geheimnis, beliebigen Schlüssel oder beliebiges Zertifikat im Tresor erhalten. Das bedeutet, dass die Gruppierung sensibler Daten im selben Tresor den  *Auswirkungsgrad* eines Sicherheitsereignisses vergrößert, da Angreifer in der Lage sein könnten, auf sensible Informationen über die Konzerne hinweg zuzugreifen. Um dies abzuschwächen, sollten Sie überlegen, auf welche sensiblen Informationen eine bestimmte Anwendung Zugriff haben *sollte*, und dann Ihre Tresore auf der Grundlage dieser Abgrenzung trennen. Die Trennung der Tresore nach Anwendungen ist die gebräuchlichste Abgrenzung.
+Die Key Vault-Instanz definiert die Sicherheitsgrenze für gespeicherte Geheimnisse. Die Gruppierung von Geheimnissen im selben Tresor erweitert den *Ausbreitungsradius* eines Sicherheitsereignisses, da Angreifer in der Lage sein könnten, übergreifend auf Geheimnisse zuzugreifen. Um dies abzuschwächen, sollten Sie überlegen, auf welche Geheimnisse eine bestimmte Anwendung Zugriff besitzen *sollte*, und dann Ihre Schlüsseltresore auf der Grundlage dieser Abgrenzung trennen. Die Trennung von Schlüsseltresoren nach Anwendung ist die gängigste Grenze, aber die Sicherheitsgrenze kann für große Anwendungen (z. B. pro Gruppe verwandter Dienste) präziser sein.
 
 ## <a name="control-access-to-your-vault"></a>Steuern des Zugriffs auf Ihren Schlüsseltresor
 

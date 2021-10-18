@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: c45be7452d71002c2120e37999c2ecfacb8608b0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3e406f9ed38aa9360da3fed2ce256654ad7c10c0
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124800002"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707521"
 ---
 # <a name="preview-azure-automanage-for-virtual-machines"></a>Vorschau: Automatische Azure-Verwaltung (Azure Automanage) für virtuelle Computer
 
@@ -36,7 +36,7 @@ Die automatische Azure-Verwaltung überwacht auch automatisch den Datendrift und
 Bei der automatischen Verarbeitung werden Kundendaten nicht außerhalb des geografischen Standorts gespeichert bzw. verarbeitet, in dem sich Ihre virtuellen Computer befinden. In der Region Südostasien speichert bzw. verarbeitet die automatische Verarbeitung keine Daten außerhalb von Südostasien.
 
 > [!NOTE]
-> Die automatische Verwaltung kann auf virtuellen Azure-Computern und auf Arc-fähigen Servern aktiviert werden. Die automatische Verwaltung ist in der US Government Cloud derzeit nicht verfügbar.
+> Die automatische Verwaltung kann auf virtuellen Azure-Computern und auf Azure Arc-fähigen Servern aktiviert werden. Die automatische Verwaltung ist in der US Government Cloud derzeit nicht verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

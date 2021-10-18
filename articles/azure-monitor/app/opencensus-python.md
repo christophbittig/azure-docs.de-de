@@ -7,12 +7,12 @@ ms.reviewer: mbullwin
 ms.custom: devx-track-python
 author: lzchen
 ms.author: lechen
-ms.openlocfilehash: 988f32cae16a026ddef0294815ffd21ba0d81760
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: 98af913787ede9a0c9f543315043540b7994729f
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112991737"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754233"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Einrichten von Azure Monitor für Ihre Python-Anwendung
 
@@ -27,7 +27,7 @@ Sie haben vielleicht bemerkt, dass OpenCensus mit [OpenTelemetry](https://opente
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- Python-Installation. In diesem Artikel wird [Python 3.7.0](https://www.python.org/downloads/release/python-370/) verwendet, doch können wahrscheinlich auch andere Versionen mit kleineren Änderungen verwendet werden. Das OpenCensus Python SDK unterstützt nur Python v2.7 und v3.4 bis v3.7.
+- Python-Installation. In diesem Artikel wird [Python 3.7.0](https://www.python.org/downloads/release/python-370/) verwendet, doch können wahrscheinlich auch andere Versionen mit kleineren Änderungen verwendet werden. Das OpenCensus Python SDK unterstützt nur Python v2.7 und v3.4 oder höher.
 - Erstellen Sie eine Application Insights-[Ressource](./create-new-resource.md). Ihnen wird ein eigener Instrumentierungsschlüssel (iKey) für Ihre Ressource zugewiesen.
 
 ## <a name="introducing-opencensus-python-sdk"></a>Einführung in das OpenCensus Python SDK
@@ -349,47 +349,47 @@ Mit dem Opencensus Python SDK können Sie Ihrer Metriktelemetrie mithilfe von `t
 
 1. Fügen Sie die Tags, die Sie verwenden möchten, in die Tagzuordnung ein. Die Tagzuordnung fungiert als eine Art „Pool“ aller verfügbaren Tags, die Sie verwenden können.
 
-```python
-...
-tmap = tag_map_module.TagMap()
-tmap.insert("url", "http://example.com")
-...
-```
+    ```python
+    ...
+    tmap = tag_map_module.TagMap()
+    tmap.insert("url", "http://example.com")
+    ...
+    ```
 
 1. Geben Sie für eine bestimmte `View` die Tags an, die Sie beim Aufzeichnen von Metriken mit dieser Ansicht über den Tagschlüssel verwenden möchten.
 
-```python
-...
-prompt_view = view_module.View("prompt view",
-                               "number of prompts",
-                               ["url"], # <-- A sequence of tag keys used to specify which tag key/value to use from the tag map
-                               prompt_measure,
-                               aggregation_module.CountAggregation())
-...
-```
+    ```python
+    ...
+    prompt_view = view_module.View("prompt view",
+                                "number of prompts",
+                                ["url"], # <-- A sequence of tag keys used to specify which tag key/value to use from the tag map
+                                prompt_measure,
+                                aggregation_module.CountAggregation())
+    ...
+    ```
 
 1. Achten Sie darauf, die Tagzuordnung bei der Aufzeichnung in der Messzuordnung zu verwenden. Die in der `View` angegebenen Tagschlüssel müssen in der Tagzuordnung enthalten sein, die für die Aufzeichnung verwendet wird.
 
-```python
-...
-mmap = stats_recorder.new_measurement_map()
-mmap.measure_int_put(prompt_measure, 1)
-mmap.record(tmap) # <-- pass the tag map in here
-...
-```
+    ```python
+    ...
+    mmap = stats_recorder.new_measurement_map()
+    mmap.measure_int_put(prompt_measure, 1)
+    mmap.record(tmap) # <-- pass the tag map in here
+    ...
+    ```
 
 1. Unterhalb der Tabelle `customMetrics` umfassen alle Metrikdatensätze, die mithilfe von `prompt_view` ausgegeben werden, benutzerdefinierte Dimensionen `{"url":"http://example.com"}`.
 
 1. Um Tags mit unterschiedlichen Werten unter Verwendung derselben Schlüsseln zu generieren, erstellen Sie neue Tagzuordnungen für diese.
 
-```python
-...
-tmap = tag_map_module.TagMap()
-tmap2 = tag_map_module.TagMap()
-tmap.insert("url", "http://example.com")
-tmap2.insert("url", "https://www.wikipedia.org/wiki/")
-...
-```
+    ```python
+    ...
+    tmap = tag_map_module.TagMap()
+    tmap2 = tag_map_module.TagMap()
+    tmap.insert("url", "http://example.com")
+    tmap2.insert("url", "https://www.wikipedia.org/wiki/")
+    ...
+    ```
 
 #### <a name="performance-counters"></a>Leistungsindikatoren
 

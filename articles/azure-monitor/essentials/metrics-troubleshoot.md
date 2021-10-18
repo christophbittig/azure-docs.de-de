@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
-ms.openlocfilehash: 6acab9618566766b12b4b236c75aa58386100513
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: f8ff057f818999a9d170fe6f58101c99cd931f7e
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961063"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129809684"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problembehandlung für Metrikdiagramme
 
@@ -51,11 +51,11 @@ Wenn Sie [die Grenzen der y-Achse](../essentials/metrics-charts.md#locking-the-r
 
 **Lösung:** Stellen Sie sicher, dass die y-Achsenbegrenzungen des Diagramms nicht außerhalb des Bereichs der Metrikwerte gesperrt sind. Wenn die y-Achsenbegrenzungen gesperrt sind, sollten Sie sie möglicherweise vorübergehend zurücksetzen, um sicherzustellen, dass die Metrikwerte nicht außerhalb des Diagrammbereichs liegen. Die Sperrung des y-Achsenbereichs wird nicht mit automatischer Granularität für die Diagramme mit der Aggregation **sum**, **min** und **max** empfohlen, da sich ihre Werte mit der Granularität ändern, indem die Größe des Browserfensters geändert oder von einer Bildschirmauflösung zur anderen gewechselt wird. Durch den Wechsel der Granularität bleibt der Anzeigebereich Ihres Diagramms möglicherweise leer.
 
-### <a name="you-are-looking-at-a-guest-os-metric-but-didnt-enable-azure-diagnostic-extension"></a>Sie betrachten die Metrik eines Gastbetriebssystems, haben aber die Azure-Diagnoseerweiterung nicht aktiviert
+### <a name="you-are-looking-at-a-guest-classic-metric-but-didnt-enable-azure-diagnostic-extension"></a>Sie betrachten die Metrik „Gast (klassisch), haben aber die Azure-Diagnoseerweiterung nicht aktiviert
 
-Das Sammeln von **Gastbetriebssystem**-Metriken erfordert die Konfiguration der Azure-Diagnoseerweiterung oder deren Aktivierung über das Fenster **Diagnoseeinstellungen** für Ihre Ressource.
+Das Erfassen von Metriken des Typs **Gast (klassisch)** erfordert die Konfiguration der Azure-Diagnoseerweiterung oder deren Aktivierung über das Fenster **Diagnoseeinstellungen** für Ihre Ressource.
 
-**Lösung:** Wenn die Azure-Diagnoseerweiterung aktiviert ist, Ihre Metriken aber immer noch nicht angezeigt werden, führen Sie die im [Handbuch zur Problembehandlung der Azure-Diagnoseerweiterung](../agents/diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal) beschriebenen Schritte aus. Weitere Informationen finden Sie auch in den Schritten zur Problembehandlung für [Namespace und Metriken des Gastbetriebssystems können nicht ausgewählt werden](#cannot-pick-guest-os-namespace-and-metrics).
+**Lösung:** Wenn die Azure-Diagnoseerweiterung aktiviert ist, Ihre Metriken aber immer noch nicht angezeigt werden, führen Sie die im [Handbuch zur Problembehandlung der Azure-Diagnoseerweiterung](../agents/diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal) beschriebenen Schritte aus. Weitere Informationen finden Sie auch in den Schritten zur Problembehandlung für [Namespace und Metriken für „Gast (klassisch)“ können nicht ausgewählt werden](#cannot-pick-guest-namespace-and-metrics).
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>Meldung „Fehler beim Abrufen von Daten“ im Dashboard
 
@@ -79,19 +79,19 @@ In vielen Fällen ist der beobachtete Abfall der Metrikwerte eine Fehlinterpreta
 
 **Lösung:** Dieses Verhalten ist beabsichtigt. Wir sind der Meinung, dass die sofortige Anzeige von Daten beim Eintreffen von Vorteil ist, auch wenn die Daten nur *teilweise* vorliegen oder *unvollständig* sind. Auf diese Weise können Sie wichtige Schlussfolgerungen früher ziehen und sofort mit der Untersuchung beginnen. Wenn z. B. für eine Metrik, die die Anzahl der Fehler anzeigt, der Teilwert X angezeigt wird, bedeutet dies, dass es in einer bestimmten Minute mindestens X Fehler gab. Sie können sofort mit der Untersuchung des Problems beginnen, anstatt darauf zu warten, dass die genaue Anzahl der in dieser Minute aufgetretenen Fehler angezeigt wird, was vielleicht nicht so entscheidend ist. Das Diagramm wird aktualisiert, sobald das gesamte Dataset vorliegt, aber zu diesem Zeitpunkt werden möglicherweise auch neue unvollständige Datenpunkte aus den letzten Minuten angezeigt.
 
-## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>Der Namespace und die Metriken des Gastbetriebssystems können nicht ausgewählt werden
+## <a name="cannot-pick-guest-namespace-and-metrics"></a>Namespace und Metriken für „Gast (klassisch)“ können nicht ausgewählt werden
 
-Virtuelle Computer und VM-Skalierungsgruppen weisen zwei Kategorien von Metriken auf: **Hostmetriken des virtuellen Computers**, die von der Azure-Hostumgebung gesammelt werden, und Metriken des **Gastbetriebssystems (klassisch)** , die von dem [Überwachungs-Agent](../agents/agents-overview.md) gesammelt werden, der auf Ihren virtuellen Computern ausgeführt wird. Sie installieren den Überwachungs-Agent, indem Sie die [Azure-Diagnoseerweiterung](../agents/diagnostics-extension-overview.md) aktivieren.
+Virtuelle Computer und VM-Skalierungsgruppen weisen zwei Kategorien von Metriken auf: Metriken des **Hosts für virtuelle Maschinen**, die von der Azure-Hostingumgebung erfasst werden, und Metriken des Typs **Gast (klassisch)** , die von dem [Überwachungs-Agent](../agents/agents-overview.md) erfasst werden, der auf Ihren virtuellen Computern ausgeführt wird. Sie installieren den Überwachungs-Agent, indem Sie die [Azure-Diagnoseerweiterung](../agents/diagnostics-extension-overview.md) aktivieren.
 
-Standardmäßig werden die Metriken des Gastbetriebssystems im Azure Storage-Konto gespeichert, das Sie auf der Registerkarte **Diagnoseeinstellungen** Ihrer Ressource auswählen. Wenn die Metriken des Gastbetriebssystems nicht gesammelt werden oder der Metrik-Explorer nicht darauf zugreifen kann, wird nur der Namespace für die **Hostmetriken des virtuellen Computers** angezeigt:
+Standardmäßig werden die Metriken des Typs „Gast (klassisch)“ im Azure Storage-Konto gespeichert, das Sie auf der Registerkarte **Diagnoseeinstellungen** Ihrer Ressource auswählen. Wenn keine Gastmetriken erfasst werden oder der Metrik-Explorer nicht darauf zugreifen kann, wird nur der Namespace für die Metrik des **Hosts für virtuelle Maschinen** angezeigt:
 
-![Abbildung eines Diagramms mit Metriken](./media/metrics-troubleshoot/vm.png)
+![Abbildung eines Diagramms mit Metriken](./media/metrics-troubleshoot/vm-metrics.png)
 
-**Lösung:** Wenn Namespace und Metriken des **Gastbetriebssystems (klassisch)** nicht im Metrik-Explorer angezeigt werden:
+**Lösung**: Wenn Namespace und Metriken für **Gast (klassisch)** nicht im Metrik-Explorer angezeigt werden, gehen Sie folgendermaßen vor:
 
 1. Vergewissern Sie sich, dass die [Azure-Diagnoseerweiterung](../agents/diagnostics-extension-overview.md) aktiviert und konfiguriert ist, um Metriken zu sammeln.
     > [!WARNING]
-    > Sie können den [Log Analytics-Agent](../agents/agents-overview.md#log-analytics-agent) nicht verwenden (auch als Microsoft Monitoring Agent oder „MMA“ bezeichnet), um das **Gastbetriebssystem** an ein Speicherkonto zu senden.
+    > Sie können den [Log Analytics-Agent](../agents/agents-overview.md#log-analytics-agent) nicht verwenden (auch als Microsoft Monitoring Agent oder „MMA“ bezeichnet), um Metriken des Typs **Gast (klassisch)** an ein Speicherkonto zu senden.
 
 1. Stellen Sie sicher, dass der **Microsoft.Insights**-Ressourcenanbieter [für Ihr Abonnement registriert ist](#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
 

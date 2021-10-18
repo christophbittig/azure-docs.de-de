@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 3922b716a5537838be06f3fec6a9626e59fa929f
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: d4cb278fbfd6feb3fb2be0e2a113092ff24644cc
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129055102"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740263"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud"></a>Application Insights - Java-Prozess-Agent in der Azure Spring Cloud
 
@@ -54,6 +54,9 @@ Aktivieren Sie den Java In-Process Agent mit dem folgenden Verfahren.
 3. Wenn **Anwendungseinblicke** aktiviert ist, können Sie eine optionale Abtastrate konfigurieren (Standard 10,0%).
 
    [ ![IPA 0](media/spring-cloud-application-insights/insights-process-agent-0.png)](media/spring-cloud-application-insights/insights-process-agent-0.png)
+
+> [!Note]
+> Verwenden Sie nicht dieselbe KI in verschiedenen Azure Spring Cloud-Instanzen, da sonst gemischte Daten angezeigt werden.
 
 ## <a name="using-the-application-insights-feature"></a>Verwenden des Application Insights-Features
 

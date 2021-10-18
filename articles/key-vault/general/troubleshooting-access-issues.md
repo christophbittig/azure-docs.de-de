@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: c5fab8b856ff9c82a0de887dc9c322dbf541348b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4d82e0193d891f423245ce2743ad34ac7bcf5d1
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791406"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856485"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Behandeln von Problemen mit Schlüsseltresor-Zugriffsrichtlinien
 
@@ -39,7 +39,12 @@ Es gibt zwei verschiedene Gründe dafür, dass im Abschnitt „Unbekannt“ eine
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>Wie kann ich die Zugriffssteuerung pro Schlüsseltresorobjekt zuweisen? 
 
-Informationen zur Verfügbarkeit des geheimnis-/schlüssel-/zertifikatspezifischen Zugriffssteuerungsfeatures finden Sie [hier](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/32213176-per-secret-key-certificate-access-control).
+Das RBAC-Berechtigungsmodell von Key Vault lässt die Berechtigung pro Objekt zu. Die Berechtigungen für einzelne Schlüssel, Geheimnisse und Zertifikate sollten nur in bestimmten Szenarien verwendet werden:
+
+-   Anwendungen mit mehreren Ebenen, die die Zugriffssteuerung zwischen den Ebenen trennen müssen
+
+-   Freigeben einzelner Geheimnisse zwischen mehreren Anwendungen
+
 
 ### <a name="how-can-i-provide-key-vault-authenticate-using-access-control-policy"></a>Wie kann ich die Schlüsseltresorauthentifizierung per Zugriffssteuerungsrichtlinie bereitstellen?
 

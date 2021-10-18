@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: 90486f944c2c891415b61fd29731f6f485ca0f04
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9693b2d3eebd52d76bf5e52104c8b5d8c585c0ee
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128673158"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807340"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 
@@ -167,7 +167,7 @@ Die folgende Tabelle zeigt die Darstellung der Ressourcen im klassischen Bereits
 | VIP-Adresse |Öffentliche IP-Adresse mit DNS-Name |Die virtuelle IP-Adresse wird zu einer öffentlichen IP-Adresse und dem Load Balancer zugeordnet. Eine virtuelle IP-Adresse kann nur migriert werden, wenn ihr ein Eingabeendpunkt zugewiesen ist. |
 | Virtuelles Netzwerk |Virtuelles Netzwerk |Das virtuelle Netzwerk wird mit allen zugehörigen Eigenschaften in das Resource Manager-Bereitstellungsmodell migriert. Eine neue Ressourcengruppe namens `-migrated`wird erstellt. |
 | Reservierte IP-Adressen |Öffentliche IP-Adresse mit statischer Zuordnungsmethode |Dem Load Balancer zugeordnete reservierte IP-Adressen werden zusammen mit dem Clouddienst oder virtuellen Computer migriert. Nicht zugeordnete reservierte IP-Adressen können mithilfe von [Move-AzureReservedIP](/powershell/module/servicemanagement/azure.service/move-azurereservedip) migriert werden.  |
-| Öffentliche IP-Adresse pro virtuellem Computer |Öffentliche IP-Adresse mit dynamischer Zuordnungsmethode |Die dem virtuellen Computer zugeordnete öffentliche IP-Adresse wird in eine öffentliche IP-Adressressource mit statischer Zuordnungsmethode konvertiert. |
+| Öffentliche IP-Adresse pro virtuellem Computer |Öffentliche IP-Adresse mit dynamischer Zuordnungsmethode |Die dem virtuellen Computer zugeordnete öffentliche IP-Adresse wird in eine öffentliche IP-Adressressource mit dynamischer Zuordnungsmethode konvertiert. |
 | NSGs |NSGs |Einem virtuellen Computer oder einem Subnetz zugeordnete Netzwerksicherheitsgruppen (Network Security Groups, NSGs) werden im Rahmen der Migration für das Resource Manager-Bereitstellungsmodell geklont. Die NSG aus dem klassischen Bereitstellungsmodell wird bei der Migration nicht entfernt. Während der Migration werden jedoch Vorgänge auf Verwaltungsebene für die NSG blockiert. Nicht zugeordnete NSGs können mithilfe von [Move-AzureNetworkSecurityGroup](/powershell/module/servicemanagement/azure.service/move-azurenetworksecuritygroup) migriert werden.|
 | DNS-Server |DNS-Server |DNS-Server, die einem virtuellen Netzwerk oder dem virtuellen Computer zugeordnet sind, werden im Rahmen der entsprechenden Ressourcenmigration zusammen mit allen Eigenschaften migriert. |
 | UDRs |UDRs |Einem Subnetz zugeordnete benutzerdefinierte Routen (User-Defined Routes, UDRs) werden im Rahmen der Migration für das Resource Manager-Bereitstellungsmodell geklont. Die UDR aus dem klassischen Bereitstellungsmodell wird bei der Migration nicht entfernt. Während der Migration werden Vorgänge auf Verwaltungsebene für die UDR blockiert. Nicht zugeordnete UDRs können mithilfe von [Move-AzureRouteTable](/powershell/module/servicemanagement/azure.service/Move-AzureRouteTable) migriert werden. |

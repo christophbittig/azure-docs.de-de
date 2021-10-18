@@ -2,13 +2,13 @@
 title: BICEP-Dateistruktur und-Syntax
 description: Beschreibt die Struktur und die Eigenschaften einer BICEP-Datei mithilfe von deklarativer Syntax.
 ms.topic: conceptual
-ms.date: 10/01/2021
-ms.openlocfilehash: e627821f80f76ff536859fd643bd01c55d50ab7e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/07/2021
+ms.openlocfilehash: 8251c490b61f3bbb739fd9519c10b1b124f9064c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350410"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129661120"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -202,7 +202,7 @@ Weitere Informationen finden Sie unter [Variablen in Bicep](./variables.md).
 
 ## <a name="resource"></a>Resource
 
-Verwenden `resource` Sie das Schlüsselwort, um eine bereitzustellende Ressource zu definieren. Die Ressourcendeklaration enthält einen symbolischen Namen für die Ressource. Sie verwenden diesen symbolischen Namen in anderen Teilen der BICEP-Datei, wenn Sie einen Wert aus der Ressource erhalten müssen. Der symbolische Name kann a-z, A-Z, 0-9, und „_“ enthalten, kann aber nicht mit einer Zahl beginnen.
+Verwenden `resource` Sie das Schlüsselwort, um eine bereitzustellende Ressource zu definieren. Die Ressourcendeklaration enthält einen symbolischen Namen für die Ressource. Sie verwenden diesen symbolischen Namen in anderen Teilen der BICEP-Datei, wenn Sie einen Wert aus der Ressource erhalten müssen. Bei symbolischen Namen wird zwischen Groß- und Kleinschreibung unterschieden. Sie dürfen Buchstaben, Zahlen und _; enthalten, jedoch nicht mit einer Zahl beginnen.
 
 Die Ressourcendeklaration enthält auch den Ressourcentyp und die API-Version.
 

@@ -1,28 +1,28 @@
 ---
-title: Azure Automanage für Server mit Arc-Unterstützung
-description: Erfahren Sie mehr über Azure Automanage für Server mit Arc-Unterstützung
+title: Azure Automanage für Server mit Azure Arc-Unterstützung
+description: Erfahren Sie mehr über Azure Automanage für Server mit Azure Arc-Unterstützung
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.collection: linux
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 06/24/2021
-ms.openlocfilehash: ce12689548884d4c57363851f7de99b5fb067ef6
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: cb04cdd75815ecc0579d9e4efbda9c49f1a7ff1c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129456231"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713438"
 ---
-# <a name="azure-automanage-for-machines-best-practices---arc-enabled-servers"></a>Bewährte Methoden für Azure Automanage für Computer – Server mit Arc-Unterstützung
+# <a name="azure-automanage-for-machines-best-practices---azure-arc-enabled-servers"></a>Bewährte Methoden für Azure Automanage für Computer – Server mit Azure Arc-Unterstützung
 
-Diese Azure-Dienste werden automatisch für Sie integriert, wenn Sie die bewährten Methoden für Automanage für Computer auf einem Server mit Arc-Unterstützung verwenden. Sie sind für unser Whitepaper über bewährte Methoden unerlässlich, das Sie in unserem [Cloud Adoption Framework](/azure/cloud-adoption-framework/manage/azure-server-management) finden.
+Das Onboarding dieser Azure-Dienste wird automatisch für Sie ausgeführt, wenn Sie die bewährten Methoden für Automanage für Computer auf einem Server mit Azure Arc-Unterstützung verwenden. Sie sind für unser Whitepaper über bewährte Methoden unerlässlich, das Sie in unserem [Cloud Adoption Framework](/azure/cloud-adoption-framework/manage/azure-server-management) finden.
 
 Bei all diesen Diensten werden wir das Onboarding automatisch durchführen, sie automatisch konfigurieren, auf Datendrift überwachen und korrigieren, wenn ein Datendrift festgestellt wird. Weitere Informationen zu diesem Prozess finden Sie unter [Automatische Azure-Verwaltung für virtuelle Computer](automanage-virtual-machines.md).
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Automanage unterstützt die folgenden Betriebssysteme für Server mit Arc-Unterstützung
+Automanage unterstützt die folgenden Betriebssysteme für Server mit Azure Arc-Unterstützung
 
 - Windows Server 2012/R2
 - Windows Server 2016

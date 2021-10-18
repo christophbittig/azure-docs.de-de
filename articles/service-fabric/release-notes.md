@@ -5,12 +5,12 @@ ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 11615d48bb1331e068c685a507670f0add883344
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8404078943f9398df6604c78413bc3750f13d655
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122353651"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729081"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric-Versionen
 
@@ -40,6 +40,9 @@ Wir freuen uns, Ihnen mitteilen zu können, dass die Einführung von Release 8.
 | Veröffentlichungsdatum | Release | Weitere Informationen |
 |---|---|---|
 | 28. Juli 2021 | [Azure Service Fabric 8.1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-release/ba-p/2594194)  | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81.md)|
+| 13. August 2021 | [Azure Service Fabric 8.1 First Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-first-refresh-release/ba-p/2638798) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81CU1.md) |
+| 09. September 2021 | [Azure Service Fabric 8.1 Second Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-second-refresh-release/ba-p/2734904) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81CU2.md) |
+| 06. Oktober2021 | [Azure Service Fabric 8.1 Third Refresh Release](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-1-third-refresh-release/ba-p/2816117) | [Versionshinweise](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_81CU3.md) |
 
 
 ## <a name="service-fabric-80"></a>Service Fabric 8.0

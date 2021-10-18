@@ -4,12 +4,12 @@ description: Azure Functions unterstützt mehrere Versionen der Runtime. Lernen 
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 09/22/2021
-ms.openlocfilehash: 85df4bec5eb4802820a8837a1bb23394851aca42
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 516bcbdd00ae4b116326e797746485c82be9c3fb
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637616"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740510"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Übersicht über die Runtimeversionen von Azure Functions
 
@@ -74,19 +74,14 @@ Jede Funktions-App, die an `~2.0` angeheftet wird, kann weiterhin unter .NET Cor
 
 Die Azure Functions-Version 4.x bietet eine hohe Abwärtskompatibilität mit der Version 3.x.  Bei vielen Apps sollte problemlos ein Upgrade auf die Version 4.x möglich sein, ohne Codeänderungen vornehmen zu müssen. Führen Sie ausführliche Tests durch, bevor die Hauptversion in Produktions-Apps geändert wird.
 
-So migrieren Sie eine App von 3.x zu 4.x:
+Um eine App von 3.x zu 4.x zu migrieren, legen Sie die `FUNCTIONS_EXTENSION_VERSION`-Anwendungseinstellung auf `~4` fest, indem Sie den folgenden Azure CLI-Befehl verwenden:
 
-- Legen Sie die `FUNCTIONS_EXTENSION_VERSION`-Anwendungseinstellung auf `~4` fest, und zwar mit dem folgenden Azure CLI-Befehl:
+```bash
+az functionapp config appsettings set --settings FUNCTIONS_EXTENSION_VERSION=~4 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
 
-    ```bash
-    az functionapp config appsettings set --settings FUNCTIONS_EXTENSION_VERSION=~4 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
-    ```
-
-- Für Windows Funktionen-Apps erfordert Runtime, dass .NET 6.0 mit dem folgenden Azure CLI-Befehl aktiviert wird:
-
-    ```bash
-    az functionapp config set --net-framework-version v6.0 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
-    ```
+# For Windows function apps only, also enable .NET 6.0 that is needed by the runtime
+az functionapp config set --net-framework-version v6.0 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
+```
 
 ### <a name="breaking-changes-between-3x-and-4x"></a>Wichtige Unterschiede zwischen 3.x und 4.x
 
@@ -101,6 +96,13 @@ In diesem Abschnitt werden die Änderungen erläutert, die vor einem App-Upgrade
 - Azure Functions 4.x erzwingt [Mindestversionsanforderungen](https://github.com/Azure/Azure-Functions/issues/1987) für Erweiterungen. Führen Sie ein Upgrade auf die neueste Version der betroffenen Erweiterungen durch. Für non-.NET Sprachen führen Sie ein [Upgrade](./functions-bindings-register.md#extension-bundles) auf Version 2.x oder höher des Erweiterungspakets durch.
 
 - Standardmäßige und maximale Timeouts werden jetzt in 4.x Linux-Verbrauchsfunktions-Apps erzwungen.
+
+- Application Insights ist nicht mehr standardmäßig in Version 4.x enthalten. Das Produkt ist jetzt als separate Erweiterung verfügbar.
+    - Fügen Sie für In-Process-.NET-Apps Ihrer Funktions-App das Erweiterungspaket [Microsoft.Azure.WebJobs.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ApplicationInsights/) hinzu.
+    - Für isolierte .NET-Apps:
+        - Fügen Sie Ihrer Funktions-App das Erweiterungspaket [Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights/) hinzu.
+        - Aktualisieren Sie die Pakete [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/) und [Microsoft.Azure.Functions.Worker.Sdk](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk/) auf die neuesten Versionen.
+    - Für andere Sprachen umfasst ein zukünftiges Update auf [Azure Functions-Erweiterungspaketen](functions-bindings-register.md#extension-bundles) die Application Insights-Erweiterung. Ihre App verwendet das neue Paket automatisch, wenn es verfügbar ist.
 
 #### <a name="languages"></a>Sprachen
 
