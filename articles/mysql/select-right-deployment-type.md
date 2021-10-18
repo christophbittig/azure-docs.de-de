@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: ee18a405ca6c6a9d2e6a3a6cceb5c0ff89b5cf73
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3126eb9a2c3289f6fbc97a14fadf94300d1c2e84
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748605"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728777"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Auswählen der richtigen MySQL Server-Option in Azure
 
@@ -111,7 +111,7 @@ Die Hauptunterschiede zwischen diesen Optionen werden in der folgenden Tabelle a
 | [**Überwachung**](flexible-server/concepts-monitoring.md) | | | |
 | Azure Monitor-Integration und -Warnungen | Unterstützt | Unterstützt | Vom Benutzer verwaltet |
 | Überwachen von Datenbankvorgängen | Unterstützt | Unterstützt | Vom Benutzer verwaltet |
-| Statistik zur Abfrageleistung | Unterstützt | Nicht unterstützt | Vom Benutzer verwaltet |
+| Statistik zur Abfrageleistung | Unterstützt | Unterstützt (mit Arbeitsmappen)| Vom Benutzer verwaltet |
 | Serverprotokolle | Unterstützt | Unterstützt (mithilfe von Diagnoseprotokollen) | Vom Benutzer verwaltet |
 | Überwachungsprotokolle | Unterstützt | Unterstützt | Unterstützt | 
 | Fehlerprotokolle | Nicht unterstützt | Unterstützt | Unterstützt |

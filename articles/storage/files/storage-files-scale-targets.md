@@ -4,15 +4,15 @@ description: Informationen zu den Skalierbarkeits- und Leistungszielen für Azur
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 10/06/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 83e33933e8afb8b376750368a64c60cb56406a75
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 66ad68711d57767f6f657d941222e4b225c4b20e
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651539"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658935"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über die SMB- und NFS-Dateisystemprotokolle zugegriffen werden kann. Dieser Artikel behandelt die Skalierbarkeits- und Leistungsziele für Azure Files und Azure-Dateisynchronisierung.
@@ -71,7 +71,7 @@ Azure unterstützt mehrere Arten von Speicherkonten für unterschiedliche Kunden
 
 <sup>1</sup> Die Grenzwerte für Standarddateifreigaben gelten für alle drei Dienstebenen, die für Standarddateifreigaben verfügbar sind: transaktionsoptimiert, heiß und kalt.
 
-<sup>2</sup> Der Standardwert für Standarddateifreigaben ist 5 TiB. Einzelheiten zum Erstellen von Dateifreigaben mit einer Größe von 100 TiB und zum Vergrößern von Standarddateifreigaben auf bis zu 100 TiB finden Sie unter [Erstellen einer Azure-Dateifreigabe](./storage-how-to-create-file-share.md).
+<sup>2</sup> Der Standardwert für Standarddateifreigaben ist 5 TiB. Einzelheiten zum Erstellen von Dateifreigaben mit einer Größe von 100 TiB und zum Vergrößern von Standarddateifreigaben auf bis zu 100 TiB finden Sie unter [Erstellen einer Azure-Dateifreigabe](./storage-how-to-create-file-share.md). Um die größeren Skalierungsziele nutzen zu können, müssen Sie Ihr Kontingent so ändern, dass es größer als 5 TiB ist.
 
 ### <a name="file-scale-targets"></a>Dateiskalierbarkeitsziele
 | attribute | Dateien in Standard-Dateifreigaben  | Dateien in Premium-Dateifreigaben  |

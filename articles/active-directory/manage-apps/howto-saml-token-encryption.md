@@ -1,6 +1,7 @@
 ---
-title: SAML-Tokenverschlüsselung in Azure Active Directory
+title: SAML-Tokenverschlüsselung
 description: Erfahren Sie, wie Sie die SAML-Tokenverschlüsselung in Azure Active Directory konfigurieren.
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 03/13/2020
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dc7169055f006ca12c2f291d20683022a27d7a2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d15e4425b7506ada2ac1dcaf9f83bb4112a21639
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355916"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617642"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Konfigurieren der Azure AD-SAML-Tokenverschlüsselung
+# <a name="configure-azure-active-directory-saml-token-encryption"></a>Konfigurieren der SAML-Tokenverschlüsselung in Azure Active Directory
 
 > [!NOTE]
 > Die Tokenverschlüsselung ist ein Premium-Feature von Azure Active Directory (Azure AD). Weitere Informationen zu verfügbaren Editionen, Features und Preisen von Azure AD finden Sie unter [Azure Active Directory – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).

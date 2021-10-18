@@ -6,20 +6,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 4165768837f590690a39226b983b4d32361957e3
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.date: 10/06/2021
+ms.openlocfilehash: 5ea2c908cce37e19023e27b0e3e4cc76f778b7f0
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730557"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620163"
 ---
-# <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung in Azure Cognitive Search
+# <a name="configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung in Azure Cognitive Search
 
 > [!IMPORTANT] 
 > Dieses Feature befindet sich in der öffentlichen Vorschau und unterliegt den [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Die [Vorschau-REST-API](/rest/api/searchservice/index-preview) unterstützt dieses Feature.
 
-In diesem Artikel erfahren Sie, wie Sie eine Zwischenspeicherung zu einer Anreicherungspipeline hinzufügen, sodass Sie Schritte inkrementell ändern können, ohne jedes Mal eine Neuerstellung durchführen zu müssen. Standardmäßig ist ein Skillset zustandslos, und eine Änderung eines beliebigen Teils seiner Komposition erfordert eine vollständige erneute Ausführung des Indexers. Mit der inkrementellen Anreicherung kann der Indexer ermitteln, welche Teile der Dokumentstruktur auf der Grundlage der in den Skillset- oder Indexerdefinitionen erkannten Änderungen aktualisiert werden müssen. Die vorhandene verarbeitete Ausgabe wird nach Möglichkeit beibehalten und wiederverwendet. 
+In diesem Artikel wird erklärt, wie Sie eine Zwischenspeicherung zu einer Anreicherungspipeline hinzufügen, sodass Sie Schritte inkrementell ändern können, ohne jedes Mal eine Neuerstellung durchführen zu müssen. Standardmäßig ist ein Skillset zustandslos, und eine Änderung eines beliebigen Teils seiner Komposition erfordert eine vollständige erneute Ausführung des Indexers. Mit der inkrementellen Anreicherung kann der Indexer ermitteln, welche Teile der Dokumentstruktur auf der Grundlage der in den Skillset- oder Indexerdefinitionen erkannten Änderungen aktualisiert werden müssen. Die vorhandene verarbeitete Ausgabe wird nach Möglichkeit beibehalten und wiederverwendet. 
 
 Zwischengespeicherte Inhalte werden mithilfe der von Ihnen bereitgestellten Kontoinformationen in Azure Storage platziert. Der Container namens `ms-az-search-indexercache-<alpha-numerc-string>` wird erstellt, wenn Sie den Indexer ausführen. Er sollte als eine interne Komponente angesehen werden, die von Ihrem Suchdienst verwaltet wird und nicht geändert werden darf.
 
@@ -29,12 +29,9 @@ Wenn Sie mit dem Einrichten von Indexern nicht vertraut sind, beginnen Sie mit [
 
 Wenn Sie über einen Indexer mit einem bereits vorhandenen Skillset verfügen, führen Sie die Schritte in diesem Abschnitt aus, um die Zwischenspeicherung hinzuzufügen. Sie müssen den Indexer einmalig vollständig zurücksetzen und erneut ausführen, bevor die inkrementelle Verarbeitung wirksam werden kann.
 
-> [!TIP]
-> Als Proof of Concept können Sie diesen [Portal-Schnellstart](cognitive-search-quickstart-blob.md) ausführen, um erforderliche Objekte zu erstellen, und Ihre Updates dann mit Postman oder dem Portal erstellen. Möglicherweise möchten Sie eine abrechenbare Cognitive Services-Ressource anfügen. Wenn Sie den Indexer mehrmals ausführen, ist die tägliche kostenlose Ressourcenzuweisung erschöpft, bevor Sie alle Schritte ausführen können.
-
 ### <a name="step-1-get-the-indexer-definition"></a>Schritt 1: Abrufen der Indexerdefinition
 
-Beginnen Sie mit einem gültigen, vorhandenen Indexer, der über diese Komponenten verfügt: Datenquelle, Skillset, Index. Der Indexer sollte ausführbar sein. 
+Beginnen Sie mit einem gültigen, vorhandenen Indexer, der über diese Komponenten verfügt: Datenquelle, Skillset, Index. Der Indexer sollte ausführbar sein.
 
 Erstellen Sie mithilfe eines API-Clients eine [GET Indexer-Anforderung](/rest/api/searchservice/get-indexer), um die aktuelle Konfiguration des Indexers abzurufen. Wenn Sie die Vorschauversion der API verwenden, um den Indexer zu erhalten, wird den Definitionen eine `cache`-Eigenschaft hinzugefügt, die auf NULL festgelegt ist.
 

@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 07a4d0b7b932b92307b77420df1a21027df1efb0
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 1463c4e879b364f8242d55aa58b424a8cc6f9cf9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538055"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706791"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Wissensspeicher in Azure Cognitive Search
 
-Der Wissensspeicher ist ein Feature von Azure Cognitive Search, das Ausgaben aus einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md) in Tabellen und Blobs in Azure Storage zur unabhängigen Analyse oder Downstreamverarbeitung sendet.
+Ein Wissensspeicher ist eine von einer Cognitive Search-[KI-Anreicherungspipeline](cognitive-search-concept-intro.md) erstellte Datensenke und speichert angereicherte Inhalte in Tabellen und Blobcontainern in Azure Storage für unabhängige Analysen oder Downstreamverarbeitung in Nicht-Suchszenarien wie Knowledge Mining.
 
 Wenn Sie in der Vergangenheit kognitive Skills verwendet haben, wissen Sie bereits, dass *Skillsets* ein Dokument durch eine Sequenz von Anreicherungen verschieben, die atomische Transformationen aufrufen, z. B. das Erkennen von Entitäten oder das Übersetzen von Text. Bei der Ausgabe kann es sich um einen Suchindex oder um Projektionen in einem Wissensspeicher handeln. Die beiden Ausgaben in Form des Suchindexes und Wissensspeichers schließen sich gegenseitig aus und werden durch dieselbe Pipeline erzeugt. Sie werden von denselben Eingaben abgeleitet, ergeben jedoch eine Ausgabe, die strukturiert, gespeichert und in unterschiedlichen Anwendungen verwendet wird.
 

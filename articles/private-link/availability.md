@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: aaa013a25e9131ec55f002db089de0d353f13f7c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 175b940995ed4e68e1358989e8c9b09c201f3ce4
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128585764"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711813"
 ---
 # <a name="azure-private-link-availability"></a>Azure Private Link-Verfügbarkeit
 
@@ -39,6 +39,7 @@ In den folgenden Tabellen sind die Private Link-Dienste und die Regionen, in den
 |Azure Event Hub | Alle öffentlichen Regionen<br/>Alle Government-Regionen      |   | Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Event Hub erstellen.](../event-hubs/private-link-service.md)  |
 | Azure Monitor <br/>(Log Analytics und Application Insights) | Alle öffentlichen Regionen      |  | Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Monitor erstellen.](../azure-monitor/logs/private-link-security.md)   |
 |Azure Data Factory | Alle öffentlichen Regionen<br/> Alle Government-Regionen<br/>Alle China-Regionen    | Anmeldeinformationen müssen in einem Azure-Schlüsseltresor gespeichert werden.| Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Data Factory erstellen.](../data-factory/data-factory-private-link.md)   |
+|Azure HDInsight | Alle öffentlichen Regionen<br/>Alle Government-Regionen      |   | Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure HDInsight erstellen.](../hdinsight/hdinsight-private-link.md)  |
 
 ### <a name="compute"></a>Compute
 

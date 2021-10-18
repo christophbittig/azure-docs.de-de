@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/12/2021
+ms.date: 10/05/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ed289789576df7c81368b2b98001968c358c0e0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f944caecae6d35e680f5c5beb1a6e23fc422e698
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440199"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618086"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Anzeigen, Hinzufügen und Entfernen von Zuweisungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -72,7 +72,7 @@ $assignments = Get-MgEntitlementManagementAccessPackageAssignment -AccessPackage
 $assignments | ft Id,AssignmentState,TargetId,{$_.Target.DisplayName}
 ```
 
-## <a name="directly-assign-a-user"></a>Direktes Zuweisen eines Benutzers
+## <a name="directly-assign-a-user"></a>Direktes Zuweisen eines Benutzers 
 
 In einigen Fällen möchten Sie bestimmte Benutzer möglicherweise einem Zugriffspaket direkt zuweisen, damit diese das Zugriffspaket nicht extra anfordern müssen. Damit dies möglich ist, muss das Zugriffspaket eine Richtlinie enthalten, die direkte Zuweisungen eines Administrator erlaubt.
 
@@ -108,6 +108,38 @@ In einigen Fällen möchten Sie bestimmte Benutzer möglicherweise einem Zugriff
 1. Klicken Sie auf **Hinzufügen**, um die ausgewählten Benutzer dem Zugriffspaket direkt zuzuweisen.
 
     Klicken Sie nach kurzer Zeit auf **Aktualisieren**, um die Benutzer in der Liste „Zuweisungen“ anzuzeigen.
+    
+> [!NOTE]
+> Beim Zuweisen von Benutzern zu einem Zugriffspaket müssen Administratoren überprüfen, ob die Benutzer basierend auf den vorhandenen Richtlinienanforderungen für dieses Zugriffspaket berechtigt sind. Andernfalls werden die Benutzer dem Zugriffspaket nicht erfolgreich zugewiesen. Wenn das Zugriffspaket eine Richtlinie enthält, die erfordert, dass Benutzeranforderungen genehmigt werden, können Benutzer dem Paket nicht direkt zugewiesen werden, ohne dass diese Zuweisung von den festgelegten genehmigenden Benutzern genehmigt wurde.
+
+## <a name="directly-assign-any-user-preview"></a>Direktes Zuweisen eines Benutzers (Vorschau)
+Mit der Azure AD-Berechtigungsverwaltung können Sie auch externe Benutzer direkt einem Zugriffspaket zuweisen, um die Zusammenarbeit mit Partnern zu vereinfachen. Hierzu muss das Zugriffspaket über eine Richtlinie verfügen, mit der Benutzer, die sich noch nicht in Ihrem Verzeichnis befinden, den Zugriff anfordern können.
+
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer, Zugriffspaketmanager oder Zugriffspaketzuweisungsmanager
+
+1.  Wählen Sie im Azure-Portal die Option **Azure Active Directory** und dann **Identity Governance** aus.
+
+1.  Klicken Sie im Menü auf der linken Seite auf **Zugriffspakete**, und öffnen Sie dann das Zugriffspaket, dem Sie einen Benutzer hinzufügen möchten.
+
+1.  Klicken Sie im Menü auf der linken Seite auf **Zuweisungen**.
+
+1.  Wählen Sie **Neue Zuweisung** aus, um die Seite **Hinzufügen von Benutzern zu einem Zugriffspaket** zu öffnen.
+
+1.  Wählen Sie in der Liste **Richtlinie auswählen** eine Richtlinie aus, welche die Einstellung **Für Benutzer, die sich nicht in Ihrem Verzeichnis befinden** zulässt.
+
+1. Wählen Sie **Beliebiger Benutzer** aus. Sie können angeben, welche Benutzer diesem Zugriffspaket zugewiesen werden sollen.
+    ![Zuweisungen: Benutzer einem Zugriffspaket hinzufügen](./media/entitlement-management-access-package-assignments/assignments-add-any-user.png)
+
+1. Geben Sie den **Namen des Benutzers** (optional) und seine **E-Mail-Adresse** (erforderlich) ein.
+
+    > [!NOTE]
+    > - Der Benutzer, den Sie hinzufügen möchten, muss sich innerhalb des Gültigkeitsbereichs der Richtlinie befinden. Wenn Ihre Richtlinie beispielsweise auf **Bestimmte verbundene Organisationen** festgelegt ist, muss die E-Mail-Adresse des Benutzers aus einer der Domänen der ausgewählten Organisationen stammen. Wenn der Benutzer, den Sie hinzufügen möchten, die E-Mail-Adresse jen@*foo.com* hat, die Domäne der ausgewählten Organisation jedoch *bar.com* lautet, können Sie diesen Benutzer dem Zugriffspaket nicht hinzufügen.
+    > - Ähnliches gilt auch, wenn Sie Ihre Richtlinie auf **Alle konfigurierten verbundenen Organisationen** festlegen. Dann muss die E-Mail-Adresse des Benutzers aus einer der konfigurierten verbundenen Organisationen stammen. Sonst kann der Benutzer dem Zugriffspaket nicht hinzugefügt werden.
+    > - Wenn Sie dem Zugriffspaket einen Benutzer hinzufügen möchten, müssen Sie sicherstellen, dass Sie beim Konfigurieren Ihrer Richtlinie die Option **Alle Benutzer (alle verbundenen Organisationen und alle externen Benutzer)** auswählen.
+
+1.  Legen Sie Datum und Uhrzeit fest, wann die Zuweisung der ausgewählten Benutzer beginnen und enden soll. Wenn Sie kein Enddatum angeben, werden die Lebenszykluseinstellungen der Richtlinie verwendet.
+1.  Klicken Sie auf **Hinzufügen**, um die ausgewählten Benutzer dem Zugriffspaket direkt zuzuweisen.
+1.  Klicken Sie nach kurzer Zeit auf **Aktualisieren**, um die Benutzer in der Liste „Zuweisungen“ anzuzeigen.
 
 ## <a name="directly-assigning-users-programmatically"></a>Programmgesteuertes direktes Zuweisen von Benutzern
 ### <a name="assign-a-user-to-an-access-package-with-microsoft-graph"></a>Zuweisen eines Benutzers zu einem Zugriffspaket mit Microsoft Graph

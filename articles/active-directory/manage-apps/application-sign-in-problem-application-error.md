@@ -1,5 +1,6 @@
 ---
-title: Anzeige einer Fehlermeldung auf der App-Seite nach der Anmeldung | Microsoft-Dokumentation
+title: Anzeige einer Fehlermeldung auf der App-Seite nach der Anmeldung
+titleSuffix: Azure AD
 description: Beheben von Problemen mit der Azure AD-Anmeldung, wenn die App eine Fehlermeldung zurückgibt
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c1910eb106e7a3e405f58ba672c38fa108544d2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 499ce4c7875a1805b5845614221ffef0641816d6
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339640"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617775"
 ---
-# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>App-Seite, auf der eine Fehlermeldung angezeigt wird, nachdem sich ein Benutzer angemeldet hat
+# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in-azure-active-directory"></a>Auf einer App-Seite wird eine Fehlermeldung angezeigt, nachdem sich der Benutzer in Azure Active Directory angemeldet hat
 
 Im folgenden Szenario wird ein Benutzer durch Azure Active Directory (Azure AD) angemeldet. Die Anwendung zeigt allerdings eine Fehlermeldung an, und der Benutzer kann den Anmeldevorgang nicht abschließen. Das Problem besteht darin, dass die App die von Azure AD zurückgegebene Antwort nicht akzeptiert.
 

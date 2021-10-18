@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/09/2021
 ms.author: memildin
-ms.openlocfilehash: ef37d84d2fcef851e13837ae40da14db9fb2412f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f2ab2dfeec7522599cfb8b3eccdf9b498fdfff32
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777448"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713698"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Verwenden von adaptiven Anwendungssteuerungen zum Verringern der Angriffsfläche Ihres Computers
 
@@ -244,7 +244,7 @@ Einige der Funktionen, die über die REST-API verfügbar sind:
 Derzeit sind keine Erzwingungsoptionen verfügbar. Adaptive Anwendungssteuerungen sollen **Sicherheitswarnungen** ausgeben, wenn eine andere als die von Ihnen als sicher definierte Anwendung ausgeführt wird. Sie bieten eine Reihe von Vorteilen ([Was sind die Vorteile adaptiver Anwendungssteuerungen?](#what-are-the-benefits-of-adaptive-application-controls)) und sind, wie auf dieser Seite gezeigt, überaus anpassbar.
 
 ### <a name="why-do-i-see-a-qualys-app-in-my-recommended-applications"></a>Warum wird in meinen empfohlenen Anwendungen eine Qualys-App angezeigt?
-[Azure Defender für Server](defender-for-servers-introduction.md) umfasst eine kostenlose Überprüfung auf Sicherheitsrisiken für Ihre Computer. Sie benötigen keine Qualys-Lizenz und auch kein Qualys-Konto – alles erfolgt nahtlos innerhalb von Security Center. Ausführliche Informationen zu diesem Scanner und Anweisungen zu seiner Bereitstellung finden Sie in der [integrierten Sicherheitsrisikobewertungslösung für Defender](deploy-vulnerability-assessment-vm.md).
+[Azure Defender für Server](defender-for-servers-introduction.md) umfasst eine kostenlose Überprüfung auf Sicherheitsrisiken für Ihre Computer. Sie benötigen keine Qualys-Lizenz und auch kein Qualys-Konto – alles erfolgt nahtlos innerhalb von Security Center. Ausführliche Informationen zu diesem Scanner und Anweisungen zu seiner Bereitstellung finden Sie in der [integrierten Qualys-Sicherheitsrisikobewertungslösung für Defender](deploy-vulnerability-assessment-vm.md).
 
 Um sicherzustellen, dass keine Warnungen generiert werden, wenn Security Center den Scanner bereitstellt, enthält die empfohlene Zulassungsliste der adaptiven Anwendungssteuerung die Scanner für alle Computer. 
 

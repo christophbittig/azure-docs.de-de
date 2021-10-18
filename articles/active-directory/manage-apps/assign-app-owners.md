@@ -1,24 +1,25 @@
 ---
-title: Zuweisen von Unternehmensanwendungsbesitzern – Azure AD | Microsoft-Dokumentation
+title: Zuweisen von Unternehmensanwendungsbesitzern
+titleSuffix: Azure AD
 description: Besitzer zu Anwendungen in Azure Active Directory zuweisen
 services: active-directory
 documentationcenter: ''
-author: davidmu1
+author: saipradeepb23
 manager: celesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.date: 08/03/2021
-ms.author: davidmu
-ms.openlocfilehash: 18649f5c597be73e9f14abf00a2df584c56df5d4
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.author: saibandaru
+ms.openlocfilehash: f08b2c40e5a81804274472a31150c1f0f3187d9e
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446846"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659239"
 ---
-# <a name="assign-enterprise-application-owners"></a>Zuweisen von Unternehmensanwendungsbesitzern
+# <a name="assign-enterprise-application-owners-in-azure-active-directory"></a>Zuweisen von Unternehmensanwendungsbesitzern in Azure Active Directory
 
 Die Zuweisung von Besitzern ist eine einfache Möglichkeit, die Berechtigung zu erteilen, alle Aspekte der Azure AD-Konfiguration für eine bestimmte Anwendungsregistrierung oder Unternehmensanwendung zu verwalten. Als Besitzer kann ein Benutzer die organisationsspezifische Konfiguration der Unternehmensanwendung verwalten, z. B. die Konfiguration für einmaliges Anmelden, die Bereitstellung und Benutzerzuweisungen. Ein Besitzer kann außerdem andere Besitzer hinzufügen oder entfernen. Im Gegensatz zu globalen Administratoren können Besitzer nur die Unternehmensanwendungen verwalten, deren Besitzer sie sind.
 

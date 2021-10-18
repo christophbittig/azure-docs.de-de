@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 546a7bfbda3f037f3ad40ca9c5d59353cc1de0eb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 8b1947d9b78ef77644dd5df8aabe4298de90f9e8
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349590"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754271"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problembehandlung beim nahtlosen einmaligen Anmelden mit Azure Active Directory
 
@@ -39,6 +39,7 @@ In diesem Artikel finden Sie Informationen zur Problembehandlung bei bekannten P
 - Wenn Sie die Dienst-URL von Azure AD (`https://autologon.microsoftazuread-sso.com`) nicht der Zone „Lokales Intranet“ hinzufügen, sondern der Zone „Vertrauenswürdige Sites“ *, können sich Benutzer nicht anmelden*.
 - Das nahtlose einmalige Anmelden unterstützt die Verschlüsselungstypen AES256_HMAC_SHA1, AES128_HMAC_SHA1 und RC4_HMAC_MD5 für Kerberos. Es wird empfohlen, den Verschlüsselungstyp für das Konto „AzureADSSOAcc$“ auf „AES256_HMAC_SHA1“ oder einen der AES-Typen vs. RC4 festzulegen, um die Sicherheit zu erhöhen. Der Verschlüsselungstyp wird im „msDS-SupportedEncryptionTypes“-Attribut des Kontos in Ihrer Active Directory-Instanz gespeichert.  Wenn der Verschlüsselungstyp des Kontos „AzureADSSOAcc$“ auf „RC4_HMAC_MD5“ festgelegt ist und Sie ihn in einen der AES-Verschlüsselungstypen ändern möchten, stellen Sie sicher, dass Sie zuerst einen Rollover für den Kerberos-Entschlüsselungsschlüssel des Kontos „AzureADSSOAcc$“ (wie im [FAQ-Dokument](how-to-connect-sso-faq.yml) unter der relevanten Frage erläutert) ausführen, weil andernfalls kein nahtloses einmaliges Anmelden erfolgt.
 -  Wenn Sie über mehrere Gesamtstrukturen mit Gesamtstruktur-Vertrauensstellung verfügen und in einer der Gesamtstrukturen einmaliges Anmelden aktivieren, wird einmaliges Anmelden in allen vertrauenswürdigen Gesamtstrukturen aktiviert. Wenn Sie einmaliges Anmelden in einer Gesamtstruktur aktivieren, in der einmaliges Anmelden bereits aktiviert ist, erhalten Sie eine Fehlermeldung, die besagt, dass einmaliges Anmelden in der Gesamtstruktur bereits aktiviert ist.
+-  Für die Richtlinie, die nahtloses einmaliges Anmelden aktiviert, sind maximal 25.600 Zeichen zulässig. Dieser Grenzwert gilt für alles, was in der Richtlinie enthalten ist, einschließlich der Namen der Gesamtstrukturen, für die nahtloses einmaliges Anmelden aktiviert werden soll. Sie können den Zeichengrenzwert überschreiten, wenn Ihre Umgebung eine hohe Anzahl von Gesamtstrukturen enthält. Wenn zwischen den Gesamtstrukturen eine Vertrauensstellung besteht, reicht es aus, nahtloses einmaliges Anmelden nur für eine Gesamtstruktur zu aktivieren. Wenn Sie beispielsweise „contoso.com“ und „fabrikam.com“ haben, zwischen denen eine Vertrauensstellung besteht, brauchen Sie nahtloses einmaliges Anmelden nur für „contoso.com“ zu aktivieren, das dann auch für „fabrikam.com“ gilt. Auf diese Weise können Sie die Anzahl der in der Richtlinie aktivierten Gesamtstrukturen reduzieren und das Erreichen des Zeichengrenzwerts für Richtlinien vermeiden.
 
 ## <a name="check-status-of-feature"></a>Überprüfen des Status des Features
 

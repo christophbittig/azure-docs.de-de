@@ -6,49 +6,45 @@ author: aaronpowell
 ms.author: aapowell
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/07/2021
-ms.openlocfilehash: b09d1f6d6cdd5838f4c43e7cb05f63d8efd3e7f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/08/2021
+ms.openlocfilehash: 49921eba1a7f4c6c898eaadf1d8743d8d210057a
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354744"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729803"
 ---
 # <a name="custom-authentication-in-azure-static-web-apps"></a>Benutzerdefinierte Authentifizierung in Azure Static Web Apps
 
 Azure Static Web Apps bietet [verwaltete Authentifizierung](authentication-authorization.md), die von Azure verwaltete Anbieterregistrierungen verwendet. Um mehr Flexibilität bei der Registrierung zu ermöglichen, können Sie die Standardwerte mit einer benutzerdefinierten Registrierung überschreiben.
 
-- Mit der benutzerdefinierten Authentifizierung können Sie auch [benutzerdefinierte Anbieter konfigurieren](#configure-a-custom-openid-connect-provider), die [OpenID Connect](https://openid.net/connect/) unterstützen. Diese Konfiguration ermöglicht die Registrierung mehrerer externer Anbieter.
+- Mit der benutzerdefinierten Authentifizierung können Sie auch [benutzerdefinierte Anbieter konfigurieren](./authentication-custom.md?tabs=openid-connect#configure-a-custom-identity-provider), die [OpenID Connect](https://openid.net/connect/) unterstützen. Diese Konfiguration ermöglicht die Registrierung mehrerer externer Anbieter.
 
 - Wenn Sie benutzerdefinierte Registrierungen verwenden, werden alle vorkonfigurierten Anbieter deaktiviert.
-
-- Insbesondere bei AAD-Registrierungen (Azure Active Directory) haben Sie die Möglichkeit, einen Mandanten bereitzustellen, mit dem Sie den [Einladungsflow](./authentication-authorization.md#role-management) für die Gruppenverwaltung umgehen können.
 
 > [!NOTE]
 > Die benutzerdefinierte Authentifizierung ist nur im Azure Static Web Apps-Standardplan verfügbar.
 
-## <a name="override-pre-configured-provider"></a>Überschreiben vorkonfigurierter Anbieter
+## <a name="configure-a-custom-identity-provider"></a>Konfigurieren eines benutzerdefinierten Identitätsanbieters
 
-Die Einstellungen, die zum Überschreiben eines Anbieters verwendet werden, werden im Abschnitt `auth` der [Konfigurationsdatei](configuration.md) konfiguriert.
+Benutzerdefinierte Identitätsanbieter werden im Abschnitt `auth` der [Konfigurationsdatei](configuration.md) konfiguriert.
 
 Um zu vermeiden, dass Geheimnisse in die Quellcodeverwaltung aufgenommen werden, sucht die Konfiguration in den [Anwendungseinstellungen](application-settings.md) nach einem übereinstimmenden Namen in der Konfigurationsdatei. Sie können ihre Geheimnisse auch in [Azure Key Vault](./key-vault-secrets.md) speichern.
 
-### <a name="configuration"></a>Konfiguration
-
-Zum Einrichten der benutzerdefinierten Authentifizierung müssen Sie auf einige Geheimnisse verweisen, die als [Anwendungseinstellungen](./application-settings.md) gespeichert sind. 
-
 # <a name="azure-active-directory"></a>[Azure Active Directory](#tab/aad)
 
-Azure Active Directory-Anbieter sind in zwei verschiedenen Versionen verfügbar. Version 1 definiert `userDetailsClaim` explizit, wodurch in den Nutzdaten Benutzerinformationen zurückgegeben werden können. Im Gegensatz dazu gibt Version 2 standardmäßig Benutzerinformationen zurück und wird durch `v2.0` in der `openIdIssuer`-URL festgelegt.
-
-Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden Anwendungseinstellungen vornehmen:
+Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden [Anwendungseinstellungen](application-settings.md) vornehmen:
 
 | Einstellungsname | Wert |
 | --- | --- |
 | `AAD_CLIENT_ID` | Die Anwendungs-ID (Client) für Ihre Azure AD-App-Registrierung. |
 | `AAD_CLIENT_SECRET` | Der geheime Clientschlüssel für die Azure AD-App-Registrierung. |
 
-#### <a name="azure-active-directory-version-1"></a>Azure Active Directory-Version 1
+Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter in der [Konfigurationsdatei](configuration.md) zu konfigurieren.
+
+Azure Active Directory-Anbieter sind in zwei verschiedenen Versionen verfügbar. Version 1 definiert `userDetailsClaim` explizit, wodurch in den Nutzdaten Benutzerinformationen zurückgegeben werden können. Im Gegensatz dazu gibt Version 2 standardmäßig Benutzerinformationen zurück und wird durch `v2.0` in der `openIdIssuer`-URL festgelegt.
+
+### <a name="azure-active-directory-version-1"></a>Azure Active Directory-Version 1
 
 ```json
 {
@@ -69,7 +65,7 @@ Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden Anwendung
 
 Stellen Sie sicher, `<TENANT_ID>` durch die ID Ihres Azure Active Directory-Mandanten zu ersetzen.
 
-#### <a name="azure-active-directory-version-2"></a>Azure Active Directory-Version 2
+### <a name="azure-active-directory-version-2"></a>Azure Active Directory-Version 2
 
 ```json
 {
@@ -89,21 +85,21 @@ Stellen Sie sicher, `<TENANT_ID>` durch die ID Ihres Azure Active Directory-Mand
 
 Stellen Sie sicher, `<TENANT_ID>` durch die ID Ihres Azure Active Directory-Mandanten zu ersetzen.
 
-Weitere Informationen zum Konfigurieren von Azure Active Directory finden Sie in der [Dokumentation zur App Service-Authentifizierung/-Autorisierung](../app-service/configure-authentication-provider-aad.md).
+Weitere Informationen zum Konfigurieren von Azure Active Directory finden Sie in der [Dokumentation zur App Service-Authentifizierung/-Autorisierung](../app-service/configure-authentication-provider-aad.md#-option-2-use-an-existing-registration-created-separately) zur Verwendung einer vorhandenen Registrierung.
 
 > [!NOTE]
 > Während der Konfigurationsabschnitt für Azure Active Directory `azureActiveDirectory` lautet, verwendet die Plattform den Alias `aad` in den URLs für Anmeldung, Abmeldung und zur Bereinigung von Benutzerinformationen. Weitere Informationen finden Sie im Abschnitt [Authentifizierung und Autorisierung](authentication-authorization.md).
 
 # <a name="apple"></a>[Apple](#tab/apple)
 
-Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden Anwendungseinstellungen vornehmen:
+Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden [Anwendungseinstellungen](application-settings.md) vornehmen:
 
 | Einstellungsname | Wert |
 | --- | --- |
 | `APPLE_CLIENT_ID` | Die ID des Apple-Clients. |
 | `APPLE_CLIENT_SECRET` | Der geheime Apple-Clientschlüssel. |
 
-Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter zu konfigurieren.
+Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter in der [Konfigurationsdatei](configuration.md) zu konfigurieren.
 
 ```json
 {
@@ -124,14 +120,14 @@ Weitere Informationen zum Konfigurieren von Apple als Authentifizierungsanbieter
 
 # <a name="facebook"></a>[Facebook](#tab/facebook)
 
-Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden Anwendungseinstellungen vornehmen:
+Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden [Anwendungseinstellungen](application-settings.md) vornehmen:
 
 | Einstellungsname | Wert |
 | --- | --- |
 | `FACEBOOK_APP_ID` | Die ID der Facebook-Anwendung. |
 | `FACEBOOK_APP_SECRET` | Das Facebook-Anwendungsgeheimnis. |
 
-Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter zu konfigurieren.
+Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter in der [Konfigurationsdatei](configuration.md) zu konfigurieren.
 
 ```json
 {
@@ -153,14 +149,14 @@ Weitere Informationen zum Konfigurieren von Facebook als Authentifizierungsanbie
 # <a name="github"></a>[GitHub](#tab/github)
 
 
-Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden Anwendungseinstellungen vornehmen:
+Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden [Anwendungseinstellungen](application-settings.md) vornehmen:
 
 | Einstellungsname | Wert |
 | --- | --- |
 | `GITHUB_CLIENT_ID` | Die ID des GitHub-Clients. |
 | `GITHUB_CLIENT_SECRET` | Der geheime GitHub-Clientschlüssel. |
 
-Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter zu konfigurieren.
+Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter in der [Konfigurationsdatei](configuration.md) zu konfigurieren.
 
 ```json
 {
@@ -180,14 +176,14 @@ Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter zu konfigurie
 # <a name="google"></a>[Google](#tab/google)
 
 
-Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden Anwendungseinstellungen vornehmen:
+Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden [Anwendungseinstellungen](application-settings.md) vornehmen:
 
 | Einstellungsname | Wert |
 | --- | --- |
 | `GOOGLE_CLIENT_ID` | Die ID des Google-Clients. |
 | `GOOGLE_CLIENT_SECRET` | Der geheime Google-Clientschlüssel. |
 
-Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter zu konfigurieren.
+Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter in der [Konfigurationsdatei](configuration.md) zu konfigurieren.
 
 ```json
 {
@@ -208,14 +204,14 @@ Weitere Informationen zum Konfigurieren von Google als Authentifizierungsanbiete
 
 # <a name="twitter"></a>[Twitter](#tab/twitter)
 
-Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden Anwendungseinstellungen vornehmen:
+Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden [Anwendungseinstellungen](application-settings.md) vornehmen:
 
 | Einstellungsname | Wert |
 | --- | --- |
 | `TWITTER_CONSUMER_KEY` | Der Twitter-Consumerschlüssel. |
 | `TWITTER_CONSUMER_SECRET` | Das Twitter-Consumergeheimnis. |
 
-Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter zu konfigurieren.
+Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter in der [Konfigurationsdatei](configuration.md) zu konfigurieren.
 
 ```json
 {
@@ -234,11 +230,9 @@ Verwenden Sie als Nächstes das folgende Beispiel, um den Anbieter zu konfigurie
 
 Weitere Informationen zum Konfigurieren von Twitter als Authentifizierungsanbieter finden Sie in der [Dokumentation zur App Service-Authentifizierung/-Autorisierung](../app-service/configure-authentication-provider-twitter.md).
 
----
+# <a name="openid-connect"></a>[OpenID Connect](#tab/openid-connect)
 
-## <a name="configure-a-custom-openid-connect-provider"></a>Konfigurieren eines benutzerdefinierten OpenID Connect-Anbieters
-
-In diesem Abschnitt erfahren Sie, wie Sie Azure Static Web Apps für die Verwendung eines benutzerdefinierten Authentifizierungsanbieters konfigurieren, der die [OpenID Connect-Spezifikation (OIDC)](https://openid.net/connect/) einhält. Die folgenden Schritte sind erforderlich, um einen benutzerdefinierten OIDC-Anbieter zu verwenden.
+Sie können Azure Static Web Apps für die Verwendung eines benutzerdefinierten Authentifizierungsanbieters konfigurieren, der die [OpenID Connect-Spezifikation (OIDC)](https://openid.net/connect/) einhält. Die folgenden Schritte sind erforderlich, um einen benutzerdefinierten OIDC-Anbieter zu verwenden.
 
 - Ein oder mehrere OIDC-Anbieter sind zulässig.
 - Jeder Anbieter muss über einen eindeutigen Namen in der Konfiguration verfügen.
@@ -297,9 +291,25 @@ Sobald Sie über die Anmeldeinformationen für die Registrierung verfügen, erst
   - Stellen Sie sicher, `<PROVIDER_ISSUER_URL>` durch den Pfad zur _Aussteller-URL_ des Anbieters zu ersetzen.
   - Mit dem `login`-Objekt können Sie Werte für benutzerdefinierte Bereiche, Anmeldeparameter oder benutzerdefinierte Ansprüche angeben.
 
-### <a name="login-logout-and-purging-user-details"></a>Anmelden, Abmelden und Bereinigen von Benutzerdetails
+---
 
-Um einen benutzerdefinierten OIDC-Anbieter zu verwenden, verwenden Sie die folgenden URL-Muster.
+## <a name="authentication-callbacks"></a>Authentifizierungsrückrufe
+
+Identitätsanbieter benötigen zur Ausführung von Anmeldungs- oder Abmeldungsanforderungen eine Umleitungs-URL. Die meisten Anbieter erfordern, dass Sie die Rückruf-URLs einer Zulassungsliste hinzufügen. Die folgenden Endpunkte sind als Umleitungsziele verfügbar.
+
+| Typ   | URL-Muster                                                 |
+| ------ | ----------------------------------------------------------- |
+| Anmelden  | `https://<YOUR_SITE>/.auth/login/<PROVIDER_NAME_IN_CONFIG>/callback`  |
+| Logout | `https://<YOUR_SITE>/.auth/logout/<PROVIDER_NAME_IN_CONFIG>/callback` |
+
+Wenn Sie Azure Active Directory verwenden, geben Sie `aad` als Wert für den `<PROVIDER_NAME_IN_CONFIG>`-Platzhalter an.
+
+> [!Note]
+> Diese URLs werden von Azure Static Web Apps bereitgestellt, um die Antwort vom Authentifizierungsanbieter zu empfangen. Sie müssen keine Seiten auf diesen Routen erstellen.
+
+## <a name="login-logout-and-purging-user-details"></a>Anmelden, Abmelden und Bereinigen von Benutzerdetails
+
+Um einen benutzerdefinierten Identitätsanbieter zu verwenden, verwenden Sie die folgenden URL-Muster.
 
 | Aktion             | Muster                                  |
 | ------------------ | ---------------------------------------- |
@@ -307,21 +317,7 @@ Um einen benutzerdefinierten OIDC-Anbieter zu verwenden, verwenden Sie die folge
 | Logout             | `/.auth/logout`                          |
 | Bereinigen von Benutzerdetails | `/.auth/purge/<PROVIDER_NAME_IN_CONFIG>` |
 
-Wenn Sie Azure Active Directory verwenden, geben Sie `aad` als Wert für den `<AUTHENTICATION_PROVIDER_NAME>`-Platzhalter an.
-
-### <a name="authentication-callbacks"></a>Authentifizierungsrückrufe
-
-Benutzerdefinierte OIDC-Anbieter benötigen zur Ausführung von Anmeldungs- oder Abmeldungsanforderungen eine Umleitungs-URL. Die folgenden Endpunkte sind als Umleitungsziele verfügbar.
-
-| Typ   | URL-Muster                                                 |
-| ------ | ----------------------------------------------------------- |
-| Anmelden  | `https://<YOUR_SITE>/.auth/login/<PROVIDER_NAME_IN_CONFIG>/callback`  |
-| Logout | `https://<YOUR_SITE>/.auth/logout/<PROVIDER_NAME_IN_CONFIG>/callback` |
-
-Wenn Sie Azure Active Directory verwenden, geben Sie `aad` als Wert für den `<AUTHENTICATION_PROVIDER_NAME>`-Platzhalter an.
-
-> [!Note]
-> Diese URLs werden von Azure Static Web Apps bereitgestellt, um die Antwort vom Authentifizierungsanbieter zu empfangen. Sie müssen keine Seiten auf diesen Routen erstellen.
+Wenn Sie Azure Active Directory verwenden, geben Sie `aad` als Wert für den `<PROVIDER_NAME_IN_CONFIG>`-Platzhalter an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

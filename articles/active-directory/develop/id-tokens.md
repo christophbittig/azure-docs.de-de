@@ -16,12 +16,12 @@ ms.custom:
 - aaddev
 - identityplatformtop40
 - fasttrack-edit
-ms.openlocfilehash: c1e125127cf4376eb96e267c11e35085a4a27f18
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a6c2b3bb09160d60cfd03311329666d6e2b80487
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114458897"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657909"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
@@ -81,7 +81,7 @@ Die nachfolgende Liste zeigt die Ansprüche, die (sofern nichts anderes angegebe
 |`iat` |  Ganze Zahl, ein UNIX-Zeitstempel | „Issued At“ gibt an, wann die Authentifizierung für dieses Token erfolgt ist.  |
 |`idp`|Zeichenfolge, in der Regel ein STS-URI | Der Identitätsanbieter, der den Antragsteller des Tokens authentifiziert hat. Dieser Wert ist identisch mit dem Wert des Ausstelleranspruchs, es sei denn, das Benutzerkonto ist nicht im gleichen Mandanten wie der Aussteller vorhanden (etwa Gäste). Wenn der Anspruch nicht vorhanden ist, bedeutet dies, dass stattdessen der Wert `iss` verwendet werden kann.  Für in einem Organisationskontext verwendete persönliche Konten (etwa ein zu einem Azure AD-Mandanten eingeladenes persönliches Konto) kann der `idp`-Anspruch „live.com“ oder ein STS-URI sein, der den Microsoft-Kontomandanten `9188040d-6c67-4c5b-b112-36a304b66dad` enthält. |
 |`nbf` |  Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf.|
-|`exp` |  Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf.  Es ist wichtig zu beachten, dass eine Ressource unter bestimmten Umständen das Token vor diesem Zeitpunkt ablehnen kann. Das kann zum Beispiel geschehen, wenn eine Änderung der Authentifizierung erforderlich ist oder eine Token-Sperrung erkannt wurde. |
+|`exp` |  Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf.  Es ist wichtig zu beachten, dass eine Ressource unter bestimmten Umständen das Token vor diesem Zeitpunkt ablehnen kann. Das kann zum Beispiel geschehen, wenn eine Änderung der Authentifizierung erforderlich ist oder ein Tokenwiderruf erkannt wurde. |
 | `c_hash`| String |Der Codehash ist nur dann in ID-Token enthalten, wenn das ID-Token zusammen mit einem OAuth 2.0-Autorisierungscode ausgestellt wird. Mit seiner Hilfe kann die Authentizität eines Autorisierungscodes überprüft werden. Um zu verstehen, wie diese Überprüfung durchgeführt wird, finden Sie Informationen in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken). |
 |`at_hash`| String |Der Zugriffstokenhash ist nur in ID-Token enthalten, wenn das ID-Token vom `/authorize`-Endpunkt zusammen mit einem OAuth 2.0-Zugriffstoken ausgestellt wird. Mit seiner Hilfe kann die Authentizität eines Zugriffstokens überprüft werden. Um zu verstehen, wie diese Überprüfung durchgeführt wird, finden Sie Informationen in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken). Dies wird für ID-Token vom `/token`-Endpunkt nicht zurückgegeben. |
 |`aio` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure AD verwendet wird, um Daten für die Wiederverwendung von Token aufzuzeichnen. Sollte ignoriert werden.|
@@ -93,7 +93,7 @@ Die nachfolgende Liste zeigt die Ansprüche, die (sofern nichts anderes angegebe
 |`roles`| Array von Zeichenfolgen | Die Rollen, die dem sich anmeldenden Benutzer zugewiesen wurden. |
 |`rh` | Nicht transparente Zeichenfolge |Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Sollte ignoriert werden. |
 |`sub` | String | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Der Antragsteller ist ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID. Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch. Dies kann – abhängig von den Architektur- und Datenschutzanforderungen – wünschenswert sein oder nicht. |
-|`tid` | Zeichenfolge, eine GUID | Stellt den Mandanten dar, bei dem sich der Benutzer anmeldet. Bei Geschäfts-, Schul- oder Unikonten ist die GUID die unveränderliche Mandanten-ID der Organisation, bei der sich der Benutzer anmeldet. Für Anmeldungen beim persönlichen Microsoft-Konto Mandanten (Dienste wie Xbox, Teams for Life oder Outlook) ist der Wert `9188040d-6c67-4c5b-b112-36a304b66dad`. Um diesen Anspruch zu erhalten, muss Ihre App den `profile`-Bereich anfordern. |
+|`tid` | Zeichenfolge, eine GUID | Stellt den Mandanten dar, bei dem sich der Benutzer anmeldet. Bei Geschäfts-, Schul- oder Unikonten ist die GUID die unveränderliche Mandanten-ID der Organisation, bei der sich der Benutzer anmeldet. Für Anmeldungen beim persönlichen Microsoft-Kontomandanten (Dienste wie Xbox, Teams for Life oder Outlook) ist der Wert `9188040d-6c67-4c5b-b112-36a304b66dad`. Um diesen Anspruch zu erhalten, muss Ihre App den Bereich `profile` anfordern. |
 |`unique_name` | String | Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Dieser Wert ist immer eindeutig. Da aber E-Mails und andere Bezeichner wiederverwendet werden können, kann dieser Wert in anderen Konten erneut auftreten. Daher sollte der Wert nur zu Anzeigezwecken verwendet werden. Wird nur in v1.0-`id_tokens` ausgegeben. |
 |`uti` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Sollte ignoriert werden. |
 |`ver` | Zeichenfolge, 1.0 oder 2.0 | Gibt die Version des ID-Tokens an. |

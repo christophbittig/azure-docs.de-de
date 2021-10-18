@@ -4,15 +4,15 @@ description: Hier erfahren Sie mehr zu Azure Database for MySQL Flexible Server,
 author: hjtoland3
 ms.service: mysql
 ms.author: jtoland
-ms.custom: mvc
+ms.custom: mvc, references_regions
 ms.topic: conceptual
 ms.date: 09/29/2021
-ms.openlocfilehash: 377c9fc994c4d26b67791e3eb525c7fba75a9d78
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 4a74fb34eb750924f9d8c08225edd10a5a220084
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129388886"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657852"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Neuerungen in Azure Database for MySQL Flexible Server (Vorschauversion)
 
@@ -21,7 +21,9 @@ ms.locfileid: "129388886"
 [Azure Database for MySQL Flexible Server](./overview.md#azure-database-for-mysql---flexible-server-preview) ist ein Bereitstellungsmodus, der mehr Kontrolle und Flexibilität bei der Datenbankverwaltung und den Konfigurationseinstellungen als der Single Server-Bereitstellungsmodus bietet. Der Dienst unterstützt derzeit die Community-Version von MySQL 5.7 und 8.0.
 
 In diesem Artikel werden neue Releases und Features in Azure Database for MySQL Flexible Server ab Januar 2021 zusammengefasst. Auflistungen werden in umgekehrter chronologischer Reihenfolge angezeigt, die neuesten Updates zuerst.
+
 ## <a name="october-2021"></a>Oktober 2021
+
 - **Auswahl der Verfügbarkeitszonen bei der Erstellung von Lesereplikaten**
 
     Bei der Erstellung von Lesereplikaten haben Sie die Möglichkeit, den Ort der Verfügbarkeitszonen Ihrer Wahl auszuwählen. Eine Verfügbarkeitszone ist ein Hochverfügbarkeitsangebot, das Ihre Anwendungen und Daten vor Fehlschlägen im Rechenzentrum schützt. Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. [Weitere Informationen](../flexible-server/concepts-read-replicas.md)
@@ -32,7 +34,11 @@ In diesem Artikel werden neue Releases und Features in Azure Database for MySQL 
 
     Wenn Sie einen bestehenden Azure Database for MySQL – Flexible Server mit aktiviertem Lesereplikat besitzen, müssen Sie Ihren Server innerhalb von 60 Tagen entweder auf die Preisebenen „universell“ oder „arbeitsspeicheroptimiert“ hochskalieren oder das Lesereplikat löschen. Nach Ablauf der 60 Tage können Sie zwar weiterhin den Primärserver für Ihre Schreib-Lese-Vorgänge verwenden, die Replikation auf Lesereplikat-Server wird jedoch gestoppt. Bei neu erstellten Servern ist die Option Lesereplikat nur für die Preisstufen „universell“ und „arbeitsspeicheroptimiert“ verfügbar.  
 
+ - **Überwachen von Azure Database for MySQL: Flexible Server mit Azure Monitor-Arbeitsmappen**
  
+     Azure Database for MySQL: Flexible Server ist jetzt in Azure Monitor Arbeitsmappen integriert. Arbeitsmappen bieten einen flexiblen Bereich für die Datenanalyse und die Erstellung umfassender visueller Berichte innerhalb des Azure-Portals. Mit dieser Integration verfügt der Server über Links zu Arbeitsmappen und einigen Beispielvorlagen, mit denen der Dienst im großen Stil überwacht werden kann. Diese Vorlagen können bearbeitet, an Kundenanforderungen angepasst und an das Dashboard angeheftet werden, um eine fokussierte und organisierten Ansicht der Azure-Ressourcen zu erstellen. [Einblicke in die Abfrageleistung](./tutorial-query-performance-insights.md), [Überwachung](./tutorial-configure-audit.md) und Instanzübersichtsvorlagen sind derzeit verfügbar. [Weitere Informationen](./concepts-workbooks.md)
+
+- **Vorauszahlung für Azure Database for MySQL-Computeressourcen mit reservierten Instanzen** Mit Azure Database for MySQL: Flexible Server können Sie jetzt gegenüber der nutzungsbasierten Bezahlung Geld sparen, indem Sie Computeressourcen im Voraus bezahlen. Mit reservierten Azure Database for MySQL-Instanzen leisten Sie eine Vorauszahlung für MySQL-Server für einen Zeitraum von einem Jahr oder drei Jahren und erhalten dafür einen immensen Rabatt auf die Computekosten. Sie können auch eine Reservierung von Azure Database for MySQL: Single Server gegen Flexible Server tauschen. [Weitere Informationen](../concept-reserved-pricing.md)
 
 ## <a name="september-2021"></a>September 2021
 
@@ -40,21 +46,21 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Verfügbarkeit in drei weiteren Azure-Regionen**
 
-  Die öffentliche Vorschau von Azure Database for MySQL – Flexible Server ist jetzt in den folgenden Azure-Regionen verfügbar:
+   Die öffentliche Vorschau von Azure Database for MySQL – Flexible Server ist jetzt in den folgenden Azure-Regionen verfügbar:
 
-  - UK, Westen
-  - Kanada, Osten
-  - Japan, Westen
+   - UK, Westen
+   - Kanada, Osten
+   - Japan, Westen
 
 - **Fehlerbehebungen**
 
-  Die Erstellung von Selbe-Zone Hochverfügbarkeit wurde in den folgenden Regionen behoben:
+   Die Erstellung von Selbe-Zone Hochverfügbarkeit wurde in den folgenden Regionen behoben:
 
-  - Indien, Mitte
-  - Asien, Osten
-  - Korea, Mitte
-  - Südafrika, Norden
-  - Schweiz, Norden
+   - Indien, Mitte
+   - Asien, Osten
+   - Korea, Mitte
+   - Südafrika, Norden
+   - Schweiz, Norden
 
 ## <a name="august-2021"></a>August 2021
 
@@ -86,19 +92,21 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Verfügbarkeit in vier zusätzlichen Azure-Regionen**
 
-  Die Public Preview von Azure Database for MySQL Flexible Server ist jetzt in den folgenden Azure-Regionen verfügbar. [Weitere Informationen:](overview.md#azure-regions)
+   Die öffentliche Vorschau von Azure Database for MySQL – Flexible Server ist jetzt in den folgenden Azure-Regionen verfügbar:
 
-  - Australien, Südosten
-  - Südafrika, Norden
-  - Asien, Osten (Hongkong)
-  - Indien, Mitte
+   - Australien, Südosten
+   - Südafrika, Norden
+   - Asien, Osten (Hongkong)
+   - Indien, Mitte
 
-- **Bekanntes Problem**
+   [Weitere Informationen](overview.md#azure-regions)
 
-  - Direkt nach dem Failover des zonenredundanten Hochverfügbarkeitsservers kann der Client keine Verbindung mit dem Server herstellen, wenn SSL mit der auf VERIFY_IDENTITY festgelegten Eigenschaft ssl_mode verwendet wird. Dieses Problem kann umgangen werden, indem ssl_mode auf VERIFY_CA festgelegt wird.
-  - In den folgenden Regionen kann kein Server mit Hochverfügbarkeit in gleicher Zone erstellt werden: „Indien, Mitte“, „Asien, Osten“, „Südkorea, Mitte“, „Südafrika, Norden“ und „Schweiz, Norden“.
-  - Nach einem Hochverfügbarkeitsfailover kann es selten vorkommen, dass der primäre Server den Modus read_only annimmt. Sie können dieses Problem beheben, indem Sie den Wert read_only auf dem Blatt für Serverparameter in OFF ändern.
-  - Nachdem Sie die Rechenleistung auf dem Blatt „Compute und Speicher“ erfolgreich skaliert haben, werden die IOPS auf den SKU-Standardwert zurückgesetzt. Kunden können das Problem umgehen, indem sie die IOPs auf dem Blatt Compute+Storage nach der Bereitstellung und dem anschließenden Zurücksetzen der IOPS auf den gewünschten Wert skalieren (der zuvor festgelegt wurde).
+- **Bekannte Probleme**
+
+   - Direkt nach dem Failover des zonenredundanten Hochverfügbarkeitsservers kann der Client keine Verbindung mit dem Server herstellen, wenn SSL mit der auf VERIFY_IDENTITY festgelegten Eigenschaft ssl_mode verwendet wird. Dieses Problem kann umgangen werden, indem ssl_mode auf VERIFY_CA festgelegt wird.
+   - In den folgenden Regionen kann kein Server mit Hochverfügbarkeit in gleicher Zone erstellt werden: „Indien, Mitte“, „Asien, Osten“, „Südkorea, Mitte“, „Südafrika, Norden“ und „Schweiz, Norden“.
+   - Nach einem Hochverfügbarkeitsfailover kann es selten vorkommen, dass der primäre Server den Modus read_only annimmt. Sie können dieses Problem beheben, indem Sie den Wert read_only auf dem Blatt für Serverparameter in OFF ändern.
+   - Nachdem Sie die Rechenleistung auf dem Blatt „Compute und Speicher“ erfolgreich skaliert haben, werden die IOPS auf den SKU-Standardwert zurückgesetzt. Kunden können das Problem umgehen, indem sie die IOPs auf dem Blatt Compute+Storage nach der Bereitstellung und dem anschließenden Zurücksetzen der IOPS auf den gewünschten Wert skalieren (der zuvor festgelegt wurde).
 
 ## <a name="july-2021"></a>Juli 2021
 
@@ -145,9 +153,9 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
   Dieses Release enthält Fixes für bekannte Probleme mit erzwungenem Failover, damit Serverparameter und weitere IOPS-Änderungen bei Failovern beibehalten werden.
 
-- **Bekanntes Problem**
+- **Bekannte Probleme**
 
-  - Beim Versuch, eine Computeressource auf einem vorhandenen Server mit weniger als 20 GB bereitgestelltem Speicher hoch- oder herunterzuskalieren, tritt ein Fehler auf. Sie können das Problem beheben, indem Sie den bereitgestellten Speicher auf 20 GB hochskalieren und den Skalierungsvorgang für die Computeressource wiederholen.
+   - Beim Versuch, eine Computeressource auf einem vorhandenen Server mit weniger als 20 GB bereitgestelltem Speicher hoch- oder herunterzuskalieren, tritt ein Fehler auf. Sie können das Problem beheben, indem Sie den bereitgestellten Speicher auf 20 GB hochskalieren und den Skalierungsvorgang für die Computeressource wiederholen.
 
 ## <a name="may-2021"></a>Mai 2021
 
@@ -167,9 +175,9 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Bekannte Probleme**
 
-  - Auf Servern mit aktivierter zonenredundanter Hochverfügbarkeit sind die zusätzlichen IOPS-Änderungen nicht wirksam. Kund*innen können dieses Problem umgehen, indem sie die Hochverfügbarkeit deaktivieren, die IOPS skalieren und die zonenredundante Hochverfügbarkeit dann wieder aktivieren.
-  - Nach einem erzwungenen Failover wird die Standbyverfügbarkeitszone im Portal ungenau wiedergegeben. (Keine Problemumgehung)
-  - Änderungen an Serverparametern sind auf Servern mit aktivierter zonenredundanter Hochverfügbarkeit nach einem erzwungenen Failover nicht wirksam. (Keine Problemumgehung)
+   - Auf Servern mit aktivierter zonenredundanter Hochverfügbarkeit sind die zusätzlichen IOPS-Änderungen nicht wirksam. Kund*innen können dieses Problem umgehen, indem sie die Hochverfügbarkeit deaktivieren, die IOPS skalieren und die zonenredundante Hochverfügbarkeit dann wieder aktivieren.
+   - Nach einem erzwungenen Failover wird die Standbyverfügbarkeitszone im Portal ungenau wiedergegeben. (Keine Problemumgehung)
+   - Änderungen an Serverparametern sind auf Servern mit aktivierter zonenredundanter Hochverfügbarkeit nach einem erzwungenen Failover nicht wirksam. (Keine Problemumgehung)
 
 ## <a name="april-2021"></a>April 2021
 
@@ -209,8 +217,8 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Bekannte Probleme**
 
-  - SSL/TLS 1.2 wird erzwungen und kann nicht deaktiviert werden. (Keine Problemumgehungen)
-  - Es treten zeitweilige Bereitstellungsfehler bei Servern auf, die in einem VNet bereitgestellt werden. Die Problemumgehung besteht im Wiederholen der Serverbereitstellung, bis sie erfolgreich ist.
+   - SSL/TLS 1.2 wird erzwungen und kann nicht deaktiviert werden. (Keine Problemumgehungen)
+   - Es treten zeitweilige Bereitstellungsfehler bei Servern auf, die in einem VNet bereitgestellt werden. Die Problemumgehung besteht im Wiederholen der Serverbereitstellung, bis sie erfolgreich ist.
 
 ## <a name="february-2021"></a>Februar 2021
 
@@ -230,7 +238,7 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Bis zu zehn Lesereplikate für MySQL Flexible Server**
 
-  Flexible Server unterstützt jetzt die asynchrone Replikation von Daten von einem Azure Database for MySQL-Server (Quelle) zu bis zu zehn weiteren Azure Database for MySQL-Servern (Replikate) in derselben Region. Durch dieses Feature können leseintensive Workloads je nach Benutzereinstellungen aufskaliert und gleichmäßig auf Replikatserver verteilt werden. [Weitere Informationen](concepts-read-replicas.md)
+  Flexible Server unterstützt jetzt die asynchrone Replikation von Daten von einem Azure Database for MySQL-Server (die „Quelle“) zu bis zu zehn weiteren Azure Database for MySQL-Servern (die „Replikate“) in derselben Region. Durch dieses Feature können leseintensive Workloads je nach Benutzereinstellungen aufskaliert und gleichmäßig auf Replikatserver verteilt werden. [Weitere Informationen](concepts-read-replicas.md)
 
 ## <a name="contacts"></a>Kontakte
 

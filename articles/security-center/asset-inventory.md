@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 02/10/2021
+ms.date: 10/07/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 0daf5cab1627819093514833667606758707f17a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4175476bc655aa0be1a5377f3fada83cb30ac37e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346075"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715907"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>Untersuchen und Verwalten Ihrer Ressourcen mit dem Ressourcenbestand und Verwaltungstools
 
@@ -40,7 +40,7 @@ Die Ressourcenverwaltungsfunktionen dieses Tools sind umfassend und wachsen weit
 |Aspekt|Details|
 |----|:----|
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
-|Preise:|Kostenlos|
+|Preise:|Kostenlos *<br>* Einige Funktionen der Bestandsseite, wie z. B. [Softwareinventur](#access-a-software-inventory), erfordern kostenpflichtige Lösungen.|
 |Erforderliche Rollen und Berechtigungen:|Alle Benutzer|
 |Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
 |||
@@ -130,6 +130,73 @@ Mit Hilfe der [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) ka
     ![Bestandsabfrage in ARG](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
 1. Wenn Sie einige Filter definiert und die Seite offen gelassen haben, aktualisiert Security Center die Ergebnisse nicht automatisch. Änderungen an den Ressourcen wirken sich nicht auf die angezeigten Ergebnisse aus, es sei denn, Sie laden die Seite manuell neu oder wählen **Aktualisieren** aus.
+
+## <a name="access-a-software-inventory"></a>Zugreifen auf einen Softwarebestand
+
+Wenn Sie die Integration mit Microsoft Defender für Endpunkt und Azure Defender für Server aktiviert haben, haben Sie Zugriff auf den Softwarebestand.
+
+:::image type="content" source="media/asset-inventory/software-inventory-filters.gif" alt-text="Wenn Sie die Lösung für Bedrohungen und Sicherheitsrisiken aktiviert haben, bietet der Ressourcenbestand im Security Center einen Filter zum Auswählen von Ressourcen nach installierter Software.":::
+
+> [!NOTE]
+> Die Option „Leer“ zeigt Computer ohne Microsoft Defender für Endpunkt (oder ohne Azure Defender für Server) an.
+
+Zusätzlich zu den Filtern auf der Ressourcenbestandsseite können Sie die Softwarebestandsdaten im Azure Resource Graph-Explorer untersuchen.
+
+Beispiele für die Verwendung von Azure Resource Graph-Explorer für den Zugriff auf und das Untersuchen von Softwarebestandsdaten:
+
+1. Öffnen Sie den **Azure Resource Graph-Explorer**.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Die Empfehlungsseite des Azure Resource Graph-Explorer** wird gestartet." :::
+
+1. Wählen Sie den folgenden Abonnementbereich aus: „securityresources/softwareinventories“.
+
+1. Geben Sie eine der folgenden Abfragen ein (Sie können sie auf anpassen oder ihre eigenen schreiben), und wählen Sie **Abfrage ausführen** aus.
+
+    - So generieren Sie eine einfache Liste der installierten Software:
+
+        ```kusto
+        securityresources
+        | where type == "microsoft.security/softwareinventories"
+        | project id, Vendor=properties.vendor, Software=properties.softwareName, Version=properties.version
+        ```
+
+    - So filtern Sie nach Versionsnummern:
+
+        ```kusto
+        securityresources
+        | where type == "microsoft.security/softwareinventories"
+        | project id, Vendor=properties.vendor, Software=properties.softwareName, Version=tostring(properties.    version)
+        | where Software=="windows_server_2019" and parse_version(Version)<=parse_version("10.0.17763.1999")
+        ```
+
+    - So suchen Sie Computer mit einer Kombination von Softwareprodukten:
+
+        ```kusto
+        securityresources
+        | where type == "microsoft.security/softwareinventories"
+        | extend vmId = properties.azureVmId
+        | where properties.softwareName == "apache_http_server" or properties.softwareName == "mysql"
+        | summarize count() by tostring(vmId)
+        | where count_ > 1
+        ```
+
+    - Kombination eines Softwareprodukts mit einer anderen ASC-Empfehlung:
+
+        (In diesem Beispiel: Computer mit installiertem MySQL und verfügbar gemachten Verwaltungsports)
+
+        ```kusto
+        securityresources
+        | where type == "microsoft.security/softwareinventories"
+        | extend vmId = tolower(properties.azureVmId)
+        | where properties.softwareName == "mysql"
+        | join (
+        securityresources
+        | where type == "microsoft.security/assessments"
+        | where properties.displayName == "Management ports should be closed on your virtual machines" and properties.status.code == "Unhealthy"
+        | extend vmId = tolower(properties.resourceDetails.Id)
+        ) on vmId
+        ```
+
 
 
 ## <a name="faq---inventory"></a>Häufig gestellte Fragen: Ressourcenbestand

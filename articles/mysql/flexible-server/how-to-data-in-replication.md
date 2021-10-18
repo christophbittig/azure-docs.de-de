@@ -6,12 +6,12 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 05ccdc3613141e7b04c3255a6035c7a03ad25995
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ee81fa18ac0f6bae6a3aefbfef60333991001dff
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128579727"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129812130"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-flexible-server-data-in-replication"></a>Konfigurieren der Datenreplikation in Azure Database for MySQL Flexible Server
 
@@ -164,6 +164,8 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
 
    Stellen Sie die Sicherungsdatei auf dem Server wieder her, der im Dienst „Azure Database for MySQL Flexible Server“ erstellt wurde. Informationen zum Wiederherstellen einer Sicherungsdatei auf einem MySQL-Server finden Sie unter [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](../concepts-migrate-dump-restore.md). Handelt es sich um eine große Sicherungsdatei, laden Sie sie auf einen virtuellen Computer in Azure in der gleichen Region wie Ihr Replikatserver hoch. Stellen Sie sie auf dem Server mit Azure Database for MySQL Flexible Server vom virtuellen Computer wieder her.
 
+>[!Note]
+>* Wenn Sie vermeiden möchten, dass die Datenbank beim Sichern und Wiederherstellen auf schreibgeschützt festgelegt wird, können Sie [mydumper/myloader](../concepts-migrate-mydumper-myloader.md) verwenden.
 
 ## <a name="link-source-and-replica-servers-to-start-data-in-replication"></a>Verknüpfen des Quell- und Replikatservers zum Starten der Datenreplikation
 
@@ -189,7 +191,8 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
      Es wird empfohlen, diesen Parameter als Variable zu übergeben. Weitere Informationen finden Sie in den folgenden Beispielen.
 
    > [!NOTE]
-   > Wenn der Quellserver auf einer Azure-VM gehostet wird, legen Sie „Zugriff auf Azure-Dienste erlauben“ auf „EIN“ fest, damit Quell- und Replikatserver miteinander kommunizieren können. Diese Einstellung kann über die Optionen für die **Verbindungssicherheit** geändert werden. Weitere Informationen finden Sie unter [Verwalten von Firewallregeln im Portal](how-to-manage-firewall-portal.md).
+   > * Wenn der Quellserver auf einer Azure-VM gehostet wird, legen Sie „Zugriff auf Azure-Dienste erlauben“ auf „EIN“ fest, damit Quell- und Replikatserver miteinander kommunizieren können. Diese Einstellung kann über die Optionen für die **Verbindungssicherheit** geändert werden. Weitere Informationen finden Sie unter [Verwalten von Firewallregeln im Portal](how-to-manage-firewall-portal.md).
+   > * Wenn Sie „mydumper/myloader“ zum Sichern der Datenbank verwendet haben, können Sie „master_log_file“ und „master_log_pos“ aus der Datei */backup/metadata* abrufen. 
 
    **Beispiele**
 

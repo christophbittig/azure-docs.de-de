@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: 80e6fec3741875460f781e728a9b976f1e4bfd71
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 76c883099b5ca665a9d0a720b403e3894bc2e67a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128631910"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705437"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-Konfiguration für private Azure-Endpunkte
 
@@ -88,7 +88,7 @@ Verwenden Sie für Azure-Dienste die empfohlenen Zonennamen in der folgenden Tab
 | Azure Cache for Redis Enterprise (Microsoft.Cache/RedisEnterprise)/redisCache | privatelink.redisenterprise.cache.azure.net | redisenterprise.cache.azure.net |
 | Azure Purview (Microsoft.Purview)| privatelink.purview.azure.com | purview.azure.com |
 | Azure Digital Twins (Microsoft.DigitalTwins)/digitalTwinsInstances | privatelink.digitaltwins.azure.net | digitaltwins.azure.net |
-
+| Azure HDInsight (Microsoft.HDInsight) | privatelink.azurehdinsight.net | azurehdinsight.net |
 
 <sup>1</sup> Für die Verwendung mit dem integrierten Event Hub-kompatiblen Endpunkt von IoT Hub. Weitere Informationen finden Sie unter [Integrierter, mit Event Hub kompatibler Endpunkt](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint).
 
@@ -105,6 +105,7 @@ Verwenden Sie für Azure-Dienste die empfohlenen Zonennamen in der folgenden Tab
 | Azure Database for PostgreSQL – Einzelserver (Microsoft.DBforPostgreSQL/servers)/postgresqlServer | privatelink.postgres.database.chinacloudapi.cn | postgres.database.chinacloudapi.cn |
 | Azure Database for MySQL (Microsoft.DBforMySQL/servers)/mysqlServer | privatelink.mysql.database.chinacloudapi.cn  | mysql.database.chinacloudapi.cn  |
 | Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)/mariadbServer | privatelink.mariadb.database.chinacloudapi.cn | mariadb.database.chinacloudapi.cn |
+| Azure HDInsight (Microsoft.HDInsight) | privatelink.azurehdinsight.cn | azurehdinsight.cn |
 
 ## <a name="dns-configuration-scenarios"></a>Szenarien der DNS-Konfiguration
 

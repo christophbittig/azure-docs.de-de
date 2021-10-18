@@ -1,5 +1,5 @@
 ---
-title: Funktionsübersicht
+title: Beschreibung der Funktionen
 titleSuffix: Azure Cognitive Search
 description: Hier erfahren Sie mehr über die Azure Cognitive Search-Featurekategorien.
 manager: nitinme
@@ -7,23 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: f25f67839c0bf859e020859db60027d9a5b2db91
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.date: 10/06/2021
+ms.openlocfilehash: 714dc6ac27f466c98e5c74bc16a9cfa3c5cd30cf
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729141"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620277"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure Cognitive Search-Features
 
-Azure Cognitive Search bietet eine Volltextsuche-Engine, die persistente Speicherung von Suchindizes, integrierte KI, die während der Indizierung verwendet wird, um mehr Text und Strukturen extrahieren, sowie APIs und Tools. In der folgenden Tabelle sind die Features nach Kategorie zusammengefasst. Weitere Informationen zum Vergleich von Cognitive Search mit anderen Suchtechnologien finden Sie unter [Was ist Azure Cognitive Search?](search-what-is-azure-search.md).
+Azure Cognitive Search bietet eine Volltextsuche-Engine, die persistente Speicherung von Suchindizes, integrierte KI, die während der Indizierung verwendet wird, um mehr Text und Strukturen extrahieren, sowie APIs und Tools. 
+
+In der folgenden Tabelle sind die Features nach Kategorie zusammengefasst. Weitere Informationen zum Vergleich von Cognitive Search mit anderen Suchtechnologien finden Sie unter [Vergleichen von Suchoptionen](search-what-is-azure-search.md#compare-search-options).
 
 ## <a name="indexing-features"></a>Indizierungsfeatures
 
 | Kategorie &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Features |
 |-------------------|----------|
-| Datenquellen | Search-Indizes können Daten aus beliebigen Quellen akzeptieren, sofern sie als JSON-Dokument übermittelt werden. <br/><br/> [**Indexer**](search-indexer-overview.md) sind ein Feature, das den Datenimport aus unterstützten Datenquellen automatisiert, um durchsuchbaren Inhalt in primären Datenspeichern zu extrahieren. Indexer verarbeiten die JSON-Serialisierung für Sie. Sie können eine Verbindung mit [verschiedenen Datenquellen](search-data-sources-gallery.md) herstellen, z. B. [Azure SQL-Datenbank](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DB](search-howto-index-cosmosdb.md) oder [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md). |
+| Datenquellen | Search-Indizes können Daten aus beliebigen Quellen akzeptieren, sofern sie als JSON-Dokument übermittelt werden. <br/><br/> [**Indexer**](search-indexer-overview.md) sind ein Feature, das den Datenimport aus unterstützten Datenquellen automatisiert, um durchsuchbaren Inhalt in primären Datenspeichern zu extrahieren. Indexer verarbeiten die JSON-Serialisierung für Sie. Sie können eine Verbindung mit [zahlreichen Datenquellen](search-data-sources-gallery.md) herstellen, z. B. [Azure SQL-Datenbank](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DB](search-howto-index-cosmosdb.md) oder [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md). |
 | Hierarchische und geschachtelte Datenstrukturen | Mit [**komplexen Typen**](search-howto-complex-data-types.md) und Sammlungen können Sie praktisch jede Art von JSON-Struktur in einem Suchindex modellieren. Die Eins-zu-viele- und Viele-zu-viele-Kardinalität kann über Sammlungen, komplexe Typen und Sammlungen von komplexen Typen nativ ausgedrückt werden.|
 | Linguistische Analyse | Analysemodule sind Komponenten, die für die Textverarbeitung während Indizierungs- und Suchvorgängen eingesetzt werden. Standardmäßig können Sie das universelle Lucene-Standardanalysetool verwenden oder den Standard mit einem Sprachanalysetool, einem benutzerdefinierten und von Ihnen konfigurierten Analysetool oder einem anderen vordefinierten Analysetool überschreiben, das Tokens im gewünschten Format generiert. <br/><br/>[**Sprachanalysen**](index-add-language-analyzers.md) von Lucene oder Microsoft werden verwendet, um sprachspezifische linguistische Probleme intelligent lösen zu können, z.B. Zeiten von Verben, Geschlecht, unregelmäßiger Plural von Substantiven (z.B. in Englisch: mouse/mice), Auflösen von zusammengesetzten Wörtern, Worttrennung (für Sprachen ohne Leerstellen) und vieles mehr. <br/><br/>[**Benutzerdefinierte lexikalische Analysetools**](index-add-custom-analyzers.md) werden für komplexe Abfrageformulare wie phonetische Abgleichungen und reguläre Ausdrücke verwendet.<br/><br/> |
 

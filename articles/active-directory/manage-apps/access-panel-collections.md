@@ -1,6 +1,7 @@
 ---
-title: Erstellen von Sammlungen für das Portal „Meine Apps“ in Azure Active Directory | Microsoft-Dokumentation
-description: Verwenden Sie „Meine Apps“-Sammlungen, um die Seiten von „Meine Apps“ anzupassen und die „Meine Apps“-Umgebung für Ihre Endbenutzer zu vereinfachen. Fassen Sie Anwendungen in Gruppen mit separaten Registerkarten zusammen.
+title: Erstellen von Auflistungen im Portal „Meine Apps“
+titleSuffix: Azure AD
+description: Verwenden Sie „Meine Apps“-Sammlungen, um die Seiten von „Meine Apps“ anzupassen und die „Meine Apps“-Umgebung für Ihre Benutzer zu vereinfachen. Fassen Sie Anwendungen in Gruppen mit separaten Registerkarten zusammen.
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02ccd18f4a394d17bcc73dab836c7972b37116a4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 610679e7a720f6736b575d2e58bc424de9e96d8d
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124817832"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617889"
 ---
-# <a name="create-collections-on-the-my-apps-portal"></a>Erstellen von Sammlungen im Portal „Meine Apps“
+# <a name="create-collections-on-the-my-apps-portal-in-azure-active-directory"></a>Erstellen von Sammlungen im Portal „Meine Apps“ in Azure Active Directory
 
 Ihre Benutzer können im Portal „Meine Apps“ die cloudbasierten Anwendungen, auf die sie zugreifen können, anzeigen und starten. Standardmäßig werden alle Anwendungen, auf die ein Benutzer zugreifen kann, auf einer einzigen Seite aufgelistet. Wenn Sie über eine Azure AD Premium P1- oder P2-Lizenz verfügen, können Sie Sammlungen einrichten, um diese Seite für Ihre Benutzer übersichtlicher zu gestalten. Mit einer Sammlung können Sie verwandte Anwendungen gruppieren (z. B. nach Auftragsrolle, Aufgabe oder Projekt) und auf separaten Registerkarten anzeigen. Eine Sammlung wendet im Wesentlichen einen Filter auf die Anwendungen an, auf die ein Benutzer bereits zugreifen kann. Dem Benutzer werden somit nur die ihm zugewiesenen Anwendungen in der Sammlung angezeigt.
 

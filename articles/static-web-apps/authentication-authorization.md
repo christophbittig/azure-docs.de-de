@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 04/09/2021
+ms.date: 10/08/2021
 ms.author: cshoe
-ms.openlocfilehash: 00f01e184b254e4fbc40fefa79506498bae30597
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: e38cc40407f636f8bfd53a9196ecaf9c431d34db
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634910"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729822"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps"></a>Authentifizierung und Autorisierung für Azure Static Web Apps
 
@@ -21,7 +21,8 @@ Azure Static Web Apps bietet eine optimierte Authentifizierungserfahrung. Standa
 - Jeder Benutzer kann sich bei einem aktivierten Anbieter authentifizieren.
 - Nach der Anmeldung gehören Benutzer standardmäßig den Rollen `anonymous` und `authenticated` an.
 - Autorisierte Benutzer erhalten Zugriff auf eingeschränkte [Routen](configuration.md#routes) durch Regeln, die in der [Datei „staticwebapp.config.json“](./configuration.md) definiert sind.
-- Benutzer treten benutzerdefinierten Rollen über anbieterspezifische [Einladungen](#invitations) oder über eine [benutzerdefinierte Azure Active Directory-Anbieterregistrierung](./authentication-custom.md) bei.
+- Benutzern werden mithilfe des integrierten [Einladungssystems](#invitations) benutzerdefinierte Rollen zugewiesen.
+- Benutzern können bei der Anmeldung durch eine API-Funktion programmgesteuert benutzerdefinierte Rollen zugewiesen werden.
 - Alle Authentifizierungsanbieter sind standardmäßig aktiviert.
   - [Blockieren Sie den Zugriff](#block-an-authorization-provider) mit einer benutzerdefinierten Routenregel, um einen Authentifizierungsanbieter auszuschließen.
 - Vorkonfigurierte Anbieter umfassen:
@@ -38,9 +39,11 @@ Jeder Benutzer, der auf eine statische Web-App zugreift, gehört mindestens eine
 - **anonymous**: Alle Benutzer gehören automatisch der Rolle _anonymous_ an.
 - **authenticated**: Alle Benutzer, die angemeldet sind, gehören der Rolle _authenticated_ an.
 
-Zusätzlich zu den integrierten Rollen können Sie neue Rollen erstellen, sie mithilfe von Einladungen Benutzern zuweisen und in der Datei _staticwebapp.config.json_ darauf verweisen.
+Zusätzlich zu den integrierten Rollen können Sie Benutzern benutzerdefinierte Rollen zuweisen und in der Datei _staticwebapp.config.json_ darauf verweisen.
 
 ## <a name="role-management"></a>Rollenverwaltung
+
+# <a name="invitations"></a>[Einladungen](#tab/invitations)
 
 ### <a name="add-a-user-to-a-role"></a>Hinzufügen eines Benutzers zu einer Rolle
 
@@ -97,13 +100,122 @@ Wenn der Benutzer in der Einladung auf den Link klickt, wird er aufgefordert, si
 1. Klicken Sie unter _Einstellungen_ auf **Rollenverwaltung**.
 1. Suchen Sie in der Liste nach dem Benutzer.
 1. Aktivieren Sie das Kontrollkästchen in der Zeile des Benutzers.
-1. Klicken Sie auf die Schaltfläche **Löschen**.
+1. Klicken Sie auf die Schaltfläche **Löschen** .
 
 Beachten Sie beim Entfernen eines Benutzers Folgendes:
 
 1. Wenn ein Benutzer entfernt wird, werden seine Berechtigungen ungültig.
 1. Die weltweite Verteilung kann einige Minuten dauern.
 1. Wenn der Benutzer wieder der App hinzugefügt wird, ändert sich die [`userId`](user-information.md).
+
+# <a name="function-preview"></a>[Funktion (Vorschau)](#tab/function)
+
+Anstatt des integrierten Einladungssystems können Sie eine serverlose Funktion verwenden, um Benutzern bei der Anmeldung programmgesteuert Rollen zuzuweisen.
+
+Um benutzerdefinierte Rollen in einer Funktion zuzuweisen, können Sie eine API-Funktion definieren, die nach jeder erfolgreichen Authentifizierung eines Benutzers bei einem Identitätsanbieter automatisch aufgerufen wird. Der Funktion werden die Benutzerinformationen vom Anbieter übergeben. Sie muss eine Liste benutzerdefinierter Rollen zurückgeben, die dem Benutzer zugewiesen werden.
+
+Beispiele für die Verwendung dieser Funktion sind:
+
+- Abfragen einer Datenbank, um zu bestimmen, welche Rollen einem Benutzer zugewiesen werden sollen
+- Aufrufen der [Microsoft Graph-API](https://developer.microsoft.com/graph), um die Rollen eines Benutzers basierend auf seiner Active Directory-Gruppenmitgliedschaft zu bestimmen
+- Bestimmen der Rollen eines Benutzers basierend auf Ansprüchen, die vom Identitätsanbieter zurückgegeben werden
+
+> [!NOTE]
+> Die Möglichkeit, Rollen über eine Funktion zuzuweisen, ist nur verfügbar, wenn die [benutzerdefinierte Authentifizierung](authentication-custom.md) konfiguriert ist.
+>
+> Wenn dieses Feature aktiviert ist, werden alle über das integrierte Einladungssystem zugewiesenen Rollen ignoriert.
+
+### <a name="configure-a-function-for-assigning-roles"></a>Konfigurieren einer Funktion zum Zuweisen von Rollen
+
+Um Azure Static Web Apps für die Verwendung einer API-Funktion als Funktion für die Zuweisung von Rollen zu konfigurieren, fügen Sie dem Abschnitt `auth` der [Konfigurationsdatei](configuration.md) Ihrer App eine `rolesSource`-Eigenschaft hinzu. Der Wert der `rolesSource`-Eigenschaft ist der Pfad zur API-Funktion.
+
+```json
+{
+  "auth": {
+    "rolesSource": "/api/GetRoles",
+    "identityProviders": {
+      // ...
+    }
+  }
+}
+```
+
+> [!NOTE]
+> Nach der Konfiguration kann von externen HTTP-Anforderungen nicht mehr auf die Rollenzuweisungsfunktion zugegriffen werden.
+
+### <a name="create-a-function-for-assigning-roles"></a>Erstellen einer Funktion zum Zuweisen von Rollen
+
+Nachdem Sie die `rolesSource`-Eigenschaft in der Konfiguration Ihrer App definiert haben, fügen Sie in Ihrer statischen Web-App unter dem angegebenen Pfad eine [API-Funktion](apis.md) hinzu. Sie können eine „Verwaltete Funktion“-App oder eine BYOF-App (Bring Your Own Function) verwenden.
+
+Jedes Mal, wenn sich ein Benutzer erfolgreich bei einem Identitätsanbieter authentifiziert, wird die angegebene Funktion aufgerufen. Der Funktion wird ein JSON-Objekt im Anforderungstext übergeben, das die Informationen des Benutzers vom Anbieter enthält. Bei einigen Identitätsanbietern enthalten die Benutzerinformationen auch ein `accessToken`-Objekt, das die Funktion verwenden kann, um API-Aufrufe mit der Benutzeridentität vorzunehmen.
+
+Dies ist eine Beispielnutzlast aus Azure Active Directory:
+
+```json
+{
+  "identityProvider": "aad",
+  "userId": "72137ad3-ae00-42b5-8d54-aacb38576d76",
+  "userDetails": "ellen@contoso.com",
+  "claims": [
+      {
+          "typ": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",
+          "val": "ellen@contoso.com"
+      },
+      {
+          "typ": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname",
+          "val": "Contoso"
+      },
+      {
+          "typ": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname",
+          "val": "Ellen"
+      },
+      {
+          "typ": "name",
+          "val": "Ellen Contoso"
+      },
+      {
+          "typ": "http://schemas.microsoft.com/identity/claims/objectidentifier",
+          "val": "7da753ff-1c8e-4b5e-affe-d89e5a57fe2f"
+      },
+      {
+          "typ": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier",
+          "val": "72137ad3-ae00-42b5-8d54-aacb38576d76"
+      },
+      {
+          "typ": "http://schemas.microsoft.com/identity/claims/tenantid",
+          "val": "3856f5f5-4bae-464a-9044-b72dc2dcde26"
+      },
+      {
+          "typ": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+          "val": "ellen@contoso.com"
+      },
+      {
+          "typ": "ver",
+          "val": "1.0"
+      }
+  ],
+  "accessToken": "eyJ0eXAiOiJKV..."
+}
+```
+
+Die Funktion kann anhand der Benutzerinformationen bestimmen, welche Rollen dem Benutzer zugewiesen werden sollen. Sie muss eine HTTP 200-Antwort mit einem JSON-Text zurückgeben, der eine Liste benutzerdefinierter Rollennamen enthält, die dem Benutzer zugewiesen werden sollen.
+
+Um dem Benutzer z. B. die Rollen `Reader` und `Contributor` zuzuweisen, geben Sie die folgende Antwort zurück:
+
+```json
+{
+  "roles": [
+    "Reader",
+    "Contributor"
+  ]
+}
+```
+
+Wenn Sie dem Benutzer keine zusätzlichen Rollen zuweisen möchten, geben Sie ein leeres `roles`-Array zurück.
+
+Weitere Informationen finden Sie unter [Tutorial: Zuweisen von benutzerdefinierten Rollen mit einer Funktion und Microsoft Graph](assign-roles-microsoft-graph.md).
+
+---
 
 ## <a name="remove-personal-identifying-information"></a>Entfernen von personenbezogenen Informationen
 

@@ -1,6 +1,7 @@
 ---
-title: Verwalten von Richtlinien zur Einwilligung für die App in Azure AD
+title: Verwalten von Richtlinien für die App-Zustimmung
 description: Hier erfahren Sie, wie Sie integrierte und benutzerdefinierte Richtlinien zur Einwilligung für die App verwalten können, um zu steuern, wann eine Einwilligung erteilt werden kann.
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: bc457ad3a610f8c5942ba5b00a953f0cc5e05481
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 67da7a27598e0791b266f0073c0bbf8ad5862614
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124835802"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617547"
 ---
-# <a name="manage-app-consent-policies"></a>Verwalten von Richtlinien zur Einwilligung für die App
+# <a name="manage-app-consent-policies-in-azure-active-directory"></a>Verwalten von Richtlinien für die App-Zustimmung in Azure Active Directory
 
 Mit Azure AD PowerShell können Sie Richtlinien zur Einwilligung für die App anzeigen und verwalten.
 

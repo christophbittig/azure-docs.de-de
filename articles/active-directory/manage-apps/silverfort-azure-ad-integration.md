@@ -1,6 +1,8 @@
 ---
 title: Sicherer Hybridzugriff mit Azure AD und Silverfort
 description: In diesem Tutorial wird erläutert, wie Sie Silverfort mit Azure AD integrieren, um sicheren Hybridzugriff zu nutzen.
+titleSuffix: Azure AD
+services: active-directory
 author: gargi-sinha
 manager: martinco
 ms.service: active-directory
@@ -10,12 +12,12 @@ ms.workload: identity
 ms.date: 9/13/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0429b00a03aaf39fa5eb5657253ee6ee51190049
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 1515bfe65a9a680a9331a5a4d2b13e4d3633fda0
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274556"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658251"
 ---
 # <a name="tutorial-configure-silverfort-with-azure-active-directory-for-secure-hybrid-access"></a>Tutorial: Konfigurieren von Silverfort mit Azure Active Directory für sicheren Hybridzugriff
 

@@ -14,14 +14,14 @@ ms.author: davidmu
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
 ms.reviewer: hirsin
-ms.openlocfilehash: 56a4c06759841e5e011deb5fde50f1e9fe2cbea7
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: a266e60ef3079ecb12b227b047519abad5d26bf1
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061825"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619726"
 ---
-# <a name="configure-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Anmeldeverhaltens für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung
+# <a name="configure-sign-in-behavior-in-azure-active-directory"></a>Konfigurieren des Anmeldeverhaltens in Azure Active Directory
 
 Dieser Artikel enthält eine Einführung in die Konfiguration des Azure Active Directory-Authentifizierungsverhaltens (Azure AD) für Verbundbenutzer*innen unter Verwendung einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HRD).  Er behandelt die Verwendung der automatischen Beschleunigung, durch die der Bildschirm für die Eingabe des Benutzernamens übersprungen wird und Benutzer automatisch an Endpunkte mit Verbundanmeldung weitergeleitet werden.  Microsoft empfiehlt das Konfigurieren der automatischen Beschleunigung nicht mehr, da diese die Verwendung sichererer Authentifizierungsmethoden wie FIDO (Fast Identity Online) verhindern und bei der Zusammenarbeit hinderlich sein kann.
 

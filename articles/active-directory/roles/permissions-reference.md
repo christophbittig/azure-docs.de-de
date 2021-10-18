@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 09/14/2021
+ms.date: 10/07/2021
 ms.author: rolyon
 ms.reviewer: abhijeetsinha
 ms.custom: generated, it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a057cbd765e58cf4eca509af38e74e62168cddc2
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: b1cbd4732513b9c9bcc40f6eafb0a792b2d3ca06
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058131"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667875"
 ---
 # <a name="azure-ad-built-in-roles"></a>Integrierte Rollen in Azure AD
 
@@ -57,6 +57,7 @@ In diesem Artikel werden die in Azure AD integrierten Rollen aufgelistet, die Si
 > | [Verzeichnisschreibberechtigte](#directory-writers) | Kann grundlegende Verzeichnisinformationen lesen und schreiben. Die Rolle gewährt Zugriff auf Anwendungen und ist nicht für Benutzer vorgesehen. | 9360feb5-f418-4baa-8175-e2a00bac4301 |
 > | [Domänennamenadministrator](#domain-name-administrator) | Verwalten von Domänennamen lokal und in der Cloud. | 8329153b-31d0-4727-b945-745eb3bc5f31 |
 > | [Dynamics 365-Administrator](#dynamics-365-administrator) | Verwalten sämtlicher Aspekte des Produkts Dynamics 365. | 44367163-eba1-44c3-98af-f5787879f96a |
+> | [Edgeadministrator](#edge-administrator) | Verwalten sämtlicher Aspekte von Microsoft Edge. | 3f1acade-1e04-4fbc-9b69-f0302cd84aef |
 > | [Exchange-Administrator](#exchange-administrator) | Verwalten sämtlicher Aspekte des Produkts Exchange. | 29232cdf-9323-42fd-ade2-1d097af3e4de |
 > | [Administrator für Exchange-Empfänger](#exchange-recipient-administrator) | Erstellen oder Aktualisieren von Exchange Online-Empfängern in der Exchange Online-Organisation. | 31392ffb-586c-42d1-9346-e59415a2cc4e |
 > | [Administrator für Benutzerflows mit externer ID](#external-id-user-flow-administrator) | Kann alle Aspekte von Benutzerflows erstellen und verwalten. | 6e591065-9bad-43ed-90f3-e9424366d2f0 |
@@ -252,7 +253,7 @@ Die Rolle [Authentifizierungsrichtlinienadministrator](#authentication-policy-ad
 > | --- | --- |
 > | microsoft.directory/users/authenticationMethods/create | Erstellen von Authentifizierungsmethoden für Benutzer |
 > | microsoft.directory/users/authenticationMethods/delete | Löschen von Authentifizierungsmethoden für Benutzer |
-> | microsoft.directory/users/authenticationMethods/standard/restrictedRead | Lesen der Standardeigenschaften von Authentifizierungsmethoden, die keine personenbezogenen Informationen enthalten |
+> | microsoft.directory/users/authenticationMethods/standard/restrictedRead | Lesen der Standardeigenschaften von Authentifizierungsmethoden, die keine personenbezogenen Informationen für Benutzer enthalten |
 > | microsoft.directory/users/authenticationMethods/basic/update | Aktualisieren der grundlegenden Eigenschaften von Authentifizierungsmethoden für Benutzer |
 > | microsoft.directory/users/invalidateAllRefreshTokens | Erzwingen der Abmeldung von Benutzern durch Ungültigmachen des Aktualisierungstokens |
 > | microsoft.directory/users/password/update | Zurücksetzen der Kennwörter für alle Benutzer |
@@ -758,6 +759,17 @@ Benutzer mit dieser Rolle besitzen globale Berechtigungen innerhalb von Microsof
 > | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Microsoft 365-Serviceanforderungen |
 > | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
 
+## <a name="edge-administrator"></a>Edgeadministrator
+
+Benutzer mit dieser Rolle können die Unternehmenswebsiteliste erstellen und verwalten, die für den Internet Explorer-Modus in Microsoft Edge erforderlich ist. Diese Rolle gewährt Berechtigungen zum Erstellen, Bearbeiten und Veröffentlichen der Websiteliste und ermöglicht darüber hinaus den Zugriff auf die Verwaltung von Supporttickets. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2165707)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | microsoft.edge/allEntities/allProperties/allTasks | Verwalten sämtlicher Aspekte von Microsoft Edge |
+> | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Microsoft 365-Serviceanforderungen |
+> | microsoft.office365.webPortal/allEntities/standard/read | Lesen grundlegender Eigenschaften für alle Ressourcen im Microsoft 365 Admin Center |
+
 ## <a name="exchange-administrator"></a>Exchange-Administrator
 
 Benutzer mit dieser Rolle besitzen globale Berechtigungen in Microsoft Exchange Online, wenn der Dienst verfügbar ist. Außerdem haben sie die Möglichkeit zum Erstellen und Verwalten aller Microsoft 365-Gruppen, Verwalten von Supporttickets und Überwachen der Dienstintegrität. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Microsoft 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
@@ -833,7 +845,7 @@ Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in 
 > Als bewährte Methode empfiehlt Microsoft, dass Sie die Rolle "Globaler Administrator" weniger als fünf Personen in Ihrer Organisation zuweisen. Weitere Informationen finden Sie unter [Bewährte Methoden für Azure AD-Rollen](best-practices.md).
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | Beschreibung |
+> | Aktionen | BESCHREIBUNG |
 > | --- | --- |
 > | microsoft.directory/accessReviews/allProperties/allTasks | Erstellen und Löschen von Zugriffsüberprüfungen, Lesen und Aktualisieren aller Eigenschaften von Zugriffsüberprüfungen und Verwalten von Zugriffsüberprüfungen von Gruppen in Azure AD |
 > | microsoft.directory/administrativeUnits/allProperties/allTasks | Erstellen und Verwalten von Verwaltungseinheiten (einschließlich Mitgliedern). |
@@ -977,7 +989,7 @@ Benutzer in dieser Rolle können in Microsoft 365-Diensten Einstellungen und adm
 > | microsoft.directory/applications/allProperties/read | Lesen aller Eigenschaften (einschließlich privilegierter Eigenschaften) aller Anwendungstypen |
 > | microsoft.directory/applications/synchronization/standard/read | Lesen von Bereitstellungseinstellungen, die dem Anwendungsobjekt zugeordnet sind |
 > | microsoft.directory/auditLogs/allProperties/read | Lesen sämtlicher Eigenschaften von Überwachungsprotokollen (einschließlich privilegierter Eigenschaften) |
-> | microsoft.directory/users/authenticationMethods/standard/restrictedRead | Lesen der Standardeigenschaften von Authentifizierungsmethoden, die keine personenbezogenen Informationen enthalten |
+> | microsoft.directory/users/authenticationMethods/standard/restrictedRead | Lesen der Standardeigenschaften von Authentifizierungsmethoden, die keine personenbezogenen Informationen für Benutzer enthalten |
 > | microsoft.directory/authorizationPolicy/standard/read | Lesen von Standardeigenschaften von Autorisierungsrichtlinien |
 > | microsoft.directory/bitlockerKeys/key/read | Lesen von BitLocker-Metadaten und -Schlüsseln auf Geräten |
 > | microsoft.directory/cloudAppSecurity/allProperties/read | Lesen sämtlicher Eigenschaften für Cloud App Security |
@@ -1123,7 +1135,6 @@ Benutzer mit dieser Rolle können die Konfigurationseinrichtung bei Bereitstellu
 > | microsoft.directory/applications/audience/update | Aktualisieren der audience-Eigenschaft für Anwendungen |
 > | microsoft.directory/applications/authentication/update | Aktualisieren der Authentifizierung für alle Anwendungstypen |
 > | microsoft.directory/applications/basic/update | Aktualisieren grundlegender Eigenschaften für Anwendungen |
-> | microsoft.directory/applications/credentials/update | Aktualisieren von Anwendungsanmeldeinformationen |
 > | microsoft.directory/applications/notes/update | Aktualisieren von Anwendungshinweisen |
 > | microsoft.directory/applications/owners/update | Aktualisieren von Anwendungsbesitzern |
 > | microsoft.directory/applications/permissions/update | Aktualisieren von verfügbar gemachten und erforderlichen Berechtigungen für alle Anwendungstypen |
@@ -1169,7 +1180,7 @@ Benutzer mit dieser Rolle können die Konfigurationseinrichtung bei Bereitstellu
 Benutzer mit dieser Rolle können die Azure AD Identity Governance-Konfiguration verwalten. Dies schließt die Verwaltung von Zugriffspaketen, Zugriffsüberprüfungen, Katalogen und Richtlinien ein. So kann sichergestellt werden, dass der Zugriff genehmigt und überprüft wurde und Gastbenutzer entfernt werden, wenn sie keinen Zugriff mehr benötigen.
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | Beschreibung |
+> | Aktionen | BESCHREIBUNG |
 > | --- | --- |
 > | microsoft.directory/accessReviews/allProperties/allTasks | Erstellen und Löschen von Zugriffsüberprüfungen, Lesen und Aktualisieren aller Eigenschaften von Zugriffsüberprüfungen und Verwalten von Zugriffsüberprüfungen von Gruppen in Azure AD |
 > | microsoft.directory/entitlementManagement/allProperties/allTasks | Erstellen und Löschen von Ressourcen sowie Lesen und Aktualisieren aller Eigenschaften in der Azure AD-Berechtigungsverwaltung |
@@ -1263,7 +1274,7 @@ Benutzer mit dieser Rolle besitzen globale Berechtigungen zum Verwalten von Eins
 Benutzer mit dieser Rolle haben Vollzugriff auf alle Einstellungen für Wissens-, Lern- und intelligenten Features im Microsoft 365 Admin Center. Sie verfügen über ein allgemeines Verständnis der Produktsuite und der Lizenzierungsdetails und sind für die Zugriffssteuerung verantwortlich. Der Wissensadministrator kann Inhalte wie Themen, Akronyme und Lernressourcen erstellen und verwalten. Darüber hinaus können diese Benutzer Inhaltscenter erstellen, die Dienstintegrität überwachen und Service Requests erstellen.
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | Beschreibung |
+> | Aktionen | BESCHREIBUNG |
 > | --- | --- |
 > | microsoft.directory/groups.security/create | Erstellen von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups.security/createAsOwner | Erstellen von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) Der Ersteller wird als erster Besitzer hinzugefügt. |
@@ -1284,7 +1295,7 @@ Benutzer mit dieser Rolle haben Vollzugriff auf alle Einstellungen für Wissens-
 Benutzer in dieser Rolle können Inhalte wie Themen, Akronyme und Lerninhalte erstellen und verwalten. Diese Benutzer sind in erster Linie für die Qualität und Struktur von Wissen zuständig. Dieser Benutzer hat vollständige Rechte für Themenverwaltungsaktionen zum Bestätigen eines Themas, Genehmigen von Bearbeitungen oder Löschen eines Themas. Diese Rolle kann auch Taxonomien im Rahmen des Begriffs „Speicherverwaltungstool“ verwalten und Inhaltscenter erstellen.
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | Beschreibung |
+> | Aktionen | BESCHREIBUNG |
 > | --- | --- |
 > | microsoft.directory/groups.security/create | Erstellen von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) |
 > | microsoft.directory/groups.security/createAsOwner | Erstellen von Sicherheitsgruppen (Gruppen ausgeschlossen, denen Rollen zugewiesen werden können) Der Ersteller wird als erster Besitzer hinzugefügt. |

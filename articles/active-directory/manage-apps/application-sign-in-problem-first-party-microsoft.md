@@ -1,5 +1,6 @@
 ---
-title: Probleme beim Anmelden bei Microsoft-Anwendungen | Microsoft-Dokumentation
+title: Probleme beim Anmelden bei Microsoft-Anwendungen
+titleSuffix: Azure AD
 description: Hier erhalten Sie Informationen zur Behandlung von allgemeinen Problemen bei der Anmeldung in eigenen Microsoft-Anwendungen mithilfe von Azure AD (z. B. Microsoft 365).
 services: active-directory
 author: davidmu1
@@ -12,16 +13,16 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c52cd2062745bd3506f687492dff240d15bbcc1b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 345d5e014631ef4f4a5dc0897face90a6267d032
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355479"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619083"
 ---
-# <a name="problems-signing-in-to-a-microsoft-application"></a>Probleme beim Anmelden bei Microsoft-Anwendungen
+# <a name="problems-signing-in-to-a-microsoft-application-in-azure-active-directory"></a>Probleme beim Anmelden bei einer Microsoft-Anwendung in Azure Active Directory
 
-Microsoft-Anwendungen (z. B. Exchange, SharePoint, Yammer usw.) werden nicht genau auf die gleiche Weise zugewiesen und verwaltet wie SaaS-Anwendungen von Drittanbietern oder andere Anwendungen, die Sie für das einmalige Anmelden mit Azure AD integrieren.
+Microsoft-Anwendungen (z. B. Exchange, SharePoint, Yammer usw.) werden nicht genau auf die gleiche Weise zugewiesen und verwaltet wie SaaS-Anwendungen von Drittanbietern oder andere Anwendungen, die Sie für einmaliges Anmelden mit Azure AD integrieren.
 
 Es gibt drei Hauptmethoden, über die ein Benutzer Zugriff auf eine von Microsoft veröffentlichte Anwendung erhalten kann.
 

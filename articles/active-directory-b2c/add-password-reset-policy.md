@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d87a09615df4882b132fd407417c046d174e9a0f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fc49dc992125e22205f50faa3f38283024559cba
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570449"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657566"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Einrichten eines Kennwortzurücksetzungsflows in Azure Active Directory B2C
 
@@ -338,6 +338,9 @@ Testen des Benutzerflows:
 Benutzerdefinierte Richtlinien sind ein Satz von XML-Dateien, die Sie in den Azure AD B2C-Mandanten hochladen, um User Journeys zu definieren. Wir bieten Starter Packs mit mehreren integrierten Richtlinien, z. B. für die Registrierung und Anmeldung, für die Kennwortzurücksetzung und für die Profilbearbeitung. Weitere Informationen finden Sie unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](tutorial-create-user-flows.md?pivots=b2c-custom-policy).
 
 ::: zone-end
+
+## <a name="troubleshoot-azure-ad-b2c-user-flows-and-custom-policies"></a>Beheben von Problemen mit Benutzerflows und benutzerdefinierten Richtlinien in Azure AD B2C
+Ihre Anwendung muss bestimmte Fehler behandeln, die vom Azure B2C-Dienst verursacht werden. Weitere Informationen finden Sie unter [Beheben von Problemen mit Benutzerflows und benutzerdefinierten Richtlinien in Azure AD B2C](troubleshoot.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

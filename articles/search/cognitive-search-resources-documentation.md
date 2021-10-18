@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/16/2021
-ms.openlocfilehash: 9bc027f269355a76d43fe02e4ca90a0e9f65024d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 26338164ca073ff5d9b331d36a5a9d935a3f3468
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128656605"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707593"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Dokumentationressourcen für die KI-Anreicherung in Azure Cognitive Search
 
@@ -34,7 +34,8 @@ Im Folgenden finden Sie eine konsolidierte Liste der Dokumentation für die KI-A
 
 ## <a name="hands-on-walkthroughs"></a>Praktische Anleitungen
 
-+ [Schnellstart: Erstellen eines kognitiven Skillsets im Azure-Portal](cognitive-search-quickstart-blob.md)
++ [Schnellstart: Erstellen eines Skillsets für Textübersetzung und Entität](cognitive-search-quickstart-blob.md)
++ [Schnellstart: Erstellen eines OCR-Image-Skillsets](cognitive-search-quickstart-ocr.md)
 + [Tutorial: Angereicherte Indizierung mit künstlicher Intelligenz (KI)](cognitive-search-tutorial-blob.md)
 + [Tutorial: Diagnostizieren, Reparieren und Committen von Änderungen an Ihrem Skillset](cognitive-search-tutorial-debug-sessions.md)
 

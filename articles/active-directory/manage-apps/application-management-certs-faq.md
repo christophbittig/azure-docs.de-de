@@ -1,5 +1,6 @@
 ---
-title: Häufig gestellte Fragen zu den Verwaltungszertifikaten von Anwendungen mit Azure Active Directory
+title: Häufig gestellte Fragen zu Anwendungsverwaltungszertifikaten
+titleSuffix: Azure AD
 description: Hier finden Sie Antworten auf häufig gestellte Fragen (FAQ) zum Verwalten von Zertifikaten für Apps, die Azure Active Directory als Identitätsanbieter (IdP) verwenden.
 services: active-directory
 author: davidmu1
@@ -11,14 +12,14 @@ ms.topic: reference
 ms.date: 03/19/2021
 ms.author: davidmu
 ms.reviewer: sureshja, saumadan
-ms.openlocfilehash: 497cc5b00db313c8bccbb31130ea7656634d051d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3f94c7eae439303f2954b8ab62f499b789902e79
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345817"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619935"
 ---
-# <a name="azure-active-directory-azure-ad-application-management-certificates-frequently-asked-questions"></a>Häufig gestellte Fragen zu den Verwaltungszertifikaten von Anwendungen mit Azure Active Directory (Azure AD)
+# <a name="azure-active-directory-application-management-certificates-frequently-asked-questions"></a>Häufig gestellte Fragen zu den Verwaltungszertifikaten von Anwendungen mit Azure Active Directory
 
 Auf dieser Seite finden Sie Antworten auf häufig gestellte Fragen zum Verwalten von Zertifikaten für Apps, die Azure Active Directory (Azure AD) als Identitätsanbieter (IdP) verwenden.
 

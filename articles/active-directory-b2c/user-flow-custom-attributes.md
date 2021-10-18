@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3e3cb266e9da128e9379d6868d189ac72408c4f7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 05d5d4a3ed9ea9e9ea99cd917762973f2865528f
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605827"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657319"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definieren benutzerdefinierter Attribute in Azure Active Directory B2C
 
@@ -58,9 +58,9 @@ Das benutzerdefinierte Attribut steht jetzt in der Liste der **Benutzerattribute
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 1. Wählen Sie eine Richtlinie aus (z.B. „B2C_1_SignupSignin“), um sie zu öffnen.
-1. Wählen Sie **Benutzerattribute** und dann das benutzerdefinierte Attribut aus (z.B. „ShoeSize“). Klicken Sie auf **Speichern**.
+1. Wählen Sie **Benutzerattribute** und dann das benutzerdefinierte Attribut aus (z.B. „ShoeSize“). Wählen Sie **Speichern** aus.
 1. Wählen Sie **Anwendungsansprüche** und dann das benutzerdefinierte Attribut aus.
-1. Klicken Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus.
 
 Nach dem Erstellen eines neuen Benutzers über einen Benutzerflow, der das neu erstellte benutzerdefinierte Attribut verwendet, kann das Objekt im [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) abgefragt werden. Alternativ können Sie mit der Funktion [Benutzerflow ausführen](./tutorial-create-user-flows.md) für den Benutzerflow die Benutzerfreundlichkeit überprüfen. **ShoeSize** sollte jetzt in der Liste der Attribute, die während der Registrierung erfasst werden, sowie in dem Token angezeigt werden, das zurück an die Anwendung gesendet wird.
 
@@ -72,7 +72,7 @@ Erweiterungsattribute können nur für ein Anwendungsobjekt registriert werden, 
 
 ::: zone pivot="b2c-user-flow"
 
-So rufen Sie die Anwendungs-ID ab:
+### <a name="get-extensions-apps-application-id"></a>Abrufen der Anwendungs-ID der Erweiterungs-App
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
@@ -86,7 +86,7 @@ So rufen Sie die Anwendungs-ID ab:
 
 ::: zone pivot="b2c-custom-policy"
 
-Rufen Sie die Anwendungseigenschaften ab:
+### <a name="get-extensions-apps-application-properties"></a>Abrufen der Anwendungseigenschaften der Erweiterungs-App
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
@@ -188,6 +188,36 @@ Die Microsoft Graph-API unterstützt das Erstellen und Aktualisieren eines Benut
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyId": "212342" 
 ``` 
+
+## <a name="remove-extension-attribute"></a>Entfernen von Erweiterungsattributen
+
+Im Gegensatz zu integrierten Attributen können Erweiterungs- bzw. benutzerdefinierte Attribute entfernt werden. Die Werte der Erweiterungsattribute können ebenfalls entfernt werden. 
+
+> [!Important]
+> Legen Sie vor dem Entfernen des Erweiterungs- bzw. benutzerdefinierten Attributs für jedes Konto im Verzeichnis den Wert des Erweiterungsattributs auf NULL fest.  Auf diese Weise entfernen Sie explizit die Werte der Erweiterungsattribute. Entfernen Sie anschließend das Erweiterungsattribut selbst. Erweiterungs- bzw. benutzerdefinierte Attribute können mithilfe der MS Graph-API abgefragt werden. 
+
+::: zone pivot="b2c-user-flow"
+
+Führen Sie die folgenden Schritte aus, um ein Erweiterungs- bzw. benutzerdefiniertes Attribut aus einem Benutzerflow zu entfernen:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält:
+    1.  Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+    1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** Ihr Azure AD B2C-Verzeichnis in der Verzeichnisliste, und wählen Sie dann **Wechseln** aus.
+1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
+1. Wählen Sie **Benutzerattribute** und dann das zu löschende Benutzerattribut aus.
+1. Wählen Sie **Löschen** und dann **Ja** aus, um den Löschvorgang zu bestätigen.
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+Um ein benutzerdefiniertes Attribut zu entfernen, verwenden Sie die [MS Graph-API](microsoft-graph-operations.md)und den Befehl [Löschen](/graph/api/application-delete-extensionproperty).
+
+::: zone-end
+
+ 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

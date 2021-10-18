@@ -10,14 +10,14 @@ metadata:
   ms.subservice: domain-services
   ms.workload: identity
   ms.topic: how-to
-  ms.date: 09/01/2021
+  ms.date: 10/08/2021
   ms.author: justinha
-  ms.openlocfilehash: f11d8198c04cc93587591e41359fe9e359d350d6
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.openlocfilehash: 104b738143169ffe6f9787a8223efa757a8656d6
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123433138"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129710348"
 title: Häufig gestellte Fragen (FAQs) zu den Azure Active Directory (AD) Domain Services
 summary: Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory Domain Services beantwortet.
 sections:
@@ -77,9 +77,9 @@ sections:
       Kann eine zweiseitige Gesamtstruktur-Vertrauensstellung zwischen einer Ressourcengesamtstruktur und einer lokalen Gesamtstruktur erstellt werden?
     answer: "Nein. Eine Ressourcengesamtstruktur der verwalteten Domäne unterstützt bis zu fünf unidirektionale ausgehende Gesamtstruktur-Vertrauensstellungen zu lokalen Gesamtstrukturen. \n"
   - question: >
-      Kann ich eine vorhandene verwaltete Azure AD Domain Services-Domäne in ein anderes Abonnement, eine andere Ressourcengruppe, eine andere Region, ein anderes virtuelles Netzwerk oder ein anderes Subnetz verschieben?
+      Kann ich eine verwaltete Domäne verschieben?
     answer: >
-      Nein. Nachdem Sie eine verwaltete Azure AD Domain Services-Domäne erstellt haben, können Sie diese nicht in ein anderes Abonnement, eine andere Ressourcengruppe, eine andere Region, ein anderes virtuelles Netzwerk oder ein anderes Subnetz verschieben. Wählen Sie beim Bereitstellen der verwalteten Domäne das am besten geeignete Abonnement, die am besten geeignete Ressourcengruppe und Region sowie das am besten geeignete virtuelle Netzwerk und Subnetz aus.
+      Nein. Nachdem Sie eine verwaltete Azure AD Domain Services-Domäne erstellt haben, können Sie diese nicht in ein anderes Abonnement, eine andere Ressourcengruppe, eine andere Region, ein anderes virtuelles Netzwerk oder ein anderes Subnetz verschieben. Als Problemumgehung können Sie [die verwaltete Domäne löschen](delete-aadds.md) (mit PowerShell oder im Azure-Portal) und mit dem gewünschten Setup neu erstellen. Während der Neuerstellung der verwalteten Domäne können keine Wiederherstellungsvorgänge bereitgestellt werden.
   - question: >
       Kann ich einen vorhandenen Azure AD Domain Services Domänennamen umbenennen?
     answer: >

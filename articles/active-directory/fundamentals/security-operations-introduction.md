@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df71173837075c786d7c8f9907e0ed3cac576b16
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c219ab9c1503fdd3bbd85bf704786ef2c097d52a
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676255"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808654"
 ---
 # <a name="azure-active-directory-security-operations-guide"></a>Azure Active Directory: Leitfaden zu Sicherheitsvorgängen
 
@@ -73,6 +73,10 @@ Microsoft bietet viele Produkte und Dienste, mit denen Sie Ihre IT-Umgebung an I
 
    * [Sicherheitsbaseline (endgültige Version) für Windows 10 v1909 und Windows Server v1909](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/security-baseline-final-for-windows-10-v1909-and-windows-server/ba-p/1023093)
 
+   * [Sicherheitsbaseline für Windows 11](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/windows-11-security-baseline/ba-p/2810772)
+   
+   * [Sicherheitsbaseline für Windows Server 2022](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/windows-server-2022-security-baseline/ba-p/2724685)
+   
 * Lokale Umgebungen
 
    * [Microsoft Defender for Identity-Architektur](/defender-for-identity/architecture)

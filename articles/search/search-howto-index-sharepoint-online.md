@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 3a6bb0fd360b334299c6cd1be2795121a3b53203
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e73e8226bd90b1600b0f3538e34c9f4f937ce189
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777524"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807372"
 ---
 # <a name="index-data-from-sharepoint-online"></a>Indizieren von Daten über SharePoint Online
 
@@ -265,9 +265,6 @@ Nachdem die Datenquelle aktualisiert wurde, führen Sie die folgenden Schritte a
 ## <a name="indexing-document-metadata"></a>Indizieren von Dokumentmetadaten
 Wenn Sie den Indexer zum Indizieren von Dokumentmetadaten konfiguriert haben, können Sie die folgenden Metadaten indizieren.
 
-> [!NOTE]
-> Benutzerdefinierte Metadaten können mit der aktuellen Vorschauversion nicht indiziert werden.
-
 | Bezeichner | type | BESCHREIBUNG | 
 | ------------- | -------------- | ----------- |
 | metadata_spo_site_library_item_id | Edm.String | Der kombinierte Schlüssel aus Website-ID, Bibliotheks-ID und Element-ID, der ein Element in einer Dokumentbibliothek für eine Website eindeutig identifiziert. |
@@ -284,6 +281,9 @@ Wenn Sie den Indexer zum Indizieren von Dokumentmetadaten konfiguriert haben, k�
 
 Der SharePoint Online-Indexer unterstützt auch spezifische Metadaten für die einzelnen Dokumenttypen. Weitere Informationen finden Sie unter [Metadateneigenschaften von Inhalten, die in Azure Cognitive Search verwendet werden](search-blob-metadata-properties.md).
 
+> [!NOTE]
+> Um benutzerdefinierte Metadaten zu indizieren, muss [`additionalColumns` in der Abfragedefinition](#query) angegeben werden.
+
 <a name="controlling-which-documents-are-indexed"></a>
 
 ## <a name="controlling-which-documents-are-indexed"></a>Steuern der indizierten Dokumente
@@ -298,6 +298,8 @@ Die *name*-Eigenschaft ist erforderlich und muss einen der folgenden drei Werte 
 +   *useQuery*
     + Indiziert nur den in der *Abfrage* definierten Inhalt.
 
+<a name="query"></a>
+
 ### <a name="query"></a>Abfrage
 Die *query*-Eigenschaft besteht aus Schlüsselwort-Wert-Paaren. Die unten aufgeführten Schlüsselwörter können verwendet werden. Die Werte sind entweder Website-URLs oder Dokumentbibliothek-URLs.
 
@@ -310,6 +312,7 @@ Die *query*-Eigenschaft besteht aus Schlüsselwort-Wert-Paaren. Die unten aufgef
 | includeLibrariesInSite | Indiziert den Inhalt aller Bibliotheken in der definierten Website in der Verbindungszeichenfolge. Die Bibliotheken sind auf Unterwebsites Ihrer Website beschränkt. <br><br> Der *query*-Wert für dieses Schlüsselwort muss der URI der Website oder Unterwebsite sein. | So indizieren Sie den gesamten Inhalt aller Dokumentbibliotheken in „mysite“: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrariesInSite=https://mycompany.sharepoint.com/mysite" } ``` |
 | includeLibrary | Indiziert den Inhalt dieser Bibliothek. <br><br> Der *query*-Wert für dieses Schlüsselwort muss in einem der folgenden Formate angegeben werden: <br><br> Beispiel 1: <br><br> *includeLibrary=[Website oder Unterwebsite]/[Dokumentbibliothek]* <br><br> Beispiel 2: <br><br> Aus dem Browser kopierter URI. | So indizieren Sie den gesamten Inhalt von „MyDocumentLibrary“: <br><br> Beispiel 1: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/mysite/MyDocumentLibrary" } ``` <br><br> Beispiel 2: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/teams/mysite/MyDocumentLibrary/Forms/AllItems.aspx" } ``` |
 | excludeLibrary |  Schließt den Inhalt dieser Bibliothek von der Indizierung aus. <br><br> Der *query*-Wert für dieses Schlüsselwort muss in einem der folgenden Formate angegeben werden: <br><br> Beispiel 1: <br><br> *excludeLibrary=[Website- oder Unterwebsite-URI]/[Dokumentbibliothek]* <br><br> Beispiel 2: <br><br> Aus dem Browser kopierter URI. | So indizieren Sie den gesamten Inhalt aller Bibliotheken mit Ausnahme von „MyDocumentLibrary“: <br><br> Beispiel 1: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrariesInSite=https://mysite.sharepoint.com/subsite1; excludeLibrary=https://mysite.sharepoint.com/subsite1/MyDocumentLibrary" } ``` <br><br> Beispiel 2: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrariesInSite=https://mycompany.sharepoint.com/teams/mysite; excludeLibrary=https://mycompany.sharepoint.com/teams/mysite/MyDocumentLibrary/Forms/AllItems.aspx" } ``` |
+| additionalColumns | Indiziert Spalten aus dieser Bibliothek. <br><br> Der Abfragewert für dieses Schlüsselwort sollte eine durch Trennzeichen getrennte Liste von Spaltennamen enthalten, die Sie indizieren möchten. Verwenden Sie einen doppelten umgekehrten Schrägstrich, um Semikolons und Kommas in Spaltennamen mit Escapezeichen zu versehen: <br><br> Beispiel 1: <br><br> additionalColumns=MyCustomColumn,MyCustomColumn2 <br><br> Beispiel 2: <br><br> additionalColumns=MyCustomColumnWith\\,,MyCustomColumn2With\\; | So indizieren Sie den gesamten Inhalt von „MyDocumentLibrary“: <br><br> Beispiel 1: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/mysite/MyDocumentLibrary;additionalColumns=MyCustomColumn,MyCustomColumn2" } ``` <br><br> Beachten Sie die doppelten umgekehrten Schrägstriche, um Zeichen mit Escapezeichen zu versehen – JSON erfordert, dass ein umgekehrter Schrägstrich mit einem anderen umgekehrten Schrägstrich als Escapezeichen versehen wird. <br><br> Beispiel 2: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/teams/mysite/MyDocumentLibrary/Forms/AllItems.aspx;additionalColumns=MyCustomColumnWith\\,,MyCustomColumnWith\\;" } ``` |
 
 ## <a name="index-by-file-type"></a>Indizieren nach Dateityp
 Sie können steuern, welche Dokumente indiziert und welche übersprungen werden.

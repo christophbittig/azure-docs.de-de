@@ -1,6 +1,7 @@
 ---
-title: 'Azure AD: Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung'
+title: Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung
 description: Erfahren Sie, wie Sie eine mandantenweite Einwilligung für eine Anwendung erteilen, sodass die Endbenutzer beim Anmelden bei der Anwendung keine Einwilligung erteilen müssen.
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 08/21/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee3ff6fc063de5eebd4a7cc300fdc0a5ceeba560
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 439a24c0e33cf33eaa758d91f516a435a2d2cb53
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038386"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617623"
 ---
-# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung
+# <a name="grant-tenant-wide-admin-consent-to-an-application-in-azure-active-directory"></a>Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung in Azure Active Directory
 
   Erfahren Sie, wie Sie eine mandantenweite Administratoreinwilligung für eine Anwendung erteilen. In diesem Artikel werden die verschiedenen Methoden dafür erläutert.
 
