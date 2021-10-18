@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/03/2021
 ms.author: alkohli
-ms.openlocfilehash: bbb4ce6442cc38e2554c6c1f745223a193ca793d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 86ddddbffd0a909a22acba6f780632690700eda2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950752"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715850"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivieren von Azure Monitor auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -24,7 +24,7 @@ Es ist insbesondere dann wichtig, Container auf Ihrem Azure Stack Edge Pro-GPU-G
 In diesem Artikel werden die erforderlichen Schritte zum Aktivieren von Azure Monitor auf Ihrem Gerät und zum Erfassen von Containerprotokollen im Log Analytics-Arbeitsbereich beschrieben. Der Azure Monitor-Metrikspeicher wird von Ihrem Azure Stack Edge Pro-GPU-Gerät derzeit nicht unterstützt. 
 
 > [!NOTE]
-> Wenn Azure Arc auf dem Kubernetes-Cluster auf Ihrem Gerät aktiviert ist, führen Sie die Schritte in [Azure Monitor Container Insights für Kubernetes-Cluster mit Azure Arc-Unterstützung](../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json) aus, um die Containerüberwachung einzurichten.
+> Wenn Azure Arc auf dem Kubernetes-Cluster auf Ihrem Gerät aktiviert ist, folgen Sie den Schritten in [Azure Monitor Container Insights für Azure Arc-aktivierte Kubernetes-Cluster](../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json), um die Containerüberwachung einzurichten.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen

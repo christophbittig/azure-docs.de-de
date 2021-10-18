@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: d8ba75ce068d7d2b604e9cafa4cde76393175c30
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3ca38fbefccaf6529d78d1c5acce30c85d88bf7c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114298155"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616985"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurationsoptionen – Azure Monitor Application Insights für Java
 
@@ -39,14 +39,14 @@ Weitere Informationen und zusätzliche Konfigurationsoptionen finden Sie unten.
 
 ## <a name="configuration-file-path"></a>Pfad der Konfigurationsdatei
 
-Standardmäßig erwartet Application Insights Java 3.x eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.1.1.jar` befindet.
+Standardmäßig erwartet Application Insights Java 3.x eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.2.0.jar` befindet.
 
 Verwenden Sie eines der folgenden Elemente, um einen eigenen Pfad für Ihre Konfigurationsdatei anzugeben:
 
 * Umgebungsvariable `APPLICATIONINSIGHTS_CONFIGURATION_FILE` oder
 * Java-Systemeigenschaft `applicationinsights.configuration.file`
 
-Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.1.1.jar` aufgelöst.
+Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.2.0.jar` aufgelöst.
 
 ## <a name="connection-string"></a>Verbindungszeichenfolge
 
@@ -180,6 +180,22 @@ Verwenden Sie den folgenden JSON-Code, wenn Sie benutzerdefinierte Dimensionen z
 > [!NOTE]
 > Wenn Sie ab Version 3.0.2 eine benutzerdefinierte Dimension mit dem Namen `service.version` hinzufügen, wird der Wert in der Spalte `application_Version` in der Tabelle „Application Insights-Protokolle“ und nicht als benutzerdefinierte Dimension gespeichert.
 
+## <a name="inherited-attribute-preview"></a>Vererbtes Attribut (Vorschau)
+
+Ab Version 3.2.0 können Sie eine benutzerdefinierte Dimension programmatisch in Ihrer Anforderungstelemetrie festlegen und sie an die nachfolgende Abhängigkeitstelemetrie vererben lassen:
+
+```json
+{
+  "inheritedAttributes": [
+    {
+      "key": "mycustomer",
+      "type": "string"
+    }
+  ]
+}
+```
+
+
 ## <a name="telemetry-processors-preview"></a>Telemetrieprozessoren (Vorschauversion)
 
 Mit diesem Feature können Sie Regeln konfigurieren, die auf Anforderungs-, Abhängigkeits- und Überwachungstelemetriedaten angewendet werden. Zum Beispiel:
@@ -254,28 +270,6 @@ So deaktivieren Sie die automatische Erfassung von Micrometer-Metriken (einschli
 }
 ```
 
-## <a name="auto-collected-azure-sdk-telemetry-preview"></a>Automatisch erfasste Azure SDK-Telemetriedaten (Vorschauversion)
-
-Viele der neuesten Azure SDK-Bibliotheken geben Telemetriedaten aus (siehe die [vollständige Liste](./java-in-process-agent.md#azure-sdks-preview)).
-
-Ab Application Insights Java 3.0.3 können Sie die Erfassung dieser Telemetriedaten aktivieren.
-
-Wenn Sie dieses Feature aktivieren möchten:
-
-```json
-{
-  "preview": {
-    "instrumentation": {
-      "azureSdk": {
-        "enabled": true
-      }
-    }
-  }
-}
-```
-
-Sie können dieses Feature auch aktivieren, indem Sie die Umgebungsvariable `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` auf `true` festlegen (die dann Vorrang vor dem in der JSON-Konfiguration angegebenen „aktiviert“ hat).
-
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>Unterdrücken bestimmter automatisch erfasster Telemetriedaten
 
 Ab Version 3.0.3 können bestimmte automatisch erfasste Telemetriedaten mithilfe der folgenden Konfigurationsoptionen unterdrückt werden:
@@ -283,6 +277,9 @@ Ab Version 3.0.3 können bestimmte automatisch erfasste Telemetriedaten mithilf
 ```json
 {
   "instrumentation": {
+    "azureSdk": {
+      "enabled": false
+    },
     "cassandra": {
       "enabled": false
     },
@@ -301,6 +298,9 @@ Ab Version 3.0.3 können bestimmte automatisch erfasste Telemetriedaten mithilf
     "mongo": {
       "enabled": false
     },
+    "rabbitmq": {
+      "enabled": false
+    },
     "redis": {
       "enabled": false
     },
@@ -313,12 +313,14 @@ Ab Version 3.0.3 können bestimmte automatisch erfasste Telemetriedaten mithilf
 
 Sie können diese Instrumentierungen auch unterdrücken, indem Sie folgende Umgebungsvariablen auf `false` festlegen:
 
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_AZURE_SDK_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_RABBITMQ_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED`
 
@@ -326,6 +328,31 @@ Sie können diese Instrumentierungen auch unterdrücken, indem Sie folgende Umge
 
 > [!NOTE]
 > Wenn Sie eine detailliertere Steuerung wünschen, z. B. um einige, aber nicht alle Redis-Aufrufe zu unterdrücken, finden Sie Informationen dazu unter [Stichprobenüberschreibungen](./java-standalone-sampling-overrides.md).
+
+## <a name="preview-instrumentations"></a>Vorschau-Instrumentierungen
+
+Ab Version 3.2.0 können die folgenden Vorschauminstrumentierungen aktiviert werden:
+
+```
+{
+  "preview": {
+    "instrumentation": {
+      "apacheCamel": {
+        "enabled": true
+      },
+      "grizzly": {
+        "enabled": true
+      },
+      "quartz": {
+        "enabled": true
+      },
+      "springIntegration": {
+        "enabled": true
+      }
+    }
+  }
+}
+```
 
 ## <a name="heartbeat"></a>Heartbeat
 
@@ -431,7 +458,7 @@ Application Insights Java 3.x protokolliert standardmäßig auf Ebene `INFO` in
 
 `level` kann `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG` oder `TRACE` sein.
 
-`path` kann ein absoluter oder ein relativer Pfad sein. Relative Pfade werden anhand des Verzeichnisses aufgelöst, in dem sich `applicationinsights-agent-3.1.1.jar` befindet.
+`path` kann ein absoluter oder ein relativer Pfad sein. Relative Pfade werden anhand des Verzeichnisses aufgelöst, in dem sich `applicationinsights-agent-3.2.0.jar` befindet.
 
 `maxSizeMb` entspricht der maximalen Größe der Protokolldatei, bevor ein Rollover durchgeführt wird.
 

@@ -3,16 +3,16 @@ title: Ermitteln der erforderlichen Appliances
 description: Erfahren Sie mehr über Hardware und virtuelle Appliances für zertifizierte Defender für IoT-Sensoren und die lokale Verwaltungskonsole.
 ms.date: 06/21/2021
 ms.topic: how-to
-ms.openlocfilehash: b22f1dc81aee7ee20f4490d716b1e2af953b4553
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: c124ccd69257b9a0b7a57c53b6fa6b0817d95fb6
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017313"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754347"
 ---
 # <a name="identify-required-appliances"></a>Ermitteln der erforderlichen Appliances
 
-Dieser Artikel enthält Informationen zu zertifizierten Defender für IOT-Sensor-Appliances. Defender für IOT kann auf physischen und virtuellen Appliances bereitgestellt werden.
+Dieser Artikel enthält Informationen zu zertifizierten Defender für IOT-Sensor-Appliances. Defender for IoT kann auf physischen und virtuellen Appliances implementiert werden.
 
 Dazu gehören zertifizierte *vorkonfigurierte* Appliances, auf denen die Software bereits installiert ist, und nicht konfigurierte zertifizierte Appliances, auf die Sie die benötigte Software herunterladen und installieren können.
 
@@ -40,7 +40,7 @@ Dieser Abschnitt enthält eine Übersicht über die verfügbaren Modelle physisc
 | Modell | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 | HPE EL300 |
 | Überwachungsports | Bis zu 15 RJ45 oder 8 OPT | Bis zu 8 RJ45 oder 6 OPT | Bis zu 4 RJ45 | Bis zu 5 RJ45 |
 | Maximale Bandbreite [1](#anchortext) | 3 GBit/s | 1 GB/s | 200 MBit/s | 100 MBit/s |
-| Maximale Anzahl geschützter Geräte | 30.000 | 15.000 | 1\.000 | 800 |
+| Maximale Anzahl geschützter Geräte | 10.000 | 10.000 | 1\.000 | 800 |
 
 Unter [Appliance-Spezifikationen](#appliance-specifications) finden Sie Herstellerdetails.
 
@@ -54,12 +54,12 @@ Informationen zum Einbinden Ihrer eigenen Appliance: Überprüfen Sie die hier b
 
 ### <a name="virtual-sensors"></a>Virtuelle Sensoren
 
-Dieser Abschnitt enthält eine Übersicht über die verfügbaren virtuellen Sensoren.
+In diesem Abschnitt werden die virtuellen Sensoren beschrieben, die zur Verfügung stehen.
 
 | Bereitstellungstyp | Unternehmen | Enterprise | SMB |
 |--|--|--|--|
 | Maximale Bandbreite | 2,5 GB/s | 800 MB/s | 160 MB/s |
-| Maximale Anzahl geschützter Geräte | 30.000 | 10.000 | 800 |
+| Maximale Anzahl geschützter Geräte | 10.000 | 10.000 | 800 |
 
 ## <a name="on-premises-management-console-appliance"></a>Lokale Verwaltungskonsolen-Appliance
 

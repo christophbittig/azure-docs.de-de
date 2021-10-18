@@ -5,17 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 10/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d84f26b2764a103a9b504c1480e88b58fed3c201
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1768c506928642ec7742ea8713b98ad4f154ed1
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98705989"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709221"
 ---
 # <a name="repairing-an-export-job"></a>Reparieren eines Exportauftrags
+
+> [!IMPORTANT]
+> Die Auftragsreparatur wird vom Azure Import/Export-Tool nicht mehr unterstützt. In Version 1.5.0.300 und später müssen Sie die Probleme in Ihrem Blob-Export beheben und dann [ einen neuen Exportauftrag](storage-import-export-data-from-blobs.md?tabs=azure-portal#step-1-create-an-export-job) erstellen.
+
 Nach Abschluss eines Exportauftrags können Sie das Microsoft Azure Import/Export-Tool lokal ausführen, um folgende Vorgänge durchzuführen:  
   
 1.  Herunterladen von Dateien, die der Azure Import/Export-Dienst nicht exportiert konnte.  
@@ -152,7 +156,7 @@ Alle Komponenten, die die Überprüfung nicht bestehen, werden vom Tool herunter
   
 ## <a name="next-steps"></a>Nächste Schritte
  
-* [Einrichten des Azure Import/Export-Tools](storage-import-export-tool-setup-v1.md)   
+<!--* [Setting Up the Azure Import/Export Tool](storage-import-export-tool-setup-v1.md)-->
 * [Vorbereiten von Festplatten für einen Importauftrag](storage-import-export-data-to-blobs.md#step-1-prepare-the-drives)   
-* [Überprüfen des Auftragsstatus mit Protokollkopiedateien](storage-import-export-tool-reviewing-job-status-v1.md)   
-* [Reparieren eines Importauftrags](storage-import-export-tool-repairing-an-import-job-v1.md)
+* [Überprüfung des Auftragsstatus mit Kopierprotokolldateien](storage-import-export-tool-reviewing-job-status-v1.md)   
+<!--* [Repairing an import job](storage-import-export-tool-repairing-an-import-job-v1.md)-->

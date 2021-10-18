@@ -7,35 +7,37 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/10/2021
-ms.openlocfilehash: 5b28540f30c23abc4ba1d58f6984524984f2c001
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/08/2021
+ms.openlocfilehash: 841cd106f1c54e1c35d3b2785eb942842d77f825
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339712"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706767"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Projektionen eines Wissensspeichers in Azure Cognitive Search
 
-Projektionen als Elemente des [Wissensspeichers](knowledge-store-concept-intro.md) sind Ansichten von angereicherten Dokumenten, die für das Knowledge Mining in physischen Speichern gespeichert werden können. Mit einer Projektion können Sie Ihre Daten in einer Form „projizieren“, die Ihren Anforderungen entspricht, und Beziehungen beibehalten, sodass die Daten in Tools wie Power BI ohne zusätzlichen Aufwand gelesen werden können.
+Projektionen sind das Element einer [Wissensspeicher](knowledge-store-concept-intro.md)-Definition, das den physischen Ausdruck Ihrer Daten in Azure Storage spezifiziert. Eine Projektionsdefinition bestimmt die Anzahl und Art der Datenstrukturen in Azure Storage.
 
-Projektionen können tabellarisch sein, wobei die Datenartikulation in Zeilen und Spalten in Azure Table Storage oder als in Azure Blob Storage gespeicherte JSON-Objekte oder binäre Bilder erfolgt. Sie können mehrere Projektionen Ihrer Daten definieren, wenn diese angereichert werden. Mehrere Projektionen sind nützlich, wenn Sie die gleichen Daten für einzelne Anwendungsfälle unterschiedlich formen möchten.
+## <a name="types-of-data-structures"></a>Arten von Datenstrukturen
 
-Im Wissensspeicher werden drei Arten von Projektionen unterstützt:
+Ein Wissensspeicher ist eine logische Konstruktion, die physisch in Azure Storage als Tabellen, JSON-Objekte oder binäre Bilddateien ausgedrückt wird.
 
-+ **Tabellen**: Für Daten, die am besten als Zeilen und Spalten dargestellt werden, können Sie mit Tabellenprojektionen eine schematisierte Form oder Projektion in Table Storage definieren. Nur gültige JSON-Objekte können als Tabellen projiziert werden. Da ein angereichertes Dokument Knoten enthalten kann, die keine benannten JSON-Objekte sind, [fügen Sie einen Shaper-Skill hinzu oder verwenden Inlineformen](knowledge-store-projection-shape.md) innerhalb eines Skills, um gültigen JSON-Code zu erstellen. 
+| Projektion | Storage | Verwendung |
+|------------|---------|-------|
+| Tabellen | Azure Table Storage | Wird für Daten verwendet, die sich am besten als Zeilen und Spalten darstellen lassen. Mit Tabellenprojektionen können Sie eine schematisierte Form oder Projektion definieren. Nur gültige JSON-Objekte können als Tabellen projiziert werden. Da ein angereichertes Dokument Knoten enthalten kann, die keine benannten JSON-Objekte sind, [fügen Sie einen Shaper-Skill hinzu oder verwenden Inlineformen](knowledge-store-projection-shape.md) innerhalb eines Skills, um gültigen JSON-Code zu erstellen. |
+| Objekte | Azure Blob Storage | Wird verwendet, wenn Sie eine JSON-Darstellung Ihrer Daten und Anreicherungen benötigen. Wie bei Tabellenprojektionen können nur gültige JSON-Objekte als Objekte projiziert werden, und die Strukturierung kann Ihnen dabei helfen. |
+| Dateien | Azure Blob Storage | Wird verwendet, wenn Sie normalisierte, binäre Bilddateien speichern müssen. |
 
-+ **Objekte**: Wenn Sie eine JSON-Darstellung Ihrer Daten und Anreicherungen benötigen, verwenden Sie Objektprojektionen, um die Ausgaben als Blobs zu speichern. Wie bei Tabellenprojektionen können nur gültige JSON-Objekte als Objekte projiziert werden, und die Strukturierung kann Ihnen dabei helfen.
+Sie können mehrere Projektionen Ihrer Daten definieren, wenn diese angereichert werden. Mehrere Projektionen sind nützlich, wenn Sie die gleichen Daten für einzelne Anwendungsfälle unterschiedlich formen möchten.
 
-+ **Dateien**: Wenn Sie die aus den Dokumenten extrahierten Bilder speichern müssen, können Sie mithilfe von Dateiprojektionen die normalisierten Bilder in Blob Storage speichern.
+## <a name="basic-definition"></a>Websites Basic Beschreibung
 
-Im Kontext definierte Projektionen finden Sie unter [Erstellen von Wissensspeichern in REST](knowledge-store-create-rest.md).
+Projektionen sind eine Reihe komplexer Sammlungen unter einer `knowledgeStore` Definition in einem [Skillset-Objekt](/rest/api/searchservice/create-skillset). 
 
-## <a name="basic-pattern"></a>Grundlegendes Muster
+Jeder Satz von Tabellen, Objekten und Dateien ist eine *Projektgruppe*, und Sie können über mehrere Gruppen verfügen, wenn die Speicheranforderungen die Unterstützung verschiedener Tools und Szenarien umfassen. Innerhalb einer einzelnen Gruppe können mehrere Tabellen, Objekte und Dateien enthalten sein. 
 
-Projektionen sind ein Array komplexer Sammlungen unter einer `knowledgeStore`-Definition in einem Skillsetobjekt. Jeder Satz von Tabellen, Objekten und Dateien ist eine *Projektgruppe*, und Sie können über mehrere Gruppen verfügen, wenn die Speicheranforderungen die Unterstützung verschiedener Tools und Szenarien umfassen. Innerhalb einer einzelnen Gruppe können mehrere Tabellen, Objekte und Dateien enthalten sein. 
-
-In der Regel wird nur eine Gruppe verwendet, aber das folgende Beispiel enthält zwei Gruppen, um das Muster zu veranschaulichen, wenn mehrere Gruppen vorhanden sind.
+Normalerweise wird nur eine Gruppe verwendet, aber das folgende Beispiel zeigt zwei, um die Idee von mehreren Gruppen zu verdeutlichen.
 
 ```json
 "knowledgeStore" : {
@@ -55,7 +57,7 @@ In der Regel wird nur eine Gruppe verwendet, aber das folgende Beispiel enthält
 }
 ```
 
-### <a name="projection-groups"></a>Projektionsgruppen
+## <a name="data-isolation-and-relatedness"></a>Datenisolierung und -verwandtschaft
 
 Die Verwendung mehrerer Sätze von Tabellen-Objekt-Datei-Kombinationen ist zur Unterstützung verschiedener Szenarien nützlich. Sie können einen Satz für den Entwurf und das Debuggen eines Skillsets verwenden, um die Ausgabe zur weiteren Untersuchung zu erfassen, während ein zweiter Satz Ausgaben für eine Online-App sammelt und ein dritter Satz für Data Science-Workloads verwendet wird.
 

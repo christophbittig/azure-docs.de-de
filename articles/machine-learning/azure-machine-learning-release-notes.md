@@ -8,19 +8,45 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 08/18/2021
-ms.openlocfilehash: f4c7c43c0406ed7a6c05c3d83e467bc335c43093
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/04/2021
+ms.openlocfilehash: 598cc1944cb49024d91da476b95f9aa0b25f6279
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128628107"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811093"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
 In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](/python/api/overview/azure/ml/intro).
 
 __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wird, indem Sie die folgende URL kopieren und in Ihren Feedreader einfügen: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-10-11"></a>2021-10-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1350"></a>Azure Machine Learning SDK für Python v1.35.0
+  + **azureml-automl-core**
+    + Binäre Metrik-Berechnung aktivieren
+  + **azureml-contrib-fairness**
+    + Verbesserte Fehlermeldung bei fehlgeschlagenem Dashboard-Download
+  + **azureml-core**
+    + Der Fehler bei der Angabe von nicht-öffentlichen Clouds für die Managed-Identity-Authentifizierung wurde behoben.
+    + Die experimentellen Flags Dataset.File.upload_directory() und Dataset.Tabular.register_pandas_dataframe() sind jetzt entfernt.
+    + Experimentelle Flags werden jetzt in der partition_by()-Methode der TabularDataset-Klasse entfernt.
+  + **azureml-pipeline-steps**
+    + Experimentelle Flags werden jetzt für den `partition_keys`-Parameter der ParallelRunConfig-Klasse entfernt.
+  + **azureml-interpret**
+    + azureml-interpret Paket aktualisiert auf intepret-community 0.20.*
+  + **azureml-mlflow**
+    + Ermöglicht die Protokollierung von Artefakten und Bildern mit MLflow über Unterverzeichnisse
+  + **azureml-responsibleai**
+    + Verbesserte Fehlermeldung bei fehlgeschlagenem Dashboard-Download
+  + **azureml-train-automl-client**
+    + Zusätzliche Unterstützung für Computer-Vision-Aufgaben wie Bildklassifizierung, Objekterkennung und Instanzsegmentierung. Eine ausführliche Dokumentation finden Sie unter: https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-image-models
+    + Binäre Metrik-Berechnung aktivieren
+  + **azureml-train-automl-runtime**
+    + Hinzufügen von TCNForecaster-Unterstützung für Modelltestläufe.
+    + Aktualisierung des Ausgabeformats der Modell-Testvorhersagen.csv. Die Ausgabespalten enthalten jetzt die ursprünglichen Zielwerte und die Merkmale, die an den Testlauf übergeben wurden. Dies kann durch Setzen von `test_include_predictions_only=True` in `AutoMLConfig` oder durch Setzen von `include_predictions_only=True` in `ModelProxy.test()` deaktiviert werden. Wenn der Benutzer die Anforderung gestellt hat, nur Vorhersagen einzubeziehen, sieht das Ausgabeformat wie folgt aus (Vorhersage ist dasselbe wie Regression): Klassifikation => [vorhergesagte Werte] [Wahrscheinlichkeiten] Regression => [vorhergesagte Werte] sonst (Standard): Klassifizierung => [ursprüngliche Testdatenbeschriftungen] [vorhergesagte Werte] [Wahrscheinlichkeiten] [Merkmale] Regression => [ursprüngliche Testdatenbeschriftungen] [vorhergesagte Werte] [Merkmale] Der `[predicted values]` Spaltenname = `[label column name] + "_predicted"`. Die `[probabilities]` Spaltennamen = `[class name] + "_predicted_proba"`. Wenn keine Zielspalte als Eingabe für den Testlauf übergeben wurde, dann wird `[original test data labels]` nicht in der Ausgabe erscheinen.
 
 ## <a name="2021-09-07"></a>2021-09-07
 
@@ -1038,8 +1064,6 @@ Weitere Informationen zum [Taggen von Bildern in einem Bezeichnungsprojekt](how-
     + Ein neuer Typ von Benutzerausnahme wurde hinzugefügt, der ausgelöst wird, wenn der Inhalt des Cachespeichers manipuliert wurde.
   + **azureml-automl-runtime**
     + Class Balancing Sweeping ist nicht mehr aktiviert, wenn der Benutzer die Featurisierung deaktiviert.  
-  + **azureml-contrib-itp**
-    + Der CmAks-Computetyp wird unterstützt. Sie können Ihren eigenen AKS-Cluster an den Arbeitsbereich für den Trainingsauftrag anfügen.
   + **azureml-contrib-notebook**
     + Die Dokumentation für das Paket „azureml-contrib-notebook“ wurde verbessert.
   + **azureml-contrib-pipeline-steps**

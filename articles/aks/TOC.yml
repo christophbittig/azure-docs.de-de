@@ -215,7 +215,7 @@
           href: azure-nfs-volume.md
         - name: Azure NetApp Files
           href: azure-netapp-files.md
-        - name: Verwenden von Azure Ultra Disks (Vorschau)
+        - name: Verwenden von Azure Ultra Disks
           href: use-ultra-disks.md
         - name: CSI-Speichertreiber
           items:

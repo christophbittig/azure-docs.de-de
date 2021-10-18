@@ -160,6 +160,8 @@
           href: how-to-enable-system-assigned-managed-identity.md
         - name: Erstellen von Rollen und Berechtigungen
           href: how-to-permissions.md
+        - name: Verwenden eines TLS/SSL-Zertifikats
+          href: how-to-use-tls-certificate.md
         - name: Aktivieren von End-to-End-TLS (Transport Layer Security)
           href: how-to-enable-end-to-end-tls.md
         - name: Zugreifen auf Config Server und Service Registry

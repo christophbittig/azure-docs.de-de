@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dc536fa4292d794e8d89a2564ad10a3c10dd0a3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 044ea1f160fb2e8e5f119a9046ef6989440e346c
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94560853"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728549"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Erweiterungs-App
 
@@ -36,11 +36,11 @@ So überprüfen Sie das Vorhandensein der b2c-extensions-app
 
 Wenn Sie die b2c-extensions-app versehentlich gelöscht haben, haben Sie 30 Tage Zeit, sie wiederherzustellen. Sie können die App mithilfe der Graph-API wiederherstellen:
 
-1. Navigieren Sie zu [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
+1. Navigieren Sie zu [https://developer.microsoft.com/en-us/graph/graph-explorer](https://developer.microsoft.com/en-us/graph/graph-explorer).
 1. Melden Sie sich bei der Website als globaler Administrator für das Azure AD B2C-Verzeichnis an, für das die gelöschte App wiederhergestellt werden soll. Dieser globale Administrator muss eine E-Mail-Adresse besitzen, die etwa wie folgt aussieht: `username@{yourTenant}.onmicrosoft.com`.
-1. Verwenden Sie eine HTTP-GET-Methode für die URL `https://graph.windows.net/myorganization/deletedApplications` mit dem Wert „1.6“ für „api-version“. Bei diesem Vorgang werden alle Anwendungen aufgelistet, die in den letzten 30 Tagen gelöscht wurden.
+1. Geben Sie einen HTTP-GET für die URL `https://graph.microsoft.com/beta/directory/deleteditems/microsoft.graph.application` aus. Bei diesem Vorgang werden alle Anwendungen aufgelistet, die in den letzten 30 Tagen gelöscht wurden.
 1. Suchen Sie in der Liste nach der Anwendung, deren Name mit „b2c-extensions-app“ beginnt, und kopieren Sie den zugehörigen Eigenschaftswert `objectid`.
-1. Verwenden Sie eine HTTP-POST-Methode für die URL `https://graph.windows.net/myorganization/deletedApplications/{OBJECTID}/restore`. Ersetzen Sie den Teil `{OBJECTID}` der URL durch die `objectid` aus dem vorherigen Schritt.
+1. Verwenden Sie eine HTTP-POST-Methode für die URL `https://graph.microsoft.com/beta/directory/deleteditems/{id}/restore`. Ersetzen Sie den Teil `{id}` der URL durch die `objectid` aus dem vorherigen Schritt.
 
 Sie sollten jetzt [die wiederhergestellte App im Azure-Portal sehen](#verifying-that-the-extensions-app-is-present) können.
 

@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: 382a4c040c7a519462ee3e35119b9471031e0724
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e758560eed1ffb01117764f9399aa6f4f4b1395
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101098009"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857548"
 ---
 # <a name="url-redirect-and-url-rewrite-with-azure-front-door-standardpremium-preview"></a>URL-Umleitung und URL-Rewrite mit Azure Front Door Standard/Premium (Vorschau)
 
@@ -74,6 +74,10 @@ Sie können die URL-Umleitung mithilfe eines Regelsatzes konfigurieren.
 ### <a name="source-pattern"></a>Quellmuster
 
 Das Quellmuster ist der URL-Pfad in der zu ersetzenden Quellanforderung. Derzeit verwendet das Quellmuster eine auf Präfixen basierende Übereinstimmung. Verwenden Sie einen Schrägstrich (/) als Quellmusterwert, um alle URL-Pfade abzugleichen.
+
+Bei URL-Umschreibungsmustern wird nur der Pfad nach der Routenkonfiguration "Muster, die übereinstimmen" berücksichtigt. Wenn Sie z. B. das folgende Format für die eingehende URL haben `<Frontend-domain>/<route-patterns-to-match-path>/<Rule-URL-Rewrite-Source-pattern>`, wird nur `/<Rule-URL-Rewrite-Source-pattern>` von der Regel-Engine als Quellmuster berücksichtigt, das umgeschrieben werden soll. Wenn Sie also eine URL-Umschreibungsregel mit Quellmusterübereinstimmung haben, wird das Format für die ausgehende URL `<Frontend-domain>/<route-patterns-to-match-path>/<Rule-URL-Rewrite-destination>` sein.
+
+Für Szenarien, in denen das Segment `/<route-patterns-to-match-path` des URL-Pfads entfernt werden muss, setzen Sie den Ursprungspfad der Ursprungsgruppe in der Routenkonfiguration auf `/`.
 
 ### <a name="destination"></a>Destination
 

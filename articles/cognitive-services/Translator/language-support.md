@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: 17d6120a951af052c82f06ed62025279011018a6
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 0055cae979e1ab116d71a387f3f9d7e61afb9d32
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867552"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754480"
 ---
 # <a name="translator-language-support"></a>Sprachunterstützung für den Übersetzer
 
@@ -39,6 +39,7 @@ ms.locfileid: "122867552"
 | Assamesisch | `as` |✔|✔||||
 | Aserbaidschanisch | `az` |✔|✔||||
 | Bengalisch | `bn` |✔|✔|✔||✔|
+| Baschkirisch | `ba` |✔|||||
 | Bosnisch (Lateinisch) | `bs` |✔|✔|✔||✔|
 | Bulgarisch | `bg` |✔|✔|✔|✔|✔|
 | Chinesisch (traditionell) | `yue` |✔|✔||||
@@ -50,6 +51,7 @@ ms.locfileid: "122867552"
 | Tschechisch | `cs` |✔|✔|✔|✔|✔|
 | Dänisch | `da` |✔|✔|✔|✔|✔|
 | Dari | `prs` |✔|✔||||
+| Divehi | `dv` |✔|||✔||
 | Niederländisch | `nl` |✔|✔|✔|✔|✔|
 | Englisch | `en` |✔|✔|✔|✔|✔|
 | Estnisch | `et` |✔|✔|✔|✔||
@@ -58,6 +60,7 @@ ms.locfileid: "122867552"
 | Finnisch | `fi` |✔|✔|✔|✔|✔|
 | Französisch | `fr` |✔|✔|✔|✔|✔|
 | Französisch (Kanada) | `fr-ca` |✔|✔||||
+| Georgisch | `ka` |✔|||✔||
 | Deutsch | `de` |✔|✔|✔|✔|✔|
 | Griechisch | `el` |✔|✔|✔|✔|✔|
 | Gujarati | `gu` |✔|✔|✔|✔||
@@ -80,15 +83,19 @@ ms.locfileid: "122867552"
 | Koreanisch | `ko` |✔|✔|✔|✔|✔|
 | Kurdisch (zentral) | `ku` |✔|✔||✔||
 | Kurdisch (nördlich) | `kmr` |✔|✔||||
+| Kirgisisch | `ky` |✔|||||
 | Laotisch | `lo` |✔|✔||✔||
 | Lettisch | `lv` |✔|✔|✔|✔|✔|
 | Litauisch | `lt` |✔|✔|✔|✔|✔|
+| Mazedonisch | `mk` |✔|||✔||
 | Madagassisch | `mg` |✔|✔|✔|||
 | Malaiisch | `ms` |✔|✔|✔|✔|✔|
 | Malayalam | `ml` |✔|✔||||
 | Maltesisch | `mt` |✔|✔|✔|✔|✔|
 | Maori | `mi` |✔|✔|✔|||
 | Marathi | `mr` |✔|✔|✔|||
+| Mongolisch (Kyrillisch) | `mn-Cyrl` |✔|||||
+| Mongolisch (traditionell) | `mn-Mong` |✔|||✔||
 | Myanmar | `my` |✔|✔||✔||
 | Nepalesisch | `ne` |✔|✔||||
 | Norwegisch | `nb` |✔|✔|✔|✔|✔|
@@ -112,13 +119,18 @@ ms.locfileid: "122867552"
 | Schwedisch | `sv` |✔|✔|✔|✔|✔|
 | Tahitisch | `ty` |✔| |✔|✔||
 | Tamilisch | `ta` |✔|✔|||✔|
+| Tatarisch | `tt` |✔|||||
 | Telugu | `te` |✔|✔||||
 | Thailändisch | `th` |✔| |✔|✔|✔|
+| Tibetisch | `bo` |✔||||
 | Tigrinya | `ti` |✔|✔||||
 | Tongaisch | `to` |✔|✔|✔|||
 | Türkisch | `tr` |✔|✔|✔|✔|✔|
+| Turkmenisch | `tk` |✔||||
 | Ukrainisch | `uk` |✔|✔|✔|✔|✔|
 | Urdu | `ur` |✔|✔|✔|✔|✔|
+| Uigurisch | `ug` |✔||||
+| Usbekisch (lateinisch | `uz` |✔|||✔||
 | Vietnamesisch | `vi` |✔|✔|✔|✔|✔|
 | Walisisch | `cy` |✔|✔|✔|✔|✔|
 | Yukatekisches Maya | `yua` |✔|✔||✔||

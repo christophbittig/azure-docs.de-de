@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/26/2021
 ms.author: yushwang
-ms.openlocfilehash: 0551cf435b732b621ad5493914251afd67f18882
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: b3619ba68338e40773cdd962298b01806bde5b2b
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707141"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660626"
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
@@ -185,6 +185,10 @@ Dabei handelt es sich um einen Standardvorgang bei richtlinienbasierten (auch al
 Für die standortübergreifende Standort-zu-Standort-Konfiguration werden Routing- und RAS-Server unter Windows Server 2012 unterstützt.
 
 Auch andere VPN-Softwarelösungen können mit unserem Gateway verwendet werden, sofern sie über branchenübliche IPsec-Implementierungen verfügen. Konfigurations- und Supportinformationen erhalten Sie vom Anbieter der Software.
+
+### <a name="can-i-connect-to-azure-gateway-via-point-to-site-when-located-at-a-site-that-has-an-active-site-to-site-connection"></a>Kann ich eine Verbindung zu Azure Gateway über Point-to-Site herstellen, wenn ich mich an einem Standort befinde, der eine aktive Site-to-Site-Verbindung hat?
+
+Ja, aber die öffentliche(n) IP-Adresse(n) des Point-to-Site-Clients muss (müssen) sich von der (den) öffentlichen IP-Adresse(n) unterscheiden, die vom Site-to-Site-VPN-Gerät verwendet wird (werden), sonst funktioniert die Point-to-Site-Verbindung nicht. Point-to-Site-Verbindungen mit IKEv2 können nicht von derselben/denselben öffentlichen IP-Adresse(n) initiiert werden, für die eine Site-to-Site-VPN-Verbindung auf demselben Azure VPN Gateway konfiguriert ist. 
 
 ## <a name="point-to-site---certificate-authentication"></a><a name="P2S"></a>Point-to-Site – Zertifikatauthentifizierung
 

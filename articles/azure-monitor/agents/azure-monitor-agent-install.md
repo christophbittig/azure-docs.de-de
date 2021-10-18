@@ -1,25 +1,25 @@
 ---
 title: 'Installieren des Azure Monitor-Agents:'
-description: Optionen zum Installieren des Azure Monitor-Agents (AMA) auf Azure-VMs und Servern mit Azure Arc-Unterstützung.
+description: Optionen für die Installation des Azure Monitor Agent (AMA) auf virtuellen Azure-Maschinen und Azure Arc-aktivierten Servern.
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/21/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b7a35b819844b411a040542d4390fae3e69b9bcc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 13e025845dd4fbd51519f85f1879cc11c6ea102d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128656016"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706886"
 ---
 # <a name="install-the-azure-monitor-agent"></a>Installieren des Azure Monitor-Agents:
-In diesem Artikel werden die verschiedenen Optionen beschrieben, die derzeit für die Installation des [Azure Monitor-Agents](azure-monitor-agent-overview.md) auf Azure-VMs und Servern mit Azure Arc-Unterstützung verfügbar sind, sowie die Optionen zum Erstellen von [Zuordnungen für Datensammlungsregeln](data-collection-rule-azure-monitor-agent.md), die definieren, welche Daten der Agent erfassen soll.
+Dieser Artikel stellt die verschiedenen Optionen vor, die derzeit für die Installation des [Azure Monitor-Agenten](azure-monitor-agent-overview.md) sowohl auf virtuellen Azure-Maschinen als auch auf Azure Arc-fähigen Servern zur Verfügung stehen, sowie die Optionen zur Erstellung von [Verknüpfungen mit Datensammelregeln](data-collection-rule-azure-monitor-agent.md), die festlegen, welche Daten der Agent sammeln soll.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Vor der Installation des Azure Monitor-Agents müssen die folgenden Voraussetzungen erfüllt sein.
 
-- Auf Azure-VMs muss eine [verwaltete Systemidentität](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) aktiviert sein. Bei Servern mit Azure Arc-Unterstützung ist dies nicht erforderlich. Die Systemidentität wird automatisch aktiviert, wenn der Agent als Teil des Prozesses zum [Erstellen und Zuweisen einer Datensammlungsregel über das Azure-Portal](#install-with-azure-portal) installiert wird.
+- Auf Azure-VMs muss eine [verwaltete Systemidentität](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) aktiviert sein. Dies ist für Azure Arc-fähige Server nicht erforderlich. Die Systemidentität wird automatisch aktiviert, wenn der Agent als Teil des Prozesses zum [Erstellen und Zuweisen einer Datensammlungsregel über das Azure-Portal](#install-with-azure-portal) installiert wird.
 - Das [Diensttag „AzureResourceManager“](../../virtual-network/service-tags-overview.md) muss im virtuellen Netzwerk für die VM aktiviert sein.
 - Der virtuelle Computer benötigt Zugriff auf die folgenden HTTPS-Endpunkte:
   - *.ods.opinsights.azure.com
@@ -41,7 +41,7 @@ Der Azure Monitor-Agent wird als [Azure-VM-Erweiterung](../../virtual-machines/
 ## <a name="extension-versions"></a>Erweiterungsversionen
 Es wird dringend empfohlen, auf GA+-Versionen zu aktualisieren, anstatt Vorschauversionen zu verwenden.
 
-| Veröffentlichungsdatum | Anmerkungen zu diesem Release | Windows | Linux |
+| Veröffentlichungsdatum | Versionshinweise | Windows | Linux |
 |:---|:---|:---|:---|:---|
 | Juni 2021 | Allgemeine Verfügbarkeit angekündigt. <ul><li>Alle Features mit Ausnahme des Metrikenziels jetzt allgemein verfügbar.</li><li>Produktionsqualität, Sicherheit und Compliance</li><li>Verfügbarkeit in allen öffentlichen Regionen</li><li>Leistungs- und Skalierungsverbesserungen für höhere EPS-Werte</li></ul> [Weitere Informationen](https://azure.microsoft.com/updates/azure-monitor-agent-and-data-collection-rules-now-generally-available/) | 1.0.12.0 | 1.9.1.0 |
 | Juli 2021 | <ul><li>Unterstützung für direkte Proxys</li><li>Unterstützung des Log Analytics-Gateways</li></ul> [Weitere Informationen](https://azure.microsoft.com/updates/general-availability-azure-monitor-agent-and-data-collection-rules-now-support-direct-proxies-and-log-analytics-gateway/) | 1.1.1.0 | 1.10.5.0 |
@@ -50,11 +50,11 @@ Es wird dringend empfohlen, auf GA+-Versionen zu aktualisieren, anstatt Vorschau
 
 
 ## <a name="install-with-azure-portal"></a>Installieren über das Azure-Portal
-Zum Installieren des Azure Monitor-Agents über das Azure-Portal führen Sie das Verfahren zum [Erstellen einer Datensammlungsregel](data-collection-rule-azure-monitor-agent.md#create-rule-and-association-in-azure-portal) im Azure-Portal aus. Auf diese Weise können Sie die Datensammlungsregel einer oder mehreren Azure-VMs oder einem oder mehreren Servern mit Azure Arc-Unterstützung zuordnen. Der Agent wird auf allen VMs installiert, auf denen er noch nicht installiert ist.
+Zum Installieren des Azure Monitor-Agents über das Azure-Portal führen Sie das Verfahren zum [Erstellen einer Datensammlungsregel](data-collection-rule-azure-monitor-agent.md#create-rule-and-association-in-azure-portal) im Azure-Portal aus. So können Sie die Datensammelregel mit einer oder mehreren virtuellen Azure-Maschinen oder Azure Arc-fähigen Servern verknüpfen. Der Agent wird auf allen VMs installiert, auf denen er noch nicht installiert ist.
 
 
 ## <a name="install-with-resource-manager-template"></a>Installieren mit einer Resource Manager-Vorlage
-Mithilfe von Resource Manager-Vorlagen können Sie den Azure Monitor-Agent auf Azure-VMs und Servern mit Azure Arc-Unterstützung installieren und eine Zuordnung zu Datensammlungsregeln erstellen. Die entsprechenden Datensammlungsregeln müssen Sie vor dem Erstellen der Zuordnung erstellen.
+Sie können Resource Manager-Vorlagen verwenden, um den Azure Monitor-Agenten auf virtuellen Azure-Maschinen und auf Azure Arc-fähigen Servern zu installieren und eine Zuordnung zu Datensammlungsregeln zu erstellen. Die entsprechenden Datensammlungsregeln müssen Sie vor dem Erstellen der Zuordnung erstellen.
 
 Hier finden Sie Beispielvorlagen für die Installation des Agents und die Erstellung der Zuordnung: 
 
@@ -74,7 +74,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resource-group-name>" -Templa
 ---
 
 ## <a name="install-with-powershell"></a>Installieren mit PowerShell
-Sie können den Azure Monitor-Agent auf Azure-VMs und Servern mit Azure Arc-Unterstützung über den PowerShell-Befehl zum Hinzufügen einer VM-Erweiterung installieren. 
+Sie können den Azure Monitor-Agenten auf virtuellen Azure-Maschinen und auf Azure Arc-fähigen Servern mithilfe des PowerShell-Befehls zum Hinzufügen einer Erweiterung für virtuelle Maschinen installieren. 
 
 ### <a name="azure-virtual-machines"></a>Virtuelle Azure-Computer
 Verwenden Sie die folgenden PowerShell-Befehle, um den Azure Monitor-Agent auf Azure-VMs zu installieren.
@@ -88,8 +88,8 @@ Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publishe
 ```
 ---
 
-### <a name="azure-arc-enabled-servers"></a>Server mit Azure Arc-Unterstützung
-Verwenden Sie die folgenden PowerShell-Befehle, um den Azure Monitor-Agent auf Servern mit Azure Arc-Unterstützung zu installieren.
+### <a name="azure-arc-enabled-servers"></a>Server mit Azure Arc-Unterstützung
+Verwenden Sie die folgenden PowerShell-Befehle, um den Azure Monitor-Agenten auf Azure Arc-aktivierten Servern zu installieren.
 # <a name="windows"></a>[Windows](#tab/PowerShellWindowsArc)
 ```powershell
 New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <arc-server-name> -Location <arc-server-location>
@@ -100,7 +100,7 @@ New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxA
 ```
 ---
 ## <a name="azure-cli"></a>Azure CLI
-Sie können den Azure Monitor-Agent auf Azure-VMs und Servern mit Azure Arc-Unterstützung über den Azure CLI-Befehl zum Hinzufügen einer VM-Erweiterung installieren. 
+Sie können den Azure Monitor-Agenten auf virtuellen Azure-Maschinen und auf Azure Arc-aktivierten Servern installieren, indem Sie den Azure CLI-Befehl zum Hinzufügen einer Erweiterung für virtuelle Maschinen verwenden. 
 
 ### <a name="azure-virtual-machines"></a>Virtuelle Azure-Computer
 Verwenden Sie die folgenden CLI-Befehle, um den Azure Monitor-Agent auf Azure-VMs zu installieren.
@@ -113,8 +113,8 @@ az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.
 az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids <vm-resource-id>
 ```
 ---
-### <a name="azure-arc-enabled-servers"></a>Server mit Azure Arc-Unterstützung
-Verwenden Sie die folgenden CLI-Befehle, um den Azure Monitor-Agent auf Servern mit Azure Arc-Unterstützung zu installieren.
+### <a name="azure-arc-enabled-servers"></a>Server mit Azure Arc-Unterstützung
+Verwenden Sie die folgenden CLI-Befehle, um den Azure Monitor-Agenten auf Azure Arc-aktivierten Servern zu installieren.
 
 # <a name="windows"></a>[Windows](#tab/CLIWindowsArc)
 ```azurecli

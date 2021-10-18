@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/27/2021
+ms.date: 10/07/2021
 ms.author: b-juche
-ms.openlocfilehash: abbf02776d6bc1506912a5bdd1446393b9f678fb
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: f396904b3832403337a6fa4553e2ae4a4b8c86b4
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129095009"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667951"
 ---
 # <a name="requirements-and-considerations-for-azure-netapp-files-backup"></a>Azure NetApp Files-Sicherung: Anforderungen und Überlegungen 
 
@@ -46,6 +46,8 @@ Vor der Verwendung der Azure NetApp Files-Sicherung müssen Sie einige Anforderu
 
 * Wenn ein Problem auftritt (z. B. kein ausreichender Speicherplatz auf dem Volume) und die Momentaufnahmerichtlinie keine neuen Momentaufnahmen mehr erstellt, sind für das Sicherungsfeature keine neuen Momentaufnahmen vorhanden, die gesichert werden müssen. 
 
+* In einer regionsübergreifenden Replikationseinstellung kann Azure NetApp Files Backup nur auf einem Quellvolume konfiguriert werden. Sie wird auf einem regionenübergreifenden Replikationsvolume *Zielvolume* nicht unterstützt.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Grundlegendes zur Azure NetApp Files-Sicherung](backup-introduction.md)
@@ -56,7 +58,7 @@ Vor der Verwendung der Azure NetApp Files-Sicherung müssen Sie einige Anforderu
 * [Durchsuchen von Sicherungen](backup-search.md)
 * [Wiederherstellen einer Sicherung auf einem neuen Volume](backup-restore-new-volume.md)
 * [Deaktivieren der Sicherungsfunktionalität für ein Volume](backup-disable.md)
-* [Löschen von Sicherungen eines Volumes](backup-delete.md)
-* [Volumesicherungsmetriken](azure-netapp-files-metrics.md#volume-backup-metrics)
+* [Sicherungen eines Volumes löschen](backup-delete.md)
+* [Metriken zur Volume-Sicherung](azure-netapp-files-metrics.md#volume-backup-metrics)
 * [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
 * [Funktionsweise von Azure NetApp Files-Momentaufnahmen](snapshots-introduction.md)

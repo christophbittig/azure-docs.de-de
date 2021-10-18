@@ -1,213 +1,212 @@
 ---
-title: Continuous Integration und Continuous Delivery für Synapse-Arbeitsbereiche
-description: Erfahren Sie, wie Sie Continuous Integration und Continuous Delivery verwenden, um Änderungen an einem Arbeitsbereich aus einer Umgebung (Entwicklung, Test, Produktion) in eine andere zu überführen.
+title: Kontinuierliche Integration und Bereitstellung in Azure Synapse Analytics
+description: Erfahren Sie, wie Sie kontinuierliche Integration und kontinuierliche Bereitstellung (CI/CD) verwenden, um Änderungen zwischen Umgebungen in einem Azure Synapse Analytics-Arbeitsbereich bereitzustellen.
 author: liudan66
 ms.service: synapse-analytics
 ms.subservice: cicd
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 10/08/2021
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b21bc818d83c3a48973b1121fb2f24f87638890b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 3269bfed98264574d5b44759cceae6e1613eb5f8
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219478"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729245"
 ---
-# <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Continuous Integration und Continuous Delivery für Azure Synapse-Arbeitsbereiche
+# <a name="continuous-integration-and-delivery-for-an-azure-synapse-analytics-workspace"></a>Kontinuierliche Integration und Bereitstellung für einen Azure Synapse Analytics-Arbeitsbereich
 
-## <a name="overview"></a>Übersicht
+Kontinuierliche Integration (Continuous Integration, CI) ist der Prozess, bei dem die Erstellung und das Testen von Code jedes Mal automatisiert wird, wenn ein Teammitglied eine Änderung an die Versionskontrolle überträgt. Kontinuierliche Bereitstellung (Continuous Delivery, CD) ist der Prozess des Erstellens, Testens, Konfigurierens und Bereitstellens von mehreren Test- oder Staging-Umgebungen in eine Produktionsumgebung.
 
-Continuous Integration (CI) ist der Prozess, mit dem das Erstellen und Testen von Code bei jedem Committen von Änderungen durch Teammitglieder an die Versionskontrolle automatisiert werden kann. Continuous Deployment (CD) bezeichnet das Erstellen, Testen, Konfigurieren und Bereitstellen aus mehreren Test- oder Stagingumgebungen in einer Produktionsumgebung.
+In einem Azure Synapse Analytics-Arbeitsbereich verschiebt CI/CD alle Einheiten von einer Umgebung (Entwicklung, Test, Produktion) in eine andere Umgebung. Das Promoten Ihres Arbeitsbereichs in einen anderen Arbeitsbereich ist ein zweiteiliger Prozess. Im ersten Schritt verwenden Sie eine [Azure Resource Manager-Vorlage (ARM-Vorlage)](../../azure-resource-manager/templates/overview.md), um Arbeitsbereichsressourcen (Pools und Arbeitsbereich) zu erstellen oder zu aktualisieren. Migrieren Sie dann Artefakte wie SQL-Skripte und Notebooks, Spark-Auftragsdefinitionen, Pipelines, Datensätze und Datenflüsse mithilfe der Azure Synapse CI/CD-Tools in Azure DevOps oder auf GitHub. 
 
-In einem Azure Synapse Analytics-Arbeitsbereich werden per Continuous Integration und Continuous Delivery (CI/CD) sämtliche Entitäten aus einer Umgebung (Entwicklung, Test, Produktion) in eine andere Umgebung verschoben. Das Höherstufen Ihres Arbeitsbereichs in einen anderen Arbeitsbereich umfasst zwei Schritte. Im ersten Schritt verwenden Sie eine [Azure Resource Manager-Vorlage (ARM-Vorlage)](../../azure-resource-manager/templates/overview.md), um Arbeitsbereichsressourcen (Pools und Arbeitsbereich) zu erstellen oder zu aktualisieren. Anschließend migrieren Sie Artefakte (SQL-Skripts, Notebooks, Spark-Auftragsdefinitionen, Pipelines, Datasets, Datenflüsse usw.) mit Azure Synapse Analytics-CI/CD-Tools in Azure DevOps oder GitHub. 
-
-In diesem Artikel wird beschrieben, wie Sie eine Azure DevOps-Releasepipeline und GitHub-Aktion nutzen, um die Bereitstellung eines Azure Synapse-Arbeitsbereichs in mehreren Umgebungen zu automatisieren.
+In diesem Artikel wird beschrieben, wie eine Azure DevOps-Release-Pipeline und GitHub Actions verwendet werden können, um die Bereitstellung eines Azure Synapse-Arbeitsbereichs in mehreren Umgebungen zu automatisieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für eine Automatisierung der Bereitstellung eines Azure Synapse-Arbeitsbereichs in mehreren Umgebungen müssen die nachfolgend aufgeführten Voraussetzungen und Konfigurationen erfüllt bzw. vorhanden sein.
+Um die Bereitstellung eines Azure Synapse-Arbeitsbereichs in mehreren Umgebungen zu automatisieren, müssen die folgenden Voraussetzungen und Konfigurationen vorhanden sein.
 
 ### <a name="azure-devops"></a>Azure DevOps
 
-- Für die Ausführung der Releasepipeline wurde ein Azure DevOps-Projekt vorbereitet.
-- [Gewähren Sie allen Benutzern, die Code einchecken, Basic-Zugriff auf Organisationsebene](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page&preserve-view=true), damit sie das Repository anzeigen können.
-- Gewähren Sie Besitzerrechte für das Azure Synapse-Repository.
-- Stellen Sie sicher, dass Sie einen selbstgehosteten Azure DevOps-VM-Agent erstellt haben, oder verwenden Sie einen von Azure DevOps gehosteten Agent.
-- Berechtigungen zum [Erstellen einer Azure Resource Manager-Dienstverbindung (ARM) für die Ressourcengruppe](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml&preserve-view=true).
+- Bereiten Sie ein Azure DevOps-Projekt für die Ausführung der Release-Pipeline vor.
+- [Gewähren Sie allen Benutzern, die Code einchecken werden, Basiszugriff auf Organisationsebene](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page&preserve-view=true), damit sie das Repository sehen können.
+- Erteilen Sie dem Azure Synapse-Repository die Berechtigung Owner.
+- Stellen Sie sicher, dass Sie einen selbst gehosteten Azure DevOps VM-Agent erstellt haben oder einen von Azure DevOps gehosteten Agenten verwenden.
+- Erteilen Sie die Berechtigung [, eine Azure Resource Manager-Dienstverbindung für die Ressourcengruppe](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml&preserve-view=true) zu erstellen.
 - Ein Azure Active Directory-Administrator (Azure AD) muss die [Agent-Erweiterung für die Azure DevOps Synapse-Arbeitsbereichsbereitstellung in der Azure DevOps-Organisation installieren](/azure/devops/marketplace/install-extension).
 - Erstellen Sie ein Dienstkonto für die Pipelineausführung, oder legen Sie für die Ausführung ein vorhandenes Dienstkonto fest. Sie können anstelle eines Dienstkontos ein persönliches Zugriffstoken verwenden, aber Ihre Pipelines funktionieren nicht mehr, wenn das Benutzerkonto gelöscht wird.
 
 ### <a name="github"></a>GitHub
 
-- Ein GitHub-Repository mit den Synapse-Arbeitsbereichsartefakten und der Arbeitsbereichsvorlage 
-- Stellen Sie sicher, dass Sie einen selbst gehosteten Runner erstellt haben oder einen von GitHub gehosteten Runner verwenden.
+- Erstellen Sie ein GitHub-Repository, das die Artefakte des Azure-Synapse-Arbeitsbereichs und die Arbeitsbereichsvorlage enthält. 
+- Stellen Sie sicher, dass Sie einen selbst gehosteten Runner erstellt haben oder einen auf GitHub gehosteten Runner verwenden.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-- Erstellen Sie in Azure AD einen Dienstprinzipal, der für die Bereitstellung verwendet werden soll, wenn Sie einen Dienstprinzipal verwenden. 
-- Für die Verwendung einer verwalteten Identität müssen Sie die vom System zugewiesene verwaltete Identität auf Ihrem virtuellen Computer in Azure als Agent oder Runner aktivieren und als Synapse Admin zu Synapse Studio hinzufügen.
-- Für diese Aktion werden Azure AD-Administratorrechte benötigt.
+- Wenn Sie einen Dienstprinzipal verwenden, erstellen Sie in Azure AD einen Dienstprinzipal, der für die Bereitstellung verwendet wird. 
+- Wenn Sie eine verwaltete Identität verwenden, aktivieren Sie die vom System zugewiesene verwaltete Identität auf Ihrer VM in Azure als Agent oder Runner und fügen Sie diese dann zu Azure Synapse Studio als Synapse-Admin hinzu.
+- Verwenden Sie die Azure AD-Administratorrolle, um diese Aktionen durchzuführen.
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
 > [!NOTE]
-> Sie können diese Voraussetzungen automatisieren und bereitstellen, indem Sie dieselbe Pipeline, eine ARM-Vorlage oder die Azure CLI verwenden. Die Vorgehensweise wird in diesem Artikel jedoch nicht beschrieben.
+> Sie können diese Voraussetzungen automatisieren und bereitstellen, indem Sie die gleiche Pipeline, eine ARM-Vorlage oder die Azure-Befehlszeilenschnittstelle verwenden, aber diese Prozesse werden in diesem Artikel nicht beschrieben.
 
-- Der für die Entwicklung verwendete „Quellarbeitsbereich“ muss mit einem Git-Repository in Synapse Studio konfiguriert werden. Weitere Informationen finden Sie unter [Quellcodeverwaltung in Synapse Studio](source-control.md#configuration-method-2-manage-hub).
+- Der "Quell"-Arbeitsbereich, der für die Entwicklung verwendet wird, muss mit einem Git-Repository in Azure Synapse Studio konfiguriert werden. Weitere Informationen finden Sie unter [Quellsteuerung in Azure Synapse Studio](source-control.md#configuration-method-2-manage-hub).
 
-- Ein leerer Arbeitsbereich, der als Ziel für Bereitstellung dient. So richten Sie den leeren Arbeitsbereich ein:
+- Richten Sie einen leeren Arbeitsbereich für die Bereitstellung ein:
 
-  1. Erstellen Sie einen neuen Azure Synapse Analytics-Arbeitsbereich.
-  1. Gewähren Sie dem VM-Agent und dem Dienstprinzipal Rechte als Mitwirkender für die Ressourcengruppe, in der der neue Arbeitsbereich gehostet wird.
-  1. Konfigurieren Sie im Zielarbeitsbereich nicht die Git-Repositoryverbindung.
-  1. Suchen Sie im Azure-Portal den neuen Azure Synapse Analytics-Arbeitsbereich, und gewähren Sie sich selbst und jedem Benutzer, der die Azure DevOps-Pipeline ausführen wird, Rechte als Azure Synapse Analytics-Arbeitsbereichsbesitzer. 
-  1. Fügen Sie den Azure DevOps-VM-Agent und den Dienstprinzipal der Rolle „Mitwirkender“ für den Arbeitsbereich hinzu (diese sollte vererbt worden sein, aber überprüfen Sie, ob dies der Fall ist).
-  1. Wechseln Sie im Azure Synapse Analytics-Arbeitsbereich zu **Studio** > **Verwalten** > **Zugriffssteuerung**. Fügen Sie den Azure DevOps-VM-Agent und den Dienstprinzipal der Gruppe der Arbeitsbereichsadministratoren hinzu.
-  1. Öffnen Sie das Speicherkonto, das für den Arbeitsbereich verwendet wird. Fügen Sie in IAM den VM-Agent und den Dienstprinzipal der Rolle „Mitwirkender an Storage-Blobdaten“ hinzu.
-  1. Erstellen Sie einen Schlüsseltresor im Supportabonnement, und stellen Sie sicher, dass sowohl der vorhandene Arbeitsbereich als auch der neue Arbeitsbereich mindestens über GET- und LIST-Berechtigungen für den Tresor verfügen.
+  1. Erstellen Sie einen neuen Azure Synapse-Arbeitsbereich.
+  1. Erteilen Sie dem VM-Agenten und dem Dienstprinzipal die Berechtigung Contributor für die Ressourcengruppe, in der sich der neue Arbeitsbereich befindet.
+  1. Konfigurieren Sie im Arbeitsbereich die Git-Repository-Verbindung nicht.
+  1. Suchen Sie im Azure-Portal den neuen Azure-Synapse-Arbeitsbereich und erteilen Sie sich und dem Benutzer, der die Azure-DevOps-Pipeline Azure-Synapse-Arbeitsbereich ausführen wird, die Berechtigung Owner. 
+  1. Fügen Sie den Azure DevOps VM-Agenten und den Dienstprinzipal zur Contributor-Rolle für den Arbeitsbereich hinzu. (Die Rolle sollte geerbt worden sein, aber überprüfen Sie, ob dies der Fall ist).
+  1. Gehen Sie im Azure Synapse-Arbeitsbereich zu **Studio** > **Verwaltung** > **Zugriffskontrolle**. Fügen Sie den Azure DevOps VM-Agenten und den Dienstprinzipal zur Arbeitsbereich-Administratorgruppe hinzu.
+  1. Öffnen Sie das Speicherkonto, das für den Arbeitsbereich verwendet wird. Fügen Sie im Bereich **Identitäts- und Zugriffsverwaltung** den VM-Agenten und den Dienstprinzipal zur Rolle Storage Blob Data Contributor hinzu.
+  1. Erstellen Sie einen Schlüsseltresor im Support-Abonnement und stellen Sie sicher, dass sowohl der vorhandene Arbeitsbereich als auch der neue Arbeitsbereich mindestens über die Berechtigungen GET und LIST für den Tresor verfügen.
   1. Damit die automatisierte Bereitstellung funktioniert, stellen Sie sicher, dass alle Verbindungszeichenfolgen, die in Ihren verknüpften Diensten angegeben sind, im Schlüsseltresor vorhanden sind.
 
-### <a name="additional-prerequisites"></a>Zusätzliche Voraussetzungen
+### <a name="other-prerequisites"></a>Weitere Voraussetzungen
  
- - Spark-Pools und selbstgehostete Integration Runtimes werden nicht in einer im Arbeitsbereich bereitgestellten Aufgabe erstellt. Wenn Sie über einen verknüpften Dienst verfügen, der eine selbstgehostete Integration Runtime verwendet, erstellen Sie diese manuell im neuen Arbeitsbereich.
- - Wenn die Elemente im Entwicklungsarbeitsbereich mit den spezifischen Pools verbunden sind, stellen Sie sicher, dass Sie den gleichen Namen der Pools im Zielarbeitsbereich haben, der in der Parameterdatei erstellt oder parametrisiert wurde.  
- - Wenn Ihre bereitgestellten SQL-Pools zum Zeitpunkt der Bereitstellung angehalten sind, kann die Bereitstellung möglicherweise nicht erfolgreich durchgeführt werden.
+- Spark-Pools und selbst gehostete Integrationslaufzeiten werden nicht in einer Arbeitsbereichsbereitstellungsaufgabe erstellt. Wenn Sie einen verknüpften Dienst haben, der eine selbst gehostete Integrationslaufzeit verwendet, erstellen Sie die Laufzeit manuell in dem neuen Arbeitsbereich.
+- Wenn die Elemente im Entwicklungsarbeitsbereich mit den spezifischen Pools verknüpft sind, stellen Sie sicher, dass Sie die gleichen Namen für die Pools im Zielarbeitsbereich in der Parameterdatei erstellen oder parametrisieren.  
+- Wenn Ihre bereitgestellten SQL-Pools zum Zeitpunkt der Bereitstellung angehalten sind, kann die Bereitstellung möglicherweise nicht erfolgreich durchgeführt werden.
 
-Weitere Informationen finden Sie unter [CI CD in Azure Synapse Analytics, Teil 4: Die Releasepipeline](https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434). 
+Weitere Informationen finden Sie unter [CI/CD in Azure Synapse Analytics Teil 4 - Die Release-Pipeline](https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434). 
 
 
 ## <a name="set-up-a-release-pipeline-in-azure-devops"></a>Einrichten einer Releasepipeline in Azure DevOps
 
-In diesem Teil erfahren Sie, wie Sie eine Synapse in einem Azure DevOps bereitstellen können. 
+In diesem Abschnitt erfahren Sie, wie Sie einen Azure Synapse-Arbeitsbereich in Azure DevOps bereitstellen. 
 
-1.  Öffnen Sie in [Azure DevOps](https://dev.azure.com/) das Projekt, das für das Release erstellt wurde.
+1. Öffnen Sie in [Azure DevOps](https://dev.azure.com/) das Projekt, das Sie für die Veröffentlichung erstellt haben.
 
-1.  Wählen Sie links auf der Seite die Option **Pipelines** und dann **Releases** aus.
+1. Wählen Sie im linken Menü **Pipelines** > **Releases**.
 
-    ![Auswählen von „Pipelines“ > „Releases“](media/create-release-1.png)
+    :::image type="content" source="media/create-release-pipeline.png" alt-text="Screenshot, der die Auswahl von Pipelines und dann Releases im Azure DevOps-Menü zeigt.":::        
+ 
+1. Wählen Sie **Neue Pipeline** aus. Wenn Sie bestehende Pipelines haben, wählen Sie **Neu** > **Neue Release-Pipeline**.
 
-1.  Wählen Sie **Neue Pipeline** oder – falls Pipelines vorhanden sind – die Option **Neu** und dann **Neue Releasepipeline** aus.
+1. Wählen Sie die Vorlage **Leere Stufe** aus.
 
-1.  Wählen Sie die Vorlage **Leere Stufe** aus.
+    :::image type="content" source="media/create-release-select-empty.png" alt-text="Screenshot, der die Auswahl der Jobvorlage &quot;Leer&quot; zeigt":::.
 
-    ![Auswählen von „Leere Stufe“](media/create-release-select-empty.png)
+1. Geben Sie in **Stufenname** den Namen Ihrer Umgebung ein.
 
-1.  Geben Sie im Feld **Name der Stufe** den Namen der Umgebung ein.
+1. Wählen Sie **Artefakt hinzufügen**, und wählen Sie dann das Git-Repository, das mit Azure Synapse Studio in Ihrer Entwicklungsumgebung konfiguriert ist. Wählen Sie das Git-Repository, in dem Sie Ihre Pools und Ihre Arbeitsbereich-ARM-Vorlage verwalten. Wenn Sie GitHub als Quelle verwenden, erstellen Sie eine Dienstverbindung für Ihr GitHub-Konto und ziehen Sie Repositories. Weitere Informationen finden Sie unter [Dienstverbindungen](/azure/devops/pipelines/library/service-endpoints).
 
-1.  Wählen Sie **Artefakt hinzufügen** und dann das Git-Repository aus, das bei der Entwicklung in Synapse Studio konfiguriert wurde. Wählen Sie das Git-Repository aus, das Sie zum Verwalten der ARM-Vorlage für Pools und den Arbeitsbereich verwendet haben. Wenn Sie als Quelle GitHub verwenden, müssen Sie eine Dienstverbindung für Ihr GitHub-Konto erstellen und Repositorys pullen. Weitere Informationen zur [Dienstverbindung](/azure/devops/pipelines/library/service-endpoints) 
+    :::image type="content" source="media/release-creation-github.png" alt-text="Screenshot, der die Auswahl von GitHub zeigt, um einen Veröffentlichungszweig für ein neues Artefakt hinzuzufügen.":::
 
-    ![Hinzufügen eines Branches für die Veröffentlichung](media/release-creation-github.png)
+1. Wählen Sie die Ressource ARM-Vorlagenzweig. Wählen Sie unter **Standardversion** die Option **Letztes Element aus Standardbranch** aus.
 
-1.  Wählen Sie den Branch der ARM-Vorlage für das Ressourcenupdate aus. Wählen Sie unter **Standardversion** die Option **Letztes Element aus Standardbranch** aus.
+    :::image type="content" source="media/release-creation-arm-template-branch.png" lightbox="media/release-creation-arm-template-branch.png" alt-text="Screenshot, der die Einstellung der Ressource ARM-Vorlagenzweig zeigt ":::.
 
-    ![Hinzufügen einer ARM-Vorlage](media/release-creation-arm-branch.png)
+1. Wählen Sie für die Artefakte **Standardzweig** das Repository [Veröffentlichungszweig](source-control.md#configure-publishing-settings). Standardmäßig ist der Veröffentlichungszweig `workspace_publish`. Wählen Sie unter **Standardversion** die Option **Letztes Element aus Standardbranch** aus.
 
-1.  Wählen Sie den [Branch für die Veröffentlichung](source-control.md#configure-publishing-settings) des Repositorys für den **Standardbranch** aus. Dieser Branch für die Veröffentlichung lautet standardmäßig `workspace_publish`. Wählen Sie unter **Standardversion** die Option **Letztes Element aus Standardbranch** aus.
+    :::image type="content" source="media/release-creation-publish-branch.png" alt-text="Screenshot, der die Einstellung der Artefaktverzweigung zeigt ":::.
 
-    ![Hinzufügen eines Artefakts](media/release-creation-publish-branch.png)
+### <a name="set-up-a-stage-task-for-an-arm-template-to-create-and-update-a-resource"></a>Einrichten einer Stage-Task für eine ARM-Vorlage zum Erstellen und Aktualisieren einer Ressource 
 
-### <a name="set-up-a-stage-task-for-an-arm-template-to-create-and-update-resource"></a>Einrichten einer Stagingaufgabe für eine ARM-Vorlage zum Erstellen und Aktualisieren von Ressourcen 
-
-Wenn Sie über eine ARM-Vorlage zum Bereitstellen einer Ressource – z. B. einen Azure Synapse Arbeitsbereich, Spark- und SQL-Pools oder einen Schlüsseltresor – verfügen, fügen Sie eine ARM-Bereitstellungsaufgabe hinzu, um diese Ressourcen zu erstellen oder zu aktualisieren:
+Wenn Sie eine ARM-Vorlage haben, die eine Ressource bereitstellt, wie z. B. einen Azure Synapse-Arbeitsbereich, einen Spark- und SQL-Pool oder einen Schlüsseltresor, fügen Sie eine Azure Resource Manager-Bereitstellungsaufgabe hinzu, um diese Ressourcen zu erstellen oder zu aktualisieren:
 
 1. Wählen Sie in der Stufenansicht die Option **Stufenaufgaben anzeigen** aus.
 
-    ![Stufenansicht](media/release-creation-stage-view.png)
+    :::image type="content" source="media/release-creation-stage-view.png" alt-text="Screenshot, der die Einstellung der Bühnenansicht zeigt.":::
 
 1. Erstellen Sie eine neue Aufgabe. Suchen Sie nach **AMR-Vorlagenbereitstellung**, und wählen Sie dann **Hinzufügen** aus.
 
-1. Wählen Sie in der Bereitstellungsaufgabe das Abonnement, die Ressourcengruppe und den Speicherort für den Zielarbeitsbereich aus. Geben Sie die Anmeldeinformationen an, falls dies erforderlich ist.
+1. Wählen Sie auf der Registerkarte Bereitstellung **Aufgaben** das Abonnement, die Ressourcengruppe und den Speicherort für den Arbeitsbereich. Geben Sie die Anmeldeinformationen an, falls dies erforderlich ist.
 
-1. Wählen Sie in der Liste **Aktion** den Eintrag **Create or update resource group** (Ressourcengruppe erstellen oder aktualisieren) aus.
+1. Wählen Sie für **Aktion** die Option **Ressourcengruppe erstellen oder aktualisieren**.
 
-1. Wählen Sie neben dem Feld **Vorlage** die Schaltfläche mit den Auslassungszeichen ( **…** ) aus. Suchen Sie nach der Azure Resource Manager-Vorlage für Ihren Zielarbeitsbereich.
+1. Wählen Sie für **Vorlage** die Ellipsenschaltfläche ( **...** ). Gehen Sie zur ARM-Vorlage des Arbeitsbereichs.
 
-1. Wählen Sie **…** neben dem Feld **Vorlagenparameter** aus, um die Parameterdatei auszuwählen.
+1. Für **Vorlagenparameter**, wählen Sie **...** um die Parameterdatei auszuwählen.
 
-1. Wählen Sie **…** neben dem Feld **Vorlagenparameter überschreiben** aus, und geben Sie die gewünschten Parameterwerte für den Zielarbeitsbereich ein. 
+    :::image type="content" source="media/pools-resource-deploy.png" lightbox="media/pools-resource-deploy.png" alt-text="Screenshot, der den: Arbeitsbereich und die Pools zeigt ":::.
 
-1. Wählen Sie unter **Bereitstellungsmodus** die Option **Inkrementell** aus.
-    
-    ![Bereitstellen von Arbeitsbereich und Pools](media/pools-resource-deploy.png)
+1. Wählen Sie für **Vorlagenparameter überschreiben** die Option **...** und geben Sie dann die Parameterwerte ein, die Sie für den Arbeitsbereich verwenden möchten. 
 
-1. (Optional:) Fügen Sie **Azure PowerShell** hinzu, um die Rollenzuweisung für den Arbeitsbereich festzulegen und zu aktualisieren. Wenn Sie einen Synapse-Arbeitsbereich mit der Releasepipeline erstellen, wird der Dienstprinzipal der Pipeline als Standardadministrator für den Arbeitsbereich hinzugefügt. Sie können PowerShell ausführen, um auch anderen Konten Zugriff auf den Arbeitsbereich zu gewähren. 
-    
-    ![Erteilen einer Berechtigung](media/release-creation-grant-permission.png)
+1. Wählen Sie für **Entwicklungsmodus** die Option **Inkrementell**.
 
- > [!WARNING]
-> Im vollständigen Bereitstellungsmodus werden Ressourcen, die in der Ressourcengruppe vorhanden, aber in der neuen Resource Manager-Vorlage nicht angegeben sind, **gelöscht**. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](../../azure-resource-manager/templates/deployment-modes.md).
+1. (Optional) Fügen Sie **Azure PowerShell** für die Berechtigung hinzu und aktualisieren Sie die Zuweisung der Arbeitsbereichsrolle. Wenn Sie eine Freigabe-Pipeline verwenden, um einen Azure Synapse-Arbeitsbereich zu erstellen, wird der Dienstprinzipal der Pipeline als Standard-Arbeitsbereichsadministrator hinzugefügt. Sie können PowerShell ausführen, um anderen Konten Zugriff auf den Arbeitsbereich zu gewähren. 
 
-### <a name="set-up-a-stage-task-for-synapse-artifacts-deployment"></a>Einrichten einer Stagingaufgabe für die Synapse-Artefaktbereitstellung 
+    :::image type="content" source="media/release-creation-grant-permission.png" lightbox="media/release-creation-grant-permission.png" alt-text="Screenshot, der die Ausführung eines PowerShell-Skripts zur Erteilung von Berechtigungen demonstriert.":::
 
-Verwenden Sie die Erweiterung für die [Synapse-Arbeitsbereichsbereitstellung](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy), um andere Elemente im Synapse-Arbeitsbereich wie Datasets, SQL-Skripts, Notebooks, Spark-Auftragsdefinitionen, Datenflüsse, Pipelines, verknüpfte Dienste, Anmeldeinformationen und IRs (Integration Runtime) bereitzustellen.  
+> [!WARNING]
+> Im Modus der vollständigen Bereitstellung werden Ressourcen in der Ressourcengruppe, die nicht in der neuen ARM-Vorlage angegeben sind, *gelöscht*. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](../../azure-resource-manager/templates/deployment-modes.md).
 
-1. Suchen Sie die Erweiterung im **Azure DevOps-Marketplace** (https://marketplace.visualstudio.com/azuredevops), und laden Sie sie herunter. 
+### <a name="set-up-a-stage-task-for-azure-synapse-artifacts-deployment"></a>Einrichten einer Bühnenaufgabe für die Bereitstellung von Azure Synapse-Artefakten 
 
-     ![Abrufen einer Erweiterung](media/get-extension-from-market.png)
+Verwenden Sie die Erweiterung [Synapse workspace deployment](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy), um andere Elemente in Ihrem Azure Synapse-Arbeitsbereich bereitzustellen. Zu den Elementen, die Sie bereitstellen können, gehören Datensätze, SQL-Skripte und Notizbücher, eine Spark-Auftragsdefinition, ein Datenfluss, eine Pipeline, ein verknüpfter Dienst, Anmeldeinformationen und eine Integrationslaufzeit.  
 
-1. Wählen Sie eine Organisation aus, um die Erweiterung zu installieren. 
+1. Suchen Sie nach der Erweiterung auf dem Visual Studio Marketplace [ und holen Sie diese dort ab](https://marketplace.visualstudio.com/azuredevops).
 
-     ![Installieren der Erweiterung](media/install-extension.png)
+    :::image type="content" source="media/get-extension-marketplace.png" alt-text="Der Screenshot zeigt die Synapse-Erweiterung zur Bereitstellung des Arbeitsbereichs, wie sie im Visual Studio Marketplace angezeigt wird.":::
 
-1. Stellen Sie sicher, dass dem Dienstprinzipal der Azure DevOps-Pipeline die Berechtigung des Abonnements erteilt wurde und dass er auch als Arbeitsbereichsadministrator für den Zielarbeitsbereich zugewiesen wurde. 
+1. Wählen Sie die Azure DevOps-Organisation aus, in der Sie die Erweiterung installieren möchten. 
 
-1. Erstellen Sie eine neue Aufgabe. Suchen Sie nach **Synapse-Arbeitsbereichsbereitstellung**, und wählen Sie **Hinzufügen** aus.
+    :::image type="content" source="media/install-extension.png" alt-text="Screenshot, der die Auswahl einer Organisation zeigt, in der die Erweiterung für die Bereitstellung des Synapse-Arbeitsbereichs installiert werden soll.":::
 
-     ![Erweiterung hinzufügen](media/add-extension-task.png)
+1. Vergewissern Sie sich, dass der Dienstprinzipal der Azure DevOps-Pipeline die Berechtigung Abonnement erhalten hat und als Synapse-Arbeitsbereich-Admin für den Arbeitsbereich zugewiesen ist. 
 
-1.  Wählen Sie in der Aufgabe **...** neben dem Feld **Vorlage** aus, um die Vorlagendatei auszuwählen.
+1. Um eine neue Aufgabe zu erstellen, suchen Sie nach **Synapse-Arbeitsbereichsbereitstellung**, und wählen Sie dann **Hinzufügen**.
 
-1. Wählen Sie **…** neben dem Feld **Vorlagenparameter** aus, um die Parameterdatei auszuwählen.
+    :::image type="content" source="media/add-extension-task.png" alt-text="Screenshot, der die Suche nach der Bereitstellung des Synapse-Arbeitsbereichs zur Erstellung einer Aufgabe zeigt.":::
 
-1. Wählen Sie die Verbindung, die Ressourcengruppe und den Namen des Zielarbeitsbereichs aus. 
+1. In der Aufgabe, neben **Vorlage**, wählen Sie **...** um die Vorlagendatei zu wählen.
 
-1. Wählen Sie **…** neben dem Feld **Vorlagenparameter außer Kraft setzen** aus, und geben Sie die gewünschten Parameterwerte für den Zielarbeitsbereich ein, darunter auch die Verbindungszeichenfolgen und Kontoschlüssel, die in Ihren verknüpften Diensten verwendet werden. Weitere Informationen finden Sie unter [CI/CD in Azure Synapse Analytics](https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434).
+1. Wählen Sie neben **Vorlagenparameter** die Option **...**  um die Parameterdatei auszuwählen.
 
-    ![Synapse-Arbeitsbereichsbereitstellung](media/create-release-artifacts-deployment.png)
+1. Wählen Sie eine Verbindung, eine Ressourcengruppe und einen Namen für den Arbeitsbereich. 
+
+1. Wählen Sie neben **Vorlagenparameter überschreiben** die Option **...** . Geben Sie die Parameterwerte ein, die Sie für den Arbeitsbereich verwenden möchten, einschließlich der Verbindungszeichenfolgen und Kontoschlüssel, die in Ihren verknüpften Diensten verwendet werden. Weitere Informationen finden Sie unter [CI/CD in Azure Synapse Analytics](https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434).
+
+    :::image type="content" source="media/create-release-artifacts-deployment.png" lightbox="media/create-release-artifacts-deployment.png" alt-text="Screenshot, der die Einrichtung der Synapse-Bereitstellung für den Arbeitsbereich zeigt.":::
 
 > [!IMPORTANT]
-> In CI/CD-Szenarien muss der Typ der Integration Runtime (IR) in unterschiedlichen Umgebungen identisch sein. Wenn sich in Ihrer Entwicklungsumgebung beispielsweise eine selbstgehostete IR befindet, muss diese IR auch in anderen Umgebungen, z. B. Test- und Produktionsumgebungen, den Typ „Selbstgehostet“ aufweisen. Wenn Sie Integration Runtimes in mehreren Stufen freigeben, müssen Sie die Integration Runtimes in allen Umgebungen, z. B. Entwicklungs-, Test- und Produktionsumgebungen, als „Verknüpft selbstgehostet“ konfigurieren.
+> In CI/CD-Szenarien muss der Typ der Integrationslaufzeit in den verschiedenen Umgebungen derselbe sein. Wenn Sie beispielsweise eine selbst gehostete Integrationslaufzeit in der Entwicklungsumgebung haben, muss dieselbe Integrationslaufzeit in anderen Umgebungen, wie z. B. in Test und Produktion, selbst gehostet sein. Wenn Sie Integrationslaufzeiten über mehrere Stufen hinweg gemeinsam nutzen, müssen die Integrationslaufzeiten in allen Umgebungen, z. B. in der Entwicklungs-, Test- und Produktionsumgebung, verknüpft und selbst gehostet sein.
 
-### <a name="create-release-for-deployment"></a>Erstellen eines Release für die Bereitstellung 
+### <a name="create-a-release-for-deployment"></a>Erstellen Sie eine Freigabe für die Bereitstellung 
 
-Nachdem alle Änderungen gespeichert wurden, können Sie **Release erstellen** auswählen, um manuell ein Release zu erstellen. Informationen zum Automatisieren der Erstellung von Releases finden Sie unter [Azure DevOps-Releasetrigger](/azure/devops/pipelines/release/triggers).
+Nachdem Sie alle Änderungen gespeichert haben, können Sie **Freigabe erstellen** wählen, um manuell eine Freigabe zu erstellen. Wie Sie die Erstellung von Releases automatisieren können, erfahren Sie unter [Azure DevOps Release Triggers](/azure/devops/pipelines/release/triggers).
 
-   ![Auswählen von „Release erstellen“](media/release-creation-manually.png)
+:::image type="content" source="media/release-creation-manually.png" lightbox="media/release-creation-manually.png" alt-text="Screenshot, der das Pipeline-Fenster für neue Releases zeigt, wobei Release erstellen hervorgehoben ist":::.
 
-## <a name="set-up-a-release-with-github-action"></a>Einrichten eines Release mit einer GitHub-Aktion 
+## <a name="set-up-a-release-in-github-actions"></a>Einrichten einer Freigabe in GitHub Actions 
 
-In diesem Teil erfahren Sie, wie Sie GitHub-Workflows erstellen, indem Sie GitHub-Aktionen für die Synapse-Arbeitsbereichsbereitstellung verwenden.
-Sie können die [Aktion zum Bereitstellen einer Azure Resource Manager-Vorlage](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) verwenden, um die Bereitstellung einer Azure Resource Manager-Vorlage (ARM-Vorlage) in Azure für den Arbeitsbereich und Computetools zu automatisieren.
+In diesem Abschnitt erfahren Sie, wie Sie GitHub-Workflows mithilfe von GitHub Actions für die Bereitstellung von Azure Synapse-Arbeitsbereichen erstellen.
 
-### <a name="workflow-file-overview"></a>Übersicht über die Workflowdatei
+Sie können die [GitHub-Aktion für Azure Resource Manager-Vorlage](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) verwenden, um die Bereitstellung einer ARM-Vorlage in Azure für den Arbeitsbereich und die Compute-Pools zu automatisieren.
 
-Ein GitHub Actions-Workflow wird durch eine YAML-Datei (.yml) im Pfad /.github/workflows/ in Ihrem Repository definiert. Diese Definition enthält die verschiedenen Schritte und Parameter, die den Workflow bilden.
+### <a name="workflow-file"></a>Workflowdatei
 
-Die Datei besteht aus zwei Abschnitten:
+Definieren Sie einen GitHub Actions-Workflow in einer YAML-Datei (.yml) unter dem Pfad */.github/workflows/* in Ihrem Repository. Die Definition enthält die verschiedenen Schritte und Parameter, aus denen der Workflow besteht.
+
+Die .yml-Datei hat zwei Abschnitte:
 
 |`Section`  |Aufgaben  |
 |---------|---------|
 |**Authentifizierung** | 1. Definieren eines Dienstprinzipals. <br /> 2. Erstellen eines GitHub-Geheimnisses. |
-|**Bereitstellen** | 1. Bereitstellen der Arbeitsbereichsartefakte. |
+|**Bereitstellen** | Stellen Sie die Artefakte des Arbeitsbereichs bereit. |
 
-### <a name="configure-the-github-secrets"></a>Konfigurieren der GitHub-Geheimnisse
+### <a name="configure-github-actions-secrets"></a>Konfigurieren von GitHub Actions-Geheimnissen
 
-Bei den Geheimnissen handelt es sich um Umgebungsvariablen, die verschlüsselt sind. Jeder Benutzer mit Projektmitarbeiterzugriff auf dieses Repository kann diese Geheimnisse für Aktionen verwenden.
+GitHub Actions Secrets sind Umgebungsvariablen, die verschlüsselt sind. Jeder, der über Collaborator-Berechtigungen für dieses Repository verfügt, kann diese Geheimnisse verwenden, um mit Aktionen im Repository zu interagieren.
 
-1. Navigieren Sie zum Repository und wählen Sie **Einstellungen** aus, navigieren Sie zu „Geheimnisse“ und klicken Sie dann auf „Neues Geheimnis“.
+1. Wählen Sie im GitHub-Repository die Registerkarte **Einstellungen** und dann die Option **Geheimnisse** > **Neues Repository-Geheimnis**.
 
-    ![Erstellen eines neuen Geheimnisses](media/create-secret-new.png)
+    :::image type="content" source="media/create-secret-new.png" lightbox="media/create-secret-new.png" alt-text="Screenshot, der die GitHub-Elemente zeigt, die zur Erstellung eines neuen Repository-Geheimnisses auszuwählen sind.":::
 
-1. Fügen Sie neue Geheimnisse für die Client-ID und das Clientgeheimnis hinzu, wenn Sie den Dienstprinzipal für die Bereitstellung verwenden. Sie können auch einstellen, dass die Abonnement-ID und die Mandanten-ID als Geheimnisse gespeichert werden. 
+1. Fügen Sie ein neues Geheimnis für die Client-ID hinzu, und fügen Sie ein neues Client-Geheimnis hinzu, wenn Sie den Dienstprinzipal für die Bereitstellung verwenden. Sie können auch wählen, ob Sie die Abonnement-ID und die Mandanten-ID als Geheimnisse speichern möchten. 
 
 ### <a name="add-your-workflow"></a>Hinzufügen des Workflows
 
-Navigieren Sie in Ihrem GitHub-Repository zu **Actions** (Aktionen). 
+Gehen Sie in Ihrem GitHub-Repository zu **Aktionen**. 
 
-1. Klicken Sie auf **Set up your workflow yourself** (Workflow selbst einrichten). 
-1. Löschen Sie alles nach dem Abschnitt `on:` Ihrer Workflowdatei. Der verbleibende Workflow könnte beispielsweise wie folgt aussehen: 
+1. Klicken Sie auf **Set up your workflow yourself** (Workflow selbst einrichten).
+1. Löschen Sie in der Workflow-Datei alles nach dem Abschnitt `on:`. Ihr verbleibender Arbeitsablauf könnte zum Beispiel so aussehen: 
 
     ```yaml
     name: CI
@@ -219,11 +218,11 @@ Navigieren Sie in Ihrem GitHub-Repository zu **Actions** (Aktionen).
         branches: [ master ]
     ```
 
-1. Benennen Sie Ihren Workflow um, suchen Sie die Bereitstellungsaktion für den Synapse-Arbeitsbereich im Marketplace, und fügen Sie dann die Aktion hinzu. 
+1. Benennen Sie Ihren Arbeitsablauf um. Suchen Sie auf der Registerkarte **Marktplatz** nach der Aktion zur Bereitstellung des Synapse-Arbeitsbereichs und fügen Sie dann die Aktion hinzu. 
 
-     ![Nach der Aktion suchen](media/search-the-action.png)
+    :::image type="content" source="media/search-action.png" lightbox="media/search-action.png" alt-text="Screenshot, der die Suche nach der Aufgabe zur Bereitstellung des Synapse-Arbeitsbereichs auf der Registerkarte Marketplace zeigt.":::
 
-1. Geben Sie die erforderlichen Werte und die Arbeitsbereichsvorlage an.
+1. Legen Sie die erforderlichen Werte und die Arbeitsbereichsvorlage fest:
 
     ```yaml
     name: workspace deployment
@@ -233,10 +232,10 @@ Navigieren Sie in Ihrem GitHub-Repository zu **Actions** (Aktionen).
             branches: [ publish_branch ]
     jobs:
         release:
-            # You can also use the self-hosted runners
+            # You also can use the self-hosted runners.
             runs-on: windows-latest
             steps:
-            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it.
             - uses: actions/checkout@v2
             - uses: azure/synapse-workspace-deployment@release-1.0
             with:
@@ -254,35 +253,34 @@ Navigieren Sie in Ihrem GitHub-Repository zu **Actions** (Aktionen).
               managedIdentity: 'False'
     ``` 
 
-1. Nun können Sie ihre Änderungen committen. Wählen Sie „Commit starten“ aus, geben Sie den Titel ein, und fügen Sie dann eine Beschreibung hinzu (optional). Klicken Sie als Nächstes auf „Neue Datei committen“.
+1. Jetzt können Sie Ihre Änderungen festschreiben. Wählen Sie **Übertragung starten**, geben Sie den Titel ein und fügen Sie eine Beschreibung hinzu (optional). Wählen Sie dann **Neue Datei übertragen**.
 
-    ![Committen des Workflows](media/commit-the-workflow.png)    
+    :::image type="content" source="media/commit-workflow.png" lightbox="media/commit-workflow.png" alt-text="Screenshot, der die Übergabe des Workflows in GitHub zeigt.":::
 
+   Die Datei erscheint im Ordner *.github/workflows* in Ihrem Repository.
 
-1. Die Datei wird im Ordner `.github/workflows` Ihres Repositorys angezeigt.
-
-> [!NOTE]
-> Die verwaltete Identität wird nur bei selbst gehosteten VMs in Azure unterstützt. Legen Sie den Runner als selbst gehostet fest. Aktivieren Sie die vom System zugewiesene verwaltete Identität für Ihren VM, und fügen Sie sie Ihrem Synapse Studio als Synapse Administrator hinzu.
+   > [!NOTE]
+   > Managed Identity wird nur mit selbst gehosteten VMs in Azure unterstützt. Stellen Sie sicher, dass der Runner auf "self-hosted" eingestellt ist. Aktivieren Sie die vom System zugewiesene verwaltete Identität für Ihre VM und fügen Sie diese zu Azure Synapse Studio als Synapse-Admin hinzu.
 
 ### <a name="review-your-deployment"></a>Überprüfen der Bereitstellung
 
-1. Navigieren Sie in Ihrem GitHub-Repository zu „Actions“ (Aktionen).
-1. Öffnen Sie das erste Ergebnis, um ausführliche Protokolle zur Ausführung des Workflows anzuzeigen.
+1. Gehen Sie in Ihrem GitHub-Repository zu **Aktionen**.
+1. Um detaillierte Protokolle der Ausführung Ihres Workflows zu sehen, öffnen Sie das erste Ergebnis:
 
-    ![Überprüfen der Bereitstellung](media/review-deploy-status.png)    
+    :::image type="content" source="media/review-deploy-status.png" lightbox="media/review-deploy-status.png" alt-text="Screenshot, der die Auswahl des Protokolls für die Bereitstellung des Arbeitsbereichs im Repository Actions in GitHub zeigt.":::
 
-## <a name="use-custom-parameters-of-the-workspace-template"></a>Verwenden von benutzerdefinierten Parametern der Arbeitsbereichsvorlage 
+## <a name="create-custom-parameters-in-the-workspace-template"></a>Erstellen von benutzerdefinierten Parametern in der Arbeitsbereichsvorlage 
 
-Sie verwenden automatisierte CI/CD und möchten bei der Bereitstellung einige Eigenschaften ändern, die Eigenschaften sind standardmäßig aber nicht parametrisiert. In diesem Fall können Sie die Vorlage mit den Standardparametern außer Kraft setzen.
+Wenn Sie automatisiertes CI/CD verwenden und einige Eigenschaften während der Bereitstellung ändern möchten, diese aber nicht standardmäßig parametrisiert sind, können Sie die Standardparametervorlage überschreiben.
 
-Zum Außerkraftsetzen der Vorlage mit den Standardparametern müssen Sie im Stammordner Ihres Git-Kollaborationsbranchs eine benutzerdefinierte Parametervorlage mit dem Dateinamen **template-parameters-definition.json** erstellen. Sie müssen exakt diesen Dateinamen verwenden. Beim Veröffentlichen aus dem Kollaborationsbranch liest der Synapse-Arbeitsbereich diese Datei und verwendet deren Konfiguration, um die Parameter zu konfigurieren. Sollte keine Datei gefunden werden, wird die Standardparametervorlage verwendet.
+Um die Standard-Parametervorlage außer Kraft zu setzen, erstellen Sie eine benutzerdefinierte Parametervorlage mit dem Namen *template-parameters-definition.json* im Stammordner Ihres Git-Kollaborationszweigs. Sie müssen genau diesen Dateinamen verwenden. Wenn Azure Synapse Arbeitsbereich aus dem Collaboration-Zweig veröffentlicht, liest er diese Datei und verwendet ihre Konfiguration, um die Parameter zu generieren. Wenn Azure Synapse Arbeitsbereich diese Datei nicht findet, wird die Standardparametervorlage verwendet.
 
 ### <a name="custom-parameter-syntax"></a>Benutzerdefinierte Parametersyntax
 
-Im Folgenden finden Sie einige Richtlinien zum Erstellen der benutzerdefinierten Parameterdatei:
+Sie können die folgenden Richtlinien verwenden, um eine benutzerdefinierte Parameterdatei zu erstellen:
 
 * Geben Sie den Eigenschaftenpfad unter dem relevanten Entitätstyp ein.
-* Durch das Festlegen eines Eigenschaftennamens auf `*` geben Sie an, dass alle untergeordneten Eigenschaften parametrisiert werden sollen (nicht rekursiv, sondern nur bis zur ersten Ebene). Sie können auch Ausnahmen für diese Konfiguration angeben.
+* Wenn Sie einen Eigenschaftsnamen auf `*` setzen, bedeutet dies, dass Sie alle Eigenschaften unterhalb der Eigenschaft parametrisieren möchten (nur bis zur ersten Ebene, nicht rekursiv). Sie können Ausnahmen von dieser Konfiguration festlegen.
 * Wenn Sie den Wert einer Eigenschaft als Zeichenfolge festlegen, geben Sie damit an, dass die Eigenschaft parametrisiert werden soll. Verwenden Sie das Format `<action>:<name>:<stype>`.
    *  `<action>` kann für eines dieser Zeichen durchgeführt werden:
       * `=` bedeutet, dass der aktuelle Wert als Standardwert für den Parameter beibehalten werden soll.
@@ -290,11 +288,11 @@ Im Folgenden finden Sie einige Richtlinien zum Erstellen der benutzerdefinierten
       * `|` ist ein Sonderfall für Geheimnisse aus Azure Key Vault für Verbindungszeichenfolgen oder Schlüssel.
    * `<name>` ist der Name des Parameters. Wenn dieser Wert leer ist, wird der Name der Eigenschaft verwendet. Beginnt der Wert mit dem Zeichen `-`, wird der Name gekürzt. `AzureStorage1_properties_typeProperties_connectionString` wird beispielsweise in `AzureStorage1_connectionString` gekürzt.
    * `<stype>` ist der Typ des Parameters. Wenn `<stype>` leer ist, wird standardmäßig der Typ `string` verwendet. Unterstützte Werte: `string`, `securestring`, `int`, `bool`, `object`, `secureobject` und `array`.
-* Wenn Sie ein Array in der Datei angeben, bedeutet dies, dass die entsprechende Eigenschaft in der Vorlage ein Array ist. Synapse durchläuft alle Objekte im Array anhand der angegebenen Definition. Das zweite Objekt (eine Zeichenfolge) wird zum Namen der Eigenschaft, der bei jeder Iteration als Name für den Parameter verwendet wird.
+* Wenn Sie ein Array in der Datei angeben, bedeutet dies, dass die entsprechende Eigenschaft in der Vorlage ein Array ist. Azure Synapse iteriert durch alle Objekte im Array unter Verwendung der angegebenen Definition. Das zweite Objekt (eine Zeichenfolge) wird zum Namen der Eigenschaft, der bei jeder Iteration als Name für den Parameter verwendet wird.
 * Eine Definition kann nicht spezifisch für eine Ressourceninstanz sein. Jede Definition gilt für alle Ressourcen dieses Typs.
-* Standardmäßig werden alle sicheren Zeichenfolgen parametrisiert, z. B. Key Vault-Geheimnisse, Verbindungszeichenfolgen, Schlüssel und Token.
+* Standardmäßig sind alle sicheren Zeichenfolgen (z. B. Key Vault-Geheimnisse) und sicheren Zeichenfolgen (z. B. Verbindungszeichenfolgen, Schlüssel und Token) parametrisiert.
 
-### <a name="parameter-template-definition-samples"></a>Beispiele für Parametervorlagendefinitionen 
+### <a name="parameter-template-definition-example"></a>Beispiel für die Definition einer Parametervorlage 
 
 Im Folgenden finden Sie ein Beispiel für eine Parametervorlagendefinition:
 
@@ -371,56 +369,56 @@ Im Folgenden finden Sie ein Beispiel für eine Parametervorlagendefinition:
 }
 ```
 
-Im Folgenden wird das Erstellen der obigen Vorlage mit einer Aufschlüsselung nach Ressourcentypen beschrieben.
+Im Folgenden wird erläutert, wie die vorangehende Vorlage nach Ressourcentyp aufgebaut ist.
 
-#### <a name="notebooks"></a>Notebooks 
+**`notebooks`**
 
-* Alle Eigenschaften im Pfad `properties/bigDataPool/referenceName` sind mit ihrem jeweiligen Standardwert parametrisiert. Sie können einen angefügten Spark-Pool für jede Notebook-Datei parametrisieren. 
+- Jede Eigenschaft im `properties/bigDataPool/referenceName`-Pfad wird mit ihrem Standardwert parametrisiert. Sie können einen angehängten Spark-Pool für jede Notebook-Datei parametrisieren. 
 
-#### <a name="sql-scripts"></a>SQL-Skripts 
+**`sqlscripts`**
 
-* Eigenschaften (poolName und databaseName) im Pfad `properties/content/currentConnection` sind als Zeichenfolgen ohne die Standardwerte in der Vorlage parametrisiert. 
+- Im `properties/content/currentConnection`-Pfad werden sowohl die `poolName`- als auch die `databaseName`-Eigenschaften als Strings ohne die Standardwerte in der Vorlage parametrisiert. 
 
-#### <a name="pipelines"></a>Pipelines
+**`pipelines`**
 
-* Jede Eigenschaft im Pfad `activities/typeProperties/waitTimeInSeconds` wird parametrisiert. Jede Aktivität in einer Pipeline, die eine Eigenschaft auf Codeebene mit dem Namen `waitTimeInSeconds` enthält (z. B. die Aktivität `Wait`), wird als Zahl mit einem Standardnamen parametrisiert. Die Aktivität verfügt jedoch nicht über einen Standardwert in der Resource Manager-Vorlage. Hierbei handelt es sich um eine erforderliche Eingabe bei der Resource Manager-Bereitstellung.
-* Analog dazu wird eine Eigenschaft namens `headers` (etwa in einer Aktivität vom Typ `Web`) mit dem Typ `object` (Objekt) parametrisiert. Sie verfügt über einen Standardwert (gleicher Wert wie für die Quellfactory).
+- Jede Eigenschaft im `activities/typeProperties/waitTimeInSeconds`-Pfad ist parametrisiert. Jede Aktivität in einer Pipeline, die eine Eigenschaft auf Codeebene mit dem Namen `waitTimeInSeconds` enthält (z. B. die Aktivität `Wait`), wird als Zahl mit einem Standardnamen parametrisiert. Die Eigenschaft hat keinen Standardwert in der Ressourcenmanager-Vorlage. Stattdessen wird die Eigenschaft während der Bereitstellung des Ressourcenmanagers als Eingabe benötigt.
+- Die `headers`-Eigenschaft (zum Beispiel in einer `Web`-Aktivität) wird mit dem `object`-Typ (Objekt) parametrisiert. Die `headers`-Eigenschaft hat einen Standardwert, der derselbe ist wie der Wert der Quellfabrik.
 
-#### <a name="integrationruntimes"></a>IntegrationRuntimes
+**`integrationRuntimes`**
 
-* Alle Eigenschaften unter dem Pfad `typeProperties` werden mit ihren jeweiligen Standardwerten parametrisiert. Beispielsweise sind unter Eigenschaften vom Typ `IntegrationRuntimes` zwei Eigenschaften vorhanden: `computeProperties` und `ssisProperties`. Beide Eigenschaftentypen werden mit ihren jeweiligen Standardwerten und -typen (Objekt) erstellt.
+- Alle Eigenschaften im `typeProperties`-Pfad sind mit ihren jeweiligen Standardwerten parametrisiert. Zum Beispiel befinden sich zwei Eigenschaften unter `IntegrationRuntimes` type properties: `computeProperties` und `ssisProperties`. Beide Eigenschaftentypen werden mit ihren jeweiligen Standardwerten und -typen (Objekt) erstellt.
 
-#### <a name="triggers"></a>Trigger
+**`triggers`**
 
-* Unter `typeProperties` werden zwei Eigenschaften parametrisiert. Die erste ist `maxConcurrency`. Diese Eigenschaft besitzt einen Standardwert und ist vom Typ `string`. Der Standardparametername lautet `<entityName>_properties_typeProperties_maxConcurrency`.
-* Die Eigenschaft `recurrence` wird ebenfalls parametrisiert. Darunter werden alle Eigenschaften auf dieser Ebene gemäß Angabe als Zeichenfolgen mit Standardwerten und Parameternamen parametrisiert. Eine Ausnahme ist die `interval`-Eigenschaft, für die beim Parametrisieren der Typ `int` verwendet wird. An den Parameternamen ist das Suffix `<entityName>_properties_typeProperties_recurrence_triggerSuffix` angehängt. Analog dazu ist die Eigenschaft `freq` eine Zeichenfolge und wird als Zeichenfolge parametrisiert. Die Eigenschaft `freq` wird jedoch ohne Standardwert parametrisiert. Der Name wird verkürzt und mit einem Suffix versehen. Beispiel: `<entityName>_freq`.
+- Unter `typeProperties` sind zwei Eigenschaften parametrisiert:
+  - Die Eigenschaft `maxConcurrency` hat einen Standardwert und ist vom Typ `string`. Der Standardparametername der `maxConcurrency`-Eigenschaft ist `<entityName>_properties_typeProperties_maxConcurrency`.
+  - Die Eigenschaft `recurrence` wird ebenfalls parametrisiert. Alle Eigenschaften unter der Eigenschaft `recurrence` werden als Strings parametrisiert, mit Standardwerten und Parameternamen. Eine Ausnahme ist die Eigenschaft `interval`, die als Typ `int` parametrisiert ist. An den Parameternamen ist das Suffix `<entityName>_properties_typeProperties_recurrence_triggerSuffix` angehängt. Analog dazu ist die Eigenschaft `freq` eine Zeichenfolge und wird als Zeichenfolge parametrisiert. Die Eigenschaft `freq` wird jedoch ohne Standardwert parametrisiert. Der Name wird abgekürzt und mit einem Suffix versehen, z. B. `<entityName>_freq`.
 
-#### <a name="linkedservices"></a>LinkedServices
+**`linkedServices`**
 
-* Verknüpfte Dienste sind ein Sonderfall. Da verknüpfte Dienste und Datasets eine breite Palette von Typen umfassen, können Sie eine typspezifische Anpassung vornehmen. In diesem Beispiel wird für alle verknüpften Dienste vom Typ `AzureDataLakeStore` eine bestimmte Vorlage angewendet. Für alle anderen Dienste wird eine andere Vorlage angewendet (per `*`).
-* Die `connectionString`-Eigenschaft wird als `securestring`-Wert parametrisiert. Sie hat keinen Standardwert. Sie weist einen verkürzten Parameternamen auf, an den das Suffix `connectionString` angehängt ist.
-* Die `secretAccessKey`-Eigenschaft ist eine Eigenschaft vom Typ `AzureKeyVaultSecret` (beispielsweise in einem verknüpften Amazon S3-Dienst). Sie wird automatisch als Azure Key Vault-Geheimnis parametrisiert und aus dem konfigurierten Schlüsseltresor abgerufen. Auch der Schlüsseltresor kann parametrisiert werden.
+- Verknüpfte Dienste sind ein Sonderfall. Da verknüpfte Dienste und Datasets eine breite Palette von Typen umfassen, können Sie eine typspezifische Anpassung vornehmen. Im vorangegangenen Beispiel wird für alle verknüpften Dienste des Typs `AzureDataLakeStore` eine bestimmte Vorlage angewendet. Für alle anderen (identifiziert durch die Verwendung des Zeichens `*`) wird eine andere Vorlage angewandt.
+- Die Eigenschaft `connectionString` ist als `securestring`-Wert parametrisiert. Sie hat keinen Standardwert. Der Parametername wird verkürzt und mit dem Suffix `connectionString` versehen.
+- Die `secretAccessKey`-Eigenschaft wird als `AzureKeyVaultSecret`-Wert parametrisiert (z. B. in einem mit Amazon S3 verknüpften Dienst). Die Eigenschaft wird automatisch als Azure Key Vault-Geheimnis parametrisiert und aus dem konfigurierten Key Vault abgerufen. Sie können auch den Schlüsseltresor selbst parametrisieren.
 
-#### <a name="datasets"></a>Datasets
+**`datasets`**
 
-* Für Datasets steht zwar eine typspezifische Anpassung zur Verfügung, aber Sie können die Konfiguration durchführen, ohne dass eine explizite Konfiguration auf der Ebene \* vorhanden sein muss. Im vorherigen Beispiel werden alle Dataseteigenschaften unter `typeProperties` parametrisiert.
-
+- Obwohl Sie Typen in Datasets anpassen können, ist eine explizite Konfiguration auf \*-Ebene nicht erforderlich. Im vorherigen Beispiel werden alle Dataseteigenschaften unter `typeProperties` parametrisiert.
 
 ## <a name="best-practices-for-cicd"></a>Bewährte Methoden für CI/CD
 
-Wenn Sie die Git-Integration für Ihren Azure Synapse-Arbeitsbereich verwenden und über eine CI/CD-Pipeline verfügen, die Ihre Änderungen aus der Entwicklungs- in die Test- und dann in die Produktionsumgebung verschiebt, werden diese Best Practices empfohlen:
+Wenn Sie die Git-Integration mit Ihrem Azure Synapse-Arbeitsbereich verwenden und über eine CI/CD-Pipeline verfügen, die Ihre Änderungen von der Entwicklung zum Test und dann zur Produktion weiterleitet, empfehlen wir die folgenden Best Practices:
 
--   **Git-Integration**. Konfigurieren Sie nur Ihren Azure Synapse-Arbeitsbereich für die Entwicklung mit Git-Integration. Änderungen an den Test- und Produktionsarbeitsbereichen werden über CI/CD bereitgestellt, und eine Git-Integration wird hierfür nicht benötigt.
--   **Bereiten Sie vor der Migration von Artefakten Pools vor.** Wenn Sie über SQL-Skripts oder Notebooks verfügen, die im Entwicklungsarbeitsbereich an Pools angefügt sind, werden in den anderen Umgebungen dieselben Poolnamen erwartet. 
--   **Infrastruktur als Code (Infrastructure-as-Code, IaC).** Verwenden Sie für die Verwaltung von Infrastruktur (Netzwerken, VMs, Lastenausgleichsmodulen und der Verbindungstopologie) in einem beschreibenden Modell die gleiche Versionsverwaltung, die das DevOps-Team für den Quellcode nutzt. 
--   **Sonstige.** Weitere Informationen finden Sie unter [Bewährte Methoden für ADF-Artefakte](../../data-factory/continuous-integration-delivery.md#best-practices-for-cicd).
+-   **Integrieren Sie nur den Entwicklungsarbeitsbereich mit Git**. Wenn Sie die Git-Integration verwenden, integrieren Sie nur Ihren *Entwicklungs* Azure Synapse-Arbeitsbereich in Git. Änderungen an den Test- und Produktionsarbeitsbereichen werden über CI/CD bereitgestellt, und eine Git-Integration wird hierfür nicht benötigt.
+-   **Bereiten Sie Pools vor, bevor Sie Artefakte migrieren**. Wenn Sie ein SQL-Skript oder ein Notizbuch haben, das mit Pools im Entwicklungsarbeitsbereich verbunden ist, verwenden Sie denselben Namen für Pools in verschiedenen Umgebungen. 
+-   **Synchronisieren Sie die Versionierung in Infrastruktur-als-Code-Szenarien**. Um die Infrastruktur (Netzwerke, virtuelle Maschinen, Load Balancer und Verbindungstopologie) in einem beschreibenden Modell zu verwalten, verwenden Sie die gleiche Versionierung, die das DevOps-Team für den Quellcode verwendet. 
+-   **Prüfen Sie die Best Practices für Azure Data Factory**. Wenn Sie Data Factory verwenden, lesen Sie die [Best Practices für Data Factory Artefakte](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd).
 
-## <a name="troubleshooting-artifacts-deployment"></a>Problembehandlung bei der Bereitstellung von Artefakten 
+## <a name="troubleshoot-artifacts-deployment"></a>Fehlerbehebung bei der Bereitstellung von Artefakten 
 
-### <a name="use-the-azure-synapse-analytics-workspace-deployment-task"></a>Verwenden der Aufgabe für die Azure Synapse Analytics-Arbeitsbereichsbereitstellung
+### <a name="use-the-synapse-workspace-deployment-task"></a>Verwenden der Aufgabe zur Synapse-Arbeitsbereichsbereitstellung
 
-In Azure Synapse Analytics gibt es eine Reihe von Artefakten, bei denen es sich nicht um ARM-Ressourcen handelt. Dies ist ein Unterschied zu Azure Data Factory. Die Aufgabe zur ARM-Vorlagenbereitstellung kann Azure Synapse Analytics-Artefakte nicht ordnungsgemäß bereitstellen.
+In Azure Synapse sind einige Artefakte, anders als in Data Factory, keine Ressourcenmanager-Ressourcen. Sie können die ARM-Vorlagenbereitungsaufgabe nicht zur Bereitstellung von Azure Synapse-Artefakten verwenden. Verwenden Sie stattdessen die Synapse-Workspace-Bereitstellungsaufgabe.
  
 ### <a name="unexpected-token-error-in-release"></a>Unerwarteter Tokenfehler in Release
 
-Wenn Ihre Parameterdatei Parameterwerte enthält, die nicht mit Escapezeichen versehen sind, würde beim Analysieren der Datei durch die Releasepipeline der Fehler „Unerwartetes Token“ auftreten. Es wird empfohlen, die Parameter zu überschreiben oder die Parameterwerte mithilfe von Azure Key Vault abzurufen. Als Abhilfe können Sie auch doppelte Escapezeichen verwenden.
+Wenn Ihre Parameterdatei Parameterwerte enthält, die nicht escaped sind, kann die Freigabe-Pipeline die Datei nicht parsen und erzeugt einen `unexpected token`-Fehler. Wir schlagen vor, dass Sie Parameter überschreiben oder Key Vault verwenden, um Parameterwerte abzurufen. Sie können auch doppelte Escape-Zeichen verwenden, um das Problem zu beheben.

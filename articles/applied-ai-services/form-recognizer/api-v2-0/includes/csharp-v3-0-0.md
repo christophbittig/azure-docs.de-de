@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/25/2021
+ms.date: 09/25/2021
 ms.author: lajanuar
 ms.custom: " devx-track-csharp"
-ms.openlocfilehash: 96b141231d6465282224cfc8d72a7c23af872f7a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 12d957ded4960a2952f88af92c3cfc6909106fbd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641767"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725550"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
@@ -92,7 +92,7 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 
 * Erkennen von Formularfeldern und -inhalten mithilfe von benutzerdefinierten Modellen, die zur Analyse Ihrer benutzerdefinierten Formulare trainiert wurden.  Diese Werte werden in einer Sammlung von `RecognizedForm`-Objekten zurückgegeben. Sehen Sie sich das Beispiel zum [Analysieren benutzerdefinierter Formulare](#analyze-forms-with-a-custom-model) an.
 * Erkennen von Formularinhalten (einschließlich Tabellen, Zeilen und Wörtern), ohne dass ein Modell trainiert werden muss.  Der Formularinhalt wird in einer Sammlung von `FormPage`-Objekten zurückgegeben. Weitere Informationen finden Sie im Beispiel zum [Analysieren des Layouts](#analyze-layout).
-* Erkennen allgemeiner Felder in US-amerikanischen Belegen, Visitenkarten, Rechnungen und Ausweisdokumenten unter Verwendung eines vorab trainierten Modells für den Formularerkennungsdienst
+* Erkennung gängiger Felder von US-Quittungen, Visitenkarten, Rechnungen und Ausweisdokumenten mithilfe eines vorab trainierten Modells des Dienstes Formularerkennung.
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 

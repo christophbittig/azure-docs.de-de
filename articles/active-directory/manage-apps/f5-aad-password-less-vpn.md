@@ -1,5 +1,6 @@
 ---
-title: Sicherer Hybridzugriff mit Azure AD und F5-VPN | Microsoft-Dokumentation
+title: Sicherer hybrider Zugang mit F5 VPN
+titleSuffix: Azure AD
 description: Tutorial für die Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit F5 BIG-IP für ein VPN ohne Kennwort
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 10/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: 34175414cd5203438de76a94de7896e3bf175355
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 068fe4e98b3beb3f365cd16070fd134fda7c48b9
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339920"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617737"
 ---
-# <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>Tutorial für die Integration des einmaligen Anmeldens von Azure Active Directory mit F5 BIG-IP für ein VPN ohne Kennwort
+# <a name="integrate-f5-big-ip-for-password-less-vpn-with-azure-active-directory"></a>Integrieren Sie F5 BIG-IP für passwortloses VPN mit Azure Active Directory
 
 In diesem Tutorial erfahren Sie, wie Sie die auf F5 BIG-IP basierende SSL-VPN-Lösung (Secure Socket Layer, virtuelles privates Netzwerk) mit Azure Active Directory (AD) für den sicheren Hybridzugriff (Secure Hybrid Access, SHA) integrieren.
 

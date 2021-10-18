@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/22/2021
+ms.date: 10/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 216123a60a69fc696423ac9d129201201cac8fbc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b4706d8bc9224920afb8e17abca88409d4aff7ab
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124739916"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617376"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Verwalten von Azure AD B2C mit Microsoft Graph
 
@@ -139,6 +139,7 @@ Die vorrangige Ressource für Richtlinienschlüssel in der Microsoft Graph-API i
 ## <a name="application-extension-properties"></a>Anwendungserweiterungseigenschaften
 
 - [Auflisten von Erweiterungseigenschaften](/graph/api/application-list-extensionproperty)
+- [Erweiterungseigenschaft löschen](/graph/api/application-delete-extensionproperty)
 
 Azure AD B2C stellt ein Verzeichnis bereit, das 100 benutzerdefinierte Attribute pro Benutzer enthalten kann. Bei Benutzerflows werden diese Erweiterungseigenschaften [mit dem Azure-Portal verwaltet](user-flow-custom-attributes.md). Bei benutzerdefinierten Richtlinien erstellt Azure AD B2C die Eigenschaft für Sie, wenn die Richtlinie zum ersten Mal einen Wert in die Erweiterungseigenschaft schreibt.
 

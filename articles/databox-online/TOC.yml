@@ -374,10 +374,12 @@
               href: azure-stack-edge-gpu-recover-device-failure.md
         - name: Überwachen
           items:
+            - name: Überprüfen von Warnungen
+              href: azure-stack-edge-alerts.md
+            - name: Verwenden von Regeln für Warnungsbenachrichtigungen
+              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: Verwenden von Metrikdiagrammen
               href: azure-stack-edge-monitor.md
-            - name: Verwalten von Geräteereigniswarnungen
-              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: Verwenden des Kubernetes-Dashboards
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
             - name: Verwenden von Azure Monitor

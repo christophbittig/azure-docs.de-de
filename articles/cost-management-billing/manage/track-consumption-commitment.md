@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 07/06/2021
+ms.date: 10/11/2021
 ms.author: banders
-ms.openlocfilehash: 41a4f22e669300e24ddce0248e8ab1744b773202
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 741efbce1f8578ca425059b2b04b64d9892112cb
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113301922"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857600"
 ---
 # <a name="track-your-microsoft-azure-consumption-commitment-macc"></a>Nachverfolgen von Microsoft Azure Consumption Commitment (MACC)
 
-Das Microsoft Azure Consumption Commitment (MACC) ist eine vertragliche Verpflichtung, die Ihre Organisation möglicherweise für einen bestimmten Zeitraum mit Microsoft Azure eingegangen ist. Wenn Ihre Organisation über ein MACC für ein Abrechnungskonto im Rahmen einer Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) verfügt, können Sie wichtige Aspekte Ihrer Verpflichtung einschließlich Start- und Enddatum, verbleibender Verpflichtung und berechtigter Ausgaben im Azure-Portal oder über REST-APIs überprüfen. MACC oder CTC für EA-Abrechnungskonten (Enterprise Agreement, Konzernvertrag) sind noch nicht im Azure-Portal oder über REST-APIs verfügbar.
+Das Microsoft Azure Consumption Commitment (MACC) ist eine vertragliche Verpflichtung, die Ihre Organisation möglicherweise für einen bestimmten Zeitraum mit Microsoft Azure eingegangen ist. Wenn Ihr Unternehmen eine MACC für ein Microsoft-Kundenvereinbarung (MCA)-Abrechnungskonto oder ein Enterprise Agreement (EA)-Abrechnungskonto hat, können Sie im Azure-Portal oder über REST-APIs wichtige Aspekte Ihrer Verpflichtung überprüfen, einschließlich Start- und Enddatum, verbleibende Verpflichtung und zulässige Ausgaben.
 
 ## <a name="track-your-macc-commitment"></a>Nachverfolgen Ihrer MACC-Verpflichtung
 
@@ -27,13 +27,16 @@ Das Microsoft Azure Consumption Commitment (MACC) ist eine vertragliche Verpflic
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.  
     :::image type="content" source="./media/track-consumption-commitment/billing-search-cost-management-billing.png" alt-text="Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ im Portal." lightbox="./media/track-consumption-commitment/billing-search-cost-management-billing.png" :::
-3. Wählen Sie auf der Abrechnungsbereicheseite das Abrechnungskonto aus, für das Sie die Verpflichtung nachverfolgen möchten. Das Abrechnungskonto sollte vom Typ **Microsoft-Kundenvereinbarung** sein.  
+3. Wählen Sie auf der Abrechnungsbereicheseite das Abrechnungskonto aus, für das Sie die Verpflichtung nachverfolgen möchten. Der Abrechnungskontotyp muss **Microsoft Customer Agreement** für Microsoft-Kundenvereinbarung (MCA)-Kunden oder **Enterprise Agreement** für EA-Kunden sein.   
     :::image type="content" source="./media/track-consumption-commitment/list-of-scopes.png" alt-text="Screenshot von Abrechnungsbereichen" lightbox="./media/track-consumption-commitment/list-of-scopes.png" :::
     > [!NOTE]
      > Das Azure-Portal speichert den letzten Abrechnungsbereich, auf den Sie zugreifen, und zeigt den Bereich an, wenn Sie das nächste Mal auf die Seite „Kostenverwaltung + Abrechnung“ gelangen. Wenn Sie „Kostenverwaltung + Abrechnung“ bereits besucht haben, wird die Abrechnungsbereicheseite nicht angezeigt. Wenn dies der Fall ist, überprüfen Sie, ob Sie sich im [richtigen Bereich](#check-access-to-a-microsoft-customer-agreement) befinden. Wenn nicht, [wechseln Sie den Bereich](view-all-accounts.md#switch-billing-scope-in-the-azure-portal), um das Abrechnungskonto für eine Microsoft-Kundenvereinbarung auszuwählen.
-4. Wählen Sie auf der linken Seite **Eigenschaften** und dann **Microsoft Azure Consumption Commitment (MACC)** aus.  
-    :::image type="content" source="./media/track-consumption-commitment/select-macc-tab.png" alt-text="Screenshot zur Auswahl der MACC-Registerkarte." lightbox="./media/track-consumption-commitment/select-macc-tab.png" :::
-5. Die Registerkarte „Microsoft Azure Consumption Commitment (MACC)“ enthält die folgenden Abschnitte.
+4. Führen Sie je nach Vereinbarung eine der folgenden Aktionen aus:
+    - Für MCA-Kunden wählen Sie **Eigenschaften** auf der linken Seite und wählen Sie dann **Microsoft Azure Consumption Commitment (MACC)** .  
+        :::image type="content" source="./media/track-consumption-commitment/select-macc-tab.png" alt-text="Screenshot, der die Auswahl der Registerkarte MACC für MCA zeigt." lightbox="./media/track-consumption-commitment/select-macc-tab.png" :::
+    - Für EA-Kunden wählen Sie **Credits + Commitments** im linken Navigationsmenü und wählen Sie dann **Microsoft Azure Consumption Commitment (MACC)** .  
+        :::image type="content" source="./media/track-consumption-commitment/select-macc-tab-ea.png" alt-text="Screenshot, der die Auswahl der Registerkarte MACC für EA zeigt." lightbox="./media/track-consumption-commitment/select-macc-tab-ea.png" :::
+1. Die Registerkarte „Microsoft Azure Consumption Commitment (MACC)“ enthält die folgenden Abschnitte.
 
 #### <a name="remaining-commitment"></a>Verbleibende Verpflichtung 
 
@@ -73,7 +76,7 @@ Im Abschnitt „Ereignisse“ werden Ereignisse (in Rechnung gestellte Ausgaben)
 |---|---|
 | Date | Das Datum, an dem das Ereignis eingetreten ist. |
 | BESCHREIBUNG | Eine Beschreibung des Ereignisses. |
-| Abrechnungsprofil | Das Abrechnungsprofil, für das das Ereignis eingetreten ist. |
+| Abrechnungsprofil | Das Abrechnungsprofil, für das der Vorfall eingetreten ist. Das Abrechnungsprofil gilt nur für Microsoft-Kundenvereinbarungen. Wenn Sie ein EA-Abonnement haben, wird das Abrechnungsprofil nicht angezeigt. |
 | MACC-Dekrement | Die Höhe des MACC-Dekrements aus dem Ereignis. |
 | Verbleibende Verpflichtung | Die nach dem Ereignis verbleibende MACC-Verpflichtung. |
 
@@ -81,7 +84,7 @@ Im Abschnitt „Ereignisse“ werden Ereignisse (in Rechnung gestellte Ausgaben)
 
 Mithilfe der Azure-APIs für die [Abrechnung](/rest/api/billing/) und [Nutzung](/rest/api/consumption/) können Sie die Microsoft Azure Consumption Commitment (MACC) für Ihr Abrechnungskonto programmgesteuert abrufen.
 
-In den weiter unten bereitgestellten Beispielen werden REST-APIs verwendet. PowerShell und Azure CLI werden derzeit nicht unterstützt.
+In den weiter unten bereitgestellten Beispielen werden REST-APIs verwendet. PowerShell und Azure CLI werden derzeit nicht unterstützt. Die Beispielausgabe bezieht sich auf Microsoft-Kundenvereinbarungen, die Ausgabe für Unternehmensvereinbarungen weicht daher ab.
 
 ### <a name="find-billing-accounts-you-have-access-to"></a>Suchen nach Abrechnungskonten, auf die Sie Zugriff haben
 

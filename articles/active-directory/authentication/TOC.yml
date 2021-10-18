@@ -60,6 +60,8 @@
           href: multi-factor-authentication-faq.yml
     - name: Kennwortschutz
       items:
+        - name: Kombinierte Kennwortrichtlinienüberprüfung
+          href: concept-password-ban-bad-combined-policy.md
         - name: Entfernen unsicherer Kennwörter in der Cloud
           href: concept-password-ban-bad.md
         - name: Entfernen unsicherer Kennwörter in der lokalen Umgebung

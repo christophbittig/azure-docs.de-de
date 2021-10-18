@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 05/25/2021
 ms.author: danlep
-ms.openlocfilehash: fde1ee4c7b19c27b278fe6728ee244d03be246e4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 802dd143accbd993eb0903797def7f1710a00033
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128663647"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129716213"
 ---
 # <a name="self-hosted-gateway-overview"></a>Übersicht über das selbstgehostete Gateway
 
@@ -41,7 +41,7 @@ Indem selbstgehostete Gateways in denselben Umgebungen, in denen die Implementie
 
 ## <a name="packaging-and-features"></a>Paketerstellung und Features
 
-Das selbstgehostete Gateway ist eine containerisierte, funktional gleichwertige Version des verwalteten Gateways, das im Rahmen jedes API Management-Diensts in Azure bereitgestellt wird. Das selbstgehostete Gateway ist in der Microsoft Container Registry als Linux-basierter Docker-[Container](https://aka.ms/apim/sputnik/dhub) verfügbar. Es kann in Docker, Kubernetes oder jeder anderen Lösung für die Containerorchestrierung bereitgestellt werden, die auf einem lokalen Servercluster, in einer Cloudinfrastruktur oder zu Evaluierungs- und Entwicklungszwecken auf einem PC ausgeführt wird. Sie können auch das selbstgehostete Gateway als Clustererweiterung in einem [Azure Arc-fähigen Kubernetes-Cluster](./how-to-deploy-self-hosted-gateway-azure-arc.md) bereitstellen.
+Das selbstgehostete Gateway ist eine containerisierte, funktional gleichwertige Version des verwalteten Gateways, das im Rahmen jedes API Management-Diensts in Azure bereitgestellt wird. Das selbstgehostete Gateway ist in der Microsoft Container Registry als Linux-basierter Docker-[Container](https://aka.ms/apim/sputnik/dhub) verfügbar. Es kann in Docker, Kubernetes oder jeder anderen Lösung für die Containerorchestrierung bereitgestellt werden, die auf einem lokalen Servercluster, in einer Cloudinfrastruktur oder zu Evaluierungs- und Entwicklungszwecken auf einem PC ausgeführt wird. Sie können das selbst gehostete Gateway auch als Cluster-Erweiterung für einen [Azure Arc-aktivierten Kubernetes-Cluster](./how-to-deploy-self-hosted-gateway-azure-arc.md) bereitstellen.
 
 Die folgende, in verwalteten Gateways zu findende Funktionalität ist im selbstgehosteten Gateway **nicht verfügbar**:
 
@@ -83,4 +83,4 @@ Wenn die Konnektivität wiederhergestellt ist, stellt jedes vom Ausfall betroffe
 -   [Whitepaper mit weiteren Hintergrundinformationen zu diesem Thema](https://aka.ms/hybrid-and-multi-cloud-api-management)
 -   [Bereitstellen eines selbstgehosteten Gateways in Docker](how-to-deploy-self-hosted-gateway-docker.md)
 -   [Bereitstellen eines selbstgehosteten Gateways in Kubernetes](how-to-deploy-self-hosted-gateway-kubernetes.md)
--   [Bereitstellen eines selbstgehosteten Gateways für Azure Arc-fähige Kubernetes-Cluster](how-to-deploy-self-hosted-gateway-azure-arc.md)
+-   [Bereitstellung eines selbst gehosteten Gateways für einen Azure Arc-fähigen Kubernetes-Cluster](how-to-deploy-self-hosted-gateway-azure-arc.md)

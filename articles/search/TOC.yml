@@ -198,6 +198,8 @@
           items:
             - name: Schlüsselbasierte Authentifizierung
               href: search-security-api-keys.md
+            - name: Azure AD-Authentifizierung
+              href: search-howto-aad.md
             - name: Rollenbasierte Autorisierung
               href: search-security-rbac.md
             - name: Konfigurieren einer IP-Firewall
@@ -400,6 +402,8 @@
               href: knowledge-store-projection-shape.md
             - name: Definieren von Projektionen
               href: knowledge-store-projections-examples.md
+            - name: Beispiel für eine Projektion
+              href: knowledge-store-projection-example-long.md
             - name: Anzeigen mit Storage-Explorer
               href: knowledge-store-view-storage-explorer.md
             - name: Herstellen einer Verbindung mit Power BI

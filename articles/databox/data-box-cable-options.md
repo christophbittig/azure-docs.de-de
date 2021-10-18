@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: a2c4cce492c48ebe6e09ad142f97bc6377a8a5e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 851c717ad313c32137235704f7cbdca9544d2605
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94334600"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129716123"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Verkabelungsoptionen für Azure Data Box
 
@@ -117,7 +117,7 @@ Verwenden Sie diese Konfiguration, wenn Ihr Gerät für eine DHCP-Umgebung vorge
 
 Vergewissern Sie sich zunächst, dass Sie über Folgendes verfügen:
 
-- Ein RJ45-Kabel, sofern Sie DATA 1 verwenden möchten
+- Ein RJ45-Kabel, wenn Sie DATA 3 anschließen möchten.
 - Ein 10-GbE-SFP+ Twinax-Kupferkabel für jeden 10-GbE-Datenanschluss, den Sie verwenden möchten
 - Mindestens eine Datenquelle mit einem [unterstützten Betriebssystem](data-box-system-requirements.md#supported-operating-systems-for-clients) Diese Datenquellen können sich in verschiedenen Netzwerken (etwa in 1-GbE- und 10-GbE-Netzwerken) befinden.
 
