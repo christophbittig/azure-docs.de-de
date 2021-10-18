@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: danlep
-ms.openlocfilehash: 93e7feb2d1b91cb8d5fa58d52244c901e1eeaea2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3bc2543d8051a99c5b770204d64db043bbf7dfad
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598746"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708556"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Bereitstellen eines selbstgehosteten Gateways in Azure API Management
 
@@ -50,5 +50,5 @@ Die Gatewayressource wurde nun in Ihrer API Management-Instanz bereitgestellt. S
 
 * Weitere Informationen zum selbstgehosteten Gateway finden Sie unter [Azure API Management: Übersicht über das selbstgehostete Gateway](self-hosted-gateway-overview.md).
 * Weitere Informationen zum [Bereitstellen eines selbstgehosteten Gateways für Kubernetes](how-to-deploy-self-hosted-gateway-kubernetes.md)
-- Hier erfahren Sie mehr zum [Bereitstellen eines selbstgehosteten Gateways in einem Azure Arc-fähigen Kubernetes-Cluster](how-to-deploy-self-hosted-gateway-azure-arc.md).
+- Hier erfahren Sie mehr zum [Bereitstellen eines selbstgehosteten Gateways in einem Kubernetes-Cluster mit Azure Arc-Unterstützung](how-to-deploy-self-hosted-gateway-azure-arc.md).
 * Weitere Informationen zum [Bereitstellen eines selbstgehosteten Gateways für Docker](how-to-deploy-self-hosted-gateway-docker.md)

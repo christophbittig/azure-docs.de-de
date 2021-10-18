@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/25/2021
+ms.date: 09/27/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6a8a503f5357ec69a1bab007f4ae2849582fed3b
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: de89ce807b69cf9d9ef7db180b32dd1b7fe1d50c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835589"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091194"
 ---
 Das erstmalige Einrichten von kundenseitig verwalteten Schlüssel für Ihre Datenträger erfordert die Erstellung von Ressourcen in einer bestimmten Reihenfolge. Zuerst müssen Sie eine Azure Key Vault-Instanz erstellen und einrichten.
 
@@ -73,3 +73,11 @@ Nachdem Sie den Azure-Schlüsseltresor und einen Schlüssel erstellt haben, müs
 1. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen** aus.
 
     :::image type="content" source="media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png" alt-text="Screenshot: Bereich zum Erstellen der Datenträgerverschlüsselung. Zeigt das Abonnement, die Ressourcengruppe, den Namen der Datenträgerverschlüsselungsgruppe, die Region und den Schlüsseltresor sowie die Schlüsselauswahl an." lightbox="media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png":::
+
+1. Navigieren Sie zu dem Datenträgerverschlüsselungssatz, nachdem er bereitgestellt wurde, und wählen Sie die angezeigte Benachrichtigung aus.
+
+    :::image type="content" source="media/virtual-machines-disk-encryption-portal/disk-encryption-set-perm-alert.png" alt-text="Screenshot eines Benutzers, der die Benachrichtigung „Um diesem Datenträgerverschlüsselungssatz einen Datenträger, ein Image oder eine Momentaufnahme zuzuordnen, müssen Sie dem Schlüsseltresor Berechtigungen erteilen“ auswählt." lightbox="media/virtual-machines-disk-encryption-portal/disk-encryption-set-perm-alert.png":::
+
+1. Dadurch erhält Ihr Schlüsseltresor Berechtigungen für den Datenträgerverschlüsselungssatz.
+
+    :::image type="content" source="media/virtual-machines-disk-encryption-portal/disk-encryption-set-perm-confirmation.png" alt-text="Screenshot der Bestätigung, dass Berechtigungen erteilt wurden." lightbox="media/virtual-machines-disk-encryption-portal/disk-encryption-set-perm-confirmation.png":::

@@ -1,6 +1,6 @@
 ---
 title: Maschinelles Lernen mit Azure Arc-Unterstützung (Vorschauversion)
-description: Konfigurieren Azure Arc-fähige Kubernetes-Cluster zum Trainieren von ML-Modellen in Azure Machine Learning
+description: Konfigurieren von Kubernetes-Clustern mit Azure Arc-Unterstützung zum Trainieren von Machine Learning-Modellen in Azure Machine Learning
 titleSuffix: Azure Machine Learning
 author: luisquintanilla
 ms.author: luquinta
@@ -8,16 +8,16 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.date: 06/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 9ce41f22fd90acd8ef7e41ec07bce1d7758ab452
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: c3aea87e32aef24bfc17637720e81d30da0d30eb
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427702"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713271"
 ---
-# <a name="configure-azure-arc-enabled-machine-learning-preview"></a>Konfigurieren des Maschinellen Lernens mit Azure Arc-Unterstützung (Vorschauversion)
+# <a name="configure-azure-arc-enabled-machine-learning-preview"></a>Konfigurieren des maschinellen Lernens mit Azure Arc-Unterstützung (Vorschauversion)
 
-So konfigurieren Sie das maschinelle Lernen mit Azure Arc-Unterstützung zum Training.
+Erfahren Sie, wie Sie das maschinelle Lernen mit Azure Arc-Unterstützung für das Training konfigurieren.
 
 ## <a name="what-is-azure-arc-enabled-machine-learning"></a>Was ist maschinelles Lernen mit Azure Arc-Unterstützung?
 
@@ -39,8 +39,8 @@ Maschinelles Lernen mit Azure Arc-Unterstützung unterstützt folgende Training
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnement. Sollten Sie über kein Azure-Abonnement verfügen, können Sie [ein kostenloses Konto erstellen](https://azure.microsoft.com/free), bevor Sie beginnen.
-* Kubernetes-Cluster mit Azure Arc-Unterstützung Weitere Informationen finden Sie im Schnellstarthandbuch [Verbinden eines vorhandenen Kubernetes-Clusters mit Azure Arc ](../azure-arc/kubernetes/quickstart-connect-cluster.md).
-* Erfüllen der [Voraussetzungen für Clustererweiterungen bei Azure Arc-fähigen Kubernetes-Clustern](../azure-arc/kubernetes/extensions.md#prerequisites)
+* Kubernetes-Cluster mit Azure Arc-Unterstützung. Weitere Informationen finden Sie im Schnellstarthandbuch [Verbinden eines vorhandenen Kubernetes-Clusters mit Azure Arc ](../azure-arc/kubernetes/quickstart-connect-cluster.md).
+* Erfüllen der [Voraussetzungen für Clustererweiterungen bei Kubernetes-Clustern mit Azure Arc-Unterstützung](../azure-arc/kubernetes/extensions.md#prerequisites)
   * Azure CLI ab Version 2.24.0
   * Azure CLI k8s-Erweiterung ab Version 0.4.3
 * Ein Azure Machine Learning-Arbeitsbereich. Bevor Sie beginnen, [erstellen Sie einen Arbeitsbereich](how-to-manage-workspace.md?tabs=python), wenn Sie noch keinen haben.
@@ -48,7 +48,7 @@ Maschinelles Lernen mit Azure Arc-Unterstützung unterstützt folgende Training
 
 ## <a name="deploy-azure-machine-learning-extension"></a>Bereitstellen der Azure Machine Learning-Erweiterung
 
-Azure Arc Kubernetes verfügt über eine Clustererweiterungsfunktion, mit der Sie verschiedene Agents installieren können, einschließlich Azure Policy-Definitionen, Überwachung, maschinelles Lernen und vieles mehr. Für Azure Machine Learning muss die *Clustererweiterung Microsoft.AzureML.Kubernetes* verwendet werden, um den Azure Machine Learning-Agent im Kubernetes-Cluster bereitzustellen. Sobald die Azure Machine Learning-Erweiterung installiert ist, können Sie den Cluster an einen Azure Machine Learning-Arbeitsbereich anfügen und für das Training verwenden.
+Kubernetes mit Azure Arc-Unterstützung verfügt über eine Clustererweiterungsfunktion, mit der Sie verschiedene Agents installieren können, einschließlich Azure Policy-Definitionen, Überwachung, maschinelles Lernen und vieles mehr. Für Azure Machine Learning muss die *Clustererweiterung Microsoft.AzureML.Kubernetes* verwendet werden, um den Azure Machine Learning-Agent im Kubernetes-Cluster bereitzustellen. Sobald die Azure Machine Learning-Erweiterung installiert ist, können Sie den Cluster an einen Azure Machine Learning-Arbeitsbereich anfügen und für das Training verwenden.
 
 Verwenden Sie die Azure CLI-Erweiterung `k8s-extension`, um die Azure Machine Learning-Erweiterung in Ihrem Azure Arc-fähigen Kubernetes-Cluster bereitzustellen.
 
@@ -98,7 +98,7 @@ Verwenden Sie die Azure CLI-Erweiterung `k8s-extension`, um die Azure Machine Le
 
 ## <a name="attach-arc-cluster-studio"></a>Anfügen eines Arc-Clusters (Studio)
 
-Wenn Sie einen Azure Arc Kubernetes-Cluster anfügen, steht er Ihrem Arbeitsbereich für das Training zur Verfügung.
+Wenn Sie einen Kubernetes-Cluster mit Azure Arc-Unterstützung anfügen, steht er Ihrem Arbeitsbereich für das Training zur Verfügung.
 
 1. Navigieren Sie zu [Azure Machine Learning Studio](https://ml.azure.com).
 1. Wählen Sie unter **Verwalten** die Option **Compute** aus.
@@ -107,7 +107,7 @@ Wenn Sie einen Azure Arc Kubernetes-Cluster anfügen, steht er Ihrem Arbeitsbere
 
    ![Anfügen eines Kubernetes-Clusters](./media/how-to-attach-arc-kubernetes/attach-kubernetes-cluster.png)
 
-1. Geben Sie einen Computenamen ein und wählen Sie Ihren Azure Arc-fähigen Kubernetes-Cluster aus der Dropdownliste aus.
+1. Geben Sie einen Computenamen ein, und wählen Sie Ihren Kubernetes-Cluster mit Azure Arc-Unterstützung aus der Dropdownliste aus.
 
    ![Konfigurieren des Kubernetes-Clusters](./media/how-to-attach-arc-kubernetes/configure-kubernetes-cluster.png)
 
@@ -123,7 +123,7 @@ Wenn Sie einen Azure Arc Kubernetes-Cluster anfügen, steht er Ihrem Arbeitsbere
 
 ### <a name="advanced-attach-scenario"></a>Erweitertes Anfügeszenario
 
-Verwenden Sie eine JSON-Konfigurationsdatei, um erweiterte Computezielfunktionen auf Azure Arc-fähigen Kubernetes-Clustern zu konfigurieren.
+Verwenden Sie eine JSON-Konfigurationsdatei, um erweiterte Computezielfunktionen auf Kubernetes-Clustern mit Azure Arc-Unterstützung zu konfigurieren.
 
 Hier eine beispielhafte Konfigurationsdatei:
 
@@ -214,7 +214,7 @@ Die folgenden Eigenschaften des benutzerdefinierten Computeziels können mithilf
 
 ## <a name="attach-arc-cluster-python-sdk"></a>Anfügen eines Arc-Clusters (Python SDK)
 
-Der folgende Python-Code zeigt, wie Sie einen Azure Arc-fähigen Kubernetes-Cluster anfügen und als Computeziel für das Training verwenden:
+Der folgende Python-Code zeigt, wie Sie einen Kubernetes-Cluster mit Azure Arc-Unterstützung anfügen und als Computeziel für das Training verwenden:
 
 ```python
 from azureml.core.compute import KubernetesCompute

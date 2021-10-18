@@ -1,8 +1,6 @@
 ---
 title: Notfallrotation von AD FS-Zertifikaten | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie AD FS Zertifikate unverzüglich gesperrt und aktualisiert werden.
-services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9741c2e85a7cd3523ffe7fe8262e5f5d821b62c3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7153b33b0019600f58ea678079b553a9ad6c6672
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126595"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823021"
 ---
 # <a name="emergency-rotation-of-the-ad-fs-certificates"></a>Notfallrotation von AD FS-Zertifikaten
 Wenn Sie die AD FS Zertifikate unverzüglich rotieren müssen, können Sie die folgenden in diesem Abschnitt beschriebenen Schritte ausführen.
@@ -31,8 +29,8 @@ Wenn Sie die AD FS Zertifikate unverzüglich rotieren müssen, können Sie die f
 ## <a name="determine-your-token-signing-certificate-thumbprint"></a>Ermitteln des Fingerabdrucks eines Tokensignaturzertifikats
 Um das alte Tokensignaturzertifikat zu sperren, das zurzeit von AD FS verwendet wird, müssen Sie den Fingerabdruck des Tokensignaturzertifikats ermitteln.  Gehen Sie dazu folgendermaßen vor:
 
- 1. Stellen Sie eine Verbindung zum Microsoft-Onlinedienst her: `PS C:\>Connect-MsolService`.
- 2. Dokumentieren Sie den Fingerabdruck und das Ablaufdatum des lokalen Tokensignaturzertifikats und des Tokensignaturzertifikats für die Cloud.
+ 1.    Stellen Sie eine Verbindung zum Microsoft-Onlinedienst her: `PS C:\>Connect-MsolService`.
+ 2.    Dokumentieren Sie den Fingerabdruck und das Ablaufdatum des lokalen Tokensignaturzertifikats und des Tokensignaturzertifikats für die Cloud.
 `PS C:\>Get-MsolFederationProperty -DomainName <domain>` 
  3.  Kopieren Sie den Fingerabdruck.  Dieser wird später verwendet, um die vorhandenen Zertifikate zu entfernen.
 
@@ -106,7 +104,7 @@ Nachdem Sie das erste Zertifikat hinzugefügt, als primär festgelegt und das al
 Stellen Sie eine Verbindung mit Azure AD her, indem Sie den folgenden Befehl ausführen: `Connect-MsolService`. Geben Sie dann Ihre globalen Administratoranmeldeinformationen ein.
 
 >[!Note]
-> Wenn Sie diese Befehle auf einem Computer ausführen, der nicht der primäre Verbundserver ist, müssen Sie zunächst den folgenden Befehl eingeben: `Set-MsolADFSContext –Computer <servername>`. Ersetzen Sie <servername> durch den Namen des AD FS-Servers. Geben Sie anschließend die Administratoranmeldeinformationen für den AD FS-Server ein, wenn Sie dazu aufgefordert werden.
+> Wenn Sie diese Befehle auf einem Computer ausführen, der nicht der primäre Verbundserver ist, müssen Sie zunächst den folgenden Befehl eingeben: `Set-MsolADFSContext –Computer <servername>`. Ersetzen Sie \<servername\> durch den Namen des AD FS-Servers. Geben Sie anschließend die Administratoranmeldeinformationen für den AD FS-Server ein, wenn Sie dazu aufgefordert werden.
 
 Optional können Sie anhand der aktuellen Zertifikatsinformationen in Azure AD überprüfen, ob eine Aktualisierung erforderlich ist. Führen Sie dazu den folgenden Befehl aus: `Get-MsolFederationProperty`. Geben Sie den Namen der Verbunddomäne ein, wenn Sie dazu aufgefordert werden.
 
@@ -122,9 +120,8 @@ Das Sperren der SSL-Zertifikate muss bei der Zertifizierungsstelle erfolgen, von
 
 Nachdem das alte SSL-Zertifikat gesperrt und ein neues Zertifikat ausgestellt wurde, können Sie die SSL-Zertifikate ersetzen. Weitere Informationen finden Sie im Artikel zum [Ersetzen des SSL-Zertifikats für AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs).
 
-
 ## <a name="remove-your-old-certificates"></a>Entfernen der alten Zertifikate
-Nachdem Sie Ihre alten Zertifikate ersetzt haben, müssen Sie das alte Zertifikat entfernen, da es weiterhin verwendet werden kann. . Führen Sie dazu die folgenden Schritte aus:  Führen Sie dazu folgende Schritte aus:
+Nachdem Sie Ihre alten Zertifikate ersetzt haben, müssen Sie das alte Zertifikat entfernen, da es weiterhin verwendet werden kann. Führen Sie dazu folgende Schritte aus:
 
 1. Sie müssen am primären AD FS-Server angemeldet sein.
 2. Öffnen Sie Windows PowerShell als Administrator. 

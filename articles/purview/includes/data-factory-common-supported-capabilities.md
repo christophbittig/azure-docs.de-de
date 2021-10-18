@@ -4,13 +4,13 @@ ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
-ms.date: 09/15/2021
-ms.openlocfilehash: cb10d36bd426655db6a059dad3bda70cf21cf123
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/27/2021
+ms.openlocfilehash: 8c4baccdbfb0f6162e666d6901e0080202a3b7e9
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128908804"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212335"
 ---
 ### <a name="copy-activity-support"></a>Unterstützung der Copy-Aktivität
 
@@ -33,18 +33,22 @@ ms.locfileid: "128908804"
 | Azure Table Storage | Ja |
 | Amazon S3 | Ja | 
 | Hive \* | Ja | 
+| Oracle \* | Ja |
 | SAP-Tabelle *(beim Herstellen einer Verbindung mit SAP ECC oder SAP S/4HANA)* | Ja |
 | SQL Server \* | Ja | 
 | Teradata \* | Ja |
 
 *\* Azure Purview unterstützt derzeit keine Abfrage oder gespeicherte Prozedur für die Erfassung der Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
 
-#### <a name="known-limitations-on-copy-activity-lineage"></a>Bekannte Einschränkungen der Herkunftserfassung für die Kopieraktivität
+Wenn Sie eine selbstgehostete Integration Runtime verwenden, beachten Sie die Mindestversion mit Herkunftsunterstützung für:
+- Kopieren von Daten aus Oracle: Version 5.10 oder höher
+- Kopieren von Daten in Azure Synapse Analytics über den COPY-Befehl oder PolyBase: Version 5.10 oder höher
+
+#### <a name="limitations-on-copy-activity-lineage"></a>Einschränkungen der Herkunftserfassung für die Kopieraktivität
 
 Wenn Sie die folgenden Funktionen der Kopieraktivität verwenden, wird die Erfassung der Herkunft derzeit noch nicht unterstützt:
 
 - Kopieren von Daten in Azure Data Lake Storage Gen1 mithilfe des Binärformats
-- Kopieren von Daten in Azure Synapse Analytics mithilfe von PolyBase oder der COPY-Anweisung
 - Komprimierungseinstellung für Binärdateien, durch Trennzeichen getrennte Textdateien, Excel-, JSON- und XML-Dateien
 - Quellpartitionsoptionen für Azure SQL-Datenbank, Azure SQL Managed Instance, Azure Synapse Analytics, SQL Server und SAP-Tabelle
 - Kopieren von Daten in eine dateibasierte Senke mit Einstellung für maximale Zeilenanzahl pro Datei
@@ -69,3 +73,7 @@ Zusätzlich zur Datenherkunft wird das Datenobjektschema (siehe Registerkarte Ob
 | Azure Synapse Analytics \* | Ja |
 
 *\* Azure Purview unterstützt derzeit keine Abfrage oder gespeicherte Prozedur für die Erfassung der Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
+
+#### <a name="limitations-on-data-flow-lineage"></a>Einschränkungen der Herkunftserfassung für den Datenfluss
+
+Aktuell ist die Herkunftserfassung für den Datenfluss nicht in den Purview-[Ressourcensatz](../concept-resource-sets.md) integriert.

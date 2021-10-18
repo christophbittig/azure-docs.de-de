@@ -2,26 +2,24 @@
 title: Versionshinweise für die Erweiterung für Azure-Web-Apps – Application Insights
 description: Versionshinweise für die Erweiterung für Azure-Web-Apps für Laufzeitinstrumentierung mit Application Insights
 ms.topic: conceptual
-author: MS-jgol
-ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 07ba61f630b849a377f1c7ba881f95518eb73606
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8b0ddf90f5e6ffbe685c4aea1239323beea6c106
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042605"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828822"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Versionshinweise für die Erweiterung für Azure-Web-Apps für Application Insights
 
 Dieser Artikel enthält die Versionshinweise für die Erweiterung für Azure-Web-Apps für Laufzeitinstrumentierung mit Application Insights. Sie beziehen sich nur auf vorinstallierte Erweiterungen.
 
-[Erfahren Sie](azure-web-apps.md) mehr über Erweiterungen für Azure-Web-Apps für Application Insights.
+Erfahren Sie mehr über die [Erweiterung für Azure-Web-Apps für Application Insights](azure-web-apps.md)).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 - Wie finde ich heraus, welche Version der Erweiterung ich zurzeit verwende?
-    - Gehe zu `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights`. Weitere Informationen finden Sie im [detaillierten Leitfaden für die Problembehandlung bei der erweiterungsbasierten/Agent-basierten Überwachung](./azure-web-apps.md?tabs=net#troubleshooting).
+    - Gehe zu `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights`. Weitere Informationen finden Sie im detaillierten Leitfaden für die Problembehandlung bei der erweiterungsbasierten/Agent-basierten Überwachung für [ASP.NET Core](./azure-web-apps-net-core.md#troubleshooting), [ASP.NET](./azure-web-apps-net.md#troubleshooting), [Java](./azure-web-apps-java.md#troubleshooting) oder [Node.js](./azure-web-apps-nodejs.md#troubleshooting)).
 
 - Was ist, wenn ich private Erweiterungen verwende?
     - Deinstallieren Sie private Websiteerweiterungen, da diese nicht mehr unterstützt werden.
@@ -93,4 +91,4 @@ Dieser Artikel enthält die Versionshinweise für die Erweiterung für Azure-Web
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Konfigurieren der Überwachung für Azure App Service finden Sie in der [Azure App Service-Dokumentation](azure-web-apps.md). 
+- Weitere Informationen zum Konfigurieren der Überwachung für Azure App Service finden Sie in der [Dokumentation zur Anwendungsüberwachung für Azure App Service](azure-web-apps.md). 

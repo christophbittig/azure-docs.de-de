@@ -6,18 +6,18 @@ ms.author: danlep
 ms.service: api-management
 ms.topic: article
 ms.date: 05/25/2021
-ms.openlocfilehash: bfcb6e738c480281361d544c4aa7a8dd355d92de
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ee2b0fc20111fddd55a987bef4d454d5b63b8e4e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590701"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708497"
 ---
 # <a name="deploy-an-azure-api-management-gateway-on-azure-arc-preview"></a>Bereitstellen eines Azure API Management-Gateways auf Azure Arc (Vorschau)
 
-Mit der Integration zwischen Azure API Management und [Azure Arc in Kubernetes](../azure-arc/kubernetes/overview.md)können Sie die API Management Gateway-Komponente als [Erweiterung in einem Azure Arc aktivierten Kubernetes-Cluster](../azure-arc/kubernetes/extensions.md) bereitstellen. 
+Mit der Integration zwischen Azure API Management und [Azure Arc in Kubernetes](../azure-arc/kubernetes/overview.md) können Sie die API Management Gateway-Komponente als [Erweiterung in einem Kubernetes-Cluster mit Azure Arc-Unterstützung](../azure-arc/kubernetes/extensions.md) bereitstellen. 
 
-Der Einsatz des API Management-Gateways auf einem Arc-fähigen Kubernetes-Cluster erweitert die API Management-Unterstützung für Hybrid- und Multi-Cloud-Umgebungen. Aktivieren der Bereitstellung mithilfe einer Clustererweiterung, um das Verwalten und Anwenden von Richtlinien auf Ihren Arc-aktivierten Cluster zu einem konsistenten Ablauf zu machen.
+Der Einsatz des API Management-Gateways auf einem Kubernetes-Cluster mit Azure Arc-Unterstützung erweitert die API Management-Unterstützung für Hybrid- und Multi-Cloud-Umgebungen. Aktivieren der Bereitstellung mithilfe einer Clustererweiterung, um das Verwalten und Anwenden von Richtlinien auf Ihren Cluster mit Azure Arc-Unterstützung zu einem konsistenten Ablauf zu machen.
 
 [!INCLUDE [preview](./includes/preview/preview-callout-self-hosted-gateway-azure-arc.md)]
 
@@ -72,7 +72,7 @@ Der Einsatz des API Management-Gateways auf einem Arc-fähigen Kubernetes-Cluste
 
 ## <a name="deploy-the-api-management-gateway-extension-using-azure-portal"></a>Bereitstellen der API Management-Gateway-Erweiterung mithilfe von Microsoft Azure-Portal
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Azure Arc verbundenen Cluster.
+1. Navigieren Sie im Azure-Portal zu Ihrem mit Azure Arc verbundenen Cluster.
 1. Wählen Sie **Erweiterungen (Vorschau)**  >  **+ Hinzufügen von**  > **API Management Gateway (Vorschau)** im linken Menü aus.
 1. Wählen Sie **Erstellen** aus.
 1. Konfigurieren der Gateway-Erweiterung im Fenster **API Management Gateway installieren**:
@@ -113,5 +113,5 @@ Um das Überwachen des selbstgehosteten Gateways zu aktivieren, konfigurieren Si
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zum selbstgehosteten Gateway finden Sie unter [Azure API Management: Übersicht über das selbstgehostete Gateway](self-hosted-gateway-overview.md).
-* Entdecken Sie alle [Azure Arc aktivierten Kubernetes-Erweiterungen](../azure-arc/kubernetes/extensions.md). 
-* Weitere Informationen zu [Kubernetes mit Azure Arc-Aktivierung](../azure-arc/kubernetes/overview.md).
+* Entdecken Sie alle [Kubernetes-Erweiterungen mit Azure Arc-Unterstützung](../azure-arc/kubernetes/extensions.md). 
+* Weitere Informationen zu [Kubernetes mit Azure Arc-Unterstützung](../azure-arc/kubernetes/overview.md).

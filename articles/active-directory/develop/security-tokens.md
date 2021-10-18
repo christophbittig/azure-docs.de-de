@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 09/27/2021
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 6d9f5538d377be1414089e591559344bde4f381a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2567a75c0accd7e2bb932d8578e1a225518f5ce3
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98795644"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092754"
 ---
 # <a name="security-tokens"></a>Sicherheitstoken
 
@@ -26,7 +26,7 @@ Ein zentraler Identitätsanbieter ist besonders nützlich für Apps mit weltweit
 
 **Zugriffstoken**: Ein Zugriffstoken ist ein Sicherheitstoken, das von einem [Autorisierungsserver](developer-glossary.md#authorization-server) im Rahmen eines [OAuth 2.0](active-directory-v2-protocols.md)-Flows ausgestellt wird. Es enthält Informationen zum Benutzer und zu der Ressource, für die das Token vorgesehen ist. Die Informationen können für den Zugriff auf Web-APIs und andere geschützte Ressourcen verwendet werden. Zugriffstoken werden von Ressourcen überprüft, um einer Client-App Zugriff zu gewähren. Weitere Informationen dazu, wie Microsoft Identity Platform Zugriffstoken ausstellt, finden Sie unter [Zugriffstoken](access-tokens.md).
 
-**Aktualisierungstoken:** Da Zugriffstoken nur kurze Zeit gültig sind, stellen Autorisierungsserver manchmal gleichzeitig mit dem Zugriffstoken auch ein Aktualisierungstoken aus. Die Clientanwendung kann dann dieses Aktualisierungstoken bei Bedarf gegen ein neues Zugriffstoken austauschen. Weitere Informationen dazu, wie Microsoft Identity Platform Aktualisierungstoken zum Widerrufen von Berechtigungen verwendet, finden Sie unter [Widerrufen von Token](access-tokens.md#token-revocation).
+**Aktualisierungstoken:** Da Zugriffstoken nur kurze Zeit gültig sind, stellen Autorisierungsserver manchmal gleichzeitig mit dem Zugriffstoken auch ein Aktualisierungstoken aus. Die Clientanwendung kann dann dieses Aktualisierungstoken bei Bedarf gegen ein neues Zugriffstoken austauschen. Weitere Informationen dazu, wie Microsoft Identity Platform Aktualisierungstoken zum Widerrufen von Berechtigungen verwendet, finden Sie unter [Aktualisierungstoken](refresh-tokens.md).
 
 **ID-Token:** ID-Token werden als Teil eines [OpenID Connect](v2-protocols-oidc.md)-Flows an die Clientanwendung gesendet. Sie können zusammen mit einem Zugriffstoken oder anstelle dessen gesendet werden. Mithilfe des ID-Tokens authentifiziert der Client den Benutzer. Weitere Informationen dazu, wie Microsoft Identity Platform ID-Token ausstellt, finden Sie unter [ID-Token](id-tokens.md).
 

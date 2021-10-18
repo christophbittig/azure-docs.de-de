@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 06/18/2021
-ms.openlocfilehash: 7f9d9d854513427fd02b47beb084edbcb70ea527
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2e44972188b318e4c2f0d61b1ccd9222e7b2fce9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339819"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713419"
 ---
 **Computeziele können für mehrere Trainingsaufträge wiederverwendet werden.** Beispielsweise können Sie eine Remote-VM, die Sie an Ihren Arbeitsbereich angefügt haben, für mehrere Aufträge wiederverwenden. Verwenden Sie für Machine Learning-Pipelines den entsprechenden [Pipelineschritt](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) für jedes Computeziel.
 
@@ -32,7 +32,7 @@ Sie können für die meisten Aufträge eine beliebige der folgenden Ressourcen a
 |[Azure HDInsight](../articles/machine-learning/how-to-attach-compute-targets.md#hdinsight) | &nbsp; | Ja | &nbsp; |
 |[Azure Batch](../articles/machine-learning/how-to-attach-compute-targets.md#azbatch) | &nbsp; | Ja | &nbsp; |
 |[Azure Kubernetes Service](../articles/machine-learning/how-to-attach-compute-targets.md#kubernetes) (Vorschau) | Ja | Ja | Ja |
-|[Kubernetes mit Azure Arc-Aktivierung](../articles/machine-learning/how-to-attach-compute-targets.md#kubernetes) (Vorschauversion) | Ja | Ja | Ja |
+|[Kubernetes mit Azure Arc-Unterstützung](../articles/machine-learning/how-to-attach-compute-targets.md#kubernetes) (Vorschau) | Ja | Ja | Ja |
 
 > [!TIP]
 > Die Compute-Instanz verfügt über einen 120 GB Betriebssystemdatenträger. Wenn Ihnen der Speicherplatz ausgeht, [verwenden Sie das Terminal](../articles/machine-learning/how-to-access-terminal.md), um mindestens 1–2 GB zu löschen, bevor Sie die Compute-Instanz [beenden oder neu starten](../articles/machine-learning/how-to-create-manage-compute-instance.md#manage).

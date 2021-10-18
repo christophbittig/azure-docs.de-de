@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 52082c22053a5a54a4462fb01012bdceff848a96
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 344a1952e106b9300e2441fdfcb5338ee846cfeb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113364933"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126056940"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Unterstützte Verteilungen und Treiber
 
@@ -33,7 +33,7 @@ Die von Azure neu verteilten GRID-Treiber funktionieren nicht auf Nicht-NV-Serie
 
 |Distribution|Treiber|
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.7 bis 7.9, 8.0, 8.1<br/><br/>SUSE Linux Enterprise Server 12 SP2 <br/><br/>SUSE Linux Enterprise Server 15 SP2 | NVIDIA GRID 12.2, Treiberbranch [R460](https://go.microsoft.com/fwlink/?linkid=874272) (EXE-Datei)|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.7 bis 7.9, 8.0, 8.1<br/><br/>SUSE Linux Enterprise Server 12 SP2+ <br/><br/>SUSE Linux Enterprise Server 15 SP2 | NVIDIA GRID 13, Treiberbranch [R470](https://go.microsoft.com/fwlink/?linkid=874272)(.exe)|
 
 Eine vollständige Liste aller vorherigen NVIDIA GRID-Treiber finden Sie auf [GitHub](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json).
 

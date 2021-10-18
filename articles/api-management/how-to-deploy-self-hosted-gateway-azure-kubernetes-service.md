@@ -7,19 +7,19 @@ ms.service: api-management
 ms.topic: article
 ms.date: 06/11/2021
 ms.author: danlep
-ms.openlocfilehash: a5faca1d91596021e236e2bcb459679085ee99aa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 624229e947a872f4ea50c0a4e61e210fee9d946f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620861"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708431"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Bereitstellen für Azure Kubernetes Service
 
 In diesem Artikel werden die Schritte für die Bereitstellung einer selbstgehosteten Gatewaykomponente von Azure API Management für den [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) beschrieben. Informationen zur Bereitstellung eines selbstgehosteten Gateways in einem Kubernetes-Cluster finden Sie im [Artikel mit der Anleitung](how-to-deploy-self-hosted-gateway-kubernetes.md).
 
 > [!NOTE]
-> Sie können auch das selbstgehostete Gateway in einem [Azure Arc-fähigen Kubernetes-Cluster](how-to-deploy-self-hosted-gateway-azure-arc.md) als [Clustererweiterung](../azure-arc/kubernetes/extensions.md) bereitstellen.
+> Sie können auch das selbstgehostete Gateway in einem [Kubernetes-Cluster mit Azure Arc-Unterstützung](how-to-deploy-self-hosted-gateway-azure-arc.md) als [Clustererweiterung](../azure-arc/kubernetes/extensions.md) bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -72,7 +72,7 @@ In diesem Artikel werden die Schritte für die Bereitstellung einer selbstgehost
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zum selbstgehosteten Gateway finden Sie unter [Azure API Management: Übersicht über das selbstgehostete Gateway](self-hosted-gateway-overview.md).
-* Hier erfahren Sie, wie Sie [das selbstgehostete API Management-Gateway für Azure Arc-fähige Kubernetes-Cluster bereitstellen](how-to-deploy-self-hosted-gateway-azure-arc.md).
+* Hier erfahren Sie, wie Sie [das selbstgehostete API Management-Gateway für Kubernetes-Cluster mit Azure Arc-Unterstützung bereitstellen](how-to-deploy-self-hosted-gateway-azure-arc.md).
 * Weitere Informationen zu [Azure Kubernetes Service](../aks/intro-kubernetes.md).
 * Hier erfahren Sie mehr zum [Konfigurieren und Beibehalten von Protokollen in der Cloud](how-to-configure-cloud-metrics-logs.md).
 * Hier erfahren Sie mehr zum [lokalen Konfigurieren und Beibehalten von Protokollen](how-to-configure-local-metrics-logs.md).

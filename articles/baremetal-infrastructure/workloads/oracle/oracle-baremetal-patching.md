@@ -3,21 +3,21 @@ title: Überlegungen im Zusammenhang mit dem Patchen der Bare-Metal-Infrastruktu
 description: Hier finden Sie Überlegungen im Zusammenhang mit dem Patchen des Betriebssystems/Kernels für die Bare-Metal-Infrastruktur für Oracle.
 ms.topic: reference
 ms.subservice: baremetal-oracle
-ms.date: 04/14/2021
-ms.openlocfilehash: 1c7a4a4f9e2395bbe29ab8bf27b18afb21f98917
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.date: 10/06/2021
+ms.openlocfilehash: c842ad56e6777817e5db84e51a4d1302aebf5a63
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578566"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657490"
 ---
 # <a name="patching-considerations-for-baremetal-for-oracle"></a>Überlegungen im Zusammenhang mit dem Patchen der Bare-Metal-Infrastruktur für Oracle
 
 In diesem Artikel werden wichtige Überlegungen im Zusammenhang mit dem Patchen des Betriebssystems/Kernels für die Bare-Metal-Infrastruktur für Oracle behandelt.
 
-Installieren Sie die betriebssystemspezifische Version der eNIC- und fNIC-Treiber, wie in der folgenden Kompatibilitätstabelle angegeben, um eine ordnungsgemäße Netzwerkleistung und Systemstabilität zu gewährleisten. 
+Installieren Sie die betriebssystemspezifische Version der eNIC- und fNIC-Treiber, um eine ordnungsgemäße Netzwerkleistung und Systemstabilität zu gewährleisten. Weitere Informationen finden Sie in der folgenden Kompatibilitätstabelle. 
 
-Server werden mit kompatiblen Versionen an Kunden ausgeliefert. Beim Patchen des Betriebssystems/Kernels kann es jedoch vorkommen, dass Treiber auf die Standardtreiberversionen zurückgesetzt werden. Vergewissern Sie sich daher im Anschluss an Patchvorgänge für das Betriebssystem/den Kernel, dass die korrekte Treiberversion ausgeführt wird.
+Server werden mit kompatiblen Versionen an Kunden ausgeliefert. Beim Anwenden von Patches auf das Betriebssystem/den Kernel kann jedoch ein Rollback der Treiber auf die Standardtreiberversionen erfolgen. Stellen Sie daher sicher, dass nach dem Patchen von Betriebssystem/Kernel die richtige Treiberversion ausgeführt wird.
 
 | Betriebssystemhersteller | Betriebssystem-Paketversion | Firmware Version | eNIC-Treiber | fNIC-Treiber |
 | --- | --- | --- | --- | --- |

@@ -2,13 +2,13 @@
 title: Sicherheitswarnungen des Micro-Agents (Vorschau)
 description: Hier erhalten Sie Informationen zu Sicherheitswarnungen und empfohlenen Abhilfemaßnahmen unter Verwendung von Features und Diensten von Defender für IoT-Geräte.
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: 3208e872414e4a5727f507e51d464090566da840
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.date: 09/27/2021
+ms.openlocfilehash: 5b70a301f7d8c1508258d59c585e5f0d18bccbbe
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214189"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083408"
 ---
 # <a name="micro-agent-security-alerts-preview"></a>Sicherheitswarnungen des Micro-Agents (Vorschau)
 
@@ -35,6 +35,7 @@ Weitere Informationen finden Sie unter [Konfigurierbare Warnungen](concept-custo
 | Webshell | High | IoT-Micro-Agent von Defender | Mögliche Webshell erkannt. Böswillige Akteure laden häufig eine Webshell auf einen kompromittierten Computer hoch, um dauerhaften Zugriff zu erhalten oder weitere Untersuchungen anzustellen. | Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam. |
 | Verhalten ähnlich dem von Ransomware erkannt | High | IoT-Micro-Agent von Defender | Ausführung von Dateien erkannt, die bekannter Ransomware ähneln und möglicherweise verhindern, dass Benutzer auf ihr System oder ihre persönlichen Dateien zugreifen können, und darüber hinaus ggf. eine Lösegeldforderung nach sich ziehen, um wieder Zugriff zu erhalten. | Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam. |
 | Crypto Coin Miner-Image | High | IoT-Micro-Agent von Defender | Die Ausführung eines Prozesses wurde erkannt, der normalerweise mit digitalem Währungsmining in Verbindung steht. | Überprüfen Sie zusammen mit dem Benutzer, der den Befehl ausgeführt hat, ob dies eine legitime Aktivität auf dem Gerät war. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam. |
+| Betriebssystem auf diesem Gerät muss von der aktuellen Auslaufversion aktualisiert werden | High | IoT-Micro-Agent von Defender | Auslaufversionen von Betriebssystemen erhalten keine Sicherheitspatches und machen die Geräte daher anfällig. | Aktualisieren Sie das Betriebssystem auf eine unterstützte Version, installieren Sie es neu, oder wenden Sie zusätzliche Sicherungsmaßnahmen an. |
 | **Mittlerer** Schweregrad |  |  |  |
 | Verhalten ähnlich dem von häufigen Linux-Bots erkannt | Medium | IoT-Micro-Agent von Defender | Die Ausführung eines Prozesses wurde erkannt, der normalerweise mit häufigen Linux-Botnets in Verbindung steht. | Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam. |
 | Verhalten ähnlich dem von Fairware-Ransomware erkannt | Medium | IoT-Micro-Agent von Defender | Die Ausführung von „rm -rf“-Befehlen, die auf verdächtige Speicherorte angewandt wurden, wurde durch eine Analyse der Hostdaten erkannt. Der Befehl „rm -rf“ löscht Dateien rekursiv und wird normalerweise nur für Einzelordner verwendet. In diesem Fall wurde er auf einen Speicherort angewandt, über den eine große Datenmenge entfernt werden könnte. Fairware-Ransomware ist bekannt dafür, rm -rf-Befehle in diesem Ordner auszuführen. | Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime Aktivität handelt, die auf dem Gerät erwartbar ist. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam. |
@@ -57,8 +58,14 @@ Weitere Informationen finden Sie unter [Konfigurierbare Warnungen](concept-custo
 | Verdächtige Kompilierung erkannt | Medium | IoT-Micro-Agent von Defender | Verdächtige Kompilierung erkannt. Böswillige Akteure kompilieren häufig Exploits auf einem Computer, den sie kompromittiert haben, um die Berechtigungen zu erhöhen. | Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam. |
 | Verdächtiger Dateidownload gefolgt von der Aktivität „Datei ausführen“ | Medium | IoT-Micro-Agent von Defender | Bei der Analyse von Hostdaten wurde das Herunterladen und Ausführen einer Datei im gleichen Befehl erkannt. Diese Technik wird häufig von böswilligen Akteuren angewandt, um infizierte Dateien auf Zielcomputer zu übertragen. | Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob es sich um eine legitime, auf dem Gerät zu erwartende Aktivität handelt. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam. |
 | Verdächtige IP-Adressenkommunikation | Medium | IoT-Micro-Agent von Defender | Kommunikation mit einer verdächtigen IP-Adresse erkannt. | Überprüfen Sie, ob die Verbindung legitim ist. Blockieren Sie ggf. die Kommunikation mit der verdächtigen IP-Adresse. |
+| Fehler beim Überprüfen der Betriebssystembaseline | Medium | IoT-Micro-Agent von Defender | In der Systemkonfiguration wurden sicherheitsbezogene Probleme erkannt. | Überprüfen Sie die Regeln, die zu Fehlern geführt haben, und beheben Sie die auf Ihren Geräten identifizierten Sicherheitsrisiken bei der Sicherheitskonfiguration. |
+| Gerät weist offene Ports auf | Medium | IoT-Micro-Agent von Defender | Auf dem Gerät wurde ein Lausch-Endpunkt gefunden. | Überprüfen Sie offene Ports auf dem Gerät, und stellen Sie sicher, dass sie zu rechtmäßigen und erforderlichen Prozessen gehören, damit das Gerät ordnungsgemäß funktioniert. |
+| Freizügige Firewallrichtlinie in einer der Ketten | Medium | IoT-Micro-Agent von Defender | Zulässige Firewallrichtlinie gefunden(INPUT/OUTPUT). Die Richtlinie sollte standardmäßig den gesamten Datenverkehr verweigern und Regeln definieren, die die notwendige Kommunikation mit dem/vom Gerät ermöglichen. | Ändern Sie die Firewallrichtlinie so, dass spezifische Regeln gelöscht und hinzugefügt werden, um den Zugriff für rechtmäßige Verbindungen zum/vom Gerät zuzulassen. |
+| Freizügige Firewallregel in INPUT-Kette | Medium | IoT-Micro-Agent von Defender | Es wurde eine INPUT-Firewallregel gefunden, die ein freizügiges Muster für eine Vielzahl von IP-Adressen oder Ports enthält. | Überprüfen Sie die Regeln in der Empfehlung, und stellen Sie sicher, dass nur erforderliche Adressen/Ports für eingehenden Datenverkehr zulässig sind. |
+| Freizügige Firewallregel in OUTPUT-Kette | Medium | IoT-Micro-Agent von Defender | Es wurde eine OUTPUT-Firewallregel gefunden, die ein freizügiges Muster für eine Vielzahl von IP-Adressen oder Ports enthält. | Überprüfen Sie die Regeln in der Empfehlung, und stellen Sie sicher, dass nur erforderliche Adressen/Ports für ausgehenden Datenverkehr zulässig sind. |
 | **NIEDRIGER** Schweregrad |  |  |  |
 | Bashverlauf gelöscht | Niedrig | IoT-Micro-Agent von Defender | Das Bash-Verlaufsprotokoll wurde gelöscht. Böswillige Akteure löschen den Bash-Verlauf in der Regel, um ihre eigenen Befehle aus den Protokollen zu entfernen. | Überprüfen Sie mit dem Benutzer, der den Befehl ausgeführt hat, ob die Aktivität in dieser Warnung eine legitime administrative Aktivität ist. Eskalieren Sie die Warnung andernfalls an das IT-Sicherheitsteam. |
+| Sendekapazität für Agentnachrichten nicht ausgeschöpft | Niedrig | IoT-Micro-Agent von Defender | Die Kapazität für die Nachrichtengröße des IoT-Agent wird zurzeit nicht ausgeschöpft. Dadurch erhöht sich die Anzahl gesendeter Nachrichten. Passen Sie die Nachrichtenintervalle an, um eine bessere Nutzung zu erzielen. | Um eine Unterauslastung zu vieler Nachrichten zu vermeiden, erwägen Sie die Vergrößerung der Sendeintervalle mit hoher/niedriger Priorität. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

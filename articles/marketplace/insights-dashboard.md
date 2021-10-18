@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 03/23/2021
-ms.openlocfilehash: a4bd78c15d2015eabf95926e2b4bcf43d6cbcdcb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: a8ee69e0c9c196f42a733c4cb6c3079228238b21
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339468"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082921"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Marketplace-Erkenntnisse“ in Analysen für den kommerziellen Marketplace
 
@@ -36,17 +36,45 @@ Das Marketplace Insights-Dashboard bietet Clickstreamdaten, die nicht mit Leads 
 > [!NOTE]
 > Die maximale Latenz zwischen dem Zeitpunkt, zu dem sich Benutzer Angebote im Azure Marketplace oder in AppSource ansehen, und der Berichterstattung im Partner Center beträgt 48 Stunden.
 
+## <a name="access-the-marketplace-insights-dashboard"></a>Zugriff auf das Dashboard „Marketplace-Erkenntnisse“
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie auf der Homepage die Kachel **Insights** aus.
+
+    [ ![Abbildung der Kachel „Insights“ auf der Homepage von Partner Center.](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. Wählen Sie im linken Menü **Marketplace-Erkenntnisse** aus.
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
+
+1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
+1. Wählen Sie im linken Navigationsbereich **Gewerblicher Marktplatz** > **Analysieren** > **Marketplace-Erkenntnisse**.
+
+---
+
 ## <a name="elements-of-the-marketplace-insights-dashboard"></a>Elemente des Dashboards „Marketplace-Erkenntnisse“
 
 Das Dashboard „Marketplace-Erkenntnisse“ zeigt Webtelemetriedetails für Azure Marketplace und AppSource auf zwei separaten Registerkarten an. In den folgenden Abschnitten wird beschrieben, wie das Dashboard „Marketplace-Erkenntnisse“ verwendet und wie die Daten gelesen werden.
 
-Um auf das Dashboard **Marketplace-Erkenntnisse** im Partner Center zuzugreifen, wählen Sie unter „Kommerzieller Marketplace“ **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  > **Marketplace-Erkenntnisse** aus.
-
 ### <a name="month-range"></a>Monatsbereich
+
+#### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
+
+Oben rechts auf jeder Seite finden Sie eine Monatsbereichsauswahl. Passen Sie die Ausgabe der Diagramme auf der Seite **Marketplace-Erkenntnisse** an, indem Sie einen Monatsbereich basierend auf den letzten 6 oder 12 Monaten oder einen benutzerdefinierten Monatsbereich mit einer maximalen Dauer von 12 Monaten auswählen. Der standardmäßige Monatsbereich (Berechnungszeitraum) beträgt sechs Monate.
+
+[ ![Veranschaulicht die Monatsfilter im Dashboard „Marketplace-Erkenntnisse“.](./media/insights-dashboard/marketplace-insights-filters.png) ](./media/insights-dashboard/marketplace-insights-filters.png#lightbox)
+
+#### <a name="current-view"></a>[Aktuelle Ansicht](#tab/current-view)
 
 Oben rechts auf jeder Seite finden Sie eine Monatsbereichsauswahl. Passen Sie die Ausgabe der Diagramme auf der Seite **Marketplace-Erkenntnisse** an, indem Sie einen Monatsbereich basierend auf den letzten 6 oder 12 Monaten oder einen benutzerdefinierten Monatsbereich mit einer maximalen Dauer von 12 Monaten auswählen. Der standardmäßige Monatsbereich (Berechnungszeitraum) beträgt sechs Monate.
 
 :::image type="content" source="./media/insights-dashboard/month-filters.png" alt-text="Veranschaulicht die Monatsfilter im Dashboard „Marketplace-Erkenntnisse“.":::
+
+---
 
 > [!NOTE]
 > Alle Metriken in den Visualisierungswidgets und Exportberichten berücksichtigen den vom Benutzer ausgewählten Berechnungszeitraum.
@@ -63,29 +91,39 @@ Im Diagramm **Besucher** von „Marketplace-Erkenntnisse“ wird die Anzahl der 
 
 ### <a name="call-to-actions-trend"></a>Handlungsaufforderungstrend
 
-Dieser Wert steht für die Anzahl von Klicks auf die Schaltfläche **Handlungsaufforderung**, die auf der Angebotsauflistungsseite (Produktdetailseite) ausgeführt wurden. _Handlungsaufforderungen_ werden gezählt, wenn Benutzer die Schaltfläche **Jetzt abrufen**, **Kostenlose Testversion**, **Kontakt mit mir aufnehmen** oder **Testversion** auswählen.
+Dieser Wert steht für die Anzahl von Klicks auf die Schaltfläche **Handlungsaufforderung**, die auf der Angebotsauflistungsseite (Produktdetailseite) ausgeführt wurden. _Handlungsaufforderungen_ werden gezählt, wenn Benutzer die Schaltfläche **Jetzt abrufen**, **Kostenlose Testversion**, **Kontakt mit mir aufnehmen** oder **Testversion** auswählen. *Die erteilte Zustimmung* gibt die Gesamtzahl der Klicks, mit denen Kunden Microsoft oder dem Partner ihre Zustimmung geben, und entspricht der Anzahl der Kunden, die für Ihre Angebote erworben wurden. Die folgenden zwei Beispiele zeigen, wo die *Erteilte Zustimmung*-Klicks angezeigt werden:
 
-[![Veranschaulicht das Diagramm „Handlungsaufforderung“ im Dashboard „Marketplace-Erkenntnisse“.](./media/insights-dashboard/call-to-actions-trend.png)](./media/insights-dashboard/call-to-actions-trend.png#lightbox)
+:::image type="content" source="./media/insights-dashboard/consent-screen.png" alt-text="Veranschaulicht einen Ort, an dem eine Zustimmungsschaltfläche ausgewählt ist.":::
 
-### <a name="page-visits-and-call-to-actions-against-offers-referral-domains-and-campaign-ids"></a>Seitenbesuche und Handlungsaufforderungen im Vergleich zu Angeboten, Empfehlungsdomänen und Kampagnen-IDs
+Das folgende Diagramm zeigt die Metrik *Handlungsaufforderungen* im Vergleich zu *Erteilte Zustimmung*:
 
-**Empfehlungsdomänen**: Wenn Sie eine bestimmte Empfehlungsdomäne auswählen, wird der monatliche Trend von Seitenbesuchen und Handlungsaufforderungen im Diagramm auf der rechten Seite angezeigt.
+:::image type="content" source="./media/insights-dashboard/consent-given-graph.png" alt-text="Zeigt ein Beispieldiagramm von Handlungsaufforderungen im Vergleich zu „Erteilte Zustimmung“.":::
 
-:::image type="content" source="./media/insights-dashboard/referral-domain.png" alt-text="Veranschaulicht das Diagramm „Empfehlungsdomäne“ im Dashboard „Marketplace-Erkenntnisse“.":::
+### <a name="page-visits-and-call-to-actions-against-offers-referral-domains-and-campaign-ids"></a>Seitenbesuche und Handlungsaufforderungen nach Angeboten, Empfehlungsdomänen und Kampagnen-IDs
 
-**Angebote**: Wählen Sie ein bestimmtes Angebot aus, um den monatlichen Trend von Seitenbesuchen und Handlungsaufforderungen im Diagramm auf der rechten Seite anzuzeigen.
+#### <a name="offers"></a>Angebote
 
-:::image type="content" source="./media/insights-dashboard/offer-alias.png" alt-text="Veranschaulicht das Diagramm „Angebotsalias“ im Dashboard „Marketplace-Erkenntnisse“.":::
+Wählen Sie ein bestimmtes Angebot aus, um den monatlichen Trend von Seitenbesuchen, Handlungsaufforderungen und „Erteilte Zustimmung“-Klicks im Diagramm anzuzeigen.
 
-**Kampagnen-IDs**: Wenn Sie eine bestimmte Kampagnen-ID auswählen, sollten Sie den Erfolg der Kampagne nachvollziehen können. Für jede Kampagne sollte der monatliche Trend von Seitenbesuchen und Handlungsaufforderungen im Diagramm auf der rechten Seite angezeigt werden.
+:::image type="content" source="./media/insights-dashboard/offers-funnel-graph.png" alt-text="Zeigt ein Beispieldiagramm eines Verkaufstrichters mit Angeboten.":::
 
-:::image type="content" source="./media/insights-dashboard/campaign.png" alt-text="Veranschaulicht das Kampagnendiagramm im Dashboard „Marketplace-Erkenntnisse“.":::
+#### <a name="referral-domains"></a>Empfehlungsdomänen
+
+Wenn Sie eine bestimmte Empfehlungsdomäne auswählen, wird der monatliche Trend von Seitenbesuchen, Handlungsaufforderungen und Zustimmungsklicks im Diagramm auf der rechten Seite angezeigt. Zusätzlich gibt es eine Spalte für die Plattform – Website und Client, die nur für AppSource-Angebote angezeigt wird. In der Verkaufstrichter-Ansicht werden die Konvertierungsraten unter Seitenaufrufen, Handlungsaufforderungen und „Erteilte Zustimmung“-Klicks im Diagramm dargestellt.
+
+:::image type="content" source="./media/insights-dashboard/referral-domains-funnel-graph.png" alt-text="Zeigt ein Beispiel des Verkaufstrichter-Diagramms der Empfehlungsdomänen.":::
+
+#### <a name="campaign-ids"></a>Kampagnen-IDs
+
+Wenn Sie eine bestimmte Kampagnen-ID auswählen, sollten Sie den Erfolg der Kampagne nachvollziehen können. Für jede Kampagne sollte der monatliche Trend von Seitenbesuchen, Handlungsaufforderungen und „Erteilte Zustimmung“-Klicks im Diagramm angezeigt werden.
+
+:::image type="content" source="./media/insights-dashboard/campaign-id-funnel-graph.png" alt-text="Veranschaulicht das Kampagnendiagramm im Dashboard „Marketplace-Erkenntnisse“.":::
 
 ### <a name="marketplace-insights-by-geography"></a>Marketplace-Erkenntnisse nach Geografie
 
 Für den ausgewählten Berechnungszeitraum zeigt das Wärmebild die Anzahl von Seitenbesuchen, unterschiedlichen Besuchern und Handlungsaufforderungen (Calls To Action, CTA) an. Die Helligkeit der Farbe auf der Karte entspricht einer niedrigen (hell) bis hohen (dunkel) Anzahl unterschiedlicher Besucher. Wählen Sie einen Datensatz in der Tabelle aus, um ein Land/eine Region zu vergrößern.
 
-:::image type="content" source="./media/insights-dashboard/geographical-spread.png" alt-text="Veranschaulicht das Diagramm der geografischen Verteilung im Dashboard „Marketplace-Erkenntnisse“.":::
+[ ![Veranschaulicht das Diagramm der geografischen Verteilung auf dem Marketplace Insights-Dashboard.](./media/insights-dashboard/geographical-spread.png) ](./media/insights-dashboard/geographical-spread.png#lightbox)
 
 Beachten Sie Folgendes:
 
@@ -117,6 +155,8 @@ Diese Tabelle enthält eine Listenansicht der Seitenbesuche und Handlungsaufford
 | Testversion | Testversion | Die Anzahl der Klicks auf die Handlungsaufforderung „Testlaufwerk“ auf der Angebotsseite für ein bestimmtes Datum | TestDrive |
 | Kostenlose Testversion | Kostenlose Testversion | Die Anzahl der Klicks auf die Handlungsaufforderung „Kostenlose Testversion“ auf der Angebotsseite für ein bestimmtes Datum | FreeTrial |
 | Kampagne | Name der Kampagne | Das Verständnis von Webtelemetrie (Seitenbesuch und Klicks auf Handlungsaufforderungen) anhand des Kampagnennamens. | Kampagne |
+| Zustimmung erteilt | Zustimmung erteilt | Gesamtanzahl der Klicks, mit denen Kunden Microsoft oder dem Partner ihre Zustimmung geben | consentGivenCount |
+| Plattform | Plattform | Gibt die Website oder den Client (In-Product-Store) als Quelle von Seitenaufruf, Handlungsaufforderung oder Zustimmungsklicks an | Plattformen |
 | – | Website | Der Name der Storefront, von der aus der Seitenbesuch oder Klick auf die Handlungsaufforderung erfolgte. Mögliche Werte sind:<br><ul><li>AZUREMARKETPLACE<li>APPSOURCE</ul> | Website |
 |
 

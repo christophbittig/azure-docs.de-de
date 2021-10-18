@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: bb58fcd9f7ddc9f9ef17d031f5a4139f98ae8925
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 828524e225f660cab2c11d23c5657ca82ae8781e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515906"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796512"
 ---
 # <a name="azure-sentinel-information-model-asim-schemas-public-preview"></a>Azure Sentinel-Informationsmodell (ASIM) Schemas (Öffentliche Vorschau)
 
@@ -84,6 +84,7 @@ Die folgenden Felder sind in allen ASIM-Schemas enthalten. Die allgemeinen Felde
 |---------------------|-------------|------------|--------------------|
 | <a name="timegenerated"></a>**TimeGenerated** | Integriert | datetime | Der Zeitpunkt, zu dem das Ereignis vom meldenden Gerät generiert wurde.|
 | **_ResourceId**   | Integriert |  guid     | Die Azure-Ressourcen-ID des meldenden Geräts oder Diensts oder die Ressourcen-ID des Protokollforwarders für Ereignisse, die mit Syslog, CEF oder WEF weitergeleitet werden. |
+| **Type** | Integriert | String | Die ursprüngliche Tabelle, aus der der Datensatz abgerufen wurde. Dieses Feld ist nützlich, wenn dasselbe Ereignis über zwei Kanäle in unterschiedlichen Tabellen empfangen werden kann, aber dieselben `EventVendor` und `EventProduct` aufweist. Ein Sysmon-Ereignis kann z. B. entweder in der Tabelle „Event“ oder in der Tabelle „SecurityEvent“ erfasst werden. |
 | **EventMessage**        | Optional    | String     |     Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert.   |
 | **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die im Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
 | **EventStartTime**      | Obligatorisch.   | Datum/Uhrzeit  |      Wenn die Quelle Aggregation unterstützt und der Datensatz mehrere Ereignisse darstellt, gibt dieses Feld die Zeit an, zu der das erste Ereignis generiert wurde. <br><br>Andernfalls wird in diesem Feld ein Alias für das Feld [TimeGenerated](#timegenerated) verwendet. |
@@ -99,18 +100,18 @@ Die folgenden Felder sind in allen ASIM-Schemas enthalten. Die allgemeinen Felde
 | **EventVendor**         | Obligatorisch.   | String     |           Der Hersteller des Produkts, das das Ereignis erzeugt. <br><br>Beispiel: `Microsoft`  <br><br>**Hinweis**: Dieses Feld ist möglicherweise nicht im Quelldatensatz verfügbar. In solchen Fällen muss dieses Feld vom Parser festgelegt werden.  |
 | **EventSchemaVersion**  | Obligatorisch.   | String     |    Die Version des Schemas. In jedem Schema ist die aktuelle Version dokumentiert.         |
 | **EventReportUrl**      | Optional    | String     | Eine URL, die im Ereignis für eine Ressource bereitgestellt wird, die zusätzliche Informationen zum Ereignis enthält.|
-| **Dvc** | Obligatorisch.       | String     |               Ein eindeutiger Bezeichner des Geräts, auf dem das Ereignis aufgetreten ist. <br><br>Dieses Feld kann ein Alias für die Felder [DvcId](#dvcid), [DvcHostname](#dvchostname) oder [DvcIpAddr](#dvcipaddr) sein. Verwenden Sie für Cloudquellen, für die es kein offensichtliches Gerät gibt, den gleichen Wert wie im Feld [Ereignisprodukt](#eventproduct).           |
+| **Dvc** | Obligatorisch.       | String     |               Ein eindeutiger Bezeichner des Geräts, auf dem das Ereignis aufgetreten ist. <br><br>Dieses Feld kann ein Alias für die Felder [DvcId](#dvcid), [DvcHostname](#dvchostname) oder [DvcIpAddr](#dvcipaddr) sein. Verwenden Sie für Cloudquellen, für die es kein offensichtliches Gerät gibt, den gleichen Wert wie das Feld [Ereignisprodukt](#eventproduct).           |
 | <a name ="dvcipaddr"></a>**DvcIpAddr**           | Empfohlen | IP-Adresse |         Die IP-Adresse des Geräts, auf dem das Ereignis eingetreten ist.  <br><br>Beispiel: `45.21.42.12`    |
 | <a name ="dvchostname"></a>**DvcHostname**         | Empfohlen | Hostname   |               Der Hostname des Geräts, auf dem das Ereignis eingetreten ist. <br><br>Beispiel: `ContosoDc.Contoso.Azure`               |
 | <a name ="dvcid"></a>**DvcId**               | Optional    | String     |  Die eindeutige ID des Geräts, auf dem das Ereignis eingetreten ist. <br><br>Beispiel: `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
 | **DvcMacAddr**          | Optional    | MAC        |   Die MAC-Adresse des Geräts, auf dem das Ereignis eingetreten ist.  <br><br>Beispiel: `00:1B:44:11:3A:B7`       |
 | **DvcOs**               | Optional    | String     |         Das Betriebssystem, das auf dem Gerät ausgeführt wird, auf dem das Ereignis eingetreten ist.    <br><br>Beispiel: `Windows`    |
 | **DvcOsVersion**        | Optional    | String     |   Die Version des Betriebssystems auf dem Gerät, auf dem das Ereignis eingetreten ist. <br><br>Beispiel: `10` |
-| **AdditionalFields**    | Optional    | Dynamisch    | Wenn Ihre Quelle zusätzliche Informationen enthält, die erhalten bleiben sollten, behalten Sie sie entweder mit den ursprünglichen Feldnamen bei, oder erstellen Sie das dynamische Feld **AdditionalFields**, und fügen Sie ihm die zusätzlichen Informationen als Schlüssel/Wert-Paare hinzu.    |
+| **AdditionalFields**    | Optional    | Dynamisch    | Wenn Ihre Quelle zusätzliche Informationen enthält, die erhalten bleiben sollten, behalten Sie sie entweder mit den ursprünglichen Feldnamen bei, oder erstellen Sie das dynamische Feld **AdditionalFields**, und fügen Sie ihm die zusätzlichen Informationen als Schlüssel-Wert-Paare hinzu.    |
 | | | | |
 
 > [!NOTE]
-> Log Analytics fügt auch andere Felder hinzu, die für Sicherheitsanwendungsfälle weniger relevant sind. Weitere Informationen finden Sie unter [Standardspalten in Azure Monitor-Protokollen](/azure/azure-monitor/logs/log-standard-columns).
+> Log Analytics fügt auch andere Felder hinzu, die für Sicherheitsanwendungsfälle weniger relevant sind. Weitere Informationen finden Sie unter [Standardspalten in Azure Monitor-Protokollen](../azure-monitor/logs/log-standard-columns.md).
 >
 
 

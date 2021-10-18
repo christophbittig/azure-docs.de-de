@@ -11,12 +11,12 @@ author: wenxwei
 ms.author: wenxwei
 ms.date: 06/22/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 94eb2beb95a43e422e8bff6c3ab53f7d2e6c208b
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 2d69263d1c4037640eefd44a1328414f8a47ad06
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094707"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705401"
 ---
 # <a name="create-a-training-job-with-the-job-creation-ui-preview"></a>Erstellen eines Trainingsauftrags mit der Benutzeroberfläche für die Auftragserstellung (Vorschau)
 

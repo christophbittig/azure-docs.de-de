@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-machines-windows
 author: cynthn
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5a48dd8158ed08aee3da459b4373fb0e4b36fb52
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: a188812751552532ae1536529b12e54d55a24a2b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113364940"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126056781"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Unterstützte Betriebssysteme und Treiber
 
@@ -40,13 +40,13 @@ Die NC-Serie mit Nvidia K80-GPUs unterstützt keine GRID-/Grafikanwendungen.
 
 Beachten Sie, dass durch die NVIDIA-Erweiterung immer der neueste Treiber installiert wird. Für Kunden, die eine ältere Version benötigen, stellen wir hier Links zur Vorgängerversion bereit.
 
-Für Windows Server 2019, Windows Server 2016 1607, 1709 und Windows 10 (bis Build 20H2):
-- [GRID 12.2 (462.31)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe)
-- [GRID 12.1 (461.33)](https://download.microsoft.com/download/9/7/e/97e1be73-d24b-410b-9c08-cc98c7becfa3/461.33_grid_win10_server2016_server2019_64bit_azure_swl.exe) (EXE-Datei) 
+Für Windows Server 2019, Windows Server 2016 1607, 1709 und Windows 10 (bis Build 21H1):
+- [GRID 13 (471.68)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe)
+- [GRID 12.2 (462.31)](https://download.microsoft.com/download/0/0/1/001f0edf-d852-4297-9cb7-10b31b1abf45/462.31_grid_win10_server2016_server2019_64bit_azure_swl.exe) (.exe) 
 
 Für Windows Server 2012 R2: 
-- [GRID 12.2 (462.31)](https://download.microsoft.com/download/1/2/0/120551f5-cc05-4911-bd29-88fb2747213c/462.31_grid_server2012R2_64bit_azure_swl.exe) (.exe)
-- [GRID 12.1 (461.33)](https://download.microsoft.com/download/9/9/c/99caf5c6-af9f-48b2-bcb0-af5ec64b8592/461.33_grid_server2012R2_64bit_azure_swl.exe) (EXE-Datei) 
+- [GRID 13 (471.68)](https://download.microsoft.com/download/9/b/4/9b4d4f8d-7962-4a67-839b-37cc95756759/471.68_grid_winserver2012R2_64bit_azure_swl.exe) (.exe)
+- [GRID 12.2 (462.31)](https://download.microsoft.com/download/1/2/0/120551f5-cc05-4911-bd29-88fb2747213c/462.31_grid_server2012R2_64bit_azure_swl.exe) (.exe) 
 
 
 Eine vollständige Liste aller vorherigen NVIDIA GRID-Treiber finden Sie auf [GitHub](https://github.com/Azure/azhpc-extensions/blob/master/NvidiaGPU/resources.json).

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/16/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: be6bc9166ffc0bddae5433734d3213b53e6f6f0e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 57a3f1f9d9665e23ba40479062f0f60e59608b66
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128673652"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707455"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Erstellen von Computezielen für Modelltraining und -bereitstellung in Azure Machine Learning Studio
 
@@ -172,7 +172,7 @@ Führen Sie die [oben beschriebenen Schritte](#portal-create) aus, um eine Compu
 [!INCLUDE [arc-enabled-machine-learning-create-training-compute](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
 > [!IMPORTANT]
-> Um einen Azure Kubernetes Services- (AKS) oder Kubernetes-Cluster mit Arc-Unterstützung anzufügen, müssen Sie Besitzer des Abonnements sein oder über die Berechtigung verfügen, auf AKS-Clusterressourcen unter dem Abonnement zuzugreifen. Andernfalls ist die Clusterliste auf der Seite „Neue Computeressource anfügen“ leer.
+> Um einen Azure Kubernetes Services- (AKS) oder Kubernetes-Cluster mit Azure Arc-Unterstützung anzufügen, müssen Sie Besitzer des Abonnements sein oder über die Berechtigung verfügen, auf AKS-Clusterressourcen unter dem Abonnement zuzugreifen. Andernfalls ist die Clusterliste auf der Seite „Neue Computeressource anfügen“ leer.
 
 Führen Sie die folgenden Schritte aus, um Ihre Computeressourcen zu trennen:
 

@@ -9,12 +9,12 @@ ms.date: 07/31/2020
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 8327a1855de21c274a54f1bfa3750eab9aea8a8c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 05af03c7ac60e2f98471ace4d57a296a54cf8ce6
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128649340"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707342"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>Verpacken eines registrierten Modells mit Docker
 
@@ -27,7 +27,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Modell in Ihrem M
 
 ## <a name="package-models"></a>Paketmodelle
 
-In einigen Fällen möchten Sie möglicherweise ein Docker-Image erstellen, ohne das Modell bereitzustellen (beispielsweise wenn Sie [in Azure App Service bereitstellen](how-to-deploy-app-service.md) möchten). Oder Sie möchten das Image herunterladen und in einer lokalen Docker-Installation ausführen. Es könnte sogar vorkommen, dass Sie die für die Imageerstellung verwendeten Dateien herunterladen, untersuchen und ändern und das Image dann manuell erstellen möchten.
+In einigen Fällen kann es ratsam sein, ein Docker-Image zu erstellen, ohne das Modell bereitzustellen. Oder Sie möchten das Image herunterladen und in einer lokalen Docker-Installation ausführen. Es könnte sogar vorkommen, dass Sie die für die Imageerstellung verwendeten Dateien herunterladen, untersuchen und ändern und das Image dann manuell erstellen möchten.
 
 Diese Schritte können Sie bei der Modellpaketerstellung ausführen. Dabei werden alle Ressourcen, die zum Hosten eines Modells als Webdienst benötigt werden, in einem Paket zusammengefasst, und Sie erhalten die Möglichkeit, entweder ein vollständig erstelltes Docker-Image oder die zum Erstellen eines solchen Images erforderlichen Dateien herunterzuladen. Es gibt zwei Möglichkeiten, die Modellpaketerstellung zu verwenden:
 

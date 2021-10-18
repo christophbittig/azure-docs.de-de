@@ -8,15 +8,15 @@ ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/24/2021
+ms.date: 09/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: 1d1389b5627f18c8772a55300a89dca9d0de4917
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: c478744bc960a90d8d84d3e51bd1cd9d8bb3719e
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423517"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657871"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>Schützen von Azure Machine Learning-Arbeitsbereichsressourcen mit virtuellen Netzwerken (VNets)
@@ -78,7 +78,7 @@ Führen Sie die folgenden Schritte aus, um Ihren Arbeitsbereich und zugehörige 
     | Dienst | Endpunktinformationen | Zulassen vertrauenswürdiger Informationen |
     | ----- | ----- | ----- |
     | __Azure Key Vault__| [Dienstendpunkt](../key-vault/general/overview-vnet-service-endpoints.md)</br>[Privater Endpunkt](../key-vault/general/private-link-service.md) | [Erlauben der Umgehung dieser Firewall für vertrauenswürdige Microsoft-Dienste](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
-    | __Azure Storage-Konto__ | [Dienst und privater Endpunkt](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[Privater Endpunkt](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [Gewähren von Zugriff für vertrauenswürdige Azure-Dienste](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
+    | __Azure Storage-Konto__ | [Dienst und privater Endpunkt](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[Privater Endpunkt](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [Gewähren von Zugriff über Azure-Ressourceninstanzen](../storage/common/storage-network-security.md#grant-access-from-azure-resource-instances-preview)</br>**or**</br>[Gewähren von Zugriff für vertrauenswürdige Azure-Dienste](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
     | __Azure Container Registry__ | [Privater Endpunkt](../container-registry/container-registry-private-link.md) | [Zulassen vertrauenswürdiger Dienste](../container-registry/allow-access-trusted-services.md) |
 
 

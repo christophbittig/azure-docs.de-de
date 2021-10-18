@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2021
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: f51ca01988a090c4c61b821c16ec67f20d2c679f
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 9355ddc7b84d2b120ee4c453fe21f0b820ea60a3
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416999"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093229"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Azure CDN-Abdeckung nach Metropolregion 
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "112416999"
 >
 
 
-Dieser Artikel enthält die aktuellen Metropolregionen mit den POP-Standorten (Point of Presence), die nach der Region für Azure CDN-Produkte (Content Delivery Network) sortiert sind. Jede Metropolregion kann mehr als einen POP enthalten. Das Azure CDN von Microsoft verfügt z. B. über 116 POP-Standorte in 100 Metropolregionen. 
+Dieser Artikel enthält die aktuellen Metropolregionen mit den POP-Standorten (Point of Presence), die nach der Region für Azure CDN-Produkte (Content Delivery Network) sortiert sind. Jede Metropolregion kann mehr als einen POP enthalten. Das Azure CDN von Microsoft verfügt z. B. über 117 POP-Standorte in 100 Metropolregionen. 
 
 > [!IMPORTANT]
 > Da jedes Azure CDN-Produkt unterschiedliche Methoden zur Erstellung seiner CDN-Infrastrukturen anwendet, rät Microsoft davon ab, POP-Standorte als Entscheidungskriterium für die Auswahl eines Azure CDN-Produkts heranzuziehen. Stattdessen sollten Sie die jeweiligen Funktionen und Endbenutzerleistung betrachten. Testen Sie die Leistung jedes Azure CDN-Produkts, um das richtige Produkt für Ihre Benutzer auszuwählen. 
@@ -59,4 +59,4 @@ Dieser Artikel enthält die aktuellen Metropolregionen mit den POP-Standorten (P
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Abrufen der aktuellen IP-Adressen für Positivlisten finden Sie unter der [Azure CDN-Edgeknoten-API](/rest/api/cdn/cdn/edgenodes).
+* Informationen zum Abrufen der aktuellen IP-Adressen für Positivlisten finden Sie unter der [Azure CDN-Edgeknoten-API](/rest/api/cdn/edge-nodes/list).

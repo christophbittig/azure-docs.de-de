@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 3fe90f5c9038c37e3ac3e9fba357ea27ca089679
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8e14e1fd97bbf3e0fe83c1b7e0eeae1cf446e74d
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340100"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811232"
 ---
 # <a name="face-detection-and-attributes"></a>Gesichtserkennung und -attribute
 
@@ -34,6 +34,8 @@ Gesichtsmerkmale bestehen aus mehreren einfach zu findenden Punkten im Gesicht. 
 ![Abbildung eines Gesichts mit allen 27 beschrifteten Gesichtsmerkmalpunkten](../Images/landmarks.1.jpg)
 
 Die Koordinaten der Punkte werden in Pixel zurückgegeben.
+
+Das Modell „Detection_03“ verfügt derzeit über die genaueste Erkennung von Merkmalen. Die zurückgegebenen Augen- und Pupillenmerkmale sind ausreichend präzise, um die Blicknachverfolgung des Gesichts zu ermöglichen.
 
 ## <a name="attributes"></a>Attributes
 

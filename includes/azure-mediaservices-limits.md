@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: 2b44d84887d9d658d120b1a241a1d124564aae9f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 10de63c842eeb60f5e7e725457c88961581370f0
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128909189"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129063781"
 ---
 >[!NOTE]
 >Erstellen Sie für Ressourcen ohne festes Limit ein Supportticket, um eine Erhöhung der Kontingente anzufordern. Erstellen Sie keine zusätzlichen Azure Media Services-Konten, um höhere Limits zu erhalten.
@@ -23,14 +23,14 @@ ms.locfileid: "128909189"
 | Objekte pro Aufgabe | 50 |
 | Objekte pro Auftrag | 100 |
 | Eindeutige Locators, die einem Objekt gleichzeitig zugeordnet sind | 5<sup>4</sup> |
-| Livekanäle pro Media Services-Konto |5|
+| Livekanäle pro Media Services-Konto |5<sup>5</sup>|
 | Programme im angehaltenen Zustand pro Kanal |50|
 | Programme im ausgeführten Zustand pro Kanal |3|
 | Streamingendpunkte (beendet oder ausgeführt) pro Media Services-Konto|2|
 | Streamingeinheiten pro Streamingendpunkt |10 |
-| Speicherkonten | 100<sup>5</sup> (feststehend) |
-| Richtlinien | 1,000,000<sup>6</sup> |
-| Dateigröße| In einigen Szenarien werden für die Verarbeitung in Media Services nur Dateien bis zu einer bestimmten Größe unterstützt.<sup>7</sup> |
+| Speicherkonten | 100<sup>6</sup> (feststehend) |
+| Richtlinien | 1\.000.000<sup>7</sup> |
+| Dateigröße| In einigen Szenarien werden für die Verarbeitung in Media Services nur Dateien bis zu einer bestimmten Größe unterstützt.<sup>8</sup> |
 
 <sup>1</sup> Wenn Sie den Typ ändern (etwa von „S2“ in „S1“), werden die maximalen Grenzwerte für reservierte Einheiten zurückgesetzt.
 
@@ -42,12 +42,14 @@ Seit 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter 
 
 <sup>4</sup> Locators sind nicht für die Verwaltung der benutzerspezifischen Zugriffssteuerung konzipiert. Wenn Sie einzelnen Benutzern unterschiedliche Zugriffsrechte zuweisen möchten, verwenden Sie eine DRM-Lösung (Digital Rights Management). Weitere Informationen finden Sie in der [Übersicht über den Inhaltsschutz](../articles/media-services/latest/drm-content-protection-concept.md).
 
-<sup>5</sup> Die Speicherkonten müssen aus dem gleichen Azure-Abonnement stammen.
+<sup>5</sup>Abhängig von Ihrem Streaming-Anwendungsfall und dem ausgewählten regionalen Rechenzentrum kann AMS mehr als 5 Livekanälee pro Media Services Konto unterstützen. Stellen Sie eine Supportanfrage, um das Kontingent für Ihr Konto zu erhöhen.
 
-<sup>6</sup> Für verschiedene Media Services-Richtlinien gilt ein Limit von 1.000.000 Richtlinien. Dies Limit gilt beispielsweise für die Locator-Richtlinie oder für „ContentKeyAuthorizationPolicy“. 
+<sup>6</sup>Die Speicherkonten müssen aus demselben Azure-Abonnement stammen.
+
+<sup>7</sup> Für verschiedene Media Services-Richtlinien gilt ein Limit von 1.000.000 Richtlinien. Dies Limit gilt beispielsweise für die Locator-Richtlinie oder für „ContentKeyAuthorizationPolicy“. 
 
 >[!NOTE]
 > Falls Sie immer die gleichen Tage und Zugriffsberechtigungen verwenden, empfiehlt es sich, die gleiche Richtlinien-ID zu nutzen. Weitere Informationen und ein Beispiel finden Sie unter [Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK](../articles/media-services/previous/media-services-dotnet-manage-entities.md#limit-access-policies).
 
-<sup>7</sup> In Azure Blob Storage werden derzeit als maximale Größe für ein einzelnes Blob bis zu 5 TB unterstützt. In Media Services gelten abhängig von den vom Dienst verwendeten VM-Größen weitere Grenzwerte. Die Größenbeschränkung gilt sowohl für die von Ihnen hochgeladenen Dateien als auch für Dateien, die in Folge der Verarbeitung durch Media Services (Codierung oder Analyse) generiert werden. Wenn Ihre Quelldatei größer als 260 GB ist, wird Ihr Auftrag wahrscheinlich nicht erfolgreich sein. 
+<sup>8</sup> In Azure Blob Storage werden derzeit als Größe für ein einzelnes Blob bis zu 5 TB unterstützt. In Media Services gelten abhängig von den vom Dienst verwendeten VM-Größen weitere Grenzwerte. Die Größenbeschränkung gilt sowohl für die von Ihnen hochgeladenen Dateien als auch für Dateien, die in Folge der Verarbeitung durch Media Services (Codierung oder Analyse) generiert werden. Wenn Ihre Quelldatei größer als 260 GB ist, wird Ihr Auftrag wahrscheinlich nicht erfolgreich sein. 
 

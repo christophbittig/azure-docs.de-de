@@ -3,12 +3,12 @@ title: App Service in Azure Arc
 description: Eine Einführung in App Service Integration in Azure Arc für Azure-Betreiber.
 ms.topic: article
 ms.date: 08/17/2021
-ms.openlocfilehash: bd5e257d48ec009ccb79696f4c299fd93568f1c9
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: cec1e7bb9dac43e33e85b6036910220a1fa287c2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397332"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711651"
 ---
 # <a name="app-service-functions-and-logic-apps-on-azure-arc-preview"></a>App Service, Funktionen und Logic Apps in Azure Arc (Vorschau)
 
@@ -20,8 +20,8 @@ Sie können App Service, Funktionen und Logic Apps auf einem Kubernetes-Cluster 
 In den meisten Fällen müssen App-Entwickler nur wissen, wie die Bereitstellung in der richtigen Azure-Region erfolgen soll, die die bereitgestellte Kubernetes-Umgebung darstellt. Operatoren, die die Umgebung bereitstellen und die zugrunde liegende Kubernetes-Infrastruktur verwalten, müssen die folgenden Azure-Ressourcen beachten:
 
 - Der verbundene Cluster, bei dem es sich um eine Azure-Projektion Ihrer Kubernetes-Infrastruktur handelt. Weitere Informationen finden Sie unter [Was ist Kubernetes mit Azure Arc-Unterstützung?](../azure-arc/kubernetes/overview.md).
-- Eine Clustererweiterung, die eine Unterressource der verbundenen Clusterressource ist. Die App Service-Erweiterung [installiert die erforderlichen Pods in Ihrem verbundenen Cluster](#pods-created-by-the-app-service-extension). Weitere Informationen zu Cluster-Erweiterungen finden Sie unter [Cluster-Erweiterungen auf Azure Arc aktivierten Kubernetes](../azure-arc/kubernetes/conceptual-extensions.md).
-- Ein benutzerdefinierter Speicherort, der eine Gruppe von Erweiterungen bündelt und sie einem Namespace für erstellte Ressourcen zuweist. Weitere Informationen finden Sie unter [Benutzerdefinierte Standorte auf Azure Arc-fähigen Kubernetes](../azure-arc/kubernetes/conceptual-custom-locations.md).
+- Eine Clustererweiterung, die eine Unterressource der verbundenen Clusterressource ist. Die App Service-Erweiterung [installiert die erforderlichen Pods in Ihrem verbundenen Cluster](#pods-created-by-the-app-service-extension). Weitere Informationen zu Clustererweiterungen finden Sie unter [Clustererweiterungen in Kubernetes mit Azure Arc-Unterstützung](../azure-arc/kubernetes/conceptual-extensions.md).
+- Ein benutzerdefinierter Speicherort, der eine Gruppe von Erweiterungen bündelt und sie einem Namespace für erstellte Ressourcen zuweist. Weitere Informationen finden Sie unter [„Benutzerdefinierte Speicherorte“ auf Basis von Kubernetes mit Azure Arc-Unterstützung](../azure-arc/kubernetes/conceptual-custom-locations.md).
 - Eine App Service Kubernetes-Umgebung, die die App-übergreifende Konfiguration ermöglicht, aber nicht im Zusammenhang mit Clustervorgängen steht. Konzeptionell wird sie in der benutzerdefinierten Standortressource bereitgestellt, und App-Entwickler erstellen Apps in dieser Umgebung. Dies wird in [App Service Kubernetes-Umgebung](#app-service-kubernetes-environment) ausführlicher beschrieben.
 
 ## <a name="public-preview-limitations"></a>Einschränkungen der öffentlichen Vorschauversion
@@ -42,7 +42,7 @@ Die folgenden Einschränkungen für die öffentliche Vorschau gelten für App Se
 
 ## <a name="pods-created-by-the-app-service-extension"></a>Pods, die von dem App Service erstellt werden
 
-Wenn die App Service-Erweiterung auf dem Arc-fähigen Kubernetes-Cluster installiert ist, sehen Sie mehrere Pods, die in dem angegebenen Freigabe-Namensraum erstellt wurden. Diese Pods ermöglichen es Ihrem Kubernetes-Cluster, eine Erweiterung des `Microsoft.Web`-Ressourcenanbieters in Azure zu sein und die Verwaltung und den Betrieb Ihrer Apps zu unterstützen. Optional können Sie festlegen, dass die Erweiterung [KEDA](https://keda.sh/) für die ereignisgesteuerte Skalierung installiert.
+Wenn die App Service-Erweiterung auf dem Kubernetes-Cluster mit Azure Arc-Unterstützung installiert ist, sehen Sie mehrere Pods, die in dem angegebenen Releasenamespace erstellt wurden. Diese Pods ermöglichen es Ihrem Kubernetes-Cluster, eine Erweiterung des `Microsoft.Web`-Ressourcenanbieters in Azure zu sein und die Verwaltung und den Betrieb Ihrer Apps zu unterstützen. Optional können Sie festlegen, dass die Erweiterung [KEDA](https://keda.sh/) für die ereignisgesteuerte Skalierung installiert.
  <!-- You can only have one installation of KEDA on the cluster. If you have one already, you must disable this behavior during installation of the cluster extension `TODO`. -->
 
 In der folgenden Tabelle wird die Rolle der einzelnen Pods beschrieben, die standardmäßig erstellt werden:

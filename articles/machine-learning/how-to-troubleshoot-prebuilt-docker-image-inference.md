@@ -7,20 +7,23 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.author: ssambare
 author: shivanissambare
-ms.date: 05/25/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt, troubleshoot
-ms.openlocfilehash: 209a9ffe884fd772fde30bd7a6d4995a15d97f02
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 59a3709ef6145fa723d1919429fec4bf62a0998b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423479"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705339"
 ---
-# <a name="troubleshooting-prebuilt-docker-images-for-inference-preview"></a>Problembehandlung: Vordefinierte Docker-Images für Rückschlüsse (Vorschau)
+# <a name="troubleshooting-prebuilt-docker-images-for-inference"></a>Problembehandlung: Vordefinierte Docker-Images für Rückschlüsse
 
-Es wird beschrieben, wie Sie Probleme behandeln, die bei der Verwendung von vordefinierten Docker-Images für Rückschlüsse [(Vorschau)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) mit Azure Machine Learning auftreten können.
+Es wird beschrieben, wie Sie Probleme behandeln, die bei der Verwendung von vordefinierten Docker-Images für Rückschlüsse mit Azure Machine Learning auftreten können.
+
+> [!IMPORTANT]
+> Die Verwendung der [Erweiterbarkeit von Python-Paketen für vordefinierte Docker-Images](how-to-prebuilt-docker-images-inference-python-extensibility.md) mit Azure Machine Learning befindet sich derzeit in der Vorschauversion. Die Vorschaufunktionalität wird „wie besehen“ zur Verfügung gestellt, ohne Garantien hinsichtlich Support oder Vereinbarung zum Servicelevel (Service Level Agreement, SLA). Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="model-deployment-failed"></a>Fehler bei der Modellbereitstellung
 
