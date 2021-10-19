@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 1d4e6a407e75a70618089f20a7d19343785380ad
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cd7507a6bbb9ef8cfe71c95431fe63191cd63275
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616477"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711122"
 ---
 # <a name="troubleshoot-mca-billing-issues-with-usage-file-pivot-tables"></a>Problembehandlung von MCA-Abrechnungsproblemen mit Nutzungsdatei-PivotTables
 

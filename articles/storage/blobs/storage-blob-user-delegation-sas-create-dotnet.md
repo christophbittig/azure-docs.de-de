@@ -10,12 +10,12 @@ ms.date: 02/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 80c02416f5e1fb232d84b1311d261122dc7b9a35
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: ebd9ba6beabe1a0bd3e6f158b90ca90510ea1b66
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733662"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857822"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-directory-or-blob-with-net"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container, ein Verzeichnis oder ein Blob mit .NET
 
@@ -29,13 +29,11 @@ In diesem Artikel erfahren Sie, wie Sie unter Verwendung von Azure AD-Anmeldein
 
 Wenn ein Azure AD-Sicherheitsprinzipal versucht, auf Blobdaten zuzugreifen, muss dieser Sicherheitsprinzipal über Berechtigungen für die Ressource verfügen. Dem Sicherheitsprinzipal muss eine Azure-Rolle zugewiesen werden, die den Zugriff auf Blobdaten in Azure Storage ermöglicht. Dabei spielt es keine Rolle, ob es sich bei dem Sicherheitsprinzipal um eine verwaltete Identität in Azure oder um ein Azure AD-Benutzerkonto handelt, mit dem Code in der Entwicklungsumgebung ausgeführt wird. Weitere Informationen zum Zuweisen von Berechtigungen über die rollenbasierte Zugriffssteuerung in Azure finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](assign-azure-role-data-access.md).
 
-[!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
-
-Weitere Informationen zum Authentifizieren mit der Azure Identity-Clientbibliothek über Azure Storage finden Sie im Abschnitt **Authentifizieren mit der Azure Identity-Bibliothek** unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library).
+Weitere Informationen zum Abrufen eines Tokens mit der Azure Identity-Clientbibliothek aus Azure Storage finden Sie unter [Verwenden der Azure Identity-Bibliothek zum Abrufen eines Zugriffstokens für die Autorisierung](../common/identity-library-acquire-token.md).
 
 ## <a name="get-an-authenticated-token-credential"></a>Abrufen authentifizierter Tokenanmeldeinformationen
 
-Erstellen Sie eine Instanz der Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential), um Tokenanmeldeinformationen abzurufen, die in Ihrem Code zum Autorisieren von Anforderungen für Azure Storage verwendet werden können.
+Erstellen Sie eine Instanz der Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential), um Tokenanmeldeinformationen abzurufen, die in Ihrem Code zum Autorisieren von Anforderungen für Azure Storage verwendet werden können. Weitere Informationen zur Verwendung der Klasse „DefaultAzureCredential“ zum Autorisieren einer verwalteten Identität für den Zugriff auf Azure Storage finden Sie unter [Azure Identity-Clientbibliothek für .NET](/dotnet/api/overview/azure/identity-readme).
 
 Im folgenden Codeausschnitt sehen Sie, wie Sie die authentifizierten Tokenanmeldeinformationen abrufen und damit einen Dienstclient für Blob Storage erstellen:
 

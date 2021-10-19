@@ -1,20 +1,20 @@
 ---
-title: Optimieren der Senkenleistung in Zuordnungsdatenflüssen
+title: Sinkende Leistung und bewährte Verfahren bei der Zuordnungsdatenflüsse
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Sie die Leistung von Senken von Zuordnungsdatenflüssen in Azure Data Factory- und Azure Synapse Analytics-Pipelines optimieren.
+description: Erfahren Sie mehr über die Optimierung der Senkenleistung und bewährte Verfahren für die Zuordnungsdatenflüsse in Azure Data Factory und Azure Synapse Analytics-Pipelines.
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
-ms.date: 09/29/2021
-ms.openlocfilehash: 54c03cc8b4c34be02d3dee608ce4a759e75f2200
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/06/2021
+ms.openlocfilehash: 4ed5d50d4b74e86b91d51e4011e41f2b600edb88
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129293563"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618684"
 ---
 # <a name="optimizing-sinks"></a>Optimieren von Senken
 
@@ -23,6 +23,10 @@ Wenn Datenflüsse in Senken schreiben, werden alle benutzerdefinierten Partition
 ## <a name="azure-sql-database-sinks"></a>Azure SQL-Datenbank-Senken
 
 Bei Azure SQL-Datenbank sollte die Standardpartitionierung in den meisten Fällen funktionieren. Es besteht die Möglichkeit, dass Ihre Senke über zu viele Partitionen verfügt, sodass sie von Ihrer SQL-Datenbank-Instanz nicht mehr verarbeitet werden können. Reduzieren Sie in diesem Fall die Anzahl von Partitionen, die von Ihrer SQL-Datenbank-Senke ausgegeben werden.
+
+### <a name="best-practice-for-deleting-rows-in-sink-based-on-missing-rows-in-source"></a>Bewährtes Verfahren zum Löschen von Zeilen in der Senke aufgrund fehlender Zeilen in der Quelle
+
+In diesem Video wird gezeigt, wie Datenflüsse mit Exits, Zeilenänderungen und Transformationen in der Senke verwendet werden können, um dieses allgemeine Muster zu erreichen: > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWMLr5]
 
 ### <a name="impact-of-error-row-handling-to-performance"></a>Auswirkung der Fehlerzeilenbehandlung auf die Leistung
 

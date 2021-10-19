@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/29/2021
+ms.date: 10/11/2021
 ms.author: yelevin
-ms.openlocfilehash: bddd27b29a1546f0c985f7a5b3aa15027be75d46
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d6afd8e1d4c70d818257007993aedfe3a48ce4f4
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339081"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129752111"
 ---
 # <a name="automate-threat-response-with-playbooks-in-azure-sentinel"></a>Automatisieren der Bedrohungsabwehr mit Playbooks in Azure Sentinel
 
@@ -36,7 +36,29 @@ Ein Playbook ist eine Sammlung dieser Wartungsmaßnahmen, die von Azure Sentinel
 
 Wenn zum Beispiel ein Konto und ein Computer kompromittiert sind, kann ein Playbook den Computer vom Netzwerk isolieren und das Konto sperren, bis das SOC-Team über den Incident informiert wird.
 
-Playbooks werden auf Abonnementebene erstellt und angewendet, aber auf der Registerkarte **Playbooks** (im neuen **Automation** Blade) werden alle Playbooks angezeigt, die für alle ausgewählten Abonnements verfügbar sind.
+Playbooks können innerhalb des Abonnements verwendet werden, zu dem sie gehören. Auf der Registerkarte **Playbooks** (auf dem Blatt **Automatisierung**) werden jedoch alle Playbooks angezeigt, die für alle ausgewählten Abonnements verfügbar sind.
+
+### <a name="playbook-templates"></a>Playbookvorlagen
+
+> [!IMPORTANT]
+>
+> **Playbookvorlagen** befinden sich derzeit in der **VORSCHAUPHASE**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+
+Eine Playbookvorlage ist ein vordefinierter, getesteter und einsatzbereiter Workflow, der an Ihre Anforderungen angepasst werden kann. Vorlagen können auch als Referenz für bewährte Methoden bei der Entwicklung vollkommen neuer Playbooks oder als Anregung für neue Automatisierungsszenarien dienen.
+
+Playbookvorlagen sind selbst keine aktiven Playbooks, bis Sie daraus ein Playbook (eine bearbeitbare Kopie der Vorlage) erstellen.
+
+Sie können Playbookvorlagen aus den folgenden Quellen beziehen:
+
+- Auf der Registerkarte **Playbookvorlagen** (unter **Automatisierung)** werden die führenden Szenarien der Azure Sentinel-Community angezeigt. Es können mehrere aktive Playbooks aus derselben Vorlage erstellt werden.
+
+    Wenn eine neue Version der Vorlage veröffentlicht wird, werden die aus dieser Vorlage erstellten aktiven Playbooks (auf der Registerkarte **Playbooks**) mit einer Benachrichtigung gekennzeichnet, dass ein Update verfügbar ist.
+
+- Playbookvorlagen können auch als Teil einer [**Azure Sentinel-Lösung**](sentinel-solutions.md) im Kontext eines bestimmten Produkts abgerufen werden. Durch die Bereitstellung der Lösung werden aktive Playbooks erzeugt.
+
+- Das [**Azure Sentinel-GitHub-Repository**](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks) enthält viele Playbookvorlagen. Diese können in einem Azure-Abonnement bereitgestellt werden, indem auf die Schaltfläche **In Azure bereitstellen** geklickt wird. 
+
+Technisch gesehen ist eine Playbookvorlage eine [ARM-Vorlage](../azure-resource-manager/templates/index.yml), die aus mehreren Ressourcen besteht: einem Azure Logic Apps-Workflow und API-Verbindungen für jede einbezogene Verbindung. 
 
 ### <a name="azure-logic-apps-basic-concepts"></a>Azure Logic Appspps Grundlegende Konzepte
 
@@ -62,7 +84,7 @@ Azure Logic Apps kommuniziert mit anderen Systemen und Diensten über Konnektore
 
     > [!IMPORTANT]
     >
-    > - Die **Incidentauslöserfunktion** für Playbooks befindet sich derzeit in der **VORSCHAU-** Phase. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+    > Die **Incidentauslöserfunktion** für Playbooks befindet sich derzeit in der **VORSCHAU-** Phase. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 - **Aktionen:** Als Aktionen werden alle Schritte bezeichnet, die nach dem Trigger ausgeführt werden. Sie können sequentiell, parallel oder in einer Matrix komplexer Bedingungen angeordnet sein.
 
@@ -83,7 +105,7 @@ Azure Logic Apps kommuniziert mit anderen Systemen und Diensten über Konnektore
 - Mit der Rolle **Azure Sentinel Responder** können Sie ein Playbook manuell ausführen.
 - Als **Azure Sentinel Automation Contributor** können Sie mit Automatisierungsregeln Playbooks ausführen. Es wird nicht für andere Zwecke genutzt.
 
-#### <a name="learn-more"></a>Erfahren Sie mehr
+#### <a name="learn-more"></a>Weitere Informationen
 
 - [Weitere Informationen zu Azure-Rollen finden Sie unter Azure Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md#access-to-logic-app-operations).
 - [Weitere Informationen zu Azure-Rollen finden Sie in Azure Sentinel](roles.md).
@@ -106,7 +128,7 @@ Die Azure Logic Apps Plattform bietet Hunderte von Aktionen und Auslösern, soda
 
 **Sammeln Sie Daten, und fügen Sie an den Incident an, um intelligentere Entscheidungen zu treffen.**
 
-Zum Beispiel:
+Beispiel:
 
 Ein Azure Sentinel-Vorfall wurde aus einem Alarm durch eine Analyseregel erstellt, die IP-Adressen-Entitäten generiert.
 
@@ -122,7 +144,7 @@ Der Incident löst eine Automatisierungsregel aus, die ein Playbook mit den folg
 
 **Playbooks können dazu verwendet werden, Ihre Azure Sentinel Incidents mit anderen Ticketing-Systemen zu synchronisieren.**
 
-Zum Beispiel:
+Beispiel:
 
 Erstellen Sie eine Automatisierungsregel für die Erstellung aller Incidents, und fügen Sie ein Playbook an, das ein Ticket in ServiceNow öffnet:
 
@@ -136,7 +158,7 @@ Erstellen Sie eine Automatisierungsregel für die Erstellung aller Incidents, un
 
 **Verwenden Sie die SOC-Chat-Plattform, um die Warteschlange der Incidents besser zu überwachen.**
 
-Zum Beispiel:
+Beispiel:
 
 Ein Azure Sentinel Incident wurde aus einem Alert durch eine Analyseregel erstellt, die Benutzernamen und IP-Adressen-Entitäten generiert.
 

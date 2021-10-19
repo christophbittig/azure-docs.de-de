@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 09/30/2021
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 3adffbac5641c2791c5ef683b5c4d687331a1c3b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 401c9d08efd6be33d4444d34ba7a2a6c89723a6b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350142"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715091"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
@@ -22,21 +22,59 @@ ms.locfileid: "129350142"
 
 Der Formularerkennungsdienst wird fortlaufend aktualisiert. Speichern Sie ein Lesezeichen für diese Seite, um zu Versionshinweisen, Featureerweiterungen und Dokumentationsupdates auf dem neuesten Stand zu bleiben.
 
+## <a name="october-2021"></a>Oktober 2021
+
+### <a name="form-recognizer-new-preview-release"></a>Formularerkennung neue Vorabversion
+
+ Die neue Vorschauversion von Formularerkennung führt mehrere neue Funktionen und Möglichkeiten ein:
+
+* [**Allgemeines Dokumentenmodell**](concept-general-document.md) ist eine neue API, die ein vorab trainiertes Modell verwendet, um Text, Tabellen, Strukturen, Schlüssel-Wert-Paare und benannte Entitäten aus Formularen und Dokumenten zu extrahieren.
+* [**Hotelquittung**](concept-receipt.md) Modell zur vorgefertigten Quittungsverarbeitung hinzugefügt.
+* [**Erweiterte Felder für ID-Dokumente**](concept-id-document.md) Das ID-Modell unterstützt Vermerke, Einschränkungen und die Extraktion der Fahrzeugklassifizierung aus US-Führerscheinen.
+* [**Unterschriftenfeld**](concept-custom.md) ist ein neuer Feldtyp in benutzerdefinierten Formularen zur Erkennung des Vorhandenseins einer Unterschrift in einem Formularfeld.
+
+* [**Sprachenerweiterung**](language-support.md) Unterstützung für 122 Sprachen (Druck) und 7 Sprachen (handschriftlich). Formularerkennung Layout und Benutzerdefiniertes Formular erweitern mit der neuesten Vorschau die [unterstützten Sprachen](language-support.md) auf 122. Dazu gehört die Textextraktion für gedruckten Text in 49 neuen Sprachen, darunter Russisch, Bulgarisch und andere kyrillische sowie weitere lateinische Sprachen. Darüber hinaus unterstützt die Extraktion von handgeschriebenem Text jetzt 7 Sprachen, darunter Englisch, sowie neue Vorschauen für Chinesisch (vereinfacht), Französisch, Deutsch, Italienisch, Portugiesisch und Spanisch.
+
+* **Verbesserungen bei der Extraktion von Tabellen und Text** Layout unterstützt jetzt die Extraktion von einzeiligen Tabellen, auch Key-Value-Tabellen genannt. Zu den Verbesserungen bei der Textextraktion gehören eine bessere Verarbeitung von digitalen PDFs und Maschinenlesbare Zone Text (MRZ) in Identitätsdokumenten sowie eine allgemeine Leistungssteigerung.
+
+* [**Formularerkennung Studio**](https://formrecognizer.appliedai.azure.com) Um die Nutzung des Dienstes zu vereinfachen, können Sie jetzt auf das Formularerkennungs-Studio zugreifen, um die verschiedenen vorgefertigten Modelle zu testen oder ein benutzerdefiniertes Modell zu beschriften und zu trainieren
+
+Starten Sie mit der neuen [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm), [Python](quickstarts/try-v3-python-sdk.md) oder [.NET](quickstarts/try-v3-csharp-sdk.md) SDK für die API-Vorschau v3.0.
+
+ #### <a name="form-recognizer-model-data-extraction"></a>Formularerkennung Modelldatenextraktion
+
+  | **Modell**   | **Textextraktion** |**Schlüssel-Werte-Paare** |**Auswahlmarkierungen**   | **Tabellen**   |**Entitäten** |
+  | --- | :---: |:---:| :---: | :---: |:---: |
+  |🆕Allgemeines Dokument  | ✓  |  ✓ | ✓  | ✓  | ✓  |
+  | Layout  | ✓  |   | ✓  | ✓  |   |
+  | Rechnung  | ✓ | ✓  | ✓  | ✓ ||
+  |Rechnung  | ✓  |   ✓ |   |  ||
+  | ID-Dokument | ✓  |   ✓  |   |   ||
+  | Visitenkarte    | ✓  |   ✓ |   |   ||
+  | Benutzerdefiniert             |✓  |  ✓ | ✓  | ✓  | ✓  |
+
 ## <a name="september-2021"></a>September 2021
 
-[Erweiterte Funktionen des Azure-Metrik-Explorers](/azure/azure-monitor/essentials/metrics-charts) sind in Ihrer Ressourcenübersicht der Formularerkennung im Azure-Portal verfügbar.
+* [Erweiterte Funktionen des Azure-Metrik-Explorers](/azure/azure-monitor/essentials/metrics-charts) sind in Ihrer Ressourcenübersicht der Formularerkennung im Azure-Portal verfügbar.
 
-### <a name="monitoring-menu"></a>Menü „Überwachung“
+    ### <a name="monitoring-menu"></a>Menü „Überwachung“
 
-:::image type="content" source="media/portal-metrics.png" alt-text="Screenshot des Menüs „Überwachung“ im Azure-Portal":::
+    :::image type="content" source="media/portal-metrics.png" alt-text="Screenshot des Menüs „Überwachung“ im Azure-Portal":::
 
-### <a name="charts"></a>Diagramme
+    ### <a name="charts"></a>Diagramme
 
-:::image type="content" source="media/portal-metrics-charts.png" alt-text="Screenshot eines Beispieldiagramms für Metriken im Azure-Portal":::
+    :::image type="content" source="media/portal-metrics-charts.png" alt-text="Screenshot eines Beispieldiagramms für Metriken im Azure-Portal":::
+
+*  **ID-Dokument**-Modellaktualisierung: gegebene Namen einschließlich eines Suffixes, mit oder ohne Punkt, erfolgreich verarbeiten:
+
+    |Eingabetext | Ergebnis mit Update |
+    |------------|-------------------------------------------|
+    | William Isaac Kirby Jr. |**Vorname**: William Isaac</br></br>**Nachname**: Kirby Jr. |
+    | Henry Caleb Ross Sr | **Vorname**: Henry Caleb </br></br> **Nachname**: Ross Sr |
 
 ## <a name="july-2021"></a>Juli 2021
 
-### <a name="system-assigned-managed-identity-support"></a>Unterstützung für systemseitig zugewiesene verwaltete Identität 
+### <a name="system-assigned-managed-identity-support"></a>Unterstützung für systemseitig zugewiesene verwaltete Identität
 
  Sie können ab sofort eine systemseitig zugewiesene verwaltete Identität aktivieren, um der Formularerkennung eingeschränkten Zugriff auf private Speicherkonten zu gewähren, einschließlich solcher, die durch ein virtuelles Netzwerk (VNet) oder eine Firewall geschützt sind oder für die BYOS (Bring Your Own Storage) aktiviert ist. *Siehe* [Erstellen und Verwenden einer verwalteten Identität für Ihre Formularerkennungsressource](managed-identity-byos.md) für weitere Informationen.
 
@@ -90,9 +128,9 @@ Der Patch behebt Rechnungen, bei denen keine Felder für Unterzeilen erkannt wer
 * [Identitätsdokumente](concept-identification-cards.md)
 * [Benutzerdefinierte Formulare](concept-custom.md)
 
-#### <a name="get-started"></a>Erste Schritte 
+#### <a name="get-started"></a>Erste Schritte
 
-Wechseln Sie zum [Beispieltool für die Formularerkennung](https://fott-2-1.azurewebsites.net/), und bearbeiten Sie den [Schnellstart](quickstarts/get-started-with-form-recognizer.md). 
+Wechseln Sie zum [Beispieltool für die Formularerkennung](https://fott-2-1.azurewebsites.net/), und bearbeiten Sie den [Schnellstart](quickstarts/get-started-with-form-recognizer.md).
 
 ### <a name="layout-adds-table-headers"></a>Layout unterstützt jetzt Tabellenkopfzeilen
 
@@ -375,9 +413,9 @@ pip-Paketversion 3.1.0b4
 
    :::image type="content" source="./media/id-canada-passport-example.png" alt-text="Beispiel eines Reisepasses" lightbox="./media/id-canada-passport-example.png":::
 
-* **Extraktion von Einzelposten im vordefinierten Rechnungsmodell:** Im vordefinierten Rechnungsmodell wird jetzt die Extraktion von Einzelposten unterstützt. Nun können vollständige Posten und deren Bestandteile extrahiert werden, z. B. Beschreibung, Betrag, Menge, Produkt-ID, Datum usw. Mit einem einfachen API-/SDK-Aufruf können Sie nützliche Daten aus Rechnungen extrahieren, z. B. Text, Tabellen, Schlüssel-Wert-Paare und Einzelposten.
+* **Extraktion von Einzelposten für das Rechnungsmodell** - Das vorgefertigte Rechnungsmodell unterstützt jetzt die Extraktion von Einzelposten; es extrahiert jetzt vollständige Artikel und ihre Bestandteile - Beschreibung, Betrag, Menge, Produkt-ID, Datum und mehr. Mit einem einfachen API-/SDK-Aufruf können Sie nützliche Daten aus Rechnungen extrahieren, z. B. Text, Tabellen, Schlüssel-Wert-Paare und Einzelposten.
 
-   [Weitere Informationen zum vordefinierten Rechnungsmodell](concept-invoices.md)
+   [Erfahren Sie mehr über das Rechnungsmodell](concept-invoices.md)
 
 * **Überwachtes Beschriften und Trainieren von Tabellen, Beschriftung leerer Werte:** Zusätzlich zu den [hochmodernen Deep Learning-Funktionen der Formularerkennung zur automatischen Tabellenextraktion](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011) können Kunden nun auch Tabellen beschriften und trainieren. Dieses neue Release bietet die Möglichkeit, Einzelposten und Tabellen (dynamisch und fest) zu beschriften und zu trainieren sowie ein benutzerdefiniertes Modell zum Extrahieren von Schlüssel-Wert-Paaren und Einzelposten zu trainieren. Nach dem Trainieren eines Modells werden mit dem Modell Einzelposten als Teil der JSON-Ausgabe im Abschnitt „documentResults“ extrahiert.
 

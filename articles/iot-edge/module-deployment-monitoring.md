@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0461fffa62f46491d5bbb3c2c9f66670b3bd9cba
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 601015658b2d2de6c855ac285b4dfbec6cb15ca8
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355149"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670231"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf
 
@@ -79,6 +79,7 @@ Beachten Sie diese Einschränkungen, wenn Sie eine Zielbedingung erstellen:
 * Doppelte Anführungszeichen sind in keinem Teil der Zielbedingung zulässig. Verwenden Sie einfache Anführungszeichen.
 * Einfache Anführungszeichen werden für die Werte der Zielbedingung verwendet. Daher müssen Sie für ein einfaches Anführungszeichen ein weiteres einfaches Anführungszeichen als Escapezeichen verwenden, wenn es Teil des Gerätenamens ist. Geben Sie für die Zielbedingung des Geräts mit dem Namen `operator'sDevice` beispielsweise `deviceId='operator''sDevice'` an.
 * In Werten für Zielbedingungen sind Zahlen, Buchstaben und folgende Zeichen zulässig: `-:.+%_#*?!(),=@;$`.
+* Die folgenden Zeichen sind in Zielbedingungsschlüsseln nicht zulässig: `/;`.
 
 ### <a name="priority"></a>Priority
 

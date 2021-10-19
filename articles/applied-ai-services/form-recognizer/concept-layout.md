@@ -7,69 +7,82 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 08/09/2021
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 247400ea72567108fb9dc320bddd1b87d6ef6ced
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+recommendations: false
+ms.openlocfilehash: 425a5cb9ab332076ddd0d745bba7b914e5601917
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641672"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707144"
 ---
-# <a name="form-recognizer-layout-service"></a>Layoutdienst für die Formularerkennung
+# <a name="form-recognizer-layout-model"></a>Layoutmodell der Formularerkennung
 
-Die Layout-API der Azure-Formularerkennung extrahiert Text, Tabellen, Auswahlmarkierungen und Strukturinformationen aus Dokumenten (PDF, TIFF) und Bildern (JPG, PNG, BMP). Sie ermöglicht es Kunden, für Dokumente in vielen verschiedenen Formaten strukturierte Datendarstellungen der Dokumente zurückzugeben. Die API kombiniert eine verbesserte Version der leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../../cognitive-services/computer-vision/overview-ocr.md) mit Deep Learning-Modellen zum Extrahieren von Text, Tabellen, Auswahlmarkierungen und der Dokumentstruktur.
+Die Layout-API der Azure-Formularerkennung extrahiert Text, Tabellen, Auswahlmarkierungen und Strukturinformationen aus Dokumenten (PDF, TIFF) und Bildern (JPG, PNG, BMP). Sie ermöglicht es Kunden, für Dokumente in verschiedenen Formaten strukturierte Datendarstellungen der Dokumente zurückzugeben. Die API kombiniert eine verbesserte Version der leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../../cognitive-services/computer-vision/overview-ocr.md) mit Deep Learning-Modellen zum Extrahieren von Text, Tabellen, Auswahlmarkierungen und der Dokumentstruktur.
 
-## <a name="what-does-the-layout-service-do"></a>Welche Aufgaben führt der Layoutdienst aus?
+##### <a name="sample-form-processed-with-form-recognizer-sample-labeling-tool--layout-feature"></a>Beispielformular, das mit dem Beschriftungswerkzeug der [Formularerkennung verarbeitet wurde ](https://fott-2-1.azurewebsites.net/) Layout-Funktion:
 
-Die Layout-API extrahiert Text, Tabellen einschließlich Tabellenkopfzeilen, Auswahlmarkierungen und Strukturinformationen aus Dokumenten mit einer herausragenden Genauigkeit und gibt eine organisierte strukturierte JSON-Antwort zurück. Dokumente können viele verschiedene Formate und Qualitätsmerkmale aufweisen, beispielsweise mit dem Handy fotografierte Bilder, gescannte Dokumente und digitale PDF-Dateien. Die Layout-API extrahiert die strukturierte Ausgabe exakt aus allen diesen Dokumenten.
+:::image type="content" source="media/layout-demo.gif" alt-text="{alt-text}":::
 
-![Beispiel für ein Layout](./media/layout-demo.gif)
+**Features für die Datenextraktion**
 
-## <a name="try-it&quot;></a>Ausprobieren
+| **Layoutmodell**   | **Textextraktion**   | **Auswahlmarkierungen**   | **Tabellen**  |
+| --- | --- | --- | --- |
+| Layout  | ✓  | ✓  | ✓  |
 
-Wenn Sie den Layoutdienst für die Formularerkennung ausprobieren möchten, wechseln Sie zum Onlinetool für die Beispielbenutzeroberfläche:
+## <a name="try-form-recognizer-studio-preview"></a>Ausprobieren von Formularerkennung Studio (Vorschau)
 
-> [!div class=&quot;nextstepaction&quot;]
-> [Layoutmodell ausprobieren](https://aka.ms/fott-2.1-ga &quot;Beginnen Sie mit dem vordefinierten Layoutmodell, um Daten aus Ihren Formularen zu extrahieren.")
+* Formularerkennung Studio ist mit der Vorschau-API (v3.0) verfügbar.
 
-Zum Ausprobieren der Layout-API für die Formularerkennung benötigen Sie ein Azure-Abonnement ([kann hier kostenlos erstellt werden](https://azure.microsoft.com/free/cognitive-services)), einen Endpunkt für eine [Formularerkennungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) und einen entsprechenden Schlüssel.
+* Extrahieren Sie Tabellen, Kontrollkästchen und Text aus Formularen und Dokumenten mit unserem Layoutfeature von Formularerkennung Studio:
 
-![Screenshot der Beispielbenutzeroberfläche; der Text, die Tabellen und Auswahlmarkierungen eines Dokuments werden analysiert.](./media/analyze-layout.png)
+> [!div class="nextstepaction"]
+> [Ausprobieren von Formularerkennung Studio](https://formrecognizer.appliedai.azure.com/studio/layout)
+
+## <a name="try-form-recognizer-sample-labeling-tool"></a>Tool zum Bezeichnen von Beispielen für die Formularerkennung ausprobieren
+
+Sie können sehen, wie Layoutdaten extrahiert werden, indem Sie unser Tool für die Beschriftung von Beispielen ausprobieren. Sie benötigen Folgendes:
+
+* Azure-Abonnement – Sie können ein [kostenloses Abonnement erstellen](https://azure.microsoft.com/free/cognitive-services/)
+
+* Eine [Formularerkennungsinstanz](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) im Azure-Portal Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst auszuprobieren. Klicken Sie nach der Bereitstellung Ihrer Ressource auf **Zu Ressource wechseln**, um Ihren API-Schlüssel und Endpunkt abzurufen.
+
+ :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal":::
+
+* Ein Formulardokument. Sie können unser [Beispielformulardokument](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf) verwenden.
+
+> [!div class="nextstepaction"]
+  > [Testen](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
+
+  Auf der Benutzeroberfläche der Formularerkennung:
+
+  1. Wählen Sie **Layout zum Abrufen von Text, Tabellen und Auswahlmarkierungen verwenden** aus.
+  1. Wählen Sie im Dropdownmenü die Option **Lokale Datei** aus.
+  1. Laden Sie Ihre Datei hoch, und wählen Sie **Layout ausführen** aus.
+
+  :::image type="content" source="media/try-layout.png" alt-text="Screenshot: Auswahlmenü für die Layoutdateiquelle – Tool für die Beschriftung von Beispielen":::
 
 ## <a name="input-requirements"></a>Eingabeanforderungen
 
-[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
+* Die besten Ergebnisse erzielen Sie, wenn Sie pro Dokument ein deutliches Foto oder einen hochwertigen Scan einreichen.
+* Unterstützte Dateiformate: JPEG, PNG, BMP, TIFF und PDF (in Text eingebettet oder gescannt). In Text eingebettete PDF-Dateien sind am besten geeignet, um die Möglichkeit von Fehlern beim Extrahieren und Auffinden von Zeichen auszuschließen.
+* Bei PDF und TIFF können bis zu 2000 Seiten verarbeitet werden (bei einem kostenlosen Abonnement werden nur die ersten beiden Seiten verarbeitet).
+* Die Dateigröße muss weniger als 50 MB betragen.
+* Bei Bildern müssen die Abmessungen zwischen 50 × 50 Pixel und 10.000 × 10.000 Pixel liegen.
+* Die PDF-Abmessungen sind bis zu 17 x 17 Zoll, was dem Papierformat Legal oder A3 entspricht, oder kleiner.
+* Der Gesamtumfang der Trainingsdaten beträgt 500 Seiten oder weniger.
+* Wenn Ihre PDFs passwortgeschützt sind, müssen Sie die Sperre vor der Einreichung aufheben.
+* Für unüberwachtes Lernen (ohne bezeichnete Daten):
+  * Die Daten müssen Schlüssel und Werte enthalten.
+  * Die Schlüssel müssen über oder links von den Werten stehen; sie dürfen nicht unter oder rechts von ihnen stehen.
 
-## <a name="analyze-layout"></a>Analysieren des Layouts
+> [!NOTE]
+> Das [Tool für die Beschriftung von Beispielen](https://fott-2-1.azurewebsites.net/) unterstützt nicht das BMP-Dateiformat. Dies ist eine Einschränkung des Tools, nicht des Formularerkennungsdiensts.
 
-Rufen Sie zunächst den Vorgang [Analyze Layout](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync) auf. Der Vorgang „Analyze Layout“ verwendet ein Dokument (Bild-, TIFF- oder PDF-Datei) als Eingabe und extrahiert den Text, die Tabellen, Auswahlmarkierungen und Struktur des Dokuments. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
+## <a name="supported-languages-and-locales"></a>Unterstützte Sprachen und Gebietsschemas
 
-|Antwortheader| Ergebnis-URL |
-|:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1/layout/analyzeResults/{resultId}' |
-
-## <a name="get-analyze-layout-result"></a>Abrufen des Ergebnisses der Layoutanalyse
-
-Im zweiten Schritt wird der Vorgang [Abrufen des Ergebnisses der Layoutanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeLayoutResult) aufgerufen. Bei diesem Vorgang wird die Ergebnis-ID als Eingabe verwendet, die durch den Vorgang „Analysieren des Layouts“ erstellt wurde. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält.
-
-|Feld| type | Mögliche Werte |
-|:-----|:----:|:----|
-|status | Zeichenfolge | `notStarted`: Der Analysevorgang wurde noch nicht gestartet.<br /><br />`running`: Der Analysevorgang wird ausgeführt.<br /><br />`failed`: Beim Analysevorgang ist ein Fehler aufgetreten.<br /><br />`succeeded`: Der Analysevorgang war erfolgreich.|
-
-Rufen Sie diesen Vorgang solange auf, bis der Wert `succeeded` zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
-
-Wenn das Feld **status** den Wert `succeeded` aufweist, enthält die JSON-Antwort das extrahierte Layout, den extrahierten Text und die extrahierten Tabellen und Auswahlmarkierungen. Die extrahierten Daten enthalten die extrahierten Textzeilen und Wörter, Begrenzungsrahmen, die handschriftliche Anzeige von Textdarstellung, Tabellen und Auswahlmarkierungen mit der Angabe „ausgewählt“ oder „nicht ausgewählt“.
-
-## <a name="sample-json-output"></a>JSON-Beispielausgabe
-
-Die Antwort auf den Vorgang *Get Analyze Layout Result* ist eine strukturierte Darstellung des Dokuments mit allen extrahierten Informationen.
-Hier sehen Sie ein [Beispiel für eine Dokumentdatei](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-layout.pdf) und deren strukturierte Ausgabe [Beispiel für eine Layoutausgabe](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-layout-output.json).
-
-Die JSON-Ausgabe besteht aus zwei Teilen:
-
-* Der Knoten `readResults` enthält den gesamten erkannten Text und alle erkannten Auswahlmarkierungen. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert.
-* Der Knoten `pageResults` enthält die Tabellen und Zellen, die mit ihren umgebenden Feldern, Konfidenz (Zuverlässigkeit) und einem Verweis auf die Zeilen und Wörter in „readResults“ extrahiert wurden.
+ Die Vorschauversion der Formularerkennung bietet zusätzliche Sprachunterstützung für das Layoutmodell. *Eine* vollständige Liste der unterstützten handschriftlichen und gedruckten Texte finden Sie in unserem [Sprach-Support](language-support.md#layout-and-custom-model).
 
 ## <a name="features"></a>Funktionen
 
@@ -109,12 +122,22 @@ Verwenden Sie für umfangreiche Dokumente mit mehreren Seiten den Abfrageparamet
 
 :::image type="content" source="./media/layout-select-pages-for-text.png" alt-text="Layout – Ausgabe ausgewählter Seiten":::
 
+## <a name="form-recognizer-preview-v30"></a>Formularerkennung Vorschau v3.0
+
+ Die Vorschauversion der Formularerkennung bietet eine Reihe neuer Features und Möglichkeiten.
+
+* Erfahren Sie, wie Sie die Vorschauversion in Ihren Anwendungen und Workflows verwenden können, indem Sie unseren [**Formularerkennung v3.0 Migrationsleitfaden**](v3-migration-guide.md) befolgen.
+
+* Erkunden Sie unsere [**REST-API (Vorschau)** ](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument), um mehr über die Vorschauversion und neue Funktionen zu erfahren.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Testen einer eigenen Layoutextraktion mithilfe des [Onlinetools für die Beispielbenutzeroberfläche zur Formularerkennung](https://aka.ms/fott-2.1-ga)
-* Arbeiten Sie einen [Schnellstart für die Formularerkennung](quickstarts/client-library.md#analyze-layout) durch, um die ersten Schritte zum Extrahieren von Layouts in der Entwicklungssprache Ihrer Wahl auszuführen.
+* Durcharbeiten eines Schnellstarts zur Formularerkennung:
 
-## <a name="see-also"></a>Weitere Informationen
+  > [!div class="nextstepaction"]
+  > [Formularerkennung: Schnellstart](quickstarts/try-sdk-rest-api.md)
 
-* [Was ist die Formularerkennung?](./overview.md)
-* [REST-API-Referenzdokumente](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync)
+* Erkunden Sie unsere REST-API:
+
+    > [!div class="nextstepaction"]
+    > [Formularerkennung-API Version 2.1](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync)

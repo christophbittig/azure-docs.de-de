@@ -3,14 +3,14 @@ title: JavaScript-Entwicklerreferenz für Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln können.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 03/07/2021
+ms.date: 10/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: e62e320e2fac2b34e970f983965f9809d62e2103
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fbd291494554c7bbb6e7f79a932717bf81a124c6
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355580"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667590"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -264,17 +264,15 @@ Gibt ein benanntes Objekt zurück, das Triggermetadaten und Funktionsaufrufdaten
 
 ### <a name="contextdone-method"></a>context.Done-Methode
 
-```js
-context.done([err],[propertyBag])
-```
+Die **context.done**-Methode wird von synchronen Methoden verwendet.
 
-Gibt für die Runtime an, dass der Code abgeschlossen wurde. Wenn die Funktion die [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function)-Deklaration verwendet, muss `context.done()` nicht verwendet werden. Der Rückruf `context.done` wird implizit aufgerufen. Asynchrone Funktionen sind in Node 8 oder einer höheren Version verfügbar, für die Version 2.x der Functions-Runtime erforderlich ist.
+|Synchrone Ausführung|[Asynchrone](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) Ausführung<br>(Node 8 und höher, Functions-Runtime 2 und höher)|
+|--|--|
+|Erforderlich: `context.done([err],[propertyBag])`, um die Runtime darüber zu informieren, dass Ihre Funktion abgeschlossen ist. Wenn diese Methode fehlt, tritt bei der Ausführung ein Timeout auf.<br>Mit der `context.done`-Methode können Sie sowohl einen benutzerdefinierten Fehler an die Laufzeit als auch ein JSON-Objekt mit Ausgabebindungsdaten zurückgeben. Eigenschaften, die an `context.done` übergeben werden, überschreiben alles, was für das `context.bindings`-Objekt festgelegt wurde.|Nicht erforderlich: `context.done` – wird implizit aufgerufen.| 
 
-Wenn Ihre Funktion keine asynchrone Funktion ist, **müssen Sie `context.done` aufrufen**, um der Laufzeit mitzuteilen, dass Ihre Funktion vollständig ist. Wenn diese Methode fehlt, tritt bei der Ausführung ein Timeout auf.
-
-Mit der `context.done`-Methode können Sie sowohl einen benutzerdefinierten Fehler an die Laufzeit als auch ein JSON-Objekt mit Ausgabebindungsdaten zurückgeben. Eigenschaften, die an `context.done` übergeben werden, überschreiben alles, was für das `context.bindings`-Objekt festgelegt wurde.
 
 ```javascript
+// Synchronous code only
 // Even though we set myOutput to have:
 //  -> text: 'hello world', number: 123
 context.bindings.myOutput = { text: 'hello world', number: 123 };
@@ -588,7 +586,7 @@ Wenn das Funktionsprojekt lokal ausgeführt wird, enthält es eine [`local.setti
 
 ### <a name="in-azure-cloud-environment"></a>In der Azure-Cloudumgebung
 
-Wenn die Ausführung in Azure erfolgt, können Sie mithilfe der Funktions-App [Anwendungseinstellungen](functions-app-settings.md) festlegen, z. B. Dienstverbindungszeichenfolgen. Diese Einstellungen werden während der Ausführung als Umgebungsvariablen bereitgestellt. 
+Wenn die Ausführung in Azure erfolgt, können Sie mithilfe der Funktions-App [Anwendungseinstellungen](functions-app-settings.md) festlegen und verwenden, z. B. Dienstverbindungszeichenfolgen. Diese Einstellungen werden während der Ausführung als Umgebungsvariablen bereitgestellt. 
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 

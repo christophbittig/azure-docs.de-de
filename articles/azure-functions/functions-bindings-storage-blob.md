@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: af8e6a64e94530d6cca1494aff2c3b249186a42e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9ca3471b599e9f0671cd39603d71def344f7d72c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339619"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660493"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Übersicht zu Azure Blob Storage-Bindungen für Azure Functions
 
@@ -55,10 +55,10 @@ Functions 1.x-Apps enthalten automatisch einen Verweis auf das NuGet-Paket, Ver
 
 ## <a name="hostjson-settings"></a>Einstellungen für „host.json“
 
-> [!NOTE]
-> Dieser Abschnitt gilt nicht für Erweiterungsversionen vor 5.0.0. Für diese Versionen gibt es keine globalen Konfigurationseinstellungen für Blobs.
+In diesem Abschnitt werden die Konfigurationseinstellungen der Funktions-App beschrieben, die für Funktionen in dieser Bindung verfügbar sind. Diese Einstellungen gelten nur bei Verwendung der [Erweiterungsversion 5.0.0 und höher](#storage-extension-5x-and-higher). Die nachfolgende Beispieldatei „host.json“ enthält nur die Einstellungen für Version 2.x und höhere Versionen für diese Bindung. Weitere Informationen zu den Konfigurationseinstellungen für Funktions-Apps in Version 2.x und höher finden Sie unter [host.json-Referenz für Azure Functions](functions-host-json.md).
 
-In diesem Abschnitt werden die globalen Konfigurationseinstellungen beschrieben, die für diese Bindung verfügbar sind, wenn [Erweiterungsversion 5.0.0 und höher](#storage-extension-5x-and-higher) verwendet wird. Die unten gezeigte Beispieldatei *host.json* enthält nur die Einstellungen für Version 2.x oder höher Versionen für diese Bindung. Weitere Informationen zu globalen Konfigurationseinstellungen in Functions-Version 2.x oder höher finden Sie unter [host.json-Referenz für Azure Functions](functions-host-json.md).
+> [!NOTE]
+> Dieser Abschnitt gilt nicht für Erweiterungsversionen vor 5.0.0. Für diese früheren Versionen gibt es keine Funktions-App-weiten Konfigurationseinstellungen für Blobs.
 
 ```json
 {

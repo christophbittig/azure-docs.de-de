@@ -4,13 +4,13 @@ description: Hier wird beschrieben, wie Ressourcen für die Bereitstellung in Bi
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/16/2021
-ms.openlocfilehash: a540a30cd93d9f1dc54f77355f2f6560444131c1
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.date: 10/07/2021
+ms.openlocfilehash: 4b3b355016057af00c361a118aed2728948768dd
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122356451"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659619"
 ---
 # <a name="resource-declaration-in-bicep"></a>Ressourcendeklaration in Bicep
 
@@ -28,7 +28,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 }
 ```
 
-Sie legen einen symbolischen Namen für die Ressource fest. Im vorherigen Beispiel lautet der symbolische Name `stg`. Sie können einen beliebigen Wert für den symbolischen Namen verwenden, aber er kann nicht mit dem Namen einer anderen Ressource, eines Parameters oder einer Variablen in der Bicep-Datei identisch sein. Der symbolische Name ist nicht mit dem Ressourcennamen identisch. Sie verwenden den symbolischen Namen, um in anderen Teilen der Bicep-Datei auf die Ressource zu verweisen.
+Sie legen einen symbolischen Namen für die Ressource fest. Im vorherigen Beispiel lautet der symbolische Name `stg`.  Der symbolische Name ist nicht mit dem Ressourcennamen identisch. Sie verwenden den symbolischen Namen, um in anderen Teilen der Bicep-Datei auf die Ressource zu verweisen. Bei symbolischen Namen wird zwischen Groß- und Kleinschreibung unterschieden.  Sie dürfen Buchstaben, Zahlen und _; enthalten, jedoch nicht mit einer Zahl beginnen.
 
 Das `apiProfile`-Element wird von Bicep nicht unterstützt. Dieses Element ist in [ARM-Vorlagen-JSON-Dateien (Azure Resource Manager)](../templates/syntax.md) verfügbar.
 
@@ -106,7 +106,7 @@ Sie können während der Bereitstellung Tags auf eine Ressource anwenden. Tags h
 
 ## <a name="set-managed-identities-for-azure-resources"></a>Festlegen verwalteter Identitäten für Azure-Ressourcen
 
-Einige Ressourcen unterstützen [verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md). Diese Ressourcen verfügen über ein Identitätsobjekt auf der Stammebene der Ressourcendeklaration. 
+Einige Ressourcen unterstützen [verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md). Diese Ressourcen verfügen über ein Identitätsobjekt auf der Stammebene der Ressourcendeklaration.
 
 Sie können entweder systemseitig oder benutzerseitig zugewiesene Identitäten verwenden.
 
@@ -204,7 +204,7 @@ Weitere Informationen zu geschachtelten Ressourcen finden Sie unter [Festlegen v
 
 ### <a name="explicit-dependency"></a>Explizite Abhängigkeit
 
-Eine explizite Abhängigkeit wird mit der `dependsOn`-Eigenschaft deklariert. Die Eigenschaft akzeptiert ein Array von Ressourcenbezeichnern, sodass Sie mehr als eine Abhängigkeit angeben können. 
+Eine explizite Abhängigkeit wird mit der `dependsOn`-Eigenschaft deklariert. Die Eigenschaft akzeptiert ein Array von Ressourcenbezeichnern, sodass Sie mehr als eine Abhängigkeit angeben können.
 
 Das folgende Beispiel zeigt eine DNS-Zone namens `otherZone`, die von einer DNS-Zone namens `dnsZone` abhängt:
 

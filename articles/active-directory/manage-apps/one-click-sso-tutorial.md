@@ -1,6 +1,7 @@
 ---
-title: Konfiguration des einmaligen Anmeldens (SSO) mit einem Klick für Ihre Azure Marketplace-Anwendung | Microsoft-Dokumentation
+title: Konfiguration von 1-Klick-SSO (Single Sign-On, einmaliges Anmelden) für Ihre Azure Marketplace-Anwendung
 description: Schritte für die 1-Klick-Konfiguration von SSO für Ihre Anwendung aus dem Azure Marketplace.
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 06/11/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: ergreenl
-ms.openlocfilehash: dac32dd14e006b1187f62389d3bc38e3c30a890f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 97cdedac91fa80c45ec8b36bad4a1368e48e3e81
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791458"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615788"
 ---
-# <a name="one-click-app-configuration-of-single-sign-on"></a>1-Klick-App-Konfiguration für einmaliges Anmelden
+# <a name="one-click-app-configuration-of-single-sign-on-in-azure-active-directory"></a>Konfiguration von 1-Klick-SSO für Ihre App in Azure Active Directory
 
  In diesem Tutorial erfahren Sie, wie Sie die 1-Klick-SSO-Konfiguration für Azure Active Directory (Azure AD)-Anwendungen aus dem Azure Marketplace durchführen, die SAML unterstützen.
 

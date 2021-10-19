@@ -1,133 +1,139 @@
 ---
 title: Bereitstellen von Geräten für Mehrinstanzenfähigkeit in Azure IoT Hub Device Provisioning Service
 description: Bereitstellen von Geräten für Mehrinstanzenfähigkeit mit Ihrer Device Provisioning Service-Instanz (DPS)
-author: wesmc7777
-ms.author: wesmc
-ms.date: 04/10/2019
-ms.topic: conceptual
+author: anastasia-ms
+ms.author: v-stharr
+ms.topic: how-to
+ms.date: 10/02/2021
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e1c8734b6adcf478216aa8d5d123e95e369d5b58
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 595bd473bb70f4c23554998b7240e4ef0ed1183d
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274722"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670289"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Bereitstellen für Mehrinstanzenfähigkeit 
 
-In diesem Artikel wird gezeigt, wie Sie mehrere simulierte symmetrische Schlüsselgeräte für eine Gruppe von IoT-Hubs mithilfe einer [Zuordnungsrichtlinie](concepts-service.md#allocation-policy) auf sichere Weise bereitstellen. Bei den vom Bereitstellungsdienst definierten Zuordnungsrichtlinien werden verschiedene Zuordnungsszenarien unterstützt. Zwei häufige Szenarien sind:
+Diese Anleitung zeigt, wie mehrere simulierte Geräte mit symmetrischem Schlüssel mithilfe einer [Zuweisungsrichtlinie](concepts-service.md#allocation-policy) sicher einer Gruppe von IoT-Hubs zugewiesen werden können. Zuweisungsrichtlinien, die durch den Bereitstellungsdienst definiert werden, unterstützen eine Vielzahl von Zuweisungsszenarien. Zwei häufige Szenarien sind:
 
-* **Geolocation oder Geolatenz**: Wenn ein Gerät von einem Standort an einen anderen verlagert wird, lässt sich die Netzwerklatenz verbessern, indem das Gerät jeweils auf dem IoT Hub bereitgestellt wird, der dem jeweiligen Standort am nächsten liegt. In diesem Szenario wird eine Gruppe mit regionsübergreifenden IoT Hubs für Registrierungen ausgewählt. Für diese Registrierungen wird die Zuordnungsrichtlinie **Niedrigste Latenz** ausgewählt. Diese Richtlinie bewirkt, dass der Device Provisioning Service die Gerätelatenz auswertet und aus der Gruppe mit den IoT Hubs den nächstgelegenen IoT Hub ermittelt. 
+* **Geolocation / GeoLatency**: Wenn sich ein Gerät zwischen Standorten bewegt, wird die Netzwerklatenz verbessert, indem das Gerät dem IoT-Hub zugewiesen wird, der dem jeweiligen Standort am nächsten ist. In diesem Szenario wird eine Gruppe mit regionsübergreifenden IoT Hubs für Registrierungen ausgewählt. Für diese Registrierungen wird die Zuordnungsrichtlinie **Niedrigste Latenz** ausgewählt. Diese Richtlinie bewirkt, dass der Device Provisioning Service die Gerätelatenz auswertet und aus der Gruppe mit den IoT Hubs den nächstgelegenen IoT Hub ermittelt.
 
 * **Mehrinstanzenfähigkeit**: Geräte, die in einer IoT-Lösung verwendet werden, müssen unter Umständen einem bestimmten IoT Hub oder einer Gruppe mit IoT Hubs zugewiesen werden. Für die Lösung kann es erforderlich sein, dass alle Geräte für einen bestimmten Mandanten mit einer bestimmten Gruppe von IoT Hubs kommunizieren. In einigen Fällen kann auch ein Mandant der Besitzer von IoT Hubs sein und erzwingen, dass Geräte seinen IoT Hubs zugewiesen werden.
 
-Diese beiden Szenarien werden häufig kombiniert. Eine mehrinstanzenfähige IoT-Lösung weist beispielsweise Mandantengeräte zu, indem eine Gruppe mit IoT Hubs verwendet wird, die auf mehrere Regionen verteilt sind. Diese Mandantengeräte können dem IoT Hub in dieser Gruppe zugewiesen werden, der basierend auf dem geografischen Standort über die niedrigste Latenz verfügt.
+Es ist üblich, diese beiden Szenarien zu kombinieren. Bei einer mandantenfähigen IoT-Lösung werden beispielsweise die Geräte der Mieter in der Regel einer Gruppe von IoT-Hubs zugewiesen, die über verschiedene Regionen verstreut sind. Diese Mietergeräte können dem IoT-Hub in der Gruppe zugewiesen werden, der je nach geografischem Standort die geringste Latenz aufweist.
 
 In diesem Artikel wird ein Beispiel für ein simuliertes Gerät aus dem [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) verwendet, um zu veranschaulichen, wie Geräte in einem Szenario mit Mehrinstanzenfähigkeit regionsübergreifend bereitgestellt werden. In diesem Artikel führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
-> * Verwenden der Azure CLI, um zwei regionale IoT Hubs (**West US** (USA, Westen) und **East US** (USA, Osten)) zu erstellen
+> * Verwenden Sie die Azure CLI, um zwei regionale IoT-Hubs zu erstellen (**West US 2** und **Ost US**)
 > * Erstellen einer mehrinstanzenfähigen Registrierung
-> * Verwenden der Azure CLI, um zwei regionale Linux-VMs zu erstellen, die als Geräte in denselben Regionen (**West US** (USA, Westen) und **East US** (USA, Osten)) fungieren
+> * Verwenden Sie die Azure CLI, um zwei regionale Linux-VMs zu erstellen, die als Geräte in denselben Regionen fungieren (**West US 2** und **Ost US**)
 > * Einrichten der Entwicklungsumgebung für das Azure IoT C SDK auf beiden Linux-VMs
 > * Simulieren der Geräte, um darzustellen, dass sie für denselben Mandanten in der am nächsten gelegenen Region bereitgestellt wurden
 
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
+>[!IMPORTANT]
+> Einige Regionen können von Zeit zu Zeit Beschränkungen für die Erstellung von virtuellen Maschinen auferlegen. Zum Zeitpunkt der Erstellung dieses Leitfadens erlaubten die Regionen *westus2* und *eastus* die Erstellung von VMs. Wenn Sie in einer dieser Regionen keine VMs erstellen können, können Sie eine andere Region ausprobieren. Weitere Informationen über die Auswahl geografischer Azure-Regionen bei der Erstellung von VMs finden Sie unter [Regionen für virtuelle Maschinen in Azure](../virtual-machines/regions.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Vollständige Bearbeitung der Schnellstartanleitung [Einrichten des IoT Hub Device Provisioning Service über das Azure-Portal](./quick-setup-auto-provision.md).
+* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
+
+* Führen Sie die Schritte im Artikel [Schnellstart: Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) aus.
+
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-two-regional-iot-hubs"></a>Erstellen von zwei regionalen IoT Hubs
 
-In diesem Abschnitt verwenden Sie Azure Cloud Shell, um zwei neue regionale IoT Hubs in den Regionen **West US** (USA, Westen) und **East US** (USA, Osten) für einen Mandanten zu erstellen.
+In diesem Abschnitt werden Sie eine Azure-Ressourcengruppe und zwei neue regionale IoT-Hub-Ressourcen für einen Mandanten erstellen. Ein IoT-Hub wird für die Region **West US 2** und der andere für die Region **Ost US** sein.
 
+>[!IMPORTANT]
+>Es wird empfohlen, für alle in diesem Artikel erstellten Ressourcen die gleiche Ressourcengruppe zu verwenden. Dies erleichtert das Bereinigen nach Abschluss der Schritte in diesem Artikel.
 
-1. Erstellen Sie in Azure Cloud Shell mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+1. Erstellen Sie in der Azure Cloud Shell eine Ressourcengruppe mit dem folgenden Befehl [az group create](/cli/azure/group#az_group_create):
 
-    Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *contoso-us-resource-group* in der Region *eastus* erstellt. Es wird empfohlen, diese Gruppe für alle in diesem Artikel erstellten Ressourcen zu verwenden. Dies erleichtert das Bereinigen nach Abschluss der Schritte in diesem Artikel.
-
-    ```azurecli-interactive 
+    ```azurecli-interactive
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Verwenden Sie Azure Cloud Shell, um mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) in der Region **eastus** einen IoT Hub zu erstellen. Der IoT Hub wird *contoso-us-resource-group* hinzugefügt.
+2. Erstellen Sie einen IoT-Hub am Standort *eastus* und fügen Sie ihn der Ressourcengruppe hinzu, die Sie mit dem folgenden Befehl [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) (ersetzen Sie `{unique-hub-name}` durch Ihren eigenen eindeutigen Namen) erstellt haben:
 
-    Im folgenden Beispiel wird in der Region *eastus* ein IoT Hub mit dem Namen *contoso-east-hub* erstellt. Sie müssen anstelle von **contoso-east-hub** Ihren eigenen eindeutigen Hubnamen verwenden.
-
-    ```azurecli-interactive 
-    az iot hub create --name contoso-east-hub --resource-group contoso-us-resource-group --location eastus --sku S1
-    ```
-    
-    Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen.
-
-3. Verwenden Sie Azure Cloud Shell, um mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) in der Region **westus** einen IoT Hub zu erstellen. Dieser IoT Hub wird ebenfalls *contoso-us-resource-group* hinzugefügt.
-
-    Im folgenden Beispiel wird am Standort *westus* eine IoT Hub-Instanz mit dem Namen *contoso-west-hub* erstellt. Sie müssen anstelle von **contoso-west-hub** Ihren eigenen eindeutigen Hubnamen verwenden.
-
-    ```azurecli-interactive 
-    az iot hub create --name contoso-west-hub --resource-group contoso-us-resource-group --location westus --sku S1
+    ```azurecli-interactive
+    az iot hub create --name {unique-hub-name} --resource-group contoso-us-resource-group --location eastus --sku S1
     ```
 
     Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen.
 
+3. Erstellen Sie nun einen IoT-Hub am Standort *westus2* und fügen Sie ihn mit dem folgenden Befehl [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) (ersetzen Sie `{unique-hub-name}` durch Ihren eigenen eindeutigen Namen) zu der von Ihnen erstellten Ressourcengruppe hinzu:
 
+    ```azurecli-interactive
+    az iot hub create --name {unique-hub-name} --resource-group contoso-us-resource-group --location westus2 --sku S1
+    ```
+
+    Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen.
 
 ## <a name="create-the-multitenant-enrollment"></a>Erstellen der mehrinstanzenfähigen Registrierung
 
-In diesem Abschnitt erstellen Sie eine neue Registrierungsgruppe für die Mandantengeräte.  
+In diesem Abschnitt erstellen Sie eine neue Registrierungsgruppe für die Mietergeräte.  
 
 Der Einfachheit halber wird in diesem Artikel ein [Nachweis des symmetrischen Schlüssels](concepts-symmetric-key-attestation.md) für die Registrierung verwendet. Für eine Lösung mit höherer Sicherheit empfiehlt sich die Verwendung eines [X.509-Zertifikatnachweises](concepts-x509-attestation.md) mit einer Kette von Vertrauensstellungen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Device Provisioning Service-Instanz.
+1. Wählen Sie im Azure-Portal Ihre Device Provisioning Service-Instanz aus.
 
-2. Wählen Sie die Registerkarte **Registrierungen verwalten** aus, und klicken Sie dann oben auf der Seite auf die Schaltfläche **Registrierungsgruppe hinzufügen**. 
+2. Wählen Sie im Menü **Einstellungen** die Option **Registrierungen verwalten** aus.
 
-3. Geben Sie unter **Registrierungsgruppe hinzufügen** die folgenden Informationen ein, und klicken Sie auf die Schaltfläche **Speichern**.
+3. Wählen Sie **+ Anmeldergruppe** hinzufügen.
 
-    **Gruppenname**: Geben Sie **contoso-us-devices** ein.
+4. Geben Sie auf der Seite **Add Enrollment Group** die folgenden Informationen ein:
 
-    **Nachweistyp**: Wählen Sie **Symmetrischer Schlüssel**.
+    **Gruppenname**: Geben Sie *contoso-us-devices* ein.
+
+    **Nachweistyp**: Wählen Sie *Symmetrischer Schlüssel*.
 
     **Schlüssel automatisch generieren**: Dieses Kontrollkästchen sollte bereits aktiviert sein.
 
-    **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie die Option **Niedrigste Latenz**.
+    **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie die Option *Niedrigste Latenz*.
 
-    ![Hinzufügen einer mehrinstanzenfähigen Registrierungsgruppe für den Nachweis des symmetrischen Schlüssels](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
+5. Wählen Sie **Neuen IoT-Hub verknüpfen**
 
+    :::image type="content" source="./media/how-to-provision-multitenant/create-multitenant-enrollment.png" alt-text="Mehrmandantenregistrierungsgruppe für symmetrische Schlüsselbestätigung hinzufügen.":::
 
-4. Klicken Sie unter **Registrierungsgruppe hinzufügen** auf **Neuen IoT Hub verknüpfen**, um die beiden regionalen Hubs zu verknüpfen.
+6. Geben Sie auf der Seite **Link zu IoT-Hub** hinzufügen die folgenden Informationen ein:
 
     **Abonnement**: Wenn Sie über mehrere Abonnements verfügen, sollten Sie das Abonnement auswählen, in dem Sie die IoT Hubs für die Regionen erstellt haben.
 
-    **IoT Hub**: Wählen Sie einen der regionalen Hubs aus, die Sie erstellt haben.
+    **IoT-Hub**: Wählen Sie den IoT-Hub, den Sie für den Standort *eastus* erstellt haben.
 
-    **Zugriffsrichtlinie**: Wählen Sie **iothubowner** aus.
+    **Zugangsrichtlinie**: Wählen Sie *iothubowner*.
 
-    ![Verknüpfen der regionalen IoT Hubs mit dem Provisioning Service](./media/how-to-provision-multitenant/link-regional-hubs.png)
+    :::image type="content" source="./media/how-to-provision-multitenant/link-regional-hubs.png" alt-text="Verknüpfen Sie die regionalen IoT-Hubs mit dem Bereitstellungsdienst.":::
 
+7. Wählen Sie **Speichern** aus.
 
-5. Nachdem die beiden regionalen IoT Hubs verknüpft wurden, müssen Sie sie für die Registrierungsgruppe auswählen und auf **Speichern** klicken, um die regionale IoT Hub-Gruppe für die Registrierung zu erstellen.
+8. Wiederholen Sie die Schritte 5 bis 7 für den zweiten IoT-Hub, den Sie für den Standort *Westgus* erstellt haben.
 
-    ![Erstellen der regionalen Hubgruppe für die Registrierung](./media/how-to-provision-multitenant/enrollment-regional-hub-group.png)
+9. Wählen Sie die beiden IoT-Hubs, die Sie in der Dropdown-Liste **Wählen Sie die IoT-Hubs, denen diese Gruppe zugewiesen werden soll**.
 
+    :::image type="content" source="./media/how-to-provision-multitenant/enrollment-regional-hub-group.png" alt-text="Wählen Sie die verknüpften IoT-Hubs.":::
 
-6. Öffnen Sie die Registrierungsgruppe nach dem Speichern erneut, und notieren Sie sich den **Primärschlüssel**. Sie müssen die Registrierung speichern, damit die Schlüssel generiert werden. Mit diesem Schlüssel werden später eindeutige Geräteschlüssel für beide simulierten Geräte generiert.
+10. Wählen Sie **Speichern** aus.
 
+11. Wählen Sie *contoso-us-devices* in der Liste der Anmeldungsgruppen.
+
+12. Kopieren Sie den *Primärschlüssel*. Dieser Schlüssel wird später verwendet, um eindeutige Geräteschlüssel für beide simulierten Geräte zu erzeugen.
+
+    :::image type="content" source="./media/how-to-provision-multitenant/copy-primary-key.png" alt-text="Kopieren Sie den Primärschlüssel":::.
 
 ## <a name="create-regional-linux-vms"></a>Erstellen von regionalen Linux-VMs
 
-In diesem Abschnitt erstellen Sie zwei regionale virtuelle Linux-Computer (VMs). Auf diesen VMs wird ein Beispiel für eine Gerätesimulation aus jeder Region ausgeführt, um die Gerätebereitstellung für Mandantengeräte aus beiden Regionen zu veranschaulichen.
+In diesem Abschnitt werden Sie zwei regionale virtuelle Linux-Maschinen (VMs) erstellen. Auf diesen VMs wird ein Beispiel für eine Gerätesimulation aus jeder Region ausgeführt, um die Gerätebereitstellung für Mandantengeräte aus beiden Regionen zu veranschaulichen.
 
-Zur Vereinfachung der Bereinigung werden diese VMs derselben Ressourcengruppe hinzugefügt, in der die erstellten IoT Hubs enthalten sind: *contoso-us-resource-group*. Die VMs werden allerdings in separaten Regionen (**USA, Westen** und **USA, Osten**) ausgeführt.
+Zur Vereinfachung der Bereinigung werden diese VMs derselben Ressourcengruppe hinzugefügt, in der die erstellten IoT Hubs enthalten sind: *contoso-us-resource-group*. Die VMs werden jedoch in separaten Regionen ausgeführt (**West US 2** und **Ost US**).
 
-1. Führen Sie in Azure Cloud Shell den folgenden Befehl aus, um eine VM in der Region **USA, Osten** zu erstellen, nachdem im Befehl die folgenden Parameteränderungen vorgenommen wurden:
+1. Führen Sie in der Azure Cloud Shell den folgenden Befehl aus, um eine VM der Region **East US** zu erstellen, nachdem Sie die folgenden Parameteränderungen im Befehl vorgenommen haben:
 
-    **--name**: Geben Sie einen eindeutigen Namen für den virtuellen Computer in der Region **USA, Osten** ein. 
+    **--name**: Geben Sie einen eindeutigen Namen für den virtuellen Computer in der Region **USA, Osten** ein.
 
     **--admin-username**: Verwenden Sie Ihren eigenen Administratorbenutzernamen.
 
@@ -142,13 +148,16 @@ Zur Vereinfachung der Bereinigung werden diese VMs derselben Ressourcengruppe hi
     --admin-username contosoadmin \
     --admin-password myContosoPassword2018 \
     --authentication-type password
+    --public-ip-sku Standard
     ```
 
-    Die Ausführung dieses Befehls dauert einige Minuten. Notieren Sie sich nach Abschluss des Befehls den Wert von **publicIpAddress** für Ihre VM in der Region „USA, Osten“.
+    Die Ausführung dieses Befehls dauert einige Minuten. 
 
-1. Führen Sie in Azure Cloud Shell den Befehl aus, um eine VM in der Region **USA, Westen** zu erstellen, nachdem im Befehl die folgenden Parameteränderungen vorgenommen wurden:
+2. Kopieren Sie nach Abschluss des Befehls den Wert **publicIpAddress** für Ihre VM der Region East US.
 
-    **--name**: Geben Sie einen eindeutigen Namen für den virtuellen Computer in der Region **USA, Westen** ein. 
+3. Führen Sie in der Azure Cloud Shell den Befehl zum Erstellen einer VM der Region **West US 2** aus, nachdem Sie die folgenden Parameteränderungen im Befehl vorgenommen haben:
+
+    **--name**: Geben Sie einen eindeutigen Namen für Ihre regionale Geräte-VM **West US 2** ein. 
 
     **--admin-username**: Verwenden Sie Ihren eigenen Administratorbenutzernamen.
 
@@ -157,19 +166,24 @@ Zur Vereinfachung der Bereinigung werden diese VMs derselben Ressourcengruppe hi
     ```azurecli-interactive
     az vm create \
     --resource-group contoso-us-resource-group \
-    --name ContosoSimDeviceWest \
-    --location westus \
+    --name ContosoSimDeviceWest2 \
+    --location westus2 \
     --image Canonical:UbuntuServer:18.04-LTS:18.04.201809110 \
     --admin-username contosoadmin \
     --admin-password myContosoPassword2018 \
     --authentication-type password
+    --public-ip-sku Standard
     ```
 
-    Die Ausführung dieses Befehls dauert einige Minuten. Notieren Sie sich nach Abschluss des Befehls den Wert von **publicIpAddress** für Ihre VM in der Region „USA, Westen“.
+    Die Ausführung dieses Befehls dauert einige Minuten.
 
-1. Öffnen Sie zwei Befehlszeilenshells. Stellen Sie in jeder Shell eine Verbindung mit einem der regionalen virtuellen Computer her, indem Sie SSH verwenden. 
+4. Kopieren Sie nach Abschluss des Befehls den Wert **publicIpAddress** für Ihre VM der Region West US 2.
 
-    Übergeben Sie Ihren Administratorbenutzernamen und die öffentliche IP-Adresse, die Sie sich für den virtuellen Computer notiert haben, als Parameter an SSH. Geben Sie das Administratorkennwort ein, wenn Sie dazu aufgefordert werden.
+5. Öffnen Sie zwei Befehlszeilenshells.
+
+6. Stellen Sie in jeder Shell eine Verbindung mit einem der regionalen virtuellen Computer her, indem Sie SSH verwenden.
+
+    Übergeben Sie Ihren Admin-Benutzernamen und die öffentliche IP-Adresse, die Sie kopiert haben, als Parameter an SSH. Geben Sie das Administratorkennwort ein, wenn Sie dazu aufgefordert werden.
 
     ```bash
     ssh contosoadmin@1.2.3.4
@@ -183,22 +197,22 @@ Zur Vereinfachung der Bereinigung werden diese VMs derselben Ressourcengruppe hi
     contosoadmin@ContosoSimDeviceWest:~$
     ```
 
-
-
 ## <a name="prepare-the-azure-iot-c-sdk-development-environment"></a>Vorbereiten der Azure IoT C SDK-Entwicklungsumgebung
 
-In diesem Abschnitt klonen Sie das Azure IoT C SDK auf jedem virtuellen Computer. Das SDK enthält ein Beispiel, mit dem die Gerätebereitstellung eines Mandanten in jeder Region simuliert wird.
+In diesem Abschnitt klonen Sie das Azure IoT C SDK auf jeder VM. Das SDK enthält ein Beispiel, das die Gerätebereitstellung eines Mandanten aus jeder Region simuliert.
 
-1. Installieren Sie für jede VM **CMake**, **g++**, **gcc** und [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) mit den folgenden Befehlen:
+Für jede VM:
+
+1. Installieren Sie **CMake**, **g++** , **gcc** und [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) mit den folgenden Befehlen:
 
     ```bash
     sudo apt-get update
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
-1. Suchen Sie den Tagnamen für das [aktuelle Release](https://github.com/Azure/azure-iot-sdk-c/releases/latest) des SDK.
+2. Suchen und kopieren Sie den Tag-Namen für die [neueste Version](https://github.com/Azure/azure-iot-sdk-c/releases/latest) des SDK.
 
-1. Klonen Sie das [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) auf beiden VMs.  Verwenden Sie das im vorherigen Schritt gefundene Tag als Wert für den Parameter `-b`:
+3. Klonen Sie das [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) auf beiden VMs.  Verwenden Sie das im vorherigen Schritt gefundene Tag als Wert für den Parameter `-b`:
 
     ```bash
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -208,113 +222,93 @@ In diesem Abschnitt klonen Sie das Azure IoT C SDK auf jedem virtuellen Computer
 
     Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
 
-1. Erstellen Sie für beide VMs im Repository einen neuen Ordner **cmake**, und wechseln Sie in diesen Ordner.
+4. Erstellen Sie einen neuen Ordner **cmake** innerhalb des Repositorys und wechseln Sie in diesen Ordner.
 
     ```bash
     mkdir ~/azure-iot-sdk-c/cmake
     cd ~/azure-iot-sdk-c/cmake
     ```
 
-1. Führen Sie für beide VMs den folgenden Befehl aus, um eine spezifische SDK-Version für Ihre Entwicklungsclientplattform zu erstellen. 
+5. Führen Sie den folgenden Befehl aus, der eine für Ihre Entwicklungs-Client-Plattform spezifische Version des SDK erstellt:
 
     ```bash
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    Nach erfolgreicher Erstellung ähneln die letzten Ausgabezeilen der folgenden Ausgabe:
+6. Nach erfolgreicher Erstellung ähneln die letzten Ausgabezeilen der folgenden Ausgabe:
 
     ```bash
-    -- IoT Client SDK Version = 1.2.9
-    -- Provisioning client ON
-    -- Provisioning SDK Version = 1.2.9
+    -- IoT Client SDK Version = 1.7.0
+    -- Provisioning SDK Version = 1.7.0
+    -- Looking for include file stdint.h
+    -- Looking for include file stdint.h - found
+    -- Looking for include file stdbool.h
+    -- Looking for include file stdbool.h - found
     -- target architecture: x86_64
-    -- Checking for module 'libcurl'
-    --   Found libcurl, version 7.58.0
-    -- Found CURL: curl
-    -- target architecture: x86_64
-    -- target architecture: x86_64
-    -- target architecture: x86_64
+    -- Performing Test CXX_FLAG_CXX11
+    -- Performing Test CXX_FLAG_CXX11 - Success
+    -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1")
+    -- Found CURL: /usr/lib/x86_64-linux-gnu/libcurl.so (found version "7.58.0")
+    -- Found CURL: /usr/lib/x86_64-linux-gnu/libcurl.so
     -- target architecture: x86_64
     -- iothub architecture: x86_64
-    -- target architecture: x86_64
     -- Configuring done
     -- Generating done
-    -- Build files have been written to: /home/contosoadmin/azure-iot-sdk-c/cmake
-    ```    
-
+    -- Build files have been written to: /home/contosoadmin/azure-iot-sdk-c/azure-iot-sdk-c
+    ```
 
 ## <a name="derive-unique-device-keys"></a>Ableiten eindeutiger Geräteschlüssel
 
-Bei Verwendung des Nachweises des symmetrischen Schlüssels mit Gruppenregistrierungen verwenden Sie die Registrierungsgruppenschlüssel nicht direkt. Stattdessen erstellen Sie einen eindeutigen abgeleiteten Schlüssel für jedes Gerät. Hierbei helfen Ihnen die Informationen zu [Gruppenregistrierungen](concepts-symmetric-key-attestation.md#group-enrollments) mit symmetrischen Schlüsseln weiter.
+Bei Verwendung des Nachweises des symmetrischen Schlüssels mit Gruppenregistrierungen verwenden Sie die Registrierungsgruppenschlüssel nicht direkt. Stattdessen leiten Sie für jedes Gerät einen eindeutigen Schlüssel aus dem Gruppenschlüssel für die Registrierung ab. Weitere Informationen finden Sie unter [Gruppenregistrierungen mit symmetrischen Schlüsseln](concepts-symmetric-key-attestation.md#group-enrollments).
 
-Verwenden Sie für die Generierung des Geräteschlüssels den Gruppenhauptschlüssel, um einen [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)-Wert für die eindeutige Registrierungs-ID für das Gerät zu berechnen und das Ergebnis in das Base64-Format zu konvertieren.
+In diesem Teil des Tutorials erzeugen Sie einen Geräteschlüssel aus dem Hauptschlüssel der Gruppe, um eine [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) der eindeutigen Registrierungs-ID für das Gerät zu berechnen. Das Ergebnis wird dann in das Base64-Format konvertiert.
 
-Fügen Sie Ihren Gruppenhauptschlüssel nicht in Ihren Gerätecode ein.
+>[!IMPORTANT]
+>Fügen Sie Ihren Gruppenhauptschlüssel nicht in Ihren Gerätecode ein.
 
-Verwenden Sie das Bash Shell-Beispiel, um mit **openssl** einen abgeleiteten Geräteschlüssel für jedes Gerät zu erstellen.
+Für **beide** *eastus* und *westus 2* Geräte:
 
-- Ersetzen Sie den Wert für **KEY** durch den **Primärschlüssel**, den Sie sich zuvor für Ihre Registrierung notiert haben.
+1. Erzeugen Sie Ihren eindeutigen Schlüssel mit **openssl**. Verwenden Sie das folgende Bash-Shell-Skript (ersetzen Sie `{primary-key}` durch den **Primärschlüssel** der Registrierungsgruppe, den Sie zuvor kopiert haben, und ersetzen Sie `{contoso-simdevice-east}` durch Ihre eigene eindeutige Registrierungs-ID für jedes Gerät. Verwenden Sie Kleinbuchstaben und Bindestriche ('-'), um beide IDs zu definieren):
 
-- Ersetzen Sie den Wert für **REG_ID** durch Ihre eigene eindeutige Registrierungs-ID für jedes Gerät. Verwenden Sie alphanumerische Kleinbuchstaben und Bindestriche („-“), um beide IDs zu definieren.
+    ```bash
+    KEY={primary-key}
+    REG_ID={contoso-simdevice}
+    
+    keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+    echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
+    ```
 
-Beispiel für die Generierung eines Geräteschlüssels für *contoso-simdevice-east*:
+2. Das Skript gibt in etwa den folgenden Schlüssel aus:
 
-```bash
-KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
-REG_ID=contoso-simdevice-east
+    ```bash
+    p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=
+    ```
 
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
-```
-
-```bash
-p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=
-```
-
-Beispiel für die Generierung eines Geräteschlüssels für *contoso-simdevice-west*:
-
-```bash
-KEY=rLuyBPpIJ+hOre2SFIP9Ajvdty3j0EwSP/WvTVH9eZAw5HpDuEmf13nziHy5RRXmuTy84FCLpOnhhBPASSbHYg==
-REG_ID=contoso-simdevice-west
-
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
-```
-
-```bash
-J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
-```
-
-
-Für die Mandantengeräte werden jeweils der abgeleitete Geräteschlüssel und die eindeutige Registrierungs-ID verwendet, um den Nachweis symmetrischer Schlüssel mit den Registrierungsgruppen während der Bereitstellung auf den Mandanten-IoT Hubs durchzuführen.
-
-
-
+3. Jetzt verfügt jedes Mietergerät über einen eigenen abgeleiteten Geräteschlüssel und eine eindeutige Registrierungs-ID, um während des Bereitstellungsprozesses eine symmetrische Schlüsselbestätigung mit der Registrierungsgruppe durchzuführen.
 
 ## <a name="simulate-the-devices-from-each-region"></a>Simulieren der Geräte aus den einzelnen Regionen
 
+In diesem Abschnitt aktualisieren Sie ein Bereitstellungsbeispiel im Azure IoT C SDK für die beiden regionalen VMs. 
 
-In diesem Abschnitt aktualisieren Sie ein Bereitstellungsbeispiel im Azure IoT C SDK für beide regionalen VMs. 
-
-Der Beispielcode simuliert eine Gerätestartsequenz, über die die Bereitstellungsanforderung an die Instanz des Device Provisioning-Diensts gesendet wird. Die Startsequenz bewirkt, dass das Gerät erkannt und dem IoT Hub zugewiesen wird, der bezogen auf die Latenz am nächsten liegt.
+Der Beispielcode simuliert eine Gerätestartsequenz, über die die Bereitstellungsanforderung an die Instanz des Device Provisioning-Diensts gesendet wird. Die Boot-Sequenz führt dazu, dass das Gerät erkannt und dem IoT-Hub zugewiesen wird, der auf der Grundlage der Latenzzeit am nächsten liegt.
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihre Device Provisioning Service-Instanz, und notieren Sie sich den Wert unter **_ID-Bereich_**.
 
-    ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/copy-id-scope.png) 
+    :::image type="content" source="./media/how-to-provision-multitenant/copy-id-scope.png" alt-text="Extrahieren Sie Gerätebereitstellungsservice-Endpunktinformationen aus dem Portal-Blade.":::
 
-1. Öffnen Sie **~/azure-iot-sdk-c/provisioning\_client/samples/prov\_dev\_client\_sample/prov\_dev\_client\_sample.c** auf beiden VMs für die Bearbeitung.
+2. Öffnen Sie auf beiden VMS **~/azure-iot-sdk-c/provisioning\_client/samples/prov\_dev\_client\_sample/prov\_dev\_client\_sample.c** zur Bearbeitung.
 
     ```bash
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
     ```
 
-1. Suchen Sie die Konstante `id_scope`, und ersetzen Sie den Wert durch Ihren **ID-Bereich**-Wert, den Sie zuvor kopiert haben. 
+3. Suchen Sie auf beiden VMs die Konstante `id_scope`, und ersetzen Sie den Wert durch den zuvor kopierten Wert **ID Scope**. 
 
     ```c
     static const char* id_scope = "0ne00002193";
     ```
 
-1. Suchen Sie die Definition für die Funktion `main()` in der gleichen Datei. Stellen Sie sicher, dass die Variable `hsm_type` wie unten gezeigt für die Nachweismethode für Registrierungsgruppen auf `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` festgelegt ist. 
+4. Suchen Sie auf beiden VMs die Definition für die Funktion `main()` in derselben Datei. Stellen Sie sicher, dass die Variable `hsm_type` wie unten gezeigt für die Nachweismethode für Registrierungsgruppen auf `SECURE_DEVICE_TYPE_SYMMETRIC_KEY` festgelegt ist. 
 
     Speichern Sie Ihre Änderungen an den Dateien auf beiden VMs.
 
@@ -325,14 +319,14 @@ Der Beispielcode simuliert eine Gerätestartsequenz, über die die Bereitstellun
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-1. Suchen Sie auf beiden VMs den Aufruf zum `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c**, der auskommentiert ist.
+5. Suchen Sie auf beiden VMs den Aufruf zum `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c**, der auskommentiert ist.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Heben Sie die Auskommentierung für die Funktionsaufrufe auf, und ersetzen Sie die Platzhalterwerte (einschließlich der spitzen Klammern) durch die eindeutige Registrierungs-ID und abgeleiteten Geräteschlüssel für jedes Gerät. Die nachfolgenden Schlüssel dienen nur als Beispiel. Verwenden Sie die zuvor erstellten Schlüssel.
+    Dekommentieren Sie die Funktionsaufrufe und ersetzen Sie die Platzhalterwerte (einschließlich der spitzen Klammern) durch die eindeutigen Registrierungs-IDs und abgeleiteten Geräteschlüssel für jedes Gerät, die Sie im vorherigen Abschnitt abgeleitet haben. Die nachfolgenden Schlüssel dienen nur als Beispiel. Verwenden Sie die zuvor erstellten Schlüssel.
 
     USA, Osten:
     ```c
@@ -346,16 +340,16 @@ Der Beispielcode simuliert eine Gerätestartsequenz, über die die Bereitstellun
     prov_dev_set_symmetric_key_info("contoso-simdevice-west", "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=");
     ```
 
-    Speichern Sie die Dateien.
+6. Speichern Sie die Datei auf beiden VMs.
 
-1. Navigieren Sie auf beiden VMs zum unten angegebenen Beispielordner, und erstellen Sie das Beispiel.
+7. Navigieren Sie auf beiden VMs zum unten angegebenen Beispielordner, und erstellen Sie das Beispiel.
 
     ```bash
     cd ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/
     cmake --build . --target prov_dev_client_sample --config Debug
     ```
 
-1. Führen Sie nach der erfolgreichen Erstellung **prov\_dev\_client\_sample.exe** auf beiden VMs aus, um ein Mandantengerät aus jeder Region zu simulieren. Beachten Sie, dass jedes Gerät dem Mandanten-IoT Hub zugeordnet ist, der den Regionen des simulierten Geräts am nächsten liegt.
+8. Führen Sie nach der erfolgreichen Erstellung **prov\_dev\_client\_sample.exe** auf beiden VMs aus, um ein Mandantengerät aus jeder Region zu simulieren. Beachten Sie, dass jedes Gerät dem Mandanten-IoT Hub zugeordnet ist, der den Regionen des simulierten Geräts am nächsten liegt.
 
     Führen Sie die Simulation aus:
     ```bash
@@ -394,13 +388,11 @@ Der Beispielcode simuliert eine Gerätestartsequenz, über die die Bereitstellun
     Press enter key to exit:
     ```
 
-
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die in diesem Artikel erstellten Ressourcen weiterverwenden möchten, können Sie sie beibehalten. Wenn Sie nicht beabsichtigen, die Ressourcen weiterzuverwenden, führen Sie die folgenden Schritte aus, um alle in diesem Artikel erstellten Ressourcen zu löschen und unnötige Kosten zu vermeiden.
+Wenn Sie die in diesem Artikel erstellten Ressourcen weiterverwenden möchten, können Sie sie beibehalten. Andernfalls gehen Sie wie folgt vor, um alle von diesem Artikel erstellten Ressourcen zu löschen, um unnötige Kosten zu vermeiden.
 
-Bei dieser Vorgehensweise wird davon ausgegangen, dass Sie alle in diesem Artikel verwendeten Ressourcen gemäß den Anweisungen in der Ressourcengruppe **contoso-us-resource-group** erstellt haben.
+Die folgenden Schritte gehen davon aus, dass Sie alle Ressourcen in diesem Artikel wie beschrieben in derselben Ressourcengruppe mit dem Namen **contoso-us-resource-group** erstellt haben.
 
 > [!IMPORTANT]
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Wenn Sie die IoT Hub-Ressource in einer bereits vorhandenen Ressourcengruppe erstellt haben, die Ressourcen enthält, die Sie behalten möchten, löschen Sie nicht die Ressourcengruppe, sondern nur die IoT Hub-Ressource.
@@ -408,17 +400,19 @@ Bei dieser Vorgehensweise wird davon ausgegangen, dass Sie alle in diesem Artike
 
 Löschen Sie die Ressourcengruppen wie folgt nach Namen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Geben Sie im Textfeld **Nach Name filtern...** den Namen der Ressourcengruppe ein, die Ihre Ressourcen enthält: **contoso-us-resource-group**. 
+2. Klicken Sie auf **Ressourcengruppen**.
 
-3. Klicken Sie in der Ergebnisliste rechts neben Ihrer Ressourcengruppe auf **...** und dann auf **Ressourcengruppe löschen**.
+3. Geben Sie im Textfeld **Nach Name filtern...** den Namen der Ressourcengruppe ein, die Ihre Ressourcen enthält: **contoso-us-resource-group**.
 
-4. Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung erneut den Namen Ihrer Ressourcengruppe ein, und klicken Sie anschließend auf **Löschen**. Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
+4. Klicken Sie in der Ergebnisliste rechts neben Ihrer Ressourcengruppe auf **...** und dann auf **Ressourcengruppe löschen**.
+
+5. Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie den Namen Ihrer Ressourcengruppe zur Bestätigung erneut ein, und wählen Sie **Löschen** aus. Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur erneuten Bereitstellung finden Sie unter
+* Weitere Informationen über Reprovisionierung finden Sie unter:
 
 > [!div class="nextstepaction"]
 > [IoT Hub Device-Konzepte für die erneute Bereitstellung](concepts-device-reprovision.md)

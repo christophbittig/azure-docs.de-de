@@ -13,16 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: f873bec75d0454aed2c6569a8f8dfaa7eaab9868
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: cf094664fab07e9a75c890899dff9cd0118d12fc
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122350827"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614401"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Regionsübergreifender Lastenausgleich (Vorschau)
-
-Azure Load Balancer verteilt Datenflüsse, die beim Lastenausgleichs-Front-End eingehen, auf Instanzen des Back-End-Pools.
 
 Azure Load Balancer Standard unterstützt regionsübergreifenden Lastenausgleich, wodurch georedundante Hochverfügbarkeitsszenarien ermöglicht werden, beispielsweise:
 
@@ -37,8 +35,6 @@ Azure Load Balancer Standard unterstützt regionsübergreifenden Lastenausgleich
 > [!IMPORTANT]
 > Die regionsübergreifende Lastenausgleichslösung befindet sich derzeit in der Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Der regionsübergreifende Lastenausgleich bietet die gleichen Vorteile wie Hochleistung und niedrige Latenz wie der regionale Standardlastenausgleich. 
 
 Die Front-End-IP-Konfiguration Ihres regionsübergreifenden Lastenausgleichs ist statisch und wird in den [meisten Azure-Regionen](#participating-regions) angekündigt.
 
@@ -108,7 +104,7 @@ In der **Startregion** wird der regionsübergreifende Load Balancer oder die öf
 > [!NOTE]
 > Sie können Ihren regionsübergreifenden Load Balancer oder die öffentliche IP-Adresse der globalen Ebene nur in einer der sieben oben aufgeführten Regionen bereitstellen.
 
-In einer **teilnehmenden Region** ist die globale öffentliche IP-Adresse des Load Balancers verfügbar. 
+In einer **teilnehmenden Region** wird die globale öffentliche IP-Adresse des Lastenausgleichs angekündigt.
 
 Der vom Benutzer gestartete Datenverkehr wird über das Microsoft-Kernnetzwerk in die nächstgelegene teilnehmende Region übertragen. 
 

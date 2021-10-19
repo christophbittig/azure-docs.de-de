@@ -3,67 +3,69 @@ title: Azure Monitor Application Insights Java
 description: Überwachung der Anwendungsleistung ohne Codeänderungen für Java-Anwendungen, die in einer beliebigen Umgebung ausgeführt werden. Verteilte Ablaufverfolgung und Anwendungszuordnung.
 ms.topic: conceptual
 ms.date: 06/24/2021
-author: MS-jgol
 ms.custom: devx-track-java
-ms.author: jgol
-ms.openlocfilehash: 900430b1b1897479b4551c9e12e28ad87eaf0ad9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: 9ebfaea28e249af5f8ecd140e08178398f38fd6f
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642375"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858297"
 ---
-# <a name="java-codeless-application-monitoring-with-azure-monitor-application-insights"></a>Java-Anwendungsüberwachung ohne Code mit Azure Monitor Application Insights
+# <a name="azure-monitor-opentelemetry-based-auto-instrumentation-for-java-applications"></a>Azure Monitor OpenTelemetry-basierte automatische Instrumentierung für Java-Anwendungen
 
-> [!NOTE]
-> Die alte 2.x-Dokumentation finden Sie [hier](./java-2x-get-started.md).
+In diesem Artikel wird beschrieben, wie Sie das OpenTelemetry-basierte Java-Angebot von Azure Monitor aktivieren und konfigurieren. Wenn Sie die Anweisungen in diesem Artikel befolgen, können Sie Azure Monitor Application Insights zum Überwachen Ihrer Anwendung verwenden.
 
-Bei der Java-Anwendungsüberwachung ohne Code geht es um Einfachheit. Es gibt keine Codeänderungen, und der Java-Agent kann durch nur wenige Konfigurationsänderungen aktiviert werden.
+## <a name="get-started"></a>Erste Schritte
+Die automatische Java-Instrumentierung kann ohne Codeänderungen aktiviert werden.
 
-Der Java-Agent kann in jeder Umgebung verwendet werden und ermöglicht Ihnen die Überwachung aller Ihrer Java-Anwendungen. Anders ausgedrückt: Ganz gleich, ob Sie Ihre Java-Apps auf VMs, lokal, in AKS, unter Windows oder unter Linux ausführen – Sie nennen die App, und der Application Insights Java-Agent überwacht sie.
+### <a name="prerequisites"></a>Voraussetzungen
+- Java-Anwendung ab Version 8
+- Azure-Abonnement ([kostenloses Azure-Abonnement erstellen](https://azure.microsoft.com/free/))
+- Application Insights-Ressource ([Application Insights-Ressource erstellen](create-workspace-resource.md#create-workspace-based-resource))
 
-Das Java 2.x-SDK von Application Insights muss nicht mehr zu Ihrer Anwendung hinzugefügt werden, da der Application Insights Java 3.x-Agent Anforderungen, Abhängigkeiten und Protokolle eigenständig und automatisch sammelt.
+### <a name="enable-azure-monitor-application-insights"></a>Aktivieren von Azure Monitor Application Insights
+**1. Herunterladen der JAR-Datei für die automatische Instrumentierung**
 
-Sie können weiterhin benutzerdefinierte Telemetriedaten aus Ihrer Anwendung senden.
-Der 3.x-Agent überwacht und korreliert diese zusammen mit der gesamten automatisch gesammelten Telemetrie.
+#### <a name="1-download-jar-file"></a>1. Herunterladen der JAR-Datei
 
-Der 3.x-Agent unterstützt Java 8 und höher.
-
-## <a name="quickstart"></a>Schnellstart
-
-**1. Herunterladen des Agents**
-
-> [!WARNING]
-> **Bei einem Upgrade von Vorschauversion 3.0**
->
-> Lesen Sie sich sorgfältig alle [Konfigurationsoptionen](./java-standalone-config.md) durch, da neben dem Dateinamen, der nun komplett in Kleinbuchstaben geschrieben wird, auch die JSON-Struktur vollständig geändert wurde.
+Laden Sie die Datei [applicationinsights-agent-3.2.0.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.2.0/applicationinsights-agent-3.2.0.jar) herunter.
 
 > [!WARNING]
-> **Bei einem Upgrade von 3.0.x**
+> 
+> - **Bei einem Upgrade von Vorschauversion 3.0**
 >
-> Die Vorgangs- und Anforderungstelemetrienamen enthalten jetzt die HTTP-Methode (`GET`, `POST` usw.) als Präfix.
-> Dies kann sich auf benutzerdefinierte Dashboards oder Warnungen auswirken, wenn sie die vorherigen, keinen Präfix aufweisenden Werte verwenden.
-> Weitere Informationen finden Sie in den [Versionshinweisen zu Version 3.1.0](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.1.0).
+>    Lesen Sie sich sorgfältig alle [Konfigurationsoptionen](./java-standalone-config.md) durch, da neben dem Dateinamen, der nun komplett in Kleinbuchstaben geschrieben wird, auch die JSON-Struktur vollständig geändert wurde.
+> 
+> - **Bei einem Upgrade von 3.0.x**
+> 
+>    Die Vorgangs- und Anforderungstelemetrienamen enthalten jetzt die HTTP-Methode (`GET`, `POST` usw.) als Präfix.
+>    Dies kann sich auf benutzerdefinierte Dashboards oder Warnungen auswirken, wenn diese auf den vorherigen Werten basieren.
+>    Weitere Informationen finden Sie in den [Versionshinweisen zu Version 3.1.0](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.1.0).
+>
+> - **Bei einem Upgrade von 3.1.x**
+> 
+>    Datenbankabhängigkeitsnamen sind jetzt präziser, und die vollständige (bereinigte) Abfrage ist weiterhin im Feld `data` vorhanden. Außerdem sind HTTP-Abhängigkeitsnamen jetzt aussagekräftiger.
+>    Dies kann sich auf benutzerdefinierte Dashboards oder Warnungen auswirken, wenn diese auf den vorherigen Werten basieren.
+>    Weitere Informationen finden Sie in den [Versionshinweisen zu Version 3.2.0](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.2.0).
 
-Laden Sie [applicationinsights-agent-3.1.1.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.1.1/applicationinsights-agent-3.1.1.jar) herunter.
+#### <a name="2-point-the-jvm-to-the-jar-file"></a>2. Verweisen der JVM auf die JAR-Datei
 
-**2. Verweisen der JVM auf den Agent**
+Fügen Sie den JVM-Argumenten Ihrer Anwendung den Eintrag `-javaagent:path/to/applicationinsights-agent-3.2.0.jar` hinzu. 
 
-Fügen Sie den JVM-Argumenten Ihrer Anwendung den Eintrag `-javaagent:path/to/applicationinsights-agent-3.1.1.jar` hinzu. 
+> [!TIP]
+> Informationen zum Konfigurieren der JVM-Argumente Ihrer Anwendung finden Sie unter [Tipps für das Updaten Ihrer JVM-Argumente](./java-standalone-arguments.md).
 
-Informationen zum Konfigurieren der JVM-Argumente Ihrer Anwendung finden Sie unter [Tipps für das Updaten Ihrer JVM-Argumente](./java-standalone-arguments.md).
+#### <a name="3-set-application-insights-connection-string"></a>3. Festlegen der Application Insights-Verbindungszeichenfolge
 
-**3. Verweisen des Agents auf die Application Insights-Ressource**
+Verweisen Sie die JAR-Datei auf Ihre Application Insights-Ressource, indem Sie eine Umgebungsvariable festlegen:
 
-Wenn Sie noch nicht über eine Application Insights-Ressource verfügen, können Sie eine neue Ressource erstellen, indem Sie die Schritte im [Leitfaden zum Erstellen einer Ressource](./create-new-resource.md) ausführen.
-
-Verweisen Sie den Agent auf Ihre Application Insights-Ressource, indem Sie eine Umgebungsvariable festlegen:
-
-```
+```console
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-Sie können aber auch eine Konfigurationsdatei mit dem Namen `applicationinsights.json` erstellen und sie im gleichen Verzeichnis wie `applicationinsights-agent-3.1.1.jar` mit folgendem Inhalt ablegen:
+Sie können aber auch eine Konfigurationsdatei mit dem Namen `applicationinsights.json` erstellen und sie im gleichen Verzeichnis wie `applicationinsights-agent-3.2.0.jar` mit folgendem Inhalt ablegen:
 
 ```json
 {
@@ -71,16 +73,21 @@ Sie können aber auch eine Konfigurationsdatei mit dem Namen `applicationinsight
 }
 ```
 
-Die Verbindungszeichenfolge finden Sie in der Application Insights-Ressource:
+Suchen Sie die Verbindungszeichenfolge in Ihrer Application Insights-Ressource.
 
 :::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights-Verbindungszeichenfolge":::
 
-**4. Das war's schon!**
+#### <a name="4-confirm-data-is-flowing"></a>4. Bestätigen des Datenflusses
 
-Starten Sie nun Ihre Anwendung, und wechseln Sie zur Application Insights-Ressource im Azure-Portal, um die Überwachungsdaten anzuzeigen.
+Führen Sie Ihre Anwendung aus, und öffnen Sie die Registerkarte der Application Insights-Ressource im Azure-Portal. Es kann einige Minuten dauern, bis Daten im Portal angezeigt werden.
 
 > [!NOTE]
-> Es kann einige Minuten dauern, bis die Überwachungsdaten im Portal angezeigt werden.
+> Wenn Sie die Anwendung nicht ausführen oder Daten nicht wie erwartet abrufen können, navigieren Sie zu [Problembehandlung](#troubleshooting).
+
+:::image type="content" source="media/opentelemetry/server-requests.png" alt-text="Screenshot der Registerkarte „Übersicht“ von Application Insights mit hervorgehobenen Serveranforderungen und der Serverantwortzeit":::
+
+> [!IMPORTANT]
+> Wenn Sie über zwei oder mehr Dienste verfügen, die Telemetriedaten an dieselbe Application Insights-Ressource ausgeben, müssen Sie [Cloudrollennamen festlegen](java-standalone-config.md#cloud-role-name), um sie ordnungsgemäß in der Anwendungszuordnung darzustellen.
 
 
 ## <a name="configuration-options"></a>Konfigurationsoptionen
@@ -101,7 +108,11 @@ In der Datei `applicationinsights.json` können Sie zusätzlich Folgendes konfig
 
 Ausführliche Informationen finden Sie unter [Konfigurationsoptionen](./java-standalone-config.md).
 
-## <a name="auto-collected-requests"></a>Automatisch gesammelte Anforderungen
+## <a name="instrumentation-libraries"></a>Instrumentierungsbibliotheken
+
+Java 3.X enthält die folgenden Instrumentierungsbibliotheken.
+
+### <a name="auto-collected-requests"></a>Automatisch gesammelte Anforderungen
 
 * JMS-Consumer
 * Kafka-Consumer
@@ -109,13 +120,19 @@ Ausführliche Informationen finden Sie unter [Konfigurationsoptionen](./java-sta
 * Servlets
 * Spring-Zeitplanung
 
-## <a name="auto-collected-dependencies"></a>Automatisch gesammelte Abhängigkeiten
+### <a name="auto-collected-dependencies"></a>Automatisch gesammelte Abhängigkeiten
 
 Automatisch gesammelte Abhängigkeiten plus verteilte Downstream-Ablaufverfolgungsweitergabe:
 
-* Apache HttpClient und HttpAsyncClient
+* Apache HttpClient
+* Apache HttpAsyncClient
+* AsyncHttpClient
+* Google HttpClient
 * gRPC
 * java.net.HttpURLConnection
+* Java 11 HttpClient
+* JAX-RS Client
+* Jetty HttpClient
 * JMS
 * Kafka
 * Netty-Client
@@ -128,20 +145,20 @@ Automatisch gesammelte Abhängigkeiten (ohne Weitergabe der nachgelagerten verte
 * MongoDB (asynchron und synchron)
 * Redis (Lettuce und Jedis)
 
-## <a name="auto-collected-logs"></a>Automatisch gesammelte Protokolle
+### <a name="auto-collected-logs"></a>Automatisch gesammelte Protokolle
 
 * java.util.logging
 * Log4j (einschließlich MDC-Eigenschaften)
 * SLF4J/Logback (einschließlich MDC-Eigenschaften)
 
-## <a name="auto-collected-metrics"></a>Automatisch gesammelte Metriken
+### <a name="auto-collected-metrics"></a>Automatisch gesammelte Metriken
 
 * Micrometer (einschließlich Metriken des Spring Boot-Aktors)
 * JMX-Metriken
 
-## <a name="azure-sdks-preview"></a>Azure SDKs (Vorschau)
+### <a name="azure-sdks-preview"></a>Azure SDKs (Vorschau)
 
-Sehen Sie sich die [Konfigurationsoptionen](./java-standalone-config.md#auto-collected-azure-sdk-telemetry-preview) an, um diese Previewfunktion zu aktivieren und die von diesen Azure SDKs ausgegebenen Telemetriedaten automatisch zu sammeln:
+Die von diesen Azure SDKs ausgegebenen Telemetriedaten werden standardmäßig automatisch erfasst:
 
 * [App Configuration](/java/api/overview/azure/data-appconfiguration-readme) 1.1.10 und höher
 * [Cognitive Search](/java/api/overview/azure/search-documents-readme) 11.3.0 und höher
@@ -188,7 +205,88 @@ Sehen Sie sich die [Konfigurationsoptionen](./java-standalone-config.md#auto-col
 [//]: # "}"
 [//]: # "console.log(str)"
 
-## <a name="send-custom-telemetry-from-your-application"></a>Senden benutzerdefinierter Telemetriedaten aus Ihrer Anwendung
+## <a name="modify-telemetry"></a>Ändern der Telemetrie
+
+### <a name="add-span-attributes"></a>Hinzufügen von span-Attributen
+Sie können `opentelemetry-api` verwenden, um span-Elementen Attribute hinzuzufügen. Zu diesen Attributen kann das Hinzufügen einer benutzerdefinierten Geschäftsdimension zu Ihrer Telemetrie gehören. Sie können auch Attribute verwenden, um optionale Felder im Application Insights-Schema festzulegen, z. B. Benutzer-ID oder Client-IP.
+
+#### <a name="add-custom-dimension"></a>Hinzufügen einer benutzerdefinierten Dimension
+Wenn Sie eine oder mehrere benutzerdefinierte Dimensionen hinzufügen, wird das Feld _customDimensions_ in der Tabelle mit Anforderungen, Abhängigkeiten und/oder Ausnahmen aufgefüllt.
+
+> [!NOTE]
+> Dieses Feature ist erst ab Version 3.2.0 verfügbar.
+
+Fügen Sie `opentelemetry-api-1.6.0.jar` zu Ihrer Anwendung hinzu.
+
+```xml
+<dependency>
+  <groupId>io.opentelemetry</groupId>
+  <artifactId>opentelemetry-api</artifactId>
+  <version>1.6.0</version>
+</dependency>
+```
+
+Fügen Sie anschließend benutzerdefinierte Dimensionen in Ihrem Code hinzu:
+
+```java
+import io.opentelemetry.api.trace.Span;
+
+Span.current().setAttribute("mycustomdimension", "myvalue1");
+```
+
+#### <a name="set-user-id"></a>Festlegen der Benutzer-ID
+Füllen Sie das Feld für die Benutzer-ID in der Tabelle mit Anforderungen, Abhängigkeiten und/oder Ausnahmen aus.
+
+> [!IMPORTANT]
+> Informieren Sie sich über die geltenden Datenschutzgesetze, bevor Sie die authentifizierte Benutzer-ID festlegen.
+
+> [!NOTE]
+> Dieses Feature ist erst ab Version 3.2.0 verfügbar.
+
+Fügen Sie `opentelemetry-api-1.6.0.jar` zu Ihrer Anwendung hinzu.
+
+```xml
+<dependency>
+  <groupId>io.opentelemetry</groupId>
+  <artifactId>opentelemetry-api</artifactId>
+  <version>1.6.0</version>
+</dependency>
+```
+
+Legen Sie anschließend die Benutzer-ID (`user_Id`) in Ihrem Code fest:
+
+```java
+import io.opentelemetry.api.trace.Span;
+
+Span.current().setAttribute("enduser.id", "myuser");
+```
+
+### <a name="get-trace-id-or-span-id"></a>Abrufen der Ablaufverfolgungs-ID oder Span-ID
+
+Sie können `opentelemetry-api` verwenden, um die Ablaufverfolgungs-ID oder Span-ID abzurufen. Dies kann erfolgen, um diese Bezeichner der vorhandenen Protokollierungstelemetrie hinzuzufügen und dadurch die Korrelation beim Debuggen und Diagnostizieren von Problemen zu verbessern.
+
+> [!NOTE]
+> Dieses Feature ist erst ab Version 3.2.0 verfügbar.
+
+Fügen Sie `opentelemetry-api-1.6.0.jar` zu Ihrer Anwendung hinzu.
+
+```xml
+<dependency>
+  <groupId>io.opentelemetry</groupId>
+  <artifactId>opentelemetry-api</artifactId>
+  <version>1.6.0</version>
+</dependency>
+```
+
+Rufen Sie anschließend die Ablaufverfolgungs-ID und Span-ID der Anforderung in Ihrem Code ab:
+
+```java
+import io.opentelemetry.api.trace.Span;
+
+String traceId = Span.current().getSpanContext().getTraceId();
+String spanId = Span.current().getSpanContext().getSpanId();
+```
+## <a name="custom-telemetry"></a>Benutzerdefinierte Telemetrie
 
 Unser Ziel in Application Insights Java 3.x besteht darin, Ihnen das Senden benutzerdefinierter Telemetriedaten mithilfe von Standard-APIs zu ermöglichen.
 
@@ -197,17 +295,17 @@ Application Insights Java 3.x erfasst automatisch die über diese APIs gesendet
 
 ### <a name="supported-custom-telemetry"></a>Unterstützte benutzerdefinierte Telemetrie
 
-Die folgende Tabelle zeigt die derzeit unterstützten benutzerdefinierten Telemetrietypen, die Sie zur Ergänzung des Java 3.x-Agents aktivieren können. Zusammenfassung für das [Application Insights Java 2.x SDK](#send-custom-telemetry-using-the-2x-sdk): Benutzerdefinierte Metriken werden über Micrometer unterstützt, benutzerdefinierte Ausnahmen und Ablaufverfolgungen können durch Protokollierungsframeworks aktiviert werden, und jede Art von benutzerdefinierter Telemetrie wird unterstützt.
+Die folgende Tabelle zeigt die derzeit unterstützten benutzerdefinierten Telemetrietypen, die Sie zur Ergänzung des Java 3.x-Agents aktivieren können. Zusammenfassend lässt sich Folgendes sagen: Benutzerdefinierte Metriken werden über Micrometer unterstützt, benutzerdefinierte Ausnahmen und Ablaufverfolgungen können durch Protokollierungsframeworks aktiviert werden, benutzerdefinierte Anforderungen, Abhängigkeiten und Ausnahmen können über `opentelemetry-api` aktiviert werden und jede Art von benutzerdefinierter Telemetrie wird über das [Application Insights Java 2.x SDK](#send-custom-telemetry-using-the-2x-sdk) unterstützt.
 
-|                     | Mikrometer | Log4j, logback, JUL | 2.x SDK |
-|---------------------|------------|---------------------|---------|
-| **Benutzerdefinierte Ereignisse**   |            |                     |  Ja    |
-| **Benutzerdefinierte Metriken**  |  Ja       |                     |  Ja    |
-| **Abhängigkeiten**    |            |                     |  Ja    |
-| **Ausnahmen**      |            |  Ja                |  Ja    |
-| **Seitenansichten**      |            |                     |  Ja    |
-| **Anforderungen**        |            |                     |  Ja    |
-| **Traces**          |            |  Ja                |  Ja    |
+|                     | Mikrometer | Log4j, logback, JUL | 2.x SDK | opentelemetry-api |
+|---------------------|------------|---------------------|---------|-------------------|
+| **Benutzerdefinierte Ereignisse**   |            |                     |  Ja    |                   |
+| **Benutzerdefinierte Metriken**  |  Ja       |                     |  Ja    |                   |
+| **Abhängigkeiten**    |            |                     |  Ja    |  Ja              |
+| **Ausnahmen**      |            |  Ja                |  Ja    |  Ja              |
+| **Seitenansichten**      |            |                     |  Ja    |                   |
+| **Anforderungen**        |            |                     |  Ja    |  Ja              |
+| **Traces**          |            |  Ja                |  Ja    |                   |
 
 Wir planen derzeit kein SDK mit Application Insights 3.x.
 
@@ -311,99 +409,21 @@ try {
 }
 ```
 
-### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>Hinzufügen benutzerdefinierter Anforderungsdimensionen mit dem 2.x SDK
+## <a name="troubleshooting"></a>Problembehandlung
+Informationen hierzu finden Sie unter [Problembehandlung](java-standalone-troubleshoot.md).
 
-> [!NOTE]
-> Dieses Feature ist erst ab Version 3.0.2 verfügbar.
+## <a name="support"></a>Support
+- Sehen Sie sich die [Schritte zur Problembehandlung](java-standalone-troubleshoot.md) an.
+- Wenn Azure-Supportprobleme vorliegen, öffnen Sie ein [Azure-Supportticket](https://azure.microsoft.com/support/create-ticket/).
+- Wenden Sie sich bei OpenTelemetry-Problemen direkt an die [OpenTelemetry-Community](https://opentelemetry.io/community/).
 
-Fügen Sie `applicationinsights-web-2.6.3.jar` zu Ihrer Anwendung hinzu (alle 2.x-Versionen werden von Application Insights Java 3.x unterstützt, aber es lohnt sich, die neueste Version zu verwenden, wenn Sie die Wahl haben):
+## <a name="opentelemetry-feedback"></a>OpenTelemetry-Feedback
+- Füllen Sie die [Kundenfeedbackumfrage](https://docs.google.com/forms/d/e/1FAIpQLScUt4reClurLi60xyHwGozgM9ZAz8pNAfBHhbTZ4gFWaaXIRQ/viewform) der OpenTelemetry-Community aus.
+- Erzählen Sie Microsoft ein wenig von sich, indem Sie unserer [OpenTelemetry Early Adopter-Community](https://aka.ms/AzMonOTel/) beitreten.
+- Interagieren Sie mit anderen Azure Monitor-Benutzern in der [Technischen Community von Microsoft](https://techcommunity.microsoft.com/t5/azure-monitor/bd-p/AzureMonitor).
 
-```xml
-<dependency>
-  <groupId>com.microsoft.azure</groupId>
-  <artifactId>applicationinsights-web</artifactId>
-  <version>2.6.3</version>
-</dependency>
-```
+## <a name="next-steps"></a>Nächste Schritte
 
-Fügen Sie anschließend benutzerdefinierte Dimensionen in Ihrem Code hinzu:
-
-```java
-import com.microsoft.applicationinsights.web.internal.ThreadContext;
-
-RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
-requestTelemetry.getProperties().put("mydimension", "myvalue");
-```
-
-### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>Festlegen der Benutzer-ID für die Telemetriedatenanforderung mit dem 2.x SDK
-
-> [!NOTE]
-> Dieses Feature ist erst ab Version 3.0.2 verfügbar.
-
-Fügen Sie `applicationinsights-web-2.6.3.jar` zu Ihrer Anwendung hinzu (alle 2.x-Versionen werden von Application Insights Java 3.x unterstützt, aber es lohnt sich, die neueste Version zu verwenden, wenn Sie die Wahl haben):
-
-```xml
-<dependency>
-  <groupId>com.microsoft.azure</groupId>
-  <artifactId>applicationinsights-web</artifactId>
-  <version>2.6.3</version>
-</dependency>
-```
-
-Legen Sie anschließend die Benutzer-ID (`user_Id`) in Ihrem Code fest:
-
-```java
-import com.microsoft.applicationinsights.web.internal.ThreadContext;
-
-RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
-requestTelemetry.getContext().getUser().setId("myuser");
-```
-
-### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>Überschreiben des Namens für die Telemetriedatenanforderung mit dem 2.x SDK
-
-> [!NOTE]
-> Dieses Feature ist erst ab Version 3.0.2 verfügbar.
-
-Fügen Sie `applicationinsights-web-2.6.3.jar` zu Ihrer Anwendung hinzu (alle 2.x-Versionen werden von Application Insights Java 3.x unterstützt, aber es lohnt sich, die neueste Version zu verwenden, wenn Sie die Wahl haben):
-
-```xml
-<dependency>
-  <groupId>com.microsoft.azure</groupId>
-  <artifactId>applicationinsights-web</artifactId>
-  <version>2.6.3</version>
-</dependency>
-```
-
-Legen Sie anschließend den Namen in Ihrem Code fest:
-
-```java
-import com.microsoft.applicationinsights.web.internal.ThreadContext;
-
-RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
-requestTelemetry.setName("myname");
-```
-
-### <a name="get-the-request-telemetry-id-and-the-operation-id-using-the-2x-sdk"></a>Abrufen der Anforderungstelemetrie-ID und der Vorgangs-ID mithilfe des 2.x-SDKs
-
-> [!NOTE]
-> Dieses Feature ist erst ab Version 3.0.3 verfügbar
-
-Fügen Sie `applicationinsights-web-2.6.3.jar` zu Ihrer Anwendung hinzu (alle 2.x-Versionen werden von Application Insights Java 3.x unterstützt, aber es lohnt sich, die neueste Version zu verwenden, wenn Sie die Wahl haben):
-
-```xml
-<dependency>
-  <groupId>com.microsoft.azure</groupId>
-  <artifactId>applicationinsights-web</artifactId>
-  <version>2.6.3</version>
-</dependency>
-```
-
-Rufen Sie außerdem die Anforderungstelemetrie-ID und die Vorgangs-ID in Ihrem Code ab:
-
-```java
-import com.microsoft.applicationinsights.web.internal.ThreadContext;
-
-RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
-String requestId = requestTelemetry.getId();
-String operationId = requestTelemetry.getContext().getOperation().getId();
-```
+- Überprüfen Sie den Quellcode im [GitHub-Repository für automatische Java-Instrumentierung in Azure Monitor](https://github.com/Microsoft/ApplicationInsights-Java).
+- Weitere Informationen zu OpenTelemetry und seiner Community finden Sie im [OpenTelemetry Java GitHub-Repository](https://github.com/open-telemetry/opentelemetry-java-instrumentation).
+- [Aktivieren Sie die Web-/Browserbenutzerüberwachung](javascript.md), um Nutzungsfunktionen zu aktivieren.

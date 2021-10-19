@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b8dd3f6a81317abff79dce906c4a9c8ef6ea6484
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 537259315a766da179a47defc277da5abecc4779
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680241"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859150"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>Auswählen der Autorisierung des Zugriffs auf Blobdaten mit der Azure CLI
 
@@ -115,4 +115,4 @@ Sie können Autorisierungsparameter in Umgebungsvariablen angeben, um zu vermeid
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](assign-azure-role-data-access.md)
-- [Autorisieren des Zugriffs auf Blob- und Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen](../common/storage-auth-aad-msi.md)
+- [Autorisieren des Zugriffs auf Blobdaten mit verwalteten Identitäten für Azure-Ressourcen](authorize-managed-identity.md)

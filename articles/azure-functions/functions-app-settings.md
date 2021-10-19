@@ -3,20 +3,20 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: 6b860e40acd118bc708ab00001707755272525b6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ada3429d32ea08f8185ba19937b963a30400c7b0
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128663609"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659657"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
-App-Einstellungen in einer Funktionen-App enthalten globale Konfigurationsoptionen, die sich auf alle Funktionen dieser Funktionen-App auswirken. Bei der lokalen Ausführung wird auf diese Einstellungen als lokale [Umgebungsvariablen](functions-develop-local.md#local-settings-file) zugegriffen. In diesem Artikel werden die in Funktionen-Apps verfügbaren App-Einstellungen aufgelistet.
+App-Einstellungen in einer Funktions-App enthalten Konfigurationsoptionen, die sich auf alle Funktionen dieser Funktions-App auswirken. Bei der lokalen Ausführung wird auf diese Einstellungen als lokale [Umgebungsvariablen](functions-develop-local.md#local-settings-file) zugegriffen. In diesem Artikel werden die in Funktionen-Apps verfügbaren App-Einstellungen aufgelistet.
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-Es gibt andere globale Konfigurationsoptionen in der Datei [host.json](functions-host-json.md) und in der Datei [local.settings.json](functions-develop-local.md#local-settings-file).
+Es gibt weitere Konfigurationsoptionen für Funktions-Apps in der Datei [host.json](functions-host-json.md) und in der Datei [local.settings.json](functions-develop-local.md#local-settings-file).
 Beispielwerte für Verbindungszeichenfolgen werden aus Gründen der Lesbarkeit abgeschnitten.
 
 > [!NOTE]
@@ -56,7 +56,7 @@ Standardmäßig nutzen [Functions-Proxys](functions-proxies.md) eine Verknüpfun
 
 Diese Einstellung steuert, ob die Zeichen `%2F` in Routenparametern als Schrägstrich decodiert werden, wenn sie in die Back-End-URL eingefügt werden.
 
-|Schlüssel|Wert|Beschreibung|
+|Schlüssel|Wert|BESCHREIBUNG|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|`true`|Routenparameter mit codierten Schrägstrichen werden decodiert. |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|`false`|Alle Routenparameter werden unverändert weitergegeben (Standardverhalten). |
@@ -402,6 +402,6 @@ Gibt an, ob der gesamte ausgehende Datenverkehr von der App über das virtuelle 
 
 [Informationen zum Aktualisieren von App-Einstellungen](functions-how-to-use-azure-function-app-settings.md#settings)
 
-[Weitere Informationen finden Sie unter den globalen Einstellungen in der Datei host.json](functions-host-json.md)
+[Konfigurationseinstellungen in der Datei „host.json“](functions-host-json.md)
 
 [Weitere App-Einstellungen für App Service-Apps](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/23/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b84c73e5286dc633b54ade2d59d43957f517361e
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: eb883fafd7c738ca99fe2282edb67d1849b9b1af
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057660"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858156"
 ---
 # <a name="using-a-system-assigned-managed-identity-for-an-azure-automation-account-preview"></a>Verwenden einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
 
@@ -23,7 +23,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - Ein Azure Automation-Konto. Eine Anleitung hierzu finden Sie unter [Erstellen eines Azure Automation-Kontos](./quickstarts/create-account-portal.md).
 
-- Die neueste Version der Azure-Kontomodule. Derzeit ist dies 2.2.8. (Ausführliche Informationen zu dieser Version finden Sie unter [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/).)
+- Die neueste Version der Az PowerShell-Module „Az.Accounts“, „Az.Resources“, „Az.Automation“ und „Az.KeyVault“.
 
 - Eine Azure-Ressource, auf die Sie über Ihr Automation-Runbook zugreifen möchten. Für diese Ressource muss eine Rolle für die verwaltete Identität definiert sein, mit der das Automation-Runbook den Zugriff auf die Ressource authentifizieren kann. Zum Hinzufügen von Rollen müssen Sie Besitzer der Ressource im entsprechenden Azure AD sein.
 

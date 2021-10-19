@@ -7,21 +7,21 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 55ad3c97fd70db854faf3d2181a55630d04f5e41
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 15119b3196735e2358b76c1a804ca25f67b05efa
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215090"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129809936"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-Terminierung mit Key Vault-Zertifikaten
 
 [Azure Key Vault](../key-vault/general/overview.md) ist ein als Plattform verwalteter Geheimnisspeicher, mit dem Sie Geheimnisse, Schlüssel und TLS/SSL-Zertifikate schützen können. Azure Application Gateway unterstützt die Integration mit Key Vault für Serverzertifikate, die HTTPS-fähigen Listenern zugeordnet sind. Diese Unterstützung ist auf die v2-SKU von Application Gateway beschränkt.
 
-Die Key Vault-Integration bietet zwei Modelle für die TLS-Terminierung:
+Application Gateway bietet zwei Modelle für den TLS-Abschluss:
 
-- Explizite Bereitstellung von TLS/SSL-Zertifikaten, die an den Listener angefügt sind. Dies ist das traditionelle Modell für die Übergabe von TLS/SSL-Zertifikaten an Application Gateway für die TLS-Terminierung.
-- Optionale Bereitstellung eines Verweises auf ein vorhandenes Key Vault-Zertifikat oder -Geheimnis, wenn Sie einen HTTPS-fähigen Listener erstellen.
+- Bereitstellung von TLS/SSL-Zertifikaten, die an den Listener angefügt sind. Dies ist das traditionelle Modell für die Übergabe von TLS/SSL-Zertifikaten an Application Gateway für die TLS-Terminierung.
+- Bereitstellung eines Verweises auf ein vorhandenes Key Vault-Zertifikat oder -Geheimnis, wenn Sie einen HTTPS-fähigen Listener erstellen.
 
 Die Application Gateway-Integration mit Key Vault bietet viele Vorteile. Zu diesen gehören:
 
@@ -36,11 +36,11 @@ Die Application Gateway-Integration mit Key Vault bietet viele Vorteile. Zu dies
 
 Application Gateway unterstützt derzeit nur per Software überprüfte Zertifikate. Durch das Hardwaresicherheitsmodul (HSM) überprüfte Zertifikate werden nicht unterstützt. 
 
-Nachdem Application Gateway für die Verwendung von Key Vault-Zertifikaten konfiguriert wurde, rufen die Instanzen die Zertifikate von Key Vault ab und installieren sie lokal für die TLS-Terminierung. Die Instanzen rufen außerdem Key Vault in 4-Stunden-Intervallen ab, um ggf. eine erneuerte Version des Zertifikats zu erhalten. Wenn ein aktualisiertes Zertifikat gefunden wird, wird das derzeit dem HTTPS-Listener zugeordnete TLS/SSL-Zertifikat automatisch rotiert. 
+Nachdem Application Gateway für die Verwendung von Key Vault-Zertifikaten konfiguriert wurde, rufen die Instanzen die Zertifikate von Key Vault ab und installieren sie lokal für die TLS-Terminierung. Die Instanzen rufen Key Vault in 4-Stunden-Intervallen ab, um ggf. eine erneuerte Version des Zertifikats zu erhalten. Wenn ein aktualisiertes Zertifikat gefunden wird, wird das derzeit dem HTTPS-Listener zugeordnete TLS/SSL-Zertifikat automatisch rotiert. 
 
 Application Gateway verwendet einen Geheimnisbezeichner in Key Vault, um auf die Zertifikate zu verweisen. Für Azure PowerShell, die Azure CLI oder Azure Resource Manager wird dringend empfohlen, einen Geheimbezeichner zu verwenden, der keine Version angibt. Auf diese Weise rotiert Application Gateway das Zertifikat automatisch, wenn eine neuere Version in Ihrem Schlüsseltresor verfügbar ist. Ein Beispiel für einen Geheimnis-URI ohne Version ist `https://myvault.vault.azure.net/secrets/mysecret/`.
 
-Das Azure-Portal unterstützt nur KeyVault-Zertifikate, keine Geheimnisse. Application Gateway unterstützt weiterhin das Verweisen auf Geheimnisse aus Key Vault, aber nur über Nicht-Portalressourcen wie PowerShell, Azure CLI, APIs und Azure Resource Manager-Vorlagen (ARM-Vorlagen). 
+Das Azure-Portal unterstützt nur KeyVault-Zertifikate, keine Geheimnisse. Application Gateway unterstützt weiterhin das Verweisen auf Geheimnisse aus Key Vault, aber nur über Nicht-Portalressourcen wie PowerShell, Azure CLI, APIs und Azure Resource Manager-Vorlagen (ARM-Vorlagen).
 
 > [!WARNING]
 > Azure Application Gateway unterstützt derzeit nur Key Vault-Konten im selben Abonnement, in dem sich auch die Application Gateway-Ressource befindet. Das Auswählen eines Schlüsseltresors in einem anderen Abonnement als dem Ihres Application Gateways führt zu einem Fehler.

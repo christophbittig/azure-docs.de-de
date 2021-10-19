@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 07/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 81c6f9eb55a44be49cfdbde5e171ce431f4f3cfd
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f536ac07a15b0b17405cf83233b2fbfba4193d25
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114481440"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714077"
 ---
 # <a name="azure-stack-edge-2106-release-notes"></a>Versionshinweise zu Azure Stack Edge 2106
 
@@ -62,7 +62,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme im Rel
 
 | Nein. | Funktion | Problem | Problemumgehung/Kommentare |
 | --- | --- | --- | --- |
-|**1.**|Previewfunktionen |In diesem Release sind die folgenden Funktionen als Vorschauversionen verfügbar: Lokaler Azure Resource Manager, VMs, Cloudverwaltung von VMs, Kubernetes-Cloudverwaltung, Kubernetes mit Azure Arc-Unterstützung, VPN für Azure Stack Edge Pro R und Azure Stack Edge Mini R, Multiprozessdienst (MPS) und Multi-Access Edge Computing (MEC) für Azure Stack Edge Pro GPU.  |Diese Funktionen werden in einem späteren Release allgemein verfügbar sein. |
+|**1.**|Previewfunktionen |In diesem Release sind die folgenden Funktionen als Vorschauversionen verfügbar: Lokaler Azure Resource Manager, VMs, Cloudverwaltung von VMs, Kubernetes-Cloudverwaltung, Azure Arc-fähiges Kubernetes, VPN für Azure Stack Edge Pro R und Azure Stack Edge Mini R, Multiprozessdienst (MPS) und Multi-Access Edge Computing (MEC) für Azure Stack Edge Pro GPU.  |Diese Funktionen werden in einem späteren Release allgemein verfügbar sein. |
 
 
 ## <a name="known-issues-from-previous-releases"></a>Bekannte Probleme aus vorherigen Releases
@@ -79,8 +79,8 @@ Die folgende Tabelle enthält eine Zusammenfassung der bereits aus früheren Rel
 |**6.**|Verbindung mit NFS-Freigabe|Wenn mehrere Prozesse auf dieselbe Freigabe kopiert werden und das Attribut `nolock` nicht verwendet wird, werden beim Kopiervorgang möglicherweise Fehler angezeigt.|Zum Kopieren von Dateien in die NFS-Freigabe muss das Attribut `nolock` an den mount-Befehl übergeben werden. Beispiel: `C:\Users\aseuser mount -o anon \\10.1.1.211\mnt\vms Z:`.|
 |**7.**|Kubernetes-Cluster|Wenn Sie auf Ihrem Gerät, auf dem ein Kubernetes-Cluster ausgeführt wird, ein Update anwenden, werden die virtuellen Kubernetes-Computer neu gestartet. In diesem Fall werden nur Pods, die mit angegebenen Replikaten bereitgestellt werden, nach einem Update automatisch wiederhergestellt.  |Wenn Sie einzelne Pods außerhalb eines Replikationscontrollers ohne Angabe einer Replikatgruppe erstellt haben, werden diese Pods nach dem Geräteupdate nicht automatisch wiederhergestellt. Diese Pods müssen wiederhergestellt werden.<br>Eine Replikatgruppe ersetzt Pods, die aus einem bestimmten Grund gelöscht oder beendet werden, z. B. Knotenfehler oder Aktualisierung eines unterbrochenen Knotens. Aus diesem Grund empfiehlt es sich, eine Replikatgruppe auch dann zu verwenden, wenn in der Anwendung nur ein einziger Pod erforderlich ist.|
 |**8.**|Kubernetes-Cluster|Kubernetes auf Azure Stack Edge Pro wird nur mit Helm v3 oder höher unterstützt. Weitere Informationen finden Sie unter [Frequently asked questions: Removal of Tiller](https://v3.helm.sh/docs/faq/) (Häufig gestellte Fragen: Entfernen von Tiller).|
-|**9.**|Kubernetes mit Azure Arc-Aktivierung |Im allgemein verfügbaren Release wird Azure Arc-fähiges Kubernetes von Version 0.1.18 auf 0.2.9. Da das Update für Azure Arc-fähiges Kubernetes nicht auf Azure Stack Edge-Geräten unterstützt wird, müssen Sie Azure Arc-fähiges Kubernetes erneut bereitstellen.|Führen Sie die folgenden Schritte durch:<ol><li>[Führen Sie Updates für Gerätesoftware und Kubernetes durch](azure-stack-edge-gpu-install-update.md).</li><li>Stellen Sie eine Verbindung mit der [PowerShell-Schnittstelle des Geräts](azure-stack-edge-gpu-connect-powershell-interface.md) her.</li><li>Entfernen Sie den vorhandenen Azure Arc-Agent. Geben Sie Folgendes ein: `Remove-HcsKubernetesAzureArcAgent`.</li><li>Stellen Sie [Azure Arc auf einer neuen Ressource](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) bereit. Verwenden Sie keine vorhandene Azure Arc-Ressource.</li></ol>|
-|**10.**|Kubernetes mit Azure Arc-Aktivierung|Azure Arc-Bereitstellungen werden nicht unterstützt, wenn auf dem Azure Stack Edge Pro-Gerät ein Webproxy konfiguriert ist.||
+|**9.**|Azure Arc-fähiges Kubernetes |Im allgemein verfügbaren Release wird Azure Arc-fähiges Kubernetes von Version 0.1.18 auf 0.2.9 aktualisiert. Da das Update für Azure Arc-fähiges Kubernetes nicht auf Azure Stack Edge-Geräten unterstützt wird, müssen Sie Azure Arc-fähiges Kubernetes erneut bereitstellen.|Führen Sie die folgenden Schritte durch:<ol><li>[Führen Sie Updates für Gerätesoftware und Kubernetes durch](azure-stack-edge-gpu-install-update.md).</li><li>Stellen Sie eine Verbindung mit der [PowerShell-Schnittstelle des Geräts](azure-stack-edge-gpu-connect-powershell-interface.md) her.</li><li>Entfernen Sie den vorhandenen Azure Arc-Agent. Geben Sie Folgendes ein: `Remove-HcsKubernetesAzureArcAgent`.</li><li>Stellen Sie [Azure Arc auf einer neuen Ressource](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) bereit. Verwenden Sie keine vorhandene Azure Arc-Ressource.</li></ol>|
+|**10.**|Azure Arc-fähiges Kubernetes|Azure Arc-Bereitstellungen werden nicht unterstützt, wenn auf dem Azure Stack Edge Pro-Gerät ein Webproxy konfiguriert ist.||
 |**11.**|Kubernetes |Port 31000 ist für das Kubernetes-Dashboard reserviert. Port 31001 ist für die Edgecontainerregistrierung reserviert. Entsprechend sind die IP-Adressen 172.28.0.1 und 172.28.0.10 in der Standardkonfiguration jeweils für den Kubernetes-Dienst bzw. den Core DNS-Dienst reserviert.|Reservierte IP-Adressen dürfen nicht verwendet werden.|
 |**12.**|Kubernetes |In Kubernetes sind derzeit keine Lastenausgleichsdienste für mehrere Protokolle zulässig, beispielsweise ein DNS-Dienst, der auf TCP sowie auf UDP lauschen soll. |Zum Umgehen dieser Einschränkung von Kubernetes mit MetalLB können für die gleiche Podauswahl zwei Dienste (einer für TCP, einer für UDP) erstellt werden. Diese Dienste verwenden denselben Freigabeschlüssel und denselben Wert spec.loadBalancerIP und nutzen so die gleiche IP-Adresse gemeinsam. IP-Adressen können auch gemeinsam genutzt werden, wenn Sie über mehr Dienste als verfügbare IP-Adressen verfügen. <br> Weitere Informationen finden Sie unter [IP Address Sharing](https://metallb.universe.tf/usage/#ip-address-sharing) (Freigeben von IP-Adressen).|
 |**13.**|Kubernetes-Cluster|Vorhandene Marketplace-Module für Azure IoT Edge können Änderungen für die Ausführung in IoT Edge auf Azure Stack Edge-Geräten erfordern.|Weitere Informationen finden Sie unter „Ändern von Azure IoT Edge-Modulen aus dem Marketplace zum Ausführen auf dem Azure Stack Edge-Gerät“.<!-- insert link-->|

@@ -3,18 +3,18 @@ title: Verstehen von und Arbeiten mit Bereichen in Azure Cost Management
 description: Dieser Artikel hilft Ihnen, die in Azure verfügbaren Bereiche für Abrechnung und Ressourcenverwaltung zu verstehen und wie Sie die Bereiche in Cost Management und APIs verwenden können.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/05/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 67d8ef5bf6960ca03d8d2d36efbe4461e1124190
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 55c2d19ee2e80915cc1c4393aa5a25326a5e9d0e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695252"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711273"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -68,7 +68,7 @@ Cost Management unterstützt für jeden der folgenden Bereiche die folgenden int
 
 „Cost Management-Mitwirkender“ ist die empfohlene Rolle mit geringstmöglichen Berechtigungen. Die Rolle ermöglicht den Benutzern die Erstellung und Verwaltung von Budgets und Exporten, um die Kosten effektiver zu überwachen und zu dokumentieren. Cost Management-Mitwirkende benötigen ggf. auch zusätzliche Rollen, um komplexe Kostenverwaltungsszenarien unterstützen zu können. Betrachten Sie die folgenden Szenarien:
 
-- **Berichte zur Ressourcennutzung:** Azure Cost Management zeigt Kosten im Azure-Portal an. Dies umfasst die vollständigen Nutzungsmuster in Bezug auf die Kosten. Der Bericht kann auch Gebühren für die API und den Download anzeigen. Vielleicht möchten Sie aber auch detaillierte Nutzungsmetriken in Azure Monitor aufrufen, um ein tieferes Verständnis zu erhalten. Es empfiehlt sich, die Rolle [Überwachungsleser](../../role-based-access-control/built-in-roles.md#monitoring-reader) für jeden Bereich zu gewähren, in dem Sie auch Berichte zu detaillierten Nutzungsmetriken benötigen.
+- **Berichte zur Ressourcennutzung**: Cost Management zeigt Kosten im Azure-Portal an. Dies umfasst die vollständigen Nutzungsmuster in Bezug auf die Kosten. Der Bericht kann auch Gebühren für die API und den Download anzeigen. Vielleicht möchten Sie aber auch detaillierte Nutzungsmetriken in Azure Monitor aufrufen, um ein tieferes Verständnis zu erhalten. Es empfiehlt sich, die Rolle [Überwachungsleser](../../role-based-access-control/built-in-roles.md#monitoring-reader) für jeden Bereich zu gewähren, in dem Sie auch Berichte zu detaillierten Nutzungsmetriken benötigen.
 - **Eingreifen bei Überschreitung von Budgets:** Cost Management-Mitwirkende benötigen auch Zugriff für das Erstellen und Verwalten von Aktionsgruppen, um bei Überschreitungen automatisch zu reagieren. Erwägen Sie das Zuweisen der Rolle [Mitwirkender an der Überwachung](../../role-based-access-control/built-in-roles.md#monitoring-contributor) zu einer Ressourcengruppe, die die zu verwendende Aktionsgruppe enthält, wenn Budgetschwellenwerte überschritten werden. Die Automatisierung bestimmter Aktionen erfordert zusätzliche Rollen für die verwendeten spezifischen Dienste, wie z.B. Azure Automation und Azure Functions.
 - **Planen des Exports von Kostendaten**: Cost Management-Mitwirkende benötigen auch Zugriff für das Verwalten von Speicherkonten, um einen Export zum Kopieren von Daten in ein Speicherkonto zu planen. Erwägen Sie das Zuweisen der Rolle [Speicherkontomitwirkender](../../role-based-access-control/built-in-roles.md#storage-account-contributor) zu einer Ressourcengruppe, die das Speicherkonto enthält, in das Kostendaten exportiert werden.
 - **Anzeigen von Empfehlungen für Kosteneinsparungen**: Cost Management-Leser und Cost Management-Mitwirkende haben in der Standardeinstellung Zugriff auf die *Anzeige* von Empfehlungen. Der Zugriff auf die Kostenempfehlungen erfordert jedoch den Zugriff auf einzelne Ressourcen. Erwägen Sie, eine [dienstspezifische Rolle](../../role-based-access-control/built-in-roles.md#all) zuzulassen, wenn Sie auf eine kostenbasierte Empfehlung reagieren möchten.
@@ -267,7 +267,7 @@ Die folgenden Bereiche werden für CSPs mit Kunden in einer Microsoft-Kundenvere
 
 Nur die Benutzer mit den Rollen *Globaler Administrator* und *Administrator-Agent* können Kosten für Abrechnungskonten, Abrechnungsprofile und Kunden direkt im Azure-Mandanten des Partners verwalten und anzeigen. Weitere Informationen zu Partner Center-Rollen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](/partner-center/permissions-overview).
 
-CSP-Partnerkunden werden von Azure Cost Management nur unterstützt, wenn die Kunden über eine Microsoft-Kundenvereinbarung verfügen. Informationen zu von CSP unterstützten Kunden ohne Microsoft-Kundenvereinbarung finden Sie unter [Übersicht über Partner Center](/azure/cloud-solution-provider/overview/partner-center-overview).
+CSP-Partnerkunden werden von Cost Management nur unterstützt, wenn die Kunden über eine Microsoft-Kundenvereinbarung verfügen. Informationen zu von CSP unterstützten Kunden ohne Microsoft-Kundenvereinbarung finden Sie unter [Übersicht über Partner Center](/azure/cloud-solution-provider/overview/partner-center-overview).
 
 Verwaltungsgruppen in CSP-Bereichen werden von Cost Management nicht unterstützt. Wenn Sie über ein CSP-Abonnement verfügen und den Bereich für eine Verwaltungsgruppe in der Kostenanalyse festlegen, wird eine Fehlermeldung ähnlich der folgenden angezeigt:
 

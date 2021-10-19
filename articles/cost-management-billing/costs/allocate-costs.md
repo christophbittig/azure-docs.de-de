@@ -3,21 +3,21 @@ title: Zuteilen von Azure-Kosten
 description: In diesem Artikel wird erläutert, wie Sie Kostenzuteilungsregeln erstellen, um die Kosten von Abonnements, Ressourcengruppen oder Tags an andere zu verteilen.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/10/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: b837e5819318707b44932f5915746479e27646ec
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7696dc683d41080f5be2c97ebcb0cdf314e2098d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734898"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706271"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Erstellen und Verwalten von Azure-Kostenzuteilungsregeln (Vorschauversion)
 
-Große Unternehmen verfügen häufig über Azure-Dienste oder -Ressourcen, die zentral verwaltet, aber von verschiedenen internen Abteilungen oder Geschäftseinheiten genutzt werden. In der Regel möchte das für die zentrale Verwaltung zuständige Team die Kosten der gemeinsam genutzten Dienste wieder den internen Abteilungen oder Geschäftseinheiten der Organisation zuteilen, die diese Dienste aktiv nutzen. In diesem Artikel erhalten Sie grundlegende Informationen zur Kostenzuteilung und erfahren, wie Sie sie in Azure Cost Management verwenden.
+Große Unternehmen verfügen häufig über Azure-Dienste oder -Ressourcen, die zentral verwaltet, aber von verschiedenen internen Abteilungen oder Geschäftseinheiten genutzt werden. In der Regel möchte das für die zentrale Verwaltung zuständige Team die Kosten der gemeinsam genutzten Dienste wieder den internen Abteilungen oder Geschäftseinheiten der Organisation zuteilen, die diese Dienste aktiv nutzen. In diesem Artikel erhalten Sie grundlegende Informationen zur Kostenzuteilung und erfahren, wie Sie diese in Cost Management verwenden.
 
 Mit der Kostenzuteilung können Sie die Kosten für gemeinsam genutzte Dienste von Abonnements, Ressourcengruppen oder Tags anderen Abonnements, Ressourcengruppen oder Tags in Ihrer Organisation neu zuweisen bzw. an diese verteilen. Durch die Kostenzuteilung werden die Kosten der gemeinsam genutzten Dienste auf ein anderes Abonnement, Ressourcengruppen oder Tags im Besitz der internen Abteilungen oder Geschäftseinheiten verlagert, von denen sie genutzt werden. Mit anderen Worten: Die Kostenzuteilung unterstützt Sie bei der Verwaltung und bietet Ihnen einen übergreifenden Überblick über die _Zurechenbarkeit von Kosten_.
 
@@ -26,7 +26,7 @@ Die Kostenzuteilung hat keinen Einfluss auf Ihre Abrechnung. Die Abrechnungspfli
 Zugeteilte Kosten werden in der Kostenanalyse angezeigt. Sie werden als zusätzliche zugeordnete Elemente der Zielabonnements, -ressourcengruppen oder -tags angezeigt, die Sie beim Erstellen einer Kostenzuteilungsregel angeben.
 
 > [!NOTE]
-> Die Funktion zur Kostenzuteilung von Azure Cost Management befindet sich derzeit in der Public Preview-Phase. Einige Features in Cost Management werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verfügbar.
+> Das Cost Management-Feature der Kostenzuteilung befindet sich derzeit in der Public Preview-Phase. Einige Features in Cost Management werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -132,4 +132,4 @@ Folgendes wird in der Public Preview der Kostenzuteilung derzeit nicht unterstü
 
 - In den [häufig gestellten Fragen zu Cost Management + Billing](../cost-management-billing-faq.yml) finden Sie Fragen und Antworten zur Kostenzuteilung.
 - Erstellen oder Aktualisieren von Zuteilungsregeln mithilfe der [Kostenzuteilungs-REST-API](/rest/api/cost-management/costallocationrules)
-- Weitere Informationen zum [Optimieren der Cloudinvestitionen mit Azure Cost Management](cost-mgt-best-practices.md)
+- Weitere Informationen zum [Optimieren der Cloudinvestitionen mit Cost Management](cost-mgt-best-practices.md)

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 8c9ab37e46f23d533550ffc535633575a85937a6
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: dc065e68d513850f9e006371861d087cccc6e155
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778899"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669851"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>Mandantenübergreifendes Verbinden von VNETs mit einem Virtual WAN-Hub
 
@@ -28,6 +28,9 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Die Schritte für diese Konfiguration werden mithilfe einer Kombination aus Azure-Portal und PowerShell ausgeführt. Die Funktion selbst ist jedoch nur in PowerShell und der CLI verfügbar.
 
+>[!NOTE]
+> Beachten Sie, dass mandantenübergreifende VNet-Verbindungen nur über PowerShell oder die CLI verwaltet werden können. Mandantenübergreifende VNet-Verbindungen können **nicht** im Azure-Portal verwaltet werden.
+> 
 ## <a name="before-you-begin"></a>Vorbereitungen
 
 ### <a name="prerequisites"></a>Voraussetzungen

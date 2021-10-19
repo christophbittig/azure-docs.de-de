@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie ein SaaS-Angebot in Microsoft AppSource 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/10/2020
+ms.date: 10/08/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 194d9465d43de33f1f05e9587d2e166e9d2831f1
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: c420a2fd947e32acb0cce9a6ce4a73ddd1d2a3bd
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455131"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729138"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-Fulfillment-APIs (Version 2) im kommerziellen Marketplace
 
@@ -30,11 +30,11 @@ Das folgende Diagramm zeigt die Zustände eines SaaS-Abonnements und die zugehö
 
 #### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>Gekauft, aber noch nicht aktiviert (*PendingFulfillmentStart*)
 
-Nachdem ein Endbenutzer (oder Cloud-Dienstanbieter) ein SaaS-Angebot im kommerziellen Marketplace gekauft hat, muss der Herausgeber über den Kauf benachrichtigt werden. Der Herausgeber kann dann auf seiner Seite ein neues SaaS-Konto für den Endbenutzer erstellen und konfigurieren.
+Nachdem ein Endbenutzer oder CSP (Cloud Solution Provider) ein SaaS-Angebot im kommerziellen Marketplace gekauft hat, muss der Herausgeber über den Kauf benachrichtigt werden. Der Herausgeber kann dann auf seiner Seite ein neues SaaS-Konto für den Endbenutzer erstellen und konfigurieren.
 
 Ablauf für die Kontoerstellung:
 
-1. Der Kunde wählt die Schaltfläche **Konfigurieren** aus, die nach erfolgreichem Kauf in Microsoft AppSource oder im Azure-Portal für ein SaaS-Angebot gezeigt wird. Alternativ kann der Kunde die Schaltfläche **Konfigurieren** in der E-Mail auswählen, die er kurz nach dem Kauf erhält.
+1. Der Kunde wählt die Schaltfläche **Konto jetzt konfigurieren** aus, die nach erfolgreichem Kauf in Microsoft AppSource oder im Azure-Portal für ein SaaS-Angebot gezeigt wird. Alternativ kann der Kunde die Schaltfläche **Jetzt konfigurieren** in der E-Mail auswählen, die er kurz nach dem Kauf erhält.
 2. Microsoft benachrichtigt den Partner über den Kauf, indem die URL der Angebotsseite mit dem Tokenparameter (dem Identifizierungstoken für den Kauf im kommerziellen Marketplace) auf der neuen Browserregisterkarte geöffnet wird.
 
 Ein Beispiel eines solchen Aufrufs ist `https://contoso.com/signup?token=<blob>`, wobei die URL der Angebotsseite für dieses SaaS-Angebot im Partner Center als `https://contoso.com/signup` konfiguriert ist. Dieses Token stellt dem Herausgeber eine ID bereit, die den SaaS-Kauf und den Kunden eindeutig identifiziert.
@@ -84,7 +84,7 @@ Nur ein aktives Abonnement kann aktualisiert werden. Während das Abonnement akt
 
 Bei diesem Flow ändert der Kunde den Abonnementplan oder die Anzahl von Arbeitsplätzen über das Azure-Portal oder das Microsoft 365 Admin Center.
 
-1. Nachdem eine Aktualisierung eingegeben wurde, ruft Microsoft die Webhook-URL des Herausgebers, die im Feld **Verbindungswebhook** im Partner Center konfiguriert ist, mit einem geeigneten Wert für *action* und anderen relevanten Parametern auf. 
+1. Nachdem eine Aktualisierung eingegeben wurde, ruft Microsoft die Webhook-URL des Herausgebers, die im Feld **Verbindungswebhook** auf der Seite _Technische Konfiguration_ im Partner Center konfiguriert ist, mit einem geeigneten Wert für *action* und anderen relevanten Parametern auf.
 1. Auf Herausgeberseite müssen die erforderlichen Änderungen am SaaS-Dienst vorgenommen werden. Microsoft muss nach Abschluss des Vorgangs durch Aufrufen der [API zum Aktualisieren des Vorgangsstatus](#update-the-status-of-an-operation) benachrichtigt werden.
 1. Wenn der Patch mit dem Status *Fehler* gesendet wird, wird der Aktualisierungsvorgang auf Microsoft-Seite nicht abgeschlossen. Das SaaS-Abonnement weist weiterhin den vorhandenen Plan und die vorhandene Menge von Arbeitsplätzen auf.
 
@@ -728,8 +728,6 @@ Code: 500 – Interner Serverfehler. Wiederholen Sie den API-Aufruf.  Wenn der F
 
 Ruft die Liste der ausstehenden Vorgänge für das angegebene SaaS-Abonnement ab.  Zurückgegebene Vorgänge müssen vom Herausgeber bestätigt werden, indem die [API zum Patchen von Vorgängen](#update-the-status-of-an-operation) aufgerufen wird.
 
-Zurzeit werden nur **Reaktivierungsvorgänge** als Antwort für diesen API-Aufruf zurückgegeben.
-
 ##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Get `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
 *Abfrageparameter:*
@@ -750,7 +748,7 @@ Zurzeit werden nur **Reaktivierungsvorgänge** als Antwort für diesen API-Aufru
 
 *Antwortcodes:*
 
-Code: 200 – Gibt einen ausstehenden Reaktivierungsvorgang für das angegebene SaaS-Abonnement zurück.
+Code: 200 – Gibt ausstehende Vorgänge für das angegebene SaaS-Abonnement zurück.
 
 *Beispiel einer Antwortnutzlast:*
 
@@ -773,7 +771,7 @@ Code: 200 – Gibt einen ausstehenden Reaktivierungsvorgang für das angegebene 
 }
 ```
 
-Gibt eine leere JSON-Datei zurück, wenn keine Reaktivierungsvorgänge ausstehen.
+Gibt eine leere JSON-Datei zurück, wenn keine Vorgänge ausstehen.
 
 Code: 400 – Ungültige Anforderung: Fehler bei der Überprüfung.
 
@@ -902,7 +900,7 @@ Code: 500 – Interner Serverfehler.  Wiederholen Sie den API-Aufruf.  Wenn der 
 Beim Erstellen eines transaktionsfähigen SaaS-Angebots im Partner Center stellt der Partner die URL des **Verbindungswebhooks** bereit, die als HTTP-Endpunkt verwendet werden soll.  Dieser Webhook wird von Microsoft mithilfe des HTTP-Aufrufs POST aufgerufen, um die Herausgeberseite über die folgenden Ereignissen zu informieren, die auf Microsoft-Seite auftreten:
 
 * Wenn das SaaS-Abonnement den Status *Abonniert* hat:
-    * ChangePlan (Plan ändern) 
+    * ChangePlan (Plan ändern)
     * ChangeQuantity (Menge ändern)
     * Angehalten
     * Abbestellen

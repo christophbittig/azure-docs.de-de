@@ -9,16 +9,16 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 4f657e742165bdb87e1cc1c021966dc2e5473e81
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d64d0bead5df1aa8b91ae39a79c1255eaac51f27
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128647731"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706165"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Verwalten von AWS-Kosten und -Nutzung in Azure
 
-Nach dem Einrichten und Konfigurieren der Integration von AWS-Kosten- und -Nutzungsberichten für Azure Cost Management sind Sie bereit, mit der Verwaltung Ihrer AWS-Kosten und -Nutzung zu beginnen. Dieser Artikel hilft Ihnen zu verstehen, wie Sie Ihre AWS-Kosten und -Nutzung mithilfe von Kostenanalysen und -budgets in Azure Cost Management verwalten.
+Nach dem Einrichten und Konfigurieren der Integration von AWS-Kosten- und -Nutzungsberichten für Cost Management sind Sie bereit, mit der Verwaltung Ihrer AWS-Kosten und -Nutzung zu beginnen. Dieser Artikel hilft Ihnen zu verstehen, wie Sie Ihre AWS-Kosten und -Nutzung mithilfe von Kostenanalysen und -budgets in Azure Cost Management verwalten.
 
 Wenn Sie die Integration noch nicht konfiguriert haben, ziehen Sie [Einrichten und Konfigurieren der Integration von AWS-Kosten- und -Nutzungsberichten](aws-integration-set-up-configure.md) zurate.
 
@@ -151,7 +151,7 @@ Dieser Fehler bedeutet, dass Azure Cost Management die AWS AssumeRole-API nicht 
 
 **Fehlercode:** _AccessDeniedReportDefinitions_
 
-Dieser Fehler bedeutet, dass Azure Cost Management die Definitionen des Kosten- und Nutzungsberichts nicht anzeigen kann. Diese Berechtigung wird verwendet, um zu überprüfen, ob der CUR wie von Azure Cost Management erwartet definiert wurde. Siehe [Erstellen eines Kosten- und Nutzungsberichts in AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
+Dieser Fehler bedeutet, dass Azure Cost Management die Definitionen des Kosten- und Nutzungsberichts nicht anzeigen kann. Anhand dieser Berechtigung wird überprüft, ob der Kosten- und Nutzungsbericht wie von Cost Management erwartet definiert wurde. Siehe [Erstellen eines Kosten- und Nutzungsberichts in AWS](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws).
 
 ### <a name="collection-failed-with-access-denied---list-reports"></a>Fehler bei der Sammlung: Zugriff verweigert – Berichte auflisten
 

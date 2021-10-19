@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 09/22/2021
-ms.openlocfilehash: 033bd5a96c75a1097438e01390ba800089d89d1d
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 9e35609a6e6d450b2938dfbb4feab319f5a3c9c2
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426923"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660236"
 ---
 # <a name="network-traffic-flow-when-using-a-secured-workspace"></a>Fluss des Netzwerkverkehrs bei Verwendung eines gesicherten Arbeitsbereichs
 
@@ -92,7 +92,7 @@ Die Erstellung von Datenprofilen hängt davon ab, dass der verwaltete Dienst Azu
 > [!TIP]
 > Sie können bei der Erstellung des Arbeitsbereichs einen Dienstprinzipal angeben. Wenn Sie dies nicht tun, wird einer für Sie erstellt und trägt den gleichen Namen wie Ihr Arbeitsbereich.
 
-Um den Zugriff auf das Speicherkonto zu erlauben, konfigurieren Sie das Speicherkonto so, dass __Azure-Dienste auf der Liste der vertrauenswürdigen Dienste auf dieses Speicherkonto zugreifen dürfen__. Diese Einstellung ermöglicht dem verwalteten Dienst den Zugriff auf den Speicher über das Azure-Rechenzentrumsnetzwerk. 
+Um den Zugriff auf das Speicherkonto zu erlauben, konfigurieren Sie das Speicherkonto so, dass eine __Ressourceninstanz__ für Ihren Arbeitsbereich zugelassen wird, oder wählen Sie __Azure-Diensten auf der Liste vertrauenswürdiger Dienste den Zugriff auf dieses Speicherkonto gestatten__ aus. Diese Einstellung ermöglicht dem verwalteten Dienst den Zugriff auf den Speicher über das Azure-Rechenzentrumsnetzwerk. 
 
 Als Nächstes fügen Sie den Dienstprinzipal für den Arbeitsbereich der Rolle __Reader__ zum privaten Endpunkt des Speicherkontos hinzu. Diese Rolle wird verwendet, um die Informationen über den Arbeitsbereich und das Speichersubnetz zu überprüfen. Wenn sie übereinstimmen, wird der Zugriff gestattet. Schließlich benötigt der Dienstprinzipal auch __Blobdatenmitwirkenden__ Zugriff auf das Speicherkonto.
 

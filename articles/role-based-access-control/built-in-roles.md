@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/28/2021
 ms.custom: generated
-ms.openlocfilehash: 02fbc7d0ec30181ccfbd44a2a80c70084a23e4d9
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 3f9154a2ec6c7900ffa15fd19e9910c89649be2d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427911"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709296"
 ---
 # <a name="azure-built-in-roles"></a>Integrierte Azure-Rollen
 
@@ -239,7 +239,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Automation-Auftragsoperator](#automation-job-operator) | Hiermit werden Aufträge mithilfe von Automation-Runbooks erstellt und verwaltet. | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | [Operator für Automation](#automation-operator) | Automatisierungsoperatoren können Aufträge starten, beenden, anhalten und fortsetzen. | d3881f73-407a-4167-8283-e981cbba0404 |
 > | [Automation-Runbookoperator](#automation-runbook-operator) | Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
-> | [Benutzerrolle für Azure Arc-aktivierte Kubernetes-Cluster](#azure-arc-enabled-kubernetes-cluster-user-role) | Aktion zum Auflisten der Anmeldeinformationen eines Clusterbenutzers. | 00493d72-78f6-4148-b6c5-d3ce8e4799dd |
+> | [Azure Arc-aktivierte Kubernetes-Cluster-Benutzerrolle](#azure-arc-enabled-kubernetes-cluster-user-role) | Aktion zum Auflisten der Anmeldeinformationen eines Clusterbenutzers. | 00493d72-78f6-4148-b6c5-d3ce8e4799dd |
 > | [Azure Arc Kubernetes-Administrator](#azure-arc-kubernetes-admin) | Ermöglicht Ihnen das Verwalten aller Ressourcen unter einem Cluster/Namespace, außer das Aktualisieren oder Löschen von Ressourcenkontingenten und Namespaces. | dffb1e0c-446f-4dde-a09f-99eb5cc68b96 |
 > | [Azure Arc Kubernetes-Clusteradministrator](#azure-arc-kubernetes-cluster-admin) | Ermöglicht Ihnen das Verwalten aller Ressourcen im Cluster. | 8393591c-06b9-48a2-a542-1bd6b377f6a2 |
 > | [Anzeigeberechtigter für Azure Arc Kubernetes](#azure-arc-kubernetes-viewer) | Ermöglicht Ihnen das Anzeigen aller Ressourcen im Cluster/Namespace mit Ausnahme von Geheimnissen. | 63f0a09d-1495-4db4-a681-037d84835eb4 |
@@ -10942,7 +10942,7 @@ Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. [We
 }
 ```
 
-### <a name="azure-arc-enabled-kubernetes-cluster-user-role"></a>Benutzerrolle für Azure Arc-aktivierte Kubernetes-Cluster
+### <a name="azure-arc-enabled-kubernetes-cluster-user-role"></a>Azure Arc-aktivierte Kubernetes-Cluster-Benutzerrolle
 
 Aktion zum Auflisten der Anmeldeinformationen eines Clusterbenutzers.
 

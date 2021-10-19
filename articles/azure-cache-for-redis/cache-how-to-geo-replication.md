@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: cauribeg
-ms.openlocfilehash: d6381556703c704eb0e8b24ea2f1a809bf864735
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 989284bd10fc5d452a738d027c693a15f7871b9b
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538505"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729923"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Konfigurieren der Georeplikation für Azure Cache for Redis-Instanzen (Premium)
 
@@ -41,8 +41,8 @@ Einige Funktionen werden für die Georeplikation nicht unterstützt:
 - Für die Georeplikation wird Zonenredundanz nicht unterstützt.
 - Für die Georeplikation wird Persistenz nicht unterstützt.
 - Das Clustering wird unterstützt, wenn für beide Caches das Clustering aktiviert ist und jeweils die gleiche Anzahl von Shards vorhanden ist.
-- Caches in demselben VNET werden unterstützt.
-- Caches in unterschiedlichen VNETs werden mit Einschränkungen unterstützt. Weitere Informationen finden Sie unter [Kann ich die Georeplikation bei meinen Caches in einem VNET verwenden?](#can-i-use-geo-replication-with-my-caches-in-a-vnet).
+- Caches im gleichen Virtual Network (VNet) werden unterstützt.
+- Caches in unterschiedlichen VNets werden mit Einschränkungen unterstützt. Weitere Informationen finden Sie unter [Kann ich die Georeplikation bei meinen Caches in einem VNet verwenden?](#can-i-use-geo-replication-with-my-caches-in-a-vnet).
 
 Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für Ihr verknüpftes Cachepaar:
 
@@ -61,31 +61,31 @@ Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für 
 
 1. Klicken Sie zum Verknüpfen von zwei Caches für die Georeplikation zuerst im Menü „Ressource“ des Caches, der als primärer verknüpfter Cache verwendet werden soll, auf **Georeplikation**. Klicken Sie anschließend links unter **Georeplikation** auf **Link für Cachereplikation hinzufügen**.
 
-    ![Hinzufügen einer Verknüpfung](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-menu.png" alt-text="Menü für Cache-Georeplikation":::
 
 1. Klicken Sie in der Liste **Kompatible Caches** auf den Namen des gewünschten sekundären Caches. Wenn der sekundäre Cache nicht in der Liste angezeigt wird, sollten Sie sicherstellen, dass die [Voraussetzungen für die Georeplikation](#geo-replication-prerequisites) für den sekundären Cache erfüllt sind. Klicken Sie zum Filtern der Caches nach Region auf der Karte auf die Region, um nur Caches in der Liste **Kompatible Caches** anzuzeigen.
 
-    ![Für die Georeplikation kompatible Caches](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-select-link.png" alt-text="Auswählen des kompatiblen Caches":::
 
     Sie können mithilfe des Kontextmenüs auch den Verknüpfungsvorgang starten oder Details zum sekundären Cache anzeigen.
 
-    ![Kontextmenü für die Georeplikation](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png" alt-text="Kontextmenü für die Georeplikation":::
 
 1. Klicken Sie auf **Verknüpfen**, um zwei Caches zu verknüpfen und den Replikationsvorgang zu starten.
 
-    ![Verknüpfen von Caches](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png" alt-text="Verknüpfen von Caches":::
 
 1. Links mittels **Georeplikation** können Sie den Status des Replikationsvorgangs sehen.
 
-    ![Verknüpfungsstatus](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-linking.png" alt-text="Verknüpfungsstatus":::
 
     Links unter **Übersicht** können Sie auch den Verknüpfungsstatus für den primären und sekundären Cache anzeigen.
 
-    ![Screenshot: Anzeigen des Verknüpfungsstatus für den primären Cache und sekundäre Caches.](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-link-status.png" alt-text="Screenshot: Anzeigen des Verknüpfungsstatus für den primären Cache und sekundäre Caches.":::
 
     Nach Abschluss des Replikationsvorgangs wechselt der **Verknüpfungsstatus** zu **Erfolgreich**.
 
-    ![Cachestatus](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-link-successful.png" alt-text="Cachestatus":::
 
     Der primäre verknüpfte Cache bleibt während des Verknüpfungsvorgangs für die Nutzung verfügbar. Der sekundäre verknüpfte Cache ist erst verfügbar, nachdem der Verknüpfungsvorgang abgeschlossen wurde.
 
@@ -93,7 +93,7 @@ Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für 
 
 1. Um die Verknüpfung zwischen zwei Caches zu entfernen und die Georeplikation zu beenden, klicken Sie links unter **Georeplikation** auf **Verknüpfung von Caches aufheben**.
 
-    ![Aufheben der Verknüpfung von Caches](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
+    :::image type="content" source="media/cache-how-to-geo-replication/cache-geo-location-unlink.png" alt-text="Aufheben der Verknüpfung von Caches":::
 
     Wenn der Vorgang zur Aufhebung der Verknüpfung abgeschlossen ist, ist der sekundäre Cache für Lese- und Schreibvorgänge verfügbar.
 
@@ -110,7 +110,7 @@ Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für 
 - [Kann ich zwei Caches aus verschiedenen Azure-Abonnements verknüpfen?](#can-i-link-two-caches-from-different-azure-subscriptions)
 - [Kann ich zwei Caches von unterschiedlicher Größe verknüpfen?](#can-i-link-two-caches-with-different-sizes)
 - [Kann ich die Georeplikation mit aktiviertem Clustering verwenden?](#can-i-use-geo-replication-with-clustering-enabled)
-- [Kann ich die Georeplikation bei meinen Caches in einem VNET verwenden?](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
+- [Kann ich die Georeplikation bei meinen Caches in einem VNet verwenden?](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
 - [Was ist der Replikationszeitplan für die Redis-Georeplikation?](#what-is-the-replication-schedule-for-redis-geo-replication)
 - [Wie lange dauert die Georeplikation?](#how-long-does-geo-replication-replication-take)
 - [Ist der Wiederherstellungspunkt für die Replikation garantiert?](#is-the-replication-recovery-point-guaranteed)
@@ -147,20 +147,20 @@ Ja, solange der sekundäre verknüpfte Cache größer ist als der primäre verkn
 
 Ja, solange beide Caches über dieselbe Anzahl von Shards verfügen.
 
-### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>Kann ich die Georeplikation bei meinen Caches in einem VNET verwenden?
+### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>Kann ich die Georeplikation bei meinen Caches in einem VNet verwenden?
 
-Ja. Die Georeplikation von Caches in VNETs wird mit Einschränkungen unterstützt:
+Ja. Die Georeplikation von Caches in VNets wird mit Einschränkungen unterstützt:
 
-- Es wird Unterstützung für die Georeplikation zwischen Caches im selben VNET geboten.
-- Die Georeplikation zwischen Caches in unterschiedlichen VNETs wird ebenfalls unterstützt.
-  - Wenn sich die VNETs in derselben Region befinden, können Sie sie per [VNET-Peering](../virtual-network/virtual-network-peering-overview.md) oder per [VPN Gateway-VNET-zu-VNET-Verbindung](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) verbinden.
-  - Wenn sich die VNETs in verschiedenen Regionen befinden, wird Georeplikation über VNET-Peering unterstützt, aber eine Client-VM in VNET 1 (Region 1) kann aufgrund einer Einschränkung mit internen Lastausgleichsmodulenvom Typ „Basic“ nicht über ihren DNS-Namen auf den Cache in VNET 2 (Region 2) zugreifen. Weitere Informationen zu Einschränkungen beim VNET-Peering finden Sie im Artikel zu den [Anforderungen und Einschränkungen beim VNET-Peering](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Die empfohlene Lösung ist die Verwendung einer VPN Gateway-VNET-zu-VNET-Verbindung.
+- Es wird Unterstützung für die Georeplikation zwischen Caches im selben VNet geboten.
+- Die Georeplikation zwischen Caches in unterschiedlichen VNets wird ebenfalls unterstützt.
+  - Wenn sich die VNets in derselben Region befinden, können Sie sie per [VNet-Peering](../virtual-network/virtual-network-peering-overview.md) oder per [VPN Gateway-VNet-zu-VNet-Verbindung](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) verbinden.
+  - Wenn sich die VNets in verschiedenen Regionen befinden, wird Georeplikation über VNet-Peering unterstützt, aber eine Client-VM in VNet 1 (Region 1) kann aufgrund einer Einschränkung mit internen Lastausgleichsmodulen vom Typ „Basic“ nicht über ihren DNS-Namen auf den Cache in VNet 2 (Region 2) zugreifen. Weitere Informationen zu Einschränkungen beim VNet-Peering finden Sie im Artikel zu den [Anforderungen und Einschränkungen beim VNet-Peering](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Es wird empfohlen, eine VPN Gateway-VNet-zu-VNet-Verbindung zu verwenden.
   
-Mit [dieser Azure-Vorlage](https://azure.microsoft.com/resources/templates/redis-vnet-geo-replication/) können Sie schnell zwei georeplizierte Caches in einem VNET bereitstellen, indem Sie eine VPN Gateway-VNET-zu-VNET-Verbindung verwenden.
+Mit [dieser Azure-Vorlage](https://azure.microsoft.com/resources/templates/redis-vnet-geo-replication/) können Sie schnell zwei georeplizierte Caches in einem VNet bereitstellen, indem Sie eine VPN Gateway-VNet-zu-VNet-Verbindung verwenden.
 
 ### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Was ist der Replikationszeitplan für die Redis-Georeplikation?
 
-Die Replikation wird kontinuierlich und asynchron und nicht nach einem bestimmten Zeitplan durchgeführt. Alle Schreibvorgänge für die primäre Datenbank werden sofort und asynchron in der sekundären Datenbank repliziert.
+Die Replikation ist fortlaufend und asynchron. Dies erfolgt nicht nach einem bestimmten Zeitplan. Alle Schreibvorgänge für die primäre Datenbank werden sofort und asynchron in der sekundären Datenbank repliziert.
 
 ### <a name="how-long-does-geo-replication-replication-take"></a>Wie lange dauert die Georeplikation?
 
@@ -190,7 +190,9 @@ Grundsätzlich sollte sich Ihr Cache in derselben Azure-Region wie die Anwendung
 
 ### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>Wie funktioniert ein Failover zum sekundären verknüpften Cache?
 
-Das automatische Failover über Azure-Regionen hinweg wird für georeplizierte Caches nicht unterstützt. In einem Szenario mit Notfallwiederherstellung sollten Kunden in Ihrer Sicherungsregion den gesamten Anwendungsstapel auf koordinierte Weise aufrufen. Wenn einzelnen Anwendungskomponenten die Entscheidung, wann auf die Sicherungen umgeschaltet wird, selbst überlassen wird, kann sich dies negativ auf die Leistung auswirken. Einer der wesentlichen Vorteile bei Redis besteht darin, dass es sich um einen Speicher mit sehr geringen Wartezeiten handelt. Wenn sich die Hauptanwendung des Kunden in einer anderen Region als der zugehörige Cache befindet, wirkt sich die zusätzliche Roundtripzeit wahrnehmbar auf die Leistung aus. Aus diesem Grund werden automatische Failover vermieden, da es zu vorübergehenden Problemen mit der Verfügbarkeit kommen kann.
+Das automatische Failover über Azure-Regionen hinweg wird für georeplizierte Caches nicht unterstützt. In einem Szenario mit Notfallwiederherstellung sollten Kunden in Ihrer Sicherungsregion den gesamten Anwendungsstapel auf koordinierte Weise aufrufen. Wenn einzelnen Anwendungskomponenten die Entscheidung, wann auf die Sicherungen umgeschaltet wird, selbst überlassen wird, kann sich dies negativ auf die Leistung auswirken. 
+
+Einer der wesentlichen Vorteile bei Redis besteht darin, dass es sich um einen Speicher mit sehr geringen Wartezeiten handelt. Wenn sich die Hauptanwendung des Kunden in einer anderen Region als der zugehörige Cache befindet, wirkt sich die zusätzliche Roundtripzeit wahrnehmbar auf die Leistung aus. Aus diesem Grund werden automatische Failover vermieden, da es zu vorübergehenden Problemen mit der Verfügbarkeit kommen kann.
 
 Heben Sie zuerst die Verknüpfung der Caches auf, um ein vom Kunden initiiertes Failover zu starten. Ändern Sie anschließend Ihren Redis-Client, um den Verbindungsendpunkt des (zuvor verknüpften) sekundären Caches zu verwenden. Wenn die Verknüpfung beider Caches aufgehoben wurde, wird der sekundäre Cache wieder zu einem Cache mit regulärem Lese-/Schreibzugriff und akzeptiert direkte Anforderungen von Redis-Clients.
 

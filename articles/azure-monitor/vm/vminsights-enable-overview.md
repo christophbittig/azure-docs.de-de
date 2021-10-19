@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: fa656b974a89924a2ce029a7c5e38b4d9f68f6b7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1a4c872e5df50e2874053ad460cb50ecfabfeed9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440087"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713378"
 ---
 # <a name="enable-vm-insights-overview"></a>Übersicht zum Aktivieren von VM Insights
 
@@ -41,7 +41,7 @@ VM Insights unterstützt die folgenden Computer:
 > Wenn der Name des Ethernet-Geräts für Ihre VM mehr als neun Zeichen enthält, wird es von VM Insights nicht erkannt, und es werden keine Daten an die InsightsMetrics-Tabelle gesendet. Der Agent sammelt Daten aus [anderen Quellen](../agents/agent-data-sources.md).
 
 ## <a name="supported-azure-arc-machines"></a>Unterstützte Azure Arc-Computer
-VM Insights ist für Azure Arc-fähige Server in Regionen verfügbar, in denen der Arc-Erweiterungsdienst verfügbar ist. Sie müssen Version 0.9 oder höher des Arc-Agents ausführen.
+VM Insights steht für Azure Arc-fähige Server in Regionen zur Verfügung, in denen der Arc-Erweiterungsdienst verfügbar ist. Sie müssen Version 0.9 oder höher des Arc-Agents ausführen.
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 |:--|:--|:--|

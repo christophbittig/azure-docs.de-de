@@ -8,12 +8,12 @@ ms.date: 08/25/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 44ecb59508b93347ba57fb40a88c274adfedd320
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0c8ad195ce2e5288857595b042bb30cf6b5c8a6d
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434050"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618398"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-429-exceptions"></a>Diagnostizieren und Behandeln von Problemen im Zusammenhang mit der Azure Cosmos DB-Ausnahme „Zu hohe Anforderungsrate“ (429)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -72,7 +72,7 @@ Jede PartitionKeyRangeId ist einer physischen Partition zugeordnet. Wenn es eine
 In den [Azure-Diagnoseprotokollen](../cosmosdb-monitor-resource-logs.md) können Sie herausfinden, welche logischen Partitionsschlüssel die meisten RU/s beanspruchen. Diese Beispielabfrage summiert für jeden logischen Partitionsschlüssel die insgesamt beanspruchten Anforderungseinheiten pro Sekunde. 
 
 > [!IMPORTANT]
-> Durch Aktivierung von Diagnoseprotokollen fällt eine separate Gebühr für den Log Analytics-Dienst an, die basierend auf der Menge der erfassten Daten abgerechnet wird. Es wird empfohlen, zum Debuggen Diagnoseprotokolle für einen begrenzten Zeitraum zu aktivieren und sie wieder zu deaktivieren, sobald sie nicht mehr erforderlich sind. Einzelheiten finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/).
+> Durch die Aktivierung von Diagnoseprotokollen fällt eine separate Gebühr für den Log Analytics-Dienst an, die basierend auf der Menge der erfassten Daten abgerechnet wird. Es wird empfohlen, zum Debuggen Diagnoseprotokolle für einen begrenzten Zeitraum zu aktivieren und sie wieder zu deaktivieren, sobald sie nicht mehr erforderlich sind. Einzelheiten finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/).
 
 ```kusto
 AzureDiagnostics

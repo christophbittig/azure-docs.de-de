@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 09/13/2021
+ms.date: 10/13/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: devx-track-js
-ms.openlocfilehash: 8e609268258142875ebbe924f3cfbdebc94911f8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 115876aab202c550d694267294345b5472ad1f2a
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601716"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811725"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -361,13 +361,13 @@ Wenn Indizes entfernt und sofort Abfragen ausgeführt werden, die nach den gelö
 
 ## <a name="reindex-command"></a>ReIndex-Befehl
 
-Mit dem `reIndex`-Befehl werden alle Indizes in einer Sammlung neu erstellt. Dies ist in den meisten Fällen nicht erforderlich. In einigen seltenen Fällen kann sich die Abfrageleistung jedoch verbessern, nachdem der `reIndex`-Befehl ausgeführt wurde.
+Mit dem `reIndex`-Befehl werden alle Indizes in einer Sammlung neu erstellt. In einigen seltenen Fällen können Probleme mit der Abfrageleistung oder andere Indexprobleme in Ihrer Sammlung durch Ausführen des Befehls `reIndex` gelöst werden. Bei Problemen mit der Indizierung wird empfohlen, die Indizes mit dem Befehl `reIndex` neu zu erstellen. 
 
 Verwenden Sie für die Ausführung des `reIndex`-Befehls die folgende Syntax:
 
 `db.runCommand({ reIndex: <collection> })`
 
-Mithilfe der folgenden Syntax können Sie überprüfen, ob Sie den `reIndex`-Befehl ausführen müssen:
+Mithilfe der folgenden Syntax können Sie überprüfen, ob die Ausführung des Befehls `reIndex` die Abfrageleistung in Ihrer Sammlung verbessern würde:
 
 `db.runCommand({"customAction":"GetCollection",collection:<collection>, showIndexes:true})`
 
@@ -402,7 +402,7 @@ Beispielausgabe:
 }
 ```
 
-Wenn `reIndex` erforderlich ist, ist **requiresReIndex** TRUE. Wenn `reIndex` nicht erforderlich ist, wird diese Eigenschaft ausgelassen.
+Wenn `reIndex` die Abfrageleistung verbessert, ist für **requiresReIndex** der Wert „true“ angegeben. Wenn `reIndex` die Abfrageleistung nicht verbessert, wird diese Eigenschaft ausgelassen.
 
 ## <a name="migrate-collections-with-indexes"></a>Migrieren von Sammlungen mit Indizes
 

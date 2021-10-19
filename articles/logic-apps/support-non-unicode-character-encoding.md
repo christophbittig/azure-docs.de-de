@@ -1,16 +1,16 @@
 ---
-title: Unterstützung von Nicht-Unicode-Zeichencodierung in Logic Apps
-description: Hier erfahren Sie, wie Sie Nicht-Unicode-Text in Logic Apps verwenden. Konvertieren Sie als Text vorliegende Nutzdaten in UTF-8 mit Base64-Codierung und Azure Functions.
-ms.date: 04/29/2021
-ms.topic: conceptual
-ms.reviewer: logicappspm
+title: Konvertieren von nicht in Unicode codiertem Text zum Erzielen von Kompatibilität
+description: Verarbeiten Sie Nicht-Unicode-Zeichen in Azure Logic Apps, indem Sie Textnutzdaten in UTF-8 mit Base64-Codierung und Azure Functions konvertieren.
+ms.date: 10/05/2021
+ms.topic: how-to
+ms.reviewer: estfan, azla
 ms.service: logic-apps
-ms.openlocfilehash: cabdb2a644870d363265fa39290eb503f72730a9
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 1251a1622e62b7940c25ac810db10f70da560000
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326910"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618988"
 ---
 # <a name="support-non-unicode-character-encoding-in-logic-apps"></a>Unterstützung von Nicht-Unicode-Zeichencodierung in Logic Apps
 
@@ -24,9 +24,17 @@ Diese Lösung kann sowohl für *mehrinstanzenfähige Workflows* als auch für *W
 
 Vergewissern Sie sich zunächst, dass Ihr Trigger den Inhaltstyp ordnungsgemäß identifizieren kann. Dadurch wird sichergestellt, dass Logic Apps nicht mehr davon ausgeht, dass der Text im UTF-8-Format vorliegt. 
 
-Wählen Sie bei Triggern mit der Einstellung **Inhaltstyp ableiten** die Option **Nein** aus. Sollte Ihr Trigger nicht über diese Option verfügen, wird der Inhaltstyp durch die eingehende Nachricht festgelegt. 
+Wählen Sie in Triggern und Aktionen, die über die Eigenschaft **Inhaltstyp ableiten** verfügen, **Nein** aus.  Diese Eigenschaft finden Sie in der Regel in der Liste **Parameter hinzufügen** des Vorgangs. Wenn der Vorgang diese Eigenschaft jedoch nicht enthält, wird der Inhaltstyp durch die eingehende Nachricht festgelegt.
 
-Wenn Sie den HTTP-Anforderungstrigger für Inhalte vom Typ `text/plain` verwenden, muss im Header `Content-Type` des Aufrufs der Parameter `charset` festgelegt werden. Wenn Sie den Parameter `charset` nicht festlegen oder der Parameter nicht dem Codierungsformat der Nutzdaten entspricht, kann es passieren, dass Zeichen beschädigt werden. Weitere Informationen zur Behandlung des Inhaltstyps `text/plain` finden Sie [hier](logic-apps-content-type.md#text-plain).
+In der folgenden Liste sind einige Connectors aufgeführt, bei denen Sie das automatische Ableiten des Inhaltstyps deaktivieren können:
+* [OneDrive](/connectors/onedrive/)
+* [Azure Blob Storage](/connectors/azureblob/)
+* [Azure File Storage](/connectors/azurefile/)
+* [Dateisystem](/connectors/filesystem/)
+* [Google Drive](/connectors/googledrive/)
+* [SFTP – SSH](/connectors/sftpwithssh/)
+ 
+Wenn Sie den Anforderungstrigger für Inhalte vom Typ `text/plain` verwenden, muss der Parameter `charset` im Header `Content-Type` des Aufrufs festgelegt werden. Andernfalls kann es passieren, dass Zeichen beschädigt werden oder dass der Parameter nicht dem Codierungsformat der Nutzdaten entspricht. Weitere Informationen zur Behandlung des Inhaltstyps `text/plain` finden Sie [hier](logic-apps-content-type.md#text-plain).
 
 Ein Beispiel: Durch den HTTP-Trigger wird der eingehende Inhalt in UTF-8 konvertiert, wenn der Header `Content-Type` mit dem korrekten Parameter vom Typ `charset` festgelegt wird:
 

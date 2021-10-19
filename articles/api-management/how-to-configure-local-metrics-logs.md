@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren von lokalen Metriken und Protokollen für selbstgehostete Gateways für Azure API Management | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie lokale Metriken und Protokolle für selbstgehostete Gateways von Azure API Management in einem Kubernetes-Cluster konfigurieren.
+description: Erfahren Sie, wie Sie lokale Metriken und Protokolle für selbstgehostete Azure API Management-Gateways in einem Kubernetes-Cluster konfigurieren.
 services: api-management
 documentationcenter: ''
 author: dlepow
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/11/2021
 ms.author: danlep
-ms.openlocfilehash: 94dde4e35a072431fbcc5a30b3257b7a70b59e44
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 421111e289ffba14b792af5cf810ac562164c846
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128551116"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660835"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurieren von lokalen Metriken und Protokollen für selbstgehostete Gateways für Azure API Management
 
@@ -30,6 +30,9 @@ Das selbstgehostete Gateway unterstützt [StatsD](https://github.com/statsd/stat
 ### <a name="deploy-statsd-and-prometheus-to-the-cluster"></a>Bereitstellen von StatsD und Prometheus im Cluster
 
 Es folgt eine YAML-Beispielkonfiguration für die Bereitstellung von StatsD und Prometheus im Kubernetes-Cluster, in dem ein selbstgehostetes Gateway bereitgestellt wird. Außerdem wird für beide ein [Dienst](https://kubernetes.io/docs/concepts/services-networking/service/) erstellt. Das selbstgehostete Gateway veröffentlicht Metriken im StatsD-Dienst. Der Zugriff auf das Prometheus-Dashboard erfolgt über den Dienst.
+
+> [!NOTE]
+> Im folgenden Beispiel werden öffentliche Containerimages von Docker Hub abgerufen. Es wird empfohlen, ein Pullgeheimnis für die Authentifizierung mithilfe eines Docker Hub-Kontos einrichten, anstatt einen anonymen Pull Request zu verwenden. Um die Zuverlässigkeit bei der Arbeit mit öffentlichen Inhalten zu verbessern, sollten Sie die Images in eine private Azure-Containerregistrierung importieren und dort verwalten. [Erfahren Sie mehr über die Arbeit mit öffentlichen Images](../container-registry/buffer-gate-public-content.md).
 
 ```yaml
 apiVersion: v1

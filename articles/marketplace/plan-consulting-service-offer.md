@@ -1,6 +1,6 @@
 ---
-title: Planen eines Angebots für Beratungsdienste im kommerziellen Marketplace von Microsoft
-description: In diesem Artikel erfahren Sie, wie Sie ein neues Angebot für Beratungsdienste für Microsoft AppSource oder den Azure Marketplace mithilfe des kommerziellen Marketplace-Programms in Microsoft Partner Center.
+title: Planen eines Beratungsdienstangebots für den kommerziellen Marketplace
+description: Planen Sie über Partner Center ein Beratungsdienstangebot für Microsoft AppSource oder den Azure Marketplace.
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 3ffca17efa59a0544e06bb3bd4fbae1d812f2823
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7350fe9dfcadce2d454ab5ee9e78ad80b996bafe
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124819209"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667248"
 ---
-# <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Planen eines Angebots für einen Beratungsdienst im kommerziellen Marketplace
+# <a name="plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Planen eines Beratungsdienstangebots im kommerziellen Marketplace
 
 In diesem Artikel werden die verschiedenen Optionen und Anforderungen zum Veröffentlichen eines Angebots für einen Beratungsdienst für den kommerziellen Marketplace von Microsoft erläutert. In diesem Artikel erfahren Sie, wie Sie ein Angebot für die Veröffentlichung in Partner Center vorbereiten.
 

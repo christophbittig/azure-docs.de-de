@@ -10,12 +10,12 @@ ms.date: 08/17/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: calling
-ms.openlocfilehash: 23307fbfccdce2faa1b6c5808095f0f97c7a0e66
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 23b75ff29e32bafdce320d334d9236902cbe4b2c
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635886"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667609"
 ---
 # <a name="call-diagnostics"></a>Anrufdiagnose
 
@@ -41,7 +41,7 @@ Die folgenden benutzerorientierten Diagnosen sind verfügbar:
 | ------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
 | noNetwork                 | Es ist kein Netzwerk verfügbar.                                  | - Wird auf `True` festgelegt, wenn ein Anruf nicht gestartet werden kann, weil kein Netzwerk verfügbar ist. <br/> - Wird auf `False` festgelegt, wenn ICE-Kandidaten vorhanden sind.                                                                                                  | Das Gerät ist nicht mit einem Netzwerk verbunden.               |
 | networkRelaysNotReachable | Probleme mit einem Netzwerk.                                        | - Wird auf `True` festgelegt, wenn das Netzwerk eine Einschränkung aufweist, die es Ihnen nicht erlaubt, ACS-Relais zu erreichen. <br/> - Wird bei einem neuen Anruf auf `False` festgelegt.                                                                                                | Während eines Anrufs, wenn das WLAN-Signal aktiviert und deaktiviert wird. |
-| networkReconnect          | Die Verbindung wurde unterbrochen und wir stellen die Verbindung zum Netzwerk wieder her. | - Wird auf `Poor` festgelegt, wenn die Medientransportkonnektivität verloren gegangen ist. <br/> - Wird auf `Bad` festgelegt, wenn das Netzwerk getrennt ist. <br/> - Wird auf `Good` festgelegt, wenn eine neue Sitzung hergestellt wird.                                                                       | Geringe Bandbreite, kein Internet                          |
+| networkReconnect          | Die Verbindung wurde unterbrochen und wir stellen die Verbindung zum Netzwerk wieder her. | - Wird auf `Bad` festgelegt, wenn das Netzwerk getrennt ist. <br/> - Wird auf `Poor` festgelegt, wenn die Medientransportkonnektivität verloren gegangen ist. <br/> - Wird auf `Good` festgelegt, wenn eine neue Sitzung hergestellt wird.                                                                       | Geringe Bandbreite, kein Internet                          |
 | networkReceiveQuality     | Ein Indikator für die Qualität des eingehenden Datenstroms.                 | - Wird auf `Bad` festgelegt, wenn ein schwerwiegendes Problem beim Empfang des Datenstroms vorliegt. Qualität <br/> - Wird auf `Poor` festgelegt, wenn ein leichtes Problem beim Empfang des Datenstroms vorliegt. Qualität <br/> - Wird auf `Good` festgelegt, wenn kein Problem beim Empfang des Datenstroms vorliegt. | Geringe Bandbreite                                       |
 
 ### <a name="audio-values"></a>Audiowerte

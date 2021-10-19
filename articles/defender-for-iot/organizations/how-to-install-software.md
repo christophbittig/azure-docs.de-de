@@ -1,18 +1,18 @@
 ---
 title: Installation von Defender für IoT
 description: Hier erfahren Sie, wie Sie einen Sensor und die lokale Verwaltungskonsole für Azure Defender für IoT installieren.
-ms.date: 10/05/2021
+ms.date: 10/09/2021
 ms.topic: how-to
-ms.openlocfilehash: a5b4beff2d01896082974bf761cb7544d439af9e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: f23c5fe84959045ba0446ad03c9a990a7bbb2014
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537298"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754537"
 ---
 # <a name="defender-for-iot-installation"></a>Installation von Defender für IoT
 
-In diesem Artikel wird beschrieben, wie die folgenden Elemente von Azure Defender für IoT installiert werden:
+Dieser Artikel beschreibt, wie Sie die folgenden Azure Defender für IoT-Komponenten installieren:
 
 - **Sensor**: Defender für IoT-Sensoren erfassen den ICS-Netzwerkdatenverkehr mithilfe von passiver Überwachung (ohne Agents). Da sie passiv und nicht intrusiv arbeiten, haben die Sensoren keinerlei Auswirkungen auf OT- und IoT-Netzwerke und -Geräte. Der Sensor wird mit einem SPAN-Port oder Netzwerk-TAP verbunden und beginnt sofort mit der Überwachung Ihres Netzwerks. Erkennungen werden in der Sensorkonsole angezeigt. Dort können Sie sie in einer Netzwerkübersicht, einem Geräteinventar sowie einer umfangreichen Palette von Berichten anzeigen, untersuchen und analysieren. Zu den Beispielen zählen Risikobewertungsberichte, Data Mining-Abfragen und Angriffsvektoren. Weitere Informationen zu Sensorfunktionen finden Sie im [Defender für IoT Sensor-Benutzerhandbuch (direkter Download)](./getting-started.md).
 
@@ -43,7 +43,7 @@ Die folgenden Appliances zum Einbau in ein Rack stehen zur Verfügung:
 | **Modell** | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 | HPE EL300 |
 | **Überwachungsports** | bis zu 15 RJ45 oder 8 OPT | bis zu 8 RJ45 oder 6 OPT | bis zu 4 RJ45 | bis zu 5 RJ45 |
 | **Maximale Bandbreite\*** | 3 GB/s | 1 GB/s | 200 MBit/s | 100 MB/s |
-| **Maximale Anzahl geschützter Geräte** | 30.000 | 15.000 | 1\.000 | 800 |
+| **Maximale Anzahl geschützter Geräte** | 10.000 | 10.000 | 1\.000 | 800 |
 
 \* Die maximale Bandbreitenkapazität könnte je nach Protokollverteilung variieren.
 
@@ -55,7 +55,7 @@ Die folgenden virtuellen Geräte stehen zur Verfügung:
 |--|--|--|--|
 | **Beschreibung** | Virtuelles Gerät für Unternehmensbereitstellungen | Virtuelles Gerät für Unternehmensbereitstellungen | Virtuelles Gerät für SMB-Bereitstellungen |
 | **Maximale Bandbreite\*** | 2,5 GB/s | 800 MB/s | 160 MB/s |
-| **Maximale Anzahl geschützter Geräte** | 30.000 | 10.000 | 800 |
+| **Maximale Anzahl geschützter Geräte** | 10.000 | 10.000 | 800 |
 | **Bereitstellungstyp** | Unternehmen | Enterprise | SMB |
 
 \* Die maximale Bandbreitenkapazität könnte je nach Protokollverteilung variieren.
@@ -1361,7 +1361,7 @@ Wenden Sie sich bei allen anderen Problemen an den [Microsoft-Support](https://s
 
 ## <a name="configure-a-span-port"></a>Konfigurieren eines SPAN-Ports
 
-Ein vSwitch enthält keine Spiegelungsfunktionen, aber Sie können einen SPAN-Port mithilfe einer Problemumgehung implementieren. Sie können die Problemumgehung entweder mit ESXi oder Hyper-V implementieren.
+Ein virtueller Switch verfügt nicht über Spiegelungsfunktionen. Sie können jedoch den Promiscuous Mode in einer virtuellen Switch-Umgebung verwenden. Der Promiscuous-Modus ist ein Betriebsmodus sowie eine Sicherheits-, Überwachungs- und Verwaltungstechnik, die auf der Ebene des virtuellen Switches oder der Portgruppe definiert wird. In der Standardeinstellung ist der Promiscuous-Modus deaktiviert. Wenn der Promiscuous-Modus aktiviert ist, verwenden die Netzwerkschnittstellen der virtuellen Maschine, die sich in derselben Portgruppe befinden, den Promiscuous-Modus, um den gesamten Netzwerkverkehr anzuzeigen, der über diesen virtuellen Switch läuft. Sie können eine Umgehung entweder mit ESXi oder Hyper-V implementieren.
 
 :::image type="content" source="media/tutorial-install-components/purdue-model.png" alt-text="Screenshot der Stelle in Ihrer Architektur, an der der Sensor platziert werden soll.":::
 
@@ -1397,7 +1397,7 @@ Ein vSwitch enthält keine Spiegelungsfunktionen, aber Sie können einen SPAN-Po
 
 Bevor Sie beginnen, müssen Sie Folgendes sicherstellen:
 
-- Es wird keine Instanz eines virtuellen Geräts ausgeführt.
+- Es wird keine Instanz einer virtuellen Appliance ausgeführt.
 
 - SPAN ist für den Datenport und nicht für den Verwaltungsport aktiviert.
 
@@ -1425,7 +1425,7 @@ Bevor Sie beginnen, müssen Sie Folgendes sicherstellen:
 
 Sie können über Windows PowerShell oder den Hyper-V-Manager eine virtuelle SPAN-Schnittstelle an den virtuellen Switch anfügen.
 
-**So fügen Sie über PowerShell eine virtuelle SPAN-Schnittstelle an den virtuellen Switch an**:
+**So fügen Sie über PowerShell eine virtuelle SPAN-Schnittstelle an den virtuellen Switch an**
 
 1. Wählen Sie den neu hinzugefügten virtuellen SPAN-Switch aus, und fügen Sie mit dem folgenden Befehl einen neuen Netzwerkadapter hinzu:
 
@@ -1449,7 +1449,7 @@ Sie können über Windows PowerShell oder den Hyper-V-Manager eine virtuelle SPA
 
 Mit diesen Befehlen wird der Name der neu hinzugefügten Adapterhardware auf `Monitor` festgelegt. Bei Verwendung des Hyper-V-Managers wird der Name der neu hinzugefügten Adapterhardware auf `Network Adapter` festgelegt.
 
-**So fügen Sie über den Hyper-V-Manager eine virtuelle SPAN-Schnittstelle an den virtuellen Switch an**:
+**So fügen Sie über den Hyper-V-Manager eine virtuelle SPAN-Schnittstelle an den virtuellen Switch an**
 
 1. Wählen Sie in der Hardwareliste die Option **Netzwerkadapter** aus.
 

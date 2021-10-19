@@ -1,5 +1,5 @@
 ---
-title: Azure CDN-Endpunkt mit mehreren Ursprüngen (Vorschau)
+title: Azure CDN-Endpunkt mit mehreren Ursprüngen
 description: Hier finden Sie Informationen zu den ersten Schritten mit einem Azure CDN-Endpunkt mit mehreren Ursprüngen.
 services: cdn
 author: asudbring
@@ -8,12 +8,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.author: allensu
-ms.openlocfilehash: 06d0e35534db97f1de48c55f9cc6f46f979514fa
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 1e17c747c87a5abb184ae4b7b263a8b5bd1a3a49
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444839"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855990"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN-Endpunkt mit mehreren Ursprüngen
 
@@ -22,6 +22,8 @@ Die Unterstützung für mehrere Ursprünge beseitigt Ausfallzeiten und sorgt fü
 Durch die Auswahl mehrerer Ursprünge an einem Azure CDN-Endpunkt wird das Risiko durch die bereitgestellte Redundanz, durch das Testen der Integrität der einzelnen Ursprünge und ggf. durch ein Failover verteilt.
 
 Richten Sie eine oder mehrere Ursprungsgruppen ein, und wählen Sie eine Standardursprungsgruppe aus. Jede Ursprungsgruppe ist eine Sammlung von einem oder mehreren Ursprüngen, die ähnliche Workloads übernehmen können.
+
+Die erste Ursprungsgruppe wird als Standardursprungsgruppe festgelegt. Das Feature mit mehreren Ursprüngen wird aktiviert, wenn eine Standardursprungsgruppe für den CDN-Endpunkt ausgewählt wird. Sobald das Feature mit mehreren Ursprüngen aktiviert ist, kann es nicht mehr deaktiviert werden, und die Standardursprungsgruppe kann nicht gelöscht werden. Die Standardursprungsgruppe wird zum Weiterleiten von Anforderungen an den Ursprung verwendet. Sie können die Ursprungsgruppenkonfiguration aktualisieren und zu einer Konfiguration mit einem einzelnen Ursprung wechseln. Sie können auch die Festlegung der Standardursprungsgruppe in eine andere Ursprungsgruppe ändern.
 
 > [!NOTE]
 > Dieses Feature ist derzeit nur über Azure CDN von Microsoft verfügbar. 

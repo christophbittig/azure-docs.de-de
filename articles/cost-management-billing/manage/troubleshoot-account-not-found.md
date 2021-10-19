@@ -7,20 +7,20 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 4a21ede66501832512530513423bed018c92f1aa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5b712ad275ece9293aca5f4fbe01bbc590958aff
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128646946"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711064"
 ---
 # <a name="troubleshoot-viewing-your-billing-account-in-the-azure-portal"></a>Problembehandlung für das Anzeigen Ihres Abrechnungskontos im Azure-Portal
 
 Ein Abrechnungskonto wird erstellt, wenn Sie sich für die Nutzung von Azure registrieren. Sie verwenden Ihr Abrechnungskonto zum Verwalten Ihrer Rechnungen und Zahlungen sowie zum Nachverfolgen von Kosten. Unter Umständen verfügen Sie über Zugriff auf mehrere Abrechnungskonten. Es kann beispielsweise sein, dass Sie sich zu persönlichen Zwecken für Azure registriert haben. Und außerdem könnten Sie auch über das Enterprise Agreement Ihrer Organisation oder über eine Microsoft-Kundenvereinbarung auf Azure zugreifen. In diesen Szenarien verfügen Sie dann jeweils über ein separates Abrechnungskonto. Dieser Artikel enthält hilfreiche Informationen zur Behebung von Problemen, die beim Anzeigen Ihres Abrechnungskontos im Azure-Portal auftreten.
 
-Sie können Ihre Abrechnungskonten auf der Seite [Azure-Kostenverwaltung und Abrechnung](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade) anzeigen.
+Sie können Ihre Abrechnungskonten auf der Seite [Cost Management + Billing](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade) anzeigen.
 
 Weitere Informationen zu Abrechnungskonten und zur Ermittlung der Art Ihres Abrechnungskontos finden Sie unter [Anzeigen Ihrer Abrechnungskonten im Azure-Portal](view-all-accounts.md).
 

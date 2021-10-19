@@ -1,5 +1,5 @@
 ---
-title: Senken der Kosten für Azure Synapse Analytics mit reservierter Azure-Kapazität
+title: Senken der Kosten für Azure Synapse Analytics (nur Data Warehousing) mit reservierter Azure-Kapazität
 description: Hier erfahren Sie, wie Sie die Kosten für Azure Synapse Analytics mit reservierter Kapazität senken und so Geld sparen können.
 author: bandersmsft
 ms.reviewer: primittal
@@ -8,20 +8,20 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: f738b2e551ecb26426ef25603969fb471ecfa437
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7e5987aee066e8c9e439b2789b1242e1bc541c35
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128666588"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714100"
 ---
-# <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>Senken der Kosten für Azure Synapse Analytics mit reservierter Kapazität
+# <a name="save-costs-for-azure-synapse-analytics-data-warehousing-only-charges-with-reserved-capacity"></a>Senken der Kosten für Azure Synapse Analytics (nur Data Warehousing) mit reservierter Kapazität
 
-Mit Azure Synapse Analytics können Sie Geld sparen, indem Sie sich für eine Reservierung für Ihre cDWU-Nutzung für einen Zeitraum von einem Jahr bzw. drei Jahren entscheiden. Um reservierte Kapazität für Azure Synapse Analytics zu erwerben, müssen Sie die Azure-Region und die Laufzeit auswählen. Fügen Sie dann die Azure Synapse Analytics-SKU Ihrem Warenkorb hinzu, und wählen Sie die Menge der cDWU-Einheiten aus, die Sie erwerben möchten.
+Mit Azure Synapse Analytics (nur Data Warehousing) können Sie Geld sparen, indem Sie sich für eine Reservierung für Ihre cDWU-Nutzung für einen Zeitraum von einem Jahr bzw. drei Jahren entscheiden. Um reservierte Kapazität für Azure Synapse Analytics zu erwerben, müssen Sie die Azure-Region und die Laufzeit auswählen. Fügen Sie dann die Azure Synapse Analytics-SKU Ihrem Warenkorb hinzu, und wählen Sie die Menge der cDWU-Einheiten aus, die Sie erwerben möchten.
 
 Wenn Sie eine Reservierung erwerben, wird die Nutzung von Azure Synapse Analytics, die den Reservierungsattributen entspricht, nicht mehr zu den Preisen für die nutzungsbasierte Bezahlung abgerechnet.
 
-Eine Reservierung deckt keine mit der Azure Synapse Analytics-Nutzung verbundenen Speicher- oder Netzwerkgebühren ab.
+Eine Reservierung deckt keine mit der Azure Synapse Analytics-Nutzung verbundenen Speicher- oder Netzwerkgebühren ab, sondern nur die Nutzung von Data Warehousing.
 
 Nach Ablauf der reservierten Kapazität werden Azure Synapse Analytics-Instanzen weiterhin ausgeführt, jedoch zu den Preisen für die nutzungsbasierte Bezahlung abgerechnet. Reservierungen werden nicht automatisch verlängert.
 

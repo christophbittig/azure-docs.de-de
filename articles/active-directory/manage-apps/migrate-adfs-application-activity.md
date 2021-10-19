@@ -1,6 +1,7 @@
 ---
-title: Verwenden des Aktivitätsberichts zum Verschieben von AD FS-Apps in Azure Active Directory | Microsoft-Dokumentation
+title: Verwenden des Aktivitätsberichts zum Verschieben von AD FS-Apps in Azure Active Directory
 description: Mit dem AD FS-Anwendungsaktivitätsbericht (Active Directory-Verbunddienste) können Sie Anwendungen schnell von AD FS zu Azure Active Directory (Azure AD) migrieren. Dieses Migrationstool für AD FS identifiziert die Kompatibilität mit Azure AD und bietet Anleitungen zur Migration.
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 01/14/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: alamaral
-ms.openlocfilehash: 6b60479d1205acdd0d18311791adfc4924913c4e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 00bc79bf0ab078e3a95c958b8c539f453a633e1c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339627"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614724"
 ---
-# <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>Verwenden des AD FS-Anwendungsaktivitätsberichts, um Anwendungen zu Azure AD zu migrieren
+# <a name="review-the-application-activity-report-in-azure-active-directory"></a>Überprüfen des Anwendungsaktivitätsberichts in Azure Active Directory
 
 Viele Organisationen verwenden Active Directory-Verbunddienste (AD FS), um Cloudanwendungen einmaliges Anmelden bereitzustellen. Die Migration Ihrer AD FS Anwendungen zu Azure AD bietet bedeutende Vorteile für die Authentifizierung, insbesondere im Hinblick auf Kostenverwaltung, Risikomanagement, Produktivität, Compliance und Governance. Es kann jedoch zeitaufwändig sein, zu ermitteln, ob Anwendungen mit Azure AD kompatibel sind, und spezifische Migrationsschritte zu identifizieren.
 

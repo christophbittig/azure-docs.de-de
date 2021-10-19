@@ -1,24 +1,24 @@
 ---
 title: Zuweisen des Zugriffs auf Daten in Azure Cost Management
-description: Dieser Artikel führt Sie durch das Zuweisen von Berechtigungen für Daten in Azure Cost Management für verschiedene Zugriffsbereiche.
+description: Dieser Artikel führt Sie durch das Zuweisen von Berechtigungen für Daten in Cost Management für verschiedene Zugriffsbereiche.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/27/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 9ee0f7f854363389f3e6594946411f05b1b8b790
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: dddb6292530687e75e4b5e697f4fc754d98040fb
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988695"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706251"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Daten in Cost Management
 
-Für Benutzer mit Azure Enterprise Agreements wird die Zugriffsebene auf Daten in Azure Cost Management durch eine Kombination aus im Azure-Portal und im Enterprise-Portal (EA-Portal) gewährten Berechtigungen definiert. Für Benutzer mit anderen Typen von Azure-Konten ist das Festlegen der Zugriffsebene auf Cost Management-Daten einfacher, da dort die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) genutzt werden kann. Dieser Artikel führt Sie durch das Zuweisen des Zugriffs auf Daten in Cost Management. Nachdem die Kombination von Berechtigungen zugewiesen wurde, kann der Benutzer anhand des Zugriffsbereichs und des im Azure-Portal ausgewählten Bereichs auf Daten in Cost Management zugreifen.
+Für Benutzer mit Azure Enterprise Agreements wird die Zugriffsebene auf Daten in Cost Management durch eine Kombination aus im Azure-Portal und im Enterprise-Portal (EA-Portal) gewährten Berechtigungen definiert. Für Benutzer mit anderen Typen von Azure-Konten ist das Festlegen der Zugriffsebene auf Cost Management-Daten einfacher, da dort die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) genutzt werden kann. Dieser Artikel führt Sie durch das Zuweisen des Zugriffs auf Daten in Cost Management. Nachdem die Kombination von Berechtigungen zugewiesen wurde, kann der Benutzer anhand des Zugriffsbereichs und des im Azure-Portal ausgewählten Bereichs auf Daten in Cost Management zugreifen.
 
 Der von einem Benutzer ausgewählte Bereich wird im gesamten Cost Management verwendet, um Daten zu konsolidieren und den Zugriff auf Kosteninformationen zu steuern. Bei Verwendung von Bereichen findet keine Mehrfachauswahl durch Benutzer statt. Stattdessen wählen sie einen größeren Bereich aus, auf den untergeordnete Bereiche erweitert werden, und filtern diese dann nach den gewünschten Elementen für die Anzeige. Diese Datenkonsolidierung sollten Sie verstehen, da einige Personen nicht auf einen übergeordneten Bereich zugreifen sollten, in den die untergeordneten Bereiche zusammengefasst werden.
 
@@ -56,7 +56,7 @@ Zum Anzeigen von Kostendaten für andere Azure-Abonnements muss ein Benutzer min
 - Subscription
 - Resource group
 
-Nachdem Partner Kunden in eine Microsoft-Kundenvereinbarung aufgenommen haben, stehen verschiedene Bereiche zur Verfügung. CSP-Kunden können Features von Cost Management verwenden, wenn sie von ihrem CSP-Partner aktiviert werden. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Cost Management für Partner](get-started-partners.md).
+Nachdem Partner Kunden in eine Microsoft-Kundenvereinbarung aufgenommen haben, stehen verschiedene Bereiche zur Verfügung. CSP-Kunden können Features von Cost Management verwenden, wenn sie von ihrem CSP-Partner aktiviert werden. Weitere Informationen finden Sie unter [Erste Schritte mit Cost Management für Partner](get-started-partners.md).
 
 ## <a name="enable-access-to-costs-in-the-azure-portal"></a>Aktivieren des Zugriffs auf Kosten im Azure-Portal
 
@@ -161,7 +161,7 @@ Für den Zugriff auf den Ressourcengruppenbereich ist mindestens die Berechtigun
 
 ## <a name="cross-tenant-authentication-issues"></a>Mandantenübergreifende Authentifizierungsprobleme
 
-Zurzeit bietet Azure Cost Management eingeschränkte Unterstützung für die mandantenübergreifende Authentifizierung. Unter bestimmten Umständen wird bei der Kostenanalyse der Fehler **Zugriff verweigert** zurückgegeben, wenn Sie versuchen, sich mandantenübergreifend zu authentifizieren. Dieses Problem kann auftreten, wenn Sie die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) für das Abonnement eines anderen Mandanten konfigurieren und dann versuchen, Kostendaten anzuzeigen.
+Zurzeit bietet Cost Management eingeschränkte Unterstützung für die mandantenübergreifende Authentifizierung. Unter bestimmten Umständen wird bei der Kostenanalyse der Fehler **Zugriff verweigert** zurückgegeben, wenn Sie versuchen, sich mandantenübergreifend zu authentifizieren. Dieses Problem kann auftreten, wenn Sie die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) für das Abonnement eines anderen Mandanten konfigurieren und dann versuchen, Kostendaten anzuzeigen.
 
 *So können Sie das Problem umgehen*: Nachdem Sie die mandantenübergreifende rollenbasierte Azure RBAC konfiguriert haben, warten Sie eine Stunde. Versuchen Sie dann, in beiden Mandanten Kosten in der Kostenanalyse anzuzeigen oder Benutzern Zugriff auf Cost Management zu gewähren.  
 

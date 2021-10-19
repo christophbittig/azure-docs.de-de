@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 10/29/2020
+ms.date: 10/08/2021
 ms.topic: how-to
 ms.custom: deploy, studio, designer
-ms.openlocfilehash: 110bb5e6349ab5cb64366ba365ccace8ab029362
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: d2553ddde013c43b9ce4d23d2cc0b4541150e6f3
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949432"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740474"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Verwenden von Studio zum Bereitstellen von Modellen, die im Designer trainiert wurden
 
@@ -100,7 +100,8 @@ Alternativ können Sie die Dateien auf der Ressourcenseite **Modelle** herunterl
 Nachdem Sie die erforderlichen Dateien heruntergeladen haben, können Sie das Modell bereitstellen.
 
 1. Wählen Sie auf der Ressourcenseite **Modelle** das registrierte Modell aus.
-1. Wählen Sie die Schaltfläche **Bereitstellen** aus.
+1. Wählen Sie **Bereitstellen** und dann **In Webdienst bereitstellen** aus.
+    ![Screenshot: Schaltfläche „Bereitstellen“ auf der Ressourcenseite „Modell“](./media/how-to-deploy-model-designer/open-deploy-wizard.png)
 1. Geben Sie im Konfigurationsmenü die folgenden Informationen ein:
 
     - Geben Sie einen Namen für den Endpunkt ein.

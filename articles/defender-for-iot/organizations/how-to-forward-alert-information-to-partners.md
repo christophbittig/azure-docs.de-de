@@ -3,12 +3,12 @@ title: Weiterleiten von Warnungsinformation
 description: Sie können Weiterleitungsregeln verwenden, um Warnungsinformation an Partnersysteme zu senden.
 ms.date: 08/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 2136a58a383bb623edca69cb03c1c9c5530a107f
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: eb902036a286be50dc1f29ccca894f3d422cc59c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432359"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612204"
 ---
 # <a name="forward-alert-information"></a>Weiterleiten von Warnungsinformation
 
@@ -98,6 +98,8 @@ Senden einer E-Mail, die die Warnungsinformationen enthält. Sie können pro Reg
 So richten Sie eine E-Mail für die Weiterleitungsregel ein
 
 1. Geben Sie eine E-Mail-Adresse ein. Wenn Sie mehr als eine E-Mail-Adresse hinzufügen möchten, müssen Sie für jede E-Mail-Adresse eine weitere Aktion erstellen.
+
+    :::image type="content" source="media/how-to-forward-alert-information-to-partners/forward-email.png" alt-text="Screenshot: Bildschirm „Warnungsweiterleitung“ zum Weiterleiten der Warnungen an eine E-Mail-Adresse":::
 
 1. Geben Sie die Zeitzone für den Zeitstempel für die Warnungserkennung in SIEM ein.
 

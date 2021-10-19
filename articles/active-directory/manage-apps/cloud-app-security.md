@@ -1,5 +1,6 @@
 ---
 title: App-Transparenz und -Steuerung mit Microsoft Cloud App Security
+titleSuffix: Azure AD
 description: Hier erfahren Sie, wie Sie App-Risikostufen identifizieren, Sicherheitsverletzungen und Datenlecks in Echtzeit verhindern und App-Connectors verwenden, um Anbieter-APIs für Transparenz und Governance zu nutzen.
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 07/29/2021
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: bokacevi, dacurwin
-ms.openlocfilehash: ffc4a35aef2304a650f5673a26f0e4fd532e23be
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 52c17d521ca1a3a4e191c4a4a82d37a98371f879
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339636"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619840"
 ---
-# <a name="cloud-app-visibility-and-control"></a>Sichtbarkeit und Steuerung von Cloud-Apps
+# <a name="cloud-app-visibility-and-control-in-azure-active-directory"></a>Sichtbarkeit und Steuerung von Cloud-Apps in Azure Active Directory
 
 Zur optimalen Nutzung von Cloud-Apps und Clouddiensten müssen IT-Teams das richtige Verhältnis zwischen Zugriffsunterstützung und Kontrolle zum Schutz kritischer Daten finden. Microsoft Cloud App Security bietet umfassende Transparenz und Kontrolle über den Datenverkehr sowie ausgeklügelte Analysefunktionen zur Erkennung und Abwehr von Cyberbedrohungen für alle Ihre Clouddienste (sowohl von Microsoft als auch von Drittanbietern).
 

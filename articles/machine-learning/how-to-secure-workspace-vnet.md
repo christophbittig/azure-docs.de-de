@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 09/22/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, security
-ms.openlocfilehash: 7200c13d5ad4157afeb2c0dd1d7ab7445670609d
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 61e5bda5722d343aae2fc6be80312f13a21c415a
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425333"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658182"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Schützen eines Azure Machine Learning-Arbeitsbereichs mit virtuellen Netzwerken
 
@@ -105,18 +105,28 @@ Azure Machine Learning unterstützt Speicherkonten, die so konfiguriert sind, da
 
 # <a name="private-endpoint"></a>[Privater Endpunkt](#tab/pe)
 
-> [!TIP]
-> Sie müssen zwei private Endpunkte für Ihr Standardspeicherkonto konfigurieren:
-> * Einen privaten Endpunkt mit einer untergeordneten Zielressource für **Blob**
-> * Einen privaten Endpunkt mit einer untergeordneten Zielressource für **Dateien** (Dateifreigabe)
->
-> Wenn Sie [ParallelRunStep](./tutorial-pipeline-batch-scoring-classification.md) in Ihrer Pipeline verwenden möchten, müssen Sie auch private Endpunkte mit Zielunterressourcen des Typs **Warteschlange** und **Tabelle** konfigurieren. „ParallelRunStep“ verwendet Warteschlangen und Tabellen für die Planung und Verteilung von Aufgaben.
+1. Wählen Sie das Azure Storage-Konto im Azure-Portal aus.
+1. Verwenden Sie die Informationen unter [Verwenden privater Endpunkte für Azure Storage](../storage/common/storage-private-endpoints.md#creating-a-private-endpoint), um private Endpunkte für die folgenden Speicherunterressourcen hinzuzufügen:
 
-:::image type="content" source="./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png" alt-text="Screenshot: Seite für die Konfiguration von privaten Endpunkten mit den Optionen „Blob“ und „Datei“":::
+    * **Blob**
+    * **Datei**
+    * **Warteschlange**: Nur erforderlich, wenn Sie [ParallelRunStep](./tutorial-pipeline-batch-scoring-classification.md) in einer Azure Machine Learning-Pipeline verwenden möchten.
+    * **Tabelle**: Nur erforderlich, wenn Sie [ParallelRunStep](./tutorial-pipeline-batch-scoring-classification.md) in einer Azure Machine Learning-Pipeline verwenden möchten.
 
-Wenn Sie einen privaten Endpunkt für ein Speicherkonto konfigurieren möchten, das **nicht** der Standardspeicher ist, wählen Sie als **untergeordnete Zielressource** den entsprechenden Typ für das Speicherkonto aus, das Sie hinzufügen möchten.
+    :::image type="content" source="./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png" alt-text="Screenshot: Seite für die Konfiguration von privaten Endpunkten mit den Optionen „Blob“ und „Datei“":::
 
-Weitere Informationen finden Sie unter [Verwenden privater Endpunkte für Azure Storage](../storage/common/storage-private-endpoints.md).
+    > [!TIP]
+    > Wenn Sie ein Speicherkonto konfigurieren, das **nicht** der Standardspeicher ist, wählen Sie als **untergeordnete Zielressource** den entsprechenden Typ für das Speicherkonto aus, das Sie hinzufügen möchten.
+
+1. Nachdem Sie die privaten Endpunkte für die drei Unterressourcen erstellt haben, wählen Sie die Registerkarte __Firewalls und virtuelle Netzwerke__ unter __Netzwerk__ für das Speicherkonto aus.
+1. Klicken Sie auf __Ausgewählte Netzwerke__, und wählen Sie dann unter __Ressourceninstanzen__ den Typ `Microsoft.MachineLearningServices/Workspace` als __Ressourcentyp__ aus. Wählen Sie Ihren Arbeitsbereich über __Instanzname__ aus. Weitere Informationen finden Sie unter [Vertrauenswürdiger Zugriff auf der Grundlage einer systemseitig zugewiesenen verwalteten Identität](/azure/storage/common/storage-network-security#trusted-access-based-on-system-assigned-managed-identity).
+
+    > [!TIP]
+    > Alternativ können Sie __Azure-Diensten in der Liste vertrauenswürdiger Dienste den Zugriff auf dieses Speicherkonto gestatten__ auswählen, um einen breiteren Zugriff über vertrauenswürdige Dienste zuzulassen. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../storage/common/storage-network-security.md#trusted-microsoft-services).
+
+    :::image type="content" source="./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-no-vnet.png" alt-text="Der Netzwerkbereich auf der Azure Storage-Seite im Azure-Portal bei Verwendung eines privaten Endpunkts":::
+
+1. Wählen Sie zum Speichern der Konfiguration __Speichern__ aus.
 
 > [!TIP]
 > Wenn Sie einen privaten Endpunkt verwenden, können Sie auch den öffentlichen Zugriff deaktivieren. Weitere Informationen finden Sie unter [Öffentlichen Lesezugriff verweigern](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account).
@@ -134,14 +144,12 @@ Weitere Informationen finden Sie unter [Verwenden privater Endpunkte für Azure 
 
 1. Wählen Sie unter __Ressourceninstanzen__ entsprechend `Microsoft.MachineLearningServices/Workspace` als __Ressourcentyp__ und dann Ihren Arbeitsbereich mithilfe von __Instanzname__ aus. Weitere Informationen finden Sie unter [Vertrauenswürdiger Zugriff auf der Grundlage einer systemseitig zugewiesenen verwalteten Identität](/azure/storage/common/storage-network-security#trusted-access-based-on-system-assigned-managed-identity).
 
-1. Wählen Sie unter __Ausnahmen__ die Option __Allow Azure services on the trusted services list to access this storage account__ (Für Azure-Dienste aus der Liste vertrauenswürdiger Dienste Zugriff auf dieses Speicherkonto zulassen) aus.
+    > [!TIP]
+    > Alternativ können Sie __Azure-Diensten in der Liste vertrauenswürdiger Dienste den Zugriff auf dieses Speicherkonto gestatten__ auswählen, um einen breiteren Zugriff über vertrauenswürdige Dienste zuzulassen. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../storage/common/storage-network-security.md#trusted-microsoft-services).
 
-    * Ressourcen einiger Dienste, **die in Ihrem Abonnement registriert sind**, können für bestimmte Vorgänge auf das Speicherkonto **im selben Abonnement** zugreifen. Hierzu zählen beispielsweise das Schreiben von Protokollen und Sicherungsvorgänge.
-    * Ressourcen einiger Dienste kann durch __Zuweisen einer Azure-Rolle__ zur vom System zugewiesenen verwalteten Identität der explizite Zugriff auf Ihr Speicherkonto gewährt werden.
+    :::image type="content" source="./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png" alt-text="Der Netzwerkbereich auf der Azure Storage-Seite im Azure-Portal.":::
 
-    Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../storage/common/storage-network-security.md#trusted-microsoft-services).
-
-:::image type="content" source="./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png" alt-text="Der Netzwerkbereich auf der Azure Storage-Seite im Azure-Portal.":::
+1. Wählen Sie zum Speichern der Konfiguration __Speichern__ aus.
 
 > [!TIP]
 > Wenn Sie einen Dienstendpunkt verwenden, können Sie auch den öffentlichen Zugriff deaktivieren. Weitere Informationen finden Sie unter [Öffentlichen Lesezugriff verweigern](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account).

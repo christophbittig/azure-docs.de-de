@@ -13,12 +13,12 @@ ms.date: 07/20/2021
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f7d3b52f5f2cac470c8833a22a67f2324f7be705
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 77d564cb54910391b0a0eb9f2492bfa74a044512
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033860"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619026"
 ---
 # <a name="customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -58,8 +58,9 @@ Im Dropdownmenü **Namensbezeichnerformat auswählen** können Sie eine der folg
 |---------------|-------------|
 | **Standard** | Microsoft Identity Platform verwendet das Standardquellformat. |
 | **Persistent** | Microsoft Identity Platform verwendet „Persistent“ als NameID-Format. |
-| **EmailAddress** | Microsoft Identity Platform verwendet „EmailAddress“ als NameID-Format. |
+| **E-Mail-Adresse** | Microsoft Identity Platform verwendet „EmailAddress“ als NameID-Format. |
 | **Nicht angegeben** | Microsoft Identity Platform verwendet „Unspecified“ als NameID-Format. |
+|**Qualifizierter Name der Windows-Domäne**| Microsoft Identity Platform verwendet das Format „WindowsDomainQualifiedName“.|
 
 Eine vorübergehende NameID wird ebenfalls unterstützt, ist jedoch im Dropdownmenü nicht verfügbar und kann in Azure nicht konfiguriert werden. Weitere Informationen zum NameIDPolicy-Attribut finden Sie unter [SAML-Protokoll für einmaliges Anmelden](single-sign-on-saml-protocol.md).
 

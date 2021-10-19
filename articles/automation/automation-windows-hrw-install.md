@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 59d3b78ac09c253270279612598b2d42ac6a2204
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 900ccf0434ee9d6dde9b0312a1bace180fe1470f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272065"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706560"
 ---
 # <a name="deploy-an-agent-based-windows-hybrid-runbook-worker-in-automation"></a>Bereitstellen eines Agent-basierten Windows Hybrid Runbook Workers in Automation
 
@@ -169,22 +169,22 @@ Zum Installieren und Konfigurieren eines Windows Hybrid Runbook Workers führen 
 
 1. Stellen Sie den Log Analytics-Agent auf dem Zielcomputer bereit.
 
-    * Für Azure-VMs installieren Sie den Log Analytics-Agent für Windows mithilfe der [VM-Erweiterung für Windows](../virtual-machines/extensions/oms-windows.md). Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert virtuelle Computer in einem vorhandenen Log Analytics-Arbeitsbereich. Sie können eine Azure Resource Manager-Vorlage, PowerShell oder Azure Policy verwenden, um die integrierte Richtliniendefinition [Log Analytics-Agent für *Linux*- oder *Windows*-VMs bereitstellen](../governance/policy/samples/built-in-policies.md#monitoring) zuzuweisen. Nachdem der Agent installiert wurde, kann der Computer einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzugefügt werden.
+    - Für Azure-VMs installieren Sie den Log Analytics-Agent für Windows mithilfe der [VM-Erweiterung für Windows](../virtual-machines/extensions/oms-windows.md). Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert virtuelle Computer in einem vorhandenen Log Analytics-Arbeitsbereich. Sie können eine Azure Resource Manager-Vorlage, PowerShell oder Azure Policy verwenden, um die integrierte Richtliniendefinition [Log Analytics-Agent für *Linux*- oder *Windows*-VMs bereitstellen](../governance/policy/samples/built-in-policies.md#monitoring) zuzuweisen. Nachdem der Agent installiert wurde, kann der Computer einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzugefügt werden.
     
-    * Für Nicht-Azure-Computer können Sie den Log Analytics-Agent mit [Servern mit Azure Arc-Unterstützung](../azure-arc/servers/overview.md) installieren. Server mit Arc-Unterstützung erlauben die Bereitstellung des Log Analytics-Agents mithilfe der folgenden Methoden:
+    - Für Nicht-Azure-Computer können Sie den Log Analytics-Agent mit [Servern mit Azure Arc-Unterstützung](../azure-arc/servers/overview.md) installieren. Azure Arc-aktivierte Server unterstützen die Bereitstellung des Log Analytics-Agenten mit den folgenden Methoden:
     
-        - Verwenden des VM-Erweiterungen-Frameworks.
+      - Verwenden des VM-Erweiterungen-Frameworks.
         
-            Mit dieser Funktion in Servern mit Azure Arc-Unterstützung können Sie die VM-Erweiterung für den Log Analytics-Agent auf einem Nicht-Azure-Windows- und/oder Linux-Server bereitstellen. VM-Erweiterungen können mit den folgenden Methoden auf Ihren hybriden Computern oder Servern verwaltet werden, die von Azure Arc-fähigen Servern verwaltet werden:
+        Mit dieser Funktion in Azure Arc-aktivierten Servern können Sie die VM-Erweiterung des Log Analytics-Agenten auf einem Windows- oder Linux-Server bereitstellen, der nicht zu Azure gehört. VM-Erweiterungen können mit den folgenden Methoden auf Ihren hybriden Computern oder Servern verwaltet werden, die von Azure Arc-fähigen Servern verwaltet werden:
         
-            - Das [Azure-Portal](../azure-arc/servers/manage-vm-extensions-portal.md)
-            - Die [Azure CLI](../azure-arc/servers/manage-vm-extensions-cli.md)
-            - [Azure PowerShell](../azure-arc/servers/manage-vm-extensions-powershell.md)
-            - [Azure Resource Manager-Vorlagen](../azure-arc/servers/manage-vm-extensions-template.md)
+        - Das [Azure-Portal](../azure-arc/servers/manage-vm-extensions-portal.md)
+        - Die [Azure CLI](../azure-arc/servers/manage-vm-extensions-cli.md)
+        - [Azure PowerShell](../azure-arc/servers/manage-vm-extensions-powershell.md)
+        - [Azure Resource Manager-Vorlagen](../azure-arc/servers/manage-vm-extensions-template.md)
         
-        - Verwenden von Azure Policy.
+      - Verwenden von Azure Policy.
         
-            Bei dieser Vorgehensweise verwenden Sie die integrierte Azure Policy-Richtliniendefinition zum [Bereitstellen des Log Analytics Agent auf Linux- oder Windows-Azure Arc-Computern](../governance/policy/samples/built-in-policies.md#monitoring), um zu überwachen, ob der Log Analytics-Agent auf dem Server mit Arc-Unterstützung installiert ist. Wenn der Agent nicht installiert ist, wird er automatisch über einen Wartungstask bereitgestellt. Wenn Sie die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Initiative [Azure Monitor für VMs aktivieren](../governance/policy/samples/built-in-initiatives.md#monitoring), um den Log Analytics-Agent zu installieren und zu konfigurieren.
+      Bei dieser Vorgehensweise verwenden Sie die integrierte Azure Policy-Richtliniendefinition zum [Bereitstellen des Log Analytics Agent auf Linux- oder Windows-Azure Arc-Computern](../governance/policy/samples/built-in-policies.md#monitoring), um zu überwachen, ob der Log Analytics-Agent auf dem Server mit Arc-Unterstützung installiert ist. Wenn der Agent nicht installiert ist, wird er automatisch über einen Wartungstask bereitgestellt. Wenn Sie die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Initiative [Azure Monitor für VMs aktivieren](../governance/policy/samples/built-in-initiatives.md#monitoring), um den Log Analytics-Agent zu installieren und zu konfigurieren.
 
     Es wird empfohlen, den Log Analytics-Agent für Windows oder Linux mit Azure Policy zu installieren.
 

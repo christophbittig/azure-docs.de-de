@@ -7,12 +7,12 @@ ms.date: 03/03/2021
 ms.author: thweiss
 author: ThomasWeiss
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: eb448630424939ef7d17144c6c0d385474fdf917
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 61e836fcb07045ce25df02ba48823ac5a2d70762
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360251"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859302"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurieren der IP-Firewall in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -108,7 +108,7 @@ Wenn Sie über einen Computer im Internet auf das Azure Cosmos DB-Konto zugreife
 
 Auf der Seite zum [Herunterladen von Azure-IP-Adressbereichen und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) finden Sie eine aktuelle Liste mit Ausgangs-IP-Adressbereichen, die Sie Ihrer Firewall hinzufügen können.
 
-Informationen zum Automatisieren dieser Liste finden Sie unter [Verwendung der Diensttagermittlungs-API (öffentliche Vorschau)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview).
+Informationen zum Automatisieren dieser Liste finden Sie unter [Verwendung der Diensttagermittlungs-API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api).
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Konfigurieren einer IP-Firewall mithilfe einer Resource Manager-Vorlage
 

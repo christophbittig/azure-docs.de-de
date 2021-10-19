@@ -1,5 +1,5 @@
 ---
-title: Anwendung von Reservierungsrabatten auf Azure Synapse Analytics | Microsoft-Dokumentation
+title: Anwendung von Reservierungsrabatten auf Azure Synapse Analytics (nur Data Warehousing) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Reservierungsrabatte auf Azure Synapse Analytics angewendet werden und Sie Geld sparen können.
 author: yashesvi
 ms.reviewer: yashar
@@ -8,20 +8,20 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 1d1ac2d61b8ef70b63f174431168a169868a989b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4d8560484e085f44553c717b10c18920725be212
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128625200"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710223"
 ---
-# <a name="how-reservation-discounts-apply-to-azure-synapse-analytics"></a>Anwendung von Reservierungsrabatten auf Azure Synapse Analytics
+# <a name="how-reservation-discounts-apply-to-azure-synapse-analytics-data-warehousing-only"></a>Anwendung von Reservierungsrabatten auf Azure Synapse Analytics (nur Data Warehousing)
 
 Nach dem Kauf reservierter Kapazität für Azure Synapse Analytics wird der Reservierungsrabatt automatisch auf die in der entsprechenden Region bereitgestellten Instanzen angewendet. Der Reservierungsrabatt gilt für die über die cDWU-Verbrauchseinheit von Azure Synapse Analytics ausgegebene Nutzung. Die Speicher- und Netzwerknutzung wird entsprechend der nutzungsbasierten Bezahlung abgerechnet.
 
 ## <a name="reservation-discount-application"></a>Anwendung des Reservierungsrabatts
 
-Der Rabatt für die reservierte Azure Synapse Analytics-Kapazität wird auf ausgeführte Warehouses auf Stundenbasis angewendet. Wenn Sie in einer Stunde kein Warehouse bereitgestellt haben, verfällt die reservierte Kapazität für diese Stunde. Sie wird nicht übertragen.
+Der Rabatt für die reservierte Azure Synapse Analytics-Kapazität wird auf ausgeführte Data Warehouses auf Stundenbasis angewendet. Wenn Sie in einer Stunde kein Warehouse bereitgestellt haben, verfällt die reservierte Kapazität für diese Stunde. Sie wird nicht übertragen.
 
 Nach dem Kauf wird die erworbene Reservierung auf die durch ausgeführte Warehouses zu einem bestimmten Zeitpunkt ausgegebene Azure Synapse Analytics-Nutzung abgestimmt. Wenn Sie einige Warehouses beenden, werden Reservierungsrabatte automatisch auf andere entsprechende Warehouses angewandt.
 

@@ -7,16 +7,16 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/14/2021
 ms.author: memildin
-ms.openlocfilehash: 2fc8c04cbe86737d924a1e61e8a2b3808082b7c9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 76134a5da21056ca493911a7d1242cf8a269d067
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351711"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858998"
 ---
-# <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>Schützen von Kubernetes-Clustern mit Azure Arc-Unterstützung, die in lokalen und Multicloud-Umgebungen ausgeführt werden
+# <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>Verteidigung von Azure Arc-fähigen Kubernetes-Clustern, die in lokalen und Multi-Cloud-Umgebungen laufen
 
-Die **Azure Defender für Kubernetes-Clustererweiterung** kann Ihre lokalen Cluster mit denselben Funktionen zur Bedrohungserkennung zu schützen, die für Azure Kubernetes Service-Cluster angeboten werden. Aktivieren Sie [Kubernetes mit Azure Arc-Aktivierung](../azure-arc/kubernetes/overview.md) auf Ihren Clustern, und stellen Sie die Erweiterung bereit, wie auf dieser Seite beschrieben wird. 
+Die **Azure Defender für Kubernetes-Clustererweiterung** kann Ihre lokalen Cluster mit denselben Funktionen zur Bedrohungserkennung zu schützen, die für Azure Kubernetes Service-Cluster angeboten werden. Aktivieren Sie [Azure Arc-aktiviertes Kubernetes](../azure-arc/kubernetes/overview.md) auf Ihren Clustern und stellen Sie die Erweiterung wie auf dieser Seite beschrieben bereit. 
 
 Die Erweiterung kann auch Kubernetes-Cluster bei anderen Cloudanbietern schützen, allerdings nicht in deren Managed Kubernetes-Diensten.
 
@@ -31,25 +31,24 @@ Die Erweiterung kann auch Kubernetes-Cluster bei anderen Cloudanbietern schütze
 | Erforderliche Rollen und Berechtigungen | Der [Sicherheitsadministrator](../role-based-access-control/built-in-roles.md#security-admin) kann Warnungen verwerfen.<br>Der [Sicherheitsleseberechtigte](../role-based-access-control/built-in-roles.md#security-reader) kann Ergebnisse anzeigen. |
 | Preise | Während der Vorschau kostenlos |
 | Unterstützte Kubernetes-Distributionen | [Azure Kubernetes Service in Azure Stack HCI](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS-Engine](https://github.com/Azure/aks-engine)<br> [Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/) (Version 4.6 oder höher)<br> [VMware Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid)<br> [Rancher Kubernetes Engine](https://rancher.com/docs/rke/latest/en/) |
-| Einschränkungen | Managed Kubernetes-Angebote wie Google Kubernetes Engine und Elastic Kubernetes Service werden von Kubernetes mit Azure Arc-Unterstützung und der Azure Defender-Erweiterung **nicht unterstützt**. [Azure Defender ist für Azure Kubernetes Service (AKS) nativ verfügbar](defender-for-kubernetes-introduction.md). Eine Verbindung des Clusters mit Azure Arc ist nicht erforderlich. |
-| Umgebungen und Regionen | Die Verfügbarkeit dieser Erweiterung stimmt mit der von [Kubernetes mit Azure Arc-Unterstützung](../azure-arc/kubernetes/overview.md) überein.|
+| Einschränkungen | Azure Arc-aktivierte Kubernetes und die Azure Defender-Erweiterung **unterstützen keine Managed Kubernetes-Angebote wie Google Kubernetes Engine und Elastic Kubernetes Service** . [Azure Defender ist für Azure Kubernetes Service (AKS) nativ verfügbar](defender-for-kubernetes-introduction.md). Eine Verbindung des Clusters mit Azure Arc ist nicht erforderlich. |
+| Umgebungen und Regionen | Die Verfügbarkeit dieser Erweiterung entspricht der von [Azure Arc-enabled Kubernetes](../azure-arc/kubernetes/overview.md)|
 
 ## <a name="architecture-overview"></a>Übersicht über die Architektur
 
-Für alle Kubernetes-Cluster außer AKS müssen Sie Ihren Cluster mit Azure Arc verbinden. Anschließend kann Azure Defender für Kubernetes auf Ressourcen mit [Kubernetes mit Azure Arc-Unterstützung](../azure-arc/kubernetes/overview.md) als [Clustererweiterung](../azure-arc/kubernetes/extensions.md) bereitgestellt werden.
+Für alle Kubernetes-Cluster mit Ausnahme von AKS müssen Sie Ihren Cluster mit Azure Arc verbinden. Sobald die Verbindung hergestellt ist, kann Azure Defender für Kubernetes auf [Azure Arc-fähigen Kubernetes](../azure-arc/kubernetes/overview.md)-Ressourcen als [Cluster-Erweiterung](../azure-arc/kubernetes/extensions.md) bereitgestellt werden.
 
 Die Erweiterungskomponenten sammeln Daten von Kubernetes-Überwachungsprotokollen aus allen Knoten der Steuerungsebene im Cluster und senden sie zur weiteren Analyse an das Azure Defender für Kubernetes-Back-End in der Cloud. Die Erweiterung wird bei einem Log Analytics-Arbeitsbereich registriert, der als Datenpipeline dient. Die Überwachungsprotokolldaten werden jedoch nicht im Log Analytics-Arbeitsbereich gespeichert.
 
-Dieses Diagramm zeigt die Interaktion zwischen Azure Defender für Kubernetes und dem Kubernetes-Cluster mit Azure Arc-Unterstützung:
+Dieses Diagramm zeigt die Interaktion zwischen Azure Defender für Kubernetes und dem Azure Arc-fähigen Kubernetes-Cluster:
 
-:::image type="content" source="media/defender-for-kubernetes-azure-arc/defender-for-kubernetes-architecture-overview.png" alt-text="Ein allgemeines Architekturdiagramm, das die Interaktion zwischen Azure Defender für Kubernetes und einem Kubernetes-Cluster mit Azure Arc-Unterstützung darstellt." lightbox="media/defender-for-kubernetes-azure-arc/defender-for-kubernetes-architecture-overview.png":::
+:::image type="content" source="media/defender-for-kubernetes-azure-arc/defender-for-kubernetes-architecture-overview.png" alt-text="Ein High-Level-Architekturdiagramm, das die Interaktion zwischen Azure Defender für Kubernetes und einem Azure Arc-fähigen Kubernetes-Cluster skizziert." lightbox="media/defender-for-kubernetes-azure-arc/defender-for-kubernetes-architecture-overview.png":::
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie vor der Bereitstellung der Erweiterung Folgendes sicher:
 - [Die Kubernetes-Cluster sind mit Azure Arc verbunden.](../azure-arc/kubernetes/quickstart-connect-cluster.md)
 - Vergewissern Sie sich, [dass die in der Dokumentation zu generischen Clustererweiterungen aufgeführten Voraussetzungen erfüllt sind](../azure-arc/kubernetes/extensions.md#prerequisites).
-- [Helm 3](https://helm.sh/docs/intro/install), Version 3.7.0 und höher
 - Konfigurieren Sie **Port 443** auf den folgenden Endpunkten für ausgehenden Zugriff:
     - Für Cluster in Azure Government Cloud:
         - *.ods.opinsights.azure.us
@@ -75,9 +74,9 @@ Eine dedizierte Empfehlung in Azure Security Center bietet Folgendes:
 
 1. Öffnen Sie auf der Seite mit Azure Security Center-Empfehlungen das Sicherheitssteuerungselement **Azure Defender aktivieren**.
 
-1. Verwenden Sie den Filter, um die Empfehlung namens **Für Azure Arc-fähige Kubernetes-Cluster muss die Azure Defender-Erweiterung installiert sein** zu finden.
+1. Verwenden Sie den Filter, um die Empfehlung mit dem Namen **Azure Arc-aktivierte Kubernetes-Cluster sollten die Azure Defender-Erweiterung installiert haben** zu finden.
 
-    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center-Empfehlung zur Bereitstellung der Azure Defender-Erweiterung für Azure Arc-fähige Kubernetes-Cluster" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Empfehlung des Azure Security Center zur Bereitstellung der Azure Defender-Erweiterung für Azure Arc-fähige Kubernetes-Cluster" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::.
 
     > [!TIP]
     > Beachten Sie in der Aktionsspalte das Symbol **Korrigieren**.
@@ -105,7 +104,7 @@ Eine dedizierte Empfehlung in Azure Security Center bietet Folgendes:
     > [!IMPORTANT]
     > Stellen Sie sicher, dass Sie für ``<your-subscription-id>`` dieselbe Abonnement-ID verwenden, die Sie beim Herstellen einer Verbindung zwischen Ihrem Cluster und Azure Arc verwendet haben.
 
-1. Führen Sie den folgenden Befehl aus, um die Erweiterung zusätzlich zu Ihrem Kubernetes-Cluster mit Azure Arc-Unterstützung bereitzustellen:
+1. Führen Sie den folgenden Befehl aus, um die Erweiterung auf Ihrem Azure Arc-aktivierten Kubernetes-Cluster bereitzustellen:
 
     ```azurecli
     az k8s-extension create --name microsoft.azuredefender.kubernetes --cluster-type connectedClusters --cluster-name <cluster-name> --resource-group <resource-group> --extension-type microsoft.azuredefender.kubernetes
@@ -151,11 +150,11 @@ Um die REST-API zum Bereitstellen der Azure Defender-Erweiterung zu verwenden, b
 
     Hierbei gilt:
 
-    | Name            | Geben Sie in   | Erforderlich | Typ   | BESCHREIBUNG                                  |
+    | Name            | Geben Sie in   | Erforderlich | type   | BESCHREIBUNG                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
-    | Abonnement-ID | path | True     | Zeichenfolge | Abonnement-ID Ihrer Kubernetes-Ressource mit Azure Arc-Unterstützung |
-    | Ressourcengruppe  | path | True     | Zeichenfolge | Name der Ressourcengruppe, in der Ihre Kubernetes-Ressource mit Azure Arc-Unterstützung enthalten ist |
-    | Clustername    | path | True     | Zeichenfolge | Name Ihrer Kubernetes-Ressource mit Azure Arc-Unterstützung  |
+    | Abonnement-ID | path | True     | Zeichenfolge | Die Abonnement-ID Ihrer Azure Arc-aktivierten Kubernetes-Ressource |
+    | Ressourcengruppe  | path | True     | Zeichenfolge | Name der Ressourcengruppe, die Ihre Azure Arc-aktivierte Kubernetes-Ressource enthält |
+    | Clustername    | path | True     | Zeichenfolge | Name Ihrer Azure Arc-aktivierten Kubernetes-Ressource  |
 
 
     Zur **Authentifizierung** muss Ihr Header (wie bei anderen Azure-APIs) über ein Bearertoken verfügen. Um ein Bearertoken zu erhalten, führen Sie den folgenden Befehl aus:
@@ -196,9 +195,9 @@ Um sicherzustellen, dass die Azure Defender-Erweiterung auf Ihrem Cluster instal
 
 1. Öffnen Sie auf der Seite mit Azure Security Center-Empfehlungen das Sicherheitssteuerungselement **Azure Defender aktivieren**.
 
-1. Wählen Sie die Empfehlung namens **Für Azure Arc-fähige Kubernetes-Cluster muss die Azure Defender-Erweiterung installiert sein** aus.
+1. Wählen Sie die Empfehlung **Azure Arc-aktivierte Kubernetes-Cluster sollten die Erweiterung von Azure Defender installiert haben**.
 
-    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center-Empfehlung zur Bereitstellung der Azure Defender-Erweiterung für Azure Arc-fähige Kubernetes-Cluster" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Empfehlung des Azure Security Center zur Bereitstellung der Azure Defender-Erweiterung für Azure Arc-fähige Kubernetes-Cluster" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::.
 
 1. Überprüfen Sie, ob der Cluster, auf dem Sie die Erweiterung bereitgestellt haben, als **Fehlerfrei** aufgeführt ist.
 
@@ -294,7 +293,7 @@ Sie können die Erweiterung über das Azure-Portal, mithilfe der Azure CLI oder 
 1. Öffnen Sie die Erweiterungsseite. Die Erweiterungen für den Cluster werden aufgelistet.
 1. Wählen Sie den Cluster aus, und klicken Sie auf **Deinstallieren**.
 
-    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-uninstall-clusters-page.png" alt-text="Entfernen einer Erweiterung aus Ihrem Kubernetes-Cluster mit Arc-Unterstützung." lightbox="media/defender-for-kubernetes-azure-arc/extension-uninstall-clusters-page.png":::
+    :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-uninstall-clusters-page.png" alt-text="Entfernen einer Erweiterung aus Ihrem Arc-aktivierten Kubernetes-Cluster." lightbox="media/defender-for-kubernetes-azure-arc/extension-uninstall-clusters-page.png":::
 
 ### <a name="azure-cli"></a>[**Azure CLI**](#tab/k8s-remove-cli)
 
@@ -334,11 +333,11 @@ Um die Erweiterung mit der REST-API zu entfernen, führen Sie den folgenden DELE
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| Name            | Geben Sie in   | Erforderlich | Typ   | BESCHREIBUNG                                           |
+| Name            | Geben Sie in   | Erforderlich | type   | BESCHREIBUNG                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
-| Abonnement-ID | path | True     | Zeichenfolge | Abonnement-ID Ihres Kubernetes-Clusters mit Arc-Unterstützung |
-| Ressourcengruppe  | path | True     | Zeichenfolge | Ressourcengruppe Ihres Kubernetes-Clusters mit Arc-Unterstützung  |
-| Clustername    | path | True     | Zeichenfolge | Name Ihres Kubernetes-Clusters mit Azure Arc-Unterstützung            |
+| Abonnement-ID | path | True     | Zeichenfolge | Die Abonnement-ID Ihres Azure Arc-aktivierten Kubernetes-Clusters |
+| Ressourcengruppe  | path | True     | Zeichenfolge | Die Ressourcengruppe Ihres Azure Arc-aktivierten Kubernetes-Clusters  |
+| Clustername    | path | True     | Zeichenfolge | Der Name Ihres Azure Arc-aktivierten Kubernetes-Clusters            |
 
 Zur **Authentifizierung** muss Ihr Header (wie bei anderen Azure-APIs) über ein Bearertoken verfügen. Um ein Bearertoken zu erhalten, führen Sie den folgenden Befehl aus:
 
@@ -352,7 +351,7 @@ Die Anforderung kann mehrere Minuten in Anspruch nehmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Auf dieser Seite wurde erläutert, wie Sie die Azure Defender-Erweiterung für Kubernetes-Cluster mit Azure Arc-Unterstützung bereitstellen. Weitere Informationen zu den Containersicherheitsfeatures von Azure Defender und Azure Security Center finden Sie auf den folgenden Seiten:
+Auf dieser Seite wird erklärt, wie die Azure Defender-Erweiterung für Azure Arc-aktivierte Kubernetes-Cluster bereitgestellt wird. Weitere Informationen zu den Containersicherheitsfeatures von Azure Defender und Azure Security Center finden Sie auf den folgenden Seiten:
 
 - [Containersicherheit in Security Center](container-security.md)
 - [Einführung in Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md)

@@ -8,17 +8,17 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 09/10/2020
-ms.openlocfilehash: a5050958f01743ff3c6fdcdecfee3067b1d2073e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/06/2021
+ms.openlocfilehash: 6dddc7e5a2492aeaf0c15c954f685e10ce475fa7
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98934255"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612938"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>Verschieben Ihres Azure Cognitive Search-Diensts in eine andere Azure-Region
 
-Gelegentlich fragen Kunden an, wie ein Suchdienst in eine andere Region verschoben wird. Zurzeit gibt es keinen integrierten Mechanismus und keine integrierten Tools, die Sie bei dieser Aufgabe unterstützen, aber dieser Artikel hilft Ihnen dabei, die manuellen Schritte zu verstehen, mit denen Sie das gleiche Ergebnis erreichen.
+Gelegentlich fragen Kunden an, wie ein Suchdienst in eine andere Region verschoben wird. Derzeit gibt es keinen integrierten Mechanismus oder Tools, die Sie bei dieser Aufgabe unterstützen. Anhand dieses Artikels können Sie jedoch die manuellen Schritte zur Neuerstellung von Indizes und anderen Objekten für einen neuen Suchdienst in einer anderen Region nachvollziehen.
 
 > [!NOTE]
 > Im Azure-Portal verfügen alle Dienste über einen Befehl zum **Exportieren von Vorlagen**. Bei Azure Cognitive Search erstellt dieser Befehl eine grundlegende Definition eines Diensts (Name, Standort, Ebene, Replikat und Partitionsanzahl), erkennt jedoch nicht den Inhalt des Diensts und überträgt auch keine Schlüssel, Rollen oder Protokolle. Der Befehl ist zwar vorhanden, es empfiehlt sich jedoch nicht, ihn zum Verschieben eines Suchdiensts zu verwenden.

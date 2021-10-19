@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: bc17b875c8f16304d5292f7ed852909373b8c5d9
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 36d78edebdcc1624270cf27f136f701b2ebc0191
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768310"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715358"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>Aktivieren der Updateverwaltung über ein Automation-Konto
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie mit Ihrem Automation-Konto das Featu
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
 * [Automation-Konto](../automation-security-overview.md) zum Verwalten von Computern.
-* Ein [virtueller Azure-Computer](../../virtual-machines/windows/quick-create-portal.md) oder eine VM bzw. ein Server, die oder der bei Azure Arc-fähigen Servern registriert ist. Für Nicht-Azure-VMs oder -Server muss der [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md) für Windows oder Linux installiert sein und an den Arbeitsbereich, der mit dem Automation-Konto mit aktivierter Updateverwaltung verknüpft ist, Meldungen übermitteln. Sie sollten den Log Analytics-Agent für Windows oder Linux installieren, indem Sie zuerst Ihren Computer mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) verbinden und dann mit Azure Policy die integrierte Richtlinie [Log Analytics-Agent für *Linux-* oder *Windows-* Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuweisen. Wenn Sie alternativ die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Methode [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
+* Eine [Azure-VM](../../virtual-machines/windows/quick-create-portal.md) oder eine VM bzw. ein Server, die oder der bei Azure Arc-fähigen Servern registriert ist. Für Nicht-Azure-VMs oder -Server muss der [Log Analytics-Agent](../../azure-monitor/agents/log-analytics-agent.md) für Windows oder Linux installiert sein und Meldungen an den Arbeitsbereich übermitteln, der mit dem Automation-Konto mit aktivierter Updateverwaltung verknüpft ist. Sie sollten den Log Analytics-Agent für Windows oder Linux installieren, indem Sie zuerst Ihren Computer mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) verbinden und dann mit Azure Policy die integrierte Richtlinie [Log Analytics-Agent für *Linux-* oder *Windows-* Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuweisen. Wenn Sie alternativ die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Methode [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure

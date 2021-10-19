@@ -8,12 +8,12 @@ author: sudivate
 ms.author: sudivate
 description: 'Dieser Artikel bietet eine konzeptionelle Übersicht über die Entwicklerumgebung für innere Schleifen für auf GitOps umsteigende Teams. '
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, Container, CI, CD, Azure DevOps, innere Schleife, Entwicklerumgebung
-ms.openlocfilehash: 3c0e8041a31c506c926315381741afd75bb8a806
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 3bd60c3236bb187f14b924f4246d8e6fcfed4ed3
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113598587"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706421"
 ---
 # <a name="inner-loop-developer-experience-for-teams-adopting-gitops"></a>Entwicklerumgebung für innere Schleifen für auf GitOps umsteigende Teams
 
@@ -90,6 +90,6 @@ Angenommen, Alice möchte die Anwendung im lokalen oder Remotecluster aktualisie
 > [!NOTE]
 > Den Beispielcode für den obigen Workflow finden Sie in diesem [GitHub-Repository](https://github.com/Azure/arc-cicd-demo-src).
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 Erfahren Sie mehr über das Herstellen von Verbindungen zwischen Ihrem Cluster und einem Git-Repository als [Konfigurationsressource mit Kubernetes mit Azure Arc-Unterstützung](./conceptual-configurations.md).

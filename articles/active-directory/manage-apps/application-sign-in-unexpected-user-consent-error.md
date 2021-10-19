@@ -1,5 +1,6 @@
 ---
-title: Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung | Microsoft-Dokumentation
+title: Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung
+titleSuffix: Azure AD
 description: Erläuterungen von Fehlern, die während des Vorgangs des Genehmigens einer Anwendung auftreten können, und Abhilfemöglichkeiten
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6203c56d5b05679ce387cd08193fe19e7dad402f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6bb824f9527619033467594a98310663c1113fdc
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339638"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620733"
 ---
-# <a name="unexpected-error-when-performing-consent-to-an-application"></a>Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung
+# <a name="unexpected-error-when-performing-consent-to-an-application-in-azure-active-directory"></a>Unerwarteter Fehler beim Einwilligen in eine Anwendung in Azure Active Directory
 
 In diesem Artikel werden Fehler erläutert, die während des Vorgangs des Genehmigens einer Anwendung auftreten können. Wenn Sie Probleme mit unerwarteten Zustimmungsaufforderungen behandeln, die keine Fehlermeldungen enthalten, sehen Sie sich die [Authentifizierungsszenarien für Azure AD](../develop/authentication-vs-authorization.md) an.
 

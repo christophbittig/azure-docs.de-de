@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d807de1eac29b233ad4fae3a4924c6238b33fd5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6cc7cfdf0c7cf578ea12bc1acf2c572445dd864c
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605846"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129668369"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
@@ -138,20 +138,23 @@ Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formf
 | Ensurity                  | ![j]              | ![j]| ![n]| ![n]| ![n]           | https://www.ensurity.com/contact                                                                    |
 | Excelsecu                 | ![j]              | ![j]| ![j]| ![j]| ![n]           | https://www.excelsecu.com/productdetail/esecufido2secu.html                                         |
 | Feitian                   | ![j]              | ![j]| ![j]| ![j]| ![j]           | https://shop.ftsafe.us/pages/microsoft                                                              |
+| Fortinet                  | ![n]              | ![j]| ![n]| ![n]| ![n]           | https://www.fortinet.com/                                                                           |
 | GoTrustID Inc.            | ![n]              | ![j]| ![j]| ![j]| ![n]           | https://www.gotrustid.com/idem-key                                                                  |
 | HID                       | ![n]              | ![j]| ![j]| ![n]| ![n]           | https://www.hidglobal.com/contact-us                                                                |
 | Hypersecu                 | ![n]              | ![j]| ![n]| ![n]| ![n]           | https://www.hypersecu.com/hyperfido                                                                 |
 | IDmelon Technologies Inc. | ![j]              | ![j]| ![j]| ![j]| ![n]           | https://www.idmelon.com/#idmelon                                                                    |
 | Kensington                | ![j]              | ![j]| ![n]| ![n]| ![n]           | https://www.kensington.com/solutions/product-category/why-biometrics/                               |
 | KONA I                    | ![j]              | ![n]| ![j]| ![j]| ![n]           | https://konai.com/business/security/fido                                                            |
-| Nymi                      | ![j]              | ![n]| ![j]| ![n]| ![n]           | https://www.nymi.com/product                                                                      | 
+| Nymi                      | ![j]              | ![n]| ![j]| ![n]| ![n]           | https://www.nymi.com/nymi-band                                                                      | 
+| Octatco                   | ![j]              | ![j]| ![n]| ![n]| ![n]           | https://octatco.com/                                                                                |
 | OneSpan Inc.              | ![n]              | ![j]| ![n]| ![j]| ![n]           | https://www.onespan.com/products/fido                                                               |
 | Thales-Gruppe              | ![n]              | ![j]| ![j]| ![n]| ![n]           | https://cpl.thalesgroup.com/access-management/authenticators/fido-devices                           |
 | Thetis                    | ![j]              | ![j]| ![j]| ![j]| ![n]           | https://thetis.io/collections/fido2                                                                 |
 | Token2, Schweiz        | ![j]              | ![j]| ![j]| ![n]| ![n]           | https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key               |
 | TrustKey-Lösungen        | ![j]              | ![j]| ![n]| ![n]| ![n]           | https://www.trustkeysolutions.com/security-keys/                                                    |
 | VinCSS                    | ![n]              | ![j]| ![n]| ![n]| ![n]           | https://passwordless.vincss.net                                                                     |
-| Yubico                    | ![n]              | ![j]| ![j]| ![n]| ![j]           | https://www.yubico.com/solutions/passwordless/                                                      |
+| Yubico                    | ![j]              | ![j]| ![j]| ![n]| ![j]           | https://www.yubico.com/solutions/passwordless/                                                      |
+
 
 
 <!--Image references-->

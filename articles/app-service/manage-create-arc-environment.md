@@ -3,12 +3,12 @@ title: Einrichten von Azure Arc für App Service, Funktionen und Logic Apps
 description: Erfahren Sie für Ihre Kubernetes-Cluster mit Azure Arc-Unterstützung, wie Sie App Service-Apps, Funktions-Apps und Logik-Apps aktivieren.
 ms.topic: article
 ms.date: 08/17/2021
-ms.openlocfilehash: 7fbdae7b5e8b3bda94c1f1ddbb2a70720596d1fd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f0594458f65fbd14bc50540148d5ea68d15fbdbd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639031"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707126"
 ---
 # <a name="set-up-an-azure-arc-enabled-kubernetes-cluster-to-run-app-service-functions-and-logic-apps-preview"></a>Einrichten eines Kubernetes-Clusters mit Azure Arc-Unterstützung zum Ausführen von App Service, Funktionen und Logic Apps (Vorschau)
 

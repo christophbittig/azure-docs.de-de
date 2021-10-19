@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 9cf53cdf35435030b9aa16b8336d80d887e6efbd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6962688a574d7f7c11f8cbfc71ccdb29ac3b6445
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584202"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619386"
 ---
 # <a name="azure-storage-blob-inventory"></a>Azure Storage-Blobbestand
 
@@ -254,7 +254,7 @@ Jede Inventurregel generiert Dateien im angegebenen Inventur-Zielcontainer für 
 
 Bei jeder Inventur für eine Regel werden die folgenden Dateien generiert:
 
-- **Inventurdatei:** Eine Inventurausführung für eine Regel generiert mindestens eine Datei im CSV- oder Apache Parquet-Format. Wenn die Anzahl der übereinstimmenden Objekte sehr hoch ist, werden mehrere Dateien erstellt. Jede dieser Dateien enthält die übereinstimmenden Objekte und ihre Metadaten. Die erste Zeile in jeder CSV-Datei enthält immer das Schema. Die folgende Abbildung zeigt eine in Microsoft Excel geöffnete CSV-Bestandsdatei.
+- **Inventurdatei:** Eine Inventurausführung für eine Regel generiert mindestens eine Datei im CSV- oder Apache Parquet-Format. Wenn die Anzahl der übereinstimmenden Objekte sehr hoch ist, werden mehrere Dateien erstellt. Jede dieser Dateien enthält die übereinstimmenden Objekte und ihre Metadaten. Die erste Zeile in einer CSV-Datei enthält immer das Schema. Die folgende Abbildung zeigt eine in Microsoft Excel geöffnete CSV-Bestandsdatei.
 
   :::image type="content" source="./media/blob-inventory/csv-file-excel.png" alt-text="Screenshot einer in Microsoft Excel geöffneten CSV-Bestandsdatei":::
 

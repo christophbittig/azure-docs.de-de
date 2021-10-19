@@ -1,5 +1,6 @@
 ---
-title: Sicherer Hybridzugriff mit F5 und Azure AD | Microsoft-Dokumentation
+title: Sicherer Hybridzugriff mit F5
+titleSuffix: Azure AD
 description: Sicherer Hybridzugriff mit dem F5 BIG-IP Access Policy Manager und der Integration in Azure Active Directory
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 11/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: a5066eece8950d4e9dffabedb2e0cca4c527353f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e5f17826d4a578f0c82a5e1e58abf54d4abac252
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124822998"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620657"
 ---
-# <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>Sicherer Hybridzugriff mit dem F5 BIG-IP Access Policy Manager und dessen Integration in Azure Active Directory
+# <a name="integrate-f5-big-ip-with-azure-active-directory"></a>Integrieren von F5 BIG-IP in Azure Active Directory
 
 Die zunehmende Mobilität und die dadurch entstehende Bedrohungslandschaft machen eine zusätzliche Überprüfung des Zugriffs auf Ressourcen und der Governance erforderlich, bei der das [Zero Trust](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)-Modell an den Anfang und in den Mittelpunkt aller Modernisierungsprogramme gestellt wird.
 Wir bei Microsoft und F5 haben realisiert, dass diese digitale Transformation für jedes Unternehmen in der Regel ein mehrjähriges Unterfangen bedeutet, sodass möglicherweise kritische Ressourcen bis zur Modernisierung gefährdet sind. Das Grundkonzept, das dem sicheren Hybridzugriff (Secure Hybrid Access, SHA) mit F5 BIG-IP und Azure Active Directory zugrunde liegt, hat nicht nur eine Verbesserung des Remotezugriffs auf lokale Anwendungen zum Ziel, sondern auch eine Stärkung der allgemeinen Sicherheitslage dieser gefährdeten Dienste.

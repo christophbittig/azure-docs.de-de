@@ -6,12 +6,12 @@ ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: 5ff59b0add8a9b3c48ad8ae80a50c0a816c08d6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9d47c3c08c450000da34742459a62977e82808a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588075"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615111"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Einführung in die Stream Analytics-Windowing-Funktionen
 
@@ -24,23 +24,26 @@ Für alle [Windowing](/stream-analytics-query/windowing-azure-stream-analytics)-
 ![Stream Analytics-Fensterfunktionen – Konzepte](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
 ## <a name="tumbling-window"></a>Rollierendes Fenster
-Rollierende Fensterfunktionen werden verwendet, um einen Datenstrom in einzelne Zeitsegmente zu unterteilen und dafür eine Funktion durchzuführen, z.B. wie im Beispiel unten. Die wichtigsten Unterscheidungsmerkmale eines rollierenden Fensters sind, dass sie wiederholt werden, sich nicht überlappen und ein Ereignis nicht zu mehr als einem rollierenden Fenster gehören kann.
+
+Funktionen für [**rollierende**](/stream-analytics-query/tumbling-window-azure-stream-analytics) Fenster werden verwendet, um einen Datenstrom in einzelne Zeitsegmente zu unterteilen und dafür eine Funktion durchzuführen, wie im Beispiel unten gezeigt. Die wichtigsten Unterscheidungsmerkmale eines rollierenden Fensters sind, dass sie wiederholt werden, sich nicht überlappen und ein Ereignis nicht zu mehr als einem rollierenden Fenster gehören kann.
 
 ![Stream Analytics – Rollierendes Fenster](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
 ## <a name="hopping-window"></a>Springendes Fenster
-Bei den Funktionen von springenden Fenstern wird für einen festen Zeitraum ein Sprung nach vorn durchgeführt. Sie können sich dies wie rollierende Fenster vorstellen, die sich überlappen können und häufiger als die Fenstergröße ausgegeben werden. Ereignisse können zu Resultsets von mehr als einem springenden Fenstern gehören. Um ein springendes Fenster an ein rollierendes Fenster anzugleichen, passen Sie die Sprunggröße an die Fenstergröße an. 
+
+Bei den Funktionen für [**springende**](/stream-analytics-query/hopping-window-azure-stream-analytics) Fenster wird für einen festen Zeitraum ein Sprung nach vorn durchgeführt. Sie können sich dies wie rollierende Fenster vorstellen, die sich überlappen können und häufiger als die Fenstergröße ausgegeben werden. Ereignisse können zu Resultsets von mehr als einem springenden Fenstern gehören. Um ein springendes Fenster an ein rollierendes Fenster anzugleichen, passen Sie die Sprunggröße an die Fenstergröße an. 
 
 ![Stream Analytics – Springendes Fenster](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Gleitendes Fenster
 
-Gleitende Fenster, im Gegensatz zu rollierenden oder springenden Fenstern, geben Ereignisse nur für Zeitpunkte aus, zu denen sich der Inhalt des Fensters tatsächlich ändert. Anders ausgedrückt: wenn ein Ereignis das Fenster betritt oder verlässt. Jedes Fenster verfügt also über mindestens ein Ereignis. Ähnlich wie bei springenden Fenstern können Ereignisse zu mehr als einem gleitenden Fenster gehören.
+Im Gegensatz zu rollierenden oder springenden Fenstern geben [**gleitende**](/stream-analytics-query/sliding-window-azure-stream-analytics) Fenster Ereignisse nur für Zeitpunkte aus, zu denen sich der Inhalt des Fensters tatsächlich ändert. Anders ausgedrückt: wenn ein Ereignis das Fenster betritt oder verlässt. Jedes Fenster verfügt also über mindestens ein Ereignis. Ähnlich wie bei springenden Fenstern können Ereignisse zu mehr als einem gleitenden Fenster gehören.
 
-![Stream Analytics – Gleitendes Fenster](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
+![Gleitendes 10-Sekunden-Fenster in Stream Analytics](media/stream-analytics-window-functions/sliding-window-updated.png)
 
 ## <a name="session-window"></a>Sitzungsfenster
-Mit Funktionen für Sitzungsfenster werden Ereignisse gruppiert, die zu ähnlichen Zeiten eingehen. Zeiträume, in denen keine Daten anfallen, werden herausgefiltert. Es werden drei Hauptparameter verwendet: Timeout, maximale Dauer und Partitionierungsschlüssel (optional).
+
+Mit Funktionen für [**Sitzungsfenster**](/stream-analytics-query/session-window-azure-stream-analytics) werden Ereignisse gruppiert, die zu ähnlichen Zeiten eingehen. Zeiträume, in denen keine Daten anfallen, werden herausgefiltert. Es werden drei Hauptparameter verwendet: Timeout, maximale Dauer und Partitionierungsschlüssel (optional).
 
 ![Stream Analytics – Sitzungsfenster](media/stream-analytics-window-functions/stream-analytics-window-functions-session-intro.png)
 
@@ -52,7 +55,7 @@ Wenn ein Partitionsschlüssel angegeben wird, werden die Ereignisse nach dem Sch
 
 ## <a name="snapshot-window"></a>Momentaufnahmefenster
 
-Momentaufnahmefenster gruppieren Ereignisse, die denselben Zeitstempel haben. Im Gegensatz zu anderen Fenstertypen, die eine bestimmte Fensterfunktion benötigen (z. B. [SessionWindow()](/stream-analytics-query/session-window-azure-stream-analytics)), können Sie ein Momentaufnahmefenster anwenden, indem Sie der GROUP BY-Klausel „System.Timestamp()“ hinzufügen.
+[**Momentaufnahmefenster**](/stream-analytics-query/snapshot-window-azure-stream-analytics) gruppieren Ereignisse, die denselben Zeitstempel aufweisen. Im Gegensatz zu anderen Fenstertypen, die eine bestimmte Fensterfunktion benötigen (z. B. [SessionWindow()](/stream-analytics-query/session-window-azure-stream-analytics)), können Sie ein Momentaufnahmefenster anwenden, indem Sie der GROUP BY-Klausel „System.Timestamp()“ hinzufügen.
 
 ![Stream Analytics-Momentaufnahmefenster](media/stream-analytics-window-functions/snapshot.png)
 

@@ -5,18 +5,18 @@ services: automation
 ms.subservice: update-management
 ms.date: 08/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1d8ad9b41f9d193624d9c3501493c525777832eb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 993fcf45b983fef972a7201b4ffed60e8da99555
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350634"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715076"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Bereitstellen von Updates und Überprüfen von Ergebnissen
 
-In diesem Artikel wird beschrieben, wie Sie eine Updatebereitstellung planen und nach Abschluss der Bereitstellung den Prozess überprüfen. Sie können eine Updatebereitstellung von einem ausgewählten virtuellen Azure-Computer aus, von dem ausgewählten Arc-fähigen Server aus oder aus dem Automation-Konto heraus übergreifend für alle konfigurierten Computer und Server konfigurieren.
+In diesem Artikel wird beschrieben, wie Sie eine Updatebereitstellung planen und nach Abschluss der Bereitstellung den Prozess überprüfen. Sie können eine Update-Bereitstellung von einer ausgewählten virtuellen Azure-Maschine, von einem ausgewählten Azure Arc-aktivierten Server oder vom Automatisierungskonto für alle konfigurierten Maschinen und Server konfigurieren.
 
-In jedem Szenario zielt die von Ihnen erstellte Bereitstellung auf diesen ausgewählten Computer oder Server ab, oder wenn Sie eine Bereitstellung aus Ihrem Automation-Konto heraus erstellen, können Sie auf einen oder mehrere Computer abzielen. Wenn Sie eine Updatebereitstellung von einem virtuellen Azure-Computer oder einem Arc-fähigen Server aus planen, sind die Schritte identisch mit dem Bereitstellen aus Ihrem Automation-Konto heraus, mit den folgenden Ausnahmen:
+In jedem Szenario zielt die von Ihnen erstellte Bereitstellung auf diesen ausgewählten Computer oder Server ab, oder wenn Sie eine Bereitstellung aus Ihrem Automation-Konto heraus erstellen, können Sie auf einen oder mehrere Computer abzielen. Wenn Sie eine Update-Bereitstellung von einer Azure-VM oder einem Azure Arc-aktivierten Server aus planen, sind die Schritte dieselben wie bei der Bereitstellung über Ihr Automatisierungskonto, mit den folgenden Ausnahmen:
 
 * Das Betriebssystem wird automatisch vorab ausgewählt, basierend auf dem Betriebssystem des Computers.
 * Der zu aktualisierende Zielcomputer wird automatisch auf sich selbst als Ziel festgelegt.
@@ -36,31 +36,31 @@ Bei der Planung einer Updatebereitstellung wird eine [Zeitplanressource](../shar
 >[!NOTE]
 >Wenn Sie die Zeitplanressource nach der Bereitstellungserstellung über das Azure-Portal oder mithilfe von PowerShell löschen, wird die geplante Updatebereitstellung unterbrochen, und es wird ein Fehler angezeigt, wenn Sie versuchen, die Konfiguration der Zeitplanressource über das Portal zu ändern. Sie können die Zeitplanressource nur löschen, indem Sie den entsprechenden Bereitstellungszeitplan löschen.  
 
-Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schritte aus. Abhängig von der ausgewählten Ressource (d. h. Automation-Konto, Arc-fähiger Server, virtueller Azure-Computer) gelten die folgenden Schritte für alle, mit geringfügigen Unterschieden beim Konfigurieren des Bereitstellungszeitplans.
+Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schritte aus. Je nach ausgewählter Ressource (d. h. Automatisierungskonto, Azure Arc-aktivierter Server, Azure VM) gelten die nachstehenden Schritte für alle mit geringfügigen Unterschieden bei der Konfiguration des Zeitplans für die Bereitstellung.
 
 1. Im Portal zum Planen einer Bereitstellung:
 
    * Für einen oder mehrere Computer navigieren Sie zu **Automation-Konten**, und wählen Sie in der Liste Ihr Automation-Konto mit aktivierter Updateverwaltung aus.
    * Für einen virtuellen Azure-Computer navigieren Sie zu **Virtuelle Computer**, und wählen Sie Ihren virtuellen Computer in der Liste aus.
-   * Für einen Arc-fähigen Server navigieren Sie zu **Server – Azure Arc**, und wählen Ihren Server in der Liste aus.
+   * Für einen Azure Arc-aktivierten Server navigieren Sie zu **Server - Azure Arc** und wählen Sie Ihren Server in der Liste aus.
 
 2. Gehen Sie wie folgt vor, um abhängig von der ausgewählten Ressource zur Updateverwaltung zu navigieren:
 
    * Wenn Sie Ihr Automation-Konto ausgewählt haben, wechseln Sie unter **Updateverwaltung** zu **Updateverwaltung**, und wählen Sie dann **Updatebereitstellung planen** aus.
    * Wenn Sie einen virtuellen Azure-Computer ausgewählt haben, wechseln Sie zu **Gast- und Hostupdates**, und wählen Sie dann **Zur Updateverwaltung wechseln** aus.
-   * Wenn Sie einen Arc-fähigen Server ausgewählt haben, wechseln Sie zur **Updateverwaltung**, und wählen dann **Updatebereitstellung planen** aus.
+   * Wenn Sie einen Azure Arc-aktivierten Server ausgewählt haben, gehen Sie zu **Updateverwaltung** und wählen Sie dann **Planen Sie die Bereitstellung von Updates**.
 
 3. Geben Sie unter **Neue Updatebereitstellung**  im Feld **Name** einen eindeutigen Namen für Ihre Bereitstellung ein.
 
 4. Wählen Sie das Betriebssystem aus, das als Ziel für die Updatebereitstellung dienen soll.
 
     > [!NOTE]
-    > Diese Option ist nicht verfügbar, wenn Sie einen virtuellen Azure-Computer oder einen Arc-fähigen Server ausgewählt haben. Das Betriebssystem wird automatisch erkannt.
+    > Diese Option ist nicht verfügbar, wenn Sie eine Azure VM oder einen Azure Arc-aktivierten Server ausgewählt haben. Das Betriebssystem wird automatisch erkannt.
 
 5. Definieren Sie im Bereich **Zu aktualisierende Gruppen** eine Abfrage mit einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags zur Erstellung einer dynamischen Gruppe von virtuellen Azure-Computern, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Verwenden dynamischer Gruppen mit der Updateverwaltung](configure-groups.md).
 
     > [!NOTE]
-    > Diese Option ist nicht verfügbar, wenn Sie einen virtuellen Azure-Computer oder einen Arc-fähigen Server ausgewählt haben. Der Computer wird automatisch als Ziel für die geplante Bereitstellung festgelegt.
+    > Diese Option ist nicht verfügbar, wenn Sie eine Azure VM oder einen Azure Arc-aktivierten Server ausgewählt haben. Der Computer wird automatisch als Ziel für die geplante Bereitstellung festgelegt.
 
    > [!IMPORTANT]
    > Beim Erstellen einer dynamischen Gruppe von Azure-VMs unterstützt Updateverwaltung max. 500 Abfragen, die Abonnements oder Ressourcengruppen im Bereich der Gruppe kombinieren.
@@ -68,7 +68,7 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
 6. Wählen Sie im Bereich **Zu aktualisierende Computer** eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü die Option **Computer** und anschließend einzelne Computer aus. Mit dieser Option können Sie die Bereitschaft des Log Analytics-Agents für jeden Computer erkennen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../../azure-monitor/logs/computer-groups.md). Sie können maximal 1.000 Computer in eine geplante Updatebereitstellung miteinbeziehen.
 
     > [!NOTE]
-    > Diese Option ist nicht verfügbar, wenn Sie einen virtuellen Azure-Computer oder einen Arc-fähigen Server ausgewählt haben. Der Computer wird automatisch als Ziel für die geplante Bereitstellung festgelegt.
+    > Diese Option ist nicht verfügbar, wenn Sie eine Azure VM oder einen Azure Arc-aktivierten Server ausgewählt haben. Der Computer wird automatisch als Ziel für die geplante Bereitstellung festgelegt.
 
 7. Verwenden Sie den Bereich **Updateklassifizierungen**, um [Updateklassifizierungen](view-update-assessments.md#work-with-update-classifications) für Produkte anzugeben. Deaktivieren Sie für jedes Produkt alle unterstützten Updateklassifizierungen, die nicht in Ihre Updatebereitstellung eingeschlossen werden sollen.
 
@@ -105,7 +105,7 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
 9. Wählen Sie **Zeitplaneinstellungen** aus. Der Standard-Startzeitpunkt liegt 30 Minuten nach der aktuellen Uhrzeit. Als Startzeit können Sie einen beliebigen Wert festlegen, er muss jedoch mindestens 10 Minuten in der Zukunft liegen.
 
     > [!NOTE]
-    > Diese Option unterscheidet sich, wenn Sie einen Arc-fähigen Server ausgewählt haben. Sie können **Jetzt aktualisieren** oder eine Startzeit, die 20 Minuten in der Zukunft liegt, auswählen.
+    > Diese Option ist anders, wenn Sie einen Azure Arc-aktivierten Server ausgewählt haben. Sie können **Jetzt aktualisieren** oder eine Startzeit, die 20 Minuten in der Zukunft liegt, auswählen.
 
 10. Verwenden Sie **Wiederholung**, um anzugeben, ob die Bereitstellung einmal oder nach einem wiederkehrenden Zeitplan erfolgt, und wählen Sie dann **OK** aus.
 
@@ -135,7 +135,7 @@ Um eine neue Updatebereitstellung durchzuführen, führen Sie die folgenden Schr
     ![Bereich für Updatezeitplan-Einstellungen](./media/deploy-updates/manageupdates-schedule-win.png)
 
     > [!NOTE]
-    > Wählen Sie nach Abschluss der Konfiguration des Bereitstellungszeitplans für einen Arc-fähigen Server **Überprüfen und erstellen** aus.
+    > Wenn Sie die Konfiguration des Bereitstellungsplans für einen ausgewählten Azure Arc-aktivierten Server abgeschlossen haben, wählen Sie **Überprüfen + Erstellen**.
 
 15. Das Statusdashboard wird wieder angezeigt. Wählen Sie **Bereitstellungszeitpläne** aus, um den erstellten Bereitstellungszeitplan anzuzeigen. Es werden maximal 500 Zeitpläne aufgeführt. Wenn Sie über mehr als 500 Zeitpläne verfügen und die vollständige Liste überprüfen möchten, sehen Sie sich den Artikel zur entsprechenden REST-API-Methode unter [Softwareupdatekonfigurationen: Liste](/rest/api/automation/softwareupdateconfigurations/list) an. Geben Sie die API-Version 2019-06-01 oder höher an.
 

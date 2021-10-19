@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 06/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 20df340df025ceada8a4b254f317fe2f5d8eecbc
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1607ad99ffb78a90bcc143ab20829709cec77561
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768895"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706493"
 ---
 # <a name="view-update-assessments-in-update-management"></a>Anzeigen von Updatebewertungen in der Updateverwaltung
 
-In der Updateverwaltung können Sie Informationen zu Ihren Computern, zu fehlenden Updates, zu Updatebereitstellungen und zu geplanten Updatebereitstellungen anzeigen. Sie können die Bewertungsinformationen für die ausgewählte Azure-VM, den ausgewählten Arc-fähigen Server oder das Automation-Konto übergreifend für alle konfigurierten Computer und Server anzeigen.
+In der Updateverwaltung können Sie Informationen zu Ihren Computern, zu fehlenden Updates, zu Updatebereitstellungen und zu geplanten Updatebereitstellungen anzeigen. Sie können die Bewertungsinformationen für die ausgewählte Azure-VM, den ausgewählten Azure Arc-fähigen Server oder das Automation-Konto übergreifend für alle konfigurierten Computer und Server anzeigen.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -28,13 +28,13 @@ In der Updateverwaltung können Sie Informationen zu Ihrem Computer, zu fehlende
 
 [ ![Updateverwaltung: Ansicht für Azure-VM](./media/view-update-assessments/update-assessment-azure-vm.png)](./media/view-update-assessments/update-assessment-azure-vm-expanded.png#lightbox)
 
-Navigieren Sie zum Anzeigen der Updatebewertung über einen Arc-fähigen Server zu **Server – Azure Arc**, und wählen Sie Ihren Server in der Liste aus. Wählen Sie im Menü auf der linken Seite die Option **Gast- und Hostupdates** aus. Navigieren Sie auf der Seite **Gast- und Hostupdates** zur **Updateverwaltung**.
+Navigieren Sie zum Anzeigen der Updatebewertung über einen Azure Arc-fähigen Server zu **Server – Azure Arc**, und wählen Sie Ihren Server in der Liste aus. Wählen Sie im Menü auf der linken Seite die Option **Gast- und Hostupdates** aus. Navigieren Sie auf der Seite **Gast- und Hostupdates** zur **Updateverwaltung**.
 
-In der Updateverwaltung können Sie Informationen zu Ihrem Arc-fähigen Computer, zu fehlenden Updates, zu Updatebereitstellungen und zu geplanten Updatebereitstellungen anzeigen.
+In der Updateverwaltung können Sie Informationen zu Ihrem Azure Arc-fähigen Computer, zu fehlenden Updates, zu Updatebereitstellungen und zu geplanten Updatebereitstellungen anzeigen.
 
 [ ![Updateverwaltung: Bewertungsansicht für Arc-fähige Server](./media/view-update-assessments/update-assessment-arc-server.png)](./media/view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
 
-Navigieren Sie zum übergreifenden Anzeigen der Updatebewertung für alle Computer, einschließlich der Arc-fähigen Server Ihres Automation-Kontos, zu **Automation-Konten**, und wählen Sie Ihr Automation-Konto mit aktivierter Updateverwaltung in der Liste aus. Wählen Sie in Ihrem Automation-Konto im Menü auf der linken Seite die Option **Updateverwaltung** aus.
+Navigieren Sie zum übergreifenden Anzeigen der Updatebewertung für alle Computer, einschließlich der Azure Arc-fähigen Server Ihres Automation-Kontos, zu **Automation-Konten**, und wählen Sie Ihr Automation-Konto mit aktivierter Updateverwaltung in der Liste aus. Wählen Sie in Ihrem Automation-Konto im Menü auf der linken Seite die Option **Updateverwaltung** aus.
 
 Die Updates für Ihre Umgebung sind auf der Seite **Updateverwaltung** aufgeführt. Falls Updates fehlen, wird auf der Registerkarte **Fehlende Updates** eine Liste mit den entsprechenden Updates angezeigt.
 

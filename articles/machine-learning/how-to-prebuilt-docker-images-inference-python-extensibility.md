@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 16191b274f840438cac8deab6754991b7b9e29df
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 679be09b977ffd39dd513e88968fe4b0d474e74b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425010"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705352"
 ---
 # <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>Erweiterbarkeit von Python-Paketen für vordefinierte Docker-Images (Vorschau)
 
@@ -31,7 +31,7 @@ Die [vordefinierten Docker-Images für Modellrückschlüsse](concept-prebuilt-do
     Verwenden Sie diesen Ansatz für __Bereitstellungen in der Produktion__. Da das Verzeichnis mit den Paketen in das Image eingebunden ist, kann es auch dann verwendet werden, wenn Ihre Bereitstellungen nicht über Zugriff auf das öffentliche Internet verfügen. Ein Beispiel hierfür ist die Bereitstellung in einem geschützten virtuellen Azure-Netzwerk.
 
 > [!IMPORTANT]
-> Die Verwendung von vordefinierten Docker-Images mit Azure Machine Learning befindet sich derzeit in der Vorschauphase. Die Vorschaufunktionalität wird „wie besehen“ zur Verfügung gestellt, ohne Garantien hinsichtlich Support oder Vereinbarung zum Servicelevel (Service Level Agreement, SLA). Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Die Nutzung der Erweiterbarkeit von Python-Paketen für vorgefertigte Docker-Images mit Azure Machine Learning ist derzeit in der Vorschau. Die Vorschaufunktionalität wird „wie besehen“ zur Verfügung gestellt, ohne Garantien hinsichtlich Support oder Vereinbarung zum Servicelevel (Service Level Agreement, SLA). Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

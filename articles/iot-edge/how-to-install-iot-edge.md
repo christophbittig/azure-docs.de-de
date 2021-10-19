@@ -6,14 +6,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/28/2021
+ms.date: 10/05/2021
 ms.author: kgremban
-ms.openlocfilehash: 5ed9768f8cb1a6279eeb97a73d508a41984ef160
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: b062f4984bd5630f282d181e773e853f2234bb81
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214344"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710755"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Installieren oder Deinstallieren von Azure IoT Edge für Linux
 
@@ -214,36 +214,21 @@ Starten Sie nach Eingabe der Bereitstellungsinformationen in der Konfigurationsd
 <!-- 1.2 -->
 ::: moniker range=">=iotedge-2020-11"
 
-Erstellen Sie die Konfigurationsdatei für Ihr Gerät basierend auf einer Vorlagendatei, die im Rahmen der IoT Edge-Installation bereitgestellt wird.
+Mithilfe des folgenden Befehls können Sie Ihr IoT Edge-Gerät schnell mit der Authentifizierung über symmetrische Schlüssel konfigurieren:
 
    ```bash
-   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   sudo iotedge config mp --connection-string 'PASTE_CONNECTION_STRING_HERE'
    ```
 
-Öffnen Sie die Konfigurationsdatei auf dem IoT Edge-Gerät.
+Der Befehl `iotedge config mp` erstellt eine Konfigurationsdatei auf dem Gerät, stellt Ihre Verbindungszeichenfolge bereit und wendet die Konfigurationsänderungen an.
+
+Wenn Sie die Konfigurationsdatei anzeigen möchten, können Sie sie öffnen:
 
    ```bash
    sudo nano /etc/aziot/config.toml
    ```
 
-Suchen Sie den Abschnitt **Bereitstellung** der Datei, und heben Sie die Auskommentierung der Zeilen für manuelle Bereitstellung mit Verbindungszeichenfolge auf.
-
-   ```toml
-   # Manual provisioning with connection string
-   [provisioning]
-   source = "manual"
-   connection_string = "<ADD DEVICE CONNECTION STRING HERE>"
-   ```
-
-Aktualisieren Sie den Wert von **connection_string** mit der Verbindungszeichenfolge Ihres IoT Edge-Geräts.
-
-Verwenden Sie zum Einfügen des Inhalts der Zwischenablage in Nano `Shift+Right Click`, oder drücken Sie `Shift+Insert`.
-
-Speichern und schließen Sie die Datei.
-
-   `CTRL + X`, `Y`, `Enter`
-
-Nachdem Sie die Bereitstellungsinformationen in der Konfigurationsdatei eingegeben haben, übernehmen Sie Ihre Änderungen:
+Wenn Sie Änderungen an der Konfigurationsdatei vornehmen, verwenden Sie den Befehl `iotedge config apply`, um die Änderungen zu übernehmen:
 
    ```bash
    sudo iotedge config apply

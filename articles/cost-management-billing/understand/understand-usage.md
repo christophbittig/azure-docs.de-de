@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 10/11/2021
 ms.author: banders
-ms.openlocfilehash: 07e3cfdce238d5fc4e2737a49dde6fd624de8506
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ae2d16b6164f201bae8f34c62876f66b45862cfa
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882499"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855344"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
 
@@ -111,6 +111,8 @@ _<sup>**1**</sup> Felder zum Erstellen einer eindeutigen ID für einen einzelnen
 
 Beachten Sie, dass einige Felder bei den verschiedenen Kontotypen in Groß-/Kleinschreibung und Abstand abweichen können.
 Ältere Versionen von Pay-as-you-go-Nutzungsdateien verfügen über separate Abschnitte für Abrechnung und tägliche Nutzung.
+
+Beachten Sie für Kunden mit einer MCA-Vereinbarung, dass es Änderungen an den Werten für das Feld `PublisherType` gibt. Weitere Informationen finden Sie unter [Änderungen an Werten für den Herausgebertyp](../costs/group-filter.md#changes-to-publisher-type-values).
 
 ### <a name="list-of-terms-from-older-apis"></a>Liste der Begriffe aus älteren APIs
 In der folgenden Tabelle werden die in älteren APIs verwendeten Begriffe den neuen Begriffen zugeordnet. Diese Beschreibungen finden Sie in der obigen Tabelle.

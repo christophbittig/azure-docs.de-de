@@ -1,5 +1,6 @@
 ---
-title: Schutz vor Einwilligungsphishing | Azure AD-App-Verwaltung
+title: Schutz vor Einwilligungsphishing
+titleSuffix: Azure AD
 description: Erfahren Sie mehr über Möglichkeiten zum Schutz vor Phishingangriffen bei App-basierten Einwilligungen mit Azure AD.
 services: active-directory
 author: Chrispine-Chiedo
@@ -12,14 +13,14 @@ ms.date: 08/09/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: tilarso
-ms.openlocfilehash: 6d2a6afe4555bc9324241616ae6c22494216a146
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dc860dce0f75648488ff692a0024a850bf4c76ad
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791439"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615693"
 ---
-# <a name="protecting-against-consent-phishing"></a>Schutz vor Einwilligungsphishing
+# <a name="protecting-against-consent-phishing-in-azure-active-directory"></a>Schutz vor Einwilligungsphishing in Azure Active Directory
 
 Die Produktion ist nicht mehr auf private Netzwerke beschränkt, und die Arbeit hat sich erheblich in Richtung Clouddienste verlagert. Cloudanwendungen ermöglichen Mitarbeitern zwar, remote produktiv zu sein, Angreifer können jedoch auch anwendungsbasierte Angriffe nutzen, um Zugriff auf wertvolle Unternehmensdaten zu erhalten. Möglicherweise sind Sie bereits mit Angriffen auf Benutzer vertraut, z. B. dem E-Mail-Phishing oder dem Kompromittieren von Anmeldeinformationen. ***Einwilligungsphishing*** ist ein weiterer Bedrohungsvektor, den Sie beachten sollten.
 In diesem Artikel wird beschrieben, was Einwilligungsphishing ist, was Microsoft zu Ihrem Schutz unternimmt und welche Schritte Organisationen ergreifen können, um die Sicherheit zu gewährleisten.

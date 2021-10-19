@@ -7,27 +7,25 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/02/2021
 ms.author: miag
-ms.openlocfilehash: e230f06c91e775de87b42fcc2112fc699f9ecafc
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 15cde0a434df9ac06e69bf0c589cdcab8a03d2dc
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449230"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712386"
 ---
 # <a name="iot-hub-support-for-managed-identities"></a>IoT Hub-Unterstützung für verwaltete Identitäten 
 
 Verwaltete Identitäten stellen Azure-Dienste mit einer automatisch verwalteten Identität in Azure AD auf sichere Weise bereit. Dadurch entfällt die Notwendigkeit, dass Entwickler Anmeldeinformationen durch Bereitstellung einer Identität verwalten müssen. Es gibt zwei Arten von verwalteten Identitäten: systemseitig und benutzerseitig zugewiesene Identitäten. IoT Hub unterstützt beides. 
 
-In IoT Hub können verwaltete Identitäten für ausgehende Konnektivität von IoT Hub und anderen Azure-Diensten für Features wie [Nachrichtenrouting,](iot-hub-devguide-messages-d2c.md) [Dateiupload](iot-hub-devguide-file-upload.md) und [Massenimport/-export von Geräten](iot-hub-bulk-identity-mgmt.md) verwendet werden. In diesem Artikel erfahren Sie, wie Sie systemseitig zugewiesene und benutzerseitig zugewiesene verwaltete Identitäten in Ihrem IoT Hub für verschiedene Funktionen verwenden können. 
-
+In IoT Hub können verwaltete Identitäten für ausgehende Konnektivität von IoT Hub und anderen Azure-Diensten für Features wie [Nachrichtenrouting,](iot-hub-devguide-messages-d2c.md) [Dateiupload](iot-hub-devguide-file-upload.md) und [Massenimport/-export von Geräten](iot-hub-bulk-identity-mgmt.md) verwendet werden. In diesem Artikel erfahren Sie, wie Sie systemseitig zugewiesene und benutzerseitig zugewiesene verwaltete Identitäten in Ihrem IoT Hub für verschiedene Funktionen verwenden können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Lesen Sie die Dokumentation zu [verwalteten Identitäten für Azure-Ressourcen](./../active-directory/managed-identities-azure-resources/overview.md), um die Unterschiede zwischen systemseitig zugewiesener und benutzerseitig zugewiesener verwalteter Identität zu verstehen.
 
 - Wenn Sie keinen IoT Hub haben, [erstellen Sie einen](iot-hub-create-through-portal.md), bevor Sie den Vorgang fortsetzen.
 
-
-## <a name="system-assigned-managed-identity"></a>Systemseitig zugewiesene verwaltete Identität 
+## <a name="system-assigned-managed-identity"></a>Systemseitig zugewiesene verwaltete Identität
 
 ### <a name="add-and-remove-a-system-assigned-managed-identity-in-azure-portal"></a>Hinzufügen und Entfernen einer systemseitig zugewiesenen verwalteten Identität im Azure-Portal
 1.  Melden Sie sich beim Azure-Portal an, und navigieren Sie zu Ihrem gewünschten IoT-Hub.
@@ -128,8 +126,8 @@ In diesem Abschnitt erfahren Sie, wie Sie eine benutzerseitig zugewiesene verwal
 
     :::image type="content" source="./media/iot-hub-managed-identity/user-assigned.png" alt-text="Screenshot: Hinzufügen einer benutzerseitig zugewiesenen verwalteten Identität für einen IoT-Hub":::        
 
-
 ### <a name="enable-user-assigned-managed-identity-at-hub-creation-time-using-arm-template"></a>Aktivieren der benutzerseitig zugewiesenen verwalteten Identität zum Zeitpunkt der Huberstellung mithilfe einer ARM-Vorlage
+
 Die folgende Beispielvorlage kann verwendet werden, um einen Hub mit benutzerzugeordneter verwalteter Identität zu erstellen. Diese Vorlage erstellt eine vom Benutzer zugewiesene Identität mit dem Namen *[iothub-name-provided]-identity* und wird dem erstellten IoT-Hub zugewiesen. Sie können die Vorlage ändern, um bei Bedarf mehrere benutzerzugeordnete Identitäten hinzuzufügen.
  
 ```json
@@ -212,6 +210,7 @@ Die folgende Beispielvorlage kann verwendet werden, um einen Hub mit benutzerzug
   ]
 }
 ```
+
 ```azurecli-interactive
 az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json> --parameters iotHubName=<valid-iothub-name> skuName=<sku-name> skuTier=<sku-tier> location=<any-of-supported-regions>
 ```
@@ -221,34 +220,41 @@ Nachdem die Ressource erstellt wurde, können Sie die benutzerseitig zugewiesene
 ```azurecli-interactive
 az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
 ```
+
 ## <a name="egress-connectivity-from-iot-hub-to-other-azure-resources"></a>Ausgehende Konnektivität von IoT Hub zu anderen Azure-Ressourcen
-Verwaltete Identitäten können für die ausgehende Konnektivität von IoT Hub zu anderen Azure-Diensten für [Nachrichtenweiterleitung](iot-hub-devguide-messages-d2c.md), [Datei-Upload](iot-hub-devguide-file-upload.md) und [Massengeräteimport/-export](iot-hub-bulk-identity-mgmt.md) verwendet werden. Sie können auswählen, welche verwaltete Identität für jede ausgehende IoT Hub-Konnektivität mit kundeneigenen Endpunkten verwendet werden soll, einschließlich Speicherkonten, Event Hubs und Service Bus-Endpunkten. 
+
+Verwaltete Identitäten können für die ausgehende Konnektivität von IoT Hub zu anderen Azure-Diensten für [Nachrichtenweiterleitung](iot-hub-devguide-messages-d2c.md), [Datei-Upload](iot-hub-devguide-file-upload.md) und [Massengeräteimport/-export](iot-hub-bulk-identity-mgmt.md) verwendet werden. Sie können auswählen, welche verwaltete Identität für jede ausgehende IoT Hub-Konnektivität mit kundeneigenen Endpunkten verwendet werden soll, einschließlich Speicherkonten, Event Hubs und Service Bus-Endpunkten.
+
+> [!NOTE]
+> Verwenden Sie eine systemseitig zugewiesene verwaltete Identität, um auf private Ressourcen zuzugreifen.
 
 ## <a name="configure-message-routing-with-managed-identities"></a>Konfigurieren des Nachrichtenroutings mit verwalteten Identitäten
+
 In diesem Abschnitt wird das [Nachrichten-Routing](iot-hub-devguide-messages-d2c.md) zu einem benutzerdefinierten Ereignis-Hub-Endpunkt als Beispiel verwendet. Das Beispiel gilt auch für andere benutzerdefinierte Routing-Endpunkte. 
 
-1.  Zuerst müssen Sie im Azure-Portal zu Ihrem Event Hub wechseln, um der verwalteten Identität den richtigen Zugriff zuzuweisen. Navigieren Sie in Ihrem Event Hub zur Registerkarte **Zugriffssteuerung (IAM)** , klicken Sie auf **Hinzufügen** und dann auf **Rollenzuweisung hinzufügen**. Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
+1. Zuerst müssen Sie im Azure-Portal zu Ihrem Event Hub wechseln, um der verwalteten Identität den richtigen Zugriff zuzuweisen. Navigieren Sie in Ihrem Event Hub zur Registerkarte **Zugriffssteuerung (IAM)** , klicken Sie auf **Hinzufügen** und dann auf **Rollenzuweisung hinzufügen**. Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
-2.  Wählen Sie **Event Hubs-Datensender** als „Rolle“ aus.
+2. Wählen Sie **Event Hubs-Datensender** als „Rolle“ aus.
 
-    > [!NOTE] 
+    > [!NOTE]
     > Wählen Sie für das Speicherkonto **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/blobs/assign-azure-role-data-access.md)) als **Rolle** aus. Wählen Sie für Service Bus **Service Bus-Datensender** als **Rolle** aus.
 
-3.  Wählen Sie für „benutzerseitig zugewiesen“ unter **Zugriff zuweisen zu** die Option **Benutzerseitig zugewiesene verwaltete Identität** aus. Wählen Sie in der Dropdownliste Ihr Abonnement und Ihre benutzerseitig zugewiesene verwaltete Identität aus. Klicken Sie auf die Schaltfläche **Save** .
+3. Wählen Sie für „benutzerseitig zugewiesen“ unter **Zugriff zuweisen zu** die Option **Benutzerseitig zugewiesene verwaltete Identität** aus. Wählen Sie in der Dropdownliste Ihr Abonnement und Ihre benutzerseitig zugewiesene verwaltete Identität aus. Klicken Sie auf die Schaltfläche **Save** .
 
     :::image type="content" source="./media/iot-hub-managed-identity/eventhub-iam-user-assigned.png" alt-text="IoT Hub-Nachrichtenrouting mit benutzerseitig zugewiesener Identität":::
 
-4.  Wählen Sie für „systemseitig zugewiesen“ unter **Zugriff zuweisen zu** die Option **Benutzer, Gruppe oder Dienstprinzipal** und dann in der Dropdownliste den Ressourcennamen Ihres IoT-Hubs aus. Klicken Sie auf **Speichern**.
+4. Wählen Sie für „systemseitig zugewiesen“ unter **Zugriff zuweisen zu** die Option **Benutzer, Gruppe oder Dienstprinzipal** und dann in der Dropdownliste den Ressourcennamen Ihres IoT-Hubs aus. Klicken Sie auf **Speichern**.
 
     :::image type="content" source="./media/iot-hub-managed-identity/eventhub-iam-system-assigned.png" alt-text="IoT Hub-Nachrichtenrouting mit systemseitig zugewiesener Identität":::
 
     Wenn Sie die Konnektivität mit Ihrem benutzerdefinierten Endpunkt über ein VNet einschränken müssen, müssen Sie die Ausnahme des vertrauenswürdigen Erstanbieters von Microsoft aktivieren, um Ihrem IoT-Hub Zugriff auf den spezifischen Endpunkt zu gewähren. Wenn Sie beispielsweise einen benutzerdefinierten Event Hub-Endpunkt hinzufügen, navigieren Sie in Ihrem Event Hub zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Zugriff aus ausgewählten Netzwerken erlauben**. Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Allow trusted Microsoft services to access event hubs** (Vertrauenswürdigen Microsoft-Diensten den Zugriff auf Event Hubs erlauben). Klicken Sie auf die Schaltfläche **Save** . Dies gilt auch für Speicherkonto und Service Bus. Informieren Sie sich genauer über [IoT Hub-Unterstützung für virtuelle Netzwerke](./virtual-network-support.md).
 
     > [!NOTE]
-    > Sie müssen die vorstehenden Schritte ausführen, um der verwalteten Identität den richtigen Zugriff zuzuweisen, bevor Sie in IoT Hub den Event Hub als benutzerdefinierten Endpunkt hinzufügen. Bitte warten Sie einige Minuten, bis die Rollenzuweisung weitergegeben wurde. 
+    > Sie müssen die vorstehenden Schritte ausführen, um der verwalteten Identität den richtigen Zugriff zuzuweisen, bevor Sie in IoT Hub den Event Hub als benutzerdefinierten Endpunkt hinzufügen. Bitte warten Sie einige Minuten, bis die Rollenzuweisung weitergegeben wurde.
 
 5. Wechseln Sie als Nächstes zu Ihrem IoT-Hub. Navigieren Sie in Ihrem Hub zu **Nachrichtenrouting**, und klicken Sie auf **Benutzerdefinierte Endpunkte**. Klicken Sie auf **Hinzufügen**, und wählen Sie den Typ des Endpunkts aus, den Sie verwenden möchten. In diesem Abschnitt verwenden Sie Event Hub als Beispiel.
-6.  Wählen Sie unten auf der Seite Ihren bevorzugten **Authentifizierungstyp** aus. In diesem Abschnitt verwenden Sie **Benutzerseitig zugewiesen** als Beispiel. Wählen Sie in der Dropdownliste die bevorzugte benutzerseitig zugewiesene verwaltete Identität aus, und klicken Sie auf **Erstellen**.
+
+6. Wählen Sie unten auf der Seite Ihren bevorzugten **Authentifizierungstyp** aus. In diesem Abschnitt verwenden Sie **Benutzerseitig zugewiesen** als Beispiel. Wählen Sie in der Dropdownliste die bevorzugte benutzerseitig zugewiesene verwaltete Identität aus, und klicken Sie auf **Erstellen**.
 
     :::image type="content" source="./media/iot-hub-managed-identity/eventhub-routing-endpoint.png" alt-text="IoT Hub-Event Hub mit benutzerseitig zugewiesener Identität":::
 
@@ -260,6 +266,7 @@ In diesem Abschnitt wird das [Nachrichten-Routing](iot-hub-devguide-messages-d2c
 9. Wählen Sie den neuen Authentifizierungstyp aus, der bei diesem Endpunkt aktualisiert werden soll, und klicken Sie auf **Speichern**.
 
 ## <a name="configure-file-upload-with-managed-identities"></a>Konfigurieren des Dateiuploads mit verwalteten Identitäten
+
 Das IoT Hub-Feature [Dateiupload](iot-hub-devguide-file-upload.md) ermöglicht Geräten das Hochladen von Dateien in ein kundeneigenes Speicherkonto. IoT Hub muss mit dem Speicherkonto verbunden sein, damit der Dateiuploadvorgang funktioniert. Ähnlich wie beim Nachrichtenrouting können Sie den bevorzugten Authentifizierungstyp und die verwaltete Identität für ausgehende IoT Hub-Konnektivität mit Ihrem Azure Storage-Konto auswählen. 
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Speicherkontos, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
@@ -269,10 +276,8 @@ Das IoT Hub-Feature [Dateiupload](iot-hub-devguide-file-upload.md) ermöglicht G
 
     Wenn Sie die Konnektivität mit Ihrem Speicherkonto über ein VNet einschränken müssen, müssen Sie die Ausnahme des vertrauenswürdigen Erstanbieters von Microsoft aktivieren, um Ihrem IoT-Hub Zugriff auf das Speicherkonto zu gewähren. Navigieren Sie auf der Ressourcenseite für Ihr Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** . Informieren Sie sich genauer über [IoT Hub-Unterstützung für virtuelle Netzwerke](./virtual-network-support.md). 
 
-
     > [!NOTE]
-    > Sie müssen die vorstehenden Schritte ausführen, um der verwalteten Identität den richtigen Zugriff zuzuweisen, bevor Sie das Speicherkonto in IoT Hub für einen Dateiupload mithilfe der verwalteten Identität speichern. Bitte warten Sie einige Minuten, bis die Rollenzuweisung weitergegeben wurde. 
- 
+    > Sie müssen die vorstehenden Schritte ausführen, um der verwalteten Identität den richtigen Zugriff zuzuweisen, bevor Sie das Speicherkonto in IoT Hub für einen Dateiupload mithilfe der verwalteten Identität speichern. Bitte warten Sie einige Minuten, bis die Rollenzuweisung weitergegeben wurde.
 5. Navigieren Sie auf der Seite für Ihre IoT Hub-Ressource zur Registerkarte **Dateiupload**.
 6. Wählen Sie auf der angezeigten Seite den Container aus, den Sie in Ihrem Blobspeicher verwenden möchten, und konfigurieren Sie die **Dateibenachrichtigungseinstellungen, SAS TTL, Standard-TTL und Anzahl maximaler Zustellungen** nach Bedarf. Wählen Sie den bevorzugten Authentifizierungstyp aus, und klicken Sie auf **Speichern**. Wenn bei diesem Schritt eine Fehlermeldung angezeigt wird, legen Sie Ihr Speicherkonto vorübergehend so fest, dass der Zugriff aus **Allen Netzwerken** ermöglicht wird, und wiederholen Sie dann den Vorgang. Sie können die Firewall für das Speicherkonto konfigurieren, sobald die Konfiguration des Dateiuploads beendet ist.
 
@@ -290,7 +295,6 @@ IoT Hub unterstützt die Funktion zum [Importieren und Exportieren von Gerätein
 3. Wählen Sie für „benutzerseitig zugewiesen“ unter „Zugriff zuweisen zu“ die Option **Benutzerseitig zugewiesene verwaltete Identität** aus. Wählen Sie in der Dropdownliste Ihr Abonnement und Ihre benutzerseitig zugewiesene verwaltete Identität aus. Klicken Sie auf die Schaltfläche **Save** .
 4. Wählen Sie für „systemseitig zugewiesen“ unter **Zugriff zuweisen zu** die Option **Benutzer, Gruppe oder Dienstprinzipal** und dann in der Dropdownliste den Ressourcennamen Ihres IoT-Hubs aus. Klicken Sie auf **Speichern**.
 
-
 ### <a name="using-rest-api-or-sdk-for-import-and-export-jobs"></a>Verwenden der REST-API oder des SDK für Import- und Exportaufträge
 
 Sie können jetzt die Azure IoT REST-APIs zum Erstellen von Import- und Exportaufträgen verwenden. Dazu müssen Sie im Anforderungstext die folgenden Eigenschaften angeben:
@@ -299,7 +303,6 @@ Sie können jetzt die Azure IoT REST-APIs zum Erstellen von Import- und Exportau
 - **inputBlobContainerUri**: Legen Sie diese Eigenschaft nur im Importauftrag fest.
 - **outputBlobContainerUri**: Legen Sie diese Eigenschaft für die Import- und Exportaufträge fest.
 - **identity**: Legen Sie den Wert auf die verwaltete Identität fest, die verwendet werden soll.
-
 
 Azure IoT Hub SDKs unterstützen diese Funktion im Registrierungs-Manager des Dienstclients. Der folgende Codeausschnitt zeigt, wie ein Importauftrag bzw. ein Exportauftrag mithilfe des C# SDK ausgelöst werden.
 

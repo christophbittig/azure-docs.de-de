@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 7a94d82c3ec2a47869c64520e20bed6cdf58ebdb
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 0cc474ba9566737cb0117cc3a0f2bfb079cdf3d9
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210521"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616510"
 ---
 # <a name="labeling-in-azure-purview"></a>Bezeichnungen in Azure Purview
 
@@ -64,7 +64,7 @@ Vertraulichkeitsbezeichnungen werden in Azure Purview für die folgenden Datenqu
 
 ## <a name="labeling-for-sql-databases"></a>Bezeichnungen für SQL-Datenbanken
 
-Zusätzlich zu Purview-Bezeichnungen für Datenbankspalten unterstützt Microsoft auch Bezeichnungen für die Spalten von SQL-Datenbanken, indem die SQL-Datenklassifizierung in [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) verwendet wird. Während in Purview die globalen [MIP-Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels) verwendet werden, werden in SSMS nur lokal definierte Bezeichnungen genutzt.
+Zusätzlich zu Purview-Bezeichnungen für Datenbankspalten unterstützt Microsoft auch Bezeichnungen für die Spalten von SQL-Datenbanken, indem die SQL-Datenklassifizierung in [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) verwendet wird. Während in Purview die globalen [Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels) verwendet werden, werden in SSMS nur lokal definierte Bezeichnungen genutzt.
 
 Bei den Bezeichnungen in Purview und in SSMS handelt es sich um separate Prozesse, die derzeit nicht miteinander interagieren. Aus diesem Grund werden **in SSMS angewendete Bezeichnungen in Purview nicht angezeigt (und umgekehrt)** . Für Bezeichnungen in SQL-Datenbanken empfehlen wir Azure Purview, da hierbei globale MIP-Bezeichnungen genutzt werden, die übergreifend für mehrere Plattformen angewendet werden können.
 

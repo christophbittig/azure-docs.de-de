@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 8cc39325f8c993afb6901e9700376fc73ecbefe7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 81032760fa559cbdbae6382084e7a2d2e629d989
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128602857"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659391"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device"></a>Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät
 
@@ -83,7 +83,7 @@ Azure IoT Edge für Linux unter Windows unterstützt die folgenden Bereitstellun
 
     * [Bereitstellen eines IoT Edge-Geräts mit DPS und symmetrischen Schlüsseln](how-to-provision-devices-at-scale-linux-on-windows-symmetric.md)
     * [Bereitstellen eines IoT Edge-Geräts mit DPS und X.509-Zertifikaten](how-to-provision-devices-at-scale-linux-on-windows-x509.md)
-    * [Bereitstellen eines IoT Edge-Geräts mit DPS und TPM-Nachweis](how-to-auto-provision-tpm-linux-on-windows.md)
+    * [Bereitstellen eines IoT Edge-Geräts mit DPS und TPM-Nachweis](how-to-provision-devices-at-scale-linux-on-windows-tpm.md)
 
 ## <a name="create-a-new-deployment"></a>Erstellen einer neuen Bereitstellung
 
@@ -242,7 +242,7 @@ Sie können für das Bereitstellen Ihrer Geräte Windows Admin Center oder eine 
 
   * [Automatische Bereitstellung mit Device Provisioning Service (DPS) und symmetrischen Schlüsseln](how-to-provision-devices-at-scale-linux-on-windows-symmetric.md#configure-the-device-with-provisioning-information)
   * [Automatische Bereitstellung mithilfe von DPS und X.509-Zertifikaten](how-to-provision-devices-at-scale-linux-on-windows-x509.md#configure-the-device-with-provisioning-information)
-  * [Automatische Bereitstellung mithilfe von DPS und TPM-Nachweis](how-to-auto-provision-tpm-linux-on-windows.md#configure-the-device-with-provisioning-information)
+  * [Automatische Bereitstellung mithilfe von DPS und TPM-Nachweis](how-to-provision-devices-at-scale-linux-on-windows-tpm.md#configure-the-device-with-provisioning-information)
 
 ### <a name="manual-provisioning-using-the-connection-string"></a>Manuelle Bereitstellung mit der Verbindungszeichenfolge
 

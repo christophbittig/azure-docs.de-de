@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 2404d8af682f119b68c78d6dc5cacc3d30201c17
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 61253ab7360253e1c6902b6a7b38c9fb53faa3eb
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397095"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611746"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Azure AD-Anmeldung
 
@@ -26,7 +26,7 @@ Mit der APP Service-Authentifizierungsfunktion kann automatisch eine APP-Registr
 > [!NOTE]
 > Die Option zum Erstellen einer neuen Registrierung ist für Regierungs-Clouds nicht verfügbar. Definieren Sie stattdessen [eine Registrierung separat](#advanced).
 
-## <a name="create-a-new-app-registration-automatically"></a><a name="express"> </a>Erstellen Sie automatische eine neue App-Registrierung
+## <a name="option-1-create-a-new-app-registration-automatically"></a><a name="express"> </a> Option 1: Automatisches Erstellen einer neuen App-Registrierung
 
 Diese Option ist so konzipiert, dass die Authentifizierung ganz einfach und mit nur wenigen Klicks aktiviert werden kann.
 
@@ -47,7 +47,7 @@ Sie sind nun bereit, die Microsoft Identity Platform für die Authentifizierung 
 
 Ein Beispiel für die Konfiguration der Azure AD-Anmeldung für eine Web-App, die auf Azure Storage und Microsoft Graph zugreift, finden Sie in [diesem Tutorial](scenario-secure-app-authentication-app-service.md).
 
-## <a name="use-an-existing-registration-created-separately"></a><a name="advanced"> </a>Verwenden Sie eine vorhandene, separat erstellte Registrierung
+## <a name="option-2-use-an-existing-registration-created-separately"></a><a name="advanced"> </a>Option 2: Verwenden einer vorhandenen, separat erstellten Registrierung
 
 Sie können Ihre Anwendung auch manuell für die Microsoft Identity-Plattform registrieren, die Registrierung anpassen und die APP Service Authentifizierung mit den Registrierungsdetails konfigurieren. Dies ist beispielsweise hilfreich, wenn Sie eine App-Registrierung von einem anderen Azure AD-Mandanten als dem verwenden möchten, auf dem sich Ihre App Service-App befindet.
 

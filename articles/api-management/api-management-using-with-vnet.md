@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: danlep
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 008e3874961af2c3e8ff8dfe3f162254fb9d5f5e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1d3abd6da011a0147c3e9cee06f8e60800263e63
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669244"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612007"
 ---
 # <a name="connect-to-a-virtual-network-using-azure-api-management"></a>Herstellen einer Verbindung mit einem virtuellen Netzwerk mit Azure API Management
 
@@ -162,7 +162,7 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 | * / 1433                     | Ausgehend           | TCP                | VIRTUAL_NETWORK/SQL                 | **Zugriff auf Azure SQL-Endpunkte**                           | Extern & Intern  |
 | * / 5671, 5672, 443          | Ausgehend           | TCP                | VIRTUAL_NETWORK/Event Hub            | Abhängigkeit für [Richtlinie zum Anmelden bei Event Hub](api-management-howto-log-event-hubs.md) und Überwachungs-Agent | Extern & Intern  |
 | */445                      | Ausgehend           | TCP                | VIRTUAL_NETWORK/Storage             | Abhängigkeit von Azure-Dateifreigabe für [GIT](api-management-configuration-repository-git.md)                      | Extern & Intern  |
-| * / 443, 12000                     | Ausgehend           | TCP                | VIRTUAL_NETWORK / AzureCloud            | Erweiterung für Integrität und Überwachung         | Extern & Intern  |
+| * / 443, 12000                     | Ausgehend           | TCP                | VIRTUAL_NETWORK / AzureCloud            | Integritäts- und Überwachungserweiterung sowie Abhängigkeit von Event Grid (wenn die Ereignisbenachrichtigung aktiviert ist)        | Extern & Intern  |
 | * / 1886, 443                     | Ausgehend           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | Veröffentlichen von [Diagnoseprotokollen und Metriken](api-management-howto-use-azure-monitor.md), [Resource Health](../service-health/resource-health-overview.md) und [Application Insights](api-management-howto-app-insights.md)                   | Extern & Intern  |
 | * / 25, 587, 25028                       | Ausgehend           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinden mit SMTP-Relay zum Senden von E-Mails                    | Extern & Intern  |
 | * / 6381 - 6383              | Ein- und ausgehend | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Zugreifen auf den Redis-Dienst für [Cache](api-management-caching-policies.md)richtlinien zwischen Computern         | Extern & Intern  |

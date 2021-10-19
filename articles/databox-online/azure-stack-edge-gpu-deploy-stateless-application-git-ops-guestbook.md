@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen einer PHP-`Guestbook`-App in einer Kubernetes-Implementierung mit Arc-Unterstützung auf einem Azure Stack Edge Pro-GPU-Gerät | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie eine zustandslose PHP `Guestbook`-Anwendung mit Redis unter Verwendung von GitOps in einem für Arc aktivierten Kubernetes-Cluster Ihres Azure Stack Edge Pro-Geräts bereitstellen.
+title: Bereitstellen einer PHP-`Guestbook`-App in einer Kubernetes-Implementierung mit Azure Arc-Unterstützung auf einem Azure Stack Edge Pro-GPU-Gerät | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie eine zustandslose PHP-`Guestbook`-Anwendung mit Redis mithilfe von GitOps in einem Kubernetes-Cluster mit Azure Arc-Unterstützung auf Ihrem Azure Stack Edge Pro-Gerät bereitstellen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 4c5a361fafeaed6452481adc9e6eae856828bfda
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bcf2b8e97a00e693825124e92acd0f551ebfde14
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635582"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709781"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Bereitstellen einer zustandslosen PHP `Guestbook`-Anwendung mit Redis in einem für Arc aktivierten Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-azure-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Bereitstellen einer zustandslosen PHP-`Guestbook`-Anwendung mit Redis in einem Kubernetes-Cluster mit Azure Arc-Unterstützung auf einer Azure Stack Edge Pro-GPU
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
@@ -25,7 +25,7 @@ In diesem Artikel wird erläutert, wie Sie eine einfache Multi-Tier-Webanwendung
 - Mehrere replizierte Redis-Instanzen für Lesevorgänge
 - Mehrere Front-End-Webinstanzen
 
-Die Bereitstellung erfolgt unter Verwendung von GitOps in dem für Arc aktivierten Kubernetes-Cluster auf Ihrem Azure Stack Edge Pro-Gerät. 
+Die Bereitstellung erfolgt unter Verwendung von GitOps in dem Kubernetes-Cluster mit Azure Arc-Unterstützung auf Ihrem Azure Stack Edge Pro-Gerät. 
 
 Dieses Verfahren ist für Personen gedacht, die den Artikel [Kubernetes-Workloads auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-kubernetes-workload-management.md) gelesen haben und mit den in [Was ist Kubernetes mit Azure Arc-Unterstützung (Vorschauversion)?](../azure-arc/kubernetes/overview.md) beschriebenen Konzepten vertraut sind.
 

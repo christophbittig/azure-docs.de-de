@@ -3,22 +3,22 @@ title: Optimieren der Cloudinvestitionen mit Azure Cost Management
 description: Dieser Artikel bietet Informationen dazu, wie Sie Ihre Cloudinvestitionen optimal ausschöpfen, Ihre Kosten senken und auswerten, wofür genau Ihr Geld ausgegeben wird.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/02/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 26b48e4f5ed50b547c8ec628fc534e24dfeb252e
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 5ea9f5a857c28195d0aa82a1314df839ab2236e8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609543"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705912"
 ---
-# <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Optimieren der Cloudinvestitionen mit Azure Cost Management
+# <a name="how-to-optimize-your-cloud-investment-with-cost-management"></a>Optimieren der Cloudinvestitionen mit Cost Management
 
-Azure Cost Management bietet Tools, mit denen Sie Ihre Ausgaben planen, analysieren und reduzieren können, um Ihre Cloudinvestitionen zu maximieren. Dieses Dokument stellt einen methodischen Ansatz für das Kostenmanagement vor und beschreibt die Tools, die Ihnen zur Verfügung stehen, um die Kostenherausforderungen Ihrer Organisation zu bewältigen. Mit Azure lassen sich Cloudlösungen einfach erstellen und bereitstellen. Es ist jedoch wichtig, dass diese Lösungen optimiert werden, um die Kosten zu minimieren. Die in diesem Artikel erläuterten Konzepte und der Einsatz unserer Tools unterstützen Ihre Organisation auf dem Weg zum Erfolg.
+Cost Management bietet Tools, mit denen Sie Ihre Ausgaben planen, analysieren und reduzieren können, um Ihre Cloudinvestitionen zu maximieren. Dieses Dokument stellt einen methodischen Ansatz für das Kostenmanagement vor und beschreibt die Tools, die Ihnen zur Verfügung stehen, um die Kostenherausforderungen Ihrer Organisation zu bewältigen. Mit Azure lassen sich Cloudlösungen einfach erstellen und bereitstellen. Es ist jedoch wichtig, dass diese Lösungen optimiert werden, um die Kosten zu minimieren. Die in diesem Artikel erläuterten Konzepte und der Einsatz unserer Tools unterstützen Ihre Organisation auf dem Weg zum Erfolg.
 
 ## <a name="methodology"></a>Methodik
 
@@ -162,7 +162,7 @@ Tags sind eine effektive Möglichkeit, um mehrere Teams und Azure-Bereiche über
 
 Auf ähnliche Weise könnten Sie auch Web-Apps oder Umgebungen, wie z. B. für Test oder Produktion, verwenden, die Ressourcen mehrere, im Besitz verschiedener Teams befindliche Abonnements übergreifend verwenden. Um die vollständigen Kosten der Workloads besser zu verstehen, kennzeichnen Sie die Ressourcen, die sie verwenden. Wenn Tags ordnungsgemäß angewendet werden, können Sie sie als Filter in der Kostenanalyse anwenden, um Trends besser zu verstehen.
 
-Nachdem Sie das Tagging von Ressourcen geplant haben, können Sie eine Azure Policy-Definition konfigurieren, um das Tagging von Ressourcen zu erzwingen. Sehen Sie sich das Video zum [Überprüfen der Tagrichtlinien mit Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) an, um die Tools zu verstehen, die Ihnen zur Durchsetzung einer skalierbaren Ressourcenkennzeichnung zur Verfügung stehen. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
+Nachdem Sie das Tagging von Ressourcen geplant haben, können Sie eine Azure Policy-Definition konfigurieren, um das Tagging von Ressourcen zu erzwingen. Sehen Sie sich das Video zum [Überprüfen der Tagrichtlinien mit Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) an, um die Tools zu verstehen, die Ihnen zur Durchsetzung von skalierbarem Ressourcentagging zur Verfügung stehen. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
 
@@ -231,4 +231,4 @@ Weitere Informationen finden Sie unter [Einsparungsrechner für den Azure-Hybrid
 Azure bietet auch einen Dienst, mit dem Sie Dienste erstellen können, die überschüssige Kapazitäten in Azure zu reduzierten Preisen nutzen. Weitere Informationen finden Sie unter [Verwenden von VMs mit niedriger Priorität mit Batch](../../batch/batch-low-pri-vms.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Wenn Sie mit Cost Management noch nicht vertraut sind, erfahren Sie unter [Was ist Azure Cost Management?](../cost-management-billing-overview.md), wie Sie mit diesem Dienst Ihre Azure-Ausgaben überwachen und steuern und die Ressourcennutzung optimieren können.
+- Wenn Sie mit Cost Management noch nicht vertraut sind, erfahren Sie unter [Was ist Cost Management?](../cost-management-billing-overview.md), wie Sie mit diesem Dienst Ihre Azure-Ausgaben überwachen und steuern sowie die Ressourcennutzung optimieren können.

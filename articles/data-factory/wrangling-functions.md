@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
-ms.date: 04/16/2021
-ms.openlocfilehash: 2af1e7f9e1b787e73247d9537b4a8876cc4f7220
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/06/2021
+ms.openlocfilehash: c0a646624054aca3bc043f4ee573dac274f2aa77
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361211"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129809913"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Transformationsfunktionen in Power Query für Data Wrangling
 
@@ -137,6 +137,26 @@ Auf diese Option kann über die Option „Extrahieren“ auf dem Menüband zugeg
 in
   #"Pivoted column"
 ```
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWNbBf]
+
+### <a name="formatting-datetime-columns"></a>Formatierung von Datum/Uhrzeit-Spalten
+
+Um das Datums-/Zeitformat bei der Verwendung von Power Query ADF einzustellen, folgen Sie bitte diesen Anweisungen, um das Format einzustellen.
+
+![Power Query Typ ändern](media/data-flow/power-query-date-2.png)
+
+1. Markieren Sie die Spalte in der Power Query-Benutzeroberfläche und wählen Sie Typ ändern > Datum/Uhrzeit
+2. Es wird eine Warnmeldung angezeigt
+3. Öffnen Sie den erweiterten Editor und ändern Sie ```TransformColumnTypes``` in ```TransformColumns```. Legen Sie das Format und die Kultur auf der Grundlage der Eingabedaten fest.
+
+![Power Query-Editor](media/data-flow/power-query-date-3.png)
+
+```
+#"Changed column type 1" = Table.TransformColumns(#"Duplicated column", {{"start - Copy", each DateTime.FromText(_, [Format = "yyyy-MM-dd HH:mm:ss", Culture = "en-us"]), type datetime}})
+```
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWNdQg]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

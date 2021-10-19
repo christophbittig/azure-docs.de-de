@@ -9,12 +9,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake
 ms.date: 05/18/2021
-ms.openlocfilehash: 16782538918c0477b969f95b7730b38221f97f82
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 2fa7a60b4f0cbc7e72304c1b01444bf9a9f6a842
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414959"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667628"
 ---
 # <a name="azure-sql-managed-instance---compute-hardware-in-the-vcore-service-tier"></a>Azure SQL Managed Instance – Computehardware auf der Dienstebene des virtuellen Kerns
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,9 +35,9 @@ Als Optionen für die Dienstebene stehen im V-Kern-Kaufmodell „Universell“ u
 |**Anwendungsfall**|**Allgemeiner Zweck**|**Unternehmenskritisch**|
 |---|---|---|
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Bietet budgetorientierte, ausgewogene und skalierbare Compute- und Speicheroptionen. |Bietet Geschäftsanwendungen die höchste Resilienz gegenüber Fehlern durch die Verwendung mehrerer isolierter Replikate sowie die höchste E/A-Leistung.|
-|Storage|Verwendet Remotespeicher. 32 GB – 8 TB |Verwendet lokalen SSD-Speicher. 32 GB – 4 TB |
+|Storage|Verwendet Remotespeicher. 32 GB – 8 TB </br> 16 TB (Vorschau) je nach Anzahl der Kerne, nur Gen5 |Verwendet lokalen SSD-Speicher. 32 GB – 4 TB |
 |IOPS und Durchsatz (ungefähr)|Weitere Informationen finden Sie in der [Übersicht über die Ressourcenlimits von Azure SQL Managed Instance](../managed-instance/resource-limits.md#service-tier-characteristics).|Weitere Informationen finden Sie in der [Übersicht über die Ressourcenlimits von Azure SQL Managed Instance](../managed-instance/resource-limits.md#service-tier-characteristics).|
-|Verfügbarkeit|Einzelnes Replikat, keine Replikate mit Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](../database/read-scale-out.md),<br/>zonenredundante Hochverfügbarkeit (High Availability, HA)|
+|Verfügbarkeit|Einzelnes Replikat, keine Replikate mit Leseskalierung|4 Replikate insgesamt, 1 [Replikat mit Leseskalierung](../database/read-scale-out.md),<br/> 2 Hochverfügbarkeitsreplikate|
 |Backups|[Georedundanter Speicher mit Lesezugriff (RA-GRS)](../../storage/common/geo-redundant-design.md), 1–35 Tage (standardmäßig 7 Tage)|[RA-GRS](../../storage/common/geo-redundant-design.md), 1–35 Tage (standardmäßig 7 Tage)|
 |In-Memory|Nicht unterstützt|Unterstützt|
 ||||

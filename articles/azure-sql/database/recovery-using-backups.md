@@ -12,12 +12,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: e1a6887efc2b0220ae92b372c2c9fd2ff91cc8fa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d313f521a13ae49f8701614d1b1331d34960ae77
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122353679"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619479"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Azure SQL-Datenbank und SQL Managed Instance: Wiederherstellen automatisierter Datenbanksicherungen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -69,6 +69,9 @@ Sie können den Zustand einer eigenständigen, Pool- oder Instanzdatenbank zu ei
 Nach Abschluss der Wiederherstellung wird eine neue Datenbank auf demselben Server wie die ursprüngliche Datenbank erstellt. Die wiederhergestellte Datenbank wird zu normalen Preisen basierend auf der Dienstebene und Computegröße in Rechnung gestellt. Kosten entstehen erst, wenn die Datenbankwiederherstellung abgeschlossen ist.
 
 Im Allgemeinen wird beim Wiederherstellen der Datenbank der Zustand zu einem früheren Zeitpunkt wiederhergestellt. Sie können die wiederhergestellte Datenbank als Ersatz für die ursprüngliche Datenbank behandeln oder als Datenquelle zum Aktualisieren der ursprünglichen Datenbank verwenden.
+
+> [!IMPORTANT]
+> Sie können die Wiederherstellung nur auf demselben Server ausführen. Die serverübergreifende Wiederherstellung wird von der Point-in-Time-Wiederherstellung nicht unterstützt.
 
 - **Ersetzung der Datenbank**
 

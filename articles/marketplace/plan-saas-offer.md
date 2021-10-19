@@ -1,6 +1,6 @@
 ---
-title: Planen eines SaaS-Angebots im kommerziellen Marketplace von Microsoft – Azure Marketplace
-description: Hier finden Sie Informationen zum Planen eines neuen Software-as-a-Service-Angebots (SaaS), das in Microsoft AppSource, Azure Marketplace oder über das CSP-Programm (Cloud Solution Provider) des kommerziellen Marketplace im Microsoft Partner Center aufgelistet oder verkauft werden kann.
+title: Planen eines SaaS-Angebots für den kommerziellen Microsoft-Marketplace – Azure Marketplace
+description: Planen Sie ein neues SaaS-Angebot (Software-as-a-Service), das in Microsoft AppSource, Azure Marketplace oder über das CSP-Programm (Cloud Solution Provider) des kommerziellen Marketplace im Microsoft Partner Center aufgelistet oder verkauft werden kann.
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/17/2021
-ms.openlocfilehash: e31fff677b6e1363d0afda420d521d31b2cf4247
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6f429bd55c3fbf93f88c91168021eed9f1d6505a
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657555"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730183"
 ---
-# <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots im kommerziellen Marketplace
+# <a name="plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots für den kommerziellen Marketplace
 
 In diesem Artikel werden die verschiedenen Optionen und Anforderungen zum Veröffentlichen von SaaS-Angeboten (Software-as-a-Service) für den kommerziellen Marketplace von Microsoft erläutert. Mit SaaS-Angeboten können Sie Softwarelösungen für Ihre Kunden über ein Onlineabonnement bereitstellen und lizenzieren. Als SaaS-Herausgeber verwalten und bezahlen Sie die erforderliche Infrastruktur, die für die Nutzung Ihres Angebots durch den Kunden erforderlich ist. Dieser Artikel hilft Ihnen, Ihr Angebot für die Veröffentlichung auf dem kommerziellen Marketplace mit dem Partner Center vorzubereiten.
 
@@ -72,7 +72,7 @@ Wenn Sie ein transaktionsfähiges Angebot erstellen, müssen Sie die folgenden I
 
     Die konfigurierte Landing Page sollte rund um die Uhr aktiv sein. Dies ist die einzige Möglichkeit, Sie über neue Käufe Ihrer SaaS-Angebote im kommerziellen Marketplace oder über Konfigurationsanforderungen eines aktiven Abonnements für ein Angebot zu benachrichtigen.
 
-- **Verbindungswebhook**: Für alle asynchronen Ereignisse, die Microsoft an Sie senden muss (etwa, wenn das SaaS-Abonnement gekündigt wurde), muss eine Verbindungswebhook-URL angegeben werden. Diese URL wird aufgerufen, um Sie über das Ereignis zu informieren.
+- **Verbindungswebhook**: Für alle asynchronen Ereignisse, die Microsoft an Sie senden muss (z. B. bei Kündigung eines SaaS-Abonnements), müssen Sie eine [Verbindungswebhook-URL angeben](./partner-center-portal/pc-saas-fulfillment-api-v2.md#implementing-a-webhook-on-the-saas-service). Diese URL wird aufgerufen, um Sie über das Ereignis zu informieren.
 
   Der von Ihnen bereitgestellte Webhook sollte rund um die Uhr aktiv sein. Dies ist die einzige Möglichkeit, Sie über Aktualisierungen der SaaS-Abonnements Ihrer Kunden, die über den kommerziellen Marketplace erworben wurden, zu benachrichtigen.
 
@@ -107,17 +107,17 @@ Wenn Sie ein SaaS-Angebot veröffentlichen, wird es in Microsoft AppSource, Azur
 Wenn Ihr SaaS-Angebot eine IT-Lösung (Azure Marketplace) *und* eine Geschäftslösung (AppSource) ist, wählen Sie eine Kategorie und Unterkategorie aus, die für jeden Onlineshop gilt. Bei Angeboten, die in beiden Onlineshops veröffentlicht werden, sollte sich das Nutzenversprechen auf eine IT-Lösung *und* auf eine Geschäftslösung beziehen.
 
 > [!IMPORTANT]
-> SaaS-Angebote mit [getakteter Abrechnung](partner-center-portal/saas-metered-billing.md) sind über den Azure Marketplace und das Azure-Portal verfügbar. SaaS-Angebote, die nur private Pläne umfassen, sind über das Azure-Portal verfügbar.
+> SaaS-Angebote mit [getakteter Abrechnung](partner-center-portal/saas-metered-billing.md) sind über den Azure Marketplace und das Azure-Portal verfügbar. SaaS-Angebote, die nur private Pläne umfassen, sind über das Azure-Portal und AppSource verfügbar.
 
 | Getaktete Abrechnung | Öffentlicher Plan | Privater Tarif | Verfügbar in: |
 |---|---|---|---|
 | Ja             | Ja         | Nein           | Azure Marketplace und Azure-Portal |
 | Ja             | Ja         | Ja          | Azure Marketplace und Azure-Portal* |
 | Ja             | Nein          | Ja          | Nur Azure-Portal |
-| Nein              | Nein          | Ja          | Nur Azure-Portal |
+| Nein              | Nein          | Ja          | Azure-Portal und AppSource |
 |||||
 
-&#42; Der private Plan des Angebots ist nur über das Azure-Portal verfügbar.
+&#42; Der private Plan des Angebots ist nur über das Azure-Portal und AppSource verfügbar.
 
 Beispielsweise wird ein Angebot mit getakteter Abrechnung, das nur einen privaten Plan (keinen öffentlichen Plan) umfasst, von Kunden im Azure-Portal erworben. Erfahren Sie mehr über [Private Angebote im kommerziellen Microsoft-Marketplace](private-offers.md).
 
@@ -132,7 +132,6 @@ Wenn Sie sich für die Verwendung des Standardvertrags entscheiden, können Sie 
 > [!NOTE]
 > Nachdem Sie ein Angebot mit dem Standardvertrag für den kommerziellen Marketplace veröffentlicht haben, können Sie keine eigenen benutzerdefinierten Geschäftsbedingungen mehr verwenden. Es handelt sich um ein „oder“-Szenario. Entweder bieten Sie Ihre Lösung im Rahmen des Standardvertrags oder Ihrer eigenen Geschäftsbedingungen an. Wenn Sie die Bedingungen des Standardvertrags ändern möchten, können Sie dies über Zusatzvereinbarungen für den Standardvertrag erreichen.
 
-
 ## <a name="microsoft-365-integration"></a>Microsoft 365-Integration
 
 Durch die Integration von Microsoft 365 kann auf Ihrem SaaS-Angebot eine verbundene Oberfläche über mehrere Microsoft 365 App-Oberflächen hinweg über verwandte kostenlose Add-Ins wie Teams-Apps, Office-Add-Ins und SharePoint Framework-Lösungen bereitgestellt werden. Mithilfe der folgenden Informationen können Sie Ihren Kunden dabei helfen, alle Facetten ihrer E2E-Lösung (Webdienst und zugehörige Add-Ins) problemlos zu ermitteln und innerhalb eines Prozesses bereitzustellen. 
@@ -140,7 +139,7 @@ Durch die Integration von Microsoft 365 kann auf Ihrem SaaS-Angebot eine verbund
     
      Wenn Sie Ihr Angebot über Microsoft verkaufen möchten, ist dies die gleiche Aad-APP-ID, die Sie für die Verwendung auf Ihrer Angebotsseite registriert haben, um grundlegende Benutzerinformationen zu erhalten, die zum Abschließen der Aktivierung von Kundenabonnements benötigt werden. [Erstellen der Angebotsseite für Ihr transaktionsfähiges SaaS-Angebot im kommerziellen Marketplace](azure-ad-transactable-saas-landing-page.md). 
     
-   -    Stellen Sie eine Liste verwandter Add-Ins bereit, die mit Ihrem SaaS-Angebot zusammenarbeiten, das Sie verknüpfen möchten. Kunden können Ihre E2E-Lösung auf AppSource ermitteln, und Administratoren können sowohl die SaaS-Anwendung als auch alle zugehörigen Add-Ins, die Sie mit dem gleichen Prozess verknüpft haben, über Microsoft 365 Admin Center bereitstellen.
+   -    Stellen Sie eine Liste verwandter Add-Ins bereit, die mit Ihrem SaaS-Angebot zusammenarbeiten, das Sie verknüpfen möchten. Kunden können Ihre E2E-Lösung in Microsoft AppSource ermitteln, und Administratoren können sowohl die SaaS-Anwendung als auch alle zugehörigen Add-Ins, die Sie mit dem gleichen Prozess verknüpft haben, über Microsoft 365 Admin Center bereitstellen.
     
         Um verwandte Add-Ins zu verknüpfen, müssen Sie den AppSource-Link des Add-ins angeben, das heißt, dass das Add-in zuerst in AppSource veröffentlicht werden muss. Unterstützte Add-in-Typen, die Sie verknüpfen können, sind: Teams-Apps, Office-Add-Ins und Lösungen für SharePoint Framework (SPFX). Jedes verknüpfte Add-in muss für ein SaaS-Angebot eindeutig sein. 
 
@@ -214,9 +213,9 @@ Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab 
 
   Diese Logos werden an unterschiedlichen Stellen in den Onlineshops verwendet:
 
-  - Das kleine Logo erscheint in den Suchergebnissen von Azure Marketplace sowie auf der Hauptseite und Suchergebnisseite von Microsoft AppSource.
+  - Das kleine Logo wird in den Suchergebnissen in Azure Marketplace und auf der Haupt- und Suchergebnisseite von AppSource gezeigt.
   - Das mittelgroße Logo wird angezeigt, wenn Sie eine neue Ressource in Microsoft Azure erstellen.
-  - Das große Logo wird auf Ihrer Seite mit der Angebotsliste sowie im Azure Marketplace und in Microsoft AppSource angezeigt.
+  - Das große Logo wird auf Ihrer Angebotsseite in Azure Marketplace und in AppSource angezeigt.
 
 - **Medien – Screenshots**: Fügen Sie gemäß den folgenden Anforderungen mindestens einen und höchstens fünf Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert:
   - 1280 x 720 Pixel

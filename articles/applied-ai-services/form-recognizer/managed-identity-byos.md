@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 07/08/2021
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 43220ce85bf02919a0ccf069bc9646a16c3a0a26
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 448b13d1406587c36b729b3258d8ca375a0914ae
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129155351"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706571"
 ---
 # <a name="create-and-use-managed-identity-for-your-form-recognizer-resource"></a>Erstellen und Verwenden einer verwalteten Identität für Ihre Formularerkennungsressource
 
@@ -55,7 +55,7 @@ Zunächst benötigen Sie Folgendes:
   * Klicken Sie im Hauptfenster auf **Allow access from selected networks** (Zugriff aus bestimmten Netzwerken zulassen).
   :::image type="content" source="media/managed-identities/firewalls-and-virtual-networks.png" alt-text="Screenshot: Aktiviertes Optionsfeld „Ausgewählte Netzwerke“":::
 
-  * Navigieren Sie auf der Seite „Ausgewählte Netzwerke“ zur Kategorie **Ausnahmen**, und stellen Sie sicher, dass das Kontrollkästchen [**Allow Azure services on the trusted services list to access this storage account**](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions) (Azure-Diensten in der Liste der vertrauenswürdigen Dienste den Zugriff auf dieses Speicherkonto erlauben) aktiviert ist.
+  * Navigieren Sie auf der Seite „Ausgewählte Netzwerke“ zur Kategorie **Ausnahmen**, und stellen Sie sicher, dass das Kontrollkästchen [**Azure-Diensten in der Liste der vertrauenswürdigen Dienste den Zugriff auf dieses Speicherkonto erlauben**](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions) aktiviert ist.
 
     :::image type="content" source="media/managed-identities/allow-trusted-services-checkbox-portal-view.png" alt-text="Screenshot: Kontrollkästchen für das Zulassen vertrauenswürdiger Dienste, Portalansicht":::
 * Eine kurze Übersicht über die [**rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)**](../../role-based-access-control/role-assignments-portal.md) über das Azure-Portal.

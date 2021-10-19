@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 08/09/2021
-ms.openlocfilehash: c99d3dde29edbd0e43f883ff9b31e054cea1a720
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/11/2021
+ms.openlocfilehash: 07e48fba8bfb554604d875f9f4a041fed466dbe7
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278878"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754708"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Neuerungen in Azure Sentinel
 
@@ -32,6 +32,43 @@ Elemente, die älter als sechs Monate sind, finden Sie im [Archiv zu den Neuerun
 >
 > Und auch Sie selbst können sich beteiligen! Werden Sie Teil der [GitHub-Community für Azure Sentinel-Bedrohungsspezialisten](https://github.com/Azure/Azure-Sentinel/wiki).
 >
+
+## <a name="october-2021"></a>Oktober 2021
+
+- [Spielbuchvorlagen und Galerie jetzt verfügbar (Öffentliche Vorschau)](#playbook-templates-and-gallery-now-available-public-preview)
+- [Verwaltung von Vorlagenversionen für Ihre geplanten Analyseregeln (Öffentliche Vorschau)](#manage-template-versions-for-your-scheduled-analytics-rules-public-preview)
+- [DHCP-Normalisierungsschema (Öffentliche Vorschau)](#dhcp-normalization-schema-public-preview)
+
+### <a name="playbook-templates-and-gallery-now-available-public-preview"></a>Playbook-Vorlagen und Galerie jetzt verfügbar (Öffentliche Vorschau)
+
+Eine Playbook-Vorlage ist ein vorgefertigter, getesteter und gebrauchsfertiger Workflow, der an Ihre Bedürfnisse angepasst werden kann. Vorlagen können auch als Referenz für Best Practices bei der Entwicklung von Playbooks von Grund auf oder als Inspiration für neue Automatisierungsszenarien dienen.
+
+Playbook-Vorlagen wurden von der Azure Sentinel-Community, unabhängigen Softwareanbietern (ISVs) und Microsoft-Experten entwickelt. Sie finden sie auf der Registerkarte **Playbook-Vorlagen** (unter **Automatisierung**), als Teil einer [**Azure Sentinel-Lösung**](sentinel-solutions.md) oder im [**Azure Sentinel GitHub-Repository**](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks). 
+
+Weitere Informationen zur Bereitstellung einer Playbook-Vorlage finden Sie unter [Erstellen und Anpassen von Playbooks aus integrierten Vorlagen](use-playbook-templates.md) auf der Registerkarte **Playbook-Vorlagen** unter **Automatisierung**.
+
+### <a name="manage-template-versions-for-your-scheduled-analytics-rules-public-preview"></a>Verwalten von Vorlagenversionen für Ihre geplanten Analyseregeln (Öffentliche Vorschau)
+
+Wenn Sie Analyseregeln aus [eingebauten Azure Sentinel-Regelvorlagen](detect-threats-built-in.md) erstellen, erstellen Sie effektiv eine Kopie der Vorlage. Nach diesem Zeitpunkt wird die aktive Regel ***nicht*** dynamisch aktualisiert, um alle Änderungen an der Ursprungsvorlage zu berücksichtigen.
+
+Allerdings merken sich Regeln, die aus Vorlagen ***merken*** sich, aus welchen Vorlagen sie stammen, was Ihnen zwei Vorteile bietet:
+
+- Wenn Sie bei der Erstellung einer Regel aus einer Vorlage (oder zu einem beliebigen späteren Zeitpunkt) Änderungen an der Regel vorgenommen haben, können Sie die Regel jederzeit auf ihre ursprüngliche Version (als Kopie der Vorlage) zurücksetzen.
+
+- Sie können sich benachrichtigen lassen, wenn eine Vorlage aktualisiert wird, und haben dann die Wahl, Ihre Regeln auf die neue Version ihrer Vorlagen zu aktualisieren oder sie so zu belassen, wie sie sind.
+
+[Erfahren Sie, wie Sie diese Aufgaben bewältigen](manage-analytics-rule-templates.md) und was Sie dabei beachten sollten. Diese Verfahren gelten für alle [Geplante](detect-threats-built-in.md#scheduled) Analyseregeln, die aus Vorlagen erstellt wurden.
+
+### <a name="dhcp-normalization-schema-public-preview"></a>DHCP-Normalisierungsschema (Öffentliche Vorschau)
+
+Das Azure Sentinel Information Model (ASIM) unterstützt jetzt ein DHCP-Normalisierungsschema, das zur Beschreibung von Ereignissen dient, die von einem DHCP-Server gemeldet werden, und von Azure Sentinel verwendet wird, um quellenunabhängige Analysen zu ermöglichen. 
+
+Zu den Ereignissen, die im DHCP-Normalisierungsschema beschrieben werden, gehören die Bereitstellung von Anforderungen für DHCP-IP-Adressen, die von Client-Systemen geleast werden, und die Aktualisierung eines DNS-Servers mit den gewährten Leases.
+
+Weitere Informationen finden Sie unter:
+
+- [Azure Sentinel DHCP-Normalisierungsschema-Referenz (öffentliche Vorschau)](dhcp-normalization-schema.md)
+- [Normalisierung und das Azure Sentinel-Informationsmodell (ASIM)](normalization.md)
 
 ## <a name="september-2021"></a>September 2021
 

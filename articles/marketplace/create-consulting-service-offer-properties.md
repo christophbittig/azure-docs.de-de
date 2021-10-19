@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: b40144079304b6981ff8faf251a345dbb163ecac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a77414e794073771f7bf5fe9346e4196b6b4b836
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96459307"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715778"
 ---
 # <a name="how-to-configure-your-consulting-service-offer-properties"></a>Konfigurieren der Eigenschaften eines Beratungsdienstangebots
 
@@ -23,27 +23,28 @@ Auf der Registerkarte **Eigenschaften** Ihres Angebots in Partner Center definie
 
 ## <a name="select-the-primary-product"></a>Auswählen des primären Produkts
 
-Wählen Sie in der Dropdownliste **Primäres Produkt** das Microsoft-Produkt aus, auf dem der Fokus Ihres Beratungsdienstangebots liegen soll. Das ausgewählte Produkt bestimmt, ob Ihr Angebot in Microsoft AppSource oder im Azure Marketplace veröffentlicht werden soll.
+Wählen Sie in der Dropdownliste **Primäres Produkt** das Microsoft-Produkt aus, auf dem der Fokus Ihres Beratungsdienstangebots liegen soll. Das ausgewählte Produkt bestimmt, ob Ihr Angebot in Microsoft AppSource oder im Azure Marketplace veröffentlicht werden soll. Durch eine genaue Darstellung Ihres Angebots können Kunden es leichter finden. Beachten Sie, dass Sie die [Qualifizierungsanforderungen](https://aka.ms/AAacrbv) für die ausgewählten Produkte erfüllen müssen. 
 
-* Wenn Sie Azure auswählen, wird das Angebot im Azure Marketplace aufgeführt. Wählen Sie bis zu drei **Lösungsbereiche** aus. Dadurch können Kunden Ihre Angebote leichter finden.
-* Wenn es sich bei dem primären Produkt *nicht* um Azure handelt, wird das Angebot in AppSource veröffentlicht. Wählen Sie unter **Anwendbare Produkte** mindestens ein und maximal drei Produkte aus. Dadurch können Kunden Ihre Angebote leichter finden.
+- Wenn Sie Azure auswählen, wird das Angebot im Azure Marketplace aufgeführt. Wählen Sie bis zu drei **Lösungsbereiche** aus, die Ihr Angebot am besten darstellen.
+- Wenn Sie Microsoft 365 auswählen, wählen Sie außerdem bis zu drei **Lösungsbereiche** aus, die Ihr Angebot am besten darstellen. Das Angebot wird in Microsoft AppSource aufgeführt.
+-   Wenn Sie ein Dynamics 365- oder Power Platform-Produkt auswählen, können Sie außerdem zwei zusätzliche **anwendbare Produkte** auswählen. Das Angebot wird in Microsoft AppSource aufgeführt.
 
 ## <a name="select-the-consulting-service-type"></a>Auswählen des Beratungsdiensttyps
 
 Wählen Sie in der Dropdownliste **Typ des Beratungsdiensts** den Typ des Beratungsdiensts aus, den Sie Kunden anbieten. Diese Typen sind verfügbar:
 
-* **Bewertung:** Hierbei handelt es sich um eine Auswertung der Umgebung eines Kunden, bei der die Eignung einer Lösung bestimmt und die Kosten sowie der Zeitrahmen für die Implementierung geschätzt wird.
-* **Einweisung**: Hierbei handelt es sich um eine Einführung in eine Lösung oder einen Dienst mithilfe von Frameworks, Demos und Beispielen von Kunden.
-* **Implementierung**: Eine umfassende Installation, durch die eine vollständig funktionierenden Lösung erstellt wird.
-* **Proof of Concept**: Dies bezieht sich auf eine Implementierung in einem begrenzten Umfang, um zu ermitteln, ob eine Lösung die Anforderungen des Kunden erfüllt.
-* **Workshop**: Dieses interaktive Angebot wird beim Kunden vor Ort durchgeführt. Dabei kann es sich um Schulungen, Einweisungen, Bewertungen oder Demos handeln, die auf den Daten oder der Umgebung des Kunden aufbauen.
+- **Bewertung:** Hierbei handelt es sich um eine Auswertung der Umgebung eines Kunden, bei der die Eignung einer Lösung bestimmt und die Kosten sowie der Zeitrahmen für die Implementierung geschätzt wird.
+- **Einweisung**: Hierbei handelt es sich um eine Einführung in eine Lösung oder einen Dienst mithilfe von Frameworks, Demos und Beispielen von Kunden.
+- **Implementierung**: Eine umfassende Installation, durch die eine vollständig funktionierenden Lösung erstellt wird.
+- **Proof of Concept**: Dies bezieht sich auf eine Implementierung in einem begrenzten Umfang, um zu ermitteln, ob eine Lösung die Anforderungen des Kunden erfüllt.
+- **Workshop**: Dieses interaktive Angebot wird beim Kunden vor Ort durchgeführt. Dabei kann es sich um Schulungen, Einweisungen, Bewertungen oder Demos handeln, die auf den Daten oder der Umgebung des Kunden aufbauen.
 
 ## <a name="select-relevant-industries"></a>Auswählen relevanter Branchen
 
 Die Informationen in diesem Abschnitt helfen dabei, Ihr Angebot zu kategorisieren, damit Kunden es problemlos in den Microsoft-Onlineshops finden können.
 
-* Wenn Sie Azure als primäres Produkt ausgewählt haben, wählen Sie bis zu sechs **Branchen** aus. Eine vollständige Liste der Branchen finden Sie unter [Bewährte Methoden für Angebotslistung](./gtm-offer-listing-best-practices.md).
-* Wenn Sie kein Azure-Produkt als primäres Produkt ausgewählt haben, können Sie bis zu zwei **Branchen** und zwei **Sub-industries** (Unterbranchen) für jede Branche auswählen. Eine vollständige Liste der Branchen und Unterbranchen finden Sie unter [Bewährte Methoden für Angebotslistung](./gtm-offer-listing-best-practices.md).
+- Wenn Sie Azure als primäres Produkt ausgewählt haben, wählen Sie bis zu sechs **Branchen** aus. Eine vollständige Liste der Branchen finden Sie unter [Bewährte Methoden für Angebotslistung](./gtm-offer-listing-best-practices.md).
+- Wenn Sie kein Azure-Produkt als primäres Produkt ausgewählt haben, können Sie bis zu zwei **Branchen** und zwei **Sub-industries** (Unterbranchen) für jede Branche auswählen. Eine vollständige Liste der Branchen und Unterbranchen finden Sie unter [Bewährte Methoden für Angebotslistung](./gtm-offer-listing-best-practices.md).
 
 ## <a name="select-your-competencies"></a>Auswählen der Kompetenzen
 

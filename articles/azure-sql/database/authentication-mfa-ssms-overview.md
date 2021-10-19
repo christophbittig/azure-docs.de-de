@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 9afad44bcf67478a81e75c17d0ff8ffc6d8c65aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad29b24c6c79447a23e0b910583322107fa5af32
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841128"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618589"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Verwenden der mehrstufigen Azure Active Directory-Authentifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -68,12 +68,11 @@ Wenn Sie SSMS 18.x oder höher ausführen, wird der AD-Domänenname oder die Ma
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD-Business-to-Business-Unterstützung
 
-> [!IMPORTANT]
-> Die Unterstützung für Gastbenutzer für das Herstellen einer Verbindung mit Azure SQL-Datenbank, SQL Managed Instance und Azure Synapse, ohne dass diese Mitglied einer Gruppe sein müssen, befindet sich derzeit in der **Public Preview**. Weitere Informationen finden Sie unter [Erstellen von Azure AD-Gastbenutzern und Festlegen als Azure AD-Administrator](authentication-aad-guest-users.md).
+Azure AD-Benutzer, die für Azure AD B2B-Szenarien als Gastbenutzer unterstützt werden (siehe [Was ist Azure B2B Collaboration?](../../active-directory/external-identities/what-is-b2b.md)), können als Einzelpersonen oder als Mitglieder einer Azure AD-Gruppe, die in der zugehörigen Azure AD-Instanz erstellt und über [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) in einer bestimmten Datenbank manuell zugeordnet wurde, eine Verbindung mit SQL-Datenbank und Azure Synapse herstellen. 
 
-Azure AD-Benutzer, die für Azure AD B2B-Szenarien als Gastbenutzer unterstützt werden (siehe [Was ist Azure B2B Collaboration?](../../active-directory/external-identities/what-is-b2b.md)), können nur als Mitglieder einer Gruppe im zugehörigen Azure AD eine Verbindung mit SQL-Datenbank und Azure Synapse herstellen und müssen dann mit der Transact-SQL-Anweisung [CREATE USER](/sql/t-sql/statements/create-user-transact-sql) in einer bestimmten Datenbank manuell zugeordnet werden. Wenn beispielsweise `steve@gmail.com` zu Azure AD `contosotest` (mit der Azure AD-Domäne `contosotest.onmicrosoft.com`) eingeladen wird, muss eine Azure AD-Gruppe, z. B. `usergroup` in dem Azure AD erstellt werden, das `steve@gmail.com` als Mitglied enthält. Diese Gruppe muss dann von einem Azure AD-SQL-Administrator oder Azure AD-DBO durch Ausführen der Transact-SQL-Anweisung `MyDatabase` für eine bestimmte Datenbank (z. B. `CREATE USER [usergroup] FROM EXTERNAL PROVIDER`) erstellt werden. 
+Beispiel: Wenn `steve@gmail.com` zur Azure AD-Instanz `contosotest` (mit der Azure AD-Domäne `contosotest.onmicrosoft.com`) eingeladen wird, muss ein Benutzer `steve@gmail.com` für eine bestimmte Datenbank (z. B. **MyDatabase**) von einem Azure AD-SQL-Administrator oder einem Azure AD-DBO erstellt werden, indem die Transact-SQL-Anweisung `create user [steve@gmail.com] FROM EXTERNAL PROVIDER` ausgeführt wird. Wenn `steve@gmail.com` einer Azure AD-Gruppe wie beispielsweise `usergroup` angehört, muss diese Gruppe für eine bestimmte Datenbank (z. B. **MyDatabase**) von einem Azure AD-SQL-Administrator oder einem Azure AD-DBO erstellt werden, indem die Transact-SQL-Anweisung `create user [usergroup] FROM EXTERNAL PROVIDER` ausgeführt wird. 
 
-Nach dem Erstellen des Datenbankbenutzers kann der Benutzer `steve@gmail.com` sich mithilfe der SSMS-Authentifizierungsoption `Azure Active Directory – Universal with MFA` bei `MyDatabase` anmelden. Standardmäßig verfügt die `usergroup` nur über die Berechtigung für Verbindungen. Jeder weitere Datenzugriff muss von einem Benutzer mit ausreichenden Berechtigungen in der Datenbank [gewährt](/sql/t-sql/statements/grant-transact-sql) werden. 
+Nach dem Erstellen des Datenbankbenutzers oder der Benutzergruppe kann der Benutzer `steve@gmail.com` sich mithilfe der SSMS-Authentifizierungsoption `Azure Active Directory – Universal with MFA` bei `MyDatabase` anmelden. Standardmäßig verfügt der Benutzer oder die Benutzergruppe nur über die Berechtigung „Verbinden“. Jeder weitere Datenzugriff muss von einem Benutzer mit ausreichenden Berechtigungen in der Datenbank [gewährt](/sql/t-sql/statements/grant-transact-sql) werden. 
 
 > [!NOTE]
 > Wenn Sie für SSMS 17.x `steve@gmail.com` als Gastbenutzer verwenden möchten, müssen Sie das Feld **AD-Domänennamen oder Mandanten-ID** aktivieren und den AD-Domänennamen `contosotest.onmicrosoft.com` im Dialogfeld **Verbindungseigenschaft** hinzufügen. Die Option **AD-Domänenname oder Mandanten-ID** wird nur für die Authentifizierung **Azure Active Directory: universell mit MFA** unterstützt. Andernfalls ist das Kontrollkästchen abgeblendet.

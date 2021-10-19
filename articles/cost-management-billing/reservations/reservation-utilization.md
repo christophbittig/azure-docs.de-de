@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 04/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 28b61781f0b22e79d10d79c1a46e757737a401cf
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 15726451525d3ffcaf2d059b9e6c9dee86058591
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568750"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710204"
 ---
 # <a name="view-reservation-utilization-after-purchase"></a>Anzeigen der Reservierungsnutzung nach dem Kauf
 
@@ -45,8 +45,8 @@ Sie können die [Reservierungsnutzung](/rest/api/billing/enterprise/billing-ente
 
 Es gibt zwei Optionen für Power BI-Benutzer:
 
-- Azure Cost Management-Connector für Power BI Desktop: Datum des Reservierungskaufs und Nutzungsdaten sind über den [Azure Cost Management-Connector für Power BI Desktop](/power-bi/desktop-connect-azure-cost-management) verfügbar. Erstellen Sie mithilfe des Connectors die gewünschten Berichte.
-- Azure Cost Management-Power BI-App: Verwenden Sie die [Azure Cost Management-Power BI-App](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp) für vorab erstellte Berichte, die Sie weiter anpassen können.
+- Cost Management-Connector für Power BI Desktop: Datum des Reservierungskaufs und Nutzungsdaten sind über den [Cost Management-Connector für Power BI Desktop](/power-bi/desktop-connect-azure-cost-management) verfügbar. Erstellen Sie mithilfe des Connectors die gewünschten Berichte.
+- Cost Management-Power BI-App: Verwenden Sie die [Cost Management-Power BI-App](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp) für vorgefertigte Berichte, die Sie weiter anpassen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 71a3ce7a33f920c361dfe1e7d0004b52e8211336
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 62156836a37cff8e209fe8f97847b8a8c7889272
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559610"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710937"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Partnervereinbarung
 
@@ -84,4 +84,4 @@ Lesen Sie die folgenden Artikel, um Informationen zu einem Abrechnungskonto zu e
 
 - [Erstellen eines zusätzlichen Azure-Abonnements im Azure-Portal](../manage/create-subscription.md)
 - Integrieren von Abrechnungsdaten in Ihr eigenes Berichterstellungssystem mithilfe der [Azure-Abrechnungs-APIs](/rest/api/billing/)
-- [Erste Schritte mit Azure Cost Management für Partner](../costs/get-started-partners.md)
+- [Schnellstartleitfaden zu Azure Cost Management für Partner](../costs/get-started-partners.md)

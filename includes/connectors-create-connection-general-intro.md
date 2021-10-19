@@ -3,15 +3,15 @@ ms.service: logic-apps
 ms.topic: include
 author: ecfan
 ms.author: estfan
-ms.date: 03/08/2021
-ms.openlocfilehash: 252117d21da199ef702dd090686ac17789d8ebcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/11/2021
+ms.openlocfilehash: 4a815de0cbb93871515493cd4f5c74eda5e51e62
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102510650"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740848"
 ---
-Wenn Sie einen Trigger oder eine Aktion hinzufügen, der/die zum ersten Mal eine Verbindung mit einem Dienst oder System herstellt, werden Sie vom Logik-App-Designer aufgefordert, eine *Verbindung* herzustellen, indem Sie die erforderlichen Informationen bereitstellen, die je nach Verbindung variieren, z. B.:
+Wenn Sie einen Trigger oder eine Aktion hinzufügen, der/die zum ersten Mal eine Verbindung mit einem Dienst oder System herstellt, werden Sie vom Workflow-Designer aufgefordert, eine *Verbindung* herzustellen, indem Sie die erforderlichen Informationen bereitstellen, die je nach Verbindung variieren, z. B.:
 
 * Den Namen, den Sie für das neue Speicherkonto verwenden möchten
 

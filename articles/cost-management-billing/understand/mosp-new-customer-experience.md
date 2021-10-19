@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 05/20/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: b4a4bd73672b36e8301d33618701a5d6b43926a5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8e58a31d37e4b6aece877e8a2d920e7abc91d8f8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474871"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710952"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Erste Schritte mit Ihrem aktualisierten Azure-Abrechnungskonto
 
@@ -140,7 +140,7 @@ Die folgenden neuen Funktionen sind unter Ihrem Azure-Abrechnungskonto verfügba
 
 In Ihrem aktualisierten Konto verfügen Sie unter „Kostenverwaltung + Abrechnung“ über neue Bereiche. Diese sind nicht nur beim Aufbau einer hierarchischen Organisation und der Fakturierung hilfreich, sondern ermöglichen auch die Anzeige von kombinierten Gebühren für mehrere zugrunde liegende Abonnements. Weitere Informationen zu Abrechnungsbereichen finden Sie unter [Bereiche für Microsoft-Kundenvereinbarung](../costs/understand-work-scopes.md#microsoft-customer-agreement-scopes).
 
-Sie können auch auf Cost Management-APIs zugreifen, um kombinierte Kostenübersichten für höhere Bereiche zu erhalten. Alle Cost Management-APIs, für die der Abonnementbereich genutzt wird, sind weiterhin verfügbar und weisen nur geringfügige Änderungen in Bezug auf das Schema auf. Weitere Informationen zu den APIs finden Sie in den Artikeln zu [Azure Cost Management-APIs](/rest/api/cost-management/) und [Azure-Nutzungs-APIs](/rest/api/consumption/).
+Sie können auch auf Cost Management-APIs zugreifen, um kombinierte Kostenübersichten für höhere Bereiche zu erhalten. Alle Cost Management-APIs, für die der Abonnementbereich genutzt wird, sind weiterhin verfügbar und weisen nur geringfügige Änderungen in Bezug auf das Schema auf. Weitere Informationen zu den APIs finden Sie in den Artikeln zu [Cost Management-APIs](/rest/api/cost-management/) und [Azure-Nutzungs-APIs](/rest/api/consumption/).
 
 #### <a name="cost-allocation"></a>Kostenzuteilung
 
@@ -148,7 +148,7 @@ Mit Ihrem aktualisierten Konto können Sie Funktionen für die Kostenzuteilung v
 
 #### <a name="power-bi"></a>Power BI
 
-Mit dem Azure Cost Management-Connector für Power BI Desktop können Sie benutzerdefinierte Visualisierungen und Berichte zur Nutzung und den Ausgaben in Azure erstellen. Sie greifen auf Ihre Kosten- und Nutzungsdaten zu, nachdem Sie eine Verbindung mit dem aktualisierten Konto hergestellt haben. Weitere Informationen zum Azure Cost Management-Connector für Power BI Desktop finden Sie unter [Erstellen von visuellen Elementen und Berichten mit dem Azure Cost Management-Connector in Power BI Desktop](/power-bi/connect-data/desktop-connect-azure-cost-management).
+Mit dem Cost Management-Connector für Power BI Desktop können Sie benutzerdefinierte Visualisierungen und Berichte zu Nutzung und Ausgaben in Azure erstellen. Sie greifen auf Ihre Kosten- und Nutzungsdaten zu, nachdem Sie eine Verbindung mit dem aktualisierten Konto hergestellt haben. Weitere Informationen zum Cost Management-Connector für Power BI Desktop finden Sie unter [Erstellen visueller Elemente und Berichte mit dem Cost Management-Connector in Power BI Desktop](/power-bi/connect-data/desktop-connect-azure-cost-management).
 
 ### <a name="updated-capabilities"></a>Aktualisierte Funktionen
 

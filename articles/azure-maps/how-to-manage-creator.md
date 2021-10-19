@@ -1,18 +1,18 @@
 ---
 title: Verwalten von Microsoft Azure Maps Creator
 description: In diesem Artikel erfahren Sie, wie Sie Microsoft Azure Maps Creator verwalten.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 05/18/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/08/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: af01febed5398ecb6750305e6d03352f9bcea727
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 09a70e55d796e0eb16d0806fb9a0726ff67ea812
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349703"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729765"
 ---
 # <a name="manage-azure-maps-creator"></a>Verwalten von Azure Maps Creator
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Creator-Ressou
 
     :::image type="content" border="true" source="./media/how-to-manage-creator/creator-blade-settings.png" alt-text="Azure Maps Creator-Erstellungsseite":::
 
-4. Geben Sie den Namen, den Ort und die Kartenbereitstellungs-Speichereinheiten für Ihre Creator-Ressource ein. Aktuell wird Creator nur in den USA unterstützt. Klicken Sie auf **Überprüfen + erstellen**.
+4. Geben Sie den Namen, den Ort und die Kartenbereitstellungs-Speichereinheiten für Ihre Creator-Ressource ein, und wählen Sie dann **Überprüfen + erstellen** aus.
 
    :::image type="content" source="./media/how-to-manage-creator/creator-creation-dialog.png" alt-text="Seite zum Eingeben der Creator-Kontoinformationen":::
 

@@ -4,15 +4,15 @@ description: Mit der API für Nutzungsereignisse können Sie Nutzungsereignisse 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 10/12/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 85bc266dcd1434a7d28eb642376bea32c94c3610
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 056fd364902ccd530b1aa2d540cd7d0457e0276b
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457124"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855857"
 ---
 # <a name="marketplace-metered-billing-apis"></a>APIs für getaktete Abrechnung im Marketplace
 
@@ -164,8 +164,12 @@ Mit der API für Batchnutzungsereignisse können Sie Nutzungsereignisse gleichze
 | `authorization`      | Ein eindeutiges Zugriffstoken, das den ISV identifiziert, der diesen API-Aufruf sendet. Das Format ist `Bearer <access_token>`, wenn der Tokenwert vom Herausgeber abgerufen wird, wie es an folgender Stelle beschrieben ist: <br> <ul> <li> Für SaaS unter [Abrufen des Tokens mit HTTP POST](partner-center-portal/pc-saas-registration.md#get-the-token-with-an-http-post) </li> <li> Für verwaltete Anwendung unter [Authentifizierungsstrategien](./marketplace-metering-service-authentication.md) </li> </ul> |
 | | |
 
+>[!NOTE]
+>Im Anforderungstext besitzt der Ressourcenbezeichner unterschiedliche Bedeutungen für SaaS-Apps und für verwaltete Azure-Apps, die eine benutzerdefinierte Verbrauchseinheit ausgeben. Der Ressourcenbezeichner für die SaaS-App lautet `resourceID`. Der Ressourcenbezeichner für Pläne verwalteter Azure-Anwendungs-Apps lautet `resourceUri`.
 
-*Beispiel für Anforderungstext:*
+Bei SaaS-Angeboten ist `resourceId` die SaaS-Abonnement-ID. Weitere Informationen zu SaaS-Abonnements finden Sie unter [Auflisten von Abonnements](partner-center-portal/pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
+
+*Beispiel für Anforderungstext für SaaS-Apps:*
 
 ```json
 {
@@ -188,12 +192,30 @@ Mit der API für Batchnutzungsereignisse können Sie Nutzungsereignisse gleichze
 }
 ```
 
->[!NOTE]
->`resourceId` hat für SaaS-Apps und für verwaltete Apps, die benutzerdefinierte Verbrauchseinheiten ausgeben, eine andere Bedeutung. 
+Bei von Azure-Anwendungen verwalteten App-Plänen ist `resourceUri` die `resource group Id` der verwalteten App. Ein Beispielskript zum Abrufen der ID finden Sie unter [Verwenden des Tokens für von Azure verwaltete Identitäten](marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
 
-Bei von Azure-Anwendungen verwalteten App-Plänen ist `resourceId` die `resource group Id` der verwalteten App. Ein Beispielskript zum Abrufen der ID finden Sie unter [Verwenden des Tokens für von Azure verwaltete Identitäten](marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
+*Beispiel für Anforderungstext für verwaltete Azure-Anwendungs-Apps:*
 
-Bei SaaS-Angeboten ist `resourceId` die SaaS-Abonnement-ID. Weitere Informationen zu SaaS-Abonnements finden Sie unter [Auflisten von Abonnements](partner-center-portal/pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
+```json
+{
+  "request": [ // list of usage events for the same or different resources of the publisher
+    { // first event
+      "resourceUri": "<guid1>", // Unique identifier of the resource against which usage is emitted. 
+      "quantity": 5.0, // how many units were consumed for the date and hour specified in effectiveStartTime, must be greater than 0, can be integer or float value
+      "dimension": "dim1", //Custom dimension identifier
+      "effectiveStartTime": "2018-12-01T08:30:14",//Time in UTC when the usage event occurred, from now and until 24 hours back
+      "planId": "plan1", // id of the plan purchased for the offer
+    },
+    { // next event
+      "resourceId": "<guid2>", 
+      "quantity": 39.0, 
+      "dimension": "email", 
+      "effectiveStartTime": "2018-11-01T23:33:10
+      "planId": "gold", // id of the plan purchased for the offer
+    }
+  ]
+}
+```
 
 ### <a name="responses"></a>Antworten
 

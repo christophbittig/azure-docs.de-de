@@ -7,18 +7,18 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/16/2021
-ms.openlocfilehash: 2c8cbc3496b0a7b12f8df114ed2aa993ee5cb1a7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 054abdaeb184a37a995f14ab6196c378abbb470b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610862"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707676"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
 Dieser Artikel enthält eine Liste mit Tipps und Tricks als Unterstützung bei Ihren ersten Schritten mit den Funktionen der KI-Anreicherung in der kognitiven Azure-Suche. 
 
-Sofern noch nicht geschehen, machen Sie sich zunächst unter [Schnellstart: Aufrufen von APIs für die KI-Anreicherung](cognitive-search-quickstart-blob.md) damit vertraut, wie Sie KI-Anreicherungen in einer Blobdatenquelle anwenden.
+Falls Sie dies noch nicht getan haben, gehen Sie die Schnellstartanleitung zum [Erstellen einer Textübersetzung und eines Entitätsskillsets](cognitive-search-quickstart-blob.md) oder zum [Erstellen eines OCR-Abbildungsskillsets](cognitive-search-quickstart-ocr.md) durch, um eine Einführung in die Anreicherung von Blobdaten zu erhalten.
 
 ## <a name="tip-1-start-with-a-small-dataset"></a>Tipp 1: Beginnen Sie mit einem kleinen Dataset.
 Am besten lassen sich Probleme schnell finden, wenn Sie diese möglichst schnell beheben können. Die einfachste Möglichkeit, die Indizierungszeit zu verkürzen, besteht darin, die Anzahl der zu indizierenden Dokumente zu verringern. 

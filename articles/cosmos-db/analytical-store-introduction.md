@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: b2501631c8ccdb6c61d4f31e9179a7e94c2276cb
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 09b5d7c1865020ba33a89e73b2ba39260f473e6a
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210400"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859340"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Was ist der Azure Cosmos DB-Analysespeicher?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -180,19 +180,21 @@ df = spark.read\
 
 ### <a name="schema-representation"></a>Schemadarstellung
 
-Im Analysespeicher gibt es zwei Modi der Schemadarstellung. Diese Modi definieren die Methode der Schemadarstellung für alle Container im Datenbankkonto und weisen Kompromisse zwischen der Einfachheit der Abfrageerfahrung und der Einfachheit einer inklusiveren spaltenweisen Darstellung für polymorphe Schemas auf.
+Im Analysespeicher gibt es zwei Arten der Schemadarstellung. Diese definieren die Methode der Schemadarstellung für alle Container im Datenbankkonto und weisen Kompromisse zwischen der Einfachheit der Abfrage und der Einfachheit einer umfassenderen spaltenweisen Darstellung für polymorphe Schemas auf.
 
 * Die klar definierte Schemadarstellung für die Standardoption für SQL (CORE)-API-Konten. 
 * Die Darstellung des Schemas mit vollständiger Genauigkeit ist die Standardoptionen für die API von Azure Cosmos DB für MongoDB-Konten.
 
-Es ist möglich, das Schema mit vollständiger Genauigkeit für SQL (Core)-API-Konten zu verwenden. Hier sind die Überlegungen zu dieser Möglichkeit:
+#### <a name="full-fidelity-schema-for-sql-api-accounts"></a>Schema mit vollständiger Genauigkeit für SQL-API-Konten
 
- * Diese Option ist nur für Konten gültig, für die Synapse Link nicht aktiviert ist.
- * Es ist nicht möglich, Synapse Link zu deaktivieren und erneut zu aktivieren, die Standardoption zurückzusetzen und von klar definierter zu vollständiger Genauigkeit zu wechseln.
- * Es ist nicht möglich, mithilfe eines anderen Prozesses von klar definierter zu vollständiger Genauigkeit zu wechseln.
- * Die MongoDB-Konten sind mit der Möglichkeit, die Darstellungsmethode zu ändern, nicht kompatibel.
- * Diese Entscheidung kann derzeit nicht über das Azure-Portal getroffen werden.
- * Die Entscheidung über diese Option sollte gleichzeitig getroffen werden, wenn Synapse Link für das Konto aktiviert wird:
+Es ist möglich, anstelle der Standardoption das Schema mit vollständiger Genauigkeit für SQL (Core)-API-Konten zu verwenden. Dazu legen Sie den Schematyp beim erstmaligen Aktivieren von Synapse Link für ein Cosmos DB-Konto fest. Nachfolgend sind die Überlegungen zum Ändern des Standardtyps für die Schemadarstellung aufgeführt:
+
+ * Diese Option ist nur für Konten gültig, für die Synapse Link **nicht** bereits aktiviert ist.
+ * Es ist nicht möglich, die Schemadarstellung von klar definiert auf vollständige Genauigkeit zurückzusetzen oder umgekehrt.
+ * Derzeit sind Azure Cosmos DB-API für MongoDB-Konten mit dieser Möglichkeit zur Änderung der Schemadarstellung nicht kompatibel. Alle MongoDB-Konten weisen immer eine Schemadarstellung mit vollständiger Genauigkeit auf.
+ * Derzeit kann diese Änderung nicht über das Azure-Portal vorgenommen werden. Alle Datenbankkonten, für die Synapse Link über das Azure-Portal aktiviert wurde, weisen den Standardtyp für die Schemadarstellung auf, das klar definierte Schema.
+ 
+Die Entscheidung über die Art der Schemadarstellung muss zeitgleich mit der Aktivierung von Synapse Link für das Konto mithilfe der Azure CLI oder mit PowerShell getroffen werden.
  
  Mit der Azure CLI:
  ```cli

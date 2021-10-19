@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: c5232d9ed3e7ab7caec6134e4c5d3e553e2b543c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0c5321625f9963a15527d8fb0edef73f0701bd6e
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818404"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856383"
 ---
 # <a name="dcsv2-series"></a>DCsv2-Serie
 
@@ -22,7 +22,9 @@ Die virtuellen Computer der DCsv2-Serie können Ihnen beim Schutz der Vertraulic
 
 Diese Computer werden von 3,7 GHz Intel® Xeon E-2288G (Coffee Lake) mit SGX-Technologie unterstützt. Mit der Intel® Turbo Boost Max Technology 3.0 können diese Computer bis zu 5,0 GHz erreichen. 
 
-Beispiele für Anwendungsfälle sind Freigabe von vertraulichen Mehrparteiendaten, Betrugserkennung, vertrauliche Datenbanken, Geldwäschebekämpfung, Blockchain, vertrauliche Nutzungsanalyse, Business Intelligence-Analyse und vertrauliches maschinelles Lernen.
+[!NOTE] Hyperthreading ist deaktiviert, um den Sicherheitsstatus zu verbessern. Die Preise basieren auf der im Vergleich zu virtuellen Kernen überlegenen Leistung physischer Kerne sowie auf den einzigartigen Sicherheitsfunktionen der DC-Serie.
+
+Beispiele für vertrauliche Anwendungsfälle sind Datenbanken, Blockchain, Analyse von Mehrparteiendaten, Betrugserkennung, Geldwäschebekämpfung, Nutzungsanalyse, Business Intelligence-Analyse und maschinelles Lernen.
 
 ## <a name="configuration"></a>Konfiguration
 
@@ -38,7 +40,7 @@ Beispiele für Anwendungsfälle sind Freigabe von vertraulichen Mehrparteiendate
 
 ## <a name="technical-specifications"></a>Technische Spezifikationen
 
-| Size             | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) | EPC-Speicher (MiB) |
+| Size             | Physische Kerne | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) | EPC-Speicher (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|
 | Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2\.000/16                                                                                               | 2   | 28                                      |
 | Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4\.000/32                                                                                               | 2  | 56                                          |
@@ -51,7 +53,6 @@ Beispiele für Anwendungsfälle sind Freigabe von vertraulichen Mehrparteiendate
 - Erstellen Sie DCsv2-VMs mithilfe von [Azure-Portal](./linux/quick-create-portal.md) oder [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview).
 - Virtuelle Computer der DCsv2-Serie sind [VMs der Generation 2](./generation-2.md#creating-a-generation-2-vm) und unterstützen nur `Gen2`-Images.
 - Derzeit verfügbar in den Regionen, die unter [Azure-Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all) aufgeführt sind.
-- Nächste Generation von VMs der DC-Serie: [Nehmen Sie am Vorschauprogramm teil](https://aka.ms/intelgen3)
 
 ## <a name="more-sizes-and-information"></a>Weitere Größen und Informationen
 

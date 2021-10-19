@@ -6,15 +6,15 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: afdbcd6dd0e00f6829a82c136ba495a7097f5bb2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: de7787ab9b36bee5bce2f29f79260682289419c7
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662018"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705793"
 ---
 # <a name="analyze-unexpected-charges"></a>Analysieren unerwarteter Gebühren
 
@@ -35,7 +35,7 @@ In Ihrer Azure-Rechnung werden Gebühren für den Monat auf der Grundlage von _V
 
 Filtern Sie die CSV-Nutzungsdatei basierend auf dem Namen der in der Rechnung enthaltenen Verbrauchseinheit (_MeterName_), die Sie analysieren möchten, um alle Positionen anzuzeigen, die die Verbrauchseinheit betreffen. Die Instanz-ID (_InstanceID_) für die Position entspricht der eigentlichen Azure-Ressource, auf die die Gebühr zurückzuführen ist.
 
-Wenn Sie die betreffende Ressource ermittelt haben, können Sie die ressourcenbezogenen Kosten mithilfe der Kostenanalyse in Azure Cost Management weiter analysieren. Weitere Informationen zur Verwendung der Kostenanalyse finden Sie unter [Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse](../costs/quick-acm-cost-analysis.md).
+Wenn Sie die betreffende Ressource ermittelt haben, können Sie die ressourcenbezogenen Kosten mithilfe der Kostenanalyse in Cost Management weiter analysieren. Weitere Informationen zur Verwendung der Kostenanalyse finden Sie unter [Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse](../costs/quick-acm-cost-analysis.md).
 
 ## <a name="review-invoiced-charges-in-cost-analysis"></a>Überprüfen der berechneten Gebühren in der Kostenanalyse
 
@@ -88,4 +88,4 @@ Sollten Sie eine Gebühr trotz der obigen Strategien nicht nachvollziehen könne
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum [Optimieren der Cloudinvestitionen mit Azure Cost Management](../costs/cost-mgt-best-practices.md)
+- Erfahren Sie mehr über das [Optimieren der Cloudinvestitionen mit Cost Management](../costs/cost-mgt-best-practices.md).

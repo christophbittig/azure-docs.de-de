@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 2f2d88a48b7dca0b2ab3ad512e6b723ab68931c8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c3ed338341ffb73f59a5b20fea55e8d83f4a375f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128650247"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711286"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Verwalten von Kosten mit Azure-Budgets
 
-Kostenkontrolle ist eine wichtige Komponente zur Maximierung des Nutzens Ihrer Investition in der Cloud. Es gibt mehrere Szenarien, in denen Kostensichtbarkeit, Berichterstellung und kostenbasierte Orchestrierung für fortgesetzte Geschäftsvorgänge entscheidend sind. Zur Unterstützung dieser einzelnen Szenarien stehen die [Azure Cost Management-APIs](/rest/api/consumption/) zur Verfügung. Die-APIs bieten Nutzungsdetails, mit deren Hilfe Sie die Kosten präzise auf Instanzebene anzeigen können.
+Kostenkontrolle ist eine wichtige Komponente zur Maximierung des Nutzens Ihrer Investition in der Cloud. Es gibt mehrere Szenarien, in denen Kostensichtbarkeit, Berichterstellung und kostenbasierte Orchestrierung für fortgesetzte Geschäftsvorgänge entscheidend sind. Zur Unterstützung dieser einzelnen Szenarien stehen die [Cost Management-APIs](/rest/api/consumption/) zur Verfügung. Die-APIs bieten Nutzungsdetails, mit deren Hilfe Sie die Kosten präzise auf Instanzebene anzeigen können.
 
 Budgets werden häufig als Teil der Kostenkontrolle verwendet. Budgets können in Azure festgelegt werden. Beispielsweise können Sie Ihre Budgetansicht auf Grundlage von Abonnement, Ressourcengruppen oder einer Sammlung von Ressourcen konzentrieren. Sie können jedoch nicht nur die Budget-API verwenden, um sich per E-Mail benachrichtigen zu lassen, wenn ein Budgetschwellenwert erreicht wird, sondern auch die [Azure Monitor-Aktionsgruppen](../../azure-monitor/alerts/action-groups.md) nutzen, um einen orchestrierten Satz von Aktionen auszulösen, der aus einem Budgetereignis resultiert.
 

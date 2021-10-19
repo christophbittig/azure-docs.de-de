@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: a02b7d6fa5ef8369578f89a452df95a50ca34204
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 13de7b055820ac680e8b513198224bcfd6421e11
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425174"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708870"
 ---
 # <a name="troubleshoot-vm-insights-guest-health-preview"></a>Problembehandlung für das Feature „Gastintegrität“ von VM Insights (Vorschau)
 Dieser Artikel enthält eine Beschreibung der Problembehandlungsschritte, die Sie ausführen können, wenn Probleme mit der Integrität in VM Insights auftreten.
@@ -62,7 +62,7 @@ Wahrscheinlich konnte der VM-Gast-Agent die Sperre für die Dienstdatei nicht ab
 
 ### <a name="upgrade-available-message-is-still-displayed-after-upgrading-guest-health"></a>Meldung „Upgrade verfügbar“ wird nach dem Upgrade des Features „Gastintegrität“ weiterhin angezeigt 
 
-- Vergewissern Sie sich, dass die VM in Azure weltweit ausgeführt wird. Server mit Arc-Unterstützung werden noch nicht unterstützt.
+- Vergewissern Sie sich, dass die VM in Azure weltweit ausgeführt wird. Azure Arc-fähige Server werden noch nicht unterstützt.
 - Überprüfen Sie, ob die Region und die Betriebssystemversion des virtuellen Computers unterstützt werden, wie es unter [Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](vminsights-health-enable.md) beschrieben ist.
 - Vergewissern Sie sich, dass die Erweiterung für die Gastintegrität erfolgreich mit Exitcode 0 installiert wurde.
 - Stellen Sie sicher, dass die Azure Monitor-Agent-Erweiterung erfolgreich installiert wurde.

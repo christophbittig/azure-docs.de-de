@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/28/2021
 ms.custom: generated
-ms.openlocfilehash: d6866d476cd687ee6bafa46e55d8364212ce04a1
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 710905390f9da5e38b8459a5faa36306461bed52
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273096"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709282"
 ---
 # <a name="azure-resource-provider-operations"></a>Vorgänge für Azure-Ressourcenanbieter
 
@@ -11274,7 +11274,7 @@ Azure-Dienst: [Azure Arc](../azure-arc/index.yml)
 
 ### <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
-Azure-Dienst: [Kubernetes mit Azure Arc-Aktivierung](../azure-arc/kubernetes/overview.md)
+Azure-Dienst: [Azure Arc-aktiviertes Kubernetes](../azure-arc/kubernetes/overview.md)
 
 > [!div class="mx-tableFixed"]
 > | Aktion | BESCHREIBUNG |

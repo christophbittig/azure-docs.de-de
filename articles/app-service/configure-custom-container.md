@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/25/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 6c202c3f192e9097eb3f861f53a384a60882dcd1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c65f1c511e0f33f4b460bf7d1f7a40895437b019
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657080"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709828"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurieren eines benutzerdefinierten Containers für Azure App Service
 
@@ -323,6 +323,37 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
     > - `Ciphers` muss mindestens ein Element aus dieser Liste enthalten: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - `MACs` muss mindestens ein Element aus dieser Liste enthalten: `hmac-sha1,hmac-sha1-96`.
 
+- Fügen Sie eine ssh_setup-Skriptdatei hinzu, um die SSH-Schlüssel über [ssh-keygen](https://man.openbsd.org/ssh-keygen.1) in Ihrem Repository zu erstellen.
+
+    ```
+    #!/bin/sh
+
+    if [ ! -f "/etc/ssh/ssh_host_rsa_key" ]; then
+        # generate fresh rsa key
+        ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
+    fi
+
+    if [ ! -f "/etc/ssh/ssh_host_dsa_key" ]; then
+        # generate fresh dsa key
+        ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
+    fi
+
+    if [ ! -f "/etc/ssh/ssh_host_ecdsa_key" ]; then
+        # generate fresh ecdsa key
+        ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -N '' -t dsa
+    fi
+
+    if [ ! -f "/etc/ssh/ssh_host_ed25519_key" ]; then
+        # generate fresh ecdsa key
+        ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -N '' -t dsa
+    fi
+
+    #prepare run dir
+        if [ ! -d "/var/run/sshd" ]; then
+        mkdir -p /var/run/sshd
+    fi
+    ```
+
 - Fügen Sie im Dockerfile die folgenden Befehle hinzu:
 
     ```Dockerfile
@@ -332,6 +363,12 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
 
     # Copy the sshd_config file to the /etc/ssh/ directory
     COPY sshd_config /etc/ssh/
+
+    # Copy and configure the ssh_setup file
+    RUN mkdir -p /tmp
+    COPY ssh_setup.sh /tmp
+    RUN chmod +x /tmp/ssh_setup.sh \
+        && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null)
 
     # Open port 2222 for SSH access
     EXPOSE 80 2222

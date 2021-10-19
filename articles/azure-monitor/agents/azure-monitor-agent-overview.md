@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 46c3aca1c2f983d857be59d2d69b0cadfb433303
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8eb9a6ad285bea2a5ac6e69ebb5ebef48b135899
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128655978"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713140"
 ---
 # <a name="azure-monitor-agent-overview"></a>Übersicht über den Azure Monitor-Agent
 Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Azure-Computer und übermittelt sie an Azure Monitor. Dieser Artikel bietet eine Übersicht über den Azure Monitor-Agent und enthält Informationen zu dessen Installation und zur Konfiguration der Datensammlung.
@@ -64,7 +64,7 @@ Der Azure Monitor-Agent ersetzt die [Agents einer Vorgängerversion für Azure M
   Für die Log Analytics-Agents wird im August 2021 ein Veraltungsdatum veröffentlicht. Die aktuellen Agents werden nach Beginn der Veralterungsphase noch einige Jahre lang unterstützt.
 
 ## <a name="supported-resource-types"></a>Unterstützte Ressourcentypen
-Derzeit werden virtuelle Azure-Computer, VM-Skalierungsgruppen und Azure Arc-fähige Server unterstützt. Azure Kubernetes Service und andere Computeressourcentypen werden zurzeit nicht unterstützt.
+Derzeit werden Azure-VMs, VM-Skalierungsgruppen und Azure Arc-fähige Server unterstützt. Azure Kubernetes Service und andere Computeressourcentypen werden zurzeit nicht unterstützt.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 Der Azure Monitor Agent ist in allen öffentlichen Regionen verfügbar, die Log Analytics unterstützen, sowie in den Azure Government und China Clouds. Air-gapped Clouds werden noch nicht unterstützt.

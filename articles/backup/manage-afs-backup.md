@@ -2,13 +2,13 @@
 title: Verwalten der Sicherungen von Azure-Dateifreigaben
 description: In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung der Azure-Dateifreigaben beschrieben, die durch Azure Backup gesichert werden.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 973c28b2c8caac4d2acda9e2cd976f9ceb8c387c
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 10/08/2021
+ms.openlocfilehash: e955ed1cf01c055ea72218076799d7da31d096b7
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534045"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714280"
 ---
 # <a name="manage-azure-file-share-backups"></a>Verwalten der Sicherungen von Azure-Dateifreigaben
 
@@ -30,31 +30,65 @@ So öffnen Sie die Seite **Sicherungsaufträge**
 
 ## <a name="monitor-using-azure-backup-reports"></a>Überwachen mit Azure Backup-Berichten
 
-Azure Backup stellt eine Lösung zur Berichterstellung bereit, die [Azure Monitor-Protokolle](../azure-monitor/logs/log-analytics-tutorial.md) und [Azure-Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) verwendet. Diese Ressourcen unterstützen Sie bei der Bereitstellung umfassender Erkenntnisse zu Ihren Sicherungen. Anhand dieser Berichte können Sie Einblicke in Azure Files-Sicherungselemente, Aufträge auf Elementebene und Details aktiver Richtlinien erhalten. Mit dem in Sicherungsberichten verfügbaren Feature „Bericht per E-Mail senden“ können Sie automatisierte Aufgaben zum Empfangen regelmäßiger Berichte per E-Mail erstellen. Weitere Informationen zum Konfigurieren und Anzeigen von Azure Backup-Berichten finden Sie [hier](/azure/backup/configure-reports#get-started).
+Azure Backup bietet eine Berichtslösung, die [Azure Monitor Protokolle](../azure-monitor/logs/log-analytics-tutorial.md) und [Azure Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) verwendet. Mit diesen Ressourcen erhalten Sie umfassende Einblicke in Ihre Backups. Anhand dieser Berichte können Sie Einblicke in Azure Files-Sicherungselemente, Aufträge auf Elementebene und Details aktiver Richtlinien erhalten. Mit dem in Sicherungsberichten verfügbaren Feature „Bericht per E-Mail senden“ können Sie automatisierte Aufgaben zum Empfangen regelmäßiger Berichte per E-Mail erstellen. Weitere Informationen zum Konfigurieren und Anzeigen von Azure Backup-Berichten finden Sie [hier](/azure/backup/configure-reports#get-started).
 
 ## <a name="create-a-new-policy"></a>Erstellen einer neuen Richtlinie
 
 Sie können im Recovery Services-Tresor im Abschnitt **Sicherungsrichtlinien** eine neue Richtlinie zum Sichern von Azure-Dateifreigaben erstellen. Für alle beim Konfigurieren der Sicherung für Dateifreigaben erstellten Richtlinien wird als **Richtlinientyp** der Wert **Azure-Dateifreigabe** angezeigt.
 
+Gehen Sie wie folgt vor, um eine neue Sicherungsrichtlinie zu erstellen:
+
+1. Wählen Sie im Fenster **Backup-Richtlinien** der Wiederherstellungsdienste-Vault die Option **+ Hinzufügen**.
+
+   :::image type="content" source="./media/manage-afs-backup/new-backup-policy.png" alt-text="Screenshot zeigt die Option zum Starten der Erstellung einer neuen Sicherungsrichtlinie.":::
+
+1. Wählen Sie im Bereich **Hinzufügen** die Option **Azure-Dateifreigabe** als **Richtlinientyp** aus.
+
+   :::image type="content" source="./media/manage-afs-backup/define-policy-type.png" alt-text="Screenshot zeigt die Auswahl von Azure File Share als Richtlinientyp.":::
+
+1. Wenn sich das Fenster **Backup-Richtlinie** für **Azure File Share** öffnet, geben Sie den Namen der Richtlinie an.
+
+1. Wählen Sie in **Backup-Zeitplan** eine geeignete Häufigkeit für die Backups - **Täglich** oder **Stündlich**.
+
+   :::image type="content" source="./media/manage-afs-backup/backup-frequency-types.png" alt-text="Screenshot mit den Häufigkeitstypen für Backups.":::
+
+   - **Täglich**: Löst eine Sicherung pro Tag aus. Für die tägliche Häufigkeit wählen Sie die entsprechenden Werte für:
+
+     - **Zeit**: Der Zeitstempel, zu dem der Sicherungsauftrag ausgelöst werden muss.
+     - **Zeitzone**: Die entsprechende Zeitzone für den Sicherungsauftrag.
+
+   - **Stündlich**: Löst mehrere Backups pro Tag aus. Für die stündliche Häufigkeit wählen Sie die entsprechenden Werte für:
+   
+     - **Zeitplan**: Das Zeitintervall (in Stunden) zwischen den aufeinanderfolgenden Backups.
+     - **Startzeit**: Die Uhrzeit, zu der das erste Backup des Tages ausgelöst werden muss.
+     - **Dauer**: Stellt das Sicherungsfenster (in Stunden) dar, d. h. die Zeitspanne, in der die Sicherungsaufträge gemäß dem ausgewählten Zeitplan ausgelöst werden müssen.
+     - **Zeitzone**: Die entsprechende Zeitzone für den Sicherungsauftrag.
+     
+     Ein Beispiel: Sie haben eine RPO-Anforderung (Recovery Point Objective) von 4 Stunden und Ihre Arbeitszeiten sind von 9 Uhr morgens bis 9 [21:00] Uhr abends. Um diese Anforderungen zu erfüllen, wäre die Konfiguration für den Sicherungsplan wie folgt:
+    
+     - Zeitplan: Alle 4 Stunden
+     - Startzeit: 9 AM 
+     - Dauer: 12 Stunden 
+     
+     :::image type="content" source="./media/manage-afs-backup/hourly-backup-frequency-values-scenario.png" alt-text="Screenshot mit einem Beispiel für die stündliche Sicherungshäufigkeit ":::.
+
+     Basierend auf Ihrer Auswahl werden die Details des Sicherungsauftrags (die Zeitstempel, zu denen der Sicherungsauftrag ausgelöst wird) auf dem Sicherungsrichtlinien-Blade angezeigt.
+
+1. Legen Sie unter **Aufbewahrungsbereich** geeignete Aufbewahrungswerte für Backups fest - gekennzeichnet als täglich, wöchentlich, monatlich oder jährlich.
+
+1. Nachdem Sie alle Attribute der Richtlinie definiert haben, klicken Sie auf **Erstellen**.
+  
+### <a name="view-policy"></a>Anzeigen der Richtlinie
+
 So zeigen Sie die vorhandenen Sicherungsrichtlinien an
 
 1. Öffnen Sie den Recovery Services-Tresor, den Sie zur Konfiguration der Sicherung der Dateifreigabe verwendet haben. Wählen Sie im Menü „Recovery Services-Tresor“ im Abschnitt **Verwalten** die Option **Sicherungsrichtlinien** aus. Alle im Tresor konfigurierten Sicherungsrichtlinien werden angezeigt.
 
-   ![Alle Sicherungsrichtlinien](./media/manage-afs-backup/all-backup-policies.png)
+   :::image type="content" source="./media/manage-afs-backup/all-backup-policies.png" alt-text="Screenshot mit allen Sicherungsrichtlinien.":::
 
 1. Um spezifische Richtlinien für **Azure-Dateifreigabe** anzuzeigen, wählen Sie **Azure-Dateifreigabe** aus der Dropdownliste oben rechts aus.
 
-   ![Azure-Dateifreigabe auswählen](./media/manage-afs-backup/azure-file-share.png)
-
-So erstellen Sie eine neue Sicherungsrichtlinie
-
-1. Wählen Sie im Bereich **Sicherungsrichtlinien** die Option **+Hinzufügen** aus.
-
-   ![Neue Sicherungsrichtlinie](./media/manage-afs-backup/new-backup-policy.png)
-
-1. Wählen Sie im Bereich **Hinzufügen** die Option **Azure-Dateifreigabe** als **Richtlinientyp** aus. Der Bereich **Sicherungsrichtlinie** für **Azure-Dateifreigabe** wird geöffnet. Geben Sie den Richtliniennamen, die Sicherungshäufigkeit und die Aufbewahrungsdauer für die Wiederherstellungspunkte an. Nachdem Sie die Richtlinie definiert haben, wählen Sie **OK** aus.
-
-   ![Sicherungsrichtlinie definieren](./media/manage-afs-backup/define-backup-policy.png)
+   :::image type="content" source="./media/manage-afs-backup/azure-file-share.png" alt-text="Screenshot zeigt den Prozess zur Auswahl von Azure File Share.":::
 
 ## <a name="modify-policy"></a>Ändern der Richtlinie
 
@@ -131,7 +165,7 @@ So setzen Sie den Schutz für eine Azure-Dateifreigabe fort
 
 ## <a name="delete-backup-data"></a>Löschen von Sicherungsdaten
 
-Sie können die Sicherung einer Dateifreigabe während des Auftrags zum **Beenden der Sicherung** oder jederzeit nach Beenden des Schutzes löschen. Möglicherweise ist es von Vorteil, mit dem Löschen der Wiederherstellungspunkte mehrere Tage oder sogar Wochen zu warten. Sie können beim Löschen von Sicherungsdaten keine bestimmten Wiederherstellungspunkte auswählen, die gelöscht werden sollen. Wenn Sie sich für die Löschung Ihrer Sicherungsdaten entscheiden, werden alle der Dateifreigabe zugeordneten Wiederherstellungspunkte gelöscht.
+Sie können die Sicherung einer Dateifreigabe während des Auftrags **Sicherung anhalten** oder jederzeit nach Beendigung des Schutzes löschen. Möglicherweise ist es von Vorteil, mit dem Löschen der Wiederherstellungspunkte mehrere Tage oder sogar Wochen zu warten. Sie können beim Löschen von Sicherungsdaten keine bestimmten Wiederherstellungspunkte auswählen, die gelöscht werden sollen. Wenn Sie sich für die Löschung Ihrer Sicherungsdaten entscheiden, werden alle der Dateifreigabe zugeordneten Wiederherstellungspunkte gelöscht.
 
 Bei der folgenden Vorgehensweise wird davon ausgegangen, dass der Schutz für die Dateifreigabe beendet wurde.
 

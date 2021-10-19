@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.date: 07/08/2021
-ms.openlocfilehash: b66f76d80d3dad6b24eefa6fb7bbd88cfce082e0
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: d86abb52b5282c70e99abc68da75c4b5f85ecbb8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129360017"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712057"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning – zusammengestellte Umgebungen
 
@@ -34,7 +34,7 @@ In diesem Artikel werden die in Azure Machine Learning verfügbaren zusammengest
 Das folgende Dockerfile kann für Ihre persönlichen Workflows angepasst werden:
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.1-cudnn8-ubuntu18.04:20210922.v1
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.1-cudnn8-ubuntu18.04:20211005.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/pytorch-1.9
 
@@ -89,7 +89,7 @@ Andere verfügbare PyTorch-Umgebungen:
 Das folgende Dockerfile kann für Ihre persönlichen Workflows angepasst werden:
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210922.v1
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20211005.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/lightgbm
 
@@ -132,7 +132,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 Das folgende Dockerfile kann für Ihre persönlichen Workflows angepasst werden:
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210922.v1
+FROM mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20211005.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/sklearn-0.24.1
 
@@ -169,7 +169,7 @@ ENV LD_LIBRARY_PATH $AZUREML_CONDA_ENVIRONMENT_PATH/lib:$LD_LIBRARY_PATH
 Das folgende Dockerfile kann für Ihre persönlichen Workflows angepasst werden:
 
 ```dockerfile
-FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20210922.v1
+FROM mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04:20211005.v1
 
 ENV AZUREML_CONDA_ENVIRONMENT_PATH /azureml-envs/tensorflow-2.4
 
@@ -216,51 +216,10 @@ Azure ML-Pipelinetrainingsworkflows mit Verwendung von AutoML wählen basierend 
 
 Weitere Informationen zu AutoML- und Azure ML-Pipelines finden Sie unter [Verwenden von automatisiertem ML in einer Azure Machine Learning-Pipeline in Python](how-to-use-automlstep-in-pipelines.md).
 
-## <a name="inference-only-curated-environments-and-prebuilt-docker-images"></a>Rückschluss nur für zusammengestellte Umgebungen und vordefinierte Docker-Images
+## <a name="inference-curated-environments-and-prebuilt-docker-images"></a>Rückschließen von kuratierten Umgebungen und vorgefertigten Docker-Images
 
-* Alle Docker-Images werden als Nicht-Root-Benutzer ausgeführt.
-* Es wird empfohlen, für Docker-Images das Tag `latest` zu verwenden. Vordefinierte Docker-Images für Rückschlüsse werden in der Microsoft-Containerregistrierung (MCR) veröffentlicht. Um eine Liste der verfügbaren Tags abzufragen, befolgen Sie die [Anweisungen im entsprechenden GitHub-Repository](https://github.com/microsoft/ContainerRegistry#browsing-mcr-content).
-
-### <a name="tensorflow"></a>TensorFlow
-
-Frameworkversion | CPU/GPU | Vorinstallierte Pakete | MCR-Pfad | Zusammengestellte Umgebung
- --- | --- | --- | --- | --- |
- 1.15 | CPU | pandas==0.25.1 </br> numpy=1.20.1 | `mcr.microsoft.com/azureml/tensorflow-1.15-ubuntu18.04-py37-cpu-inference:latest`  | AzureML-tensorflow-1.15-ubuntu18.04-py37-cpu-inference | 
-2.4 | CPU | numpy>=1.16.0 </br> pandas~=1.1.x | `mcr.microsoft.com/azureml/tensorflow-2.4-ubuntu18.04-py37-cpu-inference:latest` | AzureML-tensorflow-2.4-ubuntu18.04-py37-cpu-inference |
-2.4 | GPU | numpy >= 1.16.0 </br> pandas~=1.1.x </br> CUDA==11.0.3 </br> CuDNN==8.0.5.39 | `mcr.microsoft.com/azureml/tensorflow-2.4-ubuntu18.04-py37-cuda11.0.3-gpu-inference:latest` | AzureML-tensorflow-2.4-ubuntu18.04-py37-cuda11.0.3-gpu-inference |
-
-### <a name="pytorch"></a>PyTorch
-
-Frameworkversion | CPU/GPU | Vorinstallierte Pakete | MCR-Pfad | Zusammengestellte Umgebung
- --- | --- | --- | --- | --- |
- 1.6 | CPU | numpy==1.20.1 </br> pandas==0.25.1 | `mcr.microsoft.com/azureml/pytorch-1.6-ubuntu18.04-py37-cpu-inference:latest` | AzureML-pytorch-1.6-ubuntu18.04-py37-cpu-inference |
-1.7 | CPU | numpy>=1.16.0 </br> pandas~=1.1.x | `mcr.microsoft.com/azureml/pytorch-1.7-ubuntu18.04-py37-cpu-inference:latest` | AzureML-pytorch-1.7-ubuntu18.04-py37-cpu-inference |
-
-### <a name="scikit-learn"></a>SciKit-Learn
-
-Frameworkversion | CPU/GPU | Vorinstallierte Pakete | MCR-Pfad | Zusammengestellte Umgebung
- --- | --- | --- | --- | --- |
-0.24.1  | CPU | scikit-learn==0.24.1 </br> numpy>=1.16.0 </br> pandas~=1.1.x | `mcr.microsoft.com/azureml/sklearn-0.24.1-ubuntu18.04-py37-cpu-inference:latest` | AzureML-sklearn-0.24.1-ubuntu18.04-py37-cpu-inference |
-
-### <a name="onnx-runtime"></a>ONNX-Runtime
-
-Frameworkversion | CPU/GPU | Vorinstallierte Pakete | MCR-Pfad | Zusammengestellte Umgebung
- --- | --- | --- | --- | --- |
-1.6 | CPU | numpy>=1.16.0 </br> pandas~=1.1.x | `mcr.microsoft.com/azureml/onnxruntime-1.6-ubuntu18.04-py37-cpu-inference:latest` |AzureML-onnxruntime-1.6-ubuntu18.04-py37-cpu-inference |
-
-### <a name="xgboost"></a>XGBoost
-
-Frameworkversion | CPU/GPU | Vorinstallierte Pakete | MCR-Pfad | Zusammengestellte Umgebung
- --- | --- | --- | --- | --- |
-0.9 | CPU | scikit-learn==0.23.2 </br> numpy==1.20.1 </br> pandas==0.25.1 | `mcr.microsoft.com/azureml/xgboost-0.9-ubuntu18.04-py37-cpu-inference:latest` | AzureML-xgboost-0.9-ubuntu18.04-py37-cpu-inference | 
-
-### <a name="no-framework"></a>Kein Framework
-
-Frameworkversion | CPU/GPU | Vorinstallierte Pakete | MCR-Pfad | Zusammengestellte Umgebung
- --- | --- | --- | --- | --- |
-Nicht verfügbar | CPU | Nicht verfügbar | `mcr.microsoft.com/azureml/minimal-ubuntu18.04-py37-cpu-inference:latest` | AzureML-minimal-ubuntu18.04-py37-cpu-inference  |
-
+[!INCLUDE [list-of-inference-prebuilt-docker-images](../../includes/aml-inference-list-prebuilt-docker-images.md)]
 
 ## <a name="security"></a>Sicherheit
-Versionsupdates für unterstützte Umgebungen werden alle zwei Wochen veröffentlicht, um Sicherheitsrisiken zu entfernen, die nicht älter als 30 Tage sind. 
+Versions-Updates für unterstützte Umgebungen werden alle zwei Wochen veröffentlicht, um Sicherheitslücken zu schließen, die nicht älter als 30 Tage sind. 
 

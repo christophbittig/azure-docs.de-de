@@ -5,14 +5,14 @@ description: Erfahren Sie, wie Sie Ihren Azure Cache for Redis-Verbindungen resi
 author: shpathak-msft
 ms.service: cache
 ms.topic: conceptual
-ms.date: 08/25/2021
+ms.date: 10/11/2021
 ms.author: shpathak
-ms.openlocfilehash: a0dd6e3e8f4c2a7645da1ceccf77f7607d2b84b3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 02b5c4bd42abc9c36ef971b053979d590d1e602d
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128656947"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808825"
 ---
 # <a name="connection-resilience"></a>Verbindungsresilienz
 
@@ -23,6 +23,23 @@ Konfigurieren Ihrer Clientverbindungen für Wiederholungsbefehle mit exponentiel
 ## <a name="test-resiliency"></a>Testresilienz
 
 Testen Sie die Resilienz Ihres Systems bei Verbindungsunterbrechungen mithilfe eines [Neustarts](cache-administration.md#reboot), um einen Patch zu simulieren. Weitere Informationen zum Testen der Leistung finden Sie unter [Leistungstests](cache-best-practices-performance.md).
+
+## <a name="tcp-settings-for-linux-hosted-client-applications"></a>TCP-Einstellungen für unter Linux gehostete Clientanwendungen
+
+Einige Linux-Versionen verwenden standardmäßig optimistische TCP-Einstellungen. Die TCP-Einstellungen können eine Situation erstellen, in der eine Clientverbindung mit einem Cache für eine lange Zeit nicht wiederhergestellt werden kann, wenn ein Redis-Server nicht mehr antwortet, bevor die Verbindung ordnungsgemäß geschlossen wird. Bei der Wiederherstellung einer Verbindung kann ein Fehler auftreten, wenn der primäre Knoten Ihrer Azure Cache For Redis-Instanz nicht mehr verfügbar ist, z. B. aufgrund ungeplanter Wartungsarbeiten.
+
+Es werden die folgenden TCP-Einstellungen empfohlen:
+
+|Einstellung  |Wert |
+|---------|---------|
+| *net.ipv4.tcp_retries2*   | 5 |
+| *TCP_KEEPIDLE*   | 15 |
+| *TCP_KEEPINTVL*  | 5 |
+| *TCP_KEEPCNT* | 3 |
+
+Erwägen Sie die Verwendung des *ForceReconnect*-Musters. Eine Implementierung des Musters finden Sie in dem Code in [Erneutes Herstellen einer Verbindung mit dem Lazy\<T\>-Muster](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-lazyreconnect-cs).
+
+Weitere Informationen zum Szenario finden Sie unter [Verbindung wird bei der Ausführung unter Linux für 15 Minuten nicht wiederhergestellt](https://github.com/StackExchange/StackExchange.Redis/issues/1848#issuecomment-913064646). Während sich diese Diskussion auf die StackExchange.Redis-Bibliothek bezieht, sind auch andere Clientbibliotheken betroffen, die unter Linux ausgeführt werden. Die Erläuterung ist immer noch nützlich, und Sie können sie hinsichtlich anderer Bibliotheken verallgemeinern.
 
 ## <a name="configure-appropriate-timeouts"></a>Konfigurieren von entsprechenden Timeouts
 

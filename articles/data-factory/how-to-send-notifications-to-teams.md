@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: how-to
 ms.subservice: tutorials
 ms.date: 09/29/2021
-ms.openlocfilehash: d1a23e166c322a4a74c3ec175ea672d78ed23de9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 98fa799cc5fd933d21fb0130093381c628f8e23c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368154"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660949"
 ---
 # <a name="send-notifications-to-a-microsoft-teams-channel-from-an-azure-data-factory-or-synapse-analytics-pipeline"></a>Senden von Benachrichtigungen von einer Azure Data Factory- oder Synapse Analytics-Pipeline an einen Microsoft Teams-Kanal
 
@@ -106,3 +106,7 @@ Mithilfe von [Systemvariablen](control-flow-system-variables.md) und [Ausdrücke
 Die oben genannten Ausdrücke geben die relevanten Fehlermeldungen zu einem Fehler zurück, die dann als Benachrichtigung an einen Teams-Kanal gesendet werden können. Weitere Informationen finden Sie im Artikel [Ausgabeeigenschaften der Copy-Aktivität](copy-activity-monitoring.md).
 
 Außerdem wird empfohlen, das von Microsoft Teams unterstützte [Schema für die Benachrichtigungsnutzdaten](https://adaptivecards.io/explorer/AdaptiveCard.html) zu überprüfen und die obige Vorlage weiter an Ihre Anforderungen anzupassen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[ Senden von E-Mails aus einer Pipeline ](how-to-send-email.md)

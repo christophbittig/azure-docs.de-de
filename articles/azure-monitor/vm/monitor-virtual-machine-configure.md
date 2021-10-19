@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: ce9fd7bd2b123877f73978caaabafca8c767c2be
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: ceb57d364cca4b05d170ad6e42e8894f9a1ce86e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114674329"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710244"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-configure-monitoring"></a>Überwachen von VMs mit Azure Monitor: Konfigurieren der Überwachung
 Dieser Artikel ist Teil des Szenarios [Überwachen von VMs und zugehöriger Workloads in Azure Monitor](monitor-virtual-machine.md). Es wird beschrieben, wie Sie die Überwachung Ihrer Azure- und Hybrid-VMs in Azure Monitor konfigurieren.
@@ -79,8 +79,8 @@ Ein Hybridcomputer ist jeder Computer, der nicht in Azure ausgeführt wird. Es h
 
 Es entstehen keine zusätzlichen Kosten für Azure Arc-fähige Server, aber es können Kosten für verschiedene Optionen anfallen, die Sie aktivieren. Weitere Informationen finden Sie in der [Azure Arc-Preisübersicht](https://azure.microsoft.com/pricing/details/azure-arc/). Es entstehen Kosten für die im Arbeitsbereich gesammelten Daten, nachdem die Hybridcomputer für VM Insights aktiviert wurden.
 
-### <a name="machines-that-cant-use-azure-arcenabled-servers"></a>Computer, die keine Azure Arc-fähigen Server verwenden können
-Wenn Sie über Hybridcomputer verfügen, die den folgenden Kriterien entsprechen, können diese keine Azure Arc-fähigen Server verwenden: 
+### <a name="machines-that-cant-use-azure-arc-enabled-servers"></a>Computer, die keine Azure Arc-fähigen Server verwenden können
+Wenn Sie über Hybridcomputer verfügen, die den folgenden Kriterien entsprechen, können diese keine Azure Arc-fähigen Server verwenden:
 
 - Das Betriebssystem des Computers wird von den Server-Agents, die von Azure Arc aktiviert werden, nicht unterstützt. Weitere Informationen finden Sie unter [Unterstützte Betriebssysteme](../../azure-arc/servers/agent-overview.md#prerequisites).
 - Ihre Sicherheitsrichtlinie lässt nicht zu, dass Computer eine direkte Verbindung mit Azure herstellen. Der Log Analytics-Agent kann das [Log Analytics-Gateway](../agents/gateway.md) unabhängig davon verwenden, ob Azure Arc-fähige Server installiert sind oder nicht. Die von Azure Arc aktivierten Server-Agents müssen eine direkte Verbindung mit Azure herstellen.
@@ -110,7 +110,7 @@ Erstellen Sie eine einzelne Datensammlungsregel für jede Ressourcengruppe mit z
 
 Achten Sie darauf, keine Daten an Protokolle zu senden. Dies würde zu doppelten Daten führen, wenn die Daten bereits vom Log Analytics-Agent erfasst werden.
 
-Sie können einen Azure Monitor-Agent für einzelne Computer installieren, indem Sie die gleichen Methoden für Azure-VMs und Azure Arc-fähige Server verwenden. Zu diesen Methoden gehören das Onboarding einzelner Computer mit den Azure-Portal oder mithilfe von Resource Manager-Vorlagen oder das bedarfsorientierte Aktivieren von Computern mithilfe von Azure Policy. Installieren Sie den Agent für Hybridcomputer, die Azure Arc-fähigen Server nicht verwenden können, manuell.
+Sie können einen Azure Monitor-Agent für einzelne Computer installieren, indem Sie die gleichen Methoden für Azure-VMs und Azure Arc-fähige Server verwenden. Zu diesen Methoden gehören das Onboarding einzelner Computer mit den Azure-Portal oder mithilfe von Resource Manager-Vorlagen oder das bedarfsorientierte Aktivieren von Computern mithilfe von Azure Policy. Installieren Sie den Agent für Hybridcomputer, die Azure Arc-fähige Server nicht verwenden können, manuell.
 
 Informationen zum Erstellen einer Datensammlungsregel und zum Bereitstellen des Azure Monitor-Agents für einen oder mehrere Agents mithilfe des Azure-Portals finden Sie unter [Erstellen einer Regel und einer Zuordnung im Azure-Portal](../agents/data-collection-rule-azure-monitor-agent.md). Weitere Installationsmethoden werden unter [Installieren des Azure Monitor-Agents](../agents/azure-monitor-agent-install.md) beschrieben. Informationen zum Erstellen einer Richtlinie, die den Agent und die Datensammlungsregel automatisch auf allen neuen Computern bereitstellt, während sie erstellt werden, finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md#azure-monitor-agent).
 

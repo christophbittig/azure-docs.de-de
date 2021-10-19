@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 10/06/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 40b40d25e47e3951293ebe5a5d58673535b6615e
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1fbd0c7a3c2a6edc2ffb0f6a5a4124979fc27225
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470614"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612406"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure-Dienste, die Azure Data Lake Storage Gen2 unterstützen
 
@@ -46,9 +46,13 @@ In dieser Tabelle sind die Azure-Dienste aufgeführt, die mit Azure Data Lake St
 |Azure Content Delivery Network|Noch nicht unterstützt|Nicht verfügbar|Nicht verfügbar|[Indizieren von Dokumenten in Azure Data Lake Storage Gen2](../../cdn/cdn-overview.md)|
 |Azure SQL-Datenbank|Noch nicht unterstützt|Nicht verfügbar|Nicht zutreffend|[Was ist Azure SQL-Datenbank?](../../azure-sql/database/sql-database-paas-overview.md)|
 
+> [!TIP]
+> Informationen dazu, wie Dienste in Kategorien wie „Erfassung“, „Download“, „Verarbeitung“ und „Visualisierung“ organisiert sind, finden Sie unter [Erfassung, Verarbeitung und Analyse](data-lake-storage-data-scenarios.md#ingest-process-and-analyze).
+
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Bekannte Probleme mit Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
 - [Unterstützung von Blob Storage-Features in Azure Storage-Konten](storage-feature-support-in-storage-accounts.md)
 - [Open-Source-Plattformen, die Azure Data Lake Storage Gen2 unterstützen](data-lake-storage-supported-open-source-platforms.md)
 - [Multiprotokollzugriff für Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)
+- [Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2](data-lake-storage-best-practices.md)

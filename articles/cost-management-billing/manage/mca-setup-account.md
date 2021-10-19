@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/19/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 9b586d453f9ac49dd7bd2894c0003fef521167da
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 982bb3719de66d880f635dbb7c95e9ae2c4590c2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514945"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711168"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung
 
@@ -27,7 +27,7 @@ Die Erneuerung umfasst die folgenden Schritte:
 Zum Einrichten des Abrechnungskontos müssen Sie die Abrechnung von Azure-Abonnements von Ihrer Enterprise Agreement-Registrierung auf das neue Konto umstellen. Die Einrichtung hat keine Auswirkungen auf Azure-Dienste, die in Ihren Abonnements ausgeführt werden. Es ändert sich jedoch die Art und Weise, wie Sie die Abrechnung Ihre Abonnements verwalten.
 
 - Statt im [EA-Portal](https://ea.azure.com) verwalten Sie Ihre Azure-Dienste und die Abrechnung im [Azure-Portal](https://portal.azure.com).
-- Sie erhalten monatlich eine digitale Rechnung über Ihre Gebühren. Sie können die Rechnung auf der Azure-Seite „Kostenverwaltung + Abrechnung“ anzeigen und analysieren.
+- Sie erhalten monatlich eine digitale Rechnung über Ihre Gebühren. Sie können die Rechnung auf der Seite „Cost Management + Billing“ anzeigen und analysieren.
 - Anstelle von Abteilungen und Konto in Ihrer Enterprise Agreement-Registrierung verwenden Sie die Abrechnungsstruktur und Bereiche des neuen Kontos zum Verwalten und Organisieren Ihrer Abrechnung.
 
 Bevor Sie mit dem Einrichten beginnen, sollten Sie die folgenden Aktionen ausführen:
@@ -331,7 +331,5 @@ Unternehmensadministratoren und Abteilungsadministratoren sind als Besitzer des 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erste Schritte mit Ihrem neuen Abrechnungskonto](../understand/mca-overview.md)
-
 - [Ausführen von Enterprise Agreement-Aufgaben in Ihrem Abrechnungskonto für eine Microsoft-Kundenvereinbarung](mca-enterprise-operations.md)
-
 - [Verwalten des Zugriffs auf Ihr Abrechnungskonto](understand-mca-roles.md)

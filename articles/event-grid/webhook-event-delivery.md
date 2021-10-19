@@ -2,13 +2,13 @@
 title: Webhook-Ereignisbereitstellung
 description: In diesem Artikel werden die Webhook-Ereignisbereitstellung und die Endpunktüberprüfung bei der Verwendung von Webhooks beschrieben.
 ms.topic: conceptual
-ms.date: 09/15/2021
-ms.openlocfilehash: 58da34498fa3e2fc81c8fe1476b1098688b9c6c0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/29/2021
+ms.openlocfilehash: 77908b7f36c51ca729915b09cb1e813c978235e3
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128625162"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614364"
 ---
 # <a name="webhook-event-delivery"></a>Webhook-Ereignisbereitstellung
 Ein Webhook ist eine der vielen Möglichkeiten, um Ereignisse aus Azure Event Grid zu empfangen. Wenn ein neues Ereignis bereit ist, sendet der Event Grid-Dienst per POST-Vorgang eine HTTP-Anforderung an den konfigurierten Endpunkt, wobei das Ereignis im Anforderungstext enthalten ist.
@@ -82,6 +82,25 @@ Ein Beispiel für die Handhabung des Handshakes zur Abonnementüberprüfung find
 
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>Endpunktüberprüfung mit CloudEvents 1.0
 CloudEvents 1.0 implementiert eine eigene [Semantik für den Schutz vor Missbrauch](webhook-event-delivery.md) über die **HTTP OPTIONS**-Methode. Weitere Informationen dazu finden Sie [hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Wenn das CloudEvents-Schema für die Ausgabe verwendet wird, verwendet Event Grid anstelle des Event Grid-Mechanismus für Überprüfungsereignisse den Missbrauchschutz von CloudEvents 1.0.
+
+## <a name="event-subscriptions-considerations"></a>Hinweise zu Ereignisabonnements
+
+Verwenden Sie diese Referenz, um die Kompatibilität zwischen Themen- und Abonnementschemas zu überprüfen und Probleme während der Erstellung des Abonnements zu vermeiden. Beim Erstellen eines Themas wird ein Schema für eingehende Ereignisse definiert, und beim Erstellen des Abonnements wird ein Schema für ausgehende Ereignisse definiert.
+
+> [!NOTE]
+> Diese Kompatibilitätstabellenreferenz gilt für benutzerdefinierte Themen und Ereignisdomänen.
+
+| Schema für eingehende Ereignisse | Schema für ausgehende Ereignisse | Unterstützt |
+| ---- | ---- | ---- |
+| Event Grid-Schema | Event Grid-Schema | Yes |
+| | Cloud Events v1.0-Schema | Yes |
+| | Benutzerdefiniertes Eingabeschema | No |
+| Cloud Events v1.0-Schema | Event Grid-Schema | No |
+| | Cloud Events v1.0-Schema | Yes |
+| | Benutzerdefiniertes Eingabeschema | No |
+| Benutzerdefiniertes Eingabeschema | Event Grid-Schema | Yes |
+| | Cloud Events v1.0-Schema | Yes |
+| | Benutzerdefiniertes Eingabeschema | Ja |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Im folgenden Artikel finden Sie Informationen zur Behandlung von Problemen bei der Überprüfung von Ereignisabonnements: 

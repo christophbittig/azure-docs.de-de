@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: 828524e225f660cab2c11d23c5657ca82ae8781e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dabb12e5c0e6bd95ebe1a8025b431ec57e42745b
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796512"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615370"
 ---
 # <a name="azure-sentinel-information-model-asim-schemas-public-preview"></a>Azure Sentinel-Informationsmodell (ASIM) Schemas (Öffentliche Vorschau)
 
@@ -30,6 +30,7 @@ Schemaverweise beschreiben die Felder, die jedes Schema umfasst. In ASIM sind de
 
  - [Netzwerksitzung](normalization-schema.md)
  - [DNS-Aktivität](dns-normalization-schema.md)
+ - [DHCP-Aktivität](dhcp-normalization-schema.md)
  - [Prozessereignis](process-events-normalization-schema.md)
  - [Authentifizierungsereignis](authentication-normalization-schema.md)
  - [Registrierungsereignis](registry-event-normalization-schema.md)
@@ -50,7 +51,7 @@ Die folgenden Konzepte helfen Ihnen, die Schema-Verweisdokumente zu verstehen un
 |**Feldtypen**     |  Jedem Schemafeld ist ein Typ zugeordnet. Der Log Analytics-Arbeitsbereich verfügt über eine begrenzte Anzahl von Datentypen. Daher wird in Azure Sentinel für viele Schemafelder ein logischer Typ verwendet, der in Log Analytics nicht erzwungen wird, jedoch für die Schemakompatibilität erforderlich ist. Durch logische Feldtypen wird sichergestellt, dass Werte sowie Feldnamen in allen Quellen konsistent sind.  <br><br>Weitere Informationen finden Sie unter [Logische Typen](#logical-types).     |
 |**Feldklasse**     |Felder können mehrere Klassen beinhalten, die definieren, wann die Felder durch einen Parser implementiert werden sollen: <br><br>-    **Erforderliche Felder** müssen in jedem Parser angezeigt werden. Wenn eine Quelle keine Informationen für diesen Wert enthält oder die Daten nicht anderweitig hinzugefügt werden können, werden die meisten Inhaltselemente, die auf das normalisierte Schema verweisen, nicht unterstützt.<br>-  **Empfohlene** Felder sollten normalisiert werden, falls sie verfügbar sind. Es kann jedoch sein, dass sie nicht in jeder Quelle verfügbar sind, sodass bei jedem Inhaltselement, das auf dieses normalisierte Schema verweist, die Verfügbarkeit berücksichtigt werden muss. <br>-  **Optionale** Felder können, falls vorhanden, normalisiert oder in ihrer ursprünglichen Form belassen werden. Normalerweise werden sie aus Leistungsgründen durch einen sehr einfachen Parser nicht normalisiert.    |
 |**Entitäten**     | Ereignisse ergeben sich im Zusammenhang mit Entitäten wie Benutzern, Hosts, Prozessen oder Dateien. Zur Beschreibung jeder Entität können mehrere Felder erforderlich sein. Ein Host kann beispielsweise einen Namen und eine IP-Adresse haben. <br><br>Ein einzelner Datensatz kann mehrere Entitäten desselben Typs enthalten, z. B. einen Quell- und Zielhost. <br><br>Das Azure Sentinel-Informationsmodell definiert, wie Entitäten konsistent zu beschreiben sind. Mit Entitäten lassen sich die Schemas erweitern. <br><br>Während das Netzwerksitzungsschema beispielsweise keine Prozessinformationen enthält, enthalten einige Ereignisquellen Prozessinformationen, die hinzugefügt werden können. Weitere Informationen finden Sie unter [Entitäten](#entities). |
-|**Aliase**     |  In einigen Fällen erwarten verschiedene Benutzer, dass ein Feld unterschiedliche Namen hat. In der DNS-Terminologie wird z. B. ein Feld mit dem Namen `query` erwartet, während es in allgemeineren Anwendungsfällen einen Domänennamen enthält. Mit Aliasen lässt sich dieses Problem der Mehrdeutigkeit lösen, dadurch dass mehrere Namen für einen angegebenen Wert zugelassen werden. Die Aliasklasse entspricht der des Felds, für das sie als Alias verwendet wird.       |
+|**Aliase**     |  In einigen Fällen erwarten verschiedene Benutzer, dass ein Feld unterschiedliche Namen hat. In der DNS-Terminologie wird z. B. ein Feld mit dem Namen `query` erwartet, während es in allgemeineren Anwendungsfällen einen Domänennamen enthält. Mit Aliasen lässt sich dieses Problem der Mehrdeutigkeit lösen, dadurch dass mehrere Namen für einen angegebenen Wert zugelassen werden. Die Aliasklasse entspricht der des Felds, für das sie als Alias verwendet wird.<br><br>Beachten Sie, dass Aliasing in Log Analytics nicht unterstützt wird. Um Aliase zu implementieren, erstellen Parser über den `extend`-Operator eine Kopie des ursprünglichen Werts.        |
 | | |
 
 ## <a name="logical-types"></a>Logische Typen
@@ -80,11 +81,11 @@ Jedem Schemafeld ist ein Typ zugeordnet. Einige Felder verfügen über integrier
 
 Die folgenden Felder sind in allen ASIM-Schemas enthalten. Die allgemeinen Felder sind hier und für jedes Schema aufgeführt, für die Fälle, in denen sich die Details je nach Schema unterscheiden. Beispielsweise können die Werte für das Feld **EventType** und für das Feld **EventSchemaVersion** je nach Schema variieren. 
 
-| Feld               | Klasse       | Typ       |  BESCHREIBUNG        |
+| Feld               | Klasse       | type       |  BESCHREIBUNG        |
 |---------------------|-------------|------------|--------------------|
 | <a name="timegenerated"></a>**TimeGenerated** | Integriert | datetime | Der Zeitpunkt, zu dem das Ereignis vom meldenden Gerät generiert wurde.|
 | **_ResourceId**   | Integriert |  guid     | Die Azure-Ressourcen-ID des meldenden Geräts oder Diensts oder die Ressourcen-ID des Protokollforwarders für Ereignisse, die mit Syslog, CEF oder WEF weitergeleitet werden. |
-| **Type** | Integriert | String | Die ursprüngliche Tabelle, aus der der Datensatz abgerufen wurde. Dieses Feld ist nützlich, wenn dasselbe Ereignis über zwei Kanäle in unterschiedlichen Tabellen empfangen werden kann, aber dieselben `EventVendor` und `EventProduct` aufweist. Ein Sysmon-Ereignis kann z. B. entweder in der Tabelle „Event“ oder in der Tabelle „SecurityEvent“ erfasst werden. |
+| **Type** | Integriert | String | Die ursprüngliche Tabelle, aus der der Datensatz abgerufen wurde. Dieses Feld ist nützlich, wenn dasselbe Ereignis über zwei Kanäle in unterschiedlichen Tabellen empfangen werden kann, aber dieselben `EventVendor` und `EventProduct` aufweist. Ein Sysmon-Ereignis kann z. B. entweder in der Tabelle Event oder in der Tabelle SecurityEvent erfasst werden. |
 | **EventMessage**        | Optional    | String     |     Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert.   |
 | **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die im Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
 | **EventStartTime**      | Obligatorisch.   | Datum/Uhrzeit  |      Wenn die Quelle Aggregation unterstützt und der Datensatz mehrere Ereignisse darstellt, gibt dieses Feld die Zeit an, zu der das erste Ereignis generiert wurde. <br><br>Andernfalls wird in diesem Feld ein Alias für das Feld [TimeGenerated](#timegenerated) verwendet. |
@@ -147,7 +148,7 @@ Für einen Benutzer werden wie in den folgenden Szenarien beschrieben die Deskri
 
 In der folgenden Tabelle werden die unterstützten Bezeichner für einen Benutzer beschrieben:
 
-|Normalisiertes Feld  |Typ  |Format und unterstützte Typen  |
+|Normalisiertes Feld  |type  |Format und unterstützte Typen  |
 |---------|---------|---------|
 |**UserId**     |    String     |   Eine maschinenlesbare, alphanumerische, eindeutige Darstellung eines Benutzers in einem System. <br><br>Format und unterstützte Typen:<br>    - **SID** (Windows): `S-1-5-21-1377283216-344919071-3415362939-500`<br>    -  **UID** (Linux): `4578`<br>    -    **AADID** (Azure Active Directory): `9267d02c-5f76-40a9-a9eb-b686f3ca47aa`<br>    - **OktaId**: `00urjk4znu3BcncfY0h7`<br>    - **AWSId**: `72643944673`<br><br>    Speichern Sie den ID-Typ im Feld `UserIdType`. Wenn andere IDs verfügbar sind, empfiehlt es sich, die Feldnamen auf `UserSid`, `UserUid`, `UserAADID`, `UserOktaId` bzw. `UserAwsId` zu normalisieren.       |
 |**Benutzername**     |  String       |   Ein Benutzername, ggf. einschließlich der Domäneninformationen, in einem der folgenden Formate und in der folgenden Prioritätsreihenfolge: <br> -   **UPN/E-Mail**: `johndow@contoso.com` <br>  -    **Windows:** `Contoso\johndow` <br> -   **DN**: `CN=Jeff Smith,OU=Sales,DC=Fabrikam,DC=COM` <br>  - **Einfach**: `johndow`. Verwenden Sie dieses Format nur, wenn keine Domäneninformationen verfügbar sind. <br><br> Speichern Sie den Benutzernamenstyp im Feld `UsernameType`.    |
@@ -165,7 +166,7 @@ Für einen Prozess werden wie in den folgenden Szenarien beschrieben die Deskrip
 
 In der folgenden Tabelle werden die unterstützten Bezeichner für Prozesse beschrieben:
 
-|Normalisiertes Feld  |Typ  |Format und unterstützte Typen  |
+|Normalisiertes Feld  |type  |Format und unterstützte Typen  |
 |---------|---------|---------|
 |**Id**     |    String     |   Die vom Betriebssystem zugewiesene Prozess-ID.      |
 |**Guid**     |  String       |   Die vom Betriebssystem zugewiesene Prozess-GUID. Die GUID ist im Allgemeinen bei Systemneustarts eindeutig, wohingegen die ID häufig wiederverwendet wird.   |
@@ -196,7 +197,7 @@ Die Leitfäden zur Verarbeitung von Geräten werden wie folgt näher erläutert:
 
 In der folgenden Tabelle werden die unterstützten Bezeichner für Geräte beschrieben:
 
-|Normalisiertes Feld  |Typ  |Format und unterstützte Typen  |
+|Normalisiertes Feld  |type  |Format und unterstützte Typen  |
 |---------|---------|---------|
 |**Hostname**     |    String     |        |
 |**FQDN**     |  String       |   Ein Vollqualifizierter Domänenname   |

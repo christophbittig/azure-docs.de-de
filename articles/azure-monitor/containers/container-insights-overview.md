@@ -3,12 +3,12 @@ title: Übersicht über Container Insights | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt Container Insights, das die AKS Container Insights-Lösung überwacht, und den Wert, den es durch die Überwachung der Integrität Ihrer AKS-Cluster und Containerinstanzen in Azure bietet.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 56222eb90534537df237ec2c5d29a5969f150e60
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b1e7b3e6d3c72dbc65169c48f1d12de6ca712a45
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355456"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708908"
 ---
 # <a name="container-insights-overview"></a>Übersicht über Container Insights
 
@@ -19,7 +19,7 @@ Container Insights ist ein Feature zur Überwachung der Leistung von Containerwo
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
 - Selbstverwaltete Kubernetes-Cluster, die in [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) oder lokal gehostet werden
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
-- [Kubernetes mit Azure Arc-Aktivierung](../../azure-arc/kubernetes/overview.md) (Vorschauversion)
+- [Kubernetes mit Azure Arc-Unterstützung](../../azure-arc/kubernetes/overview.md) (Vorschau)
 
 Container Insights unterstützt Cluster, auf denen das Betriebssystem Linux und Windows Server 2019 ausgeführt wird. Die unterstützten Containerlaufzeiten sind Docker, Moby und alle CRI-kompatiblen Laufzeiten wie CRI-O und ContainerD.
 
@@ -47,7 +47,7 @@ Container Insights stellt eine umfassende Überwachungsumgebung auf Grundlage ve
     >Die Unterstützung für Azure Red Hat OpenShift ist zurzeit als Feature in der öffentlichen Vorschauversion verfügbar.
     >
 
-* Überwachen von Containerworkloads, die in [Kubernetes mit Azure Arc-Aktivierung (Vorschau) ](../../azure-arc/kubernetes/overview.md) bereitgestellt sind.
+* Überwachen von Containerworkloads, die in [Kubernetes mit Azure Arc-Unterstützung (Vorschau)](../../azure-arc/kubernetes/overview.md) bereitgestellt werden.
 
 Nachfolgend sind die wichtigsten Unterschiede bei der Überwachung eines Windows Server-Clusters im Vergleich zu einem Linux-Cluster aufgeführt:
 

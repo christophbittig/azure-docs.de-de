@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 6d92b7c2f01a7e9ef12bc2bb422cfb6ed0076f73
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ccc46073ef81977f5cd467c84dc96946980cc8c8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102039375"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714469"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor für bestehende Operations Manager-Kunden
 Dieser Artikel enthält Anleitungen für Kunden, die derzeit [System Center Operations Manager](/system-center/scom/welcome) verwenden und bei der Migration von Geschäftsanwendungen und anderen Ressourcen zu Azure einen Übergang zu [Azure Monitor](overview.md) planen. Es wird davon ausgegangen, dass das letztendliche Ziel ein vollständiger Übergang in die Cloud ist, bei dem so viele Operations Manager-Funktionen wie möglich durch Azure Monitor ersetzt werden, ohne dass die betrieblichen Anforderungen Ihres Geschäfts- und IT-Bereichs beeinträchtigt werden. 
@@ -55,7 +55,7 @@ Vor dem Verschieben von Komponenten in Azure basiert Ihre Umgebung auf virtuelle
 
 Die Migration zu Azure beginnt mit IaaS, wobei virtuelle Computer, die Geschäftsanwendungen unterstützen, in Azure verschoben werden. Die Überwachungsanforderungen für diese Anwendungen und die Serversoftware, von der sie abhängen, ändern sich nicht, und Sie verwenden weiterhin Operations Manager auf diesen Servern mit den vorhandenen Management Packs. 
 
-Azure Monitor wird für Ihre Azure-Dienste aktiviert, sobald Sie ein Azure-Abonnement erstellen. Es werden automatisch Plattformmetriken und das Aktivitätsprotokoll erfasst, und Sie konfigurieren die zu erfassenden Ressourcenprotokolle, damit Sie alle verfügbaren Telemetriedaten mithilfe von Protokollabfragen interaktiv analysieren können. Sie können VM Insights für Ihre VMs (virtuelle Computer) aktivieren, um Überwachungsdaten aus Ihrer gesamten Umgebung gemeinsam zu analysieren und Beziehungen zwischen Computern und Prozessen zu ermitteln. Sie weiten die Verwendung von Azure Monitor auf Ihre lokalen physischen und virtuellen Computer aus, indem Sie Server mit Azure Arc-Unterstützung darauf aktivieren. 
+Azure Monitor wird für Ihre Azure-Dienste aktiviert, sobald Sie ein Azure-Abonnement erstellen. Es werden automatisch Plattformmetriken und das Aktivitätsprotokoll erfasst, und Sie konfigurieren die zu erfassenden Ressourcenprotokolle, damit Sie alle verfügbaren Telemetriedaten mithilfe von Protokollabfragen interaktiv analysieren können. Sie können VM Insights für Ihre VMs (virtuelle Computer) aktivieren, um Überwachungsdaten aus Ihrer gesamten Umgebung gemeinsam zu analysieren und Beziehungen zwischen Computern und Prozessen zu ermitteln. Sie weiten die Verwendung von Azure Monitor auf Ihre lokalen physischen und virtuellen Computer aus, indem Sie Azure Arc-fähige Server darauf aktivieren. 
 
 Sie aktivieren Application Insights für jede Ihrer Geschäftsanwendungen. Hiermit werden die verschiedenen Komponenten jeder Anwendung identifiziert, es wird mit der Erfassung von Nutzungs- und Leistungsdaten begonnen, und im Code auftretende Fehler werden ermittelt. Sie erstellen Verfügbarkeitstests, um Ihre externen Anwendungen proaktiv zu testen und Sie bei Leistungs- oder Verfügbarkeitsproblemen zu benachrichtigen. Obwohl Application Insights leistungsstarke Funktionen bietet, die Ihnen in Operations Manager nicht bereitstehen, sind Sie weiterhin auf benutzerdefinierte Management Packs angewiesen, die Sie für Ihre Geschäftsanwendungen entwickelt haben, da sie Überwachungsszenarien enthalten, die von Azure Monitor noch nicht abgedeckt werden. 
 
@@ -115,7 +115,7 @@ Verwenden Sie Azure Monitor für VMs, um die aktuelle Überwachung zu verbessern
 
 [![VM Insights-Zuordnung](media/azure-monitor-operations-manager/vm-insights-map.png)](media/azure-monitor-operations-manager/vm-insights-map.png#lightbox)
 
-Mithilfe von [Servern mit Azure Arc-Unterstützung](../azure-arc/servers/overview.md) kann VM Insights zusätzlich zu virtuellen Azure-Computern auch Computer lokal und in anderen Clouds überwachen. Mit Servern mit Arc-Unterstützung können Sie Windows- und Linux-Computer, die außerhalb von Azure in Ihrem Unternehmensnetzwerk oder von einem anderen Cloudanbieter gehostet werden, auf konsistente Weise verwalten wie native virtuelle Azure-Computer.
+Mithilfe von [Azure Arc-fähigen Servern](../azure-arc/servers/overview.md) kann VM Insights zusätzlich zu virtuellen Azure-Computern auch Computer lokal und in anderen Clouds überwachen. Mit Azure Arc-fähigen Servern können Sie Windows- und Linux-Computer, die außerhalb von Azure in Ihrem Unternehmensnetzwerk oder von einem anderen Cloudanbieter gehostet werden, auf konsistente Weise verwalten wie native virtuelle Azure-Computer.
 
 
 

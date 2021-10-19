@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: pafarley
-ms.openlocfilehash: 2e5942ccbb9e7acf090e5b538dfbb70b1c84762f
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: e396c3b206f581935e04321c91bfd0c07c741953
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538631"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617566"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Verbessern der Synthese mit dem Audio Content Creation-Tool
 
@@ -138,13 +138,12 @@ Der Benutzer muss ein [Microsoft-Konto](https://account.microsoft.com/account) v
 Führen Sie diese Schritte aus, um einen Benutzer zu einer Sprachressource hinzuzufügen, damit er/sie die Audioinhaltserstellung verwenden kann.
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) nach **Cognitive Services**, und wählen Sie die Sprachressource aus, der Sie Benutzer hinzufügen möchten.
-2. Klicken Sie auf **Zugriffssteuerung (IAM)** . Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
-    :::image type="content" source="media/audio-content-creation/access-control-roles.png" alt-text="Registerkarte „Rollenzuweisung“":::
-3. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen. Wählen Sie in der Dropdownliste „Rolle“ die Rolle **Cognitive Service-Benutzer** aus. Wenn Sie den Benutzer zum Besitzer dieser Sprachressource machen möchten, können Sie die Rolle **Besitzer** auswählen.
-4. Geben Sie die E-Mail-Adresse des Benutzers ein, und wählen Sie den Benutzer im Verzeichnis aus. Bei der E-Mail-Adresse muss es sich um ein **Microsoft-Konto** handeln, dem Azure Active Directory vertraut. Benutzer können sich ganz einfach mit einer persönlichen E-Mail-Adresse für ein [Microsoft-Konto](https://account.microsoft.com/account) registrieren. 
-5. Klicken Sie auf **Speichern**, um die Rolle zuzuweisen. 
-6. Der Benutzer erhält eine E-Mail-Einladung. Akzeptieren Sie die Einladung, indem Sie in der E-Mail auf **Einladung annehmen** > **Beitritt zu Azure akzeptieren** klicken. Anschließend wird der Benutzer zum Azure-Portal weitergeleitet. Der Benutzer muss keine weiteren Aktionen im Azure-Portal durchführen. Nach wenigen Augenblicken wird dem Benutzer die Rolle im Bereich der Speech-Ressource zugewiesen, und er erhält Zugriff auf diese Ressource. Wenn der Benutzer keine E-Mail-Einladung erhält, können Sie unter „Rollenzuweisungen“ nach dem Benutzerkonto suchen und das Benutzerprofil öffnen. Suchen Sie nach „Identität“ -> „Einladung angenommen“, und klicken Sie auf **Verwalten**, um die E-Mail-Einladung erneut zu senden. Sie können den Einladungslink auch für Benutzer kopieren. 
-7. Der Benutzer besucht oder aktualisiert die Produktseite [Audioinhaltserstellung](https://aka.ms/audiocontentcreation), und meldet sich mit dem Microsoft-Konto an. Wählen Sie den Block **Audioinhaltserstellung** aus den Speech-Produkten aus. Wählen Sie die Speech-Ressource im Popupfenster oder in den Einstellungen rechts oben auf der Seite aus. Wenn keine Speech-Ressource zu finden ist, überprüfen Sie, ob Sie sich im richtigen Verzeichnis befinden. Klicken Sie dazu auf das Kontoprofil in der oberen rechten Ecke, und klicken Sie neben dem aktuellen Verzeichnis auf **Wechseln**. Wenn mehr als ein Verzeichnis verfügbar ist, bedeutet dies, dass Sie Zugriff auf mehrere Verzeichnisse haben. Wechseln Sie zu einem anderen Verzeichnis, und öffnen Sie die Einstellungen, um zu ermitteln, ob die richtige Speech-Ressource verfügbar ist. 
+2. Klicken Sie auf **Zugriffssteuerung (IAM)** . Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen (Vorschau)** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen. 
+1. Wählen Sie auf der Registerkarte **Rolle** die Rolle **Cognitive Service-Benutzer** aus. Wenn Sie den Benutzer zum Besitzer dieser Sprachressource machen möchten, können Sie die Rolle **Besitzer** auswählen.
+1. Geben Sie auf der Registerkarte **Mitglieder** die E-Mail-Adresse des Benutzers ein, und wählen Sie den Benutzer im Verzeichnis aus. Bei der E-Mail-Adresse muss es sich um ein **Microsoft-Konto** handeln, dem Azure Active Directory vertraut. Benutzer können sich ganz einfach mit einer persönlichen E-Mail-Adresse für ein [Microsoft-Konto](https://account.microsoft.com/account) registrieren. 
+1. Wählen Sie auf der Registerkarte **Überprüfen und zuweisen** die Option **Überprüfen und zuweisen** aus, um die Rolle zuzuweisen.
+1. Der Benutzer erhält eine E-Mail-Einladung. Akzeptieren Sie die Einladung, indem Sie in der E-Mail auf **Einladung annehmen** > **Beitritt zu Azure akzeptieren** klicken. Anschließend wird der Benutzer zum Azure-Portal weitergeleitet. Der Benutzer muss keine weiteren Aktionen im Azure-Portal durchführen. Nach wenigen Augenblicken wird dem Benutzer die Rolle im Bereich der Speech-Ressource zugewiesen, und er erhält Zugriff auf diese Ressource. Wenn der Benutzer keine E-Mail-Einladung erhält, können Sie unter „Rollenzuweisungen“ nach dem Benutzerkonto suchen und das Benutzerprofil öffnen. Suchen Sie nach „Identität“ -> „Einladung angenommen“, und klicken Sie auf **Verwalten**, um die E-Mail-Einladung erneut zu senden. Sie können den Einladungslink auch für Benutzer kopieren. 
+1. Der Benutzer besucht oder aktualisiert die Produktseite [Audioinhaltserstellung](https://aka.ms/audiocontentcreation), und meldet sich mit dem Microsoft-Konto an. Wählen Sie den Block **Audioinhaltserstellung** aus den Speech-Produkten aus. Wählen Sie die Speech-Ressource im Popupfenster oder in den Einstellungen rechts oben auf der Seite aus. Wenn keine Speech-Ressource zu finden ist, überprüfen Sie, ob Sie sich im richtigen Verzeichnis befinden. Klicken Sie dazu auf das Kontoprofil in der oberen rechten Ecke, und klicken Sie neben dem aktuellen Verzeichnis auf **Wechseln**. Wenn mehr als ein Verzeichnis verfügbar ist, bedeutet dies, dass Sie Zugriff auf mehrere Verzeichnisse haben. Wechseln Sie zu einem anderen Verzeichnis, und öffnen Sie die Einstellungen, um zu ermitteln, ob die richtige Speech-Ressource verfügbar ist. 
 
     :::image type="content" source="media/audio-content-creation/add-role-first.png" alt-text="Dialogfeld „Rolle hinzufügen“":::
 

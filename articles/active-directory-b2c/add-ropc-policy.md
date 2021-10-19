@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fd50253b5fc77ec1042aada9351e85ee64035ec2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8a64c0e4a2c6ee080288bd0a700defc4adf598d2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740272"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708611"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>Einrichten eines Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C
 
@@ -54,15 +54,18 @@ Beachten Sie bei der Verwendung des ROPC-Flows Folgendes:
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Erstellen eines Benutzerflows für Ressourcenbesitzer
 
-1. Melden Sie sich beim Azure-Portal als globaler Administrator Ihres Azure AD B2C-Mandanten an.
-2. Wählen Sie für einen Wechsel zu Ihrem Azure AD B2C-Mandanten in der oberen rechten Ecke des Portals das B2C-Verzeichnis aus.
-3. Wählen Sie **Benutzerflows** und dann **Neuer Benutzerflow** aus.
-4. Wählen Sie **Mit Ressourcenbesitzer-Kennwortanmeldeinformationen (ROPC) anmelden** aus.
-5. Vergewissern Sie sich, dass unter **Version** die Option **Vorschau** aktiviert ist, und wählen Sie dann **Erstellen** aus.
-7. Geben Sie einen Namen für den Benutzerflow an, z. B. *ROPC_Auth*.
-8. Klicken Sie unter **Anwendungsansprüche** auf **Mehr anzeigen**.
-9. Wählen Sie die Anwendungsansprüche aus, die Sie für Ihre Anwendung benötigen, z. B. „Anzeigename“, „E-Mail-Adresse“ und „Identitätsanbieter“.
-10. Wählen Sie **OK** und anschließend **Erstellen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als **globaler Administrator** Ihres Azure AD B2C-Mandanten an.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält:
+    1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+    1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Wählen Sie **Benutzerflows** und dann **Neuer Benutzerflow** aus.
+1. Wählen Sie **Mit Ressourcenbesitzer-Kennwortanmeldeinformationen (ROPC) anmelden** aus.
+1. Vergewissern Sie sich, dass unter **Version** die Option **Vorschau** aktiviert ist, und wählen Sie dann **Erstellen** aus.
+1. Geben Sie einen Namen für den Benutzerflow an, z. B. *ROPC_Auth*.
+1. Klicken Sie unter **Anwendungsansprüche** auf **Mehr anzeigen**.
+1. Wählen Sie die Anwendungsansprüche aus, die Sie für Ihre Anwendung benötigen, z. B. „Anzeigename“, „E-Mail-Adresse“ und „Identitätsanbieter“.
+1. Wählen Sie **OK** und anschließend **Erstellen**.
 
 ::: zone-end
 

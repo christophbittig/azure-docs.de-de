@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 09/13/2021
-ms.openlocfilehash: 3f2559ca573ed9fedf5a15fce454cf406f8f6b0b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 918743544aeaf60932f14d1d1eed609775b29efd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210742"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710562"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>Verfügbarkeit von Cloudfeatures für US-Regierungskunden
 
@@ -107,7 +107,7 @@ In der folgenden Tabelle wird die aktuelle Verfügbarkeit von Security Center-Fe
 
 <sup><a name="footnote3" /></a>3</sup> Erfordert Azure Defender für Containerregistrierungen
 
-<sup><a name="footnote4" /></a>4</sup> Teilweise allgemeine Verfügbarkeit: Die Unterstützung für Arc-fähige Cluster befindet sich in der öffentlichen Vorschau und ist für Azure Government nicht verfügbar.
+<sup><a name="footnote4" /></a>4</sup> Teilweise allgemeine Verfügbarkeit: Die Unterstützung für Azure Arc-fähige Cluster befindet sich in der öffentlichen Vorschauphase und ist in Azure Government nicht verfügbar.
 
 <sup><a name="footnote5" /></a>5</sup> Erfordert Azure Defender für Kubernetes
 
@@ -304,23 +304,36 @@ In der folgenden Tabelle wird die aktuelle Verfügbarkeit von Azure Defender fü
 | [Ermittlung und Inventur von lokalen Geräten](../../defender-for-iot/how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md) | Allgemein verfügbar | Allgemein verfügbar |
 | [Verwaltung von Sicherheitsrisiken](../../defender-for-iot/how-to-create-risk-assessment-reports.md) | Allgemein verfügbar | Allgemein verfügbar |
 | [Bedrohungserkennung mit IoT und OT-Verhaltensanalysen](../../defender-for-iot/how-to-work-with-alerts-on-your-sensor.md) | Allgemein verfügbar | Allgemein verfügbar |
-| [Automatische Threat Intelligence-Updates](../../defender-for-iot/how-to-work-with-threat-intelligence-packages.md) | Allgemein verfügbar | Allgemein verfügbar |
+| [Manuelle und automatische Threat Intelligence-Updates](../../defender-for-iot/how-to-work-with-threat-intelligence-packages.md) | Allgemein verfügbar | Allgemein verfügbar |
 | **Vereinheitlichen der IT- und OT-Sicherheit mit SIEM, SOAR und XDR** |  |  |
-| - [Weiterleiten von Warnungsinformation](../../defender-for-iot/how-to-forward-alert-information-to-partners.md) | Allgemein verfügbar | Allgemein verfügbar |
-| - [Konfigurieren von Sentinel mit Azure Defender für IoT](../../defender-for-iot/how-to-configure-with-sentinel.md) | Public Preview | Nicht verfügbar |
-| - [SOC-Systeme](../../defender-for-iot/integration-splunk.md) | Allgemein verfügbar | Allgemein verfügbar |
-| - [Ticketsystem und CMDB (Service Now)](../../defender-for-iot/integration-servicenow.md) | Allgemein verfügbar | Allgemein verfügbar |
-| - [Sensorbereitstellung](../../defender-for-iot/how-to-manage-sensors-on-the-cloud.md) | Allgemein verfügbar | Allgemein verfügbar |
+| [Active Directory](../../defender-for-iot/organizations/how-to-create-and-manage-users.md#integrate-with-active-directory-servers) | Allgemein verfügbar | Allgemein verfügbar |
+| [ArcSight](../../defender-for-iot/organizations/how-to-accelerate-alert-incident-response.md#accelerate-incident-workflows-by-using-alert-groups) | Allgemein verfügbar | Allgemein verfügbar |
+| [ClearPass (Warnungen & Bestand)](../../defender-for-iot/organizations/how-to-install-software.md#attach-a-span-virtual-interface-to-the-virtual-switch) | Allgemein verfügbar | Allgemein verfügbar |
+| [CyberArk PSM](../../defender-for-iot/organizations/concept-key-concepts.md#integrations) | Allgemein verfügbar | Allgemein verfügbar |
+| [E-Mail](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#email-address-action) | Allgemein verfügbar | Allgemein verfügbar |
+| [FortiGate](../../defender-for-iot/organizations/tutorial-fortinet.md) | Allgemein verfügbar | Allgemein verfügbar |
+| [FortiSIEM](../../defender-for-iot/organizations/tutorial-fortinet.md) | Allgemein verfügbar | Allgemein verfügbar |
+| [Microsoft Sentinel](../../defender-for-iot/organizations/how-to-configure-with-sentinel.md) | Öffentliche Vorschau | Öffentliche Vorschau |
+| [NetWitness](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#netwitness-action) | Allgemein verfügbar | Allgemein verfügbar |
+| [Palo Alto NGFW](../../defender-for-iot/organizations/tutorial-palo-alto.md) | Allgemein verfügbar | Allgemein verfügbar |
+| [Palo Alto Panorama](../../defender-for-iot/organizations/tutorial-palo-alto.md) | Allgemein verfügbar | Allgemein verfügbar |
+| [ServiceNow (Warnungen & Bestand)](../../defender-for-iot/organizations/tutorial-servicenow.md) | Allgemein verfügbar | Allgemein verfügbar |
+| [SNMP-MIB-Überwachung](../../defender-for-iot/organizations/how-to-set-up-snmp-mib-monitoring.md) | Allgemein verfügbar | Allgemein verfügbar |
+| [Splunk](../../defender-for-iot/organizations/tutorial-splunk.md) | Allgemein verfügbar | Allgemein verfügbar |
+| [SYSLOG Server (CEF-Format)](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#syslog-server-actions) | Allgemein verfügbar | Allgemein verfügbar |
+| [SYSLOG Server (LEEF-Format)](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#syslog-server-actions) | Allgemein verfügbar | Allgemein verfügbar |
+| [SYSLOG Server (Objekt)](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#syslog-server-actions) | Allgemein verfügbar | Allgemein verfügbar |
+| [SYSLOG Server (SMS)](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#syslog-server-actions) | Allgemein verfügbar | Allgemein verfügbar |
+| [Webrückruf (Webhook)](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#webhook-server-action) | Allgemein verfügbar | Allgemein verfügbar |
 
 ### <a name="for-device-builders"></a>Für Geräteentwickler
 
 | Funktion | Azure | Azure Government |
 |--|--|--|
 | [Micro-Agent für Azure RTOS](../../defender-for-iot/iot-security-azure-rtos.md) | Allgemein verfügbar | Allgemein verfügbar |
-| - [Konfigurieren von Sentinel mit Azure Defender für IoT](../../defender-for-iot/how-to-configure-with-sentinel.md) | Allgemein verfügbar | Nicht verfügbar |
+| [Konfigurieren von Sentinel mit Azure Defender für IoT](../../defender-for-iot/how-to-configure-with-sentinel.md) | Öffentliche Vorschau | Öffentliche Vorschau |
 | **Eigenständiger Micro-Agent für Linux** |  |  |
-| - [Übersicht über den eigenständigen Micro-Agent](../../defender-for-iot/concept-standalone-micro-agent-overview.md) | Öffentliche Vorschau | Öffentliche Vorschau |
-| - [Binäre Installation des eigenständigen Agents](../../defender-for-iot/quickstart-standalone-agent-binary-installation.md) | Öffentliche Vorschau | Öffentliche Vorschau |
+| [Binäre Installation des eigenständigen Agents](../../defender-for-iot/quickstart-standalone-agent-binary-installation.md) | Öffentliche Vorschau | Öffentliche Vorschau |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,6 @@
 ---
-title: Konfigurieren von Berechtigungsklassifizierungen bei Azure AD
+title: Konfigurieren von Berechtigungsklassifizierungen
+titleSuffix: Azure AD
 description: Hier erfahren Sie, wie Sie delegierte Berechtigungsklassifizierungen verwalten können.
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1824eb31b17ba1a46bd5514797e11a502ac4665a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8a2bfb1e76a323ab3fb9d4daa3bbb3e6ba2408ab
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810060"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619783"
 ---
-# <a name="configure-permission-classifications"></a>Konfigurieren von Berechtigungsklassifizierungen
+# <a name="configure-permission-classifications-with-azure-active-directory"></a>Konfigurieren von Berechtigungsklassifizierungen bei Azure Active Directory
 
 Mit Berechtigungsklassifizierungen können Sie die Auswirkung ermitteln, die unterschiedliche Berechtigungen gemäß den Richtlinien Ihres Unternehmens und den Risikobewertungen haben. Beispielsweise können Sie Berechtigungsklassifizierungen in Einwilligungsrichtlinien verwenden, um den Berechtigungssatz zu identifizieren, dem Benutzer zustimmen dürfen.
 
@@ -28,8 +29,8 @@ Mit Berechtigungsklassifizierungen können Sie die Auswirkung ermitteln, die unt
 Damit Sie die in dieser Anleitung gestellten Aufgaben ausführen können, benötigen Sie Folgendes:
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Rolle „Globaler Administrator“.
-- Einrichten von Azure AD PowerShell. Weitere Informationen finden Sie unter [Azure AD PowerShell](/powershell/azure/).
+- Rolle „Globaler Administrator“
+- Einrichten von Azure AD PowerShell. Weitere Informationen finden Sie unter [Azure AD PowerShell](/powershell/azure/).
 
 ## <a name="manage-permission-classifications"></a>Verwalten von Berechtigungsklassifizierungen
 

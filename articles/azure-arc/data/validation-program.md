@@ -3,22 +3,22 @@ title: Validierung von Datendiensten mit Azure Arc-Unterstützung
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/30/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
 author: MikeRayMSFT
 ms.author: mikeray
 description: Beschreibt das Validierungsprogramm für Kubernetes-Distributionen für Datendienste mit Azure Arc-Unterstützung.
 keywords: Kubernetes, Arc, Azure, K8s, Validierung, Datendienste, SQL Managed Instance
-ms.openlocfilehash: 90158be8a28aae08cbc377aa776947096597a601
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 45c6967a536bc4e32e2382acd795f508a4bea0a4
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273835"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615180"
 ---
 # <a name="azure-arc-enabled-data-services-kubernetes-validation"></a>Kubernetes-Validierung von Datendiensten mit Azure Arc-Unterstützung
 
-Das Team für Datendienste mit Azure Arc-Unterstützung hat mit Branchenpartnern zusammengearbeitet, um bestimmte Distributionen und Lösungen hinsichtlich des Hostings von Datendiensten mit Azure Arc-Unterstützung zu validieren. Diese Validierung erweitert die [Validierung von Kubernetes mit Azure Arc-Unterstützung](../kubernetes/validation-program.md) für die Datendienste. In diesem Artikel werden Partnerlösungen, Versionen, Kubernetes-Versionen, SQL Server-Versionen und PostgreSQL Hyperscale-Versionen identifiziert, die hinsichtlich der Unterstützung der Datendienste überprüft wurden. 
+Das Team für Datendienste mit Azure Arc-Unterstützung hat mit Branchenpartnern zusammengearbeitet, um bestimmte Distributionen und Lösungen hinsichtlich des Hostings von Datendiensten mit Azure Arc-Unterstützung zu validieren. Diese Validierung erweitert die [Validierung von Kubernetes mit Azure Arc-Unterstützung](../kubernetes/validation-program.md) für die Datendienste. Dieser Artikel identifiziert Partnerlösungen, Versionen, Kubernetes-Versionen, SQL-Engine-Versionen und PostgreSQL Hyperscale-Versionen, die für die Unterstützung der Datendienste verifiziert wurden. 
 
 Informationen dazu, wie alle Komponenten mit Azure Arc-Unterstützung validiert sind, finden Sie unter [Übersicht über das Validierungsprogramm](../validation-program/overview.md).
 
@@ -29,39 +29,51 @@ Informationen dazu, wie alle Komponenten mit Azure Arc-Unterstützung validiert 
 
 ## <a name="partners"></a>Partner
 
+### <a name="cisco"></a>Cisco
+
+|Lösung und Version | Kubernetes-Version | Version der Datendienste mit Azure Arc-Unterstützung | Version der SQL-Engine | PostgreSQL Hyperscale-Version
+|-----|-----|-----|-----|-----|
+|Cisco Hyperflex auf VMware <br/> Cisco IKS ESXi 6.7 U3 |v1.19.5|v1.0.0_2021-07-30|15.0.2148.140| Nicht überprüft |
+
 ### <a name="dell"></a>Dell
 
-|Lösung und Version | Kubernetes-Version | Version der Datendienste mit Azure Arc-Unterstützung | SQL Server-Version | PostgreSQL Hyperscale-Version
+|Lösung und Version | Kubernetes-Version | Version der Datendienste mit Azure Arc-Unterstützung | Version der SQL-Engine | PostgreSQL Hyperscale-Version
 |-----|-----|-----|-----|-----|
-| Dell EMC PowerFlex |1.19.7|v1.0.0_2021-07-30|SQL Server 2019 (15.0.4123) | |
-| PowerFlex, Version 3.6 |1.19.7|v1.0.0_2021-07-30|SQL Server 2019 (15.0.4123) | |
-| PowerFlex CSI, Version 1.4 |1.19.7|v1.0.0_2021-07-30|SQL Server 2019 (15.0.4123) | |
-| PowerStore X|1.20.6|v1.0.0_2021-07-30|SQL Server 2019 (15.0.4123) |postgres 12.3 (Ubuntu 12.3-1) |
-| Powerstore T|1.20.6|v1.0.0_2021-07-30|SQL Server 2019 (15.0.4123) |postgres 12.3 (Ubuntu 12.3-1)|
+| Dell EMC PowerFlex |1.19.7|v1.0.0_2021-07-30|15.0.2148.140 | Nicht überprüft |
+| PowerFlex, Version 3.6 |1.19.7|v1.0.0_2021-07-30|15.0.2148.140 | Nicht überprüft |
+| PowerFlex CSI, Version 1.4 |1.19.7|v1.0.0_2021-07-30|15.0.2148.140 | Nicht überprüft |
+| PowerStore X|1.20.6|v1.0.0_2021-07-30|15.0.2148.140 |postgres 12.3 (Ubuntu 12.3-1) |
+| Powerstore T|1.20.6|v1.0.0_2021-07-30|15.0.2148.140 |postgres 12.3 (Ubuntu 12.3-1)|
 
 ### <a name="nutanix"></a>Nutanix
 
-|Lösung und Version | Kubernetes-Version | Version der Datendienste mit Azure Arc-Unterstützung | SQL Server-Version | PostgreSQL Hyperscale-Version
+|Lösung und Version | Kubernetes-Version | Version der Datendienste mit Azure Arc-Unterstützung | Version der SQL-Engine | PostgreSQL Hyperscale-Version
 |-----|-----|-----|-----|-----|
-| Karbon 2.2<br/>AOS: 5.19.1.5<br/>AHV: 20201105.1021<br/>PC: Version pc.2021.3.02<br/> | 1.19.8-0 | v1.0.0_2021-07-30 | SQL Server 2019 (15.0.4123)|postgres 12.3 (Ubuntu 12.3-1)|
+| Karbon 2.2<br/>AOS: 5.19.1.5<br/>AHV: 20201105.1021<br/>PC: Version pc.2021.3.02<br/> | 1.19.8-0 | v1.0.0_2021-07-30 | 15.0.2148.140|postgres 12.3 (Ubuntu 12.3-1)|
+
+### <a name="platform-9"></a>Platform 9
+
+|Lösung und Version | Kubernetes-Version | Version der Datendienste mit Azure Arc-Unterstützung | Version der SQL-Engine | PostgreSQL Hyperscale-Version
+|-----|-----|-----|-----|-----|
+| Platform9  Managed Kubernetes v5.3.0 | 1.20.5 | v1.0.0_2021-07-30| 15.0.2148.140 | Nicht überprüft |
 
 ### <a name="purestorage"></a>PureStorage
 
-|Lösung und Version | Kubernetes-Version | Version der Datendienste mit Azure Arc-Unterstützung | SQL Server-Version | PostgreSQL Hyperscale-Version
+|Lösung und Version | Kubernetes-Version | Version der Datendienste mit Azure Arc-Unterstützung | Version der SQL-Engine | PostgreSQL Hyperscale-Version
 |-----|-----|-----|-----|-----|
-| Portworx Enterprise 2.7 | 1.20.7 | v1.0.0_2021-07-30 | SQL Server 2019 (15.0.4138)||
+| Portworx Enterprise 2.7 | 1.20.7 | v1.0.0_2021-07-30 | 15.0.2148.140 | Nicht überprüft |
 
 ### <a name="red-hat"></a>Red Hat
 
-|Lösung und Version | Kubernetes-Version | Version der Datendienste mit Azure Arc-Unterstützung | SQL Server-Version | PostgreSQL Hyperscale-Version
+|Lösung und Version | Kubernetes-Version | Version der Datendienste mit Azure Arc-Unterstützung | Version der SQL-Engine | PostgreSQL Hyperscale-Version
 |-----|-----|-----|-----|-----|
-| OpenShift 7.13 | 1.20.0 | v1.0.0_2021-07-30 | SQL Server 2019 (15.0.4138)|postgres 12.3 (Ubuntu 12.3-1)|
+| OpenShift 7.13 | 1.20.0 | v1.0.0_2021-07-30 | 15.0.2148.140 | postgres 12.3 (Ubuntu 12.3-1)|
 
 ### <a name="vmware"></a>VMware
 
-|Lösung und Version | Kubernetes-Version | Version der Datendienste mit Azure Arc-Unterstützung | SQL Server-Version | PostgreSQL Hyperscale-Version
+|Lösung und Version | Kubernetes-Version | Version der Datendienste mit Azure Arc-Unterstützung | Version der SQL-Engine | PostgreSQL Hyperscale-Version
 |-----|-----|-----|-----|-----|
-| TKGm v1.3.1 | 1.20.5 | v1.0.0_2021-07-30 | SQL Server 2019 (15.0.4123)|postgres 12.3 (Ubuntu 12.3-1)|
+| TKGm v1.3.1 | 1.20.5 | v1.0.0_2021-07-30 | 15.0.2148.140|postgres 12.3 (Ubuntu 12.3-1)|
 
 ## <a name="data-services-validation-process"></a>Validierungsprozess für Datendienste
 
@@ -75,13 +87,13 @@ Installieren Sie Tools:
 - [kubectl](https://kubernetes.io/docs/home/)
 - [Azure Data Studio – Insider-Build](https://github.com/microsoft/azuredatastudio)
 
-Erstellen Sie eine Kubernetes-Konfigurationsdatei, die für den Zugriff auf den Kubernetes-Zielcluster konfiguriert und als aktueller Kontext festgelegt ist. Wie dies generiert und lokal auf Ihren Computer übertragen wird, ist von Plattform zu Plattform unterschiedlich. Siehe [Kubernetes.io](https://kubernetes.io/docs/home/).
+Erstellen Sie eine Kubernetes-Konfigurationsdatei, die für den Zugriff auf den Kubernetes-Zielcluster konfiguriert und als aktueller Kontext festgelegt ist. Wie diese Datei generiert und lokal auf Ihren Computer gebracht wird, ist von Plattform zu Plattform unterschiedlich. Siehe [Kubernetes.io](https://kubernetes.io/docs/home/).
 
 ### <a name="process"></a>Prozess
 
 Die Konformitätstests werden im Rahmen der Validierung der Datendienste mit Azure Arc-Unterstützung durchgeführt. Eine Voraussetzung für die Ausführung dieser Tests ist die Weitergabe Tests des Kubernetes mit Azure Arc-Unterstützung für die verwendete Kubernetes-Distribution.
 
-Mit diesen Tests wird überprüft, ob das Produkt den Anforderungen an die Ausführung und den Betrieb von Datendiensten entspricht. Dies hilft bei der Bewertung, ob das Produkt für Bereitstellungen in Unternehmen bereit ist.
+Mit diesen Tests wird überprüft, ob das Produkt den Anforderungen an die Ausführung und den Betrieb von Datendiensten entspricht. Dieser Prozess hilft bei der Beurteilung, ob das Produkt für die Bereitstellung im Unternehmen geeignet ist.
 
 Die Tests für Datendienste decken Folgendes im indirekt verbundenen Modus ab.
 

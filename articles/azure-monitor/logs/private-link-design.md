@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: 39a89fbaf72a78bad1c9a0ebca4ce068f6c65cae
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: b42b3c9146b99ee6e65dc83968ba8e97c8f209fb
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272888"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730487"
 ---
 # <a name="design-your-private-link-setup"></a>Entwerfen Ihres Private Link-Setups
 
@@ -66,8 +66,9 @@ Die Wahl des richtigen Zugriffsmodus wirkt sich nachteilig auf Ihren Netzwerkdat
 * Offen – Ermöglicht es dem VNet, sowohl Private Link-Ressourcen als auch Ressourcen außerhalb des AMPLS zu erreichen (wenn sie [Datenverkehr aus öffentlichen Netzwerken akzeptieren](./private-link-design.md#control-network-access-to-your-resources)). Der Zugriffsmodus „Offen“ verhindert zwar nicht die Datenexfiltration, bietet aber dennoch die anderen Vorteile von Private Links: Der Datenverkehr zu Private Link-Ressourcen wird über private Endpunkte gesendet, überprüft und über das Microsoft-Backbone übertragen. Der Modus „Offen“ eignet sich für eine gemischte Arbeitsweise (Zugriff auf einige Ressourcen öffentlich und auf andere über Private Link) oder während eines schrittweisen Onboardingprozesses.
 ![Diagramm für den AMPLS-Zugriffsmodus „Offen“](./media/private-link-security/ampls-open-access-mode.png) Zugriffsmodi werden separat für Erfassung und Abfragen festgelegt. Sie können z. B. den Modus „Nur privat“ für die Erfassung und den Modus „Offen“ für Abfragen festlegen.
 
-
 Seien Sie vorsichtig, wenn Sie Ihren Zugriffsmodus auswählen. Die Verwendung des Zugriffsmodus „Nur privat“ blockiert den Datenverkehr zu Ressourcen, die nicht im AMPLS enthalten sind, in allen Netzwerken, die dasselbe DNS nutzen, unabhängig von Abonnement oder Mandant (mit Ausnahme von Log Analytics-Erfassungsanforderungen, wie nachfolgend erläutert). Wenn Sie nicht alle Azure Monitor-Ressourcen zum AMPLS hinzufügen können, beginnen Sie mit dem Hinzufügen ausgewählter Ressourcen und der Anwendung des Zugriffsmodus „Offen“. Erst nachdem Sie *alle* Azure Monitor-Ressourcen zu Ihrem AMPLS hinzugefügt haben, wechseln Sie in den Modus „Nur privat“, um maximale Sicherheit zu gewährleisten.
+
+Siehe [Verwendung von APIs und Befehlszeile](./private-link-configure.md#use-apis-and-command-line) für Konfigurationsdetails und Beispiele.
 
 > [!NOTE]
 > Die Log Analytics-Erfassung verwendet ressourcenspezifische Endpunkte. Daher entspricht sie nicht den AMPLS-Zugriffsmodi. **Legen Sie die Netzwerkfirewall so fest, dass Datenverkehr an öffentliche Endpunkte blockiert wird, unabhängig von den AMPLS-Zugriffsmodi, um sicherzustellen, dass Log Analytics-Erfassungsanforderungen nicht über die AMPLS auf Arbeitsbereiche zugreifen können.**
@@ -103,6 +104,8 @@ Ihre Log Analytics-Arbeitsbereiche oder Application Insights-Komponenten können
 Diese Granularität ermöglicht es Ihnen, den Zugriff je nach Bedarf pro Arbeitsbereich festzulegen. Sie können beispielsweise die Erfassung nur über mit Private Link verbundene Netzwerke (d. h. bestimmte VNets) zulassen, aber dennoch Abfragen aus allen öffentlichen und privaten Netzwerken akzeptieren. 
 
 Das Blockieren von Abfragen aus öffentlichen Netzwerken bedeutet, dass Clients (Computer, SDKs usw.) außerhalb der verbundenen AMPLS-Instanzen keine Daten in der Ressource abfragen können. Diese Daten umfassen Protokolle, Metriken und den Live Metrics Stream. Das Blockieren von Abfragen aus öffentlichen Netzwerken wirkt sich auf alle Erfahrungen aus, die diese Abfragen ausführen, z. B. Arbeitsmappen, Dashboards, Insights im Azure-Portal und Abfragen, die außerhalb des Azure-Portals ausgeführt werden.
+
+Siehe [Ressourcenzugriffsflags setzen](./private-link-configure.md#set-resource-access-flags) für Konfigurationsdetails.
 
 ### <a name="exceptions"></a>Ausnahmen
 
@@ -166,6 +169,11 @@ Es wurden die folgenden Produkte und Funktionen ermittelt, die Arbeitsbereiche �
 > * Container Insights
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
+
+### <a name="network-subnet-size"></a>Größe des Netzwerk-Subnetzes
+Das kleinste unterstützte IPv4-Subnetz ist /27 (unter Verwendung von CIDR-Subnetzdefinitionen). Azure VNets [können so klein wie /29](../../virtual-network/virtual-networks-faq.md#how-small-and-how-large-can-vnets-and-subnets-be) sein, aber Azure [reserviert 5 IP-Adressen](../../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets) und die Einrichtung von Azure Monitor Private Link erfordert mindestens 11 zusätzliche IP-Adressen, selbst wenn eine Verbindung zu einem einzelnen Arbeitsbereich besteht. [Prüfen Sie die DNS-Einstellungen Ihres Endpunkts](./private-link-configure.md#reviewing-your-endpoints-dns-settings) für die detaillierte Liste der Azure Monitor Private Link Endpunkte.
+
+
 ### <a name="agents"></a>Agents
 Die neuesten Versionen von Windows- und Linux-Agents müssen verwendet werden, um eine sichere Erfassung in Log Analytics-Arbeitsbereichen zu ermöglichen. Ältere Versionen können keine Überwachungsdaten über ein privates Netzwerk hochladen.
 

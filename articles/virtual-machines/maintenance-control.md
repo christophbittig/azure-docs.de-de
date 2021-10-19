@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: maintenance
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 11/19/2020
+ms.date: 10/06/2021
 ms.author: cynthn
-ms.openlocfilehash: 47d99e87e788c833e5793a1e4e3b7d517d90909b
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: f04a1e776573ae8b335f1659057d89b2a144e051
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535006"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129661234"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Verwalten von Plattformupdates mit der Wartungssteuerung 
 
@@ -34,7 +34,7 @@ Mit der Wartungssteuerung können Sie folgende Aktionen ausführen:
 - Virtuelle Computer müssen sich auf einem [dedizierten Host](./dedicated-hosts.md) befinden oder mithilfe einer [isolierten VM-Größe](isolation.md) erstellt werden.
 - Die Dauer des Wartungsfensters kann monatlich variieren, und manchmal kann es bis zu zwei Stunden dauern, bis die ausstehenden Updates angewendet werden, nachdem sie vom Benutzer oder von der Benutzerin initiiert wurden.  
 - Nach 35 Tagen wird automatisch ein Update angewendet.
-- Wartungsaktivitäten auf Rackebene sind noch nicht Teil dieser Wartungssteuerung.
+- Die Wartung auf Rack-Ebene kann nicht über die Wartungskontrolle gesteuert werden.
 - Der Benutzer muss über einen **Ressourcenmitwirkender**-Zugriff verfügen.
 
 ## <a name="management-options"></a>Verwaltungsoptionen

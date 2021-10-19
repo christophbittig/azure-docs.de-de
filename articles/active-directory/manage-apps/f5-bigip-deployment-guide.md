@@ -1,5 +1,6 @@
 ---
-title: Bereitstellungshandbuch für sicheren Hybridzugriff mit F5 und Azure AD | Microsoft-Dokumentation
+title: Bereitstellungsleitfaden für sicheren Hybridzugriff mit F5
+titleSuffix: Azure AD
 description: Tutorial zum Bereitstellen von VMs mit F5 BIG-IP Virtual Edition (VE) in Azure IaaS für sicheren Hybridzugriff
 services: active-directory
 author: davidmu1
@@ -13,14 +14,14 @@ ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.reviewer: miccohen
-ms.openlocfilehash: f33e9a8207e3b8e6986999b7ea19aedbcb19b4da
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2bc309ed4d4fcfcc205ff3b464d23769d1e2182c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349415"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611855"
 ---
-# <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Tutorial zum Bereitstellen von VMs mit F5 BIG-IP Virtual Edition in Azure IaaS für sicheren Hybridzugriff
+# <a name="deploy-an-f5-big-ip-virtual-edition-vm-to-azure-active-directory"></a>Bereitstellen einer VM der F5 BIG-IP Virtual Edition für Azure Active Directory
 
 In diesem Tutorial finden Sie alle Schritte für die Bereitstellung von BIG-IP Virtual Edition (VE) in Azure IaaS. Am Ende dieses Tutorials verfügen Sie über Folgendes:
 
@@ -250,7 +251,7 @@ Standardmäßig sind Azure-VNETs und die zugehörigen Subnetze private Netzwerke
  |Ziel-IP-Adressen|Durch Trennzeichen getrennte Liste aller sekundären privaten IP-Adressen der BIG-IP-VM|
  |Zielports| 80, 443|
  |Protokoll| TCP |
- |Aktion| Allow|
+ |Aktion| Zulassen|
  |Priorität|Der niedrigste verfügbare Wert zwischen 100 und 4096|
  |Name | Ein aussagekräftiger Name, z. B. `BIG-IP-VM_Web_Services_80_443`|
 

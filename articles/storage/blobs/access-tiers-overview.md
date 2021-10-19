@@ -4,17 +4,17 @@ titleSuffix: Azure Storage
 description: Azure Storage weist verschiedene Zugriffsebenen auf, sodass Sie Blobdaten basierend auf ihrer Verwendung auf die kostengünstigste Weise speichern können. In diesem Artikel erhalten Sie Informationen zu den Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blob Storage.
 author: tamram
 ms.author: tamram
-ms.date: 09/29/2021
+ms.date: 10/07/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: ee0a9714f305a63ae3f25628f1bd9e9b14ce6e01
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 7af8e29890c63429a50c9818baa001bb5990c26b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129293553"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709001"
 ---
 # <a name="hot-cool-and-archive-access-tiers-for-blob-data"></a>Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten
 
@@ -81,11 +81,13 @@ Für Blobs auf der Archivebene werden folgende Vorgänge unterstützt:
 
 Speicherkonten verfügen über eine Einstellung für die Standardzugriffsebene, mit der die Onlineebene angegeben wird, auf der ein neues Blob erstellt wird. Die Einstellung für die Standardzugriffsebene kann auf die heiße oder die kalte Ebene festgelegt werden. Sie können die Standardeinstellung für ein einzelnes Blob überschreiben, wenn Sie das Blob hochladen oder die zugehörige Ebene ändern.
 
-Standardmäßig ist die Standardzugriffsebene für ein neues Speicherkonto auf die heiße Ebene festgelegt. Sie können die Einstellung für die Standardzugriffsebene beim oder nach dem Erstellen eines Speicherkontos ändern. Wenn Sie die Einstellung nicht ändern, werden Blobs standardmäßig auf die heiße Ebene hochgeladen.
+Die Standardzugriffsebene für ein neues universelles v2-Speicherkonto ist standardmäßig auf die Hot Tier eingestellt. Sie können die Einstellung für die Standardzugriffsebene beim oder nach dem Erstellen eines Speicherkontos ändern. Wenn Sie diese Einstellung im Speicherkonto nicht ändern oder die Ebene beim Hochladen eines Blobs nicht explizit festlegen, wird ein neuer Blob standardmäßig auf die heiße Ebene hochgeladen.
 
 Für ein Blob, dem keine explizite Ebene zugewiesen ist, wird die zugehörige Ebene von der Einstellung für die Standardzugriffsebene des Kontos abgeleitet. Wenn die Zugriffsebene eines Blobs von der Einstellung für die Standardzugriffsebene des Kontos abgeleitet ist, wird im Azure-Portal als Zugriffsebene **Heiß (abgeleitet)** oder **Kalt (abgeleitet)** angezeigt.
 
-Die Änderung der Einstellung für die Standardzugriffsebene eines Kontos gilt für alle Blobs im Konto, für die keine explizite Zugriffsebene festgelegt ist. Wenn Sie die Einstellung für die Standardzugriffsebene eines Kontos vom Typ „Universell v2“ von „Heiß“ in „Kalt“ ändern, werden Ihnen Schreibvorgänge (pro 10.000) für alle Blobs berechnet, für die die Zugriffsebene abgeleitet wird. Für diese Änderung fallen bei Blob Storage-Konten keine Gebühren an. Ihnen werden Gebühren für Lesevorgänge (pro 10.000) und für den Datenabruf (pro GB) berechnet, wenn Sie Konten vom Typ „Universell v2“ oder Blob Storage-Konten von „Kalt“ in „Heiß“ ändern.
+Die Änderung der Einstellung für die Standardzugriffsebene eines Kontos gilt für alle Blobs im Konto, für die keine explizite Zugriffsebene festgelegt ist. Wenn Sie die Einstellung für die Standardzugriffsebene eines Kontos vom Typ „Universell v2“ von „Heiß“ in „Kalt“ ändern, werden Ihnen Schreibvorgänge (pro 10.000) für alle Blobs berechnet, für die die Zugriffsebene abgeleitet wird. Wenn Sie in einem allgemeinen v2-Konto von "cool" auf "hot" umschalten, werden Ihnen sowohl Lesevorgänge (pro 10.000) als auch Datenabrufe (pro GB) berechnet.
+
+Wenn Sie ein Legacy-Blob-Storage-Konto erstellen, müssen Sie bei der Erstellung die Standard-Zugriffsebene als Hot oder Cool festlegen. Das Ändern der Standard-Zugriffsebene von "Hot" zu "Cool" in einem Legacy-Blob-Storage-Konto ist kostenlos. Wenn Sie in einem Blob-Storage-Konto von "cool" auf "hot" umschalten, werden Ihnen sowohl Lesevorgänge (pro 10.000) als auch Datenabrufe (pro GB) in Rechnung gestellt. Microsoft empfiehlt, wenn möglich allgemeine v2-Speicherkonten anstelle von Blob-Storage-Konten zu verwenden.
 
 > [!NOTE]
 > Die Archivebene wird nicht als Standardzugriffsebene für Speicherkonten unterstützt.

@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: dc89bfcd3d89e6987c2c8b742f5fe2453c273fc7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8aac6f90880775c5a1d7002048c79257b4e5ab85
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347136"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855895"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features"></a>Indexerzugriff auf Datenquellen mit Azure-Netzwerksicherheitsfeatures
 
@@ -76,7 +76,7 @@ Für eine bestimmte Indexerausführung bestimmt Azure Cognitive Search die beste
 Wenn die Ressource, auf die Ihr Indexer zugreifen möchte, auf eine bestimmte Gruppe von IP-Adressbereichen beschränkt ist, müssen Sie die Gruppe so erweitern, dass sie die möglichen IP-Adressbereiche einschließt, aus denen eine Indexeranforderung kommen kann. Wie bereits erwähnt, gibt es zwei mögliche Umgebungen, in denen Indexer ausgeführt werden und aus denen Zugriffsanforderungen kommen können. Sie müssen die IP-Adressen **beider** Umgebungen hinzufügen, damit der Indexerzugriff funktioniert.
 
 - Zum Abrufen der IP-Adresse der jeweiligen privaten Umgebung des Suchdiensts führen Sie ein `nslookup` (oder `ping`) für den vollqualifizierten Domänennamen (FQDN) des Suchdiensts durch. Der FQDN eines Suchdiensts in der öffentlichen Cloud wäre z. B. `<service-name>.search.windows.net`. Diese Informationen finden Sie im Azure-Portal.
-- Die IP-Adressen der mehrinstanzenfähigen Umgebungen sind über das `AzureCognitiveSearch`-Diensttag verfügbar. Für [Azure-Diensttags](../virtual-network/service-tags-overview.md) ist für jeden Dienst ein veröffentlichter Bereich von IP-Adressen verfügbar. Sie sind über [Verwendung der Diensttagermittlungs-API (öffentliche Vorschau)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) oder [Ermitteln von Diensttags mithilfe von herunterladbaren JSON-Dateien](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) verfügbar. In beiden Fällen sind die IP-Adressbereiche nach Regionen untergliedert. Sie können nur die IP-Adressbereiche auswählen, die der Region zugewiesen sind, in der Ihr Suchdienst bereitgestellt wird.
+- Die IP-Adressen der mehrinstanzenfähigen Umgebungen sind über das `AzureCognitiveSearch`-Diensttag verfügbar. [Azure-Diensttags](../virtual-network/service-tags-overview.md) weisen für jeden Dienst einen veröffentlichten Bereich von IP-Adressen auf. Dieser ist über eine [Ermittlungs-API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) oder eine [herunterladbare JSON-Datei](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) verfügbar. In beiden Fällen sind die IP-Adressbereiche nach Regionen untergliedert. Sie können nur die IP-Adressbereiche auswählen, die der Region zugewiesen sind, in der Ihr Suchdienst bereitgestellt wird.
 
 Für bestimmte Datenquellen kann das Diensttag selbst direkt verwendet werden, anstatt die Liste der IP-Adressbereiche aufzulisten (die IP-Adresse des Suchdiensts muss weiterhin explizit verwendet werden). Diese Datenquellen schränken den Zugriff durch das Einrichten einer [Netzwerksicherheitsgruppen-Regel](../virtual-network/network-security-groups-overview.md) ein, die native Unterstützung für das Hinzufügen eines Diensttags bietet, im Gegensatz zu IP-Regeln wie den von Azure Storage, Cosmos DB, Azure SQL usw. angebotenen. Folgende Datenquellen unterstützen die direkte Verwendung des `AzureCognitiveSearch`-Diensttags zusätzlich zur IP-Adresse des Suchdiensts:
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.author: pafarley
-ms.openlocfilehash: 0c7fb175d80a35d30649d2e4ce491fe39ac19c70
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: abef7e44ad2e15bda230d28e8dae74a3fd949f88
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539135"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706330"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>Was ist Unterhaltungstranskription (Vorschau)?
 
@@ -55,10 +55,13 @@ Dies ist eine allgemeine Übersicht darüber, wie die Unterhaltungstranskription
 ## <a name="expected-inputs"></a>Erwartete Eingaben
 
 - **Mehrkanalaudiostream**: Weitere Informationen zu Spezifikationen und Design finden Sie unter den [Mikrofonempfehlungen für das Speech-Geräte-SDK von Microsoft](./speech-devices-sdk-microphone.md). Weitere Informationen zum Development Kit und dessen Erwerb finden Sie unter [Abrufen des Speech-Geräte-SDK von Microsoft](./get-speech-devices-sdk.md).
-- **Benutzersprachbeispiele**: Für die Unterhaltungstranskription sind vor der Unterhaltung Benutzerprofile erforderlich. Sie müssen Audioaufzeichnungen von jedem Benutzer sammeln und die Aufzeichnungen dann an den [Dienst für die Signaturgenerierung](https://aka.ms/cts/signaturegenservice) senden, um die Audioaufnahmen zu überprüfen und Benutzerprofile zu generieren.
+- **Benutzerstimmproben**: Für die Unterhaltungstranskription sind vor der Unterhaltung Benutzerprofile zur Sprecheridentifikation erforderlich. Sie müssen Audioaufzeichnungen von jedem Benutzer sammeln und die Aufzeichnungen dann an den [Dienst für die Signaturgenerierung](https://aka.ms/cts/signaturegenservice) senden, um die Audioaufnahmen zu überprüfen und Benutzerprofile zu generieren.
 
 > [!NOTE]
-> Samples der Benutzerstimme sind optional. Ohne diese Eingabe weist die Transkription verschiedene Sprecher aus, zeigt sie aber als „Sprecher1“, „Speaker2“ usw., statt sie als zuvor registrierte Namen spezifischer Sprecher zu erkennen.
+> Benutzerstimmproben für Stimmsignaturen sind für die Sprecheridentifikation erforderlich. Sprecher ohne Stimmproben werden als „Nicht identifiziert“ erkannt. Nicht identifizierte Sprecher können dennoch unterschieden werden, wenn die Eigenschaft `DifferentiateGuestSpeakers` aktiviert ist (siehe Beispiel unten). In der Transkriptionsausgabe werden Sprecher dann als „Gast_0“, „Gast_1“ usw. angezeigt, anstatt vorab registrierte spezifische Sprechernamen zu erkennen.
+> ```csharp
+> config.SetProperty("DifferentiateGuestSpeakers", "true");
+> ```
 
 
 ## <a name="real-time-vs-asynchronous"></a>Echtzeitmodus im Vergleich zum asynchronen Modus

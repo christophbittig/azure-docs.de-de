@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: cca95effdbbda099dd3e082e950b92f26e96f80f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 06a37bc77d5eda453740881af9ca45ad4b8746e8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459468"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715171"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-analyze-monitoring-data"></a>Überwachen von virtuellen Computern mit Azure Monitor: Analysieren von Überwachungsdaten
 Dieser Artikel ist Teil des Szenarios [Überwachen von virtuellen Computern und den jeweiligen Workloads in Azure Monitor](monitor-virtual-machine.md). In dem Artikel wird beschrieben, wie Überwachungsdaten für virtuelle Computer analysiert werden, nachdem Sie ihre Konfiguration abgeschlossen haben.
@@ -22,7 +22,7 @@ Nachdem Sie VM Insights auf virtuellen Computern aktiviert haben, stehen Daten 
 > Dieser Artikel enthält Anleitungen zum Analysieren von Daten, die von Azure Monitor und VM Insights gesammelt werden. Daten, die Sie zum Überwachen von Workloads konfigurieren, die auf virtuellen Computern ausgeführt werden, finden Sie unter [Überwachen von Workloads](monitor-virtual-machine-workloads.md).
 
 ## <a name="single-machine-experience"></a>Nutzung mit einem einzelnen Computer
-Greifen Sie über den Abschnitt **Überwachung** des Menüs im Azure-Portal für jeden virtuellen Azure-Computer und jeden Azure Arc-fähigen Server auf die Analyse für einzelne Computer zu. Mit dieser Optionen beschränken Sie entweder die Daten, die Sie anzeigen, auf den betreffenden Computer, oder Sie legen zumindest einen anfänglichen Filter dafür fest. Auf diese Weise können Sie sich auf einen bestimmten Computer konzentrieren, seine aktuelle Leistung und seinen Trend im Zeitverlauf anzeigen und dabei helfen, mögliche Probleme zu identifizieren.
+Die Analyseoberfläche für einzelne Computer ist über das Menü im Azure-Portal im Abschnitt **Überwachung** für jede Azure-VM und jeden Azure Arc-fähigen Server zugänglich. Mit dieser Optionen beschränken Sie entweder die Daten, die Sie anzeigen, auf den betreffenden Computer, oder Sie legen zumindest einen anfänglichen Filter dafür fest. Auf diese Weise können Sie sich auf einen bestimmten Computer konzentrieren, seine aktuelle Leistung und seinen Trend im Zeitverlauf anzeigen und dabei helfen, mögliche Probleme zu identifizieren.
 
 :::image type="content" source="media/monitor-virtual-machines/vm-menu.png" alt-text="Screenshot: Analysieren eines virtuellen Computers im Azure-Portal" lightbox="media/monitor-virtual-machines/vm-menu.png":::
 
@@ -41,7 +41,7 @@ Greifen Sie über den Abschnitt **Überwachung** des Menüs im Azure-Portal für
 - **Arbeitsmappen**: Öffnen Sie den Arbeitsmappenkatalog mit den VM Insights-Arbeitsmappen für einzelne Computer. Eine Liste der VM Insights-Arbeitsmappen, die für einzelne Computer entwickelt wurden, finden Sie unter [VM Insights-Arbeitsmappen](vminsights-workbooks.md#vm-insights-workbooks).
 
 ## <a name="multiple-machine-experience"></a>Nutzung für mehrere Computer
-Greifen Sie über den Abschnitt **Überwachung** des Menüs im Azure-Portal für jeden virtuellen Azure-Computer und jeden Azure Arc-fähigen Server auf die Analyse für mehrere Computer zu. Diese Optionen bieten Zugriff auf alle Daten, sodass Sie die virtuellen Computer auswählen können, die Sie vergleichen möchten.
+Die Analyseoberfläche für mehrere Computer ist im Azure-Portal über das Menü **Überwachen** für jede Azure-VM und jeden Azure Arc-fähigen Server zugänglich. Diese Optionen bieten Zugriff auf alle Daten, sodass Sie die virtuellen Computer auswählen können, die Sie vergleichen möchten.
 
 :::image type="content" source="media/monitor-virtual-machines/monitor-menu.png" alt-text="Screenshot: Analysieren von mehreren virtuellen Computern im Azure-Portal" lightbox="media/monitor-virtual-machines/monitor-menu.png":::
 

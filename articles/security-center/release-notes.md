@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 10/03/2021
+ms.date: 10/06/2021
 ms.author: memildin
-ms.openlocfilehash: c0ae5cc8d3dee5a09916194418345c1602a19e4b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: bd8ebca221041684a47bb66bb01c176fd1b65ba6
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424782"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729518"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Neuerungen in Azure Security Center
 
@@ -30,13 +30,56 @@ Weitere Informationen zu den *geplanten* Änderungen, die demnächst im Security
 
 Updates im Oktober:
 
+- [ Microsoft Threat and Vulnerability Management als Lösung zur Schwachstellenbewertung hinzugefügt (in der Vorschau)](#microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution-in-preview)
+- [Schwachstellenbewertungslösungen können jetzt automatisch aktiviert werden (in der Vorschau)](#vulnerability-assessment-solutions-can-now-be-auto-enabled-in-preview)
+- [Software-Inventarisierungsfilter zum Bestandsverzeichnis hinzugefügt (in Vorschau)](#software-inventory-filters-added-to-asset-inventory-in-preview)
 - [Ändern des Präfix einiger Warnungstypen von „ARM_“ in „VM_“](#changed-prefix-of-some-alert-types-from-arm_-to-vm_)
+
+
+### <a name="microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution-in-preview"></a>Microsoft Threat and Vulnerability Management als Lösung zur Schwachstellenbewertung hinzugefügt (in der Vorschau)
+
+Wir haben die Integration zwischen [Azure Defender für Server](defender-for-servers-introduction.md) und Microsoft Defender für Endpoint erweitert, um eine neue Schwachstellenbewertung für Ihre Rechner zu unterstützen: [Microsoft Bedrohungs- und Schwachstellenmanagement](/microsoft-365/security/defender-endpoint/next-gen-threat-and-vuln-mgt). 
+
+Verwenden Sie **Bedrohungs- und Schwachstellenmanagement**, um Schwachstellen und Fehlkonfigurationen nahezu in Echtzeit zu erkennen, wenn die [Integration mit Microsoft Defender für Endpoint](security-center-wdatp.md) aktiviert ist, ohne dass zusätzliche Agenten oder regelmäßige Scans erforderlich sind. Das Bedrohungs- und Schwachstellenmanagement priorisiert Schwachstellen auf der Grundlage der Bedrohungslandschaft und der Entdeckungen in Ihrem Unternehmen.
+
+Verwenden Sie die Sicherheitsempfehlung "[Eine Lösung zur Bewertung von Schwachstellen sollte auf Ihren virtuellen Maschinen aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/ffff0522-1e88-47fc-8382-2a80ba848f5d)", um die von der Bedrohungs- und Schwachstellenverwaltung erkannten Schwachstellen für Ihre [unterstützten Maschinen](/microsoft-365/security/defender-endpoint/tvm-supported-os?view=o365-worldwide&preserve-view=true) anzuzeigen. 
+
+Um die Schwachstellen auf bestehenden und neuen Maschinen automatisch zu erkennen, ohne die Empfehlung manuell korrigieren zu müssen, siehe [Schwachstellenbewertungslösungen können jetzt automatisch aktiviert werden (in der Vorschau)](#vulnerability-assessment-solutions-can-now-be-auto-enabled-in-preview).
+
+Weitere Informationen finden Sie unter [Untersuchen Sie Schwachstellen mit dem Bedrohungs- und Schwachstellenmanagement von Microsoft Defender for Endpoint](deploy-vulnerability-assessment-tvm.md).
+
+### <a name="vulnerability-assessment-solutions-can-now-be-auto-enabled-in-preview"></a>Lösungen zur Schwachstellenanalyse können jetzt automatisch aktiviert werden (in der Vorschau)
+
+Die Seite für die automatische Bereitstellung im Security Center enthält jetzt die Option zur automatischen Aktivierung einer Lösung zur Schwachstellenanalyse für virtuelle Azure-Maschinen und Azure Arc-Maschinen in Abonnements, die durch [Azure Defender für Server](defender-for-servers-introduction.md) geschützt sind.
+
+Wenn die [Integration mit Microsoft Defender for Endpoint](security-center-wdatp.md) aktiviert ist, haben Sie außerdem eine Auswahl an Lösungen zur Schwachstellenbewertung:
+
+- (**NEU**) Das Microsoft Bedrohungs- und Schwachstellenmanagement-Modul von Microsoft Defender für Endpoint (siehe [die Release Note](#microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution-in-preview))
+- Der integrierte Qualys-Agent
+
+:::image type="content" source="media/deploy-vulnerability-assessment-tvm/auto-provision-vulnerability-assessment-agent.png" alt-text="Konfigurieren Sie die automatische Bereitstellung von Microsofts Bedrohungs- und Schwachstellenmanagement über das Azure Security Center.":::
+
+Die von Ihnen gewählte Lösung wird automatisch auf unterstützten Maschinen aktiviert.
+
+Erfahren Sie mehr unter [Automatische Konfiguration der Schwachstellenbewertung für Ihre Maschinen](auto-deploy-vulnerability-assessment.md).
+
+### <a name="software-inventory-filters-added-to-asset-inventory-in-preview"></a>Software-Inventarisierungsfilter zum Anlageninventar hinzugefügt (in Vorschau)
+
+Die Seite [Anlageninventar](asset-inventory.md) enthält jetzt einen Filter zur Auswahl von Rechnern, auf denen bestimmte Software läuft - und sogar zur Angabe der gewünschten Versionen. 
+
+Außerdem können Sie die Softwareinventardaten im **Azure Resource Graph Explorer** abfragen.
+
+Um diese neuen Funktionen nutzen zu können, müssen Sie die [Integration mit Microsoft Defender for Endpoint](security-center-wdatp.md) aktivieren. 
+
+Ausführliche Informationen, einschließlich Beispielabfragen von Kusto für Azure Resource Graph, finden Sie unter [Zugriff auf ein Softwareinventar](asset-inventory.md#access-a-software-inventory).
+
+:::image type="content" source="media/deploy-vulnerability-assessment-tvm/software-inventory.png" alt-text="Wenn Sie die Lösung für Bedrohungen und Schwachstellen aktiviert haben, bietet das Bestandsverzeichnis des Security Centers einen Filter zur Auswahl von Ressourcen anhand ihrer installierten Software.":::
 
 ### <a name="changed-prefix-of-some-alert-types-from-arm_-to-vm_"></a>Ändern des Präfix einiger Warnungstypen von „ARM_“ in „VM_“ 
 
 Im Juli 2021 haben wir eine [logische Neuorganisation des Azure Defender für Resource Manager-Warnungen](release-notes.md#logical-reorganization-of-azure-defender-for-resource-manager-alerts) angekündigt. 
 
-Im Rahmen einer logischen Neuorganisation für einige der Azure Defender-Pläne wurden 21 Warnungen vom [Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md) in den [Azure Defender für Server](defender-for-servers-introduction.md) verschoben.
+Im Rahmen einer logischen Umstrukturierung einiger Azure Defender-Pläne haben wir einundzwanzig Alarme von [Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md) nach [Azure Defender für Server](defender-for-servers-introduction.md) verschoben.
 
 Mit diesem Update haben wir die Präfixe dieser Warnungen so geändert, dass sie mit dieser Neuzuordnung übereinstimmen, und „ARM_“ durch „VM_“ ersetzt, wie in der folgenden Tabelle gezeigt:
 
@@ -71,7 +114,7 @@ Hier finden Sie weitere Informationen zu den Plänen [Azure Defender für Resour
 
 Im September wurde das folgende Update veröffentlicht:
 
-### <a name="two-new-recommendations-to-audit-os-configurations-for-azure-security-baseline-compliance"></a>Zwei neue Empfehlungen zum Überwachen von Betriebssystemkonfigurationen für die Konformität der Azure-Sicherheitsbaseline
+### <a name="two-new-recommendations-to-audit-os-configurations-for-azure-security-baseline-compliance-in-preview"></a>Zwei neue Empfehlungen zur Prüfung von Betriebssystemkonfigurationen für die Einhaltung der Azure-Sicherheitsgrundlagen (in der Vorschau)
 
 Die folgenden beiden Empfehlungen wurden veröffentlicht, um die Konformität Ihrer Computer mit der [Windows-Sicherheitsbaseline](../governance/policy/samples/guest-configuration-baseline-windows.md) und der [Linux-Sicherheitsbaseline](../governance/policy/samples/guest-configuration-baseline-linux.md) zu bewerten:
 
@@ -112,7 +155,7 @@ Weitere Informationen finden Sie unter [Schützen Sie Ihre Endpunkte mit der in 
 
 ### <a name="two-new-recommendations-for-managing-endpoint-protection-solutions-in-preview"></a>Zwei neue Empfehlungen für die Verwaltung von Endpoint Protection-Lösungen (Vorschauversion)
 
-Er wurden zwei **Vorschau**-Empfehlungen für die Bereitstellung und Wartung der Endpoint Protection-Lösungen auf Ihren Computern hinzugefügt. Beide Empfehlungen umfassen Unterstützung für virtuelle Azure-Computer und Computer, die mit Azure Arc verbunden sind.
+Er wurden zwei **Vorschau**-Empfehlungen für die Bereitstellung und Wartung der Endpoint Protection-Lösungen auf Ihren Computern hinzugefügt. Beide Empfehlungen beinhalten Unterstützung für virtuelle Azure-Maschinen und Maschinen, die mit Azure Arc-aktivierten Servern verbunden sind.
 
 |Empfehlung |BESCHREIBUNG |severity |
 |---|---|---|
@@ -509,13 +552,13 @@ Security Center umfasst integrierte Überprüfungen auf Sicherheitsrisiken, um I
 
 Dank dieser Änderung können Sie die Schaltfläche **Abfrage öffnen** verwenden, um auch die Abfrage mit den Sicherheitsergebnissen zu öffnen.
 
-:::image type="content" source="media/release-notes/open-query-menu-security-findings.png" alt-text="Schaltfläche „Abfrage öffnen“ umfasst jetzt auch Optionen für eine tiefer gehende Abfrage, mit der die Sicherheitsergebnisse für Empfehlungen angezeigt werden, die auf Sicherheitsrisikoüberprüfungen basieren.":::
+:::image type="content" source="media/release-notes/open-query-menu-security-findings.png" alt-text="Die Schaltfläche &quot;Abfrage öffnen&quot; bietet nun Optionen für eine tiefergehende Abfrage, bei der die Sicherheitsergebnisse für Empfehlungen im Zusammenhang mit Schwachstellenscannern angezeigt werden.":::
 
-Die Schaltfläche **Abfrage öffnen** umfasst zudem noch weitere Optionen für einige andere Empfehlungen, die ebenfalls relevant sind.
+Die Schaltfläche **Abfrage öffnen** bietet zusätzliche Optionen für einige andere Empfehlungen, sofern relevant.
 
 Weitere Informationen zu den Sicherheitsrisikoüberprüfungen von Security Center:
 
-- [Integrierte Azure Defender-Überprüfung zur Sicherheitsrisikobewertung für Azure- und Hybridcomputer](deploy-vulnerability-assessment-vm.md)
+- [Der in Azure Defender integrierte Qualys-Schwachstellen-Scanner für Azure- und Hybrid-Maschinen](deploy-vulnerability-assessment-vm.md)
 - [Integrierte Azure Defender-Überprüfung zur Sicherheitsrisikobewertung für SQL Server-Instanzen](defender-for-sql-on-machines-vulnerability-assessment.md)
 - [Integrierte Azure Defender-Überprüfung zur Sicherheitsrisikobewertung für Containerregistrierungen](defender-for-container-registries-usage.md)
 

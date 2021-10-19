@@ -1,34 +1,37 @@
 ---
-title: Überwachen von Kubernetes-Clustern mit Azure Arc-Unterstützung
+title: Überwachen von Azure Arc-fähigen Kubernetes-Clustern
 ms.date: 04/05/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
-description: Erfassen von Metriken und Protokollen von Kubernetes-Clustern mit Azure Arc-Unterstützung mithilfe von Azure Monitor
-ms.openlocfilehash: 55beedec85b5e2a426954f179b738fcf81eb4982
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+description: Erfassen von Metriken und Protokollen von Azure Arc-fähigen Kubernetes-Clustern mithilfe von Azure Monitor
+ms.openlocfilehash: 1ece606aa3967d9fddaa5f964c43e24350610817
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109845742"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709728"
 ---
-# <a name="azure-monitor-container-insights-for-azure-arc-enabled-kubernetes-clusters"></a>Azure Monitor Container Insights für Kubernetes-Cluster mit Azure Arc-Unterstützung
+# <a name="azure-monitor-container-insights-for-azure-arc-enabled-kubernetes-clusters"></a>Azure Monitor Container Insights für Azure Arc-fähige Kubernetes-Cluster
 
-[Azure Monitor Container Insights](container-insights-overview.md) bietet umfassende Überwachungsfunktionen für Kubernetes-Cluster mit Azure Arc-Unterstützung.
+[Azure Monitor Container Insights](container-insights-overview.md) bietet umfassende Überwachungsfunktionen für Azure Arc-fähige Kubernetes-Cluster.
 
 [!INCLUDE [preview features note](../../azure-arc/kubernetes/includes/preview/preview-callout.md)]
 
 ## <a name="supported-configurations"></a>Unterstützte Konfigurationen
 
-- Azure Monitor Container Insights unterstützt wie im [Übersichtsartikel](container-insights-overview.md) beschrieben die Überwachung von Kubernetes-Clustern mit Azure Arc-Unterstützung (Vorschau) – mit Ausnahme des Features für Livedaten (Vorschau). Außerdem müssen Benutzer zum [Aktivieren von Metriken](container-insights-update-metrics.md) nicht über Berechtigungen vom Typ [Besitzer](../../role-based-access-control/built-in-roles.md#owner) verfügen.
+- Azure Monitor Container Insights unterstützt die Überwachung von Azure Arc-fähigen Kubernetes-Clustern (Vorschau) wie im [Übersichtsartikel](container-insights-overview.md) beschrieben, mit Ausnahme des Features für Livedaten (Vorschau). Außerdem müssen Benutzer zum [Aktivieren von Metriken](container-insights-update-metrics.md) nicht über Berechtigungen vom Typ [Besitzer](../../role-based-access-control/built-in-roles.md#owner) verfügen.
 - `Docker`, `Moby` und CRI-kompatible Containerruntimes wie `CRI-O` und `containerd`
 - Proxys für ausgehenden Datenverkehr ohne Authentifizierung und mit Standardauthentifizierung werden unterstützt. Proxys für ausgehenden Datenverkehr, von denen Zertifikate erwartet werden, werden aktuell nicht unterstützt.
+
+>[!NOTE]
+> Azure Monitor Container Insights unterstützt derzeit nicht Kubernetes v1.22 oder höher.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Vergewissern Sie sich, dass die in der [Dokumentation zu generischen Clustererweiterungen](../../azure-arc/kubernetes/extensions.md#prerequisites) aufgeführten Voraussetzungen erfüllt sind.
 - Log Analytics-Arbeitsbereich: Von Azure Monitor Container Insights wird ein Log Analytics-Arbeitsbereich in den auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) aufgeführten Regionen unterstützt. Sie können Ihren eigenen Arbeitsbereich über [Azure Resource Manager](../logs/resource-manager-workspace.md), mithilfe von [PowerShell](../logs/powershell-sample-create-workspace.md) oder über das [Azure-Portal](../logs/quick-create-workspace.md) erstellen.
-- Sie müssen für das Azure-Abonnement, das die Kubernetes-Ressource mit Azure Arc-Unterstützung enthält, über die Rollenzuweisung [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) verfügen. Befindet sich der Log Analytics-Arbeitsbereich in einem anderen Abonnement, wird für den Log Analytics-Arbeitsbereich die Rolle [Log Analytics-Mitwirkender](../logs/manage-access.md#manage-access-using-azure-permissions) benötigt.
+- Sie müssen für das Azure-Abonnement, das die Azure Arc-fähige Kubernetes-Ressource enthält, über die Rollenzuweisung [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) verfügen. Befindet sich der Log Analytics-Arbeitsbereich in einem anderen Abonnement, wird für den Log Analytics-Arbeitsbereich die Rolle [Log Analytics-Mitwirkender](../logs/manage-access.md#manage-access-using-azure-permissions) benötigt.
 - Zum Anzeigen der Überwachungsdaten müssen Sie im Log Analytics-Arbeitsbereich über die Rollenzuweisung [Log Analytics-Leser](../logs/manage-access.md#manage-access-using-azure-permissions) verfügen.
 - Für ausgehenden Zugriff müssen neben den unter [Erfüllen von Netzwerkanforderungen](../../azure-arc/kubernetes/quickstart-connect-cluster.md#meet-network-requirements) angegebenen Endpunkten die folgenden Endpunkte aktiviert werden:
 
@@ -40,7 +43,7 @@ ms.locfileid: "109845742"
     | `*.monitoring.azure.com` | 443 |
     | `login.microsoftonline.com` | 443 |
 
-    Wenn sich Ihre Kubernetes-Ressource mit Arc-Unterstützung in einer Umgebung vom Typ „Azure US-Regierung“ befindet, müssen die folgenden Endpunkte für ausgehenden Zugriff aktiviert werden:
+    Wenn sich Ihre Azure Arc-fähige Kubernetes-Ressource in einer Umgebung vom Typ „Azure US-Regierung“ befindet, müssen die folgenden Endpunkte für ausgehenden Zugriff aktiviert werden:
 
     | Endpunkt | Port |
     |----------|------|
@@ -114,7 +117,7 @@ Informationen zu den verfügbaren Konfigurationseinstellungen finden Sie im [Abs
 
 ### <a name="option-4---on-azure-stack-edge"></a>Option 4: In Azure Stack Edge
 
-Wenn sich der Kubernetes-Cluster mit Azure Arc-Unterstützung in Azure Stack Edge befindet, muss ein benutzerdefinierter Bereitstellungspfad (`/home/data/docker`) verwendet werden.
+Wenn sich der Azure Arc-fähige Kubernetes-Cluster in Azure Stack Edge befindet, muss ein benutzerdefinierter Bereitstellungspfad (`/home/data/docker`) verwendet werden.
 
 ```azurecli
 az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-name> --resource-group <resource-group> --cluster-type connectedClusters --extension-type Microsoft.AzureMonitor.Containers --configuration-settings omsagent.logsettings.custommountpath=/home/data/docker
@@ -128,9 +131,9 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 >[!IMPORTANT]
 >  Wenn Sie Azure Monitor in einem Kubernetes-Cluster bereitstellen, der auf Azure Stack Edge basiert, muss anstelle des Azure-Portals die Azure CLI verwendet werden, da für Cluster dieser Art ein benutzerdefinierter Bereitstellungspfad festgelegt werden muss.    
 
-### <a name="onboarding-from-the-azure-arc-enabled-kubernetes-resource-blade"></a>Durchführen des Onboardings über das Blatt der Kubernetes-Ressource mit Azure Arc-Unterstützung
+### <a name="onboarding-from-the-azure-arc-enabled-kubernetes-resource-blade"></a>Durchführen des Onboardings über das Blatt der Azure Arc-fähigen Kubernetes-Ressource
 
-1. Wählen Sie im Azure-Portal den Kubernetes-Cluster mit Arc-Unterstützung aus, den Sie überwachen möchten.
+1. Wählen Sie im Azure-Portal den Azure Arc-fähigen Kubernetes-Cluster aus, den Sie überwachen möchten.
 
 2. Wählen Sie auf dem Blatt der Ressource im Abschnitt „Überwachung“ das Element „Insights (Vorschau)“ aus.
 
@@ -144,7 +147,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 1. Navigieren Sie im Azure-Portal zum Blatt „Monitor“, und wählen Sie im Menü „Insights“ die Option „Container“ aus.
 
-2. Wählen Sie die Registerkarte „Nicht überwachte Cluster“ aus, um die Kubernetes-Cluster mit Azure Arc-Unterstützung anzuzeigen, für die Sie die Überwachung aktivieren können.
+2. Wählen Sie die Registerkarte „Nicht überwachte Cluster“ aus, um die Azure Arc-fähigen Kubernetes-Cluster anzuzeigen, für die Sie die Überwachung aktivieren können.
 
 3. Klicken Sie neben dem Cluster, für den Sie die Überwachung aktivieren möchten, auf den Link „Aktivieren“.
 
@@ -182,7 +185,7 @@ Wenn Ihr Cluster länger als 48 Stunden nicht mit Azure verbunden ist, verfügt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn die Überwachung aktiviert ist, um Integrität und Ressourcenverwendung Ihres Arc-fähigen Kubernetes-Clusters und der darauf ausgeführten Workloads zu erfassen, informieren Sie sich über die [Verwendung](container-insights-analyze.md) von Container Insights.
+- Wenn die Überwachung aktiviert ist, um Integrität und Ressourcenverwendung Ihres Azure Arc-fähigen Kubernetes-Clusters und der darauf ausgeführten Workloads zu erfassen, informieren Sie sich über die [Verwendung](container-insights-analyze.md) von Container Insights.
 
 - Standardmäßig sammelt der Container-Agent die Containerprotokolle stdout und stderr aller Container, die in allen Namespaces mit Ausnahme von kube-system ausgeführt werden. Wenn Sie die Containerprotokollsammlung bestimmter Namespaces konfigurieren möchten, finden Sie weitere Informationen unter [Agent-Konfiguration für Container Insights](container-insights-agent-config.md). In diesem Artikel wird beschrieben, wie Sie die gewünschten Einstellungen für die Datensammlung für Ihre ConfigMap-Konfigurationsdatei konfigurieren.
 

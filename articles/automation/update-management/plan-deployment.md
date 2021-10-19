@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: bac463aa01a997122d86e32e140b135938d589da
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: fcf7235ae071dece392a11bacbf9f750569380ae
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093286"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715308"
 ---
 # <a name="plan-your-update-management-deployment"></a>Planen Ihrer Bereitstellung der Updateverwaltung
 
@@ -85,7 +85,7 @@ Aktivieren Sie die Updateverwaltung, und wählen Sie Computer aus, die mit einer
 
 - Verwendung einer [Azure Resource Manager-Vorlage](enable-from-template.md) für die Bereitstellung der Updateverwaltung in einem neuen oder vorhandenen Automation-Konto und Azure Monitor Log Analytics-Arbeitsbereich in Ihrem Abonnement. Sie konfiguriert nicht den Bereich der Computer, die verwaltet werden sollen. Dies erfolgt als gesonderter Schritt nach der Verwendung der Vorlage.
 
-- Über Ihr [Automation-Konto](enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer, einschließlich Servern mit Arc-Unterstützung
+- Über Ihr [Automation-Konto](enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer, einschließlich Azure Arc-fähiger Server.
 
 - Verwenden des [Runbooks](enable-from-runbook.md) **Enable-AutomationSolution** zum Automatisieren des Onboardings von Azure-VMs.
 

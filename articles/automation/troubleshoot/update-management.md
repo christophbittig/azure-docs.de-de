@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 06/10/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 735677886493bace8bb831eae1c974bb0483b0c1
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: bf9804b0881e02b1a4f58e5923c33840d06e37e2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771835"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706468"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 
@@ -340,7 +340,7 @@ Computer werden in Ergebnissen einer Azure Resource Graph-Abfrage aufgeführt, s
 
 5. Ist der Computer nicht als Hybrid Runbook Worker-System eingerichtet, sehen Sie sich die Optionen zum Aktivieren an, und verwenden Sie eine der folgenden Methoden:
 
-   - Über Ihr [Automation-Konto](../update-management/enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer, einschließlich Servern mit Arc-Unterstützung.
+   - Über Ihr [Automation-Konto](../update-management/enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer, einschließlich Azure Arc-fähiger Server.
 
    - Verwenden des [Runbooks](../update-management/enable-from-runbook.md) **Enable-AutomationSolution** zum Automatisieren des Onboardings von Azure-VMs.
 

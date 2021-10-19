@@ -4,12 +4,12 @@ description: Entwickeln von Funktionen mit Python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d44de94ef30976a35bbfeddf68b60068b952fbde
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 940ad3d08069ee51a9d138585b6e7dca0af49996
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450879"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658907"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -98,7 +98,7 @@ Der Hauptprojektordner (<project_root>) kann die folgenden Dateien enthalten:
 
 * *local.settings.json*: Wird verwendet, um bei der lokalen Ausführung App-Einstellungen und Verbindungszeichenfolgen zu speichern. Diese Datei wird nicht in Azure veröffentlicht. Weitere Informationen finden Sie unter [local.settings.file](functions-develop-local.md#local-settings-file).
 * *requirements.txt*: Diese Datei enthält die Liste der bei der Veröffentlichung in Azure vom System installierten Python-Pakete.
-* *host.json*: Enthält globale Konfigurationsoptionen, die sich auf alle Funktionen in einer Funktions-App auswirken. Diese Datei wird in Azure veröffentlicht. Nicht alle Optionen werden bei lokaler Ausführung unterstützt. Weitere Informationen finden Sie unter [host.json](functions-host-json.md).
+* *host.json*: Enthält Konfigurationsoptionen, die sich auf alle Funktionen in einer Funktions-App-Instanz auswirken. Diese Datei wird in Azure veröffentlicht. Nicht alle Optionen werden bei lokaler Ausführung unterstützt. Weitere Informationen finden Sie unter [host.json](functions-host-json.md).
 * *.vscode/:* (optional) Diese Datei enthält die VSCode-Konfiguration des Speichers. Weitere Informationen finden Sie unter [VSCode-Einstellung](https://code.visualstudio.com/docs/getstarted/settings).
 * *.venv/:* (optional) Diese Datei enthält eine virtuelle Python-Umgebung, die von der lokalen Entwicklung verwendet wird.
 * *Dockerfile:* (optional) Diese Datei wird verwendet, wenn Sie Ihr Projekt in einem [benutzerdefinierten Container](functions-create-function-linux-custom-image.md) veröffentlichen.

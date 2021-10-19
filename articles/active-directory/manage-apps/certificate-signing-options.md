@@ -14,14 +14,14 @@ ms.author: davidmu
 ms.reviewer: saumadan
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c44d2a346dcd77352715b63937e5bad5274f2d1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b3d1ccac8fa8ac0deddb8a581c583779b1fb2386
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346640"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611798"
 ---
-# <a name="advanced-certificate-signing-options-in-a-saml-token"></a>Erweiterte Optionen für die Zertifikatsignatur in einem SAML-Token
+# <a name="advanced-certificate-signing-options-in-a-saml-token-in-azure-active-directory"></a>Erweiterte Optionen für die Zertifikatsignatur in einem SAML-Token in Azure Active Directory
 
 Azure Active Directory (Azure AD) unterstützt im Anwendungskatalog von Azure Active Directory mittlerweile Tausende von vorab integrierten Anwendungen. Über 500 Anwendungen (etwa die Anwendung [NetSuite](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite)) unterstützen einmaliges Anmelden mit dem [SAML](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) 2.0-Protokoll. Wenn sich ein Kunde mithilfe von SAML über Azure AD bei einer Anwendung authentifiziert, sendet Azure AD ein Token an die Anwendung (per HTTP POST). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token werden mit dem eindeutigen Zertifikat, das in Azure AD generiert wird, und mit spezifischen Standardalgorithmen signiert.
 

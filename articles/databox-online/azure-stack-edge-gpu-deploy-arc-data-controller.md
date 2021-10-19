@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: ebccfdad883242411b4f45b717553ebd25ee69a9
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: e1078bb12b6d33eb4d4d35cc3e1e11f91ef39e9b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633517"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705544"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Bereitstellen von Azure Data Services auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -43,7 +43,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
         1. Laden Sie einen Client herunter, der nicht mehr als eine Nebenversion von der Masterversion abweicht. Die Clientversion kann aber gegenüber der Masterversion um bis zu einer Nebenversion höher sein. Beispiel: Die Masterversion v1.3 sollte mit den Knotenversionen v1.1, v1.2 und v1.3 sowie mit den Clientversionen v1.2, v1.3 und v1.4 funktionieren. Weitere Informationen zur Kubernetes-Clientversion finden Sie unter [Richtlinie zur Unterstützung der Kubernetes-Version und Versionsabweichung](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-version-skew).
     
 1. Optional können Sie [Clienttools für das Bereitstellen und Verwalten von Azure Arc-fähigen Datendiensten installieren](../azure-arc/data/install-client-tools.md). Diese Tools sind nicht erforderlich, werden jedoch empfohlen.  
-1. Stellen Sie sicher, dass Sie auf Ihrem Gerät über ausreichend Ressourcen für die Bereitstellung eines Datencontrollers und einer SQL Managed Instance-Instanz verfügen. Für den Datencontroller und eine SQL Managed Instance-Instanz benötigen Sie mindestens 16 GB RAM und 4 CPU-Kerne. Einen ausführlichen Leitfaden finden Sie unter [Mindestanforderungen für die Bereitstellung](../azure-arc/data/sizing-guidance.md#minimum-deployment-requirements).
+1. Stellen Sie sicher, dass Sie auf Ihrem Gerät über ausreichend Ressourcen für die Bereitstellung eines Datencontrollers und einer SQL Managed Instance-Instanz verfügen. Für den Datencontroller und eine SQL Managed Instance-Instanz benötigen Sie mindestens 16 GB RAM und 4 CPU-Kerne. Einen ausführlichen Leitfaden finden Sie unter [Mindestanforderungen für die Bereitstellung von Azure Arc-fähigen Datendiensten](../azure-arc/data/sizing-guidance.md#minimum-deployment-requirements).
 
 
 ## <a name="configure-kubernetes-external-service-ips"></a>Konfigurieren externer Dienst-IP-Adressen für Kubernetes

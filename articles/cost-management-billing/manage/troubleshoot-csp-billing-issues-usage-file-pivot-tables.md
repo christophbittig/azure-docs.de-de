@@ -7,21 +7,21 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 2532b02247a85d180d7b1cccd504838b83a8f93f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: de526c46a9aace4a6740b8b9afaab5cc23f3f87d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591841"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711104"
 ---
 # <a name="troubleshoot-csp-billing-issues-with-usage-file-pivot-tables"></a>Problembehandlung von CSP-Abrechnungsproblemen mit Nutzungsdatei-PivotTables
 
 Dieser Artikel unterstützt Sie bei der Problembehandlung von Abrechnungsproblemen von Cloud Solution Provider (CSP) mithilfe von PivotTables, die in Ihren Partner Center-Abstimmungsdateien (Nutzungsdateien) erstellt wurden. Azure-Nutzungsdateien enthalten sämtliche Nutzungs- und Verbrauchsinformationen zu Azure. Die Informationen in der Datei helfen Ihnen bei Folgendem:
 
 - Verstehen, wie Azure-Reservierungen genutzt und angewendet werden
-- Abstimmen von Informationen in Azure Cost Management mit Ihrer Rechnung
+- Abstimmen von Informationen in Cost Management mit Ihrer Rechnung
 - Problembehandlung bei Kostenanstiegen
 - Berechnen einer Erstattungssumme für eine Vereinbarung zum Servicelevel
 
@@ -111,4 +111,4 @@ Die Datei enthält die folgenden Spalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erste Schritte mit Azure Cost Management für Partner](../costs/get-started-partners.md)
+- [Erste Schritte mit Cost Management für Partner](../costs/get-started-partners.md)

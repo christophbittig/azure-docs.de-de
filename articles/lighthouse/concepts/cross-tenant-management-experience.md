@@ -3,12 +3,12 @@ title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Azure Lighthouse ermöglicht und verbessert mandantenübergreifende Funktionen in vielen Azure-Diensten.
 ms.date: 09/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: a6ad75df4e22f56c8bcb0f28586c736fc6b04a49
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 90ff0396a467f3137d6501ac34cf707577e43bdf
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349786"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714789"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -50,12 +50,12 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 [Azure Arc:](../../azure-arc/index.yml)
 
-- Verwalten von Hybridservern im großen Stil: [Server mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md):
+- Hybride Server in großem Umfang verwalten - [Azure Arc-aktivierte Server](../../azure-arc/servers/overview.md):
   - [Verwalten von verbundenen Windows Server- oder Linux-Computern außerhalb von Azure](../../azure-arc/servers/onboard-portal.md) mit delegierten Abonnements oder Ressourcengruppen in Azure
   - Verwalten von verbundenen Computern mithilfe von Azure-Konstrukten, z. B. Azure Policy und Tagging
   - Sicherstellen der Anwendung derselben Richtlinien für die Hybridumgebungen von Kunden
   - Verwenden von Azure Security Center zum Überwachen der Compliance der Hybridumgebungen von Kunden
-- Verwalten von Kubernetes-Hybridclustern im großen Stil – [Kubernetes mit Azure Arc-Aktivierung (Vorschauversion):](../../azure-arc/kubernetes/overview.md)
+- Hybride Kubernetes-Cluster im großen Maßstab verwalten - [Azure Arc-aktiviertes Kubernetes (Vorschau)](../../azure-arc/kubernetes/overview.md):
   - [Verwalten von verbundenen Kubernetes-Clustern](../../azure-arc/kubernetes/quickstart-connect-cluster.md) mit delegierten Abonnements und/oder Ressourcengruppen in Azure
   - [Verwenden von GitOps](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) für verbundene Cluster
   - Erzwingen von Richtlinien für verbundene Cluster

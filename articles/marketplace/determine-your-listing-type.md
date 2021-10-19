@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 07/30/2021
-ms.openlocfilehash: 154cfa6f8fd413c1cef1a22143d7e4d357053760
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: f1f352c93fca84f26516811b0014f6fca549b1cd
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867012"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129668806"
 ---
 # <a name="introduction-to-listing-options"></a>Einführung in Auflistungsoptionen
 
@@ -24,19 +24,19 @@ In dieser Tabelle ist aufgeführt, welche Auflistungsoptionen für die einzelnen
 | ------------ | ------------- | ------------- | ------------- | ------------- |
 | Azure-Anwendung (verwaltete Anwendung) |   | &#10004; |   | &#10004; |
 | Azure-Anwendung (Lösungsvorlage) |  |  |  | &#10004; |
-| Beratungsdienst |  |  | &#10004; |  |
 | Azure-Container |  |  |  | &#10004; |
+| Virtueller Azure-Computer | &#10004; | &#10004; |  | &#10004; |
+| Beratungsdienst |  |  | &#10004; |  |
 | Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; | &#10004; |
 | Dynamics 365 Customer Engagement & Power Apps | &#10004; | &#10004; | &#10004; | &#10004; |
-| Dynamics 365 for Operations | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 for Operations | &#10004; | &#10004; | &#10004; | &#10004; |
 | IoT Edge-Modul |  |  |  | &#10004; |
 | Verwalteter Dienst |  |  |  | &#10004; |
 | Power BI-App |  |  |  | &#10004; |
-| Virtueller Azure-Computer | &#10004; | &#10004; |  | &#10004; |
 | Software-as-a-Service | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
 
-&#42; Die Auflistungsoption **Jetzt abrufen** umfasst die Optionen „Jetzt abrufen (kostenlos)“, „BYOL“ (Bring Your Own License), „Abonnement“ und „Nutzungsbasierte Preise“. Weitere Informationen finden Sie unter [Jetzt Abrufen](#get-it-now).
+\* Die Auflistungsoption **Jetzt abrufen** umfasst die Optionen „Jetzt abrufen (kostenlos)“, „BYOL“ (Bring Your Own License), „Abonnement“ und „Nutzungsbasierte Preise“. Weitere Informationen finden Sie unter [Jetzt Abrufen](#get-it-now).
 
 ## <a name="change-the-offer-type"></a>Ändern Sie den Angebotstyp
 

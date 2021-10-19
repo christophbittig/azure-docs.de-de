@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/24/2021
+ms.date: 10/05/2021
 ms.author: tisande
-ms.openlocfilehash: b9eea7016da1e96e51e17d513ccbc3ca240c6e3d
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 13d667327fde6f55072f40dd6d1f9b7eb07d1214
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236936"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615199"
 ---
 # <a name="indexing-metrics-in-azure-cosmos-db"></a>Indizierungsmetriken in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -93,6 +93,9 @@ Betrachten Sie die Liste der verwendeten indizierten Pfade als Beweis dafür, da
 Die potenziellen Einzelindizes bzw. die verwendeten zusammengesetzten Indizes zeigen die eingeschlossenen Pfade und zusammengesetzten Indizes an, die, wenn sie hinzugefügt werden, von der Abfrage verwendet werden könnten. Wenn Sie potenzielle indizierte Pfade sehen, sollten Sie in Erwägung ziehen, diese zu Ihrer Indizierungsrichtlinie hinzuzufügen und beobachten, ob sie die Abfrageleistung verbessern.
 
 Betrachten Sie die Liste der potenziellen Indizierungspfade als Empfehlungen und nicht als schlüssigen Beweis dafür, dass eine Abfrage einen bestimmten Indizierungspfad verwenden wird. Die potenziellen Indizierungspfade sind keine erschöpfende Liste der Indizierungspfade, die eine Abfrage verwenden könnte. Außerdem ist es möglich, dass einige potentielle indizierte Pfade keinen Einfluss auf die Abfrageleistung haben. [ Fügen Sie die empfohlenen indizierten Pfade](how-to-manage-indexing-policy.md) hinzu und bestätigen Sie, dass sie die Abfrageleistung verbessern.
+
+> [!NOTE]
+> Haben Sie ein Feedback zu den Indizierungsmetriken? Teilen Sie uns Ihre Meinung mit! Sie können Feedback direkt an das Azure Cosmos DB-Entwicklungsteam senden: cosmosdbindexing@microsoft.com
 
 ## <a name="index-impact-score"></a>Indexauswirkungs-Score
 

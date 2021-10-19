@@ -4,12 +4,12 @@ description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent
 ms.date: 09/30/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 36dc64a28cd0199e7fba3ab2b5f3f6765eef489d
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: e4251ceafd2ab06afc43f8c3ba84f167219d7e14
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455605"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713164"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Server mit Azure Arc-Unterstützung
 
@@ -20,7 +20,7 @@ Mit dem Connected Machine-Agent für Server mit Azure Arc-Unterstützung können
 
 ## <a name="agent-component-details"></a>Agent-Komponentendetails
 
-:::image type="content" source="media/agent-overview/connected-machine-agent.png" alt-text="Übersicht zu Agents für Azure Arc-fähige Servern" border="false":::.
+:::image type="content" source="media/agent-overview/connected-machine-agent.png" alt-text="Azure Arc-aktivierte Server - Agentenübersicht." border="false":::
 
 Das Azure Connected Machine-Agent-Paket enthält mehrere logische Komponenten, die gebündelt werden.
 

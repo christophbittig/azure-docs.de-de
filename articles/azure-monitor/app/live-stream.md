@@ -4,12 +4,12 @@ description: Überwachen Sie Ihre Web-App mit benutzerdefinierten Metriken in Ec
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 865de94f1d9b4012a908643bbf87f38aeb8594a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e19d424f8aa56f37b12ab776c9ff85ca78f6738
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98679465"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614952"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Überwachung und Diagnose mit einer Latenzzeit von 1 Sekunde
 
@@ -245,7 +245,7 @@ Wenn Sie jedoch alle verbundenen Server erkennen und ihnen vertrauen, können Si
 | .NET Core (target=.NET Framework)| Unterstützt (V2.4.1+) | Unterstützt (V2.4.1+) | Unterstützt (V2.4.1+) | Unterstützt (V2.4.1+) | Unterstützt (V2.4.1+)  |
 | .NET Core (target=.NET Core)     | Unterstützt (V2.4.1+) | Unterstützt*          | Unterstützt (V2.4.1+) | Unterstützt (V2.4.1+) | **Nicht unterstützt**    |
 | Azure Functions v2               | Unterstützt           | Unterstützt           | Unterstützt           | Unterstützt           | **Nicht unterstützt**    |
-| Java                             | Unterstützt (V2.0.0+) | Unterstützt (V2.0.0+) | **Nicht unterstützt**   | **Nicht unterstützt**   | **Nicht unterstützt**    |
+| Java                             | Unterstützt (V2.0.0+) | Unterstützt (V2.0.0+) | **Nicht unterstützt**   | Unterstützt (V3.2.0 und höher) | **Nicht unterstützt**    |
 | Node.js                          | Unterstützt (V1.3.0+) | Unterstützt (V1.3.0+) | **Nicht unterstützt**   | Unterstützt (V1.3.0+) | **Nicht unterstützt**    |
 
 Grundlegende Metriken umfassen Anforderung, Abhängigkeit und Ausnahmerate. Leistungsmetriken (Leistungsindikatoren) umfassen Arbeitsspeicher und CPU. Beispieltelemetriedaten zeigen einen Datenstrom ausführlicher Informationen zu nicht erfolgreichen Anforderungen und Abhängigkeiten, Ausnahmen, Ereignissen und Ablaufverfolgungen.

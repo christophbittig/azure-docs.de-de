@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3096da8b3c83dbfe8cfdd6a5fa4d177241334de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6f7001b9eabd34774930378d0656b4ad7ef3c25
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97693506"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857795"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>Angeben eines vom Kunden bereitgestellten Schlüssels für eine Anforderung in Blob Storage mit .NET
 
@@ -29,7 +29,7 @@ Weitere Informationen zur Authentifizierung bei der Azure Identity-Clientbibliot
 
 ## <a name="use-a-customer-provided-key-to-write-to-a-blob"></a>Verwenden eines vom Kunden bereitgestellten Schlüssels zum Schreiben in einen Blob
 
-Das folgende Beispiel liefert einen AES-256-Schlüssel beim Hochladen eines Blobs mit der v12-Clientbibliothek für Blobspeicher. Im Beispiel wird das Objekt [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) verwendet, um die Schreibanforderung mit Azure AD zu autorisieren, Sie können die Anforderung jedoch auch mit den Anmeldeinformationen eines gemeinsam verwendeten Schlüssels autorisieren.
+Das folgende Beispiel liefert einen AES-256-Schlüssel beim Hochladen eines Blobs mit der v12-Clientbibliothek für Blobspeicher. Im Beispiel wird das Objekt [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) verwendet, um die Schreibanforderung mit Azure AD zu autorisieren, Sie können die Anforderung jedoch auch mit den Anmeldeinformationen eines gemeinsam verwendeten Schlüssels autorisieren. Weitere Informationen zur Verwendung der Klasse „DefaultAzureCredential“ zum Autorisieren einer verwalteten Identität für den Zugriff auf Azure Storage finden Sie unter [Azure Identity-Clientbibliothek für .NET](/dotnet/api/overview/azure/identity-readme).
 
 ```csharp
 async static Task UploadBlobWithClientKey(Uri blobUri,

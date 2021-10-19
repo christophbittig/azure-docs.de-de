@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
-ms.openlocfilehash: 24872e96333aeb67661c462e54acebc62b32c8aa
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: e71f6b6dde1ae12a68f425dcb372cca73456de73
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455416"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858125"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>VMs starten/beenden v2 (Vorschau): Übersicht
 
@@ -45,14 +45,20 @@ Die Triggerfunktionen auf Warteschlangenbasis sind zur Unterstützung dieser Fun
 
  Mit [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) werden die Zeitpläne für das Starten und Beenden der VM konfiguriert und verwaltet, indem die Funktion mithilfe einer JSON-Nutzlast aufgerufen wird. Standardmäßig werden während der ersten Bereitstellung insgesamt fünf Logik-Apps für die folgenden Szenarios erstellt:
 
-- Geplant: Aktionen zum Starten und Beenden basieren auf einem Zeitplan, den Sie für Azure Resource Manager-VMs und klassische VMs angeben. **ststv2_vms_Scheduled_start** und **ststv2_vms_Scheduled_stop** konfigurieren das geplante Starten und Beenden.
+- **Geplant**: Aktionen zum Starten und Beenden basieren auf einem Zeitplan, den Sie für Azure Resource Manager-VMs und klassische VMs angeben. **ststv2_vms_Scheduled_start** und **ststv2_vms_Scheduled_stop** konfigurieren das geplante Starten und Beenden.
 
-- Sequenziert: Aktionen zum Starten und Beenden basieren auf einem Zeitplan für VMs mit vordefinierten Sequenzierungstags. Es werden nur zwei benannte Tags unterstützt: **sequencestart** und **sequencestop**. **ststv2_vms_Sequenced_start** und **ststv2_vms_Sequenced_stop** konfigurieren das sequenzierte Starten und Beenden.
+- **Sequenziert**: Aktionen zum Starten und Beenden basieren auf einem Zeitplan für VMs mit vordefinierten Sequenzierungstags. Es werden nur zwei benannte Tags unterstützt: **sequencestart** und **sequencestop**. **ststv2_vms_Sequenced_start** und **ststv2_vms_Sequenced_stop** konfigurieren das sequenzierte Starten und Beenden. 
+
+    Die richtige Methode zum Verwenden der Sequenzfunktionalität besteht darin, ein Tag namens **sequencestart** auf jeder VM zu erstellen, die Sie in einer Sequenz starten möchten. Der Tagwert muss eine ganze Zahl zwischen 1 und N für jede VM im jeweiligen Bereich sein. Das Tag ist optional. Wenn es nicht vorhanden ist, wird die entsprechende VM bei der Sequenzierung nicht berücksichtigt. Dieselben Kriterien gelten für das Beenden von VMs, nur der Tagname lautet in diesem Fall **sequencestop**. Sie müssen beide Tags auf jeder VM konfigurieren, um die Aktion zum Starten und Beenden zu erhalten.
+
+    Die folgende Tabelle zeigt beispielsweise, wie zwei VMs mit gegenläufigen Sequenzen letztlich in derselben Reihenfolge ausgeführt werden:
+
+    :::image type="content" source="media/overview/sequence-settings-table.png" alt-text="Tabelle mit Tagbeispielen für Sequenzeinstellungen":::
 
     > [!NOTE]
     > In diesem Szenario werden nur Azure Resource Manager-VMs unterstützt.
 
-- AutoStop: Diese Funktion wird nur verwendet, um sowohl für Azure Resource Manager-VMs als auch klassische VMs basierend auf der CPU-Auslastung eine Aktion zum Beenden auszuführen. Dabei kann es sich auch um eine geplante *Aktion* handeln, die Warnungen auf virtuellen Computern erstellt, und basierend auf der Bedingung wird die Warnung ausgelöst, um die Aktion zum Beenden auszuführen. **ststv2_vms_AutoStop** konfiguriert die AutoStop-Funktion.
+- **AutoStop**: Diese Funktion wird nur verwendet, um sowohl für Azure Resource Manager-VMs als auch klassische VMs basierend auf der CPU-Auslastung eine Aktion zum Beenden auszuführen. Dabei kann es sich auch um eine geplante *Aktion* handeln, die Warnungen auf virtuellen Computern erstellt, und basierend auf der Bedingung wird die Warnung ausgelöst, um die Aktion zum Beenden auszuführen. **ststv2_vms_AutoStop** konfiguriert die AutoStop-Funktion.
 
 Jede Aktion zum Starten/Beenden unterstützt die Zuweisung von einem oder mehreren Abonnements, Ressourcengruppen oder einer Liste von VMs.
 

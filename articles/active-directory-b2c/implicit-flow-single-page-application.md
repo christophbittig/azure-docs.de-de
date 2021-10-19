@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 31dd0096140544db9c1265999b8c0c709def9cda
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 16c024926ddb863e3b40eac07f494c8d5dbeae9c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350058"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617984"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Single-Page-Anmeldung mithilfe des impliziten OAuth 2.0-Flusses in Azure Active Directory B2C
 
@@ -222,7 +222,7 @@ error=user_authentication_required
 Wenn Sie diesen Fehler in der IFrame-Anforderung erhalten, muss sich der Benutzer erneut anmelden, um ein neues Token abzurufen.
 
 ## <a name="refresh-tokens"></a>Aktualisierungstoken
-ID-Token und Zugriffstoken laufen nach einem kurzen Zeitraum ab. Ihre App muss darauf vorbereitet sein, diese Token in regelmäßigen Abständen zu aktualisieren.  Führen Sie zum Aktualisieren beider Tokentypen die oben erwähnte verborgene IFrame-Anforderung unter Verwendung des Parameters `prompt=none` aus, um die Schritte von Azure AD zu steuern.  Verwenden Sie `response_type=id_token` und `scope=openid` sowie einen `nonce`-Parameter, um einen neuen `id_token`-Wert zu erhalten.
+ID-Token und Zugriffstoken laufen nach einem kurzen Zeitraum ab. Ihre App muss darauf vorbereitet sein, diese Token in regelmäßigen Abständen zu aktualisieren. Implizite Abläufe erlauben es Ihnen aus Sicherheitsgründen nicht, ein Aktualisierungs-Token zu erhalten. Um beide Arten von Token zu aktualisieren, verwenden Sie den impliziten Fluss in einem versteckten HTML-iframe-Element. Geben Sie in der Anforderung zur Autorisierung den Parameter `prompt=none` an. Um einen neuen id_token-Wert zu erhalten, müssen Sie `response_type=id_token` und `scope=openid` sowie einen `nonce`-Parameter verwenden.
 
 ## <a name="send-a-sign-out-request"></a>Senden einer Abmeldeanforderung
 Wenn Sie einen Benutzer von der App abmelden möchten, leiten Sie den Benutzer zum Abmelden an Azure AD weiter. Wenn der Benutzer nicht umgeleitet wird, kann er sich möglicherweise erneut für Ihre Anwendung authentifizieren, ohne die Anmeldeinformationen erneut einzugeben, da er nach wie vor über eine gültige SSO-Sitzung bei Azure AD verfügt.
